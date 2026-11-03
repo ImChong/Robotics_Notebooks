@@ -6,9 +6,10 @@
 - **分组：** 82 Autonomous Driving
 - **编号：** 476/571
 - **入库日期：** 2026-08-10
-- **arXiv：** 2605.14723
+- **arXiv：** 2605.24004
+- **编号核对：** 上游清单登记的 2605.14723 经 arXiv 官方记录核对为另一篇论文《Agentifying Patient Dynamics within LLMs through Interacting with Clinical World Model》，与本条目不符；已更正为 2605.24004《Reason--Imagine--Act: Closed-Loop LLM Decision Making with World Models for Autonomous Driving》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2605.14723>
+- **论文：** <https://arxiv.org/abs/2605.24004>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Closed-loop LLM decision making with world models.

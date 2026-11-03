@@ -61,11 +61,51 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口（训练）：`cd act && python aloha_train.py --dataset_dir <hdf5 数据目录> --ckpt_dir <检查点目录>`；入口（推理，需先启动 piper 机械臂 ROS 节点）：`python aloha_inference-ros2.py --ckpt_dir <检查点目录>`（均出自仓库根 `readme.md`）
+
+```mermaid
+sequenceDiagram
+    participant TR as act/aloha_train.py
+    participant U as act/utils.py load_data
+    participant P as act/policy.py ACTPolicy
+    participant CK as ckpt_dir（policy_best.ckpt、dataset_stats.pkl）
+    participant INF as act/aloha_inference-ros2.py RosOperator(Node)
+    participant TH as inference_process 线程
+    participant ROS as ROS2 话题（相机、关节、末端位姿）与 piper 节点
+
+    TR->>U: load_data(args) 读取 hdf5 数据集，返回 train/val dataloader 与 stats
+    TR->>CK: pickle.dump(stats) 写 dataset_stats.pkl
+    loop num_epochs（train_process）
+        TR->>P: forward_pass(policy, data)，val 阶段先 eval
+        P-->>TR: loss_dict
+        TR->>TR: loss.backward、optimizer.step、lr_scheduler.step
+    end
+    TR->>CK: torch.save(best_state_dict) 写 policy_best.ckpt
+    Note over INF: 推理为另一个进程
+    INF->>INF: main：rclpy.init，RosOperator(args)，rclpy.spin
+    INF->>INF: __init__ 创建各 subscription / publisher，并起 model_inference 线程
+    INF->>CK: torch.load(ckpt) 与 pickle.load(stats)，policy.deserialize，policy.cuda().eval()
+    ROS-->>INF: 彩色/深度/点云图像、arm_joint_state、arm_end_pose 回调缓存
+    loop while t < max_publish_step
+        INF->>TH: threading.Thread(inference_process)
+        TH->>TH: pre_process 观测，取最近 history 帧
+        TH->>P: policy(camera_color, ..., qpos...) 得到 all_actions
+        TH->>TH: post_process（反归一化）写入全局 inference_actions
+        INF->>INF: 取动作（可选 temporal_agg）
+        INF-->>ROS: arm_joint_state_ctrl / arm_end_pose_ctrl 线性插值后发布
+    end
+```
+
+图依据：agilexrobotics/aloha-agilex@275cbe9，读过 `readme.md`、`act/README.md`、`act/aloha_train.py`（`train` / `train_process` / `forward_pass`）、`act/aloha_inference-ros2.py`（`main` / `RosOperator.__init__` / `model_inference` / `inference_process` 片段）、`act/utils.py`（仅 `find_all_hdf5` 附近）。`act/policy.py`、`detr/`、`cleandiffuser/` 等模型内部未读；推理循环中动作取用与发布的细节为按片段概括。
+
 ## 参考来源
 
 - [aloha-agilex 源码归档](../../sources/repos/aloha-agilex.md)（<https://github.com/agilexrobotics/aloha-agilex>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：agilexrobotics/aloha-agilex@275cbe9，读过 readme.md、act/README.md、act/aloha_train.py、act/aloha_inference-ros2.py、act/utils.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

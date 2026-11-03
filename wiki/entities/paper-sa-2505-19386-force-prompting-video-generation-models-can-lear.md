@@ -43,6 +43,19 @@ Video generation models can learn and generalize physics-based control signals.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["合成训练数据：Blender 风吹旗帜 15k + 球被推动 12k + PhysDreamer 康乃馨被戳 11k"] --> B["力编码为控制张量 π̃<br/>全局风力：F 与 θ 编成 cos/sin 通道<br/>局部点力：高斯斑块从 (x,y) 沿 θ 匀速移动"]
+  I["初始帧 φ + 文本提示 τ"] --> M["CogVideoX-5B-I2V 视频生成模型（基座层冻结）"]
+  B --> C["ControlNet：复制前 6 层 transformer 微调<br/>降采样 / 编码 / 时间压缩后经 zero conv 并入隐状态"]
+  C --> M
+  M --> V["输出 49 帧、8 fps 视频 v"]
+```
+
+图依据：论文 §3 / §3.1 / §3.2 / §3.3（Fig.2 力控制信号可视化）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +111,7 @@ Video generation models can learn and generalize physics-based control signals.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.19386>
+- [arXiv PDF](https://arxiv.org/pdf/2505.19386)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1 合成数据、3.2 力编码、3.3 架构与训练）
 
 ## 推荐继续阅读
 

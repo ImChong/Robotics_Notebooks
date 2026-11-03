@@ -73,6 +73,45 @@ summary: "DualMap 是在线开放词汇语义建图系统：MobileCLIP + YOLO-Wo
 - 算力：官方实验叙事偏桌面 GPU（如 RTX 4090）；机载需换轻量权重与降频关键帧。
 - 动态物体策略依赖其对象状态检查；静态占据层仍应单独管理。
 
+## 源码运行时序图
+
+入口：`python -m applications.runner_dataset`（Hydra 配置 `config/runner_dataset.yaml`，数据集离线建图；ROS 与 iPhone 入口分别为 `applications/runner_ros.py`、`applications/runner_record_3d.py`，本图不覆盖）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant R as applications/runner_dataset.py main()
+    participant D as utils/dataset.py dataset_initialization
+    participant C as dualmap/core.py Dualmap
+    participant Det as Detector (utils/object_detector.py)
+    participant Q as detection_results_queue
+    participant MT as run_mapping_thread
+    participant LM as LocalMapManager
+    participant GM as GlobalMapManager
+
+    U->>R: python -m applications.runner_dataset
+    R->>C: Dualmap(cfg)（构造 Detector、LocalMapManager、GlobalMapManager，use_parallel 时启动建图线程）
+    R->>D: dataset_initialization(cfg)
+    loop 数据集每一帧
+        R->>C: use_stride=false 时 check_keyframe(时间戳, 位姿)
+        R->>D: get_color / get_depth / get_intrinsics → DataInput
+        R->>C: parallel_process(curr_data)（use_parallel=false 时为 sequential_process）
+        C->>Det: set_data_input → process_detections（或 load_detection_results）→ calculate_observations
+        Det-->>C: curr_obs_list
+        C->>Q: put((curr_obs_list, frame_id))
+        MT->>Q: get()
+        MT->>LM: process_observations(curr_obs_list)
+        LM-->>MT: get_global_observations()
+        MT->>GM: process_observations(global_obs_list)
+    end
+    R->>C: use_end_process 为真时 end_process()
+    C->>LM: end_process() / merge_local_map()
+    C->>GM: 处理剩余全局观测
+    C->>C: 按配置 save_map（局部 / 全局）与 save_layout
+```
+
+图依据：Eku127/DualMap@157235e，读过 README.md、resources/doc/app_runner_dataset.md（命令部分）、applications/runner_dataset.py、config/runner_dataset.yaml（use_stride、use_parallel、run_detection）、dualmap/core.py（__init__、sequential_process、parallel_process、run_mapping_thread、end_process）；Detector、LocalMapManager、GlobalMapManager 内部实现及导航、查询、ROS 部分未读。
+
 ## 关联页面
 
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
@@ -87,6 +126,7 @@ summary: "DualMap 是在线开放词汇语义建图系统：MobileCLIP + YOLO-Wo
 - [sources/repos/dualmap.md](../../sources/repos/dualmap.md)
 - 项目页：<https://eku127.github.io/DualMap/>
 - arXiv：<https://arxiv.org/abs/2506.01950>
+- 源码核对（2026-11-02）：Eku127/DualMap@157235e，读过 README.md、resources/doc/app_runner_dataset.md、applications/runner_dataset.py、config/runner_dataset.yaml、dualmap/core.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

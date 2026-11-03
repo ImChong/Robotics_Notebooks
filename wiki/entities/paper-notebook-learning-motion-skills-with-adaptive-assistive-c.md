@@ -32,7 +32,31 @@ Learning Motion Skills with Adaptive Assistive Curriculum Force in Humanoid Robo
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，仅依据论文方法部分，不含结论判断。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测 o_t + 历史 o_t^H"] --> VAE["VAE 压缩历史<br/>预测 o_t+1，估计线速度 v_t"]
+    VAE --> LAT["潜变量 z_t + 速度估计 v_t"]
+    LAT --> MP["运动策略 agent<br/>输出关节目标 q_des"]
+    LAT --> AF["辅助力 agent（仅仿真）<br/>输出 6D 空间力 F_t"]
+    PRIV["特权信息子集<br/>地形 / 力边界 / 线速度 / 域随机化参数"] --> AF
+    CUR["超立方体力边界课程<br/>η_k 随 ‖F‖/‖η‖ 与 isSkillLearned 衰减<br/>初始边界 η_0 按任务设定"] --> AF
+    AF --> MASK["随机掩码 M_t<br/>以概率 ζ 关闭力分量"]
+    MASK --> PEL["作用于骨盆 base link"]
+    MP --> PD["PD 控制器"]
+    PD --> ENV["仿真环境"]
+    PEL --> ENV
+    ENV --> RW["r_motion + r_force<br/>r_force 在技能达成 80% 后引入"]
+    RW --> PPO["PPO + 非对称 Actor-Critic<br/>Critic 使用完整状态"]
+    PPO --> MP
+    PPO --> AF
+    MP --> DEP["真机部署：辅助力为零"]
+```
+
+图依据：论文 §III-B（Fig. 1、Algorithm 1）与 §III-C。
 
 ## 核心信息
 
@@ -64,6 +88,7 @@ Learning Motion Skills with Adaptive Assistive Curriculum Force in Humanoid Robo
 
 - [humanoid_pnb_learning-motion-skills-with-adaptive-assistive-c.md](../../sources/papers/humanoid_pnb_learning-motion-skills-with-adaptive-assistive-c.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2506.23125)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-D
 
 
 ## 推荐继续阅读

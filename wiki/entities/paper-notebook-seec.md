@@ -32,7 +32,26 @@ SEEC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    G["扰动生成：足底接触脉冲 (Gaussian impulse)<br/>+ 周期性 CoM 摆动 → 合成基座加速度 A_b(t)"] --> F["固定基座模型上注入等效虚拟力/力矩<br/>（Assumption 1：忽略臂对基座反作用）"]
+    F --> M["模型侧：计算补偿力矩 τ_comp<br/>（算子空间公式，最小范数解）"]
+    T["任务控制：算子空间跟踪力矩 τ_task"] --> R
+    M --> R["力矩模仿奖励<br/>r_τ = −‖τ_measured − (τ_comp + τ_task)‖"]
+    O["观测：末端指令历史 + IMU + 上身关节状态 + 上一动作"] --> A["RNN Actor：残差策略 (50Hz)<br/>输出关节目标 q_des"]
+    A --> PD["PD 控制器 (500Hz)"]
+    PD --> E["仿真环境：关节力矩 τ_measured / 末端加速度"]
+    E --> R
+    R --> P["PPO 更新 RNN Actor / Critic<br/>（另有末端加速度惩罚、跟踪奖励等）"]
+    P --> A
+    A -.->|"部署：上身策略 + 下身策略分别训练，零样本迁移 Booster T1"| D["真机：下身 locomotion 策略 + 上身 SEEC 策略"]
+```
+
+图依据：论文 §III-A（Fig.2、式 1–4）；部署连接依据 Fig.2 图注与 §III 开头。
 
 ## 核心信息
 
@@ -64,7 +83,7 @@ SEEC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - [humanoid_pnb_seec.md](../../sources/papers/humanoid_pnb_seec.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2509.21231)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II 相关工作、§III 方法（III-A.1–3）
 
 ## 推荐继续阅读
 

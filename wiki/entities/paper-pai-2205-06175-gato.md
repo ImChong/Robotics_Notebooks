@@ -40,6 +40,24 @@ Generalist policy architecture spanning embodied control and non-robotic tasks w
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多模态数据<br/>文本 / 图像 / 离散值 / 连续值"] --> B["Tokenization<br/>文本 SentencePiece，图像 16×16 patch，<br/>连续值 mu-law + 1024 bin"]
+    B --> C["按规范顺序拼成扁平 token 序列<br/>观测 token + 分隔符 + 动作 token"]
+    C --> D["Embedding<br/>查表嵌入 / ResNet block 嵌入图像 patch<br/>+ 位置编码"]
+    D --> E["1.2B decoder-only Transformer<br/>自回归预测下一个 token"]
+    E --> F["损失 mask<br/>仅文本与动作 token 计入 loss"]
+    P["提示条件 Prompt<br/>训练时 25% 序列前置同任务示范"] -.-> C
+    E --> G["部署：逐 token 采样动作向量"]
+    G --> H["反向 tokenization 解码动作<br/>发送给环境"]
+    H --> I["环境返回新观测"]
+    I --> C
+```
+
+图依据：论文 §2.1–2.4 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +121,7 @@ Generalist policy architecture spanning embodied control and non-robotic tasks w
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2205.06175>
+- [arXiv PDF](https://arxiv.org/pdf/2205.06175)：已通读方法部分（实验与附录以略读为准）：§2 Model（2.1 Tokenization、2.2 Embedding、2.3 Training、2.4 Deployment）
 
 ## 推荐继续阅读
 

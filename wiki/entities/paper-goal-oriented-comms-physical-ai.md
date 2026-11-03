@@ -40,6 +40,36 @@ summary: "Goal-Oriented Comms for Physical AI（arXiv:2609.15895）：用 3D 框
 - 开源结论：**待发布**（步骤 2.5，2026-09-16）。
 - 与 [12 篇技术地图](../overview/vla-deploy-12-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph UE["机器人 UE（PiPER 臂 + RealSense RGB-D + 5G 调制解调器）"]
+        A["RGB-D 图像 → 目标检测 → 深度反投影得到 3D 位置"] --> B["语义提取"]
+        B --> B1["3D-BBox：物体点云拟合包围长方体"]
+        B --> B2["2D-SG：Faster R-CNN 推断成对物体 2D 关系"]
+        B --> B3["3D-SG：TripletGCN 推断 3D 关系（同时得到 3D-BBox）"]
+    end
+    B1 -->|上行 5G：始终发送最新语义表示| C
+    B2 -->|上行 5G| D
+    B3 -->|上行 5G：3D-SG + 3D-BBox| D
+    subgraph EDGE["边缘服务器（Jetson AGX Orin + OAI gNB/5GC）"]
+        C["LLM 推理 3D-BBox → 符号机器人动作"]
+        D["微调 SLM 推理关系三元组 → 符号机器人动作"]
+        C --> E{"数字孪生碰撞校验（3D-BBox / 3D-SG）"}
+        D -->|仅 3D-SG 路径| E
+        D -->|2D-SG 路径无校验| F
+        E -->|无碰撞| F["保留原动作"]
+        E -->|有碰撞| G["数字孪生重规划，插入中间路点"]
+    end
+    F -->|下行| H["机器人执行：符号动作映射为轨迹，或直接执行路点序列"]
+    G -->|下行| H
+    H -.->|执行失败时语义表示显示异常，模型生成恢复指令| C
+    H -.-> D
+```
+
+图依据：论文 §II-A、§II-D 与 §III（testbed 设置）、Fig. 2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +115,7 @@ summary: "Goal-Oriented Comms for Physical AI（arXiv:2609.15895）：用 3D 框
 - [goal-oriented-comms-physical-ai_arxiv_2609_15895.md](../../sources/papers/goal-oriented-comms-physical-ai_arxiv_2609_15895.md)
 - [wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md](../../sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md)
 - [arXiv:2609.15895](https://arxiv.org/abs/2609.15895)
+- [arXiv PDF](https://arxiv.org/pdf/2609.15895)：已通读方法部分（实验与附录以略读为准）：§II 系统概览（Physical AI 系统、GoC 框架），§III 测试平台设置
 
 ## 推荐继续阅读
 

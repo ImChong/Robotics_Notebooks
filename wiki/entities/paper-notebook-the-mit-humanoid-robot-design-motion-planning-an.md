@@ -32,7 +32,24 @@ The MIT Humanoid Robot 的人形机器人学习论文条目，当前处于 Paper
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论；论文规划与控制流程见下方「流程总览」。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["地形评估 + 任务指定<br/>（跳上平台 / 后空翻 等）"] --> MS["动作选择器 motion selector<br/>给定终止状态，插值生成参考动作"]
+    MS --> AAKD["AAKD 规划：质心动力学轨迹优化<br/>以接触反力近似关节力矩，纳入执行器力矩/速度/功率限制"]
+    AAKD --> TO["起跳 takeoff<br/>WBIC 跟踪规划轨迹"]
+    TO --> FL["腾空 flight<br/>关节 PD 控制到 AAKD 给出的构型"]
+    FL --> DET{"检测到完全接触地面"}
+    DET --> MPC["落地 MPC（QP，约 10 Hz）<br/>集中质量模型，规划反力曲线与姿态参考"]
+    MPC --> WBIC["WBIC（500 Hz）<br/>任务优先级：躯干姿态 > 质心动量 CM > 关节姿态"]
+    WBIC --> SIM["自研动力学仿真<br/>含执行器动力学与电池电压跌落"]
+    TO -. 同一 WBIC .-> WBIC
+```
+
+图依据：论文 §III（Fig.5 规划与控制框架、§III-A AAKD、§III-B 落地 MPC、§III-C WBIC 任务设置）与 §IV。
 
 ## 核心信息
 
@@ -66,6 +83,7 @@ The MIT Humanoid Robot 的人形机器人学习论文条目，当前处于 Paper
 - [humanoid_pnb_the-mit-humanoid-robot-design-motion-planning-an.md](../../sources/papers/humanoid_pnb_the-mit-humanoid-robot-design-motion-planning-an.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2104.09025>
+- [arXiv PDF](https://arxiv.org/pdf/2104.09025)：已通读方法部分（实验与附录以略读为准）：§II 系统概述、§III 规划与控制（AAKD、落地 MPC、WBIC）；§IV 结果略读
 
 ## 推荐继续阅读
 

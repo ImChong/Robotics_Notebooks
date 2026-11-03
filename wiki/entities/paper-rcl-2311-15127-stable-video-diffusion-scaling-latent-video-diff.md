@@ -43,6 +43,28 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    RAW["长视频原始数据"] --> CUT["级联 cut detection（三档 FPS）切分 clip"]
+    CUT --> CAP["三种合成 caption：CoCa 中帧 / V-BLIP 视频 / LLM 汇总前两者"]
+    CAP --> LVD["LVD：580M 标注 clip"]
+    LVD --> ANN["标注：2 FPS 稠密光流、OCR 文字量、首/中/尾帧 CLIP 嵌入 → aesthetics 与图文相似度"]
+    ANN --> FILT["按各标注逐类阈值过滤（阈值由 Elo 人类偏好研究选定）"]
+    FILT --> LVDF["LVD-F：152M 训练样本"]
+    SD["Stage I：图像预训练 Stable Diffusion 2.1"] --> BASE
+    LVDF --> BASE["Stage II：插入 temporal layers，视频预训练 base 模型（先 256x384、14 帧）"]
+    BASE --> HQ["Stage III：高质量小数据集微调"]
+    HQ --> T2V["高分辨率 text-to-video"]
+    HQ --> I2V["高分辨率 image-to-video（CLIP 图像嵌入 + 噪声增强条件帧；14 / 25 帧）"]
+    I2V --> LORA["相机运动 LoRA"]
+    I2V --> MV["多视角生成 SVD-MV（Objaverse 等多视角数据微调）"]
+    T2V --> INT["帧插值微调（预测中间 3 帧，帧率 x4）"]
+```
+
+图依据：论文 §3.1–3.4（数据处理与三阶段训练）、§4.1–4.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +122,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2311.15127>
+- [arXiv PDF](https://arxiv.org/pdf/2311.15127)：已通读方法部分（实验与附录以略读为准）：§3 数据整理与三阶段训练、§4 大规模训练（4.1–4.5）
 
 ## 推荐继续阅读
 

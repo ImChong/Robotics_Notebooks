@@ -40,6 +40,35 @@ Survey on world models for autonomous systems.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph FW["§II-A 智能体世界模型框架（Fig. 2 的四个模块）"]
+    ENVI["环境输入：图像、视频、文本、控制指令"] --> PER["Perception Module：VAE / MAE / DAE 编码压缩"]
+    PER --> WMM["World Model Module：估计缺失的当前状态 + 预测未来状态"]
+    MEM["Memory Module：记录过去、当前与预测的世界状态及其代价/奖励"] -.- WMM
+    WMM --> CTL["Control/Action Module：依据当前状态与预测选择动作序列"]
+    CTL --> ENVO["动作作用于环境"]
+  end
+  subgraph ORG["论文章节结构"]
+    I["I Introduction"] --> II["II Development of World Models"]
+    II --> IIA["A 架构基础：潜在动力学模型（RNN / SSM / RSSM）、JEPA"]
+    II --> IIB["B Broad Spectrum Applications"]
+    II --> III["III World Models in Autonomous Driving"]
+    III --> IIIA["A Driving Scenario Generation"]
+    III --> IIIB["B Planning and Control"]
+    III --> IV["IV Challenges and Future Perspectives"]
+    IV --> IVA["A Technical and Computational Challenges"]
+    IV --> IVB["B Ethical and Safety Challenges"]
+    IV --> IVC["C Future Perspectives"]
+    IV --> V["V Conclusion"]
+  end
+  IIA -.->|"对应"| FW
+```
+
+图依据：综述章节框架与模块图，依据论文 Fig. 2（Diagram of an Agent's World Model Framework）与 §II-A 四个模块的文字说明，以及 §I-§V 的章节标题；Memory 与 World Model 之间论文只说明记录/管理世界状态，未写明方向，故用无向虚线。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +132,7 @@ Survey on world models for autonomous systems.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2403.02622>
+- [arXiv PDF](https://arxiv.org/pdf/2403.02622)：已通读 §I 引言、§II-A 架构基础（四个模块、潜在动力学模型、JEPA）、§III 开头与 A/B 小节标题、§IV 各小节标题；各应用文献的具体描述以略读为准
 
 ## 推荐继续阅读
 

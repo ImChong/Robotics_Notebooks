@@ -42,6 +42,30 @@ Unified Transformer architecture integrating egocentric vision, language, world 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["自我中心视频帧 It"] --> B["卷积嵌入为图像 token it"]
+    C["3D 人体姿态 At"] --> D["卷积 + LN + GeLU 嵌入为动作 token at"]
+    B --> E["交错序列：it, qa, at, qs（qa 动作查询，qs 未来状态查询）"]
+    D --> E
+    E --> F["因果 Transformer 预测器 Θpred（InternLM 架构，从零训练）"]
+    F --> G["qa 输出 → MLP → 预测下一动作 A't"]
+    F --> H["qs 输出 → MLP → 预测下一世界状态 S't+1"]
+    A --> I["观测器分支 Θobs（EMA 更新）：仅处理图像 token 与 qs"]
+    I --> J["目标状态 St+1"]
+    G --> K["动作预测损失 Lact（L1）"]
+    H --> L["状态预测损失 Lpred"]
+    J --> L
+    A --> M["随机裁剪两个视图，自监督表征损失 Lrep（DINO）"]
+    K --> N["总损失 λrep Lrep + λpred Lpred + λact Lact"]
+    L --> N
+    M --> N
+```
+
+图依据：论文 §3.1 联合嵌入-动作-预测架构 / Fig. 2、§3.2 训练监督与总目标（Lact、Lpred、Lrep）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Unified Transformer architecture integrating egocentric vision, language, world 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2502.05857>
+- [arXiv PDF](https://arxiv.org/pdf/2502.05857)：已通读方法部分（实验与附录以略读为准）：§3.1、§3.2、§3.3 任务推断（部分）、§4.1 训练设置
 
 ## 推荐继续阅读
 

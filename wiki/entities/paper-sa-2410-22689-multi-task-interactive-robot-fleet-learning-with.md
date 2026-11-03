@@ -43,6 +43,25 @@ Multi-task interactive robot fleet learning with visual world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DEMO["人类示范 D0 → 行为克隆得到初始多任务策略 π0"] --> DEP
+    PRE["多样机器人数据 → 预训练视觉世界模型 W：UNet 编解码 + cVAE-Transformer 预测未来潜嵌入（之后冻结）"] --> AP
+    subgraph DEP["第 i 轮部署（多机器人）"]
+        POL["多任务策略 π_i 执行任务"] --> AP["冻结嵌入上的异常预测器：失败分类器 + OOD（PCA + k-means 距离阈值）"]
+        AP -->|"预测到异常"| HUM["请求人类监控，必要时接管"]
+        HUM --> BUF["轨迹与人类干预标记 c_t 写入数据缓冲区"]
+        POL --> BUF
+    end
+    BUF --> UPD["D_{i+1} = D_i ∪ D'：微调策略与失败分类器，扩展 k-means 聚类"]
+    UPD --> TH["按人类干预比例 p_H 自适应调整 OOD 阈值"]
+    TH --> POL
+```
+
+图依据：论文 §3.1–3.2 / Fig. 1、Fig. 2、Fig. 3、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Multi-task interactive robot fleet learning with visual world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.22689>
+- [arXiv PDF](https://arxiv.org/pdf/2410.22689)：已通读方法部分（实验与附录以略读为准）：§2–§3（方法）、§4.1 评测设定
 
 ## 推荐继续阅读
 

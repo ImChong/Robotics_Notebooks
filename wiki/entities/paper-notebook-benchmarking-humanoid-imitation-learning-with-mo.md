@@ -18,7 +18,7 @@ summary: "现有人形模仿学习的指标（如关节位置误差 MPJPE）只�
 
 ## 一句话定义
 
-现有人形模仿学习的指标（如关节位置误差 MPJPE）只衡量「策略学得多像」，却没法告诉你「这段动作本身有多难」——本文用刚体动力学给出一个与策略无关的 Motion Difficulty Score (MDS)：对参考姿态做小扰动后看产生的力矩变化空间，从体积 / 方差 / 时间变化率三个维度算难度；再用 MDS 把 AMASS 重新切成难度分层的 MD-AMASS，并配套两个新指标 MID（最大可模仿难度） 与 DSJE（按难度分层的关节误差）——首次把「比 SOTA」变成「在每个难度档分别比 SOTA」。
+现有人形模仿学习的指标（如关节位置误差 MPJPE）只衡量「策略学得多像」，却没法告诉你「这段动作本身有多难」——本文用刚体动力学给出一个与策略无关的 Motion Difficulty Score (MDS)：对参考姿态做小扰动后看产生的力矩变化空间，从体积 / 方差 / 时间变化率三个维度算难度；再用 MDS 把 AMASS 重新切成难度分层的 MD-AMASS，并配套两个新指标 MID（最大可模仿难度） 与 DSJE（按难度分层的关节误差）——首次把「比 SOTA」变成「在每个难度档分别比 SOTA」。（arXiv 当前版本 v2 题为《Distinguishing Imitation Error from Intrinsic Motion Learning Difficulty》，并把指标 MDS 改称 TVS（Torque Variation Score）；本页按 v1 的题名与指标名 MDS 撰写，沿用清单所列题名。）
 
 ## 英文缩写速查
 
@@ -32,6 +32,28 @@ summary: "现有人形模仿学习的指标（如关节位置误差 MPJPE）只�
 
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["AMASS 动作数据"] --> B["切成固定 100 帧片段<br/>（约 3.3 s @30 FPS）"]
+    B --> C["RBDL 计算每帧惯量矩阵 M 与非线性项 h"]
+    C --> D["沿序列迭代施加小姿态扰动<br/>得到扰动邻域 N(S) 内的力矩变化 T"]
+    D --> E1["谱多样性 d1<br/>力矩空间体积（奇异值对数和）"]
+    D --> E2["方差多样性 d2<br/>关节间 Jacobian 方差"]
+    D --> E3["分段多样性 d3<br/>K=4 段的时间变化率"]
+    E1 --> F["MDS = Σ w_i · d_i（权重经验确定）"]
+    E2 --> F
+    E3 --> F
+    F --> G["MD-AMASS：3 万余条片段，各带标量难度"]
+    G --> H["UHC / PHC+ 在 MD-AMASS 上模仿，得 MPJPE-G"]
+    H --> V["验证：MDS 与 MPJPE-G 的 Pearson / Spearman / Kendall 相关<br/>及三项分量的消融"]
+    H --> I["MID：遍历 MDS 分割点，取高低两组平均误差差最大处"]
+    H --> J["DSJE-c：MDS 小于 c 的子集上的平均 MPJPE-G<br/>c = 200 / 300 / 350"]
+```
+
+图依据：论文 v1 §4（Fig. 2、Fig. 3）、§5、§6。
 
 ## 核心信息
 
@@ -65,6 +87,7 @@ summary: "现有人形模仿学习的指标（如关节位置误差 MPJPE）只�
 - [humanoid_pnb_benchmarking-humanoid-imitation-learning-with-mo.md](../../sources/papers/humanoid_pnb_benchmarking-humanoid-imitation-learning-with-mo.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty.html>
 - 论文：<https://arxiv.org/abs/2512.07248>
+- [arXiv PDF](https://arxiv.org/pdf/2512.07248v1)：已通读方法部分（实验与附录以略读为准）：v1 §3 预备、§4 MDS 基准（含 MD-AMASS）、§5 验证、§6 MID / DSJE；v2 仅核对摘要与指标改名。arXiv 版本史：v1（2025-12-08）题为 Benchmarking Humanoid Imitation Learning with Motion Difficulty（指标 MDS），v2（2026-06-08）改题为 Distinguishing Imitation Error from Intrinsic Motion Learning Difficulty（指标 TVS）。
 
 ## 推荐继续阅读
 

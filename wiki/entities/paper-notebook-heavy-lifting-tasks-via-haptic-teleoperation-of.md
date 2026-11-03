@@ -38,6 +38,29 @@ summary: "人形可在体力要求高的环境里支援人类，做需要全身�
 - **轮式人形**在重载移动操作上是务实平台（与同组的物体参数估计工作互补）；
 - DMM 的"同时控行走+操作+姿态"是全身控制的硬命题。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    HUMAN["操作员 + HMI：人体高度 h_H、俯仰 θ_H"]
+    HEIGHT["高度重映射：Δh_R / h_R = β_z · Δh_H / h_H"]
+    PITCH["期望俯仰估计：由已知物体质量、臂关节角解静力平衡得 θ*_R 及其速度"]
+    DCM["误差动力学重映射：人机归一化 DCM 速度误差一致"]
+    CTRL["机器人控制器：增益调度 LQR + 反馈线性化"]
+    ROBOT["轮式人形机器人"]
+    HAPTIC["触觉反馈 F_fb 回传 HMI"]
+    HUMAN --> HEIGHT --> CTRL
+    HUMAN --> DCM
+    PITCH -->|"新俯仰设定点"| DCM
+    PITCH -->|"θ*、θ̇*"| CTRL
+    DCM -->|"前馈"| CTRL
+    CTRL --> ROBOT
+    ROBOT -->|"机器人状态"| DCM
+    DCM --> HAPTIC --> HUMAN
+```
+
+图依据：论文 §III-A / B / C（式 3–13）、Fig.3(A)。
+
 ## 解决什么问题
 
 搬重物的**动态移动操作**要**同时**控制行走、操作、姿态，且面对**负载扰动**： - 纯自主难、纯手动遥操作又难维持平衡； - 操作者需要**感知**末端力与平衡状态才能稳。
@@ -88,6 +111,7 @@ summary: "人形可在体力要求高的环境里支援人类，做需要全身�
 - [humanoid_pnb_heavy-lifting-tasks-via-haptic-teleoperation-of.md](../../sources/papers/humanoid_pnb_heavy-lifting-tasks-via-haptic-teleoperation-of.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid/Heavy_Lifting_Tasks_via_Haptic_Teleoperation_of_a_Wheeled_Humanoid.html>
 - 论文：<https://arxiv.org/abs/2505.19530>
+- [arXiv PDF](https://arxiv.org/pdf/2505.19530)：已通读方法部分（实验与附录以略读为准）：§II 背景、§III（方法）、§IV 实验设定（结果与讨论略读）
 
 ## 推荐继续阅读
 

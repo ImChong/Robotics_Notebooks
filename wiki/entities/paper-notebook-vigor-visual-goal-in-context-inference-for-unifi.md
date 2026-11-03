@@ -18,7 +18,7 @@ summary: "VIGOR 提出了一个统一的人形机器人跌落安全框架，将�
 
 ## 一句话定义
 
-VIGOR 提出了一个统一的人形机器人跌落安全框架，将跌落避障、撞击缓解和起身恢复集成在单一视觉条件策略中，实现了在复杂非结构化地形下的零样本跌落安全保护。
+VIGOR 提出了一个统一的人形机器人跌落安全框架，将跌落避障、撞击缓解和起身恢复集成在单一视觉条件策略中，实现了在复杂非结构化地形下的零样本跌落安全保护。（arXiv 当前版本 v3 题为《Unified Perceptive Fall Safety for Humanoids》，v1 题为《VIGOR: Visual Goal-In-Context Inference for Unified Humanoid Fall Safety》；同一篇论文改名，本页沿用清单所列题名。）
 
 ## 英文缩写速查
 
@@ -32,6 +32,23 @@ VIGOR 提出了一个统一的人形机器人跌落安全框架，将跌落避�
 
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["单目人类跌倒-恢复视频<br/>（平地，前 / 侧 / 后向）"] --> VM["VideoMimic 重建全身 3D 动作 + 拟合 SMPL"]
+    VM --> RT["运动学重定向到 Unitree G1<br/>保守关节限位；保留 9 段高质量序列（3 种体型）"]
+    RT --> KF["均匀采样稀疏关键帧<br/>作为粗粒度时间结构先验"]
+    KF --> TA["地形对齐：参考位姿沿竖直方向投影到起伏地形<br/>模仿误差在根相对坐标系下计算"]
+    TA --> T["特权教师策略 π_θ（PPO）<br/>输入：本体感知 + 稀疏参考 + 局部地形高度扫描<br/>融合为 goal-in-context 隐变量 z_goal<br/>先平地、后随机非平地地形训练"]
+    R["奖励：DeepMimic 式模仿 + 正则与安全 + 恢复后稳定"] --> T
+    T -- "监督：隐变量匹配 L_latent + 行为克隆 L_BC<br/>DAgger 式混合逐步换成学生动作" --> S["视觉学生策略 π_φ<br/>输入：头戴相机最近 k 帧深度 + 本体感知历史<br/>感知编码器 + 时序编码器 → 预测 z_goal"]
+    DR["域随机化：动力学（摩擦、推扰、力矩丢失）<br/>+ 深度噪声 / 遮挡 / 相机抖动"] --> S
+    S --> A["关节位置目标 → 低层 PD<br/>Unitree G1 零样本部署（学生 50 Hz）"]
+```
+
+图依据：论文 v1 §III-A 至 §III-E / Fig. 3、§IV-A。
 
 ## 核心信息
 
@@ -63,6 +80,7 @@ VIGOR 提出了一个统一的人形机器人跌落安全框架，将跌落避�
 - [humanoid_pnb_vigor-visual-goal-in-context-inference-for-unifi.md](../../sources/papers/humanoid_pnb_vigor-visual-goal-in-context-inference-for-unifi.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/VIGOR_Visual_Goal-In-Context_Inference_for_Unified_Humanoid_Fall_Safety/VIGOR_Visual_Goal-In-Context_Inference_for_Unified_Humanoid_Fall_Safety.html>
 - 论文：<https://arxiv.org/abs/2602.16511>
+- [arXiv PDF](https://arxiv.org/pdf/2602.16511v1)：已通读方法部分（实验与附录以略读为准）：v1 §III 方法（A 动作采集与关键帧、B 特权教师、C 奖励、D 学生、E 域随机化）、Fig. 3 与 §IV-A 实现细节；v3（当前版本）仅核对题名与摘要。arXiv 版本史：v1（2026-02-18）题为 VIGOR: Visual Goal-In-Context Inference for Unified Humanoid Fall Safety，v3（2026-10-15）改题为 Unified Perceptive Fall Safety for Humanoids。
 
 ## 推荐继续阅读
 

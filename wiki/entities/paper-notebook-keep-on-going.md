@@ -32,7 +32,23 @@ Keep on Going 的人形机器人学习论文条目，当前处于 Paper Notebook
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记写出来之前，方法流程见下方「流程总览」（依据论文方法部分），其余方法结论暂不给。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["预训练运动策略 πm<br/>感知运动 PL / 全身控制 WBC"] --> B["初始化：πm 取预训练参数<br/>攻击策略 SAP 随机初始化"]
+    B --> C["阶段一：固定 πm，嵌入环境<br/>rollout 并更新 SAP（N_adv 次）"]
+    C --> D["SAP 选择关键时间步 b_t<br/>对状态与动作施加扰动 δs, δa<br/>攻击预算 N_a，拉格朗日惩罚 λ"]
+    D --> E["阶段二：固定 SAP<br/>rollout 并更新 πm（N_m 次）"]
+    E --> F{"达到 N_iter？"}
+    F -- 否 --> C
+    F -- 是 --> G["鲁棒运动技能"]
+    G --> H["部署 Unitree G1<br/>不需要 SAP"]
+```
+
+图依据：论文 Methods（Selective Adversarial Attacks、Non-Zero-Sum Adversarial Training）/ Fig. 2、Algorithm 1
 
 ## 核心信息
 
@@ -64,7 +80,7 @@ Keep on Going 的人形机器人学习论文条目，当前处于 Paper Notebook
 
 - [humanoid_pnb_keep-on-going.md](../../sources/papers/humanoid_pnb_keep-on-going.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2507.08303)：已通读方法部分（实验与附录以略读为准）：Preliminaries、Methods（Selective Adversarial Attacks、Non-Zero-Sum Adversarial Training、Algorithm 1）、Experiments 设定
 
 ## 推荐继续阅读
 

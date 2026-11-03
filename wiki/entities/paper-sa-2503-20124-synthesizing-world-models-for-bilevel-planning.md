@@ -42,6 +42,26 @@ Synthesizes world models for bilevel planning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["最多 10 步随机动作 → 回放缓冲 R_random"] --> B["LLM 初始化 Python 低层转移模型 T̂：输入初始状态、动作空间、R_random、领域自然语言描述"]
+  C["硬编码 PDDL domain / problem 文件"] --> D["Fast-Downward 生成高层计划：grounded operator 序列"]
+  D --> E["低层 BFS 规划器：逐个 operator 用 T̂ 模拟转移，checker 判断 effect 是否满足，再拼接低层动作"]
+  B --> E
+  E --> F["环境中执行低层计划：预测转移 R_p 与实际转移 R_a 存入回放缓冲"]
+  F --> G{"最终目标满足？"}
+  G -- 是 --> H["返回低层计划 π"]
+  G -- 否 --> I{"R_p 与 R_a 存在不一致？"}
+  I -- 是 --> J["LLM 依据预测与实际转移的差异修正 T̂"]
+  I -- 否 --> K["枚举前提满足的探索性高层计划并执行，收集转移"]
+  K --> J
+  J --> E
+```
+
+图依据：论文 §3.1–§3.5 / Fig.1–Fig.2、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Synthesizes world models for bilevel planning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.20124>
+- [arXiv PDF](https://arxiv.org/pdf/2503.20124)：已通读方法部分（实验与附录以略读为准）：§2（相关工作，略读）、§3（3.1–3.5、Algorithm 1）
 
 ## 推荐继续阅读
 

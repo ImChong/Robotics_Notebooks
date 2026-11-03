@@ -6,7 +6,7 @@
 - **类型：** paper
 - **笔记链接：** <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html>
 - **分类：** 14_Human_Motion
-- **arXiv：** <https://arxiv.org/abs/2204.09419>
+- **论文（CVPR 2022，无 arXiv）：** <https://openaccess.thecvf.com/content/CVPR2022/papers/Guo_Generating_Diverse_and_Natural_3D_Human_Motions_From_Text_CVPR_2022_paper.pdf>
 - **入库日期：** 2026-06-07
 - **一句话说明：** HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供了近 1.5 万个动作剪辑和 4.5 万条对应的自然语言描述，是研究文本生成动作（Text-to-Motion）的基石。
 
@@ -23,4 +23,4 @@
 ## 参考来源（原始）
 
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html>
-- 论文：<https://arxiv.org/abs/2204.09419>
+- 论文（CVPR 2022，无 arXiv 版）：<https://openaccess.thecvf.com/content/CVPR2022/papers/Guo_Generating_Diverse_and_Natural_3D_Human_Motions_From_Text_CVPR_2022_paper.pdf>

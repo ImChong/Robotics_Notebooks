@@ -42,6 +42,28 @@ Argues that robust world models should be a normative framework integrating inte
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    P["现状：把世界知识注入孤立任务<br/>推理 / 图像编辑 / 视频与 3D 生成 / 具身与驾驶"] --> L["§4 局限：依赖任务数据微调<br/>缺少与环境的主动交互"]
+    L --> F["§3 提出统一世界模型框架（Fig. 2）"]
+    subgraph FW["框架组成"]
+        U["用户：自然语言 / 具身指令"] --> A["(a) Interaction<br/>广义感知 + 广义操作"]
+        A -->|结构化输入| B["(b) Reasoning<br/>Explicit / Latent Reasoning"]
+        A -->|结构化输入| C["(c) Memory<br/>长期 结构化 动态管理"]
+        A -->|结构化输入| D["(d) Multimodal Generation<br/>视频 / 图像 / 音频 / 3D"]
+        D <-->|闭环| B
+        D <-->|闭环| C
+        E["Environment<br/>物理世界 + 可生成的仿真"] <--> A
+    end
+    F --> FW
+    FW --> G["§5 讨论：效率 vs 泛化；多样性 vs 整合"]
+    G --> H["§6 Future Work"]
+```
+
+图依据：论文 §3 / Fig. 2（统一世界模型框架，立场论文的论证与框架结构图）、§4、§5、§6。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Argues that robust world models should be a normative framework integrating inte
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2602.01630>
+- [arXiv PDF](https://arxiv.org/pdf/2602.01630)：已通读第 1–6 节（Introduction、Background、Unified World Model Framework、Limitations、Discussion、Future Work）；Fig. 2 的箭头依据 §3 正文（Interaction 提供结构化输入；Generation 与 Reasoning / Memory 构成闭环）。
 
 ## 推荐继续阅读
 

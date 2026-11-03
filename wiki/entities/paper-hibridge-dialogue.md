@@ -40,6 +40,22 @@ summary: "HiBRIDGE（arXiv:2609.08678）：层级贝叶斯神经网络表达群�
 - 覆盖离线标注、在线评价、实时群体交互三阶段
 - 决策树代理解释贝叶斯预测
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    C["当前对话历史 C_t"] --> F["特征表示 x_t（158 维）<br/>最近 6 轮窗口 + 群体交互图统计"]
+    F --> S{"Speak-or-Silence 预测<br/>前馈网络 + sigmoid"}
+    S -- "Silence" --> R["保持沉默<br/>不选择任何行为"]
+    S -- "Speak" --> M["HiBRIDGE 行为预测<br/>联合预测对话行为 d_t 与受话者 a_t"]
+    M --> V["六种变体：<br/>Flat / Addressee-first / Dialogue-act-first<br/>× 确定性 / 贝叶斯"]
+    V --> B["预测行为 (d̂_t, â_t)"]
+    B --> T["决策树代理模型 surrogate<br/>提取对应决策路径"]
+    T --> L["LLM 将决策路径转写为<br/>自然语言解释"]
+```
+
+图依据：论文 §4.1–4.4 / Fig.3、Fig.4、Algorithm 1
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -96,6 +112,7 @@ summary: "HiBRIDGE（arXiv:2609.08678）：层级贝叶斯神经网络表达群�
 - [hibridge_dialogue_arxiv_2609_08678.md](../../sources/papers/hibridge_dialogue_arxiv_2609_08678.md)
 - [具身智能小站 10 篇盘点（2026-09-09）](../../sources/blogs/wechat_embodied_station_visual_focus_10_papers_2026-09-09.md)
 - [arXiv:2609.08678](https://arxiv.org/abs/2609.08678)
+- [arXiv PDF](https://arxiv.org/pdf/2609.08678)：已通读方法部分（实验与附录以略读为准）：§3 Problem Formulation 略读、§4 Method（4.1–4.4）与算法框；§5–6 实验与在线研究以略读为准
 
 ## 推荐继续阅读
 

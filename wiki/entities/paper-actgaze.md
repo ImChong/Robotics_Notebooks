@@ -35,6 +35,24 @@ summary: "ActGaze（2609.28955）：反事实视觉干预找出影响动作预�
 - 纳入 [12 篇技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md) 与同期失败恢复、异步 WAM、接触感知、持续学习、安全 RL 条目横向对照。
 - 步骤 2.5 开源结论：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DEMO["任务示范 D"] --> S1["阶段 I 策略初始化：以 L_act 训练 VLA（π0.5），验证动作损失低于阈值后冻结为 π_θ̄"]
+    S1 --> INT["阶段 II-1 反事实视觉干预（冻结 VLA）：相机级整视角遮蔽 + patch 级模糊候选区域"]
+    INT --> REL["动作相关性 r_t(S) = 干预后 L_act − 干预前 L_act"]
+    REL --> NORM["候选区域内归一化得相对相关性分布 q；相机级相关性归一化得视角权重 w"]
+    NORM --> GL["阶段 II-2 Gaze Learning：MLP gaze head 从原始观测预测 patch 级 gaze，以加权交叉熵 L_gaze 对齐 q"]
+    GL --> GFROZEN["冻结 gaze head G_φ*"]
+    S1 --> S3["阶段 III 注视到动作精炼：从 π_θ̄ 初始化 VLA"]
+    GFROZEN --> S3
+    S3 --> ALIGN["L_refine = L_act + λ·||动作到视觉注意力 α − gaze||²，PCGrad 缓解梯度冲突"]
+    ALIGN --> OUT["精炼后的 VLA 策略 π_θ*"]
+```
+
+图依据：论文 §III、§IV-A~C、Algorithm 1 / Fig.2
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -79,6 +97,7 @@ summary: "ActGaze（2609.28955）：反事实视觉干预找出影响动作预�
 
 - [论文归档](../../sources/papers/actgaze_arxiv_2609_28955.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.28955)：已通读方法部分（实验与附录以略读为准）：§III 问题表述、§IV 方法（A 至 C）、§V-A 实现细节
 
 ## 推荐继续阅读
 

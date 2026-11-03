@@ -43,6 +43,34 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    S1["1. 遥操作采集正/负样本<br/>(约 200 正 / 1000 负)"] --> S2["训练二值奖励分类器<br/>(sparse 0/1 reward)"]
+    S3["2. 遥操作采集 20-30 条人类示范"] --> DB[("Demo buffer")]
+    subgraph ACT["Actor 进程：真实机器人"]
+        A1["执行当前策略<br/>(预训练 ResNet + 本体感知 → MLP)"]
+        A2{"人类通过 SpaceMouse<br/>介入?"}
+        A3["人类动作 a_itv 接管控制"]
+        A1 --> A2
+        A2 -->|"是"| A3
+    end
+    subgraph LRN["Learner 进程"]
+        L1["从 Demo / RL buffer 各采样一半"] --> L2["RLPD 更新策略"]
+    end
+    S2 -->|"提供奖励信号"| A1
+    A2 -->|"否：策略转移"| RB[("RL buffer")]
+    A3 -->|"介入数据"| DB
+    A3 -->|"介入数据"| RB
+    A3 -->|"介入前后的策略转移"| RB
+    DB --> L1
+    RB --> L1
+    L2 -->|"定期下发新策略"| A1
+```
+
+图依据：论文 §3.2 System Overview / §3.4 / §3.5（Fig. 2 系统架构、Fig. 3 训练流程）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +128,7 @@ RCL Awesome WAM 清单收录（Foundational work）；细节以原文 PDF / 项�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://www.science.org/doi/10.1126/scirobotics.ads5033>
+- [arXiv PDF](https://arxiv.org/pdf/2410.21845)：已通读方法部分（实验与附录以略读为准）：§3.2 System Overview、§3.3 System Design Choices、§3.4 Human-in-the-Loop RL、§3.5 Training Process。
 
 ## 推荐继续阅读
 

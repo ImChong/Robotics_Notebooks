@@ -6,9 +6,10 @@
 - **分组：** 292 Procedural Learning
 - **编号：** 134/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2311.04567
+- **arXiv：** 2311.03550
+- **编号核对：** 上游清单登记的 2311.04567 经 arXiv 官方记录核对为另一篇论文《CellPhoneDB v5: inferring cell-cell communication from single-cell multiomics data》，与本条目不符；已更正为 2311.03550《United We Stand, Divided We Fall: UnityGraph for Unsupervised Procedure Learning from Videos》（核对日期 2026-11-02）。
 - **出处：** WACV 2024
-- **论文：** <https://arxiv.org/abs/2311.04567>
+- **论文：** <https://arxiv.org/abs/2311.03550>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** UnityGraph-based unsupervised procedure learning from unlabeled instructional videos

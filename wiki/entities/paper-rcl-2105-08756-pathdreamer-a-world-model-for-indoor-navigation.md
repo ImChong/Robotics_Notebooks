@@ -43,6 +43,32 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  HIST["历史观测 1..t-1<br/>RGB / 深度 / 语义（360° 全景）"] --> PC["累积 3D 点云<br/>由深度 + 相机位姿反投影"]
+  POSE["未来视点位姿 T_t"] --> PROJ
+  PC --> PROJ["按 T_t 重投影<br/>稀疏语义 / 深度 / RGB 引导图"]
+  subgraph S1["阶段 1：Structure Generator（随机编码器-解码器）"]
+    ENC["编码器（RedNet / ResNet-50）"]
+    NOISE["噪声张量 z_t<br/>推理时采样先验 CNN_prior，训练时用后验 CNN_post"]
+    DEC["解码器<br/>输出预测语义 ŝ_t + 深度 d̂_t"]
+    ENC --> NOISE --> DEC
+  end
+  PROJ -->|稀疏语义 / 深度引导图| ENC
+  DEC -->|"反投影并加入点云"| PC
+  subgraph S2["阶段 2：Image Generator（Multi-SPADE GAN）"]
+    GEN["1 个卷积块 + 7 个 Multi-SPADE 残差块<br/>分别以 [ŝ_t, d̂_t] 与 RGB 引导图为条件"]
+  end
+  DEC --> GEN
+  PROJ -->|稀疏 RGB 引导图| GEN
+  GEN --> OUT["预测 RGB 图像 Î_t"]
+  OUT -.->|作为下一步历史观测| HIST
+```
+
+图依据：论文 §3 Pathdreamer、Fig. 2（两阶段架构）、§3.1 Structure Generator、§3.2 Image Generator、§3.3 训练与推理；两阶段独立训练，图仅画推理时的数据流。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +126,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://openaccess.thecvf.com/content/ICCV2021/html/Koh_Pathdreamer_A_World_Model_for_Indoor_Navigation_ICCV_2021_paper.html>
+- [arXiv PDF](https://arxiv.org/pdf/2105.08756)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Pathdreamer（含 3.1–3.3）、§4 实验开头；附录未读
 
 ## 推荐继续阅读
 

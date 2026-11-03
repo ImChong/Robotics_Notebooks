@@ -42,6 +42,30 @@ summary: "PACE（VLA 长程信用）（arXiv:2608.15026）：融合局部视觉�
 - 策展机构：大连理工大学；吉林大学
 - 开源结论：**待核实**（步骤 2.5，2026-09-27）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["后训练轨迹 + 多任务数据"] --> B["GLC-Critic 局部时序编码<br/>窗口 Transformer + 相邻帧运动差分分支"]
+    B --> C["阶段头 z_t + 阶段内进度头 p_t"]
+    B --> D["单帧分布式基础 critic<br/>剩余代价期望 C_raw"]
+    C --> E["修正量 Δ_t（轻量 MLP）"]
+    D --> F["修正后剩余代价 C_hat = C_raw + λΔ_t"]
+    E --> F
+    F --> G["步级信用分数 s_t"]
+    G --> H["按任务分位阈值重标注信用"]
+    H --> I{"PPD 路由：平均 rollout 成功率<br/>约 50% 及以下？"}
+    I -->|"是"| J["PR-CFG：仅正信用条件<br/>推理时正向残差引导"]
+    I -->|"否"| K["FACD：正 / 负信用条件<br/>条件以 0.3 概率丢弃"]
+    J --> L["flow-matching VLA 策略更新"]
+    K --> L
+    L --> M["新一轮 rollout 采集"]
+    M --> A
+    L --> N["仿真与真机部署"]
+```
+
+图依据：论文 GLC-Critic / PPD 两节、Fig. 2、Fig. 3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +107,7 @@ summary: "PACE（VLA 长程信用）（arXiv:2608.15026）：融合局部视觉�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part4.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md)
 - [arXiv:2608.15026](https://arxiv.org/abs/2608.15026)
+- [arXiv PDF](https://arxiv.org/pdf/2608.15026)：已通读方法部分（实验与附录以略读为准）：GLC-Critic、PPD（PR-CFG / FACD）两节及 Fig. 2/3、训练设定段
 
 ## 推荐继续阅读
 

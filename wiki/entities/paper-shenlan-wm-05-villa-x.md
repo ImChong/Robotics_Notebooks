@@ -38,6 +38,29 @@ ViLLA 框架改进潜在动作与 VLA 整合；零样本潜在动作计划。
 - ViLLA 框架改进潜在动作与 VLA 整合；零样本潜在动作计划。
 - 属于 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 01**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph LAM["Latent Action Model (LAM)：训练阶段 1"]
+        O["帧对 (o_t, o_t+K)"] --> IDM["IDM 推断潜动作 z_t<br/>VQ 量化，取码本中心连续向量"]
+        IDM --> FDM["视觉 FDM<br/>由 (o_t, z_t) 重构 o_t+K"]
+        IDM --> PF["proprio-FDM<br/>由 (q_t, z_t, c_e) 预测未来 K 步<br/>机器人状态与动作"]
+        CE["embodiment 上下文 c_e<br/>= f(数据集 ID, 控制频率)"] --> PF
+    end
+    IDM -->|"潜动作作为 mid-level 表示"| ACT
+    subgraph ACT["ACT 模块：预训练阶段 2，微调阶段 3"]
+        VLM["VLM 骨干<br/>编码图像 o_t 与语言指令 l"] --> AL["ACT-latent 专家<br/>预测潜动作 token 序列 z"]
+        AL --> AR["ACT-robot 专家<br/>输入 VLM 特征、预测潜动作、q_t、c_e<br/>输出机器人动作块 a_t:t+m-1"]
+        VLM --> AR
+    end
+    AR --> OUT["机器人动作"]
+    MASK["随机注意力掩码<br/>50% 全部屏蔽 robot→latent<br/>否则随机屏蔽 50% 潜 token"] -.-> AR
+    FM["联合 conditional flow matching<br/>同时建模 a 与 z；分块因果注意力实现 Eq.(4) 分解"] -.-> ACT
+```
+
+图依据：论文 §3 / Fig.2、Eq.(1)–(5)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -86,6 +109,7 @@ ViLLA 框架改进潜在动作与 VLA 整合；零样本潜在动作计划。
 - [shenlan_wm_survey_05_villa-x.md](../../sources/papers/shenlan_wm_survey_05_villa-x.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2507.23682)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 LAM、3.2 ACT）；§4 实验以略读为准
 
 ## 推荐继续阅读
 

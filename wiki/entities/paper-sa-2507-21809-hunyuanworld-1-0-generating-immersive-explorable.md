@@ -43,6 +43,32 @@ Generates immersive, explorable, and interactive 3D worlds from words or pixels.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph IN["输入条件（§2.1）"]
+        direction LR
+        TXT["文本：LLM 翻译并增强提示词"]
+        IMGI["单张图像：ERP 投影到全景空间<br/>相机内参由 MoGe / UniK3D 估计"]
+        SAP["Scene-aware prompt：VLM 提取显著物体作负提示<br/>并补全 360° 场景描述"]
+        IMGI --> SAP
+    end
+    IN --> PDIT["Panorama-DiT（基于 DiT）生成全景图<br/>elevation-aware 增强 + circular denoising"]
+    PDIT --> PANO["全景图 = 世界代理 world proxy"]
+    PANO --> AG["Agentic world layering（§2.3）<br/>VLM 实例识别"]
+    AG --> DET["圆形 padding 后检测（Grounding DINO）<br/>+ 分割（ZIM）+ 面积 NMS"]
+    DET --> COMP["迭代移除物体并 inpainting<br/>（微调 Panorama-DiT 补全）"]
+    COMP --> LAYERS["语义分层：前景物体层 / 背景层 / 天空层"]
+    LAYERS --> DEPTH["Layer-aligned depth estimation<br/>基础全景深度 + 跨层深度对齐"]
+    DEPTH --> MESH["Layer-wise 3D 重建：sheet warping 网格<br/>前景可选 3D 生成（Hunyuan3D）并摆放<br/>天空可用 HDRI"]
+    MESH --> WORLD["分层 3D 世界 mesh（也支持分层 3DGS）"]
+    WORLD --> VOY["Voyager：world cache 点云 + 世界一致视频扩散<br/>沿用户相机轨迹自回归扩展（§2.5）"]
+    WORLD --> OPT["网格压缩（decimation / Draco）与 TensorRT 推理加速（§2.6）"]
+```
+
+图依据：论文 §2 Technical Details / Fig.2、§2.1–§2.6。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ Generates immersive, explorable, and interactive 3D worlds from words or pixels.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.21809>
+- [arXiv PDF](https://arxiv.org/pdf/2507.21809)：已通读方法部分（实验与附录以略读为准）：§2 Technical Details（§2.1–§2.6，含 Fig.2），§3 评测略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,25 @@ Presents a coherent framework unifying diverse world modeling approaches through
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  I["§1 Introduction：explicit 与 implicit 两类 world model 的区分，及 physical AI 视角"] --> F["§2 Fundamentals of World Models<br/>2.1 人类认知动机；2.2 Reinforcement Learning and Sequential Decision Making；2.3 Operational Principles；2.4 Design Space"]
+  F --> E["§3 Explicit World Models"]
+  F --> M["§4 Implicit World Models"]
+  E --> E1["3.1 Why Explicit Dynamics?<br/>3.2 Learning Latent World Models: A Common Training Paradigm"]
+  E1 --> E2["3.3 Memoryless Latent：Ha–Schmidhuber<br/>3.4 Contextual Latent：Dreamer<br/>3.5 Planning-Oriented Latent：MuZero"]
+  M --> M1["4.1 World Knowledge as Representation；4.2 Learning Paradigms"]
+  M1 --> M2["4.3 Language and Vision–Language Models<br/>4.4 Generative Video World Models：Genie<br/>4.5 Joint-Embedding Predictive Architectures"]
+  E2 --> P["§5 Physical AI<br/>5.1 From World Modeling to Physical Intervention；5.2 Robotics；5.3 Autonomous Driving；5.4 Foundation Models for Physical AI"]
+  M2 --> P
+  P --> G["§6 Pathways and Challenges toward AGI"]
+  G --> Z["§7 Conclusions"]
+```
+
+图依据：教程组织结构图，论文 §1 末尾的章节安排（Section 2–7）与各节、小节标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Presents a coherent framework unifying diverse world modeling approaches through
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.12783>
+- [arXiv PDF](https://arxiv.org/pdf/2606.12783)：已通读摘要、§1、§2 开头与各节、小节标题；§2–§7 正文以略读为准。
 
 ## 推荐继续阅读
 

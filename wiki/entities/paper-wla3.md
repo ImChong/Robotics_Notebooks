@@ -40,6 +40,38 @@ summary: "WLA³（arXiv:2609.15870）：从相邻世界状态变化学 latent ac
 - 开源结论：**待发布**（步骤 2.5，2026-09-16）。
 - 与 [12 篇技术地图](../overview/vla-deploy-12-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph W["WLAM 世界潜在动作模型（§3.1，Fig. 2）"]
+        A["世界状态 s_t = (多视角相机 I_t, 本体状态 r_t, 本体配置 e)，缺失模态省略"] --> B["跨模态 transition dropout：随机丢弃部分相机/状态流，t 与 t+h 用同一掩码"]
+        B --> C["Transition 编码器（[CLS]）→ 1024D 转移特征 g_t,h"]
+        C --> D["高斯后验 → 32D 连续潜在动作 z_t,h"]
+        D --> E["解码器：由初始状态重建终点各模态"]
+        D --> F["重叠窗口余弦一致性 L_overlap"]
+        C --> G["30 步段内均值池化 → 段级特征 c_seg（SLA 目标）"]
+    end
+    D -->|冻结 WLAM 给每个控制间隔标注潜在动作| H
+    subgraph S1["阶段 1：LAC-WM 预训练 (§3.2)"]
+        H["LAC-WM：当前视觉特征 + 指令 + 潜在动作块<br/>条件流匹配预测未来视觉特征<br/>语言与潜在动作独立随机丢弃"]
+    end
+    subgraph S2["阶段 2：策略 mid-training"]
+        I["VLM：观测 + 指令 + 语义查询 q_sem → 预测 SLA"] --> J["L_sem 对齐 c_seg"]
+        G --> J
+        H -->|冻结，提供动力学特征| K
+        I -->|VLM 上下文| K["拼接得到策略上下文 H_pol"]
+        L["零填充到 32D 的本体状态 + 噪声化联合动作块"] --> M
+        K --> M["LARA action expert（Perceiver，流匹配）<br/>联合预测 32D 潜在动作 + 32D 机器人原生动作（带掩码）"]
+        M --> N["L_policy = λ_lat·L_lat + λ_rob·L_rob + λ_sem·L_sem"]
+        J --> N
+    end
+    N --> O["阶段 3：post-training（去掉语义查询、SLA 头与语义损失）"]
+    O --> P["部署：积分得到两路输出，仅执行机器人动作分支的有效维度"]
+```
+
+图依据：论文 §3.1–3.2 与 Fig. 2 / Fig. 3、式 1–15
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +116,7 @@ summary: "WLA³（arXiv:2609.15870）：从相邻世界状态变化学 latent ac
 - [wla3_arxiv_2609_15870.md](../../sources/papers/wla3_arxiv_2609_15870.md)
 - [wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md](../../sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md)
 - [arXiv:2609.15870](https://arxiv.org/abs/2609.15870)
+- [arXiv PDF](https://arxiv.org/pdf/2609.15870)：已通读方法部分（实验与附录以略读为准）：摘要，§2 相关工作略读，§3 方法（WLAM、LAC-WM、SLA、LARA 与训练目标）
 
 ## 推荐继续阅读
 

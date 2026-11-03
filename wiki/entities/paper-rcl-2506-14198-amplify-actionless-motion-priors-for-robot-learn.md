@@ -42,6 +42,27 @@ AMPLIFY learns a compact vocabulary of visual motion from point tracks, predicts
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["视频数据 V（含无动作的人类视频）"] --> TR["现成点跟踪模型：20×20 网格 N=400 个点，跟踪 T=16 帧"]
+    TR --> VEL["单步速度 u_t"]
+    VEL --> TOK["阶段 1：运动 Tokenizer<br/>keypoint 编码器 → FSQ 离散量化 → keypoint 解码器<br/>（局部 W×W 窗口分类，交叉熵重建）"]
+    TOK -- "冻结，提供 z_t = E(u_t)" --> FWD
+    V --> FWD["阶段 2：前向动力学 f（自回归 Transformer）<br/>输入：ResNet-18 图像 token + T5 语言 token + SOS<br/>输出：潜在运动 token ẑ_t（交叉熵）"]
+    R["机器人交互数据 R：图像 o、本体状态 q、动作 a"] --> INV
+    TOK -- "冻结" --> INV
+    FWD -- "冻结，用其预测 ẑ_t 微调" --> INV["阶段 3：逆动力学 f_inv<br/>可学习 token 交叉注意力到图像/本体/运动码<br/>→ 动作头（高斯，折扣 NLL）→ 动作块 a_t"]
+    subgraph INF["推理"]
+        O["当前观测 o_t + 任务描述 g"] --> F2["f 预测潜在运动 ẑ_t"]
+        F2 --> I2["f_inv 结合图像与本体状态解码动作块"]
+        I2 --> TE["时间集成（temporal ensembling）→ 执行"]
+    end
+```
+
+图依据：论文 §2 方法（§2.1 关键点轨迹预处理、§2.2 运动 Tokenization / Fig.2a、§2.3 前向动力学 / Fig.2b、§2.4 逆动力学 / Fig.2c、§2.5 推理）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ AMPLIFY learns a compact vocabulary of visual motion from point tracks, predicts
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2506.14198>
+- [arXiv PDF](https://arxiv.org/pdf/2506.14198)：已通读方法部分（实验与附录以略读为准）：§2.1–2.5 方法；§3 实验仅略读。
 
 ## 推荐继续阅读
 

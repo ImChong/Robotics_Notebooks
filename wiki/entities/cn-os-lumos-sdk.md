@@ -55,6 +55,41 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`cmake -S . -B build && cmake --build build` 后运行 `./build/nix_joint_cmd --component WAIST --hold-seconds 0.5`（Python 等价入口：`python3 python/nix_debug_state.py enter` 与 `python3 python/nix_joint_cmd.py single ...`）。机器人侧 `lumos_controller` 不在本仓库内，时序图中该参与者的行为仅依据 README 描述。
+
+```mermaid
+sequenceDiagram
+    participant Ex as example/nix_joint_cmd.cpp main
+    participant Mgr as SdkRobotManager (src/sdk_robot_manager.cpp)
+    participant Bus as LCM 组播 (lcm_robot_cmd / lcm_joint_cmd 等)
+    participant Ctl as 机器人侧 lumos_controller（README 描述，非本仓库）
+    Ex->>Mgr: Init()（等待 lcm_.good()，启动 HandleLcmRecv 线程）
+    Ex->>Mgr: SetRobotStatusCb / SetImuDataCb / SetJointDataCb
+    Mgr->>Bus: subscribe lcm_robot_status / lcm_imu_data / lcm_joint_data
+    Bus-->>Ex: IMU 回调累计 g_imu_count（最多等 3 秒，为 0 则退出）
+    Ex->>Mgr: SendRobotCmd(RESET)（ensure_reset_briefly）
+    Mgr->>Bus: publish lcm_robot_cmd / robot_cmd_lcmt
+    Bus->>Ctl: 状态切换请求
+    Ctl-->>Ex: lcm_robot_status（wait_state 确认）
+    Ex->>Mgr: SendRobotCmd(STAND)
+    Mgr->>Bus: publish lcm_robot_cmd
+    Ctl-->>Ex: lcm_robot_status = STAND(2)
+    Note over Ex: 等待 kStandSettleSec=11 秒让站立插值完成
+    Ex->>Mgr: SendRobotCmd(DEBUG)
+    Mgr->>Bus: publish lcm_robot_cmd
+    Ctl-->>Ex: lcm_robot_status = DEBUG(10)（wait_state 超时则不发关节命令）
+    loop 100 Hz（kControlHz）：从当前 pos_high 插值到目标位置
+        Ex->>Mgr: SendJointCmds(vector<SdkJointCmd>)
+        Mgr->>Bus: publish lcm_joint_cmd / joint_cmds_lcmt
+        Bus->>Ctl: 关节目标（仅 DEBUG 状态生效）
+        Ctl-->>Ex: lcm_joint_data / joint_datasets_lcmt 更新 g_current_pos
+    end
+```
+
+图依据：lumos_sdk@43c2a80，读过 README.md、CMakeLists.txt、src/sdk_robot_manager.cpp、example/nix_joint_cmd.cpp（main 流程）、python/nix_debug_state.py、python/nix_robot_state.py、python/nix_joint_cmd.py（函数签名级）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +101,7 @@ institutions:
 - [lumos_sdk 源码归档](../../sources/repos/lumos_sdk.md)（<https://github.com/LumosRobot/lumos_sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：LumosRobot/lumos_sdk@43c2a80，读过 README.md、CMakeLists.txt、src/sdk_robot_manager.cpp、example/nix_joint_cmd.cpp、python/nix_debug_state.py、python/nix_robot_state.py、python/nix_joint_cmd.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

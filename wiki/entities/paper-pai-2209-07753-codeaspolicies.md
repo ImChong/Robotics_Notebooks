@@ -40,6 +40,31 @@ Program-synthesis approach that compiles language instructions into executable r
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["自然语言指令<br/>（以注释形式给出，可来自人或另一个 LMP）"]
+    PR["Prompt = Hints（import / API 类型提示）+ Examples（few-shot 指令到代码对）"]
+    LLM["代码生成 LLM（论文实验默认 Codex code-davinci-002，温度 0）"]
+    CODE["生成的 Python 策略代码 (LMP)<br/>读取感知结果、参数化控制原语、含控制流"]
+    UD{"代码中有未定义函数？"}
+    HG["调用专门的函数生成 LMP 递归补全<br/>（分层代码生成）"]
+    SAFE["安全检查：禁止 import、__ 开头特殊变量、exec / eval 调用"]
+    EX["exec 执行：globals 提供感知与控制 API，locals 收集新变量与函数"]
+    API["感知 API（如开放词汇检测 get_pos / parse_obj）<br/>控制原语 API（如 put_first_on_second）"]
+    ROB["机器人执行"]
+    I --> LLM
+    PR --> LLM
+    LLM --> CODE --> UD
+    UD -->|"是"| HG --> CODE
+    UD -->|"否"| SAFE --> EX
+    EX <--> API
+    API --> ROB
+```
+
+图依据：论文 §III Method（含 §III-A Prompting Language Model Programs、§III-C 高层 LMP / 分层函数生成）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +128,7 @@ Program-synthesis approach that compiles language instructions into executable r
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2209.07753>
+- [arXiv PDF](https://arxiv.org/pdf/2209.07753)：已通读方法部分（实验与附录以略读为准）：§III Method（§III-A 至 §III-C）
 
 ## 推荐继续阅读
 

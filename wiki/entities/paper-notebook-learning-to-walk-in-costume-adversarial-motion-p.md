@@ -33,6 +33,26 @@ Learning to Walk in Costume 的人形机器人学习论文条目，当前处于 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    MOCAP["CMU Mocap 人类动作"] --> RT["Blender + Rokoko 插件重定向到 Cosmo 动画 rig"]
+    WBC["Cosmo 上 HQP 逆动力学全身控制器的实验动作数据（含连续速度指令）"] --> REF
+    RT --> REF["参考动作集 M"]
+    REF --> DISC["AMP 判别器 D_φ：区分参考动作与策略状态"]
+    OBS["观测 s：本体感觉 + 指令 c_cmd（base 速度由不变 EKF 估计）"] --> POL["策略 π_θ（Isaac Gym 大规模并行训练）"]
+    POL -->|目标关节位置| ENVSIM["仿真环境（域随机化 + 外部推力）"]
+    ENVSIM --> POL
+    ENVSIM --> DISC
+    DISC -->|风格奖励 r_AMP| RW["总奖励 = 风格奖励 + 任务 / 运动质量 / 安全奖励"]
+    RW --> POL
+    POL --> S2S["Isaac Sim sim-to-sim 验证"]
+    S2S --> HW["真机：PD 控制 τ = Kp(q_target − q) + Kd(q̇_target − q̇)"]
+```
+
+图依据：论文 §III-A、§III-B、§III-D、§III-E / Fig. 3、Fig. 5、式 (1)–(2)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +84,7 @@ Learning to Walk in Costume 的人形机器人学习论文条目，当前处于 
 - [humanoid_pnb_learning-to-walk-in-costume-adversarial-motion-p.md](../../sources/papers/humanoid_pnb_learning-to-walk-in-costume-adversarial-motion-p.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2509.05581>
+- [arXiv PDF](https://arxiv.org/pdf/2509.05581)：已通读方法部分（实验与附录以略读为准）：§III Methods（A–E）
 
 ## 推荐继续阅读
 

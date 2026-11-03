@@ -43,6 +43,24 @@ Learning video generation for robotic manipulation with collaborative trajectory
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["输入：初始帧 I、文本 prompt c、协同轨迹 C"] --> M["机器人臂掩码 Md 与被操作物体掩码 Ms（Grounded-SAM 或用户画笔）"]
+    I --> Z["3D VAE Encoder 得到 RGB latent z"]
+    M --> V["Subject Embedding：掩码内池化外观特征，按掩码面积确定半径，得圆形体积 vd / vs"]
+    Z --> V
+    C --> D["轨迹按阶段分解：pre-interaction C1 / interaction C2 / post-interaction C3"]
+    D --> A["协同轨迹 latent V：C1 与 C3 关联 vd，C2 关联 vs"]
+    V --> A
+    A --> J["Motion Injector：零初始化 2D 空间卷积 + 1D 时间卷积，融合进 DiT 隐状态"]
+    J --> T["视频 DiT 去噪（DiT 块与 injector 一同训练）"]
+    T --> X["3D VAE Decoder → 机器人操作视频 X"]
+```
+
+图依据：论文 §3.1–3.4 / Fig. 3 / Fig. 4 / 式 (5)(6)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Learning video generation for robotic manipulation with collaborative trajectory
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.01943>
+- [arXiv PDF](https://arxiv.org/pdf/2506.01943)：已通读方法部分（实验与附录以略读为准）：摘要、§3.1 预备、§3.2 主体表示、§3.3 协同轨迹表示、§3.4 运动注入模块；§4 实验仅略读
 
 ## 推荐继续阅读
 

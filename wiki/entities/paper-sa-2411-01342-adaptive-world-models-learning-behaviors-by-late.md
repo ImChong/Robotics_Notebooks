@@ -42,6 +42,22 @@ Learns behaviors by latent imagination under non-stationarity.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CB["上下文缓冲区 C_l：最近 N 条 (o, a, r, o') 转移（FIFO）"] --> EN["集合编码器（共享参数）：每条转移得到表示 x_n 与方差 σ_n"]
+    EN --> BA["贝叶斯聚合：闭式得到任务隐变量后验 p(l | C_l)"]
+    BA --> RS["HiP-RSSM 世界模型：以 l 为条件，学习 p(o, r | s, l) 与转移 p(s_t | s_{t-1}, a, l)"]
+    BA --> AC["上下文条件 actor π(a | s, l) 与 critic v(s, l)"]
+    RS --> IM["潜空间想象 rollout（短视野内 l 固定）"]
+    IM --> AC
+    AC --> ENV["与环境交互，新转移写回缓冲区"]
+    ENV --> CB
+```
+
+图依据：论文 §3.1–3.3 / Fig. 1、Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Learns behaviors by latent imagination under non-stationarity.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.01342>
+- [arXiv PDF](https://arxiv.org/pdf/2411.01342)：已通读方法部分（实验与附录以略读为准）：§3（方法）、§4 评测设定
 
 ## 推荐继续阅读
 

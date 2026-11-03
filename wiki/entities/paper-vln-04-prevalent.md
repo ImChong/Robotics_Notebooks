@@ -37,6 +37,22 @@ sources:
 - 开创 VLN 预训练范式，为 VLN↻BERT、HAMT 等后续工作奠定方法论基础。
 - 首次在 VLN 引入预训练-微调：图像-文本-动作三元组上 Masked LM + 动作预测自监督，再下游微调。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  DATA["预训练数据：R2R 104K + Speaker 合成 6,482K<br/>= 6,582K 图像-文本-动作三元组"] --> EMB["输入嵌入<br/>视觉：36 视图全景，ResNet 特征 + 朝向 → FC+LN<br/>文本：词嵌入 + 位置嵌入 → LN"]
+  EMB --> SM["单模态 Transformer 编码器<br/>（文本 9 层 / 视觉 1 层）"]
+  SM --> CM["跨模态编码器（3 层 cross-attention）"]
+  CM --> MLM["图像注意的 Masked LM<br/>（15% 词被掩码）"]
+  CM --> AP["[CLS] 输出 + FC → 动作预测"]
+  MLM --> LP["L_pre = L_MLM + L_AP"]
+  AP --> LP
+  CM --> FT["微调：仅用语言特征<br/>R2R（LSTM encoder-decoder）/ CVDN / HANNA"]
+```
+
+图依据：论文 §4 Pre-training Models（Fig. 3）、§5 Adapting to new tasks。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +106,7 @@ sources:
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2002.10638>
+- [arXiv PDF](https://arxiv.org/pdf/2002.10638)：已通读方法部分（实验与附录以略读为准）：§3 Background、§4 Pre-training Models、§5 Adapting to new tasks、§6.1 训练细节（§6 其余实验结果略读）
 
 ## 推荐继续阅读
 

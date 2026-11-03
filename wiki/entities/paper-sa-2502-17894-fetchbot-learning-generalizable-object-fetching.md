@@ -42,6 +42,32 @@ Introduces FetchBot, a sim-to-real framework for object fetching in cluttered sc
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph A["A 合成数据生成"]
+        U["UniVoxGen：体素空间并/交/差/变换，生成杂乱场景，共 100 万个"] --> OR["动态感知 Oracle 策略（RL）：分层场景编码 f_local / f_global，奖励含环境扰动惩罚"]
+        OR --> DEMO["低扰动示范轨迹"]
+    end
+    subgraph B["B 3D 视觉编码器预训练"]
+        RGB["多视角 RGB"] --> DA["DepthAnything 预测深度：作为 sim 与 real 的共享中间表示"]
+        DA --> RN["ResNet-50 提取特征"]
+        RN --> FUSE["3D 网格查询 + Deformable Cross-Attention 多视角融合，3D 卷积细化"]
+        FUSE --> OCC["末端执行器 ROI 内语义占据预测（辅助任务）"]
+    end
+    subgraph C["C 视觉策略训练"]
+        F3D["3D 特征 + 位置编码，展平"] --> TR["Transformer + Readout Token"]
+        TR --> DIF["Diffusion Head 去噪输出动作"]
+    end
+    U -. 完整占据真值 .-> OCC
+    DEMO --> C
+    FUSE --> F3D
+    C --> D["D 零样本 Sim2Real 部署"]
+```
+
+图依据：论文 §3.1 Overview、§3.2–§3.4 与 Fig. 2（FetchBot Pipeline）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Introduces FetchBot, a sim-to-real framework for object fetching in cluttered sc
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2502.17894>
+- [arXiv PDF](https://arxiv.org/pdf/2502.17894)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4（含 Fig. 2/3/4）；实验与附录以略读为准
 
 ## 推荐继续阅读
 

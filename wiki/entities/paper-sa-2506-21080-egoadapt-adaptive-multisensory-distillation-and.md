@@ -42,6 +42,25 @@ A framework that adaptively performs cross-modal distillation and policy learnin
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["可穿戴多传感器输入\n视频帧 I / 多通道音频 A / 行为数据 B（头姿、注视等）"] --> POL["策略模块 TeMPLe（Π）\n模态特定轻量特征提取器 + LSTM\nGumbel-Softmax 采样离散决策"]
+    POL -->|"ASL / 行为预测：选择启用的模态与音频通道"| SEL["被选中的输入"]
+    POL -->|"动作识别：音频预览定位显著区域，每段只选一帧"| SEL
+    SEL --> ENC["轻量编码器 fI / fA / fB → 融合网络 ξ"]
+    ENC --> STU["蒸馏模块 CFD（Φ，学生）\n全连接层输出类别 logits"]
+    T["教师模型 Ω（视频）"] --> LD["蒸馏损失 L_Φ = α·L_KD + (1-α)·L_GT + β·L1"]
+    STU --> LD
+    STU --> OUT["任务输出\n动作识别 / 主动说话人定位 / 行为预测"]
+    POL --> LP["策略目标：任务损失 + 各模态使用代价 λk·Ck"]
+    LD --> JT["联合训练 L_Θ = η1·L_Π + η2·L_Φ\n阶段1关闭策略模块；最终阶段联合微调 Π 与 Φ"]
+    LP --> JT
+```
+
+图依据：论文 §3.1–3.4 / Fig.2。训练阶段只画 Fig.2 图注与 §3.4 明确的“阶段1关闭策略模块、最终阶段联合微调”。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ A framework that adaptively performs cross-modal distillation and policy learnin
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2506.21080>
+- [arXiv PDF](https://arxiv.org/pdf/2506.21080)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4 方法（含 Fig.2、式 1–13）、§4 的任务/基线设定，附录 B 的模型细节部分
 
 ## 推荐继续阅读
 

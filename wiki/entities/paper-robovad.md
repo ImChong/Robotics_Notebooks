@@ -47,6 +47,30 @@ summary: "RoboVAD（arXiv:2609.17843）：1,078 episode、5 类任务、5 类异
 - 开源结论：**部分开源**（步骤 2.5，2026-09-20）。
 - 与 [11 篇技术地图](../overview/constraint-control-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["机械臂操作视频 episode<br/>(一或两路相机)"] --> B["Farnebäck 稠密光流<br/>u, v, 运动幅值 m, 双相机通道拼接 (6 通道 clip)"]
+    B --> C["共享 3D 卷积骨干"]
+    subgraph SSL["FlowJigsaw-SSL (仅正常数据, 多任务自监督)"]
+        C --> D1["时间箭头预测 (AoT)"]
+        C --> D2["运动不规则检测 (MI)"]
+        C --> D3["图像块修复 (IP, 4×4 网格遮 25%)"]
+        D1 --> E["三项分数归一化后平均 → clip 异常分"]
+        D2 --> E
+        D3 --> E
+    end
+    subgraph SUP["FlowJigsaw-Supervised (正常 + 已见异常类别)"]
+        C --> F["二分类头: 正常 / 异常<br/>class-weighted focal loss"]
+    end
+    E --> G["重叠 clip 分数在帧上平均 → 帧级异常分"]
+    F --> G
+    G --> H["帧级 AUC 评测<br/>(in-domain / cross-anomaly / cross-task / cross-task+anomaly)"]
+```
+
+图依据：论文 §IV（作者提出的 FlowJigsaw-SSL / FlowJigsaw-Supervised，式 1–4）；本页主体为基准，图仅覆盖论文自述的检测方法
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -92,6 +116,8 @@ summary: "RoboVAD（arXiv:2609.17843）：1,078 episode、5 类任务、5 类异
 - [robovad_arxiv_2609_17843.md](../../sources/papers/robovad_arxiv_2609_17843.md)
 - [wechat_embodied_station_11_papers_constraint_control_2026-09-20.md](../../sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md)
 - [arXiv:2609.17843](https://arxiv.org/abs/2609.17843)
+- [arXiv PDF](https://arxiv.org/pdf/2609.17843)：已通读方法部分（实验与附录以略读为准）：§I 引言、§IV 方法（FlowJigsaw 两个变体）、§V-A 实现细节
+
 
 ## 推荐继续阅读
 

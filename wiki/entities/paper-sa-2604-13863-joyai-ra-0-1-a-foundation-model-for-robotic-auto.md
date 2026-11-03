@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2604.13863"
+arxiv: "2604.20100"
 venue: "arXiv 2026"
 summary: "VLA embodied foundation model with multi-source multi-level pretraining integrating web data, large-scale egocentric human manipulation videos, simulation trajectories, and real-robot data"
 related:
@@ -75,7 +75,7 @@ flowchart TD
     EXP --> OUT["连续动作块 a_t:t+H"]
 ```
 
-图依据：论文 §3.1–3.5 / Fig.1、Fig.3（注意：清单给出的 arXiv 号 2604.13863 实为另一篇论文，本图依据 JoyAI-RA 0.1 的正确论文 arXiv:2604.20100）
+图依据：论文 §3.1–3.5 / Fig.1、Fig.3。
 
 ## 核心信息
 
@@ -84,7 +84,7 @@ flowchart TD
 | 编号 | 092/249 |
 | 分组 | 27 Embodied AI & Vision-Language-Action Ego-VLA |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2604.13863> |
+| 论文 | <https://arxiv.org/abs/2604.20100> |
 
 ## 核心机制（归纳）
 
@@ -97,7 +97,7 @@ VLA embodied foundation model with multi-source multi-level pretraining integrat
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2604.13863) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2604.20100) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -130,10 +130,11 @@ VLA embodied foundation model with multi-source multi-level pretraining integrat
 - [`sources/papers/sun_awesome_ego_2604_13863_joyai-ra-0-1-a-foundation-model-for-robo.md`](../../sources/papers/sun_awesome_ego_2604_13863_joyai-ra-0-1-a-foundation-model-for-robo.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2604.13863>
-- [arXiv PDF](https://arxiv.org/pdf/2604.20100)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 概览、3.2 数据源、3.3 统一动作空间、3.4 模型架构、3.5 训练配方）；注：本页 front matter 与上方链接的 2604.13863 与该论文标题不符，JoyAI-RA 0.1 的 arXiv 号为 2604.20100
+- 论文：<https://arxiv.org/abs/2604.20100>
+- [arXiv PDF](https://arxiv.org/pdf/2604.20100)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 概览、3.2 数据源、3.3 统一动作空间、3.4 模型架构、3.5 训练配方）
+- 编号核对（2026-11-02）：上游清单登记的 2604.13863 经 arXiv 官方记录核对为《PostureObjectstitch: Anomaly Image Generation Considering Assembly Relationships in Industrial Scenarios》，与本页论文不符；已更正为 2604.20100《JoyAI-RA 0.1: A Foundation Model for Robotic Autonomy》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2604.13863)
+- [原文](https://arxiv.org/abs/2604.20100)

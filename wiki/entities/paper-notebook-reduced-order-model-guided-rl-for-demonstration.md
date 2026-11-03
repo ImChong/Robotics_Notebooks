@@ -31,7 +31,30 @@ Reduced-Order Model-Guided RL for Demonstration-Free Humanoid Locomotion 的人�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["Stage 1：ROM 轨迹生成与教师训练（Box2D / Gymnasium）"]
+        A["平面 4-DOF 降阶模型 ROM<br/>质心 + 两根无质量弹簧腿 + 髋关节力矩"] --> B["PPO 训练教师策略<br/>奖励：前向质心速度跟踪"]
+        B --> C["回放 T 步，记录 5 维步态特征<br/>y_COM 与左右脚 (x, y)（相对质心）"]
+    end
+    subgraph S2["Stage 2：学生策略训练（HumEnv / MuJoCo，SAC）"]
+        D["全身人形学生策略 π"] --> E["提取学生 5 维特征 x_t<br/>（根高度 + 双踝 x,z 位置与速度）"]
+        C -->|"ROM 参考分布 x^_t"| F["对抗判别器 D<br/>区分 ROM 片段与学生片段"]
+        E --> F
+        F --> G["模仿奖励 r_im = −log(1 − D(τ))"]
+        H["环境奖励 r_env：速度匹配"] --> I["组合目标：η·r_env + (1−η)·r_im，η=0.5"]
+        G --> I
+        I --> J["SAC 更新学生策略（经验回放池）"]
+        J --> D
+    end
+    J --> K["无需动捕数据的自然步行控制器"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.1、Fig.2，§4.1 实验设置。
 
 ## 核心信息
 
@@ -64,6 +87,7 @@ Reduced-Order Model-Guided RL for Demonstration-Free Humanoid Locomotion 的人�
 - [humanoid_pnb_reduced-order-model-guided-rl-for-demonstration.md](../../sources/papers/humanoid_pnb_reduced-order-model-guided-rl-for-demonstration.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2509.19023>
+- [arXiv PDF](https://arxiv.org/pdf/2509.19023)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3 方法（3.1–3.3）、§4.1 实验设置、§4.2 结果略读
 
 ## 推荐继续阅读
 

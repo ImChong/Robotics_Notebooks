@@ -34,7 +34,36 @@ HuB 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，本页只保留分类位置与原文入口；方法模块与数据流见下方「流程总览」（仅依据论文方法部分，不含实验结论）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["视频片段 → WHAM 估计人体姿态（SMPL 格式）"] --> R1
+    subgraph REF["§3.2 参考动作精修"]
+        R1["SMPL 初始化重定向（用 SMPL 欧拉角初始化人形关节）"] --> R2["接地脚修正：单腿相调整全局根位置，脚不滑动"]
+        R2 --> R3["质心滤波：地面投影质心偏离支撑脚中心 >0.2 m 的轨迹丢弃"]
+        R3 --> R4["过渡稳定：延长动作前后的双脚支撑阶段"]
+    end
+    R4 --> T
+    subgraph POL["§3.3 平衡感知策略学习"]
+        T["教师策略：PPO + 特权观测<br/>放松参考跟踪（σ=0.6 m）+ 平衡塑形奖励（质心 / 足接触不匹配惩罚 / 双脚过近惩罚）"]
+    end
+    subgraph ROB["§3.4 Sim-to-real 鲁棒性训练"]
+        P1["高频推力扰动（教师训练：每 1 s、至多 0.5 m/s）"]
+        P2["局部参考跟踪：舍弃里程计，参考根对齐当前根位姿"]
+        P3["IMU 中心观测扰动：根朝向欧拉角加 OU 噪声，再由其计算全部观测"]
+    end
+    P1 --> T
+    T --> S["学生策略：DAgger 蒸馏，仅用机载观测"]
+    P2 --> S
+    P3 --> S
+    S --> PD["输出目标关节角 → PD 控制器"]
+    PD --> D["部署 Unitree G1（仿真训练后真机）"]
+```
+
+图依据：论文 §3.1 Overall Pipeline、§3.2-§3.4、Fig.2
 
 ## 核心信息
 
@@ -69,6 +98,7 @@ HuB 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - [humanoid_pnb_hub.md](../../sources/papers/humanoid_pnb_hub.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
 - [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — 极限/单腿平衡对照与基准
+- [arXiv PDF](https://arxiv.org/pdf/2505.07294)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Learning Framework（3.1-3.4）、Fig.2；§2 相关工作与 §4 实验略读
 
 ## 推荐继续阅读
 

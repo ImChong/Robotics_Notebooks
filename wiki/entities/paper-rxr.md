@@ -44,6 +44,28 @@ summary: "RxR：多语言 VLN 数据集与 dense spatiotemporal grounding；Ligh
 - LightNav 第二阶段对齐 SFT 的公开导航语料对照。
 - 博客 ingest 独立节点（非重复 stub）；见 [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["Matterport3D：90 个室内环境的全景图与导航图 P<br/>+ 人工房间标注"] --> B["两级路径采样（§3）"]
+  B --> B1["房间图 R：房间为顶点，相连房间之间有边"]
+  B1 --> B2["枚举至多 5 个房间、两个楼层的房间路径<br/>起点 / 终点在首尾房间内均匀采样，取全景图最短路径"]
+  B2 --> B3["贪心选择以提高全景图覆盖<br/>偏好非最短路径，最大路径长度 40 m，每环境至多 500 条"]
+  B3 --> S["16522 条路径，按 Matterport3D / R2R 环境划分：<br/>train / val-seen / val-unseen / test"]
+  S --> G["Guide 任务（§4）：在模拟第一人称环境中边走边口述路径指令<br/>工具记录虚拟相机 6-DOF 位姿"]
+  G --> G1["Guide 自己转写音频；ASR 时间戳转写与人工转写用 DTW 对齐<br/>得到逐词与位姿对齐的轨迹"]
+  G1 --> F["Follower 任务：另一标注者按指令导航，记录位姿轨迹"]
+  F --> V{"Follower 在终点 3 m 内到达？"}
+  V -- 是 --> K["保留该 Guide-Follower 对<br/>（重试时，三组中最成功的一对入选）"]
+  V -- 否 --> V2["配第二个 Follower；<br/>仍失败则路径重新入队，生成新的 Guide 与 Follower"]
+  V2 --> K
+  K --> O["RxR：英语 / 印地语 / 泰卢固语，<br/>每语言每路径 3 条指令，附 Guide 与 Follower 位姿轨迹"]
+  O --> EV["基线与指标（§4–§5）：PL、NE、SR、SPL、SDTW、nDTW"]
+```
+
+图依据：数据采集与标注流程图，依据论文 §3（Two-Level Path Sampling，含 Path Statistics）、§4（Data Collection and Metrics：Guide Task、Follower Task、Dataset Analysis）；§5 基线实验仅对应最后一个指标节点。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -98,6 +120,7 @@ summary: "RxR：多语言 VLN 数据集与 dense spatiotemporal grounding；Ligh
 - [rxr_emnlp_2020.md](../../sources/papers/rxr_emnlp_2020.md)
 - [lightorigins_lightnav_0_2026-09-01.md](../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md)
 - [Tech Blog](https://www.lightorigins.com/blog/lightnav-0)
+- [arXiv PDF](https://arxiv.org/pdf/2010.07954)：已读与流程图相关的章节（其余部分以略读为准）：摘要、§1、§2、§3、§4（含 Tab. 2 与 Tab. 4）；§5 实验设置与结果略读
 
 ## 推荐继续阅读
 

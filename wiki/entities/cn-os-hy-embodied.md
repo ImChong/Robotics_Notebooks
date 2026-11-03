@@ -55,6 +55,59 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+仓库实际可运行的是推理入口（含 `Hy-Embodied-0.5/` 与 `Hy-Embodied-VLM-1.0/` 两套）；`Hy-Embodied-0.5/finetune/` 有训练代码，本图未覆盖；VLM-1.0 的 README 将 Fine-tuning Code 列为未完成。
+
+入口：`cd Hy-Embodied-0.5 && python inference.py`（`Hy-Embodied-VLM-1.0/inference/transformers/infer_hf.py` 流程相同，另加 `trust_remote_code=True` 与 `enable_thinking` 开关）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 python inference.py
+    participant M as main()
+    participant L as load_model_and_processor()
+    participant HF as transformers (AutoProcessor / AutoModelForImageTextToText)
+    participant S as single_inference() / batch_inference()
+    participant G as model.generate()
+    U->>M: 运行脚本
+    M->>L: 加载模型 tencent/HY-Embodied-0.5
+    L->>HF: AutoProcessor.from_pretrained(MODEL_PATH)
+    L->>HF: AutoModelForImageTextToText.from_pretrained(bfloat16)
+    L-->>M: model.to(DEVICE).eval(), processor
+    M->>S: single_inference(figures/example.jpg, "Describe the image in detail.")
+    S->>HF: processor.apply_chat_template(messages, enable_thinking=THINKING_MODE)
+    S->>G: model.generate(max_new_tokens=1024, temperature=0.8)
+    G-->>S: generated_ids
+    S->>HF: processor.batch_decode(截去输入部分的 output_ids)
+    S-->>M: 文本结果，print
+    M->>S: batch_inference(图文 + 纯文本两条消息)
+    S->>HF: 逐条 apply_chat_template，再 processor.pad(padding_side="left")
+    S->>G: model.generate(**batch)
+    S-->>M: processor.decode(各样本新生成 token)
+```
+
+图依据：HY-Embodied@16289e9，`Hy-Embodied-0.5/inference.py`、`Hy-Embodied-VLM-1.0/inference/transformers/infer_hf.py`。
+
+入口：`MODEL_PATH=... bash Hy-Embodied-VLM-1.0/inference/vllm/serve.sh`，再 `python example_client.py --port 8080`
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant SH as serve.sh
+    participant V as vllm serve
+    participant P as hy_embodied_vllm 插件 (pyproject.toml entry-point)
+    participant C as example_client.py (OpenAI SDK)
+    U->>SH: pip install -e . 后运行 serve.sh
+    SH->>V: vllm serve --trust-remote-code --chat-template --reasoning-parser hunyuan_v3 --tool-call-parser hy_v3
+    V->>P: 通过 vllm.general_plugins 调用 hy_embodied_vllm.register()
+    P-->>V: _register_models() 注册 HYV3VLForConditionalGeneration，_register_parsers() 注册 hy_v3 / hunyuan_v3
+    U->>C: python example_client.py --port 8080
+    C->>V: chat.completions.create(image_url base64 + text, extra_body chat_template_kwargs.enable_thinking)
+    V-->>C: message.reasoning_content 与 message.content
+```
+
+图依据：HY-Embodied@16289e9，`Hy-Embodied-VLM-1.0/inference/vllm/serve.sh`、`pyproject.toml`、`hy_embodied_vllm/__init__.py`、`example_client.py`（前 80 行）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +119,7 @@ institutions:
 - [HY-Embodied 源码归档](../../sources/repos/hy-embodied.md)（<https://github.com/Tencent-Hunyuan/HY-Embodied>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Tencent-Hunyuan/HY-Embodied@16289e9，读过 README.md、Hy-Embodied-0.5/inference.py、Hy-Embodied-VLM-1.0/inference/transformers/infer_hf.py、Hy-Embodied-VLM-1.0/inference/vllm/{serve.sh,pyproject.toml,example_client.py(前80行),hy_embodied_vllm/__init__.py}；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

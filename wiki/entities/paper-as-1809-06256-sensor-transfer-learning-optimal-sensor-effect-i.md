@@ -42,6 +42,24 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Z["200 维均匀噪声 η"] --> GEN["每种传感器效应一个参数生成器（两层全连接）"]
+    GEN --> PR["采样得到增强参数"]
+    SYN["合成图像"] --> AUG
+    PR --> AUG["传感器效应增强管线：色差 → 模糊 → 曝光 → 噪声 → 色彩平衡后处理"]
+    AUG --> AI["增强后的合成图像"]
+    AI --> VGG["固定权重的 VGG-16（ImageNet 预训练）提取特征"]
+    RE["真实图像"] --> VGG
+    VGG --> LS["Gram 矩阵风格损失 L_style（前 10 层）"]
+    LS --> BP["反向传播穿过增强函数，更新参数生成器"]
+    BP --> GEN
+```
+
+图依据：论文 §III-A（增强管线 Eq.1）、§III-B（Sensor Transfer Network 训练）与 Fig.2-3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1809.06256>
+- [arXiv PDF](https://arxiv.org/pdf/1809.06256)：已通读方法部分（实验与附录以略读为准）：§I-§III（增强管线与网络训练）及 §IV-A 实验设定；§IV 结果与 §V 仅略读
 
 ## 推荐继续阅读
 

@@ -33,6 +33,25 @@ summary: "物理人形跟踪策略训练受限于「数据集难度上限」—�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    BANK["难度感知变量库<br/>五领域 x 四个难度轴"] --> PROMPT["模板化动作提示词<br/>辅助 LLM 实例化"]
+    PROMPT --> MDM["DistilBERT 编码 + MDM 文本条件动作扩散生成"]
+    MDM --> FILTER["合法性检查（根关节高度等）+ VLM 语义对齐筛选"]
+    FILTER --> SET["合成训练集"]
+    SET --> TRAIN["单原语跟踪器 RL 模仿训练<br/>PHC / MaskedMimic 设置"]
+    TRAIN --> METRIC["评估指标<br/>mpjpe-g、mpjpe-l、vel-dist、accel-dist"]
+    SET --> RENDER["SMPL 序列渲染<br/>GPT-4o 与 Qwen-VL-MAX 给出难度打分与描述"]
+    METRIC --> OBS["语义观测向量 obs"]
+    RENDER --> OBS
+    OBS --> LLM["中央 LLM 策略（Gemini + CoT）<br/>选择下一轮提示词"]
+    LLM -->|"指标超过阈值则提升难度"| PROMPT
+```
+
+图依据：论文 §3.1-§3.5（Fig. 3、Fig. 4、Fig. 5）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -63,6 +82,7 @@ summary: "物理人形跟踪策略训练受限于「数据集难度上限」—�
 - [humanoid_pnb_iterative-closed-loop-motion-synthesis.md](../../sources/papers/humanoid_pnb_iterative-closed-loop-motion-synthesis.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Iterative_Closed-Loop_Motion_Synthesis/Iterative_Closed-Loop_Motion_Synthesis.html>
 - 论文：<https://arxiv.org/abs/2602.21599>
+- [arXiv PDF](https://arxiv.org/pdf/2602.21599)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1-§3.5 方法
 
 ## 推荐继续阅读
 

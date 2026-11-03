@@ -32,7 +32,33 @@ Trinity 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记尚未写出；方法流程见下方「流程总览」（依据论文方法部分），其余结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    INS["任务指令 T"] --> VLM
+    RGBD["RGB-D 相机"] --> VLM["VLM 感知模块（ManipVQA）<br/>识别物体可动部件的 bounding box"]
+    VLM --> POS["结合深度图计算可动部件 3D 位置 P"]
+    INS --> PLAN
+    POS --> PLAN["LLM 任务规划器（GPT-4，chain 结构）<br/>Seq = Planner(T | P, h)"]
+    PRI["技能库、工作空间限制、安全提示、先验运动学知识、躯干高度 h"] --> PLAN
+    PLAN --> SEQ["技能序列：Arm（move_to_pose 左/右、change_arm、rotate）/<br/>Hand（grasp、release）/ Body（upbody、downbody）"]
+    SEQ --> CTRL["人形机器人控制器执行"]
+    subgraph LOCO["Module 1：基于 AMP 的下肢运动策略训练"]
+        DEM["人类示范状态转移"] --> DISC["判别器 D → 模仿奖励 ri"]
+        POL["策略 π 生成的状态转移"] --> DISC
+        REW["周期步态奖励 rp（支撑/摆动相）、指令奖励 rc、正则奖励 rre"]
+        DISC --> TOT["总奖励 r = ωi·ri + ωc·rc + ωp·rp + ωre·rre"]
+        REW --> TOT
+        TOT --> POL
+        FSM["有限状态机：行走 / 站立步态切换"] --> POL
+    end
+    POL --> CTRL
+```
+
+图依据：论文 §III-A Module 1（AMP 运动策略）、§III-B Module 2（VLM 感知）、§III-C Module 3（LLM 任务规划）/ Fig.1、Fig.2。
 
 ## 核心信息
 
@@ -64,6 +90,7 @@ Trinity 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - [humanoid_pnb_trinity.md](../../sources/papers/humanoid_pnb_trinity.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2503.08338)：已通读方法部分（实验与附录以略读为准）：§III Method（A 运动策略、B VLM 感知、C LLM 任务规划）、Fig.1–2 图注
 
 
 ## 推荐继续阅读

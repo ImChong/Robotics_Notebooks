@@ -41,6 +41,35 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Benchmarks。 本�
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入: 用户请求 O_t = 用户画像 U + 历史 H<br/>推荐列表 A_t"] --> UIRM
+    subgraph UIRM["用户即时响应模块 UIRM"]
+        E1["Transformer 编码历史 h_t"] --> E2["用户状态 s_t = h_t ⊕ U"]
+        E2 --> E3["DNN 得到行为注意力 w_t"]
+        E3 --> E4["行为似然 p(y | s_t)<br/>减去 item 相关性惩罚"]
+        E4 --> E5["采样即时反馈 Y_I<br/>点击/点赞/评论 等"]
+    end
+    E5 --> LEAVE
+    subgraph LEAVE["用户离开模块"]
+        L1["即时奖励 r_t"] --> L2["user temper 递减"]
+        L2 --> L3["temper ≤ 阈值 T 则 Y_L = 1"]
+    end
+    L3 --> RET
+    subgraph RET["用户留存模块 (跨 session)"]
+        R1["个人偏置 b_u + 响应偏置 b_r + 全局偏置 b"] --> R2["次日回访概率 p_ret"]
+        R2 --> R3["回访时间 Y_R ~ Geometric(p_ret)"]
+    end
+    RET --> POST["后处理: 更新历史 H<br/>离开则结束 session; 达最大 session 数则从数据重采样新用户"]
+    POST -->|"反馈 Y_I, Y_L, Y_R 返回推荐策略"| IN
+    LOG["KuaiRand / ML-1m 日志<br/>预训练 UIRM, 提供初始用户"] -.-> UIRM
+    LOG -.-> POST
+```
+
+图依据：论文 §3.1 / Fig.1（交互流）、§3.2 与 Algorithm 1（Step 流程）、§3.3（日志用途）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +124,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Benchmarks。 本�
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2309.12645>
+- [arXiv PDF](https://arxiv.org/pdf/2309.12645)：已通读方法部分（实验与附录以略读为准）：§1-§3（引言、相关工作、Methodology：3.1 多层级 RL 推荐、3.2 仿真器模块、3.3 数据分析）；§4 实验与附录略读
 
 ## 推荐继续阅读
 

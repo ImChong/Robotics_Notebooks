@@ -57,6 +57,43 @@ ArduPilot 与 [PX4 Autopilot](./px4-autopilot.md) 是两套独立的开源飞控
 | SITL | Software in the Loop | 在软件仿真环境中运行固件的测试方式 |
 | GPL | GNU General Public License | ArduPilot 主仓库采用的开源许可证系列 |
 
+## 源码运行时序图
+
+入口（以 ArduCopter 的 SITL 仿真为例）：`Tools/autotest/sim_vehicle.py -v ArduCopter`，它先 `waf build --target <frame_options["waf_target"]>` 编译，再通过 `start_vehicle` 启动飞控二进制（并可接 MAVProxy）。飞控进程由 `ArduCopter/Copter.cpp` 末尾的 `AP_HAL_MAIN_CALLBACKS(&copter)` 接入 HAL，SITL 板级主循环在 `libraries/AP_HAL_SITL/HAL_SITL_Class.cpp` 的 `HAL_SITL::run`。下图只画 Copter 的主循环；Plane、Rover、Sub 等其它载具、真实硬件板级 HAL（ChibiOS 等）和 SITL 物理模型未读。
+
+```mermaid
+sequenceDiagram
+    participant Sim as sim_vehicle.py
+    participant HAL as HAL_SITL::run (AP_HAL_SITL)
+    participant V as AP_Vehicle::setup / loop
+    participant C as Copter (Copter.cpp, system.cpp)
+    participant S as AP_Scheduler
+    participant Att as AC_AttitudeControl / flightmode->run()
+    participant M as AP_Motors
+
+    Sim->>Sim: waf build --target，start_vehicle(binary, opts)
+    Sim->>HAL: 启动飞控二进制
+    HAL->>V: callbacks->setup()
+    V->>C: init_ardupilot()
+    C->>C: barometer / gps / compass.init，init_rc_in，init_rc_out，gcs().setup_uarts
+    C->>C: startup_INS_ground：ahrs.init，ins.init
+    C->>C: set_mode(g.initial_mode)
+    loop callbacks->loop() 反复调用
+        HAL->>V: loop()
+        V->>S: scheduler.loop()
+        S->>S: ins.wait_for_sample，tick()，run(time_available)
+        S->>C: 按 scheduler_tasks 顺序执行 FAST_TASK：ins.update 在前
+        C->>Att: run_rate_controller_main：attitude_control->rate_controller_run()
+        C->>M: motors_output_main：motors_output()
+        C->>C: read_AHRS：ahrs.update(true)
+        C->>Att: update_flight_mode：flightmode->run()
+        Att->>M: 如 ModeStabilize：attitude_control 计算，motors->set_desired_spool_state
+        S->>C: SCHED_TASK：rc_loop 250Hz、GCS update_receive/send 400Hz、gps.update 50Hz、ekf_check 10Hz 等
+    end
+```
+
+图依据：ArduPilot/ardupilot@5fdd5da，读过 ArduCopter/Copter.cpp（scheduler_tasks、read_AHRS、AP_HAL_MAIN_CALLBACKS）、ArduCopter/system.cpp（init_ardupilot、startup_INS_ground）、ArduCopter/Attitude.cpp（run_rate_controller_main）、ArduCopter/motors.cpp（motors_output_main）、ArduCopter/mode.cpp（update_flight_mode）、ArduCopter/mode_stabilize.cpp（片段）、libraries/AP_Vehicle/AP_Vehicle.cpp（setup、loop）、libraries/AP_Scheduler/AP_Scheduler.cpp（loop）、libraries/AP_HAL_SITL/HAL_SITL_Class.cpp（run）、Tools/autotest/sim_vehicle.py（函数清单与 waf 调用行）。`using_rate_thread` 为真时速率控制与电机输出改由独立线程执行（此处按 `!using_rate_thread` 的主循环路径画），该线程与 EKF 内部、MAVLink 处理细节未读。
+
 ## 参考来源
 
 - [ArduPilot 官方文档](https://ardupilot.org/)
@@ -65,6 +102,8 @@ ArduPilot 与 [PX4 Autopilot](./px4-autopilot.md) 是两套独立的开源飞控
 - [支持的载具类型](https://ardupilot.org/ardupilot/docs/common-all-vehicle-types.html)
 - [ArduPilot Copter 介绍](https://ardupilot.org/copter/docs/introduction.html)
 - [向 ArduPilot 项目捐赠](https://ardupilot.org/dev/docs/common-donation.html)
+
+- 源码核对（2026-11-02）：ArduPilot/ardupilot@5fdd5da，读过 ArduCopter/{Copter.cpp,system.cpp,Attitude.cpp,motors.cpp,mode.cpp,mode_stabilize.cpp}、libraries/AP_Vehicle/AP_Vehicle.cpp、libraries/AP_Scheduler/AP_Scheduler.cpp、libraries/AP_HAL_SITL/HAL_SITL_Class.cpp、Tools/autotest/sim_vehicle.py（片段）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

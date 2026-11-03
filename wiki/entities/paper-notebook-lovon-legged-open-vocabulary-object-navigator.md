@@ -37,6 +37,26 @@ summary: "开放世界里的「找东西并走过去」是一个长时程任务�
 - **行走视觉退化**：拉普拉斯方差滤波给「边走边看」的足式感知提供了简单有效的稳像思路
 - **通用部署**：一套框架通吃四足/人形，降低不同本体上的工程迁移成本
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["长时程任务描述 Tl"] --> B["LLM<br/>输入 Isys + Tl + L2MM 反馈 Of<br/>输出当前任务指令 Ii"]
+    B --> C["IOE 指令目标提取器<br/>两层 Transformer，映射到检测类别 Iobject"]
+    D["RGB 视频流"] --> E["Laplacian 方差运动模糊过滤<br/>方差低于 T_blur 则用上一清晰帧替换"]
+    E --> F["目标检测器（实验用 YOLO-11）<br/>输出 Om, Cp, Oxy, Owh<br/>滑动平均平滑检测框"]
+    C --> F
+    F --> G["L2MM 编码器：前后指令、检测结果、<br/>当前 mission/search 状态，[SEP] 拼接"]
+    B --> G
+    G --> H["三个解码头：运动向量 Vm / 任务状态 Sm / 搜索状态 Ss"]
+    H --> I["机器人执行逻辑<br/>running：Vm=[vx,0,θcorr]<br/>丢失目标：原地旋转搜索 ±0.3<br/>Owh 达成功阈值：停止 success"]
+    I --> J["足式机器人运动<br/>Go2 / B2 / H1-2"]
+    H -. "状态反馈 Of" .-> B
+    H -. "Sm, Ss 回灌" .-> G
+```
+
+图依据：论文 §IV-A 至 §IV-D、§V / Fig. 2、Table I
+
 ## 解决什么问题
 
 传统目标导航方法难以同时满足三件事：
@@ -89,6 +109,7 @@ summary: "开放世界里的「找东西并走过去」是一个长时程任务�
 - [humanoid_pnb_lovon.md](../../sources/papers/humanoid_pnb_lovon.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/LOVON__Legged_Open-Vocabulary_Object_Navigator/LOVON__Legged_Open-Vocabulary_Object_Navigator.html>
 - 论文：<https://arxiv.org/abs/2507.06747>
+- [arXiv PDF](https://arxiv.org/pdf/2507.06747)：已通读方法部分（实验与附录以略读为准）：§III 问题表述、§IV 方法（多模态输入处理、Laplacian 滤波、L2MM、损失）、§V 执行逻辑、§VI 数据准备、§VII-A 实验设定
 
 ## 推荐继续阅读
 

@@ -43,6 +43,27 @@ Improves token-based world models with parallel observation prediction.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ENV["真实环境交互"] -->|"1 经验收集"| BUF["回放缓冲区\n观测 / 动作 / 奖励 / 终止"]
+  BUF -->|"2 训练"| V["V 视觉感知：VQ-VAE 分词器\n观测 o_t 变为 K 个离散 token z_t"]
+  BUF -->|"3 训练"| M["M 世界模型：POP 增强的 RetNet\n预测下一观测 token / 奖励 / 终止"]
+  V -.->|"码本 E 用于 token 嵌入"| M
+  subgraph POP["Parallel Observation Prediction"]
+    U["K 个专用预测 token u"] --> ONE["一次前向并行生成下一观测的全部 K 个 token"]
+    CH["分块 (chunkwise) 前向 + 循环状态 S\n并行计算每个观测-动作块之后的状态"] --> ONE
+  end
+  M --- POP
+  BUF -->|"采样短轨迹作为起点"| IMG["想象 H 步\nC 与世界模型交互"]
+  M --> IMG
+  IMG -->|"4 训练"| C["C 控制器：Actor-Critic\n目标沿用 DreamerV2"]
+  C -->|"策略 π"| ENV
+```
+
+图依据：论文 §2.1 Overview（V-M-C 结构、Fig. 2 训练循环）、§2.3 World Model Imagination、§2.4 World Model Training（POP，Fig. 4 / Fig. 6）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ Improves token-based world models with parallel observation prediction.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2402.05643>
+- [arXiv PDF](https://arxiv.org/pdf/2402.05643)：已通读方法部分（实验与附录以略读为准）：§2 Method（2.1–2.4，含 Fig. 2 训练循环与 POP 算法）
 
 ## 推荐继续阅读
 

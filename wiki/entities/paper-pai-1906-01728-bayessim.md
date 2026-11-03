@@ -43,6 +43,21 @@ Bayesian domain randomization approach for data-efficient sim-to-real adaptation
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  PRIOR["提议先验 p̃(θ)\n采样仿真器参数 θn"] --> SIM["仿真器运行 xn=g(θn)\n轨迹提取统计量 ψ(S,A)"]
+  SIM --> DATA["数据集 (θn, xn)"]
+  DATA --> TRAIN["最大化对数似然 L(φ)\n训练 qφ(θ|x)：混合高斯密度网络\n特征 Φ(x)：QMC 随机傅里叶特征或两层 NN"]
+  REAL["真实轨迹 xr\n同样提取统计量"] --> POST
+  TRAIN --> POST["后验恢复\n对 qφ(θ|xr) 按 p(θ)/p̃(θ) 修正"]
+  POST --> SAMPLE["从后验采样 θ\n先采混合分量 k，再采高斯"]
+  SAMPLE --> POLICY["域随机化策略训练\n最大化 J(β)，实验中用 PPO"]
+```
+
+图依据：论文 §IV-A 至 §IV-F、§IV-H（Domain randomization with BayesSim）、§V-B。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -106,6 +121,7 @@ Bayesian domain randomization approach for data-efficient sim-to-real adaptation
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/1906.01728>
+- [arXiv PDF](https://arxiv.org/pdf/1906.01728)：已通读方法部分（实验与附录以略读为准）：§IV-A 至 §IV-H（问题设定、混合密度随机特征网络、后验恢复、充分统计量、基于后验的域随机化）、§V-B 策略训练设置
 
 ## 推荐继续阅读
 

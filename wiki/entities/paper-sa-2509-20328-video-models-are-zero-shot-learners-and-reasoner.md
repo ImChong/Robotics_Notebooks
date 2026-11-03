@@ -42,6 +42,26 @@ Veo-3 as zero-shot learners and reasoners.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["研究问题：视频模型是否像 LLM 一样发展出通用视觉理解（zero-shot）"]
+    Q --> M["§2 Methods：只做 prompting（不微调）——输入图像作首帧 + 文本指令，经 Vertex AI API 调用 Veo 2 / Veo 3，生成 16:9、720p、24 FPS、8 s 视频；API 带 LLM-based prompt rewriter，系统（rewriter + 视频生成器）视为单一黑箱"]
+    M --> CTRL["对照：独立 LLM（Gemini 2.5 Pro）仅凭输入图像无法稳定解决关键任务（用于隔离视频模型的推理能力）"]
+    M --> QUAL["§3 定性研究：覆盖 62 个任务，每个任务 prompt Veo 3 十二次，由作者判定成功率（粗略估计）"]
+    QUAL --> H["四层能力层级：Perception → Modeling → Manipulation → Reasoning（Chain-of-frames, CoF）"]
+    M --> QUANT["§4 定量研究：7 个任务"]
+    QUANT --> QP["Perception：4.1 Edge detection、4.2 Segmentation"]
+    QUANT --> QM["Manipulation：4.3 Object extraction、4.4 Image editing"]
+    QUANT --> QR["Reasoning：4.5 Maze solving、4.6 Visual symmetry、4.7 Visual analogy completion"]
+    QUANT --> METRIC["度量口径：best frame 与 last frame；pass@k（k 次尝试）；Veo 2 与 Veo 3 对比；适用处以 Nano Banana 为参考"]
+    QUAL --> D["§5 Discussion"]
+    METRIC --> D
+```
+
+图依据：实证研究设计图，论文 §2（Methods）、§3（定性，四层能力）、§4 开头（定量任务与 best/last frame 评估口径）、§5；不含任何结果数字。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +117,7 @@ Veo-3 as zero-shot learners and reasoners.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.20328>
+- [arXiv PDF](https://arxiv.org/pdf/2509.20328)：已通读摘要、§1、§2 Methods、§3 定性概述、§4 开头与各任务小节标题、§5 Discussion；§4 各任务细节、附录 A–D 略读或未读
 
 ## 推荐继续阅读
 

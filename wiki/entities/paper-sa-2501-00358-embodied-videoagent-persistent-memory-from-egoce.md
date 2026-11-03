@@ -42,6 +42,26 @@ An LLM-based agent that constructs scene memory from both egocentric video and e
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：第一人称视频帧 + 深度图 + 相机 6D 位姿"] --> DET["YOLO-World 检测物体与类别；深度 + 位姿经 2D-3D 提升得 3D Bbox"]
+    DET --> REID["Object re-ID：按外观与 3D 位置判定是否同一物体"]
+    REID --> MO["Persistent object memory MO：ID / STATE / RO / 3D Bbox / OBJ Feat / CTX Feat"]
+    IN --> MT["Temporal memory MT（沿用 VideoAgent）"]
+    ACT["感知到动作，如 C catches the can"] --> VLM["把候选物体的 3D 框渲染到帧上，VLM 视觉提示判断动作目标"]
+    MO --> VLM
+    VLM -->|"程序化更新 STATE 等字段"| MO
+    ACT --> HB["History buffer：动作缓冲 + 可见物体缓冲"]
+    MO --> TOOL["LLM 调用工具：query_db / temporal_loc / spatial_loc / vqa"]
+    MT --> TOOL
+    HB --> TOOL
+    TOOL --> OUT["回答问题，或调用动作原语：chat / search / goto / open / close / pick / place"]
+```
+
+图依据：论文 §2.1 Recap VideoAgent、§2.2 Memory and Tools of Embodied VideoAgent / Fig.2、Fig.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ An LLM-based agent that constructs scene memory from both egocentric video and e
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2501.00358>
+- [arXiv PDF](https://arxiv.org/pdf/2501.00358)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2（2.1–2.3）、§3 开头与 §3.1 设定
 
 ## 推荐继续阅读
 

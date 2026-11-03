@@ -42,6 +42,36 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DS["基准数据集 (§3.1)"]
+        V["nuScenes CAM_FRONT 的 10 帧上下文视频"]
+        TT["9 类轨迹模板 (取自 CoVLA, 共 36 种) -> 2286 个视频-轨迹对"]
+    end
+    subgraph WM["被测世界模型 (如基线 Terra, §3.4 / 附录 D)"]
+        TK["Open-MAGVIT2 图像 tokenizer -> 离散 token"]
+        AR["自回归 Transformer: 图像 token 与轨迹交错输入 (c1, a1, c2, a2, ...), 预测下一帧 token"]
+        TK --> AR
+        AR --> DEC["帧解码器 + Video Refiner (微调 SVD) -> 生成视频"]
+    end
+    V --> TK
+    TT -->|"逐帧轨迹指令 a_ins / τ_ins"| AR
+    DEC --> EST
+    subgraph EST["ACT-Estimator (§3.3)"]
+        I3D["I3D 骨干 + 自注意力"]
+        I3D --> CLS["分类头 MLP -> 高层动作 a_est"]
+        I3D --> TRJ["轨迹头 GRU + 交叉注意力 -> 轨迹 τ_est"]
+    end
+    CLS --> IEC["IEC: 指令与执行动作是否一致"]
+    TRJ --> TA["TA: τ_ins 与 τ_est 距离 (ADE / FDE)"]
+    TT -.-> IEC
+    TT -.-> TA
+```
+
+图依据：论文 §3.1-§3.4、附录 D / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +128,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2412.05337>
+- [arXiv PDF](https://arxiv.org/pdf/2412.05337)：已通读方法部分（实验与附录以略读为准）：§3 ACT-Bench（3.1-3.4）与附录 D（Terra 世界模型设计）
 
 ## 推荐继续阅读
 

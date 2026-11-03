@@ -33,6 +33,25 @@ SimGenHOI 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    COND["条件 C：物体 BPS 几何嵌入 + 掩码动作 S（初始位姿 / 稀疏路点 / 目标位置）+ CLIP 文本嵌入"] --> DIFF["交互扩散模型（DiT 式 Transformer 去噪）"]
+    NOISE["噪声 τ_n"] --> DIFF
+    DIFF --> KEY["输出稀疏关键动作：人体位姿 X、物体位姿 O、手 / 脚接触概率 H"]
+    KEY --> AR["自回归滑窗：最近若干帧作下一窗口的初始条件"]
+    AR -.-> DIFF
+    KEY --> INTERP["线性插值得到稠密动作 + 运动学规则求速度"]
+    INTERP --> POLICY["接触感知全身策略 π_HOI（基于 PULSE 运动先验）：跟踪人体 + 物体参考，接触引导 ĉ"]
+    POLICY --> SIM["物理仿真：执行关节目标"]
+    SIM -->|"可执行、物理合理的动作作为样本"| FT["交替微调：扩散模型 ⇄ 跟踪策略"]
+    FT -.-> DIFF
+    FT -.-> POLICY
+```
+
+图依据：论文 Methods 节 / Fig. 2、Fig. 3、式 (1)–(10) 与 Algorithm 1（SimGen-HOI Inference）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +83,7 @@ SimGenHOI 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 - [humanoid_pnb_simgenhoi-physically-realistic-whole-body-humano.md](../../sources/papers/humanoid_pnb_simgenhoi-physically-realistic-whole-body-humano.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2508.14120>
+- [arXiv PDF](https://arxiv.org/pdf/2508.14120)：已通读方法部分（实验与附录以略读为准）：Methods 节（HOI 生成、接触感知全身策略、仿真中微调 / 自回归）与 Algorithm 1
 
 ## 推荐继续阅读
 

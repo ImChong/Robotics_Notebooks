@@ -28,7 +28,7 @@ summary: "研究一个技能化（skill-based）的人形搬箱重排框架：�
 | Shared / Task-Agnostic | 共享 / 任务无关，一个控制器服务所有技能 |
 | Skill Composition | 技能组合，把可复用技能按任务串接 |
 | Long-Horizon | 长时程，需多步连续执行的任务 |
-| Data Aggregation | 数据聚合（DAgger 式），把执行分布上的新数据回灌再训 |
+| Data Aggregation | 任务驱动的数据聚合（与 DAgger 类数据集聚合方法相关，但论文称不是新的聚合算法，§2），把执行分布上的新数据回灌再训 |
 | Domain Randomization | 域随机化，训练时随机化物理/环境参数以增强鲁棒 |
 | Distribution Shift | 分布偏移，部署分布与训练分布不一致 |
 
@@ -36,8 +36,26 @@ summary: "研究一个技能化（skill-based）的人形搬箱重排框架：�
 
 - **「一个 WBC 服务所有技能」是可扩展技能系统的关键接口设计**：统一闭环接口让任务层能像搭积木一样组合技能；
 - **长时程的敌人是分布偏移**：单技能好用 ≠ 串起来好用，组合分布必须被显式覆盖；
-- **DAgger 式回灌依旧好使**：在执行分布上补数据这一经典思路，对人形长时程组合同样有效，工程代价低；
+- **回灌执行分布数据依旧好使**（论文称与 DAgger 类方法相关，但只是任务驱动的数据集聚合，非新算法）：在执行分布上补数据这一经典思路，对人形长时程组合同样有效，工程代价低；
 - **基准化很重要**：Humanoid Hanoi 这类「可量化长时程」的任务，有助于公平比较共享/非共享与不同数据策略，呼应本仓 11 仿真与基准板块。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    BOX["各箱体 SE(3) 位姿与尺寸"] --> SEQ["任务级序列器<br/>汉诺塔递归生成技能序列（PDDL 接口已实现）"]
+    SEQ --> SK["独立训练的技能策略<br/>GoTo / GoTo-with-Box / Pickup / Place"]
+    BOX --> SK
+    SK -->|"任务级全身指令（含基座指令 stand bit、平面速度、偏航率）"| WBC["共享、任务无关的 WBC<br/>输入本体感知 + 部分指定的运动指令"]
+    WBC -->|"关节级 PD 目标"| PD["固定增益 PD 控制器"]
+    PD --> ROBOT["机器人（仿真 / Digit V3）"]
+    ROBOT -->|"本体感知"| WBC
+    ROBOT -->|"状态"| SK
+    ROBOT -.->|"组合执行产生的闭环 rollout"| AGG["任务驱动的数据聚合<br/>用 Pickup / Place 成功指令序列扩充 WBC 参考集"]
+    AGG -.->|"同一跟踪目标与域随机化重训"| WBC
+```
+
+图依据：论文 §4、§5（Fig. 3）；每个问题实例分为 7 次移动，每次依次执行 GoTo、Pickup、GoTo-with-Box、Place（Fig. 2）。
 
 ## 解决什么问题
 
@@ -49,10 +67,10 @@ summary: "研究一个技能化（skill-based）的人形搬箱重排框架：�
 
 1. **共享、任务无关 WBC 的系统性研究**：作为技能组合的一致闭环接口，对照非共享设计；
 2. **指明朴素复用的失效机理**：长时程技能组合引入状态/指令分布偏移，侵蚀鲁棒性；
-3. **简单有效的数据聚合修复**：把域随机化下的闭环执行 rollout 回灌训练（DAgger 式）；
+3. **简单有效的数据聚合修复**：把域随机化下的闭环执行 rollout 回灌训练（任务驱动的数据集聚合，非新的 DAgger 算法，依据 arXiv:2602.13850 §2）；
 4. **Humanoid Hanoi 基准**：汉诺塔式长时程重排任务，仿真 + Digit V3 实测，量化共享 WBC 收益。
 
-方法拆解（深读笔记小节）：架构：共享、任务无关的 WBC 作为统一接口；诊断：组合诱发的分布偏移；解法：闭环 rollout 的数据聚合（DAgger 式）；基准与评测：Humanoid Hanoi；🧭 整体流程（mermaid）。
+方法拆解（深读笔记小节）：架构：共享、任务无关的 WBC 作为统一接口；诊断：组合诱发的分布偏移；解法：闭环 rollout 的任务驱动数据聚合（非新的 DAgger 算法，§2）；基准与评测：Humanoid Hanoi；🧭 整体流程（mermaid）。
 
 ## 核心信息
 
@@ -74,7 +92,7 @@ summary: "研究一个技能化（skill-based）的人形搬箱重排框架：�
 
 **这篇真正的贡献不是「共享 WBC 更好」，而是先指出共享 WBC 的失效机理、再给出低成本修复：长时程技能组合会把状态与指令分布推离预训练分布，用执行分布上的数据回灌就能补回来。**
 
-- 起作用的机制是 **DAgger 式数据聚合**——把域随机化下的闭环技能执行 rollout 回灌进共享 WBC 的训练，而不是换一个更强的控制器结构。
+- 起作用的机制是 **任务驱动的数据集聚合**（与 DAgger 类方法相关，但论文明确称不是新的聚合算法，§2）——把域随机化下的闭环技能执行 rollout 回灌进共享 WBC 的训练，而不是换一个更强的控制器结构。
 - 关键取舍在接口设计：一个任务无关 WBC 服务所有技能，换来技能组合的统一闭环接口，代价就是必须显式覆盖组合分布。
 - 主要失败模式已被点名：**朴素复用预训练 WBC**——单个技能好用不等于串起来好用，长时程上鲁棒性会被逐步侵蚀。
 - 评测靠自建的 **Humanoid Hanoi** 汉诺塔式长时程重排基准，仿真加 Digit V3 实测，并量化共享相对非共享基线的收益；本页为笔记摘要，具体数值以深读笔记与论文 PDF 为准。
@@ -89,6 +107,8 @@ summary: "研究一个技能化（skill-based）的人形搬箱重排框架：�
 - [humanoid_pnb_humanoid-hanoi.md](../../sources/papers/humanoid_pnb_humanoid-hanoi.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Hanoi__Investigating_Shared_Whole-Body_Control_for_Skill-Based_Box_Rearrangement/Humanoid_Hanoi__Investigating_Shared_Whole-Body_Control_for_Skill-Based_Box_Rearrangement.html>
 - 论文：<https://arxiv.org/abs/2602.13850>
+- [arXiv PDF](https://arxiv.org/pdf/2602.13850)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 挑战问题、§4 共享 WBC 系统概览、§5 覆盖扩展、§6 对比方法设定
+- 核对（2026-11-02）：对照 arXiv:2602.13850 §2（任务驱动的数据集聚合，用于共享 WBC 维护，非新的 DAgger 类算法），把页面「DAgger 式」改为论文说法。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ Presents a rigorous evaluation of Real-to-Sim parameter estimation approaches fo
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  DATA["真实数据：5 种织物，ZED2i RGB-D 相机 + SAM2 分割得点云序列，Baxter 机器人给出夹爪轨迹"] --> R2S
+  subgraph R2S["Real2Sim 参数估计（训练场景）"]
+    DC["DiffCloud（DiffSim）：单向 Chamfer 损失反传刚度参数；lifting、wind blowing"]
+    CP["DiffCP（DiffTaichi）：优化杨氏模量与泊松比；lifting"]
+    PN["PhysNet：Siamese 网络的物理相似度图 + 贝叶斯优化；lifting、wind blowing"]
+    PI["PINN（DiffSim / DiffTaichi）：PDE 损失 + 数据损失，刚度或 E、ν 为可训练参数；stretching"]
+  end
+  R2S --> SIM["将估计的参数设入仿真器，沿与真实实验相同的夹爪轨迹仿真"]
+  SIM --> EVAL["评测场景：folding、fling、shaking"]
+  EVAL --> MET["对比真实与仿真点云序列：Chamfer 距离 CD、Hausdorff 距离 HD"]
+```
+
+图依据：论文 §IV、§V / Table I（评测框架）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Presents a rigorous evaluation of Real-to-Sim parameter estimation approaches fo
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2503.16310>
+- [arXiv PDF](https://arxiv.org/pdf/2503.16310)：已通读方法部分（实验与附录以略读为准）：§IV（方法）、§V（实验方法）、§VI-A（开头）
 
 ## 推荐继续阅读
 

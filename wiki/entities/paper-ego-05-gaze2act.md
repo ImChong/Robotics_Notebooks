@@ -38,6 +38,25 @@ sources:
 - 很多时候，人不一定能把意图说清楚。桌上有几个相似杯子，语言很难精确描述“拿左前方那个杯子的边缘”；但人看向哪里，往往已经透露了目标和动作区域。
 - Gaze2Act 做的事情，是把人的第一视角 gaze 映射到机器人视角里，再作为 VLA 策略的条件输入。这样一来，人和机器人之间的交互就不只靠语言，而多了一条更自然的意图通道。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[AR/XR 眼镜第一视角图像 + 注视点 g_t] --> B["跨视角 gaze grounding（免训练、免标定）"]
+    R[机器人观测 o_t] --> B
+    B --> C["粗粒度匹配：SAM3 分割参考物体<br/>DINOv3 多层特征余弦相似度选出目标 mask m_t"]
+    C --> D["细粒度匹配：g_t 邻域特征<br/>在 m_t 内求 argmax 得注视点 p_t"]
+    D --> E["感知层 gaze prompting<br/>在 o_t 上叠加物体轮廓 + 高斯热图"]
+    D --> F["动作层 gaze token<br/>位置 sin 编码 + DINOv3 ViT-S+ 目标裁剪 CLS，线性融合"]
+    E --> G[冻结 Eagle2 VLM<br/>输入：语言指令 + 带提示的观测 + 本体状态]
+    G --> H[DiT 动作头<br/>原 VLM cross-attention 路径]
+    F --> I[零初始化解耦 gaze cross-attention 路径]
+    I --> H
+    H --> J[去噪生成动作块]
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -92,6 +111,7 @@ Gaze2Act 做的事情，是把人的第一视角 gaze 映射到机器人视角�
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md) — 9 篇总表
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md) — 微信公众号编译导读
 - 论文/项目：<https://arxiv.org/abs/2605.30282>
+- [arXiv PDF](https://arxiv.org/pdf/2605.30282)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4、Fig.2
 
 ## 推荐继续阅读
 

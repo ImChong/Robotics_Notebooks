@@ -36,6 +36,25 @@ summary: "这篇综述把触觉机器人操作组织为力学驱动与数据驱�
 
 本文的价值在于把传统接触建模和近年来的数据学习放在同一条研究脉络中，便于判断什么时候应依赖可解释的力学状态，什么时候可以让模型从触觉数据中学习任务相关表示。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["2 触觉感知基础<br/>传感器与信号 / 触觉仿真与 sim-to-real"] --> B["3 力学驱动视角<br/>perception → action"]
+    A --> C["4 数据驱动视角"]
+    B --> B1["3.1 Perception<br/>接触力/力矩、接触形状、接触位置、物体位姿、滑移、外部接触状态、物体属性"]
+    B --> B2["3.2 Action<br/>触觉闭环控制 / 基于触觉感知的状态转移 / 更新低层控制策略"]
+    B1 --> B2
+    C --> C1["4.1 触觉增强模仿学习"]
+    C --> C2["4.2 触觉增强强化学习"]
+    C --> C3["4.3 触觉增强 VLA"]
+    C --> C4["4.4 触觉预测模型"]
+    B --> D["5 开放问题与未来方向"]
+    C --> D
+```
+
+图依据：综述章节结构图（论文 §1–§5：§2 基础、§3 力学驱动视角及 §3.1/§3.2 子节、§4 数据驱动视角 §4.1–§4.4、§5 开放问题）。
+
 ## 方法脉络
 
 ### 力学驱动路线
@@ -106,6 +125,7 @@ summary: "这篇综述把触觉机器人操作组织为力学驱动与数据驱�
 - [Tactile-Based Robotic Manipulation: From Mechanics-Driven to Data-Driven Perspectives（arXiv:2610.30438）](../../sources/papers/tactile_based_robotic_manipulation_survey_arxiv_2610_30438.md)
 - [arXiv 论文页面](https://arxiv.org/abs/2610.30438)
 - [正式出版版 DOI](https://doi.org/10.1146/annurev-control-032125-030330)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30438)：已通读章节标题与摘要/引言，§3–§5 的小节结构（实验与细节以略读为准）：§1–§5
 
 ## 推荐继续阅读
 

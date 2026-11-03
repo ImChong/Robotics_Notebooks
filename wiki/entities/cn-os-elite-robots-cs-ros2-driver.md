@@ -61,11 +61,54 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`ros2 launch eli_cs_robot_driver elite_control.launch.py robot_ip:=... local_ip:=... cs_type:=...`（真机，`use_fake_hardware:=false`）
+
+```mermaid
+sequenceDiagram
+    participant L as elite_control.launch.py
+    participant CM as eli_ros2_control_node (control_node.cpp)
+    participant HW as EliteCSPositionHardwareInterface (hardware_interface.cpp)
+    participant D as ELITE::EliteDriver / RtsiIOInterface (Elite CS SDK)
+    participant CL as eli_components_loader (load_components.cpp)
+    participant SP as controller_manager spawner
+    participant JTC as scaled_joint_trajectory_controller
+    participant R as 艾利特 CS 控制器
+
+    L->>CM: 启动，传入 robot_description + controllers yaml
+    L->>CL: 启动，参数 robot_ip
+    CL->>CL: 加载 DashboardClient / PrimaryClient / ScriptNode 三个节点并 spin
+    L->>SP: spawn joint_state_broadcaster、io_and_status_controller 等
+    L->>SP: spawn 初始关节控制器
+    CM->>HW: on_init / on_configure
+    HW->>D: rtsiInit(robot_ip)，连接 RTSI 并读 output/input recipe
+    HW->>D: make_unique EliteDriver(driver_config_)
+    D-->>R: 按 driver_config_ 的 script_sender/reverse/trajectory 端口与机器人交互（细节在 SDK 内，未读）
+    HW->>HW: on_configure 末尾启动 asyncThread
+    loop 控制周期 (cm->read / update / write)
+        CM->>HW: read()
+        HW->>D: RTSI getActualJointPositions / Velocity / TCPPose ...
+        CM->>JTC: update()（按 speed scaling 采样轨迹）
+        CM->>HW: write()
+        alt 任务 PLAYING 且机器人已连接
+            HW->>D: writeServoj / writeSpeedj / writeFreedrive
+            D->>R: 经 reverse 端口下发指令
+        else
+            HW->>D: writeIdle
+        end
+    end
+    Note over HW,D: IO、payload、speed scaling、freedrive、resend_external_script<br/>等异步命令在 write()/updateAsyncIO() 中转发给 EliteDriver / RTSI
+```
+
+图依据：Elite-Robots/Elite_Robots_CS_ROS2_Driver@3e9e8ca，读过 `eli_cs_robot_driver/launch/elite_control.launch.py`、`src/control_node.cpp`、`src/hardware_interface.cpp`（on_configure/read/write 部分）、`src/load_components.cpp`、`CMakeLists.txt`、`doc/Usage_CN.md`（启动命令）、`eli_cs_controllers/src/scaled_joint_trajectory_controller.cpp`（头部）。reverse 端口脚本下发的细节在 SDK（见 Elite_Robots_CS_SDK 页），此处未读 SDK 内部。
+
 ## 参考来源
 
 - [Elite_Robots_CS_ROS2_Driver 源码归档](../../sources/repos/elite_robots_cs_ros2_driver.md)（<https://github.com/Elite-Robots/Elite_Robots_CS_ROS2_Driver>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Elite-Robots/Elite_Robots_CS_ROS2_Driver@3e9e8ca，读过 eli_cs_robot_driver 的 launch/elite_control.launch.py、src/control_node.cpp、src/hardware_interface.cpp（部分）、src/load_components.cpp、CMakeLists.txt、doc/Usage_CN.md 及 eli_cs_controllers/src/scaled_joint_trajectory_controller.cpp（头部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

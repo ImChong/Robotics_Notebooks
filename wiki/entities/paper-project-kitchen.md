@@ -38,6 +38,28 @@ summary: "Project Kitchen（arXiv:2609.18650）：VR 游戏化无机器人数据
 
 - 机器人数据贵；游戏化跨本体数据可放大预训练再 few-shot 落地。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PK["III-B Project Kitchen（Unity VR 烹饪游戏）"]
+        PLAY["玩家按食谱完成长程烹饪<br/>裸手交互，游戏激励维持参与"] --> REC["30 Hz 同步记录<br/>26 关节手部位姿 / 物体位姿与状态 / 抓放事件 / 任务进度"]
+        REC --> SEG["游戏逻辑自动分段与标注<br/>子任务成功谓词（空间 / 数量 / 容量）+ 抓放事件锚点"]
+        SEG --> PRIM["三类可复用技能原语<br/>pick-and-place / pour / tool use"]
+    end
+    subgraph G2P["III-C Game2Policy 可供性迁移"]
+        PRIM --> GRASP["指尖弯曲度判定抓取区间<br/>滞回 + 去抖 + 长度/位移过滤"]
+        GRASP --> AFF["可供性监督（无动作级监督）<br/>接触点：掌心位置投影到前 H_r=1.5 s 各帧<br/>子目标：接触系下的相对位姿 δ（9 维）"]
+        AFF --> PRE["预训练可供性模型<br/>冻结 DINOv2 → 接触热图分支（卷积） + 子目标回归分支（池化 + MLP）<br/>光照/背景域随机化"]
+        PRE --> JOINT["与下游策略联合微调（少量真机/目标域示教，BC 损失可反传）<br/>较小学习率"]
+        FEW["少量目标域示教"] --> JOINT
+        JOINT --> INJ["注入策略：取热图前 K 个峰值 (u,v,s) + 子目标 δ<br/>ACT / SmolVLA 作为 token；Diffusion Policy 拼入条件向量"]
+    end
+    INJ --> DEP["下游策略部署（ACT / DP / SmolVLA）"]
+```
+
+图依据：论文 §III（A 系统概览 / B Project Kitchen / C Game2Policy）与 Fig. 2、式 (1)–(5)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -81,6 +103,7 @@ summary: "Project Kitchen（arXiv:2609.18650）：VR 游戏化无机器人数据
 - [project-kitchen_arxiv_2609_18650.md](../../sources/papers/project-kitchen_arxiv_2609_18650.md)
 - [wechat_senlanke_weekly_manipulation_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md)
 - [arXiv:2609.18650](https://arxiv.org/abs/2609.18650)
+- [arXiv PDF](https://arxiv.org/pdf/2609.18650)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法 A–C（实验与附录以略读为准）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,29 @@ Steering camera pose for generative world models with self-supervised depth.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入帧 f_t, f_t+1 与指定相机位姿"] --> B["基座生成式世界模型<br/>扩散 / 自回归 · VAE 编码 + 视频生成块"]
+    B --> C["生成帧 f̂_t, f̂_t+1"]
+    C --> D["Depth ReadOut：逐像素深度"]
+    C --> E["Pose ReadOut：相对 6D 位姿 T_i→j"]
+    D --> F["前向 warp：f_i 经深度与位姿投影到 j"]
+    E --> F
+    F --> G["光度控制损失 L_p<br/>L1 + SSIM"]
+    D --> H["反向 warp：f̂_j 映射回 f̂_i"]
+    E --> H
+    H --> I["逆光度控制损失 L_p^inv"]
+    E --> J["位姿回归损失 L_MSE<br/>对参考位姿 T_ref"]
+    G --> K["总目标 L_total = L_g + α_p·L_p + α_pinv·L_p^inv + α_mse·L_MSE"]
+    I --> K
+    J --> K
+    K -->|梯度回传| B
+```
+
+图依据：论文 §III（A 前向位姿感知 warp、B 逆向 warp 一致性、C 位姿回归、D 总目标）/ Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Steering camera pose for generative world models with self-supervised depth.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.01729>
+- [arXiv PDF](https://arxiv.org/pdf/2505.01729)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法 A–D（含 Fig. 2）；§IV 实验设定与 Table I–III 略读
 
 ## 推荐继续阅读
 

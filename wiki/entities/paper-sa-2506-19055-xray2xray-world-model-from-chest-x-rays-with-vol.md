@@ -42,6 +42,22 @@ World model from chest X-rays with volumetric context.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CT["CT 体数据沿角度旋转得到的 X 射线投影 x_0 … x_K\n（顺时针/逆时针旋转）"] --> VQ["阶段1：VQ-GAN 视觉模型\n编码器 + 码本量化 → token 序列 r_k\n训练以重建各角度投影"]
+    VQ --> FZ["冻结 VQ-GAN 编码器"]
+    FZ --> TM["阶段2：转移模型（GPT 式自回归 Transformer）\n输入 动作 token a、上一步 token r、类别 token c\n预测下一投影 token r_k+1"]
+    ACT["动作 token a\n控制旋转方向"] --> TM
+    TM --> LS["交叉熵 / 负对数似然损失 L_Xray2Xray"]
+    TM --> INF["推理：由 r_0 递归生成 r̂_1 … r̂_K\n取出类别 token c_0 … c_K"]
+    INF --> CLS["下游：冻结类别 token 上训练分类器 g（注意力模块）\n使用 Transformer 中间层特征"]
+    INF --> REC["验证：用合成投影做断层重建 CT 体数据"]
+```
+
+图依据：论文 §2 / Fig.1、§2.1–2.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ World model from chest X-rays with volumetric context.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.19055>
+- [arXiv PDF](https://arxiv.org/pdf/2506.19055)：已通读方法部分（实验与附录以略读为准）：§2.1–2.3 方法（含 Fig.1、式 1–3）、§3.2 实验细节
 
 ## 推荐继续阅读
 

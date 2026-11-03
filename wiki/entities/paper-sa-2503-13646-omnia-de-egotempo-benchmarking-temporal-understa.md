@@ -42,6 +42,25 @@ Benchmark for temporal reasoning ability of multimodal LLMs on egocentric proced
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SRC["Ego4D 视频 + 逐句 narration {(Nj, tj)}（第一人称自由文本，#C 指拍摄者）"] --> WIN["narration 时间窗 Tj：沿用 EgoVLP 思路，以 tj 为中心、宽度由相邻 narration 平均间隔 βi 与全局均值 α 决定"]
+    WIN --> CLIP["合并相邻片段成 video clip：最多 120 条 narration 或 120 秒，先到者为准"]
+    TAX["10 类时序能力（§3.1）：动作 5 类（Action Sequence / Action Counting / Temporal Event Ordering / Future Action Prediction / Object-Specific Actions），物体 5 类（Object Sequence / Object Counting / Spatial Relations / Locating Objects / Action-Specific Objects）"]
+    CLIP --> CAP["Gemini 1.5 Pro 零样本：用 narration 生成 caption（侧重用户交互）"]
+    CAP --> QAG["Gemini 1.5 Pro：依 caption 与视频、按 10 类生成 Q&A"]
+    TAX --> QAG
+    QAG --> REV["人工审核：问题需多帧信息、问答逻辑一致；剔除缺时序复杂度或内容无关的，以及 Gemini 单帧即可答对的"]
+    REV --> BENCH["EgoTempo：500 条开放式 QA（每类 50 条），365 个 clip，来自 221 个视频"]
+    BENCH --> PRED["被测 MLLM：输入视频与问题，生成开放式预测"]
+    PRED --> JUDGE["LLM 评审（Gemini 1.5 Pro）：对照标准答案判对错并给理由"]
+    JUDGE --> ACC["按类别与总体统计准确率"]
+```
+
+图依据：数据采集与标注流程图（数据集构建 + LLM 评审评测协议）：论文 §3.1 / §3.2（Fig. 2、Table 2）、§4.1（Evaluation Protocol）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Benchmark for temporal reasoning ability of multimodal LLMs on egocentric proced
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2503.13646>
+- [arXiv PDF](https://arxiv.org/pdf/2503.13646)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§3（含 Fig. 1–3、Table 1–2）、§4.1 评测设置；§4.2 起的结果表、消融与附录未细读
 
 ## 推荐继续阅读
 

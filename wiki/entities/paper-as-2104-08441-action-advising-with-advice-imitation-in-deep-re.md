@@ -41,6 +41,31 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  START["每个训练步 t：a_t 置为未决定"] --> TRAIN{"数据集 D 大小 = n_D ?"}
+  TRAIN -->|是| BC["用 D 训练行为克隆网络 G_ω<br/>k_bc 次迭代（负对数似然，带 Dropout）"]
+  TRAIN -->|否| RESET
+  BC --> RESET{"环境刚重置?"}
+  RESET -->|是| EPS["以概率 ε_reuse 决定本 episode 是否允许建议复用"]
+  RESET -->|否| BUDGET
+  EPS --> BUDGET{"建议预算 b > 0 ?"}
+  BUDGET -->|"是（early advising）"| ASK["向教师请求建议 a_t ~ π_T(s_t)<br/>存入 D，b 减 1"]
+  BUDGET -->|否| REUSE
+  ASK --> REUSE{"a_t 仍未决定 且 π_S 的动作为探索动作<br/>且 G_ω 已训练 且 不确定性 < τ_reuse<br/>且本 episode 允许复用?"}
+  REUSE -->|是| IMIT["模仿建议：a_t = argmax G_ω(a|s_t)"]
+  REUSE -->|否| SELF
+  IMIT --> SELF{"a_t 仍未决定?"}
+  SELF -->|是| OWN["学生自身策略 a_t ~ π_S（如 ε-greedy）"]
+  SELF -->|否| EXEC
+  OWN --> EXEC["执行 a_t，得到 r_t、s_(t+1)<br/>更新任务级模型（如 DQN）"]
+  EXEC --> START
+```
+
+图依据：论文 §4 Proposed Approach 与 Algorithm 1（Action Advising with Advice Imitation）；不确定性由 Dropout 多次前向的输出方差估计（§4）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +120,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2104.08441>
+- [arXiv PDF](https://arxiv.org/pdf/2104.08441)：已通读方法部分（实验与附录以略读为准）：摘要、§3.5 Action Advising、§4 Proposed Approach（含 Algorithm 1）、§5 评测域；§7 实验结果以略读为准
 
 ## 推荐继续阅读
 

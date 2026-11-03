@@ -43,6 +43,22 @@ Hierarchical world models as visual whole-body humanoid controllers.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["CMU MoCap 数据（经 MoCapAct 的 836 段，重定向到 56-DoF 人形）"] --> B["预训练低层 Tracking World Model（TD-MPC2，离线 + 在线 50%/50%）"]
+    B --> C["冻结的 Tracking Agent：输入本体状态 q_t + 命令 c_t，规划出低层动作"]
+    D["本体状态 q_t + 视觉观测 v_t"] --> E["High-level Puppeteering World Model（TD-MPC2，下游任务奖励在线训练）"]
+    E -->|"规划输出高层命令 c（参考末端位置）"| C
+    C -->|"低层关节动作"| F["人形环境"]
+    F --> D
+    G["终止预测头 D + 软截断规划 rollout"] -.-> B
+    G -.-> E
+```
+
+图依据：论文 §3（Fig. 2）、§3.1、§3.2、§3.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ Hierarchical world models as visual whole-body humanoid controllers.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.18418>
+- [arXiv PDF](https://arxiv.org/pdf/2405.18418)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 预备、§3 方法全部；§4 实验与附录略读
 
 ## 推荐继续阅读
 

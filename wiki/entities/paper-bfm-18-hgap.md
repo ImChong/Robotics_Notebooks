@@ -38,6 +38,29 @@ generalist planner 管理低层人形控制；BFM 进入系统后的分层问题
 - generalist planner 管理低层人形控制；BFM 进入系统后的分层问题。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#18/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["MoCapAct 大规模数据集<br/>状态 s(本体感知) + 动作 a(目标关节角)"] --> E["编码器：拼接 (s,a) 为 transition 向量<br/>→ 1D 因果卷积 + 因果 Transformer 解码块"]
+    E --> C["按 L 步分块 → 块内 max pooling<br/>→ 拆成 M 个 code embedding"]
+    C --> Q["VQ：在 codebook 中取最近邻 → 离散隐码 z"]
+    Q --> DEC["解码器 fdec(s1, z) → 重建轨迹<br/>(损失：重建 + VQ + commitment)"]
+    Q --> PR["Prior Transformer<br/>自回归建模 p(zi | z&lt;i, s1)"]
+    S1["初始状态 s1"] --> PR
+    S1 --> DEC
+    subgraph MPC["零样本下游任务：MPC 规划"]
+        CS["当前状态 s1"] --> SM["Prior 采样 N 条隐码序列<br/>(温度 &gt; 1 + top-p 过滤)"]
+        SM --> DC["fdec 解码为轨迹"]
+        DC --> SC["按目标函数 R(τ)=Σ r(s) 打分"]
+        SC --> BEST["返回得分最高的轨迹"]
+    end
+    PR --> SM
+    DEC --> DC
+```
+
+图依据：论文 §2.1–2.3 / Fig.1、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -91,6 +114,7 @@ generalist planner 管理低层人形控制；BFM 进入系统后的分层问题
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2312.02682>
+- [arXiv PDF](https://arxiv.org/pdf/2312.02682)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 方法（2.1 离散化、2.2 隐码先验、2.3 MPC 规划与 Algorithm 1）
 
 ## 推荐继续阅读
 

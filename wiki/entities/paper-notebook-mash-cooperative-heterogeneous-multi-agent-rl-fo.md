@@ -31,7 +31,28 @@ MASH 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，实验结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测 = 各肢体私有观测 + 共享观测：IMU 欧拉角与角速度、时间导向 T_i(t)、agent ID"] --> LEG
+    OBS --> ARM
+    subgraph AG["多智能体 actor：参数共享"]
+        LEG["腿策略 π_leg：左右腿共享一个网络"]
+        ARM["臂策略 π_arm：左右臂共享一个网络"]
+    end
+    LEG -->|"期望关节位置"| PD["PD 控制器得到关节力矩"]
+    ARM -->|"期望关节位置"| PD
+    PD --> SIM["Isaac Gym 仿真 + 域随机化"]
+    SIM -->|"共享奖励"| CRI["全局 critic：CTDE 集中式价值函数，输入全局观测"]
+    CRI -->|"MAPPO 更新"| AG
+    AG --> S2S["Sim-to-Sim：MuJoCo 验证"]
+    S2S --> REAL["部署到实体人形机器人 BanXing"]
+```
+
+图依据：论文 §IV（MASH 框架与多智能体 actor / 全局 critic）、§IV-C Sim-to-Real、§V-A 实验设置 / Fig. 1、Fig. 2。
 
 ## 核心信息
 
@@ -64,6 +85,7 @@ MASH 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - [humanoid_pnb_mash-cooperative-heterogeneous-multi-agent-rl-fo.md](../../sources/papers/humanoid_pnb_mash-cooperative-heterogeneous-multi-agent-rl-fo.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2508.10423>
+- [arXiv PDF](https://arxiv.org/pdf/2508.10423)：已通读方法部分（实验与附录以略读为准）：摘要、§III 背景、§IV MASH 框架（含 actor/critic 网络与 Sim-to-Real）、§V-A 实验设置
 
 ## 推荐继续阅读
 

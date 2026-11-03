@@ -31,7 +31,33 @@ Learning Perceptive Humanoid Locomotion over Challenging Terrain 的人形机器
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论；论文方法部分的模块与数据流见下方「流程总览」。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["第一阶段：Oracle Policy 训练"]
+        PRIV["特权观测 o^p<br/>无噪 height map + 本体 + 接触力"] --> TENC["Terrain encoder"]
+        TENC --> LSTM1["LSTM + MLP<br/>actor / critic"]
+        LSTM1 --> PPO["PPO 训练<br/>仅正则化奖励，无预设动作参考"]
+    end
+    subgraph S2["第二阶段：Student Policy 蒸馏"]
+        NOISY["带噪观测<br/>本体 + 带噪 height map + 指令"] --> BILSTM["Terrain encoder + BiLSTM"]
+        BILSTM --> VIB["VAE / 变分信息瓶颈<br/>潜变量 z"]
+        VIB --> DEC["解码器重建特权状态<br/>ELBO 损失"]
+        VIB --> POL["Locomotion policy<br/>3 层全连接 + LayerNorm"]
+        POL --> ACT["关节动作 a<br/>推理时用 μ 代替采样 z"]
+    end
+    PPO -->|"teacher 动作"| DAG["DAgger 模仿<br/>MSE 损失"]
+    DAG --> POL
+    DR["域随机化 + 高度图噪声模型<br/>(增益 / 形变 / GP 相关噪声)"] --> NOISY
+    CUR["地形课程<br/>按行走距离调整难度"] -.-> PPO
+    CUR -.-> DAG
+    ACT --> DEP["真机部署<br/>雷达点云 + 里程计生成 height map<br/>ONNX Runtime"]
+```
+
+图依据：论文 §III-A Oracle Policy Training、§III-B Student Policy Training、§III-C Terrain Configuration and Curriculum、§IV-A Experimental Setup / Fig. 2。
 
 ## 核心信息
 
@@ -64,6 +90,7 @@ Learning Perceptive Humanoid Locomotion over Challenging Terrain 的人形机器
 - [humanoid_pnb_learning-perceptive-humanoid-locomotion-over-cha.md](../../sources/papers/humanoid_pnb_learning-perceptive-humanoid-locomotion-over-cha.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2503.00692>
+- [arXiv PDF](https://arxiv.org/pdf/2503.00692)：已通读方法部分（实验与附录以略读为准）：§III Methods（A–C）、§IV-A 实验设置与基线
 
 ## 推荐继续阅读
 

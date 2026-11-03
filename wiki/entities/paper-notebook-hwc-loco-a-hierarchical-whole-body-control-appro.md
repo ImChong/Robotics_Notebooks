@@ -31,7 +31,30 @@ HWC-Loco 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记尚未写出；方法流程见下方「流程总览」（依据论文方法部分），其余结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph ST1["阶段一：训练两个低层策略"]
+        REF["参考动作（CMU MoCap 重定向：站立 / 行走 / 跑步）"] --> DISC["判别器 fd（Wasserstein-1 + 梯度惩罚）"]
+        CMDU["用户速度指令"] --> GT["Goal-Tracking Policy π1（PPO）<br/>最大化任务奖励 rT 并模仿人类动作"]
+        DISC --> GT
+        EXT["极端初始化 + 极端情形不确定集<br/>（多尺度外力 / 本体噪声与 PD 增益 / 恶意指令重采样 / 域随机化）"] --> SR["Safety Recovery Policy π2<br/>奖励 + 模仿 + ZMP 可行性约束 ϕ"]
+        DISC --> SR
+    end
+    subgraph ST2["阶段二：训练高层规划策略"]
+        HIST["历史观测 + 机器人当前状态"] --> HP["High-level Policy π0（离散动作：选择 π1 或 π2）<br/>奖励 rT − 切换惩罚 − α·终止惩罚"]
+    end
+    GT --> ST2
+    SR --> ST2
+    HP -->|"选择激活"| LOW["被选中的低层策略输出动作"]
+    LOW --> PD["PD 控制器（100 Hz）→ 力矩 → 人形机器人"]
+    VAE["VAE 估计器：由观测历史推断特权信息的上下文嵌入 zt 与 et（体速、ZMP 特征）"] -.->|"部署时替代特权信息"| LOW
+```
+
+图依据：论文 §4 / §4.1 Goal-Tracking Policy、§4.2 Safety Recovery Policy、§4.3 High-Level Planning / Fig.2。
 
 ## 核心信息
 
@@ -64,6 +87,7 @@ HWC-Loco 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 - [humanoid_pnb_hwc-loco-a-hierarchical-whole-body-control-appro.md](../../sources/papers/humanoid_pnb_hwc-loco-a-hierarchical-whole-body-control-appro.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2503.00923>
+- [arXiv PDF](https://arxiv.org/pdf/2503.00923)：已通读方法部分（实验与附录以略读为准）：§4 Hierarchical Whole-Body Control（4.1 Goal-Tracking、4.2 Safety Recovery、4.3 High-Level Planning、Practical Deployment）、Fig.2、§5 实验设定（略读）
 
 ## 推荐继续阅读
 

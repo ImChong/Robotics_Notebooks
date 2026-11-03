@@ -45,6 +45,22 @@ summary: "在视觉参数随机化的仿真环境里训练神经网络，让真�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SIM["MuJoCo 仿真场景（桌面、物体、干扰物、机器人）"] --> RAND
+    RAND["域随机化：干扰物数量与形状 / 物体位置与纹理 / 桌面、地面、天空盒、机器人纹理 / 相机位姿与视场角 / 灯光数量与位置 / 图像噪声"] --> IMG["渲染单目相机图像（非照片级）"]
+    IMG --> NET["改造的 VGG-16：卷积层（可用 ImageNet 预训练初始化）+ 256、64 全连接层"]
+    NET --> OUT["预测物体笛卡尔坐标 (x, y, z)"]
+    OUT --> LOSS["与仿真真值做 L2 损失，Adam 训练"]
+    LOSS --> NET
+    REAL["真实世界相机图像（未标定的网络摄像头）"] --> NET
+    OUT --> MP["现成运动规划软件规划抓取动作（Fetch 机器人，§IV 抓取实验）"]
+```
+
+图依据：论文 §III-A / §III-B、Fig. 1 / Fig. 2、§IV 抓取实验。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -78,6 +94,7 @@ summary: "在视觉参数随机化的仿真环境里训练神经网络，让真�
 - [`sources/papers/lc_awesome_sim2real_noarxiv_117_domain-randomization-for-transferring-de.md`](../../sources/papers/lc_awesome_sim2real_noarxiv_117_domain-randomization-for-transferring-de.md) — 本条目策展摘录
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
+- [arXiv PDF](https://arxiv.org/pdf/1703.06907)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§III（A 域随机化、B 模型与训练）、§IV 抓取实验段与 §V；§II 相关工作、其余实验消融略读
 
 ## 推荐继续阅读
 

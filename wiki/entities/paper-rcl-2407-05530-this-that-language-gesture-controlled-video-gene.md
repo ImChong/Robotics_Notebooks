@@ -42,6 +42,32 @@ This&That turns an initial image, language and pointing coordinates into a gener
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph VDM["语言-手势条件视频扩散模型（基于 Stable Video Diffusion）"]
+        ROBOT["机器人视频数据集"] --> FT1["语言条件微调：首帧 I0 + 文本 Ctext，经 CLIP 与 FiLM 调制"]
+        ANN["自监督标注：检测并跟踪夹爪与目标物体，得到手势点（2D 高斯扩散）"] --> FT2
+        FT1 --> FT2["手势条件训练：冻结 UNet，训练并行 ControlNet 式分支"]
+        FT2 --> CAT["分支输入：首帧潜变量 E(I0) + 噪声帧 + 稀疏手势图像，并受语言调制"]
+    end
+    USER["用户输入：初始图像 + 语言（如 put this to there）+ 2D 指向手势"] --> CAT
+    CAT --> PLAN["生成 T 帧视频计划 I0..IT"]
+    PLAN --> DIVA
+    subgraph BC["DiVA：视频条件行为克隆"]
+        OBSV["实时图像观测 ot + 末端位姿 st"] --> RES["ResNet-18 编码"]
+        SUB["视频计划子集 τ"] --> RES
+        RES --> TL["TokenLearner：每张图压缩到 16 个 token"]
+        TL --> ENC["Transformer 编码器：实时观测 token 与视频计划 token 交叉注意力"]
+        ENC --> DEC["Transformer 解码器：固定位置嵌入交叉注意力编码器输出"]
+    end
+    DIVA["视频计划 → DiVA"] --> BC
+    DEC --> ACTS["动作块 a(t:t+k)，机器人执行"]
+```
+
+图依据：论文 §III Overview、§IV 语言-手势条件视频扩散模型（§IV-A、§IV-B）、§V 视频条件行为克隆（DiVA，Fig.4）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ This&That turns an initial image, language and pointing coordinates into a gener
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2407.05530>
+- [arXiv PDF](https://arxiv.org/pdf/2407.05530)：已通读方法部分（实验与附录以略读为准）：§III 概览、§IV 语言-手势条件视频扩散、§V 视频条件行为克隆；§VI 实验略读
 
 ## 推荐继续阅读
 

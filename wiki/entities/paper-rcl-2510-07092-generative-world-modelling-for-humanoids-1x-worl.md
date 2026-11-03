@@ -39,6 +39,7 @@ Team Revontuli uses two separate, state-conditioned predictors: a LoRA-adapted W
 ## 为什么重要
 
 - Team Revontuli uses two separate, state-conditioned predictors: a LoRA-adapted Wan video model for future RGB frames and a spatio-temporal Transformer for future discrete tokens. Both lead the reported challenge leaderboard, but their scores measure conditional prediction rather than executed humanoid control.
+- 榜单成绩（依据 arXiv:2510.07092 摘要与 Table 1）：采样赛道公开榜 test PSNR 23.00 dB、第 1；压缩赛道 test Top-500 CE 6.64（摘要 6.6386）、第 1；两赛道均为 Team Revontuli 第 1 名。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
@@ -120,6 +121,7 @@ Team Revontuli uses two separate, state-conditioned predictors: a LoRA-adapted W
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2510.07092>
 - [arXiv PDF](https://arxiv.org/pdf/2510.07092)：已通读方法部分（实验与附录以略读为准）：§2.1–§2.3、§3.1–§3.3（含 Fig.2、Fig.3）；§2.4、§3.4 结果与 §4 结论仅略读
+- 核对（2026-11-02）：对照 arXiv:2510.07092 摘要与 Table 1，「两者都领先榜单」成立（两赛道均第 1），已补具体成绩；未改其他表述。
 
 ## 推荐继续阅读
 

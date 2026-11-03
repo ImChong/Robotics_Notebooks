@@ -43,6 +43,23 @@ Envisions embodied future space for robotics manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：多视角观测帧 + 相机内外参 + 任务文本 c（T5 编码）"] --> VAE["VAE 编码为图像 latent，拼接逐视角 ray-direction map"]
+    VAE --> GEN["Multi-view diffusion generator：2D/3D Conv + Spatial / Temporal Attention"]
+    MEM["Sparse memory：稀疏采样的 clean 帧作上下文（约 80% 帧可丢弃）"] --> GEN
+    GEN --> CHUNK["Next chunk diffusion：去噪得到未来 chunk 的 latent"]
+    CHUNK -->|"新 chunk 作为下一轮 clean 输入"| GEN
+    CHUNK -->|"帧与 EoS 的 L1 距离低于阈值则停止"| FUT["解码得到 embodied future space（逐视角、逐帧）"]
+    GEN -->|"首个去噪步 UNet middle block 特征 E"| ACT["EnerVerse-A：DiT 动作头（Diffusion Policy）去噪出动作块，d=7"]
+    FUT --> GS["EnerVerse-D：生成多视角视频 + 位姿 → 4DGS 重建并渲染"]
+    GS -->|"加噪后回灌，迭代优化"| GEN
+```
+
+图依据：论文 §2.1 Next Chunk Diffusion、§2.2 4D Embodied Space Generation、§2.3 From 4D Embodied Space to Physical Action / Fig.2、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +117,7 @@ Envisions embodied future space for robotics manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.01895>
+- [arXiv PDF](https://arxiv.org/pdf/2501.01895)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2（2.1–2.3）、§3.1 实验设定（模型细节）
 
 ## 推荐继续阅读
 

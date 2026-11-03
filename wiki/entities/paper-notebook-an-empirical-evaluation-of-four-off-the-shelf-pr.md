@@ -33,6 +33,22 @@ summary: "不是又一篇新算法，而是一篇「实测对比」基准论文�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["自制采集架 Fig.1：手持（室内）/ 固定于副驾座椅（车载）"] --> B["四台设备同架采集<br/>iPhone 12 Pro Max（ARKit, 60 Hz）<br/>LG V60 ThinQ（ARCore, 30 Hz）<br/>RealSense T265（200 Hz）<br/>ZED 2（30 Hz）"]
+  B --> C["默认参数，关闭回环等 SLAM 功能<br/>相机内外参用棋盘格标定"]
+  C --> D["六段室内外序列<br/>走廊 / 大厅 / 楼梯 / 校园 / 地下停车场 / 城市道路"]
+  D --> E["起点与终点重合"]
+  E --> F["定量：终点漂移 FDE（米）<br/>Table I"]
+  E --> G["定性：轨迹叠加楼层平面图或 Google Maps<br/>看一致性与稳定性"]
+  F --> H["四系统对比与讨论 §V"]
+  G --> H
+```
+
+图依据：评测协议流程图（基准评测），论文 §III–IV、Fig.1、Fig.3、Fig.4、Table I。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -65,6 +81,7 @@ summary: "不是又一篇新算法，而是一篇「实测对比」基准论文�
 - [humanoid_pnb_an-empirical-evaluation-of-four-off-the-shelf-pr.md](../../sources/papers/humanoid_pnb_an-empirical-evaluation-of-four-off-the-shelf-pr.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_VIO_Systems/An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_VIO_Systems.html>
 - 论文：<https://arxiv.org/abs/2207.06780>
+- [arXiv PDF](https://arxiv.org/pdf/2207.06780)：已通读 §I–VI（含 §III 四系统介绍、§IV 实验与评测、§V 讨论、§VI 结论）
 
 ## 推荐继续阅读
 

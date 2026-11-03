@@ -42,6 +42,21 @@ Vision-language guided safety-aware RL with world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  D0["离线驾驶数据（前视图像 I_t + 自车速度 v_t）"] --> V["预训练 VLM 按结构化提示输出安全分数 α_t ∈ [0,1]<br/>高风险标志 c_t 超阈值时以 α_cap 截断"]
+  V --> WM["安全感知世界模型（DreamerV3）<br/>含 reward / cost / continuation / safety 预测头，imagined rollout"]
+  D0 --> WM
+  WM --> AC["在想象 rollout 上训练 actor-critic<br/>expectile 价值网络 + Lagrangian 成本约束 + KL 信任域"]
+  WM -->|"预测的安全分数 α(s)，推理时不再调用 VLM"| GATE["语义安全门控权重<br/>w̃ = (ε + (1−ε)·α(s))·exp(β·A_r)"]
+  GATE --> AC
+  AC --> POL["驾驶策略"]
+```
+
+图依据：论文 §4 / §4.1 / §4.2 / §4.3 / §4.4（Fig.3 VLM-SAFE 总框架）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +112,7 @@ Vision-language guided safety-aware RL with world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.16377>
+- [arXiv PDF](https://arxiv.org/pdf/2505.16377)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Preliminaries（略读）、§4 Methodology（4.1–4.4）
 
 ## 推荐继续阅读
 

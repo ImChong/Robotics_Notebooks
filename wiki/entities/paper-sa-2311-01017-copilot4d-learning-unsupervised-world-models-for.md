@@ -42,6 +42,24 @@ Learns unsupervised world models for autonomous driving via discrete diffusion.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PC["过去 LiDAR 点云观测 o(1..t) 与自车 SE(3) 位姿动作 a(1..t)"] --> ENC["Tokenizer 编码器：PointNet 体素特征 → BEV pillar → Swin Transformer（BEV 下采样 8x）"]
+    ENC --> VQ["向量量化（VQ 码本）→ 离散 BEV tokens x(1..t)"]
+    VQ --> WM["World Model：时空 Transformer（时间维因果掩码）+ 离散扩散，输入过去 tokens 与动作"]
+    PC -.-> WM
+    MASK["下一帧 tokens 初始全为 mask（x_K）"] --> WM
+    WM --> SAMP["迭代去噪采样（改进的 MaskGIT 式离散扩散，可用 classifier-free guidance）→ x_0(t+1)"]
+    SAMP --> DEC["Tokenizer 解码器：Swin blocks + 神经特征网格 NFG + MLP/sigmoid 隐式占据"]
+    DEC --> DEPTH["可微深度渲染 → 预测点云观测 o(t+1)"]
+    DEC --> SKIP["体素占据分支：推理时用于 spatial skipping 加速射线采样"]
+    DEPTH -->|"自回归：预测帧并入历史，继续预测"| PC
+```
+
+图依据：论文 §4（Fig.2 方法总览）、§4.1 Tokenize the 3D World、§4.2 MaskGIT as Discrete Diffusion（Algorithm 1/2）与世界模型训练目标（Fig.4：50% 条件于过去去噪未来 / 40% 联合去噪 / 10% 逐帧独立，用于 classifier-free guidance）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Learns unsupervised world models for autonomous driving via discrete diffusion.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2311.01017>
+- [arXiv PDF](https://arxiv.org/pdf/2311.01017)：已通读方法部分（实验与附录以略读为准）：§4 方法总览、§4.1 Tokenizer、§4.2 离散扩散与世界模型训练目标
 
 ## 推荐继续阅读
 

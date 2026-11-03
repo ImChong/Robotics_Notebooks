@@ -37,6 +37,31 @@ sources:
 - EgoLive 更像是在回答另一个问题：第一视角数据不能只停留在“日常视频”，它要尽量靠近机器人未来要做的任务。
 - 论文强调的是大规模、真实场景、任务导向和多模态标注。它覆盖家政、零售等真实工作场景，目标很明确：给机器人学习提供更接近部署环境的数据。
 
+## 流程总览
+
+本图画论文自述的数据采集与自动标注流程（数据集本身无训练方法）。
+
+```mermaid
+flowchart TD
+    A["JoyEgoCam 头戴双目采集<br/>2160×2160 @60Hz 立体 RGB + 200Hz IMU + 标定与触发时间戳"] --> B[去畸变、左右视图分离、内参标定]
+    B --> C["运动跟踪<br/>HaMeR 两阶段：单目估计 MANO 参数"]
+    B --> D["相机自运动：ORB-SLAM3<br/>融合双目 RGB 与 IMU"]
+    B --> E["语义理解：检测手与交互物体<br/>BoT-SORT 跟踪，SAM2 分割"]
+    B --> F["3D 重建：FoundationStereo<br/>稠密深度 1152×1152"]
+    E --> G[按手-物体检测与跟踪结果切分子任务片段]
+    G --> H["微调 Qwen3-VL-32B<br/>多阶段推理生成细粒度指令描述"]
+    C --> I["第二阶段：立体优化<br/>得到满足 2D 投影约束的 3D 手部关键点"]
+    F --> I
+    C --> J[手腕/手部关节 6D 轨迹]
+    D --> J
+    I --> J
+    J --> K["多模态标注：轨迹 + 语义 + 3D 重建"]
+    H --> K
+    F --> K
+```
+
+图依据：论文 §3.1 数据采集、§3.2 自动标注 / Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -91,6 +116,7 @@ EgoLive 更像是在回答另一个问题：第一视角数据不能只停留在
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md) — 9 篇总表
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md) — 微信公众号编译导读
 - 论文/项目：<https://arxiv.org/abs/2604.23570>
+- [arXiv PDF](https://arxiv.org/pdf/2604.23570)：已通读方法部分（实验与附录以略读为准）：§3.1 数据采集、§3.2 自动标注、Fig.3
 
 ## 推荐继续阅读
 

@@ -55,6 +55,45 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：以 `-DCOMPILE_DEMOS=ON` 构建后运行 `demo_online`（源码 `demo/demo_online.cpp`；离线回放为 `demo_pcap`，多雷达为 `demo_online_multi_lidars`）。rs_driver 是 header-only 库，`LidarDriver<T>` 的实现在 `lidar_driver_impl.hpp`。下图为 Linux 在线雷达路径（默认 `select()` 接收）。
+
+```mermaid
+sequenceDiagram
+    participant M as demo_online.cpp main()
+    participant D as LidarDriver / LidarDriverImpl
+    participant DF as DecoderFactory + Decoder
+    participant IF as InputFactory + InputSock
+    participant RT as InputSock::recvPacket 线程
+    participant HT as LidarDriverImpl::processPacket 线程
+    participant UT as 用户线程 processCloud
+    M->>M: 填 RSDriverParam(input_type=ONLINE_LIDAR, msop 6699, difop 7788, imu 6688, lidar_type)
+    M->>D: regPointCloudCallback / regExceptionCallback / regImuDataCallback
+    M->>D: init(param)
+    D->>DF: createDecoder(lidar_type)，注册异常回调与 splitFrame 回调
+    D->>IF: createInput(...)，注册 packetGet / packetPut
+    D->>IF: input_ptr_->init() 创建 msop/difop/imu socket
+    M->>UT: std::thread(processCloud)
+    M->>D: start()
+    D->>HT: 启动 processPacket 线程
+    D->>RT: input_ptr_->start() 启动 recvPacket 线程
+    loop 收包
+        RT->>D: cb_get_pkt_ 取空 Buffer(packetGet)
+        RT->>RT: select() 收 UDP 包
+        RT->>D: pushPacket -> packetPut(pkt_queue_)
+    end
+    loop 解包
+        HT->>HT: pkt_queue_.popBatch
+        HT->>DF: internalProcessPacket: 按包头分 MSOP / DIFOP / IMU
+        DF->>D: MSOP 凑满一帧时调 splitFrame
+        D->>M: cb_put_cloud_(driverReturnPointCloudToCallerCallback)
+        M->>UT: stuffed_cloud_queue.push，processCloud 取出处理后归还 free_cloud_queue
+    end
+```
+
+图依据：RoboSense-LiDAR/rs_driver@897b14d，读过 CMakeLists.txt（选项）、demo/CMakeLists.txt、demo/demo_online.cpp、src/rs_driver/driver/lidar_driver_impl.hpp（init、start、packetGet/Put、internalProcessPacket、processPacket、splitFrame）、driver/input/input.hpp 与 unix/input_sock_select.hpp（线程与回调部分）；各型号 decoder_*.hpp 的解码细节、PCAP 输入与 epoll 实现未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +105,7 @@ institutions:
 - [rs_driver 源码归档](../../sources/repos/rs_driver.md)（<https://github.com/RoboSense-LiDAR/rs_driver>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：RoboSense-LiDAR/rs_driver@897b14d，读过 CMakeLists.txt、demo/demo_online.cpp、lidar_driver_impl.hpp、input/input.hpp、input/unix/input_sock_select.hpp；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

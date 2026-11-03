@@ -85,6 +85,77 @@ summary: "Berkeley Humanoid Lite（BHL）：UC Berkeley 低成本准直驱开源
 - **适合学习与验证，不适合原样用于重型人形**。
 - 可与 [Internal Cycloidal](./internal-cycloidal-actuator.md)（电机—减速一体）及 [Urs 等打印 QDD 论文](./paper-3d-printed-open-source-actuators-legged.md)（系统热/寿命评测）对照。
 
+## 源码运行时序图
+
+仓库按功能分三条入口（均在 `scripts/` 下）。`source/berkeley_humanoid_lite_lowlevel/` 是 git 子模块（`.gitmodules` 指向 Berkeley-Humanoid-Lite-Lowlevel），本次浅克隆中为空，下图涉及该子模块处只标注为黑盒，未读其内部。
+
+### 训练：Isaac Lab + RSL-RL
+
+入口：`python scripts/rsl_rl/train.py --task=Velocity-Berkeley-Humanoid-Lite-v0`（任务 id 来自 `tasks/locomotion/velocity/config/humanoid/__init__.py` 的 `gym.register`；`--num_envs`、`--max_iterations`、`--video` 等参数见脚本 argparse）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 train.py
+    participant AL as isaaclab.app.AppLauncher
+    participant H as hydra_task_config
+    participant T as berkeley_humanoid_lite.tasks（gym.register）
+    participant E as gym.make → ManagerBasedRLEnv
+    participant W as RslRlVecEnvWrapper
+    participant R as rsl_rl.runners.OnPolicyRunner
+
+    U->>U: argparse，cli_args.add_rsl_rl_args，AppLauncher.add_app_launcher_args
+    U->>AL: AppLauncher(args_cli)，得到 simulation_app
+    U->>T: import berkeley_humanoid_lite.tasks 触发任务注册
+    U->>H: main() 由 @hydra_task_config(task, "rsl_rl_cfg_entry_point") 装饰
+    H-->>U: env_cfg（BerkeleyHumanoidLiteEnvCfg）、agent_cfg（BerkeleyHumanoidLitePPORunnerCfg）
+    U->>U: 用 CLI 覆盖 num_envs、max_iterations、seed，确定 logs/rsl_rl/... 日志目录
+    U->>E: gym.make(task, cfg=env_cfg)
+    opt --video
+        U->>E: gym.wrappers.RecordVideo
+    end
+    U->>W: RslRlVecEnvWrapper(env)
+    U->>R: OnPolicyRunner(env, agent_cfg.to_dict(), log_dir)
+    opt agent_cfg.resume
+        U->>R: runner.load(get_checkpoint_path(...))
+    end
+    U->>U: dump_yaml / dump_pickle 写 params/env 与 agent
+    U->>R: runner.learn(num_learning_iterations=max_iterations)
+    U->>E: env.close()，simulation_app.close()
+```
+
+### 回放与导出，以及 MuJoCo sim2sim
+
+入口：`python scripts/rsl_rl/play.py ...` 加载检查点后导出 `policy.pt` / `policy.onnx` 并写部署用 yaml；再用 `python scripts/sim2sim/play_mujoco.py`（配置经 `Cfg.from_arguments()` 读取，`configs/` 下有 `policy_humanoid.yaml` 等）在 MuJoCo 中加载配置里的策略检查点（配置中为 .onnx 路径；加载逻辑在未读的 RlController 内）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 play_mujoco.py
+    participant C as Cfg（lowlevel 子模块，未读）
+    participant S as environments/mujoco.py MujocoSimulator
+    participant MJ as mujoco（MjModel / mj_step / viewer）
+    participant RC as RlController（lowlevel 子模块，未读）
+
+    U->>C: Cfg.from_arguments()
+    U->>S: MujocoSimulator(cfg)
+    S->>MJ: MjModel.from_xml_path(bhl_scene.xml 或 bhl_biped_scene.xml)，launch_passive 打开 viewer
+    U->>S: robot.reset()
+    S-->>U: obs（_get_observations）
+    U->>RC: RlController(cfg)，load_policy()
+    loop while True
+        U->>RC: controller.update(obs.numpy())
+        RC-->>U: actions（None 时回退到 default_joint_positions）
+        U->>S: robot.step(actions)
+        loop physics_substeps
+            S->>S: _apply_actions（PD 力矩、EMA 滤波、力矩限幅）
+            S->>MJ: mj_step
+        end
+        S->>MJ: mj_viewer.sync()
+        S-->>U: 新 obs，并按 policy_dt 休眠对齐实时
+    end
+```
+
+图依据：HybridRobotics/Berkeley-Humanoid-Lite@984741a，读过 README.md、.gitmodules、scripts/rsl_rl/train.py、scripts/rsl_rl/play.py（仅导出相关行）、scripts/sim2sim/play_mujoco.py、configs/policy_humanoid.yaml（前段）、source/berkeley_humanoid_lite/berkeley_humanoid_lite/tasks/locomotion/velocity/config/humanoid/__init__.py、source/berkeley_humanoid_lite/berkeley_humanoid_lite/environments/mujoco.py（reset / step / _apply_actions）。
+
 ## 关联页面
 
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
@@ -108,3 +179,4 @@ summary: "Berkeley Humanoid Lite（BHL）：UC Berkeley 低成本准直驱开源
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)
 - [humanoid_pnb_berkeley-humanoid-lite-an-open-source-accessible.md](../../sources/papers/humanoid_pnb_berkeley-humanoid-lite-an-open-source-accessible.md)
 - 论文：<https://arxiv.org/abs/2504.17249>
+- 源码核对（2026-11-02）：HybridRobotics/Berkeley-Humanoid-Lite@984741a，读过 README.md、.gitmodules、scripts/rsl_rl/{train,play}.py、scripts/sim2sim/play_mujoco.py、configs/policy_humanoid.yaml、tasks 注册 __init__.py、environments/mujoco.py；lowlevel 子模块（RlController、Cfg）未克隆未读；时序图依据以上文件，未运行代码。

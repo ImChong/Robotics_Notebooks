@@ -56,6 +56,47 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python inference/interleave.py --ckpt ./ckpts/rxbrain --vae /path/to/ae.safetensors --frames demo_cases/$CASE/input/*.jpg --task "$(cat demo_cases/$CASE/prompt.txt)" --max_frames 5 --num_steps 50 --out_dir out_$CASE`（README「④ Interleaved Embodied Planning」）。同目录另有 `text2image.py`、`multiframe.py`、`vqa.py`；`vqa.py` 复用同一套 `build_conditioned_sequence` 与 KV 缓存逐 token 解码，直到 EOS，不用 VAE。
+
+```mermaid
+sequenceDiagram
+    participant M as interleave.py main()
+    participant R as interleave_generate_joint()
+    participant S as generate_step_joint()
+    participant B as build_conditioned_sequence()
+    participant U as UnifiedMoT (model.model, model/modeling_unified_mot.py)
+    participant V as vae_model.autoencoder (load_ae / vae.decode)
+    M->>M: HunYuanVLMoTProcessor.from_pretrained；设置 image_processor.max_pixels
+    M->>U: UnifiedMoTForConditionalGeneration.from_pretrained + maybe_init_generation_path
+    M->>V: load_ae(--vae)
+    M->>R: obs 帧、task、num_frames、num_steps
+    loop k = 1..num_frames
+        R->>S: generate_step_joint(obs_frames, task, prior_steps)
+        S->>B: 拼 chat 模板：观测帧 + 前序(文本, 帧) + TASK_INSTRUCTION_INTERLEAVE
+        B-->>S: prompt_ids 与 pixel_values / image_grid_thw
+        S->>U: prefill 提示词，DynamicCache
+        loop 逐 token 贪心解码，至 image_start 或 EOS 或 max_text_tokens
+            S->>U: 单 token 前向，复用 KV 缓存
+        end
+        S->>U: prefill(提示词 + 计划文本 + image_start)
+        Note over S,U: 初始 x 为高斯噪声；ts 从 1.0 线性到 0.0
+        loop num_steps 次欧拉去噪
+            S->>U: 仅前向 latent 令牌（vae2llm + time_embedder + 位置嵌入）
+            U-->>S: hidden_states，经 llm2vae 得速度 v，x = x - dt*v
+        end
+        S->>V: unpatchify_latent 后 vae.decode(x_lat)
+        V-->>S: 图像张量
+        S-->>R: (计划文本, 图像)
+        R->>R: 存 joint_step{k}.png；(文本, 路径) 追加进 prior_steps
+    end
+    R-->>M: 帧路径与文本
+    M->>M: 写 result.txt 与 rollout_GEN.png
+```
+
+图依据：Hy-Embodied-RxBrain-1.0@7d35a9c，`README.md`、`inference/interleave.py`、`inference/vqa.py`、`inference/utils.py`；`model/` 内部（注意力、MoT 三流）未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -69,6 +110,7 @@ institutions:
 - [RxBrain-1.0 源码归档](../../sources/repos/hy-embodied-rxbrain-1_0.md)（<https://github.com/Tencent-Hunyuan/Hy-Embodied-RxBrain-1.0>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Tencent-Hunyuan/Hy-Embodied-RxBrain-1.0@7d35a9c，读过 README.md、inference/interleave.py、inference/vqa.py、inference/utils.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

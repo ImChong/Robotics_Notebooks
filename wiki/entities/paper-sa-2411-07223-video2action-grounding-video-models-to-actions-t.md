@@ -43,6 +43,21 @@ Grounds video models to actions through goal-conditioned exploration.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["冻结视频扩散模型 f_θ(x_start, c)：由初始观测与任务描述生成视频帧 pred_v"] --> X["目标条件策略 π(a | x_start, x_goal)：把每帧依次当作视觉目标，输出动作块"]
+    X --> R["环境（无奖励）执行，记录图像-动作对"]
+    R --> B["回放缓冲区 R（事后重标注：用真实执行结果当标签）"]
+    RA["周期性随机动作自举：训练前与训练中定期加入随机动作块"] --> B
+    B --> T["采样连续片段 (x_i, x_{i+h}, a_{i:i+h})，MSE 训练策略"]
+    T --> X
+    T --> O["输出：目标条件策略 π"]
+```
+
+图依据：论文 §3.1–3.3、Alg. 1 / Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ Grounds video models to actions through goal-conditioned exploration.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.07223>
+- [arXiv PDF](https://arxiv.org/pdf/2411.07223)：已通读方法部分（实验与附录以略读为准）：§1–§3（方法）、§4 实验设定开头
 
 ## 推荐继续阅读
 

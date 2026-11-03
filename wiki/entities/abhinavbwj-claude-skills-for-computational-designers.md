@@ -52,6 +52,37 @@ Claude Skills for Computational Designers（Abhinavbwj/Claude-skills-for-Computa
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 MIT。 
 
+## 源码运行时序图
+
+入口：`claude --plugin-dir "<仓库路径>"`（加载 `.claude-plugin/plugin.json`），或把 `skills/` 复制到 `.claude/skills/`；可执行代码只有 `skills/cd-calculator/scripts/` 下 7 个命令行脚本，例如 `python skills/cd-calculator/scripts/panel_optimizer.py --panels "1200x800,1200x810" --tolerance 10 [--json]`。其余 17 个技能是 SKILL.md 与参考文档，由 Claude 读取，不是程序。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant CC as Claude Code（插件加载 skills/）
+    participant F as skills/cd-foundations/SKILL.md
+    participant K as 专项技能 SKILL.md（如 facade-computation）
+    participant CD as skills/cd-calculator/SKILL.md
+    participant P as scripts/panel_optimizer.py main()
+    U->>CC: 提问计算设计问题
+    CC->>F: 先载入基础技能（README 称其自动触发并分流）
+    F-->>CC: 路由到专项技能
+    CC->>K: 载入专项技能正文，按需再读 references/
+    K-->>CC: 需要精确计算时转向 cd-calculator
+    CC->>CD: 读取 7 个计算器的命令行说明
+    CC->>P: 以命令行方式运行脚本，参数 --panels --tolerance 等
+    P->>P: build_parser 解析，parse_panels 校验 WxH 格式
+    P->>P: optimize_panels 内含 cluster_panels、compute_waste、compute_cost_impact
+    alt 带 --json
+        P-->>CC: json.dumps(result)
+    else 默认
+        P-->>CC: print_results 表格文本
+    end
+    CC-->>U: 引用计算结果作答
+```
+
+图依据：Abhinavbwj/Claude-skills-for-Computational-Designers@7a090c9，读过 `README.md`（How It Works 一节）、`.claude-plugin/plugin.json`、`skills/cd-calculator/SKILL.md`（开头与目录说明）、`skills/cd-calculator/scripts/panel_optimizer.py`（`main` 与参数解析、函数清单）、`skills/cd-calculator/scripts/structural_checker.py`（`main` 与参数解析）。技能路由与何时调用脚本是 Claude Code 依据 SKILL.md 的运行时行为，仓库内无对应代码，此处按 README 描述绘制；其余 6 个计算器与 17 个技能正文未逐一读。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -62,6 +93,7 @@ Claude Skills for Computational Designers（Abhinavbwj/Claude-skills-for-Computa
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/abhinavbwj-claude-skills-for-computational-designers.md)
 - [Abhinavbwj/Claude-skills-for-Computational-Designers 官方仓库](<https://github.com/Abhinavbwj/Claude-skills-for-Computational-Designers>)
+- 源码核对（2026-11-02）：Abhinavbwj/Claude-skills-for-Computational-Designers@7a090c9，读过 README.md、.claude-plugin/plugin.json、skills/cd-calculator/SKILL.md、skills/cd-calculator/scripts/panel_optimizer.py、skills/cd-calculator/scripts/structural_checker.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -41,6 +41,23 @@ summary: "训练对手网络施加扰动力，与策略对抗以提升鲁棒性�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **域随机化** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INIT["随机初始化主角策略 μ（θμ）与对手策略 ν（θν）"] --> LOOP["第 i 次迭代（共 Niter 次）"]
+    LOOP --> A1["阶段一：固定 θν，用 roll 在环境 E 中采样 Ntraj 条轨迹（双方同时行动）"]
+    A1 --> A2["policyOptimizer 更新主角 θμ，最大化 R1，重复 Nμ 次"]
+    A2 --> B1["阶段二：固定 θμ，再采样 Ntraj 条轨迹"]
+    B1 --> B2["policyOptimizer 更新对手 θν，最大化 R2 = -R1，重复 Nν 次"]
+    B2 --> LOOP
+    B2 --> RET["返回 θμ 与 θν"]
+    ENV["环境 E：转移函数 P(s, a1, a2)，零和奖励 r1 = r，r2 = -r；对手在预定义位置施加力"] -.-> A1
+    ENV -.-> B1
+```
+
+图依据：论文 §3.1–§3.3、Algorithm 1。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +106,7 @@ summary: "训练对手网络施加扰动力，与策略对抗以提升鲁棒性�
 - [freedof_sim2real_18_rarl-robust-adversarial-rl.md](../../sources/papers/freedof_sim2real_18_rarl-robust-adversarial-rl.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/1703.02702)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2、§3（3.1–3.3，含 Algorithm 1）；§4 实验、§5 相关工作略读
 
 ## 推荐继续阅读
 

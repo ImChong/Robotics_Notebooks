@@ -42,6 +42,30 @@ A zero‑shot black‑box optimisation framework that combines LLMs’ physical 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["任务实例 T：多视角查询图 x_g + 辅助视频 X_T + 任务描述与模拟器 API 提示 I"] --> P1
+    subgraph P1["阶段 1：推断物理参数 Φ"]
+        T1["τ：从 X_T 提取物体中心 3D 轨迹"] --> L1["LLM_1 生成含物理参数 Φ 的 Python 程序 π(Φ)"]
+        L1 --> S1["物理引擎 SIM 执行程序，得到模拟轨迹"]
+        S1 --> E1["与 τ(X_T) 求 L2 轨迹误差"]
+        E1 -->|"误差 > ε：程序 + Error 拼回提示"| L1
+    end
+    A --> P2
+    subgraph P2["阶段 2：布局估计 Ψ"]
+        L2["LVLM 读 x_g，生成含 (type, location, color) 的程序 π(Ψ)"] --> S2["SIM 渲染重建初始帧"]
+        S2 --> E2["与 x_g 比较 PSNR"]
+        E2 -->|"未达标：反馈拼回提示"| L2
+    end
+    P1 -->|"Φ*"| F["以 Φ*、Ψ* 前向模拟，取各物体末状态"]
+    P2 -->|"Ψ*"| F
+    F --> G["匹配候选答案集 O，得到答案子集 A"]
+```
+
+图依据：论文 §3.1–3.3、Alg. 1 / Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ A zero‑shot black‑box optimisation framework that combines LLMs’ physical 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.08027>
+- [arXiv PDF](https://arxiv.org/pdf/2411.08027)：已通读方法部分（实验与附录以略读为准）：§2–§3（相关工作、方法）、§4 实验设定
 
 ## 推荐继续阅读
 

@@ -43,6 +43,27 @@ Multiview visual forecasting and planning with world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["单视角图像数据"] --> SD["预训练图像扩散模型 θ（SD 初始化）"]
+    SD --> FT["冻结 θ，视频数据微调 temporal layers φ 与 multiview layers ψ"]
+    COND["条件：初始上下文帧 / 布局（3D box、HD map、BEV）/ 文本 / 自车 action (Δx,Δy)"] --> ENC["统一条件接口：各条件编码为 d 维嵌入并拼接 c_t"]
+    FT --> GEN["3D UNet 多视角视频生成（c_t 经逐帧 cross attention 注入）"]
+    ENC --> GEN
+    GEN --> FAC["因子分解生成：p(x1..K) 逐视角以邻接视角为条件，增强重叠区域一致性"]
+    FAC --> VID["多视角未来视频"]
+    PLAN["预训练 planner：真实多视角图像 → 采样候选轨迹"] --> ACT["候选 action 作为条件"]
+    ACT --> GEN
+    VID --> PER["感知模型：3D 检测器 + 在线 HDMap 预测"]
+    PER --> REW["object reward × map reward（总奖励为乘积）"]
+    REW --> SEL["选最大奖励轨迹，扩展 planning tree"]
+    SEL -->|"下一时刻迭代"| PLAN
+```
+
+图依据：论文 §3.1–3.3（多视角视频生成）、§4.1–4.2 / Fig.5（基于世界模型的规划与图像奖励）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ Multiview visual forecasting and planning with world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2311.17918>
+- [arXiv PDF](https://arxiv.org/pdf/2311.17918)：已通读方法部分（实验与附录以略读为准）：§3 多视角视频生成、§4 端到端规划、§5.1 实验设置
 
 ## 推荐继续阅读
 

@@ -42,6 +42,21 @@ Creates new games using generative interactive videos.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    P0["Phase #0：开放域数据预训练<br/>Transformer 潜空间视频扩散模型"] --> P1
+    G["GF-Minecraft 数据集<br/>70 小时、动作无偏、带文本描述"] --> P1
+    P1["Phase #1：LoRA 域适配器<br/>拟合游戏画面风格"] --> P2
+    G --> P2
+    P2["Phase #2：冻结预训练参数与 LoRA<br/>只训练动作控制模块<br/>滑窗分组动作；鼠标拼接+MLP+时间自注意力；键盘交叉注意力"] --> P3
+    P3["Phase #3：推理时移除 LoRA<br/>保留动作控制模块<br/>开放域动作可控生成"]
+    P3 --> AR["自回归长视频生成<br/>最近 k+1 帧作条件，每步生成 N−k 帧<br/>(Diffusion Forcing 式不同噪声级)"]
+```
+
+图依据：论文 §3、§4.1-4.3、§5.1-5.2 与 Fig. 3 / Fig. 5 / Fig. 6。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Creates new games using generative interactive videos.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.08325>
+- [arXiv PDF](https://arxiv.org/pdf/2501.08325)：已通读方法部分（实验与附录以略读为准）：§3-§5；§6 实验与附录略读
 
 ## 推荐继续阅读
 

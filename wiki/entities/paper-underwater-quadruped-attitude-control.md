@@ -41,6 +41,25 @@ summary: "POM 防水电机壳+密封件+简化流体模型；SO(3) 误差闭环�
 - 开源状态：**部分开源**（步骤 2.5 核查，2026-09-10）。
 - 与 [11 篇技术地图](../overview/vlm-manipulation-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[期望姿态 R_d] --> B[SO3 姿态误差 e_R<br/>由 R_d 与 IMU 当前旋转 R 的反对称部分取 vee]
+    I[VN-100 IMU<br/>姿态四元数与角速度] --> B
+    B --> C[PID 控制律 + 抗积分饱和<br/>前馈补偿陀螺耦合项与浮力力矩<br/>得 tau_cmd]
+    C --> D[力矩幅值钳位 tau_max = 2 Nm<br/>饱和差经 K_aw 反馈给积分项]
+    D --> E[力矩均分到四条腿<br/>求拖曳力方向与所需足端速度 v_i]
+    E --> F[足端速度命令 含机体转动补偿]
+    F --> G[两对角腿组交替 发力相 与 恢复相<br/>速度命令在相开始时计算并保持]
+    G --> H[欧拉积分得足端位置<br/>逆运动学求关节角]
+    H --> J[100 Hz ROS 控制节点<br/>PWM 驱动 12 个舵机]
+    J --> K[足端球形末端水中运动产生拖曳力与力矩<br/>改变机体姿态]
+    K --> I
+```
+
+图依据：论文 §3.3 软件架构、§5 Attitude Controller Design（§5.1–§5.4）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -100,6 +119,7 @@ summary: "POM 防水电机壳+密封件+简化流体模型；SO(3) 误差闭环�
 - [underwater-quadruped-attitude-control_arxiv_2609_09217.md](../../sources/papers/underwater-quadruped-attitude-control_arxiv_2609_09217.md)
 - [wechat 11篇盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md)
 - [arXiv:2609.09217](https://arxiv.org/abs/2609.09217)
+- [arXiv PDF](https://arxiv.org/pdf/2609.09217)：已通读方法部分（实验与附录以略读为准）：§1 引言贡献、§3.3 软件架构、§4 建模（部分）、§5 姿态控制器设计与仿真验证
 
 ## 推荐继续阅读
 

@@ -46,6 +46,27 @@ summary: "OpenEAI-VLA（arXiv:2606.03392）：开源 6+1 DoF OpenEAI-Arm + Qwen3
 - 开源结论：**待发布**（步骤 2.5，2026-09-23）。
 - 与 [具身前沿算法技术地图](../overview/embodied-frontier-algorithms-technology-map.md) 同路线条目可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[图像 + 语言指令] --> B[Qwen3-VL-4B Instruct<br/>图像/文本 token 化]
+    Q[可学习 query 序列 q<br/>固定长度 M] --> B
+    B --> C[取 query 对应的末层隐状态 h_q<br/>固定带宽条件嵌入]
+    C --> D["Action Expert：18 层 DiT 式动作头<br/>输入：加噪动作块 + 机器人状态 s_t + h_q"]
+    S[机器人本体状态 s_t] --> D
+    D --> E[条件流匹配速度场 v_θ<br/>去噪得到连续动作块]
+    E --> F[dataset adapters<br/>适配具体本体动作空间]
+    F --> G[VLA 输出离散关节位置关键点]
+    G --> H[三点滚动 Bézier 动作块插值<br/>当前 / 下一 / 再下一关键点，有限差分得速度与加速度]
+    H --> I[FF-PID：PID + 动力学前馈补偿]
+    I --> J[OpenEAI-Arm 关节执行]
+    T[Open X-Embodiment] -.预训练：L_EM，VLM 冻结.-> D
+    M[少量人类示范 + COCO / VQA-v2 / PixMo-Points] -.微调共训：L = λ_EM·L_EM + λ_VLM·L_NTP.-> B
+```
+
+图依据：论文 §3 Policy Design / Fig.2、§5 Control Design。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -99,6 +120,7 @@ summary: "OpenEAI-VLA（arXiv:2606.03392）：开源 6+1 DoF OpenEAI-Arm + Qwen3
 - [openeai-vla_arxiv_2606_03392.md](../../sources/papers/openeai-vla_arxiv_2606_03392.md)
 - [wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md](../../sources/blogs/wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md)
 - [arXiv:2606.03392](https://arxiv.org/abs/2606.03392)
+- [arXiv PDF](https://arxiv.org/pdf/2606.03392)：已通读方法部分（实验与附录以略读为准）：Policy Design（模型架构与两阶段训练）、Hardware Design（概览）、Control Design、Fig.1/Fig.2
 
 ## 推荐继续阅读
 

@@ -43,6 +43,22 @@ Compositional foundation models for hierarchical planning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["语言目标 g + 当前观测 x_t"] --> LLM["任务规划: LLM 采样 M 个候选子目标 w_i"]
+    LLM --> CLS["子目标分类器 f_phi<br/>结合 x_t 选出 w (视觉可行性反馈)"]
+    CLS --> VD["视觉规划: 视频扩散模型<br/>Ego4D 预训练 + 任务视频微调<br/>从噪声去噪生成观测轨迹 tau_x"]
+    VD --> ACTFB["观测轨迹分类器 g_psi<br/>梯度引导 (动作可行性反馈)"]
+    ACTFB -->|"每个去噪步迭代修正"| VD
+    VD --> IDM["动作规划: 逆动力学模型<br/>由 x_t 与 x_t+1 推断动作 a_t"]
+    IDM --> ENV["执行动作 a_t, 获得新观测"]
+    ENV -->|"闭环重规划"| IN
+```
+
+图依据：论文 §2 / Fig.1-2（三层层级）、Algorithm 1（决策流程）、§2.1-2.2（迭代精炼）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ Compositional foundation models for hierarchical planning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2309.08587>
+- [arXiv PDF](https://arxiv.org/pdf/2309.08587)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2（任务规划、视觉规划及其迭代精炼、Algorithm 1）；动作规划细节（§2.3）、实验与附录略读
 
 ## 推荐继续阅读
 

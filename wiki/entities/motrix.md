@@ -75,6 +75,46 @@ python scripts/train.py task=microduck-ball-balance/motrix.fastsac play=true
 
 2048 并行 env、FastSAC 异步训练；用户实测约 **5–10 分钟** 可见策略。任务与奖励细节见 [Microduck 球平衡](../tasks/microduck-ball-balance.md)。
 
+## 源码运行时序图
+
+入口：`mxlab train task=microduck-walk-flat/motrix.fastsac play=true`（`mxlab = motrixlab.cli:main`；默认 `asynchronous: true`，走异步 collector/learner 双进程；`asynchronous=false` 时改走 `sync/train.py` 单进程交替）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 mxlab train
+    participant CLI as motrixlab/cli.py main
+    participant TR as motrix_rl/commands/train.py
+    participant RUN as motrix_rl/runner.py
+    participant FW as frameworks.py + fastsac/framework.py
+    participant T as fastsac/async_impl/train.py Trainer
+    participant C as worker.py run_collector_process
+    participant L as worker.py run_learner_process
+    U->>CLI: mxlab train task=...
+    CLI->>TR: import_module("motrix_rl.commands.train").main()
+    TR->>TR: load_plugins() 加载 motrix_rl.frameworks 入口
+    TR->>RUN: Hydra 组合 TrainConfig 后 runner.train(TrainRequest)
+    RUN->>RUN: resolve_train_backend, runs.create_run_context
+    RUN->>FW: get_agent_provider("motrix","fastsac","torch")
+    FW->>T: FastSacProvider.create_trainer 按 asynchronous 选 Trainer
+    RUN->>T: TrainerHandle.train() 即 Trainer.train()
+    T->>T: 建 1 个 env 探测维度后关闭
+    T->>C: spawn 进程，传入 SharedTransitionRing 与 WeightChannelShared
+    T->>L: spawn 进程，传入同一组 ring 与 weights
+    loop 直到 num_learning_iterations
+        C->>C: Collector.step_once 采样动作，env.step
+        C->>L: ring.push(obs, action, reward, terminated, truncated)
+        L->>L: Learner.drain 把 ring 写入 GPU replay buffer
+        L->>L: Learner.maybe_train 调 agent.update(n)
+        L-->>C: weights.publish，Collector.sync_weights 载入新 actor
+    end
+    L->>L: torch.save(agent.state_dict()) 写 model_*.pt
+    T-->>RUN: 子进程结束
+    RUN-->>TR: TrainResult
+    TR->>RUN: play=true 时 TrainResult.play，经 create_run_handle 与 Trainer.play(best policy)
+```
+
+图依据：Motphys/MotrixLab@8a1b6c3，读过 README.md、motrixlab/src/motrixlab/cli.py、motrix_rl/src/motrix_rl/{commands/train.py,cli.py,runner.py,frameworks.py,backend_runtime.py,contracts.py,result.py,plugins.py,configs/train.yaml}、motrix_rl_builtin/src/motrix_rl_builtin/{plugin.py,fastsac/framework.py,fastsac/sync/train.py,fastsac/async_impl/train.py,fastsac/async_impl/worker.py,fastsac/async_impl/collector.py,fastsac/async_impl/learner.py}（`async_impl` 的 worker/learner 仅读了入口与主循环相关部分）。
+
 ## 关联页面
 
 - [Microduck 球平衡](../tasks/microduck-ball-balance.md) — `microduck-ball-balance` 任务页
@@ -98,3 +138,4 @@ python scripts/train.py task=microduck-ball-balance/motrix.fastsac play=true
 - [MotrixSim Web Viewer 用户指南](../../sources/sites/motrixsim-web-viewer.md)
 - [MotrixSim 官方文档](https://motphys.github.io/motrixsim-docs/)
 - [MotrixLab GitHub](https://github.com/Motphys/MotrixLab)
+- 源码核对（2026-11-02）：Motphys/MotrixLab@8a1b6c3，读过 README.md、motrixlab/cli.py、motrix_rl 的 commands/train.py、runner.py、frameworks.py、backend_runtime.py、contracts.py、result.py，motrix_rl_builtin 的 fastsac/framework.py、sync/train.py、async_impl/{train,worker,collector,learner}.py；时序图依据以上文件，未运行代码。

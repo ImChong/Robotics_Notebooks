@@ -55,6 +55,62 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python humanoid/scripts/train.py --task=pai_ppo --run_name v1 --headless --num_envs 4096`（`auto_train4096.bash` 同此命令；README 写作 `scripts/train.py`，仓库内实际路径为 `humanoid/scripts/`），随后 `python humanoid/scripts/play.py --task=pai_ppo --run_name v1` 与 `python humanoid/scripts/sim2sim.py --load_model <policy.pt>`。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / auto_*.bash
+    participant TR as humanoid/scripts/train.py
+    participant REG as humanoid/utils/task_registry.py<br/>task_registry
+    participant ENV as humanoid/envs/pai/pai_env.py<br/>PaiFreeEnv(LeggedRobot)
+    participant GYM as Isaac Gym (gym.simulate)
+    participant RUN as humanoid/algo/ppo/on_policy_runner.py<br/>OnPolicyRunner
+    participant PPO as algo/ppo/ppo.py + actor_critic.py
+    participant PL as humanoid/scripts/play.py
+    participant S2S as humanoid/scripts/sim2sim.py<br/>(MuJoCo)
+
+    U->>TR: --task=pai_ppo --run_name --num_envs
+    TR->>REG: from humanoid.envs import *（register "pai_ppo": PaiFreeEnv, PaiCfg, PaiCfgPPO）
+    TR->>REG: make_env(name="pai_ppo", args)
+    REG->>ENV: PaiFreeEnv(cfg, sim_params, physics_engine, sim_device, headless)
+    TR->>REG: make_alg_runner(env, name, args)
+    REG->>RUN: OnPolicyRunner(env, train_cfg, log_dir)（ActorCritic + PPO，init_storage）
+    TR->>RUN: learn(max_iterations, init_at_random_ep_len=True)
+    loop 每个 iteration × num_steps_per_env
+        RUN->>PPO: alg.act(obs, critic_obs)
+        RUN->>ENV: env.step(actions)
+        ENV->>ENV: PaiFreeEnv.step：参考动作叠加 + 随机延迟/动态随机化
+        ENV->>ENV: LeggedRobot.step：clip；decimation 次 _compute_torques → set_dof_actuation_force_tensor
+        ENV->>GYM: gym.simulate；refresh_dof_state_tensor
+        ENV->>ENV: post_physics_step：compute_reward / compute_observations / check_termination
+        ENV-->>RUN: obs, privileged_obs, rewards, dones, infos
+        RUN->>PPO: alg.process_env_step
+    end
+    RUN->>PPO: compute_returns；alg.update()
+    RUN-->>U: logs/Pai_ppo/<time>_<run_name>/model_<it>.pt
+
+    U->>PL: --task=pai_ppo --run_name
+    PL->>REG: make_env(env_cfg 缩小到 ≤64 环境、plane 地形)
+    PL->>REG: make_alg_runner（resume=True，载入最新 model_*.pt）
+    PL->>RUN: get_inference_policy
+    PL->>PL: export_policy_as_jit / export_policy_to_onnx → exported/policies
+    loop stop_state_log 步
+        PL->>ENV: env.step(policy(obs))
+    end
+
+    U->>S2S: --load_model policy_*.pt
+    S2S->>S2S: torch.jit.load；mujoco.MjModel.from_xml_path
+    loop MuJoCo 步进
+        S2S->>S2S: 每 decimation 步：构造 obs（sin/cos 步态相位、cmd、q、dq、IMU）× frame_stack
+        S2S->>S2S: action = policy(policy_input)；target_q = action*action_scale
+        S2S->>S2S: pd_control → tau（clip）→ mujoco.mj_step
+    end
+```
+
+图依据：HighTorque-Robotics/livelybot_pi_rl_baseline@e8b787a，读过 README.md、auto_train4096.bash、auto_sim2sim.bash、humanoid/envs/__init__.py、humanoid/envs/pai/pai_env.py（step 与类方法清单）、humanoid/envs/base/legged_robot.py（step）、humanoid/utils/task_registry.py、humanoid/algo/ppo/on_policy_runner.py（learn、save、get_inference_policy）、humanoid/scripts/{train,play,sim2sim}.py。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +122,7 @@ institutions:
 - [livelybot_pi_rl_baseline 源码归档](../../sources/repos/livelybot_pi_rl_baseline.md)（<https://github.com/HighTorque-Robotics/livelybot_pi_rl_baseline>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：HighTorque-Robotics/livelybot_pi_rl_baseline@e8b787a，读过 README.md、auto_train4096.bash、humanoid/envs/__init__.py、humanoid/envs/pai/pai_env.py、humanoid/envs/base/legged_robot.py（step）、humanoid/utils/task_registry.py、humanoid/algo/ppo/on_policy_runner.py、humanoid/scripts/{train,play,sim2sim}.py；ppo.py / actor_critic.py 仅按 runner 的调用关系推断，未读；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

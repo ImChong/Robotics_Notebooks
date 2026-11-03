@@ -55,6 +55,41 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python scripts/rsl_rl/train.py --headless --task Magiclab-Z1-12dof-Velocity`（或 `./train_bash.sh`，其中固定了 `--max_iterations=10000 --num_envs=8192`）；回放导出：`python scripts/rsl_rl/play.py --task Magiclab-Z1-12dof-Velocity`。需要 Isaac Lab 环境。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / train_bash.sh
+    participant Tr as scripts/rsl_rl/train.py main()
+    participant App as isaaclab.app.AppLauncher
+    participant Reg as magiclab_rl_lab.tasks（import_packages 注册）
+    participant Env as ManagerBasedRLEnv (RobotEnvCfg, velocity_env_cfg.py)
+    participant Run as rsl_rl OnPolicyRunner (BasePPORunnerCfg)
+    participant Exp as utils/export_deploy_cfg.py
+    participant Pl as scripts/rsl_rl/play.py
+    U->>Tr: --task Magiclab-Z1-12dof-Velocity --headless ...
+    Tr->>App: AppLauncher(args_cli) 启动 Isaac Sim
+    Tr->>Reg: import magiclab_rl_lab.tasks，gym.register 任务 ID
+    Tr->>Tr: hydra_task_config 取 env_cfg 与 rsl_rl_cfg_entry_point
+    Tr->>Tr: cli_args.update_rsl_rl_cfg，覆盖 num_envs / max_iterations / seed
+    Tr->>Env: gym.make(task, cfg=env_cfg)
+    Tr->>Run: RslRlVecEnvWrapper(env) → OnPolicyRunner(env, agent_cfg, log_dir)
+    opt agent_cfg.resume
+        Tr->>Run: load(resume_path)
+    end
+    Tr->>Tr: dump_yaml(params/env.yaml, agent.yaml)
+    Tr->>Exp: export_deploy_cfg(env.unwrapped, log_dir)
+    Exp-->>Tr: 关节映射 / 刚度 / 阻尼 / 默认关节角 / 指令范围 / 动作缩放
+    Tr->>Run: learn(max_iterations, init_at_random_ep_len=True)
+    U->>Pl: play.py --task ...
+    Pl->>Run: runner.load(resume_path)；get_inference_policy
+    Pl->>Pl: export_policy_as_jit / export_policy_as_onnx → exported/
+```
+
+图依据：magiclab_rl_lab@e762473，读过 README.md、train_bash.sh、scripts/rsl_rl/train.py、scripts/rsl_rl/play.py（导出相关行）、tasks/locomotion/robots/z1/12dof/__init__.py、tasks/__init__.py、utils/export_deploy_cfg.py（前半）。`velocity_env_cfg.py`、奖励/观测/课程（mdp/）、`play_keyboard.py` 未读内部。`export_deploy_cfg` 写出的具体文件名未读，图中未标注。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +101,7 @@ institutions:
 - [magiclab_rl_lab 源码归档](../../sources/repos/magiclab_rl_lab.md)（<https://github.com/MagiclabRobotics/magiclab_rl_lab>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：MagiclabRobotics/magiclab_rl_lab@e762473，读过 README.md、train_bash.sh、scripts/rsl_rl/train.py、scripts/rsl_rl/play.py（导出相关行）、tasks/locomotion/robots/z1/12dof/__init__.py、utils/export_deploy_cfg.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

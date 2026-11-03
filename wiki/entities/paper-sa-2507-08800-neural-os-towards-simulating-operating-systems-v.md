@@ -43,6 +43,34 @@ Towards simulating operating systems via neural generative models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph INF["推理：每个时间步 t"]
+        A["用户输入 a_t：光标坐标、鼠标点击、键盘按键"] --> E["分别嵌入后拼接 embed(a_t)"]
+        E --> LL["下层 LSTM<br/>输入还包含上一步上层输出 U(t-1)"]
+        PF["上一帧潜变量 x(t-1)"] --> ATT["多头注意力<br/>以下层输出为 query，对上一帧做 attend"]
+        LL --> ATT
+        LL --> MG["残差合并：C_t = L_t + W_o c_t"]
+        ATT --> MG
+        MG --> UL["上层 LSTM → U_t（反馈给下一步下层 LSTM）"]
+        A --> GM["光标位置高斯空间图 M_t"]
+        LL --> RC["渲染上下文 R_t = concat(L_t, U_t, M_t)"]
+        UL --> RC
+        GM --> RC
+        RC --> UN["扩散渲染器（UNet，潜空间）<br/>噪声潜变量与 R_t 拼接，预测干净帧"]
+        UN --> DEC["自编码器解码为像素帧"]
+    end
+    subgraph TR["多阶段训练"]
+        S1["1 RNN 预训练（MSE 预测潜帧）"] --> S2["2 联合训练 RNN + 渲染器（扩散损失）"]
+        S2 --> S3["3 Scheduled Sampling<br/>以小概率把上一输入帧替换为模型生成帧"]
+        S3 --> S4["4 上下文长度扩展"]
+    end
+```
+
+图依据：论文 §2 生成式建模、§3 NeuralOS Architecture / Fig.2、§4 Multi-Stage Training / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +126,7 @@ Towards simulating operating systems via neural generative models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.08800>
+- [arXiv PDF](https://arxiv.org/pdf/2507.08800)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 OS 界面生成式建模、§3 架构、§4 多阶段训练、§5 数据收集（开头）
 
 ## 推荐继续阅读
 

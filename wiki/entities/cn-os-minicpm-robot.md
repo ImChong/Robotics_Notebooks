@@ -55,6 +55,45 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口（仓库含 MiniCPM-RobotManip 与 MiniCPM-RobotTrack 两个子项目，本图只画 RobotManip）：单样本推理 `cd MiniCPM-RobotManip && python vla_infer.py --image frame.jpg --text "..." --checkpoint ./checkpoint --embodiment-id 0`；LIBERO 评测先 `EMBODIMENT_ID=<id> bash evaluation/libero/run_policy_server.sh` 起策略服务，再 `LIBERO_HOME=<LIBERO 路径> bash evaluation/libero/eval_libero.sh` 起客户端。模型结构代码不在本仓库中，由 `AutoModel.from_pretrained(..., trust_remote_code=True)` 从 checkpoint 目录加载。
+
+```mermaid
+sequenceDiagram
+    participant S as run_policy_server.sh
+    participant SP as deployment/model_server/server_policy.py
+    participant VI as vla_infer.py MiniCPMVLAInference
+    participant W as policy_wrapper.py MiniCPMPolicyWrapper
+    participant WS as tools/websocket_policy_server.py
+    participant C as evaluation/libero/eval_libero.py
+    participant MC as model2libero_interface.py ModelClient
+    participant ENV as LIBERO env
+    S->>SP: python -m deployment.model_server.server_policy --checkpoint --port 20000
+    SP->>VI: MiniCPMVLAInference(checkpoint)，AutoProcessor 与 AutoModel 加载（trust_remote_code）
+    SP->>W: MiniCPMPolicyWrapper(runner, default_embodiment_id)
+    SP->>WS: WebsocketPolicyServer(policy, host, port).serve_forever()
+    C->>MC: ModelClient(host, port)，WebsocketClientPolicy 连接并读取 server metadata
+    WS-->>MC: metadata（含 action_chunk_size）
+    C->>ENV: env.reset 与 set_init_state，发送若干步 dummy action
+    loop 每个仿真步
+        C->>MC: step(example, step)
+        alt step % action_chunk_size == 0
+            MC->>WS: predict_action(图像, 指令, 状态)，msgpack 帧
+            WS->>W: predict_action（asyncio.to_thread）
+            W->>VI: predict(images, text, state, embodiment_id)
+            VI->>VI: preprocess：apply_chat_template，图像缩放到 448x448
+            VI->>VI: model.predict_action(state, embodiment_id, **vlm_inputs)
+            VI-->>W: 动作块，形状 (30, 80)
+            W-->>MC: 校验形状后的 actions
+        end
+        MC-->>C: 当前步动作，LIBERO_EEF_SLICE 切片并转换旋转表示
+        C->>ENV: env.step(absolute_action)
+    end
+```
+
+图依据：OpenBMB/MiniCPM-Robot@f666593，读过 `README.md`、`MiniCPM-RobotManip/vla_infer.py`、`deployment/model_server/server_policy.py`、`policy_wrapper.py`、`tools/websocket_policy_server.py`、`tools/websocket_policy_client.py`（仅函数签名）、`evaluation/libero/run_policy_server.sh`、`eval_libero.sh`、`eval_libero.py`、`model2libero_interface.py`；`MiniCPM-RobotTrack` 未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +105,7 @@ institutions:
 - [MiniCPM-Robot 源码归档](../../sources/repos/minicpm-robot.md)（<https://github.com/OpenBMB/MiniCPM-Robot>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：OpenBMB/MiniCPM-Robot@f666593，读过 README.md、MiniCPM-RobotManip/vla_infer.py、deployment/model_server/server_policy.py、policy_wrapper.py、tools/websocket_policy_server.py、tools/websocket_policy_client.py、evaluation/libero/run_policy_server.sh、eval_libero.sh、eval_libero.py、model2libero_interface.py；时序图依据以上文件，未运行代码；MiniCPM-RobotTrack 子项目未读。
 
 ## 推荐继续阅读
 

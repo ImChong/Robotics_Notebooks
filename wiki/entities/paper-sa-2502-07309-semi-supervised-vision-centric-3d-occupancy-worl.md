@@ -42,6 +42,23 @@ Semi-supervised vision-centric 3D occupancy world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角历史图像 ST, ST-1, ..., ST-k"] --> B["占据网络 N：提取体素特征 F̃T"]
+    B --> C["状态条件预测模块 F（两个 MLP，可选加入 ego 状态）"]
+    C -->|"递归预测"| D["未来体素特征 F̃T+1 …"]
+    D --> E{"训练阶段"}
+    E -->|"自监督预训练"| F["属性投影头 P：密度 / 语义 / RGB 场"]
+    F --> G["射线生成 + 体渲染得到 2D 深度、语义、RGB"]
+    G --> H["时序 2D 渲染损失 L2D（2D 标签监督）"]
+    E -->|"全监督微调"| I["占据头 H：未来语义占据 Y"]
+    I --> J["3D 占据标签损失 L3D"]
+```
+
+图依据：论文 §3 / Fig. 2 PreWorld 总体架构、§3.2 状态条件预测模块（Fig. 3）、§3.3 时序 2D 渲染自监督、§3.4 两阶段训练范式。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Semi-supervised vision-centric 3D occupancy world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.07309>
+- [arXiv PDF](https://arxiv.org/pdf/2502.07309)：已通读方法部分（实验与附录以略读为准）：§3.1 至 §3.4（回顾 4D 占据预测、状态条件预测模块、时序 2D 渲染自监督、两阶段训练）
 
 ## 推荐继续阅读
 

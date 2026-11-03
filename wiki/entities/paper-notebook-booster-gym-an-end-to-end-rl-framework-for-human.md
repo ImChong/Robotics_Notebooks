@@ -33,7 +33,31 @@ Booster Gym 的人形机器人学习论文条目，当前处于 Paper Notebooks 
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，仅依据论文方法部分，不含结论判断。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    DR["域随机化：本体动力学 / 执行器特性 / 环境条件<br/>另含推、踢等外部扰动"] --> ENV["Isaac Gym 并行仿真环境"]
+    CMD["速度指令 (vx, vy, ωyaw)<br/>指令课程 + 随机站立指令"] --> OBS
+    ENV --> OBS["Actor 观测：带噪本体感知 + 上一动作 + 步态周期"]
+    ENV --> PRIV["Critic 观测：无噪观测 + 特权信息<br/>质量 / 质心 / 基座线速度 / 推力等"]
+    OBS --> ACTOR["Actor 策略 π(a|o)"]
+    ACTOR -->|"关节位置偏移 a_t，50 Hz"| QDES["q_des = q_0 + a_t"]
+    QDES --> PD["电机侧 PD 控制器：τ = kp(q_des - q) - kd·q̇"]
+    PD --> ENV
+    ENV --> RW["奖励：跟踪 + 步态 + 正则项"]
+    RW --> PPO["PPO 更新"]
+    PRIV --> CRITIC["Critic 价值网络 V(s)"]
+    CRITIC --> PPO
+    PPO --> ACTOR
+    ACTOR -.->|"导出 JIT 策略"| DEP["部署：Python 部署框架 + Booster Robotics SDK（DDS）"]
+    DEP --> SP["串并联转换模块：虚拟串联关节 ↔ 并联踝机构"]
+    SP --> ROBOT["Booster T1 真机，策略 50 Hz，电机 PD 内环"]
+```
+
+图依据：论文 §III-A/B/C/D（Fig. 2、Table I、Table II）。
 
 ## 核心信息
 
@@ -69,6 +93,7 @@ Booster Gym 的人形机器人学习论文条目，当前处于 Paper Notebooks 
 - [humanoid_pnb_booster-gym-an-end-to-end-rl-framework-for-human.md](../../sources/papers/humanoid_pnb_booster-gym-an-end-to-end-rl-framework-for-human.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2506.15132>
+- [arXiv PDF](https://arxiv.org/pdf/2506.15132)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-D、§IV 开头
 
 ## 关联页面
 

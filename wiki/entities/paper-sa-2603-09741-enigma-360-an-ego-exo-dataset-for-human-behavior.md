@@ -42,6 +42,25 @@ Provides baseline experiments for three foundational tasks: Temporal Action Segm
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["ENIGMA 实验室：25 类工业物体<br/>设计 High / Low Voltage Repair 两套流程"] --> B["HoloLens 2 应用给出音频与混合现实指令<br/>34 名参与者"]
+    B --> C["同步采集：HoloLens 2 egocentric 视频 + ZED exocentric 视频<br/>共 360 段（180 ego + 180 exo）"]
+    C --> D["时间同步：指令时间戳对齐 ego；桌面灯光对齐 ego 与 exo"]
+    D --> E["Keystep 时间标注：68 类，应用日志 + VIA 工具人工细化起止时间"]
+    D --> F["交互关键帧标注（ego 子集）：物体框 25 类（含 active / passive）<br/>手框 = 预训练检测器伪标签 + 人工修正"]
+    E --> G["划分：train 103 / val 29 / test 48 段"]
+    F --> G
+    G --> H["基线任务 §4"]
+    H --> H1["Temporal Action Segmentation"]
+    H --> H2["Keystep Recognition"]
+    H --> H3["Egocentric Human-Object Interaction Detection"]
+```
+
+图依据：数据采集与标注流程图，论文 §3.1–§3.3（ENIGMA laboratory / Data Acquisition / Data Annotation）、Fig. 1、Fig. 5–6、§4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Provides baseline experiments for three foundational tasks: Temporal Action Segm
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2603.09741>
+- [arXiv PDF](https://arxiv.org/pdf/2603.09741)：已通读摘要、Introduction、§3 数据集（实验室、采集、标注与划分）与 §4 三项基线任务的任务设定段落；基线结果表与相关工作未逐项核对。
 
 ## 推荐继续阅读
 

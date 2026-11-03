@@ -43,6 +43,22 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    A["多相机图像输入"] --> B["Image-view Encoder：backbone + neck"]
+    B --> C["View Transformer：深度分类预测并渲染点云，沿 Z 轴池化得到 BEV 特征"]
+    C --> D["BEV Encoder：backbone + FPN-LSS"]
+    D --> E["CenterPoint 检测头 第一阶段"]
+    E --> F["Scale-NMS：按类别缩放目标尺寸后做 NMS"]
+    F --> G["3D 检测结果"]
+    A -.->|"图像视角数据增强，反变换保持 BEV 一致"| B
+    C -.->|"BEV 空间数据增强：翻转、缩放、旋转，同步变换特征与目标"| D
+```
+
+图依据：论文 §3.1 / Fig.1、§3.2、§3.3 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +116,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2112.11790>
+- [arXiv PDF](https://arxiv.org/pdf/2112.11790)：已通读方法部分（实验与附录以略读为准）：§3.1 网络结构、§3.2 定制数据增强、§3.3 Scale-NMS
 
 ## 推荐继续阅读
 

@@ -32,7 +32,33 @@ Sim-to-Real Learning for Humanoid Box Loco-Manipulation 的人形机器人学习
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 方法流程见上方「流程总览」（依据论文方法部分）；深读笔记写出来之前，这里不给更多方法结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SK["5 个技能：每个行为单独训练一个策略"]
+        W["Walking<br/>行走"] --> S["Standing<br/>站立"]
+        S --> BP["Box Pickup<br/>拾箱"]
+        BP --> WB["Walking w/ Box<br/>持箱行走"]
+        WB --> SB["Standing w/ Box<br/>持箱站立"]
+        BP --> W
+    end
+    subgraph POL["策略与训练（各技能共用框架）"]
+        IN["输入 (s, c)：67 维机器人状态 s + 技能专属命令 c"] --> LSTM["LSTM 策略（2 层 128 维循环隐层，50 Hz）"]
+        LSTM --> PD["PD 目标 → 2 kHz PD 控制器 → Digit 20 个驱动关节"]
+        TR["MuJoCo 中 PPO 训练<br/>+ 动力学随机化 + 状态加噪（不用状态估计器）<br/>各技能仅奖励函数不同"] -.-> LSTM
+    end
+    subgraph CH["技能衔接"]
+        CH1["上一技能策略生成下一技能的初始状态分布<br/>(Walking → Standing → Box Pickup → …)"]
+        CH2["切换时对前后策略动作在 10 步内线性插值（action warmup）"]
+    end
+    SK --> CH
+    POL --> HW["硬件部署：Digit 搬箱"]
+```
+
+图依据：论文 §III、§IV-A–D / Fig.2。
 
 ## 核心信息
 
@@ -64,7 +90,7 @@ Sim-to-Real Learning for Humanoid Box Loco-Manipulation 的人形机器人学习
 
 - [humanoid_pnb_sim-to-real-learning-for-humanoid-box-loco-manip.md](../../sources/papers/humanoid_pnb_sim-to-real-learning-for-humanoid-box-loco-manip.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2310.03191)：已通读方法部分（实验与附录以略读为准）：§III 系统概览、§IV 技能学习（A–D）
 
 ## 推荐继续阅读
 

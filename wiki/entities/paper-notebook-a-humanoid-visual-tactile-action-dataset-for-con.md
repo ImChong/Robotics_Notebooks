@@ -43,6 +43,22 @@ summary: "接触丰富操作在机器人学习中越来越重要，但以往机�
 - **数据集 + 灵巧手人形**为触觉学习提供稀缺资源；
 - 与 CHIP、HMC 等"柔顺/力"工作在"接触"主题上互补。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["Unitree 人形遥操作流程（扩展多模态记录）<br/>本体：臂 / 指关节位置 · 头戴相机 848×480 · 第三视角 RealSense D435<br/>Inspire Hand 触觉（每手 1,062 个传感点）· 压阻式触觉地毯热图"]
+    S --> O["采集任务：软物体 towel / sponge × strong / weak 压力<br/>→ Towel Strong · Towel Weak · Sponge Strong · Sponge Weak<br/>另采集刚体对照数据"]
+    O --> P["3 名 experimenter 按既定协议采集<br/>每任务约 77–80 episodes（20–30 s），共 101.9K samples"]
+    P --> N["预处理：触觉 0–4095 归一化到 0–1"]
+    N --> A["数据分析<br/>触觉随时间分布（软物体 vs 刚体）· dense vs sparse（2,124 → 42 个传感点）<br/>t-SNE · 各手部 patch 触觉模式"]
+    N --> B["ACT 基线实验<br/>触觉 patch 转 2D 图像 → CNN → 并入 ACT image encoder<br/>ACT-Dense vs ACT-Sparse，指标 MAE"]
+    B --> D["80% / 20% 训练 / 评测划分 · 3 个 seed · 100K 步，每 20K 步评测"]
+    D --> R["真机部署：每 20K 步测试，手部起始姿态与采集时不同（定性观察 + 补充视频）"]
+```
+
+图依据：数据采集与基线实验流程图（论文 §III-A Data Collection via Humanoid Teleoperation、§III-B Dataset Statistics and Analysis、§IV-A/B Baseline and Metrics/Results、§IV-C Real-world Deployment、Fig. 1–4）
+
 ## 解决什么问题
 
 接触丰富操作的数据缺口： - 现有数据集多为**刚体**，少**可变形软物体**； - **压力条件多样性**被低估； - 缺**人形 + 灵巧手 + 视触觉**的多模态数据。
@@ -125,6 +141,7 @@ summary: "接触丰富操作在机器人学习中越来越重要，但以往机�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation/A_Humanoid_Visual-Tactile-Action_Dataset_for_Contact-Rich_Manipulation.html>
 - 论文：<https://arxiv.org/abs/2510.25725>
 - 论文正文（数据集统计、ACT 实验）：<https://arxiv.org/html/2510.25725>
+- [arXiv PDF](https://arxiv.org/pdf/2510.25725)：已通读全文正文（§I–§V：数据采集、数据统计与分析、ACT 基线实验、真机部署）；参考文献表略读
 
 ## 推荐继续阅读
 

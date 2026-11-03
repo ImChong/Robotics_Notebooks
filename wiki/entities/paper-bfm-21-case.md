@@ -39,6 +39,28 @@ sources:
 - 条件技能嵌入；与「按 prompt 调身体」同思路。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#21/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    M["参考数据集 M<br/>带技能标签 c 的动作片段 m"] --> S1
+    subgraph S1["阶段 1：预训练低层条件策略"]
+        D["条件判别器 D(s, s', c)<br/>区分参考转移与策略转移"]
+        Q["条件运动编码器 q<br/>(s, s', c) → 隐变量 z（超球面上的 von Mises-Fisher 分布）"]
+        PI["低层条件策略 π(a | s, z, c)"]
+        T["训练技巧：Focal Skill Sampling / Skeletal Residual Forces / Element-wise Feature Masking"]
+        PI --> D
+        PI --> Q
+        D -->|"对抗模仿奖励 + 编码器奖励 + 多样性项"| PI
+        Q -->|"β·log q"| PI
+        T -.-> PI
+    end
+    S1 --> S2["阶段 2：固定低层策略，训练高层策略<br/>输出隐变量配置 z（方向控制 / 目标位置控制 / Reach、Steering、Location、Strike）"]
+    S2 --> S3["阶段 3：交互式角色动画<br/>用户指定技能标签 c、移动方向/路径或目标位置"]
+```
+
+图依据：论文 §3 开头、§3.1、§3.2、Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -93,6 +115,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2309.11351>
+- [arXiv PDF](https://arxiv.org/pdf/2309.11351)：已通读方法部分（实验与附录以略读为准）：§3 Method 概述、§3.1 条件对抗技能嵌入（含 FSS / SRF / EFM）、§3.2 交互式角色动画
 
 ## 推荐继续阅读
 

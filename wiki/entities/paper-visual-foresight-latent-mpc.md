@@ -36,6 +36,30 @@ summary: "Visual Foresight（具身世界模型六路线专题）：动作条件
 - 属于六路线 taxonomy 的 **规划主导型**：预测结果被用于 **执行时在模型中试走，外部规划/验证裁决动作。**
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 训练阶段
+        A["无监督数据采集<br/>按预设分布采样随机动作"] --> B["训练视频预测模型<br/>(RNN g_θ, 输出 2D flow 场 F 并 warp 前一帧)"]
+        A --> B2["训练配准网络 R<br/>(同一数据, 不共享参数)"]
+    end
+    subgraph 测试阶段
+        G["目标指定<br/>指定像素 / 目标图像 / 成功样例"] --> C["规划代价函数<br/>像素距离 / 配准代价 / 分类器代价"]
+        B2 -.配准代价用.-> C
+        S["当前图像 I_t + 候选动作序列"] --> P["视频预测模型 rollout 未来 T 步<br/>图像 + 指定像素位置分布"]
+        B -.-> P
+        P --> C
+        C --> O["CEM 轨迹优化<br/>重采样动作序列并拟合高斯 (采样超出范围则重采样)"]
+        O -->|"迭代 n_iter 次"| P
+        O --> E["执行最优序列的第一个动作"]
+        E --> R["下一真实时间步重规划 (MPC)"]
+        R --> S
+    end
+```
+
+图依据：论文 §3 Overview / §4 Video Prediction / §5 Planning Cost Functions / §6 Trajectory Optimizer（Algorithm 1）/ Fig.2
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -74,6 +98,7 @@ summary: "Visual Foresight（具身世界模型六路线专题）：动作条件
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/1812.00568)：已通读方法部分（实验与附录以略读为准）：§3 Overview、§4 视频预测模型、§5 代价函数（5.1–5.3）、§6 轨迹优化器；§7–§9 实验与附录略读
 
 ## 推荐继续阅读
 

@@ -43,6 +43,25 @@ Looks into the future with DINO.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["视频帧序列 N = Nc 上下文 + Np 未来"] --> B["冻结 ViT 型 VFM 编码器 (DINOv2-Reg)"]
+    B --> C["多层特征按通道拼接 F_concat"]
+    C --> D["PCA 降维得到目标特征 F_TRG"]
+    D --> E["未来帧 token 替换为可学习 MASK"]
+    E --> F["线性嵌入 + 位置编码"]
+    F --> G["Masked Feature Transformer: 时间 MSA / 空间 MSA / MLP 层堆叠"]
+    G --> H["线性预测层输出未来帧特征"]
+    H -. "训练: 仅在未来帧位置做 SmoothL1 损失" .-> D
+    H --> I["现成任务头, 无需重训主干"]
+    I --> J["语义分割 / 深度 / 表面法向 (DPT)"]
+    I --> K["实例分割 (Mask2Former)"]
+```
+
+图依据：论文 §3.1-§3.4 / Fig.1-2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Looks into the future with DINO.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.11673>
+- [arXiv PDF](https://arxiv.org/pdf/2412.11673)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1-3.4）与 §4.1 实验设定
 
 ## 推荐继续阅读
 

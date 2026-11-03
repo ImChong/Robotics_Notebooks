@@ -40,6 +40,25 @@ summary: "机器人要学操作离不开大规模、多样化的「人-物交互
 - **重建即可仿真训练数据**：重建结果能直接喂给 RL 智能体在仿真里复现交互，呼应 Kimodo / OMG 等「生成 / 重建动作作为下游策略数据源」的范式；
 - **手物耦合的脆弱性提醒**：手部误差会放大到物体位姿，提示人形操作里手部估计精度的关键性。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V[单目野外视频] --> PRE[预处理 检测镜头切换 去除非交互帧 跟踪人与物体 mask]
+  PRE --> REC[SAM 3D Objects 重建物体 GVHMR 重建人体 另行重建手部并整合]
+  REC --> ALN[DepthAnythingV2 深度点云 对齐人与物体并估计物体尺度]
+  ALN --> ANN[标注 App 人体关节与物体点的接触点对 加 3D 到 2D 点约束 点跟踪传播]
+  IP[InterPoint 预测点对 VLM + PointNet++ + FiLM + Interaction Transformer] --> ANN
+  ANN -->|新标注回流训练| IP
+  ANN --> S1[4DHOISolver 阶段一 加权最小二乘求物体位姿 再对肢体做 IK]
+  S1 --> S2[4DHOISolver 阶段二 Adam 优化 contact collision mask 损失 每 K 帧优化 中间帧插值]
+  S2 --> SM[低通滤波平滑]
+  SM --> DS[Open4DHOI 数据集]
+  SM --> SIM[基于 InterMimic 的 RL 模仿 跟踪奖励 加 KP Label 与 KP Contact 奖励]
+```
+
+图依据：论文 §3.1–§3.4、§4 / Fig.2、Fig.5、Algorithm 1（DS 作为平滑结果输出至数据集依 §3.5 归纳）
+
 ## 解决什么问题
 
 机器人（尤其是灵巧操作 / 人形）要稳健地学会与物体交互，需要**大规模、多样、贴近真实**的 HOI 数据。但现状两难：
@@ -90,6 +109,7 @@ summary: "机器人要学操作离不开大规模、多样化的「人-物交互
 - [humanoid_pnb_efficient-and-scalable-monocular-human-object-in.md](../../sources/papers/humanoid_pnb_efficient-and-scalable-monocular-human-object-in.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction.html>
 - 论文：<https://arxiv.org/abs/2512.00960>
+- [arXiv PDF](https://arxiv.org/pdf/2512.00960)：已通读方法部分（实验与附录以略读为准）：§3 Pipeline（3.1–3.5）、§4 HOI Simulation 开头（奖励设计部分略读）
 
 ## 推荐继续阅读
 

@@ -6,9 +6,10 @@
 - **分组：** 293 Procedural Question Answering
 - **编号：** 144/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2503.06789
+- **arXiv：** 2505.17114
+- **编号核对：** 上游清单登记的 2503.06789 经 arXiv 官方记录核对为另一篇论文《Aharonov-Bohm and Altshuler-Aronov-Spivak oscillations in the quasi-ballistic regime in phase-pure GaAs/InAs core/shell nanowires》，与本条目不符；已更正为 2505.17114《RAVEN: Query-Guided Representation Alignment for Question Answering over Audio, Video, Embedded Sensors, and Natural Language》（核对日期 2026-11-02）。
 - **出处：** arXiv 2025
-- **论文：** <https://arxiv.org/abs/2503.06789>
+- **论文：** <https://arxiv.org/abs/2505.17114>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Multi-modal QA framework aligning audio, video, embedded sensors and natural language for procedural scenarios

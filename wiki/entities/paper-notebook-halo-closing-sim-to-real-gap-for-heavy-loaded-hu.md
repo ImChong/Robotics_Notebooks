@@ -31,7 +31,25 @@ HALO 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论；方法流程见下方「流程总览」（仅据论文方法部分）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["已知名义模型参数 + 未知负载"] --> B["1 数据收集：固定单脚（2 个虎钳）"]
+    B --> C["探索策略<br/>(名义参数 + 宽 Domain Randomization 下 PPO 训练)"]
+    C --> D["真机采集空载 / 带载<br/>关节位置 + 目标关节位置"]
+    D --> E["前向运动学重建全身轨迹<br/>+ QP 修正左右脚高度"]
+    E --> F["2 基于梯度的辨识<br/>可微仿真 Φsim 轨迹匹配"]
+    F --> G["Stage 1：空载轨迹<br/>标定基础模型（全参数）"]
+    G --> H["Stage 2：带载轨迹<br/>仅优化躯干 / 手的质量与 CoM"]
+    L["跟踪损失 + 正则项<br/>(CoM / 质量 / 阻尼 / 摩擦)"] -.-> F
+    H --> I["3 重载技能获取<br/>用辨识参数在 mjlab 中 PPO 动作模仿"]
+    I --> J["最小 Domain Randomization<br/>零样本部署到 Unitree G1"]
+```
+
+图依据：论文 §III（Fig. 2 方法总览；III-A 数据收集、III-B 梯度辨识与两阶段、III-C 技能获取）
 
 ## 核心信息
 
@@ -64,6 +82,7 @@ HALO 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - [humanoid_pnb_halo-closing-sim-to-real-gap-for-heavy-loaded-hu.md](../../sources/papers/humanoid_pnb_halo-closing-sim-to-real-gap-for-heavy-loaded-hu.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2603.15084>
+- [arXiv PDF](https://arxiv.org/pdf/2603.15084)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II 相关工作、§III 方法、§IV 实验设定（Table II 略读）
 
 ## 推荐继续阅读
 

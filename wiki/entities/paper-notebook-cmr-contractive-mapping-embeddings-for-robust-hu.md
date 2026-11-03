@@ -39,6 +39,29 @@ summary: "非结构地形上，人形机器人的传感器会出错、模型也�
 - **理论给安全感**：收缩界 `O(η/(1−κ))` 与时域无关，意味着长时域 rollout 下鲁棒性不随步数崩坏，对长距离穿越有意义。
 - **限制**：收缩因子 κ、Lipschitz 权重 λ 需调，过强收缩可能压掉有用信息（靠 InfoNCE 平衡）；论文主要在仿真 + sim-to-sim 验证，真机表现待后续；超出训练噪声包络（α≫3）的极端情形仍可能退化。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  N["带噪观测 s̃_t<br/>当前与历史本体感觉 + 高度图感知<br/>（噪声强度由全局系数 α 缩放）"]
+  ENC["编码器 ϕ(s)<br/>得到 contractive embedding I_t"]
+  POL["策略 π（PPO）<br/>embedding 作为额外输入"]
+  ACT["关节动作 a_t"]
+  N --> ENC --> POL --> ACT
+  subgraph LOSS["训练目标 L_CMR = L_InfoNCE + λ·L_Lipschitz + L_PPO"]
+    L1["L_Lipschitz<br/>约束嵌入距离演化 S_{t+1} ≤ κ²·S_t，κ<1"]
+    L2["L_InfoNCE<br/>对比学习，保留任务相关信息"]
+    L3["L_PPO"]
+  end
+  ENC -. 受 L_Lipschitz、L_InfoNCE 约束 .-> L1
+  ENC -.-> L2
+  POL -. 策略优化 .-> L3
+  GT["Isaac Gym 训练（先用真值环境数据）→<br/>MuJoCo 噪声条件下 sim-to-sim 迁移"]
+  ACT --> GT
+```
+
+图依据：论文 §III-C/D、Fig. 2、式 (3)–(5)（"embedding 作为额外输入"见 Fig. 2 图注）
+
 ## 解决什么问题
 
 1. **非结构地形 = 观测不可靠**：碎石、踏脚石、平衡木等地形上，本体感知/外感知都可能含噪、缺失或失真，模型本身也不精确。 2. **噪声会在闭环里被放大**：标准分析中，一步动作误差 η 经过 H 步会按 `O(L_f^H)` 指数放大，鲁棒性随时域迅速崩坏。 3. **现有抗噪手段代价高 / 不通用**：要么靠大量域随机化与工程调参堆鲁棒性，要么单独设计估计模块；缺一个**轻量、可即插进现成 RL 管线**的通用表示层。
@@ -92,6 +115,7 @@ summary: "非结构地形上，人形机器人的传感器会出错、模型也�
 - [humanoid_pnb_cmr.md](../../sources/papers/humanoid_pnb_cmr.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion/CMR__Contractive_Mapping_Embeddings_for_Robust_Humanoid_Locomotion.html>
 - 论文：<https://arxiv.org/abs/2602.03511>
+- [arXiv PDF](https://arxiv.org/pdf/2602.03511)：已通读方法部分（实验与附录以略读为准）：§I–II、§III Methodology（A–D）、§IV-A 实验设定；§IV 结果/消融/sim-to-sim 与附录略读
 
 ## 推荐继续阅读
 

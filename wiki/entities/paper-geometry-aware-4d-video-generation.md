@@ -38,6 +38,26 @@ summary: "Geometry-Aware 4D Video（ICLR 2026）：跨视角点图对齐监督�
 
 视频生成模型多视角几何不一致会误导下游操作；机器人需要可执行的时空一致预测。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["双视角 RGB-D 历史帧<br/>视角 vn 与 vm"] --> B["RGB VAE 编码<br/>(SVD 框架)"]
+    A --> C["深度转点图 Xn, Xm<br/>Pointmap VAE 编码（由 RGB VAE 初始化并微调）"]
+    B --> D["U-Net 扩散模型预测未来 RGB 潜变量<br/>VAE 解码得未来 RGB 帧"]
+    C --> E["两个解码器分支的 U-Net<br/>vn 在自身坐标系，vm 投影到 vn 坐标系<br/>解码器间 Multi-View Cross-Attention"]
+    E --> F["Pointmap VAE 解码<br/>未来点图（深度/几何）"]
+    D --> G["联合损失 L = RGB 扩散损失 + λ·跨视角点图损失<br/>训练需相机位姿，推理不需要"]
+    E --> G
+    D --> H["预测的 4D 视频（多视角 RGB-D）"]
+    F --> H
+    H --> I["FoundationPose 6DoF 位姿追踪<br/>两视角分别追踪，取置信度高者"]
+    I --> J["外参转到全局系得到末端轨迹<br/>手指点云距离阈值 δ 判断夹爪开合"]
+    J --> K["轨迹直接控制机器人执行任务"]
+```
+
+图依据：论文 §3.1 至 §3.4 / Fig. 2
+
 ## 核心原理（方法）
 
 双视角 RGB-D 输入 → U-Net 预测未来点图与 RGB；训练期 cross-view pointmap 对齐；推理不需相机外参。
@@ -78,6 +98,7 @@ summary: "Geometry-Aware 4D Video（ICLR 2026）：跨视角点图对齐监督�
 
 - [geometry_aware_4d_video_arxiv_2507_01099.md](../../sources/papers/geometry_aware_4d_video_arxiv_2507_01099.md)
 - [wechat_shenlan_realab_14_papers_2026.md](../../sources/blogs/wechat_shenlan_realab_14_papers_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2507.01099)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 扩散视频生成、3.2 几何一致监督、3.3 联合优化、3.4 位姿估计）
 
 ## 推荐继续阅读
 

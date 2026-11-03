@@ -41,6 +41,20 @@ summary: "零样本相机适配 VLA：测试时用前馈新视角合成将画面
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    TR["训练阶段：VLA π_θ 用训练相机 C_train 的图像 + 语言 l 训练<br/>(保持冻结，不重训、不微调)"]
+    A["(1) 采集测试相机 C_test 图像 I_test"] --> F["(2) 相机适配模块 F<br/>前馈 Novel View Synthesis (LVSM)<br/>输入: I_test, C_test, C_train"]
+    F --> B["合成「训练视角」图像 Î_train"]
+    B --> P["(3) 冻结的 VLA π_θ<br/>+ 语言指令 l"]
+    P --> ACT["(4) 动作 a_t 执行到机器人"]
+    TR -.-> P
+```
+
+图依据：论文 §III-A 问题设定、§III-B 零样本相机适配（式 (1)–(3)、推理四步流程）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +103,7 @@ summary: "零样本相机适配 VLA：测试时用前馈新视角合成将画面
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2603.05868](https://arxiv.org/abs/2603.05868)
+- [arXiv PDF](https://arxiv.org/pdf/2603.05868)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法（A 问题设定、B 前馈新视角合成相机适配）；§IV 实验略读
 
 ## 推荐继续阅读
 

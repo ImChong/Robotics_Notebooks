@@ -42,6 +42,33 @@ summary: "Robo-Dopamine 2.0（arXiv:2608.15680）：历史条件 + OOD 感知的
 - 策展机构：北京大学；EvoPhys AI；北京邮电大学；腾讯；中国人民大学；中山大学
 - 开源结论：**待核实**（步骤 2.5，2026-09-27）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["训练数据构造"]
+        SRC["成功源轨迹<br/>RoboCasa / LIBERO / AgiBot World"] --> EDIT["task/phase-aware 编辑算子 E_z<br/>鲁棒扰动 R（遮挡/背景/干扰物/非目标颜色）<br/>任务无效 N（错物体/空抓/不释放/换目标）"]
+        EDIT --> SIGN["有符号进度 Φ<br/>Φ(P)=Φ(R)=g_i，Φ(N)=-g_i"]
+        SIGN --> HOP["Signed-Hop 目标<br/>y = 100·clip(H, -1, 1)"]
+        HOP --> PAIR["Pair compiler 编译 P/R/N 间的<br/>有效、失败、恢复、不变配对"]
+    end
+    subgraph CUR["Signed-Hop 两阶段课程（共 400K 样本）"]
+        S1["Stage 1：大 Hop 池 D_large<br/>学全局进度/失败/恢复几何"] --> S2["Stage 2：以细 Hop/零 Hop 为主<br/>回放 ρ=0.25 的大 Hop 样本"]
+    end
+    PAIR --> S1
+    S2 --> GRM["GRM（General Reward Model）<br/>输入：指令 c、起止锚点、有序时间 panel、成对状态 (X_b, X_a)<br/>输出：有符号相对进度 ŷ_ba（MSE 回归）"]
+    subgraph ONLINE["闭环推理"]
+        Q["三类查询：X_0→X_t（前向）、X_G→X_t（后向）、X_t-1→X_t（增量）<br/>时间 panel 取自已观测 rollout 历史"] --> GRM
+        GRM --> FUSE["逆 Hop 还原三个势函数估计<br/>取平均得 Φ̂_t"]
+        FUSE --> RW["稠密奖励 r_t = r_task + γ(Φ̂_t+1 − Φ̂_t)"]
+        RW --> RL["下游强化学习"]
+        RL --> ROLL["rollout 观测"]
+        ROLL --> Q
+    end
+```
+
+图依据：论文 Method 各小节（History-Conditioned Pairwise Reward / Structured OOD Data / Signed Progress Space / Signed-Hop Curriculum / Closed-Loop Reward Framework）/ Fig.1、式(1)–(18)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +110,7 @@ summary: "Robo-Dopamine 2.0（arXiv:2608.15680）：历史条件 + OOD 感知的
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part4.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md)
 - [arXiv:2608.15680](https://arxiv.org/abs/2608.15680)
+- [arXiv PDF](https://arxiv.org/pdf/2608.15680)：已通读方法部分（实验与附录以略读为准）：Method 全部小节（含式 1–18、Fig.1）；Related Work、实验与附录以略读为准
 
 ## 推荐继续阅读
 

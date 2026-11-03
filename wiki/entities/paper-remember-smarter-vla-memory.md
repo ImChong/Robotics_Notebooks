@@ -42,6 +42,29 @@ summary: "Remember Smarter（RS）（arXiv:2608.15269）：近期多视角压缩
 - 策展机构：西安电子科技大学
 - 开源结论：**待核实**（步骤 2.5，2026-09-27）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多视角历史图像流"] --> B["复用 VLA 视觉编码器 E_vis + 适配器 A_ϕ<br/>得到 patch 特征"]
+    B --> C["逐帧双向 serpentine 空间 Mamba<br/>+ learned query 池化"]
+    C --> D["因果时序 Mamba（两层，每个视角一个递归状态）"]
+    D --> E["多视角记忆 M_t"]
+    E --> F["残差 cross-attention 适配器<br/>H~_t = H_t + γΔH_t"]
+    F --> G["原动作头输出动作"]
+    H["成功示范的动作侧隐表示"] --> I["P-VAE：映射为 Poincaré 球叶节点"]
+    I --> J["HypHC 式二叉层级 + Karcher 均值原型 + 蕴含锥校准"]
+    K["当前隐表示编码为查询 q_t"] --> L["后台非阻塞 worker：沿层级束搜索<br/>最多返回 8 个叶节点"]
+    J --> L
+    L --> M["取最低公共祖先原型<br/>沿 q_t 到原型的测地线采样 4 点"]
+    M --> N["解码为 4 个经验 token<br/>插入 VLM 输入首个图像嵌入之前"]
+    N --> O["VLM 自注意力融合 → 隐表示"]
+    O --> F
+    O --> K
+```
+
+图依据：论文 §4.1 / §4.2 / §4.3、Fig. 1、Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +106,7 @@ summary: "Remember Smarter（RS）（arXiv:2608.15269）：近期多视角压缩
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part4.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md)
 - [arXiv:2608.15269](https://arxiv.org/abs/2608.15269)
+- [arXiv PDF](https://arxiv.org/pdf/2608.15269)：已通读方法部分（实验与附录以略读为准）：§4.1–4.3（含 Fig. 1/2 与异步检索、测地线经验 token 段）
 
 ## 推荐继续阅读
 

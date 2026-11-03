@@ -42,6 +42,31 @@ Comprehensive survey on general world models and their relation to video generat
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ROOT["General World Models: Understanding the World via Predicting the Future（Fig.1）"] --> VG["§2 Video Generation as a General World Model"]
+    ROOT --> AD["§3 World Models for Autonomous Driving"]
+    ROOT --> AG["§4 World Models for Autonomous Agents"]
+    ROOT --> CH["§5 Challenges and Future Perspectives"]
+    VG --> VG1["§2.1 Technologies behind Video Generation：Visual Foundation Models、Text Encoders、Generation Techniques"]
+    VG --> VG2["§2.2 Advanced Video Generation Models：GAN-based、Diffusion-based、Autoregressive Modeling-based、Masked Modeling-based、Datasets and Evaluation Metrics"]
+    VG --> VG3["§2.3 Towards World Models: Sora：Framework、Training Data、Towards World Models"]
+    AD --> AD1["§3.1 End-to-end Driving"]
+    AD --> AD2["§3.2 Neural Driving Simulator：2D Scene Generation、3D Scene Generation"]
+    AG --> AG1["§4.1 General Framework of an Agent based on World Model：Key Components、Widely-used Model Structure"]
+    AG --> AG2["§4.2 Agents for Different Tasks：Game Agent、Robotics、Diverse Environments and Tasks"]
+    AG --> AG3["§4.3 Commonly Used Benchmarks"]
+    CH --> CH1["§5.1 General World Models"]
+    CH --> CH2["§5.2 World Models for Autonomous Driving"]
+    CH --> CH3["§5.3 World Models for Autonomous Agents"]
+    CH --> CH4["§5.4 Ethical and Safety Concerns"]
+    CH1 -.-> SUB["§5.1–5.3 各含 Challenges 与 Future Perspectives"]
+```
+
+图依据：综述分类体系图（章节框架），依据论文 Fig.1 与 §2–§5 的章节标题及各章开头的内容安排。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Comprehensive survey on general world models and their relation to video generat
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.03520>
+- [arXiv PDF](https://arxiv.org/pdf/2405.03520)：已读摘要、§1 引言与贡献、Fig.1，以及 §2–§5 的章节标题与各章开头的内容安排；各章正文细节与 §6 结论略读
 
 ## 推荐继续阅读
 

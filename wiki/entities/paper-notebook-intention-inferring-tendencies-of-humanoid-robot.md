@@ -35,6 +35,31 @@ INTENTION 想让机器人不再依赖精确物理模型 + 预编排动作序列�
 - **记忆驱动决策**：Memory Graph 把"经验"显式化，为长程、多任务的人形自主操作提供可累积的知识载体
 - **VLM 落地**：展示了 Grounded VLM 如何从"会描述"走到"会动手"，对具身 VLA / 导航操作类工作有借鉴价值
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 学习阶段["学习阶段：构建 MemoGraph"]
+        A["场景状态 S_n<br/>人类指令 I_n + 原始传感输入"] --> B["Intuitive Perceptor P<br/>RGB + VLM + function calling<br/>提取物体状态 T_n"]
+        B --> C["VLM 规划器 Vp<br/>在技能库 Π 中选动作 a_n"]
+        C --> D["执行 a_n"]
+        D --> E["任务成功评估 C_n"]
+        E --> F["编码为任务图 g_n<br/>S_n, T_n, a_n, C_n"]
+        F --> G[("MemoGraph M")]
+    end
+    subgraph 推理阶段["推理阶段：新场景"]
+        H["观察当前场景 S_t<br/>Perceptor 提取 T_t，构建场景图 G_t"] --> I["检索 M 中全部任务图"]
+        G --> I
+        I --> J["图匹配打分<br/>S_W = α·S_N + β·S_L + γ·S_I"]
+        J --> K["语言模型评估器<br/>评估匹配合理性并筛选动作"]
+        K --> L["生成控制代码<br/>从 Motion Library 执行 a_t"]
+        L --> M["更新状态 C_t"]
+        M -->|未完成| H
+    end
+```
+
+图依据：论文 §III-A / Algorithm 1、§III-B / Fig.2、§III-D / Eq.(4)
+
 ## 解决什么问题
 
 传统操作控制 / 规划路线高度依赖两样东西：
@@ -86,6 +111,7 @@ INTENTION 想让机器人不再依赖精确物理模型 + 预编排动作序列�
 - [humanoid_pnb_intention.md](../../sources/papers/humanoid_pnb_intention.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int/INTENTION__Inferring_Tendencies_of_Humanoid_Robot_Motion_Through_Interactive_Int.html>
 - 论文：<https://arxiv.org/abs/2508.04931>
+- [arXiv PDF](https://arxiv.org/pdf/2508.04931)：已通读方法部分（实验与附录以略读为准）：§III Methodology（A 问题定义与 Algorithm 1、B 框架、C Intuitive Perceptor、D 图构建与匹配）、§IV-A 实验设置
 
 ## 推荐继续阅读
 

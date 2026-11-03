@@ -32,13 +32,14 @@ summary: "仿真学习标称执行流形，部署时用预测偏差做 OOD 检�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RAPT | Robust Adaptive Prediction for Transfer | 文内部署监控框架 |
+| RAPT | Recurrent Anomaly Probabilistic Trajectory Model（依据 arXiv:2602.01515 摘要） | 文内部署监控框架 |
 | OOD | Out-of-Distribution | 分布外检测 |
 | Sim2Real | Simulation to Real | 仿真到真机 |
 
 ## 为什么重要
 
-- 文内部署期监控完整方案；89% TPR / 87.5% Top-1 诊断等数字出处。
+- 文内部署期监控完整方案；89% TPR（实机 78 次试验，RAPT+Range 混合 88.9%；纯 RAPT 85.7%，Table 2）与诊断准确率两组数字出处。
+- 诊断口径（依据 arXiv:2602.01515v2 摘要、§5.4、Table 3）：16 条实机失效日志、21 个预定义类别；**仅本体感知 Top-1 75.0%（12/16）**——即摘要所写「21 类语义诊断 75%」；**加一帧视觉关键帧 Top-1 87.5%（14/16）**，Top-3 为 87.5%（仅本体）/ 100%（加视觉）。87.5% 并非摘要所报数字，二者是不同设置。
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **监控与评测** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
@@ -90,7 +91,7 @@ flowchart TD
 ## 实验与评测
 
 - **本页为索引级节点**（FreeDof 44 篇梳理 [37/44]）：正文固化文内角色与机制要点，**未转存原文实验表**。
-- **回原文须核对的证据**：本页「为什么重要」已录 89% TPR / 87.5% Top-1 诊断两个数字，须回原文核对其**判异阈值与误报率口径**——本页未转存完整实验表。
+- **回原文须核对的证据**：本页「为什么重要」已录 89% TPR 与诊断准确率数字，诊断数字的设置见上（Table 3）；TPR 须回原文核对其**判异阈值与误报率口径**（Table 2：RAPT+Range FPR 6.7%）——本页未转存完整实验表。
 - **读法：** 先对齐平台、任务、指标定义与成功阈值，再读任何数字；勿从公众号摘录外推。
 
 ## 与其他工作对比
@@ -122,6 +123,7 @@ flowchart TD
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
 - [arXiv PDF](https://arxiv.org/pdf/2602.01515)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 Methodology（3.1-3.6）、§4 实验设定。
+- 核对（2026-11-02）：对照 arXiv:2602.01515v2 摘要、Table 2、Table 3、§5.4；87.5% Top-1 对应「RAPT+视觉关键帧」，摘要的 75%/21 类对应仅本体感知，已在「为什么重要」写明口径。
 
 ## 推荐继续阅读
 

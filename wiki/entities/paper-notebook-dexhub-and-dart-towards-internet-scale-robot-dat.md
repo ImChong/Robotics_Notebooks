@@ -43,6 +43,29 @@ summary: "构建通才机器人系统受制于多样高质量数据的稀缺。�
 - 对人形（硬件稀缺）尤其友好；
 - 与 ARMADA（AR 无机器人采集）思路相通、规模更大。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph AR["操作员端: Apple Vision Pro"]
+        HT["ARKit 手部追踪<br/>(手/腕关键点)"]
+        RK["RealityKit 本地渲染<br/>仿真资产作为 AR 物体"]
+    end
+    subgraph CLOUD["云端仿真 (MuJoCo, AWS ECR 按需启动)"]
+        IK["差分逆运动学 (differential IK)<br/>关键点位置跟踪 + 自碰撞约束"]
+        SIM["MuJoCo 机器人仿真"]
+        IK --> SIM
+    end
+    HT -->|"gRPC: 关键点 SE(3)"| IK
+    SIM -->|"gRPC: Oracle 仿真状态<br/>(关节 + 物体位姿)"| RK
+    SIM -->|"记录演示"| HUB["DexHub 云端数据库<br/>(用户认证, 归属记录)"]
+    EXT["其他 Python 机器人脚本<br/>dexhub.log(obs, act)"] -->|"Upstream API"| HUB
+    HUB -->|"Downstream API (/get-my-data)"| TRN["下游 ACT 视觉策略训练<br/>(仿真侧相机/背景/光照随机化)"]
+    TRN --> REAL["Sim2Real 零样本真机部署"]
+```
+
+图依据：论文 §III-A System Architecture（DART）、§V DexHub（含 Upstream/Downstream API）、§IV-B Sim2Real（ACT 策略与仿真侧增广）。
+
 ## 解决什么问题
 
 通才机器人缺**互联网规模**数据： - 真机遥操作**吞吐低、疲劳高、难规模化**； - 缺**公共、可众包**的采集平台与仓库。
@@ -138,6 +161,7 @@ DexHub/DART 要：用**云仿真 + AR 众包**采集，建**公共数据库**，
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection.html>
 - 论文：<https://arxiv.org/abs/2411.02214>
 - 论文正文（用户研究、Table IV、讨论节）：<https://arxiv.org/html/2411.02214>
+- [arXiv PDF](https://arxiv.org/pdf/2411.02214)：已通读方法部分（实验与附录以略读为准）：§III-A System Architecture、§IV-B Sim2Real、§V DexHub
 
 ## 推荐继续阅读
 

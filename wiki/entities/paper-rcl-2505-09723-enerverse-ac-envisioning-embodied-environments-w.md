@@ -42,6 +42,25 @@ EVAC turns robot action sequences into future camera observations using a video 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["参考图像 + 历史记忆 Memory"] --> G
+    B["动作序列（末端 6D 位姿 + 夹爪）"] --> C["投影为 action map（单位向量画姿态、圆表示夹爪）"]
+    B --> D["Delta Action Attention：相邻帧动作差，线性投影为定长 latent"]
+    C --> E["CLIP 视觉编码器得特征图，与图像特征通道拼接"]
+    W["多视角：wrist 相机 ray map 与轨迹图拼接，空间 cross-attention"] --> E
+    D --> F["与参考图像特征拼接，经 cross-attention 注入扩散网络"]
+    E --> G["扩散模型去噪"]
+    F --> G
+    G --> H["视频解码器输出多视角视频"]
+    H --> I["数据引擎：增广轨迹后生成训练数据"]
+    H --> J["策略评估器：策略动作块与观测迭代输入，人工判成败"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ EVAC turns robot action sequences into future camera observations using a video 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2505.09723>
+- [arXiv PDF](https://arxiv.org/pdf/2505.09723)：已通读方法部分（实验与附录以略读为准）：§1 引言末段；§3.1 动作条件注入、3.2 多视角条件注入、3.3 应用（含 Fig.2、Fig.4）；§4 实验（略读）
 
 ## 推荐继续阅读
 

@@ -21,6 +21,24 @@ sources:
 
 # 视频世界模型综述：Reading, Writing, Sharing, and Interacting
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["2 The World-Modeling Lens<br/>四种操作：Reading / Writing / Sharing / Interacting"] --> P["3 Preliminaries<br/>含 3.4 Taxonomy of Video World Models"]
+    P --> R["4 Video Comprehension: Reading the World<br/>理解"]
+    P --> W["5 Video Generation: Writing the World<br/>生成"]
+    P --> U["6 Unified Video Models: Sharing the World<br/>理解与生成统一"]
+    P --> I["7 Video World Models: Interacting with the World<br/>交互预测"]
+    I --> G["2 × 3 分类（Fig. 10）<br/>行：Observation-space / Latent-state<br/>列：Passive / Action-conditioned / Interactive"]
+    R --> O["8 Open Challenges and Future Directions"]
+    W --> O
+    U --> O
+    G --> O
+```
+
+图依据：综述组织结构图（论文 §2.3 四种操作、§3.4 与 Fig. 10 的 2 × 3 分类、目录中 §4–§8 的章节标题）。
+
 ## 一句话定义
 
 这篇综述以世界建模为视角，将视频理解、视频生成、理解与生成的统一以及交互预测组织为四种互补操作。
@@ -100,6 +118,7 @@ sources:
 - [论文归档](../../sources/papers/video_world_model_survey_2610_31668.md)
 - [项目页归档](../../sources/sites/video-world-model-survey.md)
 - [资源库归档](../../sources/repos/awesome-video-world-model.md)
+- [arXiv PDF](https://arxiv.org/pdf/2610.31668)：已通读目录、§2.3、§3.4 与 §7.1 开头及 Fig. 10 图注，并核对 §4–§8 章节标题（各章正文以略读为准）
 
 ## 推荐继续阅读
 

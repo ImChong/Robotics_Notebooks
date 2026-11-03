@@ -43,6 +43,34 @@ Advancing real2sim2real transfer via embodied world modeling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PA["PhysAligner：物理参数辨识（Real2Sim）"]
+        R["真实数据：动作 a(t-1) 与状态 S(t-1)"] --> SIM["随机采样 (摩擦 f, 刚度 p, 阻尼 d)<br/>在仿真器中执行动作，得到仿真轨迹数据集"]
+        SIM --> SUR["训练代理模型 M(f,p,d)<br/>MSE 拟合仿真器的状态转移，得到可微近似"]
+        SUR --> GR["固定网络权重，对 (f,p,d) 做梯度下降<br/>使预测轨迹贴合真实轨迹"]
+        GR --> OPT["优化后的 PD 控制器参数 (f*, p*, d*)"]
+    end
+    OPT --> SIMR["对齐物理的仿真器"]
+    subgraph VA["VisAligner：外观迁移（Sim2Real）"]
+        SR["仿真中回放机器人（URDF）得到机器人观测"] --> CD["+ GroundSAM 前景物体分割 mask<br/>逐像素相加得到仿真条件帧"]
+        BG["参考图像（背景）作为首帧"] --> CC["条件序列 = 参考图 + 后续条件帧"]
+        CD --> CC
+        CC --> VAE["VAE 编码，与噪声沿通道拼接"]
+        VAE --> DN["条件视频扩散去噪<br/>（空间 + 时间注意力）→ VAE 解码"]
+        DN --> PV["逼真视频观测"]
+    end
+    SIMR --> SR
+    PV --> POL["机器人策略（如 ACT）"]
+    POL -->|"动作"| SIMR
+    POL --> RL["RL：批量生成轨迹，按终态末端到目标距离<br/>取 top-M / bottom-M 做偏好学习，迭代微调"]
+    PV --> IL["IL：改变前景外观 / 背景，生成多样未见观测作为增广数据"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.1–4、§4.3 RL 与 §4.4 IL 设定
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +126,7 @@ Advancing real2sim2real transfer via embodied world modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.05198>
+- [arXiv PDF](https://arxiv.org/pdf/2507.05198)：已通读方法部分（实验与附录以略读为准）：§1 引言（贡献部分）、§3 方法（3.1 框架概览、3.2 PhysAligner、3.3 VisAligner）、§4.3 RL / §4.4 IL 实验设定
 
 ## 推荐继续阅读
 

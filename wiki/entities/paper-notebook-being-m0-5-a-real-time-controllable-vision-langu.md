@@ -39,6 +39,38 @@ summary: "人类动作生成潜力巨大，但现有视觉-语言-动作模型�
 - **可控性五维度**是评估动作生成是否实用的好框架；
 - 动作生成是人形"语言→动作"上游的关键一环。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph IN["输入"]
+        TXT["文本指令"]
+        VID["视频：224×224，至多 64 帧，slow-fast 策略压缩视觉 token"]
+        MOT["动作序列 m(1:T)：HuMo263 特征"]
+    end
+    VID --> VE["SigLIP 视觉编码器（400M）+ 2 层 MLP 投影"]
+    MOT --> PRQ["PRQ 部件感知残差量化：拆为左臂 / 右臂 / 左腿 / 右腿 / 躯干 5 部分，共享编码器与码本，4 层残差量化"]
+    PRQ --> CODE["动作 token，以 MOT 与 /MOT 标记界定"]
+    TXT --> LLM
+    VE --> LLM
+    CODE --> LLM["LLaMA-2-7B 骨干：词表扩展动作码，next-token 预测"]
+    LLM --> OUT["输出：文本 token 或动作码"]
+    OUT --> DEC["PRQ 解码器逐帧解码"]
+    DEC --> RES["连续动作序列"]
+    subgraph TRN["三阶段训练"]
+        T1["1 动作-文本对齐"] --> T2["2 视觉-文本-动作对齐"] --> T3["3 动作指令微调"]
+    end
+    subgraph DATA["HuMo100M 数据流水线"]
+        D1["网络视频：关键词过滤、YOLO 人体跟踪与切片"] --> D2["关键点置信度与时长过滤"]
+        D2 --> D3["WHAM 估计 SMPL 参数，PHC 优化动作"]
+        D3 --> D4["Gemini 1.5 Pro 加 PoseScript 生成分层与部件级文本"]
+    end
+    DATA -.-> TRN
+    TRN -.-> LLM
+```
+
+图依据：论文 §3.1 至 §3.3（模型总览、PRQ、实时设计）、§4.1（数据构建）/ Fig. 2、Fig. 3。
+
 ## 解决什么问题
 
 VLMM 的**可控性**不足（五大短板）：响应多样指令差、姿态初始化弱、长序列差、未见场景差、**缺逐部位细粒度控制**。论文要：一个**实时、可控**、能逐部位控制的 VLMM，并配足够大的数据。
@@ -89,6 +121,7 @@ VLMM 的**可控性**不足（五大短板）：响应多样指令差、姿态�
 - [humanoid_pnb_being-m0-5.md](../../sources/papers/humanoid_pnb_being-m0-5.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model/Being-M0.5__A_Real-Time_Controllable_Vision-Language-Motion_Model.html>
 - 论文：<https://arxiv.org/abs/2508.07863>
+- [arXiv PDF](https://arxiv.org/pdf/2508.07863)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 方法（3.1 至 3.3）、§4.1 数据构建
 
 ## 推荐继续阅读
 

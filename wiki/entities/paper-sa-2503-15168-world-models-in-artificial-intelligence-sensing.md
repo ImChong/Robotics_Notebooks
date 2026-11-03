@@ -42,6 +42,33 @@ Discusses world models from a cognitive perspective.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    GAP["问题（§1–§2）：LLM 等大模型靠下一 token 预测学统计相关，缺少 World Model，难以做因果、多步逻辑、跨域整合的推理"]
+    GAP --> PIAGET["Piaget 建构主义（§3）：知识由经验与交互主动构建；schema、assimilation（同化）、accommodation（顺应）"]
+    PIAGET --> STAGES["Piaget 四阶段：sensorimotor → preoperational → concrete operational → formal operational"]
+    PIAGET --> WMS["World Model 的 Piaget 式学习四阶段：perception → representation → reasoning → generalization"]
+    PIAGET --> MECH["与 World Model 的对应议题：交互式学习、assimilation / accommodation 式更新、偏差与数据质量、泛化与抽象思维"]
+    WMS --> AREAS["六个关键研究领域（§4，Fig. 1）"]
+    MECH --> AREAS
+    AREAS --> A1["Physics-informed ML 与 Embodied AI"]
+    AREAS --> A2["Neurosymbolic AI"]
+    AREAS --> A3["Causal Inference"]
+    AREAS --> A4["Open-World ML（含 continual learning）"]
+    AREAS --> A5["Human-in-the-Loop（含 knowledge injection）"]
+    AREAS --> A6["Trustworthy 与 Responsible AI"]
+    A1 --> GOAL["目标（§5）：能推理、可适应的以人为本 World Model；并指出混合模型的可解释性、一致性、可扩展性等挑战"]
+    A2 --> GOAL
+    A3 --> GOAL
+    A4 --> GOAL
+    A5 --> GOAL
+    A6 --> GOAL
+```
+
+图依据：立场论文的论证结构图（从问题到 Piaget 框架再到六个研究领域）：论文 §1–§5、Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ Discusses world models from a cognitive perspective.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.15168>
+- [arXiv PDF](https://arxiv.org/pdf/2503.15168)：已通读方法部分（实验与附录以略读为准）：全文（摘要、§1–§5，含 Fig. 1）
 
 ## 推荐继续阅读
 

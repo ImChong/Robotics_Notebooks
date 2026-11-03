@@ -55,6 +55,49 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：README 的串口直连用法 `XenseSerialGripper(port="/dev/ttyUSB0")`；或控制台脚本 `xgripper --gripper`（`pyproject.toml` 中 `xgripper = "xgripper.__main__:main"`，运行 `XenseGripperNode`，依赖 `xensesdk.ezros`）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户脚本 / 远端调用方
+    participant M as xgripper/__main__.py<br/>main()
+    participant N as node/xense_gripper_node.py<br/>XenseGripperNode
+    participant G as xense_gripper.py<br/>XenseSerialGripper
+    participant S as serial_device.py<br/>SerialDevice
+    participant MCU as 夹爪 MCU（串口）
+
+    alt 直接串口（README）
+        U->>G: XenseSerialGripper(port, baudrate=115200)
+    else 控制台脚本 xgripper --gripper
+        U->>M: xgripper --gripper
+        M->>N: XenseGripperNode()
+        N->>N: ezros.init()；Node("gripper_<eth0 MAC>")
+        N->>G: XenseGripper.create(port="/dev/ttyS8") 返回串口实现
+        N->>N: 建 publisher、5 秒 timer，注册 set_position/set_speed/set_led_color/calibrate 服务
+    end
+    G->>S: SerialDevice(port, baudrate, timeout)
+    G->>G: 启动守护线程 _run_loop 持续 receive()
+    U->>G: set_position(40.0, vmax=80, fmax=27)
+    G->>G: 校验范围，换算为原始量（位置 raw=85-position）
+    G->>S: build_packet(device_id, 8 字节数据域)（头 0x3E + 长度 + CRC16）
+    S->>MCU: send 13 字节帧
+    U->>G: get_gripper_status()
+    G->>S: 发送 GRIPPER_STATUS 查询帧
+    MCU-->>S: 13 字节回包
+    S-->>G: receive()：校验 CRC，返回 bytes
+    G->>G: _run_loop 按 data[3] 解析为状态缓存
+    G-->>U: dict（position / velocity / force / temperature）
+    opt 节点模式
+        N->>G: on_timeout 每 5 秒 get_gripper_status() + get_button_status()
+        N-->>U: publisher 发布 gripper_<MAC> 话题
+    end
+    U->>G: release()（关串口并 join 接收线程）
+```
+
+图依据：XenseRobotics-AI/XGripper@130d500，读过 README.md、pyproject.toml、xgripper/__init__.py、xgripper/__main__.py、xgripper/xense_gripper.py（XenseSerialGripper 与 create）、xgripper/serial_device.py、xgripper/node/xense_gripper_node.py；XenseTCPGripper、MasterNode、camera_server、controller 未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +109,7 @@ institutions:
 - [XGripper 源码归档](../../sources/repos/xgripper.md)（<https://github.com/XenseRobotics-AI/XGripper>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：XenseRobotics-AI/XGripper@130d500，读过 README.md、pyproject.toml、xgripper/__init__.py、xgripper/__main__.py、xgripper/xense_gripper.py、xgripper/serial_device.py、xgripper/node/xense_gripper_node.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

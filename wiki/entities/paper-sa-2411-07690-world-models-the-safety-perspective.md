@@ -42,6 +42,31 @@ Survey on safety challenges and risks of world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INTRO["§I Introduction：关注面向具身 AI 智能体的世界模型，从安全视角分析"] --> EVO["§II The Evolution of World Models（Fig.1：按核心技术分类、按时间排列）"]
+    EVO --> RNN["A. RNN-Based Methods"]
+    EVO --> TRF["B. Transformer-Based Methods"]
+    EVO --> DIF["C. Diffusion-Based Methods"]
+    EVO --> OTH["D. Other Methods"]
+    EVO --> MET["E. Evaluation Metrics：评估部署在智能体中的世界模型 / 评估生成式世界模型的输出数据"]
+    EVO --> PATH["§III Pathology of World Model Safety（以自动驾驶为代表领域）"]
+    PATH --> PA["A. Unreasonable Traffic Scenario Generated Through Selected World Models（Fig.2）"]
+    PATH --> PB["B. Unsafe Behavior of AI Agents Driven by World Models（Fig.3）"]
+    PA --> RES["§IV Research Direction Proposals：数据准备、生成过程、后处理阶段的研究挑战"]
+    PB --> RES
+    RES --> R1["Quantitative Uncertainty Evaluations of Results"]
+    RES --> R2["Symbolic Integration into Learning"]
+    RES --> R3["Controllable Learning Processes"]
+    RES --> R4["Mechanistic Explainable Machine Learning"]
+    RES --> R5["Benchmarks and Evaluation"]
+    RES --> CONC["§V Conclusion"]
+```
+
+图依据：综述 / 立场论文的论证结构图，依据论文 §I 末尾的结构说明、§II Fig.1、§III Fig.2–3、§IV 研究方向列表。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Survey on safety challenges and risks of world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.07690>
+- [arXiv PDF](https://arxiv.org/pdf/2411.07690)：已读摘要、§I 引言、§II 的 A（RNN）/B（Transformer 前半）与 E 评测指标、§III 安全病理分析、§IV 研究方向；§II 的 C、D 及各方法细节、§V 结论与参考文献略读
 
 ## 推荐继续阅读
 

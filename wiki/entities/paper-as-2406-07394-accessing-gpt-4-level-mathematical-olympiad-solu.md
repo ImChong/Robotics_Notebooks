@@ -41,6 +41,22 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / LLM-Based Reward Design。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Initialization：初始答案 + 兜底应答（如 I don't know）作为根节点"] --> B["Selection：从未充分扩展的候选集 C 中按 UCT 选节点"]
+    B --> C["Self-Refine：生成反馈 m，据此改写出新答案 a'"]
+    C --> D["Self-Evaluation：自评奖励 -100~100，多次采样，Q(a)=(min+mean)/2"]
+    D --> E["Backpropagation：Q'(a)=(Q(a)+max 子节点 Q)/2 向祖先传播"]
+    E --> F["UCT 更新：UCT = Q + c*sqrt(ln(N父+1)/(N+ε))"]
+    F --> G{"满足终止条件 T？"}
+    G -->|"否"| B
+    G -->|"是"| H["按 Q 值从树节点中选出最佳答案"]
+```
+
+图依据：论文 §3（Fig. 1、§3.1–3.5）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +111,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / LLM-Based Reward Design。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2406.07394>
+- [arXiv PDF](https://arxiv.org/pdf/2406.07394)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 全部（3.1–3.5）；§4 评测与附录略读
 
 ## 推荐继续阅读
 

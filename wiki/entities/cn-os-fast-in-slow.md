@@ -55,6 +55,43 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：评测 `bash test_rlbench.sh`（起 Xvfb 后循环调 `python scripts/sim.py --replay-or-predict predict --training_mode async --slow-fast-ratio 4 ...`）；训练 `bash train.sh`（`torchrun ... scripts/train.py --vla.type prism-dinosiglip-224px+oxe+diffusion ...`）。
+
+```mermaid
+sequenceDiagram
+    participant S as scripts/sim.py<br/>main()
+    participant Env as LIFT3D RLBenchEnv<br/>(CoppeliaSim)
+    participant F as models/vlas/fisvla.py<br/>FiSvla
+    participant V as models/vlms/prismatic.py<br/>self.vlm
+    participant Df as DDIM 扩散采样<br/>(ddim_sample_loop)
+
+    S->>F: model_load → load_vla(model_path, load_for_training=False, ...)；model.to(cuda).eval()
+    S->>Env: RLBenchEnv(...) 外套 VideoWrapper；env.reset()
+    loop 每个 episode 的每步 j
+        S->>Env: 取 obs_dict['image'] / ['point_cloud'] / env.text
+        alt slow_cnt % slow_fast_ratio == 0 且 predict_mode == 'diff'（慢系统，低频）
+            S->>F: slow_system_forward(image_head_slow, instruction)
+            F->>V: slow_system_infer_forward(input_ids, pixel_values)
+            V-->>S: input_ids, slow_latent_embedding
+        end
+        S->>F: fast_system_forward(image_head_fast, point_cloud, slow_latent_embedding, cur_robot_state)
+        F->>V: fast_system_infer_forward 作为 sample_fn
+        F->>Df: ddim_sample_loop（噪声→动作，num_ddim_steps）
+        Df-->>F: 归一化动作，反归一化后返回 actions
+        F-->>S: actions
+        loop 对 actions 中每个 action
+            S->>S: action[:3] += robot_state 位置；EEpose.pose_6DoF_to_7DoF
+            S->>Env: env.step(action)
+        end
+        S->>S: slow_cnt += 1；success 则结束 episode
+    end
+    S->>S: 保存视频/图像并写 success_rate.txt
+```
+
+图依据：CHEN-H01/Fast-in-Slow@14f73b3，读过 README.md、train.sh、test_rlbench.sh、scripts/sim.py、scripts/train.py（训练只读到 train() 的模型/数据/策略装配，未读 training/strategies 的训练循环内部）、models/vlas/fisvla.py 中 slow_system_forward / fast_system_forward 的片段；上图为评测路径，训练路径未画；fisvla 内部与 prismatic.py 的更细调用未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +103,7 @@ institutions:
 - [Fast-in-Slow 源码归档](../../sources/repos/fast-in-slow.md)（<https://github.com/CHEN-H01/Fast-in-Slow>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：CHEN-H01/Fast-in-Slow@14f73b3，读过 README.md、train.sh、test_rlbench.sh、scripts/sim.py、scripts/train.py、models/vlas/fisvla.py（slow_system_forward / fast_system_forward 部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

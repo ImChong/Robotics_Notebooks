@@ -42,6 +42,31 @@ World-model-guided MCTS for efficient WebUI trajectory synthesis.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["阶段1 UI 基础理解数据<br/>WebArena 随机探索得到<br/>转移三元组 (o_t-1, a_t, o_t)"] --> S1b["三类单步数据<br/>Dense Captioning / Element Functionality / State Transition"]
+    S1b --> SFT1["课程学习 SFT<br/>(GPT-4o 看截图生成标注)"]
+    subgraph MCTS["阶段2 WebMCTS（世界模型引导）"]
+        direction TB
+        SEL["节点选择<br/>UCB"] --> EXP["动作扩展<br/>Policy Agent π 采样至少 3 个候选动作"]
+        EXP --> WM["World Model ω<br/>预测下一观测 o_t<br/>(URL 哈希缓存复用)"]
+        WM --> PRM["Process Reward Model γ<br/>按 o_t 与用户意图 q 打分"]
+        PRM --> BP["回传<br/>访问数加权平均更新祖先价值"]
+        BP --> SEL
+    end
+    BP --> TREE["Web 动作树"]
+    TREE --> VAL["阶段3 Valuable Trajectory<br/>GPT-4 剪枝冗余节点<br/>DFS 取价值超阈值节点并回溯到根"]
+    TREE --> RB["Rollback Trajectory<br/>失败兄弟节点 + GPT-4 反思<br/>插入 go_back 动作"]
+    VAL --> BC["阶段4 UI Behavior Cloning SFT"]
+    RB --> BC
+    SFT1 --> BC
+    BC --> POL["训练后的 Policy Agent"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2（WebMCTS 流程）/ Fig.3；阶段1 与阶段4 的衔接按 §3.4 / Table 1 归纳。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ World-model-guided MCTS for efficient WebUI trajectory synthesis.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.04370>
+- [arXiv PDF](https://arxiv.org/pdf/2507.04370)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（§3.1–3.4）
 
 ## 推荐继续阅读
 

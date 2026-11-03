@@ -41,6 +41,21 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    MODEL["自建简化仿真器：欠驱动二连杆平面臂动力学 + 摩擦模型（§IV）"] --> RAND
+    RAND["注入不确定性：最多 10% 随机延迟（臂与手指动作）、摩擦值 10% 噪声（§V-A）"] --> MDP
+    MDP["MDP：状态 [φtl−φtgt, φ̇tl, φgrp, φ̇grp, dfing]；动作 [臂角加速度 φ̈grp, 手指间距 dfing]；奖励随工具角度接近目标而增大，进入目标区有 +1 奖励"] --> TRPO["TRPO 无模型策略搜索（全连接网络 32、16 节点）"]
+    TRPO --> POL["仿真中训练得到的策略"]
+    POL --> HW["部署到 Baxter 机械臂"]
+    CAM["Kinect 2 RGB-D 相机 + 颜色分割跟踪工具上的标记，估计工具角 φtl"] --> HW
+    HW --> ACT["输出臂加速度与手指间距，使工具枢转到目标角 φtgt"]
+```
+
+图依据：论文 §III、§IV、§V-A / V-B / V-C、§VI-B。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +110,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1703.00472>
+- [arXiv PDF](https://arxiv.org/pdf/1703.00472)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§III、§IV（动力学与摩擦模型）、§V、§VI（仿真训练与 Baxter 实验）、§VII；§II 相关工作略读
 
 ## 推荐继续阅读
 

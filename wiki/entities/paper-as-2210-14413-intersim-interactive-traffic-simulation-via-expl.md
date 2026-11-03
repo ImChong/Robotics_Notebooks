@@ -41,6 +41,24 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入: 过去 agent 状态 + 环境上下文<br/>(栅格化 + 向量化表示)"] --> PLAN["给定 ego 测试规划轨迹"]
+  PLAN --> CD["冲突检测<br/>(bounding box 未来是否重叠)"]
+  CD -- "无冲突" --> STEP["提交轨迹, 仿真前进一步"]
+  CD -- "有冲突" --> REL["关系预测网络<br/>(VectorNet 向量编码 + VGG16 栅格编码 → 两层 MLP)<br/>判定 influencer / reactor"]
+  REL --> GOAL["保持 influencer 轨迹不变<br/>reactor 目标点设为交叉点"]
+  GOAL --> TP["Goal-driven 轨迹预测<br/>(共享上下文编码器 + MLP 解码器)<br/>reactor 可为环境 agent 或 ego"]
+  TP --> CD2["对更新后的轨迹再检测与其他 agent 的冲突"]
+  CD2 -- "新冲突" --> REL
+  CD2 -- "全部消解" --> STEP
+  STEP --> IN
+```
+
+图依据：论文 §IV-A…F（Overview、Conflict Detection、Relation-Aware Conflict Resolution、Goal Driven Trajectory Prediction、Conflict Resolution between Environment Agents、Simulation）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +113,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2210.14413>
+- [arXiv PDF](https://arxiv.org/pdf/2210.14413)：已通读方法部分（实验与附录以略读为准）：§IV Approach（A–F）；§I、§III、§V 实验仅略读
 
 ## 推荐继续阅读
 

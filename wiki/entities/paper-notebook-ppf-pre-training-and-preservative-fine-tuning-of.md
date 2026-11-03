@@ -14,7 +14,7 @@ summary: "PPF：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔�
 
 # PPF
 
-**PPF: Pre-training and Preservative Fine-tuning of Humanoid Locomotion** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
+**PPF: Pre-training and Preservative Fine-tuning of Humanoid Locomotion** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：除分类位置与原文入口外，仅给出依据论文方法部分的「流程总览」图，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -32,6 +32,28 @@ PPF 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    MBC["模型基控制器 MBC<br/>ALIP 落脚点控制 + 被动性全身逆动力学"]
+    DAG["阶段一：预训练<br/>DAgger 行为克隆，最小化 ‖a_E − μθ(s)‖²"]
+    PI["可学习预训练策略 μθ<br/>（RL 阶段作为高斯策略均值）"]
+    RL["阶段二：PPO 微调<br/>任务奖励 + Lipschitz 连续性惩罚"]
+    MAR["MAR 权重 w(s) = w0·exp(−ż²/δ)<br/>以基座竖直速度 ż 衡量模型假设违反程度"]
+    REG["正则项 w(s)‖a_E − μθ(s)‖²<br/>假设成立时保留 MBC 动作风格"]
+    LOSS["L_PPF = L_PPO + 加权正则项"]
+    OUT["微调后策略 π（下肢目标关节位置与速度）"]
+    MBC --> DAG --> PI --> RL
+    MBC -->|专家动作 a_E| REG
+    MAR --> REG
+    RL --> LOSS
+    REG --> LOSS
+    LOSS --> OUT
+```
+
+图依据：论文 §III–§V（Fig. 3、Eq. 4–9）
 
 ## 核心信息
 
@@ -64,6 +86,7 @@ PPF 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - [humanoid_pnb_ppf-pre-training-and-preservative-fine-tuning-of.md](../../sources/papers/humanoid_pnb_ppf-pre-training-and-preservative-fine-tuning-of.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2504.09833>
+- [arXiv PDF](https://arxiv.org/pdf/2504.09833)：已通读方法部分（实验与附录以略读为准）：§III 模型基控制器背景、§IV DAgger 预训练与微调、§V PPF（含 MAR 与实现细节）；§VI 实验仅略读
 
 ## 推荐继续阅读
 

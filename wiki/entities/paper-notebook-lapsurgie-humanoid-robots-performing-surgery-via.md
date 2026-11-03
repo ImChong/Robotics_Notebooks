@@ -39,6 +39,31 @@ summary: "现有手术机器人（如 da Vinci）昂贵、专用、只在高资�
 - **速度是主要短板**：完成时间约为 dVRK 的 2 倍，受控制方案复杂度与系统延迟拖累，是落地前必须攻克的瓶颈。
 - **限制**：① 仅 14 人、以新手为主，泛化性待验证；② 仅 peg-transfer 单一受控任务，未测真实复杂术式；③ 从未真实临床部署；④ 逆映射需器械专属运动学参数，灵活性受限；⑤ 硬件设计、控制效率、几何建模精度均需提升。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph CON["操作端控制台"]
+        M["dVRK MTM 手柄 + 脚踏"]
+        D["GOOVIS G3 Max 头戴立体显示"]
+    end
+    M -->|"目标器械尖端位姿 Ptt"| IM
+    M -->|"夹爪开合映射到 0-60°"| SV["舵机手指驱动夹钳开合"]
+    subgraph INV["逆映射控制（RCM 约束）"]
+        IM["被动腕式器械运动学建模：θ1, θ2 → 尖端 θ3 = kθ1, θ4 = kθ2"] --> OPT["带软关节限位的残差最小化（TRF 求解）→ 目标手柄 1 位姿"]
+        RCM["ArUco 标定 RCM 位置 xrcm"] --> IM
+        OPT --> EE["加偏置得到机器人末端目标位姿 Pee*"]
+    end
+    EE --> G1["Unitree G1 人形：双手经耦合支架夹持现成腹腔镜器械"]
+    SV --> G1
+    G1 --> TASK["RCM 约束训练盒内 peg-transfer 操作"]
+    ENDO["人形前方内窥镜（双目）"] --> D
+    TASK -.- ENDO
+    CON -.- ROS["ROS2 网络通信"] -.- G1
+```
+
+图依据：论文 §III-A、§III-B / Fig. 2、Fig. 4、Fig. 5
+
 ## 解决什么问题
 
 1. **手术机器人太贵太专用**：da Vinci 等平台成本高、依赖专用基础设施，只在高资源医院普及，难规模化下沉。 2. **能否用「通用人形」替代专用手术机器人？** 人形机器人可直接在为人类设计的手术室里操作现成器械，部署门槛低——但此前从未有人让人形执行腹腔镜手术。 3. **关键技术难点**：手动腕式腹腔镜器械是**被动运动链**，且必须满足**远心点（RCM）约束**（绕切口点转动）。如何把操作者的手部意图精确映射到这种无主动驱动、带 RCM 约束的器械上？
@@ -92,6 +117,7 @@ summary: "现有手术机器人（如 da Vinci）昂贵、专用、只在高资�
 - [humanoid_pnb_lapsurgie.md](../../sources/papers/humanoid_pnb_lapsurgie.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/LapSurgie__Humanoid_Robots_Performing_Surgery_via_Teleoperated_Handheld_Laparoscopy/LapSurgie__Humanoid_Robots_Performing_Surgery_via_Teleoperated_Handheld_Laparoscopy.html>
 - 论文：<https://arxiv.org/abs/2510.03529>
+- [arXiv PDF](https://arxiv.org/pdf/2510.03529)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法（A 人形腹腔镜遥操作系统、B 手动腕式器械逆映射控制）；§IV-V 实验与讨论仅略读。
 
 ## 推荐继续阅读
 

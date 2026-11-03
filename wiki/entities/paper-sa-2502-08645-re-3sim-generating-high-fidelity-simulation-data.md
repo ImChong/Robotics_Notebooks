@@ -42,6 +42,29 @@ A 3D-photorealistic real-to-sim system addressing geometric and visual sim-to-re
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["真实场景多视角图像"] --> B["背景：COLMAP SfM + OpenMVS 重建网格"]
+    A --> C["前景物体：ARCode 自动分割重建"]
+    B --> D["网格简化为碰撞体"]
+    C --> E["空洞填充与表面平滑（USD 表示）"]
+    D --> E
+    E --> F["混合视觉渲染"]
+    A --> G["背景 3DGS 重建"]
+    G --> F
+    F --> H["前景网格光线追踪渲染 + 背景 3DGS 渲染，按深度 Z-buffer 合成"]
+    H --> I["真实世界对齐：桌面 ArUco 标记对齐 3DGS 坐标，再用 ICP 精修"]
+    I --> J["物理仿真器（默认 Isaac Sim）"]
+    J --> K["特权信息规则专家策略 + RRTConnect 规划，域随机化"]
+    K --> L["拒绝采样滤除失败轨迹，得到仿真数据集"]
+    L --> M["模仿学习训练 ACT 策略（DINOv2）"]
+    M --> N["零样本迁移真机"]
+```
+
+图依据：论文 §III-A 系统概述 / Fig. 2（四个组成：网格恢复、混合视觉渲染、真实世界对齐、数据生成）、§III-B 至 §III-E。其中 3DGS 重建输入来自 §III 开头“用 3DGS 渲染背景”的描述，箭头为按文意连接。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ A 3D-photorealistic real-to-sim system addressing geometric and visual sim-to-re
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2502.08645>
+- [arXiv PDF](https://arxiv.org/pdf/2502.08645)：已通读方法部分（实验与附录以略读为准）：§III Re^3Sim（A 系统概述、B 网格恢复、C 混合视觉渲染、D 真实世界对齐、E 专家数据采集）、§IV-A 实验设置
 
 ## 推荐继续阅读
 

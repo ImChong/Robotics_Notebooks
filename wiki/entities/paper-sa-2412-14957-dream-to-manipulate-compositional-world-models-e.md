@@ -42,6 +42,22 @@ Compositional world models empowering robot imitation learning with imagination.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：RGB-D 视频 X"] --> SEG["DEVA 开放词汇跟踪：提示 object / table，得到各物体分割掩码 Yk"]
+    SEG --> GS["逐物体 2DGS 高斯重建，含深度监督：Gk = h(X, Xdepth, Yk)"]
+    GS --> MESH["Gaussian 转物体网格 Mk，并附物理参数 ω，得到物体资产 ok"]
+    MESH --> SIM["嵌入 PyBullet 物理引擎，机器人由 URDF 建模，更新位置与姿态"]
+    SIM --> UPD["将网格的位移与旋转同步到对应 Gaussians，渲染逼真观测"]
+    UPD --> EQ["等变变换：对物体位置与动作同时施加刚体变换（环境 roto-translation、物体旋转）"]
+    EQ --> VER["在世界模型中执行并渲染，用终点位置阈值 τ=0.015 m 验证"]
+    VER --> IL["想象出的新演示用于训练模仿学习策略（PerAct）"]
+```
+
+图依据：论文 §3 Dream-to-Manipulate（3.1–3.3）、§4 Equivariant Transformations、§5 实验设定 / Fig.1、Fig.2、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ Compositional world models empowering robot imitation learning with imagination.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.14957>
+- [arXiv PDF](https://arxiv.org/pdf/2412.14957)：已通读方法部分（实验与附录以略读为准）：§1–2 引言与相关工作（略读）、§3、§4、§5 开头
 
 ## 推荐继续阅读
 

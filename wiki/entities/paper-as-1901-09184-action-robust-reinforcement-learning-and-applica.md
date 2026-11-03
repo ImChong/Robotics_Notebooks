@@ -41,6 +41,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["状态 s"] --> AC["Actor μθ(s)"]
+    S --> AD["Adversary μ̄θ̄(s)"]
+    AC --> MIX["混合动作：PR-MDP 以 1-α 取 μ、以 α 取 μ̄；NR-MDP 取 (1-α)μ+αμ̄"]
+    AD --> MIX
+    MIX --> EX["加探索噪声并执行，观测 r 与 s'"]
+    EX --> RB["存入回放池 R"]
+    RB --> UC["采样 batch，更新 Critic（目标按 α 混合 Q 或混合动作）"]
+    UC --> UA["更新 Actor（梯度含因子 1-α，经 Critic 反传）"]
+    UA --> UD["再采样 batch，更新 Adversary（梯度含因子 α）"]
+    UD --> TG["软更新 target 网络 θ-、θ̄-、φ-"]
+    TG --> S
+```
+
+图依据：论文 §4（AR-DDPG）、附录 D Algorithm 5 与 Fig.4-5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +114,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1901.09184>
+- [arXiv PDF](https://arxiv.org/pdf/1901.09184)：已通读方法部分（实验与附录以略读为准）：§1-§4、§5 中 AR-DDPG 描述与附录 D（Algorithm 5、Fig.4-6）；§6 实验与其余附录仅略读
 
 ## 推荐继续阅读
 

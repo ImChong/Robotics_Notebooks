@@ -42,6 +42,33 @@ Unified driving world model for future generation and perception.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph train["训练（Fig. 2）"]
+    A["M 帧 image-depth 序列"] --> E["共享冻结 latent 编码器 E"]
+    E --> ZX["图像 latent z(x)"]
+    E --> ZD["深度 latent z(d)"]
+    ZX --> U["条件去噪 video UNet<br/>首帧作无噪条件"]
+    U --> MLI["Multi-scale Latent Interaction MLI<br/>多尺度 depth layers 由 UNet 特征预测深度 latent"]
+    MLI -->|"inside feedback：zero conv 注入 UNet"| U
+    MLI -->|"outside feedback：预测深度 latent 注入去噪图像 latent"| ZXH["去噪图像 latent"]
+    U --> ZXH
+    ZXH --> DEC["共享冻结解码器 D"]
+    MLI --> DEC
+    DEC --> LOSS["损失 L = L(x) + L(d) + λ·L_SSI"]
+  end
+  subgraph infer["推理（Fig. 4）"]
+    I1["单帧当前图像"] --> I2["E 编码并拼接 M-1 份噪声"]
+    I2 --> I3["MLI 增强的去噪 UNet"]
+    I3 --> I4["解码器 D"]
+    I4 --> I5["未来 image-depth 对序列（4D 预测）"]
+  end
+```
+
+图依据：论文 §III（Fig. 2 训练流程、Fig. 3 MLI、Fig. 4 推理流程）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +124,7 @@ Unified driving world model for future generation and perception.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.13587>
+- [arXiv PDF](https://arxiv.org/pdf/2503.13587)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-D、§IV-A/B 数据集与实现细节
 
 ## 推荐继续阅读
 

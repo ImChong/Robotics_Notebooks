@@ -42,6 +42,26 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Benchmarks。 本页是清�
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  SIM["ManipulaTHOR 仿真器<br/>AI2-THOR + Unity + PhysX<br/>带机械臂的智能体"] --> IMG["第一视角 RGB / 深度<br/>I_t"]
+  SIM --> DIST["臂末端到物体距离 d_arm<br/>臂末端到目标距离 d_goal"]
+  IMG --> CNN["3 层卷积 + FC<br/>512 维视觉嵌入"]
+  DIST --> FCD["2 层 FC + ReLU<br/>512 维位置嵌入"]
+  CNN --> CAT["拼接"]
+  FCD --> CAT
+  CAT --> GRU["GRU 控制器<br/>隐状态 512"]
+  GRU --> POL["策略：离散动作分布<br/>+ 价值估计 critic"]
+  POL -->|采样动作| ACT["移动 / 转向 / 臂平移 / 臂旋转<br/>调臂高度 / pickup / done"]
+  ACT --> SIM
+  SIM --> RW["奖励 r_t：成功 10 + 抓取 5<br/>+ 臂到物体、物体到目标距离变化"]
+  RW -->|DD-PPO 优化| GRU
+```
+
+图依据：论文 §3 ManipulaTHOR（臂与仿真器）、§4 ARMPOINTNAV 任务、§5 Model / Fig. 6（网络结构）与式 (1) 奖励；图中「奖励回到 GRU」表示 DD-PPO 对整个网络的优化，是对训练流程的概括。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Benchmarks。 本页是清�
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2104.11213>
+- [arXiv PDF](https://arxiv.org/pdf/2104.11213)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 ManipulaTHOR、§4 ARMPOINTNAV 任务与数据集、§5 模型；§6 实验以略读为准
 
 ## 推荐继续阅读
 

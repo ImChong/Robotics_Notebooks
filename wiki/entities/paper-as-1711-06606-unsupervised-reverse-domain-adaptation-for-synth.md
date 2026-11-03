@@ -42,6 +42,24 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SYN["合成内窥镜数据：前向模型 + 解剖结构结肠模型 + 渲染，附带真值深度"] --> D["判别器 D：区分合成图像与变换后的真实图像"]
+    REAL["真实图像 x"] --> T["变换网络 T：真实 → 类合成表示 x'"]
+    T --> D
+    D -->|"对抗损失反馈"| T
+    T --> REG["自正则项：约束 x' 与 x 的逐像素偏差，保留诊断特征"]
+    REG --> T
+    T --> XP["类合成真实图像"]
+    XP --> DEPTH["仅在合成数据上训练的 CNN-CRF 深度估计网络"]
+    SYN --> DEPTH
+    DEPTH --> OUT["单目内窥镜深度估计"]
+```
+
+图依据：论文 §3（合成医学数据，Fig.2）、§4（反向域适应，Fig.3、Algorithm 1）、§5（CNN-CRF 深度估计）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1711.06606>
+- [arXiv PDF](https://arxiv.org/pdf/1711.06606)：已通读方法部分（实验与附录以略读为准）：§1-2 引言与相关工作、§3 合成医学数据、§4 反向域适应、§5 深度估计（式 (6)-(9) 前后）
 
 ## 推荐继续阅读
 

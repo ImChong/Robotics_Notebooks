@@ -31,7 +31,33 @@ H-Zero 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，指标与结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph PRE["Cross-Embodiment Pretraining"]
+    ROB[多款人形机器人模型 H1 G1 N1 GR1 PM01 等 Isaac Gym 多机器人仿真] --> UCS[统一控制语义 关节映射 M 加 运动学对齐 方向 s 与零位 b]
+    ROB --> DR[扩展域随机化 刚体与关节动力学扰动范围加倍]
+    UCS --> OBS[观测 加 embodiment descriptors 关节 刚体 运动学 几何特征]
+    OBS --> POL[统一 MLP 策略 五步观测历史 加 base 速度估计器]
+    DR --> POL
+    POL --> EXP[Embodiment-wise Exploration 每个机器人独立探索方差 σ]
+    POL --> LOSS[Embodiment-wise Update 按平均回报动态重加权各机器人损失]
+    EXP --> POL
+    LOSS --> POL
+  end
+  POL --> PT[预训练基础策略]
+  subgraph FEW["Few-shot Transfer"]
+    PT --> NEW[新机器人 零样本推理]
+    PT --> FT[少量轨迹微调 初始采样用低动作方差]
+    FT --> GAIT[学得步态]
+  end
+  GAIT --> REAL[真机部署]
+```
+
+图依据：论文 §IV-A 至 §IV-E / Fig.2（EXP/LOSS 与策略的回路箭头为按 Fig.2 标注归纳）
 
 ## 核心信息
 
@@ -64,6 +90,7 @@ H-Zero 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 - [humanoid_pnb_h-zero-cross-humanoid-locomotion-pretraining-ena.md](../../sources/papers/humanoid_pnb_h-zero-cross-humanoid-locomotion-pretraining-ena.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2512.00971>
+- [arXiv PDF](https://arxiv.org/pdf/2512.00971)：已通读方法部分（实验与附录以略读为准）：§III Preliminaries、§IV Cross-Embodiment Humanoid Control（A–E）与 Fig.2、§V 实验设定与 Table II
 
 ## 推荐继续阅读
 

@@ -43,6 +43,41 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph IN["模型输入"]
+        CAM["三路相机（前/左前/右前），每路 4 帧 @2 Hz"]
+        NAV["高层导航指令 I（如 Turn Left / Go Straight）"]
+        EGO["自车状态 S：速度、加速度、历史动作"]
+    end
+    CAM --> VLM
+    NAV --> VLM
+    EGO --> VLM
+    VLM["Qwen2.5-VL-3B：统一自回归 Transformer 解码器"] --> MODE{"快思考 / 慢思考"}
+    MODE -- "快思考：直接输出" --> ACT
+    MODE -- "慢思考：先做 CoT（场景分析、关键物体、他车意图、驾驶决策）" --> ACT["物理动作 token（K=2048 码本，每个为 Δx, Δy, Δθ）"]
+    ACT --> TRJ["按码本解码为规划轨迹"]
+    subgraph SFT["阶段 1：监督微调 SFT"]
+        GT["真值轨迹（离散化为动作 token）"]
+        COT["Qwen2.5-VL-72B 自动生成 CoT 推理标注<br/>（nuPlan 45.6k、Waymo 7.2k，另并入 DriveLM）"]
+        LS["损失：语言建模 L_LM + λa·L_action，含 CoT 样本加权 λcot"]
+        GT --> LS
+        COT --> LS
+    end
+    subgraph RFT["阶段 2：强化微调 RFT（GRPO）"]
+        SMP["对同一场景采样 G 个候选输出"]
+        RWD["奖励 r = r_Driving − λr·r_CoT<br/>nuPlan 用 PDMS；Waymo 用 ADE；CoT 长度惩罚"]
+        GRP["组内归一化优势 + 裁剪 + KL 约束于 SFT 参考策略"]
+        SMP --> RWD --> GRP
+    end
+    LS --> RFT
+    RFT -. "优化得到的策略" .-> VLM
+```
+
+图依据：论文 §3 概览与 Fig.3（两阶段训练）、§3.1（输入、动作 tokenization、快慢思考）、§3.2（推理数据）、§3.3（SFT）、§3.4（GRPO 强化微调）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +135,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://proceedings.neurips.cc/paper_files/paper/2025/hash/2843fccca5bedd369a4764848b9bd546-Abstract-Conference.html>
+- [arXiv PDF](https://arxiv.org/pdf/2506.13757)：已通读方法部分（实验与附录以略读为准）：§3 方法（§3.1–3.4）；§4 实验与补充材料仅略读。
 
 ## 推荐继续阅读
 

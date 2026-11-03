@@ -43,6 +43,24 @@ RGB-D world model with flow-based motion representations for robot manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    A["当前 RGB-D 观测 (I_t, D_t) + 机器人动作 a_t"] --> B["阶段 1：动力学预测模块（条件 U-Net，动作经 cross-attention）"]
+    B --> C["预测 3D scene flow f_t→t+1（L_flow：MSE）"]
+    A --> D["VAE 编码 I_t 得 z_t"]
+    A --> E["卷积下采样 D_t 与 scene flow 得 c_t"]
+    C --> E
+    D --> F["阶段 2：Stable Diffusion 微调的去噪 U-Net（拼接 z_t、c_t，条件 a_t）"]
+    E --> F
+    F --> G["VAE 解码得下一帧 RGB I_t+1"]
+    G --> H["预训练深度估计模型（DPT head）得 D_t+1，用于自回归"]
+    H -.->|"下一步输入"| A
+```
+
+图依据：论文 §3 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ RGB-D world model with flow-based motion representations for robot manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.10075>
+- [arXiv PDF](https://arxiv.org/pdf/2505.10075)：已通读方法部分（实验与附录以略读为准）：§3 总览、3.1 背景、3.2 动力学预测、3.3 未来生成（含 Fig.2）；§4 实验起始与结果表（略读）
 
 ## 推荐继续阅读
 

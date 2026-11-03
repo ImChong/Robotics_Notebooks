@@ -43,6 +43,29 @@ Learning latent dynamic robust representations for world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["观测序列 o（K 帧）"] --> B["切成时空立方块并随机遮蔽比例 m"]
+  B --> C["掩码分支：Mask Encoder + 掩码 RSSM → 潜状态 s^m"]
+  A --> D["原始分支：EMA Encoder + EMA RSSM（沿用掩码分支的历史表征）→ s"]
+  C -.EMA 更新.-> D
+  C --> E["Ldyn：KL 动力学损失（含 free bits）"]
+  C --> F["Lpred：奖励/继续预测，仅用 s^m"]
+  C --> G["Lrec：线性投影 + ℓ2 归一化后 s̄ 与 s̄^m 的 MSE"]
+  D --> G
+  C --> H["Lsim：双模拟（bisimulation）相似性损失，余弦距离"]
+  D --> H
+  E --> I["总损失 L(φ) 联合优化（Adam）"]
+  F --> I
+  G --> I
+  H --> I
+  I --> J["潜空间 rollout：DreamerV3 式 actor-critic"]
+```
+
+图依据：论文 §4.1 / Table 1 / 式(2)–(7)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ Learning latent dynamic robust representations for world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.06263>
+- [arXiv PDF](https://arxiv.org/pdf/2405.06263)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 预备知识、§4 方法（4.1）与 §5 分析的开头；§6 实验为略读
 
 ## 推荐继续阅读
 

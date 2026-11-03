@@ -59,6 +59,40 @@ summary: "foc-wheel-legged-robot 是完整的双轮腿机器人开源项目：So
 - **README / 核查：** README 列出上述六部分与对应目录（solidworks / matlab / stm32-foc / esp32-controller / linux-fpv / android）；含 LICENSE 文件。
 - **差异与保留：** 「五连杆」来自文章，已读 README 前段未见，未核实。
 
+## 源码运行时序图
+
+入口：无单一命令，是三端固件/程序各自入口：ESP32 主控 `esp32-controller/software/src/main.cpp` 的 `setup()`（PlatformIO 构建，`platformio.ini`）；STM32 电机驱动板 `stm32-foc/software/Src/main.c` 的 `main()`；Android `MainActivity.java`（可选：图传侧 `linux-fpv/python/ctrl-proxy.py` 转发）。
+
+```mermaid
+sequenceDiagram
+    participant APP as Android MainActivity.java<br/>(处理线程, 10 Hz)
+    participant ESP as ESP32 main.cpp<br/>BT_Init / MyBleCharaCallbacks.onWrite
+    participant CT as Ctrl_TargetUpdateTask<br/>(4 ms)
+    participant LP as LegPos_UpdateTask<br/>leg_pos / leg_spd
+    participant CTRL as Ctrl_Task (4 ms)<br/>lqr_k + PID_CascadeCalc + leg_conv
+    participant MS as Motor_SendTask (vTaskDelay 2)
+    participant STM as STM32 Src/main.c<br/>CAN 回调 + loopFOC
+    Note over ESP: setup(): Serial_Init → ADC_Init → CAN_Init → IMU_Init → Motor_InitAll → Ctrl_Init → BT_Init
+    APP->>ESP: BLE 写 RX 特征: 0xAA + 摇杆X + 摇杆Y + 滑块 (4 字节)
+    ESP->>CT: 更新 target.speedCmd / yawSpeedCmd / legLength
+    CT->>CT: 速度斜坡 → target.speed / position / yawAngle
+    STM-->>ESP: CAN 0x101~0x107 帧，关节/轮电机角度与速度 (CAN_RecvTask → Motor_Update)
+    LP->>LP: 由两个关节角算腿长/腿角 (leftLegPos / rightLegPos)
+    loop 每 4 ms
+        CTRL->>CTRL: IMU pitch/yaw 与腿、轮状态 → 状态向量 x[6]
+        CTRL->>CTRL: lqr_k(腿长) 得增益, 算 lqrOutT / lqrOutTp
+        CTRL->>CTRL: yawPID / legLengthPID / rollPID / legAnglePID
+        CTRL->>CTRL: leg_conv(力, Tp) → 关节扭矩，超限则关电机保护
+        CTRL->>MS: Motor_SetTorque 写入各电机目标
+    end
+    MS->>STM: CAN 0x100 / 0x200: 各 3 路电压 (int16 × 1000)
+    Note over STM: HAL_CAN_RxFifo0MsgPendingCallback 解析 targetVotage<br/>主循环 setTargetVotage + loopFOC，500 ms 无帧则置零
+    STM-->>ESP: SysTick_UserExec → CAN_SendState(0x100+motorID)
+    APP->>ESP: 0xAB: 触发 Ctrl_StandupPrepareTask (起立)
+```
+
+图依据：Skythinker616/foc-wheel-legged-robot@e244439，读过 README.md、esp32-controller/software/src/main.cpp、esp32-controller/software/platformio.ini、stm32-foc/software/Src/main.c、android/app/src/main/java/com/skythinker/balancebot/MainActivity.java、linux-fpv/python/ctrl-proxy.py（仅前段与 BLE/UDP 收发行）。
+
 ## 关联页面
 
 - [simplefoc](../entities/simplefoc.md)
@@ -72,3 +106,4 @@ summary: "foc-wheel-legged-robot 是完整的双轮腿机器人开源项目：So
 - [foc_wheel_legged_robot.md](../../sources/repos/foc_wheel_legged_robot.md)
 - [wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md](../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md)
 - [原文（微信公众号）](https://mp.weixin.qq.com/s/pRGoPm41qYCNyHPWR6Dl6A)
+- 源码核对（2026-11-02）：Skythinker616/foc-wheel-legged-robot@e244439，读过 README.md、esp32-controller/software/src/main.cpp、esp32-controller/software/platformio.ini、stm32-foc/software/Src/main.c、android/app/src/main/java/com/skythinker/balancebot/MainActivity.java、linux-fpv/python/ctrl-proxy.py（部分）；时序图依据以上文件，未运行代码。

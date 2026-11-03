@@ -14,7 +14,7 @@ summary: "Spectral Normalization for Lipschitz-Constrained Policies on Learning 
 
 # Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion
 
-**Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
+**Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页 **还没有深读笔记**：除分类位置与原文入口外，仅给出依据论文方法部分的「流程总览」图，方法细节与数据请直接看原文。
 
 ## 一句话定义
 
@@ -32,6 +32,30 @@ Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid L
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测 49 维<br/>基座高度/欧拉角/速度、速度指令、关节位置与速度、上一动作"]
+    ACT["Actor 网络（MLP 2×512, ReLU）<br/>每层谱归一化 SN：W / σ(W)"]
+    LAM["最后一层权重乘 SN 系数 λSN<br/>调节 Lipschitz 常数 K≈2λSN/σ"]
+    PWR["幂迭代近似最大奇异值<br/>（单次迭代已较准确）"]
+    GAU["高斯策略 N(μ(s), σ²)，σ 固定 0.2<br/>输出 12 关节力矩，250 Hz"]
+    ENV["Isaac Gym 仿真<br/>4096 并行环境 + 域随机化/噪声/延迟"]
+    DISC["AMP 判别器 D（2×256 MLP）<br/>区分参考动作与策略状态转移"]
+    RS["风格奖励 r_style + 速度跟踪任务奖励 r_task"]
+    PPO["PPO 更新<br/>L_total = L_PPO + L_AMP"]
+    REAL["实机部署 TOCABI"]
+    OBS --> ACT --> LAM --> GAU --> ENV
+    PWR -.-> ACT
+    ENV --> DISC --> RS
+    ENV --> RS
+    RS --> PPO --> ACT
+    GAU --> REAL
+```
+
+图依据：论文 §IV-A（Fig. 2、Eq. 5–8）、§V（训练设置）
 
 ## 核心信息
 
@@ -64,6 +88,7 @@ Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid L
 - [humanoid_pnb_spectral-normalization-for-lipschitz-constrained.md](../../sources/papers/humanoid_pnb_spectral-normalization-for-lipschitz-constrained.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2504.08246>
+- [arXiv PDF](https://arxiv.org/pdf/2504.08246)：已通读方法部分（实验与附录以略读为准）：§IV-A 谱归一化与 Lipschitz 约束策略、§V 训练设置（观测动作、AMP 奖励、PPO 与随机化）；§VI 实验与实机部署仅略读
 
 ## 推荐继续阅读
 

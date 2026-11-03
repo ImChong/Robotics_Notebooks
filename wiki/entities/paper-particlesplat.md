@@ -47,6 +47,28 @@ summary: "ParticleSplat（arXiv:2609.19463）：DLP 粒子扩展到 3D Gaussian 
 - **（待论文正式披露）**；开源结论：**待发布**（步骤 2.5，2026-09-18）。
 - 与 tactile/WAM、主动视角、多智能体场景理解、Sim2Real、人形导航等主线交叉。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["V 个带位姿观测<br/>RGB(-D) 图像 + 相机外参/内参"] --> RAY["每像素相机射线<br/>Plücker 坐标 → FiLM 调制"]
+    IN --> ENC["视角感知编码器 q(Z|O)<br/>DLP 层次编码：spatial softmax 关键点 → STN 裁剪 glimpse → CNN 预测粒子属性"]
+    RAY --> ENC
+    ENC --> XATT["跨视角注意力<br/>细化深度与外观"]
+    XATT --> Z["多视角潜在粒子 Z<br/>V×(L+1)：位置 / 尺度 / 深度 / 深度延展 / 透明度 / 外观"]
+    Z --> FG["前景解码器 D_fg<br/>粒子 → 局部 patch 高斯 → 仿射放到图像平面"]
+    Z --> BG["背景解码器 D_bg<br/>背景粒子 → 逐像素对齐高斯"]
+    FG --> LIFT["结合深度属性与相机几何<br/>抬升为世界系 3D 高斯"]
+    BG --> LIFT
+    LIFT --> STITCH["拼接：直接拼接全部高斯 G"]
+    STITCH --> RENDER["可微 3DGS 光栅化<br/>目标视角 RGB + 深度"]
+    RENDER --> LOSS["多视角 ELBO<br/>context/target 重建项 + 场景级 KL"]
+    STITCH --> EDIT["逐粒子独立渲染<br/>→ 物体掩码 / 3D 场景编辑"]
+    Z --> POL["下游：冻结编码器，实体 token<br/>→ EC-Diffuser 扩散模仿策略（语言作为额外 token）"]
+```
+
+图依据：论文 §4 与 Fig. 1、附录 A.1.1–A.1.4、§5.3
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -100,6 +122,7 @@ summary: "ParticleSplat（arXiv:2609.19463）：DLP 粒子扩展到 3D Gaussian 
 - [particlesplat_arxiv_2609_19463.md](../../sources/papers/particlesplat_arxiv_2609_19463.md)
 - [wechat_embodied_station_10_papers_contact_wm_2026-09-18.md](../../sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md)
 - [arXiv:2609.19463](https://arxiv.org/abs/2609.19463)
+- [arXiv PDF](https://arxiv.org/pdf/2609.19463)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 背景、§4 方法、§5.3 模仿学习设定、附录 A.1.1–A.1.4（A.5.2 略读）
 
 ## 推荐继续阅读
 

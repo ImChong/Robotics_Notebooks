@@ -43,6 +43,30 @@ Model-based planning for web agents.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph Plan["WebDreamer 规划循环（Alg. 1）"]
+        I["指令 I + 当前观测 o_t"] --> C["get_candidate：采样 top-k 候选动作"]
+        C --> SR["self_refine：LLM 剔除无关候选动作"]
+        SR --> SIM["sim：LLM 用自然语言描述每个动作后的状态变化（并想象后续动作，深度 H）"]
+        SIM --> SC["score：LLM 对模拟轨迹打分，完成 1.0 / 进行中 0.5 / 错误 0，多次取平均"]
+        SC --> EX["执行得分最高的动作，得到 o_{t+1}"]
+        EX --> TC{"termination_check"}
+        TC -->|"否"| I
+        TC -->|"是"| FIN["结束"]
+    end
+    subgraph Train["自训练世界模型 Dreamer-7B（§3.3 / Fig. 3）"]
+        W1["Web Random Walking：随机点击、悬停、输入等"] --> W2["动作前后截图，Qwen2-VL-72B 生成状态变化文字描述"]
+        W2 --> W3["过滤后构成 3.1M+ 交互样本"]
+        W3 --> W4["以 Qwen2-VL-7B 初始化，next-token 训练 → Dreamer-7B"]
+    end
+    W4 -.->|"可替代 GPT-4o 充当 sim"| SIM
+```
+
+图依据：论文 §3.1–3.3、Alg. 1 / Fig. 2、Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ Model-based planning for web agents.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.06559>
+- [arXiv PDF](https://arxiv.org/pdf/2411.06559)：已通读方法部分（实验与附录以略读为准）：§2–§3（方法）、§4.1 实验设定
 
 ## 推荐继续阅读
 

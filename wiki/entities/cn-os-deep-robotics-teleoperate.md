@@ -55,6 +55,54 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`ros2 run dr02_tele state_machine [--log] [--record] [--record-dir PATH] [--ee zhixing]`（对应 `src/dr02_pro/state_machine/main.cpp`）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / PICO 头显与手柄
+    participant M as state_machine/main.cpp main()
+    participant F as HumanoidStateMachine
+    participant RI as DR2ProInterface (robot_interface.hpp)
+    participant T as TeleoperationState
+    participant PR as PicoDataReceiver (PXREA SDK)
+    participant TC as PicoTeleoperationController
+    participant IK as Dr2ArmIK (Pinocchio)
+    participant R as 机器人 / MuJoCo (/JOINTS_DATA, /JOINTS_CMD)
+
+    U->>M: ros2 run dr02_tele state_machine
+    M->>M: ParseRuntimeOptions()（--log/--record/--ee）
+    M->>F: HumanoidStateMachine(DR2PRO, ...)，rclcpp::init
+    M->>F: Start()
+    F->>RI: 创建节点 sdk_deploy，订阅 /JOINTS_DATA，发布 /JOINTS_CMD
+    F->>F: 创建 Emergency/ZeroPos/Teleoperation/Down 四个状态，初始为 Emergency
+    M->>F: Run()（2 ms 循环 + 后台 rclcpp::spin）
+    loop 每 2 ms，仅当 /JOINTS_DATA 时间戳更新
+        R-->>RI: Joints 反馈
+        F->>F: current_controller_->Run()，检查 GetNextStateName()
+    end
+    U->>F: 键盘 / 手柄 z、s（/GAMEPAD_KEY）切到 ZeroPos，再切 Teleoperation
+    F->>T: OnEnter()
+    T->>PR: Start() → PXREAInit（dlopen libPXREARobotSDK.so）
+    PR-->>PR: OnPicoCallback 持续缓存 PicoState
+    loop Teleoperation 状态下每个反馈帧
+        T->>PR: Snapshot()
+        T->>TC: Update(current, pico)
+        alt 按住扳机且有新的 PICO 数据包
+            TC->>IK: Solve(左右目标位姿, seed_q)
+            IK-->>TC: 14 维手臂关节解
+        end
+        TC-->>T: Command（腰部来自头显姿态，手臂来自 IK + 平滑）
+        T->>RI: SetJointCommand（kp/kd + 位置，腿颈保持进入时目标）
+        RI->>R: publish /JOINTS_CMD
+    end
+    U->>F: e/R1 → Emergency，d/R2 → Down
+    F->>T: OnExit() → PicoDataReceiver::Stop()
+```
+
+图依据：DeepRoboticsLab/deep-robotics-teleoperate@840fcec，读过 README.md、src/dr02_pro/README.md、docs/STATE_MACHINE.md、state_machine/main.cpp、humanoid_state_machine.hpp、state/teleoperation_state.hpp、interface/robot_interface.hpp、manipulation/src/pico_data_receiver.cpp、pico_teleoperation.cpp、dr2_arm_ik.cpp（部分）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +114,7 @@ institutions:
 - [deep-robotics-teleoperate 源码归档](../../sources/repos/deep-robotics-teleoperate.md)（<https://github.com/DeepRoboticsLab/deep-robotics-teleoperate>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：DeepRoboticsLab/deep-robotics-teleoperate@840fcec，读过 README.md、src/dr02_pro/README.md、docs/STATE_MACHINE.md、state_machine/main.cpp、humanoid_state_machine.hpp、state/teleoperation_state.hpp、interface/robot_interface.hpp、manipulation/src/pico_data_receiver.cpp、pico_teleoperation.cpp、dr2_arm_ik.cpp（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

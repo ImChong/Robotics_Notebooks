@@ -31,7 +31,27 @@ Preference-Conditioned Multi-Objective RL for Integrated Command Tracking and Fo
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，效果结论仍待深读。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["外力 Fext"] --> B["速度-阻力建模：vext = k·Fext"]
+    C["速度指令 vc"] --> D["MORL 三目标奖励：指令跟踪 rc / 力顺应 rf / 正则 rr"]
+    B --> D
+    W["偏好向量 w（训练时按 wc+wf=2 随机采样）"] --> D
+    H["历史观测 oH"] --> E["编码器 Encoder → 隐变量 zt"]
+    E --> DEC["解码器 Decoder 重建特权观测 + 外力（仅训练）"]
+    E --> P["Actor 策略 π(a | ot, zt, wt)"]
+    W --> P
+    P --> Q["期望关节位置 qdes → 关节 PD 控制"]
+    D --> PPO["PPO 训练（非对称 Actor-Critic，Critic 可见特权观测）"]
+    PPO --> P
+    P --> DEP["部署：仅保留 Encoder + Actor，可在线切换偏好"]
+```
+
+图依据：论文 §III-A~C / Fig. 2
 
 ## 核心信息
 
@@ -64,6 +84,7 @@ Preference-Conditioned Multi-Objective RL for Integrated Command Tracking and Fo
 - [humanoid_pnb_preference-conditioned-multi-objective-rl-for-in.md](../../sources/papers/humanoid_pnb_preference-conditioned-multi-objective-rl-for-in.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2510.10851>
+- [arXiv PDF](https://arxiv.org/pdf/2510.10851)：已通读方法部分（实验与附录以略读为准）：摘要、§III 方法（A 速度-阻力建模、B MORL 形式化、C 特权重建训练）、Fig. 2；§IV 实验仅略读。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,27 @@ Learns independent mechanisms for modular world models via compete and compose.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    X["观测序列 x_1:T 分解为对象槽 z^1 ... z^K"] --> PH1
+    subgraph PH1["阶段一：Competition，多环境数据学习可复用机制"]
+        A1["M 个独立前馈网络 f_mech^m"] --> A2["对每个对象，用全部 机制-上下文对 并行预测 Δz"]
+        A2 --> A3["选预测误差最小的 机制-上下文对"]
+        A3 --> A4["只更新胜者参数，促成机制专门化"]
+    end
+    PH1 --> MECH["训练好的机制集合"]
+    MECH --> PH2
+    N["新环境的少量观测序列"] --> PH2
+    subgraph PH2["阶段二：Composition，适应新环境"]
+        B1["用竞争损失找出每个对象每步的最优 机制-上下文对，作为标签"] --> B2["训练组合模块 f_comp：每个机制一个 f_conf MLP，softmax 分类"]
+    end
+    PH2 --> T["测试：选得分最高的 机制-上下文对，将上下文对象送入所选机制预测下一状态"]
+```
+
+图依据：论文 §3 / Fig.1、Fig.2、式 (1)-(4)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Learns independent mechanisms for modular world models via compete and compose.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2404.15109>
+- [arXiv PDF](https://arxiv.org/pdf/2404.15109)：已通读方法部分（§3 概述、§3.1 问题设定与架构、§3.2 竞争阶段、§3.3 组合阶段）与 Fig.1、Fig.2；实验与附录以略读为准
 
 ## 推荐继续阅读
 

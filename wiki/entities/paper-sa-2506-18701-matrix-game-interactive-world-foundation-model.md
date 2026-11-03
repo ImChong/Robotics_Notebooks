@@ -42,6 +42,32 @@ An interactive world foundation model for controllable game‑world generation, 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["Matrix-Game-MC 数据"]
+        U["未标注 Minecraft 视频<br/>MineDojo 约 6000 h"] --> F["分层过滤：质量/美学 → 菜单/字幕/人脸 → 运动与相机"]
+        L["带动作标注数据<br/>MineRL 探索 agent + Unreal 程序化仿真"]
+    end
+    F --> S1["阶段 1：无标注预训练<br/>2700 h，再精选 870 h；无动作模块"]
+    S1 --> S2["阶段 2：带动作训练<br/>加入控制模块，约 1200 h"]
+    L --> S2
+    subgraph INF["推理：图像到世界"]
+        R["单张参考图像"] --> VE["视觉编码器"]
+        N["高斯噪声 + 运动帧（末 k=5 帧）<br/>通道拼接 + 二值掩码"] --> PE["Patch Embedding"]
+        A["用户动作<br/>键盘离散 / 鼠标连续"] --> CM["控制模块<br/>键盘 cross-attention / 鼠标 self-attention"]
+        VE --> DiT["MMDiT 扩散 Transformer<br/>（双流 + 单流块）"]
+        PE --> DiT
+        CM --> DiT
+        DiT --> DEC["3D Causal VAE 解码器"] --> V["视频片段"]
+        V -- "末几帧作下一段运动条件" --> N
+    end
+    S2 -. "训练得到" .-> DiT
+```
+
+图依据：论文 §3.1–3.2 / Fig.3、§4.1 / Fig.4–6、§4.2（两阶段训练）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ An interactive world foundation model for controllable game‑world generation, 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.18701>
+- [arXiv PDF](https://arxiv.org/pdf/2506.18701)：已通读方法部分（实验与附录以略读为准）：§3 数据集构建、§4.1 模型架构、§4.2 训练。
 
 ## 推荐继续阅读
 

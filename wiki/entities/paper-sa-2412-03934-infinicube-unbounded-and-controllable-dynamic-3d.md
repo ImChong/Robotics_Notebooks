@@ -42,6 +42,33 @@ Unbounded and controllable dynamic 3D driving scene generation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入: HD 地图 + 车辆 3D 框 + 文本提示 + 车辆轨迹"] --> S1
+    subgraph S1["§4.1 无界体素世界生成"]
+        CV["条件体素: 地图折线 (道路边缘/车道线) + 路面 + 车辆框 (含 sin/cos 朝向)"]
+        CV --> LDM["稀疏体素 LDM (基于 XCube): 3D U-Net 去噪 -> 语义体素块"]
+        LDM --> OUTP["Repaint 式 outpainting: 与已有块重叠区固定, 逐块扩展"]
+    end
+    OUTP --> VW["大范围语义体素世界"]
+    VW --> BUF["沿轨迹渲染引导缓冲 (fVDB): 语义缓冲 + 坐标缓冲"]
+    IN --> FLUX["文本 + 语义缓冲 -> FLUX ControlNet 生成首帧"]
+    FLUX --> VID
+    BUF --> VID["§4.2 世界引导视频生成: SVD-XT 条件为首帧 + 引导缓冲, 复用末帧潜变量自回归续生成长视频"]
+    VID --> REC
+    VW --> REC
+    subgraph REC["§4.3 前馈动态 3DGS 重建"]
+        VB["体素分支: 静态背景, 图像特征反投影到体素 + 3D 稀疏卷积 U-Net -> 每体素 Gaussians"]
+        PB["像素分支: 2D UNet 逐像素 Gaussians, 输入含掩码体素深度与 Depth Anything V2 特征, 只保留中景与动态物体"]
+        SKY["隐式天空模型 (编码器 + AdaLN MLP)"]
+    end
+    REC --> OUT["动态 3DGS 场景 (物体按轨迹/框可控)"]
+```
+
+图依据：论文 §4 / Fig.2、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +124,7 @@ Unbounded and controllable dynamic 3D driving scene generation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.03934>
+- [arXiv PDF](https://arxiv.org/pdf/2412.03934)：已通读方法部分（实验与附录以略读为准）：§4 方法（4.1-4.3）
 
 ## 推荐继续阅读
 

@@ -52,6 +52,41 @@ Abaqus Agent Skills（1348109517/abaqus-agent-skills）是提供约 17–19 个�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 Apache-2.0。 
 
+## 源码运行时序图
+
+入口：`python scripts/run_demo.py [--scenario NAME | --contract PATH] [--output-dir PATH]`（无参数默认审计 `complete` 场景）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant R as scripts/run_demo.py
+    participant C as abaqus_agent_demo/cli.py main()
+    participant L as contract.py load_contract / input_digest
+    participant K as checks.py audit_contract
+    participant P as report.py build_report / write_reports
+    participant F as 文件系统 report.json + report.md
+    U->>R: python scripts/run_demo.py --scenario complete
+    R->>C: main() 把仓库根加入 sys.path 后调用
+    C->>C: argparse 解析 scenario / contract / output-dir
+    C->>C: _scenario_contract_path 定位 examples/synthetic-tunnel-review/名称/model-contract.json
+    C->>L: load_contract(path) 读取 JSON
+    L-->>C: dict 契约（失败抛 ContractError，退出码 2）
+    C->>K: audit_contract(contract)
+    K->>K: check_contract_shape，非 PASS 则直接返回
+    K->>K: 依次 CHECKS：单位 唯一命名 引用 步骤顺序 网格 输出 证据边界
+    opt 契约含 construction_events / mapped_loads
+        K->>K: check_staged_construction / check_mapped_load_provenance
+    end
+    K-->>C: Finding 元组（PASS / WARNING / REVIEW_REQUIRED）
+    C->>P: build_report(path, contract, findings)
+    P->>L: input_digest(path) 计算 SHA-256
+    C->>P: write_reports(report, output_dir)
+    P->>F: 不存在则新建；已存在且内容不同则拒绝覆盖
+    C-->>U: 打印汇总与 DISCLAIMER，退出码 0
+```
+
+图依据：1348109517/abaqus-agent-skills@a8295b9，读过 `scripts/run_demo.py`、`abaqus_agent_demo/cli.py`、`contract.py`、`report.py`、`findings.py`、`checks.py`（函数清单与 `audit_contract`）、`docs/demo.md`。该入口只做静态 JSON 契约审计，不调用 Abaqus 求解器；`skills/` 下的技能是供代理读取的 SKILL.md，无独立运行入口。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -62,6 +97,7 @@ Abaqus Agent Skills（1348109517/abaqus-agent-skills）是提供约 17–19 个�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/1348109517-abaqus-agent-skills.md)
 - [1348109517/abaqus-agent-skills 官方仓库](<https://github.com/1348109517/abaqus-agent-skills>)
+- 源码核对（2026-11-02）：1348109517/abaqus-agent-skills@a8295b9，读过 scripts/run_demo.py、abaqus_agent_demo/cli.py、contract.py、report.py、findings.py、checks.py（函数清单与 audit_contract）、docs/demo.md；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,25 @@ Lightweight edge-deployable Ego-VLM for procedural assistant scenarios
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAM["相机（手机 / GoPro / 摄像头）经 RTMP 推流音视频"] --> BE["后端：接收流并检测唤醒词"]
+    BE --> IP["输入处理：ASR 转写音频，视频与文本对齐"]
+    IP --> VL["EgoVideo-VL：EgoVideo 视觉 token + LLM（InternLM-7B）"]
+    MEM["Memory module：定期截取短视频片段，存带时间戳的文字描述"] -->|"提供历史上下文"| VL
+    VL -->|"定期描述动作"| MEM
+    VL -->|"文本回答"| BE
+    VL -->|"判断需要演示：用户 query + 最近一帧"| GEN["Generation module：SEINE 微调，生成 2 秒演示视频"]
+    VL -->|"需要参考视频：文本 query"| RET["Retrieval module：余弦相似度检索 HowTo100M，FAISS top-K，K=3"]
+    GEN --> BE
+    RET --> BE
+    BE --> FE["前端：显示直播流与回复，TTS 转语音播放"]
+```
+
+图依据：论文 §3 Method（3.1 输入处理、3.2 EgoVideo-VL、3.3 记忆、3.4 生成、3.5 检索、3.6 系统集成）/ Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Lightweight edge-deployable Ego-VLM for procedural assistant scenarios
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2412.21080>
+- [arXiv PDF](https://arxiv.org/pdf/2412.21080)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3（3.1–3.6）
 
 ## 推荐继续阅读
 

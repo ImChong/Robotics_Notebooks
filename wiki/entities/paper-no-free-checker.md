@@ -43,6 +43,26 @@ summary: "综述约 150 个 robot policy verifier；人类/规则/学习型/模�
 - 开源状态：**部分开源**（步骤 2.5 核查，2026-09-10）。
 - 与 [11 篇技术地图](../overview/vlm-manipulation-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["verifier：(context, candidate) → score（§1 式 (1)）<br/>约 150 个 verifier，按 judge source 分为四个 family"]
+    V --> H["§2 Human Verifiers<br/>2.1 Comparing Trajectories · 2.2 Scoring Trajectories<br/>2.3 Intervening During Execution · 2.4 Validating Generated Rollouts"]
+    V --> R["§3 Rule-Based and Formal Verifiers<br/>3.1 Full-Trajectory Verification · 3.2 Terminal-State Verification<br/>3.3 Physical-Constraint Verification"]
+    V --> L["§4 Learned and Pretrained Verifiers<br/>4.1 Evaluating Behavior and Policies · 4.2 Inference-Time Verification<br/>4.3 Feeding Verifier Feedback into Policy Learning"]
+    V --> I["§5 Model-Intrinsic Verifiers<br/>5.1 Policy-Based Self-Verification · 5.2 Prediction-Based Outcome Verification<br/>5.3 Beyond Action Verification: Task Selection"]
+    H --> AC["两个比较属性：Availability 与 Credibility<br/>结论：credibility falls as availability rises（no free checker）"]
+    R --> AC
+    L --> AC
+    I --> AC
+    AC --> VV["§6 Validating the Verifier<br/>6.1 Agreement on a Fixed Set of Rollouts<br/>6.2 Measuring a Verifier by the Policy It Trains<br/>6.3 Measuring a Verifier Under Optimization"]
+    VV --> M["§6.4 Metrics for Validating a Verifier：九项指标<br/>按分数用于 select 或被 optimized against 分组（Table 7）"]
+    M --> Z["§7 Conclusion"]
+```
+
+图依据：综述分类体系图（论文 §1 Introduction 的 verifier 定义与四类 judge source 划分、目录 §2–§7、§6 Validating the Verifier、§6.4 Table 7）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -104,6 +124,7 @@ summary: "综述约 150 个 robot policy verifier；人类/规则/学习型/模�
 - [no-free-checker_arxiv_2609_09250.md](../../sources/papers/no-free-checker_arxiv_2609_09250.md)
 - [wechat 11篇盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md)
 - [arXiv:2609.09250](https://arxiv.org/abs/2609.09250)
+- [arXiv PDF](https://arxiv.org/pdf/2609.09250)：已通读 Abstract、目录、§1 Introduction（四类 judge source 与 availability / credibility 框架）、§6.4 与 §7 Conclusion 的开头；§2–§5 各节与 §6.1–§6.3 正文以目录和略读为准
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ Proposes a new framework as an infrastructure to advance Ego-HOI recognition by 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DS["Ego-HOI 数据集<br/>EPIC-KITCHENS / EGTEA / Something-Else / Ego4D-AR"] --> PROBE["Probing: 视频属性分析<br/>语义/模糊度/手姿态/手与物体位置/相机运动"]
+    PROBE --> SEL["ego 属性相似度 + KDE 视频选择算法"]
+    SEL --> PRE["均衡预训练集 One4All-P"]
+    SEL --> TEST["均衡测试集 One4All-T"]
+    PRE --> BASE["One4All 基线模型 (类 CLIP)<br/>lite 网络(帧级) + heavy 网络(时空) + 文本网络"]
+    BASE --> LOSS["KL 对比损失对齐视觉与文本<br/>+ SVSA 视角运动预测 + 反事实手状态约束"]
+    LOSS --> PT["预训练 one-for-all 模型"]
+    PT --> A4O["Adaption: All4One 定制<br/>数据集微调 + 基于属性的剪枝与补充样本"]
+    A4O --> OUT["各数据集专用 Ego-HOI 模型"]
+    TEST -.->|"评测"| PT
+```
+
+图依据：论文 §3（属性探测与选样）、§3.3-3.4（数据集构造）、§4.1 / Fig.11（One4All 基线）、§4.2（All4One）、Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Proposes a new framework as an infrastructure to advance Ego-HOI recognition by 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2309.02423>
+- [arXiv PDF](https://arxiv.org/pdf/2309.02423)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 数据探测与构造、§4 方法（4.1 One4All、4.2 All4One）、§5.1-5.2 实验设置；结果表与附录略读
 
 ## 推荐继续阅读
 

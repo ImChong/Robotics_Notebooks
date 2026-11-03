@@ -42,6 +42,25 @@ Open-source, Gymnasium-compatible benchmark for active tactile perception tasks 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    FORM["主动感知形式化 §3.1：POMDP 特例；隐状态 S = S_base × Y*，动作 A = A_base × Y，预测不影响转移；奖励 R = R_base - ℓ(y*, y)，每步都要做预测"]
+    FORM --> APG["Active Perception Gym（ap_gym，§3.2）：Gymnasium 兼容，每个任务带可微损失 ℓ 与预测目标 y*，自动计算准确率或欧氏距离等指标"]
+    APG --> TMBS["Tactile MNIST Benchmark Suite（TMBS，§3.3）：智能体控制模拟 GelSight Mini，仅凭触觉与本体感觉"]
+    TMBS --> ENVS["四个环境：TactileMNIST（分类）/ TactileMNISTVolume（体积估计）/ Toolbox（工具位姿估计）/ Starstruck（数星星计数）"]
+    TMBS --> REND["触觉渲染三种模式：Depth / Taxim / CycleGAN（目前仅 TactileMNIST 环境）"]
+    MNIST3D["MNIST 3D（§3.4）：由 500×500 高分辨率 MNIST 变体自动生成的 13,580 个可 3D 打印网格"] --> PRINT["3D 打印 600 个数字（§3.5）"]
+    PRINT --> REAL["Franka Research 3 + GelSight Mini：在网格内随机位置按压，法向力超过 5 N 即停止并记录时间戳；每个数字 256 次，共 153,600 次触碰；按 90% / 10% 划分训练与测试"]
+    REAL --> CGAN["训练 CycleGAN：深度图到触觉图的风格迁移，用于逼真渲染与 sim-to-real"]
+    CGAN --> REND
+    ENVS --> PROTO["评测协议 §3.6：exploration efficiency（平均预测准确率 / 最终预测准确率）与 sample efficiency"]
+    PROTO --> BASE["基线（Fig. 5）：TAP-SAC / TAP-CrossQ / TAP-PPO 等"]
+```
+
+图依据：基准构建与评测协议图，含数据采集流程（POMDP 形式化 → ap_gym / TMBS 环境 → MNIST 3D 与真实触觉数据采集 → CycleGAN 渲染 → 评测协议）：论文 §3.1–§3.6、Fig. 1–4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Open-source, Gymnasium-compatible benchmark for active tactile perception tasks 
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2506.06361>
+- [arXiv PDF](https://arxiv.org/pdf/2506.06361)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§3（含 Fig. 1–4、Table 1–2）、§4 基线名称与 Fig. 5 图注；附录 C–F 与基线结果数字以略读为准
 
 ## 推荐继续阅读
 

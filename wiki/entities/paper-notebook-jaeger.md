@@ -32,7 +32,37 @@ JAEGER 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见「流程总览」（依据论文方法部分），结论与指标以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph RT["I 重定向网络 Retargeting Network"]
+        A["AMASS 数据集"] --> B["两阶段优化 (同 H2O)<br/>生成人体与人形姿态对"]
+        B --> C["轻量 3 层 MLP<br/>学习人体到机器人姿态的映射"]
+    end
+    C --> G["Pose-based 模式<br/>全身目标姿态 g_t"]
+    V["Root-based 模式<br/>根速度指令 v_t + 上身参考关节角"]
+    subgraph DL["II 双层控制器 Dual-level Controller (Dec-POMDP 两个智能体)"]
+        X["n 步观测历史<br/>本体状态 + 上一动作 + v_t + g_t"]
+        X --> UP["上身策略 π_upper<br/>3 层 MLP"]
+        X --> LO["下身策略 π_lower<br/>Gated Transformer-XL (3 层)"]
+        UP --> CAT["动作拼接为目标关节位置"]
+        LO --> CAT
+    end
+    G --> X
+    V --> X
+    CAT --> PD["关节 PD 控制器"]
+    subgraph CL["III 课程学习 Curriculum Learning"]
+        P1["基础策略 π_base<br/>固定上身关节，只训练下身"] --> P2["监督初始化<br/>上身监督学习模仿参考姿态<br/>下身对 π_base 做 KL 正则 (姿态幅度减半)"]
+        P2 --> P3["PPO 强化学习<br/>姿态幅度恢复原值"]
+        P3 --> P4["两种模式分别训练后<br/>模仿学习蒸馏为单一网络"]
+    end
+    P3 -.->|"训练 π_upper 与 π_lower"| DL
+```
+
+图依据：论文 §3 / Fig.2（重定向 → 双层控制器 → 课程学习；仿真为 IsaacGym）。
 
 ## 核心信息
 
@@ -49,7 +79,7 @@ JAEGER 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 ## 结论
 
-**JAEGER（Dual-Level Humanoid Whole-Body Controller）在本库作为「双层全身控制器」方向的待读条目存在，双层究竟如何切分尚无页面依据。**
+**JAEGER（Dual-Level Humanoid Whole-Body Controller）在本库作为「双层全身控制器」方向的待读条目存在，双层切分（上身 MLP / 下身 Transformer）见「流程总览」。**
 
 - 标题给出的唯一机制线索是 **dual-level** 结构，分类为 04_Loco-Manipulation_and_WBC，属 WBC 主线。
 - 页面无核心机制与实验区块，任何关于其效果的判断都应等深读笔记完成后再下。
@@ -64,7 +94,7 @@ JAEGER 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 
 - [humanoid_pnb_jaeger.md](../../sources/papers/humanoid_pnb_jaeger.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2505.06584)：已通读方法部分（实验与附录以略读为准）：§1–§3 方法（重定向网络、双层控制器、课程学习）、Fig.2；§4 实验与附录未读
 
 ## 推荐继续阅读
 

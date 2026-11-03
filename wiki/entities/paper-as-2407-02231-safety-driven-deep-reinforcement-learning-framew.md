@@ -42,6 +42,22 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Space Scale。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["UR5GraspEnv-v0 任务空间<br/>ROS 中间件 + Gazebo 仿真"] --> B["TQC 算法训练策略<br/>状态 St 与 4 维动作 at"]
+    R["SD-DRL 奖励 Eq.2<br/>在 Eq.1 基础上加入安全惩罚项<br/>超速 / 碰撞 / 碰撞速度 / IK 失败等"] --> B
+    B --> C["仿真中训练与验证<br/>对比传统 DRL 奖励"]
+    C --> D["零样本 Sim2Real 迁移<br/>真实 UR5 测试台 无额外微调"]
+    C --> E["评测指标<br/>平均回报 / 违规次数 / 成功率 / 安全驱动成功率"]
+    D --> E
+    E --> F["ISO/IEC 61508 功能安全评估<br/>风险评估与危害分析"]
+    F --> G["计算 PFD 与 RRF 并确定 SIL"]
+```
+
+图依据：论文 §III-A 至 §III-D / Fig.1、Fig.2、Eq.1–3（Fig.1 的原图未逐块核对，节点顺序按正文叙述）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,8 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Space Scale。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2407.02231>
+- [arXiv PDF](https://arxiv.org/pdf/2407.02231)：已通读方法部分（实验与附录以略读为准）：§I 引言末段、§III 方法（环境框架、DRL 算法/状态/动作/奖励、评测指标、安全标准合规）；§IV 起仅略读
+
 
 ## 推荐继续阅读
 

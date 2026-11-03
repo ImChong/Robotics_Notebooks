@@ -38,6 +38,32 @@ sources:
 - 建立 **三维规范化表征理论**，比非结构化堆叠等变组件更可解释。
 - 可接现代 **生成式策略**（如扩散模型）作为策略头，兼顾对称性与表达力。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["点云观测 G"] --> B["减去均值 G_mn（去中心化，消除平移）"]
+    B --> C["SO(3)-equivariant 网络 Φ（Vector Neuron：KNN 建图 + 等变层 + Mean Pool）"]
+    C --> D["两个等变向量 r1, r2"]
+    D --> E["Schmidt 正交化得到旋转矩阵 R<br/>（仅有 SO(2) 歧义时取绕 z 轴的面内旋转）"]
+    E --> F["规范化点云 G_cn = R⁻¹ · G_de"]
+    F --> G["Point Cloud Aggregation Encoder（近邻仿射归一化 + 残差 MLP + Max Pool）"]
+    E --> T["规范变换 T_t（R_t, x_mn）"]
+    S["机器人本体状态 S_t（末端位姿，夹爪宽度不变）"] --> H["SE(3) Inverse：S_cn = T⁻¹ S"]
+    T --> H
+    N["含噪动作 A_k,t（绝对或相对控制）"] --> I["SE(3) Inverse：A_cn = T⁻¹ A"]
+    T --> I
+    G --> J["Action Head（扩散去噪，输入含扩散时间步）"]
+    H --> J
+    I --> J
+    J --> K["规范系下的动作 A_cn(k-1,t)"]
+    K --> L["SE(3) Forward：A = T · A_cn"]
+    L --> M["世界系动作；迭代去噪直至 k=0"]
+    M -.->|"下一扩散步"| N
+```
+
+图依据：论文 §IV-A / §IV-B / §IV-C、Fig.3 / Fig.4 / Fig.5
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +116,7 @@ sources:
 - [tro_manip_survey_02_canonical_policy.md](../../sources/papers/tro_manip_survey_02_canonical_policy.md)
 - [wechat_shenlan_tro_manip_5_papers_survey.md](../../sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2505.18474>
+- [arXiv PDF](https://arxiv.org/pdf/2505.18474)：已通读方法部分（实验与附录以略读为准）：§III-C/D 规范表征与数据增强对比、§IV-A 数据规范化、§IV-B Canonical Policy Pipeline、§IV-C 点云聚合编码器；§V 仅看开头概述
 
 ## 推荐继续阅读
 

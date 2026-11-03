@@ -42,6 +42,24 @@ Leverages curiosity-driven theory-making to improve LLMs' world modeling capabil
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    E["Experimenter 在 Playground-Text 环境中交互"] --> T["收集转移数据 D_t: (s, a, s')"]
+    T --> Sc["Scientist (LLM): 以 D_t 与当前假设为条件提出候选假设"]
+    Sc --> St["Statistician (LLM): 用 P(s'|s,a,H) 计算数据的对数似然"]
+    St --> M{"Metropolis 接受还是拒绝"}
+    M -->|接受| H["更新假设集 H_t"]
+    M -->|拒绝| K["保留原假设"]
+    H --> R["更新 Experimenter 策略 π"]
+    K --> R
+    St -.->|低似然 / 学习进度作为内在奖励| R
+    R --> E
+```
+
+图依据：论文 §2.2 / Fig.1 / Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Leverages curiosity-driven theory-making to improve LLMs' world modeling capabil
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.06725>
+- [arXiv PDF](https://arxiv.org/pdf/2506.06725)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2 问题设定与 WorldLLM（含 Algorithm 1）、§3.1 实验设置
 
 ## 推荐继续阅读
 

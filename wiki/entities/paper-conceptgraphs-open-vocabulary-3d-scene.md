@@ -37,6 +37,29 @@ VLM 语义融入三维对象图，支持开放词汇空间查询。
 - 属于六路线 taxonomy 的 **上下文主导型**：预测结果被用于 **持续维护可查询世界状态与记忆（World Proxy）。**
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["带位姿 RGB-D 帧序列"] --> B["类别无关 2D 分割 Seg（实验用 SAM）"]
+    B --> C["视觉特征提取 Embed（CLIP / DINO）"]
+    C --> D["掩码区域投影到 3D 点云<br/>DBSCAN 去噪并变换到地图坐标系"]
+    D --> E["观测-物体关联<br/>几何相似度 + 语义相似度，贪心匹配"]
+    E -->|"相似度高于 δsim"| F["物体融合：更新语义特征与点云"]
+    E -->|"无匹配"| G["初始化新物体节点"]
+    F --> H["物体集合（节点）"]
+    G --> H
+    H --> I["节点标注：LVLM 对最佳 10 个视角生成粗标注<br/>LLM 汇总为最终 caption"]
+    H --> J["3D 包围盒 IoU 稠密图 → 最小生成树 MST 剪枝"]
+    I --> K["LLM 推断 MST 边上的物体对空间关系"]
+    J --> K
+    K --> L["开放词汇 3D 场景图（节点 + 边）"]
+    L --> M["转为 JSON 文本描述，LLM 按自然语言查询选出目标物体"]
+    M --> N["目标 3D 位姿交给下游：抓取 / 导航等"]
+```
+
+图依据：论文 §II-A/B/C、Fig. 2。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -75,6 +98,7 @@ VLM 语义融入三维对象图，支持开放词汇空间查询。
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/2309.16650)：已通读方法部分（实验与附录以略读为准）：§II-A 物体级 3D 建图、§II-B 场景图生成、§II-C LLM 任务规划、§II-D 实现细节
 
 ## 推荐继续阅读
 

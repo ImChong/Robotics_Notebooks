@@ -6,9 +6,10 @@
 - **分组：** 291 Procedural Error Detection
 - **编号：** 122/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2404.01688
+- **arXiv：** 2404.01933
+- **编号核对：** 上游清单登记的 2404.01688 经 arXiv 官方记录核对为另一篇论文《Supporting Bayesian modelling workflows with iterative filtering for multiverse analysis》，与本条目不符；已更正为 2404.01933《PREGO: online mistake detection in PRocedural EGOcentric videos》（核对日期 2026-11-02）。
 - **出处：** CVPR 2024
-- **论文：** <https://arxiv.org/abs/2404.01688>
+- **论文：** <https://arxiv.org/abs/2404.01933>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Online real-time mistake detection framework tailored for egocentric procedural videos

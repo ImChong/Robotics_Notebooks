@@ -43,6 +43,24 @@ Sim-to-real dexterous manipulation via automatic domain randomization.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["随机化仿真分布：物理参数 / 观测噪声 / 未建模效应 / 视觉外观"] --> W["Rapid：384 台 worker 并行 rollout"]
+    W -->|"经验写入 Redis"| OPT["优化器（8 GPU）：分布式 PPO"]
+    OPT -->|"新策略参数"| W
+    OPT --> POL["策略：带 LSTM 的循环网络，离散动作 11 档"]
+    R --> VIS["视觉位姿估计器：3 路 RGB 相机 → CNN → 物体位置 + 朝向"]
+    SIMDATA["用训练好的策略在仿真中采集约 100 万状态，随机化外观渲染"] --> VIS
+    R --> SIMDATA
+    MC["指尖位置：PhaseSpace 动捕"] --> POL
+    VIS -->|"物体位姿"| POL
+    POL -->|"相对关节角目标"| HAND["Shadow Dexterous Hand 实机"]
+```
+
+图依据：论文 §3（Transferable Simulations）、§4.1-4.3（策略、动作与奖励、Rapid）、§5（视觉状态估计），Fig.5 / Fig.6。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -106,6 +124,7 @@ Sim-to-real dexterous manipulation via automatic domain randomization.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/1808.00177>
+- [arXiv PDF](https://arxiv.org/pdf/1808.00177)：已通读方法部分（实验与附录以略读为准）：§3 可迁移仿真、§4 从状态学习控制策略（含 Rapid 分布式训练）、§5 视觉状态估计、§6 开头
 
 ## 推荐继续阅读
 

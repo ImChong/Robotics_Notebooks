@@ -32,7 +32,35 @@ Physically Consistent Humanoid Loco-Manipulation using Latent Diffusion Models �
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见「流程总览」（依据论文方法部分），结论与指标以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入: 高层任务指令 P (文本提示序列，可来自语言模型)<br/>+ 场景物体 RGB-D 图像"] --> GEN
+    subgraph PL["规划接触与机器人构型 §III-A"]
+        GEN["1. 图像生成: 提示词追加全身人物描述<br/>LDM 生成人-物交互 RGB 图像"]
+        GEN --> CT
+        subgraph CT["2. 接触迁移 Contact Transfer"]
+            M1["VLM 开放词汇检测 + 分割基础模型 → 物体掩码"] --> M2["深度基础模型估计生成图深度 → 2D 到 3D 点云 + 去噪"]
+            M2 --> M3["语义匹配基础模型给候选对应<br/>随机采样 + SVD 刚体变换 + ICP，取点云重叠分最高者"]
+            M3 --> M4["人体姿态估计得手/脚 2D 位置 → 变换到 3D 接触位置 L<br/>并投影到物体最近表面"]
+        end
+        GEN --> RT["3. 重定向 Retargeting<br/>WHAM 估计人体关节/足位/基座朝向 → IK 得到机器人构型 C"]
+        CT --> RT
+    end
+    M4 --> KF["关键帧 Keyframe: 接触位置 L + 机器人构型 C"]
+    RT --> KF
+    KF --> TO
+    subgraph TO["全身轨迹优化 TO §IV"]
+        T1["质心动力学 + 全身运动学"] --> T2["接触约束 (面接触等) + 碰撞惩罚"]
+        T2 --> T3["关键帧代价项引导基座位姿等"]
+    end
+    TO --> OUT["物理一致的长时程 loco-manipulation 轨迹<br/>(MuJoCo 中 Unitree G1 验证)"]
+```
+
+图依据：论文 §III（Fig.2、Fig.3、Fig.4）、§IV（式 (1)(9)(14)）。
 
 ## 核心信息
 
@@ -64,7 +92,7 @@ Physically Consistent Humanoid Loco-Manipulation using Latent Diffusion Models �
 
 - [humanoid_pnb_physically-consistent-humanoid-loco-manipulation.md](../../sources/papers/humanoid_pnb_physically-consistent-humanoid-loco-manipulation.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2504.16843)：已通读方法部分（实验与附录以略读为准）：§III 规划流程、§IV 轨迹优化主要公式、§V 实验设置；附录未读
 
 ## 推荐继续阅读
 

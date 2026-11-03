@@ -45,6 +45,31 @@ summary: "SeeQ（arXiv:2609.22085）：Q 函数先预测当前子任务再估短
 - **卡内基梅隆大学（CMU）**；开源结论：**待发布**（步骤 2.5，2026-09-21）。
 - 稀疏任务级奖励下直接学 Q 需长时域信用分配；SeeQ 把价值学习拆到活跃子任务。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 训练["训练（§3，Fig. 2）"]
+        A["离线机器人轨迹 Dpre<br/>每条轨迹带任务指令 l 与子任务片段标注"] --> B["PaliGemma VLM backbone 的 Q 函数<br/>输入：多视角 RGB + 任务 + 动作块"]
+        B --> C["自回归文本解码当前活跃子任务<br/>Lsubtask：next-token 预测损失（监督信号为真值子任务）"]
+        B --> D["线性头预测子任务级 Q 值<br/>训练时以真值子任务为条件"]
+        E["TD-BoN 备份：从 πbase 采样 N 个动作块<br/>取目标网络 Q 值最高者；不跨子任务边界 bootstrap"] --> D
+        C --> F["LSeeQ = LTD + λsubtask · Lsubtask"]
+        D --> F
+    end
+    F --> G["先在 RoboCOIN 双臂数据上预训练<br/>再在各目标任务数据上微调"]
+    subgraph 推理["测试时 policy steering"]
+        H["当前状态 st + 任务指令 l"] --> I["SeeQ 先文本解码活跃子任务"]
+        H --> J["πbase 提出 N 个候选动作块"]
+        I --> K["Q(s, a, l, 子任务) 为每个候选打分"]
+        J --> K
+        K --> L["执行得分最高的动作块"]
+    end
+    G --> K
+```
+
+图依据：论文 §2–§3（Fig. 2、Eq. 2–6）、§4 Implementation setup
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -93,6 +118,7 @@ summary: "SeeQ（arXiv:2609.22085）：Q 函数先预测当前子任务再估短
 - [seeq_arxiv_2609_22085.md](../../sources/papers/seeq_arxiv_2609_22085.md)
 - [wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md](../../sources/blogs/wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md)
 - [arXiv:2609.22085](https://arxiv.org/abs/2609.22085)
+- [arXiv PDF](https://arxiv.org/pdf/2609.22085)：已通读方法部分（实验与附录以略读为准）：§2 Preliminaries、§3 SeeQ、§4 Implementation setup
 
 ## 推荐继续阅读
 

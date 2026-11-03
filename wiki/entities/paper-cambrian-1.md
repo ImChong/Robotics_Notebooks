@@ -45,6 +45,33 @@ summary: "Cambrian-1（arXiv:2406.16860，NYU VisionX）：视觉中心 MLLM 全
 - **视觉中心方法论：** 影响后续 Molmo/Cambrian 系与 spatial MLLM 数据配方讨论。
 - **Fully open：** 模型 + 10M 数据 + 训练代码全发布。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph MODEL["模型结构（§3.5、§4、§6）"]
+        IMG["输入图像"] --> ENC["多个视觉编码器<br/>SigLIP · CLIP · OpenCLIP ConvNeXt · DINOv2"]
+        ENC --> SVA["Spatial Vision Aggregator（SVA）<br/>可学习 latent query 跨注意力聚合<br/>空间归纳偏置：每个 query 对应固定子区域"]
+        SVA --> LLM["LLM<br/>SVA 也在 LLM 多层中重复插入"]
+        TXT["文本 token"] --> LLM
+        LLM --> OUTP["文本回答"]
+    end
+    subgraph DATA["指令数据（§5）"]
+        SRC["现有 VQA / OCR / 语言数据集"] --> POOL["Cambrian-10M"]
+        ENG["Internet 数据引擎<br/>LLM 选主题 → Wikipedia 图文 → LLM 生成 Q&A"] --> POOL
+        POOL --> BAL["数据均衡：单一来源条数设上限 t"]
+        BAL --> MIX["Cambrian-7M 数据混合"]
+    end
+    subgraph TRN["两阶段训练（§3.3、§6）"]
+        S1["阶段 1：用 adapter 数据预训练连接器"] --> S2["阶段 2：指令微调"]
+    end
+    MIX --> S2
+    S2 --> MODEL
+    MODEL --> EV["评测：CV-Bench（§3.2）与其它 MLLM 基准"]
+```
+
+图依据：论文 §3.2–§3.5、§4（SVA）、§5（指令数据）、§6（最终模型设置）及 Fig.8。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -93,6 +120,7 @@ summary: "Cambrian-1（arXiv:2406.16860，NYU VisionX）：视觉中心 MLLM 全
 - [cambrian_1_arxiv_2406_16860.md](../../sources/papers/cambrian_1_arxiv_2406_16860.md)
 - [cambrian-mllm.md](../../sources/sites/cambrian-mllm.md)
 - [cambrian-mllm-cambrian.md](../../sources/repos/cambrian-mllm-cambrian.md)
+- [arXiv PDF](https://arxiv.org/pdf/2406.16860)：已通读方法部分（实验与附录以略读为准）：§3.3、§4、§5、§6 的方法与数据流程；§3.1/3.4 的编码器对比实验与附录略读
 
 ## 推荐继续阅读
 

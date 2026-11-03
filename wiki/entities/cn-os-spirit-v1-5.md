@@ -55,6 +55,42 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`./scripts/run_robochallenge.sh`（需设置 `TASK_NAME`、`ROBOCHALLENGE_JOB_ID`、`USER_TOKEN`、`CKPT_PATH`，`USED_CHUNK_SIZE` 默认 60），内部执行 `python -m robochallenge.run_robochallenge --single_task ...`。训练入口为 `scripts/run_finetune.sh` → `train.py`（本图未覆盖）。
+
+```mermaid
+sequenceDiagram
+    participant SH as scripts/run_robochallenge.sh
+    participant RC as robochallenge/run_robochallenge.py<br/>control_robot
+    participant EX as runner/executor.py<br/>RoboChallengeExecutor
+    participant JW as robot/job_worker.py<br/>job_loop / process_job
+    participant IC as robot/interface_client.py<br/>InterfaceClient (HTTP)
+    participant POL as model/modeling_spirit_vla.py<br/>SpiritVLAPolicy
+    SH->>RC: python -m robochallenge.run_robochallenge
+    RC->>EX: RoboChallengeExecutor(cfg)
+    EX->>POL: SpiritVLAPolicy.from_pretrained(CKPT_PATH) → .to(device) → .eval()
+    RC->>JW: job_loop(client, executor, job_id, image_size=[320,240], duration=1/15)
+    JW->>IC: get_all_jobs(job_collection_id)
+    loop 机器人 running 期间
+        JW->>IC: get_job_status → start_robot → get_state(图像/关节/pending_actions)
+        IC-->>JW: state (仅 state==normal 且 pending_actions==0 才推理)
+        JW->>EX: infer(state)
+        EX->>EX: _prepare_batch (图像转张量, 状态归一化)
+        EX->>POL: select_action(batch) [inference_mode + bf16 autocast]
+        POL->>POL: normalize_inputs → _encode_vision (Qwen3-VL 编码图像与指令)
+        loop num_steps (默认 10) 次去噪
+            POL->>POL: _denoise_step: DiT(带状态/噪声动作, 以 VLM 嵌入为条件) → v_t, x_t += dt*v_t
+        end
+        POL-->>EX: 动作块 (unnormalize_outputs)
+        EX->>EX: _post_process_action (截取 used_chunk_size, 夹爪二值化等)
+        EX-->>JW: action_list
+        JW->>IC: post_actions(result, duration, action_type)
+    end
+```
+
+图依据：Spirit-AI-Team/Spirit-v1.5@6d67377，读过 README.md、scripts/run_robochallenge.sh、robochallenge/run_robochallenge.py、robochallenge/runner/executor.py、robochallenge/robot/job_worker.py、robochallenge/robot/interface_client.py（部分）、model/modeling_spirit_vla.py（select_action、去噪采样及类定义行）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +102,7 @@ institutions:
 - [Spirit-v1.5 源码归档](../../sources/repos/spirit-v1_5.md)（<https://github.com/Spirit-AI-Team/Spirit-v1.5>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Spirit-AI-Team/Spirit-v1.5@6d67377，读过 README.md、scripts/run_robochallenge.sh、robochallenge/run_robochallenge.py、robochallenge/runner/executor.py、robochallenge/robot/job_worker.py、robochallenge/robot/interface_client.py、model/modeling_spirit_vla.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

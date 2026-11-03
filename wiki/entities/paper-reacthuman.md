@@ -41,6 +41,22 @@ summary: "17 类事件、1000+ 可复现情景；240 Hz 刚体仿真生成真值
 - 开源状态：**部分开源**（步骤 2.5 核查，2026-09-11）。
 - 与 [14 篇技术地图](../overview/dexterous-wm-humanoid-14-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[自然语言场景描述] --> B[阶段 1 冻结 LLM 语义规划<br/>选定事件族 / 物体 / 房间类型<br/>Objaverse 补充缺失物体]
+    B --> C[阶段 2 种子化物理随机化<br/>由整数 seed 决定摆放 / 初速度 / 摩擦 / 光照 / 相机<br/>LLM 不碰数值]
+    C --> D[SceneSpec 场景规格]
+    D --> E[阶段 3 Genesis 仿真 240 Hz<br/>渲染 3 路同步视角 1280x720 60 fps<br/>由仿真状态导出真值]
+    E --> F[被评测 MLLM brain<br/>在冻结观测处给出结构化反应计划<br/>行走指令 + 手部关键帧]
+    F --> G[预训练控制器 spine<br/>在仿真人形 body 上执行]
+    G --> H[五项指标评分<br/>SAA / Safety Validity / 终点距离 / AIA / HDE]
+    E -. 真值 动作标签 撞击点 .-> H
+```
+
+图依据：论文 §3.4 Scene Generation and Ground Truth、§4 Metric Suite / Fig. 2（ReactHuman pipeline）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -96,6 +112,7 @@ summary: "17 类事件、1000+ 可复现情景；240 Hz 刚体仿真生成真值
 - [reacthuman_arxiv_2609_10895.md](../../sources/papers/reacthuman_arxiv_2609_10895.md)
 - [wechat 14篇盘点](../../sources/blogs/wechat_embodied_station_14_papers_dexterous_wm_humanoid_2026-09-11.md)
 - [arXiv:2609.10895](https://arxiv.org/abs/2609.10895)
+- [arXiv PDF](https://arxiv.org/pdf/2609.10895)：已通读方法部分（实验与附录以略读为准）：§3.4 场景生成与真值、§4 指标体系、Fig. 2 流水线图注
 
 ## 推荐继续阅读
 

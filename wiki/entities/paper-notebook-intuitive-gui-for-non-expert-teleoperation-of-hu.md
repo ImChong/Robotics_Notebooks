@@ -37,6 +37,26 @@ summary: "大多数人形机器人遥操作系统都把精力放在控制算法�
 - **与算法路线互补**：与本模块 [SEW-Mimic](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation.html)（重定向算法）、[ExtremControl](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control.html)（低延迟控制）形成"算法 ↔ 界面"两端的互补
 - **竞赛驱动研究**：展示了 FIRA 这类机器人竞赛如何反哺学术研究与人才培养
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    U["非专家操作员：浏览器 GUI（HTML/CSS/JavaScript，访问机器人本地服务器 IP）"] --> K["操作：屏幕按钮 / 键盘（WASD 控制行走，方向键控制相机云台）；动作按钮（get-up、crawl 等）为屏幕按钮"]
+    U --> P["起始页微调行走距离/角度系数（存于浏览器 session storage）"]
+    K --> M["按键时读取当前系数，构造移动命令消息"]
+    P --> M
+    M --> R["roslib.js 转为 ROS 可读 JSON，经 WebSocket 发布"]
+    R --> B["ROSbridge（机器人端 WebSocket 服务器，暴露 ROS topic/service）"]
+    B --> N["遥操作 ROS 节点（订阅动作消息）：解释为前后行走 / 转向 / 身体平移等"]
+    N --> H["Kid-size 双足人形机器人执行（FIRA HuroCup 障碍赛）"]
+    H --> C["机器人相机画面经 mjpegcanvas.js 实时流回 GUI（主要反馈）"]
+    H --> S["内部状态：FPS、电池电压、后端日志"]
+    C --> U
+    S --> U
+```
+
+图依据：论文 §4.1 System Architecture and Communication、§4.2 GUI development process；这是系统通信架构图，非学习算法流程（"状态回流到 GUI"依据 §3.2 / §4.2 对相机与内部反馈的描述）
+
 ## 解决什么问题
 
 人形机器人遥操作的研究，绝大多数集中在**"怎么把人的动作映射到机器人"**这类控制/重定向算法上（VR、外骨骼、运动捕捉……）。但有一个被长期忽视的环节：**操作界面本身**。
@@ -88,6 +108,7 @@ summary: "大多数人形机器人遥操作系统都把精力放在控制算法�
 - [humanoid_pnb_intuitive-gui-for-non-expert-teleoperation-of-hu.md](../../sources/papers/humanoid_pnb_intuitive-gui-for-non-expert-teleoperation-of-hu.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots/Intuitive_GUI_for_Non-Expert_Teleoperation_of_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2510.13594>
+- [arXiv PDF](https://arxiv.org/pdf/2510.13594)：已通读方法部分（实验与附录以略读为准）：§3 Methodology、§4.1–4.3 Implementation（§5 结果略读）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,22 @@ Aligns latent representations with real‑world physical quantities and constrai
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：图像观测序列 y"] --> CHOICE{"自编码结构"}
+    CHOICE -->|"Intrinsic：单一端到端编码器 E"| ZS["潜变量 z* = [物理部分 z_p, 视觉部分 z_v]"]
+    CHOICE -->|"Extrinsic 阶段 1：视觉自编码器，训练后冻结 E_v"| ZV["中间表示 z"]
+    ZV -->|"阶段 2：物理编码器 E_p"| ZS
+    PROXY["弱监督：状态代理样本集 Ξ（来自未知分布 p(x)）"] -->|"L_interp：对齐样本均值，仅作用于 z_p"| ZS
+    ZS --> DYN["可学习动力学 φ(z_t, z_t+1, a, θ)：形式固定、参数 θ 可学，两个连续状态得速度等量"]
+    DYN -->|"递归 rollout"| ZF["预测未来潜状态 z*"]
+    ZF --> DEC["解码器 D：重建 / 预测未来图像"]
+```
+
+图依据：论文 §3 PIWM Architecture、§3.1 Learning Interpretable Representations、§3.2 Learnable Dynamics Model / Fig.2、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Aligns latent representations with real‑world physical quantities and constrai
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.12870>
+- [arXiv PDF](https://arxiv.org/pdf/2412.12870)：已通读方法部分（实验与附录以略读为准）：§2 问题设定、§3（3.1–3.2）、Algorithm 1
 
 ## 推荐继续阅读
 

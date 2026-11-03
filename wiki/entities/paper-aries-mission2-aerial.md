@@ -39,6 +39,28 @@ summary: "ARIES-Mission2（arXiv:2608.12763）：LLM 理解任务、VLM 定位�
 - 策展机构：澳门理工大学、华南师范大学、南昌大学
 - 与 [第三篇技术地图](../overview/vla-weekly-trends-2026-08-10-part3-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    U["自然语言指令 U<br/>+ 卫星图像 Isat(含经纬度边界元数据)"] --> L["DeepSeek-V3<br/>语义解析: 提取目标类别 O"]
+    L --> M["Molmo-7B<br/>零样本定位: 像素坐标集 Cpix"]
+    M --> G["线性插值 Γgeo<br/>像素坐标 → GPS 坐标 Cgps"]
+    G --> T["TSP 求解器<br/>起飞点 H + 目标 GPS<br/>Haversine 距离, Random Key 编码"]
+    T --> R["候选路线: VLM 原始顺序 Raw"]
+    T --> P1["候选路线: PSO"]
+    T --> P2["候选路线: GPSO"]
+    T --> P3["候选路线: IPSO"]
+    R --> S["最优选择<br/>取闭环代价 F 最小者"]
+    P1 --> S
+    P2 --> S
+    P3 --> S
+    S --> E["Mission Encapsulator<br/>本地确定性解析 + 预设飞行参数(巡航高度 100 m 等)"]
+    E --> O["MAVLink (QGC WPL 110) 航点任务文件<br/>上传无人机飞控"]
+```
+
+图依据：论文 §II.A–§II.G / Fig.1、Fig.2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -80,6 +102,7 @@ summary: "ARIES-Mission2（arXiv:2608.12763）：LLM 理解任务、VLM 定位�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part3.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md)
 - [arXiv:2608.12763](https://arxiv.org/abs/2608.12763)
+- [arXiv PDF](https://arxiv.org/pdf/2608.12763)：已通读方法部分（实验与附录以略读为准）：§I Introduction、§II.A 视觉语言语义推理、§II.B TSP 求解器、§II.C–E PSO/GPSO/IPSO、§II.F 最优选择、§II.G 动作生成与 MAVLink 部署、§III 实验设定
 
 ## 推荐继续阅读
 

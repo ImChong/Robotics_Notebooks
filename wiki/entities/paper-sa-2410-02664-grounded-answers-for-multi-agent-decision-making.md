@@ -42,6 +42,30 @@ Grounds LLMs in embodied environments with imperfect world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["离线轨迹 (EMC / IIE 收集)"] --> B["解析器 f：状态转图像 + 任务描述"]
+    B --> C["VisionSMAC 数据集"]
+    C --> D["VQ-VAE 图像 Tokenizer"]
+    D --> E["动态模型 ψ：因果 Transformer，自回归预测下一帧/状态/观测"]
+    C --> F["奖励模型 φ：双向 Transformer，逆 RL 式训练"]
+    subgraph INF["推理：在模拟器里学策略"]
+        G["用户给定初始图像 + 任务描述"] --> H["策略与动态模型交互，生成无奖励轨迹"]
+        H --> I["奖励模型为轨迹逐步打奖励标签"]
+        I --> J["写入回放缓冲区"]
+        J --> K["行为正则化 RL 更新策略"]
+        K --> H
+    end
+    E --> H
+    F --> I
+    E -->|"参考策略 q"| K
+    K --> L["收敛策略与动态模型交互的图像序列 = 答案"]
+```
+
+图依据：论文 §2.1–2.3 / Fig.3（Learning before Interaction 总览）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Grounds LLMs in embodied environments with imperfect world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.02664>
+- [arXiv PDF](https://arxiv.org/pdf/2410.02664)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2.1 VisionSMAC、§2.2 训练交互模拟器、§2.3 推理
 
 ## 推荐继续阅读
 

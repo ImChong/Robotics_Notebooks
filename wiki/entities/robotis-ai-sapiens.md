@@ -70,6 +70,45 @@ sources:
 - **生态成熟度**：社区教程与第三方集成仍少于 TurtleBot3 / Unitree G1；以官方 docs 与 Discord 为准。
 - **安全**：阻抗与遥控使能前遵循产品安全手册；本 wiki 不替代厂商操作规程。
 
+## 源码运行时序图
+
+入口：`ros2 launch ai_sapiens_bringup k1.launch.py`（真机；仿真为 `k1_mujoco.launch.py`，差别仅在 xacro 参数 `sim_mujoco:=true` 与 MuJoCo 硬件插件）
+
+```mermaid
+sequenceDiagram
+    participant L as k1.launch.py
+    participant X as xacro(k1.urdf.xacro)
+    participant CM as ros2_control_node(controller_manager)
+    participant HW as 硬件插件(DynamixelHardware / mock_components / MujocoSystem)
+    participant RSP as robot_state_publisher
+    participant SP as spawner
+    participant IMP as AiSapiensJointGroupImpedanceController
+    participant RC as AiSapiensRcBroadcaster
+    participant U as 上层节点(外部发布者)
+    L->>X: Command 展开 robot_description(use_mock_hardware, model=k1_rev1)
+    L->>CM: Node(参数=robot_description + k1_rev1_controllers.yaml)
+    L->>RSP: Node(robot_description)
+    CM->>HW: 按 ros2_control xacro 加载硬件插件
+    Note over CM: update_rate 1000 Hz
+    L->>SP: spawner joint_state_broadcaster, imu_sensor_broadcaster
+    L->>SP: spawner rc_broadcaster
+    L->>SP: spawner joint_group_impedance_controller
+    SP->>CM: 加载并激活控制器(类型取自 yaml)
+    CM->>IMP: on_configure 创建订阅 ~/commands
+    CM->>IMP: on_activate 取 position/feedforward/proportional/derivative 命令接口
+    U->>IMP: ~/commands (positions, feedforward, kp, kd)
+    Note over IMP: 回调校验长度与有限值，写入 RealtimeBuffer
+    loop 每个控制周期
+        CM->>IMP: update()
+        IMP->>HW: set_value 写 4 类命令接口
+        CM->>RC: update()
+        RC-->>U: 发布 /ai_sapiens_rc/input(Joy) 与 /ai_sapiens_rc/status
+    end
+    SP-->>L: joint_state_broadcaster spawner 退出后(OnProcessExit)启动 rviz2(仅 start_rviz=true)
+```
+
+图依据：ROBOTIS-GIT/ai_sapiens@937c67d，读过 README.md、ai_sapiens_bringup/launch/k1.launch.py、k1_mujoco.launch.py、config/k1_rev1/k1_rev1_controllers.yaml、ai_sapiens_controllers 下 impedance controller 与 rc_broadcaster 的 .cpp（部分）、ai_sapiens_description/ros2_control 下 xacro。
+
 ## 关联页面
 
 - [ROBOTIS hub](./robotis.md) · [AI Worker](./robotis-ai-worker.md)
@@ -84,6 +123,7 @@ sources:
 - [sources/repos/ai_sapiens.md](../../sources/repos/ai_sapiens.md)
 - [human five · Humanoid Skills（ROBOTIS K1 全身 pipeline）](../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md)
 - 上游：<https://github.com/ROBOTIS-GIT/ai_sapiens>
+- 源码核对（2026-11-02）：ROBOTIS-GIT/ai_sapiens@937c67d，读过 README.md、ai_sapiens_bringup/launch/k1.launch.py、k1_mujoco.launch.py、k1_rev1_controllers.yaml、joint_group_impedance_controller 与 rc_broadcaster 的 .cpp、description/ros2_control/k1_rev1/*.xacro；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

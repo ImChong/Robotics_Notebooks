@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2311.04567"
+arxiv: "2311.03550"
 venue: "WACV 2024"
 summary: "UnityGraph-based unsupervised procedure learning from unlabeled instructional videos"
 related:
@@ -42,6 +42,24 @@ UnityGraph-based unsupervised procedure learning from unlabeled instructional vi
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["同一任务的 n 段未剪辑视频"] --> CLIP["按采样率 σ / 步长 ω / 窗口 ψ 切成 clips"]
+    VID -.->|"第一人称视频：滤除无手-物交互的背景帧（hand-object 检测）"| CLIP
+    CLIP --> I3D["预训练 I3D ResNet-50 → clip 级 node 嵌入"]
+    I3D --> UG["UnityGraph：节点 = clip 嵌入"]
+    UG --> SE["跨视频边：与另一视频中余弦相似度最高的节点相连"]
+    UG --> TE["视频内时间边：相邻 clip 相连"]
+    SE --> N2V["Node2Vec 无监督更新嵌入（有偏随机游走）"]
+    TE --> N2V
+    N2V --> KM["KMeans 聚类（K 个 key-step）"]
+    KM --> ORD["按簇内 clip 平均归一化时间排序 → key-step 顺序"]
+```
+
+图依据：论文 §3 / Fig.2–3（UnityGraph 与 GPL 框架）、§3.1.2（背景帧检测）、§3.2（Node2Vec、KMeans、排序）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +67,7 @@ UnityGraph-based unsupervised procedure learning from unlabeled instructional vi
 | 编号 | 134/249 |
 | 分组 | 292 Procedural Learning |
 | 出处 | WACV 2024 |
-| 论文 | <https://arxiv.org/abs/2311.04567> |
+| 论文 | <https://arxiv.org/abs/2311.03550> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +80,7 @@ UnityGraph-based unsupervised procedure learning from unlabeled instructional vi
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2311.04567) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2311.03550) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +113,11 @@ UnityGraph-based unsupervised procedure learning from unlabeled instructional vi
 - [`sources/papers/sun_awesome_ego_2311_04567_united-we-stand-divided-we-fall-unitygra.md`](../../sources/papers/sun_awesome_ego_2311_04567_united-we-stand-divided-we-fall-unitygra.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2311.04567>
+- 论文：<https://arxiv.org/abs/2311.03550>
+- [arXiv PDF](https://arxiv.org/pdf/2311.03550)：已通读方法部分（实验与附录以略读为准）：§3 GPL 框架、§3.1 UnityGraph、§3.2 关键步骤与顺序
+- 编号核对（2026-11-02）：上游清单登记的 2311.04567 经 arXiv 官方记录核对为《CellPhoneDB v5: inferring cell-cell communication from single-cell multiomics data》，与本页论文不符；已更正为 2311.03550《United We Stand, Divided We Fall: UnityGraph for Unsupervised Procedure Learning from Videos》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2311.04567)
+- [原文](https://arxiv.org/abs/2311.03550)

@@ -36,6 +36,25 @@ summary: "CPS4All（arXiv:2608.19422）：UIST 2026 工作坊提案，整合可�
 - 机器人 ingest 常忽略 **无障碍与终端用户建模**；本页标记专辑中唯一的社区/政策向条目。
 - 与 [九篇技术地图](../overview/vla-predict-grasp-9-papers-technology-map.md) 中算法论文并列，提醒 **评价体系须同步升级**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    T["五个议题（§2）<br/>Sensing and Modeling · Interaction Paradigms · End-User Adaptation · Real-World Evaluation · Privacy and Ethics"]
+    A["赛前准备（§3.1）<br/>pre-workshop survey → 组成 4–6 人讨论组"]
+    B["Opening and Icebreaker（30 min）"]
+    C["Keynotes（90 min）"]
+    D["Panel Discussion（45 min）"]
+    E["Demo & Poster Session（60 min）"]
+    F["Mixed-Group Design & Discussion（120 min）<br/>分组场景设计 → 全体汇报 → shared affinity-mapping"]
+    G["Closing Session（20 min）"]
+    H["赛后（§3.3）<br/>网站摘要 · 共享材料 · Discord · arXiv 公开报告"]
+    T -.-> F
+    A --> B --> C --> D --> E --> F --> G --> H
+```
+
+图依据：工作坊议程结构图（论文 §2 Topics、§3 Workshop Plan；会议顺序按 §3.2 各小节排列，T→F 的虚线表示分组环节围绕 §2 的议题展开）
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -111,6 +130,7 @@ summary: "CPS4All（arXiv:2608.19422）：UIST 2026 工作坊提案，整合可�
 - [cps4all_arxiv_2608_19422](../../sources/papers/cps4all_arxiv_2608_19422.md)
 - [cps4all-github-io](../../sources/sites/cps4all-github-io.md)
 - [具身智能小站 9 篇盘点（2026-08-24）](../../sources/blogs/wechat_embodied_station_9_papers_vla_predict_grasp_2026-08-24.md)
+- [arXiv PDF](https://arxiv.org/pdf/2608.19422)：已通读全文正文（§1 Introduction、§2 Topics、§3 Workshop Plan、§4–§6）；参考文献表略读
 
 ## 推荐继续阅读
 

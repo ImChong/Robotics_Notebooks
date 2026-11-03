@@ -43,6 +43,32 @@ Agent planning with world knowledge models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph TR["训练阶段"]
+    A["专家轨迹 τw + 经验智能体采样的失败轨迹 τl"] --> B["(a) 任务知识合成：agent 自身对比 τw/τl 生成 κ"]
+    A --> C["(b) 状态知识总结：每步生成 st"]
+    C --> D["状态知识库 B：(a_t, s_t, a_t+1) 三元组"]
+    B --> E["(c) 训练：agent 模型学习 κ → 动作；知识模型学习 κ 与 st（LoRA 共享主干）"]
+    C --> E
+  end
+  subgraph PL["规划阶段"]
+    F["任务指令 u"] --> G["知识模型生成任务知识 κ"]
+    G --> H["agent 模型规划（历史含 κ）"]
+    H --> I["知识模型生成当前状态知识 st"]
+    I --> J["以 st 检索 B 的 N 个近邻 → p_know"]
+    H --> K["agent 模型动作概率 p_agent"]
+    J --> L["a_t+1 = argmax(γ·p_agent + (1-γ)·p_know)"]
+    K --> L
+    L --> H
+  end
+  E --> F
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ Agent planning with world knowledge models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.14205>
+- [arXiv PDF](https://arxiv.org/pdf/2405.14205)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 预备知识、§3 方法（3.1–3.4）
 
 ## 推荐继续阅读
 

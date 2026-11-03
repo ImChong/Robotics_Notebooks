@@ -42,6 +42,28 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Adaptation。 本
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+下图是论文自己的分类体系与章节结构（综述），节点沿用论文的分类名。
+
+```mermaid
+flowchart TD
+    BG["§1 引言: 与迁移学习 / 半监督 / 多任务 / 多视图学习 / 领域泛化的关系<br/>§2 符号与定义: 域 D = X, Y, p x,y; 源域与目标域; 风险最小化"] --> CAT
+    CAT["§3 领域适应的分类 Categorization of Domain Adaptation"] --> GAPC["按类别差距 category gap<br/>Closed set / Open set / Partial / Universal"]
+    CAT --> SHIFT["闭集领域适应中的域偏移 domain shift<br/>Prior shift / Covariate shift / Concept shift"]
+    GAPC --> APP["§4 Approaches (论文聚焦闭集无监督领域适应)"]
+    SHIFT --> APP
+    APP --> SHALLOW["Shallow 浅层架构: 实例 + 特征两类技术"]
+    APP --> DEEP["4.3 Deep Domain Adaptation"]
+    SHALLOW --> INST["4.1 Instance-Based Adaptation"]
+    SHALLOW --> FEAT["4.2 Feature-Based Adaptation<br/>Subspace-based / Transformation-based / Reconstruction-based"]
+    DEEP --> D1["4.3.1 Discrepancy-based"]
+    DEEP --> D2["4.3.2 Reconstruction-based"]
+    DEEP --> D3["4.3.3 Adversarial-based"]
+```
+
+图依据：综述分类体系图，论文 §3 Categorization of Domain Adaptation 的类别差距与域偏移分类、§4 Approaches 开头对浅层 / 深层方法的划分及 §4.1-4.3.3 小节标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Adaptation。 本
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2010.03978>
+- [arXiv PDF](https://arxiv.org/pdf/2010.03978)：已通读摘要、§1 引言、§2 符号与定义、§3 分类、§4 开头的方法总述，以及 §4.1 / §4.2 / §4.3 各节的开头定义段与 §4.3.3 对抗式方法；其余具体方法条目略读
 
 ## 推荐继续阅读
 

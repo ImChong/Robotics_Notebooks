@@ -43,6 +43,29 @@ summary: "本文提出 BiBo 系统，让 GPT-4 这类视觉语言模型（VLM）
 - **环境反馈自适应**是从"开环生成"走向"闭环可用"的关键；
 - 与 SENTINEL、FRoM-W1 等语言-动作工作互为对照（端到端 vs 借现成 VLM）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["用户高层指令 + 场景图像 + 智能体状态"] --> B["Embodied Instruction Compiler（现成 VLM，三阶段 VQA）"]
+    B --> B1["①属性分析：motion caption c、锚点物体 o、关键关节 j（5 个并行 VLM 实例多数投票）"]
+    B1 --> B2["②位姿推理：在锚点物体周围放标签，VLM 选标签 得到位置 l 与朝向 f"]
+    B2 --> B3["③关键关节生成：8x8 标签网格选目标点 + 预定义方向与距离 得到关节目标 J"]
+    B3 --> C["执行器命令 C = {c, l, f, J}"]
+    C --> D["Motion Diffusion Executor（Latent Diffusion Model）"]
+    E["VAE 编码 已生成动作 Mg 与 实际执行动作 Ma 为 Sg、Sa"] --> D
+    D --> F["Diffusion：以 C 和 Sa 为条件生成未来潜变量 Sf"]
+    F --> G["VAE 解码器 联合解码 [Sg:Sf] 得到未来关节轨迹 Mf（因果注意力保证连续）"]
+    G --> H["IK 后优化"]
+    H --> I["强化学习跟踪策略 驱动人形关节执行"]
+    I --> J["物理环境产生实际执行动作 Ma（含碰撞/外力偏差）"]
+    J -->|"反馈"| E
+    J --> K["场景新观测 回到 Compiler 生成下一动作"]
+    K --> B
+```
+
+图依据：论文 §3.1 Overview、§3.2 Embodied Instruction Compiler、§3.3 Motion Diffusion Executor / Fig.1–3（"回到 Compiler 生成下一动作"的环路依据 §3.1 对 next motion 的描述，属推断）
+
 ## 解决什么问题
 
 让 VLM 控制人形通常需**海量具身数据**，成本高。论文问： - 能否**直接用现成 VLM**（不微调大数据）控制人形？ - 如何把 VLM 的**语义/规划**接到**低层物理动作**且**对环境自适应**？
@@ -131,6 +154,7 @@ BiBo 要：用现成 VLM 的开放世界泛化 + 轻量桥接，**少数据**地
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Endowing_GPT-4_with_a_Humanoid_Body__Bridge_Between_VLMs_and_the_Physical_World/Endowing_GPT-4_with_a_Humanoid_Body__Bridge_Between_VLMs_and_the_Physical_World.html>
 - 论文：<https://arxiv.org/abs/2511.00041>
 - 论文正文（Table 1–4、局限）：<https://arxiv.org/html/2511.00041>
+- [arXiv PDF](https://arxiv.org/pdf/2511.00041)：已通读方法部分（实验与附录以略读为准）：§3.1 Overview、§3.2 Embodied Instruction Compiler、§3.3 Motion Diffusion Executor
 
 ## 推荐继续阅读
 

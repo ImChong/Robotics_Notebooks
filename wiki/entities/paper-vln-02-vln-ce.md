@@ -39,6 +39,29 @@ sources:
 - 弥合离散图跳转与真实机器人连续运动之间的差距，提供 R2R 对应的连续环境标准 benchmark。
 - 基于 Habitat 将 VLN 从离散导航图迁移到连续 3D 环境，智能体以底层前进/转向在物理空间移动。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph DS["数据集构建（§3）"]
+    R["R2R nav-graph 轨迹<br/>（MP3D 全景节点序列）"] --> M["节点向下射线投影到 MP3D 网格<br/>取最近可导航点；位移超 0.5m 判无效"]
+    M --> A["A* 启发式最短路径逐段验证<br/>相邻 waypoint 0.5m 内可达才保留"]
+    A --> V["VLN-CE：4475 条轨迹<br/>+ 预计算底层动作最短路径"]
+  end
+  subgraph AG["Cross-Modal Attention 模型（§4.2）"]
+    I["指令：GloVe → Bi-LSTM → S"] --> ATT
+    RGB["RGB → ResNet50 (ImageNet)"] --> H1
+    DP["Depth → ResNet50 (PointNav)"] --> H1
+    H1["GRU (attn)：池化视觉/深度特征 + 上一动作"] --> ATT["scaled dot-product attention<br/>先注意指令得 ŝ，再以 ŝ 注意 RGB/深度"]
+    ATT --> H2["GRU (a)：ŝ, v̂, d̂, 上一动作, h(attn)"]
+    H2 --> ACT["动作：前进 0.25m / 左转 15° / 右转 15° / 停止"]
+  end
+  V -. "训练与评测数据" .-> AG
+  TR["训练（§4.3）：teacher forcing + inflection weighting、DAgger、<br/>约 150k 合成轨迹、progress monitor 辅助损失"] -.-> AG
+```
+
+图依据：论文 §3（Fig. 2）、§4.1–4.3（Fig. 4b）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -93,6 +116,7 @@ sources:
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2004.02857>
+- [arXiv PDF](https://arxiv.org/pdf/2004.02857)：已通读方法部分（实验与附录以略读为准）：§3 VLN-CE 任务与数据集构建、§4 模型与训练方式（§5 实验、§6 讨论略读未细读）
 
 ## 推荐继续阅读
 

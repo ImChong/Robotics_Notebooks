@@ -43,6 +43,26 @@ Predictive individual world model for driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测 x_t：自车与周围车辆的历史位置与朝向"] --> SPLIT["按与自车距离分组<br/>直接影响车 VDI / 潜在影响车 VPI"]
+    SPLIT --> ENC["分支编码<br/>共享轨迹编码器 Enc_φ<br/>再接 ego / VDI / VPI 三个分支编码器，得到嵌入 e_t"]
+    ENC --> RSSM["交互增强的 RSSM 转移模型<br/>分支 GRU 得确定性状态 h_t<br/>自注意力得车辆交互关系<br/>后验 z_t 用嵌入 e_t，先验 z̄_t 不用"]
+    PREV["上一时刻潜状态 + 自车上一动作 a_t-1"] --> RSSM
+    RSSM --> ST["潜状态 s_t = h_t, z_t"]
+    ST --> DEC["未来解码：仅 ego 与 VDI 两个分支<br/>预测未来轨迹，使潜状态含意图信息"]
+    ST --> CA["ego 交叉注意力融合 ego 与 VDI 状态"]
+    CA --> RC["预测奖励 r_t 与继续标志 c_t"]
+    CA --> AC["行为模型 Actor-Critic<br/>Actor 输出离散速度动作，Critic 估计回报<br/>梯度不回传到潜状态"]
+    AC -->|"在世界模型想象序列中训练，想象步长 H=15"| RSSM
+    AC -->|"部署到环境采集新经验"| BUF["回放缓冲区"]
+    BUF -->|"采样序列训练 PIWM"| RSSM
+```
+
+图依据：论文 §III-B（PIWM）、§III-C（Behavior Generation）、§III-D（Learning Process）与 Fig. 2、Alg. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ Predictive individual world model for driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.16733>
+- [arXiv PDF](https://arxiv.org/pdf/2501.16733)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 问题建模、B Predictive Individual World Model、C Behavior Generation、D Learning Process）
 
 ## 推荐继续阅读
 

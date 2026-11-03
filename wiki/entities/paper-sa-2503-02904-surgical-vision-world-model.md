@@ -42,6 +42,26 @@ Surgical vision world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  F["手术视频帧 F1:T"] --> VT["Video Tokenizer: ST-Transformer 编码 → VQ 量化 → 离散 token zv"]
+  F --> LAM["Latent Action Model: ST-Transformer 编码 → 量化 → 潜动作 a1:T-1"]
+  VT --> DM["Dynamics Model: ST-Transformer, MaskGIT 掩码 token 预测"]
+  LAM --> DM
+  DM --> PT["预测的未来 token zv 2:T"]
+  PT --> DEC["Video Tokenizer 解码器"]
+  DEC --> OUT["预测的未来帧"]
+  CB["推理: 从潜动作码本随机采样动作, MaskGIT 迭代解码"] -.-> DM
+  subgraph TR["训练"]
+    direction LR
+    S1["阶段 1: Video Tokenizer 与 Latent Action Model 同时训练"] --> S2["阶段 2: 训练 Dynamics Model"]
+  end
+```
+
+图依据：论文 §2（Methodology）、§2.1（Training）与 Fig.1。Latent Action Model 仅用于学习潜动作，推理时不需要（论文原文）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Surgical vision world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.02904>
+- [arXiv PDF](https://arxiv.org/pdf/2503.02904)：已通读方法部分（实验与附录以略读为准）：§2 方法（含 2.1 训练）、§3 实现细节；§4 结果略读。
 
 ## 推荐继续阅读
 

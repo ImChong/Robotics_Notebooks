@@ -41,6 +41,34 @@ summary: "FIERCE（arXiv:2609.18651）：progress + failure-risk 双信号 RL，
 - Progress 与 failure 双反馈比纯回报更贴近「插/放/对齐」类接触任务。
 - 开源结论：**部分开源**（仓已建，README 称实现准备中，2026-09-17）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    GEN["通用策略 π_G 的 rollout / 动作示教 D0"] --> BC["BC 初始化紧凑专家 π_θ<br/>（独立视觉编码器 + 动作头）"]
+    subgraph EVAL["III-B 进度-失败评估器 M_ϕ"]
+        ENC["Cosmos 3 Edge 观测-语言编码<br/>z_t = E(h_t, g)"] --> PROG["进度分支 P：观测进度 p̂_t"]
+        ENC --> PRED["外部动作条件潜变量预测器 F<br/>输入 z_t 与动作前缀编码 → ẑ_(t+H)"]
+        PRED --> RISK["失败风险头 D：f̂_t（含剩余时间 b_t）"]
+    end
+    subgraph GENL["III-C 通用到任务的评估器学习"]
+        RBM["RBM-1M 等多源轨迹<br/>恢复动作命令，缺失则屏蔽动作相关损失"] --> LG["掩码目标 L_G：进度 + 偏好 + 潜变量动力学 + 失败 BCE + 排序"]
+        LG --> ADAPT["任务适配：低秩适配器 + 头<br/>局部成功/失败 rollout；失败 logit 温度与偏置另用不相交数据标定"]
+    end
+    ADAPT --> ENC
+    BC --> ROLL["收集真机 rollout"]
+    ROLL --> UPD["更新 / 标定评估器 → 冻结带版本的快照<br/>并对回放重新打标"]
+    UPD --> EVAL
+    PROG --> REW["III-D 奖励构造<br/>终局结果项 − 时间惩罚 − β·风险 + α·进度势差"]
+    RISK --> REW
+    REW --> RL["SAC 式学习器（RLPD：示教 + 在线回放混合）<br/>RL critic Q_ω 学习回报"]
+    RL --> PI["更新专家 π_θ"]
+    PI --> ROLL
+    PI --> OUT["部署：仅导出紧凑专家策略"]
+```
+
+图依据：论文 §III（A–D）与 Fig. 1–2、式 (1)–(6)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -91,6 +119,7 @@ summary: "FIERCE（arXiv:2609.18651）：progress + failure-risk 双信号 RL，
 - [fierce_arxiv_2609_18651.md](../../sources/papers/fierce_arxiv_2609_18651.md)
 - [wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md](../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md)
 - [arXiv:2609.18651](https://arxiv.org/abs/2609.18651)
+- [arXiv PDF](https://arxiv.org/pdf/2609.18651)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法 A–D（实验与附录以略读为准）
 
 ## 推荐继续阅读
 

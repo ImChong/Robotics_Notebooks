@@ -43,6 +43,21 @@ Transformers and slot encoding for sample-efficient physical world modeling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["视频帧 x_t"] --> B["VQVAE 编码为 token 序列 z_t（独立预训练后冻结）"]
+    B --> C["Corrector Transformer：非因果 cross-attention，对齐 Λ_t 与 z_t"]
+    C --> D["校正表征 Λ*_t"]
+    D --> E["Predictor Transformer：self-attention 预测 Λ_t+1"]
+    E --> F["Decoder Transformer：输出 ẑ_t+1"]
+    F --> G["与 z_t+1 的交叉熵损失"]
+    E -->|"作为下一步的 Λ_t"| C
+```
+
+图依据：论文 §3.2–3.7（Fig. 1）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ Transformers and slot encoding for sample-efficient physical world modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.20180>
+- [arXiv PDF](https://arxiv.org/pdf/2405.20180)：已通读方法部分（实验与附录以略读为准）：§2 相关工作、§3 方法全部；§4 实验与附录略读
 
 ## 推荐继续阅读
 

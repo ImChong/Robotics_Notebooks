@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 本页是清单索引，细节以原文为准。
+LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 本页是清单索引，细节以原文为准。（arXiv 当前版本题为《Physics Context Builders: A Modular Framework for Physical Reasoning in Vision-Language Models》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -40,6 +40,27 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 本页是清单索引，细节以原文为准。
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["PCB 训练 (§4.1)"]
+        SIM["仿真器标注 (CLEVRER / Falling Tower)"] --> CTX["生成问题无关的物理描述: Human-like Narration (HN) 或 Structured Physics (SP)"]
+        CTX --> FT["PaliGemma-3B + LoRA 微调: 最小化描述的自回归负对数似然 (视频采样 8 帧)"]
+        FT --> PCB["Physics Context Builder (PCB)"]
+    end
+    subgraph INF["推理 (§4.2-§4.3)"]
+        Q["用户问题 + 图像 / 视频"] --> TRI["Triage Agent (GPT-4o 或 GPT-4o-mini): 选择合适的 PCB"]
+        TRI --> PCB2["所选 PCB 生成物理场景描述"]
+        PCB2 --> FM["基础模型 (GPT-4o / GPT-4o-mini / Gemini-1.5-Pro): 描述作为上下文 + 原问题 + 视觉输入"]
+        Q --> FM
+        FM --> ANS["答案"]
+    end
+    PCB -.-> PCB2
+```
+
+图依据：论文 §4.1-§4.3 / Fig.1、Fig.4（读取的是 arXiv v3，论文标题已更名为 Physics Context Builders: A Modular Framework for Physical Reasoning in Vision-Language Models，v1 标题即本页所称 Synthetic Vision，编号一致）
 
 ## 核心信息
 
@@ -95,6 +116,8 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2412.08619>
+- [arXiv PDF](https://arxiv.org/pdf/2412.08619)：已通读方法部分（实验与附录以略读为准）：§4 Physics Context Builders（4.1-4.3）；附录略读 。注：当前 arXiv 版本标题与本页名称不同（见图依据）
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2024-12-11）题 Synthetic Vision: Training Vision-Language Models to Understand Physics，v3（2025-10-28，现行）改题；本页题名对应 v1，图按 v3 绘制；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

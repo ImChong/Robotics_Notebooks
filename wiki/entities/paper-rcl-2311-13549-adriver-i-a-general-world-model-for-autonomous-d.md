@@ -42,6 +42,23 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["当前帧 I_t + 历史视觉-动作对 (I_t-1,A_t-1)…(I_t-3,A_t-3)"] --> VE["CLIP-ViT-Large 视觉编码 + 2 层 MLP visual adapter → 视觉 tokens"]
+    IN --> ACT["控制信号（速度、转角）转文本 → 动作 tokens"]
+    VE --> PROMPT["交错 vision-action 对话：system prompt + 视觉 token + 动作 token"]
+    ACT --> PROMPT
+    PROMPT --> LLM["MLLM（Vicuna-7B-1.5）自回归输出当前控制信号 A'_t"]
+    LLM --> VDM["VDM（基于 SD 2.1 + temporal 模块；历史帧与扩散输入拼接，A'_t 经文本条件注入）"]
+    IN -->|"历史帧作参考视频控制"| VDM
+    VDM --> NEXT["预测后续帧 I'_t+1 … I'_t+4"]
+    NEXT -->|"I'_t+1 作为下一时刻的当前帧"| IN
+```
+
+图依据：论文 §3.1 / Fig.1（Overall Pipeline）、§3.2 / Fig.2（Prompt Construction）、§3.3（MLLM 与 VDM 分开训练、推理时合并）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2311.13549>
+- [arXiv PDF](https://arxiv.org/pdf/2311.13549)：已通读方法部分（实验与附录以略读为准）：§3.1 架构、§3.2 Prompt 构造、§3.3 训练、§4.1 实现细节
 
 ## 推荐继续阅读
 

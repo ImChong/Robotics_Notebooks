@@ -33,6 +33,27 @@ GDAF 提出一个与控制器无关、面向生物力学的评估框架，把"�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    HD["人类步态数据库<br/>22 名受试者，跑台 28 个速度 0.5-1.85 m/s"] --> OS["OpenSim：逆运动学得关节角<br/>逆动力学得关节力矩，再算关节功率"]
+    RD["Unitree G1 + 宇树行走控制器<br/>记录关节角、角速度、估计力矩，28 个速度"] --> RP["功率 = 角速度 x 力矩<br/>以踝关节俯仰突变时刻划分步态相位"]
+    OS --> NORM["按右脚足跟着地归一化为 0-100% 步态周期<br/>多周期平均，按体重归一化"]
+    RP --> NORM
+    MAP["关节映射 + 人类数据转换到机器人坐标系"] --> NORM
+    NORM --> MAT["统一 .mat 数据格式<br/>pos / torque / power"]
+    MAT --> VIS["阶段一：数据准备与可视化<br/>含 MuJoCo 步态回放工具"]
+    MAT --> A1["波形相似度<br/>Pearson 相关：角度 0.5 / 力矩 0.3 / 功率 0.2"]
+    MAT --> A2["双侧对称性<br/>最大屈曲与伸展特征点的对称指数 SI"]
+    MAT --> A3["能量学行为<br/>正负功积分，双侧功对称性与人机功差异"]
+    A1 --> COST["阶段三：综合 GDAF 代价 C_GDAF<br/>0.5 x 机器人对称性 + 0.5 x 类人度"]
+    A2 --> COST
+    A3 --> COST
+```
+
+图依据：论文 §II-A（数据获取与处理）、§II-B（GDAF 三阶段）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -65,6 +86,7 @@ GDAF 提出一个与控制器无关、面向生物力学的评估框架，把"�
 - [humanoid_pnb_biomechanical-comparisons-reveal-divergence-of-h.md](../../sources/papers/humanoid_pnb_biomechanical-comparisons-reveal-divergence-of-h.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Humanoid_Gaits/Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Humanoid_Gaits.html>
 - 论文：<https://arxiv.org/abs/2602.21666>
+- [arXiv PDF](https://arxiv.org/pdf/2602.21666)：已通读方法部分（实验与附录以略读为准）：§II-A 数据获取与处理、§II-B GDAF 框架
 
 ## 推荐继续阅读
 

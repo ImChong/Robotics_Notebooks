@@ -42,6 +42,24 @@ A Real-to-Sim-to-Real framework that generates photorealistic and physically int
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["场景多视角 RGB 图像"] --> SFM["COLMAP 求相机位姿与稀疏 SfM 点"]
+    SFM --> GS["几何一致的 3DGS 重建<br/>环境与物体分开重建<br/>平面化高斯 + 单目深度/法线先验 + 多视角 NCC 约束"]
+    GS --> MESH["渲染深度图 → TSDF 融合 → 提取 Mesh<br/>用于碰撞与物理交互"]
+    GS --> ALIGN["坐标对齐到 Isaac Sim<br/>并调整高斯属性与 SH 系数"]
+    MESH --> HYB["GS-Mesh 混合仿真环境<br/>遮挡感知的物体 Gaussian 合成<br/>机器人与目标锥体位置随机化"]
+    ALIGN --> HYB
+    HYB --> LOW["先训低级策略<br/>速度指令 + 本体感知 → 关节位置，50 Hz"]
+    LOW -->|"冻结"| HIGH["再用 PPO 训高级策略，5 Hz<br/>冻结 ViT 图像特征 + 目标颜色 RGB 指令<br/>+ 上一动作 + 本体感知 → 速度指令"]
+    HYB -->|"自我视角 GS 渲染图像 / mesh 交互"| HIGH
+    HIGH --> TR["零样本迁移到真实机器人<br/>Unitree Go2 视觉导航与运动"]
+```
+
+图依据：论文 §IV-A / §IV-B / §IV-C 与 Fig. 4、Fig. 6、Fig. 7。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ A Real-to-Sim-to-Real framework that generates photorealistic and physically int
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2502.01536>
+- [arXiv PDF](https://arxiv.org/pdf/2502.01536)：已通读方法部分（实验与附录以略读为准）：§III 任务定义、§IV-A 几何一致重建、§IV-B 逼真可交互仿真构建、§IV-C 仿真中的强化学习
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ summary: "用严格为正的 sigmoid-bounded 熵项稳定保守 Q 学习与 offl
 - 开源状态：**待发布**（步骤 2.5 核查，2026-09-14）。
 - 与 [11 篇技术地图](../overview/vla-tamp-planning-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    BUF["回放缓冲 D_buf 采样 (s, a, r, s', d_term)"] --> ACTOR["Actor: tanh-squashed 对角高斯策略 π_θ<br/>(重参数化 x = μ + σ·ε, a = tanh(x))"]
+    ACTOR --> SIG["SigEnt: 逐维 surprisal ℓ_i = -log π_i<br/>经 sigmoid 有界化 h_i = h_max·sigmoid((ℓ_i - m)/·)<br/>H_sig ∈ (0, d_a·h_max)"]
+    SIG --> TEMP["温度 α 自动调节<br/>使 E[H_sig] 匹配 H_target (σ_tar = 0.1)"]
+    SIG --> TGT["熵增强 Bellman 目标<br/>y = r + (1-d)γ[min Q̄_i(s',a') + α·H_sig(s',a')]"]
+    TGT --> CRITIC["Critic 集成 (仅 critic 加 LayerNorm)<br/>L_Q = L_TD + λ_cql·L_CQL"]
+    CQL["Cal-QL 式保守项 L_CQL<br/>策略采样动作经蒙特卡洛回报校准下界 + log-sum-exp 差距"] --> CRITIC
+    CRITIC --> ACTLOSS["Actor 损失 L_π = -min Q_i(s,a) - α·H_sig"]
+    TEMP --> ACTLOSS
+    ACTLOSS -->|更新 θ| ACTOR
+```
+
+图依据：论文 §III-A 至 §III-C、§IV（SCQ Overview）；Cal-QL 保守项细节在附录，仅据正文概述绘制。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -95,6 +112,7 @@ summary: "用严格为正的 sigmoid-bounded 熵项稳定保守 Q 学习与 offl
 - [scq-rl_arxiv_2609_12749.md](../../sources/papers/scq-rl_arxiv_2609_12749.md)
 - [wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md)
 - [arXiv:2609.12749](https://arxiv.org/abs/2609.12749)
+- [arXiv PDF](https://arxiv.org/pdf/2609.12749)：已通读方法部分（实验与附录以略读为准）：§III 记号与 SigEnt 熵机制、actor/温度学习、critic 学习，§IV SCQ 概述；附录 Cal-QL 推导未读
 
 ## 推荐继续阅读
 

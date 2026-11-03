@@ -69,6 +69,46 @@ summary: "OV-SAM3D 是训练无关的开放词汇 3D 场景理解框架：超点
 - 依赖多视角图像质量与标定；单雷达无相机无法单独发挥 SAM 优势。
 - 开放标签噪声需后处理；勿直接写死进静态占据地图。
 
+## 源码运行时序图
+
+入口（README Usage / Evaluation，均为 Hydra 配置 `ovsam3d/configs/ovsam3d_scannet200.yaml`）：
+`python tools/generate_coarse_masks.py data.scans_path=... external.sam_checkpoint=...` → `python refine_masks.py ...` → `python evaluate/evaluate_on_close_set.py --gt_dir ... --mask_pred_dir ... --mask_features_dir ...`
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / 命令行
+    participant G as tools/generate_coarse_masks.py main()
+    participant PP as extractor_features/features_extractor.py PointProjector
+    participant SAM as extractor_features/utils.py run_sam (SamPredictor)
+    participant CLIP as clip (ViT-L/14@336px)
+    participant R as tools/refine_masks.py main()
+    participant E as evaluate/evaluate_on_close_set.py InstSegEvaluator
+    U->>G: python tools/generate_coarse_masks.py（Hydra 读 yaml 与覆盖项）
+    G->>SAM: initialize_sam_model(sam_vit_h)；clip.load(ViT-L/14@336px)
+    loop 每个 ScanNet scan
+        G->>G: 读 *vh_clean_2.ply 点云、*.0.010000.segs.json 超点、位姿、深度、每 frequency 帧取一张 RGB
+        G->>PP: PointProjector(...)：把点云投到各视图，用深度差 vis_threshold 判可见
+        PP-->>G: visible_points_view、projected_points
+        G->>G: matmul_accelerate 统计超点可见点数，每个超点选 top_k 个视图
+        loop 每个 top 超点、每个选中视图
+            G->>SAM: run_sam：随机取 num_selected_points 个投影点作提示，重复 num_random_rounds 轮取最高分 mask
+            G->>G: back_project 把 2D mask 反投到 3D，计算与各超点的覆盖比，> overlapping_ratio 的超点在 overlapping_score_table 记 +1
+            G->>CLIP: mask2box_multi_level 多级裁剪，encode_image，均值作为该 mask 的特征
+        end
+        G->>G: 保存 score_super_points.pt 与 all_features.npy
+    end
+    U->>R: python refine_masks.py
+    R->>R: 按 overlapping 分数与 temperature 合并粗 mask，保存 combine_mark.npy、final_mask.pt
+    U->>E: python evaluate_on_close_set.py
+    E->>CLIP: encode_text("a {} in a scene") 对 ScanNet200 类名
+    E->>E: 每个 mask 特征与文本嵌入做余弦相似度，按合并组多数投票定类别
+    E->>E: eval_semantic_instance.evaluate 计算实例 AP
+```
+
+另有独立脚本 `tools/generate_open_tags.py`（RAM++ 对多帧出标签，再经 OpenAI `gpt-4` 过滤，写入 `<scan>_text.txt`），用于「开放标签」；本次读到的 `refine_masks.py` 与评测脚本里没有读取这些 txt 的代码，故未画入主链。
+
+图依据：HanchenTai/OV-SAM3D@80a86a6，读过 README.md、ovsam3d/configs/ovsam3d_scannet200.yaml、ovsam3d/tools/generate_coarse_masks.py、ovsam3d/tools/refine_masks.py、ovsam3d/tools/generate_open_tags.py、ovsam3d/tools/utils.py、ovsam3d/extractor_features/features_extractor.py、ovsam3d/extractor_features/utils.py、ovsam3d/evaluate/evaluate_on_close_set.py。
+
 ## 关联页面
 
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
@@ -82,6 +122,7 @@ summary: "OV-SAM3D 是训练无关的开放词汇 3D 场景理解框架：超点
 - [sources/repos/ov-sam3d.md](../../sources/repos/ov-sam3d.md)
 - 项目页：<https://hithqd.github.io/projects/OV-SAM3D/>
 - arXiv：<https://arxiv.org/abs/2405.15580>
+- 源码核对（2026-11-02）：HanchenTai/OV-SAM3D@80a86a6，读过 README.md、ovsam3d/configs/ovsam3d_scannet200.yaml、ovsam3d/tools/（generate_coarse_masks.py、refine_masks.py、generate_open_tags.py、utils.py）、ovsam3d/extractor_features/（features_extractor.py、utils.py）、ovsam3d/evaluate/evaluate_on_close_set.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

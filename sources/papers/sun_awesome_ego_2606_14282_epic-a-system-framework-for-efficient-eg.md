@@ -6,9 +6,10 @@
 - **分组：** 25 Gaze Attention & Intention Prediction
 - **编号：** 053/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2606.14282
+- **arXiv：** 2606.15859
+- **编号核对：** 上游清单登记的 2606.14282 经 arXiv 官方记录核对为另一篇论文《Characterization of white-light enhancements under umbral conditions in one-dimensional simulations of solar flares》，与本条目不符；已更正为 2606.15859《EPIC: A System Framework for Efficient Egocentric Perception on Embodied AR Glasses》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2606.14282>
+- **论文：** <https://arxiv.org/abs/2606.15859>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** An efficient egocentric perception system for embodied intelligence on smart AR glasses, leveraging gaze, pose, and inertial signals to infer user intent and retain only the most informative parts of perceptual input

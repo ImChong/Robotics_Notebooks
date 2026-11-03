@@ -48,6 +48,42 @@ OXR 是 SoMark 的文档解析模型，将 PDF 和文档图像转换为包含版
 
 与 [Unlimited OCR Works 2](./unlimited-ocr-2.md) 选型时，应在同一批目标文档上比较表格、跨页顺序及部署成本，而非直接对比不同基准结果。
 
+## 源码运行时序图
+
+入口：`oxr serve --config config.yaml --host 127.0.0.1 --port 8000 --workers 1`（`oxr/cli/main.py` → `cmd_serve.serve` → uvicorn 启动 `oxr/server/app.py`）；另需先起两个模型服务：`services/oxr/start_vllm.sh`（OXR 识别模型，端口 8080）与 `python -m uvicorn dfine_la.api:app`（版面分析，端口 8081）。也可用 `docker/Dockerfile.allinone` 一键启动。
+
+```mermaid
+sequenceDiagram
+    participant U as 客户端 / somark CLI / /demo
+    participant R as oxr/server/routes.py<br/>POST /v1/parse/sync
+    participant O as pipeline/orchestrator.py<br/>process_document
+    participant LA as pipeline/layout.py → model/layout_client.py
+    participant DF as services/layout_analyze<br/>dfine_la.api POST /inference
+    participant RO as pipeline/reading_order.py<br/>resolve_reading_orders
+    participant RC as pipeline/recognition.py<br/>recognize_pages
+    participant V as OXR 模型服务<br/>(vLLM, model/client.py AsyncOpenAI)
+    U->>R: 上传 PDF/图片 + output_formats
+    R->>O: process_document(file_bytes, file_name, ...)
+    O->>O: _decode_document_images (PDF → 页面图像)
+    O->>LA: analyze_layouts(images)
+    LA->>DF: 批量页面图像
+    DF-->>LA: 区域框与类别 (Block 列表)
+    Note over O: 默认过滤 Page-header / Page-footer
+    par 阅读顺序与内容识别并行 (版面模型不给阅读顺序时)
+        O->>RO: resolve_reading_orders
+        RO->>V: 请求阅读顺序 (不完整时 xycut_plus_order 补全)
+    and
+        O->>RC: recognize_pages
+        RC->>V: 按区域类型裁图识别 (表格/公式/代码/化学结构/文本)
+    end
+    O->>O: 去重后处理 (overlap / exact_text / full_overlap)
+    O->>O: assemble_markdown, serialize_final_blocks (JSON)
+    O-->>R: outputs + metadata
+    R-->>U: SyncParseResponse
+```
+
+图依据：SoMarkAI/OXR@c1a1dcb，读过 README.md、oxr/cli/main.py、oxr/cli/cmd_serve.py（前段）、oxr/server/app.py（grep）、oxr/server/routes.py、oxr/pipeline/orchestrator.py、oxr/pipeline/layout.py（grep）、oxr/pipeline/recognition.py（grep）、oxr/pipeline/reading_order.py（grep）、oxr/model/client.py（grep）、oxr/model/layout_client.py（grep）、services/layout_analyze/dfine_la/api.py（grep）。
+
 ## 关联页面
 
 - [Unlimited OCR Works 2](./unlimited-ocr-2.md)
@@ -57,6 +93,7 @@ OXR 是 SoMark 的文档解析模型，将 PDF 和文档图像转换为包含版
 ## 参考来源
 
 - [OXR 官方仓库归档](../../sources/repos/somark-oxr.md)
+- 源码核对（2026-11-02）：SoMarkAI/OXR@c1a1dcb，读过 README.md、oxr/cli/main.py、oxr/cli/cmd_serve.py、oxr/server/app.py、oxr/server/routes.py、oxr/pipeline/orchestrator.py、oxr/pipeline/layout.py、oxr/pipeline/recognition.py、oxr/pipeline/reading_order.py、oxr/model/client.py、oxr/model/layout_client.py、services/layout_analyze/dfine_la/api.py（部分文件仅读入口与调用行）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

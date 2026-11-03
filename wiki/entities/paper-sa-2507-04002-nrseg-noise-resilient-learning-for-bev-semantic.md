@@ -43,6 +43,36 @@ Noise-resilient learning for BEV semantic segmentation via driving world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    GEN["驾驶世界模型生成合成数据<br/>条件：BEV 标签 + 3D 框 + 文本"] --> SYN["合成多视角图像<br/>（含生成噪声）"]
+    subgraph PGCM["PGCM 感知几何一致性度量"]
+        direction TB
+        REF["BEV 标签 / 3D 框 投影到透视视图<br/>参考掩码 Mr = 道路掩码 ∩ 非物体掩码"]
+        SM["预训练分割模型 (Mask2Former / SAN)<br/>得到合成图像透视掩码 Ms"]
+        REF --> R["一致性分数 R = IoU(Mr, Ms) 的均值"]
+        SM --> R
+    end
+    SYN --> SM
+    GEN --> REF
+    subgraph NET["BEV 分割网络"]
+        direction TB
+        ENC["透视图像编码器 → 特征 Fi<br/>(透视分割损失 Loss_pv)"] --> VT["视角变换 → BEV 特征 Fb"]
+        VT --> TF["流式时序融合 TFu<br/>(对齐前一帧；时序对齐损失 Loss_tr)"]
+        TF --> HEAD["共享 BEV 编码 + 两个分割头"]
+    end
+    SYN --> ENC
+    HEAD --> MN["多项分布头 Dm<br/>Dice 损失"]
+    HEAD --> DI["Dirichlet 头 Dd (EDL)<br/>HLSE 层级局部语义互斥<br/>不确定性损失 Loss_se"]
+    R -->|"加权 Dice 分母：R·(...)"| MN
+    MN --> LOSS["总损失 = 源域 Loss_s + 目标域 Loss_t<br/>(UDA / SSL)"]
+    DI --> LOSS
+```
+
+图依据：论文 §III-A / §III-B / §III-C / §III-D 与 Fig.2（NRSeg 框架：PGCM + BiDPP）、Eq.1–29。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +128,7 @@ Noise-resilient learning for BEV semantic segmentation via driving world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.04002>
+- [arXiv PDF](https://arxiv.org/pdf/2507.04002)：已通读方法部分（实验与附录以略读为准）：§III Method（A–D）、Fig.1–2
 
 ## 推荐继续阅读
 

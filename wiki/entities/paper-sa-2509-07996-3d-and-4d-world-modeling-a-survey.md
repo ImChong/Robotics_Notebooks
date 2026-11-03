@@ -42,6 +42,26 @@ First specialized survey on 3D and 4D world modeling and generation; establishes
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ROOT["3D and 4D World Modeling: A Survey（Fig. 1 Outline）"]
+    ROOT --> S2["§2 Preliminaries：3D/4D 表示（Video Streams、Occupancy Grids、LiDAR Point Clouds、Neural Representations）、条件 Cgeo / Cact / Csem、两种范式与四种功能类型"]
+    S2 --> PAR["两种范式：Generative World Models G(xi, Cgeo, Cact, Csem) → Sg；Predictive World Models P(x−t:0, Cact) → Sp"]
+    S2 --> FT["四种功能类型：Data Engines、Action Interpreters、Neural Simulators、Scene Reconstructors"]
+    ROOT --> S3["§3 Methods: A Hierarchical Taxonomy（按表示模态）"]
+    S3 --> V["§3.1 VideoGen：3.1.1 Data Engines · 3.1.2 Action Interpreters · 3.1.3 Neural Simulators"]
+    S3 --> O["§3.2 OccGen：3.2.1 Scene Representors · 3.2.2 Occupancy Forecasters · 3.2.3 Autoregressive Simulators"]
+    S3 --> L["§3.3 LiDARGen：3.3.1 Data Engines · 3.3.2 Action Forecasters · 3.3.3 Autoregressive Simulators"]
+    ROOT --> S4["§4 Datasets & Evaluations：4.1 Datasets · 4.2 Evaluation Metrics & Protocols · 4.3 Quantitative Experiments & Analyses · 4.4 Qualitative Experiments & Analyses"]
+    ROOT --> S5["§5 Applications：Autonomous Driving、Robotics、Video Games & XR、Digital Twins、Other Emerging Applications"]
+    ROOT --> S6["§6 Challenges & Future Directions"]
+    ROOT --> S7["§7 Conclusion"]
+```
+
+图依据：综述分类体系图，论文 Fig. 1（Outline of the survey）、§1 Organization、§2.2.2 与 §3 各小节标题；节点沿用论文原有名称。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ First specialized survey on 3D and 4D world modeling and generation; establishes
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2509.07996>
+- [arXiv PDF](https://arxiv.org/pdf/2509.07996)：已通读摘要、§1、§2（2.1–2.3）与 Fig. 1；§3–§6 仅按章节/小节标题与各节开头略读，用于确认分类体系，未读各方法细节与实验表
 
 ## 推荐继续阅读
 

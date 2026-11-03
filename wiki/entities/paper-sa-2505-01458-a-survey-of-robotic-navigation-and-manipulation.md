@@ -42,6 +42,28 @@ Examines how physics simulators address the sim-to-real gap by analyzing their p
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ROOT["综述范围（Fig. 1：任务、模拟器、数据集、指标、方法）"]
+    ROOT --> GAP["§1.1 Sim-to-Real：perception gap 与 action-dynamics gap；缓解：calibration / explicit modeling、randomization、transfer-oriented policy learning"]
+    ROOT --> NAV["§2 Navigation"]
+    ROOT --> MAN["§3 Manipulation"]
+    NAV --> N1["§2.1 Physics Engines and Simulators：Indoor / Outdoor 等"]
+    NAV --> N2["§2.2 Benchmark Datasets and Environments：Goal-Driven / Task-Driven Navigation"]
+    NAV --> N3["§2.3 Evaluation Metrics"]
+    NAV --> N4["§2.4 Methods：Explicit Memory / Implicit Memory"]
+    MAN --> M1["§3.1 Manipulation Tasks：Grasping / Deformable Object / Dexterous / Mobile Manipulation（按复杂度与自由度排序，Fig. 6）"]
+    MAN --> M2["§3.2 Physics Engines and Simulators：General-Purpose / Classical / Differentiable"]
+    MAN --> M3["§3.3 Benchmark Datasets：Rigid Object / Deformable Object 等基准"]
+    MAN --> M4["§3.4 Methods：Sensing Modalities / Policy Learning"]
+    NAV --> DISC["§4 Discussion：4.1 导航与操作的统一 / 4.2 Error Analysis（模拟器相关常见失败）/ 4.3 Future Directions"]
+    MAN --> DISC
+```
+
+图依据：综述分类体系图（论文 Fig. 1 的 Survey taxonomy，辅以 §1.1 sim-to-real 缺口分类与 §4 讨论结构）：论文 Fig. 1、§1.1、§2–§4 标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Examines how physics simulators address the sim-to-real gap by analyzing their p
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2505.01458>
+- [arXiv PDF](https://arxiv.org/pdf/2505.01458)：已通读方法部分（实验与附录以略读为准）：摘要、§1（含 §1.1、Fig. 1）、§2–§4 各小节标题与开头段；表格、基准对比与参考文献以略读为准
 
 ## 推荐继续阅读
 

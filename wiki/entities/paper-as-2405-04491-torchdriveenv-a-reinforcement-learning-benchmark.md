@@ -41,6 +41,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["env.reset"] --> INIT["INITIALIZE API：条件扩散模型生成随机但真实的 NPC 初始化，用户自定义 agent 先放置"]
+    INIT --> SIM["TorchDriveSim：静态背景、交通灯、各类 agent 的运动学模型"]
+    SIM --> OBS["自车鸟瞰渲染观测，3x3x64x64，含前两步历史"]
+    OBS --> POL["RL 策略：只控制 ego，动作为转向角 b 与加速度 c"]
+    POL --> STEP["env.step"]
+    STEP --> DRIVE["DRIVE API：为 NPC 提供反应式、真实的驾驶行为"]
+    DRIVE --> SIM
+    STEP --> RW["奖励：移动奖励 + 路点奖励 - 平滑惩罚"]
+    STEP --> END{"终止条件：驶出道路、闯红灯、碰撞、最大步数"}
+    END -->|"未终止"| OBS
+    END -->|"终止"| R
+```
+
+图依据：论文 §III-A 至 §III-D、§IV / Fig.3（INITIALIZE 与 DRIVE 接口）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +114,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2405.04491>
+- [arXiv PDF](https://arxiv.org/pdf/2405.04491)：已通读方法部分（§III 设计与特性：Simulator、Agents、Generative Models of Vehicle Behaviour、Environment；§IV 基准的动作/观测/终止条件/奖励）；实验训练曲线以略读为准
 
 ## 推荐继续阅读
 

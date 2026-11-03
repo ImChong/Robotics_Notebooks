@@ -54,6 +54,28 @@ summary: "踏脚石/稀疏落脚点上的人形行走，最难的是「敏捷」
 
 方法拆解（深读笔记小节）：核心：降阶落脚规划器 + CLF 奖励引导 RL；师生蒸馏三阶段管线；训练与部署设置。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    TER[程序化踏脚石地形: 上楼梯 / 下楼梯 / 平石 / 变高度石<br/>难度课程: 连续 3 次成功才升级] --> PLN
+    subgraph PLN[降阶模型参考生成 LIP / HLIP]
+        T1[步长时间 Ts: LIP 闭式解求 time-to-impact] --> REF
+        T2[竖直 CoM 速度 u_des: 调节落地后轨道能量 E*] --> REF
+        T3[CoM 三次样条 + 摆动脚 Bézier 轨迹 + 骨盆/脚朝向 + 手臂相位参考] --> REF
+        REF[每时间步参考: 期望输出 y_d, 约束信息]
+    end
+    REF -->|CLF 奖励 + 完整奖励| TCH
+    subgraph RL[师生训练流程]
+        TCH[1 特权教师 PPO: 站立/行走, 含真值相位信息] -->|行为克隆蒸馏 热启动| STU[2 无特权学生]
+        STU --> FT[3 学生 PPO 微调: 全课程 + 观测噪声]
+    end
+    FT --> OBS[学生观测: 指令 + 本体感知 + 1m x 1m 高程图 + 上一动作]
+    OBS --> ACT[动作 21 维关节目标 50 Hz] --> PD[低层 PD 控制 -> Unitree G1]
+```
+
+图依据：论文 §III（Fig. 2、Fig. 3）、§IV-A/B、§V。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -92,6 +114,7 @@ summary: "踏脚石/稀疏落脚点上的人形行走，最难的是「敏捷」
 - [humanoid_pnb_walk-the-planc.md](../../sources/papers/humanoid_pnb_walk-the-planc.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html>
 - 论文：<https://arxiv.org/abs/2601.06286>
+- [arXiv PDF](https://arxiv.org/pdf/2601.06286)：已通读方法部分（实验与附录以略读为准）：§II 预备知识、§III 基于模型的参考生成、§IV 学习环境设置、§V 结果的训练设置部分
 
 ## 推荐继续阅读
 

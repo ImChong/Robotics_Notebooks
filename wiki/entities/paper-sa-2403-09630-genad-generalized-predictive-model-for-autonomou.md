@@ -42,6 +42,27 @@ Generalized predictive model for autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    DATA["OpenDV-YouTube / OpenDV-2K 视频 + 语言 (command, context)"]
+    S1["阶段一: 图像域迁移, 微调 SDXL UNet 做文生图"]
+    S2["阶段二: 视频预测预训练, 冻结阶段一参数, 插入时序推理块"]
+    TRB["时序推理块: 因果时序注意力 + 两个解耦空间注意力 (零初始化)"]
+    PRED["给定过去帧 + 文本, 联合去噪未来帧"]
+    ACT["扩展: 轨迹经 Fourier 嵌入加入条件, 做动作条件预测"]
+    PLAN["扩展: 冻结 UNet 编码器时空特征 + MLP 预测路径点 (规划)"]
+    DATA --> S1
+    S1 --> S2
+    TRB --> S2
+    S2 --> PRED
+    PRED --> ACT
+    PRED --> PLAN
+```
+
+图依据：论文 §3 GenAD Framework (3.1, 3.2, 3.3) / Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +118,7 @@ Generalized predictive model for autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2403.09630>
+- [arXiv PDF](https://arxiv.org/pdf/2403.09630)：已通读方法部分（实验与附录以略读为准）：§3 GenAD Framework、§4.1 训练设定
 
 ## 推荐继续阅读
 

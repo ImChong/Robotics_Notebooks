@@ -55,6 +55,32 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+本仓库是机器人模型资产（URDF、网格、辅助脚本），不含控制或算法实现；ROS 2 运行入口只有可视化 launch（另有辅助脚本，未画），下图只描述该 launch。
+
+入口：`ros2 launch walker_s2_v1_world_description display.launch.py [rviz:=true urdf_file:=... rviz_config:=...]`
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant L as launch/display.launch.py
+    participant X as check_urdf 与 cat 命令
+    participant RSP as robot_state_publisher
+    participant JSP as joint_state_publisher_gui
+    participant RV as rviz2
+    U->>L: ros2 launch walker_s2_v1_world_description display.launch.py [rviz:=true urdf_file:=... rviz_config:=...]
+    L->>X: ExecuteProcess(check_urdf urdf_file)，再 Command(cat urdf_file)，默认 urdf/s2_v1_world/s2_v1_world.urdf
+    X-->>L: robot_description（URDF 文本；check_urdf 输出到屏幕）
+    L->>RSP: 启动节点，参数 robot_description
+    L->>JSP: 启动节点
+    L->>RV: 启动节点，-d config/rviz/view_robot.rviz（rviz 参数为真时）
+    JSP-->>RSP: joint_states（GUI 滑块）
+    RSP-->>RV: TF 与 robot_description
+```
+
+图依据：WalkerS2-Model@ca2ab98，README.md、walker_s2_v1_world_description/launch/display.launch.py、package.xml；Collected_WalkerS2 的 USD 文件（Isaac Sim 用）及其余两个 URDF 目录未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +92,7 @@ institutions:
 - [WalkerS2-Model 源码归档](../../sources/repos/walkers2-model.md)（<https://github.com/UBTECH-Robot/WalkerS2-Model>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：UBTECH-Robot/WalkerS2-Model@ca2ab98，读过 README.md、walker_s2_v1_world_description/launch/display.launch.py、package.xml；时序图仅覆盖 RViz 可视化 launch，未运行代码。
 
 ## 推荐继续阅读
 

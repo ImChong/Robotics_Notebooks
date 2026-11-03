@@ -45,6 +45,27 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Randomization。
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ADR["自动域随机化 ADR\n维护环境参数分布 Pφ，初始集中于校准环境"] --> SAMPLE["采样环境 λ~Pφ"]
+  SAMPLE --> GEN["生成训练数据 / 评估性能"]
+  GEN --> PTRAIN["仿真中 RL 训练策略\nFF 2048 + LSTM 1024，Rapid 分布式"]
+  GEN --> VTRAIN["合成图像监督训练视觉模型\n三路 ResNet50 共享权重"]
+  GEN --> EVAL["按性能阈值 tL / tH\n扩大或缩小随机化范围"]
+  EVAL --> ADR
+  PTRAIN --> POLICY["循环策略\n动作：20 个关节 × 11 档相对位置变化"]
+  VTRAIN --> VISION["视觉状态估计\n位姿 + 面角分解预测 + 后处理跟踪"]
+  GIIKER["Giiker 魔方传感器\n可替代视觉的面角"] -.-> STATE
+  VISION --> STATE["魔方状态：位姿 + 6 个面角"]
+  SOLVER["Kociemba 求解器\n输出翻转 + 顶面旋转子目标序列"] --> POLICY
+  STATE --> POLICY
+  POLICY --> HAND["真机 Shadow Hand\n零样本迁移"]
+```
+
+图依据：论文 §2.2、§5.1–5.2 / Fig.10、§6.1–6.2、§7–7.1、§8.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +120,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Randomization。
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1910.07113>
+- [arXiv PDF](https://arxiv.org/pdf/1910.07113)：已通读方法部分（实验与附录以略读为准）：§2.2 任务、§5 ADR、§6 策略训练、§7 视觉状态估计、§8.4 解魔方
 
 ## 推荐继续阅读
 

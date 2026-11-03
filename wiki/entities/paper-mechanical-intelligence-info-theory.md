@@ -39,6 +39,30 @@ summary: "机械智能信息论（arXiv:2609.19588）：把身体动力学视为
 
 - 「机械智能」缺乏可比较度量；信息论提供跨本体/执行器分析语言。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    W["世界状态/参数 W<br/>（地面反力 GRF 等）"] --> X["机体状态 X<br/>（无传感器的被动身体动力学）"]
+    X --> A["控制动作 A<br/>（反馈控制，可选）"]
+    X --> M1["I(W;X)<br/>被动响应的互信息"]
+    M1 --> M2["按频带 / 机械模态分解<br/>Shapley 值分摊各坐标贡献"]
+    X --> M3["I(W;X|A) = I(W;X,A) − I(W;A)<br/>身体独立于动作的计算量"]
+    A --> M3
+    X --> M4["MC_W = I(X',W'; X,W | A)<br/>Zahedi–Ay 形态计算指标"]
+    A --> M4
+    subgraph SYS["三类逐级复杂的系统"]
+        S1["线性模型<br/>SEA vs 本体感知传输"] --> S2["MuJoCo 单腿<br/>Go2 腿，非线性"] --> S3["全身四足<br/>PPO 速度跟踪 + 地形"]
+    end
+    S1 -->|"线性高斯信道闭式解"| E1["互信息解析计算"]
+    S2 -->|"能量度量白化状态"| E2["InfoNCE 估计<br/>可分离 critic g(w)ᵀh(x)"]
+    S3 --> E2
+    M1 -.-> SYS
+    M3 -.-> SYS
+```
+
+图依据：论文 §II（信息论指标）、§III–V（线性模型 / 单腿 / 全身四足）、Fig. 1–5
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +107,7 @@ summary: "机械智能信息论（arXiv:2609.19588）：把身体动力学视为
 - [mechanical-intelligence-info-theory_arxiv_2609_19588.md](../../sources/papers/mechanical-intelligence-info-theory_arxiv_2609_19588.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.19588](https://arxiv.org/abs/2609.19588)
+- [arXiv PDF](https://arxiv.org/pdf/2609.19588)：已通读方法部分（实验与附录以略读为准）：摘要、§II 信息论分析、§III 解析模型、§IV 单腿仿真、§V 全身仿真、§VI 讨论
 
 ## 推荐继续阅读
 

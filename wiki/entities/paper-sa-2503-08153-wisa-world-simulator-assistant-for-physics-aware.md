@@ -43,6 +43,32 @@ World simulator assistant for physics-aware text-to-video generation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph data["WISA-32K 数据构建（Fig. 3）"]
+    A["定义 17 种物理现象并人工收集 32000 段视频"] --> B["镜头检测与美学评分过滤"]
+    B --> C["Qwen2-VL 生成视频描述"]
+    C --> D["GPT-4o mini 基于描述标注物理信息"]
+    D --> E["文本物理描述"]
+    D --> F["定性物理类别（29 类）"]
+    D --> G["定量物理属性：密度 / 时间 / 温度"]
+  end
+  subgraph model["WISA 注入 CogVideoX（Fig. 4）"]
+    E -->|"与视频描述拼接"| H["T5 文本编码 + MM-DiT blocks"]
+    H --> I["Physical Module（仅插在最后一个 block 之后）"]
+    F -->|"随机扰动后作专家激活信号"| I
+    G -->|"科学计数法 + 线性映射 + 时间步嵌入，经 AdaLN 注入"| I
+    I --> J["Mixture-of-Physical-Experts Attention：一个注意力头对应一类物理现象"]
+    J --> K["输出投影，生成视频"]
+    I --> L["Physical Classifier 预测类别，多标签 BCE 监督"]
+  end
+  L --> M["总损失 = 扩散损失 + λ·Lpc / (1 + Lpc.detach)"]
+```
+
+图依据：论文 §3.1-§3.2 数据构建（Fig. 3）、§4 Method（Fig. 4，Eq. 1-3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ World simulator assistant for physics-aware text-to-video generation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.08153>
+- [arXiv PDF](https://arxiv.org/pdf/2503.08153)：已通读方法部分（实验与附录以略读为准）：§3 数据构建、§4 Method、§5.1 实验设定，其余实验与分析略读
 
 ## 推荐继续阅读
 

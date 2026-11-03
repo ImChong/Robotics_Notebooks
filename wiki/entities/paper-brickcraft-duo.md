@@ -39,6 +39,28 @@ summary: "BrickCraft-Duo（arXiv:2609.28281）：互锁积木双臂装配：可�
 - 纳入 [13 篇技术地图](../overview/embodied-13-papers-technology-map.md) 阅读坐标。
 - 开源结论（步骤 2.5，2026-09-24）：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Target["目标积木结构 B = {b1 … bN}"] --> Plan["稳定性感知装配规划<br/>反向 assembly-by-disassembly 启发式 DFS<br/>可行性 C = 连通 ∧ 可观测 ∧ 可操作 ∧ 稳定<br/>+ 连续同臂惩罚 J_alt"]
+    Plan --> Role{"插入载荷下结构是否稳定？<br/>（StableLEGO 受力分析）"}
+    Role -->|"稳定"| Single["R_sup = ∅：单臂步"]
+    Role -->|"不稳定"| Dual["另一臂作 R_sup：双臂协作步"]
+    Single --> P["装配计划 P = (η1 … ηN)<br/>每步含 b_att、b_ref、任务编码 τ、臂角色"]
+    Dual --> P
+    P --> Comp["图编译器 Γ(P, S)<br/>单臂步展开 Transit–Pick–Transit–UniAssembly<br/>双臂步展开 Transit–Pick–Transit + 支撑臂 Transit → CoAssembly"]
+    Lib["技能库 S：Pick / Transit / UniAssembly / CoAssembly<br/>σ = (R, Ξ, π, c_pre, c_post)"] --> Comp
+    Comp --> Graph["技能执行图 G（DAG）<br/>前驱完成且 c_pre 满足才激活节点"]
+    Graph --> Exec["执行：Transit 用运动规划，Pick 用预定义抓取<br/>UniAssembly / CoAssembly 用学习的闭环 diffusion policy"]
+    Demo["人类示范<br/>双边对称对齐：右臂镜像到左臂约定；<br/>CoAssembly 经角色交换 + 反射对齐"] --> Pol["共享策略<br/>输入：视觉（SAM 2 高亮 b_att / b_ref）、本体状态、τ"]
+    Pol --> Exec
+    Exec -->|"表现不佳的装配步"| Corr["人工 SpaceMouse 遥操作局部纠正<br/>成功后从更新状态继续自主执行"]
+    Corr -->|"纠正轨迹 + τ 与原示范合并，微调对应技能"| Pol
+```
+
+图依据：论文 §III-A–D 与 Fig. 1–4（规划、技能执行图、对称对齐学习、人类纠正微调）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -82,6 +104,7 @@ summary: "BrickCraft-Duo（arXiv:2609.28281）：互锁积木双臂装配：可�
 
 - [13 篇盘点（公众号）](../../sources/blogs/wechat_embodied_13_papers_forgetmimic_2026-09-24.md)
 - [BrickCraft-Duo: Efficient Dual-Arm Skill Learning and Refinement for Compositional Long-Horizon Assembly](../../sources/papers/brickcraft-duo_arxiv_2609_28281.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.28281)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法（A–D）、§IV-A 实现细节（略读其余实验）
 
 ## 推荐继续阅读
 

@@ -41,6 +41,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  subgraph env["环境：Pantheon 仿真器（每个 actor 一个，随机网络场景）"]
+    SENDER["MVFST 发送端\nQUIC + RL 拥塞控制器"]
+    RECV["接收端"]
+    SENDER -->|"数据包"| RECV
+    RECV -->|"ACK"| SENDER
+  end
+  SENDER -->|"100ms 窗口网络统计 + 历史动作\n异步 RPC 状态更新"| ACTOR["TorchBeast actor\n执行模型"]
+  ACTOR -->|"cwnd 更新动作\n异步下发，不阻塞发送端"| SENDER
+  ACTOR -->|"完整轨迹\n30s 一个 episode"| LEARNER["IMPALA learner\nV-trace 离策略修正"]
+  LEARNER -->|"更新策略参数"| ACTOR
+  LEARNER --> EXPORT["训练后导出 TorchScript\n在 C++ 主机内直接运行，无需 RPC"]
+```
+
+图依据：论文 §3（状态/动作/奖励）、§4 / Fig.2b（训练架构）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +114,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1910.04054>
+- [arXiv PDF](https://arxiv.org/pdf/1910.04054)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 带延迟动作的 MDP、§4 MVFST-RL 框架、§5 实验设置
 
 ## 推荐继续阅读
 

@@ -44,6 +44,29 @@ summary: "HUMANUP：两阶段 RL：先发现起身轨迹再 refine 为可部署�
 - Light REACT 韧性金字塔 L2「跌倒后起身恢复行走」的直接前序。
 - 博客 ingest 独立节点（非重复 stub）；见 [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    TASK["任务分解<br/>仰卧：起身；俯卧：先翻身到仰卧，再起身"]
+    subgraph S1["Stage I：Discovery Policy f（发现阶段）"]
+        I1["弱正则 + 简化碰撞网格<br/>固定规范初始姿态、平地、混入站立姿态"]
+        I2["PPO 训练<br/>仅任务奖励（高度 / 直立 / 双脚站立 / 足力 / 软对称）<br/>或翻身奖励（重力投影）"]
+        I1 --> I2
+    end
+    TASK --> S1
+    S1 --> TRAJ["发现的起身 / 翻身状态轨迹<br/>放慢 8 倍"]
+    TRAJ --> S2
+    subgraph S2["Stage II：Deployable Policy π（可部署阶段）"]
+        J1["完整 URDF 碰撞网格<br/>20K 仰卧 + 20K 俯卧随机初始姿态<br/>地形随机化"]
+        J2["PPO 训练：跟踪奖励（DoF / 身体）<br/>+ 强控制正则（平滑、DoF 速度惩罚等）"]
+        J1 --> J2
+    end
+    S2 --> DEP["Sim2Real 部署到 Unitree G1<br/>输入：本体感觉 + 10 步历史 + 环境隐变量 z_t（正则化在线适应）<br/>输出：23 DoF 的 PD 目标，50 Hz"]
+```
+
+图依据：论文 §III（Fig.2、§III-A Policy Architecture、§III-B Two-Stage Policy Learning、§III-C Stage I to Stage II Curriculum）与 §IV Implementation Details。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -97,6 +120,7 @@ summary: "HUMANUP：两阶段 RL：先发现起身轨迹再 refine 为可部署�
 - [humanup_getting_up_arxiv_2502_12152.md](../../sources/papers/humanup_getting_up_arxiv_2502_12152.md)
 - [lightorigins_light_react_2026-09-09.md](../../sources/blogs/lightorigins_light_react_2026-09-09.md)
 - [Tech Blog](https://www.lightorigins.com/blog/light-react)
+- [arXiv PDF](https://arxiv.org/pdf/2502.12152)：已通读方法部分（实验与附录以略读为准）：§III HumanUP（A–C）、§IV 实现细节、§V-A/B 任务与基线设置
 
 ## 推荐继续阅读
 

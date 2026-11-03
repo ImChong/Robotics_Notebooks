@@ -43,6 +43,33 @@ Self-evolving world model for vision-and-language navigation in continuous envir
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph WAN["World-Aware Navigator（推断网络，基于 RSSM）"]
+        direction TB
+        OBS["观测 o_t（视觉编码器 e_φ → 视觉特征 x_t）<br/>+ 语言指令"] --> POST["后验 q(s_t | o_1:t, a_1:t-1)<br/>MLP 参数化 Gaussian (μ_φ, σ_φ)"]
+        ACTE["动作 a_t = Δposition<br/>线性映射为嵌入（训练时用真值动作）"] --> POST
+        H["确定性历史 h_t（循环模块）"] --> CEMR
+        CEMR["Contextual Evolution Memory (CEM)<br/>余弦相似度检索 top-K 场景特征<br/>h̃_t = (1-α)h_t + αΣμ_k v_k"] --> H2["增强后的确定性状态 h̃_t"]
+        H2 --> POST
+        H2 -.->|"前向更新 v_k ← (1-β)v_k + β h_t<br/>无需梯度反传，测试时在线进行"| CEMR
+    end
+    subgraph FAP["Foresight Action Planner（预测网络）"]
+        direction TB
+        PRI["先验 p(ŝ_t | h_t, ŝ_t-1)<br/>Gaussian (μ_θ, σ_θ)"] --> PA["策略 π_θ(h, ŝ) 预测动作 â"]
+        PA --> NXT["f_θ 更新 h，递推 T_p 步<br/>（无需观测）"]
+        NXT --> PRI
+        NXT --> DEC["视觉解码器 d_θ 重建视觉嵌入 x̂<br/>动作解码器预测 â"]
+    end
+    H2 --> PRI
+    POST --> LOSS
+    DEC --> LOSS["训练损失 L = L_W + L_IL<br/>L_W = 重建 ℓ_re + 动作预测 ℓ_ac（含 NDTW 正则、L2）+ γ·KL(后验‖先验)"]
+```
+
+图依据：论文 §3.1 World-Aware Navigator、§3.2 Foresight Action Planner、§3.3 训练目标、§3.4 Working Modes / Fig.3（世界模型架构）、Eq.1–6；子图内箭头 H→CEM→h̃ 依 Eq.2–3 文字归纳。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +125,7 @@ Self-evolving world model for vision-and-language navigation in continuous envir
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.23468>
+- [arXiv PDF](https://arxiv.org/pdf/2506.23468)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4
 
 ## 推荐继续阅读
 

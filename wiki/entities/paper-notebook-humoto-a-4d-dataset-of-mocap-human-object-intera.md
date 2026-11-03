@@ -37,6 +37,23 @@ summary: "人-物交互（HOI）数据「录得真、标得准」一直很难：
 - **LLM 编剧的「目的性任务序列」**思路与人形「语言指令→长时程操作」高度契合，可为任务级数据合成提供范式；
 - 与本仓库 [WHOLE](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos.html)、[Efficient and Scalable Monocular HOI](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction.html) 的「人-物交互重建」形成数据侧互补。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["Scene-Driven LLM Scripting<br/>按物体构成概念性房间，LLM 生成场景内连贯的交互脚本 §3.1"]
+    O["63 件日常物体、72 个功能部件<br/>由专业美术建模 (含可动部件与可抓取表面) §3.2"]
+    O --> S
+    S --> CAP["动作捕捉 §3.2<br/>Rokoko 动捕服与手套 30 fps，表演者按脚本执行<br/>转换到 Mixamo 骨架"]
+    CAP --> OBJ["物体跟踪: 双 Kinect + FoundationPose 估计 6DoF 位姿<br/>基于掩码像素差的动态重置 + SAM2 配合人工标注掩码"]
+    OBJ --> ALIGN["时间同步 (UDP 指令) + 空间对齐<br/>标定板建立共同坐标系，起始标定站姿"]
+    ALIGN --> QA["两阶段质量保证 §3.3<br/>美术师修复漂移与跟踪误差 ⇄ 独立团队核验 (抖动、脚滑)<br/>迭代至达标"]
+    QA --> ANN["文本标注: 标题 + 短脚本 + 长脚本"]
+    ANN --> DATA["HUMOTO: 人体动作 + 物体轨迹 + 手部姿态 + 接触图 + 多级文本"]
+```
+
+图依据：论文 §3 数据采集（Fig.2、Fig.4、Fig.5 所示流程）；本页为数据集，图描述其论文自述的构建流程而非算法。
+
 ## 解决什么问题
 
 现有人-物交互数据集普遍存在三类痛点：
@@ -91,6 +108,7 @@ summary: "人-物交互（HOI）数据「录得真、标得准」一直很难：
 - [humanoid_pnb_humoto.md](../../sources/papers/humanoid_pnb_humoto.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions.html>
 - 论文：<https://arxiv.org/abs/2504.10414>
+- [arXiv PDF](https://arxiv.org/pdf/2504.10414)：已通读方法部分（实验与附录以略读为准）：§3 数据采集与标注流程；§4 数据集分析略读，附录未读
 
 ## 推荐继续阅读
 

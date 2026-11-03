@@ -42,6 +42,29 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Grounding Methods。 本
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PRE["预训练策略 π 于仿真 E_sim，共 M 轮"] --> ROLL["每个迭代：π 分别在 E_sim 与 E_real 中 rollout<br/>数据存入 D_sim、D_real"]
+    ROLL --> UPD["更新动作变换函数 g<br/>前向模型 f 用 D_real，MSE 损失<br/>逆向模型 h 用 D_sim，交叉熵损失"]
+    UPD --> LOOP
+    subgraph LOOP["策略训练 E 轮"]
+        direction TB
+        A["策略给出动作 a_t = π(s_t)"] --> G["g 输出 grounded 动作 â_t 与不确定性 u_t<br/>â_t = h(f(s_t, a_t), s_t)，EDL 为默认不确定性估计"]
+        G --> CHK{"u_t 小于 grounding rate α ?"}
+        CHK -->|"是"| TAKE["在 E_sim 中执行 â_t"]
+        CHK -->|"否"| REJ["拒绝 â_t，执行原动作 a_t"]
+        TAKE --> RL["强化学习更新策略 π"]
+        REJ --> RL
+    end
+    LOOP --> ALPHA["用最近 E 轮记录的 u_t 均值更新 α"]
+    ALPHA -.-> ROLL
+    ALPHA --> DEP["部署：策略迁移到真实环境 E_real"]
+```
+
+图依据：论文 §III Methods（A. Vanilla GAT、B. Uncertainty-aware GAT、C. Training Algorithm）/ Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Grounding Methods。 本
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2307.12388>
+- [arXiv PDF](https://arxiv.org/pdf/2307.12388)：已通读方法部分（实验与附录以略读为准）：§I-II 背景、§III Methods（含 Algorithm 1）；§IV 实验仅略读
 
 ## 推荐继续阅读
 

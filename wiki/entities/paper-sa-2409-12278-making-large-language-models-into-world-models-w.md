@@ -42,6 +42,34 @@ Transforms LLMs into world models using precondition and effect knowledge.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["语料构建：global-local prompting（GPT-4，五步）"]
+        D1["1 生成完整行动计划"] --> D2["2 局部：丢弃孤立步骤、可补充步骤"]
+        D2 --> D3["3 为每步同时生成前置条件与效果"]
+        D3 --> D4["4 局部：找出链接弱的步骤，重生成一次并选择性丢弃"]
+        D4 --> D5["5 全局：按未被覆盖比例过滤样本（丢弃最高 5%）"]
+    end
+    D5 --> M1["微调 LLM：前置条件推理（动作→前置条件）"]
+    D5 --> M2["微调 LLM：效果推理（动作→效果）"]
+    subgraph WM["世界模型（自然语言状态）"]
+        subgraph VA["有效动作预测"]
+            V1["动作 → 前置条件推理模块"] --> V2["语义匹配模块（GPT-4）：前置条件是否都被当前状态覆盖"]
+            V2 --> V3["判定该动作是否有效"]
+        end
+        subgraph ST["状态转移预测"]
+            S1["动作 → 效果推理模块"] --> S2["语义匹配模块（GPT-4）：找出与效果矛盾的状态部分"]
+            S2 --> S3["旧状态删除矛盾部分并加入效果 → 新状态"]
+        end
+    end
+    M1 --> V1
+    M2 --> S1
+```
+
+图依据：论文 §3.1–3.3（全局-局部提示五步、语义状态匹配、世界模型应用）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Transforms LLMs into world models using precondition and effect knowledge.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2409.12278>
+- [arXiv PDF](https://arxiv.org/pdf/2409.12278)：已通读方法部分（实验与附录以略读为准）：§2 相关工作略读、§3.1 前置条件/效果推理模块、§3.2 语义状态匹配、§3.3 世界模型应用
 
 ## 推荐继续阅读
 

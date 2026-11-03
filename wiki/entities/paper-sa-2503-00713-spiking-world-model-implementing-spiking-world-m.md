@@ -42,6 +42,29 @@ Implements spiking world models with multi-compartment neurons for MBRL.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["观测 O[t]"] --> SC["LIF 脉冲卷积网络 SCNN，得到 S_ob[t]"]
+    ZA["上一步 Z[t-1] 与动作 A[t-1]"] --> FC["全连接 LIF-SNN，得到序列模型输入 S_in[t]"]
+    FC --> MCN["MCN 序列模型：基底树突 V_b、顶端树突 V_a、胞体 U"]
+    MCN --> NOTE["V_a 经 Sigmoid 门控 z，调制 V_b 与胞体输入对 U 的贡献"]
+    MCN --> SH["脉冲状态 S_h[t]（含递归反馈）"]
+    SC --> POST["后验 Z[t] ~ q(S_ob, S_h)"]
+    SH --> POST
+    SH --> PRIOR["先验 Ẑ[t] ~ p(S_h)"]
+    SH --> HEADS["预测头：奖励 R̂、continue Ĉ、脉冲反卷积解码器 Ô"]
+    POST --> HEADS
+    SH --> AC["SNN Actor-Critic：输入 S_h 与 Z"]
+    POST --> AC
+    HEADS --> LOSS["损失：预测损失 + KL(后验, 先验)；Critic 用 λ-return"]
+    AC --> LOSS
+    LOSS --> BP["STBP 训练，脉冲发放处用代理梯度"]
+```
+
+图依据：论文 §III-C（Sequential Nonlinear Dendritic Integration for MCN）、§III-D（Spiking World Model，Fig. 1(b)，式 4–26）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Implements spiking world models with multi-compartment neurons for MBRL.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.00713>
+- [arXiv PDF](https://arxiv.org/pdf/2503.00713)：已通读方法部分（实验与附录以略读为准）：§III-B 至 §III-D（含 Fig. 1 与式 1–26）；§IV 实验以略读为准
 
 ## 推荐继续阅读
 

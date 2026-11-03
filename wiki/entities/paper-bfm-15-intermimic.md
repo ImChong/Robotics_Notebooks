@@ -42,6 +42,35 @@ sources:
 - 从纯身体动作走向人-物交互与接触结果。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#15/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    MOCAP["不完美的 HOI MoCap 数据<br/>OMOMO / BEHAVE / HODome / IMHD / HIMO"] --> SUB["按 subject 划分的小规模技能子集"]
+    SUB --> TEA["阶段一：teacher policies π(T)<br/>每个 subject 一个，MLP，PPO 训练"]
+    subgraph TRAIN["teacher 训练设计（§3.2）"]
+        RW["奖励：embodiment-aware<br/>+ embodiment-agnostic（物体 / 接触跟踪）"]
+        PSI["Physical State Initialization (PSI)<br/>初始化缓冲区 FIFO"]
+        IET["Interaction Early Termination (IET)"]
+        HID["Hand Interaction Discovery<br/>参考接触标记 + 手部 RoM 约束"]
+    end
+    TRAIN --> TEA
+    TEA --> RET["统一到 canonical 人体模型<br/>(imitation as retargeting)"]
+    TEA --> ROLL["teacher rollout：状态 s(T) 与动作 a(T)"]
+    ROLL -->|"Reference Distillation<br/>精修后的 HOI 参考 → 学生 goal state 与奖励"| STU
+    ROLL -->|"Policy Distillation<br/>动作 a(T)"| STU
+    subgraph DIS["阶段二：Distillation with RL fine-tuning（Algorithm 1）"]
+        STU["student policy π(S)<br/>Transformer，关键帧 K={1,2,4,16}"]
+        SCH["DAgger 权重按 β 调度<br/>逐步过渡到 PPO"]
+        SCH --> STU
+    end
+    STU --> OUT["单一策略覆盖大规模 HOI 技能"]
+    OUT --> KIN["接入 kinematic generators<br/>text-to-HOI / 交互预测"]
+    OUT --> G1["Unitree G1 + Inspire 手的 retargeting 演示<br/>(Fig.1 / 补充 §F)"]
+```
+
+图依据：论文 §3 Methodology（Overview、§3.1 Policy Representation、§3.2 Imitation as Perfecting、§3.3 Imitation with Distillation、§3.4 Architecture、Algorithm 1）与 §4 Implementation Details / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +127,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2502.20390>
+- [arXiv PDF](https://arxiv.org/pdf/2502.20390)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Methodology（3.1–3.4、Algorithm 1）、§4 的数据集 / 基线 / 实现细节
 
 ## 推荐继续阅读
 

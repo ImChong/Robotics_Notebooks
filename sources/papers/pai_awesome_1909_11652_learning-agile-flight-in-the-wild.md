@@ -6,8 +6,8 @@
 - **分组：** Sim-to-Real
 - **编号：** 333/384
 - **入库日期：** 2026-09-20
-- **arXiv：** 1909.11652
-- **主链接：** <https://arxiv.org/abs/1909.11652>
+- **arXiv：** 2110.05113
+- **主链接：** <https://arxiv.org/abs/2110.05113>
 - **代码：** 未在清单中标注
 - **清单摘要：** Sim-to-real pipeline for high-speed quadrotor control under real-world disturbances.
 - **沉淀到 wiki：** [`wiki/entities/paper-pai-1909-11652-learningagileflightinthewild.md`](../../wiki/entities/paper-pai-1909-11652-learningagileflightinthewild.md)

@@ -42,6 +42,31 @@ Gen2Act turns a language instruction and an initial scene image into a generated
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练（离线）"]
+        T1["机器人轨迹数据集 Dr + 语言任务 G"] --> T2["预训练视频生成模型 V(I0, G)：以轨迹首帧 + 语言生成人类视频，得 Dg"]
+        T2 --> T3["现成点跟踪模型：在 Vg 上提取点轨迹 τg，在机器人观测上提取 τr"]
+    end
+    subgraph POL["人类视频到机器人动作的翻译策略 πθ(I_t-k:t, Vg)"]
+        P1["ViT 编码器 χ：生成视频帧特征 ig、机器人最近 k 帧特征 ir"] --> P2["Perceiver-Resampler 式 Transformer Φg / Φr：压成各 64 个 token zg / zr"]
+        P2 --> P3["策略 Transformer：融合 zg、zr 等 → 动作（每维 256 个离散 bin）"]
+        P3 --> P4["行为克隆损失 BC：交叉熵"]
+        P2 -.->|"仅训练时"| P5["轨迹预测 Transformer ψg / ψr → 辅助损失 Lτ"]
+    end
+    T2 --> P1
+    T3 -.-> P5
+    subgraph INF["部署"]
+        D1["新场景图像 I0 + 语言目标 G"] --> D2["V(I0, G) 零样本生成人类视频 Vg"]
+        D2 --> D3["闭环执行 πθ（不用轨迹预测）"]
+        D3 -->|"长程任务：LLM 拆分子任务，上一轮末帧作下一段生成的首帧"| D2
+    end
+```
+
+图依据：论文 §III-A–D、Fig.2（“策略 Transformer 融合 zg、zr”这一中间节点为按文意的简化概括，论文正文未逐层展开其结构）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +123,7 @@ Gen2Act turns a language instruction and an initial scene image into a generated
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2409.16283>
+- [arXiv PDF](https://arxiv.org/pdf/2409.16283)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（概览、人类视频生成、翻译策略、部署）
 
 ## 推荐继续阅读
 

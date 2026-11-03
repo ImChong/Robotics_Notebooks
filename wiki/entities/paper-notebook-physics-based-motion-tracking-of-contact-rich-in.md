@@ -31,7 +31,29 @@ Physics-Based Motion Tracking of Contact-Rich Interacting Characters 的人形�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」（依据论文方法部分）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[参考动作片段数据集] --> B["动作采样：按近期平均跟踪奖励<br/>Softmax(-r_track / T) 调整片段采样概率"]
+    B --> C["观测：人形状态 s_t（局部身体位置、线速度）<br/>+ 目标状态 g_t+1（位置/旋转/速度/关节偏差）"]
+    C --> D["专家 π0：3 层 MLP<br/>先在全数据集上训练，其余专家冻结"]
+    C --> G["Gating Network f_g<br/>Sigmoid 输出各专家置信度 r̃_k（预测奖励）"]
+    D --> H["新专家 π_k 通过 lateral adapters<br/>读取已冻结专家的特征，学习残差动作偏移"]
+    G --> I["Progressive Sampling<br/>β_k = max(1, r̃_k / r̃_k-1)<br/>预测奖励最低的样本路由给新专家"]
+    I --> H
+    D --> J["动作 = 各专家输出之和<br/>π_k = Σ π_i"]
+    H --> J
+    J --> K[动作作为 PD 控制器目标 → 关节力矩]
+    K --> L[物理仿真环境：下一状态 + 跟踪奖励 + 能量惩罚]
+    L --> B
+    L --> N["PPO 更新：同一时刻只激活一个专家<br/>屏蔽冻结专家的 log σ，另加 adapter 使用损失"]
+    N -.r̃_0 增长停滞时激活下一个专家.-> H
+```
+
+图依据：论文 §3.1、§3.2 / Fig.2。
 
 ## 核心信息
 
@@ -64,6 +86,7 @@ Physics-Based Motion Tracking of Contact-Rich Interacting Characters 的人形�
 - [humanoid_pnb_physics-based-motion-tracking-of-contact-rich-in.md](../../sources/papers/humanoid_pnb_physics-based-motion-tracking-of-contact-rich-in.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2604.07984>
+- [arXiv PDF](https://arxiv.org/pdf/2604.07984)：已通读方法部分（实验与附录以略读为准）：§3.1、§3.2、Fig.2
 
 ## 推荐继续阅读
 

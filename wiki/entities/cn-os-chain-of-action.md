@@ -55,6 +55,48 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：训练 `python scripts/train.py task=<task>`；评测 `bash scripts/eval.sh task=<task>`（内部先 `scripts/download_pretrained_model.py`、`scripts/download_dataset.py`，再 `xvfb-run -a python scripts/eval.py snapshot=...`）。
+
+```mermaid
+sequenceDiagram
+    participant U as scripts/train.py · eval.py (hydra main)
+    participant W as src/workspace.py<br/>Workspace
+    participant D as RLBenchDataset<br/>(src/dataset)
+    participant A as CoA (src/methods/coa/coa.py)
+    participant AM as ActorModel + transformer.py
+    participant E as RLBench 评测环境<br/>(RLBenchEnvFactory.make_eval_env)
+
+    U->>W: Workspace(cfg, train)；eval.py 先 torch.load(snapshot) 并并入 ckpt 配置
+    W->>D: env_factory._load_demos → RLBenchDataset(seq_len=action_sequence)（仅 train）
+    W->>A: hydra.utils.instantiate(cfg.method)；有 snapshot 则 load_snapshot
+    W->>E: make_eval_env(cfg)
+    alt 训练：train.py → workspace.loop()
+        loop num_train_steps
+            W->>D: 下一批 batch (RandomSampler)
+            W->>A: agent.update(batch)
+            A->>AM: forward(training=True)：encoder_model 取图像特征 → actor_model(obs_feat, proprio, a_gt, is_pad)
+            AM-->>A: a_hat, x_hat, x_gt
+            A->>A: _compute_loss (action_loss + latent_loss) → backward / opt.step
+            W->>W: 每 eval_every_steps 调 eval()；每 save_every_steps 调 save_snapshot()
+        end
+    else 评测：eval.py → workspace.eval()
+        loop 每个 episode (low_dim_obs.pkl)
+            W->>E: eval_env.reset_to_demo(pkl)
+            loop 直到 termination / truncation
+                W->>A: agent.act(obs)（_perform_env_steps）
+                A->>AM: forward(training=False) → a_hat；按 action_order 翻转/滚动
+                A-->>W: 动作序列 (Batch, T, action_dim)
+                W->>E: env.step(action)
+            end
+        end
+        W->>W: 汇总 success_rate 等指标并记录
+    end
+```
+
+图依据：ByteDance-Seed/Chain-of-Action@49d0710，读过 README.md、scripts/eval.sh、scripts/eval.py、scripts/train.py、src/cfgs/launch.yaml（前 50 行）、src/workspace.py、src/methods/coa/coa.py（forward/act/_compute_loss/update 与 ActorModel.forward）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +108,7 @@ institutions:
 - [Chain-of-Action 源码归档](../../sources/repos/chain-of-action.md)（<https://github.com/ByteDance-Seed/Chain-of-Action>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：ByteDance-Seed/Chain-of-Action@49d0710，读过 README.md、scripts/eval.sh、scripts/eval.py、scripts/train.py、src/cfgs/launch.yaml（前 50 行）、src/workspace.py、src/methods/coa/coa.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

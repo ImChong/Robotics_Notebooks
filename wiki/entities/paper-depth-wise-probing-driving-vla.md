@@ -41,6 +41,28 @@ summary: "智驾 VLA 规划 token 逐层探针：导航意图与规划信息在�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  CAM["6 路环视相机"] --> BB["视觉骨干 + 感知头<br/>(QT-Former)"]
+  BB --> TOK["感知 tokens<br/>(目标/地图 query)"]
+  TOK --> DEC["32 层 LLM decoder"]
+  PROMPT["固定文本 prompt<br/>(不含导航指令)"] --> DEC
+  DEC --> PT["末层 planning token"]
+  PT --> PL["冻结 generative planner<br/>(CVAE + 循环网络)"]
+  PL --> WP["6 个 waypoint (3 s)"]
+  DEC -. "读取第 ℓ 层 planning token" .-> NORM["final norm"]
+  NORM --> PL
+  DEC -. "各层 hidden state" .-> LP["线性探针<br/>6 类导航指令"]
+  DEC --> RANK["按 planning token 输入/输出 cosine 排序"]
+  RANK --> PRUNE["剪掉 cosine 最高的 8/32 层<br/>decoder 提速 1.33x"]
+  DEC -. "第 1 层表示" .-> RD["学习式读出<br/>(MLP adapter / resampler)"]
+  RD --> PL
+```
+
+图依据：论文 Fig. 1、§3 Background、§4 Probing、§7 Pruning、§9（虚线为论文的逐层探针与第 1 层学习式读出路径）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -88,6 +110,7 @@ summary: "智驾 VLA 规划 token 逐层探针：导航意图与规划信息在�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.07361](https://arxiv.org/abs/2608.07361)
+- [arXiv PDF](https://arxiv.org/pdf/2608.07361)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Background、§4 Probing、§5–§9
 
 ## 推荐继续阅读
 

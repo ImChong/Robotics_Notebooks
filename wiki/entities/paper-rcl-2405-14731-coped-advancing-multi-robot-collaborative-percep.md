@@ -42,6 +42,36 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["采集平台：3 台地面机器人 + 2 台空中机器人<br/>ROS 1，5G Wi-Fi 子网，NTP 时间同步"] --> B["场景序列<br/>室内 Indoor-NYUARPL / 室外 HOUSE、FOREST<br/>机器人队拆成「1 空 + 1 地」子队"]
+  B --> C["原始多模态数据流<br/>相机 / LiDAR / IMU / GPS，多速率"]
+  C --> D["标定"]
+  D --> D1["空中机器人：Kalibr<br/>相机与 IMU 内外参"]
+  D --> D2["地面机器人：graph-based 多传感器标定<br/>Ouster LiDAR 为根坐标系"]
+  D --> D3["空地标定：<br/>标定板对齐前向相机外参"]
+  D1 --> E["位姿估计"]
+  D2 --> E
+  D3 --> E
+  E --> E1["空中：GPS + OpenVINS 双目 VIO"]
+  E --> E2["地面：IMU + 轮式里程计"]
+  E --> E3["跨机器人相对位姿：<br/>AprilTag bundle + PnP"]
+  C --> F["可选高层感知标注（零样本）"]
+  F --> F1["语义：RAM + Grounding DINO + SAM<br/>得 2D 实例掩码，再后处理出 2D 框"]
+  F1 --> F2["时序传播：关键帧分割传播到后续帧"]
+  F --> F3["深度：ZoeDepth 单目零样本深度"]
+  E1 --> G["数据集内容：原始传感器流 + 位姿 + 可选标注"]
+  E2 --> G
+  E3 --> G
+  F2 --> G
+  F3 --> G
+  G --> H["用途演示：GNN 特征图通信的<br/>协同深度估计 / 语义分割（传感器被破坏的场景）"]
+```
+
+图依据：数据采集与标注流程图，依据论文 §III（平台与序列）、§IV（标定）、§V（位姿估计与零样本标注）、§VII（用途演示）；箭头顺序按论文章节顺序与 §I 对贡献的叙述归纳，论文未单独给出总流程图。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +128,7 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://ieeexplore.ieee.org/document/10540310/>
+- [arXiv PDF](https://arxiv.org/pdf/2405.14731)：已读与流程图相关的章节（其余部分以略读为准）：§I、§III（数据集描述）、§IV（标定）、§V（标注）、§VI（数据集属性）、§VII（用例）、§VIII；Tab. I–IV 与 Fig. 2–8 略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,36 @@ Controllable world creation with simulator and generative models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph ST1["Stage-1 仿真：物理仿真器构造场景"]
+        REC["场景记录 scene record<br/>智能体运动来自轨迹回放或训练好的策略"] --> SIM["仿真器渲染驾驶帧"]
+        SIM --> SL["按像素语义分解为 Sim-LWA（分层世界抽象）"]
+    end
+    subgraph LWA["LWA：W = ∪ L_i ⊙ V_i（各层含 K 种条件模态）"]
+        LD["交通参与者层 L_d（仿真器，保留）"]
+        LL["地图布局层 L_l（仿真器，保留）"]
+        LB["背景层 L_b（可编辑）"]
+    end
+    SL --> LWA
+    subgraph ST2["Stage-2 LWA-Sim2Real"]
+        ED["指令式编辑模型 ε_e（基于 ACE++）：<br/>在保留 L_d、L_l 的前提下按文本指令 c 改写背景层 L_b"] --> RL["Real-LWA（贴近真实分布，同时保留仿真器接地信息）"]
+    end
+    LD --> ED
+    LL --> ED
+    LB --> ED
+    subgraph ST3["Stage-3 混合条件生成"]
+        ENC["编码器 E 编码 K 种条件 → 通道拼接 → 线性层 ξ 投影"] --> ADD["与噪声 latent 相加 x' = x + ξ(⊕E(c_j))"]
+        ADD --> GEN["预训练条件生成模型（Flux Depth）<br/>仅微调投影层 ξ → 真实感图像/视频"]
+    end
+    RL --> ENC
+    GEN --> OUT["可控、逼真的驾驶场景"]
+```
+
+图依据：论文 §3 概述、§3.1–3.4 / Fig.2（三阶段）与式(1)–(6)；两步训练见 §3.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +127,7 @@ Controllable world creation with simulator and generative models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.08006>
+- [arXiv PDF](https://arxiv.org/pdf/2506.08006)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4 方法
 
 ## 推荐继续阅读
 

@@ -41,6 +41,26 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INIT["初始化乐观估计 Q_up 与悲观估计 Q_low<br/>以及奖励、转移计数"] --> EP
+    subgraph EP["每个 episode k"]
+        direction TB
+        P1["第 1 部分：采样轨迹并更新模型估计"] --> POL["对每一步 h：<br/>agent 策略 π = argmax Q_up<br/>对手策略 π_adv = argmin Q_low"]
+        POL --> MIX["行为策略 = 以 1 减 ρ 的概率用 π<br/>以 ρ 的概率用对手动作"]
+        MIX --> STEP["执行动作 观察奖励与下一状态<br/>更新计数 N、经验奖励、经验转移 P_hat"]
+        STEP --> CERT["输出策略 π^k 及 certificate<br/>区间 V_up(s1) 与 V_low(s1)<br/>若区间更小则更新 π_out"]
+        CERT --> P2["第 2 部分：由 P_hat 做带 bonus 的价值迭代<br/>h 从 H 倒推到 1"]
+        P2 --> VAL["更新 Q_up 与 Q_low<br/>V = 1 减 ρ 加权的 agent 动作 Q 加 ρ 加权的对手动作 Q"]
+    end
+    VAL -.->|"下一 episode"| EP
+    EP --> OUT["输出 π_out"]
+```
+
+图依据：论文 §5 Algorithm and main results、§5.1 Algorithm description / Algorithm 1 ARRLC
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +115,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Uncertainty。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2307.07666>
+- [arXiv PDF](https://arxiv.org/pdf/2307.07666)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Problem formulation、§4 Action robust Bellman 方程、§5 Algorithm and main results（含 Algorithm 1）；§6 证明概要、实验与附录仅略读
 
 ## 推荐继续阅读
 

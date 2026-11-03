@@ -40,6 +40,28 @@ Sim-to-real visual adaptation method for narrowing sensor-domain gaps.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    SIM["仿真器（黑盒）<br/>合成图像 x（带标注）"] --> R["Refiner R_θ<br/>全卷积，无 stride / pooling"]
+    R --> XR["精炼图像 x̃ = R_θ(x)"]
+    XR --> REG["自我正则损失 ℓ_reg<br/>λ·‖ψ(x̃) − ψ(x)‖₁（默认 ψ 为恒等）"]
+    SIM --> REG
+    XR --> BUF[("精炼图像历史缓冲区<br/>每次 b/2 取自当前 R，b/2 取自缓冲区")]
+    BUF --> D["Discriminator D_φ<br/>全卷积，输出 w×h 局部块概率图"]
+    XR --> D
+    REAL["无标注真实图像 y"] --> D
+    D --> LD["L_D：区分真实 vs 精炼<br/>(局部块交叉熵求和)"]
+    D --> ADV["对抗损失 ℓ_real = −log(1 − D_φ(R_θ(x)))"]
+    ADV --> LR["L_R = ℓ_real + λ·ℓ_reg"]
+    REG --> LR
+    LR -.->|"固定 φ，更新 θ（交替训练）"| R
+    LD -.->|"固定 θ，更新 φ（交替训练）"| D
+```
+
+图依据：论文 §2.1–2.3、Fig. 2–4 与 Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +125,7 @@ Sim-to-real visual adaptation method for narrowing sensor-domain gaps.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/1612.07828>
+- [arXiv PDF](https://arxiv.org/pdf/1612.07828)：已通读方法部分（实验与附录以略读为准）：§1 引言（Fig. 2 概览）、§2.1 对抗损失与自我正则、§2.2 局部对抗损失、§2.3 精炼图像历史缓冲、§3 实验设定
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ summary: "WAVE-Go（arXiv:2609.18193）：按累计失败风险选 4/8/16 步最
 
 - 轮足导航需在 walk/drive 间切换；世界模型前缀执行降低盲目长 horizon 风险。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多模态上下文<br/>观测历史 / 目标图像 / 可选语言 / 机器人状态与能力"] --> B["语义推理器 Qwen-3-VL<br/>输出结构化任务状态 c_t"]
+    A --> C["视觉编码 + 运动 token μ_t"]
+    B --> D["上下文融合 (cross-attention)<br/>目标 / 推理状态 / 运动 token"]
+    C --> D
+    D --> E["联合 world-action 预测<br/>未来潜状态 + 动作 chunk + 模式 + 辅助线索"]
+    E --> F["条件风险前缀选择<br/>候选长度 K = 4/8/16, 风险预算 δ"]
+    F --> G["可中断执行<br/>逐命令检查 clearance / 观测新鲜度 / 任务变化 / 预测残差"]
+    G -->|通过| H["Go2-W 混合命令: 驱动 + 姿态 + 离散模式事件"]
+    G -->|违规: 取消剩余命令| I["停止, 重新感知并重新预测"]
+    H -->|前缀用尽 / 姿态或模式事件| E
+    I --> A
+    J["证据门控的模式转换 G_mode<br/>新鲜度 / 稳定 / clearance / 目标证据 / 控制器有效"] -.-> G
+```
+
+图依据：论文 §IV-B–G（式 4–11）/ Fig. 1
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -85,6 +105,8 @@ summary: "WAVE-Go（arXiv:2609.18193）：按累计失败风险选 4/8/16 步最
 - [wave-go_arxiv_2609_18193.md](../../sources/papers/wave-go_arxiv_2609_18193.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.18193](https://arxiv.org/abs/2609.18193)
+- [arXiv PDF](https://arxiv.org/pdf/2609.18193)：已通读方法部分（实验与附录以略读为准）：§IV 方法（A 预测器适应、B 多模态上下文、C 世界-动作学习、D 混合命令、E 条件风险前缀选择、F 证据门控转换、G 多速率执行）、§V-A 实验设定
+
 
 ## 推荐继续阅读
 

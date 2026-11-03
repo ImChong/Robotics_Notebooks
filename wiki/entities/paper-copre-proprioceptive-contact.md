@@ -35,6 +35,31 @@ summary: "CoPRE（2609.27381）：学习无接触力矩响应 + 噪声加权残�
 - 纳入 [12 篇技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md) 与同期失败恢复、异步 WAM、接触感知、持续学习、安全 RL 条目横向对照。
 - 步骤 2.5 开源结论：**部分/待核实代码**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph A["(A) 训练与标定：仅用无接触运动"]
+        Rec["录制无接触运动<br/>状态 x_t = (q, q̇, τ) 与指令 u_t = (q_cmd, q̇_cmd)"] --> Train["训练 transformer 预测器<br/>由 L 步历史预测后 H 步状态<br/>损失 L = ℓ_τ + α_q ℓ_q + α_q̇ ℓ_q̇"]
+        Train --> Cal["在独立无接触录制上标定阈值 γ<br/>满足误报约束（ARX 零确认误报；G1 FAt ≤ 1%）"]
+    end
+    subgraph B["(B) 弱接触检测（在线）"]
+        Ex["状态排除：预测只用锚点 t_a = t − H 之前的状态<br/>保留 (t_a, t] 的指令，不读该区间内测得状态"] --> Pred["预测名义关节力矩 τ̂_t"]
+        Pred --> Res["残差 r_t = τ_t − τ̂_t − b"]
+        Res --> Agg["噪声加权 Jacobian 聚合（阻尼加权最小二乘）<br/>噪声大的关节权重低 → 接触分数 s_t = ‖f̂_t‖"]
+        Agg --> Conf{"连续 K=3 个样本 s_t ≥ γ ?"}
+    end
+    Train --> Ex
+    Cal --> Conf
+    Conf -->|"是：确认接触"| Belief
+    subgraph C["(C) 下游：基于 belief 的操作（ARX，定性演示）"]
+        Belief["用接触判定 + 机器人位姿 + 任务进度<br/>更新空间 belief 地图（接触 → 附近有障碍；经过路径 → 自由空间）"] --> React["停止并后撤"]
+        React --> Retry["规划器按估计可行性 / 到目标距离 / 过往失败<br/>排序下一次放置或插入尝试 → 重试"]
+    end
+```
+
+图依据：论文 §IV-A–C、§V-D 与 Fig. 2（A 训练标定、B 检测、C 下游；下游任务仅为定性演示，成功率未量化）。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -79,6 +104,7 @@ summary: "CoPRE（2609.27381）：学习无接触力矩响应 + 噪声加权残�
 
 - [论文归档](../../sources/papers/copre_proprioceptive_contact_arxiv_2609_27381.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.27381)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 问题定义、§IV 方法（A–C）、§V 实验（A–D，含消融与下游演示）
 
 ## 推荐继续阅读
 

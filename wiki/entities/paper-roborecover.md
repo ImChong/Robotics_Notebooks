@@ -38,6 +38,27 @@ summary: "RoboRecover（2609.28952）：从执行偏差后的中间状态评测�
 - 纳入 [12 篇技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md) 与同期失败恢复、异步 WAM、接触感知、持续学习、安全 RL 条目横向对照。
 - 步骤 2.5 开源结论：**已开源**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SRC["候选轨迹来源（偏差均来自机器人与环境的动态交互，不直接编辑仿真状态）"]
+        NAT["Natural：多个源策略的失败轨迹"]
+        PERT["Action-Perturbed：前 150 步对动作 x/y/z 加均匀噪声"]
+        HUM["Human-Constructed（仅 LIBERO）：SpaceMouse 人为制造偏差并完成任务以验证可恢复"]
+    end
+    NAT --> ANN
+    PERT --> ANN
+    HUM --> ANN
+    ANN["三名标注者标注 recovery point 与 Stage / Deviation Type，多数投票，无共识则剔除"] --> DIFF["策略难度过滤：4 个参考策略 × 5 次试验，保留 2–18 次成功（恢复率 10%–90%）"]
+    DIFF --> REPLAY["回放一致性检查：末端/物体位置偏差 < 2 mm，末 5 帧 RGB 平均 SSIM > 0.99，辅以人工抽查"]
+    REPLAY --> SPLIT["固定 800/200 训练/测试划分（每平台 1000 个场景）"]
+    SPLIT --> EVAL["评测：重置环境 → 回放动作前缀 a<t 到达 recovery state → 候选策略以原指令继续任务，至多 S 步新交互"]
+    EVAL --> METRIC["统计恢复结果，并与初始状态评测对比"]
+```
+
+图依据：论文 §3（问题表述）、§4.2–4.4（场景构建、标注、过滤）/ Fig.1–2；此为基准的构建与评测协议，非策略方法
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -85,6 +106,7 @@ summary: "RoboRecover（2609.28952）：从执行偏差后的中间状态评测�
 - [论文归档](../../sources/papers/roborecover_arxiv_2609_28952.md)
 - [RoboRecover 仓库归档](../../sources/repos/roborecover.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.28952)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 问题表述、§4 RoboRecover 基准（4.1 至 4.4）、§5.1 实验设定；§5 其余结果与恢复干预（Reversion/Correction）仅略读
 
 ## 推荐继续阅读
 

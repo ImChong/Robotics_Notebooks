@@ -120,6 +120,47 @@ robosuite 是仿真与任务环境层，不是一个单独的学习算法或真�
 - 框架提供环境与接口，不规定唯一策略学习算法。
 - 论文和当前软件版本可能不同；引用时应标明采用的论文、代码与依赖版本。
 
+## 源码运行时序图
+
+入口：`python robosuite/demos/demo_random_action.py`（交互选择环境与机器人后调用 `suite.make(...)`，随机动作循环 `env.step` + `env.render`）；库内通用入口为 `robosuite.make(env_name, robots=..., ...)`。下图以单臂 `Lift` 环境为例，`Lift`/`ManipulationEnv`/`RobotEnv`/`MujocoEnv` 的继承与 `FixedBaseRobot.control` 均读自源码。
+
+```mermaid
+sequenceDiagram
+    participant D as demos/demo_random_action.py
+    participant B as environments/base.py make + EnvMeta
+    participant L as manipulation/lift.py Lift
+    participant RE as robot_env.py RobotEnv
+    participant ME as base.py MujocoEnv
+    participant R as robots/fixed_base_robot.py 机器人
+    participant CC as composite_controller 部件控制器
+    participant S as MjSim（MuJoCo）
+    D->>B: suite.make(env_name, robots, control_freq=20, ...)
+    B->>B: REGISTERED_ENVS 查表（EnvMeta 在类定义时 register_env）
+    B->>L: Lift(...)，经 MujocoEnv.__init__ 链式初始化
+    L->>RE: _load_model：_load_robots 实例化机器人，Lift 再建 TableArena 与 BoxObject 方块，组装 ManipulationTask
+    ME->>S: _initialize_sim：MjSim.from_xml_string(model.get_xml())
+    ME->>ME: _reset_internal 与 _setup_observables
+    D->>ME: env.reset()
+    ME->>R: robot.reset，内部 _load_controller 并 composite_controller.reset
+    L->>S: placement_initializer.sample 后 set_joint_qpos 放置方块
+    ME-->>D: 返回初始观测
+    loop 每个策略步
+        D->>ME: env.step(action)
+        loop control_timestep / model_timestep 个仿真子步
+            ME->>RE: _pre_action(action, policy_step)
+            RE->>R: robot.control(robot_action, policy_step)
+            R->>CC: policy_step 时 set_goal(action)，每个子步 run_controller
+            CC-->>R: 各部件控制量
+            R->>S: 按 actuator_ctrlrange 裁剪后写入 sim.data.ctrl
+            ME->>S: sim.step 再 _update_observables
+        end
+        ME->>L: _post_action 调用 reward(action) 并判断是否到达 horizon
+        ME-->>D: obs, reward, done, info
+    end
+```
+
+图依据：ARISE-Initiative/robosuite@5ce6643，读过 `README.md`、`robosuite/__init__.py`、`robosuite/demos/demo_random_action.py`、`robosuite/environments/base.py`（`make`、`EnvMeta`、`__init__`、`_initialize_sim`、`reset`、`step`、`_post_action`）、`robosuite/environments/robot_env.py`（`_load_model`、`_reset_internal`、`_pre_action`、`_load_robots`）、`robosuite/environments/manipulation/lift.py`（`_load_model`、`_reset_internal`）、`robosuite/robots/fixed_base_robot.py`（`control`）、`robosuite/robots/robot.py`（`reset`、`_load_controller` 签名）。`composite_controller` 内部各控制器（OSC、关节控制等）、渲染器与观测传感器细节未读，未画；因克隆磁盘受限，`robosuite/models/assets` 未检出。
+
 ## 关联页面
 
 - [LIBERO 基准实体](./libero-benchmark.md)
@@ -151,3 +192,4 @@ robosuite 是仿真与任务环境层，不是一个单独的学习算法或真�
 - [arXiv: 2009.12293](https://arxiv.org/abs/2009.12293)
 
 - [lc_awesome_sim2real_catalog](../../sources/papers/lc_awesome_sim2real_catalog.md)
+- 源码核对（2026-11-02）：ARISE-Initiative/robosuite@5ce6643，读过 robosuite/__init__.py、robosuite/demos/demo_random_action.py、robosuite/environments/base.py、robot_env.py、manipulation/lift.py、robosuite/robots/fixed_base_robot.py、robots/robot.py；时序图依据以上文件，未运行代码。

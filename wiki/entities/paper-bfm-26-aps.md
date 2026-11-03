@@ -4,7 +4,7 @@ type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
 updated: 2026-06-25
-arxiv: "2106.14910"
+arxiv: "2108.13956"
 venue: "2021 · ICML"
 code: https://github.com/rll-research/url_benchmark
 summary: "任务到来前的主动预训练；低层身体需先积累可迁移经验。"
@@ -38,6 +38,28 @@ sources:
 - 任务到来前的主动预训练；低层身体需先积累可迁移经验。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **03 Intrinsic reward 预训练**（#26/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PRE["无奖励预训练阶段"]
+        W["每 10 步重采样任务向量 w<br/>L2 归一化，单位球内均匀采样"] --> Q["ψ(s,a,w) 后继特征<br/>Q(s,a|w) = ψ(s,a,w)ᵀw，ε-greedy 选动作"]
+        S["观测 s"] --> E["编码器 φ(s)（与 f 共享权重）<br/>L2 归一化输出"]
+        E --> R1["利用项 φ(s)ᵀw<br/>最大化 −H(s|z)"]
+        E --> R2["探索项：粒子熵 (k 近邻距离)<br/>最大化 H(s)"]
+        R1 --> RA["内在奖励 r_APS = 利用项 + 探索项"]
+        R2 --> RA
+        RA --> TD["n-step Q-learning 更新 ψ<br/>并以 −φ(s)ᵀw 更新 φ (Von Mises NLL)"]
+        Q --> TD
+    end
+    subgraph TEST["下游测试阶段"]
+        LR["用预训练 φ 对任务奖励做线性回归<br/>得到任务向量 w"] --> FS["预训练后继特征 ψ 条件于 w<br/>零样本或微调求解任务"]
+    end
+    TD --> LR
+```
+
+图依据：论文 §4.4 / Algorithm 1、Eq.(4)–(7) 与 Fig.2（测试阶段线性回归来自 Fig.2 图注）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -45,7 +67,7 @@ sources:
 | 编号 | 26/41 |
 | 分组 | 03 Intrinsic reward 预训练 |
 | 出处 | 2021 · ICML |
-| 论文 | <https://arxiv.org/abs/2106.14910> |
+| 论文 | <https://arxiv.org/abs/2108.13956> |
 - **代码/项目：** <https://github.com/rll-research/url_benchmark>
 
 ## 核心机制（归纳）
@@ -86,9 +108,12 @@ sources:
 - [bfm_awesome_aps_icml_2021.md](../../sources/papers/bfm_awesome_aps_icml_2021.md) — awesome-bfm 策展摘录
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
-- 论文：<https://arxiv.org/abs/2106.14910>
+- 论文：<https://arxiv.org/abs/2108.13956>
+- [arXiv PDF](https://arxiv.org/pdf/2108.13956)：已通读方法部分（实验与附录以略读为准）：§3 Preliminaries、§4 Method（4.1–4.5，含 Algorithm 1 与 Fig.2 图注）
 
 ## 推荐继续阅读
 
 - [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) — 完整列表与数据集表
 - [A Survey of Behavior Foundation Model](https://arxiv.org/abs/2506.20487) — TPAMI 2025 综述
+
+- 核对（2026-11-02）：原 arXiv 编号 2106.14910 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2108.13956。

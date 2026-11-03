@@ -42,6 +42,31 @@ Global workspace approach to world model-based RL.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一：Global Workspace 预训练"]
+        DS["随机或专家策略收集的观测数据集"] --> VAE["预训练并冻结的 VAE（图像、属性各一）"]
+        VAE --> UV["单模态隐向量 u_v、u_attr"]
+        UV --> EN["编码器 e_v、e_attr，得到 z_v、z_attr"]
+        EN --> FU["加权求和（α_v + α_attr = 1）后 Tanh，得到 GW 表示 z"]
+        FU --> DE["解码器 d_v、d_attr 还原单模态隐向量"]
+        FU --> LS["损失：对比损失 L_cont + 广播损失 L_broad"]
+    end
+    subgraph S2["阶段二：World Model 与 Actor-Critic"]
+        FZ["冻结 GW，固定 α_v = α_attr = 0.5，得到 z_t"] --> WM["World Model：GRU，输入 z_t 与 a_t"]
+        WM --> HD["预测头（MLP）：下一步 GW 表示、奖励、终止信号"]
+        HD --> WL["L_WM：MSE（表示、奖励）+ BCE（终止）"]
+        WM --> AC["Actor-Critic：以 h_t 为输入，输出动作与状态价值"]
+        AC --> DR["Dreaming：仅首步用真实观测，之后由 WM 自回归模拟"]
+        DR --> ACL["仅用模拟轨迹计算 AC 损失；梯度不传入 WM"]
+    end
+    S1 --> S2
+```
+
+图依据：论文 §II-A（Global Workspace，Fig. 1）、§II-B/C（World Model 与 Actor-Critic，Fig. 3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Global workspace approach to world model-based RL.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.21142>
+- [arXiv PDF](https://arxiv.org/pdf/2502.21142)：已通读方法部分（实验与附录以略读为准）：§II 模型（A–C，含 Fig. 1/3）与 §III 环境设置；§IV 结果以略读为准
 
 ## 推荐继续阅读
 

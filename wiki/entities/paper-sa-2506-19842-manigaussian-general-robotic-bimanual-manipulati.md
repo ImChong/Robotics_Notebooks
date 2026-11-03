@@ -43,6 +43,27 @@ General robotic bimanual manipulation with hierarchical Gaussian world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["观测 RGB-D 图像 + 本体感知 + 语言指令"] --> VX["按标定相机参数转为体素\n稀疏卷积网络编码 → 视觉表示 v"]
+    VX --> GR["Gaussian 回归器（前馈）\n重建任务导向 Gaussian 辐射场\n每个高斯带实例 logit"]
+    VLM["预训练 VLM（GroundedSAM）\n按指令关键词生成实例真值"] -.监督.-> GR
+    GR --> LD["Leader 形变模型\n由稳定臂动作预测高斯偏移"]
+    LD --> FL["Follower 形变模型\n结合执行臂与稳定臂动作预测后果"]
+    FL --> RD["Gaussian 渲染器\n输出未来多视角图像与实例图"]
+    RD --> LP["光度监督 L_Pred（与真实未来图像对齐）"]
+    GR --> LR["当前场景重建 L_Recon + 实例分割 L_Task"]
+    VX --> PIO["PerceiverIO 多模态 Transformer\n结合增强后的体素表示与语言"]
+    PIO --> ACT["左右臂离散动作分类（交叉熵 L_BC）"]
+    LP --> OBJ["总目标 L = L_BC + λ_Recon·L_Recon + λ_Task·L_Task + λ_Pred·L_Pred"]
+    LR --> OBJ
+    ACT --> OBJ
+```
+
+图依据：论文 §III-B–E / Fig.2、式 (5)–(10)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ General robotic bimanual manipulation with hierarchical Gaussian world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.19842>
+- [arXiv PDF](https://arxiv.org/pdf/2506.19842)：已通读方法部分（实验与附录以略读为准）：§III 方法 A–E（含 Fig.2、式 1–10）、§IV-A 实验设置
 
 ## 推荐继续阅读
 

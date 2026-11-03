@@ -42,6 +42,29 @@ Formalizes LLMs as a special case of world models and proposes a continuous path
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    C0["立场：LLM 与世界模型并非二分<br/>（LeCun 2022：token 预测 vs 潜空间 JEPA）"] --> C1["主张一：LLM 是世界模型的退化特例（§2）"]
+    C0 --> C2["主张二：从 NTP 到 JEPA 存在连续谱（§3）"]
+    C1 --> F["世界模型形式化 (S, A, T, ρ0)（§2.1）"]
+    F --> E["LLM 嵌入：S = V*，A = V，<br/>T(s,a) = 追加 token（§2.2）"]
+    E --> K["LLM 相对一般世界模型的五项约束（Table 1）<br/>状态表示 / 动作粒度 / 状态持久 / 训练监督 / 层架构"]
+    E --> M["经验支持：OthelloGPT 等隐层编码世界状态（§2.4）"]
+    C2 --> S1["NTP / LLM → MTP → Future Summary → Next-Latent → JEPA（Fig. 5）<br/>每一步放松一项约束"]
+    K --> S1
+    S1 --> Q1["数据问题：自监督文本 → 带动作标注的环境（§3.2）"]
+    S1 --> Q2["架构问题：Transformer 能否推广到连续状态预测（§3.3）"]
+    M --> R["重审 LeCun 批评（§3.4）"]
+    S1 --> R
+    Q1 --> Z["讨论与结论（§4）"]
+    Q2 --> Z
+    R --> Z
+```
+
+图依据：论证结构图，论文 §2 / §3 / §4 与 Fig. 3、Fig. 5 的陈述（立场论文，无方法流程）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Formalizes LLMs as a special case of world models and proposes a continuous path
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.28127>
+- [arXiv PDF](https://arxiv.org/pdf/2606.28127)：已通读全文正文（§1 引言、§2 LLM 作为世界模型特例、§3 连续谱、§4 讨论与结论；参考文献略读）；论证结构图依据论文 §2–§4。
 
 ## 推荐继续阅读
 

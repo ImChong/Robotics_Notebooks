@@ -27,7 +27,7 @@ summary: "把策略从仿真搬到真机失败，根子在现实差（reality ga
 | DR | Domain Randomization | 域随机化：训练时随机抖动仿真物理参数以覆盖现实差 |
 | ERFI | Enhanced Random Force Injection | 增强随机力注入，给执行器加随机力/力矩偏置的对照基线 |
 | PPO | Proximal Policy Optimization | 近端策略优化，本文 RL 主干 |
-| AMP | Adversarial Motion Prior | 对抗式动作先验，用判别器约束动作像参考运动 |
+| AMP | Adversarial Motion Prior | 对抗式动作先验；本文未使用，仅在 §III-A 作为对照（称其易模式坍塌、OOD 泛化差），本文改用 DWL |
 | MLP | Multi-Layer Perceptron | 多层感知机，扰动网络 τ_φ 的结构 |
 | Reality Gap | 现实差 | 仿真与真机之间未建模的动力学/接触/执行器差异 |
 
@@ -36,7 +36,32 @@ summary: "把策略从仿真搬到真机失败，根子在现实差（reality ga
 - **超越参数化 DR**：给「DR 调不出鲁棒性」的工程困境一条新思路：换扰动空间，而非继续堆参数区间
 - **状态相关性是关键**：比 ERFI 的状态无关随机力更强，说明现实差的「结构」值得显式建模
 - **零额外硬件/标定**：不需力矩传感器、不需真机系统辨识，纯训练时技巧，落地成本低
-- **可与现有管线叠加**：τ_φ 注入与 PPO+AMP 正交，可加在大多数 RL 步行/全身控制训练上
+- **可与现有管线叠加**：τ_φ 注入与具体 RL 训练管线正交（本文基于 PPO + DWL），原则上可加在大多数 RL 步行/全身控制训练上
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    EP["每个 episode 开始：随机采样扰动网络权重 φ ~ 高斯<br/>（φ 不学习、不更新）"]
+    PERT["扰动网络 τ_φ：2×32 tanh MLP，无偏置<br/>τ_φ = σ_lim · tanh(MLP(o_priv/σ))，零输入得零输出"]
+    HALF["仅一半并行环境注入扰动<br/>其余环境无扰动"]
+    POL["策略 π_θ：GRU 编码器(24 维隐变量) + MLP<br/>输入本体观测 o_t，输出 12 个下肢关节动作"]
+    TAU["名义关节力矩 τ_π（PD 位置或直接力矩）"]
+    SIM["Isaac Gym 前向动力学<br/>输入 τ_π + τ_φ（含浮动基座虚拟关节力）"]
+    CRIT["Critic：额外接收特权观测 o_priv<br/>（含注入的扰动值 τ_pert、F_body_pert）"]
+    LOSS["联合训练：L_total = L_recon + L_PPO + λ_grad·L_grad"]
+    REAL["零样本实机部署 TOCABI"]
+    EP --> PERT
+    PERT --> HALF --> SIM
+    POL --> TAU --> SIM
+    SIM -->|观测 o_t、o_priv、奖励| POL
+    SIM --> CRIT --> LOSS
+    SIM --> LOSS
+    LOSS -->|更新 θ| POL
+    POL --> REAL
+```
+
+图依据：论文 §III-A、§III-B 至 §III-E（Fig. 2、Eq. 10–15）
 
 ## 解决什么问题
 
@@ -51,7 +76,7 @@ Sim-to-Real 的核心矛盾：**仿真训得好 ≠ 真机走得动**，因为�
 3. **零偏置先验**：静止无驱动 → 零扰动的设计，把「现实差随驱动增大」的物理直觉写进结构。
 4. **真机验证**：在全尺寸人形 TOCABI 上零样本步行，鲁棒性显著优于 DR 与 ERFI。
 
-方法拆解（深读笔记小节）：在「力矩空间」注入扰动，而不是在「参数空间」抖动；扰动网络 τ_φ：一张随机初始化、永不更新的小 MLP；与策略联合训练（PPO + AMP）；直觉：为什么这招比 DR 更广。
+方法拆解（深读笔记小节）：在「力矩空间」注入扰动，而不是在「参数空间」抖动；扰动网络 τ_φ：一张随机初始化、永不更新的小 MLP；与策略联合训练（PPO + 观测重构损失 + 梯度惩罚，无 AMP；依据 arXiv:2504.06585 §III-E 式 15）；直觉：为什么这招比 DR 更广。
 
 ## 核心信息
 
@@ -75,7 +100,7 @@ Sim-to-Real 的核心矛盾：**仿真训得好 ≠ 真机走得动**，因为�
 
 - 真正起作用的是 **状态相关** 这一条，而不是「加噪声」本身：ERFI 的随机力与状态无关，只能给出白噪声式偏置；τ_φ(s) 依赖姿态、速度、接触力，才模拟得出「某些位形下执行器更软、某些接触下力更偏」这类结构化现实差。
 - **零偏置先验**（静止无驱动 → 零扰动）把「现实差随驱动增大」的物理直觉写进了网络结构，是这套随机设计里少数不随机的部分。
-- 落地成本极低：不需力矩传感器、不需真机系统辨识，纯训练时技巧；且与 PPO+AMP 正交，可叠加在既有 RL 步行/全身控制管线上。
+- 落地成本极低：不需力矩传感器、不需真机系统辨识，纯训练时技巧；且与具体训练管线（本文为 PPO + DWL，无 AMP）正交，原则上可叠加在既有 RL 步行/全身控制管线上。
 - 证据强度需注意：仿真中面对未见的执行器刚度与软地面，DR/ERFI 全军覆没而本法照走；真机 TOCABI 上 3/3 成功步行（DR 2/3、ERFI 0/3）——样本量小，宜当作可行性证明而非统计结论。
 - 主要限制：论文未公开代码，复现需自行实现；随机扰动买到的是覆盖面而非可控保证，无法像参数辨识类方法那样给出参数精度。
 
@@ -89,6 +114,8 @@ Sim-to-Real 的核心矛盾：**仿真训得好 ≠ 真机走得动**，因为�
 - [humanoid_pnb_sim-to-real-humanoid-locomotion-via-joint-torque.md](../../sources/papers/humanoid_pnb_sim-to-real-humanoid-locomotion-via-joint-torque.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection/Sim-to-Real_Humanoid_Locomotion_via_Joint_Torque_Space_Perturbation_Injection.html>
 - 论文：<https://arxiv.org/abs/2504.06585>
+- [arXiv PDF](https://arxiv.org/pdf/2504.06585)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 强化学习设置、B–D 关节力矩空间扰动、E 训练设置）；§IV 实验与附录仅略读
+- 核对（2026-11-02）：对照 arXiv:2504.06585 §III-A/E（式 15 L_total = L_recon + L_PPO + λ_grad·L_grad，GRU 编码器），论文无 AMP（仅作对照提及），已删去页面中的「PPO+AMP」说法。
 
 ## 推荐继续阅读
 

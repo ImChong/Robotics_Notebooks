@@ -42,6 +42,24 @@ Systematically sorts out the direction of egocentric-exocentric collaborative le
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ROOT["Ego-Exo 综述的整体结构（论文 Fig. 2）"]
+    ROOT --> APP["§II Applications：Cooking / Sports / Healthcare / Education / Traffic / Embodied Intelligence / Public Service / Industry（Fig. 3）"]
+    APP --> TASKS["§III From Applications to Research Tasks：按三个方向归类（Fig. 4 映射应用与任务）"]
+    TASKS --> RT["§IV Research Tasks（Fig. 5）"]
+    RT --> A["A. Egocentric for Exocentric：用第一人称提升第三人称理解（ego-to-exo 视频生成 / Action Understanding / View Birdification / View Selection）"]
+    RT --> B["B. Exocentric for Egocentric：用第三人称提升第一人称分析（Video Generation / Video Captioning / Action Understanding / Affordance Grounding）"]
+    RT --> C["C. Joint Learning：训练与推理均需两种视角（Remote Drone Teleoperation / Video Captioning / Cross-View Retrieval / 3D Camera Localization / Action Understanding / Egocentric Wearer Identification / Cross-View Human Identification / Robotic Manipulation / View Selection）"]
+    ROOT --> DS["§V Datasets：同时覆盖两种视角的数据集（Table I），按任务分类"]
+    ROOT --> DISC["§VI Discussion：限制与未来方向，从 data / model / application 三个角度"]
+    ROOT --> CON["§VII Conclusion"]
+```
+
+图依据：综述分类体系图（论文 Fig. 2 全文结构与 Fig. 5 研究任务三方向）：论文 Fig. 2、§III、§IV（Fig. 5）、§V、§VI。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Systematically sorts out the direction of egocentric-exocentric collaborative le
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2506.06253>
+- [arXiv PDF](https://arxiv.org/pdf/2506.06253)：已通读方法部分（实验与附录以略读为准）：摘要、§I–§III、§IV 的三个方向定义与各任务小标题、§V 数据集分类与 §VI 讨论开头；各任务具体方法与 Table I 以略读为准
 
 ## 推荐继续阅读
 

@@ -40,6 +40,27 @@ Li et al. RL controller spanning a parameterised family of velocities and stance
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    GL["HZD 步态库（CFROST 离线优化）<br/>5 阶 Bézier 曲线，参数 p = 前进速度 / 侧向速度 / 行走高度<br/>共 11×11×11 = 1331 个步态"] --> REF["按期望步态参数 p_d 插值<br/>得到参考步态 g^r"]
+    CMD["用户指令 c = [p_d, 转向偏航速度]"] --> GOAL
+    REF --> GOAL["目标 g_t：当前指令 + g^r 在 t, t+1, t+4, t+7 的参考电机位置/速度"]
+    OBS["状态 s_t：t-4 到 t 的观测 q_o、q̇_o<br/>+ 过去 4 步动作"] --> PI
+    GOAL --> PI["策略网络 π（PPO 训练）<br/>2×512 tanh，高斯动作，30 Hz"]
+    PI --> A["动作 a_t = 10 个电机目标位置"]
+    A --> LPF["低通滤波 LPF"]
+    LPF --> PD["关节级 PD 控制器（2000 Hz）"]
+    PD --> ENV["MuJoCo 仿真训练 / SimMechanics 高保真测试 / Cassie 真机"]
+    ENV --> OBS
+    DR["动力学随机化（课程式退火）<br/>质量 / 阻尼 / 摩擦 / 传感噪声 / 通信延迟"] -.-> ENV
+    ENV -.-> RW["奖励：跟踪参考电机、骨盆位置/速度/旋转，<br/>并惩罚力矩与地面反力<br/>价值网络额外接收真值状态与随机化参数"]
+    RW -.-> PI
+```
+
+图依据：论文 §II-B（步态库与参数化控制）、§III-A 至 §III-E 与 Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +124,7 @@ Li et al. RL controller spanning a parameterised family of velocities and stance
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2103.14295>
+- [arXiv PDF](https://arxiv.org/pdf/2103.14295)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 参数化控制与步态库、§III 学习与 sim-to-real（环境、奖励、域随机化、学习模型、训练设置）；§IV 实验略读
 
 ## 推荐继续阅读
 

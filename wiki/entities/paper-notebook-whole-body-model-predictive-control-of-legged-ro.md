@@ -32,7 +32,27 @@ Whole-Body Model-Predictive Control of Legged Robots with MuJoCo 的人形机器
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记尚未写出；方法流程见下方「流程总览」（依据论文方法部分），其余结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    GUI["MuJoCo MPC GUI：用户实时调整残差权重、目标位置、iLQR 超参数"] --> ILQR
+    EST["状态估计：关节编码器 + 动捕（MoCap）融合，500 Hz 低通滤波"] --> ILQR
+    subgraph ILQR["MuJoCo iLQR（50 Hz）"]
+        DER["MuJoCo 有限差分求动力学 / 残差 Jacobian<br/>（前向差分；软接触模型，impratio 调到 100）"] --> RIC["Riccati 递推（每次迭代更新一次，不做收敛检查）"]
+        RIC --> OUT["名义控制 ū、名义状态 x̄、时变反馈增益 Kt"]
+        OUT -->|"用上一次解 warm start 下一次迭代"| DER
+    end
+    OUT --> TVLQR["TV-LQR 策略（300 Hz）<br/>ut = ūt + Kt(xt − x̄t)"]
+    EST --> TVLQR
+    TVLQR --> PD["关节 PD 控制器（20 kHz）"]
+    PD --> ROBOT["Unitree Go1 四足 / H1 人形硬件"]
+    ROBOT --> EST
+```
+
+图依据：论文 §III Iterative LQR with MuJoCo、§IV Implementation Details / Fig.2。
 
 ## 核心信息
 
@@ -64,6 +84,7 @@ Whole-Body Model-Predictive Control of Legged Robots with MuJoCo 的人形机器
 
 - [humanoid_pnb_whole-body-model-predictive-control-of-legged-ro.md](../../sources/papers/humanoid_pnb_whole-body-model-predictive-control-of-legged-ro.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2503.04613)：已通读方法部分（实验与附录以略读为准）：§III Iterative LQR with MuJoCo、§IV Implementation Details、Fig.2 系统图
 
 
 ## 推荐继续阅读

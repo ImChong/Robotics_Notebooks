@@ -32,7 +32,32 @@ HAFO 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里保留分类位置与原文入口，方法流程见下方「流程总览」，其余结论不给出。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练：双智能体 PPO（共享全身状态 s_t）"]
+        lc["下身指令 c^l<br/>线速度/角速度 + 站姿相位"] --> pl["下身策略 π_lower<br/>外扰：上身对抗扰动 + 高频随机推力"]
+        amass["AMASS 人体动作<br/>PHC 重定向 + 可行性过滤"] --> cur["渐进模仿课程<br/>q_curr = q_0 + α_i·(q_tar − q_0)"]
+        cur --> pu["上身策略 π_upper<br/>残差动作 θ_target = θ_ref + a_u，|a_u| ≤ Δ<br/>外扰：末端随机 3D 力"]
+        spring["虚拟弹簧-阻尼模型<br/>模拟拉力：m·ẍ = Kp(x_des − x) + Kd(ẋ_des − ẋ) + f_ext"] --> pl
+        spring --> pu
+        dr["域随机化"] --> pl
+        dr --> pu
+    end
+    pl --> joint["下身关节目标"]
+    pu --> joint2["上身关节目标"]
+    subgraph DEPLOY["部署：遥操作"]
+        tele["遥操作输入"] --> ik["高效 IK 实时解算关节角<br/>作为上身指令"]
+    end
+    ik --> pu
+    joint --> robot["人形机器人全身控制"]
+    joint2 --> robot
+```
+
+图依据：论文 §3.1-§3.4 / Fig.1-2。
 
 ## 核心信息
 
@@ -64,6 +89,7 @@ HAFO 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - [humanoid_pnb_hafo.md](../../sources/papers/humanoid_pnb_hafo.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2511.20275)：已通读方法部分（实验与附录以略读为准）：§3.1-§3.4 与 Fig.1 图注
 
 
 ## 推荐继续阅读

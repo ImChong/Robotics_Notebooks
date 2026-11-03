@@ -29,6 +29,24 @@ summary: "OmniManip（arXiv:2501.03841）：3D 感知与 LLM 结合的操作规�
 | IL | Imitation Learning | 模仿学习 |
 | BC | Behavior Cloning | 行为克隆 |
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["语言指令 + RGB-D 观测<br/>(VFM 标注物体)"] --> B["VLM 筛选任务相关物体<br/>并把任务分成多个阶段 S_i = (动作, 主动物体, 被动物体)"]
+    B --> C["单视角 3D 生成得到物体网格<br/>Omni6DPose 位姿估计 → 物体规范化 (canonical space)"]
+    C --> D["交互点 p：SCAFFOLD 网格视觉提示 + VLM 多视角推理"]
+    C --> E["交互方向 v：以主轴为候选<br/>VLM 描述每个轴 → LLM 打分排序"]
+    D --> F["交互原语 O = (p, v)<br/>+ 距离约束 d、角度约束 θ → 约束列表 K_i"]
+    E --> F
+    F --> G["闭环规划 RRC：渲染交互图 → VLM 检查<br/>成功 / 失败换下一个 / 需细化则在 v 附近重采样 6 个方向"]
+    G --> H["闭环执行：优化末端位姿 P_ee*<br/>L = 约束损失 + 碰撞损失 + 路径损失"]
+    I["6D 位姿跟踪器<br/>实时更新主动 / 被动物体位姿"] --> H
+    H --> J["机械臂执行当前阶段 → 进入下一阶段"]
+```
+
+图依据：论文 §3.1–3.3（交互原语与空间约束、原语提取、双闭环系统）/ Fig.2、Algorithm 1、Eq.(1)-(5)
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -70,6 +88,7 @@ OmniManip 延续 VoxPoser 之后 3D+LLM 线。
 ## 参考来源
 
 - [wechat_lumina_embodied_practice_part2_code_as_policy_2026-09-20.md](../../sources/blogs/wechat_lumina_embodied_practice_part2_code_as_policy_2026-09-20.md)
+- [arXiv PDF](https://arxiv.org/pdf/2501.03841)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 问题形式化、3.2 原语与约束提取、3.3 双闭环系统）、§4.1 实验设置
 
 ## 推荐继续阅读
 

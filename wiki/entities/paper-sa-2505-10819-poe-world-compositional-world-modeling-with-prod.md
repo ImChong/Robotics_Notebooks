@@ -42,6 +42,24 @@ Compositional world modeling with products of programmatic experts.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["短演示轨迹 D（不足 1 分钟，符号化物体观测）"] --> B["LLM 合成 Python 程序专家 p_i（Step 1）"]
+    B --> C["梯度优化专家权重 θ，L-BFGS（Step 2）"]
+    C --> D["剔除权重低于阈值 δ 的专家（Step 3）"]
+    D --> E["PoE-World：指数加权专家乘积 + 硬约束 c_j"]
+    E --> F["作为模拟器：先做 RL 预训练，再继续 RL"]
+    E --> G["前瞻规划：分层规划器（物体接触抽象图 + 低层规划）"]
+    F --> H["PoE-World + Planner 智能体"]
+    G --> H
+    H --> I["与环境交互，收集新轨迹"]
+    I -->|"Step 4：轨迹更新后重复 Step 1-3"| B
+```
+
+图依据：论文 §3.1–3.3 / Fig.1、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +115,7 @@ Compositional world modeling with products of programmatic experts.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.10819>
+- [arXiv PDF](https://arxiv.org/pdf/2505.10819)：已通读方法部分（实验与附录以略读为准）：§1 引言；§2 背景；§3 PoE-World 表示、学习与使用（含 Fig.1–3）
 
 ## 推荐继续阅读
 

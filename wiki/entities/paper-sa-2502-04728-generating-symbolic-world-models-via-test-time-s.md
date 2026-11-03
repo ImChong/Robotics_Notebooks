@@ -42,6 +42,22 @@ Generates symbolic world models via test-time scaling of LLMs.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入文本描述 / PDDL 问题 G"] --> B["Best-of-N 采样：高温并行生成 N 个候选（PDDL 域 + 思维链）"]
+    B --> C["按生成 token 对数似然打分，选取前 K 个候选"]
+    C --> D["初始 PDDL 域 D0 与思维链 T0"]
+    D --> E["iVML 优化器 LLM f_opt：评估上一轮解，给出批评反馈 Fi"]
+    E --> F["学习器 LLM f_update：依反馈更新思维链 Ti 与 PDDL 域 Di"]
+    F -->|"迭代"| E
+    F --> G["最优 PDDL 域 D*"]
+    G --> H["Fast Downward 启发式搜索（如 A*）求解规划并验证"]
+```
+
+图依据：论文 §1 / Fig. 1 方法概览、§3.2 Best-of-N 采样初始化 PDDL、§3.3 iVML 实例化的语言化机器学习（Eq. 3-5 与 f_opt / f_update 提示模板）。Fast Downward 搜索环节来自论文实验部分的说明（关于 Fast Downward 的说明）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +113,7 @@ Generates symbolic world models via test-time scaling of LLMs.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.04728>
+- [arXiv PDF](https://arxiv.org/pdf/2502.04728)：已通读方法部分（实验与附录以略读为准）：§1 引言与贡献、§3.1 至 §3.3、规划求解器说明
 
 ## 推荐继续阅读
 

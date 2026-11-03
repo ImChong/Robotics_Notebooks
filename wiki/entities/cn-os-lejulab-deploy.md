@@ -55,6 +55,54 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`export ROBOT_VERSION=46 && roslaunch leju_launch load_mujoco_sim.launch`（实物为 `load_real.launch`）；launch 文件拉起 `leju-mujoco-sim`、`leju-joystick`、`run_rl_controller`（`leju-rl-controller/src/main.cpp`）、`lejusdk_recorder`。仓库 `src/` 内只有 RL 控制器、IK、VR、音频等源码，`leju-mujoco-sim`、`leju-joystick` 以预编译二进制放在 `installed/lib/`，其内部实现未开源，下图只画 `run_rl_controller` 一侧。
+
+```mermaid
+sequenceDiagram
+    participant L as leju_launch/load_mujoco_sim.launch
+    participant M as run_rl_controller（src/main.cpp）
+    participant RD as RobotData
+    participant CM as ControllerManager
+    participant CL as runtime/ControlLoop
+    participant RL as GenericRLController
+    participant IT as 推理线程（inferenceThreadLoop）
+    participant SDK as lejusdk GlobalRobot（DDS）
+    participant SIM as leju-mujoco-sim（预编译）
+
+    L->>M: 启动 -c controller_manager.yaml -u urdf -t teleop_bindings.yaml
+    M->>SDK: GlobalRobot::init_env(RobotVersion::from_env())
+    M->>RD: robot_data.initialize()（订阅状态 / IMU）
+    M->>CM: initialize(config_file, urdf_path)，按 yaml 加载控制器（默认 default_controller）
+    M->>M: TeleopInputSource.initialize()，手柄与 Quest 触发写入 TriggerBuffer
+    M->>CM: Start()，waitForDataReady()
+    M->>RL: moveToDefaultPos(state, 3.0)
+    M->>CL: control_loop.run()
+    loop 每个控制周期（tick，周期由当前控制器 waitNextCycle 决定）
+        CL->>RD: getSynchronizedData(state, imu)
+        SIM-->>SDK: 关节状态 / IMU
+        SDK-->>RD: 订阅回调写入
+        CL->>CL: drainAll 触发器，Lifecycle.update（start / back）
+        CL->>CL: mergeAllCmdVel 等按输入源优先级合并命令
+        CL->>CM: update(state, imu, merged_cmd)
+        CM->>RL: setVelocityCommand，update
+        alt 每 decimation 步
+            RL->>RL: computeObservation
+            RL->>IT: submitObservationForInference（条件变量唤醒）
+            IT->>IT: inferActions → InferenceModel::forward（ONNX / OpenVINO）
+            IT-->>RL: updateActionCache
+        end
+        RL->>RL: updateRobotCmd：q_target = direction × (base_pos + action × scale)
+        RL-->>CM: RobotCmd
+        CM-->>CL: RobotCmd
+        CL->>SDK: GlobalRobot::publishRobotCmd(cmd)
+        SDK-->>SIM: 关节指令
+    end
+```
+
+图依据：LejuLab-Deploy@212353e，读过 `README.md`、`src/leju_launch/launch/load_mujoco_sim.launch`、`load_real.launch`（节点列表）、`src/leju-controllers/leju-rl-controller/src/main.cpp`、`src/runtime/control_loop.cpp`（run、tick、publishRobotCmd）、`src/controllers/controller_manager.cpp`（update，约第 525 至 680 行）、`src/controllers/generic_rl_controller.cpp`（updateImpl、updateRobotCmd、submitObservationForInference、inferActions、inferenceThreadLoop）、`config/46/controller_manager.yaml`（头部）。SDK 内部（`lejusdk-lowlevel`）、模型加载细节、`mimic` 等其他控制器分支未读；`SIM`/`SDK` 之间的数据流向依据 README 架构图与 `installed/` 二进制清单推断，未读其源码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +114,7 @@ institutions:
 - [LejuLab-Deploy 源码归档](../../sources/repos/lejulab-deploy.md)（<https://github.com/LejuRobotics/LejuLab-Deploy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：LejuRobotics/LejuLab-Deploy@212353e，读过 README.md、src/leju_launch/launch/{load_mujoco_sim,load_real}.launch、src/leju-controllers/leju-rl-controller/src/{main.cpp,runtime/control_loop.cpp,controllers/controller_manager.cpp,controllers/generic_rl_controller.cpp}、config/46/controller_manager.yaml；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -17,6 +17,26 @@ summary: "Instruction2Act（arXiv:2305.11176）：LLM 根据视觉指令生成�
 
 **Instruction2Act**（[arXiv:2305.11176](https://arxiv.org/abs/2305.11176)）收录于 Lumina [Embodied-AI-Guide 微信专辑](../../wiki/overview/embodied-ai-guide-wechat-album-curator.md)。本页为独立详情节点；实验数字以原文为准。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INS["任务指令<br/>纯语言 / 语言-视觉多模态 / 指点-语言（光标点击）"] --> PR
+    API["提示：第三方库导入 + 按机器人系统层级组织的 API 定义<br/>+ 完整逻辑的 in-context 示例 + 「Think step by step」"] --> PR
+    PR["组装完整 prompt"] --> LLM["LLM（text-davinci-003 / LLaMA-Adapter）"]
+    LLM --> CODE["生成 Python 函数 main()（字符串）"]
+    CODE --> RUN["Python 解释器执行；语法错误时可据报错重新生成"]
+    RUN --> OBS["GetObsImage 获取当前观测图像"]
+    OBS --> SAM["感知：SAM 分割，ImageCrop 裁出物体"]
+    SAM --> CLIP["CLIP 检索<br/>文本查询 → 文本编码器 F_T；图像查询 → 图像编码器 F_I<br/>与各裁剪图特征 F_Ii 比较相似度"]
+    CACHE["环境缓存 C<br/>（指令中的图像裁剪、坐标变换等）"] --> CLIP
+    CLIP --> LOC["Pixel2Loc：预定义变换矩阵转机器人坐标 + 边界截断"]
+    LOC --> ACT["PickPlace 等动作原语生成动作"]
+    ACT --> EXE["RobotExecution：低层控制器执行"]
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2、Fig.3
+
 ## 一句话定义
 
 **把自然语言编译成带视觉 grounding 的短程序。**
@@ -72,6 +92,7 @@ Instruction2Act 与 CaP 同属 code-as-policy 谱。
 ## 参考来源
 
 - [wechat_lumina_embodied_practice_part2_code_as_policy_2026-09-20.md](../../sources/blogs/wechat_lumina_embodied_practice_part2_code_as_policy_2026-09-20.md)
+- [arXiv PDF](https://arxiv.org/pdf/2305.11176)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3 方法（3.1 LLM 驱动机器人、3.2 提示设计、3.3 指令模态管理）、§4 开头的实验设置
 
 ## 推荐继续阅读
 

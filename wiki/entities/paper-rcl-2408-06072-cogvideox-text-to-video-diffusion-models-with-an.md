@@ -42,6 +42,30 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["视频"] --> VAE["3D causal VAE 编码器：8×8×4 压缩到潜空间"]
+    VAE --> PATCH["patchify 展开为 z_vision 序列"]
+    TXT["文本"] --> T5["T5 编码为 z_text"]
+    PATCH --> CAT["沿序列维拼接 z_text 与 z_vision"]
+    T5 --> CAT
+    TS["扩散时间步 t"] --> ADALN["Expert AdaLN：Vision / Text 两路分别调制"]
+    CAT --> BLK["Expert Transformer 块堆叠：3D-RoPE + 3D Full Attention"]
+    ADALN --> BLK
+    BLK --> UNP["unpatchify 还原潜空间形状"]
+    UNP --> DEC["3D causal VAE 解码器"]
+    DEC --> OUT["生成视频"]
+    subgraph TRAINING["训练策略"]
+        FP["Multi-Resolution Frame Pack：混合时长/分辨率同批"] --> PT["渐进式分辨率训练 256px → 512px → 768px，再高质量微调"]
+        PT --> EUS["Explicit Uniform Sampling：按 rank 分区间采样扩散时间步"]
+    end
+    EUS -.-> BLK
+```
+
+图依据：论文 §2 架构（Fig.3、§2.1 3D VAE、§2.2 Expert Transformer）与 §3 训练（§3.1 Frame Pack、§3.2 渐进训练、§3.3 Explicit Uniform Sampling）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://openreview.net/forum?id=LQzN6TRFg9>
+- [arXiv PDF](https://arxiv.org/pdf/2408.06072)：已通读方法部分（实验与附录以略读为准）：§2 架构（3D VAE、Expert Transformer）、§3 训练（Frame Pack、渐进训练、Explicit Uniform Sampling、数据）；§4 实验略读
 
 ## 推荐继续阅读
 

@@ -75,6 +75,41 @@ summary: "Phoenix 是面向机器人操作的世界动作模型系统：联合�
 - 公开代码、模型入口和数据的开放程度不同；目前更准确的描述是**部分开源**，不能据此推断完整训练和部署栈可直接复现。
 - 技术报告的榜单数字依赖各基准自己的后训练和评测配置，横向对比需要先核对协议。
 
+## 源码运行时序图
+
+入口：`bash scripts/pretrain.sh`（每个节点各跑一次；正式配方要求 28 节点 × 8 GPU，需设置 `RUN_ID`、`MASTER_ADDR`、`NODE_RANK`），脚本 `exec python -m accelerate.commands.launch --config_file scripts/accelerate_configs/accelerate_local_joint96_zero1.yaml scripts/pretrain.py`。`main` 分支仅含预训练代码，不含推理/部署入口（README 分支表：部署在 `prometheus`、后训练在 `post-train` 分支，本图未读）。
+
+```mermaid
+sequenceDiagram
+    participant Sh as scripts/pretrain.sh
+    participant Acc as accelerate launch (DeepSpeed ZeRO-1)
+    participant P as scripts/pretrain.py
+    participant RT as src/wam/runtime.py (run_training)
+    participant F as wam.model.factory.create_wam
+    participant Tr as src/wam/trainer.py (WAMTrainer)
+    participant M as WAM 模型 (MoT: 视频专家 + 动作专家)
+
+    Sh->>Sh: 校验 NNODES=28、NPROC_PER_NODE=8、RUN_ID、NODE_RANK，设离线环境变量
+    Sh->>Acc: exec accelerate launch ... scripts/pretrain.py
+    Acc->>P: 每个进程执行 main()
+    P->>P: load_config：合并 configs/phoenix_pretrain.yaml 与命令行 overrides
+    P->>P: validate_startup：检查权重、数据清单等本地资源是否存在
+    P->>RT: run_training(cfg)
+    RT->>RT: 建 Accelerator，build_datasets(cfg.data)：PhoenixPretrainDataset
+    RT->>F: instantiate(cfg.model) 构造 WAM
+    RT->>Tr: WAMTrainer(model, train_dataset, val_dataset).train()
+    loop while global_step < stop_step (max_steps=256013)
+        Tr->>Tr: next(data_iter) 取一个 batch
+        Tr->>M: model(sample, global_step) 返回 loss, loss_dict
+        Tr->>Tr: accelerator.backward(loss)，clip_grad_norm_，optimizer.step，scheduler.step
+        opt global_step 为 save_every 整数倍
+            Tr->>Tr: save_checkpoint()，到 eval_every 时 evaluate()
+        end
+    end
+```
+
+图依据：Anyverse-Dynamics/Phoenix-MWA@523d605，读过 README.md、docs/TRAINING.md、scripts/pretrain.sh、scripts/pretrain.py、src/wam/runtime.py（run_training、build_datasets）、src/wam/trainer.py（train 循环、_local_joint96_periodic）、configs/phoenix_pretrain.yaml（grep 关键字段）、src/wam/model/world_action_model.py（仅方法清单）；`WAM.forward` 内部的损失构成、数据集类与视觉编码器（WanVAE / Phoenix Encoder / CS-VAE）的调用顺序未读，故未画。
+
 ## 关联页面
 
 - [World Action Models（世界–动作模型）](../concepts/world-action-models.md)
@@ -86,6 +121,8 @@ summary: "Phoenix 是面向机器人操作的世界动作模型系统：联合�
 
 - [Phoenix 官方项目页与技术报告](../../sources/sites/phoenix-mwa.md)
 - [Phoenix-MWA 官方代码仓库归档](../../sources/repos/anyverse-dynamics-phoenix-mwa.md)
+
+- 源码核对（2026-11-02）：Anyverse-Dynamics/Phoenix-MWA@523d605，读过 README.md、docs/TRAINING.md、scripts/pretrain.sh、scripts/pretrain.py、src/wam/runtime.py、src/wam/trainer.py、configs/phoenix_pretrain.yaml（片段）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

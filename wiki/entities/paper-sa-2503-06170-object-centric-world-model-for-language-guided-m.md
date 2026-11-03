@@ -42,6 +42,27 @@ Object-centric world model for language-guided manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  X["历史视频 Xprv"] --> E["SAVi 视频 slot 提取器 (目标域预训练)"]
+  E --> S["对象 slots Sprv (T×K×D)"]
+  TX["语言指令 I"] --> T5["T5-base 句编码器"]
+  S --> W["LSlotFormer: 语言条件的 slot Transformer"]
+  T5 --> W
+  W -->|自回归预测| P["未来 slots Sprd"]
+  GT["真值未来视频"] -.-> E
+  P -.->|Lslot 重建损失| GS["真值 slots Sgt"]
+  S --> PI
+  P --> PI["动作解码器 π: Transformer 解码 slots → 动作特征, MLP 池化融合"]
+  TX -.->|可选指令输入| PI
+  PI --> AC["动作 aT"]
+  AC -.->|行为克隆损失 Lπ| AG["真值动作"]
+```
+
+图依据：论文 §3.1（Language-Guided Slot World Model）、§3.2（Predictive Control）与 Fig.1、Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Object-centric world model for language-guided manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.06170>
+- [arXiv PDF](https://arxiv.org/pdf/2503.06170)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 语言引导 slot 世界模型、3.2 预测控制）；§1 引言前部与 §4 实验、消融略读，未逐页核对实验数字。
 
 ## 推荐继续阅读
 

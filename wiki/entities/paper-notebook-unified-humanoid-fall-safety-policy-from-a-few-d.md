@@ -38,6 +38,26 @@ summary: "跌倒是人形移动的固有风险。维持平衡是控制与学习�
 - **少示范 + RL**降低对大规模安全数据的依赖；
 - **与 SafeFall、自保护跌落、Robot Crash Course、VIGOR 共同构成人形跌落安全研究簇**，本文强调"统一"。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["少量单目人类视频示范（5 条：前/侧/后向跌倒-起身）"] --> B["SMPL 拟合 + 重定向到 Unitree G1"]
+    B --> C["稀疏化为 key frames"]
+    C --> D["稀疏关键帧跟踪 RL（goal-conditioned，PPO 非对称 actor-critic）：每条轨迹一个增广策略"]
+    D --> E["Post trajectory stitching：从早期状态 shortcut 到后段 key frame，重组轨迹"]
+    E --> F["专家策略 rollout 收集 (o, g, a) 数据对，约 450 万条"]
+    F --> G["蒸馏为 Diffusion Policy：历史观测 + 目标条件，预测未来 H=12 步动作"]
+    F --> H["增广 key frame 经 goal 编码器构建 Key-Frame Feature Codebook（单位球归一化）"]
+    I["运行时：近期观测历史"] --> J["Online Adapter（MLP）预测目标特征 f_o"]
+    J --> K["与 Codebook 做余弦相似度检索 最近特征 f_g"]
+    H --> K
+    K --> G
+    G --> L["输出动作 a_t（23 维关节偏置），仅执行首步"]
+```
+
+图依据：论文 §IV Method（FIRM）/ Fig.2、Fig.3；Adapter 每 5 步检索一次
+
 ## 解决什么问题
 
 跌落安全此前被**割裂**处理： - 防摔 / 受控下降 / 起身**各管一段**； - 真实跌倒常**不按剧本**，缺乏**整合策略**做减损 + 即时恢复。
@@ -88,6 +108,7 @@ summary: "跌倒是人形移动的固有风险。维持平衡是控制与学习�
 - [humanoid_pnb_unified-humanoid-fall-safety-policy-from-a-few-d.md](../../sources/papers/humanoid_pnb_unified-humanoid-fall-safety-policy-from-a-few-d.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations/Unified_Humanoid_Fall-Safety_Policy_from_a_Few_Demonstrations.html>
 - 论文：<https://arxiv.org/abs/2511.07407>
+- [arXiv PDF](https://arxiv.org/pdf/2511.07407)：已通读方法部分（实验与附录以略读为准）：§I 引言要点、§III Problem Formulation、§IV-A/B Method 与 Fig.2/3、§V-A 实现细节
 
 ## 推荐继续阅读
 

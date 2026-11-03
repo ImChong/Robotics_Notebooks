@@ -42,6 +42,28 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Foundation Models。 本页�
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    TD["任务描述 (P-1 到 P-5) + 代码指南 (P-6, P-7)"]
+    LLM["LLM (GPT-4): 先生成任务阶段, 再生成 Python 控制器"]
+    FB["人类反馈 (P-8) 或 代码模板 (P-9) 修正控制器"]
+    CTRL["LLM 控制器 pi_LLM"]
+    ROLL["混合 rollout: 以概率 p_LLM 用 pi_LLM, 否则用训练中策略, p_LLM 指数衰减"]
+    BUF["两个回放池 R_LLM 与 R_RL"]
+    RL["TD3 式 RL: actor 损失 = RL 项 + lambda_IM x 模仿 R_LLM 的 L2 项"]
+    TD --> LLM
+    LLM --> CTRL
+    FB --> CTRL
+    CTRL --> ROLL
+    ROLL --> BUF
+    BUF --> RL
+    RL --> ROLL
+```
+
+图依据：论文 §III Methods of RLingua (III-A 提示设计, III-B RL with LLM Controller) / Fig.1-3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Foundation Models。 本页�
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2403.06420>
+- [arXiv PDF](https://arxiv.org/pdf/2403.06420)：已通读方法部分（实验与附录以略读为准）：§III Methods of RLingua
 
 ## 推荐继续阅读
 

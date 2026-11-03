@@ -42,6 +42,22 @@ Authoritative diagnostic benchmark for ultra-long egocentric video understanding
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["阶段 I 原始数据过滤<br/>Ego4D 视频 + 人工叙述<br/>取不重叠 3 分钟片段且至少 30 条叙述"] --> S2
+    S2["阶段 II 问答生成<br/>LLM 以 Q(AW)-shot 两次链式调用<br/>先生成问题 Q 再生成正确答案 A 与错误选项 W<br/>每片段 N=3 个问题 每题 M=4 个错误选项"] --> S3
+    subgraph S3["阶段 III 生成结果过滤"]
+        direction TB
+        R["规则过滤<br/>丢弃泄漏关键词或格式解析失败的 QAW"] --> L["LLM 盲基线过滤<br/>不看叙述仅凭问题能答对的题被剔除"]
+    end
+    S3 --> S4["阶段 IV 人工两轮校验<br/>核对 Q 与 A 正确 干扰项确为错误<br/>并确认 temporal certificate 至少 30 秒"]
+    S4 --> DATA["EgoSchema 长视频多选问答数据集"]
+```
+
+图依据：论文 §3.1 EgoSchema Pipeline（阶段 I 至 IV）、§3.2 Temporal Certificates / Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Authoritative diagnostic benchmark for ultra-long egocentric video understanding
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2308.09126>
+- [arXiv PDF](https://arxiv.org/pdf/2308.09126)：已通读方法部分（实验与附录以略读为准）：§3 EgoSchema 数据构造流程（§3.1 四阶段、§3.2 temporal certificate）；基准评测与附录仅略读
 
 ## 推荐继续阅读
 

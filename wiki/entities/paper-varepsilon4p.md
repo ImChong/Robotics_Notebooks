@@ -45,6 +45,23 @@ summary: "ε4P（arXiv:2609.26672）：按 flow-matching 噪声阶段分工：�
 - 开源结论：**未开源**（步骤 2.5，2026-09-23）。
 - 与 [12 篇技术地图](../overview/collab-wm-12-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["三类数据源<br/>Dpt 目标任务高精度 / Dpm 目标任务低精度 / Dtm 异任务高精度"] --> B["离线估计准入边界（只算一次，训练中固定）"]
+    B --> C["Dpm 边界 tpm：训练 flow-time 条件的源分类器<br/>区分 xt 来自 Dpm 还是 Dpt"]
+    C --> D["tpm = AUC 与 0.5 偏差 ≤ σ 的最早 flow time<br/>Tpm = [tpm, 1]"]
+    B --> E["Dtm 边界 ttm：在 π0.5 上测 action 依赖 dact(t) 与 context 依赖 dctx(t)"]
+    E --> F["ttm = dact ≥ dctx 的最晚 flow time<br/>Ttm = [0, ttm]"]
+    G["Dpt：Tpt = [0, 1]"] --> H
+    D --> H["训练：按源采样 s ~ π，再从 Ts 均匀采样 t"]
+    F --> H
+    H --> I["xt = tε + (1−t)a，标准 flow-matching 目标优化<br/>（π、模型结构、目标不变）"]
+```
+
+图依据：论文 §III-A/B/C/D（Eq. 1、5–8，Fig. 2–3）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -87,6 +104,7 @@ summary: "ε4P（arXiv:2609.26672）：按 flow-matching 噪声阶段分工：�
 - [varepsilon4p_arxiv_2609_26672.md](../../sources/papers/varepsilon4p_arxiv_2609_26672.md)
 - [wechat_embodied_station_12_papers_collab_wm_2026-09-23.md](../../sources/blogs/wechat_embodied_station_12_papers_collab_wm_2026-09-23.md)
 - [arXiv:2609.26672](https://arxiv.org/abs/2609.26672)
+- [arXiv PDF](https://arxiv.org/pdf/2609.26672)：已通读方法部分（实验与附录以略读为准）：§III Approach（A–D）
 
 ## 推荐继续阅读
 

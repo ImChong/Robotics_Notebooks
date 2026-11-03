@@ -42,6 +42,25 @@ Uncovers untapped potential in sample-efficient world model agents.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ENV[环境交互 / 数据收集] --> RB[回放缓冲区<br/>保存每条样本的世界模型损失, 新样本给高初始损失]
+  RB -->|重建训练| V[表示模块 V: 各模态编码器-解码器<br/>图像 / 连续向量 / 类别 / 2D 类别, 输出定长 token]
+  V --> TOK[观测 token z 与动作 token]
+  RB -->|均匀 + 优先采样混合| M
+  TOK --> M[世界模型 M: 嵌入 + RetNet 加 POP 并行观测预测<br/>MLP 头预测下一观测 token / 奖励 / 终止]
+  M --> ENS[4 个下一观测预测头的集成<br/>JSD 分歧 δ_t 作为认知不确定性]
+  ENS -->|内在奖励 r_int = δ_t| IMG
+  M -->|预测奖励 r̂ 与 token| IMG[想象推演 H 步]
+  IMG --> C[控制器 C: actor-critic<br/>critic 用 HL-Gauss 回归即分类, 策略用 REINFORCE]
+  C -->|策略动作| ENV
+  C -->|想象中的动作| IMG
+```
+
+图依据：论文 §2 Method（2.1–2.3）/ Fig.2–3；论文称训练为 数据收集、V、M、C 重复循环，图中 C → ENV 的闭环为按该循环归纳
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Uncovers untapped potential in sample-efficient world model agents.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.11537>
+- [arXiv PDF](https://arxiv.org/pdf/2502.11537)：已通读方法部分（实验与附录以略读为准）：§2 Method（2.1 V、2.2 M、2.3 C）
 
 ## 推荐继续阅读
 

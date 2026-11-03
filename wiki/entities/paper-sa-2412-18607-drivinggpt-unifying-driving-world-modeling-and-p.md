@@ -42,6 +42,21 @@ Unifies driving world modeling and planning with multi-modal autoregressive tran
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["前视相机帧序列"] --> ENC["VQ-VAE Encoder：图像 token z"]
+    ACT["帧间相对动作 Δx,Δy,Δθ"] --> BIN["Action binning：分量各自截断到 1%–99% 分位并分箱，得到动作 token q"]
+    ENC --> SEQ["交错成统一 driving language：z1,q1,z2,q2,…"]
+    BIN --> SEQ
+    SEQ --> LM["自回归 Transformer（LlamaGen 结构）：causal mask + next token prediction"]
+    LM --> NZ["预测图像 token → VQ-VAE Decoder → 未来图像（世界建模）"]
+    LM --> NQ["预测动作 token → unbinning → 相对变换矩阵 → 连乘积分为绝对轨迹（规划）"]
+```
+
+图依据：论文 §3 方法（Unified Visual Action Sequence Modeling、Integrating Action into Trajectory）/ Fig.2，§4.1 实现细节。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +112,7 @@ Unifies driving world modeling and planning with multi-modal autoregressive tran
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.18607>
+- [arXiv PDF](https://arxiv.org/pdf/2412.18607)：已通读方法部分（实验与附录以略读为准）：§3 方法（视觉与动作 tokenizer、统一序列建模、轨迹积分）、§4.1–4.2
 
 ## 推荐继续阅读
 

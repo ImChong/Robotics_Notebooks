@@ -33,6 +33,29 @@ summary: "把 Diffusion Forcing（每个 token 独立加噪/独立去噪的自�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph REP[运动表示]
+        P[每人关节旋转 6D + 体型 β + 根节点高度与倾斜] --> VQ[条件 VQ-VAE 编码, 时间步长 ω=4<br/>以 β 与 canonical 时间变换 ΔT 为条件]
+        VQ --> Z[单人姿态 latent z]
+        TR[canonical 系时间变换 ΔT + 到每个其他人的成对变换 T_self→partner] --> TOK
+        Z --> TOK[运动 token m = z ; ΔT ; T_self→partner<br/>每个 token = 一个人在一个时间步]
+    end
+    TOK --> NZ[训练: 每个 token 独立采噪声等级, 余弦调度]
+    NZ --> DFOT[Diffusion Forcing Transformer 去噪器<br/>噪声等级嵌入 + RoPE + 人物身份嵌入, 预测干净 token]
+    DFOT --> LOSS[Huber 损失: 姿态 + 时间连续 + 人际变换 + 速度一致性]
+    subgraph INF[推理: 按任务指定哪些 token 为干净上下文]
+        C[Partner Inpainting / Partner Prediction / Joint Future Prediction / Agentic 同步或轮流 / 超长窗口滚动]
+    end
+    INF --> DEN[因果迭代去噪 k=K 到 0]
+    DFOT -.-> DEN
+    DEN --> DEC[VQ-VAE 解码 条件 β 与 ΔT -> 多人动作]
+```
+
+图依据：论文 §3.1–3.3（Fig. 2、Fig. 3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +87,7 @@ summary: "把 Diffusion Forcing（每个 token 独立加噪/独立去噪的自�
 - [humanoid_pnb_magnet.md](../../sources/papers/humanoid_pnb_magnet.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/MAGNet__Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Modeling/MAGNet__Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Modeling.html>
 - 论文：<https://arxiv.org/abs/2512.17900>
+- [arXiv PDF](https://arxiv.org/pdf/2512.17900)：已通读方法部分（实验与附录以略读为准）：§3.1 运动表示、§3.2 多智能体生成网络、§3.3 采样策略
 
 ## 推荐继续阅读
 

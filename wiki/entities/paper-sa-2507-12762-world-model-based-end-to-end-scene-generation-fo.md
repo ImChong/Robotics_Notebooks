@@ -42,6 +42,29 @@ End-to-end scene generation for accident anticipation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["原始 dashcam 数据集（非事故视频）"] --> S["驾驶场景解构 Scene Deconstruction<br/>Video-LLaVA 零样本问答 + 一致性检查<br/>得到天气/光照/路况等环境因素分布"]
+    S --> PR["环境提示 prompts<br/>按数据集分布比例随机生成"]
+    C["事故报告坐标 → OpenStreetMap 路网/建筑<br/>（500 m 范围）→ SUMO 生成交通流"] --> W
+    PR --> W["驾驶场景重建：World Dreamer 世界模型<br/>（基于 Stable Diffusion v1.5，nuScenes 训练）"]
+    AG["驾驶智能体 UniAD<br/>输出自车运动与轨迹规划"] <--> W
+    W --> GV["生成的负样本 dashcam 视频"]
+    GV --> MIX["与原训练数据混合（数据增广）"]
+    V --> MIX
+    MIX --> FE["视觉特征提取<br/>目标检测（保留前 19 个）+ VGG16 帧/目标特征 + ZoeDepth 深度"]
+    FE --> GCN["Dynamic GCN<br/>节点=检测目标，边权=深度修正的 3D 距离与相对速度<br/>+ LSTM 时序"]
+    FE --> GF["全局帧特征"]
+    GCN --> FU["图特征与全局视觉特征融合"]
+    GF --> FU
+    FU --> TR["时序关系学习<br/>多层空洞卷积 + 跳连 + LayerNorm → GRU"]
+    TR --> O["线性分类：每帧事故概率<br/>（时间加权交叉熵训练）"]
+```
+
+图依据：论文 Overall Framework、Driving Scene Generation（Fig.2）、Visual Feature Extraction / Dynamic GCN / Temporal Relational Learning（Fig.7）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ End-to-end scene generation for accident anticipation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.12762>
+- [arXiv PDF](https://arxiv.org/pdf/2507.12762)：已通读方法部分（实验与附录以略读为准）：Introduction、Methods（Overall Framework、Driving Scene Generation、Visual Feature Extraction、Dynamic Graph Convolutional Network、Temporal Relational Learning）
 
 ## 推荐继续阅读
 

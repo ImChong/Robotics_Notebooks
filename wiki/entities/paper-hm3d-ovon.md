@@ -8,7 +8,7 @@ tags:
   - benchmark
 status: complete
 updated: 2026-09-23
-arxiv: "2409.01535"
+arxiv: "2409.14296"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./light-origins.md
@@ -45,6 +45,33 @@ summary: "HM3D-OVON：HM3D 上开放词汇目标导航设定；LightNav-0 十项
 - LightNav 跨任务泛化评测矩阵中的 ObjectNav 轴。
 - 博客 ingest 独立节点（非重复 stub）；见 [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph BM["基准构建（§III）"]
+        A["HM3DSem 稠密物体标注<br/>181 个场景 · 379 个目标类别"] --> B["划分训练 145 / 评测 36 场景<br/>场景与目标实例互不重叠"]
+        B --> C["评测拆分：VAL SEEN<br/>VAL SEEN SYNONYMS<br/>VAL UNSEEN"]
+        S["SentenceBERT 余弦相似度<br/>区分同义类别与全新类别"] --> C
+        B --> E["Episode 生成<br/>随机目标类别 + 随机起点<br/>最短路径 1–30m"]
+    end
+    subgraph BL["基线 OVON 策略（§IV，Fig.2）"]
+        I["RGB 观测 It"] --> E1["冻结 SigLIP RGB 编码器"]
+        G["目标类别 G（文本）"] --> E2["冻结 SigLIP text 编码器"]
+        P["上一步动作 a(t-1)"] --> E3["Embedding 层"]
+        E1 --> O["拼接为观测嵌入 ot"]
+        E2 --> O
+        E3 --> O
+        O --> T["4 层 decoder-only Transformer<br/>输入过去 100 步观测"]
+        T --> H["Action head：采样动作 at"]
+        T -.->|RL 时| V["Critic head：价值估计"]
+    end
+    E --> TR["训练方式：BC / DAgger（frontier exploration 或最短路径专家）<br/>RL（PPO）/ BCRL / DAgRL"]
+    TR --> T
+```
+
+图依据：论文 §III（基准构建）、§IV / Fig.2（基线策略）；训练方式取自 §IV。HM3D-OVON 本身是数据集 / 基准，上图为基准构建流程与论文设置的基线策略，并非其自提的单一方法。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -52,7 +79,7 @@ summary: "HM3D-OVON：HM3D 上开放词汇目标导航设定；LightNav-0 十项
 | **类型** | paper |
 | **出处** | 2024 |
 | **开源** | **待核实** |
-| **arXiv** | [2409.01535](https://arxiv.org/abs/2409.01535) |
+| **arXiv** | [2409.14296](https://arxiv.org/abs/2409.14296) |
 
 
 ## 源码运行时序图
@@ -64,7 +91,7 @@ summary: "HM3D-OVON：HM3D 上开放词汇目标导航设定；LightNav-0 十项
 - **评测设定：** HM3D 场景上的 **开放词汇目标导航（OVON）**——目标类别在评测期可以是训练未见的自然语言名词，因此不能用闭集 ObjectNav 的类别表兜底。
 - **主指标：** 导航类基准通用的 **SR（成功率）** 与 **SPL（按路径长度加权的成功率）**；SR 高而 SPL 低意味着「能找到但绕远」。
 - **在 LightNav 中的位置：** 作为 [LightNav-0](./paper-lightnav-0.md) **十项单目评测之一** 被引用，用于验证零样本导航的开放词汇覆盖面。
-- **数值口径：** 本页为博客 ingest 级摘要，**未复核逐项分数**；各方法的 SR/SPL **以 [原文](https://arxiv.org/abs/2409.01535) 为准**，勿用博客脚注回填。
+- **数值口径：** 本页为博客 ingest 级摘要，**未复核逐项分数**；各方法的 SR/SPL **以 [原文](https://arxiv.org/abs/2409.14296) 为准**，勿用博客脚注回填。
 
 ## 与其他工作对比
 
@@ -99,8 +126,11 @@ summary: "HM3D-OVON：HM3D 上开放词汇目标导航设定；LightNav-0 十项
 - [hm3d_ovon_2024.md](../../sources/papers/hm3d_ovon_2024.md)
 - [lightorigins_lightnav_0_2026-09-01.md](../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md)
 - [Tech Blog](https://www.lightorigins.com/blog/lightnav-0)
+- [arXiv PDF](https://arxiv.org/pdf/2409.14296)：已通读方法部分（实验与附录以略读为准）：§III、§IV、Fig.2；结果 §V 仅略读
 
 ## 推荐继续阅读
 
 - [Light Origins 官网](https://www.lightorigins.com/)
 - [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)
+
+- 核对（2026-11-02）：原 arXiv 编号 2409.01535 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2409.14296。

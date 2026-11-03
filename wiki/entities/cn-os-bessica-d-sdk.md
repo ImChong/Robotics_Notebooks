@@ -55,6 +55,46 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python examples/05_demo_move_joint.py --port <串口>`（Python SDK，双臂关节运动示例；其余示例同样从 `bessica_d_sdk.create_robot()` 起步）。
+
+```mermaid
+sequenceDiagram
+    participant EX as examples/05_demo_move_joint.py
+    participant CR as bessica_d_sdk.create_robot（__init__.py）
+    participant API as SynriaBessicaRobotAPI（api/synria_b_robot_api.py）
+    participant SD as ServoDriver（hardware/servo_driver.py）
+    participant SC as SerialComm（hardware/serial_comm.py）
+    participant DP as DataParser（hardware/data_parser.py）
+    participant HW as Bessica-D 双臂（串口）
+    EX->>CR: create_robot(port, baudrate, robot_version, speed_deg_s)
+    CR->>SD: ServoDriver(port, baudrate)
+    CR->>API: SynriaBessicaRobotAPI(servo_driver, robot_version)
+    API->>API: synriard.get_model_path("Bessica_D") → robocore RobotModel
+    EX->>API: connect()
+    API->>SD: connect()
+    SD->>SC: connect()
+    SD->>SD: start_update_thread()，wait_for_valid_state(arm="both")
+    loop 后台线程 _update_loop（poll_mode）
+        SD->>SC: send_data([0xAA,0x06,0x01,0x00,0x00,0xFF]) 关节状态请求
+        HW-->>SC: 状态帧
+        SD->>SC: read_frame()
+        SD->>DP: parse_frame(frame)
+    end
+    EX->>API: set_speed(speed_deg_s)，set_home()
+    EX->>API: set_joint_target(target_joints, arm="left_arm"/"right_arm")
+    API->>SD: move_joints_deg(arm, angles_deg, wait_for_completion)
+    SD->>SD: read_joint_state(arm) → set_joint_angles(...)
+    SD->>SD: _build_joint_frame(mapped_angles, arm)
+    SD->>SC: send_data(frame)
+    SC->>HW: 串口写入关节目标
+    EX->>API: set_gripper_target(arm="both", command="close")
+    EX->>API: disconnect()
+```
+
+图依据：Synria-Robotics/Bessica-D-SDK@bc908e1，读过 README.md、bessica_d_sdk/__init__.py、api/synria_b_robot_api.py（部分）、hardware/servo_driver.py（部分）、examples/05_demo_move_joint.py；serial_comm.py、data_parser.py 未读，set_gripper_target 内部调用未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +106,7 @@ institutions:
 - [Bessica-D-SDK 源码归档](../../sources/repos/bessica-d-sdk.md)（<https://github.com/Synria-Robotics/Bessica-D-SDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Synria-Robotics/Bessica-D-SDK@bc908e1，读过 README.md、bessica_d_sdk/__init__.py、bessica_d_sdk/api/synria_b_robot_api.py（部分）、bessica_d_sdk/hardware/servo_driver.py（部分）、examples/05_demo_move_joint.py；serial_comm.py、data_parser.py 未读；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

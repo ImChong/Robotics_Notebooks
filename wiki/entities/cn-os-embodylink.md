@@ -55,6 +55,47 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+仓库含两部分：`DobotRXStudio/`（Qt 上位机，`DobotRXStudio.pro`）与 `DobotRXTool/`（上位机依赖的 Python 独立小工具）。DobotRXStudio 下的 `.cpp`、`.pro` 及绝大多数 `.h` 文件在仓库中是加密文本（文件头为 `%TSD-Header-###%`），无法阅读，因此上位机内部调用链不画；下图只覆盖可读的 `DobotRXTool/robotformatapp`（训练格式转换）。`DobotRXTool/readme.md` 称它由 DobotRXStudio 调用，但调用方源码不可读，此处不作验证。
+
+入口：`python main.py -file <json配置绝对路径>`（`DobotRXTool/robotformatapp/main.py`；readme 说明用 pyinstaller 打包为 `robotformatapp`）。
+
+```mermaid
+sequenceDiagram
+    participant Caller as 调用方（DobotRXStudio 或命令行）
+    participant Main as robotformatapp/main.py formatFile()
+    participant H as hdf5filewriter.py HDF5FileWriter
+    participant L as lerobotfilewriter.py LeRobotFileWriter
+    participant Raw as 采集数据目录（N.pkl + 相机图片）
+    participant Out as 输出（.hdf5 或 LeRobot 数据集）
+
+    Caller->>Main: python main.py -file config.json
+    Main->>Main: 读取 JSON，取 format 与 config
+    alt format == "hdf5"
+        loop 每个录制回合配置
+            Main->>H: parseHdf5 → process_dataset(cfg)
+            H->>Raw: load_dataset()：读 pkl 得到 qpos、action、各相机图片路径
+            H->>H: load_annotation()（标注 JSON）
+            H->>Raw: load_camera_images_from_file()：按 crop_img 裁剪并缩放
+            H->>Out: save_hdf5()：写 observations/qpos、action、annotation，图片 JPEG 压缩后写入 images/<cam>
+        end
+    else format == "lerobot"
+        Main->>L: parseLeRobot → process_dataset(config)
+        L->>Out: 若 save_dir 已存在则删除；create_empty_dataset(robot_type="atom")
+        loop 每个回合目录 all_record_dir
+            L->>Raw: load_data()：读图片、state、action、task
+            L->>Out: populate_dataset：dataset.add_frame(...)，save_episode()
+        end
+    else 其他
+        Main-->>Caller: 打印“不支持的文件格式”
+    end
+```
+
+另一个小工具 `DobotRXTool/pklparserapp/main.py`（`python main.py --dir <目录> --begin <起> --end <止>`）把 `N.pkl` 逐个转为 `cache/N.pkl.json`，无进一步调用链。
+
+图依据：Dobot-Arm/Embodylink@b9d1603，读过 README.md、DobotRXTool/readme.md、DobotRXTool/robotformatapp/{main.py、hdf5filewriter.py、lerobotfilewriter.py（部分）}、DobotRXTool/pklparserapp/main.py；DobotRXStudio 目录文件为加密文本，未能读取。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +107,7 @@ institutions:
 - [Embodylink 源码归档](../../sources/repos/embodylink.md)（<https://github.com/Dobot-Arm/Embodylink>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Dobot-Arm/Embodylink@b9d1603，读过 README.md、DobotRXTool/readme.md、DobotRXTool/robotformatapp/main.py、hdf5filewriter.py、lerobotfilewriter.py（部分）、DobotRXTool/pklparserapp/main.py；DobotRXStudio 目录源码为加密文本，未能读取；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

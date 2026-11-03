@@ -42,6 +42,23 @@ Foresighted planning with a world model-driven code execution approach.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  G["任务指令 g"] --> W["LLM 构建世界模型：文本有向图 G<br/>顶点 = 页面语言描述，边 = 动作转移 E"]
+  W --> PL["VLM 依据 g、G、初始观测 o0 生成 Python 规划代码<br/>含 isTRUE 条件检查，缺失处标 imagined 的新顶点/边"]
+  PL --> X["沙箱逐行执行规划代码"]
+  X --> E["遇到 E(·)：VLM 将抽象动作译为设备指令<br/>裁剪放大目标元素并验证，错误则换备选"]
+  X --> N["遇到 other_App_agent(·)：创建子智能体处理跨应用子任务"]
+  E --> EX["在设备上执行动作，得到新观测"]
+  EX --> R["VLM 依据新观测与上一动作迭代修正世界模型与规划"]
+  R --> X
+  R -.-> SV["任务结束后可保存精炼后的图"]
+```
+
+图依据：论文 §2.2 / §2.3 / §2.4 / §2.5 与 Algorithm 1（Fig.1 框架对比）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Foresighted planning with a world model-driven code execution approach.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.16422>
+- [arXiv PDF](https://arxiv.org/pdf/2505.16422)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2 Methodology（2.1–2.5、Algorithm 1）、§3.1–3.2 实验设定
 
 ## 推荐继续阅读
 

@@ -103,6 +103,7 @@ Overview of robot learning from demonstration.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2312.08591>
+- 核对（2026-11-02）：arXiv:2312.08591 实为《Joint2Human: High-quality 3D Human Generation via Compact Spherical Embedding of 3D Joints》(Zhang 等, 2023-12-14)，与本页不符，待查（候选 2311.14379 为基础模型时代机器人学习综述，与「从示教学习概览」描述不符，未采用）
 
 ## 推荐继续阅读
 

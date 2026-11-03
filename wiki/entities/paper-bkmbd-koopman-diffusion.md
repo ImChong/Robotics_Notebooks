@@ -35,6 +35,28 @@ summary: "BK-MBD（2609.28920）：Koopman 升维 + 双线性动力学批量推�
 - 纳入 [12 篇技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md) 与同期失败恢复、异步 WAM、接触感知、持续学习、安全 RL 条目横向对照。
 - 步骤 2.5 开源结论：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFFLINE["离线辨识（§III-B）"]
+        DATA["交互数据 D：记录的轨迹"] --> FIT["在长度 T 的轨迹片段上拟合：解码特征预测误差 + 潜状态贴近编码器像的项（stop-gradient）"]
+        FIT --> MODEL["双线性 Koopman 模型：Ψθ、A、B0、Bi、解码器 C（Bi 初始化为 0）"]
+    end
+    MODEL --> LIFT
+    subgraph STEP["在线：每个控制步（Algorithm 1）"]
+        ST["当前状态 s_t → 任务特征 b(s_t)"] --> LIFT["编码器只提升一次：z = Ψθ(τ(b))"]
+        LIFT --> DRAW["第 j 阶段：围绕热启动的 U 抽 N 个候选 Uk = U + σj·εk，投影到控制约束集"]
+        DRAW --> ROLL["批量双线性 rollout：z⁺ = M(u)z + B0·u，解码 b̂ = C·z，累加代价 Jk"]
+        ROLL --> W["softmax 权重 wk（温度 α）→ 代价加权均值 U ← Σ wk·Uk"]
+        W --> NEXT{"还有下一阶段（σ 递减，共 S 阶段）？"}
+        NEXT -->|是| DRAW
+        NEXT -->|否| OUT["执行 u0，序列平移一步作下一周期热启动"]
+    end
+```
+
+图依据：论文 §III-B（辨识）、Algorithm 1 与 Fig.1（每个控制步）
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -79,6 +101,7 @@ summary: "BK-MBD（2609.28920）：Koopman 升维 + 双线性动力学批量推�
 
 - [论文归档](../../sources/papers/bkmbd_koopman_diffusion_arxiv_2609_28920.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.28920)：已通读方法部分（实验与附录以略读为准）：§II 预备知识（MBD 更新与线性/双线性提升）、§III 双线性 Koopman MBD（A 至 C 前半）、Algorithm 1
 
 ## 推荐继续阅读
 

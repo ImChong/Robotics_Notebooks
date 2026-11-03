@@ -33,6 +33,38 @@ summary: "把\"高平台穿越\"从起跳式改成攀爬式：用 6 个 *(climb-
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph T["阶段一：教师训练（RL）"]
+    R["Ratchet Progress Reward<br/>最佳进度 x*_t 只增不减"]
+    M["四个全身机动技能<br/>climb-up / climb-down / stand-up / lie-down"]
+    L["两个常规技能<br/>walking / crawling（速度跟踪）"]
+    P["初始姿态采样 + 终端姿态奖励 r_tp<br/>使前后技能首尾状态衔接"]
+    R --> M
+    P --> M
+  end
+  subgraph D["阶段二：多教师蒸馏"]
+    S["divide-and-conquer 数据采样<br/>单技能 / 相邻两技能环境"]
+    BC["BC 预训练学生"]
+    DA["DAgger 精修<br/>按状态与指令选教师，MSE 监督动作"]
+    S --> BC --> DA
+  end
+  subgraph W["部署"]
+    LI["LiDAR elevation mapping"]
+    F["空间离群点滤波 + inpainting"]
+    U["统一学生策略<br/>自主选技能并切换"]
+    PD["目标关节位置 → PD 控制器"]
+    LI --> F --> U --> PD
+  end
+  M --> S
+  L --> S
+  DA --> U
+```
+
+图依据：论文 §III-A/B/C、Fig. 2、Fig. 3（学生部署端的 PD 跟踪来自 §III-B 对所有策略输出的描述）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +96,7 @@ summary: "把\"高平台穿越\"从起跳式改成攀爬式：用 6 个 *(climb-
 - [humanoid_pnb_apex-learning-adaptive-high-platform-traversal-f.md](../../sources/papers/humanoid_pnb_apex-learning-adaptive-high-platform-traversal-f.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid_Robots/APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2602.11143>
+- [arXiv PDF](https://arxiv.org/pdf/2602.11143)：已通读方法部分（实验与附录以略读为准）：§I Introduction、§II Related Work、§III-A/B/C 方法；§IV 实验仅略读
 
 ## 推荐继续阅读
 

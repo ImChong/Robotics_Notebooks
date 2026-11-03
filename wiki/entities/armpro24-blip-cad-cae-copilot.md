@@ -52,6 +52,47 @@ CAD CAE Copilot（armpro24-blip/cad-cae-copilot）是以自然语言生成 CAD/C
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 MIT。 
 
+## 源码运行时序图
+
+入口：`aieng-workbench-mcp`（即 `python -m aieng_workbench_mcp`，`--http` 为 SSE，默认 stdio；`--backend-url` 可选转发到 FastAPI 后端 `uvicorn app.main:app`）
+
+```mermaid
+sequenceDiagram
+    participant Agent as MCP 客户端（Claude Code / Codex 等）
+    participant Main as aieng_workbench_mcp.__main__ → app.mcp_server.main
+    participant Srv as mcp_server._build_mcp_server / _make_handler
+    participant Fwd as mcp_server._forward_to_backend
+    participant API as routers/cad_live.py agent_invoke_tool<br/>POST /api/agent/invoke-tool
+    participant RT as app.runtime.invoke_tool
+    participant Gen as cad_generation.execute_build123d_code
+    participant Sub as build123d runner 子进程
+
+    Agent->>Main: 启动进程（stdio 或 --http）
+    Main->>Srv: _build_mcp_server()
+    Srv->>Srv: create_app() 填充工具注册表；list_tools_for_mcp()；FastMCP.add_tool
+    Main->>Agent: mcp.run("stdio") 或 uvicorn.run(mcp.sse_app())
+    Agent->>Srv: 调用工具（如 cad_execute_build123d，点号换成下划线）
+    Srv->>Srv: _preflight（guide 守卫、检查模式拦截）
+    alt requires_approval
+        Srv->>Agent: 审批（broker / elicit 模式）
+    end
+    Srv->>Fwd: _execute：若配置 backend URL 则转发
+    Fwd->>API: GET /api/health 探活后 POST invoke-tool
+    alt 工具为 cad.execute_build123d
+        API->>Gen: execute_build123d_code(settings, project_id, inp)
+        Gen->>Sub: _execute_build123d_code_streaming（subprocess.Popen runner.py）
+        Sub-->>Gen: STEP / STL / GLB / topology.json
+        Gen->>Gen: _write_cad_artifacts 写入 .aieng 包；_publish_preview_to_viewer
+    else 其他工具
+        API->>RT: invoke_tool(tool, inp)
+    end
+    API-->>Fwd: 结果 JSON（并经 agent_activity 发布 tool_started/tool_completed 事件）
+    Note over Srv,RT: 后端不可达时 _execute 回退为进程内 _rt.invoke_tool
+    Srv-->>Agent: _finalize_result
+```
+
+图依据：armpro24-blip/cad-cae-copilot@b98b4d5，读过 `README.md`、`aieng-ui/backend/pyproject.toml`、`aieng_workbench_mcp/__main__.py`、`app/mcp_server.py`、`app/main.py`、`app/runtime.py`、`app/routers/cad_live.py`、`app/cad_generation.py`（部分段落）。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -62,6 +103,7 @@ CAD CAE Copilot（armpro24-blip/cad-cae-copilot）是以自然语言生成 CAD/C
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/armpro24-blip-cad-cae-copilot.md)
 - [armpro24-blip/cad-cae-copilot 官方仓库](<https://github.com/armpro24-blip/cad-cae-copilot>)
+- 源码核对（2026-11-02）：armpro24-blip/cad-cae-copilot@b98b4d5，读过 README.md、aieng-ui/backend/pyproject.toml、aieng_workbench_mcp/__main__.py、app/mcp_server.py、app/main.py、app/runtime.py、app/routers/cad_live.py、app/cad_generation.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

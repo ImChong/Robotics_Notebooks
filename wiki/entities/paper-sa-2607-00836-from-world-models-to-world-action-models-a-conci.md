@@ -42,6 +42,23 @@ Defines world models as action-conditioned predictive models, summarizing four r
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    F["§1 基础：世界 World → 物理 AI 任务与策略 Policy<br/>→ 世界模型 WM 与世界动作模型 WAM（及其与 VLA 的区别）"]
+    F --> W["§2 世界模型的设计空间：按预测空间划分"]
+    F --> A["§3 世界动作模型：把视觉未来预测与动作生成耦合"]
+    W --> O["§2.1 观测空间世界模型<br/>观测类型：RGB / 多视角 RGB / RGB-D / 点云<br/>动作类型：机器人动作 / 界面动作 / 潜在动作 / 语言"]
+    W --> S["§2.2 状态空间世界模型<br/>潜状态 / 点轨迹 / 神经符号谓词 / 物理状态"]
+    A --> P1["Imagine-then-execute<br/>先生成视觉子目标，再由逆动力学或目标条件策略出动作"]
+    A --> P2["Video-feature-conditioned action prediction<br/>取视频模型中间特征条件化动作预测"]
+    A --> P3["Joint video-action modeling<br/>单一生成模型联合建模未来观测与动作"]
+    A --> P4["Auxiliary video prediction<br/>视频预测仅作训练辅助目标，推理时可去掉"]
+```
+
+图依据：教程组织结构 / 分类体系图，论文 §1–§3 及 Fig. 4–Fig. 8（Fig. 6 观测空间设计空间、Fig. 7 状态空间设计空间、Fig. 8 WAM 分类）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Defines world models as action-conditioned predictive models, summarizing four r
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.00836>
+- [arXiv PDF](https://arxiv.org/pdf/2607.00836)：已通读全文正文（§1 基础、§2 世界模型设计空间、§3 世界动作模型；参考文献略读）；分类体系图依据论文 §1–§3 与 Fig. 4–8。
 
 ## 推荐继续阅读
 

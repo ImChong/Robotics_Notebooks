@@ -43,6 +43,28 @@ Time-aware world model for adaptive prediction and control.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练（Algorithm 1，基于 TD-MPC2）"]
+        EP["每个 episode 开始：从 Log-Uniform(Δt_min, Δt_max) 采样 Δt<br/>（可选 Uniform），观测/控制频率 = 1/Δt"] --> ACT["智能体 M_TA.act(o_t, Δt) 选动作 a_t，在环境执行"]
+        ACT --> BUF["转移 (o_t, a_t, o_(t+Δt), r_t, Δt) 存入经验池 B"]
+        BUF --> UPD["从 B 采样 batch 更新时间感知世界模型"]
+        UPD --> ACT
+    end
+    subgraph WM["时间感知世界模型（§4.1.2）：除编码器外各组件均以 Δt 为条件"]
+        ENC["编码器 z_t = h(o_t)<br/>（不依赖 Δt）"] --> DYN["潜动力学 ẑ(t+Δt) = z_t + d(z_t, a_t, Δt)·τ(Δt)<br/>τ(Δt) = max(0, log10 Δt + 5)；单步 Euler（或 RK4）"]
+        DYN --> RWD["奖励模型 R(z_t, a_t, Δt)"]
+        DYN --> VAL["价值模型 Q(z_t, a_t, Δt)"]
+        ENC --> POL["策略先验 p(z_t, Δt)"]
+    end
+    UPD -.-> WM
+    WM --> INFER["推理：以任意观测率 Δt 作为输入进行规划/控制"]
+```
+
+图依据：论文 §4.1–4.2 / Fig.1、Algorithm 1；Euler 与 RK4 对比见 §4.2 与附录 A（未细读附录）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Time-aware world model for adaptive prediction and control.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.08441>
+- [arXiv PDF](https://arxiv.org/pdf/2506.08441)：已通读方法部分（实验与附录以略读为准）：§4.1 模型架构、§4.2 训练流程（含 Algorithm 1）
 
 ## 推荐继续阅读
 

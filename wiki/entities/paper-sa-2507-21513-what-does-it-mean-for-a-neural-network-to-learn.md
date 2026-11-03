@@ -42,6 +42,25 @@ Conceptual analysis of what it means for a neural network to learn a world model
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SETUP["§3 基本设定：世界 W 经观测函数 α 得到输入数据 X；网络 f: X→Y，分解为 f = f2∘f1，f1: X→Z，f2: Z→Y"]
+    DEF["§3.1 world model 定义：向量空间 M 与函数 φ1: W→M、g: Z→M，满足 φ1 = g∘f1∘α；φ1 与 g 须属于预先指定的「简单」函数类 FW、FZ（如线性探针）"]
+    SETUP --> DEF
+    DEF --> LEARNED["§3.3.1 learned：不存在 h ∈ FX 使 h = g∘f1（排除数据 X 本身已含该模型）"]
+    DEF --> EMERGENT["§3.3.2 emergent：不存在 h: Y→M（h 属 FY）使 h∘f2 = g（排除输出 Y 已含该模型）"]
+    LEARNED --> CAUSAL
+    EMERGENT --> CAUSAL
+    CAUSAL["§4 causal：M 对输出 f2 起作用"]
+    CAUSAL --> COMPLETE["§4.1 causally complete：存在 φ2: M→Y 使 φ2∘g = f2"]
+    CAUSAL --> PARTIAL["§4.2 causal（可不完备）：引入输出的简化方面 A 与 h: Y→A，h∘f2 = φ2∘g，且 h∘f2∘f1 非常数"]
+    PARTIAL --> LOCAL["§5 local world model：仅在世界状态子集 W′ ⊂ W 上成立"]
+```
+
+图依据：理论定义关系图（概念框架，非训练流程），论文 §3（含 §3.1、§3.3）、§4、§5 及其中的交换图；§3.2 的 sentiment neuron 为论文给出的示例，未画入。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Conceptual analysis of what it means for a neural network to learn a world model
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.21513>
+- [arXiv PDF](https://arxiv.org/pdf/2507.21513)：已通读全文正文（摘要、§1 引言、§2 现有用法、§3 定义与排除平凡情形、§4 因果、§5 局部、§6 结论）；附录 A、B 未读
 
 ## 推荐继续阅读
 

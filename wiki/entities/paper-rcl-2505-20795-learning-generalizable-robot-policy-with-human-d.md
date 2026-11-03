@@ -42,6 +42,29 @@ A human demonstration video conditions a frozen video model whose features guide
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段一 VGCP: 跨具身视频生成表征学习"]
+        A["人类 / 夹爪 / 灵巧手视频<br/>(超过 25 万条)"] --> B["Cross-Prediction 训练<br/>以概率 P 用不同的源/目标具身, 否则同具身"]
+        B --> C["视频扩散模型微调<br/>输入: 源具身提示视频 + 目标具身初始图像<br/>输出: 目标具身执行同一任务的视频"]
+        C --> D["冻结, 其表征用于阶段二"]
+    end
+    subgraph S2["阶段二: 人类视频-动作对增强的技能学习"]
+        H["人类第三人称视频<br/>WiLoR 手部定位 + 3D 手部网格, 21 个关键点"] --> I["提取 6D 腕部位姿<br/>坐标变换到机器人基座系"]
+        I --> J["AnyTeleop 式优化重定向<br/>得到灵巧手关节动作"]
+        J --> K["人类动作 + 少量遥操作灵巧手数据"]
+        D --> Z["表征 z (R^4096)<br/>人类表征: 人类图像作初始帧<br/>机器人表征: 机器人图像作初始帧"]
+        Z --> P["Representation-conditioned Diffusion Policy<br/>p(a_t | s_t, z), s_t 为 ResNet-34 视觉特征<br/>手指/腕旋转/腕位置分头预测"]
+        K --> P
+        P --> L["PDCP: 额外可学习聚类 token<br/>总损失 = 动作损失 + NT-Xent + 原型交叉熵 + 度量损失"]
+    end
+    L --> INF["推理: 人类提示视频提取任务表征<br/>融合机器人实时观测, 策略输出动作"]
+```
+
+图依据：论文 §III Methods（§III-A VGCP、§III-B Human Video-Action Pair Boosting、§III-C PDCP）/ Fig.2–3、§IV 推理流程描述。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ A human demonstration video conditions a frozen video model whose features guide
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2505.20795>
+- [arXiv PDF](https://arxiv.org/pdf/2505.20795)：已通读方法部分（实验与附录以略读为准）：§III-A/B/C、§IV 实验设定与推理流程
 
 ## 推荐继续阅读
 

@@ -38,6 +38,32 @@ summary: "人形要在人类环境中干活，难点是头、手、腿的全身�
 - **手眼协调被实证为长时程关键**：提示全身操作策略应显式建模视觉-手部耦合；
 - **与 HumanProcessing / 末端跟踪类工作呼应**：如 HiWET、Learning Humanoid End-Effector Control。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph TELEOP[模块化遥操作 VR 控制器]
+        ARM[手臂: 按住扳机时手柄相对位姿变化 -> 末端位姿 -> IK -> 目标关节]
+        HAND[手: 握把键控制四指整体, 摇杆控制拇指]
+        HEAD[头: 按钮切换跟踪左手或右手, 由手相对头位置算 yaw / pitch]
+        LOCO[行走: 摇杆速度指令 -> 仿真训练的速度条件 RL 策略 100 Hz -> 关节目标 -> PD]
+    end
+    TELEOP --> DEMO[遥操作演示数据]
+    DEMO --> OBS
+    subgraph CP[Choice Policy]
+        OBS[观测: RGB 经冻结 DINOv3 + 深度经 ResNet-18 + 本体感知 3 层 MLP] --> F[拼接特征向量 f]
+        F --> PROP[动作提案网络 两层 MLP -> K 条候选动作序列]
+        F --> SC[得分预测网络 两层 MLP -> K 个得分]
+        PROP --> SEL[选得分最优候选执行]
+        SC --> SEL
+    end
+    SEL --> OUT[手臂和手的目标关节位置; 含行走时另输出下肢高层指令]
+    PROP -. 训练: 仅 MSE 最小候选反传 winner-takes-all .-> LOSS[训练目标]
+    SC -. 训练: 回归各候选与真值的 MSE .-> LOSS
+```
+
+图依据：论文 §III（Fig. 2）、§IV-B/C（Fig. 3、Fig. 4 伪代码）。
+
 ## 解决什么问题
 
 人形**全身协调**（头/手/腿）既难采数据又难学策略： - **采集难**：整体遥操作一个高自由度人形，难得到高质量演示； - **建模难**：操作行为常是**多模态**的（多种合理做法），单一回归/扩散各有取舍（扩散慢、BC 易塌缩到均值）。
@@ -89,6 +115,7 @@ summary: "人形要在人类环境中干活，难点是头、手、腿的全身�
 - [humanoid_pnb_coordinated-humanoid-manipulation-with-choice-po.md](../../sources/papers/humanoid_pnb_coordinated-humanoid-manipulation-with-choice-po.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Coordinated_Humanoid_Manipulation_with_Choice_Policies/Coordinated_Humanoid_Manipulation_with_Choice_Policies.html>
 - 论文：<https://arxiv.org/abs/2512.25072>
+- [arXiv PDF](https://arxiv.org/pdf/2512.25072)：已通读方法部分（实验与附录以略读为准）：§III 模块化遥操作接口、§IV Choice Policy（架构与训练目标）
 
 ## 推荐继续阅读
 

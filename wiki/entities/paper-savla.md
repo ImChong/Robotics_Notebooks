@@ -39,6 +39,31 @@ summary: "SAVLA（arXiv:2609.16641）：冻结 VLM backbone，Action Head 用 eq
 
 - 旋转泛化靠数据增强昂贵；结构等变比堆数据更高效。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["第三人称图像 I3p"] --> B["canonicalizer：3 层 CNN 对 M=8 个候选角打分"]
+    B --> C["softmax 概率 + 圆均值 → 场景旋转估计 θ̂"]
+    C --> D["桌面平面单应 H(θ̂) 把图像 warp 到规范视角"]
+    D --> E["冻结 VLM 骨干"]
+    F["腕部图像 + 语言指令 ℓ"] --> E
+    E --> G["type-0 标量条件 C^(0)（近似旋转不变）"]
+    H["固定参考点 ξ_i^0<br/>(ViT patch 中心反投影到桌面)"] --> I["Rz(θ̂) 旋转参考点"]
+    C --> I
+    I --> J["type-1 向量条件 C^(1)（腕部/语言 token 置 0）"]
+    K["本体状态 s_t：位置、旋转矩阵前两列、重力方向、夹爪"] --> L["类型化状态编码<br/>(MLP 处理 ρ0，Vector Neuron 处理 ρ1)"]
+    M["噪声动作块 Z_τ"] --> N["类型化动作编码"]
+    L --> O["等变 flow-matching 速度网络<br/>L 个块：等变 norm/modulation → 自注意力+对条件的交叉注意力 → 等变 FFN<br/>标量轨与向量轨经不变范数交互"]
+    N --> O
+    G --> O
+    J --> O
+    O --> P["K 步欧拉积分"]
+    P --> Q["动作块 (a_t … a_t+Tp-1)"]
+```
+
+图依据：论文 §IV-A/B/C 与 Fig. 1、式 9–13
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -82,6 +107,7 @@ summary: "SAVLA（arXiv:2609.16641）：冻结 VLM backbone，Action Head 用 eq
 - [savla_arxiv_2609_16641.md](../../sources/papers/savla_arxiv_2609_16641.md)
 - [wechat_senlanke_weekly_manipulation_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md)
 - [arXiv:2609.16641](https://arxiv.org/abs/2609.16641)
+- [arXiv PDF](https://arxiv.org/pdf/2609.16641)：已通读方法部分（实验与附录以略读为准）：§III 预备知识，§IV 方法（等变动作头、对称感知条件、canonicalization）
 
 ## 推荐继续阅读
 

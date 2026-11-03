@@ -42,6 +42,24 @@ Scene-consistent interactive long video generation with memory retrieval.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["用户给定下一步目标相机位姿 cam_t"] --> B["Memory Retrieval：基于相机轨迹的 FOV 重叠检索"]
+    H["历史帧 X 与相机位姿 C（全部历史作为 memory）"] --> B
+    B --> C["检索 k-1 帧高重叠上下文 + 最近生成帧"]
+    C --> D["3D VAE Encoder 编码得到上下文 latent z_c"]
+    D --> E["沿帧维度拼接 z_c 与噪声 latent z_t"]
+    E --> F["相机位姿经 MLP 编码后加到 DiT 特征（camera-conditioned）"]
+    F --> G["Autoregressive Video DiT 去噪（只更新 z_t）"]
+    G --> I["3D VAE Decoder 解码新帧 x_t"]
+    I --> J["将 x_t 与 cam_t 追加回历史"]
+    J --> H
+```
+
+图依据：论文 §3.2 / §3.3 / Fig. 2 / Fig. 3 / Algorithm 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +115,7 @@ Scene-consistent interactive long video generation with memory retrieval.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.03141>
+- [arXiv PDF](https://arxiv.org/pdf/2506.03141)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3.1–3.4 方法与数据采集、Algorithm 1/2、Fig. 2–4
 
 ## 推荐继续阅读
 

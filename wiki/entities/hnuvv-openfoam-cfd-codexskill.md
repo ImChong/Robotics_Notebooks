@@ -52,6 +52,42 @@ OpenFOAM CFD Codex Skill（HNUVV/openfoam-CFD-codexskill）是文章将它作为
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 未报告 SPDX 许可证，应检查仓库内 LICENSE 与依赖许可。 
 
+## 源码运行时序图
+
+本仓库本质是 Codex Skill（`SKILL.md` + `agents/openai.yaml` 提示词），自带两个辅助脚本；没有求解器，OpenFOAM 命令由用户本机环境执行。下图画的是仓库里真实存在的脚本调用链。
+
+入口：`python scripts/setup_case.py <caseName> --solver simpleFoam`，之后 `python scripts/run_batch.py --base <baseCase> --params sweep.csv --solver simpleFoam`
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / Codex 代理（读取 SKILL.md）
+    participant SC as scripts/setup_case.py create_case()
+    participant TPL as assets/templates/*
+    participant RB as scripts/run_batch.py main()
+    participant OF as OpenFOAM 求解器（simpleFoam 等，本机安装）
+    U->>SC: python setup_case.py caseName --solver simpleFoam
+    SC->>SC: 建 0/、constant/、system/ 三个目录
+    SC->>TPL: 复制 controlDict、fvSchemes、fvSolution、fvOptions → system/
+    SC->>TPL: 复制 transportProperties、turbulenceProperties → constant/；U、p → 0/
+    SC->>SC: 把 controlDict 中的 REPLACE_SOLVER 替换为 --solver
+    SC-->>U: 打印后续步骤（自行写 blockMeshDict，再 blockMesh && checkMesh && solver）
+    U->>OF: blockMesh、checkMesh（SKILL.md 的手动步骤，脚本不调用）
+    U->>RB: python run_batch.py --base baseCase --params sweep.csv
+    RB->>RB: read_params 读 CSV（csv.DictReader）
+    loop CSV 每一行
+        RB->>RB: shutil.copytree(base → case_name)
+        RB->>RB: 遍历文件，把 REPLACE_<列名大写> 替换为该行取值
+        alt 无 --dry-run
+            RB->>OF: subprocess.run([solver])（或 mpirun -np N solver -parallel），timeout 3600s
+            OF-->>RB: returncode
+            RB->>RB: 失败则写 error.log
+        end
+    end
+    RB-->>U: 打印 Summary: N OK, M FAILED
+```
+
+图依据：HNUVV/openfoam-CFD-codexskill@0c65b4b，读过 README.md、SKILL.md、agents/openai.yaml、scripts/setup_case.py、scripts/run_batch.py，并 grep 了 assets/templates 中的 `REPLACE_*` 占位符。`scripts/of_postprocess_matlab.m` 未细读，图中未画。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -62,6 +98,7 @@ OpenFOAM CFD Codex Skill（HNUVV/openfoam-CFD-codexskill）是文章将它作为
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/hnuvv-openfoam-cfd-codexskill.md)
 - [HNUVV/openfoam-CFD-codexskill 官方仓库](<https://github.com/HNUVV/openfoam-CFD-codexskill>)
+- 源码核对（2026-11-02）：HNUVV/openfoam-CFD-codexskill@0c65b4b，读过 README.md、SKILL.md、agents/openai.yaml、scripts/setup_case.py、scripts/run_batch.py、assets/templates（仅 REPLACE_ 占位符）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

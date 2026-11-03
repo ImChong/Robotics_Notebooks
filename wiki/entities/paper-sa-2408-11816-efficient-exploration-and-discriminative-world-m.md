@@ -42,6 +42,30 @@ Efficient exploration and discriminative world model learning with object-centri
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["低层观测 S"] --> MAP["对象中心映射 M（给定或学得）"]
+    MAP --> ABS["抽象状态 X：(item identity, item attribute) 集合"]
+    BEH["行为 b = (item, 新 attribute)：对象扰动策略 πb"] --> FWD
+    ABS --> FWD["前向模型 fθ(X, b)：预测行为成功概率 q"]
+    subgraph TRAIN["训练阶段：无外部奖励的探索"]
+        RINTR["计数型内在奖励 r_intr(X, b)"] --> MCTS["在 fθ 想象中做 MCTS，取首个 behaviour"]
+        FWD --> MCTS
+        MCTS --> EXEC["在 Ab-MDP 中执行行为，收集 (X, b, X')"]
+        EXEC --> FIT["统计成功频率，BCE 损失更新 fθ"]
+        FIT --> FWD
+    end
+    subgraph INFER["推理阶段：到达目标抽象状态"]
+        RGOAL["r_goal：目标状态为 1，其余为 0"] --> DIJ["Dijkstra：边权 -log fθ(X, b)"]
+        FWD --> DIJ
+        DIJ --> SEQ["最大成功概率的 behaviour 序列"]
+    end
+```
+
+图依据：论文 §2 Problem Setting（Fig.1）与 §3 Methods（§3.1 前向模型、§3.2 探索规划、§3.3 目标规划，Fig.2、Fig.3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Efficient exploration and discriminative world model learning with object-centri
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2408.11816>
+- [arXiv PDF](https://arxiv.org/pdf/2408.11816)：已通读方法部分（实验与附录以略读为准）：§2 问题设定、§3 方法（前向模型、探索规划、目标规划）；§4 实验设定略读
 
 ## 推荐继续阅读
 

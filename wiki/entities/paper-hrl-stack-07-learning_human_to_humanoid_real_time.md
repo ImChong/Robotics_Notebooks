@@ -42,6 +42,31 @@ H2O 的完整名字是 Human-to-Humanoid。它要解决的问题很直接：能�
 - 这篇论文放在 HumanX 和 HDMI 后面很合适。HumanX / HDMI 关心的是从人类视频里生产可训练的交互技能，H2O 则更进一步，把“人类动作到机器人身体”的转换做成实时遥操作系统。
 - 它的关键不只是 pose retargeting，而是把数据、仿真和真机控制接成一条闭环。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    AMASS["AMASS 人体动作数据集"]
+    FIT["SMPL 形状拟合 (优化 beta') + 逆运动学重定向到 H1 (12 关节匹配)"]
+    PRIV["特权模仿策略 (无域随机化) 在仿真中跟踪全部重定向动作"]
+    CLEAN["剔除跟踪失败的序列, 得到可行动作数据集"]
+    TRAIN["Isaac Gym 中训练 sim-to-real 模仿策略 (域随机化, 仅用真实可得状态)"]
+    CAM["RGB 相机 + 3D 人体姿态估计器"]
+    GOAL["实时模仿目标 (8 个参考关键点)"]
+    POL["模仿策略输出 19 维关节目标 -> PD 控制器"]
+    ROBOT["人形机器人 H1"]
+    AMASS --> FIT
+    FIT --> PRIV
+    PRIV --> CLEAN
+    CLEAN --> TRAIN
+    CAM --> GOAL
+    GOAL --> POL
+    TRAIN --> POL
+    POL --> ROBOT
+```
+
+图依据：论文 §IV Retargeting, §V Policy Training / Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -101,6 +126,7 @@ H2O 的完整名字是 Human-to-Humanoid。它要解决的问题很直接：能�
 - [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md) — 总表
 - [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) — 微信公众号编译导读
 - 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
+- [arXiv PDF](https://arxiv.org/pdf/2403.04436)：已通读方法部分（实验与附录以略读为准）：§I 引言、§IV Retargeting、§V Whole-Body Teleoperation Policy Training
 
 ## 推荐继续阅读
 

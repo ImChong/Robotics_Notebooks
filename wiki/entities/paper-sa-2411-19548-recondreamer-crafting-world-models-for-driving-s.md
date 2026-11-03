@@ -42,6 +42,24 @@ Crafts world models for driving scene reconstruction via online restoration.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["原始轨迹数据 V_ori"] --> G0["训练重建模型 G (如 Street Gaussians)"]
+    G0 --> UT["欠训练 G 沿原轨迹渲染<br/>各训练阶段 k 的退化视频 (含鬼影)"]
+    UT --> PAIR["退化帧与 GT 帧配对：渲染修复数据集"]
+    PAIR --> TR["训练 DriveRestorer<br/>在世界模型上微调，扩散损失 L_R<br/>条件：遮罩退化帧 + 3D boxes + HDMaps"]
+    G0 --> NV["G 渲染新轨迹视频 V̂_novel<br/>轨迹偏移 y = kΔy"]
+    TR --> RS["DriveRestorer 冻结并修复 V̂_novel → V_novel<br/>结构条件经投影对齐新轨迹"]
+    NV --> RS
+    RS --> PD["PDUS：D = 0.5·D_ori ∪ 0.5·D_novel<br/>D_novel 逐步更新 (Algo.1)"]
+    PD --> OPT["用更新数据集优化 G"]
+    OPT -->|"迭代至收敛"| NV
+```
+
+图依据：论文 §3.1 Overall Framework / §3.2 DriveRestorer 训练与推理 / §3.3 PDUS（Algo.1）与 Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +115,7 @@ Crafts world models for driving scene reconstruction via online restoration.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.19548>
+- [arXiv PDF](https://arxiv.org/pdf/2411.19548)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 至 3.3）、§4 实验设置与指标
 
 ## 推荐继续阅读
 

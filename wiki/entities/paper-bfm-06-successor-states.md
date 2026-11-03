@@ -37,6 +37,25 @@ sources:
 - 未来状态分布作为可复用控制表示的数学底座。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **01 Forward-backward 表征**（#06/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["观测到的转移 s → s'（黑盒环境采样）<br/>+ 采样目标状态 s₂（通常来自同一分布）<br/>无需奖励信号"] --> M["学习双状态函数<br/>固定策略：后继状态算子 M(s, s₂)<br/>目标依赖：V / Q(s, a; 目标 s₂)"]
+    M --> A1["前向 TD：M = Id + γPM"]
+    M --> A2["后向 TD：M = Id + γMP"]
+    M --> A3["二阶 Bellman–Newton：M ← 2M − M² + γMPM"]
+    M --> FB["FB 表示：M(s₁, s₂) ≈ F(s₁)ᵀB(s₂)<br/>F 与 B 由上述 TD 更新学习"]
+    A1 --> OUT
+    A2 --> OUT
+    A3 --> OUT
+    FB --> OUT["得到的对象"]
+    OUT --> V["给定奖励 R 后 V = M R<br/>（有限状态下，奖励到价值函数的线性映射）"]
+    OUT --> P["§8：Q-learning 或策略梯度等方式<br/>学习价值函数与（目标依赖）策略"]
+```
+
+图依据：论文 §1 Overview of Results（贡献总结，对应 §3-§8、§6 FB 表示、§7 Bellman–Newton）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -89,6 +108,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/pdf/2101.07123>
+- [arXiv PDF](https://arxiv.org/pdf/2101.07123)：已通读 §1 概览与贡献总结；§3-§9 与附录的推导与证明未逐节通读（流程图只画 §1 明确写出的学习对象与更新式）
 
 ## 推荐继续阅读
 

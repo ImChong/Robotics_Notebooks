@@ -43,6 +43,31 @@ Unified vision-language-action model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VL["VL 对齐的预训练检查点\n（Emu3 第一阶段权重初始化）"] --> PT
+    subgraph PT["阶段1：后训练 World Model（无需动作）"]
+        direction TB
+        P1["机器人视频数据 622K"] --> P2["序列 Sv = 指令 + 视觉观测序列\n仅对视觉 token 计算损失"]
+    end
+    PT --> FT
+    subgraph FT["阶段2：微调 Policy Learning"]
+        direction TB
+        F1["序列 Sa = 指令 + 视觉/动作交错序列\n仅对动作 token 计算损失"]
+    end
+    LAN["语言指令\n（Emu3 tokenizer）"] --> SEQ["统一离散多模态序列 L\n共享词表 + boi/eoi/boa/eoa 边界 token"]
+    IMG["视觉观测\n（VQ tokenizer）"] --> SEQ
+    ACT["动作序列\n（DCT 变换 + FAST tokenizer）"] --> SEQ
+    SEQ --> TR["自回归 Transformer\n（Emu3 架构，next-token 交叉熵）"]
+    TR --> PT
+    TR --> FT
+    FT --> OUT["输出动作 token → 解码为动作块"]
+```
+
+图依据：论文 §3.1–3.2 / Fig.2、§4.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +123,7 @@ Unified vision-language-action model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.19850>
+- [arXiv PDF](https://arxiv.org/pdf/2506.19850)：已通读方法部分（实验与附录以略读为准）：§3.1–3.2 方法（含 Fig.2、式 1–2）、§4.1–4.2 数据集与实现细节
 
 ## 推荐继续阅读
 

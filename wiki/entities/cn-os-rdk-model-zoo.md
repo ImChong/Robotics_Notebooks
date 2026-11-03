@@ -55,6 +55,48 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+本仓库是多个独立样例的合集（`samples/vision`、`samples/vla`、`samples/robotics` 等），没有统一的单一入口；下图只取其中一个代表样例 `samples/vision/ultralytics_yolo` 的 Python 运行路径，其余样例的调用链未逐个核对，不能由此图推出。
+
+入口：`python samples/vision/ultralytics_yolo/runtime/python/main.py --platform x5 --family yolov8 --task detect --model-path <模型> --test-img <图片>`（模型先由 `model/download_model.sh` 下载）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户命令行
+    participant M as main.py main()
+    participant C as cli.py
+    participant D as detect.py YoloDetect
+    participant B as backend.py ModelRunner
+    participant RT as hbm_runtime HB_HBMRuntime（板端镜像提供）
+
+    U->>M: --platform --family --task --model-path --test-img
+    M->>C: build_parser().parse_args()
+    M->>C: resolve_platform(resolve_target(platform))
+    M->>C: describe_plan(profile, args)
+    alt --list-models / --dry-run
+        M-->>U: 只打印，不加载模型
+    else 实际推理
+        M->>C: ensure_model(plan)（缺失时下载）
+        M->>C: load_labels(args, task)
+        M->>C: prepare_runtime_model(profile, args) 返回 Model 类与 Config
+        M->>D: Model(config) 构造
+        D->>B: build_runner(config) 即 ModelRunner.from_selection
+        B->>RT: RuntimeSession.load() 加载 .bin / .hbm
+        B->>B: 读取模型元数据并绑定输入输出
+        M->>D: set_scheduling_params(priority, bpu_cores)
+        M->>D: predict(image)
+        D->>D: preprocess：resize_with_transform，bgr_to_nv12_planes，打包 NV12 张量
+        D->>B: infer，即 ModelRunner.__call__(prepared_input)
+        B->>RT: model.run(prepared_input)
+        RT-->>B: 原始输出，read_raw_outputs 按角色整理
+        D->>D: postprocess：decode_dfl，inverse_boxes 还原原图坐标
+        M->>C: present_result(args, image, result, labels)
+    end
+```
+
+图依据：D-Robotics/rdk_model_zoo@7a97c17，读过 `README.md`、`samples/vision/ultralytics_yolo/README.md`、`runtime/python/main.py`、`runtime/python/cli.py`（`prepare_runtime_model` 及入口函数签名）、`runtime/python/detect.py`（`YoloDetect`）、`runtime/python/backend.py`（`ModelRunner`、`build_runner`）；`RuntimeSession`（`utils/py_utils/runtime`）与 `hbm_runtime` 内部未读；`present_result` 内部、YOLO26/分割/姿态等分支未读，图中仅按 `YoloDetect`（DFL 检测）画出。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +108,7 @@ institutions:
 - [rdk_model_zoo 源码归档](../../sources/repos/rdk_model_zoo.md)（<https://github.com/D-Robotics/rdk_model_zoo>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：D-Robotics/rdk_model_zoo@7a97c17，读过 README.md、samples/vision/ultralytics_yolo/README.md、samples/vision/ultralytics_yolo/runtime/python/{main,cli,detect,backend}.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

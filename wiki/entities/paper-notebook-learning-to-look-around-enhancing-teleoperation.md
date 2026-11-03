@@ -44,6 +44,39 @@ summary: "本文提出一套集成 5 自由度（DOF）可动颈的遥操作系�
 - **降低认知负荷**直接影响采集时长与数据质量；
 - 对人形（本就有颈/头）是自然的硬件配置。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph OP["操作员端"]
+        HEAD["Apple Vision Pro<br/>6DOF 头部追踪"]
+        HAND["手部追踪: trakSTAR (掌背/拇指/食指) 控制夹爪<br/>Manus VR 手套 (25 关键点) 控制灵巧手"]
+    end
+    subgraph ROBOT["机器人 (移动底盘 + 双 UR5e + 5-DOF 主动颈)"]
+        NECK["主动颈 WidowX-200<br/>(头部位姿直接映射为颈部相机位姿)"]
+        ARM["UR5e 机械臂 + 夹爪/灵巧手"]
+        CAM["相机: 颈部 / 躯干 / 腕部 (RealSense D405)"]
+        PRO["本体感知: 关节位置/速度/力矩"]
+    end
+    HEAD --> NECK
+    HAND --> ARM
+    NECK --- CAM
+    CAM -->|"颈部相机视频经 WiFi 实时回传"| HEAD
+    CAM --> REC
+    PRO --> REC
+    REC["记录遥操作演示 (每任务 120 条)"]
+    REC --> ACT["ACT 模仿学习策略<br/>(context window = 1)"]
+    subgraph IN["策略输入"]
+        I1["本体: 右臂 + 颈部关节位置"]
+        I2["视觉: 颈部相机 + 腕部相机"]
+    end
+    IN --> ACT
+    ACT --> OUT["预测右臂与颈部关节配置"]
+    OUT -.->|"对照: 静止 160° 广角相机策略"| CMP["成功率比较"]
+```
+
+图依据：论文 §2 Hardware（Fig.2）、§3 Teleoperation and Data Collection（3.1–3.2，Fig.3）、§4.2 Impact of an Actuated Neck on Imitation Learning（ACT 策略输入输出）。
+
 ## 解决什么问题
 
 固定相机限制遥操作与学习： - 看不全、需操作者**脑补**，**认知负荷高**； - 固定视角导致**分布偏移**，自主策略难学。
@@ -132,6 +165,7 @@ summary: "本文提出一套集成 5 自由度（DOF）可动颈的遥操作系�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning/Learning_to_Look_Around__Enhancing_Teleoperation_and_Learning.html>
 - 论文：<https://arxiv.org/abs/2411.00704>
 - 论文正文（硬件、实验与 Table 1）：<https://arxiv.org/html/2411.00704>
+- [arXiv PDF](https://arxiv.org/pdf/2411.00704)：已通读方法部分（实验与附录以略读为准）：Hardware、§3 Teleoperation and Data Collection、§4.2 Imitation Learning 设置
 
 ## 推荐继续阅读
 

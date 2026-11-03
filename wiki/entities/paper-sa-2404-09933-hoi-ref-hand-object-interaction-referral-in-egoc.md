@@ -42,6 +42,27 @@ Defines a new task of HOI referral in egocentric scenarios, accompanied by the H
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 数据["HOI-QA 问答对构造 §3.2"]
+        A1["已有第一视角标注：narration、物体框、手框与左右手、手物接触"] --> QA["转换为问答对：指代手/物体、描述动作、手物交互指代"]
+        QA --> DS["HOI-QA 数据集，3.9M 问答对"]
+    end
+    subgraph 模型["VLM4HOI §3.1"]
+        I["egocentric 图像 I"] --> G["冻结视觉编码器 g"]
+        G --> Wp["可训练投影层 W_φ：E_p = W_φ·g(I)"]
+        T["文本指令 T，分词为 E_L；框以 Xleft Ytop Xright Ybottom 文本格式表示"] --> CAT["拼接 E_p 与 E_L"]
+        Wp --> CAT
+        CAT --> LLM["语言模型 f_θ"]
+        LLM --> O["语言回答 E_a：文字或边界框"]
+    end
+    DS -->|"微调 θ 与 ϕ"| LLM
+```
+
+图依据：论文 §3.1 / Fig.2、§3.2 / Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Defines a new task of HOI referral in egocentric scenarios, accompanied by the H
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2404.09933>
+- [arXiv PDF](https://arxiv.org/pdf/2404.09933)：已通读方法部分（§3.1 VLM4HOI、§3.2 问答对生成框架）与 Fig.2、Fig.3；实验与附录以略读为准
 
 ## 推荐继续阅读
 

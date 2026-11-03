@@ -42,6 +42,27 @@ Proposes a method to enable safe deployment-time policy adaptation in real-world
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph pre["预训练阶段：随机化仿真"]
+    A["宽范围域随机化的仿真环境"] --> B["PCRPO 安全 RL<br/>同时学习策略与 cost Critic"]
+    B --> C{"代价相对阈值 b"}
+    C -->|"超过 h+ + b：安全违反"| D["按 cost 梯度更新策略"]
+    C -->|"软约束区间"| E["reward 与 cost 梯度冲突则投影合成，否则加权相加"]
+    C -->|"低于 h- + b：无违反"| F["按 reward 梯度更新策略"]
+  end
+  pre --> G["预训练策略参数快照"]
+  G --> H["回放仿真轨迹，计算对角 Fisher 信息<br/>估计参数重要性（EWC）"]
+  subgraph adapt["适应阶段：真实系统"]
+    I["在真实系统上继续用 PCRPO 训练"] --> J["损失 = PCRPO 损失 + EWC 正则<br/>约束重要参数偏离快照"]
+  end
+  H --> adapt
+```
+
+图依据：论文 §III-B（预训练阶段、适应阶段，Eq. 2-7）与 Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Proposes a method to enable safe deployment-time policy adaptation in real-world
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2503.10949>
+- [arXiv PDF](https://arxiv.org/pdf/2503.10949)：已通读方法部分（实验与附录以略读为准）：§II 背景、§III Methodology、§IV 实验设定
 
 ## 推荐继续阅读
 

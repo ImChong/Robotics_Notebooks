@@ -42,6 +42,23 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Randomization。
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["1 真机数据采集：任意已有策略或示教，得到状态-动作轨迹数据集 D"] --> B["预处理：多传感器同步，Akima 样条重采样到仿真步长"]
+    B --> C["2 动力学分布拟合：初始化 p_φ(ξ) 的均值与方差"]
+    C --> D["采样 K 组动力学参数 ξ_k"]
+    D --> E["对 D 中每个转移：置仿真状态为 s_t，执行真实动作 a_t..t+λ-1，得到各 ξ_k 下的下一状态"]
+    E --> F["计算均值与协方差，Gaussian 对数似然 L_t（含 ε 正则）"]
+    F --> G["CMA-ES 更新 φ 以最大化总似然 L"]
+    G -->|"未收敛"| D
+    G -->|"收敛得到 p_φ*(ξ)"| H["3 策略训练：每个 episode 开头从 p_φ*(ξ) 采样动力学，PPO 或 SAC"]
+    H --> I["部署到采集数据的真机"]
+```
+
+图依据：论文 §3.2 / Fig.2 / Algorithm 1、§3.3–§3.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Randomization。
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2201.08434>
+- [arXiv PDF](https://arxiv.org/pdf/2201.08434)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.5（问题设定、方法概览与 Algorithm 1、数据采集、分布拟合、策略训练）
 
 ## 推荐继续阅读
 

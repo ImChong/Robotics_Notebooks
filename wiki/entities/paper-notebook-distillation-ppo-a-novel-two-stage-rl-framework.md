@@ -31,7 +31,36 @@ Distillation-PPO 的人形机器人学习论文条目，当前处于 Paper Noteb
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记尚未写出；方法流程见下方「流程总览」（依据论文方法部分），其余结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SENS["感知与高程图"]
+        LIO["Livox MID-360 + IMU → FAST-LIO2 位姿"] --> EM["高程图（一维 Kalman 滤波逐格更新）"]
+        DEP["Orbbec 深度图 → 点云；用关节角 + 正运动学剔除腿部遮挡"] --> EM
+        EM --> SCAN["Scan dots 向量 m（441 维）"]
+    end
+    subgraph S1["阶段一：Teacher（完全可观测 MDP）"]
+        SCAN1["仿真器直接给出的干净 scan dots"] --> C1["Conv1D → 32 维感知隐变量"]
+        H1["50 帧历史状态 → 外部编码器 → 32 维隐变量"] --> M1["组合 MLP"]
+        C1 --> M1
+        M1 --> TP["Teacher 策略（PPO，周期步态 + 指令 + 正则奖励）"]
+    end
+    subgraph S2["阶段二：Student（部分可观测 MDP）"]
+        INIT["继承 Teacher 网络结构与参数初始化"] --> SP["Student 策略<br/>输入：加噪 scan dots + 历史本体感觉（域随机化）"]
+        SP --> LOSS["Ltotal = α·Ldistillation（与 Teacher 动作的 MSE）+ β·LPPO"]
+        RL["RL 奖励 → PPO 损失"] --> LOSS
+        LOSS -->|"梯度同时更新策略与历史状态编码器"| SP
+    end
+    TP -->|"监督信号 / 初始化"| INIT
+    TP -->|"监督信号"| LOSS
+    SCAN -.->|"加高斯噪声模拟真实传感器"| SP
+    SP --> DEPLOY["天工（Tien Kung）真机复杂地形行走"]
+```
+
+图依据：论文 §III-B、§IV-A Two-Stage RL with Teacher Distillation、§IV-B Rewards / Fig.2。
 
 ## 核心信息
 
@@ -64,6 +93,7 @@ Distillation-PPO 的人形机器人学习论文条目，当前处于 Paper Noteb
 - [humanoid_pnb_distillation-ppo-a-novel-two-stage-rl-framework.md](../../sources/papers/humanoid_pnb_distillation-ppo-a-novel-two-stage-rl-framework.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2503.08299>
+- [arXiv PDF](https://arxiv.org/pdf/2503.08299)：已通读方法部分（实验与附录以略读为准）：§III-B 高程图与 Scan Dots、§IV Method（A 两阶段蒸馏 RL、B 奖励与感知）、§V-A 训练与实现细节
 
 ## 推荐继续阅读
 

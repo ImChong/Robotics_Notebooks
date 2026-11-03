@@ -42,6 +42,30 @@ World models as effective data machines for 4D driving scene representation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph NTGM["新轨迹视频生成 (§3.2.1)"]
+        T0["原始轨迹 T_ori<br/>(转换到首帧自车坐标系)"] --> T1["Novel Trajectory Generation Module<br/>调整转向角 / 速度，提出新轨迹<br/>(变道、加速、减速)"]
+        T1 --> T2{"轨迹安全评估<br/>在可行驶区域内且与其他智能体<br/>距离 ≥ d_min?"}
+        T2 -->|"否：缩小偏移重采样"| T1
+        T2 -->|"是"| T3["投影得到新轨迹的 3D 框序列 + HDMap 序列"]
+        T3 --> T4["驾驶世界模型 (条件去噪 U-Net 视频扩散)<br/>输入首帧 + 结构化信息 + 文本"]
+        T4 --> T5["新轨迹生成视频"]
+    end
+    subgraph CDTS["4D 重建：Cousin Data Training Strategy (§3.2.2)"]
+        C1["时间对齐的 cousin pair<br/>原始视频 + 新轨迹生成视频"] --> C2["BatchStack 成训练 batch"]
+        C2 --> C3["4D Gaussian Splatting (4DGS) 光栅化渲染<br/>原始 / 新轨迹视角"]
+        C3 --> C4["L = L_ori + λ_novel·L_novel + λ_reg·L_reg<br/>(L_reg：感知特征一致性；新轨迹不用深度约束)"]
+        C4 -->|"优化 4DGS"| C3
+    end
+    T5 --> C1
+    GT["原始轨迹真值视频"] --> C1
+```
+
+图依据：论文 §3.2 DriveDreamer4D（Fig. 2 整体框架、Algorithm 1 NTGM、§3.2.1 新轨迹视频生成、§3.2.2 CDTS、式 6–11）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +121,7 @@ World models as effective data machines for 4D driving scene representation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.13571>
+- [arXiv PDF](https://arxiv.org/pdf/2410.13571)：已通读方法部分（实验与附录以略读为准）：§3.2、§3.2.1、§3.2.2；§3.1 预备知识略读。
 
 ## 推荐继续阅读
 

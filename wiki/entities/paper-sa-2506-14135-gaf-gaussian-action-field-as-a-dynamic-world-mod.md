@@ -42,6 +42,35 @@ Gaussian action field as a dynamic world model for robotic manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["稀疏多视角 RGB（两张未标定图像）+ 相机内参"] --> VIT["共享权重 ViT + 跨视角注意力"]
+    VIT --> HC["Gaussian Center Head：位置 μ"]
+    VIT --> HF["Gaussian Param Head：外观 f = 颜色 c、不透明度 σ、旋转 r、尺度 s"]
+    VIT --> HM["Motion Prediction Head：位移 Δμ"]
+    HC --> CUR["当前 Gaussian {μ, f}"]
+    HF --> CUR
+    HC --> FUT["未来 Gaussian {μ+Δμ, f}"]
+    HF --> FUT
+    HM --> FUT
+    CUR --> REN["alpha-blend 渲染当前/未来新视角图像"]
+    FUT --> REN
+    REN -. "RGB 监督：LPIPS + MSE（当前与未来）" .-> VIT
+    CUR --> ICP["取夹爪部分 Gaussian，ICP 估计 SE(3) 变换并插值"]
+    FUT --> ICP
+    ICP --> INIT["Init Action a_init（视觉上合理，物理可行性不足）"]
+    INIT --> GUIDE["把夹爪网格按候选动作渲染到当前多视角图像<br/>= Actionable Multiview RGB Guidance"]
+    CUR --> GUIDE
+    GUIDE --> DIF["扩散去噪 Refinement（K 步，少量真实动作数据监督）"]
+    DIF --> ACT["精修动作 a⁰：末端位姿 + 夹爪开合"]
+    ACT --> EXE["逆运动学执行 → 新观测"]
+    EXE -. "闭环迭代至任务完成" .-> IMG
+```
+
+图依据：论文 §III-A（GAF 表示）、§III-B / Fig.2（重建网络与 Init Action）、§III-C / Fig.3（动作视觉对齐的扩散精修与闭环执行）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +126,7 @@ Gaussian action field as a dynamic world model for robotic manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.14135>
+- [arXiv PDF](https://arxiv.org/pdf/2506.14135)：已通读方法部分（实验与附录以略读为准）：§III-A/B/C。
 
 ## 推荐继续阅读
 

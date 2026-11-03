@@ -42,6 +42,23 @@ Investigates when neural networks learn world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DEF1["§2 Definition 2.1 数据生成过程：z ∼ p(z)，通过可逆非线性函数 x = ψ(z) 生成观测 x"] --> DEF2["Definition 2.2 学习世界模型：表示 Φ(x) = T(z)，T 属于简单变换类（如线性变换），即恢复潜变量 z"]
+    DEF2 --> NONID["核心难点：潜变量不可识别（non-identifiability，Lemma 2.4）"]
+    NONID --> PROXY["Definition 2.3 代理任务 h 与 realization：所有 realization 在训练集上误差为零，无法按任务表现区分"]
+    PROXY --> BOOL["§3 布尔函数表述：Fourier-Walsh 变换 + degree / realization degree 作为复杂度度量"]
+    BOOL --> S41["§4.1 低次偏置（low-degree bias）驱动表示学习"]
+    S41 --> S42["§4.2 学习世界模型的条件：多任务设定 + 低次偏置（模型与任务分布），两者共同保证潜变量可识别"]
+    S42 --> S43["§4.3 学习世界模型的好处：分布外泛化设定"]
+    S42 --> S44["§4.4 模型架构的影响：basis compatibility（基相容性）"]
+    S44 --> S5["§5 算法含义：多项式外推 5.1、学习物理规律 5.2（架构用不同激活函数）"]
+```
+
+图依据：理论论文的论证结构图，依据论文 Fig.1、§1 末尾的贡献说明、§2 Definition 2.1–2.3、§4 开头的结构说明与 §5 开头。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Investigates when neural networks learn world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.09297>
+- [arXiv PDF](https://arxiv.org/pdf/2502.09297)：已读摘要、§1 引言与贡献、§2 世界模型学习的形式化、§3 复杂度度量开头、§4 开头与 §4.4 开头、§5 开头；定理证明、数值实验与附录略读
 
 ## 推荐继续阅读
 

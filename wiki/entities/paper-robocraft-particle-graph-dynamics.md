@@ -36,6 +36,26 @@ summary: "RoboCraft（具身世界模型六路线专题）：粒子图预测弹�
 - 属于六路线 taxonomy 的 **规划主导型**：预测结果被用于 **执行时在模型中试走，外部规划/验证裁决动作。**
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["RGBD 相机<br/>四台 RealSense D415"] --> B["粒子采样<br/>RANSAC 去平台 → Poisson 表面重建 →<br/>物理先验补点 → 形状先验(SDF)精修 → 降采样 / FPS"]
+    B --> C["粒子图构建<br/>顶点=粒子，边=距离阈值内的邻居<br/>(含 gripper-to-object 关系)"]
+    C --> D["GNN 动力学模型 Φ<br/>编码 → 消息传递 → 预测下一时刻粒子"]
+    R["随机交互数据<br/>50 episodes，每 episode 3 次 grip"] --> B
+    D --> E["损失：EMD 与 Chamfer distance 加权和<br/>训练 Φ"]
+    D --> F["目标条件 MPC<br/>参数化动作 x,y,z,rz,d"]
+    G["目标形状 g"] --> F
+    F --> H["随机 shooting 选低代价轨迹<br/>再用 L-BFGS 梯度优化"]
+    H --> I["执行一次 grip"]
+    I --> J{"损失足够小<br/>或达最大 grip 数?"}
+    J -- "否：用相机重新观测" --> B
+    J -- "是" --> K["结束"]
+```
+
+图依据：论文 §III-A–E / Fig.2、Fig.3
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -74,6 +94,7 @@ summary: "RoboCraft（具身世界模型六路线专题）：粒子图预测弹�
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/2205.02909)：已通读方法部分（实验与附录以略读为准）：§III Method（A–E）、§IV-A/B 实验设定与数据采集
 
 ## 推荐继续阅读
 

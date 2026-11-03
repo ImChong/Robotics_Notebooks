@@ -6,9 +6,10 @@
 - **分组：** 291 Procedural Error Detection
 - **编号：** 120/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2504.07892
+- **arXiv：** 2406.08379
+- **编号核对：** 上游清单登记的 2504.07892 经 arXiv 官方记录核对为另一篇论文《Orbit design for mitigating interstellar scattering effects in Earth-space VLBI observations of Sgr A*》，与本条目不符；已更正为 2406.08379《Gazing Into Missteps: Leveraging Eye-Gaze for Unsupervised Mistake Detection in Egocentric Videos of Skilled Human Activities》（核对日期 2026-11-02）。
 - **出处：** CVPR 2025
-- **论文：** <https://arxiv.org/abs/2504.07892>
+- **论文：** <https://arxiv.org/abs/2406.08379>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** First unsupervised mistake detection method leveraging eye-gaze signals for skilled procedural activities

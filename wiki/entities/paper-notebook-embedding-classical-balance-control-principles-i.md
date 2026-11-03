@@ -33,6 +33,28 @@ summary: "这篇论文的核心不是“再堆一个更大的网络”，而是�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始姿态分布<br/>站 / 蹲 / 跪 / 坐 / 仰卧，目标直立"] --> T
+    subgraph T["Isaac Lab 训练 (PPO, 非对称 Actor-Critic)"]
+        direction TB
+        ACT["Actor MLP：仅本体感觉观测 o_t（带均匀噪声）<br/>输出相对关节位置目标 ×0.3 → 低层 PD<br/>随机 10–40 ms 指令延迟"]
+        CRI["Critic MLP：o_t + 特权量<br/>CoM 位置 / 速度 / 加速度、全身动量、Capture Point"]
+        RW["物理引导奖励 R = R_I + R_II + R_III<br/>I 垂直恢复（CoM 高度）→ II 平衡与可捕获性（CoM 支撑、Capture Point、动量正则）→ III 正则与运动塑形"]
+        CUR["三阶段课程：探索（10× 力矩限）→ 难度扩展（扰动 / 初始姿态 / Domain Randomization）→ 硬件约束退火（1× 力矩）"]
+        CRI --> ACT
+        RW --> ACT
+        CUR --> ACT
+    end
+    T --> M["MuJoCo sim-to-sim 验证"]
+    M --> S["SCS2 集成与平衡可视化"]
+    S --> H["Unitree H1-2 零样本部署<br/>仅用本体感觉"]
+```
+
+图依据：论文 §III（Fig. 2 端到端流程；III-B 学习架构、III-E 物理引导奖励、III-F 课程、III-G Domain Randomization）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -65,6 +87,7 @@ summary: "这篇论文的核心不是“再堆一个更大的网络”，而是�
 - [humanoid_pnb_embedding-classical-balance-control-principles-i.md](../../sources/papers/humanoid_pnb_embedding-classical-balance-control-principles-i.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery.html>
 - 论文：<https://arxiv.org/abs/2603.08619>
+- [arXiv PDF](https://arxiv.org/pdf/2603.08619)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法（A–G）；§IV 实验与结果略读
 
 ## 推荐继续阅读
 

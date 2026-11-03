@@ -42,6 +42,20 @@ RCL Awesome WAM 清单收录（Evaluation metrics）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["真实视频样本（分布 PR）"] --> I3D
+    G["生成视频样本（分布 PG）"] --> I3D
+    I3D["预训练 I3D（Kinetics-400 / Kinetics-600，动作识别）前向"] --> F["取特征：最后一层 logits 或最后 pooling 层输出"]
+    F --> GS["对真实 / 生成特征各拟合多元高斯（均值 μ、协方差 Σ）"]
+    GS --> FVD["Fréchet 距离（Eq.2）= FVD"]
+    F --> MMD["或用多项式核 MMD 比较两组特征 = KVD"]
+```
+
+图依据：论文 §2（Fréchet Video Distance、KVD）与 Eq.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +112,7 @@ RCL Awesome WAM 清单收录（Evaluation metrics）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/1812.01717>
+- [arXiv PDF](https://arxiv.org/pdf/1812.01717)：已通读方法部分（实验与附录以略读为准）：§1-§2（FVD / KVD 定义）与 §3 StarCraft 2 Videos 数据集描述；§4 噪声实验、人类评测与附录仅略读
 
 ## 推荐继续阅读
 

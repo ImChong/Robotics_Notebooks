@@ -42,6 +42,31 @@ Learns motion and content features via joint-embedding.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph MOTION["运动分支：视频光流估计 M-JEPA"]
+        direction TB
+        V["视频相邻帧 I_t 与 I_t+1"] --> ENC1["共享编码器<br/>输出金字塔特征"]
+        ENC1 --> FE["PWC-Net 式光流估计器<br/>4D correlation volume<br/>由粗到细逐层预测残差光流"]
+        FE --> LM["损失：特征回归 + 图像重建 + 平滑<br/>+ 前后向 cycle consistency"]
+    end
+    subgraph CONTENT["内容分支：图像 VICReg 联合嵌入"]
+        direction TB
+        IM["ImageNet 图像<br/>随机裁剪 + 颜色抖动得到两个视图"] --> ENC2["共享编码器"]
+        ENC2 --> EXPD["Expander 网络"]
+        EXPD --> LS["VICReg 损失 L_ssl<br/>不变性 + 方差 + 协方差"]
+    end
+    ENC1 -.- SHARED["编码器结构与权重共享"]
+    ENC2 -.- SHARED
+    LM --> SUM["多任务总损失 = 光流各项 + 方差协方差正则 L_vc + L_ssl"]
+    LS --> SUM
+    SUM --> BP["反向传播到编码器、expander 与光流估计器"]
+```
+
+图依据：论文 §3.1 Optical flow、§3.2 Multi-task self-supervised learning / Fig.1、Fig.2、式 (7)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Learns motion and content features via joint-embedding.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2307.12698>
+- [arXiv PDF](https://arxiv.org/pdf/2307.12698)：已通读方法部分（实验与附录以略读为准）：§3 Proposed Approach（§3.1 光流、§3.2 多任务自监督）、§4.1 数据集；§4 其余实验与附录仅略读
 
 ## 推荐继续阅读
 

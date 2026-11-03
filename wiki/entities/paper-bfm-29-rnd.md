@@ -41,6 +41,27 @@ sources:
 - 内在奖励探索经典；身体预训练常需自发现新状态。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **03 Intrinsic reward 预训练**（#29/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ENV["环境观测 s_{t+1}"] --> NORM["观测归一化<br/>减滑动均值/除滑动标准差, 裁剪到 [-5,5]"]
+    NORM --> TGT["固定随机初始化目标网络 f<br/>(不训练)"]
+    NORM --> PRD["预测器网络 f̂ (梯度下降训练)"]
+    TGT --> ERR["MSE: ||f̂(x) - f(x)||²"]
+    PRD --> ERR
+    ERR -->|"最小化"| PRD
+    ERR --> INT["内在奖励 i_t<br/>(除以内在回报滑动标准差归一化)"]
+    EXT["外部奖励 e_t (episodic)"] --> VE["外部价值头 V_E"]
+    INT --> VI["内在价值头 V_I (non-episodic)"]
+    VE --> V["V = V_E + V_I"]
+    VI --> V
+    V --> PPO["PPO 策略更新 (双价值头)"]
+    PPO -->|"采样动作"| ENV
+```
+
+图依据：论文 §2.2 Random Network Distillation / §2.3 Combining intrinsic and extrinsic returns / §2.4 Reward and observation normalization / Fig.1-3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +111,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/1810.12894>
+- [arXiv PDF](https://arxiv.org/pdf/1810.12894)：已通读方法部分（实验与附录以略读为准）：§1 引言（略）、§2 Method（2.1–2.4）、§3 实验设定（3.1–3.2）；其余实验与附录略读
 
 ## 推荐继续阅读
 

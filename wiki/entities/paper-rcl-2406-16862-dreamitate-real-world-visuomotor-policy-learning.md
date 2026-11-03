@@ -42,6 +42,19 @@ Dreamitate learns task-specific video generation from human tool demonstrations,
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    A["Step 1 录制人类演示<br/>用可追踪的定制工具<br/>两个标定相机 相隔 45 度"] --> B["Step 2 微调视频模型<br/>Stable Video Diffusion 预训练权重<br/>只调时空注意力层 每任务一个模型"]
+    C["新场景 双目图像对 v0"] --> D["Step 3 微调后模型生成<br/>立体视频 v̂t"]
+    B --> D
+    D --> E["Megapose + 已知 CAD 模型<br/>跟踪工具 6D 位姿 at in SE3"]
+    E --> F["机械臂末端装同款工具<br/>逐帧执行 a0..aT"]
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2、Fig.3、Eq.1–2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +111,8 @@ Dreamitate learns task-specific video generation from human tool demonstrations,
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2406.16862>
+- [arXiv PDF](https://arxiv.org/pdf/2406.16862)：已通读方法部分（实验与附录以略读为准）：§3.1 概述、§3.2 视频生成、§3.3 Track then Act；§4 实验与附录以略读/未读为准
+
 
 ## 推荐继续阅读
 

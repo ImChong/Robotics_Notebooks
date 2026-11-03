@@ -55,6 +55,46 @@ Ansys Electronics Desktop 与相应产品许可必须由用户提供；不同应
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 NOASSERTION。 涉及商业软件时，安装包和有效许可证需由使用者自行提供。
 
+## 源码运行时序图
+
+入口：`uv run ansys-aedt-mcp`（即 `pyproject.toml` 的 `ansysmcp.server:main`，默认 stdio；可加 `--transport streamable-http`）。
+
+```mermaid
+sequenceDiagram
+    participant C as MCP 客户端（AI 代理）
+    participant M as server.main / FastMCP
+    participant T as server.py 的 @mcp.tool
+    participant S as session.AedtSessionManager
+    participant O as operations.py
+    participant P as PyAEDT（ansys.aedt.core）
+
+    M->>M: build_arg_parser().parse_args，mcp.run(transport)
+    C->>T: aedt_start_session(app_name="hfss", ...)
+    T->>S: manager.start(...)
+    S->>S: normalize_app_name，import_app_class
+    S->>P: instantiate_with_supported_kwargs(Hfss, kwargs)
+    P-->>S: app 对象，存入 AedtSessionState
+    S-->>C: info() 的 JSON 摘要
+    C->>T: aedt_create_setup(name, properties)
+    T->>S: with manager.locked()（RLock 串行化）
+    T->>O: create_setup(manager, ...)
+    O->>P: app.create_setup，apply_setup_properties，setup.update
+    O-->>C: to_jsonable(setup)
+    C->>T: aedt_analyze(setup_name)
+    T->>O: analyze(manager, ...)
+    O->>P: app.analyze_setup(setup_name) 或 app.analyze
+    C->>T: aedt_get_solution_data(expressions, ...)
+    T->>O: get_solution_data(manager, ...)
+    O->>S: manager.target("post")
+    O->>P: post.get_solution_data
+    O-->>C: {"solution_data": to_jsonable(result)}
+    C->>T: aedt_release_session
+    T->>S: manager.release
+    S->>P: app.release_desktop
+```
+
+图依据：ansys-aedt-mcp@65e7064，读过 `pyproject.toml`、`README.md`、`src/ansysmcp/__main__.py`、`server.py`（main、aedt_start_session、aedt_create_setup、aedt_analyze、aedt_get_solution_data 等工具包装）、`session.py`、`operations.py`（create_setup、analyze、get_solution_data）、`serialization.py`（头部）。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -65,6 +105,7 @@ Ansys Electronics Desktop 与相应产品许可必须由用户提供；不同应
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/laplaceyoung-ansys-aedt-mcp.md)
 - [LaplaceYoung/ansys-aedt-mcp 官方仓库](<https://github.com/LaplaceYoung/ansys-aedt-mcp>)
+- 源码核对（2026-11-02）：LaplaceYoung/ansys-aedt-mcp@65e7064，读过 pyproject.toml、README.md、src/ansysmcp/__main__.py、server.py、session.py、operations.py（create_setup/analyze/get_solution_data）、serialization.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

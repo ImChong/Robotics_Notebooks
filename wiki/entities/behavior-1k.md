@@ -62,6 +62,41 @@ summary: "斯坦福等 2023 年推出的具身 AI 基准：基于社会调查筛
 
 覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
 
+## 源码运行时序图
+
+入口：`python -m omnigibson.examples.environments.behavior_env_demo`（`OmniGibson/omnigibson/examples/environments/behavior_env_demo.py`，读取 `r1pro_behavior.yaml` 配置；安装用仓库根目录 `setup.sh`）。该示例用随机动作演示 BEHAVIOR 任务环境的 Gym 循环；官方评测另有 `OmniGibson/omnigibson/eval/eval.py`（本图未覆盖）。
+
+```mermaid
+sequenceDiagram
+    participant D as behavior_env_demo.py<br/>main()
+    participant E as omnigibson/envs/env_base.py<br/>Environment
+    participant T as omnigibson/tasks/behavior_task.py<br/>BehaviorTask
+    participant S as og.sim (simulator.py)
+    participant B as bddl / utils.bddl_utils<br/>BDDLSampler
+    D->>D: yaml 载入 r1pro_behavior.yaml, 设置 online_object_sampling
+    D->>E: og.Environment(configs=cfg)
+    E->>E: load(): _load_scene → _load_objects → _load_robots → _load_task → _load_external_sensors
+    E->>T: _load(env), 创建 PredicateGoal + Timeout 终止条件, PotentialReward
+    T->>B: BDDLSampler (在线采样时) 按 BDDL 活动定义放置物体
+    E->>S: og.sim.play()
+    E->>E: 构建观测/动作空间, reset()
+    loop 10 次 reset, 每次最多 100 步
+        D->>E: env.reset()
+        E->>T: task.reset(env)
+        D->>E: env.step(robot.action_space.sample() * 0.1)
+        E->>E: robot.apply_action(各机器人动作)
+        E->>S: og.sim.step()
+        E->>E: get_obs()
+        E->>T: task.step(env, action): 先终止条件再奖励
+        T->>T: PredicateGoal → compiled_task.check_goal(BDDL 谓词求值)
+        T-->>E: reward, done, info
+        E-->>D: obs, reward, terminated, truncated, info
+    end
+    D->>S: og.shutdown()
+```
+
+图依据：StanfordVL/OmniGibson@14bc29c，读过 README.md、OmniGibson/omnigibson/examples/environments/behavior_env_demo.py、OmniGibson/omnigibson/envs/env_base.py（load/step/reset）、OmniGibson/omnigibson/tasks/behavior_task.py（终止条件、奖励、BDDLSampler 创建处）、OmniGibson/omnigibson/tasks/task_base.py（step）、OmniGibson/omnigibson/termination_conditions/predicate_goal.py。
+
 ## 关联页面
 
 - [NVIDIA Omniverse](./nvidia-omniverse.md)
@@ -74,6 +109,7 @@ summary: "斯坦福等 2023 年推出的具身 AI 基准：基于社会调查筛
 
 - [sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md)
 - Li et al., *BEHAVIOR-1K: A Benchmark for Embodied AI with 1,000 Everyday Activities and Realistic Simulation* — [arXiv](https://arxiv.org/abs/2212.11794)
+- 源码核对（2026-11-02）：StanfordVL/OmniGibson@14bc29c，读过 README.md、OmniGibson/omnigibson/examples/environments/behavior_env_demo.py、OmniGibson/omnigibson/envs/env_base.py、OmniGibson/omnigibson/tasks/behavior_task.py、OmniGibson/omnigibson/tasks/task_base.py、OmniGibson/omnigibson/termination_conditions/predicate_goal.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

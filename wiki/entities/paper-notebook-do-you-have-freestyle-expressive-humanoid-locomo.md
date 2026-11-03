@@ -31,7 +31,34 @@ Do You Have Freestyle? Expressive Humanoid Locomotion via Audio Control 的人�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」（依据论文方法部分），不给实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph ALIGN[音频-动作对齐]
+        AU[音乐或语音] --> AL[音频 latent l_audio]
+        MO[动作] --> ML[预训练 VAE 动作 latent l_motion]
+        AL --> AD[音频适配器: 6 层 Transformer + 时间注意力]
+        AD -->|InfoNCE 对比学习| ML
+    end
+    subgraph TEACH[教师策略: 仿真中 RL 训练]
+        OBS[机器人本体感知 + 参考动作 + 特权信息] --> GATE[门控网络]
+        GATE --> E[ΔMoE 4 个专家, 嵌套条件子空间 S1 到 S4<br/>残差融合 a = w1·a1 + Σ wi·ai-ai-1]
+        E --> TA[教师动作 a]
+    end
+    subgraph STU[学生策略: 扩散模型, DAgger 式蒸馏]
+        TXT[文本描述 如 a person is dancing] --> MG[预训练动作生成器 -> 固定 content latent]
+        MG --> DIF[扩散去噪 x0 预测]
+        AD -->|style: 多层注入 o_i = Layer_i + α·l_audio| DIF
+        DIF --> SA[学生动作]
+    end
+    TA -->|学生 rollout 访问的状态上查询教师动作 监督| DIF
+    SA --> G1[Unitree G1 真机部署]
+```
+
+图依据：论文 §3.1–3.4（Fig. 2、Fig. 3）、§4 开头。
 
 ## 核心信息
 
@@ -64,6 +91,7 @@ Do You Have Freestyle? Expressive Humanoid Locomotion via Audio Control 的人�
 - [humanoid_pnb_do-you-have-freestyle-expressive-humanoid-locomo.md](../../sources/papers/humanoid_pnb_do-you-have-freestyle-expressive-humanoid-locomo.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2512.23650>
+- [arXiv PDF](https://arxiv.org/pdf/2512.23650)：已通读方法部分（实验与附录以略读为准）：§3.1 概览、§3.2 ΔMoE、§3.3 音频-动作对齐、§3.4 音频条件策略蒸馏
 
 ## 推荐继续阅读
 

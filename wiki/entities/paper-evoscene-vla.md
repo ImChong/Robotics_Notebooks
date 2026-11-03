@@ -42,6 +42,30 @@ summary: "EvoScene-VLA（arXiv:2605.21862）：动作块间保留可更新场景
 - 策展机构：澳大利亚国立大学；昆士兰大学；北京师范大学
 - 开源结论：**待核实**（步骤 2.5，2026-09-27）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[多视角图像 x_t + 语言指令 ℓ] --> B["VLM 前缀（Qwen2.5-VL，基于 LingBot-VLA）<br/>图像/语言 token + 每视角 observation slots + prior slots"]
+    P["上一块末态作为先验 s̄_t<br/>首块由可学习 scene embedding 初始化"] --> B
+    B --> C["非对称注意力：observation slots 看对应视角图像<br/>prior slots 看全部 scene slots"]
+    C --> D[修正后的当前场景状态 s^p]
+    B --> E[VLM 前缀 KV cache]
+    D --> E
+    E --> F["Action Expert：动作块 + K 个稀疏偏移的未来场景状态<br/>联合 flow matching 共同去噪（含机器人状态 r_t）"]
+    F --> G[动作块 â_t:t+H]
+    F --> H["末端场景状态 ẑ(k_K)"]
+    G --> I[机器人执行动作块]
+    I --> J[获得新观测 x_t+1]
+    H --> K["作为下一次调用的先验 s̄_t+1"]
+    J --> B
+    K --> P
+    L["训练期：Geometric Anchor<br/>局部深度监督 + 全局 3DFM 特征对齐"] -.监督.-> D
+    M["训练期：Scene Predictor<br/>3DFM 特征监督，提供未来场景状态目标"] -.目标.-> F
+```
+
+图依据：论文 §3.1–§3.2 / Fig.2（训练期两支路来自 §3.1 概述，细节未展开）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +107,7 @@ summary: "EvoScene-VLA（arXiv:2605.21862）：动作块间保留可更新场景
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part4.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md)
 - [arXiv:2605.21862](https://arxiv.org/abs/2605.21862)
+- [arXiv PDF](https://arxiv.org/pdf/2605.21862)：已通读方法部分（实验与附录以略读为准）：§1 贡献概述、§3.1 概述、§3.2 循环场景状态环路、§3.3 Geometric Anchor 开头，Fig.2
 
 ## 推荐继续阅读
 

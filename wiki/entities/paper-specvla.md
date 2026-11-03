@@ -42,6 +42,26 @@ summary: "SpecVLA（arXiv:2608.15636）：推测–验证共设计：低影响�
 - 策展机构：上海交通大学；KAUST（沙特）
 - 开源结论：**待核实**（步骤 2.5，2026-09-27）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAP["采集当前图像与传感器信息"] --> ST["环境状态预测（Algorithm 1）<br/>夹爪-物体距离 D_i ≤ T_d 计数 n<br/>夹爪张开且 n<1 为 inactive，否则 active"]
+    ST -- "inactive" --> VL1["全精度 VLA 一次预测长度 N 的<br/>Predicted Actions"]
+    VL1 --> EX1["不验证，直接执行"]
+    ST -- "active" --> VL2["全精度 VLA 预测 Predicted Actions"]
+    VL2 --> SV["执行前：量化 sVLA 基于最新图像<br/>生成 Expected Action"]
+    SV --> CMP{"L1 距离（按维度标准差加权）<br/>小于阈值 T_s ?"}
+    CMP -- "是，接受" --> EX2["执行该 Predicted Action"]
+    CMP -- "否，拒绝" --> RB["回滚到上一已提交状态<br/>重新调用 VLA 生成新动作序列"]
+    RB --> VL2
+    EX1 --> CAP
+    EX2 --> CAP
+    DIFF["sVLA 构造：相邻帧输入残差 ΔX<br/>按块幅值分 零块 / 低精度 / 高精度量化<br/>并与上一步输出累加"] -.-> SV
+```
+
+图依据：论文 §3.1–3.3 / Fig.7、Algorithm 1、Fig.8（§4.1 Speculative Dataflow 的并行执行未入图）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +103,7 @@ summary: "SpecVLA（arXiv:2608.15636）：推测–验证共设计：低影响�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part4.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md)
 - [arXiv:2608.15636](https://arxiv.org/abs/2608.15636)
+- [arXiv PDF](https://arxiv.org/pdf/2608.15636)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2 Background and Motivation 略读、§3 SpecVLA Algorithm（3.1–3.3）、§4.1 Speculative Dataflow；§4.2 硬件细节与 §5 评测以略读为准
 
 ## 推荐继续阅读
 

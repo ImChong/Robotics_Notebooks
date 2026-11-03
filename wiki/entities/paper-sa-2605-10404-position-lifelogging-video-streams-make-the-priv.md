@@ -42,6 +42,27 @@ Systematically analyses privacy risks along the entire pipeline of perception, t
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  T["立场：life-logging 视频流的 privacy-utility trade-off 不可避免，是下一代 always-on AI 的基础性挑战"] --> R["§II 隐私风险<br/>沿 Fig. 2 的数据流：Recording → On-device Storage and Process → Transmit and Upload → Remote Storage and Exploitation → Share and Distribute"]
+  R --> R1["II.B 原始视觉数据的威胁"]
+  R --> R2["II.C 非原始数据的威胁：Membership Inference、Gradient Inversion、Side-Channel Attack"]
+  R1 --> S["§III 现有保护不足<br/>III.A 要求与责任分配；III.B 现有方法的局限；III.C 缺乏 pipeline-aware 保护"]
+  R2 --> S
+  S --> G["§IV 好的方案应是什么<br/>3 个 Design Goals、3 个 Attributes"]
+  G --> E["IV.C 评测原则：Downstream Task Performance、Privacy Leakage、Reconstruction Resistance、System Efficiency"]
+  G --> D["§V 初步可实现设计"]
+  D --> D1["端侧 Privatized Representation Construction Module<br/>求 Minimal Sufficient Representation z：max I(z;Y) s.t. I(z;x) ≤ ε"]
+  D1 --> D2["Privatized Representation Communication Module<br/>仅上传 privatized 表示与用户 query，仅回传 answer"]
+  D2 --> V["V.C、V.D 顾虑与实现难点"]
+  E --> C["§VI 结论与行动号召<br/>pipeline-aware 设计、形式化泄漏度量、标准化 benchmark"]
+  V --> C
+```
+
+图依据：立场论证结构图，论文 §I 末段的章节安排、Fig. 2、§II–§VI 各节论述；§V 中的模块与目标函数为论文提出的初步设计，非已验证实验系统。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Systematically analyses privacy risks along the entire pipeline of perception, t
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2605.10404>
+- [arXiv PDF](https://arxiv.org/pdf/2605.10404)：已通读摘要、§I–§VI 正文（附录 A 与参考文献以略读为准）。
 
 ## 推荐继续阅读
 

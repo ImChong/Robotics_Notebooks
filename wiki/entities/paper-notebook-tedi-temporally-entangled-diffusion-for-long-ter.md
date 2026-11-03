@@ -38,6 +38,26 @@ summary: "去噪扩散概率模型（DDPM）逐步、小增量地合成样本—
 - 把"扩散步"与"时间步"解耦/纠缠是值得迁移的生成范式；
 - 长时程稳定性是人形长任务的共性挑战。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练"]
+        A["从数据集取 K 帧运动序列<br/>表示：根 xz 位移 + 根高度 + 6D 关节旋转 + 脚接触标签"] --> B["按时变噪声调度逐帧加噪<br/>随机调度与单调递增调度按固定概率混合"]
+        B --> C["1D U-Net（时间轴 1D 卷积 + 1D attention）<br/>直接预测干净运动序列"]
+        C --> D["损失：扩散损失 + FK 位置损失 + 脚接触损失"]
+    end
+    subgraph INF["推理：运动缓冲区递归生成"]
+        E["初始化缓冲区：一段运动按递增噪声加噪<br/>首帧噪声最低、末帧最高"] --> F["步骤 1：模型并行去噪整个缓冲区"]
+        F --> G["步骤 2：缓冲区首帧已干净，弹出并写入输出帧"]
+        G --> H["步骤 3：在缓冲区末尾追加新高斯噪声帧"]
+        H --> F
+    end
+    TR -->|"训练好的模型 Mθ"| INF
+```
+
+图依据：论文 §3.1–3.4、Fig. 2 / Fig. 3。
+
 ## 解决什么问题
 
 扩散做**长时程**动作合成难： - 一次性生成超长序列**代价高、不稳**； - 朴素自回归易**断裂/漂移**。
@@ -87,6 +107,8 @@ TEDi 要：把扩散的渐进性"搬到"运动时间轴，**滑动缓冲**式地
 - [humanoid_pnb_tedi.md](../../sources/papers/humanoid_pnb_tedi.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/TEDi__Temporally-Entangled_Diffusion_for_Long-Term_Motion_Synthesis/TEDi__Temporally-Entangled_Diffusion_for_Long-Term_Motion_Synthesis.html>
 - 论文：<https://arxiv.org/abs/2307.15042>
+- [arXiv PDF](https://arxiv.org/pdf/2307.15042)：已通读方法部分（实验与附录以略读为准）：§3.1 运动表示、§3.2–3.3 时间纠缠扩散与训练（损失函数）、§3.4 推理
+- 核对（2026-11-02）：对照 arXiv:2307.15042 摘要与 §3.3、§3.4、结论；「每个扩散步只推进运动时间轴、扩散时间轴保持静止」即摘要原话（stationary diffusion time-axis，结论称 stationary motion buffer），与 §3.3 的 T=K（两轴等同）及每步并行去噪整个缓冲区并不矛盾，未改正文。
 
 ## 推荐继续阅读
 

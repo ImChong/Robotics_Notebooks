@@ -55,6 +55,48 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+本仓库是 Demo 与资料合集，可运行代码集中在 `JAKA_Lumi_Demo_Case/compose/`（视觉抓取）、`LUMI_DEMO_BMW/`（智能体售货）和 `JAKA_Lumi_Demo_Case/{agv,body_head}/` 的小脚本。下图只画读过的视觉检测与抓取放置主流程；`LUMI_DEMO_BMW` 的 `LumiAgent/api.py`、`executer.py` 与 `video_analyser` 未读，`multi_station_demo.py`（仅 AGV 移动与站点初始位，未调用检测）也不在图中。
+
+入口：`python visualDetect_ali.py --auto`（可加 `--camera-sn <序列号>`；工作目录需为 `compose/`，脚本用相对路径读取 `./conf/userCmdControl.json`）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 visualDetect_ali.py __main__
+    participant RD as run_detection()
+    participant J as utilfs/jaka.py JAKA（JAKA SDK）
+    participant CAM as OrbbecSDK.orbbecCamera.Camera
+    participant T as utilfs/tools.py vl_ali / pixel_to_world
+    participant Q as DashScope MultiModalConversation（qwen-vl-max-2025-01-25）
+
+    U->>RD: run_detection(auto_execute, camera_serial_number)
+    RD->>RD: loadJsonFile(conf/userCmdControl.json、conf/CalibParams-lumi-hand.json)
+    RD->>J: JAKA(robotIP, connect=True)，_login()
+    RD->>J: joint_move(basePose)，grab_action(0) 张开夹爪
+    loop detect_continue
+        RD->>CAM: Camera(serial_number).getColorDepthData()
+        CAM-->>RD: color_img, depth_data
+        RD->>T: saveOriginImg，vl_ali(tags, img_path)
+        T->>Q: 图片 + 提示词（请把 X 和 Y 在图中框取出来）
+        Q-->>T: JSON（label、bbox_2d）
+        T-->>RD: obj_labels, obj_locs
+        RD->>RD: 按 label 分出待抓物体与放置目标，取 bbox 中心像素
+        RD->>T: pixel_to_world(中心像素, 深度, 相机内参, R, T)
+        RD->>J: getjoints()，get_tcp_pos()
+        RD->>J: kine_caculate 内调用 kine_inverse 判断抓取/放置点可达
+        alt 按 operationMode 判定可达
+            RD->>J: jointMove：joint_move 到抬升位，再到目标位，grab_action(1) 闭合
+            RD->>J: jointMove：移到放置位，grab_action(0) 张开
+            RD->>J: joint_move 回 base_loc，退出检测循环
+        else 不可达或未检测到
+            RD->>RD: show_unreachable_warning 或重新拍照检测
+        end
+    end
+```
+
+图依据：JAKARobotics/JAKA_Lumi@2b3f730，读过 README.md、JAKA_Lumi_Demo_Case/README.md、JAKA_Lumi_Demo_Case/compose/{README.md、visualDetect_ali.py、multi_station_demo.py}、compose/utilfs/tools.py（vl_ali、simple_multimodal_conversation_call、pixel_to_world）、compose/utilfs/jaka.py（类定义与 grab_action）、LUMI_DEMO_BMW/README.md 与目录列表。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +108,7 @@ institutions:
 - [JAKA_Lumi 源码归档](../../sources/repos/jaka_lumi.md)（<https://github.com/JAKARobotics/JAKA_Lumi>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：JAKARobotics/JAKA_Lumi@2b3f730，读过 README.md、JAKA_Lumi_Demo_Case/README.md、compose/{README.md,visualDetect_ali.py,multi_station_demo.py}、compose/utilfs/{tools,jaka}.py（部分）、LUMI_DEMO_BMW/README.md；LumiAgent 与 video_analyser 代码未读；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

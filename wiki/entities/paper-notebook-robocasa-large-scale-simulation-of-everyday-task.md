@@ -47,6 +47,24 @@ AI 的进展很大程度由规模化驱动，但机器人受限于缺乏海量�
 - **规模化趋势**为机器人基础模型提供信心；
 - 厨房日常任务对人形家务落地高度相关。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["RoboSuite 核心平台 + 移动操作机器人扩展"] --> B["10 种厨房布局 x 12 种风格 = 120 个场景"]
+    B --> C["资产：可交互家具家电 + 2509 个物体（Objaverse / Luma.ai）"]
+    B --> D["MidJourney 生成纹理，做视觉域随机化"]
+    C --> E["25 个原子任务（8 类技能）"]
+    C --> F["GPT-4 列 20 类活动，GPT-4 / Gemini 1.5 提出任务，人工筛改为 75 个复合任务"]
+    E --> G["人类遥操作：每个原子任务 50 条演示"]
+    G --> H["MimicGen：按物体中心子任务分段并变换，拒绝采样保留成功轨迹"]
+    H --> I["大规模生成数据集"]
+    I --> J["多任务模仿学习与规模化趋势评测"]
+    F --> J
+```
+
+图依据：论文 §III（RoboCasa Simulation）、§IV（Activity Dataset，Fig. 3、Fig. 6）。
+
 ## 解决什么问题
 
 机器人学习缺**海量数据**： - 真实采集**贵、慢**； - 缺**逼真、多样、可规模化**的仿真环境/任务/数据。
@@ -111,6 +129,7 @@ RoboCasa 要：用**逼真仿真 + 生成式 AI + 自动轨迹生成**，把环�
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- [arXiv PDF](https://arxiv.org/pdf/2406.02523)：已通读方法部分（实验与附录以略读为准）：§III 仿真、§IV 任务与数据集；§V 实验、真机迁移与附录略读
 
 ## 推荐继续阅读
 

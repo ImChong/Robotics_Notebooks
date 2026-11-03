@@ -40,6 +40,25 @@ summary: "Urs et al. arXiv:2202.12395：面向 8–15 kg 腿式机器人的两�
 - 核心教学点：不能只看电机峰值力矩；散热可使热限制下可用力矩接近 **翻倍**。
 - **420k** 步态循环后效率约降 **2%**、背隙增约 **26 mrad**，证明塑料 QDD 可用于严肃研究原型。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["目标：8–15 kg 四足机器人<br/>5–15 N·m、15–35 rad/s"] --> B["电机与传动联合选型<br/>T-Motor RI50 + 行星 7.5:1 / Wolfrom 双边驱动 15:1"]
+    B --> C["机械设计：除标准件外全部 3D 打印<br/>FDM-PLA 齿轮传动 + SLA 高温树脂壳体"]
+    C --> D["热设计：双离心风扇经风道<br/>吹过电机绕组与转子"]
+    D --> E["装配：Input Assembly<br/>(电机 + 风扇 + moteus 驱动) 与 Transmission Assembly"]
+    E --> F["测功机表征"]
+    F --> F1["电机参数<br/>KT / KB / KM / 电阻 / 电感"]
+    F --> F2["动态特性<br/>随机输入频响"]
+    F --> F3["热模型<br/>电阻当热敏电阻 + 二阶 ODE 辨识"]
+    F --> F4["功率效率<br/>加载端速度控制，驱动端力矩控制"]
+    F --> F5["寿命测试<br/>回放 Mini Cheetah 步态数据，周期性复测效率与阻尼"]
+    F --> F6["控制性能<br/>电流环阶跃 / 随机输入，位置环随机输入"]
+```
+
+图依据：论文 §2 Actuator Design（2.1–2.3）、§3 Characterization Methods（3.1–3.6）
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -114,6 +133,7 @@ summary: "Urs et al. arXiv:2202.12395：面向 8–15 kg 腿式机器人的两�
 
 - [sources/papers/3d_printed_open_source_actuators_legged_arxiv_2202_12395.md](../../sources/papers/3d_printed_open_source_actuators_legged_arxiv_2202_12395.md)
 - [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)
+- [arXiv PDF](https://arxiv.org/pdf/2202.12395)：已通读方法部分（实验与附录以略读为准）：§2 Actuator Design、§3 Characterization Methods
 
 ## 推荐继续阅读
 

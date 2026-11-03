@@ -55,6 +55,41 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`cd FastUMI_Camera_Steam && python readimage.py`（视频流采集）；标定部分是预编译可执行文件 `./demo-api` 与 `./pipe_srv`（源码不在仓库内，下图只画出 README / readme.txt 描述的使用顺序，不含其内部实现）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant RI as readimage.py
+    participant CV as cv2.VideoCapture(V4L2)
+    participant DEV as /dev/video0（FastUMI 相机，需 xvsdk 驱动）
+    participant PS as pipe_srv（二进制）
+    participant DA as demo-api（二进制）
+
+    U->>RI: python readimage.py
+    RI->>CV: VideoCapture(DEV, CAP_V4L2)，失败则抛 RuntimeError
+    RI->>CV: set FOURCC=YU12、CONVERT_RGB=0、1280x1280、FPS=100、BUFFERSIZE=1
+    CV->>DEV: 协商 I420 格式与帧率
+    loop grab_bgr() 直到按 q
+        RI->>CV: cap.read()
+        CV-->>RI: raw I420 帧
+        RI->>RI: reshape(H*3//2, W) + cvtColor(COLOR_YUV2BGR_I420)
+        RI->>U: cv2.imshow 显示
+    end
+    RI->>CV: cap.release() + destroyAllWindows()
+    Note over U,DA: 标定流程（按 README / readme.txt，二进制内部未读）
+    U->>DA: ./demo-api（先启动）
+    U->>PS: ./pipe_srv
+    U->>PS: 输入 1-0-37
+    PS->>DA: 经管道转发命令
+    DA-->>U: 终端打印 RGB 标定参数
+```
+
+图依据：LumosRobot/FastUMI_Camera@16afe0f，读过 README.md、FastUMI_Camera_Steam/readimage.py、FastUMI_Camera_Calibration-master/readme.txt；`demo-api`、`pipe_srv` 为二进制，未反编译，「命令经管道转发」为 README 描述。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +101,7 @@ institutions:
 - [FastUMI_Camera 源码归档](../../sources/repos/fastumi_camera.md)（<https://github.com/LumosRobot/FastUMI_Camera>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：LumosRobot/FastUMI_Camera@16afe0f，读过 README.md、FastUMI_Camera_Steam/readimage.py、FastUMI_Camera_Calibration-master/readme.txt；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

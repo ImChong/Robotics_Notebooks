@@ -34,6 +34,28 @@ LessMimic 用距离场（Distance Field, DF）作为统一的交互表征——�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBJ["物体观测<br/>MoCap 或 egocentric 深度图"] --> DF["逐连杆 DF 特征 u_t<br/>距离 Φ、梯度 ∇Φ、法向/切向速度分解"]
+    DF --> WIN["时间窗口交互表征 I_t"]
+    WIN --> VAE["VAE 编码为交互潜变量 z_t"]
+    REF["重定向人类参考动作"] --> MIM["教师 π_mimic<br/>带残差模块的动作跟踪，仿真数据生成"]
+    MIM --> BC["阶段一：交互技能预训练<br/>DAgger 式行为克隆得到 π_base"]
+    VAE --> BC
+    CMD["根轨迹命令 c_t + 本体感知 o_t"] --> BC
+    BC --> RL["阶段二：判别式后训练<br/>随机化物体几何下 RL 微调"]
+    RL --> FULL["π_full"]
+    AIP["AIP 判别器<br/>区分 z_t 与参考交互缓冲 B_ref"] --> RL
+    FULL --> DIST["阶段三：视觉-运动蒸馏<br/>DAgger 式，冻结 π_full 作教师"]
+    DEPTH["egocentric 深度帧历史 S_t"] --> ENC["视觉编码器 E_phi 输出 z_t"]
+    ENC --> DIST
+    DIST --> VIS["π_vis：仅用深度部署，输出动作给全身控制"]
+```
+
+图依据：论文 §III（Fig. 2、Fig. 3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -65,6 +87,7 @@ LessMimic 用距离场（Distance Field, DF）作为统一的交互表征——�
 - [humanoid_pnb_lessmimic-long-horizon-humanoid-interaction-with.md](../../sources/papers/humanoid_pnb_lessmimic-long-horizon-humanoid-interaction-with.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/LessMimic_Long-Horizon_Humanoid_Interaction_with_Unified_Distance_Field_Representations/LessMimic_Long-Horizon_Humanoid_Interaction_with_Unified_Distance_Field_Representations.html>
 - 论文：<https://arxiv.org/abs/2602.21723>
+- [arXiv PDF](https://arxiv.org/pdf/2602.21723)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-D、Fig. 2/3 图注
 
 ## 推荐继续阅读
 

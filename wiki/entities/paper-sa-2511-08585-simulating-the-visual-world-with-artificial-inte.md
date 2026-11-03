@@ -42,6 +42,25 @@ Defines physical world models as complex digital engines that encode comprehensi
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["外部输入 I = {T, O, Au, N, X}<br/>文本 / 观测 / 音频 / 导航模式 / 空间条件"] --> B["隐式 World Model<br/>潜状态 St，转移 St+1 = F(St, It)"]
+    B --> C["Video Renderer<br/>Vt+1 = R(St+1)"]
+    C --> D["视频 V1:T<br/>（窗口式观察模拟世界）"]
+    D --> E["论文的四代分类 §2.1 / §4"]
+    E --> G1["Generation 1 Faithfulness<br/>§4.1 Visual-Centric / Spatial / Navigation World Model"]
+    G1 --> G2["Generation 2 Interactiveness<br/>§4.2 通用场景 / 机器人 / 自动驾驶 / 游戏"]
+    G2 --> G3["Generation 3 Planning<br/>§4.3 实时、复杂预测"]
+    G3 --> G4["Generation 4 Stochasticity<br/>§4.4 低概率事件与多尺度建模"]
+    G4 --> H["§4.5 Beyond Generation"]
+    H --> I["§5 Future World Model<br/>Precision Simulators / World Models for Decision and Control / Generative Engines of World Knowledge"]
+    I --> J["§5.2 应用与社会影响 · §5.3 结论与展望"]
+```
+
+图依据：综述分类体系 / 路线图，论文 Fig.4（世界模型定义总览）、§2 Problem Definition and Taxonomy（式 (1) 与 §2.1 四代分类）、§4 Methods: A Hierarchical Taxonomy、§5 Future World Model
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Defines physical world models as complex digital engines that encode comprehensi
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2511.08585>
+- [arXiv PDF](https://arxiv.org/pdf/2511.08585)：已读摘要、§1 Position / Scope、§2 Problem Definition and Taxonomy、§4 引言与 4.5、§5.1 开头；各代具体方法（§4.1–§4.4 正文）与 §3 对比表、附录仅按章节标题核对
 
 ## 推荐继续阅读
 

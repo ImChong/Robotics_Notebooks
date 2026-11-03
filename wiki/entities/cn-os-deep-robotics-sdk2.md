@@ -55,6 +55,49 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`ros2 run dr02_pro state_machine`（`src/dr02_pro/docs/STATE_MACHINE.md`；可执行文件由 `src/dr02_pro/state_machine/CMakeLists.txt` 的 `add_executable(state_machine main.cpp)` 生成）。本仓库是 ROS 2 SDK，含 `dr02_pro`、`dr02_std` 两个产品包以及大量单话题示例（`high_level/`、`low_level/`、`peripherals/` 等）；下图只取 `dr02_pro` 状态机这一条主路径，`dr02_std` 与各示例未核对。消息类型来自外部仓库 `deep-robotics-msg`（包名 `drdds`）。
+
+```mermaid
+sequenceDiagram
+    participant Main as main.cpp main()
+    participant FSM as HumanoidStateMachine
+    participant UC as UserCommandInterface
+    participant RI as DR2ProInterface（RobotInterface）
+    participant St as 状态：Idle、ZeroPos、StandUp、RLControlAMP / Mimic
+    participant PR as AMP / Mimic PolicyRunner（ONNX Runtime）
+    participant Bus as ROS 2 话题（机器人或 MuJoCo 仿真）
+
+    Main->>FSM: rclcpp::init，构造 HumanoidStateMachine(DR2PRO)
+    Main->>FSM: Start()
+    FSM->>UC: 创建订阅 /GAMEPAD_KEY、/STEER、/REAL_STEER
+    FSM->>RI: 创建 DR2ProInterface(node_)
+    FSM->>St: 构造各 State，current_controller_ = IdleState
+    FSM->>RI: Start()：发布 /JOINTS_CMD，订阅 /JOINTS_DATA、/IMU_DATA_HEAD、/IMU_DATA_BASE
+    RI->>Bus: WaitDataUpdate 等首帧关节数据
+    FSM->>St: current_controller_.OnEnter()
+    Main->>FSM: Run()
+    FSM->>FSM: 后台线程 rclcpp::spin(node_)
+    loop 2 ms LoopTimer
+        FSM->>RI: RefreshRobotData()
+        FSM->>St: current_controller_.Run()
+        FSM->>St: GetNextStateName()
+        opt 状态变化
+            FSM->>St: OnExit()，新状态 OnEnter()
+        end
+    end
+    Note over St,PR: 进入 RLControlAMP 后
+    St->>St: OnEnter 启动 PolicyRunner 线程
+    St->>PR: GetRobotAction(robot_state, user_command) 每 decimation 个周期一次
+    PR-->>St: 21 维动作
+    St->>St: MapToJointCommand 转成 31 维关节指令
+    St->>RI: SetJointCommand(joint_cmd)
+    RI->>Bus: 发布 /JOINTS_CMD（kp、position、kd、velocity、torque）
+```
+
+图依据：DeepRoboticsLab/deep-robotics-sdk2@c892523，读过 `README.md`、`src/dr02_pro/docs/STATE_MACHINE.md`、`src/dr02_pro/state_machine/main.cpp`、`src/dr02_pro/state_machine/humanoid_state_machine.hpp`、`src/dr02_pro/state_machine/interface/robot_interface.hpp`（`Start`、`SetJointCommand`）、`src/dr02_pro/state_machine/interface/user_command_interface.hpp`（订阅部分）、`src/dr02_pro/state_machine/state/rl_control_amp_state.hpp`（`OnEnter`、`Run`、`PolicyRunner` 片段）、`src/dr02_pro/state_machine/run_policy/amp_policy_runner.hpp`（成员声明片段）；`Mimic` 状态与 `AMP` 状态的差异、`SafeController`、`StandUp`/`ZeroPos` 的具体插值、`PolicyRunner` 内部观测拼装与 `session_.Run` 调用细节未读；`/JOINTS_DATA` 等话题的另一端（机器人驱动或 `deep-robotics-simulation`）不在本仓库。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +109,7 @@ institutions:
 - [deep-robotics-sdk2 源码归档](../../sources/repos/deep-robotics-sdk2.md)（<https://github.com/DeepRoboticsLab/deep-robotics-sdk2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：DeepRoboticsLab/deep-robotics-sdk2@c892523，读过 README.md、src/dr02_pro/docs/STATE_MACHINE.md、src/dr02_pro/state_machine/{main.cpp,humanoid_state_machine.hpp}、interface/{robot_interface,user_command_interface}.hpp、state/rl_control_amp_state.hpp（部分）、run_policy/amp_policy_runner.hpp（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

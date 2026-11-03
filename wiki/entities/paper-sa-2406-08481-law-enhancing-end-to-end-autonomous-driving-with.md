@@ -43,6 +43,25 @@ Enhances end-to-end autonomous driving with latent world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["时刻 t 多视角图像"] --> B["Encoder 提取视觉隐变量 V_t"]
+    B --> C["Waypoint Decoder 预测自车路径点 W_t"]
+    B --> D["与路径点拼接 + MLP：Action-aware Latents A_t"]
+    C --> D
+    D --> E["Latent World Model（Transformer 块）"]
+    E --> F["预测下一帧视觉隐变量 V̂_t+1"]
+    G["时刻 t+1 图像经同一 Encoder 提取 V_t+1"] --> H["MSE 损失 L_latent"]
+    F --> H
+    C --> I["路径点损失：L1（与真值路径点）"]
+    H --> J["联合优化场景表征与轨迹预测"]
+    I --> J
+```
+
+图依据：论文 §4.1、§4.2、§4.3（Fig. 2）；感知式框架的 BEV 编码器与地图/运动预测分支仅按图注与 §4.3 开头概述。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Enhances end-to-end autonomous driving with latent world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2406.08481>
+- [arXiv PDF](https://arxiv.org/pdf/2406.08481)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 问题设定、§4.1–4.2 与 §4.3 开头；§4.3 后半部分、实验与附录未细读
 
 ## 推荐继续阅读
 

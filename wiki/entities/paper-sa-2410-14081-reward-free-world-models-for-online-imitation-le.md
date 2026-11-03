@@ -42,6 +42,34 @@ Reward-free world models for online imitation learning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph TRAIN["世界模型训练 (§4.1, Alg. 2)"]
+        BE[("专家缓冲 B_E<br/>仅状态-动作，无奖励")]
+        BP[("行为缓冲 B_π<br/>环境交互数据")]
+        BE --> SMP["联合采样短时域 H 的轨迹 B = B_E ∪ B_π"]
+        BP --> SMP
+        SMP --> ML["联合学习 编码器 h、潜动力学 d、Q 函数<br/>L = 潜空间预测一致性 + 逆软 Q 评论家损失 L_iq<br/>(+ χ² 正则 + Wasserstein-1 梯度惩罚)"]
+        SMP --> PL["策略先验 π 学习<br/>最大熵 RL 目标 (固定 β)"]
+        ML -->|"更新时固定 π"| PL
+    end
+    subgraph INF["潜空间 MPPI 规划 (Alg. 1)"]
+        E1["编码当前状态 z_t = h(s_t)"] --> E2["采样 N 条高斯轨迹 + N_π 条策略先验轨迹<br/>用 d 做潜转移"]
+        E2 --> E3["Q 解码奖励 r = Q(z,a) − γV(z')<br/>累计回报 + 终端价值"]
+        E3 --> E4["MPPI 更新 μ, σ (J 次迭代)"]
+        E4 -->|"未到 J 次"| E2
+        E4 --> E5["执行首个动作 a_t"]
+    end
+    ML -->|"提供 h, d, Q"| E1
+    PL -->|"提供 π"| E2
+    E5 --> ENV["环境交互，新轨迹写入行为缓冲"]
+    ENV --> BP
+```
+
+图依据：论文 §4 Methodology / §4.1（Fig. 1 IQ-MPC 训练流程、Algorithm 1 推理规划、式 11–14）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Reward-free world models for online imitation learning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.14081>
+- [arXiv PDF](https://arxiv.org/pdf/2410.14081)：已通读方法部分（实验与附录以略读为准）：§4.1 世界模型学习（式 9–14）、Algorithm 1；§4.2 理论分析仅略读。
 
 ## 推荐继续阅读
 

@@ -38,6 +38,24 @@ summary: "Streaming RL 分析（2609.28807）：流式 DRL 适应目标/环境/�
 - 纳入 [12 篇技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md) 与同期失败恢复、异步 WAM、接触感知、持续学习、安全 RL 条目横向对照。
 - 步骤 2.5 开源结论：**已开源**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Pre["预训练：并行仿真下的 batch PPO<br/>得到基础策略 θ0（4 层 MLP，256 隐层，Tanh）"] --> Warm["warm-start：在原任务 M0 上<br/>切换为 streaming 更新（500k 步）"]
+    Warm --> Change["突发变化 M1（无渐变）<br/>改动转移动力学 P 或奖励 R"]
+    Change --> Scn["适应场景<br/>Broken Leg / Slippery Floor / Goal Shift<br/>（操作任务：Push Cube 目标偏移、Transport Box 关节受限）"]
+    Scn --> Stream["Stream-AC 在线适应（1.5M 步）<br/>每步仅用最新一条转移计算 TD 误差并更新 actor / critic（b=1，无 replay buffer）"]
+    subgraph Var["被比较的 Stream-AC 变体"]
+        Opt["优化器：Adam / ObGD / AdaptiveObGD"]
+        Plas["可塑性保持：LayerNorm（LN）/ Continual Backprop（CBP）"]
+    end
+    Var --> Stream
+    Stream -->|"每 10k 步评估 50 episode（评估时不更新参数）"| Eval["指标：max / mean 成功率、MASD 稳定性<br/>对照 batch PPO 与预训练策略"]
+```
+
+图依据：论文 §III-C、§IV-A–F、§V-C 与 Fig. 1（实验/分析协议流程；本文为分析型论文，无新网络结构）。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -83,6 +101,7 @@ summary: "Streaming RL 分析（2609.28807）：流式 DRL 适应目标/环境/�
 - [论文归档](../../sources/papers/streaming_rl_continual_robotics_arxiv_2609_28807.md)
 - [stream-rl-robotics 仓库归档](../../sources/repos/stream-rl-robotics.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.28807)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 背景、§IV 四足分析（A–F）、§V 操作环境分析（A–D）、§VI 讨论
 
 ## 推荐继续阅读
 

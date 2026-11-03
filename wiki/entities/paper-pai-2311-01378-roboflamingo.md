@@ -40,6 +40,23 @@ Open vision-language-action model for low-cost adaptation to robot manipulation 
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["第三视角相机图像 It + 夹爪相机图像 Gt"] --> VIT["ViT 视觉编码"]
+    VIT --> RS["Perceiver Resampler<br/>视觉 token 数 N → Nr (可训练)"]
+    LANG["语言指令 l"] --> FD
+    RS --> FD["特征融合解码器 (OpenFlamingo)<br/>冻结的 LM 层 + 门控交叉注意力 (可训练)"]
+    FD --> X["视觉-语言联合嵌入 Xt"]
+    X --> PH["策略头：MaxPooling → LSTM(带历史 h(t-1)) → MLP"]
+    PH --> OUT["动作：末端 7 DoF 位姿 + 夹爪开合"]
+    OUT --> LOSS["模仿学习损失：位姿 MSE + λ·夹爪 BCE"]
+    LOSS -.->|"仅更新 resampler、交叉注意力、策略头"| RS
+```
+
+图依据：论文 §4.1–4.4 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +120,7 @@ Open vision-language-action model for low-cost adaptation to robot manipulation 
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2311.01378>
+- [arXiv PDF](https://arxiv.org/pdf/2311.01378)：已通读方法部分（实验与附录以略读为准）：§4 RoboFlamingo（4.1–4.4）、§5.5 部署灵活性
 
 ## 推荐继续阅读
 

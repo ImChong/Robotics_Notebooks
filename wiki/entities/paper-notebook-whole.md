@@ -33,6 +33,28 @@ summary: "第一视角视频里手和物体动不动就互相遮挡、还会出�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRN["训练：手-物联合扩散先验（HOT3D-CLIP 训练）"]
+        direction TB
+        GT["MANO 真值加轨迹级 / 逐帧噪声 + 随机丢帧<br/>合成不完美手轨迹 H̄"] --> DM
+        OBJ["物体 3D 模板 O"] --> DM["条件扩散模型 D_ψ（Transformer 解码器）<br/>在重力对齐局部坐标系下去噪<br/>L_DDPM + L_inter + L_const + L_smooth"]
+    end
+    IN["输入：metric-SLAM 第一视角视频 + 物体 3D 模板"] --> H0["现成手部估计器 → 近似手轨迹 H̄"]
+    IN --> MSK["手与物体 2D 分割掩膜"]
+    IN --> VLM["VLM 接触判断<br/>(分割索引叠加 + 空间提示 + 5 个示例，JSON 输出)"]
+    H0 --> SMP
+    MSK --> G
+    VLM --> G
+    DM --> SMP["测试时采样：长视频切为重叠滑窗<br/>每步并行去噪并融合重叠区"]
+    G["Classifier Guidance 目标 g<br/>g_reproj（接触 / 2D 手关节 / 掩膜 Chamfer）<br/>+ g_inter + g_temp"] --> SMP
+    SMP --> OUT["输出：世界坐标系 MANO 手姿 + 6D 物体轨迹"]
+```
+
+图依据：论文 §3（Fig. 2 总览；3.1 手-物扩散先验与训练目标、3.2 作为引导生成的重建、长视频融合）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +86,7 @@ summary: "第一视角视频里手和物体动不动就互相遮挡、还会出�
 - [humanoid_pnb_whole.md](../../sources/papers/humanoid_pnb_whole.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos.html>
 - 论文：<https://arxiv.org/abs/2602.22209>
+- [arXiv PDF](https://arxiv.org/pdf/2602.22209)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 方法（扩散先验、训练目标、VLM 接触分配、Test-Time Guidance、长视频融合）；§4 实验与附录略读
 
 ## 推荐继续阅读
 

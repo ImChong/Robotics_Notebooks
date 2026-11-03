@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2606.16251"
+arxiv: "2606.18955"
 venue: "arXiv 2026"
 summary: "Addresses the absence of action labels in egocentric human manipulation videos for VLA training"
 related:
@@ -42,6 +42,33 @@ Addresses the absence of action labels in egocentric human manipulation videos f
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  subgraph S1["阶段一：Hybrid Disentangled VQ-VAE（无动作标签的人类视频）"]
+    V["相隔 1 秒的相邻帧对"] --> ENC["冻结 DINOv2 + 时空 Transformer 编码，查询 Q_act 与 Q_bg"]
+    ENC --> VQA["动作码本（16）→ 4 个潜动作 token"]
+    ENC --> VQB["背景码本（16）"]
+    VQA --> DEC["共享 mask 引导解码器：全量 / 动作消融 / 背景消融三路重建"]
+    VQB --> DEC
+    SAM["SAM2 分割人手得前景 mask"] --> DEC
+  end
+  VQA -. "冻结编码器给出目标潜动作序列" .-> PT
+  subgraph S2["阶段二：VLM 预训练"]
+    PT["Prismatic-7B：图像对 + 语言指令 → 自回归预测潜动作 token（负对数似然）"]
+  end
+  PT --> AD
+  subgraph S3["阶段三：下游适配（约 50 条机器人轨迹）"]
+    AD["VLM（LoRA）输出动作 token 隐状态 f_act"] --> CAT["拼接 f_act + DINOv2 特征 f_obs + 本体感觉 f_proprio"]
+    CAT --> AE["flow matching Transformer 动作专家（从零训练）"]
+    AE --> ACT["机器人动作序列"]
+    AD -. "L_intent 交叉熵监督潜动作 token" .-> AD
+  end
+```
+
+图依据：论文 §III-A–D / Fig.1、Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +76,7 @@ Addresses the absence of action labels in egocentric human manipulation videos f
 | 编号 | 096/249 |
 | 分组 | 27 Embodied AI & Vision-Language-Action Ego-VLA |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2606.16251> |
+| 论文 | <https://arxiv.org/abs/2606.18955> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +89,7 @@ Addresses the absence of action labels in egocentric human manipulation videos f
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2606.16251) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2606.18955) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +122,11 @@ Addresses the absence of action labels in egocentric human manipulation videos f
 - [`sources/papers/sun_awesome_ego_2606_16251_motion-focused-latent-action-enables-cro.md`](../../sources/papers/sun_awesome_ego_2606_16251_motion-focused-latent-action-enables-cro.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2606.16251>
+- 论文：<https://arxiv.org/abs/2606.18955>
+- 编号核对（2026-11-02）：上游清单登记的 2606.16251 经 arXiv 官方记录核对为《Topological spectral gap, multiscale Weyl's law, and homogenization in high-contrast PDEs》，与本页论文不符；已更正为 2606.18955《Motion-Focused Latent Action Enables Cross-Embodiment VLA Training from Human EgoVideos》。
+- [arXiv PDF](https://arxiv.org/pdf/2606.18955)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II 相关工作、§III 方法（A–D）、§IV 实验设定
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2606.16251)
+- [原文](https://arxiv.org/abs/2606.18955)

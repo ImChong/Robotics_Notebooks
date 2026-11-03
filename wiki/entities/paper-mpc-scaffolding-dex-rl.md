@@ -39,6 +39,27 @@ summary: "MPC 脚手架灵巧 RL（arXiv:2609.14878）：Sampling MPC 初始化 
 
 - 真机 dex RL 探索难；MPC scaffolding 提供安全探索与初始化。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Sampling-based MPC<br/>(MuJoCo digital twin + CEM, 固定引导模块)"] --> B["采集少量 MPC 轨迹 D_MPC<br/>(用 RL 奖励重标注)"]
+    B --> C["Actor 预训练: BC<br/>(加权 episode 采样, ε 截断, 常数 std 初始化)"]
+    C --> D["Critic 预训练: Soft-SARSA<br/>(10 个目标 critic 随机取 2 个取最小)"]
+    B --> E["离线 replay buffer<br/>(固定保留 MPC 数据)"]
+    D --> F["在线 SAC (真机交互)"]
+    F --> G{"每 L=40 步采样一次控制器<br/>策略概率 p_π(k) 线性升至 1"}
+    G -->|MPC| H["MPC 执行<br/>(关节级命令)"]
+    G -->|策略| I["学习策略执行<br/>(关节级命令)"]
+    H --> J["在线 replay buffer"]
+    I --> J
+    E --> K["混合采样 mini-batch<br/>30% MPC 数据 + 70% 在线数据"]
+    J --> K
+    K --> F
+```
+
+图依据：论文 §II-A 至 §II-D / Fig. 1。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -82,6 +103,7 @@ summary: "MPC 脚手架灵巧 RL（arXiv:2609.14878）：Sampling MPC 初始化 
 - [mpc-scaffolding-dex-rl_arxiv_2609_14878.md](../../sources/papers/mpc-scaffolding-dex-rl_arxiv_2609_14878.md)
 - [wechat_senlanke_weekly_manipulation_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md)
 - [arXiv:2609.14878](https://arxiv.org/abs/2609.14878)
+- [arXiv PDF](https://arxiv.org/pdf/2609.14878)：已通读方法部分（实验与附录以略读为准）：§II Method（A 概述、B 离线 MPC 数据与预训练、C 混合 replay 在线 SAC、D MPC-策略调度）
 
 ## 推荐继续阅读
 

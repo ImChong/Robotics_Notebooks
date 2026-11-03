@@ -43,6 +43,26 @@ Thinking visually with spatio-temporal CoT for autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  I["环绕视角图像 + 任务指令（可选导航命令 / 自车状态）"] --> M["MLLM（词表扩展 VQ-VAE 图像 token，结构不改）"]
+  M --> Q["时空 CoT：单帧统一预测未来<br/>红色车道线 + 3D 检测框（空间）+ 未来帧（时间）"]
+  Q --> P["同一 MLLM 作逆动力学：结合当前观测与时空 CoT 逐点自回归输出轨迹 W_t"]
+  subgraph S1["阶段 1：统一预训练"]
+    U["VQA 理解任务"]
+    G["未来帧生成：先车道线 Q_l，再 3D 框 Q_d，后未来帧 Q_f（渐进式由易到难）"]
+  end
+  subgraph S2["阶段 2：监督微调"]
+    F["场景理解 + 轨迹规划联合训练（时空 CoT 作中间推理步骤）"]
+  end
+  S1 --> S2
+  S2 -.-> M
+```
+
+图依据：论文 §3.2 / §3.3 / §3.4（Fig.2 FSDrive 总览）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ Thinking visually with spatio-temporal CoT for autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.17685>
+- [arXiv PDF](https://arxiv.org/pdf/2505.17685)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1–3.4）、§4 Experiments（略读）
 
 ## 推荐继续阅读
 

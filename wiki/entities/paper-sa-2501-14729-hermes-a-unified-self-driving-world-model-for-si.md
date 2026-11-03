@@ -42,6 +42,27 @@ Unified self-driving world model for simultaneous 3D scene understanding and gen
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["多视角图像 I_t"] --> TOK["BEV 世界分词器 E<br/>CLIP 图像编码器 + 单帧 BEVFormer v2<br/>得 BEV 特征，下采样后展平并经两层 MLP 投影为 F_t"]
+    TOK --> LLM
+    TXT["用户指令 / 问题<br/>文本分词为 T"] --> LLM["大语言模型（InternVL2 中的 LLM）<br/>next-token prediction"]
+    WQ["世界查询 Q^w<br/>由 F_t 最大池化初始化，复制 Δt 组<br/>加自车运动条件 e_t+i 与帧嵌入 FE"] --> LLM
+    LLM --> ANS["场景理解输出<br/>场景描述与视觉问答回答"]
+    LLM --> BT["编码后的 BEV B_t 与 世界查询输出<br/>经共享两层 MLP 投影回 c×4 通道"]
+    BT --> LINK["Current-to-Future Link<br/>3 个交叉注意力块<br/>B_t 作 query，世界查询作 key / value"]
+    LINK --> FBEV["未来 BEV 特征 B_t+1 … B_t+Δt"]
+    BT --> RND
+    FBEV --> RND["共享 BEV-to-Point Render<br/>上采样 + 3D 卷积得体素特征<br/>SDF 体渲染得各射线深度"]
+    RND --> PC["点云 P_t（辅助任务）与未来点云 P_t+1 … P_t+Δt"]
+    ANS --> LOSS["训练目标 L = L_N + 10·L_D<br/>L_N 为文本 NTP 损失，L_D 为深度 L1 损失"]
+    PC --> LOSS
+```
+
+图依据：论文 §4（HERMES 总述）、§4.1 World Tokenizer and Render、§4.2 Unification、§4.3 Training Objectives 与 Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Unified self-driving world model for simultaneous 3D scene understanding and gen
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.14729>
+- [arXiv PDF](https://arxiv.org/pdf/2501.14729)：已通读方法部分（实验与附录以略读为准）：§3 Preliminaries、§4 HERMES（4.1 World Tokenizer and Render、4.2 Unification、4.3 Training Objectives）
 
 ## 推荐继续阅读
 

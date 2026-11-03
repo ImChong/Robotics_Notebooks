@@ -42,6 +42,26 @@ A video‑based benchmark for evaluating AI models’ world modeling and procedu
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    FORM["理论形式化 §3.1：⟨S, A, T, O⟩（POSMDP 启发）：隐状态 s、高层动作 a、隐转移模型 T、观测模型 O 把 s 与 a 映为图像 O(s) 与视频段 O(a)"]
+    FORM --> TASK["任务 §3.2–§3.3：给定初末状态图像，从含 3 个干扰项的 4 个候选中选择正确动作或动作序列"]
+    TASK --> WM["WorldPrediction-WM：选出哪个动作片段导致 O(st) 到 O(st+1)"]
+    TASK --> PP["WorldPrediction-PP：选出哪个动作序列（T 步）排序正确，连接 O(s_init) 与 O(s_final)"]
+    SRC["数据来源 §3.4：COIN / CrossTask / EgoExo4D / EPIC-KITCHENS-100 / IKEA-ASM（官方划分的 test 或 validation）"] --> CAND["采样候选：WM 干扰项取同一视频中不相容的动作；PP 干扰项为打乱后的真值序列"]
+    CAND --> EQV["Action Equivalents：把真值动作换成不同背景或视角下的同类动作，避免背景连续性捷径"]
+    EQV --> FILT["Observability Filtering：用 DINOv2 特征距离阈值剔除剧烈变化；EgoExo4D 另用 VLM 提示剔除背对镜头与遮挡；剔除状态差异过小的样本"]
+    FILT --> HUM["人工验证 §4.3：初始各 1500 个样本，两名标注者独立作答，仅保留两人都答对者"]
+    HUM --> BENCH["WorldPrediction-WM 825 条 / WorldPrediction-PP 570 条"]
+    WM --> BENCH
+    PP --> BENCH
+    BENCH --> EVAL["被测对象 §4：VLM（视频或图像 token 直接输入）/ Socratic LLM（先 change captioning 与 action captioning 再文本推理）/ 视频扩散模型（按 caption 生成末帧，与目标状态比相似度）/ OEPP 规划器"]
+```
+
+图依据：基准构建与评测协议图（任务形式化 → 数据与过滤 → 人工验证 → 评测对象）：论文 §3.1–§3.4、Fig. 1–5、§4.3、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ A video‑based benchmark for evaluating AI models’ world modeling and procedu
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.04363>
+- [arXiv PDF](https://arxiv.org/pdf/2506.04363)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§3（含 Fig. 1–5、Table 1）、§4.3 与附录 A 的人工评测设置、Fig. 4 基线示意；§4 各基线的详细结果表以略读为准
 
 ## 推荐继续阅读
 

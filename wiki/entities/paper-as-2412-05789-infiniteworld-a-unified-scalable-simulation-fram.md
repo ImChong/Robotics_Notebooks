@@ -41,6 +41,28 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SRC["资产来源 (NVIDIA Isaac Sim 平台)"]
+        L["语言驱动场景生成与编辑 (基于 HOLODECK, 含 236 种地板/墙面纹理替换)"]
+        O["单图像转 3D 物体重建 + 可控关节物体生成"]
+        R["Real2Sim: 拍摄图像 -> 改进 PGSR (Depth Pro 深度 + 局部平面法向正则) -> 网格 -> 后处理"]
+        U["开源场景 / 物体资产 (HSSD, HM3D, 3D Front, PartNet-mobility 等) 转换脚本"]
+    end
+    R --> A["Annot8-3D: Point Transformer V3 粗分割 -> SAM2Point 正负提示交互式精修 -> 人工微调"]
+    L --> LIB["统一 .usd 3D 资产库"]
+    O --> LIB
+    A --> LIB
+    U --> LIB
+    LIB --> SIM["InfiniteWorld 仿真器 (Stretch 机器人)"]
+    SIM --> B["基准任务: 物体 Loco-Navigation / Loco-Manipulation / 场景图协同探索 (SGCE) / 开放世界社交移动操作 (OWSMM)"]
+    GPT["GPT-4o 结合 HSSD 场景语义生成任务指令"] --> B
+```
+
+图依据：论文 §3.1-§3.4、§4.1-§4.2 / Fig.1-3（Annot8-3D 的输出汇入资产库、资产经仿真器进入基准为按文中描述的归纳连线）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +117,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Foundation Models。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2412.05789>
+- [arXiv PDF](https://arxiv.org/pdf/2412.05789)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 仿真框架（3.1-3.4）、§4.1-4.2 基准与设定
 
 ## 推荐继续阅读
 

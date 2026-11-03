@@ -42,6 +42,28 @@ Learning to drive from a world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人类驾驶数据<br/>图像 + 全局位姿（MSCKF）"] --> B["驾驶模拟器 = 状态生成器 + 动作真值源"]
+    B --> C["状态生成：重投影模拟<br/>深度图 + 位姿重渲染"]
+    B --> D["状态生成：世界模型<br/>VAE 编码 + DiT 扩散 · 位姿作条件"]
+    B --> E["动作真值：未来锚定 Plan Model<br/>Plan Head 预测轨迹"]
+    E --> F["Vehicle Model 求逆<br/>轨迹映射为曲率与加速度动作"]
+    G["策略 π：FastViT 特征提取器<br/>+ 信息瓶颈（加噪限信息量）"] --> H["Transformer 时序模型<br/>输出下一动作"]
+    H -->|动作经 Vehicle Model 变位姿| C
+    H -->|动作经 Vehicle Model 变位姿| D
+    C --> I["actor 并行 rollout<br/>观测、动作、真值动作"]
+    D --> I
+    F --> I
+    I --> J["learner 学习预测 Plan Model 动作"]
+    J -->|参数服务器下发新策略| G
+    H --> K["MetaDrive 闭环测试 · openpilot 实车 ADAS"]
+```
+
+图依据：论文 §2 问题形式化、§3 重投影模拟、§4 世界模型模拟、§5 策略训练 / Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Learning to drive from a world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.19077>
+- [arXiv PDF](https://arxiv.org/pdf/2504.19077)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 形式化（驾驶策略、模拟器、车辆模型、世界模型、未来锚定、真值）、§3 重投影模拟、§4 世界模型模拟、§5 策略训练与评测；附录无
 
 ## 推荐继续阅读
 

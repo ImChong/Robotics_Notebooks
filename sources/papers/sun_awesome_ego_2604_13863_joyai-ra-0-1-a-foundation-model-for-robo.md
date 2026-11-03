@@ -6,9 +6,10 @@
 - **分组：** 27 Embodied AI & Vision-Language-Action Ego-VLA
 - **编号：** 092/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2604.13863
+- **arXiv：** 2604.20100
+- **编号核对：** 上游清单登记的 2604.13863 经 arXiv 官方记录核对为另一篇论文《PostureObjectstitch: Anomaly Image Generation Considering Assembly Relationships in Industrial Scenarios》，与本条目不符；已更正为 2604.20100《JoyAI-RA 0.1: A Foundation Model for Robotic Autonomy》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2604.13863>
+- **论文：** <https://arxiv.org/abs/2604.20100>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** VLA embodied foundation model with multi-source multi-level pretraining integrating web data, large-scale egocentric human manipulation videos, simulation trajectories, and real-robot data

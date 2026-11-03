@@ -43,6 +43,24 @@ Masked world models for visual control.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  O["观测 o_t"] --> CS["卷积 stem → 卷积特征 h^c_t"]
+  CS --> MK["随机遮挡 (比例 75%)"]
+  MK --> VE["ViT 编码器 → z^{c,m}_t"]
+  VE --> VD["ViT 解码器<br/>重建像素 ô_t + 额外 mask token 预测奖励 r̂_t"]
+  CS --> VE0["不遮挡的特征 → 冻结表征 z^{c,0}_t"]
+  VE0 --> RSSM["RSSM 变体: 表征模型 q(s_t | s_(t-1), a_(t-1), z^{c,0}_t)"]
+  RSSM --> RD["重建表征 ẑ^{c,0}_t + 预测奖励 r̂_t"]
+  RSSM --> AC["Dreamer 式 actor-critic 在隐空间想象中学习"]
+  AC --> ACT["动作 → 环境交互采样"]
+  ACT -. "循环: 更新自编码器 / 学动力学 / 采集数据" .-> O
+```
+
+图依据：论文 §4 Masked World Models（§4.1 视觉表征学习、§4.2 隐动力学学习、Optimization）/ Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ Masked world models for visual control.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2206.14244>
+- [arXiv PDF](https://arxiv.org/pdf/2206.14244)：已通读方法部分（实验与附录以略读为准）：§3 Preliminaries（略读）、§4.1–4.2（含式 5–8）、§5 Implementation 段；Fig.1 概览依正文文字描述，实验与附录仅略读。actor-critic 细节论文指向附录 A，本文未读
 
 ## 推荐继续阅读
 

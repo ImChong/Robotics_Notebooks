@@ -33,6 +33,30 @@ summary: "主流人形 RL 行走面临两难选择——纯本体感知策略反
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["Actor 观测 o_t ∈ R84<br/>指令、投影重力、关节角/速度、上一动作、角速度、步态相位"] --> RA["RNN_a (256 维隐状态)"]
+    RA --> MLP["小型 MLP → 动作 a_t ∈ R26"]
+    MLP --> AJ["a_j (23 维)：相对参考姿态的关节增量 q* = q_ref + a_j"]
+    MLP --> AD["a_δ (3 维 δ0, δ1, δ2)：调节步态频率与左右脚相位偏置"]
+    AD --> PH["自适应步态时钟 φ(t)<br/>→ 接触掩码 / 步态相位观测"]
+    AJ --> PD["PD 控制器 (400Hz) → 关节力矩"]
+    PD --> SIM["仿真环境 / 真机"]
+    SIM --> O
+    PH --> O
+    SIM -->|"特权信息：速度、质心位置、脚部 5×5 高度图、全局地形图 17×11"| CR["Critic：RNN_c + CNN 地形特征 (32 维)<br/>拼接 288 维 → 全连接 → V"]
+    RA --> SE["Source Encoder → I^S"]
+    CR --> TE["Target Encoder（地形特征停止梯度）→ I^T"]
+    SE <-->|"InfoNCE 对比损失：同一时刻为正样本对"| TE
+    CR --> PPO["PPO 更新（奖励：速度跟踪、姿态、接触模式等）"]
+    SE --> PPO
+    PPO --> RA
+```
+
+图依据：论文 §III-A–D / Fig.2、Fig.3，式 (1)–(9)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +88,7 @@ summary: "主流人形 RL 行走面临两难选择——纯本体感知策略反
 - [humanoid_pnb_contrastive-representation-learning-for-adaptive.md](../../sources/papers/humanoid_pnb_contrastive-representation-learning-for-adaptive.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion/Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion.html>
 - 论文：<https://arxiv.org/abs/2509.12858>
+- [arXiv PDF](https://arxiv.org/pdf/2509.12858)：已通读方法部分（实验与附录以略读为准）：§III Methods（III-A–D）
 
 ## 推荐继续阅读
 

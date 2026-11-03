@@ -33,6 +33,26 @@ summary: "把真实人形 locomotion 写成「下一词预测」：用 因果 Tr
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A1["神经网络策略轨迹<br/>(大规模 RL 策略，含动作)"] --> D["多源轨迹数据集"]
+    A2["模型控制器轨迹<br/>(Agility 控制器，含动作)"] --> D
+    A3["人体动捕 MoCap<br/>(无动作)"] --> R["逆运动学 IK 重定向到人形"]
+    A4["YouTube 人体视频<br/>(PHALP 提取 3D 人体轨迹)"] --> R
+    R --> F["按优化代价过滤噪声轨迹"]
+    F --> D
+    D --> T["Tokenize：按模态独立线性投影 + 位置编码"]
+    T --> M["缺动作处插入可学习 mask token [M]"]
+    M --> TR["因果 Transformer<br/>(自回归，仅关注当前及过去 token)"]
+    TR --> P["模态对齐的下一 token 预测<br/>(预测下一步观测与动作)"]
+    P --> L["MSE 损失<br/>(忽略 mask 部分的预测)"]
+    TR --> DEP["零样本部署：Digit 人形，旧金山多路面"]
+```
+
+图依据：论文 §3.1–3.5、§4 / Fig.2–4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -65,6 +85,7 @@ summary: "把真实人形 locomotion 写成「下一词预测」：用 因果 Tr
 - [humanoid_pnb_humanoid-locomotion-as-next-token-prediction.md](../../sources/papers/humanoid_pnb_humanoid-locomotion-as-next-token-prediction.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html>
 - 论文：<https://arxiv.org/abs/2402.19469>
+- [arXiv PDF](https://arxiv.org/pdf/2402.19469)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（目标/缺失模态/对齐预测/联合训练/模型结构）、§4 数据集、§5.1 实验设定
 
 ## 推荐继续阅读
 

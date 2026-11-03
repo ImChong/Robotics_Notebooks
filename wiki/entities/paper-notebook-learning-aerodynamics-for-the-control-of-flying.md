@@ -31,7 +31,31 @@ Learning Aerodynamics for the Control of Flying Humanoid Robots 的人形机器�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论；论文方法的模块流程见下方「流程总览」。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    WT["风洞实验（PoliMi GVPM）<br/>iRonCub-Mk1 全尺寸，改变风速/攻角/侧滑角/关节构型<br/>测量整体气动力矩与表面压力"] --> VAL
+    CFD1["与风洞同设置的 CFD<br/>稳态 RANS：Realizable k-ε 与 SST k-ω 对比"] --> VAL
+    VAL["CFD 与风洞数据对比验证<br/>SST k-ω 更准确"] --> COARSE
+    COARSE["网格敏感性分析<br/>选用约 0.33×10⁶ 单元的粗网格"] --> AUTO
+    subgraph DATA["自动化 CFD 数据集生成"]
+        AUTO["Ansys Workbench 随机生成关节构型<br/>Fluent Meshing 划网格<br/>pyFluent 自动旋转姿态并求解"] --> DS["约 8500 次仿真数据集<br/>24 种关节构型 × 19 俯仰角 × 18 偏航角<br/>对称镜像增广"]
+    end
+    DS --> DNN["DNN 模型<br/>输入：相对风向 + 19 关节自由度<br/>输出：各连杆气动力系数"]
+    DS --> AXI["轴对称模型<br/>连杆视为孤立轴对称体<br/>Lasso + 最小二乘回归 C_D·A 与 C_N·A"]
+    DNN --> SIM
+    AXI --> SIM
+    AXI --> CTRL
+    subgraph CL["气动感知控制与验证"]
+        CTRL["全身动量型飞行控制器<br/>质心动量方程加入气动力项<br/>推力矢量 + 相对阶增广"] --> SIM["Whole-Body Simulator（Simulink + iDynTree）<br/>气动力经雅可比转置汇总为广义气动力矩"]
+        SIM --> REAL["iRonCub-Mk1 飞行仿真与真机平衡实验验证"]
+    end
+```
+
+图依据：论文 §4.2–4.5 / §1 末段方法概述
 
 ## 核心信息
 
@@ -64,6 +88,8 @@ Learning Aerodynamics for the Control of Flying Humanoid Robots 的人形机器�
 - [humanoid_pnb_learning-aerodynamics-for-the-control-of-flying.md](../../sources/papers/humanoid_pnb_learning-aerodynamics-for-the-control-of-flying.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2506.00305>
+- [arXiv PDF](https://arxiv.org/pdf/2506.00305)：已通读方法部分（实验与附录以略读为准）：§1 引言末段方法概述、§4 Methods（§4.1 机械设计、§4.2 风洞、§4.3 CFD 模型、§4.4 气动模型、§4.5 气动控制设计与仿真环境）；§2 结果略读，补充材料未读
+
 
 ## 推荐继续阅读
 

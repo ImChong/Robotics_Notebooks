@@ -42,6 +42,21 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  UP["上游预训练\nImageNet 数据，统一 ResNet50-v2 类架构\n监督 / 半监督 / 自监督 / 生成模型 等 18 种算法\n不得使用任何评测任务的数据"] --> MODEL["预训练表示模型"]
+  TASKS["VTAB 的 19 个任务\n自然 / 专业 / 结构化 三组\n统一转成分类问题"] --> DATA["下游数据 VTAB-1k\n每任务 1000 例：训练 800 + 验证 200"]
+  MODEL --> ADAPT["适应：微调整个网络\n轻量模式：每任务扫 2 个学习率 × 2 种学习率调度"]
+  DATA --> ADAPT
+  ADAPT --> SELECT["在验证集上选模型\n合并训练 + 验证集重新训练"]
+  SELECT --> TEST["测试集评测\n3 个随机种子取中位数，top-1 准确率"]
+  TEST --> AGG["跨任务取平均准确率"]
+```
+
+图依据：论文 §2.1–2.3（VTAB 协议 / Fig.1）、§3.1（实验设置、调参与评测协议）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +113,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/1910.04867>
+- [arXiv PDF](https://arxiv.org/pdf/1910.04867)：已通读方法部分（实验与附录以略读为准）：§2 VTAB 协议与任务、§3.1 实验设置
 
 ## 推荐继续阅读
 

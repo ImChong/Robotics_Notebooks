@@ -42,6 +42,21 @@ Transformers use causal world models in maze-solving tasks.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["maze-dataset：生成迷宫并 token 化（邻接表、起点、终点、路径）"] --> TR["训练迷宫求解 Transformer：Stan（学习位置编码）与 Terry（旋转位置编码）"]
+    TR --> ATT["§3.1 分析 layer 0 注意力头与 OV 电路：在 ; 位置汇聚连接信息"]
+    TR --> SAE["§3.2 在 L0 之后的残差流上训练 SAE，并用决策树筛选连接特征"]
+    ATT --> CMP["§3.3 比较 SAE 特征与电路：余弦相似度 + 对注意力头做均值 patching"]
+    SAE --> CMP
+    SAE --> INT["§4 干预：在所有 ; 位置打开 / 关闭 SAE 特征，用 SAE 重建值回填残差流"]
+    INT --> RES["观察路径变化与求解准确率：激活特征比抑制更有效"]
+```
+
+图依据：论文 §2.1–2.2、§3.1 Connectivity Attention Heads、§3.2 SAE、§3.3 Comparing SAEs and Circuits、§4 Intervening on World Models / Fig.2、Fig.6、Fig.8。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Transformers use causal world models in maze-solving tasks.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.11867>
+- [arXiv PDF](https://arxiv.org/pdf/2412.11867)：已通读方法部分（实验与附录以略读为准）：摘要与 §1 引言、§2、§3（3.1–3.3）、§4
 
 ## 推荐继续阅读
 

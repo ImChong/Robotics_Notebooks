@@ -6,9 +6,10 @@
 - **分组：** Human Pose & Mesh Recovery
 - **编号：** 217/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2606.19378
+- **arXiv：** 2606.26046
+- **编号核对：** 上游清单登记的 2606.19378 经 arXiv 官方记录核对为另一篇论文《A Hybrid GNN-FEM Framework for Phase-Field Fracture Simulation. Physics-Preserving Hybridization for Generalizable Surrogate Modeling》，与本条目不符；已更正为 2606.26046《RoboAtlas: Contextual Active SLAM》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2606.19378>
+- **论文：** <https://arxiv.org/abs/2606.26046>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Integrates frontier exploration, global semantic-map reasoning, and egocentric VLM-based reasoning through a contextual multi-armed bandit

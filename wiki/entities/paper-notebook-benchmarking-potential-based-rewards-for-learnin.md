@@ -31,7 +31,30 @@ Benchmarking Potential Based Rewards for Learning Humanoid Locomotion 的人形�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论；训练流程见下方「流程总览」。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["观测 s（38 维，含噪声）<br/>关节位置/速度、机身高度与速度<br/>重力方向、足接触、速度指令、clock phase"] --> POL["策略网络（单一 NN）"]
+    POL --> ACT["关节位置目标 a（10 维，仅腿部）"]
+    ACT --> PD["PD 力矩 τ = Kp(a − q) + Kd·q̇"]
+    PD --> ENV["MIT Humanoid 仿真（IsaacGym）"]
+    ENV --> OBS
+    ENV --> RB["基线奖励<br/>速度跟踪、动作变化率、力矩、关节限位、终止"]
+    ENV --> SH{"附加 shaping 形式"}
+    SH -->|"DRS 直接奖励 R(s)"| RD["姿态 / 高度 / 关节正则项的瞬时值"]
+    SH -->|"PBRS 令 Φ(s)=R(s)"| RP["γΦ(s′) − Φ(s)<br/>奖励状态改善量"]
+    RB --> SUM["总奖励"]
+    RD --> SUM
+    RP --> SUM
+    SUM --> PPO["PPO-Clip 训练策略"]
+    PPO --> POL
+    PPO --> CMP["比较收敛速度与对奖励缩放的鲁棒性"]
+```
+
+图依据：论文 §II-C、§III-A、§IV 开头（训练设置）/ Fig.2
 
 ## 核心信息
 
@@ -64,6 +87,7 @@ Benchmarking Potential Based Rewards for Learning Humanoid Locomotion 的人形�
 - [humanoid_pnb_benchmarking-potential-based-rewards-for-learnin.md](../../sources/papers/humanoid_pnb_benchmarking-potential-based-rewards-for-learnin.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2307.10142>
+- [arXiv PDF](https://arxiv.org/pdf/2307.10142)：已通读方法部分（实验与附录以略读为准）：摘要、§I、§II、§III（系统概览与奖励设计）、§IV 开头的训练设置
 
 ## 推荐继续阅读
 

@@ -31,7 +31,29 @@ Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Rei
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记写出来之前，方法流程见下方「流程总览」（依据论文方法部分），其余方法结论暂不给。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["用户指令 v̂B<br/>基座 x/y 线速度 + z 轴角速度"] --> B["参考质心动量 ĥG<br/>经 CMM 投影得到，含目标 CAM"]
+    C["Pinocchio 计算 CMM 与当前 CAM<br/>并分解为 基座 / 腿 / 臂 贡献"] --> D
+    B --> D["共享观测：基座状态 + 当前/目标 CAM"]
+    D --> E["腿 Agent（PPO actor）<br/>观测 49 维，含指令、接触相位、腿关节<br/>输出 10 维腿残差动作"]
+    D --> F["臂 Agent（PPO actor）<br/>观测 41 维，含臂关节与 CAM<br/>输出 8 维臂残差动作"]
+    E --> G["残差叠加到名义关节位置 qref（18 维）"]
+    F --> G
+    G --> H["低层关节 PD 控制器 1 kHz<br/>策略 100 Hz"]
+    H --> I["IsaacLab 仿真，4096 环境并行"]
+    I --> J["腿奖励：速度跟踪 + 接触时序<br/>臂奖励：垂直 CAM 跟踪 + 水平 CAM 阻尼"]
+    J --> K["集中式 critic（CTDE）<br/>全局观测 76 维，含两 Agent 动作"]
+    K --> E
+    K --> F
+    G -.-> L["真机部署（行走/楼梯）"]
+```
+
+图依据：论文 §III、§IV-A、§IV-B / Fig. 2
 
 ## 核心信息
 
@@ -64,6 +86,7 @@ Learning Humanoid Arm Motion via Centroidal Momentum Regularized Multi-Agent Rei
 - [humanoid_pnb_learning-humanoid-arm-motion-via-centroidal-mome.md](../../sources/papers/humanoid_pnb_learning-humanoid-arm-motion-via-centroidal-mome.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2507.04140>
+- [arXiv PDF](https://arxiv.org/pdf/2507.04140)：已通读方法部分（实验与附录以略读为准）：§III 质心动量建模、§IV 肢体级多智能体 RL（臂 Agent、腿 Agent）、§V-B CTDE 对比与 §V-C 硬件实验
 
 ## 推荐继续阅读
 

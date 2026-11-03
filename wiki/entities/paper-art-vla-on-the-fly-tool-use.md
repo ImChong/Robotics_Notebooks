@@ -39,6 +39,25 @@ summary: "ART（arXiv:2608.14047）：为 VLA 配备视觉识别、操作判断�
 - 策展机构：星尘智能、清华大学等
 - 与 [第三篇技术地图](../overview/vla-weekly-trends-2026-08-10-part3-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["原始观测 õ_t<br/>图像 + 语言指令 + 本体状态<br/>（可能退化或视角/初始状态偏移）"] --> B["启用 LoRA 的 π-FAST<br/>每 H 步预测一次推理 token a_r 与工具使用 token a_t"]
+    B --> C["工具使用动作：n 位二进制开关<br/>映射到词表末尾 N 个 token"]
+    C --> D["激活外部工具并作用于接下来 H 步观测"]
+    D --> E["视觉增强：去噪、低光增强、抖动校正、去模糊等 10 类"]
+    D --> F["可供性增强：深度估计、目标检测"]
+    D --> G["本体增强：相机旋转、缩放、机器人状态复位"]
+    E --> H["增强后观测 o_t"]
+    F --> H
+    G --> H
+    H --> I["不带 LoRA 的 VLA 骨干<br/>自回归生成 FAST 动作 token"]
+    I --> J["动作 chunk"]
+```
+
+图依据：论文 §3.1–3.3、§4.1、Fig. 2（数据采集流程见 §4.2 / Fig. 3，此处未画）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -80,6 +99,7 @@ summary: "ART（arXiv:2608.14047）：为 VLA 配备视觉识别、操作判断�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part3.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md)
 - [arXiv:2608.14047](https://arxiv.org/abs/2608.14047)
+- [arXiv PDF](https://arxiv.org/pdf/2608.14047)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3、§4.1–4.2、§5.1 训练设定
 
 ## 推荐继续阅读
 

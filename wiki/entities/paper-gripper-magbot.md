@@ -43,6 +43,22 @@ summary: "三 MagLev mover 耦合成低成本并联 6-DoF 操作器并集成 1-D
 - 开源状态：**部分开源**（步骤 2.5 核查，2026-09-14）。
 - 与 [11 篇技术地图](../overview/vla-tamp-planning-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["期望末端位姿<br/>(位置 x_g,y_g,z_g; 姿态 α_g,β_g,γ_g; 手指开合 f_g)"] --> PLAT["1. 平台期望位置 x_p,y_p,z_p<br/>(取决于夹爪位置、mover 悬浮高度 z_m 与 α 旋转的贡献)"]
+    PLAT --> D12["2. mover 1/2 中心间距 d_m,1,2<br/>(保证平台 z 位置; 几何常数取自 CAD)"]
+    PLAT --> D3["mover 3 到平台的距离 d_m,3<br/>(单轨模式与默认模式取不同符号)"]
+    D12 --> M12["3. mover 1/2 的 x,y 位置与 γ 旋转<br/>(含齿轮比; 加 γ_g 补偿夹爪 α/γ 旋转带来的耦合)"]
+    D3 --> M3["mover 3 的 x,y 位置与 γ 旋转<br/>(γ 旋转驱动手指开合, 加 α_g 与 γ_g 补偿)"]
+    M12 --> OUT["输出: 三个 mover 各自的 x,y 位置与 γ 旋转<br/>(α、β 旋转设为 0°)"]
+    M3 --> OUT
+    OUT --> PLAN["可与任意满足 mover 间距/夹爪最小高度约束的轨迹规划方法配合"]
+```
+
+图依据：论文 §IV Inverse Kinematics Controller / Fig. 4（机械耦合见 §III-A、Fig. 3）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -97,6 +113,7 @@ summary: "三 MagLev mover 耦合成低成本并联 6-DoF 操作器并集成 1-D
 - [gripper-magbot_arxiv_2609_12883.md](../../sources/papers/gripper-magbot_arxiv_2609_12883.md)
 - [wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md)
 - [arXiv:2609.12883](https://arxiv.org/abs/2609.12883)
+- [arXiv PDF](https://arxiv.org/pdf/2609.12883)：已通读方法部分（实验与附录以略读为准）：§III 设计决策（A 6-DoF 机械手与 1-DoF 夹爪、B 对接机构、C 单轨模式）、§IV 逆运动学控制器；§VII-B/C 略读
 
 ## 推荐继续阅读
 

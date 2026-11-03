@@ -38,6 +38,27 @@ summary: "用头戴、朝身立体相机做第一视角动捕对 VR/AR 至关重
 - **实时高帧率**是机器人闭环所需；
 - 第一视角全身姿态是"从人类视频学全身控制"的上游感知。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["头显下视双目鱼眼图像（左 / 右）"]
+    BB["§4.1 骨干网络：ResNet50 提取特征<br/>卷积头预测各关节热图 + 深度图<br/>softmax / soft-argmax 得 (u, v, d)，按鱼眼模型反投影到 3D"]
+    JLR["每个相机各一份 3D 姿态 J_L、J_R（各自相机坐标系）"]
+    DEV["头显板载设备位姿 T_D（SLAM）<br/>+ 固定相机外参 M_L、M_R"]
+    FRAME["§4.2 地面对齐坐标系 F<br/>原点落在地面，y 轴竖直，水平轴由相机中间帧 x 轴投影确定"]
+    ALIGN["把当前与过去的 J_L、J_R 变换到最新 F<br/>J^F = T · J"]
+    STF["§4.3 Stereo Temporal Fusion (STF)<br/>Transformer 编码器：8 层、32 头<br/>输入过去 20 个预测 @15Hz"]
+    OUT["融合后的全身姿态 J_t<br/>（推理时只输出最新一帧，300 FPS）"]
+    CTC["§4.4 Cross-Training Caching<br/>k 折：骨干在 k−1 折上训练，缓存留出折预测"]
+    IMG --> BB --> JLR --> ALIGN
+    DEV --> FRAME --> ALIGN
+    ALIGN --> STF --> OUT
+    CTC -.->|缓存预测仅用于训练 STF| STF
+```
+
+图依据：论文 §4.1–§4.4（Fig. 3、Fig. 4、Fig. 5）
+
 ## 解决什么问题
 
 头戴朝身相机第一视角动捕难： - **严重遮挡**（自遮挡）； - **真实标注数据稀缺**； - 要**实时**且融合**设备位姿**做准确身体姿态。
@@ -88,6 +109,7 @@ FRAME 要：地面对齐 + 设备位姿与相机融合，实时高精度地预�
 - [humanoid_pnb_frame.md](../../sources/papers/humanoid_pnb_frame.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/FRAME__Floor-aligned_Representation_for_Avatar_Motion_from_Egocentric_Video/FRAME__Floor-aligned_Representation_for_Avatar_Motion_from_Egocentric_Video.html>
 - 论文：<https://arxiv.org/abs/2503.23094>
+- [arXiv PDF](https://arxiv.org/pdf/2503.23094)：已通读方法部分（实验与附录以略读为准）：§4 方法（4.1 鱼眼姿态估计、4.2 坐标系对齐、4.3 Stereo Temporal Fusion、4.4 Cross-Training Caching）；§3 数据集与 §5 实验、消融仅略读
 
 ## 推荐继续阅读
 

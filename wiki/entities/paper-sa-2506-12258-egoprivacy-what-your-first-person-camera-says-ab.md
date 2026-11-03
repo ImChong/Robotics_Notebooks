@@ -42,6 +42,34 @@ The first large‑scale benchmark for egocentric privacy risk assessment, system
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph BM["EgoPrivacy 基准（§3）"]
+        DS["Ego-Exo4D（训练/ID 测试）+ Charades-Ego（OOD 测试）<br/>同步 ego-exo 视频；人工标注性别/年龄/种族"] --> TK["七项隐私任务：<br/>人口统计（性别、年龄、种族）<br/>个体（ego-to-ego / ego-to-exo 身份检索）<br/>情境（场景检索、时刻检索）"]
+    end
+    subgraph CAP["攻击者能力（§4）"]
+        C1["能力 1：零样本基础模型"]
+        C2["能力 2：在 Dtrain 上微调"]
+        C3["能力 3：检索增强（RAA）"]
+    end
+    TK --> CAP
+    subgraph RAA["检索增强攻击 RAA（§5，Fig.2）"]
+        Q["第一人称查询视频 x(E)"] --> EMB["ego-exo 联合嵌入 g, g'<br/>（监督对比学习 SupCon 训练）"]
+        POOL["外部未标注第三人称视频池 D(X)"] --> EMB
+        EMB --> TOPM["按相似度取 top-M 第三人称视频"]
+        Q --> FE["直接第一人称攻击 f(x(E))"]
+        TOPM --> FX["对检索到的视频做第三人称攻击 f'(x(X)_i)"]
+        FE --> AGG["聚合函数 A：多数投票 / 加权池化"]
+        FX --> AGG
+        AGG --> PRED["最终隐私预测"]
+    end
+    C3 --> RAA
+```
+
+图依据：论文 §3.2、§4.1–4.2、§5.1–5.2 / Fig.2（RAA 公式 f_RAA = A(f(x_E), f'(x_1), …, f'(x_M))）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ The first large‑scale benchmark for egocentric privacy risk assessment, system
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2506.12258>
+- [arXiv PDF](https://arxiv.org/pdf/2506.12258)：已通读方法部分（实验与附录以略读为准）：§3 基准设计、§4 攻击者能力与实现、§5 检索增强攻击
 
 ## 推荐继续阅读
 

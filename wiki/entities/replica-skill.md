@@ -66,6 +66,43 @@ summary: "Replica Skill 是 11 个 Claude Skills 组成的应用重建工作流�
 - `replica-entrepreneur` 依赖带来源链接的用户评论数据；结论质量受样本覆盖和来源偏差影响。
 - 对机器人系统，应将该流程限制在非安全关键的界面或开发工具原型；实时控制、急停、安全策略和设备协议需按真实系统要求独立设计和验证。
 
+## 源码运行时序图
+
+本仓库没有常驻程序或服务：11 个 `SKILL.md` 是交给 Claude 执行的提示词，另有 6 个仅用标准库的 Python 小工具，由 Skill 在对应步骤里以命令行调用，`replica/` 目录里的文件在各步骤之间传递。下图按 README 与各 `SKILL.md` 里给出的命令和文件交接顺序绘制，Skill 里的"逆向、搭建、测试"等步骤由 Claude 完成，不是仓库代码。
+
+入口：Claude Code 内 `/plugin install replica-skill@replica-skill`（或把 `replica-*` 文件夹复制到 `~/.claude/skills/`），然后依次执行 `/replica-recon` 到 `/replica-deploy`。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant CC as Claude Code（加载 SKILL.md）
+    participant R as replica/ 项目目录
+    participant PY as 标准库 Python 工具
+
+    U->>CC: /replica-recon <应用 URL>
+    CC->>R: 写 recon.md、features.csv、screens/
+    U->>CC: /replica-architect、/replica-design
+    CC->>R: 各步读取上一步写入 replica/ 的文件并写出自己的产物（design 产出 design/tokens.json）
+    CC->>PY: contrast.py replica/design/tokens.json（WCAG 对比度，AA 不过则退出码 1）
+    U->>CC: /replica-build、/replica-backend、/replica-test
+    CC->>R: 搭建与测试，并维护 features.csv 的 clone 列（diff 的 SKILL.md 要求其保持最新）
+    U->>CC: /replica-diff
+    CC->>PY: parity.py replica/features.csv（加权 must3/should2/could1，partial 记半）
+    CC->>PY: imgdiff.py screens/S07.png clone-screens/S07.png --json
+    PY-->>CC: 特征得分、缺失清单、布局差异分
+    CC->>R: 写 parity.md
+    U->>CC: /replica-entrepreneur
+    CC->>PY: reviews.py replica/reviews.csv --out replica/feedback.md
+    U->>CC: /replica-brand
+    CC->>PY: sweep.py . --config replica/brand.json（扫描原名/域名/颜色残留，有命中退出码 1）
+    U->>CC: /replica-launch
+    CC->>PY: listing.py replica/launch/listing.json（商店字数与声明检查）
+    U->>CC: /replica-deploy
+    CC->>PY: preflight：parity.py、sweep.py、listing.py
+```
+
+图依据：Jakeschincariol/replica-skill@77c9436，读过 README.md、replica-diff/SKILL.md、replica-recon/SKILL.md（前 40 行）、各 SKILL.md 中的 python3 命令行（grep）、replica-diff/parity.py、replica-entrepreneur/reviews.py、replica-brand/sweep.py、replica-design/contrast.py、replica-launch/listing.py 的 main() 函数；imgdiff.py 仅读其 CLI 用法，内部算法未读；architect / build / backend / test 的 SKILL.md 正文未读。
+
 ## 关联页面
 
 - [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — 覆盖完整软件开发生命周期的技能包，可与本项目对照。
@@ -77,6 +114,7 @@ summary: "Replica Skill 是 11 个 Claude Skills 组成的应用重建工作流�
 - [Replica Skill 仓库归档](../../sources/repos/replica-skill.md)
 - [Jakeschincariol/replica-skill README](https://github.com/Jakeschincariol/replica-skill/blob/main/README.md)
 - [Jakeschincariol/replica-skill LICENSE](https://github.com/Jakeschincariol/replica-skill/blob/main/LICENSE)
+- 源码核对（2026-11-02）：Jakeschincariol/replica-skill@77c9436，读过 README.md、replica-diff/SKILL.md、replica-recon/SKILL.md（部分）、各 SKILL.md 的 python3 命令行、parity.py / reviews.py / sweep.py / contrast.py / listing.py 的 main()；imgdiff.py 内部与 architect/build/backend/test 的 SKILL.md 正文未读；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

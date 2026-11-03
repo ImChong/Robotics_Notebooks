@@ -54,6 +54,44 @@ CAE Agent Hub（Cai-aa/CAE-Agent-Hub）是面向工程仿真的代理工具集�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库标注许可证为 MIT；具体模块的运行状态和验证范围以各自文档为准。 涉及商业软件时，安装包和有效许可证需由使用者自行提供。
 
+## 源码运行时序图
+
+本仓库是多软件适配器集合（`MCP/ANSA`、`MCP/Ansys`、`MCP/CST`、`MCP/COMSOL` 等各自独立启动），下图仅取其中 `MCP/ANSA` 一个适配器的实际调用链作代表，其余适配器未逐一核对。
+
+入口：外部 MCP 进程 `python -m ansa_mcp`（或 `python server.py`，`pyproject.toml` 中 `ansa-mcp = "ansa_mcp.__main__:main"`）；ANSA 内由用户加载 `ansa_plugin/start_ansa_mcp.py`。
+
+```mermaid
+sequenceDiagram
+    participant C as MCP 客户端 (Codex / Claude 等)
+    participant S as src/ansa_mcp/server.py<br/>FastMCP 工具
+    participant L as bridge_client.py<br/>LiveBridgeClient
+    participant R as ansa_plugin/ansa_mcp_bridge/runtime.py<br/>BridgeRuntime
+    participant H as handlers.py<br/>HandlerRegistry
+    participant A as ANSA Python API / 数据库
+
+    Note over R: ANSA 内运行 start_ansa_mcp.py → ansa_mcp_bridge.start()；GUI 定时器 _poll_network 轮询 server.poll()（127.0.0.1）
+    C->>S: python -m ansa_mcp → __main__.main() → mcp.run() (stdio)
+    C->>S: 调用工具，如 get_live_entity / run_live_model_checks
+    S->>L: live.call(method, params)
+    L->>L: 读 bridge.json（host/port/token），socket.create_connection
+    L->>R: 经 HMAC 互认证的换行 JSON 请求
+    R->>R: dispatch(method, params)：monitor.begin，必要时取模型快照
+    R->>H: registry.dispatch(method, params)
+    H->>A: 调用 ANSA API 读取/检查
+    A-->>H: 结果
+    H-->>R: 结果 (JSON 化)
+    R->>R: monitor.finish、refresh_session、刷新仪表盘
+    R-->>L: 响应
+    L-->>S: 返回
+    S-->>C: 工具结果
+    opt 写操作：execute_live_ansa_operation / execute_live_ansa_python_step
+        S->>L: live.call_persistent_write(method, params, operation_id)
+        L->>R: 同上，带 expected_database / session_nonce / deck / confirm 校验参数
+    end
+```
+
+图依据：Cai-aa/CAE-Agent-Hub@56705e0，读过 README.md（根）、MCP/ANSA/README.md、MCP/ANSA/pyproject.toml、server.py、src/ansa_mcp/__main__.py、server.py（部分工具）、bridge_client.py（call / call_persistent_write / _call 开头）、ansa_plugin/start_ansa_mcp.py（开头）、ansa_plugin/ansa_mcp_bridge/runtime.py（dispatch、_poll_network）；HMAC 握手细节、handlers.py 内部与 ANSA 侧 API 具体调用未读。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -64,6 +102,7 @@ CAE Agent Hub（Cai-aa/CAE-Agent-Hub）是面向工程仿真的代理工具集�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/cai-aa-cae-agent-hub.md)
 - [Cai-aa/CAE-Agent-Hub 官方仓库](<https://github.com/Cai-aa/CAE-Agent-Hub>)
+- 源码核对（2026-11-02）：Cai-aa/CAE-Agent-Hub@56705e0，读过根 README.md 与 MCP/ANSA 下 README.md、pyproject.toml、server.py、src/ansa_mcp/{__main__,server,bridge_client}.py、ansa_plugin/start_ansa_mcp.py、ansa_plugin/ansa_mcp_bridge/runtime.py；时序图仅覆盖 MCP/ANSA 适配器，依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

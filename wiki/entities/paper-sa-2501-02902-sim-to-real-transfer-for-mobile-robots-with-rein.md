@@ -42,6 +42,18 @@ A comprehensive framework for sim-to-real transfer of mobile robots using reinfo
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["(1) 机器人模型<br/>URDF/SDF 导入 Isaac Sim"] --> B["(2) Isaac Sim 中 RL 训练<br/>观测：2D 激光(120 束)、目标距离与角度、上一步速度<br/>动作：线速度、角速度<br/>奖励：距离 + 碰撞惩罚 + 时间 + 终止项<br/>Actor-Critic"]
+    B --> C["(3) 导出 ONNX 策略<br/>ROS 2 推理节点：订阅 Scan/Odometry，发布 cmd_vel"]
+    C --> D["Gazebo 仿真测试<br/>对比 Nav2 基线"]
+    C --> E["(4) 零样本实机部署<br/>TurtleBot 4 Lite，行人作动态障碍"]
+```
+
+图依据：论文 Fig. 1（四步 sim-to-real 工作流）、§3.3-3.4、§4.1-4.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +108,7 @@ A comprehensive framework for sim-to-real transfer of mobile robots using reinfo
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2501.02902>
+- [arXiv PDF](https://arxiv.org/pdf/2501.02902)：已通读方法部分（实验与附录以略读为准）：§1 引言与 Fig. 1、§3.3-3.4、§4（观测/奖励/模型）、§5 实机实验；其余略读
 
 ## 推荐继续阅读
 

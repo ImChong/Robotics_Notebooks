@@ -42,6 +42,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Grounding Methods。 本
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["源环境 Ps（仿真器）与目标环境 Pt（真机）<br/>动力学不匹配"] --> B["智能体策略 π<br/>先在源环境预训练"]
+    B --> C["在目标环境 rollout π<br/>得到状态转移轨迹 τt"]
+    B --> D["在 grounded 源环境 rollout π<br/>得到轨迹 τg"]
+    P["动作变换策略 πg(ã|s,a)<br/>先改写动作再送入源环境"] --> D
+    C --> E["判别器 Dφ(s,a,s')<br/>区分 τg 与 τt 的转移"]
+    D --> E
+    E -->|"奖励 −log Dφ(s,a,s')<br/>策略梯度更新 θ"| P
+    E -->|"梯度下降更新 φ"| E
+    P --> F["在 grounded 源环境中优化 π（参数 η）"]
+    F --> G["迁移到目标环境<br/>不满意则重复外层循环"]
+    G --> C
+```
+
+图依据：论文 §3–§4 与 Algorithm 1（GARAT）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Grounding Methods。 本
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2008.01594>
+- [arXiv PDF](https://arxiv.org/pdf/2008.01594)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 背景、§3 GAT as IfO、§4 GARAT 与 Algorithm 1
 
 ## 推荐继续阅读
 

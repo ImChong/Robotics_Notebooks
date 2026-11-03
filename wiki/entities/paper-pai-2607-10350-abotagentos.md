@@ -40,6 +40,37 @@ Robotic agent operating layer for scene-conditioned planning, skill execution, v
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["多模态输入<br/>麦克风 / APP / 摄像头等传感器"] --> TINY["边缘 Tiny LLM<br/>每轮交互都运行"]
+  TINY -->|"常规请求"| MAIN
+  TINY -->|"复杂推理/长程规划/歧义: 按需升级"| CLOUD["云端 Large LLM"]
+  CLOUD --> MAIN["主 LLM: 场景条件任务规划<br/>(结合地图记忆、机器人状态、可用技能)"]
+  CTX["Context Management"] --> MAIN
+  MAIN -->|"直接调用工具"| SK["Skills & Tools 层<br/>操作 / 导航 / 运动 / 视觉等"]
+  MAIN -->|"委派多步子任务"| RUN["Skill Runner 子智能体<br/>隔离局部上下文, 返回压缩结果"]
+  RUN --> SK
+  SK --> HW["机器人硬件执行"]
+  VER["Verifier: 运行时 / 技能级 / 结束时 三阶段验证"] -.-> RUN
+  VER -.->|"缺失条件反馈"| MAIN
+  HW --> OBS["观测与执行轨迹"]
+  OBS --> MAIN
+  OBS --> VER
+  OBS --> MW["记忆写入: 转为带溯源的类型化图节点/边"]
+  MW --> PRIV["边端私有记忆图"]
+  PRIV -->|"隐私判断: 仅可共享项上传"| COMMON["云端公共记忆"]
+  PRIV --> RET["检索: 混合打分选种子节点 -> 扩展局部证据子图"]
+  RET --> CTX
+  RET --> TR["检索/回答 trace"]
+  TR --> EVO["离线失败诊断 -> 提议 -> 编译为 JSON DSL evo-asset"]
+  EVO --> GATE{"Gate: 目标集提升且回归集不退化"}
+  GATE -->|"通过, 仅用于后续 split"| RET
+```
+
+图依据：论文 §2.1 Architecture Overview / Fig. 1、§2.2 Agent Harness / Fig. 2、§2.3 Memory System / Fig. 3（§2.3.1–2.3.5）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +134,7 @@ Robotic agent operating layer for scene-conditioned planning, skill execution, v
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2607.10350>
+- [arXiv PDF](https://arxiv.org/pdf/2607.10350)：已通读方法部分（实验与附录以略读为准）：§2 Agent Framework（2.1 架构总览、2.2 Agent Harness、2.3 Memory System 及 Fig. 1–3）；§3 EmbodiedWorldBench、§4 Model Training、§5 实验未读
 
 ## 推荐继续阅读
 

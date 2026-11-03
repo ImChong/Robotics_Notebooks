@@ -42,6 +42,30 @@ Proposes MM-Ego, an egocentric multimodal LLM that shows powerful performance on
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DE["数据引擎：narration 到 egocentric QA"]
+        N["Ego4D 视频片段及其人工 narration，按时间顺序拼成 narration 段落"] --> GPT["GPT-4o（纯文本）生成 episodic memory 相关 QA，并标注所依据的 narration 句序号"]
+        GPT --> MAP["句序号映射回视频时间帧，得到关键帧标签"]
+    end
+    V["视频均匀采样 N 帧"] --> SIG["SigLIP-so400m 视觉编码 + 2 层 MLP + 平均池化，得到高分辨率视觉嵌入"]
+    SIG --> CMP["沿嵌入长度平均池化，得到压缩视觉嵌入"]
+    Q["问题"] --> QE["Qwen2 tokenizer 与 embedding 层，得到问题嵌入"]
+    CMP --> GG["Step 1 Global Glimpse：拼接 [压缩视觉嵌入, 问题嵌入, memory pointer 嵌入] 输入 LLM"]
+    QE --> GG
+    GG --> SC["末层输出做 softmax 点积，得到各帧相关性分数 s"]
+    SC --> TK["叠加均匀采样扰动 u（探索与利用平衡），取 top-k 索引"]
+    TK --> FB["Step 2 Fallback：取所选帧的高分辨率视觉嵌入 + 问题嵌入"]
+    SIG --> FB
+    QE --> FB
+    FB --> ANS["LLM 生成回答"]
+    MAP -. "训练：关键帧标签对 s 做二元交叉熵监督" .-> SC
+```
+
+图依据：论文 §2.1 数据引擎（Fig.2）、§2.2.1 嵌入、§2.2.2 Memory Pointer Prompting（Fig.4、式 (1)–(3)）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +121,7 @@ Proposes MM-Ego, an egocentric multimodal LLM that shows powerful performance on
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2410.07177>
+- [arXiv PDF](https://arxiv.org/pdf/2410.07177)：已通读方法部分（实验与附录以略读为准）：§2.1 数据引擎、§2.2.1 视觉与文本嵌入、§2.2.2 Memory Pointer Prompting
 
 ## 推荐继续阅读
 

@@ -43,6 +43,22 @@ Masters Atari with discrete world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ENV["环境（Atari 图像 x_t、奖励、折扣）"] --> DATA["经验数据集：x、a、r、γ 序列"]
+  DATA --> WM["世界模型学习：CNN 编码器 + RSSM（GRU 确定性状态 h_t，32×32 类别随机状态 z_t）"]
+  WM --> HEADS["预测头：图像 / 奖励 / 折扣；KL 损失（KL balancing）训练先验"]
+  WM --> IMG["想象：从后验状态出发，用先验 transition predictor 在潜空间展开 H=15 步"]
+  IMG --> AC["Actor 采样动作，Critic 回归 λ-target"]
+  AC --> ACT["Actor 损失：Reinforce（Atari）/ 动力学反传（连续控制）+ 熵正则"]
+  ACT --> EXEC["在真实环境中执行 Actor"]
+  EXEC --> ENV
+```
+
+图依据：论文 §2、§2.1（Fig.2 世界模型学习）、§2.2（Fig.3 Actor-Critic 学习）；训练循环依据 §2 开头“学习世界模型、在想象序列中学习 actor 与 critic、执行 actor 扩充经验”。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ Masters Atari with discrete world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2010.02193>
+- [arXiv PDF](https://arxiv.org/pdf/2010.02193)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 DreamerV2（§2.1 世界模型学习、§2.2 行为学习）、§3 实验开头。
 
 ## 推荐继续阅读
 

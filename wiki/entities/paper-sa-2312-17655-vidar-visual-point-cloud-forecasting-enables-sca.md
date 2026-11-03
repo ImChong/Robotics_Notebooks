@@ -43,6 +43,23 @@ Visual point cloud forecasting enables scalable autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  IMG["多视角历史图像序列 I"] --> HE["History Encoder\n视觉 BEV 编码器 (预训练目标)\n输出 BEV 特征 F_bev"]
+  HE --> LR["Latent Rendering 算子\n在隐空间模拟体渲染，得到几何特征 F^_bev\n多组 (multi-group) 并行"]
+  LR --> FD["Future Decoder\n自回归预测未来 BEV 特征 F^_t\n条件为自车运动 e_t 与上一帧 BEV 特征"]
+  EGO["期望的自车运动 e_t"] --> FD
+  FD --> PROJ["投影层\n生成占据体 P_t"]
+  PROJ --> RAY["可微射线投射渲染未来点云"]
+  GT["真值未来点云"] --> LOSS["逐射线交叉熵监督"]
+  RAY --> LOSS
+  HE -->|"预训练后迁移"| DOWN["下游: BEVFormer 3D 检测 / OccNet 语义占据 / UniAD 感知-预测-规划"]
+```
+
+图依据：论文 §3.1 Overview（Fig. 2）、§3.2 Latent Rendering（Fig. 3 / Fig. 4）、§3.3 Future Decoder（Fig. 5）；下游验证见 §4 Implementation Details。逐射线交叉熵监督的具体连接依据论文 Loss 一段。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ Visual point cloud forecasting enables scalable autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2312.17655>
+- [arXiv PDF](https://arxiv.org/pdf/2312.17655)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（3.1–3.3）与 §4 的 Implementation Details / Loss 小节
 
 ## 推荐继续阅读
 

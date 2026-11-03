@@ -32,7 +32,29 @@ Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing 的人形
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论（论文方法数据流见下方「流程总览」）。
+
+## 流程总览
+
+```mermaid
+flowchart TB
+    IN["输入: 深度图 (Realsense L515, 朝向地面)<br/>+ 位姿估计 (里程计或 SLAM)"]
+    IN --> GPU["深度图送入 GPU"]
+    GPU --> AD["各向异性扩散滤波<br/>(降噪并保边)"]
+    AD --> NV["Sobel 算子梯度 + 相机内参 K<br/>计算每像素法向量图"]
+    NV --> CE["Canny 边缘检测 → 轮廓提取"]
+    CE --> PS["轮廓简化 → 各平面的多边形分割"]
+    PS --> RS["结合深度图, RANSAC 拟合每个多边形的平面模型"]
+    RS --> TF["按位姿估计变换到地图坐标系"]
+    TF --> OV{"与已有多边形重叠且<br/>质心高度差 ≤ 5 cm 漂移容限?"}
+    OV -->|"是"| KF["Kalman 滤波更新竖直漂移<br/>修正新多边形后合并"]
+    OV -->|"否"| ADD["作为新多边形加入地图"]
+    KF --> MAP["语义多边形地图 (Semantic Polygonal Map)"]
+    ADD --> MAP
+    MAP --> PLAN["仿真验证: 规划落脚点 → 步行模式生成器<br/>→ 全身导纳控制 (Choreonoid)"]
+```
+
+图依据：论文 §III-A Overview（Fig.3）、§III-C 各向异性扩散与法向量（Alg.1）、§III-D 平面分割、§III-E 多边形整合与漂移补偿、§IV-D 运动规划仿真。
 
 ## 核心信息
 
@@ -66,6 +88,7 @@ Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing 的人形
 - [humanoid_pnb_real-time-polygonal-semantic-mapping-for-humanoi.md](../../sources/papers/humanoid_pnb_real-time-polygonal-semantic-mapping-for-humanoi.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2411.01919>
+- [arXiv PDF](https://arxiv.org/pdf/2411.01919)：已通读方法部分（实验与附录以略读为准）：§III System Framework and Methods（A–E）、§IV-D Motion Planning Simulation
 
 ## 推荐继续阅读
 

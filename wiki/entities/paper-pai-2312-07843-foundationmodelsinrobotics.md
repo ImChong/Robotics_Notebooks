@@ -40,6 +40,34 @@ Survey on how foundation models are transforming robotics.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ROOT["Foundation Models in Robotics（Fig. 1 与目录）"] --> II["II Preliminaries：术语与数学基础、LLM、Vision Transformers、VLMs、Embodied Multimodal Language Models、Visual Generative Models"]
+  ROOT --> III["III Robotics（决策与规划）"]
+  ROOT --> IV["IV Perception"]
+  ROOT --> V["V Embodied AI"]
+  ROOT --> VI["VI Challenges and Future Directions"]
+  III --> IIIA["A Robot Policy Learning for Decision Making and Control：Language-conditioned Imitation Learning / Language-Assisted Reinforcement Learning"]
+  III --> IIIB["B Language-Image Goal-Conditioned Value Learning"]
+  III --> IIIC["C Robot Task Planning using LLMs：Language Instructions for Task Specification / Code Generation"]
+  III --> IIID["D In-context Learning (ICL) for Decision-Making"]
+  III --> IIIE["E Robot Transformers"]
+  III --> IIIF["F Open-Vocabulary Robot Navigation and Manipulation"]
+  IV --> IVA["A Open-Vocabulary Object Detection and 3D Classification"]
+  IV --> IVB["B Open-Vocabulary Semantic Segmentation"]
+  IV --> IVC["C Open-Vocabulary 3D Scene Representations"]
+  IV --> IVD["D Learned Affordances"]
+  IV --> IVE["E Predictive Models"]
+  V --> VA["A Generalist AI"]
+  V --> VB["B Simulators"]
+  VI --> VIA["A 数据稀缺 / B 实时性能 / C 多模态表示局限 / D 不确定性量化"]
+  VI --> VIE["E 安全评估 / F 即插即用 vs 新建基础模型 / G 机器人场景高变异性 / H 基准与可复现性"]
+```
+
+图依据：综述分类体系图，依据论文 Fig. 1（Overview of Robotics Tasks Leveraging Foundation Models）、§I 末尾的「This survey is organized as follows」段落与目录；节点名取自目录，VI 节小节名为概括性缩写。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +131,7 @@ Survey on how foundation models are transforming robotics.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2312.07843>
+- [arXiv PDF](https://arxiv.org/pdf/2312.07843)：已通读 §I 引言（范围与组织说明）、目录、Fig. 1 分类图；§II-§VI 各节正文以略读为准（仅依据小节标题）
 
 ## 推荐继续阅读
 

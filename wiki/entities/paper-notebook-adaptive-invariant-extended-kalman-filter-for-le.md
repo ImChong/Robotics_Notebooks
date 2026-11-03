@@ -31,7 +31,26 @@ Adaptive Invariant Extended Kalman Filter for Legged Robot State Estimation 的�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["机器人：IMU（加速度 a、角速度 ω）+ 关节编码器腿部运动学"] --> P["IEKF Predict：状态 RB, vB, pB, 各足位置 pFi + 偏置 ba, bω"]
+    CE["接触检测：步态时序 + GM 动量扰动力估计（用指令力矩，无接触传感器）"] --> P
+    P --> E["计算各足速度运动学创新 e_i（静止足假设）"]
+    E --> N["足模型噪声估计：创新协方差匹配（滑动窗口）得 Q̂_ufi，缩放系数 α 截断到 [1, αmax]"]
+    E --> S["滑移剔除：Mahalanobis 距离 d_i 超过阈值 σ 则该足噪声置大"]
+    N --> A["调整足噪声协方差 Q̂_fi"]
+    S --> A
+    A --> RP["Re-predict：用调整后的噪声重做协方差预测"]
+    RP --> U["Update：位置运动学测量（右不变观测形式）"]
+    U --> O["输出 RB, pB, vB 给控制器"]
+    O --> C["Controller → 力矩指令 → Robot"]
+```
+
+图依据：论文 §III Methodology（A 系统/测量模型、B 接触检测、C 足噪声估计、D 滑移剔除）/ Fig.2（Adaptive IEKF 流程图）
 
 ## 核心信息
 
@@ -50,7 +69,7 @@ Adaptive Invariant Extended Kalman Filter for Legged Robot State Estimation 的�
 
 **本页当前提供的是「待读条目」而不是论文解读：它把这条 09_State_Estimation 条目挂进知识库以保持检索连通，实质技术判断要等深读笔记落地。**
 
-- 页面已确认的信息仅有分类（09_State_Estimation）、arXiv 编号与计划文件夹路径；自适应不变 EKF 的具体机制、量化 benchmark 与实机指标均尚未记录。
+- 页面已确认的信息为分类（09_State_Estimation）、arXiv 编号、计划文件夹路径与依据论文方法部分画出的「流程总览」；量化 benchmark 与实机指标尚未记录。
 - 适用边界很窄：可用于按分类检索，不能作为该论文技术结论的引用依据。
 - 深读笔记完成后，本页会补上笔记链接与实质要点。
 
@@ -64,6 +83,7 @@ Adaptive Invariant Extended Kalman Filter for Legged Robot State Estimation 的�
 - [humanoid_pnb_adaptive-invariant-extended-kalman-filter-for-le.md](../../sources/papers/humanoid_pnb_adaptive-invariant-extended-kalman-filter-for-le.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2510.16755>
+- [arXiv PDF](https://arxiv.org/pdf/2510.16755)：已通读方法部分（实验与附录以略读为准）：§I 引言要点、§III Methodology（A–D）与 Fig.2
 
 ## 推荐继续阅读
 

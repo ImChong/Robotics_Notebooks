@@ -38,6 +38,25 @@ summary: "Stein-ADMM（arXiv:2609.28299）：接触隐式 TO 易陷单一局部�
 - 纳入 [13 篇技术地图](../overview/embodied-13-papers-technology-map.md) 阅读坐标。
 - 开源结论（步骤 2.5，2026-09-24）：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Prob["接触隐式轨迹优化问题<br/>目标 J + LCP 互补约束 v(x) ∈ C"] --> Init["初始化 N 个粒子 x_i<br/>z_i ← proj_C(v(x_i))，u_i ← 0，ρ ← ρ0"]
+    Init --> Loop
+    subgraph Loop["对每个粒子 i 并行迭代（k = 0 … K）"]
+        X["x-update：最小化增广 Lagrangian L_ρ(x_i, z_i, u_i)<br/>（无约束，可用 L-BFGS 等）"] --> Zt["计算参考点 z̃_i = v(x_i) + u_i"]
+        Zt --> Rep["在 split 变量 z 上计算 Stein 项 φ(z_i)<br/>score s(z_j) = -∇_z L_ρ，核 k(z_i, z_j) 给出排斥"]
+        Rep --> Proj["z-update：z_i ← proj_C(z̃_i + γ φ(z_i))<br/>排斥后再投影回可行集 C"]
+        Proj --> Dual["dual-update：u_i ← u_i + v(x_i) − z_i<br/>把 x_i 拉向 z_i 达成 consensus"]
+    end
+    Dual --> Stop{"‖∇_x L_ρ‖∞ ≤ τ1 且<br/>dist_C(v(x_i))∞ ≤ τ2 ?"}
+    Stop -->|"否"| X
+    Stop -->|"是"| Out["输出一组彼此不同的可行接触策略 {x_i}"]
+```
+
+图依据：论文 §IV（Stein Projected ADMM，Eq. 12–16）与 Algorithm 1、Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -81,6 +100,7 @@ summary: "Stein-ADMM（arXiv:2609.28299）：接触隐式 TO 易陷单一局部�
 
 - [13 篇盘点（公众号）](../../sources/blogs/wechat_embodied_13_papers_forgetmimic_2026-09-24.md)
 - [Contact-Implicit Stein Projected ADMM for Discovery of Diverse Contact-Rich Manipulation Strategies](../../sources/papers/stein-admm-contact_arxiv_2609_28299.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.28299)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 预备知识、§IV Stein Projected ADMM（含 Algorithm 1）、§V-A/B 结果（略读其余实验与附录）
 
 ## 推荐继续阅读
 

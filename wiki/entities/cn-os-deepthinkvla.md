@@ -55,6 +55,42 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：评估 `bash scripts/eval.sh`（实际执行 `python -m experiments.run_libero_eval --pretrained_checkpoint ... --task_suite_name libero_10`）。SFT 入口为 `scripts/finetune.sh`（`deepspeed src/train.py`），RL 入口为 `scripts/run_deepthinkvla_rl.sh`（`python -m verl.trainer.main_ppo`），图中以评估推理链路为主，后两者在末尾简要画出。
+
+```mermaid
+sequenceDiagram
+    participant EV as src/experiments/run_libero_eval.py
+    participant U as experiments/deepthinkvla_utils.py
+    participant M as sft/modeling_deepthinkvla.py DeepThinkVLA
+    participant L as LIBERO env (get_libero_env)
+    participant TR as src/train.py + sft/sft_runner.py
+    participant RL as verl.trainer.main_ppo + RayTrainer
+    participant RO as verl/workers/rollout/rob_rollout.py RobHFRollout
+    EV->>U: get_vla(cfg)，DeepThinkVLA.from_pretrained 并加载动作反归一化统计
+    EV->>L: get_libero_env(task) 并 env.reset()
+    loop 每个控制步
+        EV->>L: 前 num_steps_wait 步发送 dummy action 等物体稳定
+        EV->>EV: prepare_observation 取主视角与腕部图像并缩放
+        alt 动作队列为空
+            EV->>U: get_vla_action(vla, processor, obs, task_label)
+            U->>M: predict_cot_action(input_ids, pixel_values, attention_mask)
+            M->>M: super().generate 自回归生成 CoT
+            M->>M: prompt_cot_predict_action 一次前向并行取出动作 token 的 logits
+            M-->>U: normalized_actions（NUM_ACTIONS_CHUNK x ACTION_DIM）与 CoT ids
+            U-->>EV: Unnormalize_Action 后的动作块 + CoT 文本
+        end
+        EV->>EV: binarize_gripper_action
+        EV->>L: env.step(action)
+    end
+    TR->>M: SFT：LiberoDataset + DeepThinkVLATrainer.train()
+    RL->>RO: generate_sequences，经 generate_action_verl 采样 CoT 与动作并在 env_worker 中与 LIBERO 交互
+    RL->>RL: compute_log_prob，compute_advantage（GRPO），update_actor
+```
+
+图依据：OpenBMB/DeepThinkVLA@ff271e7，读过 `README.md`、`scripts/eval.sh`、`scripts/finetune.sh`、`scripts/run_deepthinkvla_rl.sh`、`src/experiments/run_libero_eval.py`、`src/experiments/deepthinkvla_utils.py`、`src/sft/modeling_deepthinkvla.py`、`src/sft/sft_runner.py`、`src/train.py`、`src/verl/trainer/main_ppo.py`、`src/verl/trainer/ppo/ray_trainer.py`、`src/verl/workers/rollout/rob_rollout.py`；SFT 与 RL 部分只读了入口与调用骨架，未逐行核对内部实现。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +102,7 @@ institutions:
 - [DeepThinkVLA 源码归档](../../sources/repos/deepthinkvla.md)（<https://github.com/OpenBMB/DeepThinkVLA>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：OpenBMB/DeepThinkVLA@ff271e7，读过 README.md、scripts/eval.sh、scripts/finetune.sh、scripts/run_deepthinkvla_rl.sh、src/experiments/run_libero_eval.py、src/experiments/deepthinkvla_utils.py、src/sft/modeling_deepthinkvla.py、src/sft/sft_runner.py、src/train.py、src/verl/trainer/main_ppo.py、src/verl/trainer/ppo/ray_trainer.py、src/verl/workers/rollout/rob_rollout.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

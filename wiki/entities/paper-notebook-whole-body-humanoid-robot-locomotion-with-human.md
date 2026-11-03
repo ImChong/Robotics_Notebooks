@@ -31,7 +31,31 @@ Whole-body Humanoid Robot Locomotion with Human Reference 的人形机器人学�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 方法流程见上方「流程总览」（依据论文方法部分）；深读笔记写出来之前，这里不给更多方法结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    M1["公开动捕库 SFU / CMU<br/>+ 自采高精度动捕"] --> RT["手动标定转换（re-targeting）<br/>得到 Adam 参考动作"]
+    RT --> DR["判别器 D 的参考状态转移<br/>(关节速度/位置、双手双脚位置，58 维)"]
+    POL["策略 π（PPO，Isaac Gym 4096 并行环境）"] --> ENV["仿真环境（含域随机化）"]
+    ENV --> OBS["观测 91 维：IMU、关节编码器、速度命令、<br/>周期相位 sin/cos 与摆动占比 ρ、根高度、上一步动作"]
+    OBS --> POL
+    POL --> ACT["动作：25 维关节位置目标 → PD 控制器"]
+    ACT --> ENV
+    ENV --> D["判别器 D（AMP）"]
+    DR --> D
+    D --> RI["模仿奖励 rI"]
+    ENV --> TR["任务奖励：命令奖励 + 周期奖励 + 正则奖励"]
+    RI --> POL
+    TR --> POL
+    POL --> CV["交叉验证：Webots 与 Isaac Gym"]
+    CV -->|"反馈微调"| POL
+    CV --> RB["部署真机 Adam"]
+```
+
+图依据：论文 §III-B、§IV-A/B、§V-A/B / Fig.3。
 
 ## 核心信息
 
@@ -65,6 +89,7 @@ Whole-body Humanoid Robot Locomotion with Human Reference 的人形机器人学�
 - [humanoid_pnb_whole-body-humanoid-robot-locomotion-with-human.md](../../sources/papers/humanoid_pnb_whole-body-humanoid-robot-locomotion-with-human.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2402.18294>
+- [arXiv PDF](https://arxiv.org/pdf/2402.18294)：已通读方法部分（实验与附录以略读为准）：§III 预备（机器人结构、动捕与重定向）、§IV 方法（AMP 模仿、任务奖励）、§V-A 训练细节、§V-B 交叉验证与反馈微调
 
 ## 推荐继续阅读
 

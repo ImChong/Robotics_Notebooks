@@ -48,6 +48,24 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["双目图像 Stereo_Images[t]"] --> R["FoundationStereo 重建稠密点云"]
+    R --> G["GroundingDINO + Segment Anything\n分割被操作物体"]
+    G --> X["物体粒子 x_obj\n末端执行器点 x_ee"]
+    X --> C["拼接 位置 x / 材质 one-hot m / 运动 u\n经 f_proj 得粒子嵌入 z_t"]
+    C --> T["动力学转移 f_dyn\nL=3 层多头自注意力 Transformer 编码器"]
+    T --> D["共享解码器 f_pred\n预测各粒子位移 Δx"]
+    D --> P["下一步粒子位置 x_t+1 = x_t + Δx"]
+    P --> H["混合损失 α·Chamfer + (1-α)·Hausdorff\n对照下一帧双目重建的真值点云"]
+    P --> M["MPPI 规划：采样动作序列并用世界模型 rollout\n按目标距离/碰撞等代价选最优"]
+    M --> A["机器人动作"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -107,6 +125,7 @@ sources:
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- [arXiv PDF](https://arxiv.org/pdf/2506.23126)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.4 方法（含 Fig.2、式 1–6、训练与 MPPI 规划）
 
 ## 推荐继续阅读
 

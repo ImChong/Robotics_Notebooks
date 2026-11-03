@@ -43,6 +43,32 @@ MobileH2R 是一个学习泛化的、基于视觉的「人到移动机器人（H
 - **自动造安全演示**降低数据工程；
 - 人机递交是人形服务场景的高频交互。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["(a) 场景准备：MobileH2R-Sim"]
+        A["物体：ShapeNet + Acronym 抓取集<br/>手部抓取：DexGraspNet"] --> D
+        B["LLM 生成与物体语义对齐的动作提示"] --> C["GMD (Guided Motion Diffusion, AMASS 训练)<br/>生成 pre-handover 全身运动"]
+        C --> D["交互式人体智能体：机器人靠近前保持全身动作"]
+        E["handover 阶段仅手臂动作<br/>采样交接点 → 运动学优化器求臂关节 → 插值轨迹"] --> D
+        D --> F["100K+ 交互式交接场景"]
+    end
+    subgraph S2["(b) 演示生成：安全且易模仿"]
+        F --> G["CHOMP 状态规划器 (特权场景信息)<br/>未来避障 + 终点停在人面前 + 视觉神经损失"]
+        H["位姿预测网络 P：视觉 → 物体位姿<br/>视觉-状态恢复估计器 E 近似该损失，使梯度可传到状态"] --> G
+        G --> I["仿真回放，保留成功轨迹并渲染观测<br/>100K+ 演示"]
+    end
+    subgraph S3["(c) 策略学习：4D 模仿学习"]
+        I --> J["头部 + 腕部相机点云，分割为物体 / 手 / 人体<br/>ICP 计算相邻帧流信息"]
+        J --> K["物体手部流与人体流分别用不同采样半径的 Set Abstraction"]
+        K --> L["PointNet 融合为全局特征"]
+        L --> M["MLP 解码：底盘 SE(2) + 机械臂 SE(3) + 抓取预测 → 9D 协调动作"]
+    end
+```
+
+图依据：论文 §3 方法（§3.1 MobileH2R-Sim、§3.2 安全且易模仿的演示、§3.3 协调底盘-机械臂模仿）/ Fig.2、Fig.3
+
 ## 解决什么问题
 
 **移动机器人接人递来的物体**比固定底座难： - 需在**大工作空间**移动接物，**底盘 + 臂**要协调； - 真实递交数据**难采**； - 要对**多样人类递交动作**泛化。
@@ -130,6 +156,7 @@ MobileH2R 要：**仅用合成数据**学出泛化的视觉 H2MR 递交。
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/MobileH2R__Learning_Generalizable_Human_to_Mobile_Robot_Handover_from_Synthetic_Data/MobileH2R__Learning_Generalizable_Human_to_Mobile_Robot_Handover_from_Synthetic_Data.html>
 - 论文：<https://arxiv.org/abs/2501.04595>
 - 论文正文（Table 1–5、附录局限）：<https://arxiv.org/html/2501.04595>
+- [arXiv PDF](https://arxiv.org/pdf/2501.04595)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3 方法（3.1–3.3）及 Fig.2/3；实验与补充材料未细读
 
 ## 推荐继续阅读
 

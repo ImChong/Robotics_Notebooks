@@ -55,6 +55,44 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python demos/02_pv_control.py [--port auto] [--id 0x01] [--close-q ...] [--close-vel ...]`（PV 模式夹爪柔和闭合示例；SDK 门面为 `gloria_m_sdk.GloriaGripper`）。
+
+```mermaid
+sequenceDiagram
+    participant D as demos/02_pv_control.py
+    participant G as GloriaGripper（client.py）
+    participant MO as MotorAPI / MotionAPI（api/）
+    participant C as CanController（controller.py）
+    participant A as SerialCanAdapter（serial_can_adapter.py）
+    participant M as 电机固件（串口转 CAN）
+    D->>G: with GloriaGripper(port, ...) as g
+    G->>G: __enter__ → connect()
+    G->>A: SerialCanAdapter(port, baudrate=921600)
+    G->>C: CanController(adapter)，register(Actuator)
+    G->>C: apply_limits_and_save(act, limits)
+    C->>A: send(参数写入帧)
+    D->>MO: g.motor.set_mode(ControlMode.POS_VEL)
+    MO->>C: set_control_mode(act, mode)（带重试）
+    D->>MO: g.motor.enable()
+    MO->>C: enable(act)
+    C->>A: send(使能帧)
+    loop 每个控制周期（先开口，再慢速闭合）
+        D->>MO: g.motion.send_pos_vel(position, velocity, poll=True)
+        MO->>C: send_pos_vel(act, position, velocity)
+        C->>A: send(0x100+command_id, pack_f32(位置)+pack_f32(速度))
+        A->>M: CAN 帧（PV 指令）
+        C->>A: poll() → read_packets()
+        M-->>C: 反馈帧 → _handle_packet → unpack_mit_feedback
+        C-->>D: 更新 Actuator 状态，g.state.position
+        D->>D: 位置误差 < SETTLE_THRESHOLD 并持续 SETTLE_TIME 视为到位
+    end
+    D->>G: 退出 with → disconnect()（示例注明退出时电机自动失能）
+```
+
+图依据：Synria-Robotics/Gloria-M-SDK@f034f26，读过 demos/02_pv_control.py、src/gloria_m_sdk/client.py（部分）、controller.py（部分）、api/motion_api.py（仅签名）、serial_can_adapter.py（仅签名）、transport.py（仅签名）；未读 api/motor_api.py，MotorAPI 内部到 controller 的调用为按命名推断。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +104,7 @@ institutions:
 - [Gloria-M-SDK 源码归档](../../sources/repos/gloria-m-sdk.md)（<https://github.com/Synria-Robotics/Gloria-M-SDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Synria-Robotics/Gloria-M-SDK@f034f26，读过 demos/02_pv_control.py、src/gloria_m_sdk/client.py（部分）、controller.py（部分）；motion_api.py、serial_can_adapter.py、transport.py 仅读签名，未读 motor_api.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

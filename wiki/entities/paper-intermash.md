@@ -38,6 +38,23 @@ summary: "InterMASH（arXiv:2609.18504）：球谐 anchor 统一人手/机械手
 - **混合手型训练** 可提升 ShadowHand / Barrett 成功率（Barrett 90.30% on CMapDataset）。
 - 开源结论：**待发布**（2026-09-17）。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    A["手-物对 + 手模板<br/>(MANO / ShadowHand / Barrett / Allegro)"] --> B["球面固定 anchor<br/>Fibonacci 采样, r=0.2"]
+    B --> C["每个 anchor 编码 InterMASH token<br/>位置 p, 朝向 v, SH 系数 C, vision mask V<br/>(手 + 物体, 低阶球谐)"]
+    A --> D["LAP 对应: 机械手 patch 对齐 MANO 顺序<br/>(关键点距离签名)"]
+    D --> C
+    C --> E["条件 DiT (DDPM)<br/>条件: 物体 token + 模板手 token"]
+    E --> F["生成 手侧 MASH 参数 + 接触描述子 K"]
+    G["物理引导 L_phys<br/>(穿透/自碰撞/接触)"] -. 训练约束与采样引导 .-> E
+    F --> H["patch-wise IK<br/>Umeyama 初始化全局位姿 + 拟合关节"]
+    H --> I["关节化手姿 (θ, R, p)"]
+```
+
+图依据：论文 §4.1–4.3 / Fig. 2、Fig. 4、Fig. 5
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -90,6 +107,8 @@ summary: "InterMASH（arXiv:2609.18504）：球谐 anchor 统一人手/机械手
 
 - [intermash_arxiv_2609_18504.md](../../sources/papers/intermash_arxiv_2609_18504.md)
 - [wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md](../../sources/blogs/wechat_embodied_station_9_papers_perception_action_transfer_2026-09-17.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.18504)：已通读方法部分（实验与附录以略读为准）：§4 Method（4.1 表示、4.2 生成模型、4.3 IK）、§5.1 实验设定
+
 
 ## 推荐继续阅读
 

@@ -42,6 +42,26 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Randomization。 
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["基础框架：LSTM 控制器，输入机器人状态 + 时钟信号 + 期望速度"] --> B["输出关节位置设定点 40Hz，经 2kHz PD 控制器"]
+    B --> C["MuJoCo cassie-mujoco-sim 中 PPO 训练 + 动力学随机化"]
+    C --> D["无负载 base policy"]
+    L["5 种负载的 Cassie 模型：无负载、托盘箱、拖车、扁担、水壶"] --> E
+    D --> E{"负载策略训练方式"}
+    E --> F["从随机网络开始训练 load-specific"]
+    E --> G["以 base policy 初始化（bootstrapping）"]
+    E --> H["通用 load policy：5 种模型各占一部分样本，从头或 bootstrapped"]
+    F --> I["仿真评测：通过率、速度误差、抗推力、最大速度"]
+    G --> I
+    H --> I
+    I --> J["真机测试：托盘箱与扁担策略 + base 与通用策略"]
+```
+
+图依据：论文 §III-A / §III-B、§IV、§V。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Randomization。 
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2204.04340>
+- [arXiv PDF](https://arxiv.org/pdf/2204.04340)：已通读方法部分（实验与附录以略读为准）：§III-A 运动学习框架、§III-B 动态负载学习、§IV 评测指标、§V 硬件结果
 
 ## 推荐继续阅读
 

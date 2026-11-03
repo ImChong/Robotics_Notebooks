@@ -42,6 +42,26 @@ RCL Awesome WAM 清单收录（Major category not recorded）；细节以原文 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["BERT: A Review of Applications in NLP and Understanding"] --> I["Introduction<br/>文本表示 (text representation) 背景"]
+    R --> B["Basic concepts about the new BERT linguistic model<br/>BERT 机制: masked language model 预训练 + 针对任务的再训练两阶段"]
+    R --> APP["应用领域各节"]
+    APP --> C["BERT Retraining Methodology for Text Problems (Text Classification)<br/>Further pre-training / Retraining Strategies / Multitasking Learning"]
+    APP --> S["The problem of improving the subject-specific classification of texts using BERT"]
+    APP --> A["Using BERT for Text Annotation Tasks"]
+    APP --> M["BERTScore: BERT Based Text Generation Quality Assessment"]
+    APP --> ATK["BERT Based Attacks on Text Classification Models<br/>(TEXTFOOLER)"]
+    APP --> X["Interlingual training of linguistic models<br/>(CLM / MLM / TLM 三个训练任务)"]
+    APP --> D["Construction of domain-specific text models based on BERT<br/>(BioBERT)"]
+    APP --> RB["Investigation of the robustness of BERT learning"]
+    R --> CO["Conclusion"]
+```
+
+图依据：综述章节框架图，论文全文各节标题（Introduction → Basic concepts → 各 BERT 应用小节 → Conclusion）；该论文无独立分类体系图，节点用原节标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ RCL Awesome WAM 清单收录（Major category not recorded）；细节以原文 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2103.11943>
+- [arXiv PDF](https://arxiv.org/pdf/2103.11943)：已通读章节结构，并通读 Introduction、Basic concepts、Text Classification 再训练方法、BERTScore、Attacks、Interlingual、Domain-specific 各节；Robustness 与 Conclusion 节仅按标题略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,22 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["§III-A 数据采集<br/>4 位 human demonstrator 用 joystick 遥操作<br/>Boston Dynamics Spot 与 Clearpath Jackal 两种机器人<br/>UT Austin 校园室内外, 演示者始终走在机器人后方约 2m"] --> B["多模态数据流 (rosbag)<br/>3D lidar / joystick 命令 / odometry / RGB 与 inertial<br/>(不提供人体检测或跟踪标注)"]
+    B --> C["§III-B 标注<br/>每条 trajectory 标注发生的 social interactions<br/>标签取自 12 个预定义标签 (Table II)<br/>如 Against Traffic / With Traffic / Street Crossing / Narrow Doorway"]
+    C --> D["SCAND 数据集: 138 条 trajectories, 8.7 小时, 25 miles"]
+    D --> E["§IV 分析 (基于 Spot 数据)"]
+    E --> Q1["Q1 是否存在多种社交导航策略?<br/>Demonstrator Classification: 10 秒观测序列 → 分类演示者"]
+    E --> Q2["Q2 能否学习 local 与 global planner?<br/>BC imitation learning: 共享观测表征 + global plan head + local planner head<br/>global: 与 move_base 路径比较 Hausdorff distance; local: 真机用户研究 (static/dynamic 场景问卷)"]
+    D --> SP["Spot 轨迹提供 75%-25% train-test 划分"]
+    D --> UC["§V Anticipated Use Cases"]
+```
+
+图依据：数据采集与标注流程图，论文 §III-A Collecting Data、§III-B Labeled Annotations（Fig. 3、Table II）、§IV Analysis（Fig. 4–6）、§V Anticipated Use Cases。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://ieeexplore.ieee.org/document/9799755/>
+- [arXiv PDF](https://arxiv.org/pdf/2203.15041)：已通读 §I Introduction、§II Related Work、§III Data Collection Procedure、§IV Analysis、§VI Conclusion；§V Anticipated Use Cases 与附加细节以略读为准
 
 ## 推荐继续阅读
 

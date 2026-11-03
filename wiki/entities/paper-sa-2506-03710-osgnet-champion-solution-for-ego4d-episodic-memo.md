@@ -42,6 +42,23 @@ Proposes an early fusion temporal localization architecture, winning all three t
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["输入: 未裁剪第一人称视频 + 文本查询 (NLQ 问句 / GoalStep 步骤描述 / MQ 动作类别)"] --> FE["特征提取: EgoVideo / InternVideo 提取视频特征, EgoVideo / CLIP 提取文本特征"]
+    FE --> OB["物体提取: Co-DETR 检测并按查询选择物体, 编码为物体特征"]
+    FE --> MB["主分支: 视频, 文本, 物体特征早期融合 (BiMamba, cross attention, object attention)"]
+    OB --> MB
+    FE --> SB["Shot 分支: 仅视频特征, 与文本做对比学习"]
+    MB --> MS["多尺度网络 + 预测头 (分类与回归)"]
+    SB -.->|对比学习增强跨模态对齐| MS
+    MS --> OUT["输出: 目标时间段 [ts, te]"]
+    OUT --> ENS["多个模型变体集成"]
+```
+
+图依据：论文 §2.1-2.2 / Fig.1（OSGNet 细节见其原论文）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Proposes an early fusion temporal localization architecture, winning all three t
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2506.03710>
+- [arXiv PDF](https://arxiv.org/pdf/2506.03710)：已通读方法部分（实验与附录以略读为准）：摘要、§1 Introduction、§2 Methodology（2.1-2.4，含 Fig.1 框架描述）
 
 ## 推荐继续阅读
 

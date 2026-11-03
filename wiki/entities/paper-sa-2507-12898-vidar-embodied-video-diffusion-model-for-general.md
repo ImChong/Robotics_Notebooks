@@ -42,6 +42,22 @@ Embodied video diffusion model for generalist manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["预训练数据：约 750K 多视角双臂机器人 episode<br/>（Agibot / RDT / Robomind / Franka 等）"] --> U["统一观测空间 Unified Observation Space<br/>多视角图像拼接 + 机器人/相机/任务指令"]
+    U --> P["Stage 1 预训练：Embodied Video Foundation Model<br/>（rectified flow，仅学视频、不含动作）"]
+    P --> F["Stage 2 微调：目标平台 Aloha<br/>约 20 分钟人类示范，全参数 SFT"]
+    I["输入：当前观测 + 语言指令"] --> G["视频生成：K 个随机种子的候选视频"]
+    F --> G
+    G --> T["Test-time Scaling<br/>评估器 CLIP/VLM 打分，选最优视频"]
+    T --> M["Masked Inverse Dynamics Model (MIDM)<br/>mask 预测网络 U + 动作回归网络 R"]
+    M --> A["机器人动作 Action"]
+```
+
+图依据：论文 §2.1–2.3 / Fig.1（Agibot/RDT/Robomind/Franka 来自 Fig.1 标注）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Embodied video diffusion model for generalist manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.12898>
+- [arXiv PDF](https://arxiv.org/pdf/2507.12898)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 方法（2.1 问题形式化、2.2 视频生成模型、2.3 MIDM）、Fig.1
 
 ## 推荐继续阅读
 

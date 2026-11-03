@@ -39,6 +39,25 @@ summary: "FlashDrive（arXiv:2608.12932）：智驾 VLA 受视觉重复编码、
 - 策展机构：UCSD、普林斯顿大学
 - 与 [第三篇技术地图](../overview/vla-weekly-trends-2026-08-10-part3-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    V["多视角滑动窗口视频<br/>(4 帧 x 4 视角, 每步前进 1 帧)"] --> E["Encode<br/>仅编码最新帧"]
+    E --> P["Prefill<br/>复用前序帧 KV cache<br/>(pre-RoPE 键 + streaming attention mask)"]
+    P --> D["Decode<br/>CoC 推理 token<br/>DFlash 扩散草稿器并行起草 + 验证"]
+    D --> A["Action<br/>flow matching 去噪<br/>8 步中 4 步复用缓存速度"]
+    A --> T["轨迹输出"]
+    F["streaming 微调<br/>冻结 VLM, 仅微调 action expert"] -.-> A
+    Q["W4A8 量化 VLM 骨干<br/>(action expert 保持 BF16)"] -.-> P
+    S["系统层: CUDA Graph + kernel fusion<br/>(每个阶段编译为 CUDA Graph)"] -.-> E
+    S -.-> P
+    S -.-> D
+    S -.-> A
+```
+
+图依据：论文 §1、§3.1–§3.5 / Fig.1–Fig.5
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -81,6 +100,7 @@ summary: "FlashDrive（arXiv:2608.12932）：智驾 VLA 受视觉重复编码、
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part3.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md)
 - [arXiv:2608.12932](https://arxiv.org/abs/2608.12932)
+- [arXiv PDF](https://arxiv.org/pdf/2608.12932)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3.1 Encode & Prefill、§3.2 Decode、§3.3 Action、§3.4 Quantization、§3.5 System Optimizations
 
 ## 推荐继续阅读
 

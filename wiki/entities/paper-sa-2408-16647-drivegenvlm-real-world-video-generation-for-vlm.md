@@ -42,6 +42,25 @@ Real-world video generation for VLM-based autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Waymo Open Dataset<br/>前/左前/右前三路相机视频（128×128，截取 175 帧）"] --> B["Flexible Diffusion Model (FDM)<br/>U-Net + DDPM，按帧子集条件训练"]
+    B --> C["采样方案 sampling scheme：<br/>一系列 (X_s 待采样帧索引, Y_s 条件帧索引)"]
+    C --> D["Autoreg：每步以前 10 帧为条件采样 10 帧"]
+    C --> E["Hierarchy-2：先稀疏关键帧，再分组补全中间帧"]
+    C --> F["Adaptive Hierarchy-2：测试时按 LPIPS 距离自适应选条件帧"]
+    D --> G["生成后续驾驶视频"]
+    E --> G
+    F --> G
+    G --> H["FVD 评估生成质量"]
+    G --> I["预训练 EILEV (BLIP-2) 上下文学习<br/>为生成视频产生动作旁白"]
+    I --> J["旁白用于检验视频可解释、可供 VLM 使用"]
+```
+
+图依据：论文 §II-A/B（DDPM、EILEV，Fig.2–3）、§III 方法（训练架构与采样方案，Table I）、§IV-E（EILEV 验证）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Real-world video generation for VLM-based autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2408.16647>
+- [arXiv PDF](https://arxiv.org/pdf/2408.16647)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 背景（DDPM、EILEV 上下文学习）、§III 方法（训练架构、采样方案）、§IV 实验设定与 EILEV 验证
 
 ## 推荐继续阅读
 
