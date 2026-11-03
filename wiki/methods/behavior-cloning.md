@@ -17,6 +17,7 @@ related:
   - ../entities/paper-why-action-chunking-improves-bc.md
   - ../entities/paper-nestdex.md
   - ../entities/paper-spd.md
+  - ../entities/paper-beyond-validation-loss.md
   - ../concepts/behavioral-cloning-mysteries.md
   - ../entities/paper-revisiting-open-loop-action-chunking.md
 sources:
@@ -175,3 +176,7 @@ BC 的监督目标只在专家诱导的状态分布 \(d_{\pi^*}\) 上取期望�
 - Zhao et al., *ACT* — 用 action chunking 缓解长时序误差
 - Chi et al., *Diffusion Policy* — 生成式方法如何超越传统 BC
 - Lazzati et al., [*Why Does Action Chunking Improve BC?*](https://arxiv.org/abs/2608.02547) — 机制消融与 RDE 部署
+
+## 相关研究
+
+- [Beyond Validation Loss](../entities/paper-beyond-validation-loss.md)：研究 BC 预训练的覆盖率、可靠性与后训练检查点选择。
