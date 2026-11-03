@@ -795,3 +795,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 ## 人形 VLA 的物体历史记忆
 
 - [WholeBodyMem](../entities/paper-wholebodymem.md) — 由物体事件筛选目标前历史关键帧，并将关键帧与物体 token 输入人形全身动作专家（arXiv:2610.31166）。
+
+## 主动探索与执行框架演化
+
+- [VISTA](../entities/paper-vista-active-exploration.md) — 固定模型，通过仿真主动诊断和自主评估改进技能与决策框架。
