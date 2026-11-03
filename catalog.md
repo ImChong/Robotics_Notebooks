@@ -4258,6 +4258,7 @@
 - [S-Agent 2.0：通用编码智能体的空间推理](wiki/entities/paper-s-agent-2.md) — 为通用编码智能体接入三维感知命令行工具、持久场景记忆和可解释的空间读数。 `📅unknown` `[entity_page]`
 - [S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）](wiki/entities/paper-s-squared-vla.md) — S²-VLA**（*Decoupling Semantic and Spatial Streams in Vision-Language-Action Models for Autonomous  `📅unknown` `[entity_page]`
 - [S2C](wiki/entities/paper-s2c-safety-filtered-rl.md) — Turning Safety into Competence: Minimally Exploitable Robot Policies via Safety-Filtered Reinforce `📅unknown` `[entity_page]`
+- [S4VY：前馈 4D 视觉几何中的万物分割](wiki/entities/paper-s4vy.md) — S4VY 从一组 RGB 观测联合预测跨画面身份一致的实例掩码，支持无提示、点框选择和语言定位。 `📅unknown` `[entity_page]`
 - [NPE](wiki/entities/paper-sa-1612-00341-npe-a-compositional-object-based-approach-to-lea.md) — NPE: A Compositional Object-Based Approach to Learning Physical Dynamics** 收录于 [Awesome World Mode `📅unknown` `[entity_page]`
 - [DreamerV2](wiki/entities/paper-sa-2010-02193-dreamerv2-mastering-atari-with-discrete-world-mo.md) — DreamerV2: Mastering Atari with Discrete World Models** 收录于 [Awesome World Models](https://github. `📅unknown` `[entity_page]`
 - [FWM](wiki/entities/paper-sa-2202-05333-fwm-factored-world-models-for-zero-shot-generali.md) — FWM: Factored World Models for Zero-Shot Generalization in Robotic Manipulation** 收录于 [Awesome Wor `📅unknown` `[entity_page]`
