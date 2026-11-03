@@ -4,7 +4,7 @@ project_id: robotera-company
 project: https://www.robotera.com/
 tags: [robotera, humanoid, vla, world-models, sim2real, whole-body-control]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-03
 summary: "星动纪元（ROBOTERA）：成立于 2023 年 8 月，结合视频预测策略、人形运控、灵巧手、整机与数采接口；按项目区分研究开源和产品闭环。"
 related:
   - ./humanoid-gym.md
@@ -13,11 +13,13 @@ related:
   - ./cn-os-xbot-sdk-api.md
   - ./cn-os-teleop-client.md
   - ../comparisons/robot-foundation-model-company-paths-2026.md
+  - ../concepts/dexterous-hand-industry-core-players.md
 sources:
   - ../../sources/sites/robotera.md
   - ../../sources/repos/robotera_vla.md
   - ../../sources/repos/xbot_sdk_api.md
   - ../../sources/repos/teleop_client.md
+  - ../../sources/blogs/wechat_zane_hub_dexterous_hand_core_players_2026-11-03.md
 ---
 
 # 星动纪元（ROBOTERA）：数据、大脑与人形整机路线

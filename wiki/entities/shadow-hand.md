@@ -3,13 +3,15 @@
 type: entity
 tags: [hardware, dexterity, manipulation, robot-hand, industry, shadow-robotics]
 status: complete
-updated: 2026-10-19
+updated: 2026-11-03
 related:
   - ./allegro-hand.md
   - ../tasks/manipulation.md
   - ../methods/in-hand-reorientation.md
+  - ../concepts/dexterous-hand-industry-core-players.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
+  - ../../sources/blogs/wechat_zane_hub_dexterous_hand_core_players_2026-11-03.md
 summary: "Shadow Hand 是一款仿生程度极高的五指灵巧手，拥有 20 个主动驱动自由度，是研究拟人化灵巧操作与复杂手内重定向的标杆性硬件。"
 ---
 
