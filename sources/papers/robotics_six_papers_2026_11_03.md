@@ -54,3 +54,7 @@
 - **Nexus-VLA 训练及评测**：[HTML v1](https://arxiv.org/html/2610.42021v1) 第 3、4 节和附录指出，人类数据只监督共享腕部／末端运动维度，机器人数据同时监督关节动作维度，借助掩码计算 flow-matching 损失；RoboCasa-GR1 24 个任务的平均成功率为 80.5%，表中最强对比为 72.8%，差 7.7 个百分点。该数据不等同于真机成功率。
 - **MolmoSpaces-CommonSense**：[HTML v1](https://arxiv.org/html/2610.41377v1) 将操作常识分为物理推理、可供性和物体恒存三类，报告基准涉及 1,009 个室内场景及 413 个物体。论文指向 MolmoSpaces 仓库，但具体 benchmark 代码路径仍待源码核实。
 - **REA 项目页**：[论文 HTML v1](https://arxiv.org/html/2610.42053v1) 列出 <https://mikeeeeeeeeeeeeee.github.io/REA/>；本次访问失败，开放状态仍待核查。
+
+- **ID-WM 规划机制**：[论文 v1](https://arxiv.org/html/2610.42146v1) 的高层在扩散噪声空间用 CEM 搜索可达子目标，低层再用 CEM 和一步前向世界模型寻找动作；附录指出其目标是到达而非路径最短，并报告随机 PushT 及迷宫的计算和超参数条件。
+- **RoboArchitect 代码与局限**：[论文 v1](https://arxiv.org/html/2610.42141v1) 附录 B 给出[官方代码仓库](https://github.com/roboarchitect-ai/RoboArchitect)。优化在训练 episode 上只接受性能改进的候选；实验最多 5 次迭代，作者指出更复杂接触操作仍待探索。源码入口和实际调用仍待阅读核实。
+- **REA 路由条件**：[论文 v1](https://arxiv.org/html/2610.42053v1) 第 3 节将 REA-M、REA-A、REA-V 区分为不同选择和恢复方式；路由表使用与测试种子分离的开发数据，恢复共享 episode 的步数与墙钟预算。第 4.6 节报告 RoboTwin 混合策略 86%，对应 100 个场景，不能与另一组 200 场景迁移实验混同。
