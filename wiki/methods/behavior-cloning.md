@@ -175,3 +175,5 @@ BC 的监督目标只在专家诱导的状态分布 \(d_{\pi^*}\) 上取期望�
 - Zhao et al., *ACT* — 用 action chunking 缓解长时序误差
 - Chi et al., *Diffusion Policy* — 生成式方法如何超越传统 BC
 - Lazzati et al., [*Why Does Action Chunking Improve BC?*](https://arxiv.org/abs/2608.02547) — 机制消融与 RDE 部署
+
+- [机器人策略预训练的覆盖度与可靠性](../entities/paper-policy-coverage-reliability.md)：用固定起点 pass@k 评估后训练潜力。
