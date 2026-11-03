@@ -551,8 +551,21 @@
     var r = window.Robot3D.ur5(parent, 0, 0, s, { az: 0, el: 0 }), v = r.view;
     var sh = v.at('upper_arm_link');
     v.camera({ origin: [ox - sh[0], oy - sh[1]], box: box || [ox - reach, oy - reach, 2 * reach, 2 * reach] });
-    function ang(a, b) { return Math.atan2(a[1] - b[1], b[0] - a[0]); }   // 画面 y 朝下 → 数学角
+    // 在世界坐标里量连杆的方向（不受镜头角度影响）：胳膊所在的竖直面里，往前（底座转了多少就跟着转的水平方向）为 0、往上为正。
+    // 正侧视（az 0、el 0）时画面往右 = 世界 +x、往上 = +z，这个角就是画面里的数学角
+    function frame3() { var p = v.jointValue('shoulder_pan_joint'); return [Math.cos(p), Math.sin(p)]; }
+    function angW(la, lb) {
+      var a = v.world(la), b = v.world(lb), f = frame3();
+      return Math.atan2(b.z - a.z, (b.x - a.x) * f[0] + (b.y - a.y) * f[1]);
+    }
     function wrap(x) { while (x > Math.PI) x -= 2 * Math.PI; while (x < -Math.PI) x += 2 * Math.PI; return x; }
+    function setArm(lift, el) { v.joints({ shoulder_lift_joint: lift, elbow_joint: el, wrist_1_joint: wrap(-(lift + el) - Math.PI / 2), wrist_2_joint: -Math.PI / 2, wrist_3_joint: 0 }); }
+    // 手（tool0）相对手腕（wrist_1）的偏移，在胳膊自己的坐标里（往前、往旁边、往上）：手腕的朝向不随大臂、小臂变，这个偏移应当一直不变
+    function handOff() {
+      var w = v.world('wrist_1_link'), t = v.world('tool0'), f = frame3(), d = [t.x - w.x, t.y - w.y, t.z - w.z];
+      return [d[0] * f[0] + d[1] * f[1], -d[0] * f[1] + d[1] * f[0], d[2]];
+    }
+    var HAND = null;
     var api = {
       g: r.g, view: v,
       shoulder: function () { return v.at('upper_arm_link'); },
@@ -560,29 +573,30 @@
       wrist: function () { return v.at('wrist_1_link'); },
       tool: function () { return v.at('tool0'); },
       pose: function (a1, a2) {
-        // 关节值和画面里的方向是线性关系、斜率 ±1（构造时量好符号 kS、kE）：一步到位，再修两次。
-        // 不在这里现量斜率：肘的限位是 ±π，折到 180° 时往前试一小步会被夹住、斜率量成 0
+        // 关节值和方向是线性关系、斜率 ±1（构造时量好符号 kS、kE）：一步到位，再修两次。
+        // 关节值都绕回 (−π, π]，不夹在限位上：肘的限位是 ±π，肘下那组的肘是 −2.43，从 +2.43 按最短转角走会越过 π，夹住就卡死、小臂折回肩旁边
         var lift = v.jointValue('shoulder_lift_joint'), el = v.jointValue('elbow_joint');
-        for (var it = 0; it < 3; it++) {
-          v.joints({ shoulder_lift_joint: lift });
-          lift = lift + wrap(a1 - ang(v.at('upper_arm_link'), v.at('forearm_link'))) / kS;
+        for (var it = 0; it < 3; it++) { setArm(lift, el); lift = wrap(lift + wrap(a1 - angW('upper_arm_link', 'forearm_link')) / kS); }
+        for (it = 0; it < 3; it++) { setArm(lift, el); el = wrap(el + wrap(a2 - angW('forearm_link', 'wrist_1_link')) / kE); }
+        setArm(lift, el);
+        // 自检：大臂、小臂的实际方向差 0.001 弧度以上、或手相对手腕的偏移变了 1 mm 以上，就报错（render / 扫描脚本会把它打出来）
+        var g1 = wrap(angW('upper_arm_link', 'forearm_link') - a1), g2 = wrap(angW('forearm_link', 'wrist_1_link') - a2);
+        if (Math.abs(g1) > 1e-3 || Math.abs(g2) > 1e-3) console.error('arm2.pose miss: want ' + a1.toFixed(4) + ', ' + a2.toFixed(4) + ' off ' + g1.toFixed(4) + ', ' + g2.toFixed(4));
+        if (HAND) {
+          var h = handOff(), dh = Math.hypot(h[0] - HAND[0], h[1] - HAND[1], h[2] - HAND[2]);
+          if (dh > 1e-3) console.error('arm2.pose hand moved off the wrist by ' + dh.toFixed(4) + ' m');
         }
-        v.joints({ shoulder_lift_joint: lift });
-        for (it = 0; it < 3; it++) {
-          v.joints({ elbow_joint: el, wrist_1_joint: -(lift + el) - Math.PI / 2, wrist_2_joint: -Math.PI / 2, wrist_3_joint: 0 });
-          el = Math.max(-Math.PI, Math.min(Math.PI, el + wrap(a2 - ang(v.at('forearm_link'), v.at('wrist_1_link'))) / kE));
-        }
-        v.joints({ elbow_joint: el, wrist_1_joint: -(lift + el) - Math.PI / 2, wrist_2_joint: -Math.PI / 2, wrist_3_joint: 0 });
         return api;
       }
     };
     // 斜率的符号：在远离限位的姿势上各试一小步
-    v.joints({ shoulder_lift_joint: -1.0, elbow_joint: 1.0 });
-    var s0 = ang(v.at('upper_arm_link'), v.at('forearm_link')), e0 = ang(v.at('forearm_link'), v.at('wrist_1_link'));
-    v.joints({ shoulder_lift_joint: -0.9, elbow_joint: 1.1 });
-    var kS = wrap(ang(v.at('upper_arm_link'), v.at('forearm_link')) - s0) > 0 ? 1 : -1;
-    v.joints({ shoulder_lift_joint: -1.0 });
-    var kE = wrap(ang(v.at('forearm_link'), v.at('wrist_1_link')) - e0) > 0 ? 1 : -1;
+    setArm(-1.0, 1.0);
+    var s0 = angW('upper_arm_link', 'forearm_link'), e0 = angW('forearm_link', 'wrist_1_link');
+    setArm(-0.9, 1.0);
+    var kS = wrap(angW('upper_arm_link', 'forearm_link') - s0) > 0 ? 1 : -1;
+    setArm(-1.0, 1.1);
+    var kE = wrap(angW('forearm_link', 'wrist_1_link') - e0) > 0 ? 1 : -1;
+    HAND = handOff();
     api.pose(Math.atan2(2, 1), 0);
     var e = api.elbow(), q = api.shoulder();
     api.u = Math.hypot(e[0] - q[0], e[1] - q[1]) / Math.sqrt(5);
