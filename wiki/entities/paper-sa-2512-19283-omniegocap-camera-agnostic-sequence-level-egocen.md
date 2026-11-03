@@ -2,9 +2,12 @@
 type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-04
+project_id: omniegocap
+project: https://kyungwoncho.github.io/OmniEgoCap/
+code: https://github.com/KyungWonCho/OmniEgoCap
 arxiv: "2512.19283"
-venue: "arXiv 2026"
+venue: "NeurIPS 2026"
 summary: "Diffusion-based reconstruction generalized across all wearable camera hardware, with geometry-aware visibility augmentation module"
 related:
   - ../entities/awesome-egocentric-vision.md
@@ -14,115 +17,104 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
 sources:
+  - ../../sources/papers/omniegocap-2512-19283.md
+  - ../../sources/sites/omniegocap.md
+  - ../../sources/repos/omniegocap.md
   - ../../sources/papers/sun_awesome_ego_2512_19283_omniegocap-camera-agnostic-sequence-leve.md
   - ../../sources/papers/sun_awesome_ego_catalog.md
   - ../../sources/repos/awesome-egocentric-vision.md
 ---
 
-# OmniEgoCap
-
-**OmniEgoCap: Camera-Agnostic Sequence-Level Egocentric Motion Reconstruction** 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/awesome-egocentric-vision) **第 214/249** 篇，分组 **Human Pose & Mesh Recovery**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+# OmniEgoCap：设备无关的序列级第一人称全身运动重建
 
 ## 一句话定义
 
-Diffusion-based reconstruction generalized across all wearable camera hardware, with geometry-aware visibility augmentation module
+首尔大学的 OmniEgoCap 利用头部轨迹及间歇可见的手腕追踪，通过序列级扩散重建全身运动，并通过几何感知增强适应不同设备。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| Ego | Egocentric Vision | 第一人称可穿戴视角感知 |
-| HOI | Hand–Object Interaction | 手–物交互理解 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| VLM | Vision-Language Model | 视觉–语言模型 |
-
-## 为什么重要
-
-- Diffusion-based reconstruction generalized across all wearable camera hardware, with geometry-aware visibility augmentation module
-- 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
-
-## 流程总览
-
-```mermaid
-flowchart TD
-    V["第一视角视频<br/>任意设备（单目 RGB / Aria）"] --> PRE["预处理：SLAM 相机位姿 → 头部位姿 T_head<br/>HaWoR 或 Aria MPS → 腕部观测 H 与可见性"]
-    PRE --> COND["条件表示 Ω_t：规范化头部运动 + 手相对头部位姿<br/>不可见的手用可学习 null 嵌入"]
-    subgraph ENCB["序列级编码器 E"]
-        ESH["E_shape → 序列级体型 β̂"]
-        EGL["E_global → 可见性上下文 G"]
-        ELO["E_local → 逐帧摘要 S_1:T（经 AdaLN-Zero 受 G 调制）"]
-    end
-    COND --> ESH
-    COND --> EGL
-    COND --> ELO
-    EGL --> ELO
-    ESH --> DEC["解码器 D：DiT 去噪规范化姿态<br/>β̂ 与 n 经 AdaLN，S 经 cross-attention"]
-    ELO --> DEC
-    DEC --> GA["全局对齐：由 T_head 得根平移<br/>相对规范系根朝向 → 全局朝向"]
-    GA --> OUT["SMPL-H 全身运动 M_1:T"]
-    AUG["几何感知可见性增强<br/>模拟不同相机视场 + 信号丢失/扰动"] -. 训练 .-> EGL
-```
-
-图依据：论文 §3.1 问题形式化、§3.2 预处理与表示、§3.3 序列级扩散架构、§3.4 训练、§3.5 推理。
+| FoV | Field of View | 相机视场 |
+| SLAM | Simultaneous Localization and Mapping | 同时定位与建图 |
+| MPJPE | Mean Per Joint Position Error | 平均关节位置误差 |
+| MPS | Machine Perception Services | Aria 机器感知服务 |
 
 ## 核心信息
 
 | 字段 | 内容 |
 |------|------|
-| 编号 | 214/249 |
-| 分组 | Human Pose & Mesh Recovery |
-| 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2512.19283> |
+| 机构 | 首尔大学 |
+| 作者 | Kyungwon Cho、Jeonghyeon Na、Hanbyul Joo |
+| 论文 | [arXiv:2512.19283v3](https://arxiv.org/html/2512.19283v3)，NeurIPS 2026 |
+| 开源 | [官方代码](https://github.com/KyungWonCho/OmniEgoCap)和 checkpoint 已发布；权重 CC BY-NC 4.0 |
 
-## 核心机制（归纳）
+## 流程总览
 
-### 策展导读要点
+```mermaid
+flowchart TD
+    I["第一人称设备"] --> P["头部轨迹与腕部位姿估计"]
+    P --> C["规范化条件与手部可见性"]
+    C --> E["序列编码：体型与可见性上下文"]
+    E --> D["条件扩散：生成身体姿态"]
+    D --> A["世界系对齐"]
+    A --> O["SMPL-H 全身运动"]
+    G["训练：采样相机几何与可见性"] -.-> C
+```
 
-Diffusion-based reconstruction generalized across all wearable camera hardware, with geometry-aware visibility augmentation module
+输入依赖头部位姿和手腕观测；单目视频需 SLAM / 手部估计及相机到头部标定。Aria 可使用 MPS；Quest 可使用设备自带追踪。不可将其等同于原始视频直接端到端输出。
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant P as prepare_input.py
+    participant A as 设备适配器
+    participant S as sample.py
+    participant M as OmniEgoCap
+    participant V as visualize.py
+    U->>P: Aria MPS 或轨迹和腕部数据
+    P->>A: load
+    A-->>P: EgoSequence
+    P-->>U: 输入 NPZ
+    U->>S: 输入 NPZ 与 checkpoint
+    S->>M: predict
+    M-->>S: SMPL-H 预测
+    S-->>U: 预测 NPZ
+    U->>V: 输入和预测
+    V-->>U: 三维可视化
+```
+
+依据官方三个脚本：`sample.py` 默认启用 guidance optimization，可用 `--no_optimization` 关闭；可视化依赖 SMPL-H。
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2512.19283) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
-
-## 与其他工作对比
-
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 的 **Human Pose & Mesh Recovery** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+论文 OmniEgoDB 使用 4 人、50 段、177 分钟，Xsens 为参考；Aria stereo / RGB、GoPro、Quest 分别是不同评测轨道，序列数不同。表 3 无优化版本 MPJPE 分别为 **106.61、118.11、111.68、110.49 mm**；不同设备数值不可视为同一序列严格配对比较。iPhone 仅列为野外演示。
 
 ## 结论
 
-**这一页能给你的是「OmniEgoCap」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**序列上下文和训练时视场变化使同一模型可用于论文评估的多种设备配置。**
 
-- 可确证的只有清单坐标：分组 **Human Pose & Mesh Recovery**，以及 Highlights 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
-
-## 常见误区
-
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+1. 头部轨迹质量、相机到头部标定与手部追踪影响实际结果。
+2. 论文提出序列级体型与可见性上下文，以利用长期观测。
+3. 公开代码及权重便于复现；权重非商用，人体模型和数据另有许可。
+4. 此页目前基于部分原文与官方入口；全文、全部附录和模型内部实现仍待核对。
 
 ## 关联页面
 
-- 列表实体：[Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md)
-- 技术地图：[Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md)
-- 方法/任务：[vla.md](../methods/vla.md)、[manipulation.md](../tasks/manipulation.md)
+- [ReViV](./paper-reviv4d.md) — 直接从第一人称 RGB 重建多模态信息
+- [遥操作](../tasks/teleoperation.md) — 第一人称示教采集
+- [Awesome Egocentric Vision](./awesome-egocentric-vision.md) — 原策展索引
 
 ## 参考来源
 
-- [`sources/papers/sun_awesome_ego_2512_19283_omniegocap-camera-agnostic-sequence-leve.md`](../../sources/papers/sun_awesome_ego_2512_19283_omniegocap-camera-agnostic-sequence-leve.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
-- [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2512.19283>
-- [arXiv PDF](https://arxiv.org/pdf/2512.19283)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（§3.1–3.5）
+- [论文归档](../../sources/papers/omniegocap-2512-19283.md)
+- [项目页归档](../../sources/sites/omniegocap.md)
+- [代码归档](../../sources/repos/omniegocap.md)
+- [原策展摘录](../../sources/papers/sun_awesome_ego_2512_19283_omniegocap-camera-agnostic-sequence-leve.md)
 
 ## 推荐继续阅读
 
-- [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2512.19283)
+- [论文全文 v3](https://arxiv.org/html/2512.19283v3)
+- [官方项目页](https://kyungwoncho.github.io/OmniEgoCap/)
