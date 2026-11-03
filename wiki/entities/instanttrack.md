@@ -5,9 +5,10 @@ project: https://huy-quang-dao.github.io/instantTrack/
 code: https://github.com/Huy-Quang-Dao/instantTrack
 tags: [humanoid, motion-tracking, world-model, reinforcement-learning, mujoco, unitree-g1]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-03
 summary: "InstantTrack 在社区 SuperMimic 复现上优化 GPU 训练与足部接触奖励，用于 G1 仿真动作跟踪。"
 related:
+  - ./blinkmimic.md
   - ./paper-supermimic.md
   - ../methods/model-based-rl.md
   - ../concepts/whole-body-control.md
@@ -46,6 +47,29 @@ flowchart TB
 
 仿真数据用于拟合世界模型；策略对模型中的想象回报反向传播，critic 对短视野外回报做 bootstrap。失败位置统计引导部分重置；这不是对仿真器本身求导。
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  participant User as 使用者
+  participant Script as scripts/train.sh
+  participant Train as instanttrack.train
+  participant Env as env.py 仿真环境
+  participant Model as networks.py 模型
+  participant Eval as tools/eval_batch.py
+  User->>Script: 选择预设和运行目录
+  Script->>Train: 传入预设参数启动训练
+  loop 训练迭代
+    Train->>Env: 采样动作并收集仿真转移
+    Env-->>Train: 返回转移数据
+    Train->>Model: 拟合世界模型并更新策略与价值函数
+  end
+  Train-->>Script: 输出 checkpoint
+  Script->>Eval: 离线评测 checkpoint
+```
+
+已核对脚本与训练主循环；尚未完整审阅各子模块或运行训练。
+
 ## 主要改进
 
 - **策略 EMA：** 保存和评估平均权重；作者将加入 EMA 的社区复现作为主要对照。
@@ -53,7 +77,7 @@ flowchart TB
 - **失败采样：** 30% 重置从近期失败位置之前的时间段开始。
 - **接触奖励：** 在想象轨迹中匹配参考脚部接触状态，并惩罚参考脚落地时的水平速度；评估仍用原基线奖励。
 
-## 作者报告的仿真结果
+## 作者报告的仿真结果（早期配置）
 
 | 指标 | SuperMimic + EMA | InstantTrack | 条件 |
 |---|---:|---:|---|
@@ -64,12 +88,19 @@ flowchart TB
 
 目标定义为归一化回报至少 0.82 且 40 条动作零失败，并连续三个 checkpoint 达标。checkpoint 每三分钟保存，训练计时不含离线评估。无 EMA 的社区复现仅一粒随机种子，报告为 1.50 小时；2.2 倍对比的是同机 SuperMimic + EMA，不能当作与原论文官方实现的比较。
 
+## v1.2 与同机对照
+
+[InstantTrack v1.2 README](https://github.com/Huy-Quang-Dao/instantTrack/tree/019ae20a83c443a057736789b891a77dcc95505e) 报告单张 RTX 5090、40 段 LAFAN1，严格目标五种子均值 0.12 小时（约 7.2 分钟）；相同机器上 SuperMimic 社区复现加 EMA 的三种子均值为 0.55 小时。v1.2 增加 Muon、CUDA Graph 更新、批量目标编码和较小策略网络。训练计时包括编译与保存、不含离线评测。
+
+[BlinkMimic](./blinkmimic.md) 作者另在一张 RTX 4090 上运行同机对照，报告 InstantTrack v1.2 严格目标三种子均值 7.36 分钟，BlinkMimic 3.38 分钟；与上表早期配置及原论文评测数据集不可直接等同。项目页目前转向 InstantGMT，InstantTrack 页面保留在仓库 `instanttrack-page` 分支。
+
 ## 工程实践与局限
 
 [源码](../../sources/repos/instanttrack.md) 提供训练、评估和数据下载脚本，代码为 MIT；动作数据需另行下载并遵守其许可。作者实验仅覆盖 G1 仿真和 40 条训练动作，评估无随机化、噪声或推搡，未报告真机或未见动作泛化。带接触奖励的配置在作者实验中增加了根位置漂移，体现脚部接触与轨迹精度的权衡。项目页本次无法直接访问，链接及开放状态依据 README 和仓库核查。
 
 ## 关联页面
 
+- [BlinkMimic](./blinkmimic.md)：同机比较及后续社区方法。
 - [SuperMimic](./paper-supermimic.md)：世界模型训练基础及独立复现。
 - [基于模型的强化学习](../methods/model-based-rl.md)：模型内策略优化背景。
 - [全身控制](../concepts/whole-body-control.md)：任务背景。
