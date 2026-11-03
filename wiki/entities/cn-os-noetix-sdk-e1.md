@@ -55,6 +55,43 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`./build.sh` 后在仓库根目录运行 `build/example_low`（ONNX 策略走路，读 `policy/policy_walk.onnx`）或 `build/example_high`（高层指令）；另有 pybind 模块 `highcontrol_py` / `lowcontrol_py` 与 `examples/py/test_*.py`。SDK 本体是预编译静态库 `lib/<arch>/libnoetix_e1_sdk.a`（DDS 通信在库内，仓库只有头文件），库内部不可读，下图只画示例源码可见的调用。
+
+```mermaid
+sequenceDiagram
+    participant M as examples/cpp/example_low.cpp main
+    participant LC as LowController (lowcontroller.h，libnoetix_e1_sdk.a)
+    participant HW as 机器人 DDS 话题 (config/dds.xml)
+    participant ORT as onnxruntime 会话 policy_walk.onnx
+    participant H as examples/cpp/example_high.cpp
+    participant HC as HighController (highcontroller.h)
+    M->>M: setenv CYCLONEDDS_URI=config/dds.xml
+    M->>LC: LowController::Instance()->init()
+    M->>LC: init() 中 subscribe_robot_hardware_status(回调存 latest_hw_status)
+    M->>ORT: loadModel(policy_walk.onnx)
+    HW-->>M: 回调更新 motor_data / imu_data / remote_data
+    loop 每 2ms 的 process()
+        M->>M: remote_data 摇杆与按键切换 WorkMode (DEFAULT/LIE/STAND/USERMODE)
+        alt USERMODE
+            M->>M: updateStateEstimation 读关节与 IMU
+            M->>ORT: 每 decimation 步 computeObservation 后 computeActions
+            M->>M: 动作按 clipActions 裁剪，换算目标关节位置
+            M->>LC: set_joint(array of 24 MotorCmd)
+            LC->>HW: DDS 发送关节指令
+        else STAND/LIE/DEFAULT
+            M->>M: handleStandMode/handleLieMode/handleDefautMode
+        end
+    end
+    H->>HC: Instance()->init()，subscribe_robot_hardware_status 读手柄
+    loop 每 2ms
+        H->>HC: publish_cmd(x, yaw, ControlCmd, fileindex)
+    end
+```
+
+图依据：Noetix-Robotics/noetix_sdk_e1@3055bdc，读过 README.md、CMakeLists.txt（仅 add_executable/依赖 grep）、include/{lowcontroller,highcontroller}.h、include/common.h（ControlCmd 枚举）、examples/cpp/example_low.cpp（main、init、handleUserMode 开头与末尾、process 开头）、examples/cpp/example_high.cpp、examples/py/test_low.py；libnoetix_e1_sdk.a 内部为二进制未读；STAND/LIE/DEFAULT 分支内是否调用 set_joint 未逐行核对，故图中只写函数名；pybind 与 test_high.py 未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +103,7 @@ institutions:
 - [noetix_sdk_e1 源码归档](../../sources/repos/noetix_sdk_e1.md)（<https://github.com/Noetix-Robotics/noetix_sdk_e1>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Noetix-Robotics/noetix_sdk_e1@3055bdc，读过 README.md、include/lowcontroller.h、include/highcontroller.h、include/common.h、examples/cpp/example_low.cpp、example_high.cpp、examples/py/test_low.py；时序图依据以上文件，未运行代码；预编译库内部未读。
 
 ## 推荐继续阅读
 
