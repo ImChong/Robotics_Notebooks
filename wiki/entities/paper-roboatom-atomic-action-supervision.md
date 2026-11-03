@@ -5,18 +5,20 @@ tags:
   - cross-embodiment
   - manipulation
 status: draft
-updated: 2026-11-02
+updated: 2026-11-03
 arxiv: "2610.40207"
 project_id: roboatom-atomic-action-supervision
 related:
   - ../overview/senlanke-weekly-2026-10-26-30-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
 sources:
   - ../../sources/papers/roboatom-atomic-action-supervision_arxiv_2610_40207.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/repos/roboatom.md
   - ../../sources/sites/roboatom.md
+  - ../../sources/blogs/wechat_embodied_station_49_papers_sacq_action_aware_quantization_2026-11-03.md
 summary: "RoboAtom：面向机器人学习的大规模原子动作监督（arXiv:2610.40207）：构建 RoboAtom-Data 和 RoboAtom-Bench，使用原子动作表示组织机器人操作数据。结合人工标注、自动标注和同任务扩展机制生成细粒度监督，并研究这些标注如何用于机器人领域预训练、监"
 ---
 
