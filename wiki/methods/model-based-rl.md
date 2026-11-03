@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-03
 related:
   - ./mbpo.md
   - ../concepts/bptt.md
@@ -109,6 +109,8 @@ $$a^* = \arg\max_{\{a_t\}_{t=0}^{H}} \sum_{t=0}^{H} r(s_t, a_t)$$
 $$s_t \sim q_\phi(s_t | s_{t-1}, a_{t-1}, o_t), \quad \hat{o}_t \sim p_\theta(\hat{o}_t | s_t)$$
 
 ---
+
+[DiffDreamer](../entities/paper-diffdreamer-quadrotor.md) 将外部动态的潜空间想象与四旋翼可微物理 rollout 同步，用分解奖励训练敏捷控制策略。
 
 ## 代表性算法
 

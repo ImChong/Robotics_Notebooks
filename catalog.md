@@ -2092,6 +2092,7 @@
 - [DIAL](wiki/entities/paper-dial-latent-world-vla.md) — DIAL**（*Decoupling Intent and Action via Latent World Modeling for End-to-End VLA*，Chen et al.，[ar `📅unknown` `[entity_page]`
 - [From Prior to Pro（arXiv:2603.10263）](wiki/entities/paper-dice-rl.md) — From Prior to Pro**（Zhanyi Sun, Shuran Song；Stanford University；[arXiv:2603.10263](https://arxiv.o `📅unknown` `[entity_page]`
 - [DIDO（arXiv:2609.15570）](wiki/entities/paper-dido-wam.md) — DIDO**（*DIDO: Distilling Interaction-Centric Dynamics into One-Step Denoising for World Action Mod `📅unknown` `[entity_page]`
+- [DiffDreamer：耦合世界模型与可微仿真的敏捷四旋翼控制](wiki/entities/paper-diffdreamer-quadrotor.md) — DiffDreamer 将学习到的外部动态预测与可微机器人动力学同步展开，并结合价值估计与物理梯度优化策略。 `📅unknown` `[entity_page]`
 - [Differentiable Charts IK Planning（arXiv:2609.10905）](wiki/entities/paper-differentiable-charts-constraint-manifolds.md) — Differentiable Charts IK Planning**（[Planning along Differentiable Charts of Constraint Manifolds  `📅unknown` `[entity_page]`
 - [Differentiable Contact Legged（arXiv:2610.35852）](wiki/entities/paper-differentiable-contact-legged.md) — Differentiable Contact Legged**（*Differentiable Contact Dynamics for Legged Locomotion: Policy Lea `📅unknown` `[entity_page]`
 - [Differentiable ILC Black-Box Manipulators（arXiv:2611.01220）](wiki/entities/paper-differentiable-ilc-black-box-manipulators.md) — Differentiable ILC Black-Box Manipulators**（*Differentiable Iterative Learning Control for Black-B `📅unknown` `[entity_page]`
@@ -3681,6 +3682,7 @@
 - [PointWAM：灵巧操作的 3D 世界动作模型](wiki/entities/paper-pointwam.md) — PointWAM** 把场景与手都表示为同一三维坐标系下的点轨迹，联合预测二者如何共演化，并将未来手部轨迹转成机器人动作。 `📅unknown` `[entity_page]`
 - [PointZero（arXiv:2609.19142）](wiki/entities/paper-pointzero.md) — PointZero**（*PointZero: 3D Point Track Completion for Learning Transferable 3D Dynamics*，[arXiv:26 `📅unknown` `[entity_page]`
 - [POISE：手内物体到达任意 6D 位姿](wiki/entities/paper-poise-in-hand-6d-pose-reaching.md) — POISE**（*Learning In-Hand Object Reaching to General 6D Poses*，[arXiv:2609.13761](https://arxiv.or `📅unknown` `[entity_page]`
+- [Beyond Validation Loss: Coverage and Reliability Dynamics in Robot Policy Pretraining / 超越验证损失：机器人策略预训练的覆盖度与可靠性动态](wiki/entities/paper-policy-coverage-reliability.md) — 本文研究机器人策略预训练中覆盖度与可靠性的权衡，提出离线检查点选择和生成式数据增强。 `📅unknown` `[entity_page]`
 - [PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization](wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md) — PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomizat `📅unknown` `[entity_page]`
 - [PolyUMI](wiki/entities/paper-polyumi.md) — PolyUMI**（*Accessible Visual-Tactile-Audio Data Collection for Object Inference and Manipulation*， `📅unknown` `[entity_page]`
 - [POSE（arXiv:2609.19460）](wiki/entities/paper-pose-semantic-legged-exploration.md) — POSE**（*Pose-aware Legged Robot Semantic Exploration with Omnidirectional Perception in Confined U `📅unknown` `[entity_page]`
@@ -5588,6 +5590,7 @@
 - [VPA（arXiv:2610.15556）](wiki/entities/paper-vision-predictor-action-jepa.md) — VPA**（*Vision-Predictor-Action: Towards Efficient Embodied AI via Neuro-Symbolic JEPA Predictors*， `📅unknown` `[entity_page]`
 - [VisionHOPE：自修改学习系统视觉骨干](wiki/entities/paper-visionhope.md) — VisionHOPE 是一种基于 Nested Learning 的通用视觉骨干：图像上下文逐步累积时，模型记忆的内容与记忆更新规则通过五种耦合记忆共同演化。 `📅unknown` `[entity_page]`
 - [VisProg（arXiv:2211.11559）](wiki/entities/paper-visprog.md) — VisProg**（*Visual Programming: Compositional Visual Reasoning Without Training*，[arXiv:2211.11559 `📅unknown` `[entity_page]`
+- [VISTA: Active Exploration for Self-Improvement in Embodied Agents / 具身智能体主动探索与自我改进](wiki/entities/paper-vista-active-exploration.md) — VISTA 让编码元智能体通过主动仿真诊断和执行证据迭代技能、指令及决策逻辑；底层模型参数保持固定。 `📅unknown` `[entity_page]`
 - [Visual Foresight](wiki/entities/paper-visual-foresight-latent-mpc.md) — Visual Foresight** 收录于 具身智能研究室 · 具身世界模型六路线综述  `📅unknown` `[entity_page]`
 - [VBC（HMI P043）](wiki/entities/paper-visual-whole-body-control-vbc.md) — VBC**（*Visual Whole-Body Control for Legged Loco-Manipulation*，2024，[arXiv:2403.16967](https://arx `📅unknown` `[entity_page]`
 - [Visuomotor Pruning（arXiv:2609.24906）](wiki/entities/paper-visuomotor-robotic-pruning-orchards.md) — Visuomotor Pruning**（*Visuomotor Robotic Pruning in Planar Orchards Using Hybrid Reinforcement Lea `📅unknown` `[entity_page]`
