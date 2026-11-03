@@ -356,6 +356,8 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [X2Streaming-TTS（论文实体）](../entities/paper-x2streaming-tts.md) — LLM **令牌级**流式 TTS + 语音状态继承；首音频 15.8 ms（arXiv:2608.18661）
 - [LeTools](../entities/letools.md) — 把遥操 rosbag 转成 LeRobot 并部署
 
+- [STS32XX Firmware](../entities/sts32xx-firmware.md) — SO-ARM 舵机的局部轨迹规划与控制。
+
 ### 数据集与下游后训练
 
 - [LET-Base-Dataset](../entities/let-base-dataset.md) — Kuavo VR/全身增量遥操真机小时（OpenLET Base）
