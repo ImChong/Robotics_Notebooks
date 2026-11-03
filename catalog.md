@@ -32,6 +32,7 @@
 - [AimDK X2（灵犀 X2 二次开发框架）](wiki/entities/agibot-aimdk-x2.md) — AimDK X2** 是智元机器人（AgiBot）为 **灵犀 X2** 人形提供的 **任务编程与扩展框架**：通过 [官方文档站](https://x2-aimdk.agibot.com/zh `📅unknown` `[entity_page]`
 - [BFM-2（智元运控基座）](wiki/entities/agibot-bfm-2.md) — BFM-2** 是智元在 2026-06 发布地图 中推出的 **运动小脑 /  `📅unknown` `[entity_page]`
 - [智元灵犀 X1（Agibot 开源人形）](wiki/entities/agibot-lingxi-x1.md) — 灵犀 X1** 是智元机器人 **Agibot** 品牌的开源人形方案：以 **文档中心** 提供 BOM、整机图纸、装机 SO `📅unknown` `[entity_page]`
+- [智元 SkillHand](wiki/entities/agibot-skillhand.md) — 智元 SkillHand** 属于 Zane Hub 灵巧手行业综述 的「本体自研」。本页 `📅unknown` `[entity_page]`
 - [AGIBOT WORLD 2026](wiki/entities/agibot-world-2026.md) — AGIBOT WORLD 2026** 是智元在 Agibot-World 生态下发布的 **真实环境机器人学习数据集**（Hugging `📅unknown` `[entity_page]`
 - [Agnes Harness（AGH）](wiki/entities/agnes-harness.md) — Agnes Harness（AGH）** 是面向 Forward Deployed Engineering（FDE）的可插拔 agent runtime：把模型调用、工具、任务状态、跨端会话、人工 `📅2026-10-11` `[entity_page]`
 - [Aholo Viewer](wiki/entities/aholo-viewer.md) — Aholo Viewer**（manycoretech/aholo-viewer）是面向 **浏览器 `📅unknown` `[entity_page]`
@@ -724,6 +725,7 @@
 - [Handroid](wiki/entities/handroid.md) — Handroid** 是北卡罗来纳大学教堂山分校与斯坦福大学团队提出的 **桌面级双形态机器人**：同一套 **27-DoF**、**0.33 m / 2.05 kg** 的 **3D 打印模块化 `📅unknown` `[entity_page]`
 - [动手学强化学习（Hands-on RL / 蘑菇书）](wiki/entities/hands-on-rl-book.md) — 《动手学强化学习》**（社区常称**蘑菇书**）由上海交通大学张伟楠、沈键、俞勇等编写，以 Jupyter Notebook + 图文形式系统讲解强化学习。官方在线阅读与代码运行入口为 [hrl. `📅unknown` `[entity_page]`
 - [HandUMI](wiki/entities/handumi.md) — HandUMI** 是一套面向 **固定基座双臂 + 平行夹爪（parallel-jaw gripper）** 的 **无机器人示教（robot-free demonstration）** 接口与 `📅unknown` `[entity_page]`
+- [汉威科技 柔性传感](wiki/entities/hanwei-flexible-sensing.md) — 汉威科技 柔性传感** 属于 Zane Hub 灵巧手行业综述 的「感知专精（触觉器件）」 `📅unknown` `[entity_page]`
 - [hdl_graph_slam](wiki/entities/hdl-graph-slam.md) — hdl_graph_slam** 以 **NDT 配准 + 位姿图优化** 构建室外 3D 激光 SLAM。 `📅unknown` `[entity_page]`
 - [Helix 02：Figure 全身自主系统](wiki/entities/helix-02.md) — Helix 02 在 Helix 的语义与动作双系统下增加 System 0：200 Hz 全身关节目标由 1 kHz 身体控制层执行，联合移动、接触与灵巧操作。 `📅unknown` `[entity_page]`
 - [Helix 2.5（Index 预训练 · 30 家庭零样本全身）](wiki/entities/helix-25.md) —  字段 | 内容  `📅unknown` `[entity_page]`
@@ -775,6 +777,7 @@
 - [Innodata](wiki/entities/innodata.md) — Innodata**（纳斯达克：**INOD**）向 AI 实验室与企业提供 **训练数据、评测、对齐与安全** 服务。LeoInAI Substack（2026-09）将其列为「物理 AI 数据 `📅unknown` `[entity_page]`
 - [INSIGHT-Bench](wiki/entities/insight-bench.md) — INSIGHT-Bench**（项目页，[代码](https://github.com `📅unknown` `[entity_page]`
 - [Inspect Robots](wiki/entities/inspect-robots.md) — Inspect Robots**（GitHub，[文档](https://docs.inspectro `📅unknown` `[entity_page]`
+- [因时机器人 RH56 灵巧手](wiki/entities/inspire-robots-rh56-dexterous-hand.md) — 因时机器人 RH56 灵巧手** 属于 Zane Hub 灵巧手行业综述 的「零部件下探（ `📅unknown` `[entity_page]`
 - [InstantHMR](wiki/entities/instanthmr.md) — InstantHMR**（mohamdev/InstantHMR，Apache-2.0）是面向 **部署与实时动 `📅unknown` `[entity_page]`
 - [InstantTrack：加速 G1 全身动作跟踪训练](wiki/entities/instanttrack.md) — InstantTrack** 基于社区 SuperMimic 复现，结合 GPU 训练优化、策略指数移动平均和足部接触奖励，训练单一 G1 全身动 `📅unknown` `[entity_page]`
 - [InstructBLIP](wiki/entities/instructblip.md) — InstructBLIP 在 BLIP-2 上做视觉指令调优：用指令感知 Q-Former 抽取与任务相关的视觉特征，提升零样本与指令跟随。 `📅unknown` `[entity_page]`
@@ -880,6 +883,7 @@
 - [LingBot-VLA 2.0](wiki/entities/lingbot-vla-v2.md) — LingBot-VLA 2.0**（*From Foundation to Application: Improving VLA Models in Practice*，[arXiv:2607.0 `📅unknown` `[entity_page]`
 - [LingBot-VLA](wiki/entities/lingbot-vla.md) — LingBot-VLA**（*A Pragmatic VLA Foundation Model*，[arXiv:2601.18692](https://arxiv.org/abs/2601.186 `📅unknown` `[entity_page]`
 - [LingBot-World](wiki/entities/lingbot-world.md) — robbyant/lingbot-world**](https://github.com/robbyant/lingbot-world)（蚂蚁 **Robbyant / 灵波**）是 **开源世 `📅unknown` `[entity_page]`
+- [灵心巧手 Linker Hand](wiki/entities/linkerbot-linker-hand.md) — 灵心巧手 Linker Hand** 属于 Zane Hub 灵巧手行业综述 的「灵巧手专 `📅unknown` `[entity_page]`
 - [LIO-SAM](wiki/entities/lio-sam.md) — LIO-SAM** 将 **IMU 预积分、scan-to-map 与回环** 纳入统一因子图优化。 `📅unknown` `[entity_page]`
 - [LISA](wiki/entities/lisa.md) — LISA 让多模态 LLM 通过特殊分割 token 调用分割解码器，实现推理式分割（reasoning segmentation）：由复杂语言描述直接得到掩码。 `📅unknown` `[entity_page]`
 - [LiteReality-Agent](wiki/entities/litereality-agent.md) — LiteReality-Agent**（项目页，[论文 arXiv:2610.01863](https://arxi `📅unknown` `[entity_page]`
@@ -1085,6 +1089,7 @@
 - [OV-SAM3D](wiki/entities/ov-sam3d.md) — OV-SAM3D**（HanchenTai/OV-SAM3D）是 **无需针对场景训练** 的开放词汇三维场景理 `📅unknown` `[entity_page]`
 - [OVO（Open-Vocabulary Online Semantic Mapping）](wiki/entities/ovo-semantic-mapping.md) — OVO**（tberriel/OVO，MIT）把 **开放词汇在线 3D 语义映射** 接到视觉 SLAM 骨干上。 `📅unknown` `[entity_page]`
 - [OWASP MAS（Mobile Application Security）](wiki/entities/owasp-mas.md) — OWASP Mobile Application Security (MAS)** 是 OWASP 旗舰项目，用 **MASVS**（该满足哪些控制）、**MASWE**（常见弱点是什么）和  `📅unknown` `[entity_page]`
+- [傲意科技 OHand 系列](wiki/entities/oymotion-ohand.md) — 傲意科技 OHand 系列** 属于 Zane Hub 灵巧手行业综述 的「假肢背景」。本 `📅unknown` `[entity_page]`
 - [p5.js](wiki/entities/p5js.md) — p5.js** 是 Processing 生态中的浏览器端创意编程库，让 JavaScript 草图通过逐帧绘制、输入事件和图形 API 构成交互式网页作品。 `📅unknown` `[entity_page]`
 - [PageIndex（VectifyAI）](wiki/entities/pageindex.md) — PageIndex** 是 VectifyAI 开源的无向量 RAG 引擎。它把长文档组织成分层树索引，再让 LLM 基于问题在树上推理检索，返回可追溯到原文位置的答案。官方 Python SDK `📅unknown` `[entity_page]`
 - [2025 GS Paper List](wiki/entities/painode-001-2025gspaperlist.md) — 2025 GS Paper List** 收录于 awesome-physical-ai（aichr）**第 001/384** 条，分组 **3D Computer Vision**。本页是  `📅unknown` `[entity_page]`
@@ -6020,6 +6025,7 @@
 - [Tairan He（何泰然）](wiki/entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：2026 年起任 **OpenAI Member of Technical Staff**（ `📅unknown` `[entity_page]`
 - [An Observation on Generalization（Ilya Sutskever, 2023）](wiki/entities/talk-ilya-sutskever-observation-on-generalization.md) — An Observation on Generalization** 是 **Ilya Sutskever**（OpenAI）在 **Simons Institute**「Large Langua `📅unknown` `[entity_page]`
 - [TARE Planner](wiki/entities/tare-planner.md) — TARE Planner**（Technologies for Autonomous Robot Exploration）是 CMU 提出的 **分层自主探索规划器**：近场用稠密表示计算细路径， `📅unknown` `[entity_page]`
+- [他山科技 电容式触觉芯片](wiki/entities/tashan-capacitive-tactile.md) — 他山科技 电容式触觉芯片** 属于 Zane Hub 灵巧手行业综述 的「感知专精（触觉器 `📅unknown` `[entity_page]`
 - [Taste Skill](wiki/entities/taste-skill.md) — Taste Skill**（Leonxlnx/taste-skill，[tasteskill.dev](htt `📅unknown` `[entity_page]`
 - [τ₀-World Model（τ0-WM）](wiki/entities/tau0-world-model.md) — τ₀-World Model（τ0-WM）**（2026-05-31，AGIBOT Finch 研究页， `📅unknown` `[entity_page]`
 - [Telekinesis RLbotics](wiki/entities/telekinesis-rlbotics.md) — Telekinesis RLbotics**（[`telekinesis-ai/telekinesis-rlbotics`](https://github.com/telekinesis-ai/t `📅unknown` `[entity_page]`
@@ -6050,6 +6056,7 @@
 - [Transformer 视觉应用课程策展](wiki/entities/transformer-cv-curriculum.md) — 把「Transformer 在计算机视觉中的应用」八章大纲落成可交叉引用的知识图：从 **CNN/注意力基础** 走到 **分类·检测·分割·多模态·Mamba·视觉基础模型**，截图中的每个知识点都 `📅unknown` `[entity_page]`
 - [tscircuit（代码化电子设计工具链）](wiki/entities/tscircuit.md) — tscircuit** 是以 TypeScript/React 组件描述电路的开源电子设计工具链：将芯片、电阻、网络与 PCB 走线等表示为代码，再预览原理图、PCB 和 3D 模型，并导出制造文 `📅unknown` `[entity_page]`
 - [TSING-EGO PRO](wiki/entities/tsing-ego-pro.md) — TSING-EGO PRO** 是清研精准面向工业现场的可穿戴第一视角数据采集方案，用于记录真实作业并支持机器人训练和验证。 `📅unknown` `[entity_page]`
+- [途见科技 可拉伸电子皮肤](wiki/entities/tujian-electronic-skin.md) — 途见科技 可拉伸电子皮肤** 属于 Zane Hub 灵巧手行业综述 的「感知专精（触觉器 `📅unknown` `[entity_page]`
 - [TurtleBot3](wiki/entities/turtlebot3.md) — TurtleBot3** 是 **ROBOTIS** 生态中的 **开源移动机器人** 教育平台：硬件参数、软件栈与仿真入口集中在 **[TurtleBot3 eManual](https://e `📅unknown` `[entity_page]`
 - [TwinDEX（无本体灵巧操作共设计接口）](wiki/entities/twindex.md) — TwinDEX**（项目页，2026-09-02）由 **自变量机器人（X Square Robot）** 发布：一 `📅unknown` `[entity_page]`
 - [OpenFOAM Agent Skills（twj011/openfoam-agent-skills）](wiki/entities/twj011-openfoam-agent-skills.md) — OpenFOAM Agent Skills（twj011/openfoam-agent-skills）是作为小型 OpenFOAM Skill 集合被文章提及，与完整仿真套件或 MCP 执行服务不同， `📅unknown` `[entity_page]`
@@ -6171,6 +6178,7 @@
 - [Zero-to-CAD：从多视角图像到可编辑 CAD 程序](wiki/entities/zero-to-cad.md) — Zero-to-CAD** 是 Autodesk Research 提出的 CAD 程序合成与重建项目：以带执行反馈的代理流程扩展合成构造序列，并用发布的视觉语言模型将多视角形状图像映射为 Cad `📅unknown` `[entity_page]`
 - [ZeroMQ](wiki/entities/zeromq.md) — ZeroMQ**（zeromq/libzmq，站 [zeromq.org](https://zeromq.org/get-s `📅unknown` `[entity_page]`
 - [宅码 Common Know-How（二手知识点汇编）](wiki/entities/zhaima-common-know-how.md) — 这是一份由「宅码」公众号转载到飞书的 VLA 与机器人学习知识点汇编，适合作为入门索引，但它是二手笔记，结论需回到一手论文核对。 `📅unknown` `[entity_page]`
+- [兆威机电 ZWHAND 灵巧手](wiki/entities/zhaowei-zwhand-dexterous-hand.md) — 兆威机电 ZWHAND 灵巧手** 属于 Zane Hub 灵巧手行业综述 的「零部件下探 `📅unknown` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](wiki/entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
 - [Zowi](wiki/entities/zowi.md) — Zowi**（GitHub，相关链接）是 [GitHub `📅unknown` `[entity_page]`
 - [Zstandard（zstd）](wiki/entities/zstandard.md) — Zstandard**（**zstd**）是面向 **实时压缩** 的 **无损** 算法与格式（参考实现 [facebook/zstd](https://github.com/facebook/ `📅unknown` `[entity_page]`
@@ -6222,6 +6230,7 @@
 - [深度学习基础 (Deep Learning Foundations)](wiki/concepts/deep-learning-foundations.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [深度强化学习游戏里程碑（DQN / AlphaGo）](wiki/concepts/deep-rl-game-milestones.md) — 深度强化学习游戏里程碑**：以 Atari DQN 与围棋 AlphaGo 为代表的一系列工作，用端到端神经网络从像素或棋盘状态映射到动作，证明了规模化数据驱动方法在**离散或结构化动作空间**任 `📅unknown` `[wiki_page]`
 - [面向机器人的密集视频字幕](wiki/concepts/dense-captioning-for-robotics.md) — 密集视频字幕（dense captioning）** 将连续第一视角操作视频分解为按时间排序的短动作步骤，并为每步标注动作、作用对象与执行手，形成可检索、可质检的任务语义标签；它是视频语义监督，不 `📅unknown` `[wiki_page]`
+- [灵巧手行业核心企业与工程约束（Zane Hub 综述）](wiki/concepts/dexterous-hand-industry-core-players.md) — 灵巧手是电机、减速器、传动件、传感器、驱动电路、控制算法与结构件共同决定的系统，任何一项短板都会把整手性能拉回最低水平；真正值得比较的，是企业把哪一段能力做成了可复制、可交付、可摊薄成本的东西。 `📅unknown` `[wiki_page]`
 - [灵巧手负载与核心指标](wiki/concepts/dexterous-hand-payload-core-metrics.md) — 灵巧手的「能搬多重」不只由手决定，而取决于抓取姿态、摩擦、重心、包覆与机械臂加速度；因此负载只是入场券，真正的评价要看**带条件声明**的一组耦合指标：力量、自由度、力控、精度、感知、可靠性、轻量化、 `📅unknown` `[wiki_page]`
 - [Dexterous Kinematics (灵巧手运动学)](wiki/concepts/dexterous-kinematics.md) — 灵巧手运动学 (Dexterous Kinematics)** 是机器人学中研究多指协同操作的理论基础。与传统的单臂串联运动学不同，灵巧手在抓取物体时，多个手指通过接触点与物体共同构成了一个**闭 `📅unknown` `[wiki_page]`
 - [Differentiable Simulation（可微仿真）](wiki/concepts/differentiable-simulation.md) — 可微仿真**：物理引擎在 forward rollout 的同时支持 **对状态、参数或控制输入求导**，使优化与 learning 可直接利用 **解析梯度** 而非纯有限差分或黑盒 RL。 `📅unknown` `[wiki_page]`
