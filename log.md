@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-03] ingest | NablaEngine 与 Movens-Zero 一手资料归档；全文及源码分析待完成
+
 ## [2026-11-03] ingest | sources/papers/s4vy_arxiv_2609_36875.md — 收录 S4VY 4D 实例分割及官方实现
 
 ## [2026-11-03] ingest | sources/papers/gpt_6_astra_embodied_intelligence_arxiv_2610_22471.md — 更新报告与源码开放状态，补充评测协议及真机结果草稿
