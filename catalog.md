@@ -465,6 +465,7 @@
 - [Cosmos Curator（视频策展）](wiki/entities/cosmos-curator.md) — Cosmos Curator** 是 NVIDIA Cosmos 生态里专门处理 **海量原始视频 → 可训练 clip + caption + emb `📅unknown` `[entity_page]`
 - [Cosmos Transfer（条件世界翻译）](wiki/entities/cosmos-transfer.md) — Cosmos Transfer** 是 NVIDIA Cosmos 里专门做 **world-to-world** 的一支：输入不是「从零生成世界」，而 `📅unknown` `[entity_page]`
 - [Spec-Driven Development with Coding Agents（DeepLearning.AI 短课）](wiki/entities/course-spec-driven-development-coding-agents.md) — DeepLearning.AI](https://www.deeplearning.ai/courses/spec-driven-development-with-coding-agents/) 与 `📅unknown` `[entity_page]`
+- [Craft Anything：软件分析与重建工具](wiki/entities/craft-anything.md) — Craft Anything 是开源 Rust 工具，面向网站、应用和游戏，组织目标检查、coding agent 构建与结果比较。 `📅unknown` `[entity_page]`
 - [CraftNet：Sharpa 的分层视觉-触觉-语言-动作模型](wiki/entities/craftnet.md) — CraftNet** 是 Sharpa 的端到端分层 VTLA 模型，按“System 0 触觉交互 / System 1 运动”分工，把“最后一毫米”的接触交给高频底层。 `📅unknown` `[entity_page]`
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
 - [Crazyswarm2](wiki/entities/crazyswarm2.md) — Crazyswarm2**（IMRCLab/crazyswarm2）在 **[Crazyflie 固件](./c `📅unknown` `[entity_page]`
