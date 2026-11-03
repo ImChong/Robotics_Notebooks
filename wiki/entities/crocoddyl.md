@@ -3,10 +3,13 @@
 type: entity
 sources:
   - ../../sources/papers/optimal_control.md
+  - ../../sources/blogs/wechat_qt_adventure_cpp_motion_control_libs_2026-11-02.md
 summary: "Crocoddyl"
-updated: 2026-10-06
+updated: 2026-11-03
 tags: [inria]
 
+related:
+  - ../overview/cpp-motion-control-open-source-libraries-map.md
 ---
 
 # Crocoddyl
@@ -275,6 +278,20 @@ Crocoddyl 可以用于更高层的轨迹优化与运动规划，再由 WBC / TSI
 
 - Mastalli et al., *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control* (2020) — Crocoddyl 论文
 - 官方仓库：<https://github.com/loco-3d/crocoddyl>
+
+## 一手资料核对（2026-11-03）
+
+> 来自 [C/C++ 运动控制开源库清单](https://mp.weixin.qq.com/s/RIXXIltQ0ABoBO_OVLZTZw) 的交叉核对；以一手资料为准。
+
+| 项 | 内容 |
+|----|------|
+| **仓库** | [https://github.com/loco-3d/crocoddyl](https://github.com/loco-3d/crocoddyl) |
+| **许可（核查）** | BSD-3-Clause（LICENSE：BSD 3-Clause，LAAS-CNRS / Edinburgh 版权） |
+| **最近提交** | 2026-10-20 |
+| **论文 / 文档** | Mastalli 等，Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control（ICRA 2020，arXiv:1909.04947，已核对标题） |
+
+- **文章说法：** C++；BSD-3；DDP 最优轨迹优化与 MPC；依赖 Pinocchio
+- **核对结论：** 一致。README 描述为接触序列下的最优控制库，求解器基于 DDP，并用 Pinocchio 计算动力学与解析导数。
 
 ## 关联页面
 
