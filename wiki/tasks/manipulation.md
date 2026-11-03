@@ -4,6 +4,8 @@ tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
 updated: 2026-11-01
 related:
+  - ../entities/paper-goaldex.md
+  - ../entities/paper-viserdex.md
   - ../entities/paper-seer-vla.md
   - ../entities/paper-dexsafe.md
   - ../entities/paper-handson.md
