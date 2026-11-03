@@ -55,6 +55,33 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+仓库主体是 URDF / MJCF / mesh 资产；可运行部分仅是一个 Python 路径查找包 `openrd`。入口：`python examples/01_get_path.py --name unitree_g1 [--version ...] [--variant ...] [--model_format urdf|mjcf]`。
+
+```mermaid
+sequenceDiagram
+    participant EX as examples/01_get_path.py
+    participant OR as openrd.get_model_path（openrd/__init__.py）
+    participant FM as openrd.urdf / openrd.mjcf（子包）
+    participant RB as 机器人子包（如 openrd/urdf/unitree_g1/__init__.py）
+    participant LM as list_available_models
+    EX->>OR: get_model_path(name, version, variant, model_format)
+    OR->>OR: model_format 选择 urdf 或 mjcf 子包；有 version 时模块名为 name_version
+    OR->>FM: getattr(model_module, version_module_name)
+    alt 模块不存在
+        OR->>LM: list_available_models(show_path=True)
+        OR-->>EX: ValueError（附可用模型列表）
+    else 找到机器人子包
+        FM-->>OR: RB（内含 SimpleNamespace，属性 .urdf / .xml 为用 _MODULE_PATH 拼出的文件路径）
+        OR->>RB: 有 variant 则 getattr(RB, variant)；否则遍历属性找带 .urdf（mjcf 为 .xml）的对象
+        RB-->>OR: 绝对路径
+        OR-->>EX: 返回模型文件路径并打印
+    end
+```
+
+图依据：Synria-Robotics/Open-Robot-Descriptions@f3e0b6a，读过 README.md（开头）、openrd/__init__.py（get_model_path 大部分）、openrd/urdf/__init__.py、openrd/urdf/unitree_g1/__init__.py、examples/01_get_path.py、auto_generate_init.py（开头）；get_model_path 末尾返回部分与 list_available_models 实现未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +93,7 @@ institutions:
 - [Open-Robot-Descriptions 源码归档](../../sources/repos/open-robot-descriptions.md)（<https://github.com/Synria-Robotics/Open-Robot-Descriptions>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Synria-Robotics/Open-Robot-Descriptions@f3e0b6a，读过 README.md（开头）、openrd/__init__.py（get_model_path 大部分）、openrd/urdf/__init__.py、openrd/urdf/unitree_g1/__init__.py、examples/01_get_path.py；仓库主体为模型资产，仅路径查找包可运行；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

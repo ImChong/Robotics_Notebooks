@@ -62,6 +62,44 @@ atopile 主仓库公开并采用 MIT 许可，包含语言、编译器与工具�
 
 atopile 的代码化描述和构建检查不能单独证明电路安全、可制造或已通过实板验证。高电流、高压、热设计、EMI 与安全相关部分仍需硬件工程师检查，并在打样后测试。
 
+## 源码运行时序图
+
+入口：`ato build`（`pyproject.toml` 的 `[project.scripts] ato = "atopile.cli.cli:main"`）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / VS Code 扩展
+    participant CLI as atopile.cli.cli:main<br/>app.command()(build.build)
+    participant B as atopile.cli.build.build
+    participant Q as build_queue.BuildQueue<br/>_run_build_subprocess
+    participant W as 工作子进程<br/>ATO_BUILD_WORKER=1 → _run_single_build
+    participant BU as atopile.buildutil.build<br/>run_build_targets
+    participant M as build_steps.muster<br/>（MusterTarget 依赖顺序）
+    participant C as atopile.compiler.build<br/>build_file / Linker
+    participant K as KiCad PCB（faebryk）
+
+    U->>CLI: ato build
+    CLI->>B: build(...)
+    B->>Q: _run_build_queue → enqueue(Build) 每个 build 目标
+    Q->>W: subprocess.Popen(ato build …, env ATO_BUILD_WORKER=1)
+    W->>BU: config.select_build(name)；buildutil.build(ctx)
+    BU->>M: run_build_targets
+    M->>C: init-build-context：build_file(entry .ato) + build_stage_2 解析 import / 链接
+    M->>M: instantiate-app：tg.instantiate_node 得到 app；推断参数单位
+    M->>M: post-instantiation-graph-check / -setup / -design-check（check_design）
+    M->>K: load-pcb：pcb.run_transformer()
+    M->>M: picker：pick_parts_recursively（solver 约束求解选型）
+    M->>M: prepare-nets → post-solve-checks
+    M->>K: update-pcb：更新 .kicad_pcb
+    M->>M: post-pcb-checks → build-design；其后按 include/exclude 目标导出 BOM / GLB / STEP / 制造数据等
+    W->>K: reload_pcb（失败仅告警，提示手动重载 KiCad）
+    W-->>Q: 退出码（阶段写入 BuildHistory DB）
+    Q-->>B: results
+    B-->>U: _report_build_results；config.should_open_layout_on_build() 时打开布局
+```
+
+图依据：atopile/atopile@619eda7，读过 `README.md`、`pyproject.toml`、`src/atopile/cli/cli.py`、`src/atopile/cli/build.py`、`src/atopile/model/build_queue.py`（命令构造与 Popen 部分）、`src/atopile/buildutil.py`（build / init_app）、`src/atopile/build_steps.py`（各 muster 步骤的注册与前半部分实现）。
+
 ## 关联页面
 
 - [KiCad](./kicad.md) — atopile 工具链衔接的 PCB 布局与制造工具
@@ -73,6 +111,7 @@ atopile 的代码化描述和构建检查不能单独证明电路安全、可制
 ## 参考来源
 
 - [atopile 官方仓库归档](../../sources/repos/atopile.md)
+- 源码核对（2026-11-02）：atopile/atopile@619eda7，读过 README.md、pyproject.toml、src/atopile/cli/cli.py、src/atopile/cli/build.py、src/atopile/model/build_queue.py、src/atopile/buildutil.py、src/atopile/build_steps.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

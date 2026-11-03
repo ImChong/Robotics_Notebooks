@@ -55,6 +55,42 @@ STK API/安装/许可证要求随 Desktop/Engine 模式而异；文章仅给通�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 未报告 SPDX 许可证，应检查仓库内 LICENSE 与依赖许可。 涉及商业软件时，安装包和有效许可证需由使用者自行提供。
 
+## 源码运行时序图
+
+入口：`stk-mcp run --mode engine`（`pyproject.toml` 中 `stk-mcp = "stk_mcp.cli:app"`；Windows 默认 `desktop` 模式，Linux 为 `engine`）。下图以 `create_satellite` 工具为例。
+
+```mermaid
+sequenceDiagram
+    participant Cli as src/stk_mcp/cli.py run()
+    participant App as src/stk_mcp/app.py mcp_server（FastMCP）
+    participant Core as stk_logic/core.py create_stk_lifespan
+    participant Cl as MCP 客户端（LLM）
+    participant Tool as tools/satellite.py create_satellite
+    participant Dec as stk_logic/decorators.py require_stk_tool
+    participant Sat as stk_logic/satellite.py create_satellite_internal
+    participant STK as agi.stk12 STKEngine / stk_root
+    Cli->>App: import mcp_server，导入 tools 触发 @mcp_server.tool() 注册
+    Cli->>Core: create_stk_lifespan(mode)，赋给 mcp_server.lifespan
+    Cli->>App: uvicorn.run(mcp_server, host, port)
+    App->>Core: 进入 lifespan（engine 模式）
+    Core->>STK: STKEngine.StartApplication(noGraphics=True)，NewObjectRoot()
+    Core-->>App: yield StkState(stk_app, stk_root, mode)
+    Cl->>Tool: 调用 create_satellite(name, apogee, perigee, raan, inclination)
+    Tool->>Dec: 装饰器检查 stk_available 与 stk_root
+    Tool->>STK: 读 stk_root.CurrentScenario，无场景则返回错误提示
+    Tool->>Tool: 校验远近地点、倾角、RAAN 范围
+    Tool->>Sat: 持 STK_LOCK 调用 create_satellite_internal
+    Sat->>Sat: 由远近地点高度算半长轴与偏心率
+    Sat->>STK: scenario.Children.New(eSatellite, name)
+    Sat->>STK: SetPropagatorType(TwoBody)，AssignClassical(J2000, a, e, i, 0, RAAN, 0)
+    Sat->>STK: propagator.Propagate()
+    Sat-->>Tool: 成功标志与消息
+    Tool-->>Cl: 返回消息字符串
+    Note over Core,STK: 关闭时 lifespan finally 调用 stk_app.ShutDown()
+```
+
+图依据：alti3/stk-mcp@b36a95f，读过 pyproject.toml、src/stk_mcp/cli.py、app.py、tools/__init__.py、tools/satellite.py、stk_logic/core.py、stk_logic/decorators.py、stk_logic/satellite.py；未读 scenario、analysis、location、objects、health 等其它工具实现。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -65,6 +101,7 @@ STK API/安装/许可证要求随 Desktop/Engine 模式而异；文章仅给通�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/alti3-stk-mcp.md)
 - [alti3/stk-mcp 官方仓库](<https://github.com/alti3/stk-mcp>)
+- 源码核对（2026-11-02）：alti3/stk-mcp@b36a95f，读过 pyproject.toml、src/stk_mcp/cli.py、app.py、tools/__init__.py、tools/satellite.py、stk_logic/core.py、decorators.py、satellite.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
