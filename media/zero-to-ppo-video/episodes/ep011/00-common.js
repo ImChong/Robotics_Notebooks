@@ -700,6 +700,7 @@
           else a = 0;
           var r = L.row - (L.page === cur ? off : 0);
           a *= clamp(r * 2 + 1, 0, 1) * L.alpha;
+          if (r > cap - 0.5) a = 0;   // 还没滚上来的那一排（在窗口下沿外面）先不画：011 用户反馈打印时代码出了窗口
           L.y = top + r * lh + size * 0.92;
           L.el.setAttribute('y', L.y.toFixed(1));
           L.hl.setAttribute('y', (L.y - size * 0.92 - (lh - size * 1.2) / 2 + 2).toFixed(1));
