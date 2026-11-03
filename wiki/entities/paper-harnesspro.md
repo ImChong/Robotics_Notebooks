@@ -94,6 +94,22 @@ sequenceDiagram
 
 仓库包含九个评估 harness、三种基准的评估脚本和部分评估器；基准数据、服务、凭据及镜像需另备。评估说明指出 GLM-5.2 演化快照未随包发布。当前已阅读论文算法与实验表、官方 README、评估说明及 Terminal-Bench 2 相关入口；**论文其余正文和附录尚待通读，其他源码路径及本仓库 CI 尚待验证**。
 
+## 与其他工作对比
+
+| 方法 | 优化目标 | 优化范围 | 反馈 | 迭代 | 输出 |
+|---|---|---|---|---|---|
+| **HarnessPro（本页）** | 通过率 + 成本 | 整个 harness | 无标签 | 递归 | Pareto 集 |
+| RHO | 通过率 | 技能 + 工具 | 无标签 | 单轮 | 单个 |
+| AHE | 通过率 | harness | 标准答案 | 递归 | 单个 |
+| SkillMOO | 通过率 + 成本 | 技能 | 标准答案 | 递归 | Pareto 集 |
+| AFlow | 通过率 | 工作流 | 标准答案 | 递归 | 单个 |
+
+表格按论文表 1 整理。
+
+- **与 RHO：** RHO 用 LLM 比较执行轨迹、以自我偏好选候选，只追求通过率。论文表 2 报告 GPT-5.5 × Codex 下 RHO 在三个基准上都比 Vanilla 更好，但成本也上升（SWE-Bench Pro 由 $1.88 升至 $2.68）；HarnessPro-Heavy 在三个基准上通过率最高，且成本低于 RHO。
+- **区分“成本指令”和“递归迭代”的贡献：** 论文另设两个 RHO 变体，Balance 只把优化指令改为兼顾成本，RHO+Iteration 再以同样轮数迭代。论文报告 Terminal-Bench 2 上 Medium 与 RHO+Iteration 同为 76.3%，成本低 31.7%；ProgramBench 上 Heavy 通过率高 1.3 个百分点，成本低 5.8%。
+- **与记忆或策略复用方法：** Dynamic Cheatsheet、ReasoningBank、Sleep-time Compute 只优化记忆或策略组件，HarnessPro 则演化指令、技能、工具、hooks 和验证规则。表 2 中这三者在 Terminal-Bench 2 上为 72.9–74.6%、$0.99–1.06/任务，通过率均低于、成本均高于 Heavy 的 80.8%、$0.72。
+
 ## 关联页面
 
 - [Spatial Memory by Agents](paper-spatial-memory-by-agents.md)
