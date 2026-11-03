@@ -119,6 +119,10 @@ flowchart TB
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
 
+## 相关研究
+
+- [Weight-Space Programming](weight-space-programming.md) 研究由 LLM 直接分析和编辑权重，可与依赖微调差分的能力向量方法对照。
+
 ## 参考来源
 
 - [CapVector 论文摘录（arXiv:2605.10903）](../../sources/papers/capvector_arxiv_2605_10903.md)
