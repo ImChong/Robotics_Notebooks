@@ -16,7 +16,7 @@
 
 ## 测试与边界
 
-README 展示 SO-101、SO-102 刷写前后视频，强调演示数字仅描述录制场景。用户提供的约 35→10 mm 和 25→0–2 mm 具体读数未能从文档文本独立核验，暂不作为已验证的量化结果。齿隙和机架变形仍影响末端位置。固件刷写可能损坏舵机或擦除标定；停止通信不会自动释放力矩，须按官方说明进行备份、标定和安全检查。
+README 展示 SO-101、SO-102 刷写前后视频，强调演示数字仅描述录制场景。官方 [SO-101 视频](https://github.com/roboninecom/STS32XX-Firmware/blob/444f775c05e637c3743ec12ade6c1f9ae174177e/assets/readme/videos/so101-before-after.mp4) 标注约 35→10 mm；[SO-102 视频](https://github.com/roboninecom/STS32XX-Firmware/blob/444f775c05e637c3743ec12ade6c1f9ae174177e/assets/readme/videos/so102-before-after.mp4) 标注约 25→0–2 mm。这些是视频展示读数，测试细节及全工作空间性能未建立。齿隙和机架变形仍影响末端位置。固件刷写可能损坏舵机或擦除标定；停止通信不会自动释放力矩，须按官方说明进行备份、标定和安全检查。
 
 ## 对 wiki 的映射
 
