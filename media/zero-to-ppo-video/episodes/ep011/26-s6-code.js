@@ -138,7 +138,7 @@
             ed.box('M', E.GOOD, f(st, T.M, 0.3) * (1 - f(st, T.tm, 0.3)));
             ed.box('S', E.WARN, f(st, T.S, 0.3) * (1 - f(st, T.tm, 0.3)));
             ed.box('th', E.ACC, f(st, T.th, 0.3) * (1 - f(st, T.tm, 0.3)));
-            ed.box('rev', E.INK2, f(st, T.back, 0.3) * (1 - f(st, T.book, 0.3)));
+            ed.box('rev', E.GOOD, f(st, T.back, 0.3) * (1 - f(st, T.book, 0.3)));   // 绿：第 4 幕的顺序（右下「= 第 4 幕的顺序」同色；原先灰框像「不用」）
             ed.box('left', E.HI, f(st, T.left, 0.3) * (1 - f(st, T.book, 0.3)));
           } else {
             ['vec', 'exp', 'M', 'S', 'th', 'rev', 'left'].forEach(function (k) { ed.box(k, E.HI, 0); });
