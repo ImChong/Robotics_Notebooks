@@ -456,6 +456,7 @@
 - [Coding Interview University](wiki/entities/coding-interview-university.md) — Coding Interview University**（[jwasham/coding-interview-university](https://github.com/jwasham/cod `📅unknown` `[entity_page]`
 - [ComfyUI](wiki/entities/comfyui.md) — ComfyUI**（Comfy-Org/ComfyUI，官网 [comfy.org](https://comfy.o `📅unknown` `[entity_page]`
 - [COMPASS](wiki/entities/compass.md) — COMPASS**（*Cross-embOdiment Mobility Policy via ResiduAl RL and Skill Synthesis*，[arXiv:2502.16372 `📅unknown` `[entity_page]`
+- [Control Toolbox（ct）](wiki/entities/control-toolbox-ct.md) — Control Toolbox（ct）**（[https://github.com/ethz-adrl/control-toolbox](https://github.com/ethz-adrl/ `📅unknown` `[entity_page]`
 - [ControlIt!（Whole-Body Operational Space Control 软件框架）](wiki/entities/controlit.md) — ControlIt!**（*A Software Framework for Whole-Body Operational Space Control*；[arXiv:1506.01075](ht `📅unknown` `[entity_page]`
 - [OpenMuse（CopilotKit）](wiki/entities/copilotkit-openmuse.md) — OpenMuse** 是 CopilotKit 开源的跨端个人代理应用：用户给出目标后，系统可以规划并执行多步工作，展示进度、请求补充输入或审阅行动，并返回可检查的结果。 `📅unknown` `[entity_page]`
 - [CoppeliaSim](wiki/entities/coppeliasim.md) — CoppeliaSim](https://github.com/CoppeliaRobotics/coppeliaSimLib) 收录于具身智能研究室 [开源项目主表](https://github `📅unknown` `[entity_page]`
@@ -638,6 +639,7 @@
 - [FAR Planner](wiki/entities/far-planner.md) — FAR Planner**（Fast, Attemptable Route Planner）用 **动态更新的可见图（visibility graph）** 在已知或未知环境中做长距离快速重规划： `📅unknown` `[entity_page]`
 - [Fast DDS（eProsima）](wiki/entities/fast-dds.md) — Fast DDS**（原 Fast RTPS）是 eProsima 的开源 **OMG DDS / RTPS** C++ 实现：提供 DCPS API 与底层 RTPS 访问，经 `rmw_fas `📅unknown` `[entity_page]`
 - [FAST-LIO](wiki/entities/fast-lio.md) — FAST-LIO** 以 **紧耦合迭代卡尔曼滤波** 实现低延迟 3D LiDAR-惯性里程计。 `📅unknown` `[entity_page]`
+- [FastAccelStepper](wiki/entities/fastaccelstepper.md) — FastAccelStepper**（[https://github.com/gin66/FastAccelStepper](https://github.com/gin66/FastAccelS `📅unknown` `[entity_page]`
 - [Featurize（蒜粒方块）](wiki/entities/featurize.md) — Featurize**（featurize.cn）定位 **机器学习在线实验室**：预装 PyTorch 等环境，提供 RTX 3090/4090 `📅unknown` `[entity_page]`
 - [FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）](wiki/entities/femm-foc-simulation.md) — FEMM-FOC-Simulation**（[yoga-cycle/FEMM-FOC-Simulation](https://github.com/yoga-cycle/FEMM-FOC-Simu `📅unknown` `[entity_page]`
 - [FEMM（Finite Element Method Magnetics）](wiki/entities/femm.md) — FEMM**（femm.info，作者 David C. Meeker）是面向 **2D 与轴对称 `📅unknown` `[entity_page]`
@@ -1044,6 +1046,7 @@
 - [OmniRetarget Dataset（G1 交互重定向轨迹）](wiki/entities/omniretarget-dataset.md) — OmniRetarget Dataset**（<https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset>）是 Amazo `📅unknown` `[entity_page]`
 - [OmniSim](wiki/entities/omnisim.md) — OmniSim** 是 OmniLink 面向 **编码代理** 的开源机器人仿真工作台：clone 仓库、打 `📅unknown` `[entity_page]`
 - [OMOMO（Object Motion Guided Human Motion Synthesis）](wiki/entities/omomo-dataset.md) — OMOMO** 是 Li et al.（Stanford，SIGGRAPH Asia 2023）发布的人–物交互（HOI）**动捕数据集与合成代码**：以 **物体运动序列为条件** 生成/记录人 `📅unknown` `[entity_page]`
+- [OMPL（Open Motion Planning Library）](wiki/entities/ompl.md) — OMPL（Open Motion Planning Library）**（https://github.com/ompl/ompl） `📅unknown` `[entity_page]`
 - [ONNX](wiki/entities/onnx.md) — ONNX**（**Open Neural Network Exchange**）是由社区维护、托管于 **LF AI & Data Foundation**（Linux Foundation 旗下 `📅2026-06-25` `[entity_page]`
 - [ONNX Runtime](wiki/entities/onnxruntime.md) — ONNX Runtime**（常缩写 **ORT**）是由 **Microsoft** 主导的开源 **ONNX 推理与训练加速引擎**。它提供 **Python、C++、C#、Java、Java `📅2026-06-25` `[entity_page]`
 - [OOMWOO](wiki/entities/oomwoo.md) — OOMWOO** 是 **Maker's Pet** 发起的 **可自建开源家用扫地机器人**：以 **ROS 2 + 2D LiDAR + Nav2 / slam_toolbox** 做室内建图 `📅unknown` `[entity_page]`
@@ -5833,6 +5836,7 @@
 - [Pink](wiki/entities/pink-ik.md) — Pink](https://github.com/stephane-caron/pink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](wiki/entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
 - [PlatformIO Core](wiki/entities/platformio-core.md) — PlatformIO Core** 是 PlatformIO 生态的命令行核心：以 `platformio.ini` 描述嵌入式项目环境，并用 `pio` CLI 管理相关开发平台、工具链、库依赖 `📅unknown` `[entity_page]`
+- [pyplcopen / plcopen 运动控制内核](wiki/entities/plcopen-pyplcopen.md) — pyplcopen / plcopen 运动控制内核**（[https://github.com/lusipad/plcopen](https://github.com/lusipad/plcop `📅unknown` `[entity_page]`
 - [PLEN2](wiki/entities/plen2.md) — PLEN2**（GitHub）是 [GitHubStore《19 款能自己造的开源人形机器人》](ht `📅unknown` `[entity_page]`
 - [PlotJuggler](wiki/entities/plotjuggler.md) — PlotJuggler**（PlotJuggler/PlotJuggler，站 [plotjuggler `📅unknown` `[entity_page]`
 - [plotly.py（Plotly Python）](wiki/entities/plotly.md) — plotly.py**（plotly/plotly.py，[文档](https://plotly.com/python `📅unknown` `[entity_page]`
@@ -5959,6 +5963,7 @@
 - [星动纪元（ROBOTERA）：数据、大脑与人形整机路线](wiki/entities/robotera.md) — 星动纪元以数据、大脑、运控、灵巧手、人形整机组成软硬件全栈；研究入口能分别观察“预测未来怎样帮助动作”和“策略怎样部署到机器人”。 `📅unknown` `[entity_page]`
 - [Robotic World Model（ETH RSL：RWM / RWM-U）](wiki/entities/robotic-world-model-eth-rsl.md) — Robotic World Model（RWM）** 与 **Uncertainty-Aware RWM（RWM-U）** 是 ETH Zurich（RSL / LAS 等）开源的 **模型基强化 `📅unknown` `[entity_page]`
 - [Robotics Bench（交互式机器人硬件学习演示）](wiki/entities/robotics-bench.md) — Robotics Bench 是以 Colorfigures 制作的浏览器交互式机器人硬件教学演示，通过等距插画和步骤控件讲解电路板装配、元件放置、焊点与供电等场景。 `📅unknown` `[entity_page]`
+- [Robotics Library（RL）](wiki/entities/robotics-library-rl.md) — Robotics Library（RL）**（[https://github.com/roboticslibrary/rl](https://github.com/roboticslibrary/ `📅unknown` `[entity_page]`
 - [Robotics Toolbox for Python](wiki/entities/robotics-toolbox-python.md) — 一句话：** Robotics Toolbox for Python（RTB-P）是面向研究与教育的 Python 工具箱，用同一套可运行 API 表达机械臂与移动机器人的常见建模、运动学、动力学 `📅unknown` `[entity_page]`
 - [ROBOTIS AI Sapiens（ai_sapiens）](wiki/entities/robotis-ai-sapiens.md) — AI Sapiens** 是 ROBOTIS 的 **开源人形** 产品线（K1）；官方 ROS 2 软件入口为 [`ROBOTIS-GIT/ai_sapiens`](https://github `📅unknown` `[entity_page]`
 - [AI Worker × Isaac ROS cuMotion](wiki/entities/robotis-ai-worker-isaac-cumotion.md) — ROBOTIS AI Worker** 与 **NVIDIA Isaac ROS cuMotion** 的集成把 **半人形 lift + 双 7-DoF 臂** 接到 **GPU 碰撞感知运动规 `📅unknown` `[entity_page]`
@@ -5987,6 +5992,8 @@
 - [RS-Mamba](wiki/entities/rs-mamba.md) — RS-Mamba 面向遥感图像的 Mamba 骨干/任务模型，处理大幅面遥感场景下的长程空间依赖与高效推理。 `📅unknown` `[entity_page]`
 - [RSL-RL](wiki/entities/rsl-rl.md) — RSL-RL**（leggedrobotics/rsl_rl，论文 [arXiv:2509.10771](h `📅unknown` `[entity_page]`
 - [RTAB-Map](wiki/entities/rtabmap.md) — RTAB-Map** 以 **记忆管理（WM）** 处理长期建图与闭环，一套工具链覆盖采集到导航。 `📅unknown` `[entity_page]`
+- [RTmotion（Intel ECI）](wiki/entities/rtmotion-intel-eci.md) — RTmotion（Intel ECI）**（（未能定位公开仓库））是 [Qt历险记《C/C++ 运动控制开源库分类整理》](https://mp.weixin.qq.com/s/RIXXIltQ0 `📅unknown` `[entity_page]`
+- [Ruckig](wiki/entities/ruckig.md) — Ruckig**（https://github.com/pantor/ruckig）是 [Qt历险记《C/C++ 运动控制开 `📅unknown` `[entity_page]`
 - [RUKA-v2 Hand](wiki/entities/ruka-v2-hand.md) — RUKA-v2** 是纽约大学团队发布的 **全硬件、全软件、全文档开源** 腱驱动仿人灵巧手：在 [RUKA v1](./paper-notebook-ruka-rethinking-the-d `📅unknown` `[entity_page]`
 - [RunPod](wiki/entities/runpod.md) — RunPod**（runpod.io）提供 **GPU Pods**（Docker 容器）、**Serverless GPU** 与 **Net `📅unknown` `[entity_page]`
 - [RustGIS](wiki/entities/rustgis.md) — RustGIS** 是以 Rust 编写、可运行于 Windows、macOS、Linux 和浏览器的 GIS 工作台，用于地理空间数据制图、编辑与分析，并提供可脚本化命令。 `📅unknown` `[entity_page]`
@@ -6841,6 +6848,7 @@
 - [接触丰富操作：7 篇论文的阅读坐标](wiki/overview/contact-rich-manipulation-7-papers-technology-map.md) — 具身智能正从「单一大模型策略」走向更工程化的开源闭环：接触力、时间尺度、符号推理、几何感知、标准化硬件基准与非抓取技能，一并进入可复现系统设计的核心位置。 `📅unknown` `[overview_page]`
 - [接触丰富仿真：10 篇论文阅读坐标](wiki/overview/contact-rich-sim-10-papers-technology-map.md) — 接触丰富操控在仿真里失真，往往不只是「看得不够」——奖励标注吞吐、跨形态几何表征、碰撞几何与接触求解器、以及 sim-to-real 闭环评测需一起读。 `📅unknown` `[overview_page]`
 - [接触–世界模型–系统：10 篇论文阅读坐标](wiki/overview/contact-wm-10-papers-technology-map.md) — 接触丰富操控不只靠看得更清——触觉动力学、主动视角、跨智能体场景理解与 Sim2Real/部署评测需在同一闭环里读。 `📅unknown` `[overview_page]`
+- [C/C++ 运动控制开源库地图：轨迹生成、动力学、工业总线与 ROS 栈（一手资料核对版）](wiki/overview/cpp-motion-control-open-source-libraries-map.md) — 这份清单能用，但「许可」和「实时 / 可用性」两列不能直接信：Ruckig 与 pyplcopen 的许可写错，Ruckig 社区版带中间路点不是实时的，pyplcopen 的 EtherCAT  `📅unknown` `[overview_page]`
 - [从视觉编程到 4D 重建：CV 三大会 2023–2026 Best Paper 阅读坐标](wiki/overview/cv-best-papers-2023-2026-technology-map.md) — 四年 Best Paper 的主线是计算机视觉从静态 2D 像素处理走向动态、符合物理规律的 3D / 4D 世界重构：视觉编程与可控生成之后，VGGT 把前馈几何做到统一，D4RT 再把它扩展到 `📅unknown` `[overview_page]`
 - [深度 RL 两条主线：Off-policy 与 On-policy 演进](wiki/overview/deep-rl-off-on-policy-evolution.md) — Off-policy 与 On-policy 的严格分界是行为策略 $\pi_b$ 与目标策略 $\pi$ 是否相同**——Replay Buffer 只是 off-policy 的常见工程手段； `📅unknown` `[overview_page]`
 - [灵巧手、世界模型与人形控制：14 篇论文阅读坐标](wiki/overview/dexterous-wm-humanoid-14-papers-technology-map.md) — 本期主线横跨「接口层 VLM/VLA 加速」「世界模型与记忆规划」「灵巧手数据与操作」「人形感知退化与物理接地评测」。 `📅unknown` `[overview_page]`
