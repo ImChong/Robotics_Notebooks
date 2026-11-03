@@ -2372,6 +2372,7 @@
 - [ForgetMimic（arXiv:2609.28378）](wiki/entities/paper-forgetmimic.md) — ForgetMimic: Motion Unlearning for Reinforcement Learning Humanoid Control**（[代码](https://github.c `📅unknown` `[entity_page]`
 - [ForkCast：通过反事实未来实现 VLA 的预测式恢复](wiki/entities/paper-forkcast-counterfactual-recovery.md) — ForkCast 在每个决策点比较"继续执行、换视角观察、重新规划"三种候选的预测结果，只在预测会更好时才干预冻结的 VLA。 `📅unknown` `[entity_page]`
 - [Are Foundation Models the Route to Full-Stack Transfer in Robotics?（arXiv:2602.22001）](wiki/entities/paper-foundation-models-full-stack-transfer.md) — Are Foundation Models the Route to Full-Stack Transfer in Robotics?**（Freek Stulp, Samuel Bustaman `📅unknown` `[entity_page]`
+- [Foundation4D：迈向自动驾驶车辆的统一感知与重建模型](wiki/entities/paper-foundation4d.md) — Foundation4D 使用共享视觉骨干从多相机驾驶视频预测几何、3D 目标、语义占据与高斯场景，并在视频级组装轨迹和目标跟踪。 `📅unknown` `[entity_page]`
 - [Fourier Transmission Error Compensation（arXiv:2610.23882）](wiki/entities/paper-fourier-transmission-error-compensation.md) — Fourier Transmission Error Compensation**（*Transmission Error Compensation for Industrial Robots U `📅unknown` `[entity_page]`
 - [FPSA R2S2R（arXiv:2609.18293）](wiki/entities/paper-fpsa-r2s2r.md) — FPSA R2S2R**（*Function-Preserving Data Generation for Zero-Shot Real-to-Sim-to-Real Manipulation*， `📅unknown` `[entity_page]`
 - [FR-VLA（arXiv:2610.25981）](wiki/entities/paper-fr-vla.md) — FR-VLA**（*FR-VLA: Implicit Force Reasoning VLA for Contact-Rich Manipulation*，[arXiv:2610.25981](h `📅unknown` `[entity_page]`
@@ -6013,6 +6014,7 @@
 - [STMR 四足时空重定向](wiki/entities/stmr-quadruped-retargeting.md) — STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557 `📅unknown` `[entity_page]`
 - [StreamRig 项目：多相机流式视觉里程计](wiki/entities/streamrig.md) — StreamRig**（*Exploiting Intra-Rig Geometry for Streaming Multi-Camera Odometry*，[arXiv:2609.40244 `📅unknown` `[entity_page]`
 - [Stringman：房间尺度绳索机器人](wiki/entities/stringman.md) — Stringman 是悬挂在房间上方的四线绳索驱动并联机器人，用于遥操作、模仿学习和抓取搬运实验。 `📅unknown` `[entity_page]`
+- [STS32XX Firmware：Feetech 伺服自定义固件](wiki/entities/sts32xx-firmware.md) — STS32XX Firmware 是面向 GD32F130 的 STS3215 伺服固件，可用于 SO-ARM 机械臂的局部运动控制。 `📅unknown` `[entity_page]`
 - [ACT-2（Sunday Robotics · Generalizing Reliability）](wiki/entities/sunday-robotics-act2.md) — ACT-2** 是 **Sunday Robotics**（2026-07 博客预览）在自研移动平台 **Memo** 上部署的 **第二代家用机器人基础模型**：在 **ACT-1**（2025 `📅unknown` `[entity_page]`
 - [SuperMimic Parkour：跑酷动作跟踪](wiki/entities/supermimic-parkour.md) — SuperMimic Parkour** 是受 SuperMimic 启发的社区实现，使用 PHP 跑酷动作与地形训练 G1 动作跟踪策略；它不是原论文官方实现。 `📅unknown` `[entity_page]`
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md) — Superpowers** 是 obra/superpowers 仓库及其插件分发形态的总称：把作者团队在实践中沉淀的 `📅unknown` `[entity_page]`
@@ -6130,6 +6132,7 @@
 - [wbc_fsm (G1 全身控制 FSM 部署框架)](wiki/entities/wbc-fsm.md) — wbc_fsm** 是 **ccrpRepo / ZSTU Robotics** 针对 **Unitree G1** 人形机器人开发的 C++ 部署框架，以**有限状态机（FSM）**组织多种控制 `📅unknown` `[entity_page]`
 - [Webots](wiki/entities/webots.md) — Webots](https://github.com/cyberbotics/webots) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
 - [OpenFOAM MCP Server（webworn/openfoam-mcp-server）](wiki/entities/webworn-openfoam-mcp-server.md) — OpenFOAM MCP Server（webworn/openfoam-mcp-server）是OpenFOAM 执行层 MCP 服务，突出苏格拉底式教学问答：带用户逐步搭建算例并解释边界条件选择， `📅unknown` `[entity_page]`
+- [Sparks of Weight-Space Programming / 权重空间编程的初步探索](wiki/entities/weight-space-programming.md) — 通用大模型依据任务描述推理神经网络的计算，直接读取、编写或修改权重，而不通过梯度训练；是否允许前向反馈取决于实验设置。 `📅unknown` `[entity_page]`
 - [Weights & Biases（W&B）](wiki/entities/weights-and-biases.md) — Weights & Biases**（wandb.ai）是面向 AI 研发团队的 **实验追踪与协作平台**。在机器人学习工程里，它最常承担「 `📅unknown` `[entity_page]`
 - [傲天U1（西湖机器人四足）](wiki/entities/westlake-aotian-u1.md) — 傲天U1** 是 西湖机器人 的四足机器狗产品（官网口号「智形合一 进化无界」），面向校园 / 园区的多楼层导航递送、巡检与社区养老服务；是公司 `📅unknown` `[entity_page]`
 - [西湖机器人（Westlake Robotics）](wiki/entities/westlake-robotics.md) — 西湖机器人**（西湖机器人科技（杭州）有限公司，官网 wlrobo.com）是西湖大学王东林团队（机器智能实验室 MiLAB）的产业化公司，自称「机器人大脑公司」：用 **「大脑」多模态运动操作模 `📅unknown` `[entity_page]`
