@@ -55,6 +55,43 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python scripts/reinforcement_learning/rsl_rl/train.py --task Tracking-Dance-Flat-RobanS14 --motion_file path/to/motion.npz --num_envs 8192 --headless`（README「Train RL Agent」；需 Isaac Sim 4.5 / Isaac Lab 2.1）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 CLI
+    participant T as scripts/reinforcement_learning/rsl_rl/train.py
+    participant AL as isaaclab.app.AppLauncher
+    participant REG as leju_robot.tasks（gym.register）
+    participant H as hydra_task_config
+    participant E as ManagerBasedRLEnv（gym.make）
+    participant W as RslRlVecEnvWrapper
+    participant R as RobotOnPolicyRunner（rsl_rl_extensions/utils/on_policy_runner.py）
+
+    U->>T: python train.py --task ... --motion_file ...
+    T->>AL: AppLauncher(args_cli)，启动 Omniverse 应用
+    T->>REG: import leju_robot.tasks，import_packages 注册 Tracking-* 任务
+    T->>H: hydra_task_config(task, "rsl_rl_cfg_entry_point")
+    H-->>T: env_cfg（tracking_env_cfg.RobanS14FlatEnvCfg）与 agent_cfg（RobanS14DancePPORunnerCfg）
+    T->>T: 覆盖 num_envs、max_iterations、seed、commands.motion.motion_file
+    T->>E: gym.make(task, cfg=env_cfg)
+    E->>E: MotionCommand 载入 npz 参考动作，Observation / Action(JointPositionResiduals) / Reward 管理器
+    T->>W: RslRlVecEnvWrapper(env)
+    T->>R: eval(agent_cfg.runner_class_name)(env, agent_cfg.to_dict(), log_dir, device)
+    T->>R: learn(num_learning_iterations=max_iterations, init_at_random_ep_len=True)
+    loop PPO 迭代（rsl_rl OnPolicyRunner，位于 Isaac Lab 依赖）
+        R->>W: step(actions) 并行 rollout
+        W->>E: 物理仿真、命令更新、奖励与终止
+        E-->>R: obs, rewards, dones
+    end
+    R->>R: save()：super().save 后 export_policy_as_onnx，attach_onnx_metadata
+    T->>E: env.close()，simulation_app.close()
+```
+
+图依据：LejuLab-Train@845f373，读过 `README.md`、`scripts/reinforcement_learning/rsl_rl/train.py`、`source/leju_robot/leju_robot/tasks/__init__.py`、`tasks/tracking/config/robanS14/dance/__init__.py`（gym.register）、`tasks/tracking/config/robanS14/dance/tracking_env_cfg.py`（Actions、Commands、Observations 片段）、`tasks/tracking/agents/rsl_rl_ppo_cfg.py`、`rsl_rl_extensions/utils/on_policy_runner.py`、`tasks/tracking/mdp/commands.py`（类与方法名）。`OnPolicyRunner.learn` 内部在 Isaac Lab / rsl_rl 依赖中，未读；奖励、终止、课程细节与 AMP / skrl 路径未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +103,7 @@ institutions:
 - [LejuLab-Train 源码归档](../../sources/repos/lejulab-train.md)（<https://github.com/LejuRobotics/LejuLab-Train>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：LejuRobotics/LejuLab-Train@845f373，读过 README.md、scripts/reinforcement_learning/rsl_rl/train.py、source/leju_robot/leju_robot/tasks/{__init__.py,tracking/config/robanS14/dance/*,tracking/agents/rsl_rl_ppo_cfg.py}、rsl_rl_extensions/utils/on_policy_runner.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

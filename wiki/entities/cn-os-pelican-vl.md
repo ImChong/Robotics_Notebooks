@@ -55,6 +55,41 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+本仓库没有自带模型/训练实现：README 的 LoRA 微调与推理直接调用外部 ms-swift 的 `swift sft` / `swift infer`（仓库只提供命令和 `datasets/*_example_500.json` 样例，swift 内部未读，不画）。仓库自带的可运行代码是 `evaluation/` 下基于 lmms-eval 的评测框架，图只画这一条。
+
+入口：`bash evaluation/scripts/run_pelican_vl.sh`，即 `accelerate launch --num_processes=8 -m lmms_eval --model qwen2_5_vl --model_args pretrained=...,modality=video,... --tasks vsibench --log_samples --process_with_media --output_path ./result`；vLLM 版 `run_pelican_vl_vllm.sh` 同入口，仅 `model_args` 加 `use_vllm=True,tensor_parallel_size=...`。
+
+```mermaid
+sequenceDiagram
+    participant SH as scripts/run_pelican_vl.sh
+    participant M as lmms_eval/__main__.py (cli_evaluate_single)
+    participant TM as lmms_eval.tasks (TaskManager / get_task_dict)
+    participant EV as lmms_eval/evaluator.py (simple_evaluate / evaluate)
+    participant LM as models/qwen2_5_vl.py (Qwen2_5_VL)
+    participant TK as 任务 yaml + utils.py（如 vsibench）
+    participant TRK as loggers/evaluation_tracker.py
+
+    SH->>M: accelerate launch -m lmms_eval --model qwen2_5_vl --tasks ...
+    M->>TM: TaskManager(...)，EvaluationTracker(...)
+    M->>EV: simple_evaluate(model, model_args, tasks, log_samples, ...)
+    EV->>TM: get_task_dict(tasks, task_manager)
+    EV->>LM: get_model("qwen2_5_vl").create_from_arg_string(model_args)
+    LM->>LM: Qwen2_5_VLForConditionalGeneration.from_pretrained(Pelican-VL 权重) 或 vllm.LLM(use_vllm=True)；AutoProcessor
+    EV->>EV: evaluate(lm, task_dict)
+    EV->>TK: task.build_all_requests(...)（doc_to_visual / doc_to_text 构造请求）
+    EV->>LM: generate_until(requests)
+    LM->>LM: 拼 messages（system + 视频/图像 + 文本），apply_chat_template，process_vision_info
+    LM-->>EV: 生成文本（transformers generate 或 vLLM generate）
+    EV->>TK: task.process_results(doc, filtered_resps)，按 aggregation 汇总指标
+    EV-->>M: results / samples
+    M->>TRK: save_results_aggregated / save_results_samples → --output_path
+    M->>M: print_results
+```
+
+图依据：Open-X-Humanoid/pelican-vl@717a1fc，读过 `README.md`、`evaluation/README.md`、`evaluation/scripts/run_pelican_vl.sh`、`run_pelican_vl_vllm.sh`、`evaluation/lmms_eval/__main__.py`（`cli_evaluate_single`）、`evaluator.py`（`simple_evaluate` / `evaluate` 的调用关系，用 grep 与片段阅读）、`models/qwen2_5_vl.py`（构造与 `generate_until`）。各 benchmark 任务实现（`tasks/*`）、`qwen3_vl*.py`、`internvl3.py`、API 模型封装及 `evaluator_utils.py` 未读；评测用 `qwen2_5_vl` 封装加载 Pelican-VL 权重是依据 `run_pelican_vl.sh` 的参数，权重本身的架构仓库内未说明。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +101,7 @@ institutions:
 - [Pelican-VL 源码归档](../../sources/repos/pelican-vl.md)（<https://github.com/Open-X-Humanoid/pelican-vl>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Open-X-Humanoid/pelican-vl@717a1fc，读过 README.md、evaluation/README.md、evaluation/scripts/run_pelican_vl.sh、run_pelican_vl_vllm.sh、evaluation/lmms_eval/__main__.py、evaluator.py、models/qwen2_5_vl.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

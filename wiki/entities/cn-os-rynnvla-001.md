@@ -55,6 +55,37 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python inference_lerobot.py --vla_ckpt_path <VLA 权重> --action_vae_path <ActionVAE 权重> --configs_path <yaml>`（官方示例推理脚本；其中 `img`、`wrist_img`、`state`、`lang_annotation` 在脚本里均为 `None` 占位，需由使用者接入自己的机械臂观测）。训练入口另见 `bash scripts/actionvae/action_vae.sh`、`bash scripts/lerobot/lerobot.sh`（均调用 `train.py --config_file ...`）。
+
+```mermaid
+sequenceDiagram
+    participant Main as inference_lerobot.py main()
+    participant Inf as inferencer/lerobot_inferencer.py LeRobotInferencer
+    participant VLA as models/chameleon_model/chameleon RynnVLAForActionPrediction
+    participant Tok as Chameleon 图像 VQGAN 分词 + 文本 Tokenizer
+    participant AVAE as models/actionvae_model.py ActionVAE
+    Main->>Main: 读取 yaml 为 opt，写入 actionvae_pretrained_path
+    Main->>Inf: LeRobotInferencer(vla_ckpt_path, precision, opt, device)
+    Inf->>VLA: from_pretrained(ckpt)
+    Inf->>Tok: 载入 pretrained_models/Chameleon 下的 text_tokenizer.json、vqgan.yaml、vqgan.ckpt
+    Inf->>AVAE: 构造并 load_state_dict(action_vae_path)，eval
+    Inf->>Inf: 读 train_dataset.data_path 指向的动作与状态统计量
+    Main->>Inf: step(obs, lang_annotation)
+    Inf->>Inf: image_transforms 处理前视图与腕部图
+    Inf->>Tok: get_condition_tokens：文本 token、quantize_images 得到两路图像 token
+    Inf->>Inf: 拼 condition_tokens，末尾加 state_token_id，状态按均值方差归一化
+    Inf->>VLA: generate(condition_tokens, state_embeds, GenerationConfig(max_new_tokens=1))
+    VLA-->>Inf: generation_result 与 action_pred 隐变量
+    Inf->>AVAE: decode_inputs(选出 action_token_id 位置的 action_pred)
+    AVAE-->>Inf: 动作块，view 为 action_chunk_size x action_dim
+    Inf->>Inf: 反归一化，前 5 维 cumsum 并加当前 state[:5]
+    Inf-->>Main: (None, output_actions)
+```
+
+图依据：alibaba-damo-academy/RynnVLA-001@416c306，读过 README.md、inference_lerobot.py、inferencer/lerobot_inferencer.py、train.py、scripts/lerobot/lerobot.sh、scripts/actionvae/action_vae.sh；未读 RynnVLAForActionPrediction.generate 内部实现。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +97,7 @@ institutions:
 - [RynnVLA-001 源码归档](../../sources/repos/rynnvla-001.md)（<https://github.com/alibaba-damo-academy/RynnVLA-001>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：alibaba-damo-academy/RynnVLA-001@416c306，读过 README.md、inference_lerobot.py、inferencer/lerobot_inferencer.py、train.py、scripts/lerobot/lerobot.sh、scripts/actionvae/action_vae.sh；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

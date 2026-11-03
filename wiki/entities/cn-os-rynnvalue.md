@@ -55,6 +55,36 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`cd rynn_infer && uv run python inference.py --model_path Alibaba-DAMO-Academy/RynnValue-8B --video_path ../example/Put_the_box_in_the_drawer_and_close_it.mp4 --instruction "..." --num_frames 8`（README Quickstart）
+
+```mermaid
+sequenceDiagram
+    participant Main as rynn_infer/inference.py main()
+    participant HF as transformers AutoConfig / AutoModel / AutoProcessor（trust_remote_code）
+    participant Proc as rynn_value/processing_rynn_value_lang.py（process_episode）
+    participant Model as rynn_value/modeling_rynn_value_lang.py RynnValueLangModel
+    participant Plot as rynn_infer/plot_utils.py save_video_with_trend
+    Main->>HF: AutoConfig.from_pretrained，强制 _attn_implementation = pred_slot_isolated_eager
+    Main->>HF: AutoModel.from_pretrained 与 AutoProcessor.from_pretrained
+    Main->>Main: load_video_frames（imageio 解码全部帧）、resize_frames
+    Main->>Main: sample_frame_indices 得到前缀终点 eval_indices
+    loop 每个前缀终点 end_idx（按 batch_size 成批）
+        Main->>Proc: process_episode(instruction, 前缀内 num_frames 帧, robot/camera_description)
+        Proc-->>Main: input_ids、pixel_values、image_grid_thw
+        Main->>Model: model(**batch_kwargs)，inference_mode
+        Model-->>Main: outputs.value.pred_value，取最后一个 slot 作为该前缀末帧剩余时间
+    end
+    Main->>Model: generate(最后一个前缀样本, max_new_tokens, do_sample=False)
+    Model-->>Main: Analysis 文本
+    Main->>Main: parse_analysis 正则提取 Video Description / Match / Success
+    Main->>Plot: save_video_with_trend(images, pred_value, sampled_indices)
+    Plot-->>Main: output_with_trend.mp4
+```
+
+图依据：alibaba-damo-academy/RynnValue@cd29294，读过 README.md、rynn_infer/inference.py、rynn_value/attention_impl.py（片段）、rynn_value/modeling_rynn_value_lang.py（类与头定义部分）；未读 processing_rynn_value_lang.py、plot_utils.py、robometer/、pi-rl/ 内部，故图仅覆盖 rynn_infer 推理入口。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +96,7 @@ institutions:
 - [RynnValue 源码归档](../../sources/repos/rynnvalue.md)（<https://github.com/alibaba-damo-academy/RynnValue>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：alibaba-damo-academy/RynnValue@cd29294，读过 README.md、rynn_infer/inference.py、rynn_value/attention_impl.py（部分）、rynn_value/modeling_rynn_value_lang.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

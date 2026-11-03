@@ -55,6 +55,42 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`ros2 launch rl_control_new rl.launch.py`（启动 `joy_node` 与装载 `rl_control_new::RLControlNewPlugin` 的 `component_container`；README 要求 ROS2 Humble + `colcon build --packages-select rl_control_new x_humanoid_rl_sdk`）。策略用 OpenVINO 在 CPU 推理（`config/policy/*.xml/.bin`，可由 `python_scripts/torch2ov.py` 转换）。注意 `rl_control_new/src/plugins/x_humanoid_rl_sdk/lib/libx_humanoid_rl_sdk.so` 是预编译库，下图 FSM 部分依据顶层 `x_humanoid_rl_sdk/` 源码，假定两者同源（未核对二进制）。
+
+```mermaid
+sequenceDiagram
+    participant L as launch/rl.launch.py
+    participant P as RLControlNewPlugin.cpp onInit / rlControl 线程
+    participant HW as bodyctrl_msgs 话题 /leg /arm /imu /sbus_data
+    participant RI as robot_interface (RobotInterface.cpp)
+    participant F as RobotFSM.cpp RunFSM
+    participant S as FSMStateImpl.cpp StateZero / StateMLP / StateStop
+    participant OV as OpenVINO InferRequest
+    participant SP as funcSPTrans 串并联转换
+    L->>P: joy_node + ComposableNode(RLControlNewPlugin)
+    P->>P: onInit 读 config/tg22_config.yaml，创建 /leg/cmd_ctrl /arm/cmd_ctrl /waist/cmd_pos 发布器与状态订阅
+    P->>F: std::thread 启动 rlControl，get_robot_FSM(robot_data)
+    F->>S: FSMInit(config_file) 读取 mlp.path，compile_model(CPU)，预热 infer 3 次
+    HW-->>P: LegMotorStatusMsg / ArmMotorStatusMsg / OnXsensImuStatusMsg / xbox_map_read 入队
+    loop 控制周期
+        P->>SP: 并联关节量经 calcFK / calcIK 转串联量
+        P->>RI: GetState(timeFSM, robot_data)
+        P->>F: RunFSM(flag)（急停 is_disable、CheckSafety）
+        F->>S: current_state_->Run(flag)，StateZero / StateMLP / StateStop
+        S->>S: StateMLP 组装观测(角速度、重力投影、速度指令、关节位置/速度、上一动作、步态)
+        S->>OV: set_input_tensor 后 infer()
+        OV-->>S: 输出动作，经 isaac_to_mujoco_idx 重排，乘 action_scales 加 default_dof_pos 写入 q_d_
+        F->>S: CheckTransition，状态变化则 OnExit / OnEnter
+        P->>RI: SetCommand(robot_data)
+        P->>SP: setSDes，calcJointPosRef，calcJointTorDes
+        P->>HW: 发布 /leg/cmd_ctrl、/arm/cmd_ctrl（gotoZero 时发 /waist/cmd_pos）
+    end
+```
+
+图依据：Open-X-Humanoid/Deploy_Tienkung@1f2b8b8，读过 README.md、rl_control_new/README.md、rl_control_new/launch/rl.launch.py、rl_control_new/rlctrlnew_plugin.xml、rl_control_new/src/plugins/rl_control_new/src/RLControlNewPlugin.cpp（onInit、rlControl 主循环的发布/FSM/SP 转换调用位置，其余用 grep 定位）、x_humanoid_rl_sdk/src/robot_FSM/{RobotFSM,FSMStateImpl}.cpp（FSMInit、StateMLP::Run 后半、CheckTransition、RunFSM 开头）、python_scripts/torch2ov.py（开头）；StateZero/StateStop 内部、RobotInterface.cpp、BasicFunction.cpp、Joystick 插件、libfuncSPTrans.so 与预编译 SDK 二进制未读；SetCommand 在 FSM 之后的先后依据 grep 行号（92/119/124）推断。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +102,7 @@ institutions:
 - [Deploy_Tienkung 源码归档](../../sources/repos/deploy_tienkung.md)（<https://github.com/Open-X-Humanoid/Deploy_Tienkung>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Open-X-Humanoid/Deploy_Tienkung@1f2b8b8，读过 README.md、rl_control_new/README.md、rl_control_new/launch/rl.launch.py、rl_control_new/src/plugins/rl_control_new/src/RLControlNewPlugin.cpp、x_humanoid_rl_sdk/src/robot_FSM/RobotFSM.cpp、x_humanoid_rl_sdk/src/robot_FSM/FSMStateImpl.cpp、python_scripts/torch2ov.py；时序图依据以上文件，未运行代码；预编译 .so 未读。
 
 ## 推荐继续阅读
 

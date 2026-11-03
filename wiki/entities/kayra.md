@@ -53,6 +53,44 @@ summary: "Kayra 是 Ramin Assadollahi 发起、由社区演进的易改装 3D �
 - **README / 核查：** README 列出目标：行走接近幼儿、手臂能举起至少一个玩具、搭好即可行走/抓取动作、易充电换电、多种控制器（Arduino、ESP-32 等）、可选 PS2/8Bitdo 遥控、可连接主机做机器学习/视觉、舵机可替换、模块化、易打印易装配（理想情况无需焊接）、软件用主机 Python + 控制器 MicroPython。
 - **差异与保留：** 「仿真环境」「FreeCAD」等为文章表述，已读 README 段落未见；以仓库当前内容为准。
 
+## 源码运行时序图
+
+入口：主机端 `python software/host/interactiveServo.py`（Linux PC，curses 界面）；机器人端 `software/robot/body/usbServosCluster.py`（在 Pimoroni Servo 2040 上运行，重命名为 `main.py` 可自启动）。仓库的主要产物是 CAD/STL/MuJoCo 模型与这套舵机示教软件，不含行走控制器。
+
+```mermaid
+sequenceDiagram
+    participant Op as 操作者
+    participant Host as host/interactiveServo.py<br/>controlUI / sendCommand
+    participant Map as servoMapLib.loadServoMap<br/>（servoMap.json）
+    participant Ser as USB 串口 115200
+    participant Ctl as robot/body/usbServosCluster.py<br/>（Servo 2040, MicroPython）
+    participant Srv as ServoCluster（18 路舵机）
+
+    Ctl->>Ctl: 上电依次读 servoMap.json / servoConfig.json / servoControl.json（LED2/0/1 绿或红）
+    alt operationMode == untethered
+        loop 主循环
+            Ctl->>Host: sendIMUToHost（print 航向/横滚/俯仰）
+            Op->>Ctl: 短按 USER 键
+            Ctl->>Srv: 按 animationToPlay 逐姿态 setAllServos 插值
+            Op->>Ctl: 长按（计数 >10）→ 写 servoConfig 改为 tethered
+        end
+    else operationMode == tethered
+        Host->>Map: 加载关节名与限位
+        Host->>Ser: serial.Serial(port, 115200)
+        loop 每 0.1 s
+            Ctl->>Host: sendIMUToHost
+            Op->>Host: 键盘调节舵机 / 存姿态 / 编动画
+            Host->>Host: servoMap.clamp / clampAll 软限位
+            Host->>Ser: sendCommand("sss"/"sas"/"snp"/"ssa"/"psa"/"tua"/"som" ...)
+            Ser->>Ctl: uselect + sys.stdin.readline 解析命令
+            Ctl->>Srv: setSingleServo / setAllServos 插值输出
+            Ctl->>Ctl: snp 存入 poseDictionary；ssa 后 writeControl 写 servoControl.json
+        end
+    end
+```
+
+图依据：assadollahi/kayra@100f3b7，读过 `README.md`、`software/README.md`、`software/host/README.md`、`software/host/interactiveServo.py`（函数定义与命令发送部分）、`software/robot/body/usbServosCluster.py`（启动加载与两种模式主循环）、`mujoco/readme.md`。
+
 ## 关联页面
 
 - [humanoid-robot](../entities/humanoid-robot.md)
@@ -64,3 +102,4 @@ summary: "Kayra 是 Ramin Assadollahi 发起、由社区演进的易改装 3D �
 - [kayra.md](../../sources/repos/kayra.md)
 - [wechat_githubstore_19_buildable_open_source_humanoids_2026-11-02.md](../../sources/blogs/wechat_githubstore_19_buildable_open_source_humanoids_2026-11-02.md)
 - [原文（微信公众号）](https://mp.weixin.qq.com/s/UUwUAcKdVrlo-N60Oar3Xg)
+- 源码核对（2026-11-02）：assadollahi/kayra@100f3b7，读过 README.md、software/README.md、software/host/README.md、software/host/interactiveServo.py、software/robot/body/usbServosCluster.py、mujoco/readme.md；时序图依据以上文件，未运行代码。

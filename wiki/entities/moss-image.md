@@ -91,6 +91,40 @@ Base 指南建议以约 1M–2M 总像素、Euler 采样和至少 50 步作为�
 - **开源范围需分清：** GitHub 推理代码和 Base/SFT 权重已公开；技术报告所述训练数据、完整训练 recipe 与评测框架不应自动视为都已发布。
 - **许可证：** 项目页与模型卡将模型权重标注为 Apache-2.0；仓库代码及第三方组件的细节以各自许可证文件为准。
 
+## 源码运行时序图
+
+入口：`python gradio_app.py --model OpenMOSS-Team/MOSS-Image-Base`（`scripts/gradio.sh` 即对它的封装）；纯 Python 用法见 README 的 `DiffusionPipeline.from_pretrained(..., custom_pipeline="pipeline_moss_image", trust_remote_code=True)`。DiT、文本编码器、VAE 的网络实现位于模型权重包内的 `pipeline_moss_image.py`，不在本仓库中，下图只画仓库内可见的调用。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / Gradio UI
+    participant G as gradio_app.py (main, build_app)
+    participant R as ModelRunner.generate
+    participant IR as inference_runtime.py
+    participant P as 模型包 pipeline_moss_image (DiffusionPipeline)
+    participant MO as memory_offload.py
+    G->>G: main() 解析参数，build_app，app.launch()
+    U->>G: 提交提示词与 GenerationConfig
+    G->>R: runner.generate(model, config, progress)
+    R->>R: config.validate()，检查本地模型包是否完整
+    alt 模型或 offload 模式变化
+        R->>IR: load_pipeline(model)
+        IR->>P: DiffusionPipeline.from_pretrained(custom_pipeline="pipeline_moss_image", trust_remote_code=True)
+        R->>IR: configure_pipeline(pipe, offload)
+        opt offload 为 hybrid
+            IR->>MO: enable_hybrid_offload(pipe, cuda device)
+        end
+    end
+    R->>IR: set_scheduler(pipe, config.shift)
+    R->>IR: generate_with_progress(pipe, report_stage, report_step, **pipeline_kwargs)
+    IR->>P: pipe(...)，阶段 encode 到 denoise 到 decode，每步回调 report_step
+    P-->>R: images
+    R->>R: 保存 PNG 与参数 JSON 到 output_dir/uuid
+    R-->>U: 图片路径与提示信息
+```
+
+图依据：OpenMOSS/MOSS-Image@1961ca3，读过 `README.md`、`scripts/gradio.sh`、`gradio_app.py`（`ModelRunner` 与 `main` 附近）、`inference_runtime.py`（函数签名与 `configure_pipeline`）；`generate_with_progress` 内部、`memory_offload.py`、`mps_runtime.py` 与 ComfyUI 插件未读，`pipe(...)` 内部阶段名取自 `report_stage` 的回调描述。
+
 ## 关联页面
 
 - [MOSS API 开放平台](moss-api-platform.md) — 多模态模型的云端接入入口。
@@ -107,6 +141,7 @@ Base 指南建议以约 1M–2M 总像素、Euler 采样和至少 50 步作为�
 - [官方项目页](https://openmoss.ai/MOSS-Image/)
 - [官方用户指南](https://github.com/OpenMOSS/MOSS-Image/blob/main/USERGUIDE.md)
 - [MOSI API 模型目录](https://platform.mosi.cn/docs/models/)
+- 源码核对（2026-11-02）：OpenMOSS/MOSS-Image@1961ca3，读过 README.md、scripts/gradio.sh、gradio_app.py、inference_runtime.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
