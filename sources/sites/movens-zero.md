@@ -1,13 +1,15 @@
 # Movens-Zero 项目页
 
-> 来源归档（草稿）
+> 来源归档（site）
 
-- **项目页：** https://movens-zero.github.io/
-- **论文：** [arXiv:2610.41877v1](../papers/movens-zero-2610-41877.md)
-- **代码：** [官方仓库](../repos/movens-zero.md)
-- **模型：** https://huggingface.co/wendell0218/Movens-Zero-S
-- **数据：** https://huggingface.co/datasets/wendell0218/Movens-5M
-- **评测集：** https://huggingface.co/datasets/wendell0218/Movens-Intent
+- **标题：** Movens-Zero: Scaling Humanoid Motion Foundation Models with Large-Scale Human Videos
+- **类型：** site
+- **链接：** https://movens-zero.github.io/
+- **arXiv：** <https://arxiv.org/abs/2610.41877>
 - **入库日期：** 2026-11-03
+- **一句话说明：** Movens-Zero 将大规模视频处理、物理感知动作重定向与执行检验连接起来，研究多模态条件下的人形动作生成；需分别看语义一致性和实际执行质量。
+- **沉淀到 wiki：** [`wiki/entities/paper-movens-zero.md`](../../wiki/entities/paper-movens-zero.md)
 
-项目页列出四种模型规模与代码、数据和评测集链接；数据集页面显示可浏览样本。当前尚未验证完整数据是否可下载，模型 S 页面本次访问失败，不能据此断言完整权重可用。
+## 开源状态
+
+- **已开源**（步骤 2.5 核查，2026-11-03）：公众号未给代码链接；项目页链接的 wendell0218/Movens-Zero 经 git ls-remote 可达。
