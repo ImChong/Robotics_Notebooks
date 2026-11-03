@@ -177,7 +177,7 @@
           seg(cB, [0, 1], [-4, 1], f(st, T.t2, 0.8)); E.op(cB.g, (f(st, T.t2, 0.1) > 0 ? 1 : 0) * on5);
           E.op(cAL, fr(st, T.t1r) * on5); E.op(cBL, fr(st, T.t2r) * on5); E.op(pZero, fr(st, T.t3r) * (1 - f(st, T.s3r + 0.3, 0.3)));
           E.op(d41, f(st, T.s1r, 0.3) * (1 - f(st, T.turn[1] - 0.2, 0.3))); d41.setAttribute('r', (7 + 4 * b(st, T.s3r + 0.3, 0.9)).toFixed(2));
-          E.op(l41, f(st, T.ans, 0.3));
+          E.op(l41, f(st, T.turn[1], 0.3));   // 胳膊转完再出：转的时候手从标签上扫过（线压字检查）
           E.op(ghost.ax.g, f(st, T.gx, 0.3) * 0.9 * (1 - f(st, T.chk, 0.4))); E.op(ghost.ay.g, f(st, T.gy, 0.3) * 0.9 * (1 - f(st, T.chk, 0.4)));
           E.op(ghost.dot, f(st, T.stop, 0.3) * (1 - f(st, T.turn[1] - 0.2, 0.3)));
 

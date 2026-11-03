@@ -627,7 +627,7 @@
                 可以不按从左到右的顺序：没出现的字先空着，等宽字体下别的字不挪位置），page：第几页（新一页开始时上一页淡出，从第一排重新排），
                 row：排在第几排（默认接着上一句），alpha：整句的透明度系数 }
      超出窗口能放的排数时整体往上滚一排，滚出去的句子淡掉；光标跟着正在打的那一句，打完在句尾闪，下一句开始或出了输出就收掉。
-     api.draw(st, t) 之后可以调 api.hl(i, color, p) 给第 i 句垫一条底色、api.box(id, color, p) 给一段框一圈、
+     api.draw(st, t) 之后可以调 api.hl(i, color, p) 给第 i 句垫一条底色、api.box(id, color, p) 给一段垫底色加下划线（011 起不画描边框）、
      api.boxCol(i, col, len, color, p) 按列号框住第 i 句的一段（跨好几段颜色时用）；
      api.x(col) 是第 col 个字符左缘的 x，api.y(i) 是第 i 句此刻的基线 y（要先 draw），api.cw 是一个字符宽 */
   E.MONO = "'JetBrains Mono', monospace";
@@ -655,7 +655,7 @@
     [0, 1, 2].forEach(function (k) { K.paint(el('circle', { cx: x + 20 + 16 * k, cy: y + BAR / 2, r: 5 }, g), '#4a4a52'); });
     var title = txt(g, x + w / 2, y + BAR / 2 + 6.5, o.title || '', 18, E.INK2, 'middle', 700);
     var hlG = el('g', {}, g), body = el('g', {}, g);
-    var cursor = K.paint(el('rect', { width: cw, height: Math.round(size * 1.12), rx: 2 }, g), E.INK);
+    var cursor = K.paint(el('rect', { width: cw, height: Math.round(size * 1.12), rx: 2, 'data-cursor': '' }, g), E.INK);   // data-cursor：check_layout 查线压字时不算光标
     var top = y + BAR + 10, cap = Math.floor((h - BAR - 16) / lh);
     var lines = [], segs = {}, boxes = {};
     var api = {
@@ -750,16 +750,18 @@
         var sgm = segs[id];
         return api.boxCol(sgm.line, sgm.col, sgm.len, color, p, 'seg:' + id);
       },
+      // 011 改成「底色 + 下划线」（原先是一圈描边框：左右各多出 3px，单个字母 M 的框压到旁边的「(」「,」；用户反馈后查线压字时发现）
       boxCol: function (i, col, len, color, p, key) {
         var L = lines[i], k = key || i + ':' + col + ':' + len;
-        var bx = boxes[k] = boxes[k] || el('rect', { rx: 6, fill: 'none', 'stroke-width': 2.5 }, hlG);
-        bx.style.stroke = color;
-        bx.setAttribute('x', (x + pad + cw * col - 3).toFixed(1));
-        bx.setAttribute('y', (L.y - size * 0.95).toFixed(1));
-        bx.setAttribute('width', (cw * len + 6).toFixed(1));
-        bx.setAttribute('height', (size * 1.3).toFixed(1));
-        bx.style.opacity = clamp(p, 0, 1) * +L.el.style.opacity;
-        return bx;
+        var bb = boxes[k] = boxes[k] || { bg: el('rect', { rx: 4 }, hlG), ul: el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, hlG) };
+        var x0 = x + pad + cw * col, x1 = x0 + cw * len, a = clamp(p, 0, 1) * +L.el.style.opacity;
+        bb.bg.style.fill = tint(color, 32, '#121216');
+        bb.bg.setAttribute('x', (x0 - 1).toFixed(1)); bb.bg.setAttribute('width', (x1 - x0 + 2).toFixed(1));
+        bb.bg.setAttribute('y', (L.y - size * 0.9).toFixed(1)); bb.bg.setAttribute('height', (size * 1.15).toFixed(1));
+        bb.ul.style.stroke = color;
+        bb.ul.setAttribute('d', 'M ' + (x0 + 1).toFixed(1) + ' ' + (L.y + size * 0.36).toFixed(1) + ' H ' + (x1 - 1).toFixed(1));   // 在降部（p、y）下面
+        bb.bg.style.opacity = a; bb.ul.style.opacity = a;
+        return bb.bg;
       }
     };
     return api;

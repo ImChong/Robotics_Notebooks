@@ -20,7 +20,8 @@
   };
   var END = 63.78;
   // 标签摆法：[哪一端, dx, dy, 对齐]；每根轴从关节往两边画多长（米）
-  var LAB = [[1, 0, -12, 'middle'], [0, -18, 6, 'end'], [0, -18, 6, 'end'], [1, 6, -12, 'start'], [0, 14, 10, 'start'], [1, 14, 6, 'start']];
+  // S₄、S₅ 换到另一头：原先挤在手腕那一团，压在别的轴线上（线压字检查）
+  var LAB = [[1, 0, -12, 'middle'], [0, -18, 6, 'end'], [0, -18, 6, 'end'], [0, -12, 16, 'end'], [0, -10, 4, 'end'], [1, 14, 6, 'start']];
   var LEN = [[-0.05, 0.32], [-0.2, 0.2], [-0.18, 0.18], [-0.16, 0.16], [-0.15, 0.15], [-0.14, 0.14]];
 
   E.scenes[4] = {
@@ -113,9 +114,9 @@
           mLab.setAttribute('x', (ho[0] - 18).toFixed(1)); mLab.setAttribute('y', (ho[1] + 22).toFixed(1)); mLab.style.textAnchor = 'end'; E.op(mLab, f(st, T.M, 0.3) * (1 - f(st, T.j5[0], 0.3)));
           qm.setAttribute('x', (ho[0] + 40).toFixed(1)); qm.setAttribute('y', (ho[1] + 22).toFixed(1)); E.op(qm, f(st, T.pc, 0.3));
           var p5 = V.at('wrist_2_link'), p2 = V.at('upper_arm_link');
-          j5Arc.setAttribute('x', (p5[0] - 24).toFixed(1)); j5Arc.setAttribute('y', (p5[1] - 34).toFixed(1));
+          j5Arc.setAttribute('x', (p5[0] - 10).toFixed(1)); j5Arc.setAttribute('y', (p5[1] - 78).toFixed(1));   // 写在 S₅ 标签上面一行（S₅ 标签在这根轴的上端）
           j2Arc.setAttribute('x', (p2[0] - 30).toFixed(1)); j2Arc.setAttribute('y', (p2[1] - 34).toFixed(1));
-          E.op(j5Arc, f(st, T.j5[0], 0.3) * (1 - f(st, T.d3, 0.4))); E.op(j2Arc, f(st, T.j2[0], 0.3) * (1 - f(st, T.d3, 0.4)));
+          E.op(j5Arc, f(st, T.j5[0], 0.3) * (1 - f(st, T.j2[0], 0.3)));   // 第 2 个关节开始转就退场：手腕跟着升上去，标签会出画 E.op(j2Arc, f(st, T.j2[0], 0.3) * (1 - f(st, T.d3, 0.4)));
 
           /* ── 右栏 ── */
           E.op(gA, 1 - f(st, T.outA, 0.4));

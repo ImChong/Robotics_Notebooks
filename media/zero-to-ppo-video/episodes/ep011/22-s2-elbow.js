@@ -62,7 +62,7 @@
       var cAL = E.halo(E.txt(top, P(0, 1.5)[0] + 10, P(0, 1.5)[1] + 4, '3 份', 18, E.X, 'start', 900));
       var cBL = E.halo(E.txt(top, P(-1, 3)[0], P(-1, 3)[1] - 10, '2 份', 18, E.Y, 'middle', 900));
       var p14 = P(1, 4), d14 = K.paint(E.el('circle', { cx: p14[0], cy: p14[1], r: 7, 'stroke-width': 3 }, top), E.VEL, E.S1);
-      var l14 = E.halo(E.txt(top, p14[0] + 16, p14[1] + 26, '(1, 4)', 22, E.GOOD, 'start', 900));
+      var l14 = E.halo(E.txt(top, p14[0] + 18, p14[1] - 14, '(1, 4)', 22, E.GOOD, 'start', 900));   // 右上：小臂绕肘转上来时，手扫过的是点的右下（线压字检查）
       // 结果：虚线的手坐标系；真正的手坐标系
       var ghost = E.hand2(top, P, 0.9, { dash: '5 4', w: 3.5, fill: 'none' });
       ghost.set(1, 4, Math.PI / 2);
@@ -164,7 +164,9 @@
           seg(cB, [0, 3], [-2, 3], f(st, T.t2, 0.6)); E.op(cB.g, (f(st, T.t2, 0.1) > 0 ? 1 : 0) * on6);
           seg(cC, [-2, 3], [1, 4], f(st, T.t3, 0.7)); E.op(cC.g, (f(st, T.t3, 0.1) > 0 ? 1 : 0) * on6);
           E.op(cAL, fr(st, T.t1r) * on6); E.op(cBL, fr(st, T.t2r) * on6);
-          E.op(d14, f(st, T.at14, 0.3) * (1 - f(st, T.turn[1] - 0.2, 0.3))); E.op(l14, f(st, T.at14, 0.3));
+          E.op(d14, f(st, T.at14, 0.3) * (1 - f(st, T.turn[1] - 0.2, 0.3)));
+          // 小臂转上来的 2 秒先隐去：手的 y 轴箭头从标签上扫过（线压字检查），转完再出
+          E.op(l14, Math.min(1, f(st, T.at14, 0.3) * (1 - f(st, T.turn[0] - 0.3, 0.3)) + f(st, T.turn[1], 0.3)));
           d14.setAttribute('r', (7 + 4 * b(st, T.at14, 0.9)).toFixed(2));
           E.op(ghost.ax.g, f(st, T.gx, 0.3) * 0.9); E.op(ghost.ay.g, f(st, T.gy, 0.3) * 0.9); E.op(ghost.dot, f(st, T.stop, 0.3) * (1 - f(st, T.turn[1] - 0.2, 0.3)));
 

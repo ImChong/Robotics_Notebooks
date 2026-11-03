@@ -60,11 +60,11 @@
         set(ang);
         return { g: g, set: set, lab: t, c: c, a0: ang };
       }
-      var F0 = frame(0, 0, 0, 0.9, E.INK2, E.INK2, '{0}', -22, 28);
+      var F0 = frame(0, 0, 0, 0.9, E.INK2, E.INK2, '{0}', 34, 30);   // 右下：左下是 T₀₁ 的弯箭头（线压字检查）
       var F1 = frame(0, 0, Math.atan2(2, 1), 0.75, E.X, E.Y, '{1}', -36, -10);
       var F2 = frame(1, 2, 0, 0.75, E.X, E.Y, '{2}', -14, -40);
       var Fb = frame(3, 2, 0, 0.75, E.X, E.Y, '{b}', 30, -30);
-      var x1 = E.cross(top, F1.c[0] - 30, F1.c[1] - 40, 8, E.ERR, 4), x2 = E.cross(top, F2.c[0] - 30, F2.c[1] - 34, 8, E.ERR, 4);
+      var x1 = E.cross(top, F1.c[0] + 12, F1.c[1] - 16, 8, E.ERR, 4), x2 = E.cross(top, F2.c[0] + 14, F2.c[1] - 14, 8, E.ERR, 4);   // 叉在坐标系两根箭头中间，不压标签
       var mLab = E.halo(E.txt(top, Fb.c[0] + 34, Fb.c[1] + 26, 'M', 22, E.GOOD, 'start', 900)); mLab.style.fontFamily = 'KaTeX_Math, serif'; mLab.style.fontStyle = 'italic';
       // 一节一节：三段弯箭头
       function hop(a, b, bend) {
@@ -76,14 +76,14 @@
         E.halo(E.txt(top, P(-0.4, 1.7)[0], P(-0.4, 1.7)[1], 'T₁₂', 18, E.HI, 'end', 900)),
         E.halo(E.txt(top, P(2.05, 3.2)[0], P(2.05, 3.2)[1], 'T₂b', 18, E.HI, 'middle', 900))];
       // 螺旋轴 ⊙
-      function joint(x, y, lab, dx, dy) {
+      function joint(x, y, lab, dx, dy, anchor) {
         var g = E.el('g', {}, top), c = P(x, y);
         K.paint(E.el('circle', { cx: c[0], cy: c[1], r: 12, 'stroke-width': 3.5 }, g), E.S1, E.WARN);
         K.paint(E.el('circle', { cx: c[0], cy: c[1], r: 4 }, g), E.WARN);
-        E.halo(E.txt(g, c[0] + dx, c[1] + dy, lab, 20, E.WARN, 'start', 900));
+        E.halo(E.txt(g, c[0] + dx, c[1] + dy, lab, 20, E.WARN, anchor || 'start', 900));
         return g;
       }
-      var jS = joint(0, 0, 'S₁', 16, 30), jE = joint(1, 2, 'S₂', 16, 30);
+      var jS = joint(0, 0, 'S₁', -16, 30, 'end'), jE = joint(1, 2, 'S₂', 16, 30);   // S₁ 写在左下：右下是 {0}
 
       /* ── 左 ②：斜着看的 UR5 ── */
       var g3 = E.el('g', {}, s);
