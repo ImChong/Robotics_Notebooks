@@ -2,7 +2,7 @@
 type: entity
 tags: [simulation, physics-engine, benchmarking, manipulation, reproducibility]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-03
 summary: "Manda Robotics（2026-10-05）在匹配场景与共同 Panda 控制器下比较 PhysX、Newton/MuJoCo-Warp、MuJoCo CPU 与 Genesis：粗任务结局可一致，接触力、轨迹、软体与批量吞吐差异明显；无真机 ground truth，不是物理精度排行榜。"
 related:
   - ../queries/simulator-selection-guide.md
@@ -14,6 +14,7 @@ related:
   - ./genesis-sim.md
 sources:
   - ../../sources/blogs/mandarobotics_comparing_physics_engines_2026-10-05.md
+  - ../../sources/blogs/mandarobotics_policy_transfer_2026-10-28.md
 ---
 
 # Manda Robotics：机器人仿真物理引擎比较（2026-10-05）
@@ -67,6 +68,31 @@ flowchart LR
 - **紧间隙插入对接触族敏感。** 文中 0.10 mm 径向间隙的特定倾斜场景里，软接触配置通过接触反馈能达到目标深度，而硬接触 PhysX 在该设置下仍触发过载停止；不应外推为所有 PhysX 配置都不能插入。
 - **软体差异最大且尚未收敛。** 同名材料/抓取目标在不同求解器组合下得到不同的保持、下放或有效性结果；网格加密与步长缩小没有一致地消除差异。
 
+## 跨引擎策略训练与迁移（2026-10-28）
+
+系列第二篇从固定控制器转向**学习策略**：PPO 插入策略在 MuJoCo 训练、四种实现评估；ANYmal 行走与 Franka 抓取分别在 PhysX、Newton 训练并交叉测试；RoboLab 的 π0.5 在两个后端对比。插入实验中的 Newton 使用 MuJoCo-Warp，并非独立于 MuJoCo 的接触模型族。
+
+```mermaid
+flowchart TD
+  A["匹配资产、策略接口与初始条件"] --> B["源引擎训练策略"]
+  B --> C["冻结策略和观测归一化"]
+  C --> D["源引擎与目标引擎评估"]
+  D --> E["比较成功率、力矩、接触与轨迹"]
+  E --> F["检查关节顺序、摩擦、求解器和时间步"]
+```
+
+- **插入**：五个种子在 MuJoCo 各成功 49–50/50 次，在 PhysX GPU 分别为 49、47、32、47、11/50；定义的过载停止计作失败。增加力惩罚使五种子 PhysX 均值从 74.4% 升至 84.0%，收益主要来自最弱种子。
+- **求解器**：最脆弱种子在 25 个留出初始条件上，PhysX TGS 100/1 成功 5 次、PGS 21 次、TGS 4/0 19 次；较多迭代并不保证该策略迁移更稳健。
+- **四足**：在 1 m/s 行走实验中，PhysX 训练的 ANYmal 在两种评测引擎中平均使用约高 35% 的关节力矩。默认配置 PhysX→Newton 跌倒 11/320，Newton→PhysX 2/320。按名称映射关节顺序并读回实际摩擦及接触配置后才能解释比较；实验主要为探索性。
+- **抓取抬升**：标准条件下 Newton→Newton 88%、Newton→PhysX 68%；PhysX→PhysX 82%、PhysX→Newton 53%（各 512 episode）。每后端只有一个训练种子，初始状态并非逐 episode 配对，不能将全部差距归因于后端动力学。
+- **通用策略**：π0.5 在部分 RoboLab 场景成功率相近时，失败抓取行为仍有差异。需同时检查接触事件、场景初始静止状态和轨迹。
+
+两篇文章没有通过真机 ground truth 建立引擎精度排名；跨引擎成功也不保证真机成功。
+
+### 源码运行时序图
+
+**待补充。** 第二篇公开了部分评测、导出脚本和数据，但本次读取环境无法获取 Python 脚本内容，尚未核实具体运行入口及模块调用关系；原始 checkpoint、冻结场景和完整原生轨迹未包含在下载导出中。不可将本文图示当成源码运行时序图。
+
 ## 性能与吞吐量
 
 在文中无渲染、1 ms 步长的 Franka 测试里，单环境 MuJoCo CPU 约 0.17M steps/s；单环境 MuJoCo-Warp / Genesis GPU 路径约 0.006M / 0.002M steps/s。8,192 个并行 world 时，MuJoCo-Warp 与 Genesis 分别约 21.6M / 11.8M steps/s；131,072 world 时约 35.2M / 26.4M。文章没有批量测试 PhysX；MuJoCo CPU 也只测单 world。因此这些数字只适合说明**本文具体路径下单环境与大批量 GPU 的交叉点**，不是通用硬件排行榜。
@@ -89,6 +115,8 @@ flowchart LR
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页对应其 ④ sim↔real 评测 gap 校准层：同一 success 标签下跨引擎接触力/轨迹差异，提醒仿真评测分数须限定在具体引擎配置内
 
 ## 参考来源
+
+- [Do robot policies transfer between physics engines?](https://mandarobotics.com/blog/policy-transfer/index.html) · [来源归档](../../sources/blogs/mandarobotics_policy_transfer_2026-10-28.md)
 
 - [Manda Robotics 原文](https://mandarobotics.com/blog/comparing-physics-engines/index.html)
 - [配套背景文章：Comparing physics engines primer](https://mandarobotics.com/blog/comparing-physics-engines/primer.html)
