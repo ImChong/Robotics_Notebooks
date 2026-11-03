@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-03] ingest | sources/papers/gpt_6_astra_embodied_intelligence_arxiv_2610_22471.md — 更新报告与源码开放状态，补充评测协议及真机结果草稿
+
 ## [2026-11-02] ingest | sources/papers/care_arxiv_2602_03473.md — 收录 CaRE 双层路由持续学习及官方代码数据
 
 ## [2026-11-02] ingest | sources/sites/moss-api-platform.md — 收录模思开放平台接口与开源边界
