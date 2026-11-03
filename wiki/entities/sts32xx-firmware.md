@@ -2,7 +2,7 @@
 type: entity
 project_id: sts32xx-firmware
 code: https://github.com/roboninecom/STS32XX-Firmware
-tags: [robot-control, manipulation, firmware, servo]
+tags: [robot-control, manipulation, firmware, servo, robonine]
 status: draft
 updated: 2026-11-03
 summary: "STS32XX Firmware 为 GD32F130 舵机提供局部轨迹规划、位置控制和上位机重力补偿。"
@@ -21,6 +21,13 @@ STS32XX Firmware 是面向 GD32F130 的 STS3215 伺服固件，可用于 SO-ARM 
 | PID | Proportional Integral Derivative | 位置误差反馈控制器 |
 | TTL | Transistor-Transistor Logic | 舵机总线的逻辑电平接口 |
 | PWM | Pulse Width Modulation | 电机驱动输出的调制方式 |
+
+## 核心信息
+
+| 项目 | 内容 |
+|------|------|
+| 机构 | Robonine |
+| 仓库 | [STS32XX-Firmware](https://github.com/roboninecom/STS32XX-Firmware) |
 
 ## 为什么重要
 
