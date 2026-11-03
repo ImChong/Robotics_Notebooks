@@ -188,6 +188,10 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 - [Data Flywheel](./data-flywheel.md) — 数据生命周期与回流；对应本页「Managing data」
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 把判断编译进持久 wiki，而不是每次让 agent 从零 vibe
 
+## 软件分析与重建
+
+[Craft Anything](../entities/craft-anything.md) 将目标检查、coding agent 构建与结果比较串联；输出仍需按任务验证功能与边界。
+
 ## Humanize 工作流入口
 
 [Humanize](../../sources/repos/humanfia-humanize.md) 提供 CLI、终端与 Web 工作流来编排 coding agent；其 README 明确提示运行时绕过审批，应先在临时仓库验证。将其用于机器人代码时，仍需由项目自己的测试与评审定义交付条件。
