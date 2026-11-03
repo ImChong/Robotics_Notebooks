@@ -2307,6 +2307,7 @@
 - [FADA（Few-Shot Domain Adaptation via Dynamics Alignment）](wiki/entities/paper-fada-humanoid.md) — FADA** 是 CMU LeCAR-Lab 提出的 **人形控制少样本域适应** 框架（arXiv:2606.28476，[项目页](https://lecar-lab.github.io/FA `📅unknown` `[entity_page]`
 - [Fail-Passive Gap：工业人形功能安全的认证缺口](wiki/entities/paper-fail-passive-gap.md) — Toward Certified Functional Safety for Industrial Humanoid Robots**（Caiwu Ding、Tao Cui、Lingyun Wan `📅unknown` `[entity_page]`
 - [FailBench：VLM 当裁判有多可靠](wiki/entities/paper-failbench.md) — FailBench**（*How Reliable are VLMs at Judging Robot Task Success?*，[arXiv:2609.03611](https://arxi `📅unknown` `[entity_page]`
+- [FAITH：面向高维系统的可行性感知安全过滤强化学习](wiki/entities/paper-faith-safety-filtered-rl.md) — FAITH** 以学习的安全 Q 函数指导动作过滤器，在过滤后的动力学中训练任务策略，面向人形机器人全身避开受保护区域。 `📅unknown` `[entity_page]`
 - [FARM（arXiv:2609.11445）](wiki/entities/paper-farm-failure-readout.md) — FARM**（*Reading Failure Signals from the Internal Predictive States of a Frozen Robotic World Mode `📅unknown` `[entity_page]`
 - [FARO（可行性感知机器人运动优化）](wiki/entities/paper-faro-feasibility-aware-robot-motion-optimization.md) — FARO**（*Feasibility-Aware Robot Motion Optimization*，[arXiv:2607.18362](https://arxiv.org/abs/2607 `📅unknown` `[entity_page]`
 - [Fast ECoT：思维复用的高效具身链式推理](wiki/entities/paper-fast-ecot.md) — Fast ECoT**（*Efficient Embodied Chain-of-Thought via Thoughts Reuse*，[arXiv:2506.07639](https://ar `📅unknown` `[entity_page]`

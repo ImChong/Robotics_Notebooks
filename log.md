@@ -251,6 +251,11 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-03] ingest | FAITH 可行性感知安全过滤 RL
+
+- 通读 arXiv v1，归档论文与方法，区分仿真量化结果和真机定性演示。
+- 未发现可运行官方代码；记录理论假设及安全保证边界。
+
 ## [2026-11-03] ingest | sources/papers/diffdreamer_arxiv_2610_31617.md — 收录世界模型与可微仿真耦合四旋翼控制，官方实现待核实
 
 ## [2026-11-03] ingest | sources/papers/policy_coverage_reliability_arxiv_2611_01565.md — 收录策略覆盖度与可靠性；代码链接未开放，附录待通读
