@@ -192,3 +192,5 @@ ScanNet++ 上，相比 PanSt3R，论文报告 SAM-V 提高 **5.7 个 T-mIoU 点*
 - [SAM-V 代码仓库](https://github.com/gong208/SAM-V) — 训练、数据准备、Web demo 与复现脚本
 - [VGGT 官方仓库](https://github.com/facebookresearch/vggt) — 多视角几何 backbone
 - [Segment Anything（arXiv:2304.02643）](https://arxiv.org/abs/2304.02643) — 提示式图像分割先验
+
+- 相关工作：[S4VY 4D 实例分割](./paper-s4vy.md)，面向动态与稀疏观测。
