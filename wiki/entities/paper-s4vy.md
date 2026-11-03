@@ -9,6 +9,7 @@ code: https://github.com/Evergreen0929/S4VY
 related:
   - ./paper-sam-v.md
   - ./paper-sam2.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/s4vy_arxiv_2609_36875.md
   - ../../sources/repos/s4vy.md
@@ -96,6 +97,18 @@ sequenceDiagram
 
 视频数据只提供逐帧 2D 标注；论文用同一模型预测的深度和相机把预测及真值掩码提升为点集后计算 4D 指标，结果不能单独证明几何重建精度。干净的多观测框提示下，表 6 中 SAM 2 通常更强。
 
+## 与其他工作对比
+
+| 维度 | 本页 S4VY | [SAM-V](./paper-sam-v.md) | [SAM 2](./paper-sam2.md) |
+|------|-----------|-----------|-----------|
+| 跨观测一致性来源 | VGGT-Ω 共享几何 + 400 个持续对象查询 | SAM 特征融合 VGGT 多视角几何特征 | 流式 memory 逐帧传播 |
+| 提示方式 | 无提示、点框、语言（ATS + Grounder + Critic） | 点提示单目标；every-object 由逐帧 SAM proposals 生成点提示 | 点 / 框 / mask 提示 |
+| 输入假设 | 稀疏、乱序 RGB 观测 | 多视角图像 | 图像或有序视频 |
+| 开放状态 | 训练和推理代码及权重已发布；评测 harness 与训练数据未提供 | 代码已发布；checkpoint 与 VGGT 依赖有非商业 / 研究许可边界 | 推理与训练代码已开源 |
+
+- **怎么选：** 需要无提示列出全部实例或语言定位时看 S4VY；已有单点提示、关心大视角变化下的单目标一致性时看 SAM-V；上游有可靠逐帧框提示时 SAM 2 仍可能更强（见上文表 6）。
+- **读法：** S4VY 的 4D-IoU 借用自身预测的深度和相机提升掩码，与 SAM-V 的 O-IoU / R@50 口径不同，不能直接横比。
+
 ## 结论
 
 S4VY 将动态场景的实例关联、提示选择和语言定位放在共享视觉几何表示上，适合研究跨视角感知。
@@ -109,6 +122,7 @@ S4VY 将动态场景的实例关联、提示选择和语言定位放在共享视
 
 - [SAM-V 多视角实例分割](./paper-sam-v.md)
 - [SAM 2 视频分割](./paper-sam2.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页可归入其 ② 2D 检测/分割选型层（跨观测身份一致的无类别实例掩码，向 ③ 层提升衔接）：典型误判是把 4D-IoU 高当成几何重建准确，或把无类别掩码当成已带语义类别。
 
 ## 参考来源
 

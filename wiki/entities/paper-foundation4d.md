@@ -13,6 +13,7 @@ project: https://research.nvidia.com/labs/sil/projects/foundation4d/
 related:
   - ../entities/paper-instant-nurec.md
   - ../entities/nvidia-nurec.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/foundation4d_arxiv_2610_30340.md
   - ../../sources/sites/foundation4d.md
@@ -79,6 +80,18 @@ flowchart TD
 
 以上公开基准模型经针对基准的适配，详细配置见论文表 2、7、12；不是同一未微调 checkpoint 在所有任务上的直接结果。项目页称占据展示使用单独微调模型。
 
+## 与其他工作对比
+
+| 维度 | 本页 Foundation4D | [Instant NuRec](paper-instant-nurec.md) | [UniAD](paper-uniad.md) |
+|------|-------------------|-----------|-------|
+| 输入 | 多相机驾驶视频窗口（视觉推理不依赖 LiDAR） | 标定多相机短日志 + 位姿 + 内参 | 多视角相机 |
+| 主要输出 | 几何与位姿、3D 目标、语义占据、Gaussian 场景；视频级轨迹与跟踪 | 分层 3DGS（静 / 动 / 天空 + ISP），供 NuRec / AlpaSim 仿真 | BEV 上 Track / Map / Motion / Occ 与规划轨迹 |
+| 优化目标 | 感知与重建多任务共享表示 | 前向重建与渲染质量、策略排序一致性 | 以规划为中心的端到端联合优化 |
+| 开放状态 | 论文与数据入口；未列模型代码或权重 | 部分开源（静态 PLY + 天空可跑） | 已开源 |
+
+- **怎么选：** 需要感知结果（检测 / 占据 / 轨迹）并顺带为重建提供先验时看 Foundation4D；目标是快速生成可仿真场景时看 Instant NuRec；需要感知直接服务规划时看 UniAD。
+- **读法：** Foundation4D 的基准数值含离线未来帧与逐基准适配，不宜与在线管线的数值直接横比。
+
 ## 局限与开放状态
 
 - 截至 2026-11-03，项目页提供论文与数据入口，未列出模型代码或权重。数据文件访问需接受 NVIDIA 许可，使用范围受协议限制。
@@ -102,6 +115,7 @@ Foundation4D 展示了多任务驾驶场景感知与重建共享表示的可行�
 
 - [Instant NuRec](paper-instant-nurec.md)
 - [NVIDIA NuRec](nvidia-nurec.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页可归入其 ③ 2D→3D 提升与语义建图层（多相机几何、3D 目标与语义占据）：典型误判是把离线 8 关键帧含未来上下文、逐窗口尺度对齐下的指标当成 ④ 层在线消费时也能拿到的精度与时延。
 
 ## 参考来源
 
