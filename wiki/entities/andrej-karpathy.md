@@ -124,7 +124,7 @@ sequenceDiagram
     end
     T->>O: 按训练进度调整 lr、muon momentum、weight decay
     T->>O: optimizer.step()，zero_grad
-    Note over T: loss 为 NaN 或大于 100 时打印 FAIL 并提前结束
+    Note over T: loss 为 NaN 或大于 100 时打印 FAIL（后续分支未细读）
   end
   T->>P: evaluate_bpb(model, tokenizer, DEVICE_BATCH_SIZE)
   T-->>G: 打印 --- 摘要（val_bpb、training_seconds、peak_vram_mb 等）

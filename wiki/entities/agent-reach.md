@@ -84,6 +84,44 @@ flowchart LR
 - **误区：等价于官方 API 封装。** 当前默认路径大量依赖 **Cookie 或第三方读服务**；稳定性随平台政策波动，需要持续维护（上游自述会跟进平台变化）。
 - **局限：** 本知识库 **不** 在此复述具体 shell 命令行；请以克隆时的 [官方 README](https://github.com/Panniantong/Agent-Reach/blob/main/README.md) 为准。
 
+## 源码运行时序图
+
+入口：`agent-reach <渠道> <动作> [参数]`（`pyproject.toml` 的 console script `agent-reach = agent_reach.cli:main`；`agent-reach help` 列出渠道与动作）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户或 Agent
+    participant C as agent_reach/cli.py main
+    participant RC as runtime/cli.py main
+    participant D as runtime/dispatch.py run_action
+    participant PW as runtime/public_web 公开网页路线
+    participant CH as channels 渠道类 例如 GitHubChannel
+    participant BK as 后端 例如 gh CLI 或 REST API
+
+    U->>C: agent-reach 渠道 动作 参数
+    C->>C: 去掉 -v 参数并配置日志
+    C->>RC: 调用 runtime.cli.main argv
+    RC->>RC: 处理 channels check read login doctor 等管理命令
+    RC->>RC: _channel 查找渠道 再 _cmd_action 解析动作参数
+    RC->>D: run_action channel action params timeout
+    D->>D: validate_action 与 cooldown 限流检查
+    alt 动作支持公开网页且渠道未添加
+        D->>PW: public_web.attempt
+        PW-->>D: 公开结果 或 None
+    end
+    loop 按 action.backends 顺序尝试后端
+        D->>CH: _call_with_deadline getattr 渠道 方法名
+        CH->>BK: 调用后端 例如 _gh_search 或 _api_get
+        BK-->>CH: 原始数据
+        CH-->>D: items 或抛出 ReachError
+    end
+    D-->>RC: 成功则返回 envelope 含 backend 与 attempts
+    RC-->>U: _emit 输出 JSON 信封
+```
+
+图依据：Panniantong/Agent-Reach@c62128a（默认分支 HEAD），实际读过 `pyproject.toml`（console script）、`agent_reach/cli.py`（main）、`agent_reach/runtime/cli.py`（main 与 `_cmd_action`）、`agent_reach/runtime/dispatch.py`（`run_action` 主干与后端循环，局部）、`agent_reach/channels/base.py`（局部）、`agent_reach/channels/github.py`（局部）。`public_web` 与 `_call_with_deadline` 细节未逐行读，图中仅示意调用关系。未运行代码。
+
 ## 关联页面
 
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **交付流程** 技能库（与本页「外网工具链」互补）
@@ -98,6 +136,7 @@ flowchart LR
 
 - [Agent Reach 仓库源归档（本站）](../../sources/repos/panniantong_agent_reach.md)
 - [Panniantong/Agent-Reach（GitHub）](https://github.com/Panniantong/Agent-Reach)
+- 源码核对（2026-11-02）：Panniantong/Agent-Reach@c62128a（默认分支 HEAD），读过 pyproject.toml、agent_reach/cli.py、agent_reach/runtime/cli.py、agent_reach/runtime/dispatch.py（局部）、agent_reach/channels/base.py（局部）、agent_reach/channels/github.py（局部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
