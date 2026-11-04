@@ -36,6 +36,7 @@ summary: "Multi-View LAPA：面向跨本体机器人视频学习的多视角潜�
 |------|----------|----------|
 | VLA | Vision-Language-Action | 视觉–语言–动作模型 |
 | IL | Imitation Learning | 模仿学习 |
+| LAM | Latent Action Model | 从视频推断潜动作的模型 |
 
 ## 为什么重要
 
@@ -68,7 +69,7 @@ flowchart TD
 | **作者（arXiv）** | Oliver Hausdörfer, Felix Minzenmay, Mani Majd, Maximilian P. Christof, Shiyuan Zhang, Angela P. Schoellig |
 | **机构（周报所述，未逐条核实）** | 待核实（作者：Oliver Hausdörfer、Felix Minzenmay、Angela P. Schoellig 等）。 |
 | **arXiv 评论栏** | Website: this https URL |
-| **开源** | arXiv 摘要页/评论给出项目页或外链（https://learnsyslab.github.io/multiview_latent_action_pretraining/）；未发现代码仓库链接（2026-10-26） |
+| **开源** | 项目页仓库仅提供页面与视频；截至 2026-11-05 未核实到官方训练或推理实现 |
 | **周报所述创新点** | 研究通过多视角视频学习潜在动作表示，使模型能够利用不同视角的运动信息进行预训练，并将学到的动作表示用于跨机器人本体学习。 |
 
 ### arXiv 摘要节选（英文原文）
@@ -97,15 +98,15 @@ flowchart TD
 | 维度 | 读法 |
 |------|------|
 | **同周对照** | 见 [Manipulation周报技术地图](../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md)，按方向浏览同期论文 |
-| **开源状态** | arXiv 摘要页/评论给出项目页或外链（https://learnsyslab.github.io/multiview_latent_action_pretraining/）；未发现代码仓库链接 |
+| **开源状态** | 项目页仓库仅提供页面和视频，未核实到官方训练或推理实现 |
 
 ## 结论
 
-**Multi-View LAPA：面向跨本体机器人视频学习的多视角潜在动作预训练。**
+**论文报告多视角视频有助于学习可迁移的动作信息；精细抓取仍需要机器人动作监督。**
 
-1. 本页是入库级摘要，复现前请核对论文正文、附录与代码仓库。
-2. 指标须连同实验条件解读。
-3. 关注 arXiv 版本更新与代码发布。
+1. 在论文实验中，第二视角改善出平面运动的可解码性。
+2. 真机人手视频与目标机器人示范的作用互补。
+3. 复现前仍需核对原始 PDF、附录及未来发布的代码。
 
 ## 关联页面
 
