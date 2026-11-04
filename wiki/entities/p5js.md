@@ -93,7 +93,7 @@ sequenceDiagram
     end
 ```
 
-图依据：processing/p5.js@3dd0886，读过 `package.json`（版本与构建脚本）、`src/app.js`（模块装配与导出）、`src/core/main.js`（构造函数、`#_start`、`#_setup`、`_draw`）、`src/core/structure.js`（`redraw` 实现）。渲染器与事件回调未读，图未画。
+图依据：processing/p5.js@3dd0886，读过 `package.json`（版本与构建脚本）、`src/app.js`（模块装配与导出）、`src/core/init.js`（`_globalInit`）、`src/core/main.js`（构造函数、`#_start`、`#_setup`、`_draw`）、`src/core/structure.js`（`redraw` 实现）。渲染器与事件回调未读，图未画。
 
 ## 关联页面
 
@@ -107,6 +107,7 @@ sequenceDiagram
 - [processing/p5.js 官方代码仓归档](../../sources/repos/p5js.md)
 - [p5.js About](https://p5js.org/about/)
 - [p5.js Reference](https://p5js.org/reference/)
+- 源码核对（2026-11-02）：processing/p5.js@3dd0886，读过 package.json、src/app.js、src/core/init.js、src/core/main.js、src/core/structure.js；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
