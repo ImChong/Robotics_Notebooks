@@ -6,16 +6,18 @@ project: https://uni-robot-agent.com
 code: https://github.com/Open-RUA/uni-robot-agent
 tags: [llm-agents, robot-manipulation, benchmark, open-source, tsinghua, uc-berkeley]
 status: draft
-updated: 2026-11-03
+updated: 2026-11-04
 summary: "Uni-Robot-Agent 通过共享工具、资源调度及环境适配器，将模型接入机器人操作闭环，并研究开放权重模型的机器人使用能力。"
 related:
   - ../entities/ora-open-robot-use-agents.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
 sources:
   - ../../sources/papers/uni_robot_agent_arxiv_2611_01560.md
   - ../../sources/repos/uni-robot-agent.md
   - ../../sources/sites/uni-robot-agent.md
+  - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
 ---
 
 # Democratizing Robot-Use Agents: A Unified Harness with Open Models｜开放模型的统一机器人智能体框架
