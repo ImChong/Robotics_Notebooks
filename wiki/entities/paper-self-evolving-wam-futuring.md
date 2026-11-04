@@ -30,7 +30,7 @@ summary: "Self-Evolving WAM：未来不远将视频与动作联合生成、Store
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | WAM | World Action Model | 联合建模未来状态与动作 |
-| AVLA | Action Vision Language Action | 报告使用的技能先验名称 |
+| AVLA | 报告未展开 | 报告使用的技能先验名称 |
 | VLM | Vision-Language Model | 编码视觉与任务语义 |
 | RSI | Recursive Self-Improvement | 通过训练反馈调整有限学习策略 |
 | MoE | Mixture of Experts | 按技能组织的专家混合结构 |
