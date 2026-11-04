@@ -61,11 +61,53 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`python examples/ros_node/dexhand_ros.py`（ROS 节点，读取 `config/config.yaml` 中的 `DexHand.ROS_Node` 配置）；硬件自检入口为 `python tools/hardware_test/test_dexhand.py --hands right`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant ROS as ROS 话题 /joint_commands
+    participant N as DexHandNode dexhand_ros.py
+    participant JM as JointMapping
+    participant H as LeftDexHand RightDexHand dexhand_interface.py
+    participant Z as ZCANWrapper zcan_wrapper.py
+    participant CAN as libusbcanfd USBCANFD 适配器
+
+    N->>H: hand_class(zcan) 构造左右手对象
+    N->>H: init() 打开 ZCAN 设备并配置通道
+    H->>Z: open 与 configure_channel
+    N->>N: create_subscription 订阅 /joint_commands
+    N->>N: create_service 注册 reset_hands
+    N->>N: create_timer 以 rate 周期调用 send_commands
+    ROS->>N: JointState 消息
+    N->>N: command_callback 解析 name 与 position
+    N->>JM: map_command(joint_values) 映射到硬件关节
+    JM-->>N: 硬件关节指令
+    N->>N: 低通滤波 alpha 更新 last_commands
+
+    loop 每个定时周期 send_commands
+        N->>H: move_joints(th_dip, th_mcp, ff_mcp, ...)
+        H->>H: _scale_angle 角度转电机位置并生成使能掩码
+        loop 每块板 board_idx
+            H->>H: _send_motion_command 编码 CANFD 报文
+            H->>Z: send_fd_message(channel, command_id, data)
+            Z->>CAN: 通过 libusbcanfd 发送 CANFD 帧
+        end
+    end
+    Note over H,Z: 反馈链路 get_feedback 到 receive_fd_messages 未在 ROS 节点中调用
+```
+
+图依据：DexRobot/dexrobot_ecosystem@3d0700c 的子模块 `pyzlg_dexhand@316575a`（gitee，`https://gitee.com/DexRobot/pyzlg_dexhand.git`），读过 `README.md`、`docs/quickstart.rst`（前 80 行）、`examples/ros_node/dexhand_ros.py`（导入、`__init__`、`command_callback`、`send_commands`、`main` 段）、`pyzlg_dexhand/dexhand_interface.py`（`init`、`move_joints`、`_refresh_board_states` 段及方法列表）、`pyzlg_dexhand/zcan_wrapper.py`（类与方法列表）；`ros_compat` 与其它子模块（dexrobot_urdf / kinematics / mujoco / isaac）未读。时序图依据以上文件，未运行代码。
+
 ## 参考来源
 
 - [dexrobot_ecosystem 源码归档](../../sources/repos/dexrobot_ecosystem.md)（<https://github.com/DexRobot/dexrobot_ecosystem>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：DexRobot/dexrobot_ecosystem@3d0700c 与子模块 pyzlg_dexhand@316575a，读过主仓库 `README.md`、`setup.py`、`.gitmodules`、`.github/workflows/build.yml`，子模块 `README.md`、`docs/quickstart.rst`（部分）、`examples/ros_node/dexhand_ros.py`、`pyzlg_dexhand/dexhand_interface.py`（部分）、`pyzlg_dexhand/zcan_wrapper.py`（grep）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

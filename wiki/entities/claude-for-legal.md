@@ -127,7 +127,7 @@ sequenceDiagram
 
 - [Claude for Legal 官方仓库归档](../../sources/repos/anthropics-claude-for-legal.md)
 - [Claude 法律行业官方产品页归档](../../sources/sites/claude-com-solutions-legal.md)
-- 源码核对（2026-11-02）：anthropics/claude-for-legal@4a6c651，读过 scripts/orchestrate.py、scripts/deploy-managed-agent.sh、scripts/validate.py（文件头）、scripts/test-cookbooks.sh（文件头）、README 与插件目录结构；时序图依据 orchestrate.py 与 deploy-managed-agent.sh，未运行代码。
+- 源码核对（2026-11-02）：anthropics/claude-for-legal@4a6c651，读过 scripts/orchestrate.py、scripts/deploy-managed-agent.sh、scripts/validate.py（文件头）、scripts/test-cookbooks.sh（文件头）、仓库文件清单；时序图依据 orchestrate.py 与 deploy-managed-agent.sh，未运行代码。
 
 ## 推荐继续阅读
 
