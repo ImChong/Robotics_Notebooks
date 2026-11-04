@@ -13,6 +13,7 @@ related:
   - ../concepts/retrieval-augmented-generation.md
   - ./multi-agent-cad.md
   - ./easy-vibe.md
+  - ./agent-autoloop.md
 sources:
   - ../../sources/repos/langgraph.md
   - ../../sources/sites/langchain-com-ecosystem.md
@@ -98,6 +99,8 @@ sequenceDiagram
 - **版本与 API：** Python / JS 双线维护，集成版本需与 LangChain 包对齐。
 
 ## 关联页面
+
+- [Agent Autoloop](./agent-autoloop.md) — 以事件与命令行进程为中心的调度工具。
 
 - [LangChain](./langchain.md)
 - [Deep Agents](./deep-agents.md)
