@@ -351,6 +351,53 @@ README 明确提示约 `2w`（20k）iterations 附近会出现多个指标突变
 - **安全壳**：统一策略减少了 locomotion/recovery 的模式切换，但真机仍应放在 `wbc_fsm` 的 `MJAmpState` 之类状态内，外层保留急停、限幅、姿态保护、接触异常处理和低电量/过热保护。
 - **上线顺序**：先用 `play.py` 回放目标 checkpoint，再做仿真扰动和 rough terrain 验证；上真机时先限速、限幅、吊挂或保护架测试，逐步开放速度 command 与 recovery 场景。
 
+## 源码运行时序图
+
+入口：`python scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=4096`（部署前评估用 `python scripts/play.py Unitree-G1-AMP-Rough --checkpoint-file ...`）
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 使用者
+  participant T as scripts/train.py
+  participant G as mjlab 任务注册表
+  participant E as ManagerBasedRlEnv (mjlab)
+  participant W as RslRlVecEnvWrapper
+  participant R as AMPOnPolicyRunner (src/tasks/amp_loco/rl/runner.py)
+  participant L as AMPLoader (rsl_rl/utils/motion_loader.py)
+  participant A as AMPPPO (rsl_rl/algorithms/amp_ppo.py)
+  participant D as Discriminator (rsl_rl/modules/discriminator.py)
+  U->>T: python scripts/train.py Unitree-G1-AMP-Flat
+  T->>G: import src.tasks → load_env_cfg / load_rl_cfg（g1/__init__.py 中 register_mjlab_task 已注册）
+  T->>T: launch_training：select_gpus；单卡 run_train，多卡走 torchrunx
+  T->>E: ManagerBasedRlEnv(cfg, device)
+  T->>W: RslRlVecEnvWrapper(env, clip_actions)
+  T->>R: runner_cls(env, agent_cfg, log_dir, device)
+  R->>L: AMPLoader(motion_file=amp_motion_files)，载入专家动作
+  R->>D: 构造判别器
+  R->>A: 构造 AMPPPO(policy, discriminator, amp_normalizer)
+  T->>R: runner.learn(max_iterations)
+  loop 每轮 rollout（num_steps_per_env 步）
+    R->>A: act(obs, critic_obs, amp_obs)
+    R->>W: env.step(actions)
+    W->>E: 物理仿真 + 任务奖励，mjlab 自动 reset 结束的 env
+    E-->>R: obs、rewards、dones、infos（含 observations["amp"]）
+    R->>D: predict_amp_reward(amp_obs, next_amp_obs, task_reward)
+    Note over D,R: 判别器奖励结合任务奖励后写回 rewards（插值细节未读函数体）
+    R->>A: process_env_step → amp_storage.insert(转移)
+  end
+  R->>A: compute_returns → update()
+  loop mini-batch
+    A->>D: 判别 policy 转移与 expert 转移
+    A->>D: compute_grad_pen(lambda=10)
+    A->>A: PPO 损失 + 判别器 MSE 损失，反向传播
+  end
+  R->>R: 按 save_interval 调用 save()
+  R->>R: _export_policy_to_onnx → policy.onnx，并 attach_metadata
+```
+
+图依据：AMP_mjlab@6c7a294，读过 `README.md`、`scripts/train.py`、`src/tasks/amp_loco/config/g1/__init__.py`、`src/tasks/amp_loco/rl/runner.py`、`rsl_rl/runners/amp_on_policy_runner.py`（init、rollout 与 learn 段）、`rsl_rl/algorithms/amp_ppo.py`（act / process_env_step / update 段）；`rsl_rl/utils/motion_loader.py`、`rsl_rl/modules/discriminator.py` 仅检索了类与函数定义。未运行代码。恢复窗口 reset 的具体事件未画入（见 `src/tasks/amp_loco/mdp/events.py`）。
+
 ## 关联页面
 
 - [AMP & HumanX 方法](../methods/amp-reward.md) — AMP 方法本体
@@ -368,6 +415,7 @@ README 明确提示约 `2w`（20k）iterations 附近会出现多个指标突变
 - [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md)
 - [AMP_mjlab Policy 训练本质 FAQ（维护者整理）](../../sources/personal/amp_mjlab_policy_training_essence.md)
 - [ccrpRepo/AMP_mjlab GitHub Repo](https://github.com/ccrpRepo/AMP_mjlab)
+- 源码核对（2026-11-02）：ccrpRepo/AMP_mjlab@6c7a294，读过 `README.md`、`scripts/train.py`、`src/tasks/amp_loco/config/g1/__init__.py`、`src/tasks/amp_loco/rl/runner.py`、`rsl_rl/runners/amp_on_policy_runner.py`、`rsl_rl/algorithms/amp_ppo.py`；时序图依据以上文件，未运行代码。
 
 ## 源码阅读建议顺序
 

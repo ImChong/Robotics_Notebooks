@@ -126,7 +126,6 @@ sequenceDiagram
 - [sources/repos/axfluxmdo.md](../../sources/repos/axfluxmdo.md)
 - [sources/sites/axfluxmdo_docs.md](../../sources/sites/axfluxmdo_docs.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
-
 - 源码核对（2026-11-02）：jman4162/axfluxmdo@6ea61b2，读过 README.md、src/axfluxmdo/models/analytical.py、src/axfluxmdo/materials/magnetic.py、src/axfluxmdo/models/thermal_rc.py、src/axfluxmdo/models/losses.py（函数清单）、examples/01_basic_axial_flux_motor.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读

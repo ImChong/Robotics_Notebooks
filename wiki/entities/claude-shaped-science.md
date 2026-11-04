@@ -129,9 +129,9 @@ sequenceDiagram
 
 ## 参考来源
 
-- 源码核对（2026-11-02）：BootLoops-ai/bootloops@95dfb72，读过 `run_selftests.py`、`tools/README.md`（前 60 行）、`tools/BATTERIES.json`（前几行）；时序图依据以上文件，未运行代码。
 - [Claude-shaped science 来源归档](../../sources/sites/anthropic-claude-shaped-science.md)
 - [Every Joule 项目来源归档](../../sources/sites/every-joule.md)
+- 源码核对（2026-11-02）：BootLoops-ai/bootloops@95dfb72，读过 `run_selftests.py`、`tools/README.md`（前 60 行）、`tools/BATTERIES.json`（前几行）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
