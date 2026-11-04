@@ -78,6 +78,49 @@ flowchart TB
 - **不替代运动策略**：需自行接入训练栈（如 agibot_x1_train）或外部 WBC/VLA；勿期望 clone AimRT 即得行走策略。
 - **与 AimDK 易混淆**：AimRT = 开源 **运行时**；AimDK = X2 **应用 SDK**（文档站分发，非同一 GitHub 仓）。
 
+## 源码运行时序图
+
+入口：`aimrt_main --cfg_file_path=<yaml>`（`src/runtime/main/main.cc` 的 `main`；`--running_duration>0` 时改走 `AsyncStart`，到时后调用 `Shutdown`）
+
+```mermaid
+sequenceDiagram
+    participant M as main.cc main
+    participant C as AimRTCore aimrt_core.cc
+    participant CFG as ConfiguratorManager
+    participant PM as PluginManager
+    participant MM as ModuleManager
+    participant ML as ModuleLoader pkg 动态库
+    participant MOD as 模块 module_ptr
+
+    M->>C: Initialize(cfg_file_path)
+    C->>CFG: Initialize 读取配置
+    C->>PM: Initialize plugin 节点
+    loop 每个插件
+        PM->>PM: PluginLoader LoadPlugin 加载 .so 并 plugin->Initialize(core)
+    end
+    Note over C: 依次初始化 main_thread、guard_thread、executor、log、allocator、rpc、channel、parameter
+    C->>MM: Initialize module 节点
+    loop 每个 pkg 动态库
+        MM->>ML: LoadPkg 加载 pkg 并取得模块名与 create 函数
+        ML-->>MM: 模块列表
+    end
+    loop 每个模块
+        MM->>MOD: module_ptr->initialize(CoreProxy)
+    end
+    M->>C: Start 阻塞等待关闭
+    C->>C: StartImpl 依次 Start 配置、插件、执行器、日志、channel 等子管理器
+    C->>MM: Start
+    loop 按 module_init_order
+        MM->>MOD: module_ptr->start(impl)
+    end
+    Note over M,C: SIGINT 或 SIGTERM 调用 Shutdown 置位 shutdown promise
+    M-->>C: Shutdown
+    C->>C: ShutdownImpl 先关模块，再逆序关闭其余子管理器
+    C->>MM: Shutdown 按逆序 module->shutdown
+```
+
+图依据：AimRT/AimRT@a44d058，读过 README.md、src/runtime/main/main.cc、src/runtime/core/aimrt_core.cc、src/runtime/core/plugin/plugin_manager.cc、src/runtime/core/plugin/plugin_loader.cc、src/runtime/core/module/module_manager.cc、src/runtime/core/module/module_loader.cc。未画直接注册（非 pkg）模块的分支细节；Note 中的子管理器顺序为读源码所得，未运行代码。
+
 ## 关联页面
 
 - [AimDK X2（灵犀二次开发框架）](./agibot-aimdk-x2.md)
@@ -89,6 +132,7 @@ flowchart TB
 
 - [AimRT 源码归档](../../sources/repos/aimrt.md)（<https://github.com/AimRT/AimRT>）
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：AimRT/AimRT@a44d058，读过 README.md、src/runtime/main/main.cc、src/runtime/core/aimrt_core.cc、src/runtime/core/plugin/plugin_manager.cc、src/runtime/core/plugin/plugin_loader.cc、src/runtime/core/module/module_manager.cc、src/runtime/core/module/module_loader.cc；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

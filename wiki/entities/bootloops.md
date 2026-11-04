@@ -81,6 +81,53 @@ python3 run_selftests.py mixalot eras
 - **不是 Anthropic 官方产品：** 由 Schwartz 维护；在线模型、外部数据、引擎和算力另行配置。
 - **未实跑上游工具：** 本次核查公开源码文档和入口，不声称验证了所有计算包，也不将其用于真实机器人安全认证。
 
+## 源码运行时序图
+
+入口：`python3 run_selftests.py --par 8`（在仓库根目录运行；仓库未包含的数据会使对应包以 REFUSED 退出）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户 shell
+    participant M as run_selftests.py main()
+    participant C as classes()
+    participant T as tools/README.md 索引
+    participant R as run_pkg(pkg, cls, timeout)
+    participant J as Julia Pkg.instantiate
+    participant S as 包 battery 子进程
+    participant O as selftest_results.json
+
+    U->>M: python3 run_selftests.py --par 8
+    M->>C: 读取包类别表
+    C->>T: 逐行正则匹配索引行，取得包名与验证类别
+    T-->>C: 包名到类别（selftest / partial / smoke / data-gated）
+    C-->>M: 类别表
+    M->>M: 待测包列表（selftest 优先，其余按名排序）
+    alt --par 大于 1
+        M->>R: ThreadPoolExecutor.map(one) 并发执行
+    else 串行
+        M->>R: 逐包执行 one(pkg)
+    end
+    Note over R: MANIFEST 在导入时已由 tools/BATTERIES.json 载入，此处取包的 cmd 与 cwd
+    alt 包目录下存在 Project.toml
+        R->>J: julia --project=. 执行 Pkg.instantiate（JULIA_LOCK 串行）
+    end
+    R->>S: Popen(cmd, shell=True, start_new_session=True)，PYTHONPATH 指向 tools 与包目录
+    S-->>R: 返回码 rc 与输出尾部
+    alt rc 等于 0
+        R-->>M: PASS
+    else data-gated 且 rc 等于 4 且输出末行是拒绝原因
+        R-->>M: REFUSED (by design)
+    else 其它情况
+        R-->>M: FAIL，或 entry-not-found（仅用法错误）
+    end
+    M-->>U: 逐包打印状态行与超时提示
+    M->>O: json.dump(results, indent=1)
+    M-->>U: 按类别与状态计数；存在 FAIL 或 no-manifest-entry 则 exit 1
+```
+
+图依据：BootLoops-ai/bootloops@95dfb72，实际读过的文件：`README.md`、`run_selftests.py`（全文）、`tools/BATTERIES.json`（前段条目，确认 cmd/cwd 结构）、`tools/README.md`（索引行格式与验证类别）。未运行代码。
+
 ## 关联页面
 
 - [Claude-shaped science](./claude-shaped-science.md)：选题与领域专家分工。
@@ -91,6 +138,7 @@ python3 run_selftests.py mixalot eras
 
 - [BootLoops 固定版本仓库归档](../../sources/repos/bootloops.md)
 - [客座研究文章归档](../../sources/sites/anthropic-claude-shaped-science.md)
+- 源码核对（2026-11-02）：BootLoops-ai/bootloops@95dfb72，读过 README.md、run_selftests.py、tools/BATTERIES.json、tools/README.md；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
