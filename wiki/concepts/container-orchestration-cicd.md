@@ -10,6 +10,7 @@ related:
   - ./edge-cloud-robotics.md
   - ../overview/hub-systems-engineering.md
   - ../entities/codex-security.md
+  - ../entities/jenkins.md
 sources:
   - ../../sources/sites/systems_engineering_deploy_obs_security_primary_refs.md
   - ../../sources/repos/codex-security.md
@@ -64,6 +65,7 @@ summary: "容器与部署（Docker、Kubernetes、CI/CD）：训练/仿真 farm 
 - [软件安全基础](./software-security-basics.md)
 - [边缘–云端协同](./edge-cloud-robotics.md)
 - [Codex Security](../entities/codex-security.md)
+- [Jenkins](../entities/jenkins.md) — 可扩展的流水线自动化服务器。
 
 ## 参考来源
 
