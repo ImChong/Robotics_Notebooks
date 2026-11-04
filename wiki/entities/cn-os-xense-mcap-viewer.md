@@ -55,6 +55,58 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`npm install` 后执行 `npm run dev`（Vite 开发服务器，默认 http://localhost:5173），再访问 `/?url=<recording.mcap 地址>`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant B as 浏览器 ?url=
+    participant APP as main.tsx / App.tsx 入口
+    participant V as McapViewerImpl.tsx 编排层
+    participant WSS as WorkerSerializedSource.ts 主线程代理
+    participant P as IterablePlayer.ts 播放器
+    participant W as mcap.worker.ts Web Worker
+    participant S as McapIndexedIterableSource.ts
+    participant MC as MessageCursor.ts Worker 内游标
+    participant PN as 面板 ThreeDPanel / RawMessages
+    participant MB as messageBus.ts 扇出
+
+    B->>APP: 加载页面，readSpaUrlFromQuery 取出 url
+    APP->>V: render McapViewer(url, urlState="spa")
+    V->>V: extensionForDataset 得到 mcap，选择 mcap.worker
+    V->>WSS: new WorkerSerializedSource(worker)
+    V->>P: new IterablePlayer(source)
+    V->>P: initializePlayerForDataset（url 分支）
+    P->>WSS: initialize(args)
+    WSS->>W: Comlink 远程调用 initialize({url})
+    W->>W: HttpFileReader + CachedFilelike 读取远程文件
+    W->>S: McapIndexedReader 初始化后 new McapIndexedIterableSource
+    S-->>P: Initialization（topics、起止时间）
+    PN->>P: registerSubscriptions(panelId, topics)
+    PN->>P: registerHighFrequencyConsumer（Image / ThreeD 高频通道）
+    B->>P: play()，requestAnimationFrame 驱动 _tickLoop
+    loop 每帧 _tickAsync（_isFetching 防重入）
+        P->>WSS: getMessageCursor(startTime, topics)
+        WSS->>W: getMessageCursor
+        W->>S: messageIterator(args)
+        W-->>P: Comlink.proxy(MessageCursor)
+        P->>MC: nextBatch(advanceMs)
+        MC-->>P: MessageEvent[]
+        P->>P: _distributeMessages：先派发高频消费者
+        P->>WSS: resolveMessageBatch(订阅消息)
+        P->>MB: update(batchBySubscriber, lastByTopic)
+        MB-->>PN: topic / subscriber 监听器通知
+    end
+    opt 连续空批次（_handleEmptyBatch）
+        P->>WSS: getBackfillMessages(time, topics)
+        WSS->>W: 每个 topic 取最近一条消息
+    end
+```
+
+图依据：xense-mcap-viewer@b31b2ef，实际读过 README.md、package.json、docs/internals/RUNTIME_PIPELINE.md、docs/internals/IMPORTANT_FILES.md、src/entrypoints/{main.tsx,App.tsx,index.ts}、src/features/viewer/McapViewerImpl.tsx（编排段）、src/core/players/IterablePlayer.ts（生命周期、tick、分发段）、src/core/pipeline/messageBus.ts、src/infra/workers/{mcap.worker.ts,WorkerSerializedSource.ts,MessageCursor.ts}（关键段）、src/infra/workers/transports/createWorkerTransport.ts、src/features/panels/ThreeD/ThreeDPanel.tsx 与 RawMessages/Component.tsx（订阅段）；McapIndexedIterableSource.ts 仅 grep 到 messageIterator 与 getBackfillMessages。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +118,8 @@ institutions:
 - [xense-mcap-viewer 源码归档](../../sources/repos/xense-mcap-viewer.md)（<https://github.com/XenseRobotics-AI/xense-mcap-viewer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：XenseRobotics-AI/xense-mcap-viewer@b31b2ef，读过 README.md、package.json、docs/internals/{RUNTIME_PIPELINE,IMPORTANT_FILES}.md、src/entrypoints/{main.tsx,App.tsx,index.ts}、src/features/viewer/McapViewerImpl.tsx、src/core/players/IterablePlayer.ts、src/core/pipeline/messageBus.ts、src/infra/workers/{mcap.worker.ts,WorkerSerializedSource.ts,MessageCursor.ts,transports/createWorkerTransport.ts}、src/features/panels/ThreeD/ThreeDPanel.tsx、src/features/panels/RawMessages/Component.tsx；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

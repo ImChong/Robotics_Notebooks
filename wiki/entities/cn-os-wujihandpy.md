@@ -55,6 +55,54 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python example/joint/3.realtime.py`（先 `pip install wujihandpy`；Linux 需配置 USB 权限）。Python 接口由 `src/main.cpp` / `src/wrapper.hpp` 绑定到 C++ 核心 `wujihandcpp`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant E as example/joint/3.realtime.py main run
+    participant W as src/wrapper.hpp 与 src/controller.hpp Python 绑定
+    participant F as src/filter.hpp LowPass
+    participant H as wujihandcpp device/hand.hpp Hand
+    participant P as wujihandcpp protocol/handler.cpp Handler
+    participant T as wujihandcpp transport USB CDC
+
+    E->>W: wujihandpy.Hand()
+    W->>H: 构造 Hand 并在 C++ 构造函数中打开 USB CDC
+    H->>P: 创建 Handler 并 start_transmit_receive 启动 SDO 线程
+    P->>T: 经 transport 收发帧
+    E->>W: write_joint_enabled(True)
+    W->>H: 写关节使能
+    H->>P: SDO 写请求由 sdo_thread 发送
+    E->>W: hand.realtime_controller(enable_upstream, LowPass 5 Hz)
+    W->>F: LowPass.create_controller
+    F->>H: realtime_controller 构造 IController 包装
+    alt 固件滤波可用
+        H->>H: 写 PositionFilterCutoffFreq 使用兼容控制器
+    else 软件滤波
+        H->>P: attach_realtime_controller 启动 pdo_thread
+        P->>P: pdo_thread_main 以 500 Hz TickExecutor 循环
+    end
+    loop 每个周期约 100 Hz 的上层循环
+        E->>W: controller.set_joint_target_position target 5x4
+        W->>H: FilteredControllerOperator.set 写入滤波器输入
+        E->>W: get_joint_actual_position 与 get_joint_actual_effort
+        W->>P: 读取 realtime 原子缓存 pdo_read_position_ 等
+        E->>E: 计算误差与力矩百分比并打印
+    end
+    loop pdo_thread 500 Hz
+        P->>P: FilteredController.step 生成本周期目标
+        P->>P: pdo_write_async_unchecked 组装 PDO 写帧
+        P->>T: 帧交给 transport 发送
+    end
+    E->>W: finally write_joint_enabled(False)
+    W->>H: 失能全部关节
+```
+
+图依据：wuji-technology/wujihandpy@468e169，实际读过 `README.md`、`example/joint/3.realtime.py`、`src/wrapper.hpp`（`realtime_controller`、`get_*` 相关片段）、`src/controller.hpp`（`set_joint_target_position`）、`src/filter.hpp`（`LowPass::create_controller`）、`wujihandcpp/include/wujihandcpp/device/hand.hpp`（`realtime_controller`、`attach_realtime_controller`）、`wujihandcpp/include/wujihandcpp/device/controller.hpp`、`wujihandcpp/src/protocol/handler.cpp`（`pdo_thread_main`、`pdo_write_async_unchecked`、`realtime_set_joint_target_position`）。`transport` 与 `Hand` 构造细节只读了函数名，未逐行核对；未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +114,7 @@ institutions:
 - [wujihandpy 源码归档](../../sources/repos/wujihandpy.md)（<https://github.com/wuji-technology/wujihandpy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：wuji-technology/wujihandpy@468e169，读过 README.md、example/joint/3.realtime.py、src/wrapper.hpp、src/controller.hpp、src/filter.hpp、wujihandcpp/include/wujihandcpp/device/{hand,controller}.hpp、wujihandcpp/src/protocol/handler.cpp；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -55,6 +55,45 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python scripts/rsl_rl/train.py --task=Wheeldog-Rl-v0 --num_envs 4096 --headless`（亦可运行 `bash scripts/rsl_rl/bashBlindWheelDog.sh`；需 Isaac Lab release/2.3.2 环境，`pip install -e source/wheelDog_RL`）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 shell
+    participant S as scripts/rsl_rl/train.py main
+    participant G as tasks/wheeldog_rl __init__ gym.register
+    participant C as robotCfg 与 wheeldog_rl_env_cfg
+    participant E as envEntry WheelDog_BlindLocomotionEnv
+    participant I as Isaac Lab ManagerBasedRLEnv
+    participant R as rsl_rl OnPolicyRunner
+    participant W as watchDogs 与 mdp 管理器
+    U->>S: python scripts/rsl_rl/train.py --task Wheeldog-Rl-v0
+    S->>S: AppLauncher 启动 Isaac Sim，检查 rsl-rl-lib 版本不低于 3.0.1
+    S->>G: hydra_task_config 按 task 名取入口
+    G->>C: env_cfg_entry_point 得到 WheelDog_BlindLocomotionEnvCfg
+    G->>S: rsl_rl_cfg_entry_point 得到 PPORunnerCfg（1600 次迭代，每环境 32 步）
+    S->>E: gym.make 实例化环境
+    E->>I: super().__init__ 建场景与各 MDP 管理器
+    E->>W: 创建 TiltDetectionManager、VelocityErrorRecorder、ZeroDriftManager
+    S->>S: RslRlVecEnvWrapper 包装环境
+    S->>R: OnPolicyRunner(env, agent_cfg, log_dir)
+    S->>S: dump_yaml 写 params/env.yaml 与 agent.yaml
+    S->>R: learn 开始训练
+    loop 每个学习迭代的 rollout
+        R->>E: step(actions)，动作为髋、膝关节位置与轮毂速度
+        E->>I: super().step 执行 decimation=4 个物理步（控制周期约 0.02 s）
+        E->>W: 管理器 step（倾倒检测、速度误差、零漂）
+        E->>W: check_observations 与 check_rewards 检查 NaN 或 Inf 并裁剪奖励
+        E-->>R: 观测（actor 与 critic）、奖励、终止标志
+        E->>E: 终止环境时调用 _reset_idx 重置
+    end
+    R->>R: PPO 更新策略（rsl_rl 库内部，不在本仓库）
+```
+
+图依据：wheelDog_RL@3c65bed，README.md、scripts/rsl_rl/train.py（主流程，读过）、scripts/rsl_rl/bashBlindWheelDog.sh（读过）、source/wheelDog_RL/wheelDog_RL/tasks/manager_based/wheeldog_rl/__init__.py（gym.register，读过）、envEntry.py（读过）、robotCfg.py（读过关键段）、wheeldog_rl_env_cfg.py（仅 grep 类结构与 decimation）、agents/rsl_rl_ppo_cfg.py（仅 grep）、actionSpaceCfg.py 与 observationSpaceCfg.py（仅 grep）。play.py 与导出流程未画。未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -64,6 +103,8 @@ institutions:
 ## 参考来源
 
 - [wheelDog_RL 源码归档](../../sources/repos/wheeldog_rl.md)（<https://github.com/seer-robotics/wheelDog_RL>）
+
+- 源码核对（2026-11-02）：seer-robotics/wheelDog_RL@3c65bed，读过 README.md、scripts/rsl_rl/train.py、scripts/rsl_rl/bashBlindWheelDog.sh、source/wheelDog_RL/wheelDog_RL/tasks/manager_based/wheeldog_rl/__init__.py、envEntry.py、robotCfg.py；时序图依据以上文件，未运行代码。
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

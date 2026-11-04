@@ -61,11 +61,53 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：用户脚本中实例化 `MyCobot280("/dev/ttyUSB0", "115200")`（串口）或 `MyCobot280Socket(ip, 9000)`（网络），再调用 `get_angles()` 等接口。下图以 `get_angles()` 为例，两条通道共用同一组命令生成与解析逻辑。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户脚本
+    participant M as MyCobot280（mycobot280.py）
+    participant S as MyCobot280Socket（mycobot280socket.py）
+    participant G as CommandGenerator.get_angles（generate.py）
+    participant DP as DataProcessor（common.py：_mesg / _flatten / _process_received）
+    participant SER as pyserial Serial（串口）
+    participant SK as socket（TCP）
+    participant HW as 机械臂固件
+    U->>M: MyCobot280(port, baudrate)，内部 serial.Serial().open()
+    U->>S: MyCobot280Socket(ip, netport)，内部 connect_socket()
+    U->>M: get_angles()
+    M->>G: get_angles() → _mesg(ProtocolCode.GET_ANGLES, has_reply=True)
+    G->>DP: DataProcessor._mesg(genre, *args, has_reply, _async) 组帧
+    DP-->>M: real_command，has_reply，_async
+    alt 串口通道
+        M->>M: thread_lock 为真时持有 self.lock，调用 _res
+        loop 最多 3 次，直到收到非空回包
+            M->>SER: _write(_flatten(real_command)) → serial.write
+            M->>SER: _read(genre) → inWaiting / read
+        end
+        M->>DP: _process_received(data, genre)
+        DP-->>U: 角度列表
+    else 网络通道
+        U->>S: get_angles() 经 _mesg 组帧（同上）
+        S->>SK: _write(_flatten(real_command), "socket") → sock.sendall
+        S->>SK: _read(genre, method="socket") → sock.recv(1024)
+        S->>S: 校验回包 data[3] 与 genre 一致，失败则重试
+        S-->>U: 角度列表
+    end
+    Note over M,HW: 由 pymycobot 经串口 / 网络把协议帧发给机械臂固件，固件内部逻辑不在仓库内
+```
+
+图依据：elephantrobotics/pymycobot@44d7fb1，读过 `README.md`、`pymycobot/__init__.py`、`pymycobot/mycobot.py`、`pymycobot/mycobot280.py`、`pymycobot/mycobot280socket.py`、`pymycobot/mycobotsocket.py`（部分）、`pymycobot/generate.py`（部分）、`pymycobot/common.py`（部分）；未运行代码。
+
 ## 参考来源
 
 - [pymycobot 源码归档](../../sources/repos/pymycobot.md)（<https://github.com/elephantrobotics/pymycobot>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：elephantrobotics/pymycobot@44d7fb1，读过 `README.md`、`pymycobot/__init__.py`、`pymycobot/mycobot.py`、`pymycobot/mycobot280.py`、`pymycobot/mycobot280socket.py`、`pymycobot/mycobotsocket.py`（部分）、`pymycobot/generate.py`（部分）、`pymycobot/common.py`（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

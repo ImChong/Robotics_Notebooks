@@ -60,6 +60,51 @@ code: https://github.com/roboterax/robotera_vla
 
 截至 2026-10-08，仓库按 MIT 许可提供公开基线，但采集服务不在仓内实现，训练文档仍有待完善项。公开样例不证明 ERA-42 完整模型、预训练池和部署服务开放。未确认单一首发日，当前维护日期不充当模型发布时间。
 
+## 源码运行时序图
+
+入口：`python inference/examples/main.py`（在推理容器内执行，ROS 2 Humble；`inference/README.md` 写作 `inference/example/main.py`，与仓库目录 `examples` 不符，以仓库为准）。
+
+```mermaid
+sequenceDiagram
+    participant M as examples/main.py VlaSyncInferenceNode
+    participant HW as examples/hardware_interface.py RobotInterface
+    participant FD as examples/frame_decoder.py H264FrameDecoder
+    participant MW as examples/model_worker.py OpenPIWorker
+    participant ST as examples/stream.py interpolate_actions
+    participant R as 机器人侧 ROS 2 话题
+
+    M->>HW: RobotInterface(node_name=inference_node)
+    HW->>R: 订阅相机 H264、joint_states、get_pose
+    HW->>R: 发布 servo_poses 与 hand_controller commands
+    M->>MW: 构造 OpenPIWorker 时加载并预热策略
+    Note over M: 启动 pynput 键盘监听，r 置位复位，q 退出
+
+    loop run_loop 每个控制周期
+        R->>HW: 相机 H264 CompressedImage 回调
+        HW->>FD: decode_one_frame(bytes)
+        FD-->>HW: 解码帧，转 RGB 写入 imgs
+        R->>HW: joint_states 与 get_pose 回调更新 states
+        M->>HW: get_observation()
+        HW-->>M: images、state、t
+        alt 观测含 None
+            M->>M: 等待 0.01 秒后重试
+        else 观测完整
+            M->>MW: infer(imgs_input, state_input)
+            MW-->>M: result actions 动作块
+            M->>ST: interpolate_actions(actions, 100)
+            ST-->>M: 插值后的动作序列
+            loop 前 EXECUTE_STEPS 步
+                M->>HW: publish_action(动作向量)
+                HW->>R: servo_poses 与 hand_controller commands
+                M->>M: 按 ACTION_DT 休眠
+            end
+        end
+    end
+    Note over M: need_reset 为真时，循环开头改为 smooth_reset(init_vec, 2.0) 后继续
+```
+
+图依据：robotera_vla@9ff7067，读过 README.md、inference/README.md、inference/examples/main.py、inference/examples/model_worker.py、inference/examples/hardware_interface.py（订阅、发布与 get_observation、publish_action 段）、inference/examples/stream.py 与 frame_decoder.py（函数与类定义）、inference.Dockerfile（末段）；`config.py` 未读，`EXECUTE_STEPS` 与控制频率取值未核对。未运行代码（需 M7 机器人与 GPU 环境）。
+
 ## 关联页面
 
 - [星动纪元](./robotera.md)
@@ -76,6 +121,8 @@ code: https://github.com/roboterax/robotera_vla
 
 - [官方 README 补核](../../sources/repos/robotera_vla.md)
 - [既有国内具身开源策展](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：roboterax/robotera_vla@9ff7067，读过 README.md、inference/README.md、inference/examples/main.py、model_worker.py、hardware_interface.py、stream.py、frame_decoder.py、inference.Dockerfile；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

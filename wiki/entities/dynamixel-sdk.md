@@ -64,6 +64,53 @@ sources:
 - **SDK ≠ 整机栈**：本仓不包含机器人运动学或安全层；扭矩使能前务必机械限位与电流限制。
 - **第三方「兼容 Dynamixel」设备**：协议子集或时序差异可能导致偶发丢包，需单独验证。
 
+## 源码运行时序图
+
+入口：`python3 python/tests/protocol2_0/read_write.py`（官方 Python 示例，Protocol 2.0，`DEVICENAME=/dev/ttyUSB0`）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户脚本 read_write.py
+    participant PH as PacketHandler packet_handler.py
+    participant P2 as Protocol2PacketHandler protocol2_packet_handler.py
+    participant PORT as PortHandler port_handler.py
+    participant SER as pyserial serial.Serial
+    participant DXL as Dynamixel 舵机
+
+    U->>PORT: PortHandler(DEVICENAME)
+    U->>PH: PacketHandler(2.0)
+    PH-->>U: Protocol2PacketHandler()
+    U->>PORT: openPort()
+    PORT->>PORT: setBaudRate(BAUDRATE) → setupPort()
+    PORT->>SER: serial.Serial(port, baudrate, timeout=0)
+    U->>P2: write1ByteTxRx(port, DXL_ID, ADDR_TORQUE_ENABLE, 1)
+    P2->>P2: writeTxRx 组装 txpacket（INST_WRITE）
+    P2->>P2: txRxPacket → txPacket
+    P2->>P2: addStuffing + updateCRC
+    P2->>PORT: clearPort() + writePort(txpacket)
+    PORT->>SER: ser.write(packet)
+    SER->>DXL: 指令包 FF FF FD 00 ...
+    loop 目标位置 / 当前位置轮询
+        U->>P2: write4ByteTxRx(port, DXL_ID, ADDR_GOAL_POSITION, goal)
+        P2->>PORT: txRxPacket 同上（INST_WRITE）
+        U->>P2: read4ByteTxRx(port, DXL_ID, ADDR_PRESENT_POSITION)
+        P2->>P2: readTxRx → txRxPacket（INST_READ）
+        P2->>PORT: setPacketTimeout(读取长度 + 11)
+        P2->>P2: rxPacket 循环
+        P2->>PORT: readPort(n)
+        PORT->>SER: ser.read(n)
+        DXL-->>SER: 状态包
+        SER-->>P2: 字节流
+        P2->>P2: 找包头 FF FF FD 校验 CRC removeStuffing
+        P2-->>U: data, COMM_SUCCESS, error
+        U->>U: 比较 goal 与 present 位置，未到位则继续读
+    end
+    U->>P2: write1ByteTxRx(port, DXL_ID, ADDR_TORQUE_ENABLE, 0)
+    U->>PORT: closePort()
+```
+
+图依据：ROBOTIS-GIT/DynamixelSDK@a8d35d5，实际读过 `python/tests/protocol2_0/read_write.py`、`python/src/dynamixel_sdk/packet_handler.py`、`python/src/dynamixel_sdk/protocol2_packet_handler.py`（txPacket / txRxPacket / rxPacket 及 read/write TxRx 包装）、`python/src/dynamixel_sdk/port_handler.py`（openPort / setupPort / readPort / writePort）。
+
 ## 关联页面
 
 - [ROBOTIS hub](./robotis.md)
@@ -76,6 +123,7 @@ sources:
 
 - [sources/repos/dynamixel_sdk.md](../../sources/repos/dynamixel_sdk.md)
 - 上游：<https://github.com/ROBOTIS-GIT/DynamixelSDK>
+- 源码核对（2026-11-02）：ROBOTIS-GIT/DynamixelSDK@a8d35d5，读过 README.md、python/src/dynamixel_sdk/{__init__,packet_handler,port_handler,protocol2_packet_handler}.py（protocol1 仅 grep）、python/tests/protocol2_0/read_write.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

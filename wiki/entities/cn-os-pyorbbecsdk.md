@@ -61,11 +61,46 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`python examples/quick_start.py`（需先 `pip install pyorbbecsdk2 opencv-python numpy` 并连接 Orbbec 相机）。`pyorbbecsdk` 模块由 `src/pyorbbecsdk/*.cpp`（pybind11 绑定）封装 SDK 的 C++ 接口；SDK 核心实现在 `sdk/` 中为头文件与预编译库，内部流程不在本图范围内。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant QS as examples/quick_start.py（main）
+    participant UT as examples/utils.py（frame_to_bgr_image）
+    participant PB as pyorbbecsdk 绑定（src/pyorbbecsdk/pipeline.cpp）
+    participant SDK as libOrbbecSDK（sdk/ 预编译，核心实现不在仓库内）
+    participant CV as OpenCV（cv2）
+    U->>QS: python examples/quick_start.py
+    QS->>PB: Pipeline()，pipeline.start()（无 Config 时读取 config/OrbbecSDKConfig.xml）
+    PB->>SDK: Pipeline::start(config 或 nullptr)
+    QS->>CV: namedWindow / resizeWindow("QuickStart Viewer")
+    loop while True，直到按 Q 或 ESC
+        QS->>PB: pipeline.wait_for_frames(1000)
+        PB->>SDK: 取帧集（1000 ms 超时）
+        SDK-->>PB: FrameSet
+        PB-->>QS: frames
+        QS->>QS: frames.get_color_frame()，get_depth_frame()
+        QS->>UT: frame_to_bgr_image(color_frame)
+        QS->>QS: depth get_data → np.frombuffer(uint16) × get_depth_scale → depth_mm
+        QS->>QS: render_depth_3d(depth_mm)：Scharr 梯度 + COLORMAP_JET
+        QS->>CV: cv2.imshow(combined)，cv2.waitKey(1)
+    end
+    QS->>PB: pipeline.stop()
+    QS->>CV: destroyAllWindows()
+```
+
+图依据：orbbec/pyorbbecsdk@68cdfa1，读过 `README.md`、`examples/quick_start.py`、`examples/utils.py`（部分）、`src/pyorbbecsdk/pipeline.cpp`（部分，start / stop / wait_for_frames 绑定）、`src/pyorbbecsdk/frame.cpp`（部分）；未运行代码。
+
 ## 参考来源
 
 - [pyorbbecsdk 源码归档](../../sources/repos/pyorbbecsdk.md)（<https://github.com/orbbec/pyorbbecsdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：orbbec/pyorbbecsdk@68cdfa1，读过 `README.md`、`examples/quick_start.py`、`examples/utils.py`（部分）、`src/pyorbbecsdk/pipeline.cpp`（部分）、`src/pyorbbecsdk/frame.cpp`（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

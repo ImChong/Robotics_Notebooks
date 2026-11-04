@@ -61,11 +61,43 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`bash scripts/start_single_sensor.bash`（脚本内以 `roslaunch sensor_tools open_single_sensor.launch` 启动传感端）。本图只覆盖传感端启动链路；仓库中 `src/data_tools`、`src/data_msgs`、`src/PikaAnyArm` 为未展开的 git 子模块，`pika_locator` 功能包不在仓库内，相关环节不展开。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant SH as scripts/start_single_sensor.bash
+    participant RL as roslaunch sensor_tools open_single_sensor.launch
+    participant GI as serial_gripper_imu（src/sensor_tools/src/serial_gripper_imu.cpp）
+    participant CAM as camera_fisheye（src/sensor_tools/scripts/usb_camera.py）
+    participant LOC as pika_locator launch（仓库外，未核对）
+    participant RS as realsense2_camera rs_camera.launch
+    participant ROS as ROS1 话题
+    U->>SH: 运行启动脚本
+    SH->>SH: sudo 写入 udev 规则，赋予 ttyUSB* / video* 权限
+    SH->>RL: serial_port、fisheye_port、camera_fps 等参数
+    RL->>GI: 启动节点 serial_gripper_imu（respawn）
+    GI->>GI: NodeHandle("~")，读取 serial_port，以 460800 波特率打开串口
+    GI->>ROS: advertise /imu/data、/gripper/data、/gripper/joint_state、/joint_state_gripper
+    RL->>CAM: 启动节点 camera_fisheye（respawn）
+    CAM->>CAM: init_camera：cv2.VideoCapture，按 camera_fps 循环取帧
+    CAM->>ROS: 经 remap 发布 /camera_fisheye/color/image_raw 与 camera_info
+    RL->>LOC: include pika_single_locator.launch
+    RL->>RS: include rs_camera.launch（color/depth 帧率与分辨率同参数）
+    RS->>ROS: RealSense 彩色 / 深度话题
+```
+
+图依据：agilexrobotics/pika_ros@1ec7788，读过 `README.md`、`scripts/start_single_sensor.bash`、`src/sensor_tools/launch/open_single_sensor.launch`、`src/sensor_tools/src/serial_gripper_imu.cpp`（部分）、`src/sensor_tools/scripts/usb_camera.py`（部分）、`.gitmodules`；未运行代码。
+
 ## 参考来源
 
 - [pika_ros 源码归档](../../sources/repos/pika_ros.md)（<https://github.com/agilexrobotics/pika_ros>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：agilexrobotics/pika_ros@1ec7788，读过 `README.md`、`scripts/start_single_sensor.bash`、`src/sensor_tools/launch/open_single_sensor.launch`、`src/sensor_tools/src/serial_gripper_imu.cpp`（部分）、`src/sensor_tools/scripts/usb_camera.py`（部分）、`.gitmodules`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

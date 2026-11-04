@@ -55,6 +55,44 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口（ROS1）：`roslaunch xense_ros xense_publisher.launch serial_number:=<SN> rectify_width:=200 rectify_height:=350 publish_rate:=30.0`（ROS2 入口 `ros2 launch xense_ros2 xense_publisher_launch.py ...` 对应 `xense_publisher_ros2.py` 的 `XensePublisher` 节点，结构相同但用 timer 回调代替 `rospy.Rate` 循环，此处未单独成图）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant RL as xense_publisher.launch roslaunch
+    participant N as xense_publisher.py run()
+    participant CB as cv_bridge CvBridge
+    participant SDK as xensesdk Sensor
+    participant T as ROS 话题 /xense/SN/
+
+    RL->>N: 启动节点 xense_publisher，注入 ~serial_number 等参数
+    N->>N: rospy.init_node，rospy.get_param 读取参数
+    N->>N: 校验 serial_number、rectify 尺寸、Sensor 与 CvBridge 是否可用
+    N->>T: 创建 force、force_resultant、rectify、depth、marker2d、status 发布者
+    N->>SDK: Sensor.create(serial, rectify_size)
+    alt 传感器初始化失败
+        N->>T: status 发布 error 信息
+        N->>N: rospy.signal_shutdown 后返回
+    else 初始化成功
+        loop rospy.Rate(publish_rate)，直到 rospy.is_shutdown
+            N->>SDK: selectSensorInfo(Force, ForceResultant, Rectify, Depth, Marker2D)
+            SDK-->>N: force, res_force, src, depth, marker2d
+            N->>T: force 与 marker2d 以 Float32MultiArray 发布
+            N->>T: force_resultant 以 WrenchStamped 发布（前三个为力，后三个为力矩）
+            N->>CB: cv2_to_imgmsg(src, bgr8) 与 cv2_to_imgmsg(depth, 32FC1)
+            CB-->>N: sensor_msgs/Image
+            N->>T: rectify 与 depth 图像发布
+            N->>T: status 发布 ok
+        end
+        N->>SDK: sensor.release()
+    end
+```
+
+图依据：xense-ros@c8395f5，实际读过 README.md、src/xense_ros/launch/xense_publisher.launch、src/xense_ros/scripts/xense_publisher.py（全文）；另读过 src/xense_ros2/xense_ros2/xense_publisher_ros2.py 与 launch 文件，仅用于对比 ROS2 入口，未出图。xensesdk 与 cv_bridge 为外部依赖，未在本仓库内读到实现，SDK 调用只按本仓库调用点画。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +104,8 @@ institutions:
 - [xense-ros 源码归档](../../sources/repos/xense-ros.md)（<https://github.com/XenseRobotics/xense-ros>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：XenseRobotics/xense-ros@c8395f5，读过 README.md、src/xense_ros/launch/xense_publisher.launch、src/xense_ros/scripts/xense_publisher.py、src/xense_ros2/xense_ros2/xense_publisher_ros2.py、src/xense_ros2/launch/xense_publisher_launch.py、src/xense_ros2/setup.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

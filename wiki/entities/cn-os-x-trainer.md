@@ -55,6 +55,48 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python scripts/environments/teleoperation/teleop_se3_agent.py --task=LeIsaac-XTrainer-PickCube-v0 --teleop_device=xtrainerleader --num_envs=1 --device=cuda --enable_cameras --multi_view`（需 Isaac Sim 4.5 与 Isaac Lab 0.47.1 环境；`--teleop_device` 也可取 `bi_keyboard` 或 `xtrainer_vr`）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant S as scripts/environments/teleoperation/teleop_se3_agent.py main
+    participant D as source/leisaac/devices/lerobot/xtrainer_leader.py XTrainerLeader
+    participant AG as xtrainer_utils 的 BimanualAgent 与 DobotAgent
+    participant A as devices/device_base.py Device.advance
+    participant ENV as Isaac Lab 环境 gym.make 得到的 env 外部依赖
+
+    S->>S: AppLauncher 启动 Isaac Sim
+    S->>ENV: parse_env_cfg 与 gym.make 创建 task 环境
+    S->>D: XTrainerLeader(env, left_disabled)
+    D->>AG: 构造 BimanualAgent 左右 DobotAgent
+    D->>D: 启动 _sampling_loop 采样线程 并做 EMA 平滑
+    S->>ENV: env.reset()
+    S->>D: teleop_interface.reset()
+    loop simulation_app.is_running()
+        S->>A: teleop_interface.advance()
+        A->>D: input2action()
+        D->>D: get_device_state 取最新 14 维关节状态
+        D-->>A: 含 joint_state 与 motor_limits 的字典
+        A->>ENV: cfg.preprocess_device_action 转为动作张量
+        A-->>S: actions
+        alt 收到 R 或 N 按键回调
+            S->>ENV: env.reset 或 manual_terminate 标记成功
+        else actions 为 None 即未开始
+            S->>ENV: env.render()
+        else 正常动作
+            S->>ENV: env.step(actions)
+        end
+        S->>S: 录制开启时由 StreamingRecorderManager 写入 HDF5
+        S->>S: RateLimiter.sleep 按 step_hz 节拍等待
+    end
+    S->>ENV: env.close() 与 simulation_app.close()
+```
+
+图依据：embodied-dobot/x-trainer@5862c3b，实际读过 `README.md`、`scripts/environments/teleoperation/teleop_se3_agent.py`（`main` 主循环）、`source/leisaac/leisaac/devices/lerobot/xtrainer_leader.py`（采样线程、`input2action`、`get_device_state`）、`source/leisaac/leisaac/devices/device_base.py`（`Device.advance`）。`xtrainer_utils` 与 Isaac Lab 本体未读（后者为外部依赖，`dependencies/IsaacLab` 在仓库中为子模块占位），图中仅据调用名标注；VR 分支的 Flask 子进程只在 `xtrainer_vr` 模式下出现，未画。未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +108,7 @@ institutions:
 - [x-trainer 源码归档](../../sources/repos/x-trainer.md)（<https://github.com/embodied-dobot/x-trainer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：embodied-dobot/x-trainer@5862c3b，读过 README.md、scripts/environments/teleoperation/teleop_se3_agent.py、source/leisaac/leisaac/devices/lerobot/xtrainer_leader.py、source/leisaac/leisaac/devices/device_base.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

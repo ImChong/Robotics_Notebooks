@@ -59,6 +59,46 @@ README 的开发链还引用厂商 GitLab `rbclient` 和 `pub_client.py`。SDK �
 
 截至 2026-10-08，公开 README 能确认生命周期和配置项，但不足以证明服务端、录像器和完整数据采集栈开放。原策展摘要提到示范采集，本页按可核实接口收窄描述；实际采集/导出契约见 M7 VLA 基线。未确认单一首发日期。
 
+## 源码运行时序图
+
+入口：`python l3_pub_client.py --cmd start_sdk`（或 `--cmd start_teleop` / `--cmd stop_sdk` / `--type webxr --cmd start --camera-type dummy` 等，同一入口分派）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 操作者（shell）
+    participant M as main 解析参数
+    participant W as WR1ControlDemo 节点
+    participant S as StartControlDemo 节点
+    participant P as MinimalPublisher 节点
+    participant R as 机器人侧 ROS 2 服务与动作（仓库外）
+
+    U->>M: python l3_pub_client.py --cmd ...
+    alt --cmd start_sdk
+        M->>W: start_sdk()
+        W->>R: /dynamic_launch（DynamicLaunch，launch_mode=pos）
+        W->>R: /ready_service（Trigger，初始化关节模块）
+        W->>R: /simple_trajectory 动作（traj_type=0，复位 4s）
+        W->>R: /simple_trajectory 动作（traj_type=2，抬臂 4s）
+        W->>R: /activate_service（Trigger，激活关节模块）
+    else --cmd stop_sdk
+        M->>W: stop_sdk()
+        W->>R: /stop_launch（Trigger）
+    else --cmd start_teleop
+        M->>S: run()
+        S->>R: /Start_EE_Retarget（Trigger）
+    else --cmd enable_rl --mode 0 或 1
+        M->>P: start_cmd() 调 run3("enableRL")
+        P->>R: /teleoperation/service（StringMessage，JSON 含 command 与 message）
+    else --type webxr / retargetx / mpc / rl
+        M->>P: start_any() 组装 data_dict
+        Note over M,P: webxr start 缺 --camera-type、retargetx start 缺 --hand 或 --mocap 时 sys.exit
+        P->>R: /teleoperation/service（StringMessage，JSON 含 type 与 message）
+    end
+```
+
+图依据：roboterax/teleop_client@578353e，l3_pub_client.py、q5_pub_client.py、README.md
+
 ## 关联页面
 
 - [星动纪元](./robotera.md)
@@ -75,6 +115,7 @@ README 的开发链还引用厂商 GitLab `rbclient` 和 `pub_client.py`。SDK �
 
 - [官方 README 补核](../../sources/repos/teleop_client.md)
 - [既有国内具身开源策展](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：roboterax/teleop_client@578353e，读过 README.md、l3_pub_client.py、q5_pub_client.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

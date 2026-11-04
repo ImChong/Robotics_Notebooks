@@ -61,11 +61,54 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：服务端 `uv run scripts/serve_policy.py policy:checkpoint --policy.config=<config> --policy.dir=<checkpoint>`；机器人端 `python scripts/pika_inference-ros2.py`（另有 `aloha_inference-joint-ros2.py` 等同构脚本）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Op as 操作者
+    participant Srv as scripts/serve_policy.py（main）
+    participant Cfg as policy_config.create_trained_policy
+    participant WS as websocket_policy_server.WebsocketPolicyServer
+    participant Pol as policy.Policy（infer）
+    participant Cli as scripts/pika_inference-ros2.py（RosOperator）
+    participant CP as openpi_client.WebsocketClientPolicy
+    participant Ros as ROS2 话题（相机 / 关节 / 位姿）
+    Op->>Srv: 启动策略服务
+    Srv->>Cfg: create_trained_policy(config, checkpoint_dir)
+    Cfg-->>Srv: Policy（模型 + 输入/输出 transforms + norm_stats）
+    Srv->>WS: WebsocketPolicyServer(policy, port, metadata, rtc_config)
+    Srv->>WS: serve_forever（asyncio.run 监听 0.0.0.0:port）
+    Op->>Cli: 启动机器人推理脚本
+    Cli->>Cli: main：rclpy.init，RosOperator(args)，rclpy.spin
+    Cli->>Ros: __init__ 创建订阅者与控制发布者
+    Cli->>Cli: __init__ 启动 model_inference 线程
+    Cli->>CP: make_policy → WebsocketClientPolicy(host, port)
+    CP->>WS: ws 连接（_wait_for_server）
+    WS-->>CP: 首包 msgpack metadata
+    loop model_inference 线程内循环
+        Ros-->>Cli: 回调写入帧缓存（get_frame / check_frame）
+        Cli->>Cli: inference_process(args, t, ros_operator, policy)
+        Cli->>CP: policy.infer(observation)
+        CP->>WS: msgpack 观测（可含 prev_action_chunk，RTC 时）
+        WS->>Pol: infer(obs)
+        Pol-->>WS: actions（已反归一化）
+        WS-->>CP: msgpack action + server_timing
+        CP-->>Cli: action_pred['actions']
+        Cli->>Ros: arm_joint_state_ctrl / arm_end_pose_ctrl 发布控制话题
+    end
+```
+
+图依据：agilexrobotics/openpi-agilex@432577c，读过 `README.md`、`scripts/serve_policy.py`、`src/openpi/policies/policy_config.py`、`src/openpi/policies/policy.py`、`src/openpi/serving/websocket_policy_server.py`、`packages/openpi-client/src/openpi_client/websocket_client_policy.py`、`scripts/pika_inference-ros2.py`（未运行）。
+
 ## 参考来源
 
 - [openpi-agilex 源码归档](../../sources/repos/openpi-agilex.md)（<https://github.com/agilexrobotics/openpi-agilex>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：agilexrobotics/openpi-agilex@432577c，读过 `README.md`、`scripts/serve_policy.py`、`src/openpi/policies/policy_config.py`、`src/openpi/policies/policy.py`、`src/openpi/serving/websocket_policy_server.py`、`packages/openpi-client/src/openpi_client/websocket_client_policy.py`、`scripts/pika_inference-ros2.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

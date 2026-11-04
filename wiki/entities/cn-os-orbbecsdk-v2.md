@@ -61,11 +61,39 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：编译 `examples/0.basic.quick_start` 后运行其生成的 `quick_start` 可执行文件。本图只覆盖仓库内示例程序对 SDK 的调用；`libOrbbecSDK` 核心实现在仓库中是预编译库（仓库只含头文件与 `.so`），其内部流程不在本图范围内，不臆造。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant QS as quick_start.cpp（main）
+    participant P as ob::Pipeline（libobsensor 头文件 / 预编译 SDK）
+    participant W as ob_smpl::CVWindow（examples/utils/utils_opencv.cpp）
+    U->>QS: 运行 quick_start
+    QS->>P: ob::Pipeline pipe
+    QS->>P: pipe.start()（默认配置，可由 *SDKConfig.xml 修改）
+    Note over P: 预编译 libOrbbecSDK 内部，仓库内无核心源码
+    QS->>W: CVWindow win("QuickStart", 1280, 720, ARRANGE_ONE_ROW)
+    loop while win.run() 为真
+        W->>W: run()：cv::imshow，cv::waitKey(1)
+        QS->>P: pipe.waitForFrameset()（默认超时 1000ms）
+        P-->>QS: frameSet
+        QS->>W: win.pushFramesToView(frameSet)
+    end
+    QS->>P: pipe.stop()
+```
+
+图依据：orbbec/OrbbecSDK_v2@f5d5993，读过 `README.md`、`examples/0.basic.quick_start/quick_start.cpp`、`examples/0.basic.quick_start/CMakeLists.txt`、`examples/utils/utils_opencv.cpp`（部分，`CVWindow::run` 一带）；未运行代码。
+
 ## 参考来源
 
 - [OrbbecSDK_v2 源码归档](../../sources/repos/orbbecsdk_v2.md)（<https://github.com/orbbec/OrbbecSDK_v2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：orbbec/OrbbecSDK_v2@f5d5993，读过 `README.md`、`examples/0.basic.quick_start/quick_start.cpp`、`examples/0.basic.quick_start/CMakeLists.txt`、`examples/utils/utils_opencv.cpp`（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

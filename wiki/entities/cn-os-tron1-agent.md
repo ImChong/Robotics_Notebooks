@@ -55,6 +55,58 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python main.py --config_path config/config.yaml`（[start.sh](start.sh) 以无参数方式启动，默认读取 config/config.yaml）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户（语音）
+    participant MA as main.py
+    participant R as Robot（bailing/robot.py）
+    participant ASR as FunASR（语音识别）
+    participant TM as TaskManager（plugins/task_manager.py）
+    participant LLM as OpenAILLM（bailing/llm.py，Ollama）
+    participant TA as TronAction（plugins/functions/tron_action.py）
+    participant FL as pocket Flow（third_party/tron）
+    participant WS as TronWebsocket（third_party/tron/communication）
+    participant TTS as PiperTTS 与播放器
+    participant RB as TRON1 机器人 ws://ip:5000（仓库外）
+
+    MA->>R: Robot(config_path)
+    R->>TM: call_tools init_client 异步建立连接
+    TM->>WS: TronWebsocket(robot_ip)
+    WS->>RB: WebSocket 连接
+    MA->>R: listen_dialogue(push2web)，回调 POST 127.0.0.1:50001/add_message
+    MA->>R: run()，录音与 VAD 线程写入 vad_queue
+    loop _duplex 循环
+        U->>R: 语音经录音与 VAD 线程（vad_queue）
+        R->>ASR: recognizer(voice_data)
+        ASR-->>R: text
+        Note over R: 唤醒词 / 退出词判断，有效文本则 executor.submit(chat, text)
+        R->>R: chat 与 chat_tool_by_content
+        alt 规则匹配 preprocess_asr_result 命中
+            R->>R: 得到 functions 列表
+        else 未命中且 use_llm
+            R->>LLM: response_call(dialogue, get_functions())
+            LLM-->>R: 流式 chunk，含 tools_calls（TronAction 参数）
+        end
+        loop 每个 function
+            R->>TM: call_tools → tool_call(name, args)
+            TM->>TA: TronAction(**args)，ToolType.WAIT 同步调用
+            TA->>FL: flow.run({action_commands})
+            FL->>FL: CallLLM.post 校验 stand / sit / twist / height / light
+            FL->>WS: 分派到 CallSit / CallStand / CallTwist / CallHeight / CallLight
+            WS->>RB: send_request（request_sitdown、request_walk_mode、request_twist 等）
+        end
+        R->>TTS: speak_and_play(response)，to_tts 后 player.play
+        Note over R: 用户文本与回复经 callback(push2web) 发往 Web 面板
+    end
+```
+
+图依据：limxdynamics/tron1-agent@bf564fc，main.py、start.sh、config/config.yaml、bailing/robot.py、plugins/task_manager.py、plugins/functions/tron_action.py、third_party/tron/action/base_action.py、third_party/tron/communication/tron_websocket.py、third_party/tron/communication/base_websocket.py、third_party/tron/flow/base.py、third_party/tron/app/pocket.py、bailing/llm.py
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +118,8 @@ institutions:
 - [tron1-agent 源码归档](../../sources/repos/tron1-agent.md)（<https://github.com/limxdynamics/tron1-agent>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：limxdynamics/tron1-agent@bf564fc，读过 main.py、start.sh、config/config.yaml、bailing/robot.py（关键调用段）、plugins/task_manager.py、plugins/functions/tron_action.py、third_party/tron/action/base_action.py、third_party/tron/communication/tron_websocket.py；对 bailing/llm.py、third_party/tron/communication/base_websocket.py、third_party/tron/flow/base.py、third_party/tron/app/pocket.py 仅检索函数定义；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

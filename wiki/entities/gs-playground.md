@@ -109,6 +109,63 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 - 训练 pipeline
 - 完整 benchmark 套件
 
+## 源码运行时序图
+
+入口：`uv run python demo/navigation/robot_locomotion.py --config configs/go2_scene1.json`（导航/运动控制演示；`replay.py` 批量 3DGS 回放另走 `demo/live_demo/replay.py`，未画入本图）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant CLI as robot_locomotion.py main()
+    participant Cfg as configs/*.json
+    participant MX as motrixsim（msd / SceneData / step / run）
+    participant Rob as utils/robot.py（Go2Robot / G1Robot）
+    participant Pol as utils/policy.py（LocomotionPolicy，onnxruntime）
+    participant Kb as utils/controller.py（KeyboardCommandAdapter）
+    participant GS as gaussian_renderer（GSRendererMotrixSim）
+    participant Col as nav_collect_common.py（NavDataCollector）
+
+    CLI->>Cfg: load_config() 读取 JSON 配置
+    CLI->>MX: msd.from_file(场景 XML) + msd.from_str(相机 MJCF)
+    CLI->>MX: robot.attach(相机) + scene.build() 得到 model
+    CLI->>Rob: RobotClass(model.get_body(base_link_name))
+    CLI->>Pol: PolicyClass(robot)，载入 *_policy.onnx
+    CLI->>MX: RenderApp().launch(model)，SceneData(model)
+    CLI->>GS: collect_scene/robot_gaussians，GSRendererMotrixSim(gaussians, model)
+    CLI->>MX: run.render_loop(timestep, fps, phys_step, render_step)
+
+    loop 每个物理步 phys_step
+        CLI->>MX: mstep(model, data)
+        opt 步数为控制周期整数倍（n_ctrl，约 0.02 s）
+            CLI->>Pol: policy.step(data, keyboard.command)
+            Pol->>Pol: scale_command + get_observation
+            Pol->>Rob: local_linear_vel / gyro / gravity / dof_pos / dof_vel
+            Pol->>Pol: compute_action()，ONNX 推理
+            Pol->>Rob: set_actuator_ctrls(action x 0.5 + default_angles)
+            Pol->>Rob: base_pose() 判断 is_fallen()
+            opt 跌倒且 auto_reset
+                CLI->>MX: data.reset(model)，重设初始 qpos
+            end
+            opt --save_data
+                CLI->>Col: add_step(base_pose, ctrl)
+            end
+        end
+    end
+
+    loop 每帧 render_step
+        CLI->>Kb: update_from_input(render.input)
+        Kb-->>CLI: command [vx, vy, wz]
+        CLI->>GS: update_gaussians(data)
+        CLI->>GS: render(model, data, [head_camera_id, -1], 480, 360)
+        opt --save_data
+            CLI->>Col: add_frame(head_rgb, system_rgb)
+        end
+        CLI->>MX: render.sync(data)
+    end
+```
+
+图依据：discoverse-dev/gs_playground@33127ca，实际读过 `demo/navigation/robot_locomotion.py`、`demo/navigation/nav_collect_common.py`、`demo/navigation/utils/{policy,robot,controller}.py`、`demo/live_demo/replay.py`、`README.md`、`pyproject.toml`；物理步进与渲染循环细节位于外部包 motrixsim / gaussian_renderer 中，未读其源码，未运行代码。
+
 ## 关联页面
 
 - [Genesis 仿真器](./genesis-sim.md) — 同为新一代高吞吐仿真，侧重多物理场
@@ -132,3 +189,4 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 
 - [sources/repos/gs_playground.md](../../sources/repos/gs_playground.md)
 - [discoverse-dev/gs_playground GitHub Repo](https://github.com/discoverse-dev/gs_playground)
+- 源码核对（2026-11-02）：discoverse-dev/gs_playground@33127ca，读过 README.md、pyproject.toml、demo/navigation/robot_locomotion.py、demo/navigation/nav_collect_common.py、demo/navigation/utils/policy.py、demo/navigation/utils/robot.py、demo/navigation/utils/controller.py、demo/live_demo/replay.py；时序图依据以上文件，未运行代码。
