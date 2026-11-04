@@ -123,6 +123,7 @@ sequenceDiagram
 
 - [Jujutsu 仓库归档](../../sources/repos/jj-vcs-jujutsu.md)
 - [Jujutsu 官方文档](https://docs.jj-vcs.dev/latest/)
+- 源码核对（2026-11-02）：jj-vcs/jj@fc8cc4f，读过 cli/src/main.rs、cli/src/cli_util.rs（相关函数）、cli/src/commands/commit.rs、cli/src/commands/mod.rs；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

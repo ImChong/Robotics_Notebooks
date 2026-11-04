@@ -46,6 +46,54 @@ Desigma 是 Rust 编写的开源桌面设计工具，提供界面绘制、组件
 - 普通本地编辑与在线协作、字体下载是不同使用方式；不能把所有功能都视为离线运行。
 - 可用于探索机器人控制面板或遥操作界面原型；这是基于通用设计功能的应用推论，仓库未展示机器人专用集成。
 
+## 源码运行时序图
+
+入口：源码启动 `cargo run --release -p desigma-app`（可附文件路径；`--bridge` 打开本机 agent 桥接）。`crates/desigma-app/src/main.rs` 的 `main()` 解析参数后交给 eframe，窗口生命周期由 `shell.rs` 的 `Shell`（实现 `eframe::App`）驱动。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户 / 操作系统
+    participant M as main.rs main()
+    participant INST as instance.rs 单实例转发
+    participant EF as eframe::run_native
+    participant SH as shell.rs Shell
+    participant APP as app.rs App 文档状态
+    participant BR as bridge/server.rs 本机桥接
+    participant DR as canvas/draw.rs 画布绘制
+    participant EXT as 外部 agent 客户端
+
+    U->>M: 启动 desigma，可带 FILE 或 desigma://join 链接
+    M->>M: crash::install，cli::parse 解析参数
+    opt --help、--version、--export-animation 等
+        M-->>U: 输出后直接返回
+    end
+    opt 仅有 FILE 或 join 参数
+        M->>INST: instance::forward 交给已运行的实例
+    end
+    M->>EF: run_native(Shell::new(cc, opts))
+    EF->>SH: Shell::new，加载 library，canvas::gpu::init，按参数打开文档
+    opt --bridge 或已保存的偏好
+        SH->>BR: app.start_bridge，监听 127.0.0.1 随机端口
+    end
+    loop 每帧
+        EF->>SH: logic(ctx)
+        SH->>APP: poll_external_change，poll_bridge，handle_opens
+        SH->>APP: collab::pump 协作同步
+        EF->>SH: ui(ui)，poll_fonts，draw(ui)
+        SH->>APP: autosave_tick，history_tick，motion_tick
+        SH->>SH: handle_keys，handle_drops
+        SH->>DR: 按布局矩形绘制左栏、画布、右栏（board 时工具栏浮于画布）
+        DR->>APP: 读取当前文档与选择状态后绘制
+    end
+    EXT->>BR: 带 token 的本机请求
+    BR->>APP: 经 poll_bridge 把请求交给编辑器
+    APP-->>BR: 返回调用结果
+    EF->>SH: 关闭窗口时 flush_notes，save_close_version，flush_autosave
+```
+
+图依据：deepfounder-ai/desigma@e0d5c3a，实际读过 README.md、Cargo.toml（workspace 成员）、crates/desigma-app/src/main.rs（main 段）、crates/desigma-app/src/shell.rs（Shell::new、logic、ui、draw 段）、crates/desigma-app/src/app.rs（仅函数名与 new）、crates/desigma-app/src/canvas/draw.rs（函数名）、crates/desigma-app/src/bridge/server.rs（start、dispatch 等函数名）。未读 bridge 与 poll_bridge 的请求/回复实现细节、instance.rs、canvas/gpu.rs、desigma-render 与 desigma-doc 的内部；外部 agent 客户端（desigma-mcp）未读，仅按 server.rs 的调用入口标注。
+
 ## 关联页面
 
 - [Tidy Design](./tidy-design.md) — 同样提供设计画布和 MCP 接口，可对照部署与协作方式。
@@ -55,6 +103,7 @@ Desigma 是 Rust 编写的开源桌面设计工具，提供界面绘制、组件
 
 - [Desigma 仓库归档](../../sources/repos/deepfounder-desigma.md)
 - [官方 README](https://github.com/deepfounder-ai/desigma#readme)
+- 源码核对（2026-11-02）：deepfounder-ai/desigma@e0d5c3a，读过 README.md、Cargo.toml、crates/desigma-app/src/main.rs、crates/desigma-app/src/shell.rs、crates/desigma-app/src/app.rs、crates/desigma-app/src/canvas/draw.rs、crates/desigma-app/src/bridge/server.rs；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
