@@ -103,6 +103,42 @@ flowchart LR
 - 图形审计检查穿插、端点和绘制深度等事项，不涉及材料强度、公差链、运动学可达性、碰撞安全或可制造性。
 - 适用于创作解释图；涉及产品结构、CAD 出图或机器人仿真资产时，应转交对应专业 CAD 与机器人描述工作流。
 
+## 源码运行时序图
+
+入口：在 Claude Code 中输入 `/anatomy <想解释的概念>`（Claude 读取仓库根目录的 `SKILL.md`）；脚本侧入口为 `node examples/<name>/build.mjs [--light] [--audit]`，`scripts/` 下的检查脚本需要本机 Chrome。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 使用者
+  participant C as Claude（按 SKILL.md 工作流）
+  participant B as build.mjs（示例或新写的构建脚本）
+  participant K as kit/iso-kit.mjs
+  participant I as scripts/inline-kit.mjs
+  participant A as kit/audit.mjs
+  participant Q as scripts/lines.mjs · capture.mjs
+  participant O as 输出（独立 HTML / PNG）
+  U->>C: /anatomy 解释某个技术概念（交互式）
+  C->>C: 先打开最接近的 examples/*，定尺寸，列零件清单
+  C->>B: 编写几何模块与场景的 build.mjs
+  B->>K: import * as k from kit/iso-kit.mjs
+  B->>K: fitProjection / solidSvg / lineSvg / dotsSvg / wireSvg / faceTextSvg
+  B->>K: figureSvg 组装卡片，plateHtml 组装页面
+  B->>I: kitScript()（需要 WebGL 或 3D 时另加 glScript / turnScript）
+  B->>O: pageHtml({ script }) 写出独立 HTML
+  opt 含管线、线缆或旋转件
+    B->>A: node build.mjs --audit：recorder → settle → auditOrExit
+    A-->>B: audit passed，或非零退出并列出失败项
+  end
+  C->>Q: node scripts/lines.mjs page.html --out shots/lines.png
+  Q-->>C: line ends: 0，并输出标注 PNG
+  C->>Q: node scripts/capture.mjs（桌面、390 宽、悬停与运动时刻）
+  Q-->>C: 截图，Claude 逐张读图检查
+  C->>U: 交付独立页面与截图
+```
+
+图依据：anatomy@1482e84，读过 `README.md`、`SKILL.md`（工作流与 Setup 表）、`examples/push-button/build.mjs`（前 60 行）；`scripts/capture.mjs` 仅检索了入口与 Chrome 查找段；`kit/audit.mjs`、`scripts/lines.mjs` 的调用关系依据 `SKILL.md` 与 `README.md` 的描述，未读其源码。未运行代码。注意：图中「Claude」步骤由模型执行，构建与检查脚本本身不调用模型。
+
 ## 关联页面
 
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 区分说明插图与制造级几何。
@@ -113,6 +149,7 @@ flowchart LR
 
 - [Anatomy 官方仓库归档](../../sources/repos/anatomy.md)
 - [Anatomy 官方项目页归档](../../sources/sites/anatomy.md)
+- 源码核对（2026-11-02）：wheresryan22/anatomy@1482e84，读过 `README.md`、`SKILL.md`、`examples/push-button/build.mjs`（前 60 行），检索过 `scripts/capture.mjs`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

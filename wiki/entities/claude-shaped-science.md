@@ -75,7 +75,6 @@ flowchart TD
 ## 源码运行时序图
 
 入口：在 BootLoops 仓库根目录执行 `python3 run_selftests.py`（可加 `--par 8`、`--timeout 600` 或包名）。下图描述的是该验证入口在仓库源码中的实际调用链，不是文章中的科研流程。
-
 ```mermaid
 sequenceDiagram
     autonumber

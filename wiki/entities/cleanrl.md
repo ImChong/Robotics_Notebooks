@@ -86,7 +86,6 @@ flowchart LR
 ## 源码运行时序图
 
 入口：`uv run python cleanrl/ppo.py --seed 1 --env-id CartPole-v0 --total-timesteps 50000`（README「Get started」所列命令；未加 `--track` 时不走 wandb 分支）。下图是 `cleanrl/ppo.py` 的 `__main__` 训练主流程，仓库内其他单文件算法结构类似，但未逐一核对。
-
 ```mermaid
 sequenceDiagram
     autonumber
@@ -97,7 +96,7 @@ sequenceDiagram
     participant ENV as gym.vector.SyncVectorEnv
     participant MK as make_env thunk
     participant AG as Agent nn.Module
-    participant OPT as optim.Adam
+    participant ADAM as optim.Adam
 
     U->>PPO: uv run python cleanrl/ppo.py --env-id ...
     PPO->>TY: tyro.cli(Args) 解析命令行
@@ -110,7 +109,7 @@ sequenceDiagram
     PPO->>ENV: envs.reset(seed)
     loop 每个 iteration
         opt anneal_lr 为真
-            PPO->>OPT: 按线性衰减更新 param_groups lr
+            PPO->>ADAM: 按线性衰减更新 param_groups lr
         end
         loop 每个 rollout step（num_steps）
             PPO->>AG: get_action_and_value(next_obs)（no_grad）
@@ -128,7 +127,7 @@ sequenceDiagram
                 PPO->>AG: get_action_and_value(b_obs 小批量, b_actions)
                 AG-->>PPO: newlogprob、entropy、newvalue
                 PPO->>PPO: 计算 ratio、裁剪后的 pg_loss、v_loss 与熵项
-                PPO->>OPT: zero_grad、loss.backward、clip_grad_norm_、step
+                PPO->>ADAM: zero_grad、loss.backward、clip_grad_norm_、step
             end
             opt approx_kl 超过 target_kl
                 PPO->>PPO: 提前结束 epoch 循环
