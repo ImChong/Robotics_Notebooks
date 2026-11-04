@@ -55,6 +55,57 @@ CAD/FEM/CFD 能力需由 FreeCAD 模块及外部求解器支撑；输出仍须�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 Apache-2.0。 涉及商业软件时，安装包和有效许可证需由使用者自行提供。
 
+## 源码运行时序图
+
+入口有两个：CLI `python3 -m ankusdrive box --w 10 --d 20 --h 5 -o part.FCStd`（`ankusdrive/__main__.py` → `cli.main`），以及 MCP 服务 `ankusdrive mcp`（stdio，`cli.cmd_mcp` → `mcp_server.run`）。两条路径都经 `client.Worker` 拉起 `freecadcmd` 子进程运行 `worker.py`，由其中的 `HANDLERS` 表执行 FreeCAD 操作。
+
+```mermaid
+sequenceDiagram
+    participant U as 终端用户
+    participant LLM as LLM 客户端 MCP
+    participant CLI as cli.py main box
+    participant MCP as mcp_server.py FastMCP _call
+    participant W as client.py Worker
+    participant FC as freecadcmd 子进程 worker.py
+    participant H as HANDLERS 表 例如 _h_add_primitive
+
+    Note over U,H: 路径 A CLI 一次性命令
+    U->>CLI: python3 -m ankusdrive box --w 10 --d 20 --h 5 -o part.FCStd
+    CLI->>W: with Worker() 创建客户端
+    W->>FC: Popen([freecadcmd, worker.py]) 管道 stdin 与 stdout
+    FC->>FC: _main 启动，复制响应 fd，就绪后回 ready
+    FC-->>W: ready 响应
+    CLI->>W: call new_document
+    W->>FC: 一行 JSON 请求 含 id method params
+    FC->>H: HANDLERS[method](params)
+    H-->>FC: 结果字典
+    FC-->>W: _respond 写回一行 JSON
+    W-->>CLI: 结果
+    CLI->>W: call add_primitive（box 与尺寸）
+    W->>FC: JSON 请求
+    FC->>H: _h_add_primitive
+    CLI->>W: call save_document（path）
+    W->>FC: JSON 请求
+    FC->>H: _h_save_document
+    CLI->>W: 退出 with 块
+    W->>FC: method shutdown
+    FC-->>W: bye 并退出循环
+
+    Note over LLM,H: 路径 B MCP 工具调用
+    LLM->>MCP: 调用 MCP 工具
+    MCP->>MCP: _ensure_worker 按 workspace 复用或新建 Worker
+    MCP->>W: worker.call(_method, **params)
+    W->>W: 持有 _call_lock 完成一次写读往返
+    W->>FC: JSON 请求
+    FC->>H: HANDLERS[method](params)
+    H-->>FC: 结果或异常
+    FC-->>W: 成功 result 或 error 含 traceback
+    W-->>MCP: 结果，错误转 RuntimeError
+    MCP-->>LLM: 工具返回值
+```
+
+图依据：gchen19/AnkusDrive@bcbfab3，实际读过 `README.md`（grep 安装与 CLI 用法）、`ankusdrive/__main__.py`、`ankusdrive/cli.py`（模块说明、`cmd_box`、`cmd_mcp`、`main`，局部阅读）、`ankusdrive/client.py`（`Worker.__init__` 的 Popen 与 `call`，局部与 grep）、`ankusdrive/worker.py`（`handler` 装饰器、`_respond`、`add_primitive` / `save_document` 注册处、`_main` 的分派与 shutdown 分支，局部阅读）、`ankusdrive/mcp_server.py`（`_ensure_worker`、`_call`、`run`，grep 与局部阅读）。handler 内的几何实现，以及 `mainthread` 与 `_cases` 的并发细节未展开。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -65,6 +116,7 @@ CAD/FEM/CFD 能力需由 FreeCAD 模块及外部求解器支撑；输出仍须�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/gchen19-ankusdrive.md)
 - [gchen19/AnkusDrive 官方仓库](<https://github.com/gchen19/AnkusDrive>)
+- 源码核对（2026-11-02）：gchen19/AnkusDrive@bcbfab3，读过 README.md（grep）、ankusdrive/__main__.py、ankusdrive/cli.py、ankusdrive/client.py（局部）、ankusdrive/worker.py（局部）、ankusdrive/mcp_server.py（局部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

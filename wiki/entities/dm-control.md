@@ -104,6 +104,48 @@ code: https://github.com/google-deepmind/dm_control
 - **安装约束**：官方说明当前版本 **不支持** `pip install -e` 可编辑安装，否则可能与遗留绑定生成逻辑冲突（以仓库 README 为准）。
 - **引用文献**：除 arXiv 2018 外，仓库 README 给出 **Software Impacts（2020）** 的软件论文条目用于 BibTeX 引用；二者分工为「任务与 API 设计」vs「软件与任务集合的持续描述」。
 
+## 源码运行时序图
+
+入口：`from dm_control import suite`，`env = suite.load('cartpole', 'balance')`，随后循环调用 `env.reset()` 与 `env.step(action)`（渲染 `env.physics.render()` 未画入图）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户脚本
+    participant SU as suite/__init__.py load
+    participant CP as suite/cartpole.py balance
+    participant PH as mujoco/engine.py Physics
+    participant ENV as rl/control.py Environment
+    participant TK as cartpole Balance 任务
+    participant MJ as MuJoCo mj_step
+
+    U->>SU: suite.load(domain, task, task_kwargs, environment_kwargs)
+    SU->>SU: build_environment 在 _DOMAINS 中查找 domain.SUITE[task]
+    SU->>CP: balance(time_limit, random, environment_kwargs)
+    CP->>CP: get_model_and_assets 生成 MJCF 模型
+    CP->>PH: Physics.from_xml_string(xml, assets)
+    CP->>TK: Balance(swing_up, sparse, random)
+    CP->>ENV: control.Environment(physics, task, time_limit)
+    SU-->>U: 返回 env（visualize_reward 写入 task）
+    U->>ENV: reset()
+    ENV->>PH: physics.reset_context()
+    ENV->>TK: initialize_episode(physics)，随机化 qpos 与 qvel
+    ENV->>TK: get_observation(physics)
+    ENV-->>U: TimeStep（FIRST）
+    loop 每个控制步 env.step(action)
+        U->>ENV: step(action)
+        ENV->>TK: before_step(action, physics)
+        ENV->>PH: physics.step(n_sub_steps)
+        PH->>MJ: mj_step，或 mj_step2 加 mj_step1 同步状态
+        ENV->>TK: after_step(physics)
+        ENV->>TK: get_reward(physics)
+        ENV->>TK: get_observation(physics)
+        ENV-->>U: TimeStep（observation、reward、discount）
+    end
+```
+
+图依据：google-deepmind/dm_control@f1f91e0，实际读过 dm_control/suite/__init__.py（load、build_environment 段）、dm_control/suite/cartpole.py（balance、get_model_and_assets、initialize_episode、get_observation、get_reward 段）、dm_control/rl/control.py（Environment.reset、step 段；physics.step 的声明行）、dm_control/mujoco/engine.py（step 相关 mj_step 段）。未读 Physics 基类中 step 的完整实现、get_termination 的触发条件，以及渲染路径；时序图中的 physics.step 与 mj_step 之间的桥接按调用名标注。
+
 ## 关联页面
 
 - [MuJoCo（物理引擎）](./mujoco.md) — 底层动力学与接触求解
@@ -153,3 +195,4 @@ code: https://github.com/google-deepmind/dm_control
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/1801.00690>
+- 源码核对（2026-11-02）：google-deepmind/dm_control@f1f91e0，读过 dm_control/suite/__init__.py、dm_control/suite/cartpole.py、dm_control/rl/control.py、dm_control/mujoco/engine.py；时序图依据以上文件，未运行代码。
