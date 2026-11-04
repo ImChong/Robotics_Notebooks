@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-10-30
+updated: 2026-11-04
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
@@ -17,6 +17,7 @@ related:
   - ./paper-morphmimic.md
   - ../concepts/whole-body-control.md
   - ../methods/imitation-learning.md
+  - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
   - ../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/repos/awesome-supermimic.md
   - ../../sources/repos/supermimic-integration-drafts.md
   - ../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md
+  - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 ---
 
 # SuperMimic：用一个可微世界模型扩展人形全身控制

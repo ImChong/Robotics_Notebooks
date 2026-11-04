@@ -3,7 +3,7 @@ type: entity
 tags: [paper, vla, reinforcement-learning, recap, manipulation, physical-intelligence, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 title: π*₀.₆ 与 RECAP
 status: complete
-updated: 2026-10-06
+updated: 2026-11-04
 arxiv: "2511.14759"
 venue: "2025"
 related:
@@ -14,10 +14,12 @@ related:
   - ../concepts/embodied-data-flywheel-minimal-closed-loop.md
   - ./paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
+  - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
   - ../../sources/papers/pistar06_arxiv_2511_14759.md
   - ../../sources/papers/rcl_awesome_wam_2511_14759_0-6-a-vla-that-learns-from-experience.md
   - ../../sources/sites/pi-website-technical-articles.md
+  - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 summary: "π*₀.₆（arXiv:2511.14759）用 RECAP 把示范、自主经验和人工纠正做成优势条件。最难任务吞吐可翻倍、失败率约减半。亦是 RCL Awesome WAM 清单第 265 篇。训练代码未进 openpi。"
 ---
 
