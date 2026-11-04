@@ -14,6 +14,7 @@ related:
   - ../methods/generative-world-models.md
   - ../methods/vla.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/dynasolver_arxiv_2611_03595.md
   - ../../sources/sites/dynasolver.md
@@ -77,6 +78,7 @@ summary: "DynaSolver（arXiv:2611.03595）：面向关节运动引起的动态�
 - [generative-world-models](../methods/generative-world-models.md)
 - [vla](../methods/vla.md)
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
+- [机器人视觉感知栈选型闭环（知识链）](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源
 
