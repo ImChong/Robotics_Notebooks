@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-04] ingest | sources/papers/visualforce_arxiv_2610_04741.md — 收录视觉预测力与开源实现，区分论文和代码反馈路径
+
 ## [2026-11-04] ingest | sources/repos/vlx-flow.md — 收录流式视频理解与双层记忆，模型实现和权重待发布
 
 ## [2026-11-04] ingest | sources/papers/nablamimic-2610-41654.md — 补充论文机制、实验边界与训练源码调用链
