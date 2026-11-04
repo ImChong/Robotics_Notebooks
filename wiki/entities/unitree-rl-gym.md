@@ -87,6 +87,54 @@ python legged_gym/scripts/play.py --task=go2
 - **观测与动作定义与其它官方仓不通用**，禁止混拷配置。
 - Play 默认加载「最近一次 run」——多人共享 logs 目录时易拿错模型。
 
+## 源码运行时序图
+
+官方实现 [unitreerobotics/unitree_rl_gym](https://github.com/unitreerobotics/unitree_rl_gym)（短 SHA `276801e`）：基于 Isaac Gym 的 `legged_gym` 训练框架，`legged_gym/scripts/train.py` 为训练入口，策略优化由外部包 `rsl_rl` 的 `OnPolicyRunner` 完成。环境类在 `envs/base/legged_robot.py` 中实现：每个 RL 步对同一动作执行 `control.decimation` 次物理子步，子步内按 `control_type` 计算关节力矩（位置 PD / 速度 / 直接力矩）后交给 Isaac Gym 仿真。
+
+入口：`python legged_gym/scripts/train.py --task=g1`（`--task` 可取 go2 / g1 / h1 / h1_2；回放验证用 `legged_gym/scripts/play.py`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant TR as train.py<br/>train()
+    participant REG as task_registry<br/>utils/task_registry.py
+    participant ENV as LeggedRobot 及子类<br/>envs/base/legged_robot.py
+    participant BT as BaseTask.__init__<br/>envs/base/base_task.py
+    participant GS as Isaac Gym<br/>gym.simulate / 张量接口
+    participant RUN as OnPolicyRunner<br/>rsl_rl（外部包）
+    U->>TR: python legged_gym/scripts/train.py --task=g1
+    TR->>TR: get_args() 解析命令行
+    TR->>REG: make_env(name=task, args)
+    Note over REG: 导入 envs 时已 register(name, 环境类, 环境配置, PPO 配置)
+    REG->>REG: update_cfg_from_args / set_seed / parse_sim_params
+    REG->>ENV: task_class(cfg, sim_params, physics_engine, sim_device, headless)
+    ENV->>ENV: _parse_cfg(cfg)
+    ENV->>BT: super().__init__（gym.acquire_gym）
+    BT->>ENV: create_sim()
+    ENV->>GS: gym.create_sim → _create_ground_plane → _create_envs
+    ENV->>ENV: _init_buffers() 与 _prepare_reward_function()
+    TR->>REG: make_alg_runner(env, name, args)
+    REG->>RUN: OnPolicyRunner(env, train_cfg, log_dir, device)
+    TR->>RUN: learn(max_iterations, init_at_random_ep_len=True)
+    Note over RUN,ENV: rollout 与 PPO 更新在 rsl_rl 内部完成（未读源码）；每个 RL 步调用 env.step(actions)
+    loop 每个 RL 步
+        RUN->>ENV: step(actions)
+        ENV->>ENV: clip(actions)；render()
+        loop control.decimation 次物理子步
+            ENV->>ENV: _compute_torques：P 为 kp·(a·scale + default − q) − kd·dq，V 与 T 分支另算，再按 torque_limits 裁剪
+            ENV->>GS: set_dof_actuation_force_tensor(torques)
+            ENV->>GS: simulate(sim)；refresh_dof_state_tensor
+        end
+        ENV->>ENV: post_physics_step()：刷新根状态，计算基座线速度、角速度与重力投影
+        ENV->>ENV: check_termination()；compute_reward()（各 _reward_* 加权求和）
+        ENV->>ENV: reset_idx(已终止环境)；compute_observations()
+        ENV-->>RUN: obs, privileged_obs, rew, reset, extras
+    end
+```
+
+图依据：unitree_rl_gym@276801e，读过 `README.md`（训练与回放命令、参数）、`legged_gym/scripts/train.py`、`legged_gym/scripts/play.py`（部分）、`legged_gym/envs/__init__.py`（注册）、`legged_gym/utils/task_registry.py`（`make_env` 与 `make_alg_runner`，部分）、`legged_gym/envs/base/base_task.py`（`__init__` 片段）、`legged_gym/envs/base/legged_robot.py`（`__init__`、`step`、`post_physics_step`、`_compute_torques` 等，部分）。`rsl_rl` 为外部依赖，未读；`V` 与 `T` 控制分支的具体公式未逐行核对。未运行代码。
+
 ## 关联页面
 
 - [unitree_rl_lab](./unitree-rl-lab.md)
@@ -100,6 +148,7 @@ python legged_gym/scripts/play.py --task=go2
 
 - [sources/repos/unitree_rl_gym.md](../../sources/repos/unitree_rl_gym.md)
 - 上游：<https://github.com/unitreerobotics/unitree_rl_gym>
+- 源码核对（2026-11-02）：unitree_rl_gym@276801e，读过 README.md、legged_gym/scripts/train.py、legged_gym/scripts/play.py（部分）、legged_gym/envs/__init__.py、legged_gym/utils/task_registry.py（部分）、legged_gym/envs/base/base_task.py（部分）、legged_gym/envs/base/legged_robot.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

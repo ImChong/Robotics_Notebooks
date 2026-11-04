@@ -75,6 +75,49 @@ summary: "PlatformIO Core 是面向嵌入式开发的开源 Python CLI：通过 
 - **支持能力取决于具体平台包**：板卡、框架、调试器和上传器需逐项核对官方开发平台及工具包支持。
 - **依赖可复现性需要主动管理**：记录平台、库及工具链版本，避免依赖默认最新版本导致历史构建漂移。
 
+## 源码运行时序图
+
+入口：`pio run`（在含 `platformio.ini` 的项目目录执行；`pio test`、`pio device monitor` 的入口未画）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant M as platformio/__main__.py main 与 PlatformioCLI
+    participant RC as platformio/run/cli.py cli 与 process_env
+    participant PC as platformio/project/config ProjectConfig
+    participant EP as platformio/run/processor.py EnvironmentProcessor
+    participant PK as install_project_env_dependencies
+    participant PF as platformio/platform/factory.py PlatformFactory
+    participant PR as platformio/platform/_run.py run 与 _run_scons
+    participant SC as tool-scons 与平台包 builder/main.py
+    participant MON as platformio/device/monitor/command.py device_monitor_cmd
+
+    U->>M: pio run 加可选 -e 环境名与 -t 目标
+    M->>M: configure 后调用 click 命令组 cli
+    M->>RC: PlatformioCLI.get_command 按名称导入 platformio.run.cli
+    RC->>PC: ProjectConfig.get_instance 读取 platformio.ini 并 validate
+    loop 对每个待处理的环境
+        RC->>RC: 目标取命令行参数，否则取 env 段的 targets 配置
+        RC->>EP: EnvironmentProcessor 的 process()
+        EP->>PK: 安装项目环境依赖（库依赖等）
+        EP->>PF: from_env(env, targets, autoinstall=True)
+        PF->>PF: 读取 env 的 platform 配置并加载平台类（必要时自动安装平台包）
+        EP->>PR: platform.run(build_vars, targets, silent, verbose, jobs)
+        PR->>PR: 检查引擎兼容性并定位平台的 builder/main.py
+        PR->>SC: 以 tool-scons 的 scons.py 加 --sconstruct 启动构建
+        SC->>SC: builder/main.py 建立 DefaultEnvironment 并执行 BUILD_SCRIPT
+        SC-->>PR: 返回 returncode
+        PR-->>EP: 返回构建结果
+        EP-->>RC: 返回是否成功
+        opt 目标含 monitor 且本次构建成功
+            RC->>MON: ctx.invoke device_monitor_cmd
+        end
+    end
+    RC-->>U: 打印处理摘要并返回退出码
+```
+
+图依据：platformio/platformio-core@d8c2135，读过 setup.py（entry_points，部分）、platformio/__main__.py、platformio/cli.py（部分）、platformio/run/cli.py（部分）、platformio/run/processor.py（部分）、platformio/platform/_run.py（部分）、platformio/platform/factory.py（部分）、platformio/platform/base.py（部分）、platformio/device/monitor/command.py（部分）、platformio/builder/main.py（部分）。未运行代码。
+
 ## 关联页面
 
 - [Wokwi](./wokwi.md) — 无硬件时验证 MCU 与外围电路交互的仿真环境
@@ -87,6 +130,7 @@ summary: "PlatformIO Core 是面向嵌入式开发的开源 Python CLI：通过 
 - [PlatformIO Core 来源归档](../../sources/repos/platformio-core.md)
 - [PlatformIO Core 官方文档](https://docs.platformio.org/en/latest/core/)
 - [PlatformIO Core 源码仓库](https://github.com/platformio/platformio-core)
+- 源码核对（2026-11-02）：platformio/platformio-core@d8c2135，读过 setup.py、platformio/__main__.py、platformio/cli.py、platformio/run/cli.py、platformio/run/processor.py、platformio/platform/_run.py、platformio/platform/factory.py、platformio/platform/base.py、platformio/device/monitor/command.py、platformio/builder/main.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

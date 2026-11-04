@@ -76,7 +76,53 @@ summary: "MuJoCo MJX 是 MuJoCo 的 JAX/XLA 重实现：以 `mujoco-mjx` 分发�
 - 官方文档：[MJX — MuJoCo documentation](https://mujoco.readthedocs.io/en/stable/mjx.html)
 - 源码与教程入口：[google-deepmind/mujoco `mjx/`](https://github.com/google-deepmind/mujoco/tree/main/mjx)
 
+## 源码运行时序图
+
+入口：`from mujoco import mjx`，随后 `mjx.put_model(m)`、`mjx.put_data(m, d)`，并用 `mjx.step(mx, dx)` 推进一步（公共 API 见 `mjx/mujoco/mjx/__init__.py`）
+
+```mermaid
+sequenceDiagram
+    participant USR as 用户代码 from mujoco import mjx
+    participant IO as mjx/_src/io.py put_model 与 put_data
+    participant FWD as mjx/_src/forward.py step 与 forward
+    participant SEN as mjx/_src/sensor.py
+    participant SOL as mjx/_src/solver.py solve
+    participant WRP as mjx/warp 后端（可选，依赖 warp-lang）
+
+    USR->>IO: put_model(m, device, impl)
+    IO->>IO: _resolve_impl_and_device，按 impl 选择 JAX、WARP 或 CPP 实现
+    IO-->>USR: 返回 mjx.Model
+    USR->>IO: put_data(m, d, device, impl)
+    IO-->>USR: 返回 mjx.Data
+    USR->>FWD: step(m, d)
+    alt 模型与数据都是 WARP 实现且 warp 已安装
+        FWD->>WRP: mjxw_forward.step(m, d)
+        WRP-->>USR: 返回新的 d
+    else JAX 实现
+        FWD->>FWD: forward(m, d)
+        FWD->>FWD: fwd_position、fwd_velocity、fwd_actuation、fwd_acceleration
+        FWD->>SEN: sensor_pos 与 sensor_vel
+        alt 存在约束雅可比 efc_J
+            FWD->>SOL: solve(m, d) 求解约束加速度
+            FWD->>SEN: sensor_acc
+        else 无约束
+            FWD->>FWD: qacc 取 qacc_smooth
+        end
+        alt opt.integrator 为 EULER
+            FWD->>FWD: euler(m, d)
+        else RK4
+            FWD->>FWD: rungekutta4(m, d)
+        else IMPLICITFAST
+            FWD->>FWD: implicit(m, d)
+        end
+        FWD-->>USR: 返回新的 d
+    end
+```
+
+图依据：google-deepmind/mujoco@79ca367，读过 `mjx/README.md`、`mjx/mujoco/mjx/__init__.py`（公共导出）、`mjx/mujoco/mjx/_src/forward.py`（`forward`、`step` 的分支与积分器选择）、`mjx/mujoco/mjx/_src/io.py`（`put_model` 的后端分派与 `_resolve_impl_and_device` 的签名）；`put_data`、`solver.solve`、`sensor` 仅依据导出与调用关系，未逐行通读；未运行代码。
+
 ## 参考来源
 
 - [mujoco-mjx（仓库归档）](../../sources/repos/mujoco-mjx.md)
 - [MuJoCo 文档：MJX（readthedocs 归档）](../../sources/sites/mujoco-mjx-readthedocs.md)
+- 源码核对（2026-11-02）：google-deepmind/mujoco@79ca367，读过 `mjx/README.md`、`mjx/mujoco/mjx/__init__.py`、`mjx/mujoco/mjx/_src/forward.py`、`mjx/mujoco/mjx/_src/io.py`；时序图依据以上文件，未运行代码。
