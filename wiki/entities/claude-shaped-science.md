@@ -72,6 +72,55 @@ flowchart TD
 - 专家指导、计算预算和核验成本是方法的一部分，不能从流程里省去。
 - 本页收录选题方法；文章的跨领域成果未在本次 ingest 中逐项复现。
 
+## 源码运行时序图
+
+入口：在 BootLoops 仓库根目录执行 `python3 run_selftests.py`（可加 `--par 8`、`--timeout 600` 或包名）。下图描述的是该验证入口在仓库源码中的实际调用链，不是文章中的科研流程。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户或代理
+    participant RS as run_selftests.py main
+    participant RM as tools/README.md 包索引
+    participant BJ as tools/BATTERIES.json
+    participant RP as run_pkg
+    participant JL as julia Pkg.instantiate
+    participant PB as 包内 battery 命令
+    participant RES as selftest_results.json
+
+    U->>RS: python3 run_selftests.py
+    RS->>RM: classes() 解析包名与验证类别
+    RS->>BJ: 模块加载时读取 MANIFEST
+    RS->>RS: 未指定包时按 selftest 类别优先排序
+    loop 每个包（--par 大于 1 时用线程池）
+        RS->>RP: run_pkg(pkg, class, timeout)
+        alt 包目录缺失或清单无条目
+            RP-->>RS: missing-dir 或 no-manifest-entry
+        else 存在
+            opt 包内有 Project.toml
+                RP->>JL: julia --project=. Pkg.instantiate()（JULIA_LOCK 串行）
+            end
+            RP->>PB: Popen 执行清单中的 cmd，设置 PYTHONPATH，独立进程组
+            alt 超时
+                RP->>PB: killpg SIGKILL 整个进程组
+            end
+            PB-->>RP: 退出码 rc 与输出尾部
+            alt rc 为 0
+                RP-->>RS: PASS
+            else data-gated 且 rc 为 4 且打印了拒绝原因
+                RP-->>RS: REFUSED（按设计）
+            else 其他情况
+                RP-->>RS: FAIL；仅 usage 报错时为 entry-not-found
+            end
+        end
+        RS-->>U: 逐行打印 status、class 与包名
+    end
+    RS->>RES: json.dump 写入每包记录
+    RS-->>U: 按 class 与 status 计数；有 FAIL 或 no-manifest-entry 则 exit 1
+```
+
+图依据：BootLoops-ai/bootloops@95dfb72，实际读过 `run_selftests.py`（主流程与 run_pkg，未逐行读完尾部 CRASH_LINE 细节）、`tools/README.md`（前 60 行，含验证类别定义）、`tools/BATTERIES.json`（仅前几行结构）。未运行代码。
+
 ## 关联页面
 
 - [BootLoops](./bootloops.md)：计算工具与验证协议的实现边界。
@@ -80,6 +129,7 @@ flowchart TD
 
 ## 参考来源
 
+- 源码核对（2026-11-02）：BootLoops-ai/bootloops@95dfb72，读过 `run_selftests.py`、`tools/README.md`（前 60 行）、`tools/BATTERIES.json`（前几行）；时序图依据以上文件，未运行代码。
 - [Claude-shaped science 来源归档](../../sources/sites/anthropic-claude-shaped-science.md)
 - [Every Joule 项目来源归档](../../sources/sites/every-joule.md)
 
