@@ -1,88 +1,117 @@
-// 011 第 6 幕：写成代码（路线 §L1 推荐做什么「用 PoE 公式手写 2–3 自由度机械臂的 FKinSpace」）。左边编辑器 fk.py，右上终端，右下说明。
+// 011 第 6 幕：写成代码（路线 §L1 推荐做什么「用 PoE 公式手写 2–3 自由度机械臂的 FKinSpace」）。左边编辑器 fk.py，右上终端，右边说明。
 // 代码照 Modern Robotics 官方 Python 库（modern_robotics 1.1.1，core.py 的 FKinSpace：T = M，从最后一个关节往前，T = MatrixExp6(VecTose3(S_i θ_i)) · T）
-// 手写成 fk_space（螺旋轴一行一个，免得讲转置）；输出都按 NumPy 2.5.3 + modern_robotics 1.1.1 实跑结果写（见 ../ep011.py）。
-// 句 1「导入 Numb Pie」「导入两个函数」逐字打出前两行；句 2「乘上角度的螺旋轴，排成四乘四」框 VecTose3（S[i] × theta[i] 先乘好，VecTose3 只负责排成 4 × 4），「算矩阵指数」框 MatrixExp6。
-// 句 3「三样输入」打 def 一行，M、S、theta 依次框亮。句 4「等于零位时、手的位姿」T = M；「从最后一个关节往前」for 一行；
-// 「算矩阵指数，乘到左边」两行，「@ T」框亮。句 5「教材库里」右下写 FKinSpace 也是这样写的。
-// 句 6–7 第 2 页（函数照原样，接着写例子）：M 四行、S 两行；「圆周率除以二」theta 一行，框 np.pi / 2、右下写 π ÷ 2 ≈ 1.57。
-// 句 8「运行它」print 一行，终端 python3 fk.py，四行输出；「负四、一」最后一列的 −4、1 框紫，「x 轴朝左」「y 轴朝下」前两列框红、绿。
-// 句 9「负零」框住 −0.，右下写 −2.2 × 10⁻¹⁶。句 10 第 3 页：例子换成教材例 4.5 的 UR5（M、六根螺旋轴、六个角度）。
-// 句 11 再跑：位置 [0.095 0.109 0.988] 框紫，「和教材上的结果一样」右下打勾；句 12 朝向三行框蓝，右下写「第 6 集：原地往左转 90°」。
-// 2026-11-03（用户反馈）：句 10 先 M 后 S（原先 S 先打，最后一排在窗口滚上来之前出了窗口下沿）；句 11–13 讲打印那两句：方括号里逗号前选横排、
-// 后选列（`:3` 框亮黄、列的切片框紫 / 蓝），右下画 4 × 4 小格子，上面、左边写编号 0–3，选到的格子上色，「位置」（第 4 列前 3 个）紫、「朝向」（左上 3 × 3）蓝；
-// 「保留几位小数」框 .round(3) / .round(2)。
+// 手写成 fk_space（螺旋轴一排一根，免得讲转置）；输出都按 NumPy 2.5.3 + modern_robotics 1.1.1 实跑结果写（见 ../ep011.py）。
+// 2026-11-04（「观众完全零基础」：004 没教 Python 语法）重排：每种写法当场讲清在做什么，讲到哪段、编辑器里哪段垫底色，右边同步写说明。
+//   第 1 页（函数）：终端先收起，右边整列写说明——import / as、from … import、函数是什么、两个导入的函数、def 和起的名字、括号里三样输入、
+//   冒号下面缩进的几句（「缩进」时函数体五句一起打出来，每句开头的四个空格垫底色）、等号是「存进」（第 4 集「叫它 p」）、
+//   for 那一句由里往外：len(theta) → 2、range → 编号 0、1、reversed → 1、0、i 依次取 1、0；S[i] * theta[i]（第 4 集：数组乘上一个数）、
+//   VecTose3 → 4 × 4 存进 se3；MatrixExp6(se3) @ T 乘到左边、存回 T；return T 交回结果；从最后一个关节往前 = 第 4 幕的顺序。
+//   第 2 页（这一集的例子）：终端出来，说明在右下——3 × 3 补 z 轴、螺旋轴一根一排；方括号 = 第 4 集的列表、弧度（第 9 集）、
+//   np.pi = 圆周率 π ≈ 3.14 = 半圈；最后一句：三样输入放进括号交给函数、.round(2)、print；输出数后面的点 = 带小数的数（-4. 就是 −4）；
+//   -0. 是电脑算出的 −0.00000000000000022 保留两位小数。
+//   第 3 页（UR5）：T = fk_space(...) 先存进 T，再分两句打印；切片讲法同 11-03（4 × 4 小格子，上面、左边写编号 0–3）。
 // 时刻取自配音的逐词时间，见 ../ep011.py。
 (function () {
   var E = window.EP011, K = E.K, H = E.HEX;
   var T = {
-    imp: 3.63, lib: 4.72, two: 7.26,
-    vec: 10.52, mul: 9.62, x44: 11.7, exp: 13.27,
-    def: 15.67, three: 16.4, M: 17.41, S: 20.19, th: 21.72,
-    tm: 23.36, eq: 24.4, loop: 26.6, back: 28.05, calc: 28.84, left: 30.76, ret: 31.85, order: 32.13,
-    book: 34.99, same: 38.23,
-    ex: 40.35, m33: 42.95, z: 44.53, m44: 45.66, s6: 46.5, nums: 47.81,
-    two90: 49.55, rad: 52.22, pi: 53.53, half: 54.08, v157: 55.04,
-    run: 57.12, print: 57.89, res: 58.3, p4: 59.88, p1: 60.54, cx: 61.02, cy: 61.98, same2: 62.95,
-    neg0: 65.2, tiny: 68.33, round: 70.15,
-    // 句 10 起（2026-11-03）：先 M 后 S（和代码顺序一致，原先 S 先打、窗口还没滚到，最后一排出了窗口下沿）；句 11–13 讲打印那两句在取什么
-    ur: 73.49, urM: 76.11, urS: 78.19, book2: 79.57, ang: 81.5, angs: [82.17, 82.67, 83.87, 84.36, 84.91, 85.86],
-    last2: 87.31, pr: 87.98, part: 88.99, brk: 90.43, rowsel: 91.38, rowW: 92.4, colsel: 93.04, colW: 93.78,
-    c3: 95.41, head3: 96.37, three: 96.96, lone3: 97.68, idx3: 98.79, fourth: 100.69, py0: 101.49, zero0: 102.46,
-    l1: 104.79, right: 105.68, front3: 106.65, posW: 108.3, keep3: 108.93, l2: 110.37, tl: 111.32, t33: 111.99, rotW: 113.06, keep2: 113.71,
-    run2: 116.02, res2: 117.02, p95: 118.22, p109: 119.46, p988: 120.7, same3: 122.25,
-    rot: 124.84, ep6: 126.0, left90: 127.28
+    // 第 1 页：函数
+    four: 4.27, imp: 5.05, npW: 5.41, asnp: 6.05,
+    from: 8.8, lib: 9.11, impt: 11.3, two: 11.7,
+    fn: 13.61, named: 15.03, input: 16.41, calc0: 17.4, back0: 18.37,
+    these: 20.25, vec: 21.84, mul: 21.99, x44: 24.14, exp: 25.67,
+    defL: 28.68, defW: 30.26, name: 32.75,
+    three: 35.13, M: 37.66, S: 40.49, th: 42.12,
+    colon: 43.76, indent: 45.1, body: 44.74, job: 46.17,
+    tm: 49.12, eq: 52.83, notEq: 54.17, store: 56.86, ep4: 58.4,
+    loop: 62.81, back: 64.95, ln: 66.79, ln2: 69.56,
+    rg: 71.63, rg2: 72.96, zero: 74.27, rv: 75.81, rv2: 76.93, rv3: 77.74,
+    whole: 80.14, iseq: 81.32, each: 83.26, two2: 84.36,
+    calc: 87.71, si: 88.48, ti: 90.24, ep4b: 91.47, star: 92.68, vt: 95.37, x44b: 97.26,
+    calc2: 99.0, me: 99.74, me2: 100.74, at: 102.17, left: 102.92, storeB: 104.39,
+    done: 106.74, ret: 109.14, order: 110.87, ep4m: 112.47,
+    book: 115.42, same: 118.48,
+    // 第 2 页：这一集的例子
+    ex: 120.78, m33: 122.86, z: 124.21, m44: 125.56, s6: 126.92, nums: 127.97, row1: 128.82,
+    two90: 130.8, brk: 132.66, list: 135.11, rad: 136.02, ep9: 137.69,
+    npi: 139.98, pi: 141.11, p314: 142.0, half: 143.33, div2: 144.56, v157: 145.48, is90: 146.4,
+    last: 148.63, call: 149.61, fnc: 151.43, round: 153.85, prn: 155.35,
+    run: 157.31, res: 158.3, p4: 159.25, p1: 159.91, cx: 160.41, cy: 161.39, same2: 162.37,
+    dot: 164.62, dotW: 165.77, dec: 167.34, dec0: 168.53, m4: 169.92,
+    neg0: 172.77, tiny: 174.26, near: 175.9, round0: 177.72,
+    // 第 3 页：UR5
+    ur: 181.11, urM: 183.63, urS: 185.71, book2: 186.85, ang: 189.02,
+    store2: 194.83, fnRes: 195.89, keepW: 197.27, pr: 197.96,
+    part: 201.12, ep4c: 202.75, brk2: 204.03, rowsel: 204.95, rowW: 205.96, colsel: 206.59, colW: 207.32,
+    c3: 208.95, head3: 209.91, lone3: 211.22, idx3: 212.33, fourth: 214.23, py0: 215.03, zero0: 216.0,
+    l1: 218.34, right: 219.41, front3: 220.19, posW: 221.84, keep3: 222.47, l2: 223.91, tl: 224.86, t33: 225.53, rotW: 226.6, keep2: 227.25,
+    run2: 229.56, res2: 230.4, p95: 231.76, same3: 235.65,
+    rot: 238.38, ep6: 239.54, left90: 240.82
   };
-  var END = 130.3;
+  var END = 243.84;
 
   E.scenes[5] = {
     title: '写成代码',
     dur: END,
     cues: [
-      { at: 0, s: '把**指数积公式**写成代码：导入 NumPy，再从教材配套的 Python 库导入两个函数' },
-      { at: 9.08, s: '`VecTose3`：乘上角度的螺旋轴，排成 4 × 4；`MatrixExp6`：算**矩阵指数**' },
-      { at: 15.57, s: '三样输入：零位时手的**位姿** `M`、每个关节的**螺旋轴** `S`、每个关节的**角度** `theta`' },
-      { at: 23.26, s: '`T = M`，再从最后一个关节往前，一个一个算**矩阵指数**、乘到左边：第 4 幕的顺序' },
-      { at: 34.94, s: '教材库里算正向运动学的 `FKinSpace`，也是这样写的' },
-      { at: 40.3, s: '这一集的例子：平面的 3 × 3 补一根 z 轴，写成 4 × 4；两根**螺旋轴**各 6 个数' },
-      { at: 49.5, s: '两个**角度**都是 90°：代码里用弧度，`np.pi / 2` ≈ 1.57' },
-      { at: 57.07, s: '运行：手的**位置** (−4, 1)，x 轴朝左，y 轴朝下，和手算的一样' },
-      { at: 65.15, s: '`-0.` 就是 0：电脑算出的是一个非常接近 0 的负数，保留两位小数成了 −0' },
-      { at: 73.49, s: '换成教材例 4.5 的六关节机械臂：M、六根**螺旋轴**，θ = (0, −90°, 0, 0, 90°, 0)' },
-      { at: 87.21, s: '最后两句打印只取 4 × 4 的一部分：方括号里，逗号前面选横排，逗号后面选列' },
-      { at: 95.31, s: '`:3` 从头取 3 个；单独的 `3` 是编号 3，也就是第 4 个（Python 的编号从 0 开始）' },
-      { at: 104.32, s: '`T[:3, 3]`：最右边一列的前 3 个数 = 手的**位置**；`T[:3, :3]`：左上角 3 × 3 = **朝向**' },
-      { at: 115.92, s: '同一个函数：手停在 (0.095, 0.109, 0.988) 米，和教材上的结果一样' },
-      { at: 124.74, s: '**朝向**正是第 6 集「原地往左转 90°」的那个矩阵' }
+      { at: 0, s: '把**指数积公式**写成代码。第 1 句：照第 4 集导入 NumPy，起个短名字 `np`' },
+      { at: 8.03, s: '第 2 句：`from` 库 `import` 函数——从教材配套的 Python 库，导入 2 个函数' },
+      { at: 13.51, s: '函数：一段起了名字的代码。给它输入，它算好结果，交回来' },
+      { at: 20.15, s: '`VecTose3`：乘上角度的螺旋轴，排成 4 × 4；`MatrixExp6`：算**矩阵指数**' },
+      { at: 28.03, s: '自己写一个函数：`def` 表示要写函数，`fk_space` 是起的名字' },
+      { at: 35.03, s: '括号里 3 样输入：零位时手的**位姿** `M`、每个关节的**螺旋轴** `S`、每个关节的**角度** `theta`' },
+      { at: 43.66, s: '冒号下面、往里缩进的几句：都是这个函数要做的事' },
+      { at: 49.02, s: '`T = M`：代码里的等号不是「两边相等」，是把右边存进左边的名字（第 4 集「叫它 p」）' },
+      { at: 62.71, s: '由里往外：`len(theta)` 一共几个角度 → 2；`range` 排出编号 0、1；`reversed` 倒过来 → 1、0' },
+      { at: 80.04, s: '`for i in …`：编号 i 依次是 1、0，每个编号把下面缩进的 2 句做一遍' },
+      { at: 87.61, s: '`S[i] * theta[i]`：这根**螺旋轴**的每个数都乘上**角度**（第 4 集），交给 `VecTose3` 排成 4 × 4' },
+      { at: 98.9, s: '`MatrixExp6(se3) @ T`：算出**矩阵指数**，乘到结果左边，再存回 `T`' },
+      { at: 106.64, s: '`return T`：把结果交回去。从最后一个关节往前，正是第 4 幕的顺序' },
+      { at: 115.32, s: '教材库里算正向运动学的 `FKinSpace`，也是这样写的' },
+      { at: 120.68, s: '这一集的例子：平面的 3 × 3 补一根 z 轴，写成 4 × 4；**螺旋轴**一根一排，各 6 个数' },
+      { at: 130.7, s: '两个**角度**写在方括号里：第 4 集的列表；代码里角度用弧度（第 9 集）' },
+      { at: 139.88, s: '`np.pi`：NumPy 存好的圆周率 π ≈ 3.14，是半圈的弧度；除以 2 ≈ 1.57 = 90°' },
+      { at: 148.53, s: '最后一句：3 样输入放进括号交给函数，`.round(2)` 保留 2 位小数，`print` 打印出来' },
+      { at: 157.21, s: '运行：手的**位置** (−4, 1)，x 轴朝左，y 轴朝下，和手算的一样' },
+      { at: 164.52, s: '数后面的小点：带小数的数，小数部分是 0。`-4.` 就是 −4' },
+      { at: 172.67, s: '`-0.` 就是 0：电脑算出的是一个非常接近 0 的负数，保留两位小数成了 −0' },
+      { at: 181.01, s: '换成教材例 4.5 的六关节机械臂：M、六根**螺旋轴**，θ = (0, −90°, 0, 0, 90°, 0)' },
+      { at: 194.73, s: '`T = fk_space(M, S, theta)`：先把结果存进 `T`，再分 2 句打印' },
+      { at: 200.17, s: '这 2 句只取 4 × 4 的一部分：方括号里，逗号前面选横排，逗号后面选列（第 4 集）' },
+      { at: 208.85, s: '`:3` 从头取 3 个；单独的 `3` 是编号 3，也就是第 4 个（Python 的编号从 0 开始）' },
+      { at: 217.86, s: '`T[:3, 3]`：最右边一列的前 3 个数 = 手的**位置**；`T[:3, :3]`：左上角 3 × 3 = **朝向**' },
+      { at: 229.46, s: '同一个函数：手停在 (0.095, 0.109, 0.988) 米，和教材上的结果一样' },
+      { at: 238.28, s: '**朝向**正是第 6 集「原地往左转 90°」的那个矩阵' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('把指数积公式写成代码 fk.py：导入 numpy，从教材配套的 modern_robotics 库导入 MatrixExp6、VecTose3；def fk_space(M, S, theta): T = M，从最后一个关节往前，se3 = VecTose3(S[i] * theta[i])，T = MatrixExp6(se3) @ T，return T。这一集的例子 M = [[1, 0, 0, 3], [0, 1, 0, 2], [0, 0, 1, 0], [0, 0, 0, 1]]，两根螺旋轴，两个角度 np.pi / 2，打印出来手在 (−4, 1)，x 轴朝左、y 轴朝下，和手算一样；−0. 是一个非常接近零的负数。换成教材例 4.5 的 UR5，角度 (0, −π/2, 0, 0, π/2, 0)，手停在 (0.095, 0.109, 0.988) 米，和教材一样，朝向是第六集原地往左转九十度的矩阵');
+      var s = K.sceneSvg('把指数积公式写成代码 fk.py，每种写法当场讲清：import numpy as np 导入 NumPy、起短名字 np（第 4 集）；from 库 import 函数，从教材配套的 modern_robotics 库导入 MatrixExp6、VecTose3；函数是一段起了名字的代码，给它输入，它算好结果交回来；def fk_space(M, S, theta): 自己写函数，括号里三样输入，冒号下面缩进的几句是函数要做的事；T = M，等号是把右边存进左边；for i in reversed(range(len(theta))): 编号依次是 1、0；se3 = VecTose3(S[i] * theta[i])；T = MatrixExp6(se3) @ T；return T。例子：M 补 z 轴写成 4 × 4，两根螺旋轴，theta = [np.pi / 2, np.pi / 2]（列表、弧度、圆周率），print(fk_space(M, S, theta).round(2)) 打印出手在 (−4, 1)；-4. 是带小数的数；−0. 是非常接近零的负数。换成教材例 4.5 的 UR5，T = fk_space(M, S, theta)，T[:3, 3] 是位置 (0.095, 0.109, 0.988)，T[:3, :3] 是朝向，原地往左转九十度');
 
       /* ── 左：编辑器 ── */
       var edG = E.el('g', {}, s);
       var ed = E.code(edG, 10, 14, 540, 392, { title: 'fk.py', size: 18, lh: 26 });
-      var FUN = [
-        ['import numpy as np', T.imp, 0.7],
-        ['from modern_robotics import {h.exp:MatrixExp6}, {w.vec:VecTose3}', T.lib + 0.2, 2.6],
+      // 第 1 页：函数。函数体五句在「缩进」时一起打出来，之后一句一句讲
+      var B0 = T.body, FUN = [
+        ['{n.imp:import} {n.npm:numpy} {n.asnp:as np}', T.imp, 0.7],
+        ['{n.from:from} {n.mrl:modern_robotics} {n.impt:import} {h.exp:MatrixExp6}, {w.vec:VecTose3}', T.from, 2.6],
         ['', T.two + 0.3, 0],
-        ['def fk_space({g.M:M}, {w.S:S}, {a.th:theta}):', T.def, 1.3],
-        ['    T = M', T.tm, 0.7],
-        ['    for i in {i.rev:reversed}(range(len(theta))):', T.loop, 1.4],
-        ['        se3 = VecTose3(S[i] * theta[i])', T.calc, 0.9],
-        ['        T = {h.left:MatrixExp6(se3) @ T}', T.calc + 1.0, 0.9],
-        ['    return T', T.ret, 0.4]
+        ['{n.def:def} {n.name:fk_space}({g.M:M}, {w.S:S}, {a.th:theta}){n.colon::}', T.defL, 1.3],
+        ['    {n.tm:T = M}', B0, 0.35],
+        ['    for {n.i:i} in {n.rev:reversed}({n.rg:range}({n.ln:len(theta)})):', B0 + 0.4, 0.7],
+        ['        {n.se3:se3} = {n.vt:VecTose3}({n.si:S[i]} {n.star:*} {n.ti:theta[i]})', B0 + 1.15, 0.6],
+        ['        {n.tl:T} = {h.left:MatrixExp6(se3) @ T}', B0 + 1.8, 0.5],
+        ['    {n.ret:return T}', B0 + 2.35, 0.3]
       ];
-      // 第 1 页：函数；第 2、3 页：函数原样（一下子出来）+ 例子
-      FUN.forEach(function (l) { ed.line(l[0], l[1], { dur: l[2], page: 0 }); });
+      var FL = FUN.map(function (l) { return ed.line(l[0], l[1], { dur: l[2], page: 0 }); });
+      // 第 2、3 页：函数原样（一下子出来，去掉段名）+ 例子
       function funPage(pg, at) { FUN.forEach(function (l) { ed.line(l[0].replace(/\{(\w)\.\w+:/g, '{$1:'), at, { dur: 0, page: pg }); }); ed.line('', at, { dur: 0, page: pg }); }
       funPage(1, T.ex);
       ed.line('M = np.array([[{x:1}, {y:0}, 0, {v:3}],', T.m33, { dur: 0.6, page: 1 });
       ed.line('              [{x:0}, {y:1}, 0, {v:2}],', T.m33 + 0.6, { dur: 0.5, page: 1 });
       ed.line('              [0, 0, {z.z:1}, 0],', T.z, { dur: 0.5, page: 1 });
       ed.line('              [0, 0, 0, 1]])', T.m44, { dur: 0.5, page: 1 });
-      ed.line('S = np.array([[{w:0, 0, 1, 0, 0, 0}],', T.s6, { dur: 0.6, page: 1 });
-      ed.line('              [{w:0, 0, 1, 2, -1, 0}]])', T.nums, { dur: 0.7, page: 1 });
-      ed.line('theta = [{a.pi:np.pi / 2}, np.pi / 2]', T.rad, { dur: 1.2, page: 1 });
-      var L_PRINT = ed.line('print(fk_space(M, S, theta).round(2))', T.run, { dur: 0.7, page: 1 });
+      var L_S1 = ed.line('S = np.array([[{w:0, 0, 1, 0, 0, 0}],', T.s6, { dur: 0.6, page: 1 });
+      var L_S2 = ed.line('              [{w:0, 0, 1, 2, -1, 0}]])', T.nums, { dur: 0.7, page: 1 });
+      var L_TH = ed.line('theta = [{a.pi:np.pi / 2}, np.pi / 2]', T.two90, { dur: 1.2, page: 1 });
+      var L_PRINT = ed.line('{n.prn:print}({n.call:fk_space(M, S, theta)}{n.rd:.round(2)})', T.last, { dur: 0.7, page: 1 });
       funPage(2, T.ur);
       ed.line('M = np.array([[-1, 0, 0, {v:0.817}],', T.urM, { dur: 0.3, page: 2 });
       ed.line('              [0, 0, 1, {v:0.191}],', T.urM + 0.35, { dur: 0.3, page: 2 });
@@ -93,12 +122,12 @@
         ed.line(l, T.urS + 0.3 * k, { dur: 0.25, page: 2 });
       });
       ed.line('theta = [{a:0}, {a:-np.pi / 2}, {a:0}, {a:0}, {a:np.pi / 2}, {a:0}]', T.ang, { dur: 4.4, page: 2 });
-      ed.line('T = fk_space(M, S, theta)', T.last2, { dur: 0.5, page: 2 });
+      var L_T2 = ed.line('T = fk_space(M, S, theta)', T.store2 + 0.2, { dur: 0.5, page: 2 });
       // 打印两句：横排的切片亮黄、列的切片按含义上色（位置紫、朝向蓝），保留几位小数灰
-      var L_P1 = ed.line('print(T[{h.r1::3}, {v.c1:3}]{i.d1:.round(3)})', T.pr, { dur: 0.45, page: 2 });
-      var L_P2 = ed.line('print(T[{h.r2::3}, {a.c2::3}]{i.d2:.round(2)})', T.pr + 0.5, { dur: 0.45, page: 2 });
+      var L_P1 = ed.line('print(T[{h.r1::3}, {v.c1:3}]{i.d1:.round(3)})', T.pr + 0.2, { dur: 0.45, page: 2 });
+      var L_P2 = ed.line('print(T[{h.r2::3}, {a.c2::3}]{i.d2:.round(2)})', T.pr + 0.7, { dur: 0.45, page: 2 });
 
-      /* ── 右上：终端 ── */
+      /* ── 右上：终端（第 1 页讲函数时收起，右边整列写说明） ── */
       var RX = 562, RW = 228;
       var termG = E.el('g', {}, s);
       var term = E.code(termG, RX, 14, RW, 222, { title: '终端', size: 18, lh: 25 });
@@ -107,28 +136,55 @@
         term.line(' [ {x:0.} {y:-1.}  0.  {v.o13:1.}]', T.res, { out: true }),
         term.line(' [ 0.  0.  1.  0.]', T.res, { out: true }),
         term.line(' [ 0.  0.  0.  1.]]', T.res, { out: true })];
-      term.line('$ python3 fk.py', T.run2 + 0.6, { dur: 0.5 });
+      term.line('$ python3 fk.py', T.run2 + 0.3, { dur: 0.5 });
       var O2 = [term.line('[{v:0.095 0.109 0.988}]', T.res2, { out: true }),
         term.line('[[-0. -1.  0.]', T.res2 + 0.1, { out: true }),
         term.line(' [ 1.  0.  0.]', T.res2 + 0.1, { out: true }),
         term.line(' [-0.  0.  1.]]', T.res2 + 0.1, { out: true })];
 
-      /* ── 右下：说明 ── */
+      /* ── 右边：说明。parts = [字, 颜色, 粗细, 等宽]；第 1 页从上面排，第 2、3 页排在终端下面 ── */
       var RK = E.rowKit(), NX = RX + 2;
-      function rows(lines) { var g = E.el('g', {}, s); return { g: g, r: lines.map(function (l) { return RK.line(g, NX, 268 + l[0], l[1], l[2] || 18); }) }; }
-      var n1 = rows([[0, [['VecTose3', E.WARN, 700]]], [26, [['螺旋轴 × 角度 → 4 × 4', E.INK2]]], [62, [['MatrixExp6', E.HI, 700]]], [88, [['算矩阵指数', E.INK2]]]]);
-      n1.r[0].parts[0].style.fontFamily = E.MONO; n1.r[2].parts[0].style.fontFamily = E.MONO;
-      var n2 = rows([[0, [['M', E.GOOD, 700], ['：零位时、手的位姿', E.INK2]]], [30, [['S', E.WARN, 700], ['：螺旋轴，一行一个', E.INK2]]], [60, [['theta', E.ACC, 700], ['：各关节的角度', E.INK2]]]]);
-      [0, 1, 2].forEach(function (k) { n2.r[k].parts[0].style.fontFamily = E.MONO; });
-      var n3 = rows([[0, [['从最后一个关节往前', E.INK, 900]]], [28, [['一个个乘到左边', E.INK, 900]]], [60, [['= 第 4 幕的顺序', E.GOOD, 900]]]]);
-      var n4 = rows([[0, [['教材库的 ', E.INK2], ['FKinSpace', E.HI, 700]]], [28, [['也是这样写的', E.INK2]]]]);
-      n4.r[0].parts[1].style.fontFamily = E.MONO;
-      var n5 = rows([[0, [['3 × 3', E.INK2], [' 补 z 轴 → ', E.INK2], ['4 × 4', E.INK, 900]]], [30, [['螺旋轴：各 6 个数', E.WARN, 900]]],
-        [64, [['90° = π ÷ 2 ≈ 1.57', E.ACC, 900]]], [92, [['代码里角度用弧度', E.INK2]]]]);
-      var n6 = rows([[0, [['手在 ', E.INK2], ['(−4, 1)', E.VEL, 900]]], [28, [['x 轴', E.X, 900], ['朝左，', E.INK2], ['y 轴', E.Y, 900], ['朝下', E.INK2]]], [62, [['和手算的一样 ✓', E.GOOD, 900]]]]);
-      var n7 = rows([[0, [['-0.', E.HI, 700], [' 就是 0', E.INK2]]], [28, [['电脑算出 −2.2 × 10⁻¹⁶', E.INK2]]], [56, [['保留两位小数 → −0', E.INK2]]]]);
-      n7.r[0].parts[0].style.fontFamily = E.MONO;
-      /* ── 右下：4 × 4 的小格子，讲切片（句 11–13）：上面、左边写编号 0–3，取到的格子上色 ── */
+      function rows(y0, lines) {
+        var g = E.el('g', {}, s);
+        return { g: g, r: lines.map(function (l) {
+          var row = RK.line(g, NX, y0 + l[0], l[1].map(function (p) { return [p[0], p[1], p[2]]; }), l[2] || 18);
+          l[1].forEach(function (p, k) { if (p[3]) row.parts[k].style.fontFamily = E.MONO; });
+          return row;
+        }) };
+      }
+      var TOP = 44, BOT = 268;
+      var nImp = rows(TOP, [[0, [['第 1 句', E.HI, 900]], 20], [34, [['import', E.HI, 700, 1], ['：导入', E.INK2]]], [64, [['numpy', E.INK, 700, 1], ['：库的名字', E.INK2]]],
+        [94, [['as np', E.INK, 700, 1], ['：起个短名字', E.INK2]]], [124, [['（第 4 集讲过）', E.MUT, 700]], 17]]);
+      var nFrom = rows(TOP, [[0, [['第 2 句', E.HI, 900]], 20], [34, [['from', E.HI, 700, 1], ['：从哪个库', E.INK2]]], [62, [['（这里：教材配套的库）', E.MUT, 700]], 16],
+        [94, [['import', E.HI, 700, 1], ['：导入哪几个', E.INK2]]], [124, [['导入 2 个函数', E.INK, 900]]]]);
+      var nFn = rows(TOP, [[0, [['函数', E.HI, 900]], 22], [36, [['起了名字的一段代码', E.INK2]]], [72, [['给它输入', E.INK, 900]]], [102, [['→ 它算好结果', E.INK, 900]]], [132, [['→ 交回来', E.INK, 900]]]]);
+      var nVec = rows(TOP, [[0, [['VecTose3', E.WARN, 700, 1]]], [28, [['螺旋轴 × 角度 → 4 × 4', E.INK2]]], [72, [['MatrixExp6', E.HI, 700, 1]]], [100, [['算矩阵指数', E.INK2]]]]);
+      var nDef = rows(TOP, [[0, [['def', E.HI, 700, 1], ['：要写一个函数', E.INK2]]], [34, [['fk_space', E.INK, 700, 1], ['：起的名字', E.INK2]]]]);
+      var nIn = rows(TOP, [[0, [['括号里：3 样输入', E.INK, 900]]], [34, [['M', E.GOOD, 700, 1], ['：零位时手的位姿', E.INK2]]], [64, [['S', E.WARN, 700, 1], ['：螺旋轴，一排一根', E.INK2]]],
+        [94, [['theta', E.ACC, 700, 1], ['：各关节的角度', E.INK2]]]]);
+      var nBody = rows(TOP, [[0, [['冒号 ', E.INK2], [':', E.HI, 700, 1], [' 下面', E.INK2]]], [30, [['往里缩进的几句', E.INK, 900]]], [60, [['= 这个函数要做的事', E.INK2]]]]);
+      var nEq = rows(TOP, [[0, [['T = M', E.INK, 700, 1], ['：结果先是 M', E.INK2]]], [36, [['等号 ', E.INK2], ['=', E.HI, 700, 1]]], [64, [['不是「两边相等」', E.ERR, 900]]],
+        [92, [['是把右边，存进左边', E.INK, 900]]], [122, [['（第 4 集「叫它 p」）', E.MUT, 700]], 17]]);
+      var nLoop = rows(TOP, [[0, [['从最后一个往前取', E.INK, 900]]], [32, [['len(theta)', E.INK, 700, 1], [' → 2 个', E.INK2]]], [62, [['range(2)', E.INK, 700, 1], [' → 编号 0、1', E.INK2]]],
+        [92, [['reversed', E.INK, 700, 1], [' → 1、0', E.INK2]]], [130, [['for i in …', E.HI, 700, 1]]], [158, [['i 依次是 1、0', E.INK, 900]]],
+        [188, [['每个 i：缩进的 2 句', E.INK2]]], [214, [['做一遍', E.INK2]]]]);
+      var nCalc = rows(TOP, [[0, [['S[i]', E.WARN, 700, 1], ['：这根螺旋轴', E.INK2]]], [30, [['theta[i]', E.ACC, 700, 1], ['：它的角度', E.INK2]]],
+        [60, [['*', E.INK, 700, 1], ['：每个数都乘上', E.INK2]]], [88, [['（第 4 集：数组乘一个数）', E.MUT, 700]], 16],
+        [124, [['VecTose3', E.WARN, 700, 1], [' → 4 × 4', E.INK2]]], [154, [['存进 ', E.INK2], ['se3', E.INK, 700, 1]]]]);
+      var nExp = rows(TOP, [[0, [['MatrixExp6(se3)', E.HI, 700, 1]]], [28, [['：算出矩阵指数', E.INK2]]], [62, [['@ T', E.INK, 700, 1], ['：乘到结果左边', E.INK2]]],
+        [90, [['（@：第 4 集）', E.MUT, 700]], 16], [122, [['T =', E.INK, 700, 1], [' …：存回 T', E.INK2]]]]);
+      var nRet = rows(TOP, [[0, [['return T', E.HI, 700, 1]]], [28, [['：把结果交回去', E.INK2]]], [66, [['从最后一个关节往前', E.INK, 900]]], [96, [['= 第 4 幕的顺序', E.GOOD, 900]]]]);
+      var nBook = rows(TOP, [[0, [['教材库的 ', E.INK2], ['FKinSpace', E.HI, 700, 1]]], [28, [['也是这样写的', E.INK2]]]]);
+      // 第 2 页
+      var n5 = rows(BOT, [[0, [['3 × 3', E.INK2], [' 补 z 轴 → ', E.INK2], ['4 × 4', E.INK, 900]]], [30, [['螺旋轴：各 6 个数', E.WARN, 900]]], [58, [['一根一排', E.INK2]]]]);
+      var nPi = rows(BOT, [[0, [['[ ]', E.INK, 700, 1], [' = 列表（第 4 集）', E.INK2]]], [28, [['角度用弧度（第 9 集）', E.INK2]]],
+        [60, [['np.pi', E.ACC, 700, 1], [' = 圆周率 π', E.INK2]]], [88, [['≈ 3.14 = 半圈', E.INK2]]], [120, [['90° = π ÷ 2 ≈ 1.57', E.ACC, 900]]]]);
+      var nCall = rows(BOT, [[0, [['fk_space(M, S, theta)', E.INK, 700, 1]], 17], [28, [['：3 样输入交给函数', E.INK2]]], [60, [['.round(2)', E.INK, 700, 1], ['：留 2 位小数', E.INK2]]],
+        [90, [['print', E.HI, 700, 1], ['：打印出来', E.INK2]]]]);
+      var n6 = rows(BOT, [[0, [['手在 ', E.INK2], ['(−4, 1)', E.VEL, 900]]], [28, [['x 轴', E.X, 900], ['朝左，', E.INK2], ['y 轴', E.Y, 900], ['朝下', E.INK2]]], [62, [['和手算的一样 ✓', E.GOOD, 900]]]]);
+      var nDot = rows(BOT, [[0, [['-4.', E.HI, 700, 1], ['：数后面的小点', E.INK2]]], [28, [['= 带小数的数', E.INK2]]], [56, [['小数部分是 0', E.INK2]]], [90, [['-4.', E.INK, 700, 1], [' 就是 −4', E.INK, 900]]]]);
+      var n7 = rows(BOT, [[0, [['-0.', E.HI, 700, 1], [' 就是 0', E.INK2]]], [28, [['电脑算出的是', E.INK2]]], [54, [['−0.00000000000000022', E.INK2]], 16], [84, [['保留两位小数 → −0', E.INK2]]]]);
+      /* ── 第 3 页：4 × 4 的小格子，讲切片：上面、左边写编号 0–3，取到的格子上色 ── */
       var gM = E.el('g', {}, s), GX = RX + 40, GY = 290, CW = 24;
       var cells = [];
       for (var i = 0; i < 4; i++) { cells.push([]); for (var j = 0; j < 4; j++) cells[i].push(K.paint(E.el('rect', { x: GX + CW * j + 1, y: GY + CW * i + 1, width: CW - 2, height: CW - 2, rx: 3 }, gM), E.S2)); }
@@ -137,60 +193,105 @@
       var gLab1 = E.txt(gM, GX + 4 * CW + 10, GY + 1.5 * CW + 6, '位置', 18, E.VEL, 'start', 900);
       var gLab2 = E.txt(gM, GX + 4 * CW + 10, GY + 3 * CW + 22, '朝向', 18, E.OMEGA, 'start', 900);
       var gCap = E.txt(gM, GX - 20, GY + 4 * CW + 22, '编号从 0 开始', 18, E.INK2, 'start', 700);
-      var n8 = rows([[0, [['教材例 4.5：UR5', E.GOOD, 900]]], [28, [['θ = (0, −90°, 0, 0, 90°, 0)', E.ACC, 900]]]]);
-      var n9 = rows([[0, [['手：', E.INK2], ['(0.095, 0.109, 0.988)', E.VEL, 900]]], [28, [['和教材上的一样 ✓', E.GOOD, 900]]],
+      var n8 = rows(BOT, [[0, [['教材例 4.5：UR5', E.GOOD, 900]]], [28, [['θ = (0, −90°, 0, 0, 90°, 0)', E.ACC, 900]]]]);
+      var nKeep = rows(BOT, [[0, [['结果先存进 ', E.INK2], ['T', E.INK, 700, 1]]], [30, [['再分 2 句打印', E.INK2]]]]);
+      var n9 = rows(BOT, [[0, [['手：', E.INK2], ['(0.095, 0.109, 0.988)', E.VEL, 900]]], [28, [['和教材上的一样 ✓', E.GOOD, 900]]],
         [62, [['朝向：第 6 集', E.INK2]]], [88, [['原地往左转 90°', E.OMEGA, 900]]]]);
 
       var laid = false;
       function fr(st, a) { return E.fade(st, a, 0.3); }
+      function win(st, a, b) { return E.fade(st, a, 0.3) * (1 - E.fade(st, b - 0.3, 0.3)); }
+      // 一组说明：从 a 出来、到 b 收起；第 k 排在 at[k] 出来
+      function show(n, st, a, b, at) { E.op(n.g, win(st, a, b)); (at || []).forEach(function (t0, k) { if (t0 !== null) E.op(n.r[k].g, fr(st, t0)); }); }
 
       return {
         el: s,
         draw: function (st, t) {
           if (!laid && s.isConnected) { RK.layout(); laid = true; }
-          var f = E.fade, b = E.bump;
+          var f = E.fade;
           ed.draw(st, t); term.draw(st, t);
-          // 编辑器里的框
+          E.op(termG, f(st, T.ex - 0.3, 0.3));
+
+          /* 第 1 页：编辑器里的底色（讲到哪段垫哪段） */
           var pg0 = st < T.ex;
+          function bx(id, col, a, b) { ed.box(id, col, pg0 ? win(st, a, b) : 0); }
+          bx('imp', E.HI, T.imp, T.from); bx('npm', E.HI, T.npW, T.from); bx('asnp', E.HI, T.asnp, T.from);
+          bx('from', E.HI, T.from, T.fn); bx('impt', E.HI, T.impt, T.fn);
+          ed.box('vec', E.WARN, pg0 ? Math.max(win(st, T.two, T.fn), win(st, T.vec, T.defL)) : 0);
+          ed.box('exp', E.HI, pg0 ? Math.max(win(st, T.two, T.fn), win(st, T.exp, T.defL)) : 0);
+          bx('def', E.HI, T.defW, T.three); bx('name', E.HI, T.name, T.three);
+          bx('M', E.GOOD, T.M, T.colon); bx('S', E.WARN, T.S, T.colon); bx('th', E.ACC, T.th, T.colon);
+          bx('colon', E.HI, T.colon, T.tm);
+          [4, 5, 6, 7, 8].forEach(function (k) { ed.boxCol(FL[k], 0, 4, E.HI, pg0 ? win(st, T.indent, T.tm) : 0, 'ind' + k); });
           if (pg0) {
-            ed.box('vec', E.WARN, f(st, T.vec, 0.3) * (1 - f(st, T.def, 0.3)));
-            ed.box('exp', E.HI, f(st, T.exp, 0.3) * (1 - f(st, T.def, 0.3)));
-            ed.box('M', E.GOOD, f(st, T.M, 0.3) * (1 - f(st, T.tm, 0.3)));
-            ed.box('S', E.WARN, f(st, T.S, 0.3) * (1 - f(st, T.tm, 0.3)));
-            ed.box('th', E.ACC, f(st, T.th, 0.3) * (1 - f(st, T.tm, 0.3)));
-            ed.box('rev', E.GOOD, f(st, T.back, 0.3) * (1 - f(st, T.book, 0.3)));   // 绿：第 4 幕的顺序（右下「= 第 4 幕的顺序」同色；原先灰框像「不用」）
-            ed.box('left', E.HI, f(st, T.left, 0.3) * (1 - f(st, T.book, 0.3)));
-          } else {
-            ['vec', 'exp', 'M', 'S', 'th', 'rev', 'left'].forEach(function (k) { ed.box(k, E.HI, 0); });
+            ed.hl(FL[4], E.HI, win(st, T.tm, T.loop));
+            ed.hl(FL[5], E.HI, win(st, T.loop, T.calc));
+            ed.hl(FL[6], E.HI, win(st, T.calc, T.calc2));
+            ed.hl(FL[7], E.HI, win(st, T.calc2, T.done));
+            ed.hl(FL[8], E.HI, win(st, T.done, T.order));
           }
-          if (st >= T.ex && st < T.ur) {
-            ed.box('z', E.Z, b(st, T.z, 1.0));
-            ed.box('pi', E.ACC, f(st, T.pi, 0.3) * (1 - f(st, T.run, 0.3)));
-          } else { ed.box('z', E.Z, 0); ed.box('pi', E.ACC, 0); }
+          bx('tm', E.HI, T.eq, T.loop);
+          bx('ln', E.HI, T.ln, T.rg); bx('rg', E.HI, T.rg, T.rv); bx('i', E.HI, T.iseq, T.calc);
+          bx('si', E.WARN, T.si, T.vt); bx('ti', E.ACC, T.ti, T.vt); bx('star', E.HI, T.star, T.vt); bx('vt', E.WARN, T.vt, T.calc2); bx('se3', E.HI, T.x44b, T.calc2);
+          bx('left', E.HI, T.me, T.storeB); bx('tl', E.HI, T.storeB, T.done);
+          bx('ret', E.HI, T.ret, T.order);
+          var revOrd = st >= T.order - 0.3;   // 讲 reversed 时亮黄；讲「第 4 幕的顺序」时换绿
+          ed.box('rev', revOrd ? E.GOOD : E.HI, pg0 ? (revOrd ? win(st, T.order, T.book) : win(st, T.rv, T.whole)) : 0);
+
+          /* 第 2 页 */
+          var pg1 = st >= T.ex && st < T.ur;
+          ed.box('z', E.Z, pg1 ? E.bump(st, T.z, 1.0) : 0);
+          if (pg1) { ed.hl(L_S1, E.WARN, win(st, T.row1, T.two90)); ed.hl(L_S2, E.WARN, win(st, T.row1, T.two90)); }
+          ed.boxCol(L_TH, 8, 22, E.HI, pg1 ? win(st, T.brk, T.rad) : 0, 'list');
+          ed.box('pi', E.ACC, pg1 ? win(st, T.pi, T.last) : 0);
+          ed.box('call', E.HI, pg1 ? win(st, T.call, T.round) : 0);
+          ed.box('rd', E.HI, pg1 ? win(st, T.round, T.prn) : 0);
+          ed.box('prn', E.HI, pg1 ? win(st, T.prn, T.run) : 0);
           // 终端里的框
-          term.box('o03', E.VEL, Math.max(f(st, T.p4, 0.3), 0) * (1 - f(st, T.neg0, 0.3)));
-          term.box('o13', E.VEL, f(st, T.p1, 0.3) * (1 - f(st, T.neg0, 0.3)));
-          term.boxCol(O1[0], 2, 3, E.X, f(st, T.cx, 0.3) * (1 - f(st, T.neg0, 0.3)));
-          term.boxCol(O1[1], 2, 3, E.X, f(st, T.cx, 0.3) * (1 - f(st, T.neg0, 0.3)));
-          term.boxCol(O1[0], 6, 3, E.Y, Math.max(f(st, T.cy, 0.3) * (1 - f(st, T.neg0, 0.3)), f(st, T.neg0, 0.3) * (1 - f(st, T.ur, 0.3))));
-          term.boxCol(O1[1], 6, 3, E.Y, f(st, T.cy, 0.3) * (1 - f(st, T.neg0, 0.3)));
-          term.boxCol(O2[0], 1, 17, E.VEL, f(st, T.p95, 0.3) * (1 - f(st, T.rot, 0.3)));
-          [1, 2, 3].forEach(function (k) { term.boxCol(O2[k], 1, 13, E.OMEGA, f(st, T.rot, 0.3)); });
-          // 说明
-          E.op(n1.g, fr(st, T.vec) * (1 - f(st, T.def - 0.3, 0.3))); E.op(n1.r[2].g, fr(st, T.exp)); E.op(n1.r[3].g, fr(st, T.exp));
-          E.op(n2.g, fr(st, T.three) * (1 - f(st, T.tm - 0.3, 0.3))); E.op(n2.r[0].g, fr(st, T.M)); E.op(n2.r[1].g, fr(st, T.S)); E.op(n2.r[2].g, fr(st, T.th));
-          E.op(n3.g, fr(st, T.back) * (1 - f(st, T.book - 0.3, 0.3))); E.op(n3.r[1].g, fr(st, T.left)); E.op(n3.r[2].g, fr(st, T.order));
-          E.op(n4.g, fr(st, T.book) * (1 - f(st, T.ex - 0.3, 0.3))); E.op(n4.r[1].g, fr(st, T.same));
-          E.op(n5.g, fr(st, T.m33) * (1 - f(st, T.run - 0.3, 0.3))); E.op(n5.r[0].parts[1], fr(st, T.z)); E.op(n5.r[0].parts[2], fr(st, T.m44));
-          E.op(n5.r[1].g, fr(st, T.s6)); E.op(n5.r[2].g, fr(st, T.pi)); E.op(n5.r[3].g, fr(st, T.rad));
-          E.op(n6.g, fr(st, T.p4) * (1 - f(st, T.neg0 - 0.3, 0.3))); E.op(n6.r[1].g, fr(st, T.cx)); E.op(n6.r[1].parts[2], fr(st, T.cy)); E.op(n6.r[1].parts[3], fr(st, T.cy));
-          E.op(n6.r[2].g, fr(st, T.same2));
-          E.op(n7.g, fr(st, T.neg0) * (1 - f(st, T.ur - 0.3, 0.3))); E.op(n7.r[1].g, fr(st, T.tiny)); E.op(n7.r[2].g, fr(st, T.round));
-          E.op(n8.g, fr(st, T.ur) * (1 - f(st, T.last2 - 0.3, 0.3))); E.op(n8.r[1].g, fr(st, T.ang));
-          // 句 11–13：小格子
-          E.op(gM, fr(st, T.part) * (1 - f(st, T.run2 - 0.3, 0.3)));
-          var selR = f(st, T.rowW, 0.3) * (1 - f(st, T.l1, 0.3)) + f(st, T.head3, 0.3) * (1 - f(st, T.lone3, 0.3));
-          var selC = f(st, T.colW, 0.3) * (1 - f(st, T.c3, 0.3)) + f(st, T.idx3, 0.3) * (1 - f(st, T.l1, 0.3));
+          term.box('o03', E.VEL, win(st, T.p4, T.dot));
+          term.box('o13', E.VEL, win(st, T.p1, T.dot));
+          term.boxCol(O1[0], 2, 3, E.X, win(st, T.cx, T.dot));
+          term.boxCol(O1[1], 2, 3, E.X, win(st, T.cx, T.dot));
+          term.boxCol(O1[0], 6, 3, E.Y, Math.max(win(st, T.cy, T.dot), win(st, T.neg0, T.ur)));
+          term.boxCol(O1[1], 6, 3, E.Y, win(st, T.cy, T.dot));
+          term.boxCol(O1[0], 14, 3, E.HI, win(st, T.dec, T.neg0), 'm4');   // 「负四点」整个数
+          term.boxCol(O1[0], 16, 1, E.HI, win(st, T.dotW, T.neg0), 'dot4'); term.boxCol(O1[1], 16, 1, E.HI, win(st, T.dotW, T.neg0), 'dot1');   // 数后面的小点
+          term.boxCol(O2[0], 1, 17, E.VEL, win(st, T.p95, T.rot));
+          [1, 2, 3].forEach(function (k) { term.boxCol(O2[k], 1, 13, E.OMEGA, fr(st, T.rot)); });
+
+          /* 说明 */
+          show(nImp, st, T.four - 0.3, T.from, [T.imp, T.imp, T.npW, T.asnp, T.asnp + 0.3]);
+          show(nFrom, st, T.from - 0.3, T.fn, [T.from, T.from, T.lib, T.impt, T.two]);
+          show(nFn, st, T.fn, T.these, [T.fn, T.named, T.input, T.calc0, T.back0]);
+          show(nVec, st, T.vec, T.defL, [T.vec, T.vec, T.exp, T.exp]);
+          show(nDef, st, T.defW, T.three, [T.defW, T.name]);
+          show(nIn, st, T.three, T.colon, [T.three, T.M, T.S, T.th]);
+          show(nBody, st, T.colon, T.tm, [T.colon, T.indent, T.job]);
+          show(nEq, st, T.tm, T.loop, [T.tm, T.eq, T.notEq, T.store, T.ep4]);
+          show(nLoop, st, T.back, T.calc, [T.back, T.ln, T.rg, T.rv, T.whole, T.iseq, T.each, T.each]);
+          E.op(nLoop.r[1].parts[1], fr(st, T.ln2)); E.op(nLoop.r[2].parts[1], fr(st, T.rg2)); E.op(nLoop.r[3].parts[1], fr(st, T.rv3));
+          show(nCalc, st, T.si, T.calc2, [T.si, T.ti, T.star, T.star, T.vt, T.x44b]);
+          show(nExp, st, T.me, T.done, [T.me, T.me2, T.at, T.at, T.storeB]);
+          E.op(nExp.r[2].parts[1], fr(st, T.left));
+          show(nRet, st, T.ret, T.book, [T.ret, T.ret, T.order, T.ep4m]);
+          show(nBook, st, T.book, T.ex, [T.book, T.same]);
+          show(n5, st, T.m33, T.two90, [T.m33, T.nums, T.row1]);
+          E.op(n5.r[0].parts[1], fr(st, T.z)); E.op(n5.r[0].parts[2], fr(st, T.m44));
+          show(nPi, st, T.brk, T.last, [T.brk, T.rad, T.pi, T.p314, T.div2]);
+          E.op(nPi.r[0].parts[1], fr(st, T.list)); E.op(nPi.r[3].g, fr(st, T.p314)); E.op(nPi.r[4].g, fr(st, T.div2));
+          show(nCall, st, T.call, T.run, [T.call, T.fnc, T.round, T.prn]);
+          show(n6, st, T.p4, T.dot, [T.p4, T.cx, T.same2]);
+          E.op(n6.r[1].parts[2], fr(st, T.cy)); E.op(n6.r[1].parts[3], fr(st, T.cy));
+          show(nDot, st, T.dotW, T.neg0, [T.dotW, T.dec, T.dec0, T.m4]);
+          show(n7, st, T.neg0, T.ur, [T.neg0, T.tiny, T.near, T.round0]);
+          show(n8, st, T.ur, T.store2, [T.ur, T.ang]);
+          show(nKeep, st, T.fnRes, T.part, [T.keepW, T.pr]);
+          if (st >= T.ur) ed.hl(L_T2, E.HI, win(st, T.fnRes, T.part));
+
+          /* 第 3 页：小格子 */
+          E.op(gM, win(st, T.part, T.run2));
+          var selR = win(st, T.rowW, T.colsel) + win(st, T.head3, T.lone3);
+          var selC = win(st, T.colW, T.c3) + win(st, T.idx3, T.l1);
           var pos = f(st, T.right, 0.3), rotA = f(st, T.tl, 0.3);   // 位置那一列讲完也留着：第二句讲朝向时，两块一起看
           cells.forEach(function (row, i) { row.forEach(function (c, j) {
             var col = E.S2, a = 0;
@@ -202,18 +303,18 @@
           }); });
           colIdx.forEach(function (n, j) { n.style.fill = (j === 3 && st >= T.idx3 && st < T.l1) ? E.VEL : (j === 0 && st >= T.zero0 && st < T.l1) ? E.HI : E.MUT; });
           rowIdx.forEach(function (n, i) { n.style.fill = (i < 3 && st >= T.head3 && st < T.lone3) ? E.HI : E.MUT; });
-          E.op(gLab1, fr(st, T.posW)); E.op(gLab2, fr(st, T.rotW)); E.op(gCap, fr(st, T.py0) * (1 - f(st, T.l1, 0.3)));
-          // 代码里的框：方括号整段、横排切片、列切片、保留几位小数；整句垫底色
-          if (st >= T.last2 && st < T.run2) {
-            ed.hl(L_P1, E.VEL, f(st, T.l1, 0.3) * (1 - f(st, T.l2, 0.3)));
-            ed.hl(L_P2, E.OMEGA, f(st, T.l2, 0.3) * (1 - f(st, T.run2 - 0.3, 0.3)));
+          E.op(gLab1, fr(st, T.posW)); E.op(gLab2, fr(st, T.rotW)); E.op(gCap, win(st, T.py0, T.l1));
+          // 打印两句：整句垫底色；方括号整段、横排切片、列切片、保留几位小数
+          if (st >= T.ur && st < T.run2) {
+            ed.hl(L_P1, E.VEL, win(st, T.l1, T.l2));
+            ed.hl(L_P2, E.OMEGA, win(st, T.l2, T.run2));
           }
-          ed.box('r1', E.HI, st < T.run2 ? f(st, T.rowsel, 0.3) * (1 - f(st, T.colsel, 0.3)) + f(st, T.c3, 0.3) * (1 - f(st, T.lone3, 0.3)) : 0);
-          ed.box('c1', E.VEL, st < T.run2 ? f(st, T.colsel, 0.3) * (1 - f(st, T.c3, 0.3)) + f(st, T.lone3, 0.3) * (1 - f(st, T.l1, 0.3)) + f(st, T.right, 0.3) * (1 - f(st, T.keep3, 0.3)) : 0);
-          ed.box('d1', E.INK2, st < T.run2 ? f(st, T.keep3, 0.3) * (1 - f(st, T.l2, 0.3)) : 0);
-          ed.box('r2', E.HI, st < T.run2 ? f(st, T.tl, 0.3) * (1 - f(st, T.keep2, 0.3)) : 0);
-          ed.box('c2', E.OMEGA, st < T.run2 ? f(st, T.tl, 0.3) * (1 - f(st, T.keep2, 0.3)) : 0);
-          ed.box('d2', E.INK2, st < T.run2 ? f(st, T.keep2, 0.3) * (1 - f(st, T.run2 - 0.3, 0.3)) : 0);
+          ed.box('r1', E.HI, st < T.run2 ? win(st, T.rowsel, T.colsel) + win(st, T.c3, T.lone3) : 0);
+          ed.box('c1', E.VEL, st < T.run2 ? win(st, T.colsel, T.c3) + win(st, T.lone3, T.l1) + win(st, T.right, T.keep3) : 0);
+          ed.box('d1', E.INK2, st < T.run2 ? win(st, T.keep3, T.l2) : 0);
+          ed.box('r2', E.HI, st < T.run2 ? win(st, T.tl, T.keep2) : 0);
+          ed.box('c2', E.OMEGA, st < T.run2 ? win(st, T.tl, T.keep2) : 0);
+          ed.box('d2', E.INK2, st < T.run2 ? win(st, T.keep2, T.run2) : 0);
           E.op(n9.g, fr(st, T.p95)); E.op(n9.r[1].g, fr(st, T.same3)); E.op(n9.r[2].g, fr(st, T.rot)); E.op(n9.r[3].g, fr(st, T.left90));
         }
       };

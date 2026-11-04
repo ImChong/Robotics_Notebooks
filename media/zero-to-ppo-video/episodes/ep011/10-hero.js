@@ -1,7 +1,7 @@
 // 片头主图（800×420）：三句旁白各一段——
 // ① 左边斜着看的 UR5（零位：胳膊平伸），「螺旋轴」肘的那根轴（S₃）亮，「转一个角度」小臂绕它往上抬一下又回来（往下会碰到桌面那一侧）；右边第 10 集的流程：螺旋轴 × 角度 → exp → 一个位姿；
 // ② 「六个关节」六根关节轴依次出来，「各转一个角度」六个关节一起转到另一个姿势，「手」手上出三根小箭头、打问号；右边换成问句；
-// ③ 「正向运动学」右边写 θ₁…θ₆ → 正向运动学 → 手的位姿；「指数积公式」出框，「每个关节一个矩阵指数」六块依次弹出，「按顺序乘起来」整串亮，「零位时、手的位姿」M 出来。
+// ③ 「正向运动学」右边写 θ₁…θ₆ → 正向运动学 → 手的位姿；「指数积公式」出框，「每个关节一个矩阵指数」六块依次弹出，「按顺序乘起来」整串亮，「所有关节都在零度时、手的位姿」M 出来（片头还没讲零位）；「第七集提过」正向运动学下面写一行小字。
 // 配色照「画面配色」：螺旋轴琥珀，角度蓝，位姿亮黄，零位绿；手的三根小箭头 x 红、y 绿、z 蓝。时刻取自配音的逐词时间（../ep011.py）。
 (function () {
   var E = window.EP011, K = E.K, H = E.HEX;
@@ -9,14 +9,14 @@
   var T = {
     ep10: 0.7, axis: 2.44, turn: [3.21, 4.2], ang: 3.67, give: 4.33, mexp: 4.73, step: 6.07, pose: 7.28, out1: 8.6,
     ask: 9.41, arm: 10.67, six: 11.44, each: [12.33, 13.59], hand: 13.66, where: 14.79, dir: 15.37, out2: 17.38,
-    joints: 18.01, get: 19.07, pose3: 19.73, fk: 20.65, poe: 22.84, facs: [23.97, 24.28, 24.58, 24.88, 25.18, 25.48], seq: 25.94, mul: 26.56, M: 27.79, hand3: 28.62
+    joints: 17.98, get: 19.03, pose3: 19.68, ep7: 20.28, fk: 21.88, poe: 24.09, facs: [25.21, 25.52, 25.83, 26.14, 26.45, 26.76], seq: 27.24, mul: 27.84, M: 29.08, hand3: 30.96
   };
   var LAB = [[1, 0, -12, 'middle'], [0, -18, 6, 'end'], [0, -18, 6, 'end'], [1, 6, -12, 'start'], [0, 14, 10, 'start'], [1, 14, 6, 'start']];
   var LEN = [[-0.05, 0.32], [-0.2, 0.2], [-0.18, 0.18], [-0.16, 0.16], [-0.15, 0.15], [-0.14, 0.14]];
   var POSE = { shoulder_pan_joint: 30 * D, shoulder_lift_joint: -70 * D, elbow_joint: 80 * D, wrist_1_joint: -100 * D, wrist_2_joint: -90 * D, wrist_3_joint: 20 * D };
 
   E.hero = function (K) {
-    var s = K.sceneSvg('片头主图：第十集讲过，绕着一根螺旋轴转一个角度，交给矩阵指数，一步得到一个位姿。这一集问：机械臂的六个关节各转一个角度，手最后停在什么位置、朝向什么方向？从关节的角度得到手的位姿，叫正向运动学；答案是指数积公式 T = exp([S₁]θ₁) ⋯ exp([S₆]θ₆) M：每个关节一个矩阵指数，按顺序乘起来，再乘上零位时手的位姿');
+    var s = K.sceneSvg('片头主图：第十集讲过，绕着一根螺旋轴转一个角度，交给矩阵指数，一步得到一个位姿。这一集问：机械臂的六个关节各转一个角度，手最后停在什么位置、朝向什么方向？从关节的角度得到手的位姿，叫正向运动学；答案是指数积公式 T = exp([S₁]θ₁) ⋯ exp([S₆]θ₆) M：每个关节一个矩阵指数，按顺序乘起来，再乘上所有关节都在零度时手的位姿');
 
     /* ── 左：UR5 ── */
     var g3 = E.el('g', {}, s);
@@ -49,6 +49,7 @@
     E.tex(fkRow, RX - 6, 52, '\\textcolor{' + H.acc + '}{\\theta_1\\cdots\\theta_6}', 28, E.INK, 'start', { w: 96, h: 50 });
     var fa = E.vec(fkRow, E.INK2, 3.5, { head: 12 }); fa.set(RX + 92, 44, RX + 122, 44);
     var fkName = E.txt(fkRow, RX + 130, 54, '正向运动学', 26, E.HI, 'start', 900);
+    var fkEp = E.txt(fkRow, RX + 195, 82, '（第 7 集提过）', 16, E.MUT, 'middle', 700);
     var fb = E.vec(fkRow, E.INK2, 3.5, { head: 12 }); fb.set(RX + 266, 44, RX + 296, 44);
     var fkOut = E.txt(fkRow, RX + 302, 54, '位姿', 26, E.HI, 'start', 900);
     var poeBox = E.el('g', {}, r3);
@@ -65,7 +66,10 @@
     var mG = E.el('g', {}, r3);
     K.paint(E.el('rect', { x: RX + 112, y: FY[2] - 28, width: 40, height: 40, rx: 9, 'stroke-width': 2.5 }, mG), E.tint(E.GOOD, 14, 'var(--demo-surface)'), E.GOOD);
     E.tex(mG, RX + 120, FY[2], 'M', 24, E.INK, 'start', { w: 30, h: 44 });
-    var mNote = E.txt(mG, RX + 164, FY[2] - 2, '零位时、手的位姿', 20, E.GOOD, 'start', 900);
+    // 2026-11-04（观众零基础）：片头还没讲「零位」（第 1 幕才定义），M 旁照旁白写「关节都在 0° 时、手的位姿」，分两行
+    var mNote = E.el('g', {}, mG);
+    E.txt(mNote, RX + 164, FY[2] - 10, '关节都在 0° 时', 20, E.GOOD, 'start', 900);
+    E.txt(mNote, RX + 164, FY[2] + 16, '手的位姿', 20, E.GOOD, 'start', 900);
     var seqL = E.txt(r3, CX, 392, '每个关节一个矩阵指数，按顺序乘起来', 21, E.INK, 'middle', 900);
 
     return {
@@ -102,7 +106,7 @@
         E.op(r2, f(t, T.ask, 0.4) * (1 - f(t, T.out2, 0.4)));
         E.op(q1, f(t, T.where, 0.3)); E.op(q2, f(t, T.dir, 0.3));
         E.op(r3, f(t, T.joints - 0.2, 0.3));
-        E.op(fkRow, 1); E.op(fa.g, f(t, T.get, 0.3)); E.op(fkName, f(t, T.fk, 0.3)); E.op(fb.g, f(t, T.fk + 0.3, 0.3)); E.op(fkOut, f(t, T.pose3, 0.3));
+        E.op(fkRow, 1); E.op(fa.g, f(t, T.get, 0.3)); E.op(fkName, f(t, T.fk, 0.3)); E.op(fkEp, f(t, T.fk, 0.3)); E.op(fb.g, f(t, T.fk + 0.3, 0.3)); E.op(fkOut, f(t, T.pose3, 0.3));
         E.pop(poeBox, CX, 124, f(t, T.poe, 0.35), 0.9);
         facs.forEach(function (F, i) {
           E.pop(F.g, F.x + 50, F.y - 8, f(t, T.facs[i], 0.3), 0.85);
