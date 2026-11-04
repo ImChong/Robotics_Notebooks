@@ -2,12 +2,13 @@
 type: entity
 tags: [software, simulation, physics-engine, nvidia, realtime, metaverse]
 status: complete
-updated: 2026-10-09
+updated: 2026-11-05
 related:
   - ./blender.md
   - ./mujoco.md
   - ./isaac-sim.md
   - ./isaac-lab.md
+  - ./nvidia-skills.md
   - ./nvidia-learn-openusd.md
   - ./newton-physics.md
   - ./nvidia-warp.md
