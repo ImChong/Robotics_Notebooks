@@ -6640,6 +6640,7 @@
 - [HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）](wiki/methods/hy-motion-1.md) — HY-Motion 1.0**（Tencent Hunyuan 3D Digital Human Team，arXiv:2512.23464）面向 **文本描述 + 期望时长** 生成 **SMP `📅unknown` `[method_page]`
 - [Imitation Learning (IL, 模仿学习)](wiki/methods/imitation-learning.md) — 模仿学习 (Imitation Learning)**：通过专家演示数据（**行为克隆**、**DAgger** 等），让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`
 - [In-hand Reorientation (手内重定向)](wiki/methods/in-hand-reorientation.md) — 手内重定向 (In-hand Reorientation)** 是灵巧操作（Dexterous Manipulation）领域中最具挑战性的任务之一。它的目标是让多指灵巧手（如 Allegro H `📅unknown` `[method_page]`
+- [Informed RRT*](wiki/methods/informed-rrt-star.md) — Informed RRT* 在找到初始解以后，只在可能改善当前解的子集里采样，减少无效探索。 `📅unknown` `[method_page]`
 - [Intentional Updates for Streaming RL（意图更新与流式强化学习）](wiki/methods/intentional-updates-streaming-rl.md) — 意图更新（intentional updates）指：不显式固定「参数空间步长」，而是先规定**当前这一步在关心的输出量**（价值预测、动作 log-probability 等）上希望达到的变化，再用 `📅2026-05-10` `[method_page]`
 - [Inverse Dynamics Control（逆动力学控制，IDC）](wiki/methods/inverse-dynamics-control.md) — IDC：由期望轨迹 $(q_d,\dot{q}_d,\ddot{q}_d)$ 经动力学逆解直接得前馈力矩，辅以少量反馈修正。 `📅unknown` `[method_page]`
 - [Inverse Reinforcement Learning（IRL, 逆强化学习）](wiki/methods/inverse-reinforcement-learning.md) — 逆强化学习**：在 MDP 已知或可交互、奖励未知时，从专家（近）最优行为反推 $r$，再把 $r$ 交给 [强化学习](./reinfor `📅unknown` `[method_page]`
@@ -6703,6 +6704,9 @@
 - [RMSProp（Root Mean Square Propagation）](wiki/methods/rmsprop.md) — RMSProp**：对梯度平方 $g_t^2$ 做 **指数滑动平均（EMA）** 得到 $v_t$，用 $g_t / \sqrt{v_t + \epsilon}$ 归一化更新方向，使 per-p `📅unknown` `[method_page]`
 - [RoboArena（评测基准）](wiki/methods/roboarena.md) — RoboArena**：面向通用机器人策略的分布式真实世界评测框架，聚合多个实验室在不同环境与任务上的配对对比实验，用排名反映策略泛化而非单一固定场景得分。 `📅unknown` `[method_page]`
 - [Robotics Transformer（RT-1 / RT-2）](wiki/methods/robotics-transformer-rt-series.md) — Robotics Transformer（RT 系列）**：把多视角图像与自然语言指令编码为 token，并输出离散化机器人动作 token，使单一 Transformer 可在海量真实演示上训练 `📅unknown` `[method_page]`
+- [RRT-Connect](wiki/methods/rrt-connect.md) — RRT-Connect 从起点和终点两侧各生长一棵树，并努力把两棵树连接起来，常用于强调可行解搜索的运动规划。**（文章表述） `📅unknown` `[method_page]`
+- [RRT*](wiki/methods/rrt-star.md) — RRT* 保留 RRT 的随机扩展思想，同时把路径代价纳入搜索：新节点选累计代价更低的父节点，并通过 Rewiring 改写旧节点的连接，让已找到的连接持续变好。 `📅unknown` `[method_page]`
+- [RRT（Rapidly-exploring Random Tree）](wiki/methods/rrt.md) — RRT 不预先把整张图搭好，而是从起点让一棵树在空间里随机探索、逐步长向目标，先解决「找到一条可行路」而非「找到最短路」。 `📅unknown` `[method_page]`
 - [SAC（Soft Actor-Critic）](wiki/methods/sac.md) — SAC（软演员-评论家）**：在标准 RL 目标上叠加 **最大熵正则项**，让策略在完成任务的同时保持尽量高的随机性，配合 **Replay Buffer 的 off-policy 复用** 与 `📅unknown` `[method_page]`
 - [Safe RL（安全强化学习）](wiki/methods/safe-rl.md) — 安全强化学习（Safe Reinforcement Learning, Safe RL）** 是近年来强化学习领域发展最快、在机器人实体部署中最为核心的一个分支。其根本宗旨在于：在智能体（Agen `📅unknown` `[method_page]`
 - [SayCan（Do As I Can）](wiki/methods/saycan.md) — SayCan**：把大型语言模型当作高层任务分解器，把学得的价值函数或成功率估计当作**物理 affordance 过滤器**，两者结合输出当前环境下可执行的指令序列。 `📅unknown` `[method_page]`

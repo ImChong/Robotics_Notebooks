@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-05] ingest | sources/papers/tacclaw_infinity_arxiv_2610_20320.md — 补充论文全文、实验结果与源码调用，确认部分开放
+
+## [2026-11-04] ingest | 深蓝AI《彻底搞懂RRT与RRT*》：新建 RRT / RRT* / RRT-Connect / Informed RRT* 四个方法节点（算法教程，无项目清单）
+
 ## [2026-11-04] ingest | 具身智能小站 2026-11-04《机器人做错了，奖励模型为什么还在加分？》57 篇逐篇建独立详情节点（新建 54 / 复用 3，保留库内已有 6 篇来源笔记）
 
 ## [2026-11-04] ingest | sources/papers/hug_arxiv_2611_01659.md — 收录 HuG 人形全身抓取；项目页未能访问，开放状态待核查
