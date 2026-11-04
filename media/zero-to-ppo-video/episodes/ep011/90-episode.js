@@ -70,7 +70,7 @@
           '**《Modern Robotics》** 式 (4.6)–(4.14)、4.1.1 节、例 4.2',
           '**《Modern Robotics》** 4.1.3 节：从最外面的关节往里变换',
           '**《Modern Robotics》** 例 4.5、图 4.6、图 4.7（UR5）',
-          '**《Modern Robotics》** 附录 C.1、C.6 节（D-H 参数）、4.3、4.5 节',
+          '**《Modern Robotics》** 附录 C、C.6 节（D-H 参数）、4.3、4.5 节',
           '**《Modern Robotics》** 3.2.1、3.3.1 节（列 = 坐标轴、原点）',
           '**Modern Robotics 官方代码**：FKinSpace、MatrixExp6、VecTose3',
           '**NumPy 文档**：Indexing on ndarrays（下标从 0 起）、ndarray.round',
