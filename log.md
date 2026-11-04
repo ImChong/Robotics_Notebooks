@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-04] ingest | 具身智能小站 2026-11-04《机器人做错了，奖励模型为什么还在加分？》57 篇逐篇建独立详情节点（新建 54 / 复用 3，保留库内已有 6 篇来源笔记）
+
 ## [2026-11-04] ingest | sources/papers/hug_arxiv_2611_01659.md — 收录 HuG 人形全身抓取；项目页未能访问，开放状态待核查
 
 ## [2026-11-04] ingest | sources/repos/agent-autoloop.md — 收录命令行智能体事件调度与源码运行路径，协议复核待完成
