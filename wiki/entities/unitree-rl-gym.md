@@ -148,7 +148,7 @@ sequenceDiagram
 
 - [sources/repos/unitree_rl_gym.md](../../sources/repos/unitree_rl_gym.md)
 - 上游：<https://github.com/unitreerobotics/unitree_rl_gym>
-- 源码核对（2026-11-02）：unitree_rl_gym@276801e，读过 README.md、legged_gym/scripts/train.py、legged_gym/scripts/play.py（部分）、legged_gym/envs/__init__.py、legged_gym/utils/task_registry.py（部分）、legged_gym/envs/base/base_task.py（部分）、legged_gym/envs/base/legged_robot.py（部分）；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-02）：unitreerobotics/unitree_rl_gym@276801e，读过 README.md、legged_gym/scripts/train.py、legged_gym/scripts/play.py（部分）、legged_gym/envs/__init__.py、legged_gym/utils/task_registry.py（部分）、legged_gym/envs/base/base_task.py（部分）、legged_gym/envs/base/legged_robot.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -131,7 +131,7 @@ sequenceDiagram
 
 - [sources/repos/unitree_mujoco.md](../../sources/repos/unitree_mujoco.md)
 - 上游：<https://github.com/unitreerobotics/unitree_mujoco>
-- 源码核对（2026-11-02）：unitree_mujoco@1eb6642，读过 readme.md、simulate/src/main.cc（部分）、simulate/src/unitree_sdk2_bridge.h（部分）、simulate/src/param.h（部分）、simulate_python/unitree_mujoco.py、simulate_python/unitree_sdk2py_bridge.py（部分）；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-02）：unitreerobotics/unitree_mujoco@1eb6642，读过 readme.md、simulate/src/main.cc（部分）、simulate/src/unitree_sdk2_bridge.h（部分）、simulate/src/param.h（部分）、simulate_python/unitree_mujoco.py、simulate_python/unitree_sdk2py_bridge.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

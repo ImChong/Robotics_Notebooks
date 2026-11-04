@@ -101,7 +101,7 @@ sequenceDiagram
 ## 参考来源
 
 - [Unlimited OCR 仓库归档](../../sources/repos/unlimited-ocr-2.md)
-- 源码核对（2026-11-02）：unlimited-ocr-2 → baidu/Unlimited-OCR@ea42e6d，读过 README.md、infer.py、utils/process_unlimitedOCR2.py（部分）；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-02）：baidu/Unlimited-OCR@ea42e6d，读过 README.md、infer.py、utils/process_unlimitedOCR2.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

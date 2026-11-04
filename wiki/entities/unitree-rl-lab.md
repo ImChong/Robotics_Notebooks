@@ -127,7 +127,7 @@ sequenceDiagram
 - [sources/repos/unitree_rl_lab.md](../../sources/repos/unitree_rl_lab.md)
 - 上游：<https://github.com/unitreerobotics/unitree_rl_lab>
 - [HumoSlope（arXiv:2607.07830）](../../sources/papers/humoslope_arxiv_2607_07830.md) — 论文将 Unitree RL Lab 作 proprioception-only 基线
-- 源码核对（2026-11-02）：unitree_rl_lab@4960b84，读过 README.md、scripts/rsl_rl/train.py、source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/__init__.py、tasks/locomotion/robots/g1/29dof/__init__.py、tasks/locomotion/agents/rsl_rl_ppo_cfg.py（部分）；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-02）：unitreerobotics/unitree_rl_lab@4960b84，读过 README.md、scripts/rsl_rl/train.py、source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/__init__.py、tasks/locomotion/robots/g1/29dof/__init__.py、tasks/locomotion/agents/rsl_rl_ppo_cfg.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

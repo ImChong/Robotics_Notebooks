@@ -125,7 +125,7 @@ sequenceDiagram
 
 - [sources/repos/unitree_guide.md](../../sources/repos/unitree_guide.md)
 - 上游：<https://github.com/unitreerobotics/unitree_guide>
-- 源码核对（2026-11-02）：unitree_guide@fdf4d23，读过 README.md、CMakeLists.txt、src/main.cpp、src/control/ControlFrame.cpp、src/FSM/FSM.cpp、src/interface/IOROS.cpp、src/interface/KeyBoard.cpp、src/FSM/State_Passive.cpp、State_FixedStand.cpp、State_Trotting.cpp（部分）；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-02）：unitreerobotics/unitree_guide@fdf4d23，读过 README.md、unitree_guide/CMakeLists.txt、unitree_guide/src/main.cpp、unitree_guide/src/control/ControlFrame.cpp、unitree_guide/src/FSM/FSM.cpp、unitree_guide/src/interface/IOROS.cpp、unitree_guide/src/interface/KeyBoard.cpp、unitree_guide/src/FSM/State_Passive.cpp、unitree_guide/src/FSM/State_FixedStand.cpp、unitree_guide/src/FSM/State_Trotting.cpp（部分）、unitree_guide/include/control/CtrlComponents.h（grep 片段）、unitree_guide/include/interface/IOInterface.h（grep 片段）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

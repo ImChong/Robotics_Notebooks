@@ -120,7 +120,7 @@ sequenceDiagram
 
 - [sources/repos/unitree_legged_sdk.md](../../sources/repos/unitree_legged_sdk.md)
 - 上游：<https://github.com/unitreerobotics/unitree_legged_sdk>
-- 源码核对（2026-11-02）：unitree_legged_sdk@4539a6c，读过 README.md、CMakeLists.txt、example/example_position.cpp、include/unitree_legged_sdk/loop.h、udp.h（grep）、safety.h（grep）、comm.h（grep）、unitree_legged_sdk.h；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-02）：unitreerobotics/unitree_legged_sdk@4539a6c，读过 README.md、CMakeLists.txt、example/example_position.cpp、include/unitree_legged_sdk/loop.h、udp.h（grep）、safety.h（grep）、comm.h（grep）、unitree_legged_sdk.h；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

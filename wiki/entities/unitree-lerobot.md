@@ -145,7 +145,7 @@ sequenceDiagram
 
 - [sources/repos/unitree_lerobot.md](../../sources/repos/unitree_lerobot.md)
 - 上游：<https://github.com/unitreerobotics/unitree_lerobot>
-- 源码核对（2026-11-02）：unitree_lerobot@41c2805，读过 README.md、pyproject.toml、.gitmodules、unitree_lerobot/eval_robot/eval_g1.py、make_robot.py（部分）、robot_control/robot_arm.py（部分）、utils/utils.py、image_server/image_client.py（grep）；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-02）：unitreerobotics/unitree_lerobot@41c2805，读过 README.md、pyproject.toml、.gitmodules、unitree_lerobot/eval_robot/eval_g1.py、make_robot.py（部分）、robot_control/robot_arm.py（部分）、utils/utils.py、image_server/image_client.py（grep）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
