@@ -559,6 +559,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 
 ## 关联页面
 
+- [HuG：主动感知的人形全身抓取](../entities/paper-hug-whole-body-grasping.md) — 用控制器在环筛选合成轨迹，结合主动视角搜索与全身对齐。
+
 - [SeeR-VLA：机器人中心点图](../entities/paper-seer-vla.md)
 
 - [AdaDex](../entities/paper-adadex.md) — 单条手-物轨迹训练可适应灵巧技能；混合灵巧模仿
