@@ -73,6 +73,41 @@ flowchart TB
 - **≠ 机器人仿真**：不提供与 [GS-Playground](./gs-playground.md) 同类的 **物理步进 + 批量训练观测**；侧重交互浏览与内容交付。
 - **生态绑定**：与 Spark 的 THREE.js 生态不同，选型时应比对团队现有前端栈与许可。
 
+## 源码运行时序图
+
+入口：`pnpm dev`（仓库根：构建 renderer、生成 API 文档并启动 website 的 Astro 开发服务）；分块资产预览：`node external/splat-dev-server/bin/server.js <资产目录>`；离线分块由 `packages/splat-transform-native` 的 `auto_chunk_lod` 生成 `lod-meta.json`
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant O as 离线 splat-transform-native auto_chunk_lod
+    participant SV as splat-dev-server src/server.js
+    participant A as 应用页面帧循环 website 示例
+    participant V as egs Viewer.render
+    participant L as splat-utils LodSplat
+    participant R as LodSplat ResourceManager
+    participant LD as DefaultLoadResource fetch 与 parseSplatData
+
+    O->>SV: 输出分块文件与 lod-meta.json 由服务目录托管
+    A->>V: 每帧 render 触发 scene.update
+    A->>L: LodSplat.tick camera 更新视图与投影矩阵
+    A->>L: LodSplat.flush 进入调度
+    L->>L: updateVisibility 视锥剔除并计算节点预算
+    L->>L: schedule 计算各节点目标 LOD 与 coverage
+    L->>R: request 按 coverage 与 refinement 请求资源
+    R->>LD: load idx 调用 loadResource
+    LD->>SV: fetch 分块 url 命中 lod-meta.json 路由或静态文件
+    SV-->>LD: 分块字节流
+    LD-->>R: 解析得到 SplatData
+    R-->>L: resource has idx 就绪
+    L->>L: upgrade merge commit 替换节点 proxy
+    loop 后续帧
+        A->>L: tick 与 flush 继续细化或卸载
+    end
+```
+
+图依据：`fcd3b19`（默认分支 HEAD）的 `package.json`（scripts）、`README.md`（Commands 与 Structure）、`packages/renderer/src/index.ts`（局部）、`packages/renderer/src/splat-loader.ts`（局部）、`external/splat-dev-server/bin/server.js`、`external/splat-dev-server/src/server.js`（局部）、`packages/splat-transform-native/source/src/pipeline/tasks/auto_chunk_lod.cpp`（仅按 `lod-meta.json` 命中行）；外部子模块 `external/egs-core` 固定在 `288143f`，依据其 `packages/egs/src/Viewer.ts`（`render` 段）、`packages/egs/src/ViewerContext.ts`（`createViewerContext`）、`packages/utils/splat-utils/lod/index.ts`（`tick`、`updateVisibility`、`schedule`、`flush`、`DefaultLoadResource` 段）、`packages/utils/splat-utils/lod/ResourceManager.ts`（`request` 与 `load` 段）。`upgrade`、`merge`、`commit` 内部与 `streaming.ts` 未逐行读，图中仅示意。未运行代码。
+
 ## 关联页面
 
 - [Spark（Web 3DGS）](./spark-3dgs-renderer.md)
@@ -83,6 +118,7 @@ flowchart TB
 ## 参考来源
 
 - [aholo-viewer 仓库归档](../../sources/repos/aholo-viewer.md)
+- 源码核对（2026-11-02）：manycoretech/aholo-viewer@fcd3b19（默认分支 HEAD），读过 package.json、README.md、packages/renderer/src/index.ts（局部）、packages/renderer/src/splat-loader.ts（局部）、external/splat-dev-server/bin/server.js、external/splat-dev-server/src/server.js（局部）；子模块 manycoretech/egs@288143f 读过 packages/egs/src/Viewer.ts（局部）、packages/egs/src/ViewerContext.ts（局部）、packages/utils/splat-utils/lod/index.ts（局部）、packages/utils/splat-utils/lod/ResourceManager.ts（局部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

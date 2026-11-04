@@ -99,6 +99,48 @@ AGH 使用 **Agnes MHS（Model Hardware Standard）** 指代自己的设备协�
 - 模型连接和工具插件能扩展软件能力，但不能自动带来物理接触推理、确定性延迟或硬件安全保证。
 - 项目所称 MHS 是其自有接口，不要与 Anthropic/HHMI 同名 MHS 或 MCP 混为一谈。
 
+## 源码运行时序图
+
+入口：`node packages/cli/dist/local/agnes.mjs serve`（需先按上文执行 `pnpm install` 与 `pnpm --filter @agnes/cli build:local`；仓库根 `agnes.mjs` 转调同一打包 CLI）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户 Web 或 CLI
+    participant B as packages/cli boot/local.ts bootLocal
+    participant C as packages/sdk submitCommand
+    participant D as daemon-rpc methods/agnes.ts submit
+    participant Q as daemon-rpc command-queue runQueued
+    participant F as daemon-rpc follow-up-runner
+    participant S as core step/session.ts Session.run
+    participant I as core execution/turn/inference.ts runInference
+    participant P as packages/ai 模型 provider
+    participant T as core execution/turn/tools.ts runToolsPhase
+
+    U->>B: 启动 serve 或本地 CLI 会话
+    B->>B: 组装 Host 服务与配置 并 createClient
+    U->>C: 提交用户输入 例如 followUp
+    C->>D: call _agnes/v1/submit 携带 clientId commandId kind payload
+    D->>D: requireOwner 与 generationGuard 鉴权
+    D->>D: journal.begin 按 commandId 去重
+    D->>Q: runQueued 按 sessionId 串行化
+    Q->>D: dispatch 分支 followUp 或 steer
+    D->>S: enqueueFollowUp 写入 next-turn 收件箱
+    D->>F: continueFollowUps 触发后续运行
+    F->>S: session.run until turn-end
+    loop 直到本轮 turn-end
+        S->>I: runInference 组装请求并 admit
+        I->>P: ModelExecution 经 provider 流式推理
+        P-->>I: 文本与工具调用事件
+        S->>T: runToolsPhase 执行工具调用
+        T-->>S: 工具结果写入会话账本
+    end
+    S-->>F: TurnOutcome
+    D-->>C: Ack 含 seq
+```
+
+图依据：`docs/develop/source-map.md` 所列的「CLI/Web → SDK → daemon/worker → Host/Core」路径，`agnes.mjs`、`packages/cli/src/boot/local.ts`（`bootLocal` 局部）、`packages/sdk/src/submit.ts`（局部）、`packages/protocol/src/methods.ts`（局部）、`packages/daemon-rpc/src/local/methods/agnes.ts`（`submit` 与 `dispatch` 段）、`packages/daemon-rpc/src/local/follow-up-runner.ts`（`enqueueFollowUp` 段）、`packages/core/src/step/session.ts`（`run` 与 `runTurns` 局部）、`packages/core/src/execution/turn/inference.ts`（`runInference` 局部）、`packages/core/src/execution/model-execution.ts`（局部）。`packages/ai` 与 `runToolsPhase` 内部细节未读，图中仅示意调用关系。未运行代码。
+
 ## 关联页面
 
 - [Model Hardware Standard（Anthropic / HHMI Janelia）](../concepts/model-hardware-standard.md) — 与 AGH 同名但彼此独立的协议概念
@@ -110,6 +152,7 @@ AGH 使用 **Agnes MHS（Model Hardware Standard）** 指代自己的设备协�
 ## 参考来源
 
 - [Agnes Harness 仓库与 README 摘录](../../sources/repos/agnes-harness.md)
+- 源码核对（2026-11-02）：AgnesAI-Labs/agnes-harness@2bfde24（默认分支 HEAD），读过 agnes.mjs、docs/develop/source-map.md、packages/cli/src/boot/local.ts（局部）、packages/sdk/src/submit.ts（局部）、packages/protocol/src/methods.ts（局部）、packages/daemon-rpc/src/local/methods/agnes.ts（局部）、packages/daemon-rpc/src/local/follow-up-runner.ts（局部）、packages/core/src/step/session.ts（局部）、packages/core/src/execution/turn/inference.ts（局部）、packages/core/src/execution/model-execution.ts（局部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
