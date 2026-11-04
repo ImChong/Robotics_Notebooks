@@ -61,6 +61,45 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`python3 gui_control.py`（在 `examples/gui_control/` 目录运行；先按 README `pip3 install -r requirements.txt`，并在 `LinkerHand/config/setting.yaml` 中设置 `CAN: "can0"`、`MODBUS: "None"`、`JOINT` 与手型号，再执行 `sudo ip link set can0 up type can bitrate 1000000`）。
+
+```mermaid
+sequenceDiagram
+    participant G as gui_control.py: HandControlGUI
+    participant AM as gui_control.py: HandApiManager
+    participant API as LinkerHand/linker_hand_api.py: LinkerHandApi
+    participant L10 as core/can/linker_hand_l10_can.py: LinkerHandL10Can
+    participant OC as utils/open_can.py: OpenCan
+    participant CAN as can0 (python-can socketcan)
+
+    G->>AM: 启动: HandApiManager.init_api()
+    AM->>API: LinkerHandApi(hand_joint, hand_type, modbus, can)
+    API->>L10: LinkerHandL10Can(can_id=0x28 或 0x27, can_channel, yaml)
+    L10->>CAN: init_can_bus: can.interface.Bus(socketcan, bitrate)
+    API->>OC: open_can(can0) 与 is_can_up_sysfs (Linux 且 MODBUS 为 None)
+    API->>API: get_embedded_version, get_serial_number
+    loop 每 30 ms (publish_timer)
+        G->>AM: publish_joint_state(滑块值列表)
+        AM->>API: finger_move(pose), 校验 0 到 255
+        API->>L10: set_joint_positions(pose)
+        L10->>CAN: send_frame(JOINT_POSITION2_RCO, pose[6:])
+        L10->>CAN: send_frame(JOINT_POSITION_RCO, pose[:6])
+    end
+    loop 每 500 ms (matrix_timer)
+        AM->>API: get_thumb / index / middle / ring / little _matrix_touch
+        API->>L10: 触觉矩阵读取 (收发细节未逐行核对)
+        AM-->>G: matrix_data_updated 信号, 刷新矩阵显示
+    end
+    alt CanError 发送失败
+        L10->>OC: open_can(channel), is_can_up_sysfs
+        L10->>CAN: 重建 can.interface.Bus
+    end
+```
+
+图依据：linker-bot/linkerhand-python-sdk@0cc0585，`README.md`、`LinkerHand/linker_hand_api.py`、`LinkerHand/core/can/linker_hand_l10_can.py`（`__init__`、`init_can_bus`、`send_frame`、`set_joint_positions`）、`LinkerHand/utils/open_can.py`（节选）、`LinkerHand/config/setting.yaml`、`example/gui_control/gui_control.py`（节选）。
+
 ## 参考来源
 
 - [linkerhand-python-sdk 源码归档](../../sources/repos/linkerhand-python-sdk.md)（<https://github.com/linker-bot/linkerhand-python-sdk>）
