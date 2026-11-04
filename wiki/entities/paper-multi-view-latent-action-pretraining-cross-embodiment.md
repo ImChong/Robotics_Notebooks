@@ -5,7 +5,7 @@ tags:
   - cross-embodiment
   - manipulation
 status: complete
-updated: 2026-10-31
+updated: 2026-11-05
 arxiv: "2610.27794"
 project_id: multi-view-latent-action-pretraining-cross-embodiment
 project: https://learnsyslab.github.io/multiview_latent_action_pretraining/
@@ -15,6 +15,7 @@ related:
   - ../methods/vla.md
   - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
+  - ../../sources/sites/multi-view-latent-action-pretraining.md
   - ../../sources/papers/multi-view-latent-action-pretraining-cross-embodiment_arxiv_2610_27794.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/blogs/wechat_embodied_station_50_papers_scenerig_photo_to_sim_2026-10-31.md
@@ -23,7 +24,7 @@ summary: "Multi-View LAPA：面向跨本体机器人视频学习的多视角潜�
 
 # Multi-View LAPA：面向跨本体机器人视频学习的多视角潜在动作预训练
 
-**Multi-View LAPA**（*Multi-View Latent Action Pretraining for Cross-Embodiment Robot Learning from Videos*，[arXiv:2610.27794](https://arxiv.org/abs/2610.27794)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
+**Multi-View LAPA**（*Multi-View Latent Action Pretraining for Cross-Embodiment Robot Learning from Videos*，[arXiv:2610.27794](https://arxiv.org/abs/2610.27794)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页补充论文正文文本中的方法与实验；由于原 PDF 及附录未能完整获取，图表与实验细节仍需对照原文复核。
 
 ## 一句话定义
 
@@ -76,12 +77,20 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用**：arXiv 摘要页/评论给出项目页或外链（https://learnsyslab.github.io/multiview_latent_action_pretraining/）；未发现代码仓库链接，无可对齐的官方代码流程。
+**不适用**：项目页仓库仅提供页面和补充视频，未见训练或推理实现；截至 2026-11-05 未核实到官方可运行代码。
 
 ## 实验与评测
 
-- 周报与摘要给出的数字/场景已写入上表「创新点」与摘要节选；其余实验细节、基线与成功率定义请回到论文正文。
-- 读法：先对齐任务设定、传感器与成功定义（仿真/真机），再解读 headline 数字，勿跨论文直接比较。
+以下为论文正文文本中的结果（arXiv v1；原 PDF 与附录尚未完整核对，待复核）：
+
+| 设置 | 指标及结果 |
+|---|---|
+| MimicGen、LIBERO、LIBERO-Plus 低动作预算，三基准均值 | 仅动作 42.7%；单视角 48.9%；多视角 56.2%，相对仅动作分别增加 6.2 和 13.5 个百分点 |
+| 冻结潜动作的动作探针 | 单视角 R² 0.54，多视角 0.63；主要改善第一相机的出平面运动 |
+| TRLC-DK1 真机、人手视频 | 论文报告 850 次 rollout；人类视频相对仅动作平均增加 20 个百分点；多视角 46%，单视角 21% |
+| 真机视频与目标机器人的数据 | 五条机器人示范下，有视频 26%→42%，仅动作 6%→23%；人类视频和机器人数据互补 |
+
+策略学习阶段使用一个外部相机及腕部视角；同步多视角用于 LAM 预训练。抓取和精细交互仍受动作监督不足限制，结果依赖任务。
 
 ## 与其他工作对比
 
@@ -105,6 +114,8 @@ flowchart TD
 - [vla](../methods/vla.md)
 
 ## 参考来源
+
+- [项目页核查](../../sources/sites/multi-view-latent-action-pretraining.md)
 
 - [multi-view-latent-action-pretraining-cross-embodiment_arxiv_2610_27794.md](../../sources/papers/multi-view-latent-action-pretraining-cross-embodiment_arxiv_2610_27794.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
