@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-04
 related:
   - ../entities/paper-libero-dynamic.md
   - ../entities/rax-scaling-online-exploration.md
@@ -59,7 +59,7 @@ flowchart TB
 | LIBERO-Pro2.0 | [paper-libero-pro2-0](../entities/paper-libero-pro2-0.md) | 已开源 |
 | BiDex-100 | [paper-bidex-100](../entities/paper-bidex-100.md) | 已开源 |
 | ContactBench 1.0 | [paper-contactbench-1-0](../entities/paper-contactbench-1-0.md) | 待发布 |
-| GPT-6-Astra Embodied Intelligence | [paper-gpt-6-astra-embodied-intelligence](../entities/paper-gpt-6-astra-embodied-intelligence.md) | 已开源 |
+| GPT-6-Astra Embodied Intelligence | [paper-gpt-6-astra-embodied-intelligence](../entities/paper-gpt-6-astra-embodied-intelligence.md) | 部分开放（RoboDojo 等集成待发布） |
 | LIBERO-PeRM | [paper-libero-perm-personalized-manipulation](../entities/paper-libero-perm-personalized-manipulation.md)（复用） | 已开源 |
 | Interventional Memory Evaluation VLA | [paper-interventional-memory-evaluation-vla](../entities/paper-interventional-memory-evaluation-vla.md) | 项目页未列 GitHub |
 

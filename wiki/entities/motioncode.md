@@ -4,7 +4,7 @@ type: entity
 tags: [industry, motion-capture, dataset, humanoid, sim2real, motioncode]
 status: complete
 date: 2026-05-07
-updated: 2026-05-07
+updated: 2026-11-04
 related:
   - ../concepts/motion-retargeting.md
   - ./humanoid-robot.md
@@ -51,6 +51,8 @@ summary: "MotionCode 是宣称专注人体运动数字化的公司，公开分�
 | **Mind** | 机器人与 AI 理解、复现自然人体运动 |
 
 官网 Featured Work 中还提到：数据可与 **Isaac**、**MuJoCo** 等仿真训练环境兼容，并进入 **Blender、Maya、Unreal Engine** 等制作链路（具体格式与授权以官方后续文档为准）。
+
+> **2026-11-04 复核官网：** Move / Media / Mind 三线定位、Isaac / MuJoCo 与 Blender / Maya / Unreal 兼容表述均未变；用例栏列 Robotics、Multimedia、Healthcare 三类。仍未见公开数据字典、许可条款或技术文档，下方「营销页 ≠ 技术规格书」判断维持。
 
 ## 常见误区或局限
 
