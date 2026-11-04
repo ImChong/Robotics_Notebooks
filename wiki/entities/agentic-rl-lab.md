@@ -3,7 +3,7 @@ type: entity
 project_id: agentic-rl-lab
 code: https://github.com/datawhalechina/agentic-rl-lab
 project: https://datawhalechina.github.io/agentic-rl-lab/
-tags: [reinforcement-learning, agentic-rl, llm-agents, education, open-source]
+tags: [datawhale, reinforcement-learning, agentic-rl, llm-agents, education, open-source]
 status: draft
 updated: 2026-11-04
 related:
@@ -28,6 +28,14 @@ Datawhale 的公开实验手册以 PyTRIO 为基础，结合算法讲解和代�
 | LLM | Large Language Model | 大语言模型 |
 | GRPO | Group Relative Policy Optimization | 通过同题采样结果的相对奖励构造优势 |
 | LoRA | Low-Rank Adaptation | 低秩参数高效微调 |
+
+## 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 机构 | 开源学习社区（Datawhale） |
+| 代码 | [datawhalechina/agentic-rl-lab](https://github.com/datawhalechina/agentic-rl-lab) |
+| 在线手册 | [Agentic RL Lab](https://datawhalechina.github.io/agentic-rl-lab/) |
 
 ## 课程地图
 
