@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: agent-autoloop
-tags: [repo, llm-agents, agent-infrastructure, automation, orchestration]
+tags: [repo, llm-agents, agent-infrastructure, automation, orchestration, independent-maintainer]
 status: draft
 updated: 2026-11-04
 code: https://github.com/KKKKhazix/agent-autoloop
@@ -27,6 +27,8 @@ summary: "Agent Autoloop：以事件、规则和回执调度命令行 Agent，�
 | HTTP | Hypertext Transfer Protocol | 中台与插件通信协议 |
 | JSON | JavaScript Object Notation | 规则、事件和回执格式 |
 | TTL | Time To Live | 限制事件链跳数的类比 |
+
+项目由 GitHub 用户 [KKKKhazix](https://github.com/KKKKhazix) 的个人账号发布；机构归属未注明。
 
 ## 核心机制
 
