@@ -9,9 +9,11 @@ project: https://mapo-corl2026.github.io/MAPO/
 related:
   - ./paper-yahmp.md
   - ../methods/sonic-motion-tracking.md
+  - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
 sources:
   - ../../sources/papers/mapo_arxiv_2611_02613.md
   - ../../sources/sites/mapo-project.md
+  - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
 summary: "MAPO：针对密集 MoE 人形运动跟踪教师，分别计算专家与路由器策略优化目标。"
 ---
 

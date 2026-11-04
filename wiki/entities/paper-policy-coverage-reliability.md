@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robot-learning, imitation-learning, reinforcement-learning, stanford, cmu]
 status: draft
-updated: 2026-11-03
+updated: 2026-11-04
 project_id: robot-policy-coverage-reliability
 arxiv: "2611.01565"
 project: https://zhanyisun.github.io/robot-policy-learning-dynamics/
@@ -10,9 +10,11 @@ related:
   - ../methods/behavior-cloning.md
   - ../methods/diffusion-policy.md
   - ../tasks/manipulation.md
+  - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
 sources:
   - ../../sources/papers/policy_coverage_reliability_arxiv_2611_01565.md
   - ../../sources/sites/policy_coverage_reliability.md
+  - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
 summary: "以固定起点 pass@k 区分生成式机器人策略的覆盖度和单次可靠性，并以离线误差分位数选择检查点。"
 ---
 
