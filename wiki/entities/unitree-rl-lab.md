@@ -74,6 +74,42 @@ summary: "unitree_rl_lab 是基于 Isaac Lab 的官方 Unitree RL 环境扩展�
 - 首次加载资源受网络与磁盘影响，勿在未就绪时判断「安装失败」。
 - **开源状态：已开源**（Apache-2.0）。
 
+## 源码运行时序图
+
+官方实现 [unitreerobotics/unitree_rl_lab](https://github.com/unitreerobotics/unitree_rl_lab)（短 SHA `4960b84`）：基于 Isaac Lab 的强化学习任务库，训练入口 `scripts/rsl_rl/train.py`。任务通过 `source/unitree_rl_lab/.../robots/*/__init__.py` 中的 `gym.register` 注册，环境与 PPO 配置分别来自 `velocity_env_cfg.py` 与 `agents/rsl_rl_ppo_cfg.py`；仿真环境、包装器与 PPO 训练循环由外部包 Isaac Lab（`isaaclab`、`isaaclab_rl`）与 `rsl_rl` 提供。`deploy/` 下的 C++ 真机部署（`deploy/robots/*/main.cpp`）未纳入本图。
+
+入口：`python scripts/rsl_rl/train.py --headless --task Unitree-G1-29dof-Velocity`
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant TR as train.py<br/>scripts/rsl_rl/train.py
+    participant AL as AppLauncher<br/>isaaclab（外部）
+    participant REG as gym.register<br/>tasks/locomotion/robots/g1/29dof/__init__.py
+    participant CFG as velocity_env_cfg / rsl_rl_ppo_cfg<br/>BasePPORunnerCfg
+    participant GYM as gym.make<br/>ManagerBasedRLEnv（isaaclab 外部）
+    participant WRAP as RslRlVecEnvWrapper<br/>isaaclab_rl（外部）
+    participant RUN as OnPolicyRunner<br/>rsl_rl（外部）
+    participant EXP as 日志与导出<br/>logs/rsl_rl/<experiment>/
+    U->>TR: python scripts/rsl_rl/train.py --headless --task Unitree-G1-29dof-Velocity
+    TR->>AL: AppLauncher(args_cli)（先启动 Isaac Sim，再导入任务与 RL 包）
+    TR->>REG: import unitree_rl_lab.tasks（执行 gym.register，写入 env 与 rsl_rl 入口）
+    TR->>CFG: hydra_task_config 按任务名解析 env_cfg 与 agent_cfg
+    TR->>TR: update_rsl_rl_cfg；覆盖 num_envs、seed、device、max_iterations
+    TR->>EXP: 生成 {时间戳}_{run_name} 日志目录
+    TR->>GYM: gym.make(task, cfg=env_cfg)
+    TR->>WRAP: RslRlVecEnvWrapper(env, clip_actions)
+    TR->>RUN: OnPolicyRunner(env, agent_cfg.to_dict(), log_dir, device)
+    TR->>EXP: add_git_repo_to_log；dump env.yaml / agent.yaml；export_deploy_cfg；复制环境配置文件
+    TR->>RUN: learn(num_learning_iterations=max_iterations, init_at_random_ep_len=True)
+    Note over RUN,GYM: rollout 与 PPO 更新在 rsl_rl 内部完成（未读源码）；每步经 WRAP 调用环境 step（isaaclab 内部未读）
+    RUN-->>EXP: 周期保存 checkpoint（save_interval）
+    TR->>GYM: env.close()；simulation_app.close()
+```
+
+图依据：unitree_rl_lab@4960b84，读过 `README.md`（训练命令与 `unitree_rl_lab.sh` 用法）、`scripts/rsl_rl/train.py`（主流程，`AppLauncher` 与 `learn` 等调用位置）、`source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/__init__.py`、`source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/g1/29dof/__init__.py`（`gym.register`）、`source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/agents/rsl_rl_ppo_cfg.py`（`BasePPORunnerCfg` 片段）。`velocity_env_cfg.py`、`export_deploy_cfg`、`hydra_task_config`、Isaac Lab 与 rsl_rl 内部实现未读。未运行代码。
+
 ## 关联页面
 
 - [unitree_rl_gym](./unitree-rl-gym.md)
@@ -91,6 +127,7 @@ summary: "unitree_rl_lab 是基于 Isaac Lab 的官方 Unitree RL 环境扩展�
 - [sources/repos/unitree_rl_lab.md](../../sources/repos/unitree_rl_lab.md)
 - 上游：<https://github.com/unitreerobotics/unitree_rl_lab>
 - [HumoSlope（arXiv:2607.07830）](../../sources/papers/humoslope_arxiv_2607_07830.md) — 论文将 Unitree RL Lab 作 proprioception-only 基线
+- 源码核对（2026-11-02）：unitree_rl_lab@4960b84，读过 README.md、scripts/rsl_rl/train.py、source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/__init__.py、tasks/locomotion/robots/g1/29dof/__init__.py、tasks/locomotion/agents/rsl_rl_ppo_cfg.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

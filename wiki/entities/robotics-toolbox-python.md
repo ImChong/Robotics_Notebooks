@@ -79,6 +79,41 @@ sol = robot.ik_LM(T)        # Levenberg–Marquardt 数值 IK
 3. **安装能力取决于 extras 与平台：** 按需安装依赖，并在目标操作系统上核对官方说明；不要将可选可视化或碰撞依赖当作核心包保证。
 4. **性能数字需按目标机器复测：** 官方 README 的速度描述不代表任意平台上的端到端控制周期保证。
 
+## 源码运行时序图
+
+入口：用户脚本中 `import roboticstoolbox as rtb` 后调用 `rtb.models.Panda()`，即 README「Code Examples」与本页「工程实践」所用的用法（`pip install roboticstoolbox-python`，Python >= 3.10）；库本身不起进程，包内 `rtbtool` 等命令行入口未在本图中。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户脚本
+    participant PAN as models/URDF Panda 即 URDFRobot 子类
+    participant RK as RobotKinematics 运动学方法
+    participant ETS as ETS 类 ets/ETS.py
+    participant IK as IK 辅助 check_q0 与 check_mask
+    participant FK as ets/fknm C 扩展
+    U->>PAN: rtb.models.Panda() 构造机器人
+    PAN->>PAN: 设置 qr 并 addconfiguration("qr")
+    PAN-->>U: robot 实例
+    U->>RK: robot.fkine(robot.qr)
+    RK->>ETS: self.ets(start, end).fkine(q)
+    ETS->>ETS: eval(q, base, tool, include_base)
+    ETS->>FK: ETS_fkine(self._fknm, q, base, tool)
+    FK-->>ETS: 末端位姿矩阵
+    ETS-->>RK: 位姿矩阵
+    RK-->>U: SE3 位姿 T
+    U->>RK: robot.ik_LM(Tep)
+    RK->>ETS: self.ets(start, end).ik_LM(Tep, ...)
+    ETS->>IK: check_q0(q0) 与 check_mask(mask)
+    ETS->>FK: IK_LM_c(self._fknm, Tep, q0, ilimit, slimit, tol, ...)
+    Note over FK: C++ 实现的 Levenberg-Marquardt 迭代
+    FK-->>ETS: q, success, iterations, searches, residual
+    ETS-->>RK: IKSolution
+    RK-->>U: sol
+```
+
+图依据：petercorke/robotics-toolbox-python@879fb36，读过 `README.md`（安装与 Code Examples 段）、`pyproject.toml`（`requires-python`、`[project.scripts]`）、`src/roboticstoolbox/models/__init__.py`、`src/roboticstoolbox/models/URDF/__init__.py`、`src/roboticstoolbox/models/URDF/Panda.py`（`__init__` 中的 `qr` 与 `addconfiguration`）、`src/roboticstoolbox/models/URDF/URDFRobot.py`（类声明）、`src/roboticstoolbox/robot/Robot.py`（类声明）、`src/roboticstoolbox/robot/RobotKinematics.py`（`fkine`、`ik_LM` 的委托调用）、`src/roboticstoolbox/ets/ETS.py`（`fkine`、`eval`、`ik_LM` 及 fknm 导入）；`IK.py` 的 `check_q0`/`check_mask` 与 `fknm` C 扩展仅确认 import 与调用点，未读实现。未运行代码。
+
 ## 关联页面
 
 - [正向运动学](../formalizations/forward-kinematics.md) — 机器人模型到末端位姿的可执行计算
@@ -95,6 +130,7 @@ sol = robot.ik_LM(T)        # Levenberg–Marquardt 数值 IK
 - [QUT 官方学术主页：Peter Corke](https://www.qut.edu.au/about/our-people/academic-profiles/peter.corke)
 - [官方文档](https://petercorke.github.io/robotics-toolbox-python/)
 - [Corke & Haviland, “Not your grandmother’s toolbox – the Robotics Toolbox reinvented for Python,” ICRA 2021](https://ieeexplore.ieee.org/document/9561366)
+- 源码核对（2026-11-02）：petercorke/robotics-toolbox-python@879fb36，读过 `README.md`、`pyproject.toml`、`src/roboticstoolbox/models/__init__.py`、`models/URDF/__init__.py`、`models/URDF/Panda.py`、`models/URDF/URDFRobot.py`、`robot/Robot.py`、`robot/RobotKinematics.py`、`ets/ETS.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

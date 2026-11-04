@@ -78,6 +78,45 @@ OpenViking 将内容映射到统一的 viking:// 命名空间。README 展示的
 - **记忆抽取需要审查。** 自动归纳可能遗漏上下文或固化错误经验；重要实验结论应保留原始记录并可追溯。
 - **许可证需要评估。** 仓库采用 AGPL-3.0，商用集成前需结合部署方式咨询合规意见。
 
+## 源码运行时序图
+
+入口：`openviking-server`（先 `openviking-server init` 生成 `~/.openviking/ov.conf`；`pyproject.toml` 中 `openviking-server = openviking_cli.server_bootstrap:main`）。下图为服务启动与一次 `POST /resources` 添加资源的路径；不含 `ov` Rust CLI 内部与 `ingest_resource_request` 内部实现。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户终端
+    participant SB as openviking_cli/server_bootstrap.py main()
+    participant BS as openviking/server/bootstrap.py _main()
+    participant APP as openviking/server/app.py create_app（FastAPI）
+    participant SVC as OpenVikingService（service/core.py）
+    participant C as HTTP 客户端（ov CLI 或 SDK）
+    participant RT as routers/resources.py add_resource
+    participant ING as ingest_resource_request
+    U->>SB: openviking-server [--host] [--port] [--config] [--with-bot]
+    SB->>SB: 预解析 --config，分流 init / doctor / ingest 子命令
+    SB->>BS: bootstrap.main()，进入 _main()
+    BS->>BS: 解析参数与 ov.conf，run_startup_health_check_or_exit
+    BS->>BS: _abort_if_port_in_use
+    BS->>APP: create_app(config, host, port, workers, with_bot)
+    alt workers 大于 1
+        BS->>APP: uvicorn.run（多进程）
+    else 单进程
+        BS->>APP: _run_restartable_server → uvicorn.Server.run
+    end
+    Note over APP,SVC: lifespan 启动阶段
+    APP->>SVC: lifespan 内创建 OpenVikingService()，set_service
+    APP->>APP: 注册中间件（请求 ID、观测、异常处理）与各 router（含 resources、search、sessions）
+    C->>APP: POST /resources
+    APP->>RT: add_resource(request, ctx)
+    RT->>SVC: get_service()，取 service.resources
+    RT->>ING: ingest_resource_request(request, ctx, resources=service.resources, config, wait)
+    ING-->>RT: 执行结果
+    RT-->>C: response_from_result
+```
+
+图依据：volcengine/OpenViking@0b713a5，读过 `README.md`（安装与启动命令）、`pyproject.toml`（scripts 入口）、`openviking_cli/server_bootstrap.py`（main 分流）、`openviking/server/bootstrap.py`（_main 片段：健康检查、端口、create_app、uvicorn 分支）、`openviking/server/app.py`（lifespan 与路由注册片段）、`openviking/server/routers/resources.py`（add_resource）、`openviking/service/core.py`（类定义与 initialize 位置，仅看到部分）。
+
 ## 关联页面
 
 - [Hermes Agent](./hermes-agent.md) — 常驻 Agent 运行时，也包含持久记忆机制；可比较运行时内建记忆与独立上下文数据库。
@@ -93,6 +132,7 @@ OpenViking 将内容映射到统一的 viking:// 命名空间。README 展示的
 - [OpenViking 官方文档：Architecture](https://docs.openviking.ai/en/concepts/01-architecture)
 - [OpenViking 官方文档：Context Layers](https://docs.openviking.ai/en/concepts/03-context-layers)
 - [OpenViking 官方文档：Retrieval](https://docs.openviking.ai/en/concepts/07-retrieval)
+- 源码核对（2026-11-02）：volcengine/OpenViking@0b713a5，读过 README.md、pyproject.toml、openviking_cli/server_bootstrap.py、openviking/server/bootstrap.py、openviking/server/app.py、openviking/server/routers/resources.py、openviking/service/core.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

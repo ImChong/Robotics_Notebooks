@@ -79,10 +79,51 @@ pip install "flash-attn==2.5.6" --no-build-isolation
 - [Manipulation](../tasks/manipulation.md)
 - [Unitree](./unitree.md)
 
+## 源码运行时序图
+
+入口：`bash scripts/eval_scripts/run_real_eval_server.sh`，其中调用 `python deployment/model_server/run_real_eval_server.py --ckpt_path ... --port 8777 --unnorm_key ... --vlm_pretrained_path ...`。下图为真机推理服务端的启动与单次 `/act` 请求处理顺序；机器人端客户端（`unitree_deploy/robot_client.py`）不在本仓库内，仅以 Client 表示。
+
+```mermaid
+sequenceDiagram
+    participant C as 机器人客户端（不在本仓库）
+    participant W as FastAPI / uvicorn（run）
+    participant S as Unifolm_VLA_Server（run_real_eval_server.py）
+    participant BF as baseframework.from_pretrained（base_framework.py）
+    participant V as Unifolm_VLA.predict_action（unifolm_vla.py）
+    participant Q as qwen_vl_interface（vlm/QWen2_5.py）
+    participant AH as FlowmatchingActionHead（DiT_ActionHeader.py）
+
+    Note over S,BF: 启动：__main__ → build_argparser → deploy(args)
+    S->>BF: from_pretrained(ckpt_path, vlm_pretrained_path)
+    BF->>BF: 读取配置与 norm_stats，构建模型，torch.load 后 load_state_dict（strict）
+    BF-->>S: vla
+    S->>S: 转 bfloat16、to(cuda)、eval，取出 unnorm_key 对应的 action / proprio 统计量
+    S->>W: run(host, port) → uvicorn.run
+    Note over C,W: 单次推理请求
+    C->>W: POST /act（payload：observations）
+    W->>S: get_server_action(payload)
+    S->>S: 解析 payload（支持 encoded 双重编码）
+    S->>S: prepare_images_for_vla：resize_image_for_policy，可选 center_crop_image
+    S->>S: processor.apply_chat_template，process_vision_info，processor(...) 得到 batch_input
+    S->>S: normalize_proprio → batch_input["state"]
+    S->>V: vla.predict_action(batch_input)
+    V->>Q: qwen_vl_interface(input_ids, pixel_values, image_grid_thw)，取 hidden_states[-1]
+    Q-->>V: last_hidden
+    V->>AH: action_model.predict_action(last_hidden, state)
+    AH-->>V: pred_actions
+    V-->>S: {"normalized_actions"}
+    S->>S: unnormalize_action（使用 action 统计量）
+    S-->>W: JSONResponse（动作；按参数可经 json_numpy 编码）
+    W-->>C: 动作序列
+```
+
+图依据：unifolm-vla@ff6c39a，`scripts/eval_scripts/run_real_eval_server.sh`、`deployment/model_server/run_real_eval_server.py`（`Unifolm_VLA_Server.__init__`、`get_server_action`、`run`、`deploy`）、`src/unifolm_vla/model/framework/base_framework.py`（`from_pretrained`）、`src/unifolm_vla/model/framework/unifolm_vla.py`（`__init__`、`predict_action`）、`src/unifolm_vla/model/modules/vlm/QWen2_5.py`、`src/unifolm_vla/model/modules/action_model/DiT_ActionHeader.py`（`predict_action`）、`README.md`。未运行服务，未做真机验证。
+
 ## 参考来源
 
 - [sources/repos/unifolm-vla.md](../../sources/repos/unifolm-vla.md)
 - 上游：<https://github.com/unitreerobotics/unifolm-vla>
+- 源码核对（2026-11-02）：unitreerobotics/unifolm-vla@ff6c39a，读过 README.md、scripts/eval_scripts/run_real_eval_server.sh、deployment/model_server/run_real_eval_server.py、src/unifolm_vla/model/framework/base_framework.py、src/unifolm_vla/model/framework/unifolm_vla.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
