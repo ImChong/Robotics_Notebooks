@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/sensorium_arxiv_2610_41946.md
   - ../../sources/repos/sensorium.md
@@ -94,6 +95,7 @@ sequenceDiagram
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页属于其 ③ 策略任务成功率评测层的数据供给侧而非基准本身：提供手术机器人多模态记录、标注与回合导出流程，防止把数据工程库误读成带统一指标、可直接比榜的评测基准。
 
 ## 参考来源
 

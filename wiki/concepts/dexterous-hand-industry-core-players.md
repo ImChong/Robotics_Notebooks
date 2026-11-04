@@ -14,6 +14,7 @@ related:
   - ../overview/humanoid-hardware-101-sensing-end-effectors.md
   - ../overview/humanoid-hardware-101-supply-chain-economics.md
   - ../concepts/humanoid-mass-production-engineering.md
+  - ../queries/contact-wrench-closed-loop.md
 sources:
   - ../../sources/blogs/wechat_zane_hub_dexterous_hand_core_players_2026-11-03.md
 summary: "依据 Zane Hub 综述梳理灵巧手五模块（传动 / 驱动 / 减速丝杠 / 感知 / 控制）、四类企业阵营与四个工程矛盾；12 家企业各有独立节点（企业数据为作者表述，未核实）。"
@@ -97,6 +98,7 @@ summary: "依据 Zane Hub 综述梳理灵巧手五模块（传动 / 驱动 / 减
 - [人形硬件 101：感知与末端执行器](../overview/humanoid-hardware-101-sensing-end-effectors.md)
 - [人形硬件 101：供应链与经济](../overview/humanoid-hardware-101-supply-chain-economics.md)
 - [人形量产工程能力](./humanoid-mass-production-engineering.md)
+- [接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 本页是该链路的硬件供给侧：触觉器件对应 ① 感知/估计层、传动背隙与腱绳蠕变影响 ② 表示层的标定、阻抗/力位混合对应 ③ 控制层，防止把「手上装了触觉传感器」误当成已具备接触力闭环（文章指出同样的电机与传感器，差距在参数辨识、摩擦补偿与触觉闭环）。
 
 ## 参考来源
 

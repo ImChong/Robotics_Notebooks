@@ -3,7 +3,7 @@ type: entity
 title: SceneVerse++（3D 场景理解数据集）
 tags: [dataset, 3d-scene-understanding, vlm, vln, vqa, bigai, cvpr-2026]
 summary: "SceneVerse++ 从互联网无标注视频自动重建与标注大规模真实室内 3D 场景，为检测分割、3D 空间 VQA 与视觉–语言导航等任务提供训练数据，代码与数据开源。"
-updated: 2026-05-07
+updated: 2026-11-04
 status: complete
 related:
   - ../concepts/3d-spatial-vqa.md
@@ -42,7 +42,7 @@ sources:
 | 实例 | 2D 分割提升到 3D + 开放词汇语义对齐 |
 | 高层 | 场景图上的空间 QA；室内漫游轨迹 → R2R 风格离散动作 + 多风格指令 |
 
-论文报告约 **6687** 个室内场景；并给出面向 **3D 检测/分割**、**VSI-Bench 类 3D 空间 VQA**、**Room-to-Room 导航** 等基准的实验结论（含零样本与微调、域差距讨论）。
+论文报告从 **8,217** 段 housing-tour 网络视频得到 **6,687** 个室内重建场景（2026-11-04 按 arXiv PDF 复核）；并给出面向 **3D 检测/分割**、**VSI-Bench 类 3D 空间 VQA**、**Room-to-Room 导航** 等基准的实验结论（含零样本与微调、域差距讨论）。
 
 ## 与其他页面的关系
 

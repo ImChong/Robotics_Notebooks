@@ -15,6 +15,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/burger_arxiv_2610_40532.md
   - ../../sources/repos/burger.md
@@ -96,6 +97,7 @@ sequenceDiagram
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：用语言条件绘画拆分物体组合、空间关系与多解动作，防止把单一成功率当成「泛化能力」而不细分泛化失败来源。
 
 ## 参考来源
 

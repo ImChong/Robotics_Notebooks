@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/molmospaces_commonsense_arxiv_2610_41377.md
   - ../../sources/repos/molmospaces_commonsense.md
@@ -94,6 +95,7 @@ sequenceDiagram
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-03-49-papers-technology-map](../overview/embodied-station-2026-11-03-49-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：在杂乱场景中加入遮挡、容纳、支撑与抓取部位等常识项，防止用干净场景成功率高估通用策略的操作常识。
 
 ## 参考来源
 

@@ -92,6 +92,19 @@ sequenceDiagram
 
 论文 OmniEgoDB 使用 4 人、50 段、177 分钟，Xsens 为参考；Aria stereo / RGB、GoPro、Quest 分别是不同评测轨道，序列数不同。表 3 无优化版本 MPJPE 分别为 **106.61、118.11、111.68、110.49 mm**；不同设备数值不可视为同一序列严格配对比较。iPhone 仅列为野外演示。
 
+## 与其他工作对比
+
+| 维度 | 本页 OmniEgoCap | [ReViV](./paper-reviv4d.md) | [EgoPoser](./paper-notebook-egoposer-robust-real-time-egocentric-pose-estima.md) |
+|------|-----------------|-----------|-----------|
+| 输入 | 头部轨迹 + 间歇可见的手腕观测（需 SLAM / 手部估计或设备追踪） | 单目 egocentric RGB 视频，无需 SLAM 或外接手部模块 | HMD 追踪的头部 + 双手位姿，手在视野外时置 0 |
+| 输出 | SMPL-H 全身运动 | 全身、双手、注视、深度与相机轨迹 | 全身姿态 |
+| 方法族 | 序列级条件扩散 + 几何感知可见性增强 | 多模态离散 token 的 masked generative Transformer | 全局运动分解 + SlowFast 模块 |
+| 跨设备设定 | 训练时采样相机几何，评测覆盖 Aria / GoPro / Quest | 单目可穿戴前视视频 | 头显平台 |
+| 开放状态 | 代码与 checkpoint 已发布，权重非商用 | 代码 Apache 2.0，权重非商用 | 已开源（本站为 stub 页） |
+
+- **怎么选：** 已有可靠头部轨迹且需跨多种可穿戴设备时看 OmniEgoCap；只有单目 RGB、还要场景深度与注视时看 ReViV；头显实时化身驱动可对照 EgoPoser。
+- **读法：** OmniEgoCap 的 MPJPE 依赖上游头部轨迹与标定，各设备轨道序列不同；与 ReViV 的 PA-MPJPE 口径（逐帧 Procrustes 对齐）也不同，不宜直接横比。
+
 ## 结论
 
 **序列上下文和训练时视场变化使同一模型可用于论文评估的多种设备配置。**

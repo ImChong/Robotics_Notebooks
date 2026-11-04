@@ -82,6 +82,19 @@ flowchart TD
 - 生成基准按 8:2 划分训练与测试，比较 ReMos、InterFormer、ComMDM、InterGen 和 Duolando；不同指标最优方法不完全相同。
 - 真机只报告 R1 Edu 的拥抱和握手演示：mjlab 中 4096 环境、RTX 3090 约 30,000 次迭代训练，导出 ONNX 后以 50 Hz 执行。
 
+## 与其他工作对比
+
+| 维度 | 本页 HumiMimic | [OmniInteract](./paper-omniinteract-dual-humanoids.md) | [CoDance](./paper-codance.md) |
+|------|----------------|------|------|
+| 人类数据来源 | 1,200 段自然场景双人视频，重建后构成数据集 | InterHuman、Inter-X 双人交互动作 | 单段双人舞视频 |
+| 核心贡献 | 交互关系加权的重定向（HumiTransfer）与数据集 | 表面接触感知联合重定向 + 冻结 SONIC 上的伙伴条件残差策略 | 双手顺应增强 + PPO，学习对舞伴拉力让步 |
+| 交互对象 | 人与人形（以单台人形替换双人中的一人） | 两台人形之间 | 人与人形（真机用 Vicon 读取舞伴） |
+| 真机 | R1 Edu 拥抱、握手演示，基于预定义序列 | 双 G1 High-Five / Hug / Shoulder，报告各任务成功次数 | G1 与人持续双手接触跳舞 |
+| 代码与数据 | 仓库仅占位 README | 项目页未列可运行代码 | 已公开训练、部署代码与检查点 |
+
+- **怎么选**：要大规模交互动作数据或检查重定向质量指标（MPJPE、IRD、CF1）看 HumiMimic；要双人形协同控制看 OmniInteract；要真机对伙伴实时响应与受力顺应看 CoDance。
+- **读法**：HumiMimic 的指标衡量重定向质量，不等于另两篇报告的控制成功率。
+
 ## 结论
 
 **交互关系加权可改善论文评测中的跨形态动作迁移，但真机展示仍基于预定义序列。**
