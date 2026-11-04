@@ -121,14 +121,14 @@ sequenceDiagram
     end
 ```
 
-图依据：tidy@cf9b099，`README.md`、`package.json`、`apps/desktop/package.json`、`apps/desktop/electron.vite.config.ts`、`apps/desktop/src/main/index.ts`、`apps/desktop/src/main/ipc/ipc.ts`、`apps/desktop/src/main/ipc/workspace-requests.ts`、`apps/desktop/src/main/workspace/workspace-service.ts`（sendMessage/run/runPrepared 与启动调用）、`apps/desktop/src/main/harnesses/harness-sessions.ts`、`apps/desktop/src/main/harnesses/interactive-harness.ts`、`apps/desktop/src/main/harnesses/harness-transport.ts`、`apps/desktop/src/main/harnesses/claude-adapter.ts`、`apps/desktop/src/main/harnesses/harnesses.ts`。
+图依据：tidy@cf9b099，`README.md`、`package.json`、`apps/desktop/package.json`、`apps/desktop/electron.vite.config.ts`、`apps/desktop/src/main/index.ts`、`apps/desktop/src/main/ipc/ipc.ts`、`apps/desktop/src/main/ipc/workspace-requests.ts`、`apps/desktop/src/main/workspace/workspace-service.ts`（sendMessage/run/runPrepared 与启动调用）、`apps/desktop/src/main/harnesses/harness-sessions.ts`、`apps/desktop/src/main/harnesses/interactive-harness.ts`、`apps/desktop/src/main/harnesses/harness-transport.ts`、`apps/desktop/src/main/harnesses/claude-adapter.ts`，以及 `apps/desktop/src/main/harnesses/harnesses.ts` 的关键词检索（未通读）。
 
 ## 参考来源
 
 - [Tidy Design 官网归档](../../sources/sites/tidy-design.md)
 - [Tidy 官方仓库归档](../../sources/repos/tidydesigns-tidy.md)
 - [Tidy README](https://github.com/tidydesigns/tidy#readme)
-- 源码核对（2026-11-02）：tidydesigns/tidy@cf9b099，读过 README.md、package.json、apps/desktop/package.json、apps/desktop/electron.vite.config.ts、apps/desktop/src/main/index.ts、ipc/ipc.ts、ipc/workspace-requests.ts、workspace/workspace-service.ts、harnesses/harness-sessions.ts、interactive-harness.ts、harness-transport.ts、claude-adapter.ts、harnesses.ts；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-02）：tidydesigns/tidy@cf9b099，读过 README.md、package.json、apps/desktop/package.json、apps/desktop/electron.vite.config.ts、apps/desktop/src/main/index.ts、ipc/ipc.ts、ipc/workspace-requests.ts、workspace/workspace-service.ts、harnesses/harness-sessions.ts、interactive-harness.ts、harness-transport.ts、claude-adapter.ts（harnesses.ts 仅关键词检索）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -72,6 +72,60 @@ summary: "OVO 是开放词汇在线三维语义映射：对有位姿 RGB-D 关�
 - 依赖 SLAM 位姿质量；几何未锐利时语义关联会漂。
 - 与 DualMap 的 ROS 导航产品化程度不同，集成工作量需自评估。
 
+## 源码运行时序图
+
+入口：`python run_eval.py --dataset_name Replica --experiment_name ovo_mapping --run --segment --eval --scenes office0`（`--run` 跑建图，`--segment` 把预测投到 GT 点云，`--eval` 算指标；对应 `run_eval.py` 的 `main`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户终端
+    participant RE as run_eval.py main()
+    participant RS as run_scene()
+    participant IO as io_utils.load_config
+    participant OSM as OVOSemMap（ovo/entities/ovomapping.py）
+    participant DS as 数据集 get_dataset
+    participant SL as SLAM 后端（VanillaMapper 或 WrapperGaussianSLAM）
+    participant OVO as OVO（ovo/entities/ovo.py）
+    participant SEG as compute_scene_labels（--segment）
+    participant EV as eval_utils（--eval）
+    U->>RE: python run_eval.py --dataset_name --experiment_name --run --segment --eval --scenes
+    RE->>RE: 确定 experiment_name 与场景列表
+    loop --run：每个场景
+        RE->>RS: run_scene(scene, dataset, experiment_name)
+        RS->>IO: 读取 ovo.yaml，合并 SLAM 模块、数据集与场景配置
+        RS->>OSM: OVOSemMap(config, output_path).run()
+        OSM->>DS: get_dataset(dataset_name)(data 与 cam 配置)
+        OSM->>SL: get_slam_backbone：按 slam_module 选择
+        OSM->>OVO: OVO(config["semantic"])，可选 mask_generator.precompute
+        loop 每帧 frame_id
+            OSM->>DS: dataset[frame_id]
+            OSM->>SL: track_camera(frame_data)，get_c2w
+            opt frame_id 满足 map_every
+                OSM->>SL: map(frame_data, c2w)
+                OSM->>OVO: update_map(map_data, kfs)
+            end
+            opt frame_id 满足 segment_every
+                OSM->>OVO: detect_and_track_objects(scene_data, map_data, c2w)
+                OSM->>OVO: compute_semantic_info()
+            end
+        end
+        OSM->>OVO: complete_semantic_info()
+        OSM->>OSM: save_representation()，写 ovo_map.ckpt
+    end
+    opt --segment
+        RE->>SEG: compute_scene_labels(scene_path, ...)
+        SEG->>OVO: load_representation，classify_instances(classes)
+        SEG->>EV: match_labels_to_vtx(预测实例, GT 点云)
+        SEG->>SEG: 写 label 与 instances 文件
+    end
+    opt --eval
+        RE->>EV: eval_semantics(experiment_path / dataset, gt_path, scenes)
+    end
+```
+
+图依据：tberriel/OVO@e0d16f7，读过 `ReadMe.md`（运行说明与参数）、`run_eval.py`（main、run_scene、compute_scene_labels 全文）、`ovo/entities/ovomapping.py`（__init__、run 主循环与保存）。`OVO` 类内部（`detect_and_track_objects`、`classify_instances` 等）与 `ovo/slam/*` 未读，图只标出调用点。
+
 ## 关联页面
 
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
@@ -87,6 +141,7 @@ summary: "OVO 是开放词汇在线三维语义映射：对有位姿 RGB-D 关�
 - [sam2_arxiv_2408_00714.md](../../sources/papers/sam2_arxiv_2408_00714.md) — SAM 2 基础模型归档
 - 项目页：<https://tberriel.github.io/ovo/>
 - arXiv：<https://arxiv.org/abs/2411.15043>
+- 源码核对（2026-11-02）：tberriel/OVO@e0d16f7，读过 ReadMe.md、run_eval.py、ovo/entities/ovomapping.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -60,6 +60,45 @@ summary: "point_lio_unilidar 将 Point-LIO 适配到 Unitree L1/L2 雷达，提�
 - 建图质量强烈依赖外参与时间同步，需按 SDK 坐标定义校准。
 - **运动时重影/墙面变厚**：优先查时间同步、逐点时间戳、去畸变、外参与 IMU 初始化，再谈叠加 SAM 语义；见 [GO2 三维语义建图 Query](../queries/go2-3d-semantic-mapping-sam-pipeline.md)。
 
+## 源码运行时序图
+
+入口：`roslaunch point_lio_unilidar mapping_unilidar_l1.launch`（ROS1 节点 `pointlio_mapping`，节点名 `laserMapping`；L2 使用 `mapping_unilidar_l2.launch`，默认 `use_imu_as_input=0`）
+
+```mermaid
+sequenceDiagram
+    participant DRV as Unitree 雷达驱动话题 /unilidar/cloud 与 /unilidar/imu
+    participant CB as src/laserMapping.cpp 回调
+    participant PRE as src/preprocess.cpp Preprocess
+    participant SYNC as sync_packages
+    participant IMU as src/IMU_Processing.hpp ImuProcess
+    participant KF as src/Estimator.h kf_output 迭代卡尔曼滤波
+    participant IK as include/ikd-Tree KD_TREE
+    participant PUB as ROS 发布器 odom、path 与点云
+
+    DRV->>CB: 点云消息进入 standard_pcl_cbk
+    CB->>PRE: p_pre->process(msg, ptr)
+    PRE->>PRE: lidar_type 为 UNILIDAR 时调用 unilidar_handler
+    DRV->>CB: IMU 消息进入 imu_cbk 并入队
+    loop main 中 while ros::ok 每次迭代
+        CB->>CB: ros::spinOnce 处理回调
+        CB->>SYNC: sync_packages(Measures) 把点云与 IMU 对齐成一组
+        CB->>IMU: p_imu->Process(Measures, feats_undistort) 用 IMU 做运动去畸变
+        CB->>IK: 首次且地图为空时 ikdtree.Build 建初始地图
+        CB->>CB: lasermap_fov_segment 按视场裁剪地图
+        CB->>CB: 按 filter_size_surf 对本体系点云下采样
+        loop 每个时间段的 IEKF 迭代
+            CB->>KF: kf_output.predict 用 IMU 输入传播状态与协方差
+            CB->>KF: update_iterated_dyn_share_modified 调用 h_model_output
+            KF->>IK: Nearest_Search 查找每个点的近邻平面
+            KF-->>CB: 返回更新后的位姿状态
+        end
+        CB->>IK: map_incremental 把新点加入 ikd-Tree
+        CB->>PUB: publish_path、publish_frame_world 与 publish_odometry
+    end
+```
+
+图依据：unitreerobotics/point_lio_unilidar@18ed597，读过 launch/mapping_unilidar_l1.launch、CMakeLists.txt（target 段）、config/unilidar_l1.yaml（部分）、src/laserMapping.cpp（main、sync_packages、imu_cbk、map_incremental、publish 段）、src/preprocess.cpp（process 分派，unilidar_handler 仅见位置）、src/Estimator.cpp（Nearest_Search 所在函数）。未编译、未在 ROS 中运行。
+
 ## 关联页面
 
 - [UniLidar SDK](./unilidar-sdk2.md)
@@ -74,6 +113,7 @@ summary: "point_lio_unilidar 将 Point-LIO 适配到 Unitree L1/L2 雷达，提�
 - [sources/repos/autonomy_stack_go2.md](../../sources/repos/autonomy_stack_go2.md) — CMU GO2 几何自主导航栈中的 Point-LIO 用法
 - Point-LIO 论文：<https://onlinelibrary.wiley.com/doi/epdf/10.1002/aisy.202200459>
 - 上游：<https://github.com/unitreerobotics/point_lio_unilidar>
+- 源码核对（2026-11-02）：unitreerobotics/point_lio_unilidar@18ed597，读过 launch/mapping_unilidar_l1.launch、CMakeLists.txt、config/unilidar_l1.yaml、src/laserMapping.cpp、src/preprocess.cpp、src/Estimator.cpp；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

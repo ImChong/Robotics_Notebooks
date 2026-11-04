@@ -94,6 +94,50 @@ unitree_mujoco 仿真验证
 
 **与 `unitree_ros` 的分工**：`unitree_ros` 提供 ROS1 + Gazebo8 的 URDF 与关节级仿真/控制示例（README 明确 Gazebo 不做高层行走）；`unitree_rl_mjlab` 面向当前研究常用的 **MuJoCo 并行训练 + SDK2** 部署闭环。二者同属官方开源，但中间件与仿真器代际不同，见 [unitree_ros](./unitree-ros.md)。
 
+## 源码运行时序图
+
+官方实现 [unitreerobotics/unitree_rl_mjlab](https://github.com/unitreerobotics/unitree_rl_mjlab)（短 SHA `1425b15`）：基于 mjlab（MuJoCo 后端）的训练与部署仓，训练入口 `scripts/train.py`（tyro 命令行）。任务在 `src/tasks/velocity/__init__.py` 中经 `register_mjlab_task` 注册，环境与 PPO 配置来自 `config/g1/env_cfgs.py` 与 `rl_cfg.py`；`VelocityOnPolicyRunner.save()` 在每次保存 checkpoint 时额外导出 `policy.onnx`（供 `deploy/` 真机部署）并写入元数据。仿真环境、包装器与 PPO 循环由外部包 mjlab 与 rsl_rl 提供，未读。
+
+入口：`python scripts/train.py Unitree-G1-Flat --env.scene.num-envs=4096`
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant TR as train.py<br/>main() / TrainConfig
+    participant REG as register_mjlab_task<br/>src/tasks/velocity/__init__.py
+    participant CFG as env_cfgs.py / rl_cfg.py<br/>config/g1/
+    participant LA as launch_training / run_train<br/>scripts/train.py
+    participant ENV as ManagerBasedRlEnv<br/>mjlab（外部）
+    participant WRAP as RslRlVecEnvWrapper<br/>mjlab.rl（外部）
+    participant RUN as VelocityOnPolicyRunner<br/>src/tasks/velocity/rl/runner.py
+    participant EXP as 日志目录<br/>logs/rsl_rl/<experiment>/
+    U->>TR: python scripts/train.py Unitree-G1-Flat --env.scene.num-envs=4096
+    TR->>REG: import mjlab.tasks、src.tasks（执行注册）
+    TR->>TR: tyro.cli 选择任务；TrainConfig.from_task → load_env_cfg / load_rl_cfg
+    REG->>CFG: unitree_g1_flat_env_cfg() 与 unitree_g1_ppo_runner_cfg()
+    TR->>LA: launch_training(task_id, args)
+    LA->>EXP: 生成 {时间戳}_{run_name} 日志目录
+    LA->>LA: select_gpus；设置 CUDA_VISIBLE_DEVICES、MUJOCO_GL=egl
+    alt 单卡或 CPU
+        LA->>LA: run_train(task_id, args, log_dir)
+    else 多卡
+        LA->>LA: torchrunx.Launcher.run(run_train)
+    end
+    LA->>ENV: ManagerBasedRlEnv(cfg, device, render_mode)
+    LA->>WRAP: RslRlVecEnvWrapper(env, clip_actions)
+    LA->>RUN: load_runner_cls(task) → VelocityOnPolicyRunner(env, agent_cfg, log_dir, device)
+    LA->>EXP: add_git_repo_to_log；dump env.yaml / agent.yaml（仅 rank 0）
+    LA->>RUN: learn(num_learning_iterations=max_iterations, init_at_random_ep_len=True)
+    Note over RUN,ENV: rollout 与 PPO 更新在 rsl_rl 内部完成（未读源码）；每步经 WRAP 调用环境 step（mjlab 内部未读）
+    RUN->>RUN: save(path)（checkpoint 保存时，推断由 rsl_rl 调用）
+    RUN->>RUN: super().save → export_policy_to_onnx("policy.onnx")
+    RUN->>EXP: attach_metadata_to_onnx(get_base_metadata(env))
+    LA->>ENV: env.close()
+```
+
+图依据：unitree_rl_mjlab@1425b15，读过 `README.md`（训练与回放命令）、`scripts/train.py`（`main`、`launch_training`、`run_train`）、`src/tasks/velocity/__init__.py`（`register_mjlab_task`）、`src/tasks/velocity/rl/runner.py`（`VelocityOnPolicyRunner.save`）、`src/tasks/velocity/rl/__init__.py`。`src/tasks/velocity/config/g1/env_cfgs.py`、`rl_cfg.py` 仅由注册处引用，内部参数未读；mjlab、rsl_rl 内部未读。`save` 的调用方为推断。未运行代码。
+
 ## 关联页面
 
 - [mjlab](./mjlab.md) — 底层框架（Isaac Lab API + MuJoCo Warp）
@@ -108,3 +152,4 @@ unitree_mujoco 仿真验证
 
 - [sources/repos/unitree_rl_mjlab.md](../../sources/repos/unitree_rl_mjlab.md)
 - [unitreerobotics/unitree_rl_mjlab GitHub Repo](https://github.com/unitreerobotics/unitree_rl_mjlab)
+- 源码核对（2026-11-02）：unitree_rl_mjlab@1425b15，读过 README.md、scripts/train.py、src/tasks/velocity/__init__.py、src/tasks/velocity/rl/runner.py、src/tasks/velocity/rl/__init__.py；时序图依据以上文件，未运行代码。

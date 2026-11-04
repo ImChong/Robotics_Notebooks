@@ -90,6 +90,65 @@ sudo ./dex1_1_gripper_server --network eth0
 - [Manipulation](../tasks/manipulation.md)
 - [Unitree](./unitree.md)
 
+## 源码运行时序图
+
+本图只针对 `dex1_1_service`（Dex1-1 平行夹爪的 Serial↔DDS 服务），不代表页面中其它手型仓库。入口：`sudo ./dex1_1_gripper_server --network eth0`（源码 `main.cpp` 的 `main()`；校准入口为 `sudo ./dex1_1_gripper_server -c`）。下图为源码中的实际调用顺序。
+
+```mermaid
+sequenceDiagram
+    participant M as main（main.cpp）
+    participant P as param::helper（param.h）
+    participant DDS as ChannelFactory（DDS 通道）
+    participant GS as Dex1GripperServer
+    participant SP as SerialPort（serialPort/SerialPort.h）
+    participant MU as MotorUnit（每个电机一个）
+    participant U as 上层节点（遥操作或策略）
+    participant MOT as Dex1-1 夹爪电机（M4010）
+
+    M->>P: param::helper(argc, argv) 解析 --network、-c
+    M->>DDS: ChannelFactory::Instance()->Init(0, network)
+    M->>M: getAvailableSerialPorts 扫描 /dev 下 ttyUSB、ttyCH343USB、ttyACM
+    alt 没有候选串口
+        M-->>M: 警告 No ttyUSB serial ports found，返回
+    end
+    M->>GS: Dex1GripperServer(ports)
+    loop 最多 3 次，每次间隔 50 ms
+        GS->>GS: detectMotors_ 对每个串口的 id 0 与 1 发送 FOC 查询
+        GS->>SP: sendRecv 探测；重复 ID 则跳过
+    end
+    alt 命令行带 -c 校准
+        M->>GS: calibrate()
+        GS->>SP: calibration(M4010, id, 0, 322 度)
+        GS-->>M: exit(0)
+    else 正常运行
+        M->>GS: runDDS()
+        loop 每个检测到的电机
+            GS->>MU: 构造 MotorUnit(id, serial, cmdTopic, stateTopic)
+            MU->>DDS: 订阅 rt/dex1/right 或 left/cmd，发布 rt/dex1/right 或 left/state
+            MU->>MU: 启动周期线程 RecurrentThread(2000, loop_)
+        end
+        M->>M: while true，sleep 1
+    end
+    U->>DDS: 发布 MotorCmds_ 到 cmd 主题
+    loop 每个 MotorUnit 的周期 loop_()
+        alt 指令超时（sub isTimeout）
+            MU->>MU: 模式置为 BRAKE，kp、kd、q、dq、tau 清零，timeout=1
+        else 收到指令
+            MU->>MU: 模式置为 FOC，按减速比换算 kp、kd、q、dq、tau
+        end
+        MU->>SP: sendRecv(cmd_, state_)
+        SP->>MOT: 串口帧收发
+        MOT-->>SP: 电机状态
+        SP-->>MU: state_
+        opt pub trylock 成功
+            MU->>DDS: 换算减速比后 unlockAndPublish 到 state 主题
+        end
+    end
+    DDS-->>U: state 主题上的 MotorStates_
+```
+
+图依据：dex1_1_service@ced3216，`main.cpp`（`main`、`Dex1GripperServer`、`MotorUnit::loop_`、`detectMotors_`、`runDDS`、`calibrate`）、`README.md`。未运行。`SerialPort`（`include/serialPort/SerialPort.h`）与 `unitreeMotor`（`include/unitreeMotor/unitreeMotor.h`）未打开阅读，图中仅依据 `main.cpp` 的调用关系表示；`RecurrentThread` 的周期单位未核对。
+
 ## 参考来源
 
 - [sources/repos/dex1_1_service.md](../../sources/repos/dex1_1_service.md)
@@ -97,6 +156,7 @@ sudo ./dex1_1_gripper_server --network eth0
 - [sources/repos/brainco_hand_service.md](../../sources/repos/brainco_hand_service.md)
 - [sources/repos/linker_hand_service.md](../../sources/repos/linker_hand_service.md)
 - [sources/repos/unitree_ros2.md](../../sources/repos/unitree_ros2.md) — v0.3.0 Dex3 原生 DDS 与手部 msg 对齐
+- 源码核对（2026-11-02）：unitreerobotics/dex1_1_service@ced3216，读过 main.cpp、README.md；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
