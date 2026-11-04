@@ -61,11 +61,62 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：Arduino 草图 `examples/SimpleEMGFilters/SimpleEMGFilters.ino`（默认 `#define CALIBRATE 1`，即先打印平方值用于标定基线；改为 0 后才按 `baseline` 门限输出包络）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant MCU as SimpleEMGFilters.ino setup/loop
+    participant ADC as analogRead A0
+    participant EMG as EMGFilters::update
+    participant AHF as AHF FILTER_4th 陷波 50Hz 或 60Hz
+    participant LPF as LPF FILTER_2nd 低通 150Hz
+    participant HPF as HPF FILTER_2nd 高通 20Hz
+    participant SER as Serial
+
+    MCU->>EMG: init(SAMPLE_FREQ_1000HZ, NOTCH_FREQ_50HZ, true, true, true)
+    EMG->>AHF: init 选择 500 或 1000Hz 系数
+    EMG->>LPF: init(FILTER_TYPE_LOWPASS, 采样率)
+    EMG->>HPF: init(FILTER_TYPE_HIGHPASS, 采样率)
+    MCU->>SER: Serial.begin(115200)
+
+    loop 每个采样周期 interval
+        MCU->>ADC: analogRead(SensorInputPin)
+        ADC-->>MCU: data
+        MCU->>EMG: update(data)
+        alt 采样率或工频不受支持 m_bypassEnabled
+            EMG-->>MCU: 原样返回输入
+        else 正常滤波
+            EMG->>AHF: update 陷波 若启用
+            AHF-->>EMG: 陷波输出
+            EMG->>LPF: update 低通 若启用
+            LPF-->>EMG: 低通输出
+            EMG->>HPF: update 高通 若启用
+            HPF-->>EMG: 滤波输出
+        end
+        EMG-->>MCU: dataAfterFilter
+        MCU->>MCU: envelope = sq(dataAfterFilter)
+        alt CALIBRATE 为 1
+            MCU->>SER: 打印 Squared Data 用于标定
+        else 正常运行
+            MCU->>MCU: envelope 低于 baseline 则置零
+            MCU->>SER: 打印 envelope
+        end
+        MCU->>MCU: delay 剩余的 interval 时间
+    end
+```
+
+图依据：oymotion/EMGFilters@2808974，读过 `README.md`、`EMGFilters.h`（全文）、`EMGFilters.cpp`（滤波器系数表、`FILTER_2nd` / `FILTER_4th` 的 `init` 与 `update`、`EMGFilters::init` 与 `EMGFilters::update` 段）、`examples/SimpleEMGFilters/SimpleEMGFilters.ino`（`setup` 与 `loop` 段）。未编译或烧录，未运行代码。时序图依据以上文件。
+
 ## 参考来源
 
 - [EMGFilters 源码归档](../../sources/repos/emgfilters.md)（<https://github.com/oymotion/EMGFilters>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：oymotion/EMGFilters@2808974，读过 `README.md`、`EMGFilters.h`、`EMGFilters.cpp`（滤波器与 init / update 段）、`examples/SimpleEMGFilters/SimpleEMGFilters.ino`（setup / loop 段）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

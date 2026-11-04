@@ -103,7 +103,7 @@ sequenceDiagram
     SH->>CS: 汇总 client.log 写入 results.json
 ```
 
-图依据：xpeng-robotics/DIAL@b611fed，读过 `README.md`（前 120 行）、`examples/eval.sh`（开头与任务循环、末尾段）、`examples/train.sh`、`scripts/inference_service_dial.py`（`main` 段与 grep）、`scripts/simulation_service_dial_augPosRot.py`（`--server` / `--client` 分支）、`gr00t/eval/service.py`（传输与 server 结构 grep）、`gr00t/eval/robot.py`、`gr00t/eval/simulation_augPosRot.py`（`run_simulation` 与 `_get_actions_from_server` 段）、`gr00t/model/policy_dial.py`（类与方法签名 grep）。`scripts/dual_system_train.py` 训练链路未画、未读。时序图依据以上文件，未运行代码。
+图依据：xpeng-robotics/DIAL@b611fed，读过 `README.md`（前 120 行）、`examples/eval.sh`（开头与任务循环、末尾段）、`examples/train.sh`、`scripts/inference_service_dial.py`（`main` 段与 grep）、`scripts/simulation_service_dial_augPosRot.py`（`--server` / `--client` 分支）、`gr00t/eval/service.py`（传输与 server 结构 grep）、`gr00t/eval/robot.py`（grep）、`gr00t/eval/simulation_augPosRot.py`（`run_simulation` 与 `_get_actions_from_server` 段）、`gr00t/model/policy_dial.py`（类与方法签名 grep）。`scripts/dual_system_train.py` 训练链路未画、未读。时序图依据以上文件，未运行代码。
 
 ## 参考来源
 
@@ -111,7 +111,7 @@ sequenceDiagram
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
-- 源码核对（2026-11-02）：xpeng-robotics/DIAL@b611fed，读过 `README.md`（前 120 行）、`examples/eval.sh`、`examples/train.sh`、`scripts/inference_service_dial.py`、`scripts/simulation_service_dial_augPosRot.py`、`gr00t/eval/service.py`、`gr00t/eval/robot.py`、`gr00t/eval/simulation_augPosRot.py`（部分）、`gr00t/model/policy_dial.py`（grep）；时序图依据以上文件，未运行代码。
+- 源码核对（2026-11-02）：xpeng-robotics/DIAL@b611fed，读过 `README.md`（前 120 行）、`examples/eval.sh`、`examples/train.sh`、`scripts/inference_service_dial.py`、`scripts/simulation_service_dial_augPosRot.py`、`gr00t/eval/service.py`、`gr00t/eval/robot.py`（grep）、`gr00t/eval/simulation_augPosRot.py`（部分）、`gr00t/model/policy_dial.py`（grep）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
