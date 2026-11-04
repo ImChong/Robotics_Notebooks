@@ -68,6 +68,50 @@ summary: "unitree_sim_isaaclab 在 Isaac Lab 上仿真 G1/H1-2 多执行器任�
 - GPU/Isaac 版本矩阵变化快，以 README「Important Notes」为准。
 - 执行器（夹爪 vs 多指手）与 [`unitree_lerobot`](./unitree-lerobot.md) 转换脚本必须一致。
 
+## 源码运行时序图
+
+官方实现 [unitreerobotics/unitree_sim_isaaclab](https://github.com/unitreerobotics/unitree_sim_isaaclab)（短 SHA `e30c25b`）：基于 Isaac Lab 的仿真程序，主入口 `sim_main.py`。主线程循环中 `RobotController.step()` 向环境下发动作；动作来自 `action_provider`（默认 `action_source=dds`，即 `DDSActionProvider` 读取 DDS 缓存的 `rt/lowcmd`）。关节状态由观测函数 `tasks/common_observations/g1_29dof_state.py` 中的 `get_robot_boy_joint_states` 节流后发布到 `rt/lowstate`，与真机使用同一套 DDS 话题。
+
+入口：`python sim_main.py --device cpu --enable_cameras --task Isaac-PickPlace-Cylinder-G129-Dex1-Joint --enable_dex1_dds --robot_type g129`
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 控制程序 / xr_teleoperate
+    participant MAIN as sim_main.py<br/>main()
+    participant ENV as Isaac Lab 环境<br/>parse_env_cfg / gym.make（tasks/）
+    participant IMG as run_isaacsim_server<br/>teleimager（外部）
+    participant DDS as dds_create.py<br/>G1RobotDDS / Dex1 / ResetPose / SimState
+    participant AP as DDSActionProvider<br/>action_provider/action_provider_dds.py
+    participant RC as RobotController<br/>layeredcontrol/robot_control_system.py
+    participant OBS as 观测函数<br/>tasks/common_observations/g1_29dof_state.py
+    U->>MAIN: python sim_main.py --task ... --enable_dex1_dds --robot_type g129
+    MAIN->>MAIN: AppLauncher 启动 Isaac Sim，再导入 layeredcontrol 与 tasks
+    MAIN->>ENV: parse_env_cfg(task, device, num_envs=1)；gym.make(task, cfg).unwrapped
+    MAIN->>ENV: 设置渲染、物理步长等参数；env.sim.reset()；env.reset()
+    MAIN->>IMG: run_isaacsim_server()（相机图像服务）
+    MAIN->>DDS: create_dds_objects(args, env)
+    MAIN->>AP: create_action_provider(env, args)（action_source=dds）
+    MAIN->>RC: RobotController(env, config)；set_action_provider(provider)
+    MAIN->>RC: start()（启动 action provider 等异步组件）
+    loop 主线程循环：simulation_app.is_running() 且 controller.is_running
+        MAIN->>ENV: env.scene.get_state() → sim_state_to_json
+        MAIN->>DDS: sim_state_dds.write_sim_state_data(sim_state)
+        MAIN->>DDS: reset_pose_dds.get_reset_pose_command()（按需复位）
+        MAIN->>RC: step()
+        RC->>AP: get_action(env)
+        AP->>DDS: robot_dds.get_robot_command()（rt/lowcmd 缓存）；夹爪与灵巧手命令
+        AP-->>RC: action（本帧无新命令则沿用上一帧）
+        RC->>ENV: env.step(action)（Isaac Lab 内部未读）
+        ENV->>OBS: 计算观测（含 get_robot_boy_joint_states）
+        OBS->>DDS: G1RobotDDS.write_robot_state → rt/lowstate（节流发布）
+        RC->>RC: 按控制频率节流 sleep
+    end
+    U->>DDS: 发布 rt/lowcmd（与真机相同的话题）
+```
+
+图依据：unitree_sim_isaaclab@e30c25b，读过 `README.md`（运行命令与参数）、`sim_main.py`（`main` 主流程与主循环，部分）、`layeredcontrol/robot_control_system.py`（`start`、`step`，部分）、`action_provider/action_provider_dds.py`（`get_action`，部分）、`dds/dds_create.py`（部分）、`dds/g1_robot_dds.py`（订阅与发布话题，部分）、`tasks/common_observations/g1_29dof_state.py`（`write_robot_state` 调用位置，部分）。未运行代码；Isaac Lab 的 `env.step` 与观测管理器内部未读，图中"观测计算触发发布"为依据调用位置的推断。`action_source` 的其它取值（file / trajectory / policy / replay）未画。
+
 ## 关联页面
 
 - [xr_teleoperate](./xr-teleoperate.md)
@@ -80,6 +124,7 @@ summary: "unitree_sim_isaaclab 在 Isaac Lab 上仿真 G1/H1-2 多执行器任�
 
 - [sources/repos/unitree_sim_isaaclab.md](../../sources/repos/unitree_sim_isaaclab.md)
 - 上游：<https://github.com/unitreerobotics/unitree_sim_isaaclab>
+- 源码核对（2026-11-02）：unitree_sim_isaaclab@e30c25b，读过 README.md、sim_main.py（部分）、layeredcontrol/robot_control_system.py（部分）、action_provider/action_provider_dds.py（部分）、dds/dds_create.py（部分）、dds/g1_robot_dds.py（部分）、tasks/common_observations/g1_29dof_state.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

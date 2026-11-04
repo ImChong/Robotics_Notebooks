@@ -54,6 +54,47 @@ p5.js 将浏览器 Canvas、DOM 与输入事件包装成以 sketch 为中心的 
 - 视觉流畅不等于机器人控制安全；真机控制仍需独立的实时控制器、限幅、状态估计和急停链路。
 - 官方项目当前有持续演进的版本与文档；依赖需锁定版本，核对对应 Reference 与兼容库。
 
+## 源码运行时序图
+
+入口：草图页面加载 p5.js 后，在全局模式下定义 `function setup()` 与 `function draw()`，库侧自动执行 `new p5()`（无 sketch 参数即全局模式）；实例模式为 `new p5(sketch)`。下图只覆盖启动与帧循环，不含 DOM/鼠标/键盘事件回调与渲染器内部。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant S as 草图代码（全局 setup / draw）
+    participant W as window / 浏览器
+    participant I as _globalInit（src/core/init.js）
+    participant P as p5 构造函数（src/core/main.js）
+    participant ST as #_start / #_setup（src/core/main.js）
+    participant RD as redraw（src/core/structure.js）
+    participant R as 渲染器（createCanvas 创建的 P2D 画布）
+    I->>W: 库加载时检测到全局 setup 或 draw
+    I->>P: 全局模式：new p5()
+    P->>W: 将 p5.prototype 方法与实例属性绑定到 window（createBindGlobal）
+    P->>W: 注册 focus / blur 监听
+    alt document.readyState 为 complete
+        P->>ST: #_start()
+    else 尚未加载完成
+        P->>W: 监听 load 事件后再 #_start
+    end
+    ST->>ST: 运行 presetup 生命周期钩子
+    ST->>R: createCanvas(100, 100, P2D)
+    ST->>S: await window.setup()
+    ST->>ST: 标记 _setupDone，运行 postsetup 钩子
+    ST->>P: _draw()（首帧）
+    loop 每帧（requestAnimationFrame，按 frameRate 节流）
+        P->>P: 计算 deltaTime、frameRate
+        P->>RD: await redraw()
+        RD->>RD: predraw 钩子，resetMatrix，frameCount + 1
+        RD->>S: await window.draw()
+        RD->>R: finishDraw（如有）
+        RD->>RD: postdraw 钩子
+        P->>W: window.requestAnimationFrame(_draw)，仍在循环时
+    end
+```
+
+图依据：processing/p5.js@3dd0886，读过 `package.json`（版本与构建脚本）、`src/app.js`（模块装配与导出）、`src/core/main.js`（构造函数、`#_start`、`#_setup`、`_draw`）、`src/core/structure.js`（`redraw` 实现）。渲染器与事件回调未读，图未画。
+
 ## 关联页面
 
 - [The Coding Train](./the-coding-train.md) — 官方教学 Track 与大量 p5.js 示例。

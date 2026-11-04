@@ -108,6 +108,45 @@ summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用�
 
 G1 的出现极大地加速了大规模数据的采集。由于其成本低廉，研究者可以构建“机器人机房（Robot Farms）”，利用海量实体机器人通过 [自动化标注](../methods/auto-labeling-pipelines.md) 或利用 [CLAW](../methods/claw.md) 等仿真合成手段快速生成训练基础策略（Foundation Policies）所需的真实数据。
 
+## 源码运行时序图
+
+本图只针对 `unitree_ros2` 中的 G1 低层示例（`example/src/src/g1/lowlevel/g1_low_level_example.cpp`，CMake 目标 `g1_low_level_example`），不代表 G1 全部控制栈。入口：编译 `example` 后运行 `g1_low_level_example`（需先按 README `source setup.sh` 配置 DDS 网卡）。下图为源码中的实际调用顺序；示例会向真机发布低层指令，运行前须确认安全条件。
+
+```mermaid
+sequenceDiagram
+    participant M as main（g1_low_level_example.cpp）
+    participant N as LowLevelCmdSender（rclcpp::Node）
+    participant SUB as 订阅 lowstate（HIGH_FREQ）
+    participant TM as 定时器（2 ms）
+    participant CRC as get_crc（motor_crc_hg.h）
+    participant PUB as 发布 /lowcmd
+    participant R as G1 机器人（ROS2 桥）
+
+    M->>M: rclcpp::init
+    M->>N: make_shared LowLevelCmdSender
+    N->>SUB: create_subscription LowState，回调 LowStateHandler
+    N->>PUB: create_publisher LowCmd（/lowcmd）
+    N->>TM: create_wall_timer（2 ms），回调 Control
+    M->>N: rclcpp::spin
+    R-->>SUB: LowState（mode_machine、imu、motor_state）
+    SUB->>N: LowStateHandler 保存 mode_machine、imu_、motor_[i]
+    loop 每 2 ms
+        TM->>N: Control()
+        N->>N: 设置 mode_pr、mode_machine，29 个电机默认 kp、kd、q、dq、tau
+        alt 运行时间小于 3 s
+            N->>N: 按比例从当前 motor_[i].q 线性插值到 0
+        else 之后
+            N->>N: 设置 PR 模式，踝与腕关节按 sin 与 cos 生成目标角
+        end
+        N->>CRC: get_crc(low_command_)
+        N->>PUB: publish(low_command_)
+        PUB->>R: LowCmd
+    end
+    M->>M: rclcpp::shutdown（spin 返回后）
+```
+
+图依据：unitree_ros2@668d1ec，`example/src/src/g1/lowlevel/g1_low_level_example.cpp`（`main`、`LowLevelCmdSender` 构造、`LowStateHandler`、`Control`），`example/src/CMakeLists.txt`（`g1_low_level_example` 目标），`README.md`（示例列表与 `source setup.sh` 步骤）。`get_crc` 的实现位于 `common/motor_crc_hg`，未打开阅读，图中只表示调用。未编译或运行示例，未在真机验证。
+
 ## 关联页面
 
 - [G1 软件服务栈](./unitree-g1-software-stack.md) — SDK2/DDS 与仿真桥接口（课程 1.4）
@@ -192,3 +231,4 @@ G1 的出现极大地加速了大规模数据的采集。由于其成本低廉�
 - [sources/papers/fail_passive_gap_arxiv_2608_02809.md](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — 西门子：G1 EDU 功能安全 fail-passive gap（arXiv:2608.02809）。
 - [sources/sites/rek-com.md](../../sources/sites/rek-com.md) — REK 官网：G1 VR 格斗联赛与租赁。
 - [sources/repos/unitree_ros2.md](../../sources/repos/unitree_ros2.md) — v0.3.0 G1 双臂 / Dex3 / Arm SDK ROS 2 入口。
+- 源码核对（2026-11-02）：unitreerobotics/unitree_ros2@668d1ec，读过 example/src/src/g1/lowlevel/g1_low_level_example.cpp、example/src/CMakeLists.txt、README.md；时序图依据以上文件，未运行代码。

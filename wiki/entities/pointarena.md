@@ -65,6 +65,51 @@ summary: "PointArena（arXiv:2505.09990，UW+Ai2）：语言引导 pointing 的�
 - 开源仓库支持 leaderboard 式横评
 - 读分时应区分 2D 图像 pointing 与 3D/度量指代（见 RoboRefer）
 
+## 源码运行时序图
+
+入口：`python app.py`（Gradio 标注与评测界面，默认 `0.0.0.0:7860` 并以 `share=True` 启动；`model_evaluator.py`、`molmo_evaluator.py`、`batch_annotate.py` 等批处理入口未画）
+
+```mermaid
+sequenceDiagram
+    participant U as 标注者浏览器
+    participant APP as app.py main 与 ui_components
+    participant IMG as get_random_image 与 load_random_image
+    participant PT as process_test 与 on_submit
+    participant MOL as call_molmo 与 initialize_molmo
+    participant PTS as extract_points 与 points_to_grid_cells
+    participant SAM as segment_utils SegmentAnythingHelper
+    participant FS as save_to_json_file 与 save_mask_image
+
+    U->>APP: python app.py
+    APP->>MOL: 预加载 MOLMO_MODELS 中每个 allenai 模型
+    APP->>APP: ui_components 构建 gr.Blocks 界面
+    APP->>APP: app.launch 监听 7860 端口
+    U->>APP: 点击 New Test
+    APP->>IMG: get_random_image 从类别子目录随机选图并取得提示说明
+    U->>APP: 输入待指向的对象描述并点击 Submit
+    APP->>PT: on_submit 调用 process_test
+    PT->>PT: random.sample 从 Molmo 模型列表中选三个（OpenAI 与 Gemini 分支已注释）
+    loop 三个被选中的模型
+        PT->>MOL: call_molmo(image, object_name, model, category)
+        MOL->>MOL: processor.process 构造输入并 generate_from_batch 生成文本
+        MOL->>PTS: extract_points 解析文本中的坐标并换算为像素
+    end
+    PT->>PTS: points_to_grid_cells 把点转为网格单元
+    PT->>PT: 用 draw_molmo_points_on_image 绘制三张结果图
+    PT-->>U: 返回三张结果图与 test_data
+    U->>APP: 对结果 Accept 或手动勾选网格
+    opt 使用 SAM 生成掩码
+        U->>SAM: 点击生成掩码，调用 predict_masks_from_points
+        SAM-->>U: 返回掩码与预览图
+    end
+    U->>APP: 点击 Finish Annotation
+    APP->>APP: on_manual_annotation_complete 组装 annotation_data
+    APP->>FS: 有掩码则 save_mask_image，否则由网格生成掩码
+    APP->>FS: save_to_json_file 写入本地 data.json
+```
+
+图依据：pointarena/pointarena@16dab31，读过 README.md（Installation 与 Usage 命令段）、app.py（入口、ui_components 的按钮绑定、process_test、call_molmo、on_submit、on_manual_annotation_complete、save_to_json_file 等关键段）。未运行代码，未加载 Molmo 权重。
+
 ## 关联页面
 
 - [Point-Bench（LightNav-ER）](./er-point-bench.md)
@@ -78,6 +123,7 @@ summary: "PointArena（arXiv:2505.09990，UW+Ai2）：语言引导 pointing 的�
 - [pointarena_arxiv_2505_09990.md](../../sources/papers/pointarena_arxiv_2505_09990.md)
 - [pointarena.md](../../sources/sites/pointarena.md)
 - [pointarena-pointarena.md](../../sources/repos/pointarena-pointarena.md)
+- 源码核对（2026-11-02）：pointarena/pointarena@16dab31，读过 README.md、app.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
