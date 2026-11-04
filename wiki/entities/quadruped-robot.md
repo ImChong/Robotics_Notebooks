@@ -93,6 +93,73 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 - **任务扩展**：[Hybrid Locomotion](../tasks/hybrid-locomotion.md)（轮腿、步态切换等多模式）
 - **总任务入口**：[Locomotion](../tasks/locomotion.md)
 
+## 源码运行时序图
+
+入口：`python3 src/learning_to_adapt/scripts/run_demo.py /configs/loco_bio_gs_unified.yaml <demo_name>`（`scripts/run_demo.py`；需先 colcon 编译并 source `install/setup.bash`，并在另一终端启动 RaiSim 可视化）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant RUN as scripts/run_demo.py<br/>main
+    participant EI as python/learning_to_adapt/engine_interface.py<br/>EngineInterface
+    participant RS as python/learning_to_adapt/raisim.py<br/>RaiSimWrapper (raisimpy)
+    participant ROB as python/learning_to_adapt/robot.py<br/>Robot + joint_controller_simple_PD.py
+    participant OBS as python/learning_to_adapt/obs_manager.py<br/>ObsManager
+    participant GS as src/learning_to_adapt/gait_scheduler.cpp<br/>GaitScheduler (pybind)
+    participant LP as python/learning_to_adapt/policy_manager.py<br/>PolicyManager 运动策略
+    participant GP as python/learning_to_adapt/policy_manager.py<br/>PolicyManager 步态选择策略
+
+    U->>RUN: run_demo.py 配置文件 demo_name
+    RUN->>EI: EngineInterface(config)，engine 为 raisim 时创建 RaiSimWrapper
+    EI->>RS: RaiSimWrapper(config)
+    RUN->>EI: add_robot / reset / initialise_server（RaiSim 服务端端口 8080）
+    RUN->>LP: 加载 policies/pi_loco（full.pt, mean, var）
+    RUN->>GP: 加载 policies/pi_gs（离散动作，action_type disc）
+    RUN->>GS: GaitScheduler(control_ll_dt, user_cmd, mode, ...) 与 setupSwingFootTrajGen(...)
+
+    loop 每个仿真步 simulation_dt（max_steps 或 demo 结束条件）
+        RUN->>EI: update_robot_states()
+        EI->>RS: update_robot_states()
+        RS->>ROB: update_states(dt)
+
+        opt 到达底层控制周期 control_ll_dt
+            RUN->>EI: 读取 IMU、关节角/速、力矩、足端接触力、base 位姿与速度、足端高度
+            RUN->>RUN: 按 demo_id 生成 vel_cmd 与 gait_type 指令
+            RUN->>GS: step(des_lin_vel, des_ang_vel, base_pose, base_vel, foot_heights)
+        end
+
+        RUN->>OBS: updateAllObs(sim, scheduler, vel_cmd, joint_trq_sat)
+        OBS->>EI: 读取基座、关节、接触状态
+        OBS->>GS: gaitData() 读取期望接触、参考足端、相位、trans_flag
+
+        opt 到达运动策略周期 loco_policy_dt
+            RUN->>OBS: generateObsArray(obs_structure_loco)
+            RUN->>LP: get_action(obs_loco)
+            LP-->>RUN: policy_action_loco（关节目标位置）
+        end
+
+        opt 到达步态选择周期 gs_policy_dt 且 loop_count 不为 0
+            RUN->>OBS: updateSpecificOb(accCmd, gsAction)
+            RUN->>GP: get_action(obs_gs)
+            GP-->>RUN: gait 索引；当手动 gait 为 42 时更新 user_cmd.gait_type
+        end
+
+        RUN->>EI: set_next_action(policy_action_loco)
+        EI->>RS: set_next_action(action, robot_id)
+        RS->>ROB: set_next_action(action, dt)
+        ROB->>ROB: construct_pd_action 并经 JointController.convert_to_torque 得到力矩
+        RUN->>EI: step(action, update_states=False, sleep=False)
+        EI->>RS: step(...)
+        RS->>ROB: apply_action() 即 setGeneralizedForce
+        RS->>RS: world.integrate() 推进 RaiSim 物理
+    end
+
+    RUN->>EI: shutdown()
+```
+
+图依据：ihcr/learning_to_adapt@2066cbc，实际读过 `README.md`、`scripts/run_demo.py`、`python/learning_to_adapt/engine_interface.py`（前段）、`python/learning_to_adapt/raisim.py`（step / update_robot_states / set_next_action 段）、`python/learning_to_adapt/robot.py`（set_next_action / apply_action 段）、`python/learning_to_adapt/policy_manager.py`（构造与 get_action 签名）、`python/learning_to_adapt/obs_manager.py`（updateAllObs）、`src/learning_to_adapt/gait_scheduler.cpp`（构造与 step 签名）；未读 `srcpy/` 绑定实现的细节，未运行代码。
+
 ## 关联页面
 
 - [人形机器人](./humanoid-robot.md)
@@ -126,3 +193,4 @@ summary: "四足机器人是以四条腿与环境间歇接触的腿足平台，�
 - [Autonomous Spot 论文摘录（arXiv:2010.09259）](../../sources/papers/autonomous_spot_arxiv_2010_09259.md)
 - [Spot RL 论文摘录（arXiv:2504.17857）](../../sources/papers/spot_rl_distributional_sim2real_arxiv_2504_17857.md)
 - [Boston Dynamics 足式专利摘录](../../sources/patents/boston_dynamics_legged_robot_patents.md)
+- 源码核对（2026-11-02）：ihcr/learning_to_adapt@2066cbc，读过 README.md、scripts/run_demo.py、python/learning_to_adapt/engine_interface.py（前段）、python/learning_to_adapt/raisim.py、python/learning_to_adapt/robot.py、python/learning_to_adapt/policy_manager.py、python/learning_to_adapt/obs_manager.py、src/learning_to_adapt/gait_scheduler.cpp；时序图依据以上文件，未运行代码。

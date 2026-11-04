@@ -59,11 +59,49 @@ summary: "google-deepmind/mujoco_menagerie：DeepMind 官方 MJCF 模型库，�
 - [unitree_mujoco](./unitree-mujoco.md)
 - [robot_descriptions.py](./robot-descriptions-py.md)
 
+## 源码运行时序图
+
+入口：Python 中 `import mujoco_menagerie as mm; model = mm.load("unitree_go2")`（`python/src/mujoco_menagerie/__init__.py` 的 `load`）；命令行 `python -m mujoco_menagerie path unitree_go2` 走 `__main__.py` 的同一套解析
+
+```mermaid
+sequenceDiagram
+    participant USR as 用户代码 mm.load 或 python -m mujoco_menagerie
+    participant PKG as python/src/mujoco_menagerie/__init__.py
+    participant REG as _registry.py Robot 与 bundled
+    participant CAC as _cache.py Cache
+    participant NET as GitHub releases 模型归档
+    participant ARC as _archive.py sha256_file
+    participant MJ as mujoco.MjModel 外部库
+
+    USR->>PKG: load(name, entry, cache)
+    PKG->>REG: get(name)，经 bundled() 读取 registry.json（无 IO）
+    PKG->>REG: Robot.model(entry, cache)
+    REG->>REG: 延迟导入 mujoco，xml(entry) 取默认入口 scene.xml
+    REG->>CAC: path(cache)，即 Cache.resolve(robot)
+    alt 设置了 MENAGERIE_ROOT
+        CAC-->>REG: root/name 目录，不下载
+    else 缓存中已有 SENTINEL 文件
+        CAC-->>REG: 缓存中的模型目录
+    else 首次使用
+        CAC->>CAC: _lock(name) 后调用 _publish
+        CAC->>NET: _download 归档（urllib，超时 60 秒）
+        NET-->>CAC: 归档文件
+        CAC->>ARC: 核对文件大小与 sha256
+        CAC->>CAC: 解压到临时目录，记录各文件 sha256，os.replace 发布
+        CAC-->>REG: 模型目录
+    end
+    REG->>MJ: MjModel.from_xml_path(xml)
+    MJ-->>USR: 返回 MjModel
+```
+
+图依据：google-deepmind/mujoco_menagerie@98a70c5，读过 `python/src/mujoco_menagerie/__init__.py`（`load`、`get`、`prefetch`）、`python/src/mujoco_menagerie/__main__.py`（`main` 的子命令分派）、`python/src/mujoco_menagerie/_registry.py`（`Robot.path`、`xml`、`model` 与 `bundled`）、`python/src/mujoco_menagerie/_cache.py`（`Cache.resolve`、`_publish`、`_download`、`_lock`）；`_archive.py` 与 `_closure.py` 仅按函数名与引用处检索，`files()` 路径中的 `closure` 未纳入本图；未运行代码。
+
 ## 参考来源
 
 - [sources/repos/mujoco-menagerie-aloha.md](../../sources/repos/mujoco-menagerie-aloha.md)
 - [sources/repos/mujoco-menagerie-google.md](../../sources/repos/mujoco-menagerie-google.md)
 - [wechat_robot_yanfa_opensource_algorithms_compendium.md](../../sources/blogs/wechat_robot_yanfa_opensource_algorithms_compendium.md)
+- 源码核对（2026-11-02）：google-deepmind/mujoco_menagerie@98a70c5，读过 `python/src/mujoco_menagerie/__init__.py`、`python/src/mujoco_menagerie/__main__.py`、`python/src/mujoco_menagerie/_registry.py`、`python/src/mujoco_menagerie/_cache.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

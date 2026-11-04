@@ -57,12 +57,63 @@ sources:
 - **许可证：** BIGAI 发布，研究用途；商用以官方页面为准。
 - **重定向就绪度：** 场景级 3D + R2R 风格离散动作；用于具身导航 / VQA，迁移到具体本体需按目标形态适配。
 
+## 源码运行时序图
+
+入口：`PQ3D/run.py` 的 `main()`（Hydra 装饰器），训练命令见 `PQ3D/README.md`：`python run.py --config-path configs --config-name svpp_gt.yaml`。注意：仓库中未包含 PQ3D 的 `data/` 包（`data.build.build_dataloader`、`data.datasets` 等），因此下图按源码 import 与调用链绘制，该数据模块本仓库不可直接运行。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as "命令行<br/>python run.py --config-name svpp_gt.yaml"
+    participant R as "main() Hydra<br/>PQ3D/run.py"
+    participant TB as "build_trainer()<br/>PQ3D/trainer/build.py"
+    participant Q as "Query3DTrainer<br/>PQ3D/trainer/query3d_trainer.py"
+    participant DL as "build_dataloader()<br/>data/build.py 未随仓库提供"
+    participant MB as "build_model()<br/>PQ3D/model/build.py"
+    participant M as "Query3DUnified<br/>PQ3D/model/query3d_unified.py"
+    participant OB as "build_optim()<br/>PQ3D/optim/build.py"
+    participant EV as "build_eval()<br/>PQ3D/evaluator/build.py"
+    U->>R: 启动训练, Hydra 读取 configs
+    R->>R: 生成 run_id, 解析 cfg, 保存 exp_dir/config.yaml
+    R->>TB: build_trainer(cfg)
+    TB->>Q: TRAINER_REGISTRY.get(cfg.trainer)(cfg), 配置中为 Query3DTrainer
+    Q->>Q: BaseTrainer.__init__ 设置随机种子与 Accelerator
+    Q->>DL: build_dataloader(cfg, split) 训练, 验证, 测试
+    Q->>MB: build_model(cfg)
+    MB->>M: MODEL_REGISTRY.get(cfg.model.name)(cfg), 配置中为 Query3DUnified
+    Q->>OB: build_optim(cfg, get_opt_params(), total_steps)
+    OB-->>Q: loss, optimizer, scheduler
+    Q->>EV: build_eval(cfg, accelerator)
+    Q->>Q: 可选加载预训练权重, accelerator.prepare, 可选断点恢复
+    R->>Q: run()
+    loop 每个 epoch
+        Q->>Q: train_step(epoch)
+        loop 每个 batch
+            Q->>M: forward(data_dict)
+            M-->>Q: data_dict 含预测结果
+            Q->>OB: self.loss(data_dict) 返回 loss 与各项 losses
+            Q->>Q: backward(loss): zero_grad, accelerator.backward, optimizer.step, scheduler.step
+        end
+        opt 到达 epochs_per_eval
+            Q->>Q: eval_step(epoch)
+            Q->>EV: evaluator.update, record, reset
+            EV-->>Q: is_best
+        end
+        Q->>Q: 保存 latest.pth, 按条件保存 best.pth 与周期性检查点
+    end
+    Q->>Q: test_step() 在测试集上 evaluator.update
+    Q->>Q: accelerator.end_training()
+```
+
+图依据：sv-pp/SceneVersepp@8764b79，读过 `README.md`、`PQ3D/README.md`、`PQ3D/run.py`、`PQ3D/trainer/build.py`、`PQ3D/trainer/default_trainer.py`、`PQ3D/trainer/query3d_trainer.py`（`train_step`、`eval_step`、`run`）、`PQ3D/model/build.py`、`PQ3D/model/query3d_unified.py`（类注册）、`PQ3D/optim/build.py`、`PQ3D/evaluator/build.py`、`PQ3D/configs/svpp_gt.yaml`。`build_dataloader` 的实现不在仓库内，图中仅依据其调用点；`test_step` 与检查点保存的细节只按调用关系概括，未逐行核对；未运行代码。
+
 ## 参考来源
 
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
 - Chen et al., *Lifting Unlabeled Internet-level Data for 3D Scene Understanding* (arXiv:2604.01907, CVPR 2026)
 - 项目主页：<https://sv-pp.github.io/>
 - 代码仓库：<https://github.com/sv-pp/SceneVersepp>
+- 源码核对（2026-11-02）：sv-pp/SceneVersepp@8764b79，读过 README.md、PQ3D/README.md、PQ3D/run.py、PQ3D/trainer/build.py、PQ3D/trainer/query3d_trainer.py、PQ3D/model/build.py、PQ3D/optim/build.py、PQ3D/evaluator/build.py、PQ3D/configs/svpp_gt.yaml；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

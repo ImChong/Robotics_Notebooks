@@ -64,11 +64,48 @@ summary: "Navigation2（Nav2）是 ROS 2 标准导航框架：行为树、全局
 - **误区：默认 DWB 适用所有底盘** — 全向、阿克曼、差速动力学差异大，需换 **controller / footprint**。
 - **局限**：Nav2 面向 **平面移动底盘**；人形/腿式 **步态规划** 不在其范围（见 [OpenLoong](./openloong.md)）。
 
+## 源码运行时序图
+
+入口：`ros2 launch nav2_bringup bringup_launch.py`（launch 文件 `nav2_bringup/launch/bringup_launch.py`）。下图为 launch 层的启动顺序，以及生命周期管理器对各节点的 configure 与 activate；`bringup_launch.py` 中的 `use_composition` 为真时，各服务改为同一容器内的 ComposableNode，图中未展开。
+
+```mermaid
+sequenceDiagram
+  participant User as ros2 launch 命令行
+  participant BU as bringup_launch.py
+  participant LOC as localization_launch.py
+  participant NAV as navigation_launch.py
+  participant Srv as 各 server 节点 controller planner behavior 等
+  participant BT as bt_navigator main.cpp 与 BtNavigator
+  participant LCM as nav2_lifecycle_manager lifecycle_manager
+  User->>BU: 启动 bringup_launch.py，声明参数
+  alt slam 且 use_localization 为真
+    BU->>BU: 包含 slam_launch.py
+  else 其余情况
+    BU->>LOC: IncludeLaunchDescription 包含 localization_launch.py
+    LOC-->>BU: map_server 与 amcl 节点
+  end
+  BU->>NAV: IncludeLaunchDescription 包含 navigation_launch.py
+  NAV->>Srv: Node 启动 controller_server、smoother_server、planner_server、route_server、behavior_server
+  NAV->>BT: Node 启动 bt_navigator，main 中 rclcpp::spin
+  NAV->>Srv: Node 启动 waypoint_follower、velocity_smoother、collision_monitor、docking_server、following_server
+  NAV->>LCM: Node 启动 lifecycle_manager_nav2，传入 autostart 参数与节点名列表
+  LCM->>Srv: 依次 configure 各节点
+  LCM->>BT: configure，BtNavigator::on_configure 加载默认导航器 navigate_to_pose 与 navigate_through_poses
+  alt autostart 为真
+    LCM->>Srv: activate 各节点
+    LCM->>BT: on_activate 激活导航器
+  end
+```
+
+图依据：ros-navigation/navigation2@20b9fa3，`nav2_bringup/launch/bringup_launch.py`、`navigation_launch.py`、`localization_launch.py`、`nav2_bt_navigator/src/main.cpp`、`nav2_bt_navigator/src/bt_navigator.cpp`（on_configure、on_activate 段）；未运行代码。
+
 ## 参考来源
 
 - [sources/repos/navigation2.md](../../sources/repos/navigation2.md)
 - [sources/repos/navigation_slam_autonomy_stack_catalog.md](../../sources/repos/navigation_slam_autonomy_stack_catalog.md)
 - [ros-navigation/navigation2](https://github.com/ros-navigation/navigation2)
+
+- 源码核对（2026-11-02）：ros-navigation/navigation2@20b9fa3，读过 `README.md`、`nav2_bringup/launch/bringup_launch.py`、`navigation_launch.py`、`localization_launch.py`、`nav2_bt_navigator/src/main.cpp`、`nav2_bt_navigator/src/bt_navigator.cpp`（部分）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

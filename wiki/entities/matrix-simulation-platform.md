@@ -67,6 +67,42 @@ summary: "MATRiX 是智身科技（GENISOM AI）开源的高保真联合仿真�
 - **误区：「MATRiX = 又一个 Isaac Gym」。** 核心是 **MuJoCo+UE 联合** 与智身硬件/SDK 闭环，而非 Omniverse 生态。
 - **误区：「可微仿真可以跳过接触建模」。** 可微部分仍受接触平滑化/近似影响，复杂地形常需与 DR 联用。
 
+## 源码运行时序图
+
+入口：解压 Release 运行时后，在运行时目录执行 `./UeSim.sh`；另开终端执行 `python3 Tools/zenoh_sensor_receiver.py --key 'rt/**'`（仓库内 Python 工具，需 eclipse-zenoh、numpy、opencv-python）
+
+仓库内只含启动脚本与 Python 工具。UE/MuJoCo 运行时二进制 `UeSim/Binaries/Linux/UeSim` 以 Release 资产分发、不在本仓库中，下图中标为「闭源运行时」，未读取其实现。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 shell
+    participant L as scripts 启动脚本 UeSim.sh（仓库内）
+    participant B as 闭源运行时 UeSim 二进制（Release 资产）
+    participant Z as Zenoh 会话
+    participant T as Tools/zenoh_sensor_receiver.py main()
+    participant D as decode_sensor_sample 与 CDR 解析
+    U->>L: ./UeSim.sh 参数
+    L->>L: readlink 解析自身路径，检查二进制存在且可执行
+    L->>B: cd 项目根目录后 exec 二进制 UeSim 参数（脚本进程被替换）
+    B-->>Z: 运行时经 Zenoh 发布传感器话题（README 描述）
+    U->>T: python3 zenoh_sensor_receiver.py --key 前缀
+    T->>T: parse_args、require_dependencies、校验深度与 LiDAR 参数
+    T->>Z: zenoh.open(build_zenoh_config(args))
+    T->>Z: declare_subscriber(key, on_sample)
+    loop 每个到达的样本
+        Z-->>T: on_sample 只保存每个话题的最新样本
+    end
+    loop 主线程循环
+        T->>D: decode_sensor_sample(key, data, stream_type)
+        D->>D: parse_compressed_image_cdr、parse_pointcloud2_cdr、decode_uesim_depth_png
+        D-->>T: ImageFrame、DepthFrame、SemanticFrame 或 PointCloudFrame
+        T->>T: print_frame_status，cv2.imshow 显示
+    end
+    U->>T: Q、Esc 或 SIGINT 退出
+```
+
+图依据：zsibot/matrix@55ad3fe，实际读过 README.md、scripts/runtime/UeSim.sh、Tools/zenoh_sensor_receiver.py（main 与订阅回调、解码入口）、docs/Getting_Started.md（启动与工具命令）；未运行代码。
+
 ## 关联页面
 
 - [Quadruped Control Curriculum](./quadruped-control-curriculum.md) — 课程主线平台
@@ -83,5 +119,6 @@ summary: "MATRiX 是智身科技（GENISOM AI）开源的高保真联合仿真�
 ## 参考来源
 
 - [matrix 源码归档](../../sources/repos/matrix.md)（<https://github.com/zsibot/matrix>）
+- 源码核对（2026-11-02）：zsibot/matrix@55ad3fe，读过 README.md、scripts/runtime/UeSim.sh、Tools/zenoh_sensor_receiver.py、docs/Getting_Started.md；时序图依据以上文件，未运行代码。
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程大纲与 Project 描述

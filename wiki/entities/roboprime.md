@@ -54,6 +54,45 @@ summary: "RoboPrime 是 simonepri 设计的 21 自由度全 3D 打印人形机�
 - **README / 核查：** README 副标题「Full featured 21 DOF 3D Printed Humanoid Robot based on ATmega328P chip」，硬件清单列出 Arduino Pro Micro、HC-05、2 个 74HC4017、MPU-6050（标注未使用）、21 个 MG90S、2 个 5A DC-DC，总成本 $60–$100，另有约 $15 螺丝；README 自带「Description coming soon」占位。
 - **差异与保留：** 文章「完整固件、支持基本动作」未在已读 README 段落逐项核对；仓库最近提交 2017-10-19，已多年无更新。
 
+## 源码运行时序图
+
+入口：Arduino IDE 编译上传 `firmware/RoboPrime/`（板上运行 `RoboPrime.cpp` 的 `setup()`，随后循环执行 `loop()`）；指令经串口（HC-05 蓝牙透传，波特率 115200）输入，如 `S1 L3 A900`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant H as 上位机 蓝牙串口
+    participant L as RoboPrime.cpp setup/loop
+    participant CP as CommandParser
+    participant BM as BodyMovement
+    participant AS as AnimationStore
+    participant SS as SerialServo
+    participant T1 as TIMER1 中断 4017 脉冲
+    Note over L: setup() 依次调用各模块 begin()
+    H->>CP: 字节流 S1 L3 A900 加换行
+    L->>CP: parseSerial 未忙时每轮读取一个字节
+    CP->>CP: parseByte 按字母累积参数，换行时 parseCode
+    CP->>BM: parseCodeS1 调用 setPos(HF_L, 3, 900)
+    BM->>SS: raw_setPos 做 offset 修正后 writeAngle
+    SS->>SS: raw_degToUs 换算脉宽并写入通道
+    Note over L: loop() 每次迭代依次执行以下三步
+    L->>SS: servoRoutine
+    L->>BM: movementPlanner 对不在运动的关节 popQueue
+    BM->>SS: raw_popQueue 后 sweepAngle 或 wait
+    L->>AS: executeAnimation
+    AS->>BM: pushQueue 把当前动画步推入关节队列
+    H->>CP: Q0 R2 A900 D500 排队指令
+    CP->>BM: parseCodeQ0 调用 pushQueue(HF_R, 2, 900, 500)
+    alt 队列已满
+        CP->>CP: isBusy 置位，之后每轮以换行重试
+    end
+    H->>CP: S3 A9 D0 T0 启动动画
+    CP->>AS: parseCodeS3 调用 applyAnimation
+    T1-->>SS: 定时器中断按通道逐路输出脉冲
+```
+
+图依据：simonepri/roboprime@e2f3e4f，读过 `README.md`、`LICENSE`（开头）、`firmware/RoboPrime/RoboPrime.ino`（仅注释头）、`firmware/RoboPrime/RoboPrime.cpp`、`commandParser.cpp`、`commandParser.h`、`bodyMovement.cpp`、`bodyMovement.h`、`serialServo.cpp`（`writeAngle`、`servoRoutine`、`raw_interrupt` 宏与 ISR 定义）、`serialServo.h`、`animationStore.cpp`（`applyAnimation`、`executeAnimation`）；未运行代码，未在实物上验证。
+
 ## 关联页面
 
 - [humanoid-robot](../entities/humanoid-robot.md)
@@ -65,3 +104,4 @@ summary: "RoboPrime 是 simonepri 设计的 21 自由度全 3D 打印人形机�
 - [roboprime.md](../../sources/repos/roboprime.md)
 - [wechat_githubstore_19_buildable_open_source_humanoids_2026-11-02.md](../../sources/blogs/wechat_githubstore_19_buildable_open_source_humanoids_2026-11-02.md)
 - [原文（微信公众号）](https://mp.weixin.qq.com/s/UUwUAcKdVrlo-N60Oar3Xg)
+- 源码核对（2026-11-02）：simonepri/roboprime@e2f3e4f，读过 `README.md`、`LICENSE`（开头）、`firmware/RoboPrime/RoboPrime.ino`、`RoboPrime.cpp`、`commandParser.cpp/.h`、`bodyMovement.cpp/.h`、`serialServo.cpp/.h`、`animationStore.cpp`；时序图依据以上文件，未运行代码。

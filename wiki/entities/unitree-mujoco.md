@@ -70,6 +70,54 @@ summary: "unitree_mujoco 是基于 unitree_sdk2 与 MuJoCo 的官方仿真器（
 - **电机编号必须对照开发者文档**与实机接线。
 - C++ / Python 两套实现能力边界以上游为准，优先 C++ 路径做严肃验证。
 
+## 源码运行时序图
+
+官方实现 [unitreerobotics/unitree_mujoco](https://github.com/unitreerobotics/unitree_mujoco)（短 SHA `1eb6642`）：C++ 仿真器 `simulate/`（推荐）以 MuJoCo 物理步进，`simulate/src/unitree_sdk2_bridge.h` 把仿真状态经 DDS 发布为 `rt/lowstate`、把控制程序下发的 `rt/lowcmd` 转为 MuJoCo 执行器输入。`main()` 同时起三条执行线：桥接线程、物理线程与主线程渲染循环。Python 版 `simulate_python/` 结构同构（`unitree_mujoco.py` 的 `SimulationThread` 与 `unitree_sdk2py_bridge.py` 的 `UnitreeSdk2Bridge`），本图不单独展开。
+
+入口：`./unitree_mujoco -r go2 -s scene_terrain.xml`（在 `simulate/build` 中运行；另开终端运行控制程序，如 `./test`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户 / 控制程序
+    participant MAIN as main.cc<br/>main()
+    participant PRM as param.h<br/>config.yaml + 命令行
+    participant BT as UnitreeSdk2BridgeThread<br/>main.cc（桥接线程）
+    participant PT as PhysicsThread<br/>main.cc（物理线程）
+    participant SIM as mj::Simulate<br/>RenderLoop（主线程 GLFW）
+    participant MJ as MuJoCo<br/>mj_step / mjData
+    participant RB as RobotBridge / G1Bridge / Go2Bridge<br/>unitree_sdk2_bridge.h
+    participant DDS as DDS 话题<br/>rt/lowcmd · rt/lowstate
+    U->>MAIN: ./unitree_mujoco -r go2 -s scene_terrain.xml
+    MAIN->>PRM: config.load_from_yaml(config.yaml)；param::helper(argv)
+    MAIN->>SIM: make_unique<mj::Simulate>(GlfwAdapter)
+    MAIN->>BT: std::thread(UnitreeSdk2BridgeThread)
+    MAIN->>PT: std::thread(PhysicsThread, sim, robot_scene)
+    MAIN->>SIM: sim->RenderLoop()
+    PT->>MJ: LoadModel(robot_scene)，sim.Load(m, d)
+    loop PhysicsLoop（每步）
+        PT->>MJ: mj_step(m, d)（可选 ctrl 噪声与实时同步）
+    end
+    BT->>BT: 等待 mjData 就绪；定位 torso_link / base_link 作为拖拽挂点
+    BT->>DDS: ChannelFactory::Init(domain_id, interface)
+    BT->>PRM: ResolveIdlType(robot, nu, idl_type)
+    alt IDL_HG（如 G1）
+        BT->>RB: G1Bridge(m, d)
+    else IDL_GO（如 Go2）
+        BT->>RB: Go2Bridge(m, d)
+    end
+    BT->>RB: interface->start()（RecurrentThread 周期 run）
+    loop 周期 run（约 1 kHz）
+        RB->>DDS: 读取 rt/lowcmd（LowCmd）
+        RB->>MJ: mj_data->ctrl[i] = tau + kp·(q − qpos) + kd·(dq − qvel)
+        RB->>DDS: lowstate->unlockAndPublish()（关节 q/dq/tau 与 IMU）
+        RB->>DDS: 发布 highstate / wireless_controller（按机型）
+    end
+    U->>DDS: 控制程序发布 rt/lowcmd
+```
+
+图依据：unitree_mujoco@1eb6642，读过 `readme.md`（运行命令与 DDS domain 配置）、`simulate/src/main.cc`（`main`、`PhysicsLoop`、`UnitreeSdk2BridgeThread`，部分）、`simulate/src/unitree_sdk2_bridge.h`（`RobotBridge::start/run`、`G1Bridge` 声明，部分）、`simulate/src/param.h`（`ResolveIdlType` 与 IDL 常量，部分）、`simulate_python/unitree_mujoco.py`、`simulate_python/unitree_sdk2py_bridge.py`（`LowCmdHandler`、`PublishLowState`，部分）。未运行代码；`Go2Bridge` 的专属逻辑与 `mujoco` 渲染细节未读。
+
 ## 关联页面
 
 - [unitree_sdk2](./unitree-sdk2.md)
@@ -83,6 +131,7 @@ summary: "unitree_mujoco 是基于 unitree_sdk2 与 MuJoCo 的官方仿真器（
 
 - [sources/repos/unitree_mujoco.md](../../sources/repos/unitree_mujoco.md)
 - 上游：<https://github.com/unitreerobotics/unitree_mujoco>
+- 源码核对（2026-11-02）：unitree_mujoco@1eb6642，读过 readme.md、simulate/src/main.cc（部分）、simulate/src/unitree_sdk2_bridge.h（部分）、simulate/src/param.h（部分）、simulate_python/unitree_mujoco.py、simulate_python/unitree_sdk2py_bridge.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -65,8 +65,51 @@ summary: "TOWR（ETH ADRL）是轻量、可扩展的足式机器人轨迹优化 
 - [quadruped-robot](../entities/quadruped-robot.md)
 - [quadruped-open-source-projects-technology-map](../overview/quadruped-open-source-projects-technology-map.md)
 
+## 源码运行时序图
+
+入口：`towr/test/hopper_example.cc` 的 `main()`（CMake 构建后运行 `./towr-example`；ROS 入口为 `roslaunch towr_ros towr_ros.launch`，本图未展开）。下图为单足跳跃器示例中，源码实际的建模与求解调用顺序。
+
+```mermaid
+sequenceDiagram
+    participant M as main（hopper_example.cc）
+    participant F as NlpFormulation（nlp_formulation.cc）
+    participant RM as RobotModel / FlatGround
+    participant P as ifopt::Problem
+    participant S as ifopt::IpoptSolver（外部库）
+    participant SH as SplineHolder（solution）
+
+    M->>F: 设定 terrain_、model_（Monoped）
+    M->>F: 设定 initial_base_、initial_ee_W_、final_base_
+    M->>F: params_ 设定相位时长与初始接触
+    M->>SH: 创建空的 solution
+    M->>F: GetVariableSets(solution)
+    F-->>M: 变量集合
+    M->>P: AddVariableSet（逐个）
+    M->>F: GetConstraints(solution)
+    F-->>M: 约束集合
+    M->>P: AddConstraintSet（逐个）
+    M->>F: GetCosts()
+    F-->>M: 代价集合
+    M->>P: AddCostSet（逐个）
+    M->>S: make_shared IpoptSolver，SetOption jacobian_approximation exact
+    M->>S: SetOption max_cpu_time 20
+    M->>S: Solve(nlp)
+    S->>P: 读取变量、约束与代价（回调，实现在 ifopt 库内）
+    P->>SH: 变量集合把决策变量写入样条（base、ee、力、相位）
+    S-->>M: 求解结束
+    M->>P: PrintCurrent（输出变量与约束违反情况）
+    loop 每 0.2 s 采样至 GetTotalTime
+        M->>SH: base_linear_ / base_angular_ / ee_motion_ / ee_force_ GetPoint(t)
+        M->>SH: phase_durations_ IsContactPhase(t)
+        M-->>M: 打印基座位置、姿态、足端位置、接触力与接触状态
+    end
+```
+
+图依据：towr@d6c6787，`towr/test/hopper_example.cc`、`towr/include/towr/nlp_formulation.h`、`towr/src/nlp_formulation.cc`（GetVariableSets / GetConstraints / GetCosts 的定义）、`README.md`（构建与运行说明）。ifopt 与 Ipopt 的内部实现不在本仓库内，`S` 到 `P` 的回调细节为推断，未逐行核对。
+
 ## 参考来源
 
 - [towr_trajectory_optimization.md](../../sources/repos/towr_trajectory_optimization.md)
 - [wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md](../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md)
 - [原文（微信公众号）](https://mp.weixin.qq.com/s/pRGoPm41qYCNyHPWR6Dl6A)
+- 源码核对（2026-11-02）：ethz-adrl/towr@d6c6787，读过 README.md、towr/test/hopper_example.cc、towr/include/towr/nlp_formulation.h、towr/src/nlp_formulation.cc（仅 GetVariableSets/GetConstraints/GetCosts 定义）；时序图依据以上文件，未运行代码。
