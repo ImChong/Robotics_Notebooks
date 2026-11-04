@@ -3086,7 +3086,7 @@
 - [𝒩₀-Foundation（Towards the Age of Tactile Intelligence）](wiki/entities/paper-n0-foundation.md) — 𝒩₀-Foundation**（读作 *Neo-Foundation*，*Towards the Age of Tactile Intelligence*，[项目页](https://resear `📅unknown` `[entity_page]`
 - [𝒩₀-TWAM（Tactile-Native World Action Model）](wiki/entities/paper-n0-twam.md) — 𝒩₀-TWAM**（*Scaling Tactile-Native World Action Model for Contact-Rich Manipulation*，[项目页](https:// `📅unknown` `[entity_page]`
 - [𝒩₀-VTLA（Latent Tactile Tokens · Vision-Tactile-Language-Action）](wiki/entities/paper-n0-vtla.md) — 𝒩₀-VTLA**（*Scaling Vision-Tactile-Language-Action Model with Latent Tactile Tokens*，[项目页](https:// `📅unknown` `[entity_page]`
-- [∇Mimic（arXiv:2610.41654）](wiki/entities/paper-nablamimic.md) — ∇Mimic**（*∇Mimic: Ultra-Efficient Humanoid Control with Differentiable Simulation*，[arXiv:2610.416 `📅unknown` `[entity_page]`
+- [∇Mimic: Ultra-Efficient Humanoid Control with Differentiable Simulation / 基于可微仿真的高效人形控制](wiki/entities/paper-nablamimic.md) — ∇Mimic 通过处理接触动力学中的极端梯度，结合专用于 G1 的 NablaEngine，训练单一全身动作跟踪策略。 `📅unknown` `[entity_page]`
 - [nanoflann（arXiv:2610.15215）](wiki/entities/paper-nanoflann-product-manifold-kdtree.md) — nanoflann**（*nanoflann: A Header-Only KD-Tree Library for Exact Nearest-Neighbor Search on Compile `📅unknown` `[entity_page]`
 - [NaP-Control：扩散先验噪声导航的快速全身角色控制](wiki/entities/paper-nap-control.md) — NaP-Control**（*Navigating Diffusion Prior for Versatile and Fast Character Control*，[arXiv:2605.20 `📅unknown` `[entity_page]`
 - [Natural-Language to Nav2（arXiv:2610.32633）](wiki/entities/paper-natural-language-to-nav2.md) — Natural-Language to Nav2**（*Natural-Language to Nav2: Operational Policies for Costmap-Based Navig `📅unknown` `[entity_page]`

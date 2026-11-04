@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-04] ingest | sources/papers/nablamimic-2610-41654.md — 补充论文机制、实验边界与训练源码调用链
+
 ## [2026-11-03] ingest | Qt历险记《C/C++ 运动控制开源库分类整理》：14 个项目逐个回一手资料核对（新建 7 / 复用 7），标出许可与实时性等与文章不一致处
 
 ## [2026-11-03] ingest | FAITH 可行性感知安全过滤 RL
