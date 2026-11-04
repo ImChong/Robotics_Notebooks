@@ -9,7 +9,7 @@ tags:
   - evaluation
   - agent-infrastructure
 status: complete
-updated: 2026-10-16
+updated: 2026-11-04
 related:
   - ./anthropic-frontend-design-skill.md
   - ./agent-skills-addyosmani.md
@@ -111,6 +111,8 @@ flowchart LR
 - **许可：** 技能包许可见仓库 `LICENSE.txt`；与 Remotion 等第三方框架许可无关。
 
 ## 与其他页面的关系
+
+- [FlashProve](flashprove.md) — 对模型推理结果提供密码学验证的研究原型。
 
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 理论框架与 agent 类型 grader 选型  
 - [RLE-Bench](rle-bench.md) — 具身/RL 向 coding agent 资格考  
