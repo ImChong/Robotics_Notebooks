@@ -45,10 +45,51 @@ summary: "Google Cartographer 提供实时 2D/3D SLAM：子图 scan matching + �
 - **误区：配置即开箱即用** — URDF、激光话题、帧率与时间同步需仔细标定。
 - **对比**：与 slam_toolbox 相比 ROS2 迁移与社区重心不同，选型看团队栈。
 
+## 源码运行时序图
+
+入口：`map_builder_server_main`（`cartographer/cloud/map_builder_server_main.cc`，由 `CMakeLists.txt` 与 Bazel 目标构建；需 `--configuration_directory` 与 `--configuration_basename`，例如 `map_builder_server --configuration_directory <dir> --configuration_basename <lua>`）。本仓库不含 ROS 包装层，`cartographer_ros` 为独立仓库。
+
+```mermaid
+sequenceDiagram
+    participant C as gRPC 客户端<br/>(如 cartographer_ros 或 client stub)
+    participant H as cloud/internal/handlers<br/>AddTrajectory / AddSensorDataBatch
+    participant MBS as cloud/internal/map_builder_server.cc<br/>MapBuilderServer
+    participant MB as mapping/map_builder.cc<br/>MapBuilder
+    participant CTB as mapping/internal/collated_trajectory_builder.cc<br/>CollatedTrajectoryBuilder
+    participant GTB as mapping/internal/global_trajectory_builder.cc<br/>GlobalTrajectoryBuilder
+    participant LTB as mapping/internal/2d/local_trajectory_builder_2d.cc<br/>LocalTrajectoryBuilder2D
+    participant PG as mapping/internal/2d/pose_graph_2d.cc<br/>PoseGraph2D
+    participant CB as mapping/internal/constraints<br/>ConstraintBuilder2D
+    participant OP as optimization problem<br/>Solve
+
+    Note over MBS: main() 解析 flags 后 CreateMapBuilder，再 MapBuilderServer::Start
+    C->>H: AddTrajectoryRequest
+    H->>MB: map_builder()->AddTrajectoryBuilder(...)
+    MB->>GTB: CreateGlobalTrajectoryBuilder2D（含 LocalTrajectoryBuilder2D 与 PoseGraph2D 引用）
+    C->>H: AddSensorDataBatchRequest（里程计、IMU、点云等）
+    H->>MBS: EnqueueSensorData（按轨迹 ID 入队）
+    MBS->>CTB: AddData(sensor data)
+    CTB->>GTB: sensor_collator 整理后调用 AddSensorData
+    GTB->>LTB: AddRangeData（点云累积后调用）
+    LTB->>LTB: ScanMatch（相关扫描匹配加 Ceres 精修）
+    LTB->>LTB: InsertIntoSubmap（运动滤波后插入子图）
+    LTB-->>GTB: MatchingResult（局部位姿与 insertion_result）
+    GTB->>PG: AddNode(constant_data, insertion_submaps)
+    PG->>PG: AddWorkItem → ComputeConstraintsForNode
+    PG->>CB: MaybeAddConstraint / MaybeAddGlobalConstraint
+    CB-->>PG: HandleWorkQueue（新约束）
+    PG->>OP: RunOptimization → optimization_problem_->Solve(constraints)
+    OP-->>PG: 更新子图与节点位姿
+    PG-->>C: 经 GetTrajectoryNodePoses 等 RPC 查询结果
+```
+
+图依据：cartographer-project/cartographer@877157a，读过 `cartographer/cloud/map_builder_server_main.cc`、`cartographer/cloud/internal/map_builder_server.cc`（handler 注册）、`cartographer/cloud/internal/handlers/add_sensor_data_batch_handler.cc`、`cartographer/cloud/internal/handlers/add_trajectory_handler.cc`、`cartographer/mapping/map_builder.cc`（`AddTrajectoryBuilder`）、`cartographer/mapping/internal/collated_trajectory_builder.cc`、`cartographer/mapping/internal/global_trajectory_builder.cc`（`AddSensorData`）、`cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc`（`ScanMatch`、`AddRangeData`、`InsertIntoSubmap`）、`cartographer/mapping/internal/2d/pose_graph_2d.cc`（`AddNode`、`ComputeConstraintsForNode`、`HandleWorkQueue`、`RunOptimization`）。`EnqueueSensorData` 至 collator 的内部细节、客户端 gRPC 侧与 `ConstraintBuilder2D` 内部未逐行核对；未运行代码。
+
 ## 参考来源
 
 - [sources/repos/cartographer.md](../../sources/repos/cartographer.md)
 - [cartographer-project/cartographer](https://github.com/cartographer-project/cartographer)
+- 源码核对（2026-11-02）：cartographer-project/cartographer@877157a，读过 cartographer/cloud/map_builder_server_main.cc、cartographer/cloud/internal/map_builder_server.cc、cartographer/cloud/internal/handlers/add_sensor_data_batch_handler.cc、cartographer/cloud/internal/handlers/add_trajectory_handler.cc、cartographer/mapping/map_builder.cc、cartographer/mapping/internal/collated_trajectory_builder.cc、cartographer/mapping/internal/global_trajectory_builder.cc、cartographer/mapping/internal/2d/local_trajectory_builder_2d.cc、cartographer/mapping/internal/2d/pose_graph_2d.cc、README.rst；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 
