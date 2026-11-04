@@ -1,18 +1,15 @@
 # ∇Mimic: Ultra-Efficient Humanoid Control with Differentiable Simulation
 
-> 来源归档（草稿；尚未完成全文与源码核查）
+- **论文：** <https://arxiv.org/html/2610.41654v1>（v1，2026-10-30）
+- **作者和机构：** Weyl Lu、Yubei Chen，加州大学戴维斯分校
+- **项目页：** <https://sailab.ai/nablamimic/>
+- **代码：** <https://github.com/OamIcs/NablaMimic>；[NablaEngine](../repos/nablaengine.md)
+- **入库日期：** 2026-11-03；核对日期：2026-11-04
 
-- **论文：** https://arxiv.org/abs/2610.41654 （v1，2026-10-30）
-- **作者：** Weyl Lu、Yubei Chen
-- **项目页：** https://sailab.ai/nablamimic/；论文还列出 https://oamics.github.io/NablaMimic/
-- **代码：** https://github.com/OamIcs/NablaMimic；[NablaEngine](../repos/nablaengine.md)
-- **入库日期：** 2026-11-03
+## 原文核对
 
-## 已核实线索
-
-- 论文摘要提出使用逐样本梯度裁剪与多步回归处理接触梯度不稳定，并使用 G1 专用可微仿真器 NablaEngine。
-- 论文报告在 LAFAN1 的 40 个动作上训练一个策略；不同方法的训练时间涉及不同 GPU，比较时应保留实验条件。
-
-## 待完成
-
-- PDF 已可访问，但尚未通读方法、实验和附录；项目页当前无法访问。补核后再建立或更新 wiki 实体，并绘制项目流程图及基于实际入口的源码运行时序图。
+- 全文的任务、方法、实验及附录涉及 G1 29 关节、LAFAN1 40 段、50 Hz 控制、64 步反传窗口与 TD(lambda) 价值引导。
+- 对反向传播的每样本动作梯度按批次中位数裁剪；用裁剪后的梯度形成动作目标并多步回归，抑制极端接触梯度的影响。
+- v1 报告 RTX PRO 6000 上 0.34 h 达到归一化回报 0.82；SuperMimic 的 1.2 h 是另一论文在 H100 上报告的结果。训练时间排除编译与评估。
+- 结果为平地 G1 仿真；训练默认梯度在特定病态几何与执行器饱和处做特殊处理，裁剪也有偏差。未部署真机。
+- [知识节点与流程图](../../wiki/entities/paper-nablamimic.md)。项目主页和仓库的更新配置与 v1 结果需分开理解。

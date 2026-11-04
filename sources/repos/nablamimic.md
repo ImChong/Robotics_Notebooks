@@ -1,15 +1,10 @@
 # ∇Mimic 官方仓库
 
-> 来源归档（repo）
+- **代码：** <https://github.com/OamIcs/NablaMimic>（Apache-2.0；第三方数据另有许可）
+- **论文：** <https://arxiv.org/abs/2610.41654>
+- **项目页：** <https://sailab.ai/nablamimic/>
+- **核对日期：** 2026-11-04；源码 commit `bfbb2a6773b4776c17402a34a93ec7589d9c7c18`
 
-- **标题：** ∇Mimic: Ultra-Efficient Humanoid Control with Differentiable Simulation
-- **类型：** repo
-- **链接：** https://github.com/OamIcs/NablaMimic
-- **arXiv：** <https://arxiv.org/abs/2610.41654>
-- **入库日期：** 2026-11-03
-- **一句话说明：** ∇Mimic 用逐样本梯度裁剪和动作目标回归缓解接触梯度不稳定，配合专用可微引擎提升训练效率。
-- **沉淀到 wiki：** [`wiki/entities/paper-nablamimic.md`](../../wiki/entities/paper-nablamimic.md)
+README 给出 `scripts/setup_env.sh`、`scripts/download_lafan1.sh`、训练入口 `python -m nablamimic.train --config configs/ours.args --out runs/ours_s0` 和评估入口 `scripts/evaluate_run.sh`。代码已公开；默认配置约需 50 GB 显存，数据许可证需另行遵守。
 
-## 开源状态
-
-- **已开源**：仓库可达（git ls-remote）。项目页 HTTP 200。 仓库内容以 README 与 release 为准（本次仅用 `git ls-remote` 核实可达，未逐个阅读 README）。
+`src/nablamimic/train.py` 构建动作库和 `TrackingEnv`，经 `sim.py` 创建 `nablaengine.jax_ffi.EnginePhysics`；rollout 通过 `jax.lax.scan` 展开，`jax.value_and_grad` 求导并构建动作回归目标，另行更新 critic。`sim.py` 的批量 step 将控制目标传给引擎；评估脚本调用 `nablamimic.evaluate`。见 [实体节点](../../wiki/entities/paper-nablamimic.md) 的源码时序图。未在本环境运行训练。
