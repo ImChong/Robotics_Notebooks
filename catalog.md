@@ -2953,6 +2953,7 @@
 - [ManiSkillFormer（arXiv:2609.16331）](wiki/entities/paper-maniskillformer.md) — ManiSkillFormer**（*ManiSkillFormer: Demonstration-Free Compositional Manipulation via Task-Conditi `📅unknown` `[entity_page]`
 - [ManiUnit](wiki/entities/paper-maniunit.md) — ManiUnit**（arXiv:2610.12089，南京理工大学 / 西北工业大学 / 云天励飞等）是面向长程移动操作的**技能级数据集 + 基准**：从 BEHAVIOR-1K 的长任务示范 `📅unknown` `[entity_page]`
 - [MaP-WAM（arXiv:2609.11561）](wiki/entities/paper-map-wam.md) — MaP-WAM**（[Memory as Plans: World-Action Modeling with Memory-Grounded Planning](https://arxiv.org `📅unknown` `[entity_page]`
+- [MAPO：用于通用人形运动跟踪的交替策略优化专家混合](wiki/entities/paper-mapo-motion-tracking.md) — MAPO 将密集专家混合策略的专家与路由器更新分开计算，以缓解混合策略散度对组件更新幅度的误估。 `📅unknown` `[entity_page]`
 - [MARGoS：把群体强化学习的复现变成平台职责](wiki/entities/paper-margos-reproducible-marl-argos.md) — MARGoS**（论文 *MARGoS: A Configuration-Driven Platform for Reproducible MARL Experiments in ARGoS*， `📅unknown` `[entity_page]`
 - [Masked Visual Actions（统一世界建模的掩码视觉动作）](wiki/entities/paper-masked-visual-actions.md) — Masked Visual Actions**（*Masked Visual Actions for Unified World Modeling*，[arXiv:2607.19343](http `📅unknown` `[entity_page]`
 - [MASkillBlender：通过技能混合实现多个人形机器人分散式全身协同](wiki/entities/paper-maskillblender.md) — MASkillBlender: Decentralized Whole-Body Coordination for Multi- Humanoid Loco-Manipulation via Sk `📅unknown` `[entity_page]`
@@ -5624,6 +5625,7 @@
 - [VLA-ULAP：云端 VLA 与边缘超轻量动作预测交错](wiki/entities/paper-vla-ulap.md) — VLA-ULAP**（*Interleaving Cloud VLA Calls with Ultra-Lightweight Local Action Prediction at the Edg `📅unknown` `[entity_page]`
 - [VLA-ZO：VLA 的快速零阶适应](wiki/entities/paper-vla-zo-zeroth-order-adaptation.md) — VLA-ZO**（arXiv:2610.06271）解决的是「部署时相机换了视角，怎么在只有推理级显存的设备上把 VLA 适 `📅unknown` `[entity_page]`
 - [VLAct：数据缩放之外的 VLA 表征轴](wiki/entities/paper-vlact.md) — VLAct**（*Beyond Data Scaling: Representation-Centric Continued Pre-training for Vision-Language-Ac `📅unknown` `[entity_page]`
+- [VLALagBench：VLA 推理延迟何时及为何重要](wiki/entities/paper-vlalagbench.md) — VLALagBench 通过控制动态目标速度、推理延迟和动作执行方式，研究 VLA 操作成功率对延迟的敏感性。 `📅unknown` `[entity_page]`
 - [VLAQuantBench（arXiv:2609.25376）](wiki/entities/paper-vlaquantbench.md) — VLAQuantBench**（*VLAQuantBench: Closed-Loop Evaluation of Post-Training Quantization for Vision-La `📅unknown` `[entity_page]`
 - [VLaRL: Augmenting Vision-Language-Action Models with Simulation-Trained Latent-Conditioned Residual RL](wiki/entities/paper-vlarl.md) — VLaRL冻结基础VLA，在其动作上叠加由仿真训练的潜变量条件残差策略。 `📅unknown` `[entity_page]`
 - [VLBiMan++：VLA 锚定 one-shot 双臂操作](wiki/entities/paper-vlbiman-plus.md) — VLBiMan++**（arXiv:2609.14310，[代码](https://github.com/hnuzhy/Bi `📅unknown` `[entity_page]`
