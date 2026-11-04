@@ -7,7 +7,7 @@ tags:
   - manipulation
   - google-deepmind
 status: complete
-updated: 2026-11-02
+updated: 2026-11-04
 arxiv: "2307.15818"
 related:
   - ./paper-rt-1.md
@@ -61,16 +61,19 @@ summary: "RT-2（arXiv:2307.15818，Google DeepMind）：把预训练 VLM 微调
 
 ```mermaid
 flowchart LR
-  web[网页图文] --> vlm[预训练 VLM]
-  robot[机器人演示] --> ft[联合微调]
+  web[网页视觉语言数据] --> vlm[预训练 VLM]
+  web --> ft[联合微调]
+  robot[机器人轨迹与动作编码] --> ft
   vlm --> ft
-  ft --> tok[动作文本 token]
-  tok --> ctrl[底层控制器]
+  ft --> policy[VLA 策略]
+  obs[相机图像与语言指令] --> policy
+  policy --> tok[动作文本 token]
+  tok --> ctrl[解码动作并闭环执行]
 ```
 
 ## 评测
 
-- 泛化到训练未见物体、可用推理链（易碎 → 减小夹持力）。
+- 约 6000 条评测轨迹；论文报告未见物体、背景与环境的综合泛化约为 RT-1 和 MOO 基线的两倍，具体按论文评测条件理解。
 - 相对纯 BC / RT-1，语义泛化是主卖点。
 - 量化表以 [原文](https://arxiv.org/abs/2307.15818) 为准。
 
@@ -80,7 +83,7 @@ flowchart LR
 
 - 动作离散化是把控制问题改写成 next-token 的桥梁
 - co-training 是保留语义、避免只记机器人数据的关键
-- 推理链展示的是语义迁移，不是新的力控算法
+- 推理链示例包括根据语义选择可充当锤子的石头
 - 闭源训练意味着不能用本页当复现清单
 - 读 [OpenVLA](./paper-openvla.md) 时对照：同样是动作 token，但数据与权重公开
 
@@ -118,3 +121,6 @@ flowchart LR
 
 - [rt_2_arxiv_2307_15818](../../sources/papers/rt_2_arxiv_2307_15818.md)
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
+
+
+> 本次核查：论文 [arXiv v1](https://arxiv.org/abs/2307.15818v1) 与[官方项目页](https://robotics-transformer2.github.io/)；全文仍需完整复核。项目页截至 2026-11-04 未列官方代码链接。
