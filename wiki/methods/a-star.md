@@ -4,6 +4,7 @@ tags: [path-planning, search, navigation, graph-search, mobile-robot]
 status: complete
 updated: 2026-10-14
 related:
+  - ./rrt.md
   - ./dwa.md
   - ./smooth-navigation-path-generation.md
   - ../entities/python-robotics.md
@@ -129,6 +130,7 @@ flowchart TB
 - **误区**：「全局规划失败 = A\* 坏了」——更常见是代价地图脏、坐标系错、终点落在膨胀区。
 
 ## 关联页面
+- [RRT / RRT*（采样规划，深蓝AI 教程整理）](./rrt.md) — 连续高维空间的采样式对照
 
 - [DWA 局部规划](./dwa.md)
 - [动态障碍物滤波](../concepts/dynamic-obstacle-filtering.md)

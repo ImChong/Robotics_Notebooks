@@ -11,6 +11,7 @@ status: complete
 updated: 2026-11-03
 code: https://github.com/ompl/ompl
 related:
+  - ../methods/rrt.md
   - ../entities/moveit2.md
   - ../entities/robotics-library-rl.md
   - ../entities/ruckig.md
@@ -58,6 +59,7 @@ summary: "OMPL 是开源的采样式运动规划库：提供 40 多种规划算�
 - 「不做平滑插补」是文章对 OMPL 与 Ruckig / pyplcopen 的分工说法（路径规划 vs 轨迹插补）；README 描述的是规划，未讨论插补，该分工按文章保留。
 
 ## 关联页面
+- [RRT](../methods/rrt.md) / [RRT*](../methods/rrt-star.md) / [RRT-Connect](../methods/rrt-connect.md) / [Informed RRT*](../methods/informed-rrt-star.md) — OMPL 中常见采样规划算法的方法页
 
 - [moveit2](../entities/moveit2.md)
 - [robotics-library-rl](../entities/robotics-library-rl.md)
