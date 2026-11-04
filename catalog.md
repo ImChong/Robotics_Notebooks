@@ -22,6 +22,7 @@
 - [Aether AI（因果世界模型）](wiki/entities/aether-ai.md) — Aether AI**：2026 年春在 San Diego 成立的 AI 公司，创始人是 UCSD 助理教授 **黄碧薇（Biwei Huang）**，出自 CMU 因果发现学派。公司主张  `📅unknown` `[entity_page]`
 - [CRIS-0：因果驱动的真实世界机器人智能系统（Aether AI）](wiki/entities/aether-cris-0.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [RSIAgent：新环境中的自主探索式递归自改进](wiki/entities/aether-rsiagent.md) — RSIAgent**（*Autonomous Exploration for Recursive Self-Improvement in New Environments*，[arXiv:2609 `📅unknown` `[entity_page]`
+- [Agent Autoloop（智能体自动闭环）](wiki/entities/agent-autoloop.md) — 基于本地规则和事件调度命令行 Agent 的开源工具，将任务回执、人工决定和定时复查连接为持续事项。 `📅unknown` `[entity_page]`
 - [Agent Lightning（Microsoft）](wiki/entities/agent-lightning.md) — Agent Lightning**（microsoft/agent-lightning）是微软研究院 `📅2026-09-19` `[entity_page]`
 - [Agent Reach（Panniantong）](wiki/entities/agent-reach.md) — Agent Reach 是面向编码代理的开源安装脚手架：把网页、社媒、视频字幕、GitHub、RSS 与语义搜索等能力所依赖的上游 CLI 与 MCP 依赖收拢到可重复的安装与诊断路径；凭据默认仅存本 `📅2026-05-21` `[entity_page]`
 - [Agent Skills（Addy Osmani）](wiki/entities/agent-skills-addyosmani.md) — Agent Skills** 是 addyosmani/agent-skills 仓库及其 [skill `📅unknown` `[entity_page]`

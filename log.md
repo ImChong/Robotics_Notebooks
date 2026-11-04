@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-04] ingest | sources/repos/agent-autoloop.md — 收录命令行智能体事件调度与源码运行路径，协议复核待完成
+
 ## [2026-11-04] ingest | 收录 MAPO 和 VLALagBench 论文草稿，全文及开源状态待核查
 
 ## [2026-11-04] ingest | sources/papers/visualforce_arxiv_2610_04741.md — 收录视觉预测力与开源实现，区分论文和代码反馈路径
