@@ -130,6 +130,61 @@ mjlab 架构
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 任务与训练入口层
 - [强化学习](../methods/reinforcement-learning.md) — 框架支持的学习范式
 
+## 源码运行时序图
+
+入口：`uv run train <TaskId>`（`pyproject.toml` 的 `[project.scripts]` 把 `train` 映射到 `mjlab.scripts.train:main`）
+
+```mermaid
+sequenceDiagram
+    participant CLI as scripts/train.py main
+    participant REG as tasks/registry.py
+    participant ENV as envs/manager_based_rl_env.py ManagerBasedRlEnv
+    participant WRP as rl/vecenv_wrapper.py RslRlVecEnvWrapper
+    participant RUN as rl/runner.py MjlabOnPolicyRunner
+    participant RSL as rsl_rl OnPolicyRunner 外部依赖
+
+    CLI->>REG: list_tasks / load_env_cfg / load_rl_cfg（tyro 解析 TrainConfig）
+    CLI->>CLI: launch_training: select_gpus, 设置 CUDA_VISIBLE_DEVICES
+    alt 单卡或 CPU
+        CLI->>CLI: run_train(task_id, cfg, log_dir)
+    else 多卡
+        CLI->>CLI: torchrunx.Launcher.run(run_train)
+    end
+    CLI->>ENV: ManagerBasedRlEnv(cfg.env, device)
+    Note over ENV: 构造 Scene、Simulation 与各 manager
+    opt 录像且 rank 0
+        CLI->>CLI: VideoRecorder 包裹 env
+    end
+    CLI->>WRP: RslRlVecEnvWrapper(env, clip_actions)
+    CLI->>REG: load_runner_cls(task_id)，缺省用 MjlabOnPolicyRunner
+    CLI->>RUN: runner_cls(env, agent_cfg, log_dir, device)
+    opt 配置了 resume
+        CLI->>RUN: runner.load(checkpoint)
+    end
+    CLI->>RUN: runner.learn(max_iterations, init_at_random_ep_len=True)
+    Note over RUN,RSL: learn 的迭代调度继承自 rsl_rl（未在本仓库内读取，此处为推断）
+    loop 每个训练迭代
+        RSL->>WRP: step(actions)
+        WRP->>ENV: env.step(actions)
+        ENV->>ENV: action_manager.process_action
+        loop decimation 次物理子步
+            ENV->>ENV: action_manager.apply_action / scene.write_data_to_sim
+            ENV->>ENV: sim.step() / scene.update
+        end
+        ENV->>ENV: termination_manager.compute / reward_manager.compute
+        ENV->>ENV: event_manager 的 step 与 interval 事件
+        opt 环境终止或超时（auto_reset）
+            ENV->>ENV: _reset_idx 并写回场景
+        end
+        ENV->>ENV: sim.forward / command_manager.compute / sim.sense
+        ENV->>ENV: observation_manager.compute
+        ENV-->>WRP: obs, reward, terminated, truncated, extras
+        WRP-->>RSL: 返回 rsl_rl 格式的向量化结果
+    end
+```
+
+图依据：mujocolab/mjlab@dcdf6ce，读过 `pyproject.toml`、`README.md`、`src/mjlab/scripts/train.py`、`src/mjlab/scripts/play.py`、`src/mjlab/envs/manager_based_rl_env.py`（`step`）、`src/mjlab/rl/vecenv_wrapper.py`（`step`）、`src/mjlab/rl/runner.py`（类与方法签名）、`src/mjlab/tasks/registry.py`（函数签名）；未运行代码。
+
 ## 参考来源
 
 - [sources/repos/mjlab.md](../../sources/repos/mjlab.md)
@@ -137,3 +192,4 @@ mjlab 架构
 - [mujocolab/mjlab GitHub Repo](https://github.com/mujocolab/mjlab)
 - [mjviser 来源归档](../../sources/repos/mjviser.md)
 - Zakka et al. (2026), arXiv:2601.22074
+- 源码核对（2026-11-02）：mujocolab/mjlab@dcdf6ce，读过 `pyproject.toml`、`README.md`、`src/mjlab/scripts/train.py`、`src/mjlab/scripts/play.py`、`src/mjlab/envs/manager_based_rl_env.py`、`src/mjlab/rl/vecenv_wrapper.py`、`src/mjlab/rl/runner.py`、`src/mjlab/tasks/registry.py`；时序图依据以上文件，未运行代码。

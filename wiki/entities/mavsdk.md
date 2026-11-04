@@ -54,6 +54,47 @@ summary: "MAVSDK 是 MAVLink 兼容飞控（PX4、ArduPilot）的 C++20 库与�
 
 - [sources/repos/mavsdk.md](../../sources/repos/mavsdk.md)
 - [mavlink/MAVSDK](https://github.com/mavlink/MAVSDK)
+- 源码核对（2026-11-02）：mavlink/MAVSDK@993f581，读过 cpp/examples/offboard/offboard.cpp、cpp/src/mavsdk/core/mavsdk.cpp、cpp/src/mavsdk/core/mavsdk_impl.cpp、cpp/src/mavsdk/core/system_impl.cpp、cpp/src/mavsdk/plugins/offboard/offboard_impl.cpp；时序图依据以上文件，未运行代码。
+
+## 源码运行时序图
+
+入口：编译 `cpp/examples/offboard` 后运行 `./offboard <connection_url>`（如 `udp://:14540`，示例 main 会先 hold、arm、takeoff，确认进入空中（InAir）后依次执行四段 Offboard 控制，最后 land）
+
+```mermaid
+sequenceDiagram
+    participant U as offboard.cpp main()
+    participant M as MavsdkImpl 核心
+    participant C as UdpConnection
+    participant S as SystemImpl
+    participant O as OffboardImpl 插件
+    participant A as 飞控 PX4 或 ArduPilot
+    U->>M: Mavsdk mavsdk{Configuration GroundStation}
+    U->>M: add_any_connection(connection_url)
+    M->>C: add_udp_connection 创建连接并注册接收回调
+    C-->>U: ConnectionResult Success
+    U->>M: first_autopilot(3.0) 等待 autopilot 系统
+    A-->>C: MAVLink 心跳
+    C->>M: receive_message，process_message
+    M->>S: process_mavlink_message(message)
+    S->>S: process_heartbeat 登记 autopilot
+    S-->>U: 返回 System
+    U->>O: Offboard(system)，register_plugin 并注册处理器
+    U->>O: set_velocity_ned(VelocityNedYaw)
+    O->>O: 保存设定点，add_call_every(send_velocity_ned)
+    U->>O: start()
+    O->>S: set_flight_mode(Offboard)
+    S->>A: 发送模式命令
+    loop 周期 SEND_INTERVAL_S
+        O->>S: queue_message 组装 SET_POSITION_TARGET_LOCAL_NED
+        S->>C: 经连接发出
+        C->>A: MAVLink over UDP
+    end
+    U->>O: 多次 set_velocity_ned 更新设定点
+    U->>O: stop()
+    O->>S: set_flight_mode(Hold)
+```
+
+图依据：mavlink/MAVSDK@993f581，实际读过 cpp/examples/offboard/offboard.cpp、cpp/src/mavsdk/core/mavsdk.cpp、cpp/src/mavsdk/core/mavsdk_impl.cpp（add_any_connection、add_udp_connection、receive_message、process_message 等）、cpp/src/mavsdk/core/system_impl.cpp（process_mavlink_message、add_call_every、set_flight_mode）、cpp/src/mavsdk/plugins/offboard/offboard_impl.cpp（start、stop、set_velocity_ned、send_velocity_ned）；未运行代码。
 
 ## 关联页面
 

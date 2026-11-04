@@ -103,6 +103,55 @@ sequenceDiagram
 - 官方插件页当前提供 Windows 版 Unreal Engine 5.6 下载；Maya、Unity 与 Blender 显示 “Notify me”。通用导出格式与正式插件状态应分开理解。
 - 视频上传需确认肖像、授权和数据处理条件；插件条款称内容默认不用于训练模型，具体产品条款与企业协议仍应以当期文本为准。
 
+## 源码运行时序图
+
+入口：`npm start`（即 `node --env-file-if-exists=.env src/index.mjs`，需设置 `CARTWHEEL_API_KEY`；包的 `bin` 同指向 `src/index.mjs`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant K as MCP 客户端（stdio）
+    participant I as src/index.mjs main
+    participant S as src/server.mjs createServer
+    participant V as ajv 校验与 game / character 参数校验
+    participant API as Cartwheel API（external-mogen 域名）
+    participant MA as motion-analysis / motion-download
+
+    K->>I: 启动 node src/index.mjs
+    I->>S: createServer({ apiKey: CARTWHEEL_API_KEY })，缺少密钥则抛错退出
+    S->>S: 合并 tools.json 与 game、scene、character 定义；registerWorkflows 注册工作流资源与提示
+    I->>K: server.connect(StdioServerTransport)
+    K->>S: ListToolsRequest
+    S-->>K: 返回各工具的 name、description、inputSchema、annotations
+    K->>S: CallToolRequest(name, arguments)
+    S->>S: 按名称查找工具；未知名称直接返回错误
+    S->>V: validate(args)，再执行 validateGameArguments 与 validateCharacterBatchArguments
+    V-->>S: 参数不合法则返回 Invalid tool arguments
+    S->>S: 替换路径参数并拼接 query；generate_character_batch 使用 idempotencyKey
+    S->>S: 设置超时（默认 30 秒；部分同步工具为 240 秒）并合并客户端取消信号
+    alt 工具 handler 为 analyze_motion
+        S->>API: GET /motion/{motionID}（可附 characterID、bodyIndex、fps）
+        API-->>S: bvhURL（未就绪则返回状态，不重新提交生成）
+        S->>MA: downloadMotionBVH，再 prepareMotion 生成元数据
+        MA-->>S: metadata
+    else 场景角色或编辑历史类工具
+        S->>API: 先读取 scene 或 edit history，核对 referenceName 与 jobID
+        API-->>S: 当前场景或历史记录
+        S->>API: 仅在核对通过后提交变更或应用编辑
+    else 通用工具
+        S->>API: fetch（x-api-key，redirect 设为 error，POST 或 PUT 带 JSON body）
+    end
+    API-->>S: JSON 响应，或 HTTP 错误码（429 带 retryAfter）
+    alt get_character 返回的 characterID 与请求不一致
+        S-->>K: 返回错误，不接受替代角色
+    else 正常返回
+        S-->>K: result(JSON)；异步任务需随后用 get_batch 轮询
+    end
+    Note over S,K: 错误响应不回显密钥、请求头或上游错误正文；写操作失败时附上“勿自动重试、先查状态”的指引
+```
+
+图依据：Cartwheel/cartwheel-mcp@31dfadb，实际读过的文件：`package.json`（bin、scripts、engines）、`src/index.mjs`（全文）、`src/server.mjs`（全文）。`src/tools.json`、`src/workflows.mjs`、`src/character-tools.mjs`、`src/game-tools.mjs`、`src/scene-tools.mjs`、`src/motion-analysis.mjs`、`src/motion-download.mjs` 仅依据 `server.mjs` 中的导入与调用点画出，未逐行读取。未运行代码。
+
 ## 关联页面
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
@@ -113,6 +162,7 @@ sequenceDiagram
 
 - [Cartwheel Comic 产品资料归档](../../sources/sites/cartwheel-comic.md)
 - [Cartwheel MCP 源码归档](../../sources/repos/cartwheel-mcp.md)
+- 源码核对（2026-11-02）：Cartwheel/cartwheel-mcp@31dfadb，读过 package.json、src/index.mjs、src/server.mjs；时序图依据以上文件，未运行代码。
 - [Comic 官方模型页](https://getcartwheel.com/model/comic)
 - [Comic 4.2 发布说明](https://x.com/getcartwheel/status/2084371281114443892)
 - [API 视频动捕接口](https://api-docs.getcartwheel.com/api/motion-from-video/)

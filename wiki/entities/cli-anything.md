@@ -126,6 +126,47 @@ flowchart TB
 - **生态变动快：** 注册表条目、平台插件路径与 skill 布局（如统一到 `skills/`）会演进——安装命令以官方 README / Hub 为准。
 - **误区：有了 CLI 就不必 MCP。** 宿主若以 MCP 为工具总线，仍可能要薄包装；二者解决不同层的互操作问题。
 
+## 源码运行时序图
+
+入口：在 `godot/agent-harness` 目录执行 `pip install -e .` 后，运行 `cli-anything-godot --json --project ./my_game export build --preset Linux --output build/game`（`--json` 与 `--project` 是根命令选项，须写在子命令之前）。下图是 Godot 工具的 `export build` 调用链，取自其源码；CLI-Anything 其他应用 harness 的结构相似，但未逐一核对，生成器（7 阶段管线）不在本图内。
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 代理或用户
+    participant CLI as godot_cli.py cli 与 export_build
+    participant HE as _handle_error 装饰器
+    participant EX as core/export.py export_project
+    participant BE as utils/godot_backend.py
+    participant GD as Godot 4 可执行文件
+
+    U->>CLI: cli-anything-godot --json -p ./my_game export build ...
+    CLI->>CLI: cli() 写入 ctx.obj 的 json 与绝对路径 project
+    CLI->>HE: export_build 外层由 _handle_error 包装
+    CLI->>EX: export_project(project, preset, output, debug)
+    EX->>BE: validate_project 检查是否为 Godot 项目
+    alt 不是 Godot 项目或缺少 export_presets.cfg
+        EX-->>CLI: status error 字典
+    else 通过
+        EX->>BE: run_godot(["--export-release", preset, output, "--quit"], project, headless=True, timeout=300)
+        BE->>BE: require_godot() 读取 GODOT_BIN 或在 PATH 中查找 Godot 4
+        BE->>GD: subprocess.run([godot, --headless, --path, project, ...])
+        alt 超时或找不到二进制
+            BE-->>HE: 抛出 RuntimeError，由包装器捕获
+        else 正常结束
+            GD-->>BE: returncode、stdout、stderr
+            BE-->>EX: 返回字典
+            EX-->>CLI: status ok 或 error 加上 returncode 与输出
+        end
+    end
+    CLI->>CLI: _out 输出结果（--json 为 JSON，否则为文本行）
+    CLI-->>U: 返回结果
+    opt 捕获到 RuntimeError
+        HE-->>U: 输出 error 信息并 sys.exit(1)
+    end
+```
+
+图依据：HKUDS/CLI-Anything@34f5195，实际读过 `godot/agent-harness/cli_anything/godot/godot_cli.py`（根组、`_out`、`_handle_error`、export 命令组）、`godot/agent-harness/cli_anything/godot/core/export.py`（`export_project`）、`godot/agent-harness/cli_anything/godot/utils/godot_backend.py`（`find_godot_binary`、`require_godot`、`run_godot`）、`godot/agent-harness/setup.py`（console_scripts）。`validate_project` 的具体判据未读。未运行代码。
+
 ## 关联页面
 
 - [DeepTutor（HKUDS）](deeptutor.md) — agent-native 辅导工作区；可挂载 CLI Apps 并 consult 外部 agent
@@ -148,6 +189,7 @@ flowchart TB
 - [技术报告归档 arXiv:2606.03854（本站）](../../sources/papers/cli_anything_arxiv_2606_03854.md)
 - [HKUDS/CLI-Anything（GitHub）](https://github.com/HKUDS/CLI-Anything)
 - [CLI-Hub](https://hkuds.github.io/CLI-Anything/)
+- 源码核对（2026-11-02）：HKUDS/CLI-Anything@34f5195，读过 `godot/agent-harness` 下 `godot_cli.py`、`core/export.py`、`utils/godot_backend.py`、`setup.py`，以及根 `README.md`（安装命令）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

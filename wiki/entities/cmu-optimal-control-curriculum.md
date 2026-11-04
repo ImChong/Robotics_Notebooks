@@ -116,6 +116,40 @@ flowchart LR
 - **勿与 Tedrake Underactuated 混为一谈**：同主题邻域课程；本 playlist 的权威归属是 **CMU 16-745 / Manchester**（见来源归档说明）。
 - **频道名含 MIT**：录像频道为 `MIT Robotic Exploration Lab`，课程建制仍是 CMU 16-745——引用时写清课程代号以免检索混淆。
 
+## 源码运行时序图
+
+入口：在仓库的 `Lecture 8/` 目录用 Julia 内核打开 `lqr-riccati.ipynb` 并从上到下运行（第一格 `Pkg.activate(@__DIR__)` 按该目录的 Project.toml 与 Manifest.toml 安装依赖）。下图取自该 notebook 的代码单元顺序，仓库其他讲次的 notebook 结构各异，未逐一核对。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 学习者
+    participant JK as Julia 内核 Jupyter
+    participant PKG as Pkg 包环境
+    participant LIB as LinearAlgebra PyPlot ControlSystems
+    participant NB as notebook 代码单元
+
+    U->>JK: 打开 Lecture 8/lqr-riccati.ipynb 并运行
+    JK->>PKG: 单元 0：Pkg.activate 与 Pkg.instantiate
+    JK->>LIB: 单元 1：using 三个库
+    JK->>NB: 单元 2 至 5：离散双积分器 A、B，时域 N，代价 Q、R、Qn
+    JK->>NB: 单元 6：定义代价函数 J(xhist, uhist)
+    loop k 从 N-1 反向到 1
+        NB->>NB: K[k] = (R + B'P[k+1]B) 的逆 乘 B'P[k+1]A；P[k] = Q + A'P[k+1](A-BK[k])
+    end
+    loop k 从 1 到 N-1 正向
+        NB->>NB: u = -K[k] x；x 按 A、B 向前推进
+    end
+    JK->>LIB: 单元 8 至 9：绘制位置、速度与控制曲线
+    JK->>NB: 单元 10：计算 J(xhist, uhist)
+    JK->>NB: 单元 11：加入随机初值与过程噪声后再次前向仿真
+    JK->>LIB: 单元 13：ControlSystems.dlqr(A, B, Q, R) 得到 Kinf
+    JK->>NB: 单元 13：比较 K[:,:,1] 与 Kinf 的差
+    JK->>NB: 单元 14 至 15：用常数 Kinf 仿真，并求闭环特征值 eigvals(A - B*Kinf)
+```
+
+图依据：Optimal-Control-16-745/lecture-notebooks@e7c23f6，实际读过 `README.md` 与 `Lecture 8/lqr-riccati.ipynb` 的代码单元（JSON 解析后逐格查看）。未运行代码，也未读 `Lecture 8/Project.toml`。
+
 ## 关联页面
 
 - [Optimal Control (OCP)](../concepts/optimal-control.md) — 理论入口
@@ -130,6 +164,7 @@ flowchart LR
 - [sources/courses/cmu_optimal_control_16_745_2025_youtube.md](../../sources/courses/cmu_optimal_control_16_745_2025_youtube.md) — YouTube *Optimal Control 2025* 全表（24 讲）
 - [sources/sites/cmu_optimal_control_16_745.md](../../sources/sites/cmu_optimal_control_16_745.md) — 官方课程站
 - [sources/repos/optimal_control_16_745.md](../../sources/repos/optimal_control_16_745.md) — GitHub 讲义组织
+- 源码核对（2026-11-02）：Optimal-Control-16-745/lecture-notebooks@e7c23f6，读过 `README.md`、`Lecture 8/lqr-riccati.ipynb`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

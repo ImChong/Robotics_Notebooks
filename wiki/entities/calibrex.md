@@ -46,6 +46,47 @@ Calibrex 从机器人录制的传感器数据估计或检查外参，比较已�
 - 官方代码已公开、Apache-2.0，项目标为 alpha。README 将部分新能力标注为 main 分支功能，使用时应核对发布版与输入格式。浏览器页面按项目说明本地处理数据；大录包的耗时与浏览器资源限制仍需实际评估。
 - 估计和验证尽量使用不同录制，并检查各轴覆盖、阈值和检测能力；不要将该工具等同于在线 SLAM 融合器。
 
+## 源码运行时序图
+
+入口：`calibrex check <bag> --tf frames.yaml`（`pyproject.toml` 中 `calibrex = "calibrex.cli.main:main"`；`estimate`、`drift` 同理分派）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant CLI as cli/main.py<br/>_cmd_check
+    participant R as check/runner.py<br/>build_calibration_check
+    participant E as check/estimators.py<br/>ESTIMATORS[pair]
+    participant C as core/* 与 data/*<br/>旋转/平移估计
+    participant V as check/verdict.py<br/>judge_pair
+    participant O as 输出<br/>表格 / evidence / HTML
+
+    U->>CLI: calibrex check bag --tf frames.yaml
+    CLI->>R: build_calibration_check(bag, tf_files, run=CheckRunOptions)
+    R->>R: bag_input_digest、list_rosbag2_connections
+    R->>R: 读取 /tf_static 或 --tf 候选外参（tf_sources）
+    R->>R: classify_bag_topics、plan_pairs（选择可检查的传感器对）
+    loop 每个已规划的 pair
+        R->>E: _run_one → ESTIMATORS[pair](PairContext)
+        alt pair = imu-lidar
+            E->>E: select_imu_lidar_deskew、LivoxStreamProfile
+            E->>C: cached_artifact → run_livox_imu_lidar_rotation(reference_rotation=候选)
+            E->>C: 平移估计（仅在数据可观测时）
+        else 其它 pair（gnss-lidar、camera-imu、lidar-vehicle 等）
+            E->>C: 对应 run_* 适配器调用各自的 core 模块
+        end
+        C-->>E: 轴估计结果
+        E-->>R: EstimatorRun(estimates)
+        R->>V: _judge → judge_pair(estimates, VerdictOptions)
+        V-->>R: 逐轴 pass / warn / fail / inconclusive
+        R->>O: _write_evidence（证据文件）
+    end
+    R-->>CLI: CalibrationCheckArtifact
+    CLI->>O: format_check_table、write_mapping、--html 报告
+    O-->>U: 逐轴结论与下一步建议
+```
+
+图依据：rsasaki0109/Calibrex@7617325，读过 `README.md`、`pyproject.toml`、`src/calibrex/cli/main.py`（`_cmd_check`、`_cmd_estimate`、`_cmd_drift`）、`src/calibrex/check/runner.py`、`src/calibrex/check/estimators.py`（`ESTIMATORS`、`run_imu_lidar`）、`src/calibrex/check/verdict.py`（`judge_pair`）。
+
 ## 关联页面
 
 - [传感器融合](../concepts/sensor-fusion.md) — 多模态融合背景。
@@ -56,6 +97,7 @@ Calibrex 从机器人录制的传感器数据估计或检查外参，比较已�
 
 - [Calibrex 官方代码仓库](../../sources/repos/calibrex.md)
 - [Calibrex 官方文档](../../sources/sites/calibrex.md)
+- 源码核对（2026-11-02）：rsasaki0109/Calibrex@7617325，读过 README.md、pyproject.toml、src/calibrex/cli/main.py、src/calibrex/check/runner.py、src/calibrex/check/estimators.py、src/calibrex/check/verdict.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -52,6 +52,59 @@ Vortex Funnel Generator（hooyao/vortex-funnel-gen）是用 AI 设计 3D 打印�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 MIT。 
 
+## 源码运行时序图
+
+入口：`python optimization/loop.py --coarse 20 --validate 5 --refine 5 --nprocs 24 --output output/optimisation`（README「Reproduce without Claude Code」；需 Docker 镜像 `opencfd/openfoam-default:2406`；加 `--resume` 可续跑）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Drv as optimization/loop.py run_optimisation()
+    participant Skopt as skopt Optimizer
+    participant Eval as loop.py evaluate()
+    participant Geo as geometry/funnel_generator.py generate()（CadQuery）
+    participant Run as cfd/runner.py run_case()
+    participant Dk as Docker（OpenFOAM 容器）
+    participant Ext as runner.py extract_fitness（pyvista）
+
+    Drv->>Skopt: Optimizer(dimensions=DIMENSIONS, n_initial_points)
+    opt --resume
+        Drv->>Skopt: _load_history() 后逐条 tell(x, -reward)
+    end
+
+    loop Stage 1：粗网格，iteration < n_coarse
+        Drv->>Skopt: ask() 得到参数向量 x
+        Drv->>Eval: evaluate(x, iteration, output_root, n_procs, "coarse")
+        Eval->>Eval: params_from_vector(x)，check_constraints()（不可行则罚分返回）
+        Eval->>Geo: generate(params, iter_dir)，validate_params 后建模并导出 STEP 与 STL
+        Eval->>Run: run_case(stl, case_dir, n_procs, mesh_level)
+        Run->>Dk: setup_case：复制 base_case 模板并注入 STL（docker run）
+        Run->>Dk: run_mesh：surfaceTransformPoints → surfaceFeatureExtract → blockMesh → snappyHexMesh -overwrite
+        Run->>Dk: run_solver：setFields → decomposePar → mpirun interFoam -parallel → reconstructPar
+        Run->>Ext: extract_fitness(case_dir)，取喉部指标
+        Ext-->>Run: air_core_diameter / throat_velocity / air_fraction_throat
+        Run-->>Eval: cfd 结果
+        Eval->>Eval: compute_reward(cfd)，写 iter_NNN 结果
+        Eval-->>Drv: result（reward）
+        Drv->>Skopt: tell(x, -reward)
+    end
+
+    loop Stage 2：对粗网格可行解中排名前 n_fine_validate 的参数用细网格复算
+        Drv->>Eval: evaluate(x, iteration, ..., "fine")
+        Drv->>Skopt: tell(x, -reward)
+    end
+
+    loop Stage 3：细网格精修，iteration < stage3_end
+        Drv->>Skopt: ask()
+        Drv->>Eval: evaluate(x, iteration, ..., "fine")
+        Drv->>Skopt: tell(x, -reward)
+    end
+
+    Drv->>Drv: 选取 best_reward，写 history 与 summary.json
+```
+
+图依据：hooyao/vortex-funnel-gen@6933ecf，实际读过 `optimization/loop.py`（`evaluate`、`run_optimisation`、`main`）、`cfd/runner.py`（`run_case`、`setup_case`、`run_mesh`、`run_solver`、`extract_fitness` 的调用链与命令字符串）、`geometry/funnel_generator.py`（`generate` 入口与导出）、`README.md`；`compute_reward` 公式与 `validate_params` 的细节、OpenFOAM 运行结果未逐一核对，未运行代码。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -62,6 +115,7 @@ Vortex Funnel Generator（hooyao/vortex-funnel-gen）是用 AI 设计 3D 打印�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/hooyao-vortex-funnel-gen.md)
 - [hooyao/vortex-funnel-gen 官方仓库](<https://github.com/hooyao/vortex-funnel-gen>)
+- 源码核对（2026-11-02）：hooyao/vortex-funnel-gen@6933ecf，读过 README.md、optimization/loop.py、cfd/runner.py、geometry/funnel_generator.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

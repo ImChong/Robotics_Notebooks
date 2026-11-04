@@ -56,6 +56,43 @@ sources:
 - 示例代码以 Apache-2.0 发布，模型推理依赖外部 Gateway；单独部署与服务费用、视频上传和隐私要求应按实际使用核查。3D 攀岩需要视频、逐帧深度和相机标定，采集应用及数据是否公开不能从 README 确认。
 - 视频关键点与评分并不等同于机器人关节轨迹或物理可行性验证；接入模仿学习前仍需重建、重定向和质量检查。
 
+## 源码运行时序图
+
+入口：`python app.py`（仓库根目录，Gradio 前端，`demo_app.queue(...).launch(...)`）；单个示例的入口为各目录下的 `python main.py`（以 `chin_ups/` 为例，先 `conda activate chin_ups`）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户（浏览器）
+    participant APP as app.py（Gradio 前端）
+    participant RUN as webapp/runner.py（子进程）
+    participant M as chin_ups/main.py（示例入口）
+    participant V as src/video.py（ffmpeg 转码与探测）
+    participant P as src/pose.py（请求与缓存）
+    participant GW as VLM Run Gateway（ViTPose+ 模型，外部）
+    participant R as src/render.py（叠加渲染）
+
+    U->>APP: 选择示例并上传/选择视频
+    APP->>RUN: sys.executable webapp/runner.py（每段视频一次，按 config 覆盖）
+    RUN->>M: import main → demo_main.main([])（argv 置空）
+    M->>M: load_api_key（环境变量或最近的 .env）
+    M->>V: probe_source / video.convert（ffmpeg，缓存到 MP4）
+    M->>P: build_request + cache_path（命中缓存则跳过网关）
+    alt 无缓存
+        P->>GW: chat.completions.create（视频 base64 + extra_body）
+        GW-->>P: 逐人逐帧关键点 payload
+        P->>P: save_cache
+    end
+    P->>P: unwrap（逐帧记录）+ dedupe（去重复检测）
+    M->>R: render.render(export_info, by_index, ...)
+    R->>V: video.encode_h264 输出标注视频
+    M-->>RUN: 返回退出码（逐段 clip 汇总）
+    RUN-->>APP: 退出码（逐段 clip 汇总）
+    APP-->>U: 视频与指标面板
+```
+
+图依据：jeremyipark/vision-demos@d28ca19，实际读过 `README.md`、`app.py`（入口与 subprocess 调用 `webapp/runner.py` 的段落）、`webapp/runner.py`（`main()` 与 clip 循环）、`chin_ups/main.py`（`main()` 的 1–6 步）、`chin_ups/src/pose.py`（请求、缓存与 unwrap/dedupe 的函数签名）、`chin_ups/src/video.py`（函数名）、`chin_ups/src/env.py`（API key 加载顺序）、`chin_ups/src/render.py`（函数签名）。`reps.py` 的计数与 `timing.py` 的耗时统计未在图中逐行追踪，未画入调用顺序；未运行代码。
+
+
 ## 关联页面
 
 - [FreeMoCap](./freemocap.md) — 多相机动作捕捉平台，适合对照采集与重建流程。
@@ -65,6 +102,7 @@ sources:
 ## 参考来源
 
 - [vision-demos 仓库归档](../../sources/repos/jeremyipark-vision-demos.md)
+- 源码核对（2026-11-02）：jeremyipark/vision-demos@d28ca19，读过 README.md、app.py、webapp/runner.py、chin_ups/main.py、chin_ups/src/pose.py、video.py、env.py、render.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

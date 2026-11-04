@@ -61,6 +61,44 @@ python -m neuroglancer  # 本地启动查看器
 - **WebGL 要求：** 需 WebGL 2.0 + `EXT_color_buffer_float`；远程桌面或无 GPU 环境可能失败。
 - **大体积延迟：** TB 级数据仍受网络与 tile 缓存限制；离线分析应配合 DVID / 本地 precomputed。
 
+## 源码运行时序图
+
+入口：Python 脚本中 `import neuroglancer` 后执行 `viewer = neuroglancer.Viewer()`，再用 `viewer.get_viewer_url()` 或打印 viewer 取得浏览器地址（`python/neuroglancer/viewer.py`）。前端页面由内置 Tornado 服务器提供静态资源，状态同步走事件流与 POST 接口；下图据此展开，未展开 `src/` 下 TypeScript 前端的内部实现。
+
+```mermaid
+sequenceDiagram
+  participant User as 用户 Python 脚本
+  participant V as viewer.Viewer
+  participant VB as viewer_base.ViewerBase
+  participant SRV as server 模块 register_viewer 与 start
+  participant TS as server.Server Tornado 后台线程
+  participant BR as 浏览器前端
+  User->>V: neuroglancer.Viewer()
+  V->>VB: 初始化 shared_state（TrackableState 包装 ViewerState）
+  V->>SRV: register_viewer(self)
+  SRV->>TS: start 若未启动则创建 Server，绑定 127.0.0.1 并在 daemon 线程运行
+  SRV->>SRV: global_server.viewers 按 token 登记 viewer
+  User->>V: get_viewer_url()
+  V-->>User: server_url 加 /v/token/ 地址
+  User->>BR: 在浏览器打开地址
+  BR->>TS: GET 页面与静态资源，经 StaticPathHandler 返回
+  TS-->>BR: 前端脚本与页面
+  BR->>TS: 建立 EventStreamHandler 事件流
+  User->>VB: with viewer.txn() 修改图层等状态
+  VB->>VB: shared_state.txn 生成新的 generation
+  TS-->>BR: EventStreamStateWatcher.maybe_send_update 推送新状态
+  BR->>TS: 用户操作后 POST SetStateHandler，带 pg、g、s、c
+  TS->>VB: viewer.set_state(state, generation, existing_generation)
+  alt 无并发冲突
+    VB-->>TS: new_generation
+    TS-->>BR: 返回新 generation
+  else ConcurrentModificationError
+    TS-->>BR: HTTP 412
+  end
+```
+
+图依据：google/neuroglancer@b792051，`python/neuroglancer/__init__.py`（导出）、`python/neuroglancer/viewer.py`（_ViewerHelper、Viewer、get_viewer_url）、`python/neuroglancer/viewer_base.py`（ViewerBase 的 shared_state、set_state、txn）、`python/neuroglancer/server.py`（Server、start、register_viewer、StaticPathHandler、EventStreamHandler、SetStateHandler）；未运行代码。
+
 ## 关联页面
 
 - [DVID](./dvid.md) — 原生数据源之一
@@ -70,6 +108,8 @@ python -m neuroglancer  # 本地启动查看器
 ## 参考来源
 
 - [Neuroglancer 仓库归档](../../sources/repos/neuroglancer.md)
+
+- 源码核对（2026-11-02）：google/neuroglancer@b792051，读过 `python/neuroglancer/__init__.py`、`viewer.py`、`viewer_base.py`（部分）、`server.py`（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

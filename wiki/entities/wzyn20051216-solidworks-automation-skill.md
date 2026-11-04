@@ -55,6 +55,51 @@ SolidWorks Automation Skill（wzyn20051216/solidworks-automation-skill）是桌�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 MIT。 涉及商业软件时，安装包和有效许可证需由使用者自行提供。
 
+## 源码运行时序图
+
+入口：`python mcp-server/server.py`（`main()`，默认 stdio 传输；`--transport streamable-http` 时经 uvicorn 提供 HTTP）。以下只覆盖 Windows 上 SolidWorks COM 的两条工具调用链。
+
+```mermaid
+sequenceDiagram
+    participant Agent as Agent 客户端（Codex / Claude / Cursor）
+    participant Srv as mcp-server/server.py（FastMCP 工具）
+    participant Lock as _run_locked（全局 _sw_lock）
+    participant Conn as scripts/sw_connect.py
+    participant SW as SolidWorks COM（SldWorks.Application）
+    participant Art as mcp-server/artifact_access.py
+
+    Agent->>Srv: 调用 solidworks_create_basic_part(params)
+    Srv->>Lock: _run_locked(op, response_format)
+    alt 等待锁超时
+        Lock-->>Agent: SolidWorksBusyTimeout，提示调用 solidworks_recover
+    else 取得锁
+        Lock->>Lock: _load_automation_modules() 懒加载 scripts.sw_* 与 COM 依赖
+        Lock->>Lock: _coinitialize()
+        Lock->>Srv: 执行 op()
+        Srv->>Conn: connect_solidworks(wait_seconds=1)
+        Conn->>SW: GetActiveObject，失败则 Dispatch(prog_id)
+        Srv->>SW: new_document(part)，画圆或矩形草图并 fully_define_sketch
+        Srv->>SW: extrude_boss 拉伸实体
+        Srv->>SW: 可选 set_document_appearance 与 save_document，再 ForceRebuild3
+        SW-->>Srv: 特征与重建结果
+        Srv-->>Lock: payload（status 为 ok）
+        Lock->>Art: publish(payload) 登记产物引用（非错误时）
+        Lock-->>Agent: _result 输出 JSON 或 Markdown
+    end
+
+    Agent->>Srv: 调用 solidworks_review_drawing(drawing_path, spec_path, pdf_path)
+    Srv->>Lock: _run_locked(op, response_format)
+    Lock->>Srv: 执行 op()
+    Srv->>Conn: connect_solidworks(visible=True)
+    Srv->>SW: open_document(工程图, read_only)
+    Srv->>SW: drawing_inspect_structure 与 drawing_save_review_previews
+    Srv->>Srv: drawing_review_artifacts 按 spec 与 PDF 做审视（实现未读）
+    Srv->>Srv: 写入 review 报告 JSON，并标记 manual_review_required
+    Srv-->>Agent: 返回结构、预览、审视结果与 reportPath
+```
+
+图依据：wzyn20051216/solidworks-automation-skill@9ba848e，mcp-server/server.py（部分）、scripts/sw_connect.py（部分）、mcp-server/artifact_access.py（仅 publish 签名）、README.md。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -65,6 +110,7 @@ SolidWorks Automation Skill（wzyn20051216/solidworks-automation-skill）是桌�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/wzyn20051216-solidworks-automation-skill.md)
 - [wzyn20051216/solidworks-automation-skill 官方仓库](<https://github.com/wzyn20051216/solidworks-automation-skill>)
+- 源码核对（2026-11-02）：wzyn20051216/solidworks-automation-skill@9ba848e，读过 README.md、mcp-server/server.py（部分）、scripts/sw_connect.py（部分）、mcp-server/artifact_access.py（仅 publish 签名）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

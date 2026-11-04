@@ -112,6 +112,64 @@ flowchart TD
 - **局限：** 强依赖 **Claude Code** 与 Bash/Python 工具链；Windows 需 Git Bash；大量子代理 **token 与协调成本** 需自行权衡。
 - **局限：** 模板 **不随仓分发示例完整游戏**（避免 clutter）；证据以使用者项目为准。
 
+## 源码运行时序图
+
+入口：在项目根目录执行 `claude`（会话启动），随后输入 `/start`（onboarding 技能）。本模板没有独立的服务进程；"运行时"由 Claude Code 宿主按 `.claude/settings.json` 的 `hooks` 注册调用仓内 shell 脚本，并按 `SKILL.md` 指示执行流程。
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant CC as Claude Code 宿主
+    participant SS as session-start.sh
+    participant DG as detect-gaps.sh
+    participant SK as /start 技能 SKILL.md
+    participant PS as project-state.sh
+    participant SET as set-stage.sh / config-set.sh
+    participant PRE as PreToolUse 钩子 validate-write / validate-registry / validate-read
+    participant POST as PostToolUse 钩子 validate-assets / validate-skill-change
+    participant SA as SubagentStart log-agent.sh
+    participant SAS as SubagentStop validate-agent-artifact.sh
+    participant ST as Stop session-stop.sh
+
+    U->>CC: claude（项目根目录）
+    CC->>SS: SessionStart 钩子（stdin 为 JSON）
+    SS->>SS: 解析 CCGS_ROOT，读 project.yaml 与 yaml-helper.sh
+    SS-->>CC: stdout 注入分支、review_mode、schema 错误
+    CC->>DG: SessionStart 钩子
+    DG-->>CC: 文档缺口提示
+    U->>CC: /start
+    CC->>SK: 加载 SKILL.md（allowed-tools 限定）
+    SK->>PS: bash .claude/scripts/project-state.sh
+    PS-->>SK: engine、code_root、gdd_files 等状态行
+    SK->>U: AskUserQuestion 询问当前阶段
+    U-->>SK: 回答
+    opt 用户明确同意后
+        SK->>SET: 写 project.yaml 与 production/stage.txt
+        SET-->>SK: 回读校验两处是否一致
+    end
+    loop 每次 Write / Edit 工具调用
+        CC->>PRE: matcher Write Edit 前置检查
+        alt 目标为 entities.yaml 或 tr-registry.yaml
+            PRE->>PRE: registry.sh compare 重建新内容后比对
+        end
+        PRE->>PRE: validate-write.sh 对 production、tests、src 等路径做规则检查
+        PRE-->>CC: 仅 stderr 或 systemMessage 警告（exit 0，不阻断）
+        CC->>POST: 写入完成后的钩子
+        POST-->>CC: 资产 JSON 无效时 exit 2 反馈给 Claude；其余仅提示
+    end
+    CC->>PRE: Read 调用前 validate-read.sh
+    PRE-->>CC: 命中受限读取时 exit 2 拒绝
+    CC->>SA: SubagentStart 子代理启动
+    SA->>SA: 追加 production/session-logs/agent-audit.log
+    CC->>SAS: SubagentStop 子代理结束
+    SAS->>SAS: write-guard.sh 检查返回契约文件是否落盘
+    SAS-->>CC: 文件缺失时 systemMessage 提示重做该阶段
+    CC->>ST: Stop 会话结束
+    ST->>ST: session-stop.sh（session_state 启用时）
+```
+
+图依据：Donchitos/Claude-Code-Game-Studios@05ad7c8，实际读过 `.claude/settings.json`（hooks 注册）、`.claude/skills/start/SKILL.md`、`.claude/hooks/session-start.sh`、`detect-gaps.sh`、`validate-write.sh`、`validate-registry.sh`、`validate-read.sh`、`validate-assets.sh`、`validate-skill-change.sh`、`log-agent.sh`、`validate-agent-artifact.sh`、`.claude/scripts/set-stage.sh`（头部注释）、`session-stop.sh`（仅 grep 其 `session_state_enabled` 守卫）。其余钩子脚本仅 grep 了退出码与分支（exit 0 / exit 2 语义），未通读全文。未运行代码。`project-state.sh` 与 `config-set.sh` 仅确认调用方式，未读内部实现。
+
 ## 关联页面
 
 - [Superpowers（obra）](superpowers-obra.md) — 通用编码代理 **TDD + 评审** 技能栈；CCGS 是 **游戏域多角色** 扩展
@@ -128,6 +186,7 @@ flowchart TD
 - [Claude Code Game Studios 仓库源归档（本站）](../../sources/repos/claude_code_game_studios.md)
 - [Donchitos/Claude-Code-Game-Studios（GitHub）](https://github.com/Donchitos/Claude-Code-Game-Studios)
 - [Claude Code 文档](https://code.claude.com/docs)
+- 源码核对（2026-11-02）：Donchitos/Claude-Code-Game-Studios@05ad7c8，读过 `.claude/settings.json`、`.claude/skills/start/SKILL.md`、`.claude/hooks/` 下 session-start、detect-gaps、log-agent、validate-agent-artifact 的主体，以及 validate-write、validate-registry、validate-read、validate-assets、validate-skill-change、session-stop 的退出码分支（grep），`.claude/scripts/set-stage.sh` 头部；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

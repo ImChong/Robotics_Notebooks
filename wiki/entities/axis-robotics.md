@@ -93,6 +93,59 @@ flowchart LR
 - GitHub 组织公开的是若干模块，报告页未列数据集或权重链接；不可将其表述为完整开放平台。
 - 2026-09 博客的 Expert、proxy 和 RSI 主张与本报告的数据基础设施视角相邻，但不是同一项实验结果。
 
+## 源码运行时序图
+
+入口：`npm install`（postinstall 把 `mujoco-js` 复制到 `public/mujoco-js/`）后执行 `npm run dev`，浏览器打开 `/tasks` 点击 Start Task，进入 `/task-running?id=N`，由 `src/app/task-running/page.tsx` 挂载 `MuJoCoDemo`。下图是 AxisWebInfra 仓库的运行路径（浏览器内 MuJoCo-WASM 与键盘遥操作），不代表 Axis Robotics 的云端数据平台。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant P as task-running/page.tsx
+    participant M as MuJoCoDemo main.js
+    participant IR as initRuntime.js
+    participant SR as sceneResolver.js
+    participant API as api/tasks/id route.ts
+    participant MU as mujocoUtils.js
+    participant KB as KeyboardStateManager
+    participant IK as IKController
+    participant MJ as MuJoCo WASM
+    participant CK as CheckerManager
+
+    P->>M: new MuJoCoDemo 传入 checkerConfig initialState
+    Note over M: 构造时 setupRenderer 注册 setAnimationLoop render 并 setupKeyboardControls
+    P->>M: init
+    M->>IR: initDemo 加载初始场景 close_box
+    IR->>SR: ensureMujocoReady 加载 WASM 并预载基础资源
+    IR->>SR: resolveSceneFileFromTask 读取 URL 中的 id
+    SR->>API: fetch /api/tasks/id
+    API-->>SR: 任务 JSON 其中 mjcf_xml 来自 public/mujoco-assets
+    SR->>SR: 写入 /working/scenes/task_id.xml 并解析域随机化配置
+    IR->>SR: loadSceneWithFallback 预载任务场景
+    SR->>MU: loadSceneFromURL 解析 MJCF 得到 model 与 data
+    Note over SR: 任务 XML 缺失或加载失败时回退到 close_box
+    IR->>M: refreshNameBuffer setupRobotConfig setRobotReadyPose
+    IR->>M: setupIKController 数值 IK
+    IR->>M: applyInitialState captureInitialState applyDomainRandomization
+    IR->>M: startStatusBroadcasting
+    IR-->>P: emitLoadingProgress ready
+    loop 每一帧 render
+        M->>KB: keyboardStateManager.update 处理按住的按键
+        KB->>M: onTranslate onRotate 调用 handleTeleop 系列函数
+        M->>IK: adjustTargetPosition adjustTargetOrientation 更新目标位姿
+        M->>IK: ikController.update 数值求解关节增量
+        loop 按仿真步长追赶当前时间
+            M->>MJ: mj_step
+        end
+        M->>M: recordEpisodeSample 与 updateSuccessTracking
+        M->>CK: updateCheckers 每 1000 ms 节流取状态
+        M->>M: maybeFinalizeSuccess 检查成功
+        M-->>P: 成功时 onTrajectoryExport 弹出完成对话框
+        M-->>P: onStatusUpdate 更新界面状态
+    end
+```
+
+图依据：AxisAIOrg/AxisWebInfra@1c20008，实际读过 `README.md`、`package.json`（scripts 与 dependencies）、`src/app/page.tsx`、`src/app/task-running/page.tsx`、`src/app/api/tasks/[id]/route.ts`、`src/lib/local-task-api.ts`、`src/lib/mujoco-utils.ts`（loadMujoco）、`src/components/mujoco-framework-next/main.js`、`utils/initRuntime.js`、`utils/sceneResolver.js`、`utils/robot_config.js`、`utils/rendererRuntime.js`、`utils/teleopController.js`（setupKeyboardControls）、`utils/checkerRuntime.js`、`utils/KeyboardStateManager.js`（部分）、`utils/IKController.js`（方法清单）、`utils/mujocoUtils.js`（导出清单）。`loadSceneFromURL`、`IKController.update` 内部、`CheckerManager` 与 `statusBroadcaster` 的实现未逐行读，仅按调用点画出。
+
 ## 关联页面
 
 - [可组合 robotic 能力库（2026-09-25 博客）](./axis-composable-capability-library.md)
@@ -109,6 +162,7 @@ flowchart LR
 - [AXIS-V1 项目页归档](../../sources/sites/axisaiorg-github-io.md)
 - [AxisAIOrg 仓库索引](../../sources/repos/axisaiorg.md)
 - [Composable Library 博客归档](../../sources/blogs/axis_composable_library_robotic_capabilities_2026-09-25.md)
+- 源码核对（2026-11-02）：AxisAIOrg/AxisWebInfra@1c20008，读过 README.md、package.json、src/app/task-running/page.tsx、src/app/api/tasks/[id]/route.ts、src/lib/mujoco-utils.ts、src/components/mujoco-framework-next/main.js、utils/initRuntime.js、utils/sceneResolver.js、utils/rendererRuntime.js、utils/teleopController.js、utils/checkerRuntime.js、utils/KeyboardStateManager.js（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -104,6 +104,45 @@ flowchart TD
 - **验证边界：** 本次核查页面、源码路径和运行文档，没有逐一试玩或复测作者测试；显示快照也可能滞后于源站。
 - **可维护性：** 参考其目录和展示分层即可；本库继续以 wiki 与 exports 为内容来源，避免维护第二份人工清单。
 
+## 源码运行时序图
+
+入口：`cd website && npm install && npm run dev`（`vite` 启动；`vite.config.mjs` 的 `localApi` 中间件接管 `/api/catalog`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant B as 浏览器 App.jsx useCatalog
+    participant C as shared/catalog-client.js
+    participant V as Vite 开发服务 localApi
+    participant A as api/catalog.js
+    participant S as server/catalog.js 目录服务
+    participant R as GitHub raw README
+    B->>B: main.jsx 挂载 App，useEffect 调用 refresh
+    B->>C: fetchCatalogJson('/api/catalog')
+    C->>V: GET /api/catalog，超时 20 秒
+    V->>A: 按路径动态 import 并调用 catalogHandler
+    A->>S: handleCatalog(req)
+    S->>S: loadCatalog，缓存未过期则直接返回
+    alt 缓存过期且无进行中请求
+        S->>R: fetch RAW_URL，main 分支 README.md，带 ETag
+        R-->>S: Markdown 正文，或 304
+        S->>S: parseCatalogMarkdown 解析作品列表并计算 revision
+        S->>S: 更新 lastGood 与 cachedResult，300 秒后再刷新
+    else 上游失败或超时
+        S->>S: 返回 lastGood，或启动时 readFallback 读取的快照，并标记 stale
+    end
+    S-->>A: JSON Response，Cache-Control no-store，CDN 仅用剩余 TTL
+    A-->>V: 写入 status 与 headers 后 end
+    V-->>C: catalog JSON
+    C-->>B: 返回数据
+    B->>B: 非 stale 时写入 localStorage 并更新页面
+    opt 浏览器侧请求失败
+        B->>C: fetchCatalogJson('/data/catalog-fallback.json')
+    end
+```
+
+图依据：MartinDelophy/awesome-gpt-6-astra@1fe7463，website/README.md、package.json、vite.config.mjs、src/main.jsx、src/App.jsx（useCatalog）、shared/catalog-client.js、api/catalog.js、api/preview.js（仅确认未画入图）、server/catalog.js；本图只覆盖 `/api/catalog`，未画 `/api/preview` 分支
+
 ## 关联页面
 
 - [Easy-Vibe](easy-vibe.md)：AI 原生产品构建教程，搭配作品案例学习。
@@ -114,6 +153,7 @@ flowchart TD
 
 - [Awesome GPT-6 Astra 仓库归档](../../sources/repos/awesome-gpt-6-astra.md)：README、作品文档、许可与代码入口。
 - [Astra Games 站点归档](../../sources/sites/astra-games.md)：首页、目录关系和展示站开放核查。
+- 源码核对（2026-11-02）：MartinDelophy/awesome-gpt-6-astra@1fe7463，读过 website/README.md、package.json、vite.config.mjs、src/main.jsx、src/App.jsx（useCatalog 段）、shared/catalog-client.js、api/catalog.js、api/preview.js、server/catalog.js；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

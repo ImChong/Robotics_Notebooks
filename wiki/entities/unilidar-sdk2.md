@@ -78,12 +78,54 @@ cmake .. && make -j2
 - [Locomotion](../tasks/locomotion.md)
 - [Unitree](./unitree.md)
 
+## 源码运行时序图
+
+入口：在 `unitree_lidar_sdk` 目录按 `CMakeLists.txt` 构建后运行 `./example_lidar_udp`（源码为 `unitree_lidar_sdk/examples/example_lidar_udp.cpp`，`main()`；`exampleProcess` 定义于 `unitree_lidar_sdk/include/example.h`）。下图为 UDP 示例的实际调用顺序。注意：`createUnitreeLidarReader` 与 `UnitreeLidarReader` 的实现以预编译库 `lib/<arch>/libunilidar_sdk2.a` 提供，仓库内只有头文件声明，故其内部（UDP 收发与解析）不展开。
+
+```mermaid
+sequenceDiagram
+    participant M as main（example_lidar_udp.cpp）
+    participant R as UnitreeLidarReader（头文件声明，实现在预编译库）
+    participant EP as exampleProcess（example.h）
+    participant L as 雷达（网络 UDP）
+
+    M->>R: createUnitreeLidarReader()
+    M->>R: initializeUDP(lidar_port, lidar_ip, local_port, local_ip)
+    R->>L: 建立 UDP 连接
+    M->>R: startLidarRotation()
+    M->>R: setLidarWorkMode(0)
+    M->>R: resetLidar()
+    M->>EP: exampleProcess(lreader)
+    loop 直到获取版本号
+        EP->>R: getVersionOfLidarFirmware / runParse
+        R->>L: 收发数据包
+    end
+    EP->>R: getVersionOfLidarHardware / getVersionOfSDK
+    EP->>R: stopLidarRotation，随后 startLidarRotation
+    loop 直到获取灰尘比例与时延
+        EP->>R: getDirtyPercentage / getTimeDelay（经 runParse）
+    end
+    loop 永久循环（示例不退出）
+        EP->>R: runParse()，返回数据包类型
+        alt LIDAR_IMU_DATA_PACKET_TYPE
+            EP->>R: getImuData(imu)
+            R-->>EP: 四元数、角速度、线加速度
+        else LIDAR_POINT_DATA_PACKET_TYPE
+            EP->>R: getPointCloud(cloud)
+            R-->>EP: 点云（前 10 个点打印）
+        end
+    end
+```
+
+图依据：unilidar_sdk2@0e3c51f，`unitree_lidar_sdk/examples/example_lidar_udp.cpp`、`unitree_lidar_sdk/include/example.h`、`unitree_lidar_sdk/include/unitree_lidar_sdk.h`（接口声明）、`unitree_lidar_sdk/CMakeLists.txt`（`example_lidar_udp` 目标）。`createUnitreeLidarReader`、`initializeUDP` 的内部实现与 `runParse` 的收发细节不在源码内，未展开；与雷达的数据包收发以“UDP 连接”表示，属基于接口命名的推断。未编译或运行示例。
+
 ## 参考来源
 
 - [sources/repos/unilidar_sdk2.md](../../sources/repos/unilidar_sdk2.md)
 - [sources/repos/unilidar_sdk.md](../../sources/repos/unilidar_sdk.md)
 - 产品页：<https://www.unitree.com/LiDAR>
 - 上游：<https://github.com/unitreerobotics/unilidar_sdk2>
+- 源码核对（2026-11-02）：unitreerobotics/unilidar_sdk2@0e3c51f，读过 unitree_lidar_sdk/examples/example_lidar_udp.cpp、unitree_lidar_sdk/include/example.h、unitree_lidar_sdk/include/unitree_lidar_sdk.h、unitree_lidar_sdk/CMakeLists.txt；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -58,6 +58,59 @@ summary: "mike4192/spotMicro 是基于 ROS 的 Spot Micro 四足机器人运动�
 - **README / 核查：** README 目录列有 ROS 节点说明、URDF、TF2 发布与里程计、SLAM 等章节，概述称实现了 3D 打印 Spot Micro 的坐、站、姿态角与行走控制。
 - **差异与保留：** 库内 `spotmicro` 节点对应的是 SpotMicroAI（GitLab 主仓库），与本仓库不同，故单独建节点。节点名 `spot_micro_motion_cmd` 与 `/cmd_vel` 流程来自文章，未在 README 前 700 字内逐项核对。
 
+## 源码运行时序图
+
+入口：机器人端 `roslaunch spot_micro_motion_cmd motion_cmd.launch`（启动 `i2cpwm_board` 与 `spot_micro_motion_cmd_node`）；PC 端 `roslaunch spot_micro_keyboard_command keyboard_command.launch`（启动 `spotMicroKeyboardMove.py`）。手柄入口 `spot_micro_joy/launch/everything.launch` 的话题路径相同，图中未单画。
+
+说明：`spot_micro_kinematics`（逆运动学）与 `i2cpwm_board`（舵机驱动）是 git 子模块，本次检出中无内容，图中标为「未读」，只画它们的调用关系，不展开内部实现。
+
+```mermaid
+sequenceDiagram
+    participant K as spotMicroKeyboardMove.py PC端
+    participant T as ROS 话题
+    participant N as spot_micro_motion_cmd_node main
+    participant M as SpotMicroMotionCmd
+    participant S as SpotMicroState 状态机
+    participant G as spot_micro_kinematics 子模块未读
+    participant B as i2cpwm_board 子模块未读
+    N->>M: 构造 SpotMicroMotionCmd(nh, pnh)
+    M->>T: subscribe /stand_cmd /idle_cmd /walk_cmd /angle_cmd /cmd_vel
+    M->>T: advertise servos_absolute servos_proportional body_state lcd_*
+    N->>M: publishServoConfiguration()
+    M->>B: 调用服务 servo_config
+    B-->>M: 应答
+    Note over N,M: 服务失败且非 debug/standalone 时返回 0 退出
+    K->>T: publish /stand_cmd /walk_cmd /idle_cmd（Bool）
+    K->>T: publish /cmd_vel（Twist）与 /angle_cmd（Vector3）
+    loop 每个周期 dt
+        N->>M: runOnce()
+        M->>S: handleInputCommands(body_state, 配置, cmd_)
+        alt Idle 且无 stand_cmd
+            S->>T: publishZeroServoAbsoluteCommand 发布 servos_absolute
+        else Stand
+            S->>S: 角度指令经一阶滤波
+            S->>M: setServoCommandMessageData()
+            M->>G: setBodyState 与 getLegsJointAngles
+            G-->>M: 12 个关节角
+            M->>T: publishServoProportionalCommand 发布 servos_proportional
+        else Walk
+            S->>S: updatePhaseData 与 stepGait（x/y 速度、yaw 角速率）
+            opt 8 相步态
+                S->>S: stepBodyShift
+            end
+            S->>M: setServoCommandMessageData()
+            M->>G: setBodyState 与 getLegsJointAngles
+            G-->>M: 12 个关节角
+            M->>T: publishServoProportionalCommand 发布 servos_proportional
+        end
+        M->>T: publishLcdMonitorData 发布 lcd_*
+        M->>T: publishDynamicTransforms 广播 TF（publish_odom 时 integrateOdometry）
+        N->>T: ros::spinOnce() 回调写入 cmd_
+    end
+```
+
+图依据：mike4192/spotMicro@2a34f5d，实际读过 `README.md`（前 120 行）、`spot_micro_launch/launch/keyboard_control_and_rviz.launch`、`spot_micro_launch/launch/motion_control_and_hector_slam.launch`、`spot_micro_motion_cmd/launch/motion_cmd.launch`、`spot_micro_keyboard_command/launch/keyboard_command.launch`、`spot_micro_joy/launch/everything.launch`、`spot_micro_motion_cmd/src/spot_micro_motion_cmd_node.cpp`、`spot_micro_motion_cmd/src/spot_micro_motion_cmd.cpp`（构造、runOnce、回调、servo 发布段）、`spot_micro_motion_cmd/src/smfsm/spot_micro_idle.cpp`、`spot_micro_stand.cpp`、`spot_micro_walk.cpp`（关键段）、`spot_micro_keyboard_command/scripts/spotMicroKeyboardMove.py`（关键段）；`spotMicroJoystickMove.py` 仅 grep 话题。未运行代码。
+
 ## 关联页面
 
 - [quadruped-robot](../entities/quadruped-robot.md)
@@ -70,3 +123,4 @@ summary: "mike4192/spotMicro 是基于 ROS 的 Spot Micro 四足机器人运动�
 - [spotmicro_ros_mike4192.md](../../sources/repos/spotmicro_ros_mike4192.md)
 - [wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md](../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md)
 - [原文（微信公众号）](https://mp.weixin.qq.com/s/pRGoPm41qYCNyHPWR6Dl6A)
+- 源码核对（2026-11-02）：mike4192/spotMicro@2a34f5d，读过 README.md（前 120 行）、spot_micro_launch 两个 launch、spot_micro_motion_cmd/launch/motion_cmd.launch、spot_micro_keyboard_command/launch/keyboard_command.launch、spot_micro_joy/launch/everything.launch、spot_micro_motion_cmd/src/spot_micro_motion_cmd_node.cpp、spot_micro_motion_cmd/src/spot_micro_motion_cmd.cpp（关键段）、spot_micro_motion_cmd/src/smfsm/spot_micro_idle.cpp、spot_micro_stand.cpp、spot_micro_walk.cpp（关键段）、spot_micro_keyboard_command/scripts/spotMicroKeyboardMove.py（关键段）；时序图依据以上文件，未运行代码。

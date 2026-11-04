@@ -67,6 +67,56 @@ PS3 Eye 移除红外截止滤镜并配合红外滤光片，观测安装在无人
 - **成本口径需区分：** 约 20 美元是动捕相机系统估价；作者演示用无人机另约 50 美元。
 - **复现门槛：** SFM 版 OpenCV 构建、摄像头型号差异和相机安装会增加配置工作；不要把单次演示直接视为现成的安全飞行产品。
 
+## 源码运行时序图
+
+入口：在 `computer_code/` 中先运行 `yarn install` 与 `yarn run dev`（前端，按终端给出的地址在浏览器打开），再运行 `python3 api/index.py`（Flask-SocketIO，端口 3001）
+
+```mermaid
+sequenceDiagram
+    participant B as 浏览器 App.tsx
+    participant F as api/index.py Flask-SocketIO
+    participant CM as helpers.py Cameras 单例
+    participant PS as pseyepy Camera 多台 PS3 Eye
+    participant KF as KalmanFilter.py
+    participant TX as sender_esp32.ino 串口转发
+    participant DR as 无人机 receiver_esp32.ino
+    B->>F: emit triangulate-points（start，cameraPoses，toWorldCoordsMatrix）
+    F->>CM: start_trangulating_points(camera_poses)
+    CM->>KF: KalmanFilter(num_objects)
+    B->>F: emit locate-objects（start）
+    CM->>CM: start_locating_objects 置位标志
+    B->>F: GET /api/camera-stream（img 标签拉取 MJPEG）
+    F->>CM: Cameras.instance() 设置 socketio、ser、serialLock
+    loop 生成器循环，目标 150 Hz，每次调用 get_frames
+        F->>CM: get_frames()
+        CM->>PS: read() 取各相机帧
+        CM->>CM: 旋转、make_square、undistort、模糊与卷积增强
+        opt 正在采点
+            CM->>CM: _find_dot 阈值化与 findContours 得到候选点
+        end
+        opt 正在三角化
+            CM->>CM: find_point_correspondance_and_object_points 匹配并三角化
+            CM->>CM: 乘 to_world_coords_matrix 转为世界坐标
+            opt 正在定位目标
+                CM->>CM: locate_objects(object_points, errors)
+                CM->>KF: predict_location(objects)
+                KF-->>CM: filtered_objects（pos、vel、heading）
+                loop 已解锁 drone_armed 的无人机
+                    CM->>TX: ser.write(droneIndex + JSON 的 pos 与 vel)
+                    TX->>DR: esp_now_send 到 broadcastAddresses[droneIndex]
+                end
+            end
+            CM->>F: socketio.emit object-points
+        end
+        CM-->>F: np.hstack(frames)
+    end
+    F-->>B: JPEG 帧
+    DR->>DR: OnDataRecv 解析 JSON 写入 pos 与 vel
+    DR->>DR: loop 中 PID 计算后经 SBUS 输出给飞控
+```
+
+图依据：jyjblrd/Low-Cost-Mocap@8ac4d41，实际读过 README.md、computer_code/api/index.py、computer_code/api/helpers.py（Cameras 与处理链路）、computer_code/api/KalmanFilter.py（类与方法名）、computer_code/src/App.tsx（socket 事件名）、sender_esp32/sender_esp32.ino、receiver_esp32/receiver_esp32.ino；未运行代码。
+
 ## 关联页面
 
 - [JE Motion Lab](./je-motion-lab.md) — 浏览器中的动捕记录查看与编辑工具。
@@ -79,6 +129,7 @@ PS3 Eye 移除红外截止滤镜并配合红外滤光片，观测安装在无人
 
 - [项目博客摘录](../../sources/sites/joshuabird-low-cost-mocap.md)
 - [官方仓库归档](../../sources/repos/low-cost-mocap.md)
+- 源码核对（2026-11-02）：jyjblrd/Low-Cost-Mocap@8ac4d41，读过 README.md、computer_code/api/index.py、computer_code/api/helpers.py、computer_code/api/KalmanFilter.py、computer_code/src/App.tsx、sender_esp32/sender_esp32.ino、receiver_esp32/receiver_esp32.ino；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

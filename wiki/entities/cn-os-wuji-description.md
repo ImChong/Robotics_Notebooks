@@ -55,6 +55,32 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`ros2 launch wuji_description display.launch.py hand:=left`（`hand/body/launch/display.launch.py`，ROS2 包 `wuji_description` 需先 colcon 构建；`hand` 可选 `left` 或 `right`）。仓库以 URDF、MJCF、USD 模型资产为主，此处仅画唯一的可运行入口（可视化启动文件）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 shell
+    participant L as launch/display.launch.py generate_launch_description
+    participant LS as launch_setup（OpaqueFunction）
+    participant F as share/wuji_description urdf 下 hand-ros.urdf
+    participant RSP as robot_state_publisher
+    participant JG as joint_state_publisher_gui
+    participant RV as rviz2 与 rviz/hand.rviz
+    U->>L: ros2 launch 启动 display.launch.py
+    L->>L: 声明参数 hand（left 或 right）、use_sim_time、gui
+    L->>LS: 运行 launch_setup 并解析 hand 的实际取值
+    LS->>F: 读取 {hand}-ros.urdf 文本（package:// 路径）
+    LS->>RSP: 创建节点，robot_description 参数为 URDF 文本
+    LS->>JG: 创建 joint_state_publisher_gui 节点
+    LS->>RV: 创建 rviz2 节点，参数 -d 指向 rviz/{hand}.rviz
+    JG-->>RSP: 滑块关节角经 joint_states 话题送出
+    RSP-->>RV: 发布 TF 供 RViz 渲染模型
+```
+
+图依据：wuji-description@5c4dfa1，README.md（仓库结构与用途）、hand/body/launch/display.launch.py（完整读过）、hand/body/package.xml 与 CMakeLists.txt（仅 grep 包名与依赖）。joint_states 与 TF 话题是 ROS 标准约定，仓库内未重新定义。未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -64,6 +90,8 @@ institutions:
 ## 参考来源
 
 - [wuji-description 源码归档](../../sources/repos/wuji-description.md)（<https://github.com/wuji-technology/wuji-description>）
+
+- 源码核对（2026-11-02）：wuji-technology/wuji-description@5c4dfa1，读过 README.md、hand/body/launch/display.launch.py；时序图依据以上文件，未运行代码。
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

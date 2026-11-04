@@ -35,6 +35,51 @@ sources:
 - **与 AMASS 衔接**：原生读 AMASS（SMPL-H），是 SMPL 系重定向（[PHC](./phc.md) / [GMR](../methods/motion-retargeting-gmr.md)）的常见前处理来源之一。
 - **注意取舍**：已归档、无机器人重定向；新项目若只需数据加载，也可直接用各重定向仓自带的 loader。
 
+## 源码运行时序图
+
+入口：`python fairmotion/viz/bvh_visualizer.py --bvh-files <file>.bvh`（README「Visualization」所列入口）；库调用链取 README 的 `bvh.load → motion_ops → bvh.save` 示例。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户脚本或 CLI
+    participant VZ as bvh_visualizer.py main
+    participant BVH as data/bvh.py
+    participant OPS as ops/motion.py
+    participant MOT as core/motion.py Motion
+    participant VW as MocapViewer glut_viewer.Viewer
+
+    Note over U,VW: 路径 A 可视化 bvh_visualizer.py main
+    U->>VZ: python bvh_visualizer.py --bvh-files f.bvh
+    loop 每个 --bvh-files
+        VZ->>BVH: bvh.load(file, v_up_skel, v_face_skel, v_up_env, scale)
+        BVH->>BVH: 解析 HIERARCHY 建 Joint 与 skel，再解析 MOTION 帧
+        BVH-->>VZ: Motion（skel + poses）
+    end
+    loop 每个 motion，i 为序号
+        VZ->>OPS: motion_ops.translate(motions[i], [x_offset*i, 0, 0])
+        OPS->>OPS: transform 原地修改各 pose 的根变换
+    end
+    VZ->>VW: MocapViewer(motions, cam, play_speed, ...)
+    VZ->>VW: viewer.run()
+    loop 每帧 render_callback
+        VW->>VW: _render_characters
+        VW->>MOT: get_pose_by_frame(time_to_frame(t))
+        VW->>VW: _render_pose 绘制骨架
+    end
+
+    Note over U,BVH: 路径 B 库调用 README 的 Motion manipulation 与 Data saving
+    U->>BVH: bvh.load(BVH_FILENAME)
+    BVH-->>U: motion
+    U->>OPS: motion_ops.translate(motion, [1, 1, 1])
+    U->>OPS: motion_ops.cut(translated_motion, 10, 20)
+    OPS->>MOT: copy.deepcopy 后 poses[frame_start:frame_end]
+    OPS-->>U: cut_motion
+    U->>BVH: bvh.save(sliced_motion, NEW_BVH_FILENAME)
+    BVH->>BVH: _write_hierarchy 写 HIERARCHY，再逐帧写 MOTION
+```
+
+图依据：facebookresearch/fairmotion@e400e56，实际读过 `README.md`、`fairmotion/viz/bvh_visualizer.py`（main / render_callback / _render_characters / _render_pose）、`fairmotion/data/bvh.py`（load / save 结构）、`fairmotion/ops/motion.py`（transform / translate / cut）、`fairmotion/core/motion.py`（仅 grep 类与方法定义）。`fairmotion/viz/glut_viewer.py` 的 `run()` 与 OpenGL 调用未展开，只作为 MocapViewer 的基类画出。
+
 ## 关联页面
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
@@ -46,6 +91,7 @@ sources:
 ## 参考来源
 
 - [fairmotion 仓库归档](../../sources/repos/fairmotion.md)
+- 源码核对（2026-11-02）：facebookresearch/fairmotion@e400e56，读过 README.md、fairmotion/viz/bvh_visualizer.py、fairmotion/data/bvh.py、fairmotion/ops/motion.py、fairmotion/data/amass.py 与 amass_dip.py（save 桩）、LICENSE；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

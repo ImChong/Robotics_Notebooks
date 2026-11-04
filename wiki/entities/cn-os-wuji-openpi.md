@@ -55,6 +55,60 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：服务端 `uv run scripts/serve_policy.py policy:checkpoint --policy.config=pi05_wuji_multi_54d --policy.dir=<checkpoint>`；机器人端 `python3 -m wuji.deploy.main -c examples/wuji/config/deploy.yaml`（ROS2 环境内运行）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant S as scripts/serve_policy.py 服务端入口
+    participant WS as websocket_policy_server.py WebsocketPolicyServer
+    participant P as policies/policy.py Policy
+    participant C as wuji_policy.py WujiInputs/WujiOutputs
+    participant M as examples/wuji/deploy/main.py 机器人端入口
+    participant W as websocket_client_policy.py WebsocketClientPolicy
+    participant B as action_chunk_broker.py ActionChunkBroker
+    participant R as runtime/runtime.py Runtime
+    participant A as runtime/agents/policy_agent.py PolicyAgent
+    participant E as examples/wuji/deploy/ros_env.py OpenPIRosEnvironment
+
+    S->>P: create_trained_policy 加载训练配置与 checkpoint
+    S->>WS: WebsocketPolicyServer(policy, port).serve_forever()
+    M->>M: parse_args 合并 deploy.yaml 与命令行参数
+    M->>W: WebsocketClientPolicy(host, port) 连接服务端
+    W->>WS: 建立 websocket 连接
+    WS-->>W: 发送 policy metadata
+    M->>E: OpenPIRosEnvironment(node, config) 等待 ROS2 关节与图像数据
+    M->>B: 按 broker_mode 构造 ActionChunkBroker 或 RTG 系 broker
+    M->>R: Runtime(environment, PolicyAgent(broker), max_hz, ...)
+    M->>R: runtime.run()
+    loop 每个 episode 的每个控制步
+        R->>E: get_observation()
+        E-->>R: observation/state, prompt, 头部与腕部图像
+        R->>A: get_action(observation)
+        A->>B: infer(observation)
+        alt 当前 action chunk 已用尽
+            B->>W: infer(obs)
+            W->>WS: msgpack 打包 obs 并发送
+            WS->>P: policy.infer(obs)
+            P->>C: 输入变换 WujiInputs
+            P->>P: model.sample_actions 采样动作块
+            P->>C: 输出变换 WujiOutputs
+            P-->>WS: actions 与 policy_timing
+            WS-->>W: 返回 action chunk 与 server_timing
+            W-->>B: 解包 action chunk
+        end
+        B-->>A: 取出当前步动作
+        A-->>R: action
+        R->>E: apply_action(action)
+        E->>E: publish_action 发布 ROS2 关节命令
+    end
+    R->>E: reset() 回到初始状态
+```
+
+图依据：wuji-technology/wuji-openpi@be6b325，实际读过 `README.md`、`scripts/serve_policy.py`、`src/openpi/serving/websocket_policy_server.py`、`src/openpi/policies/policy.py`、`src/openpi/policies/wuji_policy.py`、`examples/wuji/deploy/main.py`、`examples/wuji/deploy/ros_env.py`、`packages/openpi-client/src/openpi_client/{websocket_client_policy,action_chunk_broker}.py`、`packages/openpi-client/src/openpi_client/runtime/{runtime,agents/policy_agent}.py`。未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +120,7 @@ institutions:
 - [wuji-openpi 源码归档](../../sources/repos/wuji-openpi.md)（<https://github.com/wuji-technology/wuji-openpi>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：wuji-technology/wuji-openpi@be6b325，读过 README.md、scripts/serve_policy.py、src/openpi/serving/websocket_policy_server.py、src/openpi/policies/policy.py、src/openpi/policies/wuji_policy.py、examples/wuji/deploy/main.py、examples/wuji/deploy/ros_env.py、packages/openpi-client 中的 websocket_client_policy / action_chunk_broker / runtime 模块；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

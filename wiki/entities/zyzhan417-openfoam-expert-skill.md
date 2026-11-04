@@ -52,6 +52,39 @@ OpenFOAM Expert Skill（Zyzhan417/OpenFOAM_expert_SKILL）是面向源码阅读�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 MIT。 
 
+## 源码运行时序图
+
+入口：`python scripts/router.py <命令>`（如 `environment`、`locate`、`search`、`read`，只读取 OpenFOAM 源码，不运行求解器）；MCP 集成入口为 `python mcp_server.py`（stdio，需额外安装 `mcp`）。下图以 CLI 入口为准，并标出 MCP 入口的分派关系。
+
+```mermaid
+sequenceDiagram
+    participant Cli as scripts/router.py（main，argparse）
+    participant Mcp as mcp_server.py（OpenFOAMMCPServer）
+    participant Rt as router.py（OpenFOAMRouter）
+    participant Env as core/environment.py（resolve_source）
+    participant Acc as core/code_accessor.py（CodeAccessor）
+    participant Log as ActivityLogger
+    participant FS as OpenFOAM 源码目录（FOAM_SRC 等）
+
+    Cli->>Env: environment 命令调用 inspect_environment()
+    Env-->>Cli: 返回环境与版本信息
+    Cli->>Rt: 其它命令构造 OpenFOAMRouter(root, access_mode, cache)
+    Rt->>Acc: 创建 CodeAccessor，内部 resolve_source(root) 确定源码根目录
+    Acc->>Env: resolve_source 依 WM_PROJECT_DIR 与 FOAM_* 变量定位目录
+    Cli->>Rt: execute(command, options)
+    Rt->>Acc: query(command, **options)
+    Acc->>FS: _candidates 在限定目录中 os.walk 枚举候选文件（locate）
+    Acc->>FS: _lines 读取文件行（read），并按需搜索（search）
+    FS-->>Acc: 候选路径与行证据
+    Acc-->>Rt: result 字典（不缓存搜索结果）
+    Rt->>Log: log(command, args, result)
+    Rt-->>Cli: result
+    Cli-->>Cli: format_output（json、text 或 compact）输出，失败返回非零码
+    Mcp->>Rt: 工具调用经 OpenFOAMRouter.execute 分派到同一流程
+```
+
+图依据：Zyzhan417/OpenFOAM_expert_SKILL@940d525，README.md、scripts/router.py（main 与 execute）、scripts/core/code_accessor.py（部分：query、_candidates、_lines）、scripts/core/environment.py（部分：inspect_environment 与 FOAM 变量表）、mcp_server.py（部分）。未运行代码；Acc 与 FS 的具体搜索实现未逐行读完。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -62,6 +95,7 @@ OpenFOAM Expert Skill（Zyzhan417/OpenFOAM_expert_SKILL）是面向源码阅读�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/zyzhan417-openfoam-expert-skill.md)
 - [Zyzhan417/OpenFOAM_expert_SKILL 官方仓库](<https://github.com/Zyzhan417/OpenFOAM_expert_SKILL>)
+- 源码核对（2026-11-02）：Zyzhan417/OpenFOAM_expert_SKILL@940d525，读过 README.md、scripts/router.py、scripts/core/code_accessor.py（部分）、scripts/core/environment.py（部分）、mcp_server.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

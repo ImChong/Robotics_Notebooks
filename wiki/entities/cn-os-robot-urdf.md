@@ -55,6 +55,31 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`roslaunch hi_25dof display.launch`（`gazebo.launch` 为仿真加载流程，本图未展开）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户终端
+    participant L as hi_25dof/launch/display.launch
+    participant P as ROS 参数 robot_description
+    participant JG as joint_state_publisher_gui
+    participant RSP as robot_state_publisher
+    participant R as rviz (launch/urdf.rviz)
+    U->>L: roslaunch hi_25dof display.launch
+    L->>P: param robot_description 读取 urdf/hi_25dof.urdf（textfile）
+    L->>JG: node joint_state_publisher_gui
+    L->>RSP: node robot_state_publisher
+    L->>R: node rviz，-d launch/urdf.rviz
+    JG-->>RSP: /joint_states 关节角（GUI 滑条输入）
+    P-->>RSP: 模型描述（URDF 连杆与关节树）
+    RSP-->>R: /tf 坐标变换
+    R-->>U: 显示 hi_25dof 模型
+```
+
+图依据：HighTorque-Robotics/HT_Robot_URDF@5675b9a，`hi_25dof/launch/display.launch`、`hi_25dof/launch/gazebo.launch`、`hi_25dof/CMakeLists.txt`、`README.md`。`/joint_states` 与 `/tf` 的话题约定属于 ROS 标准包行为，仓库内未读对应源码，未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +91,8 @@ institutions:
 - [robot_urdf 源码归档](../../sources/repos/ht_robot_urdf.md)（<https://github.com/HighTorque-Robotics/HT_Robot_URDF>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：HighTorque-Robotics/HT_Robot_URDF@5675b9a，读过 `README.md`、`hi_25dof/launch/display.launch`、`hi_25dof/launch/gazebo.launch`、`hi_25dof/CMakeLists.txt`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

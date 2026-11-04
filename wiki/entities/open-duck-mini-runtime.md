@@ -73,11 +73,54 @@ summary: "Open Duck Mini Runtime 在 Raspberry Pi Zero 2W 上运行 ONNX 行走�
 - **README 仍标注 TODO：** 电机板 udev、Rust 绑定等条目在演进中；以 `v2` 分支 checklist 为准。
 - **算力边界：** 复杂感知或高维策略需更强机载计算；Runtime 聚焦 locomotion 闭环。
 
+## 源码运行时序图
+
+入口：`cd scripts/` 后执行 `python v2_rl_walk_mujoco.py --onnx_model_path <BEST_WALK_ONNX_2.onnx>`（README「Run the walk」所列）。注意脚本名含 mujoco，但其 `HWI`、`Imu` 直接连接真机电机与 IMU；`--replay_obs` 的帮助文字提到可回放 MuJoCo 产生的观测。下图为真机行走脚本的启动与控制循环。
+
+```mermaid
+sequenceDiagram
+  participant CLI as v2_rl_walk_mujoco.py main
+  participant RL as RLWalk
+  participant ONNX as onnx_infer.OnnxInfer
+  participant HWI as rustypot_position_hwi.HWI
+  participant IMU as raw_imu.Imu
+  participant XB as xbox_controller.XBoxController
+  participant FLT as rl_utils.LowPassActionFilter
+  CLI->>RL: RLWalk(onnx 路径, duck_config, pid, control_freq 等)
+  RL->>ONNX: OnnxInfer(model, awd=True) 加载策略
+  RL->>HWI: HWI(duck_config, serial_port) 连接电机总线
+  RL->>IMU: Imu(...) 初始化 IMU
+  RL->>XB: XBoxController，仅 commands 为真时创建
+  RL->>RL: 读取 polynomial_coefficients.pkl 构造 PolyReferenceMotion
+  CLI->>RL: run()
+  RL->>HWI: start：设置 kps 与 kds 后 turn_on，等待 2 秒
+  loop 每个控制周期，默认 50 Hz
+    opt commands 为真
+      RL->>XB: get_last_command 读取手柄按键与扳机
+    end
+    RL->>IMU: get_data 读取 IMU
+    RL->>HWI: get_present_positions 与 get_present_velocities，忽略天线
+    RL->>RL: get_obs 组装观测，更新 imitation_i 与 imitation_phase
+    RL->>ONNX: policy.infer(obs)
+    ONNX-->>RL: action
+    RL->>RL: motor_targets = init_pos + action * action_scale
+    opt action_filter 存在
+      RL->>FLT: push 后 get_filtered_action，启动 1 秒后替换目标
+    end
+    RL->>HWI: set_position_all(action_dict)
+    RL->>RL: 超出周期预算则打印，否则 sleep 补足剩余时间
+  end
+```
+
+图依据：apirrone/Open_Duck_Mini_Runtime@376de65，`scripts/v2_rl_walk_mujoco.py`（RLWalk 构造、start、run、get_obs 与 __main__）、`mini_bdx_runtime/mini_bdx_runtime/onnx_infer.py`、`mini_bdx_runtime/mini_bdx_runtime/rustypot_position_hwi.py`（类与 set_position_all）、`README.md`（运行步骤）；`raw_imu.py`、`rl_utils.py` 仅据调用点推断，未读源码；未运行代码。
+
 ## 参考来源
 
 - [sources/repos/open_duck_mini_runtime.md](../../sources/repos/open_duck_mini_runtime.md)
 - [Tnkr Open Duck Mini V2 项目文档](../../sources/sites/tnkr-open-duck-mini-v2.md)（线束、Pi 配置、部署分节）
 - [apirrone/Open_Duck_Mini_Runtime](https://github.com/apirrone/Open_Duck_Mini_Runtime)（v2 分支）
+
+- 源码核对（2026-11-02）：apirrone/Open_Duck_Mini_Runtime@376de65，读过 `README.md`（运行与标定段）、`scripts/v2_rl_walk_mujoco.py`、`mini_bdx_runtime/mini_bdx_runtime/onnx_infer.py`、`mini_bdx_runtime/mini_bdx_runtime/rustypot_position_hwi.py`（部分）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

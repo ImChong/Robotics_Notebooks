@@ -77,6 +77,47 @@ Harvey、Yurick、Nowrouzezahrai 与 Pal 的论文发表于 ACM TOG 39(4), 2020�
 - **[OMOMO](./omomo-dataset.md)**：物体交互 MoCap；OmniRetarget 的 `robot-object/` 来自 OMOMO，LAFAN1 子集因许可需用户自行重定向。
 - **[五集选型对比](../comparisons/humanoid-reference-motion-datasets.md)**
 
+## 源码运行时序图
+
+入口：`python evaluate.py`（仓库根目录，README「Evaluating baselines」；校验可再运行 `python evaluate_test.py`）。该脚本不是通用训练代码，而是对 Zero-Velocity 与 Interpolation 两个基线的评估流水线。
+
+```mermaid
+sequenceDiagram
+    participant User as 用户
+    participant Eval as evaluate.py（脚本入口）
+    participant Zip as lafan1/lafan1.zip
+    participant Ext as lafan1/extract.py
+    participant Util as lafan1/utils.py
+    participant Bench as lafan1/benchmarks.py
+
+    User->>Eval: python evaluate.py
+    Eval->>Zip: zipfile.extractall() 解压到 output/BVH
+    alt output/train_stats.pkl 不存在
+        Eval->>Ext: get_train_stats(bvh_folder, subject1-4)
+        Ext->>Ext: get_lafan1_set(window=50, offset=20)
+        Ext->>Ext: read_bvh() 读取 BVH；滑窗内 utils.quat_fk() 与 extract_feet_contacts()
+        Ext-->>Eval: x_mean, x_std, offsets（写入 train_stats.pkl）
+    else 复用缓存
+        Eval->>Eval: pkl.load(train_stats.pkl)
+    end
+    Eval->>Ext: get_lafan1_set(bvh_folder, [subject5], window=65, offset=40)
+    Ext-->>Eval: X, Q, parents, contacts_l, contacts_r
+    Eval->>Bench: benchmark_interpolation(X, Q, x_mean, x_std, offsets, parents, out_path)
+    loop 过渡长度 n_trans 为 5, 15, 30, 45
+        Bench->>Util: quat_fk() 得到真值全局姿态
+        Bench->>Bench: 零速度基线：重复种子帧的姿态
+        Bench->>Util: interpolate_local() 插值根位置与局部四元数
+        Bench->>Bench: 计算全局四元数 L2 损失、归一化位置损失与 fast_npss()
+    end
+    Bench->>Bench: 打印表格，并追加写入 h36m_transitions_benchmark.txt
+    Bench-->>Eval: 结果字典 res
+    Eval->>Eval: 以 pickle 保存 output/results.pkl
+```
+
+图依据：ubisoft/ubisoft-laforge-animation-dataset@9408460，读过 `README.md`（数据、代码与评估章节）、`evaluate.py`（全文）、`lafan1/benchmarks.py`（`benchmark_interpolation` 与 `fast_npss`）、`lafan1/extract.py`（`get_lafan1_set`、`get_train_stats` 段）；`lafan1/utils.py` 仅核对函数清单与被调用名。时序图依据以上文件，未运行代码。
+
+说明：`lafan1/extract.py` 的 `get_lafan1_set` 中 `subjects.append(subjects)` 将列表自身追加到自身（未使用），图中未画。
+
 ## 参考来源
 
 - [Ubisoft La Forge Animation Dataset 仓库归档](../../sources/repos/ubisoft-laforge-animation-dataset.md)
@@ -84,6 +125,7 @@ Harvey、Yurick、Nowrouzezahrai 与 Pal 的论文发表于 ACM TOG 39(4), 2020�
 - [sources/papers/sprint_arxiv_2605_28549.md](../../sources/papers/sprint_arxiv_2605_28549.md) — SPRINT 五条单周期步态 + GMR 重定向
 - [Robust Motion In-Betweening 论文来源归档](../../sources/papers/robust_motion_inbetweening_acm_tog_2020.md) — ACM TOG 39(4), 2020；DOI: 10.1145/3386569.3392480
 - GitHub 仓库：<https://github.com/ubisoft/ubisoft-laforge-animation-dataset>
+- 源码核对（2026-11-02）：ubisoft/ubisoft-laforge-animation-dataset@9408460，读过 README.md（数据、代码与评估章节）、evaluate.py、lafan1/benchmarks.py、lafan1/extract.py（get_lafan1_set、get_train_stats 段），lafan1/utils.py（仅函数清单）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

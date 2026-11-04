@@ -82,6 +82,49 @@ flowchart TB
 - **误区**：忽略 **许可与再分发**：Articraft-10K 与代码的商用边界须以 **仓库 LICENSE 与数据卡** 为准，不宜仅凭项目页截图推断。
 - **局限**：公开材料强调 **agent + SDK + harness** 形态；与具体 **URDF/MJCF/USD** 导出字段的对应关系需在论文与代码中逐项核对。
 
+## 源码运行时序图
+
+入口：`uv run articraft generate "<prompt>"`（`[project.scripts]` 中 `articraft = cli.main:main`；`--max-cost-usd`、`--model` 等覆盖 `.env` 默认值）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 使用者
+  participant CLI as cli/main.py（_run_generate）
+  participant R as agent/runner.py（main）
+  participant S as agent/single_run.py
+  participant H as agent/harness.py（ArticraftAgent）
+  participant P as agent/providers（LLM 适配层）
+  participant T as agent/tools（ToolRegistry）
+  participant C as agent/compiler.py（compile_urdf_report）
+  U->>CLI: articraft generate "<prompt>"
+  CLI->>CLI: 解析模型、provider、thinking level（缺省读 .env）
+  CLI->>R: agent_runner.main(argv)
+  R->>S: run_from_input_impl：StorageRepo.ensure_layout，建 RecordStore、RunStore
+  S->>S: execute_single_run：_build_single_run_context，建 staging 目录
+  S->>H: ArticraftAgent(...)，agent.run(user_content)
+  loop 每一轮，直到 max_turns
+    H->>P: llm.generate_with_tools(messages, tools=ToolRegistry 的 schemas)
+    P-->>H: 文本与 tool_calls
+    alt 调用 compile_model
+      H->>C: _execute_compile_model → compile_urdf_report_maybe_timeout（默认超时 300 秒）
+      C->>C: _compile_worker：load_model_globals 用 runpy 执行 model.py，导出 URDF
+      C-->>H: CompileReport（URDF XML、QC 警告、compile_signals）
+    else 其他工具（读写代码、probe_model、find_examples 等）
+      H->>T: build_invocation(name, args) 后执行
+      T-->>H: ToolResult
+    end
+  end
+  alt 编译与 QC 通过
+    S->>S: write_success_record 落盘记录
+  else 失败或超出上限
+    S->>S: _persist_failure 写运行结果
+  end
+  S-->>U: 输出记录 ID 或失败信息
+```
+
+图依据：articraft@959f145，读过 `cli/main.py`（`_run_generate`、解析器与 `generate` 子命令）、`agent/single_run.py`（`run_from_input_impl`、`execute_single_run` 主流程段）、`agent/harness.py`（`run` 循环与工具分发段）、`agent/compiler.py`（`compile_urdf_report_maybe_timeout`、`_compile_worker`、`load_model_globals` 段）、`agent/tools/compile_model.py`、`pyproject.toml` 入口点；`agent/runner.py` 仅检索了函数定义；provider 内部与 `ToolRegistry` 细节未读。未运行代码（生成需要模型 API 密钥与 Python 3.12 环境）。
+
 ## 关联页面
 
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 自然语言到 **可制造/可编辑几何** 的另一条主流路线，与「程序化可关节网格资产」互补对照。
@@ -112,3 +155,4 @@ flowchart TB
 
 - [Articraft 项目主页（原始资料）](../../sources/sites/articraft3d-github-io.md)
 - [mattzh72/articraft 仓库（原始资料）](../../sources/repos/mattzh72-articraft.md)
+- 源码核对（2026-11-02）：mattzh72/articraft@959f145，读过 `cli/main.py`、`agent/single_run.py`、`agent/harness.py`、`agent/compiler.py`、`agent/tools/compile_model.py`、`pyproject.toml`；时序图依据以上文件，未运行代码。（该仓库 README 标注已被 articraftresearch/Articraft 取代，本图依据的是本仓库代码。）

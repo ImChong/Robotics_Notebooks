@@ -100,6 +100,41 @@ summary: "舞肌科技（上海舞肌）面向具身机器人提供关节级电�
 - **与「伏为电机」等 DD 马达厂商勿混淆**：中文「直驱 / 力矩电机」检索常混入 **工业 DD 马达** 供应商（域名、主体均不同），选型时应对照 **营业执照与商标**。
 - **灵巧手「盘点文章」≠ 官方 datasheet**：链长、背隙、温升与寿命等 **应以 docs.wuji.tech 与随货文件为准**。
 
+## 源码运行时序图
+
+以下图针对舞肌联合发布的 MINT 开源仓库（`wuji-technology/wuji-ego-mint`），不是舞肌的电机或灵巧手产品本身。
+
+入口：`python -m mint viewer`（`mint/cli.py` 的 `main()`，经子进程执行 `eval/model_effect/visualization/viewer_web.py`，默认端口 8011；推理需 NVIDIA GPU 且显存不少于 24 GB）
+
+```mermaid
+sequenceDiagram
+    participant User as 用户浏览器
+    participant CLI as mint/cli.py（main）
+    participant VW as viewer_web.py（main）
+    participant RT as viewer/routes.py（Flask）
+    participant ST as viewer/store.py（Store）
+    participant REG as inference/registry.py（get_predictor）
+
+    User->>CLI: python -m mint viewer
+    CLI->>VW: _run_script 以子进程执行 viewer_web.py
+    VW->>ST: 构造 Store（ckpt、devices、window、compile 与 fp8 等参数）
+    VW->>RT: create_app(store)，app.run(端口 8011)
+    VW->>ST: 后台线程 ensure_assets()（加载 MANO 资产）
+    User->>RT: POST /api/model/load
+    RT->>ST: start_load() 启动后台加载线程
+    ST->>REG: get_predictor(model, config, ckpt, window)
+    REG-->>ST: 返回 predictor，就绪标志置位
+    User->>RT: GET /video/eid（mode 参数）
+    RT->>ST: pred(eid, cam_mode, hand_mode)
+    ST->>ST: raw(eid) 抽取视频帧（无真值时仅预测）
+    ST->>REG: predictor.predict(frames, on_step, cancel_check, cam_mode, hand_mode)
+    REG-->>ST: prediction（相机外参、视场角、双手 MANO 与手部存在概率）
+    ST-->>RT: 叠加渲染后的视频帧
+    RT-->>User: 返回视频
+```
+
+图依据：wuji-technology/wuji-ego-mint@1bd21e4，README.md、mint/cli.py、mint/inference/runner.py（部分）、mint/inference/engine.py（部分）、mint/viewer/app.py（未纳入图中）、eval/model_effect/visualization/viewer_web.py、eval/model_effect/visualization/viewer/routes.py、eval/model_effect/visualization/viewer/store.py、eval/model_effect/inference/registry.py。`get_predictor` 之后的适配器与模型内部前向未读，图中未画。
+
 ## 关联页面
 
 - [人形机器人](./humanoid-robot.md)
@@ -124,6 +159,7 @@ summary: "舞肌科技（上海舞肌）面向具身机器人提供关节级电�
 - [舞肌科技原始资料汇编](../../sources/sites/wuji_robotics.md)
 - [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)
 - [wuji-ego-mint 代码仓库索引](../../sources/repos/wuji-ego-mint.md)
+- 源码核对（2026-11-02）：wuji-technology/wuji-ego-mint@1bd21e4，读过 README.md、mint/cli.py、mint/inference/runner.py、mint/inference/engine.py、mint/viewer/app.py、eval/model_effect/visualization/viewer_web.py、eval/model_effect/visualization/viewer/routes.py、eval/model_effect/visualization/viewer/store.py、eval/model_effect/inference/registry.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

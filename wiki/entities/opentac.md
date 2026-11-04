@@ -72,7 +72,47 @@ summary: "OpenTac 是一套开放的定制化触觉皮肤生态：从柔性 PCB 
 - [OpenTac 论文页](https://opentac.github.io/paper/)
 - [OpenTac 官方代码仓库](https://github.com/opentac/opentac)
 
+## 源码运行时序图
+
+入口：`uv run opentac cad`（`pyproject.toml` 的 `[project.scripts]` 指向 `opentac.cli:main`；本图只覆盖 OpenTac-CAD 本地设计器的运行路径，未覆盖读板、仿真与传输）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户终端
+    participant CLI as opentac/cli.py main()
+    participant LA as opentac/cad/launcher.py main()
+    participant API as FastAPI opentac.cad.main:app（uvicorn）
+    participant WEB as 浏览器 web/app.js
+    participant GEN as main.generate()
+    participant PL as 布线流水线（layout_with_connector 等）
+    participant EXP as 导出（_build_outputs、design_file、zip_with_design）
+    U->>CLI: uv run opentac cad [--port] [--no-browser]
+    CLI->>LA: _cad(args) → launcher.main(host, port, open_browser)
+    LA->>LA: pick_free_port(起始 8000)
+    LA->>API: uvicorn.run("opentac.cad.main:app")
+    LA->>WEB: open_browser_when_ready：轮询 /health 后 webbrowser.open
+    WEB->>API: GET /health
+    WEB->>API: POST /generate（outline、像素与间距、board_mode、router 等）
+    API->>GEN: generate(req)
+    GEN->>GEN: _resolve_board_mode，_params_for_board_mode
+    GEN->>PL: layout_with_connector(outline, params, fill)
+    loop 布线与 DRC 重试（有次数上限）
+        GEN->>PL: route_columns_grid，route_rows_grid
+        GEN->>PL: validate_routes → 失败像素与未完成网络
+        GEN->>GEN: _route_escapes，_grow_keepout_for_failures，_prune_edge_escapes 等修复
+    end
+    GEN->>PL: _finish_board(layout, col_routes, row_routes, params)
+    GEN->>EXP: _outputs_with_connector_tail → SVG、stats、drc、zip_b64
+    GEN->>EXP: _build_edit_data，design_file，zip_with_design
+    API-->>WEB: GenerateResponse（zip_b64、svg、stats、drc、edit_data）
+    WEB->>API: POST /zip-with-case（点击下载 ZIP 时，附外壳）
+```
+
+图依据：opentac/opentac@e21a8ae，读过 `README.md`（运行命令）、`pyproject.toml`（scripts 入口）、`opentac/cli.py`（`_cad`、`main`）、`opentac/cad/launcher.py`（端口、uvicorn、打开浏览器）、`opentac/cad/main.py`（路由与 `generate` 主体的调用顺序，只读到调用名，未读各 pipeline 模块内部）、`opentac/cad/web/app.js`（`/health`、`/generate`、`/zip-with-case` 请求位置）。
+
 ## 参考来源
 
 - [OpenTac 官方项目页与论文摘要](../../sources/sites/opentac-project.md)
 - [OpenTac 官方代码仓库归档](../../sources/repos/opentac.md)
+- 源码核对（2026-11-02）：opentac/opentac@e21a8ae，读过 README.md、pyproject.toml、opentac/cli.py、opentac/cad/launcher.py、opentac/cad/main.py（调用顺序）、opentac/cad/web/app.js；时序图依据以上文件，未运行代码。

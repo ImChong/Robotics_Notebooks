@@ -55,6 +55,43 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口（两步，取 `mycobot_280` 包的 slider 控制路线）：
+
+- 显示模型与滑条：`roslaunch mycobot_280 slider_control.launch`（docker-compose 默认 `LAUNCH_TARGET` 即此文件）
+- 真机控制节点：`rosrun mycobot_280 slider_control.py _port:=/dev/ttyUSB0 _baud:=115200`（launch 中该节点已被注释，需单独启动；CMakeLists 通过 `catkin_install_python` 安装该脚本）
+
+仓库另有 mecharm、Mybuddy、myArm、mycobot_320 等多套包，本图只取 mycobot_280 一条路线。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant L as slider_control.launch
+    participant RSP as robot_state_publisher
+    participant JG as joint_state_publisher_gui
+    participant RV as rviz
+    participant CS as slider_control.py（control_slider 节点）
+    participant MC as MyCobot280（pymycobot）
+    U->>L: roslaunch mycobot_280 slider_control.launch
+    L->>L: param robot_description 由 xacro 读入 mycobot_280_m5.urdf
+    L->>RSP: 启动 robot_state_publisher
+    L->>JG: 启动 joint_state_publisher_gui
+    L->>RV: 启动 rviz，-d config/mycobot.rviz
+    Note over L: control_slider 节点在 launch 中已注释，不随此处启动
+    U->>CS: rosrun mycobot_280 slider_control.py 单独启动
+    CS->>CS: rospy.init_node("control_slider")，读取 ~port 与 ~baud
+    CS->>MC: MyCobot280(port, baud)
+    CS->>MC: set_fresh_mode(1)
+    CS->>CS: rospy.Subscriber("joint_states", JointState, callback)
+    U->>JG: 拖动滑条
+    JG-->>CS: joint_states 话题（ROS 约定，非本仓库代码）
+    CS->>CS: callback 弧度转角度，保留 2 位小数
+    CS->>MC: send_angles(data_list, 25)
+```
+
+图依据：elephantrobotics/mycobot_ros@c0d6fbe，读过 README.md、docker-compose.yml、mycobot_280/mycobot_280/launch/slider_control.launch、mycobot_280/mycobot_280/scripts/slider_control.py、mycobot_280/mycobot_280/CMakeLists.txt（install 段）、mycobot_280/mycobot_280/package.xml。pymycobot 库内部未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +103,8 @@ institutions:
 - [mycobot_ros 源码归档](../../sources/repos/mycobot_ros.md)（<https://github.com/elephantrobotics/mycobot_ros>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：elephantrobotics/mycobot_ros@c0d6fbe，读过 README.md、docker-compose.yml、mycobot_280/mycobot_280/launch/slider_control.launch、mycobot_280/mycobot_280/scripts/slider_control.py、mycobot_280/mycobot_280/CMakeLists.txt、mycobot_280/mycobot_280/package.xml；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

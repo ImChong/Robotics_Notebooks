@@ -55,6 +55,52 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python scripts/rsl_rl/train.py --task Isaac-Limx-SF-TRON2A-Blind-Flat-v0 --num_envs 4096 --headless`（需 Isaac Sim 5.1 与 Isaac Lab 2.3.1；推理导出见 scripts/rsl_rl/play.py）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 操作者（shell）
+    participant TR as scripts/rsl_rl/train.py main
+    participant AL as AppLauncher（Isaac Sim，仓库外依赖）
+    participant GY as gym.register（tasks/locomotion/robots/__init__.py）
+    participant EV as ManagerBasedRLEnv 与 limx_base_env_cfg（Isaac Lab，仓库外依赖）
+    participant RW as RslRlVecEnvWrapper
+    participant OR as OnPolicyRunner（rsl_rl/runner/on_policy_runner.py）
+    participant AG as PPO 算法对象（rsl_rl/algorithm）
+    participant LG as logs/rsl_rl/实验名/时间戳目录
+
+    U->>TR: python scripts/rsl_rl/train.py --task ... --num_envs 4096 --headless
+    TR->>AL: AppLauncher(args_cli)，启动仿真应用
+    TR->>GY: gym.make(args_cli.task, cfg=env_cfg)，按注册项取 env_cfg_entry_point
+    GY->>EV: 构造环境（SF_TRON2A_BlindFlatEnvCfg）
+    TR->>RW: RslRlVecEnvWrapper(env)
+    TR->>OR: OnPolicyRunner(env, agent_cfg.to_dict(), log_dir)
+    opt --resume True
+        TR->>OR: load(resume_path)
+    end
+    TR->>OR: learn(max_iterations, init_at_random_ep_len=True)
+    OR->>EV: get_observations()
+    loop 每个学习迭代
+        loop num_steps_per_env 次 rollout（inference_mode）
+            OR->>AG: act(obs, obs_history, commands, critic_obs)
+            OR->>RW: env.step(actions)
+            RW->>EV: 仿真推进，返回 policy、critic、obsHistory、commands 观测与 rewards、dones
+            OR->>AG: process_env_step(rewards, dones, infos, obs)
+        end
+        OR->>AG: compute_returns，然后 update() 执行 PPO 更新
+        opt it 满足 save_interval
+            OR->>LG: save model_it.pt
+        end
+    end
+    OR->>LG: 保存最终 model_N.pt
+    TR->>EV: env.close()
+```
+
+图依据：limxdynamics/tron2_rl_lab@0527456，scripts/rsl_rl/train.py（全文）、scripts/rsl_rl/play.py（关键段）、rsl_rl/rsl_rl/runner/on_policy_runner.py（learn 与 save 段）、exts/bipedal_locomotion/bipedal_locomotion/tasks/locomotion/robots/__init__.py（gym.register 段）、exts/bipedal_locomotion/bipedal_locomotion/tasks/locomotion/agents/dasf_rsl_rl_ppo_cfg.py（关键段）、README.md（训练运行段）
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +112,8 @@ institutions:
 - [tron2_rl_lab 源码归档](../../sources/repos/tron2_rl_lab.md)（<https://github.com/limxdynamics/tron2_rl_lab>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：limxdynamics/tron2_rl_lab@0527456，读过 scripts/rsl_rl/train.py、scripts/rsl_rl/play.py（关键段）、rsl_rl/rsl_rl/runner/on_policy_runner.py（learn 与 save 段）、exts/bipedal_locomotion/bipedal_locomotion/tasks/locomotion/robots/__init__.py（gym.register 段）、exts/bipedal_locomotion/bipedal_locomotion/tasks/locomotion/agents/dasf_rsl_rl_ppo_cfg.py（关键段）、README.md（训练与 play 命令段，经检索）；未读 PPO 算法实现 rsl_rl/rsl_rl/algorithm；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

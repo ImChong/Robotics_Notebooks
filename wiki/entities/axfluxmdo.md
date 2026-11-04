@@ -77,6 +77,44 @@ flowchart TB
 - 官方自述：**不能替代** 高保真瞬态三维电磁仿真；脉动多为代理量。
 - 轴向磁拉力、多气隙与散热在真机上往往主导失败模式——优化结果必须进 FEA/台架。
 
+## 源码运行时序图
+
+入口：`AnalyticalModel().evaluate(motor, op)`（README 快速开始与 `examples/01_basic_axial_flux_motor.py` 调用的同一入口）。下图只覆盖解析模型这一条路径；2.5D、优化与 FEA 钩子不在图中。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户脚本 quickstart
+    participant AM as AnalyticalModel.evaluate models/analytical.py
+    participant MG as airgap_flux_density materials/magnetic.py
+    participant LS as losses.py
+    participant TH as solve_winding_temperature models/thermal_rc.py
+    participant CS as build_constraints models/analytical.py
+    participant R as AnalyticalResult
+
+    U->>AM: AnalyticalModel().evaluate(motor, op)
+    AM->>AM: 计算电频率 与磁体温度 环境温度加 40 度
+    AM->>MG: 由磁体负载线求气隙磁密 B_g
+    MG-->>AM: B_g
+    AM->>AM: 由 B_g 求基波磁通与磁链 再得到转矩 反电势 剪应力
+    AM->>LS: core_flux_density_proxy 与 steinmetz_core_loss
+    LS-->>AM: 轭部磁密 铁损
+    AM->>LS: phase_resistance 取 20 度 与 copper_loss
+    LS-->>AM: 参考温度下铜损
+    AM->>TH: solve_winding_temperature 含电阻温度系数
+    TH-->>AM: 绕组稳态温度 失控时记为 inf
+    AM->>LS: phase_resistance 绕组温度 与 copper_loss
+    AM->>LS: mechanical_loss 后计算功率与效率
+    AM->>LS: mass_rollup
+    LS-->>AM: 质量分项
+    AM->>CS: build_constraints 六项上限约束
+    CS-->>AM: ConstraintRecord 列表
+    AM->>R: 构造 AnalyticalResult
+    R-->>U: 返回结果 供 print 与 feasible 判断
+```
+
+图依据：jman4162/axfluxmdo@6ea61b2，实际读过 `README.md`、`src/axfluxmdo/models/analytical.py`（evaluate 全流程）、`src/axfluxmdo/materials/magnetic.py`（airgap_flux_density）、`src/axfluxmdo/models/thermal_rc.py`（solve_winding_temperature 签名与说明）、`src/axfluxmdo/models/losses.py`（函数清单）、`examples/01_basic_axial_flux_motor.py`。`plot_geometry` 与 constraints 模块内部未读，未画。
+
 ## 关联页面
 
 - [开源力矩电机电磁设计完整度对比](../comparisons/open-source-torque-motor-em-design.md)
@@ -88,6 +126,7 @@ flowchart TB
 - [sources/repos/axfluxmdo.md](../../sources/repos/axfluxmdo.md)
 - [sources/sites/axfluxmdo_docs.md](../../sources/sites/axfluxmdo_docs.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)
+- 源码核对（2026-11-02）：jman4162/axfluxmdo@6ea61b2，读过 README.md、src/axfluxmdo/models/analytical.py、src/axfluxmdo/materials/magnetic.py、src/axfluxmdo/models/thermal_rc.py、src/axfluxmdo/models/losses.py（函数清单）、examples/01_basic_axial_flux_motor.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

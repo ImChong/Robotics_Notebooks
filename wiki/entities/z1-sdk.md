@@ -67,6 +67,43 @@ Z1 的控制与仿真入口集合——SDK 对接开发者文档，ROS/手柄仓
 - 力矩/速度限制与碰撞检测配置错误会导致危险运动。
 - 不要与 Go/H1/G1 的 SDK2 示例混用网段与进程。
 
+## 源码运行时序图
+
+入口：`examples/lowcmd_development.cpp` 的 `main()`（C++ 示例，链接 `lib/` 下的 Z1_SDK 动态库；编译方式以 `CMakeLists.txt` 为准，本次未读）。示例先切换到低层指令模式，再在关节空间做插值运动。
+
+```mermaid
+sequenceDiagram
+    participant Ex as lowcmd_development.cpp（main）
+    participant Arm as unitreeArm（Z1_SDK 库，实现未读）
+    participant Thr as sendRecvThread（头文件注释为 500 Hz）
+    participant Ctrl as CtrlComponents（sendRecv）
+    participant UDP as UDPPort（message/udp.h）
+    participant Z1 as z1_ctrl（机械臂控制器）
+
+    Ex->>Arm: unitreeArm(hasGripper)
+    Ex->>Thr: sendRecvThread->start()
+    Ex->>Arm: setFsm(PASSIVE)，再 setFsm(LOWCMD)
+    Ex->>Arm: 读取 lowcmd 的 kp 与 kd，setControlGain 设置增益
+    Ex->>Thr: sendRecvThread->shutdown()
+    Ex->>Arm: initQ = lowstate->getQ()
+    loop 按 duration 步插值至 targetQ
+        Ex->>Ex: q 线性插值，qd 为差分，tau 由 armModel->inverseDynamics 计算
+        Ex->>Arm: setArmCmd(q, qd, tau)
+        Ex->>Arm: sendRecv()
+        Arm->>Ctrl: 调用 CtrlComponents::sendRecv
+        Ctrl->>UDP: send(LowlevelCmd)
+        UDP->>Z1: UDP 关节指令
+        Z1-->>UDP: UDP 关节状态
+        UDP-->>Ctrl: recv 写入 LowlevelState
+        Note over Ex: 每步按 Timer(dt) 等待，dt 默认 0.002 s
+    end
+    Ex->>Thr: sendRecvThread->start()
+    Ex->>Arm: setFsm(JOINTCTRL)，再 setFsm(PASSIVE)
+    Ex->>Thr: sendRecvThread->shutdown()
+```
+
+图依据：unitreerobotics/z1_sdk@f1af2b4，examples/lowcmd_development.cpp、include/unitree_arm_sdk/control/unitreeArm.h（声明与注释）、include/unitree_arm_sdk/control/ctrlComponents.h、include/unitree_arm_sdk/message/udp.h（声明）、README.md（仅链接文档）。unitreeArm 与 CtrlComponents 的 .cpp 实现仅有预编译库，未读；图中 sendRecvThread 与 UDP 收发细节依据头文件注释。
+
 ## 关联页面
 
 - [UnifoLM-WMA](./unifolm-world-model-action.md)
@@ -81,6 +118,7 @@ Z1 的控制与仿真入口集合——SDK 对接开发者文档，ROS/手柄仓
 - [sources/repos/z1_controller.md](../../sources/repos/z1_controller.md)
 - [sources/repos/z1_joystick.md](../../sources/repos/z1_joystick.md)
 - 文档：<https://support.unitree.com/home/zh/Z1_developer>
+- 源码核对（2026-11-02）：unitreerobotics/z1_sdk@f1af2b4，读过 README.md、examples/lowcmd_development.cpp、include/unitree_arm_sdk/control/unitreeArm.h、include/unitree_arm_sdk/control/ctrlComponents.h、include/unitree_arm_sdk/message/udp.h；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

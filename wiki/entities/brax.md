@@ -57,6 +57,46 @@ summary: "Brax 是 Google 开源的 JAX 可微物理与 RL 训练库；当前 RE
 - **误区：「继续抄 `brax/envs` 教程即可」。** 新代码路径应核对 README 的 **Playground** 迁移建议，避免依赖进入低维护状态的组件。
 - **局限**：与 **PyTorch 分布式** 主栈相比，JAX 侧 **就业界模板密度** 仍略低；跨框架常需 **HTTP/gRPC 或自行封装** 做数据交换（仓库提供 PyTorch Colab 示例作参考）。
 
+## 源码运行时序图
+
+入口：`python bin/learn --learner ppo --env ant`（`bin/learn` 内容为 `app.run(learner.main)`；README 写作 `learn`，`pyproject.toml` 未声明 console script，需要该脚本在 PATH 中）。下图只画训练入口 `learner.main` 的 PPO 路径；`sac` / `es` / `apg` / `ars` 分支结构相同，仅调用各自的 `train`。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户（终端）
+    participant BIN as bin/learn
+    participant LRN as learner.py main
+    participant GEF as get_env_factory
+    participant ENVS as brax/envs get_environment
+    participant MET as io/metrics Writer
+    participant PPO as agents/ppo/train.py train
+    participant WRP as envs/wrappers/training wrap
+    participant MOD as io/model save_params
+    U->>BIN: learn --learner ppo --env ant
+    BIN->>LRN: absl app.run(learner.main)
+    LRN->>GEF: get_env_factory(_ENV)
+    alt 已安装 mujoco_playground（mjp 非空）
+        GEF-->>LRN: mjp.*.load 与 mjp.wrapper.wrap_for_brax_training
+    else 默认
+        GEF-->>LRN: functools.partial(envs.get_environment, backend)
+    end
+    LRN->>MET: metrics.Writer(logdir).write_hparams
+    LRN->>ENVS: get_environment(_ENV)，即 _envs[name](**kwargs)
+    LRN->>PPO: ppo.train(environment, wrap_env_fn, network_factory, progress_fn=writer.write_scalars, ...)
+    PPO->>WRP: wrap_env_fn 或 envs.training.wrap(episode_length, action_repeat)
+    PPO->>PPO: jit / pmap 的 env.reset 与 make_ppo_networks
+    loop 每次评估周期（num_evals）
+        PPO->>PPO: training_epoch：rollout、GAE、minibatch 更新
+        PPO->>MET: progress_fn(step, metrics)
+    end
+    PPO-->>LRN: make_policy, params
+    LRN->>MOD: save_params(logdir/<env>_<learner>.pkl, params)
+    LRN->>LRN: jit(do_rollout_batched) 录制一条轨迹
+    LRN->>LRN: env.render 存在时 media.write_video(saved_videos/*.mp4)
+```
+
+图依据：google/brax@c860529，README.md、bin/learn、brax/training/learner.py（flag 定义、get_env_factory、main 全文）、brax/envs/__init__.py（仅 grep get_environment / _envs）；以下仅 grep 函数定义与调用点，未逐行读：brax/training/agents/ppo/train.py、brax/training/agents/ppo/losses.py（compute_gae 存在性）、brax/envs/wrappers/training.py、brax/io/metrics.py、brax/io/model.py、pyproject.toml（仅 grep scripts 段）。未运行代码。
+
 ## 关联页面
 
 - [MuJoCo MJX](./mujoco-mjx.md) — README 推荐的 MuJoCo 级 JAX 物理入口
@@ -77,3 +117,4 @@ summary: "Brax 是 Google 开源的 JAX 可微物理与 RL 训练库；当前 RE
 
 - [brax（仓库归档）](../../sources/repos/brax.md)
 - [Brax 论文摘录（arXiv:2106.13281）](../../sources/papers/brax_arxiv_2106_13281.md)
+- 源码核对（2026-11-02）：google/brax@c860529，读过 README.md、bin/learn、brax/training/learner.py；另 grep 过 brax/envs/__init__.py、brax/training/agents/ppo/train.py、brax/training/agents/ppo/losses.py、brax/envs/wrappers/training.py、brax/io/metrics.py、brax/io/model.py、pyproject.toml；时序图依据以上文件，未运行代码。

@@ -75,11 +75,60 @@ Tidy 是面向设计师、工程师和 agent 的开源产品画布：人可直�
 - [frontend-design（Anthropic 官方 Skill）](./anthropic-frontend-design-skill.md) — 设计规约与视觉判断的补充工具。
 - [FreeCAD MCP](./freecad-mcp.md) — MCP 驱动专业桌面软件的机器人 CAD 对照案例。
 
+## 源码运行时序图
+
+入口：`bun dev:desktop`（根 `package.json` 经 turbo 调用 `apps/desktop` 的 `dev` 脚本，即 `electron-vite dev`，主进程入口 `src/main/index.ts`）。下图为用户在编码线程发送一条消息后，源码中的实际调用顺序。
+
+```mermaid
+sequenceDiagram
+    participant U as 渲染进程 UI
+    participant IPC as ipc/ipc.ts（tidy:* handle）
+    participant WR as ipc/workspace-requests.ts
+    participant WS as WorkspaceService
+    participant HS as HarnessSessions（harness-sessions.ts）
+    participant IH as HarnessSession（interactive-harness.ts）
+    participant HT as HarnessTransport（harness-transport.ts）
+    participant CA as createClaudeAdapter（claude-adapter.ts）
+    participant CLI as claude CLI（-p stream-json）
+
+    U->>IPC: send-message（projectId, threadId, text）
+    IPC->>WR: 分发到 handle("send-message")
+    WR->>WS: service.sendMessage(value)
+    WS->>WS: run → runPrepared
+    WS->>HS: start(threadId, launchInput)
+    HS->>IH: acquire 会话，新建 HarnessSession
+    IH->>HT: new HarnessTransport（claude 参数）
+    HT->>CLI: spawn，参数含 -p --input-format stream-json --output-format stream-json --permission-prompt-tool stdio
+    IH->>CA: createClaudeAdapter(context)
+    IH->>CA: initialize()
+    CA->>CLI: request initialize（stdin JSON）
+    IH->>CA: submit(message)
+    CA->>HT: write {type: user, message}
+    HT->>CLI: stdin 写入一行 JSON
+    loop 逐行读取 stdout（直到 result 事件，判定未逐行核对）
+        CLI-->>HT: stdout JSON 行
+        HT-->>IH: 逐行交给 consume(value)
+        IH->>CA: consume(value)
+        CA-->>WS: emit 会话 / 工具活动更新
+    end
+    opt 工具需要审批
+        CLI-->>CA: control_request（can_use_tool）
+        CA-->>WS: ask 审批请求
+        WS-->>U: 展示允许 / 拒绝
+        U-->>WS: 审批决定 respondToApproval
+        WS-->>CA: 决定结果
+        CA-->>CLI: 控制响应
+    end
+```
+
+图依据：tidy@cf9b099，`README.md`、`package.json`、`apps/desktop/package.json`、`apps/desktop/electron.vite.config.ts`、`apps/desktop/src/main/index.ts`、`apps/desktop/src/main/ipc/ipc.ts`、`apps/desktop/src/main/ipc/workspace-requests.ts`、`apps/desktop/src/main/workspace/workspace-service.ts`（sendMessage/run/runPrepared 与启动调用）、`apps/desktop/src/main/harnesses/harness-sessions.ts`、`apps/desktop/src/main/harnesses/interactive-harness.ts`、`apps/desktop/src/main/harnesses/harness-transport.ts`、`apps/desktop/src/main/harnesses/claude-adapter.ts`，以及 `apps/desktop/src/main/harnesses/harnesses.ts` 的关键词检索（未通读）。
+
 ## 参考来源
 
 - [Tidy Design 官网归档](../../sources/sites/tidy-design.md)
 - [Tidy 官方仓库归档](../../sources/repos/tidydesigns-tidy.md)
 - [Tidy README](https://github.com/tidydesigns/tidy#readme)
+- 源码核对（2026-11-02）：tidydesigns/tidy@cf9b099，读过 README.md、package.json、apps/desktop/package.json、apps/desktop/electron.vite.config.ts、apps/desktop/src/main/index.ts、ipc/ipc.ts、ipc/workspace-requests.ts、workspace/workspace-service.ts、harnesses/harness-sessions.ts、interactive-harness.ts、harness-transport.ts、claude-adapter.ts（harnesses.ts 仅关键词检索）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

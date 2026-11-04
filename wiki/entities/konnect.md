@@ -56,6 +56,47 @@ summary: "Konnect 是 KiCad 10 的原生 Rust/MCP 插件，通过 KiCad IPC API 
 - ERC/DRC 只能检查规则所覆盖的问题，不能证明板卡设计安全、稳定或可量产；AI 生成和修改的内容需独立审查与实测。
 - README 所述功能和性能是项目方资料，尚未在本知识库中独立进行硬件验证。
 
+## 源码运行时序图
+
+入口：`konnect`（`crates/konnect/src/main.rs`）。stdin 为管道时启动 MCP 服务（默认 stdio，可配置 HTTP）；在终端中直接运行则进入安装向导。
+
+```mermaid
+sequenceDiagram
+    participant Client as MCP 客户端（Claude 等）
+    participant Main as crates/konnect main()
+    participant H as konnect-core mcp/handler.rs McpHandler
+    participant Router as konnect-core router ToolRouter
+    participant Tool as konnect-core tools/*.rs（ToolDef.handler）
+    participant SCH as konnect-schematic-editor / konnect-sexp（.kicad_sch 文件）
+    participant IPC as KiCadIpcClient（NNG + protobuf）
+    participant KC as KiCad 10 IPC 服务
+
+    Client->>Main: 启动 konnect（stdin 为管道）
+    Main->>Main: Config::load_resolved()；tracing 输出到 stderr
+    Main->>H: McpHandler::new_with_config_resolution()（启动时仅加载 starter kit）
+    Main->>H: transport::stdio::run_stdio(handler)（TransportMode::Stdio）
+    Client->>H: JSON-RPC tools/list 或 tools/call
+    H->>H: dispatch → execute_tool()
+    H->>Router: get_tool(name)（未加载且 auto_load 开启时先 load 对应工具组）
+    H->>H: 校验 required 参数与 input_schema
+    H->>Tool: (tool_def.handler)(args, ctx)
+    alt 原理图工具（如 add_schematic_component）
+        Tool->>SCH: cse::Schematic::load(sch_path)
+        Tool->>SCH: 修改后 write_atomic_if_unchanged() 原子写回
+    else PCB 工具（如 pcb_components 的放置操作）
+        Tool->>IPC: with_board_ipc_classified() → KiCadIpcClient::new(address)
+        IPC->>KC: 请求经 NNG 发送（protobuf）
+        KC-->>IPC: 结果或错误
+        IPC-->>Tool: 成功，或 IpcFailure（Unreachable / Rejected / Uncertain 等）
+    end
+    Tool-->>H: CallToolResult
+    H-->>Client: JSON-RPC 响应
+```
+
+图依据：mixelpixx/Konnect@676efce，读过 `crates/konnect/src/main.rs`（入口与 transport 分支）、`crates/konnect-core/src/mcp/handler.rs`（`handle_message`、`tools/call` 与 `execute_tool` 段）、`crates/konnect-core/src/router/registry.rs`（工具计数）、`crates/konnect-core/src/tools/sch_components.rs`（`handle_add_schematic_component` 段）、`crates/konnect-core/src/tools/pcb_components.rs`（`ipc!` 宏段）、`crates/konnect-core/src/tools/mod.rs`（`with_board_ipc_classified` 段）；`router/mod.rs` 仅读取 `ToolRouter` 相关函数。未运行代码。
+
+说明：仓库 README 顶部声明本仓库将归档为只读，开发转至 Konnect-EDA；图描述的是本仓库当前源码。
+
 ## 关联页面
 
 - [KiCad（开源 PCB 与原理图 EDA）](./kicad.md) — Konnect 操作的 EDA 工程与桌面环境
@@ -67,6 +108,7 @@ summary: "Konnect 是 KiCad 10 的原生 Rust/MCP 插件，通过 KiCad IPC API 
 
 - [Konnect 仓库归档](../../sources/repos/konnect.md)
 - [Konnect 官方 GitHub 仓库](https://github.com/mixelpixx/Konnect)
+- 源码核对（2026-11-02）：mixelpixx/Konnect@676efce，读过 crates/konnect/src/main.rs、crates/konnect-core/src/mcp/handler.rs、crates/konnect-core/src/router/mod.rs、crates/konnect-core/src/router/registry.rs、crates/konnect-core/src/tools/sch_components.rs、crates/konnect-core/src/tools/pcb_components.rs、crates/konnect-core/src/tools/mod.rs、README.md（前 150 行）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -52,6 +52,48 @@ OpenFOAM Claude Suite（swtbkim/openfoam-claude-suite）是拆分为 of-sim、of
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 MIT。 
 
+## 源码运行时序图
+
+入口：由 Claude 按 `skills/of-sim/SKILL.md` 的阶段调用 `skills/of-sim/scripts/` 下的 shell 包装器，原生 Linux 形式为 `bash <scripts>/ofrun.sh run <caseAbsPath> blockMesh`。仓库本身没有常驻程序入口；求解器与 `blockMesh`、`checkMesh` 等为外部 OpenFOAM v2412 应用，未在本仓库内，图中标为「外部」。
+
+```mermaid
+sequenceDiagram
+    participant A as Claude 按 of-sim SKILL.md
+    participant CS as ofcase.sh
+    participant RN as ofrun.sh
+    participant MN as ofmon.sh
+    participant OF as 外部 OpenFOAM 应用
+    A->>CS: ofcase.sh new 模板 名称（P2 建案）
+    CS-->>A: 打印 CASE 路径，模板复制到 FOAM_RUN
+    A->>CS: ofcase.sh set case 字典 条目 值（P3 配置）
+    CS->>CS: foamDictionary -entry -set
+    A->>RN: ofrun.sh run case blockMesh
+    RN->>OF: 执行 blockMesh，输出写入 log.blockMesh
+    RN-->>A: 尾 30 行与 __OFRC=rc__
+    A->>RN: ofrun.sh run case checkMesh
+    RN->>OF: 执行 checkMesh，输出写入 log.checkMesh
+    RN-->>A: 尾 30 行与 __OFRC=rc__
+    A->>A: 闸门：是否出现 Mesh OK
+    alt 串行
+        A->>RN: ofrun.sh run case 求解器
+        RN->>OF: 执行求解器，输出写入 log.求解器
+    else 并行
+        A->>RN: ofrun.sh par case N 求解器
+        RN->>OF: mpirun --oversubscribe -np N 求解器 -parallel
+    end
+    RN-->>A: 尾 30 行与 __OFRC=rc__
+    loop 运行期间（P4 监控）
+        A->>MN: ofmon.sh status case
+        MN-->>A: 判定 CONVERGED / COMPLETED_ENDTIME / RUNNING_OK / DIVERGED / FATAL / NO_LOG
+    end
+    opt 判定为 DIVERGED 或 FATAL
+        A->>MN: ofmon.sh errors case
+        MN-->>A: FOAM FATAL 片段
+    end
+```
+
+图依据：swtbkim/openfoam-claude-suite@3863d6d，实际读过 `README.md`（前 80 行）、`skills/of-sim/SKILL.md`（前 150 行）、`skills/of-sim/scripts/ofrun.sh`（完整）、`skills/of-sim/scripts/ofcase.sh`（前 60 行与子命令结构）、`skills/of-sim/scripts/ofmon.sh`（子命令与判定段）。未运行代码。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -62,6 +104,7 @@ OpenFOAM Claude Suite（swtbkim/openfoam-claude-suite）是拆分为 of-sim、of
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/swtbkim-openfoam-claude-suite.md)
 - [swtbkim/openfoam-claude-suite 官方仓库](<https://github.com/swtbkim/openfoam-claude-suite>)
+- 源码核对（2026-11-02）：swtbkim/openfoam-claude-suite@3863d6d，读过 README.md（前 80 行）、skills/of-sim/SKILL.md（前 150 行）、skills/of-sim/scripts/ofrun.sh、ofcase.sh（前 60 行与子命令结构）、ofmon.sh（子命令与判定段）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -55,6 +55,45 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python inference.py --point_cloud pcd/scene0000_00.ply --output scene0000_00.txt --model_path manycore-research/SpatialLM1.1-Qwen-0.5B`（README「Inference」；`--point_cloud` 可为单个 `.ply` 或目录）
+
+```mermaid
+sequenceDiagram
+    participant Main as inference.py __main__
+    participant Pcd as spatiallm.pcd（load / cleanup / transform）
+    participant Gen as generate_layout
+    participant LLM as SpatialLMQwenForCausalLM（spatiallm_qwen.py）
+    participant Enc as point_backbone（Sonata 或 SceneScript）+ point_proj
+    participant Lay as spatiallm.Layout（layout.py）
+    Main->>LLM: AutoTokenizer / AutoModelForCausalLM.from_pretrained，to(cuda)，set_point_backbone_dtype(float32)
+    loop 每个 .ply 文件
+        Main->>Pcd: load_o3d_pcd(file)
+        Main->>Pcd: cleanup_pcd(voxel_size=grid_size)（未加 --no_cleanup 时执行）
+        Main->>Pcd: get_points_and_colors，min_extent = points 最小值
+        Main->>Pcd: preprocess_point_cloud：Compose 变换，拼接 grid_coord / coord / color
+        Main->>Gen: generate_layout(model, input_pcd, tokenizer, code_template, detect_type, categories)
+        Gen->>Gen: 读取 code_template，按 detect_type 生成任务提示，拼接 point_start / point_pad / point_end 占位
+        Gen->>Gen: tokenizer.apply_chat_template
+        Gen->>LLM: 子线程 model.generate(input_ids, point_clouds)，TextIteratorStreamer
+        LLM->>Enc: forward_point_cloud：去除 NaN 点，编码，point_proj 映射到 hidden_size
+        Enc-->>LLM: 点特征
+        LLM->>LLM: 将点特征插入占位 token 位置，自回归解码
+        loop 流式输出 token
+            LLM-->>Gen: text 片段
+            Gen-->>Main: 打印
+        end
+        Gen->>Lay: Layout(layout_str) 解析实体行
+        Gen->>Lay: undiscretize_and_unnormalize(num_bins)
+        Gen-->>Main: layout
+        Main->>Lay: translate(min_extent)
+        Main->>Lay: to_language_string()，写入 --output 文件
+    end
+```
+
+图依据：SpatialLM@8913c44，`inference.py`（main、preprocess_point_cloud、generate_layout）、`spatiallm/model/spatiallm_qwen.py`（forward_point_cloud、forward 中点特征插入段）、`spatiallm/layout/layout.py`（from_str、undiscretize_and_unnormalize、translate 等签名）、`spatiallm/pcd/pcd_loader.py`（函数签名）、`README.md`（Inference 段）；未运行代码。SceneScript 与 Sonata 两条编码分支仅按源码分支示意，未核对两种 checkpoint 的权重差异。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +105,7 @@ institutions:
 - [SpatialLM 源码归档](../../sources/repos/spatiallm.md)（<https://github.com/manycore-research/SpatialLM>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：manycore-research/SpatialLM@8913c44，读过 README.md、inference.py（main、preprocess_point_cloud、generate_layout）、spatiallm/model/spatiallm_qwen.py（forward_point_cloud 与 forward 点特征插入段）、spatiallm/layout/layout.py（函数签名与 from_str 段）、spatiallm/pcd/pcd_loader.py（函数签名）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

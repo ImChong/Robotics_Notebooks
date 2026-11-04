@@ -55,6 +55,53 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`cd example && python teleop_real.py --input wuji_glove --hand right --glove-sn <YOUR_SN>`（真机；仿真用 `teleop_sim.py`）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant T as example/teleop_real.py main 与 run_teleop
+    participant G as input_devices/wuji_glove_device.py WujiGloveDevice
+    participant R as wuji_retargeting/retarget.py Retargeter
+    participant O as wuji_retargeting/opt/adaptive_analytical.py AdaptiveOptimizerAnalytical
+    participant F as wuji_retargeting/opt/base.py LPFilter
+    participant B as teleop_real.py WujiHandBackend 或 WujiHand2Backend
+
+    T->>G: create_wuji_glove_device 构造 WujiGloveDevice(hand_side, device_name, sn)
+    T->>R: Retargeter.from_yaml(config, hand_side)
+    R->>O: BaseOptimizer.from_config 构造优化器
+    O->>O: RobotWrapper(urdf_path) 用 pinocchio 加载手部模型
+    R->>F: LPFilter(lp_alpha)
+    T->>B: 最后才上电: WujiHandBackend 或 WujiHand2Backend
+    loop 直到 Ctrl+C
+        T->>G: get_fingers_data()
+        G-->>T: 最新 (21, 3) 关键点, 取 left 或 right 侧
+        alt 首帧为空或全零
+            T->>T: sleep 10 ms 后跳过
+        else 有效帧
+            T->>R: retarget(fingers_pose)
+            R->>R: apply_mediapipe_transformations 坐标变换到手腕系
+            R->>R: _apply_rotation 与 _apply_offset (仅配置非零时)
+            R->>O: solve(mediapipe_kp)
+            O->>O: _compute_pinch_alpha 与目标向量计算
+            O->>O: _run_optimization NLopt 求解 qpos
+            O-->>R: qpos (20,)
+            R->>F: next(qpos) 低通滤波
+            F-->>R: 滤波后 qpos
+            R-->>T: qpos
+            T->>T: 若有 mjcf_path 则按关节名重排 qpos
+            T->>B: send(qpos)
+            B->>B: 下发关节目标位置到真机
+        end
+    end
+    T->>B: close() 失能关节或断开会话
+    T->>G: cleanup() 或 close() 清理输入设备
+```
+
+图依据：wuji-technology/wuji-retargeting@531f6ed，实际读过 `README.md`、`example/teleop_real.py`、`example/input_devices/wuji_glove_device.py`（`get_fingers_data`）、`wuji_retargeting/retarget.py`、`wuji_retargeting/robot.py`、`wuji_retargeting/opt/base.py`（`from_config`、`_run_optimization`）、`wuji_retargeting/opt/adaptive_analytical.py`（`solve`）。`mediapipe.py`、`LPFilter` 等未逐行读，仅据调用名画图。未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +113,7 @@ institutions:
 - [wuji-retargeting 源码归档](../../sources/repos/wuji-retargeting.md)（<https://github.com/wuji-technology/wuji-retargeting>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：wuji-technology/wuji-retargeting@531f6ed，读过 README.md、example/teleop_real.py、example/input_devices/wuji_glove_device.py、wuji_retargeting/retarget.py、wuji_retargeting/robot.py、wuji_retargeting/opt/base.py、wuji_retargeting/opt/adaptive_analytical.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

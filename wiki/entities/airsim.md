@@ -54,10 +54,48 @@ summary: "Microsoft AirSim：基于 Unreal/Unity 的无人机与自动驾驶视�
 - **局限：维护状态** — 新长期项目应评估 Colosseum 等 fork 与替代仿真器。
 - **局限：资源** — UE 构建与 GPU 要求高于 PyBullet Gym。
 
+## 源码运行时序图
+
+入口：在 Unreal Engine 中运行带 AirSim 插件的关卡（`ASimHUD::BeginPlay` 启动仿真模式与 API 服务）；Python 侧通过 `airsim.MultirotorClient()`（即 `VehicleClient`，默认端口 41451）连接。
+
+```mermaid
+sequenceDiagram
+  participant HUD as ASimHUD (SimHUD.cpp)
+  participant SM as ASimModeBase / ASimModeWorldMultiRotor
+  participant RS as RpcLibServerBase (AirLib api)
+  participant MS as MultirotorRpcLibServer
+  participant MA as MultirotorApiBase
+  participant PY as PythonClient VehicleClient (client.py)
+  participant WS as WorldSimApi 图像与环境接口
+
+  Note over HUD: UE 启动，ASimHUD::BeginPlay
+  HUD->>HUD: initializeSettings() → loadLevel()
+  HUD->>SM: createSimMode()
+  HUD->>SM: startApiServer()（settings 中 enable_rpc 为真时）
+  SM->>MS: createApiServer() → new MultirotorRpcLibServer(...)
+  MS->>RS: 基类构造，创建 rpc::server
+  RS->>RS: bind ping / enableApiControl / armDisarm / simGetImages 等
+  MS->>MS: bind takeoff / moveByVelocity / moveToPosition 等
+  SM->>RS: api_server_->start() → server.run() 开始监听
+
+  PY->>RS: msgpackrpc.Client.call('enableApiControl', True, vehicle_name)
+  RS->>MA: getVehicleApi(name)->enableApiControl(true)
+  PY->>MS: call_async('takeoff', timeout_sec, vehicle_name)
+  MS->>MA: getVehicleApi()->takeoff(timeout_sec)
+  PY->>MS: call_async('moveByVelocity', vx, vy, vz, duration, ...)
+  MS->>MA: moveByVelocityInternal（控制器与飞行模型在 AirLib 中推进）
+  PY->>RS: call('simGetImages', requests, vehicle_name, external)
+  RS->>WS: getWorldSimApi()->getImages(...)
+  WS-->>PY: 图像响应（ImageResponse）
+```
+
+图依据：microsoft/AirSim@1ca93f6，实际读过 `README.md`、`docs/code_structure.md`、`PythonClient/airsim/client.py`（局部）、`AirLib/src/api/RpcLibServerBase.cpp`（局部）、`AirLib/src/vehicles/multirotor/api/MultirotorRpcLibServer.cpp`（局部）、`AirLib/src/vehicles/multirotor/api/MultirotorApiBase.cpp`（仅 grep）、`Unreal/Plugins/AirSim/Source/SimHUD/SimHUD.cpp`、`Unreal/Plugins/AirSim/Source/SimMode/SimModeBase.cpp`（局部）、`Unreal/Plugins/AirSim/Source/Vehicles/Multirotor/SimModeWorldMultiRotor.cpp`（局部）。未运行代码。
+
 ## 参考来源
 
 - [sources/repos/airsim.md](../../sources/repos/airsim.md)
 - [microsoft/AirSim](https://github.com/microsoft/AirSim)
+- 源码核对（2026-11-02）：microsoft/AirSim@1ca93f6，读过 README.md、docs/code_structure.md、PythonClient/airsim/client.py（局部）、AirLib/src/api/RpcLibServerBase.cpp（局部）、AirLib/src/vehicles/multirotor/api/MultirotorRpcLibServer.cpp（局部）、Unreal/Plugins/AirSim/Source/SimHUD/SimHUD.cpp、Unreal/Plugins/AirSim/Source/SimMode/SimModeBase.cpp（局部）、Unreal/Plugins/AirSim/Source/Vehicles/Multirotor/SimModeWorldMultiRotor.cpp（局部）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

@@ -95,11 +95,56 @@ flowchart LR
 - **与 LiDAR 分工不同**：雷达擅长 **远距离动目标与全天候测距**，角分辨率与稠密建图通常不如旋转 LiDAR；不宜直接等同 [LiDAR SLAM 选型](../comparisons/lidar-slam-lio-vio-selection.md) 中的 LIO 方案。
 - **仿真缺口**：本库 [多旋翼仿真栈](../overview/multirotor-simulation-planning-control-stack.md) 以 AirSim/PyBullet 为主，**不含** 相控阵雷达物理仿真；算法验证多依赖本仓库自带仿真报告（`docs/`）或实测。
 
+## 源码运行时序图
+
+入口：`python 9_Firmware/9_3_GUI/GUI_V7_PyQt.py`（上位机）；MCU 入口 `int main(void)`（`9_Firmware/9_1_Microcontroller/9_1_3_C_Cpp_Code/main.cpp`）；FPGA 顶层 `radar_system_top`（`USB_MODE=1` 为 FT2232H 量产板分支）
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 操作者
+    participant G as GUI_V7_PyQt.py RadarDashboard
+    participant R as radar_protocol.py FT2232HConnection RadarAcquisition
+    participant F as FPGA radar_system_top
+    participant M as MCU main.cpp
+    participant A as ADAR1000_Manager 波束与收发切换
+
+    U->>G: python GUI_V7_PyQt.py 执行 main 并创建 RadarDashboard
+    G->>R: 打开 FT2232H 连接并启动 RadarDataWorker
+    U->>G: 点击命令按钮 例如 MTI 开关 opcode 0x26
+    G->>R: _send_fpga_cmd 经 RadarProtocol.build_command 生成 4 字节命令
+    R->>F: FT2232HConnection.write 下发命令
+    F->>F: usb_data_interface_ft2232h 解码为 cmd_opcode 等并写入寄存器
+
+    M->>M: main 调用 systemPowerUpSequence 上电时序
+    M->>M: 开机后 GPS_SendBinaryToGUI 经 CDC 发送一次 GPS 包
+    M->>G: STM32 USB CDC 二进制 GPS 包
+    G->>G: GPSDataWorker 读取 STM32USBInterface 并 parse_gps_data
+
+    loop 每个雷达扫描帧 runRadarPulseSequence
+        M->>A: setCustomBeamPattern16 下发 TX 与 RX 波束码
+        M->>F: executeChirpSequence 翻转 GPIOD PIN8 通知新 chirp
+        A->>A: pulseTXMode 与 pulseRXMode 切换收发
+        F->>F: radar_transmitter 经 plfm_chirp_controller_enhanced 到 dac_interface_enhanced
+        F->>F: radar_receiver_final 经 ad9484 到 ddc_400m 到 matched_filter_multi_segment
+        F->>F: range_bin_decimator 到 mti_canceller 到 doppler_processor_optimized
+        F->>F: cfar_ca 输出检测标志
+        M->>F: 翻转 PIN9 与 PIN10 通知俯仰与方位步进
+    end
+
+    F->>R: 经 FT2232H 上传 0xAA 数据包与 0xBB 状态包
+    R->>R: find_packet_boundaries 后 parse_data_packet
+    R->>G: RadarDataWorker 取出帧并发出 frameReady
+    G->>G: _on_frame_ready 更新距离多普勒与点迹显示
+```
+
+图依据：NawfalMotii79/PLFM_RADAR@62d4c55（默认分支 HEAD），实际读过 `9_Firmware/9_3_GUI/GUI_V7_PyQt.py`、`9_Firmware/9_3_GUI/v7/dashboard.py`（局部）、`9_Firmware/9_3_GUI/v7/workers.py`（局部）、`9_Firmware/9_3_GUI/v7/hardware.py`（头部与类定义）、`9_Firmware/9_3_GUI/radar_protocol.py`（类与函数签名、采集线程循环）、`9_Firmware/9_2_FPGA/radar_system_top.v`（例化与 USB_MODE 分支）、`9_Firmware/9_2_FPGA/radar_receiver_final.v`（例化列表）、`9_Firmware/9_2_FPGA/radar_transmitter.v`（例化列表）、`9_Firmware/9_2_FPGA/usb_data_interface_ft2232h.v`（头部注释与命令输出段）、`9_Firmware/9_1_Microcontroller/9_1_3_C_Cpp_Code/main.cpp`（main 与 runRadarPulseSequence、executeChirpSequence、GPS 发送片段）、`9_Firmware/9_1_Microcontroller/9_1_1_C_Cpp_Libraries/gps_handler.cpp`（GPS_SendBinaryToGUI）。未运行代码。
+
 ## 参考来源
 
 - [sources/repos/plfm_radar.md](../../sources/repos/plfm_radar.md)
 - [NawfalMotii79/PLFM_RADAR](https://github.com/NawfalMotii79/PLFM_RADAR)
 - [项目文档（GitHub Pages）](https://NawfalMotii79.github.io/PLFM_RADAR/docs/)
+- 源码核对（2026-11-02）：NawfalMotii79/PLFM_RADAR@62d4c55（默认分支 HEAD），读过 9_Firmware/9_3_GUI/GUI_V7_PyQt.py、v7/dashboard.py（局部）、v7/workers.py（局部）、v7/hardware.py（局部）、radar_protocol.py、9_Firmware/9_2_FPGA/radar_system_top.v、radar_receiver_final.v、radar_transmitter.v、usb_data_interface_ft2232h.v（局部）、9_Firmware/9_1_Microcontroller/9_1_3_C_Cpp_Code/main.cpp（局部）、9_1_1_C_Cpp_Libraries/gps_handler.cpp（局部）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

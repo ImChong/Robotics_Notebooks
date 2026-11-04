@@ -111,6 +111,45 @@ venue: IEEE/RSJ International Conference on Intelligent Robots and Systems
 
 覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。Python 侧按名加载 Menagerie 镜像模块，见 [robot_descriptions.py](./robot-descriptions-py.md) 的 `*_mj_description`；与 Awesome / ROS 2 仓的选型见 [机器人描述目录选型](../comparisons/robot-description-catalogs.md)。若需从 **自然语言** 快速生成 **可验证** 的 micro-scene 包（spec + MJCF + 交互 API + smoke test），见 Agent Skill [Text2MuJoCo](./text2mujoco.md)。
 
+## 源码运行时序图
+
+以下图针对本页 HMI 主表所索引的 [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie)（模型库），不是 MuJoCo 物理引擎本体。Menagerie 自带可运行的 Python 包，图示其「取模型 → 本地缓存 → 交给 MuJoCo 查看器」路径。
+
+入口：`mujoco-menagerie view <name> [entry]`（`pyproject.toml` 的 `[project.scripts]` 指向 `mujoco_menagerie.__main__:main`）
+
+```mermaid
+sequenceDiagram
+  participant CLI as __main__.main 命令行入口
+  participant Pkg as mujoco_menagerie 包 API
+  participant Reg as Robot 与 registry.json
+  participant Cache as _cache.Cache
+  participant GH as GitHub Releases 模型归档
+  participant MJ as mujoco.viewer
+  CLI->>Pkg: mm.get(name)
+  Pkg->>Reg: bundled() 读取 wheel 内 registry.json
+  Reg-->>CLI: Robot 元数据（无 I/O）
+  CLI->>Reg: Robot.xml(entry)
+  Reg->>Reg: entry(name).file 取入口 XML 相对路径
+  Reg->>Cache: Robot.path() 调用 Cache.resolve
+  alt 设置了 MENAGERIE_ROOT
+    Cache-->>Reg: root/name 本地目录
+  else 已发布且存在 .complete 标记
+    Cache-->>Reg: models/name-oid16 缓存目录
+  else 首次使用
+    Cache->>Cache: _lock 后 _publish 到临时目录
+    Cache->>GH: _download(base_url/robot.asset)
+    GH-->>Cache: 模型归档
+    Cache->>Cache: 校验 size 与 sha256
+    Cache->>Cache: tarfile 解压并写入 .complete 文件清单
+    Cache->>Cache: os.replace 原子发布到 models 目录
+  end
+  Cache-->>Reg: 模型目录
+  Reg-->>CLI: 入口 XML 路径
+  CLI->>MJ: mujoco.viewer.launch_from_path(xml)
+```
+
+图依据：google-deepmind/mujoco_menagerie@98a70c5，`python/src/mujoco_menagerie/__main__.py`、`__init__.py`、`_registry.py`、`_cache.py`、`_archive.py`、`pyproject.toml`、`README.md`；未运行代码。
+
 ## 关联页面
 - [Draft：参数化机器人设计探索工具](./paper-draft-parametric-robot-design.md) — 参数化规格编译为 MJCF，并用 MuJoCo/mjlab 评测设计取舍。
 - [ADAMS（Automatic Dynamic Analysis of Mechanical Systems）](./adams.md) — 工业 MBD 程序谱系原点（Orlandea 1973/1977）；与开源 RL 引擎分工不同
@@ -171,6 +210,8 @@ venue: IEEE/RSJ International Conference on Intelligent Robots and Systems
 - [wechat_embodied_ai_lab_robot_training_stack_layers_2026](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
 
 - [wechat_shenlan_sim_platforms_top8_decade](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md)
+
+- 源码核对（2026-11-02）：google-deepmind/mujoco_menagerie@98a70c5，读过 `README.md`、`pyproject.toml`、`python/src/mujoco_menagerie/__init__.py`、`__main__.py`、`_registry.py`、`_cache.py`、`_archive.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

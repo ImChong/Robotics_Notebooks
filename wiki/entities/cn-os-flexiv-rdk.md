@@ -55,6 +55,50 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口（需先按官方 First Time Setup 完成准备，连接的是真实或已配置的 Flexiv 机器人）：`python3 example_py/basics3_primitive_execution.py Enlight-L-123456`
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户 终端
+    participant E as basics3_primitive_execution.py main
+    participant R as flexivrdk.Robot Python 封装
+    participant C as 机器人控制器 闭源库经网络
+    participant T as utility.py 工具函数
+    U->>E: python3 basics3_primitive_execution.py robot_sn
+    E->>R: flexivrdk.Robot(robot_sn) 按序列号连接
+    E->>R: fault() 若有故障则 ClearFault()
+    E->>R: ServoOn() 使能伺服
+    loop 直到 operational() 为真
+        E->>R: operational()
+    end
+    E->>R: info().single_arm_groups 获取单臂关节组
+    E->>R: Home() 回到 home 位姿
+    E->>R: SwitchMode(NRT_PRIMITIVE_EXECUTION)
+    E->>R: ExecutePrimitive 对各关节组下发 MoveJ (target 与 waypoints)
+    R->>C: 下发 MoveJ 基元
+    loop 直到各组 reachedTarget 为真
+        E->>R: primitive_states()
+        E->>T: primitive_state_true_for_groups(states, "reachedTarget")
+    end
+    E->>R: ExecutePrimitive 对各关节组下发 MoveL (世界系目标位姿与 waypoints)
+    R->>C: 下发 MoveL 基元
+    loop 直到 reachedTarget 为真
+        E->>R: primitive_states()
+    end
+    E->>T: quat2eulerZYX(target_quat, degree=True)
+    E->>R: ExecutePrimitive 下发 MoveL (TRAJ START 参考系, 仅旋转)
+    R->>C: 下发 MoveL 基元
+    loop 直到 reachedTarget 为真
+        E->>R: primitive_states()
+    end
+    E->>R: Stop() 停止并回到 IDLE
+```
+
+图依据：flexivrobotics/flexiv_rdk@159d41f，README.md、example_py/basics3_primitive_execution.py、example_py/utility.py、example_py/basics2_clear_fault.py（检索）。库内部（lib/ 下预编译静态库）为闭源，图中 `Robot` 与控制器之间的调用未展开，未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -64,6 +108,8 @@ institutions:
 ## 参考来源
 
 - [flexiv_rdk 源码归档](../../sources/repos/flexiv_rdk.md)（<https://github.com/flexivrobotics/flexiv_rdk>）
+
+- 源码核对（2026-11-02）：flexivrobotics/flexiv_rdk@159d41f，读过 README.md、example_py/basics3_primitive_execution.py、example_py/utility.py，检索过 example_py/basics2_clear_fault.py；时序图依据以上文件，未运行代码。
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -61,6 +61,33 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`python3 python3/examples/api/example_humanoid.py [robot_ip]`（先按 README 执行 `pip install python3/amd64/limxsdk-*.whl`；不传参数时连接 `127.0.0.1`，即本机仿真器）。开源仓库只含示例与预编译 SDK（`lib/`、`python3/*.whl`），SDK 源码不在仓库内，因此下图只画示例脚本与 SDK 公开接口之间的调用与数据流，SDK 内部的传输实现未画。
+
+```mermaid
+sequenceDiagram
+    participant E as example_humanoid.py (__main__)
+    participant R as limxsdk Robot(RobotType.Humanoid) (闭源 wheel)
+    participant X as 仿真器 / 真机 (init 的 IP)
+    participant CB as RobotReceiver 回调
+
+    E->>R: Robot(RobotType.Humanoid), init(robot_ip)
+    R-->>X: 建立连接 (127.0.0.1 或机器人 IP)
+    E->>R: getMotorNumber(), getMotorNames()
+    E->>R: subscribeImuData / subscribeRobotState / subscribeSensorJoy / subscribeDiagnosticValue
+    loop 1000 Hz (Rate(1000) + rate.sleep)
+        E->>E: 构造 RobotCmd (mode, q, dq, tau, Kp, Kd, motor_names, stamp)
+        E->>R: publishRobotCmd(cmd_msg)
+        R-->>X: RobotCmd (逐关节 q / dq / tau / Kp / Kd)
+    end
+    Note over X,CB: 异步: 机器人或仿真器推送状态, SDK 调用已注册回调
+    X-->>R: RobotState, ImuData, SensorJoy, DiagnosticValue
+    R-->>CB: imuDataCallback / robotStateCallback / sensorJoyCallback / diagnosticValueCallback
+```
+
+图依据：limxdynamics/limxsdk-lowlevel@02ed0e3，`README.md`、`python3/examples/api/example_humanoid.py`（另读 `examples/test_humanoid.cpp` 作为 C++ 接口的对照，它是 gtest 用例而非运行入口）。
+
 ## 参考来源
 
 - [limxsdk-lowlevel 源码归档](../../sources/repos/limxsdk-lowlevel.md)（<https://github.com/limxdynamics/limxsdk-lowlevel>）

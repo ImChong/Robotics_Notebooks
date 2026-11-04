@@ -85,12 +85,59 @@ summary: "Infinigen V2 是普林斯顿视觉与学习实验室开源的 Blender/
 - [Blender](./blender.md) — Infinigen 的主要场景编辑与导出宿主。
 - [Sim2Real](../concepts/sim2real.md) — 仿真外观和动力学差异的迁移风险。
 
+## 源码运行时序图
+
+入口：`uv run infinigen bricks_rand material_torus_uv render_cycles --seed 0`（Infinigen 2.0 CLI，`pyproject.toml` 的 `[project.scripts]` 指向 `infinigen2.generate:main`；文档「Infinigen 2.0」。1.x 的 `python -m infinigen_examples.generate_nature` 等入口未画入本图）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Cli as infinigen2/generate.py main() / _main()
+    participant Man as GENERATORS_MANIFEST（manifest.json）
+    participant Trace as procfunc pf.trace（可选 --trace）
+    participant Exec as generate.py execute_generators()
+    participant Gen as 生成器函数（如 bricks_rand、material_torus_uv）
+    participant Exp as exporters/render_cycles.py（Exporter 类）
+    participant BL as Blender bpy（进程内）
+
+    Cli->>Cli: get_parser().parse_args()，未指定 --seed 时取系统随机数
+    Cli->>BL: pf.ops.object.clear_scene()，设置分辨率、帧率、帧范围
+    Cli->>Man: _resolve_all_generators(args.generators) → _resolve_generator(name)
+    Man-->>Cli: 按名称匹配并 import 的函数与类别
+    opt --trace 指定
+        Cli->>Trace: _execute_trace(modes, ...) → pf.trace(execute_generators, rng, pipeline_parameters)
+        Trace-->>Cli: 写出 codegen.py / graph.json / codestats
+    end
+
+    Cli->>Exec: execute_generators(output_folder, generators, rng, pipeline_parameters)
+    loop 按命令行顺序的每个 generator
+        Exec->>Exec: rng.spawn(2) 得到子随机数
+        opt 首个 Exporter 类别
+            Exec->>Exec: _finalize_before_export()
+        end
+        Exec->>Gen: _execute_step()，按函数签名从 data 取参数并传入 rng
+        Gen-->>Exec: result（对象 / 材质 / 相机 / 灯光）
+        Exec->>Exec: _unpack_by_category() 写回 data
+        opt Exporter 类别（如 render_cycles）
+            Exec->>Exp: 对 camera_indices 中每个相机调用导出器
+            Exp->>BL: 渲染帧并写入 output_folder
+        end
+    end
+    Exec-->>Cli: data（generator_times、base_tris、exports 等）
+    opt --save_blend
+        Cli->>BL: bake_shared_modifier_prefixes()，保存 .blend
+    end
+```
+
+图依据：princeton-vl/infinigen@64d35e5，实际读过 `pyproject.toml`（`[project.scripts]`）、`src/infinigen2/generate.py`（`get_parser`、`_main`、`_resolve_generator`、`_execute_trace`、`_execute_step`、`execute_generators`、`main` 的调用链）、`src/infinigen2/__init__.py`（manifest 加载）、`src/infinigen2/exporters/render_cycles.py`（仅看函数列表）、`docs/source/Infinigen2.md`；生成器内部几何与 procfunc 库实现未读，未运行代码。
+
 ## 参考来源
 
 - [Infinigen 官方项目页归档](../../sources/sites/infinigen.md)
 - [princeton-vl/infinigen 仓库归档](../../sources/repos/infinigen.md)
 - [Infinigen CVPR 2023 论文](https://arxiv.org/abs/2306.09310)
 - [Infinigen Indoors CVPR 2024 论文](https://arxiv.org/abs/2406.11824)
+- 源码核对（2026-11-02）：princeton-vl/infinigen@64d35e5，读过 pyproject.toml、src/infinigen2/generate.py、src/infinigen2/__init__.py、src/infinigen2/exporters/render_cycles.py（仅看函数列表）、docs/source/Infinigen2.md；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

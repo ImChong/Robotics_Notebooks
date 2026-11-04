@@ -59,10 +59,64 @@ summary: "gym-pybullet-drones 是 UTIAS DSL 的 PyBullet + Gymnasium 四旋翼 R
 - **局限：视觉保真度** — 低于 [Flightmare](./flightmare.md) / [AirSim](./airsim.md)。
 - **局限：桨叶/接触物理** — PyBullet 简化，不宜作唯一空气动力学真理源。
 
+## 源码运行时序图
+
+入口：`cd gym_pybullet_drones/examples && python3 pid.py`（README「Control examples」；`learn.py` / `play.py` 的 PPO 训练路径未画入本图）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Main as examples/pid.py run()
+    participant Env as envs/CtrlAviary（继承 BaseAviary）
+    participant PB as PyBullet（p.*）
+    participant Ctrl as control/DSLPIDControl（继承 BaseControl）
+    participant Log as utils/Logger
+
+    Main->>Env: CtrlAviary(drone_model, num_drones, initial_xyzs/rpys, physics=PYB, pyb_freq=240, ctrl_freq=48, gui)
+    Env->>PB: BaseAviary.__init__ 调用 p.connect(GUI 或 DIRECT)
+    Env->>PB: _housekeeping() 加载 plane.urdf 与 cf2x URDF，可选 _addObstacles()
+    Main->>Log: Logger(logging_freq_hz=48, num_drones, output_folder)
+    Main->>Ctrl: [DSLPIDControl(drone_model) for each drone]
+
+    loop i in range(duration_sec x CTRL_FREQ)
+        Main->>Env: env.step(action)，action 形状 (N, 4)，单位为 RPM
+        Env->>Env: _preprocessAction() 按 MAX_RPM 裁剪
+        loop PYB_STEPS_PER_CTRL 次（pyb_freq / ctrl_freq）
+            loop 每架无人机
+                Env->>PB: _physics(rpm)，applyExternalForce 四个旋翼（rpm^2 x KF）+ applyExternalTorque 偏航
+            end
+            Env->>PB: p.stepSimulation()
+        end
+        Env->>Env: _updateAndStoreKinematicInformation() 读取 pos/quat/vel/ang_v
+        Env->>Env: _computeObs() 调用 _getDroneStateVector(i)
+        Env->>Env: _computeReward / _computeTerminated / _computeTruncated / _computeInfo
+        Env-->>Main: obs, reward, terminated, truncated, info
+
+        loop 每架无人机 j
+            Main->>Ctrl: computeControlFromState(control_timestep, state=obs[j], target_pos, target_rpy)
+            Ctrl->>Ctrl: computeControl() 取 cur_pos / cur_quat / cur_vel / cur_ang_vel
+            Ctrl->>Ctrl: _dslPIDPositionControl() 求推力与目标姿态
+            Ctrl->>Ctrl: _dslPIDAttitudeControl() 求四路 RPM
+            Ctrl-->>Main: rpm（作为下一步 action[j]）
+        end
+        Main->>Log: logger.log(drone=j, timestamp, state, control)
+        Main->>Env: env.render()
+        opt gui 为真
+            Main->>Main: sync(i, START, CTRL_TIMESTEP)
+        end
+    end
+
+    Main->>Env: env.close()
+    Main->>Log: logger.save() / save_as_csv("pid") / plot()
+```
+
+图依据：utiasDSL/gym-pybullet-drones@bc5000c，实际读过 `gym_pybullet_drones/examples/pid.py`、`gym_pybullet_drones/envs/BaseAviary.py`、`gym_pybullet_drones/envs/CtrlAviary.py`、`gym_pybullet_drones/control/BaseControl.py`、`gym_pybullet_drones/control/DSLPIDControl.py`、`gym_pybullet_drones/utils/enums.py`、`README.md`；`Logger` 内部实现未读，未运行代码。
+
 ## 参考来源
 
 - [sources/repos/gym_pybullet_drones.md](../../sources/repos/gym_pybullet_drones.md)
 - [utiasDSL/gym-pybullet-drones](https://github.com/utiasDSL/gym-pybullet-drones)
+- 源码核对（2026-11-02）：utiasDSL/gym-pybullet-drones@bc5000c，读过 README.md、gym_pybullet_drones/examples/pid.py、gym_pybullet_drones/envs/BaseAviary.py、gym_pybullet_drones/envs/CtrlAviary.py、gym_pybullet_drones/control/BaseControl.py、gym_pybullet_drones/control/DSLPIDControl.py、gym_pybullet_drones/utils/enums.py；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

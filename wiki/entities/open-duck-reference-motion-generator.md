@@ -58,10 +58,50 @@ uv run scripts/fit_poly.py --ref_motion recordings/
 - **格式文档缺失：** 从 mocap 转换需自行对齐 JSON 字段；上游 TODO 中计划补规范。
 - **机器人描述重复：** 未来拟拆 submodule，当前与 Playground MJCF 需手动保持版本一致。
 
+## 源码运行时序图
+
+入口：`uv run scripts/auto_waddle.py --duck open_duck_mini_v2 --sweep`（批量；`auto_waddle.py` 以子进程逐条调用 `gait_generator.py`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户命令行
+    participant AW as scripts/auto_waddle.py main()
+    participant CFG as robots/duck/auto_gait.json 与 placo_presets/medium.json
+    participant GG as gait_generator.py（子进程 python）
+    participant PWE as placo_walk_engine.py PlacoWalkEngine
+    participant OUT as output_dir 下的 JSON
+    U->>AW: uv run auto_waddle.py --duck --sweep 或 --num，可加 -j
+    AW->>CFG: 读取 dx/dy/dtheta 范围与 sweep 粒度
+    loop 每个待生成动作 i
+        AW->>AW: 写 tmp preset（sweep 取网格值，否则随机 dx/dy/dtheta）
+        AW->>GG: 组装 cmd: --duck --preset --name --output_dir
+    end
+    alt -j 且大于 1
+        AW->>GG: ThreadPoolExecutor 并行 run_command_with_logging
+    else 顺序执行
+        AW->>GG: 逐条 subprocess.run
+    end
+    GG->>CFG: 读取 placo_defaults.json 或传入的 preset
+    GG->>PWE: PlacoWalkEngine(asset_path, urdf, gait_parameters)
+    GG->>PWE: set_traj(dx, dy, dtheta + 0.00955)
+    loop 每个仿真步 DT=0.001，直到录满 length×FPS 帧
+        GG->>PWE: tick(DT)
+        GG->>PWE: get_angles / robot.get_T_world_fbase / get_current_support_phase
+        GG->>GG: 差分得到速度与脚接触，追加 episode Frames
+    end
+    GG->>OUT: 写 <name>_<vx>_<vy>_<vtheta>.json
+    AW->>OUT: 读取 Placo.avg_x/y_lin_vel 与 preset_name
+    AW->>OUT: 速度不在 slow/medium/fast 区间内则删除该文件
+```
+
+图依据：apirrone/Open_Duck_reference_motion_generator@3d7bc6f，读过 `README.md`、`scripts/auto_waddle.py`、`open_duck_reference_motion_generator/gait_generator.py`、`open_duck_reference_motion_generator/placo_walk_engine.py`（构造、`set_traj`、`tick` 片段）。
+
 ## 参考来源
 
 - [sources/repos/open_duck_reference_motion_generator.md](../../sources/repos/open_duck_reference_motion_generator.md)
 - [apirrone/Open_Duck_reference_motion_generator](https://github.com/apirrone/Open_Duck_reference_motion_generator)
+- 源码核对（2026-11-02）：apirrone/Open_Duck_reference_motion_generator@3d7bc6f，读过 README.md、scripts/auto_waddle.py、open_duck_reference_motion_generator/gait_generator.py、open_duck_reference_motion_generator/placo_walk_engine.py；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

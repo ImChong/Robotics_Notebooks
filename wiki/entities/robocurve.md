@@ -77,6 +77,60 @@ summary: "Robocurve 是 YC 支持的 Public Benefit Corporation，独立测量�
 - **独立性的 operational 定义：** testimonial 来自多家 lab 专家，但 **资金与评测协议** 仍需读者自行核对。
 - **报告样本：** 早期报告可能集中在少数 rig / 任务；外推至全产业需谨慎。
 
+## 源码运行时序图
+
+入口：`inspect-robots "<指令>"`（经 `_apply_instruction_sugar` 改写为 `inspect-robots run --instruction "<指令>"`；`main` 在 `src/inspect_robots/cli.py`）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 操作者 shell
+    participant CLI as cli.main / _cmd_run
+    participant REG as registry.resolve
+    participant EV as eval.eval / _run_eval
+    participant RO as rollout.rollout
+    participant CTL as DefaultController
+    participant POL as Policy 插件
+    participant APR as Approver
+    participant EMB as Embodiment 插件
+    participant SK as _Broadcast 与 LogSink
+    U->>CLI: inspect-robots "指令"
+    CLI->>CLI: init_dotenv 并 parse_args
+    CLI->>REG: _resolve_or_exit 解析 policy 与 embodiment
+    REG-->>CLI: 构造好的组件
+    CLI->>EV: eval(task, policy, embodiment, sinks, approver, grader)
+    EV->>SK: on_eval_start(spec)
+    loop 每个 scene 的每个 epoch
+        EV->>RO: rollout(policy, embodiment, scene, max_steps, controller, approver, sink)
+        RO->>POL: policy.reset(scene)
+        RO->>EMB: embodiment.reset(scene, seed)
+        loop t < max_steps
+            RO->>CTL: next_action(policy, obs, t, store)
+            alt 动作缓冲为空
+                CTL->>POL: policy.act(obs) 返回 ActionChunk
+            end
+            CTL-->>RO: 下一个动作
+            RO->>APR: review(action, store)，可能抛 SafetyAbort
+            APR-->>RO: 放行的动作
+            RO->>EMB: step(action)
+            EMB-->>RO: StepResult
+            RO->>SK: log_step(t, obs, action, result)
+            alt result.terminated 或 result.truncated
+                Note over RO: 结束本次试次
+            end
+        end
+        RO-->>EV: TrialRecord
+        EV->>EV: before_scoring 与各 scorer 打分
+        EV->>SK: on_trial_end(record)
+    end
+    EV->>SK: on_eval_end(log)，写入 JSON log
+    EV-->>CLI: list of EvalLog
+    CLI->>EMB: embodiment.close()（finally 中）
+    CLI-->>U: 打印摘要，status 为 success 时退出码为 0
+```
+
+图依据：robocurve/inspect-robots@c8a821b，读过 `README.md`、`pyproject.toml`（入口 `inspect-robots = "inspect_robots.cli:main"`）、`src/inspect_robots/cli.py`（`main`、`_cmd_run`、`_resolve_or_exit` 等）、`src/inspect_robots/eval.py`（`eval`、`_run_eval` 的主要段落）、`src/inspect_robots/rollout.py`（`rollout` 主循环）、`src/inspect_robots/controller.py`（`DefaultController.next_action`）、`src/inspect_robots/registry.py`（`resolve`）；`approver.py` 与 `logging/json_log.py` 仅核对了类与方法签名。未运行代码。
+
 ## 关联页面
 
 - [Inspect Robots（评测框架）](./inspect-robots.md)
@@ -89,6 +143,7 @@ summary: "Robocurve 是 YC 支持的 Public Benefit Corporation，独立测量�
 
 - [Robocurve 站点归档](../../sources/sites/robocurve-org.md)
 - [inspect-robots 源码归档](../../sources/repos/robocurve_inspect_robots.md)
+- 源码核对（2026-11-02）：robocurve/inspect-robots@c8a821b，读过 `README.md`、`pyproject.toml`、`src/inspect_robots/cli.py`、`src/inspect_robots/eval.py`、`src/inspect_robots/rollout.py`、`src/inspect_robots/controller.py`、`src/inspect_robots/registry.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

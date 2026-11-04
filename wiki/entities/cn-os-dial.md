@@ -61,11 +61,57 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`bash examples/eval.sh <model_path> <eval_type>`（仿真在线评测）。脚本先以后台方式运行 `python scripts/inference_service_dial.py --server --embodiment_tag gr1 --model_path ... --port ...`，再对每个 GR1 任务调用 `python scripts/simulation_service_dial_augPosRot.py --client --env_name ...`（失败最多重试 5 次）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant SH as examples/eval.sh
+    participant SRV as inference_service_dial.py --server
+    participant DP as DialPolicy gr00t/model/policy_dial.py
+    participant RIS as RobotInferenceServer gr00t/eval/service.py
+    participant CLI as simulation_service_dial_augPosRot.py --client
+    participant SIC as SimulationInferenceClient gr00t/eval/simulation_augPosRot.py
+    participant ENV as gym 环境 robocasa GR1
+    participant CS as compute_success_rate.py
+
+    SH->>SRV: nohup 启动推理服务
+    SRV->>DP: DialPolicy(model_path, embodiment_tag) 加载 checkpoint
+    SRV->>RIS: RobotInferenceServer(policy, port).run() 注册 get_action 与 get_modality_config
+    SH->>CLI: 对每个任务调用 client
+    CLI->>SIC: SimulationInferenceClient(host, port)
+    CLI->>SIC: get_modality_config()
+    SIC->>RIS: 请求 get_modality_config 经 ZMQ msgpack
+    RIS-->>SIC: 模态配置
+    CLI->>SIC: run_simulation(SimulationConfig)
+    SIC->>ENV: setup_environment 与 gym.make 及视频录制 wrapper
+    SIC->>ENV: env.reset()
+
+    loop 直到完成 n_episodes
+        SIC->>RIS: get_action(obs) 经 ZMQ msgpack
+        RIS->>DP: get_action(observations)
+        DP-->>RIS: actions
+        RIS-->>SIC: actions
+        SIC->>ENV: env.step(actions) 并累计 success 与奖励
+        alt terminations 或 truncations
+            SIC->>ENV: env.reset() 开始下一回合
+        end
+    end
+    SIC-->>CLI: env_name 与 episode_successes
+    SH->>CS: 汇总 client.log 写入 results.json
+```
+
+图依据：xpeng-robotics/DIAL@b611fed，读过 `README.md`（前 120 行）、`examples/eval.sh`（开头与任务循环、末尾段）、`examples/train.sh`、`scripts/inference_service_dial.py`（`main` 段与 grep）、`scripts/simulation_service_dial_augPosRot.py`（`--server` / `--client` 分支）、`gr00t/eval/service.py`（传输与 server 结构 grep）、`gr00t/eval/robot.py`（grep）、`gr00t/eval/simulation_augPosRot.py`（`run_simulation` 与 `_get_actions_from_server` 段）、`gr00t/model/policy_dial.py`（类与方法签名 grep）。`scripts/dual_system_train.py` 训练链路未画、未读。时序图依据以上文件，未运行代码。
+
 ## 参考来源
 
 - [DIAL 源码归档](../../sources/repos/dial.md)（<https://github.com/xpeng-robotics/DIAL>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：xpeng-robotics/DIAL@b611fed，读过 `README.md`（前 120 行）、`examples/eval.sh`、`examples/train.sh`、`scripts/inference_service_dial.py`、`scripts/simulation_service_dial_augPosRot.py`、`gr00t/eval/service.py`、`gr00t/eval/robot.py`（grep）、`gr00t/eval/simulation_augPosRot.py`（部分）、`gr00t/model/policy_dial.py`（grep）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

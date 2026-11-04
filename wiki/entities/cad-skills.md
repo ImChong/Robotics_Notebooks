@@ -97,6 +97,52 @@ flowchart TB
 - **误区：** 与 [mattpocock/skills](./mattpocock-skills.md) 可互相替代。后者服务 **通用应用工程**；CAD Skills 为 **毫米制机械/机器人** 专用 CLI 与规约，迁移时需重写项目 `CONTEXT` 与验收标准。
 - **局限：** Bambu / 切片 / 外协技能涉及 **本地设备与安全策略**；Implicit CAD 标记 **Experimental**；重 benchmark 资产在 **Git LFS**，轻量 clone 需按需 `git lfs pull`。
 
+## 源码运行时序图
+
+入口：`python model.py`（模型脚本中 `if __name__ == "__main__"` 下调用 `@step` / `@xbf` 等装饰的模型函数，如 `arm()`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户 / agent shell
+    participant S as model.py（__main__）
+    participant M as cad.engine.model Model.__call__
+    participant A as cad.engine.api build_script / _built / _ask
+    participant C as cad.engine.client request
+    participant D as cad_server engine/daemon.py Daemon
+    participant P as cad_server engine/supervisor.py
+    participant W as cad.engine.worker（warm worker）
+    participant B as cad.engine.build build / _write
+    participant E as cad.engine.export translate
+
+    U->>S: python model.py
+    S->>M: 调用模型函数 arm()
+    M->>M: sys._getframe 判断调用方是否为 __main__，决定是否回报日志
+    M->>A: self.build(log) 调用 api.build_script(script, [模型名])
+    A->>A: _built 组装 build 请求（script、functions、cwd、run、env、解释器）
+    A->>C: _ask 调用 client.request(message)
+    C->>D: connect（必要时启动 daemon）后经握手通道发送请求
+    D->>P: lease("worker", 脚本路径)，排队等待或启动该脚本的 worker
+    P->>W: Popen 启动 worker（JSON 按行协议通信）
+    D->>W: 发送 op build 请求
+    W->>B: build.build(script, functions) 构建声明的模型
+    B->>B: _build 载入脚本并执行模型函数体（build123d）
+    B->>B: _write 取得模型的 targets（xbf 在前，其余按装饰器顺序）
+    loop 每个声明的输出文件
+        B->>E: export.translate(source, kind, path, tolerance)
+        E-->>B: 写出 .xbf / .step / .glb 等文件
+    end
+    B-->>W: reports（每个模型的结果）
+    W-->>D: 最终应答，进度与日志经同一连接回传
+    D-->>C: answer
+    C-->>A: 应答（含 failed 时抛出 EngineError）
+    A-->>M: Report
+    M->>M: 脚本为 __main__ 时打印结果；api.say_notice 输出版本提示（如有）
+    M-->>S: 返回 api.Document 句柄（id、url、shape）
+```
+
+图依据：text-to-cad@4d42cb0，实际读过的文件：`README.md`（How it works 与 engine 示例）、`packages/cad/src/cad/engine/model.py`（`Model.__call__`、`Model.build`）、`packages/cad/src/cad/engine/api.py`（`build_script`、`_built`、`_ask`）、`packages/cad/src/cad/engine/client.py`（`request`、`_exchange` 片段）、`packages/cad/src/cad/engine/worker.py`（协议说明与 build 分派片段）、`packages/cad/src/cad/engine/build.py`（`build`、`_build`、`_write` 片段）、`packages/cad-server/src/cad_server/engine/daemon.py`（`lease`、`behind` 片段）、`packages/cad-server/src/cad_server/engine/supervisor.py`（`Popen` 片段）、`packages/cad-server/src/cad_server/engine/README.md`。未运行代码。连接握手细节与 daemon 启动路径未逐行核对，图中以概括形式表示。
+
 ## 关联页面
 
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 制造向 text-to-CAD 成熟度与工具谱系总览
@@ -123,3 +169,4 @@ flowchart TB
 
 - [earthtojake/text-to-cad 仓库源归档（本站）](../../sources/repos/earthtojake-text-to-cad.md)
 - [CAD Skills（GitHub）](https://github.com/earthtojake/text-to-cad)
+- 源码核对（2026-11-02）：earthtojake/text-to-cad@4d42cb0，读过 README.md、packages/cad/src/cad/engine/{model,api,client,worker,build}.py（相关函数片段）、packages/cad-server/src/cad_server/engine/{daemon,supervisor}.py（相关片段）、packages/cad-server/src/cad_server/engine/README.md；时序图依据以上文件，未运行代码。

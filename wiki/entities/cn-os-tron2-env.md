@@ -55,6 +55,38 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口（无需机器人）：`python examples/mock_quickstart.py`（真机路径为 `create_motion_controller(config, backend="websocket")`，transport 换成 WebsocketTransport）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant EX as examples/mock_quickstart.py main
+    participant RT as RecordingTransport（内存替身，仓库内示例）
+    participant MC as MotionController（motion/controller.py）
+    participant AS as ServoJStrategy（插值与发布原语）
+    participant TH as MotionController-publish 线程
+
+    EX->>RT: RecordingTransport()
+    EX->>MC: MotionController(transport, publish_rate=100, eta_default=0.02)
+    EX->>MC: start()
+    MC->>AS: read_measured_target，经 transport 读取测量状态，reset 插值器
+    MC->>TH: 启动 _publish_loop 线程
+    EX->>MC: command_joints(target 16 维)
+    MC->>MC: command_arm 拆为左右臂 7 维与头部 2 维
+    MC->>AS: set_destination(target, eta)
+    loop 每 1 / publish_rate 秒
+        TH->>AS: publish_current()，取插值当前值
+        AS->>RT: send_joint_cmd(q)，记录到 sent_frames
+    end
+    EX->>MC: disconnect()
+    EX->>RT: sent_frames()，断言最后一帧与 target 一致
+    Note over EX,RT: 真机路径：Tron2Env.reset / step 调用同一 MotionController，send_joint_cmd 经 WebsocketTransport 发送 request_servoj 到 ws://robot_ip:5000
+```
+
+图依据：limxdynamics/tron2_env@7553ca6，examples/mock_quickstart.py、src/tron2_env/motion/controller.py、src/tron2_env/motion/arm_strategy.py（publish_current 段）、src/tron2_env/env.py（reset 与 step 段）、src/tron2_env/transport/websocket.py（send_joint_cmd 段）、README.md
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +98,8 @@ institutions:
 - [tron2_env 源码归档](../../sources/repos/tron2_env.md)（<https://github.com/limxdynamics/tron2_env>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：limxdynamics/tron2_env@7553ca6，读过 README.md、examples/mock_quickstart.py、src/tron2_env/motion/controller.py（start、command_joints、_publish_loop 与工厂函数段）、src/tron2_env/motion/arm_strategy.py（publish_current 段）、src/tron2_env/env.py（reset 与 step 段）、src/tron2_env/transport/websocket.py（send_joint_cmd 段）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

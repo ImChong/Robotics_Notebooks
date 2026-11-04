@@ -60,6 +60,55 @@ cmake -DPYTHON_BUILD=TRUE ..
 - 与 SDK2 **协议不兼容**，禁止在同一控制器里混用。
 - 安全：低层示例同样需要吊装与急停流程。
 
+## 源码运行时序图
+
+官方实现 [unitreerobotics/unitree_legged_sdk](https://github.com/unitreerobotics/unitree_legged_sdk)（短 SHA `4539a6c`）：C++ 头文件 + 预编译静态库，示例 `example/example_position.cpp` 通过 UDP 与运控板交换 `LowCmd` / `LowState`，并用 `LoopFunc` 起三个周期线程（接收、控制、发送）。收发与安全限幅的底层实现位于预编译库 `lib/cpp/<arch>/libunitree_legged_sdk.a`，本仓无该部分源码，图中只画头文件暴露的调用关系。
+
+入口：`sudo ./example_position`（由 CMake 目标 `example_position` 编译，C++ 示例需 sudo 以锁内存；运行前按提示确认机器人已挂起并切到低层模式）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 用户
+    participant MAIN as example_position.cpp<br/>main()
+    participant CU as Custom<br/>控制类（同文件）
+    participant SF as Safety<br/>include/safety.h（实现在预编译库）
+    participant UDP as UDP<br/>include/udp.h（实现在预编译库）
+    participant LP as LoopFunc<br/>include/loop.h（线程）
+    participant RB as 运控板<br/>192.168.123.10:8007
+    U->>MAIN: sudo ./example_position
+    MAIN->>MAIN: std::cin.ignore()（等待回车确认）
+    MAIN->>CU: Custom custom(LOWLEVEL)
+    CU->>SF: Safety(LeggedType::Go1)
+    CU->>UDP: UDP(LOWLEVEL, 8090, 192.168.123.10, 8007)
+    CU->>UDP: InitCmdData(cmd)
+    MAIN->>LP: LoopFunc udp_send / udp_recv（绑定 CPU 3）
+    MAIN->>LP: LoopFunc control_loop（dt = 0.002）
+    MAIN->>LP: start() 三个线程
+    par udp_recv 线程（周期 dt）
+        LP->>CU: UDPRecv()
+        CU->>UDP: Recv()
+        UDP->>RB: 接收 LowState 报文
+    and control_loop 线程（周期 dt）
+        LP->>CU: RobotControl()
+        CU->>UDP: GetRecv(state)
+        CU->>CU: 计算 qDes / Kp / Kd<br/>（前 10 拍记录初值，10–400 拍线性插值，之后正弦）
+        CU->>SF: PositionLimit(cmd)
+        CU->>SF: PowerProtect(cmd, state, 1)
+        alt 返回值 res1 小于 0
+            CU->>MAIN: exit(-1)
+        end
+        CU->>UDP: SetSend(cmd)
+    and udp_send 线程（周期 dt）
+        LP->>CU: UDPSend()
+        CU->>UDP: Send()
+        UDP->>RB: 发送 LowCmd 报文
+    end
+    MAIN->>MAIN: while(1) sleep(10)（主线程仅保活）
+```
+
+图依据：unitree_legged_sdk@4539a6c，读过 `README.md`、`CMakeLists.txt`（`example_position` 目标与库链接）、`example/example_position.cpp`、`include/unitree_legged_sdk/loop.h`、`include/unitree_legged_sdk/udp.h`（grep 声明）、`include/unitree_legged_sdk/safety.h`（grep 声明）、`include/unitree_legged_sdk/comm.h`（grep 片段）、`include/unitree_legged_sdk/unitree_legged_sdk.h`。`UDP` 收发与 `Safety` 限幅的内部实现未读（预编译库，本仓无源码）。
+
 ## 关联页面
 
 - [unitree_sdk2](./unitree-sdk2.md)
@@ -71,6 +120,7 @@ cmake -DPYTHON_BUILD=TRUE ..
 
 - [sources/repos/unitree_legged_sdk.md](../../sources/repos/unitree_legged_sdk.md)
 - 上游：<https://github.com/unitreerobotics/unitree_legged_sdk>
+- 源码核对（2026-11-02）：unitreerobotics/unitree_legged_sdk@4539a6c，读过 README.md、CMakeLists.txt、example/example_position.cpp、include/unitree_legged_sdk/loop.h、udp.h（grep）、safety.h（grep）、comm.h（grep）、unitree_legged_sdk.h；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
