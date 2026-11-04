@@ -4418,6 +4418,13 @@
       "aliases": [
         "patch-gg"
       ]
+    },
+    "datawhale": {
+      "label": "开源学习社区（Datawhale）",
+      "aliases": [
+        "datawhale",
+        "datawhalechina"
+      ]
     }
   }
 }
