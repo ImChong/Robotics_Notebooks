@@ -4,6 +4,7 @@ tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
 updated: 2026-10-28
 related:
+  - ../entities/paper-visualforce.md
   - ../entities/rhoda-dva-tactile-sensing.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/contact-wrench-closed-loop.md
