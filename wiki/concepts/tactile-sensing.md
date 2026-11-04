@@ -2,8 +2,9 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-04
 related:
+  - ../entities/paper-visualforce.md
   - ../entities/rhoda-dva-tactile-sensing.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/contact-wrench-closed-loop.md
@@ -107,6 +108,8 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **作为双足 locomotion 闭环状态（plantar）**：[TactileStep](../entities/paper-tactilestep.md) 将 **足底压力鞋垫** 汇总为法向力、接触面积与 CoP，与 Isaac 仿真 **特征对齐** 后并入 **深度跑酷** actor，用四相位奖励调节 **触地冲击与支撑**（相对仅视觉几何的 Hiking 系基线）。
 
 ## 关联页面
+
+- [VisualForce](../entities/paper-visualforce.md) — 从柔性夹爪形变估计法向力并标注操作示范。
 
 - [eFlesh（磁性触觉皮肤）](../entities/eflesh.md) — 可调 TPU 微结构 + 磁体/磁力计，学习估计接触力与滑移。
 
