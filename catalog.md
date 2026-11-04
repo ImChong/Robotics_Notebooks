@@ -2621,6 +2621,7 @@
 - [Hybrid Systems DDP for Whole-Body Motion Planning](wiki/entities/paper-hs-ddp-legged.md) — Li & Wensing（圣母大学，arXiv:2006.08102）** 提出 **HS-DDP**：把 Differen `📅unknown` `[entity_page]`
 - [HSImul3R：物理在环的 simulation-ready 人–场景交互重建](wiki/entities/paper-hsimul3r.md) — HSImul3R**（*Physics-in-the-Loop Reconstruction of Simulation-Ready Human–Scene Interactions*，arXiv `📅unknown` `[entity_page]`
 - [HTD-Refine：对齐高阶时序动力学的单目人体运动恢复](wiki/entities/paper-htd-refine-monocular-hmr.md) — HTD-Refine**（arXiv:2605.26879，CVPR 2026 Oral Award Candidate，浙大 / Ant / UT Austin）研究 **单目 world-gr `📅unknown` `[entity_page]`
+- [HuG: Learning Humanoid Whole-Body Affordance-Aware Grasping with Active Perception（主动感知的人形全身可供性抓取）](wiki/entities/paper-hug-whole-body-grasping.md) — HuG 用主动感知寻找目标，以控制器在环筛选的仿真轨迹训练点云抓取策略，并协调全身对齐和抓取。 `📅unknown` `[entity_page]`
 - [HuGe: Scaling Humanoid Generalist Vision-Language-Action Models with Egocentric Experience](wiki/entities/paper-huge-humanoid-vla.md) — 一句话定义：** 超过 2000 小时第一视角人类及机器人数据经人称预训练、人形适配、下游微调三个阶段处理；仿真回放构造伪本体感觉，微调时重渲染手臂外观。VLA 输出运动 token 与手部控制信 `📅unknown` `[entity_page]`
 - [HUI360：社交机器人要先预测人会不会靠近](wiki/entities/paper-hui360.md) — HUI360**（*A 360° Egocentric Dataset and Baselines for Human-Robot Interaction Anticipation*；[arXiv `📅unknown` `[entity_page]`
 - [HULK：重载人形机器人的全身移动操作](wiki/entities/paper-hulk-forceful-loco-manipulation.md) — HULK**（*Learning Whole-Body Forceful Loco-Manipulation for Humanoids*，[arXiv:2610.08970](https://a `📅unknown` `[entity_page]`
