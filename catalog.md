@@ -813,6 +813,7 @@
 - [JackHan-Sdu WalkE3 / HumanoidE3 工具链生态](wiki/entities/jackhan-walke3-e3-ecosystem.md) — 将 JackHan-Sdu 维护的 WalkE3 数据、MuJoCo 手柄仿真、WalkE3 控制器、LCM 算法模板与两条 FEAP 部署仓组织成一条可读的人形工程工具链。 `📅unknown` `[entity_page]`
 - [Yobotics HumanoidE3 外接算法模板（LCM）](wiki/entities/jackhan-yobotics-e3-algorithm-template.md) — 本模板用 LCM 与 WalkE3-Controller 的 DEVELOPMENT 模式对接，提供 AlgorithmBase 双线程（约 50Hz 推理与 500Hz 发令）与 ONNX/PyTo `📅unknown` `[entity_page]`
 - [JE Motion Lab](wiki/entities/je-motion-lab.md) — JE Motion Lab** 是面向生物力学研究的浏览器动捕查看和编辑工具，可同步检查三维 marker、时间轴和信号，并导出处理后的记录。 `📅unknown` `[entity_page]`
+- [Jenkins：持续集成与交付自动化](wiki/entities/jenkins.md) — Jenkins 是开源自动化服务器，Pipeline 插件将构建、测试和交付过程定义为可版本管理的代码。 `📅unknown` `[entity_page]`
 - [Jetson AI Lab（边缘 AI 教程 hub）](wiki/entities/jetson-ai-lab.md) — Jetson AI Lab**（教程索引，[Getting Started](https://www.jet `📅unknown` `[entity_page]`
 - [OpenPi π₀.₅ on Jetson Thor（官方部署教程）](wiki/entities/jetson-openpi-pi05-on-thor.md) — Jetson AI Lab](https://www.jetson-ai-lab.com/tutorials/openpi_on_thor/) 教程 **OpenPi π₀.₅ on Jetson  `📅unknown` `[entity_page]`
 - [NVIDIA Jetson Orin NX](wiki/entities/jetson-orin-nx.md) — Jetson Orin NX** 是 NVIDIA **Jetson Orin** 产品线中的边缘 AI 模组形态，面向移动机器人机载推理：在功耗与体积约束下运行 CUDA/TensorRT 加速 `📅unknown` `[entity_page]`
@@ -6180,6 +6181,7 @@
 - [VIStream：给流式几何基础模型接上惯性运动](wiki/entities/vistream.md) — 一句话定义：** VIStream 是一种免训练的视觉-惯性运动积分方法：保持 LingBot-Map 等流式视觉几何模型不动，把标定后的视觉- `📅unknown` `[entity_page]`
 - [VLA SOTA Leaderboard（EvoMind / MINT-SJTU）](wiki/entities/vla-sota-leaderboard.md) — VLA SOTA Leaderboard**（线上站 sota.evomind-tech.com，源码 [MINT-SJTU/E `📅unknown` `[entity_page]`
 - [VLNVerse](wiki/entities/vlnverse.md) — VLNVerse**（VLNVerse：VLN 场景数据源（LightNav 数据引擎））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样 `📅unknown` `[entity_page]`
+- [VLX-Flow：面向实时多模态交互的连续视频理解](wiki/entities/vlx-flow.md) — VLX-Flow 是 Om AI Lab 提出的流式视觉语言模型：按时间处理视频片段，维护视觉与语义状态，以支持随时提问和连续描述。 `📅unknown` `[entity_page]`
 - [VLX-Seek（Om AI Lab）](wiki/entities/vlx-seek.md) — VLX-Seek**（om-ai-lab/VLX-Seek，Apache-2.0）是 **联汇科技 OmAI 实验 `📅unknown` `[entity_page]`
 - [VMamba](wiki/entities/vmamba.md) — VMamba 提出 2D 选择性扫描（SS2D）等视觉化状态空间模块，构建分层 Visual State Space 骨干，在分类/检测/分割上挑战 ViT。 `📅unknown` `[entity_page]`
 - [VoiceStudio](wiki/entities/voicestudio.md) — VoiceStudio**（debpalash/VoiceStudio，AGPL-3.0）是面向 **全本地 `📅unknown` `[entity_page]`
