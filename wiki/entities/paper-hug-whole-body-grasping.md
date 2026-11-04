@@ -10,6 +10,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/whole-body-control.md
   - ../methods/sonic-motion-tracking.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/hug_arxiv_2611_01659.md
   - ../../sources/sites/hug-project.md
@@ -71,6 +72,14 @@ flowchart TD
 - **真机高度测试：** 使用 oracle 感知，10 个物体、5 个高度、150 次试验；各高度成功率 73%–97%。不能与完整自主感知流程混为一谈。
 - **仿真外推：** 训练桌高 0.40–0.90 m，在 0.10–0.35 m 范围，YCB 与 RoboCasa 的成功率分别为 81.1% 和 71.4%；这不是低于训练高度的真机量化结果。
 
+## 与其他工作对比
+
+- **对比 [ACT](./paper-act.md)、[ViA](./paper-notebook-vision-in-action-learning-active-perception-from.md)（端到端模仿）：** 二者用 ID 物体的遥操作示范训练（Task 1 每物体 70 条，Task 2 仅 H2、H4 两个高度），ViA 改适配浮动基座；HuG 零真机示范，仅用 60 万条仿真轨迹。Task 1 中 ViA 为 50%（ID/OOD 85/15），HuG 为 87.5%（90/85）（§4.1–4.2、图 3a）。
+- **对比 GraspNet + WB-IK（[GraspNet-1Billion](./painode-218-graspnet1billion.md)）：** 预训练平行夹爪位姿映射为灵巧手预抓取，复用 HuG 的全身 IK；加入 HuG 主动感知后 Det. 由 50% 升至 90%，Gr | Det 仍为 45.0%→44.4%，论文归因于夹爪位姿不适合人形手且易与环境碰撞（§4.2）。
+- **对比 Dex1B（adapted）+ WB-IK + AP：** 与 HuG 共享 PointNet + CVAE 结构和手型，但数据只做手臂 IK 优化，无全身–手联合优化、动力学筛选和对齐。Det. 同为 92.5%，Gr | Det 仅 56.8%，低于 HuG 的 94.6% 和 –Dyn. Filter 的 69.4%（§4.1、§4.3.1）。
+- **相关工作定位：** 论文认为 [VIRAL](./paper-viral-humanoid-visual-sim2real.md) 等视觉 sim2real 方法把感知交给数据规模，[Choice Policy](./paper-notebook-coordinated-humanoid-manipulation-with-choice-po.md) 只调节主动头部而身体被动；HuG 将视角搜索作为全身运动问题（§2.1、§2.3）。二者未进入实验对比。
+- **可比性提醒：** 上述基线均为作者在自家 Task 1 协议（40 次、10 个 YCB 物体、多层货架）下复现或适配的版本，不能与 ACT、ViA、Dex1B 原论文指标直接比较；GraspNet 行未拆分 ID/OOD。
+
 ## 结论
 
 HuG 的实验支持将主动视角、控制器可执行性和全身抓取联合设计。
@@ -92,6 +101,7 @@ HuG 的实验支持将主动视角、控制器可执行性和全身抓取联合�
 - [机器人操作](../tasks/manipulation.md)
 - [全身控制](../concepts/whole-body-control.md)
 - [SONIC 运动跟踪](../methods/sonic-motion-tracking.md)
+- [机器人视觉感知栈选型闭环（知识链）](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源
 

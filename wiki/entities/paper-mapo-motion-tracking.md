@@ -55,6 +55,14 @@ flowchart TB
 
 教师在 Isaac Lab 的 OMOMO 动作上评测，学生在 29 自由度 G1 上展示。五次独立试验中，182 条动作由 MAPO 稳定成功而 PPO-MoE 稳定失败，反向为 1 条；不能将此数字解释成真机成功率。其余实验和附录待通读。
 
+## 与其他工作对比
+
+- **对比 PPO with MoE：** 同为密集 MoE、同数据与超参，差别只在更新目标：PPO 对整体混合策略比值裁剪，MAPO 分别裁剪专家项与路由器项。表 1 中（6 个专家）训练集成功率 83.38%→86.60%，OMOMO 测试集 82.78%→85.45%；专家数取 4、8、16 时 MAPO 成功率仍更高，但根部 roll、pitch 误差不总占优（§6.1–6.2）。
+- **对比 Monolithic PPO 与 MAPO with fixed router：** 前者衡量 MoE 结构本身的收益，后者固定路由器以减少误估，但放弃路由器端到端优化。OMOMO 上成功率分别为 84.36%、85.21%，MAPO 为 85.45%；测试集差距较小，MAPO 的全局位置误差（225.8 mm）也不低于固定路由器版本（221.6 mm）（表 1b）。
+- **对比 [HOVER](./paper-bfm-14-hover.md)、[TWIST2](./paper-twist2.md)：** HOVER 由作者在同平台、同数据上重实现教师，惩罚项缩至原值 20%；TWIST2 直接评测其公开 checkpoint，未重训。OMOMO 成功率分别为 83.39%、57.85%（表 1b）。MAPO 一侧评测的是含特权观测的教师策略，该差距不宜直接解读为方法优劣。
+- **相关工作定位：** [CLONE](./paper-bfm-12-clone.md)、[KungfuBot2](./paper-notebook-kungfubot-2.md) 采用稀疏 MoE，路由不可微；[GMT](./paper-gmt.md) 与 FAST 采用可微密集 MoE。论文认为这些工作偏重架构，MAPO 不改架构而处理 [PPO](../methods/ppo.md) 下的 [MoE](../concepts/mixture-of-experts.md) 优化问题（§2）。上述方法未列入表 1 对比。
+- **可比性提醒：** 成功判据为平均位置误差低于 0.5 m，失败后误差冻结在失败时刻值，且不做动作筛选（§6.2）；其他论文的判据和数据筛选不同，成功率不可横比。
+
 ## 结论
 
 MAPO 的研究重点是 MoE 训练时组件更新的优化问题。
