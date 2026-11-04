@@ -109,3 +109,7 @@ flowchart LR
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.34717)
+
+## 相关研究
+
+- [VLALagBench：动态操作延迟评测](./paper-vlalagbench.md)
