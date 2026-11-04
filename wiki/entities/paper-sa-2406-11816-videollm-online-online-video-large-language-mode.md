@@ -7,6 +7,7 @@ arxiv: "2406.11816"
 venue: "CVPR 2024"
 summary: "Online video LLM framework designed for streaming egocentric video input"
 related:
+  - ./vlx-flow.md
   - ../entities/awesome-egocentric-vision.md
   - ../overview/sun-awesome-ego-technology-map.md
   - ../methods/vla.md
@@ -37,6 +38,8 @@ Online video LLM framework designed for streaming egocentric video input
 | VLM | Vision-Language Model | 视觉–语言模型 |
 
 ## 为什么重要
+
+- [VLX-Flow](./vlx-flow.md) 同样面向连续视频理解，采用视觉缓存与语义记忆。
 
 - Online video LLM framework designed for streaming egocentric video input
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
