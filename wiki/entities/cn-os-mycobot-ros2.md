@@ -55,6 +55,38 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`ros2 launch mycobot_280 slider_control.launch.py`（ROS2 标准命令，取 `mycobot_280` 包 slider 路线；可传 `port:=/dev/ttyUSB0 baud:=115200`）
+
+仓库另有 mecharm、Mybuddy、myArm、mycobot_320 等多套包，本图只取 mycobot_280 一条路线。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant LL as slider_control.launch.py
+    participant RSP as robot_state_publisher
+    participant JG as joint_state_publisher_gui
+    participant RV as rviz2
+    participant SN as slider_control 节点（Slider_Subscriber）
+    participant MC as MyCobot280（pymycobot）
+    U->>LL: ros2 launch mycobot_280 slider_control.launch.py
+    LL->>LL: robot_description 由 xacro 读取 model 参数指定的 URDF
+    LL->>RSP: 启动 robot_state_publisher
+    LL->>JG: 启动 joint_state_publisher_gui（gui 参数为 true 时）
+    LL->>RV: 启动 rviz2，-d config/mycobot.rviz
+    LL->>SN: 启动 slider_control 节点，传入 port 与 baud 参数
+    SN->>SN: __init__ 订阅 joint_states（JointState）
+    SN->>MC: MyCobot280(port, 115200)，baud 参数已读取但此处写死 115200
+    SN->>MC: set_fresh_mode(1)
+    U->>JG: 拖动滑条
+    JG-->>SN: joint_states 话题（ROS 约定，非本仓库代码）
+    SN->>SN: listener_callback 弧度转角度，保留 2 位小数
+    SN->>MC: send_angles(data_list, 25)
+```
+
+图依据：elephantrobotics/mycobot_ros2@d42ff61，读过 README.md、mycobot_280/mycobot_280/launch/slider_control.launch.py、mycobot_280/mycobot_280/mycobot_280/slider_control.py、mycobot_280/mycobot_280/setup.py（entry_points 段）。pymycobot 库内部未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +98,8 @@ institutions:
 - [mycobot_ros2 源码归档](../../sources/repos/mycobot_ros2.md)（<https://github.com/elephantrobotics/mycobot_ros2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：elephantrobotics/mycobot_ros2@d42ff61，读过 README.md、mycobot_280/mycobot_280/launch/slider_control.launch.py、mycobot_280/mycobot_280/mycobot_280/slider_control.py、mycobot_280/mycobot_280/setup.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

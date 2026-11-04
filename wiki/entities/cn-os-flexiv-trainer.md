@@ -55,6 +55,50 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`flexiv-trainer-server`（即 `flexivtrainer.api.app:run`，启动后在 `http://127.0.0.1:8000/` 打开 Web UI；遥操作需配置 `FLEXIV_TRAINER_TELEOP_ROBOT_PAIRS`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant UI as Web UI 浏览器
+    participant APP as FastAPI 应用 api/app.py 与 routes
+    participant RT as runtime/manager.py RuntimeManager
+    participant TS as teleop/service.py TeleopService
+    participant TDK as flexivtdk TransparentCartesianTeleopLAN 闭源
+    participant TR as routes/training.py 与 jobs/train_policy.py TrainingService
+    participant SP as 子进程 lerobot-train 或 python -m lerobot
+    APP->>APP: run() 打印横幅, uvicorn.run(app, host, port)
+    APP->>APP: lifespan 启动 device-warmup 后台线程 (warm_up_devices)
+    UI->>APP: POST /teleop/start (routes/teleop.py start_teleop)
+    APP->>RT: runtime.teleop.start(zero_ft_sensor)
+    RT->>TS: TeleopService.start(zero_ft_sensor)
+    TS->>TS: initialize() 若未构造则 TransparentCartesianTeleopLAN(robot_pairs)
+    TS->>TDK: Init() 每次 Start 前调用
+    TS->>TDK: 设置 follower 刚度 (_apply_follower_stiffness)
+    TS->>TDK: Start()
+    TS->>TDK: 对每个 pair 调用 Engage(idx, False)
+    TS-->>UI: TeleopSnapshot (started=true)
+    UI->>APP: POST /training/start (routes/training.py start_training)
+    APP->>TR: runtime.training.start(dataset_root, output_dir, policy_type, ...)
+    alt 需要 B-spline 数据转换
+        TR->>TR: 后台线程 _collect_conversion 调用 _conversion_command
+    end
+    TR->>TR: _build_training_command: lerobot-train 或 sys.executable -m lerobot.scripts.lerobot_train
+    TR->>SP: _spawn_job_process: subprocess.Popen(command, stdout PIPE, cwd, env)
+    TR->>TR: 启动后台线程 _collect_logs 收集作业日志
+    TR-->>UI: 作业状态 (running)
+    UI->>APP: GET /training/status 轮询
+    UI->>APP: POST /training/stop
+    APP->>TR: stop() 终止训练子进程
+    UI->>APP: POST /teleop/stop
+    APP->>TS: stop()
+    TS->>TDK: Stop()
+```
+
+图依据：flexiv-trainer@0588d77（仓库 flexiv_trainer），README.md、pyproject.toml（[project.scripts] 入口）、src/flexivtrainer/api/app.py、api/routes/teleop.py（节选）、api/routes/training.py（节选）、teleop/service.py（节选）、jobs/train_policy.py（节选）。TDK 与 lerobot 内部闭源或未读，未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -64,6 +108,8 @@ institutions:
 ## 参考来源
 
 - [flexiv_trainer 源码归档](../../sources/repos/flexiv_trainer.md)（<https://github.com/flexivrobotics/flexiv_trainer>）
+
+- 源码核对（2026-11-02）：flexivrobotics/flexiv_trainer@0588d77，读过 README.md、pyproject.toml、src/flexivtrainer/api/app.py、api/routes/teleop.py（节选）、api/routes/training.py（节选）、teleop/service.py（节选）、jobs/train_policy.py（节选）；时序图依据以上文件，未运行代码。
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

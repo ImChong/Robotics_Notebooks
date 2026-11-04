@@ -55,6 +55,32 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`roslaunch aloha_new_description display_aloha_tracer2_dabai.launch`（README 写作「执行 display_aloha_tracer2_dabai.launch」，roslaunch 为 ROS1 标准命令）
+
+该 launch 只做模型展示（URDF + rviz），不含控制或仿真逻辑。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户终端
+    participant L as display_aloha_tracer2_dabai.launch
+    participant P as ROS 参数服务器
+    participant JS as joint_state_publisher_gui 节点
+    participant RS as robot_state_publisher 节点
+    participant RV as rviz 节点
+    U->>L: roslaunch 执行 launch 文件
+    L->>P: param robot_description 由 textfile 读入 urdf/aloha_tracer2_dabai_dark.urdf
+    L->>JS: 启动 joint_state_publisher_gui（GUI 滑条调关节角）
+    L->>RS: 启动 robot_state_publisher
+    L->>RV: 启动 rviz，-d rviz/aloha.rviz
+    JS-->>RS: 关节状态（ROS 约定话题 joint_states，非本仓库代码）
+    RS->>P: 读取 robot_description 并发布坐标变换
+    RS-->>RV: 模型与 TF 显示
+```
+
+图依据：agilexrobotics/mobile_aloha_sim@f799ae0，读过 README.MD、aloha_new_description/README.MD、aloha_new_description/launch/display_aloha_tracer2_dabai.launch、aloha_new_description/launch/display_aloha_tracer2_d435.launch、aloha_new_description/CMakeLists.txt、aloha_new_description/package.xml；urdf 仅核对存在、未读内容。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +92,8 @@ institutions:
 - [mobile_aloha_sim 源码归档](../../sources/repos/mobile_aloha_sim.md)（<https://github.com/agilexrobotics/mobile_aloha_sim>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：agilexrobotics/mobile_aloha_sim@f799ae0，读过 README.MD、aloha_new_description/README.MD、aloha_new_description/launch/display_aloha_tracer2_dabai.launch、aloha_new_description/launch/display_aloha_tracer2_d435.launch、aloha_new_description/CMakeLists.txt、aloha_new_description/package.xml；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -73,6 +73,44 @@ summary: "面向自动驾驶的开源城市仿真平台：Unreal Engine 驱动�
 - **局限：操作与室内** — 室内交互见 [AI2-THOR](./ai2-thor.md)、[Habitat](./habitat-sim.md)。
 - **漂移复现陷阱：** [drift_drl](./drift-drl.md) 等研究常锁定 **旧版定制 CARLA build**，与当前主线 release 不直接互换——选型见 [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)。
 
+## 源码运行时序图
+
+入口：服务端 `./CarlaUnreal.sh`（见 `Docs/start_quickstart.md`），客户端 `python3 generate_traffic.py`（`PythonAPI/examples/generate_traffic.py`）
+
+```mermaid
+sequenceDiagram
+    participant P as Python 客户端<br/>generate_traffic.py
+    participant L as LibCarla 客户端<br/>detail/Simulator
+    participant S as Unreal 侧 RPC 服务<br/>Server/CarlaServer.cpp
+    participant G as 游戏线程<br/>Game/CarlaEngine.cpp
+    participant E as 当前 Episode<br/>Game/CarlaEpisode.cpp
+
+    Note over G,E: 服务端进程由 CarlaUnreal.sh 启动，FCarlaEngine 驱动 UE 世界
+    P->>L: carla.Client(host, port)、set_timeout、get_world()
+    L->>S: RPC 请求（各 BIND_SYNC / BIND_ASYNC 处理函数）
+    P->>L: apply_batch_sync(SpawnActor 与 SetAutopilot 命令)
+    L->>S: apply_batch（BIND_SYNC，逐条执行 Command）
+    S->>E: 生成 Actor（spawn_actor 处理函数调用 SpawnActorWithInfo）
+    E-->>S: 序列化后的 Actor 句柄
+    S-->>L: 批量命令结果
+    L-->>P: 返回 actor id 列表
+
+    loop 每个仿真帧（同步模式，world.tick）
+        P->>L: world.tick() → Simulator::Tick
+        L->>L: NavigationTick（行人导航）
+        L->>S: SendTickCue（RPC tick_cue）
+        S-->>S: TickCuesReceived 加一，返回下一帧号
+        G->>S: OnPreTick 中 Server.RunSome(1) 直到 TickCueReceived
+        G->>E: UpdateFrameCounter，TickTimers(DeltaSeconds)
+        Note over G: UE 世界推进一帧（物理与渲染）
+        G->>E: OnPostTick → WorldObserver.BroadcastTick，传感器 PostPhysTick
+        L->>L: SynchronizeFrame 等待该帧的 Episode 快照
+        L-->>P: 返回帧号
+    end
+```
+
+图依据：carla-simulator/carla@a3c6d7f，读过 `Docs/start_quickstart.md`、`PythonAPI/examples/generate_traffic.py`、`LibCarla/source/carla/client/detail/Simulator.cpp`（`Tick`、`WaitForTick`）、`LibCarla/source/carla/client/Client.h`、`Unreal/CarlaUnreal/Plugins/Carla/Source/Carla/Server/CarlaServer.cpp`（`BindActions`、`tick_cue`、`spawn_actor`、`apply_batch`）、`Unreal/CarlaUnreal/Plugins/Carla/Source/Carla/Game/CarlaEngine.cpp`（`OnPreTick`、`OnPostTick`）、`Unreal/CarlaUnreal/Plugins/Carla/Source/Carla/Game/CarlaEpisode.cpp`（`SpawnActorWithInfo`）；`apply_batch` 内部分派未逐行核对。
+
 ## 关联页面
 
 - [AirSim](./airsim.md) — 另一 UE 系机器人视觉仿真
@@ -93,6 +131,7 @@ summary: "面向自动驾驶的开源城市仿真平台：Unreal Engine 驱动�
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- 源码核对（2026-11-02）：carla-simulator/carla@a3c6d7f，读过 Docs/start_quickstart.md、PythonAPI/examples/generate_traffic.py、LibCarla/source/carla/client/detail/Simulator.cpp、LibCarla/source/carla/client/Client.h、Unreal/CarlaUnreal/Plugins/Carla/Source/Carla/Server/CarlaServer.cpp、Unreal/CarlaUnreal/Plugins/Carla/Source/Carla/Game/CarlaEngine.cpp、Unreal/CarlaUnreal/Plugins/Carla/Source/Carla/Game/CarlaEpisode.cpp；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

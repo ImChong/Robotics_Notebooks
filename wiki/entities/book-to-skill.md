@@ -58,10 +58,54 @@ summary: "book-to-skill 将技术书籍、文档目录或研究资料转换为�
 
 代码仓库公开可读；README 徽章标注 MIT License。当前归档依据项目 README 与仓库信息。
 
+## 源码运行时序图
+
+入口：`book-to-skill <文件|目录|glob> [--mode technical|text]`（`pyproject.toml` 的 `[project.scripts]` 把 `book-to-skill` 指向 `book_to_skill.cli:main`；`scripts/extract.py` 为兼容旧调用的垫片）。下图只画 **抽取器（Python，确定性）**；生成 SKILL 的步骤由代理按 `SKILL.md` 执行，不是代码。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户（终端）
+    participant CLI as cli.py main
+    participant UT as utils.py main（运行器）
+    participant PR as parsers（pdf/epub/docx/html/rtf/calibre/text）
+    participant SAN as sanitize.py
+    participant WD as 工作目录（full_text.txt / metadata.json）
+    participant AG as 代理（按 SKILL.md）
+    U->>CLI: book-to-skill 输入 [--mode]
+    CLI->>UT: install_pdf_inspector_hook() 后调用 utils_main()
+    UT->>UT: parse_arguments / resolve_input_files
+    UT->>WD: prepare_output_dir(OUTPUT_DIR)
+    loop 每个输入文件
+        UT->>UT: extract_single_file(path, mode, install_mode)
+        alt PDF
+            UT->>PR: mode=technical 时先试 Docling，再 pdftotext → pypdf → pdfminer
+        else EPUB / DOCX / 其他
+            UT->>PR: extract_with_ebooklib 或 zipfile / extract_docx / extract_rtf / extract_html_file / read_text_file
+        end
+        PR-->>UT: text（失败抛 ExtractionError）
+        UT->>SAN: sanitize_extracted_text(text)（去零宽与 Unicode tag 字符）
+        UT->>UT: detect_structure(text)（章节与 ToC）
+    end
+    Note over UT: 单个源失败只记 WARNING 并跳过，全部失败才退出
+    UT->>WD: 写 full_text.txt（各源以 SOURCE 分隔合并）
+    UT->>UT: detect_structure(合并文本) 并计算 tokens
+    UT->>WD: 写 metadata.json
+    opt --pdf-page-sidecar
+        UT->>WD: write_pdf_page_sidecar → pdf_pages.json
+    end
+    U->>AG: 按 SKILL.md 运行生成流程
+    AG->>WD: Step 2 读取 full_text.txt / metadata.json
+    AG->>AG: Step 7 章节摘要，Step 8 术语 / 模式 / 速查
+    AG->>U: Step 6/9 写入 <SKILLS_HOME>/<slug>/（SKILL.md、chapters/ 等）
+```
+
+图依据：virgiliojr94/book-to-skill@e7bb659，pyproject.toml、book_to_skill/__main__.py、book_to_skill/cli.py、book_to_skill/utils.py（parse_arguments、resolve_input_files、extract_single_file、main 及 PDF 分支）、book_to_skill/config.py（输出路径）、docs/architecture.md、SKILL.md（Step 2、6–9 标题）。其中 Step 6–9 的写入细节仅据 SKILL.md 标题与 architecture.md，未逐行读；未运行代码。
+
 ## 参考来源
 
 - [book-to-skill 仓库归档](../../sources/repos/virgiliojr94-book-to-skill.md)
 - [项目 README](https://github.com/virgiliojr94/book-to-skill/blob/master/README.md)
+- 源码核对（2026-11-02）：virgiliojr94/book-to-skill@e7bb659，读过 docs/architecture.md、book_to_skill/__main__.py、book_to_skill/cli.py、book_to_skill/utils.py（main、parse_arguments、resolve_input_files、extract_single_file 的 PDF 分支等段）；grep 过 pyproject.toml、book_to_skill/config.py、SKILL.md（仅 Step 标题）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 
