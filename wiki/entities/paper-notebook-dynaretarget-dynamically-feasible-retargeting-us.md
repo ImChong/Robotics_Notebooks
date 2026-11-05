@@ -81,6 +81,38 @@ flowchart TB
   end
 ```
 
+## 源码运行时序图
+
+官方仓库 [Atarilab/sbto](https://github.com/Atarilab/sbto)（README 自称 SBTO 官方实现，`pyproject.toml` 声明 MIT 但仓根无 LICENSE 文件，2026-11-05 HEAD `cbed4ed`）只覆盖管线中的 **SBTO 精炼阶段**：输入是 OmniRetarget 数据集（`robot-object.zip`）里已有的运动学参考，仓内没有 IK 前端，也没有 PPO tracking / sim2real 训练代码（读自 README 与 `sbto/main.py`、`sbto/run/optimize.py`、`sbto/utils/hydra.py`，未运行）。默认配置 `warm_start: incremental`、`solver: cem`、`task: g1/robot_object_ref`：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 使用者
+    participant M as sbto/main.py (Hydra)
+    participant I as instantiate_from_cfg
+    participant O as optimize_incremental_opt
+    participant S as CEM solver
+    participant R as MuJoCo rollout + task cost
+    participant D as save_results
+    U->>M: python3 sbto/main.py task.cfg_ref.motion_path=OmniRetarget npz
+    M->>I: 构造 sim / task(带参考) / solver
+    M->>M: 用参考关节轨迹初始化 PD knots 均值
+    M->>O: optimize_and_save_data
+    loop N_knots 从 2 增至全部
+        O->>S: 只优化前 N 个 knot 的维度
+        loop 直到增量 std 低于阈值或达到迭代上限
+            S->>R: get_samples 采样后经 MuJoCo rollout，按任务代价评估
+            R-->>S: 各样本代价
+            S->>S: update 采样分布
+        end
+    end
+    O->>D: 保存最优 knots、代价与可视化
+    D-->>U: 动力学可行的机器人-物体轨迹
+```
+
+复现路径：下载 OmniRetarget `robot-object` 数据 → `sbto/main.py` 精炼 → 用 `scripts/visualize_traj.py` 回放；换物体质量/尺寸/几何靠 Hydra 的 `mj_scene` 覆盖。论文下游的 PPO + domain randomization 与真机部署代码未随该仓发布。
+
 ## 实验与评测
 
 - **Refinement（OmniRetarget 285 motions）：** SBTO_skip **76.8%** success；SPIDER **37.9%**；物体 pos/rot 误差显著更低（Table III）。

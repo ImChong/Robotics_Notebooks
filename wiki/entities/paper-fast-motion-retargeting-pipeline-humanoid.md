@@ -67,7 +67,7 @@ flowchart TD
 | **作者（arXiv）** | Daniel Marew, Sangjun Park, Nisal Perera, Donghyun Kim |
 | **机构（周报所述，未逐条核实）** | 马萨诸塞大学阿默斯特分校 |
 | **arXiv 评论栏** | （无） |
-| **开源** | arXiv 摘要页/评论给出项目页或外链（https://daroslab.github.io/frdv/）；未发现代码仓库链接（2026-10-26） |
+| **开源** | **部分开源**：项目页（https://daroslab.github.io/frdv/）链到官方仓库 [DARoSLab/FRDV](https://github.com/DARoSLab/FRDV)（MIT，2026-11-05 HEAD `3600f96`）；README 明说**仅发布运动学重定向管线，论文中的动力学验证（CI-iLQR）管线未包含**。2026-10-26 入库时曾记为「未发现代码链接」，已更正 |
 | **周报所述创新点** | 结合定制 SQP、实时迭代和分块并行，将速度提升至最高每秒 9156 帧；再用接触隐式 iLQR 筛除或修正动力学不可执行、悬脚和滑脚动作。 |
 
 ### arXiv 摘要节选（英文原文）
@@ -76,7 +76,33 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用**：arXiv 摘要页/评论给出项目页或外链（https://daroslab.github.io/frdv/）；未发现代码仓库链接，无可对齐的官方代码流程。
+项目页简称 **FRDV**（Fast Retargeting with Dynamics Validation，见仓库 README）。官方仓库 [DARoSLab/FRDV](https://github.com/DARoSLab/FRDV) 只含运动学部分，入口为 pixi 任务 `process`（交互式标定）、`retarget`（求解并保存）、`play`（浏览器回放）。下图依据 `src/mocap_retargeting/retarget.py` 与 `kinematic_retargeting/retarget_motion.py`（读源码，未运行）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 使用者
+    participant R as pixi run retarget (Hydra)
+    participant L as prepare_motion<br/>(LAFAN1 BVH / AMASS SMPL+H)
+    participant P as multiprocessing.Pool<br/>solve_chunk
+    participant C as combine_chunks
+    participant F as refine_trajectory
+    participant IO as save_motion
+    participant V as pixi run play (viser)
+    U->>R: task=unitree_g1/lafan mocap_src_path=...
+    R->>R: RetargetingProblem 生成 SQP 的 QP 与线搜索函数
+    loop 每个 mocap 文件
+        R->>L: 缩放 / 旋转 / 贴地预处理，逐帧计算站点目标
+        L-->>R: motion_data
+        R->>P: plan_chunks 后按 worker 数并行求解
+        P-->>C: 各 chunk 的关节轨迹
+        C->>F: 拼接；仅 enable_refine 且 worker 数大于 1 时精修边界
+        F->>IO: validate_trajectory 后保存
+    end
+    U->>V: 打开 localhost:8085 回放 G1 轨迹
+```
+
+关键复现路径：默认 `n_motion_chunk_workers: 1`（不分块，不做精修，README 称此设置质量最好），多 worker 时才走 `combine_chunks` 与 `refine_trajectory`。论文的接触隐式 iLQR 动力学验证未随仓发布，故图中无该阶段。
 
 ## 实验与评测
 
@@ -88,7 +114,7 @@ flowchart TD
 | 维度 | 读法 |
 |------|------|
 | **同周对照** | 见 [人形/四足周报技术地图](../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md)，按方向浏览同期论文 |
-| **开源状态** | arXiv 摘要页/评论给出项目页或外链（https://daroslab.github.io/frdv/）；未发现代码仓库链接 |
+| **开源状态** | 运动学重定向（SQP + 分块并行 + 边界精修）已开源于 [DARoSLab/FRDV](https://github.com/DARoSLab/FRDV)；动力学验证部分未发布 |
 
 ## 结论
 
