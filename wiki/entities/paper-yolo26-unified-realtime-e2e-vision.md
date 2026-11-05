@@ -161,6 +161,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [YOLO27 预发布综述](./paper-yolo27-overview.md)
+
 - [Ultralytics（工程实体）](./ultralytics.md)
 - [YOLO v1（范式起源）](./paper-yolo-unified-realtime-detection.md)
 - [RF-DETR](./rf-detr.md) — 实时 DETR 对照
