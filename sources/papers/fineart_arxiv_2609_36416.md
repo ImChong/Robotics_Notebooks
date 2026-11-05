@@ -21,3 +21,11 @@ LeRobot 官方文档将 FineART-VLA 描述为建立在 π0.5/Pi05 上，添加�
 - 76% 结果包含逐步人工子任务指导，不等同于模型全自主成功率。
 - 数据效率与零样本结果依赖论文给定的新机器人协议。
 - 论文与 LeRobot 当前实现文档共同作为资料来源；实现参数可能随主仓更新。
+
+## 论文正文核对（2026-11-05，已读 §4.1 与结论）
+
+- 模型：LeRobot 发布的 π0.5 基础上加子任务训练、knowledge insulation 与分层推理；约 2B Gemma + SigLIP + 约 300M 动作专家；3 相机 224×224 + 14 维状态；动作 chunk H=50。
+- 目标：λ_flow=10、λ_fast=1、λ_text∈{0,1}；λ_text=1 时 30% task→subtask、70% 动作样本；300k 步、全局 batch 64，约 10% epoch。
+- 摘要原文：新机器人上用 10× 更少微调数据达到基线性能，并对未见任务零样本泛化。
+- 局限（论文自述）：单一机器人平台、训练仅约 10% epoch。
+- LeRobot 实现：[lerobot.md](../repos/lerobot.md)；页面 [paper-fineart-vla](../../wiki/entities/paper-fineart-vla.md)

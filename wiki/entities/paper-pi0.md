@@ -10,7 +10,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: '2410.24164'
 code: https://github.com/Physical-Intelligence/openpi
 related:
@@ -35,6 +35,7 @@ sources:
 - ../../sources/papers/pi0_arxiv_2410_24164.md
 - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
 - ../../sources/repos/openpi.md
+- ../../sources/repos/lerobot.md
 - ../../sources/papers/rcl_awesome_wam_ref_502ccb43b26687d765d7_0-a-vision-language-action-flow-model-fo.md
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
@@ -51,7 +52,9 @@ venue: RSS 2025
 
 ## 一句话定义
 
-**语义骨干冻结或缓更新，动作用流匹配生成——比多步扩散更快，比动作 token 更连续。**
+**PaliGemma 初始化的 VLM 骨干 + 一组独立权重的小型 Action Expert，用条件流匹配（flow matching）一次生成 H=50 步连续动作 chunk，推理时只做 10 步欧拉积分。**
+
+> 纠错（2026-11-05 对照论文 §IV 与 LeRobot 源码）：旧版一句话写的「语义骨干冻结或缓更新」论文里没有这个说法——论文是把 VLM 与 action expert 一起在混合数据上训练；LeRobot 的 `PI0Config` 默认也是 `freeze_vision_encoder=False`、`train_expert_only=False`（仅为省显存才可选冻结）。「比多步扩散更快」也未在论文正文核到直接对比，请勿当作论文结论引用。
 
 ## 英文缩写速查
 
@@ -83,49 +86,119 @@ venue: RSS 2025
 | **频率** | 约 50 Hz 控制 |
 | **开源** | **已开源** [Physical-Intelligence/openpi](https://github.com/Physical-Intelligence/openpi) |
 
-### 流程总览
+## 流程总览
 
 ```mermaid
 flowchart LR
-  obs[图像+指令] --> vlm[VLM 语义]
-  vlm --> ae[Action Expert]
-  noise[噪声/流] --> ae
-  ae --> chunk[连续动作 chunk]
-  chunk --> robot[高频执行]
+  img["2~3 路相机图像"] --> vit["SigLIP 视觉塔<br/>PaliGemma"]
+  lang["语言指令 token"] --> pre
+  vit --> pre["prefix：图像 + 语言<br/>PaliGemma 骨干（≈3B）"]
+  pre --> kv["prefix KV cache<br/>只算一次"]
+  q["关节状态 q_t"] --> suf["suffix：state token + 带噪动作 token + 时间嵌入"]
+  noise["高斯噪声 A^0（H=50）"] --> suf
+  kv --> ae["Action Expert（≈300M，独立权重）<br/>对 prefix 做注意力，动作 token 间双向注意力"]
+  suf --> ae
+  ae --> v["预测速度场 v"]
+  v --> eul["欧拉积分 10 步"]
+  eul -->|"每步复用 KV cache"| ae
+  eul --> chunk["连续动作 chunk A_t（H=50）"]
+  chunk --> robot["开环执行，每 0.5~0.8 s 重新推理"]
 ```
+
+图依据：论文 §IV（模型）、§IV 推理段与附录 B/D（H=50、10 步、KV 缓存、各机器人推理间隔）。
+
+## 核心方法
+
+以下数字均读自论文正文/附录（arXiv:2410.24164）：
+
+- **骨干与参数：** 以 3B 的 PaliGemma 为基座，新增约 300M 参数的 action expert（从头初始化），合计 3.3B；action expert 宽度 1024、MLP 维 4096。
+- **动作表示：** 动作 chunk 长度 H=50；每个动作对应一个 action token 送入 action expert；state 与图像经线性层投影到与语言 token 相同的嵌入空间。
+- **训练目标：** 条件流匹配，噪声样本 A^τ = τA + (1−τ)ε，网络回归 ε − A；流匹配时间 τ 取自偏向低 τ（高噪声）的 shifted-beta 分布，阈值 s=0.999（论文约定 τ=0 为噪声、τ=1 为数据）。
+- **注意力与缓存：** 论文称 action expert 使用全双向注意力掩码，动作 token 互相可见；推理时缓存观测 prefix 的 key/value，只重算动作 token 后缀。（LeRobot 里 prefix 不看后缀的掩码见 `embed_suffix` 的 `att_masks`，属源码读到的实现。）
+- **推理：** 10 步前向欧拉积分（δ=0.1）；论文表 I 在 RTX 4090 上测得板载总推理 73 ms（图像编码 14 ms + 观测前向 32 ms + 10 步动作前向 27 ms），含 Wi-Fi 的离板总计 86 ms。
+- **执行：** 论文未做动作聚合（试过 temporal ensembling 反而变差）；20 Hz 的 UR5e/Franka 每执行 16 步推理一次（0.8 s），50 Hz 机器人每执行 25 步推理一次（0.5 s）。
+- **数据：** 预训练混合含 OXE 子集（Magic Soup）、Bridge v2、DROID 与 π 自采灵巧数据集；论文称开源数据约占混合的 9.1%。
 
 ## 评测
 
 - 文内强调精细操作（折叠、装袋）与混合数据（操作 + 导航 + 移动操作）。
-- 相对扩散策略：更少前向步数。
+- 相对扩散策略：更少前向步数（旧版表述，论文正文未核到直接对比，仅可确认其推理为 10 步积分）。
 - 数字以 [原文](https://arxiv.org/abs/2410.24164) 与 openpi 文档为准。
 
 ## 结论
 
 **高频精细操作优先流匹配动作头；复现入口记 openpi，不要去找不存在的 pi0 仓。**
 
-- Action Expert 把「会看会说」和「会动手」拆开训练
+- Action Expert 与 VLM 骨干用两套权重、同一 Transformer 内联合训练（并非分开训练；旧版此条表述已纠正）
 - 流匹配相对 DDPM 更适合控制频率
 - 混合数据是通才的前提，不是单任务 trick
-- 后继 π₀.₅ / π₀.₇ 改的是提示与数据，不是丢掉 flow
+- 后继 π₀.₅ 在预训练阶段改用 FAST 离散动作 token、后训练再接 flow-matching action expert（见 [π0.5](./paper-pi05-open-world-vla.md)），并非单纯换提示与数据；π₀.₇ 请见方法页
 - 部署要对齐动作归一化、字段映射和推理频率（见 openpi 归档）
 
 ## 源码运行时序图
 
+> 旧版此处是「clone → 加载检查点 → 反馈」的通用模板，没有对应具体函数，已替换。下面两张图来自 LeRobot 固定提交 `9e5ee9859480e425a97a6836bb3fee479539beb5` 的 `src/lerobot/policies/pi0/`（`modeling_pi0.py`、`processor_pi0.py`、`configuration_pi0.py` 已通读）。官方原仓 [openpi](https://github.com/Physical-Intelligence/openpi) 的 JAX/PyTorch 入口本次未克隆核对，仓库归档见 [openpi 归档](../../sources/repos/openpi.md)，此处不画未核实的调用链。
+
+### 训练（`lerobot-train --policy.type=pi0`）
+
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Dev as 开发者
-    participant Repo as Physical-Intelligence/openpi
-    participant Ckpt as π₀ 检查点
-    participant AE as Flow Action Expert
-    participant Robot as 真机/仿真
-    Dev->>Repo: clone + 环境
-    Dev->>Ckpt: 加载 π₀ / FAST 权重
-    Dev->>AE: 观测 + 语言
-    AE->>Robot: 连续动作 chunk
-    Robot-->>Dev: 状态反馈
+    participant T as scripts/lerobot_train.py<br/>train() / update_policy
+    participant PP as processor_pi0.py<br/>make_pi0_pre_post_processors
+    participant P as modeling_pi0.py<br/>PI0Policy.forward
+    participant M as PI0Pytorch.forward
+    participant G as PaliGemmaWithExpertModel.forward
+    T->>PP: _preprocess_dataset_batch → 重命名、加 batch 维、Pi0NewLineProcessor、PaliGemma 分词、设备、(相对动作)、归一化
+    T->>P: policy(batch)（经 accelerator.autocast）
+    P->>P: _preprocess_images / prepare_state / prepare_action（pad 到 max_*_dim=32）
+    P->>M: sample_noise、sample_time（Beta 采样）后调用 forward
+    M->>M: make_flow_matching_inputs(NOISE_AT_ONE) 得 x_t、u_t
+    M->>M: embed_prefix（SigLIP 图像+语言）与 embed_suffix（state_proj + action_in_proj + 时间 MLP）
+    M->>G: inputs_embeds=[prefix, suffix]
+    G-->>M: suffix_out
+    M-->>P: action_out_proj → v_t，MSE(u_t, v_t)
+    P-->>T: 截回真实动作维后求均值 loss
 ```
+
+### 推理（`lerobot-rollout` 同步引擎）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant I as inference/sync.py<br/>SyncInferenceEngine.get_action
+    participant P as PI0Policy.select_action
+    participant C as PI0Policy.predict_action_chunk
+    participant M as PI0Pytorch.sample_actions
+    participant D as PI0Pytorch.denoise_step
+    I->>I: prepare_observation_for_inference → preprocessor
+    I->>P: select_action(observation)
+    alt _action_queue 为空
+        P->>C: predict_action_chunk(batch)
+        C->>M: images, lang_tokens, state
+        M->>M: embed_prefix，PaliGemma 前向并 use_cache=True 得 past_key_values
+        loop num_inference_steps=10（euler_integrate）
+            M->>D: denoise_step(state, x_t, timestep)
+            D->>D: embed_suffix，clone_past_key_values，仅 action expert 前向
+            D-->>M: action_out_proj 得速度 v
+        end
+        M-->>C: 动作 chunk
+        C-->>P: 裁掉 padding 维
+        P->>P: 取前 n_action_steps(=50) 步入队
+    end
+    P-->>I: popleft 一个动作
+    I->>I: postprocessor（反归一化，相对动作则转回绝对）
+```
+
+## LeRobot 实现要点
+
+- **入口：** `policy.type=pi0`；基座权重 [`lerobot/pi0_base`](https://huggingface.co/lerobot/pi0_base)，LIBERO 版 `lerobot/pi0_libero`（见 `docs/source/pi0.mdx`）；依赖 `pip install -e ".[pi]"`。文档明确「实现改编自 openpi」，代码里多处注释 `see openpi …`。
+- **默认配置（`configuration_pi0.py`）：** `paligemma_variant=gemma_2b`、`action_expert_variant=gemma_300m`、`chunk_size=n_action_steps=50`、`num_inference_steps=10`、`max_state_dim=max_action_dim=32`（不足补零）、图像 224×224、`time_sampling_beta_alpha=1.5, beta_beta=1.0, scale=0.999, offset=0.001`，与论文的 Beta(1.5,1)、s=0.999 吻合。
+- **与论文约定的差异（读源码）：** LeRobot 里 π0 用 `FlowConvention.NOISE_AT_ONE`（噪声在 t=1），与论文 τ=0 为噪声的写法时间轴相反，属实现约定，不影响方法本身。
+- **相对动作：** `use_relative_actions` 默认关闭；开启后处理顺序为「raw → relative → normalize → model → unnormalize → absolute」，需先用 `lerobot-edit-dataset … recompute_stats --relative_action true` 重算统计量。
+- **加速/省显存：** `compile_model`、`gradient_checkpointing`、`dtype=bfloat16`；`train_expert_only=true` 冻结 VLM 仅训 action expert；评估时多相机图像在 `_embed_images` 中合批过视觉塔。
+- **RTC：** `PI0Policy.supports_rtc`，开 RTC 时必须走 `predict_action_chunk`（`select_action` 里 `assert not self._rtc_enabled()`）。
+- **限制：** PaliGemma 分词器为受限访问模型（`google/paligemma-3b-pt-224`，需在 Hub 同意许可）；LeRobot 文档未提供 π0 的复现成功率表（π0.5 才有 LIBERO 对照表，见 [π0.5](./paper-pi05-open-world-vla.md)）。
 
 ## 局限与风险
 
@@ -177,6 +250,8 @@ sequenceDiagram
 - [pi0_arxiv_2410_24164](../../sources/papers/pi0_arxiv_2410_24164.md)
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [openpi 仓库归档](../../sources/repos/openpi.md)
+- [LeRobot 仓库归档](../../sources/repos/lerobot.md)：固定提交 `9e5ee98…` 的 `policies/pi0/` 源码与 `docs/source/pi0.mdx`
+- [arXiv PDF](https://arxiv.org/pdf/2410.24164)：2026-11-05 重读 §IV、附录 B/D
 
 - [`sources/papers/rcl_awesome_wam_ref_502ccb43b26687d765d7_0-a-vision-language-action-flow-model-fo.md`](../../sources/papers/rcl_awesome_wam_ref_502ccb43b26687d765d7_0-a-vision-language-action-flow-model-fo.md) — 本条目策展摘录
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表

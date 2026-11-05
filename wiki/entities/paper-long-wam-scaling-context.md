@@ -20,6 +20,7 @@ related:
 sources:
   - ../../sources/papers/long-wam-arxiv-2610-10528.md
   - ../../sources/repos/nvlabs-longlive-long-wam.md
+  - ../../sources/repos/lerobot.md
   - ../../sources/sites/long-wam-project-page.md
   - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
 ---
@@ -51,6 +52,25 @@ sources:
 | SR | Success Rate | 成功率，需结合具体 benchmark 协议解释 |
 | KV cache | Key-Value cache | Transformer 历史注意力键值缓存 |
 | GPT | Generative Pre-trained Transformer | 此处指承担高层规划、恢复和纠正的 GPT-6 Astra agent |
+
+## 流程总览
+
+下图是 LeRobot 移植里两种推理模式（`LongWAMConfig.denoising` 取 `idm` 或 `cod`）的数据流，来自 `modeling_longwam.py: LongWAMPolicy._predict`；论文级流程图见下文「方法」一节。
+
+```mermaid
+flowchart TD
+    OBS["每个控制 tick 的当前帧 + 状态 + 指令"] --> HIS["_observe 入队，_history 按 video_stride 取历史帧"]
+    HIS --> VAE["Wan VAE 编码历史 -> clean latent"]
+    OBS --> CTX["UMT5 文本 + proprio 编码 -> context"]
+    VAE --> MODE{"denoising 模式"}
+    CTX --> MODE
+    MODE -->|"idm"| IM["先对未来视频 latent 去噪（imagine_steps），再缓存视频 KV"]
+    IM --> AD1["动作 expert 读视频 KV 去噪动作"]
+    MODE -->|"cod"| CO["视频与动作每一步联合去噪"]
+    AD1 --> OUT["动作 chunk -> 执行 n_action_steps 步"]
+    CO --> OUT
+    OUT --> OBS
+```
 
 ## 方法：记住过去、预测未来、生成动作
 
@@ -126,6 +146,52 @@ flowchart TB
 - 增长观测历史不等于自适应改变动作块长度；动作何时中断或重规划还取决于部署控制逻辑。
 - 基准结果与特定本体、数据和任务划分绑定；不能据此推断在所有环境下都优于短历史策略。
 
+## LeRobot 实现
+
+- **身份核对**：LeRobot `docs/source/longwam.mdx` 链接的论文即 arXiv 2610.10528，arXiv 标题 *Long-WAM: Scaling the Context of World-Action Models*（2026-10-07，API 核对），与本页一致；LeRobot 策略源自官方 `NVlabs/LongLive/Long-WAM`。
+- **模式**：支持 IDM（先想象未来视频再去噪动作）与 COD（视频和动作联合去噪）两种，对应两个原生检查点 `Efficient-Large-Model/Long-WAM-LIBERO-IDM-LeRobot` 与 `...-COD-LeRobot`；原始 `model.pt` 包不能直接加载（文档）。
+- **LIBERO 配置**（文档）：`past_obs_steps=48`（20 Hz 下 2.4 s）、`video_stride=4`、`future_video_steps=32`、`action_horizon=32`、`inference_action_horizon=80`、`n_action_steps=10`；两路 224x224 相机，7 维动作，8 维状态；相机顺序必须是 `observation.images.image`、`observation.images.image2`。
+- **LeRobot 文档报告的 LIBERO 结果**（每模型每套件 500 episode，GB200，BF16）：IDM 平均 99.00%，COD 平均 98.45%（分套件数字见文档）。这是 LeRobot 移植检查点的结果，不等同于论文表中的数字。
+- **使用要点**：必须在每个控制 tick 调 `select_action`（包括执行队列动作的 tick），否则历史过期；`reset()` / `drop_queued_actions()` 清空历史与队列；通用 async/RTC 未验证（文档）；默认 `inference_seed=1`，每个 chunk 重置同一 seed 以保持发布时的推理行为。
+- **精度与夹爪**：`--policy.dtype` 在加载前决定参数存储精度；发布的夹爪后处理会把最后一维从 [0,1] 转成带符号指令，微调数据已是带符号约定时设 `--policy.toggle_action_dimensions=[]`。
+- **一致性提示**：下方「源码运行时序图」是官方子目录视角的通用抽象（Async control runner 等），不是 LeRobot 源码函数名；LeRobot 真实调用链见本节后的图。
+
+### LeRobot 移植的运行时序（固定提交 `9e5ee98`）
+
+来源：`src/lerobot/policies/longwam/modeling_longwam.py`、`mot_longwam.py`（`LongWAMDiT`、`ActionExpert`）。
+
+```mermaid
+sequenceDiagram
+    participant TR as "lerobot_train.py: train()"
+    participant EV as "lerobot_eval.py: rollout()"
+    participant P as "LongWAMPolicy"
+    participant D as "mot_longwam.py: LongWAMDiT"
+    TR->>P: "policy(batch) -> forward"
+    P->>P: "_context (UMT5 + proprio_encoder), _encode_video (Wan VAE)"
+    P->>P: "_add_noise 加噪视频与动作；前 clean_frames 帧保持干净"
+    P->>D: "dit(noisy_video, noisy_action, video_time, action_time, context)"
+    D-->>P: "video_prediction, action_prediction"
+    P->>P: "_flow_loss 加权 -> loss_video, loss_action"
+    EV->>P: "select_action(observation) 每 tick"
+    P->>P: "_observe: 当前帧入 deque（maxlen = past_obs_steps+1）"
+    P->>P: "队列空 -> _predict"
+    P->>P: "_history -> _encode_video -> clean latent；_context(cache=True)"
+    alt "denoising == idm"
+        loop "imagine_steps"
+            P->>D: "dit(clean+future, None, ...) 去噪未来视频"
+        end
+        P->>D: "dit(..., return_cache=True) 得到 video_cache"
+        loop "num_inference_steps"
+            P->>D: "dit(None, action, ..., video_cache) 去噪动作"
+        end
+    else "denoising == cod"
+        loop "num_inference_steps"
+            P->>D: "dit(clean+future, action, time, time, context) 联合去噪"
+        end
+    end
+    P-->>EV: "取前 n_action_steps 步入队，popleft"
+```
+
 ## 关联页面
 
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 定义、谱系与代表项目索引。
@@ -165,6 +231,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [`sources/repos/lerobot.md`](../../sources/repos/lerobot.md) — LeRobot 固定提交上的 `longwam` 移植与文档
 - [论文 arXiv](https://arxiv.org/abs/2610.10528) · [HTML v1](https://arxiv.org/html/2610.10528v1)
 - [Long-WAM 官方项目页](https://nvlabs.github.io/LongLive/Long-WAM/)
 - [代码与复现文档](https://github.com/NVlabs/LongLive/tree/main/Long-WAM)

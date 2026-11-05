@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, open-source, moe, flow-matching, multi-embodiment, humanoid, qwen, manipulation, loco-manipulation, depth-distillation, robbyant]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-05
 arxiv: "2607.06403"
 code: https://github.com/robbyant/lingbot-vla-v2
 related:
@@ -24,6 +24,7 @@ sources:
   - ../../sources/papers/lingbot_vla_v2_tech_report.md
   - ../../sources/repos/lingbot-vla-v2.md
   - ../../sources/sites/lingbot-vla-v2-technology-robbant.md
+  - ../../sources/repos/lerobot.md
 summary: "LingBot-VLA 2.0（6B）：Qwen3-VL-4B + 稀疏 MoE action expert，约 6 万小时异构预训练（5 万 h 机器人 ×20 本体 + 1 万 h egocentric 人视频）、55 维统一全身动作空间与 Dual-Query 深度/视频蒸馏；GM-100 与长程移动操作 generalist 评测超 π₀.₅ / GR00T N1.7，开源权重与真机部署脚本。"
 ---
 
@@ -103,6 +104,52 @@ flowchart TB
   ft --> dep
 ```
 
+## 论文核对（2026-11-05，已读 arXiv:2607.06403 方法与评测节）
+
+- 论文 §4.1 称预训练采用 **token 级 loss-free MoE**：sigmoid 路由、每层 1 个共享专家 + Nr 个路由专家（每 token 激活 K 个）、DeepSeek-V3 式 **无辅助损失** 的 bias 负载均衡；§4.2 为 Dual-Query 蒸馏（对齐 LingBot-Depth 深度 token 与 DINO-Video 语义时序表征）。
+- **论文与 LeRobot 默认配置的差异（请勿混读）：** LeRobot `LingbotVLAV2Config` 注释写明 released recipe 的**主**负载均衡手段是 DeepSeek-V3 的 sequence-wise **辅助损失**（`sequence_wise_loss_coeff=1e-3`）加 router z-loss（`router_z_loss_coeff=1e-4`），路由 `sigmoid`；这与论文 §4.1 描述的「auxiliary-loss-free bias」口径不同，哪一个对应哪个训练阶段本次未能核实（推测：论文描述预训练，released recipe 描述后训练）。
+- 论文 Table 3：DINO-Video 在 LARYBench 四项中三项最优。
+- 「6B」来自权重仓库名 `lingbot-vla-v2-6b` 与项目 README 口径；论文正文中本次未检索到明确的总参数量表述，MoE 对照实验用的是「Dense 0.6B vs MoE 1.6B-A-0.6B」的小尺度设置。
+- 论文长程移动操作表（冰箱分拣 77.1/60.0 等）与上表一致。
+
+## 源码运行时序图
+
+LeRobot 固定提交 `9e5ee98` 的 `policy.type=lingbot_vla_v2`（`src/lerobot/policies/lingbot_vla_v2/`，核心在 `modeling_lingbot_vla_v2.py` 与 `model_core/`）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Tr as lerobot_train.train / lerobot_eval.rollout
+    participant Fa as policies.factory.make_policy / make_pre_post_processors
+    participant Pre as make_lingbot_vla_v2_pre_post_processors
+    participant Pol as LingbotVLAV2Policy
+    participant FM as FlowMatchingV2
+    participant X as QwenvlWithExpertV2Model (Qwen3-VL + MoE 动作专家)
+
+    Tr->>Fa: --policy.path=lerobot/lingbot_vla_v2_base (或 _robotwin)
+    Fa->>Pre: rename → add_batch → RelativeActionsProcessorStep → normalize → LingbotVLAV2SlotMappingProcessorStep(55 维规范槽位) → LingbotVLAV2ImageProcessorStep → LingbotVLAV2ChatTemplateProcessorStep → TokenizerProcessorStep
+    Pre-->>Tr: images / image_grid_thw / lang_tokens / 55 维 state
+    Tr->>Pol: policy(batch) = forward
+    Pol->>Pol: _teacher_targets（仅配置 align_params 时，DistillationTeachers 取深度/视频教师目标）
+    Pol->>FM: forward：make_flow_matching_inputs(NOISE_AT_ONE) → embed_prefix + embed_suffix
+    FM->>X: forward([prefix_embs, suffix_embs])：VLM 前缀 + MoE 专家后缀，_block_suffix_to_queries_ 屏蔽 query
+    X-->>FM: suffix_out + router_logits
+    FM-->>Pol: 逐元素 MSE(L1_fm 可选) + sequence-wise 损失 + router z-loss + _align_losses
+    Tr->>Pol: 推理 select_action：队列空 → predict_action_chunk
+    Pol->>FM: sample_actions：前缀 KV 缓存一次 → num_steps=10 次 predict_velocity（可选 CUDA Graph / torch.compile / RTC）
+    FM-->>Pol: 规范空间动作 (B,50,55)
+    Pol-->>Tr: 逆槽位映射 → unnormalize → AbsoluteActionsProcessorStep（若相对动作）→ 取前 n_action_steps
+```
+
+## LeRobot 实现
+
+- **安装与权重：** `pip install -e ".[training,lingbot_vla_v2]"`；Qwen3-VL tokenizer/图像处理器取自 `Qwen/Qwen3-VL-4B-Instruct`；不需要 `flash-attn`（改用 PyTorch SDPA）。检查点：`lerobot/lingbot_vla_v2_base`（`robbyant/lingbot-vla-v2-6b` 的格式转换）与 `lerobot/lingbot_vla_v2_robotwin`（RoboTwin 2.0，14 维，step 50000）。
+- **动作专家（文档）：** 稀疏 MoE Qwen2 专家，32 个路由专家、top-4；默认 `chunk_size=n_action_steps=50`、去噪 10 步；55 维规范空间用 `--policy.state_slots` / `--policy.action_slots` 把自己的机器人映射进去。
+- **RoboTwin 数字：** LeRobot 文档转述上游 README：50 任务平均 clean 93.52%、randomized 92.80%（π0.5 为 82.74% / 76.76%）；文档明说这些是上游数字，并非通过此移植测得。
+- **推理加速开关（默认关）：** `use_cudagraph_denoise`、`use_cudagraph_prefix`、`use_cudagraph_prefix_full`、`compile_predict_velocity`；文档在一张 RTX PRO 6000 上给出 50 步 chunk 约 756 ms（bf16，无开关）→ 约 120 ms（全开+compile）。此处的 ~130 ms/4090D 与那条是不同硬件、不同口径的数字。
+- **蒸馏教师许可：** MoGe-2 (MIT)、LingBot-Depth (Apache-2.0)、DINO-Video（来自 DINOv3，受 DINOv3 License 约束）；仅蒸馏训练才下载。
+- 许可：代码和转换权重 Apache-2.0。
+
 ## 公开结果（generalist 联合训练，README / 项目页）
 
 > 指标为 **progress score / success rate**；数字以 [官方 README](https://github.com/robbyant/lingbot-vla-v2) 为准。
@@ -162,6 +209,7 @@ flowchart TB
 
 ## 参考来源
 
+- [lerobot.md](../../sources/repos/lerobot.md)：固定提交 9e5ee98 的 `docs/source/lingbot_vla_v2.mdx` 与 `src/lerobot/policies/lingbot_vla_v2/`
 - [LingBot-VLA 2.0 技术报告摘录](../../sources/papers/lingbot_vla_v2_tech_report.md)
 - [LingBot-VLA 2.0 仓库归档](../../sources/repos/lingbot-vla-v2.md)
 - [LingBot-VLA 2.0 官方项目页](../../sources/sites/lingbot-vla-v2-technology-robbant.md)

@@ -28,6 +28,7 @@ related:
   - ./lingbot-vla-v2.md
   - ./robotwin.md
   - ./libero-benchmark.md
+  - ./lerobot.md
   - ../tasks/manipulation.md
   - ../concepts/world-action-models.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
@@ -41,6 +42,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_world_model_exec_10_papers_2026-08-19.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/galaxeavla.md
+  - ../../sources/repos/lerobot.md
 summary: "G0.5（星海图，arXiv:2608.11739）：Qwen3.5-2B 单一解码器在同一自回归流里发 CoT 与动作 token；跨本体 RVQ ActionCodec + 视觉记忆。真机 76.7%、LIBERO 98.9%、RoboTwin 93.3%。GitHub + HF 权重已开源（Community License）。"
 ---
 
@@ -94,7 +96,7 @@ summary: "G0.5（星海图，arXiv:2608.11739）：Qwen3.5-2B 单一解码器在
 
 训练只有一条 CE：CoT 和动作「都是 token」。8 种 CoT 模板加权采样，子任务文本权重最高；评测默认 no-CoT，需要时再打开。
 
-### 流程总览
+## 流程总览
 
 ```mermaid
 flowchart TB
@@ -141,6 +143,49 @@ sequenceDiagram
 - **最短路径：** `uv sync` → 拉 `g05-base` → `serve_policy.py` 对 R1-Lite 零样本，或 `experiments/libero` 用 `g05-libero`。
 - **微调：** `finetune.sh` 默认 DDP 每卡一份整模，**不能**当成模型并行省显存；全参 >70 GB。
 - **许可证：** 先读 `LICENSE-G0.5`；内部 PoC 评估与生产部署不是同一档。
+
+## LeRobot 源码运行时序图
+
+LeRobot 固定提交 `9e5ee98` 把 G0.5 原生移植为 `policy.type=g05`（`src/lerobot/policies/g05/`，文档 `docs/source/g05.mdx`），不再依赖 OpenGalaxea 的 Python 包、Hydra、OmegaConf。以下节点均读自该目录源码：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Tr as lerobot_train.train / lerobot_rollout
+    participant Fa as policies.factory.make_policy / make_pre_post_processors
+    participant Pre as make_g05_pre_post_processors (processor_g05.py)
+    participant Pol as G05Policy (modeling_g05.py)
+    participant BE as G05NativeBackend
+
+    Tr->>Fa: make_policy(--policy.path=lerobot/g05_*)
+    Fa->>Pol: G05Policy.from_pretrained → _native_backend(config, checkpoint_dir)
+    Fa->>Pre: RenderRuntimeMessagesStep → G05ImageTransformStep → G05EmbodimentProjectionStep → Normalizer → G05TokenizerStep
+    Pre-->>Tr: input_ids / labels / token_types / pixel_values / samples
+    Tr->>Pol: 训练 forward(batch)
+    Pol->>BE: forward → _prefill (Qwen3.5 解码器 + 视觉 + G05ProprioEmbedder)
+    BE-->>Pol: ce_loss（CoT+ActionCodec token 的自回归交叉熵）+ fm_loss（_flow_loss，G05ActionExpert）
+    Tr->>Pol: 推理 select_action(obs)，队列空时 predict_action_chunk
+    Pol->>BE: _run_inference → predict_action
+    BE->>BE: _prefill 填 KV 缓存
+    opt runtime_system=system2 且 predict_cot
+        BE->>BE: _generate_text 采样 CoT（子任务 / BBox），抑制动作码 token
+    end
+    alt action_head = flow（continuous_action）
+        BE->>BE: _infer_flow：num_inference_steps 次 _velocity（G05ActionExpert），Euler 递减 t
+    else action_head = actioncodec
+        BE->>BE: _generate_text 续写动作码 → action_tokenizer.decode_language_tokens
+    end
+    BE-->>Pol: ACTION [B,T,D]（System 2 另带 cot_text）
+    Pol-->>Tr: PolicyOutput(action, prediction{subtask, boxes}) 或裸 action；经反归一化与 G05InverseActionProjectionStep
+```
+
+## LeRobot 实现
+
+- **权重（`docs/source/g05.mdx`）：** `lerobot/g05_base`（27 维 R1 Lite/Pro 全身布局，6 步历史，预测 32 执行 16）、`lerobot/g05_libero`（20 维，连续 flow）、`lerobot/g05_robotwin20`、`lerobot/g05_so101`（flow 或 AR ActionCodec + 原生 CoT）。
+- **System 1 / System 2：** 同一次推理里 System 2 先生成 CoT（默认只有子任务，可选 `["bbox","subtask"]`）再出动作；System 1 不生成 CoT。`/vqa` 不支持（文档说明文本头只训练过固定指令格式的 CoT，不是通用问答）。
+- **与论文主表口径的差别：** 本页上文写主实验默认纯 AR；LeRobot 文档列出的 LIBERO/RoboTwin 检查点走连续 flow（G05ActionExpert + 流匹配头），`g05_base` 同时带两种动作头，需用 `policy.action_head` 选择。LeRobot 数字是否与论文表一致未核实。
+- **依赖与许可：** `uv sync --extra g05`，建议装 `flash-linear-attention`（文档称带来约 1.5x 训练加速）；集成代码与权重均用 G0.5 Community License（含非商业限制），不是 LeRobot 的 Apache-2.0。
+- **身份核对：** arXiv:2608.11739 标题为 *G0.5: One Autoregressive Stream for Robot Reasoning and Action*（摘要页核对），与本页一致；此前页面里的 G0 / G0Plus 是不同版本，见下文「版本边界」。
 
 ## 工程实践
 
@@ -224,6 +269,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [lerobot.md](../../sources/repos/lerobot.md)：LeRobot 固定提交 9e5ee98 的 `docs/source/g05.mdx` 与 `src/lerobot/policies/g05/`
 - [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [galaxea_g05_arxiv_2608_11739.md](../../sources/papers/galaxea_g05_arxiv_2608_11739.md)
