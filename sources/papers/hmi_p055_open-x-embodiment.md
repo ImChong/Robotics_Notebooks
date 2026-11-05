@@ -43,3 +43,11 @@ Open X-Embodiment的价值先在数据基础设施，然后才在RT-X模型。60
 - 升格详情页：[`wiki/entities/paper-open-x-embodiment.md`](../../wiki/entities/paper-open-x-embodiment.md)
 - 覆盖索引：[`wiki/queries/hmi-papers-coverage.md`](../../wiki/queries/hmi-papers-coverage.md)
 - 上游策展仓：[`sources/repos/humanoid-motion-intelligence.md`](../repos/humanoid-motion-intelligence.md)
+
+## 论文 v9 一手资料核对（2026-11-05）
+
+- 原文：[arXiv v9 全文](https://arxiv.org/html/2310.08864v9)，核对引言、数据、方法、实验与讨论。
+- 数据集收集 60 个数据集、22 种本体、超过 100 万轨迹；实验混合数据来自 9 种机械臂，不能将两者混为一谈。
+- RT-1-X 训练机器人混合数据；RT-2-X 使用机器人数据与视觉语言数据约 1:1 联合微调。动作各维离散化，坐标系、绝对/相对值不统一。
+- 3600 次实验覆盖 6 种机器人；RT-1-X 在 5 个小数据域中 4 个超过原方法；55B RT-2-X 的新技能评测为 75.8%，RT-2 为 27.3%。
+- 论文未研究对全新机器人的泛化；大数据域 RT-1-X 欠拟合。项目页、代码与开放边界分别见 [项目页归档](../sites/open-x-embodiment.md) 和 [源码归档](../repos/open-x-embodiment.md)。
