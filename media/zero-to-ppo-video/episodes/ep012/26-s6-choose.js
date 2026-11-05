@@ -4,8 +4,9 @@
 //    「会撞上」碰到桌面的地方打 ×，「不要」虚影淡掉；
 // 句 3「超出关节限位」「第八集」换成侧视 G1 抬起近侧的腿（膝弯 70°，在 −5°～165° 里），「膝盖反过来弯的那一组」把膝盖沿髋—踝连线翻过去、
 //    画成橙色虚线（膝 −70°），「超出限位」「用不了」打 ×，右栏写 −5°～165°（G1 URDF：left_knee_joint −0.087267～2.8798 rad）；
-// 句 4「挑一组离现在的姿势最近的」回到 UR5，目标从 (1.5, 0) 挪到 (1.8, 0.3)：肘上这组肩只多转 6°、肘多转 9°（亮黄，打勾）；
-//    「胳膊却要整个翻过去」换成肘下那组要肩转 −114°、肘转 269°（橙）；
+// 句 4「挑一组离现在的姿势最近的」回到 UR5，目标从 (1, 0) 挪到 (1.2, 0.3)：肘上这组肩只多转 13°、肘多转 7°（亮黄）；
+//    「胳膊却要整个翻过去」换成肘下那组要肩转 −112°、肘转 300°（橙，虚影从现在的姿势翻过去）；
+// 2026-11-05 参照 011：手照第 11 集放在小臂上离肘两格，目标和角度跟着改（Python 重算：肩 63.43° → 76.82° / −48.75°，肘 −153.43° → −146.63° / +146.63°）。
 // 句 5「公式写不出来」「第十五集」「用雅可比，一步一步往目标挪」手腕一小步一小步走到目标（虚线折线）。
 // 时刻取自配音的逐词时间，见 ../ep012.py。
 (function () {
@@ -19,7 +20,7 @@
     formula: 33.72, ep15: 35.97, jac: 37.1, steps: [38.09, 39.6]
   };
   var END = 40.58;
-  var UP = E.ik2(1.5, 0, true), DN = E.ik2(1.5, 0, false), UP2 = E.ik2(1.8, 0.3, true), DN2 = E.ik2(1.8, 0.3, false);
+  var UP = E.ik2(1, 0, true), DN = E.ik2(1, 0, false), UP2 = E.ik2(1.2, 0.3, true), DN2 = E.ik2(1.2, 0.3, false);
   var TABLE = -0.089159 / (0.425 / Math.sqrt(5));   // 桌面（底座底面）在肩下面多少格
 
   E.scenes[5] = {
@@ -33,7 +34,7 @@
       { at: 33.62, s: '公式写不出来：第 15 集，用雅可比一步一步往目标挪' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('解有好几组，机器人一次只能摆一个姿势；先去掉做不到的：机械臂装在桌子上，肘下这一组大臂要伸到桌面下面，会撞上；超出关节限位的也不要：人形机器人的膝盖只能在 −5° 到 165° 之间弯，膝盖反过来弯的那一组用不了；剩下的挑离现在的姿势最近的一组：目标从 (1.5, 0) 挪到 (1.8, 0.3)，肘上这组肩只转 6°、肘转 9°，换成肘下要肩转 −114°、肘转 269°，胳膊整个翻过去；公式写不出来时，第十五集讲用雅可比一步一步往目标挪');
+      var s = K.sceneSvg('解有好几组，机器人一次只能摆一个姿势；先去掉做不到的：机械臂装在桌子上，肘下这一组大臂要伸到桌面下面，会撞上；超出关节限位的也不要：人形机器人的膝盖只能在 −5° 到 165° 之间弯，膝盖反过来弯的那一组用不了；剩下的挑离现在的姿势最近的一组：目标从 (1, 0) 挪到 (1.2, 0.3)，肘上这组肩只转 13°、肘转 7°，换成肘下要肩转 −112°、肘转 300°，胳膊整个翻过去；公式写不出来时，第十五集讲用雅可比一步一步往目标挪');
 
       /* ── 左 A：网格 + 两台 UR5 + 桌面 ── */
       var armPanel = E.el('g', {}, s);
@@ -42,7 +43,7 @@
       var ghostG = E.el('g', {}, armPanel), ghost = E.arm2(ghostG, A.OX, A.OY, A.S, 0, box);
       var armG = E.el('g', {}, armPanel), arm = E.arm2(armG, A.OX, A.OY, A.S, 0, box), u = arm.u, V = arm.view;
       var pl = E.plane(under, { ox: A.OX, oy: A.OY, u: u, x0: -1, x1: 4, y0: -3, y1: 3 });
-      var P = pl.P, O = P(0, 0), TG = P(1.5, 0), TG2 = P(1.8, 0.3);
+      var P = pl.P, O = P(0, 0), TG = P(1, 0), TG2 = P(1.2, 0.3);
       var top = E.el('g', {}, armPanel);
       var tableG = E.el('g', {}, top), TY = P(0, TABLE)[1];
       K.paint(E.el('rect', { x: P(-1.4, 0)[0], y: TY, width: 5.8 * u, height: 0.55 * u, rx: 4, 'stroke-width': 2.5 }, tableG), E.tint('#a0784f', 45, 'var(--demo-surface)'), '#a0784f');
@@ -50,20 +51,21 @@
       var hitX = E.cross(top, P(0.24, TABLE)[0], TY, 9, E.ERR, 4.5);
       var badArm = K.paint(E.el('path', { d: 'M ' + O[0] + ' ' + O[1] + ' L ' + P(1, -2)[0] + ' ' + P(1, -2)[1], fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round', 'stroke-dasharray': '10 7' }, top), null, E.ERR);
       var tgt = E.target(top, 0, 0, 12, E.TGT);
-      var tg2Lab = E.halo(E.txt(top, TG2[0] + 18, TG2[1] - 14, '(1.8, 0.3)', 20, E.TGT, 'start', 900));
+      var tg2Lab = E.halo(E.txt(top, TG2[0] + 18, TG2[1] + 30, '(1.2, 0.3)', 20, E.TGT, 'start', 900));   // 点的右下：右上是一步一步挪过来的折线
       var oldT = E.target(top, TG[0], TG[1], 9, E.MUT);
       // 句 5：一步一步挪过去的折线（示意：每步离目标近一点）
-      var STEPM = [[3.06, 2], [2.6, 1.45], [2.2, 0.95], [1.95, 0.6], [1.85, 0.4], [1.8, 0.3]];
+      var STEPM = [[3, 2], [2.6, 1.5], [2.1, 1.0], [1.65, 0.62], [1.38, 0.4], [1.2, 0.3]];
       var stepPts = STEPM.map(function (p) { return P(p[0], p[1]); });
       var stepPath = K.paint(E.el('path', { d: E.poly(stepPts), fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '6 5' }, top), null, E.OMEGA);
       var stepDots = stepPts.map(function (p) { return K.paint(E.el('circle', { cx: p[0], cy: p[1], r: 5 }, top), E.OMEGA); });
 
       /* ── 左 B：侧视 G1 抬起近侧的腿 ── */
       var g1Panel = E.el('g', {}, s);
-      var ground = K.paint(E.el('line', { x1: 40, y1: 396, x2: 400, y2: 396, 'stroke-width': 3 }, g1Panel), null, E.BORDER);
+      var ground = K.paint(E.el('line', { x1: 40, y1: 408, x2: 400, y2: 408, 'stroke-width': 3 }, g1Panel), null, E.BORDER);
       // 只画腰以下、放大（同 001 第 4 幕的腿部特写：box 是 g1Side 的本地坐标，上缘渐隐）
-      var g1 = window.Robot3D.g1Side(g1Panel, 0, { box: [-70, 250, 170, 150], res: 4, fadeTop: true, hideArms: true }), SC = 2.4;
-      g1.place({ x: 200, scale: SC, dy: 396 - 388 });
+      // 整个人画出来（视景框切掉上半身会被 check_layout 报「机器人伸出视景框」），放大到 1.55 倍、脚底在 408
+      var g1 = window.Robot3D.g1Side(g1Panel, 0, { res: 3 }), SC = 1.55;
+      g1.place({ x: 200, scale: SC, dy: 408 - 388 });
       function sv(p) { return [g1.state.x + SC * p[0], g1.state.dy + 388 + SC * (p[1] - 388)]; }
       var KA = 50, KB = -20;                                 // 大腿往前抬 50°、小腿往后 20°：膝弯 70°
       g1.legs([KA, KB], [-4, 0]);
@@ -91,8 +93,8 @@
       var b4 = RK.line(g1r, X, 242, [['G1 的膝：', E.INK2], ['−5° ～ 165°', E.GOOD, 900], ['（第 8 集）', E.MUT, 700]], 20);
       var b5 = RK.line(g1r, X, 278, [['膝盖反过来弯：', E.INK2], ['用不了', E.ERR, 900]], 20);
       var c1 = RK.line(g1r, X, 330, [['② 挑离现在', E.INK, 900], ['最近', E.HI, 900], ['的一组', E.INK, 900]], 21);
-      var c2 = RK.line(g1r, X, 366, [['肘上', E.UP, 900], ['：肩转 6°、肘转 9°', E.INK2]], 20);
-      var c3 = RK.line(g1r, X, 400, [['换肘下', E.DOWN, 900], ['：肩转 −114°、肘转 269°', E.ERR, 900]], 20);
+      var c2 = RK.line(g1r, X, 366, [['肘上', E.UP, 900], ['：肩转 13°、肘转 7°', E.INK2]], 20);
+      var c3 = RK.line(g1r, X, 400, [['换肘下', E.DOWN, 900], ['：肩转 −112°、肘转 300°', E.ERR, 900]], 20);
       var g2r = E.el('g', {}, Rg);
       var d1 = RK.line(g2r, X, 140, [['公式写不出来？', E.INK, 900]], 23);
       var d2 = RK.line(g2r, X, 182, [['第 15 集：用', E.INK2], ['雅可比', E.OMEGA, 900]], 21);
@@ -112,7 +114,7 @@
           /* ── UR5：句 4 目标挪了，先走近的那组，再示意「翻过去」 ── */
           var mv = f(st, T.move[0], T.move[1] - T.move[0]), fl = f(st, T.flip[0], T.flip[1] - T.flip[0]);
           var q1 = lerp(UP[0], UP2[0], mv), q2 = lerp(UP[1], UP2[1], mv);
-          // 句 5：先回到第 9、10 集的摆法（手腕在 (3.06, 2)），再按折线上的点一步一步走到目标（每一步都是肘上那组）
+          // 句 5：先回到第 9–11 集的摆法（手在 (3, 2)），再按折线上的点一步一步走到目标（每一步都是肘上那组）
           if (st >= T.formula) {
             var back = f(st, T.formula, 0.8), P0 = [Math.atan2(2, 1), 0];
             q1 = lerp(UP2[0], P0[0], back); q2 = lerp(UP2[1], P0[1], back);
@@ -121,7 +123,7 @@
           arm.pose(q1, q2); V.clearTint();
           // 虚影：句 1–2 是肘下那组；句 4「整个翻过去」从肘上转到肘下（新目标），肩、肘各转一大圈
           var gq1 = DN[0], gq2 = DN[1];
-          if (st >= T.rest) { gq1 = lerp(UP2[0], DN2[0], fl); gq2 = lerp(UP2[1] - UP2[0], DN2[1] - DN2[0], fl) + gq1; }
+          if (st >= T.rest) { gq1 = lerp(UP[0], DN2[0], fl); gq2 = lerp(UP[1] - UP[0], DN2[1] - DN2[0], fl) + gq1; }   // 从现在的姿势（目标 (1, 0) 的肘上）翻到新目标的肘下：肘从 −153.4° 转到 +146.6°
           ghost.pose(gq1, gq2); ghost.view.clearTint();
           ghost.view.tint('all', st >= T.rest ? E.ERR : E.DOWN, 0.8, 0.45);
           var gOn = st < T.rest ? 0.9 * (1 - 0.75 * f(st, T.no, 0.4)) * (1 + 0.0 * b(st, T.dnSol, 0.8)) : 0.85 * f(st, T.flip[0] - 0.2, 0.3) * (1 - f(st, T.formula, 0.4));

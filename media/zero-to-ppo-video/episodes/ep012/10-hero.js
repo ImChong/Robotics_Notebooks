@@ -1,7 +1,8 @@
 // 片头主图（800×420）：三句旁白各一段——
 // ① 左边第 9、10 集的侧视网格 + UR5（肘在 (1, 2)，小臂水平）。「关节」肩、肘出蓝色的转角 θ₁、θ₂，「指数积公式」右边出上下两个框：
 //    每个关节转多少（上）→ 手的位姿（下），「算出」往下的箭头画出来，「手」手腕亮一下，「正向运动学」箭头旁写「正向运动学 · 一个答案」；
-// ② 「倒过来」往下的箭头变淡、右边长出往上的箭头，「手」网格上出紫色目标 ⊕ (1.5, 0)，「这个位置」写坐标，「每个关节」「该转多少」两个转角换成问号；
+// ② 「这一集回答一个问题」往下的箭头变淡、右边长出往上的箭头，「手」网格上出紫色目标 ⊕ (1, 0)，「位置」写坐标，「每个关节」「该转多少」两个转角换成问号，
+//    「为什么有时候没有解，有时候不止一组」箭头旁写出这两问（照 011 片尾的预告）；
 // ③ 「逆向运动学」往上的箭头旁写「逆向运动学」，「两组」UR5 弯肘把手腕送到目标（肘上，亮黄），同时出肘下的虚影（青），
 //    「好几组」「一组都没有」下面出三个小签：2 组、好几组、0 组；「一组都没有」网格右上角出一个够不到的橙色目标、打 ×。
 // 时刻取自配音的逐词时间（../ep012.py 的 [from, to] 等于每句配音实长，分镜时间 = 念到这个词的时刻）。
@@ -9,14 +10,14 @@
   var E = window.EP012, K = E.K, H = E.HEX;
   var D = Math.PI / 180, A = { OX: 92, OY: 205, S: 2.0 }, RX = 452;   // 主图不缩放：UR5 放大到一格约 55 px
   var T = {
-    joints: 2.42, turn: 2.76, poe: 3.69, calc: 4.98, hand: 5.55, pose: 5.93, fk: 6.83,
-    back: 9.35, tgt: 10.28, where: 11.02, each: 11.88, how: 12.75,
-    ik: 15.17, two: 17.45, move: [17.45, 18.3], many: 18.14, none: 19.66
+    joints: 2.42, turn: 2.77, poe: 3.71, calc: 5.02, hand: 5.3, pose: 5.62, fk: 6.89,
+    back: 9.51, tgt: 10.66, where: 11.72, each: 12.4, how: 13.3, why: 15.47,
+    ik: 19.06, two: 21.34, move: [21.34, 22.2], many: 22.03, none: 23.55
   };
-  var UP = E.ik2(1.5, 0, true), DN = E.ik2(1.5, 0, false);
+  var UP = E.ik2(1, 0, true), DN = E.ik2(1, 0, false);
 
   E.hero = function (K) {
-    var s = K.sceneSvg('片头主图：第十一集讲过，知道每个关节转了多少，用指数积公式就能算出手的位姿，这叫正向运动学，只有一个答案；这一集倒过来问：手要放到这个位置 (1.5, 0)，每个关节该转多少？这叫逆向运动学，答案可能有两组（肘上、肘下）、好几组，也可能一组都没有（目标太远够不到）');
+    var s = K.sceneSvg('片头主图：第十一集讲过，知道每个关节转了多少，用指数积公式就能得到手的位姿，这叫正向运动学，只有一个答案；这一集回答一个问题：知道手要停在什么位置 (1, 0)，每个关节该转多少？为什么有时候没有解，有时候不止一组？这叫逆向运动学，答案可能有两组（肘上、肘下）、好几组，也可能一组都没有（目标太远够不到）');
 
     /* ── 左：网格 + 两台 UR5（第二台是肘下的虚影） ── */
     var under = E.el('g', {}, s);
@@ -35,9 +36,9 @@
     var th1 = mathLab('θ₁'), th2 = mathLab('θ₂');
     var q1 = E.halo(E.txt(top, 0, 0, '?', 30, E.HI, 'middle', 900)), q2 = E.halo(E.txt(top, 0, 0, '?', 30, E.HI, 'middle', 900));
     var wDot = K.paint(E.el('circle', { r: 7, 'stroke-width': 3 }, top), E.TGT, E.S1);
-    // 目标 ⊕ (1.5, 0) 与够不到的目标 (4, 2.6)
-    var TG = P(1.5, 0), tgt = E.target(top, TG[0], TG[1], 13, E.TGT);
-    var tgtLab = E.halo(E.txt(top, TG[0] + 22, TG[1] + 34, '(1.5, 0)', 22, E.TGT, 'start', 900));
+    // 目标 ⊕ (1, 0) 与够不到的目标 (4, 2.6)
+    var TG = P(1, 0), tgt = E.target(top, TG[0], TG[1], 13, E.TGT);
+    var tgtLab = E.halo(E.txt(top, TG[0] + 22, TG[1] + 34, '(1, 0)', 22, E.TGT, 'start', 900));
     var FAR = P(4, 2.6), far = E.target(top, FAR[0], FAR[1], 13, E.ERR), farX = E.cross(top, FAR[0] - 30, FAR[1] - 26, 8, E.ERR, 4);
     var farLab = E.halo(E.txt(top, FAR[0], FAR[1] + 42, '够不到', 20, E.ERR, 'middle', 900));
     var upLab = E.halo(E.txt(top, P(UP[2][0], UP[2][1])[0] - 18, P(UP[2][0], UP[2][1])[1] - 16, '肘上', 22, E.UP, 'end', 900));
@@ -62,7 +63,7 @@
     var fkOne = E.txt(fkG, RX + 92, 246, '一个答案', 20, E.GOOD, 'start', 900);
     var ikG = E.el('g', {}, R);
     var ikName = E.txt(ikG, RX + 254, 196, '逆向运动学', 24, E.HI, 'end', 900);
-    var ikQ = E.txt(ikG, RX + 254, 232, '倒过来：几组？', 20, E.INK2, 'end', 700);
+    var ikQ = E.txt(ikG, RX + 254, 232, '没有解？不止一组？', 20, E.INK2, 'end', 700);
     var chips = [['2 组', E.HI, T.two], ['好几组', E.HI, T.many], ['0 组', E.ERR, T.none]].map(function (c, k) {
       var t = E.tag(R, RX + 18 + k * 100, 360, 84, 40, c[0], c[1], { size: 20, weight: 900, ink: c[1] });
       return { g: t.g, at: c[2], x: RX + 60 + k * 100 };
@@ -80,7 +81,7 @@
         ghost.pose(DN[0], DN[1]);
         ghost.view.clearTint(); ghost.view.tint('all', E.DOWN, 0.8, 0.42);
         E.op(ghostG, 0.9 * f(t, T.two + 0.4, 0.5));
-        var e = arm.elbow(), w = arm.wrist();
+        var e = arm.elbow(), w = arm.hand();
         j1.setAttribute('transform', 'translate(' + O[0].toFixed(1) + ' ' + O[1].toFixed(1) + ')');
         j2.setAttribute('transform', 'translate(' + e[0].toFixed(1) + ' ' + e[1].toFixed(1) + ')');
         var jOn = f(t, T.joints, 0.3);
@@ -94,8 +95,9 @@
         var rel = a2 - a1; arc2c.set(a1, a1 + (Math.abs(rel) < 1e-3 ? -1e-3 : rel * pa));
         var angOn = f(t, T.turn, 0.2) * (1 - f(t, T.ik + 1.0, 0.4));
         E.op(arc1.g, angOn); E.op(arc2c.g, angOn);
-        var l1 = P(0.95 * Math.cos(a1 / 2), 0.95 * Math.sin(a1 / 2));
-        var mid2 = a1 + rel / 2, l2 = [e[0] + 0.85 * u * Math.cos(mid2), e[1] - 0.85 * u * Math.sin(mid2)];
+        // 标签放在弧外面：θ₁ 往大臂那边偏（目标 (1, 0) 的十字线在弧的右下），θ₂ 离肘远一点（不压在转角弧和箭头上）
+        var l1 = P(1.2 * Math.cos(0.72 * a1), 1.2 * Math.sin(0.72 * a1));
+        var mid2 = a1 + rel / 2, l2 = [e[0] + 1.2 * u * Math.cos(mid2), e[1] - 1.2 * u * Math.sin(mid2)];
         th1.setAttribute('x', (l1[0] + 4).toFixed(1)); th1.setAttribute('y', (l1[1] + 9).toFixed(1));
         th2.setAttribute('x', l2[0].toFixed(1)); th2.setAttribute('y', (l2[1] + 9).toFixed(1));
         q1.setAttribute('x', (l1[0] + 4).toFixed(1)); q1.setAttribute('y', (l1[1] + 10).toFixed(1));
@@ -124,7 +126,7 @@
         var upp = f(t, T.back + 0.1, 0.5);
         upA.set(RX + 272, 264, RX + 272, 264 - 122 * upp);
         E.op(upA.g, upp > 0 ? 1 : 0);
-        E.op(ikG, f(t, T.back + 0.3, 0.3)); E.op(ikName, f(t, T.ik, 0.3)); E.op(ikQ, f(t, T.how, 0.3));
+        E.op(ikG, f(t, T.back + 0.3, 0.3)); E.op(ikName, f(t, T.ik, 0.3)); E.op(ikQ, f(t, T.why, 0.3));
         chips.forEach(function (c) { E.pop(c.g, c.x, 380, f(t, c.at, 0.35), 0.7); });
       }
     };

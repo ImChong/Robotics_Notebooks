@@ -1,39 +1,48 @@
-// 012 第 3 幕：手算——开平方，正负两个。左边同第 2 幕的网格（两个圆淡淡地留着，紫色目标在 (1.5, 0)），右栏用 KaTeX 一行行推。
-// 句 1「肘的位置记作 x、y」(1, 2) 处出点、写 (x, y)，「往右 x 格」原点往右画红虚线，「往上 y 格」再往上画绿虚线；
-// 句 2「离肩二点二四格」斜边描琥珀、写 2.24，「勾股定理」直角亮一下，「x 的平方」「加 y 的平方」「等于五」右栏逐项写 ①；
-// 句 3「离手腕二点零六格」从目标到肘描绿、写 2.06，「往右是 x 减一点五」目标往左画到 x 的红虚线、写 x − 1.5，「往上是 y」y 亮一下，
-//    「平方加起来」「等于小臂长度的平方」「取四点二五」右栏写 ②，「四点二五开平方，约二点零六」写验算；
-// 句 4「两个式子相减」① ② 框亮，「y 的平方正好消掉」两个 y² 打橙色斜杠，「左边剩下」「右边五减四点二五」「零点七五」逐项写；
-// 句 5「展开」(x − 1.5)² = x² − 3x + 2.25 逐项写，「前面的 x 平方一减，也消掉」两个 x² 打斜杠，「三倍的 x，减去二点二五」写出；
-// 句 6「三倍的 x 减去二点二五，等于零点七五」「三倍的 x 是三」「x 等于一」逐行写，网格上画 x = 1 的竖虚线（红），穿过两个圆的交点；
-// 句 7「代回第一个式子」「一的平方是一」「五减一是四」「y 的平方等于四」逐项写；
-// 句 8「二乘以二是四」「负二乘以负二，也是四」「y 可以是二」(1, 2) 出亮黄圈，「也可以是负二」(1, −2) 出青圈；
-// 句 9「肘上」「肘下」写名字，「开平方」「正的一个」「负的一个」右栏写；
-// 句 10–13 两台 UR5 回到正常亮度：「大臂从肩指向一、二」量肩的转角（蓝弧，63.4°），「小臂从肘指向手腕」画 (0.5, −2)、在肘上量方向（−76°），
-//    「肘这个关节，转的是…之间的角度」大臂的延长线（虚线）转到小臂（−139.4°），「肘下正好反过来」肘下这台亮起来、量 −63.4°、+139.4°；
-// 句 14「先走大臂一、二，再走小臂零点五、负二」两段箭头头尾相接到目标，「一加零点五」「二减二」右栏写，「肘下那组」青色两段也到目标。
+// 012 第 3 幕：手算——开平方，正负两个。左边同第 2 幕的网格（两个圆淡淡地留着，紫色目标是手 (1, 0)），右栏用 KaTeX 一行行推。
+// 2026-11-05 参照 011 重做：手照第 11 集放在小臂上离肘两格，目标 (1, 0)；按「观众完全零基础」把每一步的写法当场讲清。
+// 句 1「肘的位置先不知道」网格上出一个还不知道在哪的肘（示意点 (1.6, 1.5)），「两个字母代替」写 (x, y)，「往右 x 格」原点往右画红虚线，「往上 y 格」再往上画绿虚线；
+// 句 2「离肩二点二四格」斜边描琥珀、写「要 = 2.24」，「勾股定理」直角亮一下，「往右的平方」「加上往上的平方」「等于斜着的那条边的平方」右栏写一般说法，
+//    「x 的平方」「加 y 的平方」「等于五」逐项写 ①；
+// 句 3「离手两格」从手到肘描绿、写「要 = 2」，「从手到肘，往右是 x 减一」手往右画到 x 的红虚线、写 x − 1，「往上是 y」y 亮一下（两个三角形共用这条竖边），
+//    「平方加起来」「等于二的平方，也就是四」逐项写 ②；
+// 句 4「等号两边都一样多」「左边减左边、右边减右边」右栏写，「y 的平方正好减没了」两个 y² 打橙色斜杠，「右边五减四，是一」写；
+// 句 5「左边剩下」写 x² − (x − 1)²，「x 减一的平方，就是 x 减一，乘以 x 减一」写；
+// 句 6「拆开来，每一项都乘一遍」左边网格淡掉、换成 2 × 2 的表（上面 x、−1，左边 x、−1），「x 乘以 x」「x 乘以负一」「负一乘以 x」「负一乘以负一」逐格填，
+//    「负负得正」写在表下；句 7「合起来」表下写 x² − 2x + 1，右栏 (x − 1)² = x² − 2x + 1；
+// 句 8「再整个减掉」写 x² − (x² − 2x + 1)，「括号前面是减号」减号亮，「括号里每一项都要变号」写 x² − x² + 2x − 1、变号的项亮，「没了」两个 x² 打斜杠，「只剩」写 2x − 1；
+// 句 9 表收起、网格回来：「两倍的 x 减一，等于一」「两边都加一」「两倍的 x 是二」「两边都除以二」「x 等于一」逐行写，网格上画 x = 1 的竖虚线（红）；
+// 句 10「放回第一个式子」「一的平方是一」「五减一，等于四」逐项写；句 11「二乘以二」「负二乘以负二，负负得正」「y 可以是二」(1, 2) 出亮黄圈，「也可以是负二」(1, −2) 出青圈；
+// 句 12「叫做开平方」「总有两个答案：一正、一负」右栏写；句 13「肘上」「肘下」写名字，「开平方」两个圈亮一下；
+// 句 14–17 两台 UR5 亮起来：「大臂从肩指向一、二」量肩的转角（蓝弧，63.4°），「电脑里有现成的函数」右栏写 atan2（第 11 集讲过函数），
+//    「小臂从肘指向手」画 (0, −2)、在肘上量方向（−90°），「肘这个关节，转的是…之间的角度」大臂的延长线（虚线）转到小臂（−153.4°），「肘下正好反过来」量 −63.4°、+153.4°；
+// 句 18「先走大臂一、二，再走小臂零、负二」两段箭头头尾相接到手，「一加零」「二减二」右栏写，「肘下那组」青色两段也到手。
 // 时刻取自配音的逐词时间，见 ../ep012.py。
 (function () {
   var E = window.EP012, K = E.K, H = E.HEX;
   var D = Math.PI / 180, A = E.ARM, RX = A.RX;
   var T = {
-    pts: 2.37, pos: 3.97, xy: 4.61, xr: 5.71, yu: 6.5,
-    d1: 8.37, d1n: 8.9, py: 10.2, x2: 11.16, y2: 12.06, eq5: 13.17,
-    d2: 14.85, d2n: 15.55, xm: 17.15, yy: 18.67, sq: 19.64, eqL: 20.65, take: 23.53, sqrt: 24.81, ok: 26.32, out1: 28.1,
-    sub: 28.46, ycan: 29.66, left: 31.34, lx: 32.05, minus: 32.9, right: 34.84, r075: 36.46,
-    exp: 38.61, expand: 40.15, m3x: 41.85, p225: 43.08, front: 44.51, xcan: 45.57, only: 46.83, res: 47.9,
-    e1: 51.11, e1r: 53.38, e2: 54.74, e3: 56.15, xline: [56.2, 56.9], out2: 57.8,
-    back: 58.02, one: 59.21, fm1: 60.43, four: 61.2, y2b: 61.58,
-    sq4: 64.0, t1: 66.19, t2: 67.67, so: 70.06, yp: 71.06, yn: 72.08,
-    up: 75.21, dn: 77.3, src: 80.15, pos2: 81.3, neg: 82.44, out3: 84.3,
-    ang: 84.54, upper: 86.46, r1: 88.46, calc: 89.96, deg: 92.12,
-    fore: 94.48, dx: 96.31, dxr: 97.52, dy: 98.31, dyr: 99.15, dir2: 99.91, deg2: 100.79,
-    el: 103.38, rel: 104.9, m76: 107.16, m634: 108.15, res3: 109.63,
-    dn2: 112.52, sh2: 113.98, el2: 116.01, sign: 118.43, sneg: 120.04, spos: 120.6, out4: 122.0,
-    chk: 122.23, upA: 124.6, upB: 126.12, add1: 128.24, add1r: 129.48, add2: 130.39, add2r: 131.36, hit: 131.75, dnChk: 133.38
+    pts: 3.73, xy: 5.3, xr: 6.76, yu: 7.66,
+    d1: 9.57, d1n: 10.16, py: 12.37, legs: 13.37, legs2: 14.4, hyp: 15.77, x2: 17.72, y2: 18.68, eq5: 19.86,
+    d2: 21.57, d2n: 22.05, xm: 24.11, yy: 24.99, sq: 25.95, eq4: 26.93, eq4r: 28.0, out1: 29.5,
+    sub: 29.8, sides: 30.71, lml: 32.76, rmr: 33.96, ycan: 36.15, rhs: 38.04, rhsR: 39.16,
+    left: 40.79, lhs: 41.76, lhs2: 42.64, sqdef: 44.51, sqdef2: 45.64,
+    split: 48.88, t1: 50.97, t2: 53.04, t3: 54.17, t23: 55.26, t4: 56.46, negneg: 57.72, t4r: 58.52,
+    comb: 60.04, comb2: 61.74, comb3: 62.96,
+    minus: 64.48, paren: 65.75, flip: 67.23, flip2: 68.54, xcan: 69.45, gone: 71.51, only: 72.45, out2: 75.4,
+    e1: 75.71, add1: 77.7, e2: 78.73, div: 80.11, e3: 81.3, xline: [81.4, 82.1],
+    back: 83.22, one: 85.54, y2b: 86.74, four: 88.65,
+    sq4: 90.37, t1b: 92.55, t2b: 94.07, nn2: 95.42, t2r: 96.38, so: 97.44, yp: 98.44, yn: 99.03,
+    def: 101.17, sqrt: 104.13, pos: 105.34, pm: 107.81,
+    up: 111.45, dn: 113.54, two: 114.51, src: 116.3, out3: 118.1,
+    ang: 118.36, upper: 120.29, r1: 122.48, fn: 124.36, tell: 126.22, calc: 128.51, deg: 130.43,
+    fore: 133.04, from: 134.63, dx: 136.52, dy: 137.49, down: 138.45, deg2: 139.85,
+    el: 141.94, rel: 143.03, m90: 145.9, m634: 146.74, res3: 148.21,
+    dn2: 151.11, sh2: 152.58, el2: 154.58, sign: 156.95, out4: 160.4,
+    chk: 160.74, upA: 163.18, upB: 164.66, add1b: 166.41, add2b: 167.49, hit: 168.64, dnChk: 170.6
   };
-  var END = 136.31;
-  var UP = E.ik2(1.5, 0, true), DN = E.ik2(1.5, 0, false);
+  var END = 173.55;
+  var UP = E.ik2(1, 0, true), DN = E.ik2(1, 0, false);
+  var EG = [1.6, 1.5];   // 句 1–3：还不知道在哪的肘（示意）
   function c(hex, s) { return '\\textcolor{' + hex + '}{' + s + '}'; }
   function cancel(s) { return c(H.err, '\\cancel{' + c(H.ink, s) + '}'); }
 
@@ -41,118 +50,149 @@
     title: '手算：开平方，正负两个',
     dur: END,
     cues: [
-      { at: 0, s: '肘的位置记作 (x, y)：往右 x 格，往上 y 格' },
-      { at: 8.28, s: '① 离肩 2.24 格：$x^2+y^2=5$' },
-      { at: 14.76, s: '② 离**手腕** 2.06 格：$(x-1.5)^2+y^2=4.25$（$\\sqrt{4.25}\\approx 2.06$）' },
-      { at: 28.37, s: '① − ②：$y^2$ 消掉，$x^2-(x-1.5)^2=5-4.25=0.75$' },
-      { at: 38.52, s: '$(x-1.5)^2=x^2-3x+2.25$，左边只剩 $3x-2.25$' },
-      { at: 51.02, s: '$3x-2.25=0.75$：$3x=3$，$x=1$' },
-      { at: 57.93, s: '代回 ①：$1+y^2=5$，$y^2=4$' },
-      { at: 63.91, s: '$2\\times 2=4$，$(-2)\\times(-2)=4$：$y=2$ 或 $y=-2$' },
-      { at: 73.7, s: '**肘上** (1, 2)、**肘下** (1, −2)：两组解来自**开平方**的正负两个' },
-      { at: 84.45, s: '大臂指向 (1, 2)：方向约 63.4°' },
-      { at: 94.39, s: '小臂 (1.5 − 1, 0 − 2) = (0.5, −2)：方向约 −76°' },
-      { at: 103.29, s: '肘转的**角度** = −76 − 63.4 ≈ −139.4°' },
-      { at: 112.43, s: '**肘下**：肩 −63.4°、肘 +139.4°——肘的**角度**一负一正' },
-      { at: 122.13, s: '验算：(1, 2) + (0.5, −2) = (1.5, 0)，正好到**手腕**' }
+      { at: 0, s: '肘的位置先不知道，用 2 个字母代替：往右 x 格，往上 y 格' },
+      { at: 9.48, s: '① 离肩 2.24 格（勾股定理，第 5 集）：$x^2+y^2=5$' },
+      { at: 21.48, s: '② 离手 2 格：$(x-1)^2+y^2=2^2=4$' },
+      { at: 29.71, s: '等号两边一样多：左减左、右减右，$y^2$ 减没了，右边 $5-4=1$' },
+      { at: 40.7, s: '左边剩下 $x^2-(x-1)^2$；$(x-1)^2=(x-1)\\times(x-1)$' },
+      { at: 48.79, s: '每一项都乘一遍：$x^2$、$-x$、$-x$、$+1$（负负得正）' },
+      { at: 59.95, s: '合起来：$(x-1)^2=x^2-2x+1$' },
+      { at: 64.39, s: '括号前面是减号，括号里每一项都变号：左边只剩 $2x-1$' },
+      { at: 75.62, s: '$2x-1=1$：两边加 $1$，$2x=2$；两边除以 $2$，$x=1$' },
+      { at: 83.13, s: '放回 ①：$1+y^2=5$，$y^2=4$' },
+      { at: 90.28, s: '$2\\times 2=4$，$(-2)\\times(-2)=4$：$y=2$ 或 $y=-2$' },
+      { at: 101.08, s: '从平方倒推回原来的数叫**开平方**：正数开平方，一正、一负两个答案' },
+      { at: 109.96, s: '**肘上** (1, 2)、**肘下** (1, −2)：两组解来自**开平方**' },
+      { at: 118.26, s: '大臂指向 (1, 2)：电脑里现成的函数 atan2，算出约 63.4°' },
+      { at: 132.95, s: '小臂从 (1, 2) 到 (1, 0)：朝正下方，−90°' },
+      { at: 141.85, s: '肘转的**角度** = −90 − 63.4 = −153.4°' },
+      { at: 151.02, s: '**肘下**：肩 −63.4°、肘 +153.4°——肘的**角度**一负一正' },
+      { at: 160.64, s: '验算：(1, 2) + (0, −2) = (1, 0)，正好是手的位置' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('肘的位置记作 (x, y)；离肩 2.24 格，勾股定理 x² + y² = 5；离手腕 2.06 格，(x − 1.5)² + y² = 4.25（4.25 开平方约 2.06）；两式相减 y² 消掉：x² − (x − 1.5)² = 5 − 4.25 = 0.75；(x − 1.5)² 展开是 x² − 3x + 2.25，x² 也消掉，左边只剩 3x − 2.25；3x − 2.25 = 0.75，3x = 3，x = 1；代回第一个式子 1 + y² = 5，y² = 4；2 × 2 = 4，(−2) × (−2) = 4，y 是 2 或 −2：肘上 (1, 2)、肘下 (1, −2)，两组解来自开平方的正负两个；关节角：大臂指向 (1, 2) 约 63.4°，小臂 (0.5, −2) 方向约 −76°，肘转 −76 − 63.4 ≈ −139.4°；肘下反过来：肩 −63.4°，肘 +139.4°；验算 (1, 2) + (0.5, −2) = (1.5, 0)');
+      var s = K.sceneSvg('肘的位置先不知道，用 x、y 代替；离肩 2.24 格，勾股定理 x² + y² = 5；离手 2 格，(x − 1)² + y² = 4；等号两边一样多，左减左、右减右，y² 减没了，右边 5 − 4 = 1，左边剩下 x² − (x − 1)²；(x − 1)² = (x − 1) × (x − 1)，每一项都乘一遍：x²、−x、−x、+1（负负得正），合起来 x² − 2x + 1；括号前面是减号，括号里每一项都变号，左边只剩 2x − 1；2x − 1 = 1，两边加 1 得 2x = 2，两边除以 2 得 x = 1；放回第一个式子 1 + y² = 5，y² = 4；2 × 2 = 4，(−2) × (−2) = 4，y 是 2 或 −2，从平方倒推回原来的数叫开平方，正数开平方一正一负两个答案：肘上 (1, 2)、肘下 (1, −2)；关节角：大臂指向 (1, 2)，电脑里现成的函数 atan2 算出约 63.4°，小臂从 (1, 2) 到 (1, 0) 朝正下方 −90°，肘转 −90 − 63.4 = −153.4°；肘下反过来：肩 −63.4°，肘 +153.4°；验算 (1, 2) + (0, −2) = (1, 0)');
 
-      var under = E.el('g', {}, s);
+      var gridG = E.el('g', {}, s);
+      var under = E.el('g', {}, gridG);
       var box = [A.OX - 110, A.OY - 214, 440, 420];
-      var ghostG = E.el('g', {}, s), ghost = E.arm2(ghostG, A.OX, A.OY, A.S, 0, box);
-      var armG = E.el('g', {}, s), arm = E.arm2(armG, A.OX, A.OY, A.S, 0, box), u = arm.u, V = arm.view;
+      var ghostG = E.el('g', {}, gridG), ghost = E.arm2(ghostG, A.OX, A.OY, A.S, 0, box);
+      var armG = E.el('g', {}, gridG), arm = E.arm2(armG, A.OX, A.OY, A.S, 0, box), u = arm.u, V = arm.view;
       arm.pose(UP[0], UP[1]); ghost.pose(DN[0], DN[1]);
       var pl = E.plane(under, { ox: A.OX, oy: A.OY, u: u, x0: -1, x1: 4, y0: -3, y1: 3 });
-      var P = pl.P, O = P(0, 0), TG = P(1.5, 0), EU = P(1, 2), ED = P(1, -2), F10 = P(1, 0);
-      var top = E.el('g', {}, s);
+      var P = pl.P, O = P(0, 0), TG = P(1, 0), EU = P(1, 2), ED = P(1, -2), G = P(EG[0], EG[1]), GX = P(EG[0], 0);
+      var top = E.el('g', {}, gridG);
       var c1 = E.circ(top, O[0], O[1], E.L1 * u, E.C1, 2.5, '9 6'), c2 = E.circ(top, TG[0], TG[1], E.L2 * u, E.C2, 2.5, '9 6');
       var tgt = E.target(top, TG[0], TG[1], 13, E.TGT);
       function seg(color, w, dash) { var p = K.paint(E.el('path', { fill: 'none', 'stroke-width': w || 4, 'stroke-linecap': 'round' }, top), null, color); if (dash) p.setAttribute('stroke-dasharray', dash); return p; }
       function line(p, a, b) { p.setAttribute('d', 'M ' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' L ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1)); return p; }
-      // 句 1–3：两个直角三角形
-      var gx = line(seg(E.X, 4, '8 5'), O, F10), gy = line(seg(E.Y, 4, '8 5'), F10, EU), gxm = line(seg(E.X, 4, '8 5'), TG, F10);
-      var hyp1 = line(seg(E.C1, 5), O, EU), hyp2 = line(seg(E.C2, 5), EU, TG);
-      var corner = K.paint(E.el('path', { d: 'M ' + (F10[0] - 10) + ' ' + F10[1] + ' V ' + (F10[1] - 10) + ' H ' + F10[0], fill: 'none', 'stroke-width': 2 }, top), null, E.INK2);
-      var lx = E.halo(E.txt(top, (O[0] + F10[0]) / 2 - 2, O[1] + 28, 'x', 24, E.X, 'middle', 900)), ly = E.halo(E.txt(top, F10[0] - 14, (F10[1] + EU[1]) / 2 + 8, 'y', 24, E.Y, 'end', 900));
+      // 句 1–3：两个直角三角形，共用竖边 y
+      var gx = line(seg(E.X, 4, '8 5'), O, GX), gy = line(seg(E.Y, 4, '8 5'), GX, G), gxm = line(seg(E.X, 4, '8 5'), TG, GX);
+      var hyp1 = line(seg(E.C1, 5), O, G), hyp2 = line(seg(E.C2, 5), G, TG);
+      var corner = K.paint(E.el('path', { d: 'M ' + (GX[0] - 10) + ' ' + GX[1] + ' V ' + (GX[1] - 10) + ' H ' + GX[0], fill: 'none', 'stroke-width': 2 }, top), null, E.INK2);
+      var lx = E.halo(E.txt(top, (O[0] + GX[0]) / 2 - 18, O[1] + 28, 'x', 24, E.X, 'middle', 900)), ly = E.halo(E.txt(top, GX[0] + 12, GX[1] + (G[1] - GX[1]) * 0.7 + 8, 'y', 24, E.Y, 'start', 900));
       [lx, ly].forEach(function (n) { n.style.fontFamily = 'KaTeX_Math, serif'; n.style.fontStyle = 'italic'; });
-      var lxm = E.halo(E.txt(top, TG[0] + 16, O[1] + 28, 'x − 1.5', 20, E.X, 'start', 900));
-      var l224 = E.halo(E.txt(top, (O[0] + EU[0]) / 2 - 16, (O[1] + EU[1]) / 2 - 2, '2.24', 21, E.C1, 'end', 900));
-      var l206 = E.halo(E.txt(top, (EU[0] + TG[0]) / 2 + 14, (EU[1] + TG[1]) / 2 - 4, '2.06', 21, E.C2, 'start', 900));
-      var pxy = K.paint(E.el('circle', { cx: EU[0], cy: EU[1], r: 7, 'stroke-width': 3 }, top), E.S1, E.HI);
-      var pxyLab = E.halo(E.txt(top, EU[0] - 16, EU[1] - 16, '(x, y)', 22, E.HI, 'end', 900));
-      // 句 6：x = 1 的竖虚线
-      var xl = K.paint(E.el('path', { d: 'M ' + F10[0] + ' ' + P(1, 3)[1] + ' V ' + P(1, -3)[1], fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '8 6' }, top), null, E.X);
-      var xlLab = E.halo(E.txt(top, F10[0] + 10, P(1, 2.75)[1], 'x = 1', 21, E.X, 'start', 900));
-      // 句 8–9：两个交点
+      var lxm = E.halo(E.txt(top, (TG[0] + GX[0]) / 2 + 2, O[1] + 50, 'x − 1', 19, E.X, 'middle', 900));
+      var l224 = E.halo(E.txt(top, (O[0] + G[0]) / 2 - 12, (O[1] + G[1]) / 2 - 6, '要 = 2.24', 19, E.C1, 'end', 900));
+      var l2 = E.halo(E.txt(top, GX[0] + 10, P(0, 0.28)[1], '要 = 2', 19, E.C2, 'start', 900));   // 竖边右下：斜边左边夹在两个三角形中间，放不下
+      var pxy = K.paint(E.el('circle', { cx: G[0], cy: G[1], r: 7, 'stroke-width': 3 }, top), E.S1, E.HI);
+      var pxyLab = E.halo(E.txt(top, G[0] + 14, G[1] - 14, '肘 (x, y)', 21, E.HI, 'start', 900));
+      // 句 9：x = 1 的竖虚线
+      var xl = K.paint(E.el('path', { d: 'M ' + TG[0] + ' ' + P(1, 3)[1] + ' V ' + P(1, -3)[1], fill: 'none', 'stroke-width': 3, 'stroke-dasharray': '8 6' }, top), null, E.X);
+      var xlLab = E.halo(E.txt(top, TG[0] + 10, P(1, 2.75)[1], 'x = 1', 21, E.X, 'start', 900));
+      // 句 11–13：两个交点
       var ringU = E.el('g', {}, top), ringD = E.el('g', {}, top);
       K.paint(E.el('circle', { cx: EU[0], cy: EU[1], r: 13, 'stroke-width': 4, fill: 'none' }, ringU), null, E.UP);
       K.paint(E.el('circle', { cx: ED[0], cy: ED[1], r: 13, 'stroke-width': 4, fill: 'none' }, ringD), null, E.DOWN);
       var yU = E.halo(E.txt(top, EU[0] + 20, EU[1] + 8, 'y = 2', 21, E.UP, 'start', 900)), yD = E.halo(E.txt(top, ED[0] + 20, ED[1] + 8, 'y = −2', 21, E.DOWN, 'start', 900));
       var nU = E.halo(E.txt(top, EU[0] - 18, EU[1] - 16, '肘上 (1, 2)', 21, E.UP, 'end', 900)), nD = E.halo(E.txt(top, ED[0] - 18, ED[1] + 32, '肘下 (1, −2)', 21, E.DOWN, 'end', 900));
-      // 句 10–13：转角
+      // 句 14–17：转角
       var shArc = E.arcArrow(top, O[0], O[1], 0.62 * u, E.OMEGA, 3.5, { head: 11 });
       var shLab = E.halo(E.txt(top, 0, 0, '', 21, E.OMEGA, 'end', 900));
       var foreV = E.vec(top, E.TGT, 4, { head: 13 });
       var hRef = seg(E.INK2, 2.5, '5 5'), ext = seg(E.C1, 3, '7 6');
       var elArc = E.arcArrow(top, 0, 0, 0.62 * u, E.OMEGA, 3.5, { head: 11 });
       var elLab = E.halo(E.txt(top, 0, 0, '', 21, E.OMEGA, 'start', 900));
-      // 句 14：头尾相接的两段
+      // 句 18：头尾相接的两段
       var vU1 = E.vec(top, E.UP, 4.5, { head: 14 }), vU2 = E.vec(top, E.UP, 4.5, { head: 14 }), vD1 = E.vec(top, E.DOWN, 4.5, { head: 14 }), vD2 = E.vec(top, E.DOWN, 4.5, { head: 14 });
 
+      /* ── 句 6–8：左边换成 2 × 2 的表（每一项都乘一遍） ── */
+      var tabG = E.el('g', {}, s), TX = 70, TY = 70, CW = 96, CH = 66;
+      K.paint(E.el('rect', { x: 12, y: 12, width: 396, height: 396, rx: 16, 'stroke-width': 2 }, tabG), E.tint(E.HI, 5, 'var(--demo-surface)'), E.BORDER);
+      E.tex(tabG, 210, 48, '(x-1)\\times(x-1)', 28, E.INK, 'middle', { w: 380, h: 48 });
+      E.txt(tabG, 210, 92, '每一项都乘一遍', 21, E.INK2, 'middle', 900);
+      // 表头：上面一排是第二个 (x − 1) 的两项，左边一列是第一个的两项；格子中心 (TX + (1.5 + 列) × CW + 40, 160 + 行 × CH)
+      var hdrTop = [E.tex(tabG, TX + 1.5 * CW + 40, 120, 'x', 28, E.INK, 'middle', { w: 80, h: 44 }), E.tex(tabG, TX + 2.5 * CW + 40, 120, '-1', 28, E.INK, 'middle', { w: 80, h: 44 })];
+      var hdrLeft = [E.tex(tabG, TX + 0.5 * CW + 40, 170, 'x', 28, E.INK, 'middle', { w: 80, h: 44 }), E.tex(tabG, TX + 0.5 * CW + 40, 170 + CH, '-1', 28, E.INK, 'middle', { w: 80, h: 44 })];
+      E.txt(tabG, TX + 0.5 * CW + 40, 122, '×', 26, E.MUT, 'middle', 900);
+      var cellsT = [['x^2', 0, 0, T.t1], ['-x', 0, 1, T.t2], ['-x', 1, 0, T.t3], ['+1', 1, 1, T.t4r]].map(function (cc) {
+        var cx = TX + (1.5 + cc[2]) * CW + 40, cy = 160 + cc[1] * CH;
+        var g = E.el('g', {}, tabG);
+        K.paint(E.el('rect', { x: cx - CW / 2 + 4, y: cy - CH / 2 + 4, width: CW - 8, height: CH - 8, rx: 10, 'stroke-width': 2 }, g), E.tint(cc[0] === '+1' ? E.GOOD : E.OMEGA, 14, 'var(--demo-surface)'), cc[0] === '+1' ? E.GOOD : E.OMEGA);
+        E.tex(g, cx, cy + 10, cc[0], 28, E.INK, 'middle', { w: 90, h: 44 });
+        return { g: g, at: cc[3], cx: cx, cy: cy };
+      });
+      var nnLab = E.tex(tabG, 210, 318, '(-1)\\times(-1)=+1\\;\\text{负负得正}', 22, E.GOOD, 'middle', { w: 380, h: 44 });
+      var combLab = E.tex(tabG, 210, 374, '\\text{合起来：}x^2-x-x+1=x^2-2x+1', 22, E.INK, 'middle', { w: 390, h: 44 });
+
       /* ══ 右栏 ══ */
-      var Rg = E.el('g', {}, s), X = RX + 10, SZ = 25;
+      var Rg = E.el('g', {}, s), X = RX + 10, SZ = 24;
       function tx(g, y, tex, size, w) { return E.tex(g, X, y, tex, size || SZ, E.INK, 'start', { w: w || 340, h: 46 }); }
       function lab(g, y, str, color, size) { return E.txt(g, X, y, str, size || 21, color || E.INK2, 'start', 900); }
       // 第一组：两个式子
       var g1 = E.el('g', {}, Rg);
-      var p1 = lab(g1, 40, '肘的位置：(x, y)', E.HI, 22);
-      var q1L = lab(g1, 92, '① 离肩 2.24 格（勾股定理）', E.C1);
-      var q1 = tx(g1, 132, c(H.warn, '\\text{①}') + '\\;x^2+y^2=5');
-      var q1a = tx(g1, 132, c(H.warn, '\\text{①}') + '\\;x^2'), q1b = tx(g1, 132, c(H.warn, '\\text{①}') + '\\;x^2+y^2');
-      var q2L = lab(g1, 196, '② 离手腕 2.06 格', E.C2);
-      var q2 = tx(g1, 236, c(H.good, '\\text{②}') + '\\;(x-1.5)^2+y^2=4.25');
-      var q2a = tx(g1, 236, c(H.good, '\\text{②}') + '\\;(x-1.5)^2+y^2'), q2b = tx(g1, 236, c(H.good, '\\text{②}') + '\\;(x-1.5)^2+y^2=\\text{小臂}^2');
-      var q2n = lab(g1, 284, '为了好算，取 4.25', E.INK2, 20);
-      var q2c = E.txt(g1, X, 332, '√4.25 ≈ 2.06 ✓', 24, E.GOOD, 'start', 900);   // 不用 KaTeX 的 \\sqrt：它的根号是 400em 宽、靠 overflow 裁掉的 svg，版式检查会量成超出画面
-      // 第二组：相减
+      var p1 = lab(g1, 36, '肘的位置先不知道：(x, y)', E.HI, 21);
+      var q1L = lab(g1, 84, '① 离肩 2.24 格（勾股定理，第 5 集）', E.C1, 19);
+      var q1G = lab(g1, 118, '往右² + 往上² = 斜边²', E.INK2, 20);
+      var q1a = tx(g1, 158, c(H.warn, '\\text{①}') + '\\;x^2'), q1b = tx(g1, 158, c(H.warn, '\\text{①}') + '\\;x^2+y^2'), q1 = tx(g1, 158, c(H.warn, '\\text{①}') + '\\;x^2+y^2=5');
+      var q1n = lab(g1, 194, '（2.24 × 2.24 ≈ 5，第 1 幕）', E.MUT, 18);
+      var q2L = lab(g1, 246, '② 离手 2 格：往右 x − 1，往上 y', E.C2, 19);
+      var q2a = tx(g1, 288, c(H.good, '\\text{②}') + '\\;(x-1)^2+y^2'), q2b = tx(g1, 288, c(H.good, '\\text{②}') + '\\;(x-1)^2+y^2=2^2'), q2 = tx(g1, 288, c(H.good, '\\text{②}') + '\\;(x-1)^2+y^2=2^2=4');
+      // 第二组：相减、拆括号
       var g2 = E.el('g', {}, Rg), S2 = 22;
-      var r1 = tx(g2, 36, c(H.warn, '\\text{①}') + '\\;x^2+y^2=5', S2), r1c = tx(g2, 36, c(H.warn, '\\text{①}') + '\\;x^2+' + cancel('y^2') + '=5', S2);
-      var r2 = tx(g2, 76, c(H.good, '\\text{②}') + '\\;(x-1.5)^2+y^2=4.25', S2), r2c = tx(g2, 76, c(H.good, '\\text{②}') + '\\;(x-1.5)^2+' + cancel('y^2') + '=4.25', S2);
-      var sLab = lab(g2, 122, '① − ②：y² 消掉', E.INK, 20);
-      var s1a = tx(g2, 164, 'x^2-(x-1.5)^2', S2), s1b = tx(g2, 164, 'x^2-(x-1.5)^2=5-4.25', S2), s1c = tx(g2, 164, 'x^2-(x-1.5)^2=5-4.25=0.75', S2);
-      var eLab = lab(g2, 214, '展开：', E.INK2, 20);
-      var x1a = tx(g2, 254, '(x-1.5)^2=x^2', S2), x1b = tx(g2, 254, '(x-1.5)^2=x^2-3x', S2), x1c = tx(g2, 254, '(x-1.5)^2=x^2-3x+2.25', S2);
-      var x2a = tx(g2, 302, 'x^2-(x^2-3x+2.25)', S2), x2b = tx(g2, 302, cancel('x^2') + '-(' + cancel('x^2') + '-3x+2.25)', S2), x2c = tx(g2, 302, cancel('x^2') + '-(' + cancel('x^2') + '-3x+2.25)=3x-2.25', S2);
-      var z1 = tx(g2, 350, '3x-2.25=0.75', S2), z2 = tx(g2, 350, '3x-2.25=0.75\\;\\Rightarrow\\;3x=3', S2), z3 = tx(g2, 396, '\\Rightarrow\\;' + c(H.x, 'x=1'), 26);
+      var r1 = tx(g2, 32, c(H.warn, '\\text{①}') + '\\;x^2+y^2=5', S2), r1c = tx(g2, 32, c(H.warn, '\\text{①}') + '\\;x^2+' + cancel('y^2') + '=5', S2);
+      var r2 = tx(g2, 70, c(H.good, '\\text{②}') + '\\;(x-1)^2+y^2=4', S2), r2c = tx(g2, 70, c(H.good, '\\text{②}') + '\\;(x-1)^2+' + cancel('y^2') + '=4', S2);
+      var sLab = lab(g2, 110, '等号两边一样多：', E.INK, 19), sLab2 = lab(g2, 110, '等号两边一样多：左减左、右减右', E.INK, 19);
+      var rhs = tx(g2, 148, '\\text{右边：}5-4=1', S2);
+      var lhs = tx(g2, 186, '\\text{左边：}x^2-(x-1)^2', S2);
+      var sq1 = tx(g2, 232, '(x-1)^2=(x-1)\\times(x-1)', S2), sq2 = tx(g2, 232, '(x-1)^2=x^2-2x+1', S2);
+      var m1 = tx(g2, 278, 'x^2-(x^2-2x+1)', S2), m1h = tx(g2, 278, 'x^2' + c(H.err, '\\,-\\,') + '(x^2-2x+1)', S2);
+      var m2 = tx(g2, 320, '=x^2' + c(H.err, '-x^2+2x-1'), S2), m2c = tx(g2, 320, '=' + cancel('x^2') + c(H.err, '-') + cancel('x^2') + c(H.err, '+2x-1'), S2);
+      var m3 = tx(g2, 366, '=' + c(H.hi, '2x-1'), 26);
+      var mLab = lab(g2, 404, '括号前是减号：括号里每一项都变号', E.ERR, 18);
+      // 第二组（续）：解 x
+      var g2b = E.el('g', {}, Rg);
+      var z0 = lab(g2b, 46, '左边 = 右边：', E.INK, 21);
+      var z1 = tx(g2b, 90, '2x-1=1', 28);
+      var z2L = lab(g2b, 140, '两边都加 1：', E.INK2, 20), z2 = tx(g2b, 178, '2x=2', 28);
+      var z3L = lab(g2b, 228, '两边都除以 2：', E.INK2, 20), z3 = tx(g2b, 266, c(H.x, 'x=1'), 30);
       // 第三组：求 y
       var g3 = E.el('g', {}, Rg);
-      var w1 = lab(g3, 40, 'x = 1，代回 ①：', E.INK, 21);
-      var w2 = tx(g3, 82, '1^2+y^2=5'), w3 = tx(g3, 126, 'y^2=5-1=4'), w3a = tx(g3, 126, 'y^2=5-1');
-      var w4 = lab(g3, 180, '平方等于 4 的数，有 2 个：', E.INK2, 20);
-      var w5 = tx(g3, 222, '2\\times 2=4'), w6 = tx(g3, 262, '(-2)\\times(-2)=4');
-      var w7 = tx(g3, 312, 'y=' + c(H.hi, '2') + '\\;\\text{或}\\;y=' + c(H.down, '-2'), 28), w7a = tx(g3, 312, 'y=' + c(H.hi, '2'), 28);
-      var w8 = tx(g3, 362, '\\text{开平方：}\\;' + c(H.hi, '+') + '\\text{ 一个，}' + c(H.down, '-') + '\\text{ 一个}', 22), w8a = tx(g3, 362, '\\text{开平方：}\\;' + c(H.hi, '+') + '\\text{ 一个}', 22), w8b = tx(g3, 362, '\\text{开平方}', 22);
+      var w1 = lab(g3, 36, 'x = 1，放回 ①：', E.INK, 21);
+      var w2 = tx(g3, 76, '1^2+y^2=5'), w3a = tx(g3, 116, 'y^2=5-1'), w3 = tx(g3, 116, 'y^2=5-1=4');
+      var w4 = lab(g3, 164, '平方等于 4 的数，有 2 个：', E.INK2, 20);
+      var w5 = tx(g3, 202, '2\\times 2=4'), w6 = tx(g3, 240, '(-2)\\times(-2)=4\\;' + c(H.good, '\\text{负负得正}'), 22);
+      var w7a = tx(g3, 290, 'y=' + c(H.hi, '2'), 28), w7 = tx(g3, 290, 'y=' + c(H.hi, '2') + '\\;\\text{或}\\;y=' + c(H.down, '-2'), 28);
+      var w8 = lab(g3, 340, '从平方倒推回原来的数：开平方', E.WARN, 19);
+      var w9 = lab(g3, 376, '正数开平方：一正、一负两个答案', E.WARN, 19);
       // 第四组：关节角
-      var g4 = E.el('g', {}, Rg), S4 = 23;
-      var k1 = lab(g4, 36, '肘上：大臂指向 (1, 2)', E.UP, 21);
-      var k2 = tx(g4, 74, '\\text{往右 }1\\text{、往上 }2', 21), k3 = tx(g4, 112, '\\text{计算器 }\\operatorname{atan2}(2,1)\\approx' + c(H.acc, '63.4^\\circ'), 21);
-      var k4 = lab(g4, 160, '小臂：从肘指向手腕', E.INK, 21);
-      var k5a = tx(g4, 198, '(1.5-1,\\;0-2)', S4), k5b = tx(g4, 198, '(1.5-1,\\;0-2)=(0.5,', S4), k5 = tx(g4, 198, '(1.5-1,\\;0-2)=(0.5,\\,-2)', S4);
-      var k6 = tx(g4, 236, '\\text{方向}\\approx' + c(H.acc, '-76^\\circ'), 21);
-      var k7 = lab(g4, 284, '肘转的角 = 小臂方向 − 大臂方向', E.INK, 20);
-      var k8a = tx(g4, 322, '-76', S4), k8b = tx(g4, 322, '-76-63.4', S4), k8 = tx(g4, 322, '-76-63.4\\approx' + c(H.acc, '-139.4^\\circ'), S4);
-      var k9 = tx(g4, 366, c(H.down, '\\text{肘下：}') + '\\text{肩 }' + c(H.acc, '-63.4^\\circ') + '\\text{，肘 }' + c(H.acc, '+139.4^\\circ'), 21);
-      var k9a = tx(g4, 366, c(H.down, '\\text{肘下：}') + '\\text{肩 }' + c(H.acc, '-63.4^\\circ'), 21);
-      var k10 = lab(g4, 404, '肘的角度：一负、一正', E.HI, 20);
+      var g4 = E.el('g', {}, Rg), S4 = 22;
+      var k1 = lab(g4, 34, '肘上：大臂指向 (1, 2)', E.UP, 21);
+      var k2 = lab(g4, 70, '往右 1、往上 2', E.INK2, 20);
+      var k3 = lab(g4, 106, '电脑里现成的函数（第 11 集讲过函数）：', E.INK2, 17);
+      var k3b = tx(g4, 142, '\\operatorname{atan2}(\\text{往上 }2,\\ \\text{往右 }1)\\approx' + c(H.acc, '63.4^\\circ'), 20);
+      var k4 = lab(g4, 188, '小臂：从肘 (1, 2) 到手 (1, 0)', E.INK, 20);
+      var k5 = lab(g4, 224, '往右 0、往下 2：朝正下方', E.INK2, 20), k6 = E.txt(g4, X + 268, 224, '−90°', 21, E.OMEGA, 'start', 900);
+      var k7 = lab(g4, 272, '肘转的角 = 小臂方向 − 大臂方向', E.INK, 19);
+      var k8a = tx(g4, 310, '-90', S4), k8b = tx(g4, 310, '-90-63.4', S4), k8 = tx(g4, 310, '-90-63.4=' + c(H.acc, '-153.4^\\circ'), S4);
+      var k9a = tx(g4, 356, c(H.down, '\\text{肘下：}') + '\\text{肩 }' + c(H.acc, '-63.4^\\circ'), 20), k9 = tx(g4, 356, c(H.down, '\\text{肘下：}') + '\\text{肩 }' + c(H.acc, '-63.4^\\circ') + '\\text{，肘 }' + c(H.acc, '+153.4^\\circ'), 20);
+      var k10 = lab(g4, 398, '肘的角度：一负、一正', E.HI, 20);
       // 第五组：验算
       var g5 = E.el('g', {}, Rg);
       var v1 = lab(g5, 60, '验算：先走大臂，再走小臂', E.INK, 22);
-      var v2a = tx(g5, 108, c(H.hi, '(1,\\,2)'), 27), v2 = tx(g5, 108, c(H.hi, '(1,\\,2)') + '+' + c(H.hi, '(0.5,\\,-2)'), 27);
-      var v3 = tx(g5, 156, '1+0.5=1.5', 25), v4 = tx(g5, 200, '2-2=0', 25);
-      var v5 = tx(g5, 252, '=' + c(H.violet, '(1.5,\\,0)') + '\\;' + c(H.good, '\\checkmark'), 28);
-      var v6 = tx(g5, 330, c(H.down, '\\text{肘下：}(1,\\,-2)+(0.5,\\,2)') + '=' + c(H.violet, '(1.5,\\,0)') + '\\;' + c(H.good, '\\checkmark'), 21);
+      var v2a = tx(g5, 108, c(H.hi, '(1,\\,2)'), 27), v2 = tx(g5, 108, c(H.hi, '(1,\\,2)') + '+' + c(H.hi, '(0,\\,-2)'), 27);
+      var v3 = tx(g5, 156, '1+0=1', 25), v4 = tx(g5, 200, '2-2=0', 25);
+      var v5 = tx(g5, 252, '=' + c(H.violet, '(1,\\,0)') + '\\;' + c(H.good, '\\checkmark') + '\\;\\text{手的位置}', 26);
+      var v6 = tx(g5, 330, c(H.down, '\\text{肘下：}(1,\\,-2)+(0,\\,2)') + '=' + c(H.violet, '(1,\\,0)') + '\\;' + c(H.good, '\\checkmark'), 21);
 
       function fr(st, a) { return E.fade(st, a, 0.3); }
       function only(list, st, times) {   // 同一行的几个版本：到了哪个时刻就只显示哪一版
@@ -164,27 +204,34 @@
         el: s,
         draw: function (st, t) {
           var f = E.fade, b = E.bump;
-          /* ── 两台 UR5：句 1–9 淡，句 10 起亮；句 13 肘下这台亮、肘上这台淡 ── */
+          /* ── 左：句 6–8 网格让给 2 × 2 的表 ── */
+          var tabOn = f(st, T.split - 0.2, 0.4) * (1 - f(st, T.out2, 0.4));
+          E.op(gridG, 1 - 0.92 * tabOn); E.op(tabG, tabOn);
+          cellsT.forEach(function (cc) { E.pop(cc.g, cc.cx, cc.cy, f(st, cc.at, 0.35), 0.6); });
+          E.op(nnLab, fr(st, T.negneg)); E.op(combLab, fr(st, T.comb));
+          hdrTop.concat(hdrLeft).forEach(function (n) { E.op(n, fr(st, T.split + 0.3)); });
+
+          /* ── 两台 UR5：句 1–13 淡，句 14 起亮；句 17 肘下这台亮、肘上这台淡 ── */
           var armOn = f(st, T.ang, 0.4) * (1 - f(st, T.chk, 0.4) * 0.5);
           V.clearTint(); V.tint('all', null, 1, 0.2 + 0.8 * armOn * (1 - 0.6 * f(st, T.dn2, 0.4) * (1 - f(st, T.out4, 0.4))));
           ghost.view.clearTint(); ghost.view.tint('all', E.DOWN, 0.8, 0.25 + 0.35 * f(st, T.dn2, 0.4) * (1 - f(st, T.out4, 0.4)));
           E.op(ghostG, f(st, T.yn, 0.4));   // 算出 y = −2 之前不出现肘下这台，不提前给答案
           E.op(c1, 0.6 * (1 - 0.5 * f(st, T.ang, 0.4))); E.op(c2, 0.6 * (1 - 0.5 * f(st, T.ang, 0.4)));
 
-          /* ── 句 1–3 ── */
+          /* ── 句 1–3：示意的肘、两个直角三角形 ── */
           var on1 = 1 - f(st, T.out1, 0.4);
-          E.op(pxy, fr(st, T.pts) * (1 - f(st, T.out2, 0.3))); E.op(pxyLab, fr(st, T.xy) * on1);
+          E.op(pxy, fr(st, T.pts) * on1); E.op(pxyLab, fr(st, T.xy) * on1);
           E.drawOn(gx, f(st, T.xr, 0.5)); E.op(gx, (f(st, T.xr, 0.1) > 0 ? 1 : 0) * on1); E.op(lx, fr(st, T.xr) * on1);
           E.drawOn(gy, f(st, T.yu, 0.5)); E.op(gy, (f(st, T.yu, 0.1) > 0 ? 1 : 0) * on1); E.op(ly, fr(st, T.yu) * on1);
           ly.style.fontSize = (24 * (1 + 0.3 * b(st, T.yy, 0.8))) + 'px';
           E.drawOn(hyp1, f(st, T.d1, 0.5)); E.op(hyp1, (f(st, T.d1, 0.1) > 0 ? 1 : 0) * on1); E.op(l224, fr(st, T.d1n) * on1);
           E.op(corner, fr(st, T.py) * on1); E.glow(corner, E.HI, b(st, T.py, 0.9) > 0.05);
-          E.drawOn(hyp2, f(st, T.d2, 0.5)); E.op(hyp2, (f(st, T.d2, 0.1) > 0 ? 1 : 0) * on1); E.op(l206, fr(st, T.d2n) * on1);
+          E.drawOn(hyp2, f(st, T.d2, 0.5)); E.op(hyp2, (f(st, T.d2, 0.1) > 0 ? 1 : 0) * on1); E.op(l2, fr(st, T.d2n) * on1);
           E.drawOn(gxm, f(st, T.xm, 0.4)); E.op(gxm, (f(st, T.xm, 0.1) > 0 ? 1 : 0) * on1); E.op(lxm, fr(st, T.xm) * on1);
-          /* ── 句 6：x = 1 ── */
+          /* ── 句 9：x = 1 ── */
           E.drawOn(xl, f(st, T.xline[0], T.xline[1] - T.xline[0])); E.op(xl, (f(st, T.xline[0], 0.1) > 0 ? 0.9 : 0) * (1 - f(st, T.out3, 0.4)));
           E.op(xlLab, fr(st, T.xline[1]) * (1 - f(st, T.out3, 0.4)));
-          /* ── 句 8–9：两个交点 ── */
+          /* ── 句 11–13：两个交点 ── */
           var onR = 1 - f(st, T.out3, 0.4);
           E.pop(ringU, EU[0], EU[1], f(st, T.yp, 0.35), 0.4); E.pop(ringD, ED[0], ED[1], f(st, T.yn, 0.35), 0.4);
           E.op(ringU, f(st, T.yp, 0.35) * (1 - 0.6 * f(st, T.ang, 0.4))); E.op(ringD, f(st, T.yn, 0.35) * (1 - 0.6 * f(st, T.ang, 0.4)));
@@ -192,7 +239,7 @@
           E.op(nU, fr(st, T.up) * onR); E.op(nD, fr(st, T.dn) * onR);
           [ringU, ringD].forEach(function (g) { E.glow(g, E.HI, b(st, T.src, 1.0) > 0.05); });
 
-          /* ── 句 10–13：转角 ── */
+          /* ── 句 14–17：转角 ── */
           var dnOn = f(st, T.dn2, 0.4);
           var useA1 = dnOn > 0.5 ? DN[0] : UP[0], useA2 = dnOn > 0.5 ? DN[1] : UP[1], eP = dnOn > 0.5 ? ED : EU;
           var shp = f(st, T.upper, 0.6) * (1 - f(st, T.dn2 - 0.3, 0.3)) + f(st, T.sh2, 0.6);
@@ -202,24 +249,25 @@
           shLab.textContent = dnOn > 0.5 ? '−63.4°' : '63.4°';
           shLab.setAttribute('x', shL[0].toFixed(1)); shLab.setAttribute('y', (shL[1] + 8).toFixed(1));
           E.op(shLab, (dnOn > 0.5 ? fr(st, T.sh2 + 0.4) : fr(st, T.deg) * (1 - f(st, T.dn2 - 0.3, 0.3))) * (1 - f(st, T.out4, 0.3)));
-          // 小臂：从肘指向手腕（紫），方向在肘上量（水平参考线 → 小臂）
-          foreV.set(EU[0], EU[1], EU[0] + (TG[0] - EU[0]) * f(st, T.fore, 0.6), EU[1] + (TG[1] - EU[1]) * f(st, T.fore, 0.6));
-          E.op(foreV.g, (f(st, T.fore, 0.1) > 0 ? 1 : 0) * (1 - f(st, T.el, 0.3)));
+          // 小臂：从肘指向手（紫），方向在肘上量（水平参考线 → 小臂）
+          var fp = f(st, T.fore, 0.6);
+          foreV.set(EU[0] + 16, EU[1], EU[0] + 16 + (TG[0] - EU[0]) * fp, EU[1] + (TG[1] - EU[1]) * fp);   // 挪到小臂右边一点，不压在 UR5 上
+          E.op(foreV.g, (fp > 0 ? 1 : 0) * (1 - f(st, T.el, 0.3)));
           line(hRef, [eP[0] - 0.2 * u, eP[1]], [eP[0] + 1.1 * u, eP[1]]);
-          E.op(hRef, fr(st, T.dir2) * (1 - f(st, T.el, 0.3)));
+          E.op(hRef, fr(st, T.down) * (1 - f(st, T.el, 0.3)));
           var extE = [eP[0] + 1.2 * u * Math.cos(useA1), eP[1] - 1.2 * u * Math.sin(useA1)];
           line(ext, eP, extE); E.drawOn(ext, f(st, T.el, 0.5)); E.op(ext, (f(st, T.el, 0.1) > 0 ? 1 : 0) * (1 - f(st, T.out4, 0.3)));
           elArc.g.setAttribute('transform', 'translate(' + eP[0].toFixed(1) + ' ' + eP[1].toFixed(1) + ')');
-          var dirPhase = f(st, T.dir2, 0.6) * (1 - f(st, T.el, 0.3)), relPhase = f(st, T.rel, 0.8) * (1 - f(st, T.dn2 - 0.3, 0.3)) + f(st, T.el2, 0.8);
+          var dirPhase = f(st, T.down, 0.6) * (1 - f(st, T.el, 0.3)), relPhase = f(st, T.rel, 0.8) * (1 - f(st, T.dn2 - 0.3, 0.3)) + f(st, T.el2, 0.8);
           if (relPhase > 0) elArc.set(useA1, useA1 + (useA2 - useA1) * Math.min(1, relPhase));
           else elArc.set(0, Math.min(-1e-3, useA2 * dirPhase));
           E.op(elArc.g, Math.max(dirPhase > 0 ? 1 : 0, relPhase > 0 ? 1 : 0) * (1 - f(st, T.out4, 0.3)));
           var mid = relPhase > 0 ? useA1 + (useA2 - useA1) / 2 : useA2 / 2, rr = 1.05 * u;
           elLab.setAttribute('x', (eP[0] + rr * Math.cos(mid) + 6).toFixed(1)); elLab.setAttribute('y', (eP[1] - rr * Math.sin(mid) + 8).toFixed(1));
-          elLab.textContent = relPhase > 0 ? (dnOn > 0.5 ? '+139.4°' : '−139.4°') : '−76°';
+          elLab.textContent = relPhase > 0 ? (dnOn > 0.5 ? '+153.4°' : '−153.4°') : '−90°';
           E.op(elLab, (relPhase > 0 ? (dnOn > 0.5 ? fr(st, T.el2 + 0.5) : fr(st, T.res3)) : fr(st, T.deg2) * (1 - f(st, T.el, 0.3))) * (1 - f(st, T.out4, 0.3)));
 
-          /* ── 句 14：头尾相接 ── */
+          /* ── 句 18：头尾相接 ── */
           var a1p = f(st, T.upA, 0.6), a2p = f(st, T.upB, 0.6);
           vU1.set(O[0], O[1], O[0] + (EU[0] - O[0]) * a1p, O[1] + (EU[1] - O[1]) * a1p); E.op(vU1.g, a1p > 0 ? 1 : 0);
           vU2.set(EU[0], EU[1], EU[0] + (TG[0] - EU[0]) * a2p, EU[1] + (TG[1] - EU[1]) * a2p); E.op(vU2.g, a2p > 0 ? 1 : 0);
@@ -230,28 +278,29 @@
 
           /* ── 右栏 ── */
           E.op(g1, 1 - f(st, T.out1, 0.4));
-          E.op(p1, fr(st, T.pos));
-          E.op(q1L, fr(st, T.d1)); only([q1a, q1b, q1], st, [T.x2, T.y2, T.eq5]);
-          E.op(q2L, fr(st, T.d2)); only([q2a, q2b, q2], st, [T.sq, T.eqL, T.take]);
-          E.op(q2n, fr(st, T.take)); E.op(q2c, fr(st, T.sqrt));
+          E.op(p1, fr(st, T.pts));
+          E.op(q1L, fr(st, T.d1)); E.op(q1G, fr(st, T.legs)); only([q1a, q1b, q1], st, [T.x2, T.y2, T.eq5]); E.op(q1n, fr(st, T.eq5 + 0.4));
+          E.op(q2L, fr(st, T.d2)); only([q2a, q2b, q2], st, [T.sq, T.eq4, T.eq4r]);
           E.op(g2, f(st, T.sub - 0.2, 0.3) * (1 - f(st, T.out2, 0.4)));
           only([r1, r1c], st, [0, T.ycan]); only([r2, r2c], st, [0, T.ycan]);
           [r1, r1c, r2, r2c].forEach(function (n) { E.glow(n, E.HI, b(st, T.sub, 0.9) > 0.05); });
-          E.op(sLab, fr(st, T.sub)); only([s1a, s1b, s1c], st, [T.left, T.right, T.r075]);
-          E.op(eLab, fr(st, T.exp)); only([x1a, x1b, x1c], st, [T.expand, T.m3x, T.p225]);
-          only([x2a, x2b, x2c], st, [T.front, T.xcan, T.res]);
-          only([z1, z2], st, [T.e1, T.e2]); E.op(z3, fr(st, T.e3));
+          only([sLab, sLab2], st, [T.sides, T.lml]);
+          E.op(rhs, fr(st, T.rhs)); E.op(lhs, fr(st, T.lhs));
+          only([sq1, sq2], st, [T.sqdef2, T.comb]);
+          only([m1, m1h], st, [T.minus, T.paren]); only([m2, m2c], st, [T.flip2, T.xcan]); E.op(m3, fr(st, T.only)); E.op(mLab, fr(st, T.flip));
+          E.op(g2b, f(st, T.e1 - 0.1, 0.3) * (1 - f(st, T.back - 0.3, 0.3)));
+          E.op(z0, fr(st, T.e1)); E.op(z1, fr(st, T.e1)); E.op(z2L, fr(st, T.add1)); E.op(z2, fr(st, T.e2)); E.op(z3L, fr(st, T.div)); E.op(z3, fr(st, T.e3));
           E.op(g3, f(st, T.back - 0.2, 0.3) * (1 - f(st, T.out3, 0.4)));
-          E.op(w1, fr(st, T.back)); E.op(w2, fr(st, T.one)); only([w3a, w3], st, [T.fm1, T.four]);
-          E.op(w4, fr(st, T.sq4)); E.op(w5, fr(st, T.t1)); E.op(w6, fr(st, T.t2));
-          only([w7a, w7], st, [T.yp, T.yn]); only([w8b, w8a, w8], st, [T.src, T.pos2, T.neg]);
+          E.op(w1, fr(st, T.back)); E.op(w2, fr(st, T.one)); only([w3a, w3], st, [T.y2b, T.four]);
+          E.op(w4, fr(st, T.sq4)); E.op(w5, fr(st, T.t1b)); E.op(w6, fr(st, T.t2b));
+          only([w7a, w7], st, [T.yp, T.yn]); E.op(w8, fr(st, T.sqrt)); E.op(w9, fr(st, T.pos));
           E.op(g4, f(st, T.ang - 0.2, 0.3) * (1 - f(st, T.out4, 0.4)));
-          E.op(k1, fr(st, T.upper)); E.op(k2, fr(st, T.r1)); E.op(k3, fr(st, T.calc));
-          E.op(k4, fr(st, T.fore)); only([k5a, k5b, k5], st, [T.dx, T.dxr, T.dyr]); E.op(k6, fr(st, T.deg2));
-          E.op(k7, fr(st, T.el)); only([k8a, k8b, k8], st, [T.m76, T.m634, T.res3]);
+          E.op(k1, fr(st, T.upper)); E.op(k2, fr(st, T.r1)); E.op(k3, fr(st, T.fn)); E.op(k3b, fr(st, T.calc));
+          E.op(k4, fr(st, T.fore)); E.op(k5, fr(st, T.dx)); E.op(k6, fr(st, T.deg2));
+          E.op(k7, fr(st, T.el)); only([k8a, k8b, k8], st, [T.m90, T.m634, T.res3]);
           only([k9a, k9], st, [T.sh2, T.el2]); E.op(k10, fr(st, T.sign));
           E.op(g5, f(st, T.chk - 0.1, 0.3));
-          E.op(v1, fr(st, T.chk)); only([v2a, v2], st, [T.upA, T.upB]); E.op(v3, fr(st, T.add1)); E.op(v4, fr(st, T.add2));
+          E.op(v1, fr(st, T.chk)); only([v2a, v2], st, [T.upA, T.upB]); E.op(v3, fr(st, T.add1b)); E.op(v4, fr(st, T.add2b));
           E.op(v5, fr(st, T.hit)); E.op(v6, fr(st, T.dnChk));
         }
       };
