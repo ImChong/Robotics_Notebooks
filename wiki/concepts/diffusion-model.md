@@ -2,7 +2,7 @@
 type: concept
 tags: [generative-model, diffusion, machine-learning]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-05
 related:
   - ../formalizations/generative-foundations.md
   - ../overview/ai-architecture-map.md
@@ -18,6 +18,7 @@ related:
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-adversarial-training-pixel-diffusion.md
   - ../entities/comfyui.md
+  - ../entities/paper-global-style-transfer.md
 sources:
   - ../../sources/papers/ho_ddpm_arxiv_2006_11239.md
   - ../../sources/papers/peebles_dit_arxiv_2212_09748.md
@@ -169,3 +170,7 @@ flowchart LR
 - Ho et al., *Denoising Diffusion Probabilistic Models* (NeurIPS 2020) — DDPM 原始论文
 - Rombach et al., *High-Resolution Image Synthesis with Latent Diffusion Models* (CVPR 2022) — 隐扩散与交叉注意力条件
 - Peebles & Xie, *Scalable Diffusion Models with Transformers* (ICCV 2023) — DiT 架构
+
+## 相关研究
+
+- [Through Van Gogh’s Eyes：全局风格迁移](../entities/paper-global-style-transfer.md) — 从作品集合学习扩散中间特征的风格引导。
