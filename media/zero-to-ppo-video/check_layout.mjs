@@ -80,7 +80,10 @@ for (const s of tl.segments) await pg.evaluate((t) => window.renderAt(t), s.t0 +
 const issues = new Map();
 const BLOCKS = '.head, .prog, .stage, .cue, .big, .meta, .toc, .hero, .pt, .footer';
 const KEYS = '.head, .stage, .cue, .big, .meta, .toc, .hero, .pt, .footer';
+// 只查一段（改完某一幕时省时间）：CHECK_FROM / CHECK_TO（秒，全片时间）
+const T0 = +(process.env.CHECK_FROM || 0), T1 = +(process.env.CHECK_TO || Infinity);
 for (let t = 0.2; t < tl.total; t += 0.5) {
+  if (t < T0 || t > T1) continue;
   const r = await pg.evaluate(([t, BLOCKS, KEYS]) => {
     window.renderAt(t);
     const R = (e) => e.getBoundingClientRect();
@@ -155,6 +158,20 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
         const d = cut(n.tagName === 'text' ? ink(r) : r);
         if (d > 2) out.push(`${robot ? 'robot' : n.tagName + ' "' + name(n) + '"'} cut off by ${Math.round(d)}px`);
       }
+      // 机器人被它自己的视景框裁掉：robot3d.js 的画布只画视景框（camera box）里面那一块，上面那个透明外框也夹在视景框里，量不出来；
+      // 画布四条边上有不透明的像素，就是模型伸出了视景框，画面上会被齐刷刷切掉一截（011 片头的 UR5 就是这样漏掉的）
+      for (const fo of host.querySelectorAll('foreignObject')) {
+        const cv = fo.querySelector('canvas');
+        if (!cv || !cv.width || !cv.height || alpha(fo) < 0.1) continue;
+        const cx = cv.getContext('2d'), W = cv.width, H = cv.height, sides = [];
+        const edge = (x, y, w, h) => { const d = cx.getImageData(x, y, w, h).data; let k = 0; for (let i = 3; i < d.length; i += 4) if (d[i] > 40) k++; return k; };
+        if (edge(0, 0, W, 1) > 3) sides.push('top');
+        if (edge(0, H - 1, W, 1) > 3) sides.push('bottom');
+        if (edge(0, 0, 1, H) > 3) sides.push('left');
+        if (edge(W - 1, 0, 1, H) > 3) sides.push('right');
+        const where = (sc.querySelector('.stage') && sc.querySelector('.card .title')) ? sc.querySelector('.card .title').textContent.trim() : 'hero';
+        if (sides.length) out.push('robot clipped by its view box (' + sides.join(', ') + ') in 「' + where + '」');
+      }
       // 字块：svg 的 text 各算一块；KaTeX 公式按文字逐段量（不算 MathML 副本），同一条公式里的段不互查
       const words = [];
       for (const n of host.querySelectorAll('text')) {
@@ -180,6 +197,49 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
           if (!t.nodeValue.trim()) continue;
           g.selectNodeContents(t);
           for (const r of g.getClientRects()) if (r.width > 0) words.push({ key: fo, r: ink(r), s: tex, g: t.nodeValue.trim() });
+        }
+      }
+      // 线压字：箭头、线、框边这些描边，和箭头尖、圆点这类小块填充，穿过字的墨迹（字左右各收 1px、上下照 ink 收）就报。
+      // 网格线（data-grid）不算；字描了底色（halo：stroke 是底色）而且画在线的上面，线从字后面过去也看得清，不算。
+      // （011 第 4 幕「从右往左读」上方的箭头压住了下面一排字，原先只查字压字，漏掉了）
+      {
+        const where = (sc.querySelector('.stage') && sc.querySelector('.card .title')) ? sc.querySelector('.card .title').textContent.trim() : 'hero';
+        const haloed = (n) => n.style && n.style.paintOrder === 'stroke' && parseFloat(n.style.strokeWidth) > 0;
+        const marks = [];
+        for (const n of host.querySelectorAll('path, line, polyline, polygon, rect, circle, ellipse')) {
+          if (n.closest('defs, mask, clipPath, marker, [data-grid], [data-cursor]') || alpha(n) < 0.3) continue;   // data-cursor：代码窗口的光标，本来就在字行上
+          if (n.tagName === 'rect' && n.nextElementSibling && n.nextElementSibling.tagName === 'foreignObject') continue;   // 机器人的透明外框
+          const cs = getComputedStyle(n), sw = parseFloat(cs.strokeWidth) || 0;
+          const stroked = cs.stroke && cs.stroke !== 'none' && sw > 0 && +cs.strokeOpacity > 0.1;
+          const r = n.getBoundingClientRect();
+          const filled = cs.fill && cs.fill !== 'none' && +cs.fillOpacity > 0.1 && r.width * r.height < 700;   // 箭头尖、圆点这类小块
+          if (!stroked && !filled) continue;
+          let pts = [], pad = 0;
+          if (stroked && n.getTotalLength) {
+            const L = n.getTotalLength(), m = n.getScreenCTM();
+            pad = m ? sw * Math.hypot(m.a, m.b) / 2 - 0.5 : 0;   // 线有粗细：线边碰到字也算
+            if (L > 0 && m) for (let s = 0; s <= L; s += 2.5) { const p = n.getPointAtLength(s); pts.push([m.a * p.x + m.c * p.y + m.e, m.b * p.x + m.d * p.y + m.f]); }
+          }
+          marks.push({ n, pts, box: filled ? r : null, pad: Math.max(0, pad) });
+        }
+        const texts = words.filter((w) => w.key.tagName === 'text' || w.key.tagName === 'foreignObject');
+        const seenL = new Set();
+        for (const w of texts) {
+          const r = { left: w.r.left + 1, right: w.r.right - 1, top: w.r.top, bottom: w.r.bottom };
+          if (r.right <= r.left || r.bottom <= r.top) continue;
+          for (const mk of marks) {
+            if (mk.n === w.key || w.key.contains(mk.n)) continue;
+            // 字在线上面、又描了底色：看得清，不算
+            const textAbove = !!(mk.n.compareDocumentPosition(w.key) & Node.DOCUMENT_POSITION_FOLLOWING);
+            if (textAbove && w.key.tagName === 'text' && haloed(w.key)) continue;
+            // 垫在字下面的底色块（rect 填充、画在字前面）本来就该在那：不算；箭头尖、圆点这类照算
+            if (!mk.pts.length && mk.n.tagName === 'rect' && textAbove) continue;
+            const hitP = mk.pts.some(([x, y]) => x > r.left - mk.pad && x < r.right + mk.pad && y > r.top - mk.pad && y < r.bottom + mk.pad);
+            const b = mk.box, hitB = b && b.right > r.left + 1 && b.left < r.right - 1 && b.bottom > r.top + 1 && b.top < r.bottom - 1;
+            if (!hitP && !hitB) continue;
+            const msg = `line ${mk.n.tagName} over text "${w.s}" in 「${where}」`;
+            if (!seenL.has(msg)) { seenL.add(msg); out.push(msg); }
+          }
         }
       }
       const seen = new Set();
