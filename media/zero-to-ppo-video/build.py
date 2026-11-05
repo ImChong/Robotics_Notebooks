@@ -103,11 +103,15 @@ def chunks(text, start, dur, limit=17):
     for p in re.split(r"(?<=[，、；：。！？,;:])", MATH.sub(hold, text)):
         while len(p) > limit + 4:  # no punctuation to break on: cut near the middle, at a space if any
             mid = len(p) // 2
-            # 书名《…》里不断（011「《Modern Robotics》」中间有空格）：书名外的空格优先，没有就断在书名前后
-            inside = set(k for a, b in ((m.start(), m.end()) for m in re.finditer(r"《[^》]*》", p)) for k in range(a + 1, b))
+            # 书名《…》、括号（…）、英文单词里都不断（011「《Modern Robotics》」中间有空格，
+            # 人名「哈滕伯格（Hartenberg）」原先断成「（Hartenb」「erg）」）：外面的空格优先，其次断在书名、括号后面，再不行就离中间最近、不在里面的地方
+            spans = [(m.start(), m.end()) for m in re.finditer(r"《[^》]*》|（[^）]*）|[A-Za-z][A-Za-z0-9_]*", p)]
+            inside = set(k for a, b in spans for k in range(a + 1, b))
             sp = [k for k in range(mid - 5, mid + 6) if 0 < k < len(p) and p[k] == " " and k not in inside]
             if not sp and inside:
-                sp = [k for k in range(1, len(p)) if k not in inside and (p[k] == "《" or p[k - 1] == "》")]
+                sp = [k for k in range(max(1, mid - 8), min(len(p), mid + 9)) if k not in inside and (p[k] == "《" or p[k - 1] in "》）")]
+            if not sp and inside:
+                sp = [k for k in range(1, len(p)) if k not in inside]
             k = min(sp, key=lambda k: abs(k - mid)) if sp else mid
             parts.append(back(p[:k]))
             p = p[k:].lstrip()
