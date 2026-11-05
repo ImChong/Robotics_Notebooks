@@ -1,15 +1,10 @@
-# AIRoA-0 官方仓库
+# AIRoA-0 仓库线索
 
-> 来源归档（repo）
+> 来源归档（repo）；官方归属待核实
 
-- **标题：** AIRoA-0: Long-Horizon, Precise, Cross-Embodiment Manipulation from Handheld Data
-- **类型：** repo
-- **链接：** https://github.com/airoa-org/AIRoA-0
-- **arXiv：** <https://arxiv.org/abs/2611.03815>
-- **入库日期：** 2026-11-04
-- **一句话说明：** 用手持夹爪示范贯通预训练与后训练，通过腕部视角和匹配夹爪连接不同机器人；重点看陌生地点、长任务与精细操作，而非任意硬件通用性。
-- **沉淀到 wiki：** [`wiki/entities/paper-airoa-0.md`](../../wiki/entities/paper-airoa-0.md)
-
-## 开源状态
-
-- **部分开源**：公众号代码 airoa-org/AIRoA-0 经 git ls-remote 失败（可能私有或尚未发布），项目页 HTTP 200，不能当作已开源。 仓库内容以 README 与 release 为准（本次仅用 `git ls-remote` 核实可达，未逐个阅读 README）。
+- **线索地址：** <https://github.com/airoa-org/AIRoA-0>
+- **线索来源：** [具身智能小站 11-04](../blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md)
+- **论文：** <https://arxiv.org/abs/2611.03815>
+- **项目页：** <https://a-0.airoa.io/>
+- **核查：** 2026-11-05 链接返回 404，项目页标注后训练代码 Coming soon；不能验证该线索地址归属、源码或运行入口。此前「部分开源」及「仓库可达」缺乏依据，予以撤回。
+- **沉淀到 wiki：** [AIRoA-0](../../wiki/entities/paper-airoa-0.md)
