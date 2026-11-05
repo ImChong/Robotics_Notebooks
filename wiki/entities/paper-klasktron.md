@@ -15,6 +15,7 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../overview/hub-embodied-eval-benchmark.md
 sources:
   - ../../sources/papers/klasktron_arxiv_2611_03138.md
   - ../../sources/repos/klasktron.md
@@ -79,6 +80,7 @@ summary: "KlaskTron（arXiv:2611.03138）：用双CoreXY驱动的桌面对抗平
 - [vla](../methods/vla.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
+- [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md)
 
 ## 参考来源
 

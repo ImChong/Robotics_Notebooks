@@ -12,6 +12,7 @@ related:
   - ../entities/moveit2.md
   - ../methods/a-star.md
   - ../comparisons/robot-path-planning-five-paradigms-taxonomy.md
+  - ../comparisons/rrt-family-variants.md
 sources:
   - ../../sources/blogs/wechat_shenlan_rrt_rrt_star_explainer_2026-11-04.md
 summary: "RRT（快速探索随机树）在连续高维配置空间里随机采样、向最近树节点扩展并做碰撞检测，先解决「有没有可行路径」；概率完备但不保证最优、不保证固定时间内找到。"
@@ -71,6 +72,7 @@ summary: "RRT（快速探索随机树）在连续高维配置空间里随机采�
 - [配置空间](../concepts/configuration-space.md)
 - [OMPL](../entities/ompl.md)、[MoveIt 2](../entities/moveit2.md)
 - [路径规划五范式分类](../comparisons/robot-path-planning-five-paradigms-taxonomy.md)
+- [RRT 家族选型对照](../comparisons/rrt-family-variants.md) — RRT / RRT-Connect / RRT* / Informed RRT* 并排对比
 
 ## 参考来源
 

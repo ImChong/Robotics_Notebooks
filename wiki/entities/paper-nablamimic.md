@@ -112,6 +112,14 @@ sequenceDiagram
 
 SuperMimic 的 1.2 小时数字来自其论文、使用 H100；原实现未公开，不能将其视为相同硬件的严格对照。项目主页和当前 README 报告的 8 分钟来自更新配置，不能与论文 v1 的 20 分钟混用。
 
+## 与其他工作对比
+
+- **对 [SuperMimic](./paper-supermimic.md)：** 二者都用动力学导数训练跟踪策略；SuperMimic 对在线学习的世界模型求替代梯度，∇Mimic 直接用仿真器的精确梯度，靠逐样本裁剪约束极端值（§2、§4）。SuperMimic 原实现未公开，仅引用其论文的 0.82 达标时间（1 张 H100、1.2 小时内），不同 GPU，且该论文未给最终分数（§7.1–7.2、表 4）。
+- **对 PPO（[BeyondMimic](../methods/beyondmimic.md) 配置）：** 零阶基线只用标量回报，同样在 NablaEngine 上训练，环境、观测和评测奖励与 ∇Mimic 一致；表 4 中 3 小时回报为 0.638，6 小时内未达到 0.82。两组 PPO 基线均为单种子，∇Mimic 为 3 种子（附录 D、§8）。
+- **对 [SHAC](./paper-shac.md)：** 同为短窗口 BPTT 加 TD(λ) critic；∇Mimic 改为逐步按批次中位数裁剪每个样本的动作梯度，并沿用 PODS 的动作目标回归，以固定弧度步长构造目标（§2、§5）。SHAC 原梯度保护在 0.06 小时停止；放宽保护后 3 小时为 0.816（表 4）。
+- **对其他可微仿真跟踪：** [Bundled Contact Gradients](./paper-bundled-contact-gradients.md) 在平滑接触仿真器上以 64 个环境训练 4 条 LAFAN1 片段，DiffMimic 每次跟踪单条片段且无 critic；∇Mimic 在完整 MuJoCo 接触动力学上以 4096 个窗口训练 40 条片段的单一策略（§2）。论文未在相同协议下与它们实测对比。
+- **引擎贡献：** 同一算法在 [MuJoCo Warp](./mujoco-warp.md) 伴随 PR 上逐次更新曲线重合，按小时计 NablaEngine 快 4.7 倍；速度对比仅在同型号 GPU 内进行（§7.3、§8）。
+
 ## 结论
 
 **该工作在限定仿真任务中展示了接触梯度稳定化和专用引擎的组合价值。**

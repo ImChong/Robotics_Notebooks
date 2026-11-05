@@ -15,6 +15,7 @@ related:
   - ../methods/generative-world-models.md
   - ../methods/vla.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/hybrid_particle_voxel_dynamics_arxiv_2611_04492.md
   - ../../sources/repos/hybrid_particle_voxel_dynamics.md
@@ -97,6 +98,7 @@ sequenceDiagram
 - [generative-world-models](../methods/generative-world-models.md)
 - [vla](../methods/vla.md)
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
+- [机器人视觉感知栈选型闭环（知识链）](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源
 

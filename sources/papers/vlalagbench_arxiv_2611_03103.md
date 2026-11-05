@@ -12,6 +12,7 @@
 - §3：基于 MuJoCo 中 LIBERO 的动态目标任务，改变任务、目标速度、策略、执行模式和注入延迟；涵盖释放、放置、抓取和关节物体操作。
 - §3–4：同步执行等待推理；lazy 异步在执行旧动作时推理，跳过已过时动作；continuous 异步尽可能频繁请求推理。基准主实验为 20 Hz、0–250 ms，成功率每点 200 次 rollout。
 - §5：经验模型以观测陈旧程度和机器人空闲时间调整目标速度，用有限校准数据预测其他配置的成功率；预测精度和适用范围仍待通读附录核实。
+- §1、§2.3、§4.1、表 1、附录 H 及参考文献：用于实体页「与其他工作对比」（VLA-Perf、VLA-HWBench、MoveBench、DOM、ReflexBench、SmolVLA、VLASH）。
 
 **映射：** [VLALagBench 实体](../../wiki/entities/paper-vlalagbench.md)。
 
