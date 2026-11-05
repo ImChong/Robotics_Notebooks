@@ -119,6 +119,7 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - [Contact-Force-Loop Bandwidth（力控闭环带宽）](./contact-force-loop-bandwidth.md) — 「环境越硬刚度越低」反直觉法则的稳定性来源
 - [Contact-Rich Manipulation](./contact-rich-manipulation.md)
 - [Whole-Body Control](./whole-body-control.md)
+- [人形关节驱控三层框架](./humanoid-joint-drive-control-framework.md) — 阻抗律在关节层（FOC 电流环 → 力矩环 → 阻抗层）中的位置与实时约束
 - [零空间控制](./null-space-control.md) — 7 轴笛卡尔阻抗的次级关节弹簧走 $\ker J$
 - [Force Control Basics (力控制基础)](./force-control-basics.md) — 阻抗控制的理论背景
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md) — 由触觉信号在线驱动 $K_d, B_d$ 的变参数推广
