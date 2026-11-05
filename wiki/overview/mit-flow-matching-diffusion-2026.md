@@ -2,7 +2,7 @@
 type: overview
 tags: [diffusion, flow-matching, generative-ai, course, mit, sde, score-matching]
 status: complete
-updated: 2026-09-26
+updated: 2026-11-05
 related:
   - ../formalizations/probability-flow.md
   - ../methods/diffusion-policy.md
@@ -52,7 +52,10 @@ flowchart LR
   L4["Lecture 4\nVAE + DiT/U-Net"]
   L5["Lecture 5\n离散扩散 CTMC"]
   LAB["Labs 1–3\n→ latent diffusion"]
-  L1 --> L2 --> L3 --> L4 --> L5 --> LAB
+  L1 --> L2 --> L3 --> L4 --> L5
+  L1 -.-> LAB
+  L2 -.-> LAB
+  L4 -.-> LAB
 ```
 
 | 模块 | 站点主题 | 本库对接 |
@@ -62,6 +65,12 @@ flowchart LR
 | Score | Denoising score matching | [Diffusion Policy](../methods/diffusion-policy.md) |
 | 潜空间 | VAE + DiT 架构 | [Generative World Models](../methods/generative-world-models.md) |
 | 离散 | CTMC 离散扩散 | 文本/离散 token 扩散（概念延伸） |
+
+## 课程入口与核查范围
+
+- [2026 课程主页](https://diffusion.csail.mit.edu/2026/index.html)提供六段讲课录像、幻灯片和三个实验入口；[课程讲义 PDF](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)是官方推荐的课程主线。
+- 截至 2026-11-05，已通读课程主页及实验仓库 README；讲义 PDF 因抓取大小限制未能读取，实验 notebook 核心源码尚未逐段核查，课程内容与实现细节仍需补读。不要将本页视作讲义或源码的完整总结。
+- [实验仓库](https://github.com/eje24/iap-diffusion-labs/tree/2026)提供 notebook 与解法；运行机制和具体调用顺序尚未核实，源码运行时序图待补。
 
 ## Labs 与实践路径
 
@@ -77,7 +86,7 @@ flowchart LR
 
 - **IAP 节奏快：** 需概率论与 PyTorch 基础；不适合零线性代数/深度学习背景硬啃。
 - **偏生成式 AI 主域：** 图像/latent 为主，机器人 **动作空间** 与 **闭环控制** 需另读 [Diffusion Policy](../methods/diffusion-policy.md) 等应用页。
-- **录像完整性：** 2026 站点部分 lecture recording 仍为空链，以 **Course Notes PDF + Labs** 为主资源。
+- **录像状态：** 截至 2026-11-05，课程页面源码为 1、2、3-A、3-B、4、5 共六节列出 YouTube 嵌入链接；本次未逐一播放核验可用性。
 
 ## 关联页面
 
