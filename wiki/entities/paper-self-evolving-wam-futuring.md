@@ -10,6 +10,7 @@ status: complete
 updated: 2026-11-05
 project_id: self-evolving-wam-futuring
 project: https://m.futuringrobot.com/feasibility-report
+venue: "Futuring Robot Technical Report (web, undated)"
 related:
   - ../concepts/world-action-models.md
   - ../tasks/manipulation.md
@@ -34,6 +35,7 @@ summary: "Self-Evolving WAM：未来不远将视频与动作联合生成、Store
 | VLM | Vision-Language Model | 编码视觉与任务语义 |
 | RSI | Recursive Self-Improvement | 通过训练反馈调整有限学习策略 |
 | MoE | Mixture of Experts | 按技能组织的专家混合结构 |
+| STOP | Self-Taught Optimizer | 递归自改进代码生成方法，报告引为 RSI 思路来源之一 |
 
 ## 流程总览
 
@@ -73,6 +75,14 @@ flowchart TB
 | 辣椒炒肉 | 38.2% | 68.9% |
 
 口径为整次演示的自主完整成功率；接管后完成不计成功，超时与失败留在分母。报告固定 K=4，30 轮指外循环尝试次数，拒绝的更新也计入。
+
+## 与其他工作对比
+
+- **对照实验缺位**：报告未与任何外部方法在同一协议下比较；表 4 只给出自身第 0–30 轮的自主完整成功率，报告也承认该表无法把 RSI 反馈机制与持续训练等因素的贡献分开（§5.2）。固定、启发式、随机提议与效用反馈配置之间的对照仅作为机制验证框架描述（§3.3），未给出结果。
+- **VLA 预训练路线**：报告以 [LingBot-VLA](./lingbot-vla.md) 为例，称其研究真机数据规模、跨本体适配与训练效率的关系（§1，文献 [1]）。本工作改为由共享骨干联合生成未来状态与动作，使每个候选都带有对应的预期后果（§1、§2.1）。
+- **视频—动作与世界动作模型**：[LingBot-VA](./paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md) 与 [DreamZero](./paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md) 分别从视频—动作建模和世界动作建模方向，把未来预测变为控制策略中的显式计算对象（§1，文献 [2]、[3]）。本工作在此基础上加入 Stored-K 交互记录和训练结果反馈，报告未与二者做数值比较。
+- **执行与数据组件**：短前缀异步执行、以已提交前缀作条件的做法引用 LingBot-VA 与 [SmolVLA](./paper-smolvla.md)（§2.4，文献 [2]、[8]）；AVLA 技能先验与 WAM 的分工也引用 SmolVLA（§2.3）；第一人称数据可提供可迁移运动先验的依据引自 [EgoScale](./paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md)（§4.1，文献 [7]）。
+- **递归自改进**：报告称其 RSI 与 STOP、Darwin Gödel Machine 的「按结果驱动改进」思路相关（§1，文献 [4]、[5]）；后两者面向代码生成与智能体，本工作只更新样本权重和有限的训练配置集合（§1、§3.3）。
 
 ## 结论
 

@@ -5,11 +5,13 @@ status: complete
 updated: 2026-11-05
 project_id: yolo27
 project: https://docs.ultralytics.com/models/yolo27/
+venue: "Figshare preprint 2026 (alphaXiv overview, DOI 10.6084/m9.figshare.33916828)"
 related:
   - ./paper-yolo26-unified-realtime-e2e-vision.md
   - ./ultralytics.md
   - ./rf-detr.md
   - ../methods/object-detection.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/yolo27-alphaxiv-overview.md
 summary: "YOLO27 预发布综述：小模型采用双尺度 CNN，大模型使用 query 解码；官方模型和权重尚未发布。"
@@ -29,6 +31,8 @@ YOLO27 是 Ultralytics 预告的实时视觉模型族；Ranjan Sapkota 的综述
 | NMS | Non-Maximum Suppression | 非极大值抑制，用于检测去重 |
 | mAP | mean Average Precision | 平均精度均值 |
 | FPN | Feature Pyramid Network | 多尺度特征金字塔 |
+| DETR | DEtection TRansformer | 基于集合预测与对象查询的 Transformer 检测器 |
+| FLOPs | Floating-Point Operations | 浮点运算量，衡量计算复杂度 |
 
 ## 流程总览
 
@@ -74,6 +78,14 @@ flowchart TB
 
 官方页面在核对日列出的 640 输入结果为 **42.6–60.5 mAP、0.44–1.86 ms**；其 m/l 骨干描述与论文不同。两者属于不同时间的预览，具体原因未核实，不应拼接为同一组实验。
 
+## 与其他工作对比
+
+- **[YOLO26](./paper-yolo26-unified-realtime-e2e-vision.md)**：论文称 YOLO26 用同一架构按容量缩放，提供可选一对一端到端推理，含 N–X 五档；YOLO27 则在 n/s 与 m/l 之间更换检测范式，当前预览只有 N–L 四档（§4、表 3）。YOLO27m 的骨干沿用 YOLO26 式 CNN，只把检测阶段换成查询解码（§3.6）。
+- **YOLOv10 与 NMS-free 路线**：YOLOv10 以一致双重分配实现 NMS-free 预测（§1、表 1）；YOLO27 n/s 默认仍走一对多头加 NMS，一对一 NMS-free 路径需 `nms=False` 显式开启（§3.4）。论文报告的检测时延按 NMS-free 路径测得（§6），与其他检测器比较时需对齐推理头。
+- **集合预测 Transformer 检测器**：论文称 m/l 的查询解码在概念上接近集合式 Transformer 检测器（如 [DETR](./detr.md) 一类），同时保留 YOLO 的多尺度特征融合，是两者的混合而非放弃 YOLO 设计（§3.5）。论文未与 [RF-DETR](./rf-detr.md) 等实时 DETR 族做数值对比。
+- **其他实时检测器**：图 1 在 640 输入、COCO mAP50:95 对 FLOPs 的坐标中并列 YOLOv5–YOLO26、PP-YOLOE+、DAMO-YOLO、RTMDet，YOLO27 点标注为预览结果；图注未说明各基线数值来源与测量条件，也没有同一硬件上的时延对比（图 1）。
+- **归因限制**：论文承认 n/s 与 m/l 的比较同时改变了模型容量与检测范式，UltraViT、查询解码与容量增加对 YOLO27l 增益的贡献需受控消融才能区分（§10）。因此上述对比只能说明架构差异，不能证明某一模块的因果收益。
+
 ## 结论
 
 这篇综述的价值在于梳理预告中的双架构设计，目前无法独立复现。
@@ -93,6 +105,7 @@ flowchart TB
 - [Ultralytics](./ultralytics.md)
 - [RF-DETR](./rf-detr.md)
 - [目标检测](../methods/object-detection.md)
+- [机器人视觉感知栈选型闭环（知识链）](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源
 

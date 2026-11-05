@@ -46,6 +46,10 @@ summary: "X-VLA（arXiv:2510.10274）：为每个数据源学一组软提示吸�
 | PEFT | Parameter-Efficient Fine-Tuning | 参数高效微调（论文用 LoRA，约 9M 可调参数） |
 | EEF / 6D | End-Effector / 6D rotation | 末端位姿；用 6 维连续旋转表示，规避欧拉角、四元数的跳变 |
 | DiT | Diffusion Transformer | 论文消融的对照解码器，最终被「纯 Transformer 编码器」替换 |
+| MM-DiT | Multimodal Diffusion Transformer | 按模态分配独立参数的 DiT 变体，附录 D.1 对照结构 |
+| HPT | Heterogeneous Pre-trained Transformers | 在观测端加按域投影层的异质预训练方案 |
+| LoRA | Low-Rank Adaptation | 低秩适配，PEFT 实验所用方法 |
+| ACT | Action Chunking with Transformers | 动作块 Transformer 策略，真机叠衣对照 |
 
 ## 为什么重要
 
@@ -102,6 +106,14 @@ flowchart TD
 
 - **口径注意：** 论文摘要之外的「LIBERO 93%、Simpler-WidowX 54%」是 PEFT（LoRA）口径（表 3 四套件平均约 93.1，按本页表中数字自行平均）；全量微调的 LIBERO 平均是 98.1，二者不要混用。LeRobot 文档称 `lerobot/xvla-libero` 达到 93% LIBERO，与哪一种口径对应文档未说明，本页未核实。
 - 表 2 中各基线数字是论文自行汇总的，部分「–」表示原文未报告，不是 0。
+
+## 与其他工作对比
+
+- **异质性处理方式**：[π0.5](./paper-pi05-open-world-vla.md)、[GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) 等常用按域的动作输出投影头，作用只在最终动作生成阶段，不处理相机配置和任务分布差异（§3）。HPT 式投影在观测处理中途插入按域投影层，易改变特征分布、破坏预训练 VLM 表征；语言提示需手写硬件描述，难以扩展。在同一异质数据混合与对齐训练配方下，软提示训练最稳定（§3、图 4）。
+- **骨干结构**：以预训练验证误差比较，DiT 为 0.077、MM-DiT 为 0.140、π0 式结构为 0.056，X-VLA 为 0.041（附录 D.1、表 4）。表 1 消融中只把 DiT 换成 Transformer 编码器时，验证误差降至 0.071，但 Simpler-WidowX 适配成功率由 50.0 降到 47.9；随后加入编码分流和软提示，分别升至 64.6、73.8（表 1）。
+- **仿真基准**：表 2 汇总了 [π0](./paper-pi0.md)、GR00T-N1、[OpenVLA-OFT](./paper-rcl-2502-19645-fine-tuning-vision-language-action-models-optimi.md)、SpatialVLA、MoDE 等已有模型的结果（§5.2 称与汇总的已有模型比较），未说明各基线是否在同一协议下重新运行。表中「–」表示未报告，跨行对比应以同一基准列为限。
+- **参数高效适配**：表 3 用 LoRA 约 9M 可调参数（约 1%）的 X-VLA 对照 3B 参数的 π0，正文称后者为全量微调模型（LIBERO 94.2%、Simpler-WidowX 55.7%），X-VLA 为 93% 与 54%（§5.2、表 3）。附录 K 另述 PEFT 实验中的 π0 按官方 LoRA 配置微调（VLM rank 16、动作专家 rank 32），与表 3「3B 全量」的说法如何对应，原文未说明；比较时以表 3 口径为准。
+- **真机叠衣**：Soft-Fold（1,200 条轨迹）上，作者微调了 π0-base、从头训练了 [ACT](./paper-act.md) 作对照，称二者吞吐都不及 X-VLA-0.9B（§5.2、附录 K）；§5.2 正文未列出对照的具体数值，真机结果汇总在图 7，本页未逐项读取图中数值。与闭源 π0-folding「相当」是作者表述，论文未给出该模型在同一设置下的实测数据（§5.2）。
 
 ## 结论
 
