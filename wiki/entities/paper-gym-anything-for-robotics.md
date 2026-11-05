@@ -5,8 +5,8 @@ tags:
   - paper
   - benchmark
   - evaluation
-status: complete
-updated: 2026-11-03
+status: draft
+updated: 2026-11-05
 arxiv: "2610.40565"
 project: https://gym-anything.github.io/robotics/
 code: https://github.com/gym-anything/robotics
@@ -53,26 +53,45 @@ summary: "Gym-Anything for Robotics（arXiv:2610.40565）：Gym-Anything 以创�
 | **要点** | Gym-Anything 以创建与审查循环生成多行业机器人仿真任务，并研究如何通过交互经验提升智能体表现。 |
 | **文内指标** | 公众号转述：仿真覆盖扩大仍需独立核验物理有效性。 |
 
+## 流程总览
+
+依据 [论文 v1 图 2](https://arxiv.org/pdf/2610.40565) 与 [项目页](https://gym-anything.github.io/robotics/)：先按经济价值选择动作与仿真，随后生成并审查仿真及任务，最后在 RoboWorld 中评测与学习。
+
+```mermaid
+flowchart TD
+  A["职业与日常活动"] --> B["物理动作与仿真选择"]
+  B --> C["创建仿真与四类审查"]
+  C --> D["创建任务与六项审查"]
+  D --> E["RoboWorld 评测与学习"]
+```
+
+项目页报告 25 个仿真、25 个测试任务和 175 个训练任务；最佳模型在测试任务的平均奖励为 0.06、成功率为 0%。这是一组特定仿真评测，不能直接解释为真机表现。
+
 ## 源码运行时序图
 
-以下为按仓库入口（`gym-anything/robotics`）推断的通用运行链路；入库日仅核实仓库可达，未逐文件阅读，具体脚本名以 README 为准。
+基于官方 [agents/evaluate.py](https://github.com/gym-anything/robotics/blob/main/agents/evaluate.py) 和 [agents/sim.py](https://github.com/gym-anything/robotics/blob/main/agents/sim.py) 的评测路径：
 
 ```mermaid
 sequenceDiagram
-  participant U as 用户
-  participant R as gym-anything/robotics
-  participant E as 环境 / 数据
-  participant M as 模型 / 策略
-  U->>R: clone + 安装依赖（README）
-  U->>E: 准备基准 / 数据集或真机接口
-  U->>R: 训练或加载预训练权重
-  R->>M: 构建 Gym-Anything for Robotics 模型
-  U->>R: 运行评测脚本
-  R->>E: 重置环境、取观测
-  E-->>M: 观测
-  M-->>E: 动作 / 预测
-  R-->>U: 指标与日志
+  participant E as agents.evaluate
+  participant P as Episode
+  participant G as gar CLI
+  participant S as 仿真服务
+  participant A as Agent
+  E->>E: load_split
+  E->>P: start
+  P->>G: tasks resolve 和 run
+  G-->>P: URL 和两类密钥
+  P->>S: GET /v1/task 使用 policy key
+  E->>A: send 任务、URL 和 policy key
+  A->>S: 使用 policy API 操作
+  E->>P: evaluate
+  P->>S: GET /v1/evaluation 使用 owner key
+  E->>P: stop
+  E->>E: 写入 result.json 和 results.json
 ```
+
+当前只核对了上述评测入口，尚未通读论文全文与创建流程源码，节点仍为草稿；仿真物理有效性和其余实验需继续核验。
 
 ## 实验与评测
 
