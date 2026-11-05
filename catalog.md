@@ -2378,6 +2378,7 @@
 - [FlowHMR: Physically Plausible Motion Capture from Video](wiki/entities/paper-flowhmr.md) — 单目视频经条件流匹配生成全局人体、手部及轨迹，再以物理跟踪奖励进行 GRPO 后训练。 `📅unknown` `[entity_page]`
 - [FlowVLA（arXiv:2610.16160）](wiki/entities/paper-flowvla-pluggable-3d-flow.md) — FlowVLA**（*FlowVLA: Enabling World Dynamics Understanding through Pluggable 3D Flow Learning*，[arX `📅unknown` `[entity_page]`
 - [FlowVLA：面向定量机器人倾倒操作的流动感知物理完成状态学习](wiki/entities/paper-flowvla-quantitative-robotic-pouring.md) — FlowVLA 倾倒**（*FlowVLA: Learning Flow-Aware Physical Completion for Quantitative Robotic Pouring*， `📅unknown` `[entity_page]`
+- [FlowVLA（Visual CoT）](wiki/entities/paper-flowvla-visual-cot.md) — FlowVLA（Visual CoT）**（arXiv:2508.18269，[项目页](https://irpn-lab. `📅unknown` `[entity_page]`
 - [Fly-by-Code：让空中操作的编码智能体主动查明失败原因](wiki/entities/paper-fly-by-code-aerial-manipulation.md) — Fly-by-Code**（arXiv:2610.12549，[项目页](https://fly-by-code.githu `📅unknown` `[entity_page]`
 - [FlyCNS（arXiv:2609.28816）](wiki/entities/paper-flycns-connectome-communication.md) — FlyCNS**（*FlyCNS: Connectome-Grounded Information Organization for Communication-Constrained Embod `📅unknown` `[entity_page]`
 - [Flying Knots（Task-Level ILC for Deformable Rope Manipulation）](wiki/entities/paper-flying-knots.md) — Flying Knots** 是 CMU **Krishna Suresh & Chris Atkeson** 的 **可变形体动态操作** 论文（arXiv:2602.21302）：在 **fl `📅unknown` `[entity_page]`
@@ -4349,6 +4350,7 @@
 - [RynnWorld-Latent（arXiv:2610.36791）](wiki/entities/paper-rynnworld-latent.md) — RynnWorld-Latent**（*RynnWorld-Latent: A Cross-Embodiment World Model Conditioned on Universal Late `📅unknown` `[entity_page]`
 - [S-Agent 2.0：通用编码智能体的空间推理](wiki/entities/paper-s-agent-2.md) — 为通用编码智能体接入三维感知命令行工具、持久场景记忆和可解释的空间读数。 `📅unknown` `[entity_page]`
 - [S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）](wiki/entities/paper-s-squared-vla.md) — S²-VLA**（*Decoupling Semantic and Spatial Streams in Vision-Language-Action Models for Autonomous  `📅unknown` `[entity_page]`
+- [S²-VLA（状态空间引导的长程操作）](wiki/entities/paper-s2-vla-state-space-guided.md) — S²-VLA（状态空间引导的长程操作）**（arXiv:2606.27872）是 [新机器视觉《2026年了，主流具身智能算 `📅unknown` `[entity_page]`
 - [S2C](wiki/entities/paper-s2c-safety-filtered-rl.md) — Turning Safety into Competence: Minimally Exploitable Robot Policies via Safety-Filtered Reinforce `📅unknown` `[entity_page]`
 - [S4VY：前馈 4D 视觉几何中的万物分割](wiki/entities/paper-s4vy.md) — S4VY 从一组 RGB 观测联合预测跨画面身份一致的实例掩码，支持无提示、点框选择和语言定位。 `📅unknown` `[entity_page]`
 - [NPE](wiki/entities/paper-sa-1612-00341-npe-a-compositional-object-based-approach-to-lea.md) — NPE: A Compositional Object-Based Approach to Learning Physical Dynamics** 收录于 [Awesome World Mode `📅unknown` `[entity_page]`
@@ -5563,6 +5565,7 @@
 - [TuringViT（Making SOTA Vision Transformers Accessible to All）](wiki/entities/paper-turingvit.md) — TuringViT**（arXiv:2606.24253）由小鹏（XPeng）提出：面向 VLM/VLA 时代的 **可定制 SOTA 视 `📅unknown` `[entity_page]`
 - [TWIST](wiki/entities/paper-twist.md) — TWIST**（*Teleoperated Whole-Body Imitation System*，arXiv:2505.02833，CoRL 2025）是全身人形遥操作与模仿学习系统。 `📅unknown` `[entity_page]`
 - [TWIST2](wiki/entities/paper-twist2.md) — TWIST2**（*Scalable, Portable, and Holistic Humanoid Data Collection System*，arXiv:2511.02832，**ICR `📅unknown` `[entity_page]`
+- [Two-Steps Diffusion Policy](wiki/entities/paper-two-steps-diffusion-policy.md) — Two-Steps Diffusion Policy**（arXiv:2510.21991）是 [新机器视觉《2026年了， `📅unknown` `[entity_page]`
 - [UCAG-P：相机系动作几何预训练](wiki/entities/paper-ucag-p.md) — UCAG-P**（*One Policy, Many Embodiments: Unified Camera-Centric Action Geometry Pre-training for He `📅unknown` `[entity_page]`
 - [ULOHA（arXiv:2609.19200）](wiki/entities/paper-uloha.md) — ULOHA**（*An Underwater Bimanual Robot System for Robot Learning*，[arXiv:2609.19200](https://arxiv. `📅unknown` `[entity_page]`
 - [Ultra-Fusion（韧性多传感器融合 SLAM）](wiki/entities/paper-ultra-fusion-multi-sensor-slam.md) — Ultra-Fusion**（Tian et al., arXiv:2606.21223，项目页， `📅unknown` `[entity_page]`
@@ -6153,6 +6156,7 @@
 - [Taste Skill](wiki/entities/taste-skill.md) — Taste Skill**（Leonxlnx/taste-skill，[tasteskill.dev](htt `📅unknown` `[entity_page]`
 - [τ₀-World Model（τ0-WM）](wiki/entities/tau0-world-model.md) — τ₀-World Model（τ0-WM）**（2026-05-31，AGIBOT Finch 研究页， `📅unknown` `[entity_page]`
 - [Telekinesis RLbotics](wiki/entities/telekinesis-rlbotics.md) — Telekinesis RLbotics**（[`telekinesis-ai/telekinesis-rlbotics`](https://github.com/telekinesis-ai/t `📅unknown` `[entity_page]`
+- [Octop：Self-hosted Multi-user AI Assistant（自托管多用户 AI 助手）](wiki/entities/tencent-octop.md) — Octop 是腾讯云开源的自托管助手平台，在单个服务进程中组合专家 Agent、消息通道、定时任务和 Web 控制台。 `📅unknown` `[entity_page]`
 - [Tennis-Vision](wiki/entities/tennis-vision.md) — Tennis-Vision**（HarshTomar1234/Tennis-Vision）是一 `📅unknown` `[entity_page]`
 - [TensorBoard](wiki/entities/tensorboard.md) — TensorBoard**（tensorflow/tensorboard）是一套 **Web 端实验检查工 `📅unknown` `[entity_page]`
 - [TensorFlow](wiki/entities/tensorflow.md) — TensorFlow** 是由 **Google Brain** 团队最初开发、现由全球社区维护的 **端到端开源机器学习平台**。它以 **`tf.keras`** 高层 API 降低建模门槛， `📅2026-06-25` `[entity_page]`
@@ -6870,6 +6874,7 @@
 - [机器人运控开发板选型（按策略网络模型）](wiki/comparisons/robot-policy-deployment-dev-board-selection.md) — 先看策略网络的「FLOPs × 控制频率」和「权重占多少内存」，再选板：本体小网跑 CPU 就够，带视觉 / 扩散的低层策略从 Orin NX 起步，完整 VLA 要 Jetson Thor 或离 `📅unknown` `[comparison_page]`
 - [机器人顶会顶刊发表渠道对比](wiki/comparisons/robotics-research-venues.md) — 在机器人学习与系统方向投稿或引用时，**会议**（ICRA、IROS、CoRL、RSS）与 **期刊**（T-RO、IJRR、Science Robotics）的 **主办方、审稿节奏、论文集托管 `📅unknown` `[comparison_page]`
 - [ROS 2 vs LCM (机器人中间件选型)](wiki/comparisons/ros2-vs-lcm.md) — 一句话结论：** 需要驱动/导航/规划/可视化生态与可靠工具链时选 **ROS 2**；需要跨进程或跨板的 **高频、低抖动、最新优先** 状态与力矩总线时选 **LCM**（同机极限路径优先共享 `📅unknown` `[comparison_page]`
+- [RRT 家族选型对照：RRT / RRT-Connect / RRT\* / Informed RRT\*](wiki/comparisons/rrt-family-variants.md) — 同一棵「随机采样 + 最近节点扩展 + 碰撞检测」的树，四个变体的分歧在于有限算力花在哪里：RRT / RRT-Connect 求尽快找到可行路，RRT\* / Informed RRT\* 在此 `📅unknown` `[comparison_page]`
 - [SDD、TDD、BDD 与 ATDD：外层规格和内层反馈如何组合](wiki/comparisons/sdd-tdd-bdd-development-methods.md) — SDD（规格驱动）、TDD（测试驱动）、BDD（行为驱动）和 ATDD（验收测试驱动）解决的是不同层次的问题：SDD 让规格跨计划与实现保持可追溯，BDD / ATDD 让跨角色对行为和完成条件达 `📅unknown` `[comparison_page]`
 - [Second-Order Optimizers：选型对比](wiki/comparisons/second-order-optimizers.md) — 背景**：机器人 Trajectory Optimization、IK、标定与 NMPC 打靶后，常归结为 **非 `📅unknown` `[comparison_page]`
 - [自我改进智能体与具身终身学习](wiki/comparisons/self-improving-agents-embodied-lifelong-learning.md) — 自我改进闭环**将交互经验或评测反馈用于更新智能体；具身场景还必须处理真实机器人采集、复位、硬件约束和部署验证。 `📅unknown` `[comparison_page]`
@@ -6929,6 +6934,7 @@
 - [Ego 分类 04：Ego+Exo 融合](wiki/overview/ego-category-04-ego-exo-fusion.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [具身智能十三篇：生成式控制、遗忘与安全更新](wiki/overview/embodied-13-papers-technology-map.md) — 生成式先验、示范预算、后训练诊断与人形安全更新应分开优化——ForgetMimic 的「会忘记」与 NowWAM 的「不必预测未来」是同一时代的两种控制接口问题。 `📅unknown` `[overview_page]`
 - [Embodied-AI-Guide 微信专辑 — 五篇策展索引](wiki/overview/embodied-ai-guide-wechat-album-curator.md) — 本页把 Lumina **Embodied-AI-Guide** 配套的微信专辑（5 篇入门/综述）拆成**可点 `📅unknown` `[overview_page]`
+- [2026 具身智能算法栈：VLA、扩散策略、强化学习与世界模型（一手核对版）](wiki/overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md) — 文章的结论：别追求单一算法通吃——VLA 当基座、扩散策略保可靠性、RL 啃硬技能、世界模型赌未来泛化，按场景的可靠性、算力与数据条件组合。**（文章观点，工程上是合理的分层叙事；其中具体数字有若 `📅unknown` `[overview_page]`
 - [具身数据从采集到飞轮（系列地图）](wiki/overview/embodied-data-collection-to-flywheel-album.md) — 本系列** 用四步把具身数据讲清楚：先拆采集术语（四层地图），再排数据配方（五层金字塔），然后定义飞轮最短闭环（避免空转），最后按监督信号分流（示范/失败/接管/Ego 各教什么）。 `📅unknown` `[overview_page]`
 - [具身智能数据集全景（85 项去重映射）](wiki/overview/embodied-dataset-panorama-2026-10.md) — 按数据形态与用途，把 85 个公开具身数据集及集合分为真实机器人、仿真与合成、人类示范与第一视角、导航与三维场景、灵巧手与抓取、触觉与多模态六组，并**每个数据集对应唯一 wiki 节点**。 `📅unknown` `[overview_page]`
 - [具身智能前沿算法：六路线阅读坐标](wiki/overview/embodied-frontier-algorithms-technology-map.md) — 2026 具身算法的主线是「VLA 基座 + WAM 长程 + 足式/触觉/规划模块化」——选型应先定路线再定仓库，勿被公众号错误 arXiv 编号带偏。 `📅unknown` `[overview_page]`
