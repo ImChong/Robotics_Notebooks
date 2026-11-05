@@ -5,16 +5,18 @@ tags:
   - vla
   - manipulation
 status: complete
-updated: 2026-11-02
+updated: 2026-11-04
 arxiv: "2610.40373"
 project_id: hifor-hierarchical-foresight-vla
 related:
   - ../overview/senlanke-weekly-2026-10-26-30-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
   - ../../sources/papers/hifor-hierarchical-foresight-vla_arxiv_2610_40373.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
+  - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 summary: "HiFOR：面向视觉语言动作模型的分层未来预测与动作引导世界信息关联（arXiv:2610.40373）：提出分层未来预测框架，同时预测短期状态、语义里程碑和最终目标。通过结构化潜在世界表示组织不同时间尺度的信息，再由动作生成过程动态检索相关未来特征，减少无关预测信息对动作决策的干扰。"
 ---
 

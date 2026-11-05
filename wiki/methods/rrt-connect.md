@@ -12,6 +12,7 @@ related:
   - ../entities/moveit2.md
   - ../methods/a-star.md
   - ../comparisons/robot-path-planning-five-paradigms-taxonomy.md
+  - ../comparisons/rrt-family-variants.md
 sources:
   - ../../sources/blogs/wechat_shenlan_rrt_rrt_star_explainer_2026-11-04.md
 summary: "RRT-Connect 从起点和终点两侧同时生长树并尝试把它们连接起来，强调更快找到可行解；是 OMPL 等库中常见的 RRT 变体（本页仅整理文章与 OMPL README 的表述）。"
@@ -49,6 +50,7 @@ summary: "RRT-Connect 从起点和终点两侧同时生长树并尝试把它们�
 - [OMPL](../entities/ompl.md)、[MoveIt 2](../entities/moveit2.md)
 - [A*](./a-star.md)
 - [路径规划五范式分类](../comparisons/robot-path-planning-five-paradigms-taxonomy.md)
+- [RRT 家族选型对照](../comparisons/rrt-family-variants.md) — RRT / RRT-Connect / RRT* / Informed RRT* 并排对比
 
 ## 参考来源
 

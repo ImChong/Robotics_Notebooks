@@ -30,6 +30,7 @@ related:
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
 - ../overview/vla-history-rt1-to-molmoact-technology-map.md
+- ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
 - ../../sources/papers/pi0_arxiv_2410_24164.md
 - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -39,6 +40,7 @@ sources:
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
 - ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
+- ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 summary: π₀（arXiv:2410.24164，Physical Intelligence）：PaliGemma 类 VLM + Flow Matching Action Expert；高频连续动作。官方仓是 Physical-Intelligence/openpi，不是 pi0。
 project_id: pi0
 venue: RSS 2025

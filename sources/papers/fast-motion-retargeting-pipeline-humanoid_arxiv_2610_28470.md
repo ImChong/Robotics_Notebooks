@@ -15,6 +15,7 @@
 ## 开源状态
 
 - arXiv 摘要页/评论给出项目页或外链（https://daroslab.github.io/frdv/）；未发现代码仓库链接（2026-10-26，仅核对 arXiv 摘要页）
+- 2026-11-05 更正：项目页链到官方仓库 <https://github.com/DARoSLab/FRDV>（MIT）；README 称仅发布运动学重定向管线，论文的动力学验证管线未包含。
 
 ## 核心摘录
 

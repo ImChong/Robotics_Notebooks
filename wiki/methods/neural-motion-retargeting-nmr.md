@@ -2,7 +2,9 @@
 type: method
 tags: [humanoid, motion-retargeting, imitation-learning, reinforcement-learning, sim2real, unitree-g1]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-05
+arxiv: "2603.22201"
+code: https://github.com/3DV-HumanoidGroup/MakeTrackingEasy
 related:
   - ../concepts/motion-retargeting.md
   - ./motion-retargeting-gmr.md
@@ -85,6 +87,34 @@ flowchart TD
 
   T2 --> NMR
 ```
+
+## 源码运行时序图
+
+论文题为 *Make Tracking Easy: Neural Motion Retargeting for Humanoid Whole-body Control*（[arXiv:2603.22201](https://arxiv.org/abs/2603.22201)，Zhao 等，2026-03-23）。项目页链到官方仓库 [3DV-HumanoidGroup/MakeTrackingEasy](https://github.com/3DV-HumanoidGroup/MakeTrackingEasy)（2026-11-05 HEAD `ba87ad6`）和 Hugging Face Space。**部分开源**：README 的 TODO 写明推理代码与 checkpoint 已发布，**CEPR 数据集与训练代码未发布**；仓根未见 LICENSE 文件。下图依据 `inference.py`（读源码，未运行）：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 使用者
+    participant I as inference.py
+    participant H as HuggingFace Hub (RayZhao/NMR)
+    participant P as preprocess_smpl
+    participant M as NMR 模型 (mmengine MODELS)
+    participant Q as postprocess_g1
+    participant C as convert_bmimic
+    U->>I: --src AMASS npz --output-dir
+    I->>H: 首次运行下载 epoch_30.pth 与 SMPLX_NEUTRAL.npz
+    I->>P: SMPL-X 序列转 30 fps 特征，补齐到 4 的倍数
+    loop 超长序列按 chunk/stride 切段，否则单段
+        I->>M: 按首帧偏航规范化后 model(mode=predict)
+        M-->>I: G1 运动特征，反标准化并还原偏航
+    end
+    I->>Q: 段间线性混合后 Butterworth 低通（可 --no-filter）
+    Q->>C: dof / root 转 BeyondMimic 格式
+    C-->>U: 50 fps bmimic npz
+```
+
+关键复现路径：只能复现推理（AMASS npz → G1 29 DoF 参考）；README 把网络描述为 SMPL-X VQ-VAE（FSQ）编码、70M LLaMA 式非自回归 Transformer、G1 VQ-VAE 解码，而上文 CEPR/网络节按论文 HTML 写为 ResNet1D 编码 + 全自注意力 Transformer，两处措辞不同，我没有逐层对照代码，**推测**是同一网络的不同描述粒度。
 
 ## 与优化式重定向（如 GMR）的关系
 

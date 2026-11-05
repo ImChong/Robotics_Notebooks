@@ -23,10 +23,12 @@ related:
   - ../entities/paper-pi0.md
   - ../entities/paper-openvla.md
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
+  - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
   - ../../sources/papers/smolvla_arxiv_2506_01844.md
   - ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
   - ../../sources/repos/lerobot.md
+  - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 summary: "SmolVLA（arXiv:2506.01844）：SmolVLA 是小而高效、由社区数据驱动的 VLA：可在单 GPU 上训练、在消费级 GPU 甚至 CPU 上部署，并用解耦感知/动作预测与执行的异步推理栈提高控制频率。"
 ---
 

@@ -12,6 +12,7 @@ related:
   - ../entities/moveit2.md
   - ../methods/a-star.md
   - ../comparisons/robot-path-planning-five-paradigms-taxonomy.md
+  - ../comparisons/rrt-family-variants.md
 sources:
   - ../../sources/blogs/wechat_shenlan_rrt_rrt_star_explainer_2026-11-04.md
 summary: "RRT* 在 RRT 基础上为新节点选累计代价最低的父节点并做 Rewiring，使路径代价随采样渐近收敛到最优；代价是更多近邻查询与碰撞检测，有限时间内仍可能非最优。"
@@ -63,6 +64,7 @@ summary: "RRT* 在 RRT 基础上为新节点选累计代价最低的父节点并
 - [配置空间](../concepts/configuration-space.md)
 - [OMPL](../entities/ompl.md)、[MoveIt 2](../entities/moveit2.md)
 - [路径规划五范式分类](../comparisons/robot-path-planning-five-paradigms-taxonomy.md)
+- [RRT 家族选型对照](../comparisons/rrt-family-variants.md) — RRT / RRT-Connect / RRT* / Informed RRT* 并排对比
 
 ## 参考来源
 

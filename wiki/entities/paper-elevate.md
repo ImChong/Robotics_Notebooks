@@ -6,7 +6,7 @@ tags:
   - locomotion
   - control
 status: complete
-updated: 2026-10-30
+updated: 2026-11-04
 arxiv: "2610.38388"
 project: https://agentic-quad-elevate.github.io/public/
 related:
@@ -14,12 +14,14 @@ related:
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
   - ../overview/embodied-station-2026-10-30-28-papers-technology-map.md
+  - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
   - ../../sources/papers/elevate_arxiv_2610_38388.md
   - ../../sources/sites/elevate.md
   - ../../sources/blogs/wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md
+  - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 summary: "ELEVATE（arXiv:2610.38388）：ELEVATE 将持续任务失败作为寻找缺失全身控制能力的信号，再获取新控制器并更新任务程序。"
 ---
 

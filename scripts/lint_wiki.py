@@ -418,6 +418,19 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 类名、AnyTouch2 数据集的 **Sim** 子集标签；仿真概念本体已由
     # concepts/robot-simulation-three-layers.md / sim2real.md 承载，不建 concepts/sim.md。
     "sim",
+    # update / forward / init / load / deploy / loop：源码阅读记录里的函数名与生命周期
+    # 方法 token——控制器的 `init` / `update`（ros2_control、OCS2 LeggedController、
+    # EMGFilters）、PyTorch 模块的 `forward`、PPO 的 `update`、Arduino 的 `setup` /
+    # `loop`、`load` / `deploy` 入口函数与 `deploy` 分支名，以及行为树编排的
+    # **LOAD** / `Loop` 命令名（命令语义已由 concepts/behavior-tree-vla-orchestration.md
+    # 承载）、GR00T 流程的 **Deploy** 步骤标题；与 run / evaluate / make 同为代码 token，
+    # 非机器人概念，不建独立页。
+    "update",
+    "forward",
+    "init",
+    "load",
+    "deploy",
+    "loop",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -721,6 +734,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "moe",  # 已由 concepts/mixture-of-experts.md 覆盖（缩写 slug 与页面 stem 不同名）
     "mpc",
     "mujoco",
+    # isaaclab / genesis：仿真器名（`isaaclab` 包名 / 环境变量取值 / extra 依赖名、
+    # **Genesis** 仿真平台），canonical 节点已是 entities/isaac-lab.md 与
+    # entities/genesis-sim.md；与 mujoco / mjlab / newton 同类「仿真器归 entities」。
+    "isaaclab",
+    "genesis",
     # newton：canonical 节点已是 entities/newton-physics.md（Linux Foundation 托管、基于
     # NVIDIA Warp 的 GPU 物理引擎），各页命中处均为「**Newton** 物理后端」式的仿真器指称；与 mujoco /
     # mjlab 同类「仿真器归 entities」。牛顿法一义已由 methods 下的

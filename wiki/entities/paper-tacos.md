@@ -11,6 +11,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
   - ../overview/embodied-station-2026-10-30-28-papers-technology-map.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/tacos_arxiv_2610_37806.md
   - ../../sources/repos/tacos.md
@@ -102,6 +103,14 @@ sequenceDiagram
 - 单目投影假定局部地面近似平面，陡峭地形或遮挡处存在几何误差；论文将深度和几何融合列为未来工作。
 - 公开仓库为 MIT 许可，DINOv3 权重适用其独立许可；官方 README 列出了数据格式与训练入口，迁移其他机器人需处理运动学和标定。
 
+## 与其他工作对比
+
+- **对力学类评分（GRS、ProNav、OCELOT）：** GRS 与 ProNav 把力或本体特征降维到主成分，OCELOT 结合受力接触检测与运动静止检验；TACOS 直接读取因子图中的接触残差，并在整个支撑期累计（§II-B、§IV-A）。人工标注集上合并 VUS 分别为 0.333、0.342、0.400，Hard TACOS 为 0.893（表 I）。
+- **对运动学类评分（Jenelten 等、Yan 等、不变平滑器）：** 前者用概率状态机输出打滑置信度，后两者分别看足端相对触地点位移与平滑后的足端速度。检测 AP 最强基线为 Jenelten 等（0.90），严重程度排序最强为 Yan 等（VUS 0.700）；Yan 等仅在极高召回段略占优（§IV-A、图 4、表 I）。
+- **对 WVN 等机身级自监督：** WVN 用指令与实测机身速度差得到牵引度量并扩展到相似区域；TACOS 只在实际落脚点给稀疏标签，不做扩展（§II-C）。论文以相同网络复现 WVN，但只作定性对比，未给定量指标（§IV-B、图 6）。
+- **对 GRS 视觉监督：** 二者共用逐落脚点掩码与网络，只换标签度量；GRS 测试集相关性接近零，Hard / Soft TACOS 的 Spearman 中位数为 0.554 / 0.449（§IV-B、图 7）。
+- **对几何代价地图：** 森林单路径中，几何高程图把泥坑看作平面、把可通过植被看作障碍，TACOS 代价地图可区分二者（§IV-C、图 8）；这只是定性示范。所有评分方法均在同一标注集上调参，PCA 类评分也在其上拟合，因此表 I 衡量的是各方法在该数据上的最佳表现，不宜外推到其他机器人或地形。
+
 ## 结论
 
 TACOS 把接触约束违背程度转换为视觉落脚监督，并在有限户外真机实验中展示了非几何地形风险的作用。
@@ -117,6 +126,7 @@ TACOS 把接触约束违背程度转换为视觉落脚监督，并在有限户�
 - [强化学习](../methods/reinforcement-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [同期论文阅读地图](../overview/embodied-station-2026-10-30-28-papers-technology-map.md)
+- [机器人视觉感知栈选型闭环（知识链）](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源
 

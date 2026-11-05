@@ -251,6 +251,18 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-05] ingest | 具身智能研究室《这三年，机器人训练越来越快，数据重定向能不能借通用运控再往前走一步？》：16 个方法逐个核对均已有独立节点，补全 7 个并新建概览页，更正 GMR 论文归属与 FRDV 代码状态
+
+## [2026-11-05] ingest | sources/repos/mika.md — 收录 Android 手机智能体及其源码调用路径
+
+## [2026-11-05] ingest | sources/repos/frax.md — 收录开源 JAX 运动学动力学库及人形重定向实例
+
+## [2026-11-05] ingest | sources/repos/tencent-octop.md — 收录自托管多用户多智能体平台及源码启动流程
+
+## [2026-11-04] ingest | 新机器视觉《2026年了，主流具身智能算法有哪些？》：20 个算法逐个回一手资料核对（新建 3 / 复用 15 / 无法定位 2），指出 Octo、OpenVLA 数字与 README 不一致
+
+## [2026-11-04] ingest | 大凡光学《一文看懂三种标定原理：张正友、九点、手眼标定全解析》：新建相机标定三层概念页，核对 Zhang 2000 一手摘要，回链手眼标定页（无论文/项目清单）
+
 ## [2026-11-05] ingest | sources/papers/tacclaw_infinity_arxiv_2610_20320.md — 补充论文全文、实验结果与源码调用，确认部分开放
 
 ## [2026-11-04] ingest | 深蓝AI《彻底搞懂RRT与RRT*》：新建 RRT / RRT* / RRT-Connect / Informed RRT* 四个方法节点（算法教程，无项目清单）

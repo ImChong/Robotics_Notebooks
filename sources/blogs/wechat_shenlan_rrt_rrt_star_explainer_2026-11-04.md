@@ -33,3 +33,4 @@
 ## 对 wiki 的映射
 
 - 新增方法节点：[RRT](../../wiki/methods/rrt.md)、[RRT*](../../wiki/methods/rrt-star.md)、[RRT-Connect](../../wiki/methods/rrt-connect.md)、[Informed RRT*](../../wiki/methods/informed-rrt-star.md)
+- 选型对照页：[RRT 家族选型对照](../../wiki/comparisons/rrt-family-variants.md)（2026-11-04 补；RRT-Connect 依 OMPL 类文档与 LaValle《Planning Algorithms》§5.5.3 核对）

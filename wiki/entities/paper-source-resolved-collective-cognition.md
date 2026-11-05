@@ -3,15 +3,16 @@ type: entity
 project_id: source-resolved-collective-cognition
 tags:
   - paper
-  - benchmark
-  - evaluation
+  - sensor-fusion
+  - state-estimation
 status: complete
 updated: 2026-11-04
 arxiv: "2611.02693"
 related:
-  - ../concepts/simulation-evaluation-infrastructure.md
-  - ../methods/vla.md
-  - ../tasks/manipulation.md
+  - ../concepts/sensor-fusion.md
+  - ../concepts/state-estimation.md
+  - ../methods/lidar-odometry-fusion.md
+  - ../methods/visual-line-ekf-fusion.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
 sources:
   - ../../sources/papers/source_resolved_collective_cognition_arxiv_2611_02693.md
@@ -71,9 +72,10 @@ summary: "Source-Resolved Collective Cognition（arXiv:2611.02693）：围绕广
 
 ## 关联页面
 
-- [simulation-evaluation-infrastructure](../concepts/simulation-evaluation-infrastructure.md)
-- [vla](../methods/vla.md)
-- [manipulation](../tasks/manipulation.md)
+- [多传感器融合](../concepts/sensor-fusion.md)
+- [状态估计](../concepts/state-estimation.md)
+- [激光雷达–里程计融合](../methods/lidar-odometry-fusion.md)（多源估计的工程实例）
+- [视觉线特征 EKF 融合](../methods/visual-line-ekf-fusion.md)（多源估计的工程实例）
 - [embodied-station-2026-11-04-57-papers-technology-map](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)
 
 ## 参考来源
