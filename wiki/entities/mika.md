@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: mika-android-agent
-tags: [repo, llm-agents, automation, android, mobile-agent]
+tags: [repo, llm-agents, automation, android, mobile-agent, independent-maintainer]
 status: draft
 updated: 2026-11-05
 code: https://github.com/wangzan101/Mika
@@ -27,6 +27,8 @@ Mika 是运行在 Android 手机上的开源助手，通过模型与工具循环
 | APK | Android Package Kit | Android 安装包 |
 | MCP | Model Context Protocol | 电脑侧连接手机任务服务的方式之一 |
 | CLI | Command-Line Interface | 电脑侧命令行入口 |
+
+项目由 GitHub 用户 [wangzan101](https://github.com/wangzan101) 发布，所属机构未注明。
 
 ## 流程总览
 
