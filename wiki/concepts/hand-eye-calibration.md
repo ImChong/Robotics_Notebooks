@@ -7,6 +7,7 @@ related:
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
   - ../formalizations/homogeneous-coordinates-transform.md
   - ./perception-coordinate-postprocessing.md
+  - ./camera-calibration-zhang-nine-point-hand-eye.md
   - ../entities/intel-realsense.md
   - ../entities/aloha-2.md
   - ../methods/levenberg-marquardt.md
@@ -87,6 +88,7 @@ flowchart TB
 ## 关联页面
 
 - [感知后处理与坐标变换](./perception-coordinate-postprocessing.md)
+- [相机标定三层：张正友 / 九点 / 手眼](./camera-calibration-zhang-nine-point-hand-eye.md) — 内参、2D 九点与 3D 手眼的分工与选型
 - [三维坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md)
 - [ALOHA 2 四相机工位](../entities/aloha-2.md)
 - [Intel RealSense](../entities/intel-realsense.md)
