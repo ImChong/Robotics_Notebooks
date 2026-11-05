@@ -8,6 +8,7 @@ code: https://github.com/wangzan101/Mika
 related:
   - ./agent-autoloop.md
   - ./langgraph.md
+  - ./elephant-goldfish-model.md
 sources:
   - ../../sources/repos/mika.md
 summary: "Mika：在 Android 上运行、可操作应用与网页的开源智能体，模型可连接外部服务。"
@@ -81,6 +82,7 @@ sequenceDiagram
 
 - [Agent Autoloop](./agent-autoloop.md)：事件驱动的命令行智能体调度。
 - [LangGraph](./langgraph.md)：有状态智能体工作流编排。
+- [Elephant-Goldfish Model](./elephant-goldfish-model.md)：设计文档与独立审阅工作流。
 
 ## 参考来源
 
