@@ -2,12 +2,13 @@
 type: entity
 tags: [software, simulation, physics-engine, nvidia, realtime, metaverse]
 status: complete
-updated: 2026-10-09
+updated: 2026-11-05
 related:
   - ./blender.md
   - ./mujoco.md
   - ./isaac-sim.md
   - ./isaac-lab.md
+  - ./nvidia-skills.md
   - ./nvidia-learn-openusd.md
   - ./newton-physics.md
   - ./nvidia-warp.md
@@ -27,6 +28,8 @@ summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于
 # NVIDIA Omniverse (具身仿真底座)
 
 **NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是 [Isaac Sim](./isaac-sim.md) 的运行底座。通过利用光线追踪（RTX）、大规模并行物理计算（PhysX）和通用场景描述（USD），Omniverse 为具身智能（Embodied AI）提供了一个与物理世界高度一致的数字化孪生空间。
+
+[NVIDIA Skills](./nvidia-skills.md) 提供包括 Omniverse 资产工作流在内的智能体技能指南。
 
 ## 英文缩写速查
 
