@@ -8,6 +8,7 @@ code: https://github.com/KKKKhazix/agent-autoloop
 related:
   - ./langgraph.md
   - ./multi-agent-cad.md
+  - ./tencent-octop.md
 sources:
   - ../../sources/repos/agent-autoloop.md
 summary: "Agent Autoloop：以事件、规则和回执调度命令行 Agent，支持人工卡片与定时复查。"
@@ -86,6 +87,8 @@ sequenceDiagram
 
 - [LangGraph](./langgraph.md)：状态图与持久工作流编排。
 - [Multi-Agent CAD](./multi-agent-cad.md)：面向 CAD 的多阶段 Agent 工作流。
+
+- [Octop](./tencent-octop.md)：多用户自托管 Agent 助手平台。
 
 ## 参考来源
 
