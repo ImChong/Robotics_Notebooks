@@ -107,3 +107,5 @@ flowchart LR
 
 - [skills.sh frontend-design](https://skills.sh/anthropics/skills/frontend-design)
 - [The Elements of Typographic Style](https://en.wikipedia.org/wiki/The_Elements_of_Typographic_Style) — skill 引用的排版尺度参考
+
+- [pixelfx](pixelfx.md)：以渲染和视觉迭代创作像素特效的开源库及技能。
