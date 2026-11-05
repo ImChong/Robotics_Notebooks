@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-05] ingest | sources/papers/raven_active_slam_arxiv_2610_37111.md — 收录无人机主动 SLAM，源码待发布，原文复核继续
+
 ## [2026-11-05] ingest | sources/papers/global_style_transfer_arxiv_2608_11546.md — 收录 GST 风格迁移与评测，作者页面未公开实现
 
 ## [2026-11-05] ingest | sources/papers/yolo27-alphaxiv-overview.md — 收录 YOLO27 预发布综述，记录官方预览差异与待核查项
