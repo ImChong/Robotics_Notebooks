@@ -80,7 +80,7 @@ VICAR 的重点在“参考生成层”：将需达成的接触显式写成世�
 
 论文使用 Isaac Lab + Unitree G1，物理步长 5 ms、动作 decimation 4，对应名义策略频率 50 Hz；另测试 25 Hz 变体。每轮并行 4,096 个环境，PPO 最多训练 30,000 iterations；观测含参考命令、anchor 与身体相对姿态/速度、关节状态、前一动作。接触/摩擦、关节偏置、质心及随机推扰用于域随机化。
 
-### 流程图
+## 流程总览
 
 ```mermaid
 flowchart TB
@@ -116,6 +116,10 @@ flowchart TB
 | [VideoMimic](./videomimic.md) | 视频恢复人体与环境，生成 contextual humanoid skills | VICAR 将稀疏接触 anchor 放入重定向优化，并支持运行时改变接触位置 |
 | OmniRetarget（[公开数据集](./omniretarget-dataset.md)） | interaction mesh 与硬关节/速度/碰撞/支撑约束 | VICAR 用世界系接触 pose penalty 和速度保持处理某些需要指定接触目标的任务 |
 | VICAR | 视频 → 接触/速度保持重定向 → contact-conditioned generator → tracking policy | 提升主要出现在桌面拾取与仿真爬梯等障碍/接触敏感场景，而非所有任务均胜出 |
+
+## 源码运行时序图
+
+**不适用（官方公开仓库不含可运行的论文流程）。** 2026-11-05 复核 [官方仓库](https://github.com/ember-center-berkeley/VICAR)（默认分支 `website`，HEAD `07458b4`，见 [sources/repos/vicar.md](../../sources/repos/vicar.md)）：公开内容只有项目网站与 `python -m visualization list/view/export` 的已保存运动学轨迹回放，不运行 VICAR 重定向优化器或 PPO；原始训练、refinement、augmentation 在外部 TT_PLayer checkout，未随仓发布。因此不画训练/推理时序图，待外部代码公开后补。
 
 ## 复现与开源边界
 

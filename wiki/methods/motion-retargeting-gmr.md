@@ -3,6 +3,7 @@ type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
 updated: 2026-10-26
+arxiv: "2510.02252"
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
@@ -26,6 +27,7 @@ related:
   - ../entities/paper-hoi-retarget.md
   - ../entities/paper-humanoidpose-video-pose-estimation.md
 sources:
+  - ../../sources/papers/gmr_retargeting_matters_arxiv_2510_02252.md
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/neural_motion_retargeting_nmr.md
@@ -61,7 +63,7 @@ GMR 主要基于**运动学 (Kinematics)** 优化。它不考虑力学项，而�
 2. **关节限位约束**：确保生成的角度不超出机器人的物理极限。
 3. **平滑性约束**：减少相邻帧之间的角度突变。
 
-## 单条流水线的结构（Mermaid）
+## 流程总览：单条流水线的结构（Mermaid）
 
 下图概括「人体参考 → 机器人关节序列」在**几何层**上的典型数据流；与具体实现中的 IK 配置、关键点权重、是否滑窗等细节可能略有出入，但便于在工程里对齐模块边界。
 
@@ -123,6 +125,37 @@ flowchart LR
 | **数值求解** | 基于 QP 的优化器 | 满足关节限位与角速度连续性 |
 | **后处理** | 时间平滑 + 静态稳定性筛选 | 减少高频噪声，剔除极度失稳片段 |
 
+## 源码运行时序图
+
+官方仓库 [YanjieZe/GMR](https://github.com/YanjieZe/GMR)（MIT，README 标版本 0.2.0，2026-11-05 HEAD `25f56db`）。下图依据 `scripts/smplx_to_robot.py` 与 `general_motion_retargeting/motion_retarget.py`（读源码，未运行）；其余入口（`bvh_to_robot.py`、`gvhmr_to_robot.py`、`fbx_offline_to_robot.py` 等）只是换了人体数据加载器：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor U as 使用者
+    participant S as scripts/smplx_to_robot.py
+    participant D as utils.smpl 数据加载
+    participant G as GeneralMotionRetargeting
+    participant K as mink.solve_ik (daqp)
+    participant V as RobotMotionViewer
+    participant F as 保存 pickle
+    U->>S: --smplx_file --robot unitree_g1 --save_path
+    S->>D: load_smplx_file + get_smplx_data_offline_fast(30 fps)
+    D-->>S: 逐帧人体关键点位姿与身高
+    S->>G: 按 IK_CONFIG_DICT 构造机器人 MJCF 与 FrameTask
+    loop 每一帧
+        S->>G: retarget(frame)
+        G->>G: scale_human_data / offset 更新任务目标
+        G->>K: 第一组权重任务求解 IK，误差不再下降前反复积分
+        G->>K: 第二组权重任务再求解一轮
+        G-->>S: 机器人 qpos
+        S->>V: step 显示
+    end
+    S->>F: 保存 root_pos / root_rot / dof_pos / fps
+```
+
+关键复现路径：`pip install -e .` 后用对应 `*_to_robot.py` 逐帧调用 `GeneralMotionRetargeting.retarget`；输出的 pickle 可用 `scripts/batch_gmr_pkl_to_csv.py` 转为 BeyondMimic 用的 CSV。
+
 ## 开源实现侧的工程要点
 
 官方仓库自述中强调的能力（便于与论文/代码对齐，**不等价**于「已解决动力学可行性」）：
@@ -132,7 +165,7 @@ flowchart LR
 - **与 RL tracking 协同**：README 写明针对 RL 跟踪策略做过工程调参；并提供与 [BeyondMimic](./beyondmimic.md) 等工具链对接的 **pickle → CSV** 等转换脚本思路。
 - **默认关节角速度上限等保护**：减少「几何可行但电机跟不上」的极端指令（仍以机器人标定与控制器实测为准）。
 
-论文与报告可优先查阅：[arXiv:2505.02833](https://arxiv.org/abs/2505.02833)、技术报告 [arXiv:2510.02252](https://arxiv.org/abs/2510.02252)；录用信息以官方仓库徽章为准（如 ICRA 2026 标注）。
+论文与报告可优先查阅：GMR 本体的技术报告 [arXiv:2510.02252](https://arxiv.org/abs/2510.02252)（*Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking*，Araujo、Ze、Xu、Wu、Liu，2025-10-02）；官方 README 另挂的 [arXiv:2505.02833](https://arxiv.org/abs/2505.02833) 徽章是配套遥操作系统 [TWIST](../entities/paper-twist.md)，不是 GMR 本体论文（2026-11-05 核对 arXiv 摘要页）。录用信息以官方仓库徽章为准（如 ICRA 2026 标注）。
 
 ## 关键局限与避坑指南
 
@@ -186,18 +219,20 @@ $$
 
 ## 参考来源
 
+- [sources/papers/gmr_retargeting_matters_arxiv_2510_02252.md](../../sources/papers/gmr_retargeting_matters_arxiv_2510_02252.md) — GMR 技术报告 arXiv 摘要页与官方仓库入口核对（2026-11-05）。
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
 - [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的重定向消融提供"什么时候不该用 GMR"的反例。
 - [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR 以 GMR 为 CEPR 前端的神经重定向工作。
 - [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：仿真内双层 RL 重定向与 GMR/NMR 的定位对照。
 - [sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — SPIDER：采样优化式物理重定向与运动学前端的衔接。
-- Ze Y., et al. *GMR: General Motion Retargeting* — [arXiv:2505.02833](https://arxiv.org/abs/2505.02833)；技术报告 [arXiv:2510.02252](https://arxiv.org/abs/2510.02252)。
+- Araujo J. P., Ze Y., Xu P., Wu J., Liu C. K. *Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking* — [arXiv:2510.02252](https://arxiv.org/abs/2510.02252)（GMR 技术报告）；README 同挂的 [arXiv:2505.02833](https://arxiv.org/abs/2505.02833) 为 TWIST，见 [paper-twist](../entities/paper-twist.md)。
 - [GMR 源码仓库](https://github.com/YanjieZe/GMR) — 功能列表、支持的机器人与数据格式、与 TWIST / MimicKit 等生态链接。
 - [sources/papers/egohtr_arxiv_2607_13472.md](../../sources/papers/egohtr_arxiv_2607_13472.md) — EgoHTR Human2Robot 将 GMR 与 OmniRetarget/CoACD 并列。
 
 ## 关联页面
 
 - [Motion Retargeting (动作重定向)](../concepts/motion-retargeting.md) — 任务概览。
+- [重定向 vs 通用运控提速（2026-11 阅读坐标）](../overview/retargeting-vs-general-tracking-speedup-2026-11.md) — 文末 16 个方法的节点索引与核对差异。
 - [BeyondMimic](./beyondmimic.md) — 动作模仿学习通常以重定向后的轨迹作为输入。
 - [ExoActor](./exoactor.md) — 视频生成驱动的人形控制流水线，给出"何时跳过 GMR"的反例。
 - [NMR（神经运动重定向与人形全身控制）](./neural-motion-retargeting-nmr.md) — 用 GMR + 仿真 RL 构造监督的学习式重定向。
