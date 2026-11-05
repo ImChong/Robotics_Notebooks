@@ -1,6 +1,8 @@
 ---
 type: entity
 project_id: gr00t-n1-7
+code_scope: "Isaac-GR00T 中的 N1.7 模型版本（HF 模型卡 + LeRobot groot 策略加载的 N1.7 权重）"
+project_distinction: "N1.7 是 GR00T 系列的独立模型版本，无独立论文（模型卡引用 N1 白皮书 2503.14734）；与 N1 / N1.5 同属一个官方仓库但权重、骨干与检查点不同，N1 的 canonical 论文节点为 paper-hrl-stack-34-gr00t_n1，N1.5 为 paper-gr00t-n1-5"
 tags:
   - paper
   - vla

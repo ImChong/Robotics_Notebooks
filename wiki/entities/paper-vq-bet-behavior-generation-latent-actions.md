@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: vq-bet
 tags:
   - paper
   - imitation-learning
