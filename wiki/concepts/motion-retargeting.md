@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-10-31
+updated: 2026-11-05
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -48,6 +48,10 @@ Motion Retargeting 是将一个运动序列（通常来自人类或动物）**�
 ### 推理时具身感知反应选择
 
 [Embodiment-Aware Inference-Time Search](../entities/paper-embodiment-aware-reaction-selection.md) 将冻结的人体反应生成器作为候选提议器：采样多个反应，经目标人形重定向后，以交互语义门限和机器人侧运动学可行性共同排序。Inter-X + G1 主设置中可行性提升 1.61%，但完整 K=16 路径约 9.2 Hz，论文未实机驱动；因此它补充的是**源反应选择层**，不是新的底层控制器。
+
+### 工程工具：frax
+
+[frax](../entities/frax.md) 的差分 IK 示例将 LAFAN1 动作重定向到 G1，提供关节与地面约束及可选自碰撞处理。
 
 ### 1. 基于关节角度映射（Joint-Space Retargeting）
 最简单的方法：对每个关节直接建立角度映射（scale + offset）：
