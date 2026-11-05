@@ -42,6 +42,26 @@ World model with self-supervised 3D labels.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多相机图像 Img_i<br/>+ 内外参"] --> B["Img2Occ：BEVStereo4D + Swin 2D 特征<br/>→ 插值到 3D 体特征"]
+    B --> C["体素中心初始化带语义标签的 anchor<br/>→ 3D Gaussian"]
+    C --> D["Gaussian Splatting 渲染<br/>多相机 2D 语义图 + 深度图"]
+    E["LiDAR 投影得到的<br/>2D 语义 / 深度真值"] --> F["L_sem 交叉熵 + L_dep Pearson 相关"]
+    D --> F
+    C --> G["训练完成后生成 3D occupancy 标签"]
+    G --> H["AM-VAE：拆分 air / non-air 体素"]
+    H --> I["两个 VQVAE（各自码本）<br/>离散 token s_Air / s_N-Air"]
+    I --> J["世界模型：场景 token T + 车辆 token z0<br/>分层 token + masked 时间注意力"]
+    J --> K["预测下一时刻 token"]
+    K --> L["场景解码器 d → 预测 occupancy"]
+    K --> M["车辆解码器 d_ego → 自车位移 / 规划轨迹"]
+```
+
+图依据：论文 §III-A / Fig.2（Img2Occ）、§III-B（AM-VAE）、§III-C（世界模型）、Fig.1（总体流程）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ World model with self-supervised 3D labels.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2409.11356>
+- [arXiv PDF](https://arxiv.org/pdf/2409.11356)：已通读方法部分（实验与附录以略读为准）：§III 方法（III-A Img2Occ、III-B AM-VAE、III-C 世界模型）、§IV-A 实验设定
 
 ## 推荐继续阅读
 

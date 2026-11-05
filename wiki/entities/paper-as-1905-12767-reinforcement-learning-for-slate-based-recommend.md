@@ -41,6 +41,22 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Environments。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["Logging：记录展示的 slate 与用户反馈"] --> G["LTV Label Generation：按 Eq.19 用 label network Q_label 生成长期价值（LTV）标签"]
+    G --> RG["Regression：主网络学习 item 级 Q(s,i)（SARSA）；Q(s,A)=Σ P(i|s,A)·Q(s,i)"]
+    RG --> PUSH["定期训练并推送新模型到服务端"]
+    RG -. "定期复制权重" .-> LN["label network"]
+    LN -.-> G
+    PUSH --> RK["Ranker：用 v(s,i) 与 Q(s,i) 做 slate 优化（top-k / greedy / LP）"]
+    RK --> U["用户从 slate 中选择单个 item（SC 假设）"]
+    U --> L
+```
+
+图依据：论文 §4（SlateQ 分解）、§5（slate 优化）、§8.4 与 Fig.1（非短视推荐训练系统）；图中 Ranker→用户→Logging 的闭环按 §8.4 文字“Ranker 使用最新模型并记录用户反馈”归纳。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +111,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Environments。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1905.12767>
+- [arXiv PDF](https://arxiv.org/pdf/1905.12767)：已通读方法部分（实验与附录以略读为准）：§1、§3-§5（MDP 建模、SlateQ 分解、slate 优化）、§8 实践方法与 Fig.1；§6-§7 仿真与 §9 线上实验仅略读
 
 ## 推荐继续阅读
 

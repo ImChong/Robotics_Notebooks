@@ -55,6 +55,53 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：服务端 `uv run scripts/serve_policy.py --profile configs/deploy/candy_server.yaml`；客户端 `uv run examples/tron2/pi_client.py --profile <client 配置 YAML>`（需先启动服务端，机器人处于初始状态）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant SV as scripts/serve_policy.py main
+    participant WS as WebsocketPolicyServer（serving/websocket_policy_server.py）
+    participant CL as examples/tron2/pi_client.py main
+    participant EN as Tron2Env（tron2_env，仓库外依赖）
+    participant WC as WebsocketClientPolicy（openpi_client）
+    participant PO as Policy.infer（policies/policy.py）
+    participant TF as Tron2Inputs / Tron2Outputs（policies/tron2_policy.py）
+    participant MD as model.sample_actions（pi0 / pi05）
+    participant RB as TRON2 机器人（仓库外）
+
+    SV->>SV: create_policy(profile)，warmup_policy
+    SV->>WS: WebsocketPolicyServer(policy, host, port, metadata).serve_forever()
+    CL->>EN: Tron2Env(env_config)，进入 with 上下文
+    CL->>EN: reset()，返回初始观测
+    CL->>WC: WebsocketClientPolicy(host, port)，连接并收取 metadata
+    CL->>CL: validate_server_physical_dimensions(metadata, layout)
+    loop 每个推理步（t 小于 max_steps）
+        CL->>EN: get_obs()
+        EN-->>CL: 观测（state、images）
+        CL->>CL: format_obs，图像 resize 到 224 并转 uint8 CHW，附加 prompt
+        CL->>WC: infer_with_timing，pack 后 send
+        WC->>WS: msgpack 请求
+        WS->>PO: infer(obs)
+        PO->>TF: input_transform，解码状态与图像
+        PO->>MD: sample_actions(...)
+        MD-->>PO: 归一化空间动作块
+        PO->>TF: output_transform，编码为机器人动作
+        PO-->>WS: actions 与 timing
+        WS-->>WC: msgpack 响应
+        WC-->>CL: ans["actions"]
+        loop 动作块中的每个 action
+            CL->>EN: step(action)
+            EN->>RB: 经 MotionController 与 WebsocketTransport 下发
+            CL->>CL: 休眠至 1 / fps
+        end
+    end
+```
+
+图依据：limxdynamics/tron2_openpi@9a4d7ed，README.md（运行命令段）、examples/tron2/pi_client.py、scripts/serve_policy.py（main 段）、examples/tron2/deploy_config.py（format_obs 与 infer_with_timing 段）、packages/openpi-client/src/openpi_client/websocket_client_policy.py（关键段）、src/openpi/serving/websocket_policy_server.py（关键段）、src/openpi/policies/policy.py（infer 段）
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +113,8 @@ institutions:
 - [tron2_openpi 源码归档](../../sources/repos/tron2_openpi.md)（<https://github.com/limxdynamics/tron2_openpi>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：limxdynamics/tron2_openpi@9a4d7ed，读过 README.md（运行命令段）、examples/tron2/pi_client.py、scripts/serve_policy.py（main 段）、examples/tron2/deploy_config.py（format_obs 与 infer_with_timing 段）、packages/openpi-client/src/openpi_client/websocket_client_policy.py（关键段）、src/openpi/serving/websocket_policy_server.py（关键段）、src/openpi/policies/policy.py（infer 段）；对 src/openpi/policies/tron2_policy.py 仅检索类与函数定义；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

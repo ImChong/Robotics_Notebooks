@@ -31,7 +31,31 @@ Dribble Master 的人形机器人学习论文条目，当前处于 Paper Noteboo
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，本页只保留分类位置与原文入口；方法模块与数据流见下方「流程总览」（仅依据论文方法部分，不含实验结论）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SIM["仿真训练（Isaac Gym / Humanoid Gym，PPO 非对称 Actor-Critic）"]
+        S1["阶段一：运动技能<br/>球初始远（约 10 m）；虚拟相机 FOV 放大为 2 倍；<br/>高权重运动 / 追球奖励，无球速跟踪奖励"]
+        S2["阶段二：精细控球<br/>球初始近（2 m 内）；FOV 恢复 D455 真实值；<br/>高权重运球奖励，去除参考动作奖励"]
+        S1 -->|"人工切换"| S2
+    end
+    VC["虚拟相机模型（RealSense D455 参数）：球出视野则停止更新球位置，保留 0.3 s 历史"] --> OBS
+    SR["Sim-to-real 措施：电机延迟 0-20 ms、粗糙地形、球位置噪声、域随机化"] --> SIM
+    OBS["观测：球速度指令 v_cmd、本体感知（q, q̇, 姿态）、球位置 b + 视野内指示、正弦时钟信号"] --> SIM
+    SIM --> ACT["Actor MLP [512,256,128]（Critic 额外使用特权信息）"]
+    ACT --> DEP["部署：Booster T1，策略 50 Hz"]
+    CAM["RealSense D455 RGB 图像"] --> YOLO["YOLOv8 球检测（30 Hz，TensorRT）"]
+    YOLO --> EXT["相机-机器人外参变换 → 基座系球位置"]
+    EXT --> DEP
+    JOY["操纵杆：全局系球速度指令 (vx, vy)"] --> DEP
+    DEP --> OUT["14 维动作：2-DoF 头 + 12-DoF 腿的目标关节位置"]
+    OUT --> PD["PD 控制器 → 力矩"]
+```
+
+图依据：论文 §III-A 至 §III-E、Fig.2 / Fig.3
 
 ## 核心信息
 
@@ -64,6 +88,7 @@ Dribble Master 的人形机器人学习论文条目，当前处于 Paper Noteboo
 - [humanoid_pnb_dribble-master-learning-agile-humanoid-dribbling.md](../../sources/papers/humanoid_pnb_dribble-master-learning-agile-humanoid-dribbling.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.12679>
+- [arXiv PDF](https://arxiv.org/pdf/2505.12679)：已通读方法部分（实验与附录以略读为准）：§III Methods 全部（问题表述、两阶段课程、虚拟相机、仿真环境、真机部署）；§IV 仅略读
 
 ## 推荐继续阅读
 

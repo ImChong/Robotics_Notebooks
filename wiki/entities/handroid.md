@@ -155,6 +155,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Handroid](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Handroid__Bridging_Dexterous_Hand_and_Humanoid/Handroid__Bridging_Dexterous_Hand_and_Humanoid.html)
 - 论文 HTML：<https://arxiv.org/html/2607.16187>
 - 官方项目页：<https://handroid.org/>
 - Onshape CAD：<https://cad.onshape.com/documents/d3de21915f3c9cacc1887cf3/w/dc7c7b68235fdbb205f27505/e/8673167885a4e16e9b6c2791>

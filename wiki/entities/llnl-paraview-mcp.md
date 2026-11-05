@@ -52,6 +52,45 @@ ParaView MCP（llnl/paraview_mcp）是LLNL 的多模态可视化 MCP：代理调
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 BSD-3-Clause。 涉及商业软件时，安装包和有效许可证需由使用者自行提供。
 
+## 源码运行时序图
+
+入口：先在 ParaView 中启动 `python pvserver --multi-clients`，再由 MCP 客户端启动 `python paraview_mcp_server.py [--server HOST] [--port 11111]`
+
+```mermaid
+sequenceDiagram
+    participant C as MCP 客户端（如 Claude Desktop）
+    participant S as paraview_mcp_server.py main() / FastMCP "ParaView"
+    participant M as paraview_manager.py ParaViewManager
+    participant PS as pvserver（外部进程，已启动）
+    participant V as paraview.simple 活动视图与管线
+    Note over S: 模块导入：paraview_manager 导入 paraview.simple；创建 pv_manager 与 mcp 实例
+    C->>S: 启动 paraview_mcp_server.py 进程
+    S->>S: argparse 解析 --server / --port / --paraview_package_path
+    S->>M: pv_manager.connect(server, port)
+    M->>PS: Connect("host:port")
+    PS-->>M: 连接对象；GetActiveView() 确认视图
+    M-->>S: 返回 bool（main() 未检查该返回值）
+    S->>S: mcp.run() 进入 MCP 请求循环
+    C->>S: 调用工具 create_isosurface(value, field)
+    S->>M: pv_manager.create_isosurface(value, field)
+    M->>V: 取 original_source 或 GetActiveSource()
+    alt 无活动源
+        M-->>S: (False, "No active source", ...)
+    else 有活动源
+        M->>V: Contour(Input=source)，按 field 设置 ContourBy
+        M->>V: Show(contour, view)
+        M-->>S: (True, message, contour, name)
+    end
+    S-->>C: 文本结果，含 "Filter registered as ..."
+    C->>S: 调用工具 get_screenshot()
+    S->>M: pv_manager.get_screenshot()
+    M->>V: processServerEvents()；SaveScreenshot(临时文件, gui_view)
+    M-->>S: (success, message, img_path)
+    S-->>C: Image(path=img_path)，图像随回复返回
+```
+
+图依据：llnl/paraview_mcp@30242a0，实际读过 README.md、paraview_mcp_server.py、paraview_manager.py、requirements.txt；未运行代码。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -62,6 +101,7 @@ ParaView MCP（llnl/paraview_mcp）是LLNL 的多模态可视化 MCP：代理调
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/llnl-paraview-mcp.md)
 - [llnl/paraview_mcp 官方仓库](<https://github.com/llnl/paraview_mcp>)
+- 源码核对（2026-11-02）：llnl/paraview_mcp@30242a0，读过 README.md、paraview_mcp_server.py、paraview_manager.py、requirements.txt；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

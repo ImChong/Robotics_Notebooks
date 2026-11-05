@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2508.01867"
+arxiv: "2506.08553"
 venue: "arXiv 2025"
 summary: "Proposes a framework incorporating two complementary neuro-symbolic abstractions: scene graphs and commonsense knowledge graphs, instantiated through SceneNet and KnowledgeNet respectively"
 related:
@@ -57,7 +57,7 @@ flowchart TD
     M --> A["多选题答案"]
 ```
 
-图依据：论文 §2 Our Approach（2.1 SceneNet、2.2 KnowledgeNet、2.3 Inference）/ Fig.1–3。注意：页面 frontmatter 的 arXiv 号 2508.01867 实际对应无关论文（Counterfactual Reciprocal Recommender Systems），本图按标题匹配的正确论文 arXiv:2506.08553 绘制。
+图依据：论文 §2 Our Approach（2.1 SceneNet、2.2 KnowledgeNet、2.3 Inference）/ Fig.1–3。
 
 ## 核心信息
 
@@ -66,7 +66,7 @@ flowchart TD
 | 编号 | 040/249 |
 | 分组 | 24 Long-form Video Understanding & Structured Reasoning |
 | 出处 | arXiv 2025 |
-| 论文 | <https://arxiv.org/abs/2508.01867> |
+| 论文 | <https://arxiv.org/abs/2506.08553> |
 
 ## 核心机制（归纳）
 
@@ -79,7 +79,7 @@ Proposes a framework incorporating two complementary neuro-symbolic abstractions
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2508.01867) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2506.08553) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -112,10 +112,11 @@ Proposes a framework incorporating two complementary neuro-symbolic abstractions
 - [`sources/papers/sun_awesome_ego_2508_01867_from-pixels-to-graphs-using-scene-and-kn.md`](../../sources/papers/sun_awesome_ego_2508_01867_from-pixels-to-graphs-using-scene-and-kn.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2508.01867>（注：该编号对应无关论文，正确编号为 2506.08553）
-- [arXiv PDF](https://arxiv.org/pdf/2506.08553)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Our Approach（2.1–2.3）、§3 实验设置；编号与页面不符：页面所写 2508.01867 对应另一篇无关论文，正确论文为 2506.08553
+- 论文：<https://arxiv.org/abs/2506.08553>
+- [arXiv PDF](https://arxiv.org/pdf/2506.08553)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Our Approach（2.1–2.3）、§3 实验设置
+- 编号核对（2026-11-02）：上游清单登记的 2508.01867 经 arXiv 官方记录核对为《Counterfactual Reciprocal Recommender Systems for User-to-User Matching》，与本页论文不符；已更正为 2506.08553《From Pixels to Graphs: using Scene and Knowledge Graphs for HD-EPIC VQA Challenge》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2508.01867)
+- [原文](https://arxiv.org/abs/2506.08553)

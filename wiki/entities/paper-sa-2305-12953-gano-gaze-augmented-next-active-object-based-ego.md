@@ -5,7 +5,7 @@ status: complete
 updated: 2026-10-06
 arxiv: "2305.12953"
 venue: "arXiv 2023"
-summary: "Aims at the next active object prediction task, proposing a gaze-guided attention mechanism"
+summary: "Aims at the next active object prediction task, proposing an object-guided attention mechanism between object embeddings and spatiotemporal video features (the paper does not use gaze; per arXiv:2305.12953v2 abstract and §3)"
 related:
   - ../entities/awesome-egocentric-vision.md
   - ../overview/sun-awesome-ego-technology-map.md
@@ -21,11 +21,11 @@ sources:
 
 # GANO
 
-**GANO: Gaze-Augmented Next Active Object-Based Egocentric Action Anticipation** 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/awesome-egocentric-vision) **第 154/249** 篇，分组 **Action Anticipation**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+**GANO（Guided Attention for Next active Objects）**（清单标题写作 "Gaze-Augmented Next Active Object-Based Egocentric Action Anticipation"；论文 v1/v2 的 arXiv 标题均为 "Enhancing Next Active Object-based Egocentric Action Anticipation with Guided Attention"，全文无 gaze 相关内容） 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/awesome-egocentric-vision) **第 154/249** 篇，分组 **Action Anticipation**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 
 ## 一句话定义
 
-Aims at the next active object prediction task, proposing a gaze-guided attention mechanism
+Aims at the next active object prediction task, proposing an object-guided attention mechanism between object embeddings and spatiotemporal video features (the paper does not use gaze; per arXiv:2305.12953v2 abstract and §3)
 
 ## 英文缩写速查
 
@@ -38,9 +38,28 @@ Aims at the next active object prediction task, proposing a gaze-guided attentio
 
 ## 为什么重要
 
-- Aims at the next active object prediction task, proposing a gaze-guided attention mechanism
+- Aims at the next active object prediction task, proposing an object-guided attention mechanism between object embeddings and spatiotemporal video features (the paper does not use gaze; per arXiv:2305.12953v2 abstract and §3)
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["RGB 视频帧（等间隔采样）"] --> C3["Conv3D\n帧 patch 特征"]
+  V --> DET["目标检测器\n（Ego4D 预训练）→ 边界框"]
+  DET --> MLP["MLP → object embeddings"]
+  C3 -->|"Q"| GA["Object-Guided Attention\n(多头注意力)"]
+  MLP -->|"K, V"| GA
+  GA --> ENC["Transformer 编码器\nMulti-Scale Attention + 时空位置编码\n→ Fe"]
+  DET -->|"末帧检测框 ROI；不足则补可学习 query"| Q["Object queries"]
+  ENC --> DEC["解码器\nMulti-Scale Attention"]
+  Q --> DEC
+  DEC --> OUT["每个 query 的输出\n名词类别 n / 边界框 b / 动词 v / 接触时间 TTC δ"]
+  OUT --> LOSS["损失 L = λ1·box + λ2·noun + λ3·verb + λ4·ttc"]
+```
+
+图依据：论文 §3 方法 / Fig.1
 
 ## 核心信息
 
@@ -55,7 +74,7 @@ Aims at the next active object prediction task, proposing a gaze-guided attentio
 
 ### 策展导读要点
 
-Aims at the next active object prediction task, proposing a gaze-guided attention mechanism
+Aims at the next active object prediction task, proposing an object-guided attention mechanism between object embeddings and spatiotemporal video features (the paper does not use gaze; per arXiv:2305.12953v2 abstract and §3)
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
 
@@ -96,6 +115,8 @@ Aims at the next active object prediction task, proposing a gaze-guided attentio
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2305.12953>
+- [arXiv PDF](https://arxiv.org/pdf/2305.12953)：已通读方法部分（实验与附录以略读为准）：§3 Proposed Method（特征提取、Object Guided Attention、Transformer 编码器/解码器、Learning）、§4 实验设定
+- 核对（2026-11-02）：对照 arXiv:2305.12953v2 摘要与 §3（Object Guided Attention：Q=视频 patch 特征，K/V=检测框经 MLP 的 object embeddings），该注意力是 object-guided 而非 gaze-guided，论文无凝视信息；已改一句话定义/summary/导读及名称说明，流程总览图与论文一致未改。
 
 ## 推荐继续阅读
 

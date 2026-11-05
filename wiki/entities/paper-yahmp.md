@@ -194,3 +194,7 @@ sequenceDiagram
 - [mjlab 文档](https://mujocolab.github.io/mjlab/main/index.html)
 
 - 相关研究：[跨本体全身动作跟踪](./paper-mimicall.md)
+
+## 相关研究
+
+- [MAPO：MoE 运动跟踪优化](./paper-mapo-motion-tracking.md)

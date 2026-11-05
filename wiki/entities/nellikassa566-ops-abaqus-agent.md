@@ -52,6 +52,41 @@ Abaqus Agent（nellikassa566-ops/abaqus-agent）是以自然语言描述驱动 A
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 MIT。 
 
+## 源码运行时序图
+
+入口分两端：Python 3 侧 `python mcp_server.py`（FastMCP 的 `mcp.run()`）；Abaqus/CAE 侧在 Abaqus 中 `execfile("abaqus_mcp_plugin.py")` 后调用 `mcp_start()`（或菜单 Plug-ins -> MCP -> Start MCP）。下图以 `create_or_update_model_from_spec(dry_run=false)` 为例，展示一次工具调用经文件 IPC 到 Abaqus 内核的路径。
+
+```mermaid
+sequenceDiagram
+  participant Agent as MCP 客户端 Agent
+  participant SRV as mcp_server.py FastMCP 工具
+  participant TL as abaqus_mcp_tools.py
+  participant FS as commands 与 results 目录
+  participant PL as abaqus_mcp_plugin.py 轮询线程
+  participant DSP as process_command 分发
+  participant BLD as build_model_from_spec 与 Abaqus 内核
+  Agent->>SRV: 调用 create_or_update_model_from_spec(spec, dry_run)
+  SRV->>TL: build_command_payload 校验 spec
+  alt 校验不通过
+    SRV-->>Agent: success 为 false 并返回 validation
+  else 校验通过
+    SRV->>FS: _send_command 写入 commands/cmd_id.json
+    loop 每 0.1 秒轮询，超时 300 秒
+      PL->>FS: poll_once 列出 commands 下 json，取排序最前的一个
+      PL->>FS: 读取命令并删除命令文件
+      PL->>DSP: process_command(command)
+      DSP->>BLD: type 为 build_model_from_spec 时调用
+      BLD-->>DSP: 构建结果 dict
+      DSP-->>PL: result
+      PL->>FS: 写入 results/cmd_id.json
+      SRV->>FS: 轮询 results 目录，文件出现即读取并删除
+    end
+    SRV-->>Agent: 结果 JSON 字符串
+  end
+```
+
+图依据：nellikassa566-ops/abaqus-agent@9ea7e10，`mcp_server.py`（_resolve_mcp_home、_send_command、create_or_update_model_from_spec）、`abaqus_mcp_tools.py`（build_command_payload 签名）、`abaqus_mcp_plugin.py`（poll_once、process_command 分发段、_mcp_thread_loop、_start_worker）、`abaqus_plugins/mcp_control/mcp_control_plugin.py`、`README.md`（启动步骤）；未运行代码。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -62,6 +97,8 @@ Abaqus Agent（nellikassa566-ops/abaqus-agent）是以自然语言描述驱动 A
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/nellikassa566-ops-abaqus-agent.md)
 - [nellikassa566-ops/abaqus-agent 官方仓库](<https://github.com/nellikassa566-ops/abaqus-agent>)
+
+- 源码核对（2026-11-02）：nellikassa566-ops/abaqus-agent@9ea7e10，读过 `README.md`、`mcp_server.py`、`abaqus_mcp_tools.py`（函数签名）、`abaqus_mcp_plugin.py`（轮询、分发与启动相关段）、`abaqus_plugins/mcp_control/mcp_control_plugin.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

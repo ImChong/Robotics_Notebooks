@@ -55,6 +55,44 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python scripts/train/train_rsl_rl.py --task WujiHand2_PenSpin`（`scripts/train/train_rsl_rl.py` 的 `main`；`pixi.toml` 的 `train` 任务即调用该脚本；安装见 README 的 pixi 步骤）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 shell
+    participant T as scripts/train/train_rsl_rl.py main
+    participant R as wuji_mjlab/tasks 任务注册
+    participant C as prepare_task_cfgs 与 TrainConfig
+    participant L as _launch_training
+    participant RUN as _run_train
+    participant E as mjlab ManagerBasedRlEnv
+    participant W as runner_cls（默认 WujiOnPolicyRunner）
+    U->>T: python scripts/train/train_rsl_rl.py --task WujiHand2_PenSpin
+    T->>R: import wuji_mjlab.tasks 经 import_packages 加载各任务，register_mjlab_task 登记
+    T->>T: resolve_task 解析任务 ID，split_special_args 分离覆盖项
+    T->>C: prepare_task_cfgs 生成 env 与 agent 配置
+    T->>C: tyro.cli 以 TrainConfig.from_task 为默认值合并命令行参数
+    T->>L: _launch_training(task_id, cfg)
+    L->>L: select_gpus 选卡，设置 CUDA_VISIBLE_DEVICES 与 MUJOCO_GL=egl
+    alt 单卡或 CPU
+        L->>RUN: _run_train(task_id, cfg, log_dir)
+    else 多卡
+        L->>RUN: torchrunx Launcher 为每张卡启动 _run_train
+    end
+    RUN->>E: ManagerBasedRlEnv(cfg.env, device)
+    RUN->>RUN: 可选 VideoRecorder，再经 RslRlVecEnvWrapper 包装环境
+    RUN->>W: load_runner_cls 取得 runner 类并实例化
+    RUN->>RUN: dump_yaml 写 params/env.yaml 与 agent.yaml，resume 时加载检查点
+    RUN->>W: learn(num_learning_iterations)
+    loop 每次 rollout
+        W->>E: step(actions)，奖励与观测由任务配置的管理器计算
+    end
+```
+
+图依据：wuji-mjlab@b2b98d7，README.md（任务表与安装步骤）、pixi.toml（仅 grep tasks 段）、scripts/train/train_rsl_rl.py（完整读过）、src/wuji_mjlab/tasks/__init__.py（读过）、src/wuji_mjlab/tasks/pen_spin/config/wuji_hand2/__init__.py（读过 register_mjlab_task 调用）、src/wuji_mjlab/tasks/pen_spin/config/wuji_hand2/env_cfgs.py（仅 grep 函数定义）。mjlab 库与 WujiOnPolicyRunner 内部实现不在本仓库且未读。deploy/ 与 play 流程未画。未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -64,6 +102,8 @@ institutions:
 ## 参考来源
 
 - [wuji-mjlab 源码归档](../../sources/repos/wuji-mjlab.md)（<https://github.com/wuji-technology/wuji-mjlab>）
+
+- 源码核对（2026-11-02）：wuji-technology/wuji-mjlab@b2b98d7，读过 README.md、scripts/train/train_rsl_rl.py、src/wuji_mjlab/tasks/__init__.py、src/wuji_mjlab/tasks/pen_spin/config/wuji_hand2/__init__.py；时序图依据以上文件，未运行代码。
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

@@ -33,6 +33,25 @@ summary: "把 JSK 实验室十几年在 腱-驱动肌骨型人形 上的「设�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["§II-B 肌肉的五类特性<br/>Redundancy / Independency / Anisotropy<br/>Variable Moment Arm / Nonlinear Elasticity"] --> B["§II-C 优缺点（Fig.3）<br/>缺点：Modeling Difficulty / High Internal Force / High Computational Cost<br/>优点：Easy Muscle Arrangement / Variable Stiffness Control<br/>Muscle Rupture Handling / Nonlinearity Utilization / Free Joint Utilization"]
+  B --> C["§III 在 Kengoro 与 Musashi 上的管理与利用（Fig.4 软件系统）"]
+  C --> D["§III-A Reflex Control<br/>Stretch Reflex / Antagonist Inhibition / Muscle Thermal<br/>Maximum Speed / Muscle Relaxation"]
+  C --> E["§III-B Body Schema Learning and Control<br/>Static Body Schema / Dynamic Body Schema"]
+  C --> F["§III-C Muscle Grouping<br/>手动分组 / 自动分组"]
+  C --> G["§III-D Body Schema Adaptation<br/>Muscle Addition / Muscle Rupture"]
+  D --> H["§IV 集成实验（Fig.9）"]
+  E --> H
+  F --> H
+  G --> H
+  H --> I["§V 讨论：未来课题与展望"]
+```
+
+图依据：论文组织结构 / 分类体系图（实证综述），论文 §II-B、§II-C 与 Fig.3、§III 与 Fig.4、§IV Fig.9、§V；节点名取自论文原文标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,6 +83,7 @@ summary: "把 JSK 实验室十几年在 腱-驱动肌骨型人形 上的「设�
 - [humanoid_pnb_characteristics-management-and-utilization-of-mu.md](../../sources/papers/humanoid_pnb_characteristics-management-and-utilization-of-mu.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Characteristics_Management_and_Utilization_of_Muscles_in_Musculoskeletal_Humanoids/Characteristics_Management_and_Utilization_of_Muscles_in_Musculoskeletal_Humanoids.html>
 - 论文：<https://arxiv.org/abs/2602.08518>
+- [arXiv PDF](https://arxiv.org/pdf/2602.08518)：已通读 §I–§II（含 Fig.2–3、Table I）、§III 开头与 §III-A 概览、§III-D、§IV 实验描述、§V–§VI；§III-B、§III-C 仅略读
 
 ## 推荐继续阅读
 

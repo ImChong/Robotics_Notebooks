@@ -40,6 +40,25 @@ Sim-to-real RL controllers for blind bipedal locomotion on Cassie.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    TR["地形随机化<br/>随机楼梯 1-8 级 + 微小坡度"] --> SIM["MuJoCo 仿真训练<br/>PPO（KL 阈值终止）+ mirror loss"]
+    DR["动力学随机化<br/>阻尼 / 质量 / 摩擦 / 编码器偏移 / 执行频率"] --> SIM
+    RW["奖励：沿用 [13] 的脚力/脚速度框架<br/>无楼梯专用奖励项"] --> SIM
+    SIM --> POL["LSTM 策略<br/>2 层 × 128"]
+    OBS["状态 s_t<br/>骨盆姿态四元数 / 角速度<br/>关节位置与速度<br/>操作员指令：前进 / 侧向速度、转向率<br/>步态时钟 p（由相位 φ 生成）"] --> POL
+    POL --> ACT["动作 a_t（40 Hz，11 维）"]
+    ACT --> PD["10 维关节 PD 目标<br/>2 kHz PD 控制器"]
+    ACT --> CLK["时钟增量 δ_t<br/>φ 更新"]
+    CLK -.-> OBS
+    PD --> HW["Cassie 真机执行<br/>仅本体感知，无外部感知"]
+    SIM -. "sim-to-real 部署" .-> HW
+```
+
+图依据：论文 §II（状态/动作/奖励/动力学随机化/策略与学习）、§III（地形随机化）与 Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +122,7 @@ Sim-to-real RL controllers for blind bipedal locomotion on Cassie.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2105.08328>
+- [arXiv PDF](https://arxiv.org/pdf/2105.08328)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 强化学习建模、§III 地形随机化、§IV 实验设定
 
 ## 推荐继续阅读
 

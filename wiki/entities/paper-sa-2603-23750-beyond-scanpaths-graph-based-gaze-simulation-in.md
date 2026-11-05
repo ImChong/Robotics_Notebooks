@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2603.23750"
+arxiv: "2603.28319"
 venue: "arXiv 2026"
 summary: "Introduces Object Density Network (ODN) to predict next-step gaze distributions and releases Focus100 dataset with raw gaze data from 30 participants viewing egocentric driving footage"
 related:
@@ -42,6 +42,26 @@ Introduces Object Density Network (ODN) to predict next-step gaze distributions 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["同步驾驶视频 + 驾驶员注视位置"] --> U["上游感知模块<br/>(检测 / 外观 / 深度)"]
+    U --> G["构建时空异构场景图<br/>节点: vehicle / person / static / gaze / structure<br/>边: 空间边 + 因果时间边, 特征为仿射向量 a_ij"]
+    G --> E["批归一化 + 节点类型线性投影 + 时间编码"]
+    E --> ART["Graph Processor: L 个 ART 块堆叠<br/>(Affinity Relation Transformer, 亲和特征注入 key/value)"]
+    ART --> ODN["ODN 物体混合密度头<br/>每个最后时间步节点对应一个高斯分量<br/>输出下一步注视位置 GMM"]
+    ODN --> L["训练: 真值注视位置的负对数似然 L_NLL"]
+    ODN --> S["仿真: 从 GMM 采样下一注视点"]
+    S --> UP["用采样位置更新场景图, 自回归重复"]
+    UP --> G
+    S --> R["原始注视序列"]
+    R --> PP["免训练后处理"]
+    PP --> O["扫视路径 scanpath / 显著图 saliency map"]
+```
+
+图依据：论文 §3.1–3.5 / Fig.1、Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +69,7 @@ Introduces Object Density Network (ODN) to predict next-step gaze distributions 
 | 编号 | 052/249 |
 | 分组 | 25 Gaze Attention & Intention Prediction |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2603.23750> |
+| 论文 | <https://arxiv.org/abs/2603.28319> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +82,7 @@ Introduces Object Density Network (ODN) to predict next-step gaze distributions 
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2603.23750) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2603.28319) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +115,11 @@ Introduces Object Density Network (ODN) to predict next-step gaze distributions 
 - [`sources/papers/sun_awesome_ego_2603_23750_beyond-scanpaths-graph-based-gaze-simula.md`](../../sources/papers/sun_awesome_ego_2603_23750_beyond-scanpaths-graph-based-gaze-simula.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2603.23750>
+- 论文：<https://arxiv.org/abs/2603.28319>
+- 编号核对（2026-11-02）：上游清单登记的 2603.23750 经 arXiv 官方记录核对为《IslamicMMLU: A Benchmark for Evaluating LLMs on Islamic Knowledge》，与本页论文不符；已更正为 2603.28319《Beyond Scanpaths: Graph-Based Gaze Simulation in Dynamic Scenes》。
+- [arXiv PDF](https://arxiv.org/pdf/2603.28319)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1–3.5）、Fig.1/2/3 图注
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2603.23750)
+- [原文](https://arxiv.org/abs/2603.28319)

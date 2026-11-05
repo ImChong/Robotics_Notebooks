@@ -43,6 +43,33 @@ RCL Awesome WAM 清单收录（Related resources）；细节以原文 PDF / 项�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  R["Driving World Model (DWM) 综述<br/>Fig. 2 Main structure"]
+  R --> S2["Sec. 2 DWM Ecosystem"]
+  R --> S3["Sec. 3 DWM Taxonomy"]
+  R --> S4["Sec. 4 DWM Application"]
+  R --> S5["Sec. 5 DWM Performance"]
+  R --> S6["Sec. 6 Limitation & Future Direction"]
+  S2 --> E1["Simulator & Dataset<br/>Simulators / Datasets"]
+  S2 --> E2["Metric<br/>Generation / Controllability / Planning"]
+  S3 --> T1["DWM in Visual Space<br/>Photorealistic Generation · Controllability<br/>Spatial-Temporal Consistency · Task Unification"]
+  S3 --> T2["DWM in Multimodal Space<br/>Unified Representation · Hierarchical Generation Strategy<br/>Cross-Modal Interaction"]
+  S3 --> T3["DWM in Vectorized Space<br/>Traffic Simulation · Multi-Agent Behavior Modeling"]
+  S3 --> T4["DWM in 4D Space<br/>Point Cloud: BEV Representation · Ray-Centric Representation<br/>Realistic Point Cloud Simulation<br/>Occupancy: 4D Occupancy Generation · Task Unification<br/>Vision-to-Occupancy Forecasting · Efficient Architecture"]
+  S3 --> T5["DWM in Latent Space<br/>Efficiency & Flexibility · Parallel Simulation<br/>Latent Chain-of-Thought"]
+  S4 --> A1["Simulation<br/>Diversity & Flexibility · Generative Traffic Simulation<br/>Photorealistic Closed-Loop Simulation"]
+  S4 --> A2["Data Generation<br/>Diverse Environments · Arbitrary-View Driving Videos<br/>Multimodal Data"]
+  S4 --> A3["Enhancing Driving<br/>Evaluate and Select Candidates · Dense Scene Supervision<br/>Unified Planners · Deep Thinkers"]
+  S4 --> A4["Pretraining<br/>Self-Supervised Training<br/>Vision-to-4D Forecasting Pretraining Paradigm<br/>Spatial-Pretraining with Amounts of Video Data"]
+  S5 --> P["Video Prediction · Point Cloud Prediction · Occupancy Prediction<br/>Open-Loop Planning · Closed-Loop Planning"]
+  S6 --> L["Data Scarcity · Task Unification · Efficiency<br/>Reliable Simulation · Multi-Sensor Modeling · Attack and Defense"]
+```
+
+图依据：综述分类体系图，依据论文 §1 末段对全文组织的说明与 Fig. 2（Main structure）；节点用图中原词，§3 的子项为 Fig. 2 列出的要点。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +127,7 @@ RCL Awesome WAM 清单收录（Related resources）；细节以原文 PDF / 项�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2502.10498>
+- [arXiv PDF](https://arxiv.org/pdf/2502.10498)：已读与流程图相关的章节（其余部分以略读为准）：§1（含贡献与全文组织）、§2 标题与 Tab. 1、Fig. 2；§3–§6 仅按小节标题与 Fig. 2 略读，未通读各小节正文
 
 ## 推荐继续阅读
 

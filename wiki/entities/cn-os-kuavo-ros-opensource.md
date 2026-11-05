@@ -61,11 +61,50 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`roslaunch humanoid_controllers load_kuavo_mujoco_sim.launch`（先 `source devel/setup.bash`；轮臂机型用 `load_kuavo_mujoco_sim_wheel.launch`）。该 launch 拉起 `humanoid_sqp_mpc`、`nodelet_manager`、`HumanoidControllerNodelet`，并通过 `mujoco_cpp` 的 `nodelet_with_arm.launch` 加载 `MujocoNodelet`。以下仅画双足（`nodelet_robot_type=2`）分支。
+
+```mermaid
+sequenceDiagram
+    participant L as roslaunch load_kuavo_mujoco_sim.launch
+    participant MPC as humanoid_sqp_mpc (HumanoidSqpMpcNode.cpp)
+    participant NM as nodelet_manager
+    participant CN as HumanoidControllerNodelet (controllerNodelet.cpp)
+    participant HC as humanoidController (humanoidController.cpp)
+    participant WBC as humanoid_wbc (wbc_)
+    participant MJ as MujocoNodelet (mujoco_node.cc)
+
+    L->>MPC: 启动 humanoid_sqp_mpc (use_external_mpc=true)
+    L->>NM: 启动 nodelet_manager
+    L->>CN: nodelet load HumanoidControllerNodelet
+    L->>MJ: nodelet_with_arm.launch: load MujocoNodelet
+    CN->>HC: onInit: 启动 controlLoop 线程 (SCHED_FIFO)
+    HC->>HC: init: setupMpc 创建 mrtRosInterface_, 加载 WBC 任务
+    MJ-->>HC: /sensors_data_raw (sensorsDataCallback)
+    loop 控制循环 (controlLoop 调用 update)
+        HC->>HC: updateStateEstimation (IMU / 运动学 / EKF)
+        HC->>MPC: setCurrentObservation (MRT 观测)
+        MPC->>MPC: SqpMpc 求解最优控制问题
+        MPC-->>HC: MPC 策略 (spinMRT / updatePolicy / evaluatePolicy)
+        HC->>WBC: wbc_->update(optimizedState, optimizedInput, measuredRbdState, plannedMode)
+        WBC-->>HC: 关节加速度 / 力矩 x
+        HC->>HC: publishControlCommands: 填充 jointCmd
+        HC->>MJ: /joint_cmd (kuavo_msgs/jointCmd)
+        MJ->>MJ: jointCmdCallback 缓存指令
+        MJ->>MJ: 仿真循环 mj_step 推进一步
+        MJ-->>HC: /sensors_data_raw (下一拍传感器)
+    end
+```
+
+图依据：LejuRobotics/kuavo-ros-opensource@34bd149，`readme.md`、`src/humanoid-control/humanoid_controllers/launch/load_kuavo_mujoco_sim.launch`、`src/humanoid-control/humanoid_controllers/src/controllerNodelet.cpp`、`src/humanoid-control/humanoid_controllers/src/humanoidController.cpp`（update / init / publishControlCommands 等段落）、`src/humanoid-control/humanoid_interface_ros/src/HumanoidSqpMpcNode.cpp`、`src/mujoco/launch/nodelet_with_arm.launch`、`src/mujoco/src/mujoco_node.cc`（节选）、`src/mujoco/src/mujoco_nodelet.cc`。
+
 ## 参考来源
 
 - [kuavo-ros-opensource 源码归档](../../sources/repos/kuavo-ros-opensource.md)（<https://github.com/LejuRobotics/kuavo-ros-opensource>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：LejuRobotics/kuavo-ros-opensource@34bd149，读过 readme.md、src/humanoid-control/humanoid_controllers/launch/load_kuavo_mujoco_sim.launch、src/humanoid-control/humanoid_controllers/src/controllerNodelet.cpp、src/humanoid-control/humanoid_controllers/src/humanoidController.cpp（部分段落）、src/humanoid-control/humanoid_interface_ros/src/HumanoidSqpMpcNode.cpp（部分）、src/mujoco/launch/nodelet_with_arm.launch、src/mujoco/src/mujoco_node.cc（节选）、src/mujoco/src/mujoco_nodelet.cc（检索）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

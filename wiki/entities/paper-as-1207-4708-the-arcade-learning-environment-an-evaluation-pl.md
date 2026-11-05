@@ -41,6 +41,20 @@ LongchaoDa AwesomeSim2Real 收录；分组 Other Environments。 本页是清单
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ROM["Atari 2600 游戏（ROM）"] --> STELLA["Stella 开源模拟器"]
+    STELLA --> GH["游戏处理层 game-handling layer<br/>提取累计得分、判断游戏是否结束"]
+    GH -->|"观测：160×210 屏幕帧（或 RAM）<br/>奖励：帧间得分差；终止信号"| AG["智能体"]
+    AG -->|"18 个离散摇杆动作"| STELLA
+    STELLA <-->|"save-state / restore-state"| PLAN["规划方法：模拟器作生成模型<br/>(广度优先搜索、UCT)"]
+    AG --> RL["强化学习基线：SARSA(λ) + 线性函数逼近<br/>特征：Basic / BASS / DISCO / LSH / RAM"]
+```
+
+图依据：论文 §2.2 Interface、§3.1（强化学习基线）、§3.2（规划基线）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +109,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Other Environments。 本页是清单
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1207.4708>
+- [arXiv PDF](https://arxiv.org/pdf/1207.4708)：已通读方法部分（评测归一化 §4 与附录以略读为准）：§2 平台与接口、§3.1 强化学习基线（特征构造与评测方法）、§3.2 规划基线
 
 ## 推荐继续阅读
 

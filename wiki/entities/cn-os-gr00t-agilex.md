@@ -55,6 +55,49 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口（两个进程，先起服务端）：
+- 服务端：`uv run python gr00t/eval/run_gr00t_server.py --embodiment-tag ALOHA --model-path <CKPT> --device cuda:0 --host 0.0.0.0 --port 5555`（`tyro.cli(ServerConfig)` → `main()`）
+- 客户端：`python examples/aloha/inference.py`（`main()` → `rclpy.init()` → `rclpy.spin(RosOperator)`），需 ROS2 相机与机械臂话题在线
+
+```mermaid
+sequenceDiagram
+    participant SRV as run_gr00t_server.py main()
+    participant PS as PolicyServer（ZMQ REP，gr00t/policy/server_client.py）
+    participant GP as Gr00tPolicy（gr00t/policy/gr00t_policy.py）
+    participant C as RosOperator（examples/aloha/inference.py）
+    participant T as inference_process 线程
+    participant PC as PolicyClient（ZMQ REQ）
+    participant ROS as ROS2 话题（相机 / 关节 / 末端位姿 / 底盘）
+    SRV->>GP: Gr00tPolicy(model_path, device, ...)
+    SRV->>PS: PolicyServer(policy, host, port).run()（bind tcp 5555）
+    C->>C: RosOperator.__init__：create_subscription / create_publisher
+    ROS-->>C: 相机彩色与深度、arm_joint_state、arm_end_pose、odom、instruction 回调
+    C->>C: model_inference 线程：make_policy(args)
+    C->>PC: PolicyClient(host, port, timeout 30s)
+    PC->>PS: ping()（连通性测试）
+    PS-->>PC: 应答
+    loop 30Hz 控制循环（create_rate(30)）
+        C->>T: 满足 check_frame() 且无在途推理时启动 inference_process
+        T->>C: get_frame() 取最新帧
+        T->>T: 组装 observation：state（左右臂与夹爪）、video（left / front / right）、language
+        T->>PC: policy.get_action(observation, options)
+        PC->>PS: REQ：endpoint get_action，observation，options
+        PS->>GP: get_action → check_observation → _get_action → check_action
+        GP-->>PS: action, info
+        PS-->>PC: REP：action, info
+        PC-->>T: action_pred, info
+        T->>C: 写入 inference_actions 与 inference_timestep（action chunk）
+        C->>C: 按 t - t_start 取 raw_action，拆分各关节与夹爪
+        C->>ROS: arm_joint_state_ctrl 发布 JointState / arm_end_pose_ctrl 发布 PoseStamped / robot_base_vel_ctrl 发布 Twist
+    end
+```
+
+注：图中为 `asynchronous_inference` 分支；控制循环开始前有 `input("Please press any key to start inference:")` 的人工确认。`pika`、`aloha_eef` 等其他目录的 wrapper 与 `Gr00tPolicy` 内部模型前向未展开。
+
+图依据：gr00t-agilex@83ce744，读过 README.md、gr00t/eval/run_gr00t_server.py（main、服务端构造）、gr00t/policy/server_client.py（PolicyServer.run、PolicyClient._get_action、call_endpoint）、gr00t/policy/gr00t_policy.py（类与 _get_action 签名，仅 grep）、examples/aloha/inference.py（make_policy、inference_process、RosOperator 的订阅与发布、main，经 git show 读取）；未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +109,8 @@ institutions:
 - [gr00t-agilex 源码归档](../../sources/repos/gr00t-agilex.md)（<https://github.com/agilexrobotics/gr00t-agilex>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：agilexrobotics/gr00t-agilex@83ce744，读过 README.md、gr00t/eval/run_gr00t_server.py、gr00t/policy/server_client.py、gr00t/policy/gr00t_policy.py（grep）、examples/aloha/inference.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

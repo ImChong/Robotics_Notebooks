@@ -42,6 +42,27 @@ Generative visual GUI world model for app agents.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    X["当前 GUI 图像 x_k"] --> OCR["OCR 检测文本"]
+    OCR --> MASK["白底黑框符号覆盖文本<br/>LLM 过滤并保留静态文本(键盘、时钟等)"]
+    MASK --> STR["Symbolic Text Representation (STR)"]
+    ACT["用户动作 a"] --> SP
+    STR --> SP["STR Predictor<br/>微调 Stable Diffusion，以 STR 与动作为条件<br/>预测下一帧 STR"]
+    SP --> SYM["颜色匹配 + 边界检测定位文本符号<br/>枚举分配 ID token"]
+    SYM --> GT["GUI-text Predictor：LLM 依据 STR、x_k、a<br/>预测每个符号的文本内容"]
+    GT --> OVL["按坐标把文本叠回 STR 图像"]
+    OVL --> NEXT["ViMo 输出：预测的下一 GUI 图像"]
+    G["用户目标 g + x_k"] --> AGENT["App Agent 生成 n 个候选动作 a_i"]
+    AGENT -->|"逐个作为动作 a 输入"| ACT
+    NEXT --> SEL["LLM 选择模型：对各 (a_i, 预测 GUI) 打 valid/invalid 与置信度<br/>再在得分最高两项中择优"]
+    SEL --> OUT["输出选定动作"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2 / Algorithm 1 / 附录 A.2（选择模型两步流程）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Generative visual GUI world model for app agents.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.13936>
+- [arXiv PDF](https://arxiv.org/pdf/2504.13936)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3 Method（3.1–3.3，含 Eq.1–6、Algorithm 1）、附录 A.2
 
 ## 推荐继续阅读
 

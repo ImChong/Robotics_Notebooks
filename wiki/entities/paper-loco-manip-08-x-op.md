@@ -105,5 +105,6 @@ MPC 重定向跨本体全身遥操作，使 teleop 数据可跨平台复用。
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：X-OP](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/X-OP__Cross-Morphology_Whole-Body_Teleoperation_via_MPC_Retargeting/X-OP__Cross-Morphology_Whole-Body_Teleoperation_via_MPC_Retargeting.html)
 - [Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)

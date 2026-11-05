@@ -144,6 +144,7 @@ Contact-UAN 对 [执行器网络](../concepts/implicit-explicit-actuator-modelin
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Contact-UAN](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Contact-UAN__Unsupervised_Actuator_Networks_as_a_Residual_World_Model/Contact-UAN__Unsupervised_Actuator_Networks_as_a_Residual_World_Model.html)
 - [Contact-UAN 官方硬件流程](https://github.com/nolie-rolie/contact-uan/blob/main/docs/SIM2REAL.md)
 - [Contact-UAN 部署指南](https://github.com/nolie-rolie/contact-uan/blob/main/docs/DEPLOYMENT.md)
 - [接触动力学](../concepts/contact-dynamics.md)

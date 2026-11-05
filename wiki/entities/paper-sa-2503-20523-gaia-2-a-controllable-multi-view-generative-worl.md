@@ -42,6 +42,23 @@ Controllable multi-view generative world model for autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["多相机原始视频<br/>每路相机独立编码"] --> ENC["视频 tokenizer 编码器 e_φ<br/>时间 8×、空间 32× 下采样，64 通道连续潜变量"]
+    ENC --> LAT["潜变量 x_1:T（T×N×H×W×L）"]
+    COND["条件：自车动作（速度/曲率 symlog，adaLN 注入）<br/>动态 agent 3D 框、元数据、CLIP / 场景嵌入（cross-attention）<br/>相机几何与时间戳（加性编码）"] --> WM
+    LAT -->|"上下文潜变量"| WM["潜空间世界模型：22 层时空分解 Transformer（8.4B）<br/>flow matching 预测速度场，对未来潜变量去噪"]
+    WM --> DEN["去噪得到的未来潜变量"]
+    DEN --> DEC["tokenizer 解码器<br/>滑动窗口解码，利用前后时间上下文"]
+    DEC --> OUT["多视角一致的生成视频"]
+    DEN -.->|"自回归预测：新潜变量并入上下文，滑窗重复"| LAT
+    MODE["推理模式：从零生成 / 自回归预测 / 修补 inpainting / 场景编辑"] -.-> WM
+```
+
+图依据：论文 §2 Model（2.1 Video Tokenizer、2.2 World Model 含 2.2.1–2.2.4）/ Fig.2–3、§5 Inference。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +114,7 @@ Controllable multi-view generative world model for autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.20523>
+- [arXiv PDF](https://arxiv.org/pdf/2503.20523)：已通读方法部分（实验与附录以略读为准）：§2.1–2.2、§3 数据（略读）、§4 训练流程、§5 推理
 
 ## 推荐继续阅读
 

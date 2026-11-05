@@ -6,9 +6,10 @@
 - **分组：** Observation / Domain Adaptation
 - **编号：** 035/139
 - **入库日期：** 2026-09-18
-- **arXiv：** 2011.03148
+- **arXiv：** 2006.09001
+- **编号核对：** 上游清单登记的 2011.03148 经 arXiv 官方记录核对为另一篇论文《RetinaGAN: An Object-aware Approach to Sim-to-Real Transfer》，与本条目不符；已更正为 2006.09001《RL-CycleGAN: Reinforcement Learning Aware Simulation-To-Real》（核对日期 2026-11-02）。
 - **出处：** 见清单
-- **论文：** <https://arxiv.org/abs/2011.03148>
+- **论文：** <https://arxiv.org/abs/2006.09001>
 - **代码：** 未在清单中标注
 - **Highlights（清单）：** LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 本页为策展索引级节点，细节以原文为准。
 - **沉淀到 wiki：** [`wiki/entities/paper-as-2011-03148-rl-cyclegan-reinforcement-learning-aware-simulat.md`](../../wiki/entities/paper-as-2011-03148-rl-cyclegan-reinforcement-learning-aware-simulat.md)

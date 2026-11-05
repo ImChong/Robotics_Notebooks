@@ -39,6 +39,26 @@ summary: "BICPO-VLA（arXiv:2608.13924）：新指令下 VLA 常因行为意图�
 - 策展机构：北航、北理工、中科院自动化所等
 - 与 [第三篇技术地图](../overview/vla-weekly-trends-2026-08-10-part3-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["请求时刻 r：观测 o_r + 指令 ℓ + 历史 H_r"] --> B["指令引导的视觉路由<br/>语言 cross-attention 过滤视觉 token"]
+    B --> C["因果 Mamba 历史编码器 → 行为状态 z_r"]
+    C --> D["相位条件解码器 + 检索的长程记忆 m_r<br/>→ 先验动作 μ_r"]
+    D --> E["行为条件 b_r = (ℓ, z_r, m_r, μ_r)"]
+    F["推理期间仍在执行的外发命令 U"] --> G["冻结动作状态模型 rollout 到 handoff 时刻<br/>得 h_bar 与 Δh，经 P_ψ 投影为 handoff 条件 g_k"]
+    E --> H["Haar 分解：先验与动作 chunk 同坐标"]
+    G --> H
+    H --> I["第 1 阶段：flow 生成 scaffold 系数 C（逐对运动趋势）"]
+    I --> J["第 2 阶段：条件于 C 的 flow 生成 residual 系数 D"]
+    J --> K["Haar 逆变换精确重建动作 chunk"]
+    L["离线 BICPO：同一 fiber 内不同噪声采样两候选<br/>按 handoff 跳变 + 运动趋势失配代价排序"] --> M["参考相对 Flow-DPO 微调<br/>冻结语义通路与参考专家，仅更新 P_ψ、W_g 与部分专家参数"]
+    M -.-> J
+```
+
+图依据：论文 §3.1–3.5、Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -80,6 +100,7 @@ summary: "BICPO-VLA（arXiv:2608.13924）：新指令下 VLA 常因行为意图�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part3.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part3.md)
 - [arXiv:2608.13924](https://arxiv.org/abs/2608.13924)
+- [arXiv PDF](https://arxiv.org/pdf/2608.13924)：已通读方法部分（实验与附录以略读为准）：§3.1–3.5（含 Fig. 2）
 
 ## 推荐继续阅读
 

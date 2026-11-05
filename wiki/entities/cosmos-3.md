@@ -42,6 +42,7 @@ sources:
   - ../../sources/repos/nvidia_cosmos.md
   - ../../sources/repos/nvidia_cosmos_framework.md
   - ../../sources/sites/nvidia-cosmos.md
+  - ../../sources/repos/lerobot.md
 summary: "Cosmos 3 是 NVIDIA 第三代全模态 Physical AI 世界模型：MoT 统一架构下联合理解/生成语言、图像、视频、音频与动作，Reasoner 与 Generator 双运行时面覆盖 VLM、视频 WM、正逆动力学与操纵策略。"
 ---
 
@@ -195,6 +196,49 @@ sequenceDiagram
     end
 ```
 
+## LeRobot 实现
+
+LeRobot 固定提交 `9e5ee98` 的 `src/lerobot/policies/cosmos3/` 把 Cosmos 3 的 **机器人动作策略** 一支移植为 `cosmos3_nano` / `cosmos3_edge` 两个策略类型（`Cosmos3NanoPolicy` / `Cosmos3EdgePolicy`，基类 `Cosmos3Policy`），改编自原生 [cosmos-framework](https://github.com/NVIDIA/cosmos-framework) 的 action policy。本节只覆盖这一支，不涉及 Reasoner 文本推理、T2V、NIM 等其它入口。
+
+- **身份核对**：LeRobot 文档 `cosmos3.mdx` 引用技术报告 [arXiv:2606.02800](https://arxiv.org/abs/2606.02800)；arXiv 标题 *Cosmos 3: Omnimodal World Models for Physical AI*，提交 2026-06-01（API 核对），与本页一致。
+- **机制**（文档）：每个解码层有理解与生成两条通路，仅在共享自注意力处相遇；生成通路读 Wan2.2 VAE 视频 latent 与动作 token，双向注意力、流匹配训练。相机视图拼成一张视频画布（1 路原样、2 路并排、3 路首路在上）；训练时对当前帧加 `chunk_size` 个未来帧的 latent 与动作 chunk 加噪并联合去噪，损失为视频损失与动作损失的加权和；推理时条件帧保持干净，用 UniPC 联合采样未来视频与动作，只返回动作 chunk。
+- **两个规模**（文档，参数量为 LeRobot 文档所列）：Nano 16.5B（默认训练 7.0B），MoT 由 Qwen3-VL 初始化，36 层，hidden 4096；Edge 4.6B（默认训练 1.4B），含稠密 2B transformer，28 层，hidden 2048。**与本页上文差异**：上文“模型族”表按 NVIDIA README 记 Nano 16B / Edge 4B，LeRobot 文档给出更精确的 16.5B / 4.6B，应以后者（含全部组件的计数）为准，口径差异未核实。
+- **默认训练范围**：`train_gen_stream_only=true`、`freeze_vision_encoder=true`，只训生成通路及其周边层与动作模块。
+- **权重**：基座 `lerobot/Cosmos3-Nano`、`lerobot/Cosmos3-Edge`；LIBERO 微调 `lerobot/Cosmos3-{Nano,Edge}-Policy-LIBERO` 与 `...-LIBERO_10`；数据 `lerobot/LIBERO-Cosmos3`（4 套件 1693 episode）、`lerobot/LIBERO_10-Cosmos3`（379 episode）。基座里动作模块（`action2llm`、`llm2action`、`action_modality_embed`）尚未针对机器人训练，微调需 `--policy.load_action_modules=false`。
+- **LIBERO 配方**（文档）：动作 chunk 16、`domain_id=5`、10 维动作 `[delta position (3), rot6d (6), gripper]`、分位数归一化、UniPC 30 步、推理无 CFG；DROID 配方为 `domain_id=8`、chunk 32、15 FPS、8 维关节位置动作，原生训练用 256 GPU。
+- **LeRobot 文档中的 LIBERO 成功率**：Nano（四套件训练）平均 97.90%，Edge 97.95%；Nano LIBERO_10 在 libero_10 上 97.6%，Edge 95.2%；技术报告表 20 的 Nano LIBERO-10 为 97.4%（500 rollouts，文档转述）。
+- **硬件**（A800 80GB 实测，文档）：Nano 全量微调需 8 卡每卡约 38 GB，LoRA 单卡约 64 GB；Edge 全量单卡约 47 GB、LoRA 约 21 GB；bf16 评测 Nano 39 GB、Edge 15 GB。
+- **限制与坑**：`load_action_modules=false` 加载后会被重置为 true，但无预训练路径或 PEFT 排除动作模块时动作模块会停在初始化；不要对 `action2llm` / `llm2action` 做 LoRA；动作表示不做转换，须先转换数据；`flash_attention_2` 不能与 `compile_model` 同用。
+
+### LeRobot 移植的运行时序（固定提交 `9e5ee98`）
+
+来源：`modeling_cosmos3.py`（`Cosmos3Policy`、`OmniMoTModel`、`Cosmos3VFMNetwork`）、`processor_cosmos3.py`。
+
+```mermaid
+sequenceDiagram
+    participant TR as "lerobot_train.py: train()"
+    participant EV as "lerobot_eval.py: rollout()"
+    participant PR as "processor_cosmos3.py: 预处理（画布 + prompt）"
+    participant P as "Cosmos3Policy"
+    participant M as "OmniMoTModel"
+    participant N as "Cosmos3VFMNetwork (MoT)"
+    TR->>PR: "相机帧拼画布；task/fps/布局写入 prompt"
+    TR->>P: "policy(batch) -> forward"
+    P->>M: "model(input_ids, pixel_values_videos_gen, actions, state, loss_mask)"
+    M->>N: "encode_video (Wan2.2 VAE) -> add_noise -> predict_velocity"
+    M->>M: "flow_matching_loss: 视频 MSE + 动作 MSE"
+    M-->>TR: "loss, {video, action 损失}"
+    EV->>P: "select_action(observation)"
+    P->>P: "队列空 -> predict_action_chunk"
+    P->>M: "model.generate(...)"
+    M->>M: "make_scheduler (UniPC) + sample(velocity_fn)"
+    loop "采样步"
+        M->>N: "predict_velocity: 条件帧干净, 未来视频与动作带噪"
+    end
+    M-->>P: "actions, video_latents"
+    P-->>EV: "截取 original_action_dim；前 n_action_steps 入队"
+```
+
 ## 与相邻路线的分界
 
 | 对比轴 | Cosmos 3 | [mimic-video](../methods/mimic-video.md) | [τ₀-WM](./tau0-world-model.md) | [GE-Sim 2.0](./ge-sim-2.md) |
@@ -227,6 +271,7 @@ README 自列：长分辨率或复杂物理输出可出现时序不一致、相�
 
 ## 参考来源
 
+- [`sources/repos/lerobot.md`](../../sources/repos/lerobot.md) — LeRobot 固定提交上的 `cosmos3` 移植与文档
 - [Cosmos 3 技术报告（arXiv:2606.02800）](../../sources/papers/cosmos3_arxiv_2606_02800.md)
 - [Cosmos 3 官方项目页](../../sources/sites/cosmos3-project.md)
 - [HF Cosmos3 集合](../../sources/sites/hf-nvidia-cosmos3-collection.md)

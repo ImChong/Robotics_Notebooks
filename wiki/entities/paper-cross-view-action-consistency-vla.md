@@ -41,6 +41,30 @@ summary: "相机鲁棒流式 VLA：仅用场景 RGB+语言+本体，屏蔽腕部
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  S["同一物理状态 s<br/>(LIBERO demo 重置到 MuJoCo 状态)"] --> R0["渲染标称相机 c0 -> o0"]
+  S --> RP["渲染扰动相机 cp -> op"]
+  R0 --> VLA0["VLA 前向 (共享权重)<br/>输入 o0, 语言 l, 本体 q"]
+  RP --> VLA1["VLA 前向 (共享权重)<br/>输入 op, 语言 l, 本体 q"]
+  N["采样 K 个 (t_k, eps_k)<br/>x_t = t*eps + (1-t)*a"] --> VLA0
+  N --> VLA1
+  VLA0 --> V0["速度预测 v0"]
+  VLA1 --> VP["速度预测 vp"]
+  A["示范动作块 a"] --> FM["流匹配损失 L_FM<br/>(两个视角都对 u_t 监督)"]
+  V0 --> FM
+  VP --> FM
+  V0 --> CV["跨视角一致性损失 L_CV<br/>(同一 flow 坐标上 v0 与 vp 对齐)"]
+  VP --> CV
+  FM --> L["L = L_FM + λ_CV * L_CV"]
+  CV --> L
+  INF["推理: 单张场景 RGB + 语言 + 本体<br/>(腕部相机屏蔽, 无配对)"] -.-> VLA0
+```
+
+图依据：论文 §3 / Fig. 2、式 (1)–(6)（推理虚线表示配对与 L_CV 仅用于训练，推理仍走同一 VLA）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -88,6 +112,7 @@ summary: "相机鲁棒流式 VLA：仅用场景 RGB+语言+本体，屏蔽腕部
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.06965](https://arxiv.org/abs/2608.06965)
+- [arXiv PDF](https://arxiv.org/pdf/2608.06965)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Cross-View Action-Flow Consistency、§4.1 实验设置、§4.2 主结果
 
 ## 推荐继续阅读
 

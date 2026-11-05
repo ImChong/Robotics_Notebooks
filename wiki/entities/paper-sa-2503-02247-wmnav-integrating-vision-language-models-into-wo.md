@@ -42,6 +42,29 @@ Integrates VLMs into world models for object goal navigation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBS["6 个旋转角 30/90/150/210/270/330 度的 RGB-D 图像"] --> PAN["全景图"]
+  PAN --> PV["PredictVLM: 为每个方向预测 0-10 的好奇值 (目标出现可能性)"]
+  PV --> PJ["结合深度与位姿, 投影到俯视可导航地图 Mnav"]
+  PJ --> MG["与上一步好奇值地图取最小值融合 → Curiosity Value Map"]
+  MG --> MEM["存入记忆"]
+  MEM --> BK["投影回当前可导航区域, 按方向取平均好奇值"]
+  BK --> SEL["选择得分最高的方向 α"]
+  SEL --> PL["PlanVLM: 输入该方向图像与上一步子任务 → 新子任务 + GoalFlag"]
+  PL -.->|"cost: 子任务与目标标志写入提示词"| RV
+  SEL --> AP["Action Proposer: 在可导航区域采样 K 个极坐标动作, 过滤已探索区域"]
+  AP --> RV["ReasonVLM (探索阶段): 从带标注的候选动作中选一个"]
+  RV --> EXE["执行动作"]
+  EXE -.->|下一时间步| OBS
+  RV -->|目标出现在视野| GA["目标接近阶段: Goal Proposer 稠密采样, GoalVLM 选目标位置"]
+  GA --> STOP["距离目标 < dthres 时停止"]
+```
+
+图依据：论文 §III-B（Overview）、§III-C（World Model）、§III-D（Subtask Decomposition）、§III-E（Two-stage Action Proposer）与 Fig.2–Fig.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +120,7 @@ Integrates VLMs into world models for object goal navigation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.02247>
+- [arXiv PDF](https://arxiv.org/pdf/2503.02247)：已通读方法部分（实验与附录以略读为准）：§III 方法全部（任务定义、概览、世界模型、子任务分解、两阶段动作提议器）；§IV 实验仅略读。
 
 ## 推荐继续阅读
 

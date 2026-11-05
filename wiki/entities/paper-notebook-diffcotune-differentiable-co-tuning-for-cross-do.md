@@ -38,6 +38,28 @@ summary: "机器人控制器部署常受建模差异所困——为可计算而�
 - **少试验迁移**对人形（真机试验昂贵危险）极具价值；
 - 与本仓 10 模块其它迁移工作（MOSAIC、ZEST）互为不同路线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INIT["初始 nominal 控制器 θ̃ 与模型参数 β̃"]
+    ROLL["在部署域真实系统 sys 上 rollout 一次，得到轨迹 x_sys"]
+    UPD["UpdateStrategy：用 x_sys 同时更新 β 与 θ"]
+    COMB["Combined：联合最小化 w_task·J_task + w_sysId·J_sysId"]
+    SPLIT["Split-Alternate：先最小化 J_sysId 更新 β，再在更新后的模型里最小化 J_task 更新 θ"]
+    BEST["若 J_task 更优则更新 θ_best"]
+    OUT["输出 θ*（L ≤ 5 次部署域迭代）"]
+    INIT --> ROLL --> UPD
+    UPD --> COMB
+    UPD --> SPLIT
+    COMB --> BEST
+    SPLIT --> BEST
+    BEST -->|"未达 L 次"| ROLL
+    BEST -->|"达到 L 次"| OUT
+```
+
+图依据：论文 §III 问题表述、§IV Alg.1 / Alg.2 / Alg.3（可微仿真器在调参域内提供梯度）。
+
 ## 解决什么问题
 
 控制器部署的核心障碍是**建模差异**： - 为可计算而**简化模型**； - **仿真器不准**。
@@ -89,6 +111,7 @@ summary: "机器人控制器部署常受建模差异所困——为可计算而�
 - [humanoid_pnb_diffcotune.md](../../sources/papers/humanoid_pnb_diffcotune.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control/DiffCoTune__Differentiable_Co-Tuning_for_Cross-domain_Robot_Control.html>
 - 论文：<https://arxiv.org/abs/2505.24068>
+- [arXiv PDF](https://arxiv.org/pdf/2505.24068)：已通读方法部分（实验与附录以略读为准）：§III（问题表述）、§IV（方法）、§V 开头的实验设定（实验结果略读）
 
 ## 推荐继续阅读
 

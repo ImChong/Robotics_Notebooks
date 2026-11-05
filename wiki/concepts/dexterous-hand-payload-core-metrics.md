@@ -4,6 +4,7 @@ tags: [dexterous-hand, payload, metrics, end-effector, humanoid-hardware, evalua
 status: complete
 updated: 2026-11-01
 related:
+  - ./dexterous-hand-industry-core-players.md
   - ./dexterous-kinematics.md
   - ./tactile-sensing.md
   - ./force-control-basics.md
@@ -149,6 +150,7 @@ R = 额定负载 / 整手（含必要驱动与传动）质量
 优先级三句话：力量与自由度是门槛（达不到出局，堆高不等于赢）；力控、精度、感知是差异化能力；可靠性、轻量化、效率是长期价值（从「能用一次」到「能用一年」）。
 
 ## 关联页面
+- [灵巧手行业核心企业与工程约束（Zane Hub 综述）](./dexterous-hand-industry-core-players.md) — 五模块、四类阵营与四个工程矛盾（作者表述，未核实）
 
 - [灵巧手运动学](./dexterous-kinematics.md)：自由度、抓取构型的运动学基础
 - [触觉感知](./tactile-sensing.md)：触觉分辨率、覆盖与漂移

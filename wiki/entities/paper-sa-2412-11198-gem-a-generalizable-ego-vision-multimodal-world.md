@@ -42,6 +42,30 @@ Generalizable ego-vision multimodal world model for fine-grained control.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["参考帧 x0"] --> VAE["冻结 VAE 编码器 -> 潜变量"]
+    VAE --> D["去噪网络 Dθ (基于 Stable Video Diffusion, EDM 框架)"]
+    NL["图像与深度的带噪潜变量 (拼接输入)"] --> D
+    T["自车轨迹 (BEV 2D 位置序列)"] --> TE["Fourier 嵌入"]
+    TE --> LORA["Cross-Attention LoRA (UNet 各块)"]
+    LORA --> D
+    DN["稀疏 DINOv2 token (位置与时间可指定, 含 identity embedding)"] --> ON["ObjectNet"]
+    HP["人体骨架 (画在空白图像平面)"] --> PN["PoseNet (CNN)"]
+    ON --> ADD["特征加到 UNet 输入块输出"]
+    PN --> ADD
+    ADD --> D
+    D --> PI["输出投影 Pimage -> 未来帧"]
+    D --> PD["输出投影 Pdepth -> 未来深度帧"]
+    PI --> AR["逐帧噪声调度的自回归采样: 初始化 / 自回归 / 终止"]
+    PD --> AR
+    AR -->|"去噪完成的帧替换为新参考帧"| R
+```
+
+图依据：论文 §3.2-§3.5 / Fig.2、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +121,7 @@ Generalizable ego-vision multimodal world model for fine-grained control.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.11198>
+- [arXiv PDF](https://arxiv.org/pdf/2412.11198)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1-3.5）
 
 ## 推荐继续阅读
 

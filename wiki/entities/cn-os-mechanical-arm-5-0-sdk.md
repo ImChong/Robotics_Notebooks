@@ -55,6 +55,40 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`sudo ./move_sov`（由 `code/src/gcc.sh` 编译 `code/src/main.cpp` 得到，见 README「SDK运行」）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户终端
+    participant M as main.cpp 的 main()
+    participant B as Ti5BASIC.h 声明的函数
+    participant V as Ti5MOVE.h 声明的函数
+    Note over B,V: 仓库只有头文件与预编译 .so，这两组函数的实现源码未提供
+    U->>M: sudo ./move_sov
+    M->>B: query_can() 查询 CAN 设备序列号
+    alt 没有设备
+        M-->>U: 提示未找到 USB 设备并 exit(0)
+    else 找到设备
+        M->>B: ip_address()
+        M->>M: signal(SIGINT, signalHandler)
+        M->>B: login() 登录 CAN 设备
+        M->>V: mechanical_arm_origin() 回零
+        M->>V: brake()
+        loop 循环 5 次
+            M->>V: move_to_joint() 按 TH.j 关节角运动
+            M->>V: mechanical_arm_origin()
+            M->>V: move_to_pos() 按 TH.pos 位姿运动，x 依次 150 250 350 450，段间 sleep(3)
+            M->>V: mechanical_arm_origin()
+        end
+        M->>B: logout()
+    end
+    Note over M: Ctrl+C 触发 signalHandler: brake() → inspect_brake() → logout() → exit
+```
+
+图依据：ti5robot/mechanical_arm_5_0_SDK@750bdd6，读过 code/src/main.cpp、code/src/gcc.sh、code/include/Ti5BASIC.h、code/include/Ti5MOVE.h、code/include/tool.h、机械臂使用/SDK运行.md。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +100,8 @@ institutions:
 - [mechanical_arm_5_0_SDK 源码归档](../../sources/repos/mechanical_arm_5_0_sdk.md)（<https://github.com/ti5robot/mechanical_arm_5_0_SDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：ti5robot/mechanical_arm_5_0_SDK@750bdd6，读过 README.md、机械臂使用/SDK运行.md、code/src/main.cpp、code/src/gcc.sh、code/src_pyt/test.py、code/include/Ti5BASIC.h、code/include/Ti5MOVE.h、code/include/tool.h；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

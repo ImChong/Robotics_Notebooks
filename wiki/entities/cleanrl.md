@@ -83,6 +83,63 @@ flowchart LR
 - **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
+## 源码运行时序图
+
+入口：`uv run python cleanrl/ppo.py --seed 1 --env-id CartPole-v0 --total-timesteps 50000`（README「Get started」所列命令；未加 `--track` 时不走 wandb 分支）。下图是 `cleanrl/ppo.py` 的 `__main__` 训练主流程，仓库内其他单文件算法结构类似，但未逐一核对。
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant PPO as cleanrl/ppo.py __main__
+    participant TY as tyro.cli Args
+    participant TB as SummaryWriter TensorBoard
+    participant ENV as gym.vector.SyncVectorEnv
+    participant MK as make_env thunk
+    participant AG as Agent nn.Module
+    participant ADAM as optim.Adam
+
+    U->>PPO: uv run python cleanrl/ppo.py --env-id ...
+    PPO->>TY: tyro.cli(Args) 解析命令行
+    PPO->>PPO: 计算 batch_size、minibatch_size、num_iterations、run_name
+    PPO->>TB: SummaryWriter(runs/run_name)
+    PPO->>ENV: 用 num_envs 个 make_env 创建向量环境
+    ENV->>MK: 逐个调用 thunk
+    MK-->>ENV: gym.make 后加 RecordEpisodeStatistics
+    PPO->>AG: Agent(envs) 并创建 Adam
+    PPO->>ENV: envs.reset(seed)
+    loop 每个 iteration
+        opt anneal_lr 为真
+            PPO->>ADAM: 按线性衰减更新 param_groups lr
+        end
+        loop 每个 rollout step（num_steps）
+            PPO->>AG: get_action_and_value(next_obs)（no_grad）
+            AG-->>PPO: action、logprob、value 写入缓冲区
+            PPO->>ENV: envs.step(action)
+            ENV-->>PPO: obs、reward、terminations、truncations、infos
+            opt infos 含 episode 统计
+                PPO->>TB: charts/episodic_return、episodic_length
+            end
+        end
+        PPO->>AG: get_value(next_obs)，作为自举值
+        PPO->>PPO: 反向递推 GAE 得到 advantages，returns = advantages + values
+        loop update_epochs 轮
+            loop 每个 minibatch
+                PPO->>AG: get_action_and_value(b_obs 小批量, b_actions)
+                AG-->>PPO: newlogprob、entropy、newvalue
+                PPO->>PPO: 计算 ratio、裁剪后的 pg_loss、v_loss 与熵项
+                PPO->>ADAM: zero_grad、loss.backward、clip_grad_norm_、step
+            end
+            opt approx_kl 超过 target_kl
+                PPO->>PPO: 提前结束 epoch 循环
+            end
+        end
+        PPO->>TB: losses/*、charts/learning_rate、SPS
+    end
+    PPO->>TB: writer.close()
+```
+
+图依据：cleanrl/cleanrl@fe8d8a0，实际读过 `README.md`（Get started 命令）与 `cleanrl/ppo.py`（`__main__` 至 `writer.close()` 全段，`Agent`、`make_env` 定义）。未运行代码。
+
 ## 关联页面
 
 - [sim2real](../concepts/sim2real.md)
@@ -96,6 +153,7 @@ flowchart LR
 - [CleanRL 来源归档](../../sources/repos/cleanrl.md)
 - [Humanoid Motion Intelligence 仓库归档](../../sources/repos/humanoid-motion-intelligence.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
+- 源码核对（2026-11-02）：vwxyzjn/cleanrl@fe8d8a0，读过 `README.md`、`cleanrl/ppo.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

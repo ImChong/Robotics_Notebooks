@@ -43,6 +43,26 @@ History-guided video diffusion model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["视频序列 x（T 帧）"] --> B["给每帧独立噪声水平 kt（噪声即掩码）"]
+    B --> C["Diffusion Forcing Transformer：DiT 去噪全部帧，不区分历史与生成目标"]
+    C --> D["噪声预测损失训练"]
+    D --> E["采样：历史帧 x_H 保持干净（k=0），生成帧 x_G 带噪"]
+    E --> F["以不同掩码的历史估计多个分数"]
+    F --> G["历史引导 HG：对多个条件分数加权组合"]
+    G --> H["时间轴 HG-t：不同历史子序列"]
+    G --> I["频率轴 HG-f：部分加噪的历史"]
+    G --> J["Vanilla HG-v：CFG，无条件分数用全噪声历史"]
+    H --> K["生成后续帧，可自回归复用已生成帧"]
+    I --> K
+    J --> K
+```
+
+图依据：论文 §3 历史引导的挑战（Fig. 2 对比常规视频扩散）、§4 Diffusion Forcing Transformer（逐帧独立噪声训练、噪声即掩码、任意历史采样）、§5 历史引导（Fig. 3，HG-v / HG-t / HG-f）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ History-guided video diffusion model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.06764>
+- [arXiv PDF](https://arxiv.org/pdf/2502.06764)：已通读方法部分（实验与附录以略读为准）：§3 至 §5（含 Fig. 2、Fig. 3）
 
 ## 推荐继续阅读
 

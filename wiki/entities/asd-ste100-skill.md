@@ -79,6 +79,49 @@ flowchart TD
 - Skill 面向英文文本。中文技术文档需要按中文习惯另行审校，不能直接照搬英语规则。
 - 简明语言不保证信息正确，也不能让内容贫乏的段落变得有实质信息。
 
+## 源码运行时序图
+
+入口：`python scripts/ste-lint.py FILE [FILE ...]`，或 `echo "文本" | python scripts/ste-lint.py --json`
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant M as ste-lint.py main
+    participant AP as argparse 解析
+    participant L as lint 函数
+    participant FM as _front_matter
+    participant CK as check 与 RULES 正则
+    participant LS as _long_sentence_findings
+    participant DC as _dangling_conjunction_findings
+    participant RP as report
+    M->>AP: parse_intermixed_args(argv)
+    alt 指定 --selftest
+        M->>M: selftest() 后返回 0
+    end
+    alt 给出 FILE 参数
+        M->>M: 逐个以 UTF-8 读取文件
+    else 无 FILE 参数
+        M->>M: sys.stdin.read() 读取标准输入
+    end
+    M->>L: lint(text, filename)
+    L->>FM: 拆出 front matter 的 description
+    loop 逐行处理正文（代码围栏、HTML 块等跳过）
+        L->>CK: check 对每条 RULES 正则 finditer
+        CK->>CK: 情态动词前缀豁免现在完成时
+        CK->>CK: 记录同义词组的首次出现位置
+        CK->>LS: 句子累积到 block，flush 时检查句长
+    end
+    L->>L: 同义词轮换：后出现的成员记为 synonym-rotation
+    L->>DC: 检查列表项末尾的悬挂连接词
+    L-->>M: findings 按行列排序，返回词数
+    M->>M: 按 --disable 过滤，统计 hard_count
+    M->>RP: report(findings, 词数, json, hard_count, baseline)
+    RP-->>M: 输出文本或 JSON
+    M-->>M: hard_count 超过 baseline 时退出码为 1
+```
+
+图依据：danyuchn/asd-ste100-skill@a610dbd，scripts/ste-lint.py（模块说明、main、lint、report、RULES 定义）、SKILL.md（Process 第 3 步）、README.md
+
 ## 关联页面
 
 - [ASD-STE100 概念页](../concepts/asd-ste100.md) — 受控语言标准及其边界
@@ -91,6 +134,7 @@ flowchart TD
 - [项目来源档案](../../sources/repos/danyuchn-asd-ste100-skill.md)
 - [ASD-STE100 官方站档案](../../sources/sites/asd-ste100.md)
 - [GitHub 仓库](https://github.com/danyuchn/asd-ste100-skill)
+- 源码核对（2026-11-02）：danyuchn/asd-ste100-skill@a610dbd，读过 README.md、SKILL.md、scripts/ste-lint.py（main、lint、report 及 RULES 定义相关段落）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

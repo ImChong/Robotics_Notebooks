@@ -45,6 +45,28 @@ summary: "GALA（arXiv:2609.21948）：UEMR 把 3D 末端几何运动纳入 late
 - **清华大学；上海期智研究院**；开源结论：**待发布**（步骤 2.5，2026-09-21）。
 - 跨形态 VLA 预训练时图像 latent 常丢手指/夹爪细粒度几何；GALA 用 UEMR 对齐几何与场景动态。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多形态数据：人手 / 灵巧手 / 夹爪"] --> B["End-effector 点云 N=1024<br/>人手：WiLoR+MANO；机器人：URDF/MJCF 正运动学"]
+    A --> C["起止帧 RGB (I_s, I_g) + 语言指令"]
+    C --> D["Visual Encoder：DINOv2 + SigLIP"]
+    B --> E["Geometric Encoder：Point Transformer V3"]
+    D --> F["共享 Spatio-Temporal Transformer"]
+    E --> F
+    F --> G["EMA-VQ 离散化：Visual / Geometric Latent Action"]
+    G --> H["共享 Geometric Decoder 重建目标点云（Chamfer Distance）"]
+    G --> I["Stage-1 产出：冻结的 GALA latent"]
+    I --> J["VLA 协同训练（GR00T 架构）：VLM + 可学习 bridge tokens"]
+    J --> K["自回归预测 Visual / Geometric latent action（交叉熵）"]
+    J --> L["共享 DiT Action Expert（flow matching）"]
+    L --> M["Embodiment-specific Action Heads：Human / Dexhand / Gripper"]
+    M --> N["各形态原生动作空间 action chunk"]
+```
+
+图依据：论文 §III-A / §III-B、Fig. 2 / Fig. 3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -93,6 +115,7 @@ summary: "GALA（arXiv:2609.21948）：UEMR 把 3D 末端几何运动纳入 late
 - [gala_arxiv_2609_21948.md](../../sources/papers/gala_arxiv_2609_21948.md)
 - [wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md](../../sources/blogs/wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md)
 - [arXiv:2609.21948](https://arxiv.org/abs/2609.21948)
+- [arXiv PDF](https://arxiv.org/pdf/2609.21948)：已通读方法部分（实验与附录以略读为准）：§III-A Geometry-Aware Latent Action Model、§III-B VLA Co-Training、§IV 实验设定
 
 ## 推荐继续阅读
 

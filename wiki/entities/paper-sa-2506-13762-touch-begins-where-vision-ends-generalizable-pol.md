@@ -42,6 +42,34 @@ VisuoTactile Local policy learning; removing tactile input reduces success rates
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph P1["阶段 1：视觉-触觉行为克隆"]
+        D["VR 遥操作示教（绿幕背景，目标物位置固定，32 条/任务）<br/>观测：腕部相机 + 触觉；动作：末端坐标系相对动作"]
+        ANN["人工在参考帧标关键点 → DIFT 对应匹配 → SAM2 分割 → XMem 跟踪"]
+        AUG["RoboEngine 程序化生成背景，只替换任务无关区域"]
+        BC["ResNet-18（图像）+ MLP（AnySkin 触觉）→ 视觉触觉 Transformer π_b<br/>动作分块，MSE 损失"]
+        D --> ANN --> AUG --> BC
+    end
+    subgraph P2["阶段 2：残差强化学习"]
+        FZ["冻结编码器与 π_b"]
+        RES["残差策略 π_r：输入 (z_i, z_t, a_b) → 残差 a_r<br/>n-step DDPG；奖励 = 人工二值成功 + 目标 L1 距离；回放同样做背景增广"]
+        FZ --> RES
+    end
+    BC --> FZ
+    subgraph P3["推理：VLM 引导到达"]
+        EXT["外部 RGB-D 观测 + 语言指定目标"] --> MOL["Molmo 预测目标 2D 点"]
+        MOL --> PRJ["结合深度与标定投影到 3D，在目标附近采样初始末端位姿"]
+        PRJ --> LOC["局部视觉触觉策略执行：a = a_b + a_r"]
+    end
+    RES --> LOC
+    BC --> LOC
+```
+
+图依据：论文 §3 / Fig.2（ViTaL 三阶段总览）、§3.1（语义增广行为克隆）、§3.2（残差 RL）、§3.3（推理）。注：论文中该方法名为 ViTaL。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ VisuoTactile Local policy learning; removing tactile input reduces success rates
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2506.13762>
+- [arXiv PDF](https://arxiv.org/pdf/2506.13762)：已通读方法部分（实验与附录以略读为准）：§2 相关工作、§3.1–3.3 方法；§4 实验仅略读。
 
 ## 推荐继续阅读
 

@@ -41,6 +41,28 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ENV["MetaDrive 环境<br/>按用户配置创建 Managers"] --> MAP["Map Manager<br/>每个 episode 随机采样 PG 地图或真实地图"]
+  subgraph PG["程序化生成 PG（Algorithm 1）"]
+    BLK["随机选路块类型并随机化参数<br/>GetNewBlock"] --> SOCK["对齐 socket 并旋转<br/>与现有路网不相交则拼接"]
+    SOCK --> BIG["Block Incremental Generation<br/>递归追加，失败则回退移除末块"]
+  end
+  REAL["导入真实数据<br/>Waymo / Argoverse 地图与交通流"] --> MAP
+  BIG --> MAP
+  MAP --> TRAF["Traffic Manager<br/>交通车辆 IDM 等规则策略"]
+  TRAF --> OBJ["Object Manager<br/>随机散布障碍物"]
+  OBJ --> AGT["Agent Manager<br/>被控车辆，由外部策略（如 RL）驱动"]
+  AGT --> STEP["每步：各 Manager step()<br/>Bullet 物理仿真 + Panda3D 渲染"]
+  STEP --> OBS["多模态观测 / 状态<br/>点云、RGB/深度、鸟瞰图、标量传感"]
+  OBS --> POL["外部策略（RL / 人类控制）<br/>输出控制信号"]
+  POL --> STEP
+```
+
+图依据：论文 §3 System Design（Fig. 2 Manager 组合、§3.2 场景组合工作流）、§4 Composing Diverse Driving Scenarios（四个基础 Manager 的顺序）、§4.1 与 Algorithm 1（PG 地图生成）、Fig. 1（多模态观测）；本篇为仿真平台/基准论文，图仅表示平台的场景组合流程。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +117,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2109.12674>
+- [arXiv PDF](https://arxiv.org/pdf/2109.12674)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 相关工作、§3 系统设计、§4.1 地图生成（Algorithm 1）；§5 基准实验以略读为准
 
 ## 推荐继续阅读
 

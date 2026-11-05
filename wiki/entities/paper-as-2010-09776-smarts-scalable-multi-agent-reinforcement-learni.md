@@ -41,6 +41,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  DSL["场景规范（Python DSL）：地图、路线、车辆、flows、bubble"] --> BT["背景交通提供者（SUMO）：全图提供背景车流"]
+  DSL --> BUB["Bubble：时空条件区域，A Zone / 过渡区 / B Zone"]
+  BT -->|"车辆触及 bubble 外膜"| BUB
+  BUB -->|"移交控制，实例化车辆与传感器模型、启动智能体进程"| SA["社会智能体（来自 Social Agent Zoo）"]
+  EGO["学习中的 ego 智能体（Ray / RLlib 等 MARL 库训练）"] --> VP["车辆物理提供者（Bullet）：油门刹车转向 / 轨迹跟踪 / 车道跟随等控制接口"]
+  SA --> VP
+  MP["运动规划提供者（SUMO 运动模型 / Bezier / OpEn）"] --> SA
+  VP --> STEP["仿真步进由各 provider 共同编排"]
+  BT --> STEP
+  STEP --> OBS["观测：动态物体列表、BEV 占据栅格、RGB、自车状态、道路结构；奖励：沿路线行驶距离"]
+  OBS --> EGO
+```
+
+图依据：论文 §3（Fig.3 SMARTS 架构、Fig.4 Bubble、Distributed Computing）与 §4（Observation / Action / Reward、Algorithms & Baselines）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +114,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2010.09776>
+- [arXiv PDF](https://arxiv.org/pdf/2010.09776)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 设计目标、§3 架构与实现、§4 对 MARL 的支持；§5 实验略读。
 
 ## 推荐继续阅读
 

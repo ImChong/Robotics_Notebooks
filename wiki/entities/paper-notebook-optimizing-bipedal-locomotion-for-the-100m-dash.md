@@ -31,7 +31,27 @@ Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见上方「流程总览」（依据论文方法部分，非深读笔记）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Cassie 盲走控制器<br/>LSTM 策略 40Hz 输出 PD 目标<br/>PD 控制器 2kHz"] --> B["III-A 训练覆盖步态参数谱<br/>ratio 与 freq 在手调映射附近均匀采样<br/>速度 0 至 5 m/s，PPO + MuJoCo"]
+    B --> C["III-B 仿真网格搜索<br/>各速度下遍历 ratio × freq"]
+    C --> D["四项代价打分<br/>速度误差 / 运输成本 / 力矩 / 电机速度<br/>摔倒记 0 分"]
+    D --> E["各速度取 top-5 参数组合<br/>得到速度到 ratio, freq 的映射"]
+    E --> F["IV-A 百米冲刺特化<br/>只训练非负速度、仅保留前向速度指令"]
+    F --> G["跑步策略 + 站立策略<br/>两个策略"]
+    subgraph 阶段["百米五阶段切换"]
+        S1["阶段1 站立<br/>站立策略"] -->|"IV-B 在 GRF 交叉相位<br/>设定固定相位并切换"| S2["阶段2-3 加速与稳速跑<br/>跑步策略"]
+        S2 -->|"IV-C 等待脚到达最高点相位<br/>速度指令降为小负值后切换"| S3["阶段4 减速踏步<br/>跑步策略"]
+        S3 --> S4["阶段5 站立<br/>站立策略"]
+    end
+    G --> S1
+```
+
+图依据：论文 §II、§III-A/B、§IV-A/B/C（Fig.3、Fig.5、Fig.6）
 
 ## 核心信息
 
@@ -64,6 +84,7 @@ Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running
 - [humanoid_pnb_optimizing-bipedal-locomotion-for-the-100m-dash.md](../../sources/papers/humanoid_pnb_optimizing-bipedal-locomotion-for-the-100m-dash.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2508.03070>
+- [arXiv PDF](https://arxiv.org/pdf/2508.03070)：已通读方法部分（实验与附录以略读为准）：§II Background、§III Optimizing Gait Parameters、§IV Comparison / 百米冲刺策略切换（IV-A 至 IV-C）
 
 ## 推荐继续阅读
 

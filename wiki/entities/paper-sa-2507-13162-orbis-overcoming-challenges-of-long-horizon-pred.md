@@ -43,6 +43,36 @@ Overcomes challenges of long-horizon prediction in driving world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    IMG["输入图像"] --> TOK
+    subgraph TOK["Hybrid Image Tokenizer（§4.1）"]
+        direction TB
+        ES["语义编码器 E_s<br/>由冻结 DINOv2 蒸馏（余弦相似度损失，仅训练时）"]
+        ED["细节编码器 E_d"]
+        QS["VQ 码本 C_s"]
+        QD["VQ 码本 C_d"]
+        ES --> QS
+        ED --> QD
+        CAT["拼接语义 + 细节表示<br/>连续 x=(x_s; x_d) 或量化 q=(q_s; q_d)<br/>微调时以 50% 概率绕过 VQ"]
+        ES --> CAT
+        ED --> CAT
+        QS --> CAT
+        QD --> CAT
+    end
+    TOK --> CTX["上下文帧潜变量 x_0:N-1"]
+    EGO["（可选）ego-motion：转向角 + 速度<br/>两层 MLP 嵌入，经 AdaLN 注入"] --> WM
+    CTX --> WM["世界模型：STDiT 块<br/>（空间注意力 + 时间注意力 + 前馈）<br/>目标帧初始为噪声或全 mask"]
+    WM --> LOOP["M 步迭代去噪（flow matching，连续）<br/>或迭代 unmask（MaskGIT 式，离散）"]
+    LOOP --> NEXT["预测下一帧潜变量"]
+    NEXT --> DEC["Tokenizer 解码器 → 图像"]
+    NEXT -- "滑动窗口：追加到上下文、丢弃最早一帧<br/>自回归 rollout" --> CTX
+```
+
+图依据：论文 §4.1–§4.2 / Fig.3、式 (1)–(4)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +128,7 @@ Overcomes challenges of long-horizon prediction in driving world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.13162>
+- [arXiv PDF](https://arxiv.org/pdf/2507.13162)：已通读方法部分（实验与附录以略读为准）：§4 方法（§4.1 Hybrid Image Tokenizer、§4.2 潜空间世界模型含 flow matching / masked generative / ego-motion 条件，Fig.3），§5 实验设定略读
 
 ## 推荐继续阅读
 

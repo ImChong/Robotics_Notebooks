@@ -41,6 +41,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前状态 s_t + 已提交但尚未执行的动作 a_{t-d}…a_{t-1}"] --> M["预测模型 P（GRU 核心 + F / D / N 网络）展开 p 步：s_{t,i+1}=P(s_{t,i}, a_{t-d+i})"]
+    M --> SP["预测状态 s_{t,p}（“撤销”延迟）"]
+    SP --> PI["策略网络：输入 s_{t,p} 与剩余动作，输出 a_t"]
+    PI --> Q["动作进入长度 d 的队列，d 步后才进入环境"]
+    Q --> A
+    subgraph TRN["训练"]
+        T1["预测模型：把 s_{t,i} 回归到真实 s_{t+i}（连续 L2，离散交叉熵）"]
+        T2["策略梯度用 V-trace；回报从 t+d 起算；critic 用真实 s_{t+d}"]
+    end
+    M -.-> T1
+    PI -.-> T2
+```
+
+图依据：论文 §3.1（延迟队列设定）、§4.2-§4.4 与 Fig.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +114,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Delay。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1810.07286>
+- [arXiv PDF](https://arxiv.org/pdf/1810.07286)：已通读方法部分（实验与附录以略读为准）：§1-§4（延迟设定、预测架构与训练）及 §4.5 实验设定；Atari / SSBM 结果与 §5 仅略读
 
 ## 推荐继续阅读
 

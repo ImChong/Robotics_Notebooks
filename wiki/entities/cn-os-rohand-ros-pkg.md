@@ -55,6 +55,46 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`rosrun rohand rohand_modbus_a001.py _port_name:=/dev/ttyUSB0 _baudrate:=115200 _hand_ids:=[2]`（README §5.2；源文件 `scripts/roh_a001_node/rohand_modbus_a001.py`）
+
+```mermaid
+sequenceDiagram
+    participant Ros as ROS 上层（发布 target_joint_states）
+    participant Main as rohand_modbus_a001.py __main__
+    participant Node as ROHandNode（rospy 节点）
+    participant Mb as pymodbus ModbusSerialClient
+    participant Hand as ROHand 从站（hand_ids）
+    Main->>Node: ROHandNode()
+    Node->>Node: rospy.init_node，读取 ~port_name / ~baudrate / ~hand_ids
+    Node->>Node: 创建订阅 ~/target_joint_states 与发布 ~/current_joint_states
+    Node->>Mb: ModbusSerialClient(port, baudrate).connect()
+    loop 最多 10 次
+        Node->>Mb: read_holding_registers(ROH_PROTOCOL_VERSION)
+        Mb->>Hand: Modbus-RTU 读请求
+        Hand-->>Mb: 协议版本寄存器
+        Mb-->>Node: rr
+        Note over Node: 主版本与 MODBUS_PROTOCOL_VERSION_MAJOR 不符则 raise
+    end
+    Node->>Node: 启动 _thread_pub 线程
+    Main->>Main: rospy.spin()
+    Ros->>Node: JointState（_joint_states_callback）
+    Node->>Mb: write_registers(ROH_FINGER_ANGLE_TARGET0, 角度×100)（bus_mutex 保护）
+    Mb->>Hand: 写目标角度
+    loop _thread_pub，每个 hand_id
+        Node->>Mb: read_holding_registers(ROH_FINGER_ANGLE0, 6)（bus_mutex）
+        Mb->>Hand: 读当前角度
+        Hand-->>Node: 6 个关节角度（÷100 为 position）
+        Node->>Mb: read_holding_registers(ROH_FINGER_FORCE0, 6)（bus_mutex）
+        Mb->>Hand: 读当前力量
+        Hand-->>Node: 6 个力量值（写入 effort）
+        Node-->>Ros: publish ~/current_joint_states
+    end
+```
+
+图依据：rohand_ros_pkg@5c5790c，`README.md`、`scripts/roh_a001_node/rohand_modbus_a001.py`、`common/roh_registers_v1.py`、`setup.py`、`CMakeLists.txt`；未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +106,7 @@ institutions:
 - [rohand_ros_pkg 源码归档](../../sources/repos/rohand_ros_pkg.md)（<https://github.com/oymotion/rohand_ros_pkg>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：oymotion/rohand_ros_pkg@5c5790c，读过 README.md、scripts/roh_a001_node/rohand_modbus_a001.py、common/roh_registers_v1.py、setup.py、CMakeLists.txt、requirements.txt、LICENSE（另抽读 rohand_teleop_a001.py、rohand_serial_a001.py、common/rohand_serial_protocol_v2.py 的部分内容）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

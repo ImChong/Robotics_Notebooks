@@ -39,6 +39,34 @@ Aria 第一视角 + 3D 手部轨迹与机器人遥操数据共训 IL；人类数
 - EgoMimic 的判断很大胆：人类戴着 Project Aria 眼镜采到的第一视角视频，加上 3D 手部轨迹，可以作为 imitation learning 的数据来源。
 - 这件事的关键，是它没有只把人类视频当成高层意图。它更进一步，把人类数据和机器人遥操作数据一起训练，让策略同时吸收两种来源。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph HUM["人类数据"]
+        HG["Project Aria 眼镜采集<br/>(广角 RGB + 两个侧向场景相机)"]
+        MPS["Aria MPS: 3D 手部位姿 + 视觉惯性 SLAM 眼镜位姿"]
+        HG --> MPS
+    end
+    subgraph ROB["机器人数据"]
+        RG["低成本双臂 ViperX 300 S<br/>(第二副 Aria 作主相机 + 腕部 D405)"]
+        TELE["Leader 遥操作采集<br/>(EEF 位姿 + 关节位置/动作)"]
+        RG --> TELE
+    end
+    MPS --> FR["统一坐标系: 位姿与动作 chunk 变换到<br/>当前观测相机坐标系 F_t"]
+    TELE --> FR
+    FR --> NORM["动作分布对齐:<br/>人手/机器人位姿各自做 Gaussian 归一化"]
+    NORM --> MASK["视觉外观对齐: SAM 遮罩手/机器人<br/>+ 叠加红线指示末端方向"]
+    MASK --> ENC["共享视觉编码 + ACT Transformer 编码器<br/>(仅输入/输出浅层 head 分开)"]
+    ENC --> HP["位姿头 f^p: 预测 EEF 位姿 chunk<br/>(人类与机器人数据均监督)"]
+    ENC --> HQ["关节头 f^q: 预测关节动作 chunk<br/>(仅机器人数据监督)"]
+    HP --> LOSS["联合损失: L^H_p + L^R_p + L^R_q (均为 MSE)"]
+    HQ --> LOSS
+    HQ -->|"部署: 关节空间控制"| EXEC["机器人执行"]
+```
+
+图依据：论文 §III-A 硬件 / §III-B 数据处理与域对齐（Fig.3）/ §III-C 联合策略学习（Fig.4、Alg.1）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -92,6 +120,7 @@ EgoMimic 的判断很大胆：人类戴着 Project Aria 眼镜采到的第一视
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md) — 9 篇总表
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md) — 微信公众号编译导读
 - 论文/项目：<https://arxiv.org/abs/2410.24221>
+- [arXiv PDF](https://arxiv.org/pdf/2410.24221)：已通读方法部分（实验与附录以略读为准）：§III EgoMimic（A–C）
 
 ## 推荐继续阅读
 

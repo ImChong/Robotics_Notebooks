@@ -73,8 +73,55 @@ summary: "RoamerX 是智身科技开源的四足导航栈（GENISOM-AI）：ROS2
 - GitHub：[genisom_roamerx_open](https://github.com/zsibot/genisom_roamerx_open)
 - [Quadruped Control Curriculum](./quadruped-control-curriculum.md) — Project 4 集成说明
 
+## 源码运行时序图
+
+入口：`bash script/bash/start_navigation.sh nav`，其中执行 `ros2 launch robot_navigo navigation_bringup.launch.py platform:=UE mc_controller_type:=RL_TRACK_VELOCITY communication_type:=UDP map:=<map.yaml>`；RViz2 通过 nav2 插件发送导航目标。下图为 UE 仿真 + UDP 下发的路径，Gazebo 与 LCM 分支未画。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户（RViz2 nav2 插件）
+    participant SH as script/bash/start_navigation.sh
+    participant LA as launch/navigation_bringup.launch.py<br/>→ bringup_launch.py → navigation_launch.py
+    participant CT as navigo_container<br/>composable 节点容器
+    participant BT as navigo_bt_navigator<br/>BtNavigator
+    participant PL as navigo_path_planner<br/>PlannerServer（GridBased 为 NavfnPlanner）
+    participant CTRL as navigo_path_controller<br/>ControllerServer（FollowPath 为 MPPIController）
+    participant VO as navigo_velocity_optimizer<br/>VelocityOptimizer
+    participant UDP as robot_navigo/src/vel_cmd_udp_publisher.cpp
+    participant ROB as 机器人或 UE 仿真
+    participant ODOM as /odom/mujoco_odom
+
+    U->>SH: bash start_navigation.sh nav
+    SH->>LA: ros2 launch navigation_bringup（platform UE，communication_type UDP）
+    LA->>CT: Node navigo_container（component_container_isolated）
+    LA->>CT: LoadComposableNodes：map_server、controller_server、planner_server、behavior_server、velocity_optimizer、bt_navigator、waypoint_follower
+    LA->>UDP: 按 communication_type 为 UDP 启动 vel_cmd_udp_pub
+    CT->>CT: lifecycle_manager_navigation 激活各节点
+    U->>BT: 发送导航目标（NavigateToPose）
+    BT->>PL: ComputePathToPose（planner_id GridBased）
+    PL-->>BT: 全局路径 path
+    BT->>CTRL: FollowPath（controller_id FollowPath）
+
+    loop 控制周期
+        ODOM->>CTRL: 里程计（params 中 odom_topic）
+        CTRL->>CTRL: MPPIController 采样计算线速度与角速度
+        CTRL->>VO: 发布 cmd_vel_nav（launch 中 cmd_vel 重映射）
+        VO->>VO: 按 max、min 速度限幅与平滑
+        VO->>UDP: 发布 cmd_vel（cmd_vel_smoothed 重映射）
+        UDP->>UDP: 收到第一条 cmd_vel 后才接管控制权
+        UDP->>ROB: connector_.SendCmd(cmd_)，UDP 下发
+        ROB-->>ODOM: 运动反馈，更新里程计
+    end
+
+    Note over BT,CTRL: 失败时 BT 通过 RecoveryNode 重试规划或恢复行为（具体取决于所选行为树）
+```
+
+图依据：zsibot/genisom_roamerx_open@51d1e9d，实际读过 `README.md`（启动命令）、`script/bash/start_navigation.sh`（`start_nav` 与参数）、`src/navigation/src/robot_navigo/launch/navigation_bringup.launch.py`（参数与 `bringup_dir`）、`src/navigation/src/robot_navigo/launch/bringup_launch.py`（容器与 `navigation_launch.py` 的 include）、`src/navigation/src/robot_navigo/launch/navigation_launch.py`（节点与 `LoadComposableNodes` 列表、cmd_vel 重映射、UDP 条件）、`src/navigation/src/robot_navigo/params/navigo_params.yaml`（planner、controller 插件与 odom_topic）、`src/navigation/src/navigo_bt_navigator/behavior_trees/*.xml`（ComputePathToPose、FollowPath 节点）、`src/navigation/src/navigo_velocity_optimizer/src/velocity_smoother.cpp`（订阅 `cmd_vel`、发布 `cmd_vel_smoothed`）、`src/navigation/src/robot_navigo/src/vel_cmd_udp_publisher.cpp`（订阅 `/cmd_vel`、UDP 发送线程、第一条指令接管逻辑）；MPPI 内部采样、速度平滑的限幅实现、RecoveryNode 具体分支、UDP 协议细节与 BT 默认树的选择未逐行核对；未运行代码。
+
 ## 参考来源
 
 - [genisom_roamerx_open 源码归档](../../sources/repos/genisom_roamerx_open.md)（<https://github.com/zsibot/genisom_roamerx_open>）
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程第 7 章与 Final Project
+- 源码核对（2026-11-02）：zsibot/genisom_roamerx_open@51d1e9d，读过 README.md、script/bash/start_navigation.sh、src/navigation/src/robot_navigo/launch/navigation_bringup.launch.py、src/navigation/src/robot_navigo/launch/bringup_launch.py、src/navigation/src/robot_navigo/launch/navigation_launch.py、src/navigation/src/robot_navigo/params/navigo_params.yaml、src/navigation/src/navigo_bt_navigator/behavior_trees/ 下行为树 XML、src/navigation/src/navigo_velocity_optimizer/src/velocity_smoother.cpp、src/navigation/src/robot_navigo/src/vel_cmd_udp_publisher.cpp；时序图依据以上文件，未运行代码。

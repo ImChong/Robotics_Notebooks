@@ -38,6 +38,20 @@ summary: "让人形通过模仿人类数据学会与 3D 场景交互的通用技
 - **合成 + 真实**参考混合是扩充数据的实用做法；
 - 与本仓 04（从人类视频学技能）方向强相关。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人类技能参考采集 (6 任务)<br/>UniHSI：坐椅 / 躺床<br/>ROAM：坐沙发 / 躺沙发<br/>CORE4D 截取：触碰点 / 抬箱子"] --> B["运动重定向 Retargeting<br/>copy-rotation / 优化 / 优化+骨架形状对齐"]
+    B -->|"运动学指标 K 过滤"| C["人形运动动画 (可能不物理)"]
+    C --> D["运动跟踪 Tracking (Isaac Gym, Unitree H1)<br/>简化 PHC / 改进 HST，PPO 训练"]
+    D -->|"运动学指标 K 过滤成功者"| E["人形技能演示 (物理可行)"]
+    E --> F["模仿学习 Imitation Learning<br/>ACT (单阶段) / HIT (两阶段：规划器 + 跟踪器)"]
+    F --> G["人形智能体：egocentric 相机 + 高程图 + 本体感觉<br/>在未见物体 / 场景上评测 K 与物理指标 P"]
+```
+
+图依据：论文 §3.3 人类技能参考采集、§4 技能学习范式（4.1 重定向、4.2 跟踪、4.3 模仿学习）/ Fig.3
+
 ## 解决什么问题
 
 人形-场景交互学习受限于**数据**： - 现有演示**小规模、手工采集**，难支撑泛化研究； - 缺**统一基准**比较重定向/跟踪/模仿等不同策略； - **场景几何泛化**难。
@@ -88,6 +102,7 @@ Mimicking-Bench 要：一个**大规模、统一**的人形-场景交互基准�
 - [humanoid_pnb_mimicking-bench.md](../../sources/papers/humanoid_pnb_mimicking-bench.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Mimicking-Bench__A_Benchmark_for_Generalizable_Humanoid-Scene_Interaction_Learning/Mimicking-Bench__A_Benchmark_for_Generalizable_Humanoid-Scene_Interaction_Learning.html>
 - 论文：<https://arxiv.org/abs/2412.17730>
+- [arXiv PDF](https://arxiv.org/pdf/2412.17730)：已通读方法部分（实验与附录以略读为准）：§3 Mimicking-Bench（3.1 仿真环境、3.2 任务与指标、3.3 参考采集）、§4 技能学习范式、§5 开头的最佳组合设定
 
 ## 推荐继续阅读
 

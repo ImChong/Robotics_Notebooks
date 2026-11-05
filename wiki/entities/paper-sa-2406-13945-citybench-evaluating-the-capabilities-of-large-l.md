@@ -43,6 +43,27 @@ Evaluates LLMs as city-level world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph CD["CityData 数据收集与整合"]
+        A["地理空间数据 OSM<br/>规则建图工具重建车道与建筑连接"]
+        B["城市视觉数据<br/>街景 + 卫星图"]
+        C["人类活动数据<br/>Foursquare 签到 + 合成 OD 数据"]
+    end
+    A --> S["CitySimu 城市动态仿真<br/>环境 API / 仿真 API / 语言 API"]
+    B --> S
+    C --> S
+    CD --> G["评测生成<br/>模板法 或 LLM VLM 辅助生成问题"]
+    S --> G
+    G --> Q["质量控制<br/>LLM 过滤与改写 / LLM VLM 代理执行验证 / 作者筛选改写"]
+    Q -. 过滤过多则重新生成 .-> G
+    Q --> T["CityBench 8 个城市任务<br/>感知理解类 + 决策类"]
+```
+
+图依据：论文 §2.1–§2.3.1 / Fig.1、Fig.2、Fig.3（本文是基准，此图为基准构建流程，不是被评测模型的方法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,8 @@ Evaluates LLMs as city-level world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2406.13945>
+- [arXiv PDF](https://arxiv.org/pdf/2406.13945)：已通读方法部分（实验与附录以略读为准）：§1 引言概述、§2.1 CityData、§2.2 CitySimu、§2.3.1 基准构建流程、附录 A.2 质量控制；§3 实验以略读为准
+
 
 ## 推荐继续阅读
 

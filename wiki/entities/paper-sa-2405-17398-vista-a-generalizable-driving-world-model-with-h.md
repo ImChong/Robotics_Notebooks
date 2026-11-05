@@ -43,6 +43,28 @@ Generalizable driving world model with high fidelity and versatile controllabili
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph P1["阶段一：高保真未来预测"]
+    A["初始帧 + 至多 3 帧动态先验"] --> B["潜变量替换：干净 latent 替换对应噪声 latent"]
+    B --> C["SVD 改造的 UNet 去噪器"]
+    C --> D["损失：Ldiffusion + λ1·Ldynamics + λ2·Lstructure"]
+  end
+  subgraph P2["阶段二：动作可控性"]
+    E["多模态动作：角度/速度、轨迹、指令、目标点"] --> F["Fourier embedding 拼接"]
+    F --> G["零初始化投影 + cross-attention"]
+    H["冻结 UNet + LoRA（低分辨率训练后高分辨率微调）"] --> G
+    I["OpenDV-YouTube + nuScenes 协同训练"] --> G
+  end
+  D --> E
+  G --> J["自回归 rollout：取上一段末 3 帧作新先验"]
+  J --> K["多次采样的条件方差 → 奖励 R(c, a)"]
+```
+
+图依据：论文 §3.1 / §3.2 / §3.3 / Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Generalizable driving world model with high fidelity and versatile controllabili
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.17398>
+- [arXiv PDF](https://arxiv.org/pdf/2405.17398)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–§3.3 方法
 
 ## 推荐继续阅读
 

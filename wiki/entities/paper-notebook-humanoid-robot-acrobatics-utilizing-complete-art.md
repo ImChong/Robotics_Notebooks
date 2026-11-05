@@ -31,7 +31,31 @@ Humanoid Robot Acrobatics Utilizing Complete Articulated Rigid Body Dynamics 的
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，实验结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    T["任务目标：起跳目标位置与落地姿态等"] --> BAL["弹道目标解：起跳速度、飞行时间、起跳时质心与角动量目标"]
+    SSDP["SSDP 抽象：单刚体质心（总质量不变、转动惯量可调）+ 无质量支撑几何"] -.-> LTO
+    SSDP -.-> FTO
+    SSDP -.-> NTO
+    BAL --> LTO["起跳阶段轨迹优化 QP：最小化接触力平方和，含动力学、摩擦、压力中心约束"]
+    BAL --> FTO["飞行阶段轨迹优化：惯量整形，角动量守恒，使落地时躯干朝向达标"]
+    T --> NTO["着陆阶段轨迹优化：与起跳程序类似"]
+    LTO --> WBC
+    FTO --> WBC
+    NTO --> WBC
+    WBC["按阶段切换的 OPWBC 全身控制器：任务、约束、姿态三层优先级"] --> TQ["关节力矩，MuJoCo 仿真"]
+    subgraph TASKS["各阶段控制任务"]
+        L["起跳 / 着陆：质心与角动量；约束：关节限位、外部碰撞、自碰撞"]
+        F["飞行：惯量、驱动关节角动量贡献、落脚足；姿态：肢体姿态"]
+    end
+    WBC --- TASKS
+```
+
+图依据：论文 §III（规划与轨迹优化：SSDP 抽象、起跳 / 飞行 / 着陆）、§IV（控制器）/ Fig. 1–4。
 
 ## 核心信息
 
@@ -64,7 +88,9 @@ Humanoid Robot Acrobatics Utilizing Complete Articulated Rigid Body Dynamics 的
 - [humanoid_pnb_humanoid-robot-acrobatics-utilizing-complete-art.md](../../sources/papers/humanoid_pnb_humanoid-robot-acrobatics-utilizing-complete-art.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2508.08258>
+- [arXiv PDF](https://arxiv.org/pdf/2508.08258)：已通读方法部分（实验与附录以略读为准）：摘要、§II 开头（刚体动力学与 OPWBC 回顾）、§III 规划与轨迹优化、§IV 控制器、§V 仿真设置
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Humanoid Robot Acrobatics Utilizing Complete Articulated Rigid Body Dynamics](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rigid_Body_Dynamics/Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rigid_Body_Dynamics.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

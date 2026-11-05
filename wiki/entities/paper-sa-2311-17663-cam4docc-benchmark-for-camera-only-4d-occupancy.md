@@ -43,6 +43,26 @@ Benchmark for camera-only 4D occupancy forecasting.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["过去 + 当前环视相机图像（N_p+1 帧）"] --> ENC["Image Encoder 提取 2D 特征"]
+    ENC --> LIFT["2D-3D Lifting Module 提升为 3D voxel 特征"]
+    LIFT --> WARP["按 6-DOF 自车位姿变换到当前坐标系，聚合得 F_p"]
+    WARP --> CAT["拼接相邻帧 6-DOF 相对位姿 → motion-aware 特征 F_pm"]
+    CAT --> VENC["Voxel Encoder 多尺度下采样"]
+    VENC --> PRED["Prediction Module（3D 残差卷积）扩展到 N_f+1 个时刻"]
+    PRED --> VDEC["Voxel Decoder 上采样并与之拼接"]
+    VDEC --> OCC["占据预测头：softmax + 插值 + argmax → 当前/未来占据（GMO、GSO）"]
+    VDEC --> FLOW["流预测头：1x1 卷积 → 3D backward centripetal flow"]
+    FLOW --> INST["实例关联与精炼 → GMO 3D 实例预测"]
+    OCC -.-> LOSS["训练损失：交叉熵 L_occ + smooth-l1 L_flow + 仅 t=0 的深度损失 L_depth"]
+    FLOW -.-> LOSS
+```
+
+图依据：论文 §IV（OCFNet，Fig.4）与 §IV-C 损失函数；数据基准构建（§III）未画。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ Benchmark for camera-only 4D occupancy forecasting.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2311.17663>
+- [arXiv PDF](https://arxiv.org/pdf/2311.17663)：已通读方法部分（实验与附录以略读为准）：§III-A 任务定义、§IV OCFNet、§V-A 实验设置
 
 ## 推荐继续阅读
 

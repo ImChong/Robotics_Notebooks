@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2502.08123"
+arxiv: "2502.17753"
 venue: "arXiv 2025"
 summary: "Introduces a gradient-based approach for learning task graphs from procedural activities, optimizing edge weights via maximum likelihood"
 related:
@@ -42,6 +42,24 @@ Introduces a gradient-based approach for learning task graphs from procedural ac
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["关键步骤序列 y（自我中心视频的 key-step 序列）"] --> B["序列预处理：去重复，或映射为多条无重复序列"]
+    T["关键步骤名称文本 / 视频片段"] --> U["EgoVLPv2 提取 D 维嵌入"]
+    U --> V["加入可学习 S/E 嵌入，Transformer 编码器（DCEL 正则防表征塌缩）"]
+    V --> W["Relation head：拼接所有节点对，关系 Transformer 逐步降维"]
+    W --> X["评分矩阵 A，行 softmax 得到邻接矩阵 Z（DAG 掩码）"]
+    B --> L["TGML 损失：最大化已观测步骤的边权，对比项压低未出现步骤到已观测步骤的边"]
+    X --> L
+    L -->|"梯度下降"| X
+    X --> P["后处理：阈值 1/n 二值化，传递性约简，去环，补 START/END 边"]
+    P --> Q["任务图 G（DAG）"]
+```
+
+图依据：论文 §III-A 任务图最大似然学习框架（Eq. 8-11）、§III-B / Fig. 3 Task Graph Transformer、§III-C 序列预处理、§III-D DAG 掩码、§III-E 输出图后处理。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +67,7 @@ Introduces a gradient-based approach for learning task graphs from procedural ac
 | 编号 | 133/249 |
 | 分组 | 292 Procedural Learning |
 | 出处 | arXiv 2025 |
-| 论文 | <https://arxiv.org/abs/2502.08123> |
+| 论文 | <https://arxiv.org/abs/2502.17753> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +80,7 @@ Introduces a gradient-based approach for learning task graphs from procedural ac
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2502.08123) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2502.17753) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +113,11 @@ Introduces a gradient-based approach for learning task graphs from procedural ac
 - [`sources/papers/sun_awesome_ego_2502_08123_task-graph-maximum-likelihood-estimation.md`](../../sources/papers/sun_awesome_ego_2502_08123_task-graph-maximum-likelihood-estimation.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2502.08123>
+- 论文：<https://arxiv.org/abs/2502.17753>
+- [arXiv PDF](https://arxiv.org/pdf/2502.17753)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-E
+- 编号核对（2026-11-02）：上游清单登记的 2502.08123 经 arXiv 官方记录核对为《Provably Robust Federated Reinforcement Learning》，与本页论文不符；已更正为 2502.17753《Task Graph Maximum Likelihood Estimation for Procedural Activity Understanding in Egocentric Videos》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2502.08123)
+- [原文](https://arxiv.org/abs/2502.17753)

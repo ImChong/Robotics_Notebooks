@@ -43,6 +43,30 @@ Open-source learning platform for world model-based autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  subgraph TDS["任务开发套件 Task Development Suite"]
+    A["World Manager：管理 CARLA actor 与交通流"]
+    B["Observer：数据处理器 Camera / BEV / LiDAR / Radar 等"]
+    C["Route Planners：随机 / 固定路径 / A* 固定终点"]
+    V["可视化服务器（HTTP）"]
+  end
+  S["高保真模拟器 CARLA"] --> A
+  A --> B
+  B --> V
+  subgraph TK["内置任务 Built-in Tasks"]
+    T["任务实例：观测 + 奖励配置（可观测性/意图共享/难度）"]
+  end
+  B --> T
+  C --> T
+  T -->|"观测与奖励 (Gym 接口)"| W["世界模型骨干：DreamerV2 / DreamerV3 / Plan2Explore / 自定义"]
+  W -->|动作| T
+```
+
+图依据：论文 §4.1–§4.4 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ Open-source learning platform for world model-based autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.09111>
+- [arXiv PDF](https://arxiv.org/pdf/2405.09111)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 背景、§4 架构与实现（4.1–4.4）；§5 实验为略读
 
 ## 推荐继续阅读
 

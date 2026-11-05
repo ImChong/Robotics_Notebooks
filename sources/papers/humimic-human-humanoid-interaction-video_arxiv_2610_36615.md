@@ -2,27 +2,21 @@
 
 > 来源归档（paper）
 
-- **标题：** HumiMimic: Mimetic Embodiment Transfer of Human-Humanoid Interaction from In-the-Wild Videos
-- **类型：** paper
-- **arXiv：** <https://arxiv.org/abs/2610.36615>
-- **PDF：** <https://arxiv.org/pdf/2610.36615>
-- **作者：** Le, Nghia, Nguyen, Khang, Tran, Ba Long, Pham, Thi Quynh Nhu, Nguyen, Binh, Do, Tuong, Tjiputra, Erman, Nguyen, Hoan et al.
-- **arXiv 评论栏：** （无）
+- **标题：** HumiMimic: Mimetic Embodiment Transfer of Human–Humanoid Interaction from In-the-Wild Videos
+- **论文：** <https://arxiv.org/abs/2610.36615>
+- **核对版本：** [arXiv v2 全文](https://arxiv.org/html/2610.36615v2)，2026-10-29；核对正文方法、实验及局限。
+- **作者：** Nghia Le, Khang Nguyen, Ba Long Tran, Thi Quynh Nhu Pham, Binh X. Nguyen, Tuong Do, Erman Tjiputra, Hoan Nguyen, Tung D. Ta, Baoru Huang, Hai-Nguyen Nguyen, Anh Nguyen
+- **项目页：** <https://aioznetwork.github.io/HumiMimic/>（2026-11-03 访问失败）
+- **官方仓库：** <https://github.com/AIOZNetwork/HumiMimic>（main 分支为占位 README，2026-11-03）
+- **入库日期：** 2026-11-02；更新：2026-11-03
 
-- **入库日期：** 2026-11-02
-- **一句话说明：** HumiMimic：从自然场景视频迁移人类—人形交互行为。
+## 原文要点
 
-## 开源状态
+1. HumiTransfer 从双人视频重建三维动作，用交互关系和关节权重迁移到人形机器人，并进行平衡与碰撞相关后优化。
+2. HumiMimic 从 1,200 段视频产生约 50 万帧，支持 Unitree R1 Edu 与 HighTorque Mini-hi。
+3. 实验包括足地一致性、重定向、交互动作生成、仿真平衡与 R1 Edu 真机演示。真机主要使用预定义动作序列，尚未明确根据伙伴动作实时适配。
+4. 论文表示代码和数据将公开；项目主页无法访问，实际发布状态待核对，仓库目前无可运行实现。
 
-- arXiv 摘要页与评论未见代码或项目页链接（仅核对 arXiv 摘要页，不代表未发布）（2026-11-02，仅核对 arXiv 摘要页）
+## 对 wiki 的映射
 
-## 核心摘录
-
-1. **策展来源：** [【10.26-10.30前沿论文动态】人形／四足33篇](../blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
-2. **周报所述问题：** 将拥抱、握手和双人舞等动作迁移到机器人时，既要保持单人动作，还要保持双方距离、朝向、接触和节奏。
-3. **周报所述创新点：** 从自然视频重建双人三维动作，再通过关节相对方向、解剖偏移和交互关键权重完成跨形态转移；构建约 50 万帧、支持两种人形平台的 HumiMimic 数据集。
-4. **arXiv 摘要（英文节选）：** Enabling a humanoid to interact naturally with human partners requires preserving not only individual motions but also the spatial, semantic, and contact relationships underlying the interaction (i.e., hugging, dancing, hand-shaking, etc.). Furthermore, a practical solution should generalize across various humanoid embodiments with distinct morphologies and kinematic constraints. To tackle this challenge, we propose HumiTransfer, a mimetic embodiment transfer framework that converts in-the-wild human-human interaction videos into physically plausible human-humanoid interactions.
-
-**对 wiki 的映射**
-
-- [paper-humimic-human-humanoid-interaction-video](../../wiki/entities/paper-humimic-human-humanoid-interaction-video.md)
+- [HumiMimic 实体页](../../wiki/entities/paper-humimic-human-humanoid-interaction-video.md)

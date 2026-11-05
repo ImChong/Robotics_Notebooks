@@ -39,6 +39,27 @@ LATENT 只用 5 小时、3 × 5 米小场地采集的"业余网球动作碎片"�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["3.1 业余球员动作捕捉<br/>5 人 / 3m×5m / 共 5 小时 / 无编辑标注"] --> B["LocoMuJoCo 重定向到人形"]
+    B --> C["(a) Motion Tracker 预训练<br/>Any2Track 框架 RL；去掉右手腕控制 + 随机腕扰动"]
+    C -->|"teacher 动作"| D["(b) Online Distillation (DAgger)<br/>条件 VIB：Encoder E / Decoder D"]
+    P["可学习条件先验 P(z|s)"] -.->|"KL 损失"| D
+    D --> E["可修正 latent 动作空间<br/>(Decoder D + 可学习先验 P)"]
+    S["机器人状态 s、根位姿 g、球状态 b"] --> H["(c) 高层策略 π_planner (RL)"]
+    H -->|"a_latent"| LAB["Latent Action Barrier<br/>z = μp + λσp·tanh(a_latent)"]
+    P -.-> LAB
+    LAB --> E
+    H -->|"a_correct：右手腕直接修正"| M["全身 PD 目标 a_full"]
+    E -->|"Decoder 输出身体动作"| M
+    M --> R["(d) Sim-to-Real<br/>Dynamics Randomization + 观测噪声（噪声 / 丢帧 / 延迟）"]
+    R --> Z["Unitree G1 真机击球<br/>(动捕系统提供机器人与球的全局状态)"]
+```
+
+图依据：论文 §3.1–3.3、§4 / Fig. 2（LATENT 总览）、Fig. 4（LAB）、式 (4)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -74,6 +95,7 @@ LATENT 只用 5 小时、3 × 5 米小场地采集的"业余网球动作碎片"�
 - [humanoid_pnb_latent.md](../../sources/papers/humanoid_pnb_latent.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/LATENT__Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Human_Motion_Dat/LATENT__Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Human_Motion_Dat.html>
 - 论文：<https://arxiv.org/abs/2603.12686>
+- [arXiv PDF](https://arxiv.org/pdf/2603.12686)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（3.1 数据、3.2 可修正 latent 动作空间、3.3 高层策略与 LAB / 动作修正）、§4 Sim-to-Real（动力学随机化、观测噪声、真机部署）；§5 实验与附录略读
 
 ## 推荐继续阅读
 

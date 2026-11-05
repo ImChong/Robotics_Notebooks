@@ -31,7 +31,33 @@ Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain R
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，指标与结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph PERC[under-base 地形感知 §III-E]
+    DI[机身下方朝下深度相机 单帧深度图] --> PC[变换为重力对齐点云 投影成 raw height map]
+    PC --> UN[U-Net 编码器 解码器]
+    UN --> HH[Height Head 输出 refined height map]
+    UN --> EH[Edge Head 仅训练期 辅助 BCE + Dice]
+  end
+  subgraph TS[Successive Teacher-Student 单阶段训练 §III-C D]
+    GATE[T-S Switch Gate 学生环境占比 λ 由 0 逐步增大] --> TE[教师 privileged encoder 加 无噪声 height map]
+    GATE --> ST[学生 proprio 历史 encoder 加 带噪声 height map]
+    ST -.->|MSE 对齐教师隐变量 z_T| TE
+    TE --> POL[共享 policy head π_θ 与 critic V_φ PPO]
+    ST --> POL
+  end
+  HH --> ST
+  POL --> ACT[32 维动作 31 个关节目标 加 标量步频 f_t]
+  ACT --> PH[步频后处理 缩放 裁剪 平均滤波 更新步态相位 φ_t]
+  ACT --> PD[PD 控制 1 kHz]
+  PH --> POL
+```
+
+图依据：论文 §III-A 至 §III-E / Fig.2–4 与 Algorithm 1（PH→POL 的相位回馈箭头依 §III-B 的 φ_t 作为观测信号归纳）
 
 ## 核心信息
 
@@ -64,6 +90,7 @@ Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain R
 - [humanoid_pnb_gait-adaptive-perceptive-humanoid-locomotion-wit.md](../../sources/papers/humanoid_pnb_gait-adaptive-perceptive-humanoid-locomotion-wit.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2512.07464>
+- [arXiv PDF](https://arxiv.org/pdf/2512.07464)：已通读方法部分（实验与附录以略读为准）：§I 贡献概述、§III Method（A–E）与 Fig.2–4、Algorithm 1
 
 ## 推荐继续阅读
 

@@ -10,6 +10,7 @@
   - <https://arxiv.org/html/2603.22201v3>
 - **项目主页：** <https://nju3dv-humanoidgroup.github.io/nmr.github.io/>
 - **作者：** Qingrui Zhao, Kaiyue Yang, Xiyu Wang, Shiqi Zhao, Yi Lu, Xinfang Zhang, Qiu Shen, Xiao-Xiao Long, Xun Cao（南京大学等）
+- **官方代码：** <https://github.com/3DV-HumanoidGroup/MakeTrackingEasy>（2026-11-05 核对：推理代码与 checkpoint 已发布；CEPR 数据集与训练代码未发布；HF Space `RayZhao/NMR`）
 - **入库日期：** 2026-05-08
 - **最后更新：** 2026-05-08
 - **一句话说明：** 提出 **NMR（Neural Motion Retargeting）**：用「分布映射」替代逐帧几何优化，配合 **CEPR** 分层数据管线（聚类 + 并行 RL 专家 + 物理仿真精修）自动生成人机配对监督，训练 CNN–Transformer 式非自回归网络，在 Unitree G1 上显著抑制关节跳变与自碰撞并加速下游全身跟踪策略收敛。

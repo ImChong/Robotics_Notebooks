@@ -13,4 +13,4 @@
 
 ## 开源状态
 
-- **已开源**（步骤 2.5 核查，2026-11-01）：仓库可达（git ls-remote）。项目页 HTTP 200。
+- **部分开放**（2026-11-03）：官方 README 列出 runtime、多项基准集成、ICL 包与 27B Preview 权重；RoboDojo、SIMPLE 等集成及 RoboRSI 独立技术报告仍待发布。

@@ -43,6 +43,31 @@ V-JEPA learns intuitive physics.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph 预训练["V-JEPA 无监督预训练 (附录 A.1)"]
+    V[视频 V] --> MASK[随机遮挡时空块 → 被破坏视频 V_C]
+    V --> TE[目标编码器 f_EMA: 编码完整视频]
+    MASK --> CE[上下文编码器 f_θ]
+    CE --> PRED[预测器 p_φ]
+    PRED --> LOSS[L1 损失: 预测表示 vs 被遮挡部分的目标表示]
+    TE --> LOSS
+    CE -.->|EMA 更新权重| TE
+  end
+  subgraph 评测["违反预期 (VoE) 评测 (附录 A.7)"]
+    P[视频对: 一个合理 + 一个违反物理] --> CTX[已预训练编码器读入 C 帧上下文]
+    CTX --> FUT[预测器预测后续 M 帧的表示]
+    FUT --> ERR[与实际未来帧表示比较 → 逐时刻 surprise S_t]
+    ERR --> AGG[取全视频最大 surprise]
+    AGG --> DEC[surprise 更高的视频判为违反物理]
+  end
+  PRED -. 预训练模型零样本迁移 .-> CTX
+```
+
+图依据：论文 Fig.1B–C、附录 A.1 / A.7（V-JEPA 预训练沿用 Bardes et al., 2024；本文为评测协议）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +123,7 @@ V-JEPA learns intuitive physics.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.11831>
+- [arXiv PDF](https://arxiv.org/pdf/2502.11831)：已通读方法部分（实验与附录以略读为准）：引言、Fig.1、附录 A.1 预训练、A.7 评测协议
 
 ## 推荐继续阅读
 

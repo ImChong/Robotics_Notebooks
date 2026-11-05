@@ -165,6 +165,46 @@ flowchart TB
 - **术语不统一：** 首页 HFM、中文版 LHM、媒体「人形原生基座模型」「全身具身大脑」，指的应是同一目标（推测）。
 - **开源承诺待验证：** 媒体称 2026 年下旬发布首个开源人形基座模型；截至 2026-10-10 公司 GitHub 与 Hugging Face 组织均为空。
 
+## 源码运行时序图
+
+入口（按仓库 README 的流水线顺序）：`eh2-collect-human` → `eh2-sync-human` → `eh2-align` / `eh2-visual-align` → `eh2-norm-stats` → `eh2-train`（或 `torchrun ... --module eh2_policy.train`）→ `eh2-serve` → SONIC 侧 `run_vla_inference.py`。以下为仓库内各入口的调用关系，不含 SONIC 控制器本体。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 操作者
+  participant HC as eh2-collect-human / eh2-sync-human
+  participant AA as eh2-align（action_alignment）
+  participant VA as eh2-visual-align（vision_alignment）
+  participant TR as eh2-norm-stats / eh2-train
+  participant SV as eh2-serve（FastAPI）
+  participant SO as SONIC run_vla_inference.py（外部 sonic 目录）
+  U->>HC: eh2-collect-human --task-name --task
+  HC-->>U: 网页 127.0.0.1:8080 录制，按 LeRobot 格式存入 data/{task}
+  U->>HC: eh2-sync-human --root data/{task}
+  HC->>HC: 动作与视频同步到 50 Hz，写 data/{task}_synced/ 与 meta 质检报告
+  U->>AA: eh2-align --input --endpoints hands 或 feet --output
+  AA->>AA: 读入 .parquet（eh2.reference 元数据）或 .npz 参考轨迹
+  AA->>AA: run_prepared：默认 8 轮 refine_round（运动学修正 + 解码器 token 优化）
+  AA->>AA: 各候选 record，selection.rank_candidates 选出 selected
+  AA-->>U: write_episode 写 data.parquet 与 run.json
+  U->>VA: eh2-visual-align --video --motion --output --runtime
+  VA->>VA: 按 STAGE_DEPENDENCIES：segment → geometry 与 inpaint → render
+  VA->>VA: 以输入文件与代码的 sha256 作为运行状态签名，便于续跑
+  U->>TR: eh2-norm-stats --dataset --assets
+  U->>TR: eh2-train 或 torchrun eh2_policy.train（默认 30000 步，全局 batch 256）
+  TR-->>U: checkpoints/eh2/{run}/{step}（含 policy.json、归一化统计）
+  U->>SV: eh2-serve --checkpoint --host --port
+  SV->>SV: 读 policy.json 校验 43 维状态、76 维动作，create_trained_policy（图像增强关闭）
+  SV->>SV: uvicorn 启动 create_app：GET /health，POST /act
+  SO->>SV: POST /act（encode_mode=jpeg_base64，state 43 维，ego_view，instruction）
+  SV->>SV: 校验输入，加锁后 policy.infer
+  SV-->>SO: actions（action_horizon × 76）
+  SO->>SO: 发送 SONIC 控制指令（客户端启动时为暂停状态，需手动开始）
+```
+
+图依据：EgoHumanoid-V2@682199e，读过 `README.md`（数据采集、对齐、训练、部署各节）、`data_collection/pyproject.toml`、`model_training/pyproject.toml`、`data_alignment/action_alignment/pyproject.toml`、`data_alignment/vision_alignment/pyproject.toml`、`robot/pyproject.toml`（入口点）、`model_training/src/serve.py`（全文结构与 main）、`data_alignment/action_alignment/src/pipeline.py`（main、run_prepared 段与函数清单）、`data_alignment/vision_alignment/src/pipeline.py`（STAGE_DEPENDENCIES 与 main 段）。`eh2-train`、`collect.py`、`sync.py` 的内部未读，未画入。`run_vla_inference.py` 位于 SONIC 目录，不在本仓库，其内部未读。未运行代码。
+
 ## 关联页面
 
 - [源策未来（Archon Robotics）](./archon-robotics.md) — 公司、团队、融资与时间线
@@ -185,6 +225,7 @@ flowchart TB
 - 英文原文：<https://www.archon.tech/blog/whole-body-intelligence>
 - 中文原文：<https://www.archon.tech/blog/whole-body-intelligence-cn>
 - 首页完整视频：<https://youtu.be/b0h9oC8FhpU>
+- 源码核对（2026-11-02）：OpenDriveLab/EgoHumanoid-V2@682199e，读过 `README.md`、各子目录 `pyproject.toml` 入口点、`model_training/src/serve.py`、`data_alignment/action_alignment/src/pipeline.py`、`data_alignment/vision_alignment/src/pipeline.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

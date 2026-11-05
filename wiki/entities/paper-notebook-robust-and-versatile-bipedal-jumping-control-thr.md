@@ -31,7 +31,31 @@ Robust and Versatile Bipedal Jumping Control through Reinforcement Learning 的�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，并在「流程总览」给出据论文方法部分整理的训练与策略流程，不给实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+    R["单段跳跃参考动画<br/>（人类动作的单次跳跃）"]
+    S1["Stage 1 单目标训练<br/>从零训练原地跳 (single goal)"]
+    S2["Stage 2 多目标训练<br/>每个 episode 随机化目标 c（落点、转向、高度）"]
+    S3["Stage 3 动力学随机化<br/>在随机目标之上加入大范围仿真动力学参数随机化"]
+    Z["零样本迁移到真机 Cassie"]
+    R --> S1 --> S2 --> S3 --> Z
+    subgraph POL["策略 π_θ（PPO 训练，33 Hz）"]
+        IN["输入：目标 c、参考轨迹预览<br/>短期 I/O 历史（约 0.12 s）"]
+        LH["长期 I/O 历史（过去 2 s）→ 1D CNN 编码"]
+        MLP["基础网络 MLP"]
+        ACT["动作：目标电机位置<br/>→ 低通滤波 → 关节 PD 控制 (2 kHz)"]
+        IN --> MLP
+        LH --> MLP
+        MLP --> ACT
+    end
+    S3 -.->|"训练得到"| POL
+```
+
+图依据：论文 §IV-A（Fig. 2 多阶段训练）、§V-A（Fig. 3 策略结构）、§V-B。
 
 ## 核心信息
 
@@ -50,7 +74,7 @@ Robust and Versatile Bipedal Jumping Control through Reinforcement Learning 的�
 
 **本页是该论文的待读条目：一篇用 RL 做双足跳跃控制、同时主打「鲁棒」与「多样」的工作，但本库尚未深读其奖励设计与迁移细节。**
 
-- 可确认的只有分类归属（05_Locomotion）与 arXiv 出处；核心机制、消融与实机指标全部待深读补齐。
+- 可确认的是分类归属（05_Locomotion）、arXiv 出处与「流程总览」所述训练/策略流程；消融与实机指标待深读补齐。
 - 跳跃是高动态、对 Sim2Real 差异最敏感的技能之一，「鲁棒」与「多样」如何同时达成正是该被追问的地方——本页尚无答案。
 - 当前价值只是可检索；引用任何跳跃距离或成功率数字前请回到论文原文。
 
@@ -64,6 +88,7 @@ Robust and Versatile Bipedal Jumping Control through Reinforcement Learning 的�
 - [humanoid_pnb_robust-and-versatile-bipedal-jumping-control-thr.md](../../sources/papers/humanoid_pnb_robust-and-versatile-bipedal-jumping-control-thr.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2302.09450>
+- [arXiv PDF](https://arxiv.org/pdf/2302.09450)：已通读方法部分（实验与附录以略读为准）：§I 引言、§IV Multi-Stage Training、§V Training Setup
 
 ## 推荐继续阅读
 

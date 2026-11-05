@@ -42,6 +42,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / LLM-Based Reward Design。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  INIT["初始化\n全局种群 G = 空\n当前种群 P = 若干精心设计的种子架构并评估"] --> CM
+  subgraph ROUND["每一轮进化（共 T 轮）"]
+    CM["CrossMut\n从 P 均匀抽 k 个样例（代码 + 指标）\n构造 few-shot 提示，目标指标：\n参数量约为父代最小值的 90%、准确率约为最大值的 102%"] --> GEN["LM πθ 每个提示采样 n 个子代\n（混合温度采样）"]
+    GEN --> FE["FilterAndEval\n训练子代架构，取最低验证误差\n误差超过阈值 α 的丢弃\n适应度 = -(模型大小 × 验证误差)"]
+    FE --> UG["子代并入全局种群 G"]
+    UG --> SEL["GetTop：从 G 取适应度最高的 p 个作为下一轮 P\n（选出后不再重复作父代）"]
+    UG --> PT["Prompt-tuning：用未被选为父代的子代\n更新 LM 软提示 θ(t+1)"]
+    SEL --> CM
+    PT --> GEN
+  end
+  ROUND --> OUT["返回 G 中适应度最高的 p 个架构"]
+```
+
+图依据：论文 §3.2–3.3 / Algorithm 1–3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / LLM-Based Reward Design。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2302.14838>
+- [arXiv PDF](https://arxiv.org/pdf/2302.14838)：已通读方法部分（实验与附录以略读为准）：§1 引言（略）、§3 EvoPrompting 方法（3.1–3.3，Algorithm 1–3）、§4 实验设定开头
 
 ## 推荐继续阅读
 

@@ -43,6 +43,33 @@ summary: "大行为模型（Large Behavior Models）把模仿学习扩展到多�
 - **离散动作 token / CoT 未必有用**，提醒不要盲目堆技巧；
 - 对人形 VLA/大行为模型的数据配方有直接指导（TRI 大规模实证）。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph DATA[数据来源]
+        T[目标机器人数据 TRI-Ramen<br/>双臂 Franka 遥操作]
+        VL[标准视觉-语言数据<br/>RoboPoint / RefSpatial]
+        ANN[机器人轨迹稠密语言标注<br/>脚本标注 + VLM 标注]
+        X[跨本体数据 OXE-Ramen]
+        H[人类视频<br/>潜动作 或 VLM 标注]
+        D[离散动作 token<br/>FAST / VQ-VAE]
+    end
+    DATA --> STG{训练策略<br/>单阶段 / 两阶段仅第一阶段 / 两阶段全程}
+    STG --> POL
+    subgraph POL[VLA 策略 π_θ]
+        IN[多视角图像 + 文本指令] --> VLM[VLM 骨干 PaliGemma2-PT]
+        VLM -->|观测 token 末四层隐状态| EMB[全局条件嵌入]
+        EMB --> AFT[ActionFT 流 Transformer 8 层 adaLN]
+        NZ[加噪动作块 + 流匹配时间 τ] --> AFT
+    end
+    VLM -.->|文本 / 离散 token: 交叉熵 L_CE| LCE[辅助监督]
+    AFT -->|流匹配损失 L_FM| ACT[连续动作块 horizon 16]
+    ACT --> EVAL[评测: 仿真 13 已见 + 8 未见任务 / 真机语言跟随 / 微调新长时程任务]
+```
+
+图依据：论文 §II-A（Fig. 1、Table I）、§II-B（Fig. 2）、§III-A。
+
 ## 解决什么问题
 
 大行为模型泛化受**机器人数据覆盖不足**所限： - 协同训练（加异构数据）能扩覆盖； - 但**哪些模态、哪种策略**有效**理解不足**，缺系统证据。
@@ -127,6 +154,7 @@ summary: "大行为模型（Large Behavior Models）把模仿学习扩展到多�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models/A_Systematic_Study_of_Data_Modalities_and_Strategies_for_Co-training_Behavior_Models.html>
 - 论文：<https://arxiv.org/abs/2602.01067>
 - 论文正文（III-B–III-F 结果与讨论节）：<https://arxiv.org/html/2602.01067>
+- [arXiv PDF](https://arxiv.org/pdf/2602.01067)：已通读方法部分（实验与附录以略读为准）：§II-A 框架与架构、§II-B 数据整理、§III-A 评测设定
 
 ## 推荐继续阅读
 

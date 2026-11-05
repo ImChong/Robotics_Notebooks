@@ -43,6 +43,24 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IMG["输入图像<br/>先缩放到固定分辨率"] --> VIT["视觉编码器 ViT<br/>以步长 14 切 patch<br/>得到图像特征序列"]
+    VIT --> ADP["位置感知视觉语言适配器<br/>单层 cross-attention<br/>可训练 query 向量 + 2D 绝对位置编码"]
+    ADP --> FEAT["压缩为定长 256 的图像特征<br/>首尾加 img 与 /img 标记"]
+    TXT["文本 / 指令<br/>区域用 box 与 ref 标记"] --> LLM
+    FEAT --> LLM["大语言模型 Qwen-7B 初始化"]
+    LLM --> OUT["文本输出<br/>含归一化到 0-1000 的框坐标串"]
+    subgraph TRAIN["三阶段训练"]
+        direction LR
+        S1["阶段 1 预训练<br/>224 分辨率 图文对<br/>冻结 LLM"] --> S2["阶段 2 多任务预训练<br/>448 分辨率 7 类任务<br/>全模型解冻"] --> S3["阶段 3 监督微调<br/>对话数据 约 35 万条<br/>冻结视觉编码器"]
+    end
+```
+
+图依据：论文 §2.1 Model Architecture、§2.2 Inputs and Outputs、§3 Training / Fig.3（三阶段训练流程）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +118,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2308.12966>
+- [arXiv PDF](https://arxiv.org/pdf/2308.12966)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Methodology（模型结构、输入输出）、§3 Training（三阶段）；§4 评测与附录仅略读
 
 ## 推荐继续阅读
 

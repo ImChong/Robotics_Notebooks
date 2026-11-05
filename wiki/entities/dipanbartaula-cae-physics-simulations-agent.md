@@ -53,6 +53,51 @@ CAE Physics Simulations Agent（DipanBartaula/CAE_Physics_Simulations_Agent）�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 未报告 SPDX 许可证，应检查仓库内 LICENSE 与依赖许可。 
 
+## 源码运行时序图
+
+入口：`python app.py`（转调 `main.py` 的 `main()`），随后向 `http://localhost:5000/simulate` 发 POST（`client.py` 为示例客户端）。
+
+```mermaid
+sequenceDiagram
+    participant Cl as client.py / HTTP 客户端
+    participant Mn as main.py main()
+    participant WS as webhook_server.py (端口 5001 子进程)
+    participant WH as core/webhook_handler.py WebhookHandler (Flask 5000)
+    participant SR as core/simulation_runner.py SimulationRunner
+    participant PL as agents/simulation_planner.py (autogen + LLM)
+    participant CG as agents/code_generator.py (autogen 生成+校验)
+    participant JS as core/job_scheduler.py JobScheduler
+    participant JE as agents/job_executor.py JobExecutor
+    participant JR as utils/julia_script_runner.py
+    participant NA as agents/notification_agent.py
+
+    Mn->>WS: subprocess.Popen(webhook_server.py --port 5001)
+    Mn->>NA: NotificationAgent(webhook_url)
+    Mn->>JS: JobScheduler(notification_agent).start()（调度线程）
+    Mn->>SR: SimulationRunner(job_scheduler, webhook_url)
+    Mn->>WH: WebhookHandler(...).run(port=5000)
+    Cl->>WH: POST /simulate {request, user_id, webhook_url}
+    WH->>WH: 生成 job_id，启动后台线程
+    WH-->>Cl: 202 accepted + job_id
+    WH->>SR: run_simulation(user_request, user_id)
+    SR->>PL: plan_simulation() → JSON 计划
+    PL-->>SR: simulation_plan
+    SR->>CG: generate_julia_code(plan, request)
+    CG->>CG: 生成 Julia 代码 → 校验对话 → 写入 code_execution_directory
+    CG-->>SR: julia_file_path
+    SR->>JS: submit_job(user_id, julia_file_path, metadata)
+    JS->>NA: send_notification（任务入队）
+    loop _scheduler_loop（并发上限 max_concurrent_jobs）
+        JS->>JE: _execute_job → execute_simulation()
+        JE->>JE: _prepare_script() 复制到 WORK_DIR/job_<id>
+        JE->>JR: run_script(script, parameters)
+        JR->>JR: 生成 wrapper，subprocess.Popen([julia, --project=@., wrapper])
+    end
+    Cl->>WH: GET /status/<job_id> → SimulationRunner.get_job_status()
+```
+
+图依据：DipanBartaula/CAE_Physics_Simulations_Agent@bd61268，读过 README.md、app.py、main.py、core/simulation_runner.py、core/webhook_handler.py、core/job_scheduler.py（部分）、agents/simulation_planner.py、agents/code_generator.py（部分）、agents/job_executor.py、utils/julia_script_runner.py（部分）。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -63,6 +108,7 @@ CAE Physics Simulations Agent（DipanBartaula/CAE_Physics_Simulations_Agent）�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/dipanbartaula-cae-physics-simulations-agent.md)
 - [DipanBartaula/CAE_Physics_Simulations_Agent 官方仓库](<https://github.com/DipanBartaula/CAE_Physics_Simulations_Agent>)
+- 源码核对（2026-11-02）：DipanBartaula/CAE_Physics_Simulations_Agent@bd61268，读过 README.md、app.py、main.py、core/simulation_runner.py、core/webhook_handler.py、core/job_scheduler.py（部分）、agents/simulation_planner.py、agents/code_generator.py（部分）、agents/job_executor.py、utils/julia_script_runner.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

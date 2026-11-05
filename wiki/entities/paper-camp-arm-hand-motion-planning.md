@@ -37,6 +37,25 @@ summary: "CAMP（arXiv:2609.29021）：约束空间内臂-手协同规划；分�
 - 公众号强调的可操作读法：先看 **任务信息需求**（如 PolyUMI 旋灯泡仍以视觉最优）与 **评测口径**（如 Self-Adaptive 多 trial、BeyondRetarget 仿真片段非真机 SR）。
 - 开源状态（步骤 2.5）：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：起止构型 q_init / q_goal、障碍物 O"] --> RRT["臂空间规划：RRT-Connect 生成候选参考路径集 Pa"]
+    RRT --> LAYER["臂路径分层：按路径进度 t 离散成有序层，每层以该处臂构型为参考"]
+    LAYER --> HRRT["分层双向 Hand-RRT：每层在 feasible hand fiber 内采样手构型并逐层连接"]
+    HRRT --> MID{"层间插值中点是否碰撞？"}
+    MID -->|是| RELAX["局部臂-手重规划：联合调整手构型与有界臂偏移 δa"]
+    MID -->|否| ENC
+    RELAX --> ENC["VMP 编码：正则化最小二乘拟合得初始权重 W0 = (Wa,0, Wh,0)"]
+    ENC --> COARSE["粗优化：多候选并行，迭代预算 Kc，侧重降低碰撞/约束违反，偏手部修正"]
+    COARSE --> RANK["丢弃数值无效候选，按约束满足与轨迹质量排序，取前 Nf 个"]
+    RANK --> FINE["细优化：迭代预算 Kf，提高轨迹质量权重，放松对初始臂权重的约束"]
+    FINE --> DEC["VMP 解码并选出质量最优轨迹 τ*"]
+```
+
+图依据：论文 §III-A~D、Algorithm 1 / Fig.3
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -82,6 +101,7 @@ summary: "CAMP（arXiv:2609.29021）：约束空间内臂-手协同规划；分�
 
 - [camp-arm-hand-motion-planning 论文归档](../../sources/papers/camp-arm-hand-motion-planning_arxiv_2609_29021.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_research_checklist_2026-09-26.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.29021)：已通读方法部分（实验与附录以略读为准）：§II 问题表述（feasible hand fiber）、§III 方法（A 至 D）
 
 ## 推荐继续阅读
 

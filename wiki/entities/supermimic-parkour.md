@@ -77,6 +77,7 @@ sequenceDiagram
 ## 关联页面
 
 - [SuperMimic](./paper-supermimic.md)：原方法及其他社区复现。
+- [ACP、SuperMimic 与 PHP 对照](../comparisons/acp-supermimic-php.md)：区分接触规划、世界模型训练与跑酷数据来源。
 - [BPTT](../concepts/bptt.md)：想象轨迹反向传播背景。
 
 ## 参考来源

@@ -70,6 +70,47 @@ OpenMuse 将短交互式对话与可恢复的后台任务放在同一应用中�
 - [Deep Agents](./deep-agents.md) 是可嵌入应用的 agent harness；OpenMuse 在 harness 之外还提供完整客户端、浏览器/工作区和任务管理流程。
 - [OpenClaw](./openclaw.md) 等个人代理可用于对比运行时与交互形态；选型时应分别检查模型适配、隔离和写操作审阅机制。
 
+## 源码运行时序图
+
+入口：`pnpm dev`（`tsx watch apps/server/src/index.ts`，API 与进程内任务 worker）；浏览器 worker 另起 `pnpm dev:browser`（`apps/worker/src/index.ts`，监听 8790）；前端 `pnpm dev:web`（Expo web，`apps/mobile`）。
+
+```mermaid
+sequenceDiagram
+    participant UI as apps/mobile (Expo / CopilotKit React Native)
+    participant App as apps/server/src/app.ts<br/>Hono 路由 /api/copilotkit/*
+    participant RT as agent.ts<br/>makeRuntime → CopilotRuntime
+    participant CA as engine/conversation.ts<br/>ConversationAgent.run
+    participant TA as engine/tanstack-agent.ts<br/>tanstackAgent → chat()
+    participant Svc as engine/service.ts<br/>AgentService
+    participant TW as engine/worker.ts<br/>任务 worker (tick)
+    participant BS as server/src/browser.ts<br/>BrowserService
+    participant BW as apps/worker<br/>server.ts + browser.ts (Playwright)
+
+    Note over App: index.ts：createStore → recoverInterruptedActions → createApp；taskWorkerEnabled 时 agent.start()
+    UI->>App: POST /api/copilotkit/*（AG-UI 请求）
+    App->>RT: runtime.fetch(request)（先检查 agentConfigured）
+    RT->>CA: agents 工厂创建 default ConversationAgent（或 agui 后端用 HttpAgent）
+    CA->>TA: tanstackAgent({tools: browse_web, search_web, delegate_task, ...})
+    TA-->>UI: RUN_STARTED 与流式 AG-UI 事件
+    alt 模型调用 browse_web
+        TA->>CA: tool.execute({url})
+        CA->>BS: service.browser.observeForThread(...)
+        BS->>BW: fetch(workerUrl + /sessions ...)
+        BW->>BW: chromium.launchPersistentContext(profileDir)
+        BW-->>BS: 页面 URL/标题/文本
+    else 模型调用 delegate_task
+        TA->>CA: tool.execute(args)
+        CA->>Svc: service.createTask(owner, args, key)
+    end
+    TA-->>UI: RUN_FINISHED（或 RUN_ERROR）
+    loop 定时 tick
+        TW->>TW: db.scan("tasks") 取到期/租约过期任务
+        TW->>TW: run(owner, task)：写 leaseId/leaseUntil，heartbeat，checkpoint
+    end
+```
+
+图依据：CopilotKit/OpenMuse@a4944f4，读过 README.md、package.json（scripts）、apps/server/src/index.ts、agent.ts、app.ts（路由与 /api/copilotkit 段）、engine/conversation.ts（run 起始与 browse_web / search_web 等工具定义片段）、engine/tanstack-agent.ts（函数清单）、engine/worker.ts（tick / run 开头）、browser.ts（fetch 处）、apps/worker/src/index.ts、server.ts（路由）、browser.ts（chromium 启动处）；任务 worker 如何调用具体浏览器/计算机工具、ConversationAgent.run 的完整流程及 mobile 端调用未读，故未画。
+
 ## 关联页面
 
 - [Hermes Agent](./hermes-agent.md)
@@ -82,6 +123,7 @@ OpenMuse 将短交互式对话与可恢复的后台任务放在同一应用中�
 - [OpenMuse 官方 README](https://github.com/CopilotKit/OpenMuse/blob/main/README.md)
 - [Agent computer 配置与限制](https://github.com/CopilotKit/OpenMuse/blob/main/docs/COMPUTER.md)
 - [功能清单](https://github.com/CopilotKit/OpenMuse/blob/main/docs/FEATURES.md)
+- 源码核对（2026-11-02）：CopilotKit/OpenMuse@a4944f4，读过 README.md、package.json、apps/server/src/{index,agent,app,browser}.ts、engine/{conversation,tanstack-agent,worker}.ts（部分）、apps/worker/src/{index,server,browser}.ts（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

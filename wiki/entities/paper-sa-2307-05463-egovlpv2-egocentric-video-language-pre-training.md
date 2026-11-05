@@ -42,6 +42,33 @@ Improved VLP with backbone-level fusion architecture
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    BB["视频骨干 TimeSformer 与文本骨干 RoBERTa"] --> FUS["Fusion in the Backbone<br/>仅在顶部 M 层、space-time attention 或 self-attention 之后<br/>插入 gated cross-attention，门控 α 初始化为 0"]
+    FUS --> M0
+    FUS --> M1
+    subgraph M0["双编码器模式 α = 0"]
+        N["EgoNCE 损失<br/>共享名词或动词的样本视为正例<br/>每批加入 N 个视觉相似视频作负例"]
+    end
+    subgraph M1["融合编码器模式 α 不为 0"]
+        ML["MLM 损失<br/>随机遮蔽 15% 文本 token"]
+        VT["VTM 损失<br/>视频文本是否匹配的二分类<br/>用 EgoNCE 相似度采样 hard negative"]
+    end
+    M0 --> TOT
+    M1 --> TOT["L_total = 1 减 γ 减 δ 倍 EgoNCE + γ 倍 MLM + δ 倍 VTM<br/>端到端反向传播"]
+    TOT --> DS
+    subgraph DS["下游适配"]
+        direction LR
+        D1["检索：双编码器余弦相似度<br/>或融合编码器 + VTM 头，可集成"]
+        D2["grounding 与 VQA：单模态关掉 cross-attention<br/>文本引导与 VQA 用融合编码器"]
+        D3["长视频摘要：前 N-M 层提取 5 秒片段特征<br/>KTS 分段，顶部 M 融合层 + 单层 transformer"]
+    end
+```
+
+图依据：论文 §3.1 Fusion in the Backbone、§3.2 Pre-training Objectives、§3.3 Adaptation to Downstream Tasks / Fig.3、Fig.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ Improved VLP with backbone-level fusion architecture
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2307.05463>
+- [arXiv PDF](https://arxiv.org/pdf/2307.05463)：已通读方法部分（实验与附录以略读为准）：§3 EgoVLPv2（§3.1 骨干内融合、§3.2 预训练目标、§3.3 下游适配）；§4 实验与附录仅略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ Factored world models for zero-shot generalization.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["图像观测 + 目标检测与跟踪：因子化状态 s = s_1..s_K（每个物体一张裁剪图）"] --> B["编码器 f_φ：逐物体独立编码为隐因子 z_i"]
+    B --> C["隐空间转移模型 g_θ：残差 GNN 堆叠，动作 a 注入节点与边网络"]
+    C --> D["预测下一隐状态 ẑ = z + g_θ(z, a)"]
+    D --> E["单步对比损失训练：拉近预测与真实下一隐状态，推远随机负样本"]
+    D --> H["启发式搜索：在 100×100 网格上评估约 1 万个 pick 或 place 动作"]
+    G["单个目标状态示例的编码 z_g"] --> H
+    H --> I["Hungarian 匹配物体并按距离、in-hand 分类器 j_ψ 给出启发式值"]
+    I --> J["20 个模型的集成：对各成员启发式取平均"]
+    J --> K["选择最优动作并闭环在线执行"]
+```
+
+图依据：论文 §III-A / §III-B / §III-C、Algorithm 1、§IV-D（20 模型集成、1 万个动作网格）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Factored world models for zero-shot generalization.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2202.05333>
+- [arXiv PDF](https://arxiv.org/pdf/2202.05333)：已通读方法部分（实验与附录以略读为准）：§III 因子化世界模型（A 模型结构、B 对比损失训练、C 规划）、§IV-D 规划设置
 
 ## 推荐继续阅读
 

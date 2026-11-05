@@ -51,6 +51,47 @@ summary: "Open-X-Humanoid/TienKung-Lab：北京人形创新中心 Isaac Lab + AM
 - **算力门槛：** 高端 GPU + Isaac 版本钉扎；非轻量 pip demo。
 - **「开源 ≠ 低成本复现」：** 真机部署依赖天工硬件与机构支持文档。
 
+## 源码运行时序图
+
+入口：训练 `python legged_lab/scripts/train.py --task=walk --headless --logger=tensorboard --num_envs=4096`；回放 `python legged_lab/scripts/play.py --task=walk --num_envs=1`；MuJoCo sim2sim `python legged_lab/scripts/sim2sim.py --task walk --policy Exported_policy/walk.pt --duration 100`。
+
+```mermaid
+sequenceDiagram
+    participant T as legged_lab/scripts/train.py
+    participant AL as isaaclab AppLauncher
+    participant TR as legged_lab/utils/task_registry
+    participant E as TienKungEnv (envs/tienkung/tienkung_env.py)
+    participant RN as rsl_rl AmpOnPolicyRunner
+    participant AP as AMPPPO (amp_ppo.py) + Discriminator
+    participant P as play.py
+    participant M as sim2sim.py (MujocoRunner)
+
+    T->>AL: AppLauncher(args_cli)，sensor 任务时 enable_cameras
+    T->>TR: from legged_lab.envs import *（registry 注册 walk/run/walk_with_sensor/run_with_sensor）
+    T->>TR: get_cfgs(task) / get_task_class(task)
+    T->>E: env_class(env_cfg, headless)，含 AMPLoaderDisplay 读 motion_visualization
+    T->>RN: AmpOnPolicyRunner(env, agent_cfg, log_dir)，AMPLoader 读 amp_motion_files(motion_amp_expert)
+    T->>RN: learn(max_iterations)
+    loop 每次迭代：采集 num_steps_per_env 步
+        RN->>AP: act(obs, privileged_obs, amp_obs)
+        RN->>E: step(actions)：PD 位置目标 × decimation 次 sim.step，reward_manager.compute
+        E-->>RN: obs, rewards, dones, infos
+        RN->>E: get_amp_obs_for_expert_trans()
+        RN->>AP: discriminator.predict_amp_reward 与任务奖励按 amp_task_reward_lerp 混合
+        RN->>AP: process_env_step 写入 rollout 与 amp_storage
+    end
+    RN->>AP: compute_returns；update()：PPO 损失 + 判别器(专家 vs 策略 MSE + 梯度惩罚)
+    RN->>RN: save model_N.pt
+    P->>RN: load(checkpoint)，export_policy_as_jit / onnx 到 exported/
+    P->>E: 循环 policy(obs) → env.step
+    M->>M: torch.jit.load(policy) + mujoco.MjModel.from_xml_path(tienkung.xml)
+    loop 每个控制周期
+        M->>M: get_obs → policy → position_control → mj_step × decimation
+    end
+```
+
+图依据：Open-X-Humanoid/TienKung-Lab@e09a70b，读过 `README.md`、`legged_lab/scripts/train.py`、`play.py`、`sim2sim.py`、`play_amp_animation.py`（仅函数结构）、`legged_lab/envs/__init__.py`、`envs/tienkung/tienkung_env.py`（`step` 及方法清单）、`envs/tienkung/walk_cfg.py`（grep 到 `runner_class_name = "AmpOnPolicyRunner"`、`AMPPPO`、`amp_motion_files`）、`rsl_rl/rsl_rl/runners/amp_on_policy_runner.py`、`rsl_rl/rsl_rl/algorithms/amp_ppo.py`。奖励项（`mdp/rewards.py`）、观测构造、地形与传感器实现、`gmr_data_conversion.py` 未细读；实机部署在另一仓库 Deploy_Tienkung，未涉及。
+
 ## 关联页面
 
 - [X-Humanoid（机构总览）](./x-humanoid.md)
@@ -61,6 +102,7 @@ summary: "Open-X-Humanoid/TienKung-Lab：北京人形创新中心 Isaac Lab + AM
 
 - [sources/repos/tienkung-lab.md](../../sources/repos/tienkung-lab.md)
 - [wechat_robot_yanfa_opensource_algorithms_compendium.md](../../sources/blogs/wechat_robot_yanfa_opensource_algorithms_compendium.md)
+- 源码核对（2026-11-02）：Open-X-Humanoid/TienKung-Lab@e09a70b，读过 README.md、legged_lab/scripts/train.py、play.py、sim2sim.py、legged_lab/envs/__init__.py、envs/tienkung/tienkung_env.py、walk_cfg.py、rsl_rl/rsl_rl/runners/amp_on_policy_runner.py、rsl_rl/rsl_rl/algorithms/amp_ppo.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

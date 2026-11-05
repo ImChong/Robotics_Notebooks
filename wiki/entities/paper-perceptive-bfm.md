@@ -242,6 +242,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Perceptive BFM Adapting Human Motion Priors to Robot-Centric Terrain](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Perceptive_BFM_Adapting_Human_Motion_Priors_to_Robot-Centric_Terrain/Perceptive_BFM_Adapting_Human_Motion_Priors_to_Robot-Centric_Terrain.html)
 - [Perceptive BFM 项目页](https://acodedog.github.io/perceptive-bfm/) — 真机画廊、浏览器 demo
 - [arXiv:2606.08059](https://arxiv.org/abs/2606.08059) · [Mondo-Robotics/PMT](https://github.com/Mondo-Robotics/PMT)
 - [A Survey of Behavior Foundation Model（arXiv:2506.20487）](https://arxiv.org/abs/2506.20487) — BFM taxonomy 背景

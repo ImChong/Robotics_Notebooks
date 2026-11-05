@@ -33,6 +33,24 @@ Domain Randomization（DR）是 sim-to-real 领域最常用的方法之一，但
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  U["仿真器 = MDP 集合 U<br/>带可调潜变量参数"] --> DR["域随机化：对 U 指定分布 ν<br/>得到 LMDP (U, ν)"]
+  DR --> ORA["DR oracle：求 LMDP 的最优<br/>历史依赖策略 π*_DR"]
+  ORA --> REAL["零真实样本直接部署<br/>真实环境 M* ∈ U"]
+  REAL --> GAP["sim-to-real gap<br/>Gap(π*_DR)"]
+  subgraph PROOF["证明思路（§6）"]
+    L1["Lemma 1：若存在 base policy 对任意 M 的 gap ≤ C<br/>则 Gap(π*_DR) ≤ M·C"]
+    BASE["构造 base policy<br/>有分离条件：消除法识别真实 MDP<br/>无分离条件：归约到无限时域平均回报 MDP 的 regret"]
+    L1 --> BASE
+  end
+  GAP -.->|"定理 1/2/4 给出上界"| L1
+```
+
+图依据：论文 §4（形式化：sim-to-real 与 DR 作为 LMDP oracle）、§5 主要结果、§6 Proof Overview；本篇为理论论文，图表示其分析框架与证明归约，不是可部署的训练管线。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -63,6 +81,7 @@ Domain Randomization（DR）是 sim-to-real 领域最常用的方法之一，但
 - [humanoid_pnb_domain-randomization-understanding-sim-to-real-t.md](../../sources/papers/humanoid_pnb_domain-randomization-understanding-sim-to-real-t.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_Understanding_Sim-to-Real_Transfer/Domain_Randomization_Understanding_Sim-to-Real_Transfer.html>
 - 论文：<https://arxiv.org/abs/2110.03239>
+- [arXiv PDF](https://arxiv.org/pdf/2110.03239)：已通读方法部分（实验与附录以略读为准）：摘要、§4 形式化、§5 主要结果、§6 证明概览、§7 结论；附录证明未读
 
 ## 推荐继续阅读
 

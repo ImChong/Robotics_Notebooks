@@ -41,6 +41,22 @@ summary: "用模型集成中回报最差样本更新策略，把优化重点从�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **域随机化** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DIST["源域分布 Pψ：物理参数模型集合"] --> SAMP
+    SAMP["第 i 轮：从 Pψ 采样 N 个模型参数 pk，在 M(pk) 中用当前策略 π(θi) 各采样一条轨迹 τk"] --> RET["计算每条轨迹的折扣回报 R(τk)，求 ε 百分位值 Qε"]
+    RET --> SEL["筛出回报 ≤ Qε 的最差轨迹子集 T"]
+    SEL --> UPD["BatchPolOpt（实验中为 TRPO）只用 T 更新策略：θi+1"]
+    UPD --> SAMP
+    UPD --> OUT["得到对 CVaR 目标稳健的策略"]
+    TGT["目标域轨迹数据（§3.2 可选）"] -.-> ADAPT["贝叶斯更新：以重要性采样按似然重新加权模型参数，调整源域分布"]
+    ADAPT -.-> DIST
+```
+
+图依据：论文 §3.1 Algorithm 1、§3.2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +105,7 @@ summary: "用模型集成中回报最差样本更新策略，把优化重点从�
 - [freedof_sim2real_17_epopt-robust-policies-model-ensembles.md](../../sources/papers/freedof_sim2real_17_epopt-robust-policies-model-ensembles.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/1610.01283)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3（3.1 EPOpt-ε 与 Algorithm 1、3.2 源域分布自适应）、§4 实验设定开头；各实验结果略读
 
 ## 推荐继续阅读
 

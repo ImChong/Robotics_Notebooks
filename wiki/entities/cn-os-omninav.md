@@ -61,11 +61,54 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`bash eval_ovon_slowfast.sh`（`infer_ovon_slowfast/`，内部 `python ./infer_ovon_slowfast/run_nav_ovon_omni.py --pattern --model_path --name --fast_type`；`fast_type` 取 `A-star` 或 `point-goal`）。README 另列 `infer_ovon/eval_ovon.sh`（`FLOW_MATCH=true/false`，纯视觉快系统）与 R2R/RxR 的 `infer_r2r_rxr/eval_*.sh`、训练 `train_code/`，本图只画慢快协同的 OVON 脚本；其余未读。
+
+```mermaid
+sequenceDiagram
+    participant SH as eval_ovon_slowfast.sh
+    participant Run as run_nav_ovon_omni.py（主脚本）
+    participant Sim as utils.get_sim_agent / habitat_sim
+    participant Fr as frontier_utils.detect_frontier_waypoints
+    participant Bank as qwen_utils.Bank
+    participant Slow as qwen_utils.getresult（慢系统：选前沿/目标）
+    participant Fast as qwen_utils.get_result_fast（快系统：局部航点）
+    participant VLM as Qwen2_5_VLForConditionalGeneration（omni_nav）
+
+    SH->>Run: python run_nav_ovon_omni.py 参数
+    Run->>VLM: from_pretrained(model_path, bf16, flash_attention_2) + AutoProcessor
+    loop 每个 episode
+        Run->>Sim: get_sim_agent(...)，建 top_down_map 与 fog_of_war_mask
+        loop total_steps < 4000
+            Run->>Sim: 原地旋转 sim.step，采集环视图像
+            Run->>Fr: reveal_fog_of_war + detect_frontier_waypoints，剔除 visited_frontier_set
+            Run->>Slow: getresult(omni_nav, processor, bank, frontier_waypoints, 目标类别...)
+            Slow->>VLM: qwen.generate(max_new_tokens=512)
+            Slow-->>Run: target_position, is_final_decision
+            alt fast_type == A-star
+                Run->>Sim: GreedyGeodesicFollower.find_path(target) 后逐步 sim.step
+            else fast_type == point-goal
+                loop 距目标 > 0.1 且 count < 200
+                    Run->>Fast: get_result_fast(omni_nav, processor, bank, ...)
+                    Fast->>VLM: qwen.forward(action_former=True) 预测航点 / arrive / 角度
+                    Fast-->>Run: 新观测与位置（卡住时随机扰动「interrupt」）
+                end
+            end
+            Run->>Bank: 追加 goto 图像与位姿
+        end
+        Run->>Sim: MultiGoalShortestPath 计算 SR / SPL
+    end
+```
+
+图依据：amap-cvlab/OmniNav@e8b4859，读过 README.md、infer_ovon_slowfast/eval_ovon_slowfast.sh、infer_ovon_slowfast/run_nav_ovon_omni.py、infer_ovon_slowfast/qwen_utils.py（getresult、get_result_fast、函数列表）。
+
 ## 参考来源
 
 - [OmniNav 源码归档](../../sources/repos/omninav.md)（<https://github.com/amap-cvlab/OmniNav>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：amap-cvlab/OmniNav@e8b4859，读过 README.md、infer_ovon_slowfast/{eval_ovon_slowfast.sh,run_nav_ovon_omni.py,qwen_utils.py}；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

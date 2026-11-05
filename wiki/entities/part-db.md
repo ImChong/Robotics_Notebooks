@@ -48,6 +48,48 @@ summary: "Part-DB 是自托管电子元件库存系统，可管理元件参数�
 
 服务端源码以 AGPL-3.0-or-later 许可公开。Part-DB 管理物料和库存，电路设计与 PCB 布局可与 [KiCad](./kicad.md) 配合；器件设计约束和板级验证仍需在设计流程中完成。
 
+## 源码运行时序图
+
+入口：Web 请求经 `public/index.php`（`App\Kernel`，Symfony）进入应用；下图取其 KiCad HTTP 库路径——KiCad 客户端按 `docs/usage/eda_integration.md` 配置的 `.kicad_httplib`（`root_url` 指向 `.../kicad-api/`）发起请求。
+
+```mermaid
+sequenceDiagram
+    participant K as KiCad (外部客户端)<br/>.kicad_httplib
+    participant I as public/index.php<br/>App\Kernel
+    participant S as config/packages/security.yaml<br/>ApiTokenAuthenticator
+    participant C as KiCadApiController<br/>/kicad-api/v1
+    participant H as Services/EDA/KiCadHelper
+    participant Cache as kicadCache<br/>(TagAwareCacheInterface)
+    participant DB as Doctrine EntityManager
+
+    K->>I: GET /kicad-api/v1/categories.json（Bearer API token）
+    I->>S: firewall main 校验令牌
+    S-->>I: access_control：需 @api.access_api 且已认证
+    I->>C: categories()
+    C->>C: denyAccessUnlessGranted('@categories.read')
+    C->>H: getCategories()
+    H->>Cache: get('kicad_categories_<depth>')
+    alt 缓存未命中
+        Cache->>DB: Category 列表 + 零件计数（getPartsCount）
+        DB-->>H: 仅保留有零件且 EDA 可见的分类
+    end
+    H-->>C: id / name / description 列表
+    C-->>K: JSON + ETag + Cache-Control max-age=300
+    K->>C: GET /kicad-api/v1/parts/category/{id}.json
+    C->>H: getCategoryParts(category)
+    H->>Cache: get('kicad_category_parts_...')
+    Cache->>DB: 取该分类零件，preloadPartCollections()
+    loop 每个 shouldPartBeVisible 的零件
+        H->>H: getKiCADPart(part)：symbolIdStr、footprint、reference、value、datasheet、Part-DB URL 等字段
+    end
+    C-->>K: 零件详情 JSON（KiCad 按 timeout_parts_seconds 缓存）
+    K->>C: GET /kicad-api/v1/parts/{id}.json
+    C->>H: getKiCADPart(part)
+    C-->>K: JSON + ETag + max-age=60
+```
+
+图依据：Part-DB/Part-DB-server@462d36c，读过 `public/index.php`、`config/packages/security.yaml`、`src/Controller/KiCadApiController.php`、`src/Services/EDA/KiCadHelper.php`、`docs/usage/eda_integration.md`。
+
 ## 关联页面
 
 - [KiCad](./kicad.md) — PCB 设计及 BOM 的关联工具。
@@ -57,6 +99,7 @@ summary: "Part-DB 是自托管电子元件库存系统，可管理元件参数�
 ## 参考来源
 
 - [Part-DB 官方仓库归档](../../sources/repos/part-db.md)
+- 源码核对（2026-11-02）：Part-DB/Part-DB-server@462d36c，读过 `public/index.php`、`config/packages/security.yaml`、`src/Controller/KiCadApiController.php`、`src/Services/EDA/KiCadHelper.php`、`docs/usage/eda_integration.md`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

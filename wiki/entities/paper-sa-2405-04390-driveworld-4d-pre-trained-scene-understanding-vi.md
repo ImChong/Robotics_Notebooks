@@ -42,6 +42,25 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["多相机图像序列 o_1:T 与专家动作 a_1:T"] --> ENC["Image Encoder"]
+    ENC --> VT["2D 到 3D View Transform：BEV 特征 b_t"]
+    VT --> X["BEV 压成 1D 向量 x_t，生成后验状态分布"]
+    VT --> SSP["Static Scene Propagation：随机选一帧 b' 得到空间静态表示 b̂"]
+    X --> DMB["Dynamic Memory Bank：MLN 编码运动属性，与记忆库做 cross-attention"]
+    DMB --> H["确定性历史 h̃_t 与随机状态 s̃_t"]
+    H --> DEC["Decoder：3D 卷积预测当前与未来的 3D occupancy 和动作"]
+    SSP --> DEC
+    TP["Task Prompt：文本经预训练文本编码器编码，扩展到 BEV 尺寸"] --> DEC
+    DEC --> LOSS["预训练目标：KL（后验对先验）+ occupancy 交叉熵 + 动作 L1"]
+    VT -.->|"预训练后保留 encoder"| FT["下游微调：encoder 与带 Task Prompt 的任务头一起训练"]
+```
+
+图依据：论文 §3 / Fig.2、Fig.3、§3.1-§3.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ sources:
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.04390>
+- [arXiv PDF](https://arxiv.org/pdf/2405.04390)：已通读方法部分（§3 概述、§3.1 Memory State-Space Model、§3.2 3D Occupancy Prediction、§3.3 Task Prompt、§3.4 预训练目标、§3.5 下游微调）与 Fig.2、Fig.3；实验与附录以略读为准
 
 ## 推荐继续阅读
 

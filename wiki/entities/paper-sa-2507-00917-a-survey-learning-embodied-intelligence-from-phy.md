@@ -42,6 +42,24 @@ A systematic survey of recent advances in learning embodied AI through the integ
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["综述总览：物理模拟器与世界模型如何促进具身智能"] --> L["§2 Levels of Intelligent Robot：IR-L0 至 IR-L4 五级分级"]
+    A --> M["§3 Robotic Mobility, Dexterity and Interaction"]
+    A --> S["§4 General Physical Simulators"]
+    A --> W["§5 World Models"]
+    A --> R["§6 World Models for Intelligent Robots"]
+    L --> L1["IR-L0 Basic Execution → IR-L1 Programmatic Response → IR-L2 Basic Perception and Adaptation → IR-L3 Humanoid Cognition and Collaboration → IR-L4 Fully Autonomous"]
+    M --> M1["§3.1 Technical Concepts · §3.2 Robot Locomotion · §3.3 Robot Manipulation · §3.4 Human-Robot Interaction"]
+    S --> S1["§4.1 Mainstream Simulators · §4.2 Physical Simulation · §4.3 Realistic rendering · §4.4 Sensor and Joint Component Types · §4.5 Discussions and future Perspectives"]
+    W --> W1["§5.1 Representative Architectures of WM · §5.2 Core Roles of World Models"]
+    R --> R1["§6.1 World Models for Autonomous Driving · §6.2 World Models for Articulated Robots · §6.3 Challenges and Future Perspectives"]
+```
+
+图依据：综述组织结构图，论文 Fig. 2（Survey outline）与 §1.3 Structure；图中只画章节框架，未画论文内容的评价。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ A systematic survey of recent advances in learning embodied AI through the integ
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.00917>
+- [arXiv PDF](https://arxiv.org/pdf/2507.00917)：已通读摘要、§1（含 §1.2 贡献、§1.3 Structure）与 Fig. 2 综述大纲；§3–§6 正文仅按章节标题略读（仅用于确认章节框架）
 
 ## 推荐继续阅读
 

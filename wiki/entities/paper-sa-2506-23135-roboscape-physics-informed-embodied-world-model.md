@@ -42,6 +42,30 @@ A unified physics‑informed world model that jointly learns RGB video generatio
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["AGIBOT-World 数据\nRGB / 动作 / 状态序列"] --> P["数据处理管线（Fig.1）\n深度生成 + 关键点跟踪 → 切片 → 过滤 → 难度/场景分类"]
+    P --> V["视频与深度 Tokenizer\nMAGVIT-2 → s 与 z 离散 token"]
+    A["机器人动作 a"] --> E["动作编码器 Ea → 动作嵌入 c"]
+    V --> R["RGB 分支 F_RGB\nST-Transformer 块"]
+    V --> H["深度分支 F_Depth\nST-Transformer 块"]
+    E --> R
+    E --> H
+    H -->|"逐块特征线性投影后相加"| R
+    R --> S["自回归预测下一帧 RGB token"]
+    H --> Z["预测深度 token"]
+    P --> K["SpatialTracker 轨迹\n按运动幅度取 top-K 关键点"]
+    K --> LK["关键点时序一致性损失 + 关键点引导注意力权重"]
+    S --> LK
+    S --> L["联合损失 L = L_RGB + λ1 L_Depth + λ2 L_Keypoint + λ3 L_Attention"]
+    Z --> L
+    LK --> L
+```
+
+图依据：论文 §2.2–2.3 / Fig.1、Fig.2、式 (2)–(8)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ A unified physics‑informed world model that jointly learns RGB video generatio
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.23135>
+- [arXiv PDF](https://arxiv.org/pdf/2506.23135)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2.1–2.3 方法（含 Fig.1、Fig.2、式 1–8）、§3.1 实验设定
 
 ## 推荐继续阅读
 

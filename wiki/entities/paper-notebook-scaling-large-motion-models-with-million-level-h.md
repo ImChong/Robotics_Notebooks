@@ -38,6 +38,33 @@ summary: "本文构建 MotionLib ——首个百万级动作生成数据集，�
 - **分层文本**有助于细粒度可控生成；
 - 大规模动作模型可作人形"语言→动作"的上游先验。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph LIB["MotionLib 构建（§3）"]
+        V["超过 2000 万条视频，筛选含清晰人体的视频"] --> W["WHAM 提取世界坐标系 SMPL 动作"]
+        W --> RF["动作精修：3D 关键点局部-全局优化 + RL 策略 π_refine 物理修正"]
+        V --> CAP["Gemini-1.5-pro 生成部位级与整体级分层文本"]
+        CAP --> TR["GPT-4o 以一层文本为条件精修另一层"]
+        RF --> ML["MotionLib：百万级动作-文本对"]
+        TR --> ML
+    end
+    subgraph MB["MotionBook 编码（§4.2）"]
+        F["SMPL-D135 无损动作特征"] --> Q["2D 无查找量化（2D-LFQ）动作 tokenizer"]
+    end
+    subgraph LM["Being-M0（§4.1）"]
+        VOC["码本中的离散码作为 LLM 额外词表，加 mot 起止标记"] --> S1["阶段 1：全量 MotionLib 动作-文本对齐"]
+        S1 --> S2["阶段 2：250 余个模板、约 90 万条指令微调"]
+        S2 --> GEN["自回归生成动作 token，解码为动作"]
+    end
+    ML --> F
+    ML --> S1
+    Q --> VOC
+```
+
+图依据：论文 §3 MotionLib、§4.1 Being-M0 概述与两阶段训练、§4.2 MotionBook，Fig. 3。
+
 ## 解决什么问题
 
 动作生成缺**大规模数据**与**好的动作 token 化**： - 现有数据集**小**，难支撑大模型； - 传统码本 token 化在**容量与细节**间难两全。
@@ -88,6 +115,7 @@ summary: "本文构建 MotionLib ——首个百万级动作生成数据集，�
 - [humanoid_pnb_scaling-large-motion-models-with-million-level-h.md](../../sources/papers/humanoid_pnb_scaling-large-motion-models-with-million-level-h.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions/Scaling_Large_Motion_Models_with_Million-Level_Human_Motions.html>
 - 论文：<https://arxiv.org/abs/2410.03311>
+- [arXiv PDF](https://arxiv.org/pdf/2410.03311)：已通读方法部分（实验与附录以略读为准）：§3 MotionLib、§4 Being-M0 与 MotionBook、§5 实验设置及部分结果（附录与实验细节以略读为准）
 
 ## 推荐继续阅读
 

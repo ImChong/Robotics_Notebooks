@@ -43,6 +43,33 @@ VLA dreamed with comprehensive world knowledge.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph IN["多模态输入与编码"]
+        L["语言指令 l → CLIP 文本编码（冻结）"]
+        V["视觉帧 o_t → Masked Autoencoder 编码<br/>得到时空 patch 表示"]
+        S["本体状态 s_t → 卷积 + 全连接状态编码器（可训练）"]
+    end
+    L --> LLM
+    V --> LLM
+    S --> LLM
+    DQ["可学习 dream 查询<br/>（动态区域 / 深度 / 语义 三个子查询）"] --> LLM
+    AQ["action 查询"] --> LLM
+    LLM["基于 GPT-2 的统一 Transformer<br/>结构化注意力：三个子查询互不可见，均只看过去上下文"] --> WE["世界嵌入 w(t+n)"]
+    LLM --> LA["潜在动作嵌入"]
+    subgraph TRAIN["仅训练时使用的预测头（推理时跳过）"]
+        WE --> D1["动态区域 f̂(t+n)<br/>CoTracker 提取目标，重建损失"]
+        WE --> D2["单目深度 d̂(t+n)<br/>Depth-Anything 作教师，尺度归一化 MSE"]
+        WE --> D3["高层语义 ĉ(t+n)<br/>DINOv2 / SAM 特征，InfoNCE 对比损失"]
+    end
+    LA --> DIT["扩散 Transformer（逆动力学）<br/>由高斯噪声去噪"]
+    DIT --> ACT["n 步动作序列 â(t:t+n-1)"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2、Fig.4（预测头仅训练时使用依 Fig.2 图注）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +125,7 @@ VLA dreamed with comprehensive world knowledge.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.04447>
+- [arXiv PDF](https://arxiv.org/pdf/2507.04447)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1 问题形式化、3.2 模型架构、3.3 世界知识预测、3.4 扩散 Transformer 逆动力学）
 
 ## 推荐继续阅读
 

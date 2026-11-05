@@ -179,6 +179,7 @@ $$
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：FADA](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/FADA__Few-Shot_Domain_Adaptation_via_Dynamics_Alignment_for_Humanoid_Control/FADA__Few-Shot_Domain_Adaptation_via_Dynamics_Alignment_for_Humanoid_Control.html)
 - [FADA 项目页交互 demo](https://lecar-lab.github.io/FADA-humanoid/) — G1 臂腕载载荷 before/after 对比
 - [Sim2Real 概念页](../concepts/sim2real.md) — 迁移工程总览
 - [RMA 论文实体](./paper-rma-rapid-motor-adaptation.md) — in-context teacher–student 对照

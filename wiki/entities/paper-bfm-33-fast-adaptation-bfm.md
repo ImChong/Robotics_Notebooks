@@ -37,6 +37,37 @@ sources:
 - 适配速度决定 BFM 工程价值：新任务样本与开发成本。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **04 Adaptation**（#33/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PRE["无监督预训练 BFM<br/>特征 φ(s) + 后继特征 ψ(s,a,z) + 策略族 π_z"]
+    REW["测试时奖励函数 r(s)"]
+    ZS["零样本推断：线性回归 z_r = argmin E[(φ(s)ᵀz − r(s))²]<br/>得到近似最优策略 π_{z_r}"]
+    subgraph RELA["ReLA：残差潜变量适应（off-policy actor-critic）"]
+        RC["残差 Critic Q_residual<br/>Q = ψ(s,a,z_r)ᵀz_r（冻结）+ 残差，TD 学习"]
+        RA["潜变量 z 梯度上升<br/>仅对 z 求梯度，预训练 actor 参数冻结"]
+        BUF["在线回放缓冲 D_online"]
+    end
+    subgraph LOLA["LoLA：前瞻潜变量适应（on-policy actor-only）"]
+        LP["潜空间高斯策略 N(μ,σ)，μ 初始化为 z_r"]
+        ROLL["采样 k 个 z_i，各 rollout n 步<br/>R_n = 折扣奖励和 + γⁿ ψ(s_n,π_z,z)ᵀz_r"]
+        LOO["留一法基线 (leave-one-out) 估计梯度，更新 μ"]
+    end
+    OUT["适应后的策略 π_z（少量环境交互）"]
+    PRE --> ZS
+    REW --> ZS
+    ZS -->|初始 z = z_r| RA
+    ZS -->|μ = z_r| LP
+    BUF --> RC --> RA
+    RA --> OUT
+    LP --> ROLL --> LOO --> LP
+    LOO --> OUT
+    RA -->|与环境交互| BUF
+```
+
+图依据：论文 §3.1 ReLA、§3.2 LoLA（Fig. 1、Eq. 5–7）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -85,6 +116,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2504.07896>
+- [arXiv PDF](https://arxiv.org/pdf/2504.07896)：已通读方法部分（实验与附录以略读为准）：§1 引言（Fig. 1）、§2 预备知识、§3 ReLA 与 LoLA 方法；§4 实验仅略读
 
 ## 推荐继续阅读
 

@@ -5,16 +5,18 @@ tags:
   - quadruped
   - locomotion
 status: complete
-updated: 2026-11-02
+updated: 2026-11-03
 arxiv: "2610.40364"
 project_id: unsupervised-environment-design-quadruped-benchmark
 related:
   - ../overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
 sources:
   - ../../sources/papers/unsupervised-environment-design-quadruped-benchmark_arxiv_2610_40364.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
+  - ../../sources/blogs/wechat_embodied_station_49_papers_sacq_action_aware_quantization_2026-11-03.md
 summary: "究竟是课程有效，还是起点简单？四足无监督环境设计基准（arXiv:2610.40364）：在五种三维四足机器人上，以相同步数预算比较 14 种环境设计、域随机化和地形课程；结果表明没有一种方法在所有机器人及测试地形上占优，腿式机器人常用的成功率驱动课程进入最优组的次数最多。"
 ---
 

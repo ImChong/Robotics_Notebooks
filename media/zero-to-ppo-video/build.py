@@ -103,7 +103,15 @@ def chunks(text, start, dur, limit=17):
     for p in re.split(r"(?<=[，、；：。！？,;:])", MATH.sub(hold, text)):
         while len(p) > limit + 4:  # no punctuation to break on: cut near the middle, at a space if any
             mid = len(p) // 2
-            sp = [k for k in range(mid - 5, mid + 6) if 0 < k < len(p) and p[k] == " "]
+            # 书名《…》、括号（…）、英文单词里都不断（011「《Modern Robotics》」中间有空格，
+            # 人名「哈滕伯格（Hartenberg）」原先断成「（Hartenb」「erg）」）：外面的空格优先，其次断在书名、括号后面，再不行就离中间最近、不在里面的地方
+            spans = [(m.start(), m.end()) for m in re.finditer(r"《[^》]*》|（[^）]*）|[A-Za-z][A-Za-z0-9_]*", p)]
+            inside = set(k for a, b in spans for k in range(a + 1, b))
+            sp = [k for k in range(mid - 5, mid + 6) if 0 < k < len(p) and p[k] == " " and k not in inside]
+            if not sp and inside:
+                sp = [k for k in range(max(1, mid - 8), min(len(p), mid + 9)) if k not in inside and (p[k] == "《" or p[k - 1] in "》）")]
+            if not sp and inside:
+                sp = [k for k in range(1, len(p)) if k not in inside]
             k = min(sp, key=lambda k: abs(k - mid)) if sp else mid
             parts.append(back(p[:k]))
             p = p[k:].lstrip()
@@ -127,7 +135,21 @@ def chunks(text, start, dur, limit=17):
     return out
 
 
+def check_display_twice():
+    """字幕先整句换一遍、切行后每行再换一遍（见 main 和 chunks）：每条替换都得换两遍结果不变，
+    不然会叠成「`=` `=`」「（`return`）（`return`）」（011 用户反馈）。有一句不满足就停下，指出是哪句。"""
+    bad = []
+    for _, _, _, text in SCRIPT:
+        for s in re.split(r"(?<=[。？！])", text):
+            once = display(s.strip())
+            if s.strip() and display(once) != once:
+                bad.append(f"  换一遍：{once}\n  换两遍：{display(once)}")
+    if bad:
+        sys.exit("DISPLAY 有条目换两遍会叠字（换出来的字里还含着原来的字），改成换两遍不变的写法：\n" + "\n".join(bad))
+
+
 async def main():
+    check_display_twice()
     segs, subs, pcm = [], [], bytearray()
     t = 0.0
     prev_scene = None

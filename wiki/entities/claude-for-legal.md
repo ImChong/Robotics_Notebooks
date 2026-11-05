@@ -66,6 +66,57 @@ summary: "Claude for Legal 是 Anthropic 面向法律工作流的插件集合，
 - **领域不可直接泛化：** 法律流程中的审阅与决策逻辑不等于机器人任务规划或控制策略；可借鉴的是 agent 的配置和工作流组织方法。
 - **开源状态：** 官方 GitHub 仓库及其配置文件公开，仓库许可证为 Apache-2.0；商业产品页上的功能、集成和可用性以 Anthropic 当前说明为准。
 
+## 源码运行时序图
+
+范围说明：本图只覆盖仓库中可执行的 managed-agent 脚本（部署与跨代理交接）。领域插件的技能与命令是 Markdown 配置，由 Claude Code 读取，不在本仓库脚本中执行。
+
+入口：部署 `scripts/deploy-managed-agent.sh slug [--dry-run]`；交接循环 `SOURCE_SESSION_ID=... AGENT_IDS='{...}' SOURCE_AGENT=... python3 scripts/orchestrate.py`（`orchestrate.py` 文件头注明为参考实现）
+
+```mermaid
+sequenceDiagram
+    participant OP as 运维者
+    participant DEP as deploy-managed-agent.sh
+    participant API as Anthropic API<br/>/v1/skills、/v1/agents
+    participant ORC as orchestrate.py<br/>run()
+    participant SRC as 源会话事件流<br/>sessions.stream
+    participant TGT as 目标 agent<br/>sessions.steer
+    participant AUD as audit_log
+
+    Note over OP,DEP: 部署阶段
+    OP->>DEP: 执行 deploy-managed-agent.sh slug
+    DEP->>DEP: resolve_manifest：system 文件内联，skills 与 callable_agents 解析
+    loop 每个 skill 路径
+        DEP->>API: POST /v1/skills 上传并取得 skill_id
+    end
+    DEP->>API: POST /v1/agents（子代理先，编排者最后）
+    API-->>DEP: agent id
+    DEP-->>OP: 输出 agent id（--dry-run 时只打印请求体）
+
+    Note over OP,ORC: 交接阶段
+    OP->>ORC: 启动 orchestrate.py（读取环境变量）
+    ORC->>SRC: client.beta.agents.sessions.stream(session_id)
+    loop 每个 message_delta 事件
+        SRC-->>ORC: event.text
+        ORC->>ORC: extract_handoff：定位 handoff_request 并 raw_decode
+        alt 未找到或 JSON 无效
+            ORC->>AUD: reject（invalid_json）或跳过
+        else 解析成功
+            ORC->>ORC: 目标 allowlist 检查（target_not_allowlisted）
+            ORC->>ORC: jsonschema 校验 payload（schema）
+            ORC->>ORC: 按 intent 校验 params（params_schema）
+            ORC->>ORC: sanitize_event 与 frame_handoff，按 HANDOFF_TEMPLATES 渲染 steering_input
+            alt AGENT_IDS 中无该目标
+                ORC->>AUD: reject（no_deployed_agent_id）
+            else 存在目标 agent id
+                ORC->>AUD: approve
+                ORC->>TGT: sessions.steer(agent_id, input=steering_input)
+            end
+        end
+    end
+```
+
+图依据：anthropics/claude-for-legal@4a6c651，读过 `scripts/orchestrate.py`（`extract_handoff`、`run`、`__main__`，及 `_validate_params` 调用处）、`scripts/deploy-managed-agent.sh`（`resolve_manifest`、`POST /v1/skills`、`POST /v1/agents`、`--dry-run` 分支）。`scripts/validate.py` 与 `scripts/test-cookbooks.sh` 只读取了文件头，未画入图；`HANDOFF_INTENTS`、`sanitize_event` 的规则细节未逐行核对；未运行代码。
+
 ## 关联页面
 
 - [Claude API Skill](./anthropic-claude-api-skill.md) — Anthropic 官方 API 开发技能，与本项目的领域工作流配置形成互补。
@@ -76,6 +127,7 @@ summary: "Claude for Legal 是 Anthropic 面向法律工作流的插件集合，
 
 - [Claude for Legal 官方仓库归档](../../sources/repos/anthropics-claude-for-legal.md)
 - [Claude 法律行业官方产品页归档](../../sources/sites/claude-com-solutions-legal.md)
+- 源码核对（2026-11-02）：anthropics/claude-for-legal@4a6c651，读过 scripts/orchestrate.py、scripts/deploy-managed-agent.sh、scripts/validate.py（文件头）、scripts/test-cookbooks.sh（文件头）、仓库文件清单；时序图依据 orchestrate.py 与 deploy-managed-agent.sh，未运行代码。
 
 ## 推荐继续阅读
 

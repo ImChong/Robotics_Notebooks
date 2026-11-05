@@ -67,6 +67,56 @@ flowchart LR
 - **ASR 质量：** 专有名词、口音、噪声和低音质会造成错字；课堂笔记中的公式、代码、定义与关键数字应回听核验。
 - **内容与隐私：** 下载或缓存的媒体文件可能含个人信息或受版权保护内容，遵守平台条款与当地法律，并按项目说明管理缓存和 Cookie。
 
+## 源码运行时序图
+
+入口：`python scripts/bili_fetch.py "<B站视频链接>" "<工作目录>/bili-notes-<BV号>"`，之后由 `SKILL.md` 指示 Agent 依次调用 `scripts/bili_transcribe.py` 与 `scripts/validate_note.py`。下图只覆盖“单个 B站视频”路径；抖音、YouTube、小红书与整门课（`course_plan.py`）不在图中。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant AG as Agent 按 SKILL.md 调度
+    participant BF as bili_fetch.py main
+    participant BA as B站 API
+    participant BT as bili_transcribe.py main
+    participant FW as faster-whisper 转写
+    participant VN as validate_note.py main
+
+    AG->>BF: python bili_fetch.py 链接 工作目录
+    BF->>BF: load_sessdata 读取 SESSDATA extract_bvid
+    BF->>BA: x web-interface view 取 aid 标题 分P 时长
+    BA-->>BF: 视频信息
+    BF->>BF: 写 metadata.json
+    loop 每个分P
+        BF->>BA: fetch_subtitles 取字幕轨与字幕 URL
+        BA-->>BF: 字幕列表 或 空
+        alt 字幕可用
+            BF->>BF: subtitle_to_text 生成 txt
+            alt AI 字幕且 subtitle_relevant 未通过
+                BF->>BF: 另存为 存疑 txt 标记 ai_mismatch
+            else 其它情况
+                BF->>BF: 写 NN 分P txt 标记 cc 或 ai
+            end
+        else 无字幕
+            BF->>BF: 标记 none 或 api_empty
+        end
+    end
+    BF->>BF: 将 subtitle_detail 回写 metadata.json
+    BF-->>AG: 末行 JSON 摘要
+    AG->>BT: 对缺字幕分P运行 bili_transcribe.py metadata.json
+    loop 每个未完成分P txt_done 为假
+        BT->>BA: download_audio 下载音频流
+        BT->>FW: transcribe 调用 load_model 与设备检测
+        FW-->>BT: 转写文本
+        BT->>BT: 写 txt 并 mark_done 写 done 标记
+        BT-->>AG: 逐集 JSON 回执
+    end
+    AG->>AG: 依 SKILL.md 第三步按模板写课堂笔记 md
+    AG->>VN: python validate_note.py 笔记 --template 与 --meta --txt-dir
+    VN-->>AG: JSON 报告 errors 为 0 才算通过
+```
+
+图依据：lucky-Luor/bilibili-douyin-notes@1eec86b，实际读过 `SKILL.md`（触发、流程与第三步门禁命令）、`README.md`（前 120 行）、`scripts/bili_fetch.py`（main 全流程与函数清单）、`scripts/bili_transcribe.py`（main 全流程与函数清单）、`scripts/validate_note.py`（main 与 check_note_dispatch 的调用关系）。`fetch_subtitles`、`transcribe`、`load_model` 与 `check_note_dispatch` 内部未逐行读，仅按调用点与 SKILL.md 描述画出；`note_nav.py` 与 `course_plan.py` 未读。
+
 ## 关联页面
 
 - [Agent Skills（Addy Osmani）](./agent-skills-addyosmani.md) — 通用编码工作流技能包，可与面向视频学习的 Skill 对照。
@@ -78,6 +128,7 @@ flowchart LR
 - [项目来源归档](../../sources/repos/bilibili-douyin-notes.md)
 - [项目 README](https://github.com/lucky-Luor/bilibili-douyin-notes#readme)
 - [Agent Skill 定义](https://github.com/lucky-Luor/bilibili-douyin-notes/blob/main/SKILL.md)
+- 源码核对（2026-11-02）：lucky-Luor/bilibili-douyin-notes@1eec86b，读过 SKILL.md、README.md（前 120 行）、scripts/bili_fetch.py、scripts/bili_transcribe.py、scripts/validate_note.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

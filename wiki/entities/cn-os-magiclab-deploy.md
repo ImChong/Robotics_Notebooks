@@ -55,6 +55,46 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python deploy_real_z1.py --config z1_12dof.yaml`（aarch64 可用 `bash run_nx.sh`；需先设置 `magicbot-z1` SDK 的 `PYTHONPATH` / `LD_LIBRARY_PATH`）。
+
+```mermaid
+sequenceDiagram
+    participant M as deploy_real_z1.py main()
+    participant Cfg as config_z1.Config (configs/z1_12dof.yaml)
+    participant Ctl as MagicBotController
+    participant SDK as magicbot_z1_python (MagicRobot / 低层控制器)
+    participant ODE as ort.InferenceSession odom
+    participant POL as ort.InferenceSession policy
+    M->>Cfg: Config("configs/z1_12dof.yaml")
+    M->>Ctl: MagicBotController(config)
+    Ctl->>POL: 加载 config.policy_path（CPUExecutionProvider）
+    Ctl->>ODE: 加载 config.odom_path
+    Ctl->>SDK: initialize_robot：MagicRobot.initialize("192.168.54.111") / connect()
+    Ctl->>SDK: set_motion_control_level(LowLevel) / get_low_level_motion_controller()
+    Ctl->>SDK: subscribe_body_imu / leg / arm / waist / head state（回调写入缓存）
+    M->>Ctl: start_joystick_thread()（手柄或 SSH 键盘读指令）
+    M->>Ctl: zero_torque_state()
+    Ctl->>SDK: publish_*_command（kp=kd=toq=0），循环直到 cmd_btn[0] 启动指令
+    M->>Ctl: move_to_default_pos()
+    Ctl->>SDK: 插值发送默认姿态 PD 指令
+    M->>Ctl: default_pos_state()，等待进入 ACTIVE_CONTROL
+    loop 2 ms 周期（500 Hz）while state == ACTIVE_CONTROL
+        M->>Ctl: run_active_control()
+        Ctl->>Ctl: get_joint_positions / velocities / get_imu_data
+        alt 每 control_decimation 步（注释标 50 Hz）
+            Ctl->>ODE: 滚动历史 odom 观测 → 估计基座线速度
+            Ctl->>POL: 滚动历史 policy 观测 → 动作 self.action
+        end
+        Ctl->>SDK: send_position_commands → publish_leg/arm/waist/head_command
+    end
+    M->>Ctl: 退出键后 move_to_default_pos()；finally 中 enter_damping_state() / shutdown()
+    Ctl->>SDK: disconnect() / shutdown()
+```
+
+图依据：magiclab_deploy@5f58d6a，读过 README.md、deploy_real_z1.py（initialize_robot、send_zero_torque_commands、run_active_control、main 等）。config_z1.py、configs/z1_12dof.yaml、gamepad_reader_btp.py、run_nx.sh 未读内部。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +106,7 @@ institutions:
 - [magiclab_deploy 源码归档](../../sources/repos/magiclab_deploy.md)（<https://github.com/MagiclabRobotics/magiclab_deploy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：MagiclabRobotics/magiclab_deploy@5f58d6a，读过 README.md、deploy_real_z1.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

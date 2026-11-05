@@ -70,10 +70,57 @@ summary: "Modly 是本地运行模型扩展的开源桌面网格生成工具；�
 - [Articraft](./articraft.md)
 - [Sim2Real](../concepts/sim2real.md)
 
+## 源码运行时序图
+
+入口：桌面应用启动时由 `electron/main/python-bridge.ts` 执行 `python -m uvicorn main:app --host 127.0.0.1 --port 8765`（工作目录为 `api/`）；生成请求由界面或官方 CLI（`tools/modly-cli/agent.py`）发到 `POST /generate/from-image`
+
+```mermaid
+sequenceDiagram
+    participant PB as electron/main/python-bridge.ts
+    participant UI as 前端 useApi.ts / useGeneration.ts
+    participant API as api/main.py FastAPI
+    participant GEN as api/routers/generation.py
+    participant REG as api/services/generator_registry.py
+    participant EXP as api/services/extension_process.py ExtensionProcess
+    participant RUN as api/runner.py 扩展 venv 子进程
+    participant EXT as 扩展 generator.py 外部模型实现
+
+    PB->>API: spawn uvicorn main:app，监听 127.0.0.1:8765
+    UI->>API: POST /generate/from-image（图片、model_id、collection、remesh、params）
+    API->>GEN: include_router(prefix /generate)，调用 generate_from_image
+    GEN->>REG: get_generator(model_id) 与 get_manifest 校验模型
+    GEN-->>UI: 返回 job_id（BackgroundTasks 排入 _run_generation）
+    GEN->>REG: assert_weight_variant_installed，再 activate_ready_generator 或 get_active
+    REG->>EXP: 子进程型扩展以 ExtensionProcess 包装
+    EXP->>RUN: Popen 扩展 venv 的 python 运行 runner.py（stdin/stdout 为 JSON 行）
+    RUN-->>EXP: ready（含 params_schema）
+    EXP->>RUN: action load
+    RUN->>EXT: gen.load() 加载权重
+    RUN-->>EXP: loaded
+    GEN->>EXP: generate_artifact 或 generate（输入、参数、progress_cb、cancel_event）
+    EXP->>RUN: action generate（携带请求 id）
+    RUN->>EXT: gen.generate(...) 执行推理
+    loop 推理期间
+        RUN-->>EXP: progress（pct, step）
+        EXP-->>GEN: progress_cb 更新 JobStatus
+        UI->>API: GET /generate/status/job_id 轮询
+    end
+    RUN-->>EXP: done（output_path）
+    GEN->>GEN: 校验输出位于 WORKSPACE_DIR 内并标记 done
+    opt 用户取消
+        UI->>API: POST /generate/cancel/job_id
+        GEN->>EXP: 置位 cancel_event 并发送 cancel
+        RUN-->>EXP: cancelled
+    end
+```
+
+图依据：lightningpixel/modly@a471509，读过 `README.md`、`api/main.py`（路由注册与 lifespan 的导入）、`api/routers/generation.py`（`generate_from_image`、`_run_generation_impl`、status 与 cancel 相关代码）、`api/services/generator_registry.py`（`get_generator`、`activate_ready_generator` 等的引用处）、`api/services/extension_process.py`（`_start`、`load`、`generate_artifact`、`_read_loop` 等）、`api/runner.py`（`main` 的消息循环）、`electron/main/python-bridge.ts`（启动参数）、`src/shared/hooks/useApi.ts`、`tools/modly-cli/agent.py`（生成与轮询调用）；部分文件仅按函数名与关键行检索，未逐行通读；未运行代码。
+
 ## 参考来源
 
 - [官方仓库归档](../../sources/repos/modly.md)
 - [官网归档](../../sources/sites/modly.md)
+- 源码核对（2026-11-02）：lightningpixel/modly@a471509，读过 `README.md`、`api/main.py`、`api/routers/generation.py`、`api/services/generator_registry.py`、`api/services/extension_process.py`、`api/runner.py`、`electron/main/python-bridge.ts`、`src/shared/hooks/useApi.ts`、`tools/modly-cli/agent.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

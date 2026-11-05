@@ -97,6 +97,42 @@ flowchart LR
 - **LLM Wiki 是模式文件，非本仓库配置**：具体目录、lint 规则、CI 门禁见 [Ingest Workflow](../../schema/ingest-workflow.md) 与 [AGENTS.md](../../AGENTS.md)。
 - **Tesla / Optimus 贡献边界**：主页对 Optimus 仅一笔带过；人形控制主线应优先引用 LECAR / GEAR 等当代论文簇，而非将其归因于 Karpathy 个人。
 
+## 源码运行时序图
+
+入口：一次性准备 `uv run prepare.py`；单次实验 `uv run train.py`（固定 5 分钟训练预算）；代理的循环规则见 `program.md`。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 使用者
+  participant G as 编码代理（读 program.md）
+  participant T as train.py（代理唯一修改的文件）
+  participant P as prepare.py（常量 / 数据 / 分词器 / 评测，只读）
+  participant O as GPT 与 MuonAdamW（train.py 内定义）
+  U->>G: 让代理阅读 program.md 并开始实验
+  G->>G: 检查 ~/.cache/autoresearch 的数据分片与分词器（缺失则请人运行 prepare.py）
+  G->>T: 修改模型结构、优化器、超参等
+  G->>T: uv run train.py
+  T->>P: import MAX_SEQ_LEN、TIME_BUDGET、Tokenizer、make_dataloader、evaluate_bpb
+  T->>O: build_model_config(DEPTH) → GPT(config)，meta 设备后 to_empty 与 init_weights
+  T->>O: model.setup_optimizer → MuonAdamW；torch.compile(model)
+  T->>P: make_dataloader(tokenizer, DEVICE_BATCH_SIZE, MAX_SEQ_LEN, "train")
+  loop 直到累计训练时间达到 TIME_BUDGET（300 秒，预热步不计入）
+    loop grad_accum_steps 次微批
+      T->>O: loss = model(x, y)，loss.backward()
+      T->>P: next(train_loader) 取下一批
+    end
+    T->>O: 按训练进度调整 lr、muon momentum、weight decay
+    T->>O: optimizer.step()，zero_grad
+    Note over T: loss 为 NaN 或大于 100 时打印 FAIL（后续分支未细读）
+  end
+  T->>P: evaluate_bpb(model, tokenizer, DEVICE_BATCH_SIZE)
+  T-->>G: 打印 --- 摘要（val_bpb、training_seconds、peak_vram_mb 等）
+  G->>G: 依据 val_bpb 保留或丢弃本次改动，然后重复
+```
+
+图依据：karpathy/autoresearch@228791f，读过 `README.md`、`program.md`（前 60 行）、`train.py`（配置、模型构建、训练循环与摘要输出段）、`prepare.py`（常量、`__main__` 与函数列表）。未运行代码（需单张 NVIDIA GPU 与下载的训练数据）。
+
 ## 关联页面
 
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md)
@@ -120,6 +156,7 @@ flowchart LR
 - [Deep Dive into LLMs（YouTube，2025）](../../sources/courses/karpathy_deep_dive_llms_youtube.md)
 - [LLM Wiki Gist 原始资料](../../sources/blogs/karpathy_llm_wiki_gist.md)
 - [autoresearch 仓库原始资料](../../sources/repos/karpathy-autoresearch.md)
+- 源码核对（2026-11-02）：karpathy/autoresearch@228791f，读过 `README.md`、`program.md`、`train.py`、`prepare.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

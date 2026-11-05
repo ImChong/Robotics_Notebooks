@@ -3,7 +3,7 @@ type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
 updated: 2026-08-25
-arxiv: "2011.08903"
+arxiv: "2009.11193"
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
   - ../overview/embodied-wm-route-model-building.md
@@ -36,12 +36,28 @@ summary: "ContactNets（具身世界模型六路线专题）：结构化状态�
 - 属于六路线 taxonomy 的 **模型构建型**：预测结果被用于 **学习并验证世界预测器本身；输出侧重预测精度、物理一致性与 rollout。**
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  D["状态转移数据 D=(x,u,x')<br/>不需要触觉/力矩传感器"] --> FC["由数据得到净接触冲量观测<br/>F_c,data = M(v'-v) - F_s"]
+  K["已知 M 与 F_s<br/>（手工或已学得的接触无关动力学）"] --> FC
+  P["可学习参数化 φn_θ、φt_θ<br/>J = ∇q φ（反向传播求得）"] --> L
+  FC --> L["损失 L(θ,x,u,x')：对候选接触冲量 λ 求最小<br/>（凸规划，约束 λn≥0、‖λt‖≤λn）"]
+  L --> C["四项代价：预测质量 / 接触激活 / 不穿透 / 最大耗散"]
+  L --> G["灵敏度分析 (osqpth) 求梯度，更新 θ"]
+  G --> P
+  P --> T["测试：用接触仿真公式（Stewart-Trinkle）<br/>预测 F_net 并 rollout"]
+```
+
+图依据：论文 §4 Approach（Fig. 2 概述、§4.1 参数化、§4.2 损失）、§5.2 模型与 rollout。
+
 ## 核心信息
 
 | 项 | 内容 |
 |----|------|
 | **路线** | 模型构建型 |
-| **出处** | [arXiv:2011.08903](https://arxiv.org/abs/2011.08903) |
+| **出处** | [arXiv:2009.11193](https://arxiv.org/abs/2009.11193) |
 | **文内角色** | 结构化状态空间学习接触几何与物理约束的动力学；以预测精度与穿透检验为终点。 |
 
 ## 结论
@@ -54,7 +70,7 @@ summary: "ContactNets（具身世界模型六路线专题）：结构化状态�
 
 ## 实验与评测
 
-- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:2011.08903](https://arxiv.org/abs/2011.08903) 为准。
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:2009.11193](https://arxiv.org/abs/2009.11193) 为准。
 - **该路线该看的指标**：长程预测误差与漂移、物理一致性（穿模 / 能量 / 接触是否自洽）。
 - **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
 
@@ -74,7 +90,10 @@ summary: "ContactNets（具身世界模型六路线专题）：结构化状态�
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- [arXiv PDF](https://arxiv.org/pdf/2009.11193)：已通读方法部分（实验与附录以略读为准）：§4 Approach、§5 Experimental procedure、§6 Results、§7 Conclusion（§1–§3 与附录未细读）
 
 ## 推荐继续阅读
 
-- [arXiv:2011.08903](https://arxiv.org/abs/2011.08903)
+- [arXiv:2009.11193](https://arxiv.org/abs/2009.11193)
+
+- 核对（2026-11-02）：原 arXiv 编号 2011.08903 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2009.11193。

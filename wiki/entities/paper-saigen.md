@@ -35,6 +35,26 @@ summary: "SAIGEN（arXiv:2609.14928）：商用移液/天平/摄像头 + 3D 打�
 - 纳入 [2026-09-15 十篇盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md) 索引。
 - 公众号推荐跟踪方向之一。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["实验目的（自然语言）"] --> C
+    V["语音输入：whisper-large-v3-turbo 转文字"] --> C
+    P["参数设定：表格软件 / 浏览器 GUI"] --> C
+    C["AI agent（Gemini 3.5 Flash）<br/>提示中给定各设备功能、规格、通信协议与 Python 控制命令"] --> D["结构化 JSON 实验流程<br/>设备、操作顺序、参数、等待时间、测量条件"]
+    D --> E["GUI 可视化，用户执行前确认；执行前可程序化校验"]
+    E --> F["生成控制代码；已验证的代码与流程可存为预设复用"]
+    F --> G["控制 PC 经 Wi-Fi/USB 驱动：两台机械臂（各带电动移液器）、两台加热搅拌器、电子天平"]
+    G --> H["示范：溶液 1 与溶液 2 依次吸取并分注到天平上的接收容器"]
+    H --> I["天平称量：记录实际分注质量"]
+    M["监测：机械臂上的 IoT 设备（温湿度、加速度、角速度、磁场）+ 顶置摄像头<br/>YOLOv8 检测机械臂与移液器"] --> L
+    I --> L["带时间戳的过程数据汇总为实验日志"]
+    G -.-> M
+```
+
+图依据：论文 §2.1–2.5（Fig. 1、Fig. 5）与 §3.1 的合成流程
+
 ## 核心原理（方法）
 
 本文最该先读的是它 **刻意不做什么**：不追求 **完全自主** 的材料实验（那条路门槛高、落地少），而是把目标收窄到 **可靠的过程自动化** 与 **过程量的定量记录**。整套系统因此走「便宜、可复制」的路线：
@@ -100,6 +120,7 @@ summary: "SAIGEN（arXiv:2609.14928）：商用移液/天平/摄像头 + 3D 打�
 
 - [SAIGEN 论文摘录](../../sources/papers/saigen_arxiv_2609_14928.md)
 - [具身智能小站 2026-09-15 盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.14928)：已通读方法部分（实验与附录以略读为准）：§2 方法（AI agent 生成控制代码、语音输入、摄像头与 IoT 监测、CAD 设计库、自动化混合系统）、§3.1 合成示范；PDF 标题为 Quantitative control and recording of materials-synthesis processes using an automated experimentation platform（与 sources 归档标题一致，SAIGEN 为仓库简称）
 
 ## 推荐继续阅读
 

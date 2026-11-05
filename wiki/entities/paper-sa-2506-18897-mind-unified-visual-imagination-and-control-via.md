@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Unified visual imagination and control via hierarchical world models.
+Unified visual imagination and control via hierarchical world models.（arXiv 当前版本题为《MinD: Learning A Dual-System World Model for Real-Time Planning and Implicit Risk Analysis》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -41,6 +41,25 @@ Unified visual imagination and control via hierarchical world models.
 - Unified visual imagination and control via hierarchical world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["初始观测 v0 + 语言指令 l"] --> LO["LoDiff-Visual（慢速）\n低频视频生成器，潜空间扩散\n长扩散日程 T′"]
+    LO -->|"推理时仅做单步去噪，得到含噪未来视觉潜变量 v_T′-1"| DM["DiffMatcher\n映射为紧凑特征 z"]
+    DM --> HI["HiDiff-Policy（快速）\n较小的 DiT，较短扩散日程 T″\n以 z 为条件单次前向"]
+    HI --> ACT["高频动作序列 a_1:T″"]
+    subgraph TRAIN["异步联合训练"]
+        direction TB
+        T1["L_total = λv·L_video + λa·L_action + λalign·L_align"]
+        T2["L_align（diffusion-forcing）\n令含噪潜变量与干净潜变量经 DiffMatcher 的输出一致\n（干净侧 stop-gradient）"]
+        T1 --- T2
+    end
+    TRAIN -.训练.-> DM
+```
+
+图依据：论文 Method 各小节 / Fig.3、式 (2)–(6)。
 
 ## 核心信息
 
@@ -97,6 +116,8 @@ Unified visual imagination and control via hierarchical world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.18897>
+- [arXiv PDF](https://arxiv.org/pdf/2506.18897)：已通读方法部分（实验与附录以略读为准）：方法部分 Method: Manipulation in Dream（Hierarchical Diffusion Framework、DiffMatcher、Asynchronous Co-Training、Inference via Single-Step Prediction，含 Fig.3、式 2–6）及实现细节开头；风险分析段仅略读。注：当前 arXiv 版本标题为 MinD: Learning A Dual-System World Model for Real-Time Planning and Implicit Risk Analysis，与页面所列早期标题不同
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-06-23）题 MinD: Unified Visual Imagination and Control via Hierarchical World Models，v2（2025-08-20，现行）改题；本页题名对应 v1；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

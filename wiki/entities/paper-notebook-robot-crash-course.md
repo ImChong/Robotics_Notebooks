@@ -37,6 +37,29 @@ summary: "尽管行走越来越鲁棒，双足机器人在真实世界仍有跌�
 - **姿态采样**是获得鲁棒性与泛化（未见终姿）的简单有效手段；
 - **与 SafeFall、自保护跌落、Unified Fall-Safety 同簇**，共同构成跌落安全研究群（本文出自 Disney/ETH 系，偏「风格化」控制）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PREP["训练前准备"]
+        sens["用户指定机器人部件敏感度 w_c<br/>（训练时固定）"]
+        pose["采样式终姿生成<br/>随机关节 + 去自碰撞 + 俯仰/偏航采样<br/>冻结驱动器落地至静止，按根朝向分箱均衡"]
+        init["初始状态随机化<br/>根 roll/pitch、根速度、关节速度；过滤穿地与自碰撞"]
+    end
+    subgraph TRAIN["训练：PPO（Isaac 仿真）"]
+        pol["策略 π(a_t | s_t, g_t)<br/>输出 PD 关节位置设定值"]
+        rew["奖励 r_t = 终姿跟踪 + 冲击 + 正则 + 常数偏置<br/>冲击：敏感度加权接触力 + 根加速度<br/>跟踪项由三次样条 u(t) 在 T_blend 内渐入"]
+        pol --> rew --> pol
+    end
+    sens --> rew
+    pose --> pol
+    init --> pol
+    pol --> inf["推理：用户给定期望终姿 g<br/>变换为路径系下的时变目标 g_t"]
+    inf --> fall["受控跌倒：减小冲击，同时到达指定终姿"]
+```
+
+图依据：论文 §III / §IV-A 至 §IV-D / Fig.2。
+
 ## 解决什么问题
 
 防摔再好也无法**完全杜绝**跌倒。当跌倒发生时： - 要**减小损伤**； - 还希望能**指定落地终止姿态**（如朝某方向、保护某侧）； - 且要对**各种初始跌倒条件**都鲁棒、支持**任意未见终姿**。
@@ -87,6 +110,7 @@ summary: "尽管行走越来越鲁棒，双足机器人在真实世界仍有跌�
 - [humanoid_pnb_robot-crash-course.md](../../sources/papers/humanoid_pnb_robot-crash-course.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling.html>
 - 论文：<https://arxiv.org/abs/2511.10635>
+- [arXiv PDF](https://arxiv.org/pdf/2511.10635)：已通读方法部分（实验与附录以略读为准）：§III、§IV-A 至 §IV-D
 
 ## 推荐继续阅读
 

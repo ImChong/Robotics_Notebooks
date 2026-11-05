@@ -33,6 +33,30 @@ summary: "把 HMR 从\"先估姿态、再做物理后修\"的两段式拼接，�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["单目视频帧 It"] --> PRE["逐帧预处理：图像特征 / bbox / 2D 关键点 / 相对相机旋转"]
+    PRE --> ENC["冻结的 GVHMR 视频编码器 → 视觉特征 Ft"]
+    ENC --> DT["预测未来根朝向 → 相对根朝向 Δτt"]
+    PRE --> LIFT["Pixel-as-Ray：2D 关键点反投影为 3D 射线，经 c2w 变换到世界系"]
+    LIFT --> DISP["仿真人形关节到射线的垂直位移 dit"]
+    SIM1["Isaac Gym 仿真：本体状态 s_p"] --> POL
+    ENC --> POL
+    DT --> POL
+    DISP --> POL["视觉到动作策略 π_PhysHMR"]
+    POL --> ACT["目标关节旋转 → PD 控制 → Isaac Gym 仿真"]
+    ACT --> OUT["物理合理的人体运动"]
+    ACT --> SIM1
+    subgraph TRN["训练阶段"]
+        MC["mocap 训练的模仿专家（教师，输入真值姿态）"] -->|"动作蒸馏 L_distill"| POL
+        RW["复合奖励：R_pose + R_amp(AMP) + R_energy → PPO"] --> POL
+    end
+```
+
+图依据：论文 §4 / Fig. 2、§4.1-4.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -65,6 +89,7 @@ summary: "把 HMR 从\"先估姿态、再做物理后修\"的两段式拼接，�
 - [humanoid_pnb_physhmr.md](../../sources/papers/humanoid_pnb_physhmr.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/PhysHMR__Learning_Humanoid_Control_Policies_from_Vision_for_Physical_HMR/PhysHMR__Learning_Humanoid_Control_Policies_from_Vision_for_Physical_HMR.html>
 - 论文：<https://arxiv.org/abs/2510.02566>
+- [arXiv PDF](https://arxiv.org/pdf/2510.02566)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 预备知识、§4 方法（4.1 局部视觉参考、4.2 Pixel-as-Ray 全局引导、4.3 蒸馏与总损失/奖励）；实验与附录仅略读。
 
 ## 推荐继续阅读
 

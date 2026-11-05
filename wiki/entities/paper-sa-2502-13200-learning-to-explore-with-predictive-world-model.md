@@ -42,6 +42,26 @@ Learns to explore with predictive world models via self-supervised learning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  S[环境状态 s_t] --> ENC[编码器 E: 3 层 2D 卷积 + 线性层]
+  ENC --> X[视觉特征 x_t]
+  X --> ATT[key-value 注意力<br/>决定各模块 active / inactive / expected]
+  ATT --> ACT[active LSTM 模块 → 当前状态表示 h_t]
+  ATT --> EXP[expected LSTM 模块 → 对 s_t+1 的预期表示 ĥ_t]
+  ACT --> POL[策略网络 π]
+  POL --> A[动作 a_t 作用于环境]
+  A --> S
+  ACT --> RW[内在奖励 r_int = h 与 ĥ 的差异 / n]
+  EXP --> RW
+  RW -->|最大化累计内在奖励| POL
+  EXP --> LW[世界模型回归损失 L_W: MSE]
+```
+
+图依据：论文 §4 Proposed Model / Fig.2、式 (4)–(8)；箭头顺序（上一时刻 ĥ 与当前 h 比较）为按文字归纳
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Learns to explore with predictive world models via self-supervised learning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.13200>
+- [arXiv PDF](https://arxiv.org/pdf/2502.13200)：已通读方法部分（实验与附录以略读为准）：§4 Proposed Model
 
 ## 推荐继续阅读
 

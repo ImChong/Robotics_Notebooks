@@ -10,7 +10,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-02
+updated: 2026-11-04
 arxiv: '2212.06817'
 code: https://github.com/google-research/robotics_transformer
 related:
@@ -62,8 +62,8 @@ venue: RSS 2023
 
 - 纳入 [VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md) 的奠基篇。
 - **历史帧** 对操作至关重要：单帧策略在时序任务上明显不足。
-- TokenLearner 把视觉 token 从数千压到约 **81**，使 Transformer 可训练。
-- **已开源** JAX 实现，是读 [RT-2](./paper-rt-2.md) / [OpenVLA](./paper-openvla.md) 前的架构对照。
+- TokenLearner 将每帧视觉 token 从 **81 压缩至 8**，使 Transformer 可训练。
+- **已公开**模型代码与 TensorFlow SavedModel 检查点，是读 [RT-2](./paper-rt-2.md) / [OpenVLA](./paper-openvla.md) 前的架构对照。
 
 ## 核心信息
 
@@ -72,7 +72,7 @@ venue: RSS 2023
 | **机构** | 谷歌 DeepMind（Google DeepMind） |
 | **数据** | ~130k 演示，700+ 任务 |
 | **视觉** | EfficientNet-B3 + TokenLearner |
-| **动作** | 各维 256 离散 bin，自回归 |
+| **动作** | 连续动作维度离散为 256 个 bin；另有模式切换 |
 | **开源** | **已开源** [google-research/robotics_transformer](https://github.com/google-research/robotics_transformer) |
 
 ### 流程总览
@@ -80,16 +80,16 @@ venue: RSS 2023
 ```mermaid
 flowchart LR
   img[6 帧历史 RGB] --> enc[EfficientNet-B3]
-  lang[语言指令] --> film[FiLM]
-  enc --> film
-  film --> tl[TokenLearner ~81]
+  lang[语言指令] --> film[FiLM 条件化]
+  film --> enc
+  enc --> tl[TokenLearner 每帧 81 至 8]
   tl --> dec[Transformer Decoder]
   dec --> act[256-bin 动作 token]
 ```
 
 ## 评测
 
-- 大规模厨房类真机多任务：强调 **数据规模 + 简单架构** 优于小数据复杂模块。
+- 论文表 2：已见任务 97%、未见任务 76%、干扰物 83%、背景变化 59%；均为对应测试集的成功率。
 - 消融重点是历史上下文与 token 压缩，而非更重的视觉骨干。
 - 具体成功率表以 [原文](https://arxiv.org/abs/2212.06817) 为准。
 
@@ -101,24 +101,11 @@ flowchart LR
 - Token 压缩是算力门槛，不是精度装饰
 - 离散动作 bin 把连续控制变成语言模型可解的序列问题
 - 读后续 VLA 时先对照：有没有历史、如何压视觉 token、动作是否仍是 bin
-- 官方仓可跑推理；训练规模仍依赖内部数据管线
+- 官方仓提供模型组件和检查点；完整训练数据与复现链路需另核实
 
 ## 源码运行时序图
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Dev as 开发者
-    participant Repo as google-research/robotics_transformer
-    participant Enc as 视觉+语言编码
-    participant Dec as Transformer Decoder
-    participant Robot as 真机/仿真
-    Dev->>Repo: clone + JAX 环境
-    Dev->>Enc: 历史帧 + 指令
-    Enc->>Dec: 压缩 token
-    Dec->>Robot: 离散动作 bin
-    Robot-->>Dev: 任务结果
-```
+**待核实。** 官方仓提供模型代码、测试和 TensorFlow SavedModel 检查点；现有通用示意图未对应实际调用入口，已移除。需阅读具体源码后补充时序图。
 
 ## 局限与风险
 
@@ -169,3 +156,6 @@ sequenceDiagram
 - 论文：<https://www.roboticsproceedings.org/rss19/p025.pdf>
 
 - [原论文与官方资源](https://robotics-transformer1.github.io)
+
+
+> 本次核查：论文 [arXiv v2](https://arxiv.org/abs/2212.06817v2) 与[官方项目页](https://robotics-transformer1.github.io/)；全文及源码调用链仍需完整复核。

@@ -38,6 +38,34 @@ HEAD（Hand-Eye Autonomous Delivery）是一个直接从人类动作与视觉感
 - **感知-动作解耦**提升可扩展性，是模块化的经典收益；
 - 把"导航 + 触达"统一在一个框架，贴近真实递送任务。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    U["用户在初始 RGB 图像上<br/>选定 2D 目标点"] --> T["Point tracker<br/>在新图像中持续跟踪 2D 目标"]
+    subgraph HL["高层策略（较低频率）"]
+        N["导航模块<br/>DINO 特征 + 目标坐标位置编码<br/>Transformer decoder 预测未来相机轨迹 C(t:t+T)"]
+        R["到达模块<br/>目标近似为 3D 手位置<br/>Mink 逆运动学补全头部 6D 位姿与手朝向"]
+        N -->|"目标进入下视 RGB-D 视野且在可达范围内<br/>经 correspondence matching 转移目标"| R
+    end
+    T --> N
+    N -->|"眼睛 / 头部目标位姿"| W
+    R -->|"头部 + 双手 6D 目标位姿"| W
+    subgraph LL["低层全身控制器（较高频率）"]
+        W["三点跟踪策略：眼睛、左手、右手<br/>GAN-like 模仿 RL，上 / 下半身两个判别器<br/>观测不含世界系根位置与速度"]
+    end
+    W -->|"PD 伺服"| ROBOT["Unitree G1 全身运动"]
+    ROBOT -->|"新的相机观测"| T
+    subgraph DATA["导航模块训练数据"]
+        D1["Aria Glasses 人类数据<br/>+ ADT 大规模数据<br/>去畸变与单应变换，使其接近机器人视角"]
+        D2["少量机器人数据<br/>动捕记录头部位姿"]
+    end
+    D1 --> N
+    D2 --> N
+```
+
+图依据：论文 §3 / Fig.2、Fig.3、Fig.4
+
 ## 解决什么问题
 
 人形要在**为人类设计的环境**里完成**递送**类任务，需要**导航 + 行走 + 触达**三种能力协同： - 端到端学习高自由度全身 + 感知很难、数据贵； - 想**复用海量人类数据**（动捕 + 第一视角）来学。
@@ -89,6 +117,7 @@ HEAD 要：用模块化把感知与动作解耦，**直接从人类数据**学�
 - [humanoid_pnb_head.md](../../sources/papers/humanoid_pnb_head.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/HEAD__Hand-Eye_Autonomous_Delivery_Humanoid_Navigation_Locomotion_and_Reaching/HEAD__Hand-Eye_Autonomous_Delivery_Humanoid_Navigation_Locomotion_and_Reaching.html>
 - 论文：<https://arxiv.org/abs/2508.03068>
+- [arXiv PDF](https://arxiv.org/pdf/2508.03068)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 Whole-body Controller、3.2 Navigation Module、3.3 Reaching Module）、§4.1 硬件设置
 
 ## 推荐继续阅读
 

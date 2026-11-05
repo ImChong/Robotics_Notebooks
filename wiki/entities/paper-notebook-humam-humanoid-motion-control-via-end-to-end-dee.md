@@ -31,7 +31,29 @@ HuMam 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["机器人自身状态 s_robot<br/>腿部 12 关节位置/速度、根部 roll/pitch、角速度"] --> C["拼接状态 s_t"]
+    B["外部状态 s_ext<br/>后续 2 个规划落脚点 + 步态时钟 (sin, cos)"] --> C
+    C --> D["投影模块 f_proj<br/>得到 robot / ext 两个 token 嵌入"]
+    D --> E["单层 Mamba 编码器<br/>门控状态空间动态，仅用当前状态"]
+    E --> F["聚合特征 h_t = f_head([y_robot; y_ext])"]
+    F --> G["策略头 π：期望关节位置 a_t ∈ R12<br/>（40Hz，叠加名义半坐姿偏置）"]
+    F --> V["价值头 V"]
+    G --> H["低增益 PD 控制器 (1000Hz)<br/>转为关节力矩"]
+    H --> I["仿真环境 / 人形机器人"]
+    I --> J["奖励 R_t：足端接触力、摆动速度、落脚精度<br/>+ 朝向、身高、上身稳定（加权和）"]
+    I --> C
+    J --> K["PPO 更新（共享 Mamba 表示的策略与价值）"]
+    V --> K
+    K --> E
+```
+
+图依据：论文 §3.1–3.4 / Fig.1，式 (2)–(5)、(12)–(17)。
 
 ## 核心信息
 
@@ -64,6 +86,7 @@ HuMam 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 - [humanoid_pnb_humam-humanoid-motion-control-via-end-to-end-dee.md](../../sources/papers/humanoid_pnb_humam-humanoid-motion-control-via-end-to-end-dee.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2509.18046>
+- [arXiv PDF](https://arxiv.org/pdf/2509.18046)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（3.1–3.4）
 
 ## 推荐继续阅读
 

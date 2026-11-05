@@ -42,6 +42,24 @@ Employs differentiable physics simulation to end‑to‑end identify 3D rigid‑
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["目标域：机器人腕部相机围绕物体采集多视角图像"] --> B["渲染对齐<br/>优化 2D Gaussian Splatting 参数 α，随后冻结"]
+    B --> C["任务无关交互 a_t：源域与目标域施加相同动作"]
+    C --> D["源域可微物理：LCP 刚体动力学 θ = 质量惯量、恢复系数、摩擦"]
+    D --> E["可微渲染 I(g(x_t, a_t, θ), α*)"]
+    E --> F["渲染损失 L_r 对比目标域观测"]
+    F -->|梯度回传更新 θ| D
+    F --> G["PIN-WM：识别出的物理与渲染参数"]
+    G --> H["物理感知数字表亲 PADC<br/>在 α_sh, θ* 附近均匀扰动 δ = 0.1"]
+    H --> I["PPO 在扰动世界模型群中学习视觉控制策略"]
+    I --> J["零样本部署到真实目标域<br/>Push 与 Flip 任务"]
+```
+
+图依据：论文 §III-A 总体框架、§III-B 物理感知世界模型、§III-C 数字表亲 / Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Employs differentiable physics simulation to end‑to‑end identify 3D rigid‑
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.16693>
+- [arXiv PDF](https://arxiv.org/pdf/2504.16693)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 相关工作、§III 方法（A–C，含 Fig. 2）、§IV 评测设定；实验表格与附录略读
 
 ## 推荐继续阅读
 

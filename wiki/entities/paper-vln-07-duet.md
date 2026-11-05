@@ -37,6 +37,30 @@ sources:
 - 拓扑建图路线的代表性工作，在 R2R、REVERIE、SOON 等多 benchmark 达到当时 SOTA。
 - 在线拓扑建图 + 粗粒度全局规划与细粒度局部动作编码动态融合，双尺度图 Transformer 输出决策。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["输入：指令词嵌入 W<br/>当前节点全景图像特征 Rt + 物体特征 Ot"] --> TE["Text Encoder<br/>多层 Transformer → 词表示"]
+    I --> M["拓扑建图 Topological Mapping<br/>把当前节点与相邻未访问节点加入图 Gt<br/>(visited / navigable / current 三类节点)"]
+    M --> NV["节点视觉表示<br/>Transformer 编码 Rt,Ot → 平均池化得到节点特征 vi"]
+    NV --> CE["粗尺度 Cross-modal Encoder<br/>节点 + 位置/步数编码，图感知自注意力 GASA + 交叉注意力"]
+    NV --> FE["细尺度 Cross-modal Encoder<br/>当前节点细粒度 Rt,Ot + 位置编码，多层交叉模态 Transformer"]
+    TE --> CE
+    TE --> FE
+    CE --> GS["全局动作得分 sc<br/>覆盖图中所有节点 + stop"]
+    FE --> LS["局部动作得分 sf + 物体得分"]
+    LS --> CV["局部转全局动作空间<br/>非邻居节点用回溯得分 sback"]
+    CE --> SG["门控 σt = Sigmoid(FFN(v0, r0))"]
+    FE --> SG
+    GS --> DF["动态融合<br/>s = σt·sc + (1−σt)·sf"]
+    CV --> DF
+    SG --> DF
+    DF --> P["Floyd 最短路径规划到目标节点，或 stop 并选物体"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.4（训练：行为克隆预训练 + 伪交互示教器 PID，见 §3.3）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -91,6 +115,7 @@ sources:
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2202.11742>
+- [arXiv PDF](https://arxiv.org/pdf/2202.11742)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 Topological Mapping、3.2 Global Action Planning、3.3 Training and Inference）
 
 ## 推荐继续阅读
 

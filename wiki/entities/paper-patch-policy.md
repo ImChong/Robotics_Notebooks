@@ -13,6 +13,23 @@ summary: "Patch Policy 直接使用预训练 ViT 的密集 patch token，以块�
 
 **Patch Policy** 是一种不依赖大型 VLM、直接把预训练 ViT 密集 patch 特征接入机器人策略 transformer 的轻量架构。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  OBS["多视角图像观测 o_t"] --> VIT["预训练 ViT 编码器 (冻结)<br/>取全部 patch 特征 P×D"]
+  GOAL["目标: 图像经同一编码器<br/>或目标向量 g 拼接到每个 token"] --> CAT["拼接得到 T×P×(...) 输入张量"]
+  VIT --> CTX["滚动上下文窗口 T 帧"]
+  CTX --> CAT
+  CAT --> FLAT["展平为 T×P 序列<br/>+ 可学习 1D 位置编码"]
+  FLAT --> TR["Transformer 策略<br/>block-causal mask: 帧内双向, 帧间因果"]
+  TR --> HEAD["动作头 (VQ-BeT 或 Diffusion Policy)<br/>在每帧最后一个 patch token 输出动作块"]
+  HEAD --> ACT["执行动作 (receding horizon)"]
+  ACT -. "新观测" .-> OBS
+```
+
+图依据：论文 §2.1 Observation Trunk、§2.2 Policy Learning / Fig. 2。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -72,4 +89,5 @@ summary: "Patch Policy 直接使用预训练 ViT 的密集 patch token，以块�
 
 - [论文归档](../../sources/papers/patch_policy_arxiv_2607_18236.md)
 - [项目页归档](../../sources/sites/patch-policy-github-io.md)
+- [arXiv PDF](https://arxiv.org/pdf/2607.18236)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Patch Policy（2.1 Observation Trunk、2.2 Policy Learning）、§3.1–3.3 实验设置与基线
 

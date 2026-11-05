@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2512.06724"
+arxiv: "2506.09995"
 venue: "NeurIPS 2025"
 summary: "First photorealistic open-world egocentric simulator supporting unrestricted free exploration and full motion control"
 related:
@@ -64,7 +64,7 @@ flowchart TB
   DiT --> DEC["VAE 解码器：世界一致的第一人称视频"]
 ```
 
-图依据：论文 §3.2 Model Components / Fig.2、§3.3（注意：页面 arXiv 号 2512.06724 对应的是另一篇无关论文，PlayerOne 的正确编号为 arXiv:2506.09995，图按后者绘制；frontmatter 未改）
+图依据：论文 §3.2 Model Components / Fig.2、§3.3。
 
 ## 核心信息
 
@@ -73,7 +73,7 @@ flowchart TB
 | 编号 | 114/249 |
 | 分组 | 28 Egocentric World Models |
 | 出处 | NeurIPS 2025 |
-| 论文 | <https://arxiv.org/abs/2512.06724> |
+| 论文 | <https://arxiv.org/abs/2506.09995> |
 
 ## 核心机制（归纳）
 
@@ -86,7 +86,7 @@ First photorealistic open-world egocentric simulator supporting unrestricted fre
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2512.06724) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2506.09995) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -119,10 +119,11 @@ First photorealistic open-world egocentric simulator supporting unrestricted fre
 - [`sources/papers/sun_awesome_ego_2512_06724_playerone-egocentric-world-simulator.md`](../../sources/papers/sun_awesome_ego_2512_06724_playerone-egocentric-world-simulator.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2512.06724>
-- [arXiv PDF](https://arxiv.org/pdf/2506.09995)：PlayerOne 的正确编号为 2506.09995（页面所列 2512.06724 对应无关论文《Central elements and evaluation map for the quantum queer superalgebras》）；已通读方法部分（实验与附录以略读为准）：§3.2 Model Components、§3.3 Training Strategy
+- 论文：<https://arxiv.org/abs/2506.09995>
+- [arXiv PDF](https://arxiv.org/pdf/2506.09995)：已通读方法部分（实验与附录以略读为准）：§3.2 Model Components、§3.3 Training Strategy
+- 编号核对（2026-11-02）：上游清单登记的 2512.06724 经 arXiv 官方记录核对为《Central elements and evaluation map for the quantum queer superalgebras》，与本页论文不符；已更正为 2506.09995《PlayerOne: Egocentric World Simulator》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2512.06724)
+- [原文](https://arxiv.org/abs/2506.09995)

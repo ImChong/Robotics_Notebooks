@@ -43,6 +43,34 @@ Dynamic Gaussian splatting for multi-task robotic manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    OBS["单视角 RGB-D 观测 o_t"]
+    VOX["Lifting + 体素化"]
+    REP["表征网络 q: 视觉特征 v_t"]
+    REG["Gaussian 回归器 g: 高斯参数 theta_t (位置, 颜色, 旋转, 尺度, 不透明度, 语义特征)"]
+    DEF["形变预测器 p: 由 theta_t 与动作 a_t 预测 位置/旋转 变化"]
+    NEXT["传播得到 theta_(t+1)"]
+    REND["Gaussian 渲染器: 重建当前/未来多视角图像"]
+    LOSS["一致性监督: 当前场景 + 语义特征 (Stable Diffusion) + 未来场景"]
+    PIO["PerceiverIO + 文本指令: 预测平移/旋转/夹爪开合/碰撞"]
+    OBS --> VOX
+    VOX --> REP
+    REP --> REG
+    REG --> DEF
+    DEF --> NEXT
+    REG --> REND
+    NEXT --> REND
+    REND --> LOSS
+    REG --> PIO
+    PIO --> ACT["机器人动作 a_t"]
+    ACT --> DEF
+```
+
+图依据：论文 Method: Overall Pipeline, Dynamic Gaussian Splatting, Gaussian World Model, Learning Objectives / Fig.2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +126,7 @@ Dynamic Gaussian splatting for multi-task robotic manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2403.08321>
+- [arXiv PDF](https://arxiv.org/pdf/2403.08321)：已通读方法部分（实验与附录以略读为准）：Method 全部小节 (Overall Pipeline 至 Learning Objectives)
 
 ## 推荐继续阅读
 

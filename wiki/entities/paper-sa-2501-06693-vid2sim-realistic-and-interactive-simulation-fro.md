@@ -42,6 +42,22 @@ A novel framework that bridges the sim2real gap through a scalable real2sim pipe
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["单目视频"] --> R["几何一致的 GS 重建<br/>RGB + 尺度不变深度/法向损失<br/>Lgeo + Lscale"]
+    R --> M["TSDF 导出场景网格"]
+    R --> H["混合场景表示<br/>GS 负责渲染，网格(不可见)负责碰撞<br/>Unity 物理仿真，屏幕空间协方差剔除浮点"]
+    M --> H
+    H --> C["交互场景组合<br/>静态障碍 + A* 动态行人"]
+    C --> AUG["场景增强<br/>光照/季节/语义编辑，粒子天气"]
+    AUG --> T["视觉导航 RL 训练<br/>RGB 历史帧 + 目标距离/朝向"]
+    T --> Z["零样本实机部署<br/>轮式配送机器人"]
+```
+
+图依据：论文 §4（4.1-4.2）、Fig. 2 与 §5.2-5.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ A novel framework that bridges the sim2real gap through a scalable real2sim pipe
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2501.06693>
+- [arXiv PDF](https://arxiv.org/pdf/2501.06693)：已通读方法部分（实验与附录以略读为准）：§1-§5 主体（方法 §4、实验设定 §5）；附录略读
 
 ## 推荐继续阅读
 

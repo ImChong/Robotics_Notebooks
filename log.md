@@ -251,6 +251,85 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-05] ingest | sources/papers/global_style_transfer_arxiv_2608_11546.md — 收录 GST 风格迁移与评测，作者页面未公开实现
+
+## [2026-11-05] ingest | sources/papers/yolo27-alphaxiv-overview.md — 收录 YOLO27 预发布综述，记录官方预览差异与待核查项
+
+## [2026-11-05] ingest | sources/papers/gradsplat_2610_38951.md — 收录梯度细化三维高斯重建，公开推理与权重
+
+## [2026-11-05] ingest | sources/repos/pixelfx.md — 收录像素特效库、技能及渲染流程
+
+## [2026-11-05] ingest | 具身智能小站 2026-11-05《人能稳稳提起的罐子，换一双机器手怎么提？》43 篇逐篇建独立详情节点（新建 28 / 复用 15），arXiv 标题日期逐篇核对，开源状态逐项核查
+
+## [2026-11-05] structural | docs/main.js, docs/style.css — 路线页（主路线 + 纵深路线）知识地图改为学习路线图样式（左侧阶段栏 + 单阶段小树 + 前置 / 通往标签，全局总览改为各阶段小树自上而下排开），参照 Robot_Learning_Paper_Notebooks 首页推荐学习路线图
+
+## [2026-11-05] ingest | sources/blogs/alex_where_physical_ai_is_heading_2026-11-05.md — 整理 Physical AI 仿真、形态与部署观点
+
+## [2026-11-05] ingest | Zane Hub 第383篇《现在人形关节模组电机的驱控算法框架是什么？》：新建人形关节驱控三层框架概念页，核对 MIT Cheetah / Berkeley Humanoid 数字（电流环 400 Hz 无依据），回链阻抗控制页
+
+## [2026-11-05] ingest | sources/repos/lerobot.md — 固定版本核对 LeRobot README 模型清单，模型独立详情与原文源码核查待完成
+
+## [2026-11-05] ingest | LeRobot README 32 个模型逐个核对一手论文与固定提交源码：新建 8 个节点（VQ-BeT/Multitask DiT/TDMPC/GR00T N1.7/XVLA/EO-1/SARM/Robometer 等），其余补流程图与源码运行时序图并纠正旧页差异
+
+## [2026-11-05] ingest | sources/repos/tencent-hy4-preview.md — 整理 Hy4 预览版架构、微调源码与正式版待核验边界
+
+## [2026-11-05] ingest | 具身智能研究室《这三年，机器人训练越来越快，数据重定向能不能借通用运控再往前走一步？》：16 个方法逐个核对均已有独立节点，补全 7 个并新建概览页，更正 GMR 论文归属与 FRDV 代码状态
+
+## [2026-11-05] ingest | sources/repos/mika.md — 收录 Android 手机智能体及其源码调用路径
+
+## [2026-11-05] ingest | sources/repos/frax.md — 收录开源 JAX 运动学动力学库及人形重定向实例
+
+## [2026-11-05] ingest | sources/repos/tencent-octop.md — 收录自托管多用户多智能体平台及源码启动流程
+
+## [2026-11-04] ingest | 新机器视觉《2026年了，主流具身智能算法有哪些？》：20 个算法逐个回一手资料核对（新建 3 / 复用 15 / 无法定位 2），指出 Octo、OpenVLA 数字与 README 不一致
+
+## [2026-11-04] ingest | 大凡光学《一文看懂三种标定原理：张正友、九点、手眼标定全解析》：新建相机标定三层概念页，核对 Zhang 2000 一手摘要，回链手眼标定页（无论文/项目清单）
+
+## [2026-11-05] ingest | sources/papers/tacclaw_infinity_arxiv_2610_20320.md — 补充论文全文、实验结果与源码调用，确认部分开放
+
+## [2026-11-04] ingest | 深蓝AI《彻底搞懂RRT与RRT*》：新建 RRT / RRT* / RRT-Connect / Informed RRT* 四个方法节点（算法教程，无项目清单）
+
+## [2026-11-04] ingest | 具身智能小站 2026-11-04《机器人做错了，奖励模型为什么还在加分？》57 篇逐篇建独立详情节点（新建 54 / 复用 3，保留库内已有 6 篇来源笔记）
+
+## [2026-11-04] ingest | sources/papers/hug_arxiv_2611_01659.md — 收录 HuG 人形全身抓取；项目页未能访问，开放状态待核查
+
+## [2026-11-04] ingest | sources/repos/agent-autoloop.md — 收录命令行智能体事件调度与源码运行路径，协议复核待完成
+
+## [2026-11-04] ingest | 收录 MAPO 和 VLALagBench 论文草稿，全文及开源状态待核查
+
+## [2026-11-04] ingest | sources/papers/visualforce_arxiv_2610_04741.md — 收录视觉预测力与开源实现，区分论文和代码反馈路径
+
+## [2026-11-04] ingest | sources/repos/vlx-flow.md — 收录流式视频理解与双层记忆，模型实现和权重待发布
+
+## [2026-11-04] ingest | sources/papers/nablamimic-2610-41654.md — 补充论文机制、实验边界与训练源码调用链
+
+## [2026-11-03] ingest | Qt历险记《C/C++ 运动控制开源库分类整理》：14 个项目逐个回一手资料核对（新建 7 / 复用 7），标出许可与实时性等与文章不一致处
+
+## [2026-11-03] ingest | FAITH 可行性感知安全过滤 RL
+
+- 通读 arXiv v1，归档论文与方法，区分仿真量化结果和真机定性演示。
+- 未发现可运行官方代码；记录理论假设及安全保证边界。
+
+## [2026-11-03] ingest | sources/papers/diffdreamer_arxiv_2610_31617.md — 收录世界模型与可微仿真耦合四旋翼控制，官方实现待核实
+
+## [2026-11-03] ingest | sources/papers/policy_coverage_reliability_arxiv_2611_01565.md — 收录策略覆盖度与可靠性；代码链接未开放，附录待通读
+
+## [2026-11-03] ingest | sources/papers/vista_arxiv_2610_35051.md — 收录主动探索与 harness 进化，记录项目页访问限制
+
+## [2026-11-03] ingest | sources/papers/uni_robot_agent_arxiv_2611_01560.md — 收录开放模型机器人智能体，原文及项目页面待完成核查
+
+## [2026-11-03] ingest | 具身智能小站 2026-11-03《机器人不仅要完成任务，还要知道哪里出了错》49 篇逐篇建独立详情节点（新建 44 / 复用 5）
+
+## [2026-11-03] ingest | sources/repos/sts32xx-firmware.md — 收录伺服固件控制流程、源码路径与演示边界
+
+## [2026-11-03] ingest | Zane Hub《目前灵巧手行业的核心企业，它们的优势体现在哪些方面？》：新建综述概念页 + 8 个企业/产品独立节点，复用 4 个（企业数据为作者表述未核实）
+
+## [2026-11-03] ingest | NablaEngine 与 Movens-Zero 一手资料归档；全文及源码分析待完成
+
+## [2026-11-03] ingest | sources/papers/s4vy_arxiv_2609_36875.md — 收录 S4VY 4D 实例分割及官方实现
+
+## [2026-11-03] ingest | sources/papers/gpt_6_astra_embodied_intelligence_arxiv_2610_22471.md — 更新报告与源码开放状态，补充评测协议及真机结果草稿
+
 ## [2026-11-02] ingest | sources/papers/care_arxiv_2602_03473.md — 收录 CaRE 双层路由持续学习及官方代码数据
 
 ## [2026-11-02] ingest | sources/sites/moss-api-platform.md — 收录模思开放平台接口与开源边界

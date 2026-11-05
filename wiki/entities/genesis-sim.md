@@ -75,3 +75,7 @@ related:
 - [sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md)
 - [Genesis Project Page](https://genesis-world.github.io/)
 - [Genesis: A Generative and Universal Physics Engine（arXiv）](https://arxiv.org/abs/2412.12919)
+
+## 推荐继续阅读
+
+- [机器人论文阅读笔记：Genesis](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Genesis__A_Generative_and_Universal_Physics_Engine_for_Robotics_and_Beyond/Genesis__A_Generative_and_Universal_Physics_Engine_for_Robotics_and_Beyond.html)

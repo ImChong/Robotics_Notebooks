@@ -42,6 +42,26 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    R["真实相机图像 r"] --> GS["生成器 GS：真实 → 仿真"]
+    GS --> SH["仿真风格图像 ŝ"]
+    SH --> POLICY["在仿真中训练的 DRL 策略"]
+    POLICY --> ACT["控制指令"]
+    S["仿真图像 s"] --> GR["生成器 GR：仿真 → 真实"]
+    GR --> RH["真实风格图像"]
+    SH -.-> DS["判别器 DS：GAN 损失"]
+    RH -.-> DR["判别器 DR：GAN 损失"]
+    SH -.-> CYC["循环一致性损失"]
+    RH -.-> CYC
+    SH -.-> SEM["语义损失（fS 分割网络，仅有语义真值的仿真域）"]
+    SH -.-> SHIFT["位移损失 shift loss：保证相邻帧输出一致"]
+```
+
+图依据：论文 §III（A 问题形式化、B CycleGAN 损失、C 语义损失、D 位移损失、E 完整目标）/ Fig.1（VR-Goggles 流水线）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Adaptation。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1802.00265>
+- [arXiv PDF](https://arxiv.org/pdf/1802.00265)：已通读方法部分（实验与附录以略读为准）：§I-II 相关工作中与方法相关部分、§III 方法（A-E）、§IV-A 与 §IV-B 实验设置
 
 ## 推荐继续阅读
 

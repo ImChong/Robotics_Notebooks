@@ -11,7 +11,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-02
+updated: 2026-11-04
 arxiv: '2405.12213'
 code: https://github.com/octo-models/octo
 related:
@@ -27,6 +27,7 @@ related:
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
 - ../overview/vla-history-rt1-to-molmoact-technology-map.md
+- ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
 - ../../sources/papers/octo_arxiv_2405_12213.md
 - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -35,6 +36,7 @@ sources:
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
 - ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
+- ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 summary: Octo（arXiv:2405.12213）：开源通用机器人策略；灵活 token 输入 + 独立读出头；~27M 即可工作。canonical 论文节点从方法页迁到本页。
 project_id: octo
 venue: RSS 2024

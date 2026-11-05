@@ -31,7 +31,34 @@ AMOR 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见「流程总览」（依据论文方法部分），不给实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+    REF["参考动作序列 m_t"]
+    VAE["VAE 编码动作窗口 → 隐变量 z_t"]
+    CTX["运动上下文 c_t = (m_t, z_t)"]
+    W["每个 episode 从单纯形采样奖励权重 w（Dirichlet）"]
+    POL["AMOR 策略 π(a_t | s_t, c_t, w)"]
+    SIM["仿真角色 / 机器人"]
+    RV["7 维向量奖励：上身、下身、脚、刚体、根、速度、平滑"]
+    MOPPO["MOPPO：向量价值函数 + 权重标量化优势"]
+    HLP["高层策略 HLP：按 s_t, c_t 输出 w_t（softmax）"]
+    DISC["判别器隐式奖励 r_D"]
+    REF --> VAE --> CTX --> POL
+    W --> POL
+    POL -->|"动作 a_t"| SIM
+    SIM --> RV
+    RV --> MOPPO
+    MOPPO -.->|"更新"| POL
+    HLP -->|"冻结 AMOR，在线给出 w_t"| POL
+    SIM --> DISC
+    DISC -.->|"PPO 训练 HLP"| HLP
+```
+
+图依据：论文 §3 AMOR Overview、§4.2、§5、§6（Fig.2 / Fig.3）。
 
 ## 核心信息
 
@@ -64,6 +91,7 @@ AMOR 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - [humanoid_pnb_amor-adaptive-character-control-through-multi-ob.md](../../sources/papers/humanoid_pnb_amor-adaptive-character-control-through-multi-ob.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.23708>
+- [arXiv PDF](https://arxiv.org/pdf/2505.23708)：已通读方法部分（实验与附录以略读为准）：§3–§6（方法）、§7 开头的评测设定（实验结果略读）
 
 ## 推荐继续阅读
 

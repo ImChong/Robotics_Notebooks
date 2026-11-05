@@ -42,6 +42,33 @@ Surveys world models for robotic manipulation through three questions: what futu
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  D["§II 范围与操作性定义<br/>predictive、world-grounded、intervention-aware；排除纯感知模块、inverse model、无显式预测的 policy、孤立的 reward/value model"] --> R["§III Representations<br/>按结构化归纳偏置递增排列的五个家族"]
+  R --> R1["A Image and Video"]
+  R --> R2["B Learned Latent"]
+  R --> R3["C Motion Fields and Scene Flow"]
+  R --> R4["D Geometric and Spatiotemporal"]
+  R --> R5["E Physics-Informed Dynamics"]
+  R1 --> F["§IV 按 prediction–action 接口的功能分类"]
+  R2 --> F
+  R3 --> F
+  R4 --> F
+  R5 --> F
+  F --> F1["A Integrated Prediction–Action Models"]
+  F --> F2["B Explicit Predictive Planners<br/>subgoal、trajectory、structured plan；hierarchical 变体"]
+  F1 --> I["§V World Models as Learning and Decision Infrastructure<br/>Synthetic Experience Generation、Candidate-Action Filtering and Refinement、Search-Based Action Evaluation、Learned Environments、Outcome Scoring and Feasibility Verification"]
+  F2 --> I
+  I --> L["§VI 跨学习生命周期：Pretraining → Post-Training → Inference Adaptation"]
+  L --> V["§VII Datasets for World-Model Learning"]
+  V --> B["§VIII Benchmarks and Evaluation"]
+  B --> X["§IX Conclusion"]
+```
+
+图依据：综述分类体系图，论文 §I 末尾的章节安排、Fig. 1（三条组织轴）、Fig. 2（表示谱系）、Fig. 3（prediction–action 接口分类）、Fig. 4（五种基础设施角色）、Fig. 5（学习生命周期）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +123,7 @@ Surveys world models for robotic manipulation through three questions: what futu
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.00113>
+- [arXiv PDF](https://arxiv.org/pdf/2606.00113)：已通读摘要、§I–§II、§III–§VI 小节标题与 Fig. 1–5 图注及部分正文、§VIII 开头；§VII 数据集表、§VIII 其余部分与参考文献以略读为准。
 
 ## 推荐继续阅读
 

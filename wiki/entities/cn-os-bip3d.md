@@ -55,6 +55,52 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`bash engine.sh configs/bip3d_det.py`（单卡 → `python ./tools/train.py <config> --work-dir ./work-dir`，多卡 → `tools/dist_train.sh`）；评测 `bash test.sh <config> <ckpt>`（单卡 → `python3 tools/test.py`）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / engine.sh、test.sh
+    participant T as tools/train.py、tools/test.py
+    participant R as mmengine Runner
+    participant D as bip3d/datasets<br/>EmbodiedScanDetGroundingDataset + transforms
+    participant P as bip3d/models/data_preprocessors<br/>CustomDet3DDataPreprocessor
+    participant M as bip3d/models/structure.py<br/>BIP3D(BaseDetector)
+    participant F as feature_enhancer.py /<br/>spatial_enhancer.py
+    participant DEC as bip3d/models/bbox3d_decoder.py<br/>BBox3DDecoder (+ instance_bank.py)
+    participant E as bip3d/eval<br/>metrics（IndoorDetMetric）
+
+    U->>T: engine.sh → python tools/train.py configs/*.py
+    T->>T: from bip3d import *（注册模型/数据集）；Config.fromfile
+    T->>R: Runner.from_cfg(cfg)；runner.train()
+    loop IterBasedTrainLoop（max_iters）
+        R->>D: 取 batch（pipeline：多视角图像/深度加载、增强、文本）
+        R->>P: 预处理 / 打包
+        R->>M: model.loss(batch_inputs, batch_data_samples)
+        M->>M: _forward → extract_feat（backbone[Swin] + neck；可选 backbone_3d 处理深度）
+        M->>M: extract_text_feature（BertModel + text_feat_map）
+        M->>F: feature_enhancer(feature_maps, feature_3d, text_dict)
+        M->>F: spatial_enhancer(...) → depth_prob, loss_depth（若配置）
+        M->>DEC: decoder(feature_maps, text_dict, depth_prob, ...)
+        DEC->>DEC: instance_bank.get → anchor / instance_feature
+        loop operation_order（默认 gnn、text_cross_attn、deformable、ffn、refine 循环）
+            DEC->>DEC: 各层更新 instance_feature 与 anchor，输出 prediction / classification
+        end
+        M->>DEC: decoder.loss(model_outs, batch_inputs, text_dict)
+        DEC-->>R: loss dict → OptimWrapper(AdamW) 反传
+    end
+    R-->>U: work-dir 下 checkpoint（CheckpointHook）
+
+    U->>T: test.sh → python3 tools/test.py config ckpt
+    T->>R: Runner.from_cfg；runner.test()
+    R->>M: model.predict → decoder.post_process
+    R->>E: test_evaluator = IndoorDetMetric（configs/bip3d_det.py）
+    E-->>U: 评测结果
+```
+
+图依据：HorizonRobotics/BIP3D@b1ed6a8，读过 README.md、docs/quick_start.md、engine.sh、test.sh、tools/train.py、configs/bip3d_det.py（model 与 dataset 段落）、bip3d/models/structure.py、bip3d/models/bbox3d_decoder.py（forward 与 loss 的主干部分）、bip3d/models/instance_bank.py（方法清单）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +112,7 @@ institutions:
 - [BIP3D 源码归档](../../sources/repos/bip3d.md)（<https://github.com/HorizonRobotics/BIP3D>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：HorizonRobotics/BIP3D@b1ed6a8，读过 README.md、docs/quick_start.md、engine.sh、test.sh、tools/train.py、configs/bip3d_det.py（局部）、bip3d/models/structure.py、bip3d/models/bbox3d_decoder.py（局部）、bip3d/models/instance_bank.py（方法清单）；feature_enhancer / spatial_enhancer / 数据集 transforms / eval 模块内部未读；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -32,7 +32,26 @@ Embracing Bulky Objects with Humanoid Robots 的人形机器人学习论文条�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["AMASS 动捕 (SMPL)<br/>MaskedMimic 过滤得到可行人体运动 D_h"] --> B["H2O 重定向到人形机器人<br/>得到机器人运动数据集 D_r"]
+    B --> C["教师策略 π_teacher（PHC 框架，PPO，MLP）<br/>输入本体状态 + 参考运动目标 → 精确跟踪动作 a*"]
+    C --> D["VAE 式运动先验蒸馏（PULSE）<br/>编码器 E / 解码器 D / 可学习先验 R<br/>L = L_action + α·L_regu + β·L_KL"]
+    D --> E["冻结解码器 D 与先验 R<br/>得到低维潜在动作空间"]
+    F["任务观测 s_task = 解码器输入 s_d + 任务特征 s_s<br/>箱体/目标距离与方向、NSDF 特征 d_t"] --> G["任务策略 π_task（PPO）<br/>输出潜在动作 z_t"]
+    G --> H["z_t + 先验均值 μ_p → 解码器 D → 机器人动作 a_t"]
+    E --> H
+    H --> I["仿真中接近 → 抱起 → 搬运箱体"]
+    I --> J["奖励：任务 (walk/carry/arm/NSDF) + 平滑 + 物理限制"]
+    J --> G
+    K["随机初始化三类场景：<br/>远处接近 / 拾取区预抱姿态 / 已抱住物体"] --> I
+```
+
+图依据：论文 §III-A–C / Fig.2、Fig.3，式 (1)–(11)。
 
 ## 核心信息
 
@@ -64,7 +83,7 @@ Embracing Bulky Objects with Humanoid Robots 的人形机器人学习论文条�
 
 - [humanoid_pnb_embracing-bulky-objects-with-humanoid-robots.md](../../sources/papers/humanoid_pnb_embracing-bulky-objects-with-humanoid-robots.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2509.13534)：已通读方法部分（实验与附录以略读为准）：§III 方法（III-A–C）
 
 ## 推荐继续阅读
 

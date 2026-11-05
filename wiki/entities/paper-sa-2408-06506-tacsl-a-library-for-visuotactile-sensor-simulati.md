@@ -42,6 +42,35 @@ GPU-based visuotactile sensor simulation over 200× faster than prior SOTA withi
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SIM["Isaac 仿真器中的 GPU 并行触觉仿真"]
+        PHYS["接触仿真：PhysX 求解器 + Kelvin-Voigt 软接触约束"] --> DEPTH["传感器内相机渲染深度图 Idepth"]
+        DEPTH --> RGB["查找表映射 Irgb = F(Idepth)：触觉 RGB 图像"]
+        PHYS --> SDF["触觉点查询接触物体 SDF：穿透深度 d 与梯度"]
+        SDF --> FF["罚函数模型：法向力 + 切向（剪切）力场"]
+    end
+    subgraph LEARN["策略学习"]
+        EXPERT["特权状态 PPO 专家（低维输入）"] --> DIST["策略蒸馏：BC 离线 / DAgger 在线（专家概率 β 递减）"]
+        EXPERT --> AACD["AACD：预训练低维 critic 引导高维 actor"]
+        AAC["非对称 actor-critic：actor 用触觉图像，critic 用特权状态"]
+    end
+    subgraph S2R["Sim-to-real"]
+        RAND["软接触刚度/阻尼随机化"] --> TWO["两阶段：低维专家（物理随机化）→ 蒸馏到触觉策略"]
+        AUG["触觉图像增强：平移/缩放 + 颜色随机化"] --> TWO
+    end
+    RGB --> DIST
+    FF --> DIST
+    RGB --> AACD
+    DIST --> TWO
+    AACD --> TWO
+    TWO --> REAL["部署到真实机器人"]
+```
+
+图依据：论文 §III 快速视触觉仿真（Fig.3、Fig.7）、§IV 高效视触觉策略学习（Algorithm 2、3，Fig.4、Fig.5）、§V 视触觉 sim-to-real 迁移。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +125,7 @@ GPU-based visuotactile sensor simulation over 200× faster than prior SOTA withi
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2408.06506>
+- [arXiv PDF](https://arxiv.org/pdf/2408.06506)：已通读方法部分（实验与附录以略读为准）：§III 快速视触觉仿真、§IV 策略学习、§V sim-to-real 迁移；§VI 实验略读
 
 ## 推荐继续阅读
 

@@ -40,6 +40,29 @@ GAIT 把足式机器人的本体感知测量做成「惯性-腿部（Inertial-Le
 - **学习 + 滤波的干净接口**：网络只负责出「速度 + 不确定度」，重活交给 IEKF，兼顾学习的表达力与滤波的几何一致性
 - **实时友好**：亚毫秒推理 + 极低 FLOPs，可直接跑在机载算力受限的四足 / 人形上
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[IMU：角速度 ω、线加速度 a] --> B[两个独立 embedding 层<br/>惯性 token ×2]
+    C[每条腿：关节位置 q、关节速度 q̇、跟踪误差 e_q] --> D[共享 embedding 层<br/>腿 token × Nc]
+    B --> E[IL-axis + history-axis 2D 位置编码<br/>历史 Nt 步，训练时随机 mask token]
+    D --> E
+    E --> F[Perceiver IO encoder 交叉注意力<br/>latent token 为 Q，输入 token 为 K/V]
+    F --> G[编码输出 + 当前步惯性 token 拼接]
+    G --> H[GRU-MLP：机身线速度]
+    G --> I[GRU-MLP：不确定度 u]
+    H --> J[伪测量：网络预测的机身系线速度]
+    I --> K[协方差 Σ = diag e^2u]
+    J --> L[IEKF 修正步<br/>右不变观测]
+    K --> L
+    M[原始 IMU 数据] --> N[IEKF 传播步]
+    N --> L
+    L --> O[机身位姿 / 速度状态]
+```
+
+图依据：论文 §II 系统概述、§III-A/B（Fig.2）、§IV-B。
+
 ## 解决什么问题
 
 足式机器人估计机身速度 / 位姿时，主流有两条路，各有死结：
@@ -90,6 +113,7 @@ GAIT 把足式机器人的本体感知测量做成「惯性-腿部（Inertial-Le
 - [humanoid_pnb_gait.md](../../sources/papers/humanoid_pnb_gait.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/GAIT__Legged_Robot_Proprioceptive_State_Estimation_with_Attention_over_Inertia/GAIT__Legged_Robot_Proprioceptive_State_Estimation_with_Attention_over_Inertia.html>
 - 论文：<https://arxiv.org/abs/2606.14160>
+- [arXiv PDF](https://arxiv.org/pdf/2606.14160)：已通读方法部分（实验与附录以略读为准）：§II、§III-A 至 §III-D、§IV（含 Fig.2）
 
 ## 推荐继续阅读
 

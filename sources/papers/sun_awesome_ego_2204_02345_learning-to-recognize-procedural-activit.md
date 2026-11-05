@@ -6,9 +6,10 @@
 - **分组：** 292 Procedural Learning
 - **编号：** 128/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2204.02345
+- **arXiv：** 2201.10990
+- **编号核对：** 上游清单登记的 2204.02345 经 arXiv 官方记录核对为另一篇论文《Splitting of elliptic flow in a tilted fireball》，与本条目不符；已更正为 2201.10990《Learning To Recognize Procedural Activities with Distant Supervision》（核对日期 2026-11-02）。
 - **出处：** CVPR 2022
-- **论文：** <https://arxiv.org/abs/2204.02345>
+- **论文：** <https://arxiv.org/abs/2201.10990>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Distant supervision based procedural activity recognition framework

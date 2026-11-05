@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2504.07892"
+arxiv: "2406.08379"
 venue: "CVPR 2025"
 summary: "First unsupervised mistake detection method leveraging eye-gaze signals for skilled procedural activities"
 related:
@@ -42,6 +42,28 @@ First unsupervised mistake detection method leveraging eye-gaze signals for skil
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["第一人称视频 V 与 2D 注视轨迹 T（眼动仪）<br/>时刻 t 取最近 F 帧"] --> HM["前半段注视轨迹 → 高斯热图堆栈 Q<br/>（只取前 F/2 帧）"]
+    IN --> TOK["视频帧 → 卷积 token embedding → 视觉 token"]
+    HM --> F1["路径1 通道融合<br/>热图作为额外输入通道加到前 F/2 帧"]
+    HM --> F2["路径2 相关融合<br/>热图 → 单个注视 token"]
+    F1 --> ENC["Transformer 编码器"]
+    TOK --> ENC
+    F2 --> ENC
+    ENC --> COR["注视-视觉相关模块<br/>仅在注视 token 与视觉 token 间做注意力"]
+    COR --> DEC["Transformer 解码器"]
+    DEC --> QH["预测注视热图 Q̂（KL 散度监督，真值为后半段轨迹）"]
+    QH --> PK["峰值检测 → 预测轨迹 T̂（后半段）"]
+    PK --> SC["评分函数：与真实后半段轨迹比较<br/>欧氏距离 / DTW / 热图似然 / 熵（熵无需真值注视）"]
+    QH --> SC
+    SC --> TH["错误分数 s_t > 阈值 θ 判为错误"]
+```
+
+图依据：论文 §3.1–3.2 / Fig.1–2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +71,7 @@ First unsupervised mistake detection method leveraging eye-gaze signals for skil
 | 编号 | 120/249 |
 | 分组 | 291 Procedural Error Detection |
 | 出处 | CVPR 2025 |
-| 论文 | <https://arxiv.org/abs/2504.07892> |
+| 论文 | <https://arxiv.org/abs/2406.08379> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +84,7 @@ First unsupervised mistake detection method leveraging eye-gaze signals for skil
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2504.07892) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2406.08379) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +117,11 @@ First unsupervised mistake detection method leveraging eye-gaze signals for skil
 - [`sources/papers/sun_awesome_ego_2504_07892_gazing-into-missteps-leveraging-eye-gaze.md`](../../sources/papers/sun_awesome_ego_2504_07892_gazing-into-missteps-leveraging-eye-gaze.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2504.07892>
+- 论文：<https://arxiv.org/abs/2406.08379>
+- [arXiv PDF](https://arxiv.org/pdf/2406.08379)：已通读方法部分（实验与附录以略读为准）：§3.1–3.2（含 Fig.2、四种评分函数）
+- 编号核对（2026-11-02）：上游清单登记的 2504.07892 经 arXiv 官方记录核对为《Orbit design for mitigating interstellar scattering effects in Earth-space VLBI observations of Sgr A*》，与本页论文不符；已更正为 2406.08379《Gazing Into Missteps: Leveraging Eye-Gaze for Unsupervised Mistake Detection in Egocentric Videos of Skilled Human Activities》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2504.07892)
+- [原文](https://arxiv.org/abs/2406.08379)

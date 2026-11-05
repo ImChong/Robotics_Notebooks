@@ -225,6 +225,7 @@ Isaac Sim 将一组可复用工作流指南随产品发布，让 AI 编码 Agent
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：HumanoidVLN](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/HumanoidVLN__Physics-Grounded_Simulator_and_Benchmark_for_Vision-Language_Navigation/HumanoidVLN__Physics-Grounded_Simulator_and_Benchmark_for_Vision-Language_Navigation.html)
 - Isaac Sim 文档首页：<https://docs.isaacsim.omniverse.nvidia.com/latest/index.html>
 - 开源仓库：<https://github.com/isaac-sim/IsaacSim>
 - Core API：<https://docs.isaacsim.omniverse.nvidia.com/latest/py/source/extensions/isaacsim.core.api/docs/index.html>

@@ -41,6 +41,26 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Randomization。
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SIMT["仿真训练"]
+        CAN["固定（canonical）视角 RGBD 观测，数据增强"] --> ENC
+        MOV["随机变化视角（moving view）观测，数据增强"] --> ENC
+        ENC["视觉编码器：ResNet18 前两层 + STN 模块（透视变换）"]
+        ENC --> OBJ["多视角表征目标：InfoNCE 对比损失 + 特征图对齐损失"]
+        ENC --> ACT["Actor head → 动作"]
+        ENC --> CRIT["Critic head → 价值"]
+        CUR["课程式域随机化：随机化强度随训练按指数调度增大"] -.-> CAN
+        CUR -.-> MOV
+    end
+    ACT --> POL["仿真训练得到的策略"]
+    POL -->|"零样本迁移"| REAL["真实世界单视角输入 → 视觉编码器 → 策略头 → 执行动作"]
+```
+
+图依据：论文 §2 Method（Fig.2、§2.1 多视角表征目标、§2.2 课程域随机化、§2.3 STN 模块）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +115,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Randomization。
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2407.15815>
+- [arXiv PDF](https://arxiv.org/pdf/2407.15815)：已通读方法部分（实验与附录以略读为准）：§2 方法（多视角表征目标、课程域随机化、STN 模块）；§3 实验略读
 
 ## 推荐继续阅读
 

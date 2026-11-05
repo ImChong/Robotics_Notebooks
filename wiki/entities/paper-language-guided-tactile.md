@@ -35,6 +35,28 @@ summary: "Language-Tactile（arXiv:2609.14783）：语言描述作硬件无关�
 - 纳入 [2026-09-15 十篇盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md) 索引。
 - 公众号推荐跟踪方向之一。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["触觉图像 x (来自不同传感器)"] --> B["Tactile Encoder: ViT (可训练, 学生)"]
+    L["触觉属性文本描述 ℓ (传感器无关)"] --> C["Language Encoder: BART (冻结, 教师)"]
+    B --> D["触觉嵌入 z_tactile"]
+    C --> E["语言嵌入 z_text"]
+    D --> F["温度 T 软化 Softmax"]
+    E --> F
+    F --> G["特征级蒸馏损失 KL(p_t ‖ p_s)"]
+    D --> H["触觉 logits + 监督交叉熵 L_student"]
+    G --> I["总损失 (α 平衡监督项与蒸馏项)"]
+    H --> I
+    I -->|更新 θ| B
+    D --> J["蒸馏后编码器冻结"]
+    J --> K["轻量分类器 h_φ (新传感器少样本微调)"]
+    K --> M["材料类别预测 ŷ"]
+```
+
+图依据：论文 §III、§IV-A 至 §IV-D / Fig. 2。
+
 ## 核心原理（方法）
 
 视觉式触觉传感器的老问题：**同一材料、不同传感器、不同观测**——光学设计、弹性体特性、照明各不相同，在一种传感器上训好的编码器换一种就塌。论文的切入点是找一个 **跨硬件不变的监督信号**：
@@ -98,6 +120,7 @@ summary: "Language-Tactile（arXiv:2609.14783）：语言描述作硬件无关�
 
 - [Language-Tactile 论文摘录](../../sources/papers/language_tactile_arxiv_2609_14783.md)
 - [具身智能小站 2026-09-15 盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.14783)：已通读方法部分（实验与附录以略读为准）：§III 问题形式化、§IV 方法（A 语言编码器、B 触觉视觉编码器、C 跨模态蒸馏、D 分类微调）
 
 ## 推荐继续阅读
 

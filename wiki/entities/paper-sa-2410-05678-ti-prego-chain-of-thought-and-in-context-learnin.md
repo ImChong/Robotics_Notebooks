@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2410.05678"
+arxiv: "2411.02570"
 venue: "arXiv 2024"
 summary: "Enhances PREGO with chain-of-thought and in-context learning for improved online error detection"
 related:
@@ -42,6 +42,22 @@ Enhances PREGO with chain-of-thought and in-context learning for improved online
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["在线输入视频帧窗口 f_τ-w : f_τ"] --> REC["Step Recognition 模块 ρ（MiniROAD）：识别当前步骤 s^ρ_τ"]
+    REC --> AGG["Step aggregation（NOMA：非重叠窗口取众数，再去除相邻重复），得到 AG"]
+    CTX["上下文 C：同一物体其他视频的步骤序列"] --> ANT
+    AGG --> ANT["Step Anticipation 模块 ξ（LLM）：ACoT 推理后预测下一步 s^ξ_τ，无需微调"]
+    REC --> CMP{"比较 s^ρ_τ 与 s^ξ_τ"}
+    ANT --> CMP
+    CMP -->|"不一致"| MIS["MISTAKE"]
+    CMP -->|"一致"| COR["CORRECT"]
+```
+
+图依据：论文 arXiv 2411.02570 的 §3 Methodology（§3.1–§3.4）与 Fig.2、式 (1)–(2)、§3.2 的 NOMA 聚合策略。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +65,7 @@ Enhances PREGO with chain-of-thought and in-context learning for improved online
 | 编号 | 124/249 |
 | 分组 | 291 Procedural Error Detection |
 | 出处 | arXiv 2024 |
-| 论文 | <https://arxiv.org/abs/2410.05678> |
+| 论文 | <https://arxiv.org/abs/2411.02570> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +78,7 @@ Enhances PREGO with chain-of-thought and in-context learning for improved online
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2410.05678) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2411.02570) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +111,11 @@ Enhances PREGO with chain-of-thought and in-context learning for improved online
 - [`sources/papers/sun_awesome_ego_2410_05678_ti-prego-chain-of-thought-and-in-context.md`](../../sources/papers/sun_awesome_ego_2410_05678_ti-prego-chain-of-thought-and-in-context.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2410.05678>
+- 论文：<https://arxiv.org/abs/2411.02570>
+- [arXiv PDF](https://arxiv.org/pdf/2411.02570)：已通读方法部分（实验与附录以略读为准）：§3.1 预备、§3.2 步骤识别与聚合、§3.3 步骤预测、§3.4 错误检测
+- 编号核对（2026-11-02）：上游清单登记的 2410.05678 经 arXiv 官方记录核对为《Polynomial and combinatorial analogues of Gauss congruence》，与本页论文不符；已更正为 2411.02570《TI-PREGO: Chain of Thought and In-Context Learning for Online Mistake Detection in PRocedural EGOcentric Videos》。
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2410.05678)
+- [原文](https://arxiv.org/abs/2411.02570)

@@ -14,7 +14,7 @@ summary: "Deep Imitation Learning for Humanoid Loco-manipulation through Human T
 
 # Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperation
 
-**Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：07_Teleoperation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
+**Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperation** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：07_Teleoperation）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文（方法部分的流程见下方「流程总览」）。
 
 ## 一句话定义
 
@@ -31,7 +31,31 @@ Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperati
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，方法部分的流程见「流程总览」，不给方法结论与实验数字。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    VR["VR 遥操作（Oculus Quest 2）<br/>手柄位姿 → 双手 setpoint；按键触发预定义步态序列"] --> DEMO["演示数据集 D = (s_i, u_i)<br/>观测 + 手部 setpoint / 抓取 / 步态指令"]
+    DEMO -->|"行为克隆（BC-RNN）"| PH
+    subgraph PH["高层视觉运动策略 πH（20 Hz）"]
+        IMG["立体相机图像 → ResNet-18"] --> LSTM["LSTM"]
+        PRO["本体感觉：手脚位置 / 关节状态 / 状态机状态"] --> LSTM
+        LSTM --> GMM["GMM 输出手部位姿 setpoint → 轨迹插值"]
+        LSTM --> GRIP["抓取开关"]
+        LSTM --> GAIT["步态触发（Bernoulli）+ 运动类型"]
+    end
+    GMM --> U["任务空间指令 u"]
+    GRIP --> U
+    GAIT --> DCM["DCM 步态规划 → 肢体轨迹"]
+    DCM --> U
+    U --> WBC["低层全身控制器 πL（IHWBC，100 Hz）<br/>计算关节力矩"]
+    WBC --> ROBOT["人形机器人（DRACO 3）"]
+    ROBOT -->|"关节状态与传感器反馈"| PH
+```
+
+图依据：论文 §III-A/B/C/D、Fig. 2。
 
 ## 核心信息
 
@@ -50,7 +74,7 @@ Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperati
 
 **本页目前是一条「已排期、未深读」的待读条目：它只标出「人类遥操作 → 深度模仿学习 → 人形 loco-manipulation」这条线这条线上还有这么一篇，具体结论要等读完。**
 
-- 可确认的只有索引层信息——arXiv 2309.01952、分类 07_Teleoperation，以及计划中的笔记文件夹；标题指向"用人类遥操作数据做深度模仿学习"这一命题，具体的采集方式、策略结构与实机设置页内均未展开。
+- 可确认的只有索引层信息——arXiv 2309.01952、分类 07_Teleoperation，以及计划中的笔记文件夹；标题指向"用人类遥操作数据做深度模仿学习"这一命题，采集方式与策略结构见「流程总览」，实机设置页内未展开。
 - 适用边界：适合作为检索入口，经[分类页](../overview/paper-notebook-category-07-teleoperation.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)交叉定位同类工作；不足以支撑方案对比或工程选型。
 - 主要风险是把待读条目误读成已消化的结论：量化 benchmark、消融与实机指标本页全部缺失，深读状态须回到 PROGRESS.md 跟踪，任何结论都应回到论文原文核对。
 
@@ -64,7 +88,9 @@ Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperati
 - [humanoid_pnb_deep-imitation-learning-for-humanoid-loco-manipu.md](../../sources/papers/humanoid_pnb_deep-imitation-learning-for-humanoid-loco-manipu.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2309.01952>
+- [arXiv PDF](https://arxiv.org/pdf/2309.01952)：已通读方法部分（实验与附录以略读为准）：§III-A 问题建模、§III-B 遥操作系统、§III-C 全身控制、§III-D 视觉运动策略训练；§IV-A 实验设定（数据采集）
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/TRILL__Deep_Imitation_Learning_for_Humanoid_Loco-manipulation_through_Human_Teleoperation/TRILL__Deep_Imitation_Learning_for_Humanoid_Loco-manipulation_through_Human_Teleoperation.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

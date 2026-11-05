@@ -6,9 +6,10 @@
 - **分组：** 28 Egocentric World Models
 - **编号：** 114/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2512.06724
+- **arXiv：** 2506.09995
+- **编号核对：** 上游清单登记的 2512.06724 经 arXiv 官方记录核对为另一篇论文《Central elements and evaluation map for the quantum queer superalgebras》，与本条目不符；已更正为 2506.09995《PlayerOne: Egocentric World Simulator》（核对日期 2026-11-02）。
 - **出处：** NeurIPS 2025
-- **论文：** <https://arxiv.org/abs/2512.06724>
+- **论文：** <https://arxiv.org/abs/2506.09995>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** First photorealistic open-world egocentric simulator supporting unrestricted free exploration and full motion control

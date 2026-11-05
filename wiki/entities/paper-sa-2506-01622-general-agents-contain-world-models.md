@@ -42,6 +42,22 @@ General agents contain world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["给定目标条件策略 π(a | h; ψ)（有界 agent，失败率 δ、最大目标深度 n）"] --> B["选定状态 s、动作 a、结果 s'，以及备选动作 b ≠ a"]
+    B --> C["构造 LTL 子目标：φ1 = 最终到达 s 并执行 a；φ2 = 下一步到 s'；φ2' = 下一步到 s' 以外"]
+    C --> D["对 k = 1…n 构造复合目标 ψ_a,b(k) = ψ_a(k) ∨ ψ_b(k)：先执行 a 或 b，再接 n 轮 (成功 / 失败) 序列，两者成功次数门槛不同"]
+    D --> E["查询策略 π 的第一个动作 a0"]
+    E --> F{"a0 = a ？"}
+    F -- "否，k 加 1" --> D
+    F -- "是，记 k*" --> G["估计 P̂_ss'(a) = (k* - 1/2) / n"]
+    G --> H["遍历所有 (s, a, s') 得到完整转移函数，即从策略中提取的世界模型"]
+```
+
+图依据：论文 §2 Setup / §3 Theorem 1 / §3.1 与附录 C Algorithm 1（本文为理论工作，图为从策略恢复世界模型的算法流程，Algorithm 2 为其简化版）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ General agents contain world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.01622>
+- [arXiv PDF](https://arxiv.org/pdf/2506.01622)：已通读方法部分（实验与附录以略读为准）：§2 Setup（目标、agent、世界模型定义）、§3 主要结果 Theorem 1、附录 C Algorithm 1/2；证明细节与实验略读
 
 ## 推荐继续阅读
 

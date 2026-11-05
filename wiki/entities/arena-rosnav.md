@@ -108,11 +108,47 @@ flowchart LR
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — Arena 属其 ③ 策略任务成功率评测层的社交导航仿真基准；仿真指标外推真机需 ④ sim↔real 校准
 - [CommNav](./paper-commnav.md) — **主动通信** 找人导航（Habitat）；Arena 侧重 **避障与社交距离** 连续导航。
 
+## 源码运行时序图
+
+入口：`roslaunch arena_bringup start_arena.launch model:=<机器人> local_planner:=<规划器> simulator:=flatland`（参数默认值见该 launch 文件：`local_planner` 默认 `teb`，`simulator` 默认 `flatland`，可选 `gazebo`、`unity`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 使用者
+  participant L as start_arena.launch
+  participant S as 仿真器 launch（flatland / gazebo / unity）
+  participant E as entity_manager.launch（flatland / pedsim / crowdsim）
+  participant TG as task_generator（TaskGenerator，task_generator_node.py）
+  participant TF as TaskFactory.combine
+  participant RL as testing/robot.launch（每个机器人）
+  participant P as 规划栈（local_planner / inter_planner）
+  U->>L: roslaunch start_arena.launch（写入 model、planner、complexity 等参数）
+  L->>E: include entity_manager.launch
+  L->>S: include 所选仿真器 launch
+  L->>L: include map_server.launch、fake_localization.launch
+  L->>TG: include testing/task_generator.launch → task_generator/scripts/main.py
+  TG->>TG: SimulatorFactory.instantiate(get_simulator())，ModelLoader 读取机器人模型
+  TG->>TF: combine(modules)，附加 CLEAR_FORBIDDEN_ZONES、RVIZ_UI（map_file 为 dynamic_map 时再加 DYNAMIC_MAP）
+  TG->>TG: _create_robot_managers 与 obstacle / world 管理器
+  TG->>TG: reset_task(first_map=True)，发布 scenario_reset，rospy.Timer 每 0.5 秒检查 is_done
+  Note over L,RL: testing/robot.launch（每台机器人一份；拉起方未核实）按 local_planner、complexity 配置
+  RL->>P: 设置 local_planner、inter_planner 参数；complexity>1 时启用 AMCL
+  RL->>P: plan manager 提供全局规划与代价地图（move_base 风格）
+  loop 每个场景
+    TG->>TG: is_done 时 reset_task()，重新生成地图、障碍与机器人位置（发布 scenario_reset）
+  end
+  Note over TG,U: 外部也可调用 reset_task 服务；scenario_finished 话题在非训练模式下发布
+```
+
+图依据：arena-rosnav@5de9d38，读过 `arena_bringup/launch/start_arena.launch`（参数、include 列表）、`task_generator/scripts/main.py`、`task_generator/task_generator/task_generator_node.py`（`__init__`、组合任务、`reset_task`、`_check_task_status`）、`arena_bringup/launch/testing/robot.launch`（前 50 行）；`TaskFactory` 仅检索了 `combine` 定义。`testing/task_generator.launch`、`entity_manager.launch`、规划器各节点内部未读，相应消息仅到 launch 层级。未运行代码（需 ROS 环境与仿真器）。
+
 ## 参考来源
 
 - [Arena 5.0 项目页](../../sources/sites/5-arena-rosnav.md)
 - [Arena-Rosnav 仓库归档](../../sources/repos/arena-rosnav.md)
 - [Arena 论文谱系（4.0 arXiv / 5.0 RSS）](../../sources/papers/arena_rosnav_lineage.md)
+- 源码核对（2026-11-02）：Arena-Rosnav/arena-rosnav@5de9d38，读过 `arena_bringup/launch/start_arena.launch`、`arena_bringup/launch/testing/robot.launch`、`task_generator/scripts/main.py`、`task_generator/task_generator/task_generator_node.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

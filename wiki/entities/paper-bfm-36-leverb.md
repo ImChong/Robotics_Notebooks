@@ -41,6 +41,34 @@ sources:
 - 视觉-语言指令压成适合全身的 latent；语义到身体接口。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#36/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["Step 1 合成数据：IsaacSim 光线追踪渲染<br/>154 条重定向动作 × 随机化<br/>+ 文本指令标注"] --> VL
+    subgraph VLT["Step 2 LeVERB-VL 训练（System 2）"]
+        VL["VLA prior：冻结 SigLIP 视觉编码器（第一人称+第三人称）<br/>+ 文本编码器 → Transformer → μρ, σρ"]
+        KE["运动学编码器 Eψ：未来状态 s(t+1:t+M) → μE, σE"]
+        VL --> RZ["残差潜变量 z：μ = μρ + μE，σ = σE"]
+        KE --> RZ
+        RZ --> KD["运动学解码器 Dψ：重建未来状态（MSE）"]
+        RZ --> DISC["判别器 + 梯度反转层 GRL<br/>对齐有图像 / 无图像（白噪声）数据"]
+    end
+    RZ --> CACHE["缓存各 rollout 的 latent verb z"]
+    subgraph AT["Step 3 LeVERB-A 训练（System 1）"]
+        PPO["PPO 训练运动跟踪教师策略 Tξ（特权观测）"] --> DAG["DAgger 蒸馏 + Huber loss"]
+        CACHE --> DAG
+        DAG --> STU["Transformer 学生策略 LeVERB-A"]
+    end
+    subgraph DEP["部署：双过程推理"]
+        I["图像 + 文本指令"] --> VL2["LeVERB-VL（10 Hz）→ 预测均值 μρ"]
+        VL2 --> ACT["LeVERB-A（50 Hz）+ 本体感知 → 关节位置动作"]
+    end
+    STU --> ACT
+```
+
+图依据：论文 §3、§4.1–4.3 / Fig.3（训练流水线）与式(1)(2)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +118,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2506.13751>
+- [arXiv PDF](https://arxiv.org/pdf/2506.13751)：已通读方法部分（实验与附录以略读为准）：§3 数据集、§4 双过程控制（4.1–4.3）
 
 ## 推荐继续阅读
 

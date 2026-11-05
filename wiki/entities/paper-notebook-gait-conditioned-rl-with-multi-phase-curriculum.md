@@ -31,7 +31,31 @@ Gait-Conditioned RL with Multi-Phase Curriculum for Humanoid Locomotion 的人�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见「流程总览」（依据论文方法部分），不给实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    CMD["速度指令 + 机器人状态"]
+    GID["推断步态 ID 并 one-hot 编码：Stand / Walk / W2S / Run / R2W"]
+    ACTOR["Actor：LSTM + MLP，输入本体观测 + 步态编码"]
+    CRITIC["Critic：LSTM + MLP，额外输入特权信息"]
+    PD["23 维关节位置偏移 → PD 控制器 → G1 仿真"]
+    MASK["步态掩码：只激活当前步态相关的奖励项"]
+    REW["共享奖励（任务跟踪、正则）+ 步态专属奖励"]
+    CUR["三阶段课程：Walk → +Stand/W2S → +Run/R2W；指令速度逐步扩大"]
+    CMD --> GID --> ACTOR
+    GID --> CRITIC
+    ACTOR --> PD
+    PD --> REW
+    GID --> MASK --> REW
+    REW --> CRITIC
+    REW -.->|"策略优化"| ACTOR
+    CUR -.->|"控制步态模式与速度范围"| GID
+```
+
+图依据：论文 §III-B / C / D、Fig.2 / Fig.3。
 
 ## 核心信息
 
@@ -64,6 +88,7 @@ Gait-Conditioned RL with Multi-Phase Curriculum for Humanoid Locomotion 的人�
 - [humanoid_pnb_gait-conditioned-rl-with-multi-phase-curriculum.md](../../sources/papers/humanoid_pnb_gait-conditioned-rl-with-multi-phase-curriculum.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.20619>
+- [arXiv PDF](https://arxiv.org/pdf/2505.20619)：已通读方法部分（实验与附录以略读为准）：§III（方法：策略结构、奖励路由、课程、奖励设计）与 §IV 开头（实验结果略读）
 
 ## 推荐继续阅读
 

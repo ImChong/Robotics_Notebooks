@@ -34,9 +34,40 @@ summary: "越来越多人形被部署到医院、养老等场所，常由人远�
 ## 为什么重要
 
 - **"自主 ↔ 人控"平衡**是辅助/医护场景遥操作的核心设计问题；
-- **意图推断驱动的机器人发起协调**减轻操作者负担，是共享自主的方向；
+- **机器人发起的躯干协调**（反应式 / 前摄式）减轻操作者负担，是共享自主的方向；论文实现的 Task-based 模式用专家预定义的躯干位置序列，意图估计仅列为未来工作（依据 arXiv:2505.05773 §III、§VI）；
 - **以人为本的用户研究**对遥操作系统评价不可或缺（不止任务成功率）；
 - 躯干-手臂冗余协调对所有移动人形操作都有借鉴。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    OP["操作者"] --> ARM["手臂: 手持控制器的手部运动<br/>经 RelaxedIK 求解 (7-DoF Kinova Gen3，不含躯干)"]
+    OP --> HI["人发起 Human-Initiated: 操作者管理躯干"]
+    HI --> V["Velocity (V): 摇杆连续控制躯干 (基线)"]
+    HI --> PH["Preset Heights (PH): 摇杆上下切换<br/>底部 / 中部 / 顶部预设高度"]
+    OP --> RI["机器人发起 Robot-Initiated: 机器人管理躯干"]
+    RI --> RE["反应式 Reactive"]
+    RI --> PR["前摄式 Proactive"]
+    RI --> RIK["RelaxedIK (RIK): 对躯干-手臂整体求逆运动学 (基线)"]
+    RE --> P["Proximity (P): 末端接近竖直行程边界时才移动躯干"]
+    RE --> S["Scaling (S): 人臂工作空间缩放映射到躯干+手臂竖直范围"]
+    RE --> C["Chasing (C): 躯干持续跟随手臂竖直运动，保持 1:1 映射"]
+    PR --> TB["Task-based (TB): 按专家预定义的躯干位置序列<br/>依任务状态提前移动躯干"]
+    P --> COMP["竖直补偿 Compensation<br/>躯干移动多少，末端反向补偿多少"]
+    C --> COMP
+    TB --> COMP
+    V --> STUDY["用户研究 N=17<br/>7 种模式，药盒货架整理 12 个子任务"]
+    PH --> STUDY
+    P --> STUDY
+    S --> STUDY
+    C --> STUDY
+    TB --> STUDY
+    RIK --> STUDY
+    STUDY --> M["指标: 完成时间 / 可操作度 / 工作负荷 / 躯干能耗 / 主观偏好"]
+```
+
+图依据：论文 §III（Algorithm 1–6）与 §IV 用户研究设置。
 
 ## 解决什么问题
 
@@ -48,7 +79,7 @@ summary: "越来越多人形被部署到医院、养老等场所，常由人远�
 
 1. **躯干-手臂协调的人机协作方法**：人发起 + 机器人发起两类策略；
 2. **宏-微结构利用运动学冗余**：躯干大范围、手臂精细；
-3. **机器人发起协调**：依可达性、任务目标与推断意图自主协调；
+3. **机器人发起协调**：摘要称依可达性、任务目标或推断意图自主协调；实际实现为反应式（Proximity/Scaling/Chasing）与前摄式（Task-based，专家预定义躯干位置序列，非意图推断），另有 RelaxedIK 基线（依据 arXiv:2505.05773 §III）；
 4. **N=17 用户研究**：多指标比较、给出自主/人控平衡建议（ICRA 2025）。
 
 方法拆解（深读笔记小节）：两类协调策略；躯干-手臂宏-微结构；用户研究（N=17）；🧭 整体流程（mermaid）。
@@ -74,7 +105,7 @@ summary: "越来越多人形被部署到医院、养老等场所，常由人远�
 **这项工作真正的贡献不是一个更强的协调算法，而是把「躯干-手臂的运动学冗余该由谁来管」拆成人发起与机器人发起两条明确策略，再用 N=17 的用户研究去回答「自主 ↔ 人控」的平衡点该落在哪。**
 
 - 起作用的结构是**宏-微（macro-micro）**：躯干负责大范围、手臂负责精细，冗余因此可以被分层地分配给人或机器人，而不是笼统地"更自动一点"。
-- 机器人发起一侧同时依赖**可达性、任务目标与推断的人类意图**三者；意图推断不准时优势会退化，这是共享自主的固有风险。
+- 机器人发起一侧摘要称依赖可达性、任务目标或推断的人类意图；但实现中 Task-based 是专家预定义的躯干位置序列，并未做意图推断（意图估计、凝视追踪列为未来工作，依据 §III、§VI）。
 - 评价维度刻意超出成功率：任务表现、**可操作度（manipulability）**与能效并列，并纳入参与者偏好——作者的立场是遥操作系统不能只用任务指标评判。
 - 适用边界是医院/养老等辅助场景下的**移动人形**远程操控；偏好结论出自 N=17 的样本，向其他人群与任务推广时应谨慎。
 - 已被 ICRA 2025 接收；本页只是笔记编译的笔记摘要，量化细节以深读笔记与论文 PDF 为准。
@@ -89,6 +120,8 @@ summary: "越来越多人形被部署到医院、养老等场所，常由人远�
 - [humanoid_pnb_human-robot-collaboration-for-remote-control-of.md](../../sources/papers/humanoid_pnb_human-robot-collaboration-for-remote-control-of.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Human-Robot_Collaboration_for_Remote_Control_of_Mobile_Humanoid_Robots/Human-Robot_Collaboration_for_Remote_Control_of_Mobile_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2505.05773>
+- [arXiv PDF](https://arxiv.org/pdf/2505.05773)：已通读方法部分（实验与附录以略读为准）：§III 各控制模式与 Algorithm 1–6、§IV 用户研究设置；§V 结果略读
+- 核对（2026-11-02）：对照 arXiv:2505.05773 摘要、§III（Task-based 为专家预定义躯干位置序列）、§VI（意图估计为未来工作），把「意图推断驱动」改为论文实际实现；流程图原本已写「专家预定义」，无需改。
 
 ## 推荐继续阅读
 

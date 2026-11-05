@@ -14,7 +14,7 @@
 
 ## 开源状态
 
-- **已开源**（步骤 2.5 核查，2026-11-01）：仓库可达（git ls-remote）。项目页 HTTP 200。
+- **部分开放**（2026-11-03）：官方 README 列出 runtime、多项基准集成、ICL 包与 27B Preview 权重；RoboDojo、SIMPLE 等集成及 RoboRSI 独立技术报告仍待发布。
 
 ## 核心摘录（公众号转述，未核验原文表格）
 
@@ -26,3 +26,9 @@
 
 - [paper-gpt-6-astra-embodied-intelligence](../../wiki/entities/paper-gpt-6-astra-embodied-intelligence.md)
 - [动态评测、技能编译与环境潜变量适配：具身智能小站 11-01 期 56 篇阅读坐标](../../wiki/overview/embodied-station-2026-11-01-56-papers-technology-map.md)
+
+## 2026-11-03 原文核查
+
+- [arXiv v2](https://arxiv.org/html/2610.22471v2) 与 [PDF](https://www.sensenova.ai/gpt-6/assets/docs/has_gpt-6_achieved_embodied_intelligence.pdf)；已核查正文方法、消融及 G1 真机附录，其他附录尚待逐项通读。
+- 知识包由训练示范构建并在测试前冻结；扩展预算继续同一回合，且 BEHAVIOR 仅用标准预算。
+- G1 抓放 2/3、行走 3/3，分别评估，成功抓放耗时超过一小时；不能视作实时控制可靠性。

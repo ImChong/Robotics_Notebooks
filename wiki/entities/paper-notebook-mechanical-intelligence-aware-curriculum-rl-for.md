@@ -31,7 +31,26 @@ Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuatio
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记写出来之前，方法流程见下方「流程总览」（依据论文方法部分），其余方法结论暂不给。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["BRUCE 三种并联机构<br/>差速齿轮 / 四杆 / 五杆"] --> B["MuJoCo (MJX) 闭链建模<br/>软等式约束，保留执行器到输出的位置/速度/力矩映射<br/>显式表示四杆、五杆奇异点；背隙用 sigmoid 阻尼"]
+    B --> C["GPU 并行仿真环境<br/>域随机化、传感器噪声、延迟<br/>Butterworth 低通 + 死区滤波"]
+    D["策略 πθ：输入 H 步观测历史<br/>(IMU 偏航率、投影重力、速度指令、关节偏差、上一动作)"] --> E["动作 a ∈ R16<br/>相对名义姿态 qnom 的执行器位置指令<br/>无需正/逆运动学"]
+    E --> C
+    C --> F["课程 RL + PPO<br/>1 站立 → 2 小扰动站立 → 3 粗糙地形 → 4 摇杆速度指令行走"]
+    F --> G{"当前阶段表现足够？"}
+    G -- "否" --> F
+    G -- "是，且未到最后阶段" --> F
+    G -- "是，最后阶段" --> H["sim-to-sim：MJX 与 MuJoCo 两种后端验证"]
+    F --> D
+    H --> I["BRUCE 真机零样本部署"]
+```
+
+图依据：论文 §III、§IV-A 至 §IV-D / Fig. 2、Fig. 6
 
 ## 核心信息
 
@@ -64,6 +83,7 @@ Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuatio
 - [humanoid_pnb_mechanical-intelligence-aware-curriculum-rl-for.md](../../sources/papers/humanoid_pnb_mechanical-intelligence-aware-curriculum-rl-for.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2507.00273>
+- [arXiv PDF](https://arxiv.org/pdf/2507.00273)：已通读方法部分（实验与附录以略读为准）：§III 并联机构与闭链建模、§IV 强化学习（动作/观测空间、奖励、训练课程）；§V 结果仅略读
 
 ## 推荐继续阅读
 

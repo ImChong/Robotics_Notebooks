@@ -36,6 +36,33 @@ summary: "EMoG（arXiv:2609.14432）：连续情绪风格码与物理步态指�
 - 纳入 [2026-09-15 十篇盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md) 索引。
 - 公众号推荐跟踪方向之一。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据: §III-A / §III-B (Fig. 3)"]
+        D1["专业表演者 8 人演绎 6 种情绪步态<br/>(SMPL 动捕)"] --> D2["GMR 重定向到人形<br/>(支撑相检测补偿脚浮空, 上下身独立映射)"]
+        D2 --> D3["周期步态分割<br/>(关键关节峰值 + 动态规划)"]
+        D3 --> D4["自监督特征提取与精炼<br/>(步频-速度线性回归滤除离群段, 得到物理命令 c_n)"]
+        D3 --> D5["Transformer 分类器 (CLS token)<br/>情绪标签平滑 -> 连续风格码 e_n"]
+    end
+    D4 --> G
+    D5 --> G
+    subgraph GEN["生成与跟踪: §III-C (Fig. 2)"]
+        G["轻量 Gait Generator G_θ<br/>输入: 周期信号 φ_n(t), 风格码 e, 物理命令 c"] --> Y["全身周期参考轨迹 ŷ_t"]
+        Y --> T["现有 Motion Tracker<br/>(参考 + 机器人状态 -> 低层控制动作)"]
+        T --> R["人形机器人执行"]
+    end
+    G -.-> LOSS["训练损失: 重建 + 一致性 + 对称 + 平滑"]
+    subgraph LLM["语言接口: §III-D"]
+        U["自然语言输入"] --> P1["LLM Prompt 1: 判定 6 种风格之一"]
+        P1 --> P2["LLM Prompt 2: 风格强度 e 与物理命令 c<br/>(受速度/角速度限制约束; 无明确情绪则 e=0)"]
+    end
+    P2 --> G
+```
+
+图依据：论文 §III-A 至 §III-D / Fig. 2、Fig. 3。
+
 ## 核心原理（方法）
 
 人形 locomotion 通常只优化 **稳定 + 任务执行**，表现力要么没有，要么以牺牲指令跟随为代价。EMoG 的做法是把两者放进 **两个互不干扰的通道**：
@@ -102,7 +129,9 @@ summary: "EMoG（arXiv:2609.14432）：连续情绪风格码与物理步态指�
 
 - [EMoG 论文摘录](../../sources/papers/emog_arxiv_2609_14432.md)
 - [具身智能小站 2026-09-15 盘点](../../sources/blogs/wechat_embodied_station_9_papers_resources_effvla_2026-09-15.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.14432)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 情绪风格表示、B 步态采集与精炼、C 情绪步态生成与跟踪、D 语言接口）
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Gated Residual Body-Hand Coordination for Whole-Body Humanoid Teleoperation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Gated_Residual_Body-Hand_Coordination_for_Whole-Body_Humanoid_Teleoperation/Gated_Residual_Body-Hand_Coordination_for_Whole-Body_Humanoid_Teleoperation.html)
 - 论文 PDF：<https://arxiv.org/pdf/2609.14432>

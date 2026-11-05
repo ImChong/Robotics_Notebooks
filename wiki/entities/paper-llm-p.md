@@ -17,6 +17,21 @@ summary: "LLM+P（arXiv:2304.11477）：LLM 生成 PDDL 问题描述，交给经
 
 **LLM+P**（[arXiv:2304.11477](https://arxiv.org/abs/2304.11477)）收录于 Lumina [Embodied-AI-Guide 微信专辑](../../wiki/overview/embodied-ai-guide-wechat-album-curator.md)。本页为独立详情节点；实验数字以原文为准。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    U["用户自然语言规划问题 P"] --> L1["LLM (in-context learning)<br/>生成 problem PDDL"]
+    X["示例对：简单问题描述 + 对应 problem PDDL<br/>（作为上下文提供）"] --> L1
+    L1 --> PL["经典规划器 Fast Downward<br/>SEQ-OPT-FDSS-1 / LAMA"]
+    D["domain PDDL<br/>（人工专家提供，动作前置条件与效果）"] --> PL
+    PL --> P["PDDL 计划"]
+    P --> L2["LLM 将计划翻译回自然语言"]
+    L2 --> O["自然语言计划"]
+```
+
+图依据：论文 §III-C（Fig. 1 下半部分）与 §V-B（规划器设置）。
+
 ## 一句话定义
 
 **让 LLM 写规划问题，让 PDDL 求解器保证语法与可行性。**
@@ -73,6 +88,7 @@ LLM+P 适合需要可验证规划的长程任务；代价是 PDDL 建模与状�
 ## 参考来源
 
 - [wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md](../../sources/blogs/wechat_lumina_embodied_practice_part1_llm_planner_2026-09-20.md)
+- [arXiv PDF](https://arxiv.org/pdf/2304.11477)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 背景、§III Method、§V-B 实验设置
 
 ## 推荐继续阅读
 

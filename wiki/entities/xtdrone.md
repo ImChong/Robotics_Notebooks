@@ -44,10 +44,46 @@ summary: "XTDrone 是基于 PX4 + ROS + Gazebo 的无人机仿真教学平台，
 - **局限：Gazebo 版本与 ROS 发行版** — 需按文档锁定 Melodic/Noetic 等组合。
 - **局限：视觉画质** — 不适合作为唯一的高保真渲染 Sim2Real 来源。
 
+## 源码运行时序图
+
+入口：ROS 节点 `python3 communication/multirotor_communication.py <机型> <编号>`（如 `iris 0`），与 `python3 control/keyboard/multirotor_keyboard_control.py <机型> <数量> <控制类型>` 配合使用；PX4 SITL 与 Gazebo 的启动方式不在本仓库读取范围内，图从 ROS 节点开始。
+
+```mermaid
+sequenceDiagram
+    participant Op as 操作员（键盘）
+    participant KB as multirotor_keyboard_control.py
+    participant Comm as multirotor_communication.py（Communication）
+    participant MR as MAVROS（机型_编号 命名空间）
+    participant FC as PX4 SITL（Gazebo 中的飞控）
+
+    Note over Comm: 初始化：订阅 local_position/pose 与 /xtdrone/机型_编号/cmd 等话题，创建 armService 与 flightModeService，发布 setpoint_raw/local
+    Note over Comm: 独立循环以 30 Hz 发布 target_motion
+    Op->>KB: 按键
+    KB->>Comm: publish /xtdrone/机型_编号/cmd（如 ARM、DISARM、HOVER、OFFBOARD）
+    alt cmd 为 ARM 或 DISARM
+        Comm->>MR: arm() 或 disarm() 调用 armService(True 或 False)
+        MR->>FC: 解锁或上锁请求
+    else cmd 为 HOVER
+        Comm->>Comm: hover() 以当前位置与偏航构造目标
+    else 其它模式字符串
+        Comm->>MR: flight_mode_switch() 调用 flightModeService(custom_mode)
+        MR->>FC: 切换飞行模式
+    end
+    KB->>Comm: publish /xtdrone/机型_编号/cmd_vel_flu 等速度或加速度指令
+    Comm->>Comm: cmd_*_callback 构造 PositionTarget（coordinate_frame 与 motion_type）
+    Comm->>MR: 循环发布 mavros/setpoint_raw/local
+    MR->>FC: 设定点指令
+    FC-->>MR: 位姿反馈
+    MR-->>Comm: local_pose_callback 更新当前位置与偏航
+```
+
+图依据：robin-shaun/XTDrone@68c2bc6，communication/multirotor_communication.py（主要部分）、control/keyboard/multirotor_keyboard_control.py（部分）、README.md（仅有项目介绍，运行教程指向外部文档）。
+
 ## 参考来源
 
 - [sources/repos/xtdrone.md](../../sources/repos/xtdrone.md)
 - [robin-shaun/XTDrone](https://github.com/robin-shaun/XTDrone)
+- 源码核对（2026-11-02）：robin-shaun/XTDrone@68c2bc6，读过 README.md、communication/multirotor_communication.py、control/keyboard/multirotor_keyboard_control.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

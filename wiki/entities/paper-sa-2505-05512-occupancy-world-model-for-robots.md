@@ -42,6 +42,25 @@ Occupancy world model for robots.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["历史 3D occupancy 观测"] --> B["阶段 1：Occupancy Scene Tokenizer（沿高度压缩为 BEV + VQ-VAE）"]
+    B --> C["离散场景 token O_Z"]
+    C --> D["阶段 2：HSTA 混合时空聚合"]
+    D --> E["长时窗口（时间核 7）：全局时序一致性"]
+    D --> F["短时窗口（时间核 3、空间核 7 或 3）：局部细粒度时空"]
+    E --> G["通道维拼接融合"]
+    F --> G
+    H["下一步相机位姿 P"] --> I["两层线性层编码为位姿 token，MLP 回归 scale / shift 条件"]
+    G --> J["CCSA：条件因果状态注意力（自回归 Transformer）"]
+    I --> J
+    J --> K["预测下一状态 occupancy"]
+```
+
+图依据：论文 §3.2 / Fig.4–6
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Occupancy world model for robots.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.05512>
+- [arXiv PDF](https://arxiv.org/pdf/2505.05512)：已通读方法部分（实验与附录以略读为准）：§1 引言；§3.2 RoboOccWorld（Occupancy Scene Tokenizer、HSTA、CCSA、损失函数，含 Fig.4–6）；§4 实验（略读）
 
 ## 推荐继续阅读
 

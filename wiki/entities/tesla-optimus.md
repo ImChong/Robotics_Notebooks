@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, industry, tesla, data-collection, teleoperation]
 status: complete
-updated: 2026-09-07
+updated: 2026-11-03
 summary: "Tesla Optimus：特斯拉人形机器人项目；曾大规模招聘 VR/外骨骼遥操作员采集示范；车队相机附带行人行为数据用于驾驶与感知。"
 related:
   - ./humanoid-robot.md
@@ -11,8 +11,10 @@ related:
   - ./boston-dynamics.md
   - ../queries/humanoid-robot-data-collection-landscape.md
   - ../tasks/teleoperation.md
+  - ../concepts/dexterous-hand-industry-core-players.md
 sources:
   - ../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md
+  - ../../sources/blogs/wechat_zane_hub_dexterous_hand_core_players_2026-11-03.md
 ---
 
 # Tesla Optimus

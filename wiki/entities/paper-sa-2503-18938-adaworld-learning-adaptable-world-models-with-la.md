@@ -49,6 +49,22 @@ Learns adaptable world models with latent actions.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V["无动作标注的多环境视频"] --> LAE["潜动作自编码器：编码器由 f_t、f_t+1 提取潜动作 ã，解码器由 ã 与 f_t 预测 f_t+1（β-VAE 信息瓶颈）"]
+  LAE --> LA["连续潜动作 ã"]
+  LA --> WM["动作感知预训练：以 ã 与 K 帧历史（短时记忆）为条件的自回归扩散世界模型，SVD 初始化，逐帧预测"]
+  V --> WM
+  WM --> AT["动作迁移：从示范视频提取潜动作序列，在新场景首帧上复用"]
+  WM --> AD["世界模型适应：同一标签的潜动作取平均并初始化 N 个离散动作后微调；连续动作用轻量 MLP 映射到潜动作"]
+  WM --> AC["动作组合与创建：潜动作插值，或收集潜动作并聚类"]
+  AD --> VP["视觉规划（Procgen 实验）：CEM 采样动作序列，世界模型预测轨迹，以与目标图像的 RGB 余弦相似度为奖励"]
+```
+
+图依据：论文 §2.1–§2.3 / Fig.2、Fig.3、附录 B.4（视觉规划）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -108,6 +124,7 @@ Learns adaptable world models with latent actions.
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- [arXiv PDF](https://arxiv.org/pdf/2503.18938)：已通读方法部分（实验与附录以略读为准）：§2（2.1–2.3）、附录 B（实现细节与 B.4 视觉规划）
 
 ## 推荐继续阅读
 

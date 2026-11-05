@@ -42,6 +42,23 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  O["当前观测 o_t 经 VAE 编码为潜状态 s_t"] --> A["轻量动作模型：嵌入层 + MLP<br/>输入 o_t 与已知动作 a_(t+1:t+η)"]
+  K["已知动作序列 a_(t+1:t+η)"] --> A
+  A --> H["潜动作特征 ĥ = [h, h̃]"]
+  A --> FA["预测未来动作 ã（L1 损失监督）"]
+  H --> T["视频转移模型：U-Net 扩散<br/>潜动作经 cross-attention 作用于时间维<br/>状态上下文短通路 s_c 经零初始化卷积注入各块"]
+  O --> T
+  T --> D["VAE 解码得到未来视频 õ_(t+1:t+ΔT)"]
+  FA -. "迭代 roll-out" .-> A
+  D -. "迭代 roll-out" .-> O
+```
+
+图依据：论文 §3.1 World Model Learning / §3.2 Light-weight Action Model / §3.3 Video Transition Model（Fig.2、Fig.3）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2505.18650>
+- [arXiv PDF](https://arxiv.org/pdf/2505.18650)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2 Related Work（略读）、§3 Method（3.1–3.3）
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ RCL Awesome WAM 清单收录（Evaluation metrics）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    G["§2 目标指定 Goal Specification<br/>PointGoal / ObjectGoal / AreaGoal"] --> GEN
+    GEN["§3 Generalization and Exploration<br/>先验暴露程度须量化并报告:<br/>No prior exploration / Pre-recorded prior exploration / Time-limited exploration by the agent"] --> TB
+    TB["§5 Experimental Testbeds 仿真平台 + Recommendation 4–6<br/>(连续状态空间 / 可解释且可互操作的动作与度量 / 配套真机部署软件)"] --> SC
+    SC["§6 Standard Scenarios<br/>SUNCG / AI2-THOR / Matterport3D / Gibson 各选场景子集, 划分 train / validation / test<br/>随机采样 start 与 goal, 按 PointGoal / ObjectGoal 给出动作集"] --> EP
+    EP["运行 N 个 test episodes<br/>agent 必须输出 DONE 动作 (Recommendation 1)"] --> SUC
+    SUC["§4 判定 episode 成功 S_i<br/>用 geodesic distance (Recommendation 2)<br/>到目标距离 < 阈值 τ (默认 2× agent 身宽)"] --> SPL
+    SPL["SPL = 1/N · Σ S_i · l_i / max(p_i, l_i)<br/>(Recommendation 3, 主指标)"] --> AUX
+    AUX["辅助指标: 成功率 vs 路径长度 / 终点到目标距离 / τ 扫描 / 归一化逆路径长度分布 / 违规次数 / 执行时间与能耗"]
+    ARCH["§7 Agent Architectures<br/>purely reactive → 短期 recurrent memory → 富内部表示<br/>Recommendation 7"] -.-> EP
+```
+
+图依据：基准构建与评测协议图，论文 §2–§6（Recommendation 1–6 与 Standard Scenarios）、§4 式 (1) SPL 定义；§7 以虚线表示被评测的 agent 类型。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ RCL Awesome WAM 清单收录（Evaluation metrics）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/1807.06757>
+- [arXiv PDF](https://arxiv.org/pdf/1807.06757)：已通读全文（§1 Introduction、§2 Goal Specification and Sensory Input、§3 Generalization and Exploration、§4 Evaluation Measures、§5 Experimental Testbeds、§6 Standard Scenarios、§7 Agent Architectures）
 
 ## 推荐继续阅读
 

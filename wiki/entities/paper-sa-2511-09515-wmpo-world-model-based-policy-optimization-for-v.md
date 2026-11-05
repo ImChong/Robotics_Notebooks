@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-04
 arxiv: "2511.09515"
 venue: "arXiv 2025"
 summary: "World model-based policy optimization for VLAs."
@@ -13,10 +13,12 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+  - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2511_09515_wmpo-world-model-based-policy-optimizati.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+  - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 ---
 
 # WMPO

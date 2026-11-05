@@ -48,9 +48,60 @@ sources:
 - [Retarget Tools](../../references/repos/retarget-tools.md)
 - [Low Cost Mocap](./low-cost-mocap.md)
 
+## 源码运行时序图
+
+入口：`roslaunch mocap g1_retarget.launch`（`src/mocap/launch/g1_retarget.launch` 同时启动 `3Dviewer.py` 与 `g1_retarget.py` 两个节点）
+
+```mermaid
+sequenceDiagram
+    participant LCH as g1_retarget.launch roslaunch
+    participant VWR as mocap/src/3Dviewer.py Viewer
+    participant AMC as amc_parser.py parse_amc
+    participant TF as ROS tf 变换树
+    participant RT as mocap/src/g1_retarget.py 主循环
+    participant IK as mocap/src/robot_ik.py RobotIK
+    participant SOLVER as casadi Opti / ipopt 外部库
+
+    LCH->>VWR: 启动节点 mocap_visualize（3Dviewer.py __main__）
+    VWR->>AMC: parse_amc 读取 all_asfamc/subjects/86 下的 amc_file
+    VWR->>VWR: init_node，发布 joint_states 与 /frame_num
+    LCH->>RT: 启动节点 g1_retarget（g1_retarget.py __main__）
+    RT->>RT: 读取 render、OutputData、use_ccrp_data、人体肢长等参数
+    RT->>IK: RobotIK(Visualization=render, fps, 肢长参数)
+    IK->>IK: 用 pinocchio 从 g1_description/urdf/g1.urdf 构建模型，并建 casadi 优化问题
+    loop 每帧（VWR.run 循环）
+        VWR->>VWR: 取 motions[frame]，更新 root 与关节角
+        VWR->>TF: sendTransformMessage 广播 root 等帧
+        VWR->>RT: publish /frame_num
+    end
+    loop 约 1000 Hz 的 RT 主循环
+        alt use_ccrp_data 为 False
+            RT->>TF: lookupTransform 查询 lhand、rhand、lfoot、rfoot、root、lowerneck、lradius、rradius
+        else use_ccrp_data 为 True
+            RT->>TF: lookupTransform 查询 left_hand_link、right_hand_link、spine2_link 等帧
+        end
+        RT->>RT: 由位姿构造 8 个目标齐次矩阵（含固定旋转修正）
+        RT->>IK: solve_ik(8 个目标, current_lr_arm_motor_q=sol_q_last)
+        IK->>IK: scale_lengths 按人体肢长缩放目标
+        opt render 为 True
+            IK->>IK: meshcat 显示目标与当前解
+        end
+        IK->>SOLVER: opti.solve() 求解逆运动学（失败时取 debug 值）
+        IK->>IK: smooth_filter 滤波，更新 init_qdata
+        IK-->>RT: sol_q 关节解
+        alt frame_num 大于上一帧
+            RT->>RT: 追加 frame、timestamp 与 sol_q 到 data
+        end
+    end
+    RT->>RT: 节点退出后，若 OutputData 为 True，写出 data/output.csv
+```
+
+图依据：ccrpRepo/mocap_retarget@1093a3e，读过 `README.md`、`src/mocap/launch/g1_retarget.launch`、`src/mocap/src/g1_retarget.py`（主流程与数据输出）、`src/mocap/src/3Dviewer.py`（`__main__`、`draw` 与 `run` 中与发布相关的部分）、`src/mocap/src/robot_ik.py`（`__init__` 与 `solve_ik`）；`amc_parser.py` 与 `weighted_moving_filter.py` 仅据导入与调用关系推断，未逐行读取；未运行代码。
+
 ## 参考来源
 
 - [mocap_retarget 仓库归档](../../sources/repos/mocap_retarget.md)
+- 源码核对（2026-11-02）：ccrpRepo/mocap_retarget@1093a3e，读过 `README.md`、`src/mocap/launch/g1_retarget.launch`、`src/mocap/src/g1_retarget.py`、`src/mocap/src/3Dviewer.py`、`src/mocap/src/robot_ik.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,22 @@ Large-scale personalized first-person video dataset for long-form QA
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["视频收集：Ego4D（去掉单人视频）/ EgoLife / CASTEL2024<br/>拼接、去水印、裁剪 → 541 段，平均 9.2 分钟"] --> B["人工 QA 标注：10 名学生<br/>原则 Egocentric / Personalized / Visual Answer<br/>标注 question moment 与 answer moment"]
+    B --> C["5,012 条开放式 QA"]
+    C --> D["多选扩展：Gemini-2.5 Pro 生成 4 个干扰项<br/>yes/no 题为 2 选项"]
+    D --> E["偏差过滤：仅给视频帧与选项（不含问题）<br/>Gemini-2.5 Pro 与 GPT-5 都能答对的题，人工改写干扰项"]
+    E --> F["再次人工检查：2 名学生 + 作者"]
+    F --> G["MyEgo：5,012 题，每题含开放式与多选两种形式"]
+    G --> H["评测 §4.2：开放式由 GPT-5 mini 判对错并打 0-5 分<br/>多选看准确率；模型 + 2 名学生人类基线"]
+    H --> I["§4.3 受控分析：Q&A 时刻感知采样 · 随时间的准确率 · 帧数变化 · prompt 修改"]
+```
+
+图依据：数据集构建与评测协议图，论文 §3.1–§3.2（Task Definition、Dataset Construction）、§4.1–§4.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Large-scale personalized first-person video dataset for long-form QA
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2604.01966>
+- [arXiv PDF](https://arxiv.org/pdf/2604.01966)：已通读摘要、Introduction、§3 MyEgo Dataset（任务定义、构建、统计）、§4.1–§4.2 评测设置与 §4.3 受控分析的文字部分；结果表与附录未逐项核对。
 
 ## 推荐继续阅读
 

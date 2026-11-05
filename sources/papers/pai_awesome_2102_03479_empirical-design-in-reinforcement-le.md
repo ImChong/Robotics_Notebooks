@@ -6,8 +6,8 @@
 - **分组：** Evaluation Methodology
 - **编号：** 108/384
 - **入库日期：** 2026-09-20
-- **arXiv：** 2102.03479
-- **主链接：** <https://arxiv.org/abs/2102.03479>
+- **arXiv：** 2304.01315
+- **主链接：** <https://arxiv.org/abs/2304.01315>
 - **代码：** 未在清单中标注
 - **清单摘要：** Guidance on experimental design choices that materially affect reported results.
 - **沉淀到 wiki：** [`wiki/entities/paper-pai-2102-03479-empiricaldesigninreinforcementle.md`](../../wiki/entities/paper-pai-2102-03479-empiricaldesigninreinforcementle.md)

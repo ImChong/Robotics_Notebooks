@@ -38,6 +38,23 @@ summary: "人形以类人形态特别适合在为人设计的环境里交互，�
 - **第一视角条件预测**与 ZeroWBC/EgoHumanoid 的 egocentric 路线呼应；
 - 流匹配/掩码 Transformer 是当前生成式世界模型的主流选择。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["过去帧 v_p + 过去动作 a_p + 未来动作 a_f"] --> B["VAE 编码到压缩潜空间<br/>Masked-HWM: VQ-VAE 离散 token / Flow-HWM: 连续 VAE"]
+    B --> C["Tokenization<br/>视频 token 与动作 MLP 嵌入到同一 h 维"]
+    C --> D["四路 token 流<br/>v_p / v_f / a_p / a_f"]
+    D --> E["d 层 Transformer block<br/>Base / 参数共享 / Split Attention 变体"]
+    E --> F{"生成范式"}
+    F -->|Masked-HWM| G["MVM: 未来 token 全 mask<br/>逐潜帧 K 步并行迭代重预测<br/>训练用交叉熵"]
+    F -->|Flow-HWM| H["Flow Matching: 预测速度场<br/>高斯噪声经 Euler ODE 积分<br/>训练用 MSE + 无分类器引导"]
+    G --> I["VAE 解码为未来 RGB 帧 v_f"]
+    H --> I
+```
+
+图依据：论文 §2.1 Formulation、§2.2 Masked Video Modelling、§2.3 Flow Matching、§2.4 Transformer Block Design / Fig.2–3。
+
 ## 解决什么问题
 
 人形要在**开放世界**推理/规划/行动，世界模型有用但： - 大模型**算力门槛高**，小实验室难用； - 缺**轻量、开源**、以**控制输入为条件**的人形世界模型。
@@ -88,6 +105,7 @@ summary: "人形以类人形态特别适合在为人设计的环境里交互，�
 - [humanoid_pnb_humanoid-world-models.md](../../sources/papers/humanoid_pnb_humanoid-world-models.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Humanoid_World_Models__Open_World_Foundation_Models_for_Humanoid_Robotics/Humanoid_World_Models__Open_World_Foundation_Models_for_Humanoid_Robotics.html>
 - 论文：<https://arxiv.org/abs/2506.01182>
+- [arXiv PDF](https://arxiv.org/pdf/2506.01182)：已通读方法部分（实验与附录以略读为准）：§2.1–2.4（Formulation、Masked Video Modelling、Flow Matching、Transformer Block Design）
 
 ## 推荐继续阅读
 

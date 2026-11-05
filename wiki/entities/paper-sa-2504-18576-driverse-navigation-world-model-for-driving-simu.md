@@ -42,6 +42,25 @@ Navigation world model for driving simulation via multimodal trajectory promptin
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入：单帧图像 I_0 + 未来 3D 轨迹"] --> B["Multimodal Trajectory Prompting（静态对齐）"]
+    B --> C["趋势分词<br/>12 个钟点方向 token → 固定文本模板提示"]
+    B --> D["轨迹引导空间锚点 TSA<br/>静态 3D 锚点投影 · 拖尾透明度 · 运动向量着色"]
+    C --> E["冻结 DiT 骨干 + 冻结 T5 文本编码"]
+    D --> F["可训练控制副本<br/>零初始化线性层注入"]
+    F --> E
+    E --> G["VAE 3D 解码 → 生成视频"]
+    H["CoTracker v3 像素轨迹<br/>在大运动区域采样点"] --> I["Latent Motion Alignment<br/>VAE 隐空间运动加权一致性损失 L_cons"]
+    G --> I
+    G --> J["Dynamic Window Generation<br/>锚点可见率 低于 0.6 时换条件帧继续自回归"]
+    J -->|滑窗续写| G
+```
+
+图依据：论文 §3 / Fig. 2（§3.1 MTP、§3.2 LMA、§3.3 DWG）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Navigation world model for driving simulation via multimodal trajectory promptin
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.18576>
+- [arXiv PDF](https://arxiv.org/pdf/2504.18576)：已通读方法部分（实验与附录以略读为准）：§3 方法（问题形式化、3.1 MTP、3.2 LMA、3.3 DWG，含 Fig. 2）；§4 实验设定与对比略读
 
 ## 推荐继续阅读
 

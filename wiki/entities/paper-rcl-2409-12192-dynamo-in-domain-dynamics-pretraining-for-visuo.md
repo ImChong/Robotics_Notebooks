@@ -42,6 +42,28 @@ DynaMo uses action-free dynamics pretraining to make visual features useful for 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["演示观测序列 o_t ... o_t+h<br/>（无动作标注）"] --> B["图像编码器 f_θ<br/>(ResNet18，逐帧)"]
+    B --> C["观测嵌入 s_t ... s_t+h"]
+    C --> D["逆动力学模型 q<br/>(因果掩码 Transformer)"]
+    D --> E["潜在转移 z_t<br/>（低维，视作未观测动作）"]
+    C --> F["拼接 (s_t, z_t)"]
+    E --> F
+    F --> G["前向动力学模型 p<br/>(因果掩码 Transformer)"]
+    G --> H["预测下一帧嵌入 ŝ_t+1"]
+    C -->|"stop-gradient 目标 s*"| I["L_dyn：余弦一致性损失"]
+    H --> I
+    C --> J["L_cov：协方差正则"]
+    I --> K["总损失 L = L_dyn + λ L_cov<br/>端到端训练三个模块"]
+    J --> K
+    B -.->|"预训练后取编码器"| L["冻结嵌入 → 下游模仿策略头<br/>(VQ-BeT / BAKU)"]
+```
+
+图依据：论文 §3 / Fig.3（DynaMo 架构），下游策略头见 §4.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ DynaMo uses action-free dynamics pretraining to make visual features useful for 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2409.12192>
+- [arXiv PDF](https://arxiv.org/pdf/2409.12192)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 DynaMo 方法、§3.1 动力学自监督目标、§4.2–4.3 实验设定
 
 ## 推荐继续阅读
 

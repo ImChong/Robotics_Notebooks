@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Temporal triplane transformers as occupancy world models.
+Temporal triplane transformers as occupancy world models.（arXiv 当前版本题为《Aligned Delta-Triplane Transformers as Occupancy World Models》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -41,6 +41,31 @@ Temporal triplane transformers as occupancy world models.
 - Temporal triplane transformers as occupancy world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+  A["历史占据序列 S(t-τp+1..t)"] --> B["Triplane Encoder (占据重建预训练)"]
+  B --> C["历史 triplane (xy / xz / yz 三平面)"]
+  P["历史 ego pose (R, T)"] --> D
+  C --> D["Triplane 运动补偿 (warp 到目标 ego 帧)"]
+  D --> E["Triplane 分词 (2D 卷积 + 广播融合 + 3D 位置编码)"]
+  E --> F["Transformer Encoder (历史时空记忆 M)"]
+  G["未来 ego motion → MLP → Nego 个 ego 查询"] --> H["拼接 + 未来步嵌入 = 解码查询"]
+  I["Next 个可学习 external 查询"] --> H
+  F --> J["Transformer Decoder"]
+  H --> J
+  J --> K["Δ triplane (reshape + Up 上采样)"]
+  D --> L["最新运动对齐 triplane"]
+  K --> M["相加: 预测 triplane"]
+  L --> M
+  M --> N["Triplane Decoder"]
+  N --> O["未来占据 S(t+1)"]
+  O -.->|自回归滚动| A
+```
+
+图依据：论文 §3.1 / §3.2 / §3.3 与 Fig.3、Fig.4、Fig.5；论文当前版本标题为 Aligned Delta-Triplane Transformers as Occupancy World Models（ADTT），与页面标题不同，arXiv 编号一致。
 
 ## 核心信息
 
@@ -96,6 +121,8 @@ Temporal triplane transformers as occupancy world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.07338>
+- [arXiv PDF](https://arxiv.org/pdf/2503.07338)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1 问题设定、3.2 运动对齐 triplane 表示、3.3 查询条件 Δ 预测）；§4 实验与附录未读。
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-03-10）题 Temporal Triplane Transformers as Occupancy World Models，v5（2026-10-29，现行）改题；本页题名对应 v1，图依据所读版本见图注；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

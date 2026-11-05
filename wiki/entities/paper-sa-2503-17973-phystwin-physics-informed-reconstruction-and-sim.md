@@ -43,6 +43,28 @@ Physics-informed reconstruction and simulation of deformable objects from videos
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入：3 路 RGBD 交互视频"] --> OBS["Grounded-SAM2 分割 + CoTracker3 跟踪：深度反投影得局部 3D 点云与 3D 跟踪伪真值"]
+  IN --> GEN["超分增强后的单张 RGB → TRELLIS 生成完整 mesh"]
+  GEN --> REG["配准：SuperGlue 2D 匹配 + PnP → 尺度与平移 → ARAP 非刚性 → ray-casting 对齐"]
+  OBS --> CTRL["控制点：手部 mask 跟踪 + 最远点采样"]
+  REG --> SM["Spring-Mass 模型：最近邻连接弹簧，控制点连接物体点"]
+  CTRL --> SM
+  SM --> ZO["稀疏阶段：均匀刚度，零阶采样优化拓扑与物理参数"]
+  ZO --> FO["稠密阶段：可微 spring-mass 模拟器一阶梯度下降，优化稠密弹簧刚度与碰撞参数"]
+  OBS --> LOSS["代价：单向 Chamfer 几何项 + 3D 跟踪运动项"]
+  LOSS --> ZO
+  LOSS --> FO
+  FO --> GS["阶段二外观优化：首帧静态各向同性 3D Gaussians，L1 + D-SSIM"]
+  GS --> LBS["线性混合蒙皮 LBS：按邻近质点运动更新 Gaussians"]
+  LBS --> OUT["PhysTwin：实时交互模拟与模型预测式机器人规划"]
+```
+
+图依据：论文 §4.1–§4.3、§5.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Physics-informed reconstruction and simulation of deformable objects from videos
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.17973>
+- [arXiv PDF](https://arxiv.org/pdf/2503.17973)：已通读方法部分（实验与附录以略读为准）：§4（4.1–4.3）、§5.3（应用）
 
 ## 推荐继续阅读
 

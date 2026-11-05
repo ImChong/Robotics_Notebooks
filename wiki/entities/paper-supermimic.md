@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-10-30
+updated: 2026-11-04
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
@@ -17,6 +17,7 @@ related:
   - ./paper-morphmimic.md
   - ../concepts/whole-body-control.md
   - ../methods/imitation-learning.md
+  - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
   - ../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
@@ -28,6 +29,7 @@ sources:
   - ../../sources/repos/awesome-supermimic.md
   - ../../sources/repos/supermimic-integration-drafts.md
   - ../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md
+  - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 ---
 
 # SuperMimic：用一个可微世界模型扩展人形全身控制
@@ -48,9 +50,7 @@ sources:
 
 人形动作跟踪可以把多样人体动作转化为统一的控制目标，但把单一策略扩展到大量动作时，常见的模型无关强化学习会消耗大量仿真采样与算力。SuperMimic 的价值在于先用仿真器产生的转移数据拟合共享动力学，再在该可微模型中并行想象策略后果；它保留标准刚体仿真器和非光滑接触仿真，同时让策略更新能直接利用梯度。
 
-## 核心原理
-
-### 一个循环中的两个学习器
+## 流程总览
 
 世界模型和动作跟踪策略交替更新：仿真器提供状态转移样本，世界模型学习预测下一状态；策略在世界模型中执行短时想象 rollout，并通过时间反向传播计算解析梯度。每轮策略更新期间世界模型保持固定，更新完成后再共同进入下一轮训练。梯度不经过 MuJoCo Warp，因此不要求仿真器本身可微。
 
@@ -64,6 +64,10 @@ flowchart TB
   policy --> sim
   wm --> sim
 ```
+
+图依据：论文摘要与官方项目页「How it works」；两个学习器交替：仿真器供数据、世界模型拟合、策略在模型内用 BPTT 更新。
+
+## 核心原理
 
 ### 世界模型如何分摊训练成本
 
@@ -126,9 +130,11 @@ sequenceDiagram
 
 与 [SONIC](./nvidia-sonic.md) 的关键差异在训练范式：SONIC 依赖模型无关 PPO 与大规模并行仿真扩展 motion-tracking；SuperMimic 先从标准仿真数据学习动力学，再对策略做模型内解析梯度更新。两者都追求单一策略覆盖大量全身动作，且都在 Unitree G1 上展示动态行为。项目页中的 GPU-hour 和动作失败数使用各自报告配置，应视为论文所设基准下的结果，不应直接外推为所有机器人、数据集或硬件条件下的固定加速比。
 
-[MorphMimic](./paper-morphmimic.md) 将这一路线扩展到跨人形形态共享，加入规范化关节/刚体接口、形态条件化和动作 latent 对齐，覆盖 G1、X2 Ultra 与 T2。MorphMimic README 说明其 SuperMimic 基础算法由作者独立实现，并非原论文团队代码或背书。\n\n## 源码运行时序图
+[MorphMimic](./paper-morphmimic.md) 将这一路线扩展到跨人形形态共享，加入规范化关节/刚体接口、形态条件化和动作 latent 对齐，覆盖 G1、X2 Ultra 与 T2。MorphMimic README 说明其 SuperMimic 基础算法由作者独立实现，并非原论文团队代码或背书。
 
-**官方实现不适用：** 截至 2026-10-22，论文官方项目页没有公开训练、推理或部署源码入口。现在有两个社区独立复现（见上表），但它们并非论文作者的官方代码，因此本图不将任何一个复现仓库当成论文源码运行时序。
+## 源码运行时序图
+
+**官方实现不适用：** 截至 2026-10-22，论文官方项目页没有公开训练、推理或部署源码入口。2026-11-05 复核项目页（supermimic.github.io）：导航与链接只有论文 PDF、演示与引用，仍无 GitHub / Hugging Face 链接。现在有两个社区独立复现（见上表），但它们并非论文作者的官方代码，因此本图不将任何一个复现仓库当成论文源码运行时序。
 
 ## 结论
 

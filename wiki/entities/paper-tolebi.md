@@ -33,16 +33,45 @@ summary: "TOLEBI：在线关节状态估计 + fallibility rewards 学双足容�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| VLM | Vision-Language Model | 视觉-语言多模态模型 |
-| VLN | Vision-and-Language Navigation | 视觉-语言导航 |
-| ER | Embodied Reasoning | 具身推理；LightNav 第一阶段中期训练 |
-| RL | Reinforcement Learning | 强化学习 |
-| R2S2R | Real-to-Sim-to-Real | 真场景→仿真合成→真机部署 |
+| MDP | Markov Decision Process | 马尔可夫决策过程，论文把电机故障下的行走建模为 MDP（§III） |
+| PPO | Proximal Policy Optimization | 近端策略优化，训练策略所用算法（Isaac Gym） |
+| GRU | Gated Recurrent Unit | 关节状态估计器的结构（单层，隐藏 128） |
+| DSP / RSSP / LSSP | Double / Right Single / Left Single Support Phase | 双支撑 / 右单支撑 / 左单支撑相，用于足接触奖励 |
+| RMSE / MBE | Root Mean Square Error / Mean Bias Error | 速度跟踪误差指标（§V） |
 
 ## 为什么重要
 
 - Light REACT 韧性金字塔「硬件受损后调整移动」的对照：TOLEBI 显式估计关节状态而非仅靠交互历史 ICL。
 - 博客 ingest 独立节点（非重复 stub）；见 [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph C["课程学习 Algorithm 1"]
+    C0["阶段 0：无故障名义行走"]
+    C1["平均回合长度 > 20 s<br/>开启电机故障仿真 + fallibility rewards"]
+    C2["故障下平均回合长度 > 24 s<br/>加入基座推扰"]
+    C0 --> C1 --> C2
+  end
+  F["故障仿真：90% 环境带故障<br/>关节锁定（PD 保持位置）或掉电（力矩置零）<br/>随机选 1 个腿关节，对其动作做 masking"]
+  OBS["观测：欧拉角、腿关节位置/速度、相位 sin/cos、<br/>速度指令、基座速度，历史缓冲 10 条（stride 2）"]
+  EST["关节状态估计器<br/>单层 GRU（128），BCE 在线训练，阈值 0.7"]
+  POL["PPO 策略<br/>输出 12 个关节力矩 + 相位调制动作 aδϕ"]
+  ENV["Isaac Gym 环境"]
+  REW["奖励 = 任务奖励 + 正则项 + fallibility rewards<br/>（轨迹模仿、足力参考、终止惩罚）"]
+  C1 --> F
+  F --> ENV
+  OBS --> POL --> ENV
+  ENV --> OBS
+  ENV -. 本体感觉输入 .-> EST
+  F -. 真实 masking 标签 .-> EST
+  EST -- "关节状态向量 (13 维)" --> OBS
+  ENV --> REW --> POL
+  C2 --> ENV
+```
+
+图依据：论文 §IV-A–D、Alg. 1、Fig. 2、Table I
 
 ## 核心信息
 
@@ -97,6 +126,8 @@ summary: "TOLEBI：在线关节状态估计 + fallibility rewards 学双足容�
 - [tolebi_arxiv_2602_05596.md](../../sources/papers/tolebi_arxiv_2602_05596.md)
 - [lightorigins_light_react_2026-09-09.md](../../sources/blogs/lightorigins_light_react_2026-09-09.md)
 - [Tech Blog](https://www.lightorigins.com/blog/light-react)
+- [arXiv PDF](https://arxiv.org/pdf/2602.05596)：已通读方法部分（实验与附录以略读为准）：§I–II 引言与相关工作、§III 预备、§IV TOLEBI 框架（A–E）、§V-A 实验设定；§V 结果与消融略读
+- 核对（2026-11-02）：对照 arXiv:2602.05596v2 全文缩写（MDP、PPO、GRU、DSP/RSSP/LSSP、RMSE/MBE），把「英文缩写速查」中与本文无关的 VLM/VLN/ER/RL/R2S2R 条目替换为本文实际使用的缩写。
 
 ## 推荐继续阅读
 

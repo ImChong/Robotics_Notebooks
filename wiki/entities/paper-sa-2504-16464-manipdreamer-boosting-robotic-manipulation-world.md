@@ -42,6 +42,23 @@ Boosts robotic manipulation world models with action tree and visual guidance.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["首帧观测 I"] --> MOD["预训练模型估计模态<br/>Depth Anything v2 → 深度<br/>SAM-2 → 语义嵌入 / 动态掩码<br/>+ RGB 图像"]
+    TXT["文本指令 c_text"] --> TREE["Verb-Preposition Action Tree<br/>抽取动词与介词，按层排列"]
+    TREE --> EMB["沿树路径取 CLIP 文本嵌入并拼接<br/>不足补零 → 动作树嵌入 T(c)"]
+    MOD --> CN["各模态独立 2D ControlNet 分支<br/>提取金字塔特征"]
+    CN --> ROUTER["patch 级 q-former router 打分<br/>逐层加权融合多模态特征"]
+    ROUTER --> ADAPT["Spatial Feature Adapter<br/>空间卷积→时间卷积→空间注意力→时间注意力"]
+    ADAPT --> UNET["视频扩散 UNet 去噪<br/>(加法融合或交叉注意力融合)"]
+    EMB --> UNET
+    UNET --> VID["生成机器人操作视频 V"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.1–2（Fig.1 仅据图注与正文；动作树嵌入与去噪 UNet 的具体注入位置论文未细述，按“作为文本条件”示意）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +114,7 @@ Boosts robotic manipulation world models with action tree and visual guidance.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.16464>
+- [arXiv PDF](https://arxiv.org/pdf/2504.16464)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3 Method（3.1–3.3，含 Eq.1–6）、§4.2.3 开头
 
 ## 推荐继续阅读
 

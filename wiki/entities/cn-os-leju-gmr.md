@@ -55,6 +55,45 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python scripts/bvh_to_pkl.py --bvh_file output/BVH/leju/dance_bj_01_Skeleton_002.bvh --bvh_fps 100 --robot roban_s17 --motion_fps 50 --rate_limit --format leju`（README「快速使用」）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 CLI
+    participant S as scripts/bvh_to_pkl.py
+    participant AD as RobotAdapter（roban_s17 的 load / build / validate / postprocess）
+    participant L as utils/lafan_vendor（read_bvh，quat_fk）
+    participant G as motion_retarget.GeneralMotionRetargeting
+    participant IK as mink（solve_ik，integrate_inplace）
+    participant V as robot_motion_viewer.RobotMotionViewer（MuJoCo）
+
+    U->>S: 解析参数，validate_robot_joint_layout，查 IK_CONFIG_DICT
+    S->>AD: load_motion_data(format, bvh_file, 单位换算)
+    AD->>L: read_bvh，quat_fk 求全局位姿
+    AD-->>S: 人体帧列表（骨骼名到位置与四元数）与 human_height
+    AD->>AD: ensure_required_human_keys_roban_s17 补齐/规范关键点
+    S->>AD: build_preprocessor(format, ..., human_height)
+    AD->>G: GeneralMotionRetargeting(src_human="bvh_leju", tgt_robot="roban_s17", solver="daqp")
+    G->>G: 按 ROBOT_XML_DICT 载入 MuJoCo 模型，按 IK_CONFIG_DICT 载入 JSON 匹配表，建 FrameTask 与限位
+    S->>V: RobotMotionViewer(...)，注册键盘回调
+    loop 逐帧（空格暂停，N 单步，Q 退出）
+        S->>G: retarget(human_frame)
+        G->>G: update_targets：缩放、偏移人体数据，设各 task 目标位姿
+        loop 误差仍下降且未超 max_iter
+            G->>IK: solve_ik(configuration, tasks, dt, solver, damping, limits)
+            IK-->>G: 关节速度，configuration.integrate_inplace
+        end
+        G-->>S: qpos（含基座位姿与关节角）
+        S->>AD: validate_qpos，postprocess_qpos
+        S->>V: step(root_pos, root_rot, dof_pos, rate_limit)
+    end
+    S->>S: 组装 root_pos / root_rot / dof_pos，pickle.dump 写入 pkl
+```
+
+图依据：Leju-GMR@0b1394f，读过 `README.md`、`scripts/bvh_to_pkl.py`（参数、load_bvh_leju_common、load_motion_data_roban_s17、_build_gmr_preprocessor、主循环、pickle.dump 段）、`general_motion_retargeting/motion_retarget.py`（__init__ 局部、update_targets、retarget）、`robot_motion_viewer.py`（step 签名）。`pkl_to_csv.py`、`smplx_to_robot.py`、`optitrack_to_robot.py` 等其它脚本未读，未画。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +105,7 @@ institutions:
 - [Leju-GMR 源码归档](../../sources/repos/leju-gmr.md)（<https://github.com/LejuRobotics/Leju-GMR>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：LejuRobotics/Leju-GMR@0b1394f，读过 README.md、scripts/bvh_to_pkl.py、general_motion_retargeting/motion_retarget.py、general_motion_retargeting/robot_motion_viewer.py（step 签名）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

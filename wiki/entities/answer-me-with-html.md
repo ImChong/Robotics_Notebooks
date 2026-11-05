@@ -74,6 +74,48 @@ README 还描述了解释视频模式。具体图表组件、主题、修补现�
 - Token 和耗时数据来自 README 中的项目方基准测试，不是独立评测；运行结果受模型、任务、环境和输出复杂度影响。
 - 官网页面正文在本次 ingest 中未能读取；可用实现、安装和许可证信息已通过官方 GitHub 仓库核实。
 
+## 源码运行时序图
+
+入口：`am render <draft.md>`（或 `am render -` 从 stdin 读入）；仓库内等价入口为 `node bin/am.js render <draft.md>`，`bin/am.js` 调用 `src/cli.js` 的 `main()`。
+
+```mermaid
+sequenceDiagram
+  participant AG as 编程智能体（写 Markdown 草稿）
+  participant CLI as bin/am.js → src/cli.js main / cmdRender
+  participant RD as src/render.js renderDoc
+  participant PA as src/parse.js parseDocLoose
+  participant ST as src/lint/ste.js lintDoc
+  participant MD as src/markdown.js md
+  participant CP as src/components/index.js COMPONENTS
+  participant TP as src/templates/index.js TEMPLATES
+  participant TH as src/themes/index.js 主题样式
+  participant FS as amHome/pages 输出目录
+
+  AG->>CLI: am render draft.md
+  CLI->>CLI: withSource 读取草稿文件
+  CLI->>RD: renderDoc(src, overrides, defaults, {themes, baseDir, ...})
+  RD->>PA: parseDocLoose(source, {defaults, choices})
+  RD->>ST: lintDoc(doc, language)（style 非 off 时做 STE 检查）
+  loop 每个面板的每个块
+    alt Markdown 文本块
+      RD->>MD: md(text, {ui, interactive})
+    else 组件代码块（如 flow、sequence、chart、er、callout）
+      RD->>CP: COMPONENTS.get(lang).render(text, ctx)
+    else 原始 html / svg 块
+      RD->>RD: 按 RAW_LANGS 原样保留
+    end
+  end
+  RD->>TP: TEMPLATES[template]({meta, introHtml, panels, ...})
+  RD->>TH: pageCss / themes.embedFor(theme) 内联样式
+  RD->>RD: shell(...) 组装单文件 HTML
+  RD-->>CLI: {html, warnings, stats, meta, language}
+  CLI->>FS: writeFileSync(file, html, flag wx)
+  CLI->>CLI: shouldOpen 判断；有警告且未加 --open 时不打开
+  CLI-->>AG: 打印页面路径（serve 模式下打印链接）
+```
+
+图依据：QingYunA/answer-me-with-html@406ef8d，实际读过 `bin/am.js`、`src/cli.js`（main 分派、withSource、cmdRender 局部）、`src/render.js`（renderDoc、renderBlocks、renderFence 局部）、`src/parse.js`（导出与 parseDocLoose 签名）、`src/markdown.js`（局部）、`src/components/index.js`（注册表局部）；`src/lint/ste.js`、`src/templates/index.js`、`src/themes/index.js` 仅核对了调用点。未运行代码。
+
 ## 关联页面
 
 - [Agent Skills（Addy Osmani）](./agent-skills-addyosmani.md) — 将软件工程流程打包成编码代理技能
@@ -87,6 +129,7 @@ README 还描述了解释视频模式。具体图表组件、主题、修补现�
 - [官网核查记录（本站）](../../sources/sites/answer-me-with-html.md)
 - [官方 GitHub 仓库](https://github.com/QingYunA/answer-me-with-html)
 - [官方使用参考](https://github.com/QingYunA/answer-me-with-html/blob/main/docs/reference.md)
+- 源码核对（2026-11-02）：QingYunA/answer-me-with-html@406ef8d，读过 bin/am.js、src/cli.js（局部）、src/render.js（局部）、src/parse.js（导出列表）、src/markdown.js（局部）、src/components/index.js（局部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

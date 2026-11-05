@@ -55,6 +55,34 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`sudo ./multi_motor`（README「2.3 编译」：由 `src/main.cpp` 编译生成，编译命令见 `g++ CMD .txt`）
+
+仓库只提供头文件与预编译 `.so`，`socket_server` 与 `login` 等函数的实现未随源码提供，下图只画 `main.cpp` 中可见的调用顺序，不推断库内部调用。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户终端
+    participant M as main.cpp 的 main()
+    participant B as Ti5BASIC.h 声明的函数
+    participant SV as socket_server（socket_service.h 声明，实现未提供）
+    participant CL as 外部 TCP 客户端
+    U->>M: sudo ./multi_motor
+    M->>M: signal(SIGINT, signalHandler)
+    M->>M: canidList = new uint8_t[Num_Len]，依次赋值 1 到 Num_Len
+    M->>B: login() 登录 CAN 设备
+    M->>SV: socket_server("192.168.130.64", 12345) 以服务端方式启动
+    Note over SV: 头文件注释称接收数据去掉帧头帧尾后交给 socket_parse_data 转换为角度值，此处仅据注释，未画内部调用
+    CL->>SV: 客户端连接并发送数据（仓库只有 socket_client.h 头文件，无客户端源码）
+    SV-->>M: 返回 0 成功或 1 失败
+    M->>B: deallocate_variable()
+    M->>B: logout() 登出 CAN 设备
+    Note over M: Ctrl+C 触发 signalHandler: brake(Num_Len) → logout() → exit(signum)
+```
+
+图依据：ti5robot/multiMotorTCPAPI@ce2295f，读过 README.md、src/main.cpp、include/socket_service.h、include/socket_client.h、include/Ti5BASIC.h（声明部分）、g++ CMD .txt。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +94,8 @@ institutions:
 - [multiMotorTCPAPI 源码归档](../../sources/repos/multimotortcpapi.md)（<https://github.com/ti5robot/multiMotorTCPAPI>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：ti5robot/multiMotorTCPAPI@ce2295f，读过 README.md、src/main.cpp、include/socket_service.h、include/socket_client.h、include/Ti5BASIC.h（声明部分）、g++ CMD .txt；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,22 @@ Proposes the Ego4OOD domain generalization benchmark, containing 8 geographicall
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Ego4D moment-level 标注<br/>203 类 atomic activities"] --> B["归并为 9 个语义连贯类别<br/>降低 concept shift"]
+    B --> C["Ego4OOD：20,096 个视频片段<br/>8 个地理区域 domain"]
+    C --> D["leave-one-domain-out 协议<br/>构造 8 个 train / val / test 划分"]
+    C --> E["covariate shift 评分<br/>SlowFast 特征 k-means 聚类 → 组原型 → 与其他原型的距离<br/>Ω = µ + 2σ"]
+    D --> F["评测对象：MLP-Lite 两层感知器<br/>3 段 SlowFast 特征，one-vs-all 二分类 BCE"]
+    F --> G["Ego4OOD 与 Argo1M 上 top-1 准确率<br/>对照 CIR / EgoZAR 等基线"]
+    E --> H["分析：domain shift score 与 domain 级准确率的关系"]
+    G --> H
+```
+
+图依据：基准构建与评测协议流程图，论文 §3 Ego4OOD Benchmark（含 Ego4OOD Splits、Analyzing Covariate Shift）、§4 Approach、§5 Experiments
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Proposes the Ego4OOD domain generalization benchmark, containing 8 geographicall
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2601.17056>
+- [arXiv PDF](https://arxiv.org/pdf/2601.17056)：已通读全文：§1–§2、§3 Ego4OOD Benchmark、§4 Approach、§5 Experiments、§6 Conclusion（附录的 moment 到类别映射未读）
 
 ## 推荐继续阅读
 

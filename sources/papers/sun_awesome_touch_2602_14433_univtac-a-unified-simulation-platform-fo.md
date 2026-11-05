@@ -6,9 +6,10 @@
 - **分组：** Tactile Simulation & Sim2Real
 - **编号：** 054/065
 - **入库日期：** 2026-08-10
-- **arXiv：** 2602.14433
+- **arXiv：** 2602.10093
+- **编号核对：** 上游清单登记的 2602.14433 经 arXiv 官方记录核对为另一篇论文《Synthetic Reader Panels: Tournament-Based Ideation with LLM Personas for Autonomous Publishing》，与本条目不符；已更正为 2602.10093《UniVTAC: A Unified Simulation Platform for Visuo-Tactile Manipulation Data Generation, Learning, and Benchmarking》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2602.14433>
+- **论文：** <https://arxiv.org/abs/2602.10093>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Unified simulation platform with eight representative visuo-tactile manipulation tasks; UniVTAC Encoder improves average success rates by 17.1%.

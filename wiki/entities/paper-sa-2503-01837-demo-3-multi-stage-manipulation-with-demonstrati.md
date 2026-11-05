@@ -43,6 +43,27 @@ Multi-stage manipulation with demonstration-augmented reward, policy, and world 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph PH1["阶段 1: 预训练"]
+    D["少量演示数据集 D"] --> BC["行为克隆: 联合预训练策略 πBC 与编码器 hBC (早停)"]
+  end
+  BC -->|初始化 πRL 与世界模型编码器| LOOP
+  subgraph PH2["阶段 2: 交互式学习"]
+    LOOP["环境交互: 以退火概率在 πBC 与世界模型规划 (TD-MPC2, MPPI) 间选择"] --> B["回放缓冲 B"]
+    B --> SMP["每次更新从 B 与 D 混合采样 (初始演示占 50%)"]
+    D --> SMP
+    SMP --> UPD["更新世界模型 (TD-MPC2 损失) 与各阶段判别器 δk"]
+    UPD --> DR["稠密奖励 = 稀疏阶段奖励 + 判别器输出映射到 [-β, β]"]
+    DR --> UPD
+    UPD --> LOOP
+  end
+```
+
+图依据：论文 §2（Preliminaries）、§3（Method）、§3.1（Model-based RL with online reward learning）、§3.2（Training scheme）与 Fig.3、Fig.4、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ Multi-stage manipulation with demonstration-augmented reward, policy, and world 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.01837>
+- [arXiv PDF](https://arxiv.org/pdf/2503.01837)：已通读方法部分（实验与附录以略读为准）：§2 预备知识、§3 方法（3.1 在线奖励学习、3.2 训练方案）；§4 实验仅略读，附录未读。
 
 ## 推荐继续阅读
 

@@ -43,6 +43,22 @@ summary: "在真实应用中确保人形安全且不牺牲性能至关重要。�
 - **免调参跨任务**的安全层利于工程复用；
 - 与学习类控制互补：安全控制作"护栏"，学习作"性能"。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人类遥操作 / 名义控制器<br/>产生参考控制 u_ref"] --> B["对每个肢体-障碍物对<br/>(含自碰撞) 设计能量函数 ϕ_i"]
+    B --> C["由 SSA 生成线性控制约束<br/>L_f ϕ + L_g ϕ·u ≤ -η"]
+    C --> D{"含控制限幅的<br/>QP 是否可行?"}
+    D -->|"可行"| G["Phase II：最小改动<br/>min ‖u − u_ref‖ 得 u_safe"]
+    D -->|"不可行<br/>(固有 / 方法 / 运动学)"| E["Phase I：求最小松弛 s*<br/>把约束集投影到最近可行集"]
+    E --> F["用 s* 放宽安全约束<br/>(控制限幅不放宽)"]
+    F --> G
+    G --> H["u_safe 下发 Unitree G1<br/>(MuJoCo 仿真 / 真机)"]
+```
+
+图依据：论文 §III（问题形式化）、§IV-B（p-SSA 两阶段）、§V-G（遥操作中作为安全滤波器）/ Fig.2、Eq.(9)(12)(13)
+
 ## 解决什么问题
 
 人形在**杂乱环境**操作要**安全**： - 需**肢体级**避**外部碰撞 + 自碰撞**； - 约束**数量巨大**且可能**互相冲突（不可行）**； - 安全不能太保守而**牺牲性能**。
@@ -125,6 +141,7 @@ summary: "在真实应用中确保人形安全且不牺牲性能至关重要。�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set/Dexterous_Safe_Control_for_Humanoids_in_Cluttered_Environments_via_Projected_Safe_Set.html>
 - 论文：<https://arxiv.org/abs/2502.02858>
 - 论文正文（实验设置、指标、消融与局限）：<https://arxiv.org/html/2502.02858>
+- [arXiv PDF](https://arxiv.org/pdf/2502.02858)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 灵巧安全与三类不可行、§IV r-SSA 与 p-SSA、§V-A/B/G 实验设定与遥操作
 
 ## 推荐继续阅读
 

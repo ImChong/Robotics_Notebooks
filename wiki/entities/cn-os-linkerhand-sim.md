@@ -61,6 +61,40 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`roslaunch linker_hand_mujoco_ros linker_hand_mujoco.launch hand_type:=left hand_joint:=L10`（ROS Noetic，对应 `linker_hand_mujoco_ros/scripts/linker_hand.py`；README 另列 Isaac Gym、PyBullet、ROS 2 Jazzy 等变体，本图未画）。节点只订阅 `/cb_<hand_type>_hand_control_cmd`（`sensor_msgs/JointState`），发布者不在本仓库内。`__main__` 中的 `ControlWindow` 滑块 GUI 被注释，未启动。
+
+```mermaid
+sequenceDiagram
+    participant EXT as 外部发布者 (不在本仓库, 如 rostopic pub)
+    participant ROS as rospy 订阅 (topic_cmd)
+    participant HC as linker_hand.py: hand_cb
+    participant CV as 全局 ctrl_values
+    participant MT as linker_hand.py: mujoco_thread
+    participant MJ as MuJoCo (model / data / viewer)
+
+    Note over MT,MJ: __main__ 模块级代码先加载模型
+    MJ->>MJ: MjModel.from_xml_path(urdf/L10/.../linker_hand_l10_left.xml), MjData, mj_forward
+    Note over MT: threading.Thread(mujoco_thread).start()
+    MT->>MJ: mujoco.viewer.launch_passive(model, data)
+    ROS->>ROS: topic_cmd(): rospy.Subscriber(/cb_left_hand_control_cmd, JointState, hand_cb)
+    loop 每条 JointState 消息
+        EXT->>ROS: JointState.position (0 到 255)
+        ROS->>HC: hand_cb(data)
+        HC->>HC: 按 joint_map 取位, 部分关节用 255 减 p 取反 (L10 中非 0/2/3/4/5 号, L20/L21 全部), map_range_to_joint 映射到 joint_arc
+        HC->>CV: ctrl_values[map_idx] = 关节角
+    end
+    loop 每 10 ms, while viewer.is_running()
+        MT->>CV: 读取 ctrl_values
+        MT->>MJ: data.ctrl[:] = ctrl_values
+        MT->>MJ: mj_step(model, data)
+        MT->>MJ: viewer.sync()
+    end
+```
+
+图依据：linker-bot/linkerhand-sim@539f03b，`README.md`、`linker_hand_mujoco_ros/README_CN.md`、`linker_hand_mujoco_ros/launch/linker_hand_mujoco.launch`、`linker_hand_mujoco_ros/scripts/linker_hand.py`、`linker_hand_mujoco_ros/scripts/utils/mapping.py`（检索 L10 映射表名称与范围，未逐项核对）。
+
 ## 参考来源
 
 - [linkerhand-sim 源码归档](../../sources/repos/linkerhand-sim.md)（<https://github.com/linker-bot/linkerhand-sim>）

@@ -55,6 +55,46 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`bash scripts/xr1_stage1_pretrain.sh`（Stage 1，`--policy.type=xr1_stage1`）→ `bash scripts/xr1_stage2_pretrain.sh`（Stage 2，`xr1_stage2`，`stage1_supervised=true`）→ `bash scripts/xr1_stage3_finetune.sh [--debug] [--dataset ...]`（脚本里 `--policy.type=xr1_stage2`、`stage1_supervised=false`）；推理示例 `python deploy/real_robot/xr1_deploy.py`、`python deploy/real_robot/xr1_inference.py`。三个训练脚本都是 `accelerate launch lerobot/scripts/train_humanoid_multigpu.py`。
+
+```mermaid
+sequenceDiagram
+    participant SH as scripts/xr1_stage*_*.sh
+    participant TR as lerobot/scripts/train_humanoid_multigpu.py (train)
+    participant DS as datasets/factory.py (make_dataset_humanoid[_heterogeneous])
+    participant PF as policies/factory.py (make_policy*)
+    participant S1 as Xr1Stage1Policy (modeling_xr1_stage1.py)
+    participant S2 as Xr1Stage2Policy / Stage2Model (modeling_xr1_stage2.py)
+    participant DP as deploy/real_robot/xr1_deploy.py (XR1_Evaluation)
+
+    SH->>TR: accelerate launch ... --policy.type --dataset.select_dataset ...
+    TR->>DS: 构造数据集（cfg.policy.heterogeneous 决定是否异构）
+    TR->>PF: make_policy / make_policy_multidata / make_policy_heterogeneous
+    TR->>TR: make_optimizer_and_scheduler
+    loop step < cfg.steps
+        TR->>TR: batch = next(dl_iter)；acc.accumulate
+        alt policy.type = xr1_stage1
+            TR->>S1: forward(batch) → action_vision_dual_branch / action_only / vision_only，向量量化(VectorQuantizer2)得到 latent token
+        else policy.type = xr1_stage2 且 stage1_supervised=true
+            TR->>S2: forward：stage1_model 取 action/motion latent token 作监督
+            S2->>S2: stage2_model.forward → latent_action_loss + image_latent_loss + recons_actions_loss
+        else xr1_stage2 且 stage1_supervised=false（stage3 脚本）
+            TR->>S2: forward：无 latent 监督，仅动作重建损失路径
+        end
+        TR->>TR: acc.backward(loss)，优化器更新
+        TR->>TR: 按 save_freq 保存 checkpoint
+    end
+    DP->>S2: Xr1Stage2Policy.from_pretrained(model_path)，init_dataset_stats，reset(action_horizon, ensemble)
+    DP->>S2: select_action(observation, action_horizon)
+    S2->>S2: 归一化 → prepare_all_images/language/state → sample_actions[_no_latent_token]
+    S2->>S2: 先缓存前缀 KV，再对动作从噪声做 num_steps 步 Euler 去噪（denoise_step）
+    S2-->>DP: 反归一化后的 action queue（popleft 逐步取用）
+```
+
+图依据：Open-X-Humanoid/XR-1@0141fc6，读过 `README.md`、`scripts/xr1_stage1_pretrain.sh`、`xr1_stage2_pretrain.sh`、`xr1_stage3_finetune.sh`、`lerobot/scripts/train_humanoid_multigpu.py`、`lerobot/common/policies/factory.py`（`get_policy_class`）、`modeling_xr1_stage1.py`（方法清单、`forward`、量化器构造）、`modeling_xr1_stage2.py`（`__init__`、`forward`、`select_action`、`Stage2Model.sample_actions` 等）、`deploy/real_robot/xr1_deploy.py`、`xr1_inference.py`。Stage 1 各分支内部损失、数据集工厂实现与 `cross_stage_function/` 未细读；`stage2_model.forward` 内部的流匹配损失构成未逐行读。注意 `xr1_deploy.py` 用随机伪造观测演示，且 `__main__` 中只设了变量、未调用 `xr1_deploy()`（见源码）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +106,7 @@ institutions:
 - [XR-1 源码归档](../../sources/repos/xr-1.md)（<https://github.com/Open-X-Humanoid/XR-1>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Open-X-Humanoid/XR-1@0141fc6，读过 README.md、scripts/xr1_stage1_pretrain.sh、xr1_stage2_pretrain.sh、xr1_stage3_finetune.sh、lerobot/scripts/train_humanoid_multigpu.py、lerobot/common/policies/factory.py、modeling_xr1_stage1.py、modeling_xr1_stage2.py、deploy/real_robot/xr1_deploy.py、xr1_inference.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

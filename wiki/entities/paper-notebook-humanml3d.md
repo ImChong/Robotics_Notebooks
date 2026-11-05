@@ -3,7 +3,7 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
 updated: 2026-09-15
-arxiv: "2204.09419"
+venue: "CVPR 2022"
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
   - ../overview/humanoid-paper-notebooks-index.md
@@ -45,7 +45,7 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 |------|------|
 | 分类 | 14_Human_Motion |
 | 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html> |
-| arXiv | <https://arxiv.org/abs/2204.09419> |
+| 论文 | <https://openaccess.thecvf.com/content/CVPR2022/papers/Guo_Generating_Diverse_and_Natural_3D_Human_Motions_From_Text_CVPR_2022_paper.pdf> |
 
 ## 实验与评测
 
@@ -72,7 +72,8 @@ HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供
 
 - [humanoid_pnb_humanml3d.md](../../sources/papers/humanoid_pnb_humanml3d.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html>
-- 论文：<https://arxiv.org/abs/2204.09419>
+- 论文（CVPR 2022，无 arXiv 版）：<https://openaccess.thecvf.com/content/CVPR2022/papers/Guo_Generating_Diverse_and_Natural_3D_Human_Motions_From_Text_CVPR_2022_paper.pdf>
+- 核对（2026-11-02）：原编号 2204.09419 对应《A Mid-infrared Study of Superluminous Supernovae》，该论文无 arXiv 版（作者项目页仅列 CVPR 2022 开放获取 PDF），已去掉 arxiv 字段、改引 CVPR 官方 PDF（依据：项目页 https://ericguo5513.github.io/text-to-motion/；arXiv API 标题/作者/日期：2204.09419 为 Sun, Xiao, Li 的天文论文）
 
 ## 推荐继续阅读
 

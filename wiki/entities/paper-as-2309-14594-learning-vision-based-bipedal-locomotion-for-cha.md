@@ -42,6 +42,35 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Randomization。
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SIM["仿真训练 MuJoCo"]
+        direction TB
+        RAND["随机地形 / 命令 / 物理参数<br/>5 类地形: flat hills blocks ridges stairs"] --> PPO["PPO + mirror loss<br/>critic 额外特权输入"]
+        PPO --> POL["地形感知 locomotion policy"]
+        POL -->|"随机模式 rollout 采集"| DATA["深度图 + 机器人状态 + 真值 heightmap<br/>30000 episodes, 深度图加噪声"]
+        DATA --> HP["heightmap 预测器监督训练"]
+    end
+    subgraph RUN["部署回路 Cassie"]
+        CAM["深度相机图像历史 + 机器人状态"] --> S1["Stage 1: LSTM<br/>MSE 损失"]
+        S1 --> S2["Stage 2: U-Net 精修<br/>L1 损失"]
+        S2 --> HM["局部 heightmap<br/>前方 1.5m x 1m"]
+        HM --> MOD["视觉 modulator"]
+        PRO["本体感知 + 用户命令 + 周期 clock"] --> BLIND["预训练 blind policy (LSTM)"]
+        PRO --> MOD
+        BLIND -->|"基线动作"| MOD
+        BLIND --> SUM["PD 目标 + clock 参数"]
+        MOD -->|"modulating action"| SUM
+        SUM --> PD["PD 控制器 2kHz<br/>(策略 50Hz)"]
+    end
+    POL -.->|"策略结构"| BLIND
+    HP -.->|"权重"| S1
+```
+
+图依据：论文 §III 系统概览 / Fig.2、§IV-A Fig.3（blind policy + vision modulator）、§V Fig.5（两阶段预测器）、§VII 部署。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +125,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Observation / Domain Randomization。
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2309.14594>
+- [arXiv PDF](https://arxiv.org/pdf/2309.14594)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 系统概览、§IV 策略设计与训练、§V heightmap 预测、§VII sim-to-real 部署；§VI 仿真结果略读
 
 ## 推荐继续阅读
 

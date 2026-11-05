@@ -39,6 +39,36 @@ sources:
 - 与 BFM-Zero 对照：zero-shot WBC 依赖可调用行为表示，任务变时尽量在潜空间找方向而非重训。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **01 Forward-backward 表征**（#02/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    M["无标签行为数据集 M (仅状态轨迹，动作捕捉)"] --> ER["轨迹编码 z = ER_FB(τ)<br/>(对 B(s) 取平均)"]
+    subgraph FB["FB-CPR 预训练 (在线、离策略)"]
+        NU["潜变量分布 ν 的混合:<br/>ER_FB(τ)、B(s) (s 取自 D_online)、超球面均匀"] --> ROLL["策略 π_z 在环境中 rollout"]
+        ROLL --> BUF["回放缓冲区 D_online"]
+        BUF --> FBL["更新 F 与 B (FB 时序差分损失)"]
+        ER --> DISC["潜变量条件判别器 D(s, z)<br/>区分数据集的 (s, ER_FB(τ)) 与策略的 (s, z)"]
+        BUF --> DISC
+        DISC --> CRIT["评论家 Q: 以 log(D/(1-D)) 为奖励<br/>离策略 TD 学习"]
+        FBL --> ACT["Actor 损失: 最大化 F(s,a,z)^T z + α·Q(s,a,z)"]
+        CRIT --> ACT
+        ACT --> ROLL
+    end
+    ER --> NU
+    subgraph ZS["零样本推理 (无需额外学习或规划)"]
+        R["奖励: z_r = 对 r(s_i)·B(s_i) 求平均"]
+        GL["目标: z_s = B(s)"]
+        TJ["示范轨迹: z_τ = ER_FB(τ)"]
+        R --> POL["执行策略 π_z"]
+        GL --> POL
+        TJ --> POL
+    end
+    ACT -.->|"预训练得到 F, B 与 π_z"| ZS
+```
+
+图依据：论文 §2–§3 / Fig.2（FB-CPR 的 Eq.5–11 与零样本推理）；humanoid 实验设置不在图内。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -92,6 +122,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2504.11054>
+- [arXiv PDF](https://arxiv.org/pdf/2504.11054)：已通读方法部分（实验与附录以略读为准）：§2 预备知识、§3 FB-CPR 方法（含 Fig.2）；§4 humanoid 实验与附录略读
 
 ## 推荐继续阅读
 

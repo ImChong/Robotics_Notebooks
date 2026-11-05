@@ -42,6 +42,27 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBS["多路 RGB / 深度图像"] --> ENC["权重共享 ResNet-34 编码器\n分别编码每个视角"]
+  PROP["本体感知\n末端位姿 / 速度 / 力-力矩"] --> PROJ["线性投影 (Transformer 版为 MLP 分词)"]
+  IDS["可选条件: 物体 ID / 技能 ID (one-hot)"] --> HEAD
+  ENC --> CAT["特征拼接"]
+  PROJ --> CAT
+  CAT --> HEAD["策略头\nResNet 版: MLP 高斯策略\nTransformer 版: 解码器式自注意力 + FiLM 条件"]
+  HEAD --> ACT["动作: 6D 末端速度 twist + 夹爪开合二值量"]
+  ACT --> TASK["在 FMB 任务上评测\n(抓取 / 重定位 / 装配 与多阶段任务)"]
+  subgraph HIER["多阶段任务的三种策略组合 (Fig. 13)"]
+    H1["无条件策略: 端到端训练整个任务"] --- H2["技能条件策略: 人工给出技能 ID，一个策略"]
+    H2 --- H3["每个技能一个策略: 人工逐步选择"]
+  end
+  TASK -.-> HIER
+```
+
+图依据：论文 §4 中的模仿学习策略描述（Fig. 9 ResNet / Transformer 基线架构）与长时序任务的技能组合（Fig. 13）；本页论文本身是基准，图仅画其自述的基线策略，不涉及基准数据采集流程。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://journals.sagepub.com/doi/10.1177/02783649241276017>
+- [arXiv PDF](https://arxiv.org/pdf/2401.08553)：已通读方法部分（实验与附录以略读为准）：§4 模仿学习基线与技能组合（Fig. 9、Fig. 13）；基准任务设计、数据采集与实验结果仅略读
 
 ## 推荐继续阅读
 

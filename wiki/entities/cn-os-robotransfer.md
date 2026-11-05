@@ -55,6 +55,48 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`uv run main.py`（显存较小的 4090 加 `--mem_efficient`；默认 `--dataset_path HorizonRobotics/RoboTransfer-RealData`、`--refer_image_path assets/example_ref_image/gray_grid_desk.png`）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 uv run main.py
+    participant M as main.py main()
+    participant D as datasets.load_dataset / utils/image_loading.py
+    participant P as robotransfer_pipeline.RoboTransferPipeline
+    participant GN as guider.GuiderNet（depth / normal）
+    participant UN as UNetSpatioTemporalConditionModel
+    participant V as vae（AutoencoderKLTemporalDecoder）
+    participant W as utils/save_video.save_images_to_mp4
+
+    U->>M: 解析 --dataset_path / --refer_image_path / --output_dir / --mem_efficient
+    M->>D: HF 数据集用 load_dataset(split="train")，本地路径用 get_dataset_length
+    M->>P: from_pretrained("HorizonRobotics/RoboTransfer", bfloat16, trust_remote_code=True)
+    M->>P: pipe.to("cuda")
+    opt --mem_efficient
+        M->>P: enable_model_cpu_offload()
+    end
+    loop 每 30 帧一段：range(0, length-30, 30)
+        M->>D: load_images_from_dataset / load_images_from_local（取 depth、normal 引导图）
+        D-->>M: depth_guider_images, normal_guider_images
+        M->>P: pipe(image=参考图, 引导图, 30 帧, 25 步, 高 384, 宽 640x3)
+        P->>P: _encode_image（CLIP 图像编码）与 _encode_vae_image（参考图潜变量）
+        P->>GN: depth_guider_net / normal_guider_net 编码逐帧引导图
+        P->>P: prepare_noise_latents，guidance_scale 在 min..max 间 linspace
+        loop 每个去噪时间步
+            P->>UN: unet(拼接 latents、图像潜变量、depth 条件、normal 条件, image_embeddings)
+            UN-->>P: noise_pred（带 classifier-free guidance）
+            P->>P: scheduler.step
+        end
+        P->>V: decode_latents 分块解码（decode_chunk_size=1）
+        P-->>M: frames[0]
+        M->>W: save_images_to_mp4(frames, output_dir/output_frames.mp4, fps=10)
+    end
+```
+
+图依据：HorizonRobotics/RoboTransfer@3698fee，读过 README.md、main.py、robotransfer/models/robotransfer_pipeline.py（__init__ 与 __call__，去噪循环后段未逐行读）、robotransfer/models/guider.py（仅类与方法签名）、robotransfer/utils/ 下文件名与函数签名。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +108,7 @@ institutions:
 - [RoboTransfer 源码归档](../../sources/repos/robotransfer.md)（<https://github.com/HorizonRobotics/RoboTransfer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：HorizonRobotics/RoboTransfer@3698fee，读过 README.md、main.py、robotransfer/models/robotransfer_pipeline.py（__init__ 与 __call__ 大部分）、guider.py 与 utils/ 的函数签名；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

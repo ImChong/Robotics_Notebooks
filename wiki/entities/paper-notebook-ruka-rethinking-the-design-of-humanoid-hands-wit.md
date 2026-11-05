@@ -32,7 +32,24 @@ RUKA 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见「流程总览」（依据论文方法部分），结论与指标以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    G["MANUS 手套经定制 3D 打印件固定在 RUKA 手背<br/>实时给出指尖位置 f_t 与关键点 k_t"]
+    G --> D1["自主数据收集 §V-A<br/>在电机限位内均匀采样电机位置并移动手指<br/>再做 100 步随机增减 (拇指重复 500 次，其余手指各 300 次)"]
+    D1 --> D2["15 Hz 记录: 指尖位置、关键点、关节角<br/>以及指令电机位置与实际电机位置"]
+    D2 --> L["控制器学习 §V-B: 每根手指一个控制器<br/>过去 10 个手指状态 → LSTM 序列编码 → MLP 头 → 预测下一电机位置<br/>(MSE 损失，AdamW)"]
+    L --> IO["输入: 拇指用期望指尖位置，其余四指用期望关节角"]
+    IO --> RUN["部署: 手套指令 → 控制器 → RUKA 电机位置"]
+    CAL["自动标定脚本: 二分搜索各电机在当前肌腱张紧下的最大范围"] -.->|"适配重新组装的手"| RUN
+    RUN --> TELE["遥操作 §VI-A: MANUS 手套控手 + ArUco 标记控臂，约 25 Hz"]
+    RUN --> POL["策略学习 §VI-B: HuDOR 残差策略微调开环回放<br/>(调整电机位置)"]
+```
+
+图依据：论文 §V（Fig.8、Fig.9）、§VI；图仅覆盖控制器学习与应用，硬件设计部分不在图内。
 
 ## 核心信息
 
@@ -66,6 +83,7 @@ RUKA 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - [humanoid_pnb_ruka-rethinking-the-design-of-humanoid-hands-wit.md](../../sources/papers/humanoid_pnb_ruka-rethinking-the-design-of-humanoid-hands-wit.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2504.13165>
+- [arXiv PDF](https://arxiv.org/pdf/2504.13165)：已通读方法部分（实验与附录以略读为准）：§V 控制器、§VI 应用；§III 硬件设计与 §IV 硬件测试未逐段细读，故图中不含硬件部分
 
 ## 推荐继续阅读
 

@@ -42,6 +42,24 @@ Comprehensive survey of world models for autonomous driving, covering methods fr
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["§1 Introduction（Fig.1：综述整体结构）"] --> S2["§2 Background：2.1 Definition of World Models、2.2 Core Tasks in World Models for Autonomous Driving"]
+    S2 --> S3["§3 Taxonomy"]
+    S3 --> T31["§3.1 Generation of Future Physical World：Image-based、BEV-based、OG-based、PC-based Generation"]
+    S3 --> T32["§3.2 Behavior Planning for Intelligent Agents：Learning-based、Rule-based、Search-based Planning"]
+    S3 --> T33["§3.3 Interaction between Planning and Prediction"]
+    S3 --> S4["§4 Data and Training Paradigms：4.1 Self-Supervised Learning for World Models、4.2 Large-Scale Pretraining Frameworks、4.3 Data Generation for Training"]
+    S4 --> S5["§5 Application Areas and Tasks：5.1 Scene Understanding、5.2 Motion Prediction、5.3 Simulation、5.4 End-to-End Driving"]
+    S5 --> S6["§6 Performance Comparison：评测平台与基准、4D Scene Generation、Point Cloud Forecasting、4D Occupancy Forecasting、Motion planning"]
+    S6 --> S7["§7 Future Research Directions：Self-Supervised World Models、Multi-Modal World Models、Advanced Simulation、Efficient World Models"]
+    S7 --> S8["§8 Conclusion"]
+```
+
+图依据：综述分类体系图（章节框架），依据论文 Fig.1 与 §1 末尾的结构说明，以及 §2–§8 的章节标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Comprehensive survey of world models for autonomous driving, covering methods fr
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.11260>
+- [arXiv PDF](https://arxiv.org/pdf/2501.11260)：已读摘要、§1 引言（含 Fig.1 与结构说明）、§6 开头的评测小节划分，以及 §2–§8 的章节标题；各章正文细节、基准数字与参考文献略读
 
 ## 推荐继续阅读
 

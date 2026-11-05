@@ -42,6 +42,25 @@ Autoregressive predictive learning of invariant-equivariant world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["同一样本的 M+1 个变换视图 x_1…x_M+1"] --> B["相对变换（动作）a_i，线性投影器编码"]
+    A --> C["骨干编码器 f 编码前 M 个视图得 z_1…z_M"]
+    C --> D["z_i 与动作嵌入 a_i 拼接（z_M 不拼接）"]
+    B --> D
+    D --> E["Transformer 编码器 g + 可学习 [AGG] token：得聚合表示 z_AGG"]
+    E --> F["z_AGG 与最终动作嵌入 a_M 拼接，输入 MLP 预测器 h"]
+    B --> F
+    F --> G["预测 z_M+1 的表示"]
+    A --> H["目标编码器（f 的 EMA）编码 x_M+1，stop-gradient"]
+    G --> I["损失 1 - 余弦相似度"]
+    H --> I
+```
+
+图依据：论文 §2.2 / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Autoregressive predictive learning of invariant-equivariant world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.03176>
+- [arXiv PDF](https://arxiv.org/pdf/2505.03176)：已通读方法部分（实验与附录以略读为准）：§1 引言；§2.2 Architecture（含 Fig.1）；§3 以后实验（略读）
 
 ## 推荐继续阅读
 

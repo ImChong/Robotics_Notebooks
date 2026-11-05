@@ -37,6 +37,31 @@ sources:
 - 轻量 task token 适配，把重训身体转为换任务条件。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **04 Adaptation**（#31/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    GOAL["任务目标观测 g_t（自身坐标系）<br/>例：转向任务含目标方向、朝向、期望速度（5 维）"]
+    PROP["本体感觉信息"]
+    TE["Task Encoder（前馈网络，唯一可训练部分）<br/>输出 Task Token τ_t ∈ R^512"]
+    PRIOR["可选 Prior Tokens<br/>文本提示或关节条件，由预训练编码器生成"]
+    STATE["State Token：当前环境状态，预训练编码器生成"]
+    SEQ["拼接成 token 序列"]
+    BFM["冻结的 GC-BFM（MaskedMimic，Transformer）"]
+    ACT["自然的任务导向动作 a_t"]
+    RL["PPO：任务奖励 + BFM 输出的动作概率<br/>梯度穿过冻结的 BFM 回传到 Task Encoder"]
+    GOAL --> TE
+    PROP --> TE
+    TE --> SEQ
+    PRIOR --> SEQ
+    STATE --> SEQ
+    SEQ --> BFM --> ACT
+    ACT --> RL
+    RL -.->|仅更新| TE
+```
+
+图依据：论文 §3.1–§3.3（Fig. 1）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -85,6 +110,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2503.22886>
+- [arXiv PDF](https://arxiv.org/pdf/2503.22886)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 Task Tokens、3.2 Task Encoder、3.3 Training，含 Fig. 1）；§4 实验与附录仅略读
 
 ## 推荐继续阅读
 

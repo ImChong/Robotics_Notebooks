@@ -44,6 +44,25 @@ summary: "对齐配置密度与轨迹潜变量分布的 TAMP 数据生成，使�
 - 开源状态：**待发布**（步骤 2.5 核查，2026-09-14）。
 - 与 [11 篇技术地图](../overview/vla-tamp-planning-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[预训练参考演示 Dref<br/>实验用 DROID 关节轨迹] --> B[拟合关节构型 Gaussian mixture 密度<br/>得 配置代价 c_conf = -log p_conf]
+    A --> C[训练轨迹编码器 E_phi<br/>随机时间裁剪 + 运动描述符辅助预测 + KL 正则]
+    C --> D[在参考嵌入上拟合 Gaussian 潜在分布<br/>得 轨迹代价 c_traj 马氏距离 编码器冻结]
+    E[TiPToP 感知与符号目标<br/>cuTAMP 枚举计划骨架 采样抓取与放置 IK 给出候选构型] --> F[端点选择<br/>用 c_conf 在 IK 候选中选最优构型]
+    B --> F
+    F --> G[路径优化<br/>cuRobo 目标 C_plan 加 lambda_path 乘 c_traj<br/>可行性检查保留]
+    D --> G
+    G --> H[重定时 Retiming<br/>几何路径不变 用 c_traj 优化时间缩放]
+    D --> H
+    H --> I[真机执行 TAMP 轨迹<br/>收集每任务 N 条成功演示数据集 D]
+    I --> J[微调预训练 VLA π0.5-DROID<br/>flow matching 损失]
+```
+
+图依据：论文 §IV（Fig. 2 Overview of DATAFARM，§IV-A 至 §IV-D）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -98,6 +117,7 @@ summary: "对齐配置密度与轨迹潜变量分布的 TAMP 数据生成，使�
 - [datafarm_arxiv_2609_12316.md](../../sources/papers/datafarm_arxiv_2609_12316.md)
 - [wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md)
 - [arXiv:2609.12316](https://arxiv.org/abs/2609.12316)
+- [arXiv PDF](https://arxiv.org/pdf/2609.12316)：已通读方法部分（实验与附录以略读为准）：§III 问题设定、§IV 分布对齐 TAMP（预备知识、方法概览、参考模型学习、分布对齐规划）
 
 ## 推荐继续阅读
 

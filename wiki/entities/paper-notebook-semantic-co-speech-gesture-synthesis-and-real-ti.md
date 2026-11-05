@@ -35,6 +35,30 @@ summary: "论文把\"机器人讲话的同时做出语义对齐的手势\"这件
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph TRAIN[训练阶段]
+    D[语音 WAV + 手势 BVH 数据集] --> R[GMR 重定向到 Unitree G1]
+    D --> S1[Step 1: Residual VQ-VAE 学习运动码本]
+    S1 --> S2[Step 2: Motion-GPT 自回归预测运动 token]
+    R --> S3[Step 3: RL 训练 MotionTracker π_motion]
+  end
+  subgraph INFER[推理流水线]
+    A[语音输入] --> AE[Audio-Encoder]
+    A --> TTS[TTS 合成语音]
+    AE --> G[Motion-GPT 生成运动 token]
+    L[LLM 检索语义手势 SeG 库] --> G
+    G --> DEC[解码为 Ref-Motion]
+    DEC --> PI[MotionTracker 输出 PD 残差动作]
+    PI --> ROBOT[Unitree G1 实时执行 与语音同步]
+    TTS --> ROBOT
+  end
+```
+
+图依据：论文 §3.1 / Fig.1（LLM 检索与 Motion-GPT 的融合关系依 §3.3.2 文字）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -67,6 +91,7 @@ summary: "论文把\"机器人讲话的同时做出语义对齐的手势\"这件
 - [humanoid_pnb_semantic-co-speech-gesture-synthesis-and-real-ti.md](../../sources/papers/humanoid_pnb_semantic-co-speech-gesture-synthesis-and-real-ti.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Semantic_Co-Speech_Gesture_Synthesis_and_Real-Time_Control_for_Humanoid_Robots/Semantic_Co-Speech_Gesture_Synthesis_and_Real-Time_Control_for_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2512.17183>
+- [arXiv PDF](https://arxiv.org/pdf/2512.17183)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（3.1–3.4）、§4 实验设定
 
 ## 推荐继续阅读
 

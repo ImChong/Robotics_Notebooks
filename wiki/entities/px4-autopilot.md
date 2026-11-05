@@ -61,11 +61,53 @@ summary: "PX4 是 Dronecode 生态的开源自动驾驶仪：多机型飞控固�
 - **误区：SITL 与真机参数一致** — 需重新校准传感器、推力模型与延迟；Sim2Real 见 [Sim2Real](../concepts/sim2real.md)。
 - **局限：微四轴** — 27g 级 [Crazyflie Firmware](./crazyflie-firmware.md) 不走 PX4，选型勿混淆。
 
+## 源码运行时序图
+
+入口：`make px4_sitl gz_x500`（`src/modules/simulation/gz_bridge/CMakeLists.txt` 生成的 `gz_x500` 目标，以 `PX4_SIM_MODEL=gz_x500` 启动 `px4` 可执行文件；以下为多旋翼 + Gazebo SITL 路径）
+
+```mermaid
+sequenceDiagram
+    participant M as px4 main()<br/>platforms/posix/.../main.cpp
+    participant RC as ROMFS/.../init.d-posix/rcS
+    participant GZ as px4-rc.gzsim + GZBridge<br/>(gz_bridge)
+    participant APPS as rc.vehicle_setup → rc.mc_apps
+    participant EKF as ekf2 (EKF2.cpp)
+    participant FM as flight_mode_manager<br/>+ mc_pos_control
+    participant ATT as mc_att_control
+    participant RATE as mc_rate_control
+    participant CA as control_allocator
+    participant SIM as Gazebo (gz sim)
+
+    M->>RC: run_startup_script("etc/init.d-posix/rcS")
+    RC->>RC: 解析 PX4_SIM_MODEL → SYS_AUTOSTART，执行 airframes/4001_gz_x500
+    RC->>RC: dataman / sensors / commander / pwm_out_sim start
+    RC->>GZ: 执行 px4-rc.gzsim
+    GZ->>SIM: gz service /world/.../create 生成 x500 模型
+    GZ->>GZ: gz_bridge start -w 世界 -n 模型名
+    RC->>APPS: 执行 rc.vehicle_setup（VEHICLE_TYPE=mc）
+    APPS->>APPS: control_allocator / mc_rate_control / mc_att_control / mc_pos_control / flight_mode_manager start
+    RC->>EKF: ekf2 start &（EKF2_EN=1 时）
+    loop 仿真运行中
+        SIM-->>GZ: IMU / 磁力计 / 气压 / GNSS 回调（imuCallback 等）
+        GZ-->>EKF: PX4Accelerometer / PX4Gyroscope.update() 发布 IMU 数据，sensors 汇成 sensor_combined / vehicle_imu
+        EKF-->>FM: vehicle_attitude / vehicle_local_position
+        FM-->>FM: FlightModeManager 发布 trajectory_setpoint
+        FM-->>ATT: MulticopterPositionControl 发布 vehicle_attitude_setpoint
+        ATT-->>RATE: mc_att_control 发布 vehicle_rates_setpoint
+        RATE-->>CA: 发布 vehicle_thrust_setpoint / vehicle_torque_setpoint
+        CA-->>GZ: 发布 actuator_motors，GZMixingInterfaceESC::updateOutputs
+        GZ-->>SIM: 电机转速指令（gz transport）
+    end
+```
+
+图依据：PX4/PX4-Autopilot@2ade646，读过 `platforms/posix/src/px4/common/main.cpp`、`ROMFS/px4fmu_common/init.d-posix/{rcS,px4-rc.simulator,px4-rc.gzsim,airframes/4001_gz_x500}`、`ROMFS/px4fmu_common/init.d/{rc.vehicle_setup,rc.mc_apps}`、`src/modules/simulation/gz_bridge/{CMakeLists.txt,GZBridge.cpp,GZBridge.hpp,GZMixingInterfaceESC.cpp}`、`src/modules/{ekf2/EKF2,flight_mode_manager/FlightModeManager,mc_pos_control/MulticopterPositionControl,mc_att_control/mc_att_control_main,mc_rate_control/MulticopterRateControl,control_allocator/ControlAllocator}.{hpp,cpp}`（uORB 订阅/发布关系取自上述文件）。
+
 ## 参考来源
 
 - [sources/repos/px4_autopilot.md](../../sources/repos/px4_autopilot.md)
 - [sources/sites/cia_dronecan_uavcan.md](../../sources/sites/cia_dronecan_uavcan.md)
 - [PX4/PX4-Autopilot](https://github.com/PX4/PX4-Autopilot)
+- 源码核对（2026-11-02）：PX4/PX4-Autopilot@2ade646，读过 `platforms/posix/src/px4/common/main.cpp`、`ROMFS/px4fmu_common/init.d-posix/` 下 rcS/px4-rc.simulator/px4-rc.gzsim/airframes/4001_gz_x500、`ROMFS/px4fmu_common/init.d/` 下 rc.vehicle_setup/rc.mc_apps、`src/modules/simulation/gz_bridge/` 与 ekf2/flight_mode_manager/mc_pos_control/mc_att_control/mc_rate_control/control_allocator 的主要源文件；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

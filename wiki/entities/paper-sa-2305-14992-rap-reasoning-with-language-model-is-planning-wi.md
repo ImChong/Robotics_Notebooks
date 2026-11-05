@@ -42,6 +42,25 @@ Formalizes LLM reasoning as planning with a world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  P["问题 + 上下文提示 c\n初始状态 s0"] --> MCTS
+  subgraph MCTS["MCTS 规划循环（迭代至预算用尽）"]
+    SEL["Selection\n按 UCT 选子节点至叶节点"] --> EXP["Expansion\nLLM（agent）采样 d 个动作\nLLM（world model）预测下一状态"]
+    EXP --> SIM["Simulation\nroll-out 策略 + world model\n推演至终止状态"]
+    SIM --> BP["Back-propagation\n沿路径更新 Q(s,a)"]
+    BP --> SEL
+  end
+  RW["奖励 r(s,a)\n动作似然 / 状态置信度\n自评 Yes 概率 / 任务启发式"] -.-> EXP
+  RW -.-> SIM
+  MCTS --> OUT["从搜索树选最终推理轨迹\n(s0,a0,s1,...,sT)"]
+  OUT --> AGG["RAP-Aggregation\n（仅数学推理：聚合多条轨迹答案）"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.1、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Formalizes LLM reasoning as planning with a world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2305.14992>
+- [arXiv PDF](https://arxiv.org/pdf/2305.14992)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3（3.1 世界模型、3.2 奖励设计、3.3 MCTS、3.4 RAP-Aggregation）、§4 实验设定
 
 ## 推荐继续阅读
 

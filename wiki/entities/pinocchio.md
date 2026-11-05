@@ -3,7 +3,7 @@
 type: entity
 tags: [software, dynamics, c++, whole-body-control, algorithms, inria]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-03
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/centroidal-dynamics.md
@@ -19,11 +19,13 @@ related:
   - ../concepts/gravity-compensation.md
   - ../queries/urdf-link-inertia-real-robot-check.md
   - ../concepts/null-space-control.md
+  - ../overview/cpp-motion-control-open-source-libraries-map.md
 sources:
   - ../../sources/papers/simulation.md
   - ../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md
   - ../../sources/repos/dynibo.md
   - ../../sources/repos/robot-descriptions-py.md
+  - ../../sources/blogs/wechat_qt_adventure_cpp_motion_control_libs_2026-11-02.md
 summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，是目前各类腿足机器人 WBC 和基于优化的控制器背后的核心计算引擎。"
 ---
 
@@ -72,6 +74,20 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 ## 与现成 URDF 目录
 
 实验里不要手写 git submodule 路径时，用 [robot_descriptions.py](./robot-descriptions-py.md) 的 `loaders.pinocchio.load_robot_description("go2_description")`。选型见 [机器人描述目录选型](../comparisons/robot-description-catalogs.md)。
+
+## 一手资料核对（2026-11-03）
+
+> 来自 [C/C++ 运动控制开源库清单](https://mp.weixin.qq.com/s/RIXXIltQ0ABoBO_OVLZTZw) 的交叉核对；以一手资料为准。
+
+| 项 | 内容 |
+|----|------|
+| **仓库** | [https://github.com/stack-of-tasks/pinocchio](https://github.com/stack-of-tasks/pinocchio) |
+| **许可（核查）** | BSD-2-Clause（LICENSE：BSD 2-Clause，CNRS / INRIA 版权） |
+| **最近提交** | 2026-10-30 |
+| **论文 / 文档** | README 引用软件论文：The Pinocchio C++ library（IEEE SII 2019，HAL hal-01866228） |
+
+- **文章说法：** 语言 C++ + Python 绑定；许可 BSD-2；刚体动力学、FK/IK、雅克比、RNEA/ABA；Crocoddyl、Stack-of-Tasks 底层依赖
+- **核对结论：** 一致。Crocoddyl README 确实说明用 Pinocchio 计算动力学与解析导数。
 
 ## 关联页面
 - [Query：Pinocchio 快速上手指南](../queries/pinocchio-quick-start.md)

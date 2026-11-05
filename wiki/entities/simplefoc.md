@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, framework, motor-control, foc, bldc, embedded, open-source, simplefoc]
 status: complete
-updated: 2026-08-02
+updated: 2026-11-03
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../comparisons/open-source-qdd-actuator-projects.md
@@ -17,10 +17,12 @@ related:
   - ./kicad.md
   - ../concepts/can-bus-protocol.md
   - ../../roadmap/depth-torque-motor-design.md
+  - ../overview/cpp-motion-control-open-source-libraries-map.md
 sources:
   - ../../sources/repos/simplefoc_arduino_foc.md
   - ../../sources/sites/simplefoc_documentation.md
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
+  - ../../sources/blogs/wechat_qt_adventure_cpp_motion_control_libs_2026-11-02.md
 summary: "SimpleFOC 是社区驱动的开源 FOC 生态：Arduino-FOC 库、官方 Shield/Mini 参考硬件与 docs.simplefoc.com 文档，面向 BLDC/步进电机的跨平台低功率闭环控制与学习；力矩关节路线中作为 Stage 1 入门，之后衔接到 moteus/Tinymovr。"
 ---
 
@@ -96,6 +98,20 @@ flowchart TB
 - **误区：只装库不标定** — 极对数、方向、传感器 offset、电流相序需对齐例程完成，否则易振鸣或过流。
 - **局限：实时与确定性** — 无 EtherCAT DC 级多轴同步；硬实时需自选 MCU、定时器与裸机/RTOS 策略。
 - **局限：文档与版本** — 应锁定库版本并对照 [release notes](https://github.com/simplefoc/Arduino-FOC/releases)；社区视频可能落后于 v2.4 API。
+
+## 一手资料核对（2026-11-03）
+
+> 来自 [C/C++ 运动控制开源库清单](https://mp.weixin.qq.com/s/RIXXIltQ0ABoBO_OVLZTZw) 的交叉核对；以一手资料为准。
+
+| 项 | 内容 |
+|----|------|
+| **仓库** | [https://github.com/simplefoc/Arduino-FOC](https://github.com/simplefoc/Arduino-FOC) |
+| **许可（核查）** | MIT（LICENSE：MIT，Antun Skuric 2020） |
+| **最近提交** | 2026-10-04 |
+| **论文 / 文档** | 本次未核对论文 |
+
+- **文章说法：** C++；MIT；BLDC/PMSM 的 FOC，电流/速度/位置环；STM32、ESP32、RP2040、Arduino
+- **核对结论：** 许可一致；平台列表未逐项核对。
 
 ## 关联页面
 

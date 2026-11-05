@@ -55,6 +55,38 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python examples/sense_control_gripper.py`（Sense 编码器遥操作 Gripper；需 `/dev/ttyUSB0`、`/dev/ttyUSB1` 两个串口设备）
+
+```mermaid
+sequenceDiagram
+    participant Ex as examples/sense_control_gripper.py main()
+    participant Se as pika/sense.py Sense
+    participant GrSC as pika/serial_comm.py SerialComm（Sense 串口）
+    participant Gr as pika/gripper.py Gripper
+    participant GrSC2 as SerialComm（Gripper 串口）
+    Ex->>Se: sense('/dev/ttyUSB0').connect()
+    Se->>GrSC: connect() 打开串口 460800 8N1
+    Se->>GrSC: start_reading_thread(callback=_data_callback)
+    Note over GrSC: 后台线程 _reading_thread_func：read_data → _find_json 括号配对解析
+    GrSC-->>Se: _data_callback(json)，写入 encoder_data（AS5047 的 angle、rad）
+    Ex->>Gr: Gripper('/dev/ttyUSB1').connect()
+    Gr->>GrSC2: connect() 并启动读线程（电机状态回调）
+    Ex->>Gr: enable()
+    Gr->>GrSC2: send_command(CommandType.ENABLE)
+    loop while True，每 0.03 s
+        Ex->>Se: get_encoder_data() / get_gripper_distance()
+        Se-->>Ex: encoder_data['rad']、开口距离 mm
+        Ex->>Gr: get_motor_data()
+        Gr-->>Ex: 电机状态（含 Current）
+        Ex->>Gr: set_motor_angle(encoder_data['rad'])
+        Gr->>GrSC2: send_command(POSITION_CTRL, rad)，rad 小于 0 时截为 0
+    end
+```
+
+图依据：agilexrobotics/pika_sdk@902b476，读过 README.md、examples/sense_control_gripper.py、pika/__init__.py、pika/sense.py、pika/serial_comm.py、pika/gripper.py（enable、set_motor_angle 部分）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +98,7 @@ institutions:
 - [pika_sdk 源码归档](../../sources/repos/pika_sdk.md)（<https://github.com/agilexrobotics/pika_sdk>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：agilexrobotics/pika_sdk@902b476，读过 README.md、examples/sense_control_gripper.py、pika/__init__.py、pika/sense.py、pika/serial_comm.py、pika/gripper.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

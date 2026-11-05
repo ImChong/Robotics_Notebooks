@@ -55,6 +55,57 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`ros2 launch flexiv_bringup flexiv.launch.py robot_sn:=Enlight-L-123456 robot_type:=Enlight-L`（使用 `use_fake_hardware:=true` 时改由 FakeSystem 替代真机硬件）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户 终端
+    participant LF as flexiv_bringup flexiv.launch.py
+    participant CM as controller_manager ros2_control_node
+    participant HW as flexiv_hardware FlexivHardwareInterface
+    participant RDK as flexiv::rdk::Robot 闭源库经网络连接控制器
+    participant JS as joint_state_broadcaster
+    participant RS as flexiv_robot_states_broadcaster
+    participant GR as flexiv_gripper 节点 仅 load_gripper
+    participant AC as flexiv_arm_controller JointTrajectoryController
+    U->>LF: ros2 launch flexiv_bringup flexiv.launch.py robot_sn robot_type
+    LF->>LF: xacro flexiv.urdf.xacro 生成 robot_description (ros2_control:=true)
+    LF->>CM: 启动 ros2_control_node, 加载 flexiv_controllers.yaml 与 robot_sn, rdk_control_mode
+    CM->>HW: 加载插件 flexiv_hardware/FlexivHardwareInterface
+    HW->>RDK: on_init: make_unique Robot(robot_sn)
+    LF->>JS: spawner 启动 joint_state_broadcaster
+    JS->>CM: 注册并激活关节状态广播
+    LF->>RS: spawner 启动 flexiv_robot_states_broadcaster
+    alt load_gripper=true
+        LF->>GR: OnProcessExit 后启动 flexiv_gripper 节点与 wait_for_gripper_ready
+        GR-->>LF: wait_for_gripper_ready 退出码为 0 则继续, 否则关闭系统
+    end
+    LF->>AC: spawner 启动 flexiv_arm_controller (无夹爪时紧跟 joint_state_broadcaster 退出)
+    CM->>HW: on_activate
+    HW->>RDK: fault() 若有故障则 ClearFault()
+    HW->>RDK: info(), ServoOn(), 循环直到 operational()
+    loop 控制循环
+        CM->>HW: read()
+        HW->>RDK: states(), digital_inputs()
+        HW-->>CM: 写入 q, dtheta, tau 等 state interface
+        CM->>AC: update() 计算关节命令
+        CM->>HW: write()
+        alt 模式为 RT_JOINT_POSITION
+            HW->>RDK: StreamJointPosition(rt_joint_position_cmds_)
+        else 模式为 RT_JOINT_TORQUE
+            HW->>RDK: StreamJointTorque(rt_joint_torque_cmds_)
+        end
+        CM->>RS: update() 发布 flexiv_robot_states 等话题
+    end
+    CM->>HW: on_deactivate
+    HW->>RDK: Stop()
+```
+
+图依据：flexivrobotics/flexiv_ros2@a165e88，README.md、flexiv_bringup/launch/flexiv.launch.py、flexiv_bringup/config/flexiv_controllers.yaml（节选）、flexiv_hardware/src/flexiv_hardware_interface.cpp（节选）。RDK 内部闭源，ros2_control 的 read/write 调度为框架行为，未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -64,6 +115,8 @@ institutions:
 ## 参考来源
 
 - [flexiv_ros2 源码归档](../../sources/repos/flexiv_ros2.md)（<https://github.com/flexivrobotics/flexiv_ros2>）
+
+- 源码核对（2026-11-02）：flexivrobotics/flexiv_ros2@a165e88，读过 README.md、flexiv_bringup/launch/flexiv.launch.py、flexiv_bringup/config/flexiv_controllers.yaml（节选）、flexiv_hardware/src/flexiv_hardware_interface.cpp（节选）；时序图依据以上文件，未运行代码。
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

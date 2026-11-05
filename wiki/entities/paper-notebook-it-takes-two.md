@@ -32,7 +32,29 @@ It Takes Two 的人形机器人学习论文条目，当前处于 Paper Notebooks
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，效果结论仍待深读。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["两人交互动捕序列（SMPL 格式）"] --> R1
+    subgraph RT["阶段一：接触感知运动重定向"]
+        R1["Trimesh 网格碰撞检测：得到接触面对 C1:T"] --> R2["带 β 正则的形状优化（L_keypoint + λ‖β'‖²）"]
+        R2 --> R3["接触顶点映射到机器人网格"]
+        R3 --> R4["优化第一个体的根位姿偏移 Δp_root, Δθ_root"]
+        R4 --> R5["关节 L2 对齐重定向 → 机器人参考运动 + 接触掩码"]
+    end
+    R5 --> C0
+    subgraph CT["阶段二：交互驱动运动控制器（RL，两机器人共享策略）"]
+        C0["观测：本体感觉 + 参考目标 + 对方状态摘要 + 参考/实测接触"] --> C1["策略输出目标关节角 → PD 控制"]
+        C1 --> C2["奖励：跟踪 + 交互感知全局奖励 + 接触奖励"]
+        C2 --> C3["在线课程：早期重跟踪，逐步加大交互与接触权重"]
+    end
+    C3 --> OUT["两台人形机器人协同交互动作"]
+```
+
+图依据：论文 §4 / Fig. 2、Fig. 3
 
 ## 核心信息
 
@@ -64,7 +86,7 @@ It Takes Two 的人形机器人学习论文条目，当前处于 Paper Notebooks
 
 - [humanoid_pnb_it-takes-two.md](../../sources/papers/humanoid_pnb_it-takes-two.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2510.10206)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 预备知识（含孤立问题）、§4.1 接触感知运动重定向、§4.2 交互驱动运动控制器（观测、奖励、课程）；§5 实验与附录仅略读或未读。
 
 ## 推荐继续阅读
 

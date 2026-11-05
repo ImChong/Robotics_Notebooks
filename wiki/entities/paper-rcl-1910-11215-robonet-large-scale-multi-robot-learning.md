@@ -42,6 +42,23 @@ RoboNet pools robot experience to make visual control transferable. Pretraining 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["多机构多机器人采集<br/>随机动作分布，末端执行器 delta 动作空间"] --> B["RoboNet 数据集<br/>用户可按机器人/夹爪/视角等属性过滤；可上传并经质检"]
+    B --> C["训练动作条件视频预测模型<br/>Visual Foresight：It, at:t+h-1 → 未来图像与像素运动"]
+    B --> I["训练一步逆模型 T=1<br/>输入上下文帧/动作、当前图、目标图 → 动作 at"]
+    C --> D["指定 designated pixels 及其目标位置"]
+    D --> E["优化动作序列使像素运动达成目标<br/>image-based MPC"]
+    E --> F["执行第一个动作，观察新图像，重新规划"]
+    F --> E
+    C -.->|"新机器人：300–400 条随机轨迹"| G["在 RoboNet 预训练（留出目标机器人数据）<br/>再微调"]
+    I --> H["闭环视觉控制：每步重新预测动作"]
+```
+
+图依据：论文 §3、§4、§5.3 与 §5.5（Visual Foresight 与逆模型）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ RoboNet pools robot experience to make visual control transferable. Pretraining 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/1910.11215>
+- [arXiv PDF](https://arxiv.org/pdf/1910.11215)：已通读方法部分（实验与附录以略读为准）：§3 数据驱动操作（Visual Foresight / 逆模型）、§4 RoboNet 数据集、§5.1、§5.3、§5.5
 
 ## 推荐继续阅读
 

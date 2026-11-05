@@ -42,6 +42,28 @@ Comprehensive survey of world models for robot learning, with a focus on policy 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  I["§1 Introduction：以机器人学习为中心的世界模型视角<br/>三项能力：foresight、imagination-driven planning、data amplification"] --> B["§2 Background<br/>2.1 World Model and Video Generation Model<br/>2.2 Robot Policy"]
+  B --> S3["§3 World Model for Policy<br/>按模型架构分类"]
+  B --> S4["§4 World Model as Simulator<br/>按不同应用分类"]
+  B --> S5["§5 World Model for Robotic Video Generation<br/>按 world-modeling capability 分类"]
+  S3 --> S3a["3.1 Why World Models Help Robot Policy Learning<br/>3.2 Inverse Dynamics Policies with World Models<br/>3.3 Unified Policies with a Single World Model Backbone"]
+  S3 --> S3b["3.4 MoE/MoT-Style Policies with World-Model Backbone<br/>3.5 Unified Vision-Language-Action Models<br/>3.6 Policies with Latent-Space World Modeling"]
+  S4 --> S4a["4.1 World Model for Reinforcement Learning<br/>4.2 World Model for Evaluation"]
+  S5 --> S5a["5.1 Problem Setting and Scope<br/>5.2 Video Generation as Imagination for Policy Learning<br/>5.3 Action-Controllable World Model"]
+  S5 --> S5b["5.4 Structure-Aware World Model<br/>5.5 From Video Backbones to Foundation World Models<br/>5.6 Technical Progression and Open Challenges"]
+  S3 --> S6["§6 Other Applications：6.1 Navigation、6.2 Autonomous Driving"]
+  S4 --> S6
+  S5 --> S6
+  S6 --> S7["§7 Benchmarks, Datasets, and Results<br/>7.1 Benchmarks、7.2 Datasets、7.3 Representative Results"]
+  S7 --> S8["§8 Challenges and Future Directions<br/>8.1 至 8.6"]
+```
+
+图依据：综述分类体系图，论文 Fig. 1（survey 组织结构）、§1 末尾的章节安排与各节标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Comprehensive survey of world models for robot learning, with a focus on policy 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2605.00080>
+- [arXiv PDF](https://arxiv.org/pdf/2605.00080)：已通读摘要、§1（含 Fig. 1–2）、各章节标题；§3–§8 正文以略读为准。
 
 ## 推荐继续阅读
 

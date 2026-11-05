@@ -115,6 +115,49 @@ flowchart TD
 - **仍依赖模型与 orchestrator 质量：** schema 校验保证 **格式**，不保证 **完备性**；不能替代渗透测试团队、依赖扫描与 [软件安全基础](../concepts/software-security-basics.md) 中的 AuthN/AuthZ/KMS 基线。
 - **与本 wiki Python 工具链的适配未验证：** 对本库 `scripts/`、`Makefile`、`docs/` 静态站的收益需实际试用，不宜外推 Cloudflare 内部 harness 结论。
 
+## 源码运行时序图
+
+入口：技能由 `npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit` 安装后，在目标代码仓中请求「security audit this codebase」，进入完整审计模式（`SKILL.md`）。本技能的主体是代理按 Markdown 提示执行的六阶段流程；仓库内可运行代码只有两个零依赖校验脚本，图中以它们的调用位置为准，代理步骤只标注为提示驱动。
+```mermaid
+sequenceDiagram
+    autonumber
+    participant P as 父代理 SKILL.md 编排
+    participant R as 阶段 1 侦察 RECONNAISSANCE.md
+    participant VL as validate-coverage-ledger.cjs
+    participant H as 阶段 2 猎手 HUNTING.md
+    participant C as 覆盖评审 critic
+    participant V as 阶段 3 候选验证者
+    participant VF as validate-findings.cjs 与 report-schema.json
+    participant V5 as 阶段 5 独立记录核验
+    participant OUT as 阶段 6 报告产物
+
+    P->>R: 进入 full audit 模式，执行侦察
+    R-->>P: architecture.md 与初始 coverage-ledger.json
+    P->>VL: node validate-coverage-ledger.cjs coverage-ledger.json
+    VL-->>P: PASS 或 FAIL 与错误列表
+    loop 每个猎手波次（按预算与 run profile 限定）
+        P->>H: 把 planned 的 ledger 单元分配给互相隔离的猎手
+        H-->>P: 结构化候选结果，映射到唯一 coverage_id
+        P->>P: 校验结果并更新对应的 ledger 单元
+        P->>VL: 每次更新 ledger 后重新校验
+        P->>C: 波次后调用 fresh 覆盖评审
+        C-->>P: 未覆盖入口与缺失单元提议
+    end
+    P->>V: 对每个去重后的候选分派全新验证者
+    V-->>P: confirmed、needs_validation 或 rejected
+    P->>P: 写入 findings.json
+    P->>VF: node validate-findings.cjs findings.json，按 report-schema.json 校验
+    VF-->>P: PASS 或 FAIL 与错误列表
+    P->>V5: 分派独立 agent 核验最终源码论断
+    V5-->>P: 更正或状态变化
+    P->>VF: 每次替换后重新运行 validate-findings.cjs
+    P->>OUT: 由最终记录生成 REPORT.md、FINDINGS-DETAIL.md、NEEDS-VALIDATION.md
+    P->>VL: 结束前再次运行 validate-coverage-ledger.cjs
+    Note over P: 只有全部产物写出且两个校验均 PASS，或记录 run_status incomplete 并写明原因，才结束
+```
+
+图依据：cloudflare/security-audit-skill@c1c8a8c，实际读过 `README.md`（六阶段与校验器调用时机）、`skills/security-audit/SKILL.md`（完整审计工作流与结束条件）、`skills/security-audit/HUNTING.md`（阶段 2 分派与覆盖评审段落）、`validate-findings.cjs` 与 `validate-coverage-ledger.cjs` 的 `run` 与用法提示。未运行代码，也未读 `RECONNAISSANCE.md` 与 `VALIDATION-AND-REPORTING.md` 的细节。
+
 ## 关联页面
 
 - [Codex Security](codex-security.md) — OpenAI agent 扫描 CLI + SARIF/CI 门禁
@@ -131,6 +174,7 @@ flowchart TD
 - [Security Audit Skill 仓库源归档（本站）](../../sources/repos/cloudflare-security-audit-skill.md)
 - [cloudflare/security-audit-skill（GitHub）](https://github.com/cloudflare/security-audit-skill)
 - [Build your own vulnerability harness（Cloudflare Blog）](https://blog.cloudflare.com/build-your-own-vulnerability-harness)
+- 源码核对（2026-11-02）：cloudflare/security-audit-skill@c1c8a8c，读过 `README.md`、`skills/security-audit/SKILL.md`、`HUNTING.md`（阶段 2 与覆盖评审段）、`validate-findings.cjs`、`validate-coverage-ledger.cjs`（入口与用法）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

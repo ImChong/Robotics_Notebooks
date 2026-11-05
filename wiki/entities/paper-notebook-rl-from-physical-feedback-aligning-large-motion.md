@@ -32,7 +32,25 @@ RL from Physical Feedback 的人形机器人学习论文条目，当前处于 Pa
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，仅依据论文方法部分，不含结论判断。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    PRE["预训练：运动 tokenizer（VQ）+ 扩展词表的 LLM 骨干<br/>文本 → 运动 token，负对数似然训练"] --> GEN["大运动模型（作为 GRPO 的 actor 策略）"]
+    TXT["文本指令 l"] --> GEN
+    GEN -->|"每条指令采样一组运动 token 序列"| DEC["解码为运动序列"]
+    DEC --> RET["运动重定向（SMPL 形状优化 + IK/梯度位姿优化 + 关键点约束）"]
+    RET --> TRK["运动跟踪策略（Unitree G1，IsaacGym）<br/>teacher PPO → student DAgger 蒸馏，数据来自 AMASS"]
+    TRK --> SUCC["离线评估：跟踪成功标志<br/>R_tracking = I(Succ)"]
+    DEC --> ALN["对齐验证：对比学习预训练的文本 / 运动编码器<br/>R_TA 文本对齐，R_MA 运动对齐"]
+    SUCC --> GRPO["GRPO 更新：组内相对优势 + KL 约束"]
+    ALN --> GRPO
+    GRPO -->|"微调"| GEN
+```
+
+图依据：论文 §3.1-§3.4（Fig. 2）。
 
 ## 核心信息
 
@@ -66,6 +84,7 @@ RL from Physical Feedback 的人形机器人学习论文条目，当前处于 Pa
 - [humanoid_pnb_rl-from-physical-feedback-aligning-large-motion.md](../../sources/papers/humanoid_pnb_rl-from-physical-feedback-aligning-large-motion.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2506.12769>
+- [arXiv PDF](https://arxiv.org/pdf/2506.12769)：已通读方法部分（实验与附录以略读为准）：§3.1-§3.4
 
 ## 推荐继续阅读
 

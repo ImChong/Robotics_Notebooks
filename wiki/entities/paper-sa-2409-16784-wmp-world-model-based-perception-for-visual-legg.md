@@ -42,6 +42,28 @@ World model-based perception for visual legged locomotion.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Isaac Gym 仿真：4096 个 Unitree A1，六类地形 + 地形课程"] --> B["本体感知 o^prop（45 维）+ 深度图 d（64×64）"]
+    A --> P["特权信息 s^pri：scandots、足端接触力、随机化物理参数（仅仿真可得，供 critic）"]
+    B --> W["世界模型 RSSM（每 k 步更新一次，低于策略频率）<br/>编码器 CNN+MLP → 随机状态 z；GRU 递归模型 → 确定状态 h；解码器重建 o"]
+    W -->|"递归状态 h（stop-gradient）"| PI["Actor 策略 πθ：输入 o^prop + h → 12 维关节目标位置"]
+    B -->|"o^prop"| PI
+    W -->|"h（stop-gradient）"| CR["Critic Vθ：输入 o + h + s^pri（非对称 actor-critic）"]
+    P --> CR
+    PI --> PD["PD 控制器输出力矩"]
+    PD --> A
+    A -->|"仿真采样数据"| PPO["PPO 训练 actor 与 critic（奖励含速度跟踪与 AMP 风格项）"]
+    A -->|"仿真采样数据"| WL["最小化重建损失 + β·KL 训练世界模型"]
+    PPO --> PI
+    WL --> W
+    PI --> R["部署：世界模型与策略在真机运行（不用世界模型生成 rollout）"]
+```
+
+图依据：论文 §IV-A/B/C、Fig.2；真机部署节点参考 §V 提问「是否可迁移到真实机器人」，具体部署细节未逐节核对
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ World model-based perception for visual legged locomotion.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2409.16784>
+- [arXiv PDF](https://arxiv.org/pdf/2409.16784)：已通读方法部分（实验与附录以略读为准）：§III 问题设定、§IV 方法（A 世界模型学习、B 策略学习、C 训练细节）；§V 仅略读
 
 ## 推荐继续阅读
 

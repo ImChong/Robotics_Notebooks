@@ -31,7 +31,27 @@ Hierarchical Planning and Control for Box Loco-Manipulation 的人形机器人�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论；系统分层流程见下方「流程总览」。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["3D 场景 + 箱子取放任务<br/>primitive path（遵守 primitive graph 的先后约束）"] --> PL["高层：kinodynamic A* 规划器<br/>避障生成路径，三次样条平滑"]
+    PL --> WP["从平滑路径采样 waypoint<br/>（根位置 + 朝向）"]
+    WP --> DIF["中层：扩散模型（Transformer + FiLM）<br/>双向 root 控制，生成全身运动学参考轨迹"]
+    MOCAP["~25 分钟动捕数据<br/>（Starke et al. 2019）"] -.->|"训练"| DIF
+    DIF --> WALK["Walk-only 策略（RL 跟踪）"]
+    DIF --> CARRY["Walk-and-carry 策略（RL 跟踪，输入含箱子位姿）"]
+    REF["单条 pick-up / put-down 参考轨迹"] --> MAN["Pick-up / Put-down 共用操作策略<br/>输入含平台位置与 one-hot 任务标志"]
+    WALK --> SIM["低层：RaiSim 物理仿真<br/>PD + 修正力矩 τa 控制全身"]
+    CARRY --> SIM
+    MAN --> SIM
+    SIM --> TR["原语切换：补 30-60 帧站立姿态<br/>操作到行走时对两策略动作做线性插值"]
+    TR --> OUT["物理仿真的箱子重排动画"]
+```
+
+图依据：论文 §3 / Fig.2、§4–§6（运动原语、扩散模型、RL 策略、过渡与规划器）
 
 ## 核心信息
 
@@ -64,6 +84,7 @@ Hierarchical Planning and Control for Box Loco-Manipulation 的人形机器人�
 - [humanoid_pnb_hierarchical-planning-and-control-for-box-loco-m.md](../../sources/papers/humanoid_pnb_hierarchical-planning-and-control-for-box-loco-m.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2306.09532>
+- [arXiv PDF](https://arxiv.org/pdf/2306.09532)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3 系统概览、§4 行走、§5 操作、§6 规划器、§7 开头
 
 ## 推荐继续阅读
 

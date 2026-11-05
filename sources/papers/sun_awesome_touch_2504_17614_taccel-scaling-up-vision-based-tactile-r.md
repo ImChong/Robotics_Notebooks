@@ -6,9 +6,10 @@
 - **分组：** Tactile Simulation & Sim2Real
 - **编号：** 052/065
 - **入库日期：** 2026-08-10
-- **arXiv：** 2504.17614
+- **arXiv：** 2504.12908
+- **编号核对：** 上游清单登记的 2504.17614 经 arXiv 官方记录核对为另一篇论文《Bolt: Clothing Virtual Characters at Scale》，与本条目不符；已更正为 2504.12908《Taccel: Scaling Up Vision-based Tactile Robotics via High-performance GPU Simulation》（核对日期 2026-11-02）。
 - **出处：** arXiv 2025
-- **论文：** <https://arxiv.org/abs/2504.17614>
+- **论文：** <https://arxiv.org/abs/2504.12908>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** High-performance simulation platform integrating IPC and ABD to model robots, tactile sensors, and objects; achieves 18-fold acceleration over real-time across thousands of parallel environments.

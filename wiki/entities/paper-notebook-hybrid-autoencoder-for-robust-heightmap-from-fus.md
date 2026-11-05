@@ -33,6 +33,34 @@ summary: "人形 perceptive locomotion 的\"上游 = 地形感知\"长期被「�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph S1["阶段一：无监督预训练（含噪声仿真数据）"]
+    AE1["深度相机对称卷积自编码器"]
+    AE2["LiDAR（球面投影 range image）对称卷积自编码器"]
+  end
+  DC["Intel RealSense 深度图"] --> E1["CNN 编码器 → 256 维潜变量"]
+  LI["LIVOX MID-360 点云<br/>球面投影为 range image"] --> E2["CNN 编码器 → 256 维潜变量"]
+  AE1 -. 预训练权重 .-> E1
+  AE2 -. 预训练权重 .-> E2
+  RS["机器人状态（IMU 等，15 维）"]
+  PH["上一时刻 heightmap（165 维）"]
+  E1 --> CAT["拼接 + Linear/LayerNorm 融合"]
+  E2 --> CAT
+  RS --> CAT
+  PH --> CAT
+  CAT --> GRU["2 层 GRU（隐藏 256）<br/>阶段二：监督训练、时间反向传播"]
+  GRU --> DEC["解码头：两层全连接"]
+  DEC --> HM["机器人中心 heightmap（165 维）"]
+  HM -. 反馈为下一步输入 .-> PH
+  HM --> POL["PPO 运动策略<br/>（本体感觉 + 速度指令 + heightmap）"]
+  POL --> JP["目标关节位置 → PD 控制"]
+```
+
+图依据：论文 §2、§3.1–3.3、Fig. 4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -63,6 +91,7 @@ summary: "人形 perceptive locomotion 的\"上游 = 地形感知\"长期被「�
 - [humanoid_pnb_hybrid-autoencoder-for-robust-heightmap-from-fus.md](../../sources/papers/humanoid_pnb_hybrid-autoencoder-for-robust-heightmap-from-fus.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data/Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data.html>
 - 论文：<https://arxiv.org/abs/2602.05855>
+- [arXiv PDF](https://arxiv.org/pdf/2602.05855)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 运动策略与 heightmap、§3 编码器-解码器结构（3.1–3.3）、§4 实验设定；§4 结果略读
 
 ## 推荐继续阅读
 

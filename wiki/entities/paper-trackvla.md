@@ -44,6 +44,26 @@ summary: "TrackVLA：提出 EVT-Bench 野外具身视觉跟踪基准；LightNav-
 - LightNav 三阶段训练 RL 阶段的评测锚点。
 - 博客 ingest 独立节点（非重复 stub）；见 [3 篇技术地图](../overview/lightorigins-3blogs-technology-map.md)。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IN["第一视角 RGB 视频 + 语言指令"]
+    ENC["EVA-CLIP 视觉编码 + GridPool：最新帧 64 个 fine token，历史帧 4 个 coarse token（滑窗 k=32）"]
+    PROJ["2 层 MLP 投影到 LLM 空间"]
+    LLM["LLM（Vicuna-7B）：视觉 token + 语言 token"]
+    TRK["带 Track token：单步前向得到隐状态"]
+    DIT["Anchor 扩散动作模型（DiT，K-means 轨迹 anchor，2 步去噪）"]
+    WP["航点轨迹：取得分最高的轨迹"]
+    VQA["无 Track token：LLM 自回归解码"]
+    ANS["识别问答的文本回答"]
+    IN --> ENC --> PROJ --> LLM
+    LLM --> TRK --> DIT --> WP
+    LLM --> VQA --> ANS
+```
+
+图依据：论文 §3 Method 与 §3.1、Fig.2 / Fig.3。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -97,6 +117,7 @@ summary: "TrackVLA：提出 EVT-Bench 野外具身视觉跟踪基准；LightNav-
 - [trackvla_arxiv_2505_23189.md](../../sources/papers/trackvla_arxiv_2505_23189.md)
 - [lightorigins_lightnav_0_2026-09-01.md](../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md)
 - [Tech Blog](https://www.lightorigins.com/blog/lightnav-0)
+- [arXiv PDF](https://arxiv.org/pdf/2505.23189)：已通读方法部分（实验与附录以略读为准）：§3（方法）、§3.2 实现细节、§4 数据概述与附录 G 真机系统部分（实验与其余附录略读）
 
 ## 推荐继续阅读
 

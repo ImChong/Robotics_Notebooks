@@ -37,7 +37,7 @@ summary: "World Tokens（具身世界模型六路线专题）：训练期世界�
 
 ## 为什么重要
 
-- 属于六路线 taxonomy 的 **行动主导型**：预测结果被用于 **部署时动作生成与未来建模显式耦合。**
+- 属于六路线 taxonomy 的 **行动主导型**：综述按「行动主导型」归类；但论文自身是 **训练期** 用未来视频去噪的梯度塑造 world tokens，**部署时整条视频分支被移除**，只剩 VLM + World Adapter + 动作专家，无在线视频模型推理（依据 arXiv:2608.09730v1 摘要、§1、§3.5）。
 - 与 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md) 中同段工作对照阅读，避免与 WAM/评估/记忆类节点混淆。
 
 ## 流程总览
@@ -86,7 +86,7 @@ flowchart TD
 
 - **同路线邻接工作**（综述 **行动主导型** 段）：[Riemann-1.0](./paper-riemann-1.md)、[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)、[FLEX-π](./paper-flex-pi.md)。
 - **对照要点**：World Tokens 把世界建模当 **训练期监督**，推理期裁剪生成分支换时延；保留生成的 WAM 则用推理成本换「可检视的未来」——这是同一路线内的部署取舍，不是优劣。
-- **跨路线区分**：行动主导型的闭环职责是「执行时未来建模与动作生成显式耦合」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
+- **跨路线区分**：行动主导型的闭环职责在综述里被表述为「执行时未来建模与动作生成显式耦合」（World Tokens 本身并非如此：部署时无未来建模分支）；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
 
 ## 关联页面
 
@@ -101,6 +101,7 @@ flowchart TD
 - [world_tokens_arxiv_2608_09730.md](../../sources/papers/world_tokens_arxiv_2608_09730.md)
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
 - [arXiv PDF](https://arxiv.org/pdf/2608.09730)：已通读方法部分（实验与附录以略读为准）：摘要、§3 Method（3.1 至 3.5）、§4.1 实验设置
+- 核对（2026-11-02）：对照 arXiv:2608.09730v1（唯一版本）摘要、§1、§3.5：部署时视频分支（tokenizer、去噪器、结构锚点、未来目标）全部移除，已改正「为什么重要」中「部署时动作生成与未来建模显式耦合」的说法，并给跨路线区分处加注。
 
 ## 推荐继续阅读
 

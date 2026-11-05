@@ -31,7 +31,35 @@ StyleLoco 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记尚未写出；方法流程见下方「流程总览」（依据论文方法部分），其余结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph T1["阶段一：Teacher 策略（PPO）"]
+        PRIV["特权观测（全局位置、环境参数等）"] --> TP["Teacher Policy πteacher"]
+        TP --> CUR["课程学习：稳定阶段 → 机动阶段（全向运动）"]
+    end
+    subgraph T2["阶段二：Student 策略（Generative Adversarial Distillation, GAD）"]
+        CMD["随机速度指令"] --> SP["Student Policy πstudent<br/>仅用可部署观测：历史观测 → 编码器 → 上下文隐变量 + 当前部分状态 + 指令 → MLP"]
+        SP --> TR["状态转移 (s, s')"]
+        TR --> DT["Teacher Discriminator Dteacher<br/>（对比 Teacher 的状态转移）"]
+        TR --> DD["Dataset Discriminator Ddataset<br/>（对比动作数据集的状态转移）"]
+        MOCAP["LaFAN1 动作数据<br/>重定向到 Unitree H1，按速度范围筛选片段"] --> DD
+        TP -->|"提供参考状态转移"| DT
+        DT --> RW["组合奖励反馈"]
+        DD --> RW
+        TASK["任务奖励函数"] --> RW
+        RW -->|"更新 Student 策略"| SP
+        TR -.->|"交替更新两个判别器（AMP 式最小二乘 + 梯度惩罚）"| DT
+        TR -.-> DD
+    end
+    T1 --> T2
+    SP --> DEP["部署到 Unitree H1<br/>策略 50 Hz，底层控制 1000 Hz，力矩限幅"]
+```
+
+图依据：论文 §III-B Generative Adversarial Distillation、§III-C Training Process、§III-D Implementation and Deployment Details / Fig.2。
 
 ## 核心信息
 
@@ -64,6 +92,7 @@ StyleLoco 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 - [humanoid_pnb_styleloco-generative-adversarial-distillation-fo.md](../../sources/papers/humanoid_pnb_styleloco-generative-adversarial-distillation-fo.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2503.15082>
+- [arXiv PDF](https://arxiv.org/pdf/2503.15082)：已通读方法部分（实验与附录以略读为准）：§III Method（A 背景、B GAD、C 训练流程、D 实现与部署）、§IV 实验设定
 
 ## 推荐继续阅读
 

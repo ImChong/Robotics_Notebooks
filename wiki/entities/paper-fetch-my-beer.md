@@ -46,6 +46,31 @@ summary: "Fetch My Beer（arXiv:2609.18119）：流体仿真筛选稳定轨迹 +
 - 开源结论：**待发布**（步骤 2.5，2026-09-20）。
 - 与 [11 篇技术地图](../overview/constraint-control-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["合成数据管线 (Isaac Sim)"]
+        A["采样物体与场景"] --> B["AnyGrasp 生成 6-DoF 抓取候选"]
+        B --> C["渲染抓取投影图, Qwen3-VL 打分并给理由<br/>过滤不可行抓取, 按置信度排序"]
+        C --> D["cuRobo 规划 grasp-to-place 平滑轨迹<br/>(IK / 避碰 / 轨迹代价)"]
+        D --> E["规则筛选: 杯体偏离竖直 > 15° 则剔除"]
+        E --> F["PBD 流体仿真验证<br/>剔除晃动 / 溢出轨迹"]
+        F --> G["通过者存为演示, 并记录抓取/放置关键位姿"]
+    end
+    G --> H
+    subgraph POLICY["分层策略"]
+        H["高层: RVT-2<br/>语言 + 多视角 RGB-D → 关键帧 SE(3) 子目标 P_goal"]
+        H --> I["低层: 潜空间扩散策略 (1D U-Net, DDPM)<br/>条件: RGB 历史 + 本体历史 + P_goal"]
+        I --> J["潜动作序列 z0"]
+        J --> K["动作 VAE 解码器 (MLP) → 稠密动作 chunk"]
+        K --> L["ACT 式时间集成 → 平滑高频执行"]
+    end
+    G -.-> M["动作自编码器预训练 (重构 + KL)"] -.-> K
+```
+
+图依据：论文 §III-A–C / Fig. 2、§IV-A–B / Fig. 3
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +114,8 @@ summary: "Fetch My Beer（arXiv:2609.18119）：流体仿真筛选稳定轨迹 +
 - [fetch-my-beer_arxiv_2609_18119.md](../../sources/papers/fetch-my-beer_arxiv_2609_18119.md)
 - [wechat_embodied_station_11_papers_constraint_control_2026-09-20.md](../../sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md)
 - [arXiv:2609.18119](https://arxiv.org/abs/2609.18119)
+- [arXiv PDF](https://arxiv.org/pdf/2609.18119)：已通读方法部分（实验与附录以略读为准）：§III 合成数据生成管线（抓取提议、VLM 过滤、平滑规划与稳定性过滤）、§IV 分层潜扩散策略、§V-A 实验设定
+
 
 ## 推荐继续阅读
 

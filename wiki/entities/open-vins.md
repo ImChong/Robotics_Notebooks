@@ -42,10 +42,60 @@ summary: "OpenVINS 是开源视觉-惯性导航研究平台：MSCKF 类滤波、
 - **工程部署**：大规模产品化常选 VINS-Fusion 或商用 VIO；OpenVINS 偏研究。
 - **极端运动**：需仔细调过程噪声与特征管理。
 
+## 源码运行时序图
+
+入口：`ros2 launch ov_msckf subscribe.launch.py config:=euroc_mav`（launch 文件 `ov_msckf/launch/subscribe.launch.py` 启动可执行节点 `run_subscribe_msckf`；ROS1 对应 `ov_msckf/src/ros/ROS1Visualizer.cpp` 路径，图未覆盖）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户终端
+    participant L as subscribe.launch.py
+    participant M as run_subscribe_msckf main()
+    participant V as ROS2Visualizer
+    participant VM as VioManager
+    participant FT as trackFEATS 特征跟踪
+    participant P as Propagator
+    participant I as InertialInitializer
+    participant UM as UpdaterMSCKF / UpdaterSLAM
+    U->>L: ros2 launch ov_msckf subscribe.launch.py config:=...
+    L->>M: 启动节点 run_subscribe_msckf（config_path）
+    M->>M: YamlParser 解析配置，VioManagerOptions.print_and_load
+    M->>VM: make_shared VioManager(params)
+    M->>V: make_shared ROS2Visualizer(node, sys)，setup_subscribers
+    V->>V: 订阅 IMU；图像订阅（mono 逐路，stereo 用 message_filters 同步）
+    M->>M: MultiThreadedExecutor.spin()
+    Note over V,VM: IMU 路径
+    V->>VM: callback_inertial → feed_measurement_imu(ImuData)
+    VM->>P: propagator->feed_imu
+    VM->>I: initializer->feed_imu（未初始化时）
+    Note over V,VM: 图像路径
+    V->>V: callback_monocular / callback_stereo，cv_bridge 转 MONO8，入 camera_queue 并排序
+    V->>V: 取出 IMU 时间之前的相机帧，启动处理线程
+    V->>VM: feed_measurement_camera → track_image_and_update
+    VM->>FT: trackFEATS->feed_new_camera（可选 ARUCO 跟踪）
+    alt 已可用 ZUPT 且未运动
+        VM->>VM: updaterZUPT->try_update，成功则直接返回
+    end
+    alt 尚未初始化
+        VM->>I: try_to_initialize(message)
+    else 已初始化
+        VM->>P: propagate_and_clone(state, timestamp)
+        VM->>VM: 取出 lost / marg 特征
+        VM->>UM: updaterMSCKF->update(state, MSCKF 特征)
+        VM->>UM: updaterSLAM->update / delayed_init
+        VM->>VM: StateHelper marginalize，清理特征数据库
+    end
+    V->>V: visualize，发布里程计与特征
+```
+
+图依据：rpng/open_vins@6948812，读过 `ov_msckf/launch/subscribe.launch.py`（节点与参数）、`ov_msckf/src/run_subscribe_msckf.cpp`（main）、`ov_msckf/src/ros/ROS2Visualizer.cpp`（订阅、回调、处理线程）、`ov_msckf/src/core/VioManager.cpp`（feed IMU、track_image_and_update、do_feature_propagate_update 片段）、`ov_msckf/src/core/VioManager.h`（feed_measurement_camera 转发）。
+
 ## 参考来源
 
 - [sources/repos/open_vins.md](../../sources/repos/open_vins.md)
 - [rpng/open_vins](https://github.com/rpng/open_vins)
+- 源码核对（2026-11-02）：rpng/open_vins@6948812，读过 ov_msckf/launch/subscribe.launch.py、ov_msckf/src/run_subscribe_msckf.cpp、ov_msckf/src/ros/ROS2Visualizer.cpp、ov_msckf/src/core/VioManager.cpp、ov_msckf/src/core/VioManager.h；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

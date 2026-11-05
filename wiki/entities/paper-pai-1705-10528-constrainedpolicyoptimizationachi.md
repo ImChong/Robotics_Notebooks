@@ -40,6 +40,24 @@ Canonical algorithmic framework for constrained safe RL.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["当前策略 π_k（参数 θ_k）"] --> B["采样轨迹 D ~ π_k"]
+    B --> C["由 D 估计 g、b、H、c<br/>目标梯度 / 约束梯度 / KL Hessian（FIM）/ 约束余量"]
+    C --> D{"近似 CPO 更新<br/>可行？"}
+    D -->|"可行"| E["求解对偶问题 (12) 得 λ*、ν*<br/>(H⁻¹g、H⁻¹b 用共轭梯度)"]
+    E --> F["策略提案 θ* = θ_k + H⁻¹(g − Bν*)/λ*  (13)"]
+    D -->|"不可行"| G["恢复步：沿降低约束代价方向<br/>θ* = θ_k − √(2δ/bᵀH⁻¹b)·H⁻¹b  (14)"]
+    F --> H["回溯线搜索<br/>使样本估计的约束满足 (10)"]
+    G --> H
+    H --> I["π_{k+1}（参数 θ_{k+1}）"]
+    I --> A
+```
+
+图依据：论文 §5.3、§6.1–6.3 与 Algorithm 1（Constrained Policy Optimization）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +121,7 @@ Canonical algorithmic framework for constrained safe RL.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/1705.10528>
+- [arXiv PDF](https://arxiv.org/pdf/1705.10528)：已通读方法部分（实验与附录以略读为准）：§5.3 信赖域优化、§6 实际实现（6.1 近似求解、6.2 可行性、6.3 约束收紧 / cost shaping）、Algorithm 1、§7 与既有工作的联系、§8 实验设定
 
 ## 推荐继续阅读
 

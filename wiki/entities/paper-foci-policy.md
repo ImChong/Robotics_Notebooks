@@ -41,6 +41,33 @@ summary: "FOCI Policy（arXiv:2609.08743）：从演示提取紧凑交互片段�
 - 空间抽象降轨迹方差 + 时间抽象 isolate 关键交互段
 - RLBench 每任务 1 demo；真机 cross-gripper /  clutter 组合 motion planning
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练数据处理（Fig.3）"]
+        D["演示 episode"] --> CPD["变点检测 CPD<br/>信号：线速度 / 角速度 / 源-目标距离"]
+        CPD --> SEG["交互片段 [t_s, t_g]<br/>GOI 片段 / OOI 片段"]
+        SEG --> PE["提取任务相关物体<br/>估计位姿"]
+        PE --> REL["源物体在目标物体系下的<br/>相对 SE(3) 轨迹 τ_rel<br/>均匀采样 n 个路点"]
+    end
+    subgraph POLICY["策略模型 p(τ_rel | P_src, P_tgt, ℓ)（Fig.4）"]
+        PCD["源/目标物体点云"] --> ENC["点云编码器<br/>随机丢弃部分 token"]
+        ENC --> CA["源-目标 cross-attention"]
+        LANG["语言指令 ℓ"] --> LE["Lang Encoder"]
+        CA --> TF["拼接 + Transformer encoder 层<br/>得到上下文 H"]
+        LE --> TF
+        TF --> GP["Goal Predictor<br/>GMM 预测末端目标相对位姿"]
+        GP --> TD["Trajectory Decoder<br/>生成中间相对路点"]
+    end
+    REL -. 监督 .-> POLICY
+    TD --> POSE["用估计的目标物体位姿<br/>实例化到世界系 T_des = T_ofs · T_rel · T̂_tgt"]
+    POSE --> PLAN["cuRobo 规划无碰撞路径<br/>并依次跟踪路点"]
+    PLAN --> EXE["机器人执行"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2、Fig.3、Fig.4 / 式(1)–(4)
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -99,6 +126,7 @@ summary: "FOCI Policy（arXiv:2609.08743）：从演示提取紧凑交互片段�
 - [foci_policy_arxiv_2609_08743.md](../../sources/papers/foci_policy_arxiv_2609_08743.md)
 - [具身智能小站 10 篇盘点（2026-09-09）](../../sources/blogs/wechat_embodied_station_visual_focus_10_papers_2026-09-09.md)
 - [arXiv:2609.08743](https://arxiv.org/abs/2609.08743)
+- [arXiv PDF](https://arxiv.org/pdf/2609.08743)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1–3.3）、§4.2 真机设置；§4.1 仿真实验与附录略读
 
 ## 推荐继续阅读
 

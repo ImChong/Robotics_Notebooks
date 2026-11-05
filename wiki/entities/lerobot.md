@@ -4,7 +4,7 @@ type: entity
 title: LeRobot (Hugging Face)
 tags: [framework, robot-learning, open-source, dataset, huggingface]
 summary: "LeRobot 是 Hugging Face 的开源机器人学习框架（PyTorch，Apache 2.0）：GitHub 仓提供采集、训练、评测、部署的库与 CLI，Hugging Face Hub 分发策略权重、演示数据集和仿真环境；原生支持 SO-100/101 等低成本机械臂。"
-updated: 2026-10-28
+updated: 2026-11-05
 related:
   - ./stringman.md
   - ./flux-3-action.md
@@ -176,6 +176,45 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 - [Learning to Fold / LeHome](./paper-lehome-learning-to-fold.md)：ICRA 2026 竞赛方案，在 SO-ARM101 上开源采集–训练–推理全链路与仿真 / 真机权重
 - [Xbotics 具身指南](../../sources/repos/xbotics-embodied-guide.md)：Xbotics 社区的具身智能学习路线，把 LeRobot 列为开源真机部署的核心框架
 
+## README 模型清单（32 个，2026-11-05 核对）
+
+README 的 SOTA 模型表（固定提交 `9e5ee98`）逐项对应独立详情节点；每个节点含流程图与 LeRobot 源码运行时序图，并标注 LeRobot 实现与论文的差异。QC-FQL 在上游仍为 coming soon，无文档与代码，暂无节点。
+
+| 类别 | 模型 | 详情节点 |
+|------|------|----------|
+| 模仿学习 | ACT | [paper-act](./paper-act.md) |
+| 模仿学习 | Diffusion | [paper-diffusion-policy](./paper-diffusion-policy.md) |
+| 模仿学习 | VQ-BeT | [paper-vq-bet-behavior-generation-latent-actions](./paper-vq-bet-behavior-generation-latent-actions.md) |
+| 模仿学习 | Multitask DiT Policy | [multitask-dit-policy](./multitask-dit-policy.md) |
+| 强化学习 | HIL-SERL | [paper-rcl-2410-21845-precise-and-dexterous-robotic-manipulation-via-h](./paper-rcl-2410-21845-precise-and-dexterous-robotic-manipulation-via-h.md) |
+| 强化学习 | TDMPC | [paper-tdmpc-temporal-difference-model-predictive-control](./paper-tdmpc-temporal-difference-model-predictive-control.md) |
+| 强化学习 | QC-FQL | 暂无（coming soon） |
+| VLA | Pi0 | [paper-pi0](./paper-pi0.md) |
+| VLA | Pi0Fast | [paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la](./paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md) |
+| VLA | Pi0.5 | [paper-pi05-open-world-vla](./paper-pi05-open-world-vla.md) |
+| VLA | OpenGalaxea G0.5 | [paper-galaxea-g05](./paper-galaxea-g05.md) |
+| VLA | FineART-VLA | [paper-fineart-vla](./paper-fineart-vla.md) |
+| VLA | GR00T N1.7 | [paper-gr00t-n1-7](./paper-gr00t-n1-7.md) |
+| VLA | SmolVLA | [paper-smolvla](./paper-smolvla.md) |
+| VLA | XVLA | [paper-x-vla](./paper-x-vla.md) |
+| VLA | EO-1 | [paper-eo1](./paper-eo1.md) |
+| VLA | MolmoAct2 | [paper-molmoact2](./paper-molmoact2.md) |
+| VLA | LingBot-VLA 2.0 | [lingbot-vla-v2](./lingbot-vla-v2.md) |
+| VLA | WALL-OSS | [cn-os-wall-x](./cn-os-wall-x.md) |
+| VLA | Wall-OSS-0.5 | [paper-wall-oss-0-5](./paper-wall-oss-0-5.md) |
+| VLA | EVO1 | [paper-evo1-lightweight-vla](./paper-evo1-lightweight-vla.md) |
+| VLA | DM05 | [dexmal-dm05](./dexmal-dm05.md) |
+| 世界模型 | VLA-JEPA | [paper-sa-2602-10098-vla-jepa-enhancing-vision-language-action-model](./paper-sa-2602-10098-vla-jepa-enhancing-vision-language-action-model.md) |
+| 世界模型 | LingBot-VA | [paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g](./paper-sa-2601-21998-lingbot-va-causal-video-action-world-model-for-g.md) |
+| 世界模型 | FastWAM | [paper-fast-wam](./paper-fast-wam.md) |
+| 世界模型 | Long-WAM | [paper-long-wam-scaling-context](./paper-long-wam-scaling-context.md) |
+| 世界模型 | LaWAM | [paper-lawam](./paper-lawam.md) |
+| 世界模型 | FLUX 3 Action | [flux-3-action](./flux-3-action.md) |
+| 世界模型 | Cosmos3 | [cosmos-3](./cosmos-3.md) |
+| 奖励模型 | SARM | [paper-sarm](./paper-sarm.md) |
+| 奖励模型 | TOPReward | [paper-topreward](./paper-topreward.md) |
+| 奖励模型 | Robometer | [paper-robometer](./paper-robometer.md) |
+
 ## 与相邻工具怎么分工
 
 - **ROS 2：** [ROS 2](../concepts/ros2-basics.md) 是分布式中间件，LeRobot 是数据驱动的端到端学习框架；两者可以并用（如上文 ROS2SmolVLA、ROBOTIS 的做法）：ROS 2 管通信，LeRobot 管数据与策略。
@@ -209,6 +248,8 @@ LeRobot 的很多价值在于别人接进来的东西。下面按「你想做什
 - [LeHome / Learning to Fold](../../sources/repos/lehome_solution.md) — SO-ARM101 竞赛全链路与 `lehome_sim` / `lehome_real` 权重
 - [LeRobot GitHub Repository](https://github.com/huggingface/lerobot)
 - [LeRobot on Hugging Face Hub](https://huggingface.co/lerobot)
+
+- [LingYu Real-World Robotics Dataset](./lingyu-realworld-robotics-dataset.md)：TA2 双臂 VR 遥操作数据，LeRobot v2.1。
 
 ## 关联页面
 

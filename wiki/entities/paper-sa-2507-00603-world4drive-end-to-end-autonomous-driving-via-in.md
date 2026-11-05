@@ -43,6 +43,28 @@ End-to-end autonomous driving via intention-aware physical latent world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    V["轨迹词表 V<br/>k-means 取终点得意图点 P_I"] --> IE["Intention Encoder<br/>Q_ego + Q_I → Self-Attention<br/>得 Q_plan"]
+    IMG["多视角图像 I_t"] --> BB["Image Backbone → 视觉特征 F_t"]
+    DEP["度量深度模型 → 深度 D_t<br/>前向投影得 3D 位置图 P_t"] --> PE["正弦编码 + MLP → 位置嵌入 E_t"]
+    BB --> ADD["F̂_t = F_t + E_t"]
+    PE --> ADD
+    BB --> SEM["语义头<br/>Grounded-SAM 伪语义标签 → L_sem"]
+    ADD --> TA["Temporal Aggregation<br/>Cross-Attn(F̂_t, F̂_t-1) → 世界 latent L_t"]
+    TA --> AE["Action Encoding<br/>Cross-Attn(Q_plan, L_t) + MLP → K 条多模态轨迹 T<br/>MLP 动作编码 → 动作 token A"]
+    IE --> AE
+    AE --> WMP["Intention-aware World Model<br/>Cross-Attn(Q_future, Concat(A, L)) → 预测未来 latent L_t+n"]
+    TA --> WMP
+    WMP --> SEL["World Model Selector<br/>预测 latent 与真实未来 latent 比距离，取最近的模态 j<br/>L_recon；ScoreNet 打分 + focal loss"]
+    SEL --> OUT["推理：取最高得分模态对应的轨迹"]
+    SEL --> TL["训练：L1 轨迹损失 L_traj<br/>总损失 = αL_sem + βL_recon + γL_score + ηL_traj"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2（整体流程）、Fig.3（Context Encoder）、Fig.4（World Model Selector）、Eq.1–8。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ End-to-end autonomous driving via intention-aware physical latent world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.00603>
+- [arXiv PDF](https://arxiv.org/pdf/2507.00603)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1–3.4）、§4.1–4.2 设定
 
 ## 推荐继续阅读
 

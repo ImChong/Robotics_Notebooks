@@ -2,11 +2,11 @@
 type: entity
 tags: [paper, dataset, tactile, visuo-tactile, vla, handheld, teleoperation, dexterous, cross-embodiment, lerobot, daimon-robotics, tsinghua, fudan, sustech, hkust, hkust-gz, nus, ntu, ucl, kth, tohoku, google-deepmind]
 status: complete
-updated: 2026-10-15
+updated: 2026-11-05
 project_id: tacclaw-infinity
 arxiv: "2610.20320"
-code: https://github.com/daimon-robotics/TacClaw-Infinity
-project: https://daimon-robotics.github.io/tacclaw-infinity-page/
+code: https://github.com/tacclaw-infinity/TacClaw-Infinity
+project: https://tacclaw-infinity.github.io/
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/visuo-tactile-fusion.md
@@ -16,6 +16,8 @@ related:
   - ../methods/vla.md
 sources:
   - ../../sources/papers/tacclaw_infinity_arxiv_2610_20320.md
+  - ../../sources/sites/tacclaw_infinity.md
+  - ../../sources/repos/tacclaw_infinity.md
 summary: "TacClaw-Infinity（arXiv:2610.20320）：手持触觉接口 TacClaw 采集的大规模视觉-触觉-语言-动作数据集（页面称 1 万+小时、100 万+回合）；公开 HF/ModelScope 首批子集与机器人回放/运动学评测工具，训练与任务级评测代码未发布。"
 ---
 
@@ -23,7 +25,7 @@ summary: "TacClaw-Infinity（arXiv:2610.20320）：手持触觉接口 TacClaw �
 
 **TacClaw-Infinity 是面向接触丰富灵巧操作的视觉-触觉-语言-动作（VTLA）数据集：用无需目标机器人的手持触觉接口采集同步的视觉、指尖触觉与末端轨迹，再经质量控制、可执行性筛选与结构化标注形成数据管线。**
 
-论文 *TacClaw-Infinity: A Large-Scale Vision-Tactile-Language-Action Dataset for Dexterous Manipulation*（[arXiv:2610.20320](https://arxiv.org/abs/2610.20320)，[仓库](https://github.com/daimon-robotics/TacClaw-Infinity)，[项目页](https://daimon-robotics.github.io/tacclaw-infinity-page/)）。
+论文 *TacClaw-Infinity: A Large-Scale Vision-Tactile-Language-Action Dataset for Dexterous Manipulation*（[arXiv:2610.20320](https://arxiv.org/abs/2610.20320)，[仓库](https://github.com/tacclaw-infinity/TacClaw-Infinity)，[项目页](https://tacclaw-infinity.github.io/)）。
 
 ## 英文缩写速查
 
@@ -45,60 +47,66 @@ summary: "TacClaw-Infinity（arXiv:2610.20320）：手持触觉接口 TacClaw �
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 发布方 Daimon Robotics；项目页列出 16 个合作单位（转述，未核 PDF） |
+| **机构** | 发布方 Daimon Robotics；项目页列出 16 个合作单位（项目页列示） |
 | **平台** | TacClaw 手持触觉接口；LeRobot v3 数据格式；仓库内 Tianji、DM-Sparky、RealMan RM75-B 的回放与运动学评测工具 |
 | **数据** | 项目页称：10,000+ 小时、1 百万+ 回合、10 亿+ 帧、1,000+ 任务类型（200+ 设备、20+ 机构、50+ 地点）；公开子集为 HF / ModelScope 的 `Daimon-Infinity`，README 称首批约 1,000 小时 |
 | **重定向就绪度** | 动作以手持接口的**末端轨迹**记录（采集时无目标机器人），非机器人关节轨迹；喂给具体本体前需核对 TCP / 场景标定，并按本体做逆运动学可达性与可操纵度筛选——官方仅给出 Tianji、DM-Sparky、RealMan RM75-B 三种本体的回放与运动学检查工具 |
-| **开源** | **部分开源**（2026-10-15 核查）：数据子集与机器人回放 / 运动学评测工具已公开；数据加载与预处理工具、策略训练与任务级评测代码仍未发布 |
+| **开源** | **部分开源**（2026-11-05 核查）：数据子集与机器人回放 / 运动学评测工具已公开；数据加载与预处理工具、策略训练与任务级评测代码仍未发布 |
 
 ## 核心原理
 
 ### 流程总览
 
-手持接口同步采集三类信号，之后经过轨迹重建、质量控制与本体相关的可执行性筛选，再做结构化标注，形成可检索的 VTLA 数据集。论文用跨本体迁移实验检验数据的可用性。
+论文 v2 第 III 节：左右手持设备与头戴视角同步；触觉事件同时作为时序和空间标注的锚点。筛选在目标本体动作空间中进行。
 
 ```mermaid
 flowchart TB
-  hand["TacClaw 手持采集<br/>视觉 + 指尖触觉 + 末端轨迹"]
-  recon["轨迹重建<br/>多模态时间同步"]
-  qc["质量控制"]
-  exe["本体相关的可执行性筛选<br/>（推测：含运动学可达性）"]
-  ann["结构化标注<br/>接触分段 / 子任务 / 空间定位"]
-  ds["TacClaw-Infinity<br/>VTLA 数据集"]
-  xemb["跨本体迁移实验<br/>三种机器人"]
-  hand --> recon --> qc --> exe --> ann --> ds --> xemb
+  collect["手持采集：视觉、触觉、TCP 轨迹"]
+  curate["重建、质量控制与本体运动学筛选"]
+  temporal["触觉与视觉：接触阶段分割"]
+  semantic["Qwen3-VL-Plus：子任务描述"]
+  spatial["接触点投影与 SAM3：目标掩码"]
+  dataset["结构化 VTLA 数据"]
+  policy["策略训练与跨本体评测"]
+  collect --> curate --> temporal
+  temporal --> semantic --> dataset
+  temporal --> spatial --> dataset
+  dataset --> policy
 ```
 
-- 可执行性筛选的具体判据论文摘要未展开；上图中的「运动学可达性」为依据仓库评测工具的推测。
+- **采集与配准：** 指尖直接驱动夹爪，腕部 RGB、触觉和末端轨迹以 30 Hz 同步；双手与头戴相机通过可见标记配准。
+- **可执行性：** TCP 转换至机器人基座系，IK/FK 重建的位置误差小于 5 mm、姿态误差小于 3° 判为可达；双臂须同时满足。加权雅可比的最小与最大奇异值之比低于 0.04 为低可操纵度。
+- **时空标注：** 每臂两指尖深度图压缩为 8 维描述，与视觉及本体状态输入 ASFormer，区分自由运动、初始接触、接触操作、释放；边界分数过滤短段。Qwen3-VL-Plus 生成子任务文本；接触时指间 3D 点投影到各视角，结合夹爪负掩码提示 SAM3 分割目标。
 
 ## 源码运行时序图
 
-仓库可运行部分是机器人回放与运动学评测工具（非策略训练）。以 Tianji 目录为例，时序对齐 `evaluate.sh` 与 `scripts/` 入口。
+已核对 Tianji 的 `evaluate.sh`、`scripts/evaluate_arm_quality.py` 与 `src/tianji_lerobot_replay/arm_quality.py`；这是数据运动学检查，而非策略训练或任务成功率评估。
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Dev as 开发者
-    participant Sh as tianji/evaluate.sh
-    participant Setup as tianji/setup.sh
-    participant Venv as tianji/.venv python
-    participant Eval as scripts/evaluate_arm_quality.py
-    participant Rep as scripts/replay_lerobot.py
-    participant DS as LEROBOT_DATASET LeRobot v3
-    Dev->>Sh: ./evaluate.sh DATASET outputs/tianji_arm_quality --episodes all
-    alt 首次运行且环境缺失
-        Sh->>Setup: 创建 .venv 并安装依赖
+    actor User as 使用者
+    participant Sh as evaluate.sh
+    participant Setup as setup.sh
+    participant CLI as evaluate_arm_quality.py
+    participant Data as lerobot_v3.open_dataset
+    participant Config as frames.load_scene_config
+    participant Eval as arm_quality.evaluate_dataset
+    participant Out as arm_quality.write_outputs
+    User->>Sh: 传入数据集、输出目录和选项
+    opt 环境缺失或依赖不可用
+        Sh->>Setup: 创建环境并安装依赖
     end
-    Sh->>Venv: 调用 evaluate_arm_quality.py
-    Venv->>DS: 读取轨迹与标定信息
-    Venv-->>Dev: 输出目录中的运动学质量结果
-    Dev->>Rep: python scripts/replay_lerobot.py --episode 0 --dry-run
-    Rep->>DS: 读取单个 episode
-    Rep-->>Dev: 回放检查结果
+    Sh->>CLI: 启动评测入口
+    CLI->>Data: 加载 LeRobot v3 数据集
+    CLI->>Config: 加载场景配置
+    CLI->>Eval: 输入数据、URDF 模型与阈值
+    Eval-->>CLI: 两种求解策略的统计与逐帧结果
+    CLI->>Out: 写入报告、CSV 和可视化
+    CLI-->>User: 输出结果与退出码
 ```
 
-- **复现路径（README）：** 进入 `robot_executability_checks/tianji/` → `./setup.sh` → `source .venv/bin/activate` → 设置 `LEROBOT_DATASET` → `./evaluate.sh "$LEROBOT_DATASET" ...`。
-- DM-Sparky 与 RealMan 目录有各自的 `evaluate.sh` 或 `scripts/evaluate_*.py`，入口与依赖相互隔离。
+默认单进程路径比较独立逐帧和连续求解策略；`--jobs` 大于 1 时按 episode 分区并合并结果。入口默认读取 `observation.state`，坐标系和 TCP 必须按实测配置。
 
 ## 工程实践
 
@@ -112,19 +120,23 @@ sequenceDiagram
 
 ## 实验与评测
 
-- **数据层验证：** 摘要称在数据层面做了验证；具体指标未在本页核实。
-- **跨本体迁移：** 在三种机器人上检验无专属机器人示范的迁移（摘要）；具体成功率未核实（未读到 PDF 实验表）。
-- **仓库工具：** 提供回放与运动学可达性评测，用于数据可执行性检查，不代表策略效果。
+以下均来自 [论文 v2](https://arxiv.org/html/2610.20320v2) 第 V 节；运动学可达率与真实任务成功率是不同指标。
+
+- **接触感知：** 9 名参与者盲测，TacClaw 首次感知接触的平均阈值为 11.6 ± 3.3 gf；UMI 为 49.8 ± 12.0 gf，指环滑轨为 204.0 ± 58.2 gf。
+- **双臂可达率：** Tianji 97.23%，RealMan 95.15%，DM-Sparky 全身控制 100%；均按论文所述位姿误差准则计算，并非任务成功率。
+- **接触分段：** 在 15 条双臂测试演示形成的 30 条单臂序列上，加入触觉使 ASFormer 的 F1@25 从 57.6 提升至 63.9；接触起始召回从 58.6% 升至 68.0%。
+- **标注质量：** 指定协议数据的标注窗口 98.5% 帧有掩码，论文明确指出覆盖率不等于掩码准确率；随机抽查 5% 的语言描述，约 83% 通过动作与物体核查。
+- **跨本体迁移：** 每任务 1,600 条训练示范、每任务 50 次评测，选第 3–5 epoch 的最佳 checkpoint；在叠杯、瓶子分类、擦花瓶及三种本体上，加入触觉后 π₀.₅ 总平均成功率由 50.0% 升至 74.0%，StarVLA 由 46.0% 升至 72.7%。该结果限定于论文设置，不代表所有任务均有提升。
 
 ## 结论
 
-**TacClaw-Infinity 的主要价值是一条触觉接触数据的规模与质量管线，而非已可直接复现的策略结果。**
+**TacClaw-Infinity 将手持视触觉采集、接触标注和跨本体运动学筛选结合，论文实验支持触觉对所测接触任务的作用。**
 
-1. **规模数字指向完整语料，公开的是子集** — 10,000+ 小时对比首批约 1,000 小时公开。
-2. **手持采集的核心主张是跨本体复用** — 论文报告三种机器人的迁移，但具体数字本页未核实。
-3. **可执行性筛选决定数据可用性** — 不可执行的示范需要按本体过滤（筛选判据论文未展开）。
-4. **复现先做标定核对** — TCP 与场景注册不一致会使回放与评测失真，仓库明确要求先核对。
-5. **许可限制需先看清** — HF 页面（转述）为 CC BY-NC-SA 4.0，商用前需另行确认。
+1. 完整采集规模与实际可下载子集要分开核对。
+2. 末端轨迹迁移前应检查场景配准、TCP 和目标本体的可达性。
+3. 触觉消融收益集中在分类与持续接触任务；不应外推为所有任务均改善。
+4. 掩码覆盖不等于标注精度；语言抽检也不能保证全部样本正确。
+5. 训练及任务评测代码尚未发布，公开工具不验证真机安全。
 
 ## 与其他工作对比
 
@@ -141,8 +153,8 @@ sequenceDiagram
 - **工具边界：** 运动学与回放工具不代表策略成功率或真机安全（README 明示）。
 - **本体差异：** 手持接口与目标机器人之间存在标定与运动学差异，错误标定会引入系统误差。
 - **许可：** 公开子集为非商用许可（转述）。
-- **文档不一致：** 项目页 "Coming soon" 与仓库已有工具、HF 公开子集并存，以仓库与门户为准。
-- **未核实项：** 论文实验数字、质量指标与作者单位未核 PDF。
+- **版本与开放范围：** 论文为 arXiv v2；公开规模随数据门户更新，以实际可下载文件为准。
+- **标注局限：** 掩码精度及其对下游策略的影响尚待评测；语言检查是抽样，未抽中的样本仍可能存在错误。
 
 ## 关联页面
 
@@ -155,11 +167,12 @@ sequenceDiagram
 ## 参考来源
 
 - [tacclaw_infinity_arxiv_2610_20320.md](../../sources/papers/tacclaw_infinity_arxiv_2610_20320.md) — 论文摘录与开源核查
+- [项目页归档](../../sources/sites/tacclaw_infinity.md)；[源码归档](../../sources/repos/tacclaw_infinity.md)
 - [arXiv:2610.20320](https://arxiv.org/abs/2610.20320) — 原文
-- [daimon-robotics/TacClaw-Infinity](https://github.com/daimon-robotics/TacClaw-Infinity) — 官方仓库（回放与评测工具）
+- [daimon-robotics/TacClaw-Infinity](https://github.com/tacclaw-infinity/TacClaw-Infinity) — 官方仓库（回放与评测工具）
 
 ## 推荐继续阅读
 
-- [TacClaw-Infinity 项目页](https://daimon-robotics.github.io/tacclaw-infinity-page/)
+- [TacClaw-Infinity 项目页](https://tacclaw-infinity.github.io/)
 - [Daimon-Infinity 数据集（Hugging Face）](https://huggingface.co/datasets/daimonrobotics/Daimon-Infinity)
 - [Daimon-Infinity 数据集（ModelScope）](https://modelscope.cn/datasets/daimonrobotics/Daimon-Infinity)

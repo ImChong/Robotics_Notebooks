@@ -42,6 +42,23 @@ Learns abstract world models with a group-structured latent space.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["随机策略 π_explore 采集 (s_t, a_t, r_t, s_t+1) 转移，存入 replay buffer"] --> B["编码器 φ：状态 s_t → 抽象状态 z_t"]
+    B --> C["转移模型：先预测 Δ(z_t, a_t)，再用群作用 ⊕ 得 ẑ_t+1 = z_t ⊕ Δ"]
+    P["几何先验：Z 取 R/kZ 等商空间，⊕ 为模加法（循环群 / 乘积群）"] --> C
+    S["稀疏化 Δ：按动作 mask 掉不受影响的特征，分离对称与非对称特征"] --> C
+    C --> L1["InfoNCE 预测损失：拟合 φ(s_t+1)，负样本取同一动作的其他转移"]
+    B --> R["奖励函数 r(z_t, a_t)，L2 损失"]
+    L1 --> T["联合最小化 L_InfoNCE + L_rew + L_vol（体积铰链损失）+ L_disentanglement"]
+    R --> T
+    T --> M["抽象 MDP (Z, A, τ, r, γ)，可解释且泛化到未见转移"]
+```
+
+图依据：论文 §2 世界模型设定、§3.1 World Modeling（式 3–9）/ §3.2 Geometric Priors（式 10）/ §3.3 Joint Symmetric and Non-symmetric（式 11）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Learns abstract world models with a group-structured latent space.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.01529>
+- [arXiv PDF](https://arxiv.org/pdf/2506.01529)：已通读方法部分（实验与附录以略读为准）：§2 背景与设定、§3.1–3.3 方法、§4.1–4.3 实验设置；结果与附录略读
 
 ## 推荐继续阅读
 

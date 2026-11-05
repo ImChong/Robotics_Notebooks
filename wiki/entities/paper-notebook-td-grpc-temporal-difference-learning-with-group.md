@@ -31,7 +31,30 @@ TD-GRPC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，本页只保留分类位置与原文入口；方法模块与数据流见下方「流程总览」（仅依据论文方法部分，不含实验结论）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始状态 s_t"] --> B["编码器 h_θ → 潜状态 z_t"]
+    B --> C["潜动力学 d_θ 滚动 H 步（MPPI 规划时域）"]
+    C --> D["R_θ / Q_θ / π_θ（MLP）估计奖励、Q 值与动作"]
+    D --> E["策略 π_θ(z) 采样 G 个动作作为一组"]
+    E --> F["用 Q_θ 评估各动作，softmax 得组相对优势 A_g"]
+    F --> G["改进的 GRPO 目标：Σ A_g · log π_θ"]
+    E --> H["KL 散度信任域约束：当前策略 vs MPPI 导出的先验策略 π_old"]
+    G --> I["策略损失 L_π = GRPO 项 + β · 策略约束项"]
+    H --> I
+    I --> J["更新策略参数 θ"]
+    C --> K["模型损失：潜状态预测 + 奖励 + TD 价值目标（式 10a-10c）"]
+    K --> J
+    J --> L["推理：与 TD-MPC 相同，对 rollout 策略做 CEM 规划选取动作"]
+    L --> M["环境交互，经验存入潜缓冲区 D"]
+    M -.->|"采样 H 步轨迹"| A
+```
+
+图依据：论文 §III-A / §III-B、Fig.2、Algorithm 1
 
 ## 核心信息
 
@@ -65,6 +88,7 @@ TD-GRPC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 - [humanoid_pnb_td-grpc-temporal-difference-learning-with-group.md](../../sources/papers/humanoid_pnb_td-grpc-temporal-difference-learning-with-group.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.13549>
+- [arXiv PDF](https://arxiv.org/pdf/2505.13549)：已通读方法部分（实验与附录以略读为准）：§I 引言与贡献、§III-A 问题设定、§III-B TD-GRPC（策略约束、GRPO、模型目标）、Algorithm 1、Fig.2；§IV 仅读实验设定
 
 ## 推荐继续阅读
 

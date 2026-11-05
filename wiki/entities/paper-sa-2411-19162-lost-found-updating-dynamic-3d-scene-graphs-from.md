@@ -42,6 +42,28 @@ Based solely on egocentric recordings with corresponding hand position and camer
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SC["初始静态 3D 扫描<br/>(iPad Pro + 3D Scanner app)"] --> SEG["Mask3D 实例分割<br/>+ 图像检测补充物体、抽屉检测器"]
+    SEG --> SG["静态场景图 G=(V,E)<br/>close to / part of / contains 边"]
+    AR["Aria 眼镜录制：RGB、设备位姿、手部 3D 位置"] --> HO["2D 手-物交互检测器<br/>阈值 τo = 0.5"]
+    SG --> ST["交互起点判定<br/>检测为正 + 手距物体 < τd + 前瞻窗口内 ≥ θreg 个正观测"]
+    HO --> ST
+    AR --> ST
+    HO --> EN["交互终点判定：检测结果 + 手速度前后变化"]
+    ST --> KP["投影物体 3D 点到图像作为关键点<br/>CoTracker2 在线点跟踪"]
+    KP --> PNP["RANSAC-PnP → 物体旋转 R_obj→cam<br/>乘相机位姿得世界系朝向"]
+    ST --> TR["手锚点假设：手-物局部偏移不变<br/>由手位置和旋转求平移 t_k"]
+    PNP --> POSE["6DoF 物体位姿 T_k"]
+    TR --> POSE
+    POSE --> UPD["更新场景图节点位置与边<br/>(最近邻搜索更新 close to；出入抽屉增删 contains)"]
+    EN --> UPD
+```
+
+图依据：论文 §III.B 至 §III.E 与 Fig.2 Method Overview、§III.F 实现细节
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Based solely on egocentric recordings with corresponding hand position and camer
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2411.19162>
+- [arXiv PDF](https://arxiv.org/pdf/2411.19162)：已通读方法部分（实验与附录以略读为准）：§III Method（A 至 F）、§IV 实验设置与基线
 
 ## 推荐继续阅读
 

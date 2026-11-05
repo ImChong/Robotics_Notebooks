@@ -45,6 +45,29 @@ summary: "CARF（arXiv:2609.21982）：progress scorer 区分推进片段与失�
 - **加州大学伯克利分校**；开源结论：**待发布**（步骤 2.5，2026-09-21）。
 - 失败轨迹含异质片段，粗粒度丢弃或全量模仿都浪费；CARF 显式分离有用与有害段。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["成功示教轨迹"] --> B["按夹爪状态变化切分 K 个子任务"]
+    B --> C["指数式 progress 标签"]
+    A --> D["随机扰动夹爪状态生成合成失败"]
+    C --> E["训练 Progress Prediction Scorer（三层 MLP）"]
+    D --> E
+    E --> F["冻结 scorer"]
+    F --> G["真实失败轨迹 → chunk 重要性分数 g = p_末 − p_首"]
+    G --> H{"按阈值 τ1/τ2 划分"}
+    H -->|"g ≥ τ1"| I["Progressive Segments"]
+    H -->|"g ≤ τ2"| J["Failure-Critical Segments"]
+    H -->|"中间"| K["Indeterminate Segments（丢弃）"]
+    L["成功数据 L_suc"] --> M["Flow Matching 策略训练"]
+    I -->|"吸引 L_suc|fail"| M
+    J -->|"排斥：ReLU 边界项"| M
+    M --> N["推理：scorer 不参与"]
+```
+
+图依据：论文 §III-A / §III-B / §III-C、Fig. 2。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -93,6 +116,7 @@ summary: "CARF（arXiv:2609.21982）：progress scorer 区分推进片段与失�
 - [carf_arxiv_2609_21982.md](../../sources/papers/carf_arxiv_2609_21982.md)
 - [wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md](../../sources/blogs/wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md)
 - [arXiv:2609.21982](https://arxiv.org/abs/2609.21982)
+- [arXiv PDF](https://arxiv.org/pdf/2609.21982)：已通读方法部分（实验与附录以略读为准）：§III-A/B/C 方法、§IV-A 实验设定与实现细节
 
 ## 推荐继续阅读
 

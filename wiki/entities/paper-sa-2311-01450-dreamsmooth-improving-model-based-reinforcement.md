@@ -42,6 +42,19 @@ Improves MBRL via reward smoothing.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    POL["策略 π 在环境中 rollout 一个 episode，得到 (o_t, a_t, r_t)"] --> SMOOTH["DreamSmooth：对整条 episode 的奖励做时间平滑 r̃_t = Σ f_i·r_(t+i)（Gaussian / uniform / EMA，权重和为 1）"]
+    SMOOTH --> BUF["平滑后的 episode 存入 replay buffer"]
+    BUF --> RM["训练 reward model（预测平滑奖励，允许早/晚几步而损失不大）"]
+    RM --> REST["agent 只见平滑奖励；其余 MBRL 流程不变"]
+    REST --> POL
+```
+
+图依据：论文 §3 / Eq.1 与 Algorithm 1（COLLECT ROLLOUT，仅在存 buffer 前增加一行平滑）。论文称其可接入 DreamerV3 / TD-MPC 等现有 MBRL，其余流程未展开。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +109,7 @@ Improves MBRL via reward smoothing.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2311.01450>
+- [arXiv PDF](https://arxiv.org/pdf/2311.01450)：已通读方法部分（实验与附录以略读为准）：§3 DreamSmooth（Eq.1、Algorithm 1）
 
 ## 推荐继续阅读
 

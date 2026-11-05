@@ -42,6 +42,23 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Grounding Methods。 本
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["目标策略 πθ、动作变换策略 gφ、前向动力学模型 fψ<br/>初始化"] --> B["在真实环境收集轨迹 τreal"]
+    B --> C["监督学习训练前向模型 fψ"]
+    C --> D["Grounding 步：以 RL 训练 gφ（optimize1）<br/>输入 (st, at)，输出变换后动作 ât"]
+    D --> E["奖励 RAT = −‖fψ(st,at) − st+1‖²<br/>st+1 为 grounded 仿真器的实际下一状态"]
+    E --> D
+    D --> F["Policy improvement 步：在 grounded 仿真器中<br/>用 optimize2 更新 πθ"]
+    F --> G{"πθ 在真实环境<br/>仍在提升？"}
+    G -->|"是"| B
+    G -->|"否"| H["部署 πθ 到真实环境"]
+```
+
+图依据：论文 §II-C、§III 与 Algorithm 1 / Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Grounding Methods。 本
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2008.01279>
+- [arXiv PDF](https://arxiv.org/pdf/2008.01279)：已通读方法部分（实验与附录以略读为准）：§II 背景（GAT）、§III RGAT、§IV 实验设定
 
 ## 推荐继续阅读
 

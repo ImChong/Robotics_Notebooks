@@ -42,6 +42,34 @@ Unifies next-token prediction and full-sequence diffusion.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph TR["训练 Algorithm 1"]
+        A["轨迹 x1..xT"] --> B["每个 token 独立采样噪声级 kt"]
+        B --> C["ForwardDiffuse 得到带噪 token"]
+        C --> D["因果 RNN 更新潜状态 zt<br/>输入 zt-1 / 带噪 xt / kt"]
+        D --> E["预测噪声 ε<br/>MSE 损失 反传更新 θ"]
+    end
+    subgraph SA["采样 Algorithm 2"]
+        F["token 初始化为白噪声<br/>噪声调度矩阵 K 的行 m 列 t"] --> G["按行逐步去噪<br/>每行从左到右 到 Km,t 指定噪声级"]
+        G --> H["可选 AddGuidance<br/>代价函数梯度引导"]
+        H --> I["最后一行 m=0<br/>得到干净序列"]
+    end
+    subgraph DM["序贯决策 §3.4"]
+        J["token xt = at, rt, ot+1"] --> K["过去 token 汇总为潜状态 zt-1"]
+        K --> L["采样未来 H 步计划<br/>含动作 奖励 观测"]
+        L --> M["执行首个动作 得到 rt 与 ot+1"]
+        M --> N["后验更新 zt 噪声级 k=0"]
+        N --> K
+    end
+    E -.训练好的模型.-> G
+    I -.-> L
+```
+
+图依据：论文 §3.1–§3.4 / Fig.2、Algorithm 1、Algorithm 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +125,8 @@ Unifies next-token prediction and full-sequence diffusion.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2407.01392>
+- [arXiv PDF](https://arxiv.org/pdf/2407.01392)：已通读方法部分（实验与附录以略读为准）：§2 预备知识、§3.1 将加噪视为部分掩码、§3.2 训练与采样、§3.3 新能力、§3.4 序贯决策；§4 实验与附录以略读/未读为准
+
 
 ## 推荐继续阅读
 

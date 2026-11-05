@@ -43,6 +43,26 @@ Policy learning with large world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DATA["多任务离线数据集 B：(s, a, r, 任务嵌入 e)"] --> PRE
+    subgraph PRE["预训练多任务世界模型（一次）"]
+        WMN["TD-MPC2 式模型：编码器 Eϕ(s,e)、动力学 Fϕ(z,a,e)、奖励 Rϕ(z,a,e)，SimNorm 激活，H=16"] --> LWM["自回归损失 Lwm：隐状态一致性 + 奖励交叉熵"]
+    end
+    LWM --> WM["预训练好的可微世界模型"]
+    subgraph POLI["针对单个任务训练策略（约 10k 步，分钟级）"]
+        S1["从 B 采样 s1，编码得到 z1 = Eϕ(s1,e)"] --> ROLL["批量想象 rollout：a_h ~ πθ(·|z_h)，r_h = Rϕ，z_h+1 = Fϕ"]
+        ROLL --> ACTOR["Actor：一阶梯度 FoG 穿过世界模型反传，H 步回报 + 终端价值 Vψ(z_H)"]
+        ROLL --> CRITIC["Critic：TD(λ) 训练，3 个 critic 集成"]
+    end
+    WM --> ROLL
+    ACTOR --> DEPLOY["部署策略解决该任务，可选微调世界模型与策略"]
+```
+
+图依据：论文 §3.3 PWM（Algorithm 1、Eq.6 至 Eq.10）；§4.2 提供 MT30 / MT80 设定下的训练步数。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ Policy learning with large world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2407.02466>
+- [arXiv PDF](https://arxiv.org/pdf/2407.02466)：已通读方法部分（实验与附录以略读为准）：§3 策略优化（§3.3 PWM 与 Algorithm 1）、§4.2 多任务训练设定；其余实验与附录略读
 
 ## 推荐继续阅读
 

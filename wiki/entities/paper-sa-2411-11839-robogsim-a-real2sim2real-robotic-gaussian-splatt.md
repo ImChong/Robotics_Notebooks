@@ -42,6 +42,25 @@ A Real2Sim2Real robotic Gaussian Splatting simulator for synthesizing simulated 
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：多视角 RGB 序列 + 机械臂 MDH 参数"] --> GR["Gaussian Reconstructor (§3.2)<br/>3DGS 重建场景与物体，分割机械臂各关节"]
+    GR --> KD["MDH 运动学驱动图<br/>关节内高斯点随 T_i 运动"]
+    IN --> DT["Digital Twins Builder (§3.3)<br/>物体/场景网格重建，在 Isaac Sim 建数字孪生"]
+    DT --> AL["Real2Sim 布局对齐 + Sim2GS 稀疏关键点对齐<br/>相机定位 (GS-SLAM 式)"]
+    KD --> SC["Scene Composer (§3.4)<br/>场景/物体编辑，合成新物体、新场景、新视角"]
+    AL --> SC
+    SC --> IE["Interactive Engine (§3.5)"]
+    IE --> SY["Synthesizer：生成训练轨迹与 GS 渲染数据<br/>用于策略学习"]
+    IE --> EV["Evaluator：闭环评测"]
+    IE --> DC["VR/Xbox 设备采集具身数据"]
+    EV --> LOOP["Isaac Sim 给出初始状态 → GS 渲染图像 → 策略预测动作<br/>→ Isaac Sim 逆运动学/碰撞 → 位姿送 GS 渲染，循环至任务结束"]
+```
+
+图依据：论文 §3.1 至 §3.5 与 Fig.2 Overview of the RoboGSim Pipeline
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ A Real2Sim2Real robotic Gaussian Splatting simulator for synthesizing simulated 
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2411.11839>
+- [arXiv PDF](https://arxiv.org/pdf/2411.11839)：已通读方法部分（实验与附录以略读为准）：§3 Methods（3.1 至 3.5）、§4 实验设置（略读）
 
 ## 推荐继续阅读
 

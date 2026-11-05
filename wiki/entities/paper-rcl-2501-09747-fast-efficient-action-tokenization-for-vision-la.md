@@ -6,11 +6,11 @@ tags:
 - action-tokenization
 - vla
 status: complete
-updated: 2026-10-06
+updated: 2026-11-05
 arxiv: '2501.09747'
 venue: '2025'
 code: https://huggingface.co/physical-intelligence/fast
-summary: FAST 用时间轴离散余弦变换、量化和字节对编码压缩连续动作块，使自回归 VLA 能高效学习高频动作序列。
+summary: FAST（arXiv:2501.09747）用时间轴离散余弦变换、量化和字节对编码压缩连续动作块，使自回归 VLA 能高效学习高频动作序列；与 π0 结合即 π0-FAST，LeRobot 的 pi0_fast 策略（Pi0Fast）实现它，本页是二者共用的 canonical 节点。
 related:
 - paper-rcl-wam-robot-learning-control-survey.md
 - ../overview/rcl-awesome-wam-technology-map.md
@@ -25,6 +25,7 @@ sources:
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
 - ../../sources/sites/pi-memory-rlt-fast.md
+- ../../sources/repos/lerobot.md
 ---
 
 # FAST：高效动作分词
@@ -46,6 +47,25 @@ FAST 用时间轴离散余弦变换、量化和字节对编码压缩连续动作
 - 逐时间步独立离散化会产生很长的 token 序列；时间相关性可以直接用于压缩。
 - tokenizer 是可复用的动作表示组件，适合比较自回归动作头与连续 flow 动作头。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["动作 chunk (H, D)"] --> N["分位数归一化到 [-1, 1]"]
+  N --> DCT["逐动作维沿时间轴做 DCT"]
+  DCT --> Q["乘 scale 后取整<br/>丢掉不显著系数"]
+  Q --> FL["展平：低频系数在前"]
+  FL --> BPE["BPE 压缩为紧凑 action token"]
+  BPE --> MAP["映射到 VLM 词表末尾<br/>覆盖最少使用的 token"]
+  IMG["图像 + 语言 + 状态"] --> VLM["PaliGemma 自回归 VLM<br/>交叉熵 next-token"]
+  MAP --> VLM
+  VLM -->|"推理：逐 token 解码"| TOK["预测的 action token"]
+  TOK --> INV["BPE 解码 → 反量化 → 逆 DCT → 反归一化"]
+  INV --> OUT["连续动作 chunk"]
+```
+
+图依据：论文 §V（DCT、scale、BPE、低频优先）、§VI-A（1 秒动作块；覆盖 VLM 词表中最少使用的 token）；token 映射细节对照 LeRobot `ActionTokenizerProcessorStep`。
+
 ## 核心原理
 
 连续动作 chunk → 沿时间轴 DCT → 系数量化 → BPE token → 自回归预测 → 逆变换恢复动作。低频系数聚集平滑运动信息，BPE 再利用符号重复；压缩率与误差取决于动作归一化、采样率和量化配置。
@@ -53,6 +73,10 @@ FAST 用时间轴离散余弦变换、量化和字节对编码压缩连续动作
 **FAST+** 提供跨机器人数据训练的通用 tokenizer。tokenizer 的泛化不等于策略在新本体上即插即用，控制输出仍须匹配动作维度和语义。
 
 ## 源码运行时序图
+
+### A. FAST 分词器接口（官方 `physical-intelligence/fast`，论文 §V-C 的 AutoProcessor 用法）
+
+论文给出的调用方式是 `AutoProcessor.from_pretrained("physical-intelligence/fast", trust_remote_code=True)` 后直接 `tokenizer(action_chunk)`，以及 `tokenizer.fit(action_dataset)` 训练新分词器；下图只画这一接口，不含策略训练。
 
 ```mermaid
 sequenceDiagram
@@ -67,7 +91,61 @@ sequenceDiagram
     T-->>R: 解码连续动作 chunk
 ```
 
-这里描绘官方 tokenizer 的编码/解码接口；策略训练与真机适配不属于 tokenizer 本身。
+### B. LeRobot 的 Pi0Fast（`policy.type=pi0_fast`，固定提交 `9e5ee98…`）
+
+已通读 `policies/pi0_fast/{modeling,processor,configuration}_pi0_fast.py`、`processor/tokenizer_processor.py` 中的 `ActionTokenizerProcessorStep` 与 `scripts/lerobot_train_tokenizer.py` 的结构。
+
+**1) 训练分词器（可选，`lerobot-train-tokenizer`）**
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant S as scripts/lerobot_train_tokenizer.py<br/>train_tokenizer
+    participant DS as LeRobotDataset
+    participant FT as train_fast_tokenizer
+    participant AP as transformers.AutoProcessor
+    S->>DS: 按 sample_fraction 抽 episode，取 action_horizon 步动作块
+    S->>S: apply_relative_transform（可选）→ 选 encoded_dims → apply_normalization（默认 QUANTILES）
+    S->>FT: train_fast_tokenizer(action_chunks, vocab_size, scale)
+    FT->>AP: from_pretrained("lerobot/fast-action-tokenizer") 作基座
+    FT-->>S: 在新数据上重训 BPE 的分词器
+    S->>S: compute_compression_stats → 保存 / 可选 push_to_hub
+```
+
+**2) 策略训练与推理**
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant PP as processor_pi0_fast.py<br/>make_pi0_fast_pre_post_processors
+    participant AT as ActionTokenizerProcessorStep
+    participant P as modeling_pi0_fast.py<br/>PI0FastPolicy
+    participant M as PI0FastPytorch
+    PP->>PP: 相对动作 → 归一化 → Pi0FastPrepareStateAndLanguageTokenizerProcessorStep（state 分 256 桶并写进 Task / State 提示）
+    PP->>AT: 训练时对动作 chunk 编码（fast_skip_tokens=128 映射进 PaliGemma 词表尾部）
+    AT-->>P: ACTION_TOKENS 与 ACTION_TOKEN_MASK
+    P->>M: forward(images, tokens, fast_action_tokens)
+    M->>M: embed_prefix_fast：图像+语言双向，FAST token 看前缀、彼此因果
+    M-->>P: lm_head 逐位置预测下一个 FAST token，掩码交叉熵（无 action expert）
+    Note over P,M: 推理 predict_action_chunk
+    P->>M: use_kv_cache 则 sample_actions_fast_kv_cache 否则 sample_actions_fast
+    M->>M: prefill 图像+语言+BOS，逐 token 解码，遇 "|" 结束，max_decoding_steps=256
+    M-->>P: 动作 token
+    P->>P: detokenize_actions → decode_actions_with_fast（BPE 解码、逆 DCT）
+    P-->>PP: 连续动作 → postprocessor 反归一化
+```
+
+## Pi0-FAST 与 LeRobot 实现要点
+
+- **身份：** Pi0-FAST = 用 FAST 分词器训练的 π0 自回归版本。论文（[arXiv:2501.09747](https://arxiv.org/abs/2501.09747)，Pertsch、Stachowicz、Ichter、Driess、Nair、Vuong、Mees、Finn、Levine，2025-01-16）摘要称：与 π0 VLA 结合可扩展到 10k 小时机器人数据，匹配扩散式 VLA 的性能，同时训练时间最多减少 5 倍；**本库对 FAST 与 Pi0-FAST 只保留这一个 canonical 节点**，π0 本体见 [π0](./paper-pi0.md)。
+- **论文实验口径（正文已读）：** 主要骨干 π0（PaliGemma-3B），另测 OpenVLA（Prismatic 7B）；训练时对 1 秒动作块分词，并覆盖 VLM 词表中最少使用的 token；默认超参 scale=10、BPE 词表 1024；FAST+ 在 1M 条真机动作序列上训练。表 I：每个动作块的平均 token 数，朴素分箱 vs FAST 为 BridgeV2 35 vs 20、DROID 105 vs 29、Bussing 140 vs 28、Shirt Fold 700 vs 53（压缩比 1.75 / 3.6 / 5.0 / 13.2）。
+- **LeRobot 文档与论文的对照：** `docs/source/pi0fast.mdx` 写「typically 10x compression」「up to 5x faster than diffusion-based approaches like π0」。5x 与论文摘要一致；「10x」是文档的概括，论文表 I 的范围是 1.75~13.2 倍，且随控制频率而变，引用时请用论文数字。
+- **默认配置（`configuration_pi0_fast.py`）：** `paligemma_variant=gemma_2b`、`chunk_size=n_action_steps=50`、`max_action_tokens=256`、`max_decoding_steps=256`、`temperature=0.0`（贪心）、`action_tokenizer_name=lerobot/fast-action-tokenizer`、`fast_skip_tokens=128`、`use_kv_cache=True`、`validate_action_token_prefix=True`。
+- **与 π0 的结构差异：** `configuration_pi0_fast.py` 里仍保留 `action_expert_variant=gemma_300m` 字段，但 `PI0FastPytorch.forward` 只送 `[prefix, None]`（注释写明「No suffix/action expert」），即 LeRobot 的 Pi0Fast 是纯 PaliGemma 自回归，不含 flow 动作专家。
+- **实现细节：** 动作 token 与 PaliGemma 词表的映射为 `vocab_size - 1 - fast_skip_tokens - token`（`_paligemma_tokens_to_act_tokens` 为其逆）；解码按首个 `|` 截断，贪心模式下全部序列出现 `|` 即提前停止。`decode_actions_with_fast` 的 `relaxed_decoding` 默认为 True，会把过长/过短的 DCT 系数序列截断/补零；解码异常时该函数对该条回退为全零 DCT 系数（只打 warning），部署时应监控该警告（`detokenize_actions` 是否显式传入该参数本次未逐行核对）。
+- **相对动作：** 处理顺序「relative → normalize → tokenize」，注释写明此时分词器看到的是 delta 值，必须使用相对动作的统计量。
+- **复现（文档自述，未重跑）：** 从 `lerobot/pi0fast-base` 在 HuggingFace LIBERO 数据上再微调 40k 步（bfloat16、batch 256、8×H100），产物 `lerobot/pi0fast-libero`，评测时 `n_action_steps=10`（文档称与 OpenPI 一致）。文档结果表：Spatial 70.0 / Object 100.0 / Goal 100.0 / LIBERO-10 60.0，平均 82.5（%）。评测命令为 `--eval.batch_size=1 --eval.n_episodes=1`，各套件分数都是 10 的倍数，推测每套件只跑了 10 个 episode（每任务 1 个），统计置信度很低，且明显低于 `pi05.mdx` 里 π0.5 的 97.5 平均（两份文档口径不同，仅作量级参照）；不要把它当作 π0-FAST 的能力上限。
+- **限制：** RTC 在 `select_action` 中不可用；`PI0FastPolicy.predict_action_chunk` 的 `action_horizon` 取 `n_action_steps`，若 `n_action_steps` 与训练时的 `chunk_size` 不一致，解码 reshape 可能出错或被补零（推测，未跑过）；文档的训练/评测示例都把二者设为 10，与配置默认值 50 不同。
 
 ## 工程实践
 
@@ -106,6 +184,8 @@ sequenceDiagram
 ## 参考来源
 
 - [PI 一手资料补核](../../sources/sites/pi-memory-rlt-fast.md)
+- [LeRobot 仓库归档](../../sources/repos/lerobot.md)：固定提交 `9e5ee98…` 的 `policies/pi0_fast/`、`docs/source/pi0fast.mdx`、`scripts/lerobot_train_tokenizer.py`
+- [arXiv PDF](https://arxiv.org/pdf/2501.09747)：2026-11-05 重读摘要、§V、§VI-A/B、表 I
 
 ## 推荐继续阅读
 

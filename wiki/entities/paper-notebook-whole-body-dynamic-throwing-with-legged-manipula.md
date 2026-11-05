@@ -15,7 +15,7 @@ summary: "Whole-Body Dynamic Throwing with Legged Manipulators：列入 Paper No
 
 # Whole-Body Dynamic Throwing with Legged Manipulators
 
-**Whole-Body Dynamic Throwing with Legged Manipulators** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。
+**Whole-Body Dynamic Throwing with Legged Manipulators** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **progress 待深读** 清单（分类：04_Loco-Manipulation_and_WBC）。本页 **还没有深读笔记**：只给出这篇论文的分类位置与原文入口，方法流程见 [流程总览](#流程总览)，数据与指标请直接看原文。
 
 ## 一句话定义
 
@@ -32,7 +32,31 @@ Whole-Body Dynamic Throwing with Legged Manipulators 的人形机器人学习论
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置、原文入口与依据论文方法部分绘制的 [流程总览](#流程总览)，不给性能结论。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+    T["投掷目标（极坐标 θ̃、φ、r）"] --> PI
+    S["状态：IMU 线速度、电机状态、上一动作、ball released、估计投掷位移（特权，课程中逐步替换为噪声）"] --> PI["循环 actor-critic 策略（Isaac Lab 并行 PPO）"]
+    PI --> AJ["全身关节位置动作（DC 电机模型）"]
+    PI --> AR["释放动作（超过 1 即释放球）"]
+    AJ --> SIM["仿真：球初始在手中"]
+    AR --> SIM
+    SIM --> RT["r_throwing：抛体运动方程预测落点误差"]
+    SIM --> RS["r_stability：无碰撞、基座高度、已投出（终步稀疏奖励）"]
+    SIM --> RR["r_roll：人形侧倾惩罚"]
+    RT --> RW["r = λ1·r_throwing + λ2·r_stability + λ3·r_roll"]
+    RS --> RW
+    RR --> RW
+    RW -->|"PPO 更新"| PI
+    SIM --> CUR["自适应课程：精度与稳定性达阈值则目标距离范围推进 1%"]
+    CUR --> T
+    PI -.-> HW["迁移到人形机器人 Chuck 做硬件验证"]
+```
+
+图依据：论文 §III（A 任务定义、B 奖励/状态/动作、C 课程设计）。
 
 ## 核心信息
 
@@ -64,7 +88,7 @@ Whole-Body Dynamic Throwing with Legged Manipulators 的人形机器人学习论
 
 - [humanoid_pnb_whole-body-dynamic-throwing-with-legged-manipula.md](../../sources/papers/humanoid_pnb_whole-body-dynamic-throwing-with-legged-manipula.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2410.05681)：已通读方法部分（实验与附录以略读为准）：§III 方法（任务定义、奖励、状态与动作、网络配置、课程设计）与 §IV 实验设置、仿真结果的主要部分
 
 ## 推荐继续阅读
 

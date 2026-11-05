@@ -255,6 +255,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Teleopit](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Teleopit__A_Full-Embodiment_Humanoid_Teleoperation_System/Teleopit__A_Full-Embodiment_Humanoid_Teleoperation_System.html)
 - [Teleopit 项目页](https://botrunner64.github.io/teleopit-page/)
 - [Teleopit 文档（中文）](https://BotRunner64.github.io/Teleopit/zh-Hans/)
 - [BotRunner64/Teleopit](https://github.com/BotRunner64/Teleopit)

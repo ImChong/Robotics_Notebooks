@@ -42,6 +42,31 @@ First benchmark for evaluating LLMs' ability to generate symbolic world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph 构建["基准构建 (§3)"]
+    RAW[网络爬取 PDDL: 1,801 个原始文件] --> FILT[过滤: 语法校验 / TF-IDF 去重 / 复杂度控制 / 5,000 token 长度]
+    FILT --> SEL[人工筛选: 264 个 PDDL 域]
+    SEL --> ANN[人工撰写自然语言描述 + 复核]
+    ANN --> DS[最终 103 个域: 描述 N 与真值世界模型]
+  end
+  subgraph 评测["评测流程 (§2, Fig.1)"]
+    DS --> PR[提示: 通用描述 + 谓词 + 动作<br/>动作不含前置条件与效果]
+    PR --> LLM[LLM 生成 PDDL 世界模型 D]
+    LLM --> PAR[语法解析与校验]
+    PAR -->|有错误| FB[错误反馈 → 自动修正再生成]
+    FB --> LLM
+    PAR -->|无错误或超出尝试次数| MET[多维度评测]
+    MET --> M1[Executability]
+    MET --> M2[Structural Similarity: Levenshtein 比]
+    MET --> M3[Component-wise F1: 谓词 / 参数 / 前置条件 / 效果]
+  end
+```
+
+图依据：论文 §2.2–2.3、§3.1–3.4 / Fig.1–2（基准构建与评测流程，非训练方法）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +122,7 @@ First benchmark for evaluating LLMs' ability to generate symbolic world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.13092>
+- [arXiv PDF](https://arxiv.org/pdf/2502.13092)：已通读方法部分（实验与附录以略读为准）：§2 Preliminary、§3 Benchmark Construction
 
 ## 推荐继续阅读
 

@@ -42,6 +42,40 @@ End-to-end generalizable navigation via world modeling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph OBS["观测编码 (§II-C.2)"]
+        I["前视 RGB 图像"] --> DN["DINOv2 编码器<br/>class token + 平均池化 patch token → u_t"]
+        V["机器人线速度"] --> FC["全连接层 → m_t"]
+        DN --> OE["观测嵌入 o_t = [u_t, m_t]"]
+        FC --> OE
+    end
+    subgraph WM["世界模型：学习到的状态空间"]
+        SE["状态估计网络<br/>GRU 历史 h_t + Normal 分布采样信念状态 s_t"]
+        Z["潜状态 z_t = [h_t-1, s_t]"]
+        SP["状态预测网络<br/>(无观测嵌入，用 h_t-1 与 a_t-1 预测 s_t)"]
+        DEC["多任务解码头<br/>RGB 重建 (LDM) + 语义分割 (StyleGAN 式)"]
+        SE --> Z
+        Z --> DEC
+        SE -.->|"KL 散度对齐"| SP
+    end
+    subgraph POL["动作策略网络 (§II-E)"]
+        R["全局路线 → 机器人坐标系 → 截取局部路线"] --> VN["VectorNet 路线编码 g_t"]
+        SA["Self-Attention 融合 z_t 与 g_t"]
+        MLP["MLP 解码：动作指令 a_t (6 维速度)<br/>+ 可选 5 点导航路径"]
+        VN --> SA --> MLP
+    end
+    OE --> SE
+    ACT["动作 a_t-1：来自策略或数据集"] --> SE
+    Z --> SA
+    T["教师策略动作"] -->|"L1 模仿损失"| MLP
+    MLP -->|"策略动作"| ACT
+```
+
+图依据：论文 §II-B～F（Fig. 2 模型架构 (a)–(e)；§II-F 多阶段训练：第一阶段关闭策略网络用离线数据训练世界模型，第二阶段联合训练策略）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +130,7 @@ End-to-end generalizable navigation via world modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.17491>
+- [arXiv PDF](https://arxiv.org/pdf/2410.17491)：已通读方法部分（实验与附录以略读为准）：§II-A～F。
 
 ## 推荐继续阅读
 

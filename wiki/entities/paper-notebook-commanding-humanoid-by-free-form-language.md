@@ -38,6 +38,33 @@ summary: "让人形听懂并执行自由形式自然语言指令，是迈向无�
 - **跨本体设计**有助于把一套语言接口推广到不同人形；
 - **与 FRoM-W1、ULTRA、SafeFlow、UniAct 同属语言/多模态驱动全身控制簇**，可横向对照生成器与稳定化手段。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["3.1 统一人-人形动作词表"]
+        hm["人体动作"] --> enc["双分支 VQ-VAE<br/>implicit partitioning，多子码本"]
+        rm["重定向人形动作<br/>（root-centered 规范化）"] --> enc
+        enc --> tok["统一离散动作 token<br/>损失：L_intra + α·L_commit + β·L_cross"]
+    end
+    subgraph S2["3.2 词表导向动作蒸馏"]
+        teacher["Teacher：全约束跟踪策略 π_track<br/>PPO，跟踪稠密参考"] --> dagger["DAgger 蒸馏"]
+        tok --> dagger
+        dagger --> student["Student：vocab 控制器 π_vocab<br/>CVAE（先验 + 残差编码器 + 动作解码器）"]
+    end
+    subgraph S3["3.3 大语言-动作模型 LLA"]
+        txt["语言指令"] --> cot["VLM 生成 motion CoT<br/>仅用于抽象/组合指令"]
+        cot --> sft["SFT：next-token 预测<br/>目标 = CoT + 动作 token"]
+        tok --> sft
+        sft --> grpo["GRPO 强化微调<br/>奖励 = 格式 + 分布 + 跟踪"]
+        student --> |"仿真 rollout 提供物理反馈"| grpo
+    end
+    grpo --> out["推理：语言 → 动作 token → π_vocab → 人形动作"]
+    student --> out
+```
+
+图依据：论文 §3 / Fig.2。
+
 ## 解决什么问题
 
 用自由语言指挥人形面临两道坎： - **数据稀缺**：高质量**成对的语言-动作**数据少； - **物理不稳定**：语言生成的动作未必物理可执行/稳定。
@@ -88,6 +115,7 @@ summary: "让人形听懂并执行自由形式自然语言指令，是迈向无�
 - [humanoid_pnb_commanding-humanoid-by-free-form-language.md](../../sources/papers/humanoid_pnb_commanding-humanoid-by-free-form-language.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Commanding_Humanoid_by_Free-form_Language__LLA_with_Unified_Motion_Vocabulary/Commanding_Humanoid_by_Free-form_Language__LLA_with_Unified_Motion_Vocabulary.html>
 - 论文：<https://arxiv.org/abs/2511.22963>
+- [arXiv PDF](https://arxiv.org/pdf/2511.22963)：已通读方法部分（实验与附录以略读为准）：§3.1-§3.3
 
 ## 推荐继续阅读
 

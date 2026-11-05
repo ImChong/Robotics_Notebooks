@@ -40,6 +40,29 @@ Model-based RL baseline showing strong sample efficiency from learned video pred
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["真实环境 env：用当前策略 π 收集观测，并入数据集 D（初始为随机 rollout）"] --> B["TRAIN_SUPERVISED：用 D 监督训练世界模型 env'"]
+    B --> C["TRAIN_RL：在 env' 中用 PPO 更新 π"]
+    C --> Q{"主循环结束？（共迭代 15 次）"}
+    Q -- 否 --> A
+    Q -- 是 --> Z["输出策略 π"]
+    subgraph WM["世界模型 env'（§4）"]
+        W1["输入：4 帧 + 动作"] --> W2["卷积编码 + 动作嵌入"]
+        W2 --> W3["输出：下一帧 + 奖励"]
+        W4["离散隐变量（bits）：推理时由辅助 LSTM 自回归生成"] --> W2
+    end
+    B -.-> WM
+    subgraph PT["策略训练细节（§5）"]
+        T1["每约 N=50 步从 D 中均匀采样起点重置 env'"] --> T2["rollout 末步奖励加上 value 函数估计"]
+    end
+    C -.-> PT
+```
+
+图依据：论文 §3 Algorithm 1、§4（世界模型）、§5（策略训练）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +126,7 @@ Model-based RL baseline showing strong sample efficiency from learned video pred
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/1903.00374>
+- [arXiv PDF](https://arxiv.org/pdf/1903.00374)：已通读方法部分（实验与附录以略读为准）：§1、§3-§5（含 Algorithm 1、世界模型与策略训练）与 §6 实验设定；§6.1-§6.4 结果与消融仅略读
 
 ## 推荐继续阅读
 

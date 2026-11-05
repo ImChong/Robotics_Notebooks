@@ -40,6 +40,25 @@ summary: "去中心化多人形搬运（arXiv:2609.17824）：每机物体局部
 
 - 多机协同常需通信与异构策略；物体中心局部附着可扩展规模。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["高层规划 / 外部指令<br/>一次性 attachment spec A(r) = (T, w, d)"] --> C
+    B["每步 object-centric 命令 C_pl = (vx, vy, ωz, h)<br/>+ 外部模式标志 m(r) ∈ {idle, track}"] --> T["固定刚体变换<br/>C_pl → 每个机器人的局部命令 C_cf(r)"]
+    T --> C
+    subgraph ROBOT["每台人形机器人 (相同策略, 50 Hz, 无机器人间通信)"]
+        C["高层操作策略 π_h (2 层 LSTM, IPPO 训练)<br/>输入: 本体状态 s, A(r), C_cf(r), m(r)"]
+        C --> D["上肢关节目标 q_arm"]
+        C --> E["速度 / 偏航率 / 躯干高度命令"]
+        E --> F["低层行走策略 π_l (预训练并冻结)"]
+        F --> G["腿部关节目标 q_leg → PD 控制"]
+    end
+    X["训练课程: 辅助接触 → 无辅助持物 → 高度跟踪<br/>→ 完整命令跟踪 → 远距出生 → 双机微调"] -.-> C
+```
+
+图依据：论文 §III（attachment spec、object-centric 命令、模式标志）、§IV / Fig. 1、§V-B 训练课程
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +102,8 @@ summary: "去中心化多人形搬运（arXiv:2609.17824）：每机物体局部
 - [decentralized-multi-humanoid-pickup_arxiv_2609_17824.md](../../sources/papers/decentralized-multi-humanoid-pickup_arxiv_2609_17824.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.17824](https://arxiv.org/abs/2609.17824)
+- [arXiv PDF](https://arxiv.org/pdf/2609.17824)：已通读方法部分（实验与附录以略读为准）：§III 去中心化搬运框架、§IV 去中心化控制架构、§V 训练方法（场景生成、课程、奖励）
+
 
 ## 推荐继续阅读
 

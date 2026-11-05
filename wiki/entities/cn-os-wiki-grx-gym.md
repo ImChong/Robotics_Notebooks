@@ -61,11 +61,53 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`cd legged_gym/legged_gym/scripts && python train.py --task=N1 --headless`（回放与导出策略：`python play.py --task=N1 --num_envs=1`）
+
+```mermaid
+sequenceDiagram
+    participant T as legged_gym/scripts/train.py train()
+    participant TR as utils/task_registry.py task_registry
+    participant E as envs/n1/n1_code.py N1（继承 LeggedRobotFFTAIBipedal / legged_robot_code.py）
+    participant IG as Isaac Gym（gym.simulate 等）
+    participant RN as rsl_rl OnPolicyRunnerMirror.learn
+    participant AL as PPOMirror（继承 PPO）
+    participant P as play.py
+
+    T->>TR: import legged_gym.envs（envs/n1/__init__.py 执行 register("N1", N1, N1MainBodyCfg, N1MainBodyCfgPPO)）
+    T->>TR: make_env(name="N1", args)
+    TR->>E: N1(cfg, sim_params, physics_engine, sim_device, headless)
+    E->>IG: create_sim、_create_envs 建立多环境
+    T->>TR: make_alg_runner(env, name, args)
+    TR->>RN: runner_class_name="OnPolicyRunnerMirror"(env, train_cfg_dict, log_dir)
+    RN->>AL: 构造 actor_critic 与 PPOMirror，init_storage
+    T->>RN: learn(max_iterations, init_at_random_ep_len=True)
+    loop 每个 iteration
+        loop num_steps_per_env 步
+            RN->>AL: act(obs, critic_obs)
+            RN->>E: step(actions)
+            E->>IG: 计算力矩，set_dof_actuation_force_tensor_indexed，gym.simulate
+            E->>E: post_physics_step：check_termination、compute_reward、reset_idx、compute_observations
+            E-->>RN: obs, pri_obs, rewards, dones, infos
+            RN->>AL: process_env_step(rewards, dones, infos)
+        end
+        RN->>AL: compute_returns(critic_obs)
+        RN->>AL: update()，随后 update_mirror()（均在 on_policy_runner_mirror.py 的 learn 中调用）
+        RN->>RN: log（TensorBoard）；每 save_interval 保存 model_{it}.pt
+    end
+    P->>TR: make_env + make_alg_runner（resume=True）后 get_inference_policy
+    P->>P: export_policy_as_jit 导出 logs/N1/exported/policy_jit.pt
+```
+
+图依据：FFTAI/Wiki-GRx-Gym@25693a5，读过 `README.md`、`legged_gym/legged_gym/scripts/train.py`、`play.py`（部分）、`legged_gym/legged_gym/utils/task_registry.py`（make_env、make_alg_runner）、`legged_gym/legged_gym/envs/n1/__init__.py`、`n1_config_main_body.py`（runner_class_name / class_name 行）、`envs/base/legged_robot_code.py`（step、post_physics_step 及相邻片段）、`rsl_rl/rsl_rl/runners/on_policy_runner.py` 与 `on_policy_runner_mirror.py`（learn 循环）、`algorithms/ppo_mirror.py`（头部）。`PPO.update` 内部、`ActorCriticMLP`、奖励函数与 `IsaacGym_Preview_4_Package`（NVIDIA 闭源二进制包）未读；`update_mirror()` 内部（及 `mirror_coef` 为 0 时的行为）未读。
+
 ## 参考来源
 
 - [Wiki-GRx-Gym 源码归档](../../sources/repos/wiki-grx-gym.md)（<https://github.com/FFTAI/Wiki-GRx-Gym>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：FFTAI/Wiki-GRx-Gym@25693a5，读过 README.md、legged_gym 的 scripts/train.py、scripts/play.py（部分）、utils/task_registry.py、envs/n1/__init__.py、envs/n1/n1_config_main_body.py（部分）、envs/base/legged_robot_code.py（step 与 post_physics_step 片段）、rsl_rl 的 runners/on_policy_runner.py、runners/on_policy_runner_mirror.py、algorithms/ppo_mirror.py（头部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

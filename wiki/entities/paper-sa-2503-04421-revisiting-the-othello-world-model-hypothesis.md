@@ -42,6 +42,24 @@ Revisits the Othello world model hypothesis.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  G["Othello 对局序列 (CHAMPIONSHIP / SYNTHETIC)"] --> M["训练多种语言模型: GPT-2, T5, BART, Flan-T5, LLaMA-2, Mistral, Qwen2.5"]
+  M --> NM["自回归预测下一步棋 (60 词表)"]
+  NM --> EV["合法性评估: 1-hop / 2-hop 生成错误率"]
+  M --> F["取各模型解码器末层隐表示 F1, F2 (同一输入序列)"]
+  F --> SUP["有监督对齐: 迭代 Procrustes"]
+  F --> UNS["无监督对齐: 对抗训练 + Procrustes 精修"]
+  SUP --> CS["对齐后余弦相似度"]
+  UNS --> CS
+  F --> VIS["PCA 可视化 / 逐层相似度热图"]
+  NM --> LMP["潜在落子投影 (候选格 + 嵌入最近邻格)"]
+```
+
+图依据：论文 §3（Modeling Othello with LLMs）、§4（Representation Alignment，含 Algorithm 1、2）、§5 与 Fig.1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Revisits the Othello world model hypothesis.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.04421>
+- [arXiv PDF](https://arxiv.org/pdf/2503.04421)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Othello 建模与评估、§4 表示对齐（对齐方法、映射结果、PCA、跨层映射）、§5 潜在落子投影；附录未读。
 
 ## 推荐继续阅读
 

@@ -81,6 +81,27 @@ sources:
 
 [Fei-Fei 功能分类](../concepts/functional-taxonomy-world-models.md) 把世界模型按输出投影成渲染器 / 模拟器 / 规划器，澄清了术语过载，但论文认为它分类的是 **解码产物**，不是内部模型。视频生成器、可微仿真器和模型基规划器被贴上同一标签，评测无法对齐。作者要回答：世界模型 **是什么**、应具备哪些性质、功能轴如何与架构轴正交。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["§2.1 定义 2.1：有限计算资源下<br/>对物理世界状态转移过程的压缩建模<br/>三项性质：全模态 / 多维异步 / 局部性"] --> L["§2.2 智能体–环境回路（POMDP）<br/>信念 b_t → 动作 a_t → 环境转移 → 部分观测 o_t → 贝叶斯滤波更新"]
+    L --> V["§2.3 两种视角：理解 vs 预测<br/>论文立场：物理世界模型以理解为主，预测服务于理解"]
+    V --> T["§2.4–2.5 二维分类（Fig. 5）"]
+    T --> TF["功能轴：渲染器 Renderer / 模拟器 Simulator / 规划器 Planner"]
+    T --> TA["架构轴：观测级生成 / 潜空间 / 3D 与物体中心"]
+    TA --> A["§3 架构范式 → §4 训练与学习范式"]
+    A --> AP["§5 应用：机器人与具身智能、科学发现"]
+    AP --> C["§6 开放挑战：数据不对称、保真 vs 精度、误差累积、<br/>sim-to-real、评测、安全与可持续"]
+    C --> R1["§7.1 统一多模态世界模型"]
+    R1 --> R2["§7.2 统一物理表示<br/>一个状态，多种解码（渲染 / 模拟 / 规划）"]
+    R2 --> R3["§7.3 基础规模交互式模拟器"]
+    R3 --> O["§8 展望：Trinity Architecture<br/>Agent / Evaluator / World Model"]
+    P["§1 倒金字塔数据流程（Fig. 1）<br/>网络数据源 → 合成与过滤数据集 → 真实世界任务数据"] -.-> R1
+```
+
+图依据：论文自身的定义与路线图结构图（立场 / 综述类），论文 §1（Fig. 1）、§2.1–§2.5（Fig. 2–5）、§3–§8 目录与 §7 Roadmap（Fig. 9）、§8 Trinity Architecture（Fig. 10）；§3–§6 仅取章节标题。
+
 ## 核心原理（方法栈）
 
 ### 定义 2.1
@@ -209,3 +230,4 @@ sources:
 - [Awesome World Models 条目笔记](../../sources/papers/sun_awesome_wm_2607_06401_a-definition-and-roadmap-for-world-model.md)
 - [Awesome World Models catalog](../../sources/papers/sun_awesome_wm_catalog.md)
 - [Awesome World Models 仓库](../../sources/repos/awesome-world-models.md)
+- [arXiv PDF](https://arxiv.org/pdf/2607.06401)：已通读目录、§1 引言、§2 世界模型的定义与分类、§7 路线图、§8 展望（§3–§6 仅读章节标题，附录与参考文献略读）；图依据论文 §1、§2、§7、§8 与 Fig. 1/5/9/10。

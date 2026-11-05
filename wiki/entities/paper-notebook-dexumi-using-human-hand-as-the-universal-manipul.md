@@ -194,5 +194,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：DexUMI](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexUMI__Using_Human_Hand_as_the_Universal_Manipulation_Interface/DexUMI__Using_Human_Hand_as_the_Universal_Manipulation_Interface.html)
 - 项目页：<https://dex-umi.github.io/>
 - 部署指南：<https://dex-umi.github.io/tutorial/deployment.html>

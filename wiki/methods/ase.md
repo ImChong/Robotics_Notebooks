@@ -125,6 +125,7 @@ sequenceDiagram
 - [HIL](./hil-hybrid-imitation-learning.md) / [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — heading 任务用 ASE sword-and-shield 数据；无任务引导的 ASE 在跑酷障碍前完成率为 0。
 
 ## 参考来源
+- [机器人论文阅读笔记：ASE](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)
 - [sources/papers/ase.md](../../sources/papers/ase.md)
 - [lucid_arxiv_2608_07746.md](../../sources/papers/lucid_arxiv_2608_07746.md) — LUCID 对 ASE 式 LLC 的结构化 latent / 想象 HLC 延伸
 - 论文：<https://arxiv.org/abs/2205.01906>

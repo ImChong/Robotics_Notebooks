@@ -196,6 +196,8 @@ v1.0 文档的关键入口： [Basics](https://microsoft.github.io/agent-lightni
 
 ## 关联页面
 
+- [Agentic RL Lab](./agentic-rl-lab.md) — LLM 与智能体强化学习实验手册。
+
 - [DeepSeek Harness](./deepseek-harness.md) — 通用 **agent OS**；可经 Gateway 代理接 RL 训练环
 - [Hermes Agent](./hermes-agent.md) — 常驻 agent 运行时 + 轨迹导出；与「外置 RL Trainer」互补
 - [RSI-Harness](paper-metarsi-v1.md) — **实验组织 Genome**；Agent Lightning 偏 **策略权重 RL**

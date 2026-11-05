@@ -61,11 +61,44 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`roslaunch data_tools run_data_capture.launch type:=aloha datasetDir:=<路径> episodeIndex:=0`（采集，ROS1 noetic），之后离线执行 `python3 data_sync.py --type aloha --datasetDir <路径>` 与 `python3 data_to_hdf5.py --type aloha --datasetDir <路径>`（命令出自 README）
+
+```mermaid
+sequenceDiagram
+    participant L as run_data_capture.launch
+    participant C as src/dataCapture.cpp main / DataCapture
+    participant T as ROS 话题（相机、关节、末端位姿、夹爪等）
+    participant FS as datasetDir/episodeN 磁盘目录
+    participant S as scripts/data_sync.py Operator
+    participant H as scripts/data_to_hdf5.py
+
+    L->>L: rosparam 加载 config/type_data_params.yaml，设置 datasetDir / episodeIndex / hz / timeout / cropTime
+    L->>C: 启动 data_tools_dataCapture 节点
+    C->>C: nh.param 读参数，构造 DataCapture(datasetDir, episodeIndex, hz, timeout)
+    C->>FS: instructionSaving(instructions)
+    C->>T: 按 yaml 配置逐个 nh.subscribe（图像、点云、joint_state、end_pose、gripper、imu 等）
+    C->>C: run()：每路话题一个 *Saving 线程，另有 keyboardInterruptChecking 与 monitoring 线程
+    loop 话题回调（cameraColorHandler 等）
+        T-->>C: 消息进入对应 MsgDeque，更新计数与时间戳
+        C->>FS: *Saving 线程弹出消息，cv::imwrite 等写文件，CameraInfo 写 config.json
+    end
+    C->>C: 用户按 ENTER 后 keyboardInterruptChecking 调 shutdown：置 captureStop，退订并压入时间戳为 0 的哨兵消息
+    C->>FS: 各 Saving 线程排空队列后退出，join() 返回，打印 Done
+    Note over S,H: 以下为离线处理，各自独立进程
+    S->>FS: 读取 episode 内各类文件，按时间戳对齐 sync()，write_sync_files()
+    H->>FS: 读取对齐后的数据，h5py.File(dataFile, 'w') 写 hdf5
+```
+
+图依据：agilexrobotics/data_tools@58d0ec7，读过 `README.md`、`launch/run_data_capture.launch`、`launch/run_data_sync.launch`、`launch/run_data_publish.launch`、`src/dataCapture.cpp`（`main`、`run`、`cameraColorHandler`、`cameraColorSaving`、`keyboardInterruptChecking`/`shutdown`、订阅段）、`scripts/data_sync.py` 与 `scripts/data_to_hdf5.py`（仅看类/函数签名与参数，内部细节未读）。`dataSync.cpp`、`dataPublish.cpp`、`data_publish.py`、`hdf5_to_lerobot.py` 等未读，也未画入。
+
 ## 参考来源
 
 - [data_tools 源码归档](../../sources/repos/data_tools.md)（<https://github.com/agilexrobotics/data_tools>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：agilexrobotics/data_tools@58d0ec7，读过 README.md、launch/run_data_capture.launch、launch/run_data_sync.launch、launch/run_data_publish.launch、src/dataCapture.cpp、scripts/data_sync.py（部分）、scripts/data_to_hdf5.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -55,6 +55,40 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python -m galaxea_sim.scripts.collect_demos --env-name R1ProBlocksStackEasy --num-demos 100`，随后 `python -m galaxea_sim.scripts.replay_demos --env-name ... --target_controller_type bimanual_relaxed_ik`，再 `python -m galaxea_sim.scripts.convert_single_galaxea_sim_to_galaxea_lerobot --task ... --tag replayed --robot r1_pro --use_eef`（README 另给出 `convert_single_galaxea_sim_to_lerobot`、`train_lerobot_dp_policy`、`eval_lerobot_dp_policy` 入口，未画入图中）。
+
+```mermaid
+sequenceDiagram
+    participant C as scripts/collect_demos.py
+    participant ENV as gym.make(env_name) 即 BimanualManipulationEnv 子类
+    participant PL as planners/bimanual.py BimanualPlanner (mplib)
+    participant RP as scripts/replay_demos.py
+    participant CV as scripts/convert_single_galaxea_sim_to_galaxea_lerobot.py
+    C->>ENV: gym.make(env_name, control_freq, obs_mode)
+    C->>PL: BimanualPlanner(urdf_path, left/right move group, active_joint_names)
+    loop 直到收集 num_demos 个成功 episode
+        C->>ENV: reset()
+        loop for substep in env.unwrapped.solution()
+            C->>PL: solve(substep, robot.get_qpos(), last_gripper_cmd)
+            PL-->>C: 动作序列
+            C->>ENV: env.step(action)，轨迹追加 obs
+        end
+        C->>C: info["success"] 为真则 save_dict_list_to_hdf5 到 dataset_dir/env/collected/demo_N.h5
+    end
+    RP->>ENV: gym.make(env_name, controller_type=target_controller_type)
+    loop 遍历 collected 下的 h5
+        RP->>ENV: reset() 与 reset_world(reset_info)
+        RP->>RP: 从 h5 读 ee_pose 或关节指令拼成 actions
+        RP->>ENV: 逐步 env.step(actions[i])，再重复末尾动作 5 步
+        RP->>RP: 成功则写入 dataset_dir/env/replayed/demo_N.h5
+    end
+    CV->>CV: 读 h5，LeRobotDataset.create 后 add_frame 与 save_episode
+```
+
+图依据：OpenGalaxea/GalaxeaManipSim@abe7f51，读过 `README.md`、`galaxea_sim/scripts/collect_demos.py`、`replay_demos.py`、`convert_single_galaxea_sim_to_galaxea_lerobot.py`（仅函数骨架）、`galaxea_sim/envs/base/bimanual_manipulation.py`（骨架）、`galaxea_sim/planners/bimanual.py`（骨架）、`envs/robotwin/blocks_stack_easy.py`（骨架）；`solution()` 内部、控制器与 `train/eval_lerobot_dp_policy.py` 未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +100,7 @@ institutions:
 - [GalaxeaManipSim 源码归档](../../sources/repos/galaxeamanipsim.md)（<https://github.com/OpenGalaxea/GalaxeaManipSim>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：OpenGalaxea/GalaxeaManipSim@abe7f51，读过 README.md、galaxea_sim/scripts/collect_demos.py、replay_demos.py、convert_single_galaxea_sim_to_galaxea_lerobot.py、galaxea_sim/envs/base/bimanual_manipulation.py、galaxea_sim/planners/bimanual.py、galaxea_sim/envs/robotwin/blocks_stack_easy.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

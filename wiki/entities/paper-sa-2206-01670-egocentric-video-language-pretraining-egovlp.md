@@ -42,6 +42,23 @@ The first video-language pre-training framework specifically designed for egocen
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Ego4D 带时间戳的叙述 narrations"] --> B["EgoClip：过滤噪声并为每条叙述配对可变长度 clip"]
+    B --> C["双编码器 Frozen：TimeSformer 视频编码器 + DistilBERT 文本编码器"]
+    C --> D["视频嵌入 v 与文本嵌入 t"]
+    D --> E["EgoNCE 预训练目标"]
+    P["动作感知正样本：同批中共享名词与动词"] --> E
+    N["场景感知负样本：同视频内相邻 clip 作为难负例"] --> E
+    E --> F["EgoMCQ 开发集：inter-video 与 intra-video 五选一验证"]
+    F -->|"反馈迭代 EgoClip 与模型设计"| B
+    E --> G["迁移到下游 egocentric 任务"]
+```
+
+图依据：论文 §3 / §4 / §5 与 Fig.1（EgoClip、预训练模型、EgoMCQ 三部分及迭代反馈）；流程总览中「迁移到下游任务」仅取自 Fig.1 与摘要的概括。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ The first video-language pre-training framework specifically designed for egocen
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2206.01670>
+- [arXiv PDF](https://arxiv.org/pdf/2206.01670)：已通读方法部分（实验与附录以略读为准）：§3 EgoClip、§4 视频-语言预训练模型与 EgoNCE、§5 EgoMCQ
 
 ## 推荐继续阅读
 

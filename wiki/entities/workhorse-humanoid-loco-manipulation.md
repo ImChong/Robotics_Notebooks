@@ -111,3 +111,12 @@ flowchart TB
 - [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
 - [【10.5-10.9前沿论文动态】Manipulation34篇 综述条目](../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md)
 
+## 推荐继续阅读
+
+- [机器人论文阅读笔记：PhoneBot](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/PhoneBot__A_Low-Cost_Open_Humanoid_Robot_Platform_Reusing_Smartphones/PhoneBot__A_Low-Cost_Open_Humanoid_Robot_Platform_Reusing_Smartphones.html)
+- [机器人论文阅读笔记：Benchmarking Behavioral Steerability in Behavior Foundation Models](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/RoboSteer__Benchmarking_Behavioral_Steerability_in_Behavior_Foundation_Models/RoboSteer__Benchmarking_Behavioral_Steerability_in_Behavior_Foundation_Models.html)
+- [机器人论文阅读笔记：BiGym 2.0](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/BiGym2__Benchmarking_Learned_and_Agent-Developed_Policies_for_Humanoid_Household_Manipulation/BiGym2__Benchmarking_Learned_and_Agent-Developed_Policies_for_Humanoid_Household_Manipulation.html)
+- [机器人论文阅读笔记：What the Elevation Map Cannot See](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/What_the_Elevation_Map_Cannot_See__Semantic-Aware_Locomotion_and_Execution-Aware_Navigation/What_the_Elevation_Map_Cannot_See__Semantic-Aware_Locomotion_and_Execution-Aware_Navigation.html)
+- [机器人论文阅读笔记：TAPNAV](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/TAPNAV__Humanoid_Navigation_through_Tactile_Active_Perception/TAPNAV__Humanoid_Navigation_through_Tactile_Active_Perception.html)
+- [机器人论文阅读笔记：Beyond Retargeting](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Beyond_Retargeting__Low-Latency_Robust_Humanoid_Whole-Body_Teleoperation_with_Atomic_Motion_Primitives/Beyond_Retargeting__Low-Latency_Robust_Humanoid_Whole-Body_Teleoperation_with_Atomic_Motion_Primitives.html)
+- [机器人论文阅读笔记：Immiscible Diffusion Policy](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Immiscible_Diffusion_Policy__Preserving_Multimodal_Robot_Actions_through_Label-Free_Noise_Assignment/Immiscible_Diffusion_Policy__Preserving_Multimodal_Robot_Actions_through_Label-Free_Noise_Assignment.html)

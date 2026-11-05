@@ -3,8 +3,8 @@ type: entity
 tags:
   - paper
   - humanoid
-status: complete
-updated: 2026-11-02
+status: draft
+updated: 2026-11-03
 arxiv: "2610.36615"
 project_id: humimic-human-humanoid-interaction-video
 related:
@@ -14,99 +14,109 @@ related:
 sources:
   - ../../sources/papers/humimic-human-humanoid-interaction-video_arxiv_2610_36615.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
-summary: "HumiMimic：从自然场景视频迁移人类—人形交互行为（arXiv:2610.36615）：从自然视频重建双人三维动作，再通过关节相对方向、解剖偏移和交互关键权重完成跨形态转移；构建约 50 万帧、支持两种人形平台的 HumiMimic 数据集。"
+summary: "HumiMimic：从自然场景视频重建人类交互，以交互关系加权重定向至人形机器人。"
 ---
 
-# HumiMimic：从自然场景视频迁移人类—人形交互行为
-
-**HumiMimic**（*HumiMimic: Mimetic Embodiment Transfer of Human-Humanoid Interaction from In-the-Wild Videos*，[arXiv:2610.36615](https://arxiv.org/abs/2610.36615)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（人形/四足）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
+# HumiMimic：从自然视频迁移人类—人形交互行为
 
 ## 一句话定义
 
-**HumiMimic：从自然场景视频迁移人类—人形交互行为——从自然视频重建双人三维动作，再通过关节相对方向、解剖偏移和交互关键权重完成跨形态转移；构建约 50 万帧、支持两种人形平台的 HumiMimic 数据集。**
+**HumiTransfer** 将双人视频中的一人重定向到人形机器人，同时优化两人的相对关系；**HumiMimic** 是由此构建的交互动作数据集。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 强化学习 |
-| WBC | Whole-Body Control | 全身控制 |
+| IK | Inverse Kinematics | 逆运动学 |
+| SMPL | Skinned Multi-Person Linear Model | 参数化人体模型 |
+| MPJPE | Mean Per Joint Position Error | 平均关节位置误差 |
+| IRD | Inter-Relative Distance | 体间关节相对距离误差 |
+| ZMP | Zero Moment Point | 零力矩点 |
+
+## 核心信息
+
+| 项 | 内容 |
+|----|------|
+| 论文 | [HumiMimic: Mimetic Embodiment Transfer of Human–Humanoid Interaction from In-the-Wild Videos](https://arxiv.org/html/2610.36615v2)，arXiv v2，2026-10-29 |
+| 作者 | Nghia Le、Khang Nguyen、Ba Long Tran、Thi Quynh Nhu Pham、Binh X. Nguyen、Tuong Do、Erman Tjiputra、Hoan Nguyen、Tung D. Ta、Baoru Huang、Hai-Nguyen Nguyen、Anh Nguyen |
+| 机构 | AIOZ、穆罕默德·本·扎耶德人工智能大学、皇家墨尔本理工大学越南校区、利物浦大学、台湾清华大学、越南胡志明市国家大学信息技术大学、庆应义塾大学 |
+| 项目页 | [HumiMimic](https://aioznetwork.github.io/HumiMimic/)；本次访问失败，资源开放状态待核对 |
+| 官方仓库 | [AIOZNetwork/HumiMimic](https://github.com/AIOZNetwork/HumiMimic)，截至 2026-11-03 的 main 分支仅含占位 README、许可证和 gitignore；论文称代码和数据将公开 |
 
 ## 为什么重要
 
-- 周报所述待解决的问题：将拥抱、握手和双人舞等动作迁移到机器人时，既要保持单人动作，还要保持双方距离、朝向、接触和节奏。
+握手或拥抱不仅要求机器人复现单人姿态，还要求保留与伙伴之间的方向、距离和接触。单人动作重定向的关节对齐误差不足以衡量这些关系。
 
 ## 流程总览
 
 ```mermaid
 flowchart TD
-  A["自然场景双人交互视频<br/>1,200 段，约 50 万帧"] --> B["自动过滤低质量帧<br/>保留约 73%"]
-  B --> C["多人跟踪 → 关键点检测 → SMPL 重建<br/>E_shape 全身形状拟合"]
-  C --> D["足地接触一致性微调<br/>E_contact = E_consist + λ_zmp E_zmp"]
-  D --> E["人体 SMPL 帧序列 + 交互伙伴 P"]
-  E --> F["逆运动学暖启动 E_IK<br/>按人形比例缩放，初始化人形姿态 R_t"]
-  E --> G["交互建模<br/>关节相对方向矩阵 J 与解剖偏移矩阵 A"]
-  G --> H["关节重要性权重<br/>语义权重 W_sem（MotionCLIP + softmax）× 距离权重 W_dis"]
-  F --> I["模仿式具身转移<br/>最小化 E_interact + E_IK（mink 求解器）"]
-  H --> I
-  I --> J["交互后优化<br/>自平衡 + 体间最小安全距离防碰撞"]
-  J --> K["HumiMimic 数据集<br/>Unitree R1 Edu / HighTorque Mini-hi"]
+  A["自然场景双人视频"] --> B["质量过滤、多人跟踪和关键点检测"]
+  B --> C["SMPL 拟合与足地接触一致性优化"]
+  C --> D["按机器人形态缩放并以 IK 初始化"]
+  C --> E["构建跨身体关节方向与解剖偏移"]
+  E --> F["语义重要性和关节距离加权"]
+  D --> G["交互对齐、IK 与时序平滑联合优化"]
+  F --> G
+  G --> H["后优化：平衡及体间碰撞约束"]
+  H --> I["HumiMimic 双平台交互轨迹"]
 ```
 
-图依据：论文 §III-A–C / Fig. 2。
+依据论文 v2 Fig. 2 与 §III。后优化目标是改善物理可行性，不代表消除所有碰撞或保证真机安全。
 
 ## 核心机制
 
-| 项 | 内容 |
-|----|------|
-| **arXiv** | [2610.36615](https://arxiv.org/abs/2610.36615) · [PDF](https://arxiv.org/pdf/2610.36615) |
-| **作者（arXiv）** | Le, Nghia, Nguyen, Khang, Tran, Ba Long, Pham, Thi Quynh Nhu, Nguyen, Binh, Do, Tuong, Tjiputra, Erman, Nguyen, Hoan et al. |
-| **机构（周报所述，未逐条核实）** | AIOZ、穆罕默德·本·扎耶德人工智能大学、RMIT 大学、利物浦大学、台湾清华大学、越南国家大学信息技术大学、庆应义塾大学 |
-| **arXiv 评论栏** | （无） |
-| **开源** | arXiv 摘要页与评论未见代码或项目页链接（仅核对 arXiv 摘要页，不代表未发布）（2026-11-02） |
-| **周报所述创新点** | 从自然视频重建双人三维动作，再通过关节相对方向、解剖偏移和交互关键权重完成跨形态转移；构建约 50 万帧、支持两种人形平台的 HumiMimic 数据集。 |
-
-### arXiv 摘要节选（英文原文）
-
-> Enabling a humanoid to interact naturally with human partners requires preserving not only individual motions but also the spatial, semantic, and contact relationships underlying the interaction (i.e., hugging, dancing, hand-shaking, etc.). Furthermore, a practical solution should generalize across various humanoid embodiments with distinct morphologies and kinematic constraints.
+- 数据：从 1,200 段双人互联网视频得到约 50 万帧、约 4.6 小时的处理后序列；覆盖共同移动、社交、双人运动和对练等。低质量帧过滤后保留约 73%。
+- 重建：跟踪和关键点检测后拟合 SMPL，通过足地接触一致性与 ZMP 正则降低滑步及穿地。
+- 迁移：对目标机器人做受限 IK 暖启动；用关节间相对方向与解剖偏移表征交互，语义与距离权重突出交互关键关节，再联合 IK 和时间平滑逐帧求解。
+- 后处理：针对平衡与跨身体碰撞优化。数据覆盖 26 自由度 Unitree R1 Edu 与 23 自由度 HighTorque Mini-hi。
 
 ## 源码运行时序图
 
-**不适用**：arXiv 摘要页与评论未见代码或项目页链接（仅核对 arXiv 摘要页，不代表未发布），无可对齐的官方代码流程。
+**不适用，待复核**：官方仓库目前只有占位 README，未发现可运行实现；项目页未能访问，因此不能排除其他发布入口。
 
 ## 实验与评测
 
-- 周报与摘要给出的数字/场景已写入上表「创新点」与摘要节选；其余实验细节、基线与成功率定义请回到论文正文。
-- 读法：先对齐任务设定、传感器与成功定义（仿真/真机），再解读 headline 数字，勿跨论文直接比较。
+- 在数据集上，足地一致性优化使论文表 II 的足部滑动误差由 2.6125 降至 0.6765 cm/frame，地面穿透误差由 36.3547 降至 0.9282 cm/frame。
+- 重定向比较中，HumiTransfer+ 在 R1 Edu / Mini-hi 的 MPJPE 为 6.31 / 7.58 cm，IRD 为 2.84 / 3.67 cm，接触 CF1 为 81.97 / 78.15；CF1 使用 20 cm 距离阈值。该指标衡量重定向质量，不等于真机任务成功率。
+- 生成基准按 8:2 划分训练与测试，比较 ReMos、InterFormer、ComMDM、InterGen 和 Duolando；不同指标最优方法不完全相同。
+- 真机只报告 R1 Edu 的拥抱和握手演示：mjlab 中 4096 环境、RTX 3090 约 30,000 次迭代训练，导出 ONNX 后以 50 Hz 执行。
 
 ## 与其他工作对比
 
-| 维度 | 读法 |
-|------|------|
-| **同周对照** | 见 [人形/四足周报技术地图](../overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md)，按方向浏览同期论文 |
-| **开源状态** | arXiv 摘要页与评论未见代码或项目页链接（仅核对 arXiv 摘要页，不代表未发布） |
+| 维度 | 本页 HumiMimic | [OmniInteract](./paper-omniinteract-dual-humanoids.md) | [CoDance](./paper-codance.md) |
+|------|----------------|------|------|
+| 人类数据来源 | 1,200 段自然场景双人视频，重建后构成数据集 | InterHuman、Inter-X 双人交互动作 | 单段双人舞视频 |
+| 核心贡献 | 交互关系加权的重定向（HumiTransfer）与数据集 | 表面接触感知联合重定向 + 冻结 SONIC 上的伙伴条件残差策略 | 双手顺应增强 + PPO，学习对舞伴拉力让步 |
+| 交互对象 | 人与人形（以单台人形替换双人中的一人） | 两台人形之间 | 人与人形（真机用 Vicon 读取舞伴） |
+| 真机 | R1 Edu 拥抱、握手演示，基于预定义序列 | 双 G1 High-Five / Hug / Shoulder，报告各任务成功次数 | G1 与人持续双手接触跳舞 |
+| 代码与数据 | 仓库仅占位 README | 项目页未列可运行代码 | 已公开训练、部署代码与检查点 |
+
+- **怎么选**：要大规模交互动作数据或检查重定向质量指标（MPJPE、IRD、CF1）看 HumiMimic；要双人形协同控制看 OmniInteract；要真机对伙伴实时响应与受力顺应看 CoDance。
+- **读法**：HumiMimic 的指标衡量重定向质量，不等于另两篇报告的控制成功率。
 
 ## 结论
 
-**HumiMimic：从自然场景视频迁移人类—人形交互行为。**
+**交互关系加权可改善论文评测中的跨形态动作迁移，但真机展示仍基于预定义序列。**
 
-1. 本页是入库级摘要，复现前请核对论文正文、附录与代码仓库。
-2. 指标须连同实验条件解读。
-3. 关注 arXiv 版本更新与代码发布。
+1. 同时检查关节误差、体间距离与接触指标，不能只看单人姿态。
+2. 依据目标机器人形态审查任务可达性：论文指出 Mini-hi 肩宽臂短，无法像 R1 Edu 一样完成拥抱。
+3. 生成模型基准中的伙伴条件响应，不等同于论文真机部署已根据人类实时动作闭环适应。
+4. 项目页、数据和可运行代码开放情况仍待核验；复现前需检查实际发布版本。
 
 ## 关联页面
 
-- [senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map](../overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md)
-- [humanoid-locomotion](../tasks/humanoid-locomotion.md)
-- [reinforcement-learning](../methods/reinforcement-learning.md)
+- [人形与四足周报技术地图](../overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md)
+- [人形运动](../tasks/humanoid-locomotion.md)
+- [强化学习](../methods/reinforcement-learning.md)
 
 ## 参考来源
 
-- [humimic-human-humanoid-interaction-video_arxiv_2610_36615.md](../../sources/papers/humimic-human-humanoid-interaction-video_arxiv_2610_36615.md)
-- [wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
-- [arXiv:2610.36615](https://arxiv.org/abs/2610.36615)
-- [arXiv PDF](https://arxiv.org/pdf/2610.36615)：已通读方法部分（实验与附录以略读为准）：HumiTransfer 三阶段方法 §III-A–C 与实验 §IV-A 的重定向评测设定
+- [论文来源归档](../../sources/papers/humimic-human-humanoid-interaction-video_arxiv_2610_36615.md)
+- [周报来源归档](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md)
+- [论文全文 v2](https://arxiv.org/html/2610.36615v2)：核对正文方法、实验和局限。
+- [官方仓库](https://github.com/AIOZNetwork/HumiMimic)
 
 ## 推荐继续阅读
 
-- [arXiv PDF](https://arxiv.org/pdf/2610.36615)
+- [项目主页](https://aioznetwork.github.io/HumiMimic/)

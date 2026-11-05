@@ -41,6 +41,24 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Adaptation。 本
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    X["输入 x：源域有标注 + 目标域无标注"] --> Gf["特征提取器 Gf（CNN）得到特征 f"]
+    Gf --> Gy["标签预测器 Gy"]
+    Gy --> Yhat["类别概率 ŷ（K 类）"]
+    Gy --> Ly["源域分类损失 Ly"]
+    Yhat --> W["按 ŷ_k 对特征加权：ŷ_k · f"]
+    Gf --> W
+    W --> GRL["梯度反转层 GRL"]
+    GRL --> Gd["K 个类别域判别器 Gd1 … GdK"]
+    Gd --> Ld["域判别损失 Ld（源域 / 目标域）"]
+    Ld -. "对抗：Gf 混淆判别器，Gd 最大化区分" .-> Gf
+```
+
+图依据：论文 Multi-Adversarial Domain Adaptation 方法部分（Domain Adversarial Network / Multi-Adversarial Domain Adaptation，式 (1)-(5)）/ Fig.2（MADA 架构）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +113,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Adaptation。 本
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1809.02176>
+- [arXiv PDF](https://arxiv.org/pdf/1809.02176)：已通读方法部分（实验与附录以略读为准）：方法部分（Domain Adversarial Network、Multi-Adversarial Domain Adaptation，式 (1)-(5)）、Fig.2 与实验设定开头
 
 ## 推荐继续阅读
 

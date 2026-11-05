@@ -42,6 +42,22 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  D["公开数据混合（约 1.4T token）\nCommonCrawl(CCNet) / C4 / GitHub / Wikipedia\n/ 书籍 / ArXiv / StackExchange"] --> TK["分词\nSentencePiece BPE\n数字拆为单个数字，未知 UTF-8 回退到字节"]
+  TK --> NET
+  subgraph NET["Transformer 网络（与原版的改动）"]
+    PN["Pre-normalization\nRMSNorm 作用于子层输入"] --> SW["SwiGLU 激活\n替代 ReLU"] --> RP["Rotary Embeddings (RoPE)\n替代绝对位置编码"]
+  end
+  NET --> OPT["AdamW 优化\ncosine 学习率、2000 步 warmup\n权重衰减 0.1、梯度裁剪 1.0"]
+  OPT --> EFF["高效实现\nxformers 因果注意力（不存注意力权重）\n手写反向传播以减少激活重计算"]
+  EFF --> M["LLaMA 7B / 13B / 33B / 65B"]
+```
+
+图依据：论文 §2 Approach（2.1 预训练数据、2.2 架构、2.3 优化器、2.4 高效实现）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2302.13971>
+- [arXiv PDF](https://arxiv.org/pdf/2302.13971)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 Approach（2.1–2.4）
 
 ## 推荐继续阅读
 

@@ -31,7 +31,28 @@ Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，实验结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    K["机器人运动学模型"] --> FK["FK 采样：关节空间采样，丢弃自碰撞，只得到可达样本"]
+    K --> IK["IK 采样：任务空间随机采样并解 IK，得到可达与不可达标签"]
+    FK --> OC["单类 SVM OC-SVM"]
+    IK --> NN["神经网络 NN：MLP + softplus 分类损失"]
+    IK --> SV["RBF 核 SVM"]
+    OC --> MAP["可微可达性图 f_R(x)：非负表示可达"]
+    NN --> MAP
+    SV --> MAP
+    MAP --> OPT["作为约束嵌入连续优化：在当前解处线性化，迭代求局部 QP"]
+    OPT --> A1["机器人底座放置规划"]
+    OPT --> A2["双足落脚点规划"]
+    OPT --> A3["多接触运动规划"]
+    OPT --> A4["移动操作 loco-manipulation 规划"]
+```
+
+图依据：论文 §III（可微可达性图与样本生成）、§V（带可达性约束的运动生成）、§VI / Fig. 2–5。
 
 ## 核心信息
 
@@ -64,6 +85,7 @@ Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion
 - [humanoid_pnb_learning-differentiable-reachability-maps-for-op.md](../../sources/papers/humanoid_pnb_learning-differentiable-reachability-maps-for-op.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2508.11275>
+- [arXiv PDF](https://arxiv.org/pdf/2508.11275)：已通读方法部分（实验与附录以略读为准）：摘要、§II 相关工作与贡献、§III 可微可达性图、§IV-A/B 数值评估、§V 运动生成、§VI 应用、§VII 讨论开头
 
 ## 推荐继续阅读
 

@@ -47,6 +47,24 @@ summary: "Visual Sim-to-Real Learning for Robotic Insertion under Geometric Vari
 - **（匿名审稿）**；开源结论：**待发布**（步骤 2.5，2026-09-18）。
 - 与 tactile/WAM、主动视角、多智能体场景理解、Sim2Real、人形导航等主线交叉。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["程序化 Rebar Generator：标称设计 d + 制造偏差 ε（长度 / 宽度 / 角度 / 扭转 / 弯钩）"] --> B["Isaac Lab 仿真 + SDF 碰撞，每次 reset 重采样几何"]
+    C["Reset-State Bank：自由空间接近态 + 物理 backout 的部分插入态，1:1 混合"] --> B
+    B --> D["Phase 1：特权教师 π_teacher（PPO，观测特权仿真状态）"]
+    D --> E["动作：指尖 6 维位姿增量，10 Hz，任务阻抗控制器转关节力矩"]
+    D --> F["Phase 2：视觉学生蒸馏（DAgger + BC 混合，β=0.5）"]
+    F --> G["学生输入：8 路 RGB（6 近景 + 2 广角）+ 本体感知 4 步历史"]
+    G --> H["ImageNet 预训练 ResNet18 + 逐视角嵌入 → MLP 输出动作"]
+    I["视觉域随机化：光照 HDRI、纹理材质、相机位姿抖动"] --> F
+    H --> J["Phase 3：冻结学生零样本部署（Franka Research 3 + 2 台 ZED Mini）"]
+    J --> K["左右图按固定包围盒裁剪 + 单应变换成虚拟相机视角"]
+```
+
+图依据：论文 §III 概述与 §III-A~E、Fig. 3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -99,6 +117,7 @@ summary: "Visual Sim-to-Real Learning for Robotic Insertion under Geometric Vari
 - [rebarsim_arxiv_2609_20477.md](../../sources/papers/rebarsim_arxiv_2609_20477.md)
 - [wechat_embodied_station_10_papers_contact_wm_2026-09-18.md](../../sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md)
 - [arXiv:2609.20477](https://arxiv.org/abs/2609.20477)
+- [arXiv PDF](https://arxiv.org/pdf/2609.20477)：已通读方法部分（实验与附录以略读为准）：§III-A~E（几何仿真、reset 状态库、特权教师、视觉学生蒸馏、真机部署）
 
 ## 推荐继续阅读
 

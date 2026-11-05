@@ -42,6 +42,27 @@ Simulative reasoning architecture with LLM-based world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    O["观察 o_t<br/>（网页截图 / accessibility tree）"] --> H["Encoder h<br/>生成自然语言世界状态 ŝ_t"]
+    H --> P["Planner：simulative reasoning<br/>（DFS / MCTS 搜索）"]
+    subgraph PL["Planner 内部循环"]
+        direction LR
+        PI["Policy π̃<br/>提议模拟动作 a'_t"] --> WM["World Model f<br/>预测下一状态 ŝ_t+1"]
+        WM --> CR["Critic v<br/>评估规划视野 T' 处目标进展"]
+        WM -. "继续滚动" .-> PI
+    end
+    P --> PL
+    PL --> BEST["选出最优模拟动作序列 a'*_t:T'-1<br/>取第一步 a'*_t"]
+    BEST --> AC["Actor α<br/>转成具体环境动作 a_t"]
+    AC --> ENV["执行并得到新观察"]
+    ENV --> O
+```
+
+图依据：论文 §3.3–§3.4 / Fig.1、Fig.3、式 (8)（论文 v3 更名为 SiRA，标题 General Agentic Planning Through Simulative Reasoning with World Models；arXiv 号一致，仅标题与页面不同）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Simulative reasoning architecture with LLM-based world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.23773>
+- [arXiv PDF](https://arxiv.org/pdf/2507.23773)：已通读方法部分（实验与附录以略读为准）：§3.3 World Model for Simulative Reasoning、§3.4 Instantiating Simulative Reasoning（含 Fig.1/Fig.3、式 8），§4 实验略读
 
 ## 推荐继续阅读
 

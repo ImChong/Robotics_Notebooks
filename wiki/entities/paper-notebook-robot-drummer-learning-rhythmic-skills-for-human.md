@@ -43,6 +43,24 @@ summary: "人形在灵巧、平衡、行走上进步显著，但在音乐表演�
 - **表现性领域（音乐）**是高动态多肢协调的新颖试金石，呼应羽毛球/足球等体育任务；
 - 涌现的拟人策略显示 RL 能发现高效协调方式。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["MIDI 鼓谱<br/>note-onset 事件"] --> B["按歌曲映射<br/>note → 鼓 (6 鼓套件)"]
+    B --> C["Rhythmic Contact Chain<br/>C = {C1..CN}，Ci = (Di, ti, Vi, Si)"]
+    C --> D["Temporal Decomposition<br/>切成 M 个定长片段，并行训练"]
+    D --> E["Music State Initialization<br/>在片段内随机采样接触步作起点"]
+    E --> F["PPO 策略 πθ"]
+    G["观测：本体 [q, q̇, a(t-1)]<br/>+ 鼓/鼓棒空间信息<br/>+ 前瞻 L 步接触目标"] --> F
+    F --> H["动作 a(t)：15 DoF 关节目标<br/>PD 控制器输出力矩"]
+    H --> I["Isaac Gym 中 Unitree G1<br/>上身 15 DoF 击鼓"]
+    I --> J["奖励：contact（正确/错误/漏击/接近）+ 正则"]
+    J --> F
+```
+
+图依据：论文 §III-A 至 §III-E / Fig. 3
+
 ## 解决什么问题
 
 人形**音乐表演（打鼓）**少被探索，难点： - 打鼓是**精确定时的多肢接触**序列； - 乐曲**长时程**，直接 RL 难； - 要**多肢协调**（双臂 + 鼓棒分配）。
@@ -134,6 +152,7 @@ Robot Drummer 要：把打鼓建模成可学的**定时接触序列**，让人�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming/Robot_Drummer__Learning_Rhythmic_Skills_for_Humanoid_Drumming.html>
 - 论文：<https://arxiv.org/abs/2507.11498>
 - 论文正文（Table I–II、多曲目实验与局限）：<https://arxiv.org/html/2507.11498>
+- [arXiv PDF](https://arxiv.org/pdf/2507.11498)：已通读方法部分（实验与附录以略读为准）：§III Method（MIDI 到 RCC、Temporal Decomposition、Policy Training、Music State Initialization）与 §IV 实验设定
 
 ## 推荐继续阅读
 

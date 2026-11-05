@@ -127,3 +127,5 @@ flowchart TD
 
 - [VLA 部署指南](../queries/vla-deployment-guide.md) — TensorRT / 异步 chunk 与显存溢出回退
 - vLLM 文档：[KV cache 量化](https://docs.vllm.ai/)（`--kv-cache-dtype` 等）
+
+- [腾讯混元 Hy4](../entities/tencent-hy4.md) — 预览版 MoE 权重与多卡部署示例。

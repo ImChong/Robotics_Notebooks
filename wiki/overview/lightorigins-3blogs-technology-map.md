@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, light-origins, navigation, humanoid, technology-map]
 status: complete
-updated: 2026-10-07
+updated: 2026-11-04
 related:
   - ../queries/lightnav-0-blog-references-deep-read.md
   - ../entities/paper-tolebi.md

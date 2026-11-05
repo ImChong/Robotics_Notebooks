@@ -4,7 +4,7 @@ project_id: robotera-company
 project: https://www.robotera.com/
 tags: [robotera, humanoid, vla, world-models, sim2real, whole-body-control]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-03
 summary: "星动纪元（ROBOTERA）：成立于 2023 年 8 月，结合视频预测策略、人形运控、灵巧手、整机与数采接口；按项目区分研究开源和产品闭环。"
 related:
   - ./humanoid-gym.md
@@ -13,11 +13,13 @@ related:
   - ./cn-os-xbot-sdk-api.md
   - ./cn-os-teleop-client.md
   - ../comparisons/robot-foundation-model-company-paths-2026.md
+  - ../concepts/dexterous-hand-industry-core-players.md
 sources:
   - ../../sources/sites/robotera.md
   - ../../sources/repos/robotera_vla.md
   - ../../sources/repos/xbot_sdk_api.md
   - ../../sources/repos/teleop_client.md
+  - ../../sources/blogs/wechat_zane_hub_dexterous_hand_core_players_2026-11-03.md
 ---
 
 # 星动纪元（ROBOTERA）：数据、大脑与人形整机路线
@@ -76,6 +78,54 @@ ERA-42 官网入口及发布材料未列完整训练代码、权重和数据下�
 - VPP 为多机构联合成果；Humanoid-Gym 的 XBot-S/L、L7 产品和 M7 示例本体不能互换实验参数。
 - SDK 公共封装不证明厂商低层服务、全身策略和训练池全部公开；工程仓的 README 修改时间不作为首发日期。
 
+## 源码运行时序图
+
+入口：容器内执行 `python inference/examples/main.py`（README 写作 `inference/example/main.py`，与仓库实际目录 `examples/` 不一致，以实际文件为准）；该脚本是 M7 推理部署示例，机器人侧 ROS 2 服务不在仓内。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant OP as 操作者 键盘
+    participant MAIN as main.py VlaSyncInferenceNode
+    participant HW as hardware_interface RobotInterface
+    participant ROS as 机器人侧 ROS 2 话题
+    participant MW as model_worker OpenPIWorker
+    participant POL as 策略 create_trained_policy 的 infer
+    participant ST as stream interpolate_actions
+    Note over MAIN: __init__ 先构造 RobotInterface 再构造 OpenPIWorker
+    MAIN->>HW: RobotInterface(node_name=inference_node)
+    HW->>ROS: 订阅相机、/joint_states、/get_pose
+    MAIN->>MW: OpenPIWorker()
+    MW->>MW: load_and_warmup 加载 checkpoint 并预热
+    OP->>MAIN: 键盘 r 置 need_reset，q 结束
+    ROS-->>HW: 回调缓存 imgs 与 states
+    loop run_loop 主控制循环
+        alt need_reset 为真
+            MAIN->>HW: smooth_reset(init_vec, 2.0)
+        else 正常推理
+            MAIN->>HW: get_observation()
+            HW-->>MAIN: images 与 state 的拷贝
+            alt 数据不完整 contains_none
+                MAIN->>MAIN: 等待 10 ms 后重试
+            else 数据完整
+                MAIN->>MW: infer(imgs_input, state_input)
+                MW->>POL: policy.infer(images, state, prompt)
+                POL-->>MW: 动作块，chunk_size 为 20
+                MW-->>MAIN: new_actions
+                MAIN->>ST: interpolate_actions(new_actions, 100)
+                ST-->>MAIN: 100 步插值动作
+                loop 前 EXECUTE_STEPS 步，默认 80
+                    MAIN->>HW: publish_action(action)
+                    HW->>ROS: ServoPose 到 /servo_poses，HybridJointCommand 到 /hand_controller/commands
+                    MAIN->>MAIN: sleep 至 1 除以 CONTROL_HZ
+                end
+            end
+        end
+    end
+```
+
+图依据：roboterax/robotera_vla@9ff7067，读过 `README.md`、`inference/README.md`、`inference/examples/main.py`、`inference/examples/model_worker.py`、`inference/examples/hardware_interface.py`（`__init__`、`get_observation`、`publish_action`、`smooth_reset` 签名）、`inference/examples/stream.py`（`interpolate_actions`）、`inference/examples/config.py`（`MODEL_CFG`、`CONTROL_HZ`）、`inference.Dockerfile`（grep 出的 CMD/WORKDIR）；策略内部 `create_trained_policy` 与 `training/` 未读，图中仅画到 `policy.infer` 调用点。未运行代码。
+
 ## 关联页面
 
 - [公司路线对照](../comparisons/robot-foundation-model-company-paths-2026.md)
@@ -88,6 +138,7 @@ ERA-42 官网入口及发布材料未列完整训练代码、权重和数据下�
 - [M7 VLA 仓库补核](../../sources/repos/robotera_vla.md)
 - [SDK 补核](../../sources/repos/xbot_sdk_api.md)
 - [遥操作补核](../../sources/repos/teleop_client.md)
+- 源码核对（2026-11-02）：roboterax/robotera_vla@9ff7067，读过 `README.md`、`inference/README.md`、`inference/examples/main.py`、`model_worker.py`、`hardware_interface.py`、`stream.py`、`config.py`、`inference.Dockerfile`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -41,6 +41,23 @@ summary: "训练分类器判断仿真轨迹在真机上的可信度，无需显�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **残差学习** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["源域 Msource（仿真/练习环境）<br/>目标域 Mtarget（仅有限交互）"] --> B["初始化策略 π、回放池 Dsource / Dtarget<br/>与两个分类器 q(target|s,a,s') 和 q(target|s,a)"]
+    B --> C["用 π 在源域 rollout<br/>写入 Dsource"]
+    B --> D["每 r 次迭代用 π 在目标域 rollout<br/>写入 Dtarget"]
+    C --> E["更新两个分类器<br/>区分源域与目标域的转移"]
+    D --> E
+    E --> F["由 Eq.3 计算奖励修正 Δr<br/>两个分类器 logit 之差"]
+    F --> G["修正奖励 r̃ = r + Δr"]
+    G --> H["在 Dsource 上做最大熵 RL 更新 π<br/>MaxEnt RL"]
+    H --> C
+```
+
+图依据：论文 §4–§5 / Algorithm 1 与 Fig. 2（DARC）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +106,7 @@ summary: "训练分类器判断仿真轨迹在真机上的可信度，无需显�
 - [freedof_sim2real_35_eysenbach-off-dynamics-rl.md](../../sources/papers/freedof_sim2real_35_eysenbach-off-dynamics-rl.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/2006.13916)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 预备、§4 变分视角（含 Theorem 4.1）、§5 的 Algorithm 1 与 Fig. 2
 
 ## 推荐继续阅读
 

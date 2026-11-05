@@ -44,6 +44,54 @@ summary: "Franka Research 3：Franka Robotics 七轴科研协作臂；官方 doc
 | 文档中心 | [frankarobotics.github.io/docs](https://frankarobotics.github.io/docs/) |
 | GitHub 组织 | [github.com/frankarobotics](https://github.com/frankarobotics) |
 
+## 源码运行时序图
+
+入口：`./cartesian_impedance_control <robot-hostname>`（libfranka 示例 `examples/cartesian_impedance_control.cpp`，编译后运行；扭矩回调路径）。示例运行前需在 FCI 中激活并允许外部控制。
+
+```mermaid
+sequenceDiagram
+    participant APP as cartesian_impedance_control main
+    participant R as franka::Robot src/robot.cpp
+    participant I as Robot::Impl src/robot_impl.cpp
+    participant N as Network src/network.cpp
+    participant CL as ControlLoop src/control_loop.cpp
+    participant CB as impedance_control_callback
+    participant M as franka::Model
+    participant RB as Franka 机器人 FCI 服务端
+
+    APP->>R: franka::Robot robot(argv[1])
+    R->>I: Robot::Impl(make_unique Network, log_size, realtime_config)
+    I->>N: Network(address, kCommandPort) 建立命令连接
+    N->>RB: TCP 连接命令端口
+    APP->>R: setCollisionBehavior(...)
+    APP->>R: loadModel()
+    R->>I: loadModel 由机器人 URDF 构造模型
+    APP->>R: robot.control(impedance_control_callback)
+    R->>CL: ControlLoop(impl, callback, limit_rate, cutoff_frequency)
+    CL->>I: startMotion(kExternalController)
+    I->>N: tcpBlockingReceiveResponse 等待 Move 响应
+    N->>RB: Move 请求（外部扭矩控制）
+    loop 直到回调结束或出错
+        CL->>I: updateMotion 或 readOnce
+        I->>N: udpBlockingReceive 读取 RobotState
+        N-->>I: RobotState（q dq O_T_EE tau_J_d 等）
+        I-->>CL: RobotState
+        CL->>CB: createControlCommand，调用 control_callback_(robot_state, time_step)
+        CB->>M: model.coriolis(robot_state)
+        CB->>M: model.zeroJacobian(kEndEffector, robot_state)
+        M-->>CB: coriolis 与 6x7 雅可比
+        CB-->>CL: Torques tau_d（J^T 弹簧阻尼项加 coriolis）
+        CL->>CL: 可选低通滤波，limitRate 限制扭矩变化率
+        CL->>I: updateMotion(motion_cmd, control_cmd)
+        I->>N: udpSend RobotCommand
+        N->>RB: 本周期扭矩指令
+    end
+    CL->>I: finishMotion 结束 Move
+    I->>N: tcp 请求结束并等待响应
+```
+
+图依据：frankarobotics/libfranka@e88d08f，实际读过 `README.rst`（构建与安装相关章节，grep）、`examples/cartesian_impedance_control.cpp`（main 与扭矩回调，局部阅读）、`src/robot.cpp`（`Robot` 构造与 `control` 重载，grep）、`src/robot_impl.cpp`（`Impl` 构造与 `updateMotion` / `startMotion` / `finishMotion` / `sendRobotCommand` / `receiveRobotState` 的网络调用，grep 与局部阅读）、`src/control_loop.cpp`（`loop` 与 `createControlCommand`，局部阅读）。`src/network.cpp` 的 TCP/UDP 细节与 FCI 服务端协议未展开，RobotState 字段仅按示例中的用法列出。
+
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)
@@ -62,3 +110,4 @@ summary: "Franka Research 3：Franka Robotics 七轴科研协作臂；官方 doc
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)
 - [libfranka 仓库归档](../../sources/repos/libfranka.md)
+- 源码核对（2026-11-02）：frankarobotics/libfranka@e88d08f，读过 README.rst（grep）、examples/cartesian_impedance_control.cpp、src/robot.cpp（grep）、src/robot_impl.cpp（grep 与局部）、src/control_loop.cpp（局部）；时序图依据以上文件，未运行代码。

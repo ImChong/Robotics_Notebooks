@@ -42,6 +42,28 @@ Neuro-symbolic world models for adapting to open world novelty.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ENV["Environment"] --> V["Vectorize Game State"]
+  V --> RL["Rule Learner<br/>(Algorithm 1: 无变化/创建/放宽/冲突消解)"]
+  RL --> RM["Rule Model<br/>(AABI 预条件 + 动作 + 效果)"]
+  RM --> ND["Novelty Detector<br/>(同一规则连续违反 n 次等)"]
+  ENV --> V
+  V --> SE["State Embedding"]
+  SE --> PM["Policy Model<br/>Actor π(s) / Critic Qπ(s,a)"]
+  PM --> A["动作 a_t"]
+  A --> ENV
+  ND -- "novelty detected" --> ADAPT["Post-novelty: 规则与策略重新在线更新"]
+  ADAPT --> RL
+  RM --> IM["Imagine Next State"]
+  IM --> BUF["Update Buffer<br/>(真实 + 想象转移, 混合比 η)"]
+  BUF --> PM
+```
+
+图依据：论文 §3 WorldCloner / Fig.2（架构）、§3.1–3.2 与 Algorithm 1（规则学习）、§3.3（新奇检测）、§3.4 与 Algorithm 2（想象式适应）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Neuro-symbolic world models for adapting to open world novelty.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2301.06294>
+- [arXiv PDF](https://arxiv.org/pdf/2301.06294)：已通读方法部分（实验与附录以略读为准）：§1 引言（略读）、§2 Background（略读）、§3.1–3.4（含 Fig.2、Algorithm 1–2）
 
 ## 推荐继续阅读
 

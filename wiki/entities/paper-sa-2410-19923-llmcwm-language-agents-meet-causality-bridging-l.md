@@ -43,6 +43,33 @@ Bridges LLMs and causal world models for language agents with causal reasoning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph CWM["因果世界模型 CWM (基于 BISCUIT)"]
+        X["图像观测 X_t"] --> AE["Autoencoder e_ψ<br/>(压缩，因果变量仍纠缠)"]
+        AE --> NF["Normalizing Flow f_φ (RealNVP)<br/>解耦因果变量 → 潜变量 z_t"]
+        L["文本动作描述 L_t"] --> TE["文本编码器 L_e<br/>(编码器式语言模型 + 可训练头)"]
+        NF --> TM["因果转移模型 p_ω<br/>(BISCUIT 结构化转移)"]
+        TE --> TM
+        TM --> Z1["下一状态潜变量 z_t+1"]
+        Z1 --> CM["Causal Mapper m_θ<br/>潜变量 → 因果变量估计 Ĉ"]
+        CM --> SD["State Descriptor s (规则式)<br/>生成自然语言状态描述 ℓ"]
+    end
+    subgraph PLAN["规划：RAP-MCTS 变体"]
+        P1["LLM 智能体 (LLaMA 3)<br/>基于当前状态提议动作"] --> P2["CWM 模拟动作结果"]
+        P2 --> P3["LLM 评估状态-动作质量<br/>(intuition + self-evaluation 奖励)"]
+        P3 --> P4["选择动作并展开搜索树<br/>直至规划终止"]
+        P4 -->|"迭代"| P1
+    end
+    SD -->|"文本状态描述返回给 LLM"| P1
+    P1 -.->|"动作文本"| L
+    Z1 -.->|"后续步在潜空间自回归，无需解码回图像"| TM
+```
+
+图依据：论文 §4（Fig. 2 CWM 单步 roll-out）、§4.2 估计与推断、§6.3 规划方法（Fig. 1、RAP-MCTS，附录 J 仅据正文提及）。规划环中动作文本回到 CWM、状态描述回到 LLM 的箭头为按 Fig. 1 图注与 §6.3 描述的归纳。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +125,7 @@ Bridges LLMs and causal world models for language agents with causal reasoning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.19923>
+- [arXiv PDF](https://arxiv.org/pdf/2410.19923)：已通读方法部分（实验与附录以略读为准）：§3 背景、§4 CWM 与语言接口、§4.2 估计与推断、§6.3 规划设置。
 
 ## 推荐继续阅读
 

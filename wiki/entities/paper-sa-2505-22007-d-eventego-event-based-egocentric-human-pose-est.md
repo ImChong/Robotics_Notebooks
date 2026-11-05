@@ -42,6 +42,26 @@ Pioneering event-stream pipeline for egocentric human pose tracking under fast m
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["头戴前向事件相机<br/>事件云 E: (x, y, t, polarity)"] --> B["Voxelization<br/>按 30 FPS 分 T 段, 每段 3 个 time bin<br/>极性按时间距离线性加权, 再归一化"]
+    B --> C["事件体素网格 V"]
+    C --> D["Motion Segmentation Module<br/>U-Net + 动态掩码监督, BCE 损失<br/>去除动态物体, 保留背景事件 I_m"]
+    D --> E["Head Pose Estimation Module (基于 EgoEgo)"]
+    E --> E1["相机位姿: 预训练 DROID-SLAM"]
+    E --> E2["GravityNet: 估计重力方向(头部倾斜)"]
+    E --> E3["HeadNet: 估计头部旋转<br/>输入为 ResNet-18 提取的光流特征"]
+    E1 --> F["融合得头部位姿 H"]
+    E2 --> F
+    E3 --> F
+    F --> G["Body Pose Generation Module<br/>以头部位姿为条件的扩散模型"]
+    G --> H["全身 3D 姿态序列 X<br/>SMPL-X 参数(不含脸与手)"]
+```
+
+图依据：论文 §3 Method（§3.1 Voxelization、§3.2 Motion Segmentation、§3.3 Head Pose Estimation、§3.4 Body Pose Generation）/ Fig.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Pioneering event-stream pipeline for egocentric human pose tracking under fast m
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2505.22007>
+- [arXiv PDF](https://arxiv.org/pdf/2505.22007)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4
 
 ## 推荐继续阅读
 

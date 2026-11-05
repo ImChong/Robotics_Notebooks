@@ -70,12 +70,51 @@ map 的 agentplay/v1 schema 将会话拆为 session 元数据、总量统计、r
 - [Open Code Review](./open-code-review.md) — 过程回放与 diff 级审查互补，分别解释过程和检查变更。
 - [Agentic Design Patterns](./agentic-design-patterns.md) — coding agent 在通用 agent 系统设计中的位置。
 
+## 源码运行时序图
+
+入口：`uvx agentplay@latest`（等价 `agentplay view`；`pyproject.toml` 的 `[project.scripts]` 指向 `agentplay.cli:main`，`python -m agentplay` 走 `__main__.py`）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / 终端
+    participant C as agentplay/cli.py cmd_view
+    participant S as server.py serve() + _Handler
+    participant T as 后台线程 _background_scan -> cmd_build
+    participant P as pipeline.build_all
+    participant D as discover.py
+    participant ST as store.py Store
+    participant V as 浏览器 viewer
+
+    U->>C: agentplay view
+    C->>S: serve(port, scanning=Event)，绑定 127.0.0.1
+    C->>T: Thread(_background_scan)（除非 --no-build）
+    C->>V: webbrowser.open(http://127.0.0.1:port/)
+    T->>P: build_all(agents, since, rebuild, path_mode, ...)
+    P->>D: materialize_all(homes)（数据库型来源先解码）
+    P->>D: local_source() + candidates()
+    loop 每个候选会话
+        P->>ST: is_fresh()（mtime/版本/path_mode 判断是否跳过）
+        P->>D: build_map(c, source, ...)
+        D-->>P: agentplay/v1 map 文档
+        P->>ST: put(doc, row)
+    end
+    P->>ST: save_index()；search.refresh(store)
+    T-->>S: scanning.clear()
+    V->>S: GET /api/status、/api/sessions
+    S->>ST: 读取索引
+    V->>S: GET /api/map-doc?id=...
+    S-->>V: 返回 map JSON 供地图与时间线渲染
+```
+
+图依据：Entelligence-AI/agentplay@71259d8，读过 `README.md`、`python/pyproject.toml`、`python/src/agentplay/__main__.py`、`cli.py`（cmd_build、cmd_view）、`pipeline.py`（build_all）、`server.py`（文件头 API 列表、do_GET 路由表、serve）、`discover.py`（函数签名）。`builder.py`、各 `parsers/*` 的解析细节与 `build_map` 内部未读；ST 读取索引一步依据 server.py 文档字符串推断。
+
 ## 参考来源
 
 - [Entelligence AgentPlay 项目页](../../sources/sites/entelligence-agentplay.md)
 - [Entelligence-AI/agentplay 源码仓](../../sources/repos/entelligence-agentplay.md)
 - [GitHub README](https://github.com/Entelligence-AI/agentplay#readme)
 - [AgentPlay JSON Schema](https://github.com/Entelligence-AI/agentplay/blob/main/schema/agentplay-v1.schema.json)
+- 源码核对（2026-11-02）：Entelligence-AI/agentplay@71259d8，读过 README.md、python/pyproject.toml、python/src/agentplay/__main__.py、cli.py、pipeline.py、server.py（部分）、discover.py（函数签名）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

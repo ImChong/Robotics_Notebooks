@@ -31,7 +31,39 @@ ARMOR 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论（论文方法模块与数据流见下方「流程总览」）。
+
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph HW["自我中心感知硬件"]
+        TOF["40 个 VL53L5CX ToF 传感器<br/>(Fourier GR1 双臂各 20 个, 8×8 深度, 15 Hz)"]
+        MCU["XIAO ESP 微控制器<br/>(每 4 个传感器一组, I2C)"]
+        JET["机载 Jetson Xavier NX<br/>(USB)"]
+        PC["无线 socket 传至 RTX 4090 主机"]
+        TOF --> MCU --> JET --> PC
+    end
+    subgraph DATA["专家数据生成"]
+        AM["AMASS 人体动作<br/>重定向到 GR1 双臂"]
+        GEN["三种策略: 避障 / 急停 / 无碰撞运动<br/>(围绕轨迹生成紧贴障碍点云)"]
+        AM --> GEN
+    end
+    subgraph POL["ARMOR-Policy (ACT 式 Transformer 编码器-解码器)"]
+        BE["Behavior Encoder<br/>(当前关节 + 目标动作序列 → 风格变量 z)"]
+        RN["修改单通道 ResNet18<br/>提取 40 路深度图特征 (512 维)"]
+        TF["Transformer 策略<br/>输入: z, 当前/目标关节 (28 维), 深度特征"]
+        OUT["输出 k×14 动作序列"]
+        BE --> TF
+        RN --> TF --> OUT
+    end
+    PC --> RN
+    GEN -->|"模仿学习"| POL
+    OUT --> SAMP["推理时优化: 采样 N 条候选轨迹 (改变 z)"]
+    SAMP --> SDF["按机器人到点云的 SDF 距离选最优轨迹"]
+```
+
+图依据：论文 §III-A 硬件 / §III-B ARMOR-Policy（Fig.4）/ §III-C 推理时优化 / §III-D 专家数据生成（Fig.5）。
 
 ## 核心信息
 
@@ -64,7 +96,9 @@ ARMOR 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 - [humanoid_pnb_armor-egocentric-perception-for-humanoid-robot-c.md](../../sources/papers/humanoid_pnb_armor-egocentric-perception-for-humanoid-robot-c.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2412.00396>
+- [arXiv PDF](https://arxiv.org/pdf/2412.00396)：已通读方法部分（实验与附录以略读为准）：§III Method（A–D）
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：ARMOR](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/ARMOR__Egocentric_Perception_for_Humanoid_Robot_Collision_Avoidance/ARMOR__Egocentric_Perception_for_Humanoid_Robot_Collision_Avoidance.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

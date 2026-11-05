@@ -41,6 +41,24 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["输入：高精地图 M、交通管制 C、过去的 actor 状态"] --> GM["全局地图模块：CNN 骨干提取地图特征，每张地图只算一次并缓存"]
+  GM --> ROI["Rotated RoI Align：提取每个 actor 的局部地图特征"]
+  IN --> GRU["过去轨迹编码器：4 层 GRU"]
+  ROI --> CTX["拼接得到场景上下文 X_t"]
+  GRU --> CTX
+  CTX --> JB["联合行为模块：GNN 交互 + 隐变量 Z_t（先验网络 / 后验网络 / 确定性解码器）"]
+  JB --> PLAN["多 actor 联合未来规划 Y_(t+1:t+T_plan)"]
+  PLAN --> UPD["取前若干步更新仿真状态，进入下一时间步（可并行采样多个仿真）"]
+  UPD --> IN
+  PLAN --> LOSS["训练：沿可微仿真反向传播；模仿损失（重建 + KL）+ 常识（碰撞）损失，权重 λ(t) 随仿真时间退火"]
+```
+
+图依据：论文 §3（Fig.3 架构，§3.1 上下文提取，§3.2 隐变量模型，§3.3 仿真交通场景，§3.4 学习目标、Fig.4/Fig.5）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +113,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2101.06557>
+- [arXiv PDF](https://arxiv.org/pdf/2101.06557)：已通读方法部分（实验与附录以略读为准）：§1–§2 相关工作、§3 方法（§3.1–§3.4）及公式 (1)–(6) 附近的损失定义。
 
 ## 推荐继续阅读
 

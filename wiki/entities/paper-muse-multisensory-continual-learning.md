@@ -38,6 +38,30 @@ summary: "MuSe（arXiv:2606.30988）：多阶段融合+多感官未来预测+经
 
 接触丰富任务需要力觉，但不可能为每种传感器组合从头预训练大模型。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["历史输入: 图像 / 动作 / 语言 / 本体<br/>+ 可选 F/T 历史 (新模态)"] --> ENC["各模态专用编码器<br/>(F/T: 因果卷积编码器 + 投影层)"]
+  ENC --> EARLY["早期融合: 新模态 token 拼入预训练 token 序列"]
+  EARLY --> BB["联合序列模型 (UVA 骨干)"]
+  ENC --> LATE["晚期融合: 轻量 cross-attention adapter<br/>注入中间 Transformer 层"]
+  LATE --> BB
+  BB --> PA["预测未来动作"]
+  BB --> PV["预测未来视频帧 (辅助损失)"]
+  BB --> PF["预测未来 F/T (F/T diffusion head)"]
+  PA --> LOSS["L = λa·L_act + λo·L_obs + λn+1·L_new<br/>仅对有标签的目标计算"]
+  PV --> LOSS
+  PF --> LOSS
+  DNEW["新多感官数据 D_new"] --> MIX["经验回放: 每个 batch 混合采样"]
+  DPRE["原预训练数据 D_pre (无 F/T)"] --> MIX
+  MIX -->|"缺失 F/T: 可学习 mask token, 屏蔽 L_new"| IN
+  PA --> DEP["部署: 动作 -> 参考位姿"]
+  PF --> DEP2["部署: 预测 F/T -> 虚拟目标<br/>6D 任务空间导纳控制 (自适应顺应)"]
+```
+
+图依据：论文 §3.1–§3.5 / Fig. 2（部署段落见 §3.5）。
+
 ## 核心原理（方法）
 
 模态专用编码器 + 早/晚融合 + 多感官未来预测损失 + 预训练集经验回放；实例化为向 UVA 类模型加 F/T 历史。
@@ -78,6 +102,7 @@ summary: "MuSe（arXiv:2606.30988）：多阶段融合+多感官未来预测+经
 
 - [muse_arxiv_2606_30988.md](../../sources/papers/muse_arxiv_2606_30988.md)
 - [wechat_shenlan_realab_14_papers_2026.md](../../sources/blogs/wechat_shenlan_realab_14_papers_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2606.30988)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Method（3.1–3.5、Fig. 2）；§4 案例与实验、附录略读
 
 ## 推荐继续阅读
 

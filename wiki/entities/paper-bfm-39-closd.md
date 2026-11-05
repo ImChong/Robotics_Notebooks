@@ -38,6 +38,25 @@ sources:
 - 扩散生成与仿真闭环校正；生成动作须经物理检验。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#39/41）。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IN["输入：文本提示 + 某个关节的目标位置（可在线更改）"] --> DIP
+    PRE["前缀：最近 N_p 帧已实现运动 x_prefix"] --> DIP
+    DIP["Diffusion Planner（DiP）：Transformer decoder，交叉注意力注入 DistilBERT 文本、扩散步与目标条件"] --> PLAN["运动计划 x_pred（N_g 帧，运动学）"]
+    PLAN -->|"R2G 转换为 x_ref"| TRK["跟踪策略 π_PHC（单一 PHC 策略）"]
+    TRK --> ACT["动作 a[n]：各自由度 PD 目标"]
+    ACT --> SIM["物理仿真：人形 + 物体"]
+    SIM --> XS["实际运动 x_sim"]
+    XS -->|"末 N_p 帧经 G2R 转换"| PRE
+    SIM --> DONE["任务完成信号"]
+    DONE --> SM["状态机：切换下一个任务的文本与目标"]
+    SM --> IN
+```
+
+图依据：论文 §4（4.1 DiP、4.2 通用跟踪策略、4.3 闭环、4.4 状态机）、Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -88,6 +107,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2410.03441>
+- [arXiv PDF](https://arxiv.org/pdf/2410.03441)：已通读方法部分（实验与附录以略读为准）：§4 CLoSD（4.1 至 4.4）与 §5.1 实现细节
 
 ## 推荐继续阅读
 

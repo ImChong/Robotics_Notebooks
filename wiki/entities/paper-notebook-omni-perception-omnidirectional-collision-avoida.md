@@ -31,7 +31,34 @@ Omni-Perception 的人形机器人学习论文条目，当前处于 Paper Notebo
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，本页只保留分类位置与原文入口；方法模块与数据流见下方「流程总览」（仅依据论文方法部分，不含实验结论）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["LiDAR 原始点云历史 P(t-Nhist+1:t)"] --> B["按垂直角阈值 θ 划分"]
+    B --> C["近场点云 P_proximal"]
+    B --> D["远场点云 P_distal"]
+    C --> E["Farthest Point Sampling (FPS)"]
+    E --> F["按球坐标 (θ, φ) 排序"]
+    F --> G["Proximal GRU"]
+    PH["Privileged Height（训练期监督）"] -.-> G
+    D --> H["Average Downsampling"]
+    H --> I["合并当前与前 Nhist 帧并按 (θ, φ) 排序"]
+    I --> J["Distal GRU"]
+    G --> K["PD-RiskNet 空间嵌入 f_PD"]
+    J --> K
+    P["本体感知历史（关节位置/速度、基座速度、投影重力）"] --> L["History Wrapper"]
+    CMD["速度指令 c_t"] --> L
+    K --> M["Actor (MLP)"]
+    L --> M
+    M --> N["目标关节位置 a_t"]
+    N --> O["低层 PD 控制器 / 执行"]
+    R["奖励：含避障速度的线速度跟踪 + 射线距离最大化"] -.-> M
+```
+
+图依据：论文 §3.1 / §3.3.1 / §3.3.2 / Fig.2
 
 ## 核心信息
 
@@ -64,6 +91,7 @@ Omni-Perception 的人形机器人学习论文条目，当前处于 Paper Notebo
 - [humanoid_pnb_omni-perception-omnidirectional-collision-avoida.md](../../sources/papers/humanoid_pnb_omni-perception-omnidirectional-collision-avoida.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.19214>
+- [arXiv PDF](https://arxiv.org/pdf/2505.19214)：已通读方法部分（实验与附录以略读为准）：§3.1 问题定义、§3.3 Omni-Perception Framework（PD-RiskNet 与 Risk-Aware Locomotion Policy）、Fig.2
 
 ## 推荐继续阅读
 

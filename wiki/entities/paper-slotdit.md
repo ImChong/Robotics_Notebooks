@@ -40,6 +40,34 @@ summary: "SlotDiT（arXiv:2609.17414）：把场景分解为对象级 slots，�
 - 开源结论：**待发布**（步骤 2.5，2026-09-16）。
 - 与 [12 篇技术地图](../overview/vla-deploy-12-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["阶段 1: 槽表示学习 (DINOSAUR 式, 视频扩展)"]
+        A["视频帧 X_t"] --> B["冻结 DINOv2-ViT → 特征 h_t"]
+        B --> C["Slot Attention + GRU<br/>由上一帧槽 S_{t-1} 迭代更新得到 S_t"]
+        C --> D["MLP broadcast 解码器 (特征图 + alpha mask)<br/>→ CNN 图像解码器 → 重建帧"]
+        D --> E["L_Slot: 特征重建 + 图像重建"]
+    end
+    C -->|"冻结槽编码器"| F
+    subgraph S2["阶段 2: 槽空间 DiT (DFoT, v-prediction)"]
+        G["指令 C → T5 编码器 → 文本 token"] --> F
+        F["Diffusion Transformer, N_P 个块<br/>自注意力 (RoPE) → 文本-槽交叉注意力 → MLP<br/>逐帧噪声水平经 adaLN 注入"]
+        F --> H["去噪得到未来槽 Ŝ"]
+    end
+    subgraph INF["推理"]
+        I["参考图像 → 初始槽 S_1"] --> J["最近 M 个上下文槽 + 其余位置高斯噪声"]
+        J --> F
+        H --> K["DDIM 迭代去噪整个窗口"]
+        K --> L["自回归: 最近 M 个生成槽作为下一窗口上下文"]
+        L --> J
+        K -.可选.-> M["槽解码器 → 未来视频帧"]
+    end
+```
+
+图依据：论文 §3.1–3.3 / Fig. 1、Fig. 2
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -84,6 +112,8 @@ summary: "SlotDiT（arXiv:2609.17414）：把场景分解为对象级 slots，�
 - [slotdit_arxiv_2609_17414.md](../../sources/papers/slotdit_arxiv_2609_17414.md)
 - [wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md](../../sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md)
 - [arXiv:2609.17414](https://arxiv.org/abs/2609.17414)
+- [arXiv PDF](https://arxiv.org/pdf/2609.17414)：已通读方法部分（实验与附录以略读为准）：§3 方法（3.1 槽表示学习、3.2 槽空间文本条件 DiT、3.3 训练与推理）；实验与附录未读
+
 
 ## 推荐继续阅读
 

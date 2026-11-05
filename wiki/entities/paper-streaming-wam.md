@@ -37,6 +37,28 @@ summary: "Streaming-WAM（2609.28927）：已排定动作前缀条件化世界�
 - 纳入 [12 篇技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md) 与同期失败恢复、异步 WAM、接触感知、持续学习、安全 RL 条目横向对照。
 - 步骤 2.5 开源结论：**已开源**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    COLD["冷启动：Joint-WAM 由 O0 生成 (V0, A0)，机器人开始执行 A0"] --> TRIG["预设触发点：捕获新观测 O_t+1，取接下来 d 个缓存动作作为已承诺动作 Ac"]
+    TRIG --> SU
+    subgraph SU["Stream Update：联合预测 (V_t+1, A_t+1) = StreamUpdate(O_t+1, Ac)"]
+        SLOT["Slot Encoder：共享动作专家把 Ac 编码为条件槽（已知槽 CK + 未知状态嵌入槽 CU）"]
+        ATT["动作条件化注意力：Z1 同时读视觉 token（Z0,Z1,Z2）与条件槽，两路各自 softmax 后相加"]
+        CONT["动作续写：Ap 的 query 读取视频与策略 token，在同一次联合计算中生成"]
+        SLOT --> ATT --> CONT
+    end
+    EXEC["并行：机器人执行 Ac，模型把 Ac 固定为新动作块的前缀"] -.-> SU
+    SU --> HAND{"Ac 执行完时更新是否就绪？"}
+    HAND -->|是| SW["跳过共享前缀，切换到 Ap，替换旧块剩余动作"]
+    HAND -->|否| WAIT["机器人原地保持，等推理完成后再切换到 Ap"]
+    WAIT --> SW
+    SW --> TRIG
+```
+
+图依据：论文 §3.2 Streaming Inference、§3.3 Action-Conditioned World Prediction / Fig.2
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -83,6 +105,7 @@ summary: "Streaming-WAM（2609.28927）：已排定动作前缀条件化世界�
 - [论文归档](../../sources/papers/streaming_wam_arxiv_2609_28927.md)
 - [Streaming-WAM 仓库归档](../../sources/repos/streaming-wam.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.28927)：已通读方法部分（实验与附录以略读为准）：§2 相关工作、§3 方法（3.1 至 3.4：问题表述、流式推理、动作条件化世界预测、训练）
 
 ## 推荐继续阅读
 

@@ -55,6 +55,55 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python scripts/1_moveJ_control.py`（在 `panthera_python/` 下；需先按 README 安装 `hightorque_robot` whl，或用 `panthera_cpp/motor_cpp` + `src/bindings.cpp` 源码编译）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / scripts/1_moveJ_control.py
+    participant P as scripts/Panthera_lib/Panthera.py<br/>class Panthera(htr.Robot)
+    participant B as hightorque_robot (pybind11)<br/>src/bindings.cpp
+    participant R as motor_cpp/src/hardware/robot.cpp<br/>robot
+    participant M as hardware/motor.cpp<br/>motor
+    participant CB as canboard.cpp → canport.cpp
+    participant SD as serial_driver.cpp
+    participant HW as 串口 CAN 板 / 关节电机
+
+    U->>P: Panthera()（默认 robot_param/Follower.yaml）
+    P->>P: _load_config_file；_load_joint_limits；_prepare_sdk_config
+    P->>B: super().__init__(sdk_config_path)
+    B->>R: robot(config_path) → init_robot
+    R->>SD: 打开串口，启动 recv_1for6_42 接收线程
+    R->>HW: send_get_motor_state_cmd（探测电机）
+    P->>P: _init_motors；_load_motor_parameters；_load_urdf_model（pinocchio）
+    U->>P: send_get_motor_state_cmd；motor_send_cmd（sleep 0.5 s ×2）
+    P->>R: robot::send_get_motor_state_cmd / motor_send_cmd
+    R->>CB: canboard → canport
+    CB->>SD: send_2(&cdc_tr_message)
+    SD->>HW: 串口写出
+    HW-->>SD: 电机状态帧 → recv 线程更新 motor 状态
+
+    U->>P: moveJ(pos, duration, max_tqu, iswait=True)
+    P->>P: 检查关节限位；vel = (pos - get_current_pos()) / duration
+    P->>P: Joint_Pos_Vel(pos, vel, max_tqu)
+    loop 每个关节 i
+        P->>M: Motors[i].pos_vel_MAXtqe(pos, vel, torque_max)
+    end
+    P->>R: motor_send_cmd()
+    R->>CB: canboard::motor_send_cmd → canport::motor_send_cmd
+    CB->>SD: send_2 → 串口帧 (MODE_POS_VEL_TQE)
+    SD->>HW: 位置 / 速度 / 最大力矩指令
+    P->>P: wait_for_position(pos, tolerance, timeout)
+    P-->>U: True / False
+
+    U->>P: gripper_close() / gripper_open()
+    Note over P,M: 脚本中依次 moveJ(zero→pos1→pos2→pos1→zero)，并穿插夹爪开合
+    Note over U,R: C++ 路径对应 panthera_cpp/robot_cpp（Panthera.cpp + example/*.cpp），<br/>与 motor_cpp 同属 hightorque_robot 库；本图未逐行核对 C++ 例程
+```
+
+图依据：HighTorque-Robotics/Panthera-HT_SDK@7c506f8，读过 README.md、panthera_python/README.md、panthera_python/scripts/1_moveJ_control.py、scripts/Panthera_lib/Panthera.py（__init__、moveJ、Joint_Pos_Vel）、panthera_python/src/bindings.cpp（include 与类注册）、panthera_cpp/motor_cpp/src/hardware/{robot,motor,canboard,canport}.cpp 与 src/serial_driver.cpp（相关函数段）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +115,7 @@ institutions:
 - [Panthera-HT_SDK 源码归档](../../sources/repos/panthera-ht_sdk.md)（<https://github.com/HighTorque-Robotics/Panthera-HT_SDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：HighTorque-Robotics/Panthera-HT_SDK@7c506f8，读过 README.md、panthera_python/README.md、panthera_python/scripts/1_moveJ_control.py、scripts/Panthera_lib/Panthera.py、panthera_python/src/bindings.cpp、panthera_cpp/motor_cpp/src/hardware/{robot,motor,canboard,canport}.cpp、src/serial_driver.cpp（局部）；C++ 例程未逐行核对；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

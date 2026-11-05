@@ -188,6 +188,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：CSF](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/CSF__Contextual_Safety_Filtering_for_Motion_Generators/CSF__Contextual_Safety_Filtering_for_Motion_Generators.html)
 - [CSF 项目页与在线 Demo](https://lzyang2000.github.io/csf/)
 - [官方 CSF 代码仓库](https://github.com/lzyang2000/csf)
 - [CBF: Control Barrier Function Based Quadratic Programs for Safety Critical Systems](https://doi.org/10.1109/TAC.2016.2638961)

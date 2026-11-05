@@ -148,6 +148,7 @@ ACT 适合动作 chunk imitation，但如果输出只落在单一控制 profile�
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：HMC](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HMC__Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loco-Manipulation/HMC__Learning_Heterogeneous_Meta-Control_for_Contact-Rich_Loco-Manipulation.html)
 - [HMC 项目页](https://loco-hmc.github.io)
 - [Hybrid Force-Position Control](../concepts/hybrid-force-position-control.md)
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md)

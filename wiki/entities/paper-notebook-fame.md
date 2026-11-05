@@ -34,6 +34,28 @@ FAME 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["训练（仿真）"]
+        PC["III-A 上半身姿态课程 (HOMIE)<br/>站立质量提升 → 扩大 q_ub 随机目标范围<br/>每 1 s 重采样"] --> Q["上半身关节位置 q_ub ∈ R15"]
+        FS["III-B 双手施力：各向同性 3D 随机力 F_L, F_R"] --> ENC
+        Q --> ENC["上半身 Context Encoder (MLP)<br/>z_t = μ([q_ub, F_L, F_R]) ∈ R8<br/>与策略端到端训练，无力标签"]
+        ENC --> OBS["观测 o_t：3 步本体感觉历史 + 3 步 z 历史"]
+        OBS --> POL["III-D 基础站立策略 π (PPO, RSL-RL)<br/>输出 12D 下肢关节目标偏置"]
+        POL --> PD["50 Hz 关节 PD 控制"]
+    end
+    subgraph DP["部署（H1-2，无腕部力传感）"]
+        JT["手臂关节力矩 / 状态"] --> EST["III-C 手部力估计<br/>单臂 7 自由度动力学行 + RNEA (Pinocchio)<br/>最小二乘解 F̂"]
+        EST --> ENC2["同一 Context Encoder<br/>（用估计力代替真实力）"]
+        ENC2 --> POL2["站立策略 → 下肢 PD 目标"]
+    end
+    TR -.->|"训练得到的策略与编码器"| DP
+```
+
+图依据：论文 §III（Fig. 1 / Fig. 2；III-A 姿态课程、III-B 编码器与施力、III-C 手部力估计、III-D 基础策略）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,8 +86,10 @@ FAME 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 
 - [humanoid_pnb_fame.md](../../sources/papers/humanoid_pnb_fame.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2603.08961)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 方法（A–E）、§IV 实验协议与 Table II 略读
 
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：FAME](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/FAME__Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelope_of_a_Full-Scale_Humanoid/FAME__Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelope_of_a_Full-Scale_Humanoid.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

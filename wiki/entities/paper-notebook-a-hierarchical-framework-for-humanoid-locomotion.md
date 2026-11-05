@@ -31,7 +31,33 @@ A Hierarchical Framework for Humanoid Locomotion with Supernumerary Limbs 的人
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里保留分类位置与原文入口，方法流程见下方「流程总览」，其余结论不给出。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["低层训练：DRL 步态（DeepMimic 式模仿学习）"]
+        ref["LAFAN1 行走参考轨迹"] --> rew["模仿奖励 R_t<br/>survival + stability + imitation"]
+        sim["MuJoCo/JAX 仿真<br/>Unitree H1 + 2×Kinova Gen3 SL"] --> rew
+        rew --> ppo["PPO 更新 Actor-Critic π_θ"]
+        ppo --> pol["低层步态策略 π_θ"]
+        cur["课程调度器<br/>负载质量 m 递增 + 手臂姿态分 4 阶段"] -.调整任务难度.-> sim
+    end
+    subgraph DEPLOY["部署：分层控制"]
+        pol --> legs["H1 腿部/躯干动作 a_t"]
+        st["机器人状态 s_t"] --> est["状态估计：CoM 与 CoS<br/>单支撑取支撑脚中心 / 双支撑取 CoP 力加权"]
+        est --> d["稳定指标 d_xy = CoM_xy − CoS_xy"]
+        d --> tgt["目标臂姿 q_target = q_base − Kp·d_xy"]
+        tgt --> pd["PD 控制器 → SL 臂力矩 τ_arm"]
+        legs --> fuse["控制融合：腿用 π_θ，SL 臂由平衡器覆盖"]
+        pd --> fuse
+        fuse --> env["仿真环境"]
+    end
+    pol -.训练好的策略.-> DEPLOY
+```
+
+图依据：论文 §2.1.2 / §2.2 / §2.3 / Fig.2.2-2.4。
 
 ## 核心信息
 
@@ -64,6 +90,7 @@ A Hierarchical Framework for Humanoid Locomotion with Supernumerary Limbs 的人
 - [humanoid_pnb_a-hierarchical-framework-for-humanoid-locomotion.md](../../sources/papers/humanoid_pnb_a-hierarchical-framework-for-humanoid-locomotion.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2512.00077>
+- [arXiv PDF](https://arxiv.org/pdf/2512.00077)：已通读方法部分（实验与附录以略读为准）：§2.1-§2.4
 
 ## 推荐继续阅读
 

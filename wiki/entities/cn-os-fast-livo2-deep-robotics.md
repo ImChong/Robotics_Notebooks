@@ -55,6 +55,48 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：终端 1 `ros2 launch livox_ros_driver2 msg_MID360s_launch.py`（Mid-360 用 `msg_MID360_launch.py`）；终端 2 `ros2 launch realsense2_camera rs_launch.py ...`；终端 3 `ros2 launch fast_livo mapping_avia.launch.py use_rviz:=True`（数据集回放时改为 `ros2 bag play Retail_Street.db3`）。建图节点可执行文件为 `fastlivo_mapping`，入口 `src/FAST-LIVO2/src/main.cpp`。
+
+```mermaid
+sequenceDiagram
+    participant L as livox_ros_driver2 (msg_MID360s_launch.py)
+    participant C as realsense2_camera 或 ros2 bag play
+    participant Lc as mapping_avia.launch.py
+    participant Mn as main.cpp main()
+    participant LM as LIVMapper (LIVMapper.cpp)
+    participant IMU as ImuProcess::Process2
+    participant VM as VoxelMapManager (LIO)
+    participant VIO as VIOManager::processFrame
+    participant Rv as RViz2 / 下游话题
+
+    L-->>LM: /livox/lidar (CustomMsg), /livox/imu
+    C-->>LM: 相机图像话题 (img_topic，来自 config/avia.yaml)
+    Lc->>Mn: 启动 fastlivo_mapping（参数 avia.yaml + camera_pinhole.yaml），并可选启动 image_transport republish 与 rviz2
+    Mn->>LM: LIVMapper(nh, "laserMapping", options)
+    Mn->>LM: initializeSubscribersAndPublishers()（订阅 lidar/imu/img，发布 /cloud_registered、/aft_mapped_to_init、/path 等）
+    Mn->>LM: run()
+    loop rclcpp::ok()，rate 5000 Hz
+        LM->>LM: rclcpp::spin_some() 触发 livox_pcl_cbk / imu_cbk / img_cbk 入缓冲
+        LM->>LM: sync_packages(LidarMeasures)，数据不齐则 sleep 继续
+        LM->>LM: handleFirstFrame()
+        LM->>IMU: processImu() → Process2()（IMU 前向传播与点云去畸变，可选重力对齐）
+        alt lio_vio_flg == VIO
+            LM->>VIO: handleVIO() → processFrame(图像, 体素地图)
+            VIO-->>Rv: publish_frame_world、publish_img_rgb
+        else LIO 或 LO
+            LM->>VM: handleLIO()：降采样 → BuildVoxelMap（首帧）/ StateEstimation(state_propagat)
+            VM-->>LM: 更新后的状态 (_state)
+            LM->>VM: UpdateVoxelMap()，必要时 mapSliding()
+            LM-->>Rv: publish_odometry (/aft_mapped_to_init)、publish_path，无相机时 publish_frame_world
+        end
+    end
+    LM->>LM: 退出循环后 savePCD()
+```
+
+图依据：DeepRoboticsLab/fast-livo2-deep-robotics@f6762c9，读过 README.md、src/FAST-LIVO2/src/main.cpp、src/FAST-LIVO2/src/LIVMapper.cpp（run、processImu、handleVIO、handleLIO、initializeSubscribersAndPublishers）、src/FAST-LIVO2/launch/mapping_avia.launch.py；ImuProcess、VoxelMapManager、VIOManager 内部实现未读，仅按 LIVMapper 的调用关系绘制。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +108,7 @@ institutions:
 - [fast-livo2-deep-robotics 源码归档](../../sources/repos/fast-livo2-deep-robotics.md)（<https://github.com/DeepRoboticsLab/fast-livo2-deep-robotics>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：DeepRoboticsLab/fast-livo2-deep-robotics@f6762c9，读过 README.md、src/FAST-LIVO2/src/main.cpp、src/FAST-LIVO2/src/LIVMapper.cpp（部分函数）、src/FAST-LIVO2/launch/mapping_avia.launch.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

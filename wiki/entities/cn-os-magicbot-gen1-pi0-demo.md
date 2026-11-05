@@ -55,6 +55,48 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口（三步，均在 README 给出）：`uv run scripts/compute_norm_stats.py` → `uv run scripts/train.py pi0_magiclab_low_mem_finetune --exp-name=...` → `uv run scripts/serve_policy.py policy:checkpoint --policy.config=... --policy.dir=...`。推理侧机器人客户端（`pico_teleoperate` 采集、真机部署）不在本仓库内；本图只画仓库内可见的训练与策略服务调用链，数据转换脚本 `examples/libero/convert_magiclab_humanoid_data_to_lerobot.py` 仅按 README 描述，未读其内部。
+
+```mermaid
+sequenceDiagram
+    participant N as scripts/compute_norm_stats.py
+    participant T as scripts/train.py main()
+    participant D as openpi.training.data_loader
+    participant C as openpi.training.config (TrainConfig)
+    participant CK as openpi.training.checkpoints
+    participant S as scripts/serve_policy.py
+    participant PC as openpi.policies.policy_config
+    participant W as WebsocketPolicyServer
+    participant Pol as openpi.policies.policy.Policy
+    participant Cli as 外部客户端（openpi_client，不在本图内部）
+    N->>C: get_config("pi0_magiclab_low_mem_finetune")
+    N->>D: create_dataset + TransformedDataset（repack/data transforms，去掉字符串）
+    N->>N: 遍历 state / actions，RunningStats.update
+    N->>N: normalize.save(OUTPUT_PATH/repo_id, norm_stats)
+    T->>CK: initialize_checkpoint_dir(checkpoint_dir, resume, overwrite)
+    T->>D: create_data_loader(config, sharding, shuffle=True)
+    T->>T: init_train_state（_load_weights_and_validate 加载权重）
+    loop step in range(num_train_steps)
+        T->>T: ptrain_step(train_rng, train_state, batch)（jax.jit 的 train_step）
+        T->>D: next(data_iter)
+        T->>CK: save_state（每 save_interval 步及最后一步）
+    end
+    S->>C: get_config(policy.config)
+    S->>PC: create_trained_policy(config, policy.dir)
+    PC->>PC: restore_params(checkpoint_dir/params) 并 model.load
+    PC->>CK: load_norm_stats(checkpoint_dir/assets, asset_id)
+    PC-->>S: Policy
+    S->>W: WebsocketPolicyServer(policy, host=0.0.0.0, port=1077).serve_forever()
+    Cli->>W: websocket 发送 msgpack 观测 obs
+    W->>Pol: infer(obs)
+    Pol->>Pol: input_transform → model.sample_actions → output_transform
+    W-->>Cli: msgpack 动作 action
+```
+
+图依据：magicbot-gen1_pi0_demo@3e6feb5，读过 README.md、scripts/compute_norm_stats.py、scripts/train.py（main）、scripts/serve_policy.py、src/openpi/policies/policy_config.py、src/openpi/policies/policy.py（infer）、src/openpi/serving/websocket_policy_server.py。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +108,7 @@ institutions:
 - [magicbot-gen1_pi0_demo 源码归档](../../sources/repos/magicbot-gen1_pi0_demo.md)（<https://github.com/MagiclabRobotics/magicbot-gen1_pi0_demo>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：MagiclabRobotics/magicbot-gen1_pi0_demo@3e6feb5，读过 README.md、scripts/compute_norm_stats.py、scripts/train.py、scripts/serve_policy.py、src/openpi/policies/policy_config.py、src/openpi/policies/policy.py、src/openpi/serving/websocket_policy_server.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

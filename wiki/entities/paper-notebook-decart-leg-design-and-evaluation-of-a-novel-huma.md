@@ -39,6 +39,31 @@ summary: "人形腿长期卡在「好看 vs 敏捷」的二选一里：要拟人
 - **控制范式无关**：IK / QP-WBC / RL 都能驱动，说明机构收益不绑定特定控制栈
 - **硬件-控制协同**：把「低摆动惯量」做进机构，等于在硬件层先替控制器减负
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph MECH["腿机构：准伸缩解耦驱动"]
+        lm["腿长电机"] --> gear["一对无源齿轮 + 4 杆平行结构"]
+        gear --> foot["足端竖直直线运动<br/>不经过腿俯仰电机"]
+        ml["多连杆踝传动<br/>前/后杆在不同腿姿下受力"] --> ankle["全驱动 2-DoF 踝<br/>所有电机集中在膝上方腿根附近"]
+    end
+    subgraph IK["解析逆运动学"]
+        tgt["足端目标 x, y, 高度 h<br/>+ 足 roll φ / pitch θ / yaw ψ"] --> cf["闭式解 j0 … j5<br/>（j5 同时依赖 j2 与 j3，踝俯仰未完全解耦）"]
+    end
+    cf --> ctrl["IK / QP-WBC / RL 控制器驱动<br/>仿真中仅需对 j3' 加 mimic 约束"]
+    subgraph FAST["FAST 指标估计（腿级，基座固定）"]
+        traj["同摆幅、不同时长的三次样条摆动足端轨迹族"] --> tsid["TSID（QP 逆动力学）<br/>受力矩/速度限幅，整机 URDF 动力学"]
+        tsid --> integ["Pinocchio 数值积分关节加速度"]
+        integ --> chk["判据：位置误差 < 摆幅 3%，速度误差 ≤ 0.1 m/s"]
+        chk --> val["满足判据的最短摆动时长 = FAST"]
+    end
+    MECH --> IK
+    ctrl -.评测腿机构.-> FAST
+```
+
+图依据：论文 §III-A（Fig.2-4，式 1-7）/ §IV-A（FAST 估计流程，Fig.5-6）。
+
 ## 解决什么问题
 
 人形机器人的腿设计存在一条长期的张力：
@@ -85,6 +110,7 @@ summary: "人形腿长期卡在「好看 vs 敏捷」的二选一里：要拟人
 - [humanoid_pnb_decart-leg-novel-humanoid-robot-leg-with-decoupl.md](../../sources/papers/humanoid_pnb_decart-leg-novel-humanoid-robot-leg-with-decoupl.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/DecARt_Leg_Novel_Humanoid_Robot_Leg_with_Decoupled_Actuation/DecARt_Leg_Novel_Humanoid_Robot_Leg_with_Decoupled_Actuation.html>
 - 论文：<https://arxiv.org/abs/2511.10021>
+- [arXiv PDF](https://arxiv.org/pdf/2511.10021)：已通读方法部分（实验与附录以略读为准）：§III-A、§IV-A（含 FAST 估计流程）与 §IV-B 开头
 
 ## 推荐继续阅读
 

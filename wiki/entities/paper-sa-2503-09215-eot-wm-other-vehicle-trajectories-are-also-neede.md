@@ -42,6 +42,31 @@ Unifies ego-other trajectories in latent space.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph vtr["Video-based Trajectory Representation（VTR）"]
+    A["BEV 轨迹点"] --> B["按相机内外参投影到首帧图像坐标"]
+    B --> C["自车与他车轨迹分别绘制在空白视频中<br/>第 t 帧仅画当前及未来点"]
+  end
+  subgraph amgg["Aligned Motion Guidance Generation（AMGG）"]
+    D["CogVideoX 的 STVAE 编码轨迹视频"] --> E["轨迹 latent z_traj（与视频 latent 共享特征空间）"]
+    F["STVAE 编码原始驾驶视频"] --> G["视频 latent z"]
+  end
+  subgraph tidit["Trajectory-injected Diffusion Transformer（TiDiT）"]
+    H["条件掩码：前 Tc 帧用初始帧 latent 替换"] --> I["z 与 z_traj 按通道拼接后 3D 卷积"]
+    I --> J["与场景描述文本嵌入拼接<br/>送入 Expert Diffusion Transformer 预测噪声"]
+    J --> K["STVAE 解码器生成未来视频"]
+  end
+  C --> D
+  E --> I
+  G --> H
+  J --> L["控制 latent 相似度：两层 MLP 由预测视频 latent 解码轨迹 latent，与真值对比（可作可控性指标）"]
+```
+
+图依据：论文 EOT-WM Framework 一节（Fig. 2/3，Eq. 1-11）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Unifies ego-other trajectories in latent space.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.09215>
+- [arXiv PDF](https://arxiv.org/pdf/2503.09215)：已通读方法部分（实验与附录以略读为准）：Introduction、Related Work、EOT-WM Framework，实验部分略读
 
 ## 推荐继续阅读
 

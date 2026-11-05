@@ -39,6 +39,22 @@ sources:
 - 把 VLN 从「逐步指路」推进到「找到并指认目标」，与视觉 referring 任务深度耦合。
 - 高层指令（目标物体 + 大致位置）下的远程导航与目标定位；结合路径标注与物体边界框。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  X["高层指令 X + 当前位置全景视图<br/>与可导航视点"] --> PT["Pointer (MAttNet)：指令拆为 subject/location/relationship<br/>对候选视图内物体打分并加权求和"]
+  PT --> TOP["每个候选视图取 top-3 匹配物体"]
+  TOP --> IM["Interaction Module：类别标签 bi-LSTM + 物体区域 ResNet FC7 均值<br/>与视点特征拼接得到更新后的视点特征"]
+  IM --> NV["Navigator (FAST-short)：文本/视觉 co-grounding 注意力 + LSTM<br/>得到 logit，维护候选队列与终止队列"]
+  NV --> ACT["选择下一视点 / 停止"]
+  ACT -->|"移动到新视点"| X
+  ACT --> OUT["输出目标物体边界框（每个 episode 仅一次）"]
+  LOSS["训练：L = L_nav（动作交叉熵 + progress monitor MSE）+ λ4 · L_exp（排序损失）"] -.-> NV
+```
+
+图依据：论文 §3.1 REVERIE 任务、§4 Interactive Navigator-Pointer Model（Fig. 5、§4.1–4.4）；“输出边界框”一步的衔接为按任务定义的简化画法。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +111,7 @@ sources:
 - [vln_10_papers_catalog.md](../../sources/papers/vln_10_papers_catalog.md)
 - [wechat_shenlan_vln_10_papers_survey.md](../../sources/blogs/wechat_shenlan_vln_10_papers_survey.md)
 - 论文：<https://arxiv.org/abs/1904.10151>
+- [arXiv PDF](https://arxiv.org/pdf/1904.10151)：已通读方法部分（实验与附录以略读为准）：§3.1 任务定义、§3.4 数据采集、§4 Interactive Navigator-Pointer Model、§5.1 实现细节（§5.2 实验结果略读）
 
 ## 推荐继续阅读
 

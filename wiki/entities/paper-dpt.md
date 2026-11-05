@@ -50,6 +50,20 @@ summary: "DPT（arXiv:2103.13413）：ViT 多尺度特征融合密集预测头�
 - **密集预测标准件：** 在 monocular depth 时代即为主流解码范式；进入 ViT 时代后仍是最常见的 **head 设计** 之一。
 - **NBS 关键组件：** NBS 去掉 correlation volume，把 **匹配 + 解码** 全部交给 ViT attention + **DPT 视差头** — 理解 NBS 需同时读 [DINOv2](./paper-dinov2.md) 与本文。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IMG["输入图像 H×W"] --> EMB["图像嵌入 → tokens<br/>DPT-Base/Large：p=16 非重叠 patch + 线性投影<br/>DPT-Hybrid：ResNet-50 特征"]
+    EMB --> POS["加位置嵌入 + 读出 token（readout）"]
+    POS --> TF["Transformer 编码器<br/>12 层（Base/Hybrid）或 24 层（Large）<br/>token 数量与分辨率逐层不变，全局感受野"]
+    TF -- "取 4 个阶段的 tokens<br/>Base: 层 3,6,9,12 / Large: 层 5,12,18,24" --> RA["Reassemble_s = Resample ∘ Concatenate ∘ Read<br/>还原为 4 个分辨率的图像状特征图（D̂=256）<br/>深层对应低分辨率，浅层对应高分辨率"]
+    RA --> FU["RefineNet 式 Fusion 块<br/>残差卷积单元 + 逐级 2 倍上采样"]
+    FU --> HEAD["任务头（task-specific head）<br/>输出分辨率为输入一半的特征 → 深度 / 语义分割"]
+```
+
+图依据：论文 §3 Architecture 与 Fig.1（左：整体架构，中：Reassemble，右：Fusion）。
+
 ## 实验与评测
 
 > **归档口径提醒：** 本库的 [DPT 论文摘录](../../sources/papers/dpt_arxiv_2103_13413.md) 是**书目型归档**，未收录原文指标表。下面只写「在哪些轴上被评」与**库内可核的间接证据**，具体数值以 [原文](https://arxiv.org/abs/2103.13413) 为准，不要引用本页当数据源。
@@ -103,6 +117,7 @@ summary: "DPT（arXiv:2103.13413）：ViT 多尺度特征融合密集预测头�
 - [DPT 论文摘录](../../sources/papers/dpt_arxiv_2103_13413.md)
 - [DPT 官方仓](../../sources/repos/dpt.md)
 - Ranftl et al., *Vision Transformers for Dense Prediction* — <https://arxiv.org/abs/2103.13413>
+- [arXiv PDF](https://arxiv.org/pdf/2103.13413)：已通读方法部分（实验与附录以略读为准）：§3 Architecture（Transformer 编码器、Reassemble、Fusion、可变输入尺寸）
 
 ## 推荐继续阅读
 

@@ -81,6 +81,47 @@ flowchart LR
 - **不是实时控制架构：** AWS 云端负责训练、仿真和管理；机器人硬实时控制仍需要在本地控制器/边缘节点满足时序与安全约束。
 - **不是自动化安全认证：** HIL 和回归门禁是工程流程组件，不等于通过了特定机器人或行业的安全认证。
 
+## 源码运行时序图
+
+入口：Dockerfile 中生成的 `/opt/ml/code/entrypoint.sh`（容器 ENTRYPOINT；SageMaker 无参数执行 `train_entrypoint.py`，AWS Batch 以 `batch-train` 参数执行 `batch-train-entrypoint.sh`）。下图只覆盖仓库中 GR00T N1.6 微调容器的运行路径，不代表整个工具链。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant EP as entrypoint.sh Dockerfile 生成的容器入口
+    participant BT as batch-train-entrypoint.sh Batch 分支
+    participant TE as train_entrypoint.py
+    participant GS as Isaac-GR00T SDK experiment.run
+    participant S3 as S3
+
+    alt SageMaker 模式 无参数
+        EP->>TE: exec python train_entrypoint.py
+    else AWS Batch 模式 command 为 batch-train
+        EP->>BT: exec bash batch-train
+        BT->>S3: aws s3 sync DATASET_S3_URI 到数据目录
+        BT->>TE: python3 train_entrypoint.py 读取 SM_HP_* 环境变量
+    end
+    TE->>TE: require_sdk 检查 SDK 目录与 import torch
+    TE->>TE: maybe_relaunch_with_torchrun 多卡时预下载模型后 torch.distributed.run 重新执行自身
+    Note over TE: 子进程重新进入 __main__ 后各 rank 都执行 run_training
+    TE->>TE: run_training 调用 _hp 读取 hyperparameters.json 或 SM_HP_*
+    TE->>TE: write_embodiment_config 写出 ur3_embodiment/ur3_config.py
+    TE->>TE: load_modality_config 通过 importlib 注册 NEW_EMBODIMENT
+    TE->>GS: get_default_config 后 load_dict 并设置 model training data 参数
+    TE->>TE: 删除过期的 stats 文件
+    TE->>GS: run config 开始微调
+    GS-->>TE: 返回 checkpoint 写入 output_dir
+    opt rank 0 且 main 继续执行
+        TE->>TE: write_baselines_only 写 eval_report.json 仅为数据集基线
+        TE->>TE: 写 training_metadata.json
+    end
+    opt Batch 且设置了 CHECKPOINT_BUCKET
+        BT->>S3: aws s3 sync 输出目录到 checkpoint 前缀
+    end
+```
+
+图依据：aws-samples/sample-the-physical-ai-toolchain-on-aws@7156dd4，实际读过 `README.md`、`isaac-gr00t-on-aws/README.md`、`containers/gr00t-training/train_entrypoint.py`、`containers/gr00t-training/batch-train-entrypoint.sh`、`containers/gr00t-training/Dockerfile`（COPY、ENTRYPOINT 段）。
+
 ## 关联页面
 
 - [仿真到真机迁移](../concepts/sim2real.md)
@@ -91,3 +132,4 @@ flowchart LR
 
 - [AWS 官方仓库来源归档](../../sources/repos/aws-physical-ai-toolchain-on-aws.md)
 - [sample-the-physical-ai-toolchain-on-aws](https://github.com/aws-samples/sample-the-physical-ai-toolchain-on-aws)
+- 源码核对（2026-11-02）：aws-samples/sample-the-physical-ai-toolchain-on-aws@7156dd4，读过 README.md、isaac-gr00t-on-aws/README.md、containers/gr00t-training/train_entrypoint.py、batch-train-entrypoint.sh、Dockerfile（COPY 与 ENTRYPOINT 段）；时序图依据以上文件，未运行代码。

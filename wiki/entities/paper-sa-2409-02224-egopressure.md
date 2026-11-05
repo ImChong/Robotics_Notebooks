@@ -41,6 +41,24 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["采集：7 台静态 Azure Kinect RGB-D<br/>+ Sensel Morph 压力触控板<br/>（另有头戴第一视角相机）"] --> B["HaMeR：每个静态相机估计初始 MANO 手姿态与平移"]
+    B --> C["对 7 个视角的手根关节三角化<br/>解决尺度-平移歧义"]
+    B --> D["HaMeR 包围框 + 2D 手根<br/>→ Segment-Anything 手部分割 mask"]
+    C --> E["阶段 1 Pose Optimization<br/>可微渲染 (DIB-R)，L_pose = L_R + L_insec"]
+    D --> E
+    E --> F["阶段 2 Shape Refinement<br/>固定姿态，沿法向优化顶点位移 D_vert"]
+    G["触控板压力帧 P_gt"] --> H["虚拟正交相机置于触控板下方<br/>压力作为 UV 纹理 T_P 渲染"]
+    H --> F
+    F --> I["约束：接触区域深度与触控板平面一致<br/>(压力阈值得到接触 mask)"]
+    I --> J["输出：精修手网格 Θ*、手姿态、<br/>手部压力纹理，与第一视角图像对齐"]
+```
+
+图依据：论文 §3（Fig.2 标注方法总览）、§3.1 自动手姿初始化、§3.2 / §3.2.1 标注精修与虚拟渲染；本图只描述数据集的标注流程，不含 §5 基准网络。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +113,7 @@ sources:
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2409.02224>
+- [arXiv PDF](https://arxiv.org/pdf/2409.02224)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 无标记标注方法（3.1、3.2、3.2.1）、§5 基准评测开头
 
 ## 推荐继续阅读
 

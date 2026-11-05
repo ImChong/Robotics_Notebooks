@@ -193,6 +193,7 @@ ARDY 把 **离线扩散的可控性** 与 **自回归在线推理** 合成到同
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：ARDY](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/ARDY__Autoregressive_Diffusion_with_Hybrid_Representation_for_Interactive_Human_Motion/ARDY__Autoregressive_Diffusion_with_Hybrid_Representation_for_Interactive_Human_Motion.html)
 - [ARDY 项目页](https://research.nvidia.com/labs/sil/projects/ardy/) — PDF、Demo、方法图
 - [论文 PDF](https://research.nvidia.com/labs/sil/projects/ardy/assets/ardy_paper.pdf)
 - [GitHub — nv-tlabs/ardy](https://github.com/nv-tlabs/ardy)

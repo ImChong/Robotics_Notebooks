@@ -43,6 +43,30 @@ Masters memory tasks with world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    OBS["观测 o_t"]
+    ENC["非循环表示模型 q(z_t | o_t) (CNN 或 MLP)"]
+    Z["随机状态 z_t"]
+    S3M["S3M: 多层 SSM, 训练时并行扫描 / 推理时循环"]
+    H["h_t (给预测头) 与 SSM 隐状态 x_t (用于下一步循环)"]
+    HEADS["预测头: 观测, 奖励, 继续"]
+    IMAG["世界模型想象轨迹"]
+    POL["Actor-Critic (DreamerV3 流程): 策略条件于 (z, h) / (z, x) / (z, h, x)"]
+    OBS --> ENC
+    ENC --> Z
+    Z --> S3M
+    ACT["动作 a_(t-1)"] --> S3M
+    S3M --> H
+    H --> HEADS
+    H --> IMAG
+    IMAG --> POL
+```
+
+图依据：论文 §3 Methodology (3.1 World Model Details, 3.2 Actor-Critic Details) / Fig.1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ Masters memory tasks with world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2403.04253>
+- [arXiv PDF](https://arxiv.org/pdf/2403.04253)：已通读方法部分（实验与附录以略读为准）：§3 Methodology (3.1, 3.2)
 
 ## 推荐继续阅读
 

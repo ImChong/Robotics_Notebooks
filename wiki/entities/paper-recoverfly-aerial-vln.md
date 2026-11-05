@@ -42,6 +42,25 @@ summary: "空中 VLN 失败感知 RL 后训练：token 级优化、反复学习�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph LOOP["在线 RL 循环 (每个 stage 内)"]
+        direction TB
+        S1["1 采样任务<br/>比例 η 取自动态失败记忆中的未解任务<br/>其余为新任务采样"] --> S2["2 Rollout<br/>RGB / 深度图 + 指令 → OpenVLA-7B + LoRA<br/>输出动作 token → 解码为 Δx, Δz, Δψ"]
+        S2 --> EV["环境执行并产生事件与奖励<br/>success / collision / stuck / away / early-stop / timeout<br/>+ 距离进度奖励"]
+        EV --> S3["3 Token 级 PPO 更新<br/>GAE 优势 + 逐 token 概率比与裁剪<br/>价值头 + 参考策略 KL"]
+        S3 -->|"更新 LoRA 与价值头, 同步权重"| S2
+        EV --> FM["动态失败记忆<br/>失败任务入库/重新激活<br/>成功标记 solved, 重试次数达上限标记 dropped"]
+        FM --> S1
+    end
+    ST1["Stage I: 按原始(长尾)场景分布 P1<br/>参考策略 = 初始 VLA 策略(冻结)"] --> LOOP
+    LOOP --> ST2["Stage II: 均衡场景分布 P2<br/>从 Stage I 终策略继续<br/>参考策略 = Stage I 终策略(冻结)"]
+```
+
+图依据：论文 §3（Method）与 Fig.2 / Eq.(1)–(8)
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +108,7 @@ summary: "空中 VLN 失败感知 RL 后训练：token 级优化、反复学习�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.09467](https://arxiv.org/abs/2608.09467)
+- [arXiv PDF](https://arxiv.org/pdf/2608.09467)：已通读方法部分（实验与附录以略读为准）：§1 摘要与引言、§3 Method（策略接口与 token 级 PPO、动态失败记忆、两阶段场景课程、参考策略约束）、§4.1 实验设定；注：PDF 题为 RefineFly（arXiv 2608.09467v3），与本页名称 RecoverFly 不同，内容（失败感知 RL 后训练、TravelUAV）一致
 
 ## 推荐继续阅读
 

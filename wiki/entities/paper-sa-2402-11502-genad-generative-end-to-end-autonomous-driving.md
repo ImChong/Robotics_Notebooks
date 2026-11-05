@@ -43,6 +43,28 @@ Generative end-to-end autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IMG["环视相机图像"] --> BEV["图像骨干 + 可变形注意力\n得到 BEV 特征 (对齐过去 p 帧)"]
+  BEV --> MAP["地图 token M\n全局交叉注意力 (车道线 / 道路边界 / 人行横道)"]
+  BEV --> AGT["agent token A\n可变形交叉注意力 (3D 检测头)"]
+  AGT --> INS["加入 ego token\n自注意力得到实例 token I"]
+  MAP -->|"交叉注意力注入地图信息"| INS
+  subgraph PRIOR["轨迹先验建模 (训练)"]
+    GT["真值未来轨迹"] --> EF["未来轨迹编码器 e_f\n输出高斯分布 N(μ_f, σ_f)"]
+  end
+  INS --> EI["实例编码器 e_i\n输出高斯分布 N(μ_i, σ_i)"]
+  EI --> Z["采样隐变量 z"]
+  Z --> GRU["GRU 未来轨迹生成器 g\n在隐空间逐步推演 z_t+1"]
+  GRU --> DEC["路点解码器 d_w\n逐步解码路点"]
+  DEC --> OUT["agent 运动预测 + 自车规划轨迹"]
+  EF -.->|"KL 散度匹配"| EI
+```
+
+图依据：论文 §3.1 实例中心场景表示、§3.2 轨迹先验建模、§3.3 隐空间未来轨迹生成、§3.4 训练目标（KL 分布匹配）与 Fig. 2 / Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Generative end-to-end autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2402.11502>
+- [arXiv PDF](https://arxiv.org/pdf/2402.11502)：已通读方法部分（实验与附录以略读为准）：§3 Proposed Approach（3.1–3.4）
 
 ## 推荐继续阅读
 

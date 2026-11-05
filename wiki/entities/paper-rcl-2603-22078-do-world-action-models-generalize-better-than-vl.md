@@ -43,6 +43,32 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  Q["研究问题：WAM 是否比 VLA 更鲁棒？<br/>（同类 WAM 来自视频世界模型预训练）"]
+  Q --> B["评测基准（§3.1）"]
+  B --> B1["LIBERO-Plus：单臂 Franka，7 类扰动"]
+  B --> B2["RoboTwin 2.0-Plus：双臂 Aloha-Agilex<br/>沿用 LIBERO-Plus 扰动协议"]
+  B2 --> P["扰动轴：Camera · Robot · Language · Light<br/>Background · Noise · Layout"]
+  Q --> M["被评模型（§3.2，使用公开 checkpoint）"]
+  M --> M1["VLA：π0.5、X-VLA 等"]
+  M --> M2["VLA + WM（含辅助世界建模目标）：MOTUS、VLA-JEPA"]
+  M --> M3["WAM：LingBot-VA、Fast-WAM、GE-Act、Cosmos-Policy"]
+  B1 --> R["各扰动类别下的成功率"]
+  P --> R
+  M1 --> R
+  M2 --> R
+  M3 --> R
+  R --> RQ1["RQ1 WAM 对扰动是否鲁棒"]
+  R --> RQ2["RQ2 优势是否在各扰动类型上一致"]
+  R --> RQ3["RQ3 如何解释 VLA 与 WAM 的差异"]
+  R --> RQ4["RQ4 WAM 的运行时特性（推理开销）"]
+```
+
+图依据：评测协议与研究设计图，依据论文 §3.1（Datasets）、§3.2（Evaluation Methods）、§3.3 开头的 RQ1–RQ4；图中不含结论数字。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +126,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2603.22078>
+- [arXiv PDF](https://arxiv.org/pdf/2603.22078)：已读与流程图相关的章节（其余部分以略读为准）：摘要、§1、§2（含 Tab. 1 的 WAM 对比与 §2.3）、§3.1–§3.2、§3.3 开头与 RQ 列表、§4 结论；§3.3 各 RQ 的具体结果与附录略读
 
 ## 推荐继续阅读
 

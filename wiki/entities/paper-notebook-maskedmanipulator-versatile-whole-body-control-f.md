@@ -31,7 +31,30 @@ MaskedManipulator 的人形机器人学习论文条目，当前处于 Paper Note
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，本页只保留分类位置与原文入口；方法模块与数据流见下方「流程总览」（仅依据论文方法部分，不含实验结论）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["GRAB 人-物交互动捕数据（10 名受试者）"] --> B["骨架重定向：迁移局部 DoF 旋转"]
+    B --> C["物体重定向：依据接触数据保持手-物接触关系"]
+    C --> D["过滤不适合物理重建的序列"]
+    D --> E["训练集 1007 条 / 测试集 141 条"]
+    E --> F["阶段一：MimicManipulator 运动跟踪策略 π_track"]
+    F --> G["PPO 训练：R_track = r_pose · r_contact · r_energy · r_interaction"]
+    G --> H["提前终止 + 对失败序列过采样"]
+    H --> I["训练好的教师策略 π_track"]
+    I --> J["阶段二：在线师生蒸馏 (DAgger)"]
+    M["随机掩码的稀疏未来目标 g_versatile（手、物体、全身姿态）"] --> N["MaskedManipulator 学生策略 π_versatile（Transformer）"]
+    S["当前状态 s_t：本体感知、手-物向量、物体/桌面位姿与 BPS"] --> N
+    J --> N
+    N --> O["三种架构：Deterministic / C-VAE / Diffusion"]
+    O --> P["动作 a_t 控制仿真角色（ProtoMotions + IsaacLab）"]
+    I -.->|"给出稠密目标下的动作 a_track"| J
+```
+
+图依据：论文 §4.1 MimicManipulator、§4.2 MaskedManipulator、§5 Experiments 设置、Fig.3 / Fig.4
 
 ## 核心信息
 
@@ -64,6 +87,7 @@ MaskedManipulator 的人形机器人学习论文条目，当前处于 Paper Note
 - [humanoid_pnb_maskedmanipulator-versatile-whole-body-control-f.md](../../sources/papers/humanoid_pnb_maskedmanipulator-versatile-whole-body-control-f.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.19086>
+- [arXiv PDF](https://arxiv.org/pdf/2505.19086)：已通读方法部分（实验与附录以略读为准）：§3 Preliminaries、§4.1（Task design / Data processing）、§4.2、§5 实验设置与训练细节
 
 ## 推荐继续阅读
 

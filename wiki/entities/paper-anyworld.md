@@ -200,6 +200,7 @@ VBench 四项平均 **0.971**，与强基线相当或略优。
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：AnyWorld](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/AnyWorld__Factorized_Egocentric_World_Models_for_Cross-Embodiment_Generalization/AnyWorld__Factorized_Egocentric_World_Models_for_Cross-Embodiment_Generalization.html)
 - [项目页](https://xpeng-robotics.github.io/anyworld/)
 - [arXiv:2608.29242](https://arxiv.org/abs/2608.29242)
 - [EgoDex 论文](https://arxiv.org/abs/2505.11709)

@@ -44,6 +44,22 @@ summary: "200 小时双臂灵巧数据集 + VTLA 三部分配方：视触联合�
 - 开源状态：**待发布**（步骤 2.5 核查，2026-09-14）。
 - 与 [11 篇技术地图](../overview/vla-tamp-planning-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[遥操作系统采集 200 小时真机数据<br/>双臂轮式机器人 + 10 自由度灵巧手 + 268 维触觉] --> B[视觉-触觉联合预训练 VTP<br/>RGB 与触觉图各掩码 75% patch 联合重建]
+    B --> C[触觉编码器输出空间 patch token<br/>+ 每只手一个全局触觉 token]
+    C --> D[稀疏-全局触觉 token 表示<br/>接触门控保留激活 token、掩码未激活 token<br/>全局 token 始终保留]
+    D --> E[VLM 主干<br/>初始化自 π0.5 权重]
+    E --> F[Action Expert<br/>条件 flow matching 生成动作 chunk]
+    E --> G[稀疏未来触觉预测 SFTP<br/>预测 k=10/20/30/40/50 共 5 帧未来触觉]
+    F --> H[任务专用后训练<br/>每任务 100 条轨迹]
+    G -. 辅助损失 .-> E
+```
+
+图依据：论文 §III–§IV（Fig. 3 Training Recipe）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -97,6 +113,7 @@ summary: "200 小时双臂灵巧数据集 + VTLA 三部分配方：视触联合�
 - [star-vtla_arxiv_2609_12549.md](../../sources/papers/star-vtla_arxiv_2609_12549.md)
 - [wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md](../../sources/blogs/wechat_embodied_station_11_papers_vla_tamp_planning_2026-09-14.md)
 - [arXiv:2609.12549](https://arxiv.org/abs/2609.12549)
+- [arXiv PDF](https://arxiv.org/pdf/2609.12549)：已通读方法部分（实验与附录以略读为准）：§III 问题定义、§IV 方法（数据集与训练配方）、§V 实验设定与消融设置
 
 ## 推荐继续阅读
 

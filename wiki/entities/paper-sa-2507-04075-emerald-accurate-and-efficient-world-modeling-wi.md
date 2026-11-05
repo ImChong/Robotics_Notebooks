@@ -42,6 +42,34 @@ Efficient world model with spatial latent states and MaskGIT prediction.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph WML["(a) 世界模型学习（从 replay buffer 采样轨迹）"]
+        direction TB
+        OBS["图像观测 o_t"] --> ENC["Encoder<br/>卷积 VAE，空间类别潜变量 z_t<br/>(H×W×G 分组)"]
+        ENC --> TR["时间 Transformer（TSSM）<br/>masked self-attention + 相对位置编码<br/>生成时间隐状态 h_t（TBTT 缓存 K/V）"]
+        ENC --> MASK["按余弦调度 γ=cos(πτ/2) 掩码<br/>得到 z_t^mask"]
+        TR --> MG["空间 MaskGIT Predictor<br/>预测被掩码的 token"]
+        MASK --> MG
+        ENC --> DEC["Decoder（z_t, h_t）<br/>重建 o_t"]
+        TR --> DEC
+        TR --> RC["Reward / Continue Predictor<br/>预测 r_t, c_t"]
+    end
+    subgraph IMG["(b) 潜空间想象与 Actor-Critic 学习"]
+        direction TB
+        ST["世界模型状态 s_t=[z_t, h_t]"] --> ACT["Actor 采样动作"]
+        ACT --> NEXT["Transformer 得 h_t<br/>MaskGIT 并行解码 S=3 步生成下一 z_t<br/>想象 H=15 步"]
+        NEXT --> ST
+        NEXT --> CRIT["Critic 估计未来回报<br/>训练 Actor / Critic"]
+    end
+    TR -. "缓存的 K/V 复用" .-> IMG
+    MG --> IMG
+```
+
+图依据：论文 §3 / §3.1 / §3.2 / Fig.3（世界模型学习与想象）、Fig.4–5（并行解码与余弦掩码调度）、Eq.1–4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +124,7 @@ Efficient world model with spatial latent states and MaskGIT prediction.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.04075>
+- [arXiv PDF](https://arxiv.org/pdf/2507.04075)：已通读方法部分（实验与附录以略读为准）：§2.3、§3 Method（§3.1–3.2）
 
 ## 推荐继续阅读
 

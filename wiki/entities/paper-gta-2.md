@@ -41,6 +41,26 @@ summary: "四 VLM 分工任务拆解/技能生成/控制器参数/RGB-D groundin
 - 开源状态：**待发布**（步骤 2.5 核查，2026-09-10）。
 - 与 [11 篇技术地图](../overview/vlm-manipulation-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[输入: 自然语言任务指令 + RGB-D 场景观测 + 控制器库 C] --> B[Task Decomposer VLM<br/>分解为有序语义子任务序列]
+    B --> C[Skill Generator VLM<br/>为每个子任务选控制器组合 / 关键点 / 任务轴 / 参数占位符 / 优先级<br/>得到 lifted 抽象技能]
+    C --> D[Parameter Setter VLM<br/>为占位符赋数值: 偏移 / 力 / 轨迹尺度 / 时序]
+    C --> E[Vision Module<br/>VLM 在 RGB 中定位关键点 + 深度恢复 3D<br/>点云与几何运算得到任务轴]
+    D --> F[grounded 任务轴技能 S<br/>保留控制器组成与优先级]
+    E --> F
+    F --> G[确定性编译器<br/>从控制器库取实现 生成可执行机器人脚本 P]
+    G --> H[执行后端<br/>优先级零空间组合 经 ROS 接口发送位置 / 姿态 / 力 / 夹爪指令]
+    I[人类定向反馈] -.-> B
+    I -.-> C
+    I -.-> D
+    I -.-> E
+```
+
+图依据：论文 §III-A 至 §III-E / Fig. 2（Overview of GTA-2）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -99,6 +119,7 @@ summary: "四 VLM 分工任务拆解/技能生成/控制器参数/RGB-D groundin
 - [gta-2_arxiv_2609_09808.md](../../sources/papers/gta-2_arxiv_2609_09808.md)
 - [wechat 11篇盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md)
 - [arXiv:2609.09808](https://arxiv.org/abs/2609.09808)
+- [arXiv PDF](https://arxiv.org/pdf/2609.09808)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（任务轴技能表示、lifted 技能合成、场景落地、脚本编译与执行、人类定向修正）
 
 ## 推荐继续阅读
 

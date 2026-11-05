@@ -43,6 +43,23 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    P["§III-A ATV 平台: Yamaha Viking ATV<br/>人用 joystick 遥操作油门与转向, 刹车由人类驾驶员直接控制"] --> S["传感器 (ROS 车载计算机)<br/>Multisense S21 stereo camera (RGB/depth/IMU)<br/>NovAtel GNSS 全局位姿<br/>Racepak 数据记录仪 (shock travel / wheel rpm / 刹车位置)"]
+    S --> D["§III-B 数据采集: rocks / mud / foliage 等多种地形<br/>人工遥操作, 驾驶员踩刹车干预即结束该 trajectory<br/>共 630 条 trajectories, 约 5 小时"]
+    D --> M["派生模态<br/>stereo → 点云 (TartanVO 估计相机运动) → 俯视投影分箱<br/>→ top-down height map 与 RGB map (0.02 m/pixel, 500x500, 10 Hz)"]
+    D --> Q["记录 intervention: 刹车位置 + 布尔干预信号"]
+    M --> DS["TartanDrive 数据集 (Table II 各模态)"]
+    Q --> DS
+    DS --> V["§III-C Dynamical Variation<br/>10000 个长 10 的随机子序列 → 时间序列聚类 (欧氏距离)<br/>t-SNE 可视化 state displacement, 检验同一 action 序列是否产生不同轨迹"]
+    DS --> B["§IV 多模态动力学建模 benchmark<br/>latent-space model: encoder (多模态 product of experts) → GRU latent model → decoder<br/>三种训练损失: State Reconstruction / Reconstruction / Contrastive"]
+    B --> E["§V 实验: 损失类型是否有影响; 增加模态是否有帮助<br/>(对比 kinematic bicycle model 基线; 原始与更困难评测集)"]
+```
+
+图依据：数据采集流程图，论文 §III The Dataset（§III-A–C、Fig. 3、Fig. 5、Table I–II）、§IV Multi-modal Modeling、§V Experiments and Analysis。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +117,7 @@ RCL Awesome WAM 清单收录（Datasets）；细节以原文 PDF / 项目页为�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2205.01791>
+- [arXiv PDF](https://arxiv.org/pdf/2205.01791)：已通读 §III The Dataset、§IV Multi-modal Modeling、§V Experiments and Analysis、§VI Conclusions；§I–II 与附录以略读为准
 
 ## 推荐继续阅读
 

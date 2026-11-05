@@ -55,6 +55,39 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python examples/04_demo_read_pressure.py`（需先把脚本里的 `PORT`、`SLAVE_ADDRESS` 改成实际值；SDK 门面为 `tactile_sdk.TactilePressureSDK`）。
+
+```mermaid
+sequenceDiagram
+    participant EX as examples/04_demo_read_pressure.py
+    participant SDK as TactilePressureSDK（tactile_sdk/client.py）
+    participant CF as ConfigAPI（api/config_api.py）
+    participant PA as PressureAPI（api/pressure_api.py）
+    participant MB as ModbusRTU（protocol/modbus_rtu.py）
+    participant TR as SerialTransport（transport/serial_transport.py）
+    participant HW as 60 点触觉压力传感器（Modbus RTU 从站）
+    EX->>SDK: with TactilePressureSDK(port, slave_address) as sdk
+    SDK->>TR: SerialTransport(port, baudrate, timeout)
+    SDK->>MB: ModbusRTU(transport)；创建 device / config / pressure / calibration 四个 API 对象
+    SDK->>TR: __enter__ → connect() → open() 打开串口
+    EX->>CF: get_pressure_point_count()
+    EX->>CF: set_pressure_value_type(1)（1=标定值 mN）
+    loop 目标 200 Hz 定时循环
+        EX->>PA: read_fast()
+        PA->>MB: read_all_pressure_values_fast(slave_address)
+        MB->>TR: reset_input_buffer()，write(_build_frame(功能码 READ_ALL_PRESSURE_VALUES 0x42))
+        TR->>HW: Modbus RTU 请求帧
+        HW-->>MB: _read_response_fast_0x42 → CRC16 校验 → 小端 uint16 解析
+        MB-->>PA: 压力值列表（失败返回 None，不抛异常）
+        PA-->>EX: 若做过 trigger_dynamic_zero 则扣除 _zero_offsets
+    end
+    EX->>SDK: 退出 with → __exit__ → disconnect()
+```
+
+图依据：Synria-Robotics/Electronic-Skin-ML@e9d536f，读过 README.md（开头）、examples/04_demo_read_pressure.py、tactile_sdk/client.py、tactile_sdk/api/pressure_api.py、tactile_sdk/protocol/modbus_rtu.py（read_all_pressure_values_fast 等部分）；config_api.py、serial_transport.py 仅读函数签名，未读其实现。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +99,7 @@ institutions:
 - [Electronic-Skin-ML 源码归档](../../sources/repos/electronic-skin-ml.md)（<https://github.com/Synria-Robotics/Electronic-Skin-ML>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Synria-Robotics/Electronic-Skin-ML@e9d536f，读过 README.md（开头）、examples/04_demo_read_pressure.py、tactile_sdk/client.py、tactile_sdk/api/pressure_api.py、tactile_sdk/protocol/modbus_rtu.py（部分）；config_api.py、serial_transport.py 仅读签名；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

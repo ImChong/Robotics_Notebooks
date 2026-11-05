@@ -41,6 +41,30 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Space Scale。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SPEC["安全规范 φs（safety fragment 的时序逻辑 / 确定性安全自动机）"] --> PROD
+    ABS["环境 MDP 的抽象 φM"] --> PROD
+    PROD["构造安全博弈 G（规范自动机 × 抽象的乘积）"] --> SOLVE["标准安全博弈求解，得到胜区 W"]
+    SOLVE --> SHIELD["由 W 合成 shield（反应式系统，保证正确性与最小干预）"]
+    SHIELD --> PRE
+    SHIELD --> POST
+    subgraph PRE["先置 shield（Preemptive，§5.1）"]
+        direction TB
+        P1["每步 shield 给出安全动作列表"] --> P2["学习智能体只在该列表中选动作 a_t"]
+        P2 --> P3["环境执行 a_t，返回 s_t+1 与 r_t+1"]
+    end
+    subgraph POST["后置 shield（Post-posed，§5.2）"]
+        direction TB
+        Q1["智能体先选动作 a1_t"] --> Q2["shield 监控：a1_t 安全则原样转发，不安全则替换为安全动作 a_t"]
+        Q2 --> Q3["环境执行 a_t；智能体据 a_t 与 r_t+1 更新策略"]
+    end
+```
+
+图依据：论文 §4 / §5.1 / §5.2 / §6（shield 合成与两种放置方式）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +119,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Space Scale。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1708.08611>
+- [arXiv PDF](https://arxiv.org/pdf/1708.08611)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§4、§5（5.1 / 5.2）、§6；§7 收敛性与 §8 实验仅略读
 
 ## 推荐继续阅读
 

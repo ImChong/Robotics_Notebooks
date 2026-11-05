@@ -42,6 +42,31 @@ Dual preference optimization for embodied task planning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  subgraph ts["Step-wise 树搜索数据探索（Fig. 2a）"]
+    A["当前状态节点 s_t"] --> B["基础策略采样 K 个候选动作"]
+    B --> C["混合打分：GPT-4o 过程奖励 r_proc 与环境可行性 r_env 等权组合"]
+    C --> D["得分 ≥ 阈值 τ 的动作按广度优先展开<br/>执行后得到下一层状态"]
+    D --> A
+    D --> E["到达目标状态后回溯成功轨迹"]
+    E --> F["构造偏好对：动作选择（与兄弟节点对比）<br/>与状态预测（与替代动作的后继状态对比）"]
+  end
+  subgraph dpo["D2PO 双偏好优化（Fig. 2b）"]
+    G["动作选择损失 L_action"] 
+    H["状态预测损失 L_state（世界建模）"]
+    G --> I["L_total = L_action + λ·L_state"]
+    H --> I
+  end
+  F --> G
+  F --> H
+  I --> J["更新 LVLM 规划器"]
+```
+
+图依据：论文 §3.2 Step-wise Tree Search、§3.3 D2PO Framework（Fig. 2a/2b）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Dual preference optimization for embodied task planning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.10480>
+- [arXiv PDF](https://arxiv.org/pdf/2503.10480)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 Method、§4.1.4 Implementation Details，其余实验与分析略读
 
 ## 推荐继续阅读
 

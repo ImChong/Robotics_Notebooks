@@ -90,5 +90,6 @@ NVIDIA 报告 Flora 在 WGO-Bench、RoboReward、Robometer 等基准上达到有
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Memory before Goal](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Memory_before_Goal__Role_of_Pre-History_Memory_for_Humanoid_Loco-Manipulation/Memory_before_Goal__Role_of_Pre-History_Memory_for_Humanoid_Loco-Manipulation.html)
 - [NVIDIA Flora 项目页](https://research.nvidia.com/labs/gear/flora/)
 - [NVIDIA Flora Hugging Face collection](https://huggingface.co/collections/nvidia/flora)

@@ -42,6 +42,26 @@ Robot finger integrating camera-based tactile sensing, acoustic sensing, and per
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["PolyTouch 指尖<br/>可更换弹性体 · 弯曲镜面 · 侧窗"] --> B["触觉图像与周边视觉<br/>同一相机"]
+    A --> C["接触式麦克风<br/>48 kHz 声学信号"]
+    B --> D["预训练 T3 编码器"]
+    C --> E["log-mel 谱 → AST 编码器"]
+    F["腕部 / 场景相机 RGB"] --> G["预训练 CLIP 特征提取器"]
+    H["本体感知<br/>双臂末端位姿与夹爪宽度"] --> I["MLP 编码"]
+    D --> J["Modality Combiner<br/>触觉与场景特征做 6 层 12 头交叉注意力<br/>池化后与其他模态拼接投影"]
+    G --> J
+    E --> J
+    I --> J
+    J --> K["扩散策略 U-Net 骨干<br/>观测历史 2 · 预测 16 步 · 执行 8 步"]
+    K --> L["双臂 Franka 动作输出"]
+```
+
+图依据：论文 §III-A 传感、§IV-A 模态编码、§IV-B 策略学习。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Robot finger integrating camera-based tactile sensing, acoustic sensing, and per
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
 - 论文：<https://arxiv.org/abs/2504.19341>
+- [arXiv PDF](https://arxiv.org/pdf/2504.19341)：已通读方法部分（实验与附录以略读为准）：§III 机械设计与规格、§IV 多模态机器人学习、§V-A 耐久测试设定；其余实验略读
 
 ## 推荐继续阅读
 

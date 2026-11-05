@@ -4,7 +4,7 @@ type: entity
 tags: [ros2, motion-planning, manipulation, inverse-kinematics, collision-checking, ompl, moveit, pick-and-place, linux-foundation]
 status: complete
 date: 2026-06-15
-updated: 2026-07-21
+updated: 2026-11-03
 related:
   - ../tasks/manipulation.md
   - ../concepts/ros2-basics.md
@@ -16,6 +16,7 @@ related:
   - ./urdf-studio.md
   - ./cad-skills.md
   - ./navigation2.md
+  - ../overview/cpp-motion-control-open-source-libraries-map.md
 sources:
   - ../../sources/sites/moveit-official-portal.md
   - ../../sources/sites/moveit2-picknik-documentation.md
@@ -23,6 +24,7 @@ sources:
   - ../../sources/repos/moveit-moveit2.md
   - ../../sources/repos/moveit-moveit1.md
   - ../../sources/repos/ros-planning-srdfdom.md
+  - ../../sources/blogs/wechat_qt_adventure_cpp_motion_control_libs_2026-11-02.md
 summary: "MoveIt 2 是 ROS 2 上事实标准的机械臂运动规划与操作框架：move_group + Planning Scene + URDF/SRDF 配置，插件化 OMPL/Pilz/CHOMP 规划，经 ros2_control 执行；MoveIt 1（Noetic）为 ROS 1 遗留线，MoveIt Pro 为商业扩展。"
 ---
 
@@ -117,6 +119,20 @@ flowchart TB
 - **误区：MoveIt 2 与 MoveIt 1 launch/API 可直接互换。** 须按 [MIGRATION_GUIDE](https://github.com/moveit/moveit2/blob/main/doc/MIGRATION_GUIDE.md) 迁移 action 名、参数与 ros2_control 映射。
 - **误区：SRDF 可选。** 无 SRDF 则无法正确定义 **planning group**、**disabled collisions** 与 **end effector**，Setup Assistant 产物不完整。
 - **局限：** 默认栈面向 **机械臂/移动操作** 几何规划；**全向移动底盘导航** 用 Nav2；**腿式/人形全身 WBC** 不在 MoveIt 核心范围（可部分借 IK/碰撞库，但非主战场）。
+
+## 一手资料核对（2026-11-03）
+
+> 来自 [C/C++ 运动控制开源库清单](https://mp.weixin.qq.com/s/RIXXIltQ0ABoBO_OVLZTZw) 的交叉核对；以一手资料为准。
+
+| 项 | 内容 |
+|----|------|
+| **仓库** | [https://github.com/moveit/moveit2](https://github.com/moveit/moveit2) |
+| **许可（核查）** | BSD-3-Clause（LICENSE.txt：BSD 3-Clause，Willow Garage） |
+| **最近提交** | 2026-10-28 |
+| **论文 / 文档** | Coleman 等，Reducing the Barrier to Entry of Complex Robotic Software: a MoveIt! Case Study（arXiv:1404.3785，已核对标题；为 MoveIt 1 时期论文） |
+
+- **文章说法：** C++；BSD；机械臂运动规划（OMPL）、碰撞检测、轨迹插值；偏路径规划，不是底层 S 曲线 OTG
+- **核对结论：** 许可一致。
 
 ## 关联页面
 

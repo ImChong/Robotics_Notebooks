@@ -42,6 +42,23 @@ Self-improving video generation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["初始图像观测 x_0 + 任务描述 g"] --> GEN["视频生成模型 f_θ：去噪生成初始视频计划 x̂_0"]
+    GEN --> VLM{"VLM 判定该视频是否可接受（二值 0/1）"}
+    VLM -->|"否"| REF["自条件一致性（self-conditioning consistency）精炼模型 f̂_θ：以上一轮视频 x̂_i 为条件，得到 x̂_i+1"]
+    REF --> VLM
+    VLM -->|"是"| FLOW["光流（optical flow）将选定视频计划转为控制动作"]
+    FLOW --> ENV["环境中执行"]
+    ENV -->|"失败则重新规划（replan）"| IN
+    ENV -->|"成功轨迹加入数据集"| FT["在线微调 f_θ 与 f̂_θ（参数共享）"]
+    FT --> GEN
+```
+
+图依据：论文 §3.1–§3.3、Fig.1、Fig.2、式 (12)–(13) 与附录 Algorithm 2、Algorithm 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +114,7 @@ Self-improving video generation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.10076>
+- [arXiv PDF](https://arxiv.org/pdf/2410.10076)：已通读方法部分（实验与附录以略读为准）：§3.1 自条件一致性精炼、§3.2 VLM 引导推理、§3.3 在线微调、附录 A 算法
 
 ## 推荐继续阅读
 

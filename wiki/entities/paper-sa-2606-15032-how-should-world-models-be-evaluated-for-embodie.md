@@ -42,6 +42,28 @@ Proposes an L0-L7 evaluation ladder spanning from visual plausibility to policy 
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  Q["核心问题：对用于 embodied decision-making 的 world model，应测什么？<br/>论点：评测应关注 interventional reasoning、policy evaluation、planning、policy optimization，而非仅视频逼真度"] --> S["§3 What Is Being Evaluated?<br/>按论文实际评测内容梳理近期文献；3.6 The world-model claim"]
+  S --> M["诊断：claim/evidence mismatch<br/>较低层证据被用来支撑更强的决策层主张"]
+  S --> L["§4 World-Model Evaluation Ladder L0–L7"]
+  L --> L1["L0–L3 偏产物质量：L0 Visual plausibility、L1 Logged-future prediction、L2 Semantic alignment、L3 Physical plausibility"]
+  L --> L2["L4–L7 偏决策效用：L4 Action controllability / interventional fidelity、L5 Reward, value, and outcome fidelity、L6 Policy evaluation and ranking、L7 Policy optimization / planning utility"]
+  M --> F["§5 Decision-Making-Centric Evaluation Framework<br/>先声明 decision contract"]
+  L1 --> F
+  L2 --> F
+  F --> P["§6 Benchmark Protocol"]
+  P --> P1["Step 0 声明 world-model contract；Step 1 构造 policy 与 intervention splits；Step 2 L0–L3 仅作 diagnostics"]
+  P1 --> P2["Step 3 interventional action fidelity；Step 4 closed-loop fixed-policy rollouts；Step 5 固定预算下的 policy optimization"]
+  P2 --> P3["Step 6 adversarial exploitability 与 uncertainty；Step 7 hidden tasks、held-out policies、统计报告；Step 8 报告 decision-utility profile"]
+  P3 --> R["real-robot 的 minimal feasible variant"]
+  R --> D["§7 Discussion and Conclusion<br/>7.1 为何区分重要；7.2 反对意见与适用范围；7.3 局限与开放问题"]
+```
+
+图依据：立场论证与评测框架图，论文摘要与 §1 贡献列表、§3.6、§4（Table 7 的 L0–L7 阶梯）、§5、§6（Step 0–8）、§7 小节标题；本图只给论证结构与协议步骤，不含论文的统计结论。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Proposes an L0-L7 evaluation ladder spanning from visual plausibility to policy 
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.15032>
+- [arXiv PDF](https://arxiv.org/pdf/2606.15032)：已通读摘要、§1、§2 开头、§4 的 L0–L7 定义与 Table 7、§5 开头、§6 的 Step 0–8 标题与部分正文、§7 小节标题；§3 文献综述表与附录以略读为准。
 
 ## 推荐继续阅读
 

@@ -55,6 +55,57 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`uv run umi-process <bag> --vocab ./config/ORBvoc.txt --settings ./config/intel_d455.yaml --out sessions/<session_id>/`（`src/umi_dex/cli/process.py` 的 `main`，由 `pyproject.toml` 的 `[project.scripts]` 注册）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 shell
+    participant P as cli/process.py main
+    participant BR as bag_reader.BagReader
+    participant CD as controllers/can_decode CanDecoder
+    participant UD as controllers/usart_decode UsartDecoder
+    participant CA as controllers/calibrate Calibrator
+    participant VE as video/encode encode_d405_from_messages
+    participant EP as episodes extract_episodes
+    participant RP as slam/replay replay_bag
+    participant OR as orbslam3 System
+    participant EX as slam/exporter export
+    participant AS as dataset/assemble assemble
+    participant SM as session_meta SessionMeta
+    Note over U,P: ROS2 录制侧（ros2/umi_dex_bringup）不在本图内
+    U->>P: umi-process bag 与 --vocab --settings --out
+    P->>SM: compute_bag_sha256 与 write_bag_sha256
+    P->>BR: 打开 bag 并 available_topics
+    alt 存在 /hand/can_raw
+        loop 每个 CAN 帧
+            P->>CD: feed_can_frame
+            P->>CA: map_counts 得到关节角
+        end
+    else 存在 /hand/usart_raw
+        loop 每个 USART 帧
+            P->>UD: feed_usart_frame
+            P->>CA: map_counts 得到关节角
+        end
+    end
+    P->>VE: encode_d405_from_messages 写 d405_color.mp4
+    P->>EP: extract_episodes 并写 episodes.csv
+    P->>RP: replay_bag 运行 SLAM 回放
+    RP->>BR: read_messages 读取 IR1 IR2 IMU
+    RP->>OR: System 与 initialize
+    loop 每个 IR1 帧（50 ms 内配对最近 IR2）
+        RP->>OR: process_stereo_inertial_enhanced（stereo_only 时为 process_stereo_enhanced）
+    end
+    RP->>OR: get_trajectory_points get_tracked_mappoints get_map_info shutdown
+    RP-->>P: ReplayResult
+    P->>EX: export 写 trajectory 与 map 等文件
+    P->>AS: assemble 写 aligned_dataset 与可选 episodes
+    P->>SM: meta.write
+```
+
+图依据：umi-dex@b5c88d0，README.md、pyproject.toml、docs/processing.md、src/umi_dex/cli/process.py（完整读过）、cli/extract.py、cli/slam.py、cli/inspect.py（读过入口与参数）、src/umi_dex/bag_reader.py（类与方法定义）、slam/replay.py（replay_bag 全函数）、slam/exporter.py 与 dataset/assemble.py（仅 grep 函数定义与输出文件名）、controllers/can_decode.py（仅 grep 类与方法定义）；usart_decode.py、calibrate.py、video/encode.py、episodes.py 仅见 process.py 中的调用。未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +117,8 @@ institutions:
 - [umi-dex 源码归档](../../sources/repos/umi-dex.md)（<https://github.com/linker-bot/umi-dex>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：linker-bot/umi-dex@b5c88d0，读过 README.md、pyproject.toml、docs/processing.md、src/umi_dex/cli/{process,extract,slam,inspect}.py、src/umi_dex/slam/replay.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

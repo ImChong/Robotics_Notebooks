@@ -42,6 +42,22 @@ Efficient occupancy world model via decoupled dynamic flow and image-assisted tr
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：历史 3D 占用、历史图像、自车位姿"] --> TOK["Tokenization：占用转 BEV 并分 patch；图像 patch 编码；位姿线性层 + ReLU"]
+    TOK --> ENC["Cross-modal spatial-temporal encoder：masked SALT 注意力块 + 时间位置编码"]
+    ENC --> OCC["Occupancy decoder：Flow decoder 预测未来流"]
+    OCC --> WARP["动态体素按流 warp 当前帧特征，静态体素流设为 0，再经 CNN refinement"]
+    WARP --> FUT["并行（非自回归）输出未来占用"]
+    ENC --> POSE["Pose decoder：未来 ego query 自注意力 + 交叉注意力，输出未来位姿"]
+    ENC -.->|"仅训练"| IMG["Image decoder：输出未来图像"]
+    IMG -.-> RPC["Image-assisted training：体渲染深度 + 光度一致性约束占用预测"]
+```
+
+图依据：论文 §3.1 Problem Formulation、§3.2 Framework Overview、§3.3–3.6 / Fig.2、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +112,7 @@ Efficient occupancy world model via decoupled dynamic flow and image-assisted tr
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.13772>
+- [arXiv PDF](https://arxiv.org/pdf/2412.13772)：已通读方法部分（实验与附录以略读为准）：§3（3.1–3.6）
 
 ## 推荐继续阅读
 

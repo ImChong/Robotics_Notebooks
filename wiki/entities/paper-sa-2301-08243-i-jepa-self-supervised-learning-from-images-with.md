@@ -42,6 +42,26 @@ Self-supervised learning from images with a joint-embedding predictive architect
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  Y["输入图像 y"] --> P["切成 N 个不重叠 patch"]
+  P --> TE["Target encoder f_θ̄<br/>(EMA 更新)"]
+  TE --> ST["patch 级目标表征 s_y"]
+  ST --> TB["随机采样 M 个 target block<br/>(各取 s_y(i))"]
+  P --> CB["采样 1 个 context block<br/>并去掉与 target 重叠的部分"]
+  CB --> CE["Context encoder f_θ<br/>(ViT，仅处理可见 patch)"]
+  CE --> PR["Predictor g_φ<br/>(窄 ViT + 目标位置 mask token)"]
+  PR --> PS["预测表征 ŝ_y(i)"]
+  PS --> L["平均 L2 损失<br/>(表征空间，非生成式)"]
+  TB --> L
+  L -. "梯度更新 θ, φ" .-> CE
+  CE -. "EMA 更新 θ̄" .-> TE
+```
+
+图依据：论文 §3 Method / Fig.3（I-JEPA 架构）、Fig.4（context/target 掩码策略）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Self-supervised learning from images with a joint-embedding predictive architect
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2301.08243>
+- [arXiv PDF](https://arxiv.org/pdf/2301.08243)：已通读方法部分（实验与附录以略读为准）：§1 引言（略读）、§3 Method（Targets / Context / Prediction / Loss）、Fig.3–4
 
 ## 推荐继续阅读
 

@@ -42,6 +42,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Adaptation。 本
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    XS["带标签源域样本 xs"] --> F["特征提取器 F，得到特征表示 f"]
+    XT["无标签目标域样本 xt"] --> F
+    F --> G["分类器 G，得到预测 g"]
+    F --> COND
+    G --> COND
+    COND["条件化 T(h)，h = (f, g)：df × dg ≤ 4096 时用多线性映射 f ⊗ g，否则用随机多线性映射 (Rf f) ⊙ (Rg g) / √d"] --> D["条件域判别器 D：区分源域 / 目标域"]
+    G --> ENT["CDAN+E：由预测熵 H(g) 得样本权重 w = 1 + e^(−H(g))"]
+    ENT -.-> D
+    G --> LS["源域分类损失 L"]
+    D --> ADV["极小极大训练：D 最大化域判别目标；F、G 最小化分类损失并最大化 D 的损失（权重 λ）"]
+    LS --> ADV
+```
+
+图依据：论文 §3.1–§3.3、Fig. 1（CDAN / CDAN+E）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / Domain Adaptation。 本
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1705.10667>
+- [arXiv PDF](https://arxiv.org/pdf/1705.10667)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3（3.1–3.4）、§4.1 实验设定；§3.4 泛化误差分析与 §4 结果表略读
 
 ## 推荐继续阅读
 

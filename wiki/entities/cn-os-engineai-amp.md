@@ -61,11 +61,60 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`python scripts/train.py --task=Flat-AMP-PM01-v0 --num_envs 4096 --headless --run_name <name>`（训练）；评估与导出为 `python scripts/play.py --task=Flat-AMP-PM01-v0 --num_envs 128 --load_run <name>`（play 会调用 `export_policy_to_onnx`）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant CLI as scripts/train.py main
+    participant APP as AppLauncher Isaac Sim
+    participant REG as engineai_lab.tasks gym.register
+    participant ENV as ManagerBasedRLEnv Flat-AMP-PM01-v0
+    participant RSL as RslRlVecEnvWrapper OnPolicyRunner
+    participant AMP as AMPPPO algorithms/amp_ppo.py
+    participant DISC as Discriminator utils/AMP_discriminator.py
+    participant DL as AMPDataLoader utils/AMP_data_loader.py
+
+    CLI->>APP: AppLauncher(args_cli) 启动仿真
+    CLI->>REG: import engineai_lab.tasks 注册任务
+    CLI->>CLI: hydra_task_config 读取 flat_amp_env_cfg 与 amp_ppo_cfg
+    CLI->>ENV: gym.make(task, cfg=env_cfg)
+    CLI->>RSL: RslRlVecEnvWrapper(env) 与 OnPolicyRunner(env, agent_cfg)
+    RSL->>AMP: construct_algorithm
+    AMP->>DISC: 构造 Discriminator(frame_dim, frame_length, hidden dims)
+    AMP->>DL: 构造 AMPDataLoader(dataset_path)
+    DL->>DL: 读取 dataset/config/dataset.yaml 中的 motions 列表并加载 npz
+    CLI->>RSL: runner.learn(max_iterations)
+
+    loop 每轮迭代 rollout 与更新
+        RSL->>ENV: step(actions)
+        ENV-->>RSL: obs 含 amp 观测 与 rewards
+        RSL->>AMP: process_env_step(obs, rewards, dones)
+        AMP->>DISC: get_amp_reward(obs amp)
+        DISC-->>AMP: style reward
+        AMP->>AMP: total = task reward + style_weight 乘 amp reward
+        RSL->>AMP: update()
+        opt ppo_update_counter 为 4 的倍数
+            AMP->>DL: mini_batch_generator 取专家样本
+            AMP->>DISC: 专家与策略得分的 MSE 判别损失加梯度惩罚
+            AMP->>AMP: disc_optimizer 更新判别器
+        end
+        AMP->>AMP: PPO.update 更新策略与价值网络
+    end
+    CLI->>CLI: 保存 checkpoint 到 logs/rsl_rl/<experiment_name>
+```
+
+图依据：engineai-robotics/engineai_amp@83ba64b，读过 `README.md`（全文）、`scripts/train.py`（全文）、`scripts/play.py`（grep 与 main 段）、`source/engineai_lab/tasks/velocity/config/pm01/__init__.py`（gym.register 段）、`source/engineai_lab/tasks/velocity/config/pm01/agents/amp_ppo_cfg.py`（grep）、`source/engineai_lab/tasks/velocity/config/pm01/flat_amp_env_cfg.py`（grep）、`source/engineai_lab/algorithms/amp_ppo.py`（`construct_algorithm`、`process_env_step`、`update` 段与 grep）、`source/engineai_lab/utils/AMP_data_loader.py` 与 `AMP_discriminator.py`（grep）、`dataset/config/dataset.yaml`。`rsl_rl` 与 `isaaclab` 为外部依赖，未读。未运行代码。时序图依据以上文件。
+
 ## 参考来源
 
 - [engineai_amp 源码归档](../../sources/repos/engineai_amp.md)（<https://github.com/engineai-robotics/engineai_amp>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：engineai-robotics/engineai_amp@83ba64b，读过 `README.md`、`scripts/train.py`、`scripts/play.py`（部分）、`source/engineai_lab/tasks/velocity/config/pm01/__init__.py`、`agents/amp_ppo_cfg.py`、`flat_amp_env_cfg.py`（grep）、`source/engineai_lab/algorithms/amp_ppo.py`（部分）、`utils/AMP_data_loader.py` 与 `AMP_discriminator.py`（grep）、`dataset/config/dataset.yaml`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

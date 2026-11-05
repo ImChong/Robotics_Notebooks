@@ -41,6 +41,22 @@ summary: "将域随机化从视觉扩展到质量、摩擦、时延等动力学�
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **域随机化** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["每个 episode 开始：采样目标 g 与动力学参数 μ（质量、阻尼、摩擦、控制器增益、动作时间步、观测噪声等 95 个）"] --> ROLL["在 MuJoCo 仿真中用当前策略 rollout"]
+    ROLL --> BUF["回放缓冲 M：存储 (τ, r, g, μ)"]
+    BUF --> HER["以概率 k 用 HER 重放新目标并重算稀疏奖励"]
+    HER --> RDPG["RDPG 更新"]
+    RDPG --> POL["策略 π(s, z, g)：LSTM 记忆 z 由历史状态与动作推断动力学（不接收 μ）"]
+    RDPG --> CRITIC["全知评论家 Q(s, a, y, g, μ)：训练时额外输入 μ"]
+    POL --> ROLL
+    POL --> DEPLOY["直接部署到真实 Fetch 机械臂做推冰球任务"]
+```
+
+图依据：论文 §IV 方法（A 任务、B 状态与动作、C 动力学随机化、D 自适应策略、E RDPG 与 Algorithm 1、F 网络结构）/ §III-B HER。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +105,7 @@ summary: "将域随机化从视觉扩展到质量、摩擦、时延等动力学�
 - [freedof_sim2real_10_peng-dynamics-randomization-sim2real.md](../../sources/papers/freedof_sim2real_10_peng-dynamics-randomization-sim2real.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/1710.06537)：已通读方法部分（实验与附录以略读为准）：§II 相关工作、§III 背景（含 HER）、§IV 方法（A-F，含 Algorithm 1）
 
 ## 推荐继续阅读
 

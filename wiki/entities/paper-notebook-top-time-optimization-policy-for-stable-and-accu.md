@@ -43,6 +43,30 @@ summary: "人形能做多样操作，前提是鲁棒精确的站立控制器。�
 - **VAE 动作先验**是常用的紧凑表示手段；
 - 站立操作是人形干活的基础，稳准快都重要。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    DS["上身动作片段数据集 M<br/>m_t = (r_t, θ_t, q_upper, dq_upper)"] --> VAE
+    subgraph S1["阶段 1：提取 Motion Prior (§III-B)"]
+        VAE["β-VAE：Encoder E 将长度 2W+1 的动作窗口 M_t 编码为潜变量 z_t (dz=64)<br/>Decoder D 重构，重构损失 L_rec"]
+    end
+    VAE -->|"(m_t, z_t)"| LB
+    subgraph S2["阶段 2：Decoupling 下肢策略 (§III-C)"]
+        LB["PPO 训练目标条件下肢平衡策略 π(a_t | s_t, g_t)<br/>g_t = (m_t, z_t)；上身动作幅度课程 α_i；时间戳固定"]
+    end
+    VAE -->|"(m_t, z_t)"| TOP
+    subgraph S3["阶段 3：Time Optimization Policy (§III-D)"]
+        TOP["TOP 策略 Δt_seq = π_θ(m_t, z_t, s_t, h_t)<br/>预测未来 N=10 步时间戳；action chunking + 指数加权平均平滑<br/>监督学习给初值：L_total = λ_sup·L_sup + λ_RL·L_RL (PPO)"]
+    end
+    LB -.->|"TOP 与控制器分开训练（控制器更换时可重训 TOP）"| TOP
+    TOP -->|"Δt_t"| INT["对动作线性插值<br/>m'_t = interpolate(m_t-1, m_(t+Δt))"]
+    INT -->|"重定时后的上身动作 + z_t"| LB2["同一下肢 RL 策略<br/>输出下肢关节动作 a_t"]
+    LB2 --> PD["PD 力矩控制器<br/>上身跟踪动作，下肢执行 a_t"]
+```
+
+图依据：论文 §III-A 至 §III-D / Fig.2、Eq.(1)–(8)
+
 ## 解决什么问题
 
 站立操作要**平衡 + 精度 + 时间效率**三者兼顾： - 难**精控高维上身关节**； - **上身快速运动**时，扰动大，难同时稳与准； - 一味强化下身抗扰**治标不治本**。
@@ -131,6 +155,7 @@ TOP 要：通过**调上身动作时间轨迹**，从源头减轻平衡负担，
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/TOP__Time_Optimization_Policy_for_Stable_and_Accurate_Standing_Manipulation/TOP__Time_Optimization_Policy_for_Stable_and_Accurate_Standing_Manipulation.html>
 - 论文：<https://arxiv.org/abs/2508.00355>
 - 论文正文（Table II–III、结论）：<https://arxiv.org/html/2508.00355>
+- [arXiv PDF](https://arxiv.org/pdf/2508.00355)：已通读方法部分（实验与附录以略读为准）：§III Method（A 概述、B 提取 Motion Priors、C Decoupling 策略训练、D Time Optimization Policy）；§IV 实验略读
 
 ## 推荐继续阅读
 

@@ -42,6 +42,27 @@ Introduces FlipSet, a diagnostic benchmark for Level-2 visual perspective taking
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["FlipSet 构建：28 个 2D 字符串题目<br/>卡片 + 对面的毛绒猴，需 180° 心理旋转"] --> B["每题四选项<br/>correct / egocentric / confusable / random"]
+    B --> C["12 种选项排列 × 28 题 = 336 实例 / 模型<br/>消除位置偏差"]
+    C --> D["主实验：103 个 VLM，zero-shot<br/>L2 VPT 提问"]
+    D --> E["回答归类：Correct / Egocentric / Confusable / Random / Fail"]
+    E --> F["指标：准确率（chance 25%）与错误类型分布"]
+    A --> G["控制实验：24 个模型，同一视觉刺激"]
+    G --> G1["ToM：猴子看到的字符串是否不同"]
+    G --> G2["Mental Rotation：旋转 180° 后是什么"]
+    G --> G3["L2 VPT：猴子看到什么"]
+    G1 --> H["对比三项表现与相关性<br/>分析 compositional deficit"]
+    G2 --> H
+    G3 --> H
+    D --> I["CoT 推理轨迹的定性分析"]
+```
+
+图依据：基准构建与评测协议图，论文 Methods（Main Experiments / Control Experiments / Model Evaluations）与 Fig. 1、Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Introduces FlipSet, a diagnostic benchmark for Level-2 visual perspective taking
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2602.15892>
+- [arXiv PDF](https://arxiv.org/pdf/2602.15892)：已通读摘要、Introduction、Related Work、Methods（Main / Control Experiments、Model Evaluations）、Results 与 Discussion / Conclusion 的文字部分；表格数字未逐项核对。
 
 ## 推荐继续阅读
 

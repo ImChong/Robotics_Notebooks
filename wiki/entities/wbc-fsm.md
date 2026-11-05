@@ -109,6 +109,52 @@ G1 板端 (PC2 / aarch64)
 - **硬绑 G1 + Unitree SDK2**：移植到其他机器人平台需大幅重写接口层
 - **动作类型受限**：当前 ONNX 模型仅覆盖 LAFAN1 dance12 动作，扩展需重新训练
 
+## 源码运行时序图
+
+入口：控制器 `controller/build/wbc_fsm`（`src/main.cpp` 的 `main`，先 `cmake .. && make -j4` 构建）；仿真时 `unitree_mujoco` 与之并行运行，通过 DDS 话题（`HG_CMD_TOPIC` / `HG_STATE_TOPIC`）交换数据。
+
+```mermaid
+sequenceDiagram
+    participant MAIN as main()（src/main.cpp）
+    participant IO as IOSDK（interface/IOSDK.cpp，Unitree SDK2）
+    participant CC as CtrlComponents / ControlFrame
+    participant FSM as FSM（FSM/FSM.cpp）
+    participant WBC as State_WBC（FSM/State_WBC.cpp）
+    participant ORT as ONNX Runtime（Ort::Session）
+    participant SIM as unitree_mujoco / 真机（外部）
+
+    MAIN->>MAIN: setProcessScheduler（SCHED_FIFO）、注册 SIGINT
+    MAIN->>IO: new IOSDK：ChannelFactory Init（当前为 "lo"）、发布 lowcmd、订阅 lowstate
+    MAIN->>CC: CtrlComponents(ioInter)，dt = 0.02 s
+    MAIN->>FSM: new ControlFrame → new FSM（创建各状态）
+    FSM->>FSM: initialize：进入 Passive 状态
+    loop 每个控制周期（while running）
+        MAIN->>FSM: ctrlFrame.run → FSM::run
+        SIM-->>IO: LowState 话题（LowStateHandler 校验 CRC）
+        FSM->>CC: recvState → IOSDK::recvState（加锁拷贝状态）
+        alt 模式 NORMAL
+            FSM->>FSM: 当前状态 run()，checkChange()
+            opt 状态需要切换
+                FSM->>FSM: 进入 CHANGE：exit 旧状态、enter 新状态
+            end
+        end
+        opt 当前为 WBC 状态
+            FSM->>WBC: run()：refer_idx 前进，_observations_compute()
+            WBC->>ORT: _action_compute → _session->Run
+            ORT-->>WBC: 动作输出
+            WBC->>WBC: 目标关节角写入 motorCmd（mode 10，Kp/Kd）
+        end
+        FSM->>CC: sendCmd → IOSDK::sendCmd
+        CC->>IO: lowcmd_publisher_->Write
+        IO-->>SIM: LowCmd 话题
+        FSM->>FSM: absoluteWait(dt)
+    end
+    MAIN->>MAIN: 退出循环，delete ctrlComp
+```
+
+图依据：ccrpRepo/wbc_fsm@4b9afa2，实际读过 `README.md`（构建与仿真运行步骤）、`config/wbc.json`、`src/main.cpp`、`src/control/ControlFrame.cpp`、`src/FSM/FSM.cpp`（`run`、`initialize`、`getNextState`）、`src/FSM/State_WBC.cpp`（`run`、`enter` 与 `_action_compute` 的调用段落，ONNX 会话加载）、`src/interface/IOSDK.cpp`（构造、`recvState`、`sendCmd`、`LowStateHandler` 的段落），以及 `include/control/CtrlComponents.h`。`State_WBC` 的观测量构造细节与 `checkChange` 的具体条件未逐行追踪。未编译、未在仿真或真机上运行。
+
+
 ## 参考来源
 
 - [sources/repos/wbc_fsm.md](../../sources/repos/wbc_fsm.md) — 仓库原始归档
@@ -116,6 +162,7 @@ G1 板端 (PC2 / aarch64)
 - [LaFAN1 动捕数据集](./lafan1-dataset.md) — 许可、规模与工程要点（实体页）
 - [ccrpRepo/wbc_fsm GitHub](https://github.com/ccrpRepo/wbc_fsm) — 代码仓库
 - Harvey et al., *Robust Motion In-Betweening*, SIGGRAPH 2020 — LAFAN1 数据集来源论文
+- 源码核对（2026-11-02）：ccrpRepo/wbc_fsm@4b9afa2，读过 README.md、config/wbc.json、src/main.cpp、src/control/ControlFrame.cpp、src/FSM/FSM.cpp、src/FSM/State_WBC.cpp、src/interface/IOSDK.cpp、include/control/CtrlComponents.h；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

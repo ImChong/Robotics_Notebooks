@@ -103,6 +103,7 @@ Methodology for stress-testing autonomous driving policies under adversarial con
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2003.01197>
+- 核对（2026-11-02）：arXiv:2003.01197 实为《Learning to Collide: An Adaptive Safety-Critical Scenarios Generating Method》(Ding 等, 2020-03-02)，与本页不符，待查（未检索到题为 Realistic Adversarial Driving 的 Wang 等论文；候选 AdvSim（2101.06549, Jingkang Wang 等）题名不符，未采用）
 
 ## 推荐继续阅读
 

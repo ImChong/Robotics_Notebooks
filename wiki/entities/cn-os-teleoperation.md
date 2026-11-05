@@ -55,6 +55,47 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python -m teleoperation --config-name teleop robot=gr1t1_legacy hand=fourier_dexpilot_dhx camera=oak_97 robot.visualize=true mocap=avp sim=true`（README 示例；`src/teleoperation/__main__.py` 调 `main.main()`，Hydra 读 `configs/teleop.yaml`）。`sim=false` 时才接真机。
+
+```mermaid
+sequenceDiagram
+    participant H as VR 头显（AVP / Quest，WebXR）
+    participant TV as OpenTeleVision (television.py，基于 Vuer)
+    participant M as main.main() (main.py)
+    participant R as TeleopRobot (player.py，继承 DexRobot/IKRobot)
+    participant P as VuerPreprocessor (preprocess.py)
+    participant U as Upsampler 线程 (upsampler.py)
+    participant A as GR1Robot 适配器 (adapter/robots/grx.py)
+    participant C as fourier_grx_client.RobotClient
+    M->>R: TeleopRobot(cfg)
+    R->>R: hydra 实例化 camera，创建 OpenTeleVision 与 VuerPreprocessor
+    alt sim=false
+        R->>A: hydra 实例化 cfg.robot.instance，connect()
+        R->>U: Upsampler(client, target_hz)
+    else sim=true
+        R->>R: DummyRobot / DummyDexHand
+    end
+    H->>TV: on_cam_move / on_hand_move 事件（头部与手腕矩阵、手部关键点）
+    TV-->>R: 首次收到手部数据置 connected=True
+    loop 每帧，频率 cfg.frequency
+        M->>R: step()
+        R->>P: processor.process(tv) 坐标系 y-up 转 z-up，得到 head/wrist/hand 矩阵
+        R->>R: hand_retarget.retarget(left_hand_mat, right_hand_mat)
+        R-->>M: head_mat, 左右 wrist_mat, 左右手 qpos
+        M->>R: solve(left_wrist, right_wrist, head, dt) 调 pink.solve_ik 做差分 IK
+        M->>M: FSM 状态推进（按空格：CALIBRATING 到 ENGAGED）
+        M->>R: control_hands(left_qpos, right_qpos)
+        M->>R: control_joints() 后 upsampler.put(qpos)
+        U->>A: _send_command 调 command_joints(command)
+        A->>C: client.move_joints(ControlGroup.ALL, positions)
+    end
+    Note over M,R: cfg.recording.enabled 时，COLLECTING 状态下 data_dict.add_action / add_state，回合结束 recording.save_episode
+```
+
+图依据：FFTAI/teleoperation@f90a64a，读过 README.md、src/teleoperation/__main__.py、main.py、player.py（TeleopRobot）、television.py、preprocess.py（process）、retarget/robot.py（solve）、upsampler.py、adapter/robots/grx.py。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +107,7 @@ institutions:
 - [teleoperation 源码归档](../../sources/repos/teleoperation.md)（<https://github.com/FFTAI/teleoperation>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：FFTAI/teleoperation@f90a64a，读过 README.md、src/teleoperation/__main__.py、main.py、player.py、television.py、preprocess.py、retarget/robot.py、upsampler.py、adapter/robots/grx.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

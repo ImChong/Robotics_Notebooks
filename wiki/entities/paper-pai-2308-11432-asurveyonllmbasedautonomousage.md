@@ -40,6 +40,36 @@ Comprehensive survey on LLM-based agents.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ROOT["LLM-based Autonomous Agents 综述：构建 / 应用 / 评测"] --> CON["2 Agent Construction"]
+  ROOT --> APP["3 Applications"]
+  ROOT --> EVA["4 Evaluation"]
+  CON --> ARCH["2.1 Agent Architecture Design（Fig. 2 统一框架）"]
+  CON --> CAP["2.2 Agent Capability Acquisition"]
+  ARCH --> PRO["Profiling Module：Profile Contents / Generation Strategy（Handcrafting, LLM-Generation, Dataset Alignment）"]
+  ARCH --> MEM["Memory Module：Memory Structure / Formats / Operation（Reading, Writing, Reflection）"]
+  ARCH --> PLA["Planning Module：Planning w/o Feedback / w/ Feedback"]
+  ARCH --> ACT["Action Module：Action Target / Production / Space / Impact"]
+  PRO -->|"影响"| MEM
+  PRO -->|"影响"| PLA
+  MEM --> ACT
+  PLA --> ACT
+  PRO --> ACT
+  CAP --> FT["With Fine-tuning：人工标注 / 真实世界 / LLM 生成数据集"]
+  CAP --> NFT["Without Fine-tuning：Prompt Engineering / Mechanism Engineering"]
+  APP --> SS["3.1 Social Science"]
+  APP --> NS["3.2 Natural Science"]
+  APP --> EN["3.3 Engineering（含 Robotics & Embodied AI）"]
+  EVA --> SUB["4.1 Subjective Evaluation：Human Annotation, Turing Test"]
+  EVA --> OBJ["4.2 Objective Evaluation：Metric, Protocol, Benchmark"]
+  ROOT --> CH["6 Challenges：Role-playing、Human Alignment、Prompt Robustness、Hallucination、Knowledge Boundary"]
+```
+
+图依据：综述分类体系图，依据论文 §1 的组织说明、Fig. 2（统一架构框架：「profiling module 影响 memory 与 planning module，三者共同影响 action module」）、§2.2 的两类能力获取策略、Fig. 5（应用与评测体系）及 §6 小节标题；节点名取自原文。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +133,7 @@ Comprehensive survey on LLM-based agents.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2308.11432>
+- [arXiv PDF](https://arxiv.org/pdf/2308.11432)：已通读 §1 引言、§2 Agent Construction 开头与 §2.1.1 Profiling、Fig. 2/Fig. 5 分类图、§2.2/§3/§4/§6 的小节标题；其余各节正文与附录未逐节通读
 
 ## 推荐继续阅读
 

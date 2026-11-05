@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, vision-language-navigation, whole-body, unitree-g1, corl-2026, pku, berkeley, princeton, google-deepmind]
 status: complete
-updated: 2026-09-24
+updated: 2026-11-04
 arxiv: "2609.09158"
 venue: "CoRL 2026"
 related:
@@ -136,5 +136,6 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：TANGO](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/TANGO__Whole-Body_Vision-Language_Navigation_in_Cluttered_Environments/TANGO__Whole-Body_Vision-Language_Navigation_in_Cluttered_Environments.html)
 - [TANGO 项目页](https://tango-vla.github.io/tango-vla.github.io)
 - [原文 PDF](https://arxiv.org/pdf/2609.09158)

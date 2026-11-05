@@ -42,6 +42,27 @@ Mitigates covariate shift in imitation learning for AVs using latent space gener
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["输入：连续 2 帧前视 RGB（10 Hz）、自车运动、期望导航路径 BEV、车速"] --> B["感知编码器：DINOv2 特征化 + 跨帧 cross-attention + self-attention + 可学习查询<br/>输出观测特征 o_t"]
+    B --> C["状态估计器（MLP）：后验 q(ŝ_t | o_t, H_t-1, 专家动作 a*_t-1)"]
+    D["历史网络（GRU）：隐状态 H_t-1"] --> C
+    D --> W["世界模型预测器（MLP）：先验 p(s_t | H_t-1, a_t-1)，潜空间生成式转移"]
+    C --> E["以一定概率选 s_t（先验采样）或 ŝ_t（后验）作下一步状态"]
+    W --> E
+    E --> F["驾驶策略网络（4 层 MLP）：输出转向、加速/制动"]
+    E --> G["解码器：重建透视 RGB 与 BEV 语义图（VideoLDM 型潜扩散）"]
+    F -->|"a_t 作为下一步世界模型输入"| W
+    E --> D
+    F --> L["损失 L = 重建 + KL：训练时对 12 步整段端到端反传<br/>部署时不运行世界模型预测器"]
+    G --> L
+    W --> L
+```
+
+图依据：论文 §III-A/B/C、Fig.2–3（箭头 E→D 对应 Fig.2 中状态样本递归进入历史网络，文中为“state samples are recursively used for the next iterations via the history network”）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Mitigates covariate shift in imitation learning for AVs using latent space gener
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2409.16663>
+- [arXiv PDF](https://arxiv.org/pdf/2409.16663)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 相关工作、§III 方法（系统架构、组件细节、训练与损失）、§IV-A/B 实验设定
 
 ## 推荐继续阅读
 

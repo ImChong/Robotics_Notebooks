@@ -52,6 +52,55 @@ Claude Engineering Skills（Soljourner/claude-engineering-skills）是面向机�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 MIT。 
 
+## 源码运行时序图
+
+入口：`python skills/helpers/pump-selection-helper/selector.py`（交互模式；加 `--example` 运行内置三个示例）
+
+说明：本仓库没有统一的程序入口，多数 Skill 由 Claude 读取 `SKILL.md` 后按需 import 辅助脚本。下图只覆盖仓库内唯一带 `main()` 命令行入口的 `pump-selection-helper/selector.py`，未覆盖其他脚本的调用链。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户终端
+    participant M as selector.py main
+    participant I as interactive_mode
+    participant S as PumpSelector
+    participant F as format_recommendations
+    U->>M: python selector.py
+    alt 带 --example 参数
+        M->>U: 运行三个内置示例并打印（不进入交互）
+    else 默认
+        M->>I: interactive_mode()
+        I->>U: input 输入流量 gpm、扬程 ft、粘度 cP、转速 rpm
+        U-->>I: 数值字符串（空则取默认值）
+        I->>U: input 腐蚀、磨蚀、剪切敏感、恒流 四个 y/n
+        U-->>I: y 或 n
+        I->>S: PumpSelector()
+        I->>S: calculate_specific_speed(flow, head, rpm)
+        S-->>I: 比转速 ns
+        I->>S: select_pump(flow, head, 粘度, 转速, 各标志位)
+        opt 粘度小于 1000 cP
+            S->>S: evaluate_centrifugal(flow, head, 粘度, ns)
+        end
+        S->>S: evaluate_gear_pump(flow, head, 粘度)
+        S->>S: evaluate_piston_pump(flow, head, 粘度)
+        S->>S: evaluate_diaphragm_pump(flow, head, 腐蚀, 磨蚀)
+        S->>S: evaluate_screw_pump(flow, head, 粘度, 剪切敏感)
+        S->>S: 按 suitability_score 降序排序
+        S-->>I: List of PumpRecommendation
+        I->>F: format_recommendations(recs, flow, head, 粘度, ns)
+        F-->>I: 格式化文本
+        I->>U: print 选型结果
+        opt 推荐列表非空
+            I->>S: calculate_brake_horsepower(flow, head, 0.75)
+            S-->>I: 轴功率 BHP
+            I->>U: print 估算电机功率
+        end
+        Note over I,U: 输入非数字时捕获 ValueError 打印错误；Ctrl+C 打印已取消
+    end
+```
+
+图依据：Soljourner/claude-engineering-skills@1c3340b，实际读过 `README.md`（前 150 行）、`skills/helpers/pump-selection-helper/selector.py`（完整）、`skills/helpers/fluid-property-calculator/SKILL.md` 与 `calc.py`（前段）。未运行代码。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -62,6 +111,7 @@ Claude Engineering Skills（Soljourner/claude-engineering-skills）是面向机�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/soljourner-claude-engineering-skills.md)
 - [Soljourner/claude-engineering-skills 官方仓库](<https://github.com/Soljourner/claude-engineering-skills>)
+- 源码核对（2026-11-02）：Soljourner/claude-engineering-skills@1c3340b，读过 README.md（前 150 行）、skills/helpers/pump-selection-helper/selector.py、skills/helpers/fluid-property-calculator/SKILL.md 与 calc.py（前段）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

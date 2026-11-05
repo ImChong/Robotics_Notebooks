@@ -43,6 +43,34 @@ Embodied world model for future video anticipation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph ARCH["EVA 结构 (§4.1)"]
+        VLM["VLM 骨干 7B<br/>CLIP ViT-L/14 + Vicuna-v1.5<br/>token 聚类压缩视频 token"]
+        AD["Cross-attention 生成适配器<br/>(VLM 隐状态 → VDM 文本嵌入)"]
+        VDM["VDM 1.5B<br/>16 帧 / 2 秒视频扩散模型<br/>+ Ensemble-LoRA (按任务 token 门控)"]
+        VLM --> AD --> VDM
+    end
+    subgraph TRAIN["三阶段训练 (§4.2)"]
+        T1["阶段 1：COCO + CC3M-595K<br/>预热 VLM 视觉适配器"] --> T2["阶段 2：QA 指令微调<br/>开放域多模态指令 + EVA 指令数据"]
+        T2 --> T3["阶段 3：整体适配<br/>训练生成适配器 + 各任务 Ensemble-LoRA"]
+    end
+    subgraph ROG["Reflection of Generation 推理 (§3, §4.3, Alg. 1)"]
+        R0["输入：初始观测 O0 + 任务指令 I"] --> R1["VLM 编码隐状态 H<br/>经适配器条件化 VDM 生成视频块 v(0)"]
+        R1 --> R2{"Reflect：自问<br/>任务是否完成?"}
+        R2 -->|"否：Extend"| R3["以关键帧为条件<br/>继续生成扩展帧 v(k+1)"]
+        R3 --> R2
+        R2 -->|"Regenerate"| R1
+        R2 -->|"是：Output"| R4["拼接 v(0)…v(k) 输出预测视频 + 文本回答"]
+    end
+    T3 -.->|"训练后的 EVA"| R1
+    VDM -.-> R1
+```
+
+图依据：论文 §3 Reflection-of-Generation（式 2、Algorithm 1、Fig. 3）、§4.1 模型结构、§4.2 多阶段训练、§4.3 Autoregressive Frame Extension。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +126,7 @@ Embodied world model for future video anticipation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.15461>
+- [arXiv PDF](https://arxiv.org/pdf/2410.15461)：已通读方法部分（实验与附录以略读为准）：§3 RoG、§4.1～4.3；附录 A 的模型/训练阶段略读。
 
 ## 推荐继续阅读
 

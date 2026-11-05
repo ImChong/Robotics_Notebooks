@@ -55,6 +55,55 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python3 run_sim.py dr02_pro`（`dr02_std` 同构，调用 `dr02_std/mujoco_simulation.py`）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant R as run_sim.py main()
+    participant P as dr02_pro/mujoco_simulation.py run()
+    participant C as sim_config.py load_config()
+    participant N as DR2ProSimulation (rclpy Node)
+    participant S as simulator.py MuJoCoSimulator
+    participant M as MuJoCo mj_step / viewer
+    participant X as 外部控制器 (ROS 2 Topic)
+
+    U->>R: python3 run_sim.py dr02_pro
+    R->>P: run(dr02_pro/config.yaml)
+    P->>P: rclpy.init()
+    P->>C: 读取 config.yaml（timestep_s、publish_frequency_hz、command_timeout_s、control.mode、viewer）
+    C-->>P: SimulationConfig（含 scene.xml 路径）
+    P->>N: DR2ProSimulation(config)
+    N->>S: MuJoCoSimulator(scene_path, config)
+    S->>M: MjModel.from_xml_path / MjData / launch_passive
+    N->>N: _validate_model()（29 个执行器与关节映射、upper 约束、IMU 传感器）
+    N->>S: reset_to_keyframe("default")
+    N->>X: 创建发布者 /JOINTS_DATA /IMU_DATA_HEAD /IMU_DATA_BASE 与订阅 /JOINTS_CMD，create_timer(publish_frequency_hz)
+    P->>N: simulation.run()
+    loop rclpy.ok() 且未请求停止
+        N->>N: rclpy.spin_once(timeout_sec=0)
+        X-->>N: JointsCmd → _handle_joint_command（写入 goal_joint_pos/vel、kp、kd、tau_ff）
+        N->>N: _publish_state()（定时器回调）
+        N-->>X: 发布 Joints 与 Imu（来自 qpos/qvel 与 base_quat/base_acc/base_omega 传感器）
+        alt 尚未收到有效指令
+            N->>S: sync_viewer()，sleep(timestep_s)
+        else 指令超时 command_timeout_s
+            N->>N: _apply_joint_command() 置 ctrl 为 0（upper 模式暂停物理）
+        else 正常
+            N->>N: _apply_joint_command()：tau = kp*(q_goal-q) + kd*(dq_goal-dq) + tau_ff
+            N->>S: step()（按 timestep 限速）
+            S->>M: mujoco.mj_step
+            N->>S: sync_viewer()
+        end
+    end
+    U->>P: SIGINT/SIGTERM → request_stop()
+    N->>S: close()
+```
+
+图依据：DeepRoboticsLab/deep-robotics-simulation@52902fc，读过 README.md、run_sim.py、sim_config.py、simulator.py、dr02_pro/mujoco_simulation.py、dr02_pro/config.yaml。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +115,7 @@ institutions:
 - [deep-robotics-simulation 源码归档](../../sources/repos/deep-robotics-simulation.md)（<https://github.com/DeepRoboticsLab/deep-robotics-simulation>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：DeepRoboticsLab/deep-robotics-simulation@52902fc，读过 README.md、run_sim.py、sim_config.py、simulator.py、dr02_pro/mujoco_simulation.py、dr02_pro/config.yaml；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

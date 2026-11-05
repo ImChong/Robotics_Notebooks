@@ -43,6 +43,27 @@ Compositional world models for embodied multi-agent cooperation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    O["部分第一视角 RGBD 观测 o_i"] --> PC["重建局部点云，转为俯视正交图"]
+    PC --> INP["扩散模型补全含噪不完整的世界状态"]
+    INP --> S["估计的世界状态 s"]
+    S --> AP["Action Proposer：VLM 提出 P 个自身候选动作"]
+    S --> IT["Intent Tracker：VLM 推断其他智能体动作"]
+    AP --> JA["联合动作 a"]
+    IT --> JA
+    JA --> CWM["Compositional World Model：按智能体分解动作，各自条件下的分数合成视频扩散预测"]
+    CWM --> SN["下一状态 s_next"]
+    SN --> OE["Outcome Evaluator：VLM 对状态打启发式分"]
+    OE --> TS["树搜索：保留 B 个最优 plan beam，展开至深度 D"]
+    TS -->|"未到深度，继续展开"| AP
+    TS --> BP["选出得分最优的 plan，执行并在每步重新规划"]
+```
+
+图依据：论文 §4（式 4-7）、§5.1-§5.3 / Fig.2、Fig.3、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ Compositional world models for embodied multi-agent cooperation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2404.10775>
+- [arXiv PDF](https://arxiv.org/pdf/2404.10775)：已通读方法部分（§4 Compositional World Model、§4.2 Agent-Dependent Loss Scaling、§5.1 世界状态估计、§5.2 规划子模块、§5.3 树搜索与 Algorithm 1）与 Fig.2、Fig.3；实验与附录以略读为准
 
 ## 推荐继续阅读
 

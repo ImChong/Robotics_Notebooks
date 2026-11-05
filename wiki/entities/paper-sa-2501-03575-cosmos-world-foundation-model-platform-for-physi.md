@@ -162,6 +162,7 @@ Awesome 策展索引仍指向本文件名；深度内容以本页与一手 PDF �
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Cosmos World Foundation Model Platform for Physical AI](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Cosmos_World_Foundation_Model_Platform_for_Physical_AI/Cosmos_World_Foundation_Model_Platform_for_Physical_AI.html)
 - [arXiv:2501.03575](https://arxiv.org/abs/2501.03575)
 - [NVIDIA Cosmos 产品页](https://www.nvidia.com/en-us/ai/cosmos/)
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)

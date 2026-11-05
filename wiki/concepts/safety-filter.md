@@ -2,7 +2,7 @@
 type: concept
 tags: [safety, control, cbf, safe-rl, wbc, deployment]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-03
 summary: "Safety Filter 指位于高层策略与低层执行器之间的安全过滤层，用最小修改把名义动作投影回可执行安全集。"
 related:
   - ./control-barrier-function.md
@@ -13,6 +13,7 @@ related:
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ../entities/paper-csf-contextual-safety-filter.md
+  - ../entities/paper-faith-safety-filtered-rl.md
   - ../entities/paper-fail-passive-gap.md
   - ./llm-robotics-control-interfaces.md
   - ./model-hardware-standard.md
@@ -113,6 +114,8 @@ Safety Filter
         ↓
 执行器
 ```
+
+[FAITH](../entities/paper-faith-safety-filtered-rl.md) 以学习的安全价值训练前馈过滤器，并让任务策略适应过滤后的动力学；学习近似不构成安全证明。
 
 ## 典型应用
 

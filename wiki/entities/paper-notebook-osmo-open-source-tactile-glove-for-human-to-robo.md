@@ -179,5 +179,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：OSMO](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer.html)
 - 官方项目页：<https://www.jessicayin.com/osmo_tactile_glove/>
 - 官方仓库：<https://github.com/jessicayin/osmo_tactile_glove>

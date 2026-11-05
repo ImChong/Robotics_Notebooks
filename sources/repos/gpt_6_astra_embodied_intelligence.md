@@ -12,4 +12,4 @@
 
 ## 开源状态
 
-- **已开源**：仓库可达（git ls-remote）。项目页 HTTP 200。 仓库内容以 README 与 release 为准（本次仅用 `git ls-remote` 核实可达，未逐个阅读 README）。
+- **部分开放**（2026-11-03）：runtime、若干基准集成和 27B Preview 权重已公开；RoboDojo、SIMPLE 等集成及独立技术报告待发布。源码快照 `407a0041f8273500fc654b5ee5683d2d1b14cd5c`；评测入口 `scripts/evaluation/evaluate_model.py` 调用 `roborsi.evaluation.cli`。

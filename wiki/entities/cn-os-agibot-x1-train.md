@@ -55,6 +55,50 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python scripts/train.py --task=x1_dh_stand --run_name=<run_name> --headless`（README 写法；仓库内文件实际位于 `humanoid/scripts/train.py`，需 Isaac Gym Preview 4 与 `pip install -e .`）。
+
+```mermaid
+sequenceDiagram
+    participant T as humanoid/scripts/train.py
+    participant Reg as utils/task_registry.py (task_registry)
+    participant Env as envs/x1/X1DHStandEnv (继承 base/LeggedRobot)
+    participant Gym as Isaac Gym (gym.simulate)
+    participant Run as algo/ppo/DHOnPolicyRunner
+    participant PPO as algo/ppo/DHPPO + ActorCriticDH
+
+    Note over Reg: import humanoid.envs 时执行 task_registry.register("x1_dh_stand", X1DHStandEnv, X1DHStandCfg, X1DHStandCfgPPO)
+    T->>Reg: make_env(name=args.task, args)
+    Reg->>Env: 构造 X1DHStandEnv(cfg, sim_params, headless)
+    Env->>Gym: create_sim，创建并行环境
+    T->>Reg: make_alg_runner(env, name, args)
+    Reg->>Run: runner_class(env, all_cfg, log_dir)
+    Run->>PPO: 构造 ActorCriticDH 与 DHPPO，init_storage
+    Run->>Env: reset()
+    T->>Run: learn(max_iterations)
+    loop 每个 learning iteration
+        loop num_steps_per_env 步
+            Run->>PPO: act(obs, critic_obs)
+            Run->>Env: step(actions)，use_ref_actions 时先加 ref_action
+            loop control.decimation 次
+                Env->>Env: _compute_torques(PD)
+                Env->>Gym: set_dof_actuation_force_tensor，simulate
+            end
+            Env->>Env: post_physics_step：check_termination、compute_reward、reset_idx、compute_observations
+            Env-->>Run: obs, privileged_obs, rewards, dones, infos
+            Run->>PPO: process_env_step(rewards, dones, infos)
+        end
+        Run->>PPO: compute_returns(critic_obs)
+        Run->>PPO: update()，PPO 裁剪代理损失 + 状态估计器 MSE
+        Run->>Run: log 到 TensorBoard，按 save_interval 存 model_N.pt
+    end
+```
+
+下游脚本（只读过入口与关键调用，未画细节）：`play.py` 加载检查点回放，`export_policy_dh.py` / `export_onnx_dh.py` 导出 JIT / ONNX，`sim2sim.py` 用 `torch.jit.load` 载入策略后在 MuJoCo（`mujoco.mj_step`，`pd_control`）里跑。
+
+图依据：AgibotTech/agibot_x1_train@e6651b9，读过 README.md、humanoid/scripts/train.py、humanoid/envs/__init__.py、humanoid/utils/task_registry.py、humanoid/algo/ppo/dh_on_policy_runner.py、humanoid/algo/ppo/dh_ppo.py（update 片段）、humanoid/envs/base/legged_robot.py（step / post_physics_step）、humanoid/envs/x1/x1_dh_stand_env.py（step 与函数清单）、humanoid/scripts/sim2sim.py（函数清单）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +110,8 @@ institutions:
 - [agibot_x1_train 源码归档](../../sources/repos/agibot_x1_train.md)（<https://github.com/AgibotTech/agibot_x1_train>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：AgibotTech/agibot_x1_train@e6651b9，读过 README.md、humanoid/scripts/train.py、humanoid/envs/__init__.py、humanoid/utils/task_registry.py、humanoid/algo/ppo/dh_on_policy_runner.py、dh_ppo.py、humanoid/envs/base/legged_robot.py、humanoid/envs/x1/x1_dh_stand_env.py、humanoid/scripts/sim2sim.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -38,6 +38,29 @@ sources:
 - DexRep 强调 **指节与物体表面的相对空间关系** 与表面几何，而非仅物体全局形状。
 - 在抓取、手内重定向、双手交接三类任务上相对既有手物表征 **显著提升**。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    OBS["当前观测<br/>物体点云 + 手关键点"] --> FO["Occupancy Feature fo<br/>手掌坐标系 10×10×10 体素占据"]
+    OBS --> FS["Surface Feature fs<br/>关键点到最近物体表面的距离与法向"]
+    FS --> FL["Local-Geo Feature fl<br/>预训练 PointNet 编码器取最近点描述子"]
+    FO --> ENC["各分量独立 FC + LayerNorm<br/>(fl 先 BatchNorm)"]
+    FS --> ENC
+    FL --> ENC
+    PROP["本体状态 fprop<br/>关节角 / 速度"] --> ENC
+    ENC --> MLP["拼接后进 MLP"]
+    MLP --> ACT["动作 a：目标关节位置"]
+    ACT --> PD["低层 PD 控制器"]
+    PD --> ENV["环境转移，进入下一步观测"]
+    ENV --> OBS
+    DEMO["GRAB 人类示教<br/>重定向到 Adroit 手"] --> BC["抓取：BC 预训练"]
+    BC --> RL["DAPG 式 RL 微调"]
+    SCR["手内重定向 / 双手交接<br/>随机初始化策略"] --> RL2["从零 RL 训练"]
+```
+
+图依据：论文 §III-B、§IV、§V（Fig. 2、Fig. 3、Fig. 4）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -92,6 +115,7 @@ sources:
 - [tro_manip_survey_03_dexrepnet_plus_plus.md](../../sources/papers/tro_manip_survey_03_dexrepnet_plus_plus.md)
 - [wechat_shenlan_tro_manip_5_papers_survey.md](../../sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2602.21811>
+- [arXiv PDF](https://arxiv.org/pdf/2602.21811)：已通读方法部分（实验与附录以略读为准）：§III 方法概览、§IV DexRep、§V 策略学习
 
 ## 推荐继续阅读
 

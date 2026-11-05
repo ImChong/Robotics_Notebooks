@@ -43,6 +43,31 @@ Adds scene-centric forecasting control to occupancy world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["历史占据 x(1:t) + 自车位姿 p(1:t)<br/>（可选 BEV layout、未来轨迹）"] --> SC
+    subgraph SC["场景中心预测模块（UNet）"]
+        T1["刚体变换：各帧占据对齐到当前自车系 x'(1:t)<br/>消除自车运动影响"] --> U["UNet（2D 卷积，时间维并入通道）→ 预测 y'(t+1:t+τ)"]
+        U --> T2["变换回各未来时刻 ŷ(i) → Occ-VAE 编码 → 场景条件 z(i)"]
+    end
+    subgraph CN["COME ControlNet"]
+        TC["前 N/2 块：世界模型时空块的可训练副本"] --> ZC["后 N/2 块：零卷积层 → 控制特征 c(i)"]
+        VM["可见性感知掩码 M(i)：<br/>历史未观测区域特征置零（阈值 ε=0.5）"] --> ZC
+    end
+    T2 --> TC
+    ZC --> INJ["残差相加注入世界模型后半部分块（与跳连特征相加）"]
+    IN --> OWM
+    subgraph OWM["占据世界模型（DOME 式 DiT）"]
+        VAE["Occ-VAE 编码历史占据 → latent"] --> DIT["时空交替 Diffusion Transformer<br/>（轨迹条件注入每个块，早晚层跳连）"]
+    end
+    INJ --> DIT
+    DIT --> OUT["Occ-VAE 解码 → 未来占据 x̂(t+1:t+τ)"]
+```
+
+图依据：论文 §3.1–3.4 / Fig.2；三阶段训练见 §3.4：先训世界模型，再用交叉熵训预测模块，最后冻结其余只训 ControlNet。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +123,7 @@ Adds scene-centric forecasting control to occupancy world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.13260>
+- [arXiv PDF](https://arxiv.org/pdf/2506.13260)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4 方法
 
 ## 推荐继续阅读
 

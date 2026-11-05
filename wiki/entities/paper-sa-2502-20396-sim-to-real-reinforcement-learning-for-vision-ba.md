@@ -45,6 +45,38 @@ Introduces a practical sim-to-real RL recipe that trains a humanoid robot to per
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph A["A 实到仿建模"]
+        AT["Autotune：采样 K 组参数建并行仿真环境，执行同一组关节目标"] --> SEL["与真机跟踪误差比较，选 MSE 最小的参数（物理参数 + URDF 常数）"]
+        OBJ["物体用简单几何体 + 随机化物理参数近似"]
+    end
+    subgraph B["B 通用奖励设计"]
+        RW["任务拆为接触目标（contact markers 与指尖距离）+ 物体目标（物体状态偏差）"]
+    end
+    subgraph C["C 样本高效策略学习"]
+        INI["任务感知手位初始化：仿真中人类遥操作 casual 采集手物状态"] --> SUB["分任务专家策略 RL 训练"]
+        SUB --> FIL["过滤高质量 rollout"]
+        FIL --> GEN["蒸馏为通用策略"]
+    end
+    subgraph D["D 视觉 Sim2Real"]
+        SAM["SAM2 分割并跟踪物体"] --> SP["第三视角：物体 3D 质心（稀疏）"]
+        SAM --> DP["第一视角：物体深度图（稠密）"]
+        DR["感知与动力学域随机化"]
+    end
+    A --> C
+    B --> C
+    C --> POL["视觉策略"]
+    SP --> POL
+    DP --> POL
+    DR --> POL
+    POL --> REAL["真机人形：双臂 + 多指手（Fourier GR1）"]
+```
+
+图依据：论文 §3（Our Recipe）与 Fig. 2；§4.1 感知设置。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -101,6 +133,7 @@ Introduces a practical sim-to-real RL recipe that trains a humanoid robot to per
 - 论文：<https://arxiv.org/abs/2502.20396>
 - [humanoid_pnb_sim-to-real-reinforcement-learning-for-vision-ba.md](../../sources/papers/humanoid_pnb_sim-to-real-reinforcement-learning-for-vision-ba.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- [arXiv PDF](https://arxiv.org/pdf/2502.20396)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4（含 Algorithm 1 与 Fig. 2）、§4.1–§4.2；§4.3 之后实验以略读为准
 
 ## 推荐继续阅读
 

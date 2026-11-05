@@ -55,6 +55,46 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+本仓库是 Python 库，唯一的命令行入口是 `robo-orchard`（`pyproject.toml` 的 `[project.scripts]`：`robo_orchard_core.tools.cli:main`）。下图第一段为入口 `robo-orchard file-server --directory <dir>` 的实际调用链；第二段为库内 `envs.rollout.rollout(env, ...)` 的调用顺序。`TermManagerBasedEnv.step()` / `reset()` 在本仓库内为抽象方法（`raise NotImplementedError`），具体环境（仿真或真机）由下游包实现，因此第二段中的 `env` 是调用方提供的具体环境。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / 终端
+    participant CLI as robo_orchard_core/tools/cli.py<br/>main() / create_app()
+    participant EP as importlib.metadata<br/>entry_points("robo_orchard.cli")
+    participant FS as tools/simple_file_server.py<br/>cli_app / FileServerConfig
+    participant UV as uvicorn + FastAPI app<br/>(serve_file 等路由)
+    participant R as envs/rollout.py<br/>rollout()
+    participant POL as policy/random.py<br/>RandomPolicy（policy 为 None 时）
+    participant ENV as 具体环境（调用方实现）<br/>TermManagerBasedEnv 子类
+
+    U->>CLI: robo-orchard file-server --directory ...
+    CLI->>CLI: _requested_command(sys.argv[1:]) → "file-server"
+    CLI->>CLI: create_app(requested_command) → load_cli_extensions
+    CLI->>CLI: 检查 BUILTIN_CLI_EXTENSIONS["file-server"].required_modules（fastapi/aiofiles/uvicorn/pydantic_settings）
+    CLI->>FS: _load_cli_app_from_spec("...simple_file_server:cli_app") → add_typer
+    CLI->>EP: 再按名称顺序加载 robo_orchard.cli / 旧 robo_orchard.plugins 扩展
+    CLI->>FS: 执行子命令 → FileServerConfig.command_impl()
+    FS->>FS: port 为空则 find_free_port()
+    FS->>UV: start_server(host, port, directory, allow_symlink) → uvicorn.run(app)
+    UV-->>U: HTTP 提供目录文件（Range / HEAD / 目录列表）
+
+    Note over R,ENV: 库调用路径（非命令行）
+    U->>R: rollout(env, max_steps, init_obs, policy=None, ...)
+    R->>POL: policy 为空 → RandomPolicy(env.observation_space, env.action_space)
+    loop i < max_steps
+        R->>POL: action = policy(obs)
+        R->>ENV: env.step(action)
+        ENV-->>R: EnvStepReturn（observations ...）
+        R->>R: env_step_callback；terminal_condition 命中则提前结束
+    end
+    R-->>U: EnvRolloutReturn(actions, step_results, rollout_actual_steps)
+```
+
+图依据：HorizonRobotics/RoboOrchardCore@1b6df5b，读过 README.md、pyproject.toml（scripts 与 entry-points）、robo_orchard_core/tools/cli.py（BUILTIN_CLI_EXTENSIONS、create_app、load_cli_extensions、main）、robo_orchard_core/tools/simple_file_server.py（FileServerConfig、start_server）、robo_orchard_core/envs/rollout.py（rollout）、robo_orchard_core/envs/manager_based_env.py（step / reset 抽象签名）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +106,7 @@ institutions:
 - [RoboOrchardCore 源码归档](../../sources/repos/roboorchardcore.md)（<https://github.com/HorizonRobotics/RoboOrchardCore>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：HorizonRobotics/RoboOrchardCore@1b6df5b，读过 README.md、pyproject.toml、robo_orchard_core/tools/cli.py、tools/simple_file_server.py、envs/rollout.py、envs/manager_based_env.py；managers、policy/remote.py、controllers、kinematics、datatypes 内部未读；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

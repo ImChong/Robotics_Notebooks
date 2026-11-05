@@ -3,7 +3,7 @@ type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
 updated: 2026-08-25
-arxiv: "1903.00572"
+venue: "Science 314(5802):1118-1121, 2006"
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
   - ../overview/embodied-wm-route-planning.md
@@ -41,7 +41,7 @@ summary: "Resilient Machines (Self-Modeling)（具身世界模型六路线专题
 | 项 | 内容 |
 |----|------|
 | **路线** | 规划主导型 |
-| **出处** | [arXiv:1903.00572](https://arxiv.org/abs/1903.00572) |
+| **出处** | Bongard, Zykov, Lipson, [Science 314(5802):1118-1121, 2006](https://doi.org/10.1126/science.1133687)（无 arXiv 版） |
 | **文内角色** | 从动作—感觉关系推断自身结构，损伤后搜索替代行为；身体也是世界的一部分。 |
 
 ## 结论
@@ -54,7 +54,7 @@ summary: "Resilient Machines (Self-Modeling)（具身世界模型六路线专题
 
 ## 实验与评测
 
-- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [arXiv:1903.00572](https://arxiv.org/abs/1903.00572) 为准。
+- **本页无量化数字**：六路线综述只给出该工作在 taxonomy 中的定位，未转述实验表格；成功率、消融与实机协议以 [Science 314(5802), 2006](https://doi.org/10.1126/science.1133687) 为准。
 - **该路线该看的指标**：任务成功率、规划时延与 rollout 步数、模型误差随预测时域的放大速度。
 - **综述的评价取向**：按文内判断「评价从画质转向行动效用」，读实验时先问预测是否改善了真实执行，再看画面观感（见 [六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)）。
 
@@ -74,7 +74,8 @@ summary: "Resilient Machines (Self-Modeling)（具身世界模型六路线专题
 ## 参考来源
 
 - [wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md)
+- 核对（2026-11-02）：原编号 1903.00572 对应《Stable Operation of AlGaN/GaN HEMTs at 400°C in air for 25 hours》，本页论文（Bongard, Zykov, Lipson《Resilient machines through continuous self-modeling》，Science 2006）无 arXiv 版，已去掉 arxiv 字段、改引期刊 DOI（依据：arXiv API 标题/作者/提交日期 2019-03-01 与本页不符；Science 314(5802):1118–1121，DOI 经搜索结果得到，science.org 返回 403 未能直连核验）
 
 ## 推荐继续阅读
 
-- [arXiv:1903.00572](https://arxiv.org/abs/1903.00572)
+- [Science 314(5802), 2006](https://doi.org/10.1126/science.1133687)

@@ -25,7 +25,7 @@ sources:
 
 ## 一句话定义
 
-Object-centric world models improve RL in visually complex environments.
+Object-centric world models improve RL in visually complex environments.（arXiv 当前版本题为《Object-Centric World Models from Few-Shot Annotations for Sample-Efficient Reinforcement Learning》；本页沿用清单所列题名）
 
 ## 英文缩写速查
 
@@ -41,6 +41,27 @@ Object-centric world models improve RL in visually complex environments.
 - Object-centric world models improve RL in visually complex environments.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    ANN["人工标注关键物体<br/>仅少量帧（如 6–12 帧）"] --> SEG
+    OBS["环境观测 o_t"] --> SEG["冻结的预训练视频分割网络<br/>Cutie 或 SAM2，对象注意力输出<br/>每集开始重置内部状态"]
+    SEG --> OBJ["物体特征 s_obj：K × obj_dim<br/>K 个物体，用户按环境设定"]
+    OBS --> VIS["缩放为 64×64 的视觉输入 s_vis"]
+    OBJ --> ENC1["MLP 编码器 + Categorical VAE<br/>物体离散潜变量 16×16"]
+    VIS --> ENC2["CNN 编码器 + Categorical VAE<br/>视觉离散潜变量 32×32"]
+    ENC1 --> DYN
+    ENC2 --> DYN
+    ACT["动作 a_t"] --> DYN["时空物体中心动力学<br/>STORM：空间注意力与时间注意力交替<br/>或 DreamerV3：RNN + 空间注意力"]
+    DYN --> HEADS["预测头<br/>动力学预测器预测下一潜状态<br/>[CLS] 式查询 token 聚合后预测奖励与终止"]
+    HEADS --> WM["世界模型<br/>以重建与预测损失端到端训练"]
+    WM -->|"想象轨迹"| AC["Actor-Critic（沿用 DreamerV3）<br/>策略梯度 + 价值基线"]
+    AC -->|"策略与环境交互，采集新数据"| OBS
+```
+
+图依据：论文 §3.1–§3.5 与 Fig. 1c；“策略与环境交互采集新数据”一支由 §2 所述标准 MBRL 范式（先学世界模型、再用模型生成轨迹训练策略）推断。
 
 ## 核心信息
 
@@ -96,6 +117,8 @@ Object-centric world models improve RL in visually complex environments.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.16443>
+- [arXiv PDF](https://arxiv.org/pdf/2501.16443)：已通读方法部分（实验与附录以略读为准）：§1 引言末段、§2 Preliminaries、§3 Method（3.1–3.5）。注：当前 arXiv 版标题为 Object-Centric World Models from Few-Shot Annotations（ICLR 2026），与页面标题措辞不同，编号一致
+- 核对（2026-11-02）：查 arXiv 摘要页版本史：v1（2025-01-27）题 Objects matter: object-centric world models improve reinforcement learning in visually complex environments，v2（2026-02-25，现行）改题；本页题名对应 v1；已补题名变化说明；本次只核对版本史与题名，流程图及方法细节未重读，沿用此前核对。
 
 ## 推荐继续阅读
 

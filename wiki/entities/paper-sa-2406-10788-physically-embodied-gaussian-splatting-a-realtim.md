@@ -42,6 +42,28 @@ A dual Gaussian‑Particle representation that models the physical world while s
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph INIT["初始化 §3.1"]
+        A["RGBD 数据 + 实例掩码"] --> B["包围盒内填充球形 Gaussian<br/>剪枝掩码外的 Gaussian"]
+        B --> C["优化 Gaussian<br/>碰撞/地面约束 + 光度与分割重建损失"]
+        C --> D["在剩余 Gaussian 位置生成粒子<br/>同物体粒子加形状匹配约束"]
+        D --> E["继续优化并致密化 Gaussian<br/>每个 Gaussian 与最近粒子建立 bond"]
+    end
+    subgraph ONL["在线预测与校正 §3.2 约 30 Hz"]
+        F["获取最新图像与机器人关节"] --> G["预测<br/>机器人粒子取正运动学位置<br/>1 步 PBD 物理 Gaussian 随粒子移动"]
+        G --> H["校正<br/>多相机渲染对比图像<br/>RGB 损失 5 步 Adam 优化 Gaussian"]
+        H --> I["由 Gaussian 位移计算视觉力"]
+        I --> J["Gaussian 复位 视觉力加到粒子<br/>由 PBD 求解"]
+        J --> F
+    end
+    E --> F
+```
+
+图依据：论文 §3.1–§3.2 / Fig.2、Fig.3（背景仅用 Gaussian 建模、机器人用已知网格建模，图中从略）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,8 @@ A dual Gaussian‑Particle representation that models the physical world while s
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2406.10788>
+- [arXiv PDF](https://arxiv.org/pdf/2406.10788)：已通读方法部分（实验与附录以略读为准）：§1 贡献与概览、§2 预备知识（PBD、Gaussian splatting）、§3.1 初始化、§3.2 在线预测与校正；实验与附录以略读/未读为准
+
 
 ## 推荐继续阅读
 

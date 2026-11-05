@@ -44,10 +44,49 @@ summary: "LeGO-LOAM 是轻量地面优化激光 SLAM：点云分割与地面约�
 - **地面假设**：空中或楼梯密集场景假设失效。
 - **ROS2**：社区以 ROS1 为主，迁移需评估。
 
+## 源码运行时序图
+
+入口：`roslaunch lego_loam run.launch`（启动 `imageProjection`、`featureAssociation`、`mapOptmization`、`transformFusion` 四个节点，另起 rviz 与两个静态 TF；数据来自 `rosbag play *.bag --clock` 或真实 `/velodyne_points`、`/imu/data`）。
+
+```mermaid
+sequenceDiagram
+    participant Src as 传感器/rosbag<br/>/velodyne_points, /imu/data
+    participant IP as imageProjection.cpp<br/>ImageProjection::cloudHandler
+    participant FA as featureAssociation.cpp<br/>FeatureAssociation
+    participant MO as mapOptmization.cpp<br/>mapOptimization
+    participant LC as loopClosureThread<br/>(std::thread, 1 Hz)
+    participant TF as transformFusion.cpp<br/>TransformFusion
+    Src->>IP: PointCloud2 (pointCloudTopic)
+    Note over IP: projectPointCloud → groundRemoval → cloudSegmentation
+    IP->>FA: /segmented_cloud, /segmented_cloud_info, /outlier_cloud
+    Src->>FA: Imu (imuHandler)
+    loop main 200 Hz: spinOnce + runFeatureAssociation
+        Note over FA: 三路时间戳差 < 0.05 s 才处理<br/>adjustDistortion → calculateSmoothness → markOccludedPoints → extractFeatures
+        FA->>FA: updateInitialGuess → updateTransformation → integrateTransformation
+        FA->>MO: /laser_cloud_corner_last, /laser_cloud_surf_last, /outlier_cloud_last
+        FA->>MO: /laser_odom_to_init
+        FA->>TF: /laser_odom_to_init
+    end
+    Src->>MO: Imu (imuHandler)
+    loop main 200 Hz: spinOnce + MO.run()
+        Note over MO: 时间戳对齐后，按 mappingProcessInterval 节流<br/>transformAssociateToMap → extractSurroundingKeyFrames → downsampleCurrentScan
+        MO->>MO: scan2MapOptimization → saveKeyFramesAndFactor (gtsam iSAM2 update) → correctPoses
+        MO->>TF: /aft_mapped_to_init
+        MO-->>Src: publishTF (tfBroadcaster.sendTransform)
+    end
+    loop 1 Hz (loopClosureEnableFlag 开启时)
+        LC->>MO: performLoopClosure → detectLoopClosure → isam->update
+    end
+    TF-->>Src: /integrated_to_init + tf 广播
+```
+
+图依据：RobustFieldAutonomyLab/LeGO-LOAM@896a7a9，读过 README.md、LeGO-LOAM/launch/run.launch、include/utility.h、src/imageProjection.cpp、featureAssociation.cpp、mapOptmization.cpp、transformFusion.cpp。
+
 ## 参考来源
 
 - [sources/repos/lego_loam.md](../../sources/repos/lego_loam.md)
 - [RobustFieldAutonomyLab/LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM)
+- 源码核对（2026-11-02）：RobustFieldAutonomyLab/LeGO-LOAM@896a7a9，读过 README.md、LeGO-LOAM/launch/run.launch、include/utility.h、src/imageProjection.cpp、src/featureAssociation.cpp、src/mapOptmization.cpp、src/transformFusion.cpp；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

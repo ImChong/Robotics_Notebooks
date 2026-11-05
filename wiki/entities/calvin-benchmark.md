@@ -110,6 +110,53 @@ flowchart LR
 - **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
+## 源码运行时序图
+
+入口：`cd calvin_models/calvin_agent && python training.py datamodule.root_data_dir=/path/to/dataset/ datamodule/datasets=vision_lang_shm`（基线训练；评测入口 `evaluation/evaluate_policy.py` 依赖子模块 `calvin_env`，本图未覆盖）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户 shell
+    participant T as training.py train()（@hydra.main）
+    participant H as hydra.utils.instantiate
+    participant DM as CalvinDataModule
+    participant MC as MCIL（LightningModule）
+    participant TR as pytorch_lightning Trainer
+    participant DL as 各模态 DataLoader
+
+    U->>T: python training.py（Hydra 读取 conf/config.yaml 并合并命令行覆盖）
+    T->>T: seed_everything(cfg.seed)
+    T->>H: instantiate(cfg.datamodule)
+    H-->>T: CalvinDataModule（__init__ 保存数据路径与配置）
+    T->>T: get_last_checkpoint(cwd) 查找可续训的检查点
+    alt 存在检查点
+        T->>MC: MCIL.load_from_checkpoint(chk)
+    else 无检查点
+        T->>H: instantiate(cfg.model)
+        H-->>T: MCIL（__init__ 构建模型各子网络）
+    end
+    T->>T: setup_logger(cfg.logger) 与 setup_callbacks(cfg.callbacks)
+    T->>TR: Trainer(**cfg.trainer, logger, callbacks)
+    T->>TR: trainer.fit(model, datamodule, ckpt_path)
+    TR->>DM: prepare_data() 检查数据目录，缺失则退出；use_shm 时载入共享内存
+    TR->>DM: setup(stage) 加载统计量、实例化 transforms 与各模态 dataset
+    TR->>DM: train_dataloader() 为每个模态建立 DataLoader
+    DM-->>DL: 每个模态一个 DataLoader（batch_size、num_workers 取自 dataset 配置）
+    loop 每个训练 batch
+        TR->>MC: training_step(batch)
+        loop 每个模态 scope
+            MC->>MC: perceptual_encoder 编码视觉观测
+            MC->>MC: language_goal 或 visual_goal 得到 latent_goal
+            MC->>MC: lmp_train：plan_proposal、plan_recognition、action_decoder.loss、compute_kl_loss
+            MC->>MC: self.log 记录 train/ 下各项损失
+        end
+        MC-->>TR: total_loss（用于反向传播）
+    end
+```
+
+图依据：mees/calvin@fa03f01，实际读过的文件：`README.md`（训练命令与 Hydra 覆盖说明）、`calvin_models/calvin_agent/training.py`（全文）、`calvin_models/conf/config.yaml`（defaults 与 hydra 配置）、`calvin_models/conf/datamodule/default.yaml`（`_target_`）、`calvin_models/calvin_agent/datasets/calvin_data_module.py`（`prepare_data`、`setup`、`train_dataloader` 片段）、`calvin_models/calvin_agent/models/mcil.py`（`training_step`、`lmp_train` 片段）。未运行代码。`calvin_env` 为未拉取的子模块，评测与仿真环境路径未纳入本图；`trainer.fit` 内部对 batch 的循环由 Lightning 框架决定，图中以概括形式表示。
+
 ## 关联页面
 
 - [sim2real](../concepts/sim2real.md)
@@ -139,6 +186,7 @@ flowchart LR
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2112.03227>
+- 源码核对（2026-11-02）：mees/calvin@fa03f01，读过 README.md、calvin_models/calvin_agent/training.py、calvin_models/conf/config.yaml、calvin_models/conf/datamodule/default.yaml、calvin_models/calvin_agent/datasets/calvin_data_module.py（相关方法）、calvin_models/calvin_agent/models/mcil.py（相关方法）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

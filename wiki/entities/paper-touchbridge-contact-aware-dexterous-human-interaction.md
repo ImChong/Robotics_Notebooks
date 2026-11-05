@@ -5,16 +5,18 @@ tags:
   - dexterous-manipulation
   - manipulation
 status: complete
-updated: 2026-11-02
+updated: 2026-11-03
 arxiv: "2610.40349"
 project_id: touchbridge-contact-aware-dexterous-human-interaction
 related:
   - ../overview/senlanke-weekly-2026-10-26-30-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
 sources:
   - ../../sources/papers/touchbridge-contact-aware-dexterous-human-interaction_arxiv_2610_40349.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
+  - ../../sources/blogs/wechat_embodied_station_49_papers_sacq_action_aware_quantization_2026-11-03.md
 summary: "TouchBridge：从人类交互中学习接触感知灵巧操作（arXiv:2610.40349）：研究将人类交互中的接触信息与机器人动作学习结合，使策略能够利用接触相关表示进行灵巧控制。"
 ---
 

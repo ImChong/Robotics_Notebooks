@@ -31,7 +31,28 @@ HumanoidPano 的人形机器人学习论文条目，当前处于 Paper Notebooks
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记尚未写出；方法流程见下方「流程总览」（依据论文方法部分），其余结论以论文为准。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    CAM["Insta360 X4 全景图像 I"] --> ENC["全景图像编码器（Transformer 系）→ 图像特征图 F"]
+    LID["Livox Mid-360 LiDAR 点云"] --> PROJ["经内外参投影到全景相机坐标系 → 深度图 D"]
+    PROJ --> PSEUDO["深度图转伪点云 → 3D 参考点 P"]
+    BEVQ["BEV queries Q"] --> PD
+    PSEUDO --> PD
+    ENC --> PD
+    subgraph PD["Panoramic Distortion-aware Attention (PD Attention)"]
+        SGC["SGC：3D 参考点 P 映射到球面 S；<br/>由 BEV queries 预测球面偏移 ΔS → S'"] --> IDX["S' 转为全景特征图 2D 索引 I"]
+        IDX --> SDA["SDA：以 I 为参考点采样特征并加权求和"]
+    end
+    SDA --> DEC["BEV Decoder 解析投影后的特征图"]
+    DEC --> OUT["语义 BEV 地图 M（L×X×Y）"]
+    AUG["训练数据增强：全景图与 BEV 同步随机翻转 / 混合"] -.-> ENC
+```
+
+图依据：论文 §3.1 Problem Formulation、§3.2 Overall Architecture（PD Attention、Panoramic-LiDAR Cross-Modal Perception）、§3.3 Data Augmentation / Fig.2、Fig.3。
 
 ## 核心信息
 
@@ -64,7 +85,9 @@ HumanoidPano 的人形机器人学习论文条目，当前处于 Paper Notebooks
 - [humanoid_pnb_humanoidpano-hybrid-spherical-panoramic-lidar-cr.md](../../sources/papers/humanoid_pnb_humanoidpano-hybrid-spherical-panoramic-lidar-cr.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2503.09010>
+- [arXiv PDF](https://arxiv.org/pdf/2503.09010)：已通读方法部分（实验与附录以略读为准）：§3 HumanoidPano（3.1 问题定义、3.2 总体架构与 PD Attention、跨模态感知、3.3 数据增强）、§4 引言与 4.4 部署（略读）
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：HumanoidPano](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/HumanoidPano__Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Perception/HumanoidPano__Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Perception.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

@@ -42,6 +42,31 @@ A novel real-to-sim-to-real framework incorporating 3D Gaussian Splatting into c
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph R2S["Real2Sim：构建带 GS 渲染的仿真器"]
+        A["手机/单目相机拍摄 1-2 分钟视频，选约 200 关键帧"] --> B["COLMAP 估计相机内外参；SAM-track 分割目标"]
+        B --> C["openMVS 重建网格模型 Mk（几何）"]
+        B --> D["软网格绑定 GS：沿法向加可学习权重 αn ∈ [-1,1]（纹理）"]
+        C --> D
+        D --> E["GS 模型 Gk + 网格 Mk"]
+        E --> F["RANSAC 平面回归 + 人工对齐，设定 GS 初始位姿"]
+    end
+    subgraph S2R["Sim2Real：仿真中训练并零样本迁移"]
+        G["PyBullet 物理仿真器：读取各物体位姿 Tk、四元数 qk"] --> H["物理动力学 GS 编辑：μ = Tk·μ，r = qk × r"]
+        F --> H
+        H --> I["拼接各物体高斯得到整景 Gscene，光栅化渲染"]
+        I --> J["仿真第一人称（eye-in-hand）图像"]
+        J --> K["Actor-Critic（Conv + MLP）SACwB：基线控制器以概率 λ 引导"]
+        K -->|"动作"| G
+        K --> L["零样本迁移至真实机械臂（RealSense 第一人称 RGB）"]
+    end
+```
+
+图依据：论文 §III-A / §III-B、Fig.1–3（箭头 K→G 的动作回路为按 Fig.3 与仿真训练设定的推断）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +122,7 @@ A novel real-to-sim-to-real framework incorporating 3D Gaussian Splatting into c
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2409.20291>
+- [arXiv PDF](https://arxiv.org/pdf/2409.20291)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 相关工作、§III 方法（Real2Sim 与 Sim2Real）
 
 ## 推荐继续阅读
 

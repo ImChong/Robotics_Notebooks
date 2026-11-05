@@ -232,6 +232,10 @@ sequenceDiagram
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md)
 - [GS-Playground](./gs-playground.md)
 
+## 相关工作
+
+- [Foundation4D](paper-foundation4d.md)：共享多相机特征，同时预测驾驶场景几何、目标、占据和高斯重建。
+
 ## 参考来源
 
 - [instant_nurec_arxiv_2607_14203.md](../../sources/papers/instant_nurec_arxiv_2607_14203.md)

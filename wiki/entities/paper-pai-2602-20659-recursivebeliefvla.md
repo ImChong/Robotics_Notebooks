@@ -40,6 +40,28 @@ Belief-centric architecture for task tracking.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    INS["语言指令 + 初始视觉观测"] --> VLM["冻结 VLM（Qwen2.5-VL-7B）<br/>每个任务只查询一次"]
+    VLM --> POOL["单查询注意力池化 + 轻量 MLP"]
+    POOL --> INT["静态意图向量 I_t"]
+    OBS["窗口内观测 o、动作 a、本体状态 x<br/>DINOv2 patch 特征 + 本体嵌入"] --> FE["Transformer 帧编码器<br/>学习注意力池化得到帧摘要 f_t"]
+    FE --> BT["时间 Transformer<br/>前一信念 b_t-1 作为 token 前置"]
+    BT --> EV["证据表示 e_t"]
+    EV --> Z["随机潜变量 z_t<br/>先验 p(z_t | b_t-1)，后验 q(z_t | b_t-1, e_t)"]
+    EV --> GRU["GRU 更新：b_t = GRU(b_t-1, e_t, z_t)"]
+    Z --> GRU
+    GRU --> BEL["信念状态 b_t<br/>递归传给下一步"]
+    SE["状态编码器<br/>本体 + DINOv2 图像嵌入，得到 s_t"] --> DP
+    BEL --> DP["扩散 Transformer 策略<br/>条件为 b_t、I_t、s_t"]
+    INT --> DP
+    DP --> ACT["动作块 a_t:t+H<br/>滚动时域高频执行"]
+```
+
+图依据：论文 §III-A 至 §III-D（Fig. 1）；信念以 ELBO、多步辅助解码与逆动力学损失训练。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +125,7 @@ Belief-centric architecture for task tracking.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2602.20659>
+- [arXiv PDF](https://arxiv.org/pdf/2602.20659)：已通读方法部分（实验与附录以略读为准）：§III 方法（A-D）、§IV 数据集与训练细节
 
 ## 推荐继续阅读
 

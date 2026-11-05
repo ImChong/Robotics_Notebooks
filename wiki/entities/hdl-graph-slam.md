@@ -45,10 +45,63 @@ summary: "hdl_graph_slam 是 3D 激光图 SLAM：NDT 扫描匹配 + g2o 位姿�
 - **ROS1 遗产**：ROS2 迁移需查社区 fork。
 - **实时性**：大场景图优化可能成为瓶颈。
 
+## 源码运行时序图
+
+入口：`roslaunch hdl_graph_slam hdl_graph_slam_501.launch`（README「Example1 (Indoor)」，另需 `rosbag play --clock hdl_501_filtered.bag` 回放数据）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Lidar as 雷达 / rosbag（/velodyne_points）
+    participant Pre as prefiltering_nodelet.cpp（PrefilteringNodelet）
+    participant SM as scan_matching_odometry_nodelet.cpp（matching，FAST_GICP）
+    participant Flr as floor_detection_nodelet.cpp（detect，RANSAC）
+    participant HGS as hdl_graph_slam_nodelet.cpp（HdlGraphSlamNodelet）
+    participant KU as keyframe_updater.hpp（KeyframeUpdater）
+    participant GS as src/hdl_graph_slam/graph_slam.cpp（GraphSLAM，g2o）
+    participant LD as loop_detector.hpp（LoopDetector）
+    participant MCG as map_cloud_generator.hpp
+
+    Lidar->>Pre: /velodyne_points（cloud_callback）
+    Pre->>Pre: 距离滤波，VOXELGRID 下采样（0.1 m），RADIUS 离群点去除
+    Pre->>SM: /filtered_points（cloud_callback）
+    Pre->>Flr: /filtered_points（cloud_callback）
+
+    SM->>SM: matching()，downsample 后 registration->align(prev_trans x msf_delta)
+    Pre-->>HGS: /filtered_points（与 /odom 按 ApproximateTime 同步）
+    SM-->>HGS: /odom（nav_msgs/Odometry，published_odom_topic）
+    Flr->>Flr: 高度裁剪与法向滤波，ransac.computeModel()
+    Flr-->>HGS: /floor_detection/floor_coeffs（FloorCoeffs，可选）
+
+    HGS->>KU: keyframe_updater->update(odom)
+    opt 满足关键帧阈值
+        HGS->>HGS: keyframe_queue.push_back(KeyFrame)
+    end
+
+    loop optimization_timer_callback（graph_update_interval）
+        HGS->>GS: flush_keyframe_queue()：add_se3_node + calc_information_matrix + add_se3_edge（里程计边）
+        HGS->>GS: flush_floor_queue()：add_plane_node + add_se3_plane_edge（enable_floor_detection 时）
+        HGS->>GS: flush_gps_queue() / flush_imu_queue()（enable_gps / enable_imu_* 时）
+        HGS->>LD: loop_detector->detect(keyframes, new_keyframes, graph)
+        LD-->>HGS: loops
+        HGS->>GS: add_se3_edge（回环约束）+ add_robust_kernel
+        HGS->>GS: optimize(num_iterations)
+        HGS->>HGS: 发布 /hdl_graph_slam/odom2pub 与 markers
+    end
+
+    loop map_points_publish_timer_callback
+        HGS->>MCG: generate(snapshot, map_cloud_resolution)
+        HGS->>HGS: 发布 /hdl_graph_slam/map_points
+    end
+```
+
+图依据：koide3/hdl_graph_slam@95b8dce，实际读过 `launch/hdl_graph_slam_501.launch`、`apps/prefiltering_nodelet.cpp`、`apps/scan_matching_odometry_nodelet.cpp`、`apps/floor_detection_nodelet.cpp`、`apps/hdl_graph_slam_nodelet.cpp`、`src/hdl_graph_slam/graph_slam.cpp`（仅看构造与求解器选择）、`README.md`；`keyframe_updater.hpp`、`loop_detector.hpp`、`map_cloud_generator.hpp` 仅依据调用点，未读其实现；未运行代码。
+
 ## 参考来源
 
 - [sources/repos/hdl_graph_slam.md](../../sources/repos/hdl_graph_slam.md)
 - [koide3/hdl_graph_slam](https://github.com/koide3/hdl_graph_slam)
+- 源码核对（2026-11-02）：koide3/hdl_graph_slam@95b8dce，读过 README.md、launch/hdl_graph_slam_501.launch、apps/prefiltering_nodelet.cpp、apps/scan_matching_odometry_nodelet.cpp、apps/floor_detection_nodelet.cpp、apps/hdl_graph_slam_nodelet.cpp、src/hdl_graph_slam/graph_slam.cpp、include/hdl_graph_slam/keyframe_updater.hpp（仅看接口）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

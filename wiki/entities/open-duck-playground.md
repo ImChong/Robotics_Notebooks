@@ -68,10 +68,44 @@ uv run playground/open_duck_mini_v2/runner.py --task flat_terrain_backlash --num
 - **模仿奖励非万能：** 需与 BAM 标定后的 MJCF 联调；电机模型不准时模仿项无法单独救场。
 - **与 Brax 自带 env 不同：** 新环境应在本 Playground 模式扩展，而非 Brax legacy physics env。
 
+## 源码运行时序图
+
+训练入口：`uv run playground/open_duck_mini_v2/runner.py --task flat_terrain_backlash --num_timesteps <N>`（README 所列；`runner.py` 的 `main()` 解析参数后调用 `runner.train()`）。另有评估入口 `uv run playground/open_duck_mini_v2/mujoco_infer.py -o <onnx>`，在 MuJoCo 内以 `policy.infer` 逐步驱动 `data.ctrl`。下图为训练主流程。
+
+```mermaid
+sequenceDiagram
+  participant CLI as open_duck_mini_v2/runner.py main
+  participant RN as OpenDuckMiniV2Runner 与 BaseRunner
+  participant ENV as joystick.Joystick MJX 环境
+  participant BR as Brax PPO train
+  participant CB as policy_params_fn 与 progress_callback
+  participant EX as common/export_onnx
+  CLI->>RN: OpenDuckMiniV2Runner(args)，按 env 选择 joystick 或 standing
+  RN->>ENV: 创建训练环境 env 与评估环境 eval_env
+  RN->>RN: train() 调用 brax_ppo_config 取 PPO 参数
+  RN->>BR: functools.partial(ppo.train)，randomization_fn 为 domain_randomize
+  RN->>BR: train_fn(environment, eval_env, wrap_env_fn)
+  loop PPO 迭代直到 num_timesteps
+    BR->>ENV: reset(rng)，内部 sample_command 采样速度指令
+    BR->>ENV: step(state, action)，motor_targets 经 mjx_env.step 推进 n_substeps
+    ENV->>ENV: _get_obs 组装观测，_get_reward 计算奖励
+    ENV-->>BR: 新的 state 与 reward
+    BR->>CB: progress_callback 输出评估回报
+    BR->>CB: 定期调用 policy_params_fn
+    CB->>CB: orbax PyTreeCheckpointer 保存参数
+    CB->>EX: export_onnx 导出 onnx
+  end
+  BR-->>RN: 返回最终 params
+```
+
+图依据：apirrone/Open_Duck_Playground@b9be205，`README.md`（训练与推理命令）、`playground/open_duck_mini_v2/runner.py`、`playground/common/runner.py`（train、policy_params_fn、progress_callback）、`playground/open_duck_mini_v2/joystick.py`（Joystick、reset、step 段）、`playground/open_duck_mini_v2/mujoco_infer.py`（run 循环片段）；`randomize.py`、`export_onnx.py` 仅据调用点推断，未读源码；未运行代码。
+
 ## 参考来源
 
 - [sources/repos/open_duck_playground.md](../../sources/repos/open_duck_playground.md)
 - [apirrone/Open_Duck_Playground](https://github.com/apirrone/Open_Duck_Playground)
+
+- 源码核对（2026-11-02）：apirrone/Open_Duck_Playground@b9be205，读过 `README.md`（训练与推理段）、`playground/open_duck_mini_v2/runner.py`、`playground/common/runner.py`、`playground/open_duck_mini_v2/joystick.py`（部分）、`playground/open_duck_mini_v2/mujoco_infer.py`（部分）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

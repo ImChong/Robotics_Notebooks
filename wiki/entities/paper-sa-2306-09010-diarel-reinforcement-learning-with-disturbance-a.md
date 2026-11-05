@@ -42,6 +42,29 @@ A reinforcement learning framework with disturbance awareness for robust sim-to-
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PH1["阶段 1：训练逆动力学模型 Algorithm 1"]
+        direction TB
+        N1["名义 agent 在非随机化仿真中训练<br/>收集 o_k 与 a_k 序列"] --> N2["用掩码 M_u 与 M_y 构造数据对<br/>输入窗口 Y_k,L 到系统输入 u_k-L"]
+        N2 --> N3["监督学习训练逆模型 MLP<br/>MSE 损失"]
+    end
+    subgraph PH2["阶段 2：干扰感知 on-policy RL Algorithm 2"]
+        direction TB
+        E1["受扰且随机延迟的随机化仿真<br/>观测 o'_k-h 延迟 h 在 0 到 H 之间"] --> E2["DOB：逆模型由输出窗口估计应有输入<br/>与实际施加输入作差得到 δ"]
+        E2 --> E3["低通滤波，系数 β 由截止频率与步长得到<br/>得到估计干扰 d_hat"]
+        E3 --> E4["拼接干扰增广观测<br/>延迟观测 + 最近 H+1 步估计干扰"]
+        E4 --> E5["策略 π_θ 输出动作<br/>PPO 收集 T 步 rollout 后更新"]
+        E5 --> E1
+    end
+    N3 --> E2
+    E5 --> OUT["得到对随机化与干扰更鲁棒的策略<br/>用于 sim 到 real 迁移"]
+```
+
+图依据：论文 §III Methodology（Algorithm 1 逆模型训练、DAMDP 定义、Algorithm 2）/ Fig.1、Fig.3；PPO 设定见 §IV
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ A reinforcement learning framework with disturbance awareness for robust sim-to-
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2306.09010>
+- [arXiv PDF](https://arxiv.org/pdf/2306.09010)：已通读方法部分（实验与附录以略读为准）：§I-II 背景、§III Methodology（含 Algorithm 1、2）、§IV 实验设置中的网络与算法设定；§V 实验结果仅略读
 
 ## 推荐继续阅读
 

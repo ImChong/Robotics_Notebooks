@@ -55,6 +55,44 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python examples/05_demo_move_joint.py --port <串口>`（Python SDK；其余示例同样从 `alicia_d_sdk.create_robot()` 起步）。
+
+```mermaid
+sequenceDiagram
+    participant EX as examples/05_demo_move_joint.py
+    participant PK as alicia_d_sdk.create_robot（__init__.py）
+    participant API as SynriaRobotAPI（api/synria_robot_api.py）
+    participant SD as ServoDriver（hardware/servo_driver.py）
+    participant SC as SerialComm（hardware/serial_comm.py）
+    participant DP as DataParser（hardware/data_parser.py）
+    participant HW as Alicia-D 机械臂（串口）
+    EX->>PK: create_robot(port=args.port)
+    PK->>SD: ServoDriver(port, debug_mode)，内部创建 SerialComm + DataParser
+    PK->>PK: get_model_path("Alicia_D", version, variant) → robocore RobotModel
+    PK->>API: SynriaRobotAPI(servo_driver, robot_model)，auto_connect=True
+    API->>SD: connect()
+    SD->>SC: connect()（port 为空则 find_serial_port）
+    SD->>SD: start_update_thread()（_update_loop 后台线程）
+    loop 后台线程 _update_loop
+        SD->>SC: read_frame()
+        SC-->>SD: 校验通过的帧
+        SD->>DP: parse_frame(frame)
+    end
+    API->>SD: acquire_info("joint_gripper", wait=True) 并读取状态、_robot_type()
+    HW-->>DP: 关节/夹爪数据
+    EX->>API: set_home(speed_deg_s) → set_robot_state(target_joints, joint_format='deg', wait_for_completion=True)
+    API->>SD: set_joint_and_gripper(joint_angles, gripper_value, speed_deg_s)
+    SD->>SD: _build_joint_frame()
+    SD->>SC: send_data(frame)
+    SC->>HW: 串口写入目标位置与速度
+    API->>API: _wait_for_joint_target()（轮询状态至到位或超时）
+    EX->>API: disconnect()
+```
+
+图依据：Synria-Robotics/Alicia-D-SDK@7c49e07，读过 pyproject.toml、alicia_d_sdk/__init__.py、alicia_d_sdk/api/synria_robot_api.py、alicia_d_sdk/hardware/servo_driver.py、examples/05_demo_move_joint.py；serial_comm.py、data_parser.py 仅读到类与函数签名。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +104,7 @@ institutions:
 - [Alicia-D-SDK 源码归档](../../sources/repos/alicia-d-sdk.md)（<https://github.com/Synria-Robotics/Alicia-D-SDK>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Synria-Robotics/Alicia-D-SDK@7c49e07，读过 pyproject.toml、alicia_d_sdk/__init__.py、alicia_d_sdk/api/synria_robot_api.py、alicia_d_sdk/hardware/servo_driver.py、examples/05_demo_move_joint.py（部分），serial_comm.py 与 data_parser.py 仅读函数签名；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

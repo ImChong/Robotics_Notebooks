@@ -42,6 +42,23 @@ LLM-assisted multi-view world model for long-horizon robotic manipulation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["任务语言描述"] --> R1["Recognize：LLM 多阶段计划描述器"]
+    R1 --> R2["LLM 稠密奖励生成器<br/>输出各阶段奖励代码(GPT-4o)"]
+    MV["多视角演示"] --> K["Sense：关键帧发现<br/>近零关节速度、夹爪状态不变"]
+    K --> KM["KMV-MAE<br/>view&tube 掩码，ViT 编码/解码<br/>重建像素并预测奖励"]
+    R2 --> KM
+    KM --> W["Plan：RoboHorizon 世界模型(RSSM 变体)<br/>以冻结的 KMV-MAE 表示为输入"]
+    W --> A["Act：DreamerV2 式 actor-critic<br/>想象长度 H = 关键视野长度，辅以行为克隆损失"]
+    R2 --> A
+    A --> E["长时域操作执行"]
+```
+
+图依据：论文 §3.1-3.5、Fig. 1 / Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ LLM-assisted multi-view world model for long-horizon robotic manipulation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.06605>
+- [arXiv PDF](https://arxiv.org/pdf/2501.06605)：已通读方法部分（实验与附录以略读为准）：§3（3.1-3.5）与实验设定；§4 结果与附录略读
 
 ## 推荐继续阅读
 

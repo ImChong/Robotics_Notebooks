@@ -42,6 +42,22 @@ summary: "CoRe（arXiv:2608.14822）：推理期反事实重对齐：跑偏后�
 - 策展机构：凯斯西储大学（美）
 - 开源结论：**待核实**（步骤 2.5，2026-09-27）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["冻结 VLA 正常执行<br/>记录 trace：观测、动作、关节构型 q、物体位姿 p"] --> B["在线 suffix OOD 检测<br/>动作专家 suffix 隐向量 + 马氏距离 s_t，阈值取自成功 rollout 校准"]
+    B -->|"连续 n_consec 次超阈值"| C["相位感知恢复锚点<br/>在 trace 中找最近且保留已完成进度的帧；chunk 内按子步 h* 细化"]
+    C --> D["基于合成观测的反事实续跑<br/>体素存储渲染 + 机械臂 FK 渲染 + 空洞修补"]
+    D --> E["冻结 VLA 在目标指令 ℓ' 下闭环想象 rollout<br/>q_{t+1} = FK(q_t, a_t)"]
+    E --> F["TCP 靠近物体阈值 d_prox 时终止<br/>最近的接触前帧作为 rejoin 状态 c*"]
+    F --> G["基于探针的最小恢复集合<br/>强制集 F + 候选子集，虚拟 probe 对比全恢复参考，取首个 d_arm < ε 的 S*"]
+    G --> H["物理重排：S* 中物体按自上而下 pick-and-place 复位<br/>验证，必要时报告人工介入"]
+    H --> I["机械臂移到 q*，控制权交还冻结 VLA<br/>trace 截断至锚点"]
+```
+
+图依据：论文 Methodology 各小节（Online Suffix OOD Detection 至 Physical Rearrangement and Handoff）、Fig. 2、Fig. 3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -83,6 +99,7 @@ summary: "CoRe（arXiv:2608.14822）：推理期反事实重对齐：跑偏后�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part4.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part4.md)
 - [arXiv:2608.14822](https://arxiv.org/abs/2608.14822)
+- [arXiv PDF](https://arxiv.org/pdf/2608.14822)：已通读方法部分（实验与附录以略读为准）：Introduction 概述、Methodology 全部小节（含 Fig. 2/3）
 
 ## 推荐继续阅读
 

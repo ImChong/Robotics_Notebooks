@@ -42,6 +42,26 @@ Interactive 3D scene generation from a single image.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始图像 I0"] --> B["VLM 描述图像<br/>生成首个场景 FLAGS"]
+    B --> C
+    subgraph LOOP["交互生成循环 Alg.1 / Fig.2"]
+        C["用户移动相机 Cgen<br/>并输入文本提示 U"] --> D["LLM 生成结构化描述<br/>前景 F 背景 B 风格 S"]
+        D --> E["渲染已有几何 并做文本引导外推<br/>得到新场景图像"]
+        E --> F["引导深度扩散 §3.2<br/>以已渲染深度为引导估计新深度"]
+        F --> G["单视角分层生成 §3.1<br/>前景 背景 天空 三层图像与掩码<br/>被遮挡层用扩散 inpaint 补全"]
+        G --> H["几何初始化<br/>像素对齐位置 法线 尺度"]
+        H --> I["FLAGS 优化<br/>由后向前 天空 背景 前景 逐层 100 步 Adam"]
+        I --> J["并入已有场景<br/>实时渲染 用户继续移动相机"]
+        J --> C
+    end
+```
+
+图依据：论文 §3 / §3.1–§3.2 / Fig.2、Fig.3、Fig.4；外层循环据附录 Alg.1 与 Fig.2 图注（Alg.1 仅略读）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +117,8 @@ Interactive 3D scene generation from a single image.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2406.09394>
+- [arXiv PDF](https://arxiv.org/pdf/2406.09394)：已通读方法部分（实验与附录以略读为准）：§3 方法概述、§3.1 FLAGS（定义、单视角分层生成、几何初始化、优化）、§3.2 引导深度扩散；附录 Alg.1 略读，§4 实验与其余附录以略读/未读为准
+
 
 ## 推荐继续阅读
 

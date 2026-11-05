@@ -31,7 +31,28 @@ Evolutionary Continuous Adaptive RL-Powered Co-Design for Humanoid Chin-Up Perfo
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，效果结论仍待深读。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    B["基座策略 π0：在初始设计 D0 上预训练"] -->|"热启动"| FT
+    subgraph OUT["外循环：设计进化（CMA-ES）"]
+        P["从高斯分布采样设计种群 Di（齿轮比因子 d_leg, d_shoulder, d_elbow, d_wrist）"] --> EVAL["适应度 Jpop（由 RL 训练结果得到）"]
+        EVAL --> SEL["选择高性能候选，进化到下一代"]
+        SEL --> P
+    end
+    subgraph INN["内循环：持续自适应（Isaac Gym 并行环境）"]
+        FT["微调策略 π*：对每个新设计种群做 PPO 微调"] --> TA["任务适配策略 πθ"]
+        TA -->|"若 Jpop < J*：更新微调策略"| FT
+    end
+    P --> FT
+    FT --> EVAL
+    SEL --> BEST["最优设计 d* + 优化策略 π*（RH5 引体向上）"]
+```
+
+图依据：论文 §II / Fig. 2、§III-C 与 Algorithm 1 的描述
 
 ## 核心信息
 
@@ -64,7 +85,9 @@ Evolutionary Continuous Adaptive RL-Powered Co-Design for Humanoid Chin-Up Perfo
 - [humanoid_pnb_evolutionary-continuous-adaptive-rl-powered-co-d.md](../../sources/papers/humanoid_pnb_evolutionary-continuous-adaptive-rl-powered-co-d.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2509.26082>
+- [arXiv PDF](https://arxiv.org/pdf/2509.26082)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II 方法（外循环设计进化、内循环持续自适应、最优设计）、§III 实验设置（设计空间、观测/动作/奖励）；§IV 实验结果仅略读。
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Evolutionary Continuous Adaptive RL-Powered Co-Design for Humanoid Chin-Up Performance](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/EA-CoRL_Evolutionary_Continuous_Adaptive_RL_Co-Design_for_Humanoid_Chin-Up/EA-CoRL_Evolutionary_Continuous_Adaptive_RL_Co-Design_for_Humanoid_Chin-Up.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

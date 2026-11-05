@@ -5,16 +5,18 @@ tags:
   - deformable-manipulation
   - manipulation
 status: complete
-updated: 2026-11-02
+updated: 2026-11-03
 arxiv: "2610.40559"
 project_id: shape-servoing-deformable-objects-tutorial-part1
 related:
   - ../overview/senlanke-weekly-2026-10-26-30-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+  - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
 sources:
   - ../../sources/papers/shape-servoing-deformable-objects-tutorial-part1_arxiv_2610_40559.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
+  - ../../sources/blogs/wechat_embodied_station_49_papers_sacq_action_aware_quantization_2026-11-03.md
 summary: "可变形物体形状伺服教程（一）：基础原理（arXiv:2610.40559）：系统介绍基于形变雅可比矩阵的形状伺服方法，包括形状表示、离线估计、在线 Broyden 更新、闭环控制律及局部稳定性分析。使用双臂操作弹性杆的仿真实例解释完整控制流程。"
 ---
 

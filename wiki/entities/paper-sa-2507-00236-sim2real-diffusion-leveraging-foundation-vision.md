@@ -42,6 +42,28 @@ Proposes a novel sim2real transfer method that generates an adapted camera frame
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入相机帧 x（RGB）"] --> ENC["自编码器 Encoder E → 潜变量 z"]
+    ENC --> NOISE["加噪得 z_t"]
+    subgraph COND["条件编码（τθ）"]
+        direction TB
+        TXT["正向提示词（含 trigger word 形如 sim_scale_odd）<br/>+ 负向提示词 → 文本编码器 (CLIPTextModel)"]
+        IMGP["图像提示（参考风格图，来自仿真）<br/>→ 图像编码器 (OpenCLIP-ViT-H14)"]
+    end
+    NOISE --> UNET["时间条件 U-Net ε_θ<br/>cross-attention 注入条件<br/>（图像提示经 IPAdapter 解耦 cross-attention）"]
+    TXT --> UNET
+    IMGP --> UNET
+    UNET --> SCH["调度器（如 DPM-Solver）多步去噪"]
+    SCH --> DEC["Decoder D → 输出帧 x̃"]
+    DEC --> ADS["下游自动驾驶模型<br/>案例：仅用仿真数据训练的行为克隆 CNN"]
+    FT["DreamBooth 微调<br/>在自定义概念上绑定 trigger word"] -.-> UNET
+```
+
+图依据：论文 §II-A（Sim2Real Diffusion）/ Fig.2、§II-B（DreamBooth 微调与案例研究设定）、Eq.1–6；部署时把真实相机帧映射回仿真流形按 §I 贡献与 §II-B.4 描述。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Proposes a novel sim2real transfer method that generates an adapted camera frame
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2507.00236>
+- [arXiv PDF](https://arxiv.org/pdf/2507.00236)：已通读方法部分（实验与附录以略读为准）：§I 贡献、§II Research Methodology（§II-A、§II-B）
 
 ## 推荐继续阅读
 

@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-touch, sun254667-touch]
 status: complete
 updated: 2026-10-06
-arxiv: "2504.17614"
+arxiv: "2504.12908"
 venue: "arXiv 2025"
 summary: "High-performance simulation platform integrating IPC and ABD to model robots, tactile sensors, and objects; achieves 18-fold acceleration over real-time across thousands of parallel environments."
 related:
@@ -42,6 +42,27 @@ High-performance simulation platform integrating IPC and ABD to model robots, ta
 - 想横向对照同一分组的其他工作，可以从 [Awesome Touch 技术地图](../overview/sun-awesome-touch-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Touch](../entities/awesome-touch.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["URDF 机器人 + 凝胶垫四面体网格 + 物体网格"] --> B["机器人与传感器建模<br/>连杆为仿射体 ABD · 凝胶垫为软体"]
+    B --> C["统一 ABD-IPC 能量 E_IPC(y; x)<br/>增量势能 + 对数障碍 + 摩擦势能"]
+    D["关节目标 → 连杆与凝胶表面运动学约束"] --> E["增广拉格朗日 E_IPC^AL"]
+    C --> E
+    E --> F["最小化能量，时间步进<br/>得下一步 y, x"]
+    F --> G["凝胶垫涂层表面形变"]
+    G --> H["高分辨率：深度图与法线 → 像素级 DNN 生成 RGB"]
+    G --> I["低分辨率：标记点位置与 marker flow"]
+    G --> J["3D 触觉：点云"]
+    H --> K["应用：合成数据训练物体分类，直接测试真实样本"]
+    J --> K
+    I --> L["应用：Tac-Man 铰接物体操作"]
+    F --> M["多环境 GPU 并行（NVIDIA Warp）"]
+```
+
+图依据：论文 §3 统一 IPC 仿真、§4 机器人与 VBTS 仿真、§6 应用。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +70,7 @@ High-performance simulation platform integrating IPC and ABD to model robots, ta
 | 编号 | 052/065 |
 | 分组 | Tactile Simulation & Sim2Real |
 | 出处 | arXiv 2025 |
-| 论文 | <https://arxiv.org/abs/2504.17614> |
+| 论文 | <https://arxiv.org/abs/2504.12908> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +83,7 @@ High-performance simulation platform integrating IPC and ABD to model robots, ta
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2504.17614) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2504.12908) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-touch-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +116,11 @@ High-performance simulation platform integrating IPC and ABD to model robots, ta
 - [`sources/papers/sun_awesome_touch_2504_17614_taccel-scaling-up-vision-based-tactile-r.md`](../../sources/papers/sun_awesome_touch_2504_17614_taccel-scaling-up-vision-based-tactile-r.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_touch_catalog.md`](../../sources/papers/sun_awesome_touch_catalog.md) — 列表总表
 - [`sources/repos/awesome-touch.md`](../../sources/repos/awesome-touch.md)
-- 论文：<https://arxiv.org/abs/2504.17614>
+- 论文：<https://arxiv.org/abs/2504.12908>
+- [arXiv PDF](https://arxiv.org/pdf/2504.12908)：已通读方法部分（实验与附录以略读为准）：§3 统一 IPC 仿真、§4 机器人与 VBTS 仿真（4.1–4.3）、§6 应用（6.1–6.3）；§5 评测与附录略读
+- 编号核对（2026-11-02）：上游清单登记的 2504.17614 经 arXiv 官方记录核对为《Bolt: Clothing Virtual Characters at Scale》，与本页论文不符；已更正为 2504.12908《Taccel: Scaling Up Vision-based Tactile Robotics via High-performance GPU Simulation》。
 
 ## 推荐继续阅读
 
 - [Awesome Touch 仓库](https://github.com/sun254667/awesome-touch)
-- [原文](https://arxiv.org/abs/2504.17614)
+- [原文](https://arxiv.org/abs/2504.12908)

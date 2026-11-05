@@ -46,6 +46,30 @@ summary: "OpenDexGrasp（arXiv:2609.18117）：自然语言功能意图 + 多视
 - 开源结论：**待发布**（步骤 2.5，2026-09-20）。
 - 与 [11 篇技术地图](../overview/constraint-control-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["OpenDexVerse 数据 (C2A Recipe)"]
+        A["Omni6DPose 真实扫描物体"] --> B["OpenDex-Scale<br/>BoDex 式采样优化生成抓取 → 3 视角渲染 → VLM 判断功能并生成任务描述"]
+        A --> C["OpenDex-Align<br/>人类遥操作 + 类别级稠密对应迁移到相近实例"]
+    end
+    B -->|覆盖阶段: 预训练| T["OpenDexGrasp 训练<br/>L = L_act + 0.3 · L_aff"]
+    C -->|对齐阶段: 继续训练| T
+    subgraph INFER["推理"]
+        D["多视角 RGB + 自由语言指令"] --> E["Qwen3-VL 编码器<br/>隐藏状态 H^ℓ"]
+        F["物体点云"] --> G["层级点云编码器<br/>几何 token z_P"]
+        H["高斯噪声 a_0"] --> I["Transformer flow-matching 动作专家<br/>自注意力融合 z_P / 查询 / 动作 token<br/>交叉注意力读取 H^ℓ"]
+        E --> I
+        G --> I
+        I --> J["Euler 积分 K 步 → 灵巧抓取位姿<br/>p + 6D 旋转 + 关节"]
+    end
+    I -.训练时辅助监督.-> K["Affordance 头 (点级功能图)<br/>focal + dice 损失"]
+    G -.-> K
+```
+
+图依据：论文 §4.1–4.2 / Fig. 2、§5.1–5.4 / Fig. 4
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +113,8 @@ summary: "OpenDexGrasp（arXiv:2609.18117）：自然语言功能意图 + 多视
 - [opendexgrasp_arxiv_2609_18117.md](../../sources/papers/opendexgrasp_arxiv_2609_18117.md)
 - [wechat_embodied_station_11_papers_constraint_control_2026-09-20.md](../../sources/blogs/wechat_embodied_station_11_papers_constraint_control_2026-09-20.md)
 - [arXiv:2609.18117](https://arxiv.org/abs/2609.18117)
+- [arXiv PDF](https://arxiv.org/pdf/2609.18117)：已通读方法部分（实验与附录以略读为准）：§3 问题定义、§4 OpenDexVerse 与 C2A Recipe、§5 方法（5.1–5.4）、§6 实验设定
+
 
 ## 推荐继续阅读
 

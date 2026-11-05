@@ -45,6 +45,25 @@ Investigates the underexplored impact of Static friction on the Sim2Real gap, pr
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    T["Teacher 阶段（RMA）：特权观测 + 高程图，RL 训练"] --> S["Student 阶段：History Encoder 由本体感觉历史估计地形特征，行为克隆 Teacher 动作"]
+    S --> D0["常规域随机化（不含静摩擦）训练并上真机"]
+    D0 --> F["真机现象：只能倒走，向前走会摔倒"]
+    F --> A1["方案一 Actuator Net：用倒走数据训练 f_motor，输入关节位置与速度历史，输出力矩"]
+    A1 --> A2["仿真中以 f_motor 替换 PD 控制器，重新做 Teacher-Student 训练"]
+    A2 --> A3["结果：平地稳定行走，楼梯失败"]
+    F --> B1["方案二：单关节动力学建模，最小二乘辨识惯量、粘性摩擦、静摩擦"]
+    B1 --> B2["把静摩擦加入域随机化"]
+    B2 --> B3["迭代法：逐步微调引入静摩擦，真机严重抖动"]
+    B2 --> B4["欺骗法 deception：大幅扩大静摩擦随机范围"]
+    B4 --> B5["真机部署成功"]
+```
+
+图依据：论文 §III（RMA Teacher-Student）、§IV-A（Fig. 5 Actuator Net）、§V（静摩擦域随机化：迭代法与欺骗法）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +118,7 @@ Investigates the underexplored impact of Static friction on the Sim2Real gap, pr
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2503.01255>
+- [arXiv PDF](https://arxiv.org/pdf/2503.01255)：已通读方法部分（实验与附录以略读为准）：§III–§V（含 Fig. 2/4/5 与 Table II）；§VI 实验结果仅略读
 
 ## 推荐继续阅读
 

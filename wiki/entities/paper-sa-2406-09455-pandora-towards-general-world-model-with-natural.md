@@ -43,6 +43,30 @@ General world model with natural language actions and video states.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph STEP["单步生成 §2.1"]
+        A["前一状态 S(t-1) 图像或视频"] --> B["Vision encoder + Q-Former 适配器"]
+        C["自然语言动作 A(t-1)"] --> D["文本 token embedding"]
+        Q["可学习 query embedding"] --> E
+        B --> E["自回归骨干 LLM<br/>Chat-UniVi Vicuna-7B"]
+        D --> E
+        E --> F["输出嵌入经 Q-Former 适配器"]
+        F --> G["视频生成器<br/>DynamiCrafter 每次生成 16 帧"]
+        H["S(t-1) 最后 4 帧 + FPS 数"] --> G
+        G --> I["下一状态 St 视频片段"]
+        I -->|"自回归续写 可随时换新动作"| A
+    end
+    subgraph TRAIN["两阶段训练 §2.2"]
+        T1["预训练对齐<br/>WebVid-10M 视频-文本对<br/>冻结 LLM 与视频模型<br/>只训适配器与 query embedding<br/>L2 对齐 LLM 输出与视频模型文本嵌入"] --> T2["指令微调<br/>含动作描述的高质量视频数据<br/>扩散损失 微调视频生成器与 query embedding"]
+    end
+    TRAIN -.-> STEP
+```
+
+图依据：论文 §2.1–§2.2 / Fig.2、Table 1（Fig.2 原图仅据正文描述核对）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,8 @@ General world model with natural language actions and video states.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2406.09455>
+- [arXiv PDF](https://arxiv.org/pdf/2406.09455)：已通读方法部分（实验与附录以略读为准）：§1 贡献概述、§2.1 模型架构、§2.2 分阶段训练（预训练与指令微调及数据构成）；§3 实验与附录以略读/未读为准
+
 
 ## 推荐继续阅读
 

@@ -42,6 +42,32 @@ Taxonomy centered on State Construction and Dynamics Modeling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Preliminaries §3<br/>世界模型三要素：Observation / State / Dynamics"] --> B["提出以 State Construction 与 Dynamics Modeling 为两大支柱的分类体系"]
+    B --> S["§4 State"]
+    B --> D["§5 Dynamics"]
+    S --> S1["4.1 Implicit State：Memory Mechanism<br/>在 context 中管理历史"]
+    S1 --> S11["Compression：Static / Dynamic"]
+    S1 --> S12["Retrieval：Internal / External"]
+    S1 --> S13["Consolidation"]
+    S --> S2["4.2 Explicit State<br/>把历史压缩为紧凑变量"]
+    S2 --> S21["Coupled States：Hidden-variable / Parametric"]
+    S2 --> S22["Decoupled States：Semantics-oriented / Geometry-oriented"]
+    D --> D1["5.1 Causal Architecture Reformulation<br/>Causal Video Model"]
+    D --> D2["5.2 Causal Knowledge Integration<br/>Video Model + VLM"]
+    S --> E["§6 Evaluation：三条轴"]
+    D --> E
+    E --> E1["6.1 Quality"]
+    E --> E2["6.2 Persistence：Long-horizon Coherence / Memory Capacity Tasks"]
+    E --> E3["6.3 Causality：Temporal Reasoning / Interventions / Planning"]
+    E --> F["§7 Future Work：Persistence 与 Causality"]
+```
+
+图依据：综述分类体系图，论文摘要与 §1 贡献条目、Fig.（Sec.1–6 分类总览图）、§3 Preliminaries、§4 Categorization - State、§5 Categorization - Dynamics、§6 Evaluation、§7 Future Work
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +122,7 @@ Taxonomy centered on State Construction and Dynamics Modeling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2601.17067>
+- [arXiv PDF](https://arxiv.org/pdf/2601.17067)：已读摘要、§1 Introduction、§3 Preliminaries、§4 State（4.1–4.3 的开头、定义与小结，逐篇方法略读）、§5 Dynamics 开头、§6 Evaluation（6.2–6.3）、§7–§8；总览分类图的文字由 pdftotext 抽出，部分子类名按正文小节核对（参考文献与各方法细节未读）
 
 ## 推荐继续阅读
 

@@ -69,6 +69,42 @@ summary: "RoboSpatial（CVPR 2025 Oral，arXiv:2411.16537）：3D scan 自动生
 - 与 [RefSpatial-Bench](./paper-roborefer.md)、[EmbSpatial](./embspatial.md) 分工：Home 偏 scan QA，RefSpatial 偏指代推理
 - 开源 pipeline 可扩展到 BOP/GraspNet（官方 roadmap）
 
+## 源码运行时序图
+
+入口：`cd robospatial && python run_generation.py --config configs/example_dataset.yaml`（官方 README 的示例命令；产出为 JSON 标注，再由 `scripts/qa_generator.py <input_dir> --output-mode json --output-path ...` 转成 QA 对）。本仓库是**标注生成流水线**，不含 VLM 训练或评测代码（评测在另一仓库 RoboSpatial-Eval）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 run_generation.py
+    participant R as run_generation.py run/process_scene
+    participant LD as data_loader (loader_class，如 EmbodiedScanLoader)
+    participant G as annotation_generator.py generate_and_save_annotations
+    participant SA as spatial_analysis (grounding / relationships)
+    participant Q as scripts/qa_generator.py
+    U->>R: --config yaml，可选 --scene/--image/--range/--num_workers/--dry-run
+    R->>R: load_config，create_loader 用 importlib 按 loader_class 实例化
+    R->>LD: list_scenes，读取 generation_progress.json 跳过已完成场景
+    R->>R: ProcessPoolExecutor 按场景并行调用 process_scene
+    R->>LD: list_images(dataset, scene)
+    R->>G: generate_and_save_annotations(loader, dataset, scene, images_ann, config, num_workers)
+    loop 每张图像
+        G->>LD: list_objects 得到可见物体、唯一类别、floor_bound、全部物体
+        G->>SA: calculate_occupied_pixels 用 extrinsic/intrinsic 把 3D OBB 投到图像得到占据图
+        G->>SA: get_object_grounding(obj, occupancy_map)
+        G->>SA: get_spatial_context 在物体周围的地面空位取点
+        loop 物体对 (unique_categories_only 等模式)
+            G->>SA: get_spatial_configuration 左右前后等关系
+            G->>SA: get_spatial_compatibility 判断能否放入 (can_fit_object_a_in_relation_to_b, can_fit_on_top)
+        end
+        G->>G: 写 image.annotations.json
+    end
+    R->>R: 汇总 stats，写 generation_progress.json 与 generation_stats.json
+    U->>Q: python scripts/qa_generator.py input_dir --output-mode json
+    Q->>Q: 读取 annotations，按关系生成问答对并分层采样，输出 JSON 或上传 Hugging Face
+```
+
+图依据：NVlabs/RoboSpatial@7a1b901，读过 README.md、robospatial/run_generation.py、robospatial/annotation_generator.py、robospatial/spatial_analysis/relationships.py（仅 import 与函数签名/调用）、scripts/qa_generator.py（文件头与 argparse，未读 QA 生成细节）；spatial_analysis 各子模块与 data_loader 实现未细读，关系判定的具体几何逻辑不在图中展开。
+
 ## 关联页面
 
 - [RoboRefer / RefSpatial-Bench](./paper-roborefer.md)
@@ -83,6 +119,7 @@ summary: "RoboSpatial（CVPR 2025 Oral，arXiv:2411.16537）：3D scan 自动生
 - [robospatial-home.md](../../sources/sites/robospatial-home.md)
 - [nvlabs-robospatial.md](../../sources/repos/nvlabs-robospatial.md)
 - [robospatial_lightnav_2026.md](../../sources/papers/robospatial_lightnav_2026.md)
+- 源码核对（2026-11-02）：NVlabs/RoboSpatial@7a1b901，读过 README.md、robospatial/run_generation.py、robospatial/annotation_generator.py、robospatial/spatial_analysis/relationships.py、scripts/qa_generator.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

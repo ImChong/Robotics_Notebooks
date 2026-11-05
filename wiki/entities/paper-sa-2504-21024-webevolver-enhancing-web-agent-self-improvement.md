@@ -42,6 +42,26 @@ Enhancing web agent self-improvement with coevolving world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始策略 M：Cognitive Kernel 采样网页导航轨迹"] --> B["拒绝采样<br/>自评分 r̂ 保留成功轨迹 D_i"]
+    B --> C["迭代 SFT：训练策略 M_i"]
+    B --> D["转成世界模型轨迹，训练世界模型 M_w<br/>由动作与当前无障碍树预测下一观测"]
+    C --> E["轨迹合成：M_w 替代真实环境转移函数 T"]
+    D --> E
+    E --> F["合成轨迹经拒绝采样得 D_w"]
+    B --> G["合并 D_i 与 D_w"]
+    F --> G
+    G --> H["训练新策略 WebEvolver"]
+    H --> I["推理时前瞻 WMLA<br/>M_w 模拟 d 步 rollout"]
+    I --> J["LLM 评分 0 / 0.5 / 1.0<br/>选得分最高的候选动作"]
+    C -.->|下一轮采样| A
+```
+
+图依据：论文 §3.2 Agent 自我改进、§3.3 WebEvolver（协同学习世界模型、轨迹合成、推理时前瞻）/ Fig. 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Enhancing web agent self-improvement with coevolving world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.21024>
+- [arXiv PDF](https://arxiv.org/pdf/2504.21024)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 相关工作、§3 方法（3.1–3.3，含 Fig. 2）、§4.1–4.3 实验设定；表格与附录略读
 
 ## 推荐继续阅读
 

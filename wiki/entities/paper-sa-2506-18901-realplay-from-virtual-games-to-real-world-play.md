@@ -43,6 +43,29 @@ From virtual games to real-world play.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PRE["预训练图生视频模型 CogVideoX\nT5 文本编码 + 视频 VAE + DiT"] --> S1
+    subgraph S1["阶段1：改造为分块（chunk-wise）生成模型"]
+        direction TB
+        A1["以前一视频块作为条件（替换首帧条件）"] --> A2["专用注意力掩码\n每块生成 4 个未来帧 latent（16 帧）"]
+        A2 --> A3["训练时对条件块加噪（Noise Augmentation）"]
+    end
+    OV["通用视频数据 OpenViD 100K"] --> S1
+    S1 --> S2
+    GD["带标注游戏数据\n(块 C^k, 动作 a^k)，动作为前进/左转/右转 one-hot"] --> S2
+    RD["无标注真实视频\n车辆 / 自行车 / 行人（动作输入置为全零向量）"] --> S2
+    subgraph S2["阶段2：RealPlay 动作控制微调"]
+        direction TB
+        B1["动作 → MLP（512 维）+ 噪声时间步嵌入"] --> B2["线性层产生 adaLN 调制参数\n调制注意力与 FFN"]
+    end
+    S2 --> INF["推理：用户看到上一块 C^k，给出游戏动作指令\n生成下一块 C^k+1，迭代交互"]
+```
+
+图依据：论文 §3 / Fig.2、§3.1–3.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ From virtual games to real-world play.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.18901>
+- [arXiv PDF](https://arxiv.org/pdf/2506.18901)：已通读方法部分（实验与附录以略读为准）：§3 方法（含 Fig.2、§3.1 分块生成、§3.2 从游戏到真实世界）、§4 开头的实现细节
 
 ## 推荐继续阅读
 

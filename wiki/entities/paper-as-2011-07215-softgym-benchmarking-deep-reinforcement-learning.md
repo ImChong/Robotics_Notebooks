@@ -42,6 +42,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    FLEX["§3 NVIDIA FleX 基于位置的粒子动力学<br/>绳: 相邻粒子弹簧 / 布: 粒子网格, 拉伸 + 弯曲 + 自碰撞约束 / 流体: 恒密度约束"] --> SG["SoftGym: 开源基准, OpenAI Gym API + Python 接口"]
+    SG --> MED["SoftGym-Medium 6 任务<br/>TransportWater / PourWater / StraightenRope / SpreadCloth / FoldCloth / DropCloth"]
+    SG --> HARD["SoftGym-Hard 4 任务<br/>PourWaterAmount / FoldCrumpledCloth / DropFoldCloth / RopeConfiguration"]
+    SG --> ROB["SoftGym-Robot: Sawyer 或 Franka 机器人, 末端笛卡尔控制"]
+    MED --> ACT["抽象动作空间: 绳 / 布用 picker 球体 dx dy dz 加激活位 p; 流体直接驱动杯子"]
+    HARD --> ACT
+    ACT --> SETUP["§6.1 评测设置: 每任务预采样 1000 个变体, 800 训练 / 200 评测<br/>性能按下界 不作为策略 与上界归一化, 5 个随机种子取中位数"]
+    SETUP --> METH["§5 被评方法, 按观测假设分组<br/>Dynamics Oracle: CEM + MPC / State Oracle: Full State, Reduced State, 均用 SAC / 图像观测: CURL-SAC, DrQ, PlaNet, 另有 Wu et al."]
+    METH --> ANA1["§6.2 SoftGym-Medium 基准结果"]
+    METH --> ANA2["§6.3 PlaNet 开环预测: 分析图像方法为何困难"]
+    ACT --> ANA3["§6.4 Reality gap: 布料 pick-and-place 在仿真与 Sawyer 真机上对比"]
+```
+
+图依据：基准构建与评测协议图，论文 §3、§4（Action Space / Tasks）、§5 Methods Evaluated、§6.1-6.4、Fig. 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2011.07215>
+- [arXiv PDF](https://arxiv.org/pdf/2011.07215)：已通读 §1 引言、§3 FleX 背景、§4 SoftGym 动作空间与任务、§5 被评方法、§6 实验设置与分析（§6.2 的结果图 Fig. 2 略读）、§7 结论；§2 相关工作与附录未读
 
 ## 推荐继续阅读
 

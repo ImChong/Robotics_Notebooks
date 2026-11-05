@@ -43,6 +43,28 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["数据采集<br/>并行仿真 + ANYmal 真机"] --> B["回放缓冲区<br/>本体感知 · 高度图 · 速度指令 · 位姿"]
+    A -.->|早期| C["随机时间相关指令采样"]
+    A -.->|后期| D["MPPI 规划器指令采样"]
+    B --> E["子轨迹采样<br/>历史 10 状态 · 预测 10 状态"]
+    E --> F["历史 GRU + 高度图卷积编码"]
+    F --> G["前向预测 GRU<br/>以动作编码序列为输入"]
+    G --> H["预测头 1：速度修正量 Δa → 积分得 SE2 位姿"]
+    G --> I["预测头 2：失败风险 r"]
+    H --> J["损失 L = L_pose + L_risk + L_stop"]
+    I --> J
+    H --> K["MPPI 规划<br/>扰动初始解得动作轨迹群"]
+    I --> K
+    K --> L["奖励 R = λ_pose·R_pose + λ_risk·R_risk<br/>FDM 预测位姿与风险"]
+    L -->|k 次迭代取最大奖励序列| M["执行速度指令"]
+```
+
+图依据：论文 §V-A 数据采集、§V-B 模型结构、§V-C 损失、§V-D 路径规划 / Fig. 2、Fig. 3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +122,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://www.roboticsproceedings.org/rss21/p001.html>
+- [arXiv PDF](https://arxiv.org/pdf/2504.19322)：已通读方法部分（实验与附录以略读为准）：§IV 问题陈述、§V 方法（A–D，含 Fig. 2、Fig. 3）、§VI 实验设定与训练细节；其余实验与附录略读
 
 ## 推荐继续阅读
 

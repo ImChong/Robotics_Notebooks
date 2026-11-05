@@ -5,16 +5,18 @@ tags:
   - quadruped
   - locomotion
 status: complete
-updated: 2026-11-02
+updated: 2026-11-03
 arxiv: "2610.40248"
 project_id: llm-guided-planar-loco-manipulation-quadruped
 related:
   - ../overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
+  - ../overview/embodied-station-2026-11-03-49-papers-technology-map.md
 sources:
   - ../../sources/papers/llm-guided-planar-loco-manipulation-quadruped_arxiv_2610_40248.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
+  - ../../sources/blogs/wechat_embodied_station_49_papers_sacq_action_aware_quantization_2026-11-03.md
 summary: "LLM 引导平面移动操作：大语言模型引导的四足平面移动操作（arXiv:2610.40248）：LoRA 微调的语言任务规划器将语言指令和结构化场景转换为可变长度参数化动作；底层端到端全身推动策略在仿真中达到 93.3% 成功率，并在实机 45 次实验中完成 34 次端到端任务。"
 ---
 

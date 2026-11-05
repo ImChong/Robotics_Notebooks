@@ -42,6 +42,26 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IMG["图像（224 / 448 / 896 px）"] --> SIG["SigLIP ViT-So400m 图像编码器"]
+    SIG --> PROJ["线性投影层（零初始化），对齐到 Gemma 词向量维度"]
+    PROMPT["任务文本前缀 prefix"] --> TOK["Gemma SentencePiece 分词与词嵌入"]
+    PROJ --> SEQ["拼接序列：图像 token + BOS + prefix + SEP + suffix + EOS"]
+    TOK --> SEQ
+    SEQ --> GEM["Gemma-2B 解码器：图像与 prefix 全注意力，suffix 自回归掩码"]
+    GEM --> ANS["自回归生成答案 suffix（文本）"]
+    subgraph TRAIN["训练流程"]
+        S0["Stage0：复用现成 SigLIP 与 Gemma-2B 检查点"] --> S1["Stage1：224px 多模态预训练，全部参数不冻结"]
+        S1 --> S2["Stage2：提升到 448px 再到 896px"]
+        S2 --> S3["Stage3：迁移，全参数微调到具体任务"]
+    end
+```
+
+图依据：论文 §3.1 Architecture（Fig.2）与 §3.2 Pretraining（Stage0 至 Stage3）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ RCL Awesome WAM 清单收录（Components of WAMs）；细节以原文 PDF / 项
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2407.07726>
+- [arXiv PDF](https://arxiv.org/pdf/2407.07726)：已通读方法部分（实验与附录以略读为准）：§3 模型（架构与 Stage0 至 Stage3 预训练流程）；§4 至 §6 结果与消融略读
 
 ## 推荐继续阅读
 

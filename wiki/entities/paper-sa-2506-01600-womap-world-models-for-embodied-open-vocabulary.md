@@ -42,6 +42,31 @@ World models for embodied open-vocabulary object localization.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据生成：real-to-sim-to-real"]
+        A["少量真实场景视频"] --> B["训练 Gaussian Splat，蒸馏 CLIP 语义得到语义 Gaussian Splat（目标位置与尺寸）"]
+        B --> C["渲染任意位姿观测，得 (图像 o, 奖励 r, 位姿 P) 数据集 D"]
+        C --> D["GroundingDINO 检测置信度 × 框大小 = 稠密奖励标签"]
+    end
+    subgraph WM["世界模型训练"]
+        E["DINOv2 观测编码器 → 隐状态 z_t"] --> F["ViT 动态预测器 q_ψ(z_t+1 | z_t, a_t)，KL 损失"]
+        E --> G["奖励预测器 v_ϕ(r | z, e_g)，蒸馏检测奖励（无需重建损失）"]
+    end
+    D --> E
+    subgraph PLAN["推理规划"]
+        H["语言目标 l → 语言嵌入 e_g"] --> I["VLM 链式思维，多选题给出 3 个高层动作提案"]
+        I --> J["用世界模型 + MPC 优化各提案：最大化预测奖励并加入动作平滑项"]
+        J --> K["选预测奖励最高的动作序列执行"]
+    end
+    F --> J
+    G --> J
+```
+
+图依据：论文 §3.2 Scalable Data Generation / §3.3 World Models（Fig. 4）/ §3.4 Planning with WoMAP / Fig. 2–3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +122,7 @@ World models for embodied open-vocabulary object localization.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.01600>
+- [arXiv PDF](https://arxiv.org/pdf/2506.01600)：已通读方法部分（实验与附录以略读为准）：摘要、§3.1–3.4 方法；§4 实验仅略读，附录未读
 
 ## 推荐继续阅读
 

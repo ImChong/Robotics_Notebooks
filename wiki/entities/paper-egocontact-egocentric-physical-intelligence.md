@@ -20,7 +20,7 @@ summary: "EgoContact：利用第一视角视频评估物理智能（arXiv:2610.3
 
 # EgoContact：利用第一视角视频评估物理智能
 
-**EgoContact**（*EgoContact: Evaluating Physical Intelligence with Egocentric Video*，[arXiv:2610.39167](https://arxiv.org/abs/2610.39167)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，未逐页核对正文 PDF；指标与结论以论文为准。
+**EgoContact**（*EgoContact: Evaluating Physical Intelligence with Egocentric Video*，[arXiv:2610.39167](https://arxiv.org/abs/2610.39167)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文数据集与评测协议部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
 
 ## 一句话定义
 
@@ -36,6 +36,27 @@ summary: "EgoContact：利用第一视角视频评估物理智能（arXiv:2610.3
 ## 为什么重要
 
 - 周报所述待解决的问题：人类第一视角视频被广泛用于机器人预训练，但模型是否真正理解物体应该在哪里接触，缺少直接评测。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Ego4D 第一视角视频<br/>37 个 manipulation-heavy 场景"] --> B["8,626 个候选 clip"]
+    B --> C["VISOR-HOS 自动检测候选交互时间点<br/>47,135 个候选事件"]
+    C --> D["标注员 verify / adjust / annotate"]
+    D --> E1["时间标注<br/>初始接触帧 fc + 观测窗口 [fp_first, fp_last]"]
+    D --> E2["空间标注<br/>fc 处拇指与对侧 virtual finger 两个接触点<br/>迁移到 fp_last + 目标物体 bounding box"]
+    D --> E3["语义标注<br/>自然语言描述 → Qwen3-VL 归一化为 verb-noun<br/>映射到 Ego4D taxonomy"]
+    E1 --> F["EgoContact：22,523 个已验证交互事件"]
+    E2 --> F
+    E3 --> F
+    F --> G["RQ1 未来接触点预测<br/>输入：接触前观测 I + 查询 q → 输出：排序候选点"]
+    G --> H["评测对象：affordance grounding / affordance transfer / VLM<br/>指标：PiB · mDST · PCK@1% · PCK@5%（Top-1 / Top-5）"]
+    F --> I["RQ2 下游抓取<br/>用 EgoContact 替换 RAM 的 memory bank，策略其余部分不变"]
+    I --> J["RAM 检索并迁移接触点 → 投影到物体点云<br/>→ 选最近的 grasp 提案 → 仿真 / 真机评测"]
+```
+
+图依据：数据采集与标注流程 + 评测协议图（论文 §III Dataset A–C、§IV-A 任务设定与指标、§IV-B RQ2、Fig. 1、Fig. 3）
 
 ## 核心机制
 
@@ -87,6 +108,7 @@ summary: "EgoContact：利用第一视角视频评估物理智能（arXiv:2610.3
 - [egocontact-egocentric-physical-intelligence_arxiv_2610_39167.md](../../sources/papers/egocontact-egocentric-physical-intelligence_arxiv_2610_39167.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-26_30.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md)
 - [arXiv:2610.39167](https://arxiv.org/abs/2610.39167)
+- [arXiv PDF](https://arxiv.org/pdf/2610.39167)：已通读 Abstract、§I–§V（Dataset 的数据整理 / 标注、§IV 实验设定与评测协议、Fig. 1 / Fig. 3）；结果数字与附录以略读为准
 
 ## 推荐继续阅读
 

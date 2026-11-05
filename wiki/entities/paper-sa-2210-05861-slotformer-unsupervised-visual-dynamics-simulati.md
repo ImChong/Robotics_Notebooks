@@ -42,6 +42,23 @@ Unsupervised visual dynamics simulation with object-centric models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  F["T 帧视频 x_1..x_T"] --> OC["预训练 object-centric 模型<br/>(CNN + Slot Attention, 如 SAVi)"]
+  OC --> S["Slots S_1..S_T"]
+  S --> LIN["Linear 投影 + 时间维 positional encoding"]
+  LIN --> TR["Transformer 编码器 T<br/>(联合时空推理)"]
+  TR --> HEAD["取最后 N 个特征 → Linear"]
+  HEAD --> NS["预测下一步 slots Ŝ_(T+1)"]
+  NS -. "自回归: 预测值回灌" .-> LIN
+  NS --> DEC["冻结 SAVi decoder → 未来帧"]
+  NS --> DOWN["下游: VQA 读出 / 规划<br/>(任务成功分类器对动作打分)"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.1（slot 表征、自回归 Transformer 动力学、训练）、§4.1/§4.4（下游用法，仅略读）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Unsupervised visual dynamics simulation with object-centric models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2210.05861>
+- [arXiv PDF](https://arxiv.org/pdf/2210.05861)：已通读方法部分（实验与附录以略读为准）：§1 引言（略读）、§3.1–3.3、§4.1 实验设置；§4 其余与附录仅略读
 
 ## 推荐继续阅读
 

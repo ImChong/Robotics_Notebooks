@@ -3,7 +3,7 @@ type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, paper, paper]
 status: complete
 updated: 2026-09-20
-arxiv: "2102.03479"
+arxiv: "2304.01315"
 summary: "Guidance on experimental design choices that materially affect reported results."
 related:
   - ../entities/awesome-physical-ai-natnew.md
@@ -40,6 +40,29 @@ Guidance on experimental design choices that materially affect reported results.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  INTRO["1 引言：区分「科学研究」与「工程系统演示」；本文是 RL 实验设计的 cookbook"] --> S2
+  subgraph S2["2 Observational experiments（单个智能体 × 单个环境）"]
+    S21["2.1 实验一：一个演示"] --> S22["2.2 刻画性能的变化"]
+    S22 --> S23["2.3 分布很重要"]
+    S23 --> S24["2.4 报告性能变化"]
+    S24 --> S25["2.5 报告性能估计的置信度"]
+    S25 --> S26["2.6 真的需要更多次运行吗"]
+    S26 --> S27["2.7 决定实验长度"]
+  end
+  S2 --> S3["3 处理超参数：敏感性 / 理想化性能 / 面向部署的评估"]
+  S3 --> S4["4 比较多个算法：设计者诅咒、校准基线、排名、显著性比较"]
+  S4 --> S5["5 选择环境：诊断环境 / 基准环境 / 新环境不一定更好"]
+  S5 --> S6["6 案例研究：重新评估已有工作"]
+  S6 --> S7["7 RL 实验中的常见错误"]
+  S7 --> S8["8 结论"]
+```
+
+图依据：论文 §1 末段的章节路线图（Introduction 中「We begin by discussing ... We conclude with ... Section 7」）与 Fig. 1（两阶段比较流程图）所链接的各节；节标题取自正文。属教程文章组织结构图，不含实验结论。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -47,8 +70,8 @@ Guidance on experimental design choices that materially affect reported results.
 | 编号 | 108/384 |
 | 分组 | Evaluation Methodology |
 | 来源清单 | natnew |
-| 主链接 | <https://arxiv.org/abs/2102.03479> |
-| arXiv | 2102.03479 |
+| 主链接 | <https://arxiv.org/abs/2304.01315> |
+| arXiv | 2304.01315 |
 
 ## 核心机制（归纳）
 
@@ -61,7 +84,7 @@ Guidance on experimental design choices that materially affect reported results.
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2102.03479) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2304.01315) 为准。
 - 横向对照请回到 [技术地图](../overview/awesome-physical-ai-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -102,10 +125,13 @@ Guidance on experimental design choices that materially affect reported results.
 - [`sources/repos/awesome-physical-ai-union-catalog.md`](../../sources/repos/awesome-physical-ai-union-catalog.md) — 双清单并集目录
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
-- 主链接：<https://arxiv.org/abs/2102.03479>
+- 主链接：<https://arxiv.org/abs/2304.01315>
+- [arXiv PDF](https://arxiv.org/pdf/2304.01315)：已通读摘要、§1 引言（章节路线图与 Fig. 1 说明）及 §2-§8 各节标题；各节正文与附录以略读为准（图为论文自身章节结构，Fig. 1 流程图仅依据其图注文字）
 
 ## 推荐继续阅读
 
 - [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
 - [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)
-- [原文 / 官方入口](https://arxiv.org/abs/2102.03479)
+- [原文 / 官方入口](https://arxiv.org/abs/2304.01315)
+
+- 核对（2026-11-02）：原 arXiv 编号 2102.03479 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2304.01315。

@@ -31,7 +31,31 @@ Emergent Active Perception and Dexterity of Simulated Humanoids from Visual Rein
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，本页只保留分类位置与原文入口；方法模块与数据流见下方「流程总览」（仅依据论文方法部分，不含实验结论）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["第一人称相机图像 I_t（RGB / RGBD / 双目）"] --> V["视觉指令叠加（Perception-as-Interface）"]
+    V --> V1["目标物体：绿色分割掩码 alpha 混合；抽屉把手涂红"]
+    V --> V2["目标位置：渲染 3D 箭头 / 蓝色标记"]
+    V --> V3["左右手与抓取/释放时机：顶部两角彩色方块（白=空闲，紫=准备接触，蓝=接触）"]
+    V1 --> C["CNN（三层）"]
+    V2 --> C
+    V3 --> C
+    B["本体感知 o_p：关节旋转/位置/速度、角速度、手部接触力"] --> G["GRU 记忆"]
+    C --> G
+    G --> M["MLP → 潜变量 z_t（策略 π_PDC）"]
+    M --> D["PULSE-X 解码器 D(a_t | z_t, o_p)（cVAE，AMASS 预训练，冻结的低层控制器）"]
+    B --> D
+    D --> ACT["关节驱动 a_t → 仿真人形（IsaacLab）"]
+    R["稠密奖励（分段：接近 / 预抓取 / 物体到位 / 释放 + look-at 注视奖励）+ 早停"] -.->|"PPO 训练，无参考动作"| M
+    T["先在桌面场景训练抓取"] -.->|"热启动"| K["厨房场景：一半环境抓取，一半开抽屉"]
+    K -.-> M
+```
+
+图依据：论文 §3.1-§3.3、§4 开头训练设定、Fig.3 / Fig.4
 
 ## 核心信息
 
@@ -64,6 +88,7 @@ Emergent Active Perception and Dexterity of Simulated Humanoids from Visual Rein
 - [humanoid_pnb_emergent-active-perception-and-dexterity-of-simu.md](../../sources/papers/humanoid_pnb_emergent-active-perception-and-dexterity-of-simu.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.12278>
+- [arXiv PDF](https://arxiv.org/pdf/2505.12278)：已通读方法部分（实验与附录以略读为准）：§3 方法（任务定义、视觉感知接口、奖励/策略架构/PULSE-X）、§4 训练设定与基线；实验结果略读
 
 ## 推荐继续阅读
 

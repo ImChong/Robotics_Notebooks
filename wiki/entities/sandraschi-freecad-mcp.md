@@ -55,6 +55,46 @@ FreeCAD MCP（sandraschi）（sandraschi/freecad-mcp）是通过 FastMCP 自动�
 
 源码状态核验：该 GitHub 仓库于 2026-10-07 可公开访问。仓库 API 报告许可证为 MIT。 涉及商业软件时，安装包和有效许可证需由使用者自行提供。
 
+## 源码运行时序图
+
+入口：`src/freecad_mcp/server.py` 的 `main()`，可用 `python -m freecad_mcp.server --mode stdio`（默认）或 `--mode http --port 10944` 启动；先由 `_init_freecad()` 决定 `_state["bridge_mode"]` 为 `tcp`（连接 FreeCAD 内的桥接端口）或 `subprocess`（回退到 FreeCADCmd）。以下以 MCP 工具 `step_to_stl` 为例。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant C as "MCP 客户端<br/>Claude Desktop / Cursor 等"
+    participant M as "main() 与 FastMCP<br/>src/freecad_mcp/server.py"
+    participant T as "step_to_stl()<br/>src/freecad_mcp/server.py"
+    participant B as "_bridge_send()<br/>src/freecad_mcp/server.py"
+    participant H as "BridgeHandler.handle()<br/>src/freecad_mcp/fc_bridge.py"
+    participant F as "_run_freecad()<br/>FreeCADCmd 子进程"
+    C->>M: 启动 MCP 会话 (stdio 或 HTTP)
+    M->>M: _init_freecad() 设置 bridge_mode
+    C->>M: 调用 step_to_stl(file_name, output_name)
+    M->>T: 执行工具函数
+    T->>T: 检查上传目录中是否存在该 STEP 文件
+    alt bridge_mode 为 tcp
+        T->>B: _bridge_send("open", path, name, timeout 300)
+        B->>H: 新建 TCP 连接 127.0.0.1:11968 发送一行 JSON
+        H->>H: method open 打开或新建文档
+        H-->>B: JSON 应答
+        B-->>T: resp
+        T->>B: _bridge_send("export_stl", path, timeout 300)
+        B->>H: 新建 TCP 连接发送 JSON
+        H->>H: method export_stl 导出 STL
+        H-->>B: JSON 应答
+        B-->>T: resp2
+    else bridge_mode 为 subprocess
+        T->>F: _run_freecad(script) 写入临时 .py 并执行
+        F->>F: Import.insert 后 Mesh.export
+        F-->>T: stdout, stderr, returncode
+    end
+    T-->>M: success, output, data 结构
+    M-->>C: 工具结果
+```
+
+图依据：sandraschi/freecad-mcp@5e35f95，读过 `README.md`、`run_server.py`、`src/freecad_mcp/__main__.py`、`src/freecad_mcp/server.py`（`_bridge_send`、`_run_freecad`、`step_to_stl`、`main`）、`src/freecad_mcp/fc_bridge.py`（`BridgeHandler.handle` 的方法分支）。`_init_freecad()` 的内部探测过程未逐行核对，图中只取其对 `bridge_mode` 的设置结果；FastMCP 工具注册细节未展开。
+
 ## 关联页面
 
 - [CAE / CFD 代理工具项目总览](../overview/cae-cfd-agent-skills-landscape.md)
@@ -65,6 +105,7 @@ FreeCAD MCP（sandraschi）（sandraschi/freecad-mcp）是通过 FastMCP 自动�
 - [公众号文章原始资料归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [GitHub 仓库资料归档](../../sources/repos/sandraschi-freecad-mcp.md)
 - [sandraschi/freecad-mcp 官方仓库](<https://github.com/sandraschi/freecad-mcp>)
+- 源码核对（2026-11-02）：sandraschi/freecad-mcp@5e35f95，读过 README.md、run_server.py、src/freecad_mcp/__main__.py、src/freecad_mcp/server.py、src/freecad_mcp/fc_bridge.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

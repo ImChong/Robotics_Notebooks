@@ -42,6 +42,27 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["预训练数据 Ramen（约 1695 小时）<br/>TRI-Ramen（真机 / 仿真 / UMI）+ 外部数据 OXE-Ramen"] --> PT["预训练 LBM（全数据混合，48k 步）"]
+    PT --> FT["在单任务示范上微调<br/>（真机 30k 步 / 仿真 10k 步）"]
+    SC["对照：单任务从零训练的策略"] --> EV
+    FT --> EV["评估：仿真 + 真机盲测 A/B<br/>rubric 评分 + 统计分析"]
+    subgraph POL["LBM 策略（Diffusion Transformer）"]
+        IM["多相机图像 → 预训练 CLIP ViT CLS token"] --> CAT
+        LG["任务语言 → CLIP 文本编码器 + 投影层"] --> CAT
+        PR["本体感觉 proprioception"] --> CAT["拼接两个观测时间步特征"]
+        CAT --> DIT["DiT（8 个 block，adaLN 条件化）<br/>+ 扩散步 k 的编码"]
+        DIT --> ACT["DDIM 去噪：输出 16 步 × 20 维动作"]
+        ACT --> EXE["10 Hz 部署：执行前 8 步后重新规划"]
+    end
+    PT -.-> POL
+```
+
+图依据：论文 §I、§IV-A（评估协议）、§IV-B（LBM 架构 / Fig.9 / 训练与部署）、§IV-D（预训练数据）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://doi.org/10.1126/scirobotics.aea6201>
+- [arXiv PDF](https://arxiv.org/pdf/2507.05331)：已通读方法部分（实验与附录以略读为准）：§I 引言、§IV-A 评估协议（开头）、§IV-B 大行为模型、§IV-D 预训练数据（开头）
 
 ## 推荐继续阅读
 

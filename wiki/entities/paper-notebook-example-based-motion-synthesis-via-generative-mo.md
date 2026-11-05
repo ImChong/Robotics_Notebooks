@@ -38,6 +38,26 @@ GenMM 是一个生成模型，从单段或少量范例序列中"挖（mine）"�
 - **从少范例挖多样**契合人形稀缺动作数据的扩增需求；
 - 动作重组/循环可为人形技能库提供多样参考。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    EX["范例动作 T<br/>局部根位移 V + 6D 关节旋转 R（可附足接触标签）"] --> PYR["下采样（因子 r）得到范例金字塔 T1…TS"]
+    NOISE["最粗阶段初始猜测 F̃1：高斯噪声"] --> GMM
+    PYR --> GMM
+    subgraph STG["每个阶段 s 重复 E 次迭代：生成式动作匹配"]
+        GMM["按骨架划分提取 motion patch<br/>（骨架分为重叠的骨架部件，p 帧 patch，步长 1）"] --> DIST["逐部件计算 patch 平方 L2 距离矩阵"]
+        DIST --> NORM["双向相似度归一化<br/>除以 α + min 项（α 控制完整性）"]
+        NORM --> NN["每个合成 patch 取最近邻范例 patch"]
+        NN --> BLD["重叠 patch 平均投票融合；<br/>重叠关节处平均，拼成全身动作 Fs"]
+    end
+    BLD --> UP["上采样 ×r 作为下一阶段初始猜测"]
+    UP -->|"进入更细阶段"| GMM
+    BLD -->|"最细阶段 s = S"| OUT["合成动作 F（长度可与范例不同）"]
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2–Fig.4（单范例设定）
+
 ## 解决什么问题
 
 数据驱动动作合成的痛点： - **长时离线训练**； - **视觉伪影**； - **大型复杂骨架**上易失败； - 难从**极少范例**生成多样动作。
@@ -90,6 +110,7 @@ GenMM 要：**免训练**、高质量、可处理复杂骨架、从单/少范例
 - [humanoid_pnb_example-based-motion-synthesis-via-generative-mo.md](../../sources/papers/humanoid_pnb_example-based-motion-synthesis-via-generative-mo.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Example-based_Motion_Synthesis_via_Generative_Motion_Matching/Example-based_Motion_Synthesis_via_Generative_Motion_Matching.html>
 - 论文：<https://arxiv.org/abs/2306.00378>
+- [arXiv PDF](https://arxiv.org/pdf/2306.00378)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2 相关工作、§3 方法（动作表示、多阶段合成、生成式动作匹配、扩展设置）、§4 开头
 
 ## 推荐继续阅读
 

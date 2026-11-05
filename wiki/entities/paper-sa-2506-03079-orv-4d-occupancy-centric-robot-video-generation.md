@@ -43,6 +43,33 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["训练数据构建（4D occupancy 数据集）"]
+        D1["BridgeData V2 / DROID / RT-1 原始视频"] --> D2["VLM 标注 + K-means 聚类，构建语义空间"]
+        D1 --> D3["MonST3R 重建稀疏 4D 点 → NKSR 稠密化 → 体素化"]
+        D2 --> D4["Grounding DINO + SAM2 实例追踪，映射到语义"]
+        D3 --> D5["按体素多数投票赋予语义，得到语义 4D occupancy"]
+        D4 --> D5
+        D5 --> D6["Occ2GS：每个体素放高斯，渲染 OccMap"]
+        D6 --> D7["RAFT 过滤帧间一致性差的数据"]
+    end
+    D7 --> V["occupancy 视觉条件 C"]
+    A["7-DoF 动作序列 A（真实数据或 ManiSkill 等模拟器）"] --> P["补零占位并按 chunk 经 MLP 编码为 token"]
+    P --> M["Action Expert AdaLN 调制 DiT 视频 latent"]
+    V --> E["编码 MLP + zero-initialized 投影，加到输入噪声"]
+    E --> G["CogVideoX-2B DiT（两阶段 SFT）"]
+    M --> G
+    G --> O["机器人操作视频"]
+    G -.-> MV["ORV-MV：额外 view attention，多视角一致"]
+    G -.-> S2R["ORV-S2R：模拟器 occupancy 条件生成真实感视频"]
+    O --> DS["下游：视觉规划 VP2、策略学习数据增强"]
+```
+
+图依据：论文 §3.2（含 3.2.1 ORV-MV、3.2.2 ORV-S2R）/ §3.3 / Fig. 3 / Fig. 4 / Fig. 5 / Fig. 6(a)
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +125,7 @@ sources:
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.03079>
+- [arXiv PDF](https://arxiv.org/pdf/2506.03079)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3.1–3.3 方法与数据集构建；§4 实验仅略读（Tab. 1–4）
 
 ## 推荐继续阅读
 

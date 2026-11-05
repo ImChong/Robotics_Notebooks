@@ -43,6 +43,23 @@ Visual chain-of-thought reasoning for VLAs.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前观测图像 s_t + 语言指令 l"] --> VLM["VILA-U 7B 基座<br/>统一视觉塔（离散 token）+ 投影器 + LLM + depth transformer"]
+    VLM --> SUB["第一阶段：视觉思维链<br/>因果注意力自回归生成 n 帧后的子目标图像 ŝ_t+n"]
+    SUB --> ACT["第二阶段：动作生成<br/>全注意力并行解码 m 步动作 â_t…â_t+m<br/>每个动作 7 维、各 256 bin"]
+    OBS --> ACT
+    ACT --> EXE["在机器人上依次执行动作块"]
+    EXE --> NOBS["读取新的机器人观测 s_obs"]
+    NOBS -.->|"t ← t+m+1，闭环重复"| OBS
+    D1["机器人演示 D_r（OpenX 子集）"] -->|"训练子目标图像 + 动作"| VLM
+    D2["无动作视频 D_v（EPIC-KITCHENS、SSv2）"] -->|"仅训练子目标图像"| VLM
+```
+
+图依据：论文 §3.1–3.3 / Fig.2–3、Algorithm 1（test-time closed-loop control）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +117,7 @@ Visual chain-of-thought reasoning for VLAs.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.22020>
+- [arXiv PDF](https://arxiv.org/pdf/2503.22020)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3（含 Algorithm 1）、§4.1
 
 ## 推荐继续阅读
 

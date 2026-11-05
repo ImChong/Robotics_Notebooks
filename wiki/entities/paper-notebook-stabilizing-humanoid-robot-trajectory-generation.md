@@ -31,7 +31,30 @@ Stabilizing Humanoid Robot Trajectory Generation via Physics-Informed Learning �
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，效果结论仍待深读。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练"]
+        DATA["人体动捕重定向数据（ergoCub，n=26 关节）"] --> MANN
+        MANN["MANN：门控网络 + 运动预测网络 → 下一时刻完整运动学状态 (q, ν)"] --> LOSS["损失 L = L_D 数据拟合 + w·L_B 物理信息项（支撑脚速度为零）"]
+        LOSS --> MANN
+    end
+    subgraph DEP["在线部署"]
+        UI["用户期望运动方向 / 朝向"] --> GEN["轨迹生成：MANN 预测基座速度、关节位置与速度、基座位姿"]
+        GEN --> COR["控制启发的纠偏：对预测基座线 / 角速度做反馈"]
+        UI --> COR
+        COR -->|"作为下一步网络输入"| GEN
+        GEN --> ADJ["轨迹调整与轨迹控制"]
+        COR --> ADJ
+    end
+    MANN -.-> GEN
+    ADJ --> ROBOT["ergoCub 实机：离线控制（ZMP/CoM 稳定 + 全身 QP）或在线控制（MPC + QP）"]
+```
+
+图依据：论文 §III / Fig. 2、§II-D（控制器）
 
 ## 核心信息
 
@@ -64,6 +87,7 @@ Stabilizing Humanoid Robot Trajectory Generation via Physics-Informed Learning �
 - [humanoid_pnb_stabilizing-humanoid-robot-trajectory-generation.md](../../sources/papers/humanoid_pnb_stabilizing-humanoid-robot-trajectory-generation.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2509.24697>
+- [arXiv PDF](https://arxiv.org/pdf/2509.24697)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§II 背景（PIML、MANN、轨迹控制器）、§III 方法（训练特征、物理信息损失、控制启发的纠偏）；§IV 实验仅略读。
 
 ## 推荐继续阅读
 

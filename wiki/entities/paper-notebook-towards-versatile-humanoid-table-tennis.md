@@ -32,7 +32,30 @@ Towards Versatile Humanoid Table Tennis 的人形机器人学习论文条目，�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SIM["仿真训练（LeggedLab / IsaacLab，4096 并行环境）"]
+        S1["发球：随机初速的球 + 空气阻力模型<br/>域随机化与感知噪声/延迟"] --> S2["球位置观测历史（5 帧）"]
+        S2 --> P["Predictor：预测击球后落点最高点 p~_ball<br/>RMSE 回归损失，在线训练"]
+        S1 --> PH["仿真物理预测 p^_ball（真值）"]
+        PH -->|"监督"| P
+        P --> SH["目标基座平移 Δp~_base,xy = p~_ball,xy − p_base,xy"]
+        P --> A["Actor（MLP）"]
+        SH --> A
+        A --> ACT["动作 a_t ∈ R21<br/>q_target = q_nom + α·a_t"]
+        PH --> RW["预测式稠密奖励<br/>Reaching 奖励 + Returning 奖励"]
+        RW --> C["Critic（特权信息：物理预测值等）"]
+        C --> PPO["PPO 更新 Actor / Critic"]
+    end
+    ACT --> PD["低层关节 PD 控制器"]
+    PD --> HW["Booster T1 真机击球<br/>动捕提供球与躯干位姿"]
+```
+
+图依据：论文 §III（Fig.2 / Fig.3 / Table I）、§IV-A。
 
 ## 核心信息
 
@@ -64,7 +87,7 @@ Towards Versatile Humanoid Table Tennis 的人形机器人学习论文条目，�
 
 - [humanoid_pnb_towards-versatile-humanoid-table-tennis.md](../../sources/papers/humanoid_pnb_towards-versatile-humanoid-table-tennis.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2509.21690)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 问题建模、§III 方法、§IV-A/B 训练与硬件设置
 
 ## 推荐继续阅读
 

@@ -76,6 +76,45 @@ flowchart LR
 - **[AMP 奖励与运动先验](../methods/amp-reward.md)**：MoCap 风格先验训练常以 AMASS 类统一表示为输入。
 - **[HumanTracker](./paper-humantracker.md)**：指出常用 tracking 测试仍是 AMASS 约 140 条，覆盖与诊断都不够；其 153 h 四族集是评测层补充，不是 AMASS 训练替代。
 
+## 源码运行时序图
+
+入口：`python src/amass/data/prepare_data.py`（运行前需把脚本内的 `amass_dir`、`work_dir` 占位路径改成本地路径；依赖 `human_body_prior`，不在本仓库内）
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant U as 使用者
+  participant M as prepare_data.py __main__
+  participant P as prepare_amass()
+  participant D as dump_amass2pytroch()
+  participant N as AMASS *_poses.npz
+  participant AU as AMASS_Augment (Dataset)
+  participant H as h5 (pytables)
+  U->>M: python src/amass/data/prepare_data.py
+  M->>M: 硬编码 amass_splits（vald / test / train，train 去掉其余两份）
+  M->>P: prepare_amass(amass_splits, amass_dir, work_dir)
+  Note over P: Stage I：npz 抽帧落盘
+  loop 每个 split
+    P->>D: dump_amass2pytroch(datasets, amass_dir, stage_I/<split>/pose.pt)
+    loop 每个数据集下的 npz
+      D->>N: np.load，读 poses / dmpls / trans / betas / gender
+      D->>D: 随机取中间 80% 帧（keep_rate=0.01）
+    end
+    D-->>P: torch.save 写 pose / dmpl / betas / trans / gender 的 .pt
+  end
+  Note over P: Stage II：DataLoader 并行读入并写 h5
+  loop 每个 split
+    P->>AU: AMASS_Augment(stage_I/<split>)，glob 读入各 .pt
+    AU->>AU: fetch_data()：aa2matrot 得到 pose_matrot
+    P->>H: DataLoader(batch 256) 逐行 table.row.append / flush
+  end
+  Note over P: Stage III：h5 拆回逐字段 .pt
+  P->>H: get_node('/data') 读取各列
+  P->>P: torch.save 每个字段到 stage_III/<split>/<field>.pt
+```
+
+图依据：AMASS@36d86b5，读过 `src/amass/data/prepare_data.py`、`src/amass/data/dfaust_synthetic_mocap.py`、`README.md`、`setup.py`；未运行代码（需要 licence-gated 的 SMPL+H 模型与 AMASS 数据）。
+
 ## 参考来源
 
 - [AMASS 站点与论文索引归档](../../sources/sites/amass-dataset.md)
@@ -83,6 +122,7 @@ flowchart LR
 - AMASS 官网：<https://amass.is.tue.mpg.de/>
 - 教程代码仓库：<https://github.com/nghorbani/amass>
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：AMASS 重定向轨迹作为 Unitree G1 行为基础模型的蒸馏输入
+- 源码核对（2026-11-02）：nghorbani/amass@36d86b5，读过 `src/amass/data/prepare_data.py`、`src/amass/data/dfaust_synthetic_mocap.py`、`README.md`、`setup.py`；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

@@ -39,6 +39,22 @@ sources:
 - **跨本体预训练非必要**：高质量单本体数据微调时的 scaling 可能优于多本体预训练，降低采集成本。
 - **演示者多样性可能有害**：人类示教的速度多模态性（velocity multimodality）会干扰策略学习。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["演示数据集 D<br/>样本 (ot, at:t+T)"] --> B["提取动作速率指标<br/>v = 末端相对位移 L1 范数（各维归一化到 [-1,1]）"]
+    A --> C["Action Rate Model (ARM)<br/>冻结 SigLIP 视觉编码器（3 路图像）+ MLP 头"]
+    B --> D["MSE 损失训练 ARM：ARM(ot) 回归 v"]
+    D --> C
+    C --> E["对每个训练样本预测期望动作速率 ARM(ot)"]
+    E --> F["选最优块长 L = argmin |ARM(ot) - v(at:t+L)|<br/>搜索范围限制在 0.5T 到 1.5T"]
+    F --> G["插值把 at:t+L 重采样为长度 T 的 ã"]
+    G --> H["以去偏动作 ã 作监督目标训练策略<br/>预训练 / 微调阶段均可应用，得 GO-1-Pro"]
+```
+
+图依据：论文 §V-A（Distribution Debiasing）/ Fig. 10–11；论文其余部分为任务、本体、演示者多样性的实证研究，未画流程
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -92,6 +108,7 @@ sources:
 - [tro_manip_5_papers_catalog.md](../../sources/papers/tro_manip_5_papers_catalog.md)
 - [wechat_shenlan_tro_manip_5_papers_survey.md](../../sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2507.06219>
+- [arXiv PDF](https://arxiv.org/pdf/2507.06219)：已通读方法部分（实验与附录以略读为准）：§V-A Distribution Debiasing（ARM 与动作块重采样）、§V-B/C 应用阶段说明；§III 至 §IV 实证研究仅略读
 
 ## 推荐继续阅读
 

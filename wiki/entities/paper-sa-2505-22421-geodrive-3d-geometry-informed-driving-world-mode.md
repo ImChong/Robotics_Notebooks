@@ -43,6 +43,26 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["参考图 I_0 + 自车轨迹 C_t = (R_t, T_t, f_t)"] --> B["MonST3R 稠密立体模型<br/>推理时复制参考图满足跨视图匹配<br/>输出逐像素 3D 坐标 + 置信度 D_t"]
+    B --> C["按置信度阈值 τ 过滤<br/>得到首帧彩色点云 P_0 作几何骨架"]
+    C --> D["沿用户相机轨迹投影渲染<br/>刚体变换 + 透视投影 + z-buffer 处理遮挡"]
+    E["移动车辆 2D 框序列<br/>训练必需, 推理可选"] --> F["Dynamic Editing<br/>静态背景 + 调整车辆位置, 渲染出动态视频"]
+    D --> F
+    F --> G["VAE 编码得渲染潜变量 z_R"]
+    N["噪声潜变量 z_t"] --> H["轻量 condition encoder (可训练)<br/>输入 [z_t, z_R]"]
+    G --> H
+    H -->|"零初始化线性层 W<br/>特征逐层融合"| I["冻结的 DiT 视频扩散骨干"]
+    N --> I
+    I --> J["冻结 VAE 解码器 D"]
+    J --> K["沿给定轨迹的逼真未来视频"]
+```
+
+图依据：论文 §3.1 Extracting 3D Representations、§3.2 Rendering 3D Videos with Dynamic Editing、§3.3 Dual-Branch Control / Fig.2–3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +118,7 @@ sources:
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.22421>
+- [arXiv PDF](https://arxiv.org/pdf/2505.22421)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（§3.1–3.3）
 
 ## 推荐继续阅读
 

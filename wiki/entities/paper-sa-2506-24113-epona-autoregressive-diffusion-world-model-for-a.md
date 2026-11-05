@@ -43,6 +43,25 @@ Autoregressive diffusion world model for autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["历史前视图像 {O_t}"] --> ENC["DCAE 编码器（冻结）→ 紧凑潜变量 Z_t"]
+    ACT["历史轨迹 {a_t-1→t}"] --> MST
+    ENC --> MST["Multimodal Spatiotemporal Transformer (MST)<br/>交错：多模态空间注意力层 + 因果时间注意力层"]
+    MST --> F["最后一帧潜表示 F<br/>（历史上下文）"]
+    F --> TD["TrajDiT（小型 Diffusion Transformer）<br/>去噪生成未来轨迹 a_T→T+n（策略 π）"]
+    F --> VD["VisDiT（Next-frame Diffusion Transformer）<br/>额外 modulation 分支接收动作 a_T→T+1"]
+    TD -->|"模型预测动作"| VD
+    UA["用户给定动作（可控生成）"] -.-> VD
+    VD --> DEC["Temporal-aware DCAE Decoder<br/>解码下一帧 Ô_T+1"]
+    DEC -->|"自回归：作为新历史帧"| OBS
+    LOSS["训练：Rectified Flow 损失<br/>L = L_traj + L_vis<br/>Chain-of-Forward：每 10 步多次前向，<br/>用单步估计的去噪 latent 作为后续帧条件"] -.-> MST
+```
+
+图依据：论文 §3.1–3.5 / Fig.2（整体框架）、Fig.4（Chain-of-Forward 训练）、Eq.2–7；§4.1 的训练设定（每 10 步 Chain-of-Forward）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ Autoregressive diffusion world model for autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.24113>
+- [arXiv PDF](https://arxiv.org/pdf/2506.24113)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1–3.5）、§4.1 实现细节
 
 ## 推荐继续阅读
 

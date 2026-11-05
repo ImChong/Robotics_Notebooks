@@ -41,6 +41,26 @@ summary: "用 Hermite 曲线作 VLA 轨迹先验：训练阶段引导动作接�
 - 开源状态：**待核实**（步骤 2.5，入库日 2026-09-19）。
 - 与 [vla weekly trends 2026 08 10 part1 technology map](../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md) 同批工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  OBS["观测 o: 视觉 + 语言 + 本体"] --> VLM["VLM 骨干 (只算一次)<br/>得到上下文 c"]
+  GT["示范动作块 a_gt"] --> SPLIT["拆出平滑通道 a_c<br/>(夹爪等离散通道另行预测)"]
+  SPLIT --> ENC["Hermite 目标编码 (各变体共享)<br/>K 段, 每段 θ=(p_s, v_s, p_e, v_e)<br/>端点位置 + 有限差分速度"]
+  VLM --> DH["Hermite-VLA DH<br/>轻量 action head 按段自回归<br/>量化 token 的交叉熵"]
+  ENC --> DH
+  DH --> DEQ["反量化 θ, 经 H 解码 H*θ + 夹爪头"]
+  VLM --> CH["Hermite-VLA CH<br/>action expert 逐步预测<br/>脚手架 H*θ + 逐时间步残差 r"]
+  ENC --> CH
+  CH --> OUTC["x0 重建损失 ‖Hθ+r - a_c‖²<br/>采样时每个 Euler 步都用脚手架"]
+  VLM --> REG["Hermite-VLA Reg<br/>原 flow matching head 不变<br/>+ 训练期辅助 Hermite 分支"]
+  ENC --> REG
+  REG --> OUTR["L_flow + λ·‖Hθ_aux - a_c‖²<br/>辅助分支推理时丢弃"]
+```
+
+图依据：论文 §3.2–§3.3 / Fig. 2、Fig. 4、Algorithm 1–3（H 为预计算的 Hermite 基矩阵）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +109,7 @@ summary: "用 Hermite 曲线作 VLA 轨迹先验：训练阶段引导动作接�
 
 - [wechat_duomo_vla_weekly_trends_2026-08-10_part1.md](../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md)
 - [arXiv:2608.01265](https://arxiv.org/abs/2608.01265)
+- [arXiv PDF](https://arxiv.org/pdf/2608.01265)：已通读方法部分（实验与附录以略读为准）：摘要、§3.1–§3.3（含 Algorithm 1–3、Fig. 2–4）；§3.4 理论分析与 §4 实验仅略读
 
 ## 推荐继续阅读
 

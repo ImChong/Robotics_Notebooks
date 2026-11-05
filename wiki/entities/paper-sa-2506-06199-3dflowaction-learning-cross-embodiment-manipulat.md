@@ -43,6 +43,30 @@ Learns cross-embodiment manipulation from 3D flow world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 训练["数据与流世界模型训练"]
+        A["Grounding-SAM2 分割首帧夹爪 mask"] --> B["Co-tracker3 追踪非夹爪点, 取显著运动点定位运动物体"]
+        B --> C["Co-tracker3 提取 2D 光流 + DepthAnythingV2 深度 → 3D 光流"]
+        C --> D["ManiFlow-110k 数据集"]
+        D --> W["预训练流世界模型: AnimateDiff 运动模块 + LoRA 的 SD U-Net"]
+    end
+    subgraph 推理["流引导的动作规划"]
+        I["初始 RGB 观测 + 任务指令 + 初始点 F0"] --> G["流世界模型生成 3D flow"]
+        G --> S["SVD 估计变换 T, 渲染物体目标状态"]
+        S --> V{"GPT-4o 判断是否需要重新预测"}
+        V -->|是| G
+        V -->|否| P["GPT-4o 选抓取部位, AnyGrasp 生成候选抓取"]
+        P --> Q["用 T 变换候选抓取, 以 IK 可达性筛选"]
+        Q --> O["以 3D flow 为约束的优化求解末端 SE(3) 位姿序列"]
+    end
+    W --> G
+```
+
+图依据：论文 §3.1-3.2 / Fig.2、§4.1-4.3 / Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +122,7 @@ Learns cross-embodiment manipulation from 3D flow world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.06199>
+- [arXiv PDF](https://arxiv.org/pdf/2506.06199)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Learning 3D Flow World Model（3.1-3.2）、§4 Flow-Guided Action Planning（4.1-4.3）
 
 ## 推荐继续阅读
 

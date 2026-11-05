@@ -6,9 +6,10 @@
 - **分组：** 291 Procedural Error Detection
 - **编号：** 124/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2410.05678
+- **arXiv：** 2411.02570
+- **编号核对：** 上游清单登记的 2410.05678 经 arXiv 官方记录核对为另一篇论文《Polynomial and combinatorial analogues of Gauss congruence》，与本条目不符；已更正为 2411.02570《TI-PREGO: Chain of Thought and In-Context Learning for Online Mistake Detection in PRocedural EGOcentric Videos》（核对日期 2026-11-02）。
 - **出处：** arXiv 2024
-- **论文：** <https://arxiv.org/abs/2410.05678>
+- **论文：** <https://arxiv.org/abs/2411.02570>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Enhances PREGO with chain-of-thought and in-context learning for improved online error detection

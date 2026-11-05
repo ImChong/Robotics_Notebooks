@@ -42,6 +42,33 @@ RoboTransfer augments robot demonstrations by changing their visual appearance w
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["数据构建 §3.3: 真实演示拆成三元组"]
+        R["真实机器人演示<br/>头部相机 + 双腕相机"] --> G1["几何条件<br/>深度估计器 + RGB-D 尺度对齐(鲁棒最小二乘)得 metric depth<br/>单目法线估计得 surface normal"]
+        R --> K["多视角 RGB 关键帧"]
+        K --> V["VLM 描述器生成场景/物体描述<br/>Grounding-SAM 分割物体"]
+        V --> BG["物体修补(inpaint)得无物体背景参考图 C_b"]
+        V --> OB["物体 mask 经 CLIP 得语义嵌入 C_o"]
+    end
+    subgraph GEN["RoboTransfer 生成 §3.2: 多视角视频扩散"]
+        MV["N 路同步视频沿宽度拼接<br/>VAE 联合编码, 无需改动扩散骨干"]
+        G1 --> GE["几何 VAE(卷积)编码 depth + normal 视频<br/>与噪声潜变量按通道拼接"]
+        BG --> BE["VAE 编码背景参考图<br/>与潜变量拼接, 控制全局纹理"]
+        OB --> OE["CLIP 全局嵌入经 cross attention<br/>作为非结构化物体外观条件"]
+        MV --> D["视频扩散去噪"]
+        GE --> D
+        BE --> D
+        OE --> D
+    end
+    D --> S["几何一致、外观可控的多视角合成视频"]
+    S --> P["与真实数据混合训练 ACT 策略<br/>论文实验 50/50 混合最佳(§5.2)"]
+```
+
+图依据：论文 §3.2 RoboTransfer Framework、§3.3 Dataset Construction / Fig.2–3、§5 Real Robot Experiments。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +125,7 @@ RoboTransfer augments robot demonstrations by changing their visual appearance w
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2505.23171>
+- [arXiv PDF](https://arxiv.org/pdf/2505.23171)：已通读方法部分（实验与附录以略读为准）：§3.2 框架、§3.3 数据构建、§5 真机实验设定与合成数据比例（略读）
 
 ## 推荐继续阅读
 

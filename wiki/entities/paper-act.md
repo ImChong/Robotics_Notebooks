@@ -8,7 +8,7 @@ tags:
   - teleoperation
   - stanford
 status: complete
-updated: 2026-09-15
+updated: 2026-11-05
 arxiv: "2304.13705"
 code: https://github.com/tonyzhaozh/act
 related:
@@ -17,10 +17,14 @@ related:
   - ./paper-diffusion-policy.md
   - ./paper-why-action-chunking-improves-bc.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+  - ./lerobot.md
+  - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
   - ../../sources/papers/act_arxiv_2304_13705.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
   - ../../sources/repos/act-aloha.md
+  - ../../sources/repos/lerobot.md
+  - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 summary: "ACT（arXiv:2304.13705，Stanford）：CVAE + Transformer 预测动作 chunk；低成本 ALOHA 双手精细操作。tonyzhaozh/act 已开源。"
 ---
 
@@ -89,6 +93,8 @@ flowchart LR
 
 ## 源码运行时序图
 
+> 下图是官方仓库 `tonyzhaozh/act` 的**粗粒度示意**（未逐函数对照官方源码，仅表示使用顺序）；LeRobot 版的函数级时序图见下一小节。
+
 ```mermaid
 sequenceDiagram
     autonumber
@@ -103,6 +109,57 @@ sequenceDiagram
     ACT->>Robot: chunk + 时间集成
     Robot-->>Dev: 任务完成情况
 ```
+
+### LeRobot 版（固定提交 9e5ee98）函数级时序图
+
+以下节点均来自 LeRobot 源码（路径相对 `src/lerobot/`），已对照阅读：`policies/act/modeling_act.py`、`configuration_act.py`、`processor_act.py`、`scripts/lerobot_train.py`、`scripts/lerobot_rollout.py`、`inference/sync.py`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as 开发者
+    participant Train as scripts/lerobot_train.py::train
+    participant Fac as policies/factory.py::make_policy
+    participant Pol as ACTPolicy (modeling_act.py)
+    participant Net as ACT 网络 (nn.Module)
+    participant Roll as scripts/lerobot_rollout.py::rollout
+    participant Eng as inference/sync.py::SyncInferenceEngine
+    participant Robot as 机器人
+    Dev->>Train: lerobot-train --policy.type=act
+    Train->>Fac: make_policy(cfg, ds_meta)
+    Fac-->>Train: ACTPolicy(config) 内含 ACT(config)
+    loop 每个训练 step
+        Train->>Pol: update_policy 内调用 policy(batch)
+        Pol->>Net: model(batch)（OBS_IMAGES 为各相机图像列表）
+        Note over Net: use_vae 且 training 时：VAE 编码器吃 [cls, 状态, 动作序列] 得 mu 与 log_sigma_x2，重参数化采样 z；否则 z 取全零
+        Net->>Net: ResNet 骨干取各相机 feature_map，与 z、状态 token 拼接送 ACTEncoder
+        Net->>Net: ACTDecoder 以全零 query（长度 chunk_size）交叉注意力，action_head 输出动作块
+        Net-->>Pol: actions_hat, (mu, log_sigma_x2)
+        Pol-->>Train: loss = L1(带 pad 掩码) + kl_weight * KLD
+        Train->>Train: accelerator.backward(loss)
+    end
+    Dev->>Roll: lerobot-rollout（部署）
+    Roll->>Eng: build_rollout_context 创建 SyncInferenceEngine
+    loop 每个控制 tick
+        Eng->>Pol: select_action(obs)（先经 preprocessor 归一化）
+        alt temporal_ensemble_coeff 不为 None
+            Pol->>Pol: predict_action_chunk 后 ACTTemporalEnsembler.update 做指数加权在线平均
+        else 默认
+            Pol->>Pol: 队列为空时 predict_action_chunk，取前 n_action_steps 个入 deque 并逐个 popleft
+        end
+        Pol-->>Eng: 单步动作（postprocessor 反归一化）
+        Eng->>Robot: 发送动作
+    end
+```
+
+## LeRobot 实现要点
+
+- **身份核对：** LeRobot 文档 `docs/source/policy_act_README.md` 的论文链接指向 ALOHA 项目页，引用为 arXiv:2304.13705；`ACTPolicy` 类 docstring 也指向同一论文与 `tonyzhaozh/act`。与本页论文身份一致。
+- **默认配置（`configuration_act.py` 读到的值）：** `chunk_size=100`、`n_action_steps=100`、ResNet-18（ImageNet 预训练）、`dim_model=512`、`n_heads=8`、编码器 4 层、解码器 **1 层**、`use_vae=True`、`latent_dim=32`、`kl_weight=10.0`、`optimizer_lr=1e-5`。
+- **与原版的差异说明（源码注释）：** 原版 ACT 配置写的是 7 层解码器，但 LeRobot 注释称原版代码存在 bug 使只有第 1 层被用到（引用 `tonyzhaozh/act` issue #25），因此 LeRobot 把 `n_decoder_layers` 设为 1 以匹配实际行为。
+- **时间集成默认关闭：** `temporal_ensemble_coeff=None`，默认走「整块执行」的动作队列；开启时必须 `n_action_steps=1`（否则 `__post_init__` 抛 `NotImplementedError`），每步都要重新推理。注释写明原版 ACT 开启时系数为 0.01；LeRobot 的权重 `w_i=exp(-coeff*i)`，`w_0` 对应最旧动作。
+- **限制：** `n_obs_steps` 只能为 1（`__post_init__` 校验）；`vision_backbone` 必须是 torchvision ResNet 变体。
+- **文档（`docs/source/act.mdx`）称：** 约 80M 参数、单 GPU 数小时可训、常见 50 条示范起步；这些为文档表述，未在本仓库复现核实。
 
 ## 局限与风险
 
@@ -126,6 +183,7 @@ sequenceDiagram
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md)
 - [ParcelStow](./paper-parcelstow.md) — ACT 在 G1 包裹插入上的速度扫频：标称 100%，\(r=2\) 53%
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
+- [LeRobot](./lerobot.md) — 本页的 LeRobot 实现所在框架
 
 ## 推荐继续阅读
 
@@ -137,3 +195,5 @@ sequenceDiagram
 - [act_arxiv_2304_13705](../../sources/papers/act_arxiv_2304_13705.md)
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [act-aloha](../../sources/repos/act-aloha.md)
+- [lerobot](../../sources/repos/lerobot.md) — 固定提交 9e5ee98 的 ACT 实现与文档
+- [LeRobot ACT 文档](https://github.com/huggingface/lerobot/blob/9e5ee9859480e425a97a6836bb3fee479539beb5/docs/source/act.mdx)

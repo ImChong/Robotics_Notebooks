@@ -42,6 +42,24 @@ CLAM learns continuous action codes from robot observation transitions, grounds 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["无动作标签观测数据 D_unlabeled + 少量带标签数据 D_labeled"] --> B["阶段 1：训练 Latent Action Model"]
+    B --> C["连续 latent IDM f_phi(z_t | o_t-H…o_t, o_t+1)"]
+    C --> D["latent FDM g_psi 重建 o_t+1（L_recon：MSE）"]
+    A --> E["latent action decoder p_omega(a_t | z_t)，用 D_labeled 联合训练（不依赖观测）"]
+    C --> E
+    D --> F["L_CLAM = L_recon + beta · L_action-decoder"]
+    E --> F
+    F --> G["阶段 2：用 IDM 给无标签专家演示标注 latent action"]
+    G --> H["模仿学习训练 latent 策略 pi_theta(z_t | o_t)，MSE"]
+    H --> I["推理：策略输出 z_t，action decoder 解码为环境动作 a_t"]
+```
+
+图依据：论文 §IV-A/B / Fig.1、Algorithm 2
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +116,7 @@ CLAM learns continuous action codes from robot observation transitions, grounds 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2505.04999>
+- [arXiv PDF](https://arxiv.org/pdf/2505.04999)：已通读方法部分（实验与附录以略读为准）：§IV 方法（IV-A latent action 模型训练、IV-B latent 策略训练，含 Fig.1、Algorithm 2）；§V 实验设置与结果（略读）
 
 ## 推荐继续阅读
 

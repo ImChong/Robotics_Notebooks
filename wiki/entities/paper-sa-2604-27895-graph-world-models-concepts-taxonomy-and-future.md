@@ -42,6 +42,31 @@ Taxonomy based on relational inductive biases: spatial, physical, logical.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  W["经典 World Model<br/>Vision Module V、Memory Module M、外部 Controller C"] --> G["Graph World Model (GWM)<br/>环境建模为图 Gt=(Vt,Et)：Structural Abstraction ψ + Relational Transition TG"]
+  G --> T["三层分类：按注入的 relational inductive bias (RIB)"]
+  T --> L1["Layer 1 Graph as Connector<br/>Spatial RIB"]
+  T --> L2["Layer 2 Graph as Simulator<br/>Physical RIB"]
+  T --> L3["Layer 3 Graph as Reasoner<br/>Logical RIB"]
+  L1 --> A1["Explicit Spatial Topology"]
+  L1 --> A2["Implicit Experiential Memory"]
+  L2 --> B1["Object-centric Interaction"]
+  L2 --> B2["System-centric Interaction"]
+  L3 --> C1["Normative Semantic Protocols"]
+  L3 --> C2["Invariant Causal Skeletons"]
+  A1 --> F["§6 Future directions<br/>含 6.5 Benchmarking Graph World Models"]
+  A2 --> F
+  B1 --> F
+  B2 --> F
+  C1 --> F
+  C2 --> F
+```
+
+图依据：综述分类体系图，论文 §2.1–2.2、Fig. 1–2（三层 RIB 分类与各类别下的代表工作）、§3–5 小节标题、§6 未来方向。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Taxonomy based on relational inductive biases: spatial, physical, logical.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2604.27895>
+- [arXiv PDF](https://arxiv.org/pdf/2604.27895)：已通读摘要、§1、§2（定义与分类，Fig. 1–2）、§3–§5 各小节标题与部分正文、§6.5；§6 其余小节与参考文献以略读为准。
 
 ## 推荐继续阅读
 

@@ -38,6 +38,29 @@ sources:
 - 移动操作最贵的地方在于：机器人不只是动手，还要移动身体。让机器人完成移动操作遥操作，成本比固定机械臂高很多。EMMA 的思路是用 **人类移动操作数据 + 静态机器人数据** 共同训练，绕开大规模移动机器人遥操作。
 - 这篇让我意识到，Ego 的重要性不是局限在手部操作。只要任务涉及“人怎么走过去、怎么靠近物体、怎么把身体对准操作对象”，第一视角都会比外部视频更贴近执行过程。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    HD["人类移动操作数据 D_H：Aria 眼镜（第一视角 RGB、手部位姿 H_p、头部位姿 H_d）"] --> NAVRT["导航重定向：头部位姿投影到地面，优化差速速度指令 (v, ω)"]
+    HD --> MANALIGN["操作对齐：动作块转到观测时相机坐标系 + Z-score 归一化"]
+    HD --> PHASE["无监督阶段识别：手/头速度比 + GMM → 操作 / 导航阶段标签"]
+    RD["机器人静态操作数据 D_R：Aria + 腕部相机 + 关节位置（遥操作）"] --> MANALIGN
+    NAVRT --> COT["人-机联合 co-training"]
+    MANALIGN --> COT
+    PHASE --> COT
+    COT --> STEM["模态 stems：共享第一视角视觉 stem + 腕部 / 位姿 / 路点 stems"]
+    STEM --> TRUNK["共享 decoder-only Transformer trunk（前置 M 个可学习动作 token）"]
+    TRUNK --> H1["机器人双臂关节动作头"]
+    TRUNK --> H2["人类末端执行器动作头"]
+    TRUNK --> H3["导航动作头 (x, y, ω)"]
+    TRUNK --> H4["阶段预测头（辅助）"]
+    H3 --> DEP["部署：阶段感知调制导航动作块（操作阶段导航插值为零，导航阶段替换未来操作位置）"]
+    H4 --> DEP
+```
+
+图依据：论文 §III、§IV-A 至 §IV-C / Fig. 2、Fig. 3、Algorithm 1、式 (1)–(5)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -93,6 +116,7 @@ sources:
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md) — 9 篇总表
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md) — 微信公众号编译导读
 - 论文/项目：<https://arxiv.org/abs/2509.04443>
+- [arXiv PDF](https://arxiv.org/pdf/2509.04443)：已通读方法部分（实验与附录以略读为准）：§III 硬件与数据、§IV-A 至 §IV-C
 
 ## 推荐继续阅读
 

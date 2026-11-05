@@ -43,6 +43,29 @@ Long-term consistent world simulation with memory.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ACT["用户动作(Minecraft 25 维)"] --> AEMB["MLP 投影为动作嵌入<br/>叠加去噪时间步嵌入，经 AdaLN 注入时间模块"]
+    CTXF["上下文窗口内的已生成帧"] --> DIT
+    AEMB --> DIT
+    subgraph MEM["记忆机制 (§3.3–3.4)"]
+        BANK["记忆库：(记忆帧 x, 位姿 p∈R^5, 时间戳 t)"]
+        BANK --> RET["记忆检索：FOV 重叠比 o 与时间差 d 算置信度 α<br/>贪心选取最高 α，并按相似度阈值剔除相近项"]
+        RET --> LM["L_M 个记忆单元"]
+        LM --> SEMB["状态嵌入：位姿 Plücker 嵌入 + 时间戳 MLP<br/>采用相对状态(query 取零参考)"]
+        SEMB --> ATT["State-aware 记忆交叉注意力<br/>Q 来自输入帧，K/V 来自记忆帧"]
+    end
+    CTXF --> ATT
+    DIT["条件 DiT + Diffusion Forcing 自回归去噪<br/>空间/时间模块，时间模块用因果注意力"] --> NEW["生成新帧"]
+    ATT --> DIT
+    NEW -->|"写入记忆库(帧、位姿、时间戳)"| BANK
+    NEW -->|"滑入上下文窗口"| CTXF
+```
+
+图依据：论文 §3.2–3.4 / Fig.2 / Algorithm 1（“新帧写回记忆库”据 §3.3 记忆库定义推断，正文未逐字描述写入时机；记忆帧作为干净输入的噪声设置见 §3.4）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +121,7 @@ Long-term consistent world simulation with memory.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.12369>
+- [arXiv PDF](https://arxiv.org/pdf/2504.12369)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3 WorldMem（3.1–3.4，含 Algorithm 1、Eq.1–6）、§4 实验开头
 
 ## 推荐继续阅读
 

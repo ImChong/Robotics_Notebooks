@@ -38,6 +38,33 @@ summary: "人形机器人「直接在真机上做 RL」一直难落地：怕摔�
 - **隐变量微调思路通用**：「冻策略、只调动力学隐变量」给 sim-to-real 提供轻量在线适配范式，可迁到更大人形
 - **自动复位是关键**：真机长训瓶颈往往在复位，自动复位让无人值守训练成为可能
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph STU["学生算法：仿真预训练 + 真机微调"]
+        S1["阶段 1：N=1000 个域随机化仿真环境，MLP 编码器把物理参数 μ 编码为动力学隐变量 z，经 FiLM 层调制 actor，PPO 联合训练"] --> S2["阶段 2：冻结策略与 FiLM，从各环境 z 的均值出发，用 PPO 优化通用隐变量 z~"]
+        S2 --> S3["阶段 3：真机中冻结 actor 与 FiLM，以 z~ 为初值微调隐变量，critic 从头训练"]
+    end
+    subgraph TEA["真机教师：机械臂 + F/T 传感器 + 跑步机 + mini PC"]
+        T1["导纳控制：XY 方向柔顺跟随，保持直立"]
+        T2["调度：机械臂高度线性下降 0.02 m / 5×10^4 步，逐步撤去支撑"]
+        T3["跑步机速度 PD 反馈，速度跟踪奖励"]
+        T4["失败检测与自动复位"]
+    end
+    T1 --> S3
+    T2 --> S3
+    T3 -->|"奖励"| S3
+    T4 -->|"复位"| S3
+    S3 --> OUT["行走速度跟踪策略"]
+    subgraph SCR["真机从零学习（摆起 swing-up）"]
+        R1["真机 PPO 从零训练，采集 5 万步次优数据"] --> R2["离线 RL 预训练 critic"]
+        R2 --> R3["新建 actor，载入预训练 critic，联合继续训练"]
+    end
+```
+
+图依据：论文 §3.1 至 §3.3 / Fig. 2、Fig. 3。
+
 ## 解决什么问题
 
 真实世界对人形机器人做 RL 有几座大山：
@@ -90,6 +117,7 @@ summary: "人形机器人「直接在真机上做 RL」一直难落地：怕摔�
 - [humanoid_pnb_robot-trains-robot-automatic-real-world-policy-a.md](../../sources/papers/humanoid_pnb_robot-trains-robot-automatic-real-world-policy-a.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning/Robot_Trains_Robot_Automatic_Real-World_Policy_Adaptation_and_Learning.html>
 - 论文：<https://arxiv.org/abs/2508.12252>
+- [arXiv PDF](https://arxiv.org/pdf/2508.12252)：已通读方法部分（实验与附录以略读为准）：摘要、§3 方法（系统设置、真机适应、真机从零学习）、Fig. 2–3
 
 ## 推荐继续阅读
 

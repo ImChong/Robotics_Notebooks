@@ -42,6 +42,25 @@ Vision-centric 4D occupancy forecasting and planning.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["历史多视角相机图像"] --> B["History Encoder W_E<br/>视觉 BEV 编码器 → BEV 嵌入"]
+    B --> C["Memory Queue W_M<br/>语义条件归一化 + 运动条件归一化"]
+    C1["体素级语义预测 → 语义调制参数"] --> C
+    C2["自车位姿变换 + 3D 后向向心流 → 运动调制参数"] --> C
+    C --> D["World Decoder W_D（自回归 Transformer）<br/>BEV query：可变形自注意力 + 时间交叉注意力<br/>+ 动作条件交叉注意力 + FFN"]
+    E["动作条件：速度 / 转向曲率 / 轨迹 / 高层命令<br/>Fourier 嵌入后经统一条件接口融合"] --> D
+    D --> F["预测头：未来语义 occupancy + 3D 流"]
+    F --> G["基于 occupancy 的规划器 P<br/>轨迹采样器给出候选轨迹"]
+    G --> H["代价函数：Agent-Safety + Road-Safety + Learned-Volume<br/>选择总代价最小的轨迹"]
+    H --> I["BEV Refinement：自车 query 对 BEV 嵌入交叉注意力<br/>MLP 输出最终轨迹"]
+    I -->|"预测轨迹作为下一步动作条件"| E
+```
+
+图依据：论文 §Method（Fig.2 总览、Fig.3 语义条件归一化）、4D Forecasting with World Model、Action-Controllable Generation、End-to-End Planning with World Model。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Vision-centric 4D occupancy forecasting and planning.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2408.14197>
+- [arXiv PDF](https://arxiv.org/pdf/2408.14197)：已通读方法部分（实验与附录以略读为准）：Method 部分（问题表述、4D 预测、动作可控生成、基于 occupancy 的规划）；实验与附录略读
 
 ## 推荐继续阅读
 

@@ -45,6 +45,31 @@ summary: "SkelWAM（arXiv:2609.21983）：25-D skeleton state（中心线 + TCP 
 - **北京大学；清华大学；Feagine**；开源结论：**待发布**（步骤 2.5，2026-09-21）。
 - 跨形态迁移时视觉与动作几何同时变；SkelWAM 用显式骨架几何连接感知与控制。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 源["仅源形态训练（Stage A / B）"]
+        A["源形态示范 Ds<br/>外部 + 腕部图像、原生状态与动作、语言"] --> B["编码器 Er：原生坐标 → 25-D canonical skeleton 状态 z<br/>中心线 6 采样点 + task-frame TCP 位置 + 6-D 朝向 + 夹爪指令"]
+        A --> C["视觉规范化 Vr：遮蔽原生机器人并填充背景<br/>外部视角画六点中心线，腕部视角画平行夹爪骨架"]
+        B --> C
+        C --> D["30 层 Video Expert + 30 层 Action Expert<br/>diffusion-transformer，初始化自 Wan2.2"]
+        B --> D
+        D --> E["Stage A：视频预测 + 25-D 骨架动作联合训练<br/>Stage B：冻结 Video Expert，flow matching 预测 24 维几何<br/>+ 夹爪切换事件头（是否切换、首次切换时刻）"]
+    end
+    E --> F["共享策略 πθ（权重在目标形态上冻结）"]
+    subgraph 目标["目标形态部署（零样本）"]
+        G["目标机器人观测 + 反馈状态<br/>规范化遮蔽/投影，同一 Vr"] --> H["Video Expert 编码当前观测一次<br/>缓存 K/V 条件化 Action Expert"]
+        F --> H
+        H --> I["32×25 骨架动作块<br/>每块至多一次夹爪切换"]
+        I --> J["解码器 Dr：优先 TCP 位姿与夹爪指令，受原生限位/可行性约束<br/>刚性臂用约束 IK，连续体臂用 PCC 参数；加姿态与连续性正则"]
+        J --> K["原生控制执行前缀<br/>receding-horizon：更新状态后重新规划"]
+        K --> G
+    end
+```
+
+图依据：论文 §III-A–E（Fig. 2、Eq. 1–5）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -93,6 +118,7 @@ summary: "SkelWAM（arXiv:2609.21983）：25-D skeleton state（中心线 + TCP 
 - [skelwam_arxiv_2609_21983.md](../../sources/papers/skelwam_arxiv_2609_21983.md)
 - [wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md](../../sources/blogs/wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md)
 - [arXiv:2609.21983](https://arxiv.org/abs/2609.21983)
+- [arXiv PDF](https://arxiv.org/pdf/2609.21983)：已通读方法部分（实验与附录以略读为准）：§III Method（A–E）
 
 ## 推荐继续阅读
 

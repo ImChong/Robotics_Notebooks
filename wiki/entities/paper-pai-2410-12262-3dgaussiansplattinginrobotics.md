@@ -40,6 +40,29 @@ Survey on gaussian splatting applications in robotics.
 - 想横向对照同一分组的其他工作，可以从 [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) 逐条展开。
 - 两份清单合并去重：同一条目只有这一页，出处见下方「参考来源」。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ROOT["3DGS in Robotics（Fig. 1 分类体系）"] --> BG["2 Background：3DGS 理论等核心概念与数学原理"]
+  ROOT --> APP["Application of 3DGS in Robotics（§3）"]
+  ROOT --> ADV["Advance of 3DGS in Robotics（§4）"]
+  ROOT --> EVAL["5 数据集与评测指标，并比较各机器人方向上现有方法的性能"]
+  ROOT --> CH["6 Challenges and Future Directions"]
+  APP --> SU["Scene Understanding（§3.1）"]
+  APP --> SI["Scene Interaction（§3.2）"]
+  SU --> REC["Reconstruction（§3.1.1）：Static / Dynamic Reconstruction"]
+  SU --> SEG["Segmentation & Editing（§3.1.2）：Scene Segmentation / Scene Editing"]
+  SU --> SLAM["SLAM（§3.1.3）：Visual SLAM / Semantic SLAM / Multi-sensor Fusion SLAM"]
+  SI --> MAN["Manipulation（§3.2.1）"]
+  SI --> NAV["Navigation（§3.2.2）：Localization / Path Planning"]
+  ADV --> ADA["Adaptability（§4.1）：Large-Scale / Motion-Blurred / Few-Shot"]
+  ADV --> EFF["Efficiency（§4.2）：Memory Efficiency"]
+  CH --> CON["7 Conclusion"]
+```
+
+图依据：综述分类体系图，依据论文 Fig. 1（A taxonomy of 3DGS in Robotics）与 §1 末段对 §2-§7 的章节说明；节点名取自图中原文。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -103,6 +126,7 @@ Survey on gaussian splatting applications in robotics.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2410.12262>
+- [arXiv PDF](https://arxiv.org/pdf/2410.12262)：已通读摘要、§1 引言（章节说明）与 Fig. 1 分类图；§2-§6 各节正文以略读为准（仅依据图与小节标题）
 
 ## 推荐继续阅读
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [typesafe-ai, jev, system-one-model, llm-agents, agent-infrastructure, open-source, decision-api]
 status: complete
-updated: 2026-10-24
+updated: 2026-11-04
 related:
   - ./valen.md
   - ./laya.md
@@ -23,6 +23,8 @@ sources:
   - ../../sources/repos/typesafe-sdk-python.md
   - ../../sources/repos/typesafe-ai-skills.md
   - ../../sources/repos/awesome-jev.md
+  - ../../sources/repos/awesome-jev-heyjunpenn.md
+  - ../../sources/repos/awesome-jev-yibie.md
   - ../../sources/repos/laya.md
   - ../../sources/sites/dimensional_research_can_jev_nav.md
   - ../../sources/papers/navjev_arxiv_2609_34969.md
@@ -171,6 +173,13 @@ sequenceDiagram
 
 这三个例子共同体现分层边界：将候选生成、状态提取、仿真推进、硬实时控制和安全约束留在可测试代码中，再让 Jev 在有限、明确的选项中作较低频决策。
 
+## 社区资源目录
+
+- [heyjunpenn 的 Awesome Jev](../../sources/repos/awesome-jev-heyjunpenn.md)：按 SDK、应用、仿真及评测等分类的开源项目目录，并提供多语言网站。
+- [yibie 的 Awesome Jev](../../sources/repos/awesome-jev-yibie.md)：按实际应用领域组织的项目与实践清单，设有机器人分类；收录并不等于验证或推荐。
+
+两个清单为独立社区项目，条目可能重叠；性能、许可与真机适用性须回到各原项目核对。
+
 ## 局限与风险
 
 - **非通用 LLM：** 放弃自由文本生成；创意写作、长链 CoT 解释、开放式 chat **不是主场景**。
@@ -201,6 +210,8 @@ sequenceDiagram
 - [typesafe-sdk-js](../../sources/repos/typesafe-sdk-js.md)
 - [typesafe-sdk-python](../../sources/repos/typesafe-sdk-python.md)
 - [typesafe-ai/skills](../../sources/repos/typesafe-ai-skills.md)
+- [Awesome Jev（heyjunpenn）](../../sources/repos/awesome-jev-heyjunpenn.md)
+- [Awesome Jev（yibie）](../../sources/repos/awesome-jev-yibie.md)
 - [Awesome JEV（社区）](../../sources/repos/awesome-jev.md)
 - [Awesome JEV 中文（社区）](../../sources/repos/awesome-jev-zh.md)
 

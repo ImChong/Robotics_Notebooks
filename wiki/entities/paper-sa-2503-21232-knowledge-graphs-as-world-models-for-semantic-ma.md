@@ -42,6 +42,20 @@ Knowledge graphs as world models for semantic material-aware obstacle handling.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入层：障碍物类型 + 尺寸<br/>（实验中直接给定标识，不运行 YOLO）"] --> KG["语义推理层：知识图谱图遍历<br/>关联预定义材料属性（可塑性、弹性、密度等）"]
+    KG --> PROP["推断节点：预期质量、尺寸能否从车底通过、<br/>碰撞后冲量、对车底/轮胎的损伤风险等"]
+    CTX["情境：能否变道（相邻车道有无车辆）"] --> OUT
+    PROP --> OUT["输出层：选择动作<br/>变道 / 急刹 / 直接驶过"]
+    OUT --> CARLA["CARLA 仿真：检测到障碍物时覆盖 autopilot<br/>由图算法决策并控制车辆"]
+    CTRL["对照组：CARLA 默认 autopilot"] -.->|"对比 15 种静态障碍物、两种变道情境"| CARLA
+```
+
+图依据：论文 §3.1–3.3 / Fig.3–4（三层：输入、语义推理、输出；§3.3 autopilot 覆盖）。Fig.3 内部节点连线仅在正文中概述，图中未画具体边。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +110,7 @@ Knowledge graphs as world models for semantic material-aware obstacle handling.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.21232>
+- [arXiv PDF](https://arxiv.org/pdf/2503.21232)：已通读方法部分（实验与附录以略读为准）：§3.1–3.3、§4 结果（略读）
 
 ## 推荐继续阅读
 

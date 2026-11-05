@@ -38,6 +38,30 @@ summary: "腿式 RL 技能组合（arXiv:2609.14647）：区分连续加权「�
 
 - 多技能腿式系统需明确组合语义；混用 blend/bridge 会导致复现困难。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph BL["§5.1 Blending: 踢球 = 在冻结行走策略上的残差"]
+        S1["状态 s (含到球距离)"] --> W["Orchestrator ω<br/>逐关节 softmax 混合权重 w"]
+        S1 --> PL["π_loc: 冻结的速度跟踪行走策略"]
+        S1 --> PK["π_kick: 残差踢球策略 (训练)"]
+        PL --> F["f: 高斯加权融合<br/>σ=(Σ w_i/σ_i)^-1, μ=σ·Σ w_i μ_i/σ_i"]
+        PK --> F
+        W --> F
+        F --> A1["采样动作 a ~ N(μ, σ)"]
+        A1 --> R1["踢后恢复平衡并回到行走<br/>(依靠 π_loc 的域随机化, 无专门 return bridge 训练)"]
+    end
+    subgraph BR["§5.2 Bridging: 单个 bridge 衔接多个冻结技能"]
+        E1["冻结技能: 行走 / 跳跃 (及 cart-pole、差速车测试床)"] --> SG["σ 发出切换信号"]
+        SG --> BG["Bridge β 立即接管<br/>(在人体动作语料缺口上物理仿真训练, 含拼接缺口)"]
+        BG --> EN["到达目标技能的进入状态<br/>(目前从每技能少量进入状态中选取)"]
+        EN --> E2["目标技能接管 (保留已有动量)"]
+    end
+```
+
+图依据：论文 §5.1、§5.2 / Fig. 1（Fig. 1 的四阶段划分图中细节未据此绘制）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -81,6 +105,7 @@ summary: "腿式 RL 技能组合（arXiv:2609.14647）：区分连续加权「�
 - [skill-composition-legged-rl_arxiv_2609_14647.md](../../sources/papers/skill-composition-legged-rl_arxiv_2609_14647.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.14647](https://arxiv.org/abs/2609.14647)
+- [arXiv PDF](https://arxiv.org/pdf/2609.14647)：已通读方法部分（实验与附录以略读为准）：§2 问题定义（含 2.1 两种组合方式）、§5 First Results（5.1 Blending、5.2 Bridging）；§1 引言已读；§3 相关工作、§4 开放问题未读
 
 ## 推荐继续阅读
 

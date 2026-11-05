@@ -43,6 +43,28 @@ Bridges the train-test gap in autoregressive video diffusion via self-forcing.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TR["Self Forcing 训练（Algorithm 1）"]
+        INIT["初始化空 KV 缓存；每次迭代随机采样去噪步 s ∈ [1, T]"] --> FR["逐帧 i = 1…N：从噪声 x(tT) 开始，少步扩散模型 Gθ 迭代去噪<br/>条件为 KV 缓存中自己生成的前序帧"]
+        FR --> GR["仅第 s 步保留梯度（梯度截断）；<br/>其余步 no-grad，注入更低噪声继续"]
+        GR --> KV["得到干净帧 x̂0 → 计算其 KV 嵌入写入缓存（与前帧梯度断开）"]
+        KV --> FR
+        KV --> VID["整段自生成视频 x(1:N)"]
+        VID --> LOSS["视频级（holistic）分布匹配损失：DMD / SiD / GAN<br/>对齐生成视频分布与真实视频分布 → 更新 θ"]
+    end
+    subgraph INFR["推理（Algorithm 2）：滚动 KV 缓存"]
+        GEN["逐帧去噪生成"] --> CACHE["缓存满 L 帧时先弹出最旧 KV，再追加新帧 KV<br/>无需重算 KV，可无限延长，复杂度 O(TL)"]
+        CACHE --> GEN
+    end
+    TR --> INFR
+    NOTE["训练时限制注意力窗口：末块去噪时不看首块，<br/>模拟滚动缓存下首帧已被丢弃的情形（缓解闪烁）"] -.-> TR
+```
+
+图依据：论文 §3.2–3.4 / Fig.2(c)、Fig.3(c)、Algorithm 1–2；§3.1 为 TF/DF 背景。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Bridges the train-test gap in autoregressive video diffusion via self-forcing.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.08009>
+- [arXiv PDF](https://arxiv.org/pdf/2506.08009)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4 方法（含 Algorithm 1–2）
 
 ## 推荐继续阅读
 

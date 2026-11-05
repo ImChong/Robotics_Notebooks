@@ -58,6 +58,47 @@ summary: "legged-robots-manipulation 是 (轮)足机器人移动操作仓库（I
 - **README / 核查：** README 称当前仓库为论文的部分实现、仍在建设，Isaac Lab 版本与端到端视觉版本为待办；项目页为 wheel-legged-loco-manipulation。
 - **差异与保留：** 仓库未声明 LICENSE 文件；内容是论文部分实现，不是完整复现。
 
+## 源码运行时序图
+
+入口：`python loco_manipulation_gym/scripts/train.py --task=airbot --rl_device=cuda:0`（先在 `loco_manipulation_gym/` 下 `pip install -e .`；依赖 Isaac Gym 与 rsl_rl）。图以 `airbot` 任务为例，其它任务共用 `LeggedRobot` 基类流程。
+
+```mermaid
+sequenceDiagram
+    participant User as 用户
+    participant Tr as scripts/train.py train()
+    participant TR as utils/task_registry.py task_registry
+    participant Env as envs/airbot/airbot_robot.py Airbot（LeggedRobot 子类）
+    participant Base as envs/base/legged_robot.py LeggedRobot（继承方法）
+    participant Sim as Isaac Gym（gym 句柄）
+    participant PPO as rsl_rl OnPolicyRunner（外部依赖）
+
+    User->>Tr: python scripts/train.py --task=airbot
+    Tr->>TR: make_env(name="airbot", args)
+    TR->>Env: task_class(cfg, sim_params, physics_engine, sim_device, headless)
+    Env->>Base: __init__：_parse_cfg() → super().__init__()（create_sim 与 _create_envs）
+    Env->>Env: _init_buffers()（Airbot 覆盖）；_prepare_reward_function()
+    Tr->>TR: make_alg_runner(env, name, args)
+    TR->>PPO: OnPolicyRunner(env, train_cfg_dict, log_dir, device)
+    Tr->>PPO: learn(max_iterations, init_at_random_ep_len=True)
+    loop 每个 rollout 步
+        PPO->>Env: step(actions)
+        Env->>Env: clip(actions)；render()
+        loop 每个 decimation 子步
+            Env->>Env: _compute_torques(actions)：PD 力矩 + 机械臂 IK 目标位置
+            Env->>Sim: set_dof_actuation_force_tensor() 与 set_dof_position_target_tensor()
+            Env->>Sim: gym.simulate()；refresh_dof_state_tensor()
+        end
+        Env->>Env: post_physics_step()：刷新状态与接触力，更新 ee 目标
+        Env->>Base: _post_physics_step_callback()、check_termination()、compute_reward()
+        Env->>Env: reset_idx(需复位的环境)；compute_observations()
+        Env-->>PPO: obs_buf, rew_buf, reset_buf, extras
+    end
+```
+
+图依据：aCodeDog/legged-robots-manipulation@adf97d3，读过 `README.md`（Installation、Train 段）、`loco_manipulation_gym/scripts/train.py`（全文）、`loco_manipulation_gym/envs/__init__.py`（任务注册段）、`loco_manipulation_gym/utils/task_registry.py`（`make_env`、`make_alg_runner` 段）、`loco_manipulation_gym/envs/base/legged_robot.py`（`__init__`、`step`、`post_physics_step` 段）、`loco_manipulation_gym/envs/airbot/airbot_robot.py`（`step`、`post_physics_step`、`_compute_torques`、`compute_observations` 段）。`rsl_rl` 的 `OnPolicyRunner.learn` 为外部依赖，未读。未运行代码。
+
+说明：README 的训练命令写作 `python tran.py`（拼写错误）且 `python train.py` 位于仓库根目录，但实际脚本位于 `loco_manipulation_gym/scripts/train.py`，以上以实际路径为准。
+
 ## 关联页面
 
 - [loco-manipulation](../tasks/loco-manipulation.md)
@@ -71,3 +112,4 @@ summary: "legged-robots-manipulation 是 (轮)足机器人移动操作仓库（I
 - [legged_robots_manipulation.md](../../sources/repos/legged_robots_manipulation.md)
 - [wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md](../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md)
 - [原文（微信公众号）](https://mp.weixin.qq.com/s/pRGoPm41qYCNyHPWR6Dl6A)
+- 源码核对（2026-11-02）：aCodeDog/legged-robots-manipulation@adf97d3，读过 README.md（Installation、Train 段）、loco_manipulation_gym/scripts/train.py、loco_manipulation_gym/envs/__init__.py（任务注册段）、loco_manipulation_gym/utils/task_registry.py（make_env、make_alg_runner 段）、loco_manipulation_gym/envs/base/legged_robot.py（__init__、step、post_physics_step 段）、loco_manipulation_gym/envs/airbot/airbot_robot.py（step、post_physics_step、_compute_torques、compute_observations 段）；时序图依据以上文件，未运行代码。

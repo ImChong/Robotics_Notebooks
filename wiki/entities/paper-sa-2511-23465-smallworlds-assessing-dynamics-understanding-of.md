@@ -42,6 +42,25 @@ Evaluates world models’ understanding of fundamental physics principles (e.g.,
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["设计要点 §3.1<br/>孤立可控动力学 / 无人工奖励 / 参数化数据分布<br/>完全可观测状态 / 状态空间与像素空间可互转"] --> B["任务套件"]
+    B --> B1["物理理解：10 个 MuJoCo 任务<br/>线速度主导 / 旋转主导 / 能量守恒"]
+    B --> B2["几何理解：keypoint reprojection<br/>预测关键点像素坐标"]
+    B --> B3["联合其他基准：Go / Panda Hand / DMControl / Atari / Memory-Maze"]
+    B1 --> C["随机采集 episode<br/>不依赖特定 agent 的 replay buffer"]
+    B2 --> C
+    B3 --> C
+    C --> D["孤立训练 4 类 world model<br/>RSSM / Transformer / Diffusion Forcing / Neural ODE (MoSim)"]
+    D --> E["评测协议：10 步真值预热后<br/>想象 90 步 rollout，状态空间 MSE"]
+    E --> F["多领域能力对比 §4.2"]
+    E --> G["长时域想象：误差随预测步长增长 §4.3"]
+```
+
+图依据：基准构建与评测协议流程图，论文 §3 The SmallWorld Benchmark（3.1–3.4）、§4.1 Baseline Architectures、§4.2 Multi-Domain Capability Evaluation（Table 1 协议）、§4.3 Long-horizon Imagination
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Evaluates world models’ understanding of fundamental physics principles (e.g.,
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2511.23465>
+- [arXiv PDF](https://arxiv.org/pdf/2511.23465)：已通读正文：§1 Introduction、§2 Related Work、§3 The SmallWorld Benchmark（3.1–3.4）、§4.1 Baseline Architectures、§4.2 Multi-Domain Capability Evaluation、§4.3 Long-horizon Imagination 开头（§4.3 后半及之后章节、附录未读）
 
 ## 推荐继续阅读
 

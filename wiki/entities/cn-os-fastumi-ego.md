@@ -55,6 +55,47 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口（Ubuntu 20.04 + ROS1 Noetic + FastUMI Hardware SDK 的 `xv_sdk`）：先 `bash Start_Process/unified_launcher.sh` 启动相机 ROS 节点，再 `bash Start_Process/pairing_process.sh` 配对写出 `camera_config.json`，最后 `python3 Data_Collector/live_hand_pose_2process_new.py` 开始录制与手部位姿估计。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant UL as unified_launcher.sh
+    participant PR as pairing_process.sh
+    participant ROS as ROS 话题 /xv_sdk/<sn>/...
+    participant M as live_hand_pose_2process_new.py main
+    participant N as RosHandPoseRecorderNode
+    participant IR as RosImageRecorder
+    participant HUB as LatestFrameHub
+    participant MP as MediaPipe HandLandmarker
+
+    U->>UL: 启动相机 ROS 节点（查找 catkin_ws，source ROS 环境）
+    U->>PR: 配对
+    PR->>ROS: rostopic list 提取 <serial>
+    PR->>PR: 写 Start_Process/camera_config.json（device_sn、topic_prefix）
+    U->>M: python3 live_hand_pose_2process_new.py
+    M->>M: rospy.init_node，resolve_device_sn 读 camera_config.json
+    M->>N: RosHandPoseRecorderNode()（resolve_task_setup、setup_task_session）
+    N->>ROS: subscribe_topics：camera_info、color image、(TOF) rgbd、slam pose
+    ROS-->>IR: on_color_image 回调
+    IR->>IR: cv2.VideoWriter 写 mp4，记录帧时间
+    IR->>HUB: publish(FramePacket)，只保留最新帧
+    loop N.run() 主循环
+        N->>HUB: get_latest_if_new(last_seq)
+        N->>MP: detect_for_video(mp_image, mp_timestamp_ms)
+        MP-->>N: hand_landmarks / hand_world_landmarks
+        N->>N: solve_one_hand_pose（PnP + 逐关节坐标系）
+        N->>N: write_hand_pose_to_joint_files 写每关节 CSV（left/right）
+    end
+    ROS-->>N: on_slam_pose → 写 SLAM 位姿 CSV
+    N->>N: 退出时 cleanup 关闭写文件
+```
+
+图依据：LumosRobot/FastUMI_Ego@9caafcb，读过 README.md（目录与流程部分）、Start_Process/unified_launcher.sh、Start_Process/pairing_process.sh、Data_Collector/live_hand_pose_2process_new.py（类与函数清单、subscribe_topics、process_latest_frame、main；RosImageRecorder 内部与按键控制未逐行读）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +107,7 @@ institutions:
 - [FastUMI_Ego 源码归档](../../sources/repos/fastumi_ego.md)（<https://github.com/LumosRobot/FastUMI_Ego>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：LumosRobot/FastUMI_Ego@9caafcb，读过 README.md（目录与流程）、Start_Process/unified_launcher.sh、Start_Process/pairing_process.sh、Data_Collector/live_hand_pose_2process_new.py（主要部分，RosImageRecorder 内部未逐行读）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

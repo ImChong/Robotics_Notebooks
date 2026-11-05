@@ -176,5 +176,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：DexterCap](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexterCap__An_Affordable_and_Automated_System_for_Capturing_Dexterous_Hand-Object/DexterCap__An_Affordable_and_Automated_System_for_Capturing_Dexterous_Hand-Object.html)
 - 项目页：<https://pku-mocca.github.io/Dextercap-Page/>
 - DexterHand：<https://huggingface.co/datasets/pku-mocca/DexterHand>

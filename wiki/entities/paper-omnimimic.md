@@ -48,6 +48,25 @@ summary: "OmniMimic（arXiv:2609.20566）：时间反转 + 动力学补全 + 矢
 - **（待论文正式披露）**；开源结论：**待发布**（步骤 2.5，2026-09-18）。
 - 与 tactile/WAM、主动视角、多智能体场景理解、Sim2Real、人形导航等主线交叉。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["动物步态示教：Trot / Pace / Canter / Pronk（方向覆盖有限）"] --> B["DMA：为每段源动作训练参考跟踪策略（仿真，离线采物理标签）"]
+    B --> C["记录关节状态、力矩、足端接触与力（Go2 + Pinocchio）"]
+    A --> D["时间反转参考 + 矢状面镜像反射"]
+    C --> E["约束优化补全反向动力学标签（加速度 / 足力 / 力矩，含接触与摩擦约束）"]
+    D --> E
+    E --> F["带置信度的物理标签库"]
+    F --> G["力矩引导（torque guide）+ 事件感知物理奖励"]
+    H["DOCE：从帧匹配参考速度出发，按进度 p 渐进扩展到目标指令范围"] --> I["PPO 训练 SMP"]
+    G --> I
+    I --> J["SMP：共享 actor（state + command + one-hot 步态码）+ 4 个残差分支，经步态条件软门控混合"]
+    J --> K["部署：仅 actor + 本体感知 + 指令 + 步态码，不用参考 / 物理标签 / 引导"]
+```
+
+图依据：论文 §III-A（DMA）/ §III-B（DOCE）/ §III-C（SMP）、Fig. 3。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -100,6 +119,7 @@ summary: "OmniMimic（arXiv:2609.20566）：时间反转 + 动力学补全 + 矢
 - [omnimimic_arxiv_2609_20566.md](../../sources/papers/omnimimic_arxiv_2609_20566.md)
 - [wechat_embodied_station_10_papers_contact_wm_2026-09-18.md](../../sources/blogs/wechat_embodied_station_10_papers_contact_wm_2026-09-18.md)
 - [arXiv:2609.20566](https://arxiv.org/abs/2609.20566)
+- [arXiv PDF](https://arxiv.org/pdf/2609.20566)：已通读方法部分（实验与附录以略读为准）：§III-A DMA、§III-B DOCE、§III-C SMP、§IV-A 实验设定
 
 ## 推荐继续阅读
 

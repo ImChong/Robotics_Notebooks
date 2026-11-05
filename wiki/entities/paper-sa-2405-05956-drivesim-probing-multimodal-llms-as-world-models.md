@@ -43,6 +43,19 @@ Probes multimodal LLMs as world models for driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["真实行车录像 / DriveSim 仿真生成场景"] --> B["按 0.5 秒间隔取 3/6/9 帧，拼成网格图"]
+  B --> C["附提示词：说明帧来自车载固定相机，并要求逐帧描述后按格式作答"]
+  C --> D["MLLM（GPT-4o / GPT-4V / Claude3 等）"]
+  D --> E["回答：自车运动 / 他车与拥堵 / 开放集场景 / 轨迹选择"]
+  E --> F["对照标准答案统计准确率并人工检查解释"]
+```
+
+图依据：论文 §III / §IV（Methodology、Representing a video scene、Prompting）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +111,7 @@ Probes multimodal LLMs as world models for driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2405.05956>
+- [arXiv PDF](https://arxiv.org/pdf/2405.05956)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 数据视角探测、§IV 实验设定与规划评测（其余结果略读）
 
 ## 推荐继续阅读
 

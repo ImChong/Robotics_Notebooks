@@ -44,6 +44,28 @@ summary: "让人形可靠执行复杂多步操作对工业/家庭部署很关键
 - **非抓握操作**（推/拨）拓展了人形操作类型；
 - 与 Proprio-MLLM、BiBo 等 VLM 规划工作互补。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    G["自然语言任务目标 g + 初始视觉观测 o_0"] --> PL["高层 VLM Planner（GPT-4o）<br/>生成技能序列"]
+    LIB["技能库：PDDL-like 描述<br/>preconditions / effects / 验证问题"] --> PL
+    LIB --> MON
+    PL --> SEL["Skill Selector<br/>选出当前技能"]
+    SEL --> IL["中层 IL 技能策略（HIT，基于 ACT）<br/>输入：关节角 + 双目 egocentric RGB<br/>输出：25 Hz 关节目标 action chunk"]
+    IL --> FK["正向运动学<br/>生成目标关键点"]
+    FK --> TRK["低层 RL 跟踪策略（ExBody 扩展，PPO）<br/>50 Hz 输出目标关节角"]
+    TRK --> PD["PD 控制器 200 Hz<br/>力矩指令"]
+    PD --> ROBOT["Unitree G1 人形机器人"]
+    ROBOT --> IMG["Egocentric RGB 视觉历史"]
+    IMG --> MON["VLM Skill Monitor（Gemini-2.0-Flash-Lite）<br/>约 1 Hz 判断技能是否完成"]
+    MON -->|"技能状态"| SEL
+    IMG --> IL
+    TELE["离线：RGB 遥操作（HybrIK 姿态估计 + 重定向）<br/>采集示教数据"] -.-> IL
+```
+
+图依据：论文 §III（Fig. 2、Fig. 3）。
+
 ## 解决什么问题
 
 人形**多步操作**要可靠： - 单层端到端难覆盖**长序列**； - 需要**高层决策 + 中层技能 + 底层控制**协同； - 还要**实时知道某步是否完成**。
@@ -137,6 +159,7 @@ summary: "让人形可靠执行复杂多步操作对工业/家庭部署很关键
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation/Hierarchical_Vision-Language_Planning_for_Multi-Step_Humanoid_Manipulation.html>
 - 论文：<https://arxiv.org/abs/2506.22827>
 - 论文正文（方法、Table I、失败与局限）：<https://arxiv.org/html/2506.22827>
+- [arXiv PDF](https://arxiv.org/pdf/2506.22827)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-C
 
 ## 推荐继续阅读
 

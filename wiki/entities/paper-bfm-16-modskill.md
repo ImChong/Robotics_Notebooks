@@ -37,6 +37,27 @@ sources:
 - 技能模块化、可组合，避免基座内部技能缠成一团黑箱。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#16/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    REF["参考动作序列（AMASS 等）"] --> STATE["状态：本体感觉 s^p + 参考状态 s^r<br/>SMPL 人形，24 刚体 / 23 个驱动"]
+    STATE --> SPLIT["按身体部位划分 K=5<br/>L-Leg / R-Leg / L-Arm / R-Arm / Torso"]
+    SPLIT --> ATT["Skill Modularization Attention Layer<br/>各部位状态投影为 Q / K / V，跨部位注意力"]
+    ATT --> EMB["各部位技能嵌入 z^k<br/>归一化到单位球面"]
+    EMB --> LOW["模块化低层控制器 π^k<br/>每个部位一个（高斯，固定对角协方差）"]
+    LOW --> CAT["拼接各部位动作<br/>全身 PD 目标 a_t"]
+    CAT --> SIM["物理仿真人形"]
+    SIM --> RW["奖励：模仿 r_imitation<br/>+ AMP 判别器 r_amp + 能耗惩罚 r_energy"]
+    RW -.->|"RL 更新"| LOW
+    SIM -.->|"失败样本"| GEN["Generative Adaptive Sampling<br/>文本到动作扩散模型为失败样本合成 N 条新动作<br/>（全身或仅目标部位）"]
+    GEN -.->|"补充训练数据"| REF
+    EMB --> HIGH["下游：高层任务策略 π_Task<br/>输入各部位 z^k + s^p + 任务目标 s^g"]
+    HIGH -->|"冻结低层控制器"| LOW
+```
+
+图依据：论文 §3 ModSkill 概述与 Fig.2、§3.1 Preliminaries、§3.2 Skill Modularization / Fig.3、§3.3 Modular Low-Level Controllers、§3.4 Generative Adaptive Sampling / Fig.4、§3.5 Skill Transfer。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -90,6 +111,7 @@ sources:
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2502.14140>
+- [arXiv PDF](https://arxiv.org/pdf/2502.14140)：已通读方法部分（实验与附录以略读为准）：§3 ModSkill（3.1–3.5）、§4 评测指标设置
 
 ## 推荐继续阅读
 

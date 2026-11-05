@@ -31,7 +31,32 @@ iCub3 Avatar System 的人形机器人学习论文条目，当前处于 Paper No
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记写出来之前，这里只保留分类位置与原文入口；系统架构见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph OP["操作者侧 (Genoa)"]
+        W["穿戴设备<br/>VIVE 头显 + 面部追踪 + trackers<br/>SenseGlove 触觉手套<br/>iFeel 触觉服 / 鞋 · Virtualizer 跑台"]
+        RT["Retargeting 重定向<br/>操作（上肢 IK）· 行走 · 语音 · 表情"]
+    end
+    subgraph NET["通信层"]
+        Y["YARP 对等通信 + OpenVPN<br/>连接两个局域网"]
+    end
+    subgraph AV["Avatar：iCub3"]
+        CT["分层 Robot control<br/>外层规划 → 内层控制，逐层生成下层参考"]
+        SE["机器人传感<br/>相机 · 麦克风 · F/T · 触觉皮肤"]
+    end
+    W --> RT
+    RT -- "参考指令" --> Y
+    Y --> CT
+    SE -- "测量" --> Y
+    Y -- "Feedback 反馈" --> FB["操作者反馈<br/>视觉 · 听觉 · 触觉 · 重量"]
+    FB --> W
+```
+
+图依据：论文 Materials and Methods（Fig.7 总体架构：teleoperation 的 retargeting + control，teleperception 的 measurements + feedback）
 
 ## 核心信息
 
@@ -65,6 +90,7 @@ iCub3 Avatar System 的人形机器人学习论文条目，当前处于 Paper No
 - [humanoid_pnb_icub3-avatar-system-enabling-remote-fully-immers.md](../../sources/papers/humanoid_pnb_icub3-avatar-system-enabling-remote-fully-immers.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2203.06972>
+- [arXiv PDF](https://arxiv.org/pdf/2203.06972)：已通读方法部分（实验与附录以略读为准）：Material and Methods（Avatar、Robot control、Communication layer、Operator system 及各 retargeting / feedback interfaces）；补充材料中的控制与 IK 推导未读
 
 ## 推荐继续阅读
 

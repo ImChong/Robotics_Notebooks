@@ -42,6 +42,32 @@ Scalable synthetic driving data generation with world foundation models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph S1["步骤 1：渲染控制输入"]
+        L["结构化标注：HDMap、3D cuboid、轨迹<br/>（RDS-HQ / Waymo Open）"] --> HM["按自车相机内外参渲染像素对齐的 HDMap 视频"]
+        W["网络真实驾驶视频（单目 RGB）"] --> AN["Cosmos-7B-Annotate-Sample-AV：<br/>标注出 HDMap 与 LiDAR 深度"] --> HM
+    end
+    subgraph S2["步骤 2：单视角视频合成"]
+        CAP["原始视频描述 caption"] --> PR["提示词改写器 Qwen2.5-7B-Instruct：<br/>只改天气/时段（晴、雨、雪、雾、清晨、黄金时段、夜晚）"]
+        HM --> CT["Cosmos-Transfer1-7B-Sample-AV：<br/>冻结基座 + HDMap/LiDAR ControlNet 分支"]
+        PR --> CT
+    end
+    subgraph S3["步骤 3：多视角扩展"]
+        CT --> MV["Cosmos-7B-Single2Multiview-Sample-AV：<br/>前视干净 token 为条件，生成其余视角（逐视角文本交叉注意力）"]
+    end
+    subgraph S4["步骤 4：拒绝采样"]
+        MV --> VLM["VLM 过滤 Qwen2.5-VL-7B-Instruct：<br/>判定 Clean / Artifacted，丢弃有伪影样本"]
+    end
+    VLM --> SDG["合成数据 + 原始标注（cuboid、地图、轨迹）<br/>→ 下游 3D 车道线检测 / 3D 目标检测 / 驾驶策略学习"]
+    BASE["Cosmos-1 基座 Cosmos-7B-Text2World → 在 RDS 驾驶数据上后训练"] -.-> CT
+    BASE -.-> MV
+```
+
+图依据：论文 §2（Cosmos-Drive 模型套件，Fig.2–4、6–7）、§3.1–3.3（流水线 Step ➊–➍）；§4 为下游评测。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +123,7 @@ Scalable synthetic driving data generation with world foundation models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.09042>
+- [arXiv PDF](https://arxiv.org/pdf/2506.09042)：已通读方法部分（实验与附录以略读为准）：§2.1–2.5 模型套件（§2.6 LiDAR 生成略读）、§3.1–3.3 流水线
 
 ## 推荐继续阅读
 

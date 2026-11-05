@@ -55,6 +55,45 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python raw_hdf5/raw2hdf5.py --task_root <raw> --output <dir> --frequency 20`（原始 session → HDF5）；`python raw_lerobot_v4.0/raw_2_lerobot_V4.0.py --task-root <raw> --repo-id <org/name> ...`（原始 session → LeRobot v4.0 数据集；`raw_lerobot_v2.1/raw_2_lerobot_V2.1.py` 为 v2.1 版本，另用 `ProcessPoolExecutor`，本图未画）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant H as raw2hdf5.py convert_task
+    participant POOL as ProcessPoolExecutor
+    participant S as process_session_auto
+    participant L as raw_2_lerobot_V4.0.py convert_raw_to_lerobot
+    participant LR as LeRobotDataset
+    participant FS as session_* 目录（RGB_Images / Clamp_Data / Merged_Trajectory）
+
+    U->>H: --task_root --output --frequency
+    H->>FS: find_all_sessions（os.walk，名字以 session 开头）
+    H->>POOL: executor.map(process_session_auto, sessions)
+    POOL->>S: 每个 session 一个任务
+    S->>FS: detect_layout（left_hand*/right_hand* → dual，有 RGB_Images → single）
+    S->>FS: load_arm_data：ensure_clamp_csv、ffprobe 校验视频、读轨迹/clamp/时间戳
+    S->>S: 以 60fps/target_fps 为步长取主时间轴，argmin 最近邻对齐位姿与 clamp
+    S->>FS: cv2.VideoCapture 按 frame_index 读帧
+    S->>H: write_hdf5_single / write_hdf5_dual → episode_XXXXXX.hdf5
+    U->>L: --task-root --repo-id --target-fps --mode
+    L->>FS: find_all_sessions + detect_layout
+    L->>LR: create_empty_dataset（LeRobotDataset.create）
+    loop 每个 session
+        L->>FS: load_arm_data(traj_source)
+        L->>L: prepare_single/bimanual_alignment（最近邻对齐并顺序抽帧）
+        L->>L: _to_rgb_and_resize(224x224)
+        L->>LR: add_frame(observation.state / action / observation.images.robot_N)
+        L->>LR: save_episode()
+    end
+    L->>L: repo_output 非空时把 LEROBOT_HOME/repo_id 复制到输出目录
+```
+
+图依据：LumosRobot/FastUMI_Data_Conversion@4ddbf90，读过 readme.md、raw_hdf5/readme.md、raw_hdf5/raw2hdf5.py、raw_lerobot_v4.0/readme.md、raw_lerobot_v4.0/raw_2_lerobot_V4.0.py（convert_raw_to_lerobot 与函数清单）；raw_lerobot_v2.1 仅读函数清单与参数。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +105,7 @@ institutions:
 - [FastUMI_Data_Conversion 源码归档](../../sources/repos/fastumi_data_conversion.md)（<https://github.com/LumosRobot/FastUMI_Data_Conversion>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：LumosRobot/FastUMI_Data_Conversion@4ddbf90，读过 readme.md、raw_hdf5/readme.md、raw_hdf5/raw2hdf5.py、raw_lerobot_v4.0/readme.md、raw_lerobot_v4.0/raw_2_lerobot_V4.0.py（raw_lerobot_v2.1 仅读函数清单）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

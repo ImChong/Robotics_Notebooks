@@ -42,6 +42,30 @@ Discrete codebook world models for continuous control.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph WM["DCWM 训练（Alg. 1）"]
+        O["观测 o"] --> EN["Encoder e_θ，得到连续隐向量 x"]
+        EN --> Q["FSQ 量化 f(·)：固定码本 C，得到离散码 c"]
+        Q --> DY["动力学分类器 d_ϕ(c, a)：logits 经 softmax 得到下一码 c' 的类别分布"]
+        DY --> ST["多步预测用 ST Gumbel-softmax 采样，梯度经 BPTT 回传编码器"]
+        ST --> L["损失：与目标码 sg(f(e_θ(o'))) 的交叉熵（潜在状态一致性）+ 奖励 MSE"]
+        Q --> RW["Reward 头 R_ξ(c, a)，与编码器、动力学联合训练"]
+    end
+    Q --> AC["策略先验 π_η(c) 与 Q 函数集成 q_ψ(c, a)：TD3 + N-step + REDQ（Nq=5），在离散潜空间学习，价值不参与编码器训练"]
+    subgraph PL["决策时规划（Alg. 2）"]
+        MP["MPPI：从 ĉ0 = f(e_θ(o)) 出发，用动力学展开 H 步，累计奖励 + 末端 Q 值"]
+        MP --> ACT["执行首个动作，每步重规划"]
+    end
+    DY --> MP
+    RW --> MP
+    AC --> MP
+```
+
+图依据：论文 §4（Method）：§4.1 World Model（Fig. 1、式 1–8、Policy and value learning）、§4.2 Decision-time planning。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ Discrete codebook world models for continuous control.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.00653>
+- [arXiv PDF](https://arxiv.org/pdf/2503.00653)：已通读方法部分（实验与附录以略读为准）：§3 预备知识与 §4.1–§4.2（含 Fig. 1/2 与 Alg. 1/2）；§5 实验与附录以略读为准
 
 ## 推荐继续阅读
 

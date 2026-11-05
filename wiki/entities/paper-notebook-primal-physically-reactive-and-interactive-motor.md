@@ -38,6 +38,29 @@ summary: "把交互式化身的运动系统（motor system）建成一个生成�
 - **从单帧续写**对在线控制友好；
 - 角色动画的生成式运动经验可迁移到人形（本仓 13 物理动画方向）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["AMASS 等无标注短 mocap 片段<br/>（每段 0.5 s，以首帧骨盆为原点的 canonical 坐标）"] --> PRE["预训练基础模型：自回归扩散运动模型 G(t, Xt, x0)<br/>Transformer + in-context 条件（扩散时间 + 初始状态嵌入）"]
+    PRE --> LOSS["损失：Lsimple + 前向运动学 LFK + 速度 LFKV<br/>（SMPL-X 运动空间，无需接触标签）"]
+    LOSS --> BASE["基础模型（冻结）"]
+    BASE --> AD["ControlNet 式适配<br/>可训练 Transformer 块副本 + 控制嵌入，仅更新 adaptor"]
+    AD --> FS["少样本语义动作生成<br/>控制信号：动作标签"]
+    AD --> TR["空间目标到达<br/>控制信号：2D 目标位置"]
+    X0["初始状态 x0"] --> GEN["推理：生成 0.5 s 片段，逐段自回归续写，得到任意长度动作"]
+    BASE --> GEN
+    FS --> GEN
+    TR --> GEN
+    IMP["扰动关节初始速度（外部冲量）"] --> GEN
+    CBG["CBG 引导：移动速度 Lmove / 朝向 Lfacing"] --> GEN
+    CFG["CFG：控制条件强度"] --> GEN
+    GEN --> POST["测试时处理：关节重投影 / 贴地 / inertialization 混合"]
+    POST --> OUT["Unreal Engine 中的实时角色动画"]
+```
+
+图依据：论文 §3.2–3.4 Motion Representation / Neural Networks / Inference、§4 Model Adaptation / Fig.2、Fig.3。
+
 ## 解决什么问题
 
 交互式化身需要**持续、逼真、可控、可响应**的运动： - 单纯回放/生成难**实时响应物理冲量**； - 难**个性化**且**到达空间目标**。
@@ -88,6 +111,7 @@ PRIMAL 要：一个**生成式运动模型**，从单帧持续生成、实时响
 - [humanoid_pnb_primal.md](../../sources/papers/humanoid_pnb_primal.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning/PRIMAL__Physically_Reactive_and_Interactive_Motor_Model_for_Avatar_Learning.html>
 - 论文：<https://arxiv.org/abs/2503.17544>
+- [arXiv PDF](https://arxiv.org/pdf/2503.17544)：已通读方法部分（实验与附录以略读为准）：§3 Autoregressive Diffusion Motion Models（3.1–3.4）、§4 Model Adaptation、§5 实验中的适配任务设定
 
 ## 推荐继续阅读
 

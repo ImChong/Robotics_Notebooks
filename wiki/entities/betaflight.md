@@ -75,12 +75,52 @@ flowchart LR
 - **局限：研究向群体规划** — 多机避障、EGO-Planner 等输出需 **PX4 + MAVSDK** 等伴机栈，而非 Betaflight 原生对接。
 - **局限：硬件支持** — 团队不生产飞控板；硬件故障应联系厂商（官方 README 明确说明）。
 
+## 源码运行时序图
+
+入口：固件 `main()`（`src/main/main.c`），由飞控 MCU 上电后执行 `systemInit()`、`initPhase1/2/3()` 完成初始化，再进入 `run()` 的 `scheduler()` 死循环。下图只画源码中飞控主循环的调用顺序（陀螺仪采样、滤波、PID、混控输出、接收机），不含 CLI、MSP 与 OSD 等支路。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant MN as main main.c
+    participant IN as initPhase1 2 3 init.c
+    participant SC as scheduler scheduler.c
+    participant GY as taskGyroSample core.c
+    participant FT as taskFiltering core.c
+    participant PL as taskMainPidLoop core.c
+    participant RC as processRcCommand rc.c
+    participant PD as pidController pid.c
+    participant MX as mixTable writeMotors mixer.c
+    participant RX as taskUpdateRxMain tasks.c
+
+    MN->>IN: 依次执行 initPhase1 initPhase2 initPhase3
+    IN->>IN: 初始化 mixer motorDevInit 传感器 pidInit imuInit rxInit 等
+    MN->>SC: run 进入 while true 循环调用 scheduler
+    loop 每次调度循环
+        SC->>GY: 实时任务 TASK_GYRO 调用 taskGyroSample
+        GY->>GY: gyroUpdate 读取各陀螺仪并求平均
+        SC->>FT: TASK_FILTER 调用 taskFiltering
+        FT->>FT: gyroFiltering 陀螺仪滤波 可含动态陷波
+        SC->>PL: TASK_PID 调用 taskMainPidLoop
+        PL->>RC: subTaskRcCommand 把摇杆值换算为设定点
+        PL->>PD: subTaskPidController 计算各轴 PID 输出
+        PL->>MX: subTaskMotorUpdate 调用 mixTable 混控
+        MX->>MX: writeMotors 调用 motorWriteAll 输出电机指令
+        PL->>PL: subTaskPidSubprocesses 若启用则 blackboxUpdate
+        SC->>RX: TASK_RX 周期或事件触发 taskUpdateRxMain
+        RX->>RX: processRx 检查接收机帧与 failsafe 再切换 RX 状态
+    end
+```
+
+图依据：betaflight/betaflight@3e6a3f8，实际读过 `src/main/main.c`、`src/main/fc/init.c`（initPhase1/2/3 调用段）、`src/main/scheduler/scheduler.c`（scheduler 开头与任务分发）、`src/main/fc/tasks.c`（任务表与 taskUpdateRxMain）、`src/main/fc/core.c`（taskGyroSample、taskFiltering、taskMainPidLoop 及子任务）、`src/main/flight/pid.c`（pidController 签名）、`src/main/flight/mixer.c`（writeMotors、mixTable 签名）、`src/main/fc/rc.c`（processRcCommand 签名）、`src/main/sensors/gyro.c`（gyroUpdate、gyroFiltering）。`motorWriteAll`、`blackboxUpdate` 的内部实现未读，仅按调用点画出。
+
 ## 参考来源
 
 - [sources/repos/betaflight.md](../../sources/repos/betaflight.md)
 - [sources/sites/betaflight-com.md](../../sources/sites/betaflight-com.md)
 - [betaflight/betaflight](https://github.com/betaflight/betaflight)
 - [Betaflight 官方站](https://betaflight.com/)
+- 源码核对（2026-11-02）：betaflight/betaflight@3e6a3f8，读过 src/main/main.c、src/main/fc/init.c、src/main/scheduler/scheduler.c、src/main/fc/tasks.c、src/main/fc/core.c、src/main/flight/pid.c、src/main/flight/mixer.c、src/main/fc/rc.c、src/main/sensors/gyro.c；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

@@ -31,7 +31,22 @@ Explosive Output to Enhance Jumping Ability 的人形机器人学习论文条目
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记写出来之前，这里只保留分类位置与原文入口；方法（设计）流程见下方「流程总览」，仅依据论文方法部分，不含结论判断。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["电机输出特性分析<br/>转矩 / 功率包络，避开高功率损耗区，宜工作在中速区"] --> C["EVRR-K 策略：减速比随膝关节伸展逐步降低<br/>起跳初期高比值快速建立转矩，之后降低以抑制电机转速增长"]
+    B["简化腿模型的膝-质心运动学分析<br/>传动比 λ(q2) = 1 / J_CoM,y(q2)"] --> C
+    C --> M["机构实现：直线执行器驱动的导杆机构<br/>双导程滚珠丝杠，减速比 k 随关节角变化"]
+    M --> P["可调结构参数：曲柄长 r、机架长 S0、角度偏置 Δθ"]
+    P --> O["基于爆发式跳跃控制的参数优化<br/>电机以最大可用转矩工作，最大化起跳能量 W_takeoff<br/>并与最优固定减速比（FRR-K）对比"]
+    O --> V1["1-DOF 腿式平台垂直跳实验"]
+    O --> V2["全尺寸人形 BHR8-J1 跳跃实验"]
+```
+
+图依据：论文 §II-§V（Fig. 3、Fig. 4、Fig. 6、Algorithm 1）；本文为机构设计范式，流程图为设计流程而非学习算法。
 
 ## 核心信息
 
@@ -64,6 +79,7 @@ Explosive Output to Enhance Jumping Ability 的人形机器人学习论文条目
 - [humanoid_pnb_explosive-output-to-enhance-jumping-ability-a-va.md](../../sources/papers/humanoid_pnb_explosive-output-to-enhance-jumping-ability-a-va.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2506.12314>
+- [arXiv PDF](https://arxiv.org/pdf/2506.12314)：已通读方法部分（实验与附录以略读为准）：§II、§III、§IV、§V 开头（实验设置）
 
 ## 推荐继续阅读
 

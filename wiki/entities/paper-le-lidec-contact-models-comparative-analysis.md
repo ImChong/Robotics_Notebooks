@@ -41,6 +41,24 @@ summary: "从 Signorini、库仑摩擦与最大耗散原理比较各引擎接触
 - 在 [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md) 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 中作为 **域随机化** 节点。
 - 开源结论：**待核实**（步骤 2.5，2026-09-20）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  P["刚体接触三原则\nSignorini 条件 / Coulomb 摩擦 / 最大耗散原理 (MDP)"] --> NCP["非线性互补问题 NCP\n（非光滑、非凸）"]
+  NCP --> LCP["LCP\n摩擦锥线性化为棱锥\n求解：Lemke / Dantzig / PGS"]
+  NCP --> CCP["CCP\n松弛 Signorini 条件\n求解：PGS / ADMM 等"]
+  NCP --> RS["RaiSim 接触模型\n（文中依论文重实现）"]
+  NCP --> DNCP["直接求解 NCP\nPGS、逐接触二分法等"]
+  LCP --> CB
+  CCP --> CB
+  RS --> CB
+  DNCP --> CB
+  CB["ContactBench（统一 C++ 框架）\nPinocchio 刚体算法 + HPP-FCL 碰撞检测"] --> EV["对比评测\n物理正确性 / 求解自洽性 / 性能 / 四足 MPC"]
+```
+
+图依据：论文 §I–§IV（Tab.III 接触模型与求解器分类、§IV ContactBench 实验设定）；各求解器与模型的归属为依据章节标题归纳
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +107,7 @@ summary: "从 Signorini、库仑摩擦与最大耗散原理比较各引擎接触
 - [freedof_sim2real_22_le-lidec-contact-models-comparative-analysis.md](../../sources/papers/freedof_sim2real_22_le-lidec-contact-models-comparative-analysis.md)
 - [wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md](../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md)
 - [freedof_sim2real_44_catalog.md](../../sources/papers/freedof_sim2real_44_catalog.md)
+- [arXiv PDF](https://arxiv.org/pdf/2304.06372)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 刚体接触建模（略读）、§III 接触问题算法变体（A–E 标题与要点）、§IV 实验设定与小节标题
 
 ## 推荐继续阅读
 

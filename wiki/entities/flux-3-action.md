@@ -10,6 +10,7 @@ related:
   - ../tasks/manipulation.md
 sources:
   - ../../sources/repos/flux-action.md
+  - ../../sources/repos/lerobot.md
 summary: "FLUX 3 Action：BFL 7B world action model 训练/推理/tooling 已开源；HF 公开 DROID/SO-101/base 权重；SO-101 LoRA 走 LeRobot。"
 ---
 
@@ -84,6 +85,46 @@ sequenceDiagram
 
 节点对齐 [`sources/repos/flux-action.md`](../../sources/repos/flux-action.md) 与 `docs/setup.md`、`docs/droid-finetune.md`、`docs/so101-lora.md`。
 
+### LeRobot 移植的运行时序（固定提交 `9e5ee98`）
+
+上图是 standalone `flux-action` 仓库的入口视角；下图来自 LeRobot `src/lerobot/policies/flux3/modeling_flux3.py`（`Flux3Policy`），打包与采样函数在 `f3/packing.py`、`f3/sampling.py`。
+
+```mermaid
+sequenceDiagram
+    participant TR as "lerobot_train.py: train()"
+    participant EV as "lerobot_eval.py / lerobot_rollout"
+    participant P as "Flux3Policy"
+    participant PK as "f3/packing.py"
+    participant D as "f3/transformer.py: JointSingleSeq (DiT)"
+    participant S as "f3/sampling.py"
+    TR->>P: "policy(batch) -> forward"
+    P->>P: "_cameras / _conditioning_inputs / _captions / _valid_windows"
+    P->>PK: "materialize_video -> pack_video(冻结 Video VAE) / pack_actions / pack_text"
+    P->>PK: "sample_timesteps -> build_forward_kwargs"
+    P->>D: "self.dit(**kwargs) 同时预测视频 latent 与动作"
+    P->>PK: "flow_loss(video_loss_weight, action_loss_weight)"
+    PK-->>TR: "loss, {video_mse, action_mse}"
+    EV->>P: "select_action(batch)"
+    P->>P: "队列空 -> predict_action_chunk"
+    P->>PK: "pack_video(targets=False) 条件 latent + pack_actions"
+    P->>P: "_sample: 视频与动作噪声联合去噪"
+    P->>S: "cosmos_unipc_order2 或 euler (num_inference_steps)"
+    S->>D: "predict(): 无分类器引导时 cfg_two_pass"
+    S-->>P: "动作 latent / action_scale"
+    P-->>EV: "取前 n_action_steps 入队；视频分支结果丢弃"
+```
+
+## LeRobot 实现
+
+- **身份核对**：未找到一手论文。`src/lerobot/policies/flux3/README.md` 写有 “Technical Report ... XXX”，是未填的占位，没有 arXiv 链接；LeRobot 文档与该 README 指向 Black Forest Labs 的模型卡与 `flux-action` 仓库。本页因此无 arXiv ID，数据以文档/源码为准。
+- **规模与能力**（LeRobot 策略 README，厂商表述，未核实）：7B world action model，输入相机帧、状态、文本，返回未来 32 个动作，与未来 32 帧一同去噪；DROID 微调版在 RoboLab-120 上 42.6% 任务成功率（排名第一，厂商表述）。
+- **LeRobot 支持范围**：推理与 PEFT（LoRA 适配主干，动作/条件头全量训练）；全量微调与新本体训练回到 standalone 仓库。SO-101 微调检查点 `black-forest-labs/flux-3-action-so101`，DROID `flux-3-action-droid`，基座 `flux-3-action-base`（文档）。
+- **SO-101 检查点配置**（文档）：`scene` / `wrist` 双相机，8 个观测时间步，2 个独立编码的视觉快照，过去动作/状态条件；预测 42 个动作，执行前 32 个（30 Hz）；末通道保持绝对（`delta_absolute_dims=[-1]`）。DROID：3 相机，8 维状态/动作，15 Hz 绝对关节位置指令。
+- **只构建 video 与 video_cond 流**：未使用的图像/音频权重加载前被过滤，文档称省约 28% DiT 参数而不改变动作预测。
+- **限制**：不支持 RTC / 异步推理（`select_action` 在 `use_relative_actions` 时直接抛 `NotImplementedError`）；依赖 NATTEN 0.21.6+ 且与 torch/CUDA 精确匹配的 wheel；DROID 的 PEFT 端到端训练“尚未验证”；文档声明本版本仍需 GPU 与机器人验证。
+- **后处理**：策略输出为归一化动作，必须经 postprocessor 反归一化并按 delta 积分，首个指令以实测状态为锚；episode 边界要重置策略与两个处理器。
+- 仅动作被返回；`_sample` 同时去噪视频但丢弃（`modeling_flux3.py`）。
+
 ## 工程实践
 
 | 检查项 | 建议 |
@@ -126,4 +167,5 @@ sequenceDiagram
 
 ## 参考来源
 
+- [`sources/repos/lerobot.md`](../../sources/repos/lerobot.md) — LeRobot 固定提交上的 `flux3` 策略与文档
 - [FLUX 3 Action 仓库归档](../../sources/repos/flux-action.md)

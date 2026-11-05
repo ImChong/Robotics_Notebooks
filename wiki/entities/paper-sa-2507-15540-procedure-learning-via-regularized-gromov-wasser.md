@@ -42,6 +42,31 @@ Procedural learning method based on regularized Gromov-Wasserstein optimal trans
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    VX["视频 X（N 帧）"] --> EX["帧编码器 f_θ<br/>ResNet-50 Conv4c + 3D 卷积 + 全连接 → 128 维嵌入"]
+    VY["视频 Y（M 帧）"] --> EY["帧编码器 f_θ（共享）"]
+    EX --> CM["代价矩阵 C：余弦距离 + 时间先验 R<br/>结构矩阵 Cx、Cy（半径 r 内的时间邻近关系）"]
+    EY --> CM
+    CM --> OT["FGWOT：Kantorovich OT + Gromov-Wasserstein OT<br/>熵正则求解，附加虚拟帧处理背景帧"]
+    OT --> TS["软对应 T*（作伪标签，stop gradient）"]
+    EX --> SIM["归一化相似度 P（温度 τ）"]
+    EY --> SIM
+    TS --> LA["对齐损失 L_align = -Σ T* log P"]
+    SIM --> LA
+    EX --> LR["对比正则 L_reg（C-IDM）<br/>防止嵌入塌缩到退化解"]
+    EY --> LR
+    LA --> LOSS["总损失 L = L_align + β (L_reg(X) + L_reg(Y))"]
+    LR --> LOSS
+    LOSS -. "训练编码器" .-> EX
+    EX --> CLU["推理：多标签 graph-cut 聚类（α-expansion）<br/>得到 K 个关键步骤"]
+    CLU --> ORD["按各步骤帧的平均归一化时间排序<br/>跨视频按出现频率取最常见顺序"]
+```
+
+图依据：论文 §3.1–§3.2 / Fig.2、式 (3)–(7)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Procedural learning method based on regularized Gromov-Wasserstein optimal trans
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2507.15540>
+- [arXiv PDF](https://arxiv.org/pdf/2507.15540)：已通读方法部分（实验与附录以略读为准）：§3 Our Approach（§3.1 RGWOT、§3.2 聚类与关键步骤排序，含 Fig.2），§4 实验设定略读
 
 ## 推荐继续阅读
 

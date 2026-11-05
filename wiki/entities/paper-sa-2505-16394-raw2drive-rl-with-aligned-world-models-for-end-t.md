@@ -42,6 +42,25 @@ RL with aligned world models for end-to-end autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph PS["特权流（BEV 语义掩码输入）"]
+    P1["特权编码器 + RSSM + 三个 head（Dreamer V3 式）"] --> P2["特权策略 actor-critic：在特权世界模型中 rollout 训练"]
+  end
+  subgraph RS["原始传感器流（多视角图像 + IMU）"]
+    R1["BEVFormer 编码器 → 原始世界模型（RSSM 用特权模型初始化，仅保留 decoder head，不学奖励/continue）"]
+    R2["原始传感器策略：在双流世界模型中 RL 训练"]
+    R1 --> R2
+  end
+  P1 -->|"Rollout Guidance：编码状态 MSE、确定性状态 L2、随机状态 KL；仅采样一次并送入两个模型"| R1
+  P1 -->|"Head Guidance：特权模型给出 reward 与 continue 标志"| R2
+  P2 -->|"收集 replay buffer 并蒸馏动作分布"| R2
+```
+
+图依据：论文 §3 / §3.1 / §3.2 / §3.3（Fig.2–Fig.6）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ RL with aligned world models for end-to-end autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.16394>
+- [arXiv PDF](https://arxiv.org/pdf/2505.16394)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Method（3.1–3.3）、§4 Experiments（略读）
 
 ## 推荐继续阅读
 

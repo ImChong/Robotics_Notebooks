@@ -3348,9 +3348,8 @@ button.home-wiki-heatmap-cell.is-active {
   );
 }
 
-/* ── 路线页「知识地图」：天赋树布局 ──
-   复用详情页知识地图面板外框（.detail-mini-map）。每个阶段一列，列头间为阶段主干箭头，
-   列间曲线 = 相邻阶段站内互链（SVG 垫在节点下方）；列数超出面板宽度时横向滚动。 */
+/* ── 路线页「知识地图」面板 ──
+   复用详情页知识地图面板外框（.detail-mini-map）；内部布局见下方「学习路线图布局」。 */
 .roadmap-kmap-wrap {
   margin-top: 4px;
   /* hero 是 grid：item 默认 min-width:auto 会被树的 min-content 撑破容器，须允许收缩 */
@@ -3362,31 +3361,6 @@ button.home-wiki-heatmap-cell.is-active {
   padding: 14px 16px 16px;
   overflow: auto;
 }
-.roadmap-kmap-badge {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 2.15rem;
-  height: 1.3rem;
-  padding: 0 0.4rem;
-  border-radius: 6px;
-  /* 各 L 等级统一强调色：靠 L0…L7 数字区分层级，让类型色圆点成为唯一语义色 */
-  background: hsl(205, 66%, 48%);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-.roadmap-kmap-stage-count {
-  flex-shrink: 0;
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  background: var(--bg-alt);
-  border-radius: 999px;
-  padding: 0.05rem 0.5rem;
-}
 .roadmap-kmap-dot {
   flex-shrink: 0;
   width: 0.62rem;
@@ -3394,135 +3368,469 @@ button.home-wiki-heatmap-cell.is-active {
   border-radius: 50%;
   box-shadow: 0 0 0 2px var(--bg);
 }
-.roadmap-ttree {
-  --tt-gap: 1.75rem;
-  --tt-spine: hsl(205, 66%, 48%);
-  position: relative;
+/* ── 路线页「知识地图」：学习路线图布局 ──
+   参照 Robot_Learning_Paper_Notebooks 首页「推荐学习路线图」：左侧阶段栏（编号圆圈串成主干）选一个阶段，
+   右侧只画这一阶段的小树；树上方「前置」、下方「通往」是与相邻阶段互链的节点。
+   树按四分之一列排（父节点可居中于两列之间），--dt-quarters = 本阶段最宽一排的列数 × 4。 */
+.roadmap-ltree {
   display: grid;
-  grid-template-columns: repeat(var(--tt-cols), minmax(7.5rem, 1fr));
-  column-gap: var(--tt-gap);
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 20px;
   align-items: start;
 }
-.roadmap-ttree-edges {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-.roadmap-ttree-edges path {
-  fill: none;
-  stroke: var(--border-strong);
-  stroke-width: 1.3;
-  opacity: 0.5;
-  transition: opacity 0.15s, stroke 0.15s;
-}
-.roadmap-ttree-col {
-  position: relative;
-  z-index: 1;
+.roadmap-ltree-side {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  min-width: 0;
+  gap: 12px;
 }
-.roadmap-ttree-head {
-  position: relative;
+.roadmap-ltree-overview-btn {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.3rem 0.4rem;
-  margin-bottom: 0.35rem;
-  padding: 0.4rem 0.5rem;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: 8px 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg-alt);
+  background: var(--bg);
   color: var(--text);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.8rem;
-  line-height: 1.25;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
 }
-.roadmap-ttree-head:hover {
+.roadmap-ltree-overview-btn:hover,
+.roadmap-ltree-overview-btn[aria-pressed="true"] {
   border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
 }
-.roadmap-ttree-col:not(:last-child) .roadmap-ttree-head::after {
+.roadmap-ltree-overview-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.roadmap-ltree-overview-sub {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+.roadmap-ltree-rail-track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+/* 阶段编号串成一条主干：竖线穿过各编号圆圈（圆心 = 标签左内边距 8 + 半径 12） */
+.roadmap-ltree-rail-track::before {
   content: "";
   position: absolute;
-  left: 100%;
-  top: 1.05rem;
-  width: calc(var(--tt-gap) - 5px);
-  border-top: 2px solid var(--tt-spine);
+  top: 16px;
+  bottom: 16px;
+  left: 19px;
+  border-left: 2px solid var(--border);
 }
-.roadmap-ttree-col:not(:last-child) .roadmap-ttree-head::before {
-  content: "";
-  position: absolute;
-  left: calc(100% + var(--tt-gap) - 7px);
-  top: calc(1.05rem - 4px);
-  border-left: 7px solid var(--tt-spine);
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
+.roadmap-ltree-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.82rem;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
 }
-.roadmap-ttree-head .roadmap-kmap-stage-count {
-  margin-left: auto;
+.roadmap-ltree-tab:hover {
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  color: var(--text);
 }
-/* 标题独占第二行并固定两行高，保证各列首个节点顶端对齐 */
-.roadmap-ttree-head-title {
-  order: 1;
-  flex: 0 0 100%;
-  min-height: 2.5em;
+.roadmap-ltree-tab[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--text);
+  font-weight: 600;
 }
-.roadmap-ttree-head-title,
-.roadmap-ttree-label {
+.roadmap-ltree-tab-name {
   min-width: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  overflow-wrap: break-word;
 }
-.roadmap-ttree-node {
+.roadmap-ltree-tab-count {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+.roadmap-ltree-mark {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.roadmap-ltree-tab[aria-pressed="true"] > .roadmap-ltree-mark {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+.roadmap-ltree-panels {
+  min-width: 0;
+}
+/* 全局总览：各阶段的小树装在框里，按阅读顺序自上而下排开；相邻阶段互链画成虚线（SVG 垫在框下），悬停时才看清 */
+.roadmap-ltree-ov {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.roadmap-ltree-ov-stage {
+  position: relative;
+  container-type: inline-size;
+  padding: 8px 10px 6px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.roadmap-ltree-ov-head {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  min-height: 2.4rem;
-  padding: 0.3rem 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg-alt);
+  gap: 6px;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
   color: var(--text);
-  text-decoration: none;
-  font-size: 0.8rem;
-  line-height: 1.25;
-  transition: opacity 0.15s, border-color 0.15s, box-shadow 0.15s;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
 }
-.roadmap-ttree-label {
-  flex: 1;
+.roadmap-ltree-ov-head:hover {
+  color: var(--accent);
 }
-.roadmap-ttree-node .roadmap-kmap-dot {
-  background: var(--tt-c);
+.roadmap-ltree-ov-head > .roadmap-ltree-mark {
+  width: 20px;
+  height: 20px;
+  border-width: 1px;
+  font-size: 0.66rem;
 }
-.roadmap-ttree-node:hover,
-.roadmap-ttree-node:focus-visible {
+.roadmap-ltree-ov-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 总览里的小树比单阶段视图小一号，窄屏按阶段框宽度缩（选择器更具体，覆盖单阶段视图的 --dt-q） */
+.roadmap-ltree-ov .roadmap-ltree-tree {
+  --dt-q: min(21px, calc(100cqw / var(--dt-quarters, 20)));
+  row-gap: 18px;
+  padding: 10px 0 4px;
+}
+.roadmap-ltree-ov .roadmap-ltree-node {
+  min-height: 30px;
+  padding: 4px 3px;
+  border-width: 1px;
+  border-radius: 6px;
+}
+.roadmap-ltree-ov .roadmap-ltree-node-name {
+  font-size: 0.66rem;
+  font-weight: 500;
+  -webkit-line-clamp: 2;
+}
+.roadmap-ltree-ov .roadmap-ltree-node-type {
+  display: none;
+}
+.roadmap-ltree-ov .roadmap-ltree-edge-line {
+  stroke-width: 1.4;
+}
+.roadmap-ltree-edge.is-cross .roadmap-ltree-edge-line {
+  stroke-dasharray: 3 4;
+  opacity: 0.25;
+}
+.roadmap-ltree-ov.is-tracing .roadmap-ltree-node:not(.is-path) {
+  opacity: 0.3;
+}
+.roadmap-ltree-ov.is-tracing .roadmap-ltree-node.is-path {
   border-color: var(--accent);
 }
-/* 悬停 / 聚焦：点亮沿连线的上下游链，其余变暗 */
-.roadmap-ttree.is-focus .roadmap-ttree-node:not(.is-lit) {
-  opacity: 0.35;
-}
-.roadmap-ttree.is-focus .roadmap-ttree-node.is-lit {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent);
-}
-.roadmap-ttree.is-focus .roadmap-ttree-edges path {
+.roadmap-ltree-ov.is-tracing .roadmap-ltree-edge:not(.is-path) {
   opacity: 0.12;
 }
-.roadmap-ttree.is-focus .roadmap-ttree-edges path.is-lit {
-  stroke: var(--accent);
-  stroke-width: 2;
+.roadmap-ltree-ov.is-tracing .roadmap-ltree-edge.is-cross.is-path .roadmap-ltree-edge-line {
   opacity: 1;
 }
+.roadmap-ltree-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.roadmap-ltree-panel-head > .roadmap-ltree-mark {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.roadmap-ltree-panel-title {
+  min-width: 0;
+  color: var(--text);
+  text-decoration: none;
+}
+.roadmap-ltree-panel-title:hover {
+  color: var(--accent);
+}
+.roadmap-ltree-panel-count {
+  flex: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+.roadmap-ltree-gates {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.roadmap-ltree-gates[hidden] {
+  display: none;
+}
+.roadmap-ltree-gates-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.roadmap-ltree-gate {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 15rem;
+  padding: 2px 9px 2px 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.roadmap-ltree-gate-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.roadmap-ltree-gate > .roadmap-ltree-mark {
+  width: 20px;
+  height: 20px;
+  border-width: 1px;
+  font-size: 0.68rem;
+}
+.roadmap-ltree-gate:hover,
+.roadmap-ltree-gate.is-path {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.roadmap-ltree-stage {
+  container-type: inline-size;
+}
+.roadmap-ltree-tree {
+  --dt-q: 30px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--dt-quarters, 20), var(--dt-q));
+  justify-content: center;
+  row-gap: 36px;
+  padding: 22px 0 14px;
+}
+@supports (width: 1cqw) {
+  .roadmap-ltree-tree {
+    --dt-q: min(30px, calc(100cqw / var(--dt-quarters, 20)));
+  }
+}
+.roadmap-ltree-edges {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.roadmap-ltree-edge {
+  transition: opacity 0.15s;
+}
+.roadmap-ltree-edge-line {
+  fill: none;
+  stroke: var(--text-muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.roadmap-ltree-edge-head {
+  fill: var(--text-muted);
+}
+.roadmap-ltree-edge.is-path .roadmap-ltree-edge-line {
+  stroke: var(--accent);
+}
+.roadmap-ltree-edge.is-path .roadmap-ltree-edge-head {
+  fill: var(--accent);
+}
+.roadmap-ltree-node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  min-height: 56px;
+  margin: 0 calc(var(--dt-q) * 0.2);
+  padding: 7px 6px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.15s, opacity 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.roadmap-ltree-node:hover,
+.roadmap-ltree-node:focus-visible {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+/* 中文名不在词中间断开；放不下的长词仍可任意处折行 */
+.roadmap-ltree-node-name {
+  max-width: 100%;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.roadmap-ltree-node-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  line-height: 1.2;
+}
+.roadmap-ltree-node .roadmap-kmap-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--tt-c);
+}
+/* 悬停 / 聚焦：点亮上下游链，其余淡下去 */
+.roadmap-ltree-tree.is-tracing .roadmap-ltree-node:not(.is-path) {
+  opacity: 0.4;
+}
+.roadmap-ltree-tree.is-tracing .roadmap-ltree-node.is-path {
+  border-color: var(--accent);
+}
+.roadmap-ltree-tree.is-tracing .roadmap-ltree-edge:not(.is-path) {
+  opacity: 0.2;
+}
+.roadmap-ltree-node.is-flash {
+  animation: roadmap-ltree-flash 1.6s ease;
+}
+@keyframes roadmap-ltree-flash {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  25%, 60% {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .roadmap-ltree-node {
+    transition: none;
+  }
+  .roadmap-ltree-node:hover,
+  .roadmap-ltree-node:focus-visible {
+    transform: none;
+  }
+  .roadmap-ltree-node.is-flash {
+    animation: none;
+  }
+}
+/* 窄屏：阶段栏收成顶部一排编号（阶段多时横向滚动），名字留给读屏；当前阶段名在树的标题上 */
 @media (max-width: 640px) {
-  .roadmap-ttree {
-    --tt-gap: 1.1rem;
+  .roadmap-ltree {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .roadmap-ltree-rail {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .roadmap-ltree-rail-track {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 6px;
+    width: max-content;
+    min-width: 100%;
+  }
+  .roadmap-ltree-rail-track::before {
+    top: 50%;
+    right: 14px;
+    bottom: auto;
+    left: 14px;
+    border-top: 2px solid var(--border);
+    border-left: 0;
+    transform: translateY(-1px);
+  }
+  .roadmap-ltree-tab {
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: 50%;
+  }
+  .roadmap-ltree-tab[aria-pressed="true"] {
+    background: transparent;
+  }
+  .roadmap-ltree-tab-name,
+  .roadmap-ltree-tab-count {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .roadmap-ltree-tree {
+    row-gap: 28px;
+  }
+  .roadmap-ltree-node {
+    padding: 6px 3px;
+  }
+  .roadmap-ltree-node-name {
+    font-size: 0.72rem;
   }
 }
 

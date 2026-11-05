@@ -46,6 +46,22 @@ summary: "Compositional CL WM Benchmark（arXiv:2609.22055）：把 world model 
 - **牛津大学**；开源结论：**待发布**（步骤 2.5，2026-09-21）。
 - 现有 CL benchmark 常把复用与快速学习新交互混在一起；该工作用组合任务末端隔离知识复用。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Meta-World 的资产与环境<br/>6 个 composition task suite（Table II）"] --> B["任务序列：若干 primitive 任务<br/>末尾为重组前述 primitives 的 composition 任务"]
+    B --> C["按输入轴分解 composition<br/>Action / Perception / Full composition"]
+    D["评测对象<br/>DreamerV3 与 TD-MPC2（monolithic）<br/>PWM（modular，每任务新增 K=3 个 dynamics experts）"] --> E["世界模型拆分<br/>task-agnostic backbone θ + task-specific heads φt"]
+    C --> F["Algorithm 1：逐任务持续学习与评测<br/>backbone 用 CL 方法更新；heads 每任务重新初始化并在训练后冻结"]
+    E --> F
+    G["CL 方法：FT / ER / EWC / PackNet"] --> F
+    H["Frozen-encoder diagnostic<br/>预训练并冻结 encoder，PWM 对比 TD-MPC2"] --> F
+    F --> I["指标：BWT（遗忘，越低越好）<br/>FWT（仅在最终 composition 任务上衡量复用，越高越好）"]
+```
+
+图依据：基准构建与评测协议图（论文 Fig. 1、Fig. 2、§III-B 至 §III-E、Algorithm 1、Table II、§IV 开头的指标定义）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -95,6 +111,7 @@ summary: "Compositional CL WM Benchmark（arXiv:2609.22055）：把 world model 
 - [wm_compositional_cl_benchmark_arxiv_2609_22055.md](../../sources/papers/wm_compositional_cl_benchmark_arxiv_2609_22055.md)
 - [wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md](../../sources/blogs/wechat_embodied_station_contact_rich_sim_10_papers_2026-09-21.md)
 - [arXiv:2609.22055](https://arxiv.org/abs/2609.22055)
+- [arXiv PDF](https://arxiv.org/pdf/2609.22055)：已通读摘要、§I–§III 全文及 §IV-A/§IV-B 开头（Table I–III、Fig. 1–3、Algorithm 1）；实验数字与附录以略读为准
 
 ## 推荐继续阅读
 

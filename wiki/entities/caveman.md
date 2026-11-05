@@ -104,6 +104,56 @@ flowchart LR
 - **局限：** 基准为作者提供的提示集；「65%」为 README 表均值，任务间方差大（22%–87%）。文言/洞穴风格可能影响 **非技术读者** 可读性；多 harness 行为以 `INSTALL.md` 矩阵为准。
 - **局限：** `/caveman-compress` 改写记忆文件需人工 diff 审阅，避免规约语义被过度删减。
 
+## 源码运行时序图
+
+入口：Claude Code 插件的 `SessionStart` 钩子执行 `node "$CLAUDE_PLUGIN_ROOT/src/hooks/caveman-activate.js"`（会话 JSON 经 stdin 传入）；会话中的 `/caveman` 等切换由 `UserPromptSubmit` 钩子 `src/hooks/caveman-mode-tracker.js` 处理（`plugin.json` 中注册）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant CC as Claude Code 宿主
+    participant AC as caveman-activate.js（SessionStart）
+    participant CF as caveman-config.js
+    participant SK as skill 规则文件 / 内置回退规则
+    participant FS as 每会话 flag 文件（CLAUDE_CONFIG_DIR）
+    participant MT as caveman-mode-tracker.js（UserPromptSubmit）
+    participant PA as caveman-parse.js
+
+    CC->>AC: 启动钩子，stdin 传入 payload（source、cwd、session_id）
+    AC->>AC: 解析 payload；钩子超时或无 payload 时按 startup 处理
+    AC->>CF: requireSibling 加载配置模块；缺失或版本不符则降级并提示修复安装
+    AC->>CF: getDefaultMode(cwd)：环境变量、仓库 .caveman.json（向上查找）、用户配置、默认 caveman
+    CF-->>AC: mode
+    AC->>AC: startMode：SDK 入口且未设环境变量时改为 manual
+    opt source 为会话开始等重置来源
+        AC->>FS: gcSessionStore 清理陈旧的每会话文件
+    end
+    alt mode 为 off 或 manual
+        AC->>FS: writeSessionMode(null)
+        AC-->>CC: 输出 OK，不注入规则
+    else 独立模式（commit、review、compress 等）
+        AC->>FS: recordModeChange 与 writeSessionMode(mode)
+        AC-->>CC: 输出一行 CAVEMAN MODE ACTIVE，指向对应 /caveman-<mode> 技能
+    else 洞穴语模式（caveman、ultracave、megacave）
+        AC->>FS: recordModeChange 与 writeSessionMode(mode)
+        AC->>SK: buildRuleset(mode)：loadRuleset 读取 skill 全文，缺失则用回退规则
+        SK-->>AC: 规则正文
+        AC->>FS: 检查 statusline 配置；首次未配置时写入 .caveman-nudge-shown 标记
+        AC-->>CC: stdout 输出横幅、规则正文与切换说明，作为隐藏 SessionStart 上下文
+    end
+    Note over CC,MT: 用户提交 prompt 时，UserPromptSubmit 钩子另行运行
+    CC->>MT: 启动钩子，stdin 传入 prompt 与 session_id
+    MT->>PA: parseModeChange(prompt)：识别 /caveman、/ultracave、stop caveman 等
+    PA-->>MT: 切换结果（无切换则不写入）
+    opt 识别到模式切换
+        MT->>FS: recordModeChange 与 writeSessionMode（off 时写入字面量 off）
+        MT->>SK: 按新模式取得规则集，供本轮注入
+        MT-->>CC: stdout 输出 hookSpecificOutput.additionalContext
+    end
+```
+
+图依据：JuliusBrussee/caveman@2e068f7，实际读过的文件：`.claude-plugin/plugin.json`（SessionStart、SubagentStart、UserPromptSubmit 钩子命令）、`src/hooks/caveman-activate.js`（主流程、`activate`、`run`、`buildRuleset` 与输出段）、`src/hooks/caveman-mode-tracker.js`（头部依赖、`handle` 切换分支、输出段）。`caveman-config.js`、`caveman-parse.js`、`skills/<mode>/SKILL.md` 仅依据钩子中的调用点画出，未逐行读取。未运行代码。
+
 ## 关联页面
 
 - [i-have-adhd](i-have-adhd.md) — **结论先行、编号步骤** 的输出结构（与 token 压缩正交）
@@ -120,6 +170,7 @@ flowchart LR
 - [Caveman 仓库源归档（本站）](../../sources/repos/caveman.md)
 - [JuliusBrussee/caveman（GitHub）](https://github.com/JuliusBrussee/caveman)
 - [INSTALL.md（上游）](https://github.com/JuliusBrussee/caveman/blob/main/INSTALL.md) — 全 harness 安装矩阵
+- 源码核对（2026-11-02）：JuliusBrussee/caveman@2e068f7，读过 .claude-plugin/plugin.json、src/hooks/caveman-activate.js、src/hooks/caveman-mode-tracker.js；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -31,7 +31,35 @@ SHIELD 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，本页只保留分类位置与原文入口；方法模块与数据流见下方「流程总览」（仅依据论文方法部分，不含实验结论）。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph OFF["离线：扰动学习（§III）"]
+        D1["采集 (状态 x, 指令 u, 扰动 d) 数据集 D"] --> D2["CVAE（隐变量维度 3）：p_θ(d_k | x_k:k-N, u_k:k-N)"]
+        D1 --> D3["由数据估计方差界 σ"]
+    end
+    subgraph ON["在线部署（Alg.1）"]
+        U["用户速度指令 u_cmd"] --> A["随机跟踪修正：u_adj = u_cmd − E[d]（式 18）"]
+        D2 -.->|"E[d], cov(d)"| A
+        OBS["感知到的障碍物位置 ρ_i"] --> H["光滑 SDF 控制障碍函数 h̃（最近障碍，凹近似）"]
+        H --> SF
+        A --> SF["安全滤波 QP：min ‖u − u_adj‖²<br/>s.t. h̃(F+Gu) − (λ_max/2)·eᵀΣe ≥ α·h"]
+        D2 -.->|"Σ = cov(d)"| SF
+        D3 -.-> AL["每 K 步重算 α = L(P, K, h, δ, σ)（Brent 求根）"]
+        P0["期望风险水平 P"] --> AL
+        AL --> SF
+        SF --> US["u_safe"]
+        US --> RM["简化模型：单积分器 + 加性扰动 d（参考指令）"]
+        RM --> CTRL["PPO + LSTM 运动策略 π（本体/外感知历史 + 速度指令）→ 关节位置"]
+        CTRL --> ROBOT["人形机器人（真机）"]
+        ROBOT -.->|"状态 x_k"| H
+    end
+```
+
+图依据：论文 §III 扰动学习、§IV 动态避障（式 17-24）、Algorithm 1、Fig.1
 
 ## 核心信息
 
@@ -64,6 +92,7 @@ SHIELD 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅�
 - [humanoid_pnb_shield-safety-on-humanoids-via-cbfs-in-expectati.md](../../sources/papers/humanoid_pnb_shield-safety-on-humanoids-via-cbfs-in-expectati.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2505.11494>
+- [arXiv PDF](https://arxiv.org/pdf/2505.11494)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III Disturbance Learning、§IV Dynamic Obstacle Avoidance on Stochastic Reduced-Order Models、Algorithm 1；§II 背景与 §V 实验略读
 
 ## 推荐继续阅读
 

@@ -43,6 +43,24 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+  AGENT["待评估 RL agent\n实现 policy 与 update 方法"] --> LOOP["bsuite run loop\n遍历 sweep.SWEEP 中的 bsuite id"]
+  subgraph exp["一个 bsuite 实验"]
+    ENV["环境\n一组固定参数的环境\nbsuite.load_and_record 自动记录日志"]
+    INTER["交互\n固定的交互规程，如 100 个 episode"]
+  end
+  LOOP --> ENV
+  ENV --> INTER
+  INTER --> LOG["记录的行为数据"]
+  LOG --> ANALYSIS["分析\nJupyter notebook：各实验得分映射到 [0,1]"]
+  ANALYSIS --> RADAR["雷达图\n汇总 7 项核心能力"]
+```
+
+图依据：论文 §2（实验 = 环境 + 交互 + 分析）、§3（使用方式）、§4（代码结构）、Fig.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +118,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://iclr.cc/virtual/2020/poster/1492>
+- [arXiv PDF](https://arxiv.org/pdf/1908.03568)：已通读方法部分（实验与附录以略读为准）：§2 实验定义、§3 使用方式、§4 代码结构
 
 ## 推荐继续阅读
 

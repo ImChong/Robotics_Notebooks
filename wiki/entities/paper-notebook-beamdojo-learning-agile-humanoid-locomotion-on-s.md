@@ -31,7 +31,40 @@ BeamDojo 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在深读笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论；论文方法部分的模块与数据流见下方「流程总览」。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SIM["仿真训练（双阶段 RL，PPO）"]
+        subgraph ST1["Stage 1：软地形动力学约束"]
+            F1["在平地 F 上行走<br/>提供本体感觉 + 运动奖励（稠密）"]
+            T1["同时输入任务地形 T（如 Stones Everywhere）的高程图<br/>提供 foothold 奖励（稀疏）"]
+            M1["踩错只惩罚、不终止"]
+        end
+        subgraph ST2["Stage 2：硬地形动力学约束"]
+            F2["在真实任务地形 T 上微调<br/>Stepping Stones / Balancing Beams"]
+            M2["踩错立即终止"]
+        end
+        ST1 -->|"继续训练"| ST2
+        DC["Double Critic<br/>V1：稠密运动奖励；V2：稀疏 foothold 奖励<br/>分别 GAE，归一化后加权合成优势"]
+        DC -.-> ST1
+        DC -.-> ST2
+        FR["Foothold 奖励<br/>足部采样点落在安全区（石头 / 横梁）的比例"] -.-> T1
+        CUR["地形课程<br/>连续 3 次穿越成功则升级难度"] -.-> ST2
+        DR["域随机化 + 高程图噪声<br/>垂直测量 / 地图旋转 / 落脚点扩展 / 地图重复"] -.-> ST1
+    end
+    SIM --> POL["Actor 策略<br/>输入：指令 + 本体感觉 + 15×15 高程图 + 上一动作<br/>输出：12 个下肢关节目标位置"]
+    subgraph DEP["真机部署（Unitree G1）"]
+        LID["Livox Mid-360 LiDAR + IMU"] --> FL["FAST-LIO 里程计"]
+        FL --> EM["robot-centric elevation mapping<br/>高程图 10 Hz"]
+    end
+    EM --> POL
+    POL --> PD["PD 控制器 500 Hz<br/>策略频率 50 Hz"]
+```
+
+图依据：论文 Fig.3 Overview、§IV-A Foothold Reward、§IV-B Double Critic、§IV-C Two-Stage RL、§IV-D Training in Simulation、§IV-E Real-world Deployment。
 
 ## 核心信息
 
@@ -64,6 +97,7 @@ BeamDojo 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 - [humanoid_pnb_beamdojo-learning-agile-humanoid-locomotion-on-s.md](../../sources/papers/humanoid_pnb_beamdojo-learning-agile-humanoid-locomotion-on-s.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2502.10363>
+- [arXiv PDF](https://arxiv.org/pdf/2502.10363)：已通读方法部分（实验与附录以略读为准）：§III 问题表述、§IV Methods（A–E）
 
 ## 推荐继续阅读
 

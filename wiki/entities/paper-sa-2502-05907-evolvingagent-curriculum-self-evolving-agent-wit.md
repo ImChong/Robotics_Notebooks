@@ -42,6 +42,25 @@ Agent autonomous evolution with continual world model for long-horizon tasks.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["长时程任务 T 与当前状态 S"] --> B["经验驱动任务规划器 Ψplan：GPT-4o + LoRA 微调，输出子任务 gi"]
+    B --> C["世界模型引导的动作控制器 Πact：RSSM 世界模型预测并选优动作序列"]
+    C --> D["环境执行动作 at"]
+    D --> E["自验证：视频-语言嵌入余弦相似度 ≥ σ 或步数 ≥ Tmax 则终止子任务"]
+    E --> F["多模态经验池 D_MEP 写入经验"]
+    F --> B
+    F --> G["CL 反射器 Φreflect：课程子任务选择"]
+    G --> H["课程经验选择：TD 误差 / 梯度范数 / 信息增益"]
+    H --> I["更新世界模型 Mw，带重要性权重与 Fisher 正则"]
+    I --> C
+    F -->|"子任务失败时按标签抽取经验"| B
+```
+
+图依据：论文 §IV 概述与 Fig. 2 / Algorithm 1（规划器-控制器-反射器闭环）、§IV-A 经验驱动任务规划器、§IV-B WM 引导动作控制器、§IV-C CL 反射器（两阶段课程选择与自反思）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Agent autonomous evolution with continual world model for long-horizon tasks.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.05907>
+- [arXiv PDF](https://arxiv.org/pdf/2502.05907)：已通读方法部分（实验与附录以略读为准）：§III 预备知识、§IV EvolvingAgent（A 至 C）
 
 ## 推荐继续阅读
 

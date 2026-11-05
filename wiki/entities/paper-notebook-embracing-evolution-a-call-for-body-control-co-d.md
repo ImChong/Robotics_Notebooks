@@ -31,7 +31,20 @@ Embracing Evolution 的人形机器人学习论文条目，当前处于 Paper No
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；论证结构见上文流程总览（依据论文 §3–§6），不含对方法效果的结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+  A["§3.1 立场：身体-控制协同设计（body-control co-design）<br/>是通往 physical Recursive Self-Improvement（RSI）的机制"] --> B["Fig.1 双层优化<br/>内层：RL 训练控制策略 π<br/>外层：更新机器人结构 ψ，受约束 f_c(ψ) ≤ ε<br/>经验 D_k 指导下一轮 body-policy 搜索"]
+  B --> C["§3.2 另一种观点：固定、预定义的人形结构已足够<br/>三个难点：协同设计问题复杂 / 物理评测困难 / 跨任务可扩展性有限"]
+  C --> D["§4 可行性：三类策略<br/>4.1 Strategic Exploration under Constraints<br/>4.2 A Sim2Real Paradigm for Evaluation<br/>4.3 Controlling Humanoid Robot via Meta Policy"]
+  D --> E["§5 必要性：三个视角<br/>5.1 Principled Optimization of Robot Morphology（方法）<br/>5.2 Adaptive Body Shaping for Real-World Tasks（应用）<br/>5.3 Fostering Cross-Disciplinary Collaboration（社区）"]
+  E --> F["§6 Toward Physical RSI：开放问题<br/>短期 4 项 / 长期 5 项"]
+```
+
+图依据：立场论文论证结构图，论文 §3.1 与 Fig.1、§3.2、§4、§5、§6（论文自述的章节论证顺序，非实验流程）。
 
 ## 核心信息
 
@@ -64,7 +77,9 @@ Embracing Evolution 的人形机器人学习论文条目，当前处于 Paper No
 - [humanoid_pnb_embracing-evolution-a-call-for-body-control-co-d.md](../../sources/papers/humanoid_pnb_embracing-evolution-a-call-for-body-control-co-d.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2510.03081>
+- [arXiv PDF](https://arxiv.org/pdf/2510.03081)：已通读 §1–§3 与 Fig.1、§4.1 开头、§4–§7 的小节标题与 §6 开放问题条目；§4.2–§5 正文细节略读
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Embracing Evolution](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Embodied_Humanoid_Robot/Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Embodied_Humanoid_Robot.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

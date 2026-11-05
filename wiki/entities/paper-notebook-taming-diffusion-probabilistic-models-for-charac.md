@@ -38,6 +38,32 @@ summary: "本文提出一个新颖的角色控制框架，有效利用动作扩�
 - **启发式轨迹外延**降算力，是把扩散压进实时的实用技巧；
 - 角色控制的实时扩散经验可迁移到人形 loco 控制（与 Heracles/SafeFlow 的生成式控制呼应）。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    subgraph IN["条件输入"]
+        PM["过去动作 p<br/>P = 10 帧"]
+        SL["风格标签 c_l"]
+        TJ["未来根位移 c_rv 与朝向 c_ro<br/>由用户控制 + spring damper 合成"]
+        XT["带噪动作 x_t 与扩散步 t"]
+    end
+    PM --> TOK["Separate Condition Tokenization<br/>每个条件单独 tokenizer"]
+    SL --> TOK
+    TJ --> TOK
+    TOK --> TF["Transformer encoder 去噪<br/>预测干净动作 x̂0，仅 8 个扩散步"]
+    XT --> TF
+    TF --> FUT["未来 F = 45 帧动作"]
+    FUT --> APPLY["应用前 M 帧到角色"]
+    FUT --> HFTE["Heuristic Future Trajectory Extension<br/>回收预测轨迹末 K 点补齐长度<br/>再与用户合成轨迹混合"]
+    HFTE --> TJ
+    APPLY -.->|自回归：更新历史| PM
+    SL -.->|风格切换时| CFG["Classifier-free Guidance on Past Motion<br/>guidance scale γ = 0.7"]
+    CFG -.-> TF
+```
+
+图依据：论文 §3.1–§3.3 / Fig.2–3（训练损失另含 Lsamp / Lpos / Lfoot / Lvel）。
+
 ## 解决什么问题
 
 扩散模型质量高但**难实时交互控制**： - 采样慢、难响应**动态用户控制**； - 要**单一模型多风格**、保**多样性**。
@@ -88,6 +114,7 @@ summary: "本文提出一个新颖的角色控制框架，有效利用动作扩�
 - [humanoid_pnb_taming-diffusion-probabilistic-models-for-charac.md](../../sources/papers/humanoid_pnb_taming-diffusion-probabilistic-models-for-charac.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Taming_Diffusion_Probabilistic_Models_for_Character_Control/Taming_Diffusion_Probabilistic_Models_for_Character_Control.html>
 - 论文：<https://arxiv.org/abs/2404.15121>
+- [arXiv PDF](https://arxiv.org/pdf/2404.15121)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1 CAMDM、3.2 条件自回归动作扩散、3.3 实现细节）；实验章节略读
 
 ## 推荐继续阅读
 

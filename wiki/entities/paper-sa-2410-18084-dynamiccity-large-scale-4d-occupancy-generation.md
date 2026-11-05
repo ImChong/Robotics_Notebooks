@@ -43,6 +43,32 @@ Large-scale 4D occupancy generation from dynamic scenes.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph VAE["(a) VAE：编码与解码 HexPlane (§4.1)"]
+        Q["4D 占据序列 Q (T×X×Y×Z×C)"] --> F["共享 3D 卷积特征提取 f_θ<br/>得到特征体序列 X_txyz"]
+        F --> PM["Projection Module (transformer 投影网络 h)<br/>先得 XYZ 特征体，再沿各轴压缩"]
+        PM --> HP["HexPlane H<br/>空间三平面 Pxy, Pxz, Pyz<br/>+ 时空三平面 Ptx, Pty, Ptz"]
+        HP --> ESS["Expansion & Squeeze Strategy<br/>平面扩展 + Hadamard 积"]
+        ESS --> G["卷积上采样 g_φ<br/>(拼接 4D 位置编码)"]
+        G --> QR["重建语义占据 Q'"]
+        QR -.->|"L_CE + L_Lovász + L_KL"| Q
+    end
+    subgraph DIT["(b) HexPlane DiT 生成 (§4.2)"]
+        PRO["Padded Rollout<br/>六平面拼成方形特征图 (角落补零)"] --> PT["Patchify + 频率位置编码<br/>(补零 token 不参与扩散)"]
+        PT --> DT["DiT 去噪生成新 HexPlane<br/>adaLN-Zero 注入条件 + 图像条件 cross-attention"]
+    end
+    COND["可选条件：HexPlane / Layout / Command / Trajectory"] --> DT
+    HP -->|"训练后的 VAE 潜变量"| PRO
+    DT --> NH["生成的 HexPlane"]
+    NH -->|"VAE 解码器"| ESS
+    DT -.->|"采样时遮罩 HexPlane 区域 → Inpaint"| DT
+```
+
+图依据：论文 §4.1 VAE for 4D Occupancy（Fig. 3）、§4.2 Diffusion Transformer for HexPlane（Fig. 4 Padded Rollout、Fig. 5 条件注入）、§4.3 下游应用（Fig. 2 总流程）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ Large-scale 4D occupancy generation from dynamic scenes.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.18084>
+- [arXiv PDF](https://arxiv.org/pdf/2410.18084)：已通读方法部分（实验与附录以略读为准）：§3 预备知识（HexPlane/DiT）、§4.1～4.3。
 
 ## 推荐继续阅读
 

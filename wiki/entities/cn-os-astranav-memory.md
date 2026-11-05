@@ -61,11 +61,54 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`cd inference_code/hm3d-online && python goat-nav.py`（OVON 评测为同目录 `ovon-nav.py`；训练入口为 `train_code/run_train.sh` → `swift/cli/sft.py`）。以下为 `goat-nav.py` 的闭环推理主循环。
+
+```mermaid
+sequenceDiagram
+    participant Main as goat-nav.py（主脚本）
+    participant Sim as sim_utils.py / get_sim_agent（habitat_sim）
+    participant Fr as frontier_utils.py（前沿检测）
+    participant Bank as qwen_utils_goat.Bank（记忆库）
+    participant GR as qwen_utils_goat.getresult
+    participant VLM as Qwen2_5_VLForConditionalGeneration（含 DINOv3 压缩）
+    participant Nav as habitat_sim.GreedyGeodesicFollower
+
+    Main->>VLM: from_pretrained(checkpoint-20000) + AutoProcessor
+    loop 每个 episode / 子任务
+        Main->>Sim: get_sim_agent(sim_config, agent_config, scene_path, episode)
+        Main->>Fr: get_topdown_map_from_sim，初始化 fog_of_war_mask
+        loop total_steps < 2000
+            Main->>Sim: sim.step('turn_left') x12（原地旋转一圈）
+            Main->>Fr: reveal_fog_of_war + detect_frontier_waypoints
+            Main->>Bank: add(spin 图像抽样, agent_state, 'spin')
+            Main->>GR: getresult(bank, frontier_waypoints, 目标句子, use_compression=True, compression_times=2, dino_size='vitb16', image_length=50)
+            GR->>Bank: get_spin_data()，transform_poses 转为局部坐标
+            GR->>VLM: processor(text, images, use_compression...) 后 qwen.generate(max_new_tokens=512)
+            VLM-->>GR: 文本输出
+            GR->>GR: parse_response → 局部坐标与 is_final_decision
+            GR-->>Main: target_position（最近前沿或终点），is_final_decision
+            Main->>Nav: snap_point + find_path(target) 得到动作序列
+            alt 路径规划异常
+                Main->>Nav: 随机尝试其它前沿点
+            end
+            Main->>Sim: 逐个 sim.step(action)，收集 goto 图像
+            Main->>Bank: add(goto 图像, 'goto')（下一轮循环开头）
+        end
+        Main->>Sim: MultiGoalShortestPath 计算 SR / SPL，写入 result_dict
+    end
+    Main->>Main: json.dump 结果并打印平均 SR/SPL
+```
+
+图依据：amap-cvlab/AstraNav-Memory@d32b59f，读过 README.md、inference_code/hm3d-online/goat-nav.py、qwen_utils_goat.py（getresult、Bank）、sim_utils.py、utils.py（get_sim_agent）、train_code/run_train.sh、train_code/transformers-4.57.1/.../modeling_qwen2_5_vl.py（压缩/DINO 相关片段）。
+
 ## 参考来源
 
 - [AstraNav-Memory 源码归档](../../sources/repos/astranav-memory.md)（<https://github.com/amap-cvlab/AstraNav-Memory>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：amap-cvlab/AstraNav-Memory@d32b59f，读过 README.md、inference_code/hm3d-online/{goat-nav.py,qwen_utils_goat.py,sim_utils.py,utils.py}、train_code/run_train.sh、train_code/transformers-4.57.1/src/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py（压缩相关片段）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

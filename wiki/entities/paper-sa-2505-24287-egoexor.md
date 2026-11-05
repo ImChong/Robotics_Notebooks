@@ -41,6 +41,36 @@ sources:
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+本文以数据集为主；下图是论文 §5 提出的场景图生成基线模型 EgoExOR model（Fig.2），不含数据采集流程。
+
+```mermaid
+flowchart LR
+    subgraph EGO["第一视角分支 Egocentric Branch"]
+        E1["第一视角 RGB 视频<br/>Image Encoder (CLIP ViT) + Image Pooler"]
+        E2["手部追踪 Hand Encoder (MLP) + Projection"]
+        E3["眼动/深度 Gaze Encoder (MLP) + Projection"]
+    end
+    subgraph EXO["第三视角分支 Exocentric Branch"]
+        X1["外部 RGB-D 视频 + 超声屏幕<br/>Image Encoder + Image Pooler"]
+        X2["音频 Audio Encoder (CLAP) + Projection"]
+        X3["点云 PC Encoder (Point Transformer V3) + Projection"]
+    end
+    E1 --> EP["Branch Pooler<br/>2 层 Transformer 融合为 N 个特征嵌入"]
+    E2 --> EP
+    E3 --> EP
+    X1 --> XP["Branch Pooler<br/>2 层 Transformer 融合为 N 个特征嵌入"]
+    X2 --> XP
+    X3 --> XP
+    EP --> C["Concatenation & Projection"]
+    XP --> C
+    C --> L["大语言模型 LLaVA-7B / Vicuna-7B<br/>LoRA 微调, 自回归生成"]
+    L --> O["场景图三元组<br/>(subject, predicate, object)"]
+```
+
+图依据：论文 §5 Scene Graph Generation Benchmark（EgoExOR Model、Implementation Details）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +125,7 @@ sources:
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2505.24287>
+- [arXiv PDF](https://arxiv.org/pdf/2505.24287)：已通读方法部分（实验与附录以略读为准）：§3–4 数据集采集与描述（略读）、§5 场景图生成基准（EgoExOR Model、实现细节）
 
 ## 推荐继续阅读
 

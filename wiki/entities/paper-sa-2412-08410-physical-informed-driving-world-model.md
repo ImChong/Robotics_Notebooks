@@ -42,6 +42,38 @@ Physical informed driving world model.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph SC["场景条件"]
+        TXT["文本 -> T5"]
+        CAM["相机位姿 P = K, R, T -> Fourier + MLP -> hc"]
+    end
+    subgraph VC["车辆坐标系条件"]
+        MAP["道路图投影 / 3D 框投影 -> VAE -> h_mapproj, h_boxproj"]
+        BOX["3D 框类别 + 8 角点坐标 -> Fourier + MLP (BCG 模块) -> h_coor"]
+        MAP --> FUSE1["h_vehicle = h_mapproj + CrossAttn(h_boxproj, h_coor)"]
+        BOX --> FUSE1
+    end
+    subgraph WC["世界坐标系条件"]
+        IFG["实例世界坐标逐帧位移 -> 3D 框投影区域填入归一化偏移 -> RGB 图"]
+        IFG --> VAE2["VAE 编码 -> h_world (IFG 模块)"]
+    end
+    FUSE1 --> CSA
+    CAM --> CSA["CSA 模块: h_condition = CrossAttn(cat(h_vehicle, hc), h_world)"]
+    VAE2 --> CSA
+    CSA --> CN["ControlNet 统一控制信号"]
+    CN --> DIT["ST-DiT 去噪 (基于 OpenSora V1.1, 多视角按宽度拼接 + 视角膨胀注意力)"]
+    TXT --> DIT
+    DIT --> OUT["VAE 解码 -> 多视角驾驶视频"]
+    CARLA["CARLA 仿真生成切入 / 急刹等事件, 投影为控制条件"] -.-> MAP
+    CARLA -.-> BOX
+    CARLA -.-> IFG
+```
+
+图依据：论文 §2.2、§2.3 / Fig.2-3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +129,7 @@ Physical informed driving world model.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.08410>
+- [arXiv PDF](https://arxiv.org/pdf/2412.08410)：已通读方法部分（实验与附录以略读为准）：§1 引言要点、§2 方法（2.1-2.3）
 
 ## 推荐继续阅读
 

@@ -41,6 +41,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["WOMD 真实驾驶日志场景<br/>roadgraph + 1 秒历史"] --> B["reset(scenario)<br/>初始化 state"]
+    B --> C["仿真状态 state<br/>动态: 位置/速度/红绿灯<br/>静态: roadgraph/on-route 路径"]
+    C --> D["observation 函数<br/>转到各 agent 自身坐标系"]
+    D --> E["AV 策略<br/>IL / RL 用户自定义"]
+    D --> F["其他 agent 模型<br/>IDM 反应式 / 日志回放"]
+    E --> G["actions + validity mask"]
+    F --> G
+    G --> H["Dynamics 模型<br/>delta 或 bicycle 动作空间"]
+    H --> I["step(state, action)<br/>下一状态"]
+    I --> J["闭环 metrics<br/>碰撞/越界/运动学可行/ADE/路线进度"]
+    I -->|"循环至 episode 结束"| C
+```
+
+图依据：论文 §3.1-3.5、§4.1（reset/step 接口）/ Fig.3（PlanningAgentEnvironment 回路）；整个 step 在 JAX 内编译（§4.2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +114,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2310.08710>
+- [arXiv PDF](https://arxiv.org/pdf/2310.08710)：已通读方法部分（实验与附录以略读为准）：§1-§5.1（引言、Simulator Features、Software API、运行时基准）；§5.3 基线实验仅略读
 
 ## 推荐继续阅读
 

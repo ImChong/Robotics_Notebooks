@@ -42,6 +42,40 @@ Latent policy steering with embodiment-agnostic pretrained world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph PRE["阶段一：跨 embodiment 预训练（数据集 C）"]
+        direction TB
+        CD["多 embodiment 数据 C<br/>（仿真机器人 / 公开机器人 / 人类 play 视频）"] --> OF["计算 optical flow"]
+        OF --> FE["optical flow 编码器（卷积）<br/>输出 ‖A‖ 维向量，作为 embodiment 无关动作"]
+        FE --> WM0["World Model 预训练<br/>（Dreamer v3 目标与架构，不用本体感觉）"]
+    end
+    subgraph FT["阶段二：目标 embodiment 微调（少量专家数据 E）"]
+        direction TB
+        ED["目标 embodiment 专家演示 E"] --> BP["训练 base policy π（行为克隆）"]
+        WM0 --> SW["把 optical flow 编码器替换为<br/>归一化机器人动作（同为 ‖A‖ 维）"]
+        ED --> SW
+        SW --> WM1["在 E 上用同一 Dreamer v3 目标微调 WM"]
+        WM1 --> VF["鲁棒价值函数 V（梯度不回传 WM）<br/>训练样本：专家状态 + π 规划动作产生的状态<br/>相似度惩罚回到专家数据（Alg.1）"]
+        BP --> VF
+    end
+    subgraph INF["阶段三：推理 Latent Policy Steering"]
+        direction TB
+        OBS["当前观察编码为潜在状态"] --> CAND["π 采样 B 条长度 h 的候选动作计划"]
+        CAND --> ROLL["WM 在潜在空间预测各计划的未来状态"]
+        ROLL --> SCORE["V 估值 → 折扣加权平均得计划价值"]
+        SCORE --> BEST["执行价值最高的计划 h 步后重规划"]
+    end
+    PRE --> FT
+    BP --> CAND
+    WM1 --> ROLL
+    VF --> SCORE
+```
+
+图依据：论文 §IV-A–§IV-C / Fig.1、Algorithm 1（论文 v4 标题为 Latent Policy Steering with Embodiment-Agnostic Pretrained World Models）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +130,7 @@ Latent policy steering with embodiment-agnostic pretrained world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.13340>
+- [arXiv PDF](https://arxiv.org/pdf/2507.13340)：已通读方法部分（实验与附录以略读为准）：§III 预备知识、§IV 方法（§IV-A Flow-as-Action、§IV-B 目标 embodiment 微调与 Algorithm 1、§IV-C Latent Policy Steering），§V 实验设定略读
 
 ## 推荐继续阅读
 

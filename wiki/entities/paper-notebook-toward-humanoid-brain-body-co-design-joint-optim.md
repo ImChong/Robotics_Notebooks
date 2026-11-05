@@ -31,7 +31,24 @@ Toward Humanoid Brain-Body Co-design 的人形机器人学习论文条目，当�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["公开人形机器人模型（URDF → MJCF）：N_d 个初始设计 + 随机初始倒地姿态"] --> B["收集多设计轨迹，预训练共享控制策略 pi_0（inter-design 迁移，CrossQ）"]
+    B --> C["设计更新（Backward）：ES / CMA-ES / BO / RL 在设计空间搜索新形态（网格缩放、质量、关节刚度/阻尼）"]
+    C --> D["用当前策略 rollout 评估每个形态"]
+    D --> E["Priority Buffer：保留 Top-k 形态（i≥1 时先用最新策略重评估缓冲区中旧形态，再与新采样合并取 Top-k）"]
+    E --> F["从缓冲区形态采样任务轨迹"]
+    F --> G["控制策略更新（Forward）：微调 pi_i → pi_i+1（intra-design 迁移）"]
+    G -->|"重复 N_i 次迭代"| C
+    G --> H["输出：专用控制策略 + 每个设计的 Top-k 演化形态"]
+    D -.->|"评估反馈"| C
+```
+
+图依据：论文 §IV Method（IV-A 控制策略更新、IV-B 设计更新、IV-C RoboCraft）/ Fig.2、Algorithm 1
 
 ## 核心信息
 
@@ -64,7 +81,9 @@ Toward Humanoid Brain-Body Co-design 的人形机器人学习论文条目，当�
 - [humanoid_pnb_toward-humanoid-brain-body-co-design-joint-optim.md](../../sources/papers/humanoid_pnb_toward-humanoid-brain-body-co-design-joint-optim.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2510.22336>
+- [arXiv PDF](https://arxiv.org/pdf/2510.22336)：已通读方法部分（实验与附录以略读为准）：§III 问题表述末段、§IV Method（A–C）与 Algorithm 1、§V-A 实验设置
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Toward Humanoid Brain-Body Co-design](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/RoboCraft_Humanoid_Brain-Body_Co-design_for_Fall_Recovery/RoboCraft_Humanoid_Brain-Body_Co-design_for_Fall_Recovery.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

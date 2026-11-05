@@ -67,6 +67,40 @@ summary: "huashu-art-motion 是面向编码代理的开源动画 Skill 与可复
 - **许可按素材区分：** MIT 声明存在例外；作者角色形象、帧素材、字体和 Clawd 示例不能仅凭仓库根目录许可推断为 MIT 可再利用。
 - **依赖与工作流成本：** 视频渲染需要配置外部工具。仅需交互式机器人仿真或三维数字资产时，应选对应的仿真或 DCC 工具。
 
+## 源码运行时序图
+
+入口：`uv run --with playwright python scripts/engine/render.py --spec 片段.json --out 片段.mp4`（参数化片段；整片模式为不带 `--spec` 的 `render.py --out 成片.mp4`，改走 `index.html` + `eras.js` 段落表；出片后按 SKILL.md 另跑 `scripts/qa.py`、`scripts/deliver.py`）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / 编码代理
+    participant R as scripts/engine/render.py
+    participant H as 本地 HTTP 服务（Q + LocalServer）
+    participant P as Playwright Chromium
+    participant C as clip.html + clip.js
+    participant G as clips/（grammar）.js
+    participant F as ffmpeg
+    U->>R: render.py --spec 片段.json --out 片段.mp4
+    R->>R: 读 spec，spec_assets.localize 改写本地素材路径
+    R->>H: 监听 127.0.0.1 随机端口，目录为 scripts/engine
+    R->>P: chromium.launch，注入 window.CLIP_SPEC
+    P->>C: goto clip.html?render=1
+    C->>H: 同步 XHR 取 clips/（spec.grammar）.js 并 eval
+    H-->>C: 语法文件，注册 CLIPS[grammar]
+    C-->>P: 定义 window.renderFrame / prepare，置 window.__ready
+    R->>P: 等待 __ready（或 __bootFailed 则退出）
+    R->>F: Popen ffmpeg，image2pipe 读 PNG 帧
+    loop 每帧 i / fps，直到 spec.duration
+        R->>P: evaluate grab：await prepare(t)，renderFrame(t)
+        P->>G: G.draw(ctx, t, ...) 画到 canvas
+        P-->>R: canvas.toDataURL 的 PNG
+        R->>F: 写入 stdin
+    end
+    R->>F: 关闭 stdin，等待编码完成，输出 片段.mp4
+```
+
+图依据：alchaincyf/huashu-art-motion@8a0d7d7，读过 README.md、SKILL.md、scripts/engine/render.py、scripts/engine/clip.html、scripts/engine/clip.js（头部与出口段）、scripts/engine/index.html、scripts/engine/engine.js（grep 部分）、scripts/deliver.py（头部）。
+
 ## 关联页面
 
 - [Manim（程序化数学动画引擎）](./manim.md) — 用代码编排数学与技术讲解动画
@@ -79,6 +113,7 @@ summary: "huashu-art-motion 是面向编码代理的开源动画 Skill 与可复
 - [上游 README](https://github.com/alchaincyf/huashu-art-motion#readme)
 - [上游 SKILL.md](https://github.com/alchaincyf/huashu-art-motion/blob/main/SKILL.md)
 - [上游许可证](https://github.com/alchaincyf/huashu-art-motion/blob/main/LICENSE)
+- 源码核对（2026-11-02）：alchaincyf/huashu-art-motion@8a0d7d7，读过 README.md、SKILL.md、scripts/engine/render.py、clip.html、clip.js（部分）、index.html、engine.js（部分）、scripts/deliver.py（头部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

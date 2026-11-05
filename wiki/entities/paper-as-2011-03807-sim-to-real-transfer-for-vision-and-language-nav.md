@@ -41,6 +41,28 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Space Scale。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph TRAIN["仿真中训练"]
+    A1["VLN 智能体（R2R-EnvDrop）：Matterport3D 全景 RGB，训练时加随机颜色抖动"]
+    A2["子目标模型：4 阶段 U-Net，输入激光径向占据图并在第 3 个下采样阶段融合 ResNet-152 视觉特征"]
+  end
+  subgraph ROBOT["TurtleBot2 上运行"]
+    S1["Theta V 360° 相机 + 270° 激光"] --> A2
+    S1 --> A1
+    A2 --> WP["预测近处路点（子目标，最多 5 个）"]
+    WP --> A1
+    A1 --> SEL["VLN 智能体选择一个路点"]
+    SEL --> NAV["ROS move_base：用深度相机和激光维护代价地图，规划并执行到路点的运动"]
+    NAV --> S1
+  end
+  LOC["gmapping 建图 + amcl 定位（用于评测位姿）"] -.-> NAV
+```
+
+图依据：论文 §4（Visual Domain Adaptation、Action Space Adaptation、Obstacle Avoidance and Path Planning）与 Fig.2 / Fig.3；§3 机器人平台。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +117,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Action / Action Space Scale。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2011.03807>
+- [arXiv PDF](https://arxiv.org/pdf/2011.03807)：已通读方法部分（实验与附录以略读为准）：§1–§2、§3 实验设置、§4 将 VLN 智能体适配到实体机器人；§5 结果略读。
 
 ## 推荐继续阅读
 

@@ -203,6 +203,52 @@ flowchart BT
 - **学界背书措辞：** 官网写 "supported and affected by" Pearl、Schölkopf 等，没有写正式顾问；中文通稿的「顾问网络」说法更强，引用时以官网措辞为准。
 - **同名混淆：** 与 arXiv 2503.18945 的 Aether 几何世界模型无关。
 
+## 源码运行时序图
+
+入口：`python main.py --data-file <CSV 或 JSON> --initial_query "..."`（根目录 `main.py` 的 `main(args)`；默认数据为 `data/dataset/Abalone/Abalone.csv`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户 命令行
+    participant M as main.py main
+    participant P as preprocess 数据画像与知识
+    participant E as preprocess.eda_generation EDA
+    participant F as causal_discovery.filter Filter
+    participant R as causal_discovery.rerank Reranker
+    participant H as hyperparameter_selector HyperparameterSelector
+    participant G as causal_discovery.program Programming
+    participant W as causal_discovery.wrappers 算法类
+    participant V as postprocess.visualization Visualization
+    participant J as postprocess.judge Judge
+    participant Rp as report.report_generation Report_generation
+    participant L as llm.LLMClient
+
+    U->>M: python main.py 解析 parse_args
+    M->>M: load_real_world_data 读取 CSV 或 JSON
+    M->>P: stat_info_collection 与 knowledge_info 生成统计与领域知识
+    M->>E: generate_eda 输出探索性图表
+    M->>F: Filter.forward 依据数据画像筛选候选算法
+    F->>L: chat_completion 返回 TOP_K 候选及理由
+    M->>R: Reranker.forward 结合基准结果重排候选
+    R->>L: chat_completion
+    M->>H: HyperparameterSelector.forward 选择超参数
+    H->>L: chat_completion
+    M->>G: Programming.forward getattr 取出 selected_algorithm
+    G->>W: 实例化算法类并调用 fit 数据
+    W-->>G: 图与 info
+    G-->>M: global_state.results 中的图
+    M->>V: plot_pdag 绘制初始因果图
+    M->>J: Judge.forward cot_all_relation 图修正与边评估
+    J->>L: llm_evaluation_new 等 LLM 评估边
+    M->>V: plot_pdag 绘制修订后的因果图
+    M->>Rp: graph_effect_prompts 生成边的文字解释
+    Rp->>L: chat_completion 生成各章节文本
+    Rp->>Rp: save_report 后 compile_tex_to_pdf_with_refs 编译 report.pdf
+```
+
+图依据：Lancelot39/Causal-Copilot@a31aa7c（默认分支 HEAD），实际读过 `main.py`、`causal_discovery/filter.py`、`causal_discovery/rerank.py`（局部）、`causal_discovery/hyperparameter_selector.py`（局部）、`causal_discovery/program.py`（局部）、`causal_discovery/wrappers/base.py`（局部）、`postprocess/judge.py`（局部）、`report/report_generation.py`（局部）。`main.py` 中多轮修订循环在源码里被注释掉，图中未画。web_demo 等交互入口未读，未画。未运行代码。
+
 ## 关联页面
 
 - [CRIS-0：因果驱动的真实世界机器人系统](./aether-cris-0.md)
@@ -235,6 +281,7 @@ flowchart BT
 - 机器之心深度稿（36 氪）：<https://www.36kr.com/p/3866596553561095>
 - 成立时间：San Diego Business Journal，*Aether Taking AI to Its Next Logical Step*（2026-07-06）<https://sdbj.com/technology/aether-taking-ai-to-its-next-logical-step/>
 - Causal-Copilot 论文：<https://arxiv.org/abs/2504.13263>
+- 源码核对（2026-11-02）：Lancelot39/Causal-Copilot@a31aa7c（默认分支 HEAD），读过 main.py、causal_discovery/filter.py、causal_discovery/rerank.py（局部）、causal_discovery/hyperparameter_selector.py（局部）、causal_discovery/program.py（局部）、causal_discovery/wrappers/base.py（局部）、postprocess/judge.py（局部）、report/report_generation.py（局部）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

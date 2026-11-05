@@ -6,7 +6,7 @@ tags:
   - policy-learning
   - vla
 status: complete
-updated: 2026-10-30
+updated: 2026-11-04
 arxiv: "2610.39280"
 project: https://controller-transfer.github.io/
 code: https://github.com/JonathanYang0127/icl_cross_controller

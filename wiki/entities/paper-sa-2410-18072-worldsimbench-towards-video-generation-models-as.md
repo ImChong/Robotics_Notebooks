@@ -42,6 +42,30 @@ A benchmark for evaluating video generation models as world simulators.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph EPE["Explicit Perceptual Evaluation (§4.1)"]
+        E1["分层评测维度 + 互联网视频字幕<br/>(OE / AD / RM 三类场景)"] --> E2["ChatGPT 扩展 meta-prompt<br/>人工筛选 → Task Instruction Prompt List"]
+        E2 --> E3["各场景训练视频生成模型<br/>生成指令跟随的具身视频"]
+        E3 --> E4["细粒度人类反馈标注<br/>分维度打分 + 原因"]
+        E4 --> E5["HF-Embodied 数据集<br/>35,701 条 (视频, 指令, 多维分数, 原因)"]
+        E5 --> E6["Human Preference Evaluator<br/>LoRA 微调 VideoLLM (Flash-VStream)"]
+        E7["待评 World Simulator 按指令生成视频"] --> E6
+        E6 --> E8["各维度 1~n 分，取平均"]
+    end
+    subgraph IME["Implicit Manipulative Evaluation (§4.2)"]
+        I1["具身任务分解为可执行子任务"] --> I2["World Simulator 依据指令 + 实时观测<br/>生成预测视频"]
+        I2 --> I3["视频到动作模型<br/>(预训练 IDM 或 goal-based policy)"]
+        I3 --> I4["在仿真中执行动作<br/>(Minecraft / CARLA / CALVIN)"]
+        I4 -->|"固定时间步后重新采样预测视频"| I2
+        I4 --> I5["仿真监视器统计任务成功率 / 指标"]
+    end
+```
+
+图依据：论文 §4.1 Explicit Perceptual Evaluation（Fig. 2、§4.1.2～4.1.5）、§4.2 Implicit Manipulative Evaluation（Fig. 3）；本文为基准论文，图画的是其评测流程而非被测模型结构。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +120,7 @@ A benchmark for evaluating video generation models as world simulators.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.18072>
+- [arXiv PDF](https://arxiv.org/pdf/2410.18072)：已通读方法部分（实验与附录以略读为准）：§3～4（WorldSimBench 构建、§4.1 显式感知评测、§4.2 隐式操作评测）与 §5.1 实验设置。
 
 ## 推荐继续阅读
 

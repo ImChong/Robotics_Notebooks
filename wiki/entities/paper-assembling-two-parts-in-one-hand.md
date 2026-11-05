@@ -41,6 +41,22 @@ summary: "灵巧手在无第二只手/夹具下完成 Bottle/Syringe/Marker 装�
 - 开源状态：**待发布**（步骤 2.5 核查，2026-09-10）。
 - 与 [11 篇技术地图](../overview/vlm-manipulation-11-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A[人类示范单帧快照] --> B[几何重定向为机器人手状态<br/>食指关节角减小 30% 以加宽与拇指的开口]
+    B --> C[状态估计提取两物体位姿<br/>与手状态合成 初始穿插]
+    C --> D[Settling 阶段<br/>手作固定碰撞体 对物体施加小随机力/力矩<br/>得到随机化初始状态 前几步去除重力]
+    D --> E[循环策略 RNN 强化学习 POMDP<br/>观测 34 维 持物/固定物质心 + z 轴方向 + 22 个关节角<br/>不含关节速度与接触力]
+    E --> F[动作 22 维关节位置目标增量<br/>stiff 隐式 PD 控制 15 Hz]
+    F --> G[手指分工<br/>held 集 拇指+食指 捏持并对齐 held 物体<br/>fixed 集 中指+无名指+小指 笼住 fixed 物体]
+    H[奖励<br/>目标到达 R_goal 两个尺度指数项<br/>辅助 R_aux = ρ_pinch × ρ_grasp × ρ_pose] --> E
+    I[真机部署<br/>RGB-D + FoundationPose 估计两物体 6-DoF 位姿<br/>深度一致性门控 再化简为 p 与 z 轴形式] --> E
+```
+
+图依据：论文 §3.1–§3.5（含 Eq. 1–4 与真机位姿跟踪段）。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -98,6 +114,7 @@ summary: "灵巧手在无第二只手/夹具下完成 Bottle/Syringe/Marker 装�
 - [assembling-two-parts-in-one-hand_arxiv_2609_10137.md](../../sources/papers/assembling-two-parts-in-one-hand_arxiv_2609_10137.md)
 - [wechat 11篇盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md)
 - [arXiv:2609.10137](https://arxiv.org/abs/2609.10137)
+- [arXiv PDF](https://arxiv.org/pdf/2609.10137)：已通读方法部分（实验与附录以略读为准）：§3 方法（问题表述、任务实例、观测与动作空间、奖励、快照初始化）、§4.1–§4.5 实验设置与结果
 
 ## 推荐继续阅读
 

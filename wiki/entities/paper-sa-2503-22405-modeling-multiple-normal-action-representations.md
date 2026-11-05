@@ -42,6 +42,28 @@ Proposes the Adaptive Multiple Normal Action Representation (AMNAR) framework, w
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["过程性任务视频"] --> FE["视觉特征提取器（如 I3D）"]
+    FE --> ASM["动作分割模型 ASM<br/>输出动作段 (标签, 起止帧) 与帧级特征 F"]
+    ASM --> SEQ["已执行动作序列 s_t"]
+    ASM --> FACT["当前动作特征 f_t^action<br/>段内帧特征取平均"]
+    TG["任务图 G（预定义）"] --> PAPB
+    SEQ --> PAPB["潜在动作预测块 PAPB<br/>动态规划求最长公共子序列并合并 → s_t*<br/>取子节点并去掉已执行动作 → 有效下一动作 C_t"]
+    PAPB --> RRB["表示重建块 RRB<br/>帧特征经扩张卷积；C_t 作 query 做局部交叉注意力<br/>预测残差 r，与类簇中心 c 相加得 f_normal"]
+    ASM --> RRB
+    RRB --> RMB["表示匹配块 RMB<br/>计算 f_action 与各 f_normal 的欧氏距离，取最小 d_min"]
+    FACT --> RMB
+    RMB --> TH{"d_min 是否大于该动作类阈值 θ(y_t)"}
+    TH -->|是| ERR["判定为错误动作"]
+    TH -->|否| OK["判定为正常动作"]
+    TRN["训练阶段：仅用正常视频；省略 PAPB，RRB query 数为 1<br/>最小化 f_normal 与 f_action 的距离"] -.-> RRB
+```
+
+图依据：论文 §3.2 Overview / Fig.2、§3.3–3.7（PAPB 见 Fig.3 与 Fig.5）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +118,7 @@ Proposes the Adaptive Multiple Normal Action Representation (AMNAR) framework, w
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2503.22405>
+- [arXiv PDF](https://arxiv.org/pdf/2503.22405)：已通读方法部分（实验与附录以略读为准）：§3.1–3.7
 
 ## 推荐继续阅读
 

@@ -144,6 +144,48 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - **局限：** 全尺寸制造门槛高；部署仓 **GPL-3.0**；硬件 25 DoF 与训练 23 受控关节表述需对照 URDF。
 - **详情：** [Encos Hunter 130（Hunter V2）](./encos-hunter130.md)
 
+## 源码运行时序图
+
+入口：`ros2 launch roboparty_inference inference.launch.py robot:=rpo policy:=default`（launch 文件 `modules/roboparty_deploy/src/inference/launch/inference.launch.py`；图只覆盖 Roboto Origin 快照中的 `roboparty_deploy` 推理部署，不代表整个项目）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户终端
+    participant L as inference.launch.py
+    participant N as InferenceNode（inference_node.hpp / ros_interface.cpp）
+    participant R as RobotInterface（robot_interface.cpp）
+    participant O as ONNX Runtime Session
+    participant IT as inference 线程
+    participant CT as control 线程
+    participant T as ROS 话题与服务
+    U->>L: ros2 launch ... robot:=rpo policy:=default
+    L->>N: 启动 executable inference_node，传入 robot.yaml 与 configs/<policy>.yaml
+    N->>N: load_config() 读取机器人与策略参数
+    N->>R: make_shared RobotInterface(robot_config_path)
+    N->>N: 为每个策略构造 MotionLoader（若有 motion）
+    N->>O: setup_model()，创建 ONNX Session
+    N->>T: 订阅 joy / cmd_vel / joint_states，发布 /imu /action /joint_states，注册 Trigger 服务
+    N->>IT: std::thread(inference)
+    N->>CT: std::thread(control)
+    T-->>N: 服务回调（如 init_motors；start_inference 置 is_running_）
+    loop 每个推理周期（绑定 CPU）
+        IT->>R: read_imu()
+        IT->>T: publish_imu / publish_joint_states
+        IT->>IT: update_obs_segments，flatten，clip，更新历史观测
+        IT->>IT: step_motion_frame（有 motion 时）
+        IT->>O: session->Run(input, output)
+        IT->>IT: act_ = action_scale × clip(输出) + 默认关节角，按 usd2urdf_ 重排
+        IT->>T: publish_action（/action）
+    end
+    loop 每个控制周期（SCHED_FIFO）
+        CT->>CT: apply_action()：last_act_ 指数平滑 act_
+        CT->>R: robot_->apply_action(last_act_)
+    end
+```
+
+图依据：Roboto Origin（Roboparty/roboto_origin）@d94afba，读过 `modules/roboparty_deploy/README.md`、`modules/roboparty_deploy/src/inference/launch/inference.launch.py`、`modules/roboparty_deploy/src/inference/src/inference_node.hpp`（构造与 ROS 接线）、`modules/roboparty_deploy/src/inference/src/inference_node.cpp`（control、inference、main）、`modules/roboparty_deploy/src/inference/src/ros_interface.cpp`（load_config、joy/服务回调，只看到部分）、`modules/roboparty_deploy/src/inference/src/robot_interface.cpp`（仅函数签名与 read_imu、apply_action 开头）。
+
 ## 关联页面
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
@@ -168,3 +210,4 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)
 - 各开源项目 GitHub Readme 与 Wiki。
+- 源码核对（2026-11-02）：Roboparty/roboto_origin@d94afba，读过 modules/roboparty_deploy/README.md、modules/roboparty_deploy/src/inference/launch/inference.launch.py、modules/roboparty_deploy/src/inference/src/inference_node.hpp、modules/roboparty_deploy/src/inference/src/inference_node.cpp、modules/roboparty_deploy/src/inference/src/ros_interface.cpp、modules/roboparty_deploy/src/inference/src/robot_interface.cpp；时序图依据以上文件，未运行代码。

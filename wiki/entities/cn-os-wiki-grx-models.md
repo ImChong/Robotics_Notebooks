@@ -61,11 +61,41 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：仓库主体是 URDF / MJCF / 网格资产，没有训练或部署主程序；可运行的只有 `scripts/` 下四个独立的 Python 命令行工具（用法见 `scripts/scripts_usage.md`）。下图为其中按文档串联的“装手 → 预览 → 导出参数”流程：`python scripts/add_end_effecor.py <基座 urdf> <手部文件夹>`。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant AE as scripts/add_end_effecor.py generate_urdf
+    participant FS as 资产目录（基座 urdf / Dexterous_hand/*/urdf, meshes）
+    participant UL as scripts/urdf_loader.py robot_loader
+    participant PIN as Pinocchio + MeshCat
+    participant UP as scripts/urdf_parameter.py extract_urdf_parameters
+
+    U->>AE: python add_end_effecor.py <urdf_path> <hand_folder>
+    AE->>FS: ET.parse(基座 URDF)
+    AE->>FS: get_hand_file(hand_folder/urdf, left / right)（按文件名含 left / right 匹配）
+    AE->>AE: attach_hand：复制手部 link/joint，新增 fixed joint 挂到 left_end_effector_link / right_end_effector_link
+    AE->>FS: copy_hand_stl：meshes 复制到基座 urdf 上级的 meshes 目录
+    AE->>FS: 写出 <基座名>_<手型>.urdf 到基座 urdf 上级的 urdf 目录
+    U->>UL: python urdf_loader.py <新 urdf> --duration N
+    UL->>PIN: RobotWrapper.BuildFromURDF(free-flyer 根关节)
+    UL->>PIN: MeshcatVisualizer.initViewer / loadViewerModel / display / displayCollisions
+    UL->>UL: time.sleep(duration)
+    U->>UP: python urdf_parameter.py <新 urdf> --mass --effort --limit --velocity
+    UP->>FS: 解析 URDF，写出 {urdf 名}_parameters.json（质量、力矩、限位、速度）
+```
+
+图依据：FFTAI/Wiki-GRx-Models@7d96c75，读过 `README.md`、`scripts/scripts_usage.md`、`scripts/add_end_effecor.py`、`scripts/urdf_loader.py`、`scripts/urdf_parameter.py`（主体）。`scripts/mesh_compresser.py` 只读了文档描述，未读代码；URDF / MJCF 资产本身没有运行时调用链，未画。三个脚本之间没有代码级调用，上图的串联顺序来自 `scripts_usage.md` 的 Common Workflows。
+
 ## 参考来源
 
 - [Wiki-GRx-Models 源码归档](../../sources/repos/wiki-grx-models.md)（<https://github.com/FFTAI/Wiki-GRx-Models>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：FFTAI/Wiki-GRx-Models@7d96c75，读过 README.md、scripts/scripts_usage.md、scripts/add_end_effecor.py、scripts/urdf_loader.py、scripts/urdf_parameter.py；scripts/mesh_compresser.py 仅读文档；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

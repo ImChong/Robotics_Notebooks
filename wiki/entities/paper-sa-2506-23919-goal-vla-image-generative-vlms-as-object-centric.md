@@ -42,6 +42,40 @@ Image-generative VLMs as object-centric world models empowering zero-shot manipu
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：单视角 RGB-D 观测 O=(I, D) + 语言指令 L"] --> EP["Prompt 增强<br/>文本输出 VLM (Gemini 2.5 Pro) 结合 I 丰富指令 → L_e"]
+    subgraph GSR["(a) Goal State Reasoning：Reflection-through-Synthesis 循环"]
+        direction TB
+        GEN["图像生成 VLM (Gemini 2.5 Flash-image)<br/>生成候选目标图"] --> SYN["Grounded SAM 分割目标物体<br/>半透明叠加到初始场景，得合成图"]
+        SYN --> REF["Reflector VLM (Gemini 2.5 Pro)<br/>判断是否满足任务语义"]
+        REF -->|"失败：修订 prompt"| GEN
+    end
+    EP --> GEN
+    REF -->|"通过（或达最大次数）"| GOAL["目标图 I′"]
+    GOAL --> DA["Depth Anything V2 → 目标深度 D′"]
+    GOAL --> MK["Grounded SAM → 初始/目标物体掩码 M, M′"]
+    subgraph SG["(b) Spatial Grounding"]
+        direction TB
+        SM["语义匹配（Geo-Aware 语义特征，余弦相似度最高像素配对）"] --> RS["在背景像素上回归 D′_rescaled = s·D′ + b 恢复尺度"]
+        RS --> UM["点云配准（Umeyama）→ 物体变换 (R, t)"]
+    end
+    GOAL --> SM
+    DA --> RS
+    MK --> RS
+    UM --> GP
+    subgraph LLP["(c) Low-level Policy"]
+        direction TB
+        CM["Contact Module：表面法向采样候选 → 过滤/碰撞检查 → 打分选接触位姿"] --> GP["把 (R, t) 作用于接触位姿得抓取器目标位姿"]
+        GP --> MP["Motion Planning（采样式规划器）→ 动作序列"]
+    end
+    IN --> CM
+```
+
+图依据：论文 §III-A 至 §III-D / Fig.2（三阶段框架）、Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +131,7 @@ Image-generative VLMs as object-centric world models empowering zero-shot manipu
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.23919>
+- [arXiv PDF](https://arxiv.org/pdf/2506.23919)：已通读方法部分（实验与附录以略读为准）：§III Method（A–D）、Alg.1
 
 ## 推荐继续阅读
 

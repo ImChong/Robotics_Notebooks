@@ -43,6 +43,31 @@ summary: "大规模真实机器人数据集潜力大，但真实人类数据采�
 - 对人形（真实采集更难）尤其有价值；
 - 与 DreamGen、DexMimicGen 等"用仿真/合成数据扩规模"思路互补。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    TASK["1. 任务设定：确定真机目标任务"]
+    RDEMO["真机数据 D_real（1x）<br/>遥操作采集数十条演示"]
+    COUSIN["构建任务感知 digital cousin 仿真环境<br/>同机器人与动作空间、同任务目标、同物体类别、同固定装置类别"]
+    SDEMO["在仿真中采集数十条源人类演示"]
+    GEN["MimicGen / DexMimicGen 按物体中心片段变换并拼接<br/>倍增为大量合成演示（digital cousin 数据，约 100x）"]
+    PRIOR["任务无关的既有仿真数据 D_prior（约 1000x）"]
+    MIX["2. 数据整合：真机 + digital cousin + 既有仿真数据"]
+    BATCH["3. 联合训练批采样<br/>仿真样本占比 α，真机样本占比 1−α"]
+    LOSS["最小化行为克隆损失<br/>L_total = α·L(D_sim) + (1−α)·L(D_real)"]
+    POL["视觉运动策略 Diffusion Policy<br/>输入 RGB 图像 + 本体感觉，输出动作序列"]
+    DEP["直接部署到真机"]
+    TASK --> RDEMO
+    TASK --> COUSIN --> SDEMO --> GEN
+    RDEMO --> MIX
+    GEN --> MIX
+    PRIOR --> MIX
+    MIX --> BATCH --> LOSS --> POL --> DEP
+```
+
+图依据：论文 §III-A、§III-C、§IV-C、§IV-D（Fig. 2、Eq. 1）
+
 ## 解决什么问题
 
 真实数据采集贵，仿真数据多但有域差距： - 纯 **sim-to-real 迁移**常需精心对齐； - 想更**简单**地用上仿真数据提升真实表现。
@@ -133,6 +158,7 @@ summary: "大规模真实机器人数据集潜力大，但真实人类数据采�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation.html>
 - 论文：<https://arxiv.org/abs/2503.24361>
 - 论文正文（Table I–II、关键要素与配方节）：<https://arxiv.org/html/2503.24361>
+- [arXiv PDF](https://arxiv.org/pdf/2503.24361)：已通读方法部分（实验与附录以略读为准）：§III 问题设定与自动合成数据生成、§IV-C 任务感知仿真数据集、§IV-D 训练与评测协议（Fig. 2）；§V 实验、§VI 局限与附录仅略读
 
 ## 推荐继续阅读
 

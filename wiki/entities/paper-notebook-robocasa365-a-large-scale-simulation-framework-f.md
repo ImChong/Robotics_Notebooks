@@ -38,6 +38,29 @@ RoboCasa365 是一个面向通才机器人训练与评测的大规模仿真框�
 - **终身学习/基础模型设定**指向通用机器人智能的评测方向；
 - 与本仓 11 其它基准（RoboCasa、ManiSkill-HAB、BiGym）一脉相承、规模更大。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    BASE["起点：RoboCasa 仿真框架"] --> AS["3.1 资产扩展<br/>新增 57 类 3D 物体；可交互 fixtures / 电器扩到 456 个实例、12 类"]
+    BASE --> SC["3.2 厨房场景<br/>目标场景 10 个（10 layout × 10 style 配对）<br/>预训练场景 50 layout（Zillow 真实房源数字表亲）× 50 style = 2500"]
+    AS --> TK
+    SC --> TK
+    subgraph TK["3.3 365 个日常任务"]
+        AT["65 个原子任务（含新增 40 个）"]
+        LLM["LLM 生成 60 个 activity<br/>→ 每个 activity 的 task blueprint → 人工写任务代码"] --> CT["300 个复合任务（83 沿用 + 217 新增）"]
+    end
+    TK --> DS
+    subgraph DS["3.4 数据集"]
+        PH["预训练人类演示：300 任务 × 100 条遥操作（预训练场景）"]
+        MG["MimicGen：60 个原子任务，以 100 条演示为种子各生成 10k 条"]
+        TG["目标数据：50 个任务 × 500 条人类演示（目标场景）"]
+    end
+    DS --> BM["第 4 节 基准评测<br/>多任务训练 / 基础模型预训练 + 微调 / 终身学习 / 预训练数据组成研究"]
+```
+
+图依据：论文 §3（3.1 资产、3.2 场景、3.3 任务、3.4 数据集，Fig. 2 / Fig. 3）与 §4 实验划分
+
 ## 解决什么问题
 
 训练**通才机器人**缺**足够大、足够系统**的仿真与基准： - 任务/场景/数据规模不足； - 缺**跨形态**（含人形）统一平台； - 缺面向**基础模型/终身学习**的系统化评测设定。
@@ -89,6 +112,7 @@ RoboCasa365 要：一个**大规模、多形态、系统化**的训练与评测�
 - [humanoid_pnb_robocasa365.md](../../sources/papers/humanoid_pnb_robocasa365.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/RoboCasa365__A_Large-Scale_Simulation_Framework_for_Training_and_Benchmarking_Generalist_Robots/RoboCasa365__A_Large-Scale_Simulation_Framework_for_Training_and_Benchmarking_Generalist_Robots.html>
 - 论文：<https://arxiv.org/abs/2603.04356>
+- [arXiv PDF](https://arxiv.org/pdf/2603.04356)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 RoboCasa365 框架（3.1–3.4）、§4 实验提纲；§4 具体结果与附录略读
 
 ## 推荐继续阅读
 

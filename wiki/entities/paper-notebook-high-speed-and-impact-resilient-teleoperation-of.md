@@ -38,6 +38,28 @@ summary: "人形遥操作长期是难题，需要软硬件协同进步才能实�
 - **免标定 + 少传感器**降低使用门槛，利于现场部署；
 - 高速抗冲击能力为采集"动态/接触丰富"演示提供条件。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    A["操作者<br/>Vive Focus 3 头显 + 2 控制器<br/>+ 4 个 Vive Ultimate 追踪器<br/>胸 / 腰 / 双踝"] --> B["免标定动捕<br/>运动重定向"]
+    B --> C["足步流式<br/>Footstep streaming"]
+    B --> D["运动学重定向<br/>骨盆 · 手 · 质心"]
+    subgraph KST["Kinematics Streaming Toolbox（KST，机器人侧运行）"]
+        E["滤波与安全限制<br/>bounding box · 速率 / 速度限制"] --> F["状态估计与预测<br/>补偿延迟"]
+        F --> G["逆运动学 IK<br/>QP 求解关节速度"]
+        G --> H["后处理<br/>速度缩放 · 加速度估计<br/>低通滤波 · 初始混合"]
+    end
+    D --> E
+    H --> W["全身控制器<br/>momentum-based QP"]
+    C --> W
+    W --> R["Nadia 人形机器人<br/>摆线执行器"]
+    R -.->|视觉反馈| V["digital twin 3D 场景<br/>+ 立体视觉"]
+    V -.-> A
+```
+
+图依据：论文 §II / Fig.2、§III–§V。
+
 ## 解决什么问题
 
 人形遥操作要做到**高速、抗冲击、低延迟**，需软硬件同步突破： - **动捕标定**繁琐、传感器多； - **延迟**高导致控制不跟手； - **执行器**带宽不足，难高速/抗冲击。
@@ -88,6 +110,7 @@ summary: "人形遥操作长期是难题，需要软硬件协同进步才能实�
 - [humanoid_pnb_high-speed-and-impact-resilient-teleoperation-of.md](../../sources/papers/humanoid_pnb_high-speed-and-impact-resilient-teleoperation-of.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots/High-Speed_and_Impact_Resilient_Teleoperation_of_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2409.04639>
+- [arXiv PDF](https://arxiv.org/pdf/2409.04639)：已通读方法部分（实验与附录以略读为准）：§I–§V（Overview、Motion Retargeting、KST、Whole-Body Controller）及执行器 Fig.3–4；实验章节仅略读
 
 ## 推荐继续阅读
 

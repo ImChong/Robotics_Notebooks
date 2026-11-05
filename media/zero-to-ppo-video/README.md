@@ -2,6 +2,8 @@
 
 按 [发布清单](RELEASE_PLAN.md) 从 L−1 讲到 L5.1 的 PPO，一集只讲一个主题，竖屏 1080×1920，中文配音 + 烧录字幕，发视频号。讲完 062，想读 PPO 原论文可以接姊妹系列《从头学人形机器人算法》（论文精读，[Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)）的 001 PPO。
 
+**观众完全零基础**：除了看过本系列前面几集，对其他相关知识（数学、编程、机器人）完全没有概念。片中每个词、符号、公式、代码写法，要么前面几集讲过（说明第几集），要么当场讲清楚，不默认观众会（细则见发布清单「每集一个主题」）。
+
 渲染流程改自论文系列的 [`scripts/paper_video`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/tree/main/scripts/paper_video)（BSD-3，见 `vendor/LICENSE`）：安全区、逐帧版式检查、旁白与分镜对时的做法都照搬。
 
 ## 和论文系列的区别
@@ -24,7 +26,7 @@
 | `stage.html` | 1080×1920 舞台：片头、分镜、片尾、封面版式，安全区 330–1440 |
 | `build.py` | 旁白 → edge-tts 逐句配音 → `out/<ep>/timeline.json` + `narration.wav`。每句记下配音实长，舞台按它把这句的分镜区间等比拉伸，画面事件跟着念到的词走 |
 | `render.mjs` | Chromium 逐帧截图 → ffmpeg 合成 MP4；也出抽帧、片段、封面，`scene` 模式不用配音单看某一幕 |
-| `check_layout.mjs` | 逐帧检查：块不重叠、不压字幕、都在安全区；分镜 / 片头主图里的字、公式、图形、机器人不超出画面被裁掉，字和字（含公式）不互相压住；封面检查 3:4 置顶裁剪 |
+| `check_layout.mjs` | 逐帧检查：块不重叠、不压字幕、都在安全区；分镜 / 片头主图里的字、公式、图形、机器人不超出画面被裁掉（机器人还查画布四边：不能伸出自己的视景框被切掉一截），字和字（含公式）不互相压住；封面检查 3:4 置顶裁剪 |
 | `vendor/` | 论文系列的分镜工具库 `kit.js` 与样式 `paper-demos.css`（取自 `f7a5b14`，未改动） |
 | `robots.json` | 片中机器人的 URDF 来源：取自 [Robot Description Gallery Online](https://github.com/ImChong/Robot_Description_Gallery_Online)（固定 commit）的 `data/robots.json`，每台只记上游仓库 + 固定 commit 的 jsDelivr 地址与许可证。现用 Unitree G1（人形）、UR5（机械臂）、Unitree Go2（四足）、iRobot Create 2（扫地机）、Toyota Prius（汽车，OSRF car_demo）、Clearpath Jackal（轮式底盘） |
 | `fetch_robots.py` | 按 `robots.json` 把 URDF 与可视网格下载到 `assets/robots/<id>/`（不入库），路径解析同画廊；上游只发布 xacro 的（Create 2、Jackal）连同它 include 的文件一起下载（照画廊的规则：`$(optenv)` 取默认值、`xacro_stubs` 里的包不下载），舞台加载时用 xacro-parser 展开 |

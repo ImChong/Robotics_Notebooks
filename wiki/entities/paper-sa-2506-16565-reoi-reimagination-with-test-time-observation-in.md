@@ -42,6 +42,25 @@ Reimagination with test-time observation interventions for distractor-robust wor
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前观测 o_t + 任务描述 ℓ"] --> POL["预训练策略 π 采样多条动作计划"]
+    OBS --> SAFE["World Model 用分布内 safety-check 动作计划 rollout"]
+    SAFE --> VLM1["VLM（GPT-4o）分析预测序列<br/>标出快速扭曲/消失的物体 = 新干扰物"]
+    VLM1 --> SEG["分割模型定位干扰物区域"]
+    SEG --> INP["图像修复 inpainting<br/>得到修改后的观测"]
+    INP --> RE["同一 World Model 对各动作计划重新想象"]
+    POL --> RE
+    RE --> LAY["Grounded-SAM2 分层 + 深度估计<br/>按深度把干扰物层合成回每帧"]
+    LAY --> VER["VLM 验证器：拒绝不安全计划，<br/>选择最符合任务意图的结果"]
+    VER --> OUT["执行所选动作计划"]
+    VER -. "无安全/合适计划时可选" .-> HUM["请求人工介入"]
+```
+
+图依据：论文 §III（采样式视觉 MPC 设定）、§IV-A / Fig.2、§IV-B / Fig.3、§IV-C。其中“预训练策略采样动作计划”来自 §III，与 ReOI 各步的衔接按 §IV 文字归纳。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Reimagination with test-time observation interventions for distractor-robust wor
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.16565>
+- [arXiv PDF](https://arxiv.org/pdf/2506.16565)：已通读方法部分（实验与附录以略读为准）：§III 预备知识、§IV-A/B/C 观测干预、重新想象与动作计划验证。
 
 ## 推荐继续阅读
 

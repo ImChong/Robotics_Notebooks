@@ -42,6 +42,35 @@ The latest panoramic survey of the field, systematically classifying four major 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ROOT["Egocentric Vision 综述（论文 Fig. 2 的 10 节结构）"]
+    ROOT --> S2["§2 Challenges：Limited Data Scale / High Dynamic Nature / Multi-level and Multi-granularity（Fig. 3）"]
+    ROOT --> S3["§3 Egocentric Task Parsing：按场景三要素 Subject / Object / Environment 加 Hybrid 分四大类（Fig. 4）"]
+    S3 --> S4["§4 Subject Understanding"]
+    S3 --> S5["§5 Object Understanding"]
+    S3 --> S6["§6 Environment Understanding"]
+    S3 --> S7["§7 Hybrid Understanding"]
+    S4 --> G["4.1 Gaze understanding：gaze estimation / gaze prediction"]
+    S4 --> P["4.2 Pose estimation：body pose / hand pose"]
+    S4 --> A["4.3 Action understanding：action recognition / temporal action localization / action sound perception / trajectory prediction / action prediction / action generation"]
+    S5 --> SP["5.1 Social perception：social behavior relationship / communication attention relationship / visual attention relationship"]
+    S5 --> HI["5.2 Human identity and trajectory recognition"]
+    S5 --> IO["5.3 Instance object recognition"]
+    S6 --> EM["6.1 Environment modeling"]
+    S6 --> SL["6.2 Scene localization"]
+    S7 --> CS["7.1 Content summary"]
+    S7 --> MV["7.2 Multiview joint understanding"]
+    S7 --> VQ["7.3 Video question answering"]
+    ROOT --> S8["§8 Datasets：基本特性 / 标注状态 / 适用任务"]
+    ROOT --> S9["§9 Trends and Future：五大趋势（Fig. 16）与应对挑战的未来方向"]
+    ROOT --> S10["§10 Conclusion"]
+```
+
+图依据：综述分类体系图（论文章节结构与任务分类）：论文 Fig. 2（全文结构）、Fig. 4（任务分类）及 §4–§7 各小节标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +125,7 @@ The latest panoramic survey of the field, systematically classifying four major 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2503.15275>
+- [arXiv PDF](https://arxiv.org/pdf/2503.15275)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§3（含 Fig. 2–4）、§4–§7 各小节标题与开头段、§9 趋势概述；各子任务方法细节与 §8 数据集表以略读为准
 
 ## 推荐继续阅读
 

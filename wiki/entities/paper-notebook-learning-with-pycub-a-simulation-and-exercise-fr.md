@@ -38,6 +38,29 @@ pyCub 是一个开源、基于物理的 iCub 人形仿真，并配套练习用�
 - **纯 Python 生态**契合当下 RL/IL 工具链，利于教学到科研衔接；
 - 与重型仿真（Isaac、MuJoCo）互补，定位"教学友好"。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CFG[".yaml 配置文件<br/>GUI/相机/日志/自碰撞、初始关节、末端执行器、步长、额外物体 URDF/.obj"] --> SIM
+    U["用户 Python 代码<br/>练习的 assignment 脚本"] --> CM
+    subgraph CM["三种控制模式"]
+        V["关节速度控制<br/>rad/s，持续到下一条命令"]
+        P["关节位置控制<br/>到达设定点或检测到碰撞"]
+        C["笛卡尔位置控制<br/>目标 6D 位姿 → PyBullet IK<br/>阻尼最小二乘 + 零空间 → 关节位置控制<br/>无底层规划器"]
+    end
+    CM --> SIM["PyBullet 物理引擎<br/>用户手动调用 update_simulation() 推进每一步"]
+    SIM --> SK["触觉皮肤仿真<br/>先用包围盒重叠判断是否有近物<br/>必要时对每个 taxel 做射线检测<br/>输出与射线长度成比例的 8 位强度"]
+    SIM --> GUI["Open3D 自研 GUI<br/>原生窗口或网页版<br/>双眼相机 RGB/深度输出"]
+    SK --> SD["皮肤激活值存入模拟器内字典<br/>GUI 中以绿点显示二值激活"]
+    SIM --> FB["本体感知 / 视觉 / 触觉读数"]
+    SD --> FB
+    FB --> U
+    U --> T["testing 脚本评分<br/>每个练习含配置 + assignment + testing 三件套"]
+```
+
+图依据：论文 §2.1–2.3 / §3 开头 / Fig. 2
+
 ## 解决什么问题
 
 人形机器人学**教学门槛高**： - 现有 iCub 仿真需 **C++ + YARP**，对学生不友好； - 缺**纯 Python、低门槛**且涵盖触觉皮肤等特性的教学仿真与练习。
@@ -94,6 +117,8 @@ pyCub 要：一个**纯 Python、免 YARP、带分级练习**的 iCub 教学仿�
 - [humanoid_pnb_learning-with-pycub.md](../../sources/papers/humanoid_pnb_learning-with-pycub.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Learning_with_pyCub__A_Simulation_and_Exercise_Framework_for_Humanoid_Robotics/Learning_with_pyCub__A_Simulation_and_Exercise_Framework_for_Humanoid_Robotics.html>
 - 论文：<https://arxiv.org/abs/2506.01756>
+- [arXiv PDF](https://arxiv.org/pdf/2506.01756)：已通读方法部分（实验与附录以略读为准）：§1 引言、§2 仿真环境（§2.1 技术细节、§2.2 控制模式、§2.3 人工皮肤）、§3 练习（§3.1–3.5 各练习）、§4 结论
+
 
 ## 推荐继续阅读
 

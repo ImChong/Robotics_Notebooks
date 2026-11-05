@@ -43,6 +43,25 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  V[驾驶视频帧] --> TOK[图像 Tokenizer: VQ 编码器 + 码本<br/>LlamaGen 预训练]
+  TOK --> TS[离散视频 token 序列]
+  TS --> VAVIM[VaViM: GPT-2 式因果 Transformer<br/>自回归 next-token 预测]
+  VAVIM --> FT[在 OpenDV / nuPlan / nuScenes 混合数据上微调]
+  FT --> FEAT[各层视频特征]
+  CMD[高层指令 left / right / straight] --> AE
+  NZ[带噪自车轨迹 A_t^τ] --> AE[动作专家: Action Encoder<br/>+ Joint Attention Transformer + Action Decoder]
+  FEAT -->|联合注意力| AE
+  AE --> VF[去噪向量场 v_θ]
+  VF --> EUL[前向 Euler 积分 10 步]
+  EUL --> TRAJ[BEV 自车 x,y 轨迹]
+```
+
+图依据：论文 §3.1–3.2 / Fig.1–2、§4.3–4.4
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +119,7 @@ RCL Awesome WAM 清单收录（WAMs）；细节以原文 PDF / 项目页为准�
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2502.15672>
+- [arXiv PDF](https://arxiv.org/pdf/2502.15672)：已通读方法部分（实验与附录以略读为准）：§3 Models、§4.3 微调、§4.4 模仿学习
 
 ## 推荐继续阅读
 

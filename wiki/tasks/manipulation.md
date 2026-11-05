@@ -4,6 +4,8 @@ tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
 updated: 2026-11-01
 related:
+  - ../entities/paper-goaldex.md
+  - ../entities/paper-viserdex.md
   - ../entities/paper-seer-vla.md
   - ../entities/paper-dexsafe.md
   - ../entities/paper-handson.md
@@ -556,6 +558,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [DreamTrue：动作保真的机器人世界模型](../entities/paper-dreamtrue-action-faithful-world-model.md) — 研究机器人操作视频的动作保真预测及反事实交互后训练。
 
 ## 关联页面
+
+- [HuG：主动感知的人形全身抓取](../entities/paper-hug-whole-body-grasping.md) — 用控制器在环筛选合成轨迹，结合主动视角搜索与全身对齐。
 
 - [SeeR-VLA：机器人中心点图](../entities/paper-seer-vla.md)
 

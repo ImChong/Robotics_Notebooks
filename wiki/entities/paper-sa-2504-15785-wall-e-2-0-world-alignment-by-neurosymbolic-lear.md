@@ -43,6 +43,28 @@ World alignment by neuro-symbolic learning improves world model-based LLM agents
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["当前观测 o_t"] --> AGENT["LLM Agent 提出动作 a_t"]
+    AGENT --> WM["LLM 世界模型预测 ô_t+1<br/>(判断该转移成功/失败)"]
+    CR["代码规则集 R_code<br/>(含 Knowledge Graph / Scene Graph 参数)"] --> MAP["MapExecute：激活的规则校验预测<br/>不一致时规则输出覆盖 LLM 预测"]
+    WM --> MAP
+    MAP --> FLAG{"flag 为 True？"}
+    FLAG -->|"否：返回 feedback / suggestion"| AGENT
+    FLAG -->|"是：动作被接受（或达 replan 上限）"| ENV["在环境中执行 a_t，得到真实 o_t+1"]
+    ENV --> TRAJ["累积真实轨迹 τ_real 与预测轨迹 τ_pred"]
+    TRAJ --> S1["Stage 1 比较两条轨迹<br/>划分预测正确 / 错误的转移"]
+    S1 --> S2["Stage 2 LLM 归纳符号知识<br/>Action Rules、Knowledge Graph、Scene Graph"]
+    S2 --> S3["Stage 3 LLM 将符号知识翻译为 Python 代码规则"]
+    S3 --> S4["Stage 4 最大覆盖贪心剪枝代码规则"]
+    S4 --> CR
+    ENV -->|"下一步"| OBS
+```
+
+图依据：论文 §3.1（Stage 1–4）、§3.2 / Fig.2–3 / Algorithm 1–3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ World alignment by neuro-symbolic learning improves world model-based LLM agents
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.15785>
+- [arXiv PDF](https://arxiv.org/pdf/2504.15785)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§3 全节（3.1.1–3.1.4、3.2）、Algorithm 1–3、Fig.2–3
 
 ## 推荐继续阅读
 

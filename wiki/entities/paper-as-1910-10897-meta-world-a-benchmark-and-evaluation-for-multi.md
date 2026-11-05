@@ -49,6 +49,22 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  ENVS["Meta-World 任务库\n50 种 Sawyer 操作环境\n统一动作空间 / 39 维观测 / 结构化多组件奖励（0 到 10）"] --> PROTO{"评测协议"}
+  PROTO --> MT["多任务 MT1 / MT10 / MT50\n单个任务条件策略，一般提供 one-hot 任务 ID\n目标与物体位置固定，在训练任务上评测"]
+  PROTO --> ML1["元学习 ML1\n单一任务内 50 个训练位置 / 50 个留出位置\n目标不在观测中"]
+  PROTO --> MLN["元学习 ML10 / ML45\n10 或 45 个元训练任务，留出 5 个测试任务\n不提供任务 ID，位置随机化"]
+  MLN --> ADAPT["元测试：在新任务上少样本适应"]
+  ML1 --> ADAPT
+  MT --> SUCC
+  ADAPT --> SUCC["统一成功率指标\n物体到目标距离 ‖o−g‖₂ < ε（如 5 cm）"]
+```
+
+图依据：论文 §4.2（动作、观测、奖励）、§4.3（评测协议与成功指标）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -107,6 +123,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Robotics Environments。 本页是清
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
+- [arXiv PDF](https://arxiv.org/pdf/1910.10897)：已通读方法部分（实验与附录以略读为准）：§3 问题设定、§4.2 动作 / 观测 / 奖励、§4.3 评测协议
 
 ## 推荐继续阅读
 

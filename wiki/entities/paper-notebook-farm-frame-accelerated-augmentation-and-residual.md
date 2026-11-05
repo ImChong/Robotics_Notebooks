@@ -33,6 +33,30 @@ FARM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
 - 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    AM["AMASS 数据集"] --> ACC["整体加速 1.25×"]
+    ACC --> FC["基线 FC 控制器推理跟踪"]
+    FC --> HARD["跟踪失败样本（全局平均关节位置误差在任一帧 > 0.5 m）= 困难样本"]
+    HARD --> AUG["帧加速增广：加速因子 v ~ U[1.0, 1.5]，线性插值重采样"]
+    AUG --> TRAIN["目标条件 RL（PPO，Isaac Lab）训练 FARM 策略"]
+    subgraph NET["残差 MoE 结构"]
+        IN["冻结的 FC 输入 MLP"] --> TF["冻结的 FC Transformer → z_base"]
+        IN --> ROUTER["速度感知路由 SAR（按参考帧平均关节速度分 3 档，交叉熵监督）"]
+        ROUTER --> DEA["动态专家分配 DEA：k = argmax(p)，激活专家 1…k"]
+        DEA --> RES["残差 Δz（专家复制 FC Transformer + 零初始化线性层）"]
+        TF --> SUM["z = z_base + Δz"]
+        RES --> SUM
+        SUM --> OUT["可训练的输出 MLP → PD 目标关节角"]
+    end
+    TRAIN --> NET
+    OUT --> EVAL["在 HDHM 高动态动作集上评估泛化"]
+```
+
+图依据：论文 §3.1–§3.3 / Fig. 2、Fig. 3 与式 (1)–(4)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -64,7 +88,9 @@ FARM 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - [humanoid_pnb_farm-frame-accelerated-augmentation-and-residual.md](../../sources/papers/humanoid_pnb_farm-frame-accelerated-augmentation-and-residual.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2508.19926>
+- [arXiv PDF](https://arxiv.org/pdf/2508.19926)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.3）
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：FARM](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/FARM__Frame-Accelerated_Augmentation_and_Residual_MoE_for_High-Dynamic_Humanoid/FARM__Frame-Accelerated_Augmentation_and_Residual_MoE_for_High-Dynamic_Humanoid.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

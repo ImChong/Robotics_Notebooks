@@ -61,11 +61,50 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`cd isaac-training/training/scripts && python train.py`（第二阶段 RL 精调；配置 `cfg/train.yaml`，hydra 装载）。评测入口为同目录 `python eval.py`（`cfg/eval.yaml` 的 `evaluation.mode`）；第一阶段模仿学习入口为 `cd il_training/fastsys && python train_navrl_il.py`，本图只画 `train.py`。
+
+```mermaid
+sequenceDiagram
+    participant T as train.py（hydra main）
+    participant Sim as isaacsim.SimulationApp
+    participant Env as env.NavigationEnv
+    participant Loco as go2/go2_ctrl.get_rsl_him_rough_policy + controller.LocomotionController
+    participant IL as il_training/fastsys/infer_policy.PolicyInference（VelFlow 专家）
+    participant PPO as ppo.ILtoPPO（含 GuidedActor）
+    participant Col as torchrl SyncDataCollector
+
+    T->>Sim: SimulationApp(headless, anti_aliasing)
+    T->>Env: NavigationEnv(cfg)
+    T->>Loco: 加载 Go2 底层行走策略，LocomotionController 作为 transform 包住 env
+    T->>IL: PolicyInference(il_training/fastsys/checkpoints/dynfji91/best_model.pt)
+    T->>PPO: ILtoPPO(cfg.algo, obs_spec, action_spec, 'multi', il_ref_model=IL)
+    T->>Col: SyncDataCollector(transformed_env, policy=PPO, frames_per_batch)
+    loop 每个 batch
+        Col->>PPO: __call__(tensordict)
+        PPO->>IL: sample_raw_action(ref_model_input) 得到专家速度动作
+        IL-->>PPO: 专家动作
+        PPO-->>Col: GuidedActor 以专家动作为条件输出学生动作
+        Col->>Loco: 速度指令 → 行走策略关节动作
+        Loco->>Env: 仿真步进，返回观测 / 奖励
+        Col-->>T: data
+        T->>PPO: train_rl(data)（PPO 损失 + il_coeff × MSE(学生, 专家) 的 il_loss）
+        opt i % save_interval == 0
+            T->>T: torch.save(policy.state_dict(), checkpoint_i.pt)
+        end
+    end
+    T->>T: 保存 checkpoint_final.pt，wandb.finish，sim_app.close
+```
+
+图依据：amap-cvlab/CE-Nav@8eaac06，读过 README.md、isaac-training/training/scripts/train.py、isaac-training/training/scripts/ppo.py（类/函数与 il_loss 相关行）、il_training/fastsys/infer_policy.py（函数列表）、isaac-training/training/scripts/eval.py 与 il_training/fastsys/train_navrl_il.py（仅浏览结构）。`ILtoPPO.__call__` 中 GuidedActor 的具体前向细节未逐行读，上图为据 `ppo.py` 行 189-221 的函数名与调用关系的概括。
+
 ## 参考来源
 
 - [CE-Nav 源码归档](../../sources/repos/ce-nav.md)（<https://github.com/amap-cvlab/CE-Nav>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：amap-cvlab/CE-Nav@8eaac06，读过 README.md、isaac-training/training/scripts/{train.py,ppo.py,eval.py}、il_training/fastsys/{infer_policy.py,train_navrl_il.py}（后两者仅浏览结构）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

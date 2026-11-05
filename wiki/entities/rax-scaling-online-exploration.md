@@ -14,7 +14,7 @@ tags:
   - mit
   - stanford
 status: complete
-updated: 2026-11-01
+updated: 2026-11-04
 arxiv: "2610.22496"
 project: https://robot-agent-exploration.com/
 code: https://github.com/robot-agent-exploration/rax
@@ -58,7 +58,7 @@ summary: "RAX（Robot Agent eXploration）让冻结的 coding agent 通过机器
 
 ## 为什么重要
 
-- **扩展的是交互经验：** 系统增加在线探索 episode，让 agent 从实际反馈中积累任务相关的决策知识，而不依赖动作示范集或针对该任务的策略训练。
+- **扩展的是交互经验：** 系统增加在线探索 episode，让 agent 从实际反馈中积累任务相关的决策知识，真机任务无需动作示范或针对该任务的策略训练；部分仿真设置使用了示范图像或动作片段，见下方评测边界。
 - **让推理结果变成可执行资产：** agent 将成功的决策序列编译为分步检查和执行的程序；后续运行可减少反复调用大模型的开销。
 - **把本体接口与 agent 流程解耦：** 各模拟器和机器人作为 backend 接到统一工具接口，项目页称新本体可通过 API 适配。
 - **技能能够跨会话累积：** companion skills-lib 按本体保存可执行技能及验证证据，后续 agent 可读取、组合并改进已有技能。
@@ -91,8 +91,15 @@ flowchart TB
 | --- | --- | --- |
 | 未见仿真场景 | 探索预算从 4 增至 128 episode 时，平均成功率 25%→79%；项目页对比中的此前最佳基线为 41.2%。 | 反映探索量与 held-out 场景泛化的关系。 |
 | 仿真基线对比 | 相对顶级 baseline 平均高 37.4%。 | 这是跨仿真任务的汇总，不能视作每个任务均提升同一幅度。 |
-| 编译执行耗时 | Air fryer：72 分钟→18 秒（241×）；Bandu tower：17 分钟→10 秒（103×）。 | 比较 agent 完成任务与编译程序执行；不是控制环频率或端到端系统加速指标。 |
+| 推理耗时 | Air fryer：72.3 分钟→18 秒（约 241×）；Bandu tower：17.2 分钟→10 秒（约 103×）。 | 论文表 9 统计的是机器人调用之外的推理墙钟时间；机器人执行时间分别为 2.9→2.5 分钟、9.3→10.9 分钟，因此不能称为任务总耗时或端到端加速。 |
 | 真机任务 | 项目页报告记忆依赖、关节结构、高精度、可变形物体和长时程移动操作任务。 | 证明任务覆盖面；不替代多场景成功率与运行可靠性统计。 |
+
+### 论文评测边界与消融
+
+- **示范使用因基准而异：** 真机任务没有遥操作动作示范；BEHAVIOR-1K 提供成功示范关键帧（无动作或状态）。HumanoidArena 的主要实验使用每任务 3 条遥操作示范，程序可复用动作片段；因此不能将“所有实验无动作示范”作为结论。
+- **人形无动作消融：** 表 10 去掉示范中的动作后，RAX 在每任务 60 个官方测试回合的平均成功率为 81.9%，主要设置为 89.8%；无动作版本使用更大的探索预算，且仍保留无动作的示范信息，不能称为完全无示范。
+- **评测方式：** 论文第 10.2 节区分冻结程序的自动评估与 agent-in-the-loop 评估；自动程序在未见场景中执行，无 agent 修改或重试，但允许按协议调用视觉语言模型。RoboDojo 的原生评分可能含部分得分，不能一律称为成功率。
+- **成本与真机接管：** 论文附录第 15 节称全部仿真和真机实验的模型 API 费用超过 10 万美元，不能当作单任务成本。空气炸锅试验中曾发生手臂碰撞相机，部分运行需要恢复，记录中另有 4 次无需人工接管的成功运行。
 
 ## 工程实践与局限
 
@@ -108,26 +115,27 @@ flowchart TB
 ```mermaid
 sequenceDiagram
   autonumber
-  actor User as 操作者
-  participant Agent as Coding agent
-  participant MCP as MCP / Bash / Python tools
+  actor Operator as 操作者
+  participant Config as configure_session.py
+  participant Launcher as start_agent.sh
+  participant Agent as Claude Code
+  participant Bridge as MCP bridge
   participant Service as Robot service
-  participant Backend as 本体 backend
-  participant Workspace as 工作区与技能库
-  User->>Agent: 给出任务目标并启动受控会话
-  Agent->>MCP: 请求观测、状态与控制工具
-  MCP->>Service: 传递工具请求
-  Service->>Backend: 调用模拟器或机器人接口
-  Backend-->>Service: 返回观测与执行结果
-  Service-->>Agent: 返回工具反馈并记录审计信息
-  Agent->>Workspace: 写入经验、技能与编译程序
-  Agent->>MCP: 后续运行编译程序所需工具
-  MCP->>Service: 发送受限控制请求
-  Service->>Backend: 执行任务动作
-  Backend-->>Agent: 返回结果用于检查
+  participant Robot as Franka backend
+  Operator->>Config: 配置任务与会话
+  Operator->>Launcher: 启动会话
+  Launcher->>Service: 创建工作区并启动服务
+  Launcher->>Agent: 启动受限智能体
+  Operator->>Service: 授权机器人运动
+  Agent->>Bridge: 观测与动作请求
+  Bridge->>Service: 通过 Unix socket 转发
+  Service->>Robot: 安全检查后调用后端
+  Robot-->>Service: 返回状态和结果
+  Service-->>Agent: 返回反馈并记录审计日志
+  Agent->>Agent: 编写和测试任务程序
 ```
 
-主分支将各 backend 的细节放在独立实现分支，图概括 README 所述公共工具接口和服务边界；具体启动命令、硬件约束与环境依赖应以所选分支 README 为准。
+图按 [real/franka 分支 README](https://github.com/robot-agent-exploration/rax/tree/real/franka) 的配置与服务架构整理；Python 脚本也可通过 `api.runtime.Context` 使用同一服务。其他分支的启动入口和接口可能不同。
 
 ## 与相近路线的区别
 
@@ -145,7 +153,7 @@ RAX、ASENA 与 EmbodiedEvo 都将经验保留在权重之外，但机器人接�
 **RAX 提供了一种用在线交互扩展 agent 经验、再将经验编译成低延迟可执行程序的机器人系统路径。**
 
 - 读“学习”结果时，区分冻结基础模型下的工作区 / 程序演进与模型参数训练。
-- 将探索 agent 的交互成本和编译程序运行成本分开报告；241× 与 103× 对应具体任务，不是普适部署加速比。
+- 将探索 agent 的交互成本和编译程序运行成本分开报告；241× 与 103× 是具体任务的推理时间比，不包括机器人执行时间。
 - 迁移到新本体时，首先验证观测、控制、安全与复位接口，再评估技能适用条件。
 - 仿真未见场景与真机演示分别回答泛化与可行性问题，不可互相替代。
 - 复用技能时检查它记录的前提、失败模式与连续运行验证结果。

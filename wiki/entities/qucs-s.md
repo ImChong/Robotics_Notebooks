@@ -70,6 +70,53 @@ Qucs-S 官方主页列出 Vadim Kuznetsov 与 Mike Brinson 为项目创建者，
 - 它不是 PCB 布局与制造工具，不能替代 [KiCad](./kicad.md) / [Altium Designer](./altium-designer.md) 的 PCB、DRC、Gerber 工作流。
 - 它不是机器人动力学仿真器，也不能验证实时固件、CAN 时序或整机 Sim2Real。
 
+## 源码运行时序图
+
+入口：图形界面启动 `qucs-s`（`qucs/main.cpp` 的 `main()`），点击仿真按钮；默认仿真器为 Ngspice 时经 `QucsApp::slotSimulateWithSpice()` 进入外部 SPICE 流程（命令行另有 `runNgspice()` 路径，未画）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant QA as qucs/qucs.cpp<br/>QucsApp
+    participant ESD as qucs/extsimkernels/externsimdialog.cpp<br/>ExternSimDialog
+    participant NG as qucs/extsimkernels/ngspice.cpp<br/>Ngspice
+    participant ASK as qucs/extsimkernels/abstractspicekernel.cpp<br/>AbstractSpiceKernel
+    participant SCH as qucs/schematic_file.cpp<br/>Schematic 与元件 SPICE 输出
+    participant PROC as 外部 ngspice 进程<br/>QProcess
+
+    U->>QA: 点击仿真 slotSimulate(w)
+    Note over QA: 数字电路或 Qucsator 分支未画；Ngspice/Xyce/SpiceOpus 走外部 SPICE
+    QA->>QA: slotSimulateWithSpice()
+    QA->>ESD: new ExternSimDialog(schematic)，连接 simulated 信号
+    QA->>ESD: slotStart()
+    ESD->>NG: a_ngspice->slotSimulate()
+
+    NG->>NG: checkSchematic / checkGround / checkSimulations / checkDCSimulation / checkNodeNames
+    alt 任一检查失败
+        NG-->>ESD: emit errors（不启动仿真）
+    else 检查通过
+        NG->>NG: SaveNetlist(工作目录/spice4qucs.cir) 调用 createNetlist
+        NG->>ASK: prepareSpiceNetlist(stream)
+        ASK->>SCH: prepareNetlist(stream, ...) 收集节点与元件
+        NG->>NG: startNetlist(stream) 写出 PARAM、OPTIONS 与各元件 getSpiceNetlist
+        NG->>NG: removeAllSimulatorOutputs / cleanSpiceinit / createSpiceinit
+        NG->>PROC: a_simProcess->start(ngspice 命令, spice4qucs.cir)
+        PROC-->>NG: readyRead 输出 slotProcessOutput 写入控制台
+        PROC-->>ASK: finished 信号 slotFinished
+        ASK-->>ESD: emit finished
+        ESD->>ESD: slotProcessOutput() 写日志并判断是否出错
+        opt 仿真无错误
+            ESD->>ASK: convertToQucsData(数据集路径)
+            ASK->>ASK: 解析 spice4qucs 的 raw 或 res 输出，写入 Qucs 数据集
+        end
+        ESD-->>QA: emit simulated(this)
+        QA->>QA: slotAfterSpiceSimulation(SimDlg) 显示结果，数据集可在图表中绘制
+    end
+```
+
+图依据：ra3xdh/qucs_s@603940d，实际读过 `README.md`、`qucs/main.cpp`（`main()` 与 `runNgspice()` 的调用关系）、`qucs/qucs.cpp`（`slotSimulate` 分派与 `slotSimulateWithSpice` 开头、`slotAfterSpiceSimulation`）、`qucs/extsimkernels/externsimdialog.cpp`（`slotStart`、`slotProcessOutput` 及信号连接）、`qucs/extsimkernels/ngspice.cpp`（`slotSimulate`、`SaveNetlist`、`createNetlist` 片段）、`qucs/extsimkernels/abstractspicekernel.cpp`（构造与信号连接、`slotFinished`、`convertToQucsData` 签名、`prepareSpiceNetlist`）、`qucs/schematic_file.cpp`（`prepareNetlist` 签名）；未运行代码。元件 SPICE 输出的细节与 Xyce 分支未逐一核对。
+
 ## 关联页面
 
 - [KiCad（开源 PCB 与原理图 EDA）](./kicad.md) — 侧重板级设计与制造输出，含集成 SPICE 工作流。
@@ -84,6 +131,7 @@ Qucs-S 官方主页列出 Vadim Kuznetsov 与 Mike Brinson 为项目创建者，
 - [Qucs-S 官方源码归档](../../sources/repos/qucs-s.md)
 - [Qucs-S 官方文档](https://qucs-s-help.readthedocs.io/en/latest/)
 - [Qucs-S 官方 Wiki：项目介绍与功能](https://github.com/ra3xdh/qucs_s/wiki)
+- 源码核对（2026-11-02）：ra3xdh/qucs_s@603940d，读过 README.md、qucs/main.cpp、qucs/qucs.cpp、qucs/extsimkernels/externsimdialog.cpp、qucs/extsimkernels/ngspice.cpp、qucs/extsimkernels/abstractspicekernel.cpp、qucs/schematic_file.cpp（prepareNetlist 签名）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

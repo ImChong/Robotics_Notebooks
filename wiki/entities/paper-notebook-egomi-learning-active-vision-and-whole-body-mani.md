@@ -44,6 +44,24 @@ summary: "机器人从人类视频学操作，要跨越具身差距。人在做�
 - **半人形（双臂 + 可动头）**是连接人类数据与人形的实用载体；
 - 与 Vision in Action、Learning to Look 等主动感知工作呼应。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人类佩戴 Quest 3S 头显 + 双手柄采集：6-DoF 头/手位姿 + ZED 2i 第一视角视频 + 腕部相机 + 夹爪触发"] --> B["数据清洗：视频时序检查、SE(3) 平滑度阈值过滤"]
+    B --> C["坐标对齐：以首帧头位置为 base 原点，双手朝向圆均值得 yaw，VR 系 → 机器人 base 系（含 flange/TCP 标定）"]
+    C --> D["29D 动作/状态：左右手 rot6+pos+grip，头 rot6+pos（输入中左手与头相对右手表示）"]
+    D --> E["SPARKS：按视角新颖度+时近性+运动平滑度给历史帧打分，FIFO 选关键帧"]
+    E --> F["关键帧图像作为额外 image tokens 送入 PaliGemma"]
+    D --> G["π0 两阶段微调：①约 200 小时 EgoMI 多任务数据→29D 相对笛卡尔动作空间 ②任务专属微调"]
+    F --> G
+    G --> H["部署：输出 40 步 左手/右手/头 位姿 + 夹爪，temporal chunk ensembling，25Hz 控制"]
+    H --> I["Pyroki 可微分 IK：躯干/手臂与 YAM 主动头两路并行求解"]
+    I --> J["Rainbow RBY1 + YAM 主动头 机器人执行"]
+```
+
+图依据：论文 §III EgoMI System（A–D）、§IV Method（A 29D 接口、B SPARKS、C 策略训练、D 部署）/ Fig.1、Fig.3
+
 ## 解决什么问题
 
 从人类视频学操作有**具身差距**，且： - 人会**主动协调头与手**（动态视角、视觉搜索），机器人若忽略则学不好； - **视角快速切换**让策略难以利用历史观测。
@@ -132,6 +150,7 @@ EgoMI 要：把**头部主动运动**显式建模，并用**记忆**应对视角
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos/EgoMI__Learning_Active_Vision_and_Whole-Body_Manipulation_from_Egocentric_Human_Demos.html>
 - 论文：<https://arxiv.org/abs/2511.00153>
 - 论文正文（实验与结论 / 局限）：<https://arxiv.org/html/2511.00153>
+- [arXiv PDF](https://arxiv.org/pdf/2511.00153)：已通读方法部分（实验与附录以略读为准）：§III EgoMI System、§IV Method（A–D）、§V 实验设定与任务描述
 
 ## 推荐继续阅读
 

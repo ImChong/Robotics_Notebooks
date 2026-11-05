@@ -42,6 +42,25 @@ Adaptive world model-based planning for autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    PRE["预训练（离线）<br/>学习动力学模型 WM_φ（RNN 潜空间世界模型）<br/>与规划策略 π_ω；保留预训练回放缓冲区 B"] --> FT
+    subgraph FT["在线微调：每个 finetuning step t"]
+        COL["按当前策略 π_t 与动力学模型 WM_t 规划并交互<br/>收集新任务样本 W = (x, a, r)"]
+        COL --> MI["Mismatch Identification<br/>用 B 与 W 估计 TV 距离<br/>动力学失配 D_TV(P‖P̂)，策略失配 D_TV(π_t‖π_ω)"]
+        MI --> CMP{"D_TV(P‖P̂) > C · D_TV(π_t‖π_ω) ?"}
+        CMP -->|"是：动力学失配占主导"| UM["更新动力学模型<br/>LoRA 式低秩适配，仅更新基向量权重 B"]
+        CMP -->|"否：策略失配占主导"| UP["更新规划策略<br/>策略分解为子单元凸组合，仅更新权重向量 Δ"]
+    end
+    UM --> NEXT["进入下一微调步"]
+    UP --> NEXT
+    NEXT -.-> COL
+```
+
+图依据：论文 §2.2（Mismatch Identification and Alignment-driven Finetuning）、Algorithm 1 与 Fig. 2；预训练部分依据 §2 Basic Setting。判据中的阈值 C 由 §2.1 的理论界（Theorem 1）导出。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Adaptive world model-based planning for autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.13072>
+- [arXiv PDF](https://arxiv.org/pdf/2501.13072)：已通读方法部分（实验与附录以略读为准）：§1 引言末段、§2 AdaWM（基本设定、2.1 失配对性能退化的影响、2.2 失配识别与对齐驱动微调、Algorithm 1）
 
 ## 推荐继续阅读
 

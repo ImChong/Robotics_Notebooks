@@ -72,6 +72,48 @@ SolidCraft 提供桌面应用、WebAssembly 浏览器应用和无头 CLI；桌�
 - 参数化几何仍需进行工程审查：检查约束是否充分、薄壁/干涉等几何是否有效，以及尺寸和装配是否满足实际工况。
 - 导出几何进入机器人仿真时，仍需单独维护机器人描述所需的坐标系、质量惯量、碰撞体、关节和接触参数。
 
+## 源码运行时序图
+
+入口：`solidcraft-cli run <脚本或设计文件> --out <输出文件>`（`apps/solidcraft-cli/src/main.rs` 的 `main()` 调用 `cmd_run`）。脚本的每一步都是引擎命令 id 加 JSON 参数，经 `Session::execute` 分发，与桌面应用和 MCP 服务器共用同一套命令注册表。下图只画无界面的脚本执行路径；MCP 服务器（`crates/mcp`）的请求分发未读，未画入。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as "用户 / 脚本<br/>solidcraft-cli run"
+    participant M as "main() 与 cmd_run<br/>apps/solidcraft-cli/src/main.rs"
+    participant S as "Session<br/>crates/engine/src/lib.rs"
+    participant RS as "run_script_with<br/>crates/engine/src/lib.rs"
+    participant EX as "Session::execute(id, params)<br/>crates/engine/src/lib.rs"
+    participant CMD as "命令实现 spec.run<br/>crates/engine/src/cmd/"
+    U->>M: solidcraft-cli run script.json --out part.step
+    M->>M: 解析参数, 读取 JSON 脚本
+    alt 指定 --in 设计文件
+        M->>S: load_with(path) 载入设计
+    else 未指定
+        M->>S: 新建 Session::default()
+    end
+    M->>RS: run_script_timed(script, profile, each)
+    loop 脚本中的每一步
+        RS->>EX: execute(command_id, params)
+        EX->>EX: find_command(id), 未知则报错
+        EX->>EX: spec.enabled 前置条件与 check_command 参数检查
+        EX->>CMD: catch_unwind 内调用 (spec.run)(self, params)
+        CMD-->>EX: 结果 JSON
+        EX-->>RS: 结果
+        RS->>RS: each(step, result) 记录结果
+    end
+    RS-->>M: 结果列表
+    loop 每个 --out 路径
+        M->>EX: execute("file.export", {path})
+    end
+    opt 指定 --save
+        M->>EX: execute("file.save_as", {path})
+    end
+    M-->>U: 退出码与 --results 或 --json-out 输出
+```
+
+图依据：bherbruck/solidcraft@6bca7d2，读过 `README.md`（开头部分）、`apps/solidcraft-cli/src/main.rs`（`main` 的命令分发、`cmd_run` 中的脚本执行与 `--out`、`--save` 处理、`load_with`）、`crates/engine/src/lib.rs`（`run_script`、`run_script_timed`、`run_script_with` 的步骤循环、`execute` 的查找与前置检查分支）、`crates/engine/src/cmd/script.rs`（`script_steps`，仅看到函数签名）。命令实现 `crates/engine/src/cmd/` 的具体内容未读；`check_command` 与 `catch_unwind` 的细节只依据分支概括。未运行代码。
+
 ## 关联页面
 
 - [FreeCAD（开源参数化机械 CAD）](./freecad.md) — 对照成熟 B-rep、STEP 与工程化工作流。
@@ -83,6 +125,7 @@ SolidCraft 提供桌面应用、WebAssembly 浏览器应用和无头 CLI；桌�
 - [SolidCraft 官方项目页与使用文档](../../sources/sites/solidcraft.md)
 - [SolidCraft 官方源码仓库归档](../../sources/repos/solidcraft.md)
 - [SolidCraft 官方 README](https://github.com/bherbruck/solidcraft/blob/main/README.md)
+- 源码核对（2026-11-02）：bherbruck/solidcraft@6bca7d2，读过 README.md、apps/solidcraft-cli/src/main.rs、crates/engine/src/lib.rs、crates/engine/src/cmd/script.rs；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -43,6 +43,29 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：语言指令 + 连续 RGB 视频流<br/>（每个 episode 视为多轮对话 o_i → a_i）"] --> LLM["基于 LLaVA-Video 的 LLM 解码器<br/>交错建模视觉 / 语言 / 动作"]
+    subgraph FAST["快速流式对话上下文"]
+        SW["滑动窗口 KV cache<br/>保留最近 N 轮对话"]
+    end
+    subgraph SLOW["慢速更新记忆"]
+        FULL["窗口写满：卸载 KV 状态，丢弃提示与动作 token"] --> PRUNE["体素式 3D 空间剪枝（免训练）<br/>深度反投影到共享 3D 体素，同体素仅保留最新 token"]
+        PRUNE --> MEM["记忆 token 状态 M_0 … M_j"]
+    end
+    SW --> LLM
+    MEM --> LLM
+    LLM --> ACT["逐 token 自回归生成动作 a_i"]
+    SW --> FULL
+    ACT --> NEXT["下一轮观测 o_(i+1) 追加到 token 流"]
+    NEXT --> LLM
+    CT["多源联合训练 Co-Training<br/>导航数据（MP3D / HM3D / DAgger）+ 通用多模态数据（VQA / MMC4）"] -.-> LLM
+```
+
+图依据：论文 §III-A–D / Fig.2、Fig.3、Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -100,6 +123,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2507.05240>
+- [arXiv PDF](https://arxiv.org/pdf/2507.05240)：已通读方法部分（实验与附录以略读为准）：§I 引言、§III 方法（III-A 多轮自回归生成、III-B 快速流式对话上下文、III-C 慢速更新记忆、III-D 联合训练）
 
 ## 推荐继续阅读
 

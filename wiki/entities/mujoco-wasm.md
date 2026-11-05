@@ -81,12 +81,48 @@ MJCF 资产 ──► Emscripten FS ──► MjModel / MjData
 - [仿真评估基础设施](../concepts/simulation-evaluation-infrastructure.md) — 在线 Sim2Sim 在评估链中的位置
 - [Sim2Real](../concepts/sim2real.md) — 浏览器 demo 与真机部署的边界
 
+## 源码运行时序图
+
+入口：浏览器或 Node 中 `import loadMujoco from "@mujoco/mujoco"` 后调用 `loadMujoco()`，再用 `MjModel.from_xml_string` 等接口驱动仿真（示例见 `wasm/demo_app/app.ts`；npm 包名与导出见 `wasm/package.npm.json`）
+
+```mermaid
+sequenceDiagram
+    participant APP as wasm/demo_app/app.ts 页面代码
+    participant LDR as dist/mujoco.js loadMujoco 生成模块
+    participant BND as wasm/codegen/generated/bindings.cc embind 绑定
+    participant CORE as MuJoCo C 核心 mj_step 与 mj_forward
+    participant RND as mjv_updateScene 与 Three.js 渲染
+
+    APP->>LDR: loadMujoco()（MODULARIZE，EXPORT_NAME 为 loadMujoco）
+    LDR-->>APP: 返回 mujoco 模块，内含 MjModel、MjData 等类
+    APP->>BND: MjModel.from_xml_string(xmlContent[, vfs])
+    BND->>CORE: from_xml_string_wrapper 解析 MJCF 并编译模型
+    BND-->>APP: 返回 MjModel 句柄
+    APP->>BND: new MjData(mjModel)
+    BND-->>APP: 返回 MjData 句柄
+    opt 点击重置
+        APP->>BND: mj_resetData 后 mj_forward(mjModel, mjData)
+    end
+    loop requestAnimationFrame 每帧
+        APP->>APP: update()，未暂停时在约 1/60 秒的仿真时间内循环
+        loop 直到 mjData.time 前进约 1/60 秒
+            APP->>BND: mj_step(mjModel, mjData)
+            BND->>CORE: mj_step_wrapper 调用 mj_step
+        end
+        APP->>RND: mjv_updateScene(mjModel, mjData, ...) 更新场景
+        APP->>RND: renderer.render(scene, camera)
+    end
+```
+
+图依据：google-deepmind/mujoco@79ca367，读过 `wasm/README.md`（安装与线程模式）、`wasm/package.npm.json`（exports）、`wasm/CMakeLists.txt`（`MODULARIZE`、`EXPORT_NAME`）、`wasm/demo_app/app.ts`（`loadModel`、`update`、动画循环）、`wasm/codegen/generated/bindings.cc`（`MjModel` 的 `from_xml_string` 注册、`mj_step` 与 `mj_forward` 的 `function` 注册、`mj_step_wrapper`）；`wasm/unpack.h` 为 JS 与 C++ 之间的缓冲工具，未纳入本图，MjVFS 资产读取路径未核对；未运行代码。
+
 ## 参考来源
 
 - [MuJoCo 主仓归档（含官方 WASM）](../../sources/repos/mujoco.md)
 - [mujoco_wasm 社区演示仓](../../sources/repos/mujoco_wasm.md)
 - [MuJoCo JavaScript Bindings README](https://github.com/google-deepmind/mujoco/blob/main/wasm/README.md)
 - [zalo/mujoco_wasm 在线 Demo](https://zalo.github.io/mujoco_wasm/)
+- 源码核对（2026-11-02）：google-deepmind/mujoco@79ca367，读过 `wasm/README.md`、`wasm/package.npm.json`、`wasm/CMakeLists.txt`、`wasm/demo_app/app.ts`、`wasm/codegen/generated/bindings.cc`、`wasm/unpack.h`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

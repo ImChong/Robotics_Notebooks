@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2606.19378"
+arxiv: "2606.26046"
 venue: "arXiv 2026"
 summary: "Integrates frontier exploration, global semantic-map reasoning, and egocentric VLM-based reasoning through a contextual multi-armed bandit"
 related:
@@ -42,6 +42,26 @@ Integrates frontier exploration, global semantic-map reasoning, and egocentric V
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["机器人输入：RGB-D、LiDAR 占据栅格、语言指令 L_t"] --> ORV["OpenRoboVox：GPU 优化 TSDF 融合 + 语义 mask 检测 + 动态实例合并"]
+  ORV --> SD["Scene Dictionary S_t（实例 ID、特征、caption、位置、bbox）+ 2D Pillar Map + 相似度图"]
+  IN --> FE["Frontier 专家：候选 frontier 中选信息增益与代价平衡的目标"]
+  SD --> SME["Semantic Map 专家：相似度预过滤实例 → LLM 评分排序 → 最高分实例的质心为目标"]
+  IN --> VE["Egocentric VLM 专家：带网格标注的 RGB → 置信度与动作（前进 / 左转 / 右转 / 掉头）"]
+  VE -- "场景描述 D_scene" --> SME
+  FE --> CMAB
+  SME --> CMAB
+  VE --> CMAB
+  CTX["上下文 c_t：栅格覆盖率及变化、回溯指示、上一动作、VLM 置信度 V_vlm、相似度特征 V_sim"] --> CMAB["Contextual Multi-Armed Bandit（LinUCB）选择一个专家"]
+  CMAB --> G["所选专家的候选目标 g_t"]
+  G --> NAV["导航执行并获得奖励（覆盖率、回溯、VLM 置信度、相似度、任务成功）→ 更新 LinUCB"]
+```
+
+图依据：论文 §III-A–C / Fig.2、§IV-A、§IV-E、§IV-F、Algorithm 2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +69,7 @@ Integrates frontier exploration, global semantic-map reasoning, and egocentric V
 | 编号 | 217/249 |
 | 分组 | Human Pose & Mesh Recovery |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2606.19378> |
+| 论文 | <https://arxiv.org/abs/2606.26046> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +82,7 @@ Integrates frontier exploration, global semantic-map reasoning, and egocentric V
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2606.19378) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2606.26046) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +115,11 @@ Integrates frontier exploration, global semantic-map reasoning, and egocentric V
 - [`sources/papers/sun_awesome_ego_2606_19378_roboatlas-contextual-active-slam.md`](../../sources/papers/sun_awesome_ego_2606_19378_roboatlas-contextual-active-slam.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2606.19378>
+- 论文：<https://arxiv.org/abs/2606.26046>
+- 编号核对（2026-11-02）：上游清单登记的 2606.19378 经 arXiv 官方记录核对为《A Hybrid GNN-FEM Framework for Phase-Field Fracture Simulation. Physics-Preserving Hybridization for Generalizable Surrogate Modeling》，与本页论文不符；已更正为 2606.26046《RoboAtlas: Contextual Active SLAM》。
+- [arXiv PDF](https://arxiv.org/pdf/2606.26046)：已通读方法部分（实验与附录以略读为准）：摘要、§I 引言、§III 问题设定与总体框架、§IV-A 赌博机、§IV-E 与 §IV-F（Semantic Map / Egocentric VLM 专家）；§IV-B 至 §IV-D、§V 仅略读
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2606.19378)
+- [原文](https://arxiv.org/abs/2606.26046)

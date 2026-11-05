@@ -9,7 +9,7 @@
 - **出处：** ICCV 2023 · arXiv:2307.15644
 - **索引来源：** [wechat_shenlan_vln_10_papers_survey.md](../blogs/wechat_shenlan_vln_10_papers_survey.md)（<https://mp.weixin.qq.com/s/2_dYaN6IeWn_vvS_jmGqRQ>）
 - **入库日期：** 2026-06-20
-- **一句话说明：** 从 HM3D/Gibson 1200+ 场景自动采样路径、风格迁移与指令生成，构建 490 万指令-轨迹对预训练数据。
+- **一句话说明：** 从 HM3D/Gibson 1200+ 场景构建导航图、用 Co-Mod GAN 修复渲染图像、采样轨迹并由 Speaker 生成指令，构建 490 万指令-轨迹对预训练数据。
 
 ## 核心摘录（策展，非全文）
 

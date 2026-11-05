@@ -42,6 +42,26 @@ Learning and leveraging environment dynamics in web navigation.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph T["世界模型训练"]
+        A["Step I 采集轨迹：LLM agent 与环境交互，得到 D = {I, o_t, a_t, o_t+1}"] --> B["Step II 转移聚焦的观测抽象：Hungarian algorithm 匹配 o_t 与 o_t+1 的元素"]
+        B --> C["得到 UPDATED / DELETED / ADDED 状态转移列表"]
+        C --> D["LLM 转写为自由形式描述 õ_t+1，替换 o_t+1"]
+        D --> E["Step III 学习环境动态：以 next-token 损失训练世界模型 φ，输入 I、o_t、a_t"]
+    end
+    subgraph P["推理时策略优化（策略模型 θ 冻结）"]
+        F["策略模型 θ 以 top-p 采样 k 个候选动作"] --> G["世界模型 φ 为每个候选预测下一观测 õ_t+1"]
+        G --> H["价值函数 V（现成 LLM）估计各候选的奖励"]
+        H --> I["argmax 选出奖励最高的动作并执行"]
+    end
+    E --> G
+```
+
+图依据：论文 §4.1 / §4.2 与 Fig.3、Fig.5、式 (1)–(3)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Learning and leveraging environment dynamics in web navigation.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.13232>
+- [arXiv PDF](https://arxiv.org/pdf/2410.13232)：已通读方法部分（实验与附录以略读为准）：§3 预备分析、§4.1 世界模型训练、§4.2 推理时策略优化
 
 ## 推荐继续阅读
 

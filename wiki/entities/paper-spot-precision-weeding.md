@@ -39,6 +39,24 @@ summary: "Spot 精准除草（arXiv:2609.20048）：Boston Dynamics Spot 刚性�
 
 - 农业精准作业需移动基座 + 工具定位；四足可复用现有 Spot 平台。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Locomotion Planner：直线前进约 20 cm（速度指令）"] --> B["Weeding phase（足端静止）：RealSense L515 RGB-D"]
+    B --> C["YOLOv8 实例分割 → 掩码质心经深度反投影得 3D 杂草位置，存入无序向量 W~"]
+    C --> D["Weed Removal Motion Planner：只保留落在实验工作空间 E 内的杂草"]
+    D --> E["逆运动学求去除位姿 (x, θ, ψ)，按 ψ 递增排序得到有序向量 W"]
+    E --> F["逐个把目标位姿发给 Spot body pose 指令（含 0-DOF 铣刀末端）"]
+    F --> G["自适应目标更新：静止时再读一次相机，p_new = IK(FK(p_current) + w_new − p_EF)"]
+    G --> H["铣刀去除杂草"]
+    H --> I{"W 中还有杂草？"}
+    I -->|"是"| F
+    I -->|"否"| A
+```
+
+图依据：论文 §3 控制架构（Fig. 4）、§3.2 杂草检测、§3.3 去除规划、§3.4 杂草去除、§3.5 步行规划。
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -82,6 +100,7 @@ summary: "Spot 精准除草（arXiv:2609.20048）：Boston Dynamics Spot 刚性�
 - [spot-precision-weeding_arxiv_2609_20048.md](../../sources/papers/spot-precision-weeding_arxiv_2609_20048.md)
 - [wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-14_18.md)
 - [arXiv:2609.20048](https://arxiv.org/abs/2609.20048)
+- [arXiv PDF](https://arxiv.org/pdf/2609.20048)：已通读方法部分（实验与附录以略读为准）：§1.4 贡献、§2.1 平台、§3 控制架构、§3.2 杂草检测、§3.3/3.4 去除规划与自适应更新、§3.5 步行规划；§4 结果仅略读
 
 ## 推荐继续阅读
 

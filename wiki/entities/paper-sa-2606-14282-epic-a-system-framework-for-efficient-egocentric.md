@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-egocentric-vision, sun254667-ego]
 status: complete
 updated: 2026-10-06
-arxiv: "2606.14282"
+arxiv: "2606.15859"
 venue: "arXiv 2026"
 summary: "An efficient egocentric perception system for embodied intelligence on smart AR glasses, leveraging gaze, pose, and inertial signals to infer user intent and retain only the most informative parts of perceptual input"
 related:
@@ -42,6 +42,26 @@ An efficient egocentric perception system for embodied intelligence on smart AR 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  IN["AR 眼镜输入：视频帧 F_t + 注视 g_t + 位姿 U_t（IMU）"] --> FB{"Frame Bypass Check：F_ref 与 F_t 像素差 > γ ?"}
+  FB -- "否，且旁路计数 c 未超阈值 θ" --> SKIP["跳过该帧（c 加 1）"]
+  FB -- "是，或 c 超过 θ" --> SRD["SRD / HIR 模块：3 层 CNN 预测二值显著图 S_t，帧切分为 patch"]
+  SRD --> TRD["TRD 模块：FastDepth 深度估计 → 用缓冲位姿 U_c 与当前位姿 U_t 重投影缓冲 patch → RGB 差 I_diff"]
+  TRD --> CMP{"I_diff < τ ?"}
+  CMP -- "是：冗余" --> POP["匹配缓冲项的 popularity P_c 加 1"]
+  CMP -- "否，逐项比较仍无匹配" --> NEW["新建 DC 缓冲项，P_t 初始为 1"]
+  NEW --> FULL{"DC 缓冲已满?"}
+  FULL -- "是" --> EV["按 popularity 与显著度淘汰一项并写入主存储"]
+  FULL -- "否" --> ST["保留在 DC 缓冲"]
+  EV --> EFM["保留的 patch 供下游 embodied foundation model（如 Qwen2.5-VL）做第一人称视频理解"]
+  ST --> EFM
+```
+
+图依据：论文 §3.1–3.5 / Fig.3（EPIC 算法）；Frame Bypass 在传感器内实现，见 §4.2 / Fig.5。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +69,7 @@ An efficient egocentric perception system for embodied intelligence on smart AR 
 | 编号 | 053/249 |
 | 分组 | 25 Gaze Attention & Intention Prediction |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2606.14282> |
+| 论文 | <https://arxiv.org/abs/2606.15859> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +82,7 @@ An efficient egocentric perception system for embodied intelligence on smart AR 
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2606.14282) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2606.15859) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-ego-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +115,11 @@ An efficient egocentric perception system for embodied intelligence on smart AR 
 - [`sources/papers/sun_awesome_ego_2606_14282_epic-a-system-framework-for-efficient-eg.md`](../../sources/papers/sun_awesome_ego_2606_14282_epic-a-system-framework-for-efficient-eg.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
-- 论文：<https://arxiv.org/abs/2606.14282>
+- 论文：<https://arxiv.org/abs/2606.15859>
+- 编号核对（2026-11-02）：上游清单登记的 2606.14282 经 arXiv 官方记录核对为《Characterization of white-light enhancements under umbral conditions in one-dimensional simulations of solar flares》，与本页论文不符；已更正为 2606.15859《EPIC: A System Framework for Efficient Egocentric Perception on Embodied AR Glasses》。
+- [arXiv PDF](https://arxiv.org/pdf/2606.15859)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§2 背景、§3 EPIC 算法、§4 硬件系统（§4.1–4.2）、§5 评测设定
 
 ## 推荐继续阅读
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
-- [原文](https://arxiv.org/abs/2606.14282)
+- [原文](https://arxiv.org/abs/2606.15859)

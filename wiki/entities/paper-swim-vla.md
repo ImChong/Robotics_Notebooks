@@ -38,6 +38,36 @@ summary: "SWIM（arXiv:2609.17035）：RGB+语言+tendon state → Diffusion Act
 
 - 软体操作需 tendon 状态与视觉本体融合；刚性 VLA 假设不适用。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph TRAIN["训练阶段（MuJoCo 仿真交互轨迹）"]
+        A["渲染 RGB I_t + 语言指令 ℓ + 腱长向量 Ten_t"] --> B["多模态编码器 f_θ（OpenVLA-OFT 骨干）"]
+        B --> C["共享表示 h_t"]
+        C --> D["扩散动作头 ε_ψ：预测 H 步指令块 a_t:t+H-1 的噪声"]
+        C --> E["VSP 头 v_φ（仅训练）：预测 N_b 个有序身体锚点图像坐标 q_t"]
+        D --> F["L_act"]
+        E --> G["L_VSP"]
+        F --> H["L_train = L_act + λ_VSP · L_VSP"]
+        G --> H
+    end
+    H -->|训练后丢弃 VSP 头，保留 f_θ 与 ε_ψ| P["部署策略 π_Θ"]
+    subgraph INFER["推理阶段"]
+        I["初始 RGB 观测 I + 语言指令 ℓ"] --> J["初始化虚拟场景：预定义物体模型 + 标定平面位置"]
+        J --> K["虚拟 rollout：查询 π_Θ，得到 H 步指令块"]
+        K --> L["仿真中只执行前 K 步 (K ≤ H)"]
+        L --> M["新的渲染 RGB + 腱长 作为下一次查询输入"]
+        M --> K
+        L --> N["按时间顺序拼接到指令序列 U，直至任务完成"]
+        N --> O["完整驱动指令序列 U = a_0 … a_T-1"]
+        O --> Q["真机开环执行（无在线策略查询），本体柔顺性吸收局部接触偏差"]
+    end
+    P --> K
+```
+
+图依据：论文 §III（Fig. 2、式 2–10）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -81,6 +111,7 @@ summary: "SWIM（arXiv:2609.17035）：RGB+语言+tendon state → Diffusion Act
 - [swim-vla_arxiv_2609_17035.md](../../sources/papers/swim-vla_arxiv_2609_17035.md)
 - [wechat_senlanke_weekly_manipulation_2026-09-14_18.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-09-14_18.md)
 - [arXiv:2609.17035](https://arxiv.org/abs/2609.17035)
+- [arXiv PDF](https://arxiv.org/pdf/2609.17035)：已通读方法部分（实验与附录以略读为准）：§II 问题定义，§III-A 训练（共享表示、扩散目标、VSP、联合目标），§III-B 虚拟 rollout 推理，附录实现细节表
 
 ## 推荐继续阅读
 

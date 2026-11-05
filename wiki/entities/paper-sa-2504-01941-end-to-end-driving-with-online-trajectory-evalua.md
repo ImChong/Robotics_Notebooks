@@ -43,6 +43,25 @@ End-to-end driving with online trajectory evaluation via BEV world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["多视角 RGB 图像 + LiDAR"] --> ENC["BEV 编码器（沿用 TransFuser）<br/>得到 BEV 状态 B_t"]
+    ANC["轨迹锚点：对专家轨迹做 K-Means<br/>共 N 个"] --> REF["轨迹精炼<br/>轨迹编码器 TE + 对 BEV 特征的 CrossAttention + MLP"]
+    ENC --> REF
+    REF --> AE["N 条精炼轨迹 → 动作嵌入 a_t"]
+    ENC --> WM["BEV 世界模型（Transformer Encoder）<br/>输入 (B_t, a_t)，递归预测未来 K 步 BEV 状态"]
+    AE --> WM
+    WM --> RM["奖励模型：拼接 B_t 与未来 K 步 BEV<br/>2D 卷积 → 全局平均池化 → 与动作嵌入拼接 → MLP 预测奖励"]
+    AE --> RM
+    RM --> SEL["选取最终奖励最高的轨迹作为输出"]
+    WM -. 仅训练 .-> SUP["BEV 语义图解码，Focal Loss 监督<br/>nuPlan 模拟器 + 规则评估器提供仿真奖励目标"]
+    SUP -. 仿真奖励 NC/DAC/TTC/Comf/EP + 模仿奖励 .-> RM
+```
+
+图依据：论文 §3 Method（3.1 Trajectory Predictor、3.2 BEV World Model、3.3 Reward Model、3.4 Supervision in BEV Space）/ Fig.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +117,7 @@ End-to-end driving with online trajectory evaluation via BEV world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.01941>
+- [arXiv PDF](https://arxiv.org/pdf/2504.01941)：已通读方法部分（实验与附录以略读为准）：§3.1–3.4
 
 ## 推荐继续阅读
 

@@ -48,10 +48,60 @@ summary: "crazyflie-firmware 是 Bitcraze Crazyflie 2.x / Bolt 的机载飞控�
 - **局限：室外长航程** — 微型机体受风与续航限制大。
 - **局限：重载操作** — 不适合工业级载荷与人机协作臂。
 
+## 源码运行时序图
+
+入口：MCU 复位后执行 `src/init/main.c` 的 `main()`，经 FreeRTOS 调度 `systemTask`，再由 `stabilizerInit` 创建 1 kHz 的 `stabilizerTask`（固件由仓库根目录 Makefile 构建，烧录与上位机 cfclient/cflib 不在图内）。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant MCU as main.c main() / FreeRTOS
+    participant ST as system.c systemTask
+    participant STAB as stabilizer.c stabilizerTask
+    participant SENS as hal/src/sensors.c
+    participant EST as estimator.c stateEstimator
+    participant CMD as commander.c 设定点队列
+    participant SUP as supervisor 安全门控
+    participant CTRL as controller.c controller
+    participant MOT as stabilizer.c controlMotors
+
+    MCU->>MCU: check_enter_bootloader，platformInit（失败则死循环）
+    MCU->>ST: systemLaunch 创建 systemTask
+    MCU->>MCU: vTaskStartScheduler
+    ST->>ST: systemInit、commInit、commanderInit、deckInit 等模块初始化
+    ST->>STAB: stabilizerInit(estimator)，controllerInit、powerDistributionInit
+    STAB->>STAB: 创建 stabilizerTask
+    ST->>ST: 自检通过后置 isInit = true
+    STAB->>STAB: systemWaitStart，等待 sensorsAreCalibrated
+    loop 1 kHz 控制循环
+        STAB->>SENS: sensorsWaitDataReady
+        SENS->>STAB: sensorsAcquire(&sensorData)
+        STAB->>EST: stateEstimator(&state, stabilizerStep)
+        STAB->>SUP: supervisorCanFly，crtpCommanderBlock(!canFly)
+        opt canFly 时
+            STAB->>CMD: crtpCommanderHighLevelGetSetpoint → commanderSetSetpoint
+        end
+        STAB->>CMD: commanderGetSetpoint(&setpoint, &state)
+        STAB->>SUP: supervisorUpdate，collisionAvoidanceUpdateSetpoint，supervisorOverrideSetpoint
+        STAB->>CTRL: controller(&control, &setpoint, &sensorData, &state)
+        CTRL->>CTRL: controllerFunctions[currentController].update（默认 PID）
+        alt supervisorAreMotorsAllowedToRun 为真
+            STAB->>MOT: controlMotors(&control)
+            MOT->>MOT: powerDistribution → batteryCompensation → powerDistributionCap → setMotorRatios
+        else 否则
+            STAB->>MOT: motorsStop()
+        end
+    end
+```
+
+图依据：crazyflie-firmware@e828ed2，实际读过 src/init/main.c（main 段）、src/modules/src/system.c（systemLaunch、systemInit、systemTask、systemWaitStart 段）、src/modules/src/stabilizer.c（stabilizerInit、stabilizerTask 主循环、controlMotors 段）、src/hal/src/sensors.c（sensorsWaitDataReady、sensorsAreCalibrated 段）、src/modules/src/controller/controller.c（controller 分发与 ControllerTypeAutoSelect 段）、src/modules/src/estimator/estimator.c（stateEstimator 分发段）、src/modules/src/commander.c（commanderGetSetpoint 段）；CRTP 接收侧（commander 设定点如何入队）、supervisor、power_distribution_quadrotor.c 的具体实现与 motors 驱动均未读，只按 stabilizer.c 的调用名画出。
+
 ## 参考来源
 
 - [sources/repos/crazyflie_firmware.md](../../sources/repos/crazyflie_firmware.md)
 - [bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware)
+
+- 源码核对（2026-11-02）：bitcraze/crazyflie-firmware@e828ed2，读过 src/init/main.c、src/modules/src/system.c、src/modules/src/stabilizer.c、src/hal/src/sensors.c、src/modules/src/controller/controller.c、src/modules/src/estimator/estimator.c、src/modules/src/commander.c；时序图依据以上文件，未运行代码。
 
 ## 关联页面
 

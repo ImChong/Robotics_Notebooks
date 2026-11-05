@@ -61,11 +61,54 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`cd infer_ovon && bash eval_ovon.sh`（内部 `python -u run_infer_ovon.py --exp-config ovon/configs/ovon_pano.yaml --model-path ... --result-path ...`；R2R/RxR 为 `infer_r2r_rxr/` 下的 `eval_r2r.sh`、`eval_rxr.sh`，本图只画 OVON；未读 R2R/RxR 代码）。`PREDICT_FUTURE_FRAMES=true` 时才启用 Wan 未来帧分支，默认关闭。
+
+```mermaid
+sequenceDiagram
+    participant SH as eval_ovon.sh
+    participant Run as run_infer_ovon.py（main / run_exp）
+    participant Ev as agent/waypoint_agent_ovon.py（evaluate_agent_ovon）
+    participant Ag as Waypoint_Agent
+    participant Q as QwenModel（Qwen VL 主干）
+    participant AF as ActionFormer（wan/future_frames.build_navigation_model）
+    participant Wan as FutureFramePredictor（Wan2.2，可选）
+    participant Env as habitat.Env（OVON）
+
+    SH->>Run: python run_infer_ovon.py（CUDA_VISIBLE_DEVICES，split-num / split-id）
+    Run->>Run: habitat.get_config + make_dataset，dataset.get_splits
+    Run->>Ev: evaluate_agent_ovon(config, dataset_split, model_path, result_path)
+    Ev->>Ag: Waypoint_Agent(model_path)
+    Ag->>Q: resolve_checkpoint_paths → QwenModel(qwen_path)
+    Ag->>AF: build_navigation_model(action_path, predict_future_frames, wan_model_path)
+    loop 每个 episode
+        Ev->>Env: env.reset()，agent.reset()，随机选 obj_goal_template 指令
+        loop 直到 env.episode_over
+            Ev->>Ag: act(obs 含 left/front/right 图像、pose、instruction)
+            Ag->>Ag: add_frame，generate_infer_prompt（历史图像 + 局部 pose）
+            Ag->>Q: qwen_infer(messages, return_vlm_output=True)
+            Q-->>Ag: visual_language_emb
+            Ag->>AF: action_former(visual_language_emb)
+            AF-->>Ag: 航点 wp_pred、arrive、sin/cos 角度
+            opt predict_future_frames
+                Ag->>Wan: predict(frames, visual_language_emb)，save_future_video
+            end
+            Ag-->>Ev: 航点 / arrive_pred / recover_angle
+            Ev->>Env: env.step(GO_TOWARD_POINT 或 stop)
+        end
+        Ev->>Ev: env.get_metrics → write_result（success / spl / distance_to_goal）
+    end
+```
+
+图依据：amap-cvlab/AstraNav-World@734dc04，读过 README.md、infer_ovon/eval_ovon.sh、infer_ovon/run_infer_ovon.py、infer_ovon/agent/waypoint_agent_ovon.py、world/wan/future_frames.py（build_navigation_model、predict）、world/wan/checkpoint.py（函数列表）。
+
 ## 参考来源
 
 - [AstraNav-World 源码归档](../../sources/repos/astranav-world.md)（<https://github.com/amap-cvlab/AstraNav-World>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：amap-cvlab/AstraNav-World@734dc04，读过 README.md、infer_ovon/{eval_ovon.sh,run_infer_ovon.py,agent/waypoint_agent_ovon.py}、world/wan/{future_frames.py,checkpoint.py}；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

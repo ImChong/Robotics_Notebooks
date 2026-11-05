@@ -43,6 +43,37 @@ Open-world MPC with interactive digital twins.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["输入：自然语言指令 l + 场景 RGB 视频扫描 v"] --> REC["2D Gaussian Splatting 得到 Gaussian 表示 G"]
+    REC --> MESH["TSDF 融合：G → 网格 M"]
+    MESH --> MOV["Molmo 按指令找关键可动物体 → SAM2 跨视角跟踪掩码<br/>→ 投回 3D 分割出可动物体网格"]
+    MOV --> ANC["每个 Gaussian 绑定最近的可动网格，随其平移/旋转"]
+    MOV --> SIM["物理模拟器 S + 机器人 URDF"]
+    ANC --> DT["交互式数字孪生（网格管物理，Gaussian 管渲染）"]
+    SIM --> DT
+    subgraph MPC["模型预测控制：模拟信息提示（Simulation-Informed Prompting）"]
+        SUB["VLM 子目标分解：由 I_0 与 l 生成子任务集 τ"]
+        ACTV["VLM 依据当前观测选出当前子目标 τ_i"]
+        CEM["CEM 从高斯分布采样候选动作 a_k"]
+        FUT["数字孪生模拟 a_k 的后果，更新 G(T)<br/>渲染多视角未来观测（背景与机器人按深度合成）"]
+        VIEW["VLM 自适应选择最有信息量的视角"]
+        EVAL["VLM 分组评估预测结果，选出最能推进 τ_i 的结果"]
+        ELITE["精英动作更新采样分布（共 3 轮）→ 取均值得到动作 a_t"]
+        SUB --> ACTV --> CEM --> FUT
+        ACTV --> VIEW --> FUT
+        FUT --> EVAL --> ELITE
+    end
+    DT --> FUT
+    IN --> SUB
+    ELITE --> OUT["执行动作（6-DoF 夹爪位姿 + 开合），观测更新后重复规划"]
+    OUT -.-> ACTV
+```
+
+图依据：论文 §III（问题设定）、§IV-A / Fig.2（交互式数字孪生构建）、§IV-B（模拟与渲染视觉提示）、§IV-C / Fig.3（子目标分解、自适应视角、CEM 采样规划）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +129,7 @@ Open-world MPC with interactive digital twins.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.13761>
+- [arXiv PDF](https://arxiv.org/pdf/2506.13761)：已通读方法部分（实验与附录以略读为准）：§III 问题设定、§IV-A/B/C 方法；§V 实验仅略读。
 
 ## 推荐继续阅读
 

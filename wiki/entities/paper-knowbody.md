@@ -37,6 +37,32 @@ summary: "KnowBody（2609.28530）：为冻结 VLM 提供可查询/可修订身�
 - 纳入 [12 篇技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md) 与同期失败恢复、异步 WAM、接触感知、持续学习、安全 RL 条目横向对照。
 - 步骤 2.5 开源结论：**已开源**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Traj["一条 off-task 轨迹<br/>（动作 + 观测）"] -->|"初始化 B0"| Body["部分、可查询的 body model B<br/>运动响应 / 功能几何 / 相机绑定 / 操作域"]
+    Ctx["决策上下文<br/>任务指令 + 当前图像与机器人状态<br/>当前状态 M + 适用规则 K + 选取的原始证据 E"] --> VLM["冻结权重的 VLM<br/>（planner）"]
+    Body -->|"查询：运动方向 / 功能点→控制目标 / 全臂路径可行性"| VLM
+    VLM -->|"路点 + 夹爪指令"| Exec["执行器<br/>目标解析 → 路径采样（线性 + SLERP）<br/>→ IK + retiming + 关节可行性检查<br/>固定安全限制，保留最终否决权"]
+    Exec --> Robot["执行关节 / 夹爪"]
+    Robot --> Fb["执行反馈与新观测"]
+    Fb --> Loop["Observe → Record → Check → Update M"]
+    Loop -->|"仅 M 直接回到下一次决策"| Ctx
+    Loop -->|"关键事件（抓取/释放、里程碑、无进展、完成请求）"| Ver["独立上下文的 verifier 核对"]
+    Ver --> Loop
+    Loop -->|"合格证据"| Rev
+    subgraph Rev["跨 episode 修订通道（固定预算试验中关闭）"]
+        Cand["候选 B / K 修订"] --> Val["独立交互上的冻结验证"]
+        Val --> Dep["依赖已变更 B 组件的规则<br/>用原始证据重算并重新验证"]
+        Dep --> Pub["发布验证后的 B(k+1) 与可用 K(k+1)"]
+    end
+    Pub -.->|"供后续 episode"| Body
+    Pub -.->|"供后续 episode"| Ctx
+```
+
+图依据：论文 §3、§4.1–4.4 与 Fig. 2（Observe → Record → Check → Update M 与验证后修订通道）。
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -83,6 +109,7 @@ summary: "KnowBody（2609.28530）：为冻结 VLM 提供可查询/可修订身�
 - [论文归档](../../sources/papers/knowbody_arxiv_2609_28530.md)
 - [KnowBody 仓库归档](../../sources/repos/knowbody.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.28530)：已通读方法部分（实验与附录以略读为准）：摘要、§1 引言、§3 问题与学习协议、§4 方法（4.1–4.4）、§5.1 任务与指标（略读 §2 相关工作与后续实验）
 
 ## 推荐继续阅读
 

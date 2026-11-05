@@ -6,9 +6,10 @@
 - **分组：** 83 GUI / Computer-Use Agents
 - **编号：** 499/571
 - **入库日期：** 2026-08-10
-- **arXiv：** 2602.07131
+- **arXiv：** 2602.09856
+- **编号核对：** 上游清单登记的 2602.07131 经 arXiv 官方记录核对为另一篇论文《Behavior Score Prediction in Resting-State Functional MRI by Deep State Space Modeling》，与本条目不符；已更正为 2602.09856《Code2World: A GUI World Model via Renderable Code Generation》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2602.07131>
+- **论文：** <https://arxiv.org/abs/2602.09856>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Models GUI dynamics by generating renderable code rather than pixels.

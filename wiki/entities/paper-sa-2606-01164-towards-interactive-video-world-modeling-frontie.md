@@ -42,6 +42,29 @@ Systematically reviews recent research trends, technical developments, evaluatio
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  P["§2 Preliminaries<br/>2.1 Definition of Interactive World Model；交互接口与生成骨干"] --> T["§3 Recent Research Trends"]
+  T --> T1["Application Scenarios：specialist → generalist"]
+  T --> T2["World State Representation：static → dynamic, self-evolving；single-agent → multi-agent"]
+  T --> T3["Interactive Modality：single sensor → multi-sensor"]
+  T1 --> C["三个关键技术瓶颈"]
+  T2 --> C
+  T3 --> C
+  C --> C1["§4 User Action Controllability<br/>4.1 One-Shot Control in Video Generation；4.3 动作注入方式（含 Camera Pose or Trajectory 注入）"]
+  C --> C2["§5 Long-horizon Interactions and Memory<br/>5.2 Memory with Video；5.3 Explicit 3D Reconstruction；5.4 Noise Augmentation and Forcing-based Training"]
+  C --> C3["§6 Real-time Responsiveness<br/>6.2 Real-Time Rollout with Optimized Efficiency"]
+  C1 --> B["§7 Evaluation Benchmarks and Metrics<br/>Open World、Game Engine、Autonomous Driving、Embodied AI"]
+  C2 --> B
+  C3 --> B
+  B --> F["§8 Future Trends<br/>含 8.3 Extreme Long-Horizon Consistency、8.4 Physical Awareness During Interactions"]
+  F --> Z["§9 Conclusion"]
+```
+
+图依据：综述分类体系图，论文 Fig. 1（survey 结构总览）、§1 末尾的章节安排与各节标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +119,7 @@ Systematically reviews recent research trends, technical developments, evaluatio
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2606.01164>
+- [arXiv PDF](https://arxiv.org/pdf/2606.01164)：已通读摘要、§1（含 Fig. 1）与各节标题；§2–§9 正文以略读为准。
 
 ## 推荐继续阅读
 

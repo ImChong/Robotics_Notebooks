@@ -56,6 +56,41 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`python pelicanvla05_infer.py --model_path <pretrained_model> --action_dim 7`（冒烟测试，随机图像、无需真机）；或在自己的控制循环里 `from pelicanvla05_infer import PelicanVLA05Inference` 后调用 `engine.infer(...)`。仓库仅含推理代码，不含训练脚本。
+
+```mermaid
+sequenceDiagram
+    participant U as 调用方 / basevla_infer.main(_demo)
+    participant E as PelicanVLA05Inference (basevla_infer.py)
+    participant P as PelicanVLA05Policy (modeling_pelicanvla.py)
+    participant T as PelicanVLA05ProcessorTransformFn (transform_pelicanvla.py)
+    participant M as PelicanVLA05 模型 (Qwen3-VL + Cosmos + action_head)
+
+    U->>E: 构造(model_path, camera_map, state/action stats)
+    E->>P: from_pretrained(model_path, strict) 加载 model.safetensors 或 backbone+heads 分片
+    E->>T: 构造，Qwen3VLProcessor.from_pretrained(QWEN3_VL_PATH)
+    U->>E: infer(images, state, task)
+    E->>E: 各相机帧入 deque 缓冲，_temporal_stack 按 image_delta_indices 取帧并 resize_with_pad
+    E->>E: 状态 (x-mean)/std 归一化并补零到 max_state_dim
+    E->>T: processor(sample)
+    T-->>E: pixel_values / image_grid_thw / input_ids / attention_mask
+    E->>P: predict_action_chunk(batch)
+    P->>M: sample_actions(images, img_masks, pixel_values, ..., state)
+    M->>M: _prefill_action_context: embed_prefix(Qwen 视觉+文本) → language_model(use_cache)
+    M->>M: embed_middle: Cosmos 编码 → 投影成 token → 接续前缀并写 KV cache(可选 bottleneck 槽位)
+    loop num_inference_steps 次 Euler 积分(t 从 1 到 0)
+        M->>M: denoise_step: embed_suffix(state, x_t, t) → language_model(复用 KV cache) → act_head 输出速度场
+    end
+    M-->>P: actions
+    P-->>E: 截取到原始 action_dim
+    E->>E: 反归一化；delta_mask 维度加上当前 state 得绝对目标
+    E-->>U: (chunk_size, action_dim) 动作块
+```
+
+图依据：Open-X-Humanoid/Pelican-VLA05@6de5bce，读过 `pelican_vla0.5_infer/README.md`、`pelicanvla05_infer.py`、`basevla_infer.py`、`src/lerobot/policies/pelicanvla05/modeling_pelicanvla.py`（`PelicanVLA05Policy.from_pretrained` / `predict_action_chunk`、`PelicanVLA05.sample_actions` 及其 `_prefill_action_context`、`_integrate_action_flow`、`denoise_step`、`embed_prefix`、`embed_middle`）、`transform_pelicanvla.py`。`attention_vis/` 子目录（注意力可视化）未读。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -69,6 +104,7 @@ institutions:
 - [Pelican-VLA 0.5 源码归档](../../sources/repos/pelican-vla05.md)（<https://github.com/Open-X-Humanoid/Pelican-VLA05>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：Open-X-Humanoid/Pelican-VLA05@6de5bce，读过 pelican_vla0.5_infer/README.md、pelicanvla05_infer.py、basevla_infer.py、modeling_pelicanvla.py、transform_pelicanvla.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

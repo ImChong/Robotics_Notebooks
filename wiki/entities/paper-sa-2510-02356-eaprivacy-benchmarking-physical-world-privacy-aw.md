@@ -42,6 +42,27 @@ Introduces a comprehensive evaluation benchmark designed to quantify the physica
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    GEN["§3 EAPrivacy 构建：400+ 程序化生成场景，覆盖 60+ 种物理场景（办公室、实验室、家居等）；环境状态以结构化 PDDL 格式提供，部分 Tier 加入 Visual / Audio 类多模态线索"]
+    GEN --> T1["Tier 1 Sensitive Object Identification：目标容器上 1 个敏感物 + 3 / 5 / 10 / 30 个干扰物，任务为列出所有敏感物"]
+    GEN --> T2["Tier 2 Privacy in Shifting Physical Environments：同一动作在不同情境下的恰当程度"]
+    GEN --> T3["Tier 3 Inferential Privacy under Task Conflicts：由多模态线索推断隐含隐私约束，同时执行被给定的任务"]
+    GEN --> T4["Tier 4 Social Norms vs. Personal Privacy：关键社会规范与个人隐私冲突的高风险困境"]
+    T1 --> E1["指标：Main Object Ratio（MOR = I / N）、Objects Not On Container（ONC）"]
+    T2 --> E2["Rating Mode：1-5 分评分，与人类平均评分的 MAD；Selection Mode：从三个候选（人类评为 5 / 3 / 1）中选最恰当者，指标为 Selection Accuracy"]
+    T3 --> E3["指标：Privacy Violation Rate、Task Completeness；另有 Selection Mode（一个违规动作 + 两个不违规动作）"]
+    T4 --> E4["Rating Mode：二值评分（1 恰当 / 0 不恰当）；Selection Mode：二选一；均与人类评分对照"]
+    E1 --> SUBJ["§4.1 评测对象：16 个 LLM 配置（GPT、Claude、Gemini 系列及 Qwen、Llama 等开源模型）"]
+    E2 --> SUBJ
+    E3 --> SUBJ
+    E4 --> SUBJ
+```
+
+图依据：基准构建与评测协议图，论文 Fig. 1（四层概览）、§3.1–§3.4（各 Tier 的 Design / Evaluation）、§4.1；不含结果数字。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Introduces a comprehensive evaluation benchmark designed to quantify the physica
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2510.02356>
+- [arXiv PDF](https://arxiv.org/pdf/2510.02356)：已通读摘要、§1、§2、§3（3.1–3.4）、§4.1 实验设置与 §4.2 开头；§4 余下结果分析与附录略读或未读
 
 ## 推荐继续阅读
 

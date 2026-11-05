@@ -42,6 +42,28 @@ High-fidelity world modeling in CARLA for autonomous vehicles.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["前视 RGB：P 帧过去观测 + 当前观测"] --> SE["State Encoder<br/>EfficientNet-B0 + 位置编码 + 解码器 Transformer + MLP → 状态 s_t"]
+    SE --> DPA["DPA 扩散策略 Actor (U-Net)<br/>K=50 步 DDIM 去噪 → 路点轨迹 τ_t"]
+    DPA --> FE["Fourier 轨迹编码 c_t"]
+    FE --> SVD["DiffDreamer (SVD)<br/>过去帧替换前 P 个噪声帧，预测未来 H 帧"]
+    OBS --> SVD
+    SVD --> NS["未来观测 → 编码为未来状态 ŝ"]
+    NS --> RW["MLP 奖励头：r̂_t = MLP(ŝ_t, a_t)"]
+    NS -->|"下一状态再入策略"| DPA
+    subgraph TRAIN["交替训练 (Algorithm 1, Fig.3)"]
+        direction TB
+        T1["(1) 策略在仿真器收集经验存入 buffer"] --> T2["(2) 训练世界模型 L_M = L_SVD + λ3·L_r"]
+        T2 --> T3["(3) 冻结世界模型，在想象 rollout 中用 PPO 更新 DPA"]
+    end
+    RW --> T3
+```
+
+图依据：论文 §III Methodology（A 至 C）、Fig.2 架构图、Fig.3 与 Algorithm 1
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +119,7 @@ High-fidelity world modeling in CARLA for autonomous vehicles.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.10171>
+- [arXiv PDF](https://arxiv.org/pdf/2411.10171)：已通读方法部分（实验与附录以略读为准）：§III Methodology（A 至 C 及训练算法）、§IV 奖励函数（略读）
 
 ## 推荐继续阅读
 

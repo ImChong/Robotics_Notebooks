@@ -62,6 +62,57 @@ Jujutsu 源码以 Rust 实现，仓库采用 Apache-2.0 许可。GitHub stars �
 - **可撤销不等于远端操作无风险。** 本地 undo 不能自动解决已推送历史被他人基于、远端权限限制或协作冲突的问题。
 - **项目定位不是机器人专用。** 对机器人团队的价值主要在源码协作；它不管理数据集、模型 checkpoint 或实验指标，这些仍需专门的版本与追踪策略。
 
+## 源码运行时序图
+
+入口：`jj commit -m "<描述>"`（`cli/src/commands/commit.rs` 的 `cmd_commit`；命令由 `cli/src/main.rs` 的 `CliRunner::init().run()` 启动，README 中的安装与用法见官方仓库）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Sh as 用户 shell
+    participant Main as cli/src/main.rs（CliRunner）
+    participant Run as cli_util.rs run_internal()
+    participant Cmd as commands/commit.rs cmd_commit()
+    participant WS as cli_util.rs workspace_helper()
+    participant Tx as 事务（start_transaction / finish）
+    participant Lib as jj_lib（commit 存储与操作日志）
+
+    Sh->>Main: jj commit -m "描述"
+    Main->>Run: run() → run_internal()
+    Run->>Run: 依次读取 system / user / repo / workspace 配置，expand_args，parse_args（clap）
+    Run->>Cmd: run_command() 分发到 Command::Commit
+    Cmd->>WS: command.workspace_helper(ui)
+    WS->>WS: load_workspace()，load_from_workspace() 加载 ReadonlyRepo
+    WS->>WS: snapshot_working_copy()，把工作副本文件变化记入 working-copy commit
+    WS-->>Cmd: WorkspaceCommandHelper
+
+    Cmd->>Tx: start_transaction()
+    Cmd->>Lib: commit.parent_tree(index) 计算基准树
+    Cmd->>Tx: rewrite_commit(&commit).detach() 得到 commit_builder
+    opt 未给 -m 或指定 --editor
+        Cmd->>Cmd: description_template() 后 edit_description() 调用编辑器
+    end
+    Cmd->>Lib: commit_builder.write(repo) 写入新 commit
+    Cmd->>Tx: repo_mut().new_commit(新 commit, 原 tree) 创建新的工作副本 commit
+    opt 当前工作区指向原 commit
+        Cmd->>Tx: repo_mut().edit(workspace, 新工作副本 commit)
+    end
+    opt 存在可推进的 bookmark
+        Cmd->>Tx: advance_bookmarks(..., 新 commit)
+    end
+    Cmd->>Tx: finish(ui, "commit <id>")
+
+    alt 仓库无变化
+        Tx-->>Sh: 输出 Nothing changed.
+    else 有变化
+        Tx->>Tx: rebase_mutable_descendants() 重写可变后代
+        Tx->>Tx: finish_transaction() 写入新的 operation 记录
+        Tx-->>Sh: 输出状态
+    end
+```
+
+图依据：jj-vcs/jj@fc8cc4f，实际读过 `cli/src/main.rs`、`cli/src/cli_util.rs`（`run`、`run_internal`、`workspace_helper_with_stats`、`snapshot_working_copy`、`Transaction::finish`、`finish_transaction` 的调用链）、`cli/src/commands/commit.rs`（`cmd_commit` 主体）、`cli/src/commands/mod.rs`（`run_command` 分发）；`jj_lib` 内部的存储与 operation log 实现未读，未运行代码。
+
 ## 关联页面
 
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 源码控制与代码评审会成为高吞吐开发的重要基础设施
@@ -72,6 +123,7 @@ Jujutsu 源码以 Rust 实现，仓库采用 Apache-2.0 许可。GitHub stars �
 
 - [Jujutsu 仓库归档](../../sources/repos/jj-vcs-jujutsu.md)
 - [Jujutsu 官方文档](https://docs.jj-vcs.dev/latest/)
+- 源码核对（2026-11-02）：jj-vcs/jj@fc8cc4f，读过 cli/src/main.rs、cli/src/cli_util.rs（相关函数）、cli/src/commands/commit.rs、cli/src/commands/mod.rs；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

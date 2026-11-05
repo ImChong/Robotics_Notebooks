@@ -41,6 +41,32 @@ We propose PILOT (Physical Inference for Latent Optimized Trajectories), whose c
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  I["输入：当前观测 o_t + 语言指令 ℓ + 本体状态 s_t"]
+  I --> WM["World-Model 分支：预训练 Wan2.2<br/>编码 (o_t, ℓ) 得到视觉-语言上下文 c"]
+  WM --> Q["可学习 query tokens Q（K 个）<br/>从 c 中蒸馏运动语义"]
+  Q --> AM["Action Model 分支（从零训练，Perceiver 式 flow-matching 头）<br/>因果解耦注意力：Z=[S;Q] 只看 c 与自身，动作 token 额外看 Z"]
+  AM --> M["运动语义上下文 m = Motion-CoT"]
+  AM --> ACT["flow matching 解码动作块 a_t"]
+  M --> ACT
+  M --> CDE["RD 分支（训练期）：Causal Dynamics Engine (CDE)<br/>以 m 和 s_t 为条件，预测未来表征"]
+  OT["o_t、o_t+Δ"] --> ENC["冻结 VJEPA2-AC 编码器 → r_t、r_t+Δ"]
+  ENC --> CDE
+  CDE --> LRD["L_RD：预测表征与 r_t+Δ 的 SmoothL1"]
+  LRD -. 梯度回传到 query .-> Q
+  WM --> LWM["辅助未来帧预测损失 L_wm（训练期）"]
+  ACT --> LACT["L_act：条件 flow-matching 损失"]
+  LACT --> L["总目标 L = L_act + λ_wm·L_wm + λ_RD·L_RD"]
+  LWM --> L
+  LRD --> L
+  ACT --> INF["推理：仅走 理解 → query → 动作 通路，<br/>RD 分支与未来帧预测不参与"]
+```
+
+图依据：方法流程图，依据论文 §3 Method（§3.1 问题形式化、§3.3 Motion-CoT 与流匹配动作解码、§3.4 CDE 与 L_RD、§3.5 世界模型分支与总目标/推理）与 Fig. 3 的三分支描述。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +124,7 @@ We propose PILOT (Physical Inference for Latent Optimized Trajectories), whose c
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.06994>
+- [arXiv PDF](https://arxiv.org/pdf/2608.06994)：已读与流程图相关的章节（其余部分以略读为准）：摘要、§1、§3 Method（3.1–3.5）；§4 起的实验、§6、§7 仅按小节标题略读。注意：arXiv 最新版页面标注为 withdrawn，本图依据可下载的 v1 PDF
 
 ## 推荐继续阅读
 

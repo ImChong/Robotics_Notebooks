@@ -42,6 +42,25 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / LLM-Enhanced Approaches�
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CTX["领域信息 K_d: 天气 + 道路类型<br/>车道车辆数 N_v"] --> PR["按模板构造 prompt<br/>Task + Context + Output Restriction"]
+    PR --> LLM["LLM (GPT-4)<br/>推断加速度/减速度/紧急减速度/启动延迟 D_r"]
+    LLM --> FUSE["逐车道特征融合<br/>concat(s_l, D_r, K_d) 后 Linear+ReLU 得 x_l"]
+    SREAL["真实环境轨迹 D_real<br/>(s_t, a_t, s_t+1)"] --> FWD
+    FUSE --> FWD["前向模型 f_phi+<br/>预测真实环境下一状态 s^_t+1, MSE 训练"]
+    POL["DQN 策略 pi_theta 输出 a_t"] --> FWD
+    FWD --> INV["逆向模型 h_phi-<br/>在仿真数据 D_sim 上 CE 训练"]
+    INV --> GA["grounded action a^_t"]
+    GA --> SIM["在仿真环境 E_sim 中执行<br/>使仿真动力学贴近真实"]
+    SIM --> UPD["用 grounded 仿真继续训练 RL 策略 pi_theta"]
+    UPD --> POL
+```
+
+图依据：论文 §3.1（GAT 预备）、§3.2 / Fig.3（PromptGAT 框架）与 Algorithm 1。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transition / LLM-Enhanced Approaches�
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/2308.14284>
+- [arXiv PDF](https://arxiv.org/pdf/2308.14284)：已通读方法部分（实验与附录以略读为准）：§1-§3（引言、相关工作、Method：3.1 预备、3.2 Prompt-based GAT 与 Algorithm 1）；§4 实验设置与结果略读
 
 ## 推荐继续阅读
 

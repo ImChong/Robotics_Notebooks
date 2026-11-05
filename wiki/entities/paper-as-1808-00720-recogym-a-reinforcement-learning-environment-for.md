@@ -41,6 +41,22 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Environments。 �
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    R["reset：初始化一个随机合成用户"] --> O["organic 会话：用户在电商站浏览商品 v"]
+    O -->|"观测：该用户完整的 organic 会话"| A["推荐 Agent 选择广告商品 a"]
+    O -->|"用户停止在线活动"| S["结束，done = True，下一次 reset 生成新用户"]
+    A --> B["bandit 会话：在发布者网站展示广告 a"]
+    B -->|"点击 c = 1，返回电商站"| O
+    B -->|"未点击 c = 0，继续展示"| A
+    B -->|"用户停止"| S
+    B -.->|"step 返回 reward（是否点击）、done、info"| A
+```
+
+图依据：论文 §3（Fig.1 organic / bandit 用户会话马尔可夫链、Table 2 示例数据）与 §4.1（Reset / Step 与 OpenAI Gym 的映射）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +111,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Recommender System Environments。 �
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1808.00720>
+- [arXiv PDF](https://arxiv.org/pdf/1808.00720)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 问题形式化与记号、§4.1 强化学习环境、§4.2 开头
 
 ## 推荐继续阅读
 

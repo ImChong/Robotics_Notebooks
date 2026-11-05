@@ -42,6 +42,24 @@ Neural network simulator for robust policy optimization in robotics.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["策略 πθ 与环境交互<br/>采集观测-动作对"] --> B["回放缓冲区 D"]
+    B --> C["自回归训练 RWM pϕ<br/>历史 M 步 + 预测 N 步<br/>多步预测损失 Eq.2"]
+    C --> D1["GRU 世界模型<br/>内层自回归更新隐状态<br/>外层回灌预测观测"]
+    B --> E["从 D 采样初始化<br/>想象智能体"]
+    D1 --> F["想象 rollout T 步<br/>πθ 条件于预测观测 o′"]
+    E --> F
+    F --> G["由想象观测与特权信息<br/>计算奖励"]
+    G --> H["MBPO-PPO 更新 πθ"]
+    H --> A
+    H -.-> I["零样本迁移到<br/>ANYmal D / Unitree G1 实机"]
+```
+
+图依据：论文 §3.2-3.3、Algorithm 1、Fig. 2 / Fig. S7；实机迁移见 §4.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Neural network simulator for robust policy optimization in robotics.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2501.10100>
+- [arXiv PDF](https://arxiv.org/pdf/2501.10100)：已通读方法部分（实验与附录以略读为准）：§3（3.1-3.3）、§4.4、§5 与 Algorithm 1；§4.1-4.3 略读
 
 ## 推荐继续阅读
 

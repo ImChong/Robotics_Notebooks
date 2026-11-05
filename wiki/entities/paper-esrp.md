@@ -119,5 +119,6 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：CLAP](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/CLAP__Cross-Embodiment_Video_World_Models_are_Zero-Shot_Physical_Simulators/CLAP__Cross-Embodiment_Video_World_Models_are_Zero-Shot_Physical_Simulators.html)
 - [arXiv:2608.27371](https://arxiv.org/abs/2608.27371)
 - [ESRP 项目页](https://pie-lab.cn/ESRP/)

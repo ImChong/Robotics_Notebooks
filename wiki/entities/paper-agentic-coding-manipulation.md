@@ -46,6 +46,24 @@ summary: "Agentic Coding Agent（arXiv:2609.26499）：本地 Qwen3.8-27B + codi
 - 开源结论：**未开源**（步骤 2.5，2026-09-23）。
 - 与 [12 篇技术地图](../overview/collab-wm-12-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["Agent setup（每台机器人配置一次）<br/>本地部署的语言模型 + 系统提示 + 工具 + Skills + workspace 模板"] --> B["每个 session：隔离 workspace（模板全新复制）<br/>含平台手册 Manual"]
+    S["Skills：按物体的步骤化流程文档<br/>仅名称与一行描述在 prompt，相关时才载入正文"] --> B
+    B --> C["模型推理<br/>measure-act-verify 循环"]
+    C --> D["直接调用 9 个平台操作之一<br/>结果直接回到上下文"]
+    C --> E["读写并运行脚本<br/>经 SDK 批量调用同样的操作"]
+    D --> F["Platform：单一 HTTP 服务，独占硬件"]
+    E --> F
+    F --> G["安全限制：笛卡尔目标夹入工作空间盒<br/>线速度/关节速度/夹爪力上限，启动即 motion lock"]
+    G --> H["机械臂执行<br/>look / get_state / locate_* / descend_to_contact 反馈回模型"]
+    H --> C
+```
+
+图依据：论文 §III-A/B（Fig. 2、TABLE I–II）
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -89,6 +107,7 @@ summary: "Agentic Coding Agent（arXiv:2609.26499）：本地 Qwen3.8-27B + codi
 - [agentic-coding-manipulation_arxiv_2609_26499.md](../../sources/papers/agentic-coding-manipulation_arxiv_2609_26499.md)
 - [wechat_embodied_station_12_papers_collab_wm_2026-09-23.md](../../sources/blogs/wechat_embodied_station_12_papers_collab_wm_2026-09-23.md)
 - [arXiv:2609.26499](https://arxiv.org/abs/2609.26499)
+- [arXiv PDF](https://arxiv.org/pdf/2609.26499)：已通读方法部分（实验与附录以略读为准）：§III Method（A Platform layer、B Agent setup）、§IV-D
 
 ## 推荐继续阅读
 

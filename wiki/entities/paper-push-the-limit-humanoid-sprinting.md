@@ -134,5 +134,6 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Push the Limit](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Push_the_Limit__High-Speed_Sprinting_and_Aggressive_Cornering_on_a_Full-Scale_Humanoid/Push_the_Limit__High-Speed_Sprinting_and_Aggressive_Cornering_on_a_Full-Scale_Humanoid.html)
 - [arXiv HTML 全文](https://arxiv.org/html/2610.14840v1) — 方法、消融、真机 100 m 计时与局限。
 - [演示视频](https://youtu.be/YWf62XkiApc)

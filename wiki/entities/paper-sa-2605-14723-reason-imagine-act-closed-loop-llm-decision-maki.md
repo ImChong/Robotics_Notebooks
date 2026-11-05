@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
 updated: 2026-10-06
-arxiv: "2605.14723"
+arxiv: "2605.24004"
 venue: "arXiv 2026"
 summary: "Closed-loop LLM decision making with world models."
 related:
@@ -54,7 +54,7 @@ flowchart LR
   F --> A
 ```
 
-图依据：论文 §III.A–C / Fig.1、Fig.2（注：页面 front matter 与清单登记的 arXiv 号 2605.14723 实为另一篇脓毒症论文，本论文实际为 2605.24004）
+图依据：论文 §III.A–C / Fig.1、Fig.2。
 
 ## 核心信息
 
@@ -63,7 +63,7 @@ flowchart LR
 | 编号 | 476/571 |
 | 分组 | 82 Autonomous Driving |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2605.14723> |
+| 论文 | <https://arxiv.org/abs/2605.24004> |
 
 ## 核心机制（归纳）
 
@@ -76,7 +76,7 @@ Closed-loop LLM decision making with world models.
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2605.14723) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2605.24004) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -109,10 +109,11 @@ Closed-loop LLM decision making with world models.
 - [`sources/papers/sun_awesome_wm_2605_14723_reason-imagine-act-closed-loop-llm-decis.md`](../../sources/papers/sun_awesome_wm_2605_14723_reason-imagine-act-closed-loop-llm-decis.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2605.14723>
+- 论文：<https://arxiv.org/abs/2605.24004>
 - [arXiv PDF](https://arxiv.org/pdf/2605.24004)：已通读方法部分（实验与附录以略读为准）：§III 方法（A 总览、B 世界模型训练、C 智能体设计与决策环路）；实验略读
+- 编号核对（2026-11-02）：上游清单登记的 2605.14723 经 arXiv 官方记录核对为《Agentifying Patient Dynamics within LLMs through Interacting with Clinical World Model》，与本页论文不符；已更正为 2605.24004《Reason--Imagine--Act: Closed-Loop LLM Decision Making with World Models for Autonomous Driving》。
 
 ## 推荐继续阅读
 
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2605.14723)
+- [原文](https://arxiv.org/abs/2605.24004)

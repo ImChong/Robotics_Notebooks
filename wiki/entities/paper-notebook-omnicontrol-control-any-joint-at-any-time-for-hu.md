@@ -184,5 +184,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：OmniControl](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/OmniControl__Control_Any_Joint_at_Any_Time_for_Human_Motion_Generation/OmniControl__Control_Any_Joint_at_Any_Time_for_Human_Motion_Generation.html)
 - [官方项目页](https://neu-vi.github.io/omnicontrol/)
 - [ICLR 2024 OpenReview](https://openreview.net/forum?id=gd0lAEtWso)

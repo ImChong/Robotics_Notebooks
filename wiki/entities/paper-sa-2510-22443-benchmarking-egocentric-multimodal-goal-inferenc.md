@@ -42,6 +42,27 @@ Goal inference benchmark dataset, containing 363 participants and 3,482 records,
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SCR["§2.1 Script Generation：从热门 app 与常见环境出发，用 Llama 3.2 定稿脚本；每个脚本带 reference goal，并标注相关模态 V / A / D / L"]
+    SCR --> AV["§2.2 Audiovisual Context：参与者用 Meta Aria 眼镜录制脚本；三名评审给出质量分、变量标注与 context window，达到一致性条件的录制被接受（约保留 80%）"]
+    SCR --> DIG["§2.3 Digital Context：LLM 依全局状态（含 persona 与日期时间）与数字线索生成 Calendar、Messaging、Notes、Search、Videos、Maps、Music 七类 app 状态"]
+    AV --> LONG["§2.4 Longitudinal Context：为每个样本构建 history bank（同一用户同一环境的 5 条往期观测，以 VLM 字幕 + 音频转写的 Socratic context 表示）"]
+    AV --> DS["数据集：348 名参与者、3,477 条 (observation, goal) 对，含 vision / audio / digital / longitudinal 四种模态"]
+    DIG --> DS
+    LONG --> DS
+    DS --> MCQ["§3.1 判别式评测：MCQ（1 个参考目标 + 3 个干扰项，分 similar / dissimilar 两套，由 sentenceBERT 余弦相似度分位区间贪心采样），共约 7k 题"]
+    DS --> JUDGE["§3.2 生成式评测：模型开放式生成目标，LLM Judge 对照参考目标与脚本线索，给出 1.0 / 0.5 / 0 的相关性评分及理由"]
+    MCQ --> MODELS["§4.1 评测对象：Llama、Qwen2.5-VL、InternVL-2.5 各尺寸及 GPT-4.1；音频先经说话人分离与 Whisper 转写"]
+    JUDGE --> MODELS
+    MODELS --> HUM["§4.2 人类基线：在高一致性子集上由人类对 MCQ 作答，作为模型性能上界的参照"]
+    MODELS --> ABL["模态消融（SV / SVA / SVD / SVL 子集）：检验相关与无关模态的影响"]
+```
+
+图依据：数据集构建与评测协议流程图，论文 §2（Dataset，含 Fig. 2）、§3（Benchmark Tasks）、§4.1–§4.2；不含结果数字。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Goal inference benchmark dataset, containing 363 participants and 3,482 records,
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2510.22443>
+- [arXiv PDF](https://arxiv.org/pdf/2510.22443)：已通读摘要、§1、§2（Dataset 全部小节）、§3（Benchmark Tasks）、§4.1–§4.2 开头；§4.3 之后（LLM Judge 变体、模态消融结果）与附录略读或未读
 
 ## 推荐继续阅读
 

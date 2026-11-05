@@ -58,6 +58,38 @@ sources:
 - 这是以高权限内核模块和 GPU 寄存器配置为基础的非官方工具。运行前应审阅代码、确认设备与内核兼容性，并准备恢复启动配置。
 - 图中“3090 算力暴涨 80%、4090 吞吐翻倍”省略了卡型、精度、功耗和测试层级。4090 指令发射率约 2 倍不能直接改写成 vLLM 或其他推理引擎普遍提速 2 倍。
 
+## 源码运行时序图
+
+入口：内核命令行 `gpu_unlock.targets=all`（或指定 PCI 地址），由 initramfs 中先于 `nvidia` 加载的内核模块 `gpu_unlock` 执行 `module_init(gpu_unlock_init)`（`kernel/gpu_unlock/main.c`）；安装入口为 `make install`。仓库无用户态主程序。
+
+```mermaid
+sequenceDiagram
+    participant K as 内核 / initramfs
+    participant M as main.c: gpu_unlock_init
+    participant RC as recipes.c: gu_card_find
+    participant FW as firmware_610.c: gpu_unlock_610_load_shared
+    participant U as unlock_610.c: gpu_unlock_610_unlock
+    participant G as GPU（BAR0 / FWSEC / GFW）
+    participant N as nvidia 驱动
+    K->>M: 加载模块（读取 targets 参数；为空则直接返回）
+    M->>RC: next_supported -> gu_card_find(pdev->device)
+    RC-->>M: 命中的 gu_card 配方（family / booter / privileged / host 写表）
+    M->>FW: unlock_cards：为每张卡 load_shared（prepare_family、ensure_booter、ensure_loader）
+    M->>U: async_schedule_domain(unlock_one)（pci_dev_lock，驱动已绑定则 -EBUSY）
+    U->>G: unlock_transaction_claim / layout / dma（校验 PMC_BOOT_0 芯片号）
+    U->>G: unlock_transaction_gfw、unlock_transaction_fwsec
+    U->>G: publish_signature -> run_privileged_writes -> restore_stock_signature
+    U->>G: run_host_writes（write_selector 写 FEAT SS0/SS1 并读回）
+    U->>G: unlock_transaction_reset（pcie_flr，等待 BAR / GFW 恢复）
+    U->>U: unlock_transaction_unwind（释放 DMA 缓冲）
+    U-->>M: ret（成功则 card->unlocked=true）
+    M->>K: register_pm_notifier(gpu_unlock_pm_notify)
+    K->>N: 之后加载未修改的 nvidia 驱动
+    Note over M,U: PM_POST_SUSPEND 时 unlock_again -> gpu_unlock_610_unlock(resume=true)，仅当卡已绑定 nvidia
+```
+
+图依据：Zagitta/gpu-unlock@7eb51bc，读过 `README.md`、`docs/How Ampere was unlocked.md`（开头）、`kernel/gpu_unlock/main.c`、`unlock_610.c`（`gpu_unlock_610_unlock` 主流程、`write_selector`、`run_host_writes`、`unlock_transaction_reset`）、`firmware_610.c`（`gpu_unlock_610_load_shared`）、`recipes.c`（SS0/SS1 写表片段）。各 `unlock_transaction_*` 内部细节、`falcon.c`、`vbios_610.c`、`prep_610.c`、`firmware/*.py` 未读，未画。
+
 ## 关联页面
 
 - [NVIDIA CUDA](./nvidia-cuda.md) — GPU 计算与软件栈基础
@@ -68,6 +100,7 @@ sources:
 - [GPU Unlock 官方项目入口与主张核对](../../sources/sites/gpu-unlock.md)
 - [Zagitta/gpu-unlock 上游仓库](../../sources/repos/zagitta-gpu-unlock.md)
 - [JustAResearcher/gpu-unlock-ada Ada 移植](../../sources/repos/justaresearcher-gpu-unlock-ada.md)
+- 源码核对（2026-11-02）：Zagitta/gpu-unlock@7eb51bc，读过 README.md、docs/How Ampere was unlocked.md、kernel/gpu_unlock/main.c、unlock_610.c、firmware_610.c、recipes.c（部分）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -55,6 +55,34 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`bash robot_dev_config/build.sh -p X3`（在交叉编译 docker 内、`cc_ws/tros_ws` 目录下执行；本仓库只含构建脚本，不含机器人运行时代码，图为构建调用链）。
+
+```mermaid
+sequenceDiagram
+    participant U as 开发者 tros_ws
+    participant B as build.sh
+    participant CL as clear_COLCON_IGNORE.sh
+    participant AB as all_build.sh X3 分支
+    participant CB as colcon build
+    participant I as install 目录
+
+    U->>B: bash robot_dev_config/build.sh -p X3 可选 -s 包名 -g ON
+    B->>B: getopt 解析 platform selection build_testing
+    B->>CL: 清除 src 下的 COLCON_IGNORE
+    Note over B: build_testing 为 ON 时删除 performance_test_fixture 的 COLCON_IGNORE
+    B->>B: sysroot_docker/usr 软链到 usr_x3 并 export ROS_VERSION 与平台变量
+    B->>B: export TARGET_ARCH 与 CROSS_COMPILE 并 source /opt/ros/humble/setup.bash
+    B->>AB: 调用 all_build.sh 触碰一批 COLCON_IGNORE 排除不编译的包
+    B->>B: 默认分支再触碰 hobot_audio hobot_slam performance_test 的 COLCON_IGNORE
+    B->>CB: colcon build PACKAGE_SELECTION --merge-install 工具链 aarch64_toolchainfile.cmake -DPLATFORM_X3=ON -DTHIRDPARTY=ON
+    CB-->>I: 生成 install 目录
+    Note over B,CB: hobot_audio、orb_slam3、performance_test 走专用分支，要求先有全量 install
+```
+
+图依据：robot_dev_config@3255419，读过 README.md、build.sh（全文）、all_build.sh（前后段）、clear_COLCON_IGNORE.sh；`minimal_build.sh` 等其它平台脚本未画入图。未运行脚本。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +94,8 @@ institutions:
 - [robot_dev_config 源码归档](../../sources/repos/robot_dev_config.md)（<https://github.com/D-Robotics/robot_dev_config>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：D-Robotics/robot_dev_config@3255419，读过 README.md、build.sh、all_build.sh、clear_COLCON_IGNORE.sh；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

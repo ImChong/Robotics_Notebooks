@@ -55,6 +55,39 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：仓库只有 `taskNN_*.py` 比赛任务脚本（无 README、无模型/URDF 文件），各脚本作为 ROS 节点直接运行，如 `python task02_press_button.py`（需要外部包 `lss_roban`，不在本仓库内；运行在仿真或真机的 ROS 环境，脚本订阅的是 `/sim/camera/D435/colorImage`）。下图以 `task02_press_button.py`（行走 + 视觉按按钮）为例；其它 task 脚本的结构类似但未逐一画出，`task09_upstair_and_down.py` 则是不带视觉、仅用 `linearTrajMove` 串联上下楼梯动作。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant M as task02_press_button.py __main__/main()
+    participant L as lss_roban.motion_control（外部包，import *）
+    participant CB as D435Colorcallback（订阅回调）
+    participant TT as TrackingThread（4Hz 线程）
+    participant R as ROS 话题 / 机器人
+
+    M->>R: rospy.init_node + on_shutdown(rosShutdownHook)
+    M->>R: Subscriber(/sim/camera/D435/colorImage)
+    R-->>CB: Image → HSV 红/粉阈值 + 轮廓，更新 x,y,w,h、mask、see_button
+    M->>L: setBodyhubNoStand(1), setArmMode(0), walkingInit()
+    M->>TT: start()（pause/over 两个 threading.Event）
+    M->>L: UpdateTargets()
+    loop 直到 ikRightArm 对按钮前后两点都有解
+        M->>M: getButtonPos()（pause.set 暂停追踪）
+        M->>L: getCoordinatesFromDepthImage(w_x, w_y)
+        TT->>L: visualTrack(button_pos)（pause 未置位时）
+        M->>L: ikRightArm(button_pos ± 偏移)
+        M->>L: WalkingThread(dx, dy, 0).start()
+        M->>L: bodyMoveTo(right_arm=[arm_prepare], count=50)
+    end
+    M->>L: linearTrajMoveTo(right_arm=…) 三次：前探→按下→退回
+    M->>L: 退出时 rosShutdownHook: setBodyhubNoStand(0), setArmMode(1), resetBodyhub()
+```
+
+图依据：LejuRobotics/roban_model_and_sim@71c51b9，读过 task01_press_button.py、task02_press_button.py、task09_upstair_and_down.py（其余 task 脚本未读）。`lss_roban.motion_control` 内部实现不在仓库，图中仅画出脚本对其函数的调用。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +99,7 @@ institutions:
 - [roban_model_and_sim 源码归档](../../sources/repos/roban_model_and_sim.md)（<https://github.com/LejuRobotics/roban_model_and_sim>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：LejuRobotics/roban_model_and_sim@71c51b9，读过 task01_press_button.py、task02_press_button.py、task09_upstair_and_down.py（仓库仅含 13 个 taskNN_*.py，无 README / 模型文件）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ Compositional object-based approach to learning physical dynamics.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    STATE["对象级状态向量（位置、速度等外在属性，质量、类型、尺寸等内在属性）：输入 t−1 与 t 两个时刻"] --> FOCUS["逐个选定焦点对象 f"]
+    FOCUS --> MASK["邻域掩码 1[‖pc − pf‖ < N(of)] 选出上下文对象 c（类似碰撞检测的 broad phase）"]
+    MASK --> PAIR["成对因子分解：构造 (of, oc) 对"]
+    PAIR --> ENC["编码器 fenc：对每一对输出交互编码 ec,f"]
+    ENC --> SUM["对所有上下文对象的编码求和（可加性，类似力的叠加）"]
+    SUM --> CAT["与焦点对象过去状态拼接"]
+    FOCUS --> CAT
+    CAT --> DEC["解码器 fdec（前馈网络）：预测速度变化 Δv"]
+    DEC --> UPD["v[t+1] = v[t] + Δv，并用速度一阶近似更新位置"]
+```
+
+图依据：论文 §2.1（Fig. 2b）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Compositional object-based approach to learning physical dynamics.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/1612.00341>
+- [arXiv PDF](https://arxiv.org/pdf/1612.00341)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2（2.1 NPE、2.2 基线）、§3 实验设定开头；§3 各实验结果与误差分析略读
 
 ## 推荐继续阅读
 

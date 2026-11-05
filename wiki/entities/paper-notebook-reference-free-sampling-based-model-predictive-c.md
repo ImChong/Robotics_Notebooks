@@ -31,7 +31,29 @@ Reference-Free Sampling-Based Model Predictive Control 的人形机器人学习�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里保留分类位置与原文入口，方法流程见下方「流程总览」，其余结论不给出。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    init["初始化：名义样条控制点<br/>位置取稳定站姿，速度取 0"] --> step["每个控制步"]
+    step --> pred["状态预测 + warm-start<br/>按计算延迟前推状态并平移 τ_best"]
+    pred --> nom["τ_0 ← τ_best"]
+    nom --> loop["规划迭代 i = I … 1"]
+    loop --> samp["在名义节点周围采样扰动<br/>噪声按退火协方差 Σ（轨迹级 + 动作级）"]
+    samp --> spline["三次 Hermite 样条插值<br/>同时扰动节点位置 θ^q 与速度 θ^v，速度按关节限位钳制"]
+    spline --> roll["Simple 仿真器并行 rollout<br/>并计算任务代价 S_n（无步态参考）"]
+    roll --> w["min-max 归一化代价 → softmax 权重 ω_n"]
+    w --> upd["加权平均更新名义轨迹 τ_0"]
+    upd --> best["更新 τ_best（rollout 中表现最好的轨迹）"]
+    best --> loop
+    best --> pd["PD 控制器：由 τ_best 首个位置/速度目标<br/>算力矩 u_t，裁剪到执行器限幅"]
+    pd --> robot["执行（Go2 / G1）"]
+    robot --> step
+```
+
+图依据：论文 §III-A 至 §III-E / Alg.1 / Fig.1。
 
 ## 核心信息
 
@@ -64,6 +86,7 @@ Reference-Free Sampling-Based Model Predictive Control 的人形机器人学习�
 - [humanoid_pnb_reference-free-sampling-based-model-predictive-c.md](../../sources/papers/humanoid_pnb_reference-free-sampling-based-model-predictive-c.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2511.19204>
+- [arXiv PDF](https://arxiv.org/pdf/2511.19204)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-E（含 Alg.1）
 
 ## 推荐继续阅读
 

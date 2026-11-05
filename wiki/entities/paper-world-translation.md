@@ -83,6 +83,7 @@ World Translation 的方法链可拆成两步互补模块：
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：World Translation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/World_Translation__Minimizing_Sim-to-Real_Gap_via_Backward_Dynamics_Extraction/World_Translation__Minimizing_Sim-to-Real_Gap_via_Backward_Dynamics_Extraction.html)
 - [论文 PDF](https://arxiv.org/pdf/2607.18154)
 
 ## 参考来源

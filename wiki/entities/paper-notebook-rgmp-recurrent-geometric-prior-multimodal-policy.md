@@ -31,7 +31,27 @@ RGMP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置、原文入口和依据论文方法部分画出的「流程总览」，不给实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["人类语音指令 I + RGB 观测 O"] --> B["GSS 第一阶段：Qwen-VL 在图像中框出目标物体 Box"]
+    B --> C["GSS 第二阶段：结合物体相对位置与 Yolov8n-seg 形状信息的几何常识 + 上下文 C"]
+    C --> D["VLM 生成回复 P：语音应答 / 技能选择"]
+    D -->|"P 含 Skill"| E["从技能库选取预训练技能模型"]
+    E --> F["ARGN：Stem 提取 F0"]
+    F --> G["Spatial Mixing Block：ADM 自适应衰减 W + RoPE + 递归 WKV"]
+    G --> H["Channel Mixing Block 重分配通道权重"]
+    H --> I["3 个 Stage 多尺度特征 F1/F2/F3 可学习加权融合"]
+    I --> J["初始动作 a_in = Linear(C3x3(Ff))"]
+    J --> K["与 GMM（K=6，EM 估计）各聚类中心比较 Mahalanobis 距离"]
+    K --> L["取最近聚类中心 作为最终动作 a*"]
+    M["120 条人类示教 d_i=(J,O)"] -.->|"MSE 训练 ARGN；EM 拟合 GMM Θ"| F
+```
+
+图依据：论文 §3 Methodology（§3.1 GSS、§3.2 ARGN 与 GMM）、Algorithm 1 / Fig.3；示教数据见 §4.2
 
 ## 核心信息
 
@@ -64,7 +84,9 @@ RGMP 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读�
 - [humanoid_pnb_rgmp-recurrent-geometric-prior-multimodal-policy.md](../../sources/papers/humanoid_pnb_rgmp-recurrent-geometric-prior-multimodal-policy.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2511.09141>
+- [arXiv PDF](https://arxiv.org/pdf/2511.09141)：已通读方法部分（实验与附录以略读为准）：§3 Methodology（3.1 GSS、3.2 ARGN）、§4.1–4.2 与 Algorithm 1
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：RGMP](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/RGMP__Recurrent_Geometric-prior_Multimodal_Policy_for_Generalizable_Humanoid_Manipulation/RGMP__Recurrent_Geometric-prior_Multimodal_Policy_for_Generalizable_Humanoid_Manipulation.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

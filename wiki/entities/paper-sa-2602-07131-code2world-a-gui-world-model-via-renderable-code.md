@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
 updated: 2026-10-06
-arxiv: "2602.07131"
+arxiv: "2602.09856"
 venue: "arXiv 2026"
 summary: "Models GUI dynamics by generating renderable code rather than pixels."
 related:
@@ -42,6 +42,31 @@ Models GUI dynamics by generating renderable code rather than pixels.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph D["数据合成：AndroidCode（>80K 样本）"]
+        S1["AndroidControl 截图"] --> S2["GPT-5 约束式初始合成 HTML"]
+        S2 --> S3["渲染回图像"]
+        S3 --> S4{"SigLIP 分数 与真值对齐"}
+        S4 -->|"高于阈值"| S5["保留样本"]
+        S4 -->|"低于阈值"| S6["GPT-5 视觉反馈修订<br/>输入真值图+渲染图+代码"]
+        S6 --> S3
+    end
+    D --> T1["阶段1：SFT 冷启动<br/>Qwen3-VL-8B，代码 token 负对数似然"]
+    T1 --> T2["阶段2：Render-Aware RL（GRPO）<br/>奖励 R_sem + R_act，均为 VLM-as-a-Judge"]
+    T2 --> M["Code2World：Mθ(I_t, a_t, G) → HTML 代码"]
+    M --> R["浏览器渲染 R → 预测下一屏 Î_t+1"]
+    subgraph A["应用：Propose, Simulate, Select"]
+        P1["GUI Agent 提出 K 个候选动作"] --> P2["Code2World 逐个模拟下一屏"]
+        P2 --> P3["VLM 验证器 S 打分，选最优动作"]
+    end
+    R -.-> P2
+```
+
+图依据：论文 §3.1 / §3.2 / §4.2 与 Fig.2、Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +74,7 @@ Models GUI dynamics by generating renderable code rather than pixels.
 | 编号 | 499/571 |
 | 分组 | 83 GUI / Computer-Use Agents |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2602.07131> |
+| 论文 | <https://arxiv.org/abs/2602.09856> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +87,7 @@ Models GUI dynamics by generating renderable code rather than pixels.
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.07131) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.09856) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +120,11 @@ Models GUI dynamics by generating renderable code rather than pixels.
 - [`sources/papers/sun_awesome_wm_2602_07131_code2world-a-gui-world-model-via-rendera.md`](../../sources/papers/sun_awesome_wm_2602_07131_code2world-a-gui-world-model-via-rendera.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2602.07131>
+- 论文：<https://arxiv.org/abs/2602.09856>
+- 编号核对（2026-11-02）：上游清单登记的 2602.07131 经 arXiv 官方记录核对为《Behavior Score Prediction in Resting-State Functional MRI by Deep State Space Modeling》，与本页论文不符；已更正为 2602.09856《Code2World: A GUI World Model via Renderable Code Generation》。
+- [arXiv PDF](https://arxiv.org/pdf/2602.09856)：已通读方法部分（实验与附录以略读为准）：§3.1 训练数据合成、§3.2 模型优化、§4.2 GUI Agent 应用（Propose, Simulate, Select）
 
 ## 推荐继续阅读
 
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2602.07131)
+- [原文](https://arxiv.org/abs/2602.09856)

@@ -38,6 +38,23 @@ summary: "高质量基准是具身 AI 的基础，能推动长时程导航、操
 - **规则过滤生成可控演示**是低成本扩数据的实用手段；
 - 虽以移动机械臂为主，重排/低层操作经验对人形家务同样适用。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["HAB 三个长程任务<br/>TidyHouse / PrepareGroceries / SetTable<br/>(ReplicaCAD 场景, Fetch 移动机械臂)"] --> B["完美任务规划器拆成子任务序列<br/>Nav → Pick → Nav → Place / Open / Close"]
+    B --> C["ManiSkill3 GPU 并行环境 (4300+ SPS)<br/>低层控制，去掉 magical grasp"]
+    C --> D["RL 训练各子任务策略<br/>Pick/Place: SAC 且每物体一个策略<br/>Open/Close: PPO；导航用 teleport"]
+    D --> E["子任务策略串联求解长程任务<br/>(当前子任务成功即进入下一个)"]
+    D --> F["用 RL 策略大规模 rollout 生成轨迹"]
+    F --> G["利用仿真特权信息给轨迹打事件标签<br/>Contact / Grasped / Dropped / Excessive Collisions / Success"]
+    G --> H["按事件序列划分互斥的成功 / 失败模式<br/>(同时用于统计各基线的失败原因)"]
+    H --> I["规则过滤：只保留指定成功模式的演示<br/>如 straightforward success"]
+    I --> J["行为克隆 BC 基线<br/>(每个任务/子任务/物体 1000 条演示)"]
+```
+
+图依据：论文 §3 预备（任务/子任务/串联）、§4 环境设计、§5.1 RL 策略训练、§5.2 自动轨迹分类与数据集生成
+
 ## 解决什么问题
 
 家务**重排**基准常用"**魔法抓取**"（抽象抓取），与真实**低层操作**脱节，且**仿真慢**： - 缺**真实低层控制**的家居重排基准； - 仿真**效率低**，难规模化训练/采集。
@@ -88,6 +105,7 @@ ManiSkill-HAB 要：一个 **GPU 加速、真实低层、可大规模生成演�
 - [humanoid_pnb_maniskill-hab.md](../../sources/papers/humanoid_pnb_maniskill-hab.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks.html>
 - 论文：<https://arxiv.org/abs/2412.13211>
+- [arXiv PDF](https://arxiv.org/pdf/2412.13211)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 预备、§4 环境设计与基准、§5 方法（5.1 RL 策略、5.2 轨迹分类与 IL 数据集）
 
 ## 推荐继续阅读
 

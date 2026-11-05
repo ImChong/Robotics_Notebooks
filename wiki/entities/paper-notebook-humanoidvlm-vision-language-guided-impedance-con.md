@@ -43,6 +43,31 @@ HumanoidVLM 把"挑阻抗参数 + 选抓取角"这件老靠手调的事，外包
 - **无需力传感**：在没有腕部力传感的 G1 上实现柔顺接触。
 - **免训练**：只需构建两个小数据库，不训练控制策略。
 
+## 流程总览
+
+```mermaid
+flowchart LR
+    IMG[头部相机第一视角 RGB 图像] --> VLM[VLM Molmo-7B-O 4-bit<br/>层级 是/否 视觉问答推断任务]
+    VLM --> LBL[语义任务标签]
+    LBL --> EMB[all-MiniLM-L6-v2 嵌入]
+    EMB --> Q1[FAISS 检索 1]
+    DB1[(笛卡尔阻抗数据库<br/>9 个任务的 K, D)] --> Q1
+    Q1 --> SCN[阻抗场景描述]
+    SCN --> Q2[FAISS 检索 2: 场景描述 + 任务标签]
+    LBL --> Q2
+    DB2[(夹爪角度数据库)] --> Q2
+    Q1 -->|K, D| CTRL
+    Q2 -->|夹爪角 γ| GRP[夹爪 open / close 目标角]
+    subgraph CTRL[G1 机载电脑: 任务空间阻抗控制 50 Hz]
+        IMP[笛卡尔质量-弹簧-阻尼模型<br/>M 与旋转阻抗固定] --> REF[柔顺末端虚拟参考位姿]
+        REF --> IK[逆运动学 -> 关节目标]
+    end
+    IK --> POS[G1 内置位置控制器]
+    GRP --> POS
+```
+
+图依据：论文 §3 System Architecture、§3.1–3.2、§4.1.2（Fig. 1）。
+
 ## 核心机制
 
 1. **任务推断**：头部第一视角 RGB → Molmo-7B（4-bit）通过层级是 / 否问答得到任务标签。
@@ -120,6 +145,7 @@ HumanoidVLM 把"挑阻抗参数 + 选抓取角"这件老靠手调的事，外包
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Contact-Rich_Humanoid_Manipulation/HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Contact-Rich_Humanoid_Manipulation.html>
 - 论文：<https://arxiv.org/abs/2601.14874>
 - 论文正文（系统架构、Table 1）：<https://arxiv.org/html/2601.14874>
+- [arXiv PDF](https://arxiv.org/pdf/2601.14874)：已通读方法部分（实验与附录以略读为准）：§3 系统架构（含 3.1 VLM–RAG、3.2 机器人控制）、§4.1 实验设置
 
 ## 推荐继续阅读
 

@@ -150,6 +150,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：GigaBrain-WBC-0.5](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/GigaBrain-WBC-0.5__A_Behavior_World_Model_for_Robust_Whole-Body_Control/GigaBrain-WBC-0.5__A_Behavior_World_Model_for_Robust_Whole-Body_Control.html)
 - [arXiv:2608.19059 PDF](https://arxiv.org/pdf/2608.19059)
 - [LT-Mem 交互式 3D Demo](https://lt-mem.github.io/DEMO/)
 - [项目演示视频](https://www.youtube.com/watch?v=-zH3TV1hUjA)

@@ -40,6 +40,24 @@ MoE 三模块：感知、视觉预见、控制；下一尺度预测 + 预见引�
 - MoE 三模块：感知、视觉预见、控制；下一尺度预测 + 预见引导 IDM。
 - 属于 [世界模型 15 项目地图](../overview/world-models-15-open-source-technology-map.md) **路线 02**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    IN["指令 l + 当前观测 o_t（+ 历史观测 o_t-m…o_t-1）"] --> UND["理解专家：SigLIP 视觉特征 + 语言，decoder-only Transformer（PaliGemma 结构，源自 π0）"]
+    UND --> GEN["生成专家：多尺度残差 VQ 编码历史帧 + 时序卷积聚合，next-scale 自回归生成 foresight token"]
+    GEN --> IMG["解码得到目标条件的视觉预见 ô_t+1"]
+    UND --> ACT["动作专家：flow matching 预测动作块（Gemma 骨干，源自 π0）"]
+    IMG --> ACT
+    Q["本体感觉 q_t"] --> ACT
+    ACT --> OUT["动作块 â_t:t+k（预测式逆动力学）"]
+    subgraph TRAIN["三阶段训练"]
+        S1["Stage I：冻结理解专家，对齐生成专家（teacher forcing 的 token NLL）"] --> S2["Stage II：公开机器人数据上联合训练三专家"] --> S3["Post-train：任务数据微调以适配本体"]
+    end
+```
+
+图依据：论文 §2.1–§2.4 / Fig. 2、Fig. 3 与式 (1)–(4)；专家间注意力（UGA progressive attention）为因果层级：生成专家看理解专家，动作专家看前两者，反向无信息流。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -88,6 +106,7 @@ MoE 三模块：感知、视觉预见、控制；下一尺度预测 + 预见引�
 - [shenlan_wm_survey_12_f1-vla.md](../../sources/papers/shenlan_wm_survey_12_f1-vla.md)
 - [shenlan_world_models_15_reference_catalog.md](../../sources/papers/shenlan_world_models_15_reference_catalog.md)
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+- [arXiv PDF](https://arxiv.org/pdf/2509.06951)：已通读方法部分（实验与附录以略读为准）：§2 The F1 Framework（2.1–2.4）
 
 ## 推荐继续阅读
 

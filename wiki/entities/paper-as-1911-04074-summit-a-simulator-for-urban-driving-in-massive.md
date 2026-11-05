@@ -41,6 +41,28 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    OSM["OpenStreetMap 真实地图"] --> LN["车道网络 Lane Network<br/>由 SUMO 转换"]
+    OSM --> SN["人行道网络 Sidewalk Network<br/>道路几何中提取折线"]
+    OSM --> LM["Landmarks 建筑/森林等<br/>可随机化纹理（域随机化）"]
+    LN --> CTX["道路上下文 road contexts"]
+    SN --> CTX
+    CTX --> CG["Context-GAMMA 群体行为模型<br/>由车道/人行道得到偏好速度 v_pref 与上下文约束 C_A"]
+    CG --> VEL["速度空间优化<br/>在 K_A ∩ G_A ∩ C_A 内最小化与 v_pref 的距离"]
+    VEL --> SIM["基于 CARLA 的仿真<br/>物理、渲染、传感器"]
+    LM --> SIM
+    SIM --> API["Python API：传感器数据、智能体状态、<br/>车道/人行道网络、占用图；接收车辆控制"]
+    API --> BT["Context-POMDP 信念跟踪<br/>意图与类型（分心/专注）的直方图滤波"]
+    BT --> SOLVE["在线信念树搜索 HyP-DESPOT<br/>以 Context-GAMMA 前向模拟其他智能体"]
+    SOLVE --> ACT["加速度动作 ACC/MAINTAIN/DEC<br/>转向由 pure-pursuit 生成"]
+    ACT --> API
+```
+
+图依据：论文 §III（Fig. 2–3）与 §IV。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +117,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Transportation Environments。 本页
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1911.04074>
+- [arXiv PDF](https://arxiv.org/pdf/1911.04074)：已通读方法部分（实验与附录以略读为准）：§III SUMMIT 模拟器（地图表示、Context-GAMMA、接口）、§IV Context-POMDP 规划
 
 ## 推荐继续阅读
 

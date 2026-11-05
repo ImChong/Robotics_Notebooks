@@ -43,6 +43,27 @@ Adapts video diffusion models to world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    D["动作标注视频数据集 D = {(x, a)}"] --> N["对视频 x 加噪得到 x_i（latent 模型则先 encoder 编码再加噪）"]
+    N --> P["冻结的预训练 image-to-video 扩散模型 ε_pre（仅推理，不访问参数），输入 x_i、i、x_0"]
+    P --> E1["噪声预测 ε_pre"]
+    N --> U["adapter：3D UNet（3D 卷积 + 空间注意力 + 时间注意力）"]
+    E1 --> U
+    X0["初始图像 x_0 沿时间维重复 T 次"] --> U
+    I["扩散步 i 的嵌入与逐帧动作 a 的嵌入，经 MLP 得到 scale / shift"] --> U
+    U --> M["mask m（sigmoid，范围 0 到 1）"]
+    U --> E2["adapter 噪声预测 ε_adapt"]
+    E1 --> C["ε_final = ε_pre ⊙ m + ε_adapt ⊙ (1 − m)"]
+    M --> C
+    E2 --> C
+    C --> L["标准去噪损失，仅更新 adapter 参数 θ_adapt"]
+```
+
+图依据：论文 §3.3 与 Fig.1、式 (5)–(6)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +119,7 @@ Adapts video diffusion models to world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.12822>
+- [arXiv PDF](https://arxiv.org/pdf/2410.12822)：已通读方法部分（实验与附录以略读为准）：§3.1 问题设定、§3.2 朴素适配的局限、§3.3 AVID 适配器
 
 ## 推荐继续阅读
 

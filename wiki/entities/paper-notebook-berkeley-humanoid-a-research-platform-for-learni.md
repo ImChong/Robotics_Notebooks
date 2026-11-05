@@ -32,7 +32,24 @@ Berkeley Humanoid 的人形机器人学习论文条目，当前处于 Paper Note
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见上方「流程总览」（依据论文方法部分），不含结论性判断。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+    A["CAD 设计<br/>自研轻量人形硬件"] --> B["Isaac Lab 仿真训练<br/>PPO"]
+    DR["设计驱动的精确域随机化<br/>CAD 惯量 + 执行器摩擦测量<br/>接触：摩擦 · 恢复系数 · 外力扰动"] --> B
+    subgraph POL["最小化 RL 控制器（§4.1）"]
+        OBS["观测：base 角速度 · 投影重力<br/>关节位置 / 速度 · 状态估计器的 base 线速度<br/>速度指令 · 上一步动作"] --> NET["MLP actor-critic<br/>隐层 512-256-128 · ELU"]
+        NET --> ACT["动作：期望关节位置 qd"]
+    end
+    B --> POL
+    ACT --> PD["电机驱动器上的 PD 控制器<br/>转换为力矩"]
+    PD --> HW["Berkeley Humanoid 实机<br/>零样本 sim-to-real 部署"]
+```
+
+图依据：论文 Fig.1 与 §4（Minimally Composed Learning-based Controller）。此外，该论文主体是硬件平台，上图只覆盖其学习控制与部署链路，不含硬件设计细节。
 
 ## 核心信息
 
@@ -65,7 +82,9 @@ Berkeley Humanoid 的人形机器人学习论文条目，当前处于 Paper Note
 - [humanoid_pnb_berkeley-humanoid-a-research-platform-for-learni.md](../../sources/papers/humanoid_pnb_berkeley-humanoid-a-research-platform-for-learni.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2407.21781>
+- [arXiv PDF](https://arxiv.org/pdf/2407.21781)：已通读方法部分（实验与附录以略读为准）：Fig.1、§4（RL 控制器与 sim-to-real 设计）；§3 硬件设计与 §5 实验仅略读
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Berkeley Humanoid](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Control/Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Control.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

@@ -41,6 +41,20 @@ LongchaoDa AwesomeSim2Real 收录；分组 Other Environments。 本页是清单
 - 想横向对照同一分组的其他工作，可以从 [AwesomeSim2Real 技术地图](../overview/lc-awesome-sim2real-technology-map.md) 逐条展开。
 - 顺着列表实体 [AwesomeSim2Real](../entities/awesome-sim2real.md) 与站内 Sim2Real 方法/任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    ENG["游戏引擎: ioquake3 版 Quake III Arena<br/>自定义资产, 原引擎 C 代码仅在必要处修改"] --> API["强化学习 API: C API + Python 绑定<br/>锁步 lock-step: 每次推进一个或多个模拟步, 之后暂停等待下一个动作"]
+    API -->|"观测: 标量奖励 / RGB 或 RGBD 像素 / 平动与角速度 可选"| AG["智能体 或 人类"]
+    AG -->|"动作: 前后移动, 左右平移, 蹲, 跳, 上下左右看, 激光标记"| API
+    LVL["关卡: Quake III 关卡 .pk3 文件 由 .map 经 q3map2 / bspc 工具生成<br/>或 Text Levels 文本关卡"] --> ENG
+    LUA["Lua 关卡 API<br/>bot 逻辑 / 道具拾取 / 自定义观测 / 重启 / 奖励方案"] -.->|"进一步定制每个关卡"| LVL
+    LVL -.-> EX["示例关卡四类<br/>水果采集 / 静态地图迷宫导航 / 程序生成迷宫 / 激光标记"]
+```
+
+图依据：平台架构与交互循环图，论文 DeepMind Lab Research Platform 一节（Observations、Actions、Example levels、Technical Details、API for agents and humans、Level generation）与 Fig. 1、Fig. 2、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -95,6 +109,7 @@ LongchaoDa AwesomeSim2Real 收录；分组 Other Environments。 本页是清单
 - [`sources/papers/lc_awesome_sim2real_catalog.md`](../../sources/papers/lc_awesome_sim2real_catalog.md) — 列表总表
 - [`sources/repos/awesome-sim2real.md`](../../sources/repos/awesome-sim2real.md)
 - 论文：<https://arxiv.org/abs/1612.03801>
+- [arXiv PDF](https://arxiv.org/pdf/1612.03801)：已通读全文正文（Introduction、DeepMind Lab Research Platform 各小节、Results and Performance、Conclusion）；帧率表与附图 7-8 的示例截图略读
 
 ## 推荐继续阅读
 

@@ -78,6 +78,57 @@ flowchart TD
 - **误区：与 [Nuwa](nuwa-skill.md) 重复。** Nuwa 提取 **人物认知框架**；Cangjie 提取 **作者系统性输出的方法论**；二者互补（生态 README 明确咬合）。
 - **局限：** 依赖高质量转写/原文；验证与压力测试成本随 skill 数量上升；中文生态与案例为主，英文 README 亦有但社区 packs 偏中文书目。
 
+## 源码运行时序图
+
+入口：`python3 scripts/cangjie.py compile --bundle <capabilities 目录> --out <目标目录> --output single|pack --yes`（输入须是已验证的 Capability Bundle；蒸馏本身由 Agent 按 SKILL.md 完成，CLI 不做原书一键蒸馏）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户 / Agent shell
+    participant C as scripts/cangjie.py main() 与 cmd_compile
+    participant W as cangjie_common（运行目录、写锁、快照、原子发布）
+    participant SEL as select_output_strategy decide / render_report
+    participant CS as compile_single build_tree / write_tree
+    participant CP as compile_pack compile_pack_tree
+    participant V as validate_skill_pack.py（子进程）
+    participant FS as 目标目录与 staging 目录
+
+    U->>C: python3 scripts/cangjie.py compile --bundle --out --output --yes
+    C->>C: main() 根解析器分发到 cmd_compile
+    C->>W: new_run_id() 与 create_run_workdir(sidecar, run_id)
+    C->>SEL: decide(bundle, output, purpose) 选择 single 或 pack
+    SEL-->>C: decision
+    C->>W: dump_json 写 output-decision.json，并写 output-decision.md
+    alt output 为 auto 且未传 --yes
+        C-->>U: 提示加 --yes 重新运行，退出码 2
+    else 已确定输出形态
+        alt selected 为 single
+            C->>CS: build_tree(bundle, "single")
+            CS-->>C: files
+        else selected 为 pack
+            C->>CP: compile_pack_tree(bundle, allow_over_budget)
+            CP-->>C: files
+        end
+        C->>FS: write_tree(files, staging)，目录名 .staging-run-target
+        C->>V: subprocess 运行 validate_skill_pack.py staging
+        V-->>C: 返回码与输出，写入 staging-validation.log
+        alt 校验失败（hard-gate）
+            C-->>U: 保留 staging 供排查，不发布，退出
+        else 校验通过
+            C->>W: WriterLock(target) 获取写锁
+            opt 目标目录已存在
+                C->>W: snapshot_dir 将旧版本快照到 sidecar/snapshots
+            end
+            C->>W: atomic_publish(staging, target, 元数据，allow_overwrite_edits)
+            W->>FS: 将 staging 发布到目标目录（原子操作），附带元数据 bundle_id、sha256、variant、run_id、decision
+            C-->>U: 已原子发布 single 或 pack 产物到目标目录
+        end
+    end
+```
+
+图依据：kangarooking/cangjie-skill@a28de55，实际读过的文件：`README.md`（前 80 行，平台与 v2.5.0 工具链说明）、`scripts/cangjie.py`（模块文档字符串、`main` 分发、`cmd_compile` 全文、`compile` 子命令参数）。`select_output_strategy.py`、`compile_single.py`、`compile_pack.py`、`cangjie_common.py`、`validate_skill_pack.py` 仅依据 `cangjie.py` 中的调用点画出，未逐行读源码。未运行代码。
+
 ## 关联页面
 
 - [Nuwa Skill](nuwa-skill.md) — **蒸馏人**（心智模型、表达 DNA）
@@ -93,6 +144,7 @@ flowchart TD
 - [Cangjie Skill 仓库源归档（本站）](../../sources/repos/cangjie-skill.md)
 - [kangarooking/cangjie-skill（GitHub）](https://github.com/kangarooking/cangjie-skill)
 - [Agent Skills 规范](https://agentskills.io/)
+- 源码核对（2026-11-02）：kangarooking/cangjie-skill@a28de55，读过 README.md（前 80 行）、scripts/cangjie.py（模块文档、main、cmd_compile 与 compile 参数）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

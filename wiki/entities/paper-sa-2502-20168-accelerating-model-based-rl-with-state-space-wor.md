@@ -42,6 +42,27 @@ Accelerating MBRL with state-space world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    RB["Replay Buffer 采样序列"] --> ENC["Encoder：观测 o_t 到后验随机表示 z_t"]
+    ENC --> MLP["MLP 融合 z_t 与 a_t，得到 u_t"]
+    MLP --> SSM["S5 序列模型：沿序列维度并行扫描，按 continue 信号重置隐状态"]
+    SSM --> Y["确定性表示 y_t"]
+    Y --> PRI["动力学先验 ẑ_t"]
+    Y --> DEC["解码器 / 奖励预测 / continue 预测"]
+    PRI --> LOSS["世界模型损失：L_pred + L_dyn + L_rep（同 DreamerV3）"]
+    DEC --> LOSS
+    PRIV["特权状态 s_t（24 维）：训练时替换图像解码器作重建目标"] -.-> DEC
+    RB --> INIT["采样初始状态 ẑ0、x0"]
+    INIT --> IMG["想象展开 H 步：actor 按 a ~ π(y, ẑ) 选动作，SSM 逐步推进，不可并行"]
+    SSM -.-> IMG
+    IMG --> CR["Critic：预测 λ-return；Actor：最大化回报，一阶梯度穿过动力学模型反传"]
+```
+
+图依据：论文 §IV-A（State-Space World Model）、§IV-B（Actor-Critic Training，Fig. 2）、§IV-C（Privileged World Models）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Accelerating MBRL with state-space world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.20168>
+- [arXiv PDF](https://arxiv.org/pdf/2502.20168)：已通读方法部分（实验与附录以略读为准）：§III 预备知识与 §IV 方法（A–C，含 Fig. 2 与式 8–16）；§V 实验以略读为准
 
 ## 推荐继续阅读
 

@@ -42,6 +42,23 @@ The core anonymization system for **Project Aria**, designed to blur **bystander
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    REC["Aria 眼镜录制<br/>(含人脸与车牌)"] --> ING["数据 ingestion 平台"]
+    ING --> DET["任务无关目标检测器<br/>Faster R-CNN, ResNeXt-101-32x8 FPN"]
+    DET --> FACE["人脸检测"]
+    DET --> LP["车牌检测"]
+    FACE --> BLUR["对检测区域像素<br/>高斯模糊"]
+    LP --> BLUR
+    BLUR --> REL["匿名化后录制<br/>提供给研究使用"]
+    RF["RetinaFace 作为教师<br/>伪标注 (弱监督)"] -.->|"训练人脸检测器"| FACE
+    MAN["人工标注 200K+ 图像数据引擎"] -.->|"训练车牌检测器"| LP
+```
+
+图依据：论文 §I 引言（检测+高斯模糊方案、位于 ingestion 平台）、§II-A 人脸检测器训练、§II-B 车牌检测器训练。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ The core anonymization system for **Project Aria**, designed to blur **bystander
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2308.13093>
+- [arXiv PDF](https://arxiv.org/pdf/2308.13093)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 匿名化基准（A 人脸、B 车牌）；评测表格与 RAI 分析略读
 
 ## 推荐继续阅读
 

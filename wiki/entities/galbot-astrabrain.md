@@ -63,6 +63,42 @@ summary: "AstraBrain 是银河通用的具身模型系列；WAM 侧聚焦异构�
 - 公司 About 页中的“首个”等表述是发布方主张，本页不据此建立行业排名。
 - 目前缺少可核查的 WAM→WBC 联合部署接口，不能自行画出二者实际运行闭环。
 
+## 源码运行时序图
+
+本页的 WBC 0.5 对应开源仓库 Humanoid-GPT；仓库只公开推理与部署代码，训练代码与数据 README 标为 TODO，故下图画的是仿真推理链路，不含训练，也不含 AstraBrain 的 WAM 部分。
+
+入口：`python -m scripts.inference --onnx_track storage/ckpts/pns_wo_priv264.onnx --track_dir storage/test`（README 命令；真机入口为 `python -m deploy.play_track --real --net <nic>`）。
+
+```mermaid
+sequenceDiagram
+    participant I as scripts/inference.py main()
+    participant Q as tracking.convert_qpos2kpt.qpos2kpt
+    participant S as tracking.infer_utils.G1TrackMjSim (MuJoCo)
+    participant P as tracking.policy.get_policy_onnx (MLP/Transformer ONNX)
+    participant F as tracking.infer_utils.G1TrackInferFn
+    I->>I: 读取 track_dir 下 .npz，补全 qpos 并 apply_ema_qpos 平滑
+    opt args.convert
+        I->>Q: qpos2kpt(mj_model, qpos_src, freq_src, freq_tgt)
+        Q-->>I: 关键点参考轨迹
+    end
+    I->>S: G1TrackMjSim(init_qpos, headless, ctrl_dt)
+    I->>P: get_policy_onnx(args) 按 policy_type 选 ONNX 策略
+    I->>F: G1TrackInferFn(env_cfg, mj_model, policy, privileged)
+    I->>S: init_state()；reset(state)
+    loop 每条轨迹的每个 track_step
+        I->>F: infer_onnx(state, {ref_curr, ref_next})
+        F->>F: update_state；get_nn_state 或 get_nn_priv_state 组观测
+        F->>P: nn_policy.infer(obs)
+        P-->>F: nn_action
+        F->>F: nn2motor_action，名义关节角加 nn_action 乘 action_scale
+        F-->>I: motor_targets
+        I->>S: step(state, action)
+        I->>I: calculate_kpt_mae_error 等跟踪误差指标
+    end
+```
+
+图依据：GalaxyGeneralRobotics/Humanoid-GPT@9f9e7b7，读过 README.md、scripts/inference.py、projects/transformer/inference.py（仅头部与主循环）、tracking/infer_utils.py（infer_onnx、nn2motor_action）、tracking/policy.py（get_policy_onnx）、deploy/play_track.py（仅文件头与入口说明）。
+
 ## 关联页面
 
 - [Humanoid-GPT / AstraBrain-WBC 0.5](paper-humanoid-gpt.md)
@@ -74,8 +110,10 @@ summary: "AstraBrain 是银河通用的具身模型系列；WAM 侧聚焦异构�
 
 - [银河通用官网与开源核查](../../sources/sites/galbot-astrabrain.md)
 - [Humanoid-GPT 官方仓库归档](../../sources/repos/humanoid_gpt_galaxy_general_robotics.md)
+- 源码核对（2026-11-02）：GalaxyGeneralRobotics/Humanoid-GPT@9f9e7b7，读过 README.md、scripts/inference.py、projects/transformer/inference.py、tracking/infer_utils.py、tracking/policy.py、deploy/play_track.py（仅文件头）；时序图依据以上文件，未运行代码；AstraBrain 的 WAM 部分无公开源码核对。
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Humanoid-GPT](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Humanoid-GPT__Scaling_Data_and_Structure_for_Zero-Shot_Motion_Tracking/Humanoid-GPT__Scaling_Data_and_Structure_for_Zero-Shot_Motion_Tracking.html)
 - [银河通用官方技术介绍](https://galbot.com/about/)
 - [Humanoid-GPT 项目页](https://qizekun.github.io/Humanoid-GPT/)

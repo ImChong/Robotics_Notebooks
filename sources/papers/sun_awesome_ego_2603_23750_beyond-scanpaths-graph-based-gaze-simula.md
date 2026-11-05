@@ -6,9 +6,10 @@
 - **分组：** 25 Gaze Attention & Intention Prediction
 - **编号：** 052/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2603.23750
+- **arXiv：** 2603.28319
+- **编号核对：** 上游清单登记的 2603.23750 经 arXiv 官方记录核对为另一篇论文《IslamicMMLU: A Benchmark for Evaluating LLMs on Islamic Knowledge》，与本条目不符；已更正为 2603.28319《Beyond Scanpaths: Graph-Based Gaze Simulation in Dynamic Scenes》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2603.23750>
+- **论文：** <https://arxiv.org/abs/2603.28319>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Introduces Object Density Network (ODN) to predict next-step gaze distributions and releases Focus100 dataset with raw gaze data from 30 participants viewing egocentric driving footage

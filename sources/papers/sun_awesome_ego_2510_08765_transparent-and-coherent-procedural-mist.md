@@ -6,9 +6,10 @@
 - **分组：** 291 Procedural Error Detection
 - **编号：** 125/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2510.08765
+- **arXiv：** 2412.11927
+- **编号核对：** 上游清单登记的 2510.08765 经 arXiv 官方记录核对为另一篇论文《UAV-Assisted 3-D Localization for IoT Networks Using a Simple and Efficient TDOA-AOA Estimator》，与本条目不符；已更正为 2412.11927《Transparent and Coherent Procedural Mistake Detection》（核对日期 2026-11-02）。
 - **出处：** EMNLP 2025
-- **论文：** <https://arxiv.org/abs/2510.08765>
+- **论文：** <https://arxiv.org/abs/2412.11927>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Generates transparent, coherent natural language explanations for detected procedural mistakes

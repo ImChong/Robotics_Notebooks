@@ -42,6 +42,27 @@ Broad survey of world models with a focus on prediction and understanding.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    CORE["世界模型的核心目的（§2.3）：理解外部世界的动力学并预测未来场景（Fig.2）"] --> C3["§3 Implicit Representation of the External World"]
+    CORE --> C4["§4 Future Prediction of the Physical World"]
+    CORE --> C5["§5 Application Domains"]
+    C3 --> C31["§3.1 World Model in Decision-Making：model-based RL、language backbone"]
+    C3 --> C32["§3.2 World Knowledge Learned by Models：Global Physical World、Local Physical World、Human Society"]
+    C4 --> C41["§4.1 World Model as Video Generation：Towards Video World Models、Capabilities of Video World Models"]
+    C4 --> C42["§4.2 World Model as Embodied Environment：Indoor、Outdoor、Dynamic Environments"]
+    C5 --> C51["§5.1 Game Intelligence"]
+    C5 --> C52["§5.2 Embodied Intelligence：Learning Implicit Representation、Predicting Future States of the Environment、From Simulation to Real World"]
+    C5 --> C53["§5.3 Urban Intelligence：Autonomous Driving、Autonomous Logistics、Urban Analytics"]
+    C5 --> C54["§5.4 Societal Intelligence：Building Social Simulacra Mirroring Real-world Society、Agent's Understanding of External World in Social Simulacra"]
+    C5 --> C55["§5.5 Functions of World Models：cloud-based environments / edge-side agent brains"]
+    CORE --> C6["§6 Open Problems and Future Directions：Physical Rules and Counterfactual Simulation、Enriching the Social Dimension、Benchmarks、Bridging Simulation and Reality with Embodied Intelligence、Simulation Efficiency、Ethical and Safety Concerns"]
+```
+
+图依据：综述分类体系图，依据论文 §1 末尾的组织说明、§2.3 Categorization 与 Fig.2，以及 §3–§6 的章节标题。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ Broad survey of world models with a focus on prediction and understanding.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2411.14499>
+- [arXiv PDF](https://arxiv.org/pdf/2411.14499)：已读摘要、§1 引言与组织说明、§2.3 分类（含 Fig.2）、§5.5，以及 §3–§6 的章节标题与小节结构；各章正文细节、§7 结论略读
 
 ## 推荐继续阅读
 

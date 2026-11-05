@@ -61,11 +61,50 @@ institutions:
 - [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
 
+## 源码运行时序图
+
+入口：`ros2 launch orbbec_camera gemini2.launch.py`（机型对应的 launch 文件见 `orbbec_camera/launch/`）。launch 文件既可起独立 Node（可执行文件 `orbbec_camera_node`），也可起 `ComposableNodeContainer` 加载插件 `orbbec_camera::OBCameraNodeDriver`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户（ros2 launch）
+    participant L as launch/gemini2.launch.py
+    participant C as component_container / orbbec_camera_node
+    participant D as OBCameraNodeDriver（ob_camera_node_driver.cpp）
+    participant SDK as libOrbbecSDK（ob::Context / ob::Pipeline）
+    participant N as OBCameraNode（ob_camera_node.cpp）
+    participant R as ROS2 话题（image / pointcloud / imu / tf）
+    U->>L: 启动 launch 文件
+    L->>C: 创建容器或独立节点
+    C->>D: 构造并调用 init()
+    D->>SDK: 创建 ob::Context（扩展目录、日志、设备枚举）
+    D->>SDK: registerDeviceChangedCallback
+    D->>D: create_wall_timer → checkConnectTimer；query_thread_ → queryDevice
+    D->>SDK: ctx_->queryDeviceList()
+    SDK-->>D: DeviceList
+    D->>D: onDeviceConnected / queryDevice → startDevice → selectDevice
+    D->>D: initializeDevice(device)
+    D->>N: make_unique OBCameraNode(this, device_, parameters_)
+    N->>N: setupDevices，loadConfigJson，setupProfiles，setupPublishers
+    D->>N: startIMU()，startStreams()
+    N->>SDK: pipeline_->start(config, onNewFrameSetCallback)
+    loop 每个 FrameSet
+        SDK-->>N: onNewFrameSetCallback(frame_set)
+        N->>N: processDepthFrameFilter / processColorFrameFilter 等后处理
+        N->>N: onNewFrameCallback(frame, stream_index)
+        N->>R: image_publishers_ publish（点云、元数据同理）
+    end
+```
+
+图依据：OrbbecSDK/OrbbecSDK_ROS2@c153462，读过 `README.MD`、`orbbec_camera/launch/gemini2.launch.py`、`orbbec_camera/src/ob_camera_node_driver.cpp`、`orbbec_camera/src/ob_camera_node.cpp`（未运行）。
+
 ## 参考来源
 
 - [OrbbecSDK_ROS2 源码归档](../../sources/repos/orbbecsdk_ros2.md)（<https://github.com/orbbec/OrbbecSDK_ROS2>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：orbbec/OrbbecSDK_ROS2@c153462，读过 `README.MD`、`orbbec_camera/launch/gemini2.launch.py`、`orbbec_camera/src/ob_camera_node_driver.cpp`、`orbbec_camera/src/ob_camera_node.cpp`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

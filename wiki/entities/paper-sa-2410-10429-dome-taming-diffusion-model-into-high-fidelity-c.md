@@ -42,6 +42,31 @@ Tames diffusion models into high-fidelity controllable occupancy world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph V["Occ-VAE（训练后冻结）"]
+        O["3D 占据 x（H×W×D 体素，语义 ID）"] --> CE["可学习 class embedding 转为 BEV 风格张量"]
+        CE --> EN["编码器（2D 卷积 + attention）得到 μ、σ，重参数化采样 z"]
+        EN --> DE["解码器（3D 反卷积），与 class embedding 点积得到 logits，argmax 得类别"]
+    end
+    subgraph R["Trajectory Resampling（训练数据增强）"]
+        R1["占据序列转点云，聚合到世界系并滤除动态物体"] --> R2["筛选道路点云，体素化为 BEV 可行驶区域图"]
+        R2 --> R3["随机采样起终点，smoothed A* 生成轨迹"]
+        R3 --> R4["据轨迹位姿重采样占据"]
+    end
+    EN --> Z["latent z 与 context latent，按 condition mask 替换部分帧"]
+    R4 --> TJ["轨迹：相对位移 [x, y] 与 yaw，位置编码后线性投影并合并时间嵌入"]
+    Z --> DIT["Spatial-Temporal DiT：空间块与时间块交错，经 adaLN 注入轨迹条件"]
+    TJ --> DIT
+    DIT --> DN["去噪后的 latent（context 帧每步重新放回）"]
+    DN --> DE
+    DE --> OUT["未来 4D 占据预测；rollout 时将最后预测帧作为下一段 context"]
+```
+
+图依据：论文 §3.1–§3.4 与 Fig.2、Fig.3、式 (1)–(3)。Fig.2 为文字描述所依据的架构图。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +122,7 @@ Tames diffusion models into high-fidelity controllable occupancy world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2410.10429>
+- [arXiv PDF](https://arxiv.org/pdf/2410.10429)：已通读方法部分（实验与附录以略读为准）：§3.1 Occ-VAE、§3.2 DOME、§3.3 轨迹条件与重采样、§3.4 应用
 
 ## 推荐继续阅读
 

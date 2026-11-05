@@ -42,6 +42,27 @@ A benchmark designed to systematically evaluate object-centric embodied cognitio
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    VID["视频收集 §3.2.1：EPIC-KITCHENS（239）/ Ego4D（201）/ Charades-ego（294）/ MECCANO（12）+ 自录 110 个，共 656 个视频，统一裁成 3 到 10 分钟"]
+    VID --> TAXO["能力分类 §3.2.2：Past / Present / Future 三个时间维度，共 11 个任务"]
+    TAXO --> PAST["Past：OSR / OLR / ORE / ATP"]
+    TAXO --> PRES["Present：ISR / OR / PFI / AP"]
+    TAXO --> FUT["Future：TMP / SCP / DRP"]
+    PAST --> QA["QA 构建 §3.2.3：10 名标注者，人在回路的混合格式标注：True/False、单选、多选、开放式（主要用于绝对时间戳）"]
+    PRES --> QA
+    FUT --> QA
+    REF["视觉对象指代：point / box / mask 提示，标注在视频最后一帧"] --> QA
+    QA --> CHECK["标注后筛查：标注者交叉检查与验证（视觉提示偏移、遗漏、选项歧义）"]
+    CHECK --> BENCH["EOC-Bench：3,277 条 QA，11 个维度，3 类对象指代"]
+    BENCH --> METRIC["指标 §3.2.4：T/F、SCA、MCA 用精确匹配 Accuracy；开放式用 MSTA（Multi-Scale Temporal Accuracy，容差阈值 1% / 10% / 20% / 30% 取平均）"]
+    METRIC --> EVAL["评测对象 §4.1：专有 MLLM / 开源 MLLM / 对象级 MLLM，零样本推理，另有随机基线与 3 名志愿者的人类表现"]
+```
+
+图依据：基准构建与评测协议图（视频收集 → 能力分类 → 人在回路 QA 标注 → 指标 → 评测对象）：论文 Fig. 1、Fig. 2、§3.1–§3.3、§4.1–§4.2。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +117,7 @@ A benchmark designed to systematically evaluate object-centric embodied cognitio
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2506.05287>
+- [arXiv PDF](https://arxiv.org/pdf/2506.05287)：已通读方法部分（实验与附录以略读为准）：摘要、§1–§3（含 Fig. 1–3）、§4.1–§4.2 的评测设置与基线说明；Table 2–4 数字、§4.3 起的分析与附录以略读为准
 
 ## 推荐继续阅读
 

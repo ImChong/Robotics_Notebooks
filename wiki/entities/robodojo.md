@@ -267,6 +267,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：RoboDojo](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/RoboDojo__A_Unified_Sim-and-Real_Benchmark_for_Generalist_Manipulation_Policies/RoboDojo__A_Unified_Sim-and-Real_Benchmark_for_Generalist_Manipulation_Policies.html)
 - [RoboDojo Leaderboard Protocol](https://robodojo-benchmark.com/leaderboard/protocol) — 官方完整性与反刷榜全文
 - [RoboDojo Documentation](https://robodojo-benchmark.com/doc/) — 安装、任务与 Quick Evaluation
 - [XPolicyLab CONTRIBUTING / adapter 标准](https://github.com/XPolicyLab/XPolicyLab) — 上榜 PR 与 `demo_policy` 参考实现

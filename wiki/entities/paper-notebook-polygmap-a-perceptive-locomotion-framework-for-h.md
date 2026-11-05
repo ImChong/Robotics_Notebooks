@@ -31,7 +31,26 @@ PolygMap 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，效果结论仍待深读。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["RGB-D 深度图像"] --> F1["各向异性扩散滤波"]
+    F1 --> F2["Sobel 法向图 + Canny 轮廓"]
+    F2 --> F3["RANSAC 平面拟合 → 多边形"]
+    S2["LiDAR + IMU：Point-LIO 里程计"] --> O["里程计融合（互补滤波）"]
+    S3["关节编码器 + IMU + 足接触：线性卡尔曼滤波 / 正运动学"] --> O
+    O --> M["多边形语义地图 Polygon Map"]
+    F3 --> M
+    M --> E["凸包 + 栅格化 + 距离范围过滤 + 分层腐蚀 → 安全区域"]
+    E --> H["最近邻选取落脚点 p* / p**"]
+    H --> FP["足步规划：摆动腿选择 + 正弦抬脚轨迹 + 旋转矩形防重叠"]
+    FP --> WB["全身运动规划输出（20-30 Hz，Orin NX）"]
+```
+
+图依据：论文 §III（Fig. 2 / Fig. 3 / §III-A~C）
 
 ## 核心信息
 
@@ -64,6 +83,7 @@ PolygMap 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅
 - [humanoid_pnb_polygmap-a-perceptive-locomotion-framework-for-h.md](../../sources/papers/humanoid_pnb_polygmap-a-perceptive-locomotion-framework-for-h.md)
 - [Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2510.12346>
+- [arXiv PDF](https://arxiv.org/pdf/2510.12346)：已通读方法部分（实验与附录以略读为准）：摘要、§III 方法（A 多传感器融合状态估计、B 落脚点生成、C 足步规划）、Fig. 2/3；§IV 实验仅略读。
 
 ## 推荐继续阅读
 

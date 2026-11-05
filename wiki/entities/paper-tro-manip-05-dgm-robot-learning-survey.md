@@ -40,6 +40,31 @@ sources:
 - 生成模型（尤其 **扩散策略**）正重塑机器人模仿学习，但模型族与应用场景分散在多篇论文中。
 - 综述同时给出 **OOD 泛化** 的设计选择与 **实时推理 / 多模态对齐 / 安全** 等落地局限，适合作为选型入口。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    I["I 引言：LfD / 模仿学习与深度生成模型 DGM"] --> II["II Problem Formulation<br/>问题形式化与符号"]
+    II --> III["III Density Estimation Models<br/>五类模型"]
+    III --> M1["Sampling Models<br/>GAN / VAE / NFlow"]
+    III --> M2["Energy-Based Models"]
+    III --> M3["Diffusion Models"]
+    III --> M4["Categorical Models"]
+    III --> M5["Mixture Density Models"]
+    III --> IV["IV Integrating Generative Models into Robotics<br/>应用"]
+    IV --> A1["Generating End Effector Target Poses"]
+    IV --> A2["Trajectories"]
+    IV --> A3["Generating End-Effector Displacement"]
+    IV --> A4["Scene Arrangements"]
+    IV --> V["V Generalizing Outside Data Distributions"]
+    V --> G1["Composition"]
+    V --> G2["Extracting the informative features from the perception"]
+    V --> G3["Exploiting Symmetries between Perception and Action"]
+    V --> VI["VI Future Research Directions"]
+```
+
+图依据：综述章节结构图（论文 Fig. 1 与 §I 的六节划分；§III 的五类模型、§IV 的应用小节、§V 的三类泛化策略标题）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -94,6 +119,7 @@ sources:
 - [tro_manip_survey_05_dgm_survey.md](../../sources/papers/tro_manip_survey_05_dgm_survey.md)
 - [wechat_shenlan_tro_manip_5_papers_survey.md](../../sources/blogs/wechat_shenlan_tro_manip_5_papers_survey.md)
 - 论文：<https://arxiv.org/abs/2408.04380>
+- [arXiv PDF](https://arxiv.org/pdf/2408.04380)：已通读摘要、§I 引言（含 Fig. 1）及 §III–§VI 的章节与小节标题（各章正文细节以略读为准）
 
 ## 推荐继续阅读
 

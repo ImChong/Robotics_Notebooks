@@ -38,6 +38,24 @@ contact chain 组织交互；任务难在接触顺序而非单姿态。
 - contact chain 组织交互；任务难在接触顺序而非单姿态。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#41/41）。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["语言指令 L"] --> P
+    B["场景信息 B（物体及其部件、可选空间布局）<br/>+ 人形关节信息 J"] --> P
+    P["LLM Planner<br/>提示工程：指令 + 规则 + 示例"] --> C["Chain of Contacts（CoC）<br/>C = {S1, S2, ...}，每步含若干接触对 {o, p, j, c, d}"]
+    C --> TP["TaskParser：逐步取出 CoC 的步骤<br/>统一为任务观测 sU 与任务奖励 rG"]
+    ENVI["仿真环境：关节位置、物体部件点云<br/>+ 自我中心 heightmap"] --> TP
+    TP -->|"接触奖励 Rk 加自适应权重 wk；步骤完成条件判定后进入下一步"| POL["控制策略 π（基于 AMP 的目标条件 RL）"]
+    POL -->|"动作 a_t"| ENVI
+    MD["无标注动作数据集"] -.->|"随机取样（仅训练）"| DISC["判别器 D → 风格奖励 rS"]
+    POL -.-> DISC
+    DISC -.-> POL
+```
+
+图依据：论文 §3.1 / §3.2 / §3.3、Fig. 2、Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -87,6 +105,7 @@ contact chain 组织交互；任务难在接触顺序而非单姿态。
 - [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 41+10 总表
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译导读
 - 论文：<https://arxiv.org/abs/2309.07918>
+- [arXiv PDF](https://arxiv.org/pdf/2309.07918)：已通读方法部分（实验与附录以略读为准）：§3 Methodology 概述、§3.1 Chain of Contacts、§3.2 LLM Planner、§3.3 Unified Controller（TaskParser、自适应接触权重、heightmap）
 
 ## 推荐继续阅读
 

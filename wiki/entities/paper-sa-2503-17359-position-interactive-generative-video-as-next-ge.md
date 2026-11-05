@@ -42,6 +42,23 @@ Proposes interactive generative video (IGV) as the foundation of generative game
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph IGV["以 IGV 为中心的交互式虚拟世界"]
+    GEN["Generation：流式生成、实时处理、多模态生成"]
+    CTL["Control：导航控制、交互控制"]
+    MEM["Memory：静态记忆、动态记忆"]
+    DYN["Dynamics：物理规律、物理参数调节"]
+    INT["Intelligence：推理、自我演化"]
+  end
+  IGV --> GP["GamePlay：设计者施加的游戏规则，如目标、奖励、惩罚"]
+  GP --> GAME["可玩的游戏"]
+```
+
+图依据：论文 §4 末段、§5 / Fig.4（GGE 概念性模块分解，非实现架构）；模块间连线论文未给出文字说明，故未画。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +113,7 @@ Proposes interactive generative video (IGV) as the foundation of generative game
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2503.17359>
+- [arXiv PDF](https://arxiv.org/pdf/2503.17359)：已通读方法部分（实验与附录以略读为准）：§4（模块分解）、§5.1–§5.6（各模块概念段，技术路线部分略读）
 
 ## 推荐继续阅读
 

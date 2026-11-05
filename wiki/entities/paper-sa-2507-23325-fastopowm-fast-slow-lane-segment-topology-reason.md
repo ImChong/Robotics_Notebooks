@@ -43,6 +43,35 @@ Fast-slow lane segment topology reasoning with latent world models.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    IMG["环视图像"] --> ENC["PV-to-BEV encoder<br/>提取当前帧 BEV 特征 F_T"]
+    POSE["相邻帧相对位姿"] --> ACT["编码为 action latent Ψ"]
+    MEM["记忆：历史 queries Q_T-1<br/>与 BEV 特征 F_T-1"] --> QWM["Query World Model<br/>Transformer 块"]
+    MEM --> BWM["BEV World Model<br/>含 temporal self-attention"]
+    ACT --> QWM
+    ACT --> BWM
+    QWM --> SQ["stream queries Q̃_T"]
+    BWM --> SB["stream BEV 特征 F̃_T"]
+    SB --> GRU["与当前 BEV 特征经 GRU 融合"]
+    ENC --> GRU
+    INIT["可学习嵌入初始化 queries Q_T"] --> L1["第一层 Transformer<br/>（含 lane-attention）"]
+    ENC --> L1
+    L1 --> RP["按分类置信度，最低的 N-K 个 query<br/>替换为 stream queries"]
+    SQ --> RP
+    RP --> SLOW["慢系统：后续层共享权重<br/>融入时序信息"]
+    GRU --> SLOW
+    L1 --> FAST["快系统：后续层共享权重<br/>不用时序信息"]
+    ENC --> FAST
+    SLOW --> HEADS["共享权重预测头<br/>+ Hungarian matching 并行监督"]
+    FAST --> HEADS
+    HEADS --> OUT["推理：位姿可靠用慢系统输出<br/>否则用快系统输出<br/>车道段 + 拓扑邻接矩阵 A"]
+```
+
+图依据：论文 §3.2 概览 / Fig.2、§3.3 式 (1)–(2)、§3.4 式 (6)–(8)。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +127,7 @@ Fast-slow lane segment topology reasoning with latent world models.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2507.23325>
+- [arXiv PDF](https://arxiv.org/pdf/2507.23325)：已通读方法部分（实验与附录以略读为准）：§3.1–§3.4（概览、潜在世界模型时序传播、统一快慢解码器）、§4 训练损失，§5 实验略读
 
 ## 推荐继续阅读
 

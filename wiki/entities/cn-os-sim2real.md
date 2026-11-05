@@ -56,6 +56,52 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`roslaunch hightorque_rl_inference hightorque_rl_inference.launch`（启动节点 `hightorque_rl_inference_node`，参数 `model_type=pi_plus`；README 的构建方式为 `catkin build`）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / roslaunch
+    participant M as src/main.cpp<br/>main()
+    participant N as src/hightorque_rl_inference.cpp<br/>HighTorqueRLInference
+    participant Y as config_example.yaml<br/>(yaml-cpp)
+    participant MASTER as sim2real_master_node（外部）<br/>rbt_state / mtr_state
+    participant IMU as /imu/data
+    participant JOY as /joy、/cmd_vel
+    participant RK as RKNN 运行时<br/>(rknn_api.h，*.rknn 策略)
+    participant BOT as /pi_plus_all、/pi_plus_preset<br/>（外部驱动订阅）
+
+    U->>M: roslaunch hightorque_rl_inference.launch
+    M->>N: ros::init；make_shared<HighTorqueRLInference>(nh)
+    N->>Y: 构造函数：YAML::LoadFile(config_file)，读取 policy_path、尺度、frame_stack 等
+    M->>N: init()
+    N->>BOT: advertise /{model_type}_all、/{model_type}_preset
+    N->>MASTER: subscribe rbt_state、mtr_state
+    N->>IMU: subscribe /imu/data
+    N->>JOY: subscribe /cmd_vel、/joy
+    loop 最多 50 次（100 Hz spinOnce）
+        MASTER-->>N: robotStateCallback / motorStateCallback
+        IMU-->>N: imuCallback（quat → quat2euler）
+    end
+    N->>RK: loadPolicy()：rknn_init、rknn_query（PLATFORM_ARM 下）
+    M->>N: run()
+    loop rlCtrlFreq 循环
+        N->>N: ros::spinOnce
+        alt currentState_ != NOT_READY
+            N->>N: updateObservation（相位 sin/cos、cmd、关节位置/速度、角速度、欧拉角，帧堆叠）
+            N->>RK: updateAction：rknn_inputs_set → rknn_run → rknn_outputs_get
+            RK-->>N: action（clamp）
+        end
+        JOY-->>N: 手柄组合键（LT+RT+START / LT+RT+LB）
+        N->>BOT: 复位：发布 /{model_type}_preset（frame_id=zero）→ STANDBY
+        N->>N: 状态机 NOT_READY → STANDBY ⇄ RUNNING
+        N->>BOT: 发布 JointState（22 维，前 12 维 = action × scale，其余 0）
+    end
+```
+
+图依据：HighTorque-Robotics/sim2real-inference_code@28a46b1，读过 README.md、src/hightorque_rl_inference/launch/hightorque_rl_inference.launch、src/main.cpp、src/hightorque_rl_inference.cpp（init、loadPolicy、updateObservation、updateAction、quat2euler、run；构造函数仅检索 YAML 读取位置）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -69,6 +115,7 @@ institutions:
 - [sim2real 源码归档](../../sources/repos/sim2real-inference_code.md)（<https://github.com/HighTorque-Robotics/sim2real-inference_code>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：HighTorque-Robotics/sim2real-inference_code@28a46b1，读过 README.md、launch/hightorque_rl_inference.launch、src/main.cpp、src/hightorque_rl_inference.cpp（init、loadPolicy、updateObservation、updateAction、run；构造函数仅检索 YAML 读取位置）；config_example.yaml 与 rknn 模型未读；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

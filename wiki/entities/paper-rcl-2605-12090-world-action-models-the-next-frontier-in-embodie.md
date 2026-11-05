@@ -42,6 +42,36 @@ Vision-Language-Action (VLA) models have achieved strong semantic generalization
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  R["World Action Models (WAMs) 综述<br/>Fig. 2 Roadmap to WAM"]
+  R --> S2["Sec. 2 Definitions and Formalism<br/>WAM 的两条判据 + 与 VAM / Video Policy / AWM 的区分"]
+  R --> BG["Background（Sec. 3）"]
+  BG --> BG1["VLAs"]
+  BG --> BG2["World Model：Action-Conditioned · Language-Conditioned · Embodied World Model"]
+  BG --> BG3["WM for VLA：Imitation Learning · Reinforcement Learning · Evaluation"]
+  R --> AR["Architecture（Sec. 4）"]
+  AR --> C["Cascaded WAM"]
+  C --> C1["Explicit（像素空间显式规划）"]
+  C --> C2["Implicit（潜空间隐式规划）"]
+  AR --> J["Joint WAM"]
+  J --> J1["Autoregression"]
+  J --> J2["Diffusion-based"]
+  R --> TD["Training data（Sec. 5）"]
+  TD --> TD1["Robot-centric Teleoperation"]
+  TD --> TD2["UMI-style Human Demonstration"]
+  TD --> TD3["Simulation Data"]
+  TD --> TD4["Human Data（人类 / 第一人称数据）"]
+  R --> EV["Evaluation（Sec. 6）"]
+  EV --> EV1["World Model：Visual Fidelity · Physical Commonsense · Action Plausibility"]
+  EV --> EV2["Action Policy：General · Bimanual and Humanoid Form<br/>Mobile Manipulation · Contact and Deformation Manipulation · Real-Device"]
+  R --> OC["Sec. 7 Open challenges and Opportunities"]
+```
+
+图依据：综述分类体系图，依据论文 §1 末的全文组织列表、Fig. 2（The comprehensive roadmap and taxonomy of WAMs）与 §4 开头对 Cascaded / Joint 的划分。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -99,6 +129,7 @@ Vision-Language-Action (VLA) models have achieved strong semantic generalization
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2605.12090>
+- [arXiv PDF](https://arxiv.org/pdf/2605.12090)：已读与流程图相关的章节（其余部分以略读为准）：摘要、§1、§2（定义与区分）、§3 / §4 / §5 / §6 / §7 的章节标题与开头段落、Fig. 2；各小节的具体方法综述与表格略读
 
 ## 推荐继续阅读
 

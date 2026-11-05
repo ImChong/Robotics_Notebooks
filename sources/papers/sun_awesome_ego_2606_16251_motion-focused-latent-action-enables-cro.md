@@ -6,9 +6,10 @@
 - **分组：** 27 Embodied AI & Vision-Language-Action Ego-VLA
 - **编号：** 096/249
 - **入库日期：** 2026-08-10
-- **arXiv：** 2606.16251
+- **arXiv：** 2606.18955
+- **编号核对：** 上游清单登记的 2606.16251 经 arXiv 官方记录核对为另一篇论文《Topological spectral gap, multiscale Weyl's law, and homogenization in high-contrast PDEs》，与本条目不符；已更正为 2606.18955《Motion-Focused Latent Action Enables Cross-Embodiment VLA Training from Human EgoVideos》（核对日期 2026-11-02）。
 - **出处：** arXiv 2026
-- **论文：** <https://arxiv.org/abs/2606.16251>
+- **论文：** <https://arxiv.org/abs/2606.18955>
 - **代码：** 未在清单中标注
 
 - **Highlights（清单）：** Addresses the absence of action labels in egocentric human manipulation videos for VLA training

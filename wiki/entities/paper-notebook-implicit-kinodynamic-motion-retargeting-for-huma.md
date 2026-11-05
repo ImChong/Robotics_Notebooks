@@ -32,7 +32,31 @@ Implicit Kinodynamic Motion Retargeting for Human-to-humanoid Imitation Learning
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 在笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，不含实验结论。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph PRE["阶段一：运动学感知预训练（人-机器人配对轨迹 D）"]
+        A["人体运动 M_A = (S_A, Q_A)<br/>SMPL 骨架：偏置 S + 关节旋转 Q"] --> EA["源编码器 E_A<br/>骨架图卷积 + Topo Pooling"]
+        B["机器人运动 M_B = (S_B, Q_B)<br/>G1 骨架"] --> EB["目标编码器 E_B"]
+        EA --> ZA["共享拓扑隐空间 Z<br/>z_A"]
+        EB --> ZB["z_B"]
+        ZA <-->|"L_align 拓扑对齐损失"| ZB
+        ZA --> DA["解码器 D_A（重建 L_recon / 循环一致 L_cycle）"]
+        ZB --> DB["解码器 D_B（重建 L_recon）"]
+        ZA --> DB
+    end
+    subgraph FT["阶段二：物理信息微调（simulator-in-the-loop）"]
+        P["RL 跟踪策略在物理仿真中跟踪预训练输出<br/>奖励：关节位置跟踪 + 关节限位/碰撞/力矩惩罚"] --> Q["仿真筛选出物理可行轨迹数据集"]
+        Q --> R["冻结 E_A，仅微调目标解码器 D_B<br/>L_finetune = L_recon + λ_ee·L_ee（FK 手/脚末端损失）"]
+    end
+    DB -->|"预训练输出的参考运动"| P
+    R --> S["推理：Q^_B = D_B(E_A(Q_A, S_A), S_B)<br/>序列级向量化重定向，无需逐帧 IK"]
+```
+
+图依据：论文 §III-A–D / Fig.3–5，式 (1)–(10)。
 
 ## 核心信息
 
@@ -64,7 +88,7 @@ Implicit Kinodynamic Motion Retargeting for Human-to-humanoid Imitation Learning
 
 - [humanoid_pnb_implicit-kinodynamic-motion-retargeting-for-huma.md](../../sources/papers/humanoid_pnb_implicit-kinodynamic-motion-retargeting-for-huma.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
-
+- [arXiv PDF](https://arxiv.org/pdf/2509.15443)：已通读方法部分（实验与附录以略读为准）：§III 方法（III-A–D）；§IV 实验略读
 
 ## 推荐继续阅读
 

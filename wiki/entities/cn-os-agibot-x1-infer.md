@@ -55,6 +55,50 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`./aimrt_main --cfg_file_path=./cfg/x1_cfg.yaml`（`src/install/linux/bin/run.sh`；仿真用 `run_sim.sh` + `x1_cfg_sim.yaml`）。`aimrt_main` 是 AimRT 运行时，按配置从 `libpkg1.so`（`src/pkg/pkg1/pkg_main.cc`）加载 `JoyStickModule`、`ControlModule`、`DcuDriverModule` 三个模块，模块间通过 AimRT channel（`/cmd_vel_limiter`、`/imu/data`、`/joint_states`、`/joint_cmd` 等话题）通信。
+
+```mermaid
+sequenceDiagram
+    participant Main as aimrt_main (x1_cfg.yaml)
+    participant Joy as JoyStickModule (joy_stick_module.cc)
+    participant Ctl as ControlModule (control_module.cc)
+    participant RL as RLController (rl_controller.cc)
+    participant Dcu as DcuDriverModule (dcu_driver_module.cc)
+    participant Xyber as XyberController (EtherCAT)
+
+    Main->>Joy: Initialize / Start，executor joy_stick_pub_thread 跑 MainLoop
+    Main->>Ctl: Initialize 读 rl_x1.yaml，建 state_machine_ 与各 controller，订阅话题
+    Main->>Dcu: Initialize 读 dcu_x1.yaml，InitTransmission，订阅 /joint_cmd
+    Main->>Ctl: Start，executor rl_control_pub_thread 跑 MainLoop
+    Main->>Dcu: Start，起 PublishLoop 线程
+    Dcu->>Xyber: Start(ifname, cycle_time_ns)，EnableActuator
+    loop 每个手柄周期
+        Joy->>Ctl: Publish Twist 到 /cmd_vel_limiter，按键 Float32 到 /walk_mode 等 trigger_topic
+    end
+    Ctl->>Ctl: 触发回调 state_machine_.OnEvent(trigger_topic)，对当前 controller 调 RestartController
+    Ctl->>RL: 回调 SetCmdData(Twist)
+    loop PublishLoop
+        Dcu->>Xyber: GetPosition / GetVelocity / GetEffort
+        Dcu->>Dcu: transmission_.TransformActuatorToJoint
+        Dcu->>Ctl: Publish /joint_states 与 /imu/data
+    end
+    Ctl->>RL: 回调 SetJointStateData / SetImuData（先减 joint_offset）
+    loop MainLoop，control_frequecy=1000 Hz
+        Ctl->>RL: Update()
+        RL->>RL: UpdateStateEstimation
+        Note over RL: 每 decimation 拍：ComputeObservation（sin/cos 相位、速度指令、关节、上次动作、IMU）
+        RL->>RL: ComputeActions，ONNX session_ptr_->Run(rl_walk_leg.onnx)，裁剪 actions_clip
+        Ctl->>RL: GetJointCmdData()，pos_des = action*action_scale+init_state，低通后发出
+        Ctl->>Dcu: Publish /joint_cmd (JointCommand)
+        Dcu->>Dcu: JointCmdCallback，transmission_.TransformJointToActuator
+        Dcu->>Xyber: SetMitCmd(name, pos, vel, effort, kp, kd)
+    end
+```
+
+图依据：AgibotTech/agibot_x1_infer@9e0b818，读过 README.md、src/install/linux/bin/run.sh、cfg/x1_cfg.yaml、src/pkg/pkg1/pkg_main.cc、src/module/control_module/{src/control_module.cc,src/rl_controller.cc,cfg/rl_x1.yaml}、src/module/dcu_driver_module/src/dcu_driver_module.cc、src/module/joy_stick_module/src/joy_stick_module.cc（`/imu/data` 在 DcuDriverModule 内发布；XyberController 内部实现与 `sim_module` 未读）。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +110,8 @@ institutions:
 - [agibot_x1_infer 源码归档](../../sources/repos/agibot_x1_infer.md)（<https://github.com/AgibotTech/agibot_x1_infer>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+- 源码核对（2026-11-02）：AgibotTech/agibot_x1_infer@9e0b818，读过 README.md、src/install/linux/bin/run.sh、cfg/x1_cfg.yaml、src/pkg/pkg1/pkg_main.cc、control_module/{control_module.cc,rl_controller.cc,rl_x1.yaml}、dcu_driver_module.cc、joy_stick_module.cc；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

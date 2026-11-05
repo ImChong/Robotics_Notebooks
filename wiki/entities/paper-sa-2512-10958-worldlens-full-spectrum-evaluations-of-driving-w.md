@@ -42,6 +42,24 @@ Full-spectrum evaluations of driving world models in the real world.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["待评测的驱动世界模型<br/>生成的驾驶视频"] --> B["WorldLens 五个评测维度 §3"]
+    B --> B1["1 Generation（G.1–G.8）<br/>Subject Fidelity / Coherence / Consistency、Depth Discrepancy、Temporal / Semantic / View Consistency、Perceptual Discrepancy"]
+    B --> B2["2 Reconstruction（R.1–R.4）<br/>生成视频提升为 Gaussian Field，在原始 / 新视角下重渲染<br/>Photometric Error、Geometric Discrepancy、Novel-View Quality / Discrepancy"]
+    B --> B3["3 Action-Following（A.1–A.4）<br/>预训练规划器 UniAD / VAD 在生成式模拟器中<br/>Displacement Error、PDMS、Route Completion、ADS"]
+    B --> B4["4 Downstream Task（D.1–D.4）<br/>真实数据预训练的感知模型作用于生成内容<br/>Map Segmentation mIoU、3D 检测 NDS、跟踪 AMOTA、Occupancy RayIoU"]
+    B --> B5["5 Human Preference（H.1–H.4）<br/>World Realism / Physical Plausibility / 3D & 4D Consistency / Behavioral Safety"]
+    B5 --> C["人工标注 §4.1<br/>10 名标注员分两组独立打分，分歧样本复评<br/>界面同步呈现视频 / 语义掩码 / 深度图 / 3D 框"]
+    C --> D["WorldLens-26K §4.2<br/>26,808 条评分记录：分数 + 文字理由"]
+    D --> E["WorldLens-Agent §4.3<br/>基于 Qwen3-VL-8B 的 LoRA SFT<br/>输出评分与解释"]
+    E --> F["可扩展的自动评测<br/>用于评估新的世界模型"]
+```
+
+图依据：基准构建与评测协议流程图，论文 Fig.1–2（五个评测维度）、§3.1–3.5 各维度定义、§4.1–4.3（人工标注、WorldLens-26K、WorldLens-Agent）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -97,6 +115,7 @@ Full-spectrum evaluations of driving world models in the real world.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2512.10958>
+- [arXiv PDF](https://arxiv.org/pdf/2512.10958)：已通读正文：摘要、§1 Introduction、§3 WorldLens（3.1–3.5）、§4 Human Annotation & Evaluation Agent、§5 开头与 Table 1、§6 Conclusion（§2 Related Work、§5 实验分析余下部分与附录未读）
 
 ## 推荐继续阅读
 

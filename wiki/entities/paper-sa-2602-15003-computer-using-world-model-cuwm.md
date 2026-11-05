@@ -3,7 +3,7 @@ type: entity
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
 updated: 2026-10-06
-arxiv: "2602.15003"
+arxiv: "2602.17365"
 venue: "arXiv 2026"
 summary: "Predicts next UI state given current state and candidate actions."
 related:
@@ -42,6 +42,31 @@ Predicts next UI state given current state and candidate actions.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TB
+    subgraph TR["训练"]
+        D["GUI-360 轨迹：转移元组 (s_t, a_t, s_t+1)"] --> AN["GPT-5 标注转移描述 Δ_GT"]
+        AN --> SFT["SFT（LoRA）：<br/>阶段1 Qwen2.5-VL 学 Δ_GT；阶段2 Qwen-Image-Edit 学重建 s_t+1"]
+        SFT --> RL["对文本转移模型做 GRPO 精调<br/>奖励 = LLM-as-a-Judge 分 - β·长度惩罚"]
+    end
+    subgraph WM["CUWM 两阶段世界模型"]
+        IN["当前 UI 截图 s_t + 动作 a_t"] --> S1["阶段1 文本状态转移<br/>Qwen2.5-VL：Δ_t = f_text(s_t, a_t)"]
+        S1 --> S2["阶段2 视觉状态实现<br/>Qwen-Image-Edit：ŝ_t+1 = f_image(s_t, Δ_t)"]
+        IN --> S2
+        S2 --> OUT["预测的下一屏 UI"]
+    end
+    RL -.-> WM
+    subgraph TS["世界模型引导的测试时动作搜索"]
+        AG["冻结的 Agent 提出候选动作"] --> SIM["CUWM 逐个模拟下一状态"]
+        SIM --> PICK["Agent 依据预测结果选定一个动作"]
+    end
+    OUT -.-> SIM
+```
+
+图依据：论文 §3.1 / §3.2 / §3.3 / §3.4 与 Fig.2、Fig.4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -49,7 +74,7 @@ Predicts next UI state given current state and candidate actions.
 | 编号 | 500/571 |
 | 分组 | 83 GUI / Computer-Use Agents |
 | 出处 | arXiv 2026 |
-| 论文 | <https://arxiv.org/abs/2602.15003> |
+| 论文 | <https://arxiv.org/abs/2602.17365> |
 
 ## 核心机制（归纳）
 
@@ -62,7 +87,7 @@ Predicts next UI state given current state and candidate actions.
 ## 评测与指标
 
 - 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.15003) 为准。
+- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2602.17365) 为准。
 - 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
 
 ## 与其他工作对比
@@ -95,9 +120,11 @@ Predicts next UI state given current state and candidate actions.
 - [`sources/papers/sun_awesome_wm_2602_15003_computer-using-world-model-cuwm.md`](../../sources/papers/sun_awesome_wm_2602_15003_computer-using-world-model-cuwm.md) — 本条目策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2602.15003>
+- 论文：<https://arxiv.org/abs/2602.17365>
+- 编号核对（2026-11-02）：上游清单登记的 2602.15003 经 arXiv 官方记录核对为《Signatures of Dynes superconductivity in the THz response of ALD-grown NbN thin films》，与本页论文不符；已更正为 2602.17365《Computer-Using World Model》。
+- [arXiv PDF](https://arxiv.org/pdf/2602.17365)：已通读方法部分（实验与附录以略读为准）：§3 方法（§3.1 两阶段架构、§3.2 监督训练、§3.3 结构感知 RL、§3.4 测试时动作搜索）
 
 ## 推荐继续阅读
 
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2602.15003)
+- [原文](https://arxiv.org/abs/2602.17365)

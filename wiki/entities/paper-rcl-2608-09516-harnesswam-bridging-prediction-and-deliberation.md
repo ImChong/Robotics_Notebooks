@@ -4,7 +4,7 @@ tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
 updated: 2026-10-06
 arxiv: "2608.09516"
-summary: "To address this gap, we propose HarnessWAM, an agentic framework for WAMs. HarnessWAM achieves state-of-the-art full-task and subtask success rates of 59.6% and 69.9% on RoboMemArena, and an SR of 23.7% on RoboCerebra Id"
+summary: "HarnessWAM：面向 WAM 的 agentic 框架（VLM Task Manager + 可执行空间投影 + 进度估计器），弥合预测与深思之间的差距；RoboMemArena 全任务/子任务成功率 v1 为 59.6%/69.9%，v2 为 64.4%/76.8%。"
 related:
   - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
@@ -24,7 +24,7 @@ sources:
 
 ## 一句话定义
 
-To address this gap, we propose HarnessWAM, an agentic framework for WAMs. HarnessWAM achieves state-of-the-art full-task and subtask success rates of 59.6% and 69.9% on RoboMemArena, and an SR of 23.7% on RoboCerebra Ideal.
+HarnessWAM 是面向 WAM 的 agentic 框架，弥合有限视野预测与全局规划/验证/恢复之间的差距（依据摘要）。数字按版本区分：v1（2026-08-10）摘要称 RoboMemArena 全任务/子任务成功率 59.6% / 69.9%（底层 WAM 为 LingBot-VA），RoboCerebra Ideal SR 23.7%；v2（2026-10-10，现行）摘要改为 64.4% / 76.8%，RoboCerebra Ideal 仍为 23.7%，并新增 UR3 实机（整理 95%、记忆依赖探索箱子 90% 全任务成功率）。v2 主结果用 LingBot-VA + subtask 训练检查点，另评测 FastWAM（依据 arXiv:2608.09516 v1/v2 摘要与 §4.2 Table 1/2）。
 
 ## 英文缩写速查
 
@@ -37,7 +37,7 @@ To address this gap, we propose HarnessWAM, an agentic framework for WAMs. Harne
 
 ## 为什么重要
 
-- To address this gap, we propose HarnessWAM, an agentic framework for WAMs. HarnessWAM achieves state-of-the-art full-task and subtask success rates of 59.6% and 69.9% on RoboMemArena, and an SR of 23.7% on RoboCerebra Ideal.
+- HarnessWAM 是面向 WAM 的 agentic 框架，弥合有限视野预测与全局规划/验证/恢复之间的差距（依据摘要）。数字按版本区分：v1（2026-08-10）摘要称 RoboMemArena 全任务/子任务成功率 59.6% / 69.9%（底层 WAM 为 LingBot-VA），RoboCerebra Ideal SR 23.7%；v2（2026-10-10，现行）摘要改为 64.4% / 76.8%，RoboCerebra Ideal 仍为 23.7%，并新增 UR3 实机（整理 95%、记忆依赖探索箱子 90% 全任务成功率）。v2 主结果用 LingBot-VA + subtask 训练检查点，另评测 FastWAM（依据 arXiv:2608.09516 v1/v2 摘要与 §4.2 Table 1/2）。
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
@@ -80,7 +80,7 @@ flowchart TD
 
 ### 策展导读要点
 
-To address this gap, we propose HarnessWAM, an agentic framework for WAMs. HarnessWAM achieves state-of-the-art full-task and subtask success rates of 59.6% and 69.9% on RoboMemArena, and an SR of 23.7% on RoboCerebra Ideal.
+HarnessWAM 是面向 WAM 的 agentic 框架，弥合有限视野预测与全局规划/验证/恢复之间的差距（依据摘要）。数字按版本区分：v1（2026-08-10）摘要称 RoboMemArena 全任务/子任务成功率 59.6% / 69.9%（底层 WAM 为 LingBot-VA），RoboCerebra Ideal SR 23.7%；v2（2026-10-10，现行）摘要改为 64.4% / 76.8%，RoboCerebra Ideal 仍为 23.7%，并新增 UR3 实机（整理 95%、记忆依赖探索箱子 90% 全任务成功率）。v2 主结果用 LingBot-VA + subtask 训练检查点，另评测 FastWAM（依据 arXiv:2608.09516 v1/v2 摘要与 §4.2 Table 1/2）。
 
 本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
 
@@ -123,6 +123,7 @@ To address this gap, we propose HarnessWAM, an agentic framework for WAMs. Harne
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2608.09516>
 - [arXiv PDF](https://arxiv.org/pdf/2608.09516)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 方法（3.1–3.5）、§4.1 实验设定
+- 核对（2026-11-02）：对照 arXiv:2608.09516 v1 摘要/Table 1 与 v2 摘要/§4.2（v2 取自 arxiv.org/html/2608.09516v2），确认 59.6%/69.9% 属 v1、64.4%/76.8% 属 v2（现行），已按版本标注；v2 PDF 本机无法解析，v2 数字以其 HTML 版本为准。
 
 ## 推荐继续阅读
 

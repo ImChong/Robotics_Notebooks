@@ -42,6 +42,34 @@ summary: "StereoPatch（arXiv:2609.15509）：把注册后的度量深度绑定�
 - 开源结论：**部分开源**（步骤 2.5，2026-09-16）。
 - 与 [12 篇技术地图](../overview/vla-deploy-12-papers-technology-map.md) 中同类工作可横向对照。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["顶视标定立体相机 → Fast Foundation Stereo 生成配准的度量深度图 Z_t<br/>(参考 RGB 帧 I_t)"] --> B
+    subgraph ENC["冻结编码器，共享 H_p × W_p 补丁网格 (§III-B)"]
+        B["RGB 分支：DINOv3 + 可训练投影 Π_R → R⁰"]
+        C["深度分支：DeFM + 可训练投影 Π_D → D⁰"]
+    end
+    A --> C
+    B --> D["去掉前缀 token，仅保留空间补丁 token（共索引）"]
+    C --> D
+    subgraph FUSE["两个融合块 ℓ=0,1 (§III-C)"]
+        D --> E["RGB 与深度各自自注意力"]
+        E --> F["非对称交叉注意力：RGB 补丁作 query，深度补丁作 key/value<br/>分数加可学习 2-D 相对位置偏置 B（行/列偏移），对全部深度位置做全局注意力"]
+        F --> G["残差 + FFN 更新 RGB 场；深度场只经自身自注意力更新"]
+    end
+    G --> H["StereoPatch tokens T^sp（第 2 块后的 RGB 场，保留 RGB 补丁地址）"]
+    H --> I
+    W["腕部相机视觉 token T^w"] --> I
+    S["关节与夹爪状态嵌入 e_s(s_t)"] --> I
+    I["拼接观测序列 O_t = [T^sp ; T^w ; e_s(s_t)] (§III-D)"] --> J["动作策略 π_φ：ACT（并行动作查询解码）或 Diffusion Policy（迭代去噪）"]
+    J --> K["动作块 A_t = [a_t … a_t+H-1]"]
+    L["各策略原有的行为克隆损失 L_π 端到端训练投影、融合块、腕部/状态编码器与策略；无对应或辅助融合损失"] -.-> J
+```
+
+图依据：论文 §III-A 至 §III-D、Fig. 2 / Fig. 3、式 1–7
+
 ## 核心机制
 
 | 项 | 内容 |
@@ -86,6 +114,7 @@ summary: "StereoPatch（arXiv:2609.15509）：把注册后的度量深度绑定�
 - [stereopatch_arxiv_2609_15509.md](../../sources/papers/stereopatch_arxiv_2609_15509.md)
 - [wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md](../../sources/blogs/wechat_embodied_station_12_papers_vla_deploy_2026-09-16.md)
 - [arXiv:2609.15509](https://arxiv.org/abs/2609.15509)
+- [arXiv PDF](https://arxiv.org/pdf/2609.15509)：已通读方法部分（实验与附录以略读为准）：§III 方法全部（问题表述、对齐的外观与几何场、检索几何到 RGB 补丁、策略集成）；§IV 开头的实现与对照设定
 
 ## 推荐继续阅读
 

@@ -39,6 +39,29 @@ DIJIT 的核心是：不把相机当成被动取景器，而是当成会「主�
 - **扫视控制的工程巧思**：用「朝向↔电机值直接映射」绕开复杂逆运动学求解，换来接近人类的扫视精度，是硬件-控制协同设计的好例子。
 - **对人形机器人的意义**：人形机器人最终也要「会主动看」，DIJIT 这类仿生头-颈视觉系统是感知前端的潜在范式。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  subgraph CAL[离线标定 §IV-A]
+    CB[固定 ChArUco 标定板] --> SCAN[相机 pan tilt 以约 5° 离散步进扫描]
+    SCAN --> REC[记录标定集 C 图像 I_i 与电机值 p_i t_i 另记 IMU 欧拉角但本文不使用]
+  end
+  subgraph RUN[在线扫视 §IV-B 至 §IV-D]
+    T[给定目标点 t 位于当前视角 不在本文范围] --> MAP[转换到电机状态相同的标定图像 I_s]
+    MAP --> HOM[对每个标定样本 I_k 用 ChArUco 角点估计单应 H_k 并求图像中心对应点 c_k = H_k p]
+    HOM --> NEAR[取与 t 图像距离最近的 c_k]
+    NEAR --> INT[未采样的电机状态用双线性插值]
+    INT --> PT[得到所需 pan tilt 电机值 左右相机分别计算]
+  end
+  REC --> HOM
+  PT --> ROS[ROS 主机 经串口发给 Teensy 4.0 60 Hz]
+  ROS --> SERVO[PWM 舵机驱动 左相机先动 右相机延迟约 33 ms]
+  SERVO --> CHK[检测 ArUco 中心 计算扫视误差]
+```
+
+图依据：论文 §IV-A 至 §IV-D 与 §V（扫视标定与执行链路；文中无整体流程图，箭头为按文字顺序归纳）
+
 ## 解决什么问题
 
 主流计算机视觉默认相机是**被动**的：图像「送进来」，算法去处理。但人类视觉是**主动**的——我们靠**眼动 + 头动 + 颈动的协同**去对准目标、会聚双眼、稳定注视，很多视觉能力恰恰建立在这套「主动控制」之上。
@@ -85,6 +108,7 @@ DIJIT 的核心是：不把相机当成被动取景器，而是当成会「主�
 - [humanoid_pnb_dijit-a-robotic-head-for-an-active-observer.md](../../sources/papers/humanoid_pnb_dijit-a-robotic-head-for-an-active-observer.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/DIJIT_A_Robotic_Head_for_an_Active_Observer/DIJIT_A_Robotic_Head_for_an_Active_Observer.html>
 - 论文：<https://arxiv.org/abs/2512.07998>
+- [arXiv PDF](https://arxiv.org/pdf/2512.07998)：已通读方法部分（实验与附录以略读为准）：§III DIJIT Design、§IV Saccade Control、§V 实验设置开头（流程图仅涵盖扫视控制与执行链路，机械设计未入图）
 
 ## 推荐继续阅读
 

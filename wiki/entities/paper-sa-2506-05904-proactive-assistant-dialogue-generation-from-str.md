@@ -42,6 +42,31 @@ Generates context-aware proactive assistant dialogues from streaming egocentric 
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph 数据["ProAssist 数据构建 (LLaMA-3.1-70B)"]
+        A["带时间戳动作标注的第一人称视频 (6 个公开数据集)"] --> B["任务目标与食谱生成"]
+        B --> C["视频预过滤"]
+        C --> D["多轮对话生成: no talk / talk some / talk more"]
+        D --> E["对话标注: 助手意图, 响应类型, 进度摘要"]
+        E --> F["自动质量评估与后过滤"]
+        F --> G["ProAssist 数据集"]
+    end
+    subgraph 模型["流式助手模型 (基于 VideoLLM-Online)"]
+        V["流式视频帧 + 可选用户话语"] --> EN["冻结图像编码器 + 可调 projector → 视觉 token"]
+        EN --> L["LLM: 每帧在最后视觉 token 处决定说话或输出 EOS 沉默"]
+        L --> TH["推理时按阈值 θ 判定是否说话并生成回复"]
+        L --> NF["训练: Negative Frame Sub-sampling 缓解沉默帧占多数"]
+        L --> IP["接近上下文上限: Iterative Progress Summarization 生成进度摘要"]
+        IP -->|摘要写入新的 system prompt| L
+    end
+    G -.->|训练与评测数据| L
+```
+
+图依据：论文 §3.2 / Fig.2、§5.1-5.3 / Fig.3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +121,7 @@ Generates context-aware proactive assistant dialogues from streaming egocentric 
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2506.05904>
+- [arXiv PDF](https://arxiv.org/pdf/2506.05904)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§3 Problem Definition 与 ProAssist 数据集、§5 Proactive Assistant Dialogue Modeling、§6.1 实验设置
 
 ## 推荐继续阅读
 

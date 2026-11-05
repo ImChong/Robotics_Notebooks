@@ -42,6 +42,24 @@ Presents a low-cost legged mobile manipulation system that solves long-horizon r
 - 想横向对照同一分组的其他工作，可以从 [Awesome-Real2Sim2Real 技术地图](../overview/sun-awesome-r2s2r-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome-Real2Sim2Real](../entities/awesome-real2sim2real.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S1["阶段一：低层运动策略<br/>RL 训练跟踪线/角速度指令<br/>训练后冻结"] --> S2
+    S2["阶段二：高层教师策略<br/>特权物体状态 + 子任务 id k<br/>K 个子任务网络，渐进式策略扩展 PEX"] --> S3
+    S3["阶段三：学生视觉运动策略<br/>语言指令 + 腕部 RGB + 本体感知<br/>U-Net(FiLM) 预测分割与深度<br/>SAC + 蒸馏损失，混合 rollout"]
+    S2 -- "行为蒸馏" --> S3
+    S3 --> H["高层输出"]
+    H --> ARM["机械臂/夹爪控制信号<br/>直接送臂驱动"]
+    H --> LOC["移动指令 c<br/>前向与角速度"]
+    LOC --> LOW["冻结的低层策略<br/>输出四足腿关节目标"]
+    S1 -.-> LOW
+    S3 -.-> R["仿真到实机部署<br/>动力学与视觉 gap 缩减"]
+```
+
+图依据：论文 §III、§IV、§V 与 Fig. 2 / Fig. 4。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Presents a low-cost legged mobile manipulation system that solves long-horizon r
 - [`sources/papers/sun_awesome_r2s2r_catalog.md`](../../sources/papers/sun_awesome_r2s2r_catalog.md) — 列表总表
 - [`sources/repos/awesome-real2sim2real.md`](../../sources/repos/awesome-real2sim2real.md)
 - 论文：<https://arxiv.org/abs/2501.09905>
+- [arXiv PDF](https://arxiv.org/pdf/2501.09905)：已通读方法部分（实验与附录以略读为准）：§III-§VII 与 Fig. 2-4；§VIII 实验与附录略读
 
 ## 推荐继续阅读
 

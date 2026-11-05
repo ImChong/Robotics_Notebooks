@@ -43,6 +43,37 @@ Reliable world simulation for autonomous driving.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph DATA["异构数据（§2.1）"]
+        OD["OpenDV 网络驾驶视频（约 4M）"]
+        NV["NAVSIM 专家动作（约 85K）"]
+        CA["CARLA 仿真：PDM-Lite 专家 + 随机转向/速度的非专家探索（约 88K）"]
+    end
+    DATA --> TRAIN
+    subgraph WM["可控世界模型 ReSim（§2.2，基于 CogVideoX）"]
+        TRAIN["三阶段渐进训练：<br/>1 OpenDV（历史帧+文本指令）<br/>2 +NAVSIM/CARLA，冻结主干，仅训轨迹编码器+LoRA<br/>3 高分辨率全量微调"] --> RS["ReSim：9 帧历史 + 可选指令 c + 未来自车路点 a<br/>→ 扩散 Transformer → 未来视频"]
+        LOSS["损失：视频扩散损失 + 0.1×动力学一致性损失<br/>偏向高噪声步采样"] -.-> TRAIN
+    end
+    subgraph V2R["Video2Reward（§2.3）"]
+        DI["冻结 DINOv2 + 轻量预测头"] --> RW["视频 → 奖励<br/>（以 CARLA infraction score 监督）"]
+    end
+    CA -.->|监督信号| DI
+    subgraph APP["应用（§2.4）"]
+        P1["视频预测策略：无动作条件想象未来帧 → 逆动力学模型 IDM → 自车轨迹"]
+        P2["奖励引导策略选择：候选轨迹 → ReSim 生成视频 → V2R 打分 → 选最高"]
+        P3["闭环视觉仿真：智能体动作 → ReSim 生成下一视觉状态 → 反馈给智能体"]
+    end
+    RS --> P1
+    RS --> P2
+    RW --> P2
+    RS --> P3
+```
+
+图依据：论文 §2.1–2.4 / Fig.2（Video2Reward）、Fig.3（视频预测策略）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +129,7 @@ Reliable world simulation for autonomous driving.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.09981>
+- [arXiv PDF](https://arxiv.org/pdf/2506.09981)：已通读方法部分（实验与附录以略读为准）：§2.1 数据、§2.2 可控世界模型、§2.3 Video2Reward、§2.4 应用
 
 ## 推荐继续阅读
 

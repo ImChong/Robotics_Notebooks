@@ -42,6 +42,21 @@ Policy-driven world model adaptation for robust offline MBRL.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  DS["离线数据集 D_µ"] --> WM0["世界模型 P_ϕ（以数据拟合的 P_ϕ̄ 作约束中心：KL(P_ϕ̄ ‖ P_ϕ) ≤ ε）"]
+  WM0 --> ROLL["在 P_ϕ 中 rollout 得到轨迹与折扣回报 J(θ,ϕ)"]
+  ROLL --> LEAD["策略 π_θ（领导者）：梯度上升，含对最优响应 ϕ*(θ) 的隐式影响"]
+  ROLL --> FOL["世界模型 P_ϕ（跟随者）：最小化 J，拉格朗日乘子 λ 的原始-对偶更新"]
+  LEAD -->|"二阶项：Fisher 信息矩阵近似 + Woodbury 恒等式求 A⁻¹"| FOL
+  FOL --> LEAD
+  LEAD --> OUT["鲁棒策略（maximin：最大化最坏情形性能）"]
+```
+
+图依据：论文 §3 / §4 / §5（式 (5)(9)(12)(14)；伪代码在附录 J，未读）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +111,7 @@ Policy-driven world model adaptation for robust offline MBRL.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2505.13709>
+- [arXiv PDF](https://arxiv.org/pdf/2505.13709)：已通读方法部分（实验与附录以略读为准）：§1 Introduction、§2 Background（略读）、§3 Theoretical Results（略读）、§4 Policy-guided World Model Adaptation、§5 Practical Algorithm
 
 ## 推荐继续阅读
 

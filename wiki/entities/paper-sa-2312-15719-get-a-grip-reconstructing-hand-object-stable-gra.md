@@ -42,6 +42,24 @@ Reconstructs stable hand-object grasping states from monocular egocentric videos
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+  VID["第一视角视频中的稳定抓握片段\n(N 帧 RGB)"] --> HAMER["HaMeR 逐帧重建手\n输出 MANO 手指关节 θ_n 与手到相机位姿 T_h2c"]
+  VID --> MASK["物体 2D 分割掩码 M_o\n作为监督"]
+  CAD["已知类别的物体 CAD 模型"] --> INIT["初始化\n旋转轴 φ 取 CAD 的 z 轴，各帧转角 ω_n = 0"]
+  INIT --> ONEDOF["1-DoF 物体位姿\n全局 T_o2h 后叠加绕轴 φ 的逐帧旋转 ω_n"]
+  HAMER -->|"手参数固定"| PROJ["可微投影物体网格\n与手位姿一起渲染到各帧"]
+  ONEDOF --> PROJ
+  PROJ --> E["联合优化所有帧\nE_mask 掩码 + E_push 穿透 + E_pull 接触吸引"]
+  MASK --> E
+  E -->|"更新 φ, ω_n, T_o2h, 物体尺度 s"| ONEDOF
+  E --> OUT["稳定抓握内的手-物体 3D 重建"]
+```
+
+图依据：论文 §3.2 稳定抓握与 1-DoF 假设（Fig. 3 / Fig. 4）、§3.3 Reconstructing Object Poses in a Stable Grasp（Fig. 5，目标函数 E_mask / E_push / E_pull）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +114,7 @@ Reconstructs stable hand-object grasping states from monocular egocentric videos
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2312.15719>
+- [arXiv PDF](https://arxiv.org/pdf/2312.15719)：已通读方法部分（实验与附录以略读为准）：§3 方法部分（稳定抓握定义、1-DoF 假设、重建优化；数据集标注与实验略读）
 
 ## 推荐继续阅读
 

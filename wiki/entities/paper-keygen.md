@@ -35,6 +35,32 @@ summary: "KeyGen（2609.28818）：点云无监督 3D 关键点 + 物体中心�
 - 纳入 [12 篇技术地图](../overview/embodied-research-12-papers-recover-wam-technology-map.md) 与同期失败恢复、异步 WAM、接触感知、持续学习、安全 RL 条目横向对照。
 - 步骤 2.5 开源结论：**待发布**。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph KP["关键点检测器预训练（自监督，§III-A）"]
+        SCANS["同一物体的两个随机局部扫描 Pa, Pb"] --> CAN["类别专属规范朝向分类器（24 元八面体群，ShapeNet 上训练）对齐到共享规范系"]
+        CAN --> DET["关键点检测器 F：每视角 K 个关键点，表示为输入点的凸组合"]
+        DET --> LOSS["Ltotal = 分离 Lsep + 启发式 Lheur（贴合表面与覆盖）+ 跨视角一致 Lcons"]
+    end
+    subgraph POL["策略学习与推理（§III-B）"]
+        CAM["四个标定相机的 RGB-D"] --> SEG["GroundingDINO + SAM 按任务提示分割 → 用掩码滤深度 → 多视角融合"]
+        SEG --> PC["物体中心点云 Pt"]
+        PC --> KPT["预训练检测器：规范对齐 → 预测关键点 → 反投影回原视角，得 Kt"]
+        PC --> EPC["PointNet 点云编码器 z_pc"]
+        KPT --> EKP["关键点编码器 z_kp"]
+        PRO["机器人本体状态 St"] --> EPR["本体 token c"]
+        EPC --> DIFF
+        EKP --> DIFF
+        EPR --> DIFF
+        DIFF["条件 DDPM 扩散策略：噪声预测网络 ε_θ 以 z_pc、z_kp、c 为条件"] --> ACT["从高斯噪声迭代去噪，输出整段动作轨迹"]
+    end
+    LOSS -.->|"预训练检测器（推理时固定使用）"| KPT
+```
+
+图依据：论文 §III-A、§III-B / Fig.2、Fig.3
+
 ## 核心信息
 
 | 项 | 内容 |
@@ -80,6 +106,7 @@ summary: "KeyGen（2609.28818）：点云无监督 3D 关键点 + 物体中心�
 
 - [论文归档](../../sources/papers/keygen_arxiv_2609_28818.md)
 - [公众号 12 篇清单](../../sources/blogs/wechat_embodied_station_12_papers_recover_wam_2026-09-27.md)
+- [arXiv PDF](https://arxiv.org/pdf/2609.28818)：已通读方法部分（实验与附录以略读为准）：§III KeyGen 方法（A 3D 关键点检测、B 策略学习）、§IV 基准与演示生成
 
 ## 推荐继续阅读
 

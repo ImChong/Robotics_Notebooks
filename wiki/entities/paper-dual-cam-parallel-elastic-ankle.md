@@ -116,4 +116,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：A Dual-Cam Parallel Elastic Actuator with Shared Gas-Spring Compensation for Humanoid Ankles](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Dual-Cam_Parallel_Elastic_Actuator_with_Shared_Gas-Spring_for_Humanoid_Ankles/Dual-Cam_Parallel_Elastic_Actuator_with_Shared_Gas-Spring_for_Humanoid_Ankles.html)
 - [https://arxiv.org/abs/2608.30832](https://arxiv.org/abs/2608.30832)

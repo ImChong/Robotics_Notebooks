@@ -42,6 +42,25 @@ End-to-end pipeline for fisheye event-based full-body motion capture on head-wor
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["头戴事件相机事件流（鱼眼镜头）"] --> B["构造 LNES 帧 Lq（时间窗 T）"]
+    B --> C["与帧缓冲中的上一帧 L̂q-1 加权相加：L̂q = L̂q-1 ⊙ Cq-1 ⊕ Lq"]
+    C --> D["共享编码器 Encoder"]
+    D --> E["Heatmap Decoder：16 个关节 2D 热图"]
+    E --> F["HM-to-3D Lifting：回归 16×3 个 3D 关节 Ĵq"]
+    D --> G["Segmentation Decoder：人体掩码 Ŝq"]
+    D --> H["Confidence Decoder：特征图 F̂q"]
+    G --> I["置信图 Cq = sigmoid(Ŝq ⊙ F̂q)"]
+    H --> I
+    I -->|"写入帧缓冲"| J["帧缓冲：Cq 与 L̂q"]
+    J -->|"下一帧"| C
+```
+
+图依据：论文 §3.1 事件相机与 LNES、§3.2 / Fig. 3 EventEgo3D++ 架构（EPM 与 REPM）、§3.2.2 残差事件传播（Eq. 9 及帧缓冲公式）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ End-to-end pipeline for fisheye event-based full-body motion capture on head-wor
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2502.07869>
+- [arXiv PDF](https://arxiv.org/pdf/2502.07869)：已通读方法部分（实验与附录以略读为准）：§3.1、§3.2（3.2.1 EPM、3.2.2 REPM、3.2.3 损失）、§5.1 实现细节
 
 ## 推荐继续阅读
 

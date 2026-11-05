@@ -105,6 +105,43 @@ summary: "human-humanoid-tools（hhtools）是 RoboParty 开源的 Human-to-Huma
 - **自动识别边界：** 「绝大部分格式」以维护列表为准；冷门私有格式可能仍需扩展。
 - **与学术 SOTA 对比：** TopoRetarget、OmniRetarget 等交互保留方法在特定 HOI 任务上可能有不同 trade-off。
 
+## 源码运行时序图
+
+入口：`uv run hhtools retarget run <motion.npz> --robot <preset> -o out/`（`pyproject.toml` 的 `[project.scripts]` 将 `hhtools` 指到 `hhtools.cli.main:app`）。下图只画 CLI 的 Newton IK 重定向路径；Web UI（`hhtools web`）、Agent/MCP（`hhtools agent` / `hhtools-mcp`）与 interaction-mesh 子命令走不同入口，未画。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / 脚本
+    participant M as hhtools/cli/main.py (typer app)
+    participant C as hhtools/cli/retarget.py retarget()
+    participant R as robot.registry / robot.loader
+    participant CAL as retarget.calibration
+    participant P as newton_basic/pipeline.py NewtonBasicPipeline
+    participant X as io.export_bundle / io.robot_csv
+
+    U->>M: hhtools retarget run inputs --robot --output
+    M->>C: 按 argv 懒加载 retarget 子命令
+    C->>C: _expand_inputs（目录展开为 *.npz）
+    C->>R: get_preset(robot)；load_robot(preset)
+    C->>CAL: resolve_preset_calibration_file；load_calibration
+    C->>C: build_pipeline_config_for_preset，覆盖关节限位等参数
+    loop 每个输入片段
+        C->>C: _load_input_motion（load_motion，失败退回 AmassAdapter）
+        C->>CAL: build_scaler_config_for_robot(calibration, robot_model, motion)
+        C->>P: 首个片段时构造 NewtonBasicPipeline，之后只更新 scaler_config
+        C->>P: pipeline.run(motion)
+        P->>P: 转 Z-up、地面归一；_build_scaler(...).apply(motion)
+        P->>P: 可选 feet stabilizer；_build_ik_targets
+        P->>P: _solve_ik_sequence（Newton IK，逐帧 LM 迭代）
+        P->>P: 限速、对齐根朝向、_rescale_root_displacement、足高钳制
+        P-->>C: RetargetedMotion
+        C->>X: bake_export_root_z；save_robot_csv(out_path)
+    end
+    C-->>U: 打印写出的 CSV；列出失败文件；一个都没写出时以退出码 1 结束
+```
+
+图依据：Roboparty/human-humanoid-tools@5011a9f，读过 `README.md`、`pyproject.toml`、`hhtools/cli/main.py`、`hhtools/cli/retarget.py`、`hhtools/retarget/newton_basic/pipeline.py`（`run` 及其调用的方法名）。
+
 ## 关联页面
 
 - [Party OS](./party-os.md)
@@ -124,6 +161,7 @@ GitHub Release：0.1.0(beta) / HHTools 0.1.0 Preview，2026-09-24 published_at�
 
 - [human_humanoid_tools.md](../../sources/repos/human_humanoid_tools.md)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
+- 源码核对（2026-11-02）：Roboparty/human-humanoid-tools@5011a9f，读过 README.md、pyproject.toml、hhtools/cli/main.py、hhtools/cli/retarget.py、hhtools/retarget/newton_basic/pipeline.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

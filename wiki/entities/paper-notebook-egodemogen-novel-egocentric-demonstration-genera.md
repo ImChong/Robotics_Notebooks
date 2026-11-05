@@ -43,6 +43,30 @@ summary: "基于模仿学习的视觉运动策略表现强，但常对第一视�
 - **轨迹迁移 + 视频生成**组合是合成配对演示的有效范式；
 - 与 EgoMI（主动视觉）从不同角度解决视角问题。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["源演示 (V, Q)<br/>单一第一视角 v_src"] --> B["采样新第一视角<br/>基座平面运动 (Δx, Δy, Δθ) → ΔT"]
+    B --> C["EgoTrajTransfer：按夹爪状态分段<br/>motion / skill segment"]
+    C --> D["motion 段：位置缩放 + 朝向 Slerp 插值"]
+    C --> E["skill 段：刚体变换 ΔT·T"]
+    D --> F["CuRobo 逆运动学求解<br/>IK 成功率与关节跳变过滤"]
+    E --> F
+    F -->|"不可行"| X["丢弃该视角 INFEASIBLE"]
+    F -->|"可行"| G["迁移后关节轨迹 Q~"]
+    A --> H["场景视频准备：重投影到新视角<br/>遮罩机器人 + INPAINT_TELEA 修补 → V_S"]
+    G --> I["按 URDF + 相机参数渲染<br/>机器人运动视频 V_R"]
+    H --> J["EgoViewTransfer：DiT 条件视频扩散<br/>以 V_S、V_R 为解耦条件"]
+    I --> J
+    J --> K["新视角观测视频 V~"]
+    G --> L["配对演示 (V~, Q~)"]
+    K --> L
+    L --> M["与原演示合并 D_aug<br/>标准 behavior cloning 训练策略"]
+```
+
+图依据：论文 §3.1–3.3 / Fig.2–4 / Algorithm 1，附录 A.6（策略训练）。
+
 ## 解决什么问题
 
 视觉运动策略**对第一视角视角变化敏感**： - 头部/相机视角一变，策略就退化； - 采集**多视角数据**昂贵。
@@ -134,6 +158,7 @@ EgoDemoGen 要：**无需多视角数据**，**生成**新视角下的配对演�
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization/EgoDemoGen__Egocentric_Demonstration_Generation_for_Viewpoint_Generalization.html>
 - 论文：<https://arxiv.org/abs/2509.22578>
 - 论文正文（Table 1–6、消融与数据配比）：<https://arxiv.org/html/2509.22578>
+- [arXiv PDF](https://arxiv.org/pdf/2509.22578)：已通读方法部分（实验与附录以略读为准）：§3 Method（3.1–3.3 通读，3.4 仅读开头）、Algorithm 1、附录 A.6
 
 ## 推荐继续阅读
 

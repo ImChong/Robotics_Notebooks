@@ -42,6 +42,25 @@ Pre-trained video generative models as world simulators.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["预训练视频生成模型（Open-Sora 扩散 / iVideoGPT 自回归 Transformer）"] --> B["插入动作条件模块：每个 Transformer 块内两层线性层"]
+    C["动作轨迹 a(t:t+H-1)"] --> D["离散动作：语言模板 + 文本编码器；连续动作：线性动作嵌入器"]
+    D --> E["逐帧动作嵌入 c，回归每帧 scale 与 shift"]
+    E --> B
+    B --> F["微调：运动强化损失 L_motion = L_prev * ω（相邻帧差异加权）"]
+    F --> G["动作可控的世界模拟器"]
+    G --> H["基于世界模型的强化学习：奖励预测模型 + PPO 演员-评论家"]
+    I["缓冲区 B 中的初始观测"] --> J["优先想象：按 TD 损失大小优先采样初始观测"]
+    J --> K["世界模型想象合成轨迹"]
+    G --> K
+    K --> H
+```
+
+图依据：论文 §3 预备知识、§4.1 动作条件模块（Fig. 2）、§4.2 运动强化损失（Fig. 3）、§4.3 基于模型的强化学习与优先想象（Algorithm 1）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Pre-trained video generative models as world simulators.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2502.07825>
+- [arXiv PDF](https://arxiv.org/pdf/2502.07825)：已通读方法部分（实验与附录以略读为准）：§3 预备知识、§4.1 至 §4.3
 
 ## 推荐继续阅读
 

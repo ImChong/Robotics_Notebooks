@@ -112,6 +112,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：MIDAS Hand](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/MIDAS_Hand__Modular_low-Impedance_Direct-drive_Anthropomorphic_Sensing_Hand/MIDAS_Hand__Modular_low-Impedance_Direct-drive_Anthropomorphic_Sensing_Hand.html)
 - 项目页与演示：<https://midas-hand.com>
 - 论文 PDF：<https://arxiv.org/pdf/2607.14487>
 - 代码组织：<https://github.com/midas-hand-org>

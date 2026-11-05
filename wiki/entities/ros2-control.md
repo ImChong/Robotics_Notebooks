@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, open-robotics]
 status: draft
-updated: 2026-08-22
+updated: 2026-11-03
 summary: "ros2_control：硬件接口负责读写状态，Controller Manager管理控制器生命周期，同一控制器因此可以切换仿真与真实设备。策略部署可沿这条接口检查关节命令、反馈时间戳和安全切换是否一致。"
 related:
   - ../concepts/sim2real.md
@@ -10,10 +10,12 @@ related:
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/hmi-opensource-projects-coverage.md
   - ./fiveages-sim-robot-descriptions.md
+  - ../overview/cpp-motion-control-open-source-libraries-map.md
 sources:
   - ../../sources/repos/ros2-control.md
   - ../../sources/repos/humanoid-motion-intelligence.md
   - ../../sources/repos/fiveages-sim-robot-descriptions.md
+  - ../../sources/blogs/wechat_qt_adventure_cpp_motion_control_libs_2026-11-02.md
 ---
 
 # ros2_control
@@ -83,6 +85,20 @@ flowchart LR
 - **主表是策展摘要**：细节、指标与许可以一手来源为准；本页只做知识库节点与导航。
 - **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
+
+## 一手资料核对（2026-11-03）
+
+> 来自 [C/C++ 运动控制开源库清单](https://mp.weixin.qq.com/s/RIXXIltQ0ABoBO_OVLZTZw) 的交叉核对；以一手资料为准。
+
+| 项 | 内容 |
+|----|------|
+| **仓库** | [https://github.com/ros-controls/ros2_control](https://github.com/ros-controls/ros2_control) |
+| **许可（核查）** | Apache-2.0（LICENSE） |
+| **最近提交** | 2026-11-02 |
+| **论文 / 文档** | 官方文档 control.ros.org（本次未逐页核对） |
+
+- **文章说法：** C++；框架而非单库：HardwareInterface + Controller（joint_trajectory_controller 等）
+- **核对结论：** 文章未写许可；仓库 LICENSE 为 Apache-2.0。
 
 ## 关联页面
 

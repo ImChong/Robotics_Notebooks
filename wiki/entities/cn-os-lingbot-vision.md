@@ -61,6 +61,38 @@ LingBot-Vision 用 masked boundary modeling 预训练视觉 Transformer，兼顾
 - 发布骨干不等于所有下游模型和训练组件均公开。
 - Giant 与 Small 的成本、精度与输入设置须分别计量。
 
+## 源码运行时序图
+
+入口：`./scripts/run_pca_demo.sh --config-file lingbot_vision/configs/lbot_vision_vitl.yaml --ckpt /path/to/model.pt --input examples/example.png --out outputs/pca_demo`（脚本执行 `python3 -m lingbot_vision.pca_demo`）。README 的 Python 快速开始则直接调用 `load_pretrained_backbone` 与 `extract_patch_tokens`。该仓库是视觉骨干推理与 PCA 可视化，不含机器人控制链路。
+
+```mermaid
+sequenceDiagram
+    participant SH as scripts/run_pca_demo.sh
+    participant D as lingbot_vision.pca_demo.run()
+    participant L as loader.py
+    participant B as build.build_backbone_from_cfg
+    participant V as vit.py(骨干)
+    participant P as preprocess.load_image
+    SH->>D: python3 -m lingbot_vision.pca_demo(PYTHONPATH=仓库根)
+    D->>L: load_config(config_file)
+    D->>L: load_backbone_state(ckpt) = torch.load(weights_only=True)
+    D->>L: load_backbone(cfg, ckpt, device, dtype)
+    L->>B: build_backbone_from_cfg(cfg)
+    B->>V: 构建 ViT，返回 (model, embed_dim)
+    L->>L: load_state_dict(strict=False)，to(device,dtype).eval()，冻结参数
+    loop 输入目录下每张图
+        D->>P: load_image(path, size, patch_size, mode)
+        P-->>D: img_norm, img_rgb, (H, W)
+        D->>L: extract_patch_tokens(backbone, img_norm, device, dtype)
+        L->>V: backbone(x, is_training=True)
+        V-->>L: out["x_norm_patchtokens"]
+        L-->>D: patch_tokens, (h, w)
+        D->>D: _pca_rgb 取前三主成分映射为 RGB，保存 *_pca.png 与 *_panel.png
+    end
+```
+
+图依据：Robbyant/lingbot-vision@151e463，读过 README.md、scripts/run_pca_demo.sh、lingbot_vision/__init__.py、loader.py（load_pretrained_backbone、resolve_pretrained_files、load_backbone、extract_patch_tokens）、pca_demo.py（run 与 _pca_rgb 开头）；vit.py、build.py 与 preprocess.py 内部实现未读。
+
 ## 关联页面
 
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
@@ -73,6 +105,7 @@ LingBot-Vision 用 masked boundary modeling 预训练视觉 Transformer，兼顾
 
 - [官方 Vision 仓库核查](../../sources/repos/lingbot-vision.md)
 - [官方组织资产索引](../../sources/sites/robbyant_github.md)
+- 源码核对（2026-11-02）：Robbyant/lingbot-vision@151e463，读过 README.md、scripts/run_pca_demo.sh、lingbot_vision/__init__.py、loader.py、pca_demo.py；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

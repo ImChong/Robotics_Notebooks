@@ -101,6 +101,8 @@ flowchart TB
 
 ## 关联页面
 
+- [GradSplat：前向传播中的梯度细化](./paper-gradsplat.md) — 面向多视角高斯重建的相关方法。
+
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)

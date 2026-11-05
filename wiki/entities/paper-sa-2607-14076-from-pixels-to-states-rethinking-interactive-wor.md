@@ -42,6 +42,26 @@ Examines interactive game world modeling along four dimensions.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    L["游戏引擎的 action-state-observation 循环（Fig. 1）<br/>玩家动作 → 按规则更新游戏状态 → 由状态渲染观测"] --> D1["① 玩家动作控制 Player Action Control"]
+    L --> D2["② 游戏状态动力学 Game State Dynamics"]
+    L --> D3["③ 状态-观测持久性 State-Observation Persistence"]
+    L --> D4["④ 实时交互生成 Real-Time Interactive Generation"]
+    D1 --> D1a["几何轨迹 / 运动信号 / 语义事件"]
+    D2 --> D2a["状态纠缠于观测 / 学习到的潜状态 / 显式描述"]
+    D3 --> D3a["记忆为已存观测 / 记忆为当前状态估计"]
+    D4 --> D4a["降低生成延迟 / 降低条件作用延迟"]
+    D2a -.-> E["§4 数据引擎（Black Myth: Wukong）"]
+    E --> E1["众包玩家游戏采集<br/>引擎逐 tick 导出动作与状态 JSON + ReShade/OBS 分屏录制 RGB 与深度"]
+    E1 --> E2["数据处理：时间戳逐帧对齐 → 按 boss 战切分样本 → 丢弃掉帧/卡顿/流间不一致样本"]
+    E2 --> E3["槽位结构化标注：slot caption + semantic caption（Qwen3-VL-235B-A22B-Instruct）"]
+```
+
+图依据：综述分类体系图（§1 Fig. 1、§3.1–§3.4 四个维度及其家族）加数据采集流程图（§4、Fig. 2）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +116,7 @@ Examines interactive game world modeling along four dimensions.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.14076>
+- [arXiv PDF](https://arxiv.org/pdf/2607.14076)：已通读全文正文（§1 引言、§2 相关工作、§3 四个维度、§4 数据引擎、§5 结论；参考文献略读）；流程图依据 §1 Fig. 1、§3、§4 与 Fig. 2。
 
 ## 推荐继续阅读
 

@@ -42,6 +42,25 @@ Explores the causal world model underlying next-token prediction in GPT.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    S["输入 token 序列 (Othello / Chess 对局, 分布外随机合法走子)"] --> G["预训练 GPT: next-token prediction"]
+    G --> LA["取最后一层注意力矩阵 A (每个 head 单独处理)"]
+    LA --> COV["由注意力矩阵估计协方差矩阵"]
+    COV --> ICD["递归因果发现 (改自 ICD): 因果序由 masked attention 给定, 逐个弹出最后一个 token 并学习其边"]
+    ICD --> CI["条件独立 (CI) 检验得到 p 值"]
+    ICD --> PAG["输出部分祖先图 PAG (允许隐混杂)"]
+    CI --> CONF["结构置信度: 由独立关系 p 值熵 H_ind 与依赖关系 p 值熵 H_dep 构成的评分"]
+    G --> NEXT["生成下一个 token (走子)"]
+    NEXT --> LEG{"是否合法走子"}
+    LEG --> CMP["比较合法 / 非法走子序列的平均结构置信度"]
+    CONF --> CMP
+```
+
+图依据：论文 §4.1-§4.3、§5.1 / Algorithm 1-2、Fig.3-4（推断：GPT 生成与置信度比较的连线依据 §5.1 与 Fig.4 说明）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Explores the causal world model underlying next-token prediction in GPT.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2412.07446>
+- [arXiv PDF](https://arxiv.org/pdf/2412.07446)：已通读方法部分（实验与附录以略读为准）：§4 因果解释与零样本因果结构学习（4.1-4.3）、§5.1 实验设定
 
 ## 推荐继续阅读
 

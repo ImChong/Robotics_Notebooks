@@ -115,7 +115,7 @@
 | 105 | CARLA ScenarioRunner | `gh:carla-simulator/scenario_runner` | Evaluation Methodology | natnew | [`painode-105-carlascenariorunner.md`](../../wiki/entities/painode-105-carlascenariorunner.md) | 新建 |
 | 106 | CodaLab Competitions | `url:codalab.org` | Evaluation Methodology | natnew | [`painode-106-codalabcompetitions.md`](../../wiki/entities/painode-106-codalabcompetitions.md) | 新建 |
 | 107 | Deep RL That Matters | `arxiv:1709.06560` | Evaluation Methodology | natnew | [`paper-pai-1709-06560-deeprlthatmatters.md`](../../wiki/entities/paper-pai-1709-06560-deeprlthatmatters.md) | 新建 |
-| 108 | Empirical Design in Reinforcement Learning | `arxiv:2102.03479` | Evaluation Methodology | natnew | [`paper-pai-2102-03479-empiricaldesigninreinforcementle.md`](../../wiki/entities/paper-pai-2102-03479-empiricaldesigninreinforcementle.md) | 新建 |
+| 108 | Empirical Design in Reinforcement Learning | `arxiv:2304.01315` | Evaluation Methodology | natnew | [`paper-pai-2102-03479-empiricaldesigninreinforcementle.md`](../../wiki/entities/paper-pai-2102-03479-empiricaldesigninreinforcementle.md) | 新建 |
 | 109 | Eval-vs-Train Mismatch (Kumar et al.) | `arxiv:2306.13085` | Evaluation Methodology | natnew | [`paper-pai-2306-13085-evalvstrainmismatchkumaretal.md`](../../wiki/entities/paper-pai-2306-13085-evalvstrainmismatchkumaretal.md) | 新建 |
 | 110 | EvalAI | `url:eval.ai` | Evaluation Methodology | natnew | [`painode-110-evalai.md`](../../wiki/entities/painode-110-evalai.md) | 新建 |
 | 111 | LeRobot Evaluation Scripts | `gh:huggingface/lerobot` | Evaluation Methodology | natnew+aichr | [`lerobot.md`](../../wiki/entities/lerobot.md) | 复用 |
@@ -325,7 +325,7 @@
 | 315 | Realistic Adversarial Driving (Wang et al.) | `arxiv:2003.01197` | Safety & Robustness | natnew | [`paper-pai-2003-01197-realisticadversarialdrivingwange.md`](../../wiki/entities/paper-pai-2003-01197-realisticadversarialdrivingwange.md) | 新建 |
 | 316 | Responsibility-Sensitive Safety (RSS) | `url:mobileye.com/technology/responsibili` | Safety & Robustness | natnew | [`painode-316-responsibilitysensitivesafetyrss.md`](../../wiki/entities/painode-316-responsibilitysensitivesafetyrss.md) | 新建 |
 | 317 | Robot Trust & Safety (Stanford CRFM) | `url:crfm.stanford.edu` | Safety & Robustness | natnew | [`painode-317-robottrustsafetystanfordcrfm.md`](../../wiki/entities/painode-317-robottrustsafetystanfordcrfm.md) | 新建 |
-| 318 | Robust Policy Optimization | `arxiv:1906.03710` | Safety & Robustness | natnew | [`paper-pai-1906-03710-robustpolicyoptimization.md`](../../wiki/entities/paper-pai-1906-03710-robustpolicyoptimization.md) | 新建 |
+| 318 | Robust Policy Optimization | `arxiv:2212.07536` | Safety & Robustness | natnew | [`paper-pai-1906-03710-robustpolicyoptimization.md`](../../wiki/entities/paper-pai-1906-03710-robustpolicyoptimization.md) | 新建 |
 | 319 | S-TaLiRo | `url:sites.google.com/a/asu.edu/s-taliro` | Safety & Robustness | natnew | [`painode-319-staliro.md`](../../wiki/entities/painode-319-staliro.md) | 新建 |
 | 320 | Safe Control Gym | `gh:utiasdsl/safe-control-gym` | Safety & Robustness | natnew | [`painode-320-safecontrolgym.md`](../../wiki/entities/painode-320-safecontrolgym.md) | 新建 |
 | 321 | Safe Reinforcement Learning Survey | `arxiv:2205.10330` | Safety & Robustness | natnew | [`paper-pai-2205-10330-safereinforcementlearningsurvey.md`](../../wiki/entities/paper-pai-2205-10330-safereinforcementlearningsurvey.md) | 新建 |
@@ -340,14 +340,14 @@
 | 330 | DeXtreme (NVIDIA) | `url:dextreme.org` | Sim-to-Real | natnew | [`painode-330-dextremenvidia.md`](../../wiki/entities/painode-330-dextremenvidia.md) | 新建 |
 | 331 | Domain Randomization (Tobin et al.) | `arxiv:1703.06907` | Sim-to-Real | natnew | [`paper-notebook-domain-randomization-for-transferring-deep-neura.md`](../../wiki/entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md) | 复用 |
 | 332 | Eureka (NVIDIA) | `url:eureka-research.github.io` | Sim-to-Real | natnew | [`painode-332-eurekanvidia.md`](../../wiki/entities/painode-332-eurekanvidia.md) | 新建 |
-| 333 | Learning Agile Flight in the Wild | `arxiv:1909.11652` | Sim-to-Real | natnew | [`paper-pai-1909-11652-learningagileflightinthewild.md`](../../wiki/entities/paper-pai-1909-11652-learningagileflightinthewild.md) | 新建 |
+| 333 | Learning Agile Flight in the Wild | `arxiv:2110.05113` | Sim-to-Real | natnew | [`paper-pai-1909-11652-learningagileflightinthewild.md`](../../wiki/entities/paper-pai-1909-11652-learningagileflightinthewild.md) | 新建 |
 | 334 | Learning Dexterous In-Hand Manipulation (OpenAI) | `arxiv:1808.00177` | Sim-to-Real | natnew | [`paper-pai-1808-00177-learningdexterousinhandmanipulat.md`](../../wiki/entities/paper-pai-1808-00177-learningdexterousinhandmanipulat.md) | 新建 |
 | 335 | Learning Robust Perceptive Locomotion (Miki et al.) | `url:leggedrobotics.github.io/rl-percepti` | Sim-to-Real | natnew | [`paper-robust-perceptive-locomotion-wild.md`](../../wiki/entities/paper-robust-perceptive-locomotion-wild.md) | 复用 |
 | 336 | Privileged Learning for Rapid Motor Adaptation | `arxiv:2109.11978` | Sim-to-Real | natnew | [`paper-anymal-walk-minutes-parallel-drl.md`](../../wiki/entities/paper-anymal-walk-minutes-parallel-drl.md) | 复用 |
 | 337 | Residual Reinforcement Learning for Robot Control | `arxiv:1812.03201` | Sim-to-Real | natnew | [`paper-residual-rl-robot-control.md`](../../wiki/entities/paper-residual-rl-robot-control.md) | 复用 |
 | 338 | Sim-to-Real via Sim-to-Sim (Koos et al. line) | `arxiv:1812.07252` | Sim-to-Real | natnew | [`paper-pai-1812-07252-simtorealviasimtosimkooseta.md`](../../wiki/entities/paper-pai-1812-07252-simtorealviasimtosimkooseta.md) | 新建 |
 | 339 | SimGAN | `arxiv:1612.07828` | Sim-to-Real | natnew | [`paper-pai-1612-07828-simgan.md`](../../wiki/entities/paper-pai-1612-07828-simgan.md) | 新建 |
-| 340 | SimOpt | `arxiv:1910.13325` | Sim-to-Real | natnew | [`paper-pai-1910-13325-simopt.md`](../../wiki/entities/paper-pai-1910-13325-simopt.md) | 新建 |
+| 340 | SimOpt | `arxiv:1810.05687` | Sim-to-Real | natnew | [`paper-pai-1910-13325-simopt.md`](../../wiki/entities/paper-pai-1910-13325-simopt.md) | 新建 |
 | 341 | SimToolReal | `url:simtoolreal.github.io` | Sim-to-Real | natnew | [`paper-sa-2602-16863-simtoolreal-an-object-centric-policy-for-zero-sh.md`](../../wiki/entities/simtoolreal.md) | 复用 |
 | 342 | AirSim | `url:microsoft.github.io/airsim` | Simulators | natnew | [`airsim.md`](../../wiki/entities/airsim.md) | 复用 |
 | 343 | Brax | `gh:google/brax` | Simulators | natnew | [`brax.md`](../../wiki/entities/brax.md) | 复用 |

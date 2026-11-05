@@ -103,6 +103,7 @@ Survey-style work on formal verification approaches for RL controllers.
 - [sources/repos/awesome-physical-ai-natnew.md](../../sources/repos/awesome-physical-ai-natnew.md)
 - [sources/repos/awesome-physical-ai-aichr.md](../../sources/repos/awesome-physical-ai-aichr.md)
 - 主链接：<https://arxiv.org/abs/2308.13247>
+- 核对（2026-11-02）：arXiv:2308.13247 实为《Oligomorphic groups, categories of partial bijections, and ultrahomogeneous cubic spaces over finite fields》(Neretin, 2023-08-25)，与本页不符，待查（arXiv 检索 ti:"Verifiable Reinforcement Learning" 无 DeepMind 综述式论文，仅有 2309.06420、1805.08328、1907.07273 等题名相近但机构/类型与清单描述不符的论文）
 
 ## 推荐继续阅读
 

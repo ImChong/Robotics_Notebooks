@@ -55,6 +55,41 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：`ros2 launch wuji_teleop_bringup wuji_teleop_hand.launch.py`（`src/wuji_teleop_bringup/launch/wuji_teleop_hand.launch.py`；仓库 README 另给 Monitor GUI 一键入口 `ros2 run wuji_teleop_monitor monitor`，本图未画）
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 shell
+    participant L as wuji_teleop_hand.launch.py
+    participant DRV as wujihandros2 wujihand_driver_node
+    participant CN as controller wujihand_node WujiHandControllerNode
+    participant SDK as wuji_sdk SdkManager 进程内 UDP
+    participant WO as wujihand_output WujiHandController
+    participant RT as wuji_retargeting Retargeter
+    participant HI as wujihand_output WujiHand
+    U->>L: ros2 launch wuji_teleop_hand.launch.py
+    L->>DRV: 为左右手各启动一个 wujihand_driver_node（按 hand_name 分命名空间）
+    L->>CN: 启动两个 wujihand_controller 进程（--side left 与 --side right）
+    CN->>WO: 创建 WujiHandController（input_source 为 wuji_glove）
+    WO->>RT: Retargeter.from_yaml 读取 retarget_wuji_glove_{side}.yaml
+    WO->>HI: 创建 WujiHand，其发布者话题为 /{hand_name}/joint_commands
+    CN->>SDK: _setup_wuji_glove 与 _connect_glove 连接手套（lazy import）
+    CN->>CN: create_timer 按 control_rate（默认 120 Hz）调用 _teleop_loop
+    loop 每个控制周期
+        CN->>SDK: _sdk_sub.recv 取最新 HandSkeleton，丢弃积压旧帧
+        CN->>CN: _extract_wuji_glove_keypoints 转为 (21, 3) 关键点
+        CN->>WO: set_keypoints(kp)
+        WO->>RT: retarget(keypoints) 得到关节角
+        WO->>HI: set_joint_positions(angles)
+        HI->>DRV: 发布 /{hand_name}/joint_commands（JointState）
+    end
+    Note over CN,SDK: 接收超时则 _connect_glove 重连（看门狗，_RECV_TIMEOUT_SEC）
+```
+
+图依据：wuji-hand-teleop@6478013，README.md（启动方式与节点表）、src/wuji_teleop_bringup/launch/wuji_teleop_hand.launch.py（完整读过）、src/controller/controller/wujihand_node.py（__init__、_teleop_loop 与手套分支、main 段）、src/controller/setup.py（仅 grep console_scripts）、src/output_devices/wujihand_output/wujihand_output/wujihand_controller.py（set_keypoints 与 retarget）、_internal/hand_interface.py（仅 grep 与 set_joint_positions 片段）。launch 文件经 launch_utils.read_input_source 读取 input_source，该函数未读。wuji_teleop_monitor 未读。未运行代码。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -64,6 +99,8 @@ institutions:
 ## 参考来源
 
 - [wuji-hand-teleop 源码归档](../../sources/repos/wuji-hand-teleop.md)（<https://github.com/wuji-technology/wuji-hand-teleop>）
+
+- 源码核对（2026-11-02）：wuji-technology/wuji-hand-teleop@6478013，读过 README.md、src/wuji_teleop_bringup/launch/wuji_teleop_hand.launch.py、src/controller/controller/wujihand_node.py、src/output_devices/wujihand_output/wujihand_output/wujihand_controller.py；时序图依据以上文件，未运行代码。
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 

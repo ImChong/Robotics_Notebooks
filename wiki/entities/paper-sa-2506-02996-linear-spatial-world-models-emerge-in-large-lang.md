@@ -43,6 +43,22 @@ Linear spatial world models emerge in LLMs.
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["合成数据集：61 个物体 + 6 种空间关系，生成自然语言提示并标注真值位置"] --> B["LLaMA-3.2-3B-Instruct 前向传播"]
+    B --> C["提取句号前最后一个 token 的残差流激活（第 8 / 12 / 24 层）"]
+    C --> D["线性 probe 与非线性 MLP probe 预测空间关系 / 物体位置"]
+    D --> E["PCA 降维，提取空间子空间（检验反义关系是否近似反向）"]
+    E --> F["检验组合性：关系向量之和 vs 预测和（2D / 3D）"]
+    E --> G["由 PCA 方向构造 steering 向量 v_r"]
+    G --> H["在最后 token 处注入 h' = h + α v_r"]
+    H --> I["让模型回答物体所在方向，统计各关系成功率"]
+```
+
+图依据：论文 §4.1 数据与激活提取 / §4.2 Probing / §4.3 Causal Experiments / §5.1–5.4（本文是分析型工作，图为其实验流程而非模型架构）
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ Linear spatial world models emerge in LLMs.
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2506.02996>
+- [arXiv PDF](https://arxiv.org/pdf/2506.02996)：已通读方法部分（实验与附录以略读为准）：§1 引言、§3 形式化定义、§4 方法（数据、probing、因果实验）、§5.1 / 5.2 / 5.4 实验流程
 
 ## 推荐继续阅读
 

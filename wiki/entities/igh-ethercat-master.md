@@ -4,15 +4,17 @@ project_id: igh-ethercat-master
 code: "https://gitlab.com/etherlab.org/ethercat"
 tags: [ethercat, fieldbus, open-source, master, embedded, realtime]
 status: draft
-updated: 2026-10-14
+updated: 2026-11-03
 related:
   - ./soem.md
   - ../queries/ethercat-master-optimization.md
   - ../concepts/ethercat-protocol.md
   - ../overview/ethercat-opensource-libs-wechat.md
+  - ../overview/cpp-motion-control-open-source-libraries-map.md
 sources:
   - ../../sources/blogs/wechat_ethercat_opensource_libs_qt_adventure.md
   - ../../sources/raw/wechat_ethercat_opensource_libs_qt_adventure_2026-10-14.md
+  - ../../sources/blogs/wechat_qt_adventure_cpp_motion_control_libs_2026-11-02.md
 summary: "IgH EtherCAT Master (EtherLab)：以 Linux 内核模块形式实现的开源 EtherCAT 主站，文章将其定位为「高性能硬实时」首选。"
 ---
 
@@ -55,6 +57,20 @@ summary: "IgH EtherCAT Master (EtherLab)：以 Linux 内核模块形式实现的
 - **开源状态：** 文章声明为公开仓库；**本次会话无法访问该仓库，开源程度/许可证未独立核查**，待后续按 ingest 步骤 2.5 补查。
 - **推测/待核查：** 内核态主站通常需要专用网卡驱动并随内核版本维护，这是移植成本的主要来源（推测，来自对内核模块形态的一般理解，非文章内容）。
 - EtherCAT 协议本身不开源，协议栈代码开源，ESC 硬件芯片需单独购买（文章避坑提醒）。
+
+## 一手资料核对（2026-11-03）
+
+> 来自 [C/C++ 运动控制开源库清单](https://mp.weixin.qq.com/s/RIXXIltQ0ABoBO_OVLZTZw) 的交叉核对；以一手资料为准。
+
+| 项 | 内容 |
+|----|------|
+| **仓库** | [https://gitlab.com/etherlab.org/ethercat](https://gitlab.com/etherlab.org/ethercat) |
+| **许可（核查）** | GPL v2（COPYING）；用户态库 LGPL v2.1（COPYING.LESSER） |
+| **最近提交** | 2026-11-02 |
+| **论文 / 文档** | 无论文；官方站点 etherlab.org |
+
+- **文章说法：** C；许可 GPL；工业级 EtherCAT 主站，硬实时（Linux RT 补丁）
+- **核对结论：** 仓库同时含 COPYING（GPLv2）与 COPYING.LESSER（LGPL v2.1），文章只写 GPL；硬实时依赖内核补丁来自文章，未在许可文件中核对。
 
 ## 关联页面
 

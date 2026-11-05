@@ -43,6 +43,28 @@ Builds explicit world models for precise articulated object dexterous manipulati
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["初始单帧观测<br/>(RGBD + 分割 mask)"] --> B["交互感知 Interactive Perception<br/>预测 affordance"]
+    B --> B1["仿真自监督交互：Where2Act<br/>actionability / 动作提案 / 动作打分"]
+    B --> B2["真实人类第一视角视频：VRB<br/>接触热图 + 接触后 2D 轨迹，转 3D"]
+    B1 --> C["运动规划执行一步交互<br/>推动可动部件（不可推时改为抓把手）"]
+    B2 --> C
+    C --> D["获得 K+1 帧不同关节状态的观测"]
+    D --> E["显式世界模型构建<br/>① 3D AIGC 生成规范网格"]
+    E --> F["② 位姿与尺度估计<br/>(改进 FoundationPose + 可微渲染)"]
+    F --> G["③ 可动部件分割<br/>SAMPart3D 子部件 + 帧间 Chamfer 距离 + 连通图 BFS"]
+    G --> H["④ 运动学结构估计<br/>部件树 / 关节类型 / 轴与原点"]
+    H --> I["URDF 数字孪生 + VHACD 凸分解<br/>载入物理仿真器"]
+    I --> J["基于采样的 MPC (iCEM)<br/>在仿真中搜索轨迹以达 s_target"]
+    K["灵巧手：eigengrasp + PCA<br/>降低动作维度"] --> J
+    J --> L["真实机器人执行轨迹"]
+```
+
+图依据：论文 §III（Fig.2 总体框架）、§III-A / Fig.3（交互感知）、§III-B / Fig.4 + Algorithm 1（世界模型构建）、§III-C（采样式 MPC）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +120,7 @@ Builds explicit world models for precise articulated object dexterous manipulati
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2409.08750>
+- [arXiv PDF](https://arxiv.org/pdf/2409.08750)：已通读方法部分（实验与附录以略读为准）：§III 方法（III-A 交互感知、III-B 显式世界模型构建、III-C 采样式 MPC）、§IV 实验设定略读
 
 ## 推荐继续阅读
 

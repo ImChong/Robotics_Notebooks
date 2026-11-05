@@ -42,6 +42,22 @@ UniVLA learns a discrete action vocabulary from language-annotated videos, teach
 - 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    A["跨本体视频：机器人演示 + 第一视角人类视频"] --> B["DINOv2 特征 + T5 语言指令"]
+    B --> C["阶段 1：语言条件下学习任务无关 latent action（VQ-VAE，IDM 编码器 + FDM 解码器）"]
+    C --> D["阶段 2：冻结任务无关码本，新增码本学习任务相关 latent action"]
+    D --> E["给任意视频帧打 latent action 伪标签"]
+    E --> F["预训练通用策略：Prismatic-7B 自回归预测 latent action token ACT_1…ACT_C"]
+    F --> G["下游后训练：多头注意力池化 + action decoder，解码为动作块"]
+    G --> H["LoRA 微调，联合 next-latent-action 损失与低层动作 L1 损失"]
+    H --> I["部署到具体机器人本体"]
+```
+
+图依据：论文 §III-A/B/C / Fig.2、Fig.3
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +114,7 @@ UniVLA learns a discrete action vocabulary from language-annotated videos, teach
 - [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
 - [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
 - 论文：<https://arxiv.org/abs/2505.06111>
+- [arXiv PDF](https://arxiv.org/pdf/2505.06111)：已通读方法部分（实验与附录以略读为准）：§I 引言（三阶段概述）；§III 方法（III-A latent action 学习、III-B 通用策略预训练、III-C 部署后训练，含 Fig.2、Fig.3）；实验与附录（略读）
 
 ## 推荐继续阅读
 

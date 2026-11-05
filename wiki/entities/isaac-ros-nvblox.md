@@ -45,10 +45,45 @@ summary: "Isaac ROS Nvblox 用 GPU 维护 TSDF/ESDF 体素地图，为 Nav2 提�
 - **误区：替代 SLAM** — nvblox 偏 **局部稠密地图/代价**；全局定位仍需 VSLAM/LIO 等。
 - **局限**：GPU 显存与传感器同步要求高；非 NVIDIA 平台不适用。
 
+## 源码运行时序图
+
+入口：`nvblox_examples_bringup/launch/realsense_example.launch.py`（其它传感器有同目录 `zed_example` / `os1_example` / `isaac_sim_example` 等 launch）；建图节点本体为 `nvblox_ros` 包的 `nvblox::NvbloxNode`（`nvblox_node_main.cpp`，或由 `perception/nvblox.launch.py` 以 ComposableNode 加载）。GPU 侧 TSDF/ESDF 积分在子模块 `nvblox_ros/nvblox_core`（`MultiMapper`/`Mapper`），该子模块未随本次浅克隆取得，图中只画到 `MultiMapper` 调用边界。
+
+```mermaid
+sequenceDiagram
+    participant L as realsense_example.launch.py
+    participant NL as perception/nvblox.launch.py add_nvblox
+    participant N as nvblox_node.cpp NvbloxNode
+    participant TF as transformer.cpp Transformer
+    participant MM as MultiMapper (nvblox_core)
+    participant PUB as LayerPublisher + 各 publisher
+    L->>NL: include vslam 与 nvblox 子 launch，remappings 映射 camera_0/depth/image 等
+    NL->>N: ComposableNode(plugin=nvblox::NvbloxNode) 加载 nvblox_base.yaml 与 nvblox_realsense.yaml 参数
+    N->>N: 构造：initializeNvbloxNodeParams, advertiseTopics, advertiseServices, subscribeToTopics
+    N->>MM: initializeMultiMapper 创建 MultiMapper(voxel_size, mapping_type, esdf_mode)
+    N->>N: setupTimers 建立 tick 定时器
+    Note over N: 深度/彩色订阅回调 depthImageCallback、colorImageCallback 只做 pushOntoQueue 入队
+    loop 每个 tick (MutuallyExclusive 回调组)
+        N->>N: processServiceRequestTaskQueue
+        N->>TF: isPoseAvailable 检查时间戳位姿是否可得
+        N->>TF: lookupTransformToGlobalFrame 读 TF 或 pose/transform 话题
+        N->>MM: processDepthImage 按 integrate_depth_rate_hz 调 integrateDepth
+        N->>MM: processColorImage 调 integrateColor
+        N->>N: decayTsdf, clearMapOutsideOfRadiusOfLastKnownPose 按各自频率
+        N->>MM: processEsdf 调 updateEsdf
+        N->>PUB: sliceAndPublishEsdf 发布 DistanceMapSlice 与占据栅格
+        N->>PUB: publishLayers 序列化并发布已订阅图层
+    end
+    Note over N: service 回调(save_ply/save_map/load_map/EsdfAndGradients)入队，由 tick 处理
+```
+
+图依据：NVIDIA-ISAAC-ROS/isaac_ros_nvblox@79654d2，读过 nvblox_examples/nvblox_examples_bringup/launch/{realsense_example,perception/nvblox}.launch.py、nvblox_ros/src/nvblox_node_main.cpp、nvblox_ros/src/lib/{nvblox_node,transformer}.cpp（nvblox_node.cpp 读了构造、订阅/发布/服务注册、tick、processDepthQueue、processEsdf、processDepthImage/processColorImage 相关段，未通读全部 1936 行）；nvblox_core 子模块未读。
+
 ## 参考来源
 
 - [sources/repos/isaac_ros_nvblox.md](../../sources/repos/isaac_ros_nvblox.md)
 - [NVIDIA-ISAAC-ROS/isaac_ros_nvblox](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nvblox)
+- 源码核对（2026-11-02）：NVIDIA-ISAAC-ROS/isaac_ros_nvblox@79654d2，读过 nvblox_examples_bringup 的 realsense_example.launch.py 与 perception/nvblox.launch.py，nvblox_ros 的 nvblox_node_main.cpp、nvblox_node.cpp、transformer.cpp；时序图依据以上文件，未运行代码；nvblox_core 子模块未读。
 
 ## 关联页面
 

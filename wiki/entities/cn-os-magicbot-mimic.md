@@ -55,6 +55,44 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+入口：先 `python scripts/csv_to_npz_z1.py --input_file motion.csv --input_fps 30 --output_name <name> --headless` 生成动作 `.npz`，再 `python scripts/rsl_rl/train.py --task=Tracking-Flat-Z1-v0 --motion_file <npz> --num_envs 4096 --headless` 训练（均为 README 所列命令；需要 Isaac Lab 2.1.0 环境）。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户 / CLI
+    participant C2N as scripts/csv_to_npz_z1.py
+    participant Tr as scripts/rsl_rl/train.py main()
+    participant Reg as tasks/tracking/config/z1/__init__.py (gym.register)
+    participant Env as ManagerBasedRLEnv (Z1FlatEnvCfg + mdp/commands.py MotionCommand)
+    participant Run as utils/my_on_policy_runner.py MotionOnPolicyRunner
+    participant W as wandb（可选）
+    U->>C2N: CSV（Z1 关节角 + 根位姿）
+    C2N->>C2N: MotionLoader 插值（lerp/slerp）并计算速度
+    loop run_simulator 每帧
+        C2N->>C2N: robot.write_root_state_to_sim / write_joint_state_to_sim（只渲染，不 sim.step）
+        C2N->>C2N: 记录 joint_pos / body_pos_w / body_quat_w 等到 log
+    end
+    C2N->>C2N: np.savez("/tmp/motion.npz")
+    C2N->>W: log_artifact 并 link 到 wandb-registry-motions
+    U->>Tr: --task Tracking-Flat-Z1-v0 --motion_file / --registry_name
+    Tr->>Tr: AppLauncher 启动 Isaac Sim
+    Tr->>Reg: import whole_body_tracking.tasks（注册 Tracking-Flat-Z1-v0）
+    Tr->>Tr: hydra_task_config 取 env_cfg 与 Z1FlatPPORunnerCfg
+    alt --motion_file
+        Tr->>Env: env_cfg.commands.motion.motion_file = 本地路径
+    else --registry_name
+        Tr->>W: api.artifact(name).download()，取 motion.npz
+    end
+    Tr->>Env: gym.make(task, cfg=env_cfg) → RslRlVecEnvWrapper
+    Tr->>Run: MotionOnPolicyRunner(env, agent_cfg, log_dir, registry_name)
+    Tr->>Run: learn(num_learning_iterations, init_at_random_ep_len=True)
+    Run->>Run: save()：写 model_*.pt；logger 为 wandb 时导出 ONNX 并上传
+```
+
+图依据：magicbot-mimic@8eb9c55，读过 README.md、scripts/csv_to_npz_z1.py、scripts/rsl_rl/train.py、source/whole_body_tracking/whole_body_tracking/tasks/tracking/config/z1/__init__.py、source/whole_body_tracking/whole_body_tracking/utils/my_on_policy_runner.py、tasks/tracking/mdp/commands.py（仅类/方法列表）。`play.py`、`replay_npz_z1.py`、`sim2sim_mujoco.py` 未读，不在图中。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +104,7 @@ institutions:
 - [magicbot-mimic 源码归档](../../sources/repos/magicbot-mimic.md)（<https://github.com/MagiclabRobotics/magicbot-mimic>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：MagiclabRobotics/magicbot-mimic@8eb9c55，读过 README.md、scripts/csv_to_npz_z1.py、scripts/rsl_rl/train.py、tasks/tracking/config/z1/__init__.py、utils/my_on_policy_runner.py、tasks/tracking/mdp/commands.py（仅类/方法列表）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

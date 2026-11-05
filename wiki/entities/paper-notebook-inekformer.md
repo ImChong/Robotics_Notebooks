@@ -33,6 +33,29 @@ InEKFormer 把经典 不变扩展卡尔曼滤波（InEKF） 的几何结构保�
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 深读笔记提供比摘要更贴近实现的阅读路径，适合作为后续 ingest 深化起点。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    imu["IMU 测量 u_t"] --> prop["InEKF 状态传播<br/>strapdown IMU 模型，SE4(3) 李群状态 X̄（含左右脚接触）"]
+    prop --> xbar["传播后状态 X̄_t"]
+    leg["腿部里程计观测 Y_t<br/>由前向运动学得到左右脚右不变观测"] --> feat
+    xbar --> feat["构造输入差分特征<br/>F1 观测差分 / F2 新息差分 / F3 前向演化差分 / F4 前向更新差分"]
+    ft["足端 Fz → sigmoid 阈值<br/>接触状态 μ_c = [μL, μR]（F5）"] --> post
+    feat --> scale["robust scaler 缩放"]
+    scale --> enc["F1+F2 → 嵌入 Φ_Y → Transformer 编码器 Ψ_Y<br/>得到观测噪声潜表示 Z_N"]
+    scale --> dec["F3+F4 → 嵌入 Φ_X → Transformer 解码器 Ψ_X<br/>得到估计不确定度潜表示 Z_K"]
+    enc --> dec
+    dec --> fc["全连接解码 Φ_K → 初步增益 K̄ = [K̄_L, K̄_R]"]
+    fc --> post["各脚列乘以接触状态：K̂ = [μL·K̄_L, μR·K̄_R]"]
+    post --> corr["InEKF 状态修正<br/>X̄⁺ = exp(K̂·Π·X̄·Y)·X̄"]
+    xbar --> corr
+    corr --> out["修正后状态 X̄⁺_t"]
+    out -.延迟反馈到下一步传播与差分特征.-> prop
+```
+
+图依据：论文 §III-A 至 §III-C / Fig.2-3。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -65,6 +88,7 @@ InEKFormer 把经典 不变扩展卡尔曼滤波（InEKF） 的几何结构保�
 - [humanoid_pnb_inekformer.md](../../sources/papers/humanoid_pnb_inekformer.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/InEKFormer__A_Hybrid_State_Estimator_for_Humanoid_Robots/InEKFormer__A_Hybrid_State_Estimator_for_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2511.16306>
+- [arXiv PDF](https://arxiv.org/pdf/2511.16306)：已通读方法部分（实验与附录以略读为准）：§III-A 至 §III-C（含 Fig.2-3）、§IV-A/B 数据与训练设定
 
 ## 推荐继续阅读
 

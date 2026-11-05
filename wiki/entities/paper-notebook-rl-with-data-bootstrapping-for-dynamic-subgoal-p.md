@@ -38,6 +38,30 @@ summary: "安全、实时导航是人形应用的基础，但现有双足导航�
 - **动态子目标**比一次性全局规划更适应杂乱动态环境；
 - 与 NavDP、社交导航等共同丰富人形导航的方法谱。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    subgraph BOOT["数据自举（训练期）"]
+        X["RRT-LMPC 专家控制器<br/>RRT 生成子目标 + 线性 LIP-MPC"] --> DS["离线示范数据集<br/>10,000 条状态-动作"]
+        DS --> RB["SAC 回放池<br/>初期 80% 离线 + 20% 在线<br/>逐步降到 100% 在线"]
+        ON["MuJoCo 中 Digit 在线交互"] --> RB
+    end
+    RB -. 训练 .-> HI
+    subgraph HL["高层：RL 子目标规划器（SAC）"]
+        ST["状态：64×64 局部占据栅格<br/>+ CoM 状态、支撑脚、目标距离/朝向等"] --> HI["Actor：CNN 提取地图特征<br/>拼接其余状态后经全连接层<br/>输出高斯策略"]
+        HI --> SG["动态子目标 (d_c, φ_c)<br/>机器人中心极坐标，每步一次"]
+    end
+    subgraph LL["低层：LIP 线性 MPC 步态规划"]
+        SG --> MP["φ_c 映射为转向率 ω<br/>线性约束二次规划 LCQP"]
+        MP --> FP["落脚点 (f_x, f_y) 与转向率 ω<br/>更新频率 ≥20 Hz"]
+    end
+    FP --> RO["Digit 行走<br/>反馈 CoM 状态与局部地图"]
+    RO --> ST
+```
+
+图依据：论文 §II-A / §II-B / §III Data Bootstrapping / Fig. 2
+
 ## 解决什么问题
 
 双足导航要**安全 + 实时**，但： - 难**平衡计算效率与稳定行走精度**； - 杂乱环境需**动态**调整路径； - RL 直接训练**慢且不稳**。
@@ -88,6 +112,8 @@ summary: "安全、实时导航是人形应用的基础，但现有双足导航�
 - [humanoid_pnb_rl-with-data-bootstrapping-for-dynamic-subgoal-p.md](../../sources/papers/humanoid_pnb_rl-with-data-bootstrapping-for-dynamic-subgoal-p.md)
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/RL_with_Data_Bootstrapping_for_Dynamic_Subgoal_Pursuit_in_Humanoid_Navigation/RL_with_Data_Bootstrapping_for_Dynamic_Subgoal_Pursuit_in_Humanoid_Navigation.html>
 - 论文：<https://arxiv.org/abs/2506.02206>
+- [arXiv PDF](https://arxiv.org/pdf/2506.02206)：已通读方法部分（实验与附录以略读为准）：§I 引言、§II 分层导航框架（§II-A RL 子目标规划器、§II-B LIP 线性 MPC）、§III 数据自举训练；§IV 仿真结果仅略读
+
 
 ## 推荐继续阅读
 

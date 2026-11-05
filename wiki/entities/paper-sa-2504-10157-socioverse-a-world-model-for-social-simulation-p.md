@@ -43,6 +43,23 @@ World model for social simulation powered by LLM agents and 10 million real-worl
 - 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    SE["Social Environment<br/>社会结构、社会动态(带时间戳与标签的新闻)、个性化上下文"]
+    UE["User Engine<br/>1000 万用户池(X、Rednote)+ 15 个人口统计维度标签<br/>LLM 初标 → 人工校验 → 训练分类器大规模标注"]
+    SC["Scenario Engine<br/>问卷 1-to-N / 深度访谈 1-to-1<br/>行为实验 / 社交媒体交互 N-to-N<br/>按人口分布采样放大"]
+    UE -->|"用户画像与历史经验"| BE
+    SC -->|"模拟设定与交互机制"| BE
+    SE -->|"最新社会信息与上下文"| BE
+    BE["Behavior Engine<br/>Agent 模型池：传统 ABM(规则/数学模型)<br/>+ 通用 / 专家 / 领域 LLM"]
+    BE --> OUT["对查询生成模拟行为结果"]
+    OUT --> APP["三个应用场景：美国大选预测<br/>突发新闻反馈、中国国民经济调查"]
+```
+
+图依据：论文 §2 Methods（Overall Framework、2.1–2.4）/ Fig.2；§3 场景实现仅用于末节点
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -98,6 +115,7 @@ World model for social simulation powered by LLM agents and 10 million real-worl
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2504.10157>
+- [arXiv PDF](https://arxiv.org/pdf/2504.10157)：已通读方法部分（实验与附录以略读为准）：摘要、§1、§2 Methods（2.1–2.4）、§3 开头
 
 ## 推荐继续阅读
 

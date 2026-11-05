@@ -32,7 +32,27 @@ From Experts to a Generalist 的人形机器人学习论文条目，当前处于
 ## 为什么重要
 
 - 这篇已排进 Paper Notebooks 的待读清单，可以从 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 与分类页找到同一批工作。
-- 在笔记写出来之前，这里只保留分类位置与原文入口，不给方法结论。
+- 深读笔记写出来之前，这里只保留分类位置与原文入口；方法流程见下方「流程总览」，仅依据论文方法部分，不含结论判断。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    AMASS["AMASS 人体动作（SMPL）<br/>重定向到 Unitree G1"] --> PHC["PHC 过滤<br/>8,179 条高质量轨迹"]
+    PHC --> AE["自编码器聚类：Transformer 运动编码器 + 文本编码器（BERT + Transformer）<br/>损失：InfoNCE + L2 对齐 + Huber 重建<br/>文本来自 HumanML3D"]
+    AE --> KM["K-means 聚类（隐变量）<br/>六个运动簇"]
+    PHC --> BASE["在全数据集上训练通用运动跟踪基策略（RL）"]
+    BASE --> EXP["各簇微调出专家跟踪策略<br/>jump / slow / fast / up / mid / low"]
+    KM --> EXP
+    EXP --> REAL["专家策略部署真机<br/>采集真实轨迹"]
+    REAL --> DELTA["训练各专家 delta action 模型（按 ASAP）"]
+    DELTA --> SIM["修正仿真动力学<br/>s_t+1 = f_sim(s_t, a_t + π_Δ)"]
+    SIM -->|"在修正后环境中继续微调专家，可迭代至收敛"| EXP
+    EXP --> DAG["DAgger 多专家蒸馏<br/>KL 蒸馏损失"]
+    DAG --> GEN["Transformer 通用全身控制策略（Generalist）"]
+```
+
+图依据：论文 §3（Fig. 2、§3.1-§3.3）。
 
 ## 核心信息
 
@@ -64,6 +84,7 @@ From Experts to a Generalist 的人形机器人学习论文条目，当前处于
 
 - [humanoid_pnb_from-experts-to-a-generalist.md](../../sources/papers/humanoid_pnb_from-experts-to-a-generalist.md)
 - [Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [arXiv PDF](https://arxiv.org/pdf/2506.12779)：已通读方法部分（实验与附录以略读为准）：§3 Method（§3.1-§3.3）
 
 
 ## 推荐继续阅读

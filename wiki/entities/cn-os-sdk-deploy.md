@@ -55,6 +55,52 @@ institutions:
 - 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
 - **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
 
+## 源码运行时序图
+
+本仓库按机型分目录（`Lite3_sdk_deploy`、`M20_sdk_deploy`、`M20S_sdk_deploy`、`S10_sdk_deploy`、`lite3_sdk_service`、`lite3_transfer`、`drdds`）。下图只覆盖已读的 Lite3 部署链路（仿真闭环），其余机型目录未读，不在图内。
+
+入口：`ros2 run lite3_sdk_deploy rl_deploy`（`src/Lite3_sdk_deploy/main.cpp`）；仿真侧另起 `python3 src/Lite3_sdk_deploy/interface/robot/simulation/mujoco_simulation_ros2.py`。
+
+```mermaid
+sequenceDiagram
+    participant U as 用户（键盘 / 手柄 / ROS 2 命令）
+    participant M as main.cpp main()
+    participant Q as q::QStateMachine / StateMachineBase
+    participant RI as Lite3Interface (ri_ptr_)
+    participant RL as RLControlState
+    participant PR as Lite3PolicyRunner (policy/policy.onnx)
+    participant S as mujoco_simulation_ros2.py 或 /lite3 实机
+
+    M->>Q: QStateMachine(Lite3, RemoteCommandType::kKeyBoard)
+    M->>Q: Start()
+    Q->>RI: 创建 Lite3Interface、ControlParameters、JointsDataShadowSubscriber
+    Q->>Q: 创建 KeyboardInterface、SafeController、Idle/StandUp/RLControl/JointDamping/LieDown 五个状态
+    Q->>RI: ri_ptr_->Start()，uc_ptr_->Start()，sc_ptr_->Start()，Idle.OnEnter()
+    M->>Q: Run()（后台线程 RunThread + rclcpp::spin）
+    S-->>RI: /IMU_DATA 与 /JOINTS_DATA（MuJoCo 每 5 步发布一次）
+    loop RunThread 每 5 ms
+        Q->>RI: RefreshRobotData()
+        Q->>Q: current_controller_->Run()，LoseControlJudge / GetNextStateName
+        opt 状态切换
+            Q->>Q: OnExit() → OnEnter()
+        end
+    end
+    U->>Q: 命令 Idle → StandUp → RLControl
+    Q->>RL: OnEnter()（启动 PolicyRunner 线程）
+    loop RLControl 状态
+        RL->>RI: Run() → UpdateRobotObservation()：IMU rpy/omega/acc、关节 pos/vel/tau
+        RL->>PR: 每 decimation 个周期 getRobotAction(rbs_, UserCommand)
+        PR->>PR: 拼 obs → ONNX Runtime session_.Run(obs → actions)
+        PR-->>RL: RobotAction（kp、kd、目标关节位置）
+        RL->>RI: SetJointCommand()
+        RI->>S: 发布 /JOINTS_CMD
+        S->>S: _cmd_callback → _apply_joint_torque：tau = kp*(pos_cmd-q) + kd*(vel_cmd-dq) + tau_ff，mujoco.mj_step
+    end
+    U->>Q: 目标模式 LieDown / JointDamping（或急停）→ 状态切换
+```
+
+图依据：DeepRoboticsLab/sdk_deploy@2027907，读过 README.md、src/Lite3_sdk_deploy/{README.md、main.cpp、state_machine/state_machine_base.h、state_machine/quadruped/q_state_machine.hpp、rl_control_state.hpp、run_policy/lite3_policy_runner.hpp（部分）、interface/robot/simulation/mujoco_simulation_ros2.py}。
+
 ## 关联页面
 
 - [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
@@ -66,6 +112,7 @@ institutions:
 - [sdk_deploy 源码归档](../../sources/repos/sdk_deploy.md)（<https://github.com/DeepRoboticsLab/sdk_deploy>）
 
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+- 源码核对（2026-11-02）：DeepRoboticsLab/sdk_deploy@2027907，读过 README.md、src/Lite3_sdk_deploy/README.md、main.cpp、state_machine/state_machine_base.h、state_machine/quadruped/q_state_machine.hpp、rl_control_state.hpp、run_policy/lite3_policy_runner.hpp（部分）、interface/robot/simulation/mujoco_simulation_ros2.py；仅覆盖 Lite3 目录，M20/M20S/S10/lite3_sdk_service/lite3_transfer/drdds 未读；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 

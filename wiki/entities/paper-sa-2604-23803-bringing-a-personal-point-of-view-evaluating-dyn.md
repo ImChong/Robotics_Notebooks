@@ -42,6 +42,25 @@ Systematic benchmark of dynamic 3DGS on egocentric vs. exocentric footage, confi
 - 想横向对照同一分组的其他工作，可以从 [Awesome Egocentric Vision 技术地图](../overview/sun-awesome-ego-technology-map.md) 逐条展开。
 - 顺着列表实体 [Awesome Egocentric Vision](../entities/awesome-egocentric-vision.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    Q["研究问题：egocentric 数据上的动态 3DGS 重建<br/>是否不同于 exocentric？"] --> D["数据：EgoExo4D 配对 ego / exo<br/>随机 20 段 + 手选 5 段 EgoGaussian 式片段，每段 300 帧"]
+    D --> M["模型：EgoGaussian、Deformable-3DGS、4DGS、RTGS"]
+    M --> P["预处理：鱼眼去畸变并保留有效像素 mask<br/>exo 每帧随机选视角构成单目输入；偶/奇帧划分 train/val/test"]
+    P --> E1["§3.1 Ego vs. exo：mPSNR / mSSIM / mLPIPS，3 次重训"]
+    P --> E2["§3.2 Dynamic vs. static：SAM 2 标注动态物体 mask<br/>分别度量动态与静态区域"]
+    M --> E3["§3.3 EgoGaussian vs. others：在 Epic-Kitchens / HOI4D 原始数据上复核"]
+    P --> E4["§3.4 相机运动：线性基线与线速度 vs. 静态区域 mLPIPS"]
+    E1 --> C["§4 讨论 · §5 结论"]
+    E2 --> C
+    E3 --> C
+    E4 --> C
+```
+
+图依据：实证研究设计图，论文 §1 贡献列表与 §3.1–§3.4 的实验设置（数据、模型、评测协议、指标）。
+
 ## 核心信息
 
 | 字段 | 内容 |
@@ -96,6 +115,7 @@ Systematic benchmark of dynamic 3DGS on egocentric vs. exocentric footage, confi
 - [`sources/papers/sun_awesome_ego_catalog.md`](../../sources/papers/sun_awesome_ego_catalog.md) — 列表总表
 - [`sources/repos/awesome-egocentric-vision.md`](../../sources/repos/awesome-egocentric-vision.md)
 - 论文：<https://arxiv.org/abs/2604.23803>
+- [arXiv PDF](https://arxiv.org/pdf/2604.23803)：已通读摘要、Introduction（贡献）、Related work、§3.1–§3.4 的实验设置与评测协议、§4 讨论；结果表与附录未逐项核对。
 
 ## 推荐继续阅读
 
