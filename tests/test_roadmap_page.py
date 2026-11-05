@@ -80,13 +80,15 @@ class RoadmapPageTests(unittest.TestCase):
         self.assertIn("title: '可选路线'", content)
         self.assertIn("#depth-optional-index", content)
 
-    def test_roadmap_knowledge_map_overview_uses_talent_tree(self):
+    def test_roadmap_knowledge_map_overview_is_top_down(self):
         content = MAIN_JS.read_text(encoding="utf-8")
-        self.assertIn("function renderRoadmapTalentTree", content)
-        self.assertIn("renderRoadmapTalentTree(columns, overviewEl, detailPages)", content)
-        self.assertIn("roadmap-ttree-edges", content)
-        self.assertNotIn("roadmap-kmap-leaf", content)
-        self.assertIn(".roadmap-ttree {", STYLE_CSS.read_text(encoding="utf-8"))
+        # 全局总览：各阶段小树按阅读顺序排开，不再用分列天赋树
+        self.assertIn("function drawOverview", content)
+        self.assertIn("roadmap-ltree-ov-stage", content)
+        self.assertNotIn("renderRoadmapTalentTree", content)
+        css = STYLE_CSS.read_text(encoding="utf-8")
+        self.assertIn(".roadmap-ltree-ov {", css)
+        self.assertNotIn(".roadmap-ttree", css)
 
     def test_roadmap_knowledge_map_uses_learning_route_layout(self):
         content = MAIN_JS.read_text(encoding="utf-8")
