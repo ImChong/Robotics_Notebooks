@@ -3,10 +3,10 @@ type: entity
 project_id: ode-policy-action-dynamics
 tags:
   - paper
-  - reward-model
+  - ntu
   - policy-learning
-status: complete
-updated: 2026-11-04
+status: draft
+updated: 2026-11-05
 arxiv: "2611.01729"
 project: https://ntumars.github.io/ODE/
 code: https://github.com/NTUMARS/ODE-POLICY
@@ -20,75 +20,65 @@ sources:
   - ../../sources/repos/ode_policy_action_dynamics.md
   - ../../sources/sites/ode-policy-action-dynamics.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
-summary: "ODE Policy（arXiv:2611.01729）：动作块边界的跳变会妨碍平稳控制。"
+summary: "ODE Policy 学习动作的物理时间向量场，从上一目标动作积分生成下一目标动作。"
 ---
 
-# ODE Policy（arXiv:2611.01729）
+# ODE Policy: Robot Learning via Action Dynamics, Not Actions（基于动作动力学的机器人学习）
 
 **ODE Policy**（*ODE Policy: Robot Learning via Action Dynamics, Not Actions*，[arXiv:2611.01729](https://arxiv.org/abs/2611.01729)，[项目页](https://ntumars.github.io/ODE/)，[代码](https://github.com/NTUMARS/ODE-POLICY)）来自 [具身智能小站 2026-11-04 盘点](../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md)，属「奖励学习与策略后训练」组。
 
 ## 一句话定义
 
-**动作块边界的跳变会妨碍平稳控制。**
+**ODE Policy 学习目标动作随物理时间变化的向量场，并从上一个目标动作积分得到后续动作。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| ODE Policy | ODE Policy: Robot Learning via Action Dynamics, Not Actions | 本文方法 / 基准的简称 |
+| ODE | Ordinary Differential Equation | 常微分方程 |
+| IL | Imitation Learning | 模仿学习 |
+| RL | Reinforcement Learning | 强化学习 |
+| VLA | Vision-Language-Action | 视觉语言动作模型 |
 
-## 为什么重要
+## 核心机制与流程
 
-- 让动作沿连续动力学自然衔接。ODE Policy直接学习动作变化的向量场，从上一动作积分得到下一动作；覆盖模仿学习、动作模型和强化学习，适合关注平滑性与推理效率的团队。
-- 开源结论：**已开源**（步骤 2.5，2026-11-04）。仓库可达（git ls-remote）。项目页 HTTP 200。
-- 同期同组工作见 [VLM 奖励评估、动作动力学与开放权重机器人智能体：具身智能小站 11-04 期 57 篇阅读坐标](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)。
+论文 [arXiv:2611.01729v1](https://arxiv.org/pdf/2611.01729v1) 将向量场作用于发给底层控制器的**目标动作**，并以机器人实际时间积分；这与生成模型中的采样时间不同。图依据论文第 4 节，表示 IL 主流程。
 
-## 核心机制
+```mermaid
+flowchart TB
+  obs["图像历史与指令"] --> enc["条件编码"]
+  enc --> field["动作向量场"]
+  state["本体状态"] --> field
+  prev["上一目标动作"] --> field
+  field --> integ["物理时间积分"]
+  integ --> act["目标动作序列"]
+  act --> ctrl["底层控制器"]
+  act -. "训练时路径损失" .-> demo["示范动作"]
+  act -. "跨动作块延续" .-> prev
+```
 
-| 项 | 内容 |
-|----|------|
-| **arXiv** | [2611.01729](https://arxiv.org/abs/2611.01729) |
-| **开源** | **已开源** |
-| **要点** | 动作块边界的跳变会妨碍平稳控制。 |
-| **文内指标** | 公众号转述：平滑性要连同推理条件比较：作者在14项真机任务中测试，并在单RTX 4090的药片操作实验中报告动作块生成10.3 ms，对比FM-DiT的36.3 ms；这不是所有平台通用的加速倍数。 |
+- IL 在短动作块内积分，用整段示范动作的路径损失反向传播，无需动作导数标签；训练时扰动起点并引导轨迹回归，缓解推理时的误差累积。
+- 可选多样性头通过随机化向量场方向表达多模态；RL 场景每个控制步积分一次，可替换 SuperMimic actor。
+- 连续的是目标指令轨迹，实际机器人运动还受控制器跟踪误差、采样和硬件限制影响。
 
 ## 源码运行时序图
 
-以下为按仓库入口（`NTUMARS/ODE-POLICY`）推断的通用运行链路；入库日仅核实仓库可达，未逐文件阅读，具体脚本名以 README 为准。
-
-```mermaid
-sequenceDiagram
-  participant U as 用户
-  participant R as NTUMARS/ODE-POLICY
-  participant E as 环境 / 数据
-  participant M as 模型 / 策略
-  U->>R: clone + 安装依赖（README）
-  U->>E: 准备基准 / 数据集或真机接口
-  U->>R: 训练或加载预训练权重
-  R->>M: 构建 ODE Policy 模型
-  U->>R: 运行评测脚本
-  R->>E: 重置环境、取观测
-  E-->>M: 观测
-  M-->>E: 动作 / 预测
-  R-->>U: 指标与日志
-```
+**待完成：**官方 [ODE-POLICY](https://github.com/NTUMARS/ODE-POLICY) 仓库有可运行实现，但相关源码调用链尚未逐项核验。原先的通用推测图已移除；读完源码后补充时序图。README 指出 main 分支含 LIBERO 训练评测及 2D 导航，另有实机和 π0.5 分支。
 
 ## 实验与评测
 
-- 公众号转述：平滑性要连同推理条件比较：作者在14项真机任务中测试，并在单RTX 4090的药片操作实验中报告动作块生成10.3 ms，对比FM-DiT的36.3 ms；这不是所有平台通用的加速倍数。
-- **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
-
-## 与其他工作对比
-
-- 横向索引见 [VLM 奖励评估、动作动力学与开放权重机器人智能体：具身智能小站 11-04 期 57 篇阅读坐标](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)；同 arXiv 不重复造页。
+- LIBERO 四套任务上，论文报告视觉运动策略训练 1 epoch 后成功率 79.2%，100 epoch 后 93.8%；π0.5 的 ODE 头在 1 epoch 为 96.0%，原 flow matching 专家为 75.5%。比较须注意后者头部容量和初始化不同。
+- 论文报告使用 Euler 积分时生成 8 个动作耗时 5.7 ms，比该实验中的 FM-DiT 快 10.8 倍；这不是所有硬件或求解器的通用倍数。
+- 作者报告在 14 项单臂、双臂、灵巧手和人形真机任务上均取得被比较方法中的最高成功率；具体任务、样本量和差异需逐项核对。
 
 ## 结论
 
-**让动作沿连续动力学自然衔接：平滑性要连同推理条件比较：作者在14项真机任务中测试，并在单RTX 4090的药片操作实验中报告动作块生成10.3 ms，对比FM-DiT的36.3 ms；这不是所有平台通用的加速倍数。**
+**动作动力学提供了连续的目标动作表示，但实际收益与训练设置、求解器、控制接口及任务有关。**
 
-1. 开源边界：**已开源** — 仓库可达（git ls-remote）。项目页 HTTP 200。
-2. 核心机制：动作块边界的跳变会妨碍平稳控制。
-3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
+1. 跨块延续的是前一目标动作，不应直接用实测位置替代。
+2. 向量场积分不能保证实机状态、力矩或安全约束自动满足。
+3. 数字适用于论文对应实验协议，部署前应在目标硬件上测延迟和跟踪质量。
+4. 当前为草稿：论文全文和源码调用链尚未全部核验，补齐后才能完成收录。
 
 ## 关联页面
 
