@@ -80,13 +80,22 @@ class RoadmapPageTests(unittest.TestCase):
         self.assertIn("title: '可选路线'", content)
         self.assertIn("#depth-optional-index", content)
 
-    def test_roadmap_knowledge_map_uses_talent_tree(self):
+    def test_roadmap_knowledge_map_overview_uses_talent_tree(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertIn("function renderRoadmapTalentTree", content)
-        self.assertIn("renderRoadmapTalentTree(columns, treeEl, metaEl, detailPages)", content)
+        self.assertIn("renderRoadmapTalentTree(columns, overviewEl, detailPages)", content)
         self.assertIn("roadmap-ttree-edges", content)
         self.assertNotIn("roadmap-kmap-leaf", content)
         self.assertIn(".roadmap-ttree {", STYLE_CSS.read_text(encoding="utf-8"))
+
+    def test_roadmap_knowledge_map_uses_learning_route_layout(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertIn("function renderRoadmapLearningTree", content)
+        self.assertIn("function layoutRoadmapLearningStage", content)
+        self.assertIn("renderRoadmapLearningTree(columns, treeEl, metaEl, detailPages)", content)
+        css = STYLE_CSS.read_text(encoding="utf-8")
+        self.assertIn(".roadmap-ltree {", css)
+        self.assertIn(".roadmap-ltree-gate {", css)
 
 
 if __name__ == "__main__":
