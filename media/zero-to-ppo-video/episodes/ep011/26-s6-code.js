@@ -10,6 +10,8 @@
 //   np.pi = 圆周率 π ≈ 3.14 = 半圈；最后一句：三样输入放进括号交给函数、.round(2)、print；输出数后面的点 = 带小数的数（-4. 就是 −4）；
 //   -0. 是电脑算出的 −0.00000000000000022 保留两位小数。
 //   第 3 页（UR5）：T = fk_space(...) 先存进 T，再分两句打印；切片讲法同 11-03（4 × 4 小格子，上面、左边写编号 0–3）。
+// 2026-11-05（用户反馈「说列了出来，就要给观众列出来」）：删掉「Modern Robotics 的库里，算正向运动学的函数，也是这样写的」
+//   （屏幕上没给观众看官方代码；要给看又得讲 range 三个参数、np.dot、[:, i]）；结尾把书上例 4.5 的结果、第 6 集的矩阵摆出来对照。
 // 时刻取自配音的逐词时间，见 ../ep011.py。
 (function () {
   var E = window.EP011, K = E.K, H = E.HEX;
@@ -29,25 +31,24 @@
     calc: 87.91, si: 88.68, ti: 90.44, ep4b: 91.67, star: 92.88, vt: 95.57, x44b: 97.46,
     calc2: 99.2, me: 99.94, me2: 100.94, at: 102.37, left: 103.12, storeB: 104.59,
     done: 106.94, ret: 109.34, order: 111.07, ep4m: 112.67,
-    book: 115.62, same: 119.04,
-    // 第 2 页：这一集的例子
-    ex: 121.27, m33: 123.35, z: 124.7, m44: 126.05, s6: 127.41, nums: 128.46, row1: 129.31,
-    two90: 131.29, brk: 133.15, list: 135.6, rad: 136.51, ep9: 138.18,
-    npi: 140.47, pi: 141.6, p314: 142.49, half: 143.82, div2: 145.05, v157: 145.97, is90: 146.89,
-    last: 149.12, call: 150.1, fnc: 151.92, round: 154.34, prn: 155.84,
-    run: 157.8, res: 158.79, p4: 159.74, p1: 160.4, cx: 160.9, cy: 161.88, same2: 162.86,
-    dot: 165.11, dotW: 166.26, dec: 167.83, dec0: 169.02, m4: 170.41,
-    neg0: 173.26, tiny: 174.75, near: 176.39, round0: 178.21,
-    // 第 3 页：UR5
-    ur: 181.6, urM: 184.04, urS: 186.06, book2: 187.34, ang: 189.58,
-    store2: 195.03, fnRes: 196.09, keepW: 197.47, pr: 198.16,
-    part: 201.32, ep4c: 202.95, brk2: 204.23, rowsel: 205.15, rowW: 206.16, colsel: 206.79, colW: 207.52,
-    c3: 209.15, head3: 210.11, lone3: 211.42, idx3: 212.53, fourth: 214.43, py0: 215.23, zero0: 216.2,
-    l1: 218.54, right: 219.61, front3: 220.39, posW: 222.04, keep3: 222.67, l2: 224.11, tl: 225.06, t33: 225.73, rotW: 226.8, keep2: 227.45,
-    run2: 229.76, res2: 230.62, p95: 231.96, same3: 235.88,
-    rot: 239.16, ep6: 240.32, left90: 241.6
+    // 第 -3.65 页：这一集的例子
+    ex: 115.62, m33: 117.7, z: 119.05, m44: 120.4, s6: 121.76, nums: 122.81, row1: 123.66,
+    two90: 125.64, brk: 127.5, list: 129.95, rad: 130.86, ep9: 132.53,
+    npi: 134.82, pi: 135.95, p314: 136.84, half: 138.17, div2: 139.4, v157: 140.32, is90: 141.24,
+    last: 143.47, call: 144.45, fnc: 146.27, round: 148.69, prn: 150.19,
+    run: 152.15, res: 153.14, p4: 154.09, p1: 154.75, cx: 155.25, cy: 156.23, same2: 157.21,
+    dot: 159.46, dotW: 160.61, dec: 162.18, dec0: 163.37, m4: 164.76,
+    neg0: 167.61, tiny: 169.1, near: 170.74, round0: 172.56,
+    // 第 -2.65 页：UR5
+    ur: 175.95, urM: 178.39, urS: 180.41, book2: 181.69, ang: 183.93,
+    store2: 189.38, fnRes: 190.44, keepW: 191.82, pr: 192.51,
+    part: 195.67, ep4c: 197.3, brk2: 198.58, rowsel: 199.5, rowW: 200.51, colsel: 201.14, colW: 201.87,
+    c3: 203.5, head3: 204.46, lone3: 205.77, idx3: 206.88, fourth: 208.78, py0: 209.58, zero0: 210.55,
+    l1: 212.89, right: 213.96, front3: 214.74, posW: 216.39, keep3: 217.02, l2: 218.46, tl: 219.41, t33: 220.08, rotW: 221.15, keep2: 221.8,
+    run2: 224.11, res2: 224.97, p95: 226.31, same3: 230.23,
+    rot: 233.51, ep6: 234.67, left90: 235.95
   };
-  var END = 244.62;
+  var END = 238.97;
 
   E.scenes[5] = {
     title: '写成代码',
@@ -66,21 +67,20 @@
       { at: 87.81, s: '`S[i] * theta[i]`：这根**螺旋轴**的每个数都乘上**角度**（第 4 集），交给 `VecTose3` 排成 4 × 4' },
       { at: 99.1, s: '`MatrixExp6(se3) @ T`：算出**矩阵指数**，乘到结果左边，再存回 `T`' },
       { at: 106.84, s: '`return T`：把结果交回去。从最后一个关节往前，正是第 4 幕的顺序' },
-      { at: 115.52, s: '《Modern Robotics》的库里，算正向运动学的 `FKinSpace` 也是这样写的' },
-      { at: 121.17, s: '这一集的例子：平面的 3 × 3 补一根 z 轴，写成 4 × 4；**螺旋轴**一根一排，各 6 个数' },
-      { at: 131.19, s: '两个**角度**写在方括号里：第 4 集的列表；代码里角度用弧度（第 9 集）' },
-      { at: 140.37, s: '`np.pi`：NumPy 存好的圆周率 π ≈ 3.14，是半圈的弧度；除以 2 ≈ 1.57 = 90°' },
-      { at: 149.02, s: '最后一句：3 样输入放进括号交给函数，`.round(2)` 保留 2 位小数，`print` 打印出来' },
-      { at: 157.7, s: '运行：手的**位置** (−4, 1)，x 轴朝左，y 轴朝下，和手算的一样' },
-      { at: 165.01, s: '数后面的小点：带小数的数，小数部分是 0。`-4.` 就是 −4' },
-      { at: 173.16, s: '`-0.` 就是 0：电脑算出的是一个非常接近 0 的负数，保留两位小数成了 −0' },
-      { at: 181.5, s: '换成《Modern Robotics》例 4.5 的六关节机械臂：M、六根**螺旋轴**，θ = (0, −90°, 0, 0, 90°, 0)' },
-      { at: 194.93, s: '`T = fk_space(M, S, theta)`：先把结果存进 `T`，再分 2 句打印' },
-      { at: 200.37, s: '这 2 句只取 4 × 4 的一部分：方括号里，逗号前面选横排，逗号后面选列（第 4 集）' },
-      { at: 209.05, s: '`:3` 从头取 3 个；单独的 `3` 是编号 3，也就是第 4 个（Python 的编号从 0 开始）' },
-      { at: 218.06, s: '`T[:3, 3]`：最右边一列的前 3 个数 = 手的**位置**；`T[:3, :3]`：左上角 3 × 3 = **朝向**' },
-      { at: 229.66, s: '同一个函数：手停在 (0.095, 0.109, 0.988) 米，和《Modern Robotics》书上的结果一样' },
-      { at: 239.06, s: '**朝向**正是第 6 集「原地往左转 90°」的那个矩阵' }
+      { at: 115.52, s: '这一集的例子：平面的 3 × 3 补一根 z 轴，写成 4 × 4；**螺旋轴**一根一排，各 6 个数' },
+      { at: 125.54, s: '两个**角度**写在方括号里：第 4 集的列表；代码里角度用弧度（第 9 集）' },
+      { at: 134.72, s: '`np.pi`：NumPy 存好的圆周率 π ≈ 3.14，是半圈的弧度；除以 2 ≈ 1.57 = 90°' },
+      { at: 143.37, s: '最后一句：3 样输入放进括号交给函数，`.round(2)` 保留 2 位小数，`print` 打印出来' },
+      { at: 152.05, s: '运行：手的**位置** (−4, 1)，x 轴朝左，y 轴朝下，和手算的一样' },
+      { at: 159.36, s: '数后面的小点：带小数的数，小数部分是 0。`-4.` 就是 −4' },
+      { at: 167.51, s: '`-0.` 就是 0：电脑算出的是一个非常接近 0 的负数，保留两位小数成了 −0' },
+      { at: 175.85, s: '换成《Modern Robotics》例 4.5 的六关节机械臂：M、六根**螺旋轴**，θ = (0, −90°, 0, 0, 90°, 0)' },
+      { at: 189.28, s: '`T = fk_space(M, S, theta)`：先把结果存进 `T`，再分 2 句打印' },
+      { at: 194.72, s: '这 2 句只取 4 × 4 的一部分：方括号里，逗号前面选横排，逗号后面选列（第 4 集）' },
+      { at: 203.4, s: '`:3` 从头取 3 个；单独的 `3` 是编号 3，也就是第 4 个（Python 的编号从 0 开始）' },
+      { at: 212.41, s: '`T[:3, 3]`：最右边一列的前 3 个数 = 手的**位置**；`T[:3, :3]`：左上角 3 × 3 = **朝向**' },
+      { at: 224.01, s: '同一个函数：手停在 (0.095, 0.109, 0.988) 米，和《Modern Robotics》书上的结果一样' },
+      { at: 233.41, s: '**朝向**正是第 6 集「原地往左转 90°」的那个矩阵' }
     ],
     build: function (K) {
       var s = K.sceneSvg('把指数积公式写成代码 fk.py，每种写法当场讲清：import numpy as np 导入 NumPy、起短名字 np（第 4 集）；from 库 import 函数，从《Modern Robotics》配套的 modern_robotics 库导入 MatrixExp6、VecTose3；函数是一段起了名字的代码，给它输入，它算好结果交回来；def fk_space(M, S, theta): 自己写函数，括号里三样输入，冒号下面缩进的几句是函数要做的事；T = M，等号是把右边存进左边；for i in reversed(range(len(theta))): 编号依次是 1、0；se3 = VecTose3(S[i] * theta[i])；T = MatrixExp6(se3) @ T；return T。例子：M 补 z 轴写成 4 × 4，两根螺旋轴，theta = [np.pi / 2, np.pi / 2]（列表、弧度、圆周率），print(fk_space(M, S, theta).round(2)) 打印出手在 (−4, 1)；-4. 是带小数的数；−0. 是非常接近零的负数。换成《Modern Robotics》例 4.5 的 UR5，T = fk_space(M, S, theta)，T[:3, 3] 是位置 (0.095, 0.109, 0.988)，T[:3, :3] 是朝向，原地往左转九十度');
@@ -174,7 +174,6 @@
       var nExp = rows(TOP, [[0, [['MatrixExp6(se3)', E.HI, 700, 1]]], [28, [['：算出矩阵指数', E.INK2]]], [62, [['@ T', E.INK, 700, 1], ['：乘到结果左边', E.INK2]]],
         [90, [['（@：第 4 集）', E.MUT, 700]], 16], [122, [['T =', E.INK, 700, 1], [' …：存回 T', E.INK2]]]]);
       var nRet = rows(TOP, [[0, [['return T', E.HI, 700, 1]]], [28, [['：把结果交回去', E.INK2]]], [66, [['从最后一个关节往前', E.INK, 900]]], [96, [['= 第 4 幕的顺序', E.GOOD, 900]]]]);
-      var nBook = rows(TOP, [[0, [['Modern Robotics 的库：', E.INK2]]], [28, [['FKinSpace', E.HI, 700, 1]]], [56, [['也是这样写的', E.INK2]]]]);
       // 第 2 页
       var n5 = rows(BOT, [[0, [['3 × 3', E.INK2], [' 补 z 轴 → ', E.INK2], ['4 × 4', E.INK, 900]]], [30, [['螺旋轴：各 6 个数', E.WARN, 900]]], [58, [['一根一排', E.INK2]]]]);
       var nPi = rows(BOT, [[0, [['[ ]', E.INK, 700, 1], [' = 列表（第 4 集）', E.INK2]]], [28, [['角度用弧度（第 9 集）', E.INK2]]],
@@ -195,8 +194,12 @@
       var gCap = E.txt(gM, GX - 20, GY + 4 * CW + 22, '编号从 0 开始', 18, E.INK2, 'start', 700);
       var n8 = rows(BOT, [[0, [['《Modern Robotics》例 4.5', E.GOOD, 900]], 17], [28, [['θ = (0, −90°, 0, 0, 90°, 0)', E.ACC, 900]]]]);
       var nKeep = rows(BOT, [[0, [['结果先存进 ', E.INK2], ['T', E.INK, 700, 1]]], [30, [['再分 2 句打印', E.INK2]]]]);
-      var n9 = rows(BOT, [[0, [['手：', E.INK2], ['(0.095, 0.109, 0.988)', E.VEL, 900]]], [28, [['和《Modern Robotics》一样 ✓', E.GOOD, 900]], 16],
-        [62, [['朝向：第 6 集', E.INK2]]], [88, [['原地往左转 90°', E.OMEGA, 900]]]]);
+      // 2026-11-05（用户反馈：说「和书上一样」「正是第 6 集的那个矩阵」，就把书上的结果、第 6 集的矩阵摆出来对照）
+      var n9 = rows(BOT, [[0, [['电脑：', E.INK2], ['(0.095, 0.109, 0.988)', E.VEL, 900]]], [30, [['《Modern Robotics》例 4.5：', E.GOOD, 900]], 16],
+        [56, [['(0.095, 0.109, 0.988) ✓', E.GOOD, 900]]]]);
+      var n10 = rows(BOT, [[0, [['第 6 集：原地往左转 90°', E.OMEGA, 900]], 18], [128, [['和终端里的一样（−0 就是 0）', E.INK2]], 16]]);
+      var R6m = E.matN(n10.g, NX + 70, BOT + 62, [[0, -1, 0], [1, 0, 0], [0, 0, 1]], { size: 18, dx: 34, dy: 22,
+        color: function (i, j) { return j === 0 ? E.X : j === 1 ? E.Y : E.Z; } });
 
       var laid = false;
       function fr(st, a) { return E.fade(st, a, 0.3); }
@@ -236,7 +239,7 @@
           bx('left', E.HI, T.me, T.storeB); bx('tl', E.HI, T.storeB, T.done);
           bx('ret', E.HI, T.ret, T.order);
           var revOrd = st >= T.order - 0.3;   // 讲 reversed 时亮黄；讲「第 4 幕的顺序」时换绿
-          ed.box('rev', revOrd ? E.GOOD : E.HI, pg0 ? (revOrd ? win(st, T.order, T.book) : win(st, T.rv, T.whole)) : 0);
+          ed.box('rev', revOrd ? E.GOOD : E.HI, pg0 ? (revOrd ? win(st, T.order, T.ex) : win(st, T.rv, T.whole)) : 0);
 
           /* 第 2 页 */
           var pg1 = st >= T.ex && st < T.ur;
@@ -273,8 +276,7 @@
           show(nCalc, st, T.si, T.calc2, [T.si, T.ti, T.star, T.star, T.vt, T.x44b]);
           show(nExp, st, T.me, T.done, [T.me, T.me2, T.at, T.at, T.storeB]);
           E.op(nExp.r[2].parts[1], fr(st, T.left));
-          show(nRet, st, T.ret, T.book, [T.ret, T.ret, T.order, T.ep4m]);
-          show(nBook, st, T.book, T.ex, [T.book, T.book, T.same]);
+          show(nRet, st, T.ret, T.ex, [T.ret, T.ret, T.order, T.ep4m]);
           show(n5, st, T.m33, T.two90, [T.m33, T.nums, T.row1]);
           E.op(n5.r[0].parts[1], fr(st, T.z)); E.op(n5.r[0].parts[2], fr(st, T.m44));
           show(nPi, st, T.brk, T.last, [T.brk, T.rad, T.pi, T.p314, T.div2]);
@@ -315,7 +317,8 @@
           ed.box('r2', E.HI, st < T.run2 ? win(st, T.tl, T.keep2) : 0);
           ed.box('c2', E.OMEGA, st < T.run2 ? win(st, T.tl, T.keep2) : 0);
           ed.box('d2', E.INK2, st < T.run2 ? win(st, T.keep2, T.run2) : 0);
-          E.op(n9.g, fr(st, T.p95)); E.op(n9.r[1].g, fr(st, T.same3)); E.op(n9.r[2].g, fr(st, T.rot)); E.op(n9.r[3].g, fr(st, T.left90));
+          E.op(n9.g, win(st, T.p95, T.rot)); E.op(n9.r[1].g, fr(st, T.same3)); E.op(n9.r[2].g, fr(st, T.same3));
+          E.op(n10.g, fr(st, T.rot)); E.op(n10.r[0].g, fr(st, T.ep6)); E.op(R6m.g, fr(st, T.left90)); E.op(n10.r[1].g, fr(st, T.left90 + 0.6));
         }
       };
     }

@@ -1,7 +1,8 @@
 // 011 第 5 幕：六个关节也一样。左边斜着看的 UR5（URDF，example-robot-data），零位是胳膊平伸（《Modern Robotics》例 4.5、图 4.6）；
 // 右栏三排写出六个矩阵指数 + M 的公式、六个角度，再化简成只剩第 2、5 个。
 // 句 1「零位」「胳膊平伸」右栏写。句 2「螺旋轴」六根关节轴（琥珀虚线 + S₁…S₆）依次出来；「零位时、手的位姿」手上出 {b} 三根小箭头、写 M；
-//    「Modern Robotics 这本教材」右栏出卡片「《Modern Robotics》例 4.5」（2026-11-04 用户要求：直接说书名）。句 3 公式三排：「第一个」「第六个」那一块亮；「从右往左」箭头；「第六个关节先转」「第一个最后转」写在下面。
+//    「Modern Robotics 这本教材」「就是屏幕上这些」右栏换成例 4.5 列出来的数：M（4 × 4，单位米）和 S₁…S₆（2026-11-05 用户反馈：说列了出来就要列在屏幕上）；
+//    句 3「左边三列」「右边一列」M 上分块框亮，句 4「前三个是轴的方向」「比如第一根」「朝上」「后三个」逐项亮，左边 S₁ 跟着亮。句 3 公式三排：「第一个」「第六个」那一块亮；「从右往左」箭头；「第六个关节先转」「第一个最后转」写在下面。
 // 句 4 六个角度逐个写：θ₂ = −90°（「反着转」）、θ₅ = 90°，「别的都是零度」其余写 0。句 5「转零度的矩阵指数」第 1、3、4、6 块打灰、写 = I
 //    （「第五集的单位矩阵」），「只剩第二个和第五个」下面写化简后的式子，只留 S₂、S₅ 两根轴。
 // 句 6「先转第五个」手腕绕 S₅ 转 90°，「再转第二个」整条胳膊绕 S₂ 转到竖直（同原书图 4.7）。句 7「交给电脑算」「下一幕」右栏写，手旁打问号。
@@ -11,14 +12,17 @@
   var D = Math.PI / 180, RX = E.ARM.RX, X = RX + 10;
   var T = {
     six: 0.7, own: 2.5, zero: 3.89, flat: 5.03,
-    each: 6.71, axes: 8.1, byZero: 9.25, M: 10.33, hand: 11.2, book: 13.44, listed: 17.35, outA: 18.78,
-    formula: 19.15, f1: 20.09, f6: 20.6, prod: 22.99, mM: 25.4, rl: [27.45, 28.14], firstT: 29.37, lastT: 30.75,
-    eg: 32.17, th2: 33.77, rev: 35.34, th5: 36.79, th5v: 37.9, others: 38.67,
-    zeroI: 40.85, ep5: 42.83, I: 43.9, keep: 46.15,
-    rl2: 48.97, j5: [50.5, 52.4], j2: [53.26, 54.77], up: 54.53,
-    d3: 56.28, same: 58.24, more: 59.38, pc: 59.98, next: 61.53
+    each: 6.71, axes: 8.1, byZero: 9.25, M: 10.33, hand: 11.2, book: 13.44, listed: 17.22, screen: 18.21, unit: 19.31,
+    // 2026-11-05（用户反馈：说「都列了出来」就要列在屏幕上）：句 3 零位时手的位姿 M，句 4 六根螺旋轴
+    Mrow: 21.31, m44: 23.3, rotCols: 24.05, posCol: 25.89, posNums: 27.69,
+    Srows: 32.36, dirW: 34.62, s1eg: 36.18, upW: 38.49, vW: 39.23, outA: 42.15,
+    formula: 42.55, f1: 43.49, f6: 44, prod: 46.39, mM: 48.8, rl: [50.85, 51.54], firstT: 52.77, lastT: 54.15,
+    eg: 55.57, th2: 57.17, rev: 58.74, th5: 60.19, th5v: 61.3, others: 62.07,
+    zeroI: 64.25, ep5: 66.23, I: 67.3, keep: 69.55,
+    rl2: 72.37, j5: [73.9, 75.8], j2: [76.66, 78.17], up: 77.93,
+    d3: 79.68, same: 81.64, more: 82.78, pc: 83.38, next: 84.93
   };
-  var END = 64.62;
+  var END = 88.02;
   // 标签摆法：[哪一端, dx, dy, 对齐]；每根轴从关节往两边画多长（米）
   // S₄、S₅ 换到另一头：原先挤在手腕那一团，压在别的轴线上（线压字检查）
   var LAB = [[1, 0, -12, 'middle'], [0, -18, 6, 'end'], [0, -18, 6, 'end'], [0, -12, 16, 'end'], [0, -10, 4, 'end'], [1, 14, 6, 'start']];
@@ -29,15 +33,17 @@
     dur: END,
     cues: [
       { at: 0, s: '六个关节也一样：这台机械臂自己的**零位**，是胳膊平伸' },
-      { at: 6.61, s: '每个关节一根**螺旋轴**，都按**零位**写；零位时、手的**位姿** M 也写好：《Modern Robotics》例 4.5 都列了出来' },
-      { at: 19.05, s: 'T = exp([S₁]θ₁) ⋯ exp([S₆]θ₆) M（⋯：中间几个省略）：从右往左算，第 6 个关节先转，第 1 个最后转' },
-      { at: 32.07, s: '比如 θ₂ = −90°（反着转 90°），θ₅ = 90°，别的都是 0°' },
-      { at: 40.75, s: '转 0° 的**矩阵指数**是单位矩阵 I（第 5 集），乘谁都不变：只剩第 2、5 个' },
-      { at: 48.87, s: '从右往左：先转第 5 个，手腕转 90°；再转第 2 个，整条胳膊竖起来' },
-      { at: 56.18, s: '三维的 4 × 4，算法和平面一样，只是数多：交给电脑算，下一幕写成代码' }
+      { at: 6.61, s: '每个关节一根**螺旋轴**，都按**零位**写；零位时、手的**位姿** M 也写好：《Modern Robotics》例 4.5 都列了出来，就是右边这些（单位：米）' },
+      { at: 21.21, s: '零位时手的**位姿** M：左边 3 列是手的**朝向**，右边一列是手的**位置** (0.817, 0.191, −0.006)' },
+      { at: 32.26, s: '6 根**螺旋轴**，每根 6 个数：前 3 个是轴的方向（S₁ 是 (0, 0, 1)，朝上），后 3 个跟轴的位置有关' },
+      { at: 42.45, s: 'T = exp([S₁]θ₁) ⋯ exp([S₆]θ₆) M（⋯：中间几个省略）：从右往左算，第 6 个关节先转，第 1 个最后转' },
+      { at: 55.47, s: '比如 θ₂ = −90°（反着转 90°），θ₅ = 90°，别的都是 0°' },
+      { at: 64.15, s: '转 0° 的**矩阵指数**是单位矩阵 I（第 5 集），乘谁都不变：只剩第 2、5 个' },
+      { at: 72.27, s: '从右往左：先转第 5 个，手腕转 90°；再转第 2 个，整条胳膊竖起来' },
+      { at: 79.58, s: '三维的 4 × 4，算法和平面一样，只是数多：交给电脑算，下一幕写成代码' }
     ],
     build: function (K) {
-      var s = K.sceneSvg('六个关节也一样：这台机械臂自己的零位是胳膊平伸；每个关节一根螺旋轴，都按零位写好，零位时手的位姿 M 也写好，《Modern Robotics》例 4.5 都列了出来。公式 T = exp([S₁]θ₁) exp([S₂]θ₂) ⋯ exp([S₆]θ₆) M，从右往左算，第六个关节先转、第一个最后转。比如 θ₂ = −90°、θ₅ = 90°，别的都是零度；转零度的矩阵指数是单位矩阵，乘谁都不变，只剩第二个和第五个：先转第五个，手腕转九十度，再转第二个，整条胳膊竖起来。三维的四乘四算法和平面一样，只是数多，交给电脑算');
+      var s = K.sceneSvg('六个关节也一样：这台机械臂自己的零位是胳膊平伸；每个关节一根螺旋轴，都按零位写好，零位时手的位姿 M 也写好，《Modern Robotics》例 4.5 都列了出来，单位米：M = [[−1, 0, 0, 0.817], [0, 0, 1, 0.191], [0, 1, 0, −0.006], [0, 0, 0, 1]]，S₁ = (0, 0, 1, 0, 0, 0)，S₂ = (0, 1, 0, −0.089, 0, 0)，S₃ = (0, 1, 0, −0.089, 0, 0.425)，S₄ = (0, 1, 0, −0.089, 0, 0.817)，S₅ = (0, 0, −1, −0.109, 0.817, 0)，S₆ = (0, 1, 0, 0.006, 0, 0.817)；左边三列是手的朝向，右边一列是手的位置；螺旋轴前三个数是轴的方向，后三个跟轴的位置有关。公式 T = exp([S₁]θ₁) exp([S₂]θ₂) ⋯ exp([S₆]θ₆) M，从右往左算，第六个关节先转、第一个最后转。比如 θ₂ = −90°、θ₅ = 90°，别的都是零度；转零度的矩阵指数是单位矩阵，乘谁都不变，只剩第二个和第五个：先转第五个，手腕转九十度，再转第二个，整条胳膊竖起来。三维的四乘四算法和平面一样，只是数多，交给电脑算');
 
       var g3 = E.el('g', {}, s);
       var R6 = E.ur6(g3, 100, 352, 2.25, 32, 16, [0, 0, 440, 420]), V = R6.view;
@@ -52,10 +58,23 @@
       var a1 = RK.line(gA, X, 78, [['这台机械臂自己的', E.INK2], ['零位', E.GOOD, 900], ['：', E.INK2], ['胳膊平伸', E.INK, 900]], 21);
       var a2 = RK.line(gA, X, 120, [['每个关节一根', E.INK2], ['螺旋轴', E.WARN, 900], ['，按零位写', E.INK2]], 21);
       var a3 = RK.line(gA, X, 156, [['零位时、手的位姿 ', E.INK2], ['M', E.GOOD, 900]], 21);
-      var card = E.el('g', {}, gA);
-      K.paint(E.el('rect', { x: RX, y: 182, width: 344, height: 74, rx: 12, 'stroke-width': 2.5 }, card), E.tint(E.GOOD, 10, 'var(--demo-surface)'), E.GOOD);
-      E.txt(card, RX + 16, 212, '《Modern Robotics》例 4.5', 20, E.GOOD, 'start', 900);
-      E.txt(card, RX + 16, 242, '六根螺旋轴、M：都列了出来', 18, E.INK, 'start', 700);
+      // 列出来的数（2026-11-05 用户反馈：说「都列了出来」，就要把列出来的东西摆在屏幕上）：《Modern Robotics》例 4.5 的 M 和 S₁…S₆，单位米
+      var gL = E.el('g', {}, s);
+      var l0 = RK.line(gL, X, 30, [['《Modern Robotics》例 4.5', E.GOOD, 900]], 19);
+      E.tex(gL, X, 98, 'M=', 22, E.INK, 'start', { w: 40, h: 40 });
+      var MV = [['-1', '0', '0', '0.817'], ['0', '0', '1', '0.191'], ['0', '1', '0', '-0.006'], ['0', '0', '0', '1']];   // 字符串：照原样写三位小数（E.num 对数字只留两位）
+      var Mm = E.matN(gL, X + 140, 92, MV, { size: 18, dx: 44, dy: 22,
+        color: function (i, j) { return i === 3 ? E.MUT : j === 0 ? E.X : j === 1 ? E.Y : j === 2 ? E.Z : E.VEL; } });
+      E.txt(gL, Mm.box[2] + 12, 98, '单位：米', 15, E.MUT, 'start', 700);
+      var mRot = E.txt(gL, Mm.pos(3, 1)[0], 164, '朝向', 16, E.OMEGA, 'middle', 900);
+      var mPos = E.txt(gL, Mm.pos(3, 3)[0], 164, '位置', 16, E.VEL, 'middle', 900);
+      var sHead = RK.line(gL, X, 196, [['6 根螺旋轴：', E.WARN, 900], ['前 3 个是轴的方向', E.INK, 900]], 18);
+      var SV = [['0, 0, 1', '0, 0, 0'], ['0, 1, 0', '−0.089, 0, 0'], ['0, 1, 0', '−0.089, 0, 0.425'], ['0, 1, 0', '−0.089, 0, 0.817'],
+        ['0, 0, −1', '−0.109, 0.817, 0'], ['0, 1, 0', '0.006, 0, 0.817']];
+      var sRows = SV.map(function (r, i) {
+        return RK.line(gL, X, 222 + 24 * i, [['S' + '₁₂₃₄₅₆'[i] + ' = (', E.INK2, 700], [r[0], E.WARN, 900], [', ', E.INK2, 700], [r[1], E.INK, 700], [')', E.INK2, 700]].concat(i === 0 ? [['  ← 朝上', E.HI, 900]] : []), 17);
+      });
+      var sFoot = RK.line(gL, X, 378, [['后 3 个：跟轴的位置有关', E.INK2]], 17);
       // 公式三排
       var gB = E.el('g', {}, s), FY = [40, 104, 168];
       E.tex(gB, X, FY[0], 'T=', 24, E.INK, 'start', { w: 40, h: 40 });
@@ -104,13 +123,13 @@
             var on = f(st, T.axes + 0.25 * i, 0.35), keep = i === 1 || i === 4;
             var dim = keep ? 1 : 1 - 0.85 * f(st, T.zeroI + 0.2 * i, 0.4);
             E.op(ln, on * dim); E.op(R6.labs[i], on * dim);
-            var pulse = Math.max(b(st, T.axes + 0.25 * i, 0.6), i === 0 ? b(st, T.f1, 0.7) : 0, i === 5 ? b(st, T.f6, 0.7) : 0,
+            var pulse = Math.max(b(st, T.axes + 0.25 * i, 0.6), i === 0 ? Math.max(b(st, T.f1, 0.7), b(st, T.s1eg, 0.9), b(st, T.upW, 0.9)) : 0, i === 5 ? b(st, T.f6, 0.7) : 0,
               i === 4 ? Math.max(b(st, T.th5, 0.8), f(st, T.j5[0], 0.3) * (1 - f(st, T.j5[1], 0.4))) : 0,
               i === 1 ? Math.max(b(st, T.th2, 0.8), f(st, T.j2[0], 0.3) * (1 - f(st, T.j2[1], 0.4))) : 0);
             ln.style.strokeWidth = 3.5 + 3 * pulse; E.glow(ln, E.WARN, pulse > 0.05);
           });
           var h = R6.handAt(), ho = V.project(h.o);
-          E.op(R6.handG, f(st, T.M, 0.4)); E.glow(R6.handG, E.HI, b(st, T.hand, 0.9) > 0.05);
+          E.op(R6.handG, f(st, T.M, 0.4)); E.glow(R6.handG, E.HI, Math.max(b(st, T.hand, 0.9), b(st, T.Mrow, 0.9)) > 0.05);
           mLab.setAttribute('x', (ho[0] - 18).toFixed(1)); mLab.setAttribute('y', (ho[1] + 22).toFixed(1)); mLab.style.textAnchor = 'end'; E.op(mLab, f(st, T.M, 0.3) * (1 - f(st, T.j5[0], 0.3)));
           qm.setAttribute('x', (ho[0] + 40).toFixed(1)); qm.setAttribute('y', (ho[1] + 22).toFixed(1)); E.op(qm, f(st, T.pc, 0.3));
           var p5 = V.at('wrist_2_link'), p2 = V.at('upper_arm_link');
@@ -119,10 +138,20 @@
           E.op(j5Arc, f(st, T.j5[0], 0.3) * (1 - f(st, T.j2[0], 0.3)));   // 第 2 个关节开始转就退场：手腕跟着升上去，标签会出画 E.op(j2Arc, f(st, T.j2[0], 0.3) * (1 - f(st, T.d3, 0.4)));
 
           /* ── 右栏 ── */
-          E.op(gA, 1 - f(st, T.outA, 0.4));
+          E.op(gA, 1 - f(st, T.screen - 0.4, 0.4));
+          E.op(gL, fr(st, T.screen) * (1 - f(st, T.outA, 0.4)));
+          Mm.hl('rot', 0, 0, 2, 2, E.OMEGA, f(st, T.rotCols, 0.3) * (1 - f(st, T.posCol, 0.3)));
+          Mm.hl('pos', 0, 3, 2, 3, E.VEL, f(st, T.posCol, 0.3) * (1 - f(st, T.Srows, 0.3)));
+          E.op(mRot, fr(st, T.rotCols)); E.op(mPos, fr(st, T.posCol));
+          E.op(sHead.parts[1], fr(st, T.dirW));
+          sRows.forEach(function (r, i) {
+            E.glow(r.parts[1], E.WARN, st >= T.dirW && st < T.vW);
+            E.glow(r.parts[3], E.HI, st >= T.vW && st < T.outA);
+            r.parts.forEach(function (n) { n.style.opacity = i === 0 || st < T.s1eg || st >= T.vW ? 1 : 0.45; });   // 「比如第一根」：别的五排先淡一点
+          });
+          E.op(sRows[0].parts[5], fr(st, T.upW)); E.op(sFoot.g, fr(st, T.vW));
           E.op(a0.g, fr(st, T.six)); E.op(a1.g, fr(st, T.own)); E.op(a1.parts[1], fr(st, T.zero)); E.op(a1.parts[3], fr(st, T.flat));
           E.op(a2.g, fr(st, T.each)); E.op(a2.parts[1], fr(st, T.axes)); E.op(a2.parts[2], fr(st, T.byZero)); E.op(a3.g, fr(st, T.M));
-          E.pop(card, RX + 172, 219, f(st, T.book, 0.35), 0.92);
           E.op(gB, fr(st, T.formula));
           facs.forEach(function (F, i) {
             E.op(F.g, fr(st, T.formula + 0.12 * i));
