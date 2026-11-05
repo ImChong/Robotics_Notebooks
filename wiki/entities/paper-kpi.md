@@ -105,5 +105,6 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Toward Humanoid Robots in Construction](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Toward_Humanoid_Robots_in_Construction__A_Teleoperation_Feasibility_Study/Toward_Humanoid_Robots_in_Construction__A_Teleoperation_Feasibility_Study.html)
 - [arXiv 原文](https://arxiv.org/abs/2609.36151)
 - [Locomotion任务页](../tasks/locomotion.md)

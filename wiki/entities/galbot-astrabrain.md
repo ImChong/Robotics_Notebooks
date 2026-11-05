@@ -114,5 +114,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Humanoid-GPT](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Humanoid-GPT__Scaling_Data_and_Structure_for_Zero-Shot_Motion_Tracking/Humanoid-GPT__Scaling_Data_and_Structure_for_Zero-Shot_Motion_Tracking.html)
 - [银河通用官方技术介绍](https://galbot.com/about/)
 - [Humanoid-GPT 项目页](https://qizekun.github.io/Humanoid-GPT/)

@@ -143,6 +143,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Attention Is All You Need](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Transformer_Attention_Is_All_You_Need/Transformer_Attention_Is_All_You_Need.html)
 - [arXivisual 官网](https://arxivisual.org)
 - [rajshah6/arXivisual](https://github.com/rajshah6/arXivisual)
 - [Manim Community](https://www.manim.community/)

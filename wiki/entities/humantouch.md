@@ -183,6 +183,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Spark-0](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Spark-0__Spatially_Aligned_Tactile_Pretraining_for_Robot_Dexterous_Manipulation/Spark-0__Spatially_Aligned_Tactile_Pretraining_for_Robot_Dexterous_Manipulation.html)
 - [HumanTouch 项目页](https://xsparkai.com/sparklab/humantouch/) — 系统视频、对比表、DcSNR 与发布计划
 - [ModelScope · Xspark-HumanTouch](https://www.modelscope.cn/datasets/chuqiaoLyu/Xspark-HumanTouch) — 官方项目页链接的首批数据集
 - [Hugging Face · Xspark-HumanTouch](https://huggingface.co/datasets/chuqiaoLyu/Xspark-HumanTouch) — 数据集镜像，卡片注明仍在同步上传

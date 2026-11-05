@@ -193,6 +193,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：NoMaD](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/NoMaD__Goal_Masked_Diffusion_Policies_for_Navigation_and_Exploration/NoMaD__Goal_Masked_Diffusion_Policies_for_Navigation_and_Exploration.html)
 - [NoMaD 官方项目页](https://general-navigation-models.github.io/nomad/)
 - [visualnav-transformer](https://github.com/robodhruv/visualnav-transformer) — checkpoint、训练与 ROS 部署
 - [RoamFlow](./paper-roamflow.md) — MeanFlow 一步 + IL→RL 对照（arXiv:2606.29934）

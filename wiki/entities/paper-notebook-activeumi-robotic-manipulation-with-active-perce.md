@@ -67,4 +67,5 @@ ActiveUMI 的人形机器人学习论文条目，当前处于 Paper Notebooks �
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：ActiveUMI](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/ActiveUMI__Robotic_Manipulation_with_Active_Perception_from_Robot-Free_Human_Demonstrations/ActiveUMI__Robotic_Manipulation_with_Active_Perception_from_Robot-Free_Human_Demonstrations.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

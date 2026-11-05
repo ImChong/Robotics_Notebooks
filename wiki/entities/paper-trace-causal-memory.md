@@ -173,6 +173,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：TRACE](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/TRACE__Typed_Reference-Aware_Conversational_Editing_for_Humanoid_Motion_Diffusion/TRACE__Typed_Reference-Aware_Conversational_Editing_for_Humanoid_Motion_Diffusion.html)
 - [arXiv:2606.14551](https://arxiv.org/abs/2606.14551)
 - [TRACE 项目页](https://jeong-zju.github.io/trace/)
 - [GitHub: Jeong-zju/corl-trace](https://github.com/Jeong-zju/corl-trace)

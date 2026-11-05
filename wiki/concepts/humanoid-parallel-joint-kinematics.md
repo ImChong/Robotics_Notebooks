@@ -141,6 +141,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：A Framework for Optimal Ankle Design of Humanoid Robots](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots/Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots.html)
 - [Parallel_Ankle_Joint（feidedao）](https://github.com/feidedao/Parallel_Ankle_Joint) — G1 / 天工踝解析 IK、FK、雅可比与 MuJoCo 对比（本批入库）
 - [closed-chain-ik-js（Garrett Johnson）](https://github.com/gkjohnson/closed-chain-ik-js) — 闭链 IK 与约束求解的可读参考实现
 - [A Framework for Optimal Ankle Design of Humanoid Robots（arXiv:2509.16469）](https://arxiv.org/abs/2509.16469) — 人形踝设计综述语境

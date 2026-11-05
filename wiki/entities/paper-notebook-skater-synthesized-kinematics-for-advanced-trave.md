@@ -90,4 +90,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：SKATER](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/SKATER__Synthesized_Kinematics_for_Advanced_Traversing_Efficiency_via_Roller_Skate_Swizzles/SKATER__Synthesized_Kinematics_for_Advanced_Traversing_Efficiency_via_Roller_Skate_Swizzles.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

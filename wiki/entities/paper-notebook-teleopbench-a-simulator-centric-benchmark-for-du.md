@@ -182,5 +182,6 @@ README 给出的最小入口是配置相机/VR 采集端后，在 `teleop/` 运�
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：TeleOpBench](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/TeleOpBench__A_Simulator-Centric_Benchmark_for_Dual-Arm_Dexterous_Teleoperation/TeleOpBench__A_Simulator-Centric_Benchmark_for_Dual-Arm_Dexterous_Teleoperation.html)
 - 官方项目页：<https://gorgeous2002.github.io/TeleOpBench/>
 - 官方仓库：<https://github.com/cyjdlhy/TeleOpBench>

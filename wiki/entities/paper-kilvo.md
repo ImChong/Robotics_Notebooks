@@ -167,6 +167,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：KILVO](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/KILVO__Kinematic-Inertial-LiDAR-Visual_Odometry_for_Humanoid_Robots/KILVO__Kinematic-Inertial-LiDAR-Visual_Odometry_for_Humanoid_Robots.html)
 - [KILVO GitHub（占位）](https://github.com/JixinGao/KILVO)
 - [KILVO PDF](https://arxiv.org/pdf/2608.05647)
 - [FAST-LIO2 论文](https://github.com/hku-mars/FAST_LIO) — LIO 工程对照

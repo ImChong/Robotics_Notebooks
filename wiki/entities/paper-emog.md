@@ -133,4 +133,5 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Gated Residual Body-Hand Coordination for Whole-Body Humanoid Teleoperation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Gated_Residual_Body-Hand_Coordination_for_Whole-Body_Humanoid_Teleoperation/Gated_Residual_Body-Hand_Coordination_for_Whole-Body_Humanoid_Teleoperation.html)
 - 论文 PDF：<https://arxiv.org/pdf/2609.14432>

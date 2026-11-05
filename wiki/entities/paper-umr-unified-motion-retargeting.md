@@ -199,6 +199,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/UMR__Unified_Motion_Retargeting_with_Learned_Point_Cloud_Correspondence/UMR__Unified_Motion_Retargeting_with_Learned_Point_Cloud_Correspondence.html)
 - [arXiv:2609.02134](https://arxiv.org/abs/2609.02134)（HTML 全文含公式与表）
 - [官方 GitHub README](https://github.com/hanyang9/UMR) — 多源 quick start 与 batch 配置
 - [UMR Studio](https://hanyang9.github.io/UMR/umr_studio.html) — 新机器人 T-pose 与浏览器体验

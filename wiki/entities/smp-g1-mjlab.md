@@ -193,6 +193,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：SMP](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/SMP_Reusable_Score-Matching_Motion_Priors/SMP_Reusable_Score-Matching_Motion_Priors.html)
 - [MimicKit README_SMP](https://github.com/xbpeng/MimicKit/blob/main/docs/README_SMP.md)
 - [Hoshi-No-Ai/CMoE](https://github.com/Hoshi-No-Ai/CMoE) — 官方 Isaac Gym 训练栈
 - [SII-FUSC/AME_Locomotion](https://github.com/SII-FUSC/AME_Locomotion) — 可运行的 G1 AME（Isaac Lab）

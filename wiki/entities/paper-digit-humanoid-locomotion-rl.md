@@ -105,5 +105,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：MOSAIC](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/MOSAIC__Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_Motion_Tracking/MOSAIC__Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_Motion_Tracking.html)
+- [机器人论文阅读笔记：Bridging the Sim-to-Real Gap for Athletic Loco-Manipulation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation/Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation.html)
 - [机器人论文阅读笔记：Real-World Humanoid Locomotion with RL](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Real-World_Humanoid_Locomotion_with_RL/Real-World_Humanoid_Locomotion_with_RL.html)
 - [项目页 Learning Humanoid Locomotion](https://learning-humanoid-locomotion.github.io/)

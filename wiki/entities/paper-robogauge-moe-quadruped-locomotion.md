@@ -174,6 +174,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion/Toward_Reliable_Sim-to-Real_Predictability_for_MoE-based_Robust_Quadrupedal_Locomotion.html)
 - [RoboGauge 项目页](https://robogauge.github.io/complete/)
 - [arXiv:2602.00678](https://arxiv.org/abs/2602.00678)
 

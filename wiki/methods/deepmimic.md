@@ -107,6 +107,7 @@ sequenceDiagram
 - [HIL](./hil-hybrid-imitation-learning.md) / [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — 去掉相位与未来姿态，才能和 AMP 共用同一 \(\pi\)。
 
 ## 参考来源
+- [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md)
 - [sources/papers/modern_robotics_ch3_unit_quaternion.md](../../sources/papers/modern_robotics_ch3_unit_quaternion.md) — 四元数 motion 格式与 MimicKit exp map 分层
 - [wechat_human_five_jason_peng_flexible_motion_skills.md](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) — 跟踪局限与超越路径（讲者自述归纳）

@@ -174,5 +174,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Bunny-VisionPro](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning.html)
 - 官方文档：<https://dingry.github.io/BunnyVisionPro/>
 - 代码：<https://github.com/Dingry/BunnyVisionPro>

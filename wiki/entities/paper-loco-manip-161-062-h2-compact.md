@@ -87,5 +87,6 @@ H2-COMPACT 先从相机图像/多视角观测、本体状态与关节序列、�
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：H2-COMPACT](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/H2-COMPACT__Human-Humanoid_Co-Manipulation_via_Adaptive_Contact_Trajectory/H2-COMPACT__Human-Humanoid_Co-Manipulation_via_Adaptive_Contact_Trajectory.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 - 同题深读/既有实体：[paper-loco-manip-161-062-h2-compact](../entities/paper-loco-manip-161-062-h2-compact.md)

@@ -143,6 +143,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：E-SDS](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/E-SDS__Environment-Aware_Automated_Reward_Generation_for_Humanoid_Locomotion/E-SDS__Environment-Aware_Automated_Reward_Generation_for_Humanoid_Locomotion.html)
 - E-SDS 论文 HTML（公式与图表）：<https://arxiv.org/html/2512.16446v1>
 - SDS 项目页与材料：<https://rpl-cs-ucl.github.io/SDSweb/>
 - SDS arXiv 摘要页：<https://arxiv.org/abs/2410.11571>

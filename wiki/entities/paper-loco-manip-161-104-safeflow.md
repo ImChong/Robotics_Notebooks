@@ -181,6 +181,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：SafeFlow](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SafeFlow__Real-Time_Text-Driven_Humanoid_Whole-Body_Control_via_Physics-Guided_Rectified_Flow/SafeFlow__Real-Time_Text-Driven_Humanoid_Whole-Body_Control_via_Physics-Guided_Rectified_Flow.html)
 - [SafeFlow 项目页](https://hanbyelcho.info/safeflow/)
 - [arXiv:2603.23983](https://arxiv.org/abs/2603.23983)
 - [TextOp 实体页](./paper-loco-manip-161-022-textop.md) — 直接基线与流式接口对照

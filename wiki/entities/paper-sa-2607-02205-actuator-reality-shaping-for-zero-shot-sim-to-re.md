@@ -123,5 +123,6 @@ Shapes the closed-loop behavior of physical actuators to match idealized second-
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Actuator Reality Shaping for Zero-Shot Sim-to-Real Robot Learning](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Actuator_Reality_Shaping_for_Zero-Shot_Sim-to-Real_Robot_Learning/Actuator_Reality_Shaping_for_Zero-Shot_Sim-to-Real_Robot_Learning.html)
 - [Awesome-Real2Sim2Real 仓库](https://github.com/sun254667/Awesome-Real2Sim2Real)
 - [原文](https://arxiv.org/abs/2607.02205)

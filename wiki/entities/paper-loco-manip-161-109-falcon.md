@@ -170,6 +170,7 @@ FALCON 属于「强力/受力 loco-manip」路线，与 [Thor](./paper-hrl-stack
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：FALCON](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/FALCON__Learning_Force-Adaptive_Humanoid_Loco-Manipulation/FALCON__Learning_Force-Adaptive_Humanoid_Loco-Manipulation.html)
 - [FALCON 项目页](https://lecar-lab.github.io/falcon-humanoid)
 - [FALCON GitHub](https://github.com/LeCAR-Lab/FALCON)
 - [机器人论文阅读笔记：FALCON](https://imchong.github.io/Robot_Learning_Paper_Notebooks/)

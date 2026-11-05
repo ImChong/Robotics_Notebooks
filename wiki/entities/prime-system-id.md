@@ -196,6 +196,7 @@ build/experiments/G1_real_dance_1/g1_real_dance_1 \
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：PRIME](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/PRIME__Physically-consistent_Robotic_Inertial_and_Motion_Estimation/PRIME__Physically-consistent_Robotic_Inertial_and_Motion_Estimation.html)
 - 项目页：<https://jkangkjr.github.io/PRIME-project/>
 - 仓库：<https://github.com/well-robotics/PRIME>
 - arXiv：<https://arxiv.org/abs/2605.17681>

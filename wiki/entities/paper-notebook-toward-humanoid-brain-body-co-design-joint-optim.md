@@ -85,4 +85,5 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Toward Humanoid Brain-Body Co-design](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/RoboCraft_Humanoid_Brain-Body_Co-design_for_Fall_Recovery/RoboCraft_Humanoid_Brain-Body_Co-design_for_Fall_Recovery.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

@@ -120,6 +120,22 @@
     "category": "01_Foundational_RL"
   },
   {
+    "folder": "papers/01_Foundational_RL/SMP_Reusable_Score-Matching_Motion_Priors",
+    "dir": "SMP_Reusable_Score-Matching_Motion_Priors",
+    "title": "SMP: Reusable Score-Matching Motion Priors for Physics-Based Character Control",
+    "arxiv": "2512.03028",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/SMP_Reusable_Score-Matching_Motion_Priors/SMP_Reusable_Score-Matching_Motion_Priors.html",
+    "category": "01_Foundational_RL"
+  },
+  {
+    "folder": "papers/01_Foundational_RL/Transformer_Attention_Is_All_You_Need",
+    "dir": "Transformer_Attention_Is_All_You_Need",
+    "title": "Attention Is All You Need (Transformer)",
+    "arxiv": "1706.03762",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Transformer_Attention_Is_All_You_Need/Transformer_Attention_Is_All_You_Need.html",
+    "category": "01_Foundational_RL"
+  },
+  {
     "folder": "papers/02_Motion_Retargeting/Make_Tracking_Easy__Neural_Motion_Retargeting_for_Humanoid_Whole-body_Control",
     "dir": "Make_Tracking_Easy__Neural_Motion_Retargeting_for_Humanoid_Whole-body_Control",
     "title": "Make Tracking Easy: Neural Motion Retargeting for Humanoid Whole-body Control",
@@ -139,7 +155,7 @@
     "folder": "papers/02_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting",
     "dir": "ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting",
     "title": "ReActor: Reinforcement Learning for Physics-Aware Motion Retargeting",
-    "arxiv": "2605.06593v1",
+    "arxiv": "2605.06593",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting.html",
     "category": "02_Motion_Retargeting"
   },
@@ -152,18 +168,34 @@
     "category": "02_Motion_Retargeting"
   },
   {
+    "folder": "papers/02_Motion_Retargeting/UMR__Unified_Motion_Retargeting_with_Learned_Point_Cloud_Correspondence",
+    "dir": "UMR__Unified_Motion_Retargeting_with_Learned_Point_Cloud_Correspondence",
+    "title": "Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence",
+    "arxiv": "2609.02134",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/UMR__Unified_Motion_Retargeting_with_Learned_Point_Cloud_Correspondence/UMR__Unified_Motion_Retargeting_with_Learned_Point_Cloud_Correspondence.html",
+    "category": "02_Motion_Retargeting"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/ACT_Learning_Fine-Grained_Bimanual_Manipulation_with_Low-Cost_Hardware",
+    "dir": "ACT_Learning_Fine-Grained_Bimanual_Manipulation_with_Low-Cost_Hardware",
+    "title": "ACT Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ACT_Learning_Fine-Grained_Bimanual_Manipulation_with_Low-Cost_Hardware/ACT_Learning_Fine-Grained_Bimanual_Manipulation_with_Low-Cost_Hardware.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
     "folder": "papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills",
     "dir": "ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills",
-    "title": "ASAP: Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills",
-    "arxiv": "2502.01143",
+    "title": "ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation",
     "dir": "BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation",
-    "title": "BEHAVIOR Robot Suite: Streamlining Real-World Whole-Body Manipulation for Everyday Household Activities",
-    "arxiv": "2503.05652",
+    "title": "BEHAVIOR Robot Suite Streamlining Real-World Whole-Body Manipulation",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation/BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation.html",
     "category": "03_High_Impact_Selection"
   },
@@ -171,23 +203,47 @@
     "folder": "papers/03_High_Impact_Selection/Behavior_Foundation_Model_for_Humanoid_Robots",
     "dir": "Behavior_Foundation_Model_for_Humanoid_Robots",
     "title": "Behavior Foundation Model for Humanoid Robots",
-    "arxiv": "2509.13780",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Behavior_Foundation_Model_for_Humanoid_Robots/Behavior_Foundation_Model_for_Humanoid_Robots.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/Cosmos_Policy_Fine-Tuning_Video_Models_for_Visuomotor_Control_and_Planning",
+    "dir": "Cosmos_Policy_Fine-Tuning_Video_Models_for_Visuomotor_Control_and_Planning",
+    "title": "Cosmos Policy Fine-Tuning Video Models for Visuomotor Control and Planning",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Cosmos_Policy_Fine-Tuning_Video_Models_for_Visuomotor_Control_and_Planning/Cosmos_Policy_Fine-Tuning_Video_Models_for_Visuomotor_Control_and_Planning.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/Cosmos_World_Foundation_Model_Platform_for_Physical_AI",
+    "dir": "Cosmos_World_Foundation_Model_Platform_for_Physical_AI",
+    "title": "Cosmos World Foundation Model Platform for Physical AI",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Cosmos_World_Foundation_Model_Platform_for_Physical_AI/Cosmos_World_Foundation_Model_Platform_for_Physical_AI.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/Dreamer_Learning_Behaviors_by_Latent_Imagination",
+    "dir": "Dreamer_Learning_Behaviors_by_Latent_Imagination",
+    "title": "Dreamer Learning Behaviors by Latent Imagination",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Dreamer_Learning_Behaviors_by_Latent_Imagination/Dreamer_Learning_Behaviors_by_Latent_Imagination.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking",
     "dir": "ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking",
-    "title": "ECO: Energy-Constrained Optimization with Reinforcement Learning for Humanoid Walking",
-    "arxiv": "2602.06445",
+    "title": "ECO Energy Constrained Optimization with RL for Humanoid Walking",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking/ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/ExBody2_Advanced_Expressive_Whole-Body_Control",
     "dir": "ExBody2_Advanced_Expressive_Whole-Body_Control",
-    "title": "ExBody2: Advanced Expressive Humanoid Whole-Body Control",
-    "arxiv": "2412.13196",
+    "title": "ExBody2 Advanced Expressive Whole-Body Control",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ExBody2_Advanced_Expressive_Whole-Body_Control/ExBody2_Advanced_Expressive_Whole-Body_Control.html",
     "category": "03_High_Impact_Selection"
   },
@@ -195,47 +251,63 @@
     "folder": "papers/03_High_Impact_Selection/Expressive_Whole-Body_Control_for_Humanoid_Robots",
     "dir": "Expressive_Whole-Body_Control_for_Humanoid_Robots",
     "title": "Expressive Whole-Body Control for Humanoid Robots",
-    "arxiv": "2402.16796",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Expressive_Whole-Body_Control_for_Humanoid_Robots/Expressive_Whole-Body_Control_for_Humanoid_Robots.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/GR00T_N1_Humanoid_Foundation_Model",
     "dir": "GR00T_N1_Humanoid_Foundation_Model",
-    "title": "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots",
-    "arxiv": "2503.14734",
+    "title": "GR00T N1 Humanoid Foundation Model",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/GR00T_N1_Humanoid_Foundation_Model/GR00T_N1_Humanoid_Foundation_Model.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/H2O_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperation",
+    "dir": "H2O_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperation",
+    "title": "H2O Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/H2O_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperation/H2O_Learning_Human-to-Humanoid_Real-Time_Whole-Body_Teleoperation.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton_Cockpit",
     "dir": "HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton_Cockpit",
-    "title": "HOMIE: Humanoid Loco-Manipulation with Isomorphic Exoskeleton Cockpit",
-    "arxiv": "2502.13013",
+    "title": "HOMIE Humanoid Loco-Manipulation with Isomorphic Exoskeleton Cockpit",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton_Cockpit/HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton_Cockpit.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/HOVER_Versatile_Neural_Whole-Body_Controller",
     "dir": "HOVER_Versatile_Neural_Whole-Body_Controller",
-    "title": "HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots",
-    "arxiv": "2410.21229",
+    "title": "HOVER Versatile Neural Whole-Body Controller",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/HOVER_Versatile_Neural_Whole-Body_Controller/HOVER_Versatile_Neural_Whole-Body_Controller.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/Has_GPT-6-Astra_Achieved_Embodied_Intelligence",
+    "dir": "Has_GPT-6-Astra_Achieved_Embodied_Intelligence",
+    "title": "Has GPT-6-Astra Achieved Embodied Intelligence",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Has_GPT-6-Astra_Achieved_Embodied_Intelligence/Has_GPT-6-Astra_Achieved_Embodied_Intelligence.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller",
     "dir": "HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller",
-    "title": "HugWBC: A Unified and General Humanoid Whole-Body Controller for Versatile Locomotion",
-    "arxiv": "2502.03206",
+    "title": "HugWBC A Unified and General Humanoid Whole-Body Controller",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller/HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer",
     "dir": "Humanoid-Gym_Zero-Shot_Sim2Real_Transfer",
-    "title": "Humanoid-Gym: Reinforcement Learning for Humanoid Robot with Zero-Shot Sim2Real Transfer",
-    "arxiv": "2404.05695",
+    "title": "Humanoid-Gym Zero-Shot Sim2Real Transfer",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html",
     "category": "03_High_Impact_Selection"
   },
@@ -243,7 +315,7 @@
     "folder": "papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction",
     "dir": "Humanoid_Locomotion_as_Next_Token_Prediction",
     "title": "Humanoid Locomotion as Next Token Prediction",
-    "arxiv": "2402.19469",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Locomotion_as_Next_Token_Prediction/Humanoid_Locomotion_as_Next_Token_Prediction.html",
     "category": "03_High_Impact_Selection"
   },
@@ -251,23 +323,31 @@
     "folder": "papers/03_High_Impact_Selection/Humanoid_Parkour_Learning",
     "dir": "Humanoid_Parkour_Learning",
     "title": "Humanoid Parkour Learning",
-    "arxiv": "2406.10759",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Parkour_Learning/Humanoid_Parkour_Learning.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/Isaac_Lab_GPU_Simulation",
     "dir": "Isaac_Lab_GPU_Simulation",
-    "title": "Isaac Lab: Unified GPU Simulation Platform for Robot Learning",
+    "title": "Isaac Lab GPU Simulation",
     "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Isaac_Lab_GPU_Simulation/Isaac_Lab_GPU_Simulation.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/Learning_Agile_Soccer_Skills_for_a_Bipedal_Robot_with_Deep_RL",
+    "dir": "Learning_Agile_Soccer_Skills_for_a_Bipedal_Robot_with_Deep_RL",
+    "title": "Learning Agile Soccer Skills for a Bipedal Robot with Deep RL",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Agile_Soccer_Skills_for_a_Bipedal_Robot_with_Deep_RL/Learning_Agile_Soccer_Skills_for_a_Bipedal_Robot_with_Deep_RL.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots",
     "dir": "Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots",
     "title": "Learning Agile and Dynamic Motor Skills for Legged Robots",
-    "arxiv": "1901.08652",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots.html",
     "category": "03_High_Impact_Selection"
   },
@@ -283,55 +363,103 @@
     "folder": "papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes",
     "dir": "Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes",
     "title": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
-    "arxiv": "2512.01996",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/MaskedMimic_Unified_Physics-Based_Character_Control_Through_Masked_Motion_Inpainting",
+    "dir": "MaskedMimic_Unified_Physics-Based_Character_Control_Through_Masked_Motion_Inpainting",
+    "title": "MaskedMimic Unified Physics-Based Character Control Through Masked Motion Inpainting",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/MaskedMimic_Unified_Physics-Based_Character_Control_Through_Masked_Motion_Inpainting/MaskedMimic_Unified_Physics-Based_Character_Control_Through_Masked_Motion_Inpainting.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/OmniH2O_Universal_Whole-Body_Teleoperation",
     "dir": "OmniH2O_Universal_Whole-Body_Teleoperation",
-    "title": "OmniH2O: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning",
-    "arxiv": "2406.08858",
+    "title": "OmniH2O Universal Whole-Body Teleoperation",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/OmniH2O_Universal_Whole-Body_Teleoperation/OmniH2O_Universal_Whole-Body_Teleoperation.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/OpenVLA_An_Open-Source_Vision-Language-Action_Model",
+    "dir": "OpenVLA_An_Open-Source_Vision-Language-Action_Model",
+    "title": "OpenVLA An Open-Source Vision-Language-Action Model",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/OpenVLA_An_Open-Source_Vision-Language-Action_Model/OpenVLA_An_Open-Source_Vision-Language-Action_Model.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/Perceptive_BFM_Adapting_Human_Motion_Priors_to_Robot-Centric_Terrain",
+    "dir": "Perceptive_BFM_Adapting_Human_Motion_Priors_to_Robot-Centric_Terrain",
+    "title": "Perceptive BFM Adapting Human Motion Priors to Robot-Centric Terrain",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Perceptive_BFM_Adapting_Human_Motion_Priors_to_Robot-Centric_Terrain/Perceptive_BFM_Adapting_Human_Motion_Priors_to_Robot-Centric_Terrain.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/Pi05_A_Vision-Language-Action_Model_with_Open-World_Generalization",
+    "dir": "Pi05_A_Vision-Language-Action_Model_with_Open-World_Generalization",
+    "title": "Pi05 A Vision-Language-Action Model with Open-World Generalization",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Pi05_A_Vision-Language-Action_Model_with_Open-World_Generalization/Pi05_A_Vision-Language-Action_Model_with_Open-World_Generalization.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/Pi0_A_Vision-Language-Action_Flow_Model_for_General_Robot_Control",
+    "dir": "Pi0_A_Vision-Language-Action_Flow_Model_for_General_Robot_Control",
+    "title": "Pi0 A Vision-Language-Action Flow Model for General Robot Control",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Pi0_A_Vision-Language-Action_Flow_Model_for_General_Robot_Control/Pi0_A_Vision-Language-Action_Flow_Model_for_General_Robot_Control.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control",
     "dir": "ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control",
-    "title": "ProtoMotions3: An Open-source Framework for Humanoid Simulation and Control",
-    "arxiv": "2409.14393",
+    "title": "ProtoMotions3 Open-source Framework for Humanoid Simulation and Control",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/Real-World_Humanoid_Locomotion_with_RL",
     "dir": "Real-World_Humanoid_Locomotion_with_RL",
-    "title": "Real-World Humanoid Locomotion with Reinforcement Learning",
-    "arxiv": "2303.03381",
+    "title": "Real-World Humanoid Locomotion with RL",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Real-World_Humanoid_Locomotion_with_RL/Real-World_Humanoid_Locomotion_with_RL.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control",
     "dir": "SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control",
-    "title": "SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control",
-    "arxiv": "2511.07820",
+    "title": "SONIC Supersizing Motion Tracking for Natural Humanoid Control",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control/SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control",
     "dir": "UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control",
-    "title": "UH-1: Learning from Massive Human Videos for Universal Humanoid Pose Control",
-    "arxiv": "2412.14172",
+    "title": "UH-1 Learning from Massive Human Videos for Universal Humanoid Pose Control",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control/UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control.html",
+    "category": "03_High_Impact_Selection"
+  },
+  {
+    "folder": "papers/03_High_Impact_Selection/UniPi_Learning_Universal_Policies_via_Text-Guided_Video_Generation",
+    "dir": "UniPi_Learning_Universal_Policies_via_Text-Guided_Video_Generation",
+    "title": "UniPi Learning Universal Policies via Text-Guided Video Generation",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/UniPi_Learning_Universal_Policies_via_Text-Guided_Video_Generation/UniPi_Learning_Universal_Policies_via_Text-Guided_Video_Generation.html",
     "category": "03_High_Impact_Selection"
   },
   {
     "folder": "papers/03_High_Impact_Selection/iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies",
     "dir": "iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies",
-    "title": "iDP3: Generalizable Humanoid Manipulation with Improved 3D Diffusion Policies",
-    "arxiv": "2410.10803",
+    "title": "iDP3 Generalizable Humanoid Manipulation with 3D Diffusion Policies",
+    "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies/iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies.html",
     "category": "03_High_Impact_Selection"
   },
@@ -344,11 +472,11 @@
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
-    "folder": "papers/04_Loco-Manipulation_and_WBC/Athena-WBC__Capability-Aligned_Policy_Experts_for_Long-Tail_Humanoid_Whole-Body_Control",
-    "dir": "Athena-WBC__Capability-Aligned_Policy_Experts_for_Long-Tail_Humanoid_Whole-Body_Control",
-    "title": "Athena-WBC: Capability-Aligned Policy Experts for Long-Tail Humanoid Whole-Body Control",
-    "arxiv": "2607.04837",
-    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Athena-WBC__Capability-Aligned_Policy_Experts_for_Long-Tail_Humanoid_Whole-Body_Control/Athena-WBC__Capability-Aligned_Policy_Experts_for_Long-Tail_Humanoid_Whole-Body_Control.html",
+    "folder": "papers/04_Loco-Manipulation_and_WBC/BFM-Zero__A_Promptable_Behavioral_Foundation_Model_for_Humanoid_Control",
+    "dir": "BFM-Zero__A_Promptable_Behavioral_Foundation_Model_for_Humanoid_Control",
+    "title": "BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control Using Unsupervised Reinforcement Learning",
+    "arxiv": "2511.04131",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/BFM-Zero__A_Promptable_Behavioral_Foundation_Model_for_Humanoid_Control/BFM-Zero__A_Promptable_Behavioral_Foundation_Model_for_Humanoid_Control.html",
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
@@ -357,6 +485,14 @@
     "title": "CHIP: Adaptive Compliance for Humanoid Control through Hindsight Perturbation",
     "arxiv": "2512.14689",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/CHIP__Adaptive_Compliance_for_Humanoid_Control_through_Hindsight_Perturbation/CHIP__Adaptive_Compliance_for_Humanoid_Control_through_Hindsight_Perturbation.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/CSF__Contextual_Safety_Filtering_for_Motion_Generators",
+    "dir": "CSF__Contextual_Safety_Filtering_for_Motion_Generators",
+    "title": "CSF: Contextual Safety Filtering for Motion Generators",
+    "arxiv": "2610.12467",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/CSF__Contextual_Safety_Filtering_for_Motion_Generators/CSF__Contextual_Safety_Filtering_for_Motion_Generators.html",
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
@@ -440,6 +576,22 @@
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/FALCON__Learning_Force-Adaptive_Humanoid_Loco-Manipulation",
+    "dir": "FALCON__Learning_Force-Adaptive_Humanoid_Loco-Manipulation",
+    "title": "FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation",
+    "arxiv": "2505.06776",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/FALCON__Learning_Force-Adaptive_Humanoid_Loco-Manipulation/FALCON__Learning_Force-Adaptive_Humanoid_Loco-Manipulation.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/FAME__Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelope_of_a_Full-Scale_Humanoid",
+    "dir": "FAME__Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelope_of_a_Full-Scale_Humanoid",
+    "title": "FAME: Force-Adaptive RL for Expanding the Manipulation Envelope of a Full-Scale Humanoid",
+    "arxiv": "2603.08961",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/FAME__Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelope_of_a_Full-Scale_Humanoid/FAME__Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelope_of_a_Full-Scale_Humanoid.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
     "folder": "papers/04_Loco-Manipulation_and_WBC/FRoM-W1__Towards_General_Humanoid_Whole-Body_Control_with_Language_Instructions",
     "dir": "FRoM-W1__Towards_General_Humanoid_Whole-Body_Control_with_Language_Instructions",
     "title": "FRoM-W1: Towards General Humanoid Whole-Body Control with Language Instructions",
@@ -464,11 +616,43 @@
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/GigaBrain-WBC-0.5__A_Behavior_World_Model_for_Robust_Whole-Body_Control",
+    "dir": "GigaBrain-WBC-0.5__A_Behavior_World_Model_for_Robust_Whole-Body_Control",
+    "title": "GigaBrain-WBC-0.5: A Behavior World Model for Robust Whole-Body Control with Environment Interaction",
+    "arxiv": "2608.18234",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/GigaBrain-WBC-0.5__A_Behavior_World_Model_for_Robust_Whole-Body_Control/GigaBrain-WBC-0.5__A_Behavior_World_Model_for_Robust_Whole-Body_Control.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/H2-COMPACT__Human-Humanoid_Co-Manipulation_via_Adaptive_Contact_Trajectory",
+    "dir": "H2-COMPACT__Human-Humanoid_Co-Manipulation_via_Adaptive_Contact_Trajectory",
+    "title": "H2-COMPACT: Human-Humanoid Co-Manipulation via Adaptive Contact Trajectory Policies",
+    "arxiv": "2505.17627",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/H2-COMPACT__Human-Humanoid_Co-Manipulation_via_Adaptive_Contact_Trajectory/H2-COMPACT__Human-Humanoid_Co-Manipulation_via_Adaptive_Contact_Trajectory.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/HAFO__A_Force-Adaptive_Control_Framework_for_Humanoid_Robots_in_Intense_Interact",
+    "dir": "HAFO__A_Force-Adaptive_Control_Framework_for_Humanoid_Robots_in_Intense_Interact",
+    "title": "HAFO: A Force-Adaptive Control Framework for Humanoid Robots in Intense Interaction Environments",
+    "arxiv": "2511.20275",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HAFO__A_Force-Adaptive_Control_Framework_for_Humanoid_Robots_in_Intense_Interact/HAFO__A_Force-Adaptive_Control_Framework_for_Humanoid_Robots_in_Intense_Interact.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
     "folder": "papers/04_Loco-Manipulation_and_WBC/HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model",
     "dir": "HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model",
     "title": "HAIC: Humanoid Agile Object Interaction Control via Dynamics-Aware World Model",
     "arxiv": "2602.11758",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model/HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/HDMI__Learning_Interactive_Humanoid_Whole-Body_Control_from_Human_Videos",
+    "dir": "HDMI__Learning_Interactive_Humanoid_Whole-Body_Control_from_Human_Videos",
+    "title": "HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos",
+    "arxiv": "2509.16757",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HDMI__Learning_Interactive_Humanoid_Whole-Body_Control_from_Human_Videos/HDMI__Learning_Interactive_Humanoid_Whole-Body_Control_from_Human_Videos.html",
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
@@ -592,6 +776,14 @@
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_Robots",
+    "dir": "Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_Robots",
+    "title": "Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots",
+    "arxiv": "2511.03996",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_Robots/Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_Robots.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
     "folder": "papers/04_Loco-Manipulation_and_WBC/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations",
     "dir": "Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations",
     "title": "Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations",
@@ -613,6 +805,14 @@
     "title": "MOSAIC: Bridging the Sim-to-Real Gap in Generalist Humanoid Motion Tracking and Teleoperation with Rapid Residual Adaptation",
     "arxiv": "2602.08594",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/MOSAIC__Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_Motion_Tracking_and_/MOSAIC__Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_Motion_Tracking_and_.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/Memory_before_Goal__Role_of_Pre-History_Memory_for_Humanoid_Loco-Manipulation",
+    "dir": "Memory_before_Goal__Role_of_Pre-History_Memory_for_Humanoid_Loco-Manipulation",
+    "title": "Memory before Goal: Role of Pre-History Memory for Humanoid Loco-Manipulation",
+    "arxiv": "2610.31166",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Memory_before_Goal__Role_of_Pre-History_Memory_for_Humanoid_Loco-Manipulation/Memory_before_Goal__Role_of_Pre-History_Memory_for_Humanoid_Loco-Manipulation.html",
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
@@ -752,6 +952,14 @@
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/SuperMimic__Scaling_Humanoid_Whole-Body_Control_with_One_Differentiable_World_Model",
+    "dir": "SuperMimic__Scaling_Humanoid_Whole-Body_Control_with_One_Differentiable_World_Model",
+    "title": "SuperMimic: Scaling Humanoid Whole-Body Control with One Differentiable World Model",
+    "arxiv": "2610.28480",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SuperMimic__Scaling_Humanoid_Whole-Body_Control_with_One_Differentiable_World_Model/SuperMimic__Scaling_Humanoid_Whole-Body_Control_with_One_Differentiable_World_Model.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
     "folder": "papers/04_Loco-Manipulation_and_WBC/TTT-Parkour__Rapid_Test-Time_Training_for_Perceptive_Robot_Parkour",
     "dir": "TTT-Parkour__Rapid_Test-Time_Training_for_Perceptive_Robot_Parkour",
     "title": "TTT-Parkour: Rapid Test-Time Training for Perceptive Robot Parkour",
@@ -765,6 +973,14 @@
     "title": "TextOp: Real-time Interactive Text-Driven Humanoid Robot Motion Generation and Control",
     "arxiv": "2602.07439",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/TextOp__Real-time_Interactive_Text-Driven_Humanoid_Robot_Motion_Generation_and_C/TextOp__Real-time_Interactive_Text-Driven_Humanoid_Robot_Motion_Generation_and_C.html",
+    "category": "04_Loco-Manipulation_and_WBC"
+  },
+  {
+    "folder": "papers/04_Loco-Manipulation_and_WBC/Thor__Towards_Human-Inspired_Whole-Body_Reactions_for_Intense_Contact-Rich_Environments",
+    "dir": "Thor__Towards_Human-Inspired_Whole-Body_Reactions_for_Intense_Contact-Rich_Environments",
+    "title": "Thor: Towards Human-Inspired Whole-Body Reactions for Intense Contact-Rich Environments",
+    "arxiv": "2510.26280",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Thor__Towards_Human-Inspired_Whole-Body_Reactions_for_Intense_Contact-Rich_Environments/Thor__Towards_Human-Inspired_Whole-Body_Reactions_for_Intense_Contact-Rich_Environments.html",
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
@@ -840,12 +1056,12 @@
     "category": "04_Loco-Manipulation_and_WBC"
   },
   {
-    "folder": "papers/04_Loco-Manipulation_and_WBC/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation",
-    "dir": "Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation",
-    "title": "Ψ₀: An Open Foundation Model Towards Universal Humanoid Loco-Manipulation",
-    "arxiv": "2603.12263",
-    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation.html",
-    "category": "04_Loco-Manipulation_and_WBC"
+    "folder": "papers/05_Locomotion/AME-2__Agile_and_Generalized_Legged_Locomotion_via_Attention-Based_Neural_Map_Encoding",
+    "dir": "AME-2__Agile_and_Generalized_Legged_Locomotion_via_Attention-Based_Neural_Map_Encoding",
+    "title": "AME-2: Agile and Generalized Legged Locomotion via Attention-Based Neural Map Encoding",
+    "arxiv": "2601.08485",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/AME-2__Agile_and_Generalized_Legged_Locomotion_via_Attention-Based_Neural_Map_Encoding/AME-2__Agile_and_Generalized_Legged_Locomotion_via_Attention-Based_Neural_Map_Encoding.html",
+    "category": "05_Locomotion"
   },
   {
     "folder": "papers/05_Locomotion/ANYmal_Parkour_Robust_Perceptive_Locomotion",
@@ -880,6 +1096,30 @@
     "category": "05_Locomotion"
   },
   {
+    "folder": "papers/05_Locomotion/Do_You_Have_Freestyle__Expressive_Humanoid_Locomotion_via_Audio_Control",
+    "dir": "Do_You_Have_Freestyle__Expressive_Humanoid_Locomotion_via_Audio_Control",
+    "title": "Do You Have Freestyle? Expressive Humanoid Locomotion via Audio Control",
+    "arxiv": "2512.23650",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Do_You_Have_Freestyle__Expressive_Humanoid_Locomotion_via_Audio_Control/Do_You_Have_Freestyle__Expressive_Humanoid_Locomotion_via_Audio_Control.html",
+    "category": "05_Locomotion"
+  },
+  {
+    "folder": "papers/05_Locomotion/E-SDS__Environment-Aware_Automated_Reward_Generation_for_Humanoid_Locomotion",
+    "dir": "E-SDS__Environment-Aware_Automated_Reward_Generation_for_Humanoid_Locomotion",
+    "title": "E-SDS: Environment-aware See it, Do it, Sorted - Automated Environment-Aware Reinforcement Learning for Humanoid Locomotion",
+    "arxiv": "2512.16446",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/E-SDS__Environment-Aware_Automated_Reward_Generation_for_Humanoid_Locomotion/E-SDS__Environment-Aware_Automated_Reward_Generation_for_Humanoid_Locomotion.html",
+    "category": "05_Locomotion"
+  },
+  {
+    "folder": "papers/05_Locomotion/ECO__Energy-Constrained_Optimization_with_RL_for_Humanoid_Walking",
+    "dir": "ECO__Energy-Constrained_Optimization_with_RL_for_Humanoid_Walking",
+    "title": "ECO: Energy-Constrained Optimization with Reinforcement Learning for Humanoid Walking",
+    "arxiv": "2602.06445",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/ECO__Energy-Constrained_Optimization_with_RL_for_Humanoid_Walking/ECO__Energy-Constrained_Optimization_with_RL_for_Humanoid_Walking.html",
+    "category": "05_Locomotion"
+  },
+  {
     "folder": "papers/05_Locomotion/Extreme_Parkour_with_Legged_Robots",
     "dir": "Extreme_Parkour_with_Legged_Robots",
     "title": "Extreme Parkour with Legged Robots",
@@ -904,11 +1144,27 @@
     "category": "05_Locomotion"
   },
   {
+    "folder": "papers/05_Locomotion/Humanoid_Mobility_via_Attention-based_Contacts",
+    "dir": "Humanoid_Mobility_via_Attention-based_Contacts",
+    "title": "Humanoid Mobility via Attention-based Contacts",
+    "arxiv": "2610.31608",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Humanoid_Mobility_via_Attention-based_Contacts/Humanoid_Mobility_via_Attention-based_Contacts.html",
+    "category": "05_Locomotion"
+  },
+  {
     "folder": "papers/05_Locomotion/Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data",
     "dir": "Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data",
     "title": "A Hybrid Autoencoder for Robust Heightmap Generation from Fused Lidar and Depth Data for Humanoid Robot Locomotion",
     "arxiv": "2602.05855",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data/Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data.html",
+    "category": "05_Locomotion"
+  },
+  {
+    "folder": "papers/05_Locomotion/Learning_to_Get_Up_Across_Morphologies__Zero-Shot_Recovery_with_a_Unified_Humanoid_Policy",
+    "dir": "Learning_to_Get_Up_Across_Morphologies__Zero-Shot_Recovery_with_a_Unified_Humanoid_Policy",
+    "title": "Learning to Get Up Across Morphologies: Zero-Shot Recovery with a Unified Humanoid Policy",
+    "arxiv": "2512.12230",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Get_Up_Across_Morphologies__Zero-Shot_Recovery_with_a_Unified_Humanoid_Policy/Learning_to_Get_Up_Across_Morphologies__Zero-Shot_Recovery_with_a_Unified_Humanoid_Policy.html",
     "category": "05_Locomotion"
   },
   {
@@ -928,11 +1184,43 @@
     "category": "05_Locomotion"
   },
   {
+    "folder": "papers/05_Locomotion/Push_the_Limit__High-Speed_Sprinting_and_Aggressive_Cornering_on_a_Full-Scale_Humanoid",
+    "dir": "Push_the_Limit__High-Speed_Sprinting_and_Aggressive_Cornering_on_a_Full-Scale_Humanoid",
+    "title": "Push the Limit: Learning High-Speed Sprinting and Aggressive Cornering on a Full-Scale Humanoid",
+    "arxiv": "2610.14840",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Push_the_Limit__High-Speed_Sprinting_and_Aggressive_Cornering_on_a_Full-Scale_Humanoid/Push_the_Limit__High-Speed_Sprinting_and_Aggressive_Cornering_on_a_Full-Scale_Humanoid.html",
+    "category": "05_Locomotion"
+  },
+  {
     "folder": "papers/05_Locomotion/RPL__Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challenging_Terrains",
     "dir": "RPL__Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challenging_Terrains",
     "title": "RPL: Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains",
     "arxiv": "2602.03002",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/RPL__Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challenging_Terrains/RPL__Learning_Robust_Humanoid_Perceptive_Locomotion_on_Challenging_Terrains.html",
+    "category": "05_Locomotion"
+  },
+  {
+    "folder": "papers/05_Locomotion/RoboMirror__Understand_Before_You_Imitate_for_Video_to_Humanoid_Locomotion",
+    "dir": "RoboMirror__Understand_Before_You_Imitate_for_Video_to_Humanoid_Locomotion",
+    "title": "RoboMirror: Understand Before You Imitate for Video to Humanoid Locomotion",
+    "arxiv": "2512.23649",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/RoboMirror__Understand_Before_You_Imitate_for_Video_to_Humanoid_Locomotion/RoboMirror__Understand_Before_You_Imitate_for_Video_to_Humanoid_Locomotion.html",
+    "category": "05_Locomotion"
+  },
+  {
+    "folder": "papers/05_Locomotion/SKATER__Synthesized_Kinematics_for_Advanced_Traversing_Efficiency_via_Roller_Skate_Swizzles",
+    "dir": "SKATER__Synthesized_Kinematics_for_Advanced_Traversing_Efficiency_via_Roller_Skate_Swizzles",
+    "title": "SKATER: Synthesized Kinematics for Advanced Traversing Efficiency on a Humanoid Robot via Roller Skate Swizzles",
+    "arxiv": "2601.04948",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/SKATER__Synthesized_Kinematics_for_Advanced_Traversing_Efficiency_via_Roller_Skate_Swizzles/SKATER__Synthesized_Kinematics_for_Advanced_Traversing_Efficiency_via_Roller_Skate_Swizzles.html",
+    "category": "05_Locomotion"
+  },
+  {
+    "folder": "papers/05_Locomotion/Tac4Loco__Spatiotemporal_Plantar_Pressure_Representations_for_Humanoid_Locomotion",
+    "dir": "Tac4Loco__Spatiotemporal_Plantar_Pressure_Representations_for_Humanoid_Locomotion",
+    "title": "Tac4Loco: Learning Spatiotemporal Plantar Pressure Representations for Humanoid Locomotion",
+    "arxiv": "2608.15766",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Tac4Loco__Spatiotemporal_Plantar_Pressure_Representations_for_Humanoid_Locomotion/Tac4Loco__Spatiotemporal_Plantar_Pressure_Representations_for_Humanoid_Locomotion.html",
     "category": "05_Locomotion"
   },
   {
@@ -984,6 +1272,22 @@
     "category": "06_Manipulation"
   },
   {
+    "folder": "papers/06_Manipulation/ActiveUMI__Robotic_Manipulation_with_Active_Perception_from_Robot-Free_Human_Demonstrations",
+    "dir": "ActiveUMI__Robotic_Manipulation_with_Active_Perception_from_Robot-Free_Human_Demonstrations",
+    "title": "ActiveUMI: Robotic Manipulation with Active Perception from Robot-Free Human Demonstrations",
+    "arxiv": "2510.01607",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/ActiveUMI__Robotic_Manipulation_with_Active_Perception_from_Robot-Free_Human_Demonstrations/ActiveUMI__Robotic_Manipulation_with_Active_Perception_from_Robot-Free_Human_Demonstrations.html",
+    "category": "06_Manipulation"
+  },
+  {
+    "folder": "papers/06_Manipulation/AnyWorld__Factorized_Egocentric_World_Models_for_Cross-Embodiment_Generalization",
+    "dir": "AnyWorld__Factorized_Egocentric_World_Models_for_Cross-Embodiment_Generalization",
+    "title": "AnyWorld: Factorized Egocentric World Models for Cross-Embodiment Generalization",
+    "arxiv": "2608.29242",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/AnyWorld__Factorized_Egocentric_World_Models_for_Cross-Embodiment_Generalization/AnyWorld__Factorized_Egocentric_World_Models_for_Cross-Embodiment_Generalization.html",
+    "category": "06_Manipulation"
+  },
+  {
     "folder": "papers/06_Manipulation/Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos",
     "dir": "Being-H0__Vision-Language-Action_Pretraining_from_Large-Scale_Human_Videos",
     "title": "Being-H0: Vision-Language-Action Pretraining from Large-Scale Human Videos",
@@ -992,11 +1296,27 @@
     "category": "06_Manipulation"
   },
   {
+    "folder": "papers/06_Manipulation/Blind_Dexterity__Whole-Body_Humanoid_Manipulation_via_Pure_Proprioception",
+    "dir": "Blind_Dexterity__Whole-Body_Humanoid_Manipulation_via_Pure_Proprioception",
+    "title": "Blind Dexterity: Whole-Body Humanoid Manipulation via Pure Proprioception",
+    "arxiv": "2608.29487",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Blind_Dexterity__Whole-Body_Humanoid_Manipulation_via_Pure_Proprioception/Blind_Dexterity__Whole-Body_Humanoid_Manipulation_via_Pure_Proprioception.html",
+    "category": "06_Manipulation"
+  },
+  {
     "folder": "papers/06_Manipulation/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection",
     "dir": "DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection",
     "title": "DexHub and DART: Towards Internet Scale Robot Data Collection",
     "arxiv": "2411.02214",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection/DexHub_and_DART__Towards_Internet_Scale_Robot_Data_Collection.html",
+    "category": "06_Manipulation"
+  },
+  {
+    "folder": "papers/06_Manipulation/DexUMI__Using_Human_Hand_as_the_Universal_Manipulation_Interface",
+    "dir": "DexUMI__Using_Human_Hand_as_the_Universal_Manipulation_Interface",
+    "title": "DexUMI: Using Human Hand as the Universal Manipulation Interface for Dexterous Manipulation",
+    "arxiv": "2505.21864",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DexUMI__Using_Human_Hand_as_the_Universal_Manipulation_Interface/DexUMI__Using_Human_Hand_as_the_Universal_Manipulation_Interface.html",
     "category": "06_Manipulation"
   },
   {
@@ -1088,6 +1408,14 @@
     "category": "06_Manipulation"
   },
   {
+    "folder": "papers/06_Manipulation/EmbodyHOI__Embodiment-Aware_Generation_of_Hand-Object_Interactions_for_Humanoid_Dexterous_Manipulation",
+    "dir": "EmbodyHOI__Embodiment-Aware_Generation_of_Hand-Object_Interactions_for_Humanoid_Dexterous_Manipulation",
+    "title": "EmbodyHOI: Embodiment-Aware Generation of Hand-Object Interactions for Humanoid Dexterous Manipulation",
+    "arxiv": "2610.27242",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EmbodyHOI__Embodiment-Aware_Generation_of_Hand-Object_Interactions_for_Humanoid_Dexterous_Manipulation/EmbodyHOI__Embodiment-Aware_Generation_of_Hand-Object_Interactions_for_Humanoid_Dexterous_Manipulation.html",
+    "category": "06_Manipulation"
+  },
+  {
     "folder": "papers/06_Manipulation/Endowing_GPT-4_with_a_Humanoid_Body__Bridge_Between_VLMs_and_the_Physical_World",
     "dir": "Endowing_GPT-4_with_a_Humanoid_Body__Bridge_Between_VLMs_and_the_Physical_World",
     "title": "Endowing GPT-4 with a Humanoid Body: Building the Bridge Between Off-the-Shelf VLMs and the Physical World",
@@ -1136,6 +1464,14 @@
     "category": "06_Manipulation"
   },
   {
+    "folder": "papers/06_Manipulation/Humanoid_Everyday__A_Comprehensive_Robotic_Dataset_for_Open-World_Humanoid_Manipulation",
+    "dir": "Humanoid_Everyday__A_Comprehensive_Robotic_Dataset_for_Open-World_Humanoid_Manipulation",
+    "title": "Humanoid Everyday: A Comprehensive Robotic Dataset for Open-World Humanoid Manipulation",
+    "arxiv": "2510.08807",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Humanoid_Everyday__A_Comprehensive_Robotic_Dataset_for_Open-World_Humanoid_Manipulation/Humanoid_Everyday__A_Comprehensive_Robotic_Dataset_for_Open-World_Humanoid_Manipulation.html",
+    "category": "06_Manipulation"
+  },
+  {
     "folder": "papers/06_Manipulation/Humanoid_Policy__Human_Policy",
     "dir": "Humanoid_Policy__Human_Policy",
     "title": "Humanoid Policy ~ Human Policy",
@@ -1152,11 +1488,27 @@
     "category": "06_Manipulation"
   },
   {
+    "folder": "papers/06_Manipulation/Immiscible_Diffusion_Policy__Preserving_Multimodal_Robot_Actions_through_Label-Free_Noise_Assignment",
+    "dir": "Immiscible_Diffusion_Policy__Preserving_Multimodal_Robot_Actions_through_Label-Free_Noise_Assignment",
+    "title": "Immiscible Diffusion Policy: Preserving Multimodal Robot Actions through Label-Free Noise Assignment",
+    "arxiv": "2610.09369",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Immiscible_Diffusion_Policy__Preserving_Multimodal_Robot_Actions_through_Label-Free_Noise_Assignment/Immiscible_Diffusion_Policy__Preserving_Multimodal_Robot_Actions_through_Label-Free_Noise_Assignment.html",
+    "category": "06_Manipulation"
+  },
+  {
     "folder": "papers/06_Manipulation/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data",
     "dir": "In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data",
     "title": "In-N-On: Scaling Egocentric Manipulation with in-the-wild and on-task Data",
     "arxiv": "2511.15704",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data/In-N-On__Scaling_Egocentric_Manipulation_with_in-the-wild_and_on-task_Data.html",
+    "category": "06_Manipulation"
+  },
+  {
+    "folder": "papers/06_Manipulation/LEGO__Learning_to_Grasp_Anything_by_Playing_with_Random_Toys",
+    "dir": "LEGO__Learning_to_Grasp_Anything_by_Playing_with_Random_Toys",
+    "title": "Learning to Grasp Anything by Playing with Random Toys",
+    "arxiv": "2510.12866",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/LEGO__Learning_to_Grasp_Anything_by_Playing_with_Random_Toys/LEGO__Learning_to_Grasp_Anything_by_Playing_with_Random_Toys.html",
     "category": "06_Manipulation"
   },
   {
@@ -1240,11 +1592,35 @@
     "category": "06_Manipulation"
   },
   {
+    "folder": "papers/06_Manipulation/RGMP__Recurrent_Geometric-prior_Multimodal_Policy_for_Generalizable_Humanoid_Manipulation",
+    "dir": "RGMP__Recurrent_Geometric-prior_Multimodal_Policy_for_Generalizable_Humanoid_Manipulation",
+    "title": "RGMP: Recurrent Geometric-prior Multimodal Policy for Generalizable Humanoid Robot Manipulation",
+    "arxiv": "2511.09141",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/RGMP__Recurrent_Geometric-prior_Multimodal_Policy_for_Generalizable_Humanoid_Manipulation/RGMP__Recurrent_Geometric-prior_Multimodal_Policy_for_Generalizable_Humanoid_Manipulation.html",
+    "category": "06_Manipulation"
+  },
+  {
     "folder": "papers/06_Manipulation/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies",
     "dir": "Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies",
     "title": "Residual Off-Policy RL for Finetuning Behavior Cloning Policies",
     "arxiv": "2509.19301",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies/Residual_Off-Policy_RL_for_Finetuning_Behavior_Cloning_Policies.html",
+    "category": "06_Manipulation"
+  },
+  {
+    "folder": "papers/06_Manipulation/RoboEdit__Turning_Human_Manipulation_Videos_into_Scalable_Robot_Experience",
+    "dir": "RoboEdit__Turning_Human_Manipulation_Videos_into_Scalable_Robot_Experience",
+    "title": "RoboEdit: Turning Human Manipulation Videos into Scalable Robot Experience",
+    "arxiv": "2608.18948",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/RoboEdit__Turning_Human_Manipulation_Videos_into_Scalable_Robot_Experience/RoboEdit__Turning_Human_Manipulation_Videos_into_Scalable_Robot_Experience.html",
+    "category": "06_Manipulation"
+  },
+  {
+    "folder": "papers/06_Manipulation/RoboTacDex__A_Dexterous_Visual-Tactile-Action_Dataset_for_Humanoid_Manipulation",
+    "dir": "RoboTacDex__A_Dexterous_Visual-Tactile-Action_Dataset_for_Humanoid_Manipulation",
+    "title": "RoboTacDex: A Dexterous Visual-Tactile-Action Dataset for Humanoid Manipulation",
+    "arxiv": "2606.31836",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/RoboTacDex__A_Dexterous_Visual-Tactile-Action_Dataset_for_Humanoid_Manipulation/RoboTacDex__A_Dexterous_Visual-Tactile-Action_Dataset_for_Humanoid_Manipulation.html",
     "category": "06_Manipulation"
   },
   {
@@ -1269,6 +1645,14 @@
     "title": "Sim-and-Real Co-Training: A Simple Recipe for Vision-Based Robotic Manipulation",
     "arxiv": "2503.24361",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation/Sim-and-Real_Co-Training__A_Simple_Recipe_for_Vision-Based_Robotic_Manipulation.html",
+    "category": "06_Manipulation"
+  },
+  {
+    "folder": "papers/06_Manipulation/Spark-0__Spatially_Aligned_Tactile_Pretraining_for_Robot_Dexterous_Manipulation",
+    "dir": "Spark-0__Spatially_Aligned_Tactile_Pretraining_for_Robot_Dexterous_Manipulation",
+    "title": "Spark-0: Scaling Spatially Aligned Tactile Pretraining for Robot Dexterous Manipulation",
+    "arxiv": "2610.22342",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Spark-0__Spatially_Aligned_Tactile_Pretraining_for_Robot_Dexterous_Manipulation/Spark-0__Spatially_Aligned_Tactile_Pretraining_for_Robot_Dexterous_Manipulation.html",
     "category": "06_Manipulation"
   },
   {
@@ -1328,6 +1712,14 @@
     "category": "07_Teleoperation"
   },
   {
+    "folder": "papers/07_Teleoperation/Beyond_Retargeting__Low-Latency_Robust_Humanoid_Whole-Body_Teleoperation_with_Atomic_Motion_Primitives",
+    "dir": "Beyond_Retargeting__Low-Latency_Robust_Humanoid_Whole-Body_Teleoperation_with_Atomic_Motion_Primitives",
+    "title": "Beyond Retargeting: Low-Latency and Robust Humanoid Whole-Body Teleoperation with Learned Atomic Motion Primitives",
+    "arxiv": "2610.07891",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Beyond_Retargeting__Low-Latency_Robust_Humanoid_Whole-Body_Teleoperation_with_Atomic_Motion_Primitives/Beyond_Retargeting__Low-Latency_Robust_Humanoid_Whole-Body_Teleoperation_with_Atomic_Motion_Primitives.html",
+    "category": "07_Teleoperation"
+  },
+  {
     "folder": "papers/07_Teleoperation/Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning",
     "dir": "Bunny-VisionPro__Real-Time_Bimanual_Dexterous_Teleoperation_for_Imitation_Learning",
     "title": "Bunny-VisionPro: Real-Time Bimanual Dexterous Teleoperation for Imitation Learning",
@@ -1360,11 +1752,35 @@
     "category": "07_Teleoperation"
   },
   {
+    "folder": "papers/07_Teleoperation/Event-Based_Upper-Body_Humanoid_Teleoperation_Under_Challenging_Illumination",
+    "dir": "Event-Based_Upper-Body_Humanoid_Teleoperation_Under_Challenging_Illumination",
+    "title": "Event-Based Upper-Body Humanoid Teleoperation Under Challenging Illumination",
+    "arxiv": "2607.29227",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Event-Based_Upper-Body_Humanoid_Teleoperation_Under_Challenging_Illumination/Event-Based_Upper-Body_Humanoid_Teleoperation_Under_Challenging_Illumination.html",
+    "category": "07_Teleoperation"
+  },
+  {
     "folder": "papers/07_Teleoperation/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control",
     "dir": "ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control",
     "title": "ExtremControl: Low-Latency Humanoid Teleoperation with Direct Extremity Control",
     "arxiv": "2602.11321",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control.html",
+    "category": "07_Teleoperation"
+  },
+  {
+    "folder": "papers/07_Teleoperation/Gated_Residual_Body-Hand_Coordination_for_Whole-Body_Humanoid_Teleoperation",
+    "dir": "Gated_Residual_Body-Hand_Coordination_for_Whole-Body_Humanoid_Teleoperation",
+    "title": "Gated Residual Body-Hand Coordination for Whole-Body Humanoid Teleoperation",
+    "arxiv": "2609.18763",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Gated_Residual_Body-Hand_Coordination_for_Whole-Body_Humanoid_Teleoperation/Gated_Residual_Body-Hand_Coordination_for_Whole-Body_Humanoid_Teleoperation.html",
+    "category": "07_Teleoperation"
+  },
+  {
+    "folder": "papers/07_Teleoperation/HEFT__Heavy-Payload_Full-size_Humanoid_Teleoperation_with_Privileged_Motion_Guidance",
+    "dir": "HEFT__Heavy-Payload_Full-size_Humanoid_Teleoperation_with_Privileged_Motion_Guidance",
+    "title": "HEFT: Heavy-Payload Full-size Humanoid Teleoperation with Privileged Motion Guidance and Windowed Payload Curriculum",
+    "arxiv": "2607.02332",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/HEFT__Heavy-Payload_Full-size_Humanoid_Teleoperation_with_Privileged_Motion_Guidance/HEFT__Heavy-Payload_Full-size_Humanoid_Teleoperation_with_Privileged_Motion_Guidance.html",
     "category": "07_Teleoperation"
   },
   {
@@ -1384,6 +1800,14 @@
     "category": "07_Teleoperation"
   },
   {
+    "folder": "papers/07_Teleoperation/HuMiT__Low-Latency_Whole-Body_Humanoid_Teleoperation_via_Compact_Reference_Tracking",
+    "dir": "HuMiT__Low-Latency_Whole-Body_Humanoid_Teleoperation_via_Compact_Reference_Tracking",
+    "title": "HuMiT: Low-Latency Whole-Body Humanoid Teleoperation via Compact Reference Tracking",
+    "arxiv": "2610.29903",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/HuMiT__Low-Latency_Whole-Body_Humanoid_Teleoperation_via_Compact_Reference_Tracking/HuMiT__Low-Latency_Whole-Body_Humanoid_Teleoperation_via_Compact_Reference_Tracking.html",
+    "category": "07_Teleoperation"
+  },
+  {
     "folder": "papers/07_Teleoperation/Human-Robot_Collaboration_for_Remote_Control_of_Mobile_Humanoid_Robots",
     "dir": "Human-Robot_Collaboration_for_Remote_Control_of_Mobile_Humanoid_Robots",
     "title": "Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots with Torso-Arm Coordination",
@@ -1397,6 +1821,14 @@
     "title": "HumanPlus: Humanoid Shadowing and Imitation from Humans",
     "arxiv": "2406.10454",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans.html",
+    "category": "07_Teleoperation"
+  },
+  {
+    "folder": "papers/07_Teleoperation/Humanoid-GPT__Scaling_Data_and_Structure_for_Zero-Shot_Motion_Tracking",
+    "dir": "Humanoid-GPT__Scaling_Data_and_Structure_for_Zero-Shot_Motion_Tracking",
+    "title": "Humanoid-GPT: Scaling Data and Structure for Zero-Shot Motion Tracking",
+    "arxiv": "2606.03985",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Humanoid-GPT__Scaling_Data_and_Structure_for_Zero-Shot_Motion_Tracking/Humanoid-GPT__Scaling_Data_and_Structure_for_Zero-Shot_Motion_Tracking.html",
     "category": "07_Teleoperation"
   },
   {
@@ -1424,6 +1856,14 @@
     "category": "07_Teleoperation"
   },
   {
+    "folder": "papers/07_Teleoperation/Miniature_Humanoid_Tele-Loco-Manipulation_using_VR_and_RL",
+    "dir": "Miniature_Humanoid_Tele-Loco-Manipulation_using_VR_and_RL",
+    "title": "Towards Miniature Humanoid Tele-Loco-Manipulation Using Virtual Reality and Reinforcement Learning",
+    "arxiv": "2607.20399",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Miniature_Humanoid_Tele-Loco-Manipulation_using_VR_and_RL/Miniature_Humanoid_Tele-Loco-Manipulation_using_VR_and_RL.html",
+    "category": "07_Teleoperation"
+  },
+  {
     "folder": "papers/07_Teleoperation/Mobile-TeleVision__Predictive_Motion_Priors_for_Humanoid_Whole-Body_Control",
     "dir": "Mobile-TeleVision__Predictive_Motion_Priors_for_Humanoid_Whole-Body_Control",
     "title": "Mobile-TeleVision: Predictive Motion Priors for Humanoid Whole-Body Control",
@@ -1440,6 +1880,14 @@
     "category": "07_Teleoperation"
   },
   {
+    "folder": "papers/07_Teleoperation/Open-TeleVision__Teleoperation_with_Immersive_Active_Visual_Feedback",
+    "dir": "Open-TeleVision__Teleoperation_with_Immersive_Active_Visual_Feedback",
+    "title": "Open-TeleVision: Teleoperation with Immersive Active Visual Feedback",
+    "arxiv": "2407.01512",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Open-TeleVision__Teleoperation_with_Immersive_Active_Visual_Feedback/Open-TeleVision__Teleoperation_with_Immersive_Active_Visual_Feedback.html",
+    "category": "07_Teleoperation"
+  },
+  {
     "folder": "papers/07_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation",
     "dir": "SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation",
     "title": "SEW-Mimic: A Closed-Form Geometric Retargeting Solver for Upper Body Humanoid Robot Teleoperation",
@@ -1453,6 +1901,14 @@
     "title": "Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation",
     "arxiv": "2510.04353",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation/Stability-Aware_Retargeting_for_Humanoid_Multi-Contact_Teleoperation.html",
+    "category": "07_Teleoperation"
+  },
+  {
+    "folder": "papers/07_Teleoperation/TRILL__Deep_Imitation_Learning_for_Humanoid_Loco-manipulation_through_Human_Teleoperation",
+    "dir": "TRILL__Deep_Imitation_Learning_for_Humanoid_Loco-manipulation_through_Human_Teleoperation",
+    "title": "Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperation (TRILL)",
+    "arxiv": "2309.01952",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/TRILL__Deep_Imitation_Learning_for_Humanoid_Loco-manipulation_through_Human_Teleoperation/TRILL__Deep_Imitation_Learning_for_Humanoid_Loco-manipulation_through_Human_Teleoperation.html",
     "category": "07_Teleoperation"
   },
   {
@@ -1488,6 +1944,22 @@
     "category": "07_Teleoperation"
   },
   {
+    "folder": "papers/07_Teleoperation/Teleopit__A_Full-Embodiment_Humanoid_Teleoperation_System",
+    "dir": "Teleopit__A_Full-Embodiment_Humanoid_Teleoperation_System",
+    "title": "Teleopit: A Full-Embodiment Humanoid Teleoperation System",
+    "arxiv": "2608.01834",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Teleopit__A_Full-Embodiment_Humanoid_Teleoperation_System/Teleopit__A_Full-Embodiment_Humanoid_Teleoperation_System.html",
+    "category": "07_Teleoperation"
+  },
+  {
+    "folder": "papers/07_Teleoperation/Toward_Humanoid_Robots_in_Construction__A_Teleoperation_Feasibility_Study",
+    "dir": "Toward_Humanoid_Robots_in_Construction__A_Teleoperation_Feasibility_Study",
+    "title": "Toward Humanoid Robots in Construction: A Teleoperation Feasibility Study",
+    "arxiv": "2610.00718",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Toward_Humanoid_Robots_in_Construction__A_Teleoperation_Feasibility_Study/Toward_Humanoid_Robots_in_Construction__A_Teleoperation_Feasibility_Study.html",
+    "category": "07_Teleoperation"
+  },
+  {
     "folder": "papers/07_Teleoperation/Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_Parameter_Estimation",
     "dir": "Whole-Body_Bilateral_Teleoperation_with_Multi-Stage_Object_Parameter_Estimation",
     "title": "Whole-Body Bilateral Teleoperation with Multi-Stage Object Parameter Estimation for Wheeled Humanoid Locomanipulation",
@@ -1496,11 +1968,51 @@
     "category": "07_Teleoperation"
   },
   {
+    "folder": "papers/07_Teleoperation/X-OP__Cross-Morphology_Whole-Body_Teleoperation_via_MPC_Retargeting",
+    "dir": "X-OP__Cross-Morphology_Whole-Body_Teleoperation_via_MPC_Retargeting",
+    "title": "X-OP: Cross-Morphology Whole-Body Teleoperation via MPC Retargeting",
+    "arxiv": "2606.07934",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/X-OP__Cross-Morphology_Whole-Body_Teleoperation_via_MPC_Retargeting/X-OP__Cross-Morphology_Whole-Body_Teleoperation_via_MPC_Retargeting.html",
+    "category": "07_Teleoperation"
+  },
+  {
+    "folder": "papers/08_Navigation/ARMOR__Egocentric_Perception_for_Humanoid_Robot_Collision_Avoidance",
+    "dir": "ARMOR__Egocentric_Perception_for_Humanoid_Robot_Collision_Avoidance",
+    "title": "ARMOR: Egocentric Perception for Humanoid Robot Collision Avoidance and Motion Planning",
+    "arxiv": "2412.00396",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/ARMOR__Egocentric_Perception_for_Humanoid_Robot_Collision_Avoidance/ARMOR__Egocentric_Perception_for_Humanoid_Robot_Collision_Avoidance.html",
+    "category": "08_Navigation"
+  },
+  {
+    "folder": "papers/08_Navigation/Adaptive_Traversal_Tubes_for_Posture-Aware_Navigation_of_Bipedal_Humanoids",
+    "dir": "Adaptive_Traversal_Tubes_for_Posture-Aware_Navigation_of_Bipedal_Humanoids",
+    "title": "Adaptive Traversal Tubes for Posture-Aware Navigation of Bipedal Humanoids",
+    "arxiv": "2610.27688",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Adaptive_Traversal_Tubes_for_Posture-Aware_Navigation_of_Bipedal_Humanoids/Adaptive_Traversal_Tubes_for_Posture-Aware_Navigation_of_Bipedal_Humanoids.html",
+    "category": "08_Navigation"
+  },
+  {
+    "folder": "papers/08_Navigation/DA-Nav__Direction-Aware_City-Scale_Vision-Language_Navigation",
+    "dir": "DA-Nav__Direction-Aware_City-Scale_Vision-Language_Navigation",
+    "title": "DA-Nav: Direction-Aware City-Scale Vision-Language Navigation",
+    "arxiv": "2607.11638",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/DA-Nav__Direction-Aware_City-Scale_Vision-Language_Navigation/DA-Nav__Direction-Aware_City-Scale_Vision-Language_Navigation.html",
+    "category": "08_Navigation"
+  },
+  {
     "folder": "papers/08_Navigation/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum",
     "dir": "EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum",
     "title": "EgoActor: Grounding Task Planning into Spatial-aware Egocentric Actions for Humanoid Robots via Visual-Language Models",
     "arxiv": "2602.04515",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum.html",
+    "category": "08_Navigation"
+  },
+  {
+    "folder": "papers/08_Navigation/EgoNav__Bridging_Learned_Waypoints_and_Geometry-Aware_Local_Control",
+    "dir": "EgoNav__Bridging_Learned_Waypoints_and_Geometry-Aware_Local_Control",
+    "title": "EgoNav: Bridging Learned Waypoints and Geometry-Aware Local Control for Robust Indoor Navigation",
+    "arxiv": "2608.25642",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/EgoNav__Bridging_Learned_Waypoints_and_Geometry-Aware_Local_Control/EgoNav__Bridging_Learned_Waypoints_and_Geometry-Aware_Local_Control.html",
     "category": "08_Navigation"
   },
   {
@@ -1541,6 +2053,22 @@
     "title": "Hand-Eye Autonomous Delivery: Learning Humanoid Navigation, Locomotion and Reaching",
     "arxiv": "2508.03068",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/HEAD__Hand-Eye_Autonomous_Delivery_Humanoid_Navigation_Locomotion_and_Reaching/HEAD__Hand-Eye_Autonomous_Delivery_Humanoid_Navigation_Locomotion_and_Reaching.html",
+    "category": "08_Navigation"
+  },
+  {
+    "folder": "papers/08_Navigation/HumanoidPano__Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Perception",
+    "dir": "HumanoidPano__Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Perception",
+    "title": "HumanoidPano: Hybrid Spherical Panoramic-LiDAR Cross-Modal Perception for Humanoid Robots",
+    "arxiv": "2503.09010",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/HumanoidPano__Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Perception/HumanoidPano__Hybrid_Spherical_Panoramic-LiDAR_Cross-Modal_Perception.html",
+    "category": "08_Navigation"
+  },
+  {
+    "folder": "papers/08_Navigation/HumanoidVLN__Physics-Grounded_Simulator_and_Benchmark_for_Vision-Language_Navigation",
+    "dir": "HumanoidVLN__Physics-Grounded_Simulator_and_Benchmark_for_Vision-Language_Navigation",
+    "title": "HumanoidVLN: A Physics-Grounded Simulator and Benchmark for Vision-Language Navigation Across Diverse Humanoid Embodiments",
+    "arxiv": "2608.12860",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/HumanoidVLN__Physics-Grounded_Simulator_and_Benchmark_for_Vision-Language_Navigation/HumanoidVLN__Physics-Grounded_Simulator_and_Benchmark_for_Vision-Language_Navigation.html",
     "category": "08_Navigation"
   },
   {
@@ -1600,6 +2128,14 @@
     "category": "08_Navigation"
   },
   {
+    "folder": "papers/08_Navigation/NoMaD__Goal_Masked_Diffusion_Policies_for_Navigation_and_Exploration",
+    "dir": "NoMaD__Goal_Masked_Diffusion_Policies_for_Navigation_and_Exploration",
+    "title": "NoMaD: Goal Masked Diffusion Policies for Navigation and Exploration",
+    "arxiv": "2310.07896",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/NoMaD__Goal_Masked_Diffusion_Policies_for_Navigation_and_Exploration/NoMaD__Goal_Masked_Diffusion_Policies_for_Navigation_and_Exploration.html",
+    "category": "08_Navigation"
+  },
+  {
     "folder": "papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation",
     "dir": "Quantum_Deep_RL_for_Humanoid_Robot_Navigation",
     "title": "Quantum deep reinforcement learning for humanoid robot navigation task",
@@ -1624,12 +2160,44 @@
     "category": "08_Navigation"
   },
   {
+    "folder": "papers/08_Navigation/TANGO__Whole-Body_Vision-Language_Navigation_in_Cluttered_Environments",
+    "dir": "TANGO__Whole-Body_Vision-Language_Navigation_in_Cluttered_Environments",
+    "title": "TANGO: Humanoid Navigation in Cluttered Environments with a Whole-Body Vision-Language-Action Model",
+    "arxiv": "2609.09158",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/TANGO__Whole-Body_Vision-Language_Navigation_in_Cluttered_Environments/TANGO__Whole-Body_Vision-Language_Navigation_in_Cluttered_Environments.html",
+    "category": "08_Navigation"
+  },
+  {
+    "folder": "papers/08_Navigation/TAPNAV__Humanoid_Navigation_through_Tactile_Active_Perception",
+    "dir": "TAPNAV__Humanoid_Navigation_through_Tactile_Active_Perception",
+    "title": "TAPNAV: Humanoid Navigation through Tactile Active Perception",
+    "arxiv": "2610.10748",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/TAPNAV__Humanoid_Navigation_through_Tactile_Active_Perception/TAPNAV__Humanoid_Navigation_through_Tactile_Active_Perception.html",
+    "category": "08_Navigation"
+  },
+  {
     "folder": "papers/08_Navigation/Thinking_in_360__Humanoid_Visual_Search_in_the_Wild",
     "dir": "Thinking_in_360__Humanoid_Visual_Search_in_the_Wild",
     "title": "Thinking in 360°: Humanoid Visual Search in the Wild",
     "arxiv": "2511.20351",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Thinking_in_360__Humanoid_Visual_Search_in_the_Wild/Thinking_in_360__Humanoid_Visual_Search_in_the_Wild.html",
     "category": "08_Navigation"
+  },
+  {
+    "folder": "papers/08_Navigation/What_the_Elevation_Map_Cannot_See__Semantic-Aware_Locomotion_and_Execution-Aware_Navigation",
+    "dir": "What_the_Elevation_Map_Cannot_See__Semantic-Aware_Locomotion_and_Execution-Aware_Navigation",
+    "title": "What the Elevation Map Cannot See: Semantic-Aware Locomotion and Execution-Aware Navigation for Humanoid Robot",
+    "arxiv": "2610.07396",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/What_the_Elevation_Map_Cannot_See__Semantic-Aware_Locomotion_and_Execution-Aware_Navigation/What_the_Elevation_Map_Cannot_See__Semantic-Aware_Locomotion_and_Execution-Aware_Navigation.html",
+    "category": "08_Navigation"
+  },
+  {
+    "folder": "papers/09_State_Estimation/A_Multimodal_Label_Forecasting_Method_for_Aperiodic_Visuo-Motor_Time_Series",
+    "dir": "A_Multimodal_Label_Forecasting_Method_for_Aperiodic_Visuo-Motor_Time_Series",
+    "title": "A Multimodal Label Forecasting Method for Aperiodic Visuo-Motor Time Series",
+    "arxiv": "2609.07930",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/A_Multimodal_Label_Forecasting_Method_for_Aperiodic_Visuo-Motor_Time_Series/A_Multimodal_Label_Forecasting_Method_for_Aperiodic_Visuo-Motor_Time_Series.html",
+    "category": "09_State_Estimation"
   },
   {
     "folder": "papers/09_State_Estimation/An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_VIO_Systems",
@@ -1650,7 +2218,7 @@
   {
     "folder": "papers/09_State_Estimation/Contact-Aided_Invariant_EKF_for_Legged_Robots",
     "dir": "Contact-Aided_Invariant_EKF_for_Legged_Robots",
-    "title": "Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation",
+    "title": "Contact-Aided Invariant Extended Kalman Filtering for Robot State Estimation",
     "arxiv": "1904.09251",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Contact-Aided_Invariant_EKF_for_Legged_Robots/Contact-Aided_Invariant_EKF_for_Legged_Robots.html",
     "category": "09_State_Estimation"
@@ -1672,11 +2240,67 @@
     "category": "09_State_Estimation"
   },
   {
+    "folder": "papers/09_State_Estimation/Iterated_Invariant_EKF_for_Quadruped_Robot_Odometry",
+    "dir": "Iterated_Invariant_EKF_for_Quadruped_Robot_Odometry",
+    "title": "Iterated Invariant EKF for Quadruped Robot Odometry",
+    "arxiv": "2604.15449",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Iterated_Invariant_EKF_for_Quadruped_Robot_Odometry/Iterated_Invariant_EKF_for_Quadruped_Robot_Odometry.html",
+    "category": "09_State_Estimation"
+  },
+  {
+    "folder": "papers/09_State_Estimation/KILVO__Kinematic-Inertial-LiDAR-Visual_Odometry_for_Humanoid_Robots",
+    "dir": "KILVO__Kinematic-Inertial-LiDAR-Visual_Odometry_for_Humanoid_Robots",
+    "title": "KILVO: Kinematic-Inertial-LiDAR-Visual Odometry with Robust Multimodal Adaptation for Humanoid Robots",
+    "arxiv": "2608.05647",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/KILVO__Kinematic-Inertial-LiDAR-Visual_Odometry_for_Humanoid_Robots/KILVO__Kinematic-Inertial-LiDAR-Visual_Odometry_for_Humanoid_Robots.html",
+    "category": "09_State_Estimation"
+  },
+  {
+    "folder": "papers/09_State_Estimation/Kimera__Open-Source_Library_for_Real-Time_Metric-Semantic_Localization_and_Mapping",
+    "dir": "Kimera__Open-Source_Library_for_Real-Time_Metric-Semantic_Localization_and_Mapping",
+    "title": "Kimera: an Open-Source Library for Real-Time Metric-Semantic Localization and Mapping",
+    "arxiv": "1910.02490",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Kimera__Open-Source_Library_for_Real-Time_Metric-Semantic_Localization_and_Mapping/Kimera__Open-Source_Library_for_Real-Time_Metric-Semantic_Localization_and_Mapping.html",
+    "category": "09_State_Estimation"
+  },
+  {
     "folder": "papers/09_State_Estimation/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors",
     "dir": "Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors",
     "title": "Legged Robot State-Estimation Through Combined Forward Kinematic and Preintegrated Contact Factors",
     "arxiv": "1712.05873",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors.html",
+    "category": "09_State_Estimation"
+  },
+  {
+    "folder": "papers/09_State_Estimation/OCELOT__Odometry_and_Contact_Estimation_for_Legged_Robots",
+    "dir": "OCELOT__Odometry_and_Contact_Estimation_for_Legged_Robots",
+    "title": "OCELOT: Odometry and Contact Estimation for Legged Robots",
+    "arxiv": "2605.21863",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/OCELOT__Odometry_and_Contact_Estimation_for_Legged_Robots/OCELOT__Odometry_and_Contact_Estimation_for_Legged_Robots.html",
+    "category": "09_State_Estimation"
+  },
+  {
+    "folder": "papers/09_State_Estimation/ORB-SLAM3__Visual_Visual-Inertial_and_Multi-Map_SLAM",
+    "dir": "ORB-SLAM3__Visual_Visual-Inertial_and_Multi-Map_SLAM",
+    "title": "ORB-SLAM3: An Accurate Open-Source Library for Visual, Visual-Inertial and Multi-Map SLAM",
+    "arxiv": "2007.11898",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/ORB-SLAM3__Visual_Visual-Inertial_and_Multi-Map_SLAM/ORB-SLAM3__Visual_Visual-Inertial_and_Multi-Map_SLAM.html",
+    "category": "09_State_Estimation"
+  },
+  {
+    "folder": "papers/09_State_Estimation/PRIME__Physically-consistent_Robotic_Inertial_and_Motion_Estimation",
+    "dir": "PRIME__Physically-consistent_Robotic_Inertial_and_Motion_Estimation",
+    "title": "PRIME: Physically-consistent Robotic Inertial and Motion Estimation for Legged and Humanoid Robots",
+    "arxiv": "2605.17681",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/PRIME__Physically-consistent_Robotic_Inertial_and_Motion_Estimation/PRIME__Physically-consistent_Robotic_Inertial_and_Motion_Estimation.html",
+    "category": "09_State_Estimation"
+  },
+  {
+    "folder": "papers/09_State_Estimation/PRIMO__Prior-Informed_Odometry_from_Human-Motion_Tracking_for_Humanoid_Robots",
+    "dir": "PRIMO__Prior-Informed_Odometry_from_Human-Motion_Tracking_for_Humanoid_Robots",
+    "title": "PRIMO: Prior-Informed Odometry from Human-Motion Tracking for Humanoid Robots",
+    "arxiv": "2609.23610",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/PRIMO__Prior-Informed_Odometry_from_Human-Motion_Tracking_for_Humanoid_Robots/PRIMO__Prior-Informed_Odometry_from_Human-Motion_Tracking_for_Humanoid_Robots.html",
     "category": "09_State_Estimation"
   },
   {
@@ -1688,6 +2312,14 @@
     "category": "09_State_Estimation"
   },
   {
+    "folder": "papers/09_State_Estimation/Proprioceptive_Invariant_State_Estimation_for_Humanoid_Robots_on_Non-Inertial_Ground",
+    "dir": "Proprioceptive_Invariant_State_Estimation_for_Humanoid_Robots_on_Non-Inertial_Ground",
+    "title": "Proprioceptive Invariant State Estimation for Humanoid Robots on Non-Inertial Ground",
+    "arxiv": "2606.19512",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Proprioceptive_Invariant_State_Estimation_for_Humanoid_Robots_on_Non-Inertial_Ground/Proprioceptive_Invariant_State_Estimation_for_Humanoid_Robots_on_Non-Inertial_Ground.html",
+    "category": "09_State_Estimation"
+  },
+  {
     "folder": "papers/09_State_Estimation/The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer",
     "dir": "The_Invariant_Extended_Kalman_Filter_as_a_Stable_Observer",
     "title": "The Invariant Extended Kalman Filter as a Stable Observer",
@@ -1696,11 +2328,59 @@
     "category": "09_State_Estimation"
   },
   {
+    "folder": "papers/09_State_Estimation/Vision_as_Proprioception__Estimating_Humanoid_Robot_Pose_from_Video",
+    "dir": "Vision_as_Proprioception__Estimating_Humanoid_Robot_Pose_from_Video",
+    "title": "Vision as Proprioception: Estimating Humanoid Robot Pose from Video",
+    "arxiv": "2610.25288",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Vision_as_Proprioception__Estimating_Humanoid_Robot_Pose_from_Video/Vision_as_Proprioception__Estimating_Humanoid_Robot_Pose_from_Video.html",
+    "category": "09_State_Estimation"
+  },
+  {
+    "folder": "papers/10_Sim-to-Real/Actuator_Reality_Shaping_for_Zero-Shot_Sim-to-Real_Robot_Learning",
+    "dir": "Actuator_Reality_Shaping_for_Zero-Shot_Sim-to-Real_Robot_Learning",
+    "title": "Actuator Reality Shaping for Zero-Shot Sim-to-Real Robot Learning",
+    "arxiv": "2607.02205",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Actuator_Reality_Shaping_for_Zero-Shot_Sim-to-Real_Robot_Learning/Actuator_Reality_Shaping_for_Zero-Shot_Sim-to-Real_Robot_Learning.html",
+    "category": "10_Sim-to-Real"
+  },
+  {
+    "folder": "papers/10_Sim-to-Real/Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation",
+    "dir": "Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation",
+    "title": "Bridging the Sim-to-Real Gap for Athletic Loco-Manipulation",
+    "arxiv": "2502.10894",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation/Bridging_the_Sim-to-Real_Gap_for_Athletic_Loco-Manipulation.html",
+    "category": "10_Sim-to-Real"
+  },
+  {
+    "folder": "papers/10_Sim-to-Real/Bridging_the_Sim-to-Real_Gap_in_Parallel-Link_Leg_Mechanisms",
+    "dir": "Bridging_the_Sim-to-Real_Gap_in_Parallel-Link_Leg_Mechanisms",
+    "title": "Bridging the Sim-to-Real Gap in Parallel-Link Leg Mechanisms via Simulator-Side Dynamics Normalization",
+    "arxiv": "2608.01697",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Bridging_the_Sim-to-Real_Gap_in_Parallel-Link_Leg_Mechanisms/Bridging_the_Sim-to-Real_Gap_in_Parallel-Link_Leg_Mechanisms.html",
+    "category": "10_Sim-to-Real"
+  },
+  {
+    "folder": "papers/10_Sim-to-Real/Contact-UAN__Unsupervised_Actuator_Networks_as_a_Residual_World_Model",
+    "dir": "Contact-UAN__Unsupervised_Actuator_Networks_as_a_Residual_World_Model",
+    "title": "Contact-UAN: Unsupervised Actuator Networks as a Residual World Model for Humanoid Control",
+    "arxiv": "2610.18991",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Contact-UAN__Unsupervised_Actuator_Networks_as_a_Residual_World_Model/Contact-UAN__Unsupervised_Actuator_Networks_as_a_Residual_World_Model.html",
+    "category": "10_Sim-to-Real"
+  },
+  {
     "folder": "papers/10_Sim-to-Real/Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion",
     "dir": "Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion",
     "title": "Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion",
     "arxiv": "2509.12858",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion/Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion.html",
+    "category": "10_Sim-to-Real"
+  },
+  {
+    "folder": "papers/10_Sim-to-Real/Delay_Randomization_Widens_the_Delay_Margin_of_Learned_Humanoid_Motion_Trackers",
+    "dir": "Delay_Randomization_Widens_the_Delay_Margin_of_Learned_Humanoid_Motion_Trackers",
+    "title": "Delay Randomization Widens the Delay Margin of Learned Humanoid Motion Trackers",
+    "arxiv": "2610.32277",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/Delay_Randomization_Widens_the_Delay_Margin_of_Learned_Humanoid_Motion_Trackers/Delay_Randomization_Widens_the_Delay_Margin_of_Learned_Humanoid_Motion_Trackers.html",
     "category": "10_Sim-to-Real"
   },
   {
@@ -1712,11 +2392,35 @@
     "category": "10_Sim-to-Real"
   },
   {
+    "folder": "papers/10_Sim-to-Real/FADA__Few-Shot_Domain_Adaptation_via_Dynamics_Alignment_for_Humanoid_Control",
+    "dir": "FADA__Few-Shot_Domain_Adaptation_via_Dynamics_Alignment_for_Humanoid_Control",
+    "title": "FADA: Few-Shot Domain Adaptation via Dynamics Alignment for Humanoid Control",
+    "arxiv": "2606.28476",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/FADA__Few-Shot_Domain_Adaptation_via_Dynamics_Alignment_for_Humanoid_Control/FADA__Few-Shot_Domain_Adaptation_via_Dynamics_Alignment_for_Humanoid_Control.html",
+    "category": "10_Sim-to-Real"
+  },
+  {
+    "folder": "papers/10_Sim-to-Real/IDTD__Informationally_Decoupled_Trajectory_Design_for_Sim-to-Real_System_Identification",
+    "dir": "IDTD__Informationally_Decoupled_Trajectory_Design_for_Sim-to-Real_System_Identification",
+    "title": "Informationally Decoupled Trajectory Design for Sim-to-Real System Identification",
+    "arxiv": "2610.10905",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/IDTD__Informationally_Decoupled_Trajectory_Design_for_Sim-to-Real_System_Identification/IDTD__Informationally_Decoupled_Trajectory_Design_for_Sim-to-Real_System_Identification.html",
+    "category": "10_Sim-to-Real"
+  },
+  {
     "folder": "papers/10_Sim-to-Real/LIFT__Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and_Efficient_F",
     "dir": "LIFT__Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and_Efficient_F",
     "title": "LIFT: Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Control",
     "arxiv": "2601.21363",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/LIFT__Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and_Efficient_F/LIFT__Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and_Efficient_F.html",
+    "category": "10_Sim-to-Real"
+  },
+  {
+    "folder": "papers/10_Sim-to-Real/MOSAIC__Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_Motion_Tracking",
+    "dir": "MOSAIC__Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_Motion_Tracking",
+    "title": "MOSAIC: Bridging the Sim-to-Real Gap in Generalist Humanoid Motion Tracking and Teleoperation with Rapid Residual Adaptation",
+    "arxiv": "2602.08594",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/MOSAIC__Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_Motion_Tracking/MOSAIC__Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_Motion_Tracking.html",
     "category": "10_Sim-to-Real"
   },
   {
@@ -1741,14 +2445,6 @@
     "title": "RAPT: Model-Predictive Out-of-Distribution Detection and Failure Diagnosis for Sim-to-Real Humanoid Robots",
     "arxiv": "2602.01515",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RAPT__Model-Predictive_Out-of-Distribution_Detection_and_Failure_Diagnosis_for_/RAPT__Model-Predictive_Out-of-Distribution_Detection_and_Failure_Diagnosis_for_.html",
-    "category": "10_Sim-to-Real"
-  },
-  {
-    "folder": "papers/10_Sim-to-Real/RMA_Rapid_Motor_Adaptation",
-    "dir": "RMA_Rapid_Motor_Adaptation",
-    "title": "RMA: Rapid Motor Adaptation for Legged Robots",
-    "arxiv": "2107.04034",
-    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html",
     "category": "10_Sim-to-Real"
   },
   {
@@ -1784,6 +2480,14 @@
     "category": "10_Sim-to-Real"
   },
   {
+    "folder": "papers/10_Sim-to-Real/World_Translation__Minimizing_Sim-to-Real_Gap_via_Backward_Dynamics_Extraction",
+    "dir": "World_Translation__Minimizing_Sim-to-Real_Gap_via_Backward_Dynamics_Extraction",
+    "title": "World Translation: Minimizing Sim-to-Real Gap with Backward Dynamics Extraction and Unpaired Domain Translation",
+    "arxiv": "2607.18154",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/World_Translation__Minimizing_Sim-to-Real_Gap_via_Backward_Dynamics_Extraction/World_Translation__Minimizing_Sim-to-Real_Gap_via_Backward_Dynamics_Extraction.html",
+    "category": "10_Sim-to-Real"
+  },
+  {
     "folder": "papers/11_Simulation_Benchmark/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty",
     "dir": "Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty",
     "title": "Benchmarking Humanoid Imitation Learning with Motion Difficulty",
@@ -1792,11 +2496,27 @@
     "category": "11_Simulation_Benchmark"
   },
   {
+    "folder": "papers/11_Simulation_Benchmark/BiGym2__Benchmarking_Learned_and_Agent-Developed_Policies_for_Humanoid_Household_Manipulation",
+    "dir": "BiGym2__Benchmarking_Learned_and_Agent-Developed_Policies_for_Humanoid_Household_Manipulation",
+    "title": "BiGym 2.0: Benchmarking Learned and Agent-Developed Policies for Humanoid Household Manipulation",
+    "arxiv": "2610.07594",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/BiGym2__Benchmarking_Learned_and_Agent-Developed_Policies_for_Humanoid_Household_Manipulation/BiGym2__Benchmarking_Learned_and_Agent-Developed_Policies_for_Humanoid_Household_Manipulation.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
     "folder": "papers/11_Simulation_Benchmark/BiGym__A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark",
     "dir": "BiGym__A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark",
     "title": "BiGym: A Demo-Driven Mobile Bi-Manual Manipulation Benchmark",
     "arxiv": "2407.07788",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/BiGym__A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark/BiGym__A_Demo-Driven_Mobile_Bi-Manual_Manipulation_Benchmark.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
+    "folder": "papers/11_Simulation_Benchmark/CLAP__Cross-Embodiment_Video_World_Models_are_Zero-Shot_Physical_Simulators",
+    "dir": "CLAP__Cross-Embodiment_Video_World_Models_are_Zero-Shot_Physical_Simulators",
+    "title": "CLAP: Cross-Embodiment Video World Models are Zero-Shot Physical Simulators",
+    "arxiv": "2608.27406",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/CLAP__Cross-Embodiment_Video_World_Models_are_Zero-Shot_Physical_Simulators/CLAP__Cross-Embodiment_Video_World_Models_are_Zero-Shot_Physical_Simulators.html",
     "category": "11_Simulation_Benchmark"
   },
   {
@@ -1848,6 +2568,14 @@
     "category": "11_Simulation_Benchmark"
   },
   {
+    "folder": "papers/11_Simulation_Benchmark/Genesis__A_Generative_and_Universal_Physics_Engine_for_Robotics_and_Beyond",
+    "dir": "Genesis__A_Generative_and_Universal_Physics_Engine_for_Robotics_and_Beyond",
+    "title": "Genesis: A Generative and Universal Physics Engine for Robotics and Beyond",
+    "arxiv": null,
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Genesis__A_Generative_and_Universal_Physics_Engine_for_Robotics_and_Beyond/Genesis__A_Generative_and_Universal_Physics_Engine_for_Robotics_and_Beyond.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
     "folder": "papers/11_Simulation_Benchmark/HumanoidBench",
     "dir": "HumanoidBench",
     "title": "HumanoidBench: Simulated Humanoid Benchmark for Whole-Body Locomotion and Manipulation",
@@ -1861,6 +2589,14 @@
     "title": "HumanoidGen: Data Generation for Bimanual Dexterous Manipulation via LLM Reasoning",
     "arxiv": "2507.00833",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/HumanoidGen__Data_Generation_for_Bimanual_Dexterous_Manipulation_via_LLM_Reasoning/HumanoidGen__Data_Generation_for_Bimanual_Dexterous_Manipulation_via_LLM_Reasoning.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
+    "folder": "papers/11_Simulation_Benchmark/HumanoidMimicGen__Data_Generation_for_Loco-Manipulation_via_Whole-Body_Planning",
+    "dir": "HumanoidMimicGen__Data_Generation_for_Loco-Manipulation_via_Whole-Body_Planning",
+    "title": "HumanoidMimicGen: Data Generation for Loco-Manipulation via Whole-Body Planning",
+    "arxiv": "2605.27724",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/HumanoidMimicGen__Data_Generation_for_Loco-Manipulation_via_Whole-Body_Planning/HumanoidMimicGen__Data_Generation_for_Loco-Manipulation_via_Whole-Body_Planning.html",
     "category": "11_Simulation_Benchmark"
   },
   {
@@ -1880,6 +2616,14 @@
     "category": "11_Simulation_Benchmark"
   },
   {
+    "folder": "papers/11_Simulation_Benchmark/Labimus__A_Simulation_and_Benchmark_for_Humanoid_Dexterous_Manipulation_in_Chemical_Lab",
+    "dir": "Labimus__A_Simulation_and_Benchmark_for_Humanoid_Dexterous_Manipulation_in_Chemical_Lab",
+    "title": "Labimus: A Simulation and Benchmark for Humanoid Dexterous Manipulation in Chemical Laboratory",
+    "arxiv": "2606.31037",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Labimus__A_Simulation_and_Benchmark_for_Humanoid_Dexterous_Manipulation_in_Chemical_Lab/Labimus__A_Simulation_and_Benchmark_for_Humanoid_Dexterous_Manipulation_in_Chemical_Lab.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
     "folder": "papers/11_Simulation_Benchmark/Learning_with_pyCub__A_Simulation_and_Exercise_Framework_for_Humanoid_Robotics",
     "dir": "Learning_with_pyCub__A_Simulation_and_Exercise_Framework_for_Humanoid_Robotics",
     "title": "Learning with pyCub: A Simulation and Exercise Framework for Humanoid Robotics",
@@ -1893,6 +2637,14 @@
     "title": "ManiSkill-HAB: A Benchmark for Low-Level Manipulation in Home Rearrangement Tasks",
     "arxiv": "2412.13211",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks/ManiSkill-HAB__A_Benchmark_for_Low-Level_Manipulation_in_Home_Rearrangement_Tasks.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
+    "folder": "papers/11_Simulation_Benchmark/ManiSkill3__GPU_Parallelized_Robotics_Simulation_and_Rendering",
+    "dir": "ManiSkill3__GPU_Parallelized_Robotics_Simulation_and_Rendering",
+    "title": "ManiSkill3: GPU Parallelized Robotics Simulation and Rendering for Generalizable Embodied AI",
+    "arxiv": "2410.00425",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/ManiSkill3__GPU_Parallelized_Robotics_Simulation_and_Rendering/ManiSkill3__GPU_Parallelized_Robotics_Simulation_and_Rendering.html",
     "category": "11_Simulation_Benchmark"
   },
   {
@@ -1912,6 +2664,14 @@
     "category": "11_Simulation_Benchmark"
   },
   {
+    "folder": "papers/11_Simulation_Benchmark/MuJoCo_Playground__An_Open-Source_Framework_for_GPU-Accelerated_Robot_Learning",
+    "dir": "MuJoCo_Playground__An_Open-Source_Framework_for_GPU-Accelerated_Robot_Learning",
+    "title": "MuJoCo Playground: An Open-Source Framework for GPU-Accelerated Robot Learning and Sim-to-Real Transfer",
+    "arxiv": "2502.08844",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/MuJoCo_Playground__An_Open-Source_Framework_for_GPU-Accelerated_Robot_Learning/MuJoCo_Playground__An_Open-Source_Framework_for_GPU-Accelerated_Robot_Learning.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
     "folder": "papers/11_Simulation_Benchmark/RoboCasa365__A_Large-Scale_Simulation_Framework_for_Training_and_Benchmarking_Generalist_Robots",
     "dir": "RoboCasa365__A_Large-Scale_Simulation_Framework_for_Training_and_Benchmarking_Generalist_Robots",
     "title": "RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots",
@@ -1928,11 +2688,43 @@
     "category": "11_Simulation_Benchmark"
   },
   {
+    "folder": "papers/11_Simulation_Benchmark/RoboDojo__A_Unified_Sim-and-Real_Benchmark_for_Generalist_Manipulation_Policies",
+    "dir": "RoboDojo__A_Unified_Sim-and-Real_Benchmark_for_Generalist_Manipulation_Policies",
+    "title": "RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Manipulation Policies",
+    "arxiv": "2607.04434",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/RoboDojo__A_Unified_Sim-and-Real_Benchmark_for_Generalist_Manipulation_Policies/RoboDojo__A_Unified_Sim-and-Real_Benchmark_for_Generalist_Manipulation_Policies.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
+    "folder": "papers/11_Simulation_Benchmark/RoboQuest__Generalist_Physical_Agents_that_Search_Inspect_and_Test",
+    "dir": "RoboQuest__Generalist_Physical_Agents_that_Search_Inspect_and_Test",
+    "title": "RoboQuest: Generalist Physical Agents that Search, Inspect and Test",
+    "arxiv": "2610.10388",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/RoboQuest__Generalist_Physical_Agents_that_Search_Inspect_and_Test/RoboQuest__Generalist_Physical_Agents_that_Search_Inspect_and_Test.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
+    "folder": "papers/11_Simulation_Benchmark/RoboSteer__Benchmarking_Behavioral_Steerability_in_Behavior_Foundation_Models",
+    "dir": "RoboSteer__Benchmarking_Behavioral_Steerability_in_Behavior_Foundation_Models",
+    "title": "Benchmarking Behavioral Steerability in Behavior Foundation Models",
+    "arxiv": "2610.10198",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/RoboSteer__Benchmarking_Behavioral_Steerability_in_Behavior_Foundation_Models/RoboSteer__Benchmarking_Behavioral_Steerability_in_Behavior_Foundation_Models.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
     "folder": "papers/11_Simulation_Benchmark/SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation",
     "dir": "SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation",
     "title": "SIMPLE: Simulation-Based Policy Learning and Evaluation for Humanoid Loco-manipulation",
     "arxiv": "2606.08278",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation/SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation.html",
+    "category": "11_Simulation_Benchmark"
+  },
+  {
+    "folder": "papers/11_Simulation_Benchmark/ThorArena__Benchmarking_Humanoid_Physical_Interaction_with_Motion-Force_Demonstrations",
+    "dir": "ThorArena__Benchmarking_Humanoid_Physical_Interaction_with_Motion-Force_Demonstrations",
+    "title": "ThorArena: Benchmarking Humanoid Physical Interaction with Human Motion-Force Demonstrations",
+    "arxiv": "2607.06052",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/ThorArena__Benchmarking_Humanoid_Physical_Interaction_with_Motion-Force_Demonstrations/ThorArena__Benchmarking_Humanoid_Physical_Interaction_with_Motion-Force_Demonstrations.html",
     "category": "11_Simulation_Benchmark"
   },
   {
@@ -1949,6 +2741,14 @@
     "title": "Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand",
     "arxiv": "2512.24657",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand.html",
+    "category": "12_Hardware_Design"
+  },
+  {
+    "folder": "papers/12_Hardware_Design/Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Control",
+    "dir": "Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Control",
+    "title": "Berkeley Humanoid: A Research Platform for Learning-based Control",
+    "arxiv": "2407.21781",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Control/Berkeley_Humanoid_A_Research_Platform_for_Learning-based_Control.html",
     "category": "12_Hardware_Design"
   },
   {
@@ -1976,6 +2776,30 @@
     "category": "12_Hardware_Design"
   },
   {
+    "folder": "papers/12_Hardware_Design/Dual-Cam_Parallel_Elastic_Actuator_with_Shared_Gas-Spring_for_Humanoid_Ankles",
+    "dir": "Dual-Cam_Parallel_Elastic_Actuator_with_Shared_Gas-Spring_for_Humanoid_Ankles",
+    "title": "A Dual-Cam Parallel Elastic Actuator with Shared Gas-Spring Compensation for Humanoid Ankles",
+    "arxiv": "2608.30832",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Dual-Cam_Parallel_Elastic_Actuator_with_Shared_Gas-Spring_for_Humanoid_Ankles/Dual-Cam_Parallel_Elastic_Actuator_with_Shared_Gas-Spring_for_Humanoid_Ankles.html",
+    "category": "12_Hardware_Design"
+  },
+  {
+    "folder": "papers/12_Hardware_Design/EA-CoRL_Evolutionary_Continuous_Adaptive_RL_Co-Design_for_Humanoid_Chin-Up",
+    "dir": "EA-CoRL_Evolutionary_Continuous_Adaptive_RL_Co-Design_for_Humanoid_Chin-Up",
+    "title": "Evolutionary Continuous Adaptive RL-Powered Co-Design for Humanoid Chin-Up Performance",
+    "arxiv": "2509.26082",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/EA-CoRL_Evolutionary_Continuous_Adaptive_RL_Co-Design_for_Humanoid_Chin-Up/EA-CoRL_Evolutionary_Continuous_Adaptive_RL_Co-Design_for_Humanoid_Chin-Up.html",
+    "category": "12_Hardware_Design"
+  },
+  {
+    "folder": "papers/12_Hardware_Design/Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Embodied_Humanoid_Robot",
+    "dir": "Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Embodied_Humanoid_Robot",
+    "title": "Embracing Evolution: A Call for Body-Control Co-Design in Embodied Humanoid Robot",
+    "arxiv": "2510.03081",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Embodied_Humanoid_Robot/Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Embodied_Humanoid_Robot.html",
+    "category": "12_Hardware_Design"
+  },
+  {
     "folder": "papers/12_Hardware_Design/Fauna_Sprout_A_lightweight_approachable_developer-ready_humanoid_robot",
     "dir": "Fauna_Sprout_A_lightweight_approachable_developer-ready_humanoid_robot",
     "title": "Fauna Sprout: A lightweight, approachable, developer-ready humanoid robot",
@@ -1984,11 +2808,43 @@
     "category": "12_Hardware_Design"
   },
   {
+    "folder": "papers/12_Hardware_Design/Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots",
+    "dir": "Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots",
+    "title": "A Framework for Optimal Ankle Design of Humanoid Robots",
+    "arxiv": "2509.16469",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots/Framework_for_Optimal_Ankle_Design_of_Humanoid_Robots.html",
+    "category": "12_Hardware_Design"
+  },
+  {
+    "folder": "papers/12_Hardware_Design/Handroid__Bridging_Dexterous_Hand_and_Humanoid",
+    "dir": "Handroid__Bridging_Dexterous_Hand_and_Humanoid",
+    "title": "Handroid: Bridging Dexterous Hand and Humanoid",
+    "arxiv": "2607.16187",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Handroid__Bridging_Dexterous_Hand_and_Humanoid/Handroid__Bridging_Dexterous_Hand_and_Humanoid.html",
+    "category": "12_Hardware_Design"
+  },
+  {
     "folder": "papers/12_Hardware_Design/Human-Level_Actuation_for_Humanoids",
     "dir": "Human-Level_Actuation_for_Humanoids",
     "title": "Human-Level Actuation for Humanoids",
     "arxiv": "2511.06796",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Human-Level_Actuation_for_Humanoids/Human-Level_Actuation_for_Humanoids.html",
+    "category": "12_Hardware_Design"
+  },
+  {
+    "folder": "papers/12_Hardware_Design/MCR-Bionic_Hand__Anatomical_Structural_Priors_for_Dexterous_Manipulation",
+    "dir": "MCR-Bionic_Hand__Anatomical_Structural_Priors_for_Dexterous_Manipulation",
+    "title": "MCR-Bionic Hand: Anatomical Structural Priors for Dexterous Manipulation",
+    "arxiv": "2606.13601",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/MCR-Bionic_Hand__Anatomical_Structural_Priors_for_Dexterous_Manipulation/MCR-Bionic_Hand__Anatomical_Structural_Priors_for_Dexterous_Manipulation.html",
+    "category": "12_Hardware_Design"
+  },
+  {
+    "folder": "papers/12_Hardware_Design/MIDAS_Hand__Modular_low-Impedance_Direct-drive_Anthropomorphic_Sensing_Hand",
+    "dir": "MIDAS_Hand__Modular_low-Impedance_Direct-drive_Anthropomorphic_Sensing_Hand",
+    "title": "MIDAS Hand: Modular low-Impedance Direct-drive Anthropomorphic Sensing Hand",
+    "arxiv": "2607.14487",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/MIDAS_Hand__Modular_low-Impedance_Direct-drive_Anthropomorphic_Sensing_Hand/MIDAS_Hand__Modular_low-Impedance_Direct-drive_Anthropomorphic_Sensing_Hand.html",
     "category": "12_Hardware_Design"
   },
   {
@@ -2008,12 +2864,44 @@
     "category": "12_Hardware_Design"
   },
   {
-    "folder": "papers/12_Hardware_Design/Unitree_H1_Whitepaper",
-    "dir": "Unitree_H1_Whitepaper",
-    "title": "Unitree H1 Humanoid Robot Whitepaper & Specifications",
-    "arxiv": null,
-    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Unitree_H1_Whitepaper/Unitree_H1_Whitepaper.html",
+    "folder": "papers/12_Hardware_Design/PHD-Hand__Printable_Humanoid_Dexterous_Hand_with_Linkage-Driven_3-DOA_Digits",
+    "dir": "PHD-Hand__Printable_Humanoid_Dexterous_Hand_with_Linkage-Driven_3-DOA_Digits",
+    "title": "PHD-Hand: A Printable Humanoid Dexterous Hand with Linkage-Driven 3-DOA Digits",
+    "arxiv": "2610.29030",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/PHD-Hand__Printable_Humanoid_Dexterous_Hand_with_Linkage-Driven_3-DOA_Digits/PHD-Hand__Printable_Humanoid_Dexterous_Hand_with_Linkage-Driven_3-DOA_Digits.html",
     "category": "12_Hardware_Design"
+  },
+  {
+    "folder": "papers/12_Hardware_Design/PhoneBot__A_Low-Cost_Open_Humanoid_Robot_Platform_Reusing_Smartphones",
+    "dir": "PhoneBot__A_Low-Cost_Open_Humanoid_Robot_Platform_Reusing_Smartphones",
+    "title": "PhoneBot: A Low-Cost Open Humanoid Robot Platform Reusing Smartphones",
+    "arxiv": "2610.08737",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/PhoneBot__A_Low-Cost_Open_Humanoid_Robot_Platform_Reusing_Smartphones/PhoneBot__A_Low-Cost_Open_Humanoid_Robot_Platform_Reusing_Smartphones.html",
+    "category": "12_Hardware_Design"
+  },
+  {
+    "folder": "papers/12_Hardware_Design/RoboCraft_Humanoid_Brain-Body_Co-design_for_Fall_Recovery",
+    "dir": "RoboCraft_Humanoid_Brain-Body_Co-design_for_Fall_Recovery",
+    "title": "Toward Humanoid Brain-Body Co-design: Joint Optimization of Control and Morphology for Fall Recovery",
+    "arxiv": "2510.22336",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/RoboCraft_Humanoid_Brain-Body_Co-design_for_Fall_Recovery/RoboCraft_Humanoid_Brain-Body_Co-design_for_Fall_Recovery.html",
+    "category": "12_Hardware_Design"
+  },
+  {
+    "folder": "papers/12_Hardware_Design/ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_Loco-Manipulation",
+    "dir": "ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_Loco-Manipulation",
+    "title": "ToddlerBot: Open-Source ML-Compatible Humanoid Platform for Loco-Manipulation",
+    "arxiv": "2502.00893",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_Loco-Manipulation/ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_Loco-Manipulation.html",
+    "category": "12_Hardware_Design"
+  },
+  {
+    "folder": "papers/13_Physics-Based_Animation/BFMTrack__Latent_Sequence_Optimization_for_Physics-Based_Motion_Tracking",
+    "dir": "BFMTrack__Latent_Sequence_Optimization_for_Physics-Based_Motion_Tracking",
+    "title": "BFMTrack: Latent Sequence Optimization for Physics-Based Motion Tracking with Behavioral Foundation Models",
+    "arxiv": "2606.25056",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/BFMTrack__Latent_Sequence_Optimization_for_Physics-Based_Motion_Tracking/BFMTrack__Latent_Sequence_Optimization_for_Physics-Based_Motion_Tracking.html",
+    "category": "13_Physics-Based_Animation"
   },
   {
     "folder": "papers/13_Physics-Based_Animation/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit",
@@ -2021,6 +2909,38 @@
     "title": "CRISP: Contact-Guided Real2Sim from Monocular Video with Planar Scene Primitives",
     "arxiv": "2512.14696",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit.html",
+    "category": "13_Physics-Based_Animation"
+  },
+  {
+    "folder": "papers/13_Physics-Based_Animation/DIGHT__Physics-Grounded_Post-Training_of_Interaction_Generators",
+    "dir": "DIGHT__Physics-Grounded_Post-Training_of_Interaction_Generators",
+    "title": "From Digital Human Interactions to Physics-Based Humanoid Skills: Physics-Grounded Post-Training of Interaction Generators",
+    "arxiv": "2610.10322",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/DIGHT__Physics-Grounded_Post-Training_of_Interaction_Generators/DIGHT__Physics-Grounded_Post-Training_of_Interaction_Generators.html",
+    "category": "13_Physics-Based_Animation"
+  },
+  {
+    "folder": "papers/13_Physics-Based_Animation/FARM__Frame-Accelerated_Augmentation_and_Residual_MoE_for_High-Dynamic_Humanoid",
+    "dir": "FARM__Frame-Accelerated_Augmentation_and_Residual_MoE_for_High-Dynamic_Humanoid",
+    "title": "FARM: Frame-Accelerated Augmentation and Residual Mixture-of-Experts for Physics-Based High-Dynamic Humanoid Control",
+    "arxiv": "2508.19926",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/FARM__Frame-Accelerated_Augmentation_and_Residual_MoE_for_High-Dynamic_Humanoid/FARM__Frame-Accelerated_Augmentation_and_Residual_MoE_for_High-Dynamic_Humanoid.html",
+    "category": "13_Physics-Based_Animation"
+  },
+  {
+    "folder": "papers/13_Physics-Based_Animation/Feature-Based_vs_GAN-Based_Learning_from_Demonstrations__When_and_Why",
+    "dir": "Feature-Based_vs_GAN-Based_Learning_from_Demonstrations__When_and_Why",
+    "title": "Feature-Based vs. GAN-Based Learning from Demonstrations: When and Why",
+    "arxiv": "2507.05906",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Feature-Based_vs_GAN-Based_Learning_from_Demonstrations__When_and_Why/Feature-Based_vs_GAN-Based_Learning_from_Demonstrations__When_and_Why.html",
+    "category": "13_Physics-Based_Animation"
+  },
+  {
+    "folder": "papers/13_Physics-Based_Animation/Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rigid_Body_Dynamics",
+    "dir": "Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rigid_Body_Dynamics",
+    "title": "Humanoid Robot Acrobatics Utilizing Complete Articulated Rigid Body Dynamics",
+    "arxiv": "2508.08258",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rigid_Body_Dynamics/Humanoid_Robot_Acrobatics_Utilizing_Complete_Articulated_Rigid_Body_Dynamics.html",
     "category": "13_Physics-Based_Animation"
   },
   {
@@ -2040,6 +2960,14 @@
     "category": "13_Physics-Based_Animation"
   },
   {
+    "folder": "papers/13_Physics-Based_Animation/Lambda-Hold_Control__Human-Like_Movement_from_Minimal_Task_Reward",
+    "dir": "Lambda-Hold_Control__Human-Like_Movement_from_Minimal_Task_Reward",
+    "title": "Lambda-Hold Control: Human-Like Movement Emerges from a Minimal Task Reward in Predictive Musculoskeletal Simulation",
+    "arxiv": "2608.17030",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Lambda-Hold_Control__Human-Like_Movement_from_Minimal_Task_Reward/Lambda-Hold_Control__Human-Like_Movement_from_Minimal_Task_Reward.html",
+    "category": "13_Physics-Based_Animation"
+  },
+  {
     "folder": "papers/13_Physics-Based_Animation/Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves",
     "dir": "Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves",
     "title": "Learning to Ball: Composing Policies for Long-Horizon Basketball Moves",
@@ -2056,19 +2984,27 @@
     "category": "13_Physics-Based_Animation"
   },
   {
-    "folder": "papers/13_Physics-Based_Animation/MotionVAE",
-    "dir": "MotionVAE",
-    "title": "Character Controllers using Motion VAEs",
-    "arxiv": "2103.14274",
-    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/MotionVAE/MotionVAE.html",
-    "category": "13_Physics-Based_Animation"
-  },
-  {
     "folder": "papers/13_Physics-Based_Animation/PhysHMR__Learning_Humanoid_Control_Policies_from_Vision_for_Physical_HMR",
     "dir": "PhysHMR__Learning_Humanoid_Control_Policies_from_Vision_for_Physical_HMR",
     "title": "PhysHMR: Learning Humanoid Control Policies from Vision for Physically Plausible Human Motion Reconstruction",
     "arxiv": "2510.02566",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/PhysHMR__Learning_Humanoid_Control_Policies_from_Vision_for_Physical_HMR/PhysHMR__Learning_Humanoid_Control_Policies_from_Vision_for_Physical_HMR.html",
+    "category": "13_Physics-Based_Animation"
+  },
+  {
+    "folder": "papers/13_Physics-Based_Animation/PhysibleMDM__Inference-Time_Physical_Feasibility_Constraints_on_Motion_Diffusion_Models",
+    "dir": "PhysibleMDM__Inference-Time_Physical_Feasibility_Constraints_on_Motion_Diffusion_Models",
+    "title": "PhysibleMDM: Enforcing Inference-Time Physical Feasibility Constraints on Motion Diffusion Models via Noise Optimization",
+    "arxiv": "2610.30500",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/PhysibleMDM__Inference-Time_Physical_Feasibility_Constraints_on_Motion_Diffusion_Models/PhysibleMDM__Inference-Time_Physical_Feasibility_Constraints_on_Motion_Diffusion_Models.html",
+    "category": "13_Physics-Based_Animation"
+  },
+  {
+    "folder": "papers/13_Physics-Based_Animation/RLPF__RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with_Humanoid_Control",
+    "dir": "RLPF__RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with_Humanoid_Control",
+    "title": "RL from Physical Feedback: Aligning Large Motion Models with Humanoid Control",
+    "arxiv": "2506.12769",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/RLPF__RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with_Humanoid_Control/RLPF__RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with_Humanoid_Control.html",
     "category": "13_Physics-Based_Animation"
   },
   {
@@ -2080,12 +3016,44 @@
     "category": "13_Physics-Based_Animation"
   },
   {
+    "folder": "papers/13_Physics-Based_Animation/SLMP__Spherical_Latent_Motion_Prior_for_Physics-Based_Humanoid_Control",
+    "dir": "SLMP__Spherical_Latent_Motion_Prior_for_Physics-Based_Humanoid_Control",
+    "title": "Spherical Latent Motion Prior for Physics-Based Simulated Humanoid Control",
+    "arxiv": "2603.01294",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/SLMP__Spherical_Latent_Motion_Prior_for_Physics-Based_Humanoid_Control/SLMP__Spherical_Latent_Motion_Prior_for_Physics-Based_Humanoid_Control.html",
+    "category": "13_Physics-Based_Animation"
+  },
+  {
+    "folder": "papers/13_Physics-Based_Animation/SimGenHOI__Physically_Realistic_Whole-Body_Humanoid-Object_Interaction",
+    "dir": "SimGenHOI__Physically_Realistic_Whole-Body_Humanoid-Object_Interaction",
+    "title": "SimGenHOI: Physically Realistic Whole-Body Humanoid-Object Interaction via Generative Modeling and Reinforcement Learning",
+    "arxiv": "2508.14120",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/SimGenHOI__Physically_Realistic_Whole-Body_Humanoid-Object_Interaction/SimGenHOI__Physically_Realistic_Whole-Body_Humanoid-Object_Interaction.html",
+    "category": "13_Physics-Based_Animation"
+  },
+  {
     "folder": "papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation",
     "dir": "Spatial_Relationship_Preserving_Character_Motion_Adaptation",
     "title": "Spatial Relationship Preserving Character Motion Adaptation",
     "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Spatial_Relationship_Preserving_Character_Motion_Adaptation/Spatial_Relationship_Preserving_Character_Motion_Adaptation.html",
     "category": "13_Physics-Based_Animation"
+  },
+  {
+    "folder": "papers/14_Human_Motion/ARDY__Autoregressive_Diffusion_with_Hybrid_Representation_for_Interactive_Human_Motion",
+    "dir": "ARDY__Autoregressive_Diffusion_with_Hybrid_Representation_for_Interactive_Human_Motion",
+    "title": "ARDY: Autoregressive Diffusion with Hybrid Representation for Interactive Human Motion Generation",
+    "arxiv": "2607.08741",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/ARDY__Autoregressive_Diffusion_with_Hybrid_Representation_for_Interactive_Human_Motion/ARDY__Autoregressive_Diffusion_with_Hybrid_Representation_for_Interactive_Human_Motion.html",
+    "category": "14_Human_Motion"
+  },
+  {
+    "folder": "papers/14_Human_Motion/AnchorRoute__Human_Motion_Synthesis_with_Interval-Routed_Sparse_Control",
+    "dir": "AnchorRoute__Human_Motion_Synthesis_with_Interval-Routed_Sparse_Control",
+    "title": "AnchorRoute: Human Motion Synthesis with Interval-Routed Sparse Control",
+    "arxiv": "2605.14716",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/AnchorRoute__Human_Motion_Synthesis_with_Interval-Routed_Sparse_Control/AnchorRoute__Human_Motion_Synthesis_with_Interval-Routed_Sparse_Control.html",
+    "category": "14_Human_Motion"
   },
   {
     "folder": "papers/14_Human_Motion/AvatarPoser__Articulated_Full-Body_Pose_Tracking_from_Sparse_Motion_Sensing",
@@ -2210,7 +3178,7 @@
   {
     "folder": "papers/14_Human_Motion/HumanML3D",
     "dir": "HumanML3D",
-    "title": "Generating Diverse and Natural 3D Human Motions from Textual Descriptions",
+    "title": "Generating Diverse and Natural 3D Human Motions from Text",
     "arxiv": null,
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html",
     "category": "14_Human_Motion"
@@ -2256,6 +3224,30 @@
     "category": "14_Human_Motion"
   },
   {
+    "folder": "papers/14_Human_Motion/MoGeFlow__Flowing_Through_Motion_Codebook_Geometry_for_Text-to-Motion_Generation",
+    "dir": "MoGeFlow__Flowing_Through_Motion_Codebook_Geometry_for_Text-to-Motion_Generation",
+    "title": "MoGeFlow: Flowing Through Motion Codebook Geometry for Text-to-Motion Generation",
+    "arxiv": "2606.11656",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/MoGeFlow__Flowing_Through_Motion_Codebook_Geometry_for_Text-to-Motion_Generation/MoGeFlow__Flowing_Through_Motion_Codebook_Geometry_for_Text-to-Motion_Generation.html",
+    "category": "14_Human_Motion"
+  },
+  {
+    "folder": "papers/14_Human_Motion/MoVT__Video-Augmented_Motion_Tokenizer_for_Text-to-Motion_Generation",
+    "dir": "MoVT__Video-Augmented_Motion_Tokenizer_for_Text-to-Motion_Generation",
+    "title": "MoVT: Video-Augmented Motion Tokenizer for Text-to-Motion Generation",
+    "arxiv": "2609.14965",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/MoVT__Video-Augmented_Motion_Tokenizer_for_Text-to-Motion_Generation/MoVT__Video-Augmented_Motion_Tokenizer_for_Text-to-Motion_Generation.html",
+    "category": "14_Human_Motion"
+  },
+  {
+    "folder": "papers/14_Human_Motion/OmniControl__Control_Any_Joint_at_Any_Time_for_Human_Motion_Generation",
+    "dir": "OmniControl__Control_Any_Joint_at_Any_Time_for_Human_Motion_Generation",
+    "title": "OmniControl: Control Any Joint at Any Time for Human Motion Generation",
+    "arxiv": "2310.08580",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/OmniControl__Control_Any_Joint_at_Any_Time_for_Human_Motion_Generation/OmniControl__Control_Any_Joint_at_Any_Time_for_Human_Motion_Generation.html",
+    "category": "14_Human_Motion"
+  },
+  {
     "folder": "papers/14_Human_Motion/PICO__Reconstructing_3D_People_In_Contact_with_Objects",
     "dir": "PICO__Reconstructing_3D_People_In_Contact_with_Objects",
     "title": "PICO: Reconstructing 3D People In Contact with Objects",
@@ -2296,11 +3288,35 @@
     "category": "14_Human_Motion"
   },
   {
+    "folder": "papers/14_Human_Motion/TRACE__Typed_Reference-Aware_Conversational_Editing_for_Humanoid_Motion_Diffusion",
+    "dir": "TRACE__Typed_Reference-Aware_Conversational_Editing_for_Humanoid_Motion_Diffusion",
+    "title": "TRACE: Typed Reference-Aware Conversational Editing for Humanoid Motion Diffusion",
+    "arxiv": "2610.21515",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/TRACE__Typed_Reference-Aware_Conversational_Editing_for_Humanoid_Motion_Diffusion/TRACE__Typed_Reference-Aware_Conversational_Editing_for_Humanoid_Motion_Diffusion.html",
+    "category": "14_Human_Motion"
+  },
+  {
     "folder": "papers/14_Human_Motion/Taming_Diffusion_Probabilistic_Models_for_Character_Control",
     "dir": "Taming_Diffusion_Probabilistic_Models_for_Character_Control",
     "title": "Taming Diffusion Probabilistic Models for Character Control",
     "arxiv": "2404.15121",
     "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Taming_Diffusion_Probabilistic_Models_for_Character_Control/Taming_Diffusion_Probabilistic_Models_for_Character_Control.html",
+    "category": "14_Human_Motion"
+  },
+  {
+    "folder": "papers/14_Human_Motion/TimelineControl__Streaming_Multi-Track_Timeline_Control_for_3D_Human_Motion",
+    "dir": "TimelineControl__Streaming_Multi-Track_Timeline_Control_for_3D_Human_Motion",
+    "title": "Streaming Multi-Track Timeline Control for 3D Human Motion Generation",
+    "arxiv": "2610.03873",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/TimelineControl__Streaming_Multi-Track_Timeline_Control_for_3D_Human_Motion/TimelineControl__Streaming_Multi-Track_Timeline_Control_for_3D_Human_Motion.html",
+    "category": "14_Human_Motion"
+  },
+  {
+    "folder": "papers/14_Human_Motion/UniMoFlow__Grounding_Instruction-Driven_3D_Human_Motion_Editing_in_Generation",
+    "dir": "UniMoFlow__Grounding_Instruction-Driven_3D_Human_Motion_Editing_in_Generation",
+    "title": "UniMoFlow: Grounding Instruction-Driven 3D Human Motion Editing in Generation",
+    "arxiv": "2608.09143",
+    "url": "https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/UniMoFlow__Grounding_Instruction-Driven_3D_Human_Motion_Editing_in_Generation/UniMoFlow__Grounding_Instruction-Driven_3D_Human_Motion_Editing_in_Generation.html",
     "category": "14_Human_Motion"
   },
   {

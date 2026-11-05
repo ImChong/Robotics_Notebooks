@@ -86,4 +86,5 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Feature-Based vs. GAN-Based Learning from Demonstrations](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Feature-Based_vs_GAN-Based_Learning_from_Demonstrations__When_and_Why/Feature-Based_vs_GAN-Based_Learning_from_Demonstrations__When_and_Why.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

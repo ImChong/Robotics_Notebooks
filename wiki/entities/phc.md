@@ -137,6 +137,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：BFM-Zero](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/BFM-Zero__A_Promptable_Behavioral_Foundation_Model_for_Humanoid_Control/BFM-Zero__A_Promptable_Behavioral_Foundation_Model_for_Humanoid_Control.html)
 - [机器人论文阅读笔记：PHC](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PHC_Perpetual_Humanoid_Control/PHC_Perpetual_Humanoid_Control.html)
 - 重定向文档：<https://github.com/ZhengyiLuo/PHC/blob/master/docs/retargeting.md>
 - 项目页：<https://www.zhengyiluo.com/PHC-Site/>
