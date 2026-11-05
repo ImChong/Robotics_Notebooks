@@ -81,4 +81,5 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Embracing Evolution](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Embodied_Humanoid_Robot/Embracing_Evolution_A_Call_for_Body-Control_Co-Design_in_Embodied_Humanoid_Robot.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

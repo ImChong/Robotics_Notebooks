@@ -180,5 +180,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：CHILD](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/CHILD__a_Whole-Body_Humanoid_Teleoperation_System/CHILD__a_Whole-Body_Humanoid_Teleoperation_System.html)
 - 项目页：<https://uiuckimlab.github.io/CHILD-pages/>
 - 运行说明：<https://github.com/uiuckimlab/CHILD/blob/main/Teleop_Instruction.md>

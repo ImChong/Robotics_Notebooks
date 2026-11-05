@@ -89,4 +89,5 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Evolutionary Continuous Adaptive RL-Powered Co-Design for Humanoid Chin-Up Performance](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/EA-CoRL_Evolutionary_Continuous_Adaptive_RL_Co-Design_for_Humanoid_Chin-Up/EA-CoRL_Evolutionary_Continuous_Adaptive_RL_Co-Design_for_Humanoid_Chin-Up.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

@@ -88,4 +88,5 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Learning to Get Up Across Morphologies](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Get_Up_Across_Morphologies__Zero-Shot_Recovery_with_a_Unified_Humanoid_Policy/Learning_to_Get_Up_Across_Morphologies__Zero-Shot_Recovery_with_a_Unified_Humanoid_Policy.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

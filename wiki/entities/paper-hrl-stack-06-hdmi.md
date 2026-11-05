@@ -234,6 +234,7 @@ HDMI 在关联页面里主要与三条 HOI 路线对照：同样从人类视频�
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：HDMI](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HDMI__Learning_Interactive_Humanoid_Whole-Body_Control_from_Human_Videos/HDMI__Learning_Interactive_Humanoid_Whole-Body_Control_from_Human_Videos.html)
 - [HDMI 项目页](https://hdmi-humanoid.github.io)
 - [HDMI 官方 GitHub](https://github.com/LeCAR-Lab/HDMI)
 - [arXiv HTML](https://arxiv.org/html/2509.16757v3)

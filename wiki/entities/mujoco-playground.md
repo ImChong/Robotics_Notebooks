@@ -82,4 +82,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：MuJoCo Playground](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/MuJoCo_Playground__An_Open-Source_Framework_for_GPU-Accelerated_Robot_Learning/MuJoCo_Playground__An_Open-Source_Framework_for_GPU-Accelerated_Robot_Learning.html)
 - [playground.mujoco.org](https://playground.mujoco.org/) — 官方项目页与任务浏览

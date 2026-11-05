@@ -177,6 +177,7 @@ H0.8 项目页写明沿用 H0.7 的先验–后验结构、以 TopoHand 替代 H
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：RL from Physical Feedback](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/RLPF__RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with_Humanoid_Control/RLPF__RL_from_Physical_Feedback_Aligning_Large_Motion_Models_with_Humanoid_Control.html)
 - [BeingBeyond Research](https://research.beingbeyond.com/) — 26 条研究的项目页
 - [Being-H0.8 项目页](https://research.beingbeyond.com/being-h08) — 触觉潜空间 WAM 全文
 - [BeingBeyond GitHub](https://github.com/BeingBeyond) · [Hugging Face](https://huggingface.co/BeingBeyond)

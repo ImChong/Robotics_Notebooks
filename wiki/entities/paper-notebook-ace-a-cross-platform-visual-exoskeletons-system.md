@@ -176,5 +176,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：ACE](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/ACE__A_Cross-Platform_Visual-Exoskeletons_System_for_Low-Cost_Dexterous_Teleoperation/ACE__A_Cross-Platform_Visual-Exoskeletons_System_for_Low-Cost_Dexterous_Teleoperation.html)
 - 项目页：<https://ace-teleop.github.io/>
 - 硬件装配：<https://github.com/ACETeleop/ACE_hardware>

@@ -123,5 +123,6 @@ HumanoidPose 与 BeyondRetarget 都处理视频和人形动作，但问题设置
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Vision as Proprioception](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Vision_as_Proprioception__Estimating_Humanoid_Robot_Pose_from_Video/Vision_as_Proprioception__Estimating_Humanoid_Robot_Pose_from_Video.html)
 - [HumanoidPose 官方项目页](https://siplab.org/projects/HumanoidPose)
 - [HumanoidPose 论文](https://arxiv.org/abs/2610.25288)

@@ -119,6 +119,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：FRoM-W1](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/FRoM-W1__Towards_General_Humanoid_Whole-Body_Control_with_Language_Instructions/FRoM-W1__Towards_General_Humanoid_Whole-Body_Control_with_Language_Instructions.html)
 - [FRoM-W1 论文](https://arxiv.org/abs/2601.12799)
 - [FRoM-W1 官方项目页](https://openmoss.github.io/FRoM-W1/)
 - [FRoM-W1 官方快速开始](https://github.com/OpenMOSS/FRoM-W1/blob/main/QUICKSTART.md)

@@ -110,5 +110,12 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：PhysibleMDM](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/PhysibleMDM__Inference-Time_Physical_Feasibility_Constraints_on_Motion_Diffusion_Models/PhysibleMDM__Inference-Time_Physical_Feasibility_Constraints_on_Motion_Diffusion_Models.html)
+- [机器人论文阅读笔记：PHD-Hand](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/PHD-Hand__Printable_Humanoid_Dexterous_Hand_with_Linkage-Driven_3-DOA_Digits/PHD-Hand__Printable_Humanoid_Dexterous_Hand_with_Linkage-Driven_3-DOA_Digits.html)
+- [机器人论文阅读笔记：Adaptive Traversal Tubes for Posture-Aware Navigation of Bipedal Humanoids](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/Adaptive_Traversal_Tubes_for_Posture-Aware_Navigation_of_Bipedal_Humanoids/Adaptive_Traversal_Tubes_for_Posture-Aware_Navigation_of_Bipedal_Humanoids.html)
+- [机器人论文阅读笔记：HuMiT](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/HuMiT__Low-Latency_Whole-Body_Humanoid_Teleoperation_via_Compact_Reference_Tracking/HuMiT__Low-Latency_Whole-Body_Humanoid_Teleoperation_via_Compact_Reference_Tracking.html)
+- [机器人论文阅读笔记：EmbodyHOI](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EmbodyHOI__Embodiment-Aware_Generation_of_Hand-Object_Interactions_for_Humanoid_Dexterous_Manipulation/EmbodyHOI__Embodiment-Aware_Generation_of_Hand-Object_Interactions_for_Humanoid_Dexterous_Manipulation.html)
+- [机器人论文阅读笔记：Humanoid Mobility via Attention-based Contacts](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Humanoid_Mobility_via_Attention-based_Contacts/Humanoid_Mobility_via_Attention-based_Contacts.html)
+- [机器人论文阅读笔记：SuperMimic](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SuperMimic__Scaling_Humanoid_Whole-Body_Control_with_One_Differentiable_World_Model/SuperMimic__Scaling_Humanoid_Whole-Body_Control_with_One_Differentiable_World_Model.html)
 - [STAMP 官方项目页](https://childtoy.github.io/STAMP-project/)
 - [arXiv 论文（v2）](https://arxiv.org/abs/2610.30817)

@@ -101,6 +101,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：HEFT](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/HEFT__Heavy-Payload_Full-size_Humanoid_Teleoperation_with_Privileged_Motion_Guidance/HEFT__Heavy-Payload_Full-size_Humanoid_Teleoperation_with_Privileged_Motion_Guidance.html)
 - [GitHub 仓库](https://github.com/Axellwppr/motion_tracking)
 - [HEFT 项目页](https://heft.axell.top/)
 - [修改版 GMR 导出器](https://github.com/Axellwppr/GMR)

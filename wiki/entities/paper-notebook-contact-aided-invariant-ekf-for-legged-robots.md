@@ -121,6 +121,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Contact-Aided Invariant Extended Kalman Filtering for Robot State Estimation](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Contact-Aided_Invariant_EKF_for_Legged_Robots/Contact-Aided_Invariant_EKF_for_Legged_Robots.html)
 - [arXiv:1805.10410](https://arxiv.org/abs/1805.10410)
 - [arXiv:1904.09251](https://arxiv.org/abs/1904.09251)（相关版本）
 - [HMI P074](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E8%AE%BA%E6%96%87%E9%80%90%E7%AF%87%E8%A7%A3%E8%AF%BB/P074.md)

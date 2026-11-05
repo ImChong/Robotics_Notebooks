@@ -56,4 +56,5 @@ summary: "Kimera 是 MIT SPARK 语义 SLAM 套件：Kimera-VIO、Kimera-RPGO、K
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Kimera](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Kimera__Open-Source_Library_for_Real-Time_Metric-Semantic_Localization_and_Mapping/Kimera__Open-Source_Library_for_Real-Time_Metric-Semantic_Localization_and_Mapping.html)
 - https://arxiv.org/abs/1910.02490

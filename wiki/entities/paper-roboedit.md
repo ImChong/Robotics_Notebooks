@@ -167,5 +167,6 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：RoboEdit](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/RoboEdit__Turning_Human_Manipulation_Videos_into_Scalable_Robot_Experience/RoboEdit__Turning_Human_Manipulation_Videos_into_Scalable_Robot_Experience.html)
 - [arXiv:2608.18948 全文 PDF](https://arxiv.org/pdf/2608.18948) — RoboEdit-ADC/Trans 细节与 Appendix B decoder
 - [NovaEdit（arXiv 引用）](https://arxiv.org/abs/2506.07120) — RoboEdit-Trans 架构基底

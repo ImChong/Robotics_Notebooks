@@ -95,4 +95,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Do You Have Freestyle? Expressive Humanoid Locomotion via Audio Control](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Do_You_Have_Freestyle__Expressive_Humanoid_Locomotion_via_Audio_Control/Do_You_Have_Freestyle__Expressive_Humanoid_Locomotion_via_Audio_Control.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

@@ -146,6 +146,7 @@ Thor 在「为什么重要」里把自己与柔顺方向的 GentleHumanoid、CHI
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Thor](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Thor__Towards_Human-Inspired_Whole-Body_Reactions_for_Intense_Contact-Rich_Environments/Thor__Towards_Human-Inspired_Whole-Body_Reactions_for_Intense_Contact-Rich_Environments.html)
 - [Thor 项目页](https://baai-aether.github.io/baai-thor/)
 - [FALCON](./paper-loco-manip-161-109-falcon.md)
 - [CHIP](./paper-hrl-stack-36-chip.md)

@@ -107,6 +107,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：PRIMO](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/PRIMO__Prior-Informed_Odometry_from_Human-Motion_Tracking_for_Humanoid_Robots/PRIMO__Prior-Informed_Odometry_from_Human-Motion_Tracking_for_Humanoid_Robots.html)
 - [arXiv PDF](https://arxiv.org/pdf/2609.24563)
 - [项目页](https://boweili666.github.io/ARSTAG/)
 - [https://github.com/boweili666/ARSTAG](https://github.com/boweili666/ARSTAG)

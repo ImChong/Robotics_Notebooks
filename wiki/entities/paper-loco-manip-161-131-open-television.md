@@ -96,6 +96,7 @@ Open-TeleVision 主要解决数据闭环：用相机图像/多视角观测、本
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Open-TeleVision](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Open-TeleVision__Teleoperation_with_Immersive_Active_Visual_Feedback/Open-TeleVision__Teleoperation_with_Immersive_Active_Visual_Feedback.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 - [XRoboToolkit（论文实体）](./paper-xrobotoolkit.md) — OpenXR 跨平台套件与延迟表
 - [Immersive Social VR+LLM](./paper-immersive-social-vr-llm-humanoids.md) — AVP + LLM 语音腿控 + 双向音频社交（未开源）

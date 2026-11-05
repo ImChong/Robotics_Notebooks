@@ -199,6 +199,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：HumanoidMimicGen](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/HumanoidMimicGen__Data_Generation_for_Loco-Manipulation_via_Whole-Body_Planning/HumanoidMimicGen__Data_Generation_for_Loco-Manipulation_via_Whole-Body_Planning.html)
 - 项目页：<https://humanoidmimicgen.github.io/>
 - MimicGen：<https://arxiv.org/abs/2310.17595>
 - Homie：<https://homietele.github.io/>

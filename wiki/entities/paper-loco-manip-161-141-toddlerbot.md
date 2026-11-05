@@ -88,5 +88,6 @@ ToddlerBot 主要解决数据闭环：用本体状态与关节序列、遥操作
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：ToddlerBot](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_Loco-Manipulation/ToddlerBot_Open-Source_ML-Compatible_Humanoid_Platform_for_Loco-Manipulation.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 - 同题深读/既有实体：[paper-loco-manip-161-141-toddlerbot](../entities/paper-loco-manip-161-141-toddlerbot.md)

@@ -67,4 +67,5 @@ Learning to Grasp Anything by Playing with Random Toys 的人形机器人学习�
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Learning to Grasp Anything by Playing with Random Toys](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/LEGO__Learning_to_Grasp_Anything_by_Playing_with_Random_Toys/LEGO__Learning_to_Grasp_Anything_by_Playing_with_Random_Toys.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

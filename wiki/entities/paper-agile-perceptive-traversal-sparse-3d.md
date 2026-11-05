@@ -207,6 +207,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：AME-2](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/AME-2__Agile_and_Generalized_Legged_Locomotion_via_Attention-Based_Neural_Map_Encoding/AME-2__Agile_and_Generalized_Legged_Locomotion_via_Attention-Based_Neural_Map_Encoding.html)
 - [arXiv:2608.29769 PDF](https://arxiv.org/pdf/2608.29769) — Table I–V 与电池/热/E1R 噪声节
 - [项目页](https://nemantor.github.io/sparse-3d-traversal-website/) — 真机视频与 LiDAR 注意力可视化
 - [AME-2 前作 arXiv:2601.08485](https://arxiv.org/abs/2601.08485) — 注意力地图编码器

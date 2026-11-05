@@ -187,6 +187,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：DA-Nav](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/DA-Nav__Direction-Aware_City-Scale_Vision-Language_Navigation/DA-Nav__Direction-Aware_City-Scale_Vision-Language_Navigation.html)
 - Yuan et al., *DA-Nav: Direction-Aware City-Scale Vision-Language Navigation* — [arXiv:2607.11638](https://arxiv.org/abs/2607.11638)
 - Cheng et al., *NaVILA: Legged Robot Vision-Language-Action Model for Navigation* — RSS 2025（文中主要 VLA 基线）
 - Liu et al., *CityWalker: Learning Embodied Urban Navigation from Web-Scale Videos* — CVPR 2025（连续 waypoint 对照）

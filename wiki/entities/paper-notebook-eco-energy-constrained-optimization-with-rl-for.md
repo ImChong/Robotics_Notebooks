@@ -92,4 +92,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：ECO](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/ECO__Energy-Constrained_Optimization_with_RL_for_Humanoid_Walking/ECO__Energy-Constrained_Optimization_with_RL_for_Humanoid_Walking.html)
 - [机器人论文阅读笔记：ECO Energy Constrained Optimization with RL for Humanoid Walking](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking/ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking.html)

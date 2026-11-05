@@ -100,4 +100,5 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：ARMOR](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/ARMOR__Egocentric_Perception_for_Humanoid_Robot_Collision_Avoidance/ARMOR__Egocentric_Perception_for_Humanoid_Robot_Collision_Avoidance.html)
 - [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

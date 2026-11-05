@@ -174,5 +174,6 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Blind Dexterity](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/Blind_Dexterity__Whole-Body_Humanoid_Manipulation_via_Pure_Proprioception/Blind_Dexterity__Whole-Body_Humanoid_Manipulation_via_Pure_Proprioception.html)
 - [arXiv:2608.29487 PDF](https://arxiv.org/pdf/2608.29487) — 四类任务奖励与滑板/手提箱 Table
 - [项目页](https://aditya.bhatts.org/BlindDexterity/) — 主动搜索行为视频

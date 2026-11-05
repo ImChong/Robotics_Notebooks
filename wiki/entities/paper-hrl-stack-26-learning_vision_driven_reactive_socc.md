@@ -215,6 +215,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_Robots/Learning_Vision-Driven_Reactive_Soccer_Skills_for_Humanoid_Robots.html)
 - [Zenodo 代码包](https://zenodo.org/records/21620490)
 - [人形足球纵深路线](../../roadmap/depth-humanoid-soccer.md)
 - [42 篇 RL 运动控制（微信公众号）](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)

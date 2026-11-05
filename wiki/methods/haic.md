@@ -89,6 +89,7 @@ HAIC 的核心在于如何平滑地从“全知全能”的教师过渡到“仅
 - [HAIC 论文实体](../entities/paper-haic.md) — 论文级页面，包含项目页、开源状态、关键实验与源码运行时序图。
 
 ## 参考来源
+- [机器人论文阅读笔记：HAIC](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model/HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model.html)
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
 - [humanoid_rl_stack_38_haic_humanoid_agile_object_interaction_control_v.md](../../sources/papers/humanoid_rl_stack_38_haic_humanoid_agile_object_interaction_control_v.md)
