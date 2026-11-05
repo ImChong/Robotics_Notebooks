@@ -15,7 +15,7 @@
   var T = {
     many: 0.59, one: 1.9, who: 3.6,
     drop: 5.3, table: 7.72, dnSol: 8.73, under: [9.84, 11.35], hit: 11.77, no: 12.61, out2: 13.8,
-    limit: 14.08, ep8: 15.95, knee: 18.08, range: 18.64, rev: [21.7, 23.09], over: 23.45, cant: 24.47, out3: 25.9,
+    limit: 14.08, ep8: 15.95, knee: 18.08, range: 18.64, neg: 19.12, rev: [21.7, 23.09], over: 23.45, cant: 24.47, out3: 25.9,
     rest: 26.15, pick: 27.03, near: 28.49, move: [27.6, 28.9], small: 29.36, flip: [30.96, 32.3],
     formula: 33.72, ep15: 35.97, jac: 37.1, steps: [38.09, 39.6]
   };
@@ -153,7 +153,7 @@
           /* ── 右栏 ── */
           E.op(g1r, 1 - f(st, T.formula, 0.4));
           E.op(a1.g, fr(st, T.many)); E.op(a2.g, fr(st, T.who));
-          E.op(b1.g, fr(st, T.drop)); E.op(b2.g, fr(st, T.dnSol)); E.op(b3.g, fr(st, T.limit)); E.op(b4.g, fr(st, T.knee)); E.op(b4.parts[1], fr(st, T.range));
+          E.op(b1.g, fr(st, T.drop)); E.op(b2.g, fr(st, T.dnSol)); E.op(b3.g, fr(st, T.limit)); E.op(b4.g, fr(st, T.knee)); E.op(b4.parts[1], fr(st, T.neg)); E.op(b4.parts[2], fr(st, T.neg));
           E.op(b5.g, fr(st, T.rev[0])); E.op(b5.parts[1], fr(st, T.cant));
           E.op(c1.g, fr(st, T.pick)); E.op(c2.g, fr(st, T.small)); E.op(c3.g, fr(st, T.flip[0]));
           E.op(g2r, f(st, T.formula, 0.4));

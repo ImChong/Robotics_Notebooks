@@ -8,6 +8,7 @@
 //    「大臂长度的平方就是五」右栏写；
 // 句 6「一个数乘以它自己等于五」「大约是二点二四」右栏写 2.24 × 2.24 = 5.0176 ≈ 5，「从平方倒推」「叫做开平方」右栏写，「大臂约二点二四格」大臂旁写 2.24 格；
 // 句 7「手停在肩的正前方一格」网格上出目标 ⊕ (1, 0)、量出 1 格，「和肩一样高」水平虚线，「一、零」写坐标，「肩和肘，各该转多少」两个关节出问号。
+// 右栏一行分几段出时，「、」「→」「+」这类符号跟它后面那一段一起出，不先挂在那里（用户反馈「只看肩、肘」的顿号先出）。
 // 符号跟着念到它的词出：(1, 2) 在「一、二」，问号在「多少」，2² 在「二」（配音把「平方加二」切成一个词，「二」按字数估在 41.7 s）。
 // 2026-11-05 参照 011：手改用第 11 集「小臂上离肘两格」的那一点（原先是手腕、2.06 格，还要用米换算），目标 (1, 0)；开平方当场讲。
 // 时刻取自配音的逐词时间，见 ../ep012.py。
@@ -18,7 +19,7 @@
     fk: 1.09, joints: 2.23, ang: 2.93, fixed: 3.27, hand: 3.78, where: 4.19, ori: 5.08, one: 6.14,
     ik: 8.08, rev: 8.9, hand2: 10.51, pose2: 11.21, solve: 11.81, joints2: 12.04, ans: 14.51, notOne: 14.99, out1: 16.9,
     simple: 17.89, side: [19.12, 20.4], only: 21.18, sh: 21.55, el: 21.9, wrist: 23.21, ori3: 24.28, later: 25.41, out3: 27.2,
-    grid: 28.07, origin: 30.13, elbow: 31.19, ep11: 32.34, handPt: 33.3, two: 34.97,
+    grid: 28.07, origin: 30.13, elW: 30.79, elbow: 31.19, ep11: 32.34, handPt: 33.3, two: 34.97,
     upper: 37.03, much: 38.15, py: 40.05, sq1: 40.95, sq2: 41.7, five: 42.56, len2: 43.21,
     self: 46.2, approx: 48.58, back: 50.33, name: 52.95, sqrt: 54.16, len: 54.8, out5: 56.6,
     now: 56.99, tw: 58.06, front: 58.95, d1: 59.55, level: 60.08, c10: 61.54, how: 63.06, ask: 64.02
@@ -185,14 +186,14 @@
 
           /* ── 右栏 ── */
           E.op(g1, 1 - f(st, T.out1, 0.4));
-          E.op(a1.g, fr(st, T.fk)); E.op(a2.g, fr(st, T.joints)); E.op(a2.parts[2], fr(st, T.hand)); E.op(a3.g, fr(st, T.one)); E.drawOn(a3ok, f(st, T.one + 0.4, 0.3));
-          E.op(a4.g, fr(st, T.ik)); E.op(a5.g, fr(st, T.rev)); E.op(a5.parts[2], fr(st, T.solve)); E.op(a5.parts[3], fr(st, T.joints2)); E.op(a6.g, fr(st, T.ans)); E.op(a6.parts[1], fr(st, T.notOne));
+          E.op(a1.g, fr(st, T.fk)); E.op(a2.g, fr(st, T.joints)); E.op(a2.parts[1], fr(st, T.hand)); E.op(a2.parts[2], fr(st, T.hand)); E.op(a3.g, fr(st, T.one)); E.drawOn(a3ok, f(st, T.one + 0.4, 0.3));
+          E.op(a4.g, fr(st, T.ik)); E.op(a5.g, fr(st, T.hand2)); E.op(a5.parts[1], fr(st, T.solve)); E.op(a5.parts[2], fr(st, T.solve)); E.op(a5.parts[3], fr(st, T.joints2)); E.op(a6.g, fr(st, T.ans)); E.op(a6.parts[1], fr(st, T.notOne));
           E.op(g3, f(st, T.simple - 0.3, 0.3) * (1 - f(st, T.out3, 0.4)));
-          E.op(c1.g, fr(st, T.simple)); E.op(c2.g, fr(st, T.side[0])); E.op(c2.parts[2], fr(st, T.sh)); E.op(c2.parts[4], fr(st, T.el)); E.op(c2.parts[5], fr(st, T.el + 0.2));   // 21 号字：23 号写全会超出右栏
+          E.op(c1.g, fr(st, T.simple)); E.op(c2.g, fr(st, T.side[0])); E.op(c2.parts[1], fr(st, T.only)); E.op(c2.parts[2], fr(st, T.sh)); E.op(c2.parts[3], fr(st, T.el)); E.op(c2.parts[4], fr(st, T.el)); E.op(c2.parts[5], fr(st, T.el + 0.2));   // 21 号字：23 号写全会超出右栏
           E.op(c3.g, fr(st, T.wrist)); E.op(c4.g, fr(st, T.ori3)); E.op(c5.g, fr(st, T.later));
           E.op(g4, f(st, T.grid - 0.3, 0.3) * (1 - f(st, T.out5, 0.4)));
-          E.op(d1.g, fr(st, T.grid)); E.op(d1.parts[2], fr(st, T.elbow)); E.op(d1b.g, fr(st, T.ep11)); E.op(d1b.parts[3], fr(st, T.two));
-          E.op(d2.g, fr(st, T.upper)); E.op(d2.parts[1], fr(st, T.much)); E.op(d2.parts[2], fr(st, T.py)); E.op(d3.g, fr(st, T.sq1));
+          E.op(d1.g, fr(st, T.grid)); E.op(d1.parts[1], fr(st, T.elW)); E.op(d1.parts[2], fr(st, T.elbow)); E.op(d1b.g, fr(st, T.ep11)); E.op(d1b.parts[1], fr(st, T.handPt)); E.op(d1b.parts[2], fr(st, T.handPt)); E.op(d1b.parts[3], fr(st, T.two));
+          E.op(d2.g, fr(st, T.upper)); E.op(d2.parts[1], fr(st, T.much)); E.op(d2.parts[2], fr(st, T.py)); E.op(d3.g, fr(st, T.sq1)); E.op(d3.parts[1], fr(st, T.sq2));
           E.op(d3.parts[2], fr(st, T.sq2)); E.op(d3.parts[3], fr(st, T.five)); E.op(d3.parts[4], fr(st, T.five)); E.op(d3b.g, fr(st, T.len2));
           E.op(d5.g, fr(st, T.self)); E.op(d6.g, fr(st, T.approx)); E.op(d7.g, fr(st, T.back)); E.op(d7.parts[1], fr(st, T.name));
           E.op(d8.g, fr(st, T.sqrt)); E.op(d8.parts[1], fr(st, T.len));

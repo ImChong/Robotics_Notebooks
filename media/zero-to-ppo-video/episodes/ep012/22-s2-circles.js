@@ -13,8 +13,8 @@
   var D = Math.PI / 180, A = E.ARM, RX = A.RX;
   var T = {
     key: 0.61, elbow: 1.06, arms: [2.91, 3.36], set: 4.64,
-    upper: 6.04, swing: [6.4, 9.6], dist: 8.22, r1: 9.11, only: 10.26, c1: [10.78, 12.3], rad1: 12.02, out2: 13.9,
-    fore: 14.94, dist2: 16.59, stick: 17.25, r2: 18.15, c2: [19.34, 20.8], rad2: 20.57,
+    upper: 6.04, elSh: 7.63, swing: [6.4, 9.6], dist: 8.22, r1: 9.11, only: 10.26, c1: [10.78, 12.3], rad1: 12.02, out2: 13.9,
+    dist2: 16.59, stick: 17.25, r2: 18.15, c2: [19.34, 20.8], rad2: 20.57,
     both: 22.98, meet: 24.63, cross: 26.33, upPt: 28.39, dnPt: 28.76, two: 29.1,
     upArm: [31.12, 32.4], upLab: 33.05, dnArm: 34.97, dnLab: 36.04, same: 38.09,
     sym: 41.43, tri: [42.46, 44.4], line: 45.59, flip: [46.64, 47.3], sides: 47.41, other: 49.13
@@ -91,7 +91,7 @@
       var gA = E.el('g', {}, Rg);
       var a1 = RK.line(gA, X, 48, [['关键是 ', E.INK2], ['肘', E.HI, 900], [' 的位置', E.INK2]]);
       var a2 = RK.line(gA, X, 84, [['肘定了 → 大臂、小臂都定了', E.INK2]], 21);
-      var b1 = RK.line(gA, X, 140, [['① 肘离肩：', E.INK, 900], ['2.24 格', E.C1, 900]]);
+      var b1 = RK.line(gA, X, 140, [['① 肘离肩', E.INK, 900], ['：', E.INK, 900], ['2.24 格', E.C1, 900]]);
       var b2 = RK.line(gA, X, 174, [['→ 以肩为中心的圆', E.C1, 700]], 21);
       var c1r = RK.line(gA, X, 230, [['② 肘离', E.INK, 900], ['手', E.TGT, 900], ['：', E.INK, 900], ['2 格', E.C2, 900]]);
       var c2r = RK.line(gA, X, 264, [['→ 以', E.C2, 700], ['手', E.TGT, 700], ['为中心的圆', E.C2, 700]], 21);
@@ -184,9 +184,9 @@
 
           /* ── 右栏 ── */
           E.op(gA, 1 - f(st, T.upArm[0] - 0.3, 0.4));
-          E.op(a1.g, fr(st, T.key)); E.op(a1.parts[1], fr(st, T.elbow)); E.op(a2.g, fr(st, T.arms[0]));
-          E.op(b1.g, fr(st, T.upper)); E.op(b1.parts[1], fr(st, T.r1)); E.op(b2.g, fr(st, T.only));
-          E.op(c1r.g, fr(st, T.fore)); E.op(c1r.parts[3], fr(st, T.r2)); E.op(c2r.g, fr(st, T.c2[0]));
+          E.op(a1.g, fr(st, T.key)); E.op(a1.parts[1], fr(st, T.elbow)); E.op(a1.parts[2], fr(st, T.elbow)); E.op(a2.g, fr(st, T.arms[0]));
+          E.op(b1.g, fr(st, T.elSh)); E.op(b1.parts[1], fr(st, T.r1)); E.op(b1.parts[2], fr(st, T.r1)); E.op(b2.g, fr(st, T.only));
+          E.op(c1r.g, fr(st, T.dist2)); E.op(c1r.parts[2], fr(st, T.r2)); E.op(c1r.parts[3], fr(st, T.r2)); E.op(c2r.g, fr(st, T.c2[0]));
           E.op(d1.g, fr(st, T.both)); E.op(d2.g, fr(st, T.meet)); E.op(d2.parts[1], fr(st, T.upPt));
           E.op(gB, f(st, T.upArm[0], 0.4));
           E.op(e1.g, fr(st, T.upArm[0])); E.op(e2.g, fr(st, T.dnArm - 0.6)); E.op(e3.g, fr(st, T.same));
