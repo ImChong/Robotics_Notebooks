@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "dataset", "cross-embodiment", "vla", "rt-x", "hmi-papers"]
 status: complete
-updated: 2026-11-02
+updated: 2026-11-05
 arxiv: "2310.08864"
 code: https://github.com/google-deepmind/open_x_embodiment
 venue: "HMI curated · 2023"
@@ -16,13 +16,15 @@ related:
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
 sources:
   - ../../sources/papers/hmi_p055_open-x-embodiment.md
+  - ../../sources/sites/open-x-embodiment.md
+  - ../../sources/repos/open-x-embodiment.md
   - ../../sources/repos/humanoid-motion-intelligence.md
   - ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
 ---
 
-# Open X-Embodiment（HMI P055）
+# Open X-Embodiment: Robotic Learning Datasets and RT-X Models（跨本体机器人学习数据集与 RT-X 模型）
 
-**Open X-Embodiment**（*Open X-Embodiment: Robotic Learning Datasets and RT-X Models*，2023，[arXiv:2310.08864](https://arxiv.org/abs/2310.08864)）收录于具身智能研究室 [论文与项目总索引](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md) **P055**，主分类为 **世界模型、VLA与Agent**。本页为本库独立详情节点（编译自策展解读与公开元数据，非原文镜像）。
+**Open X-Embodiment**（*Open X-Embodiment: Robotic Learning Datasets and RT-X Models*，2023，[arXiv:2310.08864](https://arxiv.org/abs/2310.08864)）收录于具身智能研究室 [论文与项目总索引](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md) **P055**，主分类为 **世界模型、VLA与Agent**。本页结合论文 v9 和官方代码更新，保留 HMI 索引关系。
 
 ## 一句话定义
 
@@ -59,12 +61,21 @@ Open X-Embodiment的价值先在数据基础设施，然后才在RT-X模型。60
 
 ### 流程直觉
 
+论文 v9 的数据与模型流程如下：
+
 ```mermaid
-flowchart LR
-  A["问题 / 数据 / 观测"] --> B["Open X-Embodiment"]
-  B --> C["控制 / 策略 / 数据产物"]
-  C --> D["评测或真机闭环"]
+flowchart TD
+  A["60 个机器人数据集"] --> B["RLDS episode 与 step 格式"]
+  B --> C["9 种机械臂训练混合数据"]
+  C --> D["单视角图像与语言指令"]
+  C --> E["7 维末端动作归一化及离散化"]
+  D --> F["RT-1-X 或 RT-2-X"]
+  E --> F
+  G["网络视觉语言数据"] --> F
+  F --> I["动作 token 与平台反归一化"]
 ```
+
+RT-2-X 还与视觉语言数据联合微调；上图的模型输出需按本体对应的动作语义解释。
 
 模块边界与符号定义以原文为准；上图只固定阅读骨架。
 
@@ -80,9 +91,30 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用**（部分开源（数据协议与汇总入口；各源数据集许可仍独立））。若后续官方发布可运行训练/推理入口，应补 `sources/repos/` 并更新本图。
+官方 JAX 示例 [rt1_inference_example.py](https://github.com/google-deepmind/open_x_embodiment/blob/9eeb68b989efbcf474e8fb9019e01d02b962a604/models/rt1_inference_example.py) 使用合成观测演示离线推理，不包含真机控制闭环。
 
+```mermaid
+sequenceDiagram
+  participant Main as main
+  participant Policy as RT1Policy
+  participant CK as Flax checkpoints
+  participant Model as rt1.RT1
+  Main->>Policy: 构造模型和 checkpoint 路径
+  Policy->>CK: restore_checkpoint
+  CK-->>Policy: params 和 batch_stats
+  Main->>Policy: action（合成图像和语言嵌入）
+  Policy->>Policy: 缩放图像并调用 JIT 推理
+  Policy->>Model: apply（观测与零动作 token）
+  Model-->>Policy: 输出 logits
+  Policy->>Policy: argmax 和 detokenize_action
+  Policy-->>Main: 动作字典
+```
+
+示例输入是长度 15 的图像序列和预计算语言嵌入；不能将示例中的合成输入当成真实机器人部署。
 ## 实验与评测读法
+
+论文共进行 3600 次评测、覆盖 6 种机器人。小数据域中，RT-1-X 在 5 个数据集的 4 个上优于各自原方法；大数据域的 RT-1-X 出现欠拟合。Google Robot 的跨本体新技能评测中，55B RT-2-X 为 75.8%，RT-2 为 27.3%；这是该组任务的结果，不是所有任务均提升三倍。未见物体与背景的泛化分别为 61% 和 62%。
+
 
 - 把「仿真指标 / 真机证据 / 仅项目演示」分开记账。
 - 对照同组相邻工作（见关联页面）时，对齐任务定义与观测接口，再比成功率。
@@ -124,6 +156,8 @@ flowchart LR
 
 ## 参考来源
 
+- [官方项目页归档](../../sources/sites/open-x-embodiment.md)
+- [官方源码归档](../../sources/repos/open-x-embodiment.md)
 - [sources/papers/hmi_p055_open-x-embodiment.md](../../sources/papers/hmi_p055_open-x-embodiment.md)
 - [sources/repos/humanoid-motion-intelligence.md](../../sources/repos/humanoid-motion-intelligence.md)
 - [HMI 论文总索引](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/README.md)
