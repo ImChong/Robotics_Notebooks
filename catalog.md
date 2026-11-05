@@ -893,6 +893,7 @@
 - [LingBot-VLA 2.0](wiki/entities/lingbot-vla-v2.md) — LingBot-VLA 2.0**（*From Foundation to Application: Improving VLA Models in Practice*，[arXiv:2607.0 `📅unknown` `[entity_page]`
 - [LingBot-VLA](wiki/entities/lingbot-vla.md) — LingBot-VLA**（*A Pragmatic VLA Foundation Model*，[arXiv:2601.18692](https://arxiv.org/abs/2601.186 `📅unknown` `[entity_page]`
 - [LingBot-World](wiki/entities/lingbot-world.md) — robbyant/lingbot-world**](https://github.com/robbyant/lingbot-world)（蚂蚁 **Robbyant / 灵波**）是 **开源世 `📅unknown` `[entity_page]`
+- [LingYu Real-World Robotics Dataset（灵御真实世界机器人数据集）](wiki/entities/lingyu-realworld-robotics-dataset.md) — 面向模仿学习的双臂真机遥操作数据，首发涵盖桌面操作；零售环境数据不包含在本次公开集中。 `📅unknown` `[entity_page]`
 - [灵心巧手 Linker Hand](wiki/entities/linkerbot-linker-hand.md) — 灵心巧手 Linker Hand** 属于 Zane Hub 灵巧手行业综述 的「灵巧手专 `📅unknown` `[entity_page]`
 - [LIO-SAM](wiki/entities/lio-sam.md) — LIO-SAM** 将 **IMU 预积分、scan-to-map 与回环** 纳入统一因子图优化。 `📅unknown` `[entity_page]`
 - [LISA](wiki/entities/lisa.md) — LISA 让多模态 LLM 通过特殊分割 token 调用分割解码器，实现推理式分割（reasoning segmentation）：由复杂语言描述直接得到掩码。 `📅unknown` `[entity_page]`
