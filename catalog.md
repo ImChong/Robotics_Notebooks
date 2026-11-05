@@ -2544,6 +2544,7 @@
 - [GR00T-Dreams（HMI P068）](wiki/entities/paper-gr00t-dreams-synthetic-trajectories.md) — GR00T-Dreams**（*GR00T-Dreams: Synthetic Trajectory Generation for Humanoid Robot Learning*，2025）收录 `📅unknown` `[entity_page]`
 - [GR00T N1.5：通用人形 VLA 的改进版](wiki/entities/paper-gr00t-n1-5.md) — GR00T N1.5**（*An Improved Open Foundation Model for Generalist Humanoid Robots*，[NVIDIA GEAR 项目页 `📅unknown` `[entity_page]`
 - [GR00T N1.7：多本体 flow-matching 人形 VLA](wiki/entities/paper-gr00t-n1-7.md) — GR00T N1.7** 是 NVIDIA Isaac GR00T 系列当前的开放权重版本（[`nvidia/GR00T-N1.7-3B`](https://huggingface.co/nvid `📅unknown` `[entity_page]`
+- [GradSplat: Gradients Inside the Forward Pass for Feed-Forward 3D Gaussian Splatting（在前向传播中利用梯度的前馈三维高斯溅射）](wiki/entities/paper-gradsplat.md) — GradSplat 从多视图预测 3D 高斯，并在同一前向过程中根据输入视图的渲染误差做固定次数的学习梯度更新。 `📅unknown` `[entity_page]`
 - [GRAFT：面向基础跟踪器的几何感知残差适配](wiki/entities/paper-graft.md) — GRAFT** 将冻结的全身动作跟踪器与地形感知的下肢残差策略组合，在保持参考动作接口的同时调整地形上的执行目标。本文依据 [arXiv v1 全文](https://arxiv.org/html `📅unknown` `[entity_page]`
 - [GRAIL](wiki/entities/paper-grail.md) — GRAIL**（*Generating Humanoid Loco-Manipulation from 3D Assets and Video Priors*，[arXiv:2606.05160 `📅unknown` `[entity_page]`
 - [GraphPoint（arXiv:2609.18358）](wiki/entities/paper-graphpoint.md) — GraphPoint**（*GraphPoint: Semantic Entity Graphs and Point Trajectories for Compositional Robot Ma `📅unknown` `[entity_page]`
@@ -5849,6 +5850,7 @@
 - [YOCO（一次校准的动捕手部标定）](wiki/entities/paper-yoco.md) — YOCO 用少量成对的原始与目标手部姿态，经 HyperNet 一次前馈预测对冻结 MANO 估计器的 LoRA 式修正，使每个用户的动捕标定不再需要逐人微调。 `📅unknown` `[entity_page]`
 - [YOLO v1（You Only Look Once）](wiki/entities/paper-yolo-unified-realtime-detection.md) — YOLO**（You Only Look Once）是 Joseph Redmon 等提出的 **统一实时目标检测** 方法（arXiv:1506.02640，CVPR 2016）。它将检测从「区 `📅unknown` `[entity_page]`
 - [Ultralytics YOLO26（Unified Real-Time End-to-End Vision）](wiki/entities/paper-yolo26-unified-realtime-e2e-vision.md) — YOLO26** 是 Ultralytics 提出的 **统一实时视觉模型族**（arXiv:2606.03748）。在 Y `📅unknown` `[entity_page]`
+- [YOLO27: An Overview of Dual-Scale Architecture and Query-Based Real-Time Computer Vision（YOLO27：双尺度架构与基于查询的实时计算机视觉综述）](wiki/entities/paper-yolo27-overview.md) — YOLO27 是 Ultralytics 预告的实时视觉模型族；Ranjan Sapkota 的综述整理了其按模型规模选择检测架构的设计和初步结果。 `📅unknown` `[entity_page]`
 - [YOPO-MINCO](wiki/entities/paper-yopo-minco.md) — Some Modifications to Our End-to-End UAV Planner**（[arXiv:2608.15741](https://arxiv.org/abs/2608.1 `📅unknown` `[entity_page]`
 - [Zeno-1：机器人协作智能基础模型](wiki/entities/paper-zeno-1-collaborative-intelligence.md) — Zeno-1**（*Collaborative Intelligence for Robots That Work Together*，[Zeno AI 研究页](https://www.zeno `📅unknown` `[entity_page]`
 - [Zero-HLM：无需真机示范的人形移动操作](wiki/entities/paper-zero-hlm.md) — Zero-HLM 从手机场景采集和少量仿真遥操作示范出发，通过场景重建、运动与环境协同修正，生成可执行的全身操作数据，训练后零样本部署到 G1。 `📅unknown` `[entity_page]`
@@ -5944,6 +5946,7 @@
 - [Pico.Lab](wiki/entities/picolab.md) — Pico.Lab** 是面向嵌入式板卡 bring-up 的开源多功能工具，集成示波、逻辑分析、总线通信和浏览器界面；专用板还提供电源控制及电流监测。 `📅unknown` `[entity_page]`
 - [Pink](wiki/entities/pink-ik.md) — Pink](https://github.com/stephane-caron/pink) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](wiki/entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
+- [pixelfx：代码驱动的像素特效库（Pixel Art Effects as Code）](wiki/entities/pixelfx.md) — pixelfx 将像素特效写成可参数化的 JavaScript，并配套画廊、导出工具和 Claude Code skill。本文核对 [a841596](https://github.com/patc `📅unknown` `[entity_page]`
 - [PlatformIO Core](wiki/entities/platformio-core.md) — PlatformIO Core** 是 PlatformIO 生态的命令行核心：以 `platformio.ini` 描述嵌入式项目环境，并用 `pio` CLI 管理相关开发平台、工具链、库依赖 `📅unknown` `[entity_page]`
 - [pyplcopen / plcopen 运动控制内核](wiki/entities/plcopen-pyplcopen.md) — pyplcopen / plcopen 运动控制内核**（[https://github.com/lusipad/plcopen](https://github.com/lusipad/plcop `📅unknown` `[entity_page]`
 - [PLEN2](wiki/entities/plen2.md) — PLEN2**（GitHub）是 [GitHubStore《19 款能自己造的开源人形机器人》](ht `📅unknown` `[entity_page]`

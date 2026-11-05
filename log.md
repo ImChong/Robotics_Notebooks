@@ -251,6 +251,12 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-05] ingest | sources/papers/yolo27-alphaxiv-overview.md — 收录 YOLO27 预发布综述，记录官方预览差异与待核查项
+
+## [2026-11-05] ingest | sources/papers/gradsplat_2610_38951.md — 收录梯度细化三维高斯重建，公开推理与权重
+
+## [2026-11-05] ingest | sources/repos/pixelfx.md — 收录像素特效库、技能及渲染流程
+
 ## [2026-11-05] ingest | 具身智能小站 2026-11-05《人能稳稳提起的罐子，换一双机器手怎么提？》43 篇逐篇建独立详情节点（新建 28 / 复用 15），arXiv 标题日期逐篇核对，开源状态逐项核查
 
 ## [2026-11-05] structural | docs/main.js, docs/style.css — 路线页（主路线 + 纵深路线）知识地图改为学习路线图样式（左侧阶段栏 + 单阶段小树 + 前置 / 通往标签，全局总览改为各阶段小树自上而下排开），参照 Robot_Learning_Paper_Notebooks 首页推荐学习路线图
