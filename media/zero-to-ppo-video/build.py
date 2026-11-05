@@ -131,7 +131,21 @@ def chunks(text, start, dur, limit=17):
     return out
 
 
+def check_display_twice():
+    """字幕先整句换一遍、切行后每行再换一遍（见 main 和 chunks）：每条替换都得换两遍结果不变，
+    不然会叠成「`=` `=`」「（`return`）（`return`）」（011 用户反馈）。有一句不满足就停下，指出是哪句。"""
+    bad = []
+    for _, _, _, text in SCRIPT:
+        for s in re.split(r"(?<=[。？！])", text):
+            once = display(s.strip())
+            if s.strip() and display(once) != once:
+                bad.append(f"  换一遍：{once}\n  换两遍：{display(once)}")
+    if bad:
+        sys.exit("DISPLAY 有条目换两遍会叠字（换出来的字里还含着原来的字），改成换两遍不变的写法：\n" + "\n".join(bad))
+
+
 async def main():
+    check_display_twice()
     segs, subs, pcm = [], [], bytearray()
     t = 0.0
     prev_scene = None
