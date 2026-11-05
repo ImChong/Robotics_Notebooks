@@ -44,7 +44,7 @@ summary: "X-VLA（arXiv:2510.10274）：为每个数据源学一组软提示吸�
 | VLA | Vision-Language-Action | 视觉–语言–动作模型 |
 | Soft Prompt | Soft Prompt | 不对应文字的可学习嵌入，按数据源索引，注入动作生成早期 |
 | PEFT | Parameter-Efficient Fine-Tuning | 参数高效微调（论文用 LoRA，约 9M 可调参数） |
-| EEF / 6D | End-Effector / 6D rotation | 末端位姿；用 6 维连续旋转表示避免欧拉角/四元数不连续 |
+| EEF / 6D | End-Effector / 6D rotation | 末端位姿；用 6 维连续旋转表示，规避欧拉角、四元数的跳变 |
 | DiT | Diffusion Transformer | 论文消融的对照解码器，最终被「纯 Transformer 编码器」替换 |
 
 ## 为什么重要
