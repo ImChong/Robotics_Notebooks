@@ -154,9 +154,11 @@
           if (kB > 0) q = lerpQ(SOL[0], SOL[4], kB);
           if (kD > 0) q = lerpQ(SOL[4], SOL[6], kD);
           if (kF > 0) q = lerpQ(SOL[6], SOL[7], kF);
-          if (st >= T.out3) q = SOL[0];
-          var ws = f(st, T.pose7, 0.8);
-          if (st >= T.wristS - 0.5 && st < T.sum) { q = SOL[0].slice(); q[4] = SOL[0][4] * (1 - ws); }
+          // 姿势只在看不见时跳：句 4 等大 UR5 淡出完（grid + 0.4）再换回参考姿势（原先 out3 就换，淡出前一下跳回去）；
+          // 句 8「所以」手腕两根轴先淡掉，再慢慢转回参考姿势（原先一下跳回去，淡出中的蓝色转轴跟着甩到竖直，闪一下蓝条）
+          if (st >= T.grid + 0.4) q = SOL[0];
+          var ws = f(st, T.pose7, 0.8) * (1 - f(st, T.sum + 0.3, 0.8));
+          if (st >= T.wristS - 0.5 && st < T.s8) { q = SOL[0].slice(); q[4] = SOL[0][4] * (1 - ws); }
           var kk = -1;
           if (st >= T.s8) { kk = Math.min(7, Math.floor((st - T.s8) / 1.0)); q = SOL[kk]; }
           setQ(BV, q);
