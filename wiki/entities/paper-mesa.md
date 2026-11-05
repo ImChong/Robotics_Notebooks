@@ -20,7 +20,7 @@ sources:
   - ../../sources/repos/mesa.md
   - ../../sources/sites/mesa.md
   - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
-summary: "MESA（arXiv:2611.05567）：机器人换个位置还能抓杯子，换个没见过的杯子却可能失手。"
+summary: "MESA（arXiv:2611.05567）：分项测试组合、语义与空间泛化的机器人操作评测框架（MESA-Gen + MESA-Bench）。"
 ---
 
 # MESA（arXiv:2611.05567）
@@ -29,7 +29,7 @@ summary: "MESA（arXiv:2611.05567）：机器人换个位置还能抓杯子，�
 
 ## 一句话定义
 
-**机器人换个位置还能抓杯子，换个没见过的杯子却可能失手。**
+**MESA** 是面向语言条件桌面操作策略的框架，含 MESA-Gen（任务与示范的规模化生成）和 MESA-Bench（分同分布、空间、类别、实例、组合泛化设置的标准化评测）（官方 README）。
 
 ## 英文缩写速查
 
@@ -49,33 +49,35 @@ summary: "MESA（arXiv:2611.05567）：机器人换个位置还能抓杯子，�
 |----|------|
 | **arXiv** | [2611.05567](https://arxiv.org/abs/2611.05567) |
 | **开源** | **已开源** |
-| **要点** | 机器人换个位置还能抓杯子，换个没见过的杯子却可能失手。 |
-| **文内指标** | 公众号转述：该模型每项任务测试 50 次。 |
+| **要点** | 单臂与双臂仿真里分别改变摆位、物体实例、类别和子任务组合，让人看清是哪一种变化拖低成绩；官方仓库基于 MimicGen、OpenPI、LeRobot、RoboCasa、LIBERO 等（README 致谢）。 |
+| **文内指标** | 公众号转述（未回论文核对）：π0.5 在单臂、双臂各五套测试中平均成功率分别为 52.0% 和 48.7%；单臂同分布 62.8%，换到训练中未见过的物体类别降至 26.4%；每项任务测试 50 次。 |
 
 ## 源码运行时序图
 
-以下为按仓库入口（`pairlab/mesa-env`）推断的通用运行链路；入库日仅核实仓库可达，未逐文件阅读，具体脚本名以 README 为准。
+按官方 README 与目录结构画（浅克隆读了 README、`scripts/` 与 `mesa/` 目录，**未逐文件阅读源码**）：评测侧是「策略服务端 + 评测服务」两端分离，具体参数以 `docs/` 为准。
 
 ```mermaid
 sequenceDiagram
   participant U as 用户
-  participant R as pairlab/mesa-env
-  participant E as 环境 / 数据
-  participant M as 模型 / 策略
-  U->>R: clone + 安装依赖（README）
-  U->>E: 准备基准 / 数据集或真机接口
-  U->>R: 训练或加载预训练权重
-  R->>M: 构建 MESA 模型
-  U->>R: 运行评测脚本
-  R->>E: 重置环境、取观测
-  E-->>M: 观测
-  M-->>E: 动作 / 预测
-  R-->>U: 指标与日志
+  participant GEN as scripts/generate_tasks.py（MESA-Gen）
+  participant SUITE as mesa/task_suites
+  participant POL as scripts/demo_policy_server.py（策略服务端）
+  participant EV as scripts/eval_server.py / eval_server_parallel.py
+  participant SIM as mesa/sim（仿真环境）
+  U->>GEN: 生成任务与初始状态（generate_init_states.py）
+  GEN->>SUITE: 落成任务套件（同分布 / 空间 / 类别 / 实例 / 组合）
+  U->>POL: 启动被测策略服务端（是否对接 π0.5 / OpenPI 以 docs 为准，此处为推测）
+  U->>EV: 启动评测
+  EV->>SIM: 重置场景、取观测
+  SIM-->>POL: 观测
+  POL-->>SIM: 动作
+  EV-->>U: 分设置成功率
 ```
 
 ## 实验与评测
 
-- 公众号转述：该模型每项任务测试 50 次。
+- 公众号转述（未回论文核对）：π0.5 在单臂、双臂各五套测试中平均成功率分别为 52.0% 和 48.7%；单臂同分布 62.8%，换到训练中未见过的物体类别降至 26.4%；每项任务测试 50 次。
+- **官方仓库（浅克隆读 README，MIT 许可）：** 含 `mesa/`（task_suites、mimicgen、serving、sim 等）与 `scripts/`（`generate_tasks.py`、`eval_server.py`、`eval_server_parallel.py`、`demo_policy_server.py`）；权重与数据在 Hugging Face 集合；用 uv 安装，另可选装 LeRobot 导出依赖。论文发表信息：README BibTeX 写 CoRL 2026（OpenReview）。
 - **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比
@@ -84,10 +86,10 @@ sequenceDiagram
 
 ## 结论
 
-**换个杯子、换个位置，分别测泛化：该模型每项任务测试 50 次。**
+**换个杯子、换个位置，分别测泛化：π0.5 单臂同分布 62.8%、未见类别降至 26.4%（公众号转述）。**
 
 1. 开源边界：**已开源** — 资源入口 pairlab/mesa-env 经 git ls-remote 可达；项目页 HTTP 200。
-2. 核心机制：机器人换个位置还能抓杯子，换个没见过的杯子却可能失手。
+2. 核心机制：单臂与双臂仿真里分别改变摆位、物体实例、类别和子任务组合，让人看清是哪一种变化拖低成绩；官方仓库基于 MimicGen、OpenPI、LeRobot、RoboCasa、LIBERO 等（README 致谢）。
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
