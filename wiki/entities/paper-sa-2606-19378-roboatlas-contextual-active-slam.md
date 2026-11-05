@@ -123,3 +123,7 @@ Integrates frontier exploration, global semantic-map reasoning, and egocentric V
 
 - [Awesome Egocentric Vision 仓库](https://github.com/sun254667/awesome-egocentric-vision)
 - [原文](https://arxiv.org/abs/2606.26046)
+
+## 相关研究
+
+- [RAVEN：无人机主动 SLAM](./paper-raven-active-slam.md) — 同时考虑探索效率与定位精度。
