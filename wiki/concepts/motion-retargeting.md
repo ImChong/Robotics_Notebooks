@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 9325)
-Total output lines: 343
-
 ---
 title: Motion Retargeting（动作重定向）
 type: concept
@@ -129,7 +126,137 @@ subject to: FK(θ) = p_target (末端位置约束)
 - **代表方法**：[GMR (General Motion Retargeting)](../methods/motion-retargeting-gmr.md)。
 - **作用**：解决姿态、角度、关键点坐标的映射。
 - **局限**：不能保证质心平衡、加速度连续性、接触力可行性以及力矩安全。容易出现脚部滑动或自碰撞。
-- **动画…3325 tokens truncated…2607_15448.md) — VTAP：非拟人三指夹爪手势条件遥操作重定向（arXiv:2607.15448）
+- **动画侧后处理**：游戏/动捕管线常用 **两骨 IK + 惯性化足锁** 或离线约束迭代消脚滑（与机器人 QP 不同层），见 [足锁 IK（Orange Duck）](../methods/foot-locking-ik-orangeduck.md) 与 [GenoView-InverseKinematics](../entities/genoview-inverse-kinematics.md)。
+
+### 2. 动力学一致化层 (Dynamical Layer)
+- **作用**：在重定向轨迹的基础上，补足物理约束。
+- **实现手段**：
+    - **QP 优化 (如 HALO)**：通过约束二次规划，强制满足固定脚位置和地表接触约束，修正 Base 位姿漂移。
+    - **RL Fine-tuning**：以重定向轨迹作为参考，通过 RL 在仿真中进行鲁棒性训练。
+    - **WBC 跟踪**：将重定向轨迹作为 WBC 的任务目标，由底层控制器实时处理平衡与力矩限制。
+
+---
+
+## 上游衔接：数据来源 → 质量评估 → 重定向 → 策略输入
+
+重定向不是链路的起点。它的**输入由前两段决定，输出喂给第四段**——是否需要重定向、需要补几层，并非由重定向本身决定，而是由**第②段的数据质量体检**给出判据：
+
+| 段 | 视角 | 关键判据 | 主页面 |
+|----|------|---------|--------|
+| ① 数据来源 | 选 MoCap / 视频 / 真机执行数据 | 表示、规模、许可证、是否预重定向 | [人形数据五集选型](../comparisons/humanoid-reference-motion-datasets.md) |
+| ② 质量评估 | 物理可行性 / 接触一致性 / 形态差距 / 规模多样性 四轴 | **形态差距大 → 本页重定向不可省略** | [Motion Data Quality](./motion-data-quality.md) |
+| ③ **重定向（本页）** | 几何映射 + 动力学一致化，把人体参考变成机器人可执行参考 | 接触保真、限位满足、物理可行 | 本页 §「两层架构模式」 |
+| ④ 策略输入 | 物理可行参考 → WBT / AMP / IL 训练数据 | 真机可执行的策略 | [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md) |
+
+> 因果方向：[第②段四质量轴](./motion-data-quality.md) 中的**形态差距**轴直接决定本页是否被触发（差距可忽略时如真机执行数据 [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) 可跳过重定向直接 IL）；**接触一致性 / 物理可行性**两轴则决定本页 §「动力学一致化层」要补 QP / RL 几层。整条链的端到端决策树见 [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md)。
+
+---
+
+## 三段流水线衔接：重定向产物 → WBT 训练数据 → 跨具身策略蒸馏
+
+重定向常被误当成「终点」，但在人形动作落地的整条链里它只是**第一段**。把视角拉远，会看到「**映射 → 训练 → 迁移**」三段彼此咬合：
+
+| 阶段 | 视角 | 产物 | 主页面 |
+|------|------|------|--------|
+| ① 映射（Mapping） | 几何/动力学一致化：把人体参考变成「机器人物理上可执行的参考」 | 物理可行参考轨迹 | [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md)、[重定向目标函数形式化](../formalizations/motion-retargeting-objective.md) |
+| ② 训练（Training） | 把重定向**产物当作训练数据**，学一个能稳定执行它们的全身跟踪策略 | 真机可执行的 WBT 策略 | [Whole-Body Tracking Pipeline](./whole-body-tracking-pipeline.md) |
+| ③ 迁移（Transfer） | 把已训策略/数据**搬到新机体**，区分重训迁移 vs 高效后训练 vs 联合训练 | 跨具身复用的策略族 | [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)、[SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) |
+
+衔接关系：本页（重定向）的 §「两层架构模式」产出**阶段 ①** 的物理可行参考；[WBT 流水线](./whole-body-tracking-pipeline.md) 把这些参考当**阶段 ②** 的训练数据消费，产出真机策略；当目标换成新机体时进入**阶段 ③**——重定向的「**仅缩放骨盆–脚距、其余度量关系保持**」（如 SKR）等几何桥接质量，会直接决定跨具身迁移能否复用同一份参考库。三段构成「**MoCap → Reference → Policy → 新机体**」的闭环；[Sim2Real](./sim2real.md) 则横切阶段 ② 与 ③ 的真机落地与安全收尾。
+
+---
+
+## 关键技术问题
+
+### 1. 骨架拓扑匹配
+人类有 23 个主要关节，大多数人形机器人有 40-70 个（含手指）或更少（G1 = 43 DoF，无手指）。
+
+匹配策略：
+- **子树对齐**：人类骨架子树 ↔ 机器人骨架子树
+- **忽略细节关节**：将人类手指聚合为"手端点"
+
+### 2. 比例缩放（Scale）
+人类（1.7m）vs 机器人（0.8m ~ 1.9m）体型不同：
+- 末端轨迹按比例缩放：`p_robot = (L_robot / L_human) * p_human`
+- 注意脚到地面的高度归一化
+
+### 3. 接触保真度（Contact Consistency）
+- 重定向时需要保留"哪只脚在地面"的接触相位
+- 否则物理仿真下机器人会穿地或飞起
+- 人–物交互还需保留手与物体的接触：[OTRetarget](../entities/paper-otretarget.md) 用表面 proximity triple + 熵正则 OT 建立人体部位–机器人连杆对应，再联合求解机器人关节与物体位姿，使物体轨迹适配目标机器人身材（OMOMO 上交互 Jaccard 87%，OmniRetarget 28%）；它是逐帧受约束 IK 的运动学重定向（含搬箱、四足爬行、全身旋转移动），不等于动态平衡控制器，真机迁移交由下游 RL 全身策略
+
+### 4. 关节限制满足
+人类关节活动度（ROM）与机器人关节限制可能不同，需 clip + 后处理优化
+
+---
+
+## 工具与数据集
+
+| 工具/数据集 | 用途 |
+|------------|------|
+| CMU MoCap Database | 大量人类动作捕捉数据 |
+| [AMASS](../entities/amass.md) | 多源光学动捕统一到 **SMPL** 序列的大规模档案（注册下载；许可见官方） |
+| [LaFAN1](../entities/lafan1-dataset.md) | Ubisoft 发布的多主题 **BVH** 棚拍动捕（**CC BY-NC-ND**；常用作基准与部署案例数据源） |
+| [OMOMO](../entities/omomo-dataset.md) | 人–物交互 MoCap（~10 h / 15 物体）；loco-manipulation 重定向常见上游 |
+| [PHUMA](../entities/dataset-bfm-phuma.md) | **已重定向** 的 G1/H1-2 locomotion（~73 h）；PhySINK 物理可信管线 |
+| [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | **真机人形** 多模态操作集（260 任务）；非 MoCap 参考库 |
+| [人形数据五集选型](../comparisons/humanoid-reference-motion-datasets.md) | AMASS / LaFAN1 / OMOMO / PHUMA / Humanoid Everyday 对照 |
+| [Mixamo](../entities/mixamo.md) | Adobe **商业**角色与动画库；快速原型与美术管线友好，**不等同**于可自由再分发的原始 MoCap 研究档案 |
+| [MetaHuman](../entities/metahuman.md) | Epic **UE 数字人**平台（Creator + Animator）；5.8 起单相机全身无标记表演与 **OpenRigLogic（MIT）**；多作视觉/表演源，接入机器人需重定向 |
+| SMPL / [SMPL-X](./smpl-x.md) | 人类体型参数化模型，便于重定向 |
+| [SOMA-X](../entities/soma-x.md) | NVIDIA 统一参数化人体拓扑（SMPL/MHR/Anny 等枢纽）；AMASS/SMPL→SOMA 转换 |
+| [PHC](../entities/phc.md) | SMPL→人形 fitting 重定向 + 物理模仿控制（AMASS 管线） |
+| [SOMA Retargeter](../entities/soma-retargeter.md) | NVIDIA SOMA BVH→G1 CSV，GPU IK（SEED 数据生态） |
+| [robot_retargeter](../entities/robot-retargeter.md) | SMPL-X / 源机器人 CSV→多机型 CSV；mink+MuJoCo IK、接触足端锁定与多机并排可视化 |
+| [CoRe v0.1.0](../entities/paper-core.md) | Kimodo `.npz` / GEM-X `.pt` → 11 台人形；DMR + 接触精炼，HF Space 可试（Apache-2.0） |
+| [mocap_retarget](../entities/mocap-retarget.md) | 工程向动捕→机器人脚本参考 |
+| [GVHMR](../entities/gvhmr.md) | 单目视频→SMPL 全局人体运动（重定向上游） |
+| [VideoMimic](../entities/videomimic.md) | 视频→人形参考 + RL 模仿 |
+| [PRISM Real2Sim2Real](../entities/paper-prism-real2sim2real.md) | V2V 扩交互视频 + **contact-anchored retarget** → G1–物轨迹（arXiv:2609.38172） |
+| [human2humanoid](../entities/human2humanoid.md) | LECAR 遥操栈；含 AMASS 重定向脚本 |
+| [motion_imitation（四足）](../entities/motion-imitation-quadruped.md) | 动物 MoCap→四足模仿奠基仓库 |
+| [STMR 四足重定向](../entities/stmr-quadruped-retargeting.md) | 空间+时间重定向 + legged_gym RL |
+| [Go2 Motion Imitation](../entities/go2-motion-imitation.md) | Go2 专用 retarget_motion + Genesis 训练 |
+| [MotionCode](../entities/motioncode.md) | 产业侧人体运动采集与标注（官网宣称可进 Isaac / MuJoCo 等；多作原始运动源，仍需重定向） |
+| [human-humanoid-tools（hhtools）](../entities/human-humanoid-tools.md) | RoboParty 开源 Web 工作台：Newton IK + Interaction-Mesh、~30s 全身 retarget、Any URDF、R2R 与数据质检可视化 |
+| [FreeMoCap](../entities/freemocap.md) | 开源多相机 USB 动捕与 GUI 平台，适合作为低成本原始人体轨迹来源（AGPL，集成前需合规评估） |
+| [fairmotion](../entities/fairmotion.md) | Meta 通用动捕数据处理库（BVH/AMASS IO、3D 变换、FK，已归档）；重定向上游数据层，本身不做机器人重定向 |
+
+---
+
+## 与 AMP / ASE 的关系
+
+AMP 和 ASE 的核心是：从 MoCap 数据中提取运动风格先验，引导 RL 策略。
+
+流程：
+```
+MoCap 数据 → Motion Retargeting → 机器人参考轨迹
+→ 判别器训练（是否像参考） → RL 策略风格约束
+```
+
+Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
+
+---
+
+## 参考来源
+- **ingest 档案：** [sources/sites/x2robot-twindex.md](../../sources/sites/x2robot-twindex.md) — TwinDEX：用外骨骼–机械手共设计省略软件 retarget
+- [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — GVHMR→GMR 根高度抛物线校正（[source](../../sources/papers/kung_fu_athlete_bot.md)）
+- [KungfuBot / PBHC](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — SMPL 统一格式 + Mink/PHC 双管线重定向到 G1（[repo](../../sources/repos/pbhc.md)）
+- [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)
+- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用
+- Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型
+- Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向
+- **ingest 档案：** [sources/papers/otretarget_arxiv_2609_36602.md](../../sources/papers/otretarget_arxiv_2609_36602.md) — OTRetarget：OT 表面对应 + 机器人/物体联合 IK（代码待发布）
+- **ingest 档案：** [sources/papers/omniretarget_arxiv_2509_26633.md](../../sources/papers/omniretarget_arxiv_2509_26633.md) — OmniRetarget：interaction mesh 交互保留重定向（PHP 等下游的上游）；配套 [holosoma 代码](../../sources/repos/holosoma.md)、[HF 数据集](../../sources/sites/omniretarget-dataset-huggingface.md)
+- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统
+- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）
+- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”
+- **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的消融提供"视频生成→动作估计→tracking"链路下不引入中间重定向反而更稳的反例
+- **ingest 档案：** [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR：CEPR 数据管线 + 神经重定向 + G1 全身实验
+- **ingest 档案：** [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：仿真内双层优化 + RL 跟踪的物理感知重定向（arXiv:2605.06593）
+- **ingest 档案：** [sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — SPIDER：并行仿真采样优化 + 虚拟接触引导的规模化物理重定向（arXiv:2511.09484）
+- **ingest 档案：** [sources/papers/toporetarget_arxiv_2606_16272.md](../../sources/papers/toporetarget_arxiv_2606_16272.md) — TopoRetarget：hand–object interaction mesh + Laplacian 灵巧重定向 + 轻量 PPO 跟踪（arXiv:2606.16272）；配套 [项目页](../../sources/sites/toporetarget-github-io.md) 与 [源码归档](../../sources/repos/toporetarget.md)
+- **ingest 档案：** [sources/papers/vtap_gripper_arxiv_2607_15448.md](../../sources/papers/vtap_gripper_arxiv_2607_15448.md) — VTAP：非拟人三指夹爪手势条件遥操作重定向（arXiv:2607.15448）
 - **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI SKR：稀疏关键点 + 仅身高缩放 + mink IK（arXiv:2605.03452）
 - **ingest 档案：** [sources/papers/warp_arxiv_2606_29940.md](../../sources/papers/warp_arxiv_2606_29940.md) — WARP：离线 Meta Quest 全身演示的闭式 c-SEW 重定向 + lazy base（arXiv:2606.29940）；配套 [项目页](../../sources/sites/warp-retargeting-github-io.md)（截至入库日未列代码）
 - **ingest 档案：** [sources/sites/jc-bao-spider-project-github-io.md](../../sources/sites/jc-bao-spider-project-github-io.md) — SPIDER 项目页 jc-bao.github.io/spider-project（管线演示与 BibTeX）
