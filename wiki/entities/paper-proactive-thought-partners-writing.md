@@ -114,6 +114,7 @@ flowchart TB
 - [WaytoAGI 本周顶级 AI 论文技术地图](../overview/waytoagi-top-ai-papers-2026-09-07-09-13-technology-map.md)
 - [AI 智能体评测](../concepts/ai-agent-evaluation.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
+- [Proactive AI for Superintelligent Agents（主动式智能体综述，不同论文）](./paper-proactive-ai-superintelligent-agents.md)
 
 ## 参考来源
 
