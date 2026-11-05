@@ -76,6 +76,7 @@
 - [JEPA, from language models to world models（VideoDB）](wiki/entities/article-videodb-jepa-world-models.md) — VideoDB Labs 于 2026-07-07 发布的技术长文，从 next-token prediction 与 latent prediction 的差异讨论 JEPA 如何进入 VLM、VL `📅unknown` `[entity_page]`
 - [How a robot remembers：机器人外部视频记忆](wiki/entities/article-videodb-robot-memory.md) — VideoDB 的文章提出：将摄像头视频与可查询的带时间索引结合，让模型按任务回看片段，并把分析结果写回索引。 `📅unknown` `[entity_page]`
 - [A Visual Guide to Multimodal Generation](wiki/entities/article-visual-multimodal-generation.md) — 这篇图解教程梳理图像、音频、视频的生成机制，以及语言模型如何连接或统一这些生成能力。 `📅unknown` `[entity_page]`
+- [Where Physical AI Is Heading（Physical AI 将走向何方）](wiki/entities/article-where-physical-ai-is-heading.md) — Alex 的文章从数据、机器人形态和经济性三个角度提出对 Physical AI 的发展预测，并将实际部署视为价值来源。 `📅unknown` `[entity_page]`
 - [Articraft](wiki/entities/articraft.md) — Articraft** 是一套面向 **可扩展可关节 3D 资产生成** 的 **agentic** 管线：在**受限工作区**（如单一可写 `model.py`、只读 SDK 文档与小动作空间） `📅2026-05-16` `[entity_page]`
 - [Artificial Analysis](wiki/entities/artificial-analysis.md) — Artificial Analysis** 是独立 AI 模型与推理服务评测平台，通过公开榜单、方法说明和结构化 API 汇总模型能力、定价及用户侧推理性能，帮助团队按质量、成本和响应速度选型。 `📅unknown` `[entity_page]`
 - [Artisan：物理接地的可关节 3D 资产生成](wiki/entities/artisan.md) — Artisan 是一套多智能体 3D 资产生成与验证管线：从文本和可选图像生成带关节的物体，再用物理仿真反馈检查它是否能稳定、无明显碰撞地运动。 `📅unknown` `[entity_page]`
@@ -3528,7 +3529,7 @@
 - [Dataset-Free Compliant Humanoid Loco-Manipulation with Dynamic Online Posture（OCLO）](wiki/entities/paper-oclo-online-posture-compliant-loco-manipulation.md) — 一句话定义**：OCLO 是一种面向 Unitree G1 的无人体动作数据移动操作框架，它从双末端目标在线补全骨盆/躯干姿态，并通过力反馈参考偏移训练全身顺应性。 `📅unknown` `[entity_page]`
 - [Octo：灵活输入的开源通才操作策略](wiki/entities/paper-octo.md) — Octo**（*Octo: An Open-Source Generalist Robot Policy*，[arXiv:2405.12213](https://arxiv.org/abs/240 `📅unknown` `[entity_page]`
 - [E-SOAM：仿章鱼可传感软臂的环境交互](wiki/entities/paper-octopus-inspired-esoam-soft-arm.md) — Octopus-inspired sensorized soft arm for environmental interaction**（Fan Yang† / Hao Ding†、Tianmia `📅unknown` `[entity_page]`
-- [ODE Policy（arXiv:2611.01729）](wiki/entities/paper-ode-policy-action-dynamics.md) — ODE Policy**（*ODE Policy: Robot Learning via Action Dynamics, Not Actions*，[arXiv:2611.01729](http `📅unknown` `[entity_page]`
+- [ODE Policy: Robot Learning via Action Dynamics, Not Actions（基于动作动力学的机器人学习）](wiki/entities/paper-ode-policy-action-dynamics.md) — ODE Policy**（*ODE Policy: Robot Learning via Action Dynamics, Not Actions*，[arXiv:2611.01729](http `📅unknown` `[entity_page]`
 - [ODEWorld（物理时间流连续预测架构）](wiki/entities/paper-odeworld.md) — ODEWorld**（*A Continuous Predictive Architecture via Physical-Time Flow*，[arXiv:2607.27924](https: `📅unknown` `[entity_page]`
 - [Off-Road Global Nav：可通行感知的长程越野全局规划](wiki/entities/paper-offroad-global-nav.md) — Learning Traversability-Aware Global Planners for Long Horizon Off-Road Navigation**（[arXiv:2607.2 `📅unknown` `[entity_page]`
 - [ω-0：潜空间预测式人形并发 Loco-Manipulation WAM](wiki/entities/paper-omega-0.md) — ω-0**（OMEGA-0；*A Latent Predictive World Action Model for Concurrent Humanoid Loco-Manipulation*， `📅unknown` `[entity_page]`
