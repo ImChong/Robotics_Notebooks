@@ -49,21 +49,21 @@ flowchart TB
 ```mermaid
 sequenceDiagram
   participant Entry as 调用方
-  participant Loop as AgentLoop
+  participant Agent as AgentLoop
   participant Caller as ModelCaller
   participant Model as ChatModel
   participant Exec as ActionExecutor
   participant Tools as ToolDispatcher
-  Entry->>Loop: run（任务）
-  Loop->>Caller: routed（上下文与工具）
+  Entry->>Agent: run（任务）
+  Agent->>Caller: routed（上下文与工具）
   Caller->>Model: complete
   Model-->>Caller: 回复或工具调用
-  Caller-->>Loop: 模型回复
-  Loop->>Exec: run（首个工具调用）
+  Caller-->>Agent: 模型回复
+  Agent->>Exec: run（首个工具调用）
   Exec->>Tools: execute（检查通过后）
   Tools-->>Exec: 工具结果
-  Exec-->>Loop: 动作结果
-  Loop->>Caller: 携结果继续循环
+  Exec-->>Agent: 动作结果
+  Agent->>Caller: 携结果继续循环
 ```
 
 图展示 `AgentLoop.run` 内的一次普通工具调用，依据固定版本的 `AgentLoop.kt`、`ModelCaller.kt` 和 `ActionExecutor.kt`；并非全部分支。应用入口到手机控制实现尚未完整追踪。
