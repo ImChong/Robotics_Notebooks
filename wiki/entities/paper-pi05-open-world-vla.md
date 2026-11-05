@@ -9,7 +9,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-20
+updated: 2026-11-05
 arxiv: '2504.16054'
 code: https://github.com/Physical-Intelligence/openpi
 venue: HMI curated · 2025
@@ -46,6 +46,7 @@ sources:
 - ../../sources/papers/clap_arxiv_2608_27406.md
 - ../../sources/sites/pi05-open-world-generalization.md
 - ../../sources/repos/openpi.md
+- ../../sources/repos/lerobot.md
 - ../../sources/papers/rcl_awesome_wam_ref_a351afa5504418f3e26f_0-5-a-vision-language-action-model-with.md
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
@@ -93,19 +94,31 @@ project_id: pi05-open-world-vla
 
 π0.5不是简单把π0换一批数据继续训练。它面向家庭移动操作的长时任务，把统一模型拆成两个训练阶段和两种推理节奏：预训练用离散表示吃下异构数据，后训练再为目标本体加入连续动作专家。执行时同一模型先产生语义子任务，然后以它为条件生成低层动作。
 
-### 流程直觉
+## 流程总览
 
 ```mermaid
-flowchart LR
-  obs["当前图像 + 语言指令"] --> high["高层语义子任务"]
-  high --> low["连续动作专家"]
-  obs --> low
-  low --> chunk["动作块"]
-  chunk --> robot["机器人执行"]
-  robot --> obs
+flowchart TD
+  subgraph PT["阶段一：预训练（全部离散 token，α=0）"]
+    d1["多本体机器人数据<br/>动作经 FAST 编码为 token"] --> vlm["VLM Transformer<br/>交叉熵 next-token"]
+    d2["高层语义子任务标注"] --> vlm
+    d3["网页数据：字幕 / VQA / 检测"] --> vlm
+  end
+  subgraph PO["阶段二：后训练（加动作专家，联合损失）"]
+    d4["移动操作数据（约 400 h）<br/>+ 人类口头指导"] --> mix["文本 CE + α·动作专家流匹配 MSE"]
+    mix --> ae["Action Expert<br/>注意力使 FAST 与 flow 两种动作表示互不可见"]
+  end
+  PT --> PO
+  subgraph INF["推理：两段式"]
+    o["多路图像 + 关节状态（离散化为文本）<br/>+ 任务提示 ℓ"] --> hi["自回归生成高层子任务 ℓ̂<br/>如「pick up the plate」"]
+    hi --> lo["以 ℓ̂ 为条件，动作专家<br/>10 步去噪生成动作块 a_t:t+H"]
+    lo --> ex["执行动作块，读新观测再来一轮"]
+  end
+  PO --> INF
 ```
 
-推理按不同节奏拆分语义子任务选择与连续动作生成；动作块执行后，模型接收新观测继续闭环。
+图依据：论文 Fig.3、§III-A/B（式 (1)、α 权衡、FAST+flow 联合训练、10 步去噪）。论文称本阶段二所用移动操作数据约 400 小时（§I）。
+
+> LeRobot 注意：上图是**论文的完整配方**。LeRobot 的 `policies/pi05/` 只实现其中的「PaliGemma + flow-matching action expert」推理/微调路径，没有高层子任务文本生成，也没有 FAST 预训练损失（见下文「LeRobot 实现要点」）。
 
 ## 工程实践
 
@@ -119,19 +132,46 @@ flowchart LR
 
 ## 源码运行时序图
 
-openpi 已提供可运行的 π₀.₅ 推理与微调入口；代码公开，但原始预训练数据未全部公开。下图按仓库 README 的策略服务路径概括，机器人侧仍需适配观测与动作接口。
+### A. LeRobot 实现（固定提交 `9e5ee98…`，`src/lerobot/policies/pi05/`）
+
+已通读 `modeling_pi05.py`、`processor_pi05.py`、`configuration_pi05.py`。训练与推理与 [π0](./paper-pi0.md) 同构，区别在于：state 离散成 256 桶写进文本提示；时间步不再拼进动作 token，而是经 `time_mlp_in/out` 作为 adaRMSNorm 条件 `adarms_cond`；没有 `state_proj`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant T as scripts/lerobot_train.py<br/>update_policy
+    participant PP as processor_pi05.py<br/>make_pi05_pre_post_processors
+    participant P as modeling_pi05.py<br/>PI05Policy
+    participant M as PI05Pytorch
+    participant G as PaliGemmaWithExpertModel.forward
+    T->>PP: 重命名 → 加 batch 维 → (相对动作) → 归一化(QUANTILES)
+    PP->>PP: Pi05PrepareStateTokenizerProcessorStep：state 分 256 桶并拼进提示词（Task / State / Action 三段）
+    PP->>PP: TokenizerProcessorStep（PaliGemma 分词，max_length=200）
+    T->>P: policy(batch) → forward
+    P->>M: forward(images, tokens, actions, noise, time)
+    M->>M: embed_prefix（图像 + 语言 token，可选 MEM 本体历史）
+    M->>M: embed_suffix(noisy_actions, t) → action_in_proj + time_mlp → adarms_cond
+    M->>G: inputs_embeds=[prefix, suffix]，adarms_cond=[None, cond]
+    G-->>M: suffix_out → action_out_proj → v_t
+    M-->>T: MSE(u_t, v_t)（可选训练期 RTC 前缀掩码）
+    Note over P,M: 推理：PI05Policy.select_action → predict_action_chunk → PI05Pytorch.sample_actions<br/>先 prefix 前向缓存 KV，再 denoise_step × num_inference_steps(10)，与 π0 相同的队列取动作
+```
+
+### B. 官方原仓 openpi（沿旧版，已用 GitHub main 分支 `scripts/serve_policy.py` 抽查）
+
+openpi 已提供可运行的 π₀.₅ 推理与微调入口；代码公开，但原始预训练数据未全部公开。抽查确认：`serve_policy.py` 的 `create_default_policy` 为 `pi05_droid`、`pi05_libero` 等环境配置分别指定 `gs://openpi-assets/checkpoints/…` 检查点，经 `_policy_config.create_trained_policy` 建策略，再由 `websocket_policy_server.WebsocketPolicyServer` 提供服务（该抽查针对 main 分支，不是固定提交）。机器人侧仍需适配观测与动作接口。
 
 ```mermaid
 sequenceDiagram
   autonumber
   participant Robot as Robot Client / Adapter
-  participant Server as serve_policy.py
+  participant Server as serve_policy.py<br/>WebsocketPolicyServer
   participant Config as pi05_droid / pi05_libero Config
   participant Model as π₀.₅ Policy
   participant Store as openpi-assets Checkpoint
   Robot->>Server: observation + prompt
-  Server->>Config: load model configuration
-  Server->>Store: download checkpoint if needed
+  Server->>Config: _config.get_config
+  Server->>Store: create_trained_policy 下载检查点
   Store-->>Model: π₀.₅ weights
   Server->>Model: policy.infer(example)
   Model-->>Server: action chunk
@@ -139,7 +179,14 @@ sequenceDiagram
   Robot->>Robot: adapt actions and execute
 ```
 
-该路径从仓库的 scripts/serve_policy.py 和 pi05_droid / pi05_libero 配置开始；具体机器人 IO 由客户端集成。
+## LeRobot 实现要点
+
+- **入口与权重：** `policy.type=pi05`；基座 [`lerobot/pi05_base`](https://huggingface.co/lerobot/pi05_base)，LIBERO 基座 `lerobot/pi05_libero_base`（见 `docs/source/pi05.mdx`）；依赖 `pip install -e ".[pi]"`；需接受 `google/paligemma-3b-pt-224` 分词器的 Hub 许可。
+- **实现了什么：** 论文的「后训练」推理形态——PaliGemma（`gemma_2b`）+ `gemma_300m` action expert，flow matching，`num_inference_steps=10`，`chunk_size=n_action_steps=50`。state 在 `Pi05PrepareStateTokenizerProcessorStep` 中用 `np.digitize` 离散为 256 桶并写入提示词，与论文「本体状态离散化后作为文本 token 输入」一致；归一化默认 `QUANTILES`（状态与动作）。
+- **没有实现什么（读源码+文档确认）：** ① 没有高层子任务自回归生成（`modeling_pi05.py` 里没有文本解码路径）；② 没有 FAST 离散动作预训练损失；③ MEM 长时程语言记忆未实现（`pi05.mdx` 的 Tip 明说只做短时视觉/本体记忆）。因此「π0.5 开放世界泛化」的分层推理效果不能直接用 LeRobot 的 `pi05` 复现，只能当作「π0.5 权重 + flow 动作头」使用。
+- **LeRobot 扩展（非原论文）：** `use_visual_memory`/`use_proprioceptive_memory`（[MEM, arXiv:2603.03596](https://arxiv.org/abs/2603.03596) 的短时记忆，默认关）；`rtc_training_max_delay`（[训练期 RTC, arXiv:2512.05964](https://arxiv.org/abs/2512.05964)，默认 0）；`use_relative_actions`。这三项的论文本页未读，仅据 `docs/source/pi05.mdx` 转述。
+- **知识隔离（knowledge insulation）：** `modeling_pi05.py` 的 `compute_layer_complete` 带 `knowledge_insulation` 开关（action query 看 detach 的 VLM KV），但 `PaliGemmaWithExpertModel.knowledge_insulation` 类属性默认 `False`，`PI05Config` 里没有对应配置项；真正启用它的是别的策略（如 `fineart_vla` 通过 `config.knowledge_insulation` 赋值）。详见 [Knowledge Insulation](./paper-knowledge-insulation.md)。
+- **文档给出的复现数字（`docs/source/pi05.mdx`，LeRobot 在 LIBERO 微调 6k 步 vs OpenPI 参考）：** Spatial 97.0 / 98.8、Object 99.0 / 98.2、Goal 98.0 / 98.0、LIBERO-10 96.0 / 92.4，平均 97.5 / 96.85（单位 %，LeRobot / OpenPI；文档自述，本次未重跑）。
 
 ## 实验与评测读法
 
@@ -212,6 +259,8 @@ sequenceDiagram
 
 - [官方 π₀.₅ 项目页归档](../../sources/sites/pi05-open-world-generalization.md)
 - [openpi 官方仓库归档](../../sources/repos/openpi.md)
+- [LeRobot 仓库归档](../../sources/repos/lerobot.md)：固定提交 `9e5ee98…` 的 `policies/pi05/` 源码与 `docs/source/pi05.mdx`
+- [arXiv PDF](https://arxiv.org/pdf/2504.16054)：2026-11-05 重读 §III-A/B、Fig.3
 - [sources/papers/hmi_p059_pi05-open-world-vla.md](../../sources/papers/hmi_p059_pi05-open-world-vla.md)
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 灵巧真机上 π0 风格 chunk 对照
 - [sources/repos/humanoid-motion-intelligence.md](../../sources/repos/humanoid-motion-intelligence.md)

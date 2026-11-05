@@ -12,7 +12,7 @@ tags:
   - project
   - x-square-robot
 status: complete
-updated: 2026-10-10
+updated: 2026-11-05
 project_id: wall-oss
 arxiv: "2509.11766"
 code: https://github.com/X-Square-Robot/wall-x
@@ -42,6 +42,8 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/wall-x.md
   - ../../sources/sites/x2robot-wall-oss.md
+  - ../../sources/papers/wall_oss_arxiv_2509_11766.md
+  - ../../sources/repos/lerobot.md
 summary: "WALL-OSS（自变量，arXiv:2509.11766，2025-09）：Qwen2.5-VL-3B 主干 + 静态路由 VL/Action 双 FFN，先用 FAST 离散动作与具身 VQA 做 Inspiration，再用 flow matching 做 Integration，Uni-CoT 串起指令→推理→子任务→动作。wall-x（Apache-2.0）开源训练推理代码和 FLOW/FAST 权重，2026-05 升级为 WALL-OSS-0.5（独立报告 arXiv:2605.30877）；预训练数据未公开。"
 institutions:
   - x-square-robot
@@ -101,6 +103,23 @@ flowchart LR
 | **核心主张** | VLM→VLA 的紧耦合迁移；指令跟随与长程 | 预训练 checkpoint 不微调即可执行（17 任务零样本）；微调后 15 任务比 π0.5 高 17.5 pp |
 | **公开权重** | `wall-oss-flow`、`wall-oss-fast`（+ ModelScope）；2026-01 `wall-oss-flow-0.1` | `wall-oss-0.5` |
 | **代码** | wall-x 旧提交 `97406f2`（README 要求 FLOW/FAST 回退到这里） | wall-x main / 1.1.0 |
+
+## 流程总览
+
+下图是一代 WALL-OSS 从输入到动作的端到端路径（论文 §3 的两阶段训练 + 推理分支，以及 LeRobot `wall_x` 策略的两种动作预测模式）；两阶段课程细节见下文「核心原理」。
+
+```mermaid
+flowchart LR
+  I["第一人称/臂载图像 + 指令<br/>+ 本体状态（Integration 起）"] --> Q["Qwen2.5-VL 主干<br/>共享自注意力"]
+  Q --> R{"静态路由<br/>按 token 类型"}
+  R -->|"视觉/语言 token"| V["VL FFN"]
+  R -->|"动作 token"| A["Action FFN"]
+  V --> L["LM head：CoT / 子任务 / FAST 动作 token"]
+  A --> F["Flow head：连续动作块"]
+  L -->|"prediction_mode = fast"| O["动作 chunk"]
+  F -->|"prediction_mode = diffusion"| O
+  O --> E["机器人执行"]
+```
 
 ## 核心原理（方法）
 
@@ -179,6 +198,47 @@ sequenceDiagram
 
 - **最短核对路径：** `scripts/fake_inference.py --checkpoint-path` 冒烟测试 → `run_libero.sh SMOKE=1` → 自有 LeRobot 数据微调 → `run_serving.sh` + `draw_openloop_plot.py` 做开环对比。
 - **部署：** `workspace/rtx5090/` 提供 RTX 5090 的安装与服务脚本；默认训练配置依赖 `X-Square-Robot/dmuon`。
+
+## LeRobot 源码运行时序图
+
+LeRobot 固定提交 `9e5ee98` 把 WALL-OSS 一代作为 `policy.type=wall_x` 集成（`src/lerobot/policies/wall_x/`，文档 `docs/source/walloss.mdx`，实现改编自 wall-x 仓库）。**注意：** `wall_x` 对应一代 WALL-OSS（FLOW / FAST 权重），二代 Wall-OSS-0.5 在 LeRobot 里是另一个策略类型 `wall_oss_05`，见 [Wall-OSS-0.5](./paper-wall-oss-0-5.md)。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Tr as lerobot_train.train / lerobot_eval.rollout
+    participant Fa as policies.factory.make_policy / make_pre_post_processors
+    participant Pre as make_wall_x_pre_post_processors (processor_wall_x.py)
+    participant Pol as WallXPolicy (modeling_wall_x.py)
+    participant M as Qwen2_5_VLMoEForAction
+
+    Tr->>Fa: --policy.type=wall_x --policy.pretrained_name_or_path=x-square-robot/wall-oss-flow
+    Fa->>Pol: WallXPolicy.__init__ → Qwen2_5_VLMoEForAction.from_pretrained(attn_implementation, action_tokenizer_path)
+    Fa->>Pre: RenderRuntimeMessagesStep → RenderTrainingMessagesStep → WallXTaskProcessor → normalize → WallXPromptProcessorStep → WallXTokenizerStep
+    Pre-->>Tr: input_ids / pixel_values / proprioception / dof_mask / moe_token_types / action_chunk
+    Tr->>Pol: policy(batch) = WallXPolicy.forward
+    Pol->>M: self.model(**batch, mode="train")
+    M->>M: train_step_forward：ActionHead 采样 Beta 时间 → make_flow_matching_inputs → action embedding 写入动作 token 位置
+    M-->>Pol: flow_loss（ActionHead.flow_loss，dof_mask 加权）+ cross_entropy_loss
+    Pol-->>Tr: 动作-only：outputs.loss；带语言 recipe：flow_loss_weight·flow + text_loss_weight·text
+    Tr->>Pol: 推理 select_action；队列空时 predict_action_chunk
+    alt prediction_mode = diffusion（默认）
+        Pol->>M: mode="predict", predict_mode="diffusion"
+        M->>M: step()：ActionHead.step 嵌入噪声动作 → 主干 → action_proj_back；euler_integrate(NOISE_AT_ZERO, linspace 时间网格)
+    else prediction_mode = fast
+        Pol->>M: predict_mode="fast"（需 generation_prompt_ids，自回归解码 FAST token）
+    end
+    M-->>Pol: predict_action
+    Pol-->>Tr: 裁到原动作维度 → unnormalize；队列逐步 popleft 执行 n_action_steps
+```
+
+## LeRobot 实现
+
+- **安装：** `pip install -e ".[wallx]"`；默认初始权重 `x-square-robot/wall-oss-flow`（`WallXConfig.pretrained_name_or_path`）。
+- **FLOW / FAST 的确认：** 上文「工程实践」曾把 FLOW、FAST 两个权重的分工标为推测；LeRobot 的配置与文档给出了旁证：`policy.prediction_mode` 取 `diffusion`（迭代去噪）或 `fast`（next-token 预测，`use_fast_tokenizer` 随之开启）。这印证了「连续 flow 分支 / 离散 FAST 分支」，但每个 HF 权重具体对应哪种模式仍应以权重卡片为准。
+- **默认值（`configuration_wall_x.py`）：** `chunk_size=32`、`n_action_steps=32`、`prediction_mode="diffusion"`。
+- **文本与交互：** `supports_text_generation()` 为真，`generate_text` 复用 Qwen 视觉语言专家；`lerobot-rollout --interactive=true` 支持 `/vqa`、`/autosteer`、`/subtask`。语言 recipe 训练默认 `text_loss_weight=0.01`、`flow_loss_weight=1.0`、`tokenizer_max_length=768`（文档）。
+- **许可：** 文档称 Apache 2.0，与 wall-x 仓库一致。
 
 ## 工程实践
 
@@ -274,6 +334,8 @@ sequenceDiagram
 
 ## 参考来源
 
+- [wall_oss_arxiv_2509_11766.md](../../sources/papers/wall_oss_arxiv_2509_11766.md)：论文来源归档
+- [lerobot.md](../../sources/repos/lerobot.md)：LeRobot 固定提交 9e5ee98 的 `docs/source/walloss.mdx` 与 `src/lerobot/policies/wall_x/`
 - [WALL-OSS / WALL-OSS-0.5 官方页归档](../../sources/sites/x2robot-wall-oss.md)
 - [WALL-X 源码归档](../../sources/repos/wall-x.md)（<https://github.com/X-Square-Robot/wall-x>）
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)

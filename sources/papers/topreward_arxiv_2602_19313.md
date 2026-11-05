@@ -68,3 +68,16 @@
 
 - [项目页](../sites/topreward-github-io.md)
 - [代码仓](../repos/topreward.md)
+
+## 2026-11-05 补充：arXiv v2 全文核对
+
+> 上文「核心论文摘录」按项目页记录。本次通读 arXiv:2602.19313v2（2026-07-22）全文，以下为与上文不同或新增的要点；论文实体页 [TOPReward](../../wiki/entities/paper-topreward.md) 已同步。
+
+- **作者（PDF 页首）：** Shirui Chen, Cole Harrison, Ying-Chun Lee, Angela Jin Yang, Zhongzheng Ren, Lillian J. Ratliff, Jiafei Duan, Dieter Fox, Ranjay Krishna；机构 UW、Ai2、Amazon、UNC Chapel Hill；Duan / Fox / Krishna 共同指导。
+- **方法式 (1)–(3)：** r_t = log p_θ(a | c(τ_{1:t}, u))，a="True"；K 个均匀前缀；episode 内 min-max（非因果，仅评测/可视化）；奖励加权 BC 的正权重 Δ=min(exp(β·(r_tk − r_tk−1)), δmax)，β=0.2、δmax=2.0，加在 π0 的 flow-matching 损失上。
+- **规模与数字（v2）：** ManiRewardBench 130 个任务、四个平台；进度子集 113 任务 / 497 episode；OXE 过滤后 33 个数据集 × 20 episode。Qwen3-VL-8B：OXE VOC 0.874（GVL 0.218），ManiRewardBench 0.942（GVL 0.316）；Qwen3-VL-32B 在 ManiRewardBench 为 0.864。
+- **对照训练型模型：** Robometer-4B 在 OXE 0.838、ManiRewardBench 0.858；成功检测 ROC-AUC：TOPReward 8B 0.939 / 32B 0.965，Robometer-4B 成功头 0.930，GVL 0.728。
+- **聊天模板消融（附录 E.2）：** Qwen3-VL-8B 平均 VOC 0.945 → 0.500；Molmo2-8B 0.652 → 0.523。
+- **下游：** 六个 SO-100 真机任务，TOP-RWBC（部分成功得分，10 次试验）均高于 BC。
+- **与上文的出入：** 上文写的「OXE 39 数据集」「成功检测 0.654 / 0.519」「TOP-AWR」是项目页 / 早期口径；v2 论文分别为 33 个过滤数据集、新的成功检测分数（0.939 / 0.965）、TOP-RWBC。
+- **LeRobot 端口：** 见 [LeRobot 仓库归档](../repos/lerobot.md)；文档 `docs/source/topreward.mdx`，源码 `src/lerobot/rewards/topreward/`（固定提交 `9e5ee98`）。

@@ -9,7 +9,7 @@ tags:
   - lerobot
   - open-source
 status: complete
-updated: 2026-11-02
+updated: 2026-11-05
 arxiv: "2506.01844"
 code: https://github.com/huggingface/lerobot
 related:
@@ -26,6 +26,7 @@ related:
 sources:
   - ../../sources/papers/smolvla_arxiv_2506_01844.md
   - ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
+  - ../../sources/repos/lerobot.md
 summary: "SmolVLA（arXiv:2506.01844）：SmolVLA 是小而高效、由社区数据驱动的 VLA：可在单 GPU 上训练、在消费级 GPU 甚至 CPU 上部署，并用解耦感知/动作预测与执行的异步推理栈提高控制频率。"
 ---
 
@@ -112,6 +113,75 @@ flowchart TD
 - **与 ACT 的分工：** ACT 是单任务小模型基线；SmolVLA 证明了在同样低成本硬件（SO-100/101）上，语言条件多任务 VLA 已可以超过单任务 ACT。
 - **异步推理不绑定模型：** 论文 §5 明确它与模型无关，任何输出动作 chunk 的策略（包括 [action chunking](../methods/action-chunking.md) 系）都能套用。
 
+## 源码运行时序图
+
+以下依据 LeRobot 固定提交 `9e5ee9859480e425a97a6836bb3fee479539beb5` 的 `src/lerobot/policies/smolvla/`，节点均为该提交里真实存在的文件/类/函数（本次已通读 `modeling_smolvla.py`、`smolvlm_with_expert.py`、`processor_smolvla.py`、`configuration_smolvla.py` 与 `inference/sync.py`）。
+
+### 训练（`lerobot-train`）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant T as scripts/lerobot_train.py<br/>train()
+    participant F as policies/factory.py<br/>make_policy / make_pre_post_processors
+    participant PP as processor_smolvla.py<br/>make_smolvla_pre_post_processors
+    participant P as modeling_smolvla.py<br/>SmolVLAPolicy.forward
+    participant M as VLAFlowMatching.forward
+    participant E as smolvlm_with_expert.py<br/>SmolVLMWithExpertModel.forward
+    T->>F: policy.type=smolvla，建策略与前后处理器
+    F->>PP: 重命名 → 加 batch 维 → NewLineTaskProcessorStep → TokenizerProcessorStep → 设备 → 归一化
+    T->>PP: _preprocess_dataset_batch(batch)
+    T->>P: update_policy → policy(batch)
+    P->>P: prepare_images / prepare_state / prepare_action
+    P->>M: forward(images, lang, state, actions)
+    M->>M: make_flow_matching_inputs 得到 x_t 与目标速度 u_t
+    M->>M: embed_prefix（图像+语言+state）与 embed_suffix（含时间嵌入的带噪动作）
+    M->>E: inputs_embeds=[prefix, suffix]
+    E-->>M: suffix 输出，逐层交错 forward_attn_layer / forward_cross_attn_layer
+    M-->>P: action_out_proj 得速度 v_t，MSE(u_t, v_t)
+    P-->>T: 按 action_is_pad 掩码后求均值 loss
+```
+
+### 推理（`lerobot-rollout`，同步引擎）
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant R as scripts/lerobot_rollout.py<br/>rollout()
+    participant C as rollout/context.py<br/>build_rollout_context
+    participant I as inference/sync.py<br/>SyncInferenceEngine.get_action
+    participant P as SmolVLAPolicy.select_action
+    participant M as VLAFlowMatching.sample_actions
+    participant E as SmolVLMWithExpertModel.forward
+    R->>C: 载入 --policy.path，make_pre_post_processors，create_inference_engine
+    loop 每个控制周期
+        R->>I: get_action(obs_frame)
+        I->>I: prepare_observation_for_inference → preprocessor
+        I->>P: select_action(observation)
+        alt 动作队列为空
+            P->>M: _get_action_chunk → sample_actions
+            M->>E: forward(inputs_embeds=[prefix,None], use_cache) 缓存图像/语言 KV
+            loop num_steps=10 次 euler_integrate
+                M->>E: denoise_step → forward(inputs_embeds=[None,suffix], past_key_values)
+            end
+            M-->>P: 动作 chunk（裁掉 padding 维）
+            P->>P: 入队 n_action_steps 个动作
+        end
+        P-->>I: popleft 一个动作
+        I-->>R: postprocessor 反归一化后的动作 → 发给机器人
+    end
+```
+
+## LeRobot 实现要点
+
+- **入口与权重：** `policy.type=smolvla`；预训练权重 [`lerobot/smolvla_base`](https://hf.co/lerobot/smolvla_base)（LeRobot 文档 `docs/source/smolvla.mdx` 称其为 450M 模型）；`configuration_smolvla.py` 默认 VLM 为 `HuggingFaceTB/SmolVLM2-500M-Video-Instruct`。
+- **默认超参（读自 `configuration_smolvla.py`）：** `chunk_size=50`、`n_action_steps=50`、`num_steps=10`（flow matching 去噪步）、`num_vlm_layers=16`、`self_attn_every_n_layers=2`、`expert_width_multiplier=0.75`、`max_state_dim=max_action_dim=32`、输入图 resize-with-pad 到 512×512、`freeze_vision_encoder=True`、`train_expert_only=True`。与论文 §3.1 的「只取前 16 层、n=50、10 步」一致；`0.75` 的专家宽度倍率论文中的取值本页未核实。
+- **交错注意力在代码里的样子：** `SmolVLMWithExpertModel.forward` 中，`layer_idx % self_attn_every_n_layers == 0` 的层走 `forward_attn_layer`（自注意力），其余走 `forward_cross_attn_layer`（专家对 VLM KV 做交叉注意力）；填充 KV cache 的那次前向全部走自注意力。
+- **推理加速：** `sample_actions` 先对 prefix（图像+语言+state）跑一次并缓存 KV，再用 `euler_integrate` 反复只算 suffix；`select_action` 用 `_queues[ACTION]` 队列逐步弹出。
+- **⚠ 与上文流程图/论文异步栈的版本差异：** 论文 §3.3 与本页「流程总览」里的 `RobotClient / PolicyServer` 是论文/旧版 `lerobot.async_inference` 的叫法；在上述固定提交里该目录已不存在，`docs/source/remote_inference.mdx` 明确写「`lerobot[async]` extra 与 `lerobot.async_inference` 已被 `lerobot[remote]`、`lerobot-policy-server`、`lerobot-rollout --inference.type=remote` 取代，旧的 chunk 阈值与聚合权重不可直接沿用」。因此异步推理现在对应 `src/lerobot/remote_inference/`（`RemoteClient`、`PolicyServer`）与 `inference/rtc.py`，不是论文里的同名类。
+- **限制：** 默认冻结视觉编码器、只训动作专家，微调时相机键需用 `--rename_map` 对齐 `camera1/2/3`（见 `docs/source/smolvla.mdx`）；RTC 路径下不支持 `select_action`（代码里 `assert not self._rtc_enabled()`），须走 `predict_action_chunk`。
+- **LeRobot 侧未复现论文数字：** 本页评测表全部来自论文；LeRobot 仓库未提供与之对应的复现表（SmolVLA 的 docs 未列 LIBERO 成功率）。
+
 ## 结论
 
 **SmolVLA 把「flow-matching VLA」压到 0.45B、单本体社区数据也能训出可用策略，是低成本硬件上可复现的 VLA 基线，而不是大模型的替代品。**
@@ -138,5 +208,6 @@ flowchart TD
 
 - [smolvla_arxiv_2506_01844.md](../../sources/papers/smolvla_arxiv_2506_01844.md)
 - [x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md](../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md)
+- [lerobot 仓库归档](../../sources/repos/lerobot.md)：固定提交 `9e5ee98…` 的 `policies/smolvla/` 源码与 `docs/source/smolvla.mdx`、`remote_inference.mdx`
 - [arXiv:2506.01844](https://arxiv.org/abs/2506.01844)
 - [arXiv PDF](https://arxiv.org/pdf/2506.01844)：已通读方法部分与实验：§3.1 模型结构、§3.2 预训练数据、§3.3 异步推理、§4 实验（Table 2–13、Fig.5）、§5.1 局限

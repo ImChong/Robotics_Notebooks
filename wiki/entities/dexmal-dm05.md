@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, dexmal, flow-matching, foundation-model, manipulation, navigation, cross-embodiment, open-world, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-29
+updated: 2026-11-05
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
@@ -26,6 +26,7 @@ sources:
   - ../../sources/repos/dexmal_dexbotic.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/opendm.md
+  - ../../sources/repos/lerobot.md
 summary: "Dexmal DM0.5：Gemma3-4B VLM + 680M Flow-Matching Action Expert 的开放世界 VLA；约 60s 历史、11 类具身 CoT 与 DP 轨迹对齐；官方 **OpenDM** 与 **Dexbotic** 双栈复现，共享 DM05 / LIBERO / RobotWin2 / Table30v2 等权重。"
 ---
 
@@ -226,6 +227,41 @@ sequenceDiagram
 
 - **LIBERO 官方 99.0% 行：** serve [Dexmal/DM05-libero](https://huggingface.co/Dexmal/DM05-libero)，勿误用未微调 Base 做评测。
 
+## LeRobot 源码运行时序图
+
+LeRobot 固定提交 `9e5ee98` 把 DM0.5 集成为 `policy.type=dm05`（`src/lerobot/policies/dm05/`，文档 `docs/source/dm05.mdx`，检查点 `lerobot/dm05_base`、`lerobot/dm05_libero`）。该适配器包住 OpenDM 的核心模型（`core/modeling.py` 的 `DM05CoreVLAModel`，Gemma3 VLM + `DM05ActionExpert`），保留 OpenDM 的模型路径但改用标准 LeRobot 数据集、处理器、训练与评测。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Tr as lerobot_train.train / lerobot_eval.rollout
+    participant Fa as policies.factory.make_policy / make_pre_post_processors
+    participant Pre as make_dm05_pre_post_processors
+    participant Pol as DM05Policy (modeling_dm05.py)
+    participant Core as DM05CoreVLAModel (core/modeling.py)
+
+    Tr->>Fa: --policy.path=lerobot/dm05_base
+    Fa->>Pol: DM05Policy.__init__ / from_pretrained（LeRobot 检查点含 core_config；原始 Dexmal/DM05 则一次性转换）
+    Fa->>Pre: Rename → AddBatchDim → Normalizer → DM05ClipNormalizedProcessorStep → DM05StateBinsProcessorStep → DM05TokenizerProcessorStep(Gemma3 processor，渲染相机+任务+状态 bin)
+    Pre-->>Tr: input_ids / pixel_values / attention_mask / states / actions
+    Tr->>Pol: policy(batch) = forward → _prepare_model_inputs(include_actions=True)
+    Pol->>Core: forward：VLM 前缀 → build_action_adarms_cond（时间 MLP）→ _suffix_forward（动作专家，合并注意力）
+    Core-->>Pol: masked_flow_matching_loss（按 action_dim_mask / action_is_pad 掩码）
+    Pol-->>Tr: loss = fm_loss（核心 forward 文档字符串：LeRobot 集成只用 flow-matching 损失）
+    Tr->>Pol: 推理 select_action；队列空时 predict_action_chunk
+    Pol->>Core: inference_action：compute_dm05_prefix_cache 一次 → diffusion_steps(默认 10) 次 Euler 去噪（可选 compiled suffix）
+    Core-->>Pol: (B, chunk_size, 32) 动作
+    Pol-->>Tr: 裁到数据集动作维度 → unnormalize → AbsoluteActionsProcessorStep（若用相对动作）
+```
+
+## LeRobot 实现
+
+- **范围（读源码所见）：** `DM05Policy.forward` 返回核心模型的 `outputs.loss`；核心 `forward` 的文档字符串写明「LeRobot integration only uses flow-matching loss」，返回值 `DM05OutputWithPast` 的 `loss` 即 `fm_loss`（另有 `ar_loss` 字段）。因此上文博客里的 **11 类具身 CoT 自回归监督、约 60s 历史上下文抽象、动态轨迹对齐** 均不在 LeRobot 训练路径内（历史帧推理见 Dexbotic；OpenDM 的 `DM05-MEM` 检查点同理）——这是对本页「核心结构/机制」表的重要限定。
+- **默认值（`configuration_dm05.py`）：** `chunk_size=50`、`n_action_steps` 默认等于 `chunk_size`、`max_action_dim=32`（核心模型上限）、`diffusion_steps=10`、`add_state=True`；基础检查点记录 OpenDM 的 14 维状态/动作契约，微调时从目标数据集解析维度。
+- **LIBERO 复现（文档）：** `lerobot/dm05_libero` 训练 50000 步，40 个任务各 5 局共 200 局：197/200（98.5%，Spatial 49/50、Object 50/50、Goal 50/50、LIBERO-10 48/50）；文档明说这不是 2000 局的标准协议，与上表 OpenDM 的 99.0% 不是同一次评测。
+- **安装与检查点：** `pip install -e ".[training,dm05]"`；须使用完整的检查点目录（策略权重+配置+处理器状态），单独的 `model.safetensors` 不够。许可：集成代码 Apache-2.0，权重随各自模型卡（Gemma）。
+- **论文：** 未找到 DM0.5 的 arXiv 论文，一手资料为官方技术博客；前代 DM0 另有论文 arXiv:2602.14974（*DM0: An Embodied-Native Vision-Language-Action Model towards Physical AI*，arXiv API 核对标题）。本页标注的 DM0.5 细节均来自博客/仓库归档，本次未独立复核博客原文。
+
 ## 工程实践
 
 | 项 | 要点 |
@@ -270,6 +306,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [lerobot.md](../../sources/repos/lerobot.md)：LeRobot 固定提交 9e5ee98 的 `docs/source/dm05.mdx` 与 `src/lerobot/policies/dm05/`
 - [OpenDM 仓库归档](../../sources/repos/dexmal_opendm.md)
 - [Dexbotic 仓库归档](../../sources/repos/dexmal_dexbotic.md)
 - [DM0.5 官方博客归档](../../sources/blogs/dexmal_dm05.md)

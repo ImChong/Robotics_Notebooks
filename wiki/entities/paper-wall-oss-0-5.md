@@ -12,13 +12,14 @@ tags:
   - action-tokenization
   - x-square-robot
 status: complete
-updated: 2026-10-09
+updated: 2026-11-05
 project_id: wall-oss-0-5
 arxiv: "2605.30877"
 code: https://github.com/X-Square-Robot/wall-x
 project: https://x2robot.com/oss
 related:
   - ./cn-os-wall-x.md
+  - ./lerobot.md
   - ../methods/vla.md
   - ../concepts/flow-matching-embodied-policy.md
   - ./paper-pi05-open-world-vla.md
@@ -36,6 +37,8 @@ related:
 sources:
   - ../../sources/sites/x2robot-wall-oss.md
   - ../../sources/repos/wall-x.md
+  - ../../sources/papers/wall_oss_05_arxiv_2605_30877.md
+  - ../../sources/repos/lerobot.md
 summary: "Wall-OSS-0.5（自变量，arXiv:2605.30877，2026-05-28）：Qwen2.5-VL-3B 扩成 4B MoT VLA，单阶段 flow + RVQ 动作 token CE + 多模态 CE 共训（gradient bridge）；预训练不微调，17 任务零样本平均 51.1、4 项 ≥80；15 任务微调平均 60.5，对 π0.5 43.0。wall-x 1.1.0 与 HF 权重已开源，预训练数据未公开。"
 institutions:
   - x-square-robot
@@ -86,7 +89,7 @@ institutions:
 
 ## 核心原理（方法）
 
-### 流程总览
+## 流程总览
 
 ```mermaid
 flowchart TB
@@ -169,6 +172,43 @@ sequenceDiagram
 
 - **最短核对路径：** `fake_inference.py --checkpoint-path` → `SMOKE=1 run_libero.sh` → 自有 LeRobot 数据微调 → `run_serving.sh` 接真机或开环评测。
 - **部署：** `workspace/rtx5090/` 提供 RTX 5090 安装与服务脚本（对应报告中的推理测速平台）。
+
+## LeRobot 源码运行时序图
+
+LeRobot 固定提交 `9e5ee98` 提供原生移植的 `policy.type=wall_oss_05`（`src/lerobot/policies/wall_oss_05/`，文档 `docs/source/wall_oss_05.mdx`，检查点 `lerobot/wall-oss-0.5`），不需要单独的 wall-x 检出，唯一专属依赖是 Transformers。上一代的 `wall_x` 策略类型对应 [WALL-OSS 一代](./cn-os-wall-x.md)，二者不可混用。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Tr as lerobot_train.train / lerobot_rollout
+    participant Fa as policies.factory.make_policy / make_pre_post_processors
+    participant Pre as make_wall_oss_05_pre_post_processors
+    participant Pol as WallOSS05Policy
+    participant M as WallOSS05Model (MoT 解码器 + WallOSS05ActionProcessor)
+
+    Tr->>Fa: --policy.path=lerobot/wall-oss-0.5
+    Fa->>Pre: RenderRuntimeMessagesStep → normalize(q01/q99) → ClampNormalized → WallOSS05PadState/ActionProcessorStep(26 维) → WallOSS05TokenizerStep(camera_key_mapping)
+    Pre-->>Tr: input_ids / pixel_values / moe_token_types / dof_mask
+    Tr->>Pol: policy(batch) = WallOSS05Policy.forward
+    Pol->>Pol: _sample_time（Beta），构造 flow_loss_mask（含 action_is_pad、predict_actions）
+    Pol->>M: model(mode="train")：noisy_training_input → 动作 embedding 写入 action token → _hidden_states
+    M-->>Pol: flow_loss（x 预测：(1-t)·v + noisy 与真值动作的平方差，按 dof_mask 加权）+ text_loss（text_labels）
+    Pol-->>Tr: flow_loss_weight·flow + text_loss_weight·text
+    Tr->>Pol: 推理 select_action → predict_action_chunk
+    Pol->>M: generate_flow_action：前缀（观测+文本）一次预填充并缓存 KV
+    loop num_inference_timesteps = 10
+        M->>M: WallOSS05ActionProcessor.embed → 主干 → action_proj_back；noisy += (t[i+1]-t[i])·velocity
+    end
+    M-->>Pol: 26 维规范动作 (B,32,26)
+    Pol-->>Tr: WallOSS05CropActionProcessorStep 裁回数据集动作宽度 → unnormalize
+```
+
+## LeRobot 实现
+
+- **范围与差别：** 文档称 LeRobot 版覆盖连续 x-prediction flow 训练与 10 步 Euler 采样、配方驱动的文本交叉熵与联合微调、VQA / 定位 / 子任务文本生成；源码中没有论文里的 RVQ 动作 token 分支（grep 未见），与论文「推理只走 flow 通路」一致，但意味着 LeRobot 微调**不复现**「离散动作 CE 梯度桥」，上文「工程实践」里「微调保留离散 + 连续 + 多模态联合目标」的建议在 LeRobot 里无法照做（推测：官方 wall-x 仓库可以）。
+- **默认值：** `chunk_size=32`、`n_action_steps=32`、`num_inference_timesteps=10`、26 维规范状态/动作、q01/q99 归一化；相机槽位默认 `face_view` 与 `right_wrist_view`，用 `--policy.camera_key_mapping` 改映射。
+- **训练：** `lerobot-train --policy.path=lerobot/wall-oss-0.5`，4B 模型建议先用小 batch；语言 recipe 示例设 `text_loss_weight=0.1`、`flow_loss_weight=1.0`（文档）。基础检查点需在目标机器人上微调后再报告任务结果（文档要求）。
+- **硬件：** 文档称需要带 CUDA 的 NVIDIA GPU。
 
 ## 工程实践
 
@@ -278,6 +318,8 @@ sequenceDiagram
 
 ## 参考来源
 
+- [wall_oss_05_arxiv_2605_30877.md](../../sources/papers/wall_oss_05_arxiv_2605_30877.md)：论文来源归档
+- [lerobot.md](../../sources/repos/lerobot.md)：LeRobot 固定提交 9e5ee98 的 `docs/source/wall_oss_05.mdx` 与 `src/lerobot/policies/wall_oss_05/`
 - [WALL-OSS / WALL-OSS-0.5 官方页归档](../../sources/sites/x2robot-wall-oss.md)
 - [WALL-X 源码归档](../../sources/repos/wall-x.md)
 - *Wall-OSS-0.5 Technical Report*, [arXiv:2605.30877](https://arxiv.org/abs/2605.30877)

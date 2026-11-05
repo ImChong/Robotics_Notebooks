@@ -25,6 +25,7 @@ sources:
 - ../../sources/papers/sun_awesome_wm_catalog.md
 - ../../sources/repos/awesome-world-models.md
 - ../../sources/repos/lingbot-va.md
+- ../../sources/repos/lerobot.md
 ---
 
 # LingBot-VA：因果视频–动作世界模型
@@ -46,6 +47,24 @@ LingBot-VA 在因果交错序列中建模视觉动态与动作，以真实观测
 
 - 把世界预测与动作学习放入同一时间结构，便于研究视觉动态先验如何影响控制。
 - 强调执行后真实观测回写，避免长程预测把错误持续带入闭环。
+
+## 流程总览
+
+```mermaid
+flowchart TD
+    OBS["首帧观测 + 任务文本"] --> ENC["Wan2.2 VAE 编码为视频 latent；UMT5 编码文本"]
+    ENC --> VID["视频流去噪（CFG，默认 20 步）：预测未来 latent"]
+    VID --> ACT["动作流去噪（默认 50 步）：同一 transformer 的动作分支"]
+    ACT --> EXE["执行动作块，采集真实关键帧"]
+    EXE --> FB["真实关键帧 + 已执行动作写回 KV cache"]
+    FB --> VID
+    subgraph TR["训练"]
+        TS["视频 latent 与动作各自加噪"] --> BC["block-causal 双流 transformer"]
+        BC --> LOSS["latent_loss + action_loss（流匹配）"]
+    end
+```
+
+图依据：LeRobot `lingbot_va.mdx` 与 `modeling_lingbot_va.py` 的 `_infer` / `_compute_kv_cache` / `training_loss_from_streams`。
 
 ## 核心原理
 
@@ -74,6 +93,47 @@ sequenceDiagram
 ```
 
 模型进程与客户端是分离运行环境；部署细节以 README 对应 benchmark 的服务脚本为准。
+
+### LeRobot 移植的运行时序（固定提交 `9e5ee98`）
+
+来源：`src/lerobot/policies/lingbot_va/modeling_lingbot_va.py`，工具函数在同目录 `utils.py`。上图是官方原仓库的入口；下图是 LeRobot 中真实的类与函数。
+
+```mermaid
+sequenceDiagram
+    participant E as "lerobot_eval.py: rollout()"
+    participant P as "LingBotVAPolicy.select_action"
+    participant C as "LingBotVAPolicy._predict_chunk"
+    participant I as "LingBotVAPolicy._infer"
+    participant K as "LingBotVAPolicy._compute_kv_cache"
+    participant X as "utils.py: WanTransformer3DModel.forward"
+    E->>P: "policy.select_action(observation)"
+    P->>P: "_maybe_init_prompt: UMT5 编码任务文本"
+    P->>C: "首帧: _predict_and_decode"
+    C->>C: "_encode_frames: Wan VAE 编码首帧， _init_streaming_cache"
+    C->>I: "init_latent, frame_st_id=0"
+    I->>X: "视频流去噪循环 (action_mode=False, update_cache)"
+    I->>X: "动作流去噪循环 (action_mode=True)"
+    I-->>C: "actions, latents"
+    C-->>P: "裁剪 used_action_channel_ids -> 入队"
+    P-->>E: "popleft 单步动作"
+    Note over P: "后续步：缓冲真实关键帧；队列耗尽后"
+    P->>K: "_compute_kv_cache(obs_buffer, executed_actions)"
+    K->>X: "update_cache=2 写入真实 latent 与动作"
+    P->>I: "下一块预测 (frame_st_id 递增)"
+```
+
+训练路径：`lerobot_train.py` 调 `LingBotVAPolicy.forward` -> `_build_training_streams`（VAE + UMT5）-> `training_loss_from_streams`（要求 `attn_mode='flex'`）-> `WanTransformer3DModel.forward(train_mode=True)` -> `_flow_matching_loss`。
+
+## LeRobot 实现
+
+- **身份核对**：arXiv 2601.21998 的 arXiv 标题是 *Causal World Modeling for Robot Control*（2026-01-29，API 核对），LingBot-VA 是其模型名；本页标题为库内沿用的索引名。LeRobot 文档把它称为基于 Wan2.2 的自回归视频–动作世界模型策略。
+- **规模与组成**（文档）：可训练 Wan 双流 transformer 约 5B 参数（`WanTransformer3DModel`），冻结 `AutoencoderKLWan`（`z_dim=48`）与 `UMT5EncoderModel`；冻结部分约 20 GB 在加载时按 `wan_pretrained_path` 拉取，默认指向上游 `robbyant/*`。
+- **权重**：`lerobot/lingbot_va_libero_long`、`lerobot/lingbot_va_robotwin`、`lerobot/lingbot_va_base`。
+- **推理**：视频流 20 步、动作流 50 步，各自独立的流匹配调度器；仅实现单环境评测（`--eval.batch_size=1`）；约需 18–24 GB 显存（文档）。
+- **动作空间**：30 维多本体布局，LIBERO 用通道 0–6；RoboTwin 为末端位姿控制（`--env.action_mode=ee`），由 CuRobo IK 转关节；相机顺序固定且敏感。
+- **训练限制**：需 `--policy.attn_mode=flex`；完整 5B 在 24–32 GB 单卡上不能用 AdamW 全量微调，文档推荐 LoRA，且无内置默认 LoRA 目标，需手动指定 `--peft.target_modules`。
+- **可选**：`save_predicted_video` / `return_predicted_video` 解码想象视频。
+- 许可：Apache-2.0（文档）。
 
 ## 工程实践
 
@@ -112,6 +172,8 @@ sequenceDiagram
 
 ## 参考来源
 
+- [`sources/repos/lerobot.md`](../../sources/repos/lerobot.md) — LeRobot 固定提交上的 `lingbot_va` 移植与文档
+- 论文：<https://arxiv.org/abs/2601.21998>
 - [官方项目与运行入口](../../sources/repos/lingbot-va.md)
 
 ## 推荐继续阅读

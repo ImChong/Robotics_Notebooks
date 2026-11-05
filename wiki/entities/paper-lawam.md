@@ -30,6 +30,7 @@ sources:
   - ../../sources/papers/lawam_arxiv_2606_15768.md
   - ../../sources/sites/lawam-rlinf-github-io.md
   - ../../sources/repos/lawam.md
+  - ../../sources/repos/lerobot.md
 summary: "LaWAM（arXiv:2606.15768，CoRL 2026，RLinf）：DINOv3 潜空间 LaWM 单帧 subgoal 条件 Alternate-DiT VLA；LIBERO 98.6%（187 ms）、RoboTwin 91.22%、真机 90.0%；LeRobot 原生；MIT 代码 + HF 权重已开源。"
 ---
 
@@ -74,7 +75,7 @@ summary: "LaWAM（arXiv:2606.15768，CoRL 2026，RLinf）：DINOv3 潜空间 LaW
 
 **Stage 2 — Distill & act：** **Latent-action distillation** 教 VLA 从 \((o, \ell)\) 预测 transition code；测试时 **一次非迭代** LaWM 前向 → subgoal → chunk 级控制。
 
-### 流程总览
+## 流程总览
 
 ```mermaid
 flowchart TB
@@ -120,6 +121,47 @@ sequenceDiagram
 
 - **最短复现：** 拉 `lawam_libero_sft_release` → `run_libero_benchmark.sh`（见 README LIBERO Inference）。
 - **LeRobot：** 优先读官方 `lawam.mdx` 与 `jialei02/lawam-libero-sft-lerobot` 权重。
+
+## LeRobot 实现
+
+- **身份核对**：LeRobot `docs/source/lawam.mdx` 引用 arXiv 2606.15768；arXiv 标题 *LaWAM: Latent World Action Models for Efficient Dynamics-Aware Robot Policies*，一作 Jialei Chen，2026-06-14（API 核对），与本页一致。`policy.type=lawam`，适配器 `LaWAMPolicy` 包裹原仓库的 `LatentWorldPolicyBackend`（`vlas/lawam.py`）。
+- **组成**：Qwen3-VL 骨干（`base_vlm` 用可移植 Hub ID）、内置 LAM / DINOv3 结构（直接由 `LaWAMConfig` 表示，无需单独下载）、流匹配动作头。原 `.pt` 权重不能由适配器加载，需用 LeRobot 原生 `model.safetensors`（文档）。
+- **权重/数据**：`jialei02/lawam-pretrain-lerobot`（微调初始化）、`jialei02/lawam-libero-sft-lerobot`（LIBERO 评测）、`jialei02/libero_merged_no_noops_20hz`。
+- **维度与 horizon**：内部使用 32 维 padded 动作/状态（`flow_action_dim=flow_state_dim=32`）；预训练检查点 `action_horizon=24`，LIBERO SFT 配方改为 `action_horizon=n_action_steps=8` 并保持 `chunk_size=50` 作为 padded flow 序列长度（文档）。
+- **LIBERO 约定**：配方使用 `clip_normalized_actions`、`pre_snap_gripper_action`、`binarize_gripper_action`；相机角色用 `primary_image_features` / `wrist_image_features` 显式配置。
+- **环境陷阱**（文档）：复现需 `mujoco==3.3.2`；文档记录 `libero_spatial` task 5 在 MuJoCo 3.8.1 下 18/50、3.3.2 下 47/50。
+- **LeRobot 文档结果**：LIBERO SFT 检查点 50 episode x 10 任务：spatial 98.4%、object 99.6%、goal 98.0%、libero_10 98.0%，总计 1970/2000 = 98.5%。**一致性提示**：本页其余位置写的 98.6% 取自论文/项目页，LeRobot 文档复测为 98.5%，差 0.1 个百分点，可视为口径或种子差异（推测，未核实）。
+- **训练无随机图像增强**：处理器只做确定性 resize 与 ImageNet 归一化（文档）。
+
+### LeRobot 移植的运行时序（固定提交 `9e5ee98`）
+
+来源：`src/lerobot/policies/lawam/modeling_lawam.py`、`vlas/lawam.py`。上方官方仓库时序图是 shell 脚本入口，此处为 LeRobot 真实函数。
+
+```mermaid
+sequenceDiagram
+    participant TR as "lerobot_train.py: train()"
+    participant EV as "lerobot_eval.py: rollout()"
+    participant PR as "processor_lawam.py: 预处理"
+    participant P as "modeling_lawam.py: LaWAMPolicy"
+    participant B as "vlas/lawam.py: LatentWorldPolicyBackend"
+    participant L as "LAM (DINOv3 特征)"
+    participant F as "flowmatching_expert.py: flow 动作头"
+    TR->>PR: "构造 train batch（actions, primary_video, state, 掩码）"
+    TR->>P: "policy(batch) -> forward"
+    P->>B: "LaWAMModel.forward -> policy_backend(batch)"
+    B->>B: "_run_shared_encoding_train -> _run_vlm_stage (Qwen3-VL)"
+    B->>L: "extract_vision_features(primary_video)"
+    B->>B: "_decode_future_tokens_strict_single_query -> h_t1_pred"
+    B->>F: "self.flow(h_t, h_t1_star, h_vlm, state, actions, ...)"
+    B-->>P: "loss_flow + perceptual_weight*loss_perceptual + distill_weight*loss_distill"
+    EV->>P: "select_action(observation)"
+    P->>P: "populate_queues；队列空 -> predict_action_chunk"
+    P->>B: "model.predict_action(batch, noise)"
+    B->>B: "_run_shared_encoding_infer (primary_image 单帧)"
+    B->>F: "flow.sample_actions_cfg(num_inference_steps, cfg_scale)"
+    F-->>P: "normalized_actions -> 截取 action_dim 与 action_horizon"
+    P-->>EV: "取前 n_action_steps 入队, popleft"
+```
 
 ## 工程实践
 
@@ -178,6 +220,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [`sources/repos/lerobot.md`](../../sources/repos/lerobot.md) — LeRobot 固定提交上的 `lawam` 适配器与文档
 - [lawam_arxiv_2606_15768](../../sources/papers/lawam_arxiv_2606_15768.md)
 - [LaWAM 项目页](../../sources/sites/lawam-rlinf-github-io.md)
 - [lawam 仓库](../../sources/repos/lawam.md)

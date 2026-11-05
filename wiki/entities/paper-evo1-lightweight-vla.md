@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, lightweight-vla, flow-matching, behavior-cloning, manipulation, lerobot, internvl, sjtu, cvpr-2026]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-05
 arxiv: "2511.04555"
 venue: CVPR 2026
 code: https://github.com/MINT-SJTU/Evo-1
@@ -19,6 +19,7 @@ related:
 sources:
   - ../../sources/papers/evo1_arxiv_2511_04555.md
   - ../../sources/repos/mint_sjtu_evo1.md
+  - ../../sources/repos/lerobot.md
 summary: "Evo-1（CVPR 2026）：0.77B 轻量 VLA，InternVL3-1B + cross-modulated DiT flow-matching；两阶段训练保持 VLM 语义对齐；无机器人预训练即在 Meta-World 80.6%、LIBERO 94.8%、RoboTwin 37.8% 与 xArm6 真机 78%；RTX 4090d 上 2.3 GB / 16.4 Hz；官方 LeRobot 集成（SO100/SO101）。"
 ---
 
@@ -59,7 +60,7 @@ summary: "Evo-1（CVPR 2026）：0.77B 轻量 VLA，InternVL3-1B + cross-modulat
 | **Stage 1** | **冻结 VLM**；只训集成模块 + 动作专家（`--finetune_action_head`） |
 | **Stage 2** | **解冻 VLM** 全量微调（`--finetune_vlm`）；保持语义同时深化任务适配 |
 
-### 流程总览
+## 流程总览
 
 ```mermaid
 flowchart TB
@@ -115,6 +116,46 @@ flowchart TB
 - **LeRobot SO100/SO101：** 官方主仓已内置；`lerobot-record --robot.type=so100_follower --policy.path=<checkpoint> ...`；权重 `MINT-SJTU/Evo1_SO100`。
 - **训练：** 数据转 **LeRobot v2.1** → DeepSpeed `accelerate launch` 两阶段 `train.py`；FlashAttention 安装对稳定性影响大。
 
+## 源码运行时序图
+
+LeRobot 固定提交 `9e5ee98` 的 `policy.type=evo1`（`src/lerobot/policies/evo1/`：`modeling_evo1.py` 的 `Evo1Policy`、`evo1_model.py` 的 `Evo1Model`、`internvl3_embedder.py`、`flow_matching.py` 的 `FlowmatchingActionHead`）。以下节点读自该目录；论文已核对：0.77B、保留语言分支前 14 层、Meta-World 80.6、LIBERO 94.8、RoboTwin 37.8、xArm6 真机 78%、2.3 GB / 16.4 Hz 均与 arXiv:2511.04555 正文一致。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Tr as lerobot_train.train / lerobot_rollout
+    participant Fa as policies.factory.make_policy / make_pre_post_processors
+    participant Pre as make_evo1_pre_post_processors
+    participant Pol as Evo1Policy
+    participant Em as InternVL3Embedder
+    participant H as FlowmatchingActionHead
+
+    Tr->>Fa: --policy.type=evo1 --policy.training_stage=stage1|stage2
+    Fa->>Pol: Evo1Policy.__init__ → Evo1Model（set_finetune_flags：stage1 冻 VLM，stage2 放开 VLM 分支）
+    Fa->>Pre: Rename → AddBatchDim → Evo1PadStateProcessorStep(24) → Evo1PadActionProcessorStep(24) → Normalizer → Device
+    Tr->>Pol: policy(batch) = forward
+    Pol->>Em: _compute_fused_tokens → get_fused_image_text_embedding_batched（InternVL3-1B-hf，仅保留前 vlm_num_layers=14 层语言分支）
+    Em-->>Pol: fused_tokens + context_mask
+    Pol->>H: forward(actions_gt)：Beta(2,2) 采样 t，uniform 噪声，make_flow_matching_inputs → 纯 cross-attention Transformer 块（context=VLM token+状态）
+    H-->>Pol: pred_velocity（池化后 mlp_head）
+    Pol-->>Tr: 掩码 MSE(pred_velocity, actions_gt − noise)（fp32）
+    Tr->>Pol: 推理 select_action；队列空时 predict_action_chunk
+    Pol->>Em: 同上得到 fused_tokens
+    Pol->>H: get_action：euler_integrate(num_inference_timesteps 步；可选 RTC)
+    H-->>Pol: 动作 chunk (B, 50, max_action_dim)
+    Pol-->>Tr: Evo1ActionProcessorStep 裁回真实动作维度（可 binarize_gripper）→ unnormalize
+```
+
+## LeRobot 实现
+
+- **安装与权重：** `pip install -e ".[training,evo1]"`（LIBERO 另加 `libero`）；`policy.vlm_model_name` 必须是原生转换的 InternVL3（如 `OpenGVLab/InternVL3-1B-hf`，注意 `-hf` 后缀）；`flash_attn` 不可用时回退普通注意力。
+- **两阶段在 LeRobot 中的对应：** `policy.training_stage=stage1`（冻结 VLM、训练动作头，示例 5000 步）与 `stage2`（从 stage1 检查点加载但重置优化器，示例 80000 步）；默认会按阶段重置 `finetune_*` 标志（`apply_training_stage_defaults=true`）。
+- **默认值：** `chunk_size=n_action_steps=50`、`max_state_dim=max_action_dim=24`、`vlm_num_layers=14`、`dtype=bfloat16`。
+- **LeRobot 文档里的 LIBERO 结果与论文不是同一回事：** 文档给出第三方检查点 `zuoxingdong/evo1_libero`（stage-2，step 70,000，seed 1000，单次运行）的 LIBERO 总体 96.65%（Spatial 97.0 / Object 99.2 / Goal 96.6 / LIBERO-10 93.8）。本页上文的 94.8% 是论文表格数；两者检查点、训练配方不同，不能直接比较。
+- **与论文差异（读源码所见）：** LeRobot 动作头的噪声取 uniform[-1,1)，时间 t 取 Beta(2,2) 并截在 [0.02,0.98]，时间嵌入离散成 1000 档；论文是否同样设置本次未逐项核对。
+- **推理：** `lerobot-rollout --inference.type=rtc` 可选；RTC 仅在 `predict_action_chunk` 路径，`select_action` 内断言不支持 RTC。
+- **官方原仓库：** MINT-SJTU/Evo-1 的 `Evo1_server.py` WebSocket 服务与 xArm6 客户端见上文「部署与 LeRobot 集成」；本次未逐文件阅读原仓库源码，因此不另绘其时序图。
+
 ## 结论
 
 **Evo-1 的核心赌注是「别把 VLM 训坏」：用两阶段训练保住视觉–语言语义空间，从而在 0.77B、无机器人预训练的条件下，换来消费级 GPU 上可实时部署的策略。**
@@ -155,6 +196,7 @@ flowchart TB
 
 ## 参考来源
 
+- [lerobot.md](../../sources/repos/lerobot.md)：LeRobot 固定提交 9e5ee98 的 `docs/source/evo1.mdx` 与 `src/lerobot/policies/evo1/`
 - [Evo-1 论文摘录（CVPR 2026 / arXiv:2511.04555）](../../sources/papers/evo1_arxiv_2511_04555.md)
 - [MINT-SJTU/Evo-1 仓库归档](../../sources/repos/mint_sjtu_evo1.md)
 

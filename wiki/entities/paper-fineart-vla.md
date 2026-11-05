@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, vla, bimanual-manipulation, subtask-planning, lerobot]
 status: complete
-updated: 2026-10-07
+updated: 2026-11-05
 project_id: fineart-vla
 arxiv: "2609.36416"
 code: https://github.com/huggingface/lerobot
@@ -11,8 +11,11 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ./lerobot-humanoid.md
+  - ./lerobot.md
+  - ./paper-pi05-open-world-vla.md
 sources:
   - ../../sources/papers/fineart_arxiv_2609_36416.md
+  - ../../sources/repos/lerobot.md
 ---
 
 # FineART-VLA：用语言子任务组织双臂长时程操作
@@ -38,7 +41,7 @@ sources:
 | DROID | Distributed Robot Interaction Dataset | 论文使用的多任务机器人操作数据来源之一。 |
 | π0.5 | Physical Intelligence π0.5 | FineART-VLA 中期训练所基于的机器人策略模型。 |
 
-## 方法图
+## 流程总览
 
 ```mermaid
 flowchart TB
@@ -74,7 +77,7 @@ LeRobot 当前实现文档给出默认配方：
 
 - **30% 高层任务 → 子任务预测：** 学习给定任务后下一步应执行什么低层指令。
 - **70% 子任务条件动作训练：** 根据活动子任务生成连续 flow-matching 动作，也可训练 FAST 离散动作 token。
-- **推理分解：** 默认形式为 (p(amid o,	ext{subtask})p(	ext{subtask}mid o,	ext{task}))。运行时负责何时触发规划和命令调度；示例中的默认规划间隔为 3 秒。普通动作调用本身不会偷偷重新规划。
+- **推理分解：** 默认形式为 π(a | o, subtask) · π(subtask | o, task)（LeRobot 文档写法；原页此处 LaTeX 转义损坏，已改为纯文本）。运行时负责何时触发规划和命令调度；示例中的默认规划间隔为 3 秒（`--autosteer_interval_s=3`）。普通动作调用本身不会偷偷重新规划。
 - **数据前提：** 训练集需提供连续子任务语言时间线及实现文档所列语言标注列。标准 LeRobot 数据集不会自动推断子任务；若没有语言列，就没有对应的语言规划监督。
 
 ## 论文结果
@@ -92,6 +95,54 @@ LeRobot 文档给出基于 lerobot/fineart_vla_base 的训练入口、依赖安�
 
 FineART 是带细粒度子任务时间标注的数据集，FineART-VLA 则是在 π0.5/LeRobot 上训练的策略。相较直接用高层任务指令生成整段动作，它显式预测下一条低层子任务，再以该子任务条件化动作生成；论文结果需区分人工逐步提供子任务与模型自主规划两种设置。
 
+## 论文模型细节（已读论文 §4.1）
+
+- 论文称 FineART-VLA 从 LeRobot 发布的 π0.5 出发，增加子任务训练、knowledge insulation（KI）和「先子任务、后动作」的分层推理；一个策略里同时是 System-2 子任务预测器与 System-1 连续动作控制器。
+- 结构：约 2B 参数 Gemma 骨干 + SigLIP 视觉编码器 + 单独的约 300M Gemma 风格动作专家；输入 3 路相机（鸟瞰 + 双腕，224×224）与 14 维双臂关节/夹爪状态，输出连续动作 chunk H=50×14。
+- 目标：L = λ_flow·L_flow + λ_fast·L_fast + λ_text·L_text，论文设 λ_flow=10、λ_fast=1、λ_text∈{0,1}；λ_text=1 时每个 batch 约 30% 为 task→subtask 样本、70% 为动作样本；所有实验训练 300k 步、全局 batch 64（约为一个 epoch 的 10%，论文自述局限）。
+- 论文自述局限：数据集只来自单一机器人平台，策略只训练了约 10% epoch。
+- 身份核对：arXiv 摘要页标题与本页一致；PDF 署名机构为 Scale AI、Hugging Face、USC、Stanford（Jade Choghari 与 Pepijn Kooijmans 为共同一作，Scale AI 与 Hugging Face 联合）；v3（2026-10-05）。
+
+## 源码运行时序图
+
+下列节点读自 LeRobot 固定提交 `9e5ee98` 的 `src/lerobot/policies/fineart_vla/`。`FineARTVLAPolicy` 继承 `PI05Policy`，核心模型 `FineARTVLAPytorch` 继承 `PI05Pytorch`。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Tr as lerobot_train.train
+    participant Fa as policies.factory.make_policy / make_pre_post_processors
+    participant Pre as make_fineart_vla_pre_post_processors
+    participant Pol as FineARTVLAPolicy
+    participant M as FineARTVLAPytorch (PI05Pytorch)
+    participant Rt as lerobot_rollout (autosteer 运行时)
+
+    Tr->>Fa: policy.path=lerobot/fineart_vla_base
+    Fa->>Pre: RenderTrainingMessagesStep(recipe 30/70) → FineARTVLATextTokenizerStep；可选 fit_fast_tokenizer 拟合 FAST
+    Pre-->>Tr: 图像 / 语言 token / text_labels / predict_actions
+    Tr->>Pol: policy(batch) = FineARTVLAPolicy.forward
+    Pol->>Pol: _embed_supervised_prefix → _compute_all_losses_fused / _amortized_prefix_and_flow
+    Pol-->>Tr: flow_loss(×flow_loss_weight) + text_loss + FAST CE；knowledge_insulation 阻断 flow 梯度进 VLM K/V
+    Rt->>Pol: 规划间隔到点 → generate_text → select_message（KV 缓存自回归，抑制 loc token）
+    Pol-->>Rt: 子任务文本
+    Rt->>Pol: 以子任务为 task 重渲染提示 → select_action
+    Pol->>Pol: predict_action_chunk → _predict_action_chunk_with_marks
+    Pol->>M: sample_actions（前缀一次编码 + KV 缓存）
+    loop num_inference_steps
+        M->>M: denoise_step（动作专家，裁回前缀 KV）
+    end
+    M-->>Pol: 动作 chunk，裁到原动作维度
+    Pol-->>Rt: 动作队列逐步执行
+```
+
+## LeRobot 实现
+
+- **安装与权重：** `pip install -e ".[fineart_vla]"`（含 PaliGemma/FAST 依赖），可选 `.[fineart_vla_kernels]`（Liger、FlashRT）；`lerobot/fineart_vla_base` 是在 FineART 上中期训练的检查点；也可用 `--policy.type=fineart_vla --policy.pretrained_path=lerobot/pi05_base` 从 π0.5 起步（OpenPI 权重在加载时转换）。
+- **默认训练开关（文档表格）：** `flow_loss_weight=10`、`text_loss_weight=1`、`fast_action_loss_weight=1`、`knowledge_insulation=true`、`flow_num_repeats=5`、`fast_skip_tokens=1152`。
+- **数据前提：** 需要 `language_persistent` / `language_events` 列里的 `subtask` 时间线；没有语言列时配方渲染变成空操作，退回普通 Pi05 提示路径（不会训练规划器）。用 `lerobot-annotate` 生成。
+- **运行：** `lerobot-rollout --interactive=true --autosteer_interval_s=3`，交互命令 `/autosteer <goal>`、`/subtask <text>`、`/start`；同步或 RTC 推理由 `--inference.type` 选择。
+- **许可：** 文档称遵循 Apache 2.0（与 OpenPI 一致）。
+
 ## 复现边界
 
 - **区分数据集与策略：** FineART 是数据；FineART-VLA 是策略。
@@ -104,7 +155,9 @@ FineART 是带细粒度子任务时间标注的数据集，FineART-VLA 则是在
 
 - [VLA 方法](../methods/vla.md)
 - [机器人操作任务](../tasks/manipulation.md)
-- [LeRobot](./lerobot-humanoid.md)
+- [LeRobot](./lerobot.md)
+- [LeRobot 人形机器人集成](./lerobot-humanoid.md)
+- [π0.5](./paper-pi05-open-world-vla.md)
 - [论文来源归档](../../sources/papers/fineart_arxiv_2609_36416.md)
 
 ## 结论
@@ -114,6 +167,7 @@ FineART-VLA 的关键不是单纯扩大动作模型，而是把子任务边界�
 ## 参考来源
 
 - [FineART arXiv 论文](https://arxiv.org/abs/2609.36416)
+- [lerobot.md](../../sources/repos/lerobot.md)：固定提交 9e5ee98 的 `docs/source/fineart_vla.mdx` 与 `src/lerobot/policies/fineart_vla/`
 - [FineART-VLA 在 LeRobot 的官方实现说明](https://github.com/huggingface/lerobot/blob/main/docs/source/fineart_vla.mdx)
 - [LeRobot 仓库](https://github.com/huggingface/lerobot)
 - [FineART-VLA base checkpoint](https://huggingface.co/lerobot/fineart_vla_base)
