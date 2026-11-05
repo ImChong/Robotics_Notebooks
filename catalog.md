@@ -2517,6 +2517,7 @@
 - [GlanceWAM：把视觉想象移出控制关键路径](wiki/entities/paper-glancewam.md) — GlanceWAM**（*Sparse Test-Time Imagination for World-Action Models*，[arXiv:2608.23927](https://arxi `📅unknown` `[entity_page]`
 - [GLIDE（arXiv:2609.24996）](wiki/entities/paper-glide-beyond-human-demonstration.md) — GLIDE**（*Learning Beyond What Humans Can Demonstrate*，[arXiv:2609.24996](https://arxiv.org/abs/260 `📅unknown` `[entity_page]`
 - [Glob3R：3D 基础模型引导的全局 SfM](wiki/entities/paper-glob3r.md) — Glob3R**（*Glob3R: Global Structure-from-Motion with 3D Foundation Models*，arXiv:[2607.09225](https `📅unknown` `[entity_page]`
+- [Through Van Gogh’s Eyes：基于扩散模型的全局风格迁移](wiki/entities/paper-global-style-transfer.md) — Global Style Transfer（GST）** 从一位艺术家的多幅作品学习总体风格，再将其迁移到一张内容图像。 `📅unknown` `[entity_page]`
 - [GlobMP（arXiv:2610.30607）](wiki/entities/paper-globmp.md) — GlobMP**（*Continuous-Time Motion Planning and Steering with Global Convergence*，[arXiv:2610.30607 `📅unknown` `[entity_page]`
 - [GLoRI（arXiv:2609.05994）](wiki/entities/paper-glori-humanoid-loco-manipulation.md) — GLoRI**（*GLoRI: Closed-Loop Whole-Body Tracking with Global-Local Reference Interaction for Humano `📅unknown` `[entity_page]`
 - [GLoTouch（arXiv:2609.27695）](wiki/entities/paper-glotouch-haptic-grasping.md) — GLoTouch**（*GLoTouch: Global-to-Local Haptic Perception Using a Parallel Gripper for Object Search `📅unknown` `[entity_page]`
