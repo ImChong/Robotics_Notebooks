@@ -53,7 +53,15 @@
   var maskN = 0;
   function drawOn(path, p) {
     if (!path.isConnected) { op(path, p > 0 ? 1 : 0); return; }
-    if (!path.__len) {
+    // 线长按当前的 d 量：d 每帧在变的线（如第 1 幕镜头转过来以后小臂上方的「2 格」绿条），只在第一次量会量成旧长度，
+    // 开始画的那一帧另一头先冒出一小段（用户反馈「绿条闪现了一下」）
+    var d = path.getAttribute('d');
+    if (path.__init && path.__d !== d) {
+      path.__d = d; path.__len = path.getTotalLength();
+      if (path.__mask) { path.__mask.setAttribute('d', d); path.__mask.setAttribute('stroke-dasharray', path.__len + ' ' + path.__len); }
+    }
+    if (!path.__init) {
+      path.__init = true; path.__d = d;
       path.__len = path.getTotalLength();
       if (path.getAttribute('stroke-dasharray')) {
         var svg = path.ownerSVGElement, defs = svg.querySelector('defs') || el('defs', {}, svg);
