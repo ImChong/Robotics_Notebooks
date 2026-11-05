@@ -6,7 +6,7 @@ tags:
   - data-collection
   - cross-embodiment
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.04083"
 project: https://robotmabel.github.io/website/
 code: https://github.com/robotmabel/MABEL
@@ -17,11 +17,13 @@ related:
   - ../tasks/bimanual-manipulation.md
   - ../tasks/teleoperation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/mabel_arxiv_2611_04083.md
   - ../../sources/repos/mabel.md
   - ../../sources/sites/mabel.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "MABEL（arXiv:2611.04083）：将移动底盘、升降躯干、双臂和灵巧手接入统一控制接口，贯通遥操作采集与模仿学习；适合评估工作空间、集成成本与整机协同的团队。"
 ---
 

@@ -14,10 +14,12 @@ related:
   - ../tasks/teleoperation.md
   - ../methods/imitation-learning.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/airoa_0_arxiv_2611_03815.md
   - ../../sources/repos/airoa_0.md
   - ../../sources/sites/airoa-0.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "AIRoA-0 使用手持 YUBI 双夹爪数据训练长程双臂操作策略，以夹爪坐标和腕部视觉适配不同机器人。"
 ---
 
