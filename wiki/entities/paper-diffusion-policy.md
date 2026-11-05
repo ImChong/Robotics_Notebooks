@@ -10,7 +10,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-06
+updated: 2026-11-04
 arxiv: '2303.04137'
 code: https://github.com/real-stanford/diffusion_policy
 related:
@@ -27,6 +27,7 @@ related:
 - ../methods/vla.md
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
+- ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
 - ../../sources/papers/diffusion_policy_arxiv_2303_04137.md
 - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -34,6 +35,7 @@ sources:
 - ../../sources/papers/rcl_awesome_wam_ref_393a36f38d60db8631f4_diffusion-policy-visuomotor-policy-learn.md
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 summary: Diffusion Policy（arXiv:2303.04137，Columbia/MIT）：用 DDPM 去噪生成 visuomotor 动作 chunk；表达多峰分布。real-stanford/diffusion_policy 已开源。
 project_id: diffusion-policy
 venue: International Journal of Robotics Research 2025

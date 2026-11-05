@@ -8,7 +8,7 @@ tags:
   - teleoperation
   - stanford
 status: complete
-updated: 2026-09-15
+updated: 2026-11-04
 arxiv: "2304.13705"
 code: https://github.com/tonyzhaozh/act
 related:
@@ -17,10 +17,12 @@ related:
   - ./paper-diffusion-policy.md
   - ./paper-why-action-chunking-improves-bc.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+  - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
   - ../../sources/papers/act_arxiv_2304_13705.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
   - ../../sources/repos/act-aloha.md
+  - ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 summary: "ACT（arXiv:2304.13705，Stanford）：CVAE + Transformer 预测动作 chunk；低成本 ALOHA 双手精细操作。tonyzhaozh/act 已开源。"
 ---
 

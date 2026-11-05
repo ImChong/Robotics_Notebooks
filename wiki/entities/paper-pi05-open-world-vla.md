@@ -9,7 +9,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-20
+updated: 2026-11-04
 arxiv: '2504.16054'
 code: https://github.com/Physical-Intelligence/openpi
 venue: HMI curated · 2025
@@ -38,6 +38,7 @@ related:
 - ../methods/generative-world-models.md
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
+- ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
 - ../../sources/papers/hmi_p059_pi05-open-world-vla.md
 - ../../sources/repos/humanoid-motion-intelligence.md
@@ -49,6 +50,7 @@ sources:
 - ../../sources/papers/rcl_awesome_wam_ref_a351afa5504418f3e26f_0-5-a-vision-language-action-model-with.md
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
+- ../../sources/blogs/wechat_xinjiqishijue_embodied_algorithm_stack_2026-11-04.md
 project_id: pi05-open-world-vla
 ---
 
