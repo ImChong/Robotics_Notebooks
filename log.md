@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-05] ingest | Zane Hub 第383篇《现在人形关节模组电机的驱控算法框架是什么？》：新建人形关节驱控三层框架概念页，核对 MIT Cheetah / Berkeley Humanoid 数字（电流环 400 Hz 无依据），回链阻抗控制页
+
 ## [2026-11-05] ingest | sources/repos/lerobot.md — 固定版本核对 LeRobot README 模型清单，模型独立详情与原文源码核查待完成
 
 ## [2026-11-05] ingest | LeRobot README 32 个模型逐个核对一手论文与固定提交源码：新建 8 个节点（VQ-BeT/Multitask DiT/TDMPC/GR00T N1.7/XVLA/EO-1/SARM/Robometer 等），其余补流程图与源码运行时序图并纠正旧页差异
