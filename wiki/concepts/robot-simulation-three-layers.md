@@ -164,6 +164,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Physical AI 的发展方向](../entities/article-where-physical-ai-is-heading.md) — 作者关于仿真数据规模化和落地经济性的预测
 - [Manda Robotics：机器人仿真物理引擎比较](../entities/mandarobotics-physics-engine-comparison.md) — matched-scene 对照与结果边界
 
 - [训练栈分层技术地图](../overview/robot-training-stack-layers-technology-map.md) — 六层互补视角（大平台 / sim2sim / 任务入口 / 异构运行时 / 连接器 / 闭环评估）
