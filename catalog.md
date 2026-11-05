@@ -610,6 +610,7 @@
 - [EgoWorld-100W（百万级自中心操作数据集）](wiki/entities/egoworld-100w.md) — EgoWorld-100W** 是 星际硅途（StellarNex Robotics） 发布的 **头戴第一人称操作视频**  `📅2026-07-24` `[entity_page]`
 - [Eidon Tracker + POV 数据集](wiki/entities/eidon-tracker-pov-dataset.md) — Eidon Tracker + POV** 是一套以可穿戴 **7-IMU 上肢运动追踪**配对第一视角视频的人类日常操作数据；它提供人类动作与视觉观测，不是机器人本体的关节动作数据。 `📅unknown` `[entity_page]`
 - [Eka Robotics — Vision-Force-Action（VFA）](wiki/entities/eka-robotics-vfa.md) — Eka Robotics**（ekarobotics.com）是 **2026 年前后走出 stealth** 的机器人智能公司（剑 `📅unknown` `[entity_page]`
+- [Elephant-Goldfish Model（大象与金鱼设计评审模型）](wiki/entities/elephant-goldfish-model.md) — Elephant-Goldfish Model（EGM）是设计先行的 Agent 工作流：主 Agent 与人讨论并起草规格，再由不继承此前对话的子 Agent 评审。 `📅unknown` `[entity_page]`
 - [大象机器人 myAGV](wiki/entities/elephantrobotics-myagv.md) — myAGV** 是 **大象机器人** 的 **开源移动机器人底盘**：强调 **激光雷达、SLAM、ROS/ROS2** 与 **二次开发**；中文支持页在 **[myagv-support/c `📅unknown` `[entity_page]`
 - [大象机器人 myCobot 320](wiki/entities/elephantrobotics-mycobot-320.md) — myCobot 320** 是 **大象机器人（Elephant Robotics）** 的 **桌面六轴协作机械臂**：主打 **轻量、开源、教育/创客**；产品资料在 **[mycobot-3 `📅unknown` `[entity_page]`
 - [EmbodiChain](wiki/entities/embodichain.md) — EmbodiChain** 是 **灵巧智能（DexForce）** 发布的 **端到端、GPU 加速、模块化** 具身智能平台（[GitHub](https://github.com/DexFo `📅unknown` `[entity_page]`
