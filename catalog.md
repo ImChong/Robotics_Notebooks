@@ -7117,6 +7117,7 @@
 - [赛车漂移强化学习开源景观](wiki/overview/racing-drift-rl-open-source-landscape.md) — 赛车漂移研究的工程分叉主要在三层：**用什么仿真**（轻量 f1tenth_gym vs 高保真 CARLA vs ROS/Gazebo 全栈 vs **浏览器自研物理**）、**用什么控制**（端到 `📅unknown` `[overview_page]`
 - [RCL Awesome World-Action Models 技术地图](wiki/overview/rcl-awesome-wam-technology-map.md) — RCL Awesome WAM 技术地图** = 外部 PAPERS.md 的站内可点开版本（564 条、按 major category 分组，一点即达论文页）。 `📅unknown` `[overview_page]`
 - [REALab 技术地图：14 篇工作（2026）](wiki/overview/realab-14-papers-technology-map-2026.md) — Stanford **Robotics and Embodied AI Lab（REALab，宋舒然）** 在 2026 年的 14 篇代表性工作，共同回答：**当机体形态各异、真实接触极复杂时，如何 `📅unknown` `[overview_page]`
+- [训练加速之后的重定向：16 个方法阅读坐标（2026-11）](wiki/overview/retargeting-vs-general-tracking-speedup-2026-11.md) — 本页是对一篇公众号长文的阅读坐标：作者的主张是，人形跟踪训练变快变便宜之后，重定向不该只做「事前几何映射」，而应让通用运控策略的实际执行结果参与参考动作的检查与修正；文中 16 个方法分属四类，本 `📅unknown` `[overview_page]`
 - [RoboParty Lab / Party OS 技术地图](wiki/overview/roboparty-lab-party-os-technology-map.md) — RoboParty Lab 把「好 idea 输在基建」的问题显式产品化：**Party OS** 作为研发底座，首批开源 **hhtools（动作重定向）→ MimicLite（监督跟踪 infra `📅unknown` `[overview_page]`
 - [自适应控制（体系④）](wiki/overview/robot-control-paradigm-adaptive-control.md) — 在线辨识时变参数并修正控制律，解决负载变化、磨损与摩擦漂移，与鲁棒「被动抵抗」形成互补。 `📅unknown` `[overview_page]`
 - [经典线性反馈控制（体系①）](wiki/overview/robot-control-paradigm-classical-linear-feedback.md) — 针对线性、弱扰动系统的底层伺服闭环，是电机/舵机与单关节跟踪的标配。 `📅unknown` `[overview_page]`
