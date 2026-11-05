@@ -669,6 +669,7 @@
 - [傅利叶 GRX N1（开源人形）](wiki/entities/fourier-grx-n1.md) — Fourier GRX N1** 是傅利叶智能在 GitHub 组织 **FFTAI** 下维护的开源人形软硬件栈之一；公开资料以  `📅unknown` `[entity_page]`
 - [Foxglove](wiki/entities/foxglove-studio.md) — Foxglove](https://github.com/foxglove/studio) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [Franka Research 3](wiki/entities/franka-research-3.md) — Franka Research 3** 是 **Franka Robotics** 面向 **科研与教育** 的 **七轴力控协作臂**：技术文档在 **[frankarobotics.githu `📅unknown` `[entity_page]`
+- [frax：JAX 机器人运动学、动力学与动作重定向](wiki/entities/frax.md) — 斯坦福大学的开源 JAX 机器人运动学与动力学库；后续 `frax.ik` 通过差分 IK 和 ElastiQP 支持人形动作重定向。 `📅unknown` `[entity_page]`
 - [FreeCAD MCP](wiki/entities/freecad-mcp.md) — FreeCAD MCP** 是 neka-nat/freecad-mcp 开源的 **Model Contex `📅unknown` `[entity_page]`
 - [FreeCAD（开源参数化机械 CAD）](wiki/entities/freecad.md) — FreeCAD** 是由社区与 FreeCAD 组织 维护的 **免费开源、跨平台参数化 3D CAD**，以 **OpenCASCAD `📅unknown` `[entity_page]`
 - [FreeMoCap（开源多相机动捕平台）](wiki/entities/freemocap.md) — FreeMoCap**（仓库名 `freemocap`）是一套 **免费开源** 的运动捕捉 **软件与流程**：在 README 中自描述为 *hardware-and-software-agn `📅unknown` `[entity_page]`

@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-05] ingest | sources/repos/frax.md — 收录开源 JAX 运动学动力学库及人形重定向实例
+
 ## [2026-11-05] ingest | sources/repos/tencent-octop.md — 收录自托管多用户多智能体平台及源码启动流程
 
 ## [2026-11-04] ingest | 新机器视觉《2026年了，主流具身智能算法有哪些？》：20 个算法逐个回一手资料核对（新建 3 / 复用 15 / 无法定位 2），指出 Octo、OpenVLA 数字与 README 不一致
