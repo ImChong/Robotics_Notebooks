@@ -3784,6 +3784,7 @@
 - [PrismPlan（arXiv:2610.23884）](wiki/entities/paper-prismplan.md) — PrismPlan**（*PrismPlan: A Shared GPU Substrate for Motion Planning Across Paradigms*，[arXiv:2610.2 `📅unknown` `[entity_page]`
 - [PrismWAM：解耦世界–动作模型中的状态表征](wiki/entities/paper-prismwam.md) — PrismWAM** 将世界状态分成“场景看起来怎样”与“场景在物理上如何变化”：前者提供语义目标，后者用深度序列描述几何和运动，再由物理 rollout 生成机器人动作。 `📅unknown` `[entity_page]`
 - [PRM-as-a-Judge：机器人执行过程评测](wiki/entities/paper-prm-as-a-judge.md) — PRM-as-a-Judge 1.5**（*A Toolkit for Robot Process Assessment*，[arXiv:2608.14284](https://arxiv.org `📅unknown` `[entity_page]`
+- [Proactive AI for Superintelligent Agents](wiki/entities/paper-proactive-ai-superintelligent-agents.md) — Proactive AI for Superintelligent Agents**（Ke Yang 等，UIUC / Google / Stanford / UC Berkeley / CMU， `📅unknown` `[entity_page]`
 - [Proactive Human-in-the-Loop Correction（arXiv:2611.05667）](wiki/entities/paper-proactive-human-in-the-loop-correction.md) — Proactive Human-in-the-Loop Correction**（*Correct Robots Before They Make Mistakes: Proactive Huma `📅unknown` `[entity_page]`
 - [Proactive Thought Partners：写作中的主动思考伙伴](wiki/entities/paper-proactive-thought-partners-writing.md) — Proactive Thought Partners**（*Designing Proactive Thought Partners for Writing*，[arXiv:2609.01588 `📅unknown` `[entity_page]`
 - [Procedural Graphs：自演化的智能体程序图](wiki/entities/paper-procedural-graphs-self-evolving-llm-agents.md) — Procedural Graphs（PG）**（arXiv:2609.09153，Google 的 Yuxing Lu、Yi `📅unknown` `[entity_page]`

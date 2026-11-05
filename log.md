@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-05] ingest | 补全 Proactive AI for Superintelligent Agents（203 页综述）：读摘要/概念框架/六项能力/具身章节/跨行业趋势/治理，核对官方仓库（综述配套资源，无智能体实现，未运行其脚本），建唯一 wiki 实体、项目页与仓库归档，含流程图与 papers.py 静态时序图
+
 ## [2026-11-02] ingest | sources/papers/scaffoldforge.md — 记录论文线索与全文核验阻塞
 
 - 全文当前无法获取，论文实体和流程图待通读后补充；官方代码状态尚未核实。
