@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-04] ingest | 大凡光学《一文看懂三种标定原理：张正友、九点、手眼标定全解析》：新建相机标定三层概念页，核对 Zhang 2000 一手摘要，回链手眼标定页（无论文/项目清单）
+
 ## [2026-11-05] ingest | sources/papers/tacclaw_infinity_arxiv_2610_20320.md — 补充论文全文、实验结果与源码调用，确认部分开放
 
 ## [2026-11-04] ingest | 深蓝AI《彻底搞懂RRT与RRT*》：新建 RRT / RRT* / RRT-Connect / Informed RRT* 四个方法节点（算法教程，无项目清单）

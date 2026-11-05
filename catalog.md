@@ -6330,6 +6330,7 @@
 - [Bode 图（Bode Plot）](wiki/concepts/bode-plots.md) — Bode 图**用两条曲线展示系统对不同频率正弦输入的响应：上图是幅值（通常用 dB），下图是相位（通常用度），横轴是对数频率。读它可以知道系统跟不跟得上快速变化、在哪些频率容易放大/共振，以及在 `📅unknown` `[wiki_page]`
 - [BPTT（Backpropagation Through Time）](wiki/concepts/bptt.md) — BPTT 就是普通反向传播作用在**按时间展开**的计算图上：未来累计奖励的梯度沿多个时间步的链路回传到当前动作和 Actor 参数。它只是计算跨时间梯 `📅unknown` `[wiki_page]`
 - [缓存一致性陷阱（穿透 / 雪崩 / 击穿 / 一致性）](wiki/concepts/cache-consistency-pitfalls.md) — 缓存一致性陷阱** 归纳「加速层」失效时如何打穿数据库或返回脏数据——在机器人模型仓库、配置中心与遥测聚合 API 上反复出现。 `📅unknown` `[wiki_page]`
+- [相机标定三层：张正友 / 九点 / 手眼](wiki/concepts/camera-calibration-zhang-nine-point-hand-eye.md) — 视觉引导机器人时常说的三种「标定」其实解决三个不同问题：**张正友标定**求相机内参与畸变（相机自己准不准），**九点标定**求 2D 平面上像素到机器人坐标的映射，**手眼标定**求相机与机器人之间 `📅unknown` `[wiki_page]`
 - [CAN 总线（经典 CAN / CAN 2.0）](wiki/concepts/can-bus-protocol.md) — CAN（Controller Area Network）** 是一种 **多主、广播式、带硬件仲裁** 的串行现场总线。在机器人里，它最常见于 **主控板 ↔ 关节电机驱动器** 的反馈与力矩指令 `📅unknown` `[wiki_page]`
 - [CAN FD（Flexible Data Rate）](wiki/concepts/can-fd.md) — CAN FD** 是对经典 CAN 的数据链路层扩展：由 Bosch 2011 年起与车企等推动，在 **ISO 11898-1** 框架下标准化。机器人新一代 **USB2CAN FD**、部分 `📅unknown` `[wiki_page]`
 - [Capture Point / DCM](wiki/concepts/capture-point-dcm.md) — Capture Point（捕获点）** 和 **DCM（Divergent Component of Motion，发散运动分量）** 是腿式机器人动态平衡与步态控制里两个非常关键的概念，用来描 `📅unknown` `[wiki_page]`
