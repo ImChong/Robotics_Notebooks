@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../methods/imitation-learning.md
   - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
+  - ../overview/hub-embodied-eval-benchmark.md
 sources:
   - ../../sources/papers/action_token_supervision_arxiv_2611_05249.md
   - ../../sources/sites/action-token-supervision.md
@@ -79,6 +80,7 @@ summary: "Action-Token Supervision（arXiv:2611.05249）：作者分别开关动
 - [vla](../methods/vla.md)
 - [imitation-learning](../methods/imitation-learning.md)
 - [embodied-station-2026-11-05-43-papers-technology-map](../overview/embodied-station-2026-11-05-43-papers-technology-map.md)
+- [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md)
 
 ## 参考来源
 

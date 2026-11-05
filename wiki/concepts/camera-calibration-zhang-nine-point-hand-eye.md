@@ -2,7 +2,7 @@
 type: concept
 tags: [calibration, perception, computer-vision, manipulation, machine-vision]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 related:
   - ./hand-eye-calibration.md
   - ./perception-coordinate-postprocessing.md
@@ -10,6 +10,7 @@ related:
   - ../formalizations/homogeneous-coordinates-transform.md
   - ../methods/levenberg-marquardt.md
   - ../queries/robot-perception-stack-selection-loop.md
+  - ../queries/contact-wrench-closed-loop.md
 sources:
   - ../../sources/blogs/wechat_dafan_optics_three_calibrations_2026-11-04.md
   - ../../sources/papers/zhang_flexible_camera_calibration_2000.md
@@ -93,6 +94,7 @@ flowchart LR
 - [齐次坐标与变换](../formalizations/homogeneous-coordinates-transform.md)
 - [Levenberg–Marquardt](../methods/levenberg-marquardt.md)
 - [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md)
 
 ## 参考来源
 

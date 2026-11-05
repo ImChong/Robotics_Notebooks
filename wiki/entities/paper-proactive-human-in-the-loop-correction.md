@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../methods/imitation-learning.md
   - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
+  - ../overview/hub-embodied-eval-benchmark.md
 sources:
   - ../../sources/papers/proactive_human_in_the_loop_correction_arxiv_2611_05667.md
   - ../../sources/sites/proactive-human-in-the-loop-correction.md
@@ -77,6 +78,7 @@ summary: "Proactive Human-in-the-Loop Correction（arXiv:2611.05667）：操作�
 - [vla](../methods/vla.md)
 - [imitation-learning](../methods/imitation-learning.md)
 - [embodied-station-2026-11-05-43-papers-technology-map](../overview/embodied-station-2026-11-05-43-papers-technology-map.md)
+- [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md)
 
 ## 参考来源
 

@@ -22,6 +22,7 @@ related:
   - ../entities/tesla-optimus.md
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/motor-drive-firmware-bus-protocols.md
+  - ../queries/contact-wrench-closed-loop.md
 sources:
   - ../../sources/blogs/wechat_zane_hub_humanoid_joint_drive_control_framework_2026-11-05.md
   - ../../sources/papers/humanoid_pnb_proprioceptive-actuator-design-in-the-mit-cheeta.md
@@ -147,6 +148,7 @@ EtherCAT 帧到达并锁存（DC）→ 读双编码器 → 接收 θ_d / θ̇_d 
 - [Whole-Body Control](./whole-body-control.md)
 - [Query：执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [电机驱动固件与总线协议](../overview/motor-drive-firmware-bus-protocols.md)
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md)
 
 ## 参考来源
 
