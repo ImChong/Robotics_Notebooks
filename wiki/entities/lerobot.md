@@ -249,6 +249,8 @@ README 的 SOTA 模型表（固定提交 `9e5ee98`）逐项对应独立详情节
 - [LeRobot GitHub Repository](https://github.com/huggingface/lerobot)
 - [LeRobot on Hugging Face Hub](https://huggingface.co/lerobot)
 
+- [LingYu Real-World Robotics Dataset](./lingyu-realworld-robotics-dataset.md)：TA2 双臂 VR 遥操作数据，LeRobot v2.1。
+
 ## 关联页面
 
 - [Xbotics 具身智能教程（21 讲）](./xbotics-embodied-ai-handbook.md) — 以 LeRobot 为主线的中文实践课（采集 / ACT / SmolVLA 微调 / 真机部署）
