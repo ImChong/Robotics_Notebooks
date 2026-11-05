@@ -11,7 +11,7 @@
   var D = Math.PI / 180, A = { OX: 92, OY: 205, S: 2.0 }, RX = 452;   // 主图不缩放：UR5 放大到一格约 55 px
   var T = {
     joints: 2.42, turn: 2.77, poe: 3.71, calc: 5.02, hand: 5.3, pose: 5.62, fk: 6.89,
-    back: 9.51, tgt: 10.66, where: 11.72, each: 12.4, how: 13.3, why: 15.47,
+    back: 9.51, tgt: 10.66, where: 11.72, each: 12.4, how: 13.3, why: 15.47, more: 16.7,
     ik: 19.06, two: 21.34, move: [21.34, 22.2], many: 22.03, none: 23.55
   };
   var UP = E.ik2(1, 0, true), DN = E.ik2(1, 0, false);
@@ -63,7 +63,9 @@
     var fkOne = E.txt(fkG, RX + 92, 246, '一个答案', 20, E.GOOD, 'start', 900);
     var ikG = E.el('g', {}, R);
     var ikName = E.txt(ikG, RX + 254, 196, '逆向运动学', 24, E.HI, 'end', 900);
-    var ikQ = E.txt(ikG, RX + 254, 232, '没有解？不止一组？', 20, E.INK2, 'end', 700);
+    // 两问分两行、靠右：写成一行会左伸到往下的箭头边上（RX + 70）
+    var ikQ = E.txt(ikG, RX + 254, 228, '没有解？', 20, E.INK2, 'end', 700);
+    var ikQ2 = E.txt(ikG, RX + 254, 254, '不止一组？', 20, E.INK2, 'end', 700);
     var chips = [['2 组', E.HI, T.two], ['好几组', E.HI, T.many], ['0 组', E.ERR, T.none]].map(function (c, k) {
       var t = E.tag(R, RX + 18 + k * 100, 360, 84, 40, c[0], c[1], { size: 20, weight: 900, ink: c[1] });
       return { g: t.g, at: c[2], x: RX + 60 + k * 100 };
@@ -126,7 +128,7 @@
         var upp = f(t, T.back + 0.1, 0.5);
         upA.set(RX + 272, 264, RX + 272, 264 - 122 * upp);
         E.op(upA.g, upp > 0 ? 1 : 0);
-        E.op(ikG, f(t, T.back + 0.3, 0.3)); E.op(ikName, f(t, T.ik, 0.3)); E.op(ikQ, f(t, T.why, 0.3));
+        E.op(ikG, f(t, T.back + 0.3, 0.3)); E.op(ikName, f(t, T.ik, 0.3)); E.op(ikQ, f(t, T.why, 0.3)); E.op(ikQ2, f(t, T.more, 0.3));
         chips.forEach(function (c) { E.pop(c.g, c.x, 380, f(t, c.at, 0.35), 0.7); });
       }
     };
