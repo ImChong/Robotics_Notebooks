@@ -85,6 +85,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Mika](./mika.md)：面向 Android 应用与网页操作的智能体。
 - [LangGraph](./langgraph.md)：状态图与持久工作流编排。
 - [Multi-Agent CAD](./multi-agent-cad.md)：面向 CAD 的多阶段 Agent 工作流。
 
