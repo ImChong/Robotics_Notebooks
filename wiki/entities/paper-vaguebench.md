@@ -6,7 +6,7 @@ tags:
   - benchmark
   - evaluation
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.03765"
 code: https://github.com/stardreaming/VagueBench
 related:
@@ -15,10 +15,12 @@ related:
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
   - ../overview/hub-embodied-eval-benchmark.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/vaguebench_arxiv_2611_03765.md
   - ../../sources/repos/vaguebench.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "VagueBench（arXiv:2611.03765）：删除指令中非必要的背景提示，同时保持任务语义不变，测试上下文依赖；以成对指令检查规划与执行退化，提醒评测不要只覆盖冗长明确的表达。"
 ---
 

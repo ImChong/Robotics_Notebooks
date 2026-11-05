@@ -6,7 +6,7 @@ tags:
   - mobile-manipulation
   - navigation
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.04027"
 project: https://lcastri.github.io/causal-sim2real/
 code: https://github.com/lcastri/causal-sim2real
@@ -15,11 +15,13 @@ related:
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/practical_causal_framework_for_mobile_robots_arxiv_2611_04027.md
   - ../../sources/repos/practical_causal_framework_for_mobile_robots.md
   - ../../sources/sites/practical-causal-framework-for-mobile-robots.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "Practical Causal Framework for Mobile Robots（arXiv:2611.04027）：将仿真中学到的因果结构迁移到人类共享环境，仅用少量真机观测更新参数；在移动机器人上验证，适合研究社会导航的适配与可解释决策。"
 ---
 

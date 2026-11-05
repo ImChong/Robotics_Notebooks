@@ -6,7 +6,7 @@ tags:
   - humanoid
   - tutorial
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.03825"
 project: https://nachocz.github.io/tutorial_on_shape_servoing_of_deformable_objects/
 code: https://github.com/nachocz/tutorial_on_shape_servoing_of_deformable_objects
@@ -15,11 +15,13 @@ related:
   - ../concepts/motion-retargeting.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/shape_servoing_tutorial_part_ii_arxiv_2611_03825.md
   - ../../sources/repos/shape_servoing_tutorial_part_ii.md
   - ../../sources/sites/shape-servoing-tutorial-part-ii.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "Shape Servoing Tutorial Part II（arXiv:2611.03825）：从变形雅可比的奇异值分析出发，解释可控性、可观测性与机械失稳；配套教程和交互演示，适合梳理双臂柔性物体形状控制的适用边界。"
 ---
 

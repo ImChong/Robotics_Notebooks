@@ -6,7 +6,7 @@ tags:
   - humanoid
   - tutorial
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.04692"
 code: https://github.com/atikkhannilgar/Discreet_Interaction
 related:
@@ -14,10 +14,12 @@ related:
   - ../concepts/motion-retargeting.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/just_between_us_arxiv_2611_04692.md
   - ../../sources/repos/just_between_us.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "Just Between Us（arXiv:2611.04692）：通过耳内音频与侧倾头部建立定向交流通道，研究共享游戏中的可用性与公平感；实验采用研究员操控的屏幕代理，不能等同自主机器人。"
 ---
 

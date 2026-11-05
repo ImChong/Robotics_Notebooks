@@ -6,7 +6,7 @@ tags:
   - tactile
   - dexterous
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.03779"
 project: https://lute-corp.github.io/soft-yubi-site/
 code: https://github.com/lute-corp/soft-yubi
@@ -16,11 +16,13 @@ related:
   - ../concepts/dexterous-kinematics.md
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/robot_matched_soft_fingers_for_umi_arxiv_2611_03779.md
   - ../../sources/repos/robot_matched_soft_fingers_for_umi.md
   - ../../sources/sites/robot-matched-soft-fingers-for-umi.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "Robot-Matched Soft Fingers for UMI（arXiv:2611.03779）：让手持采集器使用与机器人匹配的柔软斜置夹指，通过可见形变传达接触线索；用多物体抓放研究相机配置与中间训练对新物体适配的影响。"
 ---
 

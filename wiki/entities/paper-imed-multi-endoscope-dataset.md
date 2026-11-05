@@ -6,7 +6,7 @@ tags:
   - benchmark
   - evaluation
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.04755"
 project: https://imed-challenge.github.io/
 code: https://github.com/surgical-vision/imed
@@ -16,11 +16,13 @@ related:
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
   - ../overview/hub-embodied-eval-benchmark.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/imed_multi_endoscope_dataset_arxiv_2611_04755.md
   - ../../sources/repos/imed_multi_endoscope_dataset.md
   - ../../sources/sites/imed-multi-endoscope-dataset.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "iMED（arXiv:2611.04755）：用同步双内镜数据评估跨视角几何泛化，避免把沿单一路径的图像插值当成三维理解；覆盖不同组织与运动条件，适合手术视觉评测。"
 ---
 

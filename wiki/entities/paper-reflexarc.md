@@ -15,10 +15,12 @@ related:
   - ../concepts/dexterous-kinematics.md
   - ../tasks/locomotion.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/reflexarc_arxiv_2611_04424.md
   - ../../sources/sites/reflexarc.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "ReflexArc（arXiv:2611.04424）：把触觉反射通路直接接入电机，再通过策略训练接纳避让动作；在G1上研究突发接触后的撤离与平衡恢复，关键是反应时延和控制兼容性。"
 ---
 

@@ -6,7 +6,7 @@ tags:
   - benchmark
   - evaluation
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.03937"
 code: https://github.com/liuyifan22/FlowBench
 related:
@@ -15,10 +15,12 @@ related:
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
   - ../overview/hub-embodied-eval-benchmark.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/flowbench_arxiv_2611_03937.md
   - ../../sources/repos/flowbench.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "FlowBench（arXiv:2611.03937）：围绕假设动作后的场景变化构建反事实空间推理评测，连接室内场景与桌面操作；同时训练视觉语言模型和光流预测模型，考察仿真到真实迁移。"
 ---
 

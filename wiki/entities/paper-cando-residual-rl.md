@@ -6,7 +6,7 @@ tags:
   - reward-model
   - policy-learning
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.04543"
 project: https://cando-rl.github.io/
 related:
@@ -14,10 +14,12 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/reinforcement-learning.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/cando_residual_rl_arxiv_2611_04543.md
   - ../../sources/sites/cando-residual-rl.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "CANDO（arXiv:2611.04543）：把噪声方向调整与动作残差结合，保留生成式策略先验并进行在线改进；以保守价值估计和门控执行约束探索，适合残差强化学习研究。"
 ---
 

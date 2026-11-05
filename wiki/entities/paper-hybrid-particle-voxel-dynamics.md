@@ -6,7 +6,7 @@ tags:
   - world-model
   - perception
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.04492"
 project: https://jwang771.github.io/3dworldsimulator/
 code: https://github.com/jwang771/3d-world-simulator
@@ -16,11 +16,13 @@ related:
   - ../methods/vla.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
   - ../queries/robot-perception-stack-selection-loop.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/hybrid_particle_voxel_dynamics_arxiv_2611_04492.md
   - ../../sources/repos/hybrid_particle_voxel_dynamics.md
   - ../../sources/sites/hybrid-particle-voxel-dynamics.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "Hybrid Particle-Voxel Dynamics（arXiv:2611.04492）：以粒子与体素混合表示建立动作条件世界模型，联合描述物体形变、触觉与多视角观测；面向操作任务，重点关注长时预测的物理一致性。"
 ---
 

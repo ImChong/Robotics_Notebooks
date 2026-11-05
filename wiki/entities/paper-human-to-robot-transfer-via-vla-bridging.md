@@ -6,7 +6,7 @@ tags:
   - data-collection
   - cross-embodiment
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.04391"
 project: https://junhyeong-park.me/h2rb/
 related:
@@ -14,10 +14,12 @@ related:
   - ../tasks/teleoperation.md
   - ../methods/imitation-learning.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/human_to_robot_transfer_via_vla_bridging_arxiv_2611_04391.md
   - ../../sources/sites/human-to-robot-transfer-via-vla-bridging.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "Human-to-Robot Transfer via VLA Bridging（arXiv:2611.04391）：同时对齐几何表征与动作潜空间，让未配对的人类和机器人演示共同适配VLA；分离动作解码器，减少跨形态监督对原有控制先验的干扰。"
 ---
 

@@ -6,7 +6,7 @@ tags:
   - benchmark
   - evaluation
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 arxiv: "2611.03850"
 project: https://roboscope.pages.dev/
 related:
@@ -15,10 +15,12 @@ related:
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
   - ../overview/hub-embodied-eval-benchmark.md
+  - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 sources:
   - ../../sources/papers/roboscope_kit_arxiv_2611_03850.md
   - ../../sources/sites/roboscope-kit.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 summary: "RoboScope Kit（arXiv:2611.03850）：把仿真工作进程与策略副本分池调度，并减少动作块之间无用的渲染；重点是保持原基准评分规则，比较加速时需同时注明硬件与并发配置。"
 ---
 
