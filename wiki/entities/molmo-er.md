@@ -6,7 +6,7 @@ tags:
   - ai2
   - open-source
 status: complete
-updated: 2026-09-21
+updated: 2026-11-05
 related:
   - ./paper-molmoact2.md
   - ./molmo2-vlm.md

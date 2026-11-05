@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-05
 related:
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../concepts/robot-data-supervision-signal-types.md
@@ -255,7 +255,7 @@ WM 无需针对特定任务进行微调，且能在不同环境配置（如不�
 - [ADD](./add.md) (对抗性微分判别器，消除运动伪影)
 - [LCP](./lcp.md) (Lipschitz 约束策略，提升控制鲁棒性)
 - [AWR](./awr.md) (优势加权回归，简单高效的离策学习)
-- [TOPReward](../entities/paper-topreward.md) — 零样本 VLM 进度作 advantage 的 TOP-AWR 加权 BC
+- [TOPReward](../entities/paper-topreward.md) — 零样本 VLM 进度差作权重的加权 BC（项目页称 TOP-AWR，v2 论文称 TOP-RWBC）
 - [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶桥的非马尔可夫模仿（arXiv:2606.30318）
 - [Seeker](../entities/paper-seeker.md) — 无空间标签的动作监督视觉瓶颈；少数据 MimicGen / xArm（arXiv:2608.13422；已开源）
 - [BooST](../entities/paper-boost-skill-transfer.md) — 语义+运动 VQ-VAE 技能码，LIBERO 少样本（arXiv:2608.10600；训练仓未开）

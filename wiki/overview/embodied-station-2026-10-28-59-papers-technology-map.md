@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-05
 related:
   - ../entities/paper-rendering-free-event-sim.md
   - ../entities/paper-rynnvla-latent.md
@@ -108,7 +108,7 @@ flowchart TB
 |------|------|------|
 | AdaDexTrack | [paper-adadextrack](../entities/paper-adadextrack.md) | 已开源 |
 | EgoThumb | [paper-egothumb](../entities/paper-egothumb.md) | 已开源 |
-| FLoRe | [paper-flore](../entities/paper-flore.md) | 待发布 |
+| FLoRe | [paper-flore](../entities/paper-flore.md) | 部分开源（2026-11-05 复核） |
 | CARD | [paper-card-contact-anchored-retargeting](../entities/paper-card-contact-anchored-retargeting.md)（复用） | 已开源 |
 | Differentiable Contact Legged | [paper-differentiable-contact-legged](../entities/paper-differentiable-contact-legged.md) | 项目页未列 GitHub |
 | Functional Specialisation Bimanual | [paper-functional-specialisation-bimanual](../entities/paper-functional-specialisation-bimanual.md) | 已开源 |

@@ -2,7 +2,7 @@
 type: concept
 tags: [dataset, scaling, cross-embodiment, manipulation, community]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-05
 related:
   - ../entities/paper-open-x-embodiment.md
   - ../queries/contact-wrench-closed-loop.md
@@ -44,7 +44,7 @@ summary: "Open X-Embodiment（OXE）联合多机构把异构机器人演示数�
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 跨本体操作数据训练的策略，其接触执行环节由本链托底
 - [Octo Model](../methods/octo-model.md)
 - [Foundation Policy](./foundation-policy.md)
-- [TOPReward](../entities/paper-topreward.md) — 在 OXE 39 数据集上评测零样本进度奖励（Mean VOC）
+- [TOPReward](../entities/paper-topreward.md) — 在 OXE 上评测零样本进度奖励（Mean VOC；项目页 / v1 口径 39 个数据集，v2 论文过滤为 33 个）
 - [具身数据金字塔综述](../entities/paper-data-pyramid-embodied-manipulation.md) — 把 OXE 定位为五层金字塔真机层的聚合代表，并给出跨层数据选型坐标系
 - [UCAG-P](../entities/paper-ucag-p.md) — 在异构机器人+人手小时上用 **相机系锚点** 作共享动作接口（非 OXE 格式本身）
 
@@ -52,5 +52,5 @@ summary: "Open X-Embodiment（OXE）联合多机构把异构机器人演示数�
 
 - Padalkar et al., *Open X-Embodiment: Robotic Learning at Scale*, https://arxiv.org/abs/2310.08864
 - [ted_xiao_embodied_three_eras_primary_refs.md](../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md)
-- [sources/papers/topreward_arxiv_2602_19313.md](../../sources/papers/topreward_arxiv_2602_19313.md) — OXE 进度估计评测轴
+- [sources/papers/topreward_arxiv_2602_19313.md](../../sources/papers/topreward_arxiv_2602_19313.md) — OXE 进度估计评测轴（含 v2 全文核对）
 - [sources/papers/ucag_p_arxiv_2608_26058.md](../../sources/papers/ucag_p_arxiv_2608_26058.md) — 相机系锚点作为异构源上的共享动作接口
