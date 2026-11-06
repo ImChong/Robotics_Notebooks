@@ -7,10 +7,10 @@
 - **项目页：** <https://koda-humanoid.github.io/koda/>
 - **论文：** <https://arxiv.org/abs/2610.21152>
 - **代码：** <https://github.com/Gamma-Robot/KODA>
-- **入库日期：** 2026-10-17（发布状态复核：2026-10-20）
+- **入库日期：** 2026-10-17（发布状态复核：2026-11-06）
 - **一句话说明：** 官方页展示以共享控制时钟对齐人类第一视角、机器人全身轨迹、合成机载视角和控制器兼容动作标签的转换框架。
 
-## 开源核查（2026-10-20）
+## 开源核查（2026-11-06）
 
 - 官方仓库现提供 M1/M2：RGB-D/MCAP 转换、手部估计与重定向、接触感知修正、SCO 跟踪、手臂细化，以及机器人机载视角合成；README 含安装步骤和 `koda run` CLI。
 - M4 部分开放：公开两个示例 MCAP 与微调的 ScaleBFM tracking checkpoint，资产下载入口为 <https://huggingface.co/datasets/TeleEmbodied/koda-assets>。
@@ -22,3 +22,7 @@
 - [KODA 论文来源](../papers/koda_arxiv_2610_21152.md)
 - [官方仓库归档](../repos/gamma-robot-koda.md)
 - [KODA 实体页](../../wiki/entities/paper-koda-egocentric-vla.md)
+
+## 本次核查依据
+
+2026-11-06 直接读取官方项目页、官方仓库 README、`pyproject.toml`、`src/koda/cli.py`、`src/koda/orchestrator.py`、`pipeline_smooth_motion.txt` 与 `run_batch_singleframe_view_change_30to50.sh`。项目页明确链接 Gamma-Robot/KODA；源码入口 `koda.cli:main` 经 `run_pipeline` 顺序调用 `convert`、`track`、`view_change`，最后写出 `pipeline_result.json`。本次未执行 GPU 全管线。
