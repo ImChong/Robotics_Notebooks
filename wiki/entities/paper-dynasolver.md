@@ -6,9 +6,10 @@ tags:
   - world-model
   - perception
 status: complete
-updated: 2026-11-04
+updated: 2026-11-06
 arxiv: "2611.03595"
 project: https://made-gpt.github.io/DynaSolver-ProjectPage/
+code: https://github.com/Made-Gpt/DynaSolver
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -39,21 +40,25 @@ summary: "DynaSolver（arXiv:2611.03595）：面向关节运动引起的动态�
 ## 为什么重要
 
 - 动态机器人边界下的流场预测。
-- 开源结论：**项目页未列 GitHub**（步骤 2.5，2026-11-04）。项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
+- 开源结论：**代码已公开**（步骤 2.5，2026-11-04）。[官方代码仓库](https://github.com/Made-Gpt/DynaSolver)已公开训练与评估代码；轨迹数据及预训练权重尚未随仓库发布（2026-11-06 核对 README）。
 - 同期同组工作见 [VLM 奖励评估、动作动力学与开放权重机器人智能体：具身智能小站 11-04 期 57 篇阅读坐标](../overview/embodied-station-2026-11-04-57-papers-technology-map.md)。
+
+## 更新状态
+
+论文全文和源码运行路径尚待完整核查；本页处于更新草稿，流程图及源码时序图待补。
 
 ## 核心机制
 
 | 项 | 内容 |
 |----|------|
 | **arXiv** | [2611.03595](https://arxiv.org/abs/2611.03595) |
-| **开源** | **项目页未列 GitHub** |
+| **开源** | **代码已公开** |
 | **要点** | 面向关节运动引起的动态边界，建立机器人四维流场基准；结合物理token与回放增强训练，研究长时自回归误差，主要价值在流体仿真代理。 |
 | **文内指标** | 公众号未给具体数字，本页不引用。 |
 
 ## 源码运行时序图
 
-**不适用（项目页未列 GitHub）** — 项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。 不编造运行脚本；代码公开后再补。
+**待补充** — [官方代码仓库](https://github.com/Made-Gpt/DynaSolver)已公开训练与评估代码；轨迹数据及预训练权重尚未随仓库发布（2026-11-06 核对 README）。 尚需阅读训练与评估源码并绘制运行时序图。
 
 ## 实验与评测
 
@@ -68,7 +73,7 @@ summary: "DynaSolver（arXiv:2611.03595）：面向关节运动引起的动态�
 
 **动态机器人边界下的流场预测：面向关节运动引起的动态边界，建立机器人四维流场基准；结合物理token与回放增强训练，研究长时自回归误差，主要价值在流体仿真代理。**
 
-1. 开源边界：**项目页未列 GitHub** — 项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
+1. 开源边界：**代码已公开** — [官方代码仓库](https://github.com/Made-Gpt/DynaSolver)已公开训练与评估代码；轨迹数据及预训练权重尚未随仓库发布（2026-11-06 核对 README）。
 2. 核心机制：面向关节运动引起的动态边界，建立机器人四维流场基准；结合物理token与回放增强训练，研究长时自回归误差，主要价值在流体仿真代理。
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
