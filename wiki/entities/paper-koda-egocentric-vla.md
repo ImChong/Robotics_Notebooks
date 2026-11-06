@@ -3,7 +3,7 @@ type: entity
 project_id: koda-egocentric-humanoid-vla
 tags: [paper, humanoid, vla, locomotion, manipulation, sjtu, zju, teleai]
 status: complete
-updated: 2026-10-20
+updated: 2026-11-06
 arxiv: "2610.21152"
 project: https://koda-humanoid.github.io/koda/
 code: https://github.com/Gamma-Robot/KODA
@@ -11,6 +11,8 @@ related:
   - ../methods/vla.md
   - ../concepts/whole-body-control.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/koda_arxiv_2610_21152.md
 sources:
   - ../../sources/papers/koda_arxiv_2610_21152.md
   - ../../sources/sites/koda-humanoid.md
@@ -18,11 +20,11 @@ sources:
 summary: "KODA（arXiv:2610.21152）：将人类第一视角演示转为跨控制器可复用的人形 VLA 训练记录；官方现已开放运动学与机器人视角生成管线及少量样例，动作标签和训练仍待发布。"
 ---
 
-# KODA：从人类第一视角演示生成控制器对齐的人形 VLA 数据
+# KODA: Kinematics–Observation Data Alignment / 从人类第一视角演示生成控制器对齐的人形 VLA 数据
 
 ## 一句话定义
 
-**KODA 将人类第一视角视频转为可复用的 canonical trajectory，再按目标控制器生成对齐的机器人机载观测、全身状态和动作监督。**
+**KODA 将人类第一视角示范转为对齐的全身运动与机器人机载观测，再按目标控制器生成状态—动作监督，供全身 VLA 共同训练使用。**
 
 ## 英文缩写速查
 
@@ -33,6 +35,16 @@ summary: "KODA（arXiv:2610.21152）：将人类第一视角演示转为跨控�
 | RGB | Red-Green-Blue | 人类第一视角视频的彩色图像输入 |
 | SCO | Sampling-based Command Optimization | 用采样式命令优化生成控制器可执行动作 |
 | DoF | Degrees of Freedom | 人形机器人全身自由度 |
+
+## 核心信息
+
+| 项目 | 内容 |
+|---|---|
+| 原文 | arXiv:2610.21152v1，2026-10-15；本次核对正文与附录 A–F |
+| 机构 | 伽马智能（Gamma Robotics）、中国电信人工智能研究院（TeleAI）、上海交通大学、浙江大学 |
+| 定位 | 人类示范到人形机器人训练数据的转换框架；论文不能单独证明它是公司主业或唯一核心项目 |
+| 论文平台 | Unitree G1 + BrainCo 双手，SONIC / HEFT |
+| 公开默认路径 | G1 + Dex3，运动学与机载视频生成，部分开源 |
 
 ## 为什么重要
 
@@ -48,21 +60,34 @@ summary: "KODA（arXiv:2610.21152）：将人类第一视角演示转为跨控�
 ## 流程总览
 
 ```mermaid
-flowchart LR
-  human[人类第一视角视频与指令] --> motion[全身轨迹生成与仿真检查]
-  motion --> canonical[Canonical motion record]
-  canonical --> robotview[运动对齐的机器人视角合成]
-  canonical --> adapt[目标控制器命令优化]
-  robotview --> pack[同步观测 状态 动作与指令]
-  adapt --> pack
-  pack --> train[与匹配真机示范共同训练 VLA]
+flowchart TD
+  human["人类 RGB、深度或深度估计、相机位姿与手部线索"] --> motion["接触感知重定向、三点跟踪 SCO、手臂 IK"]
+  motion --> view["由全身运动确定相机位姿并合成机器人视角"]
+  motion --> record["可复用记录：全身运动、机载图像与指令"]
+  view --> record
+  record --> adapt["目标控制器 SCO：重新生成状态与动作标签"]
+  adapt --> train["与匹配的机器人示范共同训练 VLA"]
 ```
 
 ## 论文报告的评测
 
-- Unitree G1 上四项全身 loco-manipulation 任务，评估 SONIC 与 HEFT 两种控制器。
-- 在固定机器人演示量下，人类数据覆盖而机器人数据未覆盖的条件上，宏平均成功率分别提高 45.0 与 46.25 个百分点（论文摘要报告）。
-- 两种控制器下，增加人类示范预算时该指标上升；结果支持人类数据补充机器人数据的价值，仍需结合论文完整任务设置解读。
+每个任务固定 50 条机器人示范，最多加入 100 条人类示范；四项任务为杯子入篮、包裹上架、篮子上架和杯子入抽屉。论文以 GR00T N1.7 联合训练四任务，20,000 iterations、batch size 160；每配置只训练一次，每任务每条件进行 20 次真机测试（§4、附录 D）。
+
+| 控制器 | Robot-ID：仅机器人 → 加入 100 条人类示范 | Robot-OOD：仅机器人 → 加入 100 条人类示范 |
+|---|---|---|
+| SONIC | 62.50% → 72.50% | 3.75% → 48.75%（+45.0 个百分点） |
+| HEFT | 68.75% → 76.25% | 5.00% → 51.25%（+46.25 个百分点） |
+
+**Robot-OOD 只相对机器人示范分布定义**：换瓶子颜色、包裹颜色或倾斜篮子把手；这些条件已在人类训练池中出现。每任务完整人类池为 80 条 shifted + 20 条 robot-matched；不能称为对所有训练数据均未见条件的零样本泛化。较小预算独立随机抽样、并非嵌套子集，且未规定仍保持 80:20。
+
+SONIC 消融中，原始人类图像、固定偏移、运动驱动重投影与完整视角对齐的 Robot-OOD 成功率分别为 18.75%、23.75%、37.50%、48.75%（表 2）。控制命令生成阶段移除 SCO 时为 7.50%，保留时为 48.75%（表 3）；该消融同时影响 rollout 身体状态和动作标签，不能解释为仅动作标签的独立效应。
+
+## 局限与风险
+
+- 论文四任务、两个控制器、每配置单次训练的结果，不足以证明跨任意机器人本体或大规模任务的效果。
+- 400 条人类实验示范均含 iPhone 实测深度；RGB-only + 深度估计是框架支持的路径，未被单独评测为等价结果。
+- canonical 图像复用与控制器实际 rollout 之间仍有跟踪误差；更换控制器要重新优化命令并记录本体状态，不能直接复用动作标签（附录 C.5）。
+- 细粒度手物交互及物理可行性仍受限；几何接触线索不等于接触力测量，IK 后的运动也不能据此保证任意部署接口的动力学可行性。
 
 ## 源码运行时序图
 
@@ -72,16 +97,21 @@ flowchart LR
 sequenceDiagram
   autonumber
   actor User as 用户
-  participant CLI as KODA CLI
-  participant HF as Hugging Face assets
-  participant Pipe as convert / track / view-change
-  User->>CLI: assets download / verify
-  CLI->>HF: 获取公开样例与模型资产
-  HF-->>CLI: MCAP 与 tracking checkpoint
-  User->>CLI: koda run --input ... --output ...
-  CLI->>Pipe: 依次执行转换、跟踪、视角合成
-  Pipe-->>CLI: RGB-D / 手部观测、G1-Dex3 运动学、合成视频
-  CLI-->>User: pipeline_result.json 与 run_manifest.json
+  participant CLI as cli.py main
+  participant Orch as orchestrator.py
+  participant Conv as process_session_noviz.py
+  participant Track as pipeline_smooth_motion.txt
+  participant View as run_batch_singleframe_view_change_30to50.sh
+  User->>CLI: uv run koda run --input ... --output ...
+  CLI->>Orch: load_config + PipelineContext + run_pipeline
+  Orch->>Conv: convert：MCAP 与 HaWoR 资产
+  Conv-->>Orch: converted episode
+  Orch->>Track: track：会话列表、配置与 GPU 环境
+  Track-->>Orch: tracking/session/kinematics.npz
+  Orch->>View: view_change：配对观测与运动学
+  View-->>Orch: view_change/session
+  Orch-->>CLI: 写 pipeline_result.json
+  CLI-->>User: 输出路径；各子进程状态见 run_manifest.json
 ```
 
 数据准备之外，安装流程为 `uv sync --extra cuda`。M3 控制器动作标签与数据导出、M5 VLA 训练不在当前运行入口中。
@@ -101,7 +131,11 @@ sequenceDiagram
 
 ## 工程实践与开放状态
 
-截至 2026-10-17，KODA 代码部分公开：全身运动生成和机载观测工具仍在开发；命令生成、公开数据集与训练/模型配置尚列为计划。论文描述的方法完整度高于当前可复现代码，使用时应把“方法已报告”与“实现已发布”分开看。当前无公开数据下载和可直接照跑的 setup。
+截至 2026-11-06，已从官方项目页的 Code 链接复核 README 与运行入口：**部分开源**。M1/M2 已发布，M4 提供两个示例 MCAP 和微调 ScaleBFM checkpoint；M3 动作标签、motion-token 编码、控制器对齐数据导出与 M5 训练配置/模型细节仍待发布。公开 CLI 在视角生成后结束，不能直接复现论文完整训练链路。
+
+`uv sync --extra cuda` 后可按 README 下载/验证资产，再运行 `uv run koda run`；MANO 许可与 HaWoR/ProPainter 等手动资产步骤必须先完成。当前默认生成 G1 29-DoF 身体 + Dex3 14-DoF 手部运动学，与论文 BrainCo 12 手关节监督维度需区分。论文两控制器共享 44 维状态；SONIC 动作为 64 维 token + 12 手目标，HEFT 为 38 维身体参考 + 12 手目标。
+
+本次阅读了 `pyproject.toml`、`src/koda/cli.py`、`src/koda/orchestrator.py` 与两级主要 shell 包装入口；时序图只描述已核实的公开编排关系。未下载大模型资产，也未运行 GPU 全管线，阅读源码不等于复现成功。
 
 ## 结论
 
