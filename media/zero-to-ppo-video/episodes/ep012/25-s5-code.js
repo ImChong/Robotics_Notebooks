@@ -327,7 +327,7 @@
             E.op(dS1, fr(st, T.s1)); E.op(dS1L, fr(st, T.s1)); E.op(dS2, fr(st, T.s2)); E.op(dS2L, fr(st, T.s2));
           }
           /* 句 1：网格和 UR5 */
-          var aOn = E.fade(st, T.arm0, 0.4) * (1 - ed1);
+          var aOn = E.fade(st, 0, 0.4) * (1 - ed1);   // 这一幕一开始就出来（原先「为了好写」才出，开头 3.6 s 左右两边都空着）
           E.op(armPanel, aOn);
           if (aOn > 0) {
             var k3 = E.fade(st, T.ep3, 0.8), k4 = E.fade(st, T.ep4, 0.8);
