@@ -92,3 +92,6 @@ flowchart TB
 
 - [Vaswani et al. Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 - [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
+
+
+高效注意力的快权重视角及压缩与路由组合，参见 [MiTA](../entities/paper-mita.md)。
