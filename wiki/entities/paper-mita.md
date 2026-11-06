@@ -4,17 +4,23 @@ project_id: mita-attention
 arxiv: "2602.01219"
 code: https://github.com/QishuaiWen/MiTA
 tags: [paper, transformer, attention, computer-vision]
-status: draft
+status: complete
 updated: 2026-11-06
 sources:
   - ../../sources/papers/mita.md
   - ../../sources/repos/mita.md
+original:
+  - ../../sources/papers/mita.md
 summary: "MiTA 结合压缩共享专家与可复用 top-k 键值专家，探索高效注意力。"
 ---
 
 # Mixture-of-Top-k Attention: Efficient Attention via Scalable Fast Weights / MiTA：通过可扩展快权重实现高效注意力
 
 MiTA 将注意力解释为输入依赖的快权重网络，结合共享压缩与稀疏路由；由北京邮电大学提出，论文与官方仓库标注 NeurIPS 2026。
+
+## 一句话定义
+
+MiTA 是一种高效注意力：用少量 landmark 查询把键值压缩成共享专家，再为每个 landmark 收集可复用的 top-k 键值专家，让每个查询只读「共享专家 + 一个被路由到的专家」，在保留全局摘要的同时避免对全部键值做全量查找。
 
 ## 英文缩写速查
 
@@ -24,6 +30,12 @@ MiTA 将注意力解释为输入依赖的快权重网络，结合共享压缩与
 | FFN | Feed-Forward Network | 前馈网络 |
 | MLP | Multi-Layer Perceptron | 多层感知机 |
 | LRA | Long Range Arena | 长序列评测基准 |
+
+## 为什么重要
+
+- 论文把线性注意力、Linformer、TTT（压缩）与 MoBA、DSA（路由）统一为「扩展快权重」，给出五维分类，可对照不同高效注意力的取舍。
+- 单纯压缩丢失精确访问，单纯路由缺全局视角；MiTA 同时用两者，消融中「仅压缩」70.3、「仅路由」70.8、两者合用 71.1（表 6，ImageNet-1K DeiT-T）。
+- 相比为每个查询单独选 top-k 的做法，专家数固定且可复用，更利于硬件实现；LRA 总训练时间减少 77%。
 
 ## 核心原理
 
@@ -91,9 +103,20 @@ MiTA 展示了结合全局压缩与局部稀疏读取的可行性，精度和速
 - top-k 专家可供多个查询复用；专家数量和宽度影响精度及开销。
 - 视觉结果不能直接推断机器人策略或大语言模型上的收益。
 
-## 局限与待核查
+## 工程实践
 
-官方公开了注意力模块、视觉训练代码及检查点链接；目前尚未完整复核论文全部附录、训练入口和底层内核，亦未运行项目或仓库 CI。不要将该草稿视为完整复现。
+- 默认配置：landmark 由均匀等分窗口的 2D 平均池化得到；实现中每个查询路由 1 个专家（外加共享专家），按专家分配对查询排序后分组计算，再用在线 softmax 合并（算法 1）。一次路由多个专家需借助 MoBA，速度更低。
+- 调参经验：增大专家数 m 比增大每专家宽度 k 更有效；经验做法是先固定 m 与 k 的比例，再微调（附录 A）。训练时用较小的 m、k，推理时调大常可获得增益（附录 C）。
+- 迁移成本：直接把已有 ViT 的注意力替换为 MiTA 会掉点（ADE20K 各规模 -1.2 至 -2.8 mIoU，ImageNet-21K 微调 -0.3 至 -1.6），原生训练效果更好；标准注意力训练、MiTA 推理保留 95% 以上性能。
+- 瓶颈：gather 的随机访存使流水线偏内存受限，论文引用 DeepSeek Sparse Attention 的优化实现作为缓解思路。
+- 官方公开了注意力模块、视觉训练代码及检查点链接；本页未运行仓库代码或 CI，源码调用链见上文时序图及代码归档。
+
+## 局限
+
+- 论文只做视觉任务（ImageNet-1K、ADE20K、LRA），自述未评估 LLM 解码阶段，算力有限；主要贡献是概念框架。
+- 论文自述 m 取值为初步研究，未充分发挥 MiTA；ADE20K 与微调实验为直接替换注意力，精度低于基线。
+- 与加深度卷积、Gate 等组件混合时，精度提升不能全部归因于注意力本身；ViT-5-S 上 MiTA 仍低于原模型 0.5–0.9 个点。
+- 视觉结果不能直接推断机器人策略或大语言模型上的收益；本页未复现实验。
 
 ## 关联页面
 
@@ -105,3 +128,9 @@ MiTA 展示了结合全局压缩与局部稀疏读取的可行性，精度和速
 - [论文归档](../../sources/papers/mita.md)
 - [官方代码归档](../../sources/repos/mita.md)
 - [论文 v6 全文](https://arxiv.org/html/2602.01219v6)
+
+## 继续阅读
+
+- [Vision Transformer](../concepts/vision-transformer.md)
+- [MiTA 官方仓库](https://github.com/QishuaiWen/MiTA)
+- 论文引用的对照方法：MoBA（arXiv 2502.13189）、Agent Attention（ECCV 2024）、DeepSeek-V3.2 稀疏注意力（arXiv 2512.02556）

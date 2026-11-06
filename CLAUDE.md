@@ -110,9 +110,14 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - `make ci-preflight` 通过（或：N/A，仅非 wiki 改动）
 - 静态站详情页渲染正常
 
+## 节点健康度（ingest / wiki 改动必填）
+<`python3 scripts/report_health.py --changed` 的输出表格；未到 3 分须写缺项原因>
+
 ## 验证截图
 <img alt="..." src=".cursor-artifacts/screenshots/<page>.png" />
 ```
+
+**ingest PR 必须在正文汇报每个涉及 wiki 页的健康度**（规范见 [ingest-workflow.md 步骤 8.5](schema/ingest-workflow.md)）。
 
 ### 5.3 与 AGENTS.md / cloud-agent-pr-workflow.md 的关系
 

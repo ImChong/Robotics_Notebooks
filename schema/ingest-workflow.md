@@ -206,6 +206,18 @@ make ci-test       # 镜像 .github/workflows/tests.yml（含 pytest）
 
 > **维护者习惯**：wiki / sources / schema 改动后，默认顺序为 `make ci-preflight` →（若动过 `institutions.json`、脚本或 `tests/`）`make test` → **只 commit 源文件与 `log.d/` 碎片** → push。
 
+### 步骤 8.5：汇报节点健康度（ingest PR 必做）
+
+每个 ingest PR（新增 / 改写 wiki 页）的**正文必须列出本次涉及的每个 wiki 页的最终健康度**（0–3，判据见 `generate_link_graph.compute_health_score`：元数据 + 阅读骨架 + 原文通读，draft/stub 封顶）：
+
+```bash
+python3 scripts/report_health.py --changed   # 或显式列出页面路径
+```
+
+- 把输出的表格原样贴进 PR 正文「节点健康度」小节；
+- 未到 3 分的页必须在「缺项」里说明原因（如原文无法获取），不得隐瞒或把 status 虚标为 complete；
+- 汇报的分数以提交前最后一次运行结果为准，后续改页须重跑。
+
 ### 步骤 9：记录日志到 `log.d/` 碎片（叙事，可选但推荐）
 
 `log.md` 是 **运营叙事**（一次 ingest 的意图、开源结论、query 问答），**不是** 站点活动数据源。

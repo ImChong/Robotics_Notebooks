@@ -210,6 +210,8 @@ python3 scripts/fetch_feishu_doc.py "https://<tenant>.feishu.cn/wiki/<token>" --
    - 范围 (scope)：可选（如 ux, actions, wiki）。
    示例：`fix(actions): 修复 CLAW 页面格式缺失主要技术路线的问题`
 
+> **ingest PR 规范**：PR 正文必须汇报本次涉及 wiki 页的节点健康度（`python3 scripts/report_health.py --changed`），详见 [ingest-workflow.md 步骤 8.5](schema/ingest-workflow.md)。
+
 ## Cursor Cloud specific instructions
 
 ### Environment overview

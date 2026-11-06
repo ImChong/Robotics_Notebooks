@@ -32,6 +32,8 @@ related:
   - ../comparisons/robot-foundation-model-company-paths-2026.md
 sources:
   - ../../sources/blogs/agibot_go3_preview_prnewswire_2026-11.md
+original:
+  - ../../sources/blogs/agibot_go3_preview_prnewswire_2026-11.md
 summary: "智元 GO-3 Preview（厂商新闻稿，2026-10-29 官网 / 2026-11-03 PR Newswire）：WRAM 架构统一任务理解、未来状态预测与动作生成，配 Genie Evolver 后训练与 Genie Master 部署后学习；称三榜第一并将于 2026 年底前开源。本库核对：RoboTwin 平均榜第一成立，RoboColiseum 仅 manip 分榜第一，RoboDojo 仿真榜平均分为第 2；论文、代码、权重、许可均未找到。"
 ---
 
@@ -121,6 +123,15 @@ flowchart TD
     H --> G
     T --> A
 ```
+
+## 工程实践
+
+目前没有代码与权重，以下是依据新闻稿原文能落地的工程要点（作者表述），不是可运行流程：
+
+- **适应路径分层**：零样本直接迁移（无需在实体机器人上做任务特定监督微调）；精细装配（如 LEGO）用少量示教 + 微调，并由具身智能体编排步骤。
+- **后训练的环境分工**：实体机群（100 台）提供真实反馈并用 CEL 共享经验；仿真提供可重复条件下的训练与评测；世界模型回到关键决策点试不同动作，结果再回真机验证。
+- **部署后回流**：每日把成败经验归并为长期记忆供检索；接管与恢复轨迹经处理后用于继续训练动作策略。EEP 的 capabilities / guidance / feedback / continuity 四类接口是智能体与机器人之间的约定。
+- **接入前提**：稿中未给推理频率、硬件要求、接口格式或数据规模；是否能复用须等 2026 年底前的开源兑现（厂商承诺，无细则）。
 
 ## 实验与评测
 
