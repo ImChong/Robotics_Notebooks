@@ -2,9 +2,10 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-10-21
+updated: 2026-11-07
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
+  - ../entities/stanford-hai-discovery-loop-2026.md
   - ./retrieval-augmented-generation.md
   - ../references/llm-wiki-karpathy.md
   - ./recursive-self-improvement.md
@@ -28,6 +29,7 @@ related:
 original:
   - ../../sources/papers/ai_auto_research_survey_reading_arxiv_2605_18661_aar1.md
 sources:
+  - ../../sources/videos/stanford-hai-discovery-loop-2026.md
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
   - ../../sources/papers/ai_auto_research_survey_reading_arxiv_2605_18661_aar1.md
   - ../../sources/papers/rsi_survey_arxiv_2607_07663.md
@@ -151,6 +153,8 @@ flowchart LR
 
 ## 工程实践
 
+**官方对谈的工程边界补充：** [HAI 闭幕对谈：Discovery Loop](../entities/stanford-hai-discovery-loop-2026.md)（2026-10-28）把重点放在实验提案、工具执行、测量反馈与经验复用。Dean 区分指定任务的改进和提出改进方案的系统自身的改进，并指出物理过程、计算与评估耗时限制加速；20–50 倍专家生产率是目标。对机器人研究的启发是先测量完整实验环的耗时与收益，不能把代码生成加速直接当成真机研究加速。依据：[官方视频完整字幕阅读记录](../../sources/videos/stanford-hai-discovery-loop-2026.md)。
+
 综述 §7.4.8 给出四条设计原则，可直接对应本库的 agent 工作流：
 
 1. 全生命周期保持溯源（本库：每页 `## 参考来源` + `log.d/` 日志）。
@@ -192,6 +196,8 @@ flowchart LR
 - [RSI Survey（2607.07663）](../entities/paper-rsi-survey-2607-07663.md) — 自改进机制全谱系 survey（改什么 × 闭环 × 验证层级）；与本文生命周期轴正交互补。
 
 ## 参考来源
+
+- [HAI Discovery Loop 官方演讲与闭幕对谈](../../sources/videos/stanford-hai-discovery-loop-2026.md)
 
 - [sources/papers/ai_auto_research_survey_2605_18661.md](../../sources/papers/ai_auto_research_survey_2605_18661.md)
 - [sources/papers/rsi_survey_arxiv_2607_07663.md](../../sources/papers/rsi_survey_arxiv_2607_07663.md)
