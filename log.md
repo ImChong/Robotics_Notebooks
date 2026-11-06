@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-06] ingest | 新机器视觉《张正友标定、九点标定、手眼标定到底怎么选？》：识别为大凡光学原文的浓缩转载（经3D视觉工坊），新建转载归档并把精度链/布点验证/复校要点补进相机标定三层概念页，不新建重复节点
+
 ## [2026-11-06] ingest | 具身智能小站 2026-11-06《只在虚拟房间练习，人形机器人走进陌生房间能做什么？》20 篇逐篇建独立节点（新建 16 / 复用 4），Cosmos 交互世界仿真技术报告补 arXiv 2611.06627，公众号称 Open-HumanScale 的论文 arXiv 题名为 Open-HumanWAM
 
 ## [2026-11-06] ingest | sources/sites/liber-0.md — 核对 Liber-0 官方博客与实验口径
