@@ -1,127 +1,131 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-models, sun254667-wm]
+tags: [paper, curated-index, awesome-world-models, sun254667-wm, sjtu]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-06
 arxiv: "2409.16784"
-venue: "arXiv 2024"
-summary: "World model-based perception for visual legged locomotion."
+venue: "ICRA 2025"
+summary: "WMP 使用世界模型的循环状态增强视觉足式运动策略，在仿真中联合训练并迁移至 A1。"
 related:
   - ../entities/awesome-world-models.md
   - ../overview/sun-awesome-wm-technology-map.md
   - ../methods/generative-world-models.md
   - ../methods/model-based-rl.md
-  - ../tasks/manipulation.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2409_16784_wmp-world-model-based-perception-for-vis.md
-  - ../../sources/papers/sun_awesome_wm_catalog.md
-  - ../../sources/repos/awesome-world-models.md
+  - ../../sources/repos/wmp.md
+  - ../../sources/sites/wmp-loco.md
 ---
 
-# WMP
-
-**WMP: World Model-based Perception for Visual Legged Locomotion** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 374/571** 篇，分组 **814 Locomotion & Loco-Manipulation**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+# WMP: World Model-based Perception for Visual Legged Locomotion / 基于世界模型的视觉足式运动感知
 
 ## 一句话定义
 
-World model-based perception for visual legged locomotion.
+WMP 用预测感知的循环世界模型压缩历史信息，并以其隐藏状态辅助四足机器人的视觉运动控制。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WM | World Model | 环境前向预测模型 |
-| WAM | World Action Model | 世界预测与动作联合建模 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| MBRL | Model-Based RL | 基于模型的强化学习 |
-
-## 为什么重要
-
-- World model-based perception for visual legged locomotion.
-- 想横向对照同一分组的其他工作，可以从 [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World Models](../entities/awesome-world-models.md) 与下方关联的方法 / 任务页，可以接回对应的学习主线。
-
-## 流程总览
-
-```mermaid
-flowchart TD
-    A["Isaac Gym 仿真：4096 个 Unitree A1，六类地形 + 地形课程"] --> B["本体感知 o^prop（45 维）+ 深度图 d（64×64）"]
-    A --> P["特权信息 s^pri：scandots、足端接触力、随机化物理参数（仅仿真可得，供 critic）"]
-    B --> W["世界模型 RSSM（每 k 步更新一次，低于策略频率）<br/>编码器 CNN+MLP → 随机状态 z；GRU 递归模型 → 确定状态 h；解码器重建 o"]
-    W -->|"递归状态 h（stop-gradient）"| PI["Actor 策略 πθ：输入 o^prop + h → 12 维关节目标位置"]
-    B -->|"o^prop"| PI
-    W -->|"h（stop-gradient）"| CR["Critic Vθ：输入 o + h + s^pri（非对称 actor-critic）"]
-    P --> CR
-    PI --> PD["PD 控制器输出力矩"]
-    PD --> A
-    A -->|"仿真采样数据"| PPO["PPO 训练 actor 与 critic（奖励含速度跟踪与 AMP 风格项）"]
-    A -->|"仿真采样数据"| WL["最小化重建损失 + β·KL 训练世界模型"]
-    PPO --> PI
-    WL --> W
-    PI --> R["部署：世界模型与策略在真机运行（不用世界模型生成 rollout）"]
-```
-
-图依据：论文 §IV-A/B/C、Fig.2；真机部署节点参考 §V 提问「是否可迁移到真实机器人」，具体部署细节未逐节核对
+| WMP | World Model-based Perception | 基于世界模型的感知 |
+| RSSM | Recurrent State-Space Model | 循环状态空间模型 |
+| PPO | Proximal Policy Optimization | 近端策略优化 |
+| AMP | Adversarial Motion Priors | 对抗运动先验 |
 
 ## 核心信息
 
 | 字段 | 内容 |
 |------|------|
-| 编号 | 374/571 |
-| 分组 | 814 Locomotion & Loco-Manipulation |
-| 出处 | arXiv 2024 |
-| 论文 | <https://arxiv.org/abs/2409.16784> |
-| 项目页 | <https://wmp-loco.github.io/> |
+| 作者 | Hang Lai、Jiahang Cao、Jiafeng Xu、Hongtao Wu、Yunfeng Lin、Tao Kong、Yong Yu、Weinan Zhang |
+| 机构 | 上海交通大学、字节跳动研究院 |
+| 会议 | ICRA 2025，11531–11537 |
+| 原文 | [arXiv:2409.16784v1](https://arxiv.org/abs/2409.16784)，2024-09-25 |
+| 代码 | [bytedance/WMP](https://github.com/bytedance/WMP)，复现代码 |
+| 项目页 | [WMP](https://wmp-loco.github.io/) |
+| 索引 | Awesome World Models 第 374/571 条，814 Locomotion & Loco-Manipulation |
 
-## 核心机制（归纳）
+## 流程总览
 
-### 策展导读要点
+```mermaid
+flowchart TD
+    Sim["Isaac Gym 仿真与课程地形"] --> Obs["深度图与本体感知"]
+    Obs --> WM["RSSM：编码、循环预测与重建"]
+    WM -->|"循环状态 h，停止梯度"| Actor["策略 Actor"]
+    Obs -->|"当前本体感知"| Actor
+    Actor --> PD["关节目标位置与 PD 控制"]
+    PD --> Sim
+    Sim --> PPO["仿真轨迹、奖励与 PPO"]
+    PPO --> Actor
+    Sim --> Train["重建损失与 KL 损失"]
+    Train --> WM
+    Sim -->|"特权信息，仅训练"| Critic["非对称 Critic"]
+    WM --> Critic
+    Critic --> PPO
+```
 
-World model-based perception for visual legged locomotion.
+## 核心机制
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内相关方法页（见关联页面）。
+- 基于 Dreamer 风格 RSSM：GRU 循环状态根据过去动作及随机状态更新；视觉 CNN 与本体 MLP 编解码观测。重建损失和先验、后验之间的 KL 项训练模型。
+- 策略输入当前本体感知和停止梯度的循环状态；训练时 critic 另可访问地形采样点、足端接触力及随机化物理参数。并非完全不使用特权信息；部署 actor 不需要它们。
+- PPO 使用**仿真器采样**训练策略，世界模型不生成策略训练 rollout；AMP 判别器提供动作风格奖励。世界模型与策略并行训练，并非老师策略蒸馏学生。
+- 4096 个 A1、六类课程地形，策略 50 Hz；世界模型每 5 步更新，即 10 Hz。观测含 45 维本体状态和 64×64 深度图，动作是 12 维关节位置目标，再经 PD 转换为力矩。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    participant Entry as train.py
+    participant Registry as task_registry
+    participant Runner as WMPRunner
+    participant Env as 仿真环境
+    participant Model as WorldModel
+    participant PPO as AMPPPO
+    Entry->>Registry: 获取配置并创建环境和 runner
+    Entry->>Runner: learn()
+    loop 每轮采样
+        Runner->>Model: encoder 与 dynamics.obs_step
+        Model-->>Runner: 确定性循环特征
+        Runner->>PPO: act
+        PPO-->>Runner: 关节动作
+        Runner->>Env: step(actions)
+        Env-->>Runner: 观测、奖励和终止状态
+        Runner->>PPO: AMP 奖励与轨迹记录
+    end
+    Runner->>PPO: compute_returns 和 update
+    Runner->>Model: 使用缓存轨迹训练
+```
+
+依据官方 [train.py](https://github.com/bytedance/WMP/blob/master/legged_gym/scripts/train.py) 和 [wmp_runner.py](https://github.com/bytedance/WMP/blob/master/rsl_rl/runners/wmp_runner.py)；开源代码还包含深度预测器用于仿真采样，不应等同于论文抽象图的全部细节。
 
 ## 评测与指标
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2409.16784) 为准。
-- 横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 同分组条目。
-
-## 与其他工作对比
-
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/sun-awesome-wm-technology-map.md) 的 **814 Locomotion & Loco-Manipulation** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：Awesome Highlights 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+- 仿真每类地形评估 100 条不同难度轨迹。Gap 回报 WMP 为 32.37±8.24，student 为 27.07±12.38，teacher 为 32.80±7.06。Teacher/student 基线不适用于文中 Tilt、Crawl；不能据此声称在这两项上完成了同设置对比。
+- 实机 Unitree A1 配 Jetson NX 和 Intel D435i；文中报告跨越 85 cm 缺口、攀上 55 cm 台阶、穿过 22 cm 低矮空间。成功率图中每种条件为 10 次试验；这些尺寸不代表所有试验均成功。
+- 世界模型仅用仿真训练，论文展示真实轨迹的深度图开环预测；形状可能不一致，但示例中可通行空间的位置和角度较一致。
 
 ## 结论
 
-**这一页能给你的是「WMP」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+世界模型提供可用于运动控制的历史感知表征，论文在特定 A1 实验中展示了 sim-to-real 效果。
 
-- 可确证的只有清单坐标：分组 **814 Locomotion & Loco-Manipulation**，以及 Highlights 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
-
-## 常见误区
-
-1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+- 部署需权衡感知延迟、计算频率和运动速度；文中深度采集与计算约 40 ms，选 10 Hz 世界模型。
+- 扰动和视觉域差仍需处理：训练使用物理随机化与 100 ms 图像延迟，实机做深度滤波。
+- 消融显示去掉视觉在困难地形上明显退化；去掉世界模型的本体输入也会降低表现。
+- 官方复现仓库 README 报告训练约需 23 GB GPU 显存、建议至少 10k 次迭代；不能直接推断 8 GB 显存足以运行。
 
 ## 关联页面
 
-- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
-- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- [基于模型的强化学习](../methods/model-based-rl.md)
+- [足式运动](../tasks/locomotion.md)
+- [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 
 ## 参考来源
 
-- [`sources/papers/sun_awesome_wm_2409_16784_wmp-world-model-based-perception-for-vis.md`](../../sources/papers/sun_awesome_wm_2409_16784_wmp-world-model-based-perception-for-vis.md) — 本条目策展摘录
-- [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
-- 论文：<https://arxiv.org/abs/2409.16784>
-- [arXiv PDF](https://arxiv.org/pdf/2409.16784)：已通读方法部分（实验与附录以略读为准）：§III 问题设定、§IV 方法（A 世界模型学习、B 策略学习、C 训练细节）；§V 仅略读
+- [论文全文 arXiv v1](https://arxiv.org/html/2409.16784v1)
+- [项目页归档](../../sources/sites/wmp-loco.md)
+- [官方源码归档](../../sources/repos/wmp.md)
+- [原策展索引](../../sources/papers/sun_awesome_wm_2409_16784_wmp-world-model-based-perception-for-vis.md)
 
 ## 推荐继续阅读
 
-- [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2409.16784)
+- [WMP 论文](https://arxiv.org/abs/2409.16784)
