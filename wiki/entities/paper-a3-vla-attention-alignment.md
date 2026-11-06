@@ -63,8 +63,8 @@ summary: "A³-VLA（arXiv:2611.06447 v1）：用交互前后的逐 patch 帧间�
 ### 1. 候选区域生成（§3.2，离线）
 
 1. 取交互时刻 t_k（粗略时刻，可由夹爪状态、接触信号或预设状态区间得到；附录 Fig.8 示例为 gripper=-1，Fig.9 为 gripper=0）。
-2. 目标物：对每个 patch (i,j) 计算交互前窗口 [t_k−2w, t_k−w] 与交互后窗口 [t_k, t_k+w] 内相邻帧差的平均 L2 范数（式 2、3），取 `d_pre < τ` 且 `d_post > τ` 的 patch 为 C_tar（交互前不动、交互后变化）。
-3. 机器人：全程活动，取 `d_t = ||I^{t+w} − I^t|| > τ` 的 patch 为 C_rob（式 4）。
+2. 目标物：对每个 patch (i,j) 计算交互前窗口 [t_k−2w, t_k−w] 与交互后窗口 [t_k, t_k+w] 内相邻帧差的平均 L2 范数（式 2、3），取 $d_{\mathrm{pre}} < \tau$ 且 $d_{\mathrm{post}} > \tau$ 的 patch 为 C_tar（交互前不动、交互后变化）。
+3. 机器人：全程活动，取 $d_t = \lVert I^{t+w} - I^t \rVert > \tau$ 的 patch 为 C_rob（式 4）。
 4. τ=10（论文称对该值不敏感）；窗口 w 等于视频帧率；多次交互的轨迹按交互时刻分段、各段取并集。
 5. SAM2 细化（附录 A.6）：把交互帧的 patch 二值掩码作为 mask prompt，目标与机器人分别沿整条轨迹传播，得到时间一致的伪掩码；再映射回 VLM patch 网格：patch 与掩码重叠比例 > ρ=0.25 则计入 C_tar^t / C_rob^t（式 11、12）；伪掩码预先缓存。
 
@@ -72,8 +72,15 @@ summary: "A³-VLA（arXiv:2611.06447 v1）：用交互前后的逐 patch 帧间�
 
 取 VLM **最后一层**注意力并对头平均。语言 token 对每个图像 patch 的注意力先对 N_l 个语言 token 平均得到 M̄^{l2i}，再对目标区域求和并施加平方 hinge：
 
-- L_l2i = [max(0, η1 − Σ_{(i,j)∈C_tar} M̄^{l2i}_{(i,j)})]²
-- L_s2i = [max(0, η2 − Σ_{(i,j)∈C_rob} M^{s2i}_{(i,j)})]²（state token→图像 patch）
+$$
+\mathcal{L}_{l2i} = \Big[\max\Big(0,\ \eta_1 - \sum_{(i,j)\in C_{tar}} \bar M^{l2i}_{(i,j)}\Big)\Big]^2
+$$
+
+$$
+\mathcal{L}_{s2i} = \Big[\max\Big(0,\ \eta_2 - \sum_{(i,j)\in C_{rob}} M^{s2i}_{(i,j)}\Big)\Big]^2
+$$
+
+其中 $\mathcal{L}_{s2i}$ 的 $M^{s2i}$ 为 state token→图像 patch 的注意力。
 
 只设注意力质量**下界**（软约束，η1=η2=0.25），不强制分布形状。
 
@@ -81,12 +88,20 @@ summary: "A³-VLA（arXiv:2611.06447 v1）：用交互前后的逐 patch 帧间�
 
 语言 token 表示均值为锚 P̄^{lan}；C_tar 内 patch 表示均值为正 P̄^{img+}；其余 patch 均值为负 P̄^{img−}（式 8）。
 
-- L_cl = −log( exp(sim(P̄^{img+}, P̄^{lan})) / ( exp(sim(P̄^{img+}, P̄^{lan})) + exp(sim(P̄^{img−}, P̄^{lan})) ) )，sim 为余弦相似度（式 9）。
+$$
+\mathcal{L}_{cl} = -\log \frac{\exp\big(\mathrm{sim}(\bar P^{img+}, \bar P^{lan})\big)}{\exp\big(\mathrm{sim}(\bar P^{img+}, \bar P^{lan})\big) + \exp\big(\mathrm{sim}(\bar P^{img-}, \bar P^{lan})\big)}
+$$
+
+其中 sim 为余弦相似度（式 9）。
 - 只在交互**之前**的帧上施加（此时目标较少被机械臂遮挡）。
 
 ### 4. 联合训练（§3.5）
 
-L = L_FM + λ1 (L_l2i + L_s2i) + λ2 L_cl，λ1=0.1，λ2=0.01（式 10）。L_FM 是 π0 式流匹配损失（式 1）。
+$$
+\mathcal{L} = \mathcal{L}_{FM} + \lambda_1 (\mathcal{L}_{l2i} + \mathcal{L}_{s2i}) + \lambda_2 \mathcal{L}_{cl}
+$$
+
+λ1=0.1，λ2=0.01（式 10）。$\mathcal{L}_{FM}$ 是 π0 式流匹配损失（式 1）。
 
 ## 流程总览
 
