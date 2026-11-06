@@ -6,7 +6,7 @@ project: https://uni-robot-agent.com
 code: https://github.com/Open-RUA/uni-robot-agent
 tags: [llm-agents, robot-manipulation, benchmark, open-source, tsinghua, uc-berkeley]
 status: draft
-updated: 2026-11-04
+updated: 2026-11-06
 summary: "Uni-Robot-Agent 通过共享工具、资源调度及环境适配器，将模型接入机器人操作闭环，并研究开放权重模型的机器人使用能力。"
 related:
   - ../entities/ora-open-robot-use-agents.md
@@ -116,7 +116,7 @@ sequenceDiagram
 
 ## 待核查
 
-论文全文尚未逐节通读；项目主页、博客、在线文档本次无法访问。需完成全文通读并核对站点资源与开放数据后再将本页和 PR 转为完成状态。
+论文全文尚未逐节通读，在线文档及开放数据仍待核对；本页保持草稿。2026-11-06 已访问[作者团队博客](https://openrua.ai/uni-robot-agent)：博客报告 Qwen 真机总分为 **53.50/100**，与当前论文 v1 归档记录的 **49.50/100** 不一致。两者是否来自不同版本或评分口径尚未核实，暂时分别保留，不能视作相同结果。博客同样指出 agent 使用深度，而对照使用 RGB。
 
 ## 关联页面
 
