@@ -18,6 +18,8 @@ sources:
   - ../../sources/papers/messynav_arxiv_2611_07417.md
   - ../../sources/sites/messynav.md
   - ../../sources/blogs/wechat_embodied_station_20_papers_curobov2_fast_halo_humanwam_2026-11-06.md
+original:
+  - ../../sources/papers/messynav_arxiv_2611_07417.md
 summary: "MessyNav（arXiv:2611.07417）：空推车可以挪，放着笔记本的推车却该绕开。"
 ---
 
@@ -58,6 +60,20 @@ summary: "MessyNav（arXiv:2611.07417）：空推车可以挪，放着笔记本�
 
 - 公众号转述：15 个真机场景中成功 10 次，只用规划器的基线成功 6 次。
 - **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
+
+## 工程实践
+
+- **硬件：** TidyBot++（7 自由度 Kinova 臂 + 全向底盘）、Unitree L2 LiDAR（FAST-LIO 里程计与建图）、两个 ZED 2 相机（底盘前向相机用于规划，臂侧相机辅助定位）。
+- **VLM 分工：** 可供性与规划用 gemini-3-flash-preview（thinking=minimal），指点与分割用 gemini-2.5-pro；换成 claude-opus-5、gpt-5.6-luna 精度相近。
+- **落地链路：** VLM 指点 + 分割 → 深度反投影到世界系（沿用 HoMeR）→ Nav2 + LiDAR 避障的 move to、抓取或侧扫原语；提示词写明负载 3 kg、夹爪最宽 8.5 cm、底盘 0.8 m × 0.8 m。
+- **可扩展：** 原语可换成 VLA 策略，可供性属性（易碎等）可用来调速度与力度。
+
+## 局限
+
+- 原语开环执行，且只会「推开/拿起/绕开」三类，不能降低速度去处理易碎物。
+- 受限于 VLM：弱光下细粒度线索丢失，离线评测夜间 MessyNav 29.2% 反低于基线 44.2%；从 2D 图像推几何也不稳。
+- 无持久记忆，不能记住「背包太重」之类经验，错误（如碰倒易碎物）不可逆。
+- 真机仅 15 场景、每场景一次，样本小；代码尚未发布。
 
 ## 与其他工作对比
 

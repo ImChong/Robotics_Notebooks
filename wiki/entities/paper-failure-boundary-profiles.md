@@ -9,6 +9,8 @@ status: complete
 updated: 2026-11-06
 arxiv: "2611.06453"
 code: https://github.com/speedym/failure-boundary-profiles/tree/v1.0-paper
+original:
+  - ../../sources/papers/failure_boundary_profiles_arxiv_2611_06453.md
 related:
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../tasks/vision-language-navigation.md
@@ -50,6 +52,12 @@ summary: "Failure-Boundary Profiles（arXiv:2611.06453）：逐步收窄通道�
 | **要点** | 逐步收窄通道，分别记录策略尝试通过和无碰撞通过的概率。 |
 | **文内指标** | 公众号转述：两条曲线能看清总分掩盖的差别。 |
 
+## 方法与评测协议
+
+- 一个场景族只扫一个实测因子（走廊自由宽度或对向车流时间间隙），每变体由几何测量或间隙证书认证为应通过 / 应停。
+- commitment = P(尝试通过)，competence = P(无接触通过)，取 p=0.5 处为边界，区间为 bootstrap；run 间非确定，故多种子合并。
+- 决策准确率 = 应通过侧干净通过率与应停侧停车率的平衡准确率，总是停或总是走至多 0.5。
+
 ## 源码运行时序图
 
 以下为按仓库入口（`speedym/failure-boundary-profiles/tree/v1.0-paper`）推断的通用运行链路；入库日仅核实仓库可达，未逐文件阅读，具体脚本名以 README 为准。
@@ -74,7 +82,26 @@ sequenceDiagram
 ## 实验与评测
 
 - 公众号转述：两条曲线能看清总分掩盖的差别。
-- **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
+- 论文 Table 2（决策准确率 DA / 均分 DS）：专家 0.74 / 79.8，TFv6 0.60 / 75.5（学习型最高），PlanT 2.0 ckpt1 0.56，TF++ 0.49，HiP-AD 0.44，SimLingo 0.28，BridgeDrive 0.26（DS 71.8 排第四却从不停车）。
+- Charger 走廊阻塞宽度均分：擦碰通过的 SimLingo 52.2，全部停车者 37.8 至 40.6；TFv6 的 commitment / competence 边界分别为 2.82 / 2.84 m，BridgeDrive、SimLingo 全宽度都尝试，2.90 m、3.38 m 以上才干净通过。
+- 对向车流 29 个等待窗口：专家等 13 次、TFv6 6 次、BridgeDrive 3 次，其余学习型 0 次。
+- 仓库机器人 X-Mobility（Isaac Sim）DA 0.34；全模型微调使可通过间隙全部干净通过、DA 升至 0.50，但阻塞间隙停车从 15/15 降为 0/15。
+- **读法：** 以上数字出自 arXiv v1 全文（2026-11-06 通读）；平台为 CARLA 与 Isaac Sim 仿真。
+
+## 工程实践
+
+- 评测自家导航或驾驶策略时，对每个场景族固定其余条件、只扫一个量，每个变体至少 3 个种子（论文 CARLA 用 3，Isaac Sim 用 5 次策略采样），把每次 run 当独立抽样。
+- 同时报 commitment 与 competence 两条曲线以及 DA；不要只看均分，驾驶分会奖励挤过去的行为。
+- 应停变体必须有明确认证（政策下限、间隙证书余量），并包含故意不可通过的变体，防止「处处冲」刷分。
+- 复现需自备 CARLA 地图、各智能体检查点与仓库运行器，仓库 v1.0-paper 只含测量认证、场景族与 campaign 记录，模拟输出在 Hugging Face。
+- 同一 Isaac Sim 版本、同一 GPU 内比较，不跨版本合并。
+
+## 局限
+
+- 全部结果来自仿真，不能说明真车 / 真机是否出现同样边界。
+- 「应停 / 应通过」是声明的约定（政策下限 2.30 m、证书余量 0.5 s），改动后中间排名会换序，两端稳定。
+- 汇总 DA 仅基于 3 个含停车侧的族，对比的专家是脚本规划器；等待窗口是规则不是物理不可能，证书只能跑完后给出。
+- 若干变体因场景缺陷被排除（0.45 s 间距变体、0.99 m 贩卖机倒下）；机器人从不尝试绕行相邻通道，未评估绕行能力。
 
 ## 与其他工作对比
 

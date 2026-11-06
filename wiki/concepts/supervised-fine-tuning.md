@@ -22,7 +22,10 @@ related:
   - ../entities/philia.md
   - ../entities/paper-alloego-vlm.md
   - ../entities/paper-notebook-commanding-humanoid-by-free-form-language.md
+original:
+  - ../../sources/papers/instructgpt_sft_reading_arxiv_2203_02155.md
 sources:
+  - ../../sources/papers/instructgpt_sft_reading_arxiv_2203_02155.md
   - ../../sources/papers/instructgpt_arxiv_2203_02155.md
   - ../../sources/courses/karpathy_deep_dive_llms_youtube.md
   - ../../sources/papers/qwenvla_arxiv_2605_30280.md
@@ -92,10 +95,13 @@ flowchart LR
 - 冻结了什么：全参数微调，还是只训动作头 / LoRA？这决定预训练能力保留多少。
 - 和下一阶段怎么分工：最后一行的例子里，SFT 用全部人类语料，RL 只用机器人可执行的子集——SFT 负责覆盖面，RL 负责可执行性。
 
+**InstructGPT 原文中的 SFT 要点**（[通读归档](../../sources/papers/instructgpt_sft_reading_arxiv_2203_02155.md)）：SFT 数据约 13k 条 prompt；训练 16 epoch，但验证 loss 1 epoch 后就过拟合，作者按奖励模型得分选模型，因为多训几轮仍提升人类偏好；作为 RL 初始化的 SFT 只训 2 epoch 并混入 10% 预训练数据。效果上呈台阶：GPT-3 < few-shot GPT-3 < SFT < PPO。
+
 ## 局限与风险
 
 - **适用边界：** SFT 学的是示范分布的条件分布，质量上限受示范质量约束；示范有偏或不一致时，模型会学到平均化或多峰混淆的动作。
 - **分布偏移：** 闭环执行时，策略自己的误差会把它带到示范没覆盖的状态，误差逐步累积；需要 DAgger 式交互纠错、RL 后训练或更宽的数据覆盖来缓解。
+- **SFT 自身的短板（InstructGPT 原文）：** SFT 基线毒性最低但连贯性最低、最不受人类偏好，作者推测输出偏短或退化；在 FLAN / T0 等公开 NLP 数据集上微调也不如自采的多样示范，说明数据分布覆盖比数量更关键。
 - **遗忘风险：** 在窄任务上过度微调可能削弱预训练获得的通用能力（语言理解、跨任务泛化），常见对策是混入通用数据或只训部分参数（本库归纳）。
 
 ## 关联页面
@@ -111,6 +117,7 @@ flowchart LR
 ## 参考来源
 
 - [InstructGPT 论文归档](../../sources/papers/instructgpt_arxiv_2203_02155.md) — 「SFT → 奖励模型 → PPO」管线
+- [InstructGPT 通读归档（SFT 视角）](../../sources/papers/instructgpt_sft_reading_arxiv_2203_02155.md) — 数据规模、训练超参、过拟合与效果阶梯的原文核对
 - [Karpathy《Deep Dive into LLMs》课程归档](../../sources/courses/karpathy_deep_dive_llms_youtube.md) — 预训练 → 后训练（对话 SFT）→ RL 的完整训练栈讲解
 - [Qwen-VLA 论文归档](../../sources/papers/qwenvla_arxiv_2605_30280.md) — 机器人 VLA 中「CPT → SFT → RL」配方实例
 
