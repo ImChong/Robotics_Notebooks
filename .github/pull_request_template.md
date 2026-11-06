@@ -19,6 +19,10 @@
 - [ ] `make test` 或 `PYTHONPATH=scripts python3 -m pytest`
 - [ ] 其他：
 
+## 节点健康度（ingest / wiki 改动必填）
+
+<!-- 粘贴 `python3 scripts/report_health.py --changed` 输出；非 wiki 改动写「N/A」。规则见 schema/ingest-workflow.md 步骤 8.5 -->
+
 ## 相关 Issue
 
 <!-- 如有，填写 `#123`；无则写「无」。 -->
