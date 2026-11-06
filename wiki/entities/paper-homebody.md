@@ -12,7 +12,7 @@ tags:
   - stanford
   - caltech
 status: complete
-updated: 2026-09-28
+updated: 2026-11-06
 venue: "Project page September 2026"
 related:
   - ../tasks/loco-manipulation.md
@@ -26,7 +26,7 @@ sources:
   - ../../sources/papers/homebody_tml_stanford_2026.md
   - ../../sources/sites/tml-stanford-homebody.md
   - ../../sources/repos/stanford-tml-homebody.md
-summary: "HomeBody（Stanford TML×Caltech，2026 项目页）：G1 探索自采 SLAM/视频→GPT Astra Real2Sim（Isaac Sim）→可组合技能库长程 loco-manipulation；AMO 低层；Super Odometry+ICP 定位；GitHub 待发布。"
+summary: "HomeBody：G1 探索、空间记忆、Real2Sim 与技能编排；官方已发布仿真、场景重建和真机部署代码。"
 ---
 
 # HomeBody（探索、记忆与自主行动的人形系统）
@@ -65,7 +65,7 @@ summary: "HomeBody（Stanford TML×Caltech，2026 项目页）：G1 探索自采
 | 仿真 | NVIDIA Isaac Sim 数字孪生 |
 | System 2 | GPT Astra（远程 API） |
 | System 0 | [AMO](./paper-loco-manip-161-135-amo.md) 低层（50 Hz 策略 tick；臂/手 250 Hz） |
-| 开源（截至 2026-09-28） | GitHub **待发布**（README：Code coming soon） |
+| 开源（截至 2026-11-06） | GitHub 发布 SIM、REAL2SIM 和 REAL；开源定位版本与论文演示使用的内部版本不同 |
 
 ## 流程总览
 
@@ -138,17 +138,35 @@ FAQ 强调：相对 **仅人类录像** Real2Sim，自采 SLAM 约束 **几何�
 | 记忆 | **探索 keyframes + SLAM 对齐** | 依具体 VLA/WM | ICL context | Episode twin |
 | 动作单元 | **可组合 skills** | 连续 action chunk | EEF tool requests | 仿真回放轨迹 |
 | 机器人 | G1 真机 loco-manip | 通用 | ARX/YAM 等 | DROID 等 |
-| 开源 | **待发布** | 各异 | **已开源** | 曾 coming soon |
+| 开源 | **SIM、REAL2SIM、REAL 已发布** | 各异 | **已开源** | 曾 coming soon |
 
 ## 源码运行时序图
 
-**不适用。** [Stanford-TML/homebody](https://github.com/Stanford-TML/homebody) 截至 **2026-09-28** 仅 README **Code coming soon**，无可对齐的 CLI/模块入口。开放后应按项目页 **Implementation + FAQ** 补 `sources/repos/` 并补本图（预期节点：远程 Astra ↔ 本地 RTX 4090 技能进程 ↔ AMO ↔ G1）。
+以官方 SIM 入口 `homebody --env src_kitchen --model astra` 为例，依据 `pyproject.toml`、`src/homebody/__main__.py` 和 `guides/architecture.md`：
+
+```mermaid
+sequenceDiagram
+  participant CLI as homebody.__main__
+  participant SIM as MujocoBackend
+  participant Session as Session
+  participant VLM as VLM provider
+  participant Runner as Skill Runner
+  CLI->>SIM: 加载场景并创建仿真后端
+  CLI->>Session: 创建会话和 provider
+  Session->>VLM: 发送任务与观测
+  VLM-->>Session: 返回技能决策
+  Session->>Runner: 规划并执行技能
+  Runner->>SIM: 通过 Robot 接口执行动作
+  SIM-->>Session: 提供观测与执行反馈
+```
+
+这张图仅描述 SIM 路径；REAL 入口使用 `run_real` 和 `RealG1Backend`，探索与重建走 `homebody real2sim`。
 
 ## 工程实践
 
 | 项 | 建议 |
 |----|------|
-| 复现 | 等待官方代码；先读项目页 FAQ（Pick/Nav/Place 目标格式、AMO 频率） |
+| 复现 | 安装官方仓库后先运行 `homebody check`；仿真可用 `homebody --env src_kitchen --model astra` |
 | 低层 | 全身 loco-manip 需预训练 **AMO**；与 [Being-H0.7](../methods/being-h07.md) 等上层接口可对照阅读 |
 | VLM | 依赖 **GPT Astra** 远程；latency 导致 skill 间停顿（项目页承认） |
 | 算力 | 本地 **RTX 4090** 笔记本；加更重感知/技能可能不够 |
@@ -156,7 +174,7 @@ FAQ 强调：相对 **仅人类录像** Real2Sim，自采 SLAM 约束 **几何�
 
 ## 局限与风险
 
-- **代码未发布：** 无法验证 skill 接口与 Real2Sim agent 可复现性。
+- **开源版本差异：** 官方说明开源版使用 vanilla SuperOdometry，演示使用内部增强版定位，因此 REAL2SIM 与真机结果可能明显不同。
 - **硬件 endurance：** 长任务受 **指伺服过热**、reach 与 endurance 限制。
 - **Astra 延迟：** skill 间推理停顿影响长程流畅度。
 - **Real2Sim 成本：** 重建时间与 API 开销；交错域/动态场景 FAQ 未全面展开。
@@ -171,7 +189,7 @@ FAQ 强调：相对 **仅人类录像** Real2Sim，自采 SLAM 约束 **几何�
 3. **技能接口** — structured tool call + 本地 retry/visual servo，减轻 VLM 低频控制负担。
 4. **低层** — **AMO** 承担 walking+manipulation 协调（50 Hz / 250 Hz 分层）。
 5. **算力分割** — Astra 远程 + **4090 笔记本** 本地技能，适合「轻量真机 + 云端大脑」叙事。
-6. **开源边界** — GitHub **Code coming soon**；入库日 **不可复现**。
+6. **开源边界** — 官方发布 SIM、REAL2SIM 和 REAL，但定位栈与演示版本不同，仍需单独验证。
 7. **选型** — 研究 **长程记忆 + VLM skill 编排** 时对照 [GPT-Policy](./paper-gpt-policy.md)/[GPT 6 Astra 评测](./paper-gpt-6-astra-embodied-policy.md)；要可跑 harness 优先后者生态。
 
 ## 关联页面
