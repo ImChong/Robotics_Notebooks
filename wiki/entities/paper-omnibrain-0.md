@@ -5,7 +5,7 @@ tags:
   - paper
   - vla
   - policy-learning
-status: draft
+status: complete
 updated: 2026-11-06
 arxiv: "2610.36013"
 project: https://public-bots.github.io/OmniBrain-0/
@@ -82,20 +82,31 @@ flowchart TD
 | **arXiv** | [2610.36013](https://arxiv.org/abs/2610.36013) |
 | **开源** | 模型代码待发布；项目展示资源公开 |
 | **要点** | 通过具身预训练、领域专家蒸馏和多教师在策略蒸馏整合导航与操作决策。 |
-| **文内指标** | 公众号转述：再把执行证据变为评分规则和验证轨迹，考察长任务恢复，收益仍需结合具体工具接口理解。 |
+| **文内指标** | LIBERO-Pro 9B 为 65.5%，RSI 为 69.3%；具体评测口径见下节。 |
 
 ## 源码运行时序图
 
 **不适用：** 官方 README 标注模型代码待发布；当前 scripts 仅列展示素材准备脚本，未见模型训练或推理入口。
 
+## 工程实践
+
+- 接口需分别适配感知、动作、导航与反馈；每次调用后根据新观测更新状态。主表的 OmniBrain 结果不使用外部经验库。
+- 训练使用 16 张 NVIDIA H20；论文中导航采用 SmartWay，操作调用 π0.5、LingBot-VLA 或 RLDX-1 等技能。官方模型代码仍待发布。
+
+## 局限
+
+- 成功率依赖底层技能覆盖与可靠性；未见任务组合、空间定位仍有差距。真机仅覆盖三类任务、每类 20 次。
+- 论文正文与附录对真机物体颜色描述不一致，复现时需向作者确认；R2R-CE 智能体结果仅基于 100 个 Val-Unseen 样本。
+
 ## 实验与评测
 
 项目页列出的 9B / RSI 成功率：LIBERO-Pro 65.5% / 69.3%；LIBERO-Plus 83.8% / 84.5%；RoboCasa365 39.6% / 43.2%；RoboTwin 2.0 88.2% / 89.4%；R2R-CE 65.0% / 66.0%。R2R-CE 为 Val-Unseen 的 rand100 子集；不宜与完整集结果直接比较。
 
-**阅读状态：** 本次核对了论文摘要、项目页及仓库 README；PDF 超过读取工具大小限制，实验、局限和附录尚未通读，因此保留草稿状态。
+**阅读状态：** 已阅读 arXiv v1 HTML 正文及附录文字；图内细节仍以 PDF 原图为准。
 
-- 公众号转述：再把执行证据变为评分规则和验证轨迹，考察长任务恢复，收益仍需结合具体工具接口理解。
-- **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
+- 实验口径：LIBERO-Pro 800 次、LIBERO-Plus 840 次、RoboTwin 2.0 500 次；RoboCasa365 为 50 任务宏平均，不同基准的 Overall 不可直接等同。
+- 真机三任务宏平均 73.3%，π0.5 为 58.3%，教师为 86.7%；小样本结果不能推广到所有实物任务。
+- 消融：去掉恢复轨迹并仅保留单条成功轨迹时，LIBERO-Pro 成功率下降约 9%；该试验同时改变了数据组成。
 
 ## 与其他工作对比
 
@@ -121,7 +132,7 @@ flowchart TD
 - [omnibrain_0_arxiv_2610_36013.md](../../sources/papers/omnibrain_0_arxiv_2610_36013.md)
 - [wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md](../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - [arXiv:2610.36013](https://arxiv.org/abs/2610.36013)
-- [arXiv PDF](https://arxiv.org/pdf/2610.36013)：此前方法部分已读；本次未能获取全文，实验与附录尚待通读。
+- [arXiv v1 HTML](https://arxiv.org/html/2610.36013v1)：已读正文及附录文字，HTML 中部分图仅有图注。
 
 ## 推荐继续阅读
 
