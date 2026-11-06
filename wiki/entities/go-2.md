@@ -46,6 +46,7 @@ summary: "GO-2 是智元开源的执行基座 VLA：以动作思维链与异步�
 - [语义执行分类 hub](../overview/agibot-release-category-04-execution-vla.md)
 - [VLA](../methods/vla.md)
 - [Genie Sim 3.0](./genie-sim-3.md)
+- [agibot-go-3-preview](agibot-go-3-preview.md) — AGIBOT GO-3 Preview（新闻稿：WRAM + Genie Evolver / Master；三榜第一的核对结果与开放状态）
 
 ## 参考来源
 

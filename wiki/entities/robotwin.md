@@ -97,6 +97,8 @@ venue: ICML 2026
 - [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
 - [vla](../methods/vla.md)
 - [locomotion](../tasks/locomotion.md)
+- [agibot-go-3-preview](agibot-go-3-preview.md) — AGIBOT GO-3 Preview（RoboTwin 2.0 Co-train 榜单核对）
+- [paper-a3-vla-attention-alignment](paper-a3-vla-attention-alignment.md) — A³-VLA（RoboTwin 2.0 上的注意力对齐微调）
 
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)

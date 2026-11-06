@@ -118,6 +118,7 @@ flowchart LR
 - [RoboDojo](./robodojo.md) — 另一类 sim+real 统一操纵公益榜
 - [LeRobot](./lerobot.md) — 训练数据格式与 `lerobot-train` 生态
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
+- [agibot-go-3-preview](agibot-go-3-preview.md) — AGIBOT GO-3 Preview（manip 分榜第一的核对）
 
 ## 参考来源
 

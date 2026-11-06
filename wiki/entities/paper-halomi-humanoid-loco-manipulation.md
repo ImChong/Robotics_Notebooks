@@ -170,6 +170,7 @@ flowchart TB
 - [Imitation Learning](../methods/imitation-learning.md)
 - [VLA](../methods/vla.md)
 - [Unitree G1](./unitree-g1.md)
+- [paper-halo-perceptive-humanoid-motion-sim](paper-halo-perceptive-humanoid-motion-sim.md) — HALO: Perceptive Humanoid Motion from Simulation（Apple，arXiv 2611.06908，不同论文）
 
 ## 参考来源
 

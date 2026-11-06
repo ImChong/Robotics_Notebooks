@@ -48,3 +48,10 @@
 
 - 技术报告 PDF（前 2 页与目录；完整报告未逐页阅读）
 - 项目页与 HF 模型卡（经 WebFetch 摘要）
+
+## 2026-11-06 更正（据 HF 博文与四张模型卡）
+
+- Cosmos3-Nano-Transfer-Auto 与 Cosmos3-Nano-Sim-Auto 是**两个不同 checkpoint**（双向离线 vs 因果蒸馏流式），上表第 3、4 行“同一方向的两种命名”表述不准确。
+- “约 13 亿数据点（393 个数据集条目）”是 Cosmos 3 共享的后训练数据概览（Sim-Transfer 卡同文），不是 Bimanual 专属规模。
+- Bimanual 除 AgiBot 外，博文与仓库显示还支持 YAM。
+- 详见 [博文归档](../blogs/nvidia_cosmos_interactive_world_simulation_hf_blog.md) 与 [模型卡归档](../sites/hf_cosmos3_nano_sim_checkpoints_model_cards.md)。
