@@ -68,6 +68,15 @@ summary: "无损凸化（LCvx）：用松弛变量把火箭着陆中'推力不�
 
 等间隔节点、控制按一阶保持（Blackmore 2010 用分段线性基函数，即 FOH）得到有限维 SOCP；飞行时间 \(t_f\) 在外层用黄金分割搜索，单峰性只做了数值验证。
 
+## 主要技术路线
+
+| 路线 | 处理的非凸性 | 依据 |
+|------|-------------|------|
+| 推力上下界凸化 | \(\rho_1\le\|T\|\le\rho_2\) 的下界 | Açıkmeşe & Ploen 2007；Blackmore 2010 Problem 2 |
+| 最小着陆误差两步法 | 目标不可达时最省燃料问题无解 | Blackmore 2010 Algorithm 1 |
+| 带指向约束的 LCvx | 推力方向锥约束 | Malyuta 等 Part III 火星着陆算例（指向角 40°）；理论见 Açıkmeşe, Carson, Blackmore 2013（本次未读原文） |
+| LCvx + SCP 组合 | LCvx 管控制约束，其余非凸交给序列凸化 | Malyuta 等："When LCvx cannot be used, convex optimization can be applied via sequential convex programming" |
+
 ## 工程实践
 
 | 步骤 | 做法 | 来源 |

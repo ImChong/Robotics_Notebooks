@@ -72,6 +72,15 @@ summary: "序列凸化（SCvx）：把非凸轨迹优化在上一轮轨迹附近
 | 适用条件 | 较一般 | 代价对控制二次、动力学控制仿射 |
 | 收敛 | 超线性；虚拟控制为零时得到驻点 | 可用对偶变量得到二次收敛 |
 
+## 主要技术路线
+
+| 路线 | 要点 | 依据 |
+|------|------|------|
+| SCvx（硬信赖域 + 虚拟控制） | 离散问题上的 KKT 收敛保证 | Malyuta 等 Part II；Szmuk & Açıkmeşe 2018 |
+| GuSTO（软惩罚） | 连续时间 Pontryagin 意义的保证，适用条件更窄 | Malyuta 等 Part II |
+| PTR（罚信赖域） | SCPToolbox.jl 中与 SCvx/GuSTO 并列实现 | [SCPToolbox.jl](../../sources/repos/scptoolbox_jl.md)（算法细节本次未核对） |
+| 问题侧扩展 | 自由点火时间、升阻气动、状态触发约束 | Szmuk, Reynolds, Açıkmeşe 2018 |
+
 ## 工程实践
 
 - **初值**：直线插值（推力从 \(-m_{wet}g\) 插到 \(-m_{dry}g\)，四元数用 SLERP），"embed as much problem knowledge as possible in the initial guess"（Malyuta 等）。
