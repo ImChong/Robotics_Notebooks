@@ -5683,6 +5683,7 @@
 - [VersaCamVLA：相机可配置的机器人操控策略](wiki/entities/paper-versacamvla.md) — VersaCamVLA 把不同数量、不同位姿的 RGB 相机视图统一编码为固定大小的场景 token，再接入预训练 VLA，使操控策略适应相机布局变化。 `📅unknown` `[entity_page]`
 - [Continuous Versatile Jumping Using Learned Action Residuals（L4DC 2022）](wiki/entities/paper-versatile-jumping-action-residuals.md) — Continuous Versatile Jumping Using Learned Action Residuals**（Yuxiang Yang, Xiangyun Meng, Wenhao  `📅unknown` `[entity_page]`
 - [Vesta（A Generalist Embodied Reasoning Model）](wiki/entities/paper-vesta-generalist-embodied-reasoning.md) — Vesta** 是 NVIDIA 等团队提出的 **具身通才 planner VLM**（arXiv:2606.20905）：在 **Qwen3-VL-8B** 上，用 **六类空间导向 SFT  `📅unknown` `[entity_page]`
+- [VFlash：通过闪速图元解码实现快速精准的视觉规划](wiki/entities/paper-vflash.md) — VFlash 用轻量草稿模型并行生成完整轨迹或边界框，通过图元结构约束接受视觉坐标，同时保留文本的推测解码校验。 `📅unknown` `[entity_page]`
 - [VGA（arXiv:2604.12908）](wiki/entities/paper-vga-vision-geometry-action.md) — VGA**（*Robotic Manipulation is Vision-to-Geometry Mapping: Vision-Geometry Backbones over Language `📅unknown` `[entity_page]`
 - [VGG-T³：大规模离线前馈 3D 重建](wiki/entities/paper-vgg-ttt.md) — VGG-T³**（*Visual Geometry Grounded Test Time Training*，arXiv:[2602.23361](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
 - [VGGT（arXiv:2503.11651）](wiki/entities/paper-vggt-visual-geometry-grounded-transformer.md) — VGGT**（*VGGT: Visual Geometry Grounded Transformer*，[arXiv:2503.11651](https://arxiv.org/abs/2503. `📅unknown` `[entity_page]`
