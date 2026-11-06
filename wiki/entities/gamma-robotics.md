@@ -113,7 +113,7 @@ flowchart TB
 
 | 工作 | 做什么 | 开放状态（2026-11-06） |
 |------|--------|------------------------|
-| [NEXUS](./paper-nexus-terrain-adaptive-teleoperation.md) | 按机器人所处地形修正人体遥操作参考动作，深度 + 本体反馈的教师–学生全身策略，Unitree G1 | [代码](https://github.com/Gamma-Robot/NEXUS)、G1 ONNX 策略；CC BY-NC 4.0 |
+| [NEXUS](./paper-nexus-terrain-adaptive-teleoperation.md) | 离线把平地动作适配到地形，只在训练时监督特权教师；部署的学生只看平地命令、本体历史和单帧深度，Unitree G1 | [训练管线](https://github.com/Gamma-Robot/NEXUS)与 G1 ONNX 权重；CC BY-NC 4.0；sim-to-sim / sim-to-real 部署代码与近 1,000 小时配对语料未发布 |
 | [TTCO](./paper-ttco-test-time-compute-humanoid-bfm.md) | 不改 BFM 权重，在仿真里采样优化输入指令，缩小参考动作与执行的差距 | [代码](https://github.com/Gamma-Robot/bfm_ttc)；Apache-2.0（SPIDER 采样器 CC BY-NC） |
 | [GR-BC](./paper-gr-bc.md) | 用目标可达图估计剩余步数，给 VLA 行为克隆按进展加权，复用失败与人工接管片段 | 部分开源：[代码](https://github.com/Gamma-Robot/GR-BC)（2026-10-16，Apache-2.0）；四个任务数据集、训练好的策略权重与真机部署未发布 |
 | [KODA](./paper-koda-egocentric-vla.md) | 把人类第一视角演示转成人形运动学和机载视角视频 | [部分代码](https://github.com/Gamma-Robot/KODA)；动作标签与训练待发布 |
@@ -123,7 +123,7 @@ flowchart TB
 
 ## 工程实践
 
-- **先跑哪个仓库：** 想复现全身控制，从 NEXUS（G1 ONNX 策略可直接回放）或 bfm_ttc（MuJoCo Warp，需要 CUDA GPU）开始；想做 VLA 后训练，GR-BC 基于 LeRobot，支持 SmolVLA / X-VLA / π₀.₅。
+- **先跑哪个仓库：** 想复现全身控制，从 NEXUS（`play.py` 回放 `.pt` checkpoint，可导出 ONNX；仓库另附 G1 ONNX 权重）或 bfm_ttc（MuJoCo Warp，需要 CUDA GPU）开始；想做 VLA 后训练，GR-BC 基于 LeRobot，支持 SmolVLA / X-VLA / π₀.₅。
 - **许可要分开看：** NEXUS 原创部分和 bfm_ttc 的 SPIDER 采样器是 CC BY-NC 4.0（非商用），GR-BC、bfm_ttc 主代码是 Apache-2.0，LocoManiLab 是 MIT，KODA 没有统一许可。
 - **开发者接口：** 官网 SDK 与接口标「STAGED ACCESS」，没有文档或下载链接；GBot-W 目前只能看规格表，无公开 SDK。
 

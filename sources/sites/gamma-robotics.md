@@ -111,7 +111,7 @@
 | [GR-BC](https://github.com/Gamma-Robot/GR-BC) | arXiv:2610.20504（CoRL 2026） | Apache-2.0 | 39 | 2026-10-17 |
 | [LocoManiLab](https://github.com/Gamma-Robot/LocoManiLab) | arXiv:2610.30876 | MIT（依赖、权重、数据另计） | 12 | 2026-11-05 |
 
-- **NEXUS：** G1 感知式全身遥操作；含地形动作适配、PPO 教师、学生蒸馏、ONNX 回放与预训练 G1 策略；训练示例 4 GPU × 16,384 环境。
+- **NEXUS：** G1 感知式全身遥操作；含地形动作适配、PPO 教师、学生蒸馏、MuJoCo / Viser 回放（`play.py` 回放 `.pt`，可导出 ONNX）与预训练 G1 ONNX 权重；训练示例 4 GPU × 16,384 环境；部署代码与论文配对语料未发布（见 [论文归档](../papers/nexus_terrain_adaptive_teleop_arxiv_2609_39000.md)）。
 - **GR-BC：** README 更新记录「2026-10-16: Code released, with graph weighting, VLA training, and visualization tools.」；基于 LeRobot，支持 SmolVLA / X-VLA / π₀.₅。
 - **KODA：** 公开版只含机器人运动学与运动对齐的机载视频生成；控制器动作标签、SONIC token 编码、数据导出与策略训练（M3–M5）仍为 Planned。
 - **LocoManiLab：** collect → prepare → convert → train → evaluate → deploy 工作流，234 任务基准；README 写「Model integrations are retained for research and have not all been revalidated end to end」；链接 HF 数据集 `GammaRobotics/LocoManiLab`（公开、未设门槛，含 234 任务数据与部分推理 / 控制器权重，见[论文归档](../papers/locomanilab_arxiv_2610_30876.md)）。仓库 3 次提交。

@@ -3279,7 +3279,7 @@
           "date": "2026-09",
           "title": "NEXUS",
           "track": "全身遥操作",
-          "desc": "按机器人所处地形修正人体遥操作参考动作，深度 + 本体反馈的教师–学生全身策略（G1）；代码与 G1 ONNX 策略开源（CC BY-NC 4.0）。署名含 γ-Robotics。",
+          "desc": "离线把平地动作适配到地形，训练特权教师后蒸馏成只看平地命令、本体历史与单帧深度的学生策略，G1 零样本地形适配遥操作；训练管线与 G1 ONNX 权重开源（CC BY-NC 4.0），部署代码未发布。署名含 γ-Robotics。",
           "id": "entity-paper-nexus-terrain-adaptive-teleoperation",
           "url": "https://github.com/Gamma-Robot/NEXUS",
           "date_note": "arXiv:2609.39000 v1 为 2026-09-30，早于 10-20 公司官宣。",
