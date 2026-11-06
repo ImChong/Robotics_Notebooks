@@ -53,6 +53,8 @@ sources:
 - ../../sources/papers/lc_awesome_sim2real_noarxiv_097_mujoco-a-physics-engine-for-model-based.md
 - ../../sources/papers/lc_awesome_sim2real_catalog.md
 - ../../sources/repos/awesome-sim2real.md
+original:
+- ../../sources/papers/mujoco_reading_official_docs_computation_overview.md
 summary: MuJoCo 是专为生物力学、机器人学开发的高精度物理引擎。开源后成为机器人强化学习的基石，以极佳的接触稳定性和解析优化支持著称。
 project_id: mujoco
 venue: IEEE/RSJ International Conference on Intelligent Robots and Systems
@@ -61,6 +63,10 @@ venue: IEEE/RSJ International Conference on Intelligent Robots and Systems
 # MuJoCo (物理引擎)
 
 **MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apache 2.0）以来，它已成为机器人强化学习（RL）和控制社区无可争议的基石工具。
+
+## 一句话定义
+
+MuJoCo 是在广义（关节）坐标下做刚体动力学、并把摩擦接触表述为凸优化的 C/C++ 物理引擎，面向基于模型的控制与机器人强化学习。
 
 ## 英文缩写速查
 
@@ -77,6 +83,33 @@ venue: IEEE/RSJ International Conference on Intelligent Robots and Systems
 | MDP | Markov Decision Process | 状态–动作–转移–奖励形式化 |
 | DR | Domain Randomization | 域随机化 |
 | FM | Foundation Model | 大模型/基础模型增强迁移 |
+
+## 为什么重要
+
+- 它同时满足「接触稳定」「单步极快」「逆动力学可解析」三点，因此既是 RL 基准（Gymnasium、dm_control）的底座，也是轨迹优化、系统辨识等基于模型方法的常用仿真器（来源：官方文档 Overview / Computation）。
+- 2021 年被 DeepMind 收购并免费、2022 年开源后，MJX、MuJoCo Warp、Playground、Menagerie 等生态围绕同一份 MJCF 与 mjModel / mjData 结构展开，本页是这些子页的入口。
+
+## 核心原理
+
+依据官方文档 Computation 章（文档陈述，非本库实验）：
+
+1. **广义坐标 + 优化式接触**：状态用关节坐标表示，动力学为 M v̇ = τ + Jᵀf − c；约束力 f 是广义 Gauss 最小约束原理给出的凸优化问题的唯一解，而不是 LCP。
+2. **软约束**：对角正则 R 与参考加速度（弹簧阻尼，由 `solref` / `solimp` 参数化）决定约束的软硬；允许一定穿透与互补性违反。
+3. **求解器**：默认 Newton（精确 Hessian），另有 CG、PGS；NoSlip 为抑制滑移的后处理。
+4. **积分器**：Euler、implicit、implicitfast（官方推荐）、RK4；时间步长是影响稳定性与速度的首要参数。
+5. **可重配置管线**：`mj_step` 由约 26 个阶段组成，可用 flag 与回调裁剪；逆动力学可解析求得，导数靠有限差分（`mjd_transitionFD`）。
+6. **碰撞**：广相 sweep-and-prune、中相 BVH、窄相仅凸几何（GJK/EPA）；非凸物体需分解为多个凸 geom。
+
+## 工程实践
+
+以下取自官方文档 Tips and tricks 与 Computation 章：
+
+- **提速顺序**：先在不发散的前提下加大步长，选 `implicitfast`，再试 dense / sparse Jacobian、求解器与迭代数，最后处理碰撞（网格换基元、减面、多线程）。
+- **防滑**：先看接触力是否落在摩擦锥内；操作任务用 `condim` 4 / 6、椭圆锥并加大 `impratio`；仍滑时开 `noslip_iterations`（1-3），代价是成本上升且偶发不稳。
+- **抖动与发散**：减步长、给关节加 `armature`、用隐式积分器；用 `fwdinv` 标志对比正逆动力学来诊断求解器收敛，约束尺度异常时开 `diagexact`。
+- **模型资产**：尽量复用 Menagerie 的同一份 MJCF，减少算法对比时的模型适配差异（见下文 HMI 入口）。
+- **可复现性**：同版本同架构内确定，跨版本或跨系统的开环轨迹可能分叉（官方文档说明）；状态改动后须手动调用 `mj_forward` 刷新派生量。
+- 推断（非文档原文）：做 sim2real 时，`solref` / `solimp` 与摩擦参数应纳入域随机化与系统辨识范围。
 
 ## 核心设计理念
 

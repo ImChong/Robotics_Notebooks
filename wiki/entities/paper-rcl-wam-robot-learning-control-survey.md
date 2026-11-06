@@ -30,6 +30,8 @@ related:
 - ./awesome-world-models.md
 - ../overview/robot-world-models-training-loop-taxonomy.md
 - ../overview/robot-world-models-action-consequence-technology-map.md
+original:
+- ../../sources/papers/rcl_wam_survey_reading_arxiv_2609_16074.md
 sources:
 - ../../sources/papers/rcl_wam_robot_learning_survey.md
 - ../../sources/sites/awesome-world-action-models-rcl.md

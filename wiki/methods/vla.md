@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-06
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
@@ -170,7 +170,12 @@ related:
   - ../entities/paper-discrete-forcing.md
   - ../entities/paper-geomvla-2609-13812.md
   - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
+original:
+  - ../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md
+  - ../../sources/papers/openvla_reading_arxiv_2406_09246.md
 sources:
+  - ../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md
+  - ../../sources/papers/openvla_reading_arxiv_2406_09246.md
   - ../../sources/papers/geomvla_arxiv_2609_13812.md
   - ../../sources/sites/geomvla-project-page.md
   - ../../sources/papers/simvla_arxiv_2610_11248.md
@@ -268,6 +273,17 @@ VLA 可以看成机器人版的多模态 foundation model：输入“看到了�
 多数开源 VLA 并非从零训练多模态骨干，而是沿 **[CLIP](../entities/paper-clip.md) 对比对齐 → [LLaVA](../entities/paper-llava.md) 视觉指令微调 → 动作解码头** 三跳演进：CLIP 提供开放词汇视觉语义，LLaVA 提供多轮指令接口与可复现训练栈（冻结 CLIP + 投影 + LLM），VLA 再在机器人轨迹上替换/追加连续或离散动作输出。纵深阅读顺序见 [多模态 LLM 发展路线](../overview/multimodal-llm-development.md) 与 [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md) 对齐基座段。
 
 **三维几何一致路线：** [GeomVLA](../entities/paper-geomvla-2609-13812.md)（CMU/NVIDIA，arXiv:2609.13812）把多视角 VLM 特征提升到机器人基座坐标系，以任务条件的未来场景运动 token 几何感知地引导 flow 动作头；CALVIN ABC-D 4.624，2D 版本 4.437。其结果适合作为「3D 几何如何贯通感知到动作」的实例，真机复现则需重视标定与多视角配置；项目页所链模型仓库截至 2026-10-13 返回 404。
+
+## 核心原理
+
+以下依据 RT-2（arXiv:2307.15818）与 OpenVLA（arXiv:2406.09246）原文通读整理，归档见 [RT-2 通读](../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md)、[OpenVLA 通读](../../sources/papers/openvla_reading_arxiv_2406_09246.md)。
+
+- **动作即 token：** 把末端位姿增量与夹爪开合的每个连续维度离散为 256 个 bin，映射到语言模型词表（RT-2 在 PaLI-X 用整数 token、PaLM-E 覆盖最少使用的 256 个 token；OpenVLA 同样覆盖 Llama 词表末 256 个 token，并按训练数据 1%–99% 分位数划分 bin）。模型沿用 next-token 预测训练，推理时再反 token 化为动作。
+- **VLM 底座 + 机器人数据：** 网络规模 VQA/图文数据提供语义与视觉概念，机器人示教提供动作；RT-2 采用 **co-fine-tuning**（同批混入网络数据，提高机器人数据采样权重）以减少遗忘，消融显示优于仅机器人数据微调，也远优于从零训练。
+- **典型结构：** 视觉编码器（OpenVLA 为 SigLIP+DinoV2）→ 投影层 → LLM 骨干（Llama 2 7B）；输入图像 + 指令，输出动作 token 序列。
+- **能力边界：** 网络预训练迁移的是语义/视觉概念（符号理解、关系推理、多语言），而不是新的运动技能；物理技能仍受限于机器人数据分布（RT-2 §5）。
+- **推理链增强：** RT-2 在数据中加入自然语言 Plan 步骤（先 Plan 后 Action），定性上可做多步语义推理；该结论在原文中仅为定性展示。
+- **范式延伸（本页下文，非上述两篇原文内容）：** 扩散/流匹配动作头、action chunk、世界模型耦合等路线见「主要技术路线」。
 
 ## 主要技术路线
 
@@ -519,6 +535,24 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
   [RoboBench](../entities/robo-bench.md) 显示 SOTA MLLM 在 **隐式指令、robot-view 感知、执行失败诊断** 等轴仍远低于人类；且 RoboBench 分与 **CALVIN/LIBERO** 下游 VLA 相关——选型 VLM 骨干时宜同时看 **操纵流水线认知诊断** 与 **控制基准**。
 - **误区 6：VLM/VLA「会看」⇒ 能通过身体闭环行动。**
   [HumanCLAW](../entities/paper-humanclaw.md) 在 1,218 条 HSSD egocentric find–navigate–interact 回合上测 **冻结 VLM 的 action intelligence**；九款 SOTA VLM 最高 InteractSR 仅 **16.8%**，FindSR 与 NavSR/InteractSR 断崖暴露 **embodied self-awareness** 缺口——勿用静态 VQA 或桌面 VLA 分数外推全身决策能力。
+
+## 工程实践
+
+- **推理与部署（原文数据）：** RT-2-PaLI-X-55B 经云端多 TPU 服务约 1–3 Hz、5B 约 5 Hz；OpenVLA bf16 约 15GB 显存、RTX 4090 上约 6 Hz（未做编译/推测解码）。需要更高频率时见下文 action chunk 与异步执行。
+- **适配新机器人：** OpenVLA 用 10–150 条示教全量微调即可；**LoRA（r=32）** 与全量微调成功率相当（68.2% vs 69.7%）而只训约 1.4% 参数，单张 A100 约 10–15 小时；只训最后一层或冻结视觉编码器明显变差，视觉特征需适配目标场景。
+- **量化：** int4 在其 BridgeData 任务上与 bf16 持平（71.9% vs 71.3%）、显存约 7GB；int8 因推理变慢偏离数据采集节拍反而掉点。
+- **训练经验（OpenVLA §3.4）：** 微调视觉编码器、训练远多于 LLM 的 epoch（动作 token 精度超 95% 后真机仍提升）、224px 分辨率已够、固定学习率 2e-5。
+- **选型提示：** 窄而灵巧的单指令任务，Diffusion Policy 类从零模仿仍可能更平滑；多物体、多指令、需语言落地的任务更适合微调 VLA（OpenVLA §5.2）。
+- **与本页其余工程内容的衔接：** 数据飞轮、action chunk、异步控制与后训练见「实战路径建议」「工程瓶颈」「部署经验后训练」。
+
+## 局限
+
+- **不产生新技能：** 网络预训练不赋予新的运动能力，技能分布受限于机器人数据（RT-2 §5）。
+- **算力与频率：** 大模型推理代价高，难以直接服务 50 Hz 级高频控制（OpenVLA §6 以 ALOHA 为例），原文建议量化、蒸馏、action chunking、推测解码等方向。
+- **可靠性：** OpenVLA 在所测任务上通常仍 <90% 成功率；输入仅单图，无观测历史与本体感知。
+- **可用底座少 / 设计问题未决：** RT-2 时期可用于构造 VLA 的开放 VLM 很少；VLM 规模、是否与网络数据 co-train、最佳视觉特征等在 OpenVLA 中留作开放问题。
+- **评测范围：** 上述结论来自特定具身（Google robot、WidowX、Franka）与有限任务集，推广到其他平台需自行验证（推断）。
+- 更多系统性误区见下文「常见误区」。
 
 ## 参考来源
 

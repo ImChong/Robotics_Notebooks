@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-06
 related:
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../concepts/robot-data-supervision-signal-types.md
@@ -55,7 +55,11 @@ related:
   - ../entities/paper-sai-sequential-asymmetric-imitation.md
   - ../entities/paper-trace-causal-memory.md
   - ../entities/paper-zeno-1-collaborative-intelligence.md
+original:
+  - ../../sources/papers/dagger_reading_arxiv_1011_0686.md
+  - ../../sources/papers/gail_reading_arxiv_1606_03476.md
 sources:
+  - ../../sources/papers/osa_algorithmic_perspective_imitation_learning_arxiv_1811_06711.md
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
@@ -223,6 +227,20 @@ flowchart TD
 
 WM 无需针对特定任务进行微调，且能在不同环境配置（如不同高度的椅子、不同倾角的床）中展现出强泛化能力。
 
+## 工程实践
+
+> 依据：Osa et al., *An Algorithmic Perspective on Imitation Learning*（[原文通读归档](../../sources/papers/osa_algorithmic_perspective_imitation_learning_arxiv_1811_06711.md)）；标注「推断」处为结合本页内容的工程解读，非原文结论。
+
+- **先选 BC 还是 IRL**：看哪种是期望行为「最简洁的描述」。操作类任务奖励难提特征，通常直接学动作 / 轨迹分布（BC）；需要泛化到新地形 / 新条件的规划类任务，学奖励更利于泛化（原文 §2.1、§5.1）。
+- **先 IL 初始化、再 RL 精修**：专家演示用于约束昂贵的探索，常见做法是模仿热启动后再用 RL 微调（原文 §2.1），与本页「和强化学习的关系」一节一致。
+- **必须处理分布偏移**：演示覆盖不了学习者自己会进入的状态，误差会逐步累积；纯 BC 数据里要包含「出错后如何恢复」的样本，或用 DAgger 式流程——BC 初始化后，用混合策略 βπ_E + (1-β)π_L 采样，由专家标注学习者访问到的状态，聚合后重训（原文 §3.4.1、§3.4.3）。
+- **交互标注的代价**：DAgger 类方法需要专家在线标注与状态重置，物理机器人上往往昂贵；可按置信度只在低置信状态请求专家纠正（原文 §3.4.3.1-3.4.3.2）。推断：这是遥操作纠偏数据采集（见 [遥操作数据采集](../concepts/embodied-data-collection-four-layers-taxonomy.md)）的方法依据之一。
+- **DAgger 的保证与β取法**：行为克隆在自身状态分布下误差可随任务长度 T 二次增长（T²ε），DAgger 把聚合数据重训后降为线性（Ross et al. §2.1、§3）；文中最简版本 β_i=I(i=1)（只在第 1 轮用专家驱动采样）通常表现最好，Mario 实验里 β_i=0.5^{i−1} 略高于它，β_i=0.9^{i−1} 收敛明显更慢（[DAgger 通读归档](../../sources/papers/dagger_reading_arxiv_1011_0686.md) §3、§5.2）。
+- **无专家在线查询时用对抗式模仿**：只有离线专家轨迹、训练中不能再问专家时，GAIL 以判别器输出作代价、用 TRPO 更新策略，在 MuJoCo 任务上专家数据效率高于 BC/FEM/GTAL，但环境交互量与从奖励训练专家相当；Reacher 上 BC 反而更省数据（[GAIL 通读归档](../../sources/papers/gail_reading_arxiv_1606_03476.md) §6–§7）。推断：仿真里交互便宜时可考虑对抗式模仿，真机交互昂贵时更现实的是 BC 初始化（原文 §7 亦提出此设想，未验证）加少量 DAgger 式纠偏。
+- **演示数据质量**：单一专家的示教通常比多专家混合更易学；示教中的多余 / 不良动作需要分段筛选，自动剔除仍是开放问题（原文 §5.2.1）。
+- **本体不一致要先适配**：专家与机器人形态不同（如人到人形）时，动作需重定向后再学（原文 §1.3），对应本页流程中的「重定向与数据清洗」。
+- **评估要自建**：原文指出没有被广泛接受的模仿学习基准与指标（§5.2.4）；推断：落地时需用真机成功率与失败驱动采样自行建立评估闭环。
+
 ## 局限与风险
 
 - **Retarget 误差**：MoCap 动作不一定适配机器人身体结构；[TwinDEX](../entities/twindex.md) 一类共设计接口则用同构外骨骼 **绕开** 软件 retarget，代价是锁死特定手。
@@ -321,7 +339,9 @@ WM 无需针对特定任务进行微调，且能在不同环境配置（如不�
 ## 参考来源
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术参考与 tracking+recovery（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 - [KungfuBot 2 / VMS](../entities/paper-notebook-kungfubot-2.md) — 混合局部/全局跟踪 + 段级奖励的单策略多技能模仿（[来源笔记](../../sources/papers/kungfubot2_vms_icra2026.md)）
-- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文
+- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文（[原文通读归档](../../sources/papers/dagger_reading_arxiv_1011_0686.md)）
+- Ho & Ermon, *Generative Adversarial Imitation Learning* — GAIL 原论文（[原文通读归档](../../sources/papers/gail_reading_arxiv_1606_03476.md)）
+- Osa et al., *An Algorithmic Perspective on Imitation Learning*（[综述归档，通读未完成](../../sources/papers/osa_algorithmic_perspective_imitation_learning_arxiv_1811_06711.md)）
 - Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion 来源摘要
 - [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 来源摘要

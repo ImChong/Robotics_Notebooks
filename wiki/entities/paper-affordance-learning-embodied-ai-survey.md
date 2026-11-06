@@ -11,6 +11,8 @@ related:
   - ../tasks/manipulation.md
   - ../methods/vla.md
   - ../overview/affordance-awesome-technology-map.md
+original:
+  - ../../sources/papers/affordance_learning_embodied_ai_survey_preprints_2026100392.md
 sources:
   - ../../sources/papers/affordance_learning_embodied_ai_survey_preprints_2026100392.md
 summary: "综述以 affordance 感知、任务相关推理、引导动作三段组织具身交互文献，解释 affordance 如何从被动视觉区域预测发展为接地的规划与策略接口。"
@@ -34,6 +36,14 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 | Affordance | Action possibility | 环境 / 物体对 agent 提供的可交互机会 |
 | VLM | Vision-Language Model | 视觉–语言模型，用于 affordance 推理 |
 | HOI | Human-Object Interaction | 人–物交互，常作监督来源 |
+
+## 为什么重要
+
+具身系统常见断点是「感知输出无法变成可执行动作」。本综述给出感知 → 推理 → 引导动作的统一接口链，并按项目主页统计覆盖约 78 / 54 / 61 篇相关工作（感知 / 推理 / 动作），可作为定位 affordance 类工作的阅读坐标。
+
+## 核心原理
+
+综述将 affordance 学习形式化为一个映射，输出三类信息：可能的动作（what）、接地区域（where）与执行规格（how）。三个角色（感知、推理、引导动作）分别对应这三类输出，详见下文「核心框架」。
 
 ## 核心框架
 
@@ -76,6 +86,22 @@ Affordance 是连接「环境里有什么」与「当前 agent 能对它做什�
 | 项目主页 | [affordance-survey](https://jingliangli.com/affordance-survey/) |
 | 资源列表 | [Awesome-Affordance-Learning](https://github.com/hq-King/Awesome-Affordance-Learning)；站内逐篇节点见 [技术地图](../overview/affordance-awesome-technology-map.md) |
 | 新算法 / 新实验 | 本文为综述，不提出新的控制策略或统一性能基准 |
+
+## 工程实践
+
+- 设计系统时分别检查三段接口：感知端是否输出带位置的 affordance，推理端是否按任务与本体过滤，动作端是否真正消费该表征（推断：据项目主页挑战一的「无 affordance / 有 oracle affordance」对照思路）。
+- 评估 affordance 模块时，除分割/热图指标外，应报告执行成功率、失败与纠正、延迟与成本（项目主页挑战三）。
+
+## 局限
+
+- 本综述为未经同行评审的预印本，不含新实验，不能当作跨协议性能排名。
+- 项目主页列出的开放问题：显式与隐式表征的受控对比、规模化监督的质量与偏差、可靠的自主接地、闭环建模与规划、具身化安全与可信评测。
+- 本页内容依据归档摘录与项目主页整理，未通读 Preprints.org 全文（站点对自动抓取返回 403），细节以原文为准。
+
+## 继续阅读
+
+- [Awesome-Affordance-Learning 技术地图](../overview/affordance-awesome-technology-map.md)：逐篇代表作节点。
+- [VLA](../methods/vla.md) 与 [操作任务](../tasks/manipulation.md)：affordance 进入策略与操作的下游场景。
 
 ## 结论
 

@@ -31,6 +31,8 @@ related:
 - ./paper-arcadia.md
 - ../overview/vla-history-rt1-to-molmoact-technology-map.md
 - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
+original:
+- ../../sources/papers/openvla_reading_arxiv_2406_09246.md
 sources:
 - ../../sources/papers/openvla_arxiv_2406_09246.md
 - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -161,11 +163,30 @@ sequenceDiagram
     Robot-->>Dev: 观测与任务结果
 ```
 
+## 核心原理
+
+依据 [原文通读归档](../../sources/papers/openvla_reading_arxiv_2406_09246.md)：
+
+- **架构：** Prismatic-7B（SigLIP + DinoV2 通道拼接，约 600M）→ 2 层 MLP 投影 → Llama 2 7B。
+- **动作 token 化：** 每维独立 256 bin，按训练数据 1%–99% 分位数均分（避免离群值拉宽区间）；占用 Llama tokenizer 中最少使用的 256 个 token；仅对动作 token 算交叉熵。
+- **训练配方：** OXE 筛选后约 970k 轨迹；视觉编码器必须一起微调（冻结 46.7% vs 微调 80.0%，附录 D.3）；训练 27 epoch、固定学习率 2e-5；64×A100 约 14 天。
+- **消融要点：** OXE 预训练贡献最大（去掉后 76.3%→45.6%），DinoV2 融合次之（约 5 个百分点）。
+- **微调：** LoRA(r=32) 68.2% 对全量 69.7%，仅训约 1.4% 参数；单张 A100 约 10–15 小时。
+
+## 工程实践
+
+- **微调默认走 LoRA：** 单卡数小时到十余小时；视觉编码器不要冻结（只训最后一层仅 30.3%，冻结视觉 47.0%）。
+- **量化部署：** int4 显存约 7GB、成功率与 bf16 相当（71.9% vs 71.3%）；int8 在非阻塞控制下因变慢而掉点，阻塞式再评后与 bf16 持平（附录 D.4）。
+- **数据清洗：** 过滤全零/near-zero 的 no-op 动作，否则单步策略会学到「停住不动」（LIBERO 微调中明确指出）。
+- **选型：** 窄任务单指令场景 Diffusion Policy 更平滑；多指令、语言条件任务更适合 OpenVLA（原文 §5.2）。
+- **推理频率：** 约 6 Hz（RTX 4090，无编译）；ALOHA 50 Hz 等高频场景原文建议 action chunking / 推测解码（原文列为未来方向，**推断**：与本页对 π₀ 的对照一致）。
+
 ## 局限与风险
 
 - **默认操作空间：** 不是导航/全身 WBC。
 - **算力：** 全参微调门槛高，实用路径是 LoRA/OFT。
 - **安全：** 零样本工业部署仍需围栏与标定。
+- **原文自述（§6）：** 仅单图观测（无本体感知/历史）；吞吐不足以支撑高频控制；可靠性常 <90%；VLM 规模与是否 co-train 网络数据未探索。
 
 ## 与其他工作对比
 

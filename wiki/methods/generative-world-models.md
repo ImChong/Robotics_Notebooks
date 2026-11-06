@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-06
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -140,12 +140,19 @@ sources:
   - ../../sources/papers/worldline_arxiv_2609_38059.md
   - ../../sources/sites/worldline-project.md
   - ../../sources/repos/worldline.md
+original:
+  - ../../sources/papers/gaia1_reading_arxiv_2309_17080.md
+  - ../../sources/papers/unisim_reading_arxiv_2310_06114.md
 summary: "生成式世界模型（Generative World Models）利用扩散模型或视频生成技术来模拟物理世界的动态，为机器人提供高保真的视频级仿真和无限的反事实推演能力。"
 ---
 
 # Generative World Models (生成式世界模型)
 
 **生成式世界模型** 是具身智能（Embodied AI）领域的下一代物理引擎替代者。不同于 Drake 或 MuJoCo 等基于严谨几何和力学方程的解析引擎，生成式世界模型直接利用**生成式 AI (Generative AI)** 的能力，通过海量视频数据学习世界的运动规律。
+
+## 一句话定义
+
+生成式世界模型是用扩散 / 自回归等生成式 AI 从视频与动作数据中学习环境动态、给定当前观测与动作即可生成未来画面的模型，可充当可反事实推演的视频级模拟器。
 
 ## 英文缩写速查
 
@@ -156,6 +163,37 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 | RL | Reinforcement Learning | 可在想象 rollout 中试错的训练范式 |
 | MBRL | Model-Based Reinforcement Learning | 显式或学习式环境模型的 RL |
 | VLA | Vision-Language-Action | 可与世界模型级联或联合训练 |
+
+## 为什么重要
+
+- **补上解析引擎的短板**：流体、软体、衣物等难以手写接触方程的对象，可直接从视频学到动态（见下文「优势」）。
+- **数据与评测杠杆**：GAIA-1 把训练好的模型当作「神经模拟器」生成大量数据（含对抗样本）；UniSim 报告仅用模拟数据训练的 RL 策略可零样本上真机（均为原论文自报）。
+- **选型入口**：本页对数十个后续系统给出统一口径，便于判断该接哪种底座、动作接口与评测。
+
+## 核心原理
+
+综合 GAIA-1 与 UniSim 两篇原文，共同骨架是「**观测（+动作/文本）→ 预测下一段观测**」的条件生成：
+
+1. **编码**：GAIA-1 将图像量化为离散 token（288×512 → 576 个，词表 8192）并与 T5 文本、速度/曲率动作 token 交错；UniSim 则把各数据集的动作统一为文本嵌入加低层控制，直接在像素空间做视频扩散。
+2. **预测**：GAIA-1 用 6.5B 自回归 Transformer 预测下一图像 token，再由 2.6B 视频扩散解码器还原并时间上采样；UniSim 用 5.6B 视频扩散直接预测 p(o_t | h_{t-1}, a_{t-1})。两者都用 classifier-free guidance 加强条件。
+3. **长程**：通过滑窗或自回归 rollout 拼接；UniSim 消融显示条件取近期 4 帧优于 1 帧，过远历史反而变差。
+4. **用法**：策略外评估 / 数据合成、hindsight relabeling、模型内 RL；是否进入策略内部见「WAM 与潜空间」一节。
+
+## 工程实践
+
+- **采样**：GAIA-1 发现 argmax 会重复、全分布采样会落入长尾，实用上用 top-k（k=50）；文本对齐靠 classifier-free guidance 并对 token / 帧调度强度。
+- **数据**：GAIA-1 按地理、天气、转向 / 速度行为做加权平衡（4,700 h 专有数据）；UniSim 对低数据域加数据集标识符，但会损害跨域泛化。
+- **缩放**：GAIA-1 报告可用不足 20 倍算力的小模型拟合幂律预测大模型损失。
+- **成本**：二者训练规模分别为 64×A100 约 15 天（世界模型）与 512×TPU-v3 约 20 天，复现门槛高；多数后续工作改为在 Cosmos / Wan 等开源骨干上后训练（见「平台与视频骨干」）。
+- **评估口径**：本页其余章节的指标均为各论文自报，选型前先看对应评测基准一节。
+
+## 局限
+
+除上文「优势与挑战」所列外，原文自述的局限包括：
+
+- **GAIA-1**：自回归生成尚不能实时（可并行多样本）；能力展示以定性为主。
+- **UniSim**：对不合理动作会幻觉（如让桌面机器人「洗手」，场景变形）；仅条件于近期若干帧，长期记忆有限（抽屉中的物体可能消失）；其 RL 提升由模拟内视频 rollout 定性判定。
+- **推断（非原文）**：像素级预测不保证物理状态可干预，需配合功能分类与评测基准判读。
 
 ## 怎么读这一页
 
@@ -645,3 +683,9 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 ## 交互式视听生成案例
 
 - [Murea-InWorld](../entities/paper-murea-inworld.md)：显式世界状态 Agent 规划用户动作，再调用视听生成服务产出并回看视频片段；其代码开放范围与机器人适用边界见实体页。
+
+## 继续阅读
+
+- 原文通读归档：[GAIA-1](../../sources/papers/gaia1_reading_arxiv_2309_17080.md)、[UniSim](../../sources/papers/unisim_reading_arxiv_2310_06114.md)
+- 功能格与架构坐标：[Fei-Fei 功能分类](../concepts/functional-taxonomy-world-models.md)、[World Action Models](../concepts/world-action-models.md)
+- 模型内规划与想象：[Latent Imagination](../concepts/latent-imagination.md)、[Model-Based RL](./model-based-rl.md)

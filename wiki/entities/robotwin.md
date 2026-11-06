@@ -19,6 +19,8 @@ sources:
 - ../../sources/papers/rcl_awesome_wam_2506_18088_robotwin-2-0-a-scalable-data-generator-a.md
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
+original:
+- ../../sources/papers/robotwin_2_0_reading_arxiv_2506_18088.md
 related:
 - paper-rcl-wam-robot-learning-control-survey.md
 - ../overview/rcl-awesome-wam-technology-map.md
@@ -33,6 +35,10 @@ venue: ICML 2026
 # RoboTwin 2.0
 
 **RoboTwin 2.0** 是一个专为双臂机器人操作设计的**自动数据生成与仿真平台**。它建立在 [SAPIEN (仿真引擎)](./sapien.md) 仿真引擎之上，旨在解决具身智能（Embodied AI）中高质量专家数据获取昂贵且难以规模化的问题。
+
+## 一句话定义
+
+RoboTwin 2.0 = **MLLM 写代码 + 仿真闭环纠错的双臂专家数据生成器**，配 731 物体资产库、五轴域随机化与 50 任务基准（arXiv:2506.18088）。
 
 ## 英文缩写速查
 
@@ -76,6 +82,30 @@ venue: ICML 2026
 
 - **许可证：** 开源（官方 GitHub 仓库发布）；具体协议以仓库 LICENSE 为准。
 - **重定向就绪度：** 仿真自动合成双臂轨迹，绑定特定 embodiment；跨形态部署需重定向或按目标本体重采。
+
+## 核心原理
+
+（据原论文通读，见 [通读归档](../../sources/papers/robotwin_2_0_reading_arxiv_2506_18088.md)）
+
+- **闭环专家代码生成：** 代码 agent（DeepSeek-V3）按任务描述、API 库与约束写 Python；每轮仿真跑 10 次并记录失败原因，VLM 观察 agent 逐帧定位失败步骤；最多连续 5 次修复。多模态反馈使平均代码成功率 62.1% → 71.3%（RoboTwin 1.0 为 47.4% → 63.9%）。
+- **五轴域随机化：** 杂物、背景纹理（11000 张生成纹理）、光照、桌面高度、轨迹级语言指令。
+- **RoboTwin-OD 资产：** 731 物体 / 147 类，标注抓取点、功能点、放置点、抓取轴及 15 条语言描述。
+- **本体感知抓取适配：** 每物体多候选操作位姿 + 偏向可达性的扰动，覆盖 Franka、Piper、UR5、ARX-X5、Aloha-AgileX；平均自动采集成功率 52.2% → 60.5%，低自由度 Piper 提升最大（2.4% → 25.1%）。
+
+## 工程实践
+
+- **数据怎么用：** 官方预采 10 万+ 轨迹（50 任务）；基准协议为 Aloha-AgileX、每任务 50 条干净演示、100 次 rollout，分 Easy（干净）与 Hard（随机化）。
+- **预训练建议：** 论文中用域随机化数据预训练（32 任务 × 300 条）使 RDT/Pi0 对未见任务相对提升约 31.9%/29.3%，而干净数据预训练几乎无增益。
+- **Sim2Real 配方：** 10 条真机 + 1000 条随机化合成，平均成功率提升 24.4 个点；纯合成零样本在未见背景上也有约 +20 个点；仿真相机位姿加 ≤1 cm 扰动以抗标定误差。
+- **自建任务：** 用生成管线写新任务代码，VLM 观察器可选（失败时触发，约 6.9k token/次，可关闭以省成本）。
+
+## 局限
+
+- 论文基准显示 Hard 条件下所有策略大幅退化（Pi0 46.4% → 16.3%，RDT 34.5% → 13.7%，ACT/DP 近乎归零），鲁棒性仍是核心难题。
+- DP3 的优势部分来自仿真里的完美点云与干净背景分割，不能直接外推到真机。
+- Sim-to-real 仅在 COBOT-Magic 一个平台、4 个任务、RDT 一个骨干上验证；论文自述未来工作是真机部署与多物体复杂任务。
+- 代码生成评测仅在 10 个任务上进行，且成功率为仿真内自评。
+- 高自由度臂（Franka、UR5）从抓取适配几乎无增益（推断：瓶颈不在抓取候选）。
 
 ## 关联页面
 

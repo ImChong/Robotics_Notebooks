@@ -79,7 +79,12 @@ related:
   - ../entities/paper-ergocub-shared-embodied-intelligence.md
   - ../entities/paper-egohtr.md
   - ../entities/paper-learning-quiet-walking-aibo.md
+original:
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
+  - ../../sources/papers/learning_quadrupedal_locomotion_challenging_terrain_reading_arxiv_2010_11251.md
 sources:
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
+  - ../../sources/papers/learning_quadrupedal_locomotion_challenging_terrain_reading_arxiv_2010_11251.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/state_estimation.md
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
@@ -114,6 +119,12 @@ summary: "Locomotion 研究机器人如何稳定、高效地在不同地形上�
 | RL | Reinforcement Learning | 从奖励直接学策略，常见 PPO 训行走/跑跳 |
 | AMP | Adversarial Motion Prior | 对抗运动先验，约束策略状态转移接近人类分布 |
 | PD | Proportional–Derivative | 关节位置/阻抗底层，策略常输出 setpoint 由其跟踪 |
+
+## 为什么重要
+
+- 腿式机器人是轮式 / 履带难以到达的自然与受灾环境的候选载体；Lee 等（Science Robotics 2020）的盲走 RL 控制器零样本通过泥、雪、植被、碎石，并在 DARPA SubT 的 4 场 60 分钟任务中零失败（见 [原文通读](../../sources/papers/learning_quadrupedal_locomotion_challenging_terrain_reading_arxiv_2010_11251.md)）。
+- 传统「状态机 + 接触估计」随场景增多而复杂化，学习式控制器把反射与自适应放进策略；Rudin 等将崎岖地形策略训练缩短到单卡约 20 分钟，使奖励 / 超参迭代成本大降（见 [原文通读](../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md)）。
+- 它是 [全身控制](../concepts/whole-body-control.md)、[Sim2Real](../concepts/sim2real.md)、[Loco-Manipulation](./loco-manipulation.md) 等上层任务的底座。
 
 ## 任务边界
 
@@ -288,8 +299,28 @@ flowchart TD
 - [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md)
 - [Learning Quiet Walking（Sony aibo 低噪四足）](../entities/paper-learning-quiet-walking-aibo.md)
 
+## 工程实践
+
+以下要点来自两篇原文通读，与上文「工程落地检查」互补：
+
+- **动作接口**：策略输出期望关节位置 + 底层 PD（Rudin）；或输出足端残差 / 腿频率经 IK 与 PD 跟踪（Lee，PMTG）。
+- **并行训练**：批大小 = 机器人数 × 每机步数；每机步数过少（Rudin 任务中 <25 步）GAE 失效，机器人数过多则性能骤降；超时重置要用 critic bootstrap，不当作失败终止。
+- **地形课程**：按通过表现自动升降级（Rudin）或按可通过性维持中等难度（Lee），避免手调难度。
+- **sim2real**：摩擦随机化、观测噪声、随机推力；执行器网络建模 SEA（Rudin、Lee 均用学习得到的执行器模型）。
+- **盲走 vs 感知**：纯本体感知 student 经 teacher 蒸馏获得鲁棒性；带高程图的策略受建图质量限制，真机需降速指令（Rudin 为 0.6 m/s）。
+- （推断）不同机型迁移时需同步改 PD 增益、力矩惩罚、默认姿态与必要的步态奖励（Rudin 对 A1、Cassie 的做法）。
+
+## 局限
+
+- **步态单一**：两篇工作的策略都主要收敛到 trot；多步态与双足需额外奖励或先验（Rudin 对 Cassie 加单脚站立奖励）。
+- **盲走保守**：纯本体感知无法预知悬崖 / 间隙，步态偏保守；需与外感知融合（Lee 的未来工作）。
+- **感知链路**：高程图不完美使真机鲁棒性低于仿真（Rudin）。
+- **能力边界**：Rudin 的策略在超过 25° 的坡上无法爬升；成功率以台阶 0.2 m 等训练上限为界。
+- **覆盖面**：上述结论来自四足 ANYmal 为主的实验；人形 / 双足的结论需看各实体页，不能直接外推。
+
 ## 参考来源
 
+- **原文通读：** [Learning to Walk in Minutes（arXiv:2109.11978）](../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md)、[Learning Quadrupedal Locomotion over Challenging Terrain（arXiv:2010.11251）](../../sources/papers/learning_quadrupedal_locomotion_challenging_terrain_reading_arxiv_2010_11251.md)
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* — legged_gym 路线奠基论文
 - Peng et al., *DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills* — IL+RL 融合代表
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 论文集合

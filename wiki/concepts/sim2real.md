@@ -89,6 +89,9 @@ related:
   - ../entities/paper-humanoidvln.md
   - ../entities/cosmos-transfer.md
   - ../entities/cosmos-cookbook.md
+original:
+  - ../../sources/papers/sim2real_survey_zhao_reading_arxiv_2009_13303.md
+  - ../../sources/papers/domain_randomization_tobin_reading_arxiv_1703_06907.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
 sources:
   - ../../sources/repos/egalahad-sim2real.md
@@ -280,6 +283,22 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 **旁路：难仿真平台直接 on-robot MBRL：** [Online MBRL via Online Optimization](../entities/paper-online-mbrl-robot-control.md)（arXiv:2510.18518，ETH×MPI-IS×EPFL）对液压挖掘机臂 / 缆驱软臂 **跳过 sim-to-real**，用真机缓冲学动力学并在真实轨迹上做一阶策略更新；HEAP 约 **2.5 h** 达 **2.7 cm** 跟踪。读法是「仿真不可用或不值得」时的对照路线，而非否定 DR/RMA；截至入库日 **确认未开源**。
 
 **场地专用 RGB 导航（产业管线）：** [Flexion × Niantic Spatial × NVIDIA RGB Sim2Real 管线](../entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md)（2026-07）用 **360° 扫描 → 3DGS+对齐碰撞 mesh 的 NuRec USDZ → Isaac Lab 大规模 RL** 训练 **纯 RGB 局部导航**，在两家办公室重建中仿真成功率 **达到或超过深度基线**（97.8% vs 93.8% / 75.0% vs 70.9%），并 **零样本** 部署真机——把「无纹理合成场景 + 深度」惯例推进到 **语义可见、部署点绑定** 的 RGB 策略，与 [LEGS](../entities/paper-legs-embodied-gaussian-splatting-vla.md)（3DGS 缩小 VLA **模仿**视觉 gap）、[GS-Playground](../entities/gs-playground.md)（高吞吐 3DGS **仿真渲染**）形成互补读法。体积规范与 Isaac 导入见 [NVIDIA Omniverse NuRec](../entities/nvidia-nurec.md)；驾驶日志的 **秒级前向初始化** 见 [Instant NuRec](../entities/paper-instant-nurec.md)（arXiv:2607.14203，官方仓部分开源）。
+
+## 工程实践
+
+- **随机化要覆盖「视觉 + 动力学」两侧**：Tobin 等（2017）的视觉域随机化只用低保真渲染与非真实随机纹理，即在真机达到约 1.5 cm 定位精度；综述（Zhao 等 2020）将 DR 分为视觉随机化与动力学随机化（质量、摩擦、关节阻尼、执行器增益等）。
+- **数据多样性要够**：Tobin 消融显示唯一纹理数少于约 1000 时迁移显著变差，训练缺少干扰物则真机有干扰物时误差大增；随机化项应逐项做消融而非一把梭。
+- **与系统辨识并用**：综述指出温度、湿度、磨损会使同一机器人的物理参数漂移，纯靠一次标定不稳——这与上文「SysID 启动、DR 兜底」的闭环流程一致。
+- **仿真器选型**：综述归纳 Gazebo 与 ROS 集成好，PyBullet / MuJoCo 与 RL 库集成好、训练更快（推断：人形大规模并行训练现多用 GPU 仿真器，见上文各节）。
+- **多方法组合**：综述建议将 DR 与域适应结合，并用课程 / 增量复杂度处理多步长任务。
+
+## 局限
+
+- **DR 缺乏形式化解释**：综述指出 DR 多靠经验尝试，难以解释「为何有效」，随机化分布难设计。
+- **过度随机化有害**：综述引用的可变形物体操作实例中，纹理颜色数过多反而使真机表现显著变差；对应上文「一失败就盲目扩大 DR」的误区。
+- **精度与接触丰富任务**：Tobin 明确指出其方法尚不足以支撑接触丰富或更高精度操作；训练时无真机数据，无法在真机上验证 / 早停。
+- **仿真本身的不可建模项**：非刚性、齿轮间隙、可变形程度等仿真器难以复现的效应，随机化未必覆盖。
+- **域适应假设**：综述指出多数域适应方法假设源 / 目标特征空间同构，实际未必成立。
 
 ## 参考来源
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — G1 真机高动态武术 tracking（[source](../../sources/papers/kung_fu_athlete_bot.md)）

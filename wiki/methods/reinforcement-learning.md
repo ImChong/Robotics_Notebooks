@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-10-30
+updated: 2026-11-06
 related:
   - ../entities/paper-kamino.md
   - ../entities/paper-monorace-champion-level-drone-racing.md
@@ -51,6 +51,8 @@ related:
   - ../entities/ai-engineering-from-scratch.md
   - ../entities/paper-minute-scale-microrobot-navigation.md
   - ../entities/paper-agentic-roborl.md
+original:
+  - ../../sources/papers/ppo_reading_arxiv_1707_06347.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
@@ -87,6 +89,25 @@ summary: "Reinforcement Learning 通过与环境交互优化长期回报，擅�
 | MBRL | Model-Based Reinforcement Learning | 先学环境动态再规划或想象 rollout |
 | OFRL | Offline Reinforcement Learning | 仅用固定数据集训练，需处理分布偏移 |
 | SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+
+## 为什么重要
+
+- 机器人控制中许多行为（步态、恢复、竞速）难以手写奖励之外的显式规则；RL 只需"做得好不好"的信号即可在仿真中大规模试错，这是人形 / 足式 locomotion 的主流训练范式（见下文"在机器人控制中的典型应用"）。
+- 算法层面的实用性来自稳定的策略更新：PPO 论文指出 vanilla policy gradient 数据效率与鲁棒性差、TRPO 实现复杂，PPO 以裁剪目标 + 多 epoch 小批量更新在两者间取得折中（原文 §1、§7；归档见 [PPO 通读](../../sources/papers/ppo_reading_arxiv_1707_06347.md)）。
+
+## 核心原理
+
+- **策略梯度**：以优势 Â 加权 ∇θ log πθ(a|s) 作为更新方向；对同一批轨迹反复优化未加约束的目标会导致过大的破坏性更新（PPO 原文 §2.1）。
+- **信赖域 / 近端思想**：TRPO 用 KL 约束限制单次更新幅度；PPO 改用概率比裁剪 L^CLIP = E[min(rÂ, clip(r,1−ε,1+ε)Â)]（ε 常取 0.2），一阶优化即可近似同样的保守更新（原文 §2.2、§3）。
+- **Actor-Critic 训练循环**：N 个并行 actor 各采 T 步，用学习到的价值函数估计优势（截断 GAE），再对数据做 K epoch 小批量优化，总目标含价值误差项与熵奖励（原文 §5）。
+- 上述与本页 MDP、分类与 Model-Free/Model-Based 小节的关系：PPO 属 on-policy、model-free 的策略梯度族；off-policy 与 model-based 路线见各自页面（推断性归纳，非原文表述）。
+
+## 工程实践
+
+- **基线超参参考**（PPO 原文附录 A，MuJoCo 100 万步基准）：T=2048、Adam 3e-4、10 epoch、minibatch 64、γ=0.99、GAE λ=0.95、ε=0.2；Roboschool 人形用 T=512、15 epoch、minibatch 4096、32–128 个并行 actor。这些是论文的基准设置，迁移到自己的任务时需重新调参（推断）。
+- **别去掉裁剪**：论文消融中"无裁剪无惩罚"平均归一化得分为 −0.39，HalfCheetah 上甚至劣于随机策略；裁剪 ε=0.2 最佳（0.82），KL 惩罚变体略逊（表 1）。
+- **并行 actor 与大批量**：人形实验使用数十到上百个并行 actor 与 50M–100M 步训练（§6.3、附录 A）；现代 GPU 仿真的大规模并行环境延续这一思路，见 [Humanoid RL Cookbook](../queries/humanoid-rl-cookbook.md) 与 [Sim2Real](../concepts/sim2real.md)。
+- 奖励设计、课程与 sim2real 的工程细节见 [Curriculum Learning](../concepts/curriculum-learning.md)、[RL Runner](../concepts/rl-runner.md)。
 
 ## 核心框架：MDP
 
@@ -365,3 +386,10 @@ flowchart LR
 ## 跨人形机器人的统一奖励塑形
 
 - [MPBRS](../entities/paper-mpbrs-humanoid-reward-shaping.md) — 在九种人形机器人上评估共享奖励结构与权重，仅用机器人特定映射和默认姿态元数据适配（arXiv:2610.30334）。
+
+## 继续阅读
+
+- [PPO](./ppo.md) — 本页 PPO 条目的方法专页
+- [Value-Based RL](./value-based-reinforcement-learning.md) / [Model-Based RL](./model-based-rl.md) — 另两条主线
+- [深度 RL Off/On-policy 技术地图](../overview/deep-rl-off-on-policy-evolution.md)
+- [Humanoid RL Cookbook](../queries/humanoid-rl-cookbook.md)

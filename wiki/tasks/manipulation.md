@@ -1,7 +1,7 @@
 ---
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
-status: draft
+status: complete
 updated: 2026-11-01
 related:
   - ../entities/paper-goaldex.md
@@ -102,7 +102,10 @@ related:
   - ../entities/paper-mocap-mobile-code-as-policies.md
   - ../entities/paper-roboskill.md
   - ../entities/paper-genesis-handover.md
+original:
+  - ../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md
 sources:
+  - ../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md
   - ../../sources/papers/roboskill_arxiv_2609_37810.md
   - ../../sources/repos/roboskill.md
   - ../../sources/papers/handson_arxiv_2610_26765.md
@@ -154,6 +157,10 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 | WBC | Whole-Body Control | 移动操作中人形全身协调与阻抗执行 |
 | 6DoF | Six Degrees of Freedom | 物体位姿（位置+朝向）抓取表示 |
 | RL | Reinforcement Learning | 接触丰富场景中探索式策略学习 |
+
+## 为什么重要
+
+操作是机器人与物理世界产生实际作用的入口：搬运、装配、工具使用都以此为基础，人形机器人的通用性也最终由「手能做什么」衡量。它同时汇聚接触力学、视觉感知、规划与学习，是检验各条技术路线（IL、RL、VLA、世界模型）的主战场。以 [Diffusion Policy](https://arxiv.org/abs/2303.04137) 为例，原文在 4 个操作基准 15 个任务上平均提升 46.9%，并指出「策略结构」是行为克隆的重要瓶颈（据 [通读归档](../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md)）。
 
 ## 核心挑战
 
@@ -545,6 +552,24 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Query：操作 VLA 与视频-动作架构选型](../queries/manipulation-vla-architecture-selection.md) — VLA / mimic-video / DeFI / DWM / 开源策略族选型
 - [Query：灵巧操作数据管线与 RL 基建](../queries/dexterous-manipulation-data-pipeline.md) — 自动标注、WiLoR、GAE、Actuator Network
 - [Query：在 RL 中利用触觉反馈提升操作鲁棒性](../queries/tactile-feedback-in-rl.md) — 处理视觉遮挡的进阶方法
+
+## 工程实践
+
+以下要点来自 Diffusion Policy 原文通读（[归档](../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md)），适用于基于示教的操作策略；其余为本页既有内容的归纳（推断）。
+
+- **动作空间**：位置控制与扩散策略搭配优于速度控制；输出动作序列并 receding horizon 执行（观测 To → 预测 Tp → 执行 Ta），兼顾平滑与响应。
+- **骨干选择**：先用 CNN 版扩散策略；动作高频陡变时再换 Transformer 版（需更多调参）。
+- **视觉编码器**：优先端到端训练，或以小学习率（约策略网络的 1/10）微调预训练编码器；冻结预训练特征表现差。
+- **实时性**：DDIM 少步推理（10 步，约 0.1 s，RTX 3080）；系统需容忍图像处理与推理延迟。
+- **数据**：示范质量与数量决定上限；遥操作的停顿（idle actions）会让单步策略过拟合，序列预测更稳。
+- **落地**：感知、抓取、接触、数据与评测的具体选型见上文「子问题地图」与「方法选型速查」。
+
+## 局限
+
+- **数据依赖**：基于模仿的路线继承行为克隆的局限，示范不足时性能欠佳（原文 §9）。
+- **计算与延迟**：扩散策略的推理成本高于 LSTM-GMM 等简单方法，高频控制任务可能不足（原文 §9）。
+- **评测边界**：多数论文只在特定平台、少量任务上验证；本页收录的新工作不少为 preprint，真机泛化、代码开源状态各异，使用前需回到各条目页核对。
+- **范围**：本页是任务导航，不替代各子问题的细节页面；接触力学、灵巧手与移动操作的挑战尚无统一解法（推断）。
 
 ## 关联任务
 
