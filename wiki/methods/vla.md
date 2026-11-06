@@ -799,3 +799,5 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 ## 主动探索与执行框架演化
 
 - [VISTA](../entities/paper-vista-active-exploration.md) — 固定模型，通过仿真主动诊断和自主评估改进技能与决策框架。
+
+- [Liber-0：从人类经验学习机器人操作](../entities/liber-0.md) — 联合视觉预测与动作监督的世界动作模型。
