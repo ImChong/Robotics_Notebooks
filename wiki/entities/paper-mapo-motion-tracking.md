@@ -95,6 +95,18 @@ flowchart TB
 - **真机：** 学生策略在 29 自由度 Unitree G1 上展示了包括深蹲、鞠躬在内的动作（图 1），论文未给出真机成功率的定量统计。
 - **路由器裁剪比例（附录 D）：** 在 MAPO 训练中，MAPO 路由器判据仅裁剪约 2% 的更新，若改用 PPO 判据约为 24%。
 
+## 与其他工作对比
+
+| 对照 | 与 MAPO 的差异 | 论文中的结果（同平台、同评测口径） |
+|------|----------------|------------------------------------|
+| PPO with MoE | 同一 MoE 结构，用整体 KL / 单一概率比裁剪，受路由器–专家交叉项误估影响 | OMOMO 成功率 82.78% vs MAPO 85.45%；3 种子 82.89 ± 0.43% vs 87.03 ± 0.64% |
+| MAPO with fixed router | 固定路由器以消除误估，但路由器不再端到端优化 | 奖励略高于 PPO with MoE；OMOMO 上位置误差并不更低 |
+| Monolithic PPO | 单体网络，无专家分工 | 作为结构基线列出，用于说明 MoE 的必要性 |
+| HOVER | 作者在同平台重实现，惩罚项缩至 20% | OMOMO 成功率 83.39%、Eg-pos 272.2 mm |
+| TWIST2 | 使用公开 checkpoint，训练数据与设置不同 | OMOMO 成功率 57.85%、Eg-pos 386.6 mm；口径差异大，不宜直接据此判优劣 |
+
+MAPO 改的是**更新目标**而非网络结构，因此与结构侧的 MoE 设计（见 [Mixture of Experts](../concepts/mixture-of-experts.md)）可以叠加；学生蒸馏沿用 [Teacher-Student DAgger](../methods/teacher-student-dagger-training.md) 与 TWIST 的观测设置。
+
 ## 结论
 
 **一句总判：** 对 MoE 策略，问题不只在网络结构，还在于 PPO 类算法如何度量"更新幅度"；按分量分别度量并裁剪，能在不放弃路由器优化的前提下获得更高的训练奖励和跟踪成功率。

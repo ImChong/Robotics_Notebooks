@@ -77,6 +77,7 @@ summary: "MessyNav（arXiv:2611.07417）：空推车可以挪，放着笔记本�
 - [vision-language-navigation](../tasks/vision-language-navigation.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-06-20-papers-technology-map](../overview/embodied-station-2026-11-06-20-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 归其 ③ 策略任务成功率层：真机 15 个场景的成功次数属小样本，横比前须核对场景与基线口径
 
 ## 参考来源
 
