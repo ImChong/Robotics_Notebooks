@@ -93,6 +93,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Robotics Weight Editing](robotics-weight-editing.md)：将权重空间编辑用于 π₀.₅ 机器人策略，包含 YAM 初步真机评估。
+
 - [CapVector 能力向量](paper-capvector-capability-vectors-vla.md)：同属参数空间操作，但依赖微调模型差分。
 - [强化学习](../methods/reinforcement-learning.md)：PPO 是部分实验中的训练基线。
 
