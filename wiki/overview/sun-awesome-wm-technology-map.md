@@ -8,6 +8,9 @@ related:
   - ../entities/awesome-world-models.md
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/ha_schmidhuber_world_models_reading_arxiv_1803_10122.md
+  - ../../sources/repos/awesome-world-models-readme-reading.md
 sources:
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
@@ -807,6 +810,20 @@ sources:
 | 570 | [StableWM: A Platform for Reproducible World Modeling Research and Evaluation](../entities/paper-sa-2605-21800-stable-worldmodel-swm-reproducible-world-modelin.md) |
 | 571 | [minWM: A Full-Stack Open-Source Framework for Real-Time Interactive Video World Models](../entities/paper-sa-2605-30263-minwm-a-full-stack-open-source-framework-for-rea.md) |
 
+
+## 核心原理
+
+本页本身是索引，不引入新方法；理解它所索引的「世界模型」，可抓两点（出自两份通读归档）：
+
+- **世界模型的最小形态（Ha & Schmidhuber 2018）：** V（VAE 把帧压成隐向量 z）+ M（MDN-RNN 预测 P(z_{t+1} | a_t, z_t, h_t)）+ C（极小线性控制器 a_t = W_c[z_t h_t] + b_c）。复杂度放进可反向传播训练的 V、M，C 小到能用 CMA-ES 优化；M 额外预测 done 后，智能体可完全在「梦境」里训练再迁回真实环境。清单把该文列为奠基工作。
+- **清单的组织逻辑（上游 README）：** 先按范式分（语言、视频、3D/4D、潜空间、物体中心、符号、通用基础），再按用途分（交互式、WAM/VLA、基于模型 RL、机器人 / 驾驶 / GUI / 科学 / 社会仿真），最后按配套分（数据集基准、记忆与后训练等技术、仿真平台、理论立场）。上方「分组索引」沿用这套分组，一条清单项对应一页。
+
+## 工程实践
+
+- **检索与阅读路径（本页用法）：** 先在「分组索引」按方向定位，再点进论文页；已有深读页的条目直接链到深读页，其余是清单摘要页，需要细节再回原文。
+- **读论文时的共同检查项（由 Ha & Schmidhuber 的实验归纳）：** 世界模型只是近似，控制器会利用其错误（梦里得分高、真实环境差）；原文用随机输出加温度 τ 折中真实感与可利用性（τ = 0.1 时梦中约 2086 分、真实仅约 193 分，τ = 1.15 时真实最高约 1092 分）。读后续工作时可顺着问：它如何避免策略钻模型空子、如何评估闭环效用。
+- **跟进上游：** 清单的「Key Research Challenges」列出持久状态核心、物理落地、反事实可控性、可验证性等未解问题，可作为挑选阅读方向的线索。
+- **维护提示（推断，非原文）：** 上游持续更新，本页为快照；更新时对照上游目录结构增补分组，并保持一条清单项对应一页。
 
 ## 局限与风险
 

@@ -8,6 +8,8 @@ related:
   - ../entities/paper-rcl-wam-robot-learning-control-survey.md
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/rcl_wam_survey_reading_arxiv_2609_16074.md
 sources:
   - ../../sources/papers/rcl_awesome_wam_catalog.md
   - ../../sources/repos/awesome-world-action-models-rcl.md
@@ -35,6 +37,22 @@ sources:
 - 原清单每条只有标题 + 链接 + 子类标签；这里逐条给出一页，可检索、可顺着相关内容继续读。
 - 站内已有深读页的条目直接链过去；其余给出 **清单摘要页**：Contribution、原文链接与它在清单里的位置一页可见。
 - 清单共 **564** 条，每条都能点开；同一篇在站内已有深读页的，直接链到深读页。
+
+## 核心原理
+
+> 依据综述 [arXiv:2609.16074](https://arxiv.org/abs/2609.16074) §II–III（通读记录见 [rcl_wam_survey_reading_arxiv_2609_16074.md](../../sources/papers/rcl_wam_survey_reading_arxiv_2609_16074.md)）。
+
+- **WAM 与相邻模型的区别：** WM 只做 ẑ<sub>t+1</sub>=f(z<sub>t</sub>,a<sub>t</sub>)；VLA 只输出动作块、不显式建模未来状态；WAM 联合预测未来观测与动作块，显式建模「动作如何改变未来」。
+- **两条动作生成路径：** 联合预测 p(o,a | 历史,指令)；或 plan-then-act，先生成视觉规划再由 IDM 反推动作。综述认为二者无普遍优劣，只是权衡。
+- **与架构正交：** 端到端（单骨干）vs 双系统（视频专家 + 动作专家）；与上面两条路径构成 2×2，对应本页条目的分类视角。
+- **数据金字塔：** 互联网视频提供广谱动力学先验，第一视角示范居中，具身轨迹量小但负责动作落地。
+
+## 工程实践
+
+- **用本页读论文：** 先按分组索引找到方向，再进条目页看 Contribution 与原文链接；已有深读页的条目直接跳转。
+- **典型训练管线（综述 §III-D）：** 预训练（视频骨干 + 动作表征 + 视频-动作对齐）→ 后训练（LoRA / 残差动作头微调、世界模型数据增广、想象环境中的 RL）。
+- **部署要点（综述 §VI-F）：** 推理延迟是控制瓶颈，需少步生成、量化 / 蒸馏、KV cache 复用。
+- **推断（非综述原文）：** 把清单当检索入口而非结论来源；同一问题优先对照多篇条目再下判断。
 
 ## 覆盖范围
 

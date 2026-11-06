@@ -55,6 +55,8 @@ related:
   - ../entities/paper-sai-sequential-asymmetric-imitation.md
   - ../entities/paper-trace-causal-memory.md
   - ../entities/paper-zeno-1-collaborative-intelligence.md
+original:
+  - ../../sources/papers/osa_algorithmic_perspective_imitation_learning_arxiv_1811_06711.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
@@ -222,6 +224,18 @@ flowchart TD
 2. **失重机制 (Weightlessness Mechanism, WM)**：通过网络输出动态决定哪些关节需要放松以及放松的程度（即输出 PD 增益的调节系数），从而在执行目标运动时实现有效的环境交互。
 
 WM 无需针对特定任务进行微调，且能在不同环境配置（如不同高度的椅子、不同倾角的床）中展现出强泛化能力。
+
+## 工程实践
+
+> 依据：Osa et al., *An Algorithmic Perspective on Imitation Learning*（[原文通读归档](../../sources/papers/osa_algorithmic_perspective_imitation_learning_arxiv_1811_06711.md)）；标注「推断」处为结合本页内容的工程解读，非原文结论。
+
+- **先选 BC 还是 IRL**：看哪种是期望行为「最简洁的描述」。操作类任务奖励难提特征，通常直接学动作 / 轨迹分布（BC）；需要泛化到新地形 / 新条件的规划类任务，学奖励更利于泛化（原文 §2.1、§5.1）。
+- **先 IL 初始化、再 RL 精修**：专家演示用于约束昂贵的探索，常见做法是模仿热启动后再用 RL 微调（原文 §2.1），与本页「和强化学习的关系」一节一致。
+- **必须处理分布偏移**：演示覆盖不了学习者自己会进入的状态，误差会逐步累积；纯 BC 数据里要包含「出错后如何恢复」的样本，或用 DAgger 式流程——BC 初始化后，用混合策略 βπ_E + (1-β)π_L 采样，由专家标注学习者访问到的状态，聚合后重训（原文 §3.4.1、§3.4.3）。
+- **交互标注的代价**：DAgger 类方法需要专家在线标注与状态重置，物理机器人上往往昂贵；可按置信度只在低置信状态请求专家纠正（原文 §3.4.3.1-3.4.3.2）。推断：这是遥操作纠偏数据采集（见 [遥操作数据采集](../concepts/embodied-data-collection-four-layers-taxonomy.md)）的方法依据之一。
+- **演示数据质量**：单一专家的示教通常比多专家混合更易学；示教中的多余 / 不良动作需要分段筛选，自动剔除仍是开放问题（原文 §5.2.1）。
+- **本体不一致要先适配**：专家与机器人形态不同（如人到人形）时，动作需重定向后再学（原文 §1.3），对应本页流程中的「重定向与数据清洗」。
+- **评估要自建**：原文指出没有被广泛接受的模仿学习基准与指标（§5.2.4）；推断：落地时需用真机成功率与失败驱动采样自行建立评估闭环。
 
 ## 局限与风险
 
