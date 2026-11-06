@@ -181,6 +181,7 @@ sequenceDiagram
 - [Face Anything](./paper-face-anything-4d-face-reconstruction.md) — **面部** 4D 重建与密集跟踪（canonical coordinates）；与全身 SMPL 恢复互补
 - [4DAnyone](./paper-4danyone.md) — 把本页当单目几何条件，生成重建级多视角再抬 4DGS（外观，不是关节指令）
 - [LUNA](./paper-luna-universal-3d-human-animation.md) — 隐式 2D 驱动 3DGS，跳过本页式 3D 姿态估计；要关节仍走本页，不要用 LUNA 替换 HMR
+- [Query：视频里的舞蹈怎么搬到 G1？](../queries/g1-video-dance-gvhmr-gmr-beyondmimic-multi-motion.md) — 从视频到 G1 舞蹈的实操流水线（含 `-s` 是静态相机等核对）
 
 ## 参考来源
 
