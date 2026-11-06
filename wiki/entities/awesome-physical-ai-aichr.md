@@ -3,7 +3,7 @@ type: entity
 tags: [curated-list, physical-ai, embodied-ai, vla, edge-ai, ros]
 topic: [ecosystem]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-06
 related:
   - ./awesome-physical-ai-natnew.md
   - ../comparisons/awesome-physical-ai-curated-lists.md

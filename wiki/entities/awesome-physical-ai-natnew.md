@@ -3,7 +3,7 @@ type: entity
 tags: [curated-list, physical-ai, embodied-ai, vla, world-models, sim2real, robotics-foundation-models]
 topic: [ecosystem]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-06
 related:
   - ../methods/vla.md
   - ../concepts/sim2real.md
