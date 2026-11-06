@@ -56,6 +56,7 @@ PythonRobotics 是 Atsushi Sakai 等人维护的 **机器人算法教学型开�
 - 项目论文：[arXiv:1808.10703](../papers/python_robotics_arxiv_1808_10703.md)
 - 在线教材归档：[sources/courses/python_robotics_textbook.md](../courses/python_robotics_textbook.md)
 - 动画仓库：<https://github.com/AtsushiSakai/PythonRoboticsGifs>
+- 火箭着陆示例（2026-11-06 读源码核查）：[`AerialNavigation/rocket_powered_landing/rocket_powered_landing.py`](https://github.com/AtsushiSakai/PythonRobotics/tree/master/AerialNavigation/rocket_powered_landing)，文件头注明基于 [Szmuk & Açıkmeşe 6-DoF 自由终端时间 SCvx](../papers/szmuk_2018_scvx_6dof_free_final_time.md)，并致谢 EmbersArc 的实现；`Rocket_Model_6DoF` 为 14 维状态、3 维推力，cvxpy 调 `CLARABEL`，K = 50、最多 30 次迭代，带状态 / 输入信赖域
 - 音频概览：<https://www.youtube.com/watch?v=uMeRnNoJAfU>
 
 ---

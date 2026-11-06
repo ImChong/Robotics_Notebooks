@@ -13,6 +13,7 @@
 | 想有一条学习路线照着走 | [主路线：运动控制 → 物理智能全栈成长路线](roadmap/motion-control.md) |
 | 想从零学 PCB 设计（驱动板 / 传感器板 / 主控板） | [PCB 设计纵深路线](roadmap/depth-pcb-design.md) |
 | 想遥操作人形采集数据（全身 + 手指） | [遥操作纵深路线](roadmap/depth-teleoperation.md) |
+| 想让火箭自主返回并精确竖直着陆 | [火箭回收控制纵深路线](roadmap/depth-rocket-landing.md) |
 | 想设计力矩控制关节电机 | [力矩电机设计纵深路线](roadmap/depth-torque-motor-design.md) |
 | 想学传统模型控制（MPC/WBC）| [传统控制纵深路线](roadmap/depth-classical-control.md) |
 | 想设计人形整机硬件（机械 + 电气 + 通信） | [整机硬件设计纵深路线](roadmap/depth-humanoid-hardware-design.md) |

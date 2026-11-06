@@ -46,7 +46,8 @@
         "wiki/overview/paper-notebook-category-09-state-estimation.md",
         "wiki/comparisons/robot-control-eight-paradigms-taxonomy.md",
         "roadmap/depth-classical-control.md",
-        "roadmap/depth-safe-control.md"
+        "roadmap/depth-safe-control.md",
+        "roadmap/depth-rocket-landing.md"
       ],
       "tags": [
         "whole-body-control",
