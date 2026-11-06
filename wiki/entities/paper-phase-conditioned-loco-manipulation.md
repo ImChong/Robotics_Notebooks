@@ -4,7 +4,7 @@ project_id: phase-conditioned-loco-manipulation
 arxiv: "2610.36270"
 tags: [paper, reinforcement-learning, ppo, loco-manipulation, whole-body-control, sim2real, unitree-g1, spot, eth, rai-institute]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-06
 summary: "阶段条件 PPO 将阶段预测、门控奖励、残差 critic 与多阶段重置用于长时程移动操作；每个环境训练一个高层策略，在 G1 与带臂 Spot 真机验证。"
 related:
   - ../tasks/loco-manipulation.md
@@ -16,7 +16,7 @@ sources:
   - ../../sources/papers/phase_conditioned_loco_manipulation_arxiv_2610_36270.md
 ---
 
-# 阶段条件策略优化：多阶段移动操作
+# Learning Multi-Phase Robot Loco-Manipulation via Phase-Conditioned Policy Optimization / 基于阶段条件策略优化的多阶段机器人移动操作学习
 
 ## 一句话定义
 
@@ -47,18 +47,24 @@ sources:
 
 ```mermaid
 flowchart TD
-  env["仿真环境与阶段状态机"] --> gate["阶段奖励与转移激励"]
-  env --> reset["多阶段重置课程"]
-  env --> critic["基础价值与阶段残差 critic"]
-  gate --> train["PPO 训练"]
-  reset --> train
-  critic --> train
-  train --> actor["单一任务策略与阶段预测辅助头"]
-  actor --> low["低层全身控制与手臂命令"]
-  low --> robot["G1 或带臂 Spot"]
+  env["仿真环境与阶段状态机"] --> label["训练期阶段标签"]
+  label --> reward["阶段门控奖励与转移激励"]
+  label --> critic["基础价值与阶段残差 critic"]
+  label --> aux["辅助阶段预测损失"]
+  env --> reset["多阶段初始化课程"]
+  reset --> env
+  env --> obs["策略观测"]
+  obs --> actor["高层 actor"]
+  actor --> aux
+  reward --> ppo["PPO 更新"]
+  critic --> ppo
+  aux --> ppo
+  ppo --> actor
+  actor --> cmd["增量命令与手臂目标"]
+  cmd --> robot["低层控制器与机器人"]
 ```
 
-G1 搬箱的七阶段为靠近、下蹲、夹紧、抬起、搬运、放下、起身。G1 低层控制腿和腰，跟踪平面速度、骨盆高度、躯干俯仰；手臂由高层直接控制。高层命令采用增量更新。每个环境一套策略，不应理解为一个跨平台通用权重。
+阶段标签用于训练监督与 critic，不作为 actor 的输入；部署时也无需阶段状态机。辅助预测损失更新 actor 的共享表示。\n\nG1 搬箱的七阶段为靠近、下蹲、夹紧、抬起、搬运、放下、起身。G1 低层控制腿和腰，跟踪平面速度、骨盆高度、躯干俯仰；手臂由高层直接控制。G1 低层输出 15 个腿部和腰部自由度，跟踪五维指令：平面速度、偏航角速度、骨盆高度和躯干俯仰；其 104 维观测包括惯性信息、指令、关节状态及上一步动作。高层命令采用增量更新并裁剪至物理边界。每个环境一套策略，不应理解为一个跨平台通用权重。
 
 ## 源码运行时序图
 
