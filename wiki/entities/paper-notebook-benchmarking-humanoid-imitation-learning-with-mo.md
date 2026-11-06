@@ -8,7 +8,7 @@ related:
   - ../overview/paper-notebook-category-11-simulation-benchmark.md
   - ../overview/humanoid-paper-notebooks-index.md
   - ../concepts/motion-control-policy-evaluation-metrics.md
-  - ../concepts/imitation-learning.md
+  - ../methods/imitation-learning.md
   - ../concepts/curriculum-learning.md
   - ./amass.md
   - ./phc.md
@@ -42,7 +42,7 @@ summary: "现有人形模仿学习的指标（如关节位置误差 MPJPE）只�
 ## 为什么重要
 
 - 指标混淆了两种原因：MPJPE 这类指标只反映最终跟踪误差，无法区分「策略不行」还是「动作本身难学」。论文 Fig. 1 把这一点作为核心动机。
-- 同一策略在不同动作上差异巨大：论文报告，在相同训练条件下，关节位置误差从静态 T-pose 的约 16 mm 到长跳等动态动作的 150 mm 以上（§2.2）。若不按难度分层，聚合均值会被容易的动作稀释。
+- 同一策略在不同动作上差异巨大：论文报告，在相同训练条件下，关节位置误差从静态 T-pose 的约 16 mm 到长跳等动态动作的 150 mm 以上（§3）。若不按难度分层，聚合均值会被容易的动作稀释。
 - 量化难度可以服务三件事：公平评测、难度感知的课程学习（附录 C.1）、以及 mocap 数据的异常片段检测（§6.3）。
 - 列入 Paper Notebooks 策展清单，便于与全库 [机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 
@@ -188,7 +188,7 @@ $$
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 评测指标背景：[motion-control-policy-evaluation-metrics](../concepts/motion-control-policy-evaluation-metrics.md)
 - 数据集与策略：[AMASS](./amass.md)（论文的数据源）、[PHC](./phc.md)（论文评测的策略之一）
-- 相关概念：[Imitation Learning](../concepts/imitation-learning.md)、[Curriculum Learning](../concepts/curriculum-learning.md)（附录 C.1 的课程学习应用）
+- 相关概念：[Imitation Learning](../methods/imitation-learning.md)、[Curriculum Learning](../concepts/curriculum-learning.md)（附录 C.1 的课程学习应用）
 
 ## 参考来源
 
