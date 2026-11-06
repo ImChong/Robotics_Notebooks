@@ -11,6 +11,8 @@
 - **作者：** Gen Li、Hanqing Wang、Jingliang Li、Yifan Han、Jindou Jia、Tao Lin、Yuanzhe Liu、Yutong Wang、Bo Zhao、Fangqiang Ding、Anh Nguyen、Laura Sevilla-Lara、Huazhe Xu、Gregory S. Chirikjian、Marc Pollefeys、Oier Mees、Hui Xiong、Jianfei Yang
 - **机构：** Nanyang Technological University；HKUST (Guangzhou)；Shanghai Jiao Tong University；University of Illinois Urbana-Champaign；The University of Sydney；University of Liverpool；The University of Edinburgh；Tsinghua University；MBZUAI；ETH Zurich
 - **一句话说明：** 将具身 affordance 学习统一为感知（能做什么、在哪里）、推理（当前任务与本体下哪些机会相关）和 affordance 引导动作（如何变成计划与策略）三部分，梳理从被动视觉识别走向动作接地学习的路线。
+- **核对范围：** 仅读取摘要级信息与项目主页（框架、论文计数、五条演进、五个挑战）；Preprints.org 全文 PDF 抓取返回 403，未读正文、方法表与附录。
+- **通读：** 未完成
 
 ## 核心摘录
 

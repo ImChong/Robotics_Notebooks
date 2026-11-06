@@ -54,6 +54,8 @@ related:
   - ../entities/paper-viola-human-data-control.md
   - ../comparisons/zest-vs-sonic-vs-vision-soccer.md
   - ../entities/paper-humanoidttt.md
+original:
+  - ../../sources/papers/sonic_reading_arxiv_2511_07820.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
   - ../../sources/repos/gr00t_wholebodycontrol.md
@@ -78,6 +80,8 @@ summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把�
 ---
 
 # SONIC（规模化运动跟踪人形控制）
+
+## 一句话定义
 
 SONIC 将规模化运动跟踪作为人形低层控制的统一预训练目标；论文主张网络容量、MoCap 数据与算力三轴 scaling，并以统一 token 接口接入 VR、视频、VLA 等上游。
 
@@ -393,11 +397,24 @@ sequenceDiagram
 | **规模** | 论文与官网公开量级包含 **上亿帧**、**约 700 小时** MoCap、**约 1.2M→42M** 参数叙述与 **约 2.1 万 GPU 小时** 算力叙述；性能随规模单调改善的报道支撑「跟踪可扩展」论点。 |
 | **接口** | **专用编码器 → FSQ → 统一 64-d token → 共享 decoder**；支持 **VLA、VR、视频、文本 / 音乐** 等上游与 **实时运动学规划** 桥接；部署 **50 Hz**，ONNX encoder/decoder 成套使用。 |
 
+## 工程实践
+
+> 以下据论文原文（arXiv v4）通读整理；标「推断」处为本页归纳。
+
+- **训练配方**：PPO（每 GPU 4096 env、rollout 24 步、5 epoch、clip 0.2、actor lr 2e-5）+ 非对称 actor-critic；总损失 = PPO + 重建 + token 对齐 + 循环一致，四项联合端到端优化，FSQ 以 straight-through 回传；按失败率加权的 bin（1 s）自适应采样，让难动作多练。
+- **数据管线**：约 700 h MoCap 经 GMR + PyRoki 重定向到 G1，滤掉楼梯、坐姿等不可执行动作后得 611 h（100M+ 帧 @50 Hz）；镜像增广；按「未见子类 / 未见重复」切 test-content 与 test-repetition，评估泛化。
+- **域随机化**：摩擦 / 恢复系数、初始关节位置、质心、周期性根速度推扰，以及对运动指令本身加扰（为容忍规划器噪声）。
+- **部署栈**：Jetson Orin + TensorRT，策略 1–2 ms；四环多速率（策略 50 Hz / 指令写入 500 Hz / 输入 100 Hz / 规划 10 Hz），「最新数据优先」缓冲；换输入源只需切换激活的编码器，无需重训。
+- **安全机制**：3 s 插值到站姿后待操作员确认再启动；关节速度看门狗；输入数据丢失时自动降级到可用编码器；停止后进入纯阻尼（Kp=0、Kd=8）；电机指令带 CRC32 校验。
+- **接入上游的经验**：VLA 预测 64 维 FSQ token + 14 维手指，比直接预测 SMPL 姿态平均成功率高 42 个百分点（68% vs 27%）；VR 3 点遥操作适合不需精确落脚的数据采集，全身遥操作用于需要脚参与的任务。
+- **复现边界（推断）**：论文规模 21k GPU 小时，自行复现需 128 GPU 量级算力；公开仓库与 BONES-SEED（288 h 子集）是更现实的入口，详见下文「读源码导航」。
+
 ## 常见误区或局限
 
 - **不是万能仿真替身**：跟踪器只能在其训练分布与机器人动力学对齐的范围内泛化；极端杂技或强接触任务仍可能失败。
 - **跳过重定向的前提**：ExoActor 显示「人体轨迹 → SONIC」可优于某些 SMPL→机器人重定向流水线，但不等于所有平台都应丢弃重定向（参见 [GMR](./motion-retargeting-gmr.md) 讨论）。
 - **硬件差异**：同一策略在不同人形硬件上仍需适配观测与动作映射。
+- **原文自述局限**：缺少对安全与长时间能耗的形式化处理；极端或极动态动作下仍可能失衡；实机脚部误差最大（53.7 mm vs 仿真 29.0 mm）；VLA 任务成功率 60–95%（每任务仅 10–20 次试验）；与 BeyondMimic / Any2Track 的对比因训练数据不同并非数据对齐的公平基准。
 - **演示与论文的边界**：官网视频突出系统集成；**可重复协议、随机种子与定量对比**仍以论文与仓库 `eval_agent_trl.py` / 文档站评测脚本为准。
 
 ## 与其他页面的关系

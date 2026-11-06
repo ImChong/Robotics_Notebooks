@@ -39,6 +39,8 @@ related:
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
 - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
+original:
+- ../../sources/papers/pi05_reading_arxiv_2504_16054.md
 sources:
 - ../../sources/papers/hmi_p059_pi05-open-world-vla.md
 - ../../sources/repos/humanoid-motion-intelligence.md
@@ -263,6 +265,7 @@ sequenceDiagram
 - [openpi 官方仓库归档](../../sources/repos/openpi.md)
 - [LeRobot 仓库归档](../../sources/repos/lerobot.md)：固定提交 `9e5ee98…` 的 `policies/pi05/` 源码与 `docs/source/pi05.mdx`
 - [arXiv PDF](https://arxiv.org/pdf/2504.16054)：2026-11-05 重读 §III-A/B、Fig.3
+- [pi05_reading_arxiv_2504_16054](../../sources/papers/pi05_reading_arxiv_2504_16054.md)：arXiv 全文通读归档
 - [sources/papers/hmi_p059_pi05-open-world-vla.md](../../sources/papers/hmi_p059_pi05-open-world-vla.md)
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 灵巧真机上 π0 风格 chunk 对照
 - [sources/repos/humanoid-motion-intelligence.md](../../sources/repos/humanoid-motion-intelligence.md)

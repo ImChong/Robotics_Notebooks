@@ -45,12 +45,18 @@ sources:
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
   - ../../sources/papers/agile_arxiv_2603_20147.md
   - ../../sources/papers/pfm_hr_arxiv_2608_03227.md
+original:
+  - ../../sources/papers/beyondmimic_reading_arxiv_2508_08241.md
 summary: "BeyondMimic（*Science Robotics* 2026，DOI adx8924）是两阶段人形全身控制框架：阶段 ① 用锚点相对跟踪 + 极简奖励 + 失败率采样在共享超参下批量学高动态技能；阶段 ② 把跟踪教师蒸馏进潜空间状态–动作扩散模型，测试时用 classifier guidance 零样本完成航点、摇杆、关键帧补全与避障。"
 ---
 
 # BeyondMimic
 
 **BeyondMimic** 是由 Hybrid Robotics 等团队开发的高性能机器人动作模仿框架。相比早期的 DeepMimic 或 AMP，BeyondMimic 更侧重于从仿真到真实物理世界的无缝迁移，并在 **Isaac Lab** (IsaacLab) 环境中得到了广泛验证。
+
+## 一句话定义
+
+BeyondMimic 是两阶段人形全身控制框架：先用锚点相对跟踪 + 三项极简正则 + 失败率自适应采样，以共享超参批量学出高动态跟踪策略；再把它们蒸馏进潜空间状态–动作扩散模型，测试时用 classifier guidance 零样本解新任务（arXiv:2508.08241）。
 
 ## 英文缩写速查
 
@@ -64,6 +70,12 @@ summary: "BeyondMimic（*Science Robotics* 2026，DOI adx8924）是两阶段人�
 | CG | Classifier Guidance | 测试时用代价函数梯度引导扩散采样朝新目标优化 |
 | SciRob | Science Robotics | 正式发表渠道（2026-08-26，DOI adx8924） |
 | SDF | Signed Distance Field | 避障等任务中构造障碍物排斥代价 |
+
+## 为什么重要
+
+- 论文论点：高质量真机跟踪不必靠重域随机化与大量奖励塑形，精确建模执行器（armature、PD 阻抗）+ 低延迟部署即可，单一配方覆盖数百技能（约 2.5 h 动作仿真验证，30 段真机）。
+- 把「跟踪器」升级为「可在线优化的预测控制器」：同一模型无需重训即可摇杆、航点、关键帧补全、避障，并可叠加代价组合。
+- 已成为开源基座：论文称其为 MJLab、Unitree RL Lab 等仓库的默认方法；本库多个方法/实体页以其为跟踪协议（见「关联页面」）。
 
 ## Survey 坐标（策展索引）
 
@@ -252,6 +264,13 @@ BeyondMimic 的 **motion-tracking MDP 刻意不做历史堆叠**：论文 III-B 
 3. **看终止原因占比**：timeout 多 = 难或采样太狠；early termination 多 = 平衡或跟踪失败。
 4. **对照 sim2real**：若 sim 曲线完美而硬件上发散，优先打开 [Armature](../concepts/armature-modeling.md) 与执行器文档，而不是先加网络层数。
 
+## 核心原理
+
+（据 2026-11 通读 arXiv v4 归纳，细节见 [通读归档](../../sources/papers/beyondmimic_reading_arxiv_2508_08241.md)）
+
+1. **阶段 ①：跟踪 MDP。** 目标 body 位姿表示在锚点系（yaw 对齐、保高度），奖励为位置/朝向/线速度/角速度四个高斯项 + 关节限位、动作变化率、自碰撞三项惩罚；观测无历史堆叠，旋转用 Rot6D；PD 增益由 k_p=I·ω²、ζ=2、ω=10 Hz 按反射惯量推出。PPO + 失败率自适应采样训练，每条动作一个策略但配方与超参共享。
+2. **阶段 ②：潜空间状态–动作扩散。** 条件 VAE 把跟踪策略的动作压成潜变量；扩散模型在「状态–潜变量」轨迹（历史 + 0.64 s 未来）上去噪；推理时对可微代价 G 做 classifier guidance（∇log p(τ|τ*)=∇log p(τ)−∇G(τ)），逐去噪步修正整段轨迹，再由 VAE 解码当前动作，形成滚动时域预测控制。
+
 ## 核心设计理念
 
 BeyondMimic 提出一个核心观点：**精确的物理建模可以替代大量盲目的域随机化 (Domain Randomization)**。通过缩小仿真与现实在确定性物理量上的差距，策略能更有效地学习到稳健的运动模式。
@@ -348,6 +367,18 @@ flowchart LR
 - **上限受 RL 教师约束**：阶段 ② 扩散无法补阶段 ① 学不好的技能。
 - **粗粒度代价优先**：精细动作控制弱于航点 / 速度等粗目标。
 
+## 工程实践
+
+- **延迟敏感：** 论文消融中 2 ms 延迟即抬高速度误差，5 ms 出现失败，10 ms 三次中失败两次；部署全部为 C++，策略 ONNX Runtime CPU 推理 <1 ms，状态估计 500 Hz（广义动量观测器 + 卡尔曼）。
+- **armature 要按真实值算：** 转子惯量 × 传动比²，置零会过摆与自碰撞（见 [Armature Modeling](../concepts/armature-modeling.md)）。
+- **观测少即是多：** Rot6D 优于四元数/轴角，加历史反而劣化（作者推测与极简域随机化下易记忆仿真模式有关，属推测）。
+- **扩散侧部署：** 扩散策略 25 Hz、约 20 ms/步、20 去噪步，RTX 4060 Mobile + TensorRT 异步运行；梯度由 CppAD 求取；航点/避障任务实验使用动捕提供环境与定位。
+- 超参：PPO 24 步/环境、30k 迭代上限、lr 1e-3、clip 0.2、MLP [512,256,128]（表 S5）。
+
+## 局限
+
+原文自述与本页「局限与风险」一致：状态估计误差传入生成轨迹；预测视野仅 0.64 s、难做长程规划；历史条件导致重复模式，加大 guidance 权重又会在模式切换时破坏去噪稳定；guidance 对粗粒度目标有效、细粒度较弱且需调权。详见下方「局限与风险」小节。
+
 ## 评价与影响
 
 BeyondMimic 已经成为许多人形机器人项目的底层基座：
@@ -373,6 +404,12 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 官方跟踪基线见 HybridRobotics/whole_body_tracking。主表另列社区复现 [BeyondMimic-Reproduction](https://github.com/hunter20041220/BeyondMimic-Reproduction)（教师 rollout、条件动作 VAE、扩散与测试时引导拆成可单测接口；尚未接通完整 Isaac/真机）。本库不另建复现实体，统一挂本方法页。
 
 覆盖核对见 [HMI 开源项目主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)。
+
+## 继续阅读
+
+- 论文原文与补充材料：<https://arxiv.org/abs/2508.08241>；项目页 <https://beyondmimic.github.io/>。
+- 同族对照：[DeepMimic](./deepmimic.md)（跟踪式模仿前置）、[SONIC](./sonic-motion-tracking.md)（扩展到手柄/VR/文本）、[EGM](./egm-efficient-general-mimic.md)。
+- 实操入口：[G1 视频舞蹈多动作追踪 Query](../queries/g1-video-dance-gvhmr-gmr-beyondmimic-multi-motion.md)。
 
 ## 关联页面
 

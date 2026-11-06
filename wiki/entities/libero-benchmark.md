@@ -14,7 +14,7 @@ tags:
 - imitation-learning
 - dataset
 - simulation
-status: draft
+status: complete
 updated: 2026-10-06
 summary: LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。
 related:
@@ -48,6 +48,8 @@ sources:
 - ../../sources/repos/libero-pro.md
 - ../../sources/papers/rcl_awesome_wam_2306_03310_libero-benchmarking-knowledge-transfer-f.md
 project_id: libero-benchmark
+original:
+- ../../sources/papers/libero_reading_arxiv_2306_03310.md
 arxiv: '2306.03310'
 code: https://github.com/Lifelong-Robot-Learning/LIBERO
 venue: NeurIPS 2023 Datasets and Benchmarks Track
@@ -143,6 +145,8 @@ flowchart LR
 
 - **主表是策展摘要**：细节、指标与许可以一手来源为准；本页只做站内导航。
 - **开源状态可能变化**：标为待发布的项目后续可能放码；已开源仓库也可能拆分或迁移路径。
+- **论文自述的局限：** 仅为初步研究，策略学习统一用行为克隆，成功率为主要指标，环境为仿真（原文结论节）。
+- **本页推断（非原文）：** 近年 VLA 论文在 LIBERO 四套件上报 97–99% 的单任务 / 多任务成功率，其协议（多任务联合训练、成功率）与原论文的终身学习指标（FWT/NBT/AUC）不同，二者不可直接对照。
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
 ## 项目资源与工程补充
@@ -188,6 +192,14 @@ LIBERO-100 在基准设置中进一步划分为 **LIBERO-90**（用于预训练�
 
 本页不复述完整安装步骤，依赖版本、命令和数据文件结构以[官方 README](https://github.com/Lifelong-Robot-Learning/LIBERO#readme)及[文档](https://lifelong-robot-learning.github.io/LIBERO/)为准。
 
+### 原文通读补充（据 arXiv 2306.03310 全文）
+
+- **任务如何生成：** 从 Ego4D 语言标注提炼行为模板生成指令，初始状态与目标用 PDDL 描述，目标是谓词合取（如 `On(A,B)`、`Open(X)`），谓词全部成立即成功；底层为 robosuite。三个 10 任务套件分别隔离空间关系（Spatial：同一碗、不同位置关系）、物体类别（Object）与任务目标（Goal）的迁移。
+- **术语对照：** 论文把 LIBERO-100 中 10 个长程任务称 LIBERO-Long，即本页的 LIBERO-10；LIBERO-90 为 90 个短程预训练任务。
+- **协议细节：** 每任务 50 条 SpaceMouse 遥操作演示；训练 50 epoch，每 5 epoch 以 20 条 rollout（最长 600 步）评测，3 个种子；指标为 FWT、NBT、AUC（均基于成功率）。
+- **代表数值（ResNet-T，表 2，LIBERO-Long）：** SeqL 的 FWT 0.54 / NBT 0.63 / AUC 0.15；ER 为 0.48 / 0.32 / 0.32；PackNet 为 0.22 / 0.08 / 0.25；EWC 的 AUC 仅 0.02。可见防遗忘（NBT 降低）常以前向迁移为代价。
+- **任务顺序：** 同一算法在不同任务顺序下差异明显，对 PackNet 统计显著，评测时应固定并报告顺序。
+
 ### 适用范围与限制
 
 - LIBERO 是仿真中的机器人操作基准，适合研究终身模仿学习、知识迁移、任务顺序和策略结构。
@@ -224,6 +236,7 @@ LIBERO-100 在基准设置中进一步划分为 **LIBERO-90**（用于预训练�
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 评测基准分层选型
 - [LIBERO 论文来源归档](../../sources/papers/rcl_awesome_wam_2306_03310_libero-benchmarking-knowledge-transfer-f.md)
 - [LIBERO 项目仓库归档](../../sources/repos/libero-benchmark.md)
+- [LIBERO 论文通读归档](../../sources/papers/libero_reading_arxiv_2306_03310.md)
 
 - [humanoid-motion-intelligence](../entities/humanoid-motion-intelligence.md)
 - [paper-world-action-planner](../entities/paper-world-action-planner.md)
@@ -247,6 +260,7 @@ LIBERO-100 在基准设置中进一步划分为 **LIBERO-90**（用于预训练�
 - [Why Action Chunking Improves BC 论文策展](../../sources/papers/why_action_chunking_improves_bc_corl2026.md)
 - [开源项目主表（上游）](https://github.com/RealXiaoze/humanoid-motion-intelligence/blob/main/%E8%AE%BA%E6%96%87%E4%B8%8E%E9%A1%B9%E7%9B%AE/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%E4%B8%BB%E8%A1%A8.md)
 
+- [LIBERO 论文通读归档](../../sources/papers/libero_reading_arxiv_2306_03310.md)：原文通读记录与核对范围
 - [论文 PDF](https://proceedings.neurips.cc/paper_files/paper/2023/file/8c3c666820ea055a77726d66fc7d447f-Paper-Datasets_and_Benchmarks.pdf) 与 [arXiv 摘要](https://arxiv.org/abs/2306.03310)
 - [官方 GitHub 仓库](https://github.com/Lifelong-Robot-Learning/LIBERO)
 - [官方项目页](https://libero-project.github.io/) · [文档](https://lifelong-robot-learning.github.io/LIBERO/)
