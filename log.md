@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-06] ingest | 通读 π₀ 官方全文，补官方 OpenPI 服务时序，纠正流匹配目标符号与评测口径
+
 ## [2026-11-06] ingest | sources/sites/itw-ego-plus.md — 收录真实环境第一视角与全身运动数据，许可和数据细节待核验
 
 ## [2026-11-06] ingest | roadmap/depth-rocket-landing.md — 新增火箭回收控制纵深路线（Stage 0–6）；补入 Blackmore 2010、Szmuk 2018×2、Malyuta 教程、Gaudet RL、Klumpp Apollo、NASA CR-820 等一手资料与 3 个 wiki 页（动力下降制导 / 无损凸化 / 序列凸化）；Klumpp 正文与 Açıkmeşe&Ploen 2007 原文未取得
