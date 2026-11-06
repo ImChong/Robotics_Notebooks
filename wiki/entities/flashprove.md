@@ -5,7 +5,7 @@ code: https://github.com/anthropics/FlashProve
 project: https://www.anthropic.com/research/provable-inference
 tags: [anthropic, inference, security, verification]
 status: draft
-updated: 2026-11-04
+updated: 2026-11-06
 sources:
   - ../../sources/sites/anthropic-provable-inference.md
   - ../../sources/repos/anthropics-flashprove.md
@@ -45,6 +45,13 @@ flowchart TD
   F --> G["接受或拒绝"]
 ```
 
+### 技术报告补充
+
+- **批处理与分段：** 多个请求分别处理推理轨迹，共享权重编码检查；逐段处理模型层，以便 GPU 一次只保存一个分段的轨迹。
+- **承诺复用：** 权重的零知识编码有查询次数上限；link proofs 将使用新随机数的编码绑定到同一权重，避免单份编码超出查询预算。
+- **并行证明：** Fiat–Shamir 挑战按有向无环图组织，请求各自计算后合并共享步骤，再分回每个请求。
+- **范围检查：** 对矩阵随机和进行近似范围检查以降低开销，但引入极小概率的诚实证明拒绝；报告指出重试处理尚待实现。
+
 ## 源码运行时序图
 
 以下依据官方 `examples/quickstart-gpu.sh` 与 `prover/examples/run_target_example.sh` 的小型合成权重路径，非线上服务部署。
@@ -77,7 +84,7 @@ sequenceDiagram
 ## 局限与风险
 
 - 当前证明涉及整数模型与贪心选择，浮点推理或采样输出可能不一致；上下文上限 1024。
-- 事后证明有重算与延迟；证明内容不覆盖模型架构隐藏或侧信道。
+- 事后证明有重算与延迟；证明内容不覆盖模型架构隐藏或侧信道。证明在事后发现篡改，不能阻止用户先收到错误输出；日志基础设施也需可信。
 - Lean 性质基于随机预言机等假设；快速 C++ 验证器与 Lean 规格的等价性尚未形式化证明。
 - **待完成：** 技术报告全文及 prover/verifier 内部实现尚未系统通读；图仅反映博客与已阅读脚本，不能视为完整安全审计。
 
