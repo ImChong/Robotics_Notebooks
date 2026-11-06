@@ -6,7 +6,10 @@ project: https://www.anthropic.com/research/provable-inference
 tags: [anthropic, inference, security, verification]
 status: draft
 updated: 2026-11-06
+original:
+  - ../../sources/sites/flashprove-technical-report.md
 sources:
+  - ../../sources/sites/flashprove-technical-report.md
   - ../../sources/sites/anthropic-provable-inference.md
   - ../../sources/repos/anthropics-flashprove.md
 summary: "FlashProve 使用零知识证明验证大模型输出与权重承诺一致，研究原型以 Lean 形式化部分安全性质。"
@@ -95,6 +98,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [技术报告阅读记录](../../sources/sites/flashprove-technical-report.md)
 - [官方博客归档](../../sources/sites/anthropic-provable-inference.md)
 - [官方源码归档](../../sources/repos/anthropics-flashprove.md)
 
