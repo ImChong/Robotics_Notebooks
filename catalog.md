@@ -6081,6 +6081,7 @@
 - [Robotics Bench（交互式机器人硬件学习演示）](wiki/entities/robotics-bench.md) — Robotics Bench 是以 Colorfigures 制作的浏览器交互式机器人硬件教学演示，通过等距插画和步骤控件讲解电路板装配、元件放置、焊点与供电等场景。 `📅unknown` `[entity_page]`
 - [Robotics Library（RL）](wiki/entities/robotics-library-rl.md) — Robotics Library（RL）**（[https://github.com/roboticslibrary/rl](https://github.com/roboticslibrary/ `📅unknown` `[entity_page]`
 - [Robotics Toolbox for Python](wiki/entities/robotics-toolbox-python.md) — 一句话：** Robotics Toolbox for Python（RTB-P）是面向研究与教育的 Python 工具箱，用同一套可运行 API 表达机械臂与移动机器人的常见建模、运动学、动力学 `📅unknown` `[entity_page]`
+- [We Asked Opus-5.5 to Edit π₀.₅'s Weights / 让 Opus 5.5 编辑机器人策略权重](wiki/entities/robotics-weight-editing.md) — 研究者让 Opus 5.5 根据离线轨迹和模型机制，不经反向传播地修改 π₀.₅ Training-Time RTC 策略的权重，以探索更快执行和更平滑的动作块切换。 `📅unknown` `[entity_page]`
 - [ROBOTIS AI Sapiens（ai_sapiens）](wiki/entities/robotis-ai-sapiens.md) — AI Sapiens** 是 ROBOTIS 的 **开源人形** 产品线（K1）；官方 ROS 2 软件入口为 [`ROBOTIS-GIT/ai_sapiens`](https://github `📅unknown` `[entity_page]`
 - [AI Worker × Isaac ROS cuMotion](wiki/entities/robotis-ai-worker-isaac-cumotion.md) — ROBOTIS AI Worker** 与 **NVIDIA Isaac ROS cuMotion** 的集成把 **半人形 lift + 双 7-DoF 臂** 接到 **GPU 碰撞感知运动规 `📅unknown` `[entity_page]`
 - [ROBOTIS AI Worker（ai_worker）](wiki/entities/robotis-ai-worker.md) — AI Worker** 是 ROBOTIS **Physical AI** 半人形操作平台（产品叙事 **FFW — Freedom From Work**）；官方 ROS 2 软件入口为 [`R `📅unknown` `[entity_page]`
