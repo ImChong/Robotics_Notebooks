@@ -40,8 +40,6 @@ sources:
 ## 流程总览
 
 ```mermaid
-
-```mermaid
 flowchart TD
   R["原始全身参考动作"] --> B["冻结基础跟踪器"]
   P["本体观测"] --> B
