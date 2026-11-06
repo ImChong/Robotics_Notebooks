@@ -53,6 +53,7 @@
 | [sim2real-checklist](./sim2real-checklist.md) | 从仿真到真机部署，有哪些必须检查的工程事项？（含快速部署检查） | Sim2Real、Domain Randomization、SysID、Privileged Training |
 | [control-architecture-comparison](./control-architecture-comparison.md) | 人形机器人的主流控制架构有哪些，各有什么优劣？ | WBC vs RL、MPC-WBC、RL、IL、TSID |
 | [humanoid-hardware-selection](./humanoid-hardware-selection.md) | 做人形机器人运动控制研究，该选哪个硬件平台？ | Locomotion、Sim2Real、Loco-Manipulation |
+| [g1-video-dance-gvhmr-gmr-beyondmimic-multi-motion](./g1-video-dance-gvhmr-gmr-beyondmimic-multi-motion.md) | 想把短视频里的舞蹈搬到 Unitree G1，从视频到追踪策略每一步该用什么、命令是什么、哪里容易踩坑？ | GVHMR、GMR、BeyondMimic、unitree_rl_mjlab、mjlab |
 | [wbc-implementation-guide](./wbc-implementation-guide.md) | 如何从零搭建一个 WBC 控制器？ | WBC、TSID、HQP、Centroidal Dynamics、Contact Estimation |
 | [locomotion-reward-design-guide](./locomotion-reward-design-guide.md) | 怎么设计 locomotion RL 的奖励函数？ | RL、Locomotion、Reward Design、Curriculum Learning |
 | [humanoid-rl-cookbook](./humanoid-rl-cookbook.md) | 从零训练人形机器人 RL 策略的完整 checklist？ | RL、Sim2Real、Privileged Training、Curriculum、Deployment |
