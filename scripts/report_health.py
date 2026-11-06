@@ -20,7 +20,10 @@ from original_reading import original_fully_read  # noqa: E402
 def changed_pages() -> list[str]:
     out = subprocess.run(
         ["git", "diff", "--name-only", "--diff-filter=AM", "origin/main...HEAD", "--", "wiki"],
-        capture_output=True, text=True, check=True, cwd=g.REPO_ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+        cwd=g.REPO_ROOT,
     ).stdout
     return [p for p in out.split() if p.endswith(".md")]
 
