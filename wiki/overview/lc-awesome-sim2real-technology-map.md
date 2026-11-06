@@ -9,6 +9,8 @@ related:
   - ../concepts/sim2real.md
   - ../tasks/locomotion.md
   - ../entities/paper-survey-sim2real-rl-foundation-models.md
+original:
+  - ../../sources/repos/awesome_sim2real_readme_reading_lc.md
 sources:
   - ../../sources/papers/lc_awesome_sim2real_catalog.md
   - ../../sources/repos/awesome-sim2real.md
@@ -297,6 +299,16 @@ sources:
 | 138 | [TrafficSim: Learning to Simulate Realistic Multi-Agent Behaviors](../entities/paper-as-2101-06557-trafficsim-learning-to-simulate-realistic-multi.md) |
 | 139 | [Waymax: An Accelerated, Data-Driven Simulator for Large-Scale Autonomous Driving Research](../entities/paper-as-2310-08710-waymax-an-accelerated-data-driven-simulator-for.md) |
 
+
+## 核心原理
+
+清单本身的组织方式即其方法论（据上游 README 通读）：技法论文按 MDP 要素分为 **Observation**（域随机化 / 域适配 / 传感器融合 / 基础模型）、**Action**（动作尺度 / 延迟 / 不确定性）、**Transition**（域随机化 / 域适配 / Grounding / LLM 增强）、**Reward**（奖励塑形 / LLM 奖励设计）；另有「Surveys and Simulators」按机器人、交通、推荐、其他四域分环境与基准。本页分组与之一一对应。
+
+## 工程实践
+
+- **选型路径：** 先确定 gap 落在哪个 MDP 要素（观测 / 动作 / 动力学 / 奖励），再进对应分组读同方向论文；需要仿真器时看 Environments / Benchmarks 分组。
+- **注意归类宽松：** 上游部分条目归类较宽（如 Observation/Foundation Models 下混有通用 LLM 论文，robosuite 在多处出现），使用时以论文实际内容为准。
+- **机器人相关：** 足式 / 人形 sim2real 工程可从 Transition/Domain Randomization 与 Robotics Benchmarks 入手（如 Humanoid-Gym），并配合 [sim2real](../concepts/sim2real.md) 页的 checklist。（后一句为本页推断）
 
 ## 局限与风险
 

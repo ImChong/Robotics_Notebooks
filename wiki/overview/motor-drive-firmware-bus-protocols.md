@@ -23,6 +23,8 @@ related:
   - ../concepts/processor-in-the-loop-sim2real.md
   - ../queries/real-time-control-middleware-guide.md
   - ./humanoid-motion-control-know-how.md
+original:
+  - ../../sources/sites/cia_can_canopen_canfd_hs_reading_mdfbp1.md
 sources:
   - ../../sources/courses/motor_drive_firmware_bus_protocols.md
   - ../../sources/repos/simplefoc_arduino_foc.md
@@ -42,7 +44,7 @@ summary: "主控与关节驱动器底软之间的通信协议总览：按物理�
 
 > **本页回答：** 主控（运控机 / 工控机 / 嵌入式板）和**关节电机驱动器底软**之间，有哪些常见协议种类？各自优缺点是什么？和「只学 CAN 物理层」有什么关系？
 
-## 一句话总结
+## 一句话定义
 
 **底软通信 = 物理总线 + 应用层帧格式 + 控制模式语义** 三件套；机器人里最常见的是 **CAN 系（私有或 CANopen）** 与 **EtherCAT+CoE**，调试与外设用 **UART/RS485**；选错层会导致「线能通、但增益/模式/周期对不上」。
 
@@ -60,6 +62,14 @@ summary: "主控与关节驱动器底软之间的通信协议总览：按物理�
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 | ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
+## 为什么重要
+
+线能通不等于能控：L1 位时序、L2 帧与对象字典、L3 模式语义任一层对不上，都会表现为增益 / 模式 / 周期异常；总线选型还直接决定 \(T_{\text{bus}}\) 延迟项与 Sim2Real 对齐成本。
+
+## 核心原理
+
+CiA 一手资料给出的分层事实（见原文归档）：CANopen 建立在 ISO 11898-1 数据链路层之上，用 SDO / PDO / NMT 等标准通信对象与 16 位索引的对象字典（1000h–1FFFh 通信参数，2000h–5FFFh 厂商专有，6000h–9FFFh 标准化参数）；CAN FD 仅在单节点发送的数据段提速并把载荷扩至 64 字节；CAN HS 物理层上限 1 Mbit/s 且速率与线长互相制约。下文三层划分即按此展开。
 
 ## 先分清三层（不要混为一谈）
 
@@ -187,6 +197,17 @@ flowchart TD
 | 「EtherCAT 和 CANopen 二选一」 | CoE 把 CANopen 对象搬到 EtherCAT 上 |
 | 「USB2CAN 与板载 CAN 等效」 | USB 路径抖动更大，不宜单独承担硬实时全关节环 |
 | 「Modbus 能控人形 30 关节」 | 带宽与半双工机制不适合 kHz 级多轴同步 |
+
+## 工程实践
+
+- 采购前索要协议说明、推荐周期与模式定义；只有 DLL 无帧格式时后期 sim2real 成本高。
+- CAN 总线按 CiA 建议用线型拓扑、两端 120 Ω 终端；CAN FD 需收发器与控制器均支持，非 ISO 控制器缺少附加 CRC 保护。
+- 主控侧 RT 配置与 USB2CAN 抖动见上文组合套餐与误区表。
+
+## 局限
+
+- 本页刻意不固化厂商私有字节表；CiA 402 / 301 规范本体与 EtherCAT、DroneCAN 细节未在原文归档范围内，以对应纵深页与官方规范为准。
+- 轴数、周期阈值（如 ≥20 轴 / <1 ms）为选型经验，属推断，应以实测为准。
 
 ## 关联页面
 - [关节模组电磁隔离](../concepts/joint-module-electromagnetic-isolation.md)

@@ -37,6 +37,8 @@ related:
   - ../entities/paper-roboreact.md
   - ../entities/cosmos-transfer.md
   - ../entities/paper-kinogen.md
+original:
+  - ../../sources/papers/unisim_reading_arxiv_2310_06114.md
 sources:
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
@@ -67,6 +69,8 @@ summary: "视频即仿真（Video-as-Simulation）代表了仿真技术的新范
 
 # Video-as-Simulation (视频即仿真)
 
+## 一句话定义
+
 **视频即仿真 (Video-as-Simulation)** 是具身智能领域最激进也最前沿的技术范式。它的核心假设是：如果一个生成模型能够完美预测“给定当前动作后，下一帧图像应该长什么样”，那么这个模型本身就可以充当一个端到端的、像素级的物理引擎。在 [功能分类](./functional-taxonomy-world-models.md) 里，这类系统默认是 **Renderer**；加上可靠动作条件与可查询状态后才靠近 Simulator。[定义文](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 提醒：像素逼真既非必要也非充分。
 
 ## 英文缩写速查
@@ -78,6 +82,17 @@ summary: "视频即仿真（Video-as-Simulation）代表了仿真技术的新范
 | Sim2Real | Simulation to Real | 生成资产/动力学仍须工程验收 |
 | RL | Reinforcement Learning | 可在生成场景中训练策略 |
 | NeRF / 3DGS | Neural Radiance Fields / 3D Gaussian Splatting | 常见场景重建与资产表示 |
+
+## 为什么重要
+
+- 仿真器是机器人 RL 与策略评估的瓶颈：UniSim 论文明确把"缺少真实环境访问"当作要解决的瓶颈，用统一的"动作进、视频出"接口把多源数据拼成一个可反复交互的环境。
+- 同一个观测预测模型与奖励函数解耦，可复用于规划、RL、数据生成（长程 VLM 策略、字幕模型）等不同下游。
+
+## 核心原理
+
+- **观测预测**：把模拟器写成 p(o_t | h_{t-1}, a_{t-1})，历史只取近期若干帧；以视频扩散参数化，历史帧与噪声按通道拼接，动作经 classifier-free guidance 注入，可自回归 rollout。
+- **动作统一**：语言动作用 T5 嵌入，低层控制离散后与之拼接；图像当单帧视频、图注当动作，从而让互联网图文、人类活动、真机与仿真渲染数据共训。
+- 以上出自 UniSim（ICLR 2024）全文；"其余工作都在此范式上改动作接口 / 记忆 / 步数"属本页归纳（推断）。
 
 ## 核心差异：从“算力矩”到“算像素”
 
@@ -143,6 +158,20 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 在 **车载多传感器仿真** 设定下，[M⁴World](../entities/paper-m4world.md)（arXiv:2607.14005）把「视频即仿真」扩展到 **环视相机 + 同步 LiDAR range map**，并以物体级外观条件支持长尾场景编辑；4-step 因果蒸馏面向 **分钟级** 流式，与操纵域 DriftWorld 的「少步」动机相近但评测与传感栈不同。
 
 在 **开放域交互式内容 / 桌面实时** 设定下，[ABot-World-0](../entities/paper-abot-world-0.md)（arXiv:2607.19191）用 **原始键盘动作** 统一场景漫游与第三人称角色，经 **LongForcing** 压长程自回归漂移，并在 **单卡 RTX 5090** 上做到 **720P ≤16 FPS**；它更接近 UniSim「可玩的像素世界」叙事，而不是关节级机器人策略评估代理——推理学生已开源，完整训练数据/教师仍待发。
+
+## 工程实践
+
+- **数据配比**：UniSim 混合 14 类数据、权重 0.05 或 0.1 且未精细调参；去掉互联网数据后 FVD 明显变差，说明广覆盖数据不可省。
+- **历史长度**：Ego4D 上条件取最近 4 帧优于 1 帧或远距 4 帧；需长记忆的任务（如检索式导航）要更长历史。
+- **低数据域**：加数据集标识符可提升该域质量，但损害跨域泛化，只在测试域与训练域一致时用。
+- **闭环训练**：RL 时把视频生成封装为环境 step，奖励来自学习到的"剩余步数"模型，actor 限速以免轨迹过度离策略；模型规模增大收益趋于平缓（500M→5.6B，FVD 277.85→211.30）。
+- 评估多为模拟器内定性判定，落地前仍需真机验证（见 [Sim2Real](../concepts/sim2real.md)）。
+
+## 继续阅读
+
+- [Generative World Models](../methods/generative-world-models.md)、[世界模型功能分类](./functional-taxonomy-world-models.md)：先建立 Renderer / Simulator 区分。
+- [Ctrl-World](../entities/paper-ctrl-world.md)、[GE-Sim 2.0](../entities/ge-sim-2.md)：面向 VLA 闭环评估的后续工作。
+- UniSim 原文阅读归档：[unisim_reading_arxiv_2310_06114.md](../../sources/papers/unisim_reading_arxiv_2310_06114.md)。
 
 ## 关联页面
 - [Visual General Intelligence 白皮书](../entities/paper-vgi-white-paper.md) — Geirhos「视频模型即 VFM」与 Wu & Wu「像素生成 ≠ 物理理解」的对张力，用来读本页「视频即仿真」的适用边界

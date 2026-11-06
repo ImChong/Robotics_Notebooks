@@ -26,6 +26,8 @@ related:
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/courses/transformer_cv_applications_syllabus.md
+original:
+  - ../../sources/papers/vit_reading_arxiv_2010_11929_tcvc.md
 ---
 
 # Transformer 视觉应用课程策展
@@ -155,6 +157,13 @@ flowchart LR
 - **[人形系统课策展](./humanoid-system-curriculum.md)**：系统工程链；本页是视觉算法课链。
 - **[VLA 纵深](../../roadmap/depth-vla.md)**：多模态之后进入动作；接 Stage 0。
 
+## 第 2 章主干论文要点（ViT 原文，补充）
+
+- **做法**：图像切成 P×P patch，线性嵌入加位置嵌入与 [class] 词元，送入标准 Transformer 编码器（原文 §3.1）。
+- **数据规模是关键**：仅 ImageNet 预训练时 ViT 不及同级 ResNet；ImageNet-21k / JFT-300M 预训练后追平或超过，且同等性能约少用 2–4 倍预训练算力（原文 §4.3–§4.4）。
+- **对课程的含义（推断）**：学第 2 章时应把 TNT、CvT 看作在 patch 内/卷积嵌入上补回局部性的改进，与 ViT 缺少卷积归纳偏置的结论对应。
+- 原文展望把检测、分割与自监督列为后续工作，对应本课第 3–4 章与第 8 章。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -180,6 +189,7 @@ flowchart LR
 ## 参考来源
 
 - [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)
+- [ViT 论文通读归档（arXiv:2010.11929）](../../sources/papers/vit_reading_arxiv_2010_11929_tcvc.md) — 第 2 章 Transformer 分类的共同起点
 
 ## 推荐继续阅读
 

@@ -34,6 +34,8 @@ sources:
   - ../../sources/papers/online_mbrl_robot_control_arxiv_2510_18518.md
   - ../../sources/papers/lucid_arxiv_2608_07746.md
   - ../../sources/papers/motus2_arxiv_2608_30237.md
+original:
+  - ../../sources/papers/mbpo_reading_arxiv_1906_08253_reading_mbrl.md
 summary: "Model-Based RL 借助环境模型提升样本效率，在机器人控制中常与规划和世界模型结合。"
 ---
 
@@ -273,6 +275,29 @@ Dreamer 4（Hafner et al., 2025，[arXiv:2509.24527](https://arxiv.org/abs/2509.
 [Richard Sutton](../entities/richard-sutton.md) 在 [*The One-Step Trap*](../../sources/blogs/sutton_one_step_trap.md)（2024）中批评：学 **单步转移模型** 再迭代 rollout 得长期预测，在单步误差非零时 **误差复合** 且随机环境下计算复杂度 **对 horizon 指数级**；**POMDP / 贝叶斯 belief 展开** 亦面临同类指数分支（见 [Bayesian Belief Analysis](../concepts/bayesian-belief-analysis.md)）。他主张用 **options + [GVFs](../concepts/generalized-value-functions.md)** 构建时序抽象模型，而非 naive 物理式一步模拟器。读当代「世界模型 + 想象 rollout」管线时，应区分：**短 horizon MBPO 式混合** vs **长 horizon 单步模型 rollout** 的可行边界。
 
 ---
+
+## 核心原理
+
+MBRL 的共同骨架是「真实交互 → 拟合模型 → 在模型里规划或生成虚拟经验 → 更新策略」循环；各算法差别只在 **模型放在哪（像素/潜空间/状态）** 与 **模型输出怎么用（训练数据 / 在线规划 / 价值目标）**。原文级依据（MBPO，arXiv:1906.08253，已通读，见 [归档](../../sources/papers/mbpo_reading_arxiv_1906_08253_reading_mbrl.md)）：
+
+- **回报下界**：η[π] ≥ η̂[π] − C(ε_m, ε_π)，模型泛化误差 ε_m 与策略偏移 ε_π 共同决定"模型里的改进能否在真环境兑现"；完整 rollout 下误差随 1/(1−γ) 二次放大。
+- **分支短 rollout**：从真实 replay 状态出发、只在模型里走 k 步（Dyna 是 k=1 特例）。保守常数下理论界会得出"别用模型"，加入经验测得的"数据越多、模型越耐策略偏移"后才得到 k*>0——即 **有限且非零的模型使用** 是合理折中。
+- **不确定性处理**：概率网络集成（偶然不确定性）+ bootstrap（认知不确定性），降低策略利用模型漏洞的风险。
+
+## 工程实践
+
+- **优先短 rollout 混合真实数据**：MBPO 实验里 k=1 已保留大部分收益；Hopper 最优为 k 由 1 线性增至 15，200 步仍可训练但更差，500 步失效（原文 §6.2）。
+- **模型数据换更高更新比**：短 rollout 可大量生成，使每环境步可做 20–40 次策略更新（model-free 通常不稳定）。
+- **监控模型与真环境回报相关性**：原文用二者相关性判断是否"模型利用"。
+- **按任务选路线**：数据极稀的真机/难仿真平台可参考 PETS、Online MBRL；高维观测用潜空间（Dreamer / TD-MPC2）；高频 locomotion 多仍用 model-free（见上文「不适合 MBRL 的场景」）。
+- 推断（非原文）：真机部署需额外评估规划延迟，MBPO 基准是仿真 MuJoCo，未直接验证高频足式/人形。
+
+## 局限
+
+- **模型误差上限渐近性能**：原文指出模型精度是策略质量瓶颈，长 rollout 不确定性快速增长（MBPO Fig.4）。
+- **MBPO 结论的适用范围**：实验仅在状态输入的 MuJoCo 标准基准上，且依赖 SAC；视觉输入、接触丰富真机的结论需另行验证（推断）。
+- **理论界偏保守**：回报下界需配合经验估计的泛化率才能支持用模型，不能直接给出实用 k（原文 §4.3）。
+- **一步模型的长程问题**：见上文 Sutton「一步陷阱」。
 
 ## 关联页面
 - [MBPO](./mbpo.md) / [TD3](./td3.md) / [BPTT](../concepts/bptt.md) — senlanke 复习文章点名的独立详情节点

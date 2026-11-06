@@ -16,6 +16,8 @@ related:
   - ../methods/vla.md
   - ./awesome-world-models.md
   - ./awesome-touch.md
+original:
+  - ../../sources/repos/awesome_egocentric_vision_readme_reading_sun254667.md
 sources:
   - ../../sources/repos/awesome-egocentric-vision.md
   - ../../sources/papers/sun_awesome_ego_catalog.md
@@ -60,6 +62,16 @@ summary: "sun254667 维护的 Awesome Egocentric Vision：第一人称视觉与�
 | Core Topics | 动作识别/预测、HOI、Ego-VLM、长视频、注视、3D/4D、Ego-VLA、Ego WM、助手、隐私 |
 | Datasets & Simulators | Ego4D / EPIC-KITCHENS 等锚点 + 细粒度/VLA/世界仿真器 |
 | Smart Glasses | 可穿戴专用基准与部署技术 |
+
+## 核心原理
+
+清单的组织逻辑是 **「任务 → 数据 → 迁移」**（据 README 结构归纳）：2.1–2.6 为感知任务（动作、手物、VLM、长视频、注视、3D/4D），2.7–2.8 把感知接到策略与世界模型，2.9–2.10 覆盖助手与隐私。README 末尾「关键挑战」给出四个通用难点：视野窄/自遮挡/抖动、数据稀缺与隐私、跨人分布偏移、超长序列建模；Ego-VLA 一栏另列人机具身差距与动作空间错位。
+
+## 工程实践
+
+- **机器人方向优先读**：§2.7 Ego-VLA（如 EgoScale 的 2 万+ 小时带动作标注人类视频、HumanScale、EgoBridge）、§2.8 Ego WM，以及数据集表中的 EgoDex、EgoVerse、HOI4D。
+- **选型锚点**：通用预训练用 Ego4D / EPIC-KITCHENS-100 / Ego-Exo4D；灵巧手与触觉看 EgoDex、EgoTouch；README 数据集表给出规模，使用前以官方页核验许可。
+- **落地到站内**：先看[技术地图](../overview/sun-awesome-ego-technology-map.md)定位分组，再点进具体论文页。
 
 ## 局限与使用注意
 

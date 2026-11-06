@@ -12,6 +12,9 @@ related:
   - ./embodied-station-2026-10-13-34-papers-technology-map.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_41_papers_streamingwam_2026-10-14.md
+original:
+  - ../../sources/papers/streamingwam_reading_arxiv_2610_15585_ws41.md
+  - ../../sources/blogs/wechat_embodied_station_41_papers_reading_ws41.md
 summary: "具身智能小站 2026-10-14 盘点：StreamingWAM 流式动作块、异步 VLA 边界对齐、组合泛化评测，以及世界模型记忆、导航/足式、多机器人协作等 41 篇；41 篇各有一页可点开。"
 ---
 
@@ -23,6 +26,10 @@ summary: "具身智能小站 2026-10-14 盘点：StreamingWAM 流式动作块、
 
 **「换块卡顿」是动作块策略部署的共性问题：相邻动作块是否接得上、新观察到达后能否持续细化，比单次推理更快更关键。本期深读 StreamingWAM，跟进 FreeBar 与 RoboCombine。**
 
+## 一句话定义
+
+**本页是 2026-10-14 具身智能小站 41 篇论文的方向地图：以 StreamingWAM 的「持久动作缓冲 + 阶梯噪声」为主线，把换块衔接、世界模型记忆、导航足式、多机器人协作等 41 个节点按方向归位。**
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -31,6 +38,11 @@ summary: "具身智能小站 2026-10-14 盘点：StreamingWAM 流式动作块、
 | WAM | World Action Model | 世界–动作联合模型 |
 | RL | Reinforcement Learning | 强化学习 |
 | FM | Flow Matching | 流匹配生成 |
+
+## 为什么重要
+
+- 动作块策略部署时，块边界跳变与重规划延迟直接决定闭环是否顺滑；StreamingWAM 原文给出一组可对照的量化口径（稳态延迟 72.9 ms 仿真 / 57.3 ms 真机，执行视野敏感度由 35.75 pp 降到 6.50 pp），说明「持续细化」可同时处理两者。
+- 41 篇横切面让读者先判断方向、再下钻节点，减少在大批量新论文中的检索成本。
 
 ## 为什么单独做这张地图
 
@@ -135,6 +147,19 @@ flowchart TB
 | 论文 | 节点 | 开源 |
 |------|------|------|
 | DiTaR | [paper-ditar-task-relevant-latent-dynamics-reward](../entities/paper-ditar-task-relevant-latent-dynamics-reward.md) | 待发布 |
+
+## 工程实践
+
+- **延迟口径要分开：** StreamingWAM 原文把一次性暖启动（TTFA）与稳态重规划延迟分开报告；单次前向并不更便宜（57.3 ms 对 46.8 ms），省的是把每次重规划的模型评估从 10 次降到 1 次。
+- **执行视野 K 与预测视野 H：** 流式收益依赖 K 小于 H 且按块对齐；K=H 时只剩一个块，优势消失（原文边界实验）。
+- **动态任务的基线设置：** 原文对基线在动态任务上改用 1 步推理，因 10 步部署近乎零成功；读对比结果时需留意各方配置不同，属系统级对比。
+- **公众号本身的核验状态：** 页面各数字为公众号转述；StreamingWAM 的数字已对照 arXiv 原文，其余 40 篇仍以公众号一句话判断为准，细节见各节点。
+
+## 局限
+
+- StreamingWAM 仅在 Fast-WAM 单一基座族上验证，且无大规模具身预训练；RoboTwin 2.0 随机化划分上具身预训练的 π0.5 更高（原文局限）。
+- 动态任务收益的机制解释在原文中属定性证据，未做受控的仅历史消融。
+- 本页对其余论文的归类与判断依据公众号摘要级信息，未逐篇通读原文（推断：其中个别结论在全文中可能有更多限定）。
 
 ## 关联页面
 

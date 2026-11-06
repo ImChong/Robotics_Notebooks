@@ -56,6 +56,8 @@ sources:
   - ../../sources/papers/touchanything_arxiv_2605_13083.md
   - ../../sources/sites/touchanything-github-io.md
   - ../../sources/repos/touchanything.md
+original:
+  - ../../sources/papers/making_sense_vision_touch_reading_arxiv_1810_10191.md
 summary: "视触觉融合（Visuo-Tactile Fusion）研究如何在接触瞬间动态切换视觉的全局先验与触觉的局部反馈：视觉提供宏观语义和粗对位，触觉补足遮挡区的微对位与力学闭环。"
 ---
 
@@ -175,6 +177,26 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 ### 跨传感器表示预训练
 
 [**AnyTouch**](../entities/paper-anytouch.md) 学习跨视觉触觉传感器的静态–动态共享表示，[**AnyTouch 2**](../entities/paper-anytouch2.md) 将监督扩展到多层级动态接触与力变化。它们的训练关注点是让触觉表示可跨传感器/任务迁移，和本页讨论的接触阶段多模态策略融合相邻但不同。对应的项目资产分列于 [AnyTouch](../entities/paper-anytouch.md) 与 [AnyTouch 2](../entities/paper-anytouch2.md) 项目页。
+
+## 核心原理
+
+综合上文三类主流范式与阶段划分，视触觉融合的共同骨架是：**(1) 分模态编码，(2) 在表征层按接触阶段分配权重，(3) 用与控制频率匹配的接口把表征交给策略**。奠基性实例是 [Lee et al. 2019](../../sources/papers/making_sense_vision_touch_reading_arxiv_1810_10191.md)（arXiv:1810.10191）：RGB、腕部 F/T（最近 32 次读数）与本体感受分别编码后拼接为 128 维表征，用动作条件光流、下一步是否接触、多模态时间对齐三个自监督目标训练，再冻结表征、仅训练约占 3% 参数的 TRPO 策略。其仿真消融中完整模型插入完成率约 80%，去掉视觉、触觉或两者的基线均低于 5%；"无触觉"基线最强，说明视觉主导前期对位、触觉决定插入阶段（与上文阶段表一致）。
+
+## 工程实践
+
+- 控制接口：低频策略（原文 20 Hz）输出笛卡尔位移，经轨迹插值与阻抗 + 操作空间控制以 200 Hz 出力矩，保证接触柔顺。
+- 数据：自监督标签（接触标志、光流）可由 F/T 启发式与运动学自动生成，随机 + 启发式策略约 100k 状态即可训练表征。
+- 迁移：表征可跨 peg 形状复用，保留表征重训策略比直接迁移策略成功率更高（原文六边形 +19%、方形 +30%）。
+
+## 局限
+
+- 经典工作只做 3 自由度位移与单一 peg-in-hole 任务，未覆盖 6-DoF 与灵巧手；触觉为腕部 F/T 而非空间分辨触觉图像（推断：这类信号无法区分接触落在指尖哪一块，参见上文误区 4）。
+- 仿真消融单任务单传感器配置，结论外推到视触觉传感器与 VLA 尺度需参考 TacO、SoftVTBench 等后续基准。
+
+## 继续阅读
+
+- [Lee et al. 2019 通读归档](../../sources/papers/making_sense_vision_touch_reading_arxiv_1810_10191.md)
+- [Cross-modal Attention](../formalizations/cross-modal-attention.md)、[Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md)
 
 ## 接触瞬间为什么难
 

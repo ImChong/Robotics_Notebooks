@@ -19,6 +19,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
+original:
+  - ../../sources/papers/bam_extended_friction_reading_arxiv_2410_08650_reading_actuator_loop.md
 summary: "关节摩擦常用 Coulomb + Viscous + Stribeck 组合建模；四足 SysID 中摩擦参数对 Sim2Real 跟踪误差与跌倒率影响显著。"
 ---
 
@@ -83,6 +85,23 @@ $$
 | 执行器网络 | 数据驱动补偿残差（[Actuator Network](../methods/actuator-network.md)） |
 
 算法选型总表见 [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)。库仑与黏性在单次阶跃上近似不可分：要多档恒定低速（扭矩–速度图的截距差 vs 斜率）或恒扭矩阈值；不要用稳态误差反推。实验顺序见 [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)。
+
+## 核心原理
+
+- **摩擦是力矩上界而非独立力**（据 BAM 论文 §II–§IV）：静止时摩擦只需抵消驱动力矩与外力矩之和，上限为 $\tau_f^m$；仿真中用「下一步速度归零所需力矩」对摩擦限幅，避免零速附近抖振。
+- **Coulomb–Viscous 的不足**：主流引擎（MuJoCo、Isaac Gym）默认此模型，零速摩擦为零且换向不连续；论文用 drive/backdrive 台架图显示摩擦随负载增大，故需 Stribeck、负载相关项等递进扩展（M2–M6，参数由 5 增至 11）。
+- 参数辨识：摆锤台架 + CMA-ES 对齐仿真与实测轨迹（见上文「辨识与可微拟合」）。
+
+## 工程实践
+
+- 先按多档恒速 / 恒扭矩拆开库仑与黏性（见上文），再决定是否需要 Stribeck 或负载相关项。
+- 摩擦参数放入 DR 分布，覆盖负载、温度变化；低增益 PD 策略对摩擦失配最敏感（推断，源自 BAM 对 RL 低增益控制的动机陈述）。
+- 谐波减速器等高摩擦传动可考虑含二次项的高阶模型，参数更多、需更丰富的辨识轨迹。
+
+## 局限
+
+- 扩展模型参数多，单条轨迹易过拟合，换负载/温度后需重新验证。
+- BAM 论文验证平台为舵机摆锤台架与 MuJoCo 2R 臂；对整机四足/人形的收益需自行实测（推断）。
 
 ## 常见误区
 

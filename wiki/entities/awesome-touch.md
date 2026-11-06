@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, tactile, visuo-tactile, vla, world-models, wam, contact-rich, sim2real]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-06
 related:
   - ../overview/sun-awesome-touch-technology-map.md
   - ../overview/hub-tactile.md
@@ -16,6 +16,8 @@ related:
   - ./paper-taco-tactile-sensor-benchmark.md
   - ./awesome-world-models.md
   - ./awesome-real2sim2real.md
+original:
+  - ../../sources/repos/awesome_touch_readme_reading_at3.md
 sources:
   - ../../sources/repos/awesome-touch.md
   - ../../sources/papers/sun_awesome_touch_catalog.md
@@ -61,6 +63,20 @@ summary: "sun254667 维护的 Awesome Touch：2025–2026 触觉操作精选集�
 | Visuo-Tactile WM | OmniVTA、ViTacWorld、TouchWorld、ContactWorld |
 | Tactile WAM | 接触丰富场景下的世界–动作联合 |
 | Policy / Sim2Real / Hardware / Data | IL·RL·Diffusion；触觉仿真迁移；传感器与基准 |
+
+## 核心原理（清单的组织逻辑）
+
+> 依据 upstream README 通读（[归档](../../sources/repos/awesome_touch_readme_reading_at3.md)）。
+
+- **按"触觉如何进入决策"分层**：VLA 直接融合（TacFiLM、AT-VLA 的自适应注入）→ 视触觉 WM 先预测后决策 → WAM 联合预测与动作 → 策略学习 / 仿真 / 硬件 / 数据作支撑。
+- **快慢分工是反复出现的模式**：如 TacMamba 的 100Hz 触觉编码器（System 1）+ 按需查询压缩触觉历史的 VLA（System 2）；OmniVTA 的 60Hz 反射控制器。
+- **README 自述的关键挑战**：Tactile Pollution、Modality Collapse、数据稀缺、预测与执行的时序错位、传感器泛化（推断：选型时可逐条对照论文是否处理）。
+
+## 工程实践
+
+- **选型路径**：先看数据集表（OmniViTac、ObjTac、ContactWorld 等）判断是否有可用数据，再按任务选 VLA / WM / WAM 分区。
+- **仿真起步**：Sim2Real 区有 TacSL、Taccel、UniVTAC 等触觉仿真平台，可先在仿真中验证触觉表征（推断：真机迁移效果需看各论文原文）。
+- **许可**：README 末尾声明 CC0 1.0；引用论文仍以各自许可为准。
 
 ## 局限与使用注意
 

@@ -20,6 +20,8 @@ sources:
   - ../../sources/repos/tensorrt-official.md
   - ../../sources/repos/openvino-official.md
   - ../../sources/repos/ncnn-official.md
+original:
+  - ../../sources/repos/onnxruntime_mnn_tensorrt_readmes_reading_ort3m.md
 summary: "机器人 onboard 推理选型：ONNX 为格式契约；ORT/TRT/MNN 为本库人形主线；OpenVINO/ncnn/LiteRT/ExecuTorch 为硬件或框架绑定的延伸选项。"
 ---
 
@@ -30,6 +32,10 @@ summary: "机器人 onboard 推理选型：ONNX 为格式契约；ORT/TRT/MNN �
 本页先对比本库 **人形/四足 onboard 最常见三条主线**：[ONNX Runtime（ORT）](../entities/onnxruntime.md)、[TensorRT](../entities/tensorrt.md)、[MNN](../entities/mnn.md)；再给出 **延伸 runtime 一览**（OpenVINO、ncnn、LiteRT、ExecuTorch 等）。
 
 > **前提**：多数 runtime 消费 **ONNX** 或框架原生图；[ONNX](../entities/onnx.md) 是 **格式规范**，其余是 **执行引擎**。
+
+## 一句话定义
+
+ONNX 是格式契约，ORT / TensorRT / MNN 是执行该契约的三类机载推理引擎：ORT 重跨平台与 EP 回退，TensorRT 重 NVIDIA GPU 极致优化，MNN 重端侧轻量与多后端。
 
 ## 英文缩写速查
 
@@ -42,6 +48,18 @@ summary: "机器人 onboard 推理选型：ONNX 为格式契约；ORT/TRT/MNN �
 | EP | Execution Provider | ORT 的后端插件机制 |
 | INT8 | 8-bit Integer Quantization | 整数量化，降体积与延迟 |
 | Jetson | NVIDIA 嵌入式 AI 平台 | Orin/Thor 等人形机载常见算力 |
+
+## 为什么重要
+
+机载控制环有固定周期预算（50–1000 Hz），runtime 选错会带来重编 engine、镜像膨胀或平台不支持等集成成本，而不仅是延迟差异；训练侧导出一份 ONNX 后，runtime 选型决定了仿真、真机、Web 演示能否复用同一产物。
+
+## 核心机制
+
+三者共同点是「离线图优化 + 运行时按后端执行」，差异在后端绑定方式（以下据三项目官方 README，见 `original` 归档）：
+
+- **ORT**：以 EP 插件挂接各类加速器，叠加图优化；README 另有独立的 QNN Plugin EP 仓库。
+- **TensorRT**：先把网络（常来自 ONNX 解析器）构建为 engine；11.x 起移除弱类型网络与隐式量化，改用强类型网络与显式量化，旧 10.x 导出脚本需迁移。
+- **MNN**：`mnnconvert` 转 `.mnn`，后端覆盖 CPU（ARM/x86/RISC-V）、GPU（OpenCL/Vulkan/Metal/CUDA）与多种 NPU，README 用 S/A/B/C 标注各架构×精度的成熟度，选型前应查该表。
 
 ## 核心特性对比
 
@@ -145,6 +163,18 @@ flowchart TB
 - **「导出 ONNX 就完事」**：须固定 **opset、输入 shape、观测构造**；见 [robot-policy-debug-playbook](../queries/robot-policy-debug-playbook.md)。
 - **量化先后**：TensorRT INT8 与 MNN `weightQuantBits` 校准数据需求不同；闭环 locomotion 必须 **吊架回归**。
 - **MNN 不是人形 WBC 默认答案**：本库人形高频栈文献更多写 **ORT/TRT**；MNN 是边端补充选项。
+
+## 工程实践
+
+- 先确认板卡与 JetPack / CUDA 版本，再选 runtime；TensorRT 11.x README 的构建前提为 CUDA 13.4 / 12.9，Jetson Thor 有原生与交叉编译示例，钉旧 JetPack 的项目需核对兼容。
+- MNN 体积数据（README）：iOS 静态库约 12 MB、Android 核心 so 约 800 KB；FP16/Int8 量化可减模型体积 50%–70%；INT8/INT4 评级含仅权重量化，不等于全整数执行。
+- 部署前用同一份观测输入对比 runtime 输出与 PyTorch 输出，再做吊架回归（推断：量化或融合可能改变数值，README 未给出机器人场景数据）。
+
+## 局限
+
+- 本页延迟与「机器人出现频率」判断来自库内其他页面，未在同一硬件上实测三者；三项目 README 也未提供横向基准。
+- 许可信息以各仓库 README 为准：ORT 为 MIT，MNN 为 Apache 2.0，TensorRT-OSS 仓库为 Apache 2.0（SDK 本体另有许可）。
+- 本页只覆盖 runtime 层，不涉及策略本身的 Sim2Real 差距。
 
 ## 关联页面
 

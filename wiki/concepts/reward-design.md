@@ -17,6 +17,8 @@ related:
   - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ../entities/paper-fddc.md
   - ../entities/paper-goal-misgeneralization-policy-alignment.md
+original:
+  - ../../sources/papers/rudin_legged_gym_reward_reading_arxiv_2109_11978_reading_rd7.md
 summary: "Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。"
 sources:
   - ../../sources/papers/policy_optimization.md
@@ -191,12 +193,37 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 见：[CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md)
 - [目标泛化失效与策略对齐](../entities/paper-goal-misgeneralization-policy-alignment.md) — 只看任务成功率可能掩盖目标错配；恢复手段须按失效发生的层次选择
 
+## 核心原理
+
+- 奖励是 MDP 中 $R(s,a,s')$ 的工程落地：RL 只优化标量回报，不理解意图，因此"设计"的本质是把意图拆成可微 / 可累加的多项加权和。
+- 以 legged_gym（Rudin et al., 2021，[通读档案](../../sources/papers/rudin_legged_gym_reward_reading_arxiv_2109_11978_reading_rd7.md)）为例：总奖励为九项加权和，每项乘 dt。主项为指令线速度 / 偏航角速度跟踪 $\exp(-\|x\|^2/0.25)$（权重 1 / 0.5），其余是抑制项（竖直线速度、横滚俯仰角速度、关节速度加速度、力矩、动作变化率、碰撞）与一项足端滞空奖励。
+- 论文的取向：奖励与动作空间不含步态先验，策略自由收敛到小跑；伪影靠调权重消除，而不是堆更多规则。
+- 终止与超时要区分：失败终止可被 critic 预测，超时终止需用 critic 预测做 bootstrap（原文报告总奖励约提升 10%–20%）。
+
+## 工程实践
+
+- 先让"跟踪项"成立，再逐项加惩罚项抑制伪影；权重常按量级差异很大（如力矩项 2e-5 对跟踪项 1）。
+- 换机器人时奖励常需局部改动：A1 需降低力矩惩罚，Cassie 需额外加"单脚站立"项才出步态（原文 §4.2）。
+- 奖励与课程配合：自动地形课程按"位移是否达到指令所需距离的一半"升降级，等于把任务难度也纳入奖励的有效性判据。
+- 推断：权重的合适值依赖机器人与仿真设置，上表数字应视为起点而非通用常数。
+
+## 局限
+
+- 奖励很难完整表达人类意图，策略会钻空子（见上文反模式与目标泛化失效）。
+- legged_gym 的结论来自 ANYmal 四足、盲 / 高度图输入的设置，对人形、接触丰富操作的可迁移性需另行验证（推断）。
+- 手工调权重成本高；自动化方向（EUREKA 等）与 IRL / AMP 路线各有适用边界，见相应章节。
+
+## 关联
+
+- 形式化：[MDP](../formalizations/mdp.md)；算法：[强化学习](../methods/reinforcement-learning.md)；实战：[Reward Design 实战指南](../queries/reward-design-guide.md)、[人形奖励分类](./humanoid-policy-reward-functions.md)。
+
 ## 参考来源
 
 - [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — 原则先于堆 term；value loss 降不等于奖励目标对
 - Ng et al., *Policy Invariance Under Reward Transformations* (1999) — Potential-based shaping 理论基础
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2021) — locomotion reward 设计工程实践
 - Ma et al., *EUREKA: Human-Level Reward Design via Coding Large Language Models* (2023) — LLM 自动奖励设计
+- **通读档案：** [Rudin et al. legged_gym 通读](../../sources/papers/rudin_legged_gym_reward_reading_arxiv_2109_11978_reading_rd7.md) — 九项奖励、权重表、超时 bootstrap
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/SAC locomotion reward 实践
 - **ingest 档案：** [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — Walk These Ways 步态条件化 reward
 - **ingest 档案：** [sources/papers/disney_olaf_character_robot.md](../../sources/papers/disney_olaf_character_robot.md) — 热 CBF 风格项 + 冲击降噪奖励的工程案例

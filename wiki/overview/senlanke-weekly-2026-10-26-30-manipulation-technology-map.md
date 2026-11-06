@@ -9,6 +9,8 @@ related:
   - ../concepts/world-action-models.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
+original:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30_reading_slk57.md
 summary: "senlanke 具身运控lab 10-26–10-30 Manipulation周报：57 条论文条目，每条对应唯一 arXiv 详情节点（新建 31 / 复用 26）。"
 ---
 
@@ -19,6 +21,10 @@ summary: "senlanke 具身运控lab 10-26–10-30 Manipulation周报：57 条论�
 ## 一句话观点
 
 本页只按周报原有分栏（VLA / 通用操作策略；WAM / World Model 与操作预测；在线/离线强化学习与后训练；模仿学习、视觉运动策略与生成式动作策略；双臂操作；灵巧操作；柔性/可变形物体操作；人形机器人上半身操作；长程任务、推理与规划；数据集、预训练、跨本体与硬件平台）列出条目；论文间的横向优劣不在此判断，请按 arXiv 进各详情节点，条目说明来自周报「问题/创新点」与 arXiv 摘要页。
+
+## 一句话定义
+
+本页是 senlanke 具身运控lab 2026-10-26 至 10-30 一周 Manipulation 论文周报的按分栏索引，把 57 个条目对应到仓库中唯一的 arXiv 详情节点。
 
 ## 英文缩写速查
 
@@ -128,6 +134,36 @@ summary: "senlanke 具身运控lab 10-26–10-30 Manipulation周报：57 条论�
 | 7 | [CuraEval（arXiv:2610.38221）](../entities/paper-curaeval.md) | [2610.38221](https://arxiv.org/abs/2610.38221) | 复用 |
 | 8 | [DEX-PHD：面向多模态数据采集的便携式灵巧手持设备](../entities/paper-dex-phd-handheld-data-collection.md) | [2610.35462](https://arxiv.org/abs/2610.35462) | 复用 |
 | 9 | [Tactus：用于自然灵巧操作数据采集的触觉与姿态感知手套](../entities/paper-tactus-tactile-pose-sensing-glove.md) | [2610.39076](https://arxiv.org/abs/2610.39076) | 新建 |
+
+## 为什么重要
+
+- 一周 57 篇论文难以逐篇追踪；按周报分栏索引后，可从 VLA、WAM、RL、模仿学习等主题入口直达详情节点。
+- 周报每条给出「问题 / 创新点」，便于判断某篇论文值不值得进入详情页深读。
+
+## 核心机制
+
+周报的 10 个分栏可看作一张技术地图（以下归纳来自周报原文，横向判断不在此做）：
+
+- **VLA / WAM：** 未来预测多作为训练期辅助监督、推理期可移除（如 PDRVLA、SaiVLA-JEPA、Trace-WAM）；跨本体统一潜在 / 连续动作接口（RynnWorld-Latent、TAPESTRY、CoAWM）。
+- **RL 与生成式策略：** 视觉 RL 的低成本经验（Echo）、进度奖励（Event2Reward）、Flow 策略的任务定制与蒸馏（TOPS、GAR）、安全修正（二值可行性）。
+- **本体与场景：** 双臂、灵巧手、可变形物体、人形上半身，各自对应接触、安全与数据问题。
+- **长程与基础设施：** 任务图 / 进度监测 / 失败恢复，以及数据集、采集设备与端侧延迟评测。
+
+## 工程实践
+
+- 查某个主题的论文：先在「论文索引」对应分栏找条目，再进详情节点看 arXiv 摘要与关联页面。
+- 「新建 / 复用」标记表示详情节点是本周新建还是此前已有；复用节点可能已有更详细的内容。
+- 端侧部署相关可优先看 QbD-VLA（混合精度量化）与 VLA-HWBench（周报称动作生成方式比参数量更能解释延迟差异）。
+
+## 局限
+
+- 条目说明来自周报「问题 / 创新点」摘要，部分条目描述较概括；机构信息为周报所述、未逐条核实。
+- 本页不比较论文间优劣；数值（如成功率提升）均为各论文自报，需回到 arXiv 原文核对。
+
+## 继续阅读
+
+- 主题页：[manipulation](../tasks/manipulation.md)、[vla](../methods/vla.md)、[world-action-models](../concepts/world-action-models.md)。
+- 原文通读归档：[wechat_senlanke_weekly_manipulation_2026-10-26_30_reading_slk57.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30_reading_slk57.md)
 
 ## 关联页面
 

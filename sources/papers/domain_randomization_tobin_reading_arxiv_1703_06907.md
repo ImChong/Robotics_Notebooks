@@ -23,6 +23,7 @@
 ## 对 wiki 的映射
 
 - [`wiki/concepts/sim2real.md`](../../wiki/concepts/sim2real.md)
+- [`wiki/concepts/domain-randomization.md`](../../wiki/concepts/domain-randomization.md)
 
 ## 参考来源
 

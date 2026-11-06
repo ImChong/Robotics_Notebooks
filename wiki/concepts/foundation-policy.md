@@ -47,6 +47,9 @@ sources:
   - ../../sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/blogs/perceptron_isaac_05.md
+original:
+  - ../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md
+  - ../../sources/papers/bfm_survey_reading_arxiv_2506_20487_btm41.md
 summary: "Foundation Policy 指在大规模多任务机器人数据上预训练的通用策略模型，是 VLA 和通用操作策略的抽象母类。"
 ---
 
@@ -192,6 +195,18 @@ flowchart TD
 
 ---
 
+## 核心原理
+
+- **预训练—适配两段式**（RT-2 原文）：先在大规模机器人演示（RT-2 另与网络视觉-语言数据 co-fine-tune）上训练，再用少量任务数据微调或提示适配；动作被离散为 token，与语言 token 共用同一输出空间，使网络知识可迁移到控制。
+- **行为基础模型分支**（BFM 综述）：预训练分 goal-conditioned / intrinsic / forward-backward 三线，适应分微调与层次化两线；详见 [Behavior Foundation Model](./behavior-foundation-model.md)。
+- 推断：「基础策略」是按训练范式划分的抽象类，VLA、通才 BC 策略与 BFM 是其在不同控制层级的实例。
+
+## 工程实践
+
+- 选型先看动作接口：操作侧用 token 化或 flow/扩散动作头的 VLA，人形低层用 BFM / 运动跟踪基础模型，二者常分层串联（见上文 GR00T 与 SONIC 条目）。
+- 对照实验优先选可复现栈（Octo、OpenVLA、π 系），闭源产业样本只作叙事对照。
+- 预训练后需配套 post-training 与真机评测协议，见 [Universal Post-Training for Robotics](./universal-post-training-robotics.md)。
+
 ## 当前局限
 
 1. **数据规模是瓶颈**：RT-1 需要 130k+ 真实演示；数据采集成本极高，异构性大
@@ -228,7 +243,13 @@ flowchart TD
 - [HOST](../entities/paper-host-one-shot-human-video.md) — 开源单视频 one-shot；不是百千小时涌现叙事
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2
 
+## 继续阅读
+- [VLA 方法页](../methods/vla.md)、[Open X-Embodiment](./open-x-embodiment.md)、[Octo](../methods/octo-model.md)、[RT 系列](../methods/robotics-transformer-rt-series.md)
+- [Foundation Policy for Humanoids（Query）](../queries/foundation-policy-for-humanoids.md)
+
 ## 参考来源
+- [rt2_vla_reading_arxiv_2307_15818.md](../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md) — RT-2 原文通读
+- [bfm_survey_reading_arxiv_2506_20487_btm41.md](../../sources/papers/bfm_survey_reading_arxiv_2506_20487_btm41.md) — BFM 综述原文通读
 - [rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
 - [generalist_thousand_hands.md](../../sources/blogs/generalist_thousand_hands.md) — GEN-1 跨末端「千手」博客归档
 - [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — Gemini Robotics 2 全身智能发布归档

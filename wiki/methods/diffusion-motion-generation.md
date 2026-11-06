@@ -19,6 +19,8 @@ related:
   - ../entities/paper-diffsheg.md
   - ../entities/paper-mmhu.md
   - ../entities/paper-cosmi.md
+original:
+  - ../../sources/papers/eth_g1_whole_body_locomotion_reading_arxiv_2604_17335_dm1.md
 summary: "利用扩散模型生成机器人全身运动序列，通过闭环微调解决分布偏移，实现复杂地形下的实时运动规划。"
 ---
 
@@ -29,6 +31,26 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 ## 一句话定义
 
 利用扩散模型的去噪过程预测未来一段时间内的全身运动轨迹，为底层控制器提供具备地形感知能力的高质量参考动作。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| HOI | Human–Object Interaction | 人与物体接触交互的技能场景 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+
+## 为什么重要
+
+- 人形全身控制难以靠奖励塑形获得协调动作，纯跟踪又只能回放固定参考；扩散生成器在线改写参考、RL 跟踪器保证物理可行，是目前较通行的分层折中。
+- ETH G1 论文的仿真对比（500 机器人）：固定参考跟踪 → 在线生成，箱攀成功率均值 0.859→0.987、跨栏 0.805→0.990、上楼梯 0.845→0.997；箱高 80 cm 处 0.230→0.962（原文 Table III）。
+- 多峰建模使同一指令可对应多种可行动作，便于文本、语音、地形等多种条件接入（见下文各路线）。
 
 ## 核心原理
 
@@ -113,23 +135,26 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
   - **收缩时界（Receding-horizon）更新**：异步触发推理。
   - **加速库**：使用 NVIDIA TensorRT 进行模型量化与推理加速。
 
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
-| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
-| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
-| HOI | Human–Object Interaction | 人与物体接触交互的技能场景 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-
 ## 轨迹扩散规划的推理加速（Muninn，RSS 2026）
 
 离线 RL 与构型空间 **轨迹扩散规划器**（如 [Diffuser](https://github.com/jannerm/diffuser)）与上文 **运动生成** 共享「逐步 denoiser」瓶颈。[Muninn](../entities/paper-muninn-trajectory-diffusion-acceleration.md) 提供 **免训练包装层**：probe 稳定性 + 采样器灵敏度 + conformal 预算，在 D4RL / MPD / EDMP 上最高约 **4.6×** 墙钟加速且可证相对全量教师的轨迹偏离界；与 ETH G1 式 **训练期少步/闭环微调** 正交，可叠在已有教师上。
+
+## 工程实践
+
+以下出自 ETH G1 论文（arXiv:2604.17335）的通读（[读档](../../sources/papers/eth_g1_whole_body_locomotion_reading_arxiv_2604_17335_dm1.md)）：
+
+- **数据**：约 5 分钟初始动作经重定向与运动学增广扩到约 1 小时；重定向轨迹先经 DeepMimic 式跟踪策略回放再入库，保证物理可行。
+- **生成器**：MDM 架构，0.5 s（25 帧）视界，条件为朝向向量、高程扫描与过去两帧；训练时对高程与历史状态加扰动。
+- **三阶段**：预训练生成器与跟踪器 → 冻结生成器、仅微调跟踪器（更随机朝向 + 更丰富地形 + 朝向跟踪奖励 + 噪声注入）→ 部署。
+- **部署**：2 步去噪 + TensorRT 约 0.02 s；训练视界 0.5 s，上机每 0.25 s 滚动更新参考；生成器与跟踪器分置 Jetson Thor / Orin；DLIO + Elevation Mapping CuPy 做位姿与地形；被动颈部俯仰用躯干 IMU 补偿。
+- **经验**：微调后的跟踪器起到"运动滤波器"作用，可局部覆盖不安全参考（如绕箱侧向通过）。
+
+## 局限
+
+- **感知依赖**：ETH G1 系统依赖 LiDAR 高程建图，建图质量下降时性能明显恶化（原文 §V）；尚未扩展到 loco-manipulation 与室外。
+- **分布偏移**：生成器与跟踪器若各自离线训练，直接拼接鲁棒性有限，需闭环微调（原文 Fig. 4）。
+- **生成结果不等于可执行**：DiffSHEG、COSMI、MoLingo 等人体/数字人路线产出的是运动学资产，上机仍需重定向与物理跟踪（页内各节已分别注明）。
+- 推断：不同路线的指标（FID、成功率、FPS）定义不同，跨论文数值不宜直接比较。
 
 ## 参考来源
 - [Walk Like This（CoRL 2026）](../../sources/papers/walk_like_this_corl2026.md) — 示例动作风格条件与物理跟踪。
@@ -156,6 +181,12 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [DiffSHEG（arXiv:2401.04747）](../../sources/papers/diffsheg_arxiv_2401_04747.md) — 语音驱动整体 3D 表情+手势联合扩散；UniEG + FOPPAS 实时任意长采样（CVPR 2024）
 - [Diffusion Policy](./diffusion-policy.md) — 扩散策略在操作任务中的应用。
 - [GENMO（统一人体运动估计与生成）](./genmo.md) — 人体运动域的扩散生成代表实现，与机器人控制域的扩散运动生成相互参照（估计 ↔ 生成的双向收益）。
+
+## 继续阅读
+
+- 通用机制：[扩散模型（概念）](../concepts/diffusion-model.md)、[Probability Flow](../formalizations/probability-flow.md)
+- 生成+跟踪的真机范例：[ETH G1](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[PhyGile](../entities/paper-phygile.md)
+- 操作域对照：[Diffusion Policy](./diffusion-policy.md)
 
 ## 关联页面
 - [扩散模型（概念）](../concepts/diffusion-model.md) — 通用扩散机制、调度/采样器与机器人迁移要点

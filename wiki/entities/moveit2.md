@@ -17,6 +17,8 @@ related:
   - ./cad-skills.md
   - ./navigation2.md
   - ../overview/cpp-motion-control-open-source-libraries-map.md
+original:
+  - ../../sources/papers/moveit_reading_arxiv_1404_3785_mv2r.md
 sources:
   - ../../sources/sites/moveit-official-portal.md
   - ../../sources/sites/moveit2-picknik-documentation.md
@@ -133,6 +135,16 @@ flowchart TB
 
 - **文章说法：** C++；BSD；机械臂运动规划（OMPL）、碰撞检测、轨迹插值；偏路径规划，不是底层 S 曲线 OTG
 - **核对结论：** 许可一致。
+
+## 工程实践
+
+> 依据 Coleman 等（arXiv:1404.3785，MoveIt 1 时期）的 Setup Assistant 设计，MoveIt 2 沿用同一思路（推断）。
+
+1. **从 URDF 起步**：先确保 URDF 可用（有 Collada 支持），再用 Setup Assistant 逐步生成自碰撞矩阵、planning group、预设姿态、末端执行器与虚拟/被动关节，输出 SRDF、YAML 与 launch。
+2. **自碰撞矩阵靠随机采样**：对大量随机构型统计碰撞频率后禁用无需检查的链接对；该方法概率性不完备，采样须足够多，改动模型后应重新生成。
+3. **先仿真后硬件**：先在 RViz 的运动规划可视化里验证规划，再接控制器；硬件侧只需暴露关节状态并接受带时间的轨迹，但控制器接入仍需定制，论文问卷也把它列为最大痛点。
+4. **按需换插件**：默认 OMPL / FCL / KDL；追求 IK 速度可换解析 IK（论文称 IKFast 可快至三个数量级），规划器可换 SBPL、CHOMP 等。
+5. **调优靠基准**：用基准框架与参数扫描比较规划器与参数，而不是凭感觉改参。
 
 ## 关联页面
 

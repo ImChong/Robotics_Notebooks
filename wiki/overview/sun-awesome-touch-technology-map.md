@@ -11,6 +11,8 @@ related:
 sources:
   - ../../sources/papers/sun_awesome_touch_catalog.md
   - ../../sources/repos/awesome-touch.md
+original:
+  - ../../sources/papers/awesome_touch_readme_reading_sun254667.md
 ---
 
 # Awesome Touch 技术地图
@@ -161,6 +163,22 @@ sources:
 | 064 | [ViTacWorld: Scaling Visuo-Tactile World Models for Contact-Rich Robot Manipulation](../entities/paper-vitacworld.md) |
 | 065 | [Visuo-Tactile World Models (VT-WM)](../entities/paper-sa-2602-06001-visuo-tactile-world-models-vt-wm.md) |
 
+
+## 核心机制：清单如何组织触觉研究
+
+上游 README 按「触觉接入机器人策略的方式」分组（据 [原文通读](../../sources/papers/awesome_touch_readme_reading_sun254667.md)）：
+
+- **Tactile VLA**：在 VLA 里注入触觉——自适应注入时机、残差表征、触觉–力对齐、快慢双系统、推理期不依赖触觉的蒸馏等。
+- **视触觉世界模型 / Tactile WAM**：预测未来视觉与触觉，WAM 再联合预测动作；README 强调「触觉污染」「预测与执行时序错位」两类问题。
+- **触觉策略学习**：模仿、强化、扩散三条线；清单里 RL 一类仅 1 条，模仿与扩散更密集。
+- **仿真 / 硬件 / 数据集**：为上述方法提供 GPU 触觉仿真、传感器与手套、基准数据。
+- 清单自述的跨工作共识（Key Research Challenges）：模态塌陷、数据稀缺、跨模态表征兼容性、传感器泛化、实时推理（约 60 Hz）。
+
+## 工程实践：怎么用这张地图
+
+1. 先按自己的问题选分组：要给现成 VLA 加触觉看「Unified VTLA」；要预测接触后果看「世界模型 / WAM」；缺数据看「传感器与硬件」「数据集基准」。
+2. 想比较多篇工作时，从本页逐条进入论文页，再顺着论文页的关联概念页继续读（站内入口见 [hub-tactile](hub-tactile.md)）。
+3. 本页是快照：核对原文发现上游已有本页未收录的条目（如 TACO、TouchThinker、TacPAC、HiTac-WAM、FTP-1、WT-UMI、ART-Glove 等），且 2.1 内有重复项；需要最新清单请回上游仓库（推断：后续应增量补页）。
 
 ## 局限与风险
 

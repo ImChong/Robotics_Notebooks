@@ -4,6 +4,8 @@ tags: [evaluation, benchmark, sim2real, simulation, embodied-ai, reproducibility
 status: complete
 updated: 2026-10-17
 summary: "仿真评测可复现性 ↔ 真实世界代表性 取舍概念页：明示仿真基准在可复现性/吞吐/可控性上的优势，为何以牺牲真实接触、感知噪声、长尾分布的代表性为代价，并把这条 gap 讲成「评测结论能否外推到真机」的物理根因；配可复现性 vs 代表性代价表、缩小评测 gap 的三条工程路线与常见误判速查。"
+original:
+  - ../../sources/papers/fidelity_gap_reading_arxiv_2610_12464_simreal_eval.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -21,6 +23,8 @@ related:
 
 # 概念：仿真评测可复现性 ↔ 真实世界代表性取舍（sim↔real 评测 gap）
 
+## 一句话定义
+
 > **一句话**：仿真评测的可复现性、吞吐与可控性几乎都是**用「牺牲真实接触/感知噪声/长尾分布的代表性」换来的**——所以一个仿真榜单越好复现、越干净，它的结论就越可能**外推不到真机**。这条 gap 不是「仿真做得不够真」的工程 bug，而是[评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)里「④ sim↔real 校准层」必须单独存在的物理根因。
 
 ## 英文缩写速查
@@ -31,6 +35,11 @@ related:
 | real-to-sim | Real-to-Simulation | 用真机数据校准/构建仿真，锚定二者相关性 |
 | OOD | Out-of-Distribution | 分布外，部署时相对评测集的分布漂移 |
 | WM | World Model | 世界模型，也可当策略评估器，同样受 gap 约束 |
+
+## 为什么重要
+
+- 选型与迭代常以仿真分数为信号；若可复现性是用代表性换来的，榜单名次可能不能外推到真机，直接影响「该不该上真机、该信哪个榜」。
+- 世界模型被当作策略评估器时同样受约束：[Fidelity Gap](../entities/paper-fidelity-gap-egocentric-video.md) 原文表明，3 万小时数据下手保真度趋近上限，物体交互保真度收敛在远低处，评估结论不能只看视觉指标。
 
 ## 为什么单独立这一页
 
@@ -49,6 +58,14 @@ related:
 | 可自动打分（成功判据程序化） | 真实「做成」的语义模糊与人工判定成分 |
 
 核心结论：**仿真评测越靠左列的优势极致，它的分数就越是「在一个被简化过的世界里」得到的**——[RoboBench](../entities/robo-bench.md) 之所以要专门验证「认知分与下游 VLA 成功率相关」、[GigaWorld-1](../entities/paper-gigaworld-1-policy-evaluation.md) 之所以强调「长时序动作忠实比短时视觉逼真更决定评估质量」，本质上都是在为「上层易测代理指标能否外推到真机结果」这件事补证据。[Fidelity Gap](../entities/paper-fidelity-gap-egocentric-video.md) 给出了同一方向的量化反例：在 LPIPS 等感知质量基本持平时，视频世界模型对被操作物体的结构忠实度（SCS）仍明显落后于手部，30,000 小时数据也未追平；用作仿真任务判定器时，成功判定一致率只有 0.67（改进后 0.81）——视觉指标好看不等于评估结论可信。
+
+## 核心原理
+
+评测 gap 的机制可压成三点（前两点来自上文代价表与 Fidelity Gap 原文，第三点为本页归纳）：
+
+1. **简化换复现**：仿真把接触、噪声、长尾简化掉才得到确定、可并行的评测，被简化的部分正是真机失败的来源。
+2. **聚合指标掩盖局部失真**：Fidelity Gap 把世界模型保真度拆成「手」与「被操作物体」两项，手的结构一致性（SCS）可达约 0.79–0.81 渐近，物体渐近约 0.57（骨架条件化设置）；单一成功率或感知指标会把两者混成一个数。
+3. **难度依赖**（推断）：同一论文在人形仿真中物体 SCS 达 0.70–0.79，作者归因于仿真物体刚性且较大；说明保真度结论取决于评测环境难度，跨环境不可直接横比。
 
 ## 把 gap 讲成「评测结论能否外推」的物理根因
 
@@ -76,6 +93,18 @@ related:
 | 仿真更逼真就一定评得更准 | 视觉逼真 ≠ 动作忠实，评测质量由后者主导 |
 | 评测集和训练同源没关系 | 共享分布=评测集泄漏，排名相关性会虚高失效 |
 
+## 工程实践
+
+- 报告评测结果时同时给出 sim↔real 排名相关性与样本量（如 PRM-as-a-Judge 的 Spearman ρ 区间），不单报仿真绝对分。
+- 评估世界模型时分开度量主体动作与物体交互（如 SCS），并用感知指标（LPIPS）做对照，确认差异不来自画质。
+- 用世界模型做成功判定时，抽样人工复核判定一致率；Fidelity Gap 的 0.67→0.81 仅基于七个任务、42 段、单评审的小样本，应视为方向性证据。
+
+## 局限
+
+- 本页的量化数字多来自单篇论文（Fidelity Gap 的评测集来自单一采集协议、规模有限，作者称其上限估计偏乐观），不宜当作通用常数。
+- 三条缩小 gap 的路线是工程归纳，未经统一实验横向比较。
+- 潜空间预测类世界模型是否同样受限，原文明确留作开放问题。
+
 ## 关联页面
 
 - [运控模型评测指标](./motion-control-policy-evaluation-metrics.md) — 运控模型侧的指标体系，其仿真绝对分同样受本页 gap 约束
@@ -96,3 +125,8 @@ related:
 - [wechat_embodied_ai_lab_robot_training_stack_layers_2026.md](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) — 训练栈分层视角下「仿真作可扩展闭环评测、real-to-sim 相关性」的论述
 - [robo_bench_arxiv_2510_17801.md](../../sources/papers/robo_bench_arxiv_2510_17801.md) — RoboBench 对「认知代理指标↔下游真机成功率相关」的专门验证，佐证上层易测指标外推需证据
 - [fidelity_gap_arxiv_2610_12464.md](../../sources/papers/fidelity_gap_arxiv_2610_12464.md) — 视频世界模型「主体动作 vs 物体交互」保真度分离测量与成功判定一致率
+
+## 继续阅读
+
+- 原文：[What 30,000 Hours of Ego-Centric Video Does Not Teach](https://arxiv.org/abs/2610.12464)（通读归档见 [fidelity_gap_reading_arxiv_2610_12464_simreal_eval.md](../../sources/papers/fidelity_gap_reading_arxiv_2610_12464_simreal_eval.md)）
+- [物理保真度 sim2real gap](../concepts/physics-fidelity-sim2real-gap.md) — 物理层面的 gap 分解

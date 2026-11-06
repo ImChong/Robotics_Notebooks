@@ -23,6 +23,8 @@ related:
   - ./paper-lucida-r2s.md
   - ./paper-sceneagent-real2sim-capture-physics.md
   - ./paper-distscene.md
+original:
+  - ../../sources/papers/simfoundry_reading_arxiv_2606_28276_sf1.md
 sources:
   - ../../sources/papers/simfoundry_arxiv_2606_28276.md
   - ../../sources/sites/nvidia-research-simfoundry.md
@@ -31,6 +33,8 @@ summary: "SimFoundry（arXiv:2606.28276，NVIDIA GEAR）从单段真机视频模
 ---
 
 # SimFoundry（Modular Real2Sim Scene Generation for Policy Learning and Evaluation）
+
+## 一句话定义
 
 **SimFoundry** 是 NVIDIA [GEAR Lab](./nvidia-gear-lab.md) 等团队的 **Real2Sim→Sim2Real 闭环系统**（arXiv:2606.28276，2026-06；[官方仓](https://github.com/NVlabs/SimFoundry)）：输入 **单段真实场景 RGB 视频**，全自动产出 **可物理交互的仿真场景**（数字孪生），并沿 **物体实例、空间布局、任务规格** 三轴扩展 **digital cousins**（保 affordance 的语义变体）。同一套环境既用于 **已有真机策略的 real-to-sim 评测**，也用于 **纯仿真演示训练策略并零样本部署真机**。开源默认导出 **[OmniGibson](./behavior-1k.md)** 场景 JSON，而不是论文叙述里的 Isaac Lab。
 
@@ -234,6 +238,12 @@ sequenceDiagram
 - [Instant NuRec](./paper-instant-nurec.md) — 前向 3DGS 驾驶世界；闭环看策略排序而非 Pearson
 - [HKTex](./paper-hktex-heat-kernel-textures.md) — sim-ready 物体 mesh 的无 UV 紧凑纹理与 PBR 外观层（ECCV 2026 Best Paper）
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ④ sim↔real 校准层：real-to-sim 策略评测（均值 Pearson 0.911）
+
+## 关联页面
+
+- 上游路线：[Sim2Real](../concepts/sim2real.md)、[仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)；运行层 [BEHAVIOR-1K / OmniGibson](./behavior-1k.md)。
+- 同类 Real2Sim 对照：[Agentic Real2Sim](./paper-agentic-real2sim.md)、[Lucida](./paper-lucida-r2s.md)、[SceneAgent](./paper-sceneagent-real2sim-capture-physics.md)、[CRISP](../methods/crisp-real2sim.md)。
+- 下游策略：[VLA](../methods/vla.md)、[GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)。
 
 ## 参考来源
 

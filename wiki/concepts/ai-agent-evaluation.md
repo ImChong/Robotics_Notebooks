@@ -19,6 +19,8 @@ related:
   - ../entities/agentic-design-patterns.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/real-robot-policy-autoresearch-harness.md
+original:
+  - ../../sources/blogs/anthropic_demystifying_evals_reading_ev3a.md
 sources:
   - ../../sources/papers/kernel_generation_benchmarks_2025_2026.md
   - ../../sources/blogs/anthropic_demystifying_evals_ai_agents_2026-01-09.md
@@ -170,10 +172,33 @@ flowchart TD
 
 工程上先固定硬件、精度、输入形状与计时方式，再同时检查编译、数值正确性与延迟；软件基线加速并不自动说明已接近硬件极限。SOL / HAP 是论文中的分析界限，实际表现仍受实现和测量条件影响。这些评测可借鉴于机器人推理或仿真算子，但论文摘要未直接验证机器人系统端到端收益。
 
+## 核心原理
+
+Agent 评测的底层逻辑（出自 Anthropic 工程博文通读）：被评对象是 **harness + 模型** 的组合；判分对象优先是 **outcome**（环境终态，例如数据库里是否真有预订记录），而非 agent 自述；因输出非确定，需多 trial 并用 pass@k / pass^k 刻画「至少一次」与「每次都行」。详细术语、grader 与路线图见上文「核心结构」。
+
+## 工程实践
+
+- 起步 **20–50 条真实失败** 即可，来源于手工发布检查与 bug / support 队列；每题配 **reference solution** 以证明可解、grader 配置正确。
+- 每个 trial 从 **干净隔离环境** 起跑，避免共享状态（原文观察到 Claude 读取前序 trial 的 git 历史而占便宜）。
+- Grader 优先确定性，必要时 LLM judge（给「Unknown」出口、逐维度独立评、与人标定），人工仅作校准；多组件任务给部分得分。
+- 定期 **读 transcript** 核对失败是否公平；监控饱和；专职团队维护基础设施，产品与领域人员贡献 task。
+
+## 局限
+
+- 原文自述该领域仍在快速演进，长任务、多 agent 协作与主观任务需要新方法。
+- 自动化 eval 前期投入大、需随产品与模型维护以防 drift，且与真实使用不符时会造成虚假信心；须与生产监控、A/B、用户反馈、人工审阅组合使用。
+- 公开 benchmark 自身可能有坏题或 grader 偏差（CORE-Bench 修正后分数大幅变化），分数不应不读 transcript 就采信。
+- 本页的机器人迁移（仿真、真机 autoresearch）为本库推断，原文并未讨论机器人场景。
+
+## 关联页面
+
+见下文「与其他页面的关系」：[仿真评测基础设施](./simulation-evaluation-infrastructure.md)、[RLE-Bench](../entities/rle-bench.md)、[ENPIRE](../methods/enpire.md)、[anthropic-claude-api-skill](../entities/anthropic-claude-api-skill.md)。
+
 ## 参考来源
 
 - [算子生成 benchmark 论文归档](../../sources/papers/kernel_generation_benchmarks_2025_2026.md)
 
 - [Artificial Analysis 平台归档](../../sources/sites/artificial-analysis.md)
+- [Demystifying evals 通读归档](../../sources/blogs/anthropic_demystifying_evals_reading_ev3a.md)
 - [Demystifying evals 归档](../../sources/blogs/anthropic_demystifying_evals_ai_agents_2026-01-09.md)
 - [Eval 自动化与 hillclimb 归档](../../sources/blogs/claude_dev_automating_eval_hillclimbing_2026-09-28.md)

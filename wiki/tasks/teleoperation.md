@@ -4,6 +4,8 @@ tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
 updated: 2026-10-26
+original:
+  - ../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md
 sources:
   - ../../sources/papers/human-like-redundancy-resolution.md
   - ../../sources/sites/human-like-redundancy.md
@@ -60,6 +62,8 @@ sources:
 
 # Teleoperation（遥操作）
 
+## 一句话定义
+
 **一句话定义**：操作员通过外部设备实时远程控制机器人完成任务，同时采集高质量示范数据用于后续策略学习。
 
 ## 英文缩写速查
@@ -81,6 +85,17 @@ sources:
 - 人类示范数据 + 模仿学习（BC/ACT/Diffusion Policy）已在多个任务上超过纯 RL
 
 > "You can't imitate what you don't have." — 数据飞轮的起点是高质量遥操作系统。
+
+## 核心原理
+
+> 本节依据 ALOHA / ACT 原文通读（[归档](../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md)），代表"遥操作采集 → 策略学习"这条最小闭环；XR、外骨骼、UMI 等其他接口见下文各节。
+
+- **主从关节空间映射**：操作员反向驱动小一号主臂，从臂关节同步，免去 IK，在奇异点附近仍高带宽、低延迟，主臂自重还能抑制抖动；代价是要求主从运动学相似（推断：与下文"运动映射"挑战中任务空间映射的取舍互补）。
+- **高频是质量前提**：ALOHA 以 50 Hz 遥操作并记录；同硬件降到 5 Hz，用户研究中完成时间增加 62%（p<0.001）。
+- **记录主臂关节位置作动作**：夹持力由主从关节差经底层 PID 隐式给出，因此用主臂而非从臂位置做标签。
+- **动作分块 + 时间集成**：策略一次预测 k 步（原文 k=100），有效时域缩小 k 倍以缓解复合误差，并通过对重叠预测按指数权重平均来平滑执行。
+- **CVAE 建模人类示范随机性**：人类示范有多模态与停顿；原文消融显示人类示范下去掉 CVAE 成功率从 35.3% 降到 2%。
+- **数据量级**：每任务 50 条（约 10–20 分钟）示范即可学到 80–90% 成功率的精细双臂技能（Thread Velcro 仅 20%）。
 
 ## 关键挑战
 
@@ -246,6 +261,13 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 | 操作员上手时间 | 新操作员达到可接受质量所需的训练时间 |
 | 端到端延迟 | 操作员输入到机器人执行的延迟 |
 | 示范数据效率 | 用多少条示范可以训练出成功率 ≥ X% 的策略 |
+
+## 局限
+
+- **硬件**：低成本主从臂 + 平行夹爪做不了需要多指协同、大力矩或指甲的任务（如儿童锁药瓶、拧开密封水瓶、撕胶带边）；缺灵巧手，无法复现手内旋转（ALOHA 原文附录 F、A）。
+- **学习**：感知困难（透明、低对比、细小物体）与数据不足时失败，如拆糖纸、桌面平放小袋；Thread Velcro 成功率仅 20%，主要因扎带位置难以从图像判定（ALOHA 原文 §V-C、附录 F）。
+- **证据范围**：上述数字来自单一研究组的单一平台，真机多为 1 个种子 25 次评估；本页其他系统（XR、UMI、人形全身）的局限见各自来源，未逐篇核对（推断）。
+- **采集 ≠ 部署**：遥操作示范是专家演示，人形干预接管数据的偏差见上文挑战 4。
 
 ## 参考来源
 

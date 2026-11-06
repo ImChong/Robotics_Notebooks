@@ -4,6 +4,8 @@ tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
 updated: 2026-09-18
 summary: "人形 Loco-Manip 161 篇 · 01 运控基座与通用全身跟踪（31 篇）— 底层身体控制、运动跟踪、抗扰动与通用动作执行。"
+original:
+  - ../../sources/papers/beyondmimic_reading_arxiv_2508_08241.md
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
 sources:
@@ -15,6 +17,10 @@ sources:
 
 > **分类页**：**01 运控基座与通用全身跟踪**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
+## 一句话定义
+
+161 篇人形 Loco-Manip 地图中的第 01 类分类页：收录 31 篇关于运控基座、运动跟踪、抗扰动与通用全身动作执行的工作，是上层操作与任务策略依赖的“身体底座”。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -24,6 +30,10 @@ sources:
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态策略 |
 | WM | World Model | 学习环境动态以供想象/规划的世界模型 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
+
+## 为什么重要
+
+上层 VLA、遥操作与任务规划最终都要落到全身关节指令上；底座的跟踪精度、抗扰动能力与动作覆盖面决定了上层能调用多少“动作原语”。本组以全身运动跟踪为主线（如 BeyondMimic、GMT、HOVER、TWIST 系列），是其它 Loco-Manip 分类的共同依赖。
 
 ## 核心问题
 
@@ -64,6 +74,24 @@ sources:
 | 029 | 学习人对人的实时全身远程操作 | [paper-loco-manip-161-029-n029](../entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) |
 | 030 | 跟踪任何干扰下的任何动作 | [paper-loco-manip-161-030-n030](../methods/any2track.md) |
 | 031 | 鲁棒且通用的人形运动跟踪 | [paper-loco-manip-161-031-n031](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) |
+
+## 方法栈与代表思路
+
+- **参考运动重定向 → 跟踪策略（RL）**：把人类动作重定向到人形，再用 RL 训练跟踪策略（见 018 Retargeting、017 OmniRetarget、004 BeyondMimic）。
+- **以 BeyondMimic 为例（据原文通读归档）**：锚点相对的紧凑跟踪 MDP，奖励仅含位置/朝向/速度项与 3 项正则，用共享超参 PPO 训练；再蒸馏为潜空间扩散模型，测试时用 guidance 完成摇杆、航点等任务。
+- **通用/统一跟踪与遥操作**：HOVER、GMT、TWIST/TWIST2、OmniH2O 等强调单一策略覆盖多种输入与动作（推断：具体设置以各论文页为准）。
+
+## 工程实践
+
+- 跟踪类策略的 PD 增益与动作尺度应与电机反射惯量（armature）一致，BeyondMimic 消融显示 armature 置零会导致过摆与自碰。
+- 对难动作段做自适应起始采样，可显著加速训练收敛（同上原文消融）。
+- 观测中加入历史帧并非总有益（BeyondMimic 消融中变差），需逐任务验证。
+
+## 局限
+
+- 本页是分类索引，未逐篇通读 31 篇原文；原文通读仅覆盖 BeyondMimic（见 frontmatter `original`）。
+- 论文间设定（机型、数据、评测）不统一，条目之间不宜直接比较数值。
+- BeyondMimic 自述局限：状态估计误差会传入生成轨迹，预测视野仅 0.64 s，不足以长程规划。
 
 ## 关联页面
 

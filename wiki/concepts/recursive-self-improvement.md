@@ -38,6 +38,8 @@ sources:
   - ../../sources/repos/awesome-embodied-self-improvement.md
   - ../../sources/papers/harness2_arxiv_2610_14224.md
   - ../../sources/papers/duplexagent_rsi_arxiv_2610_11299.md
+original:
+  - ../../sources/sites/anthropic_rsi_when_ai_builds_itself_reading_rsi7k.md
 summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自己的后继者。Anthropic Institute（2026）用公开时程与内部工程数据论证：我们尚未到达、也非必然，但 AI 已在加速 AI 研发；完全 RSI 若出现，具身智能（机器人）被预期会跟随。判断/选题仍是人侧瓶颈。"
 ---
 

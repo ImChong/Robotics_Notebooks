@@ -4,6 +4,8 @@ tags: [contact, force-control, impedance, manipulation, tactile, wrench, contact
 status: complete
 updated: 2026-09-15
 summary: "接触力旋量闭环知识链：把分散的接触感知/估计 → 力旋量表示 → 阻抗/导纳/混合力位控制 → 接触丰富操作策略串成一条端到端决策链，逐层说明各自如何贡献操作稳定性，以及带宽/刚度/时延的取舍与典型失败模式。"
+original:
+  - ../../sources/papers/modern_robotics_ch11_force_control_reading_cwcl.md
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
@@ -128,6 +130,7 @@ flowchart TD
 
 ## 参考来源
 
+- [sources/papers/modern_robotics_ch11_force_control_reading_cwcl.md](../../sources/papers/modern_robotics_ch11_force_control_reading_cwcl.md) — Modern Robotics 第 11 章力控/混合力位/阻抗导纳通读（原文）
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力、摩擦锥、力位约束基础
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触序列组织与接触约束规划
 - [sources/papers/chord_nvidia_video_to_data_2026.md](../../sources/papers/chord_nvidia_video_to_data_2026.md) — 接触力旋量引导灵巧操作（视频蒸馏接触提示）

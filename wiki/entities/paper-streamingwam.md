@@ -9,7 +9,7 @@ tags:
   - streaming
   - manipulation
 status: complete
-updated: 2026-10-14
+updated: 2026-11-06
 arxiv: "2610.15585"
 project: https://renshaojie233.github.io/StreamingWAM/
 code: https://github.com/renshaojie233/StreamingWAM

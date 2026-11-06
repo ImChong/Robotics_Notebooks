@@ -34,6 +34,8 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/repos/robot-descriptions-py.md
+original:
+  - ../../sources/repos/humanoid_motion_intelligence_readme_reading_hmi3.md
 summary: "具身智能研究室维护的人形运动智能 GitHub 知识库：六条技术路线 + 191 篇论文解读 + 586 个开源项目主表 + 40 个数据集 + 176 家公司主表；与站内收录的微信策展同源，作外部总入口而非镜像。"
 ---
 
@@ -123,6 +125,19 @@ flowchart TB
 | 国内机构开源全景（76 家 · 424 项） | [微信全景 2026-09-06](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md) → [五层技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) + [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) |
 | 产业信号 / 求职面经 | [`公司与产业/`](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E5%85%AC%E5%8F%B8%E4%B8%8E%E4%BA%A7%E4%B8%9A)（176 家）、[`求职与岗位/`](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E6%B1%82%E8%81%8C%E4%B8%8E%E5%B2%97%E4%BD%8D) |
 | RL 工具分层选型 | [`强化学习开发者必备开源资料/`](https://github.com/RealXiaoze/humanoid-motion-intelligence/tree/main/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%BC%80%E5%8F%91%E8%80%85%E5%BF%85%E5%A4%87%E5%BC%80%E6%BA%90%E8%B5%84%E6%96%99/README.md) |
+
+## 核心机制
+
+上游 README 的组织方式（2026-11 通读 main 分支根 README）：先给 10 个资料入口，再按「研究问题」而非算法标签组织技术路线，每条路线配「核心思路 + 代表项目」。
+
+| 层次 | README 做法 |
+|------|-------------|
+| 资料导航 | 论文解读、技术与研究、数据集、公司主表、公司开源、仿真训练工具、工程部署、书籍课程、求职、全部目录共 10 个入口 |
+| 研究方向 | 当前 README 为 **五大方向**：动作数据与跨本体迁移、运动控制与全身行为、物体交互与全身操作、世界模型与通用动作策略、任务规划与长程自主执行（各 4–6 条路线） |
+| 横向主题 | 感知与状态估计、适应与持续改进、Sim2Real、安全与评测不单列方向，集中收在「工程与实机部署」 |
+| 使用方式 | 可克隆后交给能读文件的 Agent 检索，结合自身本体与实验条件提问；引用约定见上游 AGENTS.md |
+
+**口径差异（推断）：** 本页上文的「六条路线 · 191 篇」是 2026-09-10 的快照；2026-11 的 README 已重组为五大方向，且论文编号已到 P5xx。引用具体数字前以上游最新 README 为准。
 
 ## 工程实践
 

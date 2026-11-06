@@ -8,6 +8,8 @@ related:
   - ../entities/awesome-real2sim2real.md
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
+original:
+  - ../../sources/repos/awesome_real2sim2real_readme_reading_r2m1.md
 sources:
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
   - ../../sources/repos/awesome-real2sim2real.md
@@ -159,6 +161,21 @@ sources:
 | 062 | [A Survey of Sim-to-Real Methods in RL: Progress, Prospects and Challenges with Foundation ](../entities/paper-survey-sim2real-rl-foundation-models.md) |
 | 063 | [The Reality Gap in Robotics: Challenges, Solutions, and Best Practices](../entities/paper-sa-2510-20808-the-reality-gap-in-robotics-challenges-solutions.md) |
 
+
+## 核心原理
+
+上游清单把迁移问题拆成三段，本页分组沿用这条主线（依据上游 README 通读）：
+
+- **Sim-to-Real**：仿真里训练、真机部署。分 RL 迁移、零样本、域随机化与适配、基础模型增强四类。
+- **Real-to-Sim**：用真机数据（视频、交互）重建可仿真的场景与物理参数，分视频重建与操作交互两类。
+- **Real2Sim2Real 闭环**：先重建再训练再部署，分 Gaussian Splatting 路线与通用框架 / 流水线。
+- 上游列出的通用难点：现实差距、高保真仿真成本、泛化、数据稀缺；闭环方向的开放问题是视觉与动力学双重差距和环路一致性。
+
+## 工程实践
+
+- 选型可按上游三段思路：已有仿真器想上真机，先看 Sim-to-Real 的 DR 与适配；缺少场景或资产，看 Real-to-Sim；需要视觉与动力学一起对齐，看闭环分组。
+- 一条论文可能在清单里出现在多个分组（如 DISCOVERSE、SynthDrive 重复出现），检索时以论文页为准。
+- 清单只给要点；落地前请进入单篇论文页和原文核对设置与指标（推断：清单摘要不含实验细节）。
 
 ## 局限与风险
 

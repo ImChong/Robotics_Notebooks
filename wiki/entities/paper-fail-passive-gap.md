@@ -10,7 +10,7 @@ tags:
   - unitree-g1
   - siemens
 status: complete
-updated: 2026-09-15
+updated: 2026-11-06
 arxiv: "2608.02809"
 related:
   - ../concepts/robot-safety-state-machine.md

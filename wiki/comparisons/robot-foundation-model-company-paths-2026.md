@@ -22,6 +22,9 @@ related:
   - ../entities/beingbeyond.md
   - ../entities/rhoda-ai.md
   - ../entities/motphys.md
+original:
+  - ../../sources/papers/gr00t_n1_reading_arxiv_2503_14734_company_paths.md
+  - ../../sources/papers/pi05_reading_arxiv_2504_16054.md
 sources:
   - ../../sources/sites/motphys.md
   - ../../sources/sites/rhoda-ai.md
@@ -55,6 +58,10 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 | WBC | Whole-Body Control | 全身运动与接触约束的协调控制 |
 | RTC | Real-Time Action Chunking | 在执行中衔接新旧动作块以减小推理停顿 |
 | RL | Reinforcement Learning | 用交互反馈优化策略 |
+
+## 为什么重要
+
+各家公司的发布材料用词相近（VLA、世界模型、全身控制），但训练目标、动作接口和开放范围差别很大。若不先按阅读视角拆开，容易把演示当成可复现资产，或把不同本体、任务的成功率放在一起排名。本页给出一个统一的追问框架，帮助判断「某条路线究竟公开了什么、哪一层靠什么闭环」。
 
 ## 30 秒读懂
 
@@ -237,6 +244,21 @@ flowchart LR
 - **世界预测如何帮助执行：** [1X World Model 归档](../../sources/sites/1x-world-model-redwood.md) → [WAM 概念](../concepts/world-action-models.md) → [WAM 纵深](../../roadmap/depth-wam.md)；再比 Galbot / Galaxea 的最新发布。
 - **人形全身落地：** [Light-O1](../entities/light-o1.md) → [具身三层控制架构](../concepts/embodied-three-layer-control-architecture.md) → [全身运控技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)；对照 Figure Helix 和 GR00T。
 - **动手复现：** 先用上方“开放程度速览”筛选，再按 [VLA 开源复现谱系](../overview/vla-open-source-repro-landscape-2025.md) 选与硬件匹配的项目。
+
+## 核心机制：两篇原文给出的路线参照
+
+下面两篇一手论文已通读（见 frontmatter `original:`），用来校准上文矩阵里「VLA」与「大小脑接口」两列的具体含义；其余公司的结论以各自官网归档为准。
+
+- **GR00T N1（NVIDIA，[通读归档](../../sources/papers/gr00t_n1_reading_arxiv_2503_14734_company_paths.md)）**：System 2（Eagle-2 VLM，10Hz）+ System 1（DiT flow-matching 动作头，动作块长 16）联合训练；用「数据金字塔」把网络与人视频、仿真与神经生成视频、真机遥操作放进同一训练，无动作数据靠潜动作与逆动力学伪标签接入。2B 检查点、数据与仿真基准公开；真机验证限于 Fourier GR-1 的短时程桌面双臂任务，论文自述长时程 loco-manipulation 待做。
+- **π0.5（Physical Intelligence，[通读归档](../../sources/papers/pi05_reading_arxiv_2504_16054.md)）**：在 π0 上以异构数据协同训练，同一模型先预测子任务再输出动作块，在未见过的真实家庭里完成 10–15 分钟的清洁整理。
+- **对照读法（推断）**：两者都是「VLM 骨干 + 流匹配动作头」的 VLA，但数据策略不同：GR00T 强调跨本体与合成数据金字塔，π0.5 强调移动操作与多源协同训练下的开放环境泛化。这与上文「一家公司可同时出现在多列」一致，也说明「有模型名」不等于「可复现」——GR00T N1 论文明确列出开放资产，而后续版本需另行核查。
+
+## 工程实践
+
+- **复现前先查四项**：代码、权重、训练数据、真机接口是否公开；用「开放程度速览」表逐项勾选，不以公司有 GitHub 账号推断开源。
+- **按动作接口选对照对象**：先问输出是关节目标、末端位姿、潜动作还是高层指令，以及各层频率（如 GR00T N1 论文中的 10Hz 语言层与高频动作头），再比较不同公司。
+- **数据与评测不可混比**：GR00T N1 的成功率来自自建 GR-1 基准与 10 次试验的小样本，π0.5 来自家庭泛化评测；任务、本体、试验数不同，只能作路线参照（呼应「不能排名」）。
+- **引用日期与归属**：公司成立时间、发布日期以官网或可核查媒体为准，见[公司日期审计](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)。
 
 ## 局限与风险
 

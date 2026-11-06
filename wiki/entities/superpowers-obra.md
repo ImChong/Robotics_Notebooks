@@ -28,6 +28,8 @@ related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
+original:
+  - ../../sources/repos/obra_superpowers_readme_reading_spw3.md
 sources:
   - ../../sources/repos/obra-superpowers.md
   - ../../sources/blogs/fsck_superpowers_announcement_2025-10-09.md
@@ -84,6 +86,19 @@ flowchart TD
   H --> I[requesting-code-review]
   I --> J[finishing-a-development-branch\nPR / 合并 / 清理]
 ```
+
+## 流程总览（README 七步）
+
+`brainstorming` → `using-git-worktrees` → `writing-plans` → `subagent-driven-development` / `executing-plans` → `test-driven-development` → `requesting-code-review`（Critical 级问题阻断）→ `finishing-a-development-branch`；各步自动触发，图见上文「流程总览（概念级）」。
+
+## 工程实践
+
+以下依据上游 README 通读归纳（推断处已标注）：
+
+- **执行模式取舍：** `subagent-driven-development` 每任务一个新子代理并逐任务评审，最彻底；`executing-plans` 在当前会话内联执行、末尾整分支评审一次，最省 token。
+- **计划粒度：** `writing-plans` 要求 2-5 分钟的小任务，含精确文件路径、完整代码与验证步骤；README 称计划需让"缺乏项目背景的初级工程师"也能照做。
+- **出问题时：** 让代理调用 `diagnosing-superpowers`，读取会话转录并给出带证据的报告；多 harness 需分别安装，Hermes 等无压缩后钩子的环境长会话可能丢失启动引导。
+- **（推断）用于机器人仓库：** 仿真/硬件相关测试往往慢或需设备，可先把 TDD 的 RED/GREEN 落在纯逻辑与单元层，再在计划中显式写出集成验证步骤。
 
 ## 常见误区或局限
 

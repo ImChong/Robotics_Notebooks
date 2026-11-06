@@ -4,6 +4,8 @@ tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
 updated: 2026-10-29
+original:
+  - ../../sources/papers/humanoid_loco_manipulation_survey_reading_arxiv_2501_02116.md
 sources:
   - ../../sources/papers/locomanilab_arxiv_2610_30876.md
   - ../../sources/sites/locomanilab-project.md
@@ -112,6 +114,12 @@ sources:
 | MPC | Model Predictive Control | 滚动优化质心/接触的经典分层路线 |
 | HLC | High-Level Control | 给出末端或技能目标的上层模块 |
 | LLC | Low-Level Control | 跟踪全身参考或力矩的底层策略 |
+
+## 为什么重要
+
+- 人形/足式机器人要进入家庭、工厂、仓储等场景，必须能在移动中操作物体；行走与操作被拆开处理（行走时上身固定、操作时下身不动）是早期框架的做法，限制了任务范围（综述 arXiv:2501.02116 §II）。
+- 人形重心高、支撑区小，上肢运动与外部物体载荷会直接扰动平衡，因此这是人形从实验室走向通用场景的关键瓶颈之一。
+- 类人形态可利用人类视频、动捕等数据获得技能，使 loco-manipulation 成为连接 VLA、生成模型与全身控制的汇合点。
 
 ## 全身协调流程总览
 
@@ -346,6 +354,22 @@ flowchart TD
 #### 共享 3D 地图的导航–操作联合路点链（3D-IC · OVMM 规划）
 - **核心**：面向 **开放词汇移动操作（OVMM）**，在 **共享 3D 特征图** 上为导航与操作生成 **阶段对齐交互路点**，串联为 **候选交互链**；**分层策略** 用 **VLM 路点级可行性** + **转移代价** 选链，**下一路点执行 + 观测重规划** 闭环。
 - **代表作**：[3D-IC](../entities/paper-3d-ic-joint-navigation-manipulation-planning.md) (ICT CAS / UCAS, 2026, ICML) — 仿真与 **Stretch 3** 真机；相对分阶段 OVMM 提升 **任务成功率与轨迹效率**；与 [REALM](../entities/paper-realm-last-3-meter-vln-grounding.md) 等同平台、互补 **VLN 末段接地** 问题。
+
+## 工程实践
+
+- **分层优先：** 模型方法（简化质心 MPC + 任务空间 WBC）运动精度高，RL 鲁棒性强，IL 技能多样性高；综述（§IX-A）认为三者互补，工程上常见 MPC/RL 分层或「高层规划 + 低层跟踪」。
+- **物体处理：** 手持物体可建模为外部 wrench，或并入统一机器人-物体动力学（综述 §V、§VI）。
+- **Sim2real：** 依赖域随机化、系统辨识与域适应；仿真接触建模（MuJoCo 软接触、PhysX 摩擦锥）仍有差距（§VII）。
+- **数据入口：** 遥操作、动捕、人类视频、合成演示均需处理形态差距与重定向，详见上文「数据入口」小节。
+- **算力：** 板载算力与推理延迟决定了常采用云端/高层大模型 + 板载低层控制的分层部署（§VIII）。
+
+## 局限
+
+- 纯 RL 在多数人形 loco-manipulation 任务上难以直接成功；VLA 在人形全身技能上的有效性尚未被令人信服地证明（综述 §VII、§IX-A）。
+- 多接触规划存在接触模式组合爆炸，CITO 尚难做到实时（§IV）。
+- 缺少统一基准，文献性能多为个案、难以数值比较；数据稀缺。
+- 硬件：电池续航（约 2-4 小时）、执行器发热与功率密度限制长时间作业（§IX-B）。
+- 本页大量 2025-2026 新工作条目来自各自论文归档，未逐篇通读；上述综述结论为通读综述所得，对新方法的优劣不作外推。
 
 ## 重点应用领域
 

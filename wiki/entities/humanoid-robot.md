@@ -36,6 +36,8 @@ related:
   - ../overview/robot-open-source-wechat-issue02-curator.md
   - ../overview/humanoid-eight-capabilities-technology-map.md
   - ../queries/actuator-drive-chain-selection-loop.md
+original:
+  - ../../sources/papers/humanoid_loco_manipulation_survey_reading_arxiv_2501_02116.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/repos/humannet.md
@@ -72,6 +74,22 @@ summary: "人形机器人是具有双足步行能力和类人形态（躯干 + �
 | FastDDS | Fast Data Distribution Service | ROS 2 默认 DDS 实现，影响控制延迟 |
 | HAL | Hardware Abstraction Layer | 屏蔽不同机型的底层驱动差异 |
 | MuJoCo | Multi-Joint dynamics with Contact | 接触丰富动力学仿真与分析 |
+
+## 为什么重要
+
+- 类人形态适合在为人设计的环境中工作，并能复用人类数据（动捕、互联网视频）训练，被认为是通向具身智能的快速路径（综述 arXiv:2501.02116 §I）。
+- 它同时汇集了高自由度、非稳定平衡与接触丰富三类难题，是检验全身控制、sim-to-real、模仿学习与基础模型能否落地的综合试金石。
+- 本页是人形硬件、控制、数据与各厂商平台页的枢纽入口。
+
+## 核心原理
+
+综述（arXiv:2501.02116）把人形 loco-manipulation 的方法栈分为两大范式，并强调二者互补：
+
+- **模型方法**：多接触规划 → MPC（简化/质心/全身模型的保真度–算力折中）→ WBC（求解瞬时逆动力学 QP）。人形欠驱动，平衡与操作都依赖接触。
+- **学习方法**：RL（多用 PPO 在并行仿真训练，依赖域随机化 / 系统辨识处理 sim-to-real）、IL（遥操作、动捕、人类视频，需重定向）、混合方法（教师-学生、参考轨迹跟踪或增广）以及基础模型 / VLA（目前人形 loco-manipulation 的 VLA 多止于仿真）。
+- 对比结论：RL 鲁棒、IL 多样、模型方法运动精度高；VLA 的泛化潜力尚待验证。
+
+上文"整体开发流程"是工程视角的同一闭环展开。
 
 ## 核心特征
 
@@ -146,6 +164,18 @@ flowchart TD
 - **参考解剖（非仿真资产）**：[Human Atlas](./human-atlas.md) — BodyParts3D 浏览器 3D atlas，理解人体系统/器官命名与 workspace 讨论
 - **数据集**：Open X-Embodied, Droid；互联网级人中心视频语料见 [HumanNet](./humannet.md)；产业侧人体运动数据供应商例见 [MotionCode](./motioncode.md)（官网宣称对接仿真与 DCC 管线，需单独核实授权与格式）
 
+## 工程实践
+
+- 综述（§IX-B）提示的硬件取舍：QDD 执行器（减速比 < 10:1）可反驱、力控带宽高，但大电流带来发热；把质量集中到躯干（MIT Humanoid 约 75%）可降低腿部惯量，代价是四杆或带传动限制关节范围、增加维护。
+- 仿真侧：域随机化范围需要调参（过大学不会、过小迁不过去）；MuJoCo 软接触与 PhysX 摩擦锥近似仍留有 sim-to-real 差距。
+- 部署侧：基础模型板载推理不可行，常用"云端低频高层 + 板载高频低层控制"分层（均见综述 §VII、§VIII）。
+
+## 局限
+
+- 综述指出：人形 COT 约 0.7 以上，远高于人类约 0.2；电池限制续航（Apollo 约 4 小时，Unitree G1 约 2 小时），实验室仍多系绳供电。
+- 人形 loco-manipulation 缺乏统一基准，学习方法的多数结果仍停留在仿真，且成本、法规与安全是落地障碍。
+- 触觉（足底与全身）和复杂接触的实时推理仍是开放问题。
+
 ## 关联页面
 - [主流人形机器人硬件对比](../queries/hardware-comparison.md)
 - [Locomotion 任务](../tasks/locomotion.md)
@@ -189,3 +219,9 @@ flowchart TD
 - [humannet.md](../../sources/papers/humannet.md) — 大规模人中心视频语料（与人形数据飞轮对照）
 - [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
 - [notable-commercial-robot-platforms](../../sources/repos/notable-commercial-robot-platforms.md) — 市面知名平台官网索引（2026-05）
+
+## 继续阅读
+
+- [Humanoid Loco-Manipulation 综述（论文页）](./paper-humanoid-loco-manipulation-survey.md) — 本页"核心原理"所依据综述的 wiki 条目。
+- [全身运动控制](../concepts/whole-body-control.md)、[Loco-Manipulation](../tasks/loco-manipulation.md) — 控制与任务侧深入。
+- 原文：<https://arxiv.org/abs/2501.02116>；通读归档见 [humanoid_loco_manipulation_survey_reading_arxiv_2501_02116.md](../../sources/papers/humanoid_loco_manipulation_survey_reading_arxiv_2501_02116.md)。

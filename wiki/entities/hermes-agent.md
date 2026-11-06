@@ -33,6 +33,8 @@ sources:
   - ../../sources/repos/nousresearch_hermes_agent.md
   - ../../sources/sites/hermes-agent-nousresearch-docs.md
   - ../../sources/sites/modelcontextprotocol-io.md
+original:
+  - ../../sources/repos/hermes_agent_reading_readme_arch_h1.md
 summary: "Hermes Agent（NousResearch）是 MIT 开源的常驻自主代理运行时：单一 AIAgent 服务 CLI、20+ 消息网关与 ACP；SQLite+FTS5 会话、记忆/技能自举闭环与 Honcho 用户建模；70+ 工具、七类终端沙箱与 MCP 扩展；内置 cron 与子代理委托，并支持 ShareGPT 轨迹导出与 Atropos RL 研究管线。"
 tags: [llm-agents, coding-agents, agent-infrastructure, skills, mcp, persistent-memory, messaging-gateway, mit]
 
@@ -116,6 +118,23 @@ flowchart TB
 | **触达** | 单 IDE | CLI + 即时通讯 + 邮件等网关 |
 | **自动化** | 少见一等 cron | 内置 cron，可向聊天平台投递 |
 | **沙箱** | 依赖 IDE/扩展 | 多后端容器/SSH/Modal 等可配置 |
+
+## 核心原理
+
+依据官方 README 与 Architecture 页的设计原则归纳：
+
+- **Prompt 稳定：** 会话中不改 system prompt（用户显式 `/model` 等除外），以保护前缀缓存；系统提示按「稳定 → 上下文 → 易变」分层组装。
+- **平台无关核心：** 同一 `AIAgent` 服务 CLI、Gateway、ACP、Batch、API Server，差异只在入口。
+- **自注册与松耦合：** 工具文件 import 时 `registry.register()` 自注册；MCP、插件、记忆提供者、RL 环境经 registry 与 `check_fn` 门控接入，非硬依赖。
+- **学习闭环：** 记忆策展 + 周期 nudge + 复杂任务后自主建技能 + 技能自改进 + FTS5 召回与摘要。
+- **可观测与可中断：** 每次工具调用经回调可见，API 调用与工具执行可中途取消；Cron 任务每次用无历史的新 `AIAgent`。
+
+## 工程实践
+
+- **部署：** 一行脚本安装；`hermes` 进入 CLI，`hermes gateway` 启动消息网关，`hermes setup` / `hermes doctor` 配置与诊断；可选 Nous Portal 统一密钥。
+- **隔离：** 用 `hermes -p <name>` 的 Profile 隔离配置、记忆、会话与 gateway PID；终端后端可选 Docker / SSH / Modal / Daytona 等，Serverless 后端空闲休眠。
+- **迁移与扩展：** `hermes import-agent` 从 OpenClaw / Claude Code / Codex / Cursor 导入记忆与技能；插件三类发现源，记忆提供者与上下文引擎各单选。
+- **版本漂移：** 上游文档已写 25+ 平台适配器、六个内置终端后端；本页其他处的 20+ / 7 后端等数字以官方最新文档为准。
 
 ## 常见误区或局限
 

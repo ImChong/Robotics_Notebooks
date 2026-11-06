@@ -35,6 +35,9 @@ related:
   - ../entities/sam-3d-body.md
   - ../entities/sam3dbody-cpp.md
   - ../entities/paper-htd-refine-monocular-hmr.md
+original:
+  - ../../sources/papers/sonic_reading_arxiv_2511_07820.md
+  - ../../sources/papers/beyondmimic_reading_arxiv_2508_08241.md
 sources:
   - ../../sources/papers/gmt_arxiv_2506_14770.md
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
@@ -68,6 +71,12 @@ WBT = **参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具�
 | Sim2Real | Simulation to Real | 跟踪策略迁移真机阶段 |
 | Retargeting | Motion Retargeting | 流水线首段：映射到机器人骨架 |
 
+## 为什么重要
+
+- 人形机器人的动作能力（跑、跳、空翻、舞蹈、遥操作）几乎都落在「全身按参考跟踪」这一统一任务上；把它拆成 6 个阶段，才能定位一个失败究竟出在参考、重定向、采样、奖励、迁移还是部署。
+- 原文证据：SONIC 把动作跟踪当作可 scaling 的预训练任务（1.2M→42M 参数、1 亿+ 帧、约 21k GPU 小时），最大模型在未见动作上成功率 99.6%、MPJPE-L 23.8 mm；BeyondMimic 用同一套极简奖励与共享超参批量学高动态技能。两者说明「逐帧稠密监督」既能 scale，又不必逐任务写奖励。
+- 选型不同直接决定算力、数据与交付形态（见下文六条路径对比），所以需要一张统一的阶段地图。
+
 ## 为什么单独立一页
 
 [Whole-Body Control (WBC)](./whole-body-control.md) 关心「**给定一帧参考，怎么协调全身关节求解力矩**」（QP 视角）；本页关心「**给定一批参考轨迹与一台目标机器人，怎么从数据到真机部署整条链路**」（学习驱动视角）。两者是同一战场上的两层抽象：
@@ -76,6 +85,10 @@ WBT = **参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具�
 - WBT 是**一条策略**从训练到真机的工程问题
 
 > 与 [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) 的关系：重定向流水线产出"机器人物理上可执行的参考"；WBT 流水线**消费**这些参考，训练一个能在真机上稳定执行它们的策略。两条流水线串起来构成「**MoCap → Reference → Policy → Real Robot**」的完整人形动作落地链。
+
+## 流程总览（核心原理）
+
+核心原理：把「参考动作」当作逐帧稠密监督信号，在仿真中用 RL 学一个以参考为条件的策略，再经冻结推理与安全层上真机。6 个阶段依次为参考采集、重定向、训练数据、策略学习、跨具身迁移、真机部署，下图与后续「阶段拆解」逐段展开。
 
 ## 端到端流水线总览（Mermaid）
 
@@ -250,6 +263,17 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 
 当 WBT 目标从 **纯运动模仿** 延伸到 **动态物体 loco-manipulation** 时，GMT 直出往往 **缺乏物体感知**（论文报告 MuJoCo 均值 SR 约 **10%**），而每条任务 **从头 PPO** 又面临奖励工程与样本效率问题。[ResMimic](../entities/paper-resmimic.md)（arXiv:2510.05070）在阶段 4 采用 **两阶段残差**：**Stage I** 用 AMASS/OMOMO 等训练 **GMT 先验** $\pi_{\mathrm{GMT}}$；**Stage II** 冻结先验并学习 **物体条件残差** $\Delta a$，使 $a=a^{\mathrm{gmt}}+\Delta a$，配合 **点云物体跟踪奖励**、**链节接触奖励** 与 **虚拟物体力课程**。它在 **统一奖励模板** 下覆盖跪姿抬箱、背载、蹲起托举、搬椅等任务，并在 G1 真机展示 **4.5–5.5 kg** 全身接触搬运——为 WBT 流水线补充了「**规模化 GMT 预训练 → 轻量 per-task 残差后训练**」的 loco-manipulation 分支，与 [holosoma](../entities/holosoma.md)/[OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) 的 **交互保留参考生成** 形成上下游互补。
 
+## 工程实践
+
+以下要点出自 SONIC / BeyondMimic 两篇原文的通读摘录（[SONIC 归档](../../sources/papers/sonic_reading_arxiv_2511_07820.md)、[BeyondMimic 归档](../../sources/papers/beyondmimic_reading_arxiv_2508_08241.md)）：
+
+- **训练数据**：SONIC 约 700 h 源数据经 GMR 重定向并过滤不可执行动作后留 611 h；BeyondMimic 按 1 s 分桶，用失败率 EMA 自适应采样起始相位，使难片段多练。
+- **奖励与观测**：BeyondMimic 仅用位置/朝向/线速度/角速度四项高斯跟踪项加 3 项正则；观测不堆叠时间历史（加历史反而变差）。SONIC 则用 10 步本体历史。
+- **PD 与 armature**：BeyondMimic 以电机反射惯量设 PD 增益，强调 armature 是真实物理量，置零会导致过摆与自碰。
+- **域随机化**：两篇都只随机少数项（摩擦/恢复系数、初始关节偏移、质心偏移、周期性速度推扰），并非越多越好。
+- **部署**：SONIC 在 Jetson Orin + TensorRT 上策略前向 1–2 ms，策略 50 Hz 多速率四环，带关节速度看门狗、输入丢失降级、停止时纯阻尼；实机 124 条动作成功 99.2%，差距主要在脚部。
+- **推断（非原文直述）**：上述做法可作为新项目的默认起点；是否适配其他机型需自行验证。
+
 ## 与 8 层 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的对应
 
 | 8 层框架 | 在本流水线中的位置 |
@@ -281,6 +305,13 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 - **跨具身指标**：源机性能 vs 目标机性能差（[Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) 报告多组）。
 - **真机指标**：sim-to-real gap、抗扰恢复时长、连续 rollout 时长。
 - **数据效率**：达到目标性能所需参考数量 / 算力（[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) 的 3 条参考 vs SONIC 的万级参考是两个极端）。
+
+## 局限
+
+- 本页是对多条路线的汇总视图，各路径的数字来自不同论文，数据与重定向并不对齐，**不能当作公平基准**（SONIC 原文自注了这一点）。
+- BeyondMimic 原文局限：状态估计误差直接传入生成轨迹；预测视野仅 0.64 s，难以长程规划；guidance 适合粗粒度目标；避障与航点实验依赖动捕提供定位。
+- SONIC 原文局限：缺少对安全性与长时间部署能耗的形式化处理；极端或极动态动作下可能失衡。
+- 本页对 GMT、SD-AMP、Heracles、Any2Any 等路径的描述依赖各自页面与归档，未在此逐篇通读复核。
 
 ## 参考来源
 

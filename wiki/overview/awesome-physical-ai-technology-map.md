@@ -10,6 +10,8 @@ related:
   - ../comparisons/awesome-physical-ai-curated-lists.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
+original:
+  - ../../sources/papers/awesome_physical_ai_readme_reading_natnew_aichr.md
 sources:
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
   - ../../sources/repos/awesome-physical-ai-natnew.md
@@ -593,6 +595,20 @@ sources:
 | 383 | [V-JEPA 2 (Meta FAIR)](../entities/paper-vjepa2.md) | natnew |
 | 384 | [World Models (Ha & Schmidhuber)](../entities/paper-ha-schmidhuber-world-models.md) | natnew |
 
+
+## 核心原理
+
+> 依据：已通读两份上游 README（[通读归档](../../sources/papers/awesome_physical_ai_readme_reading_natnew_aichr.md)）。
+
+- **两种组织方式**：natnew 按"评测与工程治理"切 14 个 canonical 类别（含 Evaluation Methodology、Governance & Policy、Production Patterns），并配 5 步入门路径；aichr 按"技术栈"切 12 组（VLA、3D 视觉、边缘推理、硬件、机器人平台等），并用 📄🎬💻🤖 图例标记条目性质。
+- **合并去重**：两清单共同主线是仿真器、数据集、基准与 VLA；本页把并集逐条拆页，分组沿用各自上游的分类，「来源」列标明出自哪份。
+- **条目性质**：上游条目只有标题、外链与一行描述，因此本页的"清单摘要页"是入口而非深读（推断：深度判断需进入各条目的论文/工具页）。
+
+## 工程实践
+
+- **找一个方向**：先在「分组索引」按分组定位，再点条目；有深读页的直接跳转，其余看摘要页并去原文链接。
+- **入门顺序**（引自 natnew Get Started）：Gymnasium CartPole → MuJoCo → LeRobot → OpenVLA，再进入模仿学习、Sim2Real、硬件与评测；无需硬件，先仿真。
+- **核对时效**：上游持续更新（natnew README 已标注 257 条，高于本页快照时的约 229 条），引用具体条目前以上游仓库为准。
 
 ## 局限与风险
 

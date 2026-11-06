@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, mbpo, sample-efficiency, sac, world-model]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-06
 summary: "MBPO 用真实数据训练集成动力学模型，只从真实状态出发展开短期虚拟轨迹，混入 Replay Buffer 并用 SAC 更新策略，以短 rollout 限制模型误差累积。"
 related:
   - ./model-based-rl.md

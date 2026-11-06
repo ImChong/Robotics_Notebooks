@@ -16,6 +16,8 @@ related:
   - ./autoware.md
   - ../overview/awesome-physical-ai-technology-map.md
   - ./awesome-physical-ai-natnew.md
+original:
+  - ../../sources/papers/navigation2_marathon2_reading_arxiv_2003_00368.md
 sources:
   - ../../sources/repos/navigation2.md
   - ../../sources/repos/awesome-physical-ai-union-catalog.md
@@ -26,6 +28,10 @@ summary: "Navigation2（Nav2）是 ROS 2 标准导航框架：行为树、全局
 # Navigation2（Nav2）
 
 **Navigation2**（[ros-navigation/navigation2](https://github.com/ros-navigation/navigation2)）是 ROS 2 生态的 **移动机器人导航参考实现**，将定位结果、静态/动态代价地图与路径跟踪解耦为可替换插件。
+
+## 一句话定义
+
+Nav2 是以行为树编排规划、控制、恢复等任务服务器，并以运行时插件和生命周期节点组织的 ROS 2 移动机器人导航框架。
 
 ## 英文缩写速查
 
@@ -58,10 +64,27 @@ summary: "Navigation2（Nav2）是 ROS 2 标准导航框架：行为树、全局
 
 典型数据流：**SLAM/AMCL** 提供 `map`↔`odom`↔`base_link` → **global costmap** → **planner** → **local costmap** → **controller** → 底盘驱动。
 
+## 核心机制（原论文视角）
+
+依据 [The Marathon 2: A Navigation System](https://arxiv.org/abs/2003.00368)（已通读，见 [归档](../../sources/papers/navigation2_marathon2_reading_arxiv_2003_00368.md)）：
+
+- **两种设计模式**：行为树导航器（XML，运行时加载，基于 BehaviorTree.CPP）+ 任务专用异步服务器（planner / controller / recovery，各自承载环境模型与插件），BT 节点通过 ROS 2 action 调用服务器，可跨进程、跨 CPU 运行。
+- **生命周期节点**：所有服务器为 Managed Node，由 Lifecycle Manager 驱动 configure→activate，保证确定性启动与关闭。
+- **恢复行为**：按「保守到激进」排序（清代价地图 → 原地旋转 → 等待）；全局规划 1 Hz，规划失败时才逐级升级。
+- **分层代价地图**：Static / Inflation / Voxel / STVL 等层可叠加，STVL 维护带时间衰减的稀疏 3D 体素。
+
+## 工程实践
+
+- **长时验证数据（论文）**：两台差速机器人（Tiago、RB-1）在校园限速 0.45 m/s，共 22.8 小时、37.4 英里，168 次恢复（4.3 次/英里），0 碰撞、0 急停。
+- **恢复触发的主因**：拥挤时无法规划；长走廊重复特征 + 人流导致 AMCL 置信度下降（Spin 有助重定位）。恢复次数多不等于性能差，它是容错机制的一部分。
+- **CI**：Gazebo 仿真集成测试进入持续集成，用于回归与算法性能比较。
+- 论文发表于 2020 年，其中 NavFn+TEB 的实验配置不等于当前默认插件（Smac、MPPI、RPP 等不在该文范围）；当前行为以官方文档与源码为准。
+
 ## 常见误区或局限
 
 - **误区：装好 Nav2 即可自动驾驶** — 仍需可靠定位、地图质量、传感器标定与安全监控。
 - **误区：默认 DWB 适用所有底盘** — 全向、阿克曼、差速动力学差异大，需换 **controller / footprint**。
+- **局限（论文）**：论文所用 A* 规划器对非圆形非完整约束机器人（如车型）不给出可行路径；实验未使用显式动态障碍检测与预测。
 - **局限**：Nav2 面向 **平面移动底盘**；人形/腿式 **步态规划** 不在其范围（见 [OpenLoong](./openloong.md)）。
 
 ## 源码运行时序图

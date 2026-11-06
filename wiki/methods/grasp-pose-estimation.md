@@ -15,6 +15,8 @@ related:
   - ../queries/grasp-policy-selection.md
   - ../entities/paper-mango-grasp.md
   - ../comparisons/anygrasp-vs-graspnet.md
+original:
+  - ../../sources/papers/contact_graspnet_reading_arxiv_2103_14127.md
 sources:
   - ../../sources/repos/anygrasp-sdk.md
   - ../../sources/papers/perception.md
@@ -40,6 +42,24 @@ summary: "抓取位姿估计是把 RGBD / 点云观测映射为 6-DoF（或 7-Do
 | SDK | Software Development Kit | 软件开发工具包 |
 | RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
 | IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| AP | Average Precision | GraspNet 评测的平均精度指标 |
+| MPPH | Mean Picks Per Hour | bin clearing 每小时平均抓取数（吞吐） |
+| GPD | Grasp Pose Detection | 第一代「采样 + 打分」抓取检测方法 |
+
+## 为什么重要
+
+- 抓取位姿是感知到规划的接口：候选质量与覆盖度直接决定下游 IK / 避碰能否找到可执行解，以及一次抓取成功率。
+- 以 Contact-GraspNet 原文为例（杂乱场景、51 个未见物体、Franka 真机）：接触点锚定的稠密生成取得 90.20% 成功率、首次尝试 84.31%，对比 6-DoF GraspNet + CollisionNet 的 80.39% / 68.63%，说明表征设计对一次抓成率影响明显。
+- 单帧推理约 0.28 s（全场景），使反应式闭环抓取成为可能（原文论断）。
+
+## 核心原理（接触点锚定表征）
+
+以 Contact-GraspNet（arXiv:2103.14127）为例说明稠密预测的核心设计：
+
+- **表征降维**：多数两指抓取至少一个接触点可见，故把真值抓取投影到点云接触点 $c$，抓取位置 $t_g = c + \tfrac{w}{2} b + d\,a$，旋转 $R_g = [b,\ a\times b,\ a]$（$a$ 接近向量、$b$ 基线向量、$d$ 基线到夹爪基座的固定距离）；只需估计 3-DoF 旋转与宽度，即 4-DoF 而非完整 SE(3)。
+- **网络与损失**：PointNet++ U 形网络，输入 20000 点、在 2048 个最远点上预测；接触分类用 BCE（仅反传 top-512 误差点以缓解不平衡），位姿用 5 个夹爪关键点的 ADD-S 式最小距离损失并以接触置信度加权，宽度用 10 个 bin 的加权多标签 BCE。
+- **数据**：ACRONYM（8872 个 ShapeNet 网格、1770 万条仿真抓取）渲染杂乱桌面点云，5 mm 内的点记为正接触点。
+- **推理**：置信度阈值（0.23）+ 接触点最远点采样保证覆盖，再按可达性与碰撞选最优；可选实例分割按接触点归属过滤，对欠分割容忍。
 
 ## 任务参数化
 
@@ -118,6 +138,25 @@ flowchart LR
 - **Top-K 成功率**（仿真物理执行）：抓起最优 K 个候选的实际成功率，是 AP 的物理化补充。
 - **MPPH (Mean Picks Per Hour)**：bin clearing 场景下的 **吞吐**，AnyGrasp 等 SDK 常报。
 - **抓取稳定性**：执行后保持时长、滑移率（结合触觉反馈，参见 [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)）。
+
+## 工程实践
+
+- **选型落点**：未知物体、杂乱桌面、单帧深度 → 稠密接触锚定类方法（Contact-GraspNet / GraspNet 系）；需要 SDK 与时序关联 → [AnyGrasp](../entities/anygrasp.md)；选型细则见 [抓取策略选型](../queries/grasp-policy-selection.md)。
+- **局部区域裁剪**：Contact-GraspNet 原文在目标物体质心周围取立方体区域（边长为最大跨度的 2 倍，限 0.3–0.6 m）以提高接触点覆盖；全场景预测的平均成功率相近但覆盖显著降低。
+- **噪声训练**：原文消融显示训练时加高斯噪声对真实传感器泛化有帮助。
+- **候选筛选**：置信度阈值 + 最远点采样 + 可达性 / 碰撞过滤，最后执行最高置信度者。
+
+## 局限
+
+- 原文失败案例：需接近最大宽度才能抓的厚物体，以及小物体，接触置信度偏低。
+- 原文定位于有完整表面接触的稳定抓取，不覆盖无可见接触的抓取（如握把手）。
+- 平行二指夹爪、结构化杂乱桌面设定；训练只用仿真数据，真机验证规模为 9 个场景、51 个物体（原文）。
+- 本页对 GraspNet-1Billion、Graspness、AnyGrasp 的描述依据既有 wiki 内容，未在本次原文通读范围内核对。
+
+## 继续阅读
+
+- [AnyGrasp（抓取感知 SDK）](../entities/anygrasp.md) 与 [AnyGrasp vs GraspNet](../comparisons/anygrasp-vs-graspnet.md)：工程化与选型。
+- [Query：抓取策略选型](../queries/grasp-policy-selection.md)、[GraspMF](../entities/paper-graspmf.md)（生成式分布支路）、[Visual Servoing](./visual-servoing.md)（抓取后对齐）。
 
 ## 与下游的衔接
 

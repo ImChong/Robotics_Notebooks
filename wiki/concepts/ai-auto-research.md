@@ -25,8 +25,11 @@ related:
   - ../entities/paper-metarsi-v1.md
   - ../entities/agent-lightning.md
   - ../entities/paper-paper2agent.md
+original:
+  - ../../sources/papers/ai_auto_research_survey_reading_arxiv_2605_18661_aar1.md
 sources:
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
+  - ../../sources/papers/ai_auto_research_survey_reading_arxiv_2605_18661_aar1.md
   - ../../sources/papers/rsi_survey_arxiv_2607_07663.md
   - ../../sources/repos/awesome-ai-auto-research.md
   - ../../sources/repos/karpathy-autoresearch.md
@@ -137,6 +140,32 @@ flowchart LR
 | 人机共治 | LLM 维护 wiki，人类 curator 审阅 PR / 合并 |
 
 详见 [schema/ingest-workflow.md](../../schema/ingest-workflow.md)。
+
+## 核心原理
+
+综述的核心机制可压缩为三点（见上文四阶段八阶段与五项规律）：
+
+- **探索 → 执行 → 验证三层**：探索层搜索假设、论文或代码变体，执行层调用检索、解释器与实验器，验证层用执行反馈、引文校验、批评或人工复核确认中间产物。
+- **阶段交接是主要风险点**：想法实施后退化、检索证据在写作中被曲解、rebuttal 承诺未兑现等失败多发生在阶段之间，因此需要可追溯的跨阶段状态（假设—文献—代码—实验—论断—评审—修订）。
+- **多 agent 取决于任务结构**：可分解、可并行的子任务受益，顺序推理可能因协调开销与错误传播而退化。
+
+## 工程实践
+
+综述 §7.4.8 给出四条设计原则，可直接对应本库的 agent 工作流：
+
+1. 全生命周期保持溯源（本库：每页 `## 参考来源` + `log.d/` 日志）。
+2. 尽量用执行与检索落地替代纯文本自评（本库：`make ci-preflight` 门禁）。
+3. 在阶段边界设人类检查点（本库：PR 审阅合并）。
+4. 透明披露 AI 参与（本库：commit 归属与 ingest 记录）。
+
+选型上宜按阶段组合工具，而非期待单 agent 端到端；Validation（审稿/rebuttal）宜用「AI 改进人类评审」而非独立 AI 审稿。
+
+## 局限
+
+- 综述覆盖以 CS/ML/NLP 为主，化学、生物等领域的结论未经充分测试；机器人领域的专门证据很少（推断：需结合本库其他页面）。
+- 文中多数数字（如 37% 研究代码上限、AI 审稿评分偏高）转引自各系统原论文，随版本与基准更新而变化；综述截止 2026 年 6 月。
+- 综述本身是一次快照，系统与基准迭代快；尚无覆盖「想法到传播」全链的基准。
+- Dissemination 阶段缺乏大规模采用研究，对 Paper2X 是否减少失真尚无定论。
 
 ## 常见误区
 

@@ -24,6 +24,9 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/humanoid-soccer.md
   - ../overview/autonomous-driving-core-algorithms-series.md
+original:
+  - ../../sources/papers/yolo_v1_perception_stack_reading_1506_02640_reading_psl.md
+  - ../../sources/papers/faster_rcnn_reading_arxiv_1506_01497_reading_od3.md
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
@@ -125,6 +128,18 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - **定位错误** 占比最高——小目标、密集场景尤甚。
 - **背景误报** 显著更少——全图上下文的优势。
 - **组合策略：** YOLO 对 Fast R-CNN 重打分可 **+3.2 mAP**，利用互补误差结构。
+
+## 方法栈
+
+按「提议方式 → 预测头 → 后处理」三层归纳上文路线：两阶段（RPN 提议 + RoI 分类回归，NMS 后处理）、单阶段（网格/密集回归，NMS 或无 NMS 双头）、集合预测 Transformer（Hungarian 匹配，无 NMS）。Faster R-CNN 原文（arXiv:1506.01497）的核心是 RPN 与检测网共享卷积特征，使提议开销约 10 ms；详细对比见上文「主要技术路线」。
+
+## 工程实践
+
+- **提议数与 NMS 阈值是可调旋钮：** Faster R-CNN 原文（arXiv:1506.01497）在 RPN 后以 IoU 0.7 做 NMS，约留 2000 个提议、测试取 top-300；消融显示 NMS 不损精度、去掉分类分数后 100 提议时 mAP 大幅下降，说明排序质量比数量更关键。
+- **延迟口径要写清：** 原文在 K40 上 VGG-16 全流程约 198 ms（5 fps）、ZF 约 59 ms（17 fps）；YOLO v1 为 45 FPS。不同年代 GPU 与 TensorRT 部署不可直接比较，机载选型以目标硬件实测为准（推断）。
+- **Anchor 设计与数据匹配：** 原文默认 3 尺度 × 3 长宽比；单一 anchor 降 3–4 mAP。小目标（球、远处行人）场景应核对最小 anchor/步长是否覆盖目标尺寸（推断，原文步长为 16 像素）。
+- **预训练数据规模显著：** 原文中加入 COCO 预训练使 VOC 2007 mAP 从 73.2 升至 78.8；机器人垂直场景微调前优先用大数据集初始化。
+- **部署入口：** 一阶段/端到端路线统一用 [Ultralytics](../entities/ultralytics.md) 或 [RF-DETR](../entities/rf-detr.md)；模型选型流程见 [目标检测模型选型 Query](../queries/object-detection-model-selection.md)。
 
 ## 常见误区或局限
 

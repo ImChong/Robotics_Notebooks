@@ -6,6 +6,8 @@ created: 2026-06-19
 updated: 2026-09-28
 summary: 从原始动作捕捉 / 人体视频 → 重定向 → RL/IL 训练输入的端到端选型决策树，覆盖参考运动来源、重定向方案、训练范式三层取舍与典型失败模式。
 tags: [dataset, motion-retargeting, data-pipeline, humanoid, training-data]
+original:
+  - ../../sources/papers/phuma_reading_arxiv_2510_26236_dpl.md
 sources:
   - ../../sources/sites/hiw-500-dataset.md
   - ../../sources/sites/amass-dataset.md

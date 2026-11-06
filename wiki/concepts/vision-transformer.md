@@ -2,7 +2,7 @@
 type: concept
 tags: [vit, vision-transformer, computer-vision, deep-learning, perception, backbone]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-06
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md

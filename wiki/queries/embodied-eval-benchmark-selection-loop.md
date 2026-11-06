@@ -33,6 +33,9 @@ sources:
   - ../../sources/papers/streameval_arxiv_2610_28402.md
   - ../../sources/sites/streameval-ai.md
   - ../../sources/repos/streameval.md
+original:
+  - ../../sources/papers/robo_bench_reading_arxiv_2510_17801.md
+  - ../../sources/papers/worldscore_reading_arxiv_2504_00983.md
 related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../entities/anthropic-embody.md

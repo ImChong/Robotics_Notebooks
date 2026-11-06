@@ -2,6 +2,8 @@
 type: overview
 tags: [hub, hub-systems-engineering, os, networking, distributed, deployment, realtime, security]
 status: complete
+original:
+  - ../../sources/papers/fail_passive_gap_reading_arxiv_2608_02809_reading_hubsys.md
 updated: 2026-10-08
 summary: "机器人系统工程知识链：按实时控制面 / 机载软件面 / 数据与服务面 / 部署与运维面 / 安全与合规五层，索引 OS、IPC、网络、数据库、缓存、消息、分布式、容器、可观测性、RTOS、DDS、边云、频率解耦、OTA 与安全状态机等站内节点。"
 ---
@@ -87,6 +89,24 @@ flowchart TB
 - **[WBC](./hub-wbc.md)**：全身控制的截止时间预算依赖本页的实时调度与安全 FSM。
 - **[状态估计](./hub-state-estimation.md)**：多传感器时间对齐依赖通信与时钟层能力。
 - **[数据管线](./hub-data-pipeline.md)**：采集数据的存储、消息与可观测基础设施在本页。
+
+## 核心原理（分层与边界）
+
+- **两套语义**：数据面追求吞吐与一致性，控制面追求最坏延迟与确定性（见上文「分层读法」）；二者交界处需明确谁能被拖垮、谁必须兜底。
+- **安全态是主动态**：Fail-Passive Gap（Ding 等，arXiv:2608.02809，通读见归档）指出，传统机械安全以断电为安全态（Stop Category 0），平衡双足断电即摔倒，安全态须由策略持续维持；外部检测与评估链（光幕、急停、F-DI、F-PLC、无线 PROFIsafe）可用 PFHD / DC / CCF 量化，不可认证部分被定位到机侧反应链与 SDA-平衡策略接口。
+- **时延预算分解**：该文把端到端响应拆为 检测 + F-DI + PLC 扫描 + PROFIsafe + 机侧接收 + 机械停止，其中机侧接收与机械停止（0.3–1.0 s）占主导且不可认证；这一"逐段标注来源（规格 / 配置 / 实测）"的做法可推广到任何控制环延迟预算（推断）。
+
+## 工程实践
+
+- 安全停止后锁存，须人工确认才恢复（无自动重启）；通信丢失由看门狗触发静止。
+- 辅助避障（如机载 LiDAR）不得计入认证论证，只作补充。
+- 机载软 PLC（IEC 61131-3 容器）可标准化接收接口，但在非安全级算力上不构成认证的安全运行时。
+- 分离距离按 S = K·T + C 以最坏（单支撑）t_stop 计，不要用平均值。
+
+## 局限
+
+- 本知识链是索引，不替代各节点页的细节；各层页面成熟度不一。
+- Fail-Passive Gap 为单区域、单场景的可行性研究：未给出端到端 PL e / SIL 3，丢包余量、可用性与停止距离曲线留待后续；ISO/IEC 标准原文与 Siemens 应用示例本页未逐项核对。
 
 ## 关联页面
 

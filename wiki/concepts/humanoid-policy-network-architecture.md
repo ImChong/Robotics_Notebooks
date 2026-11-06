@@ -26,6 +26,9 @@ related:
   - ../methods/generative-world-models.md
   - ../entities/amp-mjlab.md
   - ../tasks/locomotion.md
+original:
+  - ../../sources/papers/deepmimic_reading_arxiv_1804_02717_dm1.md
+  - ../../sources/papers/amp_reading_arxiv_2104_02180_r7.md
 sources:
   - ../../sources/personal/humanoid-policy-network-architecture-faq.md
   - ../../sources/personal/ai-architecture-map.md
@@ -157,6 +160,27 @@ flowchart TD
 
 - **「模型越大，人形运动越强」**：真机最强策略经常是 **宽度 256–512、深度 2–3 的 MLP**；瓶颈更常在 **观测、延迟、执行器、奖励与迁移**，而非参数量本身。
 - **「一篇论文的网络＝整条产品栈」**：论文展示的可能是 **单一频率层**；实际系统常是 **分层：慢语义 / 快跟踪**（参见 [VLA](../methods/vla.md) 与低层跟踪器互链）；为何该分层绑定特定本体见 [具身大模型与本体协同设计](./embodied-foundation-model-hardware-codesign.md)。
+
+## 核心原理（一手论文核对）
+
+以下为对 DeepMimic（arXiv 1804.02717）与 AMP（arXiv 2104.02180）原文 Method 的核对，归档见 [DeepMimic 通读](../../sources/papers/deepmimic_reading_arxiv_1804_02717_dm1.md)、[AMP 通读](../../sources/papers/amp_reading_arxiv_2104_02180_r7.md)：
+
+- **DeepMimic 网络**：高斯策略，均值由两层全连接（1024、512）加线性输出给出，**隐藏层激活为 ReLU**，协方差固定为对角；价值网络同结构、输出单个线性单元；策略 30 Hz，输出各关节 PD 目标角。
+- **AMP 策略网络**：同样是 1024-512 ReLU 的 MLP、固定对角协方差高斯；判别器输入状态转移 (s, s')，用最小二乘损失与梯度惩罚稳定训练，风格奖励与任务奖励按 0.5 : 0.5 相加后交给 PPO。
+- **与上文表格的差异（核对结论）**：上文代际表与第 1 节把 DeepMimic 类写作 `tanh` 激活，而原文为 ReLU；`tanh` 更接近 PPO 原文 MuJoCo 实验的 2×64 小策略，应以原文为准，其余数值（层宽、PPO 训练）与原文一致。
+- **推断**：两篇原文都表明「骨干并不花哨，关键在奖励设计、参考状态初始化与早期终止、判别器稳定化」，与本页「架构必要但常非瓶颈」的判断一致。
+
+## 工程实践
+
+- 读论文时先查 Method 与附录超参表，记录层数、宽度、激活、仿真频率与策略频率（如 DeepMimic/AMP 仿真 1.2 kHz、策略 30 Hz）。
+- 复现角色模仿类工作时，初始化策略（参考状态初始化 RSI）与早期终止对结果的影响往往大于网络宽度（DeepMimic 消融）。
+- 上层大模型与低层小 MLP 分层部署，见上文「常见误区」与 [具身大模型与本体协同设计](./embodied-foundation-model-hardware-codesign.md)。
+
+## 局限
+
+- 上文各代际的具体层宽、规模多为归纳性的「文献中较常见」配置，并非逐篇核对；本次一手核对仅覆盖 DeepMimic 与 AMP，MoE、Diffusion、VLA、WAM 各行未重新通读原文。
+- DeepMimic/AMP 均面向仿真角色，真机迁移的网络与观测差异需另查对应论文。
+- AMP 原文自述易模式坍塌、先验需每策略从头训练，见 [AMP 奖励](../methods/amp-reward.md)。
 
 ## 关联页面
 

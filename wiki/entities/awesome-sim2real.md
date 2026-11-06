@@ -16,6 +16,8 @@ sources:
   - ../../sources/repos/awesome-sim2real.md
   - ../../sources/papers/lc_awesome_sim2real_catalog.md
   - ../../sources/papers/lc_awesome_sim2real_survey_2502_13187.md
+original:
+  - ../../sources/repos/awesome_sim2real_readme_reading_lc.md
 summary: "LongchaoDa 维护的 AwesomeSim2Real：按 MDP 四要素与领域分类的 RL Sim2Real 论文策展库，配套 arXiv:2502.13187v3 综述；清单里的论文已拆成站内可点开的一页，并有按分组浏览的技术地图。"
 ---
 
@@ -60,10 +62,27 @@ summary: "LongchaoDa 维护的 AwesomeSim2Real：按 MDP 四要素与领域分�
 | Transition | DR、GAT、LLM 增强转移 |
 | Reward | Shaping、LLM 奖励设计 |
 
+## 核心机制
+
+清单按 MDP 四要素把"仿真与现实的差距"归到四处，各挂若干技法子组（据上游 README 目录）：
+
+- **Observation（观测 gap）：** Domain Randomization、Domain Adaptation（如 GAN 像素级适配、RL-CycleGAN）、Sensor Fusion、Foundation Models。
+- **Action（动作 gap）：** 动作空间尺度（含 shielding 等安全约束）、动作延迟（随机延迟 RL、状态增广）、动作不确定性（action-robust RL）。
+- **Transition（动力学 gap）：** DR、Domain Adaptation、Grounding（Grounded Action Transformation 系列）、LLM 增强（Prompt to Transfer）。
+- **Reward：** Reward Shaping、LLM 奖励设计。
+- 另有 Surveys 与 Environments/Benchmarks 两大块，按机器人、交通、推荐系统、其他分域。
+
+## 工程实践
+
+- **按症状选组（推断）：** 视觉输入不一致先看 Observation/DR 与 DA；真机有通信或执行延迟看 Action/Delay；动力学参数偏差看 Transition/DR 与 GAT。
+- **选仿真器/基准：** 从 Environments and Benchmarks 分域表挑（如 MuJoCo、PyBullet、robosuite、CARLA、SUMO、RecSim）。
+- **归类需自行判断：** README 归类较宽松（同一论文可多处出现，个别条目与 Sim2Real 关系较远），引用前核对原文。
+
 ## 局限与使用注意
 
 - **多为清单摘要：** 大部分条目只给清单坐标与原文入口；要深读建议直接从原文或已有深读页入手（如 [PACE](./paper-pace-sim2real-legged-robots.md)）。
 - **非工程 Runbook：** 部署清单见 [Sim2Real Checklist](../queries/sim2real-checklist.md)。
+- **仅通读 README：** 本页的原文通读指上游 README 全文（见 [通读归档](../../sources/repos/awesome_sim2real_readme_reading_lc.md)），清单所链的约 139 篇论文未逐篇打开。
 - **开源逐条核：** GitHub badge 仅覆盖部分条目；复现前打开论文项目页。
 
 ## 关联页面

@@ -23,6 +23,8 @@ related:
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ../methods/sonic-motion-tracking.md
   - ../formalizations/control-loop-latency-modeling.md
+original:
+  - ../../sources/papers/humantracker_reading_arxiv_2608_13555_mcpe.md
 sources:
   - ../../sources/papers/humantracker_arxiv_2608_13555.md
   - ../../sources/papers/humanoid_pnb_benchmarking-humanoid-imitation-learning-with-mo.md

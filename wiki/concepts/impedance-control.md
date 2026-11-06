@@ -4,6 +4,8 @@ tags: [control, manipulation, impedance-control, force-control, contact-rich, wh
 status: complete
 updated: 2026-10-18
 summary: "Impedance Control 通过把末端行为写成质量-弹簧-阻尼关系，让机器人在接触任务中既能跟踪目标又能保持柔顺。"
+original:
+  - ../../sources/papers/mayr_cartesian_impedance_reading_arxiv_2212_11215_imp1.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/papers/contact_dynamics.md
@@ -99,6 +101,34 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 
 - **误区 1：刚度越大越稳。** 事实上，环境越硬，机器人刚度必须越低，否则系统闭环特征值会移向不稳定区。
 - **误区 2：阻抗控制需要精确环境模型。** 阻抗控制的初衷就是为了应对环境的不确定性，它不需要知道环境的具体几何信息。
+
+## 核心原理
+
+综合上文数学模型与 Mayr & Salt-Ducaju（arXiv:2212.11215）的实现，阻抗律落到关节力矩的典型叠加为：
+
+$$ \tau_c = J^T(-K\Delta\xi - D J\dot q) + (I - J^T (J^T)^\dagger)\tau_0 + J^T F^{ext}_c $$
+
+- **任务空间项**：虚拟弹簧-阻尼经雅可比转置映射到关节力矩。
+- **零空间项**：冗余臂的关节阻抗 $\tau_0$ 投影到 $\ker J$，不干扰末端柔顺（Moore–Penrose 投影不含动力学，非静平衡时可能漏出干扰力）。
+- **前馈 wrench 项**：在阻抗框架内叠加期望接触力。
+
+## 工程实践
+
+- 优先用力矩控制机器人；位置/速度指令机器人上难以得到稳定柔顺行为（原文引 Lawrence 1988），此时改用导纳。
+- 在线修改参考位姿、$K_d$、$B_d$、期望力时做低通滤波，对刚度/阻尼/力做饱和，并对指令力矩做周期间变化限速。
+- 重力未被本体补偿时，须在指令力矩中加入重力补偿项（见 [Gravity Compensation](./gravity-compensation.md)）。
+
+## 局限
+
+- 阻抗律本身不保证接触力精度：力由位置误差与刚度间接决定，需要精确力时须叠加期望 wrench 或改用混合控制。
+- 零空间用伪逆投影时不含惯量加权，动态运动下存在耦合（推断：高动态场景宜用动力学一致投影）。
+- 稳定性取决于环境刚度、带宽与执行器特性，参数需按接触对象整定。
+
+## 继续阅读
+
+- [Mayr 笛卡尔阻抗实现论文归档](../../sources/papers/mayr_cartesian_impedance_joss_2024.md)
+- [论文实体：Cartesian Impedance Controller](../entities/paper-cartesian-impedance-controller.md)
+- Hogan (1985) 原文见下方参考来源
 
 ## 参考来源
 

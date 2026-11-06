@@ -43,10 +43,14 @@ sources:
   - ../../sources/courses/robot_learning_tutorial_arxiv_2510_12403.md
   - ../../sources/papers/fluxvla_arxiv_2609_17210.md
 original:
-  - ../../sources/repos/lerobot.md
+  - ../../sources/repos/lerobot_reading_readme_c7.md
 ---
 
 # LeRobot (Hugging Face)
+
+## 一句话定义
+
+LeRobot 是 Hugging Face 的开源机器人学习框架：以统一 `Robot` 接口、LeRobotDataset 数据格式和 Hub 分发，把示范采集、策略训练、仿真评测、真机部署串成一条链。
 
 **LeRobot** 是 Hugging Face 维护的开源机器人学习框架（PyTorch，Apache 2.0）：用一套库和命令行走完 **采集示范 → 训练策略 → 仿真评测 → 真机部署**，训练好的权重、数据集和仿真环境都放在 Hugging Face Hub 上共享复用。官方定位侧重 **模仿学习与强化学习**。
 
@@ -69,6 +73,10 @@ original:
 - **权重和数据可以直接复用：** 别人上传到 Hub 的 checkpoint 一行 `--policy.path` 就能拉下来微调或部署，常被称作「机器人领域的 Transformers」。
 - **入门成本低：** 原生支持 SO-100/101、Koch 等低成本开源机械臂，个人也能复现从采数到部署的完整闭环。
 - **格式成了事实标准：** 越来越多的 VLA、数据集和仿真基准直接发布 LeRobot 格式或 LeRobot 集成（见下文「生态」一节），学会它等于拿到了读这些项目的通用接口。
+
+## 核心原理
+
+三个解耦抽象撑起整条流程（据 README）：`Robot` 类把控制逻辑与硬件分开（`connect` → `get_observation` → `select_action` → `send_action`）；LeRobotDataset 用 Parquet + MP4 统一数据；策略以纯 PyTorch 实现、由 `lerobot-train` 的配置驱动。第三方硬件按 `lerobot_robot_*` 等包名自动发现。具体组成见下节。
 
 ## 由哪几部分组成
 
@@ -226,6 +234,19 @@ README 的 SOTA 模型表（固定提交 `9e5ee98`）逐项对应独立详情节
 - **FluxVLA Engine：** [FluxVLA Engine](./fluxvla-engine.md)（arXiv:2609.17210）是逐际开源的配置驱动 VLA 工程平台，覆盖数据集、多策略族训练、仿真评测与 RTC 真机推理；与 LeRobot 同属「数据→策略→部署」一站式框架，选型时重点对照数据格式互操作与真机 operator 接口。
 - **Model Hardware Standard（MHS）：** Anthropic 的 [MHS](../concepts/model-hardware-standard.md) 让 agent 发现并操作真实设备，Hugging Face 称会加进 LeRobot；截至 2026-09 仍是研究预览、规范与 SDK 未开源，暂不能当依赖。
 
+## 工程实践
+
+- 安装：`pip install lerobot` 后 `lerobot-info`，再按需装 extras（`lerobot[dataset]`、`lerobot[training]`、`lerobot[core_scripts,feetech]`）。
+- 训练前查官方 Compute Hardware Guide 的 GPU / 内存需求与预期训练时间；真机部署用 `lerobot-rollout`。
+- 自有机器人：实现 `Robot` 接口，或安装社区 `lerobot_robot_*` 插件；浏览器端可用 LeLab 免 CLI 操作 SO 臂。
+
+## 局限
+
+- 策略清单增长快，README 表中的模型成熟度不一（如 QC-FQL 仍为 coming soon），LeRobot 实现与原论文可能有差异。
+- CLI 随版本变动大（如 `lerobot-record` 与 `lerobot-rollout` 分工变化），旧教程命令可能失效。
+- EnvHub 需 `trust_remote_code`，有执行外部代码的风险；第三方插件质量由社区维护。
+- 本页未逐篇核对 README 链接的各策略文档与源码（推断：细节以各详情节点为准）。
+
 ## 常见误区
 
 - **只看 GitHub、不看 Hub：** 很多可部署 checkpoint 只发布在 `huggingface.co/lerobot`，复现论文或官方 demo 先查 Hub 的 Models / Collections。
@@ -254,6 +275,11 @@ README 的 SOTA 模型表（固定提交 `9e5ee98`）逐项对应独立详情节
 - [LeRobot on Hugging Face Hub](https://huggingface.co/lerobot)
 
 - [LingYu Real-World Robotics Dataset](./lingyu-realworld-robotics-dataset.md)：TA2 双臂 VR 遥操作数据，LeRobot v2.1。
+
+## 继续阅读
+
+- 官方文档：<https://huggingface.co/docs/lerobot/index>；ICLR 2026 论文 [arXiv:2602.22818](https://arxiv.org/abs/2602.22818)
+- Robot Learning Tutorial 与 [模仿学习](../methods/imitation-learning.md)、[VLA](../methods/vla.md)
 
 ## 关联页面
 

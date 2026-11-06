@@ -11,6 +11,8 @@ updated: 2026-10-08
 summary: "按项目身份整理 CAE/CFD 代理技能、MCP、CLI 和可视化仓库；每个仓库各有一页，同名项目分开介绍。"
 sources:
   - ../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md
+original:
+  - ../../sources/repos/kimimgo_awesome_ai_cae_readme_reading_cae_cfd_landscape.md
 ---
 
 # CAE / CFD 代理工具与技能项目总览
@@ -51,6 +53,12 @@ sources:
 | 关节电机的应力、温升和冷却怎样分析？ | [电机设计工作流](./motor-design-workflow.md) | 结构 FEA、热分析与 CFD 工具辅助设计迭代，最终与样机台架结果对照 |
 
 这些入口连接工程问题与下方 53 个项目详情。选择工具时先按问题定位软件与物理模型，再核对具体项目的执行能力。
+
+## 核心原理
+
+判断一个工具"代理能否直接调用"，可借用 [Awesome AI CAE](../entities/kimimgo-awesome-ai-cae.md) 的 AI-Readiness 评分（0-100，按其 README）：MCP 35、Python API 25、CLI/REST 15、近 6 个月有维护 15、采用度 10（star 取对数），pip 可装另加 15 并封顶 100。该清单把"可调用性"置于 star 之上，并区分已验证项（star/活跃度、PyPI、安装与 import 冒烟测试）与仅自报项（MCP、CLI/API 标签，尚未回放端到端代理调用）。其 114 个工具中仅 2 个达到 AI-Native，说明真正零胶水的 MCP 仍是少数。
+
+推断：这与上文的角色分层一致——MCP/CLI 是执行连接层，Skill 是流程说明层；评分衡量的是接口可调用性，不衡量仿真结果是否正确，后者仍须走验证与证据层。
 
 ## 工程实践
 

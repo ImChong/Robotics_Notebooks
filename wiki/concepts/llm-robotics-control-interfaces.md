@@ -23,6 +23,8 @@ related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-locovlm.md
   - ../entities/ora-open-robot-use-agents.md
+original:
+  - ../../sources/sites/anthropic-claude-plays-robotics.md
 sources:
   - ../../sources/sites/anthropic-claude-plays-robotics.md
   - ../../sources/repos/safety-research-embody.md

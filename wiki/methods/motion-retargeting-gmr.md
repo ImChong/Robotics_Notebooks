@@ -36,7 +36,7 @@ sources:
   - ../../sources/repos/gen2humanoid.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
 original:
-  - ../../sources/papers/gmr_retargeting_matters_arxiv_2510_02252.md
+  - ../../sources/papers/gmr_retargeting_matters_reading_motion_retargeting_arxiv_2510_02252.md
 summary: "GMR (General Motion Retargeting) 是一种高效的通用动作重定向方法，主要解决从人类动捕数据到异构机器人骨架的几何映射问题。"
 ---
 
@@ -45,6 +45,10 @@ summary: "GMR (General Motion Retargeting) 是一种高效的通用动作重定�
 **GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。
 
 > **命名说明**：本知识库中的 **GMR** 默认指 *General Motion Retargeting*（通用动作重定向），与统计学里的 **Gaussian Mixture Regression（高斯混合回归）** 缩写相同但无关。亦勿与 Disney Research 的 [Generative Motion Rig（SIGGRAPH Talks 2026）](../entities/generative-motion-rig.md)（同缩写 **GMR**，Blender 生成式关键帧插件）混淆。
+
+## 一句话定义
+
+GMR 是一套纯运动学的人→人形动作重定向方法：先做人机关键 body 映射与非均匀局部缩放，再用两阶段差分 IK（Mink，带关节限位）逐帧求解，输出可供 RL 跟踪的关节轨迹（据 arXiv:2510.02252 §IV）。
 
 ## 英文缩写速查
 
@@ -55,6 +59,10 @@ summary: "GMR (General Motion Retargeting) 是一种高效的通用动作重定�
 | IK | Inverse Kinematics | 满足关节限位与末端约束的求解 |
 | SMPL | Skinned Multi-Person Linear Model | 常见人体参数化与重定向源 |
 | WBT | Whole-Body Tracking | 重定向产物用于下游跟踪训练 |
+
+## 为什么重要
+
+论文在 BeyondMimic 免调奖励的条件下（LAFAN1 的 21 段、Unitree G1）发现：重定向质量直接决定跟踪成败，脚滑、地面穿透、自穿透等伪影不能指望 RL 兜底。Eg-mpbpe 均值 PHC 247.8 / ProtoMotions 139.7 / GMR 104.1 / Unitree 闭源 77.2 mm；用户研究（20 人）中 GMR 比 PHC、ProtoMotions 更忠实于源动作（§V）。此外，仅改变参考起始帧即可显著改变 sim2sim 成功率（§V-D）。
 
 ## 核心原理
 
@@ -118,6 +126,10 @@ flowchart LR
   U -.->|估计噪声大时评估消融| D3
 ```
 
+### 论文中的 GMR 五步（arXiv:2510.02252 §IV）
+
+1. 人–机关键 body 映射并设位置/朝向权重；2. 静止姿态下做朝向对齐，缓解 toed-in；3. **非均匀局部缩放**（身高比全局因子 × 每个 body 的局部因子，相对根节点缩放；避免脚滑的关键）；4. 第一阶段 IK 只约束朝向与末端位置（最多 10 次迭代）；5. 第二阶段换一组权重、约束全部关键 body 位置与朝向；最后用 FK 求最低高度并从全局平移中扣除，消除悬浮/穿透。
+
 ## 主要技术路线
 
 | 模块 | 核心方法 | 关键约束 |
@@ -168,6 +180,13 @@ sequenceDiagram
 - **默认关节角速度上限等保护**：减少「几何可行但电机跟不上」的极端指令（仍以机器人标定与控制器实测为准）。
 
 论文与报告可优先查阅：GMR 本体的技术报告 [arXiv:2510.02252](https://arxiv.org/abs/2510.02252)（*Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking*，Araujo、Ze、Xu、Wu、Liu，2025-10-02）；官方 README 另挂的 [arXiv:2505.02833](https://arxiv.org/abs/2505.02833) 徽章是配套遥操作系统 [TWIST](../entities/paper-twist.md)，不是 GMR 本体论文（2026-11-05 核对 arXiv 摘要页）。录用信息以官方仓库徽章为准（如 ICRA 2026 标注）。
+
+## 工程实践
+
+- 用官方仓库对应 `*_to_robot.py` 逐帧重定向，输出 pickle，再转 CSV 对接 BeyondMimic（见上文源码时序图）。
+- 论文建议：保证参考起始姿态机器人可安全到达、结尾落在稳定姿态（§V-D）。
+- 遇到腰部 roll/pitch 突跳等偶发伪影（论文称约占数据集不足 2%，如 Dance 5），可能需按动作调权重（§V-B）。
+- 在上游为估计/生成轨迹时先做「有无重定向」消融（见下文反例）。
 
 ## 关键局限与避坑指南
 
@@ -256,3 +275,9 @@ $$
 - [HOI-Retarget](../entities/paper-hoi-retarget.md) — ETH RSL HOI 管线 **vendored GMR fork** 作 III-A IK，再接物体系 contact 窗口 NLP（arXiv:2609.34674，[已开源](https://github.com/shinben0327/hoi-retarget)）。
 - [HumanoidPose](../entities/paper-humanoidpose-video-pose-estimation.md) — 从机器人视频恢复自身根姿态与关节配置；与 GMR 的动作重定向问题互补。
 - [Query：视频里的舞蹈怎么搬到 G1？](../queries/g1-video-dance-gvhmr-gmr-beyondmimic-multi-motion.md) — 视频舞蹈 → G1 的 GVHMR → GMR → BeyondMimic 实操（含 GMR 写 pickle 的核对）
+
+## 继续阅读
+
+- 论文原文：[arXiv:2510.02252](https://arxiv.org/abs/2510.02252)；通读归档见 [gmr_retargeting_matters_reading_motion_retargeting_arxiv_2510_02252.md](../../sources/papers/gmr_retargeting_matters_reading_motion_retargeting_arxiv_2510_02252.md)。
+- 论文自述局限（§VI）：动作仅来自 LAFAN1、仅 G1、不含环境/物体交互。
+- 下游物理修补路线对照：[GMR vs NMR vs Reactor](../comparisons/gmr-vs-nmr-vs-reactor.md)。

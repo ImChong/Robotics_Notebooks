@@ -53,12 +53,18 @@ sources:
   - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
   - ../../sources/papers/p3_arxiv_2607_25541.md
   - ../../sources/repos/unitree_ros2.md
+original:
+  - ../../sources/sites/unitree_g1_product_page_reading_g1spec.md
 summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。"
 ---
 
 # Unitree G1 (人形机器人)
 
 **Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。
+
+## 一句话定义
+
+Unitree G1 是宇树科技 2024-05-13 发布的 23–43 DoF、约 35 kg、折叠可搬运的入门级人形机器人，起售价 US $13.5K，面向教育科研，EDU 版开放二次开发（官方产品页）。
 
 ## 英文缩写速查
 
@@ -70,6 +76,41 @@ summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用�
 | LiDAR | Light Detection and Ranging | 机载 3D 激光，支撑地形感知 |
 | SD-AMP | Selective Domain AMP | 走跑起身统一策略的代表工作线 |
 | PILOT | Perceptive Loco-Manipulation | 感知移动操作 LLC 在 G1 上的验证 |
+
+## 为什么重要
+
+- **门槛低**：官方起售价 US $13.5K、约 35 kg、可折叠至 690×450×300 mm，单人可搬运，使「每个实验室一台人形」成为可能，下文大量论文把它作为真机验证平台。
+- **接口统一**：同一硬件被 RL 行走、跑酷、遥操作、VLA、安全等多条路线复用，便于横向对比（见「关联页面」）。
+
+## 核心原理（硬件与控制接口）
+
+以下规格出自 [官方产品页归档](../../sources/sites/unitree_g1_product_page_reading_g1spec.md)：
+
+| 项 | G1 | G1 EDU |
+|----|----|--------|
+| 自由度 | 23 | 23–43（可选腰 +2、腕 +2、Dex3-1 单手 7） |
+| 单腿 / 单臂 | 6 / 5 | 6 / 5 |
+| 膝最大扭矩 | 90 N·m | 120 N·m |
+| 臂最大负载 | 约 2 kg | 约 3 kg |
+| 感知 | 深度相机 + 3D LiDAR | 同左（可选 Orin 等高算力模块） |
+| 二次开发 | 否 | 是 |
+
+- 关节为低惯量高速内转子 PMSM + 交叉滚子轴承 + 双编码器，全关节支持力位混合控制，这是 [WBC](../concepts/whole-body-control.md) 与 RL 低层 PD 指令（kp/kd/q/dq/tau，见上文时序图）能直接落地的硬件基础。
+- 推断：时序图示例中 29 个电机对应某一 EDU 配置，具体电机数随选配而异，部署前须核对自己机器的配置。
+
+## 工程实践
+
+- **研发路径**：仿真训练（Isaac Lab / `legged_gym` / `unitree_rl_*`）→ ONNX 导出 → 经 SDK2 / DDS 或 [unitree_ros2](./unitree-ros2.md) 下发低层指令；软件入口见 [G1 软件服务栈](./unitree-g1-software-stack.md)。
+- **算力**：出厂 8 核 CPU 仅做基础运算，论文中的机载深度策略多外挂 Jetson Orin（见上文各条目）。
+- **安全**：官方脚注要求与人保持足够安全距离；运行低层示例前先确认悬挂 / 防护条件（时序图已提示）。
+- **续航**：约 2 h，9000 mAh 速换电池，长时间数据采集需备电池。
+
+## 局限
+
+- 只有 EDU 版提供二次开发；普通版不能默认假设可接管低层。
+- 臂载荷约 2–3 kg 且随伸臂姿态大幅下降，重载操作需谨慎；官方脚注自述部分演示功能仍在开发，且行业处于早期探索阶段。
+- 官方发布不等于完整机械 / 电气设计开源（见 [官方归档](../../sources/sites/unitree-g1-official.md)）。
+- 本页「核心特性」列出的论文成果多为各论文自报，未经本页独立复现。
 
 ## 产品发布时间
 
@@ -212,7 +253,15 @@ sequenceDiagram
 - [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — G1 踝部闭链 IK/FK/雅可比参考实现（[Parallel_Ankle_Joint](https://github.com/feidedao/Parallel_Ankle_Joint)）。
 - [Fail-Passive Gap](./paper-fail-passive-gap.md) — G1 EDU 工业保护停可行性：外部链可评、机侧反应链不可评（arXiv:2608.02809）。
 
+## 继续阅读
+
+- [Unitree 品牌主页](./unitree.md)、[unitree_ros2](./unitree-ros2.md)、[G1 软件服务栈](./unitree-g1-software-stack.md)
+- [运动控制主路线](../../roadmap/motion-control.md)
+- 官方产品页：<https://www.unitree.com/g1/>
+
 ## 参考来源
+
+- [G1 官方产品页规格通读](../../sources/sites/unitree_g1_product_page_reading_g1spec.md)
 
 - [G1 官方发布时间与版本边界](../../sources/sites/unitree-g1-official.md)
 

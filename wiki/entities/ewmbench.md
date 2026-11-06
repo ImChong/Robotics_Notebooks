@@ -2,6 +2,8 @@
 type: entity
 tags: [benchmark, embodied-ai, video-generation, world-models, manipulation, evaluation, open-source, agibot]
 status: complete
+original:
+  - ../../sources/papers/ewmbench_reading_arxiv_2505_09694_ewm1.md
 arxiv: "2505.09694"
 updated: 2026-10-16
 related:
@@ -89,6 +91,14 @@ flowchart LR
   N --> M
   N --> SEM
 ```
+
+## 工程实践
+
+- **评测规模与协议**（论文 §4、附录 A）：10 任务 × 10 个真值 episode，每模型每 episode 生成 3 条取最优，7 个模型共 2100 条视频；参考图缩放到 640×480，生成视频统一为 640×480、30 FPS 后再评分。
+- **提示约束**：提示用当前子动作的步骤字幕，并附加“保持机器人第一视角不变、保持首帧不变”的固定约束句。
+- **轨迹提取是 2D 检测**：微调 YOLO-World + BoT-SORT 取双手中凸包跨度最大者；运动三指标 HSD / nDTW / DYN 互补（序列反转只拉低 nDTW，离群点拉低 HSD 与 DYN），不宜只报其一。
+- **读分要点**：场景分与运动分需联合看，静止视频可在场景一致性上得高分；论文 Table 2 中领域适配模型（EnerVerse_FT、LTX_FT）领先，常见失败为空抓、画出人手、视角漂移、机械臂抖动。
+- **复现**：以官方仓库 README 与 HF 数据卡为准（见上文“依赖链重”）。
 
 ## 常见误区或局限
 

@@ -6,7 +6,7 @@ tags:
   - reward-model
   - policy-learning
 status: complete
-updated: 2026-11-04
+updated: 2026-11-06
 arxiv: "2611.03622"
 project: https://weirdlabuw.github.io/dna
 code: https://github.com/memmelma/dna

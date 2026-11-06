@@ -13,7 +13,7 @@ tags:
 - google
 - repo
 status: complete
-updated: 2026-10-06
+updated: 2026-11-06
 arxiv: '2410.08650'
 venue: ICRA 2025
 code: https://github.com/Rhoban/bam
