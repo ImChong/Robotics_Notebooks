@@ -241,6 +241,8 @@ MemoryVLA、[MemER](../entities/paper-memer.md)、ContextVLA、MEM、HiMe 等解
 
 ## 与其他页面的关系
 
+- [上下文学习的电路](../entities/paper-a-circuit-for-in-context-learning.md) — 语言模型短句分类中的因果机制研究；不能直接视为机器人策略的机制证据。
+
 - [Foundation Policy](./foundation-policy.md) — ICL 是部署期适应手段，不改变「大规模预训练通用策略」母类定义
 - [Imitation Learning](../methods/imitation-learning.md) — 示范数据与 one-shot / few-shot 训练目标的传统路线
 - [VLA](../methods/vla.md) — 马尔可夫 VLA 与长上下文 / 记忆增强 VLA 的分叉
