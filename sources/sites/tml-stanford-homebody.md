@@ -14,7 +14,7 @@
 
 | 项 | 结论 |
 |----|------|
-| Code | 链 GitHub；仓内 **Code coming soon** |
+| Code | 截至 2026-11-06 官方 GitHub 已发布 SIM、REAL2SIM、REAL；见仓库归档 |
 | 硬件 | Unitree G1；D435i；LiDAR；iPhone 0.5× 视频 |
 | 仿真 | NVIDIA Isaac Sim 数字孪生 |
 | 远程模型 | GPT Astra（System 2） |
