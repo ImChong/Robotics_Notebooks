@@ -209,7 +209,7 @@ Rhoda AI 只归入 ①：官网 3 篇研究博文围绕「互联网规模视频�
 | 光轮智能 | 🟡 | ❌ | 🟡 | [LW-BenchHub](../entities/cn-os-lw-benchhub.md)、LeIsaac、AutoDataGen、EgoSuite DevKit 开源（Apache-2.0）；部分 SimReady / YCB 资产 CC BY-NC；[EgoSuite-Open100K](../entities/egosuite-open100k.md) 部分数据门控开放；完整资产库、RoboFinals 平台为商业产品 |
 | 西湖机器人 | ❌ | ❌ | ❌ | [GAE](../entities/paper-gae-general-action-expert.md) 为付费闭源软件（V1.2.0，加密狗授权，仅宇树本体包），论文无代码；GitHub 仅有客户端 API 文档仓 |
 | 源策未来 | 🟡 | ❌ | ❌ | 公司 GitHub / HF 组织尚无公开仓库；[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md) 代码在 OpenDriveLab 组织下开源，EgoHumanoid-V2 代码待发布 |
-| 伽马智能 | ✅ | 🟡 | ❓ | [Gamma-Robot](https://github.com/Gamma-Robot) 5 个公开仓库；NEXUS 附 G1 ONNX 策略、KODA 附部分 checkpoint，KODA 动作标签与训练待发布；LocoManiLab 链接的 HF 数据集未核对；GBot-W 无公开 SDK（[核查](../../sources/sites/gamma-robotics.md)） |
+| 伽马智能 | ✅ | 🟡 | 🟡 | [Gamma-Robot](https://github.com/Gamma-Robot) 5 个公开仓库；NEXUS 附 G1 ONNX 策略、KODA 附部分 checkpoint，KODA 动作标签与训练待发布；LocoManiLab 的 HF 数据集公开（234 任务数据与部分权重），GR-BC 数据集与策略权重未发布；GBot-W 无公开 SDK（[核查](../../sources/sites/gamma-robotics.md)） |
 | Li Auto | 🟡 | 🟡 | ❓ | [MachEmbodied](https://github.com/MachEmbodied) 有 ME-U0、ME-Dex 推理、ME-Brain 部分仓；ME-VLM 代码与权重待发布（[四篇地图](../overview/li-auto-machembodied-4-papers-technology-map.md)） |
 | 智在无界 BeingBeyond | ✅ | 🟡 | 🟡 | [GitHub](https://github.com/BeingBeyond) 27 个公开仓库；HF 有 Being-H0（1B / 8B / 14B）、Being-H05-2B、TTP 权重与部分数据集；Being-M0.7、Being-H0.8 项目页未列代码与权重（[核查](../../sources/sites/research-beingbeyond-com.md)） |
 | RoboParty | ✅ | 🟡 | 🟡 | 整机与 hhtools / MimicLite / UFO 有源码；部分策略与数据有下载入口；INTACT 上游已有资产、组织 fork 仍为预览；数据生成、VLA / Agent 不视为全部开放（[补核](../../sources/repos/party_os.md)） |

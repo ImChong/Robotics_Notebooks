@@ -114,7 +114,7 @@
 - **NEXUS：** G1 感知式全身遥操作；含地形动作适配、PPO 教师、学生蒸馏、ONNX 回放与预训练 G1 策略；训练示例 4 GPU × 16,384 环境。
 - **GR-BC：** README 更新记录「2026-10-16: Code released, with graph weighting, VLA training, and visualization tools.」；基于 LeRobot，支持 SmolVLA / X-VLA / π₀.₅。
 - **KODA：** 公开版只含机器人运动学与运动对齐的机载视频生成；控制器动作标签、SONIC token 编码、数据导出与策略训练（M3–M5）仍为 Planned。
-- **LocoManiLab：** collect → prepare → convert → train → evaluate → deploy 工作流，234 任务基准；README 写「Model integrations are retained for research and have not all been revalidated end to end」；链接 HF 数据集 `GammaRobotics/LocoManiLab`（未打开核对）。仓库 3 次提交。
+- **LocoManiLab：** collect → prepare → convert → train → evaluate → deploy 工作流，234 任务基准；README 写「Model integrations are retained for research and have not all been revalidated end to end」；链接 HF 数据集 `GammaRobotics/LocoManiLab`（公开、未设门槛，含 234 任务数据与部分推理 / 控制器权重，见[论文归档](../papers/locomanilab_arxiv_2610_30876.md)）。仓库 3 次提交。
 - **bfm_ttc：** 冻结人形 BFM 上的测试时指令优化（TTCO），MuJoCo Warp 并行采样，G1。
 
 ## 论文署名核查（arXiv，2026-11-06）
