@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-06] ingest | sources/sites/liber-0.md — 核对 Liber-0 官方博客与实验口径
+
+## [2026-11-06] ingest | sources/repos/stanford-tml-homebody.md — 更新 HomeBody 代码开放状态与仿真运行入口
+
 ## [2026-11-06] ingest | paper-dynasolver — 补充论文实验、局限与项目流程图
 
 ## [2026-11-05] ingest | sources/papers/vflash.md — 收录 VFlash 视觉图元解码与实验，核查代码链接

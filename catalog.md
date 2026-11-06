@@ -877,6 +877,7 @@
 - [LeRobot (Hugging Face)](wiki/entities/lerobot.md) — LeRobot** 是 Hugging Face 维护的开源机器人学习框架（PyTorch，Apache 2.0）：用一套库和命令行走完 **采集示范 → 训练策略 → 仿真评测 → 真机部署 `📅unknown` `[entity_page]`
 - [LET-Base-Dataset](wiki/entities/let-base-dataset.md) — LET-Base-Dataset**（HF [`LejuRobotics/LET-Base-Dataset`](https://huggingface.co/datasets/LejuRoboti `📅unknown` `[entity_page]`
 - [LeTools](wiki/entities/letools.md) — LeTools**（<https://www.letools.lejurobot.com/>）是乐聚为 **Kuavo 全尺寸人形** 提供的 **采集–训练–部署软件层**：产品站把「All I `📅unknown` `[entity_page]`
+- [Liber-0：从人类经验学习机器人操作](wiki/entities/liber-0.md) — LiberAI 的 Liber-0 是联合预测未来视觉帧和动作的世界动作模型，利用人类视频、测量的手部动作和跨本体数据学习机器人操作。 `📅unknown` `[entity_page]`
 - [LIBERO](wiki/entities/libero-benchmark.md) — LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) 收录于具身智能研究室 [开源项目主表](https://github.com/R `📅unknown` `[entity_page]`
 - [libethercat（DLR）](wiki/entities/libethercat-dlr.md) — 德国宇航中心（DLR）的 EtherCAT C 库，文章称用于空间机电控制、偏科研。（分类：EtherCAT 主站；语言/形态：C 库） `📅unknown` `[entity_page]`
 - [LIFT（人形大规模预训练 + 高效微调）](wiki/entities/lift-humanoid.md) — LIFT**（论文缩写：**L**arge-scale pretra**I**ning and efficient **F**ine**T**uning）是面向 **人形机器人 locomotio `📅unknown` `[entity_page]`
