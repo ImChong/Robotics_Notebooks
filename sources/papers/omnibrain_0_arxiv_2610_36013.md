@@ -7,8 +7,8 @@
 - **arXiv：** <https://arxiv.org/abs/2610.36013>
 - **PDF：** <https://arxiv.org/pdf/2610.36013>
 - **项目页：** <https://public-bots.github.io/OmniBrain-0/>
-- **核对范围：** arXiv v1 摘要、项目页与官方仓库 README；此前方法部分已读，实验和附录尚未通读，PDF 超过本次读取工具大小限制。
-- **通读：** 未完成
+- **核对范围：** arXiv v1 HTML 全文：§1–7 方法、实验、消融与局限，以及附录 §8–11 的工具、评测协议、数据、训练参数与案例；项目页和官方仓库 README。HTML 图中具体细节未能逐项核验。
+- **通读：** 已完成
 - **入库日期：** 2026-10-28
 - **线索来源：** [人类视频怎样变成机器人能用的动作经验？](../blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)（具身智能小站，2026-10-28）
 - **一句话说明：** 通过具身预训练、领域专家蒸馏和多教师在策略蒸馏整合导航与操作决策。
