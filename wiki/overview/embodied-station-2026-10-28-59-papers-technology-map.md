@@ -9,6 +9,8 @@ related:
   - ../entities/paper-aura.md
   - ../methods/vla.md
   - ../concepts/world-action-models.md
+original:
+  - ../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md
 summary: "具身智能小站 2026-10-28 盘点：免渲染事件帧仿真（深读）、RynnVLA-Latent 三维潜在动作、AuRA 自主交互采集，以及评测基准、灵巧操作、导航与无人机、世界模型等 59 篇；59/59 独立节点（新建 55 / 复用 4）。"
@@ -18,7 +20,7 @@ summary: "具身智能小站 2026-10-28 盘点：免渲染事件帧仿真（深�
 
 > **本页定位**：为 [具身智能小站 · 人类视频怎样变成机器人能用的动作经验？](https://mp.weixin.qq.com/s/JSya9kmE3Fcon3BY_DcCVA)（2026-10-28）提供按研究方向组织的阅读坐标；59 篇全部有独立详情节点。
 
-## 一句话观点
+## 一句话定义
 
 **人类视频缺控制标签，所以本期的共同线索是把它转成机器人可用的动作经验：潜在动作、三维运动监督与示范迁移；另一半篇幅在补评测——成功率之外还要看过程、失败原因与安全语义。深读免渲染事件仿真，跟进 RynnVLA-Latent 与 AuRA。**
 
@@ -30,7 +32,7 @@ summary: "具身智能小站 2026-10-28 盘点：免渲染事件帧仿真（深�
 | WAM | World Action Model | 世界–动作联合模型 |
 | VLM | Vision-Language Model | 视觉语言模型 |
 
-## 为什么单独做这张地图
+## 为什么重要
 
 - 公众号一次列出 59 篇（1 深读 + 2 跟进 + 56 扫读）、方向跨度大，需要横切面索引；每篇只保留一个判断，细节在各节点。
 - 节点内的数字为公众号转述，未核验原文表格；开源结论为入库日核查结果，见各节点「为什么重要」。
@@ -127,7 +129,7 @@ flowchart TB
 | RoboAuto | [paper-roboauto](../entities/paper-roboauto.md) | 待发布 |
 | Human-Guided Adaptive Residual Correction | [paper-human-guided-adaptive-residual-correction](../entities/paper-human-guided-adaptive-residual-correction.md) | 项目页未列 GitHub |
 | Quality-Controllable Policies | [paper-quality-controllable-policies](../entities/paper-quality-controllable-policies.md) | 待发布 |
-| OmniBrain-0 | [paper-omnibrain-0](../entities/paper-omnibrain-0.md) | 已开源 |
+| OmniBrain-0 | [paper-omnibrain-0](../entities/paper-omnibrain-0.md) | 模型代码待发布 |
 | AdaPolicy | [paper-adapolicy](../entities/paper-adapolicy.md) | 部分开源 |
 | RoboLongR | [paper-robolongr](../entities/paper-robolongr.md) | 项目页未列 GitHub |
 | FISRF | [paper-fisrf](../entities/paper-fisrf.md) | 项目页未列 GitHub |
@@ -144,6 +146,14 @@ flowchart TB
 | SysML v2 ROS 2 Library | [paper-sysml-v2-ros-2-library](../entities/paper-sysml-v2-ros-2-library.md) | 已开源 |
 | Aerial Manipulator Nonlinear Control | [paper-aerial-manipulator-nonlinear-control](../entities/paper-aerial-manipulator-nonlinear-control.md) | 已开源 |
 | Spiking Periodic Orbit Stabilization | [paper-spiking-periodic-orbit-stabilization](../entities/paper-spiking-periodic-orbit-stabilization.md) | 部分开源 |
+
+## 工程实践
+
+从分组索引选题，再打开对应实体核对原论文、代码开放范围、任务协议和硬件条件；本地图不作为复现步骤。
+
+## 局限
+
+本页整理的是公众号盘点，不代表已逐篇通读或复现实验；开放状态有时效，须以各项目当前官方资料为准。
 
 ## 关联页面
 

@@ -12,4 +12,4 @@
 
 ## 开源状态
 
-- **已开源**（步骤 2.5 核查，2026-10-28）：公众号未给代码链接；项目页链接的 luo-yc17/OmniBrain-0 经 git ls-remote 可达。
+- **模型代码待发布**（2026-11-06）：项目页链接的 [官方仓库](https://github.com/luo-yc17/OmniBrain-0) README 标注 Code: coming soon；仓库可访问不等于模型实现已发布。

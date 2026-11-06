@@ -8,6 +8,8 @@
 - **原始链接：** https://mp.weixin.qq.com/s/JSya9kmE3Fcon3BY_DcCVA
 - **发表日期：** 2026-10-28
 - **入库日期：** 2026-10-28
+- **核对范围：** 2026-10-28 原始抓取全文，包括 1 篇深读、2 篇跟进与 56 篇条目；不代表逐篇论文均已通读。
+- **通读：** 已完成
 - **抓取方式：** `scripts/fetch_wechat_article.py`（Chromium + 微信 UA）
 - **原始抓取落盘：** [`sources/raw/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md`](../raw/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - **一句话说明：** 人类视频缺控制标签，所以本期的共同线索是把它转成机器人可用的动作经验：潜在动作、三维运动监督与示范迁移；另一半篇幅在补评测——成功率之外还要看过程、失败原因与安全语义。深读免渲染事件仿真，跟进 RynnVLA-Latent 与 AuRA。 共 59 篇；**59/59 独立详情节点**（本 ingest **新建 55**、**复用 4**）。
