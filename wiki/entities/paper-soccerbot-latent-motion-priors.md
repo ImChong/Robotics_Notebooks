@@ -27,10 +27,12 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ../concepts/domain-randomization.md
   - ../concepts/sim2real.md
+  - ../overview/embodied-station-2026-11-06-20-papers-technology-map.md
 sources:
   - ../../sources/papers/soccerbot-latent-motion-priors_arxiv_2611_06564.md
   - ../../sources/sites/soccerbot-latent-motion-priors.md
   - ../../sources/repos/soccerbot-latent-motion-priors.md
+  - ../../sources/blogs/wechat_embodied_station_20_papers_curobov2_fast_halo_humanwam_2026-11-06.md
 summary: "SoccerBot（arXiv:2611.06564v1，CoRL 2026）：约 2.5 小时筛选后的人类足球动捕 → 跟踪教师 → 蒸馏为状态条件潜运动先验（冻结 prior+decoder）→ 单个技能条件 PPO 残差策略统一移动/带球/停球/踢球；TSI 初始化训练技能切换；G1 零样本、外部光学动捕给球态；仿真踢球 SR 97.04%，真机踢球方向 SR 与仿真平均差约 3.1 个百分点；训练代码未发布，项目页仅含浏览器 playground 与一个 ONNX 策略。"
 ---
 

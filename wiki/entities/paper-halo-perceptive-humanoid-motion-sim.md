@@ -51,11 +51,13 @@ related:
   - ../tasks/loco-manipulation.md
   - ../tasks/humanoid-locomotion.md
   - ../comparisons/mujoco-vs-isaac-lab.md
+  - ../overview/embodied-station-2026-11-06-20-papers-technology-map.md
 sources:
   - ../../sources/papers/halo_perceptive_humanoid_motion_sim_arxiv_2611_06908.md
   - ../../sources/sites/halo-perceptive-humanoid-motion-sim.md
   - ../../sources/repos/halo-perceptive-humanoid-motion-sim.md
   - ../../sources/papers/2026-11-06-seven-robotics-intake-draft.md
+  - ../../sources/blogs/wechat_embodied_station_20_papers_curobov2_fast_halo_humanwam_2026-11-06.md
 summary: "HALO（arXiv:2611.06908 v1，Apple）：全程在仿真里合成「egocentric 图像 + 语言 + 全身运动」数据（1,000 个 Infinigen 程序生成房间、Kimodo 生成运动、约 296 h），训练 VLM 编码 + DiT 解码的 5 s 运动规划器与带深度的 RL 运动跟踪器，再由 VLM 编排器串联技能；Unitree G1 在 6 个未扫描的真实环境、360 次单任务试验里成功率 91%（论文 Table II）。官方仓库已公开代码但不含权重与数据。"
 ---
 

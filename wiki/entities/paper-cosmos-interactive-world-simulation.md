@@ -14,6 +14,7 @@ tags:
 status: complete
 updated: 2026-11-06
 project_id: cosmos-interactive-world-simulation
+arxiv: "2611.06627"
 project: https://research.nvidia.com/labs/cosmos-lab/cosmos-simulation/
 code: https://github.com/nvidia/cosmos
 related:
@@ -23,10 +24,12 @@ related:
   - ../concepts/world-action-models.md
   - ../concepts/sim2real.md
   - ./cosmos-transfer.md
+  - ../overview/embodied-station-2026-11-06-20-papers-technology-map.md
 sources:
   - ../../sources/papers/cosmos_interactive_world_simulation_tech_report_2026.md
   - ../../sources/blogs/nvidia_cosmos_interactive_world_simulation_hf_blog.md
   - ../../sources/sites/hf_cosmos3_nano_sim_checkpoints_model_cards.md
+  - ../../sources/blogs/wechat_embodied_station_20_papers_curobov2_fast_halo_humanwam_2026-11-06.md
 summary: "Cosmos Interactive World Simulation（2026-10，NVIDIA）：把 Cosmos 3 改造成可流式交互的世界仿真，开源 Transfer-Auto、Sim-Auto、Sim-Transfer、Sim-Bimanual 四个 16B Nano 后训练 checkpoint（OpenMDW 1.1），覆盖机器人交互、sim-to-real 视频迁移与多视角驾驶仿真；2026-11-05 HF 博文与模型卡口径已补入。"
 ---
 

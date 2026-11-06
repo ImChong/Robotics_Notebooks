@@ -41,10 +41,12 @@ related:
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../tasks/manipulation.md
+  - ../overview/embodied-station-2026-11-06-20-papers-technology-map.md
 sources:
   - ../../sources/papers/vabar_arxiv_2611_06881.md
   - ../../sources/sites/vabar-berkeleyautomation-github-io.md
   - ../../sources/repos/vabar_berkeleyautomation.md
+  - ../../sources/blogs/wechat_embodied_station_20_papers_curobov2_fast_halo_humanwam_2026-11-06.md
 summary: "VABAR（arXiv:2611.06881 v1，UC Berkeley / NVIDIA / Siemens）：面向 agentic robotics 的变体自动化（VA）仿真基准。六类任务（分拣工具、挂工具、齿轮啮合、注射器装箱、线缆插接、线缆布线）× 两档难度，33 个技能库，Newton 与 Isaac Lab Arena 两套实现；基线 GaP 在 Newton 上自动生成图在 12 个条件上均低于人工图，Claude Code（无机器人 harness）几乎为零。代码仓库页面标注 Nov 9 公开，截至 2026-11-06 不可达。"
 ---
 
