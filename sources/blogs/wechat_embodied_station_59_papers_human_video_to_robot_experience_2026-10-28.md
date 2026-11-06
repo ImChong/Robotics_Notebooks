@@ -8,6 +8,8 @@
 - **原始链接：** https://mp.weixin.qq.com/s/JSya9kmE3Fcon3BY_DcCVA
 - **发表日期：** 2026-10-28
 - **入库日期：** 2026-10-28
+- **核对范围：** 2026-10-28 原始抓取全文，包括 1 篇深读、2 篇跟进与 56 篇条目；不代表逐篇论文均已通读。
+- **通读：** 已完成
 - **抓取方式：** `scripts/fetch_wechat_article.py`（Chromium + 微信 UA）
 - **原始抓取落盘：** [`sources/raw/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md`](../raw/wechat_embodied_station_59_papers_human_video_to_robot_experience_2026-10-28.md)
 - **一句话说明：** 人类视频缺控制标签，所以本期的共同线索是把它转成机器人可用的动作经验：潜在动作、三维运动监督与示范迁移；另一半篇幅在补评测——成功率之外还要看过程、失败原因与安全语义。深读免渲染事件仿真，跟进 RynnVLA-Latent 与 AuRA。 共 59 篇；**59/59 独立详情节点**（本 ingest **新建 55**、**复用 4**）。
@@ -63,7 +65,7 @@
 | 45 | 灵巧与接触操作 | Keeping Contact | [2610.36961](https://arxiv.org/abs/2610.36961) | **项目页未列 GitHub** | [paper-keeping-contact](../../wiki/entities/paper-keeping-contact.md) |
 | 46 | 潜在动作与世界模型 | Trace-WAM | [2610.36840](https://arxiv.org/abs/2610.36840) | **项目页未列 GitHub** | [paper-trace-wam](../../wiki/entities/paper-trace-wam.md) |
 | 47 | 数据采集与示范迁移 | RoboSTD | [2610.36685](https://arxiv.org/abs/2610.36685) | **已开源** | [paper-robostd](../../wiki/entities/paper-robostd.md) |
-| 48 | VLA 与策略后训练 | OmniBrain-0 | [2610.36013](https://arxiv.org/abs/2610.36013) | **模型代码待发布** | [paper-omnibrain-0](../../wiki/entities/paper-omnibrain-0.md) |
+| 48 | VLA 与策略后训练 | OmniBrain-0 | [2610.36013](https://arxiv.org/abs/2610.36013) | **已开源** | [paper-omnibrain-0](../../wiki/entities/paper-omnibrain-0.md) |
 | 49 | 灵巧与接触操作 | Action Representation Pretraining | [2610.34453](https://arxiv.org/abs/2610.34453) | **项目页未列 GitHub** | [paper-action-representation-pretraining](../../wiki/entities/paper-action-representation-pretraining.md) |
 | 50 | VLA 与策略后训练 | AdaPolicy | [2610.34280](https://arxiv.org/abs/2610.34280) | **部分开源** | [paper-adapolicy](../../wiki/entities/paper-adapolicy.md) |
 | 51 | 潜在动作与世界模型 | X-World | [2610.34105](https://arxiv.org/abs/2610.34105) | **项目页未列 GitHub** | [paper-x-world-variable-view-video-priors](../../wiki/entities/paper-x-world-variable-view-video-priors.md) |
