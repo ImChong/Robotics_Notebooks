@@ -70,13 +70,13 @@
           '**《Modern Robotics》** Lynch & Park：第 6 章开头、式 (6.1)、图 6.1',
           '　两连杆：工作空间是圆环，0 / 1 / 2 组解，elbow-up / elbow-down',
           '**《Modern Robotics》** 6.1.1 节、图 6.5；附录 B.1（手腕：β 两组解）',
-          '**《Modern Robotics》** 6.5 节；6.7 节：一般 6R 最多 16 组解',
-          '　（Lee & Liang；Raghavan & Roth）',
-          '**ROS-Industrial ur_kinematics**（Hawkins，2013）ur_kin.h / .cpp：',
-          '　UR 机械臂解析逆解 maximum of 8，肩、腕、肘各两个',
-          '**Python 文档** math.sqrt、math.atan2、math.degrees，',
-          '　内置函数 round，教程 4.1 if 语句；**UR5 URDF**（ur_description）',
-          '**Unitree G1 URDF**：膝 −5°～165°，一条胳膊 7 个转动关节'
+          '**《Modern Robotics》** 6.5、6.7 节（Lee & Liang；Raghavan & Roth）',
+          '**ur_kinematics**（ROS-Industrial）：UR 解析逆解最多 8 组',
+          '**《Modern Robotics》** 4.1.1 节 v = −ω × q；**官方代码** FKinSpace 等',
+          '**Python 文档** math、round、print，教程 4.1、5.3；**C 标准** 7.12.7.5',
+          '**NumPy 文档** numpy.radians、ndarray.round；**UR5 URDF**',
+          '**Unitree G1 URDF**：膝 −5°～165°，一条胳膊 7 个转动关节',
+          '**Python 3.13、NumPy 2.5.3、modern_robotics 1.1.1** 实跑'
         ]
       },
       end: { s: '零基础篇 · 一集只讲一个问题　下集见', at: 12.72 }
