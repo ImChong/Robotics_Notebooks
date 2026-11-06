@@ -246,6 +246,8 @@ sequenceDiagram
 - [frontier-models-3d-cad-robotics-survey](../overview/frontier-models-3d-cad-robotics-survey.md)
 - [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
 - [locomotion](../tasks/locomotion.md)
+- [agibot-go-3-preview](agibot-go-3-preview.md) — AGIBOT GO-3 Preview（榜单条目 GO-3 Nano Preview 的名次核对）
+- [paper-compounding-physical-rsi](paper-compounding-physical-rsi.md) — Compounding Physical RSI（RoboDojo-Sim 42 任务上的仿真结果）
 
 ## 参考来源
 

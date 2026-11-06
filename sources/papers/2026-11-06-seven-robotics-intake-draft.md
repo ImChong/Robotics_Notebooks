@@ -1,6 +1,6 @@
-# 七项机器人资料：初步核验与待完成工作
+# 七项机器人资料：登记与节点映射
 
-入库日期：2026-11-06。**状态：草稿；尚未完成论文通读、去重、实体页和验证，不可作为完整 ingest 合并。** 下述论文信息目前仅根据 arXiv v1 摘要核对，数值为作者报告，不是独立复现结果。
+入库日期：2026-11-06。**状态：已完成。** 下方各项的正式节点见「节点映射」；以下为入库时的 v1 摘要级登记（保留作溯源），**与全文核对后的出入以各 wiki 节点为准**（例如 GO-3 三榜第一只有 RoboTwin 完整成立；Compounding Physical RSI 全文只做仿真、不支持真机；HALO 的 91% 是 6 项单任务均值而多任务真机均值为 70%）。
 
 ## HALO
 
@@ -42,9 +42,19 @@
 - 论文：[Playing Soccer Like Humans Do: Learning Versatile and Agile Humanoid Soccer via Latent Motion Priors](https://arxiv.org/abs/2611.06564v1)
 - 摘要称通过人类足球动作捕捉构建潜在运动先验，统一移动、带球、停球和踢球，并零样本迁移至 Unitree G1。训练细节与真机试验条件待核对。
 
-## 完成前待办
+## 节点映射（全文阅读与核对后）
 
-1. 通读五篇论文全文及相关附录；逐项核实原文版本、方法、实验、限制。
-2. 打开项目页，核对代码、数据及权重开放状态；有可运行实现时阅读源码及运行入口。
-3. 按项目身份检索并复用已有节点；分别整理 sources 和 wiki，补基于原文的 Mermaid 流程图及适用的源码运行时序图。
-4. 在完整检出的仓库运行 `make ci-preflight`，检查 CI；本草稿尚未执行。
+| 项 | 节点 | 说明 |
+|----|------|------|
+| HALO | [paper-halo-perceptive-humanoid-motion-sim](../../wiki/entities/paper-halo-perceptive-humanoid-motion-sim.md) | 20 页含附录读完；代码已公开（Apple 自定义许可），权重与大部分数据不发布 |
+| VABAR | [paper-vabar-variational-automation-benchmark](../../wiki/entities/paper-vabar-variational-automation-benchmark.md) | 项目页写 Nov 9 公开仓库，当前不可达；时序图改画相关公开仓库 RoboSimStudio 的评测通路 |
+| Cosmos 3 交互式世界仿真 | [paper-cosmos-interactive-world-simulation](../../wiki/entities/paper-cosmos-interactive-world-simulation.md)（既有节点，已补全） | 四个 checkpoint 逐个核对模型卡；更正旧页「三类」与「仅 AgiBot」的说法 |
+| AGIBOT GO-3 Preview | [agibot-go-3-preview](../../wiki/entities/agibot-go-3-preview.md) | 新闻稿三榜核对；论文 / 代码 / 权重均未找到 |
+| Compounding Physical RSI | [paper-compounding-physical-rsi](../../wiki/entities/paper-compounding-physical-rsi.md) | 仅仿真、无代码；与库内 `physical-rsi` 页的榜单数字出处不同，未合并比较 |
+| A³-VLA | [paper-a3-vla-attention-alignment](../../wiki/entities/paper-a3-vla-attention-alignment.md) | 未找到公开代码 |
+| Soccerbot | [paper-soccerbot-latent-motion-priors](../../wiki/entities/paper-soccerbot-latent-motion-priors.md) | 训练代码与数据未发布；仓库只有网页 playground |
+
+## 仍未完成
+
+- 在完整检出的仓库运行 `make ci-preflight`（本环境为浅克隆，未执行）。
+- VABAR 仓库公开后（项目页写 Nov 9）复核其目录与入口；GO-3 开源后复核。

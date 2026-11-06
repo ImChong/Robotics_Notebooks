@@ -166,6 +166,7 @@ flowchart TB
 - [GPT 6 Astra 具身策略评测](./paper-gpt-6-astra-embodied-policy.md) · [Simate](./simate.md)
 - [RSI 四 tier 选型](../queries/rsi-four-tier-five-pushes.md)
 - [VLA](../methods/vla.md) · [Manipulation](../tasks/manipulation.md)
+- [paper-compounding-physical-rsi](paper-compounding-physical-rsi.md) — Compounding Physical RSI（arXiv 2611.06654，不同论文；仿真、无代码）
 
 ## 参考来源
 

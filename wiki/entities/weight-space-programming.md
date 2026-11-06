@@ -97,6 +97,7 @@ sequenceDiagram
 
 - [CapVector 能力向量](paper-capvector-capability-vectors-vla.md)：同属参数空间操作，但依赖微调模型差分。
 - [强化学习](../methods/reinforcement-learning.md)：PPO 是部分实验中的训练基线。
+- [paper-compounding-physical-rsi](paper-compounding-physical-rsi.md) — Compounding Physical RSI（权重空间候选筛选的一个应用实例）
 
 ## 参考来源
 

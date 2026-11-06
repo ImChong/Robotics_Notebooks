@@ -181,6 +181,7 @@ RoboSimStudio 的主要价值是把场景构建、物理建模和人机反馈连
 - [Sim2Real](../concepts/sim2real.md)：仿真如何服务于真实机器人策略。
 - [MuJoCo Warp](./mujoco-warp.md)：Newton 中的 GPU 刚体仿真组件。
 - [NVIDIA Warp](./nvidia-warp.md)：GPU 计算与内核基础。
+- [paper-vabar-variational-automation-benchmark](paper-vabar-variational-automation-benchmark.md) — VABAR（同组变分自动化基准，评测通路见其时序图）
 
 ## 参考来源
 

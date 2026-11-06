@@ -131,6 +131,7 @@ flowchart TB
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md)
 - [RoboNaldo](./paper-robonaldo-humanoid-soccer-shooting.md)
 - [noetix_e1_lab](./cn-os-noetix-e1-lab.md)
+- [paper-soccerbot-latent-motion-priors](paper-soccerbot-latent-motion-priors.md) — Soccerbot（潜在运动先验统一四种足球技能，arXiv 2611.06564，不同论文）
 
 ## 参考来源
 
