@@ -6,6 +6,7 @@ updated: 2026-09-15
 arxiv: "2605.27365"
 code: https://github.com/NVlabs/Eagle/tree/main/Embodied
 related:
+  - ./paper-vflash.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/object-detection-model-selection.md
   - ../methods/object-detection.md
@@ -25,6 +26,8 @@ summary: "LocateAnything（arXiv:2605.27365，NVIDIA）：Parallel Box Decoding 
 # LocateAnything：基于并行框解码的快速高质量视觉-语言定位
 
 **LocateAnything**（*Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding*，[arXiv:2605.27365](https://arxiv.org/abs/2605.27365)，[项目页](https://research.nvidia.com/labs/lpr/locate-anything/)，[代码](https://github.com/NVlabs/Eagle/tree/main/Embodied)，[权重](https://huggingface.co/nvidia/LocateAnything-3B)）由 **NVIDIA** 等提出：在统一 VLM 框架下用 **Parallel Box Decoding（PBD）** 把 **bounding box / point** 作为 **定长原子单元** 单步并行预测，缓解坐标 token 逐字自回归带来的几何不一致与推理瓶颈；配套 **LocateAnything-Data**（12M 图、138M 查询、785M 框）与 **3B** 公开模型。
+
+相关工作：[VFlash](paper-vflash.md) 将并行解码扩展到变长视觉轨迹。
 
 ## 一句话定义
 
