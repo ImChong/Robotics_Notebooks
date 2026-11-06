@@ -4348,7 +4348,7 @@
 - [RoboRecover](wiki/entities/paper-roborecover.md) — RoboRecover: Benchmarking Robot Policy Recovery under Execution Deviations**（[arXiv:2609.28952](ht `📅unknown` `[entity_page]`
 - [RoboRefer：机器人空间指代与推理](wiki/entities/paper-roborefer.md) — RoboRefer**（*Towards Spatial Referring with Reasoning in Vision-Language Models for Robotics*，[arX `📅unknown` `[entity_page]`
 - [RoboReward：面向机器人的通用视觉语言奖励模型](wiki/entities/paper-roboreward.md) — RoboReward** 是面向机器人策略学习的视觉语言奖励数据集、评测基准和模型系列，目标是从任务指令与机器人轨迹中判断完成程度，为奖励设计和强化学习提供自动信号。 `📅unknown` `[entity_page]`
-- [RoboScope Kit（arXiv:2611.03850）](wiki/entities/paper-roboscope-kit.md) — RoboScope Kit**（*RoboScope Kit: Unified Interfaces for Fast and Scalable Embodied-AI Evaluation*， `📅unknown` `[entity_page]`
+- [RoboScope Kit: Unified Interfaces for Fast and Scalable Embodied-AI Evaluation / 快速可扩展具身评测的统一接口](wiki/entities/paper-roboscope-kit.md) — RoboScope Kit 在保留原生基准评测协议的前提下，用统一 Policy 接口、独立的仿真与模型进程池以及按需渲染，缩短固定检查点的仿真评测时间。 `📅unknown` `[entity_page]`
 - [RoboSeed（arXiv:2610.40026）](wiki/entities/paper-roboseed.md) — RoboSeed**（*RoboSeed: Multidimensional Evaluation of Vision-Language-Action and World-Action Model `📅unknown` `[entity_page]`
 - [RoboSkill：Explore, Execute, Evolve](wiki/entities/paper-roboskill.md) — 一句话定义：** RoboSkill 让具身智能体把任务探索和执行经验整理成可复用技能，再用于后续任务的探索与执行，形成“探索—执行—进化”循环。 `📅unknown` `[entity_page]`
 - [RoboSTD（arXiv:2610.36685）](wiki/entities/paper-robostd.md) — RoboSTD**（*RoboSTD: Zero-Shot Single-to-Dual Transfer via Sagittal Mirroring for Bimanual Learning `📅unknown` `[entity_page]`
