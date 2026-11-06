@@ -146,6 +146,12 @@ flowchart TB
 | FastVGGT / FasterVGGT | 同样针对 VGGT 全局注意力成本的加速方法 | FastVGGT 用 token 合并；FasterVGGT 用块稀疏注意力（SpargeAttention）。论文认为这些方法缺少对全局注意力作用的系统分析，且在短序列上可能反而变慢 |
 | [VGG-T³](./paper-vgg-ttt.md) | 同样针对 VGGT 全局注意力的计算瓶颈 | VGG-T³ 用 TTT 压缩的固定 MLP 替换全局 softmax 注意力，需要训练；AVGGT 免训练，保留 softmax 结构 |
 
+## 关联页面
+
+- [E0.5 几何世界动作模型](./paper-e05-geometry-world-action.md)：同样把几何先验引入世界/动作建模。
+- [DepthWorld 3D 世界模型](./paper-depthworld-3d-world-model.md)：另一条基于深度/3D 几何的世界模型路线。
+- [几何感知 4D 视频生成](./paper-geometry-aware-4d-video-generation.md)：视频生成中的几何一致性问题。
+
 ## 参考来源
 
 - [AVGGT 论文来源归档](../../sources/papers/avggt_2512_02541.md)

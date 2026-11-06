@@ -11,7 +11,7 @@ related:
   - ../concepts/dexterous-hand-industry-core-players.md
   - ../concepts/dexterous-kinematics.md
   - ../entities/paper-phd-hand-printable-humanoid-dexterous-hand.md
-  - ../entities/humanoid-actuator-102-gear-reflected-inertia.md
+  - ../concepts/robot-link-and-rotor-inertia.md
 sources:
   - ../../sources/papers/humanoid_pnb_antagonistic-bowden-cable-actuation-of-a-lightwe.md
 summary: "用 拮抗式 Bowden 缆绳 + 滚动接触关节优化 把\"驱动电机\"全部搬到躯干，手部远端只剩 236 g 结构件却仍能输出 >18 N 指尖力、抓起 >100 倍自重 的负载 —— 给\"手臂载荷不够、手却必须像人手\"的人形机器人一条可工程化的路。"
@@ -152,7 +152,7 @@ flowchart LR
 - 灵巧手负载与指标框架：[灵巧手负载与核心指标](../concepts/dexterous-hand-payload-core-metrics.md)
 - 灵巧手运动学背景：[Dexterous Kinematics](../concepts/dexterous-kinematics.md)
 - 同类 3D 打印腱驱动手：[paper-phd-hand-printable-humanoid-dexterous-hand](../entities/paper-phd-hand-printable-humanoid-dexterous-hand.md)
-- 远端执行器的反射惯量与减速比权衡：[humanoid-actuator-102-gear-reflected-inertia](../entities/humanoid-actuator-102-gear-reflected-inertia.md)
+- 远端执行器的反射惯量与减速比权衡：[robot-link-and-rotor-inertia](../concepts/robot-link-and-rotor-inertia.md)
 - 灵巧手产业格局：[灵巧手产业核心玩家](../concepts/dexterous-hand-industry-core-players.md)
 
 ## 参考来源
