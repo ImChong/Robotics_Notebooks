@@ -171,6 +171,10 @@ flowchart TD
 - **把 GRAIL 当真机 MoCap**：其为 **全合成 G1 轨迹**；视觉下游仍可能有 sim-to-real 鸿沟，且物体 USD 许可随 RoboCasa/ComAsset 等上游而异。
 - **把 [Exercises Dataset](../entities/exercises-dataset.md) 当人形参考运动**：其为健身 **动作目录 + 180×180 GIF/缩略图 + 多语说明**（无 BVH/SMPL/关节序列）；适合 App/分类原型，**不能**直接做 WBT / AMP / 重定向输入。
 
+## 相关数据资源
+
+- [ITW-Ego Plus](../entities/itw-ego-plus.md)：真实环境第一视角与全身运动；获取方式和许可待核验。
+
 ## 参考来源
 
 - [HiPHI 论文摘录](../../sources/papers/hiphi_arxiv_2608_16222.md)
