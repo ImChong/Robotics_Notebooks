@@ -63,7 +63,7 @@
 | 45 | 灵巧与接触操作 | Keeping Contact | [2610.36961](https://arxiv.org/abs/2610.36961) | **项目页未列 GitHub** | [paper-keeping-contact](../../wiki/entities/paper-keeping-contact.md) |
 | 46 | 潜在动作与世界模型 | Trace-WAM | [2610.36840](https://arxiv.org/abs/2610.36840) | **项目页未列 GitHub** | [paper-trace-wam](../../wiki/entities/paper-trace-wam.md) |
 | 47 | 数据采集与示范迁移 | RoboSTD | [2610.36685](https://arxiv.org/abs/2610.36685) | **已开源** | [paper-robostd](../../wiki/entities/paper-robostd.md) |
-| 48 | VLA 与策略后训练 | OmniBrain-0 | [2610.36013](https://arxiv.org/abs/2610.36013) | **已开源** | [paper-omnibrain-0](../../wiki/entities/paper-omnibrain-0.md) |
+| 48 | VLA 与策略后训练 | OmniBrain-0 | [2610.36013](https://arxiv.org/abs/2610.36013) | **模型代码待发布** | [paper-omnibrain-0](../../wiki/entities/paper-omnibrain-0.md) |
 | 49 | 灵巧与接触操作 | Action Representation Pretraining | [2610.34453](https://arxiv.org/abs/2610.34453) | **项目页未列 GitHub** | [paper-action-representation-pretraining](../../wiki/entities/paper-action-representation-pretraining.md) |
 | 50 | VLA 与策略后训练 | AdaPolicy | [2610.34280](https://arxiv.org/abs/2610.34280) | **部分开源** | [paper-adapolicy](../../wiki/entities/paper-adapolicy.md) |
 | 51 | 潜在动作与世界模型 | X-World | [2610.34105](https://arxiv.org/abs/2610.34105) | **项目页未列 GitHub** | [paper-x-world-variable-view-video-priors](../../wiki/entities/paper-x-world-variable-view-video-priors.md) |
