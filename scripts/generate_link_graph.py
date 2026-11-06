@@ -53,11 +53,14 @@ import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from datetime import date, timedelta
+from functools import lru_cache
+from itertools import takewhile
 from pathlib import Path
 from typing import Any
 from urllib.parse import unquote, urlsplit
 
 from export_minimal import extract_summary, parse_frontmatter, strip_frontmatter
+from lint_wiki import has_section
 from markdown_it import MarkdownIt
 from utils.community_labels import load_topics
 from utils.paths import path_to_id
@@ -66,6 +69,7 @@ from utils.wiki_cache import wiki_stem_to_path
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 ROADMAP_DIR = REPO_ROOT / "roadmap"
+SOURCES_DIR = REPO_ROOT / "sources"
 GRAPH_CONTENT_DIRS = (WIKI_DIR, ROADMAP_DIR)
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 # 节点摘要单独下发（按 nodes 顺序的字符串数组）：占 link-graph gzip 的 53%，图谱首屏构图用不到
@@ -1056,14 +1060,68 @@ HEALTH_STATUS_CAPS = {
 }
 
 
+# 统一阅读骨架（page-types.md「新增页面最低质量标准」9 项），每项为 ``## `` 标题关键词；
+# 同义标题按 lint_wiki 口径放行（如论文页「核心机制」「局限与工程实践」）。
+# query 页走自身结构，只要求 scaffold_wiki_page.self_check 的公共三项。
+HEALTH_SKELETON_SECTIONS = (
+    ("一句话定义",),
+    ("英文缩写速查",),
+    ("为什么重要",),
+    ("核心原理", "核心机制", "方法栈", "流程总览"),
+    ("工程实践",),
+    ("局限",),
+    ("关联",),
+    ("参考来源",),
+    ("继续阅读",),
+)
+HEALTH_QUERY_SECTIONS = (("英文缩写速查",), ("关联",), ("参考来源",))
+
+
+def has_reading_skeleton(content: str, page_type: str) -> bool:
+    """页面是否覆盖统一阅读骨架的全部小节。"""
+    sections = HEALTH_QUERY_SECTIONS if page_type == "query" else HEALTH_SKELETON_SECTIONS
+    return all(has_section(content, list(keywords)) for keywords in sections)
+
+
+# 原文核对记录（ingest-workflow.md 步骤 1.6）：sources/ 归档中含「核对范围」的行或同名小节。
+# 否定词与阅读类动词落在同一分句即视为「未读完」，例如「全文尚未通读」「其余附录尚待核对」。
+_PARTIAL_READING_RE = re.compile(
+    r"(?:尚未|未|待|不代表)[^；。，,;\n]*?(?:通读|读完|核对|复核|核查|审阅|审核|阅读|验证)"
+)
+_MD_HEADING_RE = re.compile(r"^#{1,6}\s")
+_SOURCE_LINK_RE = re.compile(r"sources/([^)\s\"'\]>]+\.md)")
+
+
+@lru_cache(maxsize=None)
+def source_reading_state(path: Path) -> str | None:
+    """sources/ 归档的原文核对状态：``full`` 已读完 / ``partial`` 声明未读完 / None 无记录。"""
+    if not path.is_file():
+        return None
+    lines = path.read_text(encoding="utf-8").splitlines()
+    for i, line in enumerate(lines):
+        if "核对范围" not in line:
+            continue
+        record = line
+        if _MD_HEADING_RE.match(line):
+            record = "\n".join(takewhile(lambda x: not _MD_HEADING_RE.match(x), lines[i + 1 :]))
+        return "partial" if _PARTIAL_READING_RE.search(record) else "full"
+    return None
+
+
+def sources_fully_read(content: str) -> bool:
+    """页面链接的 sources/ 归档里至少一份记录已读完，且没有一份声明未读完。"""
+    states = {source_reading_state(SOURCES_DIR / rel) for rel in _SOURCE_LINK_RE.findall(content)}
+    return "full" in states and "partial" not in states
+
+
 def compute_health_score(content: str) -> int:
-    """计算节点健康度（0-3）。
+    """计算节点健康度（0-3），与 ingest 完成度挂钩，三项均可自动检查：
 
-    +1: 有 summary frontmatter
-    +1: 有 frontmatter sources 或正文含参考来源区块
-    +1: 有 updated frontmatter，或至少包含关联页面区块（说明已纳入交叉引用网络）
+    +1: 元数据：有 summary frontmatter，且有 frontmatter sources 或正文参考来源区块
+    +1: 阅读骨架达标：``has_reading_skeleton``（page-types.md 最低质量标准）
+    +1: 原文已读完：``sources_fully_read``（ingest-workflow.md 步骤 1.6 核对范围记录）
 
-    再按 ingest 完成度封顶（``HEALTH_STATUS_CAPS``）：stub / planned ≤1，draft 类 ≤2。
+    再按 frontmatter status 封顶（``HEALTH_STATUS_CAPS``）：stub / planned ≤1，draft 类 ≤2。
     """
     if not content.startswith("---"):
         return 0
@@ -1073,22 +1131,13 @@ def compute_health_score(content: str) -> int:
     fm = content[3:end]
     body = content[end + 4 :]
     score = 0
-    if re.search(r"^summary\s*:", fm, re.MULTILINE):
-        score += 1
     sources_match = re.search(r"^sources\s*:(.*?)(?=^\w|\Z)", fm, re.MULTILINE | re.DOTALL)
-    if (sources_match and sources_match.group(1).strip()) or "## 参考来源" in body:
+    has_sources = (sources_match and sources_match.group(1).strip()) or "## 参考来源" in body
+    if re.search(r"^summary\s*:", fm, re.MULTILINE) and has_sources:
         score += 1
-    updated_match = re.search(r"^updated\s*:\s*(\S+)", fm, re.MULTILINE)
-    if updated_match:
-        try:
-            from datetime import date
-
-            updated_date = date.fromisoformat(updated_match.group(1).strip().strip("'\""))
-            if (date.today() - updated_date).days <= 365:
-                score += 1
-        except ValueError:
-            pass
-    elif "## 关联页面" in body:
+    if has_reading_skeleton(content, parse_frontmatter_type(content)):
+        score += 1
+    if sources_fully_read(content):
         score += 1
     status_match = re.search(r"^status\s*:\s*(\S+)", fm, re.MULTILINE)
     if status_match:

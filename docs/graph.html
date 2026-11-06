@@ -3444,9 +3444,9 @@
         rows.push('<div class="legend-title">按健康度着色</div>');
         const healthRows = [
           { score: '0', color: '#f87171', label: '0分 — 缺 summary/sources' },
-          { score: '1', color: '#fb923c', label: '1分 — 未 ingest（stub/planned）或信息不完整' },
-          { score: '2', color: '#facc15', label: '2分 — ingest 草稿（draft）或缺近期更新' },
-          { score: '3', color: '#4ade80', label: '3分 — ingest 完成且信息齐全' },
+          { score: '1', color: '#fb923c', label: '1分 — 仅元数据，或 stub/planned' },
+          { score: '2', color: '#facc15', label: '2分 — 骨架达标 / 原文读完 缺一，或 draft' },
+          { score: '3', color: '#4ade80', label: '3分 — 骨架达标且原文已读完' },
         ];
         for (const h of healthRows) {
           const isActive = (focusedHealth === h.score);
