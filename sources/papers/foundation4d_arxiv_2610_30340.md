@@ -7,6 +7,7 @@
 - **数据集：** <https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-Foundation4D>
 - **入库日期：** 2026-11-03
 - **核对范围：** 已核对摘要、方法与实验部分片段及项目页；全文尚未通读，需继续完成方法、实验、局限与附录的逐节核查。
+- **通读：** 未完成
 
 ## 主要内容
 

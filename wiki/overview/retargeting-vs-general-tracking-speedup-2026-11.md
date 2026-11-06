@@ -26,6 +26,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_yuanxq_retargeting_general_tracking_2026-11-05.md
   - ../../sources/papers/gmr_retargeting_matters_arxiv_2510_02252.md
+original:
+  - ../../sources/blogs/wechat_yuanxq_retargeting_general_tracking_2026-11-05.md
 summary: "公众号「具身智能研究室」2026-11-05 长文的阅读坐标：训练加速后，重定向能否借通用跟踪策略的执行反馈修参考；16 个方法按四段链到各自节点，并列出入库时对 arXiv 与官方仓库的核对差异。"
 ---
 

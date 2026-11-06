@@ -15,6 +15,8 @@ related:
 sources:
   - ../../sources/blogs/mandarobotics_comparing_physics_engines_2026-10-05.md
   - ../../sources/blogs/mandarobotics_policy_transfer_2026-10-28.md
+original:
+  - ../../sources/blogs/mandarobotics_policy_transfer_2026-10-28.md
 ---
 
 # Manda Robotics：机器人仿真物理引擎比较（2026-10-05）

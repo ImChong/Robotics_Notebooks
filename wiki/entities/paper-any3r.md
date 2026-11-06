@@ -14,6 +14,8 @@ sources:
   - ../../sources/papers/any3r_arxiv_2610_36150.md
   - ../../sources/sites/any3r.md
   - ../../sources/repos/any3r.md
+original:
+  - ../../sources/papers/any3r_arxiv_2610_36150.md
 summary: "Any3R：基于像素射线场的多相机前馈三维重建，支持混合中心相机。"
 ---
 

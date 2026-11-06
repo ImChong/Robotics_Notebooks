@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [foundation-policy, embodied-data, dexterous-manipulation, imitation-learning, scaling-laws]
-status: active
+status: complete
 updated: 2026-10-14
 project_id: naturewill-natura-1
 project: https://www.naturewill.com/blog/natura-1

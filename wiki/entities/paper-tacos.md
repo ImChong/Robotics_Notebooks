@@ -17,6 +17,8 @@ sources:
   - ../../sources/repos/tacos.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
   - ../../sources/blogs/wechat_embodied_station_28_papers_event2reward_progress_rewards_2026-10-30.md
+original:
+  - ../../sources/papers/tacos_arxiv_2610_37806.md
 summary: "从足端接触因子残差构造地形不稳定性标签，训练视觉落脚预测器。"
 ---
 

@@ -9,6 +9,7 @@
 - **代码：** <https://github.com/THUSI-Lab/VSI-Super-Wild>
 - **数据：** <https://huggingface.co/datasets/THUSI-Lab/VSI-Super-Wild>（项目页提供；本次未能打开数据集页面）
 - **已核对范围：** arXiv v1 摘要、项目页及代码仓库 README；PDF 超出检索工具大小限制，全文未通读，实验细节和局限待核对。
+- **通读：** 未完成
 
 ## 摘要与项目页要点
 

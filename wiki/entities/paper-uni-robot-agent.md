@@ -18,6 +18,8 @@ sources:
   - ../../sources/repos/uni-robot-agent.md
   - ../../sources/sites/uni-robot-agent.md
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
+original:
+  - ../../sources/papers/uni_robot_agent_arxiv_2611_01560.md
 ---
 
 # Democratizing Robot-Use Agents: A Unified Harness with Open Models｜开放模型的统一机器人智能体框架

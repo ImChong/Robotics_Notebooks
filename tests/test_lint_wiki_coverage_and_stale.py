@@ -115,3 +115,11 @@ def test_frontmatter_updated_date_parses(
     wiki = repo / "wiki" / "methods" / "foo.md"
     wiki.write_text("---\nupdated: 2026-06-11\n---\n", encoding="utf-8")
     assert lw._frontmatter_updated_date(wiki) == date(2026, 6, 11)
+
+
+def test_invalid_status_only_allows_three_values() -> None:
+    """status 只允许 stub / draft / complete；缺省允许。"""
+    for ok in ("status: stub", "status: draft", "status: complete", "status: 'draft'", "type: x"):
+        assert lw.invalid_status(ok) is None
+    for bad in ("planned", "stable", "active", "in-progress"):
+        assert lw.invalid_status(f"type: x\nstatus: {bad}") == bad

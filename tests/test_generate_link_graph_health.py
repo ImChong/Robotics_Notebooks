@@ -6,12 +6,16 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import generate_link_graph as glg
+import pytest
+from scaffold_wiki_page import build_skeleton
 
 
 def test_compute_health_score_requires_frontmatter() -> None:
     """无 frontmatter 页面在 wiki 规则下仍为 0（既有行为不变）。"""
-    assert glg.compute_health_score("# 标题\n\n正文。\n") == 0
+    assert glg.compute_health_score("# 标题\n\n正文。\n", Path("wiki/x.md")) == 0
 
 
 def test_roadmap_full_signals_score_three() -> None:
@@ -47,11 +51,73 @@ def test_all_repo_roadmap_pages_score_full() -> None:
         assert score == 3, f"{page.name} 健康度 {score} != 3"
 
 
-def test_quoted_updated_date_counts_as_fresh() -> None:
-    """YAML 里 ``updated: '2026-10-05'`` 带引号时也应计入新鲜度（曾因 ValueError 少 1 分）。"""
-    from datetime import date
+def _skeleton(status: str = "complete", original: str | None = None) -> str:
+    """scaffold 生成的标准骨架（覆盖全部阅读骨架小节），可替换 status、追加 original。"""
+    content = build_skeleton("concept", "示例").replace("status: draft", f"status: {status}")
+    if original:
+        content = content.replace(
+            "\nsources:", f"\noriginal:\n  - ../../sources/{original}\nsources:", 1
+        )
+    return content
 
-    today = date.today().isoformat()
-    for quoted in (f"'{today}'", f'"{today}"', today):
-        content = f"---\nsummary: x\nupdated: {quoted}\n---\n\n## 参考来源\n\n- a\n"
-        assert glg.compute_health_score(content) == 3
+
+@pytest.fixture
+def repo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    """隔离仓库：sources/ 下 done.md 已完成、todo.md 未完成、bare.md 无通读字段。"""
+    sources = tmp_path / "sources"
+    sources.mkdir()
+    (sources / "done.md").write_text("- **通读：** 已完成\n", encoding="utf-8")
+    (sources / "todo.md").write_text("- **通读：** 未完成\n", encoding="utf-8")
+    (sources / "bare.md").write_text("- **核对范围：** 已通读全文。\n", encoding="utf-8")
+    (tmp_path / "wiki" / "concepts").mkdir(parents=True)
+    monkeypatch.setattr(glg, "SOURCES_DIR", sources)
+    return tmp_path
+
+
+def _score(repo: Path, content: str) -> int:
+    return glg.compute_health_score(content, repo / "wiki" / "concepts" / "page.md")
+
+
+def test_health_score_signals(repo: Path) -> None:
+    """元数据 / 骨架达标 / 原文读完 各 +1；原文只认 original 指向且标「已完成」的归档。"""
+    assert _score(repo, _skeleton(original="done.md")) == 3
+    assert _score(repo, _skeleton(original="todo.md")) == 2
+    assert _score(repo, _skeleton(original="bare.md")) == 2
+    assert _score(repo, _skeleton()) == 2
+    minimal = "---\nsummary: x\nsources: [a]\noriginal: ../../sources/done.md\n---\n\n正文。\n"
+    assert _score(repo, minimal) == 2
+
+
+def test_every_original_must_be_done(repo: Path) -> None:
+    """声明多份原文时，任一份未完成就不算读完。"""
+    content = _skeleton(original="done.md").replace(
+        "  - ../../sources/done.md\n", "  - ../../sources/done.md\n  - ../../sources/todo.md\n"
+    )
+    assert _score(repo, content) == 2
+
+
+def test_status_caps_health_by_ingest_completion(repo: Path) -> None:
+    """作者自报未完成的页按 status 封顶：stub ≤1，draft ≤2，complete 不封顶。"""
+    assert _score(repo, _skeleton("stub", "done.md")) == 1
+    assert _score(repo, _skeleton("draft", "done.md")) == 2
+    assert _score(repo, _skeleton("complete", "done.md")) == 3
+
+
+def test_status_cap_does_not_raise_low_score(repo: Path) -> None:
+    """封顶只降不升。"""
+    assert _score(repo, "---\nstatus: complete\n---\n\n正文。\n") == 0
+
+
+def test_reading_skeleton_accepts_lint_synonyms() -> None:
+    """论文页常用的「核心机制」「局限与工程实践」视为覆盖核心原理 / 工程实践 / 局限与风险。"""
+    heads = ["一句话定义", "英文缩写速查", "为什么重要", "核心机制", "局限与工程实践"]
+    heads += ["关联页面", "参考来源", "推荐继续阅读"]
+    content = "\n\n".join(f"## {h}\n\n正文" for h in heads)
+    assert glg.has_reading_skeleton(content, "entity")
+    assert not glg.has_reading_skeleton(content.replace("## 为什么重要", "## 核心信息"), "entity")
+
+
+def test_query_reading_skeleton_uses_query_sections() -> None:
+    content = "## 英文缩写速查\n\n## TL;DR 决策结论\n\n## 关联页面\n\n## 参考来源\n"
+    assert glg.has_reading_skeleton(content, "query")
+    assert not glg.has_reading_skeleton(content, "concept")

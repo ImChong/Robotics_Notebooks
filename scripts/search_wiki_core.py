@@ -104,7 +104,7 @@ COMPARISON_INTENT_MARKERS = frozenset(
 )
 
 STUB_DOWNRANK_TAGS = frozenset({"paper-notebook-stub", "paper-notebook-planned"})
-STUB_DOWNRANK_STATUSES = frozenset({"planned", "stub"})
+STUB_DOWNRANK_STATUSES = frozenset({"stub"})
 
 DEPLOYMENT_INTENT_MARKERS = frozenset(
     {"部署", "checklist", "检查", "清单", "上机", "真机部署", "部署清单"}

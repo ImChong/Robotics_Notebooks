@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [robotics, embodied-ai, benchmark, manipulation, coding-agent, physical-evaluation]
-status: active
+status: complete
 updated: 2026-10-21
 project_id: aa-robotics
 project: https://artificialanalysis.ai/articles/aa-robotics

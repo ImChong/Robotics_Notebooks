@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [quadruped, anymal, reinforcement-learning, perceptive-locomotion, minimal-sensing, sim2real, eth, isaac-gym]
-status: stable
+status: complete
 summary: "ETH RSL：ANYmal-D 足底 4×4 ToF 接近传感器 + LSTM-PPO，无相机/LiDAR 即可在踏石、沟与平衡木等离散地形自主搜索落脚并稳定穿越。"
 updated: 2026-09-15
 arxiv: "2606.31912"

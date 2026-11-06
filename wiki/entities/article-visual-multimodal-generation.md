@@ -10,6 +10,8 @@ related:
   - ../concepts/diffusion-model.md
 sources:
   - ../../sources/blogs/visual_multimodal_generation_2026-10-29.md
+original:
+  - ../../sources/blogs/visual_multimodal_generation_2026-10-29.md
 summary: "图解综述图像、音频、视频生成及多模态语言模型的生成架构。"
 ---
 

@@ -2,7 +2,7 @@
 
 type: method
 tags: [rl, isaac-gym, booster-t1, soccer, locomotion, booster]
-status: drafting
+status: draft
 updated: 2026-06-25
 related:
   - ../tasks/humanoid-soccer.md

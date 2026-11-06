@@ -2,7 +2,7 @@
 
 type: entity
 tags: [humanoid, robocup, ros2, booster-robotics, perception, rl, booster]
-status: drafting
+status: draft
 updated: 2026-07-26
 related:
   - ../queries/robot-perception-stack-selection-loop.md

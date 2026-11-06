@@ -7,6 +7,7 @@
 - **可访问的全文：** https://rt.http3.lol/index.php?q=aHR0cHM6Ly9hcnhpdi5vcmcvaHRtbC8yNjA4LjExNTQ2djIjYmliLmJpYjc
 - **作者介绍与代码状态：** https://ghazanfarali.com/research/global-style-transfer/ （截至 2026-11-05 未列公开代码或权重，原实现由机构持有）
 - **核对范围：** v2 正文方法、算法、实验与可访问附录；实验解释以论文表格为准。
+- **通读：** 已完成
 
 ## 主要摘录
 

@@ -11,6 +11,8 @@ related:
   - ../methods/motionbricks.md
 sources:
   - ../../sources/repos/crowdbricks.md
+original:
+  - ../../sources/repos/crowdbricks.md
 summary: "CrowdBricks 是 Patch 基于 NVIDIA MotionBricks 的 SOMA 模型构建的批量 TensorRT 运动生成与人群调度运行时。"
 ---
 

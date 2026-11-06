@@ -4,7 +4,7 @@ project_id: nvidia-usd-brep-smlib
 project: https://nvidia-omniverse.github.io/usd-brep/
 code: https://github.com/NVIDIA-Omniverse/usd-brep
 tags: [software, cad, geometry, nvidia, openusd, parametric-modeling]
-status: active
+status: complete
 date: 2026-10-13
 updated: 2026-10-13
 related:

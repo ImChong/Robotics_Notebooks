@@ -11,6 +11,8 @@ related:
   - ./cad-skills.md
 sources:
   - ../../sources/repos/nvidia-skills.md
+original:
+  - ../../sources/repos/nvidia-skills.md
 summary: "NVIDIA Skills 是面向兼容智能体的官方技能目录，收录 NVIDIA 产品工作流；CAD to SimReady 技能分阶段编排资产转换、属性赋值和验证。"
 ---
 
