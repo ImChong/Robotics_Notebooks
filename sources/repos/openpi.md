@@ -43,3 +43,15 @@
 - [χ₀ / kai0](../../wiki/entities/paper-kai0.md) — 基于 openpi 的协同叠衣后训练与部署对齐
 - [Jetson Thor π₀.₅ 教程](../courses/jetson_openpi_pi05_on_thor.md)
 - [Knowledge Insulation 论文实体](../../wiki/entities/paper-knowledge-insulation.md)
+
+## π₀ 官方源码核对（2026-11-06）
+
+- **固定版本：** `215abfb217dbac7d5f1273282331b9b1866c0479`。
+- **论文：** [π₀ 官方 PDF](../papers/pi0_arxiv_2410_24164.md)；**项目页：** [官方发布页](../sites/pi0.md)。
+- **核对范围：** README 全文；`scripts/serve_policy.py`、`src/openpi/policies/policy_config.py`、`policy.py`、`src/openpi/serving/websocket_policy_server.py`、`src/openpi/models/pi0.py` 的完整服务推理与采样链路；未执行模型训练或真机测试。
+- **通读：** 已完成
+- **入口：** `uv run scripts/serve_policy.py policy:checkpoint --policy.config=pi0_aloha_sim --policy.dir=gs://openpi-assets/checkpoints/pi0_aloha_sim`；显式配置 π₀，避免默认环境选择到后继模型。
+- **调用：** `main → create_policy → create_trained_policy → WebsocketPolicyServer._handler → Policy.infer → Pi0.sample_actions`；加载 checkpoint assets 的统计量，输入归一化，输出反归一化。
+- **时间方向：** `compute_loss` 使用 `x_t=t*noise+(1-t)*actions`、`u_t=noise-actions`；`sample_actions` 从 t=1 以负 dt 积分至 0。图像语言 prefix 的 KV 缓存一次，state 位于 suffix。
+- **权重：** README 列出 `gs://openpi-assets/checkpoints/pi0_base` 及 ALOHA/DROID 专家；完整自采预训练数据未全部公开。
+- **显存估计：** README 为推理 >8 GB、LoRA >22.5 GB、全参 >70 GB；不等于本次实测。
