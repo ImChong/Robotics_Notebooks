@@ -1324,6 +1324,7 @@
 - [4D-WAM：用轨迹场给 WAM 补上局部运动和终点](wiki/entities/paper-4d-wam.md) — 4D-WAM**（*Infusing Spatiotemporal Awareness into World Action Models through Trajectory Fields*；[a `📅unknown` `[entity_page]`
 - [4DAnyone：单目随意视频做出 4D 人](wiki/entities/paper-4danyone.md) — 4DAnyone**（*Create Anyone in 4D from a Casual Monocular Video*，[arXiv:2608.20335](https://arxiv.or `📅unknown` `[entity_page]`
 - [4-DoF 视觉引导桌面笔具分拣](wiki/entities/paper-4dof-pen-sorting.md) — Tabletop Pen Manipulation With a Vision-Guided 4-DoF Arm**（[arXiv:2608.15968](https://arxiv.org/ab `📅unknown` `[entity_page]`
+- [A Circuit for In-Context Learning / 上下文学习的电路](wiki/entities/paper-a-circuit-for-in-context-learning.md) — 论文提出并干预验证：在所研究的少样本短句分类任务中，模型使用标签位置上的关联记忆完成门控检索。 `📅unknown` `[entity_page]`
 - [A2I-Calib++：面向腿式机器人全身多 IMU 的运动学驱动抗噪主动标定](wiki/entities/paper-a2i-calib-plus-multi-imu-legged-calibration.md) — A2I-Calib++**（*A2I-Calib++: A Kinematics-Driven Anti-noise Active Calibration Framework for Whole- `📅unknown` `[entity_page]`
 - [A³-VLA：感知引导的注意力对齐](wiki/entities/paper-a3-vla-attention-alignment.md) — A³-VLA**（*Automatic Perception-Guided Attention Alignment for Robot Manipulation*，[arXiv:2611.0644 `📅unknown` `[entity_page]`
 - [ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）](wiki/entities/paper-abot-m05-mobile-manipulation-wam.md) — ABot-M0.5**（*ABot-M0.5: Unified Mobility-and-Manipulation World Action Model*，arXiv:2607.00678，AMA `📅unknown` `[entity_page]`
