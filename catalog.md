@@ -812,6 +812,7 @@
 - [Isaac ROS Visual SLAM](wiki/entities/isaac-ros-visual-slam.md) — isaac_ros_visual_slam**（[NVIDIA-ISAAC-ROS/isaac_ros_visual_slam](https://github.com/NVIDIA-ISAAC-R `📅unknown` `[entity_page]`
 - [Isaac Sim](wiki/entities/isaac-sim.md) — Isaac Sim** 是 NVIDIA 基于 **Omniverse / OpenUSD** 的机器人仿真应用：导入 URDF/MJCF/CAD/USD，用 PhysX（及 Newton）做物理 `📅unknown` `[entity_page]`
 - [Isaac Teleop](wiki/entities/isaac-teleop.md) — Isaac Teleop** 是 NVIDIA 推出的**统一遥操作与数据采集框架**，面向 egocentric 视角下的高保真人机示范：同一套设备抽象与 retargeting 图既可用于  `📅unknown` `[entity_page]`
+- [ITW-Ego Plus：真实环境第一视角与全身运动数据](wiki/entities/itw-ego-plus.md) — ITW-Ego Plus 是 Noitom Robotics 在 ModalityNet 数据体系中提出的真实环境人体多模态数据类别，结合第一视角视频与全身运动。 `📅unknown` `[entity_page]`
 - [FEAP MuJoCo 部署（E3 ONNX）](wiki/entities/jackhan-feap-mujoco-deployment.md) — 本仓库在 MuJoCo 中部署 FEAP 论文配套的双 ONNX 网络（Encoder + Actor），支持键盘或手柄速度指令与地形场景验证。 `📅unknown` `[entity_page]`
 - [FEAP Vision MuJoCo 部署（深度 + TorchScript）](wiki/entities/jackhan-feapvision-mujoco-deployment.md) — 本仓库在 MuJoCo 中渲染深度相机、拼接本体观测并加载 TorchScript 策略，经 PD 与手柄指令驱动 E3 类 21-DoF 人形。 `📅unknown` `[entity_page]`
 - [Mujoco-WalkerE3-Simulation（Walker 泰山手柄仿真）](wiki/entities/jackhan-mujoco-walke3-simulation.md) — 本仓库在 MuJoCo 中加载 E3 地形与预训练 PyTorch 策略，用手柄发送速度指令，支持行走、跑步与扰动测试模式。 `📅unknown` `[entity_page]`
