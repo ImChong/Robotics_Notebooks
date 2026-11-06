@@ -255,3 +255,4 @@ $$
 - [CoRe v0.1.0](../entities/paper-core.md) — SOMA 输入 + 接触精炼的开源对照；论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)。
 - [HOI-Retarget](../entities/paper-hoi-retarget.md) — ETH RSL HOI 管线 **vendored GMR fork** 作 III-A IK，再接物体系 contact 窗口 NLP（arXiv:2609.34674，[已开源](https://github.com/shinben0327/hoi-retarget)）。
 - [HumanoidPose](../entities/paper-humanoidpose-video-pose-estimation.md) — 从机器人视频恢复自身根姿态与关节配置；与 GMR 的动作重定向问题互补。
+- [Query：视频里的舞蹈怎么搬到 G1？](../queries/g1-video-dance-gvhmr-gmr-beyondmimic-multi-motion.md) — 视频舞蹈 → G1 的 GVHMR → GMR → BeyondMimic 实操（含 GMR 写 pickle 的核对）

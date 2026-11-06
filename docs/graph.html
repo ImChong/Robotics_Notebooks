@@ -2327,11 +2327,12 @@
     })).concat([
       { value: '__orphan__', label: '孤儿（度≤1）', color: '#94a3b8' },
     ]);
+    // 筛选浮窗与图例共用同一份文案（判据见 scripts/generate_link_graph.py compute_health_score）
     const HEALTH_FILTER_OPTIONS = [
-      { value: '0', label: '0 分', color: '#f87171' },
-      { value: '1', label: '1 分', color: '#fb923c' },
-      { value: '2', label: '2 分', color: '#facc15' },
-      { value: '3', label: '3 分', color: '#4ade80' }
+      { value: '0', label: '0分 — 缺 summary/sources', color: '#f87171' },
+      { value: '1', label: '1分 — 仅元数据，或 status: stub', color: '#fb923c' },
+      { value: '2', label: '2分 — 骨架达标 / 原文读完 缺一，或 status: draft', color: '#facc15' },
+      { value: '3', label: '3分 — 骨架达标且原文已读完', color: '#4ade80' }
     ];
     // 开源：teal（可复现入口）；未开源：rose（与健康度红 / 类型粉区分）
     const OPENSOURCE_COLOR_OPEN = '#2dd4bf';
@@ -3442,15 +3443,9 @@
         }
       } else if (colorMode === 'health') {
         rows.push('<div class="legend-title">按健康度着色</div>');
-        const healthRows = [
-          { score: '0', color: '#f87171', label: '0分 — 缺 summary/sources' },
-          { score: '1', color: '#fb923c', label: '1分 — 仅元数据，或 status: stub' },
-          { score: '2', color: '#facc15', label: '2分 — 骨架达标 / 原文读完 缺一，或 status: draft' },
-          { score: '3', color: '#4ade80', label: '3分 — 骨架达标且原文已读完' },
-        ];
-        for (const h of healthRows) {
-          const isActive = (focusedHealth === h.score);
-          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-health="${escapeHtml(String(h.score))}">
+        for (const h of HEALTH_FILTER_OPTIONS) {
+          const isActive = (focusedHealth === h.value);
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-health="${escapeHtml(String(h.value))}">
             <div class="legend-dot" style="background:${escapeHtml(String(h.color))}"></div>${escapeHtml(String(h.label))}
           </div>`);
         }

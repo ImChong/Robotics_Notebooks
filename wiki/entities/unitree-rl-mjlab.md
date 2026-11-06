@@ -147,6 +147,7 @@ sequenceDiagram
 - [AMP_mjlab](./amp-mjlab.md) — 同基于 mjlab 的社区 AMP 实现
 - [legged_gym](./legged-gym.md) — 同类框架，基于 IsaacGym
 - [Locomotion](../tasks/locomotion.md) — 任务方向
+- [Query：视频里的舞蹈怎么搬到 G1？](../queries/g1-video-dance-gvhmr-gmr-beyondmimic-multi-motion.md) — 在 unitree_rl_mjlab 上训 G1 舞蹈追踪策略的完整链路与多动作扩展
 
 ## 参考来源
 

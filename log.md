@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-06] ingest | 深蓝学院《在宇树 G1 上实战 BeyondMimic，31 个动作一个策略》：新建视频到 G1 舞蹈的 GVHMR→GMR→BeyondMimic 实操 Query，四个官方仓库静态核对（-s 是 static_cam、GMR 写 pickle、BeyondMimic 官方库已退役、教程混用两套 csv_to_npz）
+
 ## [2026-11-06] structural | scripts/original_reading.py — 原文已读完改为结构化判据：wiki frontmatter original + sources 归档「通读：已完成|未完成」，lint 阻塞校验；回填 32 份归档与 25 个 wiki 页
 
 ## [2026-11-06] structural | wiki/ — 统一 frontmatter status 为 stub / draft / complete（200 页：planned→stub，drafting/in-progress/preview→draft，stable/active→complete），lint 新增取值门禁
