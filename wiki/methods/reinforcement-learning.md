@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-10-30
+updated: 2026-11-06
 related:
   - ../entities/paper-kamino.md
   - ../entities/paper-monorace-champion-level-drone-racing.md

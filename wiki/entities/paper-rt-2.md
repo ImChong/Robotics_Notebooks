@@ -7,7 +7,7 @@ tags:
   - manipulation
   - google-deepmind
 status: complete
-updated: 2026-11-04
+updated: 2026-11-06
 arxiv: "2307.15818"
 related:
   - ./paper-rt-1.md

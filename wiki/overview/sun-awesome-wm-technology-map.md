@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, curated-index, awesome-world-models, sun254667, technology-map]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-06
 summary: "Awesome World Models 技术地图：把清单里的 571 篇论文逐条拆成站内可点开的一页，按清单分组浏览。"
 related:
   - ../entities/awesome-world-models.md
