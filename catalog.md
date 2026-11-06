@@ -875,7 +875,7 @@
 - [LeKiwi](wiki/entities/lekiwi-mobile-manipulator.md) — LeKiwi** 是低成本开源移动操作机器人，仓库 SIGRobotics-UIUC/LeKiwi。 `📅unknown` `[entity_page]`
 - [LeNet-5](wiki/entities/lenet5.md) — LeNet-5** 用交替的卷积与下采样层提取局部特征，再经全连接完成分类，是深度学习时代之前即验证「可学习卷积特征」可行的经典小网络。 `📅unknown` `[entity_page]`
 - [LeRobot Humanoid](wiki/entities/lerobot-humanoid.md) — Hugging Face **LeRobot** 系开源 **12-DoF 双足** 整机：从 Onshape/BOM/3D 打印到 CAN 真机控制、MJLab 行走 RL、动力学辨识与 LeRob `📅unknown` `[entity_page]`
-- [LeRobot (Hugging Face)](wiki/entities/lerobot.md) — LeRobot** 是 Hugging Face 维护的开源机器人学习框架（PyTorch，Apache 2.0）：用一套库和命令行走完 **采集示范 → 训练策略 → 仿真评测 → 真机部署 `📅unknown` `[entity_page]`
+- [LeRobot (Hugging Face)](wiki/entities/lerobot.md) — LeRobot 是 Hugging Face 的开源机器人学习框架：以统一 `Robot` 接口、LeRobotDataset 数据格式和 Hub 分发，把示范采集、策略训练、仿真评测、真机部署串成一 `📅unknown` `[entity_page]`
 - [LET-Base-Dataset](wiki/entities/let-base-dataset.md) — LET-Base-Dataset**（HF [`LejuRobotics/LET-Base-Dataset`](https://huggingface.co/datasets/LejuRoboti `📅unknown` `[entity_page]`
 - [LeTools](wiki/entities/letools.md) — LeTools**（<https://www.letools.lejurobot.com/>）是乐聚为 **Kuavo 全尺寸人形** 提供的 **采集–训练–部署软件层**：产品站把「All I `📅unknown` `[entity_page]`
 - [Liber-0：从人类经验学习机器人操作](wiki/entities/liber-0.md) — LiberAI 的 Liber-0 是联合预测未来视觉帧和动作的世界动作模型，利用人类视频、测量的手部动作和跨本体数据学习机器人操作。 `📅unknown` `[entity_page]`
@@ -6929,11 +6929,11 @@
 - [HDF5 vs MCAP vs LeRobot 数据集格式](wiki/comparisons/hdf5-mcap-lerobot-data-formats.md) — 三种格式在具身数据管线中 **常串联出现**，但 **设计目标不同**：HDF5 是 **通用科学数组容器**；MCAP 是 **多通道时间序列日志**；LeRobot v3 是 **面向 IL/RL `📅unknown` `[comparison_page]`
 - [HIL vs MTRG vs ZEST：跑酷模仿学习路线对比](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 同一作者群从 **物理角色动画跑酷**（HIL，[TOG 2026 实体](../entities/pap `📅unknown` `[comparison_page]`
 - [HumanNet Table 1：代表性人类视频语料与具身向关系](wiki/comparisons/humannet-table1-human-video-corpora.md) — HumanNet** 在与既有语料对比时，用一张表同时强调 **规模、视点、活动语义粒度** 以及论文中称为 **Embodied Use** 的定性列（与「能否直接支撑机器人学习接口」相关，但仍 `📅unknown` `[comparison_page]`
-- [人形参考运动与操作数据集选型](wiki/comparisons/humanoid-reference-motion-datasets.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
+- [人形参考运动与操作数据集选型](wiki/comparisons/humanoid-reference-motion-datasets.md) — 本页是人形参考运动 / 操作数据集的**选型对照**：按表示、任务域、是否已重定向、许可与下游，帮你在 AMASS、LaFAN1、OMOMO、PHUMA、HiPHI、Humanoid Everyday `📅unknown` `[comparison_page]`
 - [HY-Motion vs GENMO/GEM vs Kimodo：三条「文本/多模态 → 人体运动」生成式骨干对比](wiki/comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 背景**：2025–2026 年「文本/多模态驱动人体运动生成」涌出一批大模型，它们都把一段语言/视频/约束变成 **SMPL 系骨架的时间序列**，但落点截然不同。本页对比三条代表性路线——腾讯 `📅unknown` `[comparison_page]`
 - [国外 GPU 云平台选型（机器人学习与仿真）](wiki/comparisons/international-gpu-cloud-platforms.md) — 无法使用国内平台或数据已在海外时，研究者常在 **neocloud**（RunPod / Vast / Lambda）与 **超大规模云**（AWS / GCP）之间选型。本页并列六个主流入口；国内平 `📅unknown` `[comparison_page]`
 - [Kalman Filter vs. Optimization-based Estimation (状态估计选型)](wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md) — 在机器人（特别是人形和四足机器人）中，实时估计 Base 的位置、速度和姿态是所有算法的基础。目前主要存在两大技术路线：以 **EKF** 为代表的递归滤波派，和以 **滑窗优化 (Sliding W `📅unknown` `[comparison_page]`
-- [LiDAR / LIO / VIO 开源选型对比](wiki/comparisons/lidar-slam-lio-vio-selection.md) — 要快且稳的 3D LIO** 选 **FAST-LIO**；要 **因子图 + GPS/回环** 选 **LIO-SAM**；要 **地面车辆起伏地形** 选 **LeGO-LOAM**；**视觉 `📅unknown` `[comparison_page]`
+- [LiDAR / LIO / VIO 开源选型对比](wiki/comparisons/lidar-slam-lio-vio-selection.md) — 本页是 LiDAR 里程计/SLAM 与视觉惯性系统的开源选型对照：按传感器、后端、ROS 集成与场景，为 FAST-LIO、LIO-SAM、LeGO-LOAM、ORB-SLAM3、VINS 等挑选合 `📅unknown` `[comparison_page]`
 - [运控 RL vs 操作 IL/VLA：为什么「走路」和「干活」算法栈不同？](wiki/comparisons/locomotion-rl-vs-manipulation-learning-stack.md) — 运控与操作的学习栈分化**，不是因为「腿/hand 属于两个世界」，而是因为两类任务在 **训练数据已覆盖的知识**、**仍需外部注入的知识** 与 **获取该知识的成本** 上结构不同——运控目 `📅unknown` `[comparison_page]`
 - [LZ4 vs Zstandard（zstd）](wiki/comparisons/lz4-vs-zstandard.md) — 两者均为 **Yann Collet** 主导的无损压缩栈，常一同出现在 **日志、数据集、Python joblib、对象存储** 选型中；差异在 **默认平衡点** 与 **格式标准化**，而非「 `📅unknown` `[comparison_page]`
 - [移动机器人导航规划方法对比：全局搜索 · 局部避障 · 路径平滑](wiki/comparisons/mobile-robot-navigation-planning-methods.md) — 移动机器人的导航规划不是单一算法，而是一条 **分层流水线**：全局层用 A\* 在静态占据栅格上搜出起点到终点的最优 **折线**；局部层用 [DWA `📅unknown` `[comparison_page]`
@@ -6944,7 +6944,7 @@
 - [MuJoCo vs Isaac Sim (物理引擎选型)](wiki/comparisons/mujoco-vs-isaac-sim.md) — 在机器人强化学习和仿真部署领域，**MuJoCo**（由 DeepMind 维护）和 **Isaac Sim / Isaac Gym**（由 NVIDIA 维护）是目前最主流的两大物理引擎阵营。它们的 `📅unknown` `[comparison_page]`
 - [Online RL vs Offline RL](wiki/comparisons/online-vs-offline-rl.md) — Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优化同一个目标（累积奖励），但对**数据来源**的要求截然不同，导致适用场景和瓶颈完全不同。 `📅unknown` `[comparison_page]`
 - [ONNX Runtime vs MNN vs TensorRT（机载推理 Runtime 选型）](wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — 机器人学习管线里，**训练框架**（PyTorch/JAX）与 **机载执行**（C++/Rust @ 50–1000 Hz）之间通常插入 **ONNX  `📅unknown` `[comparison_page]`
-- [开源 QDD / 力矩关节执行器项目对比与学习路线](wiki/comparisons/open-source-qdd-actuator-projects.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
+- [开源 QDD / 力矩关节执行器项目对比与学习路线](wiki/comparisons/open-source-qdd-actuator-projects.md) — 开源 QDD / 力矩关节执行器项目对比，是按「开放粒度」（成品电机 + 开源关节 vs 电机本体也开源）与学习目标，对 ODRI、Berkeley Humanoid Lite、Internal Cy `📅unknown` `[comparison_page]`
 - [开源机器人力矩电机：电磁设计完整度对比](wiki/comparisons/open-source-torque-motor-em-design.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[comparison_page]`
 - [PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型](wiki/comparisons/ppo-vs-sac.md) — 背景**：PPO（Proximal Policy Optimization）和 SAC（Soft Actor-Critic）是机器人 RL 领域最主流的两种连续控制算法。二者分属 On-polic `📅unknown` `[comparison_page]`
 - [RL 求解逆运动学：五类方案怎么选](wiki/comparisons/rl-inverse-kinematics-five-approaches.md) — 一句话选型：** 固定构型、要微秒级精度 → 解析/数值 IK；冗余避障、非标软体、浮基全身 → 在传统 $J `📅unknown` `[comparison_page]`
@@ -6991,7 +6991,7 @@
 - [AME-1 → AME-2：感知运动系统演进坐标](wiki/overview/ame-1-to-ame-2-technology-map.md) — AME-1 用本体条件注意力解决稀疏落脚；AME-2 在同一编码思想上补齐全局语境、在线不确定性感知映射与 Teacher–Student 部署一致性，把能力从「精确踩过去」推进到「混合地形里选对 `📅unknown` `[overview_page]`
 - [《自动驾驶核心算法盘点》专栏技术地图](wiki/overview/autonomous-driving-core-algorithms-series.md) — 经典自动驾驶软件栈仍可概括为 **感知 → 定位/地图 → 跟踪/预测 → 规划 → 控制**：上游把世界变成带 ID 的 3D 实体与未来意图，下游在运动学与舒适约束下把意图变成可执行轨迹与执行器指 `📅unknown` `[overview_page]`
 - [Awesome Physical AI 技术地图](wiki/overview/awesome-physical-ai-technology-map.md) — Physical AI 双清单技术地图** = 两份同名 Awesome 列表合并后的站内可点开版本（按清单分组浏览，一点即达详情页）。 `📅unknown` `[overview_page]`
-- [BFM 技术地图：41 篇论文的五类问题视角](wiki/overview/bfm-41-papers-technology-map.md) — BFM 最值得看的，不是「动作库更大」，而是把身体能力做成上层智能可调用的接口**——走、平衡、起身、接触、抗扰恢复要先在底层封装好，语言 / VLA / 世界模型 / 规划器才能稳定调用；41  `📅unknown` `[overview_page]`
+- [BFM 技术地图：41 篇论文的五类问题视角](wiki/overview/bfm-41-papers-technology-map.md) — BFM 技术地图**是把 awesome-bfm-papers 的 41 篇论文按「五类问题」（FB 表征、目标条件、内在奖励、适应、层次控制）排布的阅读坐标，用来回答「人形身体如何成为可复用、可 `📅unknown` `[overview_page]`
 - [BFM 分类 01：Forward-backward 表征](wiki/overview/bfm-category-01-forward-backward-representation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [BFM 分类 02：Goal-conditioned 学习](wiki/overview/bfm-category-02-goal-conditioned-learning.md) — 运控基座的**动作覆盖面**——跟踪、全身技能、遥操作、人-物交互（HOI）能否在统一目标条件下扩展？ `📅unknown` `[overview_page]`
 - [BFM 分类 03：Intrinsic reward 预训练](wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
@@ -7131,9 +7131,9 @@
 - [AwesomeSim2Real 技术地图](wiki/overview/lc-awesome-sim2real-technology-map.md) — AwesomeSim2Real 技术地图** = LongchaoDa 维护的 Sim2Real RL 论文清单的站内可点开版本（按 MDP 四要素 + 领域分组浏览，一点即达论文页）。 `📅unknown` `[overview_page]`
 - [理想 MachEmbodied 四篇：记忆、认知、生成与触觉](wiki/overview/li-auto-machembodied-4-papers-technology-map.md) — 车企具身基座不是单模型，而是「记经验 → 定计划 → 生成动作 → 读触觉未来」四层；四篇 arXiv 各守一层，共享 MachEmbodied 品牌与部分代码栈。 `📅unknown` `[overview_page]`
 - [亮源新创三篇 Tech Blog：引用阅读坐标](wiki/overview/lightorigins-3blogs-technology-map.md) — 亮源新创公开的三段范式——预训练（Light-O1）→ 对齐（LightNav-0）→ 部署（Light REACT）——在跑酷线（LightParkour）上还有并行的全身感知运动蒸馏轴；读博客 `📅unknown` `[overview_page]`
-- [Loco-Manip 161 分类 01：运控基座与通用全身跟踪](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [Loco-Manip 161 分类 01：运控基座与通用全身跟踪](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) — 161 篇人形 Loco-Manip 地图中的第 01 类分类页：收录 31 篇关于运控基座、运动跟踪、抗扰动与通用全身动作执行的工作，是上层操作与任务策略依赖的“身体底座”。 `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 02：上半身中心控制与移动操作接口](wiki/overview/loco-manip-161-category-02-upper-body-interface.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
-- [Loco-Manip 161 分类 03：视觉感知驱动的人形移动操作](wiki/overview/loco-manip-161-category-03-visuomotor.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [Loco-Manip 161 分类 03：视觉感知驱动的人形移动操作](wiki/overview/loco-manip-161-category-03-visuomotor.md) — 本页是「人形 Loco-Manip 161 篇」十类分组中的第 03 类：收录 37 篇以**视觉感知**驱动的人形移动操作工作，核心是让相机等感知输入在目标定位、场景理解与全身执行之间形成闭环。 `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 04：生成式运动、语言控制与轨迹规划](wiki/overview/loco-manip-161-category-04-generative-language-trajectory.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 05：动捕、人类视频与交互动作规划](wiki/overview/loco-manip-161-category-05-mocap-human-video.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Loco-Manip 161 分类 06：特殊任务、接触规划与视觉闭环](wiki/overview/loco-manip-161-category-06-contact-tasks.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
@@ -7167,7 +7167,7 @@
 - [电机设计流程（规格 → 仿真 → 样机 → 控制）](wiki/overview/motor-design-workflow.md) — 电机设计不是「先画线圈再试转」，而是 **指标驱动、电磁–热–机械耦合迭代**，最终以 **TN/TI 台架曲线 + FOC 电流环** 证明连续与峰值能力都达标。 `📅unknown` `[overview_page]`
 - [电机驱动器底软通信协议总览](wiki/overview/motor-drive-firmware-bus-protocols.md) — 底软通信 = 物理总线 + 应用层帧格式 + 控制模式语义** 三件套；机器人里最常见的是 **CAN 系（私有或 CANopen）** 与 **EtherCAT+CoE**，调试与外设用 **U `📅unknown` `[overview_page]`
 - [多模态 LLM 发展路线](wiki/overview/multimodal-llm-development.md) — 一条从 **图文对比对齐** 到 **冻结大语言模型+视觉接口**、再到 **视觉指令微调与下游接地/分割** 的多模态大模型演进路线图，对应课程 5.1.3–6.2。 `📅unknown` `[overview_page]`
-- [多旋翼仿真—规划—飞控开源栈总览](wiki/overview/multirotor-simulation-planning-control-stack.md) — 飞控与通信** 分层选型：**自主导航 / 研究** 可选 PX4 或 [ArduPilot](../entities/ardupi `📅unknown` `[overview_page]`
+- [多旋翼仿真—规划—飞控开源栈总览](wiki/overview/multirotor-simulation-planning-control-stack.md) — 多旋翼开源栈按「飞控—伴机 API—规划—仿真—RL—真机 swarm」分层选型的总览页：先分清每个仓库处在哪一层，再组合，而不是混用职责。 `📅unknown` `[overview_page]`
 - [导航·SLAM·自动驾驶开源栈总览](wiki/overview/navigation-slam-autonomy-stack.md) — ROS 2 导航闭环** 以 Navigation2 为中枢，上游接 **2D SLAM**（[slam_toolbox](https: `📅unknown` `[overview_page]`
 - [市面知名机器人平台纵览](wiki/overview/notable-commercial-robot-platforms.md) — 本页回答：**除了少数明星项目外，产业与新闻里还经常出现哪些人形、四足与腿足平台**，它们大致属于哪条技术–商业路线，以及在本知识库里应去哪里深挖。 `📅unknown` `[overview_page]`
 - [NVIDIA Physical AI 工具链技术地图（汇总节点）](wiki/overview/nvidia-physical-ai-toolchain-technology-map.md) — NVIDIA Physical AI 工具链** 是一条厂商自洽的机器人开发流水线：**真实数据 + 合成数据 → 世界模型策展/增广/评分 → Isaac Lab 训练 → 策略后训练与 Are `📅unknown` `[overview_page]`
@@ -7223,7 +7223,7 @@
 - [senlanke 周更论文索引（2026-09-14–18）](wiki/overview/senlanke-weekly-2026-09-14-18-technology-map.md) — 2026-09-12–17 首次提交的腿式与操作论文密集覆盖 **Teacher–Student、感知导航、轮足力控、VLA 等变/组合泛化、WAM 自改进与 dex 基准**；读法应 **按 arX `📅unknown` `[overview_page]`
 - [senlanke 周更论文索引（2026-09-21–25）](wiki/overview/senlanke-weekly-2026-09-21-25-technology-map.md) — 本周覆盖 **感知落脚/Teacher–Student、WAM 频率解耦与 TraceDelta、VLA 安全回滚与力感知人形、双臂扩散与常开记忆** 等主线；读法：**按 arXiv 进唯一 `pa `📅unknown` `[overview_page]`
 - [senlanke 周报索引：10-19–10-23 人形/四足（39 篇）](wiki/overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md) — 本页只按周报原有分栏（人形机器人；四足机器人；轮足与通用腿式机器人）列出条目；论文间的横向优劣不在此判断，请按 arXiv 进各详情节点，条目说明来自周报「问题/创新点」与 arXiv 摘要页。 `📅unknown` `[overview_page]`
-- [senlanke 周报索引：10-19–10-23 Manipulation（37 篇）](wiki/overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md) — 本页只按周报原有分栏（VLA / 通用操作策略；WAM / World Model 与操作预测；在线/离线强化学习与后训练；模仿学习、视觉运动策略与生成式动作策略；双臂操作；灵巧操作；柔性/可变形物体 `📅unknown` `[overview_page]`
+- [senlanke 周报索引：10-19–10-23 Manipulation（37 篇）](wiki/overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md) — senlanke 具身运控lab 10-19–10-23 一周 Manipulation 论文周报（37 篇）的分栏索引页，把每条映射到唯一 arXiv 详情节点。 `📅unknown` `[overview_page]`
 - [senlanke 周报索引：10-26–10-30 人形/四足（33 篇）](wiki/overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md) — 本页只按周报原有分栏（人形机器人；四足机器人；轮足与通用腿式机器人）列出条目；论文间的横向优劣不在此判断，请按 arXiv 进各详情节点，条目说明来自周报「问题/创新点」与 arXiv 摘要页。 `📅unknown` `[overview_page]`
 - [senlanke 周报索引：10-26–10-30 Manipulation（57 篇）](wiki/overview/senlanke-weekly-2026-10-26-30-manipulation-technology-map.md) — 本页只按周报原有分栏（VLA / 通用操作策略；WAM / World Model 与操作预测；在线/离线强化学习与后训练；模仿学习、视觉运动策略与生成式动作策略；双臂操作；灵巧操作；柔性/可变形物体 `📅unknown` `[overview_page]`
 - [Sergey Levine：表达力更强的连续动作策略](wiki/overview/sergey-levine-diffusion-expressive-policies.md) — 学习式控制对动作分布族「名义上中立」，但实践里 **扩散 / flow 动作头** 通过吃下高维多模态分布，使 **长 action chunk** 成为默认接口——先显著抬升模仿学习，再把同一表达力 `📅unknown` `[overview_page]`
@@ -7275,7 +7275,7 @@
 - [世界模型路线 01：级联架构](wiki/overview/world-models-route-01-cascade.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型路线 02：联合架构](wiki/overview/world-models-route-02-joint.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型路线 03：虚拟沙盒](wiki/overview/world-models-route-03-virtual-sandbox.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
-- [小鹏 IRON · 54 项专利技术地图](wiki/overview/xpeng-iron-54-patents-technology-map.md) — IRON 的「技术底牌」在专利层呈现为「机构/传感/步态/具身控制」五层堆叠 — 读专利应分模块对照，而非当作单一论文。 `📅unknown` `[overview_page]`
+- [小鹏 IRON · 54 项专利技术地图](wiki/overview/xpeng-iron-54-patents-technology-map.md) — 本页是小鹏 IRON 人形机器人 54 件 CN 专利的分组阅读地图，按机构、手、腿腰、步态、具身软件五层索引到逐专利页面。 `📅unknown` `[overview_page]`
 - [智践行 · Microduck 具身智能入门专辑 — 技术地图](wiki/overview/zhixing-microduck-primer-album-technology-map.md) — 本页索引 **智践行** 公众号专辑（5 篇）的 **独立详情节点**：把 Pollen Microduck RL 与 [R `📅unknown` `[overview_page]`
 - [具身智能入门① · 零硬件 Microduck 认知起点](wiki/overview/zhixing-microduck-primer-part1-zero-hardware-start.md) — 不买整机** 也能从 Pollen 开源栈入门：先分清 **Python 训练仓** 与 **Rust 机载 Runtime**，理解 ONNX 是两者之间的唯一「桥」。 `📅unknown` `[overview_page]`
 - [具身智能入门② · 不写代码把 Microduck「玩」明白](wiki/overview/zhixing-microduck-primer-part2-play-without-code.md) — 在 **CPU/GPU 仿真** 里用官方脚本驱动已导出 ONNX，把 **命令槽 → 观测 → 动作** 的数据流玩熟，再谈改奖励或上真机。 `📅unknown` `[overview_page]`
