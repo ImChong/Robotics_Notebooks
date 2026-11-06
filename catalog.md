@@ -677,6 +677,7 @@
 - [FreeCAD（开源参数化机械 CAD）](wiki/entities/freecad.md) — FreeCAD** 是由社区与 FreeCAD 组织 维护的 **免费开源、跨平台参数化 3D CAD**，以 **OpenCASCAD `📅unknown` `[entity_page]`
 - [FreeMoCap（开源多相机动捕平台）](wiki/entities/freemocap.md) — FreeMoCap**（仓库名 `freemocap`）是一套 **免费开源** 的运动捕捉 **软件与流程**：在 README 中自描述为 *hardware-and-software-agn `📅unknown` `[entity_page]`
 - [银河通用 AstraBrain：世界–动作与全身控制路线](wiki/entities/galbot-astrabrain.md) — AstraBrain** 把银河通用的世界–动作学习与身体执行组织成一套模型系列；研究时应分别追踪 **WAM 的数据与动作接口**、**WBC 的参考运动跟踪**。 `📅unknown` `[entity_page]`
+- [伽马智能（Gamma Robotics）](wiki/entities/gamma-robotics.md) — 伽马智能（Gamma Robotics，官网 gammarobotics.com.cn）** 是中国电信人工智能研究院（TeleAI）孵化的第一家市场化具身公司。TeleAI 于 2026-10- `📅unknown` `[entity_page]`
 - [Gazebo Sim](wiki/entities/gazebo-sim.md) — Gazebo Sim](https://github.com/gazebosim/gz-sim) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
 - [AnkusDrive（gchen19/AnkusDrive）](wiki/entities/gchen19-ankusdrive.md) — AnkusDrive（gchen19/AnkusDrive）是把 FreeCAD 变成机械设计工作台，提供 CLI 和 MCP，覆盖参数化 CAD、工程图、FEM/CFD 仿真与制造检查。 `📅unknown` `[entity_page]`
 - [GE-Sim 2.0（Genie Envisioner World Simulator 2.0）](wiki/entities/ge-sim-2.md) — GE-Sim 2.0**（arXiv:2605.27491，AgiBot 等）是 **Genie Envisioner** 平台上的 **闭环视频世界模拟器**：在 [Genie Envision `📅unknown` `[entity_page]`
@@ -2992,7 +2993,7 @@
 - [通过主动空间大脑和通用动作小脑进行人形全身操作](wiki/entities/paper-loco-manip-161-160-n160.md) — 通过主动空间大脑和通用动作小脑进行人形全身操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Eh `📅unknown` `[entity_page]`
 - [EgoVLA](wiki/entities/paper-loco-manip-161-161-egovla.md) — EgoVLA** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [LocoFormer](wiki/entities/paper-locoformer.md) — LocoFormer** 是 Skild AI 署名的跨本体运动控制论文；官方项目页连接公司博客。[Ligh `📅unknown` `[entity_page]`
-- [LocoManiLab：人形移动操作全栈测试床](wiki/entities/paper-locomanilab.md) — 一句话定义：** LocoManiLab 将任务与场景、演示数据、策略训练、全身控制、统一评测和实机部署纳入同一人形移动操作测试床，重点是让不同策略与控制器能在共享任务和接口下比较。 `📅unknown` `[entity_page]`
+- [LocoManiLab：人形移动操作全栈测试床](wiki/entities/paper-locomanilab.md) — LocoManiLab 用共享 episode 格式和策略—控制器适配器，把任务与场景、示范采集与生成、策略训练、全身控制器执行、统一评测和实机部署接成同一人形移动操作测试床，让不同策略与控制器能 `📅unknown` `[entity_page]`
 - [Locomotion-Grounded Humanoid Soccer：以行走为基础的多方向踢球](wiki/entities/paper-locomotion-grounded-humanoid-soccer.md) — Locomotion-Grounded Humanoid Soccer**（*Task-Gated Reinforcement Learning of a Multi-Directional Ki `📅unknown` `[entity_page]`
 - [LocoPilot：面向移动操作策略学习的单人双向遥操作](wiki/entities/paper-locopilot-bilateral-teleop-loco-manipulation.md) — LocoPilot**（*LocoPilot: Single-Operator Bilateral Teleoperation for Loco-Manipulation Policy Learn `📅unknown` `[entity_page]`
 - [LocoVLM](wiki/entities/paper-locovlm.md) — LocoVLM**（*Grounding Vision and Language for Adapting Versatile Legged Locomotion Policies*，[arXiv `📅unknown` `[entity_page]`

@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-06] ingest | wiki/entities/gamma-robotics.md — 公司路线新增伽马智能（Gamma Robotics）：TeleAI 孵化，6 个节点（NEXUS / TTCO / GR-BC / KODA / 成立与 GBot-W·GData / LocoManiLab）；同步首页、对照矩阵、开放程度与来源索引
+
 ## [2026-11-06] ingest | 复核 KODA 论文全文与官方源码，更新既有节点；厘清 Robot-OOD、人类示范覆盖和部分开源边界
 
 ## [2026-11-06] ingest | 通读 π₀ 官方全文，补官方 OpenPI 服务时序，纠正流匹配目标符号与评测口径
