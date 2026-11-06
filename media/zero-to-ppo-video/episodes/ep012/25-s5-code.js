@@ -10,7 +10,7 @@
 (function () {
   var E = window.EP012, K = E.K;
   var T = {
-    code: 2.79, xax: 5.35, dW: 6.48, ep3: 8.33, ep4: 9.9,
+    code: 2.79, arm0: 3.66, xax: 5.35, right: 6.11, dW: 6.48, up0: 7.03, ep3: 8.33, ep4: 9.9,
     l1: 12.5, imp: 14.23, math: 16.97, lib: 17.87, three: 18.93,
     sqrtW: 21.43, atanW: 22.84, angle: 25.11, degW: 26.27, rad: 28.25, deg: 28.84,
     defW: 32.58, name: 33.72, inp: 34.65, dIn: 36.42,
@@ -94,7 +94,32 @@
     build: function (K) {
       var s = K.sceneSvg('把手算写成代码 ik.py：手放在 x 轴上 (d, 0)；from math import sqrt, atan2, degrees 导入开平方、算方向角度、弧度换成多少度三个函数；def ik(d) 写一个函数；x = (5 − 4 + d·d) / (2·d) 是两式相减的结果，* 是乘号、/ 是除号；yy = 5 − x·x 是 y 的平方；if yy < 0: return [] 平方不会是负的，没有解；y = sqrt(yy) 开平方给正的、就是肘上；a1 = degrees(atan2(y, x)) 大臂的角度，atan2 先写往上再写往右；a2 = degrees(atan2(−y, d − x)) − a1 肘的角度；交回 [[a1, a2], [−a1, −a2]] 肘上、肘下两组，round 保留 1 位小数；print(ik(1)) 打印 [[63.4, -153.4], [-63.4, 153.4]]，和第 3 幕手算的一样；print(ik(5)) 打印 []，没有解，和第 4 幕一样');
 
-      /* ── 左：编辑器（15 句，一屏放得下） ── */
+      /* ── 句 1（2026-11-06 用户要求「说手放在 x 轴上时要显示一下对应的机械臂画面」）：左边先画第 3、4 幕的网格和 UR5，
+         「x 轴上」x 轴亮一下，「往右 d 格，往上零格」x 轴上出目标 (d, 0)、量出 d 格，「第三幕的一、零」目标挪到 (1, 0)、UR5 摆成肘上那组，
+         「第四幕的五、零」目标挪到 (5, 0)、UR5 伸直也只到 4.24 格、剩下一段橙色打 ×；第 2 句起换成编辑器 ── */
+      var AOX = 70, AOY = 214;
+      var armPanel = E.el('g', {}, s);
+      var under = E.el('g', {}, armPanel);
+      var armG = E.el('g', {}, armPanel);
+      var arm = E.arm2(armG, AOX, AOY, E.ARM.S, 0, [10, 14, 440, 392]), au = arm.u;
+      var pl = E.plane(under, { ox: AOX, oy: AOY, u: au, x0: -1, x1: 6, y0: -3, y1: 3 }), P = pl.P, O = P(0, 0);
+      var atop = E.el('g', {}, armPanel);
+      var xHi = K.paint(E.el('path', { d: 'M ' + P(-1, 0)[0] + ' ' + O[1] + ' H ' + P(6, 0)[0], fill: 'none', 'stroke-width': 7, 'stroke-linecap': 'round' }, atop), null, E.TGT);
+      var dDim = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3, 'stroke-linecap': 'round' }, atop), null, E.X);
+      var dLab = E.halo(E.txt(atop, 0, 0, 'd 格', 20, E.X, 'middle', 900));
+      // 到不了 (5, 0)：伸直的胳膊盖住了 x 轴上这一段，画到量尺下面：最远 4.24 到 5 之间橙色、打 ×，写「到不了」
+      var GY2 = O[1] + 1.6 * au, gapG = E.el('g', {}, atop);
+      K.paint(E.el('path', { d: 'M ' + P(E.L1 + E.L2, 0)[0] + ' ' + (GY2 - 8) + ' V ' + (GY2 + 8) + ' M ' + O[0] + ' ' + GY2 + ' H ' + P(E.L1 + E.L2, 0)[0], fill: 'none', 'stroke-width': 2.5 }, gapG), null, E.INK2);
+      E.halo(E.txt(gapG, (O[0] + P(E.L1 + E.L2, 0)[0]) / 2, GY2 + 24, '伸直最远 4.24 格', 18, E.INK2, 'middle', 900));
+      K.paint(E.el('path', { d: 'M ' + P(E.L1 + E.L2, 0)[0] + ' ' + GY2 + ' H ' + P(5, 0)[0], fill: 'none', 'stroke-width': 6, 'stroke-linecap': 'round' }, gapG), null, E.ERR);
+      E.cross(gapG, P(4.62, 0)[0], GY2 - 18, 7, E.ERR, 4);
+      E.halo(E.txt(gapG, P(5, 0)[0] + 12, GY2 + 6, '到不了', 18, E.ERR, 'start', 900));
+      var tgA = E.target(atop, 0, 0, 11, E.TGT), tgA2 = E.target(atop, 0, 0, 11, E.ERR);
+      var tLab = E.halo(E.txt(atop, 0, 0, '(d, 0)', 20, E.TGT, 'middle', 900));
+      var upLab = E.halo(E.txt(atop, 0, 0, '往上 0 格', 18, E.Y, 'middle', 900));
+      var UPA = E.ik2(1, 0, true), Z0 = [Math.atan2(2, 1), 0];
+
+      /* ── 左：编辑器（15 句，一屏放得下；第 2 句起出来） ── */
       var edG = E.el('g', {}, s);
       var ed = E.code(edG, 10, 14, 440, 392, { title: 'ik.py', size: 16, lh: 22 });
       function lineIn(e, str, spans, dflt) { return e.line(str, dflt, { keys: keysOf(str, spans, dflt) }); }
@@ -238,8 +263,31 @@
         draw: function (st, t) {
           if (!laid && s.isConnected) { RK.layout(); laid = true; }
           ed.draw(st, t); ed2.draw(st, t); term.draw(st, t);
-          var pg2 = E.fade(st, T.page2 - 0.2, 0.4);
-          E.op(edG, 1 - pg2); E.op(ed2G, pg2);
+          var pg2 = E.fade(st, T.page2 - 0.2, 0.4), ed1 = E.fade(st, 12.1, 0.4);
+          E.op(edG, ed1 * (1 - pg2)); E.op(ed2G, pg2);
+          /* 句 1：网格和 UR5 */
+          var aOn = E.fade(st, T.arm0, 0.4) * (1 - ed1);
+          E.op(armPanel, aOn);
+          if (aOn > 0) {
+            var k3 = E.fade(st, T.ep3, 0.8), k4 = E.fade(st, T.ep4, 0.8);
+            arm.pose(Z0[0] + (UPA[0] - Z0[0]) * k3 + (0 - UPA[0]) * k4, Z0[1] + (UPA[1] - Z0[1]) * k3 + (0 - UPA[1]) * k4);
+            E.op(xHi, 0.55 * E.bump(st, T.xax, 1.2));
+            var dx = 3 + (1 - 3) * k3 + (5 - 1) * k4, tp = P(dx, 0);   // 目标：先是一般的 d（画在 3 格），再挪到 1、5
+            tgA.setAttribute('transform', 'translate(' + tp[0].toFixed(1) + ' ' + tp[1].toFixed(1) + ')'); tgA2.setAttribute('transform', tgA.getAttribute('transform'));
+            E.op(tgA, fr(st, T.right) * (1 - k4)); E.op(tgA2, k4);
+            tLab.textContent = k4 > 0 ? '(5, 0)' : k3 > 0 ? '(1, 0)' : '(d, 0)';   // 一开始挪就换成要去的那一点
+            tLab.style.fill = k4 > 0 ? E.ERR : E.TGT;
+            tLab.setAttribute('x', tp[0].toFixed(1)); tLab.setAttribute('y', (tp[1] - 22).toFixed(1));
+            E.op(tLab, fr(st, T.right));
+            dDim.setAttribute('d', 'M ' + O[0] + ' ' + (O[1] + 0.62 * au) + ' H ' + tp[0].toFixed(1) + ' M ' + O[0] + ' ' + (O[1] + 0.62 * au - 7) + ' V ' + (O[1] + 0.62 * au + 7) +
+              ' M ' + tp[0].toFixed(1) + ' ' + (O[1] + 0.62 * au - 7) + ' V ' + (O[1] + 0.62 * au + 7));
+            dLab.textContent = k4 > 0 ? 'd = 5' : k3 > 0 ? 'd = 1' : 'd 格';
+            dLab.setAttribute('x', ((O[0] + tp[0]) / 2).toFixed(1)); dLab.setAttribute('y', (O[1] + 0.62 * au + 26).toFixed(1));
+            E.op(dDim, fr(st, T.right)); E.op(dLab, fr(st, T.dW));
+            upLab.setAttribute('x', tp[0].toFixed(1)); upLab.setAttribute('y', (tp[1] - 48).toFixed(1));
+            E.op(upLab, E.fade(st, T.up0, 0.3) * (1 - E.fade(st, T.ep3, 0.3)));
+            E.op(gapG, E.fade(st, T.ep4 + 0.8, 0.3));
+          }
           // 终端：第 1 次运行到第 2 页开写前；第 2 页写代码时收起（右边写说明），第 2 次运行再出来
           E.op(termG, E.fade(st, T.run - 0.3, 0.3) * (1 - E.fade(st, T.page2 - 0.3, 0.3)) + E.fade(st, T.run2 - 0.3, 0.3));
 
