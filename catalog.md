@@ -2391,6 +2391,7 @@
 - [FlatLab：平面物体操作的统一框架与仿真基准](wiki/entities/paper-flatlab.md) — FlatLab**（*A Unified Methodology Framework and Simulation-Based Benchmark for Robotic Manipulation `📅unknown` `[entity_page]`
 - [Flatness-Preserving Residual Learning（紧密四旋翼编队）](wiki/entities/paper-flatness-preserving-quadrotor-formation.md) — Flatness-Preserving Residual Learning for Real-Time Tight Quadrotor Formation Flight**（[arXiv:2607 `📅unknown` `[entity_page]`
 - [Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）](wiki/entities/paper-flex-pi.md) — Flex-π**（*Flex-π: A Multi-Stream World-Action Model with Compute Flexibility*，[arXiv:2608.10860](h `📅unknown` `[entity_page]`
+- [FlexGlue：稀疏到稠密特征匹配与视觉消歧](wiki/entities/paper-flexglue.md) — FlexGlue 用稠密图像上下文为稀疏查询点预测对应位置，同时判断图像对是否共视，以降低视觉相似场景导致的错误匹配。 `📅unknown` `[entity_page]`
 - [FLEXOR：动态脊-腿协同与微小型四足高速推进](wiki/entities/paper-flexor-dynamic-spine-leg-synergy.md) — Unlocking fast robotic locomotor propulsion through dynamic spine-leg synergy**（Wang Ruochao 等，**北 `📅unknown` `[entity_page]`
 - [FloMo（arXiv:2611.05062）](wiki/entities/paper-flomo.md) — FloMo**（*FloMo: 3D Scene Flow as a World Action Model Intermediate for Learning from Human Video*， `📅unknown` `[entity_page]`
 - [FLoRe: Learning Force-Reactive Humanoid Loco-Manipulation（力反馈响应式人形移动操作学习）](wiki/entities/paper-flore.md) — FLoRe**（*Learning Force-Reactive Humanoid Loco-Manipulation*，[arXiv:2610.35862](https://arxiv.org/ `📅unknown` `[entity_page]`
