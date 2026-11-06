@@ -4,7 +4,7 @@ project_id: flashprove
 code: https://github.com/anthropics/FlashProve
 project: https://www.anthropic.com/research/provable-inference
 tags: [anthropic, inference, security, verification]
-status: draft
+status: complete
 updated: 2026-11-06
 original:
   - ../../sources/sites/flashprove-technical-report.md
@@ -16,6 +16,8 @@ summary: "FlashProve 使用零知识证明验证大模型输出与权重承诺�
 ---
 
 # FlashProve：大模型可证明推理
+
+## 一句话定义
 
 FlashProve 是 Anthropic 等发布的研究原型：提供模型权重承诺和推理证明，让验证者无需获取权重即可检查指定计算是否与承诺一致。
 
@@ -55,6 +57,10 @@ flowchart TD
 - **并行证明：** Fiat–Shamir 挑战按有向无环图组织，请求各自计算后合并共享步骤，再分回每个请求。
 - **范围检查：** 对矩阵随机和进行近似范围检查以降低开销，但引入极小概率的诚实证明拒绝；报告指出重试处理尚待实现。
 
+### 协议组件
+
+推理轨迹中的乘法、路由选择、范围和非线性计算被化为约束与查表；sumcheck 将大量计算归约为较少的线性声明，编码和 proximity test 再进行检查。Merkle 承诺与 BLAKE2 Fiat–Shamir 变换将交互式过程转为非交互证明。
+
 ## 源码运行时序图
 
 以下依据官方 `examples/quickstart-gpu.sh` 与 `prover/examples/run_target_example.sh` 的小型合成权重路径，非线上服务部署。
@@ -80,7 +86,7 @@ sequenceDiagram
 
 ## 实验与工程实践
 
-官方博客测试的是 4-bit Llama 4 Maverick、1024 token 上下文、每证明检查一个 token；24 请求一批、单 H100 生成速率约 110 输入 token/s，每个证明约 18.78 MB；验证约 17 秒（24 线程）。承诺初始化约 39 分钟，约 1600 万请求后须重新承诺。该速率并非在线生成 token 的延迟指标。
+官方博客测试的是 4-bit Llama 4 Maverick、1024 token 上下文、每证明检查一个 token；24 请求一批、单 H100 生成速率约 110 输入 token/s，每个证明约 18.78 MB；验证约 17 秒（24 线程）。承诺初始化约 39 分钟，约 1600 万请求后须重新承诺。报告中权重占主机内存约 232 GB，并按需流入 80 GB H100；24 请求一批耗时约 223 秒。该速率并非在线生成 token 的延迟指标。
 
 源码、Lean 证明及文档公开，使用 Apache-2.0；真实模型权重需另行获取并遵守对应许可。仓库声明该原型不维护。本次未运行代码。
 
@@ -89,7 +95,7 @@ sequenceDiagram
 - 当前证明涉及整数模型与贪心选择，浮点推理或采样输出可能不一致；上下文上限 1024。
 - 事后证明有重算与延迟；证明内容不覆盖模型架构隐藏或侧信道。证明在事后发现篡改，不能阻止用户先收到错误输出；日志基础设施也需可信。
 - Lean 性质基于随机预言机等假设；快速 C++ 验证器与 Lean 规格的等价性尚未形式化证明。
-- **待完成：** 技术报告全文及 prover/verifier 内部实现尚未系统通读；图仅反映博客与已阅读脚本，不能视为完整安全审计。
+- 形式化证明目前覆盖单请求的零知识性质，批处理零知识性质尚未完成形式化证明。独立协议说明由 AI 生成，报告称作者尚未详细审阅；本页也不构成安全审计。
 
 ## 关联页面
 
@@ -106,3 +112,4 @@ sequenceDiagram
 
 - [FlashProve 技术报告](https://www.anthropic.com/document/flashprove-technical-report)
 - [官方仓库](https://github.com/anthropics/FlashProve)
+
