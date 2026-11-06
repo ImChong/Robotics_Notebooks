@@ -1,6 +1,6 @@
 /*
  * 路线视图（Depth Filters）单一事实源。
- * 包含主路线 roadmap/motion-control.md + 策展的 28 条 roadmap/depth-*.md 纵深路线；
+ * 包含主路线 roadmap/motion-control.md + 策展的 29 条 roadmap/depth-*.md 纵深路线；
  * 由 graph.html（路线筛选）、detail.html（「所属路线」）与 roadmap.html（「路线视图」徽标）共享。
  *
  * 命中优先级（与 graph.html nodeMatchesDepth 一致）：
@@ -20,10 +20,11 @@
 (function (global) {
   'use strict';
 
-  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（28 条）。 */
+  /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（29 条）。 */
   var DEPTH_ORDER = [
     'motion-control',
     'teleoperation',
+    'rocket-landing',
     'torque-motor-design',
     'classical-control',
     'humanoid-hardware-design',
@@ -56,6 +57,7 @@
   var DEPTH_HUB_IDS = {
     'motion-control': 'roadmap/motion-control.md',
     'teleoperation': 'roadmap/depth-teleoperation.md',
+    'rocket-landing': 'roadmap/depth-rocket-landing.md',
     'torque-motor-design': 'roadmap/depth-torque-motor-design.md',
     'classical-control': 'roadmap/depth-classical-control.md',
     'humanoid-hardware-design': 'roadmap/depth-humanoid-hardware-design.md',
@@ -184,6 +186,17 @@
       ids: mergeIds('teleoperation', [
         'wiki/tasks/teleoperation.md',
         'wiki/comparisons/data-gloves-vs-vision-teleop.md'
+      ])
+    },
+    'rocket-landing': {
+      segments: new Set([
+        'rocket', 'convexification', 'powered-descent'
+      ]),
+      ids: mergeIds('rocket-landing', [
+        'wiki/concepts/powered-descent-guidance.md',
+        'wiki/methods/lossless-convexification.md',
+        'wiki/methods/successive-convexification.md',
+        'wiki/methods/convex-relaxation-robotics.md'
       ])
     },
     'torque-motor-design': {
@@ -738,6 +751,12 @@
       label: '遥操作（Teleoperation）',
       wikiPath: DEPTH_HUB_IDS.teleoperation,
       description: '人形全身与手指遥操作，采集高质量示范数据并支持实时接管。'
+    },
+    'rocket-landing': {
+      emoji: '🚀',
+      label: '火箭回收控制（Rocket Landing）',
+      wikiPath: DEPTH_HUB_IDS['rocket-landing'],
+      description: '动力下降制导 → 无损凸化 → 6-DoF 序列凸化 → 推力矢量姿态 → 导航与机载求解 → 全剖面回收。'
     },
     'torque-motor-design': {
       emoji: '⚙️',
