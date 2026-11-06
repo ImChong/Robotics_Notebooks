@@ -6562,6 +6562,7 @@
 - [感知后处理与坐标变换](wiki/concepts/perception-coordinate-postprocessing.md) — 感知后处理与坐标变换**把检测器输出的 **像素量**（框、线、交点）经相机内参、深度/平面假设与外参链，变成 **机器人 base 或场地世界系下的几何量**，并做过滤与拓扑校验——课程第 7. `📅unknown` `[wiki_page]`
 - [Physics Fidelity ↔ Sim2Real Gap（物理保真度与仿真到现实差距）](wiki/concepts/physics-fidelity-sim2real-gap.md) — 物理保真度（Physics Fidelity）**：仿真器对真实物理过程的逼近程度。它不是一个标量，而是沿 **几何/URDF 精度 → 刚体动力学算法 → 接触/摩擦模型 → 执行器模型** 四 `📅unknown` `[wiki_page]`
 - [人形腿部行星滚柱丝杠直线驱动（PRS 路线）](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 人形腿部用**行星滚柱丝杠（Planetary Roller Screw, PRS）**把电机旋转转为**直线推力**，再经**连杆机构**映射为髋/膝/踝等关节角，是在**负载密度、静态保持、纵向布 `📅unknown` `[wiki_page]`
+- [动力下降制导（Powered Descent Guidance, PDG）](wiki/concepts/powered-descent-guidance.md) — 动力下降制导**：火箭在着陆前的最后一段只靠发动机推力减速和横移，制导算法要实时算出一条推力剖面，使火箭在高度归零的同时速度也归零，且全程满足硬件和安全约束。 `📅unknown` `[wiki_page]`
 - [Privileged Training（特权信息训练）](wiki/concepts/privileged-training.md) — 特权训练**（Privileged Training / Teacher-Student Training）：训练阶段提供给策略额外的、在真实部署时无法获取的信息，再通过知识蒸馏将能力迁移给仅使用 `📅unknown` `[wiki_page]`
 - [Procedural Terrain Generation（程序化地形生成）](wiki/concepts/procedural-terrain-generation.md) — 程序化地形生成**：在仿真器中 **按规则或噪声参数** 自动生成多样地形 mesh/高度场，而非手工建模单个场景，用于 **批量训练** 四足越障与泛化评估。 `📅unknown` `[wiki_page]`
 - [处理器在环 Sim2Real（Processor-in-the-loop）](wiki/concepts/processor-in-the-loop-sim2real.md) — 处理器在环 Sim2Real**：不把控制器当成「数学上完美的函数」，而把**真实固件执行路径**（线程优先级、周期抖动、总线协议、嵌入式浮点语义）当作与环境动力学并列的**闭环组成部分**，在仿 `📅unknown` `[wiki_page]`
@@ -6741,6 +6742,7 @@
 - [Line Search & Steepest Descent（线搜索与最速下降）](wiki/methods/line-search-steepest-descent.md) — 线搜索最速下降**：沿负梯度方向 $-\nabla f(x)$ 搜索步长 $\alpha$ 使目标下降；配合 **Armijo / Wolfe** 条件保证收敛。**修正阻尼牛顿法** 用 Hes `📅unknown` `[method_page]`
 - [LingBot-Map (Streaming 3D Reconstruction Foundation Model)](wiki/methods/lingbot-map.md) — LingBot-Map** 是一种新型的 3D 基础模型，旨在解决从连续视频流中进行高效、鲁棒的**流式 3D 重建**问题。 `📅unknown` `[method_page]`
 - [Lion（EvoLved Sign Momentum）](wiki/methods/lion.md) — Lion**：Chen et al. (2023) 通过 **符号搜索（symbolic search）** 自动发现的优化算法；仅维护 **一阶动量** $m_t$，更新方向取 $\mathrm `📅unknown` `[method_page]`
+- [无损凸化（Lossless Convexification, LCvx）](wiki/methods/lossless-convexification.md) — 无损凸化**：把一个非凸最优控制问题放松成凸问题，再证明"松弛不会带来损失"——凸问题的最优解恰好满足原来的非凸约束，因此也是原问题的全局最优解。 `📅unknown` `[method_page]`
 - [LQR / iLQR 算法详解](wiki/methods/lqr-ilqr.md) — LQR (Linear Quadratic Regulator)** 是线性最优控制的解析基石，而 **iLQR (iterative LQR)** 是其在非线性系统上的威力延伸。它们通过贝尔曼最 `📅unknown` `[method_page]`
 - [LWD（Learning while Deploying）](wiki/methods/lwd.md) — LWD（Learning while Deploying）** 是 AGIBOT Research 在 2026 年提出的**车队级（fleet-scale）offline-to-online 强 `📅unknown` `[method_page]`
 - [Macrodata Egocentric Hand-Action Pipeline](wiki/methods/macrodata-egocentric-hand-action.md) — Macrodata Labs**（[博客 2026-08-06](https://macrodata.co/blog/turning-egocentric-video-into-3d-hand-a `📅unknown` `[method_page]`
@@ -6811,6 +6813,7 @@
 - [SSRM — Steady-State Response Method（稳态响应法）](wiki/methods/ssrm-steady-state-response-method.md) — SSRM（稳态响应法）**：给电机/关节施加 **可重复的规定输入**，等响应 **进入稳态**（$\dot\omega$、$\ddot\omega$ 近似常数或为零），测量稳态下的力矩与速度，再 `📅unknown` `[method_page]`
 - [StarVLA](wiki/methods/star-vla.md) — StarVLA**（尤其是其首个技术报告版本 **StarVLA-$\alpha$**）是一个旨在降低 Vision-Language-Action (VLA) 系统复杂性的开源基准模型与框架。 `📅unknown` `[method_page]`
 - [立体匹配基础模型与基准生态](wiki/methods/stereo-matching-foundation-models.md) — 本页汇总 **双目立体匹配（stereo matching）** 在 **基础模型时代** 的主线方法与评测基准，以 [NBS](../entities/paper-nbs-no-bias-stere `📅unknown` `[method_page]`
+- [序列凸化（Successive Convexification, SCvx）](wiki/methods/successive-convexification.md) — 序列凸化**：一种序列凸规划（SCP）算法。每轮在上一条轨迹附近把非线性动力学和非凸约束线性化，解一个凸子问题，再用新轨迹做下一轮的线性化点。 `📅unknown` `[method_page]`
 - [Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)](wiki/methods/sumo.md) — Sumo** 是一种由 RAI Institute 提出的层级化机器人控制框架，专门用于解决**动态全身移动操作 (Whole-Body Loco-Manipulation)** 问题。它打破了传 `📅unknown` `[method_page]`
 - [Switch: 敏捷技能切换框架](wiki/methods/switch-framework.md) — Switch** 是由香港科技大学等机构提出的一种针对人形机器人的技能切换方案。它解决了传统运动模仿方法在处理非连续、大跨度动作转换时容易失稳的问题，通过将高层图规划与底层强化学习（RL）控制相结 `📅unknown` `[method_page]`
 - [Table Tennis Strategy & Skill Learning（PhysicsPingPong）](wiki/methods/table-tennis-strategy-skill-learning.md) — PhysicsPingPong**（Wang et al., SIGGRAPH 2024, [arXiv:2407.16210](https://arxiv.org/abs/2407.16210 `📅unknown` `[method_page]`
@@ -7304,6 +7307,7 @@
 - [路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](roadmap/depth-real2sim.md) — 摘要**：面向"想把真实世界变成能在仿真里训练与评测的资产"的纵深路线，从"可仿真（simulation-ready）"判据与 Real2Sim vs Sim2Real 定位，到几何与外观重建（3 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形 RL 运动控制](roadmap/depth-rl-locomotion.md) — 摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-co `📅unknown` `[roadmap_page]`
 - [路线（纵深）：扩散与流匹配策略（Diffusion & Flow Matching）](roadmap/depth-robotics-diffusion-dit-flow.md) — 摘要**：面向「已会 BC/ACT，想沿 **Diffusion Policy → Transformer 去噪 → 大型 RDT → Flow Matching VLA → NVIDIA 人形  `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是火箭回收控制（动力下降制导 → 无损凸化 → 6-DoF 序列凸化 → 姿态与推力矢量 → 导航与机载求解 → 全剖面回收）](roadmap/depth-rocket-landing.md) — 摘要**：面向"想让一枚火箭自己飞回来、在指定点竖直落稳"的纵深路线。从变质量刚体动力学与制导/导航/控制分层讲起，经 Apollo 以来的经典下降制导与最优控制结构，到无损凸化（LCvx / G `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 RSI（递归自我改进）](roadmap/depth-rsi.md) — 摘要**：面向"想让研发闭环自己变强、并把这套东西用到机器人上"的纵深路线，从「四层判据 + 改的是哪个 artifact」的判别边界出发，沿着被系统改动对象逐层内收的顺序——记忆与技能库 → 权 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL / 真机安全部署）](roadmap/depth-safe-control.md) — 摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，最后落到真机上的分层安全部署（急停 / 安全状态机 / 跌倒减损  `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）](roadmap/depth-sim2real.md) — 摘要**：面向"想把仿真里训好的策略稳定搬上真机"的纵深路线，从 domain gap 六类来源画像与方法三分（仿真端随机化 / 分布对齐 / 真机适应），到资产与执行器对齐（SysID / Ac `📅unknown` `[roadmap_page]`

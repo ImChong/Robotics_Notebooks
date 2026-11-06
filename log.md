@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-06] ingest | roadmap/depth-rocket-landing.md — 新增火箭回收控制纵深路线（Stage 0–6）；补入 Blackmore 2010、Szmuk 2018×2、Malyuta 教程、Gaudet RL、Klumpp Apollo、NASA CR-820 等一手资料与 3 个 wiki 页（动力下降制导 / 无损凸化 / 序列凸化）；Klumpp 正文与 Açıkmeşe&Ploen 2007 原文未取得
+
 ## [2026-11-06] lint | 清零 16 条信息型预警：7 个评测页补评测基准枢纽回链；MAPO / MiTA / VFlash 补对比区块、VFlash 补 venue、对比学习人形页拆出实验与评测；新建 concepts/supervised-fine-tuning.md；lint 豁免 env（Gymnasium 变量）/ v1（arXiv 版本号）与运行时「最新画面」并补测试
 
 ## [2026-11-06] lint | 修复 6 个陈旧页面：physical-rsi-research-map 补 Compounding Physical RSI 与配套论文 arXiv:2610.18842；variational-automation / paper-gap-graph-as-policy 补 VABAR 基准；paper-agentic-real2sim 补 HomeBody 交叉链接；paper-gpt-policy / AMO 核对 HomeBody 开源状态更新后无需改事实
