@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [security, ai-agents, multi-agent-system, docker, software-security, self-hosted]
-status: active
+status: complete
 updated: 2026-10-13
 project_id: pentagi
 project: https://pentagi.com/

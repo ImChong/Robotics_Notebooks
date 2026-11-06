@@ -13,6 +13,7 @@
 - **入库日期：** 2026-11-05
 - **线索来源：** [wechat_yuanxq_retargeting_general_tracking_2026-11-05.md](../blogs/wechat_yuanxq_retargeting_general_tracking_2026-11-05.md)
 - **核对范围：** 仅 arXiv 摘要页、仓库 README 与 `scripts/smplx_to_robot.py`、`general_motion_retargeting/motion_retarget.py` 入口；论文全文未通读。
+- **通读：** 未完成
 
 ## arXiv 摘要要点（人工转述）
 

@@ -42,6 +42,8 @@ sources:
   - ../../sources/sites/lerobot-huggingface-org.md
   - ../../sources/courses/robot_learning_tutorial_arxiv_2510_12403.md
   - ../../sources/papers/fluxvla_arxiv_2609_17210.md
+original:
+  - ../../sources/repos/lerobot.md
 ---
 
 # LeRobot (Hugging Face)

@@ -10,6 +10,8 @@ related:
   - ../concepts/autoencoder.md
 sources:
   - ../../sources/papers/global_style_transfer_arxiv_2608_11546.md
+original:
+  - ../../sources/papers/global_style_transfer_arxiv_2608_11546.md
 summary: "GST 从艺术家多幅作品学习扩散模型 h-space 风格残差，并用 CLIP 感知引导保留内容结构。"
 ---
 

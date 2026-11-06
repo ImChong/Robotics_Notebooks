@@ -17,6 +17,8 @@ related:
 sources:
   - ../../sources/papers/foundation4d_arxiv_2610_30340.md
   - ../../sources/sites/foundation4d.md
+original:
+  - ../../sources/papers/foundation4d_arxiv_2610_30340.md
 summary: "Foundation4D 以共享多相机时空特征联合估计几何、三维目标、语义占据和 Gaussian 场景；视频级处理提供轨迹与跟踪结果。"
 ---
 

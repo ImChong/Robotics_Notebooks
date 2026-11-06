@@ -58,7 +58,9 @@ from typing import Any
 from urllib.parse import unquote, urlsplit
 
 from export_minimal import extract_summary, parse_frontmatter, strip_frontmatter
+from lint_wiki import has_section
 from markdown_it import MarkdownIt
+from original_reading import original_fully_read
 from utils.community_labels import load_topics
 from utils.paths import path_to_id
 from utils.wiki_cache import wiki_stem_to_path
@@ -66,6 +68,7 @@ from utils.wiki_cache import wiki_stem_to_path
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 ROADMAP_DIR = REPO_ROOT / "roadmap"
+SOURCES_DIR = REPO_ROOT / "sources"
 GRAPH_CONTENT_DIRS = (WIKI_DIR, ROADMAP_DIR)
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 # 节点摘要单独下发（按 nodes 顺序的字符串数组）：占 link-graph gzip 的 53%，图谱首屏构图用不到
@@ -1044,12 +1047,42 @@ def wiki_has_repo_source(content: str) -> bool:
     return bool(re.search(r"(?:\.\./)*sources/repos/[^)\s]+\.md\b", content))
 
 
-def compute_health_score(content: str) -> int:
-    """计算节点健康度（0-3）。
+# ingest 未完成的 frontmatter status → 健康度上限（取值 stub | draft | complete，见 schema/page-types.md）。
+# complete 与缺省不封顶。
+HEALTH_STATUS_CAPS = {"stub": 1, "draft": 2}
 
-    +1: 有 summary frontmatter
-    +1: 有 frontmatter sources 或正文含参考来源区块
-    +1: 有 updated frontmatter，或至少包含关联页面区块（说明已纳入交叉引用网络）
+
+# 统一阅读骨架（page-types.md「新增页面最低质量标准」9 项），每项为 ``## `` 标题关键词；
+# 同义标题按 lint_wiki 口径放行（如论文页「核心机制」「局限与工程实践」）。
+# query 页走自身结构，只要求 scaffold_wiki_page.self_check 的公共三项。
+HEALTH_SKELETON_SECTIONS = (
+    ("一句话定义",),
+    ("英文缩写速查",),
+    ("为什么重要",),
+    ("核心原理", "核心机制", "方法栈", "流程总览"),
+    ("工程实践",),
+    ("局限",),
+    ("关联",),
+    ("参考来源",),
+    ("继续阅读",),
+)
+HEALTH_QUERY_SECTIONS = (("英文缩写速查",), ("关联",), ("参考来源",))
+
+
+def has_reading_skeleton(content: str, page_type: str) -> bool:
+    """页面是否覆盖统一阅读骨架的全部小节。"""
+    sections = HEALTH_QUERY_SECTIONS if page_type == "query" else HEALTH_SKELETON_SECTIONS
+    return all(has_section(content, list(keywords)) for keywords in sections)
+
+
+def compute_health_score(content: str, page: Path) -> int:
+    """计算节点健康度（0-3），与 ingest 完成度挂钩，三项均可自动检查：
+
+    +1: 元数据：有 summary frontmatter，且有 frontmatter sources 或正文参考来源区块
+    +1: 阅读骨架达标：``has_reading_skeleton``（page-types.md 最低质量标准）
+    +1: 原文已读完：``original_fully_read``（frontmatter original 指向的归档均标「通读：已完成」）
+
+    再按 frontmatter status 封顶（``HEALTH_STATUS_CAPS``）：stub ≤1，draft ≤2。
     """
     if not content.startswith("---"):
         return 0
@@ -1059,23 +1092,19 @@ def compute_health_score(content: str) -> int:
     fm = content[3:end]
     body = content[end + 4 :]
     score = 0
-    if re.search(r"^summary\s*:", fm, re.MULTILINE):
-        score += 1
     sources_match = re.search(r"^sources\s*:(.*?)(?=^\w|\Z)", fm, re.MULTILINE | re.DOTALL)
-    if (sources_match and sources_match.group(1).strip()) or "## 参考来源" in body:
+    has_sources = (sources_match and sources_match.group(1).strip()) or "## 参考来源" in body
+    if re.search(r"^summary\s*:", fm, re.MULTILINE) and has_sources:
         score += 1
-    updated_match = re.search(r"^updated\s*:\s*(\S+)", fm, re.MULTILINE)
-    if updated_match:
-        try:
-            from datetime import date
-
-            updated_date = date.fromisoformat(updated_match.group(1).strip().strip("'\""))
-            if (date.today() - updated_date).days <= 365:
-                score += 1
-        except ValueError:
-            pass
-    elif "## 关联页面" in body:
+    if has_reading_skeleton(content, parse_frontmatter_type(content)):
         score += 1
+    if original_fully_read(content, page, SOURCES_DIR):
+        score += 1
+    status_match = re.search(r"^status\s*:\s*(\S+)", fm, re.MULTILINE)
+    if status_match:
+        cap = HEALTH_STATUS_CAPS.get(status_match.group(1).strip("'\"").lower())
+        if cap is not None:
+            score = min(score, cap)
     return score
 
 
@@ -1658,7 +1687,7 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
         if page.relative_to(REPO_ROOT).parts[0] == "roadmap":
             health_score = compute_roadmap_health_score(content, len(internal_links))
         else:
-            health_score = compute_health_score(content)
+            health_score = compute_health_score(content, page)
         node: dict[str, Any] = {
             "id": page_id,
             "detail_id": path_to_id(page, REPO_ROOT),

@@ -11,6 +11,8 @@ related:
   - ./eka-robotics-vfa.md
 sources:
   - ../../sources/blogs/alex_where_physical_ai_is_heading_2026-11-05.md
+original:
+  - ../../sources/blogs/alex_where_physical_ai_is_heading_2026-11-05.md
 summary: "Alex 对 Physical AI 的数据、硬件和产业落地提出预测，强调仿真与部署经济性；这些判断需要独立验证。"
 ---
 

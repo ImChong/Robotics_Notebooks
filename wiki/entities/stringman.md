@@ -13,6 +13,8 @@ related:
 sources:
   - ../../sources/sites/stringman.md
   - ../../sources/repos/stringman.md
+original:
+  - ../../sources/sites/stringman.md
 summary: "Stringman 是 Neufangled 的房间尺度绳索驱动机器人，结合悬挂夹爪、外部控制器和可选 MCP 接口执行抓取实验。"
 ---
 

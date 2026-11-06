@@ -13,6 +13,8 @@ related:
 sources:
   - ../../sources/papers/humanoidndm_arxiv_2610_34126.md
   - ../../sources/sites/humanoidndm.md
+original:
+  - ../../sources/papers/humanoidndm_arxiv_2610_34126.md
 ---
 
 # HumanoidNDM：以真机神经动力学模型微调动作跟踪

@@ -2,7 +2,7 @@
 
 type: entity
 tags: [quadruped, reinforcement-learning, sim2real, torque-control, berkeley]
-status: stable
+status: complete
 summary: "四足 RL：策略直接输出关节扭矩（高频），弱化固定 PD 内环，与位置目标+PD 路线形成对照，用于判断何时应弃用 PD 先验。"
 updated: 2026-09-15
 arxiv: "2203.05194"

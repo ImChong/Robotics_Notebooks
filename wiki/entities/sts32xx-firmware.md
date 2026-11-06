@@ -8,6 +8,8 @@ updated: 2026-11-03
 summary: "STS32XX Firmware 为 GD32F130 舵机提供局部轨迹规划、位置控制和上位机重力补偿。"
 sources:
   - ../../sources/repos/sts32xx-firmware.md
+original:
+  - ../../sources/repos/sts32xx-firmware.md
 ---
 
 # STS32XX Firmware：Feetech 伺服自定义固件

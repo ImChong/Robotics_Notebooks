@@ -12,6 +12,9 @@ related:
 sources:
   - ../../sources/repos/semi-design.md
   - ../../sources/sites/semi-design.md
+original:
+  - ../../sources/repos/semi-design.md
+  - ../../sources/sites/semi-design.md
 summary: "Semi Design 是提供 React 组件、设计 Token 和设计转代码工具的开源设计系统。"
 ---
 

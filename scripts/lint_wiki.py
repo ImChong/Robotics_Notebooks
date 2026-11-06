@@ -12,7 +12,8 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
   7. Sources 孤儿（sources/papers 中链接到不存在 wiki 页）
   8. 陈旧页面（sources 文件比对应 wiki 页新，需 review）
   9. 矛盾检测（同一概念在不同页面有相反描述）
- 10. Frontmatter 缺少 type 字段（V8 新增）
+ 10. Frontmatter 缺少 type 字段（V8 新增）；status 取值不在 stub / draft / complete；
+     original 须指向带唯一合法「通读」字段的 sources/ 归档
  11. 知识库活跃度检查（V8/V32：优先 wiki/roadmap 近 30 天 git 提交；git 不可用时回退 log.md）
  12. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
  13. formalizations/ 公式变量在正文是否有物理含义解释（V21 新增）
@@ -46,6 +47,7 @@ from typing import Any
 
 from check_project_nodes import check as check_project_nodes
 from markdown_it import MarkdownIt
+from original_reading import original_entries, reading_status
 
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
@@ -883,6 +885,18 @@ def get_wiki_pages() -> list[Path]:
     return sorted(WIKI_DIR.rglob("*.md"))
 
 
+# frontmatter status 只允许这三个取值（schema/page-types.md）；缺省允许
+WIKI_STATUS_VALUES = frozenset({"stub", "draft", "complete"})
+
+
+def invalid_status(fm_block: str) -> str | None:
+    """返回不合法的 status 取值；缺省或合法时返回 None。"""
+    match = re.search(r"^status\s*:\s*(\S+)", fm_block, re.MULTILINE)
+    if match and match.group(1).strip("'\"") not in WIKI_STATUS_VALUES:
+        return match.group(1)
+    return None
+
+
 # 移除代码块（``` ... ``` 和 ` ... `），避免提取代码示例中的假链接
 def strip_code_blocks(content: str) -> str:
     # 移除围栏代码块
@@ -1017,6 +1031,8 @@ def _empty_results() -> dict[str, Any]:
         "outdated_pages": [],
         "contradictions": [],
         "missing_type": [],
+        "invalid_status": [],
+        "invalid_original": [],
         "log_inactive": [],
         "missing_summary": [],
         "query_format": [],
@@ -1510,6 +1526,23 @@ def _check_contradictions(pages: list[Path], results: dict[str, Any]) -> None:
             )
 
 
+def _check_original_reading(pages: list[Path], results: dict[str, Any]) -> None:
+    """frontmatter original 每条须指向 sources/ 下现有归档，且归档有唯一合法的通读字段。"""
+    sources_dir = (REPO_ROOT / "sources").resolve()
+    for page in pages:
+        content = page.read_text(encoding="utf-8")
+        for entry in original_entries(content):
+            path = (page.parent / entry).resolve()
+            if not path.is_relative_to(sources_dir) or not path.is_file():
+                problem = "不是 sources/ 下的现有文件"
+            elif reading_status(path) is None:
+                problem = "缺少唯一一行 `- **通读：** 已完成` 或 `- **通读：** 未完成`"
+            else:
+                continue
+            rel = page.relative_to(REPO_ROOT)
+            results["invalid_original"].append(f"{rel}：original {entry} {problem}")
+
+
 def _check_frontmatter(pages: list[Path], results: dict[str, Any]) -> None:
     """Frontmatter 检查：type 字段、updated 过期、summary 字段。"""
     fm_exempt_dirs = {"references", "roadmaps", "tech-map", "overview", "schema", "queries"}
@@ -1531,6 +1564,9 @@ def _check_frontmatter(pages: list[Path], results: dict[str, Any]) -> None:
                 results["missing_type"].append(str(rel))
 
         if fm_match:
+            bad_status = invalid_status(fm_match.group(1))
+            if bad_status:
+                results["invalid_status"].append(f"{rel}（status: {bad_status}）")
             upd_m = re.search(r"^updated:\s*(\d{4}-\d{2}-\d{2})", fm_match.group(1), re.MULTILINE)
             if upd_m:
                 try:
@@ -2446,6 +2482,7 @@ def lint() -> dict[str, Any]:
     _check_sources_health(results)
     _check_contradictions(pages, results)
     _check_frontmatter(pages, results)
+    _check_original_reading(pages, results)
     _check_log_activity(results)
     _check_query_format(pages, results)
     _check_formalizations(pages, results)
@@ -2547,6 +2584,8 @@ def format_report(results: dict[str, Any]) -> str:
             "💡",
         ),
         ("missing_type", "Frontmatter 缺少 type 字段", "⚠️"),
+        ("invalid_status", "Frontmatter status 不在 stub / draft / complete", "⚠️"),
+        ("invalid_original", "Frontmatter original 无效（须指向带通读字段的 sources/ 归档）", "⚠️"),
         ("log_inactive", "知识库活跃度警告（git / log.md）", "⚠️"),
         ("missing_summary", "缺少摘要字段（summary/description）", "⚠️"),
         ("query_format", "Query 页面格式不完整（缺 Query 产物/参考来源/关联页面）", "⚠️"),

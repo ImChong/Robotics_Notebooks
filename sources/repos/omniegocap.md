@@ -17,6 +17,8 @@
 
 核对范围：README 与上述三个推理入口；尚未逐行审核模型实现或实际运行。
 
+- **通读：** 未完成
+
 - [论文归档](../papers/omniegocap-2512-19283.md)
 - [项目页归档](../sites/omniegocap.md)
 - [实体页](../../wiki/entities/paper-sa-2512-19283-omniegocap-camera-agnostic-sequence-level-egocen.md)

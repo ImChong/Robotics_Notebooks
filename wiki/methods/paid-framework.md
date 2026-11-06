@@ -1,7 +1,7 @@
 ---
 type: method
 tags: [rl, imitation-learning, perception, soccer, humanoid, unitree-g1]
-status: drafting
+status: draft
 updated: 2026-09-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md

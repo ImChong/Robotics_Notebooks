@@ -5,6 +5,7 @@
 - **发布日期：** 2026-10-29
 - **原文：** <https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-multimodal-generation>
 - **核对范围：** 2026-11-01 通读文章正文及参考文献目录；网页未标明版本号。
+- **通读：** 已完成
 - **代码范围：** 文章链接的书籍代码属于整本书；该文章本身是综述，并未给出一个统一的可运行实现。
 
 ## 内容摘要

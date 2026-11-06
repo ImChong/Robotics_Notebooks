@@ -71,6 +71,8 @@ Imitation：ACT、Diffusion、VQ-BeT；RL：HIL-SERL、TDMPC；VLA：π0/π0.5�
 
 核对范围：[README 固定版本](https://github.com/huggingface/lerobot/blob/9e5ee9859480e425a97a6836bb3fee479539beb5/README.md#sota-models)。以下逐项保留上游分类与官方文档入口；不代表本库已完成每个模型的全文及源码核查。
 
+- **通读：** 未完成
+
 | 类别 | 模型 | 官方文档 |
 |------|------|----------|
 | 模仿学习 | ACT | [上游文档](https://github.com/huggingface/lerobot/blob/9e5ee9859480e425a97a6836bb3fee479539beb5/docs/source/policy_act_README.md) |

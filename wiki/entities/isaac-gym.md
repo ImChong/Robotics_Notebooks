@@ -2,7 +2,7 @@
 
 type: entity
 tags: [entity, simulator, isaac, gpu-simulation, reinforcement-learning, sim2real, legacy, nvidia]
-status: stable
+status: complete
 updated: 2026-10-08
 related:
   - ../overview/sim-platforms-decade-technology-map.md

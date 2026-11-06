@@ -5,6 +5,7 @@
 - **归档日期**：2026-10-30
 - **核对版本**：[bf8f682](https://github.com/patch-gg/crowdbricks/tree/bf8f682affe1e2637ba64fbe333aa51cf772ee85)
 - **核对范围**：仓库 README 全文；`examples/horde.py`、`crowdbricks/crowd.py`、`batch.py`、`gaits.py`、`obstacles.py` 与 `benchmarks/throughput.py` 的相关运行路径。
+- **通读：** 已完成
 - **开放状态**：代码 Apache-2.0；需另行取得 [NVIDIA MotionBricks](https://github.com/NVlabs/motionbricks) 及资产。模型与样例动作分别适用 NVIDIA Open Model Agreement 和 NVIDIA Sample Data Evaluation License 等各自条款。
 
 ## 资料要点

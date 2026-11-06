@@ -2,7 +2,7 @@
 
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, berkeley]
-status: planned
+status: stub
 updated: 2026-09-15
 arxiv: "2407.21781"
 related:

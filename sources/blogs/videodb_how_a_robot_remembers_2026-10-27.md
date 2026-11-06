@@ -5,6 +5,7 @@
 - **发布日期：** 2026-10-27
 - **原文：** <https://videodb.io/blog/how-a-robot-remembers>
 - **核对范围：** 2026-11-01 通读文章正文、示例、FAQ 和参考文献列表；页面未标注版本号。
+- **通读：** 已完成
 - **代码状态：** 官方 [Python SDK](https://github.com/video-db/videodb-python) 公开；文章中的找瓶子流程为示意代码，并未提供完整机器人执行应用。SDK 与服务端实现不是同一开放范围。已阅读 SDK 快照 `9d6e55fb6115d6b210d7609105dd2601115b98ad` 的 `collection.py`、`rtstream.py`、`shot.py` 相关调用。
 
 ## 内容摘要

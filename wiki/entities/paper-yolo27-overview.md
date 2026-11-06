@@ -14,6 +14,8 @@ related:
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/yolo27-alphaxiv-overview.md
+original:
+  - ../../sources/papers/yolo27-alphaxiv-overview.md
 summary: "YOLO27 预发布综述：小模型采用双尺度 CNN，大模型使用 query 解码；官方模型和权重尚未发布。"
 ---
 

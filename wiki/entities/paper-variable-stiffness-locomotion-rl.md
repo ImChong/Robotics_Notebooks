@@ -2,7 +2,7 @@
 
 type: entity
 tags: [legged, reinforcement-learning, impedance, quadruped, sim2real, eth]
-status: stable
+status: complete
 summary: "腿足 RL：将可变刚度纳入动作空间，与关节位置联合学习；比较逐关节/分腿/混合参数化，并讨论阻尼等结构约束。"
 updated: 2026-09-28
 arxiv: "2502.09436"

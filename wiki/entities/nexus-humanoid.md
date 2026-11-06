@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper-preview, humanoid, teleoperation, whole-body, foundation-policy, perception, terrain-aware, motion-tracking, sjtu, loco-manipulation]
-status: preview
+status: draft
 updated: 2026-09-06
 related:
   - ../concepts/foundation-policy.md

@@ -10,6 +10,8 @@ related:
   - ./paper-memer.md
 sources:
   - ../../sources/blogs/videodb_how_a_robot_remembers_2026-10-27.md
+original:
+  - ../../sources/blogs/videodb_how_a_robot_remembers_2026-10-27.md
 summary: "VideoDB 文章提出以可检索事件索引和可回看的视频片段构成机器人模型外记忆。"
 ---
 
