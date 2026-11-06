@@ -2,7 +2,7 @@
 type: concept
 tags: [calibration, perception, computer-vision, manipulation, machine-vision]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-06
 related:
   - ./hand-eye-calibration.md
   - ./perception-coordinate-postprocessing.md
@@ -13,6 +13,7 @@ related:
   - ../queries/contact-wrench-closed-loop.md
 sources:
   - ../../sources/blogs/wechat_dafan_optics_three_calibrations_2026-11-04.md
+  - ../../sources/blogs/wechat_xinjiqishijue_three_calibrations_repost_2026-11-06.md
   - ../../sources/papers/zhang_flexible_camera_calibration_2000.md
   - ../../sources/papers/tsai_lenz_hand_eye_calibration_1989.md
   - ../../sources/sites/opencv-calib3d-hand-eye.md
@@ -81,6 +82,15 @@ flowchart LR
 - 3D 抓取、精密装配：完整手眼标定。
 - 文末的标定板产品推荐为厂商商业内容，本页不收。
 
+## 工程要点（转载版补充，作者表述）
+
+2026-11-06 新机器视觉转载了一篇与大凡光学原文基本相同的浓缩版（见 [转载归档](../../sources/blogs/wechat_xinjiqishijue_three_calibrations_repost_2026-11-06.md)），新增了下面几点：
+
+- **精度链：** 张正友标定的精度主要取决于标定板几何精度与图像采集质量；九点标定的精度同时受标定板精度、相机标定精度、机械臂重复定位精度共同影响，任一环节短板都会拉低最终抓取精度。**一手出处未找到**，可理解为各环节误差叠加（我的推断，不作定量结论）。
+- **布点与验证：** 九个点要均匀覆盖整个工作区域，避免只集中在画面中心；标定后用标准工件在多个位置做抓取验证。
+- **复校：** 机械臂磨损、碰撞、温度变化会使手眼矩阵漂移，产线应定期复校；换设备或拆装碰撞后须重新标定。
+- **流程：** 先相机标定，再九点标定，且标定板摆放与工作姿态与真实工况一致。
+
 ## 局限
 
 - 来源是标定板厂商的科普文，**没有实验数据与论文清单**；「一表分清」对照表是图片，未取到。
@@ -99,6 +109,7 @@ flowchart LR
 ## 参考来源
 
 - [大凡光学：三种标定原理（微信归档）](../../sources/blogs/wechat_dafan_optics_three_calibrations_2026-11-04.md)
+- [新机器视觉转载版归档](../../sources/blogs/wechat_xinjiqishijue_three_calibrations_repost_2026-11-06.md)
 - [Zhang 2000 摘录](../../sources/papers/zhang_flexible_camera_calibration_2000.md)
 - [Tsai & Lenz 1989 摘录](../../sources/papers/tsai_lenz_hand_eye_calibration_1989.md)
 - [OpenCV calib3d 手眼 API 归档](../../sources/sites/opencv-calib3d-hand-eye.md)
