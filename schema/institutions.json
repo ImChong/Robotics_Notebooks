@@ -420,6 +420,13 @@
         "galbot"
       ]
     },
+    "gamma-robotics": {
+      "label": "伽马智能（Gamma Robotics）",
+      "aliases": [
+        "gamma-robotics",
+        "gamma-robot"
+      ]
+    },
     "booster": {
       "label": "加速进化（Booster Robotics）",
       "aliases": [
