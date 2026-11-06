@@ -10,6 +10,8 @@ related:
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/hlo_amp_arxiv_2611_05113.md
+original:
+  - ../../sources/papers/hlo_amp_arxiv_2611_05113.md
 summary: "HLO-AMP：在物体参与的场景中训练低层运动先验，再用高层策略完成 G1 双手箱体搬运。"
 ---
 

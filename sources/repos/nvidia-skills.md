@@ -11,6 +11,8 @@
 
 ## 核对范围
 
+- **通读：** 未完成
+
 已读快照 README、skills/README.md、`omniverse-cad-to-simready/SKILL.md` 与其 `BENCHMARK.md`，以及官方 Skills 首页。目录其他技能、其依赖参考文档和可执行脚本尚未逐项通读，不能据此声称核验整个技能库。
 
 - 快照目录由产品仓库镜像，`npx skills add nvidia/skills --list` 用于列出可安装项。

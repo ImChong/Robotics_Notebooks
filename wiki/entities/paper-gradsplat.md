@@ -17,6 +17,8 @@ sources:
   - ../../sources/papers/gradsplat_2610_38951.md
   - ../../sources/sites/gradsplat.md
   - ../../sources/repos/gradsplat.md
+original:
+  - ../../sources/papers/gradsplat_2610_38951.md
 summary: "GradSplat 在前向过程中通过输入视图渲染误差的梯度和学习更新细化 3D 高斯。"
 ---
 

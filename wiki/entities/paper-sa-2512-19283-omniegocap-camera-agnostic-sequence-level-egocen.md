@@ -23,6 +23,8 @@ sources:
   - ../../sources/papers/sun_awesome_ego_2512_19283_omniegocap-camera-agnostic-sequence-leve.md
   - ../../sources/papers/sun_awesome_ego_catalog.md
   - ../../sources/repos/awesome-egocentric-vision.md
+original:
+  - ../../sources/papers/omniegocap-2512-19283.md
 ---
 
 # OmniEgoCap：设备无关的序列级第一人称全身运动重建

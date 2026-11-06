@@ -53,8 +53,6 @@ import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from datetime import date, timedelta
-from functools import lru_cache
-from itertools import takewhile
 from pathlib import Path
 from typing import Any
 from urllib.parse import unquote, urlsplit
@@ -62,6 +60,7 @@ from urllib.parse import unquote, urlsplit
 from export_minimal import extract_summary, parse_frontmatter, strip_frontmatter
 from lint_wiki import has_section
 from markdown_it import MarkdownIt
+from original_reading import original_fully_read
 from utils.community_labels import load_topics
 from utils.paths import path_to_id
 from utils.wiki_cache import wiki_stem_to_path
@@ -1076,43 +1075,12 @@ def has_reading_skeleton(content: str, page_type: str) -> bool:
     return all(has_section(content, list(keywords)) for keywords in sections)
 
 
-# 原文核对记录（ingest-workflow.md 步骤 1.6）：sources/ 归档中含「核对范围」的行或同名小节。
-# 否定词与阅读类动词落在同一分句即视为「未读完」，例如「全文尚未通读」「其余附录尚待核对」。
-_PARTIAL_READING_RE = re.compile(
-    r"(?:尚未|未|待|不代表)[^；。，,;\n]*?(?:通读|读完|核对|复核|核查|审阅|审核|阅读|验证)"
-)
-_MD_HEADING_RE = re.compile(r"^#{1,6}\s")
-_SOURCE_LINK_RE = re.compile(r"sources/([^)\s\"'\]>]+\.md)")
-
-
-@lru_cache(maxsize=None)
-def source_reading_state(path: Path) -> str | None:
-    """sources/ 归档的原文核对状态：``full`` 已读完 / ``partial`` 声明未读完 / None 无记录。"""
-    if not path.is_file():
-        return None
-    lines = path.read_text(encoding="utf-8").splitlines()
-    for i, line in enumerate(lines):
-        if "核对范围" not in line:
-            continue
-        record = line
-        if _MD_HEADING_RE.match(line):
-            record = "\n".join(takewhile(lambda x: not _MD_HEADING_RE.match(x), lines[i + 1 :]))
-        return "partial" if _PARTIAL_READING_RE.search(record) else "full"
-    return None
-
-
-def sources_fully_read(content: str) -> bool:
-    """页面链接的 sources/ 归档里至少一份记录已读完，且没有一份声明未读完。"""
-    states = {source_reading_state(SOURCES_DIR / rel) for rel in _SOURCE_LINK_RE.findall(content)}
-    return "full" in states and "partial" not in states
-
-
-def compute_health_score(content: str) -> int:
+def compute_health_score(content: str, page: Path) -> int:
     """计算节点健康度（0-3），与 ingest 完成度挂钩，三项均可自动检查：
 
     +1: 元数据：有 summary frontmatter，且有 frontmatter sources 或正文参考来源区块
     +1: 阅读骨架达标：``has_reading_skeleton``（page-types.md 最低质量标准）
-    +1: 原文已读完：``sources_fully_read``（ingest-workflow.md 步骤 1.6 核对范围记录）
+    +1: 原文已读完：``original_fully_read``（frontmatter original 指向的归档均标「通读：已完成」）
 
     再按 frontmatter status 封顶（``HEALTH_STATUS_CAPS``）：stub ≤1，draft ≤2。
     """
@@ -1130,7 +1098,7 @@ def compute_health_score(content: str) -> int:
         score += 1
     if has_reading_skeleton(content, parse_frontmatter_type(content)):
         score += 1
-    if sources_fully_read(content):
+    if original_fully_read(content, page, SOURCES_DIR):
         score += 1
     status_match = re.search(r"^status\s*:\s*(\S+)", fm, re.MULTILINE)
     if status_match:
@@ -1719,7 +1687,7 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
         if page.relative_to(REPO_ROOT).parts[0] == "roadmap":
             health_score = compute_roadmap_health_score(content, len(internal_links))
         else:
-            health_score = compute_health_score(content)
+            health_score = compute_health_score(content, page)
         node: dict[str, Any] = {
             "id": page_id,
             "detail_id": path_to_id(page, REPO_ROOT),

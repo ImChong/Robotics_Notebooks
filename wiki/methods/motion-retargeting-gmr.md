@@ -35,6 +35,8 @@ sources:
   - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
   - ../../sources/repos/gen2humanoid.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
+original:
+  - ../../sources/papers/gmr_retargeting_matters_arxiv_2510_02252.md
 summary: "GMR (General Motion Retargeting) 是一种高效的通用动作重定向方法，主要解决从人类动捕数据到异构机器人骨架的几何映射问题。"
 ---
 

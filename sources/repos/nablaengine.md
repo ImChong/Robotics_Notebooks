@@ -13,4 +13,6 @@ README 限定支持范围：球体、胶囊与地面接触、关节限位、PD �
 
 **核对范围：** 已核对训练仓库中 JAX 引擎入口；尚未逐项验证 PyTorch 与 CUDA 内核，也未运行训练。
 
+- **通读：** 未完成
+
 **2026-11-04 补核：** 训练仓库 `sim.make_engine` 创建 `nablaengine.jax_ffi.EnginePhysics`，批量 step 输入状态和关节目标；实际训练链路见 [∇Mimic 节点](../../wiki/entities/paper-nablamimic.md)。本次未运行 CUDA 数值验证。

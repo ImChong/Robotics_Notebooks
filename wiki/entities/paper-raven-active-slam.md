@@ -10,6 +10,8 @@ related:
   - ./paper-raven-rl-adaptive-visibility-graph-mpc.md
 sources:
   - ../../sources/papers/raven_active_slam_arxiv_2610_37111.md
+original:
+  - ../../sources/papers/raven_active_slam_arxiv_2610_37111.md
 summary: "RAVEN：面向无人机的主动 SLAM，通过 Pareto 路线选择和在线 Fisher 信息场权衡探索效率与定位精度。"
 ---
 

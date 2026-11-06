@@ -23,6 +23,7 @@ topic: [locomotion]  # 可选：图谱主题（社区）1–2 个，id 见 schem
 
 - `project_id`：项目实体的稳定身份，小写英文 slug；新论文/项目/源码实体必填。同一项目只有一个实体页，论文、项目入口与官方源码统一归纳；不同材料不能各自生成一个节点。
 - `project` / `code` / `arxiv` / `papers`：官方项目地址、源码地址、主论文编号与配套论文编号列表。CI 检查主身份，不将正文中的参考引用判为重复。
+- `original`（可选）：原文归档路径列表（相对本页，指向 `sources/`），供图谱健康度判定「原文已读完」，写法见 [ingest-workflow.md 步骤 1.6](ingest-workflow.md#步骤-16通读项目原文必做)。
 - `code_scope` / `project_distinction`：独立项目共用单仓时标注模块路径及独立维护理由；不同论文编号已足以区分不同研究工作。详见 [ingest-workflow.md](ingest-workflow.md#同一项目只维护一个实体节点ci-门禁)。
 - `type`：页面类型，对应下方各页面类型定义
 - `tags`：相关主题标签，用于 Dataview 过滤和图谱分析

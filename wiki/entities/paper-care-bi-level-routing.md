@@ -13,6 +13,8 @@ related:
 sources:
   - ../../sources/papers/care_arxiv_2602_03473.md
   - ../../sources/repos/care-continual-learning.md
+original:
+  - ../../sources/papers/care_arxiv_2602_03473.md
 ---
 
 # Scaling Continual Learning to 300+ Tasks with Bi-Level Routing Mixture-of-Experts / 双层路由专家混合：扩展至 300 余项任务的持续学习

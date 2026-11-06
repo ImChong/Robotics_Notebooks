@@ -15,7 +15,7 @@ from scaffold_wiki_page import build_skeleton
 
 def test_compute_health_score_requires_frontmatter() -> None:
     """无 frontmatter 页面在 wiki 规则下仍为 0（既有行为不变）。"""
-    assert glg.compute_health_score("# 标题\n\n正文。\n") == 0
+    assert glg.compute_health_score("# 标题\n\n正文。\n", Path("wiki/x.md")) == 0
 
 
 def test_roadmap_full_signals_score_three() -> None:
@@ -51,82 +51,61 @@ def test_all_repo_roadmap_pages_score_full() -> None:
         assert score == 3, f"{page.name} 健康度 {score} != 3"
 
 
-def _skeleton(status: str = "complete", source: str = "TODO/source.md") -> str:
-    """scaffold 生成的标准骨架（必然通过 self_check），可替换 status 与 sources 链接。"""
-    content = build_skeleton("concept", "示例")
-    content = content.replace("status: draft", f"status: {status}")
-    return content.replace("sources/TODO/source.md", f"sources/{source}")
+def _skeleton(status: str = "complete", original: str | None = None) -> str:
+    """scaffold 生成的标准骨架（覆盖全部阅读骨架小节），可替换 status、追加 original。"""
+    content = build_skeleton("concept", "示例").replace("status: draft", f"status: {status}")
+    if original:
+        content = content.replace(
+            "\nsources:", f"\noriginal:\n  - ../../sources/{original}\nsources:", 1
+        )
+    return content
 
 
 @pytest.fixture
-def sources_dir(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
-    """隔离的 sources/ 目录：full.md 已读完，partial.md 声明未读完，bare.md 无核对记录。"""
-    (tmp_path / "full.md").write_text("- **核对范围：** 已通读 PDF 全文。\n", encoding="utf-8")
-    (tmp_path / "partial.md").write_text(
-        "## 核对范围与待办\n\n已核对摘要与方法；全文尚未逐节通读。\n\n## 摘录\n", encoding="utf-8"
-    )
-    (tmp_path / "bare.md").write_text("# 无核对记录\n", encoding="utf-8")
-    monkeypatch.setattr(glg, "SOURCES_DIR", tmp_path)
+def repo(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    """隔离仓库：sources/ 下 done.md 已完成、todo.md 未完成、bare.md 无通读字段。"""
+    sources = tmp_path / "sources"
+    sources.mkdir()
+    (sources / "done.md").write_text("- **通读：** 已完成\n", encoding="utf-8")
+    (sources / "todo.md").write_text("- **通读：** 未完成\n", encoding="utf-8")
+    (sources / "bare.md").write_text("- **核对范围：** 已通读全文。\n", encoding="utf-8")
+    (tmp_path / "wiki" / "concepts").mkdir(parents=True)
+    monkeypatch.setattr(glg, "SOURCES_DIR", sources)
     return tmp_path
 
 
-def test_source_reading_state(sources_dir: Path) -> None:
-    assert glg.source_reading_state(sources_dir / "full.md") == "full"
-    assert glg.source_reading_state(sources_dir / "partial.md") == "partial"
-    assert glg.source_reading_state(sources_dir / "bare.md") is None
-    assert glg.source_reading_state(sources_dir / "missing.md") is None
+def _score(repo: Path, content: str) -> int:
+    return glg.compute_health_score(content, repo / "wiki" / "concepts" / "page.md")
 
 
-@pytest.mark.parametrize(
-    "record",
-    [
-        "官网首页及仓库 README；完整技术文档尚未通读。",
-        "论文引言、方法、实验与部分附录；其余附录尚待逐项核对。",
-        "仅 arXiv 摘要页与仓库 README；论文全文未通读。",
-        "已核对训练仓库中 JAX 引擎入口；尚未逐项验证 PyTorch 与 CUDA 内核。",
-        "README 固定版本；不代表本库已完成每个模型的全文及源码核查。",
-    ],
-)
-def test_partial_reading_phrases(tmp_path: Path, record: str) -> None:
-    """仓库内真实「未读完」措辞均判为 partial。"""
-    page = tmp_path / "s.md"
-    page.write_text(f"- **核对范围：** {record}\n", encoding="utf-8")
-    assert glg.source_reading_state(page) == "partial"
+def test_health_score_signals(repo: Path) -> None:
+    """元数据 / 骨架达标 / 原文读完 各 +1；原文只认 original 指向且标「已完成」的归档。"""
+    assert _score(repo, _skeleton(original="done.md")) == 3
+    assert _score(repo, _skeleton(original="todo.md")) == 2
+    assert _score(repo, _skeleton(original="bare.md")) == 2
+    assert _score(repo, _skeleton()) == 2
+    minimal = "---\nsummary: x\nsources: [a]\noriginal: ../../sources/done.md\n---\n\n正文。\n"
+    assert _score(repo, minimal) == 2
 
 
-def test_full_reading_record_not_misread_as_partial(tmp_path: Path) -> None:
-    """「未标注版本号」等与阅读无关的否定不影响判定。"""
-    page = tmp_path / "s.md"
-    page.write_text("- **核对范围：** 通读文章正文；页面未标注版本号。\n", encoding="utf-8")
-    assert glg.source_reading_state(page) == "full"
+def test_every_original_must_be_done(repo: Path) -> None:
+    """声明多份原文时，任一份未完成就不算读完。"""
+    content = _skeleton(original="done.md").replace(
+        "  - ../../sources/done.md\n", "  - ../../sources/done.md\n  - ../../sources/todo.md\n"
+    )
+    assert _score(repo, content) == 2
 
 
-def test_health_score_signals(sources_dir: Path) -> None:
-    """元数据 / 骨架达标 / 原文读完 各 +1。"""
-    assert glg.compute_health_score(_skeleton(source="full.md")) == 3
-    assert glg.compute_health_score(_skeleton(source="bare.md")) == 2
-    assert glg.compute_health_score(_skeleton(source="partial.md")) == 2
-    minimal = "---\nsummary: x\nsources:\n  - ../../sources/full.md\n---\n\n正文。\n"
-    assert glg.compute_health_score(minimal) == 2
-    assert glg.compute_health_score(minimal.replace("full.md", "bare.md")) == 1
-
-
-def test_any_partial_source_blocks_fully_read(sources_dir: Path) -> None:
-    """链接多份归档时，只要有一份声明未读完就不算读完。"""
-    content = _skeleton(source="full.md") + "\n- [b](../../sources/partial.md)\n"
-    assert glg.compute_health_score(content) == 2
-
-
-def test_status_caps_health_by_ingest_completion(sources_dir: Path) -> None:
+def test_status_caps_health_by_ingest_completion(repo: Path) -> None:
     """作者自报未完成的页按 status 封顶：stub ≤1，draft ≤2，complete 不封顶。"""
-    assert glg.compute_health_score(_skeleton("stub", "full.md")) == 1
-    assert glg.compute_health_score(_skeleton("draft", "full.md")) == 2
-    assert glg.compute_health_score(_skeleton("complete", "full.md")) == 3
+    assert _score(repo, _skeleton("stub", "done.md")) == 1
+    assert _score(repo, _skeleton("draft", "done.md")) == 2
+    assert _score(repo, _skeleton("complete", "done.md")) == 3
 
 
-def test_status_cap_does_not_raise_low_score() -> None:
+def test_status_cap_does_not_raise_low_score(repo: Path) -> None:
     """封顶只降不升。"""
-    assert glg.compute_health_score("---\nstatus: complete\n---\n\n正文。\n") == 0
+    assert _score(repo, "---\nstatus: complete\n---\n\n正文。\n") == 0
 
 
 def test_reading_skeleton_accepts_lint_synonyms() -> None:

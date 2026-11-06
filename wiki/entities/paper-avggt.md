@@ -11,6 +11,8 @@ related:
   - ./paper-vgg-ttt.md
 sources:
   - ../../sources/papers/avggt_2512_02541.md
+original:
+  - ../../sources/papers/avggt_2512_02541.md
 summary: "AVGGT 分析 VGGT 全局注意力的层级作用，用早期层逐帧化与后续 K/V 子采样实现无需训练的多视图重建加速。"
 ---
 

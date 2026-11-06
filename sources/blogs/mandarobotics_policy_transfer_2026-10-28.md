@@ -8,6 +8,7 @@
 - **原文**：https://mandarobotics.com/blog/policy-transfer/index.html
 - **前篇**：[Comparing physics engines for robotics simulation](mandarobotics_comparing_physics_engines_2026-10-05.md)
 - **核对范围**：文章实验方法、结果、局限和附录；页面会更新，以下记录以 2026-11-03 读取内容为准。
+- **通读：** 已完成
 
 ## 实验设计
 
