@@ -5,7 +5,7 @@
 - **标题：** HomeBody: A Humanoid That Explores, Remembers, and Acts on Its Own
 - **类型：** project / humanoid / loco-manipulation / VLM orchestration / spatial memory / Real2Sim
 - **项目页：** <https://tml.stanford.edu/homebody/>
-- **GitHub：** <https://github.com/Stanford-TML/homebody>（README：**Code coming soon**）
+- **GitHub：** <https://github.com/Stanford-TML/homebody>（2026-11-06 核查：SIM、REAL2SIM 和 REAL 已发布）
 - **作者：** Gio Huh（Caltech）；Cayden Gu、Takara E. Truong、C. Karen Liu、Guy Tevet（Stanford；Liu & Tevet equal advising）
 - **机构：** 加州理工学院（Caltech）；斯坦福大学（Stanford University）The Movement Lab（TML）
 - **发布：** 项目页标注 **September 2026**
@@ -14,7 +14,7 @@
 
 ## 开源状态（项目页 + GitHub 核查，2026-09-28）
 
-- **待发布：** [Stanford-TML/homebody](https://github.com/Stanford-TML/homebody) README 仅 **「Code coming soon」** + overview 图；**无可运行训练/部署入口**。
+- **已发布：** [Stanford-TML/homebody](https://github.com/Stanford-TML/homebody) 提供仿真、Real2Sim 和真机入口；官方说明开源定位栈与演示所用内部版本不同。
 - **项目页：** 含交互式 Real2Sim 3D 对比、技能视频与 FAQ；**未列** 权重 / 数据集下载。
 
 ## 摘要级要点
