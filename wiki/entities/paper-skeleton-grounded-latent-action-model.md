@@ -4,8 +4,8 @@ tags:
   - paper
   - world-action-model
   - manipulation
-status: complete
-updated: 2026-10-29
+status: draft
+updated: 2026-11-06
 arxiv: "2610.31474"
 project_id: skeleton-grounded-latent-action-model
 project: https://aopolin-lv.github.io/SkeLAM/
@@ -14,7 +14,10 @@ related:
   - ../tasks/manipulation.md
   - ../methods/vla.md
   - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
+original:
+  - ../../sources/papers/skeleton-grounded-latent-action-model_arxiv_2610_31474.md
 sources:
+  - ../../sources/sites/skelam.md
   - ../../sources/papers/skeleton-grounded-latent-action-model_arxiv_2610_31474.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
   - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
@@ -23,7 +26,7 @@ summary: "Skeleton Latent Action：面向机器人世界模型的骨架约束潜
 
 # Skeleton Latent Action：面向机器人世界模型的骨架约束潜在动作模型
 
-**Skeleton Latent Action**（*Skeleton-Grounded Latent Action Model for Robot World Models*，[arXiv:2610.31474](https://arxiv.org/abs/2610.31474)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
+**Skeleton Latent Action**（*Skeleton-Grounded Latent Action Model for Robot World Models*，[arXiv:2610.31474](https://arxiv.org/abs/2610.31474)）收录于 senlanke「具身运控lab」10-19–10-23 前沿论文动态（Manipulation）。本页依据论文方法、实验表及项目页整理；论文全文和附录尚未完成通读，待补核。
 
 ## 一句话定义
 
@@ -33,7 +36,9 @@ summary: "Skeleton Latent Action：面向机器人世界模型的骨架约束潜
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WAM | World Action Model | 世界–动作联合建模 |
+| LAM | Latent Action Model | 潜在动作模型 |
+| ADE | Average Displacement Error | 平均位移误差 |
+| LPIPS | Learned Perceptual Image Patch Similarity | 感知图像距离 |
 | VLA | Vision-Language-Action | 视觉–语言–动作模型 |
 
 ## 为什么重要
@@ -75,7 +80,7 @@ flowchart TD
 | **作者（arXiv）** | Qi Lv, Jiayi Lin, Yuxin Jiang, Jianzong Wang, Xiang Deng, Mike Shou Zheng |
 | **机构（周报所述，未逐条核实）** | 待核实（作者：Qi Lv、Jiayi Lin、Jianzong Wang、Mike Shou Zheng 等）。 |
 | **arXiv 评论栏** | Project Page: this https URL |
-| **开源** | arXiv 摘要页/评论给出项目页或外链（https://aopolin-lv.github.io/SkeLAM/）；未发现代码仓库链接（2026-10-26） |
+| **开源** | 截至 2026-11-06 项目页未列官方代码或权重下载链接；采用 DROID、AgiBot 等数据，项目页未提供本项目数据下载。 |
 | **周报所述创新点** | 将机器人骨架信息引入潜在动作学习，利用运动结构为世界模型提供更明确的动作表示。 |
 
 ### arXiv 摘要节选（英文原文）
@@ -84,12 +89,15 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用**：arXiv 摘要页/评论给出项目页或外链（https://aopolin-lv.github.io/SkeLAM/）；未发现代码仓库链接，无可对齐的官方代码流程。
+**不适用**：截至 2026-11-06 项目页未列可运行的官方实现，无可核实的源码运行入口。
 
 ## 实验与评测
 
-- 周报与摘要给出的数字/场景已写入上表「创新点」与摘要节选；其余实验细节、基线与成功率定义请回到论文正文。
-- 读法：先对齐任务设定、传感器与成功定义（仿真/真机），再解读 headline 数字，勿跨论文直接比较。
+- DROID：400 个片段，每个输入 1 帧并预测 12 帧，分辨率 480 × 640；末端轨迹 ADE 为二维像素位移误差。DreamDojo 与 SkeLAM 的 ADE 分别为 51.11 与 41.15 像素，LPIPS 分别为 0.1473 与 0.1310；方向 F1 则低于 Ctrl-World 和 OSCAR。
+- 消融：完整模型 ADE 为 41.15，去除骨架监督为 64.59，去除跨模态交换为 66.74；去除骨架监督同时移除 grounding、alignment 和 swap，不能把差异完全归因于单项损失。
+- AgiBot 结果并非全面改善：相对 DreamDojo，SkeLAM 的 SSIM 较高，但 LPIPS 和 ADE 较差。不同方法的有效轨迹覆盖率不同，应结合附录表格阅读。
+- 人到机器人迁移通过人类视频编码所得潜变量条件化生成，绕过动作适配器；是定性视频展示，不能证明真机任务完成。
+- 策略评估采用记录动作开环重放：7 个策略、15 次 session、105 条配对轨迹，真实成功仅 9 条；策略级 Spearman 0.5347，成功召回率 33.33%，样本有限且未验证闭环。
 
 ## 与其他工作对比
 
@@ -102,9 +110,9 @@ flowchart TD
 
 **Skeleton Latent Action：面向机器人世界模型的骨架约束潜在动作模型。**
 
-1. 本页是入库级摘要，复现前请核对论文正文、附录与代码仓库。
-2. 指标须连同实验条件解读。
-3. 关注 arXiv 版本更新与代码发布。
+1. 骨架监督有助于将视觉变化中的机器人运动与其他动态分开；线性探针支持运动特化，但不能证明完全解耦。
+2. DROID 的收益不能直接推广到 AgiBot 或真机闭环任务。
+3. 推理使用当前 RGB 与机器人动作，残差条件置零；训练期间的骨架监督不意味着推理需要骨架输入。
 
 ## 关联页面
 
@@ -113,6 +121,8 @@ flowchart TD
 - [vla](../methods/vla.md)
 
 ## 参考来源
+
+- [SkeLAM 官方项目页归档](../../sources/sites/skelam.md)
 
 - [skeleton-grounded-latent-action-model_arxiv_2610_31474.md](../../sources/papers/skeleton-grounded-latent-action-model_arxiv_2610_31474.md)
 - [wechat_senlanke_weekly_manipulation_2026-10-19_23.md](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
