@@ -3701,7 +3701,7 @@
 - [PGIF-MPPI：社交导航的安全成本必须面向未来](wiki/entities/paper-pgif-mppi.md) — PGIF**（*Predictive Gaussian Interaction Fields*；[arXiv:2608.08323](https://arxiv.org/abs/2608.0832 `📅unknown` `[entity_page]`
 - [PGMT：人形感知通用动作跟踪](wiki/entities/paper-pgmt.md) — PGMT**（*Perceptive General Motion Tracking for Humanoid Robots*，[arXiv:2609.08511](https://arxiv.o `📅unknown` `[entity_page]`
 - [PhantomTac（arXiv:2610.26174）](wiki/entities/paper-phantomtac.md) — PhantomTac**（*PhantomTac: Hijacking Robotic Tactile Systems with Deploy-and-forget Tags*，[arXiv:26 `📅unknown` `[entity_page]`
-- [阶段条件策略优化：多阶段移动操作](wiki/entities/paper-phase-conditioned-loco-manipulation.md) — 用训练期的任务阶段结构引导 PPO，学习每个环境内贯穿多个阶段的单一高层策略；部署时无需输入阶段标签。 `📅unknown` `[entity_page]`
+- [Learning Multi-Phase Robot Loco-Manipulation via Phase-Conditioned Policy Optimization / 基于阶段条件策略优化的多阶段机器人移动操作学习](wiki/entities/paper-phase-conditioned-loco-manipulation.md) — 用训练期的任务阶段结构引导 PPO，学习每个环境内贯穿多个阶段的单一高层策略；部署时无需输入阶段标签。 `📅unknown` `[entity_page]`
 - [PhaseLoRA（arXiv:2608.15285）](wiki/entities/paper-phaselora.md) — PhaseLoRA**（*PhaseLoRA: Control-Regime-Conditioned Low-Rank Adaptation for Continuous-Action Visio `📅unknown` `[entity_page]`
 - [PHD-Hand：采用三驱动自由度连杆手指的可打印人形灵巧手](wiki/entities/paper-phd-hand-printable-humanoid-dexterous-hand.md) — PHD-Hand**（*PHD-Hand: A Printable Humanoid Dexterous Hand with Linkage-Driven 3-DOA Digits*，[arXiv `📅unknown` `[entity_page]`
 - [ϕ-RIE（arXiv:2609.26795）](wiki/entities/paper-phi-rie.md) — ϕ-RIE**（*ϕ-RIE: From Photorealistic Reconstruction to Interactive Environments*，[arXiv:2609.26795 `📅unknown` `[entity_page]`
