@@ -1,7 +1,7 @@
-// 组装 012：六幕按 EP012.scenes[i] 的下标排好（缺的幕先放占位，某一幕 build 出错时画出报错，不拖累别的幕），
+// 组装 012：七幕按 EP012.scenes[i] 的下标排好（缺的幕先放占位，某一幕 build 出错时画出报错，不拖累别的幕），
 // 再交给 stage.html 的 window.EpisodeVideo。旁白与 [from, to] 对时在 ../ep012.py。
 (function () {
-  var E = window.EP012, K = E.K, N = 6;
+  var E = window.EP012, K = E.K, N = 7;
   function placeholder(title, msg) {
     return {
       title: title, dur: 4, cues: [{ at: 0, s: msg }],
@@ -36,7 +36,7 @@
     title: '逆运动学',
     name: '手的位姿 → 关节角',   // 「末端」前几集没讲过，同 011 封面去掉没讲过的词
     pitch: '够不到就无解，够得到往往不止一解',
-    meta: '<b>机器人学骨架：正逆运动学</b><br>Robotics Notebooks · 懂正运动学 · 不用代码',
+    meta: '<b>机器人学骨架：正逆运动学</b><br>Robotics Notebooks · 懂正运动学 · 要写代码',
     introAt: { title: 0.1, name: 0.4, hero: 0 },
     // 划重点 / 片尾里的加粗词（配色照「画面配色」和 00-common.js）：逆向运动学亮黄；肘上亮黄、肘下青；位置 / 手腕目标紫；角度蓝；
     // 没有解 / 用不了橙；圆环（工作空间）绿
@@ -74,7 +74,8 @@
           '　（Lee & Liang；Raghavan & Roth）',
           '**ROS-Industrial ur_kinematics**（Hawkins，2013）ur_kin.h / .cpp：',
           '　UR 机械臂解析逆解 maximum of 8，肩、腕、肘各两个',
-          '**Python 文档** math.atan2；**UR5 URDF**（ur_description）',
+          '**Python 文档** math.sqrt、math.atan2、math.degrees，',
+          '　内置函数 round，教程 4.1 if 语句；**UR5 URDF**（ur_description）',
           '**Unitree G1 URDF**：膝 −5°～165°，一条胳膊 7 个转动关节'
         ]
       },

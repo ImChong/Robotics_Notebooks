@@ -1,4 +1,4 @@
-// 012 第 5 幕：六个关节——最多几组解。UR5 的 8 组解是同一个手的位姿（tool0）用 URDF 正运动学从 300 个初值做数值逆解、去重得到的
+// 012 第 6 幕：六个关节——最多几组解。UR5 的 8 组解是同一个手的位姿（tool0）用 URDF 正运动学从 300 个初值做数值逆解、去重得到的
 // （../ep012.py 文件头；结构同 ur_kinematics：底座 q1 两个 × 手腕 q5 两个 × 肘 q3 两个），每组的 tool0 和参考姿势逐项相同（误差 < 1e-8）。
 // 句 1「真实的机械臂」左边一台斜着看的 UR5（参考姿势），「六个关节」六个关节亮圆点，「位置和朝向」手上出三根小箭头（目标位姿，之后一直留着）；
 // 句 2「现成的公式」「网上公开、谁都能看的代码」右栏写 ur_kinematics，「三处，各有两个答案」写；
@@ -76,7 +76,7 @@
   function setQ(v, q) { var o = {}; JN.forEach(function (n, i) { o[n] = q[i]; }); v.joints(o); }
   function lerpQ(a, b, k) { return a.map(function (x, i) { var d = b[i] - x; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; return x + d * k; }); }
 
-  E.scenes[4] = {
+  E.scenes[5] = {
     title: '六个关节：最多几组解',
     dur: END,
     cues: [

@@ -639,4 +639,156 @@
   // 第 1–4、6 幕共用的摆法：肩关节（原点）在画面 (OX, OY)，UR5 缩放 S（肘落在格点 (1, 2) 上时一格约 46 px，同 010）；右栏从 RX 起
   E.ARM = { OX: 120, OY: 214, S: 1.68, RX: 445 };
   E.ARM.U = 0.425 * 118 * E.ARM.S / 0.817 / Math.sqrt(5);   // robot3d.js 的 ur5 每米 118·S / 0.817 px
+
+  // 012 第 5 幕「写成代码」：代码窗口照搬 011（../ep011/00-common.js），只给按语义上色加了肘下的青
+  /* ── 代码窗口：E.code(parent, x, y, w, h, o) ──
+     o = { title：标题栏文字（「Python」「hand.py」「终端」），size：代码字号（默认 24），lh：行距（默认 size × 1.42），pad：左边距（默认 16），
+           cursor：false 不画光标（编辑器里整段贴进来时用） }
+     api.line(s, at, opts) 加一句，返回它的下标：
+       s 是代码文本，`{g:0}` 把「0」涂成绿（g / w / a / v / b / h / m / i = good / warn / acc / violet / bad / hi / muted / ink2，n 不上色），
+       `{g.id:0}` 再给这一段起个名字，api.seg(id) 拿到它的 tspan 与列号（分镜里改颜色、量位置）；开头的「>>> 」「... 」「$ 」涂灰、不用打。
+       opts = { out：输出（整句一下子出来，默认颜色 ink2），dur：打字用多久（默认每秒 16 个字），keys：每个字各自出现的分镜时刻（和旁白逐词对上，
+                可以不按从左到右的顺序：没出现的字先空着，等宽字体下别的字不挪位置），page：第几页（新一页开始时上一页淡出，从第一排重新排），
+                row：排在第几排（默认接着上一句），alpha：整句的透明度系数 }
+     超出窗口能放的排数时整体往上滚一排，滚出去的句子淡掉；光标跟着正在打的那一句，打完在句尾闪，下一句开始或出了输出就收掉。
+     api.draw(st, t) 之后可以调 api.hl(i, color, p) 给第 i 句垫一条底色、api.box(id, color, p) 给一段垫底色加下划线（011 起不画描边框）、
+     api.boxCol(i, col, len, color, p) 按列号框住第 i 句的一段（跨好几段颜色时用）；
+     api.x(col) 是第 col 个字符左缘的 x，api.y(i) 是第 i 句此刻的基线 y（要先 draw），api.cw 是一个字符宽 */
+  E.MONO = "'JetBrains Mono', monospace";
+  var CODE_COL = { g: E.GOOD, w: E.WARN, a: E.ACC, v: E.VIOLET, b: E.ERR, h: E.HI, m: E.MUT, i: E.INK2, n: null, x: E.X, y: E.Y, z: E.Z, c: E.DOWN };   // 011 加 x / y / z：坐标轴的红、绿、蓝；012 加 c：肘下的青
+  function parseCode(s) {
+    var segs = [], at = 0, m, re = /\{([a-z])(?:\.(\w+))?:([^}]*)\}/g;
+    var pr = s.match(/^(>>> |\.\.\. |\$ )/);
+    if (pr) { segs.push({ t: pr[1], c: E.MUT, prompt: true }); at = pr[1].length; }
+    re.lastIndex = at;
+    while ((m = re.exec(s)) !== null) {
+      if (m.index > at) segs.push({ t: s.slice(at, m.index) });
+      segs.push({ t: m[3], c: CODE_COL[m[1]], id: m[2] });
+      at = m.index + m[0].length;
+    }
+    if (at < s.length) segs.push({ t: s.slice(at) });
+    return segs;
+  }
+  E.code = function (parent, x, y, w, h, o) {
+    o = o || {};
+    var size = o.size || 24, lh = o.lh || Math.round(size * 1.42), pad = o.pad || 16, cw = size * 0.6, BAR = 34;
+    var g = el('g', {}, parent);
+    K.paint(el('rect', { x: x, y: y, width: w, height: h, rx: 14, 'stroke-width': 2 }, g), '#121216', E.BORDER);
+    K.paint(el('path', { d: 'M ' + (x + 1) + ' ' + (y + BAR) + ' V ' + (y + 14) + ' A 13 13 0 0 1 ' + (x + 14) + ' ' + (y + 1) +
+      ' H ' + (x + w - 14) + ' A 13 13 0 0 1 ' + (x + w - 1) + ' ' + (y + 14) + ' V ' + (y + BAR) + ' Z' }, g), E.S2);
+    [0, 1, 2].forEach(function (k) { K.paint(el('circle', { cx: x + 20 + 16 * k, cy: y + BAR / 2, r: 5 }, g), '#4a4a52'); });
+    var title = txt(g, x + w / 2, y + BAR / 2 + 6.5, o.title || '', 18, E.INK2, 'middle', 700);
+    var hlG = el('g', {}, g), body = el('g', {}, g);
+    var cursor = K.paint(el('rect', { width: cw, height: Math.round(size * 1.12), rx: 2, 'data-cursor': '' }, g), E.INK);   // data-cursor：check_layout 查线压字时不算光标
+    var top = y + BAR + 10, cap = Math.floor((h - BAR - 16) / lh);
+    var lines = [], segs = {}, boxes = {};
+    var api = {
+      g: g, title: title, cw: cw, size: size, lh: lh, cap: cap, lines: lines,
+      x: function (col) { return x + pad + cw * col; },
+      y: function (i) { return lines[i].y; },
+      line: function (s, at, op2) {
+        var p = op2 || {}, sg = parseCode(s), i = lines.length;
+        var prev = lines.filter(function (L) { return (L.page || 0) === (p.page || 0); }).pop();
+        var n = el('text', { x: x + pad, 'font-size': size, 'xml:space': 'preserve' }, body);
+        n.style.fontFamily = E.MONO; n.style.whiteSpace = 'pre';
+        var col = 0, chars = [];
+        sg.forEach(function (q) {
+          q.el = el('tspan', {}, n);
+          q.el.style.fill = q.c || (p.out ? E.INK2 : E.INK);
+          q.col = col; col += q.t.length;
+          if (q.id) segs[q.id] = { el: q.el, line: i, col: q.col, len: q.t.length };
+          q.c0 = chars.length;
+          if (!q.prompt) for (var k = 0; k < q.t.length; k++) chars.push({ q: q, k: k });
+        });
+        var L = { segs: sg, chars: chars, at: at, out: !!p.out, page: p.page || 0, row: p.row !== undefined ? p.row : prev ? prev.row + 1 : 0,
+          keys: p.keys, dur: p.dur !== undefined ? p.dur : chars.length / 16, alpha: p.alpha === undefined ? 1 : p.alpha, el: n, shown: null, y: 0,
+          hl: K.paint(el('rect', { x: x + 6, width: w - 12, height: lh - 4, rx: 6 }, hlG), 'none') };
+        L.hl.style.opacity = 0;
+        lines.push(L);
+        return i;
+      },
+      seg: function (id) { return segs[id]; },
+      draw: function (st, t) {
+        // 当前页：开头时刻不晚于 st 的最后一页；上一页在新一页开始前 0.35 s 淡出
+        var starts = {};
+        lines.forEach(function (L) { if (starts[L.page] === undefined || L.at < starts[L.page]) starts[L.page] = L.at; });
+        var cur = 0;
+        Object.keys(starts).forEach(function (pg) { if (starts[pg] <= st + 1e-6 && +pg > cur) cur = +pg; });
+        var off = 0;
+        lines.forEach(function (L) { if (L.page === cur && L.row >= cap) off += fade(st, L.at - 0.25, 0.25); });
+        var curLine = null;
+        lines.forEach(function (L, i) {
+          var a;
+          if (L.page === cur) a = st >= L.at - 1e-6 ? (L.out ? fade(st, L.at, 0.15) : 1) : 0;
+          else if (L.page === cur - 1) a = 1 - fade(st, starts[cur] - 0.35, 0.3);
+          else a = 0;
+          var r = L.row - (L.page === cur ? off : 0);
+          a *= clamp(r * 2 + 1, 0, 1) * L.alpha;
+          if (r > cap - 0.5) a = 0;   // 还没滚上来的那一排（在窗口下沿外面）先不画：011 用户反馈打印时代码出了窗口
+          L.y = top + r * lh + size * 0.92;
+          L.el.setAttribute('y', L.y.toFixed(1));
+          L.hl.setAttribute('y', (L.y - size * 0.92 - (lh - size * 1.2) / 2 + 2).toFixed(1));
+          L.hl.style.opacity = 0;
+          op(L.el, a.toFixed(3));
+          // 打到第几个字：keys 给了就按各字的时刻，没给就按 dur 匀速
+          var vis = L.chars.map(function (c, k) {
+            if (L.out) return true;
+            if (L.keys) return st >= L.keys[Math.min(k, L.keys.length - 1)] - 1e-6;
+            return st >= L.at + (L.dur * (k + 0.5)) / Math.max(L.chars.length, 1) - 1e-6 || L.dur === 0;
+          });
+          var key = vis.join('');
+          if (key !== L.shown) {
+            L.shown = key;
+            L.segs.forEach(function (q) {
+              if (q.prompt) { q.el.textContent = q.t; return; }
+              var s2 = '';
+              for (var k = 0; k < q.t.length; k++) s2 += vis[q.c0 + k] ? q.t[k] : ' ';
+              q.el.textContent = s2;
+            });
+          }
+          L.last = -1;
+          vis.forEach(function (v, k) { if (v) L.last = k; });
+          L.done = vis.every(Boolean);
+          if (L.page === cur && !L.out && st >= L.at - 1e-6 && a > 0.5) curLine = L;
+        });
+        // 光标：最后一句开始打的输入句；它后面已经出了下一句（输入或输出）就收掉
+        var showC = false;
+        if (curLine) {
+          var later = lines.some(function (L) { return L.page === cur && L.at > curLine.at && st >= L.at - 1e-6; });
+          if (!later) {
+            var pl = curLine.segs[0] && curLine.segs[0].prompt ? curLine.segs[0].t.length : 0;   // 空行没有段
+            var c = curLine.chars[curLine.last];
+            var col = curLine.last < 0 ? pl : c.q.col + c.k + 1;
+            cursor.setAttribute('x', (x + pad + cw * col + 1).toFixed(1));
+            cursor.setAttribute('y', (curLine.y - size * 0.86).toFixed(1));
+            showC = !curLine.done || (t % 1.0) < 0.6;
+          }
+        }
+        op(cursor, showC && o.cursor !== false ? 0.85 : 0);
+      },
+      hl: function (i, color, p) {
+        var L = lines[i];
+        K.paint(L.hl, tint(color, 22, '#121216'));
+        L.hl.style.opacity = clamp(p, 0, 1) * +L.el.style.opacity;
+      },
+      box: function (id, color, p) {
+        var sgm = segs[id];
+        return api.boxCol(sgm.line, sgm.col, sgm.len, color, p, 'seg:' + id);
+      },
+      // 011 改成「底色 + 下划线」（原先是一圈描边框：左右各多出 3px，单个字母 M 的框压到旁边的「(」「,」；用户反馈后查线压字时发现）
+      boxCol: function (i, col, len, color, p, key) {
+        var L = lines[i], k = key || i + ':' + col + ':' + len;
+        var bb = boxes[k] = boxes[k] || { bg: el('rect', { rx: 4 }, hlG), ul: el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, hlG) };
+        var x0 = x + pad + cw * col, x1 = x0 + cw * len, a = clamp(p, 0, 1) * +L.el.style.opacity;
+        bb.bg.style.fill = tint(color, 32, '#121216');
+        bb.bg.setAttribute('x', (x0 - 1).toFixed(1)); bb.bg.setAttribute('width', (x1 - x0 + 2).toFixed(1));
+        bb.bg.setAttribute('y', (L.y - size * 0.9).toFixed(1)); bb.bg.setAttribute('height', (size * 1.15).toFixed(1));
+        bb.ul.style.stroke = color;
+        bb.ul.setAttribute('d', 'M ' + (x0 + 1).toFixed(1) + ' ' + (L.y + size * 0.36).toFixed(1) + ' H ' + (x1 - 1).toFixed(1));   // 在降部（p、y）下面
+        bb.bg.style.opacity = a; bb.ul.style.opacity = a;
+        return bb.bg;
+      }
+    };
+    return api;
+  };
 })();
