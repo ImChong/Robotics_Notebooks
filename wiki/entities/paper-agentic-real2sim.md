@@ -19,7 +19,7 @@ tags:
   - fau
   - style3d
 status: complete
-updated: 2026-10-06
+updated: 2026-11-06
 arxiv: "2607.19190"
 related:
   - ../concepts/sim2real.md
@@ -32,6 +32,7 @@ related:
   - ./paper-agenticstar.md
   - ./paper-video2door-traversal.md
   - ./paper-bfm-zero.md
+  - ./paper-homebody.md
   - ../tasks/manipulation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -185,6 +186,7 @@ flowchart LR
 - [AgentSTAR](./paper-agenticstar.md) — 单目视频 agentic shape + pose track（GLB + 关节轨迹，非 episode twin）
 - [Video2DoorTraversal（论文实体）](./paper-video2door-traversal.md) — 同属 simulator-in-the-loop agent，单位是单门视频孪生再学穿门策略，不是 DROID episode twin
 - [BFM-Zero](./paper-bfm-zero.md) — 人形适配器运动上下文
+- [HomeBody](./paper-homebody.md) — 同属 VLM agent 做 Real2Sim 的谱系，但粒度不同：人形自采探索数据（SLAM 几何、关节、ego 视频）→ Astra agent 建 Isaac Sim 场景级孪生，供长程 loco-manipulation 任务，而非逐条 episode 回放
 - [Manipulation](../tasks/manipulation.md) — 操作任务入口
 
 ## 参考来源
