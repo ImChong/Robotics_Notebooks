@@ -91,6 +91,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [FlexGlue：稀疏到稠密特征匹配与视觉消歧](paper-flexglue.md)
+
 - [world-action-models](../concepts/world-action-models.md)
 - [generative-world-models](../methods/generative-world-models.md)
 - [vla](../methods/vla.md)
