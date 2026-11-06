@@ -1,15 +1,17 @@
-# RoboScope Kit 项目页
+# RoboScope Kit 官方项目页
 
-> 来源归档（site）
-
-- **标题：** RoboScope Kit: Unified Interfaces for Fast and Scalable Embodied-AI Evaluation
 - **类型：** site
-- **链接：** https://roboscope.pages.dev/
-- **arXiv：** <https://arxiv.org/abs/2611.03850>
-- **入库日期：** 2026-11-04
-- **一句话说明：** 把仿真工作进程与策略副本分池调度，并减少动作块之间无用的渲染；重点是保持原基准评分规则，比较加速时需同时注明硬件与并发配置。
-- **沉淀到 wiki：** [`wiki/entities/paper-roboscope-kit.md`](../../wiki/entities/paper-roboscope-kit.md)
+- **链接：** https://mint-sjtu.github.io/RoboScope-Kit/
+- **旧项目地址：** https://roboscope.pages.dev/
+- **论文：** https://arxiv.org/abs/2611.03850
+- **项目页：** https://mint-sjtu.github.io/RoboScope-Kit/
+- **代码：** https://github.com/MINT-SJTU/RoboScope-Kit
+- **核对日期：** 2026-11-07
 
-## 开源状态
+## 开放核查
 
-- **项目页未列 GitHub**（步骤 2.5 核查，2026-11-04）：项目页 HTTP 200，未见 GitHub 链接或 coming soon 字样。
+已打开官方项目页，并与官方 README 的 Paper/Project/Code 入口交叉核对。代码为公开仓库，Apache-2.0；基准数据、模型检查点与仿真资产由各上游提供，未发现本项目另发独立训练数据集的入口。此前 2026-11-04 的「未列 GitHub」记录已过时。
+
+- [论文归档](../papers/roboscope_kit_arxiv_2611_03850.md)
+- [源码归档](../repos/roboscope-kit.md)
+- [知识节点](../../wiki/entities/paper-roboscope-kit.md)
