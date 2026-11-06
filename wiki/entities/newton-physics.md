@@ -26,6 +26,8 @@ related:
   - ./omnisim.md
   - ./nvidia-gtc.md
   - ./robosimstudio.md
+original:
+  - ../../sources/sites/newton-physics-docs-overview_reading_np1.md
 sources:
   - ../../sources/repos/newton-physics.md
   - ../../sources/sites/newton-solvers-catalog.md
@@ -48,6 +50,10 @@ summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微�
 # Newton Physics（物理引擎）
 
 **Newton** 是面向机器人学与仿真研究的 **GPU 加速、可扩展、可微** 物理引擎：在 [NVIDIA Warp](./nvidia-warp.md) 上实现核心计算，集成 [MuJoCo Warp](./mujoco-warp.md) 作为**主要刚体后端**，并强调 [OpenUSD](https://openusd.org/) 场景组合与现代 Python API。项目由 **Disney Research、Google DeepMind、NVIDIA** 发起，现由 **Linux Foundation** 社区维护（代码 Apache-2.0）。
+
+## 一句话定义
+
+Newton 是 Linux Foundation 托管、基于 NVIDIA Warp 与 MuJoCo Warp 的 GPU 加速、可扩展、可微的开源机器人物理引擎，用统一的 `Model` / `State` / `Solver` 抽象承载多种求解器后端。
 
 ## 英文缩写速查
 

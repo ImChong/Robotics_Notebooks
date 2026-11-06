@@ -27,6 +27,8 @@ related:
   - ./lerobot-humanoid.md
   - ../queries/humanoid-hardware-selection.md
   - ../../roadmap/motion-control.md
+original:
+  - ../../sources/papers/berkeley_humanoid_reading_arxiv_2407_21781_ohw1.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/papers/humanoid_hardware.md
@@ -44,6 +46,10 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 # 开源人形机器人硬件方案对比
 
 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。
+
+## 一句话定义
+
+开源人形硬件方案是公开机械、电气与（部分）软件资料、可由实验室或个人复刻的人形机器人平台；本页以 Berkeley Humanoid 论文为设计基线，横向对比各方案的执行器、规模与生态。
 
 ## 英文缩写速查
 
@@ -185,6 +191,38 @@ sequenceDiagram
 ```
 
 图依据：Roboto Origin（Roboparty/roboto_origin）@d94afba，读过 `modules/roboparty_deploy/README.md`、`modules/roboparty_deploy/src/inference/launch/inference.launch.py`、`modules/roboparty_deploy/src/inference/src/inference_node.hpp`（构造与 ROS 接线）、`modules/roboparty_deploy/src/inference/src/inference_node.cpp`（control、inference、main）、`modules/roboparty_deploy/src/inference/src/ros_interface.cpp`（load_config、joy/服务回调，只看到部分）、`modules/roboparty_deploy/src/inference/src/robot_interface.cpp`（仅函数签名与 read_imu、apply_action 开头）。
+
+## 为什么重要
+
+- 复刻门槛决定算法能否上真机：Berkeley Humanoid 论文报告无臂整机物料约 1 万美元、16 kg，单人即可开展实验（论文 §3.3–3.4）。
+- 硬件设计直接影响 sim2real：论文用无弹簧、无闭链的 QDD 关节使仿真简单，前向速度跟踪误差仿真 0.051 / 真机 0.058 m/s（§5.2）。
+
+## 核心原理
+
+以 Berkeley Humanoid 论文为例的「为学习控制而设计」思路（§3–§4）：
+- **仿真友好**：去掉弹簧与闭链，执行器经交叉滚子轴承直接当关节，转子惯量以 armature 建模；EtherCAT 使延迟 0.5–2 ms，可视为无延迟力矩源。
+- **窄域随机化**：用 CAD 与摩擦实验得到小范围参数随机，不随机化电机强度 / PD 增益。
+- **极简控制器**：MLP + PPO（Isaac Lab），无历史、无相位输入，即可户外行走与单腿跳。
+- 其余方案（Roboto Origin、青龙、天工等）的设计取舍见上文对比表与各实体页；本节不推断它们采用同一原则。
+
+## 工程实践
+
+- 结构与线缆：7075 / 6061 铝加 SKD11 钢，空心轴走线以降低磨损；38 次记录跌倒仅 2 次硬件故障，多数 3–5 s 复位（§5.3）。
+- 成本控制：约 1 美元级手机 IMU，自研执行器与驱动；电脑与电池用商品件。
+- 选型时先看 [开源人形复现门槛与门禁清单](../concepts/open-source-humanoid-reproduction-gate.md) 与 [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)。
+
+## 局限
+
+- 论文本体无手臂，关节范围、背隙与强度待迭代；饱和扭矩附近的转矩–电流非线性需更细辨识（§6）。
+- 论文 Table 1 记载 Berkeley Humanoid 无臂整机约 10K USD（含两臂约 15K），与上文对比表中「< 5,000 USD」的粗估不一致，选型时以原文与实际 BOM 为准（推断：该估计可能指部分子系统或规模化成本）。
+- 本页其他平台的数据多来自 README 与策展文，未逐一核对一手实物。
+
+## 继续阅读
+
+- [Berkeley Humanoid Lite](./berkeley-humanoid-lite.md)
+- [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
+- [人形机器人硬件 101 技术地图](../overview/humanoid-hardware-101-technology-map.md)
+- 论文原文：<https://arxiv.org/abs/2407.21781>
 
 ## 关联页面
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)

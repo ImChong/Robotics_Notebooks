@@ -17,6 +17,8 @@ related:
   - ./sim2real.md
   - ./gravity-compensation.md
   - ../queries/urdf-link-inertia-real-robot-check.md
+original:
+  - ../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md
 sources:
   - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
   - ../../sources/papers/urdf_link_inertia_real_robot_check.md
@@ -77,6 +79,10 @@ State Estimation 在回答“机器人现在是什么状态”，那 **System Id
 一句话：
 
 > SysID 的作用，就是把“我以为机器人是这样的”尽量修正成“机器人其实是这样的”。
+
+## 核心原理
+
+SysID 的主线是「设计激励 → 采集输入输出 → 参数化模型 → 最小化预测误差」，细节见下文「基本思路」与「常见方法」。刚体部分对惯性参数线性（回归矩阵形式），执行器与摩擦部分通常非线性或需黑盒拟合。一手例证（Hwangbo et al. 2019，arXiv:1901.08652）：刚体参数取 CAD 并按约 ±15% 质量、±2 cm 质心随机化，而难以解析建模的执行器链路（SEA、延迟、内部控制环）用小 MLP 从位置误差/速度历史回归力矩，宽频激励数据不到 4 分钟即可采集；验证误差 0.74 Nm，理想执行器模型为 3.55 Nm。
 
 ## 到底在辨识什么
 
@@ -268,6 +274,19 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 
 见：[Model Predictive Control (MPC)](../methods/model-predictive-control.md)
 
+## 工程实践
+
+- 激励要覆盖宽频谱：Hwangbo 2019 的执行器网络用 1–25 Hz 的足端正弦加人工扰动采数据，激励窄会使模型在闭环中出现非自然振荡。
+- 验证集误差不等于闭环误差：同文中策略实测数据上的力矩误差（0.966 Nm）明显高于验证集（0.740 Nm），应保留闭环数据做测试。
+- 执行器延迟难以手调：该文手调解析执行器模型一周以上仍不能让策略站稳，改用数据拟合一天内完成（原文经验，非通用保证）。
+- 流程上先校准可建模项，再围绕基准做 DR；检查清单见上文「常见误区」与「继续深挖入口」中的实验设计页。
+
+## 局限
+
+- 数据驱动的执行器模型分布外误差上升，且各关节独立建模的假设对耦合执行器（如共用蓄能器的液压）可能不成立（Hwangbo 2019 讨论）。
+- 需要日志、回归、力矩测量等基础设施，建模本身仍占开发时间。
+- 参数会随磨损、载荷、温度漂移，见「常见误区」第 1 条。
+
 ## 常见误区
 
 ### 1. 以为 SysID 做一次就完事
@@ -334,6 +353,8 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 
 ## 参考来源
 
+- [sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md](../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md) — Hwangbo 2019 执行器网络通读归档（arXiv:1901.08652）
+
 - [sources/papers/system_identification.md](../../sources/papers/system_identification.md) — 来源笔记（Nguyen 2011 / Gautier 激励轨迹 / Hwangbo ActuatorNet 2019）
 - [sources/papers/urdf_link_inertia_real_robot_check.md](../../sources/papers/urdf_link_inertia_real_robot_check.md) — URDF `<inertial>` 与真机对照的规范 / 物理一致性 / Atkeson 回归
 - [sources/blogs/wechat_freedof_sim2real_dynamics_identification.md](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 单关节可辨识性与分级实验设计
@@ -350,6 +371,10 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - Gautier, Khalil, *Direct calculation of minimum set of inertial parameters of serial robots*
 - Wensing et al., *Linear Matrix Inequalities for Physically Consistent Inertial Parameter Identification*
 - Hwangbo et al., *Control of a Quadrotor With Reinforcement Learning*（可类比理解执行器与模型 gap 处理）
+
+## 关联
+
+- [Sim2Real](./sim2real.md)、[关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)、[关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)、[FloBaRoID](../entities/flobaroid.md)、[PRIME](../entities/prime-system-id.md)
 
 ## 一句话记忆
 

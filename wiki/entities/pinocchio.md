@@ -26,10 +26,14 @@ sources:
   - ../../sources/repos/dynibo.md
   - ../../sources/repos/robot-descriptions-py.md
   - ../../sources/blogs/wechat_qt_adventure_cpp_motion_control_libs_2026-11-02.md
+original:
+  - ../../sources/papers/pinocchio_reading_hal_01866228_pin3.md
 summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，是目前各类腿足机器人 WBC 和基于优化的控制器背后的核心计算引擎。"
 ---
 
 # Pinocchio (刚体动力学库)
+
+## 一句话定义
 
 **Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigid Body Dynamics）C++ 库。
 
@@ -44,6 +48,22 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 | iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
 | URDF | Unified Robot Description Format | 统一机器人描述格式 |
 | DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+
+## 为什么重要
+
+- 腿足 / 人形的 WBC、MPC、DDP 每个控制周期都要反复求动力学及其导数，库本身的耗时直接决定能跑多高的频率。
+- 原论文（SII 2019）报告：动态加载模型时，机械臂一次动力学约 1 微秒、腿足约 3 微秒；并声称是首个原生提供解析导数的刚体框架。
+- 上层 Crocoddyl、TSID、Stack-of-Tasks 都以它为底座，选它即接入这一整套生态。
+
+## 核心机制
+
+以下据原论文（见 [通读归档](../../sources/papers/pinocchio_reading_hal_01866228_pin3.md)）：
+
+- **模型/数据分离**：model 建好后不被算法修改，data 持有全部中间量并预分配；算法统一签名 `algorithm(model, data, ...)`，多线程可共享 model、各用一份 data。
+- **递归算法**：RNEA（逆动力学）、CRBA（惯量矩阵）、ABA（正动力学）按运动树递归实现，利用树稀疏性。
+- **静态多态 + variant**：用 CRTP 取代虚函数，每种关节有自己的稀疏表示；再用 variant 在运行时按关节类型选择已特化的步骤。
+- **Lie 群几何**：球关节、浮动基座等配置空间非向量空间，库内实现对应的 exp / log 积分与差分。
+- **代码生成与自动微分**：全标量模板化，可接 CppAD / CasADi / ADOL-C，并经 CppADCodeGen 生成机器人专用代码；论文称生成代码可把耗时降到约 1/3 至 1/8，自动微分一般慢于解析导数。
 
 ## 核心特性
 
@@ -89,6 +109,26 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 - **文章说法：** 语言 C++ + Python 绑定；许可 BSD-2；刚体动力学、FK/IK、雅克比、RNEA/ABA；Crocoddyl、Stack-of-Tasks 底层依赖
 - **核对结论：** 一致。Crocoddyl README 确实说明用 Pinocchio 计算动力学与解析导数。
 
+## 工程实践
+
+- 典型调用：`buildModelFromUrdf(urdf, JointModelFreeFlyer())` 建浮动基座模型，`model.createData()` 得到 data，再调用 `rnea(model, data, q, v, a)` 等（论文 Atlas 示例）。
+- 每个线程各建一份 data，共享同一个 model，避免加锁与重复分配。
+- 注意 `nq` 与 `nv` 可能不同（浮动基座四元数 7 维配置对应 6 维切空间），积分与差分要用库提供的 Lie 群算子，不能直接做向量加减。
+- 回归矩阵、重力、质心量等具体接口见下文各节与 [快速上手](../queries/pinocchio-quick-start.md)。
+
+## 局限
+
+- 论文本身的结论：自动微分比解析导数慢；静态多态使不同关节类不能放进同一基类容器，需要 variant 兜底。
+- 论文 §VII 写明传动（齿轮、肌腱）与驱动（电机）模型是后续计划；现实的电机惯量、摩擦需要自行补（见辨识页）。（推断：当前版本是否已内置，需查最新文档。）
+- 论文性能数据来自 2018 年笔记本与当时模型，现仓库版本的数字未在本页核对。
+- 它是动力学计算库，不含求解器、接触仿真之外的控制器，需要与 QP / 最优控制库组合。
+
+## 继续阅读
+
+- [Pinocchio 快速上手指南](../queries/pinocchio-quick-start.md)
+- [C++ 运动控制开源库清单](../overview/cpp-motion-control-open-source-libraries-map.md)
+- 论文原文：<https://laas.hal.science/hal-01866228>；仓库：<https://github.com/stack-of-tasks/pinocchio>
+
 ## 关联页面
 - [Query：Pinocchio 快速上手指南](../queries/pinocchio-quick-start.md)
 - [robot_descriptions.py](./robot-descriptions-py.md) — 190+ 开源 URDF/MJCF 的 Pinocchio loader
@@ -106,6 +146,7 @@ summary: "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，�
 - [FloBaRoID](./flobaroid.md) — 线性辨识流水线（iDynTree，非本库）
 
 ## 参考来源
+- [sources/papers/pinocchio_reading_hal_01866228_pin3.md](../../sources/papers/pinocchio_reading_hal_01866228_pin3.md) — SII 2019 论文通读归档
 - Carpentier, J., et al. (2019). *The Pinocchio C++ library: A fast and flexible implementation of rigid body dynamics algorithms and their analytical derivatives*.
 - [sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md](../../sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md) — URDD 与 Pinocchio 等「从模型描述推导动力学」栈的交叉引用
 - [sources/repos/dynibo.md](../../sources/repos/dynibo.md) — Dynibo 与 Pinocchio 性能/oracle 对照归档

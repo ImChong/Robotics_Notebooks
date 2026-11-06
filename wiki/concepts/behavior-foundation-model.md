@@ -22,6 +22,8 @@ related:
   - ../entities/amass.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
+original:
+  - ../../sources/papers/bfm_survey_reading_arxiv_2506_20487_btm41.md
 sources:
   - ../../sources/papers/bfm_survey_arxiv_2506_20487.md
   - ../../sources/papers/p_bfm_arxiv_2610_15833.md
@@ -129,6 +131,23 @@ flowchart TB
 1. **BFM ≠ 任意大规模 RL**：需具备 **跨任务行为先验 + 快速适应**；单任务专家策略不算 BFM。
 2. **BFM ≠ VLA**：无语言/视觉条件也可是 BFM（如纯跟踪基础模型）；有语言的全身模型往往是 **层次栈上层**。
 3. **同名不同法**：「BFM」同时指 **CVAE 掩码蒸馏**（arXiv:2509.13780）与 **BFM-Zero（FB+无监督 RL）**——读论文前先看 **预训练线**。
+
+## 工程实践
+
+以下依据 BFM 综述（arXiv:2506.20487）通读摘录，部署层面的判断属归纳：
+
+- **控制频率与规模**：综述给出的典型控制频率为 50-100 Hz；BFM-Zero 约 44.5M 参数、SONIC 约 42M，属中小型网络，板载部署的难点更多在系统集成而非参数量。
+- **选线**：要贴近真机，优先看带真机部署标记的 goal-conditioned 线（HOVER、TWIST/TWIST2、SONIC 等）；FB 线（BFM-Zero）的优势是给定奖励或目标即可零样本推断，代价是对离线数据覆盖与低秩假设敏感。
+- **适应顺序（推断）**：先尝试潜变量 / 目标 / 奖励嵌入级的零样本适应，不够再用 LoRA、Task Tokens 等轻量微调，最后才考虑重训；语义任务交给上层 VLA / 语言 / 扩散规划。
+- **Sim2Real 手段**：BFM-Zero 用域随机化、历史策略与大残差网络，零微调部署到 Unitree G1 与 Booster T1。
+
+## 局限
+
+- **Sim2Real**：综述指出当前 BFM 大多仍局限于仿真，大规模真机部署记录有限（本库实体页中已有若干真机案例，见上文各论文页）。
+- **数据瓶颈**：Humanoid-X 约 16.4 万 clips / 240 h，Motion-X++ 约 12.0 万 / 180.9 h，AMASS 约 1.1 万 / 40 h，规模远小于 LLM 语料；缺少本体感觉 + 视觉 + 接触对齐的大规模数据。
+- **具身泛化**：形态、执行器、传感器不匹配会使跨平台迁移不稳。
+- **FB 线局限**：有限维 d 的低秩假设与离线数据覆盖不足可导致表征塌缩。
+- **评测缺失**：综述指出缺少统一评测机制；风险层面还包括数据偏见、隐私与对抗扰动等安全问题。
 
 ## 关联页面
 

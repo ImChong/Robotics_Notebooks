@@ -9,6 +9,8 @@ related:
   - ../entities/paper-uni-robot-agent.md
   - ../methods/vla.md
   - ../concepts/world-action-models.md
+original:
+  - ../../sources/papers/dna_reading_arxiv_2611_03622_techmap57.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md
 summary: "具身智能小站 2026-11-04 盘点：D&A 解耦描述与评估的零样本机器人奖励模型（深读）、ODE Policy 动作动力学、开放权重机器人智能体统一接口，以及触觉灵巧、移动操作与导航、数据与评测平台等 57 篇；57/57 独立节点（新建 54 / 复用 3）。"
@@ -22,6 +24,10 @@ summary: "具身智能小站 2026-11-04 盘点：D&A 解耦描述与评估的零
 
 **本期主线是别让奖励与评测把失败看成进步：D&A 先描述视频中实际变化再按成功标准评分，ODE Policy 直接学习动作变化的向量场，uni-robot-agent 用统一接口让开放权重模型参与机器人操作；其余覆盖策略后训练、触觉与灵巧、移动操作、数据平台与评测。深读 D&A，跟进 ODE Policy 与 uni-robot-agent。**
 
+## 一句话定义
+
+**本页是具身智能小站 2026-11-04 期 57 篇论文的技术地图：按方向给出阅读坐标，并以 D&A 奖励模型为深读主线。**
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -34,6 +40,10 @@ summary: "具身智能小站 2026-11-04 盘点：D&A 解耦描述与评估的零
 
 - 公众号一次列出 57 篇（1 深读 + 2 跟进 + 54 扫读）、方向跨度大，需要横切面索引；每篇只保留一个判断，细节在各节点。
 - 节点内的数字为公众号转述，未核验原文表格；开源结论为入库日核查结果，见各节点「为什么重要」。
+
+## 为什么重要
+
+- 一期里同时出现奖励模型、动作动力学、触觉灵巧、评测数据等方向，按方向横切后可快速定位该读哪个节点；其中 D&A 提示的共性问题是：奖励 / 评测若默认成功，会把失败当成进步（论文已通读，见下方参考来源）。
 
 ## 流程总览
 
@@ -143,6 +153,17 @@ flowchart TB
 | TRAILS | [paper-trails](../entities/paper-trails.md) | 已开源 |
 | Local Solution Repair MAPD | [paper-local-solution-repair-mapd](../entities/paper-local-solution-repair-mapd.md) | 已开源 |
 
+## 工程实践
+
+- 深读主线 D&A（原文已通读，见 [通读归档](../../sources/papers/dna_reading_arxiv_2611_03622_techmap57.md)）：把奖励估计拆成"不看指令的描述器"与"先写成功标准再打分的评估器"，纯提示词、可套在任意 VLM 上；真机在线 RL 中 DROID Franka 任务成功率约从 10% 升到 100%（约 90 分钟），离线优势过滤使 BC 提升 +80%（论文自述）。
+- 用作奖励 / 过滤信号前，先在自己的成功 / 失败轨迹对上检查"失败是否真的得低分"，再接入 RL 或数据过滤（推断自论文的确认偏差分析）。
+- 其余 56 篇的数字均为公众号转述，落地前回到各节点与原文核对。
+
+## 局限
+
+- 本页只给阅读坐标，不替代各论文原文；除 D&A 外未逐篇通读原文。
+- D&A 依赖前沿闭源 VLM，论文自述存在延迟、token 成本（每条轨迹约 0.015–0.060 美元、24–58 秒量级，Gemini 系列）与语义幻觉；奖励粒度受自然语言描述限制，精细几何量较难表达。
+
 ## 关联页面
 
 - [VLA](../methods/vla.md)
@@ -150,6 +171,7 @@ flowchart TB
 
 ## 参考来源
 
+- [D&A 论文通读归档](../../sources/papers/dna_reading_arxiv_2611_03622_techmap57.md)（arXiv:2611.03622）
 - [wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md](../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md)
 
 ## 推荐继续阅读

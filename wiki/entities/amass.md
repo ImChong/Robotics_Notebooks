@@ -19,12 +19,16 @@ related:
   - ./paper-egohtr.md
   - ./exercises-dataset.md
   - ./paper-humantracker.md
+original:
+  - ../../sources/papers/amass_reading_arxiv_1904_03278_am7.md
 sources:
   - ../../sources/sites/amass-dataset.md
   - ../../sources/papers/egohtr_arxiv_2607_13472.md
 ---
 
 # AMASS（Archive of Motion Capture as Surface Shapes）
+
+## 一句话定义
 
 **AMASS** 是 MPI-IS Perceiving Systems 维护的 **人体运动元数据集**：把多份独立 **光学标记动捕** 序列转换到统一的 **SMPL**（及网格）参数化上，使动画、可视化与机器学习可以在同一表示下吃「合并后的」人类动作分布。
 
@@ -46,6 +50,12 @@ sources:
 - **规模与覆盖**：官网摘要对规模给出 **40+ 小时**、**300+ 被试**、**11000+ 动作** 等叙述量级（细节以论文与数据版本为准）。
 - **与 SMPL 生态绑定**：人体形状与姿态参数可直接对接大量视觉与图形学工具链，降低从「原始标记」到「网络张量」的摩擦。
 
+## 工程实践
+
+- **取用字段**：论文给出每帧含 SMPL 形状 16 维、DMPL 软组织 8 维、159 维姿态（含手与根平移）；机器人侧通常只取姿态与根平移，忽略形状与软组织（论文明确允许）。
+- **体型归一化**：可把所有被试替换为同一 SMPL 形状再取关节位置，便于后续重定向（论文 §1 的用法说明；具体管线见上文时序图与 [Motion Retargeting](../concepts/motion-retargeting.md)）。
+- **子集选择**（推断）：表 1 中 KIT、BMLrub、CMU 体量最大；按任务（行走、舞蹈、手部）挑选子集并做质量过滤，再进入 AMP / 跟踪训练。
+
 ## 流程总览（概念级）
 
 ```mermaid
@@ -64,6 +74,8 @@ flowchart LR
 ```
 
 ## 常见误区或局限
+
+- **原论文自述的限制**：论文承认 MoSh++ 非实时，手部拟合无真值只能定性评估；标记互换等问题靠人工检查修正或剔除，数据质量因子集而异。
 
 - **不是「开箱即用的机器人关节角」**：SMPL 系人体轨迹通常仍需 **[Motion Retargeting](../concepts/motion-retargeting.md)** 与动力学修正才能上机；否则易出现脚滑、穿透与力矩不可行。
 - **许可与用途**：下载与使用受站点 **License** 约束；商业或再分发场景必须自行核对条款与引用要求。

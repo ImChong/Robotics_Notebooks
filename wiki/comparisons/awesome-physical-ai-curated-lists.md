@@ -11,6 +11,8 @@ related:
   - ../concepts/sim2real.md
   - ../overview/awesome-physical-ai-technology-map.md
   - ../queries/embodied-fm-taxonomy-loop.md
+original:
+  - ../../sources/repos/awesome_physical_ai_curated_lists_reading_pc7k.md
 sources:
   - ../../sources/repos/awesome-physical-ai-natnew.md
   - ../../sources/repos/awesome-physical-ai-aichr.md
@@ -35,6 +37,26 @@ GitHub 上有两个都叫 **awesome-physical-ai** 的独立仓库，阅读与引
 | CC0 | Creative Commons Zero | aichr 列表许可证 |
 | MIT | Massachusetts Institute of Technology License | natnew 仓库许可证 |
 | RFM | Robotics Foundation Model | natnew canonical 类之一 |
+
+## 为什么重要
+
+两个同名仓库在检索中极易混淆；引用错仓会把 Safety / Governance 覆盖或边缘硬件覆盖张冠李戴。先分清收录口径，再决定把哪份清单当条目入口。
+
+## 核心原理
+
+两份清单的差别在**组织方式**：natnew 先定 14 个 canonical 类别再往里填条目（并带 docs 站与 tags 注释）；aichr 按技术栈（VLA、3D 视觉、边缘推理、硬件）扁平罗列并用 Legend 图标标注论文 / 代码 / 硬件验证。前者便于按主题系统浏览，后者便于按部署链路速查。（依据：2026-11 通读两份 README，见 `original`。）
+
+## 工程实践
+
+- 引用具体条目时回到条目自身的官方页核对，清单只做入口；两份 README 的描述均为简述，未逐条验证。
+- 站内写链接必须带 `natnew` / `aichr` 前缀，避免实体页混用。
+- 需要 Safety / Governance / Evaluation 视角时优先查 natnew；需要 Jetson / TensorRT / 触觉传感器视角时优先查 aichr。
+
+## 局限
+
+- 两份均为第三方策展，无统一质量门槛；aichr 体量小、更新节奏与 stars 都低（见对比表）。
+- 条目数、stars 等为快照（2026-09-19/20），会漂移；本页分类对照是基于 README 结构的人工归纳，属推断。
+- 清单收录不等于推荐，亦不代表条目已被复现。
 
 ## 对比表
 

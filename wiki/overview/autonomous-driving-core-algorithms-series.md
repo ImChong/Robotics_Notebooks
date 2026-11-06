@@ -23,6 +23,8 @@ related:
   - ../methods/vla.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-mmhu.md
+original:
+  - ../../sources/papers/apollo_em_planner_reading_arxiv_1807_08048_adcore.md
 sources:
   - ../../sources/blogs/wechat_shenlan_ai_ad_2d_detection.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_3d_detection.md
@@ -41,7 +43,7 @@ summary: "深蓝AI《自动驾驶核心算法盘点》专辑技术地图：2D/3D
 
 > **本页定位**：为深蓝AI 微信公众号 [**《自动驾驶核心算法盘点》**](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzY4NjA5NTgyMQ==&action=getalbum&album_id=4596755873481310212) 专辑提供 **父节点阅读坐标**；提炼模块边界与经典算法锚点，不复述公式推导。截至 2026-07-21 **5 篇正文已全部收录**。
 
-## 一句话观点
+## 一句话观点（一句话定义）
 
 经典自动驾驶软件栈仍可概括为 **感知 → 定位/地图 → 跟踪/预测 → 规划 → 控制**：上游把世界变成带 ID 的 3D 实体与未来意图，下游在运动学与舒适约束下把意图变成可执行轨迹与执行器指令；量产系统是这些经典算法的 **场景化组合**，而非单一「最优解」。
 
@@ -159,6 +161,12 @@ flowchart TB
 - 为腿式/人形主线读者提供 **乘用车级算法词典**，便于读 Autoware、Apollo 文档与驾驶数据集论文时对号入座。
 - 把「检测够好则跟踪可极简」「路径–速度解耦」「向量地图约束预测」「传感器路线不互相取代」等 **工程可迁移洞见** 沉到 wiki，而不只是外链列表。
 - 2D 四大族与 3D 单目/双目/LiDAR 表，可直接对接 [目标检测选型 Query](../queries/object-detection-model-selection.md) 的延迟–精度轴。
+
+## 工程实践
+
+- 读规划篇时以一手论文核对（[Apollo EM Planner, arXiv 1807.08048](https://arxiv.org/abs/1807.08048)）：车道级 Frenet 下路径–速度迭代，每步 DP 粗搜给决策与凸可行域，再用样条 QP 精修；论文自述 QP 平均约 3 ms、整体平均 <100 ms，规划覆盖至少 8 秒或 200 米。
+- 工程取舍（论文）：交通规则为硬约束，让行/超车/nudge 为可协商决策；高速动态障碍交给并行换道而非 nudge。
+- 推断：专辑其余模块（检测、SLAM、预测）同样应以对应论文与官方仓库为准做选型，微信文只作地图。
 
 ## 局限与风险
 

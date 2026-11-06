@@ -19,6 +19,8 @@ related:
   - ../entities/paper-spd.md
   - ../concepts/behavioral-cloning-mysteries.md
   - ../entities/paper-revisiting-open-loop-action-chunking.md
+original:
+  - ../../sources/papers/dagger_reading_arxiv_1011_0686.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/imitation_learning.md
@@ -69,6 +71,22 @@ $$
 - **输入**：图像、关节状态、末端位姿、历史动作等观测
 - **输出**：关节目标、末端动作、action chunk 或离散动作 token
 - **损失**：MSE、L1、交叉熵、负对数似然
+
+## 核心原理
+
+以下依据 Ross, Gordon & Bagnell（AISTATS 2011，已通读，归档见 [dagger_reading_arxiv_1011_0686](../../sources/papers/dagger_reading_arxiv_1011_0686.md)）对「纯监督式模仿」的分析：
+
+- **目标是在自身分布上低损失**：模仿学习真正要最小化的是 $\mathbb{E}_{s\sim d_\pi}[\ell(s,\pi)]$（$d_\pi$ 为策略自己诱导的状态分布），而 BC 只在专家分布 $d_{\pi^*}$ 上训练（原文式 2）。因动态未知，$d_\pi$ 只能靠执行采样，故这是非 i.i.d. 问题。
+- **二次界**：若在 $d_{\pi^*}$ 上 0-1 损失为 $\epsilon$，则 $J(\pi)\le J(\pi^*)+T^2\epsilon$（定理 2.1），原文称该界是紧的，即存在问题使额外代价随 horizon $T$ 二次增长。
+- **改进方向**：前向训练（逐步一个策略）与 DAgger 把界降到关于 $T$ 线性（$uT\epsilon$，$u$ 为单步偏离的最大代价增量）；DAgger 通过聚合策略自身访问状态上的专家标注实现。
+- **典型失败形态**：原文 Super Mario Bros. 实验中，纯监督策略常卡在障碍物旁，因专家总在远处起跳，数据里没有「贴脸后如何脱困」；增加专家数据量并不改善（Super Tux Kart 同样观察到）。
+
+## 工程实践
+
+- **先做 baseline，再看闭环**：先训一个离线 BC，随后必须在闭环部署下评测，而不是只看专家分布上的 loss。
+- **覆盖偏离后的恢复**：采集时有意包含扰动与恢复片段；可交互时用 [DAgger](./dagger.md) 式聚合，由专家对策略实际访问的状态补标注。原文建议的最简无参数版本是仅第 1 轮用专家（$\beta_i=\mathbb{I}(i=1)$）。
+- **动作表示**：按任务选 MSE/L1、分类或生成式头（Diffusion、Flow、action chunk），见上文「主要技术路线」。
+- **量化评测**：用成功率、跌落/卡死次数等闭环指标衡量，而非仅看训练损失（推断，与上文「Train 指标与闭环成功率不对齐」一致）。
 
 ## 核心优点
 

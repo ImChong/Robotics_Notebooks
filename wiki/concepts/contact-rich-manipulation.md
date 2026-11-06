@@ -44,6 +44,8 @@ related:
   - ../entities/paper-accrue-continual-off-policy-rl.md
   - ../entities/paper-imitation-learning-contact-rich-tasks-survey.md
   - ../entities/paper-genesis-handover.md
+original:
+  - ../../sources/papers/contact_rich_il_survey_tsuji_reading_2506_13498.md
 sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/contact_dynamics.md
@@ -159,6 +161,32 @@ sources:
 - [ArtManip](../entities/paper-artmanip.md) — **铰接物体手内操作**：在自由漂浮基座上 **抓稳 + 推动内部关节** 的双目标耦合；程序化功能抓取 + Teacher–Student RL（[ArtGym](https://github.com/youngcv/artgym) 已开源）。
 - [GENESIS-Handover](../entities/paper-genesis-handover.md) — **人机递物的接触边界**：VLM 生成多种任务条件化手-物交互假设，按接收者实时手型选定并持续更新末端目标；ANYmal 移动操作真机 12 人、两方法各 60 次，「无需调整即可使用」6/60 → 16/60（对照 AFT-Handover；arXiv:2610.08003，CoRL 2026，未见官方代码）。接触发生在人手与物体之间，机器人侧解决的是交接前的目标调整，而非持续力控。
 - [Manipulation](../tasks/manipulation.md) 是更上层的任务总览；本页强调其中“最难的接触子域”。
+
+## 核心原理
+
+> 本节依据 Tsuji 等人的接触丰富模仿学习综述（arXiv:2506.13498，[通读归档](../../sources/papers/contact_rich_il_survey_tsuji_reading_2506_13498.md)）归纳；标「推断」处为本页整合，非原文表述。
+
+- **为什么常走数据驱动路线**：接触动力学强非线性、对微小位姿偏差敏感，经典阻抗 / 混合力位控制难以随间隙、材料、表面几何扩展；RL 需大量试错且受 sim-to-real 与真机磨损限制，IL 则能直接从人类示教学到力与位置的细微调节。
+- **模态分工**：位置管空间对齐，力管柔顺与防损伤，视觉给语境但易被遮挡且无法直接测力，触觉直接反映摩擦 / 滑移 / 形变；多模态融合比单一模态更稳。
+- **示教与学习的四象限**：在线 / 离线示教 × 在线 / 离线学习 → 交互式模仿、示教增强 RL、直接模仿、观察学习；接触任务需示教端同时采到力（含力反馈遥操作、力传感工具、触觉手套）。
+- **方法族**：BC（RNN / ACT / Diffusion / Mamba）、DMP 及其力感知变体、VAE / 扩散 / VLA 等生成式、IRL / GAIL、多模态 IL、离线 RL 预训练 + 微调；常见组合是「IL 初始化 + RL 精修 / 残差」。
+- **推断**：这与本页「接触模型 → 阻抗力控 → 接触时序 → 全身协调」的执行层视角互补——学习策略负责产生意图与参考，柔顺执行层负责吸收接触误差。
+
+## 工程实践
+
+- **先选示教通道**：需要力信息时优先带力反馈的遥操作或 kinesthetic 示教；纯视频观察示教质量高但缺力，且人机动力学不同。
+- **执行层保留柔顺**：即使没有触觉 / 力传感，也可用阻抗控制间接调力（综述指出视觉等间接模态无法提供精确力控）。
+- **补偿复合误差**：BC + action chunking 会放大误差，可叠加残差 RL、纠正标签或 DAgger 类人工纠正。
+- **仿真补数据要配 sim-to-real 手段**：域随机化、物理增强、可微仿真、少量真机微调；接触越多差距越大。
+- **按阶段挑传感器**：触觉传感器耐久与集成仍是瓶颈，选型证据见 [TacO](../entities/paper-taco-tactile-sensor-benchmark.md)。
+
+## 局限
+
+- 力 / 触觉数据稀缺，现有机器人数据集规模（约 10 万–百万级）远小于视觉语言数据；触觉硬件多停留在研究阶段。
+- 基础模型 / VLA 的成功多在准静态位置控制任务（推物、叠布），**需要调力的动态接触任务仍是开放问题**（综述 §4.3.2）。
+- 第三人称示教存在视角与外观差距，接触区遮挡使视觉下任务「非完全可观」。
+- BC 类方法缺乏自适应、受复合误差影响；IRL 存在奖励歧义。
+- 本节依据的综述为方法分类，不提供统一的定量基准；本页所列各论文的具体数字以其各自来源页为准。
 
 ## 常见误区
 

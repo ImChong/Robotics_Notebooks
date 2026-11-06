@@ -17,6 +17,8 @@ related:
   - ../entities/paper-p3.md
   - ../entities/paper-monorace-champion-level-drone-racing.md
   - ./humanoid-policy-observation-inputs.md
+original:
+  - ../../sources/papers/hartley_contact_aided_inekf_reading_arxiv_1904_09251_se3.md
 sources:
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
   - ../../sources/papers/state_estimation.md
@@ -81,6 +83,16 @@ sources:
 一句话：
 
 > 没有靠谱的状态估计，MPC、TSID、WBC、RL policy 都是在闭着眼开车。
+
+## 核心原理：足式本体感知估计的主线
+
+本节依据 Hartley 等的接触辅助 InEKF（[通读归档](../../sources/papers/hartley_contact_aided_inekf_reading_arxiv_1904_09251_se3.md)，arXiv:1904.09251）整理，说明「预测 + 校正」在足式机器人上的一个具体实现：
+
+- **IMU 当过程模型**：用 IMU 积分（strapdown）传播姿态、速度、位置，避开平台相关的复杂动力学建模。
+- **接触点并入状态**：触地足的世界系位置作为状态，接触速度按零均值白噪声处理以容许打滑；前向运动学给出足端相对机体的位置量测来校正。
+- **不变误差**：把状态放在矩阵李群 $SE_{N+2}(3)$ 上，用右不变误差，则确定性部分的误差动力学严格 log-linear，线性化矩阵与量测矩阵都不依赖当前估计；对比之下四元数 EKF 的线性化依赖估计，初值差时线性化不准、收敛慢。
+- **可观性**：纯本体感知下绝对位置与绕重力轴偏航不可观，长时间必然漂移；需要靠 LiDAR / 视觉等外部量测（见上文 VIO / SLAM 各节）去约束。
+- **边界**：加入 IMU 偏置后 group-affine 性质不再严格成立，理论保证部分丧失，但论文实验中仍优于四元数 EKF。
 
 ## State 到底指什么
 
@@ -259,6 +271,14 @@ $$
 
 [G2G](../entities/paper-g2g.md)（arXiv:2606.08284，浙江大学等）在 **冻结 MapAnything** 上仅用 **32M** 跨组模块估计 **两组多视图图像之间的相对 6-DoF 位姿**，统一 **跨序列重定位** 与 **多相机 rig 里程计**；假设每组 **intra-group geometry** 已由 VO / 标定给出。相对 flatten 全部视图的多视图基线，它在 **低 FoV overlap**（NCLT median **0.24**）区间退化更缓；**代码与十组权重已开源**（CC BY-NC 4.0），适合多会话地图对齐与 rig 轨迹拼接，而非替代 full SLAM 前端。
 
+## 工程实践
+
+- **接触管理**：触地时用前向运动学初始化新接触点并增广协方差，离地时边缘化；接触检测（二值传感器或估计器）出错会直接污染状态。
+- **初始化与收敛**：论文在 Cassie 真机重放中对随机错误初值，InEKF 比四元数 EKF 收敛更快更稳；落地时仍应给出较好的初始姿态与偏置。
+- **频率与延迟**：该滤波器可在 >2000 Hz 运行，适合作为控制环的低层估计；视觉 / LiDAR 等慢量测作为外部修正另行融合。
+- **漂移预期**：论文动捕实验约 15 m 终点误差小于行走距离的 5%，室外约 200 m 里程计仍留在人行道上；作为局部里程计够用，全局定位仍需外部量测。
+- **验收**：部署前核对漂移、接触误判与时间同步，策略侧若内置体速估计，也按同一标准验收（见上文 Base Pose 一节）。
+
 ## 最小代码骨架
 
 这段代码把状态估计最小闭环写清楚：
@@ -407,9 +427,17 @@ WBC 想稳住身体、控制摆腿、分配接触力，都依赖状态估计提�
 
 所以很多 deployment-ready policy 成功的关键，不只是 reward 和网络结构，而是 observation pipeline 够不够干净。
 
+## 关联页面
+
+- 滤波模板：[Kalman Filter (KF)](../formalizations/kalman-filter.md)、[EKF / InEKF](../formalizations/ekf.md)
+- 选型对比：[Kalman Filter vs. Optimization-based Estimation](../comparisons/kalman-filter-vs-optimization-based-estimation.md)
+- 融合实现：[传感器融合（Sensor Fusion）](./sensor-fusion.md)
+- 下游使用：[TSID](./tsid.md)、[Whole-Body Control](./whole-body-control.md)、[Centroidal Dynamics](./centroidal-dynamics.md)、[Sim2Real](./sim2real.md)
+
 ## 参考来源
 
 - [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — KF / EKF 经典论文与教材一手索引
+- [Hartley InEKF 通读归档](../../sources/papers/hartley_contact_aided_inekf_reading_arxiv_1904_09251_se3.md) — Contact-Aided InEKF（arXiv:1904.09251）
 - [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — 来源笔记（Bloesch 2013 / Hartley InEKF 2020 / Teng 2021）
 - [sources/papers/lingbot_map_arxiv_2604_14141.md](../../sources/papers/lingbot_map_arxiv_2604_14141.md) — LingBot-Map 流式 GCA
 - [sources/papers/glob3r_arxiv_2607_09225.md](../../sources/papers/glob3r_arxiv_2607_09225.md) — Glob3R 全局 SfM + 3D 基础模型

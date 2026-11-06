@@ -18,6 +18,8 @@ related:
   - ./robot-in-context-learning.md
   - ./agentic-coding-software-fundamentals.md
   - ../entities/paper-grid-general-robot-intelligence-development.md
+original:
+  - ../../sources/papers/robot_powered_data_flywheels_reading_arxiv_2511_19647_dfw1.md
 sources:
   - ../../sources/blogs/ken_goldberg_agentic_robotics_goosebumps_2026-09-18.md
   - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
@@ -27,6 +29,8 @@ sources:
 ---
 
 # Data Flywheel (具身数据飞轮)
+
+## 一句话定义
 
 **具身数据飞轮 (Data Flywheel)** 指的是机器人学习中通过**自动化闭环**实现数据规模化与性能持续提升的机制。它的核心逻辑是：更强的模型吸引更多场景使用 → 产生更多样化的数据 → 自动化的数据清洗与标注 → 进一步强化模型。
 
@@ -71,7 +75,28 @@ sources:
 
 **产线「数据雪崩」读法：** [Ken Goldberg Agentic Robotics](../entities/ken-goldberg-agentic-robotics-goosebumps.md) 把 Ambi Robotics **1 亿+** pick 日志（含失败）称为 **data avalanche**——相对 LLM token 的 **robot data gap**，产线 specialist 部署是 **可规模采集** 的路径；与通才 VLA 融资热度对比，**paid useful work** 仍小，但 **VA + agentic 图** 可把日志直接喂回 **生成模型 / 策略改进**。
 
+## 核心机制：形式化迭代（RPDF 原文）
+
+[Robot-Powered Data Flywheels](../../sources/papers/robot_powered_data_flywheels_reading_arxiv_2511_19647_dfw1.md)（arXiv:2511.19647）把飞轮写成一个迭代算法：第 t 轮由当前模型 FM(t−1) 驱动机器人部署，得到原始数据后经 **Curate** 过滤，累加进数据集 Dt，再**从初始预训练模型 FM0 出发**重新微调得到 FMt。三个要点：
+- **策展是质量闸门**：Scanford 用图书馆目录（RAG 候选 + 字符串相似度 + 书序一致性）自动校验 VLM 预测，6 小时部署的 8,232 张图留下 5,019 张；目录本身不完全准确，所以不能开环直接当标签。
+- **域邻近收益**：同一批书架数据让多语言 OCR 难例也提升（英文 24.8%→46.6%，中文 30.8%→38.0%），说明飞轮补的是网络语料欠代表的分布。
+- **收益前置**：增益大多在前约 1.5 小时数据内取得、随后趋平——数据多样性比单纯堆量更先见顶（据原文曲线的读法）。
+
+## 工程实践
+
+- **任务选择**：落在当前模型与机器人能力的「最近发展区」：太易则无提升空间，太难则标注/干预成本压垮自治；任务还要对现场人员有直接价值（Scanford 两周扫 2,103 个书架，馆员估计省 18.7 小时）。
+- **自动策展优先**：先找一个能自动校验标签的外部锚点（目录、仿真真值、成功判据），再谈规模；人工干预应压到可忽略（Scanford 10 天仅 26 次、每次不到 5 分钟）。
+- **每轮重训基线**：RPDF 每轮从 FM0 重训，避免连续微调漂移；代价是训练成本随数据线性增长（推断）。
+
+## 局限与风险
+
+- **证据范围窄**：RPDF 原文只在一个图书馆、一个 VLM 上验证；对 LLM / VLA 及操作策略的飞轮只是展望，不能直接外推到本页其他模仿式 / RL 式飞轮。
+- **未达上限**：微调后域内 71.8%、域邻近 OCR 仍低于 50%，原文承认仅靠微调可能不足。
+- **策展偏置**：被目录校验通过的样本偏向模型本来就能读对的子集（推断），困难样本可能被系统性丢弃——与 LWD 主张保留失败轨迹形成张力。
+- **数据架构风险**：见 [Agentic Coding 时代的软件工程基础](./agentic-coding-software-fundamentals.md)，schema 选错会污染飞轮。
+
 ## 参考来源
+- [Robot-Powered Data Flywheels 通读归档（arXiv:2511.19647）](../../sources/papers/robot_powered_data_flywheels_reading_arxiv_2511_19647_dfw1.md) — RPDF 框架与 Scanford 实验
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [sources/papers/lwd.md](../../sources/papers/lwd.md) — LWD 把数据飞轮重定义为 offline-to-online RL 闭环

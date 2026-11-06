@@ -2,6 +2,8 @@
 type: method
 tags: [il, diffusion, manipulation, generative-model]
 status: complete
+original:
+  - ../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
 updated: 2026-11-05
 related:
@@ -135,9 +137,31 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 ### 数据需求
 比 BC 需要更多、更高质量的演示数据，数据多样性对多模态表达至关重要。
 
+## 核心原理
+
+据原论文（Chi et al.）：策略建模为以观测 $O_t$ 为条件的动作 DDPM $p(A_t\mid O_t)$，视觉特征只算一次、不进入去噪输出，使多步去噪的实时推理可行；闭环执行采用观测 $T_o$ 步、预测 $T_p$ 步、执行 $T_a$ 步后重规划的 receding horizon。去噪网络有 CNN（FiLM 条件化，开箱即用，但对高频陡变动作偏平滑）与 Transformer（高频任务更好但对超参敏感）两种，作者建议先用 CNN 版。相对 IBC，扩散学的是能量梯度，无需负采样，训练稳定。详见上文「主要技术路线」。
+
+## 工程实践
+
+以下均来自原论文实验与附录：
+- **动作空间**：位置控制明显优于速度控制（多模态更显著、复合误差更小）；旋转用 6D 表示。
+- **归一化**：动作逐维缩放到 [-1, 1]（DDPM 每步裁剪到该区间）。
+- **窗口超参**：常用 $T_o=2$、$T_a=8$、$T_p=16$；动作执行窗口过长会降低反应速度，8 步对多数任务最优。
+- **视觉编码器**：端到端训练的 ResNet-18（GroupNorm）最稳；冻结预训练编码器效果差，以策略网络 1/10 学习率微调最好（CLIP ViT-B/16 在 Square 上 98%）。
+- **推理**：训练 100 步、DDIM 推理 10 步，RTX 3080 约 0.1 s；仿真延迟至多 4 步仍保持峰值性能。
+- **真机**：UR5 上 Push-T 成功 95%（最强 IBC 0%、LSTM-GMM 20%），翻马克杯 90%，双臂叠衬衫 / 铺垫子 75%、打蛋器 55%。
+
+## 局限
+
+- 继承行为克隆对示范数据量与质量的依赖（作者所述），不能利用次优或负样本；可考虑结合 RL。
+- 计算成本与单次决策耗时均大于 LSTM-GMM 等简单方法，高频控制任务可能不够，需 DDIM、一致性模型等加速。
+- Transformer 版对超参（注意力 dropout、权重衰减、层数）敏感；双臂任务的失败多在初始抓取与无法自行收尾。
+- 上述数值均为论文自报、特定硬件与任务下的结果；推广到其他本体属推断。
+
 ## 参考来源
 
 - Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* (2023) — Diffusion Policy 原论文
+- **原文通读档案：** [sources/papers/diffusion_policy_reading_arxiv_2303_04137.md](../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md) — arXiv:2303.04137 v5 全文通读（含附录）
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023) — 操作任务 IL 代表（动作块预测）
 - [Diffusion Policy 项目主页](https://diffusion-policy.cs.columbia.edu/)
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — Chi 2023 / π₀ / BESO / ACT / Consistency Policy

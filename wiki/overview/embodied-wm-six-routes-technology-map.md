@@ -17,6 +17,8 @@ related:
   - ../concepts/world-action-models.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md
+original:
+  - ../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_reading_ewm6.md
 summary: "依据具身智能研究室 2026-08 六路线综述，按闭环职责组织具身世界模型：模型构建、规划、想象学习、行动耦合、策略评估与上下文记忆；文内点名的工作各有一页可点开。"
 ---
 
@@ -28,6 +30,10 @@ summary: "依据具身智能研究室 2026-08 六路线综述，按闭环职责�
 
 世界模型的关键不在网络新旧，而在 **预测被用在哪里、是否改善真实行动**——从动力学预测到世界基础模型，六条路线可并行存在。
 
+## 一句话定义
+
+具身世界模型六路线技术地图：以「世界模型的预测被谁、在何时使用」为唯一分类轴，把模型构建、规划、想象学习、行动耦合、策略评估、上下文记忆六类工作放进同一张闭环图（依据综述原文）。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -37,6 +43,10 @@ summary: "依据具身智能研究室 2026-08 六路线综述，按闭环职责�
 | MPC | Model Predictive Control | 滚动优化选动作 |
 | VLA | Vision-Language-Action | 常被 WM 规划/验证/修正的策略 |
 | Physical AI | Physical AI | 动作作为干预变量的具身智能语境 |
+
+## 为什么重要
+
+按网络架构分类会掩盖「预测是否改善真实行动」这一核心问题；按预测的使用方（选动作、训策略、直接控制、测策略、存状态）分类，才能判断一项工作该用什么证据检验（原文判断）。
 
 ## 为什么单独做这张地图
 
@@ -173,6 +183,20 @@ flowchart TB
 | Newton | [newton-physics](../entities/newton-physics.md) | 物理引擎提供几何/接触/约束，与神经 WM 融合。… |
 | PIN-WM | [paper-sa-2504-16693-pin-wm-learning-physics-informed-world-models-fo](../entities/paper-sa-2504-16693-pin-wm-learning-physics-informed-world-models-fo.md) | 真实数据识别参数并补充视觉与未建模残差。… |
 | Foresight (PI) | [paper-foresight-action-conditioned-failure-monitoring](../entities/paper-foresight-action-conditioned-failure-monitoring.md) | 动作条件表征监测失败风险，服务端侧安全闭环。… |
+
+## 工程实践
+
+- **按角色选路线（据原文归纳）：** 要验预测器选模型构建型；要执行时选动作用规划型（短时域预测+滚动重规划）；要降低真机试错用学习型/评估型；要联合出动作与未来用行动型；长任务需要持久状态用上下文型。
+- **验证判据：** 行动型看消融（去掉未来建模目标后动作是否变差）；评估型看真机相关性、排序一致性、分布外校准、失败召回；学习型看策略增益与真机迁移。
+- **部署形态（原文判断，含推断）：** 快慢双路——常规状态由轻量策略执行，陌生/高风险时再调用世界模型推演与验证；碰撞保护、平衡、急停保留本地可验证闭环。
+- **数据闭环：** 真机提供物理事实与纠错，世界模型扩展轨迹与长尾，评估器筛选生成经验，部署结果回流训练。
+
+## 局限
+
+- 本页是 **二手综述的结构化索引**：路线归属与「五个判断」是原作者口径，未在本页独立复现；56 篇工作的细节以各实体页为准。
+- 部分工作证据有限，例如 CheckVLA 目前仅有 RoboCasa365 仿真证据；Matrix-Game 3.5 尚未接入机器人动作空间。
+- 世界基础模型并非通用物理引擎，具体本体与控制频率仍需后训练或真实交互校准；缺少真机校准的数据闭环会放大模型偏差。
+- 原文偏论述，评估可信度的四个问题给出了框架，但未给统一量化基准。
 
 ## 关联页面
 

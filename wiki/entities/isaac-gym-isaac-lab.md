@@ -1,5 +1,7 @@
 ---
 type: entity
+original:
+  - ../../sources/papers/isaac_lab_reading_arxiv_2511_04831.md
 sources:
   - ../../sources/repos/isaac_gym_isaac_lab.md
   - ../../sources/repos/isaac_sim.md
@@ -53,6 +55,18 @@ tags: [nvidia]
 正确心态：
 
 > **理解 Gym 的历史地位；用 Sim 做高保真仿真与栈联调；新实验训练优先 Lab。**
+
+## 为什么重要
+
+- 2021–2024 年的大量 locomotion / manipulation 论文基于 Isaac Gym，当下新工作基于 Isaac Lab，不分清三者就读不懂复现路径。
+- Isaac Lab 技术报告（arXiv:2511.04831）把 Isaac Lab 定位为 Isaac Gym 的“自然继任者”：在 Isaac Sim 上结合 PhysX 与 RTX 渲染，以 USD 为核心数据层，GPU 端到端交互回路避免 CPU-GPU 频繁拷贝，对大 batch on-policy RL 尤其有利。
+
+## 核心原理
+
+- **分层关系**：Isaac Sim 提供 USD + PhysX + RTX 渲染底座；Isaac Lab 在其上提供执行器 / 传感器 / 控制器 / 遥操作 / 任务框架；Isaac Gym 是不依赖 Omniverse 的旧一代独立框架。
+- **接口差异**：Isaac Gym 手工索引原始状态缓冲；Isaac Lab 经 OmniPhysics Tensor API 用 prim 路径通配（如 `/World/envs/*/Robot`）构造视图，第一维为环境数。
+- **任务框架**：Manager-Based（把 MDP 拆成 observation / action / reward / termination 等管理器）与 Direct（单类手写，对齐 Isaac Gym 范式）两种写法。
+- 以上均据论文 §2–§3 摘录，详见 [通读档案](../../sources/papers/isaac_lab_reading_arxiv_2511_04831.md)。
 
 ## 三代关系总图
 
@@ -150,6 +164,21 @@ Gym 时代就强调大规模随机化；Lab / Sim 延续并扩展到视觉与传
 | 初学 / 新项目 | 直接 [Isaac Lab](./isaac-lab.md)，需要时补 [Isaac Sim](./isaac-sim.md) |
 | 复现 2021–2024 论文 | 读懂 [Isaac Gym](./isaac-gym.md) / legged_gym，并了解迁 Lab 路径 |
 | 传感器 / ROS 2 / 合成数据 | 以 [Isaac Sim](./isaac-sim.md) 为主 |
+
+## 工程实践
+
+- 新项目直接用 Isaac Lab，内置 SKRL、RSL-RL、RL-Games、SB3、Ray，遵循 Gymnasium API。
+- 论文报告：8 GPU、16384 环境下 DextrAH 教师任务超 90 万 FPS，近似线性扩展；Direct 比 Manager-Based 平均快约 3.53%（Anymal 粗糙地形），大规模或感知主导时差距可忽略。
+- 域随机化：物理参数多可运行时修改但需经 CPU API；网格尺度 / 碰撞体仅能在仿真开始前改。
+- 旧 Isaac Gym 代码迁移见本页迁移指南链接；视觉任务注意 USD-Camera 并行超过 48 个会 OOM，应改用 Tiled 相机。
+
+## 局限
+
+- 论文无统一的与 MuJoCo / Genesis / ManiSkill 的横向速度对比，选型需另查。
+- 管理器层有 CPU 编排与 kernel 启动开销；感知任务因渲染吞吐明显更低；存在 CPU 瓶颈。
+- Direct-GPU API 只能直接读写状态与控制，质量、摩擦等参数仍走 CPU API。
+- Newton 后端集成目前仅在实验分支，仅覆盖部分环境（论文 §7）。
+- 推断：Isaac Gym 已 deprecated，不再适合作为新项目基础。
 
 ## 继续深挖入口
 

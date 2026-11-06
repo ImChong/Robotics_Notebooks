@@ -23,6 +23,8 @@ related:
   - ../concepts/foundation-policy.md
   - ../entities/agibot-bfm-2.md
   - ./agibot-june-2026-release-technology-map.md
+original:
+  - ../../sources/papers/bfm_survey_reading_arxiv_2506_20487_btm41.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
@@ -35,6 +37,10 @@ summary: "依据具身智能研究室 BFM 专题长文，把 awesome-bfm-papers 
 # BFM 技术地图：41 篇论文的五类问题视角
 
 > **本页定位**：为 [具身智能研究室 · BFM 41 篇专题](https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g) 提供 **按五类问题组织的阅读坐标**；不复述每篇论文细节，只保留 **产业语境、五组论文地图、与 taxonomy / 身体系统栈的挂接**。概念定义与 Mermaid taxonomy 见 [Behavior Foundation Model](../concepts/behavior-foundation-model.md)；姊妹篇 [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)、[AMP 运动先验综述](./humanoid-amp-motion-prior-survey.md)。
+
+## 一句话定义
+
+**BFM 技术地图**是把 awesome-bfm-papers 的 41 篇论文按「五类问题」（FB 表征、目标条件、内在奖励、适应、层次控制）排布的阅读坐标，用来回答「人形身体如何成为可复用、可适配、可被上层调用的运控基座」。
 
 ## 一句话观点
 
@@ -50,6 +56,11 @@ summary: "依据具身智能研究室 BFM 专题长文，把 awesome-bfm-papers 
 | WBC | Whole-Body Control | 多接口全身控制与力/柔顺任务的基础层 |
 | DIAYN | Diversity Is All You Need | 内在奖励预探索代表，无任务分布发现技能 |
 | RND | Random Network Distillation | 用预测误差作探索奖励的无监督预训练手段 |
+
+## 为什么重要
+
+- 综述（arXiv:2506.20487）指出任务专用 RL/IL 换场景就要重训、Sim2Real 缺口大，BFM 以大规模预训练的行为先验加零样本或快速适应来补这一缺口；41 篇论文是该范式目前最集中的文献簇。
+- 对工程选型：先判断自己的问题落在五类中的哪一类，再进入对应分类页，而不是按单篇 demo 追热点。
 
 ## 为什么单独做这张地图
 
@@ -260,6 +271,20 @@ flowchart TB
 2. **HOVER / MaskedMimic / SONIC** — 全身跟踪与多接口执行器。
 3. **SENTINEL / LangWBC / LeVerb** — 语义到身体接口。
 4. **Humanoid-X / Motion-X++** — 身体数据 scaling。
+
+## 工程实践
+
+- **选型入口**：要做全身跟踪与多接口执行看 02 组（HOVER / SONIC / TWIST 等），要做 promptable、零样本奖励推断看 01 组（Motivo / BFM-Zero），要接语言或 VLA 看 05 组；具体取舍见 [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)。
+- **部署约束**（综述 §IV-B）：真机控制需 50-100Hz 实时更新，已部署的 BFM-Zero 约 44.5M 参数、SONIC 约 42M 参数，模型规模受板载算力、功耗和延迟限制。
+- **数据**：综述 Table III 列出 Humanoid-X（约 240 小时）、Motion-X++（约 181 小时）、PHUMA（约 73 小时）、AMASS（约 40 小时）等；重定向到具体机器人时的形态差异会带来策略性能损失。
+- **阅读顺序**（推断）：先读概念页 taxonomy，再按本页五组挑 1-2 篇真机带 * 的工作精读。
+
+## 局限
+
+- **本页是策展地图**：论文细节与产业观察来自公众号长文和 awesome 列表，不等同于逐篇复现；产业语境部分明确不是官方技术规格。
+- **领域局限**（综述 §IV-B）：当前 BFM 基本局限于仿真或有限真机技能，缺少大规模真机部署记录；多数模型绑定单一机器人形态，跨具身泛化未解；缺少统一评测基准与大规模多模态（本体感觉、视觉、接触）数据。
+- **scaling 未定论**：FB-CPR 参数从 25M 到 288M 有提升，但数据 scaling 的作用仍未被充分研究。
+- **计数口径**：公众号 41 篇与 awesome 列表 42 篇（含 Any2Any）并存，引用时需注明口径。
 
 ## 关联页面
 

@@ -5,6 +5,8 @@ status: complete
 created: 2026-04-14
 updated: 2026-11-05
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
+original:
+  - ../../sources/papers/gmr_retargeting_matters_reading_motion_retargeting_arxiv_2510_02252.md
 ---
 
 # Motion Retargeting（动作重定向）
@@ -18,6 +20,10 @@ Motion Retargeting 是将一个运动序列（通常来自人类或动物）**�
 - 肢体比例
 - 关节限制
 - 质量分布与动力学
+
+## 一句话定义
+
+Motion Retargeting 是把人 / 动物的参考动作经骨架对齐、尺度缩放、IK 与限位 / 接触修正，转成目标机器人可执行、且尽量保留原动作语义的参考轨迹。
 
 ## 英文缩写速查
 
@@ -238,6 +244,29 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 
 ---
 
+## 核心原理
+
+> 本节依据 [Retargeting Matters（GMR，arXiv:2510.02252）](../../sources/papers/gmr_retargeting_matters_reading_motion_retargeting_arxiv_2510_02252.md) 全文通读。
+
+- **统一问题形式：** 逐帧优化机器人根位姿与关节角，使关键 body 的位置 / 朝向逼近（缩放后的）人体目标，受关节限位约束；差别主要在缩放、求解器与后处理。
+- **缩放是伪影主因（论文判断）：** PHC 用 SMPL 拟合机器人形体 + 梯度下降且不考虑接触；ProtoMotions 用世界轴全局缩放 + Mink。GMR 改为「身高全局因子 × 每个关键 body 局部因子」的非均匀局部缩放，根平移用均匀因子以避免脚滑。
+- **两阶段差分 IK：** 先只约束朝向与末端位置（避开局部极小），再以其解为初值约束全部关键 body；序列上逐帧以上一帧为初值；最后用 FK 最低点修正整体高度。
+- **质量要点：** 地面穿透、自穿透、关节值突跳是最需避免的三类伪影；多数动作各方法都能被 BeyondMimic 跟踪，但伪影会抬高跟踪误差并拉低动态 / 长序列鲁棒性。
+
+## 工程实践
+
+- 重定向后必须做 FK 高度检查：PHC 默认后处理在部分序列出现 30 cm 以上悬浮，论文以「减去逐帧最低高度均值」修复。
+- 起始帧 / 结束帧要可安全到达与停止：论文显示仅改起始帧即可使 sim2sim 成功率剧变，建议参考首帧为机器人可达姿态、末帧为稳定姿态。
+- 评估重定向别只看「策略能否跑完」：应同时看全局 / 局部位置误差、关节角误差与对源动作的忠实度（论文含 20 人用户研究）。
+- 关键 body 映射、静止姿态朝向偏移与各 body 缩放因子需按机器人手工设定；默认权重通常够用，个别动作需调权重（论文自述）。
+- 上述 GMR 数值均为 LAFAN1 + Unitree G1 + BeyondMimic 下的结果，迁移到其它数据源 / 机器人需自行验证（推断）。
+
+## 局限
+
+- 论文证据仅来自 LAFAN1 的 21 段、单一机型 G1，未覆盖 AMASS / 视频恢复动作，也不含与物体、环境、他机交互的重定向。
+- 纯运动学重定向不保证动力学可行，仍依赖 RL 跟踪层兜底；学习式方法多需成对数据或语义标签（见上文「深度学习重定向」）。
+- GMR 在个别序列出现腰部关节突跳，说明统一权重并非处处最优。
+
 ## 参考来源
 - **ingest 档案：** [sources/sites/x2robot-twindex.md](../../sources/sites/x2robot-twindex.md) — TwinDEX：用外骨骼–机械手共设计省略软件 retarget
 - [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — GVHMR→GMR 根高度抛物线校正（[source](../../sources/papers/kung_fu_athlete_bot.md)）
@@ -341,3 +370,10 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [KinoGen](../entities/paper-kinogen.md) — 从生成视频拟合机器人与物体模型，绕过人体到机器人的逐帧重定向
 
 - 相关研究：[flowhmr](../entities/paper-flowhmr.md)。
+
+## 继续阅读
+
+- [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) — 端到端工程链路
+- [Motion Retargeting Objective](../formalizations/motion-retargeting-objective.md) — 目标函数形式化
+- [Motion Data Quality](./motion-data-quality.md) — 数据质量维度
+- 原文：[Retargeting Matters（arXiv:2510.02252）](https://arxiv.org/abs/2510.02252)

@@ -24,6 +24,8 @@ related:
   - ../entities/vision-banana.md
   - ../entities/paper-turingvit.md
   - ../entities/paper-visionhope.md
+original:
+  - ../../sources/papers/resnet_reading_arxiv_1512_03385_vb1.md
 sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
@@ -93,6 +95,22 @@ flowchart TB
 - **特征图直喂**：把骨干特征图 / CLS token **直接** 当作 [策略输入](./visual-representation-for-policy.md)，保留更多信息、契合端到端 VLA。
 
 骨干族（CNN vs ViT）的取舍见 [CNN vs ViT 视觉骨干对比](../comparisons/cnn-vs-vit-backbones.md)；三类「分类骨干 / 检测头 / 通用预训练表征」的端到端选型决策树见 [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)。
+
+## 核心原理
+
+以下依据 ResNet 原文通读（[归档](../../sources/papers/resnet_reading_arxiv_1512_03385_vb1.md)）：
+
+- **退化问题：** 网络变深后训练误差也升高（非过拟合），且 BN 已保证前向方差与反向梯度范数正常，所以不是单纯的梯度消失；原文仅推测为收敛速度问题。
+- **残差公式：** y = F(x, {Wi}) + x；恒等捷径不增参数与 FLOPs，维度不匹配时才用 1×1 投影。34 层 plain 与 ResNet 参数量、计算量相同，对比公平。
+- **Bottleneck：** 1×1 降维 → 3×3 → 1×1 升维；恒等捷径连在高维两端，若换成投影则复杂度翻倍。ResNet-152（11.3 B FLOPs）仍低于 VGG-16（15.3 B）。
+- **迁移证据：** 仅把 Faster R-CNN 的 VGG-16 换成 ResNet-101，COCO mAP@[.5,.95] 由 21.2 升至 27.2（相对 +28%），说明收益来自骨干表征本身。
+
+## 工程实践
+
+- **选型起点：** 先用带 ImageNet 预训练的 ResNet-50 作基线，再按延迟预算换轻量或 ViT 骨干（对比见 [CNN vs ViT](../comparisons/cnn-vs-vit-backbones.md)）。
+- **检测微调：** 原文做法是预训练后冻结 BN 统计量，主要为节省显存；小 batch 微调时可沿用此做法（推断自该做法的动机）。
+- **深度不是越深越好：** 原文 CIFAR-10 上 1202 层测试误差（7.93%）差于 110 层（6.43%），小数据集上应控制模型规模并配合正则。
+- **接口选择：** 骨干特征接检测/分割头，或直接作为策略输入，见上文「骨干特征 → 检测/分割头 → 策略输入」。
 
 ## 常见误区或局限
 

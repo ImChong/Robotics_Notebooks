@@ -15,6 +15,8 @@ related:
   - ../queries/real-time-control-middleware-guide.md
   - ./udp-multicast-dynamics.md
   - ../entities/paper-fail-passive-gap.md
+original:
+  - ../../sources/papers/rl_random_delays_reading_arxiv_2010_02966_clm7.md
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
@@ -24,6 +26,10 @@ summary: "控制环路延迟建模：把一次力矩闭环拆成传感、总线�
 # 控制环路延迟建模 (Control Loop Latency Modeling)
 
 **控制环路延迟建模** 把一次「读传感 → 算策略 → 写力矩」的闭环拆解成若干段独立的延迟分量，用随机变量与卷积刻画端到端时延及抖动，从而把"机器人为什么在真机上抽搐"这种工程现象变成一个可定量分析、可优化的数学问题。
+
+## 一句话定义
+
+把一次「读传感 → 算策略 → 写力矩」闭环拆成传感、总线、计算、调度、执行五段随机延迟，用卷积与分位数刻画端到端时延，再换算成可用控制带宽与周期约束。
 
 ## 英文缩写速查
 
@@ -40,6 +46,10 @@ summary: "控制环路延迟建模：把一次力矩闭环拆成传感、总线�
 | CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
 | ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
 
+## 为什么重要
+
+延迟是仿真到真机落差的主要来源之一：仿真默认零延迟，真机上长于一步的延迟会让「只看最新观测」的策略失去 Markov 性（Ramstedt 等 2021，*Reinforcement Learning with Random Delays*，见 [通读归档](../../sources/papers/rl_random_delays_reading_arxiv_2010_02966_clm7.md)）。把延迟量化后才能决定控制频率、带宽与训练时的延迟随机化范围。
+
 ## 为什么要形式化
 
 在仿真里，控制器假设当前观测 $o_t$ 和下一时刻的力矩指令 $\tau_{t+1}$ 之间没有延迟。但在真机上：
@@ -50,6 +60,10 @@ summary: "控制环路延迟建模：把一次力矩闭环拆成传感、总线�
 - 力矩指令再经过一次总线才能到达驱动器。
 
 如果不把这条链路写成一个公式，工程师就只能凭"感觉"调控制频率；写下来之后，**最坏情况延迟 $T_{\max}$、控制带宽 $\omega_c$、抖动方差 $\sigma^2$** 之间的换算关系就一目了然。
+
+## 核心原理
+
+本页的核心是三件事：延迟按物理段加性分解；用分位数而非均值判定 deadline；用相位滞后换算控制带宽。学习侧的对应物见下文「学习侧视角」。
 
 ## 端到端延迟的加性分解
 
@@ -141,6 +155,20 @@ $$
 
 左半部分保证不丢周期（实时约束），右半部分保证不混叠（Nyquist）。这两个不等式结合在一起就给出了"控制频率不是越高越好"的形式化解释：当 $T_{\text{ctrl}}$ 接近 $T_{\text{loop}}^{(p)}$ 时，deadline miss 概率指数级增长，反而不如降一档频率换取低抖动。
 
+## 学习侧视角：随机延迟 MDP
+
+原文（Ramstedt 等 2021）把延迟分为观测延迟 $\omega$（采集结束到被用于算动作）与动作延迟 $\alpha$（动作开始计算到作用于环境），总延迟 $\omega+\alpha$，与本页「传感 + 总线上行」「计算 + 调度 + 总线下行」的分段大致对应（对应关系为本页推断）。其结论：
+
+- 延迟超过一步时，必须把最近 $K$ 个已发动作并入状态才能恢复 Markov 性，$K$ 为观测与动作延迟之和的最大值；只用最新观测的朴素 SAC 在仅 1 步动作延迟下就接近随机表现。
+- 最大延迟是设计选择：长尾延迟往往被更新的信息取代，可截断；这与本页「看分位数而非最坏值」一致。
+- 测量延迟可用动作与观测时间戳，时钟同步时可由时间戳直接求观测延迟，参见 [时钟同步算法](../concepts/clock-synchronization-algorithms.md)。
+
+## 工程实践
+
+- 先按下方「工程检查清单」实测各段分布，再确定 $T_{	ext{ctrl}}$ 与可用带宽；
+- 训练端对策略输入加入历史动作缓冲，或在仿真里按实测分布随机化观测 / 动作延迟；
+- 给延迟设上限 $K$，超限观测直接丢弃并做兜底处理。
+
 ## 工程检查清单
 
 把上述形式化落到实物上，最终通常归结为四组测量：
@@ -175,7 +203,14 @@ $$
 - [时钟同步算法](../concepts/clock-synchronization-algorithms.md)
 - [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 保护停 \(t_{\mathrm{response}}\) 按 [S]/[C]/[M] 分段；机械 \(t_{\mathrm{stop}}\) 主导最坏约 1.1 s
 
+## 继续阅读
+
+- Ramstedt, Bouteiller 等, *Reinforcement Learning with Random Delays*, [arXiv:2010.02966](https://arxiv.org/abs/2010.02966)：RDMDP 与 DCAC 算法。
+- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)：落地调度与总线配置。
+
 ## 参考来源
+
+- [sources/papers/rl_random_delays_reading_arxiv_2010_02966_clm7.md](../../sources/papers/rl_random_delays_reading_arxiv_2010_02966_clm7.md) — Ramstedt 等 2021 通读归档
 
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
 - [Fail-Passive Gap 论文策展](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — 光幕到机械停的 provenance 时序预算

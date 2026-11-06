@@ -26,6 +26,8 @@ related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/dexterous-data-collection-guide.md
   - ./paper-karma-hand-metric.md
+original:
+  - ../../sources/sites/dexbench_org_reading_dxb1.md
 sources:
   - ../../sources/sites/dexbench-org.md
   - ../../sources/sites/allhandsup-org.md

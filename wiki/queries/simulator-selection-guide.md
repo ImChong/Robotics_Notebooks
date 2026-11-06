@@ -3,6 +3,9 @@ type: query
 tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl, omnisim]
 status: complete
 updated: 2026-10-06
+original:
+  - ../../sources/papers/isaac_lab_reading_arxiv_2511_04831.md
+  - ../../sources/papers/mujoco_reading_official_docs_computation_overview.md
 summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接工业 ADAMS/MBD 对照、六层训练栈地图与十年仿真平台史以区分「同层竞争」与「分层互补」。
 sources:
   - ../../sources/papers/sim2real.md

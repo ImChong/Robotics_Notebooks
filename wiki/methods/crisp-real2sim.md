@@ -3,6 +3,8 @@ type: method
 title: CRISP（Contact-guided Real2Sim）
 tags: [real2sim, monocular-video, human-scene-interaction, reinforcement-learning, humanoid, iclr2026, planar-primitives]
 updated: 2026-10-26
+original:
+  - ../../sources/papers/crisp_reading_arxiv_2512_14696_r2s9.md
 summary: "CRISP 从单目视频恢复可物理仿真的人形运动与「凸平面片」场景原语，用人–场景接触补全遮挡结构，并用 RL 人形控制做物理一致性闭环，面向 Real2Sim 资产规模化。"
 related:
   - ../concepts/sim2real.md
@@ -115,6 +117,22 @@ flowchart TB
 - 与 **[R2S-EGO](../entities/paper-r2s-ego.md)**：后者在**既有仿真**上用双代理补 **行为范围 ego 外观/碰撞**（稀疏多视角）；CRISP 从**单目视频**构造可 rollout 人–场景资产——上游输入与输出接口不同。
 - 与 **[Lucida](../entities/paper-lucida-r2s.md)**：后者把室内多视角写成 **可编辑物体 mesh + 场景图**，VLM 做 **gizmo 放置**；CRISP 做人–场景平面原语与人形 RL——几何与下游接口不同。
 - 与 **[PRISM（Real2Sim2Real loco-manip）](../entities/paper-prism-real2sim2real.md)**：以 **CRISP 类后端** 扩展 **动态物体 + 接触锚定 pose/retarget**，上游用 **V2V counterfactual** 扩交互视频（arXiv:2609.38172）；侧重 **G1 深度+摇杆 carry** 而非平面场景原语论文主指标。
+
+## 工程实践
+
+以下要点来自论文（arXiv:2512.14696）§3–§4 与附录，补充上文官方代码一节：
+
+- **算力与耗时：** 300 帧 1440×1920 视频、单卡 RTX A6000 全流程约 921 s，Visual SLAM（MegaSAM）占约 56%，平面拟合约 75 s；同机 VideoMimic 的前置准备为 1283 s。
+- **RL 验证设置：** Isaac Gym 120 Hz 仿真、30 Hz 策略，PPO + GAE；Transformer 策略（2 层）、2048 并行环境；每个动作片段单独训练；成功判据为关节全程偏离参考不超过 0.5 m。
+- **场景盲 vs 场景感知：** 主实验用不读取场景的跟踪策略，以免策略绕开重建误差；附录给出读取约 2.8k 点的 PointNet 变体，适合面向 sim2real 的部署。
+- **接入下游：** 论文称可直接替换 VideoMimic 四阶段管线的第 1、2 阶段（预训练与重建动作跟踪）。
+
+## 局限
+
+- **几何假设：** 平面世界假设；强曲面/有机形状会面片化，平面之间可能留缝（论文称不影响支撑与接触）。
+- **场景范围：** 仅静态刚性场景，无流体、可变形物与动态物体；RL 部分只做移动，无 loco-manipulation。
+- **接触补全依赖上游：** 若 HMR 的人体在世界系漂移，补全出的平面会倾斜或偏移；PROX 上有无接触的成功率相同（均 90.9%），收益主要体现在 Chamfer 与定性稳定性。
+- **度量口径：** 平面版双向 Chamfer 略逊于 NKSR 稠密重建（更不完整），优势在单向精度、非穿透与 RL 成功率。
 
 ## 关联页面
 

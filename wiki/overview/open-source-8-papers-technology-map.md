@@ -19,6 +19,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_2026-08-25.md
   - ../../sources/raw/wechat_embodied_station_8_papers_open_source_2026-08-25.md
+original:
+  - ../../sources/blogs/wechat_embodied_station_8_papers_open_source_reading_os8a.md
 summary: "依据具身智能小站 2026-08-25 八篇开源盘点，把近期工作读成物理感知、策略自改进、主动探索、安全结构与系统级基础设施五组。"
 ---
 
@@ -30,6 +32,10 @@ summary: "依据具身智能小站 2026-08-25 八篇开源盘点，把近期工�
 
 **机器人研究正从「把动作做出来」转向可验证闭环：理解物理属性、从失败中学习、主动试探、嵌入显式安全，并把人类教师与传感器攻击面纳入系统设计。**
 
+## 一句话定义
+
+**本页是对具身智能小站 2026-08-25 八篇开源盘点的阅读坐标：按物理感知、策略自改进、主动探索、安全结构、系统基础设施五类问题把 8 篇论文放进同一张地图。**
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -39,6 +45,11 @@ summary: "依据具身智能小站 2026-08-25 八篇开源盘点，把近期工�
 | CaP | Code-as-Policy | PhysCaP 所扩展的代码策略框架 |
 | TOSS | Triggers-Objectives-Signals-Strategies | 人类教学决策四维框架 |
 | EMI | Electromagnetic Interference | GhostTac 攻击载体 |
+
+## 为什么重要
+
+- 8 篇分属太空、触觉、模仿学习、MPC、HRI、安全、第一视角视觉，单看各自指标难以看出共同方向；地图把它们串成「可验证闭环」的上下游。
+- 判断一篇工作该读还是跳读时，可先看它落在闭环的哪一环。
 
 ## 为什么单独做这张地图
 
@@ -106,6 +117,18 @@ flowchart TB
 | PhysCaP | **未开源** |
 | GhostTac | **已开源** 演示代码 |
 | DreamHand | **待发布** |
+
+## 工程实践
+
+- 先按「开源状态速查」确认能否复现：已开源的有 Space Mining 清单、Q-Planning、TOSS 数据、GhostTac 演示代码，其余待发布或未开源。
+- 想落地时按环节挑入口：物理属性条件抓取看 ViTacPhys，轻量价值层自改进看 Q-Planning，学习调参加显式安全看 SRL-MPC。
+- 页内数值均为公众号转述，用于选型前须回到各论文详情页或原文核对。
+
+## 局限
+
+- 本页依据单篇公众号盘点，未逐篇核对 8 篇论文原文；SRL-MPC 等条目原文也无具体数值。
+- 8 篇来自不同任务与基准，指标不可横向比较；「五组」划分是编者归纳，属推断。
+- 开源状态为入库日快照，之后可能变化。
 
 ## 关联页面
 

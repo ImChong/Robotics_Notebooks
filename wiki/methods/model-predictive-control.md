@@ -10,6 +10,8 @@ related:
   - ./iterative-learning-control.md
   - ./lqr-ilqr.md
   - ../overview/autonomous-driving-core-algorithms-series.md
+original:
+  - ../../sources/papers/force_moment_mpc_biped_reading_arxiv_2104_00065.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
@@ -46,6 +48,17 @@ MPC 是机器人控制中最接近“万能控制框架”的东西——只要�
 - 处理时变系统：每步重新计算，自然适应变化
 
 代价是**计算量大**，实时性要求高。
+
+## 核心原理速览
+
+每个控制周期：测量当前状态 → 在有限时域内用简化模型预测 → 求解带约束的最优控制序列 → 只执行第一步 → 下一周期重复。足式机器人上的典型落地形式（Li & Nguyen 双足凸 MPC，[原文通读](../../sources/papers/force_moment_mpc_biped_reading_arxiv_2104_00065.md)）：
+
+- 模型：忽略腿质量的简化刚体，状态 x=[姿态, 质心位置, 角速度, 质心速度, g]，输入为各接触足的地面反力（及力矩），小角度假设下对输入线性；
+- 约束：摩擦锥、法向力上下界（下界为正以保持接触）、关节力矩限幅，摆动足输入置零；
+- 求解：整个时域堆叠成 QP（min ½UᵀhU+Uᵀf），文中报告 <1 ms；
+- 落地：支撑腿 τ=Jᵀu，摆动腿用笛卡尔 PD 跟踪落足点。
+
+详细推导见下文「核心工作原理」。
 
 ## 核心工作原理
 
@@ -233,6 +246,13 @@ print("apply control:", u.ravel())
 
 真正的机器人 MPC 会把这里的候选序列枚举换成 QP / NLP 求解器，并显式加入接触、摩擦锥、力矩限位等约束。
 
+## 工程实践
+
+- **选模型要与可控自由度匹配**：原文中每足 3D 力的模型做不了俯仰、加 3D 力矩的模型做不了横滚，最终用 3D 力 + 2D 力矩——先用仿真逐个验证姿态自由度（原文 §IV-A）。
+- **时域与频率**：原文取 10 步预测、一个 0.3 s 步态周期、MPC 0.03 s 采样、底层 1 kHz；这是该论文的取值，不是通用推荐（调参见 [MPC 调参指南](../queries/mpc-tuning-guide.md)）。
+- **MPC 之下仍需底层**：摆动腿、关节力矩映射、WBC 等由下层完成；求解器选型见 [MPC Solver Selection](../queries/mpc-solver-selection.md)。
+- **证据边界**：该双足论文只在仿真验证，无硬件结果（原文结论自述）；实机迁移的难度属本页推断。
+
 ## 方法局限性
 
 - 对计算资源敏感：预测时域一长、模型一复杂，实时性马上成为瓶颈
@@ -249,6 +269,7 @@ print("apply control:", u.ravel())
 - [CMU Optimal Control 2025 策展](../entities/cmu-optimal-control-curriculum.md) — Lec 10 Convex MPC（播放列表归档）
 - [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI), Lecture 10: Convex MPC — 理论讲解
 - Acados (http://acados.org/) — 开源 NMPC 求解器，实现参考
+- Li & Nguyen 原文通读归档：[force_moment_mpc_biped_reading_arxiv_2104_00065.md](../../sources/papers/force_moment_mpc_biped_reading_arxiv_2104_00065.md)
 - **ingest 档案：** [sources/papers/mpc.md](../../sources/papers/mpc.md)、[lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md)（LQR 与 MPC 关系）
 
 ## 关联页面

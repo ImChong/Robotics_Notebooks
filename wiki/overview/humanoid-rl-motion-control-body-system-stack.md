@@ -37,6 +37,8 @@ related:
   - ./ego-9-papers-technology-map.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../comparisons/zest-vs-sonic-vs-vision-soccer.md
+original:
+  - ../../sources/sites/wechat_embodied_ai_lab_humanoid_rl_motion_survey_reading_hrl_stack.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
@@ -60,6 +62,10 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 
 人形机器人真正难的不是「让动作做出来」，而是让动作进入真实世界的**精细交互闭环**——视觉、接触、力、负载、失败恢复都参与控制；VLA / 世界模型对身体的稳定调用，是这层能力成熟之后的下一阶段，不是起点。
 
+## 一句话定义
+
+本页是把 42 篇人形 RL 运动控制 / 移动操作论文按「数据 → 跟踪 → 控制 → 感知 → 接触 → 安全 → 任务接口 → 世界模型」八层身体系统栈组织的总览导航页。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -71,6 +77,11 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | GMR | General Motion Retargeting | 人体/视频动作重定向为机器人可执行参考 |
 | AMP | Adversarial Motion Prior | 运动先验线，约束策略分布接近人类运动 |
 | Sim2Real | Simulation to Real | 视觉/动力学从仿真到真机的迁移瓶颈 |
+
+## 为什么重要
+
+- 单个 demo 无法说明系统缺什么；按层摆放后可看出各工作在补哪一层，是全站 `paper-hrl-stack-*` 等节点的总挂接入口。
+- 给出「VLA 调用是结果而非起点」等可执行判断，指导后续选型与阅读顺序。
 
 ## 为什么按「系统栈」而不是「论文榜单」
 
@@ -97,6 +108,15 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | **6. 安全 / 失败恢复** | 跌倒、异常姿态恢复、冲击力管理 | — | SafeFall（强相关：[balance-recovery](../tasks/balance-recovery.md)） |
 | **7. 任务接口 / VLA 调用** | 身体能力封装成 skill token / latent action / action chunk，供语言或 VLA 调用 | [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)、[ULTRA Survey](../tasks/ultra-survey.md)、[DAJI 预期关节意图](../entities/paper-daji-anticipatory-joint-intent.md) | SENTINEL, WholeBodyVLA, MetaWorld, BFM-Zero |
 | **8. 世界模型** | 执行前预测接触后果、评估策略可行性 | [机器人世界模型：训练闭环与三线 taxonomy](./robot-world-models-training-loop-taxonomy.md) | Ego-Vision World Model, DreamDojo |
+
+## 方法栈
+
+方法栈即上文八层：数据与重定向 → 参考跟踪 → 通用控制 / 身体基础模型 → 视觉闭环 → 接触柔顺 → 安全恢复 → 任务接口 → 世界模型，各层代表工作见表。
+
+## 工程实践
+
+- 落地时先稳住跟踪与控制层，再接视觉与接触；部署细节见 [人形运动控制 Know-How](./humanoid-motion-control-know-how.md)，选型见 [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)。
+- 汇报时建议量化失败恢复（冲击力、异常姿态恢复），见下文判断 4。
 
 ## 六个研究判断（沿用原文，但只保留可执行结论）
 
@@ -187,6 +207,10 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 
 - 上表 42 篇各有站内页（TWIST/SONIC 等以别名页收录）；部分工作另有 **深读页**（如 GMR、DeepMimic、SONIC）。各页已补充一句话定义、核心机制与常见误区；方法细节仍以 arXiv / 项目页为准。
 - 原文「八层栈」是作者基于 42 篇论文归纳出的**叙述框架**，不是已有共识；不同综述可能划分不同（例如把「跟踪控制」并入「控制」，或把「任务接口」拆为「skill abstraction」+「VLA 接口」）。把本表当作**导航图**而非分类公理。
+
+## 继续阅读
+
+- [人形运动控制 30 篇技术地图](./humanoid-motion-control-30-papers-technology-map.md)、[运动小脑 64 篇技术地图](./humanoid-motion-cerebellum-technology-map.md)、[人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md)
 
 ## 参考来源
 

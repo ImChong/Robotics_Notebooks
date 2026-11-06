@@ -16,6 +16,9 @@ related:
   - ../queries/demo-data-collection-guide.md
 sources:
   - ../../sources/blogs/wechat_jushen_qianyan_embodied_data_collection_taxonomy_2026-09-05.md
+  - ../../sources/papers/umi_reading_arxiv_2402_10329_edctl.md
+original:
+  - ../../sources/papers/umi_reading_arxiv_2402_10329_edctl.md
 summary: "用视角、设备、教法、产物四层拆解具身数据采集术语（Ego/Exo、GoPro/RGB-D/IMU、UMI/遥操作/MoCap、episode/trajectory），并贯穿「动作标签从哪来」的判读主线。"
 ---
 
@@ -144,6 +147,18 @@ flowchart TB
 3. **教法**：动作标签由 SLAM、teleop 记录、MoCap+重定向还是估计得到？失败/延迟如何处理？
 4. **产物**：episode 含哪些字段？成功标记是否用于筛选？条数/小时/成功率各说明什么？
 5. **训练接口**：数据给 [BC](../methods/behavior-cloning.md)、chunk 策略还是 [VLA](../methods/vla.md)？仿真数据是否涉及 [Sim2Real](./sim2real.md)？
+
+## 工程实践
+
+以下据 UMI 原文（arXiv:2402.10329）整理，说明「教法层」如何落到可训练的 (obs, action) 对：
+
+- **采集流程**：（可选）双 GoPro 时间同步与夹爪标定 → 每个新场景先慢速扫描建图 → 每条示范录一段 mp4 → 上传后脚本经 SLAM 恢复动作并转为数据集；单条 episode 的边界即一段录像。
+- **动作标签的精度**：IMU 视觉惯性 SLAM 对 MoCap 真值的平均 ATE 约 6.1 mm / 3.5°；环境缺纹理时 SLAM 会失效，是该路线的前提。
+- **相对轨迹表示**：动作与本体感知都相对当前末端位姿，免去 SLAM–机器人坐标系标定；原文消融中绝对动作仅 5/20，相对轨迹 20/20（单一任务，不宜外推）。
+- **延迟匹配**：分别测量相机、本体、夹爪与机器人执行延迟，推理时对齐观测并提前下发动作；对抛掷等动态任务影响显著。
+- **可行性过滤**：采集与机器人无关，部署前按目标机器人运动学筛掉不可达示范。
+- **数据多样性**：原文中 30 个地点、1400 条示范训练的策略在未见环境成功率 71.7%，仅实验室窄域数据为 0%；吞吐上约为空间鼠标遥操作的 3 倍、裸手的约一半（单人单任务测量）。
+- **推断（非原文）**：把上述指标当作判读清单第 3、4 项的参照，可检验其他方案的标签精度、延迟处理与过滤是否交代清楚。
 
 ## 局限与风险
 

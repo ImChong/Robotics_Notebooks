@@ -38,6 +38,10 @@ sources:
   - ../../sources/blogs/lightorigins_light_react_2026-09-09.md
   - ../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md
   - ../../sources/blogs/lightorigins_lightparkour_2026-08-03.md
+original:
+  - ../../sources/blogs/lightorigins_lightnav_0_reading_l3bmap.md
+  - ../../sources/blogs/lightorigins_lightparkour_reading_l3bmap.md
+  - ../../sources/blogs/lightorigins_light_react_reading_l3bmap.md
 summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light REACT）引用的论文/基准/硬件各有一页，按博客分组可逐条点开。"
 ---
 
@@ -48,6 +52,10 @@ summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light
 ## 一句话观点
 
 **亮源新创公开的三段范式——预训练（Light-O1）→ 对齐（LightNav-0）→ 部署（Light REACT）——在跑酷线（LightParkour）上还有并行的全身感知运动蒸馏轴；读博客时把「引用论文/基准/硬件」分开看，三类各有一页，不与机构页混在一起。**
+
+## 一句话定义
+
+本页是亮源新创三篇官方 Tech Blog（LightNav-0、LightParkour、Light REACT）的**技术地图与引用索引**：把三条技术线与各自引用的论文、基准、硬件按博客分组，指向库内独立页面。
 
 ## 英文缩写速查
 
@@ -65,6 +73,34 @@ summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light
 ## LocoFormer 归属与日期复核
 
 2026-10-07 核对官方论文与项目页：[LocoFormer](../entities/paper-locoformer.md)署名机构为 **Skild AI**，公司博客日期 **2025-09-24**、arXiv v1 提交 **2025-09-28**。下表的 2026-09 是 Light REACT 博客引用日期，不是 LocoFormer 首发日；本页仅组织亮源博客引用链，不改变被引论文的机构归属。
+
+## 为什么重要
+
+三篇博客共同的方法论是「用仿真/蒸馏把少量真实经验放大」：LightNav-0 放大场景，LightParkour 放大地形，Light REACT 放大受损情形。读者按线索跳转，可避免把三条不同任务线（导航、跑酷、韧性控制）混为一谈。
+
+## 核心原理
+
+（以下均据 `original:` 所列三份博客通读归档。）
+
+| 博客 | 核心机制 | 关键数字（博客自报） |
+|------|----------|----------------------|
+| LightNav-0 | Real2Sim2Real 数据引擎 → ER 中期训练 → 具身 SFT（Point CoT + 3 个 RVQ 动作 token）→ GRPO 在线 RL | 2,000+ 场景、4,000+ 小时 VLA 经验；Point CoT 平均 SR +8.4；EVT-Bench 干扰跟踪 74.4 → 82.6 |
+| LightParkour | 初始动作 → 物理仿真修正接触 → 逐级升高障碍扩展参考轨迹 → 多专家 DAgger → 带记忆深度视觉学生 | 障碍 45 → 75 cm（0.83H）；切换训练端到端 33.0% → 98.0%（仿真） |
+| Light REACT | 韧性金字塔四层；6 个 PPO+AMP 教师 → 多教师 DAgger 蒸馏到 64 帧 Transformer → 偏好对齐 RL | 196 种受损情形；对齐后直立占比示意 42% → 76% |
+
+## 工程实践
+
+- LightNav-0 部署只需单目 RGB + 语言，输出图像点与动作 token，不依赖深度、定位或地图；已开源模型与代码。
+- LightParkour 真机只运行最终策略（50 Hz，胸前深度相机），训练中模拟延迟与丢帧；定量结果均来自仿真。
+- Light REACT 的教师依赖训练期特权的 21 维受损标记，学生仅靠速度指令与本体感知历史判断自身状态。
+- 开源状态（据库内归档，截至 2026-09-21）：仅 LightNav-0 列出公开代码与权重。
+
+## 局限
+
+- 三篇均为公司博客，数字为自报，且 LightParkour 的定量结果只在仿真中；75 cm 处部署策略仅 33.4%，与特权教师（98.6%）差距明显。
+- LightNav-0 模型超过 4B 后收益不稳定；SFT 数据缺少模型自身犯错后的恢复过程，博客以在线 RL 补充。
+- Light REACT 中偏好对齐在 MLP/RNN 上失败的原因，博客给出的是可能性解释而非因果验证；仅比较了三种架构。
+- 本页未逐篇核对被引论文原文，被引论文的结论以各自页面为准。
 
 ## 完整索引
 
@@ -122,3 +158,8 @@ summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light
 - [lightorigins_light_react_2026-09-09.md](../../sources/blogs/lightorigins_light_react_2026-09-09.md)
 - [lightorigins_lightnav_0_2026-09-01.md](../../sources/blogs/lightorigins_lightnav_0_2026-09-01.md)
 - [lightorigins_lightparkour_2026-08-03.md](../../sources/blogs/lightorigins_lightparkour_2026-08-03.md)
+
+## 继续阅读
+
+- [LightNav-0 博客引用深读](../queries/lightnav-0-blog-references-deep-read.md)：三阶段与全部引用项的逐条阅读。
+- 原文通读归档：[LightNav-0](../../sources/blogs/lightorigins_lightnav_0_reading_l3bmap.md) · [LightParkour](../../sources/blogs/lightorigins_lightparkour_reading_l3bmap.md) · [Light REACT](../../sources/blogs/lightorigins_light_react_reading_l3bmap.md)

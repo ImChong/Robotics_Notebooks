@@ -20,6 +20,8 @@ related:
   - ../entities/exercises-dataset.md
   - ../entities/paper-humantracker.md
   - ../entities/paper-humaps4d.md
+original:
+  - ../../sources/papers/humanoid_ref_motion_datasets_phuma_reading_arxiv_2510_26236_hrmd.md
 sources:
   - ../../sources/papers/hiphi_arxiv_2608_16222.md
   - ../../sources/sites/amass-dataset.md
@@ -41,6 +43,10 @@ sources:
 
 > **对比问题**：做 humanoid motion tracking、loco-manipulation 或开放世界操作时，**AMASS、LaFAN1、OMOMO、PHUMA、Humanoid Everyday** 各解决什么缺口、能否直接训练、工程摩擦在哪？
 
+## 一句话定义
+
+本页是人形参考运动 / 操作数据集的**选型对照**：按表示、任务域、是否已重定向、许可与下游，帮你在 AMASS、LaFAN1、OMOMO、PHUMA、HiPHI、Humanoid Everyday 等之间决定“用哪份、要补哪几步”。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -51,6 +57,18 @@ sources:
 | G1 | Unitree G1 Humanoid | 宇树教育科研人形实验平台 |
 | WBT | Whole-Body Tracking | 全身关节/根轨迹跟踪类 RL 任务 |
 | BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+
+## 为什么重要
+
+参考运动是 WBT / AMP / 模仿学习的训练输入，其规模与物理可信度直接决定策略上限。PHUMA 原文在同一跟踪设置下（G1，成功率阈值 0.15 m）给出：LaFAN1（2.4 h）46.1%、AMASS（20.9 h）76.2%、Humanoid-X（231.4 h）50.6%、PHUMA（73.0 h）92.7%——**规模与质量缺一不可**；这正是不能只按“小时数”选数据集的原因。
+
+## 核心原理：选型的三个判据
+
+1. **是否已落在机器人形态**：人体 MoCap（AMASS / LaFAN1 / OMOMO / HiPHI）必须重定向；PHUMA 已 PhySINK 重定向；Humanoid Everyday 本身是机器人数据。
+2. **物理可信度**：PHUMA 论文将视频来源的伪影归为悬浮、穿地、脚滑、关节越限；其策展（根 jerk、足接触、骨盆高度、支撑域距离过滤）把 Humanoid-X 过滤到约 27.1%，62 h 过滤集的成功率（87.0）高于 231 h 未过滤集（50.6）。
+3. **重定向质量**：同一份 AMASS 经 PhySINK / SINK / GMR / IK 重定向，成功率依次为 79.5 / 76.2 / 61.7 / 52.8；作者结论是运动保真优先，达到阈值后其他伪影收益递减。
+
+> 以上数字来自 PHUMA 论文（[通读归档](../../sources/papers/humanoid_ref_motion_datasets_phuma_reading_arxiv_2510_26236_hrmd.md)）；其余数据集的数字沿用本页各小节与实体页，未在该归档中逐一核对。
 
 ## 一句话结论
 
@@ -170,6 +188,18 @@ flowchart TD
 - **LaFAN1 许可当 MIT**：**NC-ND** 限制衍生数据与商业再分发；OmniRetarget 因此 **不公开发布 LAFAN1 重定向结果**。
 - **把 GRAIL 当真机 MoCap**：其为 **全合成 G1 轨迹**；视觉下游仍可能有 sim-to-real 鸿沟，且物体 USD 许可随 RoboCasa/ComAsset 等上游而异。
 - **把 [Exercises Dataset](../entities/exercises-dataset.md) 当人形参考运动**：其为健身 **动作目录 + 180×180 GIF/缩略图 + 多语说明**（无 BVH/SMPL/关节序列）；适合 App/分类原型，**不能**直接做 WBT / AMP / 重定向输入。
+
+## 工程实践
+
+- **评测口径**：PHUMA 论文指出 0.5 m 成功率阈值下各数据集差距很小，0.15 m 才拉开；跨论文比较数据集时先对齐阈值与重定向方式。
+- **混合来源**：PHUMA 在 MoCap 基底上加入全部视频来源时表现最佳（附录 E.1），可作为“MoCap + 过滤后视频”混合的参考；其中视频子集规模约为 MoCap 子集两倍，作者将差异归因于规模与多样性。
+- **上实机前先看仿真跌倒率**：原文中 Humanoid-X 策略仿真跌倒率约为 AMASS 的 3 倍，因此实机只对比了 AMASS。
+- **离线成本**：PhySINK 约 0.92 FPS（RTX 3090），属一次性离线开销。
+
+## 局限
+
+- 本页对照只覆盖**参考运动与操作数据**的选型，不替代各数据集自身的质量审计；除 PHUMA 外，其余数据集的指标依赖各实体页，未逐一重新核对原文。
+- PHUMA 自身的边界（原文 §5）：仅平地 locomotion，不含场景交互与不平地形；大量视频运动在策展中被丢弃；实机对比只有 AMASS；PhySINK 不能完全消除伪影。因此遇到粗糙地形或物体交互需求，应转向 EgoHTR / OMOMO / HiPHI 等扩展项。
 
 ## 相关数据资源
 

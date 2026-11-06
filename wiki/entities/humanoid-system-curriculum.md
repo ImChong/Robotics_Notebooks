@@ -20,10 +20,14 @@ related:
 sources:
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/notes/know-how.md
+original:
+  - ../../sources/courses/shenlan_humanoid_system_curriculum_reading_hsc1.md
 summary: "深蓝学院《人形机器人系统—理论与实践》八章策展：G1 软硬件 → RL 双足 → LiDAR 定位 → A*/DWA → TARE/FAR 探索 → RealSense+YOLO 足球感知 → 大模型/VLN/NaVid，每节映射独立 wiki 节点。"
 ---
 
 # 人形机器人系统学习策展（G1 → 导航 → 足球 → 大模型）
+
+## 一句话定义
 
 **一句话：** 把深蓝学院「人形机器人系统 - 理论与实践」八章大纲落成可交叉引用的知识图：以 [Unitree G1](./unitree-g1.md) 为平台，从 **行走 RL** 走到 **建图导航、自主探索、RoboCup 感知与语音/VLN**。
 
@@ -142,6 +146,21 @@ flowchart LR
 | 8.3 | VLN | [Vision-Language Navigation](../tasks/vision-language-navigation.md) |
 | 8.4 | NaVid | [NaVid](./paper-vln-10-navid.md) |
 | 实践 | 语音交互导航 | 8.2 + 8.3 + 8.4 |
+
+## 核心原理
+
+课程把人形系统拆为「运动层（Ch2 RL 行走）→ 状态估计层（Ch3 LiDAR 建图定位、Ch7 线匹配 + EKF）→ 规划层（Ch4 A*/DWA、Ch5 TARE/FAR）→ 感知层（Ch6 RealSense + YOLO）→ 语义层（Ch8 语音/VLN）」，各层通过速度指令、位姿、地图等接口串联；每章配实践作业形成闭环（依据大纲归档）。
+
+## 工程实践
+
+- 按章节顺序推进，先在仿真验证（G1 仿真、足球场仿真、CMU Exploration 环境），再上实机。
+- 接口先行：行走策略与导航栈之间显式桥接速度指令，探索（TARE/FAR）与近场避障（DWA）分层。
+- 推断：各章依赖前置章节的输出，跳章学习时需先补齐对应站内页。
+
+## 局限
+
+- 本页依据课程大纲整理，讲授细节、作业评分与实机配置未读（课程页需登录）。
+- 大纲为层级目录，不含算法超参与性能数据；具体结论请见各子页与原论文。
 
 ## 常见误区
 

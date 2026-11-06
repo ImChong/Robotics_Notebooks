@@ -6,6 +6,8 @@ updated: 2026-10-06
 summary: "人形 Loco-Manip 161 篇 · 03 视觉感知驱动的人形移动操作（37 篇）— 视觉完成目标定位、场景理解和操作闭环。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
+original:
+  - ../../sources/blogs/wechat_humanoid_loco_manip_161_survey_reading_cat03_vis03.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
@@ -14,6 +16,10 @@ sources:
 # Loco-Manip 161 分类 03：视觉感知驱动的人形移动操作
 
 > **分类页**：**03 视觉感知驱动的人形移动操作**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+
+## 一句话定义
+
+本页是「人形 Loco-Manip 161 篇」十类分组中的第 03 类：收录 37 篇以**视觉感知**驱动的人形移动操作工作，核心是让相机等感知输入在目标定位、场景理解与全身执行之间形成闭环。
 
 ## 英文缩写速查
 
@@ -70,6 +76,36 @@ sources:
 | 090 | 通过带有多模态基础模型的具体行动链推理的人形智能体用于零样本移动操作 | [paper-loco-manip-161-090-n090](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
 | 091 | 通过真实部署就绪的技能空间释放人形机器人的潜力 | [paper-loco-manip-161-091-n091](../entities/paper-loco-manip-161-091-n091.md) |
 | 092 | 通过触摸梦学习多样化人形操作 | [paper-loco-manip-161-092-n092](../entities/paper-loco-manip-161-092-n092.md) |
+
+## 为什么重要
+
+- 人形机器人要在非结构化场景里取放、开门、搬运，目标位置与场景状态只能靠感知在线获得；本组是「看见 -> 动手」这条链路的集中入口。
+- 原文把本组排在运控底座与接口之后、语言 / 轨迹生成之前，体现"先稳住身体，再让视觉进入系统"的能力形成顺序。
+
+## 核心原理与流程总览
+
+原文的组导语把本组概括为视觉、本体状态、场景理解和全身控制之间的闭环。对 37 条条目的"算法实现总结"归纳，输入多为相机图像 / 多视角观测，常与本体状态、遥操作或外骨骼数据、深度 / 点云、人类视频、触觉信号并用；关键点句式主要有：
+
+| 路线 | 条数（原文句式统计） | 代表工作 |
+|------|------|------|
+| 扩散 / 流匹配条件生成动作 | 17 | Cybo-Waiter、GRAIL、HALOMI、3D 扩散策略 |
+| 分层技能 / 专家路由 | 9 | AGILE、Being-0、HMC、HiWET |
+| 特权教师 -> 部署学生蒸馏 | 4 | VIRAL、VisualMimic、SynAgent、DoorMan |
+| VLA（VLM 语义 + 状态与动作头） | 3 | EgoHumanoid、TrajBooster、WholeBodyVLA |
+| 世界模型 / 视频先验、示范 + 动作 chunk、策略与控制同链路等 | 4 | SIMPLE、DemoHLM、OmniDP、PhysHSI |
+
+## 工程实践
+
+- **数据侧**：多条工作先解决数据闭环（遥操作 / 外骨骼 / 机器人无关示范 / 仿真生成），如 HumanoidExo、HumanoidMimicGen、OASIS、EgoHumanoid；选型时先看数据能否采到。
+- **感知侧**：除 RGB 外，有工作引入全向 3D 感知（OmniDP）、点云（3D 扩散策略）、触觉（Touch Dreaming），按任务是否接触丰富来选。
+- **迁移侧**：视觉 sim-to-real 多用教师-学生蒸馏（VIRAL、DoorMan）。
+- 各条目细节以对应 Wiki 实体页和论文原文为准。
+
+## 局限
+
+- 分类是视角而非互斥划分：HMC、HiWET、VIRAL、WholeBodyVLA 等在多个分组重复出现。
+- 原文的"算法实现总结"为统一模板生成，句式高度重复，本页上表的句式计数是对该模板的统计，不代表各论文方法的真实差异（推断）。
+- 本页不复述逐篇结果，跨论文的性能对比不能由本页得出。
 
 ## 关联页面
 

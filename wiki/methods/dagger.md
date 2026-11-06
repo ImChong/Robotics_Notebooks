@@ -21,6 +21,8 @@ related:
   - ../entities/paper-prism-real2sim2real.md
   - ../entities/paper-ross-dagger.md
   - ../entities/paper-i3l.md
+original:
+  - ../../sources/papers/dagger_reading_arxiv_1011_0686.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/ross_dagger_aistats_2011.md
@@ -140,6 +142,27 @@ Behavior Cloning 的根本问题不是监督学习本身，而是**训练分布�
 - **ingest 档案：** [sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md](../../sources/papers/lehome_learning_to_fold_arxiv_2606_27163.md) — LeHome：真机/仿真 DAgger 与异步 RL 叠衣全链路
 - **ingest 档案：** [sources/papers/egosteer_arxiv_2607_09701.md](../../sources/papers/egosteer_arxiv_2607_09701.md) — EgoSteer：相对运动映射 HITL DAgger，难任务 22.5%→62.5%（8.3 h）
 - **ingest 档案：** [sources/papers/chi0_kai0_arxiv_2602_09021.md](../../sources/papers/chi0_kai0_arxiv_2602_09021.md) — χ₀ / kai0：Heuristic DAgger（失败态起步）+ 标准 DAgger，作 Train-Deploy Alignment 主杠杆
+
+## 核心原理（理论保证）
+
+以下依据 Ross et al. 2011 原文（[通读档案](../../sources/papers/dagger_reading_arxiv_1011_0686.md)）：
+
+- **BC 的二次误差界**：在专家状态分布上做监督学习，单步错误率为 $\epsilon$ 时，$T$ 步总代价 $J(\pi)\le J(\pi^*)+T^2\epsilon$，且该界是紧的。
+- **DAgger 的线性界**：第 $i$ 轮用混合策略 $\pi_i=\beta_i\pi^*+(1-\beta_i)\hat\pi_i$ 采样，专家标注访问到的状态并聚合；在无悔在线学习（强凸损失）假设下得到 $J(\hat\pi)\le J(\pi^*)+uT\epsilon_N+O(1)$，误差随 $T$ 线性增长。
+- **归约视角**：DAgger 即 Follow-The-Leader 在线学习，每轮的损失是当前策略诱导分布上的损失；故称“模仿学习到无悔在线学习的归约”。
+- **β 的选择**：最简版本 $eta_i=\mathbb{I}(i=1)$（只有第一轮用专家采样），原文称实践中常表现最好。
+
+## 工程实践
+
+- 先用少量专家数据初始化，再逐轮 rollout；真机优先采用接管式（HG-DAgger / 共享控制）以控制风险。
+- 原文实验（Super Tux Kart、Super Mario Bros.、手写识别）中 DAgger 均优于纯监督与 SMILe；Mario 中监督法卡在障碍旁，因专家示教从未包含“贴脸脱困”状态。
+- 机器人 locomotion 中常与 PPO 等 RL 项混合使用（见上文各论文条目）；纯 DAgger 在攀爬等任务上不足。
+
+## 局限
+
+- 原文的保证依赖强凸或无悔假设，深度网络下仅是经验近似（推断）。
+- 要求专家能在任意学习者状态下给出动作标注；人类专家在高频闭环上难以实时标注，是实际瓶颈。
+- 原文实验规模较小（线性学习器），未覆盖现代高维视觉策略。
 
 ## 关联页面
 

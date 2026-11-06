@@ -37,6 +37,8 @@ related:
   - ./paper-worldvln-aerial-vln-wam.md
   - ./paper-dpc.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+original:
+  - ../../sources/papers/motionwam_reading_arxiv_2606_09215_mw1.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/papers/motionwam_arxiv_2606_09215.md

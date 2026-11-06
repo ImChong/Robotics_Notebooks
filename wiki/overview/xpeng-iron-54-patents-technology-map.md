@@ -8,6 +8,8 @@ related:
   - ../entities/paper-rove-humanoid-vla-intervention.md
   - ../overview/humanoid-hardware-101-integrated-actuators.md
   - ../tasks/loco-manipulation.md
+original:
+  - ../../sources/blogs/wechat_xpeng_iron_54_patents_reading_xp54.md
 sources:
   - ../../sources/blogs/wechat_xpeng_iron_54_patents_2026-09-24.md
   - ../../sources/patents/xpeng_iron_patents_cn.md
@@ -17,6 +19,10 @@ summary: "小鹏 IRON 54 项 CN 专利阅读地图：本体头颈臂、灵巧手
 # 小鹏 IRON · 54 项专利技术地图
 
 > **本页定位**：[AI工业 · 54 项专利拆解](https://mp.weixin.qq.com/s/R7Qi2iv1eNfm3yh2s_PUCg) 的阅读地图 — 54 项专利各有一页，可逐项点开；专利页与论文页分开，便于按专利号核对。
+
+## 一句话定义
+
+本页是小鹏 IRON 人形机器人 54 件 CN 专利的分组阅读地图，按机构、手、腿腰、步态、具身软件五层索引到逐专利页面。
 
 ## 一句话观点
 
@@ -30,6 +36,10 @@ summary: "小鹏 IRON 54 项 CN 专利阅读地图：本体头颈臂、灵巧手
 | CN | China Patent Publication | 中国专利公开/授权文献号 |
 | WBC | Whole-Body Control | 全身控制与步态/遥操作协调 |
 | VLA | Vision-Language-Action | 具身策略（与专利中 IL/RL 控制互补） |
+
+## 为什么重要
+
+专利是观察厂商工程路线的少数公开窗口：能看到机构取舍与控制流程布局，但看不到性能数据（见下文局限）。
 
 ## 为什么单独做这张地图
 
@@ -135,6 +145,16 @@ flowchart TB
 | CN121267925A | 随机器人运动更新的视觉外参标定 | [moving-camera-calib…](../entities/patent-xpeng-cn121267925a-moving-camera-calib.md) |
 | CN120238826A | 无线信道动作识别与可中断机器人响应 | [csi-motion-interrupt…](../entities/patent-xpeng-cn120238826a-csi-motion-interrupt.md) |
 
+
+## 工程实践
+
+- 读法（据归档摘要）：先按五类定位模块，再进专利页核对专利号与日期；机构类关注「十字轴 + 双推杆」「前置执行器 + 连杆膝」等重复范式，控制类关注状态机与异常处理（延迟触地、动作跟踪中断）。
+- 推断：多件专利共享同一范式，可视为 IRON 的设计偏好，但这是对摘要的归纳，并非小鹏官方说明。
+
+## 局限
+
+- 仅依据公众号盘点与专利摘要级信息，未核对权利要求书全文；原文页面复核时被微信验证拦截，见 [通读归档](../../sources/blogs/wechat_xpeng_iron_54_patents_reading_xp54.md)。
+- 专利公开不等于量产采用，也不含性能指标；机构与算法的实际效果需另找实机或论文证据。
 
 ## 关联页面
 

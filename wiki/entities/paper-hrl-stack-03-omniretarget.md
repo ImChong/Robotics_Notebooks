@@ -23,6 +23,8 @@ related:
   - ./paper-egohtr.md
   - ./paper-umr-unified-motion-retargeting.md
   - ./paper-hoi-retarget.md
+original:
+  - ../../sources/papers/omniretarget_reading_arxiv_2509_26633_or3.md
 sources:
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
   - ../../sources/sites/omniretarget-github-io.md
@@ -40,6 +42,10 @@ sources:
 **OmniRetarget**（*OmniRetarget: Interaction-Preserving Data Generation for Humanoid Whole-Body Loco-Manipulation and Scene Interaction*，ICRA 2026，arXiv:[2509.26633](https://arxiv.org/abs/2509.26633)，[项目页](https://omniretarget.github.io/)）是 Amazon FAR 团队的**交互保留人形运动重定向与数据生成**引擎：用 **interaction mesh** 显式建模人/机器人与物体、地形之间的空间关系，在**硬运动学约束**下最小化 Laplacian 形变能，生成可下游 RL 跟踪的高质量参考，并能把**单条人类演示**增广到多种 embodiment、地形与物体配置。代码与训练管线以 **[holosoma](./holosoma.md)** 开源；公开重定向轨迹见 **[OmniRetarget 数据集](./omniretarget-dataset.md)**。
 
 本页在 [42 篇 humanoid RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中编号 **03/42**（**01 数据 · 重定向 · 遥操作**）。下游应用示例：[Perceptive Humanoid Parkour（PHP）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 用其构建跑酷**原子技能库**。
+
+## 一句话定义
+
+OmniRetarget 是用 interaction mesh（Laplacian 形变能最小化）加硬运动学约束、逐帧 Sequential SOCP 求解的人形交互保留重定向与数据增广引擎，产出的参考让极简 RL（5 reward + 4 DR）即可零样本上真机。
 
 ## 英文缩写速查
 
@@ -196,6 +202,32 @@ sequenceDiagram
 - 机器人+物体联合重定向：[OTRetarget](./paper-otretarget.md)（2609.36602）— OMOMO 上交互 Jaccard 87% / 深度误差 8.7 mm，论文报告本文为 28% / 29.3 mm；物体轨迹随目标机器人重解，而非照搬人体演示世界坐标
 - 问题域：[Motion Retargeting](../concepts/motion-retargeting.md)、[GMR](../methods/motion-retargeting-gmr.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
+
+## 核心原理
+
+对每帧 t，求解浮动基位姿与关节角 $q_t$，使源 mesh 与机器人 mesh 的 Laplacian 坐标差最小（$L(p_i)=p_i-\sum_j w_{ij}p_j$，均匀权重），同时加时间平滑项，并满足 SDF 非穿透、关节/速度界、stance 脚位置固定四类硬约束（论文式 3a–3e）。这样人体与物体/地形的相对几何被「拉伸而非丢弃」，而不是只匹配关键点。增广即固定源 mesh、改目标物体/地形后重解同一优化。
+
+## 工程实践
+
+- **解算设置（论文附录 D）：** 每帧 Sequential SOCP 至多迭代 10 次，以上一帧解热启动，信赖域半径 ε=0.2；四元数浮动基导数交给 Drake 自动微分。
+- **关键点对应：** 方法对关键点位置不敏感，只需人-机语义一致（手对手）；换 G1/H1/Booster T1 只改对应与碰撞模型。
+- **物体系建 mesh：** 物体旋转时 Laplacian 在世界系会变、在物体系不变，所以交互 mesh 必须在物体局部系构建；增广时再给下半身加锚定代价，避免退化成整体刚体变换。
+- **数据口径：** 论文数据约 2.78 h OMOMO + 1 h 自采 + 4.6 h LAFAN1；HF 公开版口径见上文，勿混用。
+- **RL 侧：** 直接沿用 BeyondMimic 权重，不调参；物体偏离 1.0 m / 45° 才终止，且仅在身体跟踪达标后启用；墙翻这类高动态动作需放宽终止阈值（0.5 m）并去掉脚朝向奖励，并要求 IMU 可测 15 rad/s 以上角速度。
+
+## 局限
+
+- **逐帧优化：** 约束线性化会残留小幅穿透（靠 RL 兜底），且逐帧解对视频等噪声源的鲁棒性有限；作者提出整条轨迹联合优化为后续方向。
+- **纯运动学：** 不含动力学，需下游 RL 弥合；动力学精修见 DynaRetarget / DSMS 等页。
+- **极简 RL 的上限：** 作者归因攀台任务中仅剩的 1 个失败动作于无 curriculum 的简单 RL 设定。
+- **盲策略：** 观测不含场景/物体信息，只能严格跟踪参考，泛化靠 kinematic 增广而非 DR。
+- **接触精度（推断）：** 相较 contact-centric 方法，抓取点精度较粗，见上文 HOI-Retarget 对比。
+
+## 关联
+
+- 同族工程与数据：[holosoma](./holosoma.md)、[OmniRetarget 数据集](./omniretarget-dataset.md)
+- 下游与对照：[PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[HOI-Retarget](./paper-hoi-retarget.md)、[UMR](./paper-umr-unified-motion-retargeting.md)
+- 问题域：[Motion Retargeting](../concepts/motion-retargeting.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 
 ## 参考来源
 

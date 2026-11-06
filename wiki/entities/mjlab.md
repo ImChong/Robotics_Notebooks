@@ -32,6 +32,8 @@ related:
   - ./tensorboard.md
   - ../comparisons/wandb-vs-tensorboard.md
   - ../methods/reinforcement-learning.md
+original:
+  - ../../sources/papers/mjlab_reading_arxiv_2601_22074_mjl1.md
 sources:
   - ../../sources/repos/mjlab.md
   - ../../sources/repos/mjviser.md
@@ -44,6 +46,10 @@ summary: "mjlab 将 Isaac Lab 的 manager-based 环境 API 与 MuJoCo Warp（GPU
 **mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 [**MuJoCo Warp**](./mujoco-warp.md)（GPU 并行物理）结合，在不依赖 NVIDIA Isaac Sim 的前提下提供与 Isaac Lab 相似的开发体验。
 
 有对应研究论文：Zakka et al. (2026) arXiv:2601.22074。
+
+## 一句话定义
+
+mjlab 是把 Isaac Lab 的 manager-based 环境 API 与 MuJoCo Warp GPU 物理合在一起、单命令安装的轻量机器人 RL 框架。
 
 ## 英文缩写速查
 
@@ -83,6 +89,29 @@ mjlab 架构
 └── 物理层
     └── MuJoCo Warp        # GPU 并行刚体仿真
 ```
+
+## 核心原理
+
+据技术报告（Zakka et al., 2026）：
+
+- **场景管线：** MJCF 实体合成为 MjSpec，CPU 编译为 MjModel，再经 `put_model` / `put_data` 送入 MuJoCo Warp；MjData 带前导 world 维，一个对象存 N 个并行世界，参数默认共享、随机化时按字段扩成 per-world；仿真步以 CUDA graph 捕获重放以省去 CPU 派发开销。
+- **step 流水线：** Act → Simulate（decimation 子步）→ Terminate → Reward → Reset → Command → Apply Events → Observe；由 action / termination / reward / curriculum / event / command / observation / metrics 各 manager 编排。
+- **设计取舍：** 只支持 MuJoCo Warp 单一后端（跨模拟器可移植为非目标）；单一 Entity 类取代 Isaac Lab 的多个资产类；执行器分层（MJCF 原生、MuJoCo 原生、GPU 上的 PD / DC 电机 / 学习式 MLP 执行器，另有延迟包装）。
+
+## 工程实践
+
+- 训练入口：`uv run train Mjlab-Velocity-Flat-Unitree-G1 --env.scene.num-envs 4096 --agent.max-iterations 10_000`；on-policy 算法用 RSL-RL，多卡用 torchrunx。
+- 配置为实例式 typed dict，经 tyro 自动暴露为命令行参数；创建任务变体是复制并修改现有配置，而非继承新类。
+- TorchArray 零拷贝把 Warp 数组当 PyTorch 张量用，奖励 / 观测可写纯 PyTorch。
+- 自带三个参考任务：G1 / Go1 速度跟踪、G1 动作模仿（DeepMimic + BeyondMimic 扩展）、YAM 机械臂抬方块。
+- 调试：终止管理器检测 NaN/Inf 并保留滚动状态缓冲供回放；域随机化的惯量采用伪惯量参数化以保持物理一致。
+
+## 局限
+
+- 仅面向刚体机器人学习，不做照片级渲染；视觉策略建议先训特权策略再用外部渲染蒸馏（报告原话方向）。
+- 不追求跨模拟器可移植；物理能力受限于 MuJoCo Warp（缺口见 [MuJoCo Warp](./mujoco-warp.md)）。
+- 技术报告不含吞吐或与 Isaac Lab 的定量对比数据，性能结论需自行实测（本页不给出具体加速倍数）。
+- manager 抽象相对单体 step 函数有额外开销，作者认为模块化收益更大（报告自述）。
 
 ## 核心能力
 
@@ -184,6 +213,11 @@ sequenceDiagram
 ```
 
 图依据：mujocolab/mjlab@dcdf6ce，读过 `pyproject.toml`、`README.md`、`src/mjlab/scripts/train.py`、`src/mjlab/scripts/play.py`、`src/mjlab/envs/manager_based_rl_env.py`（`step`）、`src/mjlab/rl/vecenv_wrapper.py`（`step`）、`src/mjlab/rl/runner.py`（类与方法签名）、`src/mjlab/tasks/registry.py`（函数签名）；未运行代码。
+
+## 继续阅读
+
+- [mjlab 技术报告通读归档](../../sources/papers/mjlab_reading_arxiv_2601_22074_mjl1.md) — 架构、manager 流水线与软件设计摘录
+- [MuJoCo Playground](./mujoco-playground.md) — 单体式环境的对照路线
 
 ## 参考来源
 

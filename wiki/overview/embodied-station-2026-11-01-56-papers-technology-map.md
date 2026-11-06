@@ -9,6 +9,8 @@ related:
   - ../entities/paper-t2-z-environment-latents.md
   - ../methods/vla.md
   - ../concepts/world-action-models.md
+original:
+  - ../../sources/papers/libero_dynamic_reading_arxiv_2610_24579_es56.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_56_papers_libero_dynamic_latency_eval_2026-11-01.md
 summary: "具身智能小站 2026-11-01 盘点：LIBERO-Dynamic 把推理延迟放进动态操作评测（深读）、RAX 在线探索编译技能、T2-z 测试时适配环境潜变量，以及评测基准、世界模型、VLA 策略、导航、灵巧接触与人形控制等 56 篇；56/56 独立节点（新建 43 / 复用 13）。"
@@ -22,6 +24,10 @@ summary: "具身智能小站 2026-11-01 盘点：LIBERO-Dynamic 把推理延迟�
 
 **本期主线是评测与适配要把真实时间与隐藏环境因素算进来：LIBERO-Dynamic 让推理延迟与目标运动同台评测，RAX 把探索经验编译成可复用程序，T2-z 在测试时适配摩擦与质量等环境潜变量；其余覆盖鲁棒与个性化基准、世界模型、VLA 后训练、导航、灵巧接触与人形控制。深读 LIBERO-Dynamic，跟进 RAX 与 T2-z。**
 
+## 一句话定义
+
+本页是具身智能小站 2026-11-01 期 56 篇论文的按方向分组阅读坐标（技术地图），把"评测要计入真实时间与隐藏环境因素"这条主线与各方向节点串起来。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -29,6 +35,11 @@ summary: "具身智能小站 2026-11-01 盘点：LIBERO-Dynamic 把推理延迟�
 | VLA | Vision-Language-Action | 视觉–语言–动作策略 |
 | WAM | World Action Model | 世界–动作联合模型 |
 | VLM | Vision-Language Model | 视觉语言模型 |
+
+## 为什么重要
+
+- 静态桌面上的成功率不能代表移动目标下的表现：LIBERO-Dynamic 中 6 个预训练策略的动态成功率为 27.3%–57.8%，且每个模型随目标加速都下降（原文通读，见 [归档](../../sources/papers/libero_dynamic_reading_arxiv_2610_24579_es56.md)）。
+- 同一检查点仅换执行方式（同步 / 异步 / RTC）结果就不同，所以评测需把延迟与执行协议写进配置。
 
 ## 为什么单独做这张地图
 
@@ -141,6 +152,21 @@ flowchart TB
 | Compositional Motion Styles | [paper-compositional-motion-styles](../entities/paper-compositional-motion-styles.md) | 待发布 |
 | Giant Rubik's Cube Quadruped | [paper-rubik-skills](../entities/paper-rubik-skills.md)（复用） | 已开源 |
 | Lightweight Contact Feedback Teleop | [paper-lightweight-contact-feedback-teleop](../entities/paper-lightweight-contact-feedback-teleop.md) | 项目页未列 GitHub |
+
+## 工程实践
+
+以下依据已通读的主线论文 LIBERO-Dynamic（[原文通读归档](../../sources/papers/libero_dynamic_reading_arxiv_2610_24579_es56.md)）；其余 55 篇仍为公众号转述。
+
+- **评测要把延迟算进世界时间**：LIBERO-Dynamic 按实测延迟量化为控制步（20 Hz 下 D = ceil(tau * fc)）并推进物理，同一 pi0.5 检查点在最佳动作时域下异步 / 同步 / RTC 为 48.4% / 43.1% / 37.8%（有限扫描内的最佳点）。
+- **异步执行先保队列不断流**：K=1、4 时稳态欠载高、成功率 0.0% / 23.9%，K=6 欠载归零后才达峰；之后更短的开环时域与更高成功率相关。
+- **动态示范有用但依赖时序条件**：9,000 条由静态示范经接触驱动运动 + 在线补偿转换而来；五帧历史输入使动态微调增益从 8.8 点增至 21.7 点。
+- **选读建议（推断）**：做动态或带延迟部署时，先读 LIBERO-Dynamic 节点，再按分组索引找对应方向的节点。
+
+## 局限
+
+- 本页除 LIBERO-Dynamic 外的数字均为公众号转述，未核验原文表格（见上文「为什么单独做这张地图」）。
+- LIBERO-Dynamic 自述局限：轨迹为规定轨迹、延迟为固定标定，未覆盖延迟抖动与复杂随机运动；训练与评测共享任务、路径与速度，衡量的是条件匹配适配而非泛化；最佳时域来自有限扫描；真机仅有限任务、单平台。
+- 56 篇是单期公众号的选择，不代表领域完整覆盖。
 
 ## 关联页面
 

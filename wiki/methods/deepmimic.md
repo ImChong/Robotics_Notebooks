@@ -17,6 +17,8 @@ related:
   - ../entities/protomotions.md
   - ./amp-reward.md
   - ../entities/mimickit.md
+original:
+  - ../../sources/papers/deepmimic_reading_arxiv_1804_02717_dm1.md
 sources:
   - ../../sources/papers/deepmimic.md
   - ../../sources/papers/modern_robotics_ch3_unit_quaternion.md
@@ -31,6 +33,8 @@ summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹
 
 # DeepMimic: 示例引导的技能学习
 
+## 一句话定义
+
 **DeepMimic** 是第一个能够让物理仿真智能体高保重模仿后空翻、武术等高难度动作的深度 RL 算法。
 
 ## 英文缩写速查
@@ -40,6 +44,27 @@ summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
 | Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+
+## 为什么重要
+
+- 此前纯 RL 步态常有多余上身动作、怪异姿态；DeepMimic 把参考动作写进奖励，在无扰动时运动与 mocap 几乎无法区分（论文自述），又保留物理仿真下的扰动恢复。
+- 同一套框架覆盖人形、Atlas、T-Rex、龙共 30 项技能，并能叠加击打 / 投掷 / 地形任务；后续 AMP、MimicKit、人形全身跟踪多沿用其 RSI + 早期终止 + 多项跟踪奖励的配方。
+
+## 核心原理
+
+1. **策略**：输入局部坐标系状态 + 相位 φ（+ 任务目标 g），输出各关节 PD 目标角，30 Hz 控制、Bullet 1.2 kHz 仿真，PPO 训练（两层 1024/512 ReLU）。
+2. **模仿奖励**：r^I = 0.65·位姿 + 0.1·速度 + 0.15·末端 + 0.1·质心，各项为 exp(−k·误差)；总奖励 0.7·r^I + 0.3·r^G。
+3. **RSI**：episode 初始状态从参考动作任意相位采样，使后空翻落地等后段状态早期可见。
+4. **早期终止**：躯干 / 头触地即终止，既塑形又缓解"躺地样本"类别不平衡。
+5. **多片段**：max 奖励、one-hot 技能选择器、按价值函数 Boltzmann 选择的组合策略。
+消融（论文表 5）：后空翻 RSI+ET 0.791、仅 ET 0.730、仅 RSI 0.379，说明 ET 对多数技能关键、RSI 对长飞行相动作关键。
+
+## 工程实践
+
+- 超参（论文补充）：批 4096、minibatch 256、γ=λ=0.95、ε=0.2、SGD 动量 0.9；单技能约 6000 万样本，8 核 CPU 约 2 天。
+- PD 增益需按角色形态手调；动作需先重定向到角色骨架（Atlas 直接复制局部关节旋转后重训）。
+- 地形任务采用渐进训练：先平地模仿，再加高度图卷积分支。
+- 现代复现见上文 MimicKit；原版栈较老。
 
 ## Survey 坐标（策展索引）
 
@@ -58,6 +83,9 @@ summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹
 ## 局限：「发条玩具」式灵活性
 
 [Peng 在 human five 分享](../../sources/blogs/wechat_human_five_jason_peng_flexible_motion_skills.md) 中把纯运动跟踪控制器比作 **高级发条玩具**：擅长高保真复现固定 clip，但目标位姿微变、物体变化时常需新参考；数据稀缺时更难覆盖任务变体。超越路径见 [Jason Peng 灵活运动技能学习技术地图](../overview/jason-peng-flexible-motion-skill-learning.md)（对抗分布匹配、PARC 迭代增强）。
+
+论文自述局限（§11）：相位变量随时间线性推进，限制时序调整；多片段整合未在大动作库验证；PD 增益需手调；每技能需数天训练且策略独立；奖励依赖人工状态相似度与权重。
+
 
 ## 主要技术路线
 | 模块 | 方案 | 作用 |
@@ -106,7 +134,13 @@ sequenceDiagram
 - [NCKU 合成视频人形任务](../entities/paper-synthetic-video-humanoid-tasks.md) — 用生成视频参考做 DeepMimic 式 G1 跟踪（仿真；未开源）。
 - [HIL](./hil-hybrid-imitation-learning.md) / [HIL 论文实体](../entities/paper-hil-hybrid-imitation-learning.md) — 去掉相位与未来姿态，才能和 AMP 共用同一 \(\pi\)。
 
+## 继续阅读
+
+- [论文原文 arXiv:1804.02717](https://arxiv.org/abs/1804.02717)
+- [amp-reward](amp-reward.md)、[mimickit](../entities/mimickit.md)
+
 ## 参考来源
+- 原文通读归档：[deepmimic_reading_arxiv_1804_02717_dm1.md](../../sources/papers/deepmimic_reading_arxiv_1804_02717_dm1.md)
 - [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md)
 - [sources/papers/modern_robotics_ch3_unit_quaternion.md](../../sources/papers/modern_robotics_ch3_unit_quaternion.md) — 四元数 motion 格式与 MimicKit exp map 分层

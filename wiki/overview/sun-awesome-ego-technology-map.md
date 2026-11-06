@@ -8,6 +8,8 @@ related:
   - ../entities/awesome-egocentric-vision.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/sun_awesome_ego_readme_reading_ego_map.md
 sources:
   - ../../sources/papers/sun_awesome_ego_catalog.md
   - ../../sources/repos/awesome-egocentric-vision.md
@@ -450,6 +452,22 @@ sources:
 | 248 | [Challenges and Trends in Egocentric Vision: A Survey](../entities/paper-sa-2503-15275-challenges-and-trends-in-egocentric-vision-a-sur.md) |
 | 249 | [First-Person Vision](../entities/paper-sa-ego-249-first-person-vision.md) |
 
+
+## 核心原理
+
+清单本身的组织方式（据上游 README 通读）：
+
+- 先放综述，再按 10 个主题分节：动作识别/预期、手物交互、Ego-VLM、长视频、注视与意图、3D/4D 重建、Ego-VLA、世界模型、程序化助手、隐私；之后是数据集/仿真器、智能眼镜、相关清单与挑战表。
+- 每条给出出处、一句话亮点和论文链接；多数主题末尾附数据集表，⭐ 标记 Ego4D、EPIC-KITCHENS-100、Ego-Exo4D 等锚点数据集。
+- 收录偏顶会顶刊，但内容以 2026 年 arXiv 条目为主，同时保留 2009 年起的经典数据集。
+- 本页的分组索引沿用清单分组，把每条链接换成站内页面。
+
+## 工程实践
+
+- 按子任务选型：先看对应分组，再点进论文页；数据集需求回到上游 README 各节末尾的数据集表。
+- 做机器人相关工作时，优先看「Ego-VLA」「世界模型」两组，以及清单挑战表里的人机具身差距、动作空间错位。
+- 清单里的数字（如各论文的提升幅度）是转述，引用前回到原论文核对。
+- 推断：本页的 249 条与上游 README 会随时间漂移，重新同步需重新生成目录。
 
 ## 局限与风险
 

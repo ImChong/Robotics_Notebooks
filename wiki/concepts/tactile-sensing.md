@@ -43,10 +43,14 @@ sources:
   - ../../sources/papers/eflesh_arxiv_2506_09994.md
   - ../../sources/repos/eflesh.md
   - ../../sources/sites/eflesh-project.md
+original:
+  - ../../sources/papers/gelsight_sensors_2017_reading_pmc5751610.md
 summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上的法向力和切向力、滑动分布及材质纹理，是实现接触丰富操作和高精度抓取的核心感官。"
 ---
 
 # Tactile Sensing（触觉感知）
+
+## 一句话定义
 
 **触觉感知 (Tactile Sensing)** 是机器人感知系统中的重要组成部分。如果说视觉（Vision）赋予了机器人远距离和全局的场景理解能力，那么触觉则是机器人与物理世界发生**直接物理交互**时的“兜底”防线。对于接触丰富（Contact-rich）的操作任务，如插拔、灵巧抓取、装配和盲索，触觉感知是不可或缺的。
 
@@ -57,6 +61,33 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 | RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
 | Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
 | Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
+## 为什么重要
+
+- 视觉在手遮挡、近距接触阶段失效，触觉直接测量接触状态，是插拔、灵巧抓取、装配等接触丰富任务的闭环依据。
+- 据 GelSight 综述（[通读归档](../../sources/papers/gelsight_sensors_2017_reading_pmc5751610.md)），传统传感器只测接触与力分布；人类还能由触觉获知形状、纹理、柔顺、摩擦并据此调整握力，这类信息机器人尚未充分利用。该文主张几何感知与力感知同等重要。
+
+## 核心原理
+
+以视觉类传感器为例（据 GelSight 综述 §3）：
+
+- **形状**：透明弹性体加反射涂层，内置相机在多方向彩色光下成像，用光度立体求表面法线，再积分（泊松方程）得到高度图；用已知直径小球标定查找表，每个传感器须单独标定。
+- **力与扭矩**：涂层下的标记点位移场反映切向形变，法向力使点外扩、剪切力使点平移、面内扭矩使点旋转，幅度大致与载荷成正比；形状变化时比例系数改变，故用 CNN 做与形状无关的力回归。
+- **滑移**：软接触下滑移从接触区外围开始，用标记位移分布的熵（或旋转角分布）度量部分滑移程度，设阈值预警。
+- 其他路线（压阻 / 电容阵列、六维力矩、磁性）见下文各节；它们的物理机理不同，上述方法不能直接套用（推断）。
+
+## 工程实践
+
+- 每个传感器需单独标定；指尖版 GelSight 用 USB 摄像头约 30 Hz，H.264 编码带来延迟（原文），高频闭环需注意。
+- 弹性体越软越灵敏但量程越小，重载场景需更硬的胶（原文）；涂层选择（半镜面 / 哑光）决定光学设计与精度。
+- 力估计用 CNN 时训练数据需覆盖多种接触几何，原文报告 R² > 0.9，但整段接触序列仍有几何相关偏差。
+- 滑移熵法最适合平面或小曲率接触；复杂形状宜结合形状运动线索（原文）。
+
+## 局限
+
+- 视觉类传感器体积较大、帧率受相机限制；阵列式存在迟滞、温漂；F/T 只给合力（见各路线小节）。
+- GelSight 综述的力估计为基本形状上的初步实验，对任意接触几何的泛化未解决；本页其他传感器指标多来自各论文自述，需逐一核实标定条件（推断）。
+- 本页的"原文通读"仅覆盖 GelSight 综述这一视觉类路线的一手资料，其余传感器与学习方法以各自来源归档为准。
 
 ## 核心感知维度
 
@@ -152,3 +183,10 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [AnyTouch 论文来源](../../sources/papers/anytouch_arxiv_2502_12191.md) 与 [AnyTouch 2 论文来源](../../sources/papers/anytouch2_arxiv_2602_09617.md)
 - [UVTA（arXiv:2609.34182）](../../sources/papers/uvta_arxiv_2609_34182.md) — 跨本体人类触觉示范与机器人灵巧操作联合学习
 - [TactileStep（arXiv:2609.28959）](../../sources/papers/tactilestep_arxiv_2609_28959.md) — 足底特征级 sim2real + 四相位接触奖励；G1 跑酷真机
+
+## 继续阅读
+
+- [GelSight 综述通读归档](../../sources/papers/gelsight_sensors_2017_reading_pmc5751610.md)
+- [视触觉融合 (Visuo-Tactile Fusion)](./visuo-tactile-fusion.md)
+- [接触丰富操作 (Contact-Rich Manipulation)](./contact-rich-manipulation.md)
+- [Awesome Touch（精选集）](../entities/awesome-touch.md)

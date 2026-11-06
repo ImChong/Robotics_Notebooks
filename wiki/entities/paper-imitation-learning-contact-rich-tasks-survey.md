@@ -5,7 +5,7 @@ doi: "10.1177/02783649261417694"
 venue: "The International Journal of Robotics Research (OnlineFirst, 2026)"
 tags: [paper, survey, imitation-learning, contact-rich, manipulation, robot-learning]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-06
 related:
   - ../methods/imitation-learning.md
   - ../concepts/contact-rich-manipulation.md

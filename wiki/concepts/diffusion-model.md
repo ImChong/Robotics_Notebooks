@@ -19,6 +19,8 @@ related:
   - ../entities/paper-adversarial-training-pixel-diffusion.md
   - ../entities/comfyui.md
   - ../entities/paper-global-style-transfer.md
+original:
+  - ../../sources/papers/ddpm_reading_arxiv_2006_11239_ddm1.md
 sources:
   - ../../sources/papers/ho_ddpm_arxiv_2006_11239.md
   - ../../sources/papers/peebles_dit_arxiv_2212_09748.md
@@ -117,6 +119,15 @@ flowchart LR
 3. **提示词/条件非精确程序**——模型复现训练数据统计关联，计数与复杂空间关系易错
 4. **CFG 系数非画质单调旋钮**——过高会损多样性与引入伪影
 5. **扩散 ≠ 仅 DDPM**——Flow Matching、rectified flow、一致性模型等同族变体共享「噪声→数据迭代路径」思想；形式化见 [概率流](../formalizations/probability-flow.md)
+
+## 工程实践
+
+以下参数来自 DDPM 原文（Ho et al., 2020）的配置，可作为复现基线：
+
+- **调度与步数**：$T=1000$，$\beta_t$ 从 $10^{-4}$ 线性增至 0.02，使 $x_T$ 近似纯高斯噪声；逆向方差取固定常数（$\sigma_t^2=\beta_t$ 或 $\tilde\beta_t$），论文发现学习方差会使训练不稳。
+- **目标与骨干**：简化的 $\epsilon$ 预测均方损失样本质量最好（比真变分界更优，但似然码长更差）；骨干为带 GroupNorm 与 16×16 自注意力的 U-Net，正弦时间嵌入加入每个残差块。
+- **训练配方**：Adam，学习率 2e-4（256×256 降至 2e-5），参数 EMA 衰减 0.9999，CIFAR10 用 dropout 0.1。
+- **采样开销**：原文在 TPU v3-8 上采样 256 张 CIFAR 图约 17 秒、128 张 256×256 图约 300 秒，这是后续少步采样与蒸馏的动机（此处为对原文数据的归纳）。
 
 ## 现存局限（影响机器人迁移）
 

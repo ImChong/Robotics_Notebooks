@@ -30,6 +30,9 @@ related:
   - ../entities/paper-legged-load-adapt-unknown-dynamic-load.md
   - ../entities/paper-terrain-aware-ugv-dem-local-planning.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
+original:
+  - ../../sources/papers/learning_quadrupedal_locomotion_challenging_terrain_reading_arxiv_2010_11251.md
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
 sources:
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/privileged_training.md
@@ -149,6 +152,29 @@ sources:
 - [SOLO](../entities/paper-solo.md) 用 **逐格查询高程** 保住踏石/台阶沿，并把下一步师生分歧写入 PPO，支撑连续 **1.5 km** 户外。
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) 把 **稀疏踏棍梯子** 当作极端薄结构地形：端到端 **深度 + VFM** 适应，配合 **RFM** 聚焦踏棍几何。
 - [Sim2Real](./sim2real.md) 强调地形感知和真实传感器偏差是迁移痛点。
+
+## 核心原理
+
+地形适应的共同骨架是「地形信息 → 接触决策 → 低层执行」，差别在于地形信息从哪来、由谁转成动作：
+
+- **特权 teacher + 本体 student（Lee et al., arXiv:2010.11251）**：先在仿真里用地形轮廓、接触状态与力、摩擦系数等特权信息训 teacher，再蒸馏为只用关节编码器 + IMU 历史的 TCN student，由历史隐式推断接触与打滑，不设显式估计模块；动作经 PMTG 足端轨迹发生器（策略 50 Hz、关节 PD 400 Hz）变成关节目标。
+- **并行 RL + 自动地形课程（Rudin et al., arXiv:2109.11978）**：数千台机器人并行 + PPO，地形按「走出边界升级、走不够目标距离一半降级」自动调难度；观测含 108 个高度采样点，台阶高度 5 cm 增至 20 cm，平地约 4 分钟、不平地形约 20 分钟训出可上真机的策略。
+- 两者互补：前者解决「感知不可靠时如何靠本体隐式适应」，后者解决「如何便宜地覆盖足够多的地形分布」；上文各案例是在此基础上换感知接口（点云、深度、ToF、几何 token）。
+
+## 工程实践
+
+- **课程难度**：Lee 等取可通过性在 [0.5, 0.9] 的地形作为「合适难度」，仅用刚性程序化地形（hills / steps / stairs）训练，仍零样本泛化到泥、雪、植被、碎石。
+- **指令设计**：崎岖地形上可行速度不明确，Lee 等只给方向与转向指令，不给目标速度；Rudin 等真机把速度指令上限降到 0.6 m/s。
+- **sim2real 随机化**：摩擦系数 [0.5, 1.25]、观测噪声、周期性随机推；ANYmal 用学习得到的执行器模型缩小动力学差距。
+- **感知质量要单独评估**：真机高度图来自 LiDAR 高程图，质量不完美，鲁棒性低于仿真（Rudin 等 §4.3）。
+- **超时 vs 失败终止**：并行训练中超时需用 critic bootstrap，文中报告总奖励约提升 10%–20%。
+
+## 局限与边界
+
+- 纯本体感知（盲走）步态保守，且无法预判悬崖：被指令走向悬崖也会走下去（Lee 等 §3），需要外感知补充。
+- 仿真课程覆盖不到的地形（如 Rudin 等中超过 25° 的斜坡）无法爬升；高度图不完美会把感知误差直接带进策略。
+- 两篇均以 ANYmal 四足 trot 为主要验证对象；向人形迁移的结论属推断，需以上文人形案例页为准。
+- 本页上方的近期案例多为仿真或单平台结果，证据边界见各实体页。
 
 ## 常见误区
 

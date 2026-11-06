@@ -19,6 +19,8 @@ related:
   - ../methods/imitation-learning.md
   - ../entities/project-instinct.md
   - ../tasks/humanoid-locomotion.md
+original:
+  - ../../sources/papers/amp_reading_arxiv_2104_02180_r7.md
 sources:
   - ../../sources/blogs/wechat_pinkrobot_mimic_evolution_deepmimic_beyondmimic_2026-09-15.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
@@ -36,6 +38,10 @@ summary: "依据具身智能研究室 AMP 专题长文，把 19 篇运动先验�
 
 **AMP（Adversarial Motion Prior）解决的不是「能不能跑」，而是「跑起来之后仍不像一个身体」。** 它把策略生成的状态转移约束在人类运动分布附近，让任务 reward 与参考动作之间不必二选一；对人形机器人而言，这是 [身体系统栈](./humanoid-rl-motion-control-body-system-stack.md) 控制层里 **风格 / 分布约束** 的主线，也是未来 VLA、世界模型调用身体前的 **底层合理性边界**。
 
+## 一句话定义
+
+AMP 运动先验线：用判别器在 **状态转移 (s, s')** 上学习人类运动分布，输出与任务无关的风格奖励，与任务奖励相加后由 PPO 联合优化，使策略在完成任务的同时保持类人运动风格（依据 AMP 原论文 §5）。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -46,6 +52,10 @@ summary: "依据具身智能研究室 AMP 专题长文，把 19 篇运动先验�
 | RL | Reinforcement Learning | AMP 与任务 reward 联合优化的训练范式 |
 | GMP | Generative Motion Prior | 生成式细轨迹指导人形走跑的代表路线 |
 | VLA | Vision-Language-Action | 身体先验成熟后上层调用的策略接口 |
+
+## 为什么重要
+
+任务 reward 只规定「做什么」，风格由判别器学得的先验规定「怎么做」；原论文 §8.2 显示，同一先验下步态可随目标速度自动切换（约 1 m/s 走、2.5 m/s 慢跑、4.5 m/s 跑），多样性来自先验而非手工 reward。这也是人形走跑、恢复与交互任务共用的底层合理性约束。
 
 ## 为什么需要单独读 AMP 这条线
 
@@ -130,6 +140,19 @@ flowchart TB
 | 18 | **Deep Whole-body Parkour** | 感知 + 全身 tracking，先验只是一层 | [project-instinct](../entities/project-instinct.md) 生态 |
 | 19 | **Embrace Collisions** | 全身接触 shadowing，扩展「自然身体」边界 | [project-instinct](../entities/project-instinct.md) |
 
+## 核心原理：AMP 奖励结构（原论文）
+
+- **奖励分解**：r = w^G·r^G + w^S·r^S，任务奖励（what）与风格奖励（how）线性相加，论文各任务取 0.5 / 0.5（§5，式 4）。
+- **判别器**：最小二乘 GAN 损失，真样本目标 +1、策略样本目标 −1；风格奖励 r = max(0, 1 − 0.25(D−1)²)，有界于 [0,1]（§5.2）。
+- **关键稳定化**：对真实数据样本的梯度惩罚（w_gp = 10）是消融中最关键组件；判别器同时用回放缓冲区避免对最新数据过拟合（§5.4、§6.3）。
+- **综述四段地图的位置**：ADD / SMP / GMP / masked AMP 等均可视为在上述结构上改判别器、改奖励形态或改作用部位（推断，依综述文归纳，未逐篇核对原文）。
+
+## 工程实践
+
+- 参考数据只需状态序列，故判别器输入用 (s, s') 而非 (s, a)；观测取局部坐标系的根速度、关节旋转/速度与末端位置，不含任务特征，先验才能跨任务复用（原论文 §5.3）。
+- 配合参考状态初始化 (RSI) 与早停；原论文策略 30 Hz、MLP 1024-512，每策略约 1–3 亿样本（§6、§8.1）。
+- 人形落地的工程参考见 [AMP_mjlab](../entities/amp-mjlab.md)、[MimicKit](../entities/mimickit.md)；论文地图中 18 篇后续工作的细节以各实体页为准。
+
 ## 五个可执行结论（沿用策展文，压缩表述）
 
 1. **AMP ≠ 好看**：是 **任务完成之后** 仍约束在身体分布内的 RL 信号；与 [imitation-learning](../methods/imitation-learning.md) 中纯 tracking 互补。
@@ -177,6 +200,8 @@ flowchart TB
 
 - 公众号标题写「20 篇」、正文编号至 19；本页 **不臆造第 20 篇**。
 - 上表 19 篇均已各有 `wiki/entities/` **深读实体页**（2026-06-25 批量深化）；AMP / ADD / SMP 等另有 `wiki/methods/` 方法页。细节仍以论文 PDF / 项目页为准。
+- 原论文自述局限（§9）：易模式坍塌，大数据集下只模仿部分行为；先验每策略从头训练，迁移性未解决；空间组合（同时多技能）仅初步探索。
+- 本页的原文通读只覆盖 AMP 原论文；综述文中其余 18 篇论文与公众号长文未逐篇通读。
 - 策展框架不等于领域共识；与 [ULTRA Survey](../tasks/ultra-survey.md) 等其它综述可能分层不同。
 
 ## 关联页面

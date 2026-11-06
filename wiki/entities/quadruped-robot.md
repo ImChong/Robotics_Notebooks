@@ -25,6 +25,8 @@ related:
   - ../methods/hipan.md
   - ../concepts/sim2real.md
   - ../overview/notable-commercial-robot-platforms.md
+original:
+  - ../../sources/papers/spot_rl_distributional_sim2real_reading_arxiv_2504_17857_q1.md
 sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
   - ../../sources/papers/locomotion_rl.md
@@ -159,6 +161,30 @@ sequenceDiagram
 ```
 
 图依据：ihcr/learning_to_adapt@2066cbc，实际读过 `README.md`、`scripts/run_demo.py`、`python/learning_to_adapt/engine_interface.py`（前段）、`python/learning_to_adapt/raisim.py`（step / update_robot_states / set_next_action 段）、`python/learning_to_adapt/robot.py`（set_next_action / apply_action 段）、`python/learning_to_adapt/policy_manager.py`（构造与 get_action 签名）、`python/learning_to_adapt/obs_manager.py`（updateAllObs）、`src/learning_to_adapt/gait_scheduler.cpp`（构造与 step 签名）；未读 `srcpy/` 绑定实现的细节，未运行代码。
+
+## 为什么重要
+
+四足是目前 RL locomotion 从仿真走向真机、再走向商业巡检最成熟的一类平台：并行仿真训练、零样本迁移案例多，且能与人形平台共享方法栈，是检验腿足算法的主要载体。
+
+## 核心原理
+
+典型四足 RL 链路（以 Spot 低层部署为例，据 [arXiv:2504.17857](https://arxiv.org/abs/2504.17857)）：策略 50 Hz 输出关节位置偏置，经 PD 律 τ = kp(σa·a + qd − q) − kd·q̇ 转为力矩（该文 kp=60、kd=1.5、σa=0.2，200 Hz 施加）；训练用 Isaac Lab + PPO，地形/摩擦/质量/初始状态随机化；Sim2Real 缺口则通过关节摩擦、力矩-速度限幅、通信延迟（该文以 5 ms 动作缓冲建模）与观测噪声建模来缩小，并用 Wasserstein 距离 / MMD 度量仿真与真机数据分布差异、以 CMA-ES 搜索参数。
+
+## 工程实践
+
+- 执行器建模往往比换算法更关键：该文报告优化后最高速度由 3.8 m/s 提升到 5.2 m/s（默认控制器最快 1.6 m/s）。
+- 部署侧：板载算力（如 Jetson Orin）运行 ONNX 策略，经低层 API 发送关节设定；真机采数 → 优化仿真参数 → 重训，一次迭代即可见效。
+- 指令范围、奖励（足端空中时间、冲击、打滑惩罚）与随机化项需随平台调整（推断：其他四足同理，参数需自行标定）。
+
+## 局限
+
+- 上述数字来自单一平台（Spot）单篇工作，不可直接外推到其他四足。
+- 该文仍未建模电源功率分配限制，摆动腿回收阶段存在残余误差；视觉感知未纳入。
+- 本页其余内容（平台速览、挑战）为综述性归纳，未逐一做原文通读。
+
+## 继续阅读
+
+- [Spot RL Sim2Real 论文页](./paper-spot-rl-distributional-sim2real.md)、[Legged Gym](./legged-gym.md)、[四足控制学习策展](./quadruped-control-curriculum.md)、[Sim2Real](../concepts/sim2real.md)
 
 ## 关联页面
 

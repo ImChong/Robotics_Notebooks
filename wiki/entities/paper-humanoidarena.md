@@ -22,6 +22,8 @@ related:
   - ./paper-humanoidmimicgen.md
   - ./paper-choreo.md
   - ./paper-wb-wam.md
+original:
+  - ../../sources/papers/humanoidarena_reading_arxiv_2606_17833_ha1.md
 sources:
   - ../../sources/papers/humanoidarena_arxiv_2606_17833.md
   - ../../sources/sites/humanoidarena-github-io.md
@@ -90,6 +92,12 @@ summary: "HumanoidArena（arXiv:2606.17833）：仿真优先的 egocentric 分�
 | **Vision** | 视觉观测鲁棒性 | 光照方向变化 |
 | **Execution** | 控制/执行几何敏感性 | 扩大球初始化范围 → 不同接近与触球时机 |
 | **Cross-GMT** | 中间动作跨 tracker 可迁移性 | 固定高层策略，TWIST2 ↔ SONIC 换后端 |
+
+## 核心机制
+
+- **分层接口：** 高层策略 π(u_t | egocentric 图像, 64D 状态, 指令) 输出 40D 中间全身动作；GMT 适配器 ψ_m 将其映射为跟踪器参考，低层 G(m) 输出 G1 关节目标（q_{t+1}=G(m)(ψ_m(u_t))）。
+- **控制变量思想：** 观测、动作空间与示范划分固定，只换高层策略或低层 GMT，因此性能差异可归因于策略设计或 tracker 动力学（论文设计意图）。
+- **两类诊断：** 扰动条件泛化（视觉/语义/执行）定位失败来源；GMT 条件迁移（in-GMT 与 cross-GMT）度量中间动作是否 tracker 无关。
 
 ## 核心结构
 
@@ -188,6 +196,18 @@ sequenceDiagram
 4. **Cross-GMT 仍脆弱** — 中间动作表征尚不能无缝在 TWIST2↔SONIC 间迁移，暴露可转移表征研究空白。
 5. **扰动轴要分开报** — Base / Semantic / Vision / Execution 分别定位语义 grounding、视觉鲁棒与执行几何敏感性，勿压成单一成功率。
 6. **复现路径已闭环** — 代码/LeRobot 数据/模型已开源；multicam 仍待发布；主叙事是仿真优先，真机 sim2real 非主轴。
+
+## 工程实践
+
+以下据论文正文与附录（通读归档见 [humanoidarena_reading_arxiv_2606_17833_ha1](../../sources/papers/humanoidarena_reading_arxiv_2606_17833_ha1.md)）。
+
+- **接口规格：** 高层输入 egocentric RGB + 64D 规范状态（根朝向 6D、29 关节位置与速度）+ 指令，输出 40D 动作（根水平移动、根高度、根朝向、29D 关节目标、双手开合）；GMT 适配器 ψ_m 只换「动作到跟踪器」的映射，策略与动作空间不变，因此跨 GMT 评测只替换适配器与低层跟踪器。
+- **数据规模：** 每任务每 GMT 100 条成功示范，共 1400 条，50Hz；仅成功示范入训练集；基准结果用前置 ego 相机。
+- **基线训练：** ACT / DP / FM / π0.5 同观测、同动作接口，均训练 100k 步，动作块长度 20、批大小 64；训练用 8 卡 H200，评测需渲染，用 16 卡 RTX 4090。
+- **评测协议：** 每配置 3 种子 x 20 次共 60 回合；除 SR 外报告平均跌倒率 AFR、跨 GMT 绝对下降 Δcross 与保留率 Ret；跌倒判据为躯干倾斜 60° 连续 5 步确认，75° 或 50N 接触力加倾斜即终止。
+- **扰动配置：** 视觉 = 随机朝向与强度的 DistantLight；语义 = 保持目标与功能不变的资产替换或干扰物；执行 = 扩大物体初始化范围（Football 球范围 ±1.2 增至 ±1.45）。
+- **主要数字：** In-GMT 下 TWIST2 最佳为 FM（HOI 36.11% / HSI 58.75%），SONIC 最佳为 DP（52.22% / 65.83%）；跨 GMT 平均下降约 39.9%（T 到 S）与 36.0%（S 到 T），S 到 T 的平均 AFR 为 7.56%。
+- **实践提示：** 论文将性能视为 policy–tracker 对的属性，选型时应同时报告所用 GMT；合并多 GMT 数据并不总有益（SONICx7 合并使 DP 的 HOI 由 52.22% 降至 29.44%，作者归因于动作分布失配）。
 
 ## 常见误区或局限
 

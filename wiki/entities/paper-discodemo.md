@@ -6,7 +6,7 @@ tags:
   - data-collection
   - demonstration
 status: complete
-updated: 2026-10-29
+updated: 2026-11-06
 arxiv: "2610.32093"
 project: https://davian-robotics.github.io/DiscoDemo/
 code: https://github.com/DAVIAN-Robotics/DiscoDemo

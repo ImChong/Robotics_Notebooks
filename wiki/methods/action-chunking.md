@@ -4,7 +4,6 @@ tags: [imitation-learning, vla, action-chunking, latency, transformers, deployme
 status: complete
 updated: 2026-11-05
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
-  - ../entities/paper-discrete-forcing.md
 sources:
   - ../../sources/papers/discrete_forcing_arxiv_2609_39526.md
   - ../../sources/repos/act-aloha.md
@@ -26,6 +25,7 @@ sources:
   - ../../sources/papers/receding_horizon_il_primary_refs.md
   - ../../sources/blogs/seohong_behavioral_cloning_mystery.md
 related:
+  - ../entities/paper-discrete-forcing.md
   - ../concepts/receding-horizon-policy-execution.md
   - ../entities/paper-act.md
   - ./behavior-cloning.md
@@ -57,6 +57,8 @@ related:
   - ../concepts/behavioral-cloning-mysteries.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
   - ../entities/fluxvla-engine.md
+original:
+  - ../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md
 ---
 
 # Action Chunking（动作块输出）
@@ -196,6 +198,31 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
   过长会削弱反馈，环境一变化就可能整段动作都过期。
 - **误区 4：成功了就一定是「时序一致性」或「有效地平线变短」。**  
   对照实验里，只条件于过去观测的 Delay / 随机时延 RDE 常能匹配标准 AC；不要把部署协议误当成唯一因果。
+
+## 核心原理
+
+（据 ACT 原文 arXiv:2304.13705 §IV 与本页上文整理）
+
+- **时域压缩：** 每 k 步观测一次、一次输出 k 步动作，有效决策时域缩小 k 倍，缓解模仿学习的复合误差，并能表达示范中的停顿等非马尔可夫行为。ACT 消融中 k 从 1 增至 100，4 种设置平均成功率 1%→44%。
+- **时间集成：** 每步都查询策略，对同一时刻的多个重叠预测按 w_i=exp(−m·i) 加权平均，动作更平滑，无额外训练代价。
+- **生成建模：** ACT 以 CVAE 吸收人类示范的随机性（测试时 z 取先验均值 0）；人类示范下去掉 CVAE 成功率 35.3%→2%。
+- **后续机制解释（推断，见上文各来源）：** chunk 的收益可进一步拆为延迟观测条件化与隐式集成，不必等同于整段开环播放。
+
+## 工程实践
+
+- ACT 参考配置（原文附录 C/D）：ResNet18 + Transformer（编码器 4 层 / 解码器 7 层），k=100，β=10，lr 1e-5，batch 8，约 80M 参数，推理约 0.01 s，50 Hz 控制。
+- 动作取绝对关节位置（L1 损失优于 L2，目标关节位置优于差分）。
+- 部署侧的缓冲、异步执行与 fallback 见上文「设计时要注意什么」及 [VLA 真机部署指南](../queries/vla-deployment-guide.md)。
+
+## 局限
+
+- 原文自述：ACT 未学会拆糖纸（10 次 0 成功）与桌面平放小号密封袋；Thread Velcro 仅 20% 成功率；硬件侧做不了多指协同、大力矩、需指甲的任务。
+- chunk 过长会削弱反馈、环境变化后整段动作过期（见上文「Chunk 长度不能盲目变大」）；其余局限见「常见误区」。
+
+## 继续阅读
+
+- 原文通读归档：[ALOHA / ACT 通读](../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md)
+- [Receding Horizon 策略执行](../concepts/receding-horizon-policy-execution.md)、[ACT 论文实体](../entities/paper-act.md)、[VLA](./vla.md)
 
 ## 参考来源
 

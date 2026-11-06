@@ -73,6 +73,8 @@ sources:
   - ../../sources/repos/osiris-ai.md
   - ../../sources/repos/rustgis.md
   - ../../sources/sites/rustgis-app.md
+original:
+  - ../../sources/papers/navigation2_marathon2_reading_arxiv_2003_00368.md
 summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR/VIO 里程计、Autoware 自动驾驶、Isaac ROS 加速感知建图，并与 OpenLoong 动力学、LeRobot/OpenVLA 具身学习对照分层选型。"
 ---
 
@@ -83,6 +85,10 @@ summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR
 ## 一句话总结
 
 **ROS 2 导航闭环** 以 [Navigation2](../entities/navigation2.md) 为中枢，上游接 **2D SLAM**（[slam_toolbox](https://github.com/SteveMacenski/slam_toolbox)、[Cartographer](https://github.com/cartographer-project/cartographer)）或 **3D 定位**（[FAST-LIO](https://github.com/hku-mars/FAST_LIO)、[LIO-SAM](https://github.com/TixiaoShan/LIO-SAM) 等，见 [LiDAR/VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)）；**乘用车级全栈** 走 [Autoware](../entities/autoware.md)；**Jetson + GPU 感知建图** 用 [Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md) + [nvblox](../entities/isaac-ros-nvblox.md)。**人形全身 MPC/WBC** 不属于本栈，见 [OpenLoong-Dyn-Control](https://github.com/loongOpen/OpenLoong-Dyn-Control) 与 [OpenLoong](../entities/openloong.md)。
+
+## 一句话定义
+
+本页是移动机器人 **「定位—建图—规划—控制」开源栈的分层选型总览**：以 Nav2 为导航中枢，向上游接 2D/3D SLAM 与 VIO，向旁侧对照 Autoware、Isaac ROS 与腿式/人形主线。
 
 ## 英文缩写速查
 
@@ -229,8 +235,25 @@ flowchart TB
 - **OpenVLA 与 Nav2 二选一**：VLA 管 **操作空间**；底盘导航仍常需 Nav2，除非端到端策略直接输出底盘速度且已安全验证。
 - **把全球情报图层当成本体定位地图**：[OSIRIS](../entities/osiris-global-osint.md) 汇聚公开地理信息，可作全局情境可视化参考；它不提供机器人 SLAM 位姿或可直接交给 Nav2 的局部代价地图。
 
+## 工程实践
+
+以下要点取自 Navigation2 原论文（[The Marathon 2](../../sources/papers/navigation2_marathon2_reading_arxiv_2003_00368.md)，arXiv:2003.00368）及本页既有选型：
+
+- **架构接口：** Nav2 由行为树导航器 + planner/controller/recovery 任务服务器组成，算法以运行时插件加载；各服务器为 ROS 2 生命周期节点，保证确定性启动/关闭。上游 SLAM/定位只需按 TF 标准提供 `map→odom→base` 与代价地图输入。
+- **恢复行为顺序：** 按保守到激进排列（清代价地图 → 原地旋转 → 等待）；论文实验中 4.3 次/英里的恢复主要来自拥挤无路径与长走廊 AMCL 置信度下降，说明恢复触发不等于失败。
+- **传感器与代价地图：** 多线/稀疏/远距传感器优先用带时间衰减的 STVL 类 3D 体素层，而非纯射线投射；与本页「3D LIO 需投影再喂 2D costmap」的误区一致。
+- **长时验证参考：** 论文以 2 台差速机器人、限速 0.45 m/s 跑 37.4 英里无碰撞、无急停，可作为 AMR 长时稳定性的基线参照（推断：该数据为 2020 年、低速、差速平台，不能直接外推到高速或车型）。
+
+## 局限
+
+- 本页是 **选型地图而非基准评测**：各栈的精度/实时性数字应回到各实体页与原论文，不同栈之间无统一测试条件。
+- 原论文的 A* 规划不为非圆形非完整约束机器人给出可行路径，实验也未使用显式动态障碍检测与预测（§VI）；现行 Nav2 版本已有后续规划器，需查官方文档确认（本归档未核对）。
+- 本页涉及的论文/仓库多处标注「代码待发布」或「占位仓」，时效性强，应以对应实体页的最新状态为准。
+- 腿式/人形全身控制、VLA 操作不在本栈范围，仅作对照。
+
 ## 参考来源
 
+- [Navigation2 原论文通读：The Marathon 2](../../sources/papers/navigation2_marathon2_reading_arxiv_2003_00368.md)
 - [sources/repos/navigation_slam_autonomy_stack_catalog.md](../../sources/repos/navigation_slam_autonomy_stack_catalog.md)
 - 本页所列各 `sources/repos/*.md` 条目
 - [深蓝AI：SLAM与高精地图篇](../../sources/blogs/wechat_shenlan_ai_ad_slam_hdmap.md)
