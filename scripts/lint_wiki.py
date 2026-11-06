@@ -12,7 +12,7 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
   7. Sources 孤儿（sources/papers 中链接到不存在 wiki 页）
   8. 陈旧页面（sources 文件比对应 wiki 页新，需 review）
   9. 矛盾检测（同一概念在不同页面有相反描述）
- 10. Frontmatter 缺少 type 字段（V8 新增）
+ 10. Frontmatter 缺少 type 字段（V8 新增）；status 取值不在 stub / draft / complete
  11. 知识库活跃度检查（V8/V32：优先 wiki/roadmap 近 30 天 git 提交；git 不可用时回退 log.md）
  12. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
  13. formalizations/ 公式变量在正文是否有物理含义解释（V21 新增）
@@ -883,6 +883,18 @@ def get_wiki_pages() -> list[Path]:
     return sorted(WIKI_DIR.rglob("*.md"))
 
 
+# frontmatter status 只允许这三个取值（schema/page-types.md）；缺省允许
+WIKI_STATUS_VALUES = frozenset({"stub", "draft", "complete"})
+
+
+def invalid_status(fm_block: str) -> str | None:
+    """返回不合法的 status 取值；缺省或合法时返回 None。"""
+    match = re.search(r"^status\s*:\s*(\S+)", fm_block, re.MULTILINE)
+    if match and match.group(1).strip("'\"") not in WIKI_STATUS_VALUES:
+        return match.group(1)
+    return None
+
+
 # 移除代码块（``` ... ``` 和 ` ... `），避免提取代码示例中的假链接
 def strip_code_blocks(content: str) -> str:
     # 移除围栏代码块
@@ -1017,6 +1029,7 @@ def _empty_results() -> dict[str, Any]:
         "outdated_pages": [],
         "contradictions": [],
         "missing_type": [],
+        "invalid_status": [],
         "log_inactive": [],
         "missing_summary": [],
         "query_format": [],
@@ -1531,6 +1544,9 @@ def _check_frontmatter(pages: list[Path], results: dict[str, Any]) -> None:
                 results["missing_type"].append(str(rel))
 
         if fm_match:
+            bad_status = invalid_status(fm_match.group(1))
+            if bad_status:
+                results["invalid_status"].append(f"{rel}（status: {bad_status}）")
             upd_m = re.search(r"^updated:\s*(\d{4}-\d{2}-\d{2})", fm_match.group(1), re.MULTILINE)
             if upd_m:
                 try:
@@ -2547,6 +2563,7 @@ def format_report(results: dict[str, Any]) -> str:
             "💡",
         ),
         ("missing_type", "Frontmatter 缺少 type 字段", "⚠️"),
+        ("invalid_status", "Frontmatter status 不在 stub / draft / complete", "⚠️"),
         ("log_inactive", "知识库活跃度警告（git / log.md）", "⚠️"),
         ("missing_summary", "缺少摘要字段（summary/description）", "⚠️"),
         ("query_format", "Query 页面格式不完整（缺 Query 产物/参考来源/关联页面）", "⚠️"),

@@ -2,7 +2,7 @@
 type: entity
 project_id: pami-part-anchored-motion
 tags: [paper, text-to-motion, human-object-interaction, contact-modeling, generative-model, university-of-tubingen, max-planck]
-status: active
+status: complete
 updated: 2026-10-15
 arxiv: "2609.38466"
 venue: "2026 · arXiv"

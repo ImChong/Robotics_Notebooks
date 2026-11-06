@@ -2,7 +2,7 @@
 type: entity
 project_id: opentac
 tags: [tactile-sensing, tactile-sensor, manipulation, open-source, simulation]
-status: active
+status: complete
 updated: 2026-10-23
 related:
   - ../concepts/tactile-sensing.md

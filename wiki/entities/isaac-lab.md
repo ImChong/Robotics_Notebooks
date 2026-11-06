@@ -12,7 +12,7 @@ tags:
 - paper
 - awesome-world-models
 - sun254667-wm
-status: stable
+status: complete
 updated: 2026-11-01
 related:
 - ./nvidia-isaac-lab-spot-locomotion-sim2real.md

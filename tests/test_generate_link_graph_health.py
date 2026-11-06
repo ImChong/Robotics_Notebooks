@@ -118,13 +118,10 @@ def test_any_partial_source_blocks_fully_read(sources_dir: Path) -> None:
 
 
 def test_status_caps_health_by_ingest_completion(sources_dir: Path) -> None:
-    """作者自报未完成的页按 status 封顶：stub / planned ≤1，draft 类 ≤2，complete 类不封顶。"""
-    for status in ("stub", "planned"):
-        assert glg.compute_health_score(_skeleton(status, "full.md")) == 1
-    for status in ("draft", "drafting", "in-progress", "preview"):
-        assert glg.compute_health_score(_skeleton(status, "full.md")) == 2
-    for status in ("complete", "stable", "active"):
-        assert glg.compute_health_score(_skeleton(status, "full.md")) == 3
+    """作者自报未完成的页按 status 封顶：stub ≤1，draft ≤2，complete 不封顶。"""
+    assert glg.compute_health_score(_skeleton("stub", "full.md")) == 1
+    assert glg.compute_health_score(_skeleton("draft", "full.md")) == 2
+    assert glg.compute_health_score(_skeleton("complete", "full.md")) == 3
 
 
 def test_status_cap_does_not_raise_low_score() -> None:

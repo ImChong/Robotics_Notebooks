@@ -1,7 +1,7 @@
 ---
 type: reference
 tags: [methodology, llm, wiki, karpathy, knowledge-base]
-status: active
+status: complete
 sources:
   - ../../sources/blogs/karpathy_llm_wiki_gist.md
   - ../../sources/blogs/rohitg00_llm_wiki_v2_gist.md

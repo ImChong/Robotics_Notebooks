@@ -26,7 +26,7 @@ topic: [locomotion]  # 可选：图谱主题（社区）1–2 个，id 见 schem
 - `code_scope` / `project_distinction`：独立项目共用单仓时标注模块路径及独立维护理由；不同论文编号已足以区分不同研究工作。详见 [ingest-workflow.md](ingest-workflow.md#同一项目只维护一个实体节点ci-门禁)。
 - `type`：页面类型，对应下方各页面类型定义
 - `tags`：相关主题标签，用于 Dataview 过滤和图谱分析
-- `status`：`stub`（只有骨架）/ `draft`（基本完成但待完善）/ `complete`（满足最低质量标准）
+- `status`：`stub`（只有骨架）/ `draft`（基本完成但待完善）/ `complete`（满足最低质量标准）；只允许这三个值（`lint_wiki.py` 检查），待深读等细分用 tags 表达
 - `topic`（可选）：图谱主题（社区）id，最多 2 个（主 + 次），须在 [`schema/topics.json`](topics.json) 登记；缺省时按种子页 / tags 顺序 / 邻居传播自动派生，规则见 [naming.md § 图谱社区命名](naming.md#图谱社区命名)
 
 **Dataview 查询示例（在 Obsidian 中）：**

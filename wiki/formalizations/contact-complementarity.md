@@ -1,7 +1,7 @@
 ---
 type: formalization
 tags: [contact, lcp, complementarity, simulation, optimization, contact-dynamics]
-status: stable
+status: complete
 related:
   - ../concepts/contact-dynamics.md
   - ../concepts/whole-body-control.md

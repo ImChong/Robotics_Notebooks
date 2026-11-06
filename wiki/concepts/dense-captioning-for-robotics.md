@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [robot-data, egocentric-video, video-understanding, data-labeling, evaluation]
-status: active
+status: complete
 updated: 2026-10-13
 related:
   - ./robot-data-supervision-signal-types.md

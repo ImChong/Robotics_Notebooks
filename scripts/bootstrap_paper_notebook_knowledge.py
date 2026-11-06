@@ -462,7 +462,7 @@ def render_entity_stub(paper: dict, meta: dict, wiki_rel: str, category_rel: str
         return f"""---
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
-status: planned
+status: stub
 updated: 2026-06-11
 {fm_arxiv}related:
   - ../overview/{Path(category_rel).stem}.md

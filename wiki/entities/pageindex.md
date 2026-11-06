@@ -7,7 +7,7 @@ tags:
   - information-retrieval
   - llm-reasoning
   - open-source
-status: active
+status: complete
 updated: 2026-10-25
 related:
   - ./deeptutor.md

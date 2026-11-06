@@ -1048,16 +1048,9 @@ def wiki_has_repo_source(content: str) -> bool:
     return bool(re.search(r"(?:\.\./)*sources/repos/[^)\s]+\.md\b", content))
 
 
-# ingest 未完成的 frontmatter status → 健康度上限（status 取值见 schema/page-types.md）。
-# 未列出的 status（complete / stable / active / 缺省）视为 ingest 已完成，不封顶。
-HEALTH_STATUS_CAPS = {
-    "stub": 1,
-    "planned": 1,
-    "draft": 2,
-    "drafting": 2,
-    "in-progress": 2,
-    "preview": 2,
-}
+# ingest 未完成的 frontmatter status → 健康度上限（取值 stub | draft | complete，见 schema/page-types.md）。
+# complete 与缺省不封顶。
+HEALTH_STATUS_CAPS = {"stub": 1, "draft": 2}
 
 
 # 统一阅读骨架（page-types.md「新增页面最低质量标准」9 项），每项为 ``## `` 标题关键词；
@@ -1121,7 +1114,7 @@ def compute_health_score(content: str) -> int:
     +1: 阅读骨架达标：``has_reading_skeleton``（page-types.md 最低质量标准）
     +1: 原文已读完：``sources_fully_read``（ingest-workflow.md 步骤 1.6 核对范围记录）
 
-    再按 frontmatter status 封顶（``HEALTH_STATUS_CAPS``）：stub / planned ≤1，draft 类 ≤2。
+    再按 frontmatter status 封顶（``HEALTH_STATUS_CAPS``）：stub ≤1，draft ≤2。
     """
     if not content.startswith("---"):
         return 0

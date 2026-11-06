@@ -2,7 +2,7 @@
 
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, nvidia]
-status: planned
+status: stub
 updated: 2026-09-15
 arxiv: "2504.00614"
 related:
