@@ -6,7 +6,7 @@
 - **机构：** NVIDIA（完整作者与致谢列于报告附录 A，本次未逐一核对）
 - **日期：** 2026-10-21（报告首页）
 - **报告 PDF：** https://research.nvidia.com/labs/cosmos-lab/cosmos-simulation/technical-report.pdf（约 30 MB；经 curl 下载并用 pdftotext 读取前若干页）
-- **arXiv：** 报告未给出 arXiv 编号（未核实是否另有 arXiv 版）
+- **arXiv：** 2026-11-04 提交的 [arXiv:2611.06627](https://arxiv.org/abs/2611.06627)，标题与本报告一致（核对 arXiv 摘要页：题名相同、列 90 位作者；摘要口径与报告相符，PDF 是否逐字一致未比对）；入库当时报告首页未给 arXiv 号
 - **项目页：** https://research.nvidia.com/labs/cosmos-lab/cosmos-simulation/
 - **官方代码：** https://github.com/nvidia/cosmos；https://github.com/nvidia/cosmos-framework（报告列出）
 - **模型合集：** https://huggingface.co/collections/nvidia/cosmos3-examples
