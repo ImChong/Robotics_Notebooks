@@ -122,9 +122,10 @@ STALE_CLAIM_OVERREAD_CUES: tuple[str, ...] = (
 )
 # 命中词后前看的字符数（同样限制在同一句内）
 STALE_CLAIM_OVERREAD_WINDOW = 30
-# 「最新」后紧跟的运行时对象名词；中间允许夹一段英文/数字标识（如「最新 pending 帧」）
+# 「最新」后紧跟的运行时对象名词；中间允许夹一段英文/数字标识（如「最新 pending 帧」）。
+# 「画面 / 图像」指策略每步拿到的当前相机输入（「小模型结合最新画面高频出动作」），同属运行时量。
 STALE_CLAIM_RUNTIME_OBJECT_RE = re.compile(
-    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数|候选)"
+    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数|候选|画面|图像)"
 )
 # 「SOTA / state-of-the-art + 基线」是对照组的类别名（「相对经典/SOTA 基线，证书
 # 平均收窄 51.6%」），指的是被比较的那批既有方法，不是本页对自身的时效性断言；
@@ -215,6 +216,9 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 元数据字段（paper-lt-mem 的 **Meta** 动态性元数据、LeRobot 数据集的 `meta` 目录），
     # 被小写 slug 合并，非单一可成页概念；与 clip 同类多义停用词。
     "meta",
+    # v1：命中处均为 arXiv 版本号（「截至某日仍为 **v1**」「本页依据 **v1**」），是论文
+    # 元数据的版本标记，非机器人概念/方法/形式化；与 arxiv / venue 同类出版元数据停用词。
+    "v1",
     # arxiv：预印本托管/出版平台（基础设施），非机器人概念/方法/形式化，
     # 不应建独立 concepts/methods 页；与 http/https/main 同类基础设施停用词。
     "arxiv",
@@ -773,9 +777,13 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "policy",
     "qpos",  # MuJoCo 状态数组字段名，已由广义坐标 $q$ 的形式化/概念页覆盖
     "qwen3-vl",  # 外部 VLM 底座型号，已在 methods/vla.md 等按「底座」维度记述
+    # env：命中处均为代码中的环境对象变量 `env`（Gymnasium 接口封装、YAML 配置键、
+    # 下游包传入的具体环境），与 reset 同属环境 API token，已由 entities/gymnasium.md 释义。
+    "env",
     "reset",  # 环境/策略 API 方法名（episode 复位），已由 entities/gymnasium.md 释义
     "rgb-d",  # 传感模态标签，已由六种空间表征 / 三维坐标变换等页覆盖
     "rl",  # 已由 methods/reinforcement-learning.md 覆盖（缩写 slug 与页面 stem 不同名）
+    "sft",  # 已由 concepts/supervised-fine-tuning.md 覆盖（缩写 slug 与页面 stem 不同名）
     # runtime：命中处全是架构分层表的**行标签**（「**Runtime** | FlexComm + 监控」、
     # lerobot-humanoid 的 Runtime 仓库行、Unreal MCP 的 Runtime 模块类型、LIFT 的推理期
     # 行），各自指代该系统的运行时层，互不相干；推理运行时本体已由 entities/onnxruntime.md

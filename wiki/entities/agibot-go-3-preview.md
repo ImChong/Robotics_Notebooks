@@ -168,6 +168,7 @@ flowchart TD
 - [智元 2026-06 发布地图](../overview/agibot-june-2026-release-technology-map.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)、[通用后训练](../concepts/universal-post-training-robotics.md)、[递归自我改进](../concepts/recursive-self-improvement.md)
 - [VLA 方法总览](../methods/vla.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 三个公开榜单（RoboTwin 2.0 / RoboColiseum / RoboDojo）都属其 ③ 策略任务成功率层；厂商「三榜第一」须按各榜口径与分榜逐项核对（见上文核对表）
 
 ## 参考来源
 

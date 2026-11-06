@@ -4,15 +4,17 @@ project_id: physical-rsi-research-map
 papers: ["2610.18842"]
 tags: [physical-ai, recursive-self-improvement, embodied-ai, research-map, literature-review, evaluation, safety, harness]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-06
 related:
   - ./physical-rsi.md
   - ./robodojo.md
+  - ./paper-compounding-physical-rsi.md
   - ./paper-harnesspai.md
   - ./paper-harness-vla.md
   - ../queries/rsi-four-tier-five-pushes.md
 sources:
   - ../../sources/sites/sail-physical-rsi-research-map.md
+  - ../../sources/papers/compounding-physical-rsi_arxiv_2611_06654.md
 summary: "SAIL Research Lab 的 Physical RSI 是一份具身系统递归自我改进研究地图与文献目录，提供 L0–L5 分类及 harness、训练、安全、验证和评测等主题索引；不是单一机器人策略论文或 Physical RSI 1.0 系统。"
 ---
 
@@ -67,13 +69,14 @@ L5 的表述强调验证和控制变量；仅仅换了程序或得到一次更�
 ## 读法与限制
 
 - 这是一份持续维护的二级索引；目录所列研究不必然都符合 Physical RSI 的严格定义，也不构成统一协议下的性能比较。
-- README 称其与一篇 accompanying paper 对齐，但当前入口没有直接给出可辨识的论文标题或 PDF；此处仅收录可核查的仓库与目录，不另外虚构论文实体。
+- README 称其与一篇 accompanying paper 对齐；该论文为 arXiv:[2610.18842](https://arxiv.org/abs/2610.18842) *Who Improves the Robot? Toward Physical Recursive Self-Improvement*（摘要页列出的仓库即本项目），[Compounding Physical RSI](./paper-compounding-physical-rsi.md) 也引用它作为 Physical RSI 的定义来源。库内暂未为该论文单独建节点。
 - 需要判断单项方法是否真正实现递归改进时，应回到原论文检查物理反馈、更新保留与继承、验证器独立性、跨任务评估和资源预算等证据。
 
 ## 关联页面
 
 - [Physical RSI 1.0（HKU MMLab × Kinetix AI）](./physical-rsi.md) — 同名但不同项目的具体系统。
 - [RoboDojo](./robodojo.md) — 项目地图中的机器人操作评测基准。
+- [Compounding Physical RSI](./paper-compounding-physical-rsi.md) — 引用本框架配套论文的具体方法（arXiv:2611.06654）：阶段级失败诊断 → 目标条件离线 RL 修补 → 权重插值候选经 RoboDojo-Sim 全量评测晋升；只更新策略权重、改进算子固定，按本页 L0–L5 读法属「继承执行系统更新」一类，不是程序级元改进（该页推测约在 L1–L3）。
 - [HarnessPAI](./paper-harnesspai.md) 与 [Harness VLA](./paper-harness-vla.md) — 相关 harness 研究。
 - [RSI 四 tier 五 pushes](../queries/rsi-four-tier-five-pushes.md) — RSI 分类与选型框架。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 研究地图中的验证与评测、基准与平台主题可按该链的四层评测选型归位
@@ -85,5 +88,6 @@ L5 的表述强调验证和控制变量；仅仅换了程序或得到一次更�
 ## 参考来源
 
 - [SAIL Physical RSI 项目归档](../../sources/sites/sail-physical-rsi-research-map.md)
+- [Compounding Physical RSI 论文归档](../../sources/papers/compounding-physical-rsi_arxiv_2611_06654.md) — 其参考文献 [16] 指向本项目配套论文
 - [项目 README](https://github.com/SAIL-Research-Lab/Physical-RSI#readme)
 - [参考文献索引](https://github.com/SAIL-Research-Lab/Physical-RSI/blob/main/docs/paper-reference-index.md)

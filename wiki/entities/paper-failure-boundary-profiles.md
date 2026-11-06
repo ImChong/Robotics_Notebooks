@@ -94,6 +94,7 @@ sequenceDiagram
 - [vision-language-navigation](../tasks/vision-language-navigation.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-06-20-papers-technology-map](../overview/embodied-station-2026-11-06-20-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 归其 ③ 策略任务成功率层：用「尝试通过 / 无碰撞通过」两条概率曲线替代单一总分，提示总分会掩盖安全性差异
 
 ## 参考来源
 

@@ -189,6 +189,7 @@ $$
 - 评测指标背景：[motion-control-policy-evaluation-metrics](../concepts/motion-control-policy-evaluation-metrics.md)
 - 数据集与策略：[AMASS](./amass.md)（论文的数据源）、[PHC](./phc.md)（论文评测的策略之一）
 - 相关概念：[Imitation Learning](../methods/imitation-learning.md)、[Curriculum Learning](../concepts/curriculum-learning.md)（附录 C.1 的课程学习应用）
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — MDS 与策略无关、刻画参考动作本身的难度，可在 ③ 策略任务成功率层评测时作任务难度维度
 
 ## 参考来源
 

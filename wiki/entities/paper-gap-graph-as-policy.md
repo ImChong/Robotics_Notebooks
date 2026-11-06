@@ -11,12 +11,13 @@ tags:
   - berkeley
   - cmu
 status: complete
-updated: 2026-09-19
+updated: 2026-11-06
 arxiv: "2607.05369"
 code: https://github.com/graph-robots/graph-as-policy
 project: https://graph-robots.github.io/gap/
 related:
   - ../concepts/variational-automation.md
+  - ./paper-vabar-variational-automation-benchmark.md
   - ../methods/aspire.md
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -30,6 +31,7 @@ sources:
   - ../../sources/sites/gap-graph-robots-project.md
   - ../../sources/repos/graph_robots_graph_as_policy.md
   - ../../sources/blogs/ken_goldberg_agentic_robotics_goosebumps_2026-09-18.md
+  - ../../sources/papers/vabar_arxiv_2611_06881.md
 summary: "GaP（arXiv:2607.05369，NVIDIA / UC Berkeley 等）：多 agent harness 将 VA 任务编译为有向计算图（MORSL 技能 + 静态类型检查），在 Isaac 仿真中排练自学习优化图，再以 edge 解释器持久执行；8 项 VA benchmark 上显著优于 VLA/TAMP/单 agent CaP，并可 staging VLA 获 >2× 增益。"
 ---
 
@@ -167,6 +169,15 @@ flowchart TB
 - 工业洗箱：GaP **0.953** vs 专家手工图 **0.987**
 - **周期时间：** 仍低于 ~**7 s/instance** 工业标准；需减 VLM 调用、加速 IK/规划
 
+### 后续：在 VABAR 基准中作基线（arXiv:2611.06881）
+
+作者大量重叠的 [VABAR](./paper-vabar-variational-automation-benchmark.md) 把 VA 做成六类任务 × 两档难度的仿真基准，GaP 是主要被测系统：
+
+- **技能库：** 为六类任务给出 33 项技能，相对「5 月版 GaP 技能库」新增 25、沿用 8（感知 / 抓取 / 运动 / 验证）。
+- **人工图 vs 自动生成图：** 二者共享感知、技能、规划与执行模块，GaP 自动生成的图在 Newton 上 12 个条件 **全部低于** 人工图——差距只来自图的组合与参数化。
+- **对通用编码 agent：** 同一底层模型下，GaP 在 12 个条件中 11 个高于不带机器人 harness 的 Claude Code（挂工具 L2 两者均为 10.0）。
+- **失败来源：** 低变化档以运动规划失败为主；杂乱与可变形任务中感知、抓取劣化。论文自述比较的是整体系统，无法拆分 harness 与技能库各自的贡献。
+
 ## 结论
 
 **GaP 的赌注是把策略表示换成可静态验证的计算图：LLM 只出现在编译期与排练期，运行期交给无 agent 的 edge 解释器 — 用图级可解释性换 VA 任务上的持久可靠。**
@@ -192,6 +203,7 @@ flowchart TB
 ## 关联页面
 
 - [变体自动化（VA）](../concepts/variational-automation.md) — FA/VA/GR 任务谱与形式化
+- [VABAR](./paper-vabar-variational-automation-benchmark.md) — VA 仿真基准；GaP 作基线，自动生成图系统性低于人工图
 - [ASPIRE](../methods/aspire.md) — GEAR 姊妹 **code-as-policy** 路线（技能库 vs 计算图）
 - [VLA](../methods/vla.md) — GR 方向基线；GaP staging 的互补角色
 - [RoboHarness](./paper-robo-harness.md) — 异构策略编排 + Memory Bridge（相对 GaP 的图 staging）
@@ -215,3 +227,4 @@ flowchart TB
 - [GaP 论文归档](../../sources/papers/gap_arxiv_2607_05369.md)
 - [GaP 项目页归档](../../sources/sites/gap-graph-robots-project.md)
 - [graph-as-policy 代码索引](../../sources/repos/graph_robots_graph_as_policy.md)
+- [VABAR 论文归档](../../sources/papers/vabar_arxiv_2611_06881.md) — GaP 作基线的后续基准

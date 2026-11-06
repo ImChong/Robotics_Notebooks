@@ -434,7 +434,8 @@
         "wiki/comparisons/open-source-qdd-actuator-projects.md",
         "wiki/overview/paper-notebook-category-12-hardware-design.md",
         "roadmap/depth-torque-motor-design.md",
-        "roadmap/depth-humanoid-hardware-design.md"
+        "roadmap/depth-humanoid-hardware-design.md",
+        "roadmap/depth-pcb-design.md"
       ],
       "tags": [
         "hardware",

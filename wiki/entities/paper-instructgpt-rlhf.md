@@ -6,6 +6,7 @@ updated: 2026-09-23
 arxiv: "2203.02155"
 venue: "NeurIPS 2022"
 related:
+  - ../concepts/supervised-fine-tuning.md
   - ./light-o1.md
   - ../methods/vla.md
   - ../concepts/embodied-scaling-laws.md
@@ -81,6 +82,7 @@ flowchart LR
 
 - [Light-O1](./light-o1.md) — RLHF post-training 引用方
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
+- [监督微调（SFT）](../concepts/supervised-fine-tuning.md) — 本文三段管线第一段的概念页，含机器人 VLA 中的用法
 
 ## 参考来源
 

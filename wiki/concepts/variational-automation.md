@@ -2,9 +2,10 @@
 type: concept
 tags: [automation, industrial-robotics, manipulation, agentic-robotics, task-taxonomy, vla, nvidia, berkeley]
 status: complete
-updated: 2026-09-19
+updated: 2026-11-06
 related:
   - ../entities/paper-gap-graph-as-policy.md
+  - ../entities/paper-vabar-variational-automation-benchmark.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
   - ../methods/aspire.md
@@ -15,7 +16,8 @@ sources:
   - ../../sources/papers/gap_arxiv_2607_05369.md
   - ../../sources/sites/gap-graph-robots-project.md
   - ../../sources/blogs/ken_goldberg_agentic_robotics_goosebumps_2026-09-18.md
-summary: "变体自动化（VA）是介于固定自动化与通才机器人之间的任务类：工位、机器人与传感器已知，对象几何与初始位姿在有界分布内变化，需持久可靠执行——GaP（arXiv:2607.05369）以此为目标提出计算图策略与 8 项开放 benchmark。"
+  - ../../sources/papers/vabar_arxiv_2611_06881.md
+summary: "变体自动化（VA）是介于固定自动化与通才机器人之间的任务类：工位、机器人与传感器已知，对象几何与初始位姿在有界分布内变化，需持久可靠执行——GaP（arXiv:2607.05369）以此为目标提出计算图策略与 8 项开放 benchmark；VABAR（arXiv:2611.06881）进一步把 VA 做成六类任务 × 两档难度的可复现仿真基准。"
 ---
 
 # 变体自动化（Variational Automation, VA）
@@ -87,6 +89,14 @@ VA 任务可写为 tuple $\mathcal{T}=\langle\mathcal{L},\mathcal{E},\mathcal{R}
 | VA-IV | USB-C 插线 | Real | UR5 + 力反馈；升/降序与奇偶口位 |
 | VA-V | 工业洗箱 | Sim（双臂） | 箱位与到达顺序随机；对标真实洗线 |
 
+## VABAR：VA 的评测基准化（arXiv:2611.06881）
+
+[VABAR](../entities/paper-vabar-variational-automation-benchmark.md)（UC Berkeley / NVIDIA / Siemens，v1 2026-11-04）作者与 GaP 大量重叠（Kaiyuan Chen、Shuangyu Xie、Uksang Yoo、Linxi Fan、Yuke Zhu、Ken Goldberg 等），把 VA 从「概念 + 系统演示」推进到 **可复现评测**：
+
+- **形式化换写：** $T=(E,R,A,O,p_O,S)$，实例 $\tau_i\sim p_O$；变化分布 $O$ 不是无约束随机化，须满足任务不变性、物理可行、机器人可行、难度可控、技能保持五条约束（论文 §III-B）。
+- **任务与实现：** 分拣工具、挂工具、齿轮啮合、注射器装箱、线缆插接、线缆布线六类任务，每类两档难度；Franka 与双臂 YAM；Newton 与 Isaac Lab Arena 两套仿真实现；33 项技能（相对 GaP 技能库新增 25、沿用 8）。
+- **基线结论：** 同一技能栈下，GaP 自动生成的计算图在 Newton 上 12 个条件 **全部低于** 人工编写的参考图；不带机器人 harness 与技能库的通用编码 agent（Claude Code）几乎为零（如齿轮啮合 L1：人工图 100.0 / GaP 70.0 / Claude Code 0.0）。说明在 VA 上「结构化 harness + 技能库」有效，但自动组图仍未追上人工工程。
+
 ## 常见误区
 
 - **误区 1：「VA = 小扰动 LIBERO。」** LIBERO / LIBERO-Pro 位姿变化仍偏小；GaP 的 **X-Y 20×20、basket_swap、permutation** 等列刻意拉大变化，VLA 与 TAMP 基线在此分化。
@@ -96,6 +106,7 @@ VA 任务可写为 tuple $\mathcal{T}=\langle\mathcal{L},\mathcal{E},\mathcal{R}
 ## 与其他页面的关系
 
 - [GaP（Graph-as-Policy）](../entities/paper-gap-graph-as-policy.md) — VA 任务类的 flagship 系统与 benchmark
+- [VABAR](../entities/paper-vabar-variational-automation-benchmark.md) — VA 的可复现仿真基准（六类任务 × 两档难度，GaP 与通用编码 agent 为基线）
 - [Manipulation 任务](../tasks/manipulation.md) — VA 在操作栈中的 agentic / 工业分支
 - [VLA](../methods/vla.md) — GR 方向代表；VA 上常作基线或 **被 GaP staging 的末端策略**
 - [ASPIRE](../methods/aspire.md) — 同属 agentic code-as-policy，侧重 **技能库复利** 而非 **ROS 式图 + 仿真排练**
@@ -113,3 +124,4 @@ VA 任务可写为 tuple $\mathcal{T}=\langle\mathcal{L},\mathcal{E},\mathcal{R}
 
 - [GaP 论文归档](../../sources/papers/gap_arxiv_2607_05369.md)
 - [GaP 项目页归档](../../sources/sites/gap-graph-robots-project.md)
+- [VABAR 论文归档](../../sources/papers/vabar_arxiv_2611_06881.md)
