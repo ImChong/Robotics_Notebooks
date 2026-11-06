@@ -3074,6 +3074,7 @@
 - [Minute-scale training for microrobot navigation](wiki/entities/paper-minute-scale-microrobot-navigation.md) — Minute-scale training for microrobot navigation**（Yinghan Sun 等，*Nature Machine Intelligence*，2026 `📅unknown` `[entity_page]`
 - [MIRAGE：达芬奇控制台里的统一手术导航与可视化框架](wiki/entities/paper-mirage-davinci-surgical-navigation.md) — MIRAGE**（*Multimodal Image-based Robotic Assistance and Guidance Environment*，[arXiv:2610.12780](h `📅unknown` `[entity_page]`
 - [MistyPilot：社交机器人的多智能体 LLM 技能编排](wiki/entities/paper-mistypilot.md) — MistyPilot**（*MistyPilot: Enabling Social-Robot Control through Multi-Agent LLM Skill Orchestratio `📅unknown` `[entity_page]`
+- [Mixture-of-Top-k Attention: Efficient Attention via Scalable Fast Weights / MiTA：通过可扩展快权重实现高效注意力](wiki/entities/paper-mita.md) — MiTA 将注意力解释为输入依赖的快权重网络，结合共享压缩与稀疏路由；由北京邮电大学提出，论文与官方仓库标注 NeurIPS 2026。 `📅unknown` `[entity_page]`
 - [Mixed MPM：刚性弹粘塑性混合物质点法](wiki/entities/paper-mixed-mpm-stiff-elastoplasticity.md) — Mixed Material Point Methods for Stiff Elastoplasticity**（Gilles Daviet，[DOI:10.1145/3811345](http `📅unknown` `[entity_page]`
 - [MM-Future（arXiv:2609.20377）](wiki/entities/paper-mm-future.md) — MM-Future**（*Multi-Mode Joint World–Action Modeling for Autonomous Driving*，[arXiv:2609.20377](htt `📅unknown` `[entity_page]`
 - [MMAU：音频理解与推理基准](wiki/entities/paper-mmau.md) — MMAU 使用音频与选择题评估音频语言模型的感知、知识提取和推理，不直接测试机器人动作。 `📅unknown` `[entity_page]`
