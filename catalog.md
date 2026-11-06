@@ -33,6 +33,7 @@
 - [AGILE（智元感控一体）](wiki/entities/agibot-agile.md) — AGILE** 是智元在 2026-06 发布地图 中推出的 **感控一体能力底 `📅unknown` `[entity_page]`
 - [AimDK X2（灵犀 X2 二次开发框架）](wiki/entities/agibot-aimdk-x2.md) — AimDK X2** 是智元机器人（AgiBot）为 **灵犀 X2** 人形提供的 **任务编程与扩展框架**：通过 [官方文档站](https://x2-aimdk.agibot.com/zh `📅unknown` `[entity_page]`
 - [BFM-2（智元运控基座）](wiki/entities/agibot-bfm-2.md) — BFM-2** 是智元在 2026-06 发布地图 中推出的 **运动小脑 /  `📅unknown` `[entity_page]`
+- [AGIBOT GO-3 Preview（智元全生命周期具身基础模型，预览公告）](wiki/entities/agibot-go-3-preview.md) — GO-3 Preview** 是智元（AGIBOT）在 2026-10-29（官网）/ 2026-11-03（PR Newswire 转发）发布的具身基础模型预览公告，来源是[新闻稿归档](../ `📅unknown` `[entity_page]`
 - [智元灵犀 X1（Agibot 开源人形）](wiki/entities/agibot-lingxi-x1.md) — 灵犀 X1** 是智元机器人 **Agibot** 品牌的开源人形方案：以 **文档中心** 提供 BOM、整机图纸、装机 SO `📅unknown` `[entity_page]`
 - [智元 SkillHand](wiki/entities/agibot-skillhand.md) — 智元 SkillHand** 属于 Zane Hub 灵巧手行业综述 的「本体自研」。本页 `📅unknown` `[entity_page]`
 - [AGIBOT WORLD 2026](wiki/entities/agibot-world-2026.md) — AGIBOT WORLD 2026** 是智元在 Agibot-World 生态下发布的 **真实环境机器人学习数据集**（Hugging `📅unknown` `[entity_page]`
@@ -1324,6 +1325,7 @@
 - [4DAnyone：单目随意视频做出 4D 人](wiki/entities/paper-4danyone.md) — 4DAnyone**（*Create Anyone in 4D from a Casual Monocular Video*，[arXiv:2608.20335](https://arxiv.or `📅unknown` `[entity_page]`
 - [4-DoF 视觉引导桌面笔具分拣](wiki/entities/paper-4dof-pen-sorting.md) — Tabletop Pen Manipulation With a Vision-Guided 4-DoF Arm**（[arXiv:2608.15968](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [A2I-Calib++：面向腿式机器人全身多 IMU 的运动学驱动抗噪主动标定](wiki/entities/paper-a2i-calib-plus-multi-imu-legged-calibration.md) — A2I-Calib++**（*A2I-Calib++: A Kinematics-Driven Anti-noise Active Calibration Framework for Whole- `📅unknown` `[entity_page]`
+- [A³-VLA：感知引导的注意力对齐](wiki/entities/paper-a3-vla-attention-alignment.md) — A³-VLA**（*Automatic Perception-Guided Attention Alignment for Robot Manipulation*，[arXiv:2611.0644 `📅unknown` `[entity_page]`
 - [ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）](wiki/entities/paper-abot-m05-mobile-manipulation-wam.md) — ABot-M0.5**（*ABot-M0.5: Unified Mobility-and-Manipulation World Action Model*，arXiv:2607.00678，AMA `📅unknown` `[entity_page]`
 - [ABot-N1（通用视觉–语言导航基础模型）](wiki/entities/paper-abot-n1.md) — ABot-N1**（*ABot-N1: Toward a General Visual Language Navigation Foundation Model*，[arXiv:2607.1038 `📅unknown` `[entity_page]`
 - [ABot-Recon：局部上下文长视频流式 3D 重建](wiki/entities/paper-abot-recon.md) — ABot-Recon**（*Revisiting Local Context for Long-Horizon Streaming 3D Reconstruction*，[arXiv:2608.2 `📅unknown` `[entity_page]`
@@ -1977,6 +1979,7 @@
 - [Compliant GMT：残差参考适配的全身柔顺运动跟踪](wiki/entities/paper-compliant-gmt.md) — 一句话定义**：C-GMT 为预训练通用运动跟踪器加入参考动作残差，使机器人在跟踪多样动作时对外力产生全身柔顺响应。 `📅unknown` `[entity_page]`
 - [CompliantWBC：重型人形的全身柔顺](wiki/entities/paper-compliantwbc-heavy-humanoid.md) — CompliantWBC 估计外力 latent，并以有界阻抗目标残差调节冻结的全身策略，实现多身体接触位置的柔顺响应。 `📅unknown` `[entity_page]`
 - [Compositional Motion Styles（arXiv:2610.24008）](wiki/entities/paper-compositional-motion-styles.md) — Compositional Motion Styles**（*Weakly Supervised Discovery of Motion Styles for Compositional Robo `📅unknown` `[entity_page]`
+- [Compounding Physical RSI（Turning Execution Failure into Inherited Capability）](wiki/entities/paper-compounding-physical-rsi.md) — Compounding Physical RSI**（arXiv:2611.06654，v1，2026-11-04，cs.R `📅unknown` `[entity_page]`
 - [Compression is Routing（重建误差作模块化 LLM 内在路由信号）](wiki/entities/paper-compression-is-routing.md) — Compression is Routing**（*Reconstruction Error as an Intrinsic Signal for Modular Language Models `📅unknown` `[entity_page]`
 - [ConceptGraphs](wiki/entities/paper-conceptgraphs-open-vocabulary-3d-scene.md) — ConceptGraphs** 收录于 具身智能研究室 · 具身世界模型六路线综述 **上 `📅unknown` `[entity_page]`
 - [Concurrent Training of Control Policy and State Estimator](wiki/entities/paper-concurrent-policy-estimator-locomotion.md) — Ji, Mun, Kim & Hwangbo（KAIST，arXiv:2202.05481）** 提出 locomotion `📅unknown` `[entity_page]`
@@ -2579,6 +2582,7 @@
 - [HAF（Humanoid Adaptation Framework）](wiki/entities/paper-haf-humanoid-vla-adaptation.md) — HAF**（*Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action F `📅unknown` `[entity_page]`
 - [HAIC](wiki/entities/paper-haic.md) — HAIC**（*Humanoid Agile Object Interaction Control via Dynamics-Aware World Model*）解决的是 **underactu `📅unknown` `[entity_page]`
 - [Design of permanent multipole magnets with oriented REC（Halbach 1980）](wiki/entities/paper-halbach-permanent-multipole-magnets.md) — K. Halbach（Lawrence Berkeley Laboratory，[Nucl. Instrum. Methods 1980](https://doi.org/10.1016/0029 `📅unknown` `[entity_page]`
+- [HALO：Perceptive Humanoid Motion from Simulation](wiki/entities/paper-halo-perceptive-humanoid-motion-sim.md) — HALO**（Humanoid Autonomy, Learned in simulation, running Onboard；[arXiv:2611.06908](https://arxiv. `📅unknown` `[entity_page]`
 - [HALOMI（Learning Humanoid Loco-Manipulation with Active Perception from Human Demonstrations）](wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — HALOMI**（*Humanoid Active-Perception Loco-Manipulation Interface*，arXiv:2606.18772，[项目页](https://h `📅unknown` `[entity_page]`
 - [HAND ERC 多指灵巧手 Dexterity 评测综述](wiki/entities/paper-hand-erc-benchmarking-dexterity.md) — Benchmarking Dexterity of Multifingered Robot Hands: A Review and Perspective**（arXiv:[2609.05585 `📅unknown` `[entity_page]`
 - [Hand Visibility Detector：逐关节手部可见性](wiki/entities/paper-hand-visibility-detector.md) — Hand Visibility Detector**（*Per-Keypoint Visibility Estimation for Hands*，[arXiv:2608.11574](https `📅unknown` `[entity_page]`
@@ -5380,6 +5384,7 @@
 - [SMR：从人体动作语义学习流式人形动作重定向](wiki/entities/paper-smr-streaming-motion-retargeting.md) — SMR**（*SMR: Learning Streaming Motion Retargeting for Humanoids from Human Semantic*，[arXiv:2610.2 `📅unknown` `[entity_page]`
 - [SNAP（arXiv:2611.03498）](wiki/entities/paper-snap.md) — SNAP**（*SNAP: Semantic Navigation Among Pedestrians*，[arXiv:2611.03498](https://arxiv.org/abs/2611 `📅unknown` `[entity_page]`
 - [SO-101 Bench（arXiv:2610.36420）](wiki/entities/paper-so-101-bench.md) — SO-101 Bench**（*SO-101 Bench: Accessible Spatial Manipulation*，[arXiv:2610.36420](https://arxiv.or `📅unknown` `[entity_page]`
+- [SoccerBot：潜在运动先验的统一人形足球](wiki/entities/paper-soccerbot-latent-motion-priors.md) — SoccerBot**（*Playing Soccer Like Humans Do: Learning Versatile and Agile Humanoid Soccer via Laten `📅unknown` `[entity_page]`
 - [A Fix for Softmax and Cross-Entropy](wiki/entities/paper-softmax-cross-entropy-fix.md) — A Fix for Softmax and Cross-Entropy**（Jonathan T. Barron、Dan Gnanapragasam、Michael Tschannen，Googl `📅unknown` `[entity_page]`
 - [SoftMimicGen](wiki/entities/paper-softmimicgen.md) — SoftMimicGen**（ICRA 2026，NVIDIA 等）是一套面向**可变形物体操作（deformable object manipulation）**的自动化示范数据生成系统。 `📅unknown` `[entity_page]`
 - [SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）](wiki/entities/paper-softvtbench.md) — SoftVTBench**（*SoftVTBench: A Safety-Aware Visuo-Tactile Benchmark for Physically Constrained Robo `📅unknown` `[entity_page]`
@@ -5652,6 +5657,7 @@
 - [US-VLA](wiki/entities/paper-us-vla-ultrasound.md) — US-VLA: An Ultrasound Vision-Language-Action Model for Embodied Abdominal Scanning**（arXiv:[2608.1 `📅unknown` `[entity_page]`
 - [UVTA：跨本体视触觉动作建模](wiki/entities/paper-uvta-human-tactile-dexterous-manipulation.md) — 一句话定义：** UVTA 用可穿戴人类触觉示范学习跨本体接触表征，并与机器人遥操作数据联合预测未来动作和触觉轨迹；部署时仅执行机器人动作。 `📅unknown` `[entity_page]`
 - [V-Simba：视觉 RL 的样本效率也可以来自网络结构](wiki/entities/paper-v-simba.md) — V-Simba**（*Unleashing the Architectural Potential of RL in Visual Continuous Control*；[arXiv:2608. `📅unknown` `[entity_page]`
+- [VABAR（变体自动化 agentic 机器人基准）](wiki/entities/paper-vabar-variational-automation-benchmark.md) — VABAR**（*VABAR: A Variational Automation Benchmark for Agentic Robotics*，Shuangyu Xie\* 等 19 位作者，U `📅unknown` `[entity_page]`
 - [VAD（VAD: Vectorized Scene Representation for Efficient Autonomous Driving · arXiv:2303.12077）](wiki/entities/paper-vad-vectorized-scene.md) — VAD**（*VAD: Vectorized Scene Representation for Efficient Autonomous Driving*，[2303.12077](https:/ `📅unknown` `[entity_page]`
 - [VaDar：隐式目标条件化的价值分解](wiki/entities/paper-vadar.md) — VaDar**（*Implicit Goal Conditioning via Value Disaggregation*）把长时程任务的子目标序列转成可分别监督的价值分量；共享 critic 学 `📅unknown` `[entity_page]`
 - [VagueBench（arXiv:2611.03765）](wiki/entities/paper-vaguebench.md) — VagueBench**（*VagueBench: Benchmarking the Robustness of Embodied Agents on Ambient Context Illusi `📅unknown` `[entity_page]`
