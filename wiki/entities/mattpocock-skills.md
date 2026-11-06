@@ -42,6 +42,8 @@ related:
   - ../../AGENTS.md
 sources:
   - ../../sources/repos/mattpocock-skills.md
+original:
+  - ../../sources/repos/mattpocock_skills_reading_readme_mp1.md
 summary: "mattpocock/skills（Skills For Real Engineers）是 Matt Pocock 公开的日常编码代理技能库：通过 skills.sh 按需安装，以 grill 对齐、CONTEXT.md 共享语言、TDD/diagnose 反馈环与架构卫生技能对抗 vibe coding；与 obra/superpowers 的重流程交付形成轻量对照。"
 ---
 
@@ -96,6 +98,16 @@ flowchart TD
   D -->|还债| I[improve-codebase-architecture]
   F --> J[handoff / caveman\n可选：压缩交接或输出]
 ```
+
+## 核心机制
+
+上游 README 的组织逻辑是 **四类失败模式 → 技能**：没对齐（grilling）、太啰嗦（共享术语文档）、代码不对（TDD / 诊断反馈环）、泥球架构（深模块与架构巡检）。上述日常工程环见前文「流程总览」。
+
+## 工程实践
+
+- **首装顺序：** 先选安装通道（Claude Code 插件自动更新，或 skills.sh 复制可编辑文件，二选一以免重复），再在每个仓库跑一次 `/setup-matt-pocock-skills`。
+- **日常节奏：** 改动前先 grill 对齐；写代码走 `tdd` 垂直切片；疑难 bug 走 diagnosing-bugs 的分阶段门控；上游建议每隔几天跑 `improve-codebase-architecture` 巡检。
+- **README 与本站快照的漂移（上游 README 通读所见）：** 术语文档已称 `GLOSSARY.md`，`/diagnose`、`to-prd`、`to-issues` 对应 `diagnosing-bugs`、`to-spec`、`to-tickets`，并新增 `implement`、`wayfinder`、`retro` 等；上游按「用户调用 / 模型调用」分类，用户调用技能不再调用另一个用户调用技能。引用技能名时以上游当前 README 为准（推断：本页部分旧名在未来可能失效）。
 
 ## 常见误区或局限
 

@@ -31,6 +31,8 @@ related:
   - ../entities/aeris-10-plfm-radar.md
   - ../entities/project-quiver.md
   - ../concepts/can-bus-protocol.md
+original:
+  - ../../sources/papers/leveling_playing_field_rl_vs_gc_reading_arxiv_2506_17832_mrs1.md
 sources:
   - ../../sources/repos/multirotor_uav_stack_catalog.md
   - ../../sources/repos/px4_autopilot.md
@@ -67,6 +69,10 @@ summary: "多旋翼开源栈总览：PX4/ArduPilot 飞控与 MAVLink 协议、EG
 
 > **本页回答：** 做四旋翼/多旋翼研究或工程时，**PX4、XTDrone、EGO-Planner、PyBullet Gym、AirSim、群体 RL、Crazyflie、Flightmare、MAVSDK** 各在什么层？如何组合而不混用职责？
 
+## 一句话定义
+
+多旋翼开源栈按「飞控—伴机 API—规划—仿真—RL—真机 swarm」分层选型的总览页：先分清每个仓库处在哪一层，再组合，而不是混用职责。
+
 ## 一句话总结
 
 **飞控与通信** 分层选型：**自主导航 / 研究** 可选 [PX4](../entities/px4-autopilot.md) 或 [ArduPilot](../entities/ardupilot.md)，并通过 [MAVSDK](../entities/mavsdk.md) 等工具接入 MAVLink；**FPV 手飞 / 竞速** 走 [Betaflight](../entities/betaflight.md)（MSP + Betaflight App，非 MAVLink）。**数字图传 / 眼镜端**（DJI HD FPV）社区扩展见 [wtfOS](../entities/wtfos.md)（opkg 包、MSP OSD 叠加，**非飞控**）。**运动规划** 常用 [EGO-Planner Swarm](../entities/ego-planner-swarm.md)，新一代联合时空优化可参考 [MIGHTY](../entities/paper-mighty-hermite-spline-trajectory-planning.md)（Hermite 样条 · RA-L 2026）；**无先验地图 + 有限 FOV 主动感知** 见 [FLAP](../entities/paper-flap-fov-active-perception-3d-navigation.md)（传感器系 FOV 惩罚 · arXiv 2026）；**仿真** 分三路——**Gazebo 教学栈**（[XTDrone](../entities/xtdrone.md)）、**高保真视觉**（[AirSim](../entities/airsim.md)、[Flightmare](../entities/flightmare.md)）、**轻量 RL**（[gym-pybullet-drones](../entities/gym-pybullet-drones.md)、[quad-swarm-rl](../entities/quad-swarm-rl.md)）；**真机微四轴 swarm** 走 [Crazyflie Firmware](../entities/crazyflie-firmware.md) + [Crazyswarm2](../entities/crazyswarm2.md)；**GPU 视觉 + Ansible fleet 蜂群基线** 见 [SwarmNxt](../entities/paper-swarmnxt.md)（OmniNxt 机体 · HDSM+MPC+S2M2 · arXiv 2026）。**户外作业级开源机架** 见 [Project Quiver](../entities/project-quiver.md)（25 kg MTOW、ArduPilot、三接口载荷）。
@@ -92,6 +98,12 @@ summary: "多旋翼开源栈总览：PX4/ArduPilot 飞控与 MAVLink 协议、EG
 - 本站主线以 **腿式/人形** 为主，但 **空中 VLN、群体避障、视觉 Sim2Real** 与地面机器人共享「仿真—规划—低层控制—部署」方法论。
 - 十一仓覆盖从 **纳级微四轴** 到 **标准多旋翼 + PX4 / ArduPilot** 的完整谱系；后续补上 [Quiver](../entities/project-quiver.md) 作为 **25 kg / ArduPilot** 开源机架，避免把「有飞控固件」当成「有可制造真机」。选型错误常见表现：在 PyBullet Gym 里调 PX4 参数、或用 AirSim 期望精确接触动力学。
 - 与 [DroneCAN / UAVCAN](../../sources/sites/cia_dronecan_uavcan.md) 衔接：PX4 外设总线与地面机器人 CAN 栈对照阅读。
+
+## 核心原理
+
+- **分层而非替代：** 规划器输出位置/速度设定点，经 MAVSDK/MAVROS 交给飞控内环；仿真器与 RL 环境用于训练和验证，策略需经接口转换才能上真机。
+- **控制器比较要对称（原文通读）：** [Leveling the Playing Field](https://arxiv.org/abs/2506.17832) 指出 RL 与几何控制（GC）比较中的三类不对称——目标函数、任务数据、前馈信息；对称协议下差距远小于既有文献，GC 稳态误差更低、RL 瞬态更好，敏捷任务（如接球）上 RL 占优；域随机化下 RL 退化更小。该结论仅在仿真中得到，未上真机。详见 [归档](../../sources/papers/leveling_playing_field_rl_vs_gc_reading_arxiv_2506_17832_mrs1.md)。
+- **推断：** 选型时应把「基线是否同等整定」作为评估前提，而不是只看论文宣称的优劣。
 
 ## 流程总览
 
@@ -230,6 +242,11 @@ flowchart TB
 | Sim2Real | 气动/延迟/推力映射 | 接触摩擦、关节间隙 |
 
 深入 Sim2Real 方法论见 [Sim2Real](../concepts/sim2real.md)；仿真器横向对比见 [仿真器选型指南](../queries/simulator-selection-guide.md)（以 locomotion 为主，空中可类比「视觉 vs 物理」权衡）。
+
+## 工程实践
+
+- 先用 [仿真器选型指南](../queries/simulator-selection-guide.md) 与上方分层选型表确定仿真与规划层，再接入 [MAVSDK](../entities/mavsdk.md) Offboard；RL 策略上机前做系统辨识或 domain randomization。
+- 比较 RL 与几何控制时，用同一奖励整定 GC、同一任务分布与同等前馈信息，参见 [RL vs 几何控制](../comparisons/rl-vs-geometric-control.md)。
 
 ## 常见误区或局限
 

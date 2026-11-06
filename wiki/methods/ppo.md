@@ -25,6 +25,8 @@ related:
   - ../concepts/privileged-training.md
   - ../concepts/reward-design.md
   - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
+original:
+  - ../../sources/papers/ppo_reading_arxiv_1707_06347.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/policy_optimization.md
@@ -62,6 +64,14 @@ sources:
 - 相比 TRPO 的二阶 KL 约束，PPO 只需一阶 SGD/Adam + 简单 clip，**工程实现门槛低**，是 [Isaac Gym / Isaac Lab](../entities/isaac-gym-isaac-lab.md)、legged_gym 等仿真栈的默认算法。
 - 在 [大规模并行仿真](../tasks/locomotion.md) 下样本利用率虽不如 off-policy，但凭海量并行环境把"低样本效率"换成"墙钟时间短"，成为人形/足式 locomotion 训练的事实标准。
 - 高维人形/灵巧手任务上，[FlashSAC](./flashsac.md) 等 scaling 式 off-policy 方法已在墙钟与渐近性能上挑战 PPO 默认地位（项目页 TL;DR：「If you're using PPO, try FlashSAC!」）。
+
+## 核心原理
+
+原文（Schulman et al. 2017）的核心是裁剪代理目标：令 $r_t(\theta)=\pi_\theta(a_t|s_t)/\pi_{\theta_{old}}(a_t|s_t)$，优化 $L^{CLIP}=\hat{\mathbb E}[\min(r_t\hat A_t,\ \mathrm{clip}(r_t,1-\varepsilon,1+\varepsilon)\hat A_t)]$（原文 $\varepsilon=0.2$ 表现最佳）。取 min 使目标成为未裁剪目标的悲观下界，只有在比率变化会让目标变好时才被忽略，因此同一批数据可做多 epoch 小批量更新而不至于步子过大。
+
+- 完整目标：$L=\hat{\mathbb E}[L^{CLIP}-c_1L^{VF}+c_2S[\pi_\theta]]$，价值误差项与熵奖励用于策略/价值共享参数与探索；优势用截断 GAE。
+- 对照：原文的自适应 KL 惩罚变体（目标 KL $d_{targ}$，按 1.5 倍阈值把 $\beta$ 减半/加倍）表现不如裁剪，保留为基线。
+- 原文 MuJoCo 基准（7 任务、100 万步）：无裁剪无惩罚得分最差，裁剪优于各 KL 变体。
 
 ## 主要技术路线
 

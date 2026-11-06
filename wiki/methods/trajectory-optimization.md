@@ -17,6 +17,8 @@ related:
   - ../entities/paper-prior-evolution-aerial-grasping.md
   - ../entities/paper-se3-tangent-to.md
   - ../entities/paper-hop-horizon-optimal-trajectory-planning.md
+original:
+  - ../../sources/papers/trajectory_optimization_kelly_reading_siam_2017_to1.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/mpc.md
@@ -27,6 +29,8 @@ summary: "轨迹优化（Trajectory Optimization）通过数值优化方法求�
 ---
 
 # Trajectory Optimization（轨迹优化）
+
+## 一句话定义
 
 **轨迹优化 (Trajectory Optimization, TO)** 是一种基于动力学模型和约束条件，通过数值非线性规划（NLP）技术来自动搜索最优运动序列的计算方法。在足式机器人领域，不论是前空翻、跑酷等高难度极限动作的离线设计，还是在线模型预测控制（MPC）的底层计算核心，轨迹优化都是最不可或缺的工具。
 
@@ -49,6 +53,19 @@ summary: "轨迹优化（Trajectory Optimization）通过数值优化方法求�
 | iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
 | ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
 | LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+
+## 为什么重要
+
+- 它是 MPC 每一步在线求解的内核，也是前空翻、跑酷等极限动作离线设计的主力：把运动设计变成"写清模型与目标，交给求解器"（Kelly 2017 §1）。
+- 输出是开环的状态 / 控制轨迹，可作 WBC 或 RL 策略的参考与初值；与动态规划给出的闭环策略互补（Kelly §9.2）。
+
+## 核心原理：直接法转写与求解流程
+
+据 Kelly（2017）教程：直接法先把连续问题**转写**为 NLP，再交给 IPOPT / SNOPT 等求解器；决策变量、目标、动力学约束、路径与边界约束都在离散点上表达。
+
+- **配点格式**：梯形配点（控制线性样条、状态二次样条）精度低但简单；Hermite–Simpson 为中阶，状态是一阶连续的三次样条，是机器人问题的常用折中。
+- **与打靶的取舍**：配点法适合动力学与控制需同等精度、控制结构未知的机器人关节力矩问题；单次打靶适合控制简单、路径约束少的问题；多次打靶更稳健。
+- **接触**：接触序列已知用多相法；未知用穿越接触（互补约束）法，对应下文接触隐式优化。
 
 ## 核心形式化：最优控制问题 (OCP)
 
@@ -84,6 +101,16 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 
 2014 年，MIT 提出了**接触隐式优化 (Contact-Implicit Optimization)**，利用互补互斥约束（Complementarity Constraints）将接触力是否产生与足端距离地面的高度绑定在一起（距离 > 0 则力 = 0；力 > 0 则距离 = 0）。这使得优化器能够**从零开始自主发现走路的步态**，而不再需要人类手工编排时序。
 
+## 工程实践
+
+以下据 Kelly（2017）§5、§8：
+
+- **初值**：NLP 只保证局部最优。先用状态空间直线插值；复杂问题先简化（简单目标、少约束、纯运动学），再逐步加回约束并沿用上一解。
+- **网格细化**：先粗网格 / 低阶，再加密或升阶；用动力学残差沿各段的积分估计转写误差。
+- **一致性**：abs / min / max、变步长积分、迭代求根、查表插值和含接触求解器的时间步进仿真器都会让梯度不连续；改用松弛变量、平滑（需做平滑参数收敛测试）或定步长。
+- **调试**：解不唯一时加小的控制正则项；报不可行时逐个移除或加回约束，并换多个初值与转写方式对比结果；避免冗余约束。
+- **平滑目标**：平方力矩 / 力目标得到的解较光滑，样条逼近好、也更易被控制器稳定；最小功等目标会产生 bang-bang 解，需网格加密或多相法。
+
 ## 轨迹优化的局限与未来
 
 - **模型依赖**：由于 TO 完全是在数学模型上计算，如果真实机器人的电机摩擦、质心分布与模型有偏差（Sim2Real Gap），算出来的轨迹在实机上立刻就会跌倒。若下肢含**并联踝 / 四杆传动**，在 OCP 中忽略 **Actuation Jacobian** 一类映射，会在极限姿态下系统性低估或高估可用力矩包络；见 [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) 与 arXiv:2503.22459 归纳。
@@ -116,7 +143,13 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - [IROS 2026 VC 电机模式切换动态甩臂](../entities/paper-iros26-vc-motor-dynamic-arm-swing.md) — 多模式 speed–torque **并集约束** + 执行时电气模式切换
 
 
+## 继续阅读
+
+- Kelly, M. (2017) *An Introduction to Trajectory Optimization*（SIAM Review）— 本页 `original` 通读的教程，配 Matlab 库 OptimTraj。
+- [LQR / iLQR 算法详解](./lqr-ilqr.md) 与 [Model Predictive Control](./model-predictive-control.md) — 向在线求解延伸。
+
 ## 参考来源
+- [Kelly 教程通读归档](../../sources/papers/trajectory_optimization_kelly_reading_siam_2017_to1.md) — 直接配点转写、初始化、调试
 - [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — iLQR / DDP 一手论文索引
 - Betts, J. T. (2010). *Practical Methods for Optimal Control and Estimation Using Nonlinear Programming*.
 - Posa, M., Cantu, C., & Tedrake, R. (2014). *A direct method for trajectory optimization of rigid bodies through contact*.

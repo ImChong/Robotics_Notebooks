@@ -6,11 +6,17 @@ updated: 2026-09-21
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）。"
+original:
+  - ../../sources/repos/robot_learning_paper_notebooks_readme_reading_cat05_c5loco.md
 ---
 
 # Paper Notebooks · Locomotion
 
 **Locomotion**（`05_Locomotion`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **05** 类。
+
+## 一句话定义
+
+分类 05 汇总人形与足式机器人**行走运动**方向的论文深读笔记索引：从地形感知、能耗与速度极限到跨构型控制，是 Sim2Real 与 RL 在腿足平台上最直接的落地检验。
 
 ## 英文缩写速查
 
@@ -19,6 +25,14 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
+## 为什么重要
+
+行走是人形与四足的基础能力，后续全身控制、移动操作、导航都以稳定的 locomotion 策略为底座；上游 README 的路线图把「四足地形教师-学生 → 人形 Real-World Locomotion」列为 Sim2Real 工程主线之一。
+
+## 核心原理
+
+上游 README 与站点分类 05 所呈现的主线：特权教师向学生蒸馏、动作平滑约束（LCP）、历史 / 注意力编码、感知高度图或像素输入、能耗与落脚点约束；多数论文以 RL 在大规模并行仿真中训练后零样本迁移。
 
 ## 本类论文索引
 
@@ -107,6 +121,19 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [Walk the PLANC](../entities/paper-notebook-walk-the-planc-physics-guided-rl-for-agile-human.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds/Walk_the_PLANC__Physics-Guided_RL_for_Agile_Humanoid_Locomotion_on_Constrained_Footholds.html)
 - [Whole-body Humanoid Robot Locomotion with Human Reference](../entities/paper-notebook-whole-body-humanoid-robot-locomotion-with-human.md) — 待深读
 
+## 工程实践
+
+- 选读顺序可参照 README「行走经典」：四足地形 → Real-World Humanoid Locomotion → Next Token Prediction → Humanoid Parkour → 15 分钟 Sim-to-Real → ECO。
+- 数字口径：站点首页分类 05 为 24 条，本页索引 82 条（含待深读与跨类 / wiki 实体条目），引用时需注明口径。
+
+## 局限
+
+本页只是索引，不替代各篇论文；标「待深读」的条目尚无完整笔记，具体方法与数值需回到各实体页或原论文核对。
+
+## 关联
+
+见下方「与其他页面的关系」及各论文实体页；总索引为 [humanoid-paper-notebooks-index](./humanoid-paper-notebooks-index.md)。
+
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
@@ -115,8 +142,13 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 ## 参考来源
 
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
+- 上游 README 与分类 05 通读归档：[robot_learning_paper_notebooks_readme_reading_cat05_c5loco](../../sources/repos/robot_learning_paper_notebooks_readme_reading_cat05_c5loco.md)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - 本类论文来源笔记（节选）：[AME：面向泛化腿足运动的注意力地图编码（arXiv:2506.09588）](../../sources/papers/ame_arxiv_2506_09588.md)、[人形 AMP 运动先验：19 篇论文 source 索引](../../sources/papers/humanoid_amp_survey_19_catalog.md)、[Humanoid Motion Intelligence](../../sources/repos/humanoid-motion-intelligence.md)
+
+## 继续阅读
+
+- 上游仓库 README（学习路线图与高影响力精选）：<https://github.com/ImChong/Robot_Learning_Paper_Notebooks>
 
 ## 推荐继续阅读
 

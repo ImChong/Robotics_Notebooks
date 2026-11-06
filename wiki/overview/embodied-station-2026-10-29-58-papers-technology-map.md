@@ -9,6 +9,9 @@ related:
   - ../entities/paper-watch-your-step.md
   - ../methods/vla.md
   - ../concepts/world-action-models.md
+original:
+  - ../../sources/blogs/wechat_embodied_station_58_papers_reading_es58a.md
+  - ../../sources/papers/discodemo_reading_arxiv_2610_32093_es58a.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "具身智能小站 2026-10-29 盘点：DiscoDemo 用强化学习生成多样成功示范（深读）、OpenTac 触觉工具链与 Watch Your Step 落脚感知（跟进），以及世界模型、VLA 后训练、评测安全、人形控制与导航等 58 篇；58/58 独立节点（新建 35 / 复用 23）。"
@@ -22,6 +25,10 @@ summary: "具身智能小站 2026-10-29 盘点：DiscoDemo 用强化学习生成
 
 **模仿学习缺的往往不是更多相似轨迹，而是多种可成功的解法：本期深读 DiscoDemo 把强化学习当示范生成器；跟进 OpenTac 的开放触觉工具链与 Watch Your Step 的预见式落脚感知；其余篇幅覆盖世界模型表征、VLA 后训练与不确定性、评测与安全、人形控制和导航。**
 
+## 一句话定义
+
+按研究方向组织的 58 篇具身论文阅读坐标：以 DiscoDemo 为深读主线，其余篇目各留一个判断并指向独立节点。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -34,6 +41,11 @@ summary: "具身智能小站 2026-10-29 盘点：DiscoDemo 用强化学习生成
 
 - 公众号一次列出 58 篇（1 深读 + 2 跟进 + 55 扫读）、方向跨度大，需要横切面索引；每篇只保留一个判断，细节在各节点。
 - 节点内的数字为公众号转述，未核验原文表格；开源结论为入库日核查结果，见各节点「为什么重要」。
+
+## 为什么重要
+
+- 单期 58 篇覆盖数据、世界模型、VLA、评测、人形与导航，按方向与证据强度分层后，才能判断哪些值得深读。
+- DiscoDemo 的结论（覆盖广度比示范数量更影响模仿学习）对数据采集与仿真数据生成的取舍有直接参考价值（论文结论，仅四个桌面任务验证）。
 
 ## 流程总览
 
@@ -143,6 +155,24 @@ flowchart TB
 | Root Locus Harmonic Path Generation | [paper-root-locus-harmonic-path-generation](../entities/paper-root-locus-harmonic-path-generation.md) | 已开源 |
 | RangeNav | [paper-rangenav](../entities/paper-rangenav.md) | 待发布 |
 | Distributed Invariant EKF SLAM | [paper-distributed-invariant-ekf-slam](../entities/paper-distributed-invariant-ekf-slam.md) | 项目页未列 GitHub |
+
+## 核心机制（DiscoDemo 深读）
+
+- 生成器：特权状态、潜变量 z 条件的 RL 策略，用并行逆向课程（从示范末段往前重置）在稀疏奖励下学会任务。
+- 多样性：METRA 式位移–潜变量对齐奖励，并以轨迹成功与否门控（r̃ = r_task + α·y·r_div）；去掉门控则学不会任务。
+- 导出：安全塑形加成功/安全过滤，生成静态数据集，下游视觉策略（π0.5）不再调用生成器。
+- 主结果（论文）：四任务平均成功率仿真 62% 对 40%、真机 78% 对 39%（最强基线）。
+
+## 工程实践
+
+- 用本页做导航：先看分组索引定位方向，再进独立节点；开源状态为入库日核查，使用前应复核仓库现状。
+- 复现 DiscoDemo 一类流程需要精确仿真、特权状态与重置接口（论文前提），可先用小规模示范验证 α 的取值区间。
+- 节点内数字多为公众号转述，引用前回到各论文原文表格核对。
+
+## 局限
+
+- 本页是转述性索引：除 DiscoDemo 外，其余 57 篇未在本页逐篇读原文，结论强度以各节点为准。
+- DiscoDemo 自述局限：依赖精确仿真与特权状态、仅四个桌面任务、安全准则任务特定；多样性过强会损害任务完成（论文结论）。
 
 ## 关联页面
 

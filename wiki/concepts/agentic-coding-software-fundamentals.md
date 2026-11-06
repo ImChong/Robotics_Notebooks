@@ -34,6 +34,8 @@ related:
   - ../entities/paper-agent-friendly-by-design.md
   - ../entities/agentic-design-patterns.md
   - ../entities/tidy-design.md
+original:
+  - ../../sources/blogs/anthropic_context_engineering_reading_agcsf1.md
 sources:
   - ../../sources/repos/humanfia-humanize.md
   - ../../sources/blogs/anthropic_finding_your_unknowns_2026-07-06.md

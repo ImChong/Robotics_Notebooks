@@ -23,12 +23,18 @@ sources:
   - ../../sources/sites/resmimic-github-io.md
   - ../../sources/repos/resmimic.md
   - ../../sources/papers/gmt_arxiv_2506_14770.md
+original:
+  - ../../sources/papers/resmimic_reading_arxiv_2510_05070_rm1.md
 summary: "ResMimic（arXiv:2510.05070，Amazon FAR）用两阶段残差学习把大规模 GMT 先验接到物体条件 loco-manipulation：点云物体跟踪奖励、接触奖励与虚拟力课程稳定训练，G1 真机实现 92.5% sim-to-sim 成功率与 4.5–5.5 kg 全身接触搬运。"
 ---
 
 # ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）
 
 **ResMimic**（*From General Motion Tracking to Humanoid Whole-body Loco-Manipulation via Residual Learning*，Amazon FAR / USC / Stanford / Berkeley / CMU，arXiv:[2510.05070](https://arxiv.org/abs/2510.05070)，[项目页](https://resmimic.github.io/)）提出 **预训练–后训练式残差框架**：先用 **仅人类 MoCap** 训练 **通用运动跟踪（GMT）** 策略作为全身运动先验，再为每个 loco-manipulation 任务训练 **轻量残差策略**，在物体参考条件下修正 GMT 输出，实现 **精确、表达力强、全身接触丰富** 的人形 loco-manipulation。在 **Unitree G1** 真机与 MuJoCo sim-to-sim 上相对 **GMT 直出、从头 PPO、GMT 微调** 基线取得显著增益。
+
+## 一句话定义
+
+ResMimic 是「预训练通用动作跟踪（GMT）+ 逐任务轻量残差」的两阶段框架：最终动作 a = a_gmt + Δa，使 Unitree G1 能在物体参考条件下完成全身接触的 loco-manipulation。
 
 ## 英文缩写速查
 
@@ -121,6 +127,14 @@ flowchart TB
 
 - **残差可视化（项目页）：** 腕关节 **delta 动作幅度更大**，与「物体交互主要由残差承担」一致。
 - **真机：** MoCap 物体状态、随机初姿 11 次试验、连续跪姿抬箱、扰动恢复等（见 [项目页](https://resmimic.github.io/)）。
+
+## 工程实践
+
+- **训练与评测栈：** 全部策略在 IsaacGym 训练，再迁移到 MuJoCo 做 sim-to-sim 评测；收敛以训练迭代数而非墙钟时间衡量（原文 §IV-A）。
+- **数据准备：** GMT 阶段用 AMASS + OMOMO（>15k 条、约 42 h，滤除爬楼梯），经 GMR 重定向；残差阶段每个任务用 OptiTrack 同步采集人–物轨迹。
+- **残差初始化：** 末层 Xavier 小增益，保证训练起点接近纯 GMT 行为。
+- **课程与早停：** 虚拟力增益逐步衰减；物体点云偏差超阈值或必需接触丢失超过 10 连续帧即终止。
+- **部署：** 图 1 的真机结果为盲部署（无物体状态输入）；非盲部署用 MoCap 物体状态，支持随机初姿、连续任务与扰动反应。
 
 ## 源码运行时序图
 

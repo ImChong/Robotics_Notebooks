@@ -23,6 +23,8 @@ related:
   - ../overview/world-models-15-open-source-technology-map.md
   - ../overview/world-models-route-01-cascade.md
   - ../entities/paper-kinogen.md
+original:
+  - ../../sources/papers/mimic_video_reading_arxiv_2512_15692_mv3.md
 sources:
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
@@ -89,6 +91,11 @@ mimic-video 是一类把互联网规模视频生成模型当作操作语义与�
 
 在 **地面真值未来视频** 提取的潜特征上，动作解码器可达 **近饱和成功率** → 论文主张 **控制子问题在高质量视觉计划下「几乎可解」**，因此提升 **视频预测 / 表征** 比单纯加机器人轨迹对边际收益更关键。
 
+## 核心原理
+
+- 视频骨干做流匹配，推理只积分到中间流时刻 \(\tau_v\)，取第 \(k\) 层隐状态条件化动作 DiT；训练时 \(\tau_v,\tau_a\) 独立采样（见上文「训练日程」）。
+- 论文表述：控制子问题在高质量视觉计划下近乎可解，瓶颈转向视频表征质量。
+
 ## 流程总览
 
 ```mermaid
@@ -107,6 +114,17 @@ flowchart LR
   obs --> dec
   dec --> act
 ```
+
+## 工程实践
+
+- 论文附录的经验设置：视频模型源层 \(k=19\)，上下文 5 帧；\(\tau_v=1\) 为速度与性能的默认折中。
+- 论文报告：LIBERO 上仅用约 10% 动作数据即达 VLM 条件解码器的最高成功率；真机双臂仅用单工作区相机，任务数据约 1.5–2.2 小时。
+- 部署前仍应自行 profiling 延迟与显存（推断，论文未给出完整部署开销）。
+
+## 局限
+
+- 论文自述：仅单视角视频骨干、尚无统一跨本体大模型、真机任务集有限。
+- 附录解释：\(\tau_v\) 接近 0 时隐状态趋于恒等映射、信息量下降，且完全去噪的视频与训练分布存在偏差，因此高噪声条件反而更稳。
 
 ## 常见误区或局限
 
@@ -141,6 +159,10 @@ flowchart LR
 - [mimic-video 论文摘录（arXiv:2512.15692）](../../sources/papers/mimic_video_arxiv_2512_15692.md)
 - [mimic-video 官方项目页](../../sources/sites/mimic-video-github-io.md)
 - [lucidrains/mimic-video 社区实现索引](../../sources/repos/lucidrains_mimic_video.md)
+
+## 继续阅读
+
+- 原文通读归档：[mimic_video_reading_arxiv_2512_15692_mv3](../../sources/papers/mimic_video_reading_arxiv_2512_15692_mv3.md)
 
 ## 关联页面
 

@@ -33,6 +33,8 @@ related:
   - ../overview/humanoid-rl-policy-training-five-modules.md
   - ../entities/paper-humanoid-touch-dream.md
   - ../entities/orcs.md
+original:
+  - ../../sources/papers/rma_reading_arxiv_2107_04034_pt3.md
 sources:
   - ../../sources/personal/rl_runner_types.md
   - ../../sources/papers/privileged_training.md
@@ -251,6 +253,29 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - **Student 上界有限**：Student 只能逼近 Teacher，不能超越它
 - **特权信息选择**：哪些信息作为特权信息需要领域知识判断
 - **Adaptation 泛化性**：Adaptation Module 对分布外情况可能失效
+
+---
+
+## 工程实践
+
+以下要点出自 RMA 原文通读（[归档](../../sources/papers/rma_reading_arxiv_2107_04034_pt3.md)），属经典两阶段范例的实现细节：
+
+- **蒸馏的是 extrinsics 而非特权参数本身**：RMA 的 $z_t$ 是 $e_t$（17 维）的 8 维低维非线性投影，不要求等于物理真值，只要导出正确动作；直接回归 $e_t$ 的 SysID 基线在仿真中成功率更低（56.5% vs 73.5%）。
+- **学生数据要 on-policy**：用专家（真值 $z_t$）轨迹训练 $\phi$ 只会见到"好"轨迹；用随机初始化 $\phi$ 的预测驱动策略采样，再配真值 $z_t$ 监督，覆盖偏离分布（思路同 DAgger）。
+- **两模块异步**：$\phi$ 10 Hz、$\pi$ 100 Hz；作者称把历史直接输入 $\pi$ 的单模块方案步态不自然且板载只能到 10 Hz。
+- **特权量要"软化"**：局部地形高度离散化并取四足最大值，避免控制器依赖快速精确的地形感知。
+- **训练成本（RMA 量级）**：阶段 1 约 24 h/12 亿步，阶段 2 约 3 h/8000 万步（单 GPU 桌面机）。
+- **罚项课程**：惩罚系数从小到大，否则策略学会原地不动；扰动难度（质量/摩擦/电机强度）线性增加。
+- 推断：非对称 AC 与蒸馏可叠用（见上文），RMA 属于"特权进 policy 输入、学生估计 latent"一支。
+
+---
+
+## 继续阅读
+
+- [RMA 论文实体页](../entities/paper-rma-rapid-motor-adaptation.md) — 两阶段管线完整提炼
+- [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA 摘录
+- [地形 Latent 表征](./terrain-latent-representation.md) — 视觉学生的 latent 为何不必还原高度图
+- [Extreme Parkour](../entities/extreme-parkour.md) — 加入视觉后的双重蒸馏
 
 ---
 

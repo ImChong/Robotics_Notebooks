@@ -17,6 +17,8 @@ related:
   - ./hil-hybrid-imitation-learning.md
   - ../entities/paper-hil-hybrid-imitation-learning.md
   - ../tasks/humanoid-soccer.md
+original:
+  - ../../sources/papers/amp_reading_arxiv_2104_02180_r7.md
 sources:
   - ../../sources/papers/amp.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
@@ -33,6 +35,10 @@ summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学
 
 在机器人动作模仿中，单纯的轨迹跟踪奖励（如关节角度 MSE）往往会导致机器人出现高频抖动、抽搐或不自然的步态。**AMP** 引入了生成对抗的思想来提升运动质量，而 **HumanX** 将其扩展到了包含接触关系的物体交互场景。
 
+## 一句话定义
+
+AMP 把「像不像参考动作」交给一个在**状态转移 (s, s')** 上训练的判别器，其输出作为任务无关的风格奖励，与简单任务奖励线性相加后用 PPO 训练策略；HumanX 在此基础上再加接触图监督。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -42,6 +48,31 @@ summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学
 | RL | Reinforcement Learning | 任务 reward 与风格 reward 联合优化 |
 | ADD | Adversarial Differential Discriminator | 差分判别、减碎片 reward 的演进 |
 | HOI | Human–Object Interaction | HumanX 扩展的接触图交互场景 |
+
+## 为什么重要
+
+- 跟踪式模仿需要手工位姿误差度量，并需规划器或相位变量为每个时刻选参考片段；AMP 只学「风格」，不必逐帧跟踪（Peng et al., SIGGRAPH 2021）。
+- 任务奖励（what）可以很简单，风格（how）来自动捕数据，换数据集即换风格；这是后续人形 AMP 系方法（SD-AMP、ADP、TRAMP 等）的共同出发点。
+
+## 核心原理
+
+- **奖励分解**：\(r = w^G r^G + w^S r^S\)，原文各任务取 \(w^G=w^S=0.5\)。
+- **判别器训练**：状态转移 \((s,s')\) 输入（动捕无动作），最小二乘损失，真样本回归 +1、策略样本回归 −1；风格奖励 \(r^S=\max(0,\,1-0.25(D-1)^2)\)，有界于 [0,1]。
+- **稳定化**：仅对真实样本特征施加梯度惩罚（\(w_{gp}=10\)，消融中最关键）、判别器观测含速度特征、回放缓冲区防止对最新数据过拟合。
+- **训练闭环**：PPO + GAE 更新策略，判别器与策略联合训练；沿用参考状态初始化与早停。
+
+## 工程实践
+
+- 判别器观测只取与任务无关的特征（根速度、关节局部旋转与速度、末端位置，局部坐标系），同一先验可复用于不同任务。
+- 原文设定：策略 30 Hz、PD 目标动作，每策略约 1–3 亿样本；上述数值是论文的仿真角色设定，迁移到真机人形时的权重与终止条件需自行调（推断）。
+- 去掉速度特征时，滚翻类技能会退化为「趴着不动」；缺梯度惩罚则训练波动大——排查风格奖励失效时优先检查这两项。
+
+## 局限
+
+- 易模式坍塌：数据集很大时可能只模仿其中一部分行为。
+- 先验每个策略从头训练，跨任务迁移未解决；先验数据由特定任务策略产生，可能带入任务依赖。
+- 对高难单 clip 技能（如前空翻）可能陷入局部最优（向前蹭步），且跟踪法的偏离早停不适用；单 clip 精度总体弱于带相位的跟踪法。
+- 实验以时间组合为主，同时多技能的空间组合仅初步验证，手抬高等情形仍有不自然动作。
 
 ## AMP: 对抗性动作先验
 
@@ -140,3 +171,8 @@ $$
 在 **[mimickit](../entities/mimickit.md)** 框架中，AMP 得到了进一步的扩展和优化：
 - **[add](add.md) (Adversarial Differential Discriminator)**：通过引入差分判别器，解决了 AMP 在某些场景下的滑步和运动伪影问题。
 - **[smp](smp.md) (Score-Matching Motion Priors)**：使用生成式梯度场代替传统的判别器奖励，提供了更稳定的训练信号。
+
+## 继续阅读
+
+- 原文通读归档：[amp_reading_arxiv_2104_02180_r7.md](../../sources/papers/amp_reading_arxiv_2104_02180_r7.md)（arXiv:2104.02180）
+- 变体对比：[AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)

@@ -21,6 +21,9 @@ related:
   - ../entities/paper-super-odometry-2.md
   - ../entities/paper-puma-lidar-mesh-odometry.md
   - ../entities/paper-dcreg-degenerate-lidar-registration.md
+original:
+  - ../../sources/papers/fast_lio_reading_arxiv_2010_08196_lslvs.md
+  - ../../sources/papers/lio_sam_reading_arxiv_2007_00258_lslvs.md
 sources:
   - ../../sources/repos/navigation_slam_autonomy_stack_catalog.md
   - ../../sources/repos/fast_lio.md
@@ -40,9 +43,39 @@ summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM
 
 > **本页回答：** 给定传感器配置（2D 激光、3D 旋转激光、RGB-D、单目+IMU），应优先哪类 **里程计/SLAM** 开源实现？与 [导航栈总览](../overview/navigation-slam-autonomy-stack.md) 中 Nav2 如何衔接？
 
+## 一句话定义
+
+本页是 LiDAR 里程计/SLAM 与视觉惯性系统的开源选型对照：按传感器、后端、ROS 集成与场景，为 FAST-LIO、LIO-SAM、LeGO-LOAM、ORB-SLAM3、VINS 等挑选合适实现。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| PG | Policy Gradient | 以回报梯度更新策略参数的基础方法族 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+
 ## 一句话总结
 
 **要快且稳的 3D LIO** 选 **FAST-LIO**；要 **因子图 + GPS/回环** 选 **LIO-SAM**；要 **地面车辆起伏地形** 选 **LeGO-LOAM**；**视觉惯性** 工程常用 **VINS-Fusion**，研究滤波器对比用 **OpenVINS**，多地图视觉 SLAM 用 **ORB-SLAM3**；**RGB-D 一体** 用 **RTAB-Map**。
+
+## 为什么重要
+
+里程计/SLAM 是 Nav2 与具身机器人上层规划的位姿来源；同样是 LIO，滤波式与因子图式在算力、全局一致性、可接入的外部传感器上取舍明显不同，选错会导致后期补回环/GPS 的返工。
+
+## 核心原理
+
+基于原文通读（[FAST-LIO](../../sources/papers/fast_lio_reading_arxiv_2010_08196_lslvs.md)、[LIO-SAM](../../sources/papers/lio_sam_reading_arxiv_2007_00258_lslvs.md)）的两条主线：
+
+- **滤波式（FAST-LIO）**：紧耦合迭代 EKF，状态 18 维；IMU 前向传播、后向传播做运动去畸变；新卡尔曼增益公式让复杂度只与状态维数相关（论文表 II：1453 点时 0.59 ms 对旧公式 1219 ms）；输出 10–50 Hz。论文本身是纯里程计，无回环。
+- **因子图式（LIO-SAM）**：IMU 预积分、激光里程计、GPS、回环四类因子，iSAM2 增量优化；关键帧 + 固定 25 个子关键帧的局部匹配保证实时；GPS 因子仅在位置协方差大于 GPS 协方差时加入；论文实验中回环对修正仅 GPS 时的高程漂移有效（Park 数据集终点误差 1.21 m 降至 0.04 m）。
+- **推断（非原文结论）**：二者没有在同一数据集上被直接对比，本页的“FAST-LIO 更轻、LIO-SAM 全局一致性更好”是基于各自论文设计目标的归纳。
 
 ## 对比表
 
@@ -100,25 +133,22 @@ flowchart TD
 2. **2D 导航**：将 3D 点云 **投影为激光扫描** 或直接使用 2D SLAM 产物；勿把未滤波的 3D 障碍直接塞进 2D 层。
 3. **3D 避障**：考虑 [nvblox](../entities/isaac-ros-nvblox.md) 等与 Nav2 3D costmap 插件配合。
 
+## 工程实践
+
+- 先按传感器与场景走上方决策流，再核对时间同步、IMU 与 LiDAR 外参标定。
+- 固态/小视场 LiDAR 或需高频低延迟输出（UAV）时，优先看 FAST-LIO 一类滤波式；需要 GPS、回环、多会话全局一致时，用 LIO-SAM 一类因子图，或在 LIO 之上外挂位姿图。
+- 接 Nav2 时注意 TF 树与里程计话题频率，见上节。
+
+## 局限
+
+- 本页是选型导览，不含统一基准上的定量排名；各系统论文的实验平台、数据集不同，数值不可跨论文直接比较。
+- 开源仓库的 ROS 2 支持、维护状态随时间变化，落地前需查看仓库当前状态。
+
 ## 常见误区
 
 - **混淆里程计与 SLAM**：FAST-LIO 等偏 **odometry**；全局一致需回环/图优化模块或上层融合（课程级 odom↔LiDAR 融合原理见 [里程计–激光融合定位](../methods/lidar-odometry-fusion.md)）。
 - **忽略 IMU 内参标定**：VIO/LIO 性能上限常由 **时间同步与 IMU 噪声** 决定，而非换算法。
 - **在 Lie 群上乱线性化**：位姿估计与优化宜在 **SE(3)** 上处理，参见 [李群刚体运动](../formalizations/lie-group-rigid-body-motions.md)。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
-| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
-| PG | Policy Gradient | 以回报梯度更新策略参数的基础方法族 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
 
 ## 参考来源
 

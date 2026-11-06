@@ -9,6 +9,8 @@ related:
   - ./humanoid-motion-intelligence-day5-world-models-decision.md
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
+original:
+  - ../../sources/repos/humanoid_motion_intelligence_loco_manip_direction_reading_d4lm.md
 sources:
   - ../../sources/blogs/humanoid_motion_intelligence_day4_loco_manipulation_2026_10_05.md
 summary: "Day 4 独立导读：按全身协调、接触柔顺和物体任务闭环整理原文 30 项工作，并分别链接至独立详情。"
@@ -22,6 +24,10 @@ summary: "Day 4 独立导读：按全身协调、接触柔顺和物体任务闭�
 
 移动操作既要协调步态和手部目标，也要处理接触外力、末端柔顺与物体状态变化。低层身体控制、接触适应和上层任务阶段需要分层评估。
 
+## 一句话定义
+
+移动操作是人形机器人在行走或站立的同时，通过接触改变物体状态的任务，需同时协调腿、腰、手的运动、受力与平衡。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 说明 |
@@ -30,6 +36,17 @@ summary: "Day 4 独立导读：按全身协调、接触柔顺和物体任务闭�
 | VLA | Vision-Language-Action | 视觉和语言条件下的动作策略 |
 | DAgger | Dataset Aggregation | 用教师纠正学生策略访问的状态 |
 | UMI | Universal Manipulation Interface | 跨平台操作数据与接口 |
+
+## 为什么重要
+
+开门、搬运、推拉、托盘运送等任务把步态、末端目标和接触外力耦合在一起。上游项目将其归为“物体交互与全身操作”方向，并按交互模仿、接触规划、任务强化学习、分层技能、柔顺触觉、动态适配六条路线组织；按层拆开评估，才能判断改进来自身体控制、接触适应还是任务反馈。
+
+## 核心原理
+
+- **全身命令接口**：用统一策略或低维命令（根高、躯干、双臂、末端目标）连接上层目标与下层身体执行。
+- **接触适应**：阻抗/导纳式柔顺调节刚度与让步程度，外力估计与残差策略补偿负载、摩擦变化。
+- **物体状态闭环**：物体位姿、速度或视觉观测进入策略，驱动阶段切换与目标更新。
+- **分层技能**：高层选择或混合技能原语，低层负责稳定执行。
 
 ## 方法关系
 
@@ -78,6 +95,12 @@ flowchart TB
 | FARO | [独立详情](../entities/paper-faro-feasibility-aware-robot-motion-optimization.md) | 可行性约束的运动优化 |
 | SteadyTray | [独立详情](../entities/paper-notebook-steadytray.md) | 托盘物体平衡 |
 
+## 工程实践
+
+- 常见训练链路是“特权教师 → DAgger 蒸馏视觉学生 → 域随机化 → 真机”（如 DoorMan、VIRAL）。
+- 柔顺类工作常把已训练的全身跟踪策略冻结，再叠加残差层调节刚度与阻尼（如 CEER2）。
+- 部署前需确认传感器、标定与物体估计可用；仿真结论迁移到真机时按具体机型（如 Unitree G1）单独核对。
+
 ## 评读边界
 
 分别检查任务目标由谁生成、控制器使用何种接触观测、物体状态如何进入闭环，以及论文结果来自仿真还是特定真机配置。固定任务成功率不能单独说明失败恢复或开放场景泛化能力。
@@ -86,8 +109,27 @@ flowchart TB
 
 将方法按“身体控制—接触适应—物体任务反馈”拆开，可判断进步来自哪一层。现实部署还受传感器、标定、手部结构、物体估计与任务切换影响。
 
+## 局限
+
+- 本页是导读，单篇工作的指标与实现细节以各独立详情页为准。
+- 本页依据的微信原文未能直接抓取，30 项清单来自站内归档与上游项目方向页的交叉对照。
+- 固定任务成功率不能说明失败恢复或开放场景泛化。
+
+## 关联
+
+- [移动操作任务](../tasks/loco-manipulation.md)
+- [全身控制](../concepts/whole-body-control.md)
+- [Day 3：动作跟踪与全身控制](./humanoid-motion-intelligence-day3-motion-tracking-wbc.md)
+- [Day 5：世界模型与决策](./humanoid-motion-intelligence-day5-world-models-decision.md)
+
 ## 参考来源
 
 - [Day 4 原文与索引归档](../../sources/blogs/humanoid_motion_intelligence_day4_loco_manipulation_2026_10_05.md)
 - [humanoid-motion-intelligence 项目](https://github.com/RealXiaoze/humanoid-motion-intelligence)
 - 前篇：[Day 3：动作跟踪与全身控制](./humanoid-motion-intelligence-day3-motion-tracking-wbc.md)
+- [上游方向页与 README 通读归档](../../sources/repos/humanoid_motion_intelligence_loco_manip_direction_reading_d4lm.md)
+
+## 继续阅读
+
+- [Day 2：运动先验与步态](./humanoid-motion-intelligence-day2-locomotion-motion-priors.md)
+- 各工作的独立详情见上表。

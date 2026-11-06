@@ -40,6 +40,8 @@ related:
 - ../overview/rcl-awesome-wam-technology-map.md
 - ../methods/generative-world-models.md
 - ../tasks/locomotion.md
+original:
+- ../../sources/papers/robodojo_arxiv_2607_04434_reading_rdx7.md
 sources:
 - ../../sources/papers/robodojo_arxiv_2607_04434.md
 - ../../sources/papers/coap_embodied_turing_machines_arxiv_2610_12369.md
@@ -252,6 +254,7 @@ sequenceDiagram
 ## 参考来源
 
 - [论文摘录 robodojo_arxiv_2607_04434](../../sources/papers/robodojo_arxiv_2607_04434.md)
+- [论文通读 robodojo_arxiv_2607_04434_reading_rdx7](../../sources/papers/robodojo_arxiv_2607_04434_reading_rdx7.md)
 - [官网归档 robodojo-benchmark](../../sources/sites/robodojo-benchmark.md)
 - [仓库归档 RoboDojo](../../sources/repos/robodojo.md)
 - [仓库归档 XPolicyLab](../../sources/repos/xpolicylab.md)

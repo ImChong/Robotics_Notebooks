@@ -30,6 +30,8 @@ related:
   - ./paper-xrobotoolkit.md
   - ./paper-humantracker.md
   - ./paper-humanoidttt.md
+original:
+  - ../../sources/papers/twist2_reading_arxiv_2511_02832_t2rd.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_10_twist2_scalable_portable_and_holistic_humanoid_d.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -48,6 +50,10 @@ sources:
 # TWIST2
 
 **TWIST2**（*Scalable, Portable, and Holistic Humanoid Data Collection System*，arXiv:2511.02832，**ICRA 2026**）是 Amazon FAR 等团队提出的 **下一代便携全身人形数据采集与遥操作系统**：在 [TWIST](./paper-twist.md) 跟踪控制器之上，用 **2-DoF 颈增广**、**PICO 便携全身流** 与 **分层 visuomotor 学习**（RL 低层 + 模仿高层）把「能遥操作」推进到「**能规模化攒数据并学自主**」。
+
+## 一句话定义
+
+TWIST2 是便携、免动捕的全身人形遥操作与数据采集系统：PICO VR + 250 美元 2-DoF 颈提供全身指令与主动 egocentric 视觉，RL 通用跟踪器执行，示范再训练分层 visuomotor 策略。
 
 ## 英文缩写速查
 
@@ -149,6 +155,18 @@ sequenceDiagram
 - **长时程技能**：连续叠毛巾、找布折叠、踢球/篮球、穿门搬运、地面捡砖、绕圈 locomotion 等。
 - **自主技能**：Kick-T（踢 T 形箱到目标区）、WB-Dex（灵巧 pick-place）。
 
+## 工程实践
+
+（依据论文 arXiv:2511.02832 通读，见 [通读归档](../../sources/papers/twist2_reading_arxiv_2511_02832_t2rd.md)）
+
+- **接口选择**：指令用相对根平移/旋转 + 全身关节位置，不依赖全局状态估计；高层本体输入用历史 p_cmd 而非原始机器人状态，高低层因此可独立训练部署。
+- **低层训练**：单阶段 PPO，约 2 万条动作（GMR 7k + TWIST 13k），另补 73 条 PICO 动作弥合域差；卷积历史编码器 + MLP。
+- **重定向调参**：PICO 全局位姿不准，故下半身优化位置 + 旋转、上半身只优化旋转，位置在骨盆系度量；2 追踪器模式比更多追踪器稳定。
+- **单人流程**：手柄摇杆控制开始/暂停/结束/手开合；暂停恢复时插值避免跳变；总延迟低于 0.1 s（TWIST 为 0.5 s）。
+- **高层策略**：Diffusion Policy + R3M ResNet-18，预测 64 步、执行 48 步，4090 上约 20 Hz；WB-Dex 170 条、Kick-T 50 条示范，Kick-T 7 次成功 6 次。
+- **消融（Table III）**：去颈后新手仅 10 条示范 7/17 成功、平均耗时升至 112 s，说明主动视觉是长时程移动操作的关键。
+- **数字口径**：论文 Table II 实测为 18.5 min 98 条（双手）、19.5 min 46 条（移动），页面他处「15 min 级」「128/50」为项目页口径，精确值以论文表为准。
+
 ## 常见误区或局限
 
 - **主要在局部帧跟踪**：全身跟踪在 **机器人局部坐标系** 运行，长时程 **全局位姿漂移** 仍是痛点——[CLOT](./paper-amp-survey-16-clot.md) 等闭环全局方案与之互补对照。
@@ -190,8 +208,15 @@ sequenceDiagram
 5. **长时程痛点在局部系跟踪** — 全局位姿漂移仍在；CLOT 类闭环全局方案可作互补，不要把项目页长时程视频读成已解决漂移。
 6. **全栈可复现** — 官方仓含遥操作、RL checkpoint、visuomotor 脚本与颈 BOM；量化 sim2real 数字以论文 PDF 为准。
 
+## 关联
+
+- 前作与对照：[paper-twist.md](./paper-twist.md)、[paper-bifrost-umi.md](./paper-bifrost-umi.md)、[paper-amp-survey-16-clot.md](./paper-amp-survey-16-clot.md)
+- XR 中间层：[paper-xrobotoolkit.md](./paper-xrobotoolkit.md)；重定向：[motion-retargeting-gmr.md](../methods/motion-retargeting-gmr.md)
+- 高层策略：[diffusion-policy.md](../methods/diffusion-policy.md)；任务：[teleoperation.md](../tasks/teleoperation.md)
+
 ## 参考来源
 
+- [twist2_reading_arxiv_2511_02832_t2rd.md](../../sources/papers/twist2_reading_arxiv_2511_02832_t2rd.md) — 论文通读归档
 - [twist2-project.md](../../sources/sites/twist2-project.md) — 官方项目页一手摘录
 - [twist2.md](../../sources/repos/twist2.md) — GitHub 仓库归档
 - [bfm_awesome_twist2_arxiv_2505_02833.md](../../sources/papers/bfm_awesome_twist2_arxiv_2505_02833.md) — BFM 41 篇策展

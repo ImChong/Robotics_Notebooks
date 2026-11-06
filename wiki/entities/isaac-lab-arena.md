@@ -32,6 +32,8 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
   - ../concepts/sim2real.md
+original:
+  - ../../sources/repos/isaaclab_arena_reading_readme_a7k.md
 sources:
   - ../../sources/repos/isaaclab_arena.md
   - ../../sources/sites/isaac-lab-arena.md
@@ -80,6 +82,12 @@ summary: "Isaac Lab-Arena 是 NVIDIA×Lightwheel 联合的 Alpha 开源评测扩
 - 社区 benchmark 难以共享同一套指标与数据格式
 
 Arena 把 **环境变化** 提升为一等公民：运行时组装、Affordance 跨物体泛化、并行聚合指标，并与 [LeRobot](./lerobot.md) **EnvHub**（[`nvidia/isaaclab-arena-envs`](https://huggingface.co/nvidia/isaaclab-arena-envs)）对接，形成「发布环境 → `lerobot-eval` → 视频与指标」闭环。
+
+## 核心原理
+
+Arena 的机制可归结为「声明式组装 + 编译到 Isaac Lab + 并行执行」：scene、embodiment、task 三个独立原语由 `ArenaEnvBuilder` 编译为标准 `ManagerBasedRLEnvCfg`，因此换物体/具身/背景只改对应原语（上游 README 通读）。上游把工作流分为三段：**Author**（组合、关系式摆放、受控变化）、**Execute**（GPU 上并行评测，多任务多策略实验可经 OSMO 跨节点，策略走 client-server 契约）、**Analyze**（聚合与逐回合指标、子任务谓词、敏感性分析）。
+
+> 版本提示：上游 README 的 `main` 已标 v0.3（Sim 6.2.0），文中 v0.2.x 表述为 2026-09 入库时的快照；稳定性以 README 推荐的 release 分支为准（推断：升级前仍应重核兼容表）。
 
 ## 核心架构
 

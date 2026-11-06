@@ -5,12 +5,18 @@ status: complete
 updated: 2026-09-28
 related:
   - ./humanoid-paper-notebooks-index.md
+original:
+  - ../../sources/papers/robot_learning_paper_notebooks_readme_reading_humanoid_index.md
 summary: "Paper Notebooks 分类 06：灵巧操作（55 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Manipulation
 
 **Manipulation**（`06_Manipulation`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **06** 类。
+
+## 一句话定义
+
+本页是 Robot Learning Paper Notebooks 站点第 06 类「灵巧操作」的论文索引：把 55 篇相关论文逐条链接到本库实体页与上游深读笔记。
 
 ## 英文缩写速查
 
@@ -19,6 +25,31 @@ summary: "Paper Notebooks 分类 06：灵巧操作（55 篇深读笔记索引）
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
+## 为什么重要
+
+- 操作是上游路线图中从全身控制（WBC）分出的支线之一，与移动操作、世界模型并列，最终汇聚到 VLA / BFM 基础模型终点（上游 README 路线图）。
+- 本类混合了数据采集（动捕、AR、UMI 类）、视频世界模型与触觉预训练等论文，索引能按「有深读笔记 / 待深读 / 见 wiki 实体页」快速分流。
+
+## 核心原理
+
+- 上游路线图把操作支线写作 iDP3 → EgoMimic → HumDex（3D 扩散策略、自我中心视频、灵巧手），并指出 ACT / ALOHA 是动作块与 EgoMimic 策略骨干的来源。
+- 本类索引条目大体可分为：人类示教与数据采集系统、人类视频预训练 / 世界模型、触觉与安全控制三类（推断，依据条目标题归纳，非上游官方分类）。
+
+## 工程实践
+
+- 查某篇论文：先点本库实体页获得摘要与关联，再按需跳转上游深读笔记；标「待深读」者上游尚无 HTML 笔记。
+- 上游每篇笔记结构：一句话总结、英文缩写速查、问题背景、方法详解、工程价值、面试 Q&A 等（上游 README「笔记说明」）。
+
+## 局限
+
+- 条目数与上游口径不同：上游 README 徽标统计 1423 篇 / 418 篇笔记，本库快照为分类清单口径，引用需标明口径与日期。
+- 本页是索引，不含各论文的方法与实验结论；具体结论需读对应实体页或原论文。
+
+## 关联页面
+
+- [humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)：14 个分类的总入口。
+- [站点来源归档](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 
 ## 本类论文索引
 
@@ -86,6 +117,7 @@ summary: "Paper Notebooks 分类 06：灵巧操作（55 篇深读笔记索引）
 ## 参考来源
 
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
+- 上游 README 通读归档：[robot_learning_paper_notebooks_readme_reading_humanoid_index](../../sources/papers/robot_learning_paper_notebooks_readme_reading_humanoid_index.md)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - 本类论文来源笔记（节选）：[人形 Loco-Manip 161 篇论文 source 索引](../../sources/papers/humanoid_loco_manip_161_catalog.md)、[EgoVLA](../../sources/papers/loco_manip_161_survey_161_egovla.md)、[DreamDojo：大规模人类视频通用机器人世界模型](../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md)
 

@@ -23,6 +23,8 @@ related:
   - ./awesome-touch.md
   - ./awesome-sim2real.md
   - ./paper-survey-sim2real-rl-foundation-models.md
+original:
+  - ../../sources/repos/awesome_real2sim2real_readme_reading_r2m1.md
 sources:
   - ../../sources/repos/awesome-real2sim2real.md
   - ../../sources/papers/sun_awesome_r2s2r_catalog.md
@@ -69,6 +71,16 @@ summary: "sun254667 维护的 Awesome-Real2Sim2Real：按 Sim2Real → Real2Sim 
 | Real-to-Sim | 视频重建（含 CRISP）/ 操作与交互场景 |
 | Real2Sim2Real | 3DGS 框架与仿真管线闭环；avatar 阴影见 [RAGA](./paper-raga-real-time-ray-traced-gaussian-shadow-casting.md) |
 | Benchmarks | 仿真器、数据集与评测协议 |
+
+## 方法栈（清单的分组逻辑）
+
+按 upstream README 的目录，条目沿「Sim-to-Real（RL 迁移 / 零样本 / 域随机化与适配 / 基础模型增强）→ Real-to-Sim（视频 / 操作与交互）→ Real2Sim2Real 闭环（Gaussian Splatting 框架 / 仿真框架与流水线）→ 基准」排布；每条给出出处、要点与论文链接，末尾附研究挑战表与相关清单（仅 AwesomeSim2Real）。README 把现实差距、高保真仿真成本、泛化、数据稀缺列为四个通用挑战。
+
+## 工程实践
+
+- **当选型地图用，不当结论用**：先按问题落到分组（动力学差距找 DR/适配，视觉差距找 3DGS 重建，资产缺失找视频/操作 Real2Sim），再点进站内论文页核实细节。
+- **对照 README 的分方向挑战表**：如闭环方向的「视觉与动力学双重差距、环路一致性、在线适配」可作为评估一条管线是否真正闭环的检查项（此处为读者用法建议，属推断）。
+- 清单更新快，引用具体条目前回 upstream 核对。
 
 ## 局限与使用注意
 

@@ -10,6 +10,8 @@ related:
   - ../overview/hub-sim2real.md
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/paper-survey-sim2real-rl-foundation-models.md
+original:
+  - ../../sources/blogs/freedof_sim2real_four_routes_reading_fd44.md
 sources:
   - ../../sources/blogs/wechat_freedof_sim2real_four_routes_dr_to_residual_2026-08-23.md
   - ../../sources/papers/freedof_sim2real_44_catalog.md
@@ -23,6 +25,10 @@ summary: "自由度FreeDof 四条 Sim2Real 路线梳理：44 篇参考文献按�
 ## 一句话观点
 
 **Sim2Real 选型先看「参数能否辨识、剩余误差如何处理」，再按 SysID → 窄 DR → 残差/适应 分层组合；44 篇文献是四条立场在工程上的证据链，而非时间线摘要堆叠。**
+
+## 一句话定义
+
+本页是自由度FreeDof 长文《从域随机化到残差学习》44 篇参考文献的**按章节阅读坐标**：把 Sim2Real 四条路线（系统辨识、域随机化、在线适应、残差学习）及监控、视觉、可微仿真等旁支的文献逐篇指向站内详情页。
 
 ## 英文缩写速查
 
@@ -39,6 +45,12 @@ summary: "自由度FreeDof 四条 Sim2Real 路线梳理：44 篇参考文献按�
 - 原文按 **可辨识性** 串联系统辨识、DR、在线适应、残差学习，参考文献跨四十年与多子领域。
 - **44 篇逐篇可点开**：每篇各有一页；站内已有深读页的直接指向那一页。
 - 与 [四条路线对比](../comparisons/sim2real-four-routes-identifiability.md) 配合：对比页讲立场与组合，本页讲 **逐篇入口**。
+
+## 为什么重要
+
+- 选路线前先判断「参数能否辨识、辨识要付多少真机代价」，否则容易在宽 DR、过度加参数或盲目上残差上白付成本（原文论点）。
+- 在线适应失效时无报错、会静默退化为 DR；部署期监控与阅读判据能避免把 gap 误判成奖励或超参问题。
+- 本页把这些论断落到 44 篇文献的逐篇入口，便于按症状或章节直达证据。
 
 ## 流程总览
 
@@ -158,6 +170,21 @@ flowchart LR
 | # | 论文 | 节点 | 开源 |
 |---|------|------|------|
 | 44 | Awesome Humanoid Robot Learning | [paper-awesome-humanoid-robot-learning](../entities/paper-awesome-humanoid-robot-learning.md) | 已开源 |
+
+## 工程实践
+
+以下为原文核心结论的摘要（出处：[通读归档](../../sources/blogs/freedof_sim2real_four_routes_reading_fd44.md)）：
+
+- **顺序**：先辨识能辨的参数，再用窄 DR 对剩余不确定性留余量，最后用残差 / 在线适应处理辨不出的部分；不辨识直接上宽 DR 等于给已知量也买保险。
+- **辨识实验**：固定基座、避免接触、激励带宽覆盖策略频率一半、使用小 PD 增益；PD 增益视为已知以破除尺度退化。
+- **按症状选路**：固定基座就对不上先做执行器辨识；落地才失败查接触与时延；敏捷动作跟不上先修名义模型再上动作层残差；已上真机加部署期监控（如 RAPT）。
+- **读论文**：核对真实数据边界、基线是否含「辨识 + 窄 DR」、未见轨迹泛化、离线指标与硬件表现是否脱钩。
+
+## 局限
+
+- 本页是索引与路线导读，各论文结论以对应详情页和原论文为准；原文数字（如 PACE 的 32%、ASAP 的 52.7%）均为各自平台与任务配置下的结果，不是普遍保证。
+- 原文是单一公众号作者的分析视角，四条路线的划分便于比较但并不互斥；对国内工作的观察截至 2026-08 且非穷尽。
+- 在线适应失效时会静默退化为 DR，残差只在训练数据覆盖范围内有效；这些是原文的论断，本页未独立复现。
 
 ## 关联页面
 

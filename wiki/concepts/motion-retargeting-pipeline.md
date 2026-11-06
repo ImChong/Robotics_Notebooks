@@ -39,6 +39,8 @@ related:
   - ../tasks/teleoperation.md
   - ../entities/paper-kiwi-kinematic-interface-wild.md
   - ../entities/paper-gaussianimate.md
+original:
+  - ../../sources/papers/gmr_retargeting_matters_reading_motion_retargeting_arxiv_2510_02252.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/neural_motion_retargeting_nmr.md
@@ -220,6 +222,31 @@ flowchart TD
 - **物理指标**：仿真内跟踪成功率、脚滑距离、自碰帧占比、所需根残差力。
 - **下游指标**：用这批参考训练出来的策略在真机/仿真的成功率与样本效率（最贴近最终目标）。
 
+## 核心原理
+
+流水线可压成一条主线：**缩放决定伪影，IK 决定跟随，筛选决定可用**。《Retargeting Matters》（[arXiv:2510.02252](https://arxiv.org/abs/2510.02252)，GMR 论文）在 BeyondMimic 免调奖励条件下给出了最直接的证据：
+- **缩放是伪影主因**：作者发现 PHC / ProtoMotions 的大多数伪影来自人到机的缩放；GMR 用「人身高比 × 每个关键 body 的局部因子」做相对根节点的非均匀缩放，根平移用统一因子缩放，是避免脚滑的关键。
+- **两阶段差分 IK**：先只约束朝向 + 末端位置，再以其解为初值约束全部关键 body 的位置与朝向；逐帧顺序求解，最后用 FK 求最低高度并整体平移，消除悬浮 / 穿地。
+- **三类应避免的伪影**：地面穿透（物理不一致的高度）、自穿透、关节值突跳；它们不一定使参考不可跟踪，但显著抬高跟踪误差、降低成功率。
+- **起始帧也算流水线的一部分**：同一策略仅改参考起始帧，sim2sim 成功率可从 14% 变 100%（Turn 1，PHC 重定向）；建议起始姿态机器人可安全到达、结尾落在稳定姿态。
+
+## 为什么重要
+
+重定向伪影常被留给 RL 策略「纠正」，靠奖励工程与域随机化掩盖；去掉这些工程后，重定向质量直接影响成功率与跟踪误差（上述论文在 LAFAN1 的 21 段、Unitree G1 上，PHC 重定向 Eg-mpbpe 均值 247.8 mm，GMR 104.1 mm，Unitree 闭源数据 77.2 mm）。因此把链路拆成阶段、分清每段职责，是下游模仿学习 / 跟踪稳定的前提。
+
+## 工程实践
+
+- 先修**缩放与朝向**，再调 IK 权重：整段漂移与脚滑多源于此，而非关节角误差。
+- 每段重定向后用 FK 做**高度归一**，并检查自穿透与关节突跳帧；偶发突跳（论文中 GMR 仅 Dance 5 一段，约占数据集不足 2%）可能需按动作调 IK 权重。
+- 检查参考的**首尾帧**可达性与稳定性。
+- 重定向后的评测同时看几何指标、仿真 / sim2sim 成功率与人类感知忠实度（论文 20 人用户研究中 GMR 比 PHC、ProtoMotions 更忠实，Unitree 数据更忠实但差距小）。
+
+## 局限
+
+- 上述实证结论仅来自 LAFAN1 + Unitree G1 + BeyondMimic 单轨迹策略，未覆盖 AMASS、视频估计源、其他机型，也不含与物体 / 环境的交互；对这些场景的推广是**推断**，需看各专页。
+- 纯运动学重定向不保证动力学可行，接触丰富动作需第 7 阶段的物理修补。
+- 流水线各阶段的失败模式表为工程归纳，并非全部有统一基准验证。
+
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书《开源运动控制项目》对运动学重定向 → 动力学一致化分层的总结
@@ -231,6 +258,7 @@ flowchart TD
 - [sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md](../../sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md) — SPARK：URDF 校准 + 渐进 KDTO
 - [sources/repos/core_retarget.md](../../sources/repos/core_retarget.md) — CoRe v0.1.0 九段接触精炼；论文 [core_humanoids_2025.md](../../sources/papers/core_humanoids_2025.md)、[rmr_iros_2025.md](../../sources/papers/rmr_iros_2025.md)
 - [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor：视频生成源下"跳过中间重定向"的反例消融
+- [sources/papers/gmr_retargeting_matters_reading_motion_retargeting_arxiv_2510_02252.md](../../sources/papers/gmr_retargeting_matters_reading_motion_retargeting_arxiv_2510_02252.md) — Retargeting Matters 全文通读（GMR 五步 + 伪影对跟踪的影响）
 - Ze Y. et al., *GMR: General Motion Retargeting* — [arXiv:2505.02833](https://arxiv.org/abs/2505.02833)
 - Peng et al., *AMP: Adversarial Motion Priors* (SIGGRAPH 2021) — 重定向产物在 RL 风格先验中的下游用途
 

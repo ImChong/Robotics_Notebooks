@@ -3,7 +3,7 @@ type: overview
 tags:
   - dataset
   - data-panorama
-status: draft
+status: complete
 updated: 2026-10-20
 summary: "2026-10-19 公众号综述的 85 个具身智能数据集全景：逐项映射到唯一 wiki 节点，41 项复用已有节点、44 项新建节点。"
 related:
@@ -13,6 +13,8 @@ related:
   - ../tasks/manipulation.md
 sources:
   - ../../sources/datasets/wechat-embodied-dataset-panorama-2026-10-19.md
+original:
+  - ../../sources/papers/open_x_embodiment_reading_arxiv_2310_08864_dsp26.md
 ---
 
 # 具身智能数据集全景（85 项去重映射）
@@ -54,6 +56,10 @@ sources:
 - 收录口径为综述作者选定，并非完整清单；“集合成员不重复计数”意味着部分集合（如 Ego-Exo4D 与 Ego4D 系列）的子数据未单列。
 - 复用的 41 项节点写于不同时间，其内容未因本次综述同步修改；新建的 44 项节点事实来自综述，**未逐项核对原论文**。
 - 许可与获取方式会随版本变化（部分数据需申请或签协议），使用前以官方页为准。
+
+## 原文核对：以 OXE 为锚点
+
+本页第 01 项 OXE 的一手原文（arXiv 2310.08864）已通读，可用来校准“真实机器人”组的口径：OXE 把 60 个已有数据集、34 个实验室的数据统一为 RLDS 格式，覆盖 22 种本体、100 万+ 真机轨迹；其 RT-X 实验仅用其中 9 种本体，且动作只做粗对齐（7 维末端动作、不统一坐标系）。因此“合并数据集”不等于“动作空间已统一”，选用多源真机数据时仍需自行处理本体差异。其余 84 项仍以公众号综述为准，未逐项核对（见上节局限）。
 
 ## 关联页面
 

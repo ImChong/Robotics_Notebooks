@@ -12,6 +12,8 @@ tags:
 status: complete
 updated: 2026-09-21
 arxiv: "2608.30935"
+original:
+  - ../../sources/papers/lightnav0_reading_arxiv_2608_30935_ln0r.md
 code: https://github.com/lightorigins/LightNav-0
 related:
   - ../queries/lightnav-0-blog-references-deep-read.md
@@ -82,6 +84,17 @@ flowchart LR
   traj --> nav[跨任务跨本体导航]
 ```
 
+## 核心原理
+
+> 以下依据 arXiv:2608.30935 全文通读（[读书归档](../../sources/papers/lightnav0_reading_arxiv_2608_30935_ln0r.md)）。
+
+- **骨干与接口**：Qwen3-VL-4B-Instruct 不加任务头，仅扩充词表；每步输出 = 1 个 affordance 点 token + 1 个 object 点 token + 3 个 RVQ 动作 token，解码为 10 个未来 SE(2) 路点。
+- **Dual-channel pointing**：点编码为单个图像网格 token（两通道用不同 token 族），保留索引表示停止 / 原地转向 / 目标不可见；定长前缀充当潜在空间 CoT，不产生变长文本推理。消融去掉 pointing 监督后平均 SR 从 63.0 降到 54.7。
+- **RVQ 动作 tokenizer**：3 级、每级 256 码字；任意非空前缀都可解码出可执行轨迹，可只生成前 1 到 2 级换取更低解码开销；三级 ADE 0.72 cm，对比单 token 4096 词表的 2.48 cm。
+- **视觉历史压缩**：采样率与池化步长随帧龄指数衰减，在固定视觉 token 预算内兼顾近处细节与远期上下文。
+- **训练栈**：ER mid-training（LightNav-ER，约 170 H100 小时）→ SFT 含 DAgger（约 950 H100 小时，77.6% 导航 / 22.4% ER 复习）→ GRPO 在线 RL（终端标量奖励，G=8）。因动作即 token，对数概率精确，GRPO 无需额外 MDP 改写或 critic。
+- **缩放结论**：2B 到 4B 收益明显，8B 不稳定；环境多样性比单纯加数据更有效（论文自述）。
+
 ## 评测
 
 | 设置 | 读法 |
@@ -116,11 +129,21 @@ sequenceDiagram
     VLM-->>Dev: 导航轨迹/动作
 ```
 
+## 工程实践
+
+- **部署形态**：单进程 vLLM 服务，论文报告 RTX 4090 上约 4 ms / 生成 token；每步最多 2 个指针 token + 3 个动作 token；资源受限时可只取前 1 到 2 级 RVQ。
+- **与机器人对接**：LightNav-0 只输出 10 个 SE(2) 路点；共享 trajectory follower 通过里程计与速度指令接入各平台自带的运动策略（人形 LightBot-0、Go2、LimX TRON 1、自研四旋翼）。
+- **相机鲁棒性**：训练时随机化 FoV（90–130 度）、相机高度（0.5–1.5 m）、俯仰（±15 度）；换传感器仍需自测。
+- **复现成本（论文自述）**：RL 阶段单节点 8×H100；主要瓶颈是仿真吞吐而非梯度计算，故仿真与推理服务解耦。
+- **数据与评测**：INSIGHT-Bench（1,683 训练场景 / 210 评测场景）提供场景 × 指令类型二维诊断；见 [INSIGHT-Bench](./insight-bench.md)。
+- **读数提醒**：RxR 上 nDTW（67.4）低于 DualVLN（70.0）；EVT 部分指标上 CoMaTrack / ReferTrack 仍占优；多视角方法在 R2R 上仍略强，即「全面最优」只是成功率口径。
+
 ## 局限与风险
 
 - **仿真—真机差距：** 真机 demo 为精选场景，极端光照/动态障碍泛化待验证。
 - **算力：** VLM 骨干推理延迟需结合部署平台评估。
 - **数据引擎：** 大规模仿真数据生成细节以仓库 README 为准。
+- **单一决策通路（论文自述）：** 未分离高频局部避障与低频语义规划，作者将双系统列为后续方向。
 
 ## 与其他工作对比
 

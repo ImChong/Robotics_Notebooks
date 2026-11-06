@@ -10,6 +10,8 @@ sources:
   - ../../sources/sites/unitree-unistore.md
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/repos/unitree_slam.md
+original:
+  - ../../sources/repos/unitree_org_reading_ut1.md
 summary: "宇树科技是腿式与人形机器人领域高影响力硬件与官方开源软件组织；GitHub unitreerobotics 主线仓（SDK2/ROS/RL/遥操作/UnifoLM 等）各有站内详情页，周边仓只保留来源归档。"
 related:
   - ./humanoid-robot.md
@@ -377,6 +379,22 @@ Unitree 是非常重要的目标平台语境：先选定官方 RL 仓之一，�
 
 ### 如果你做人形控制 / 遥操作 / IL
 优先从 `xr_teleoperate` 与 [Unitree G1](./unitree-g1.md) 文档入手；需要 LeRobot 格式训练时接 `unitree_lerobot`，需要官方 VLA/WMA 时再进 UnifoLM 仓与 Hugging Face 权重。
+
+## 核心原理：官方 RL 到真机流程总览
+
+官方 RL 仓 README 给出的主线是 `Train → Play → Sim2Sim → Sim2Real`：先在 Isaac Gym 类环境训练（无界面更高效），Play 回放并导出 Actor 网络，再放到 MuJoCo 做 Sim2Sim 以确认策略没有过度依赖训练器特性，最后经 SDK2 部署真机；真机部署前机器人须处于 debug 模式，C++ 示例依赖 LibTorch。底层 SDK2 以 CMake 构建，预设 Ubuntu 20.04，支持 aarch64 与 x86_64。来源：[通读归档](../../sources/repos/unitree_org_reading_ut1.md)。
+
+## 工程实践
+
+- 先选定三条官方 RL 仓之一，沿其文档走完整条流程，不混拷配置（见上文「常见误区」）。
+- 真机联调用网线直连并指定网卡名（如 `enp3s0`），SDK2 装到非默认目录时需配置 `CMAKE_PREFIX_PATH`。
+- 自训模型替换默认模型时，需改对应 YAML 的 `policy_path`。
+
+## 局限
+
+- 本页是组织级枢纽，各仓细节以站内详情页与上游文档为准；仓库数量、星标与日期会随上游更新而变化。
+- 平台可得不等于 sim2real 自动成立，状态估计、系统辨识与延迟问题仍需自行处理。
+- 本页原文通读仅覆盖 `unitree_sdk2` 与 `unitree_rl_gym` 两个 README，其余仓以各自归档为准。
 
 ## 推荐继续阅读
 

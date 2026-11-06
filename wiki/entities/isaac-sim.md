@@ -35,6 +35,8 @@ sources:
   - ../../sources/sites/nvidia-omniverse-omnigraph.md
   - ../../sources/repos/isaac_sim_ws.md
   - ../../sources/sites/nvidia-isaac-sim-agent-skills.md
+original:
+  - ../../sources/repos/isaac_sim_reading_docs_readme_is01.md
 summary: "NVIDIA Isaac Sim 是基于 Omniverse / OpenUSD 的机器人仿真应用：资产导入、PhysX/Newton 物理、RTX 传感器、合成数据与 ROS 2 SIL；是 Isaac Lab 的仿真底座，与已弃用的 Isaac Gym 不是同一代产品。"
 ---
 
@@ -208,6 +210,30 @@ Isaac Sim 将一组可复用工作流指南随产品发布，让 AI 编码 Agent
 - 技能覆盖 Isaac Sim 本身的构建、调试、性能分析，也覆盖下游用户的仿真工作，例如机器人导入、物理配置、导航、操作、传感器、合成数据、渲染与 ROS 2。
 - 官方文档称技能随源码、pip 包和二进制包提供；安装后可从 `skills/` 目录接入 Agent。索引见 [官方技能清单](../../sources/sites/nvidia-isaac-sim-agent-skills.md)。
 - 运行远程控制类技能时需注意权限边界：官方文档指出它们可能在 Kit 进程中执行任意 Python，并建议将 Python Server 绑定到 `127.0.0.1`。
+
+## 核心原理：导入 → 配置 → 仿真 → 连接外部栈
+
+官方 Workflow Overview 把使用过程拆成四步，且每一步都作用于**同一个共享场景**（OpenUSD stage）：
+
+1. **导入**：场景、机器人、传感器、目标物体等资产（URDF / MJCF / CAD / USD / NuRec）。
+2. **配置**：机器人物理、传感器、通信图（OmniGraph）与语义标注。
+3. **仿真**：PhysX 或 Newton 做物理，RTX 与物理传感器做感知输出。
+4. **连接**：合成数据（Replicator）、ROS 2 SIL、Isaac Lab 训练。
+
+两条典型路径：SDG 是「标注场景 → 变化条件 → 仿真 → 渲染传感器输出」；SIL 是「配置物理、传感器与通信图 → 在上硬件前验证外部栈」。
+
+## 工程实践
+
+- **安装通道**：Quick Install、Workstation、Container、Python（pip / conda）；CI 与远程流程优先容器或 pip。
+- **源码构建**：仓库 `./build.sh`（需 GCC/G++ 11、Git LFS），产物运行 `isaac-sim.sh`；首次启动需加载并缓存扩展与 shader，可达数分钟，之后约 10–30 秒。
+- **硬件**：官方给出的本地最低 GPU 为 RTX 4080，数据中心最低 A40（以官方 GPU 要求页为准）。
+- **学习路径**：UI 基础 → Python 脚本 → URDF 导入 → ROS 2 TurtleBot → Replicator SDG → 为 Isaac Lab 准备机器人。
+
+## 局限
+
+- 不是 RL 算法库：并行训练、任务管理应交给 [Isaac Lab](./isaac-lab.md)。
+- 依赖 RTX 级 GPU 与较大的软件栈，首次启动慢；Linux 源码构建对编译器版本有限制。
+- 推断：高保真渲染与传感器会带来比轻量状态型仿真更高的资源开销，只做轻量 GPU RL 时未必划算（见上文选型对照）。
 
 ## 常见误区
 

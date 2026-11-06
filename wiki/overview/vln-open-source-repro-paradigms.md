@@ -31,6 +31,10 @@ sources:
   - ../../sources/papers/green_for_go_vla_nav_grounding_arxiv_2607_05122.md
   - ../../sources/papers/humanoidvln_arxiv_2608_12860.md
   - ../../sources/papers/crosstracer_arxiv_2608_06688.md
+original:
+  - ../../sources/repos/vlfm_readme_reading_vlnrepro1.md
+  - ../../sources/repos/navgpt_readme_reading_vlnrepro1.md
+  - ../../sources/repos/uni_navid_readme_reading_vlnrepro1.md
 summary: "VLN 新手复现策展：四条范式各一栈——VLFM（2D 语义地图）、NavGPT（LLM 推理）、NoMaD（扩散统一探索/到达）、Uni-NaVid（导航 VLA）；按模块化→语言中枢→端到端策略→统一 VLA 由浅入深，而非性能排名。"
 ---
 
@@ -42,6 +46,10 @@ summary: "VLN 新手复现策展：四条范式各一栈——VLFM（2D 语义�
 
 VLN 论文可以很前沿，但**跑不起来的代码**对初学者没有教学价值；按 **地图模块化 → LLM 推理 → 扩散端到端 → 导航 VLA** 顺序复现，比直接追 Uni-NaVid 更易建立完整直觉。
 
+## 一句话定义
+
+本页是 VLN（视觉-语言导航）**开源复现的四范式学习路径**：VLFM（地图模块化）、NavGPT（LLM 推理）、NoMaD（扩散策略）、Uni-NaVid（导航 VLA），用于选入口而非排名。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -52,6 +60,14 @@ VLN 论文可以很前沿，但**跑不起来的代码**对初学者没有教学
 | CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
 | API | Application Programming Interface | 应用程序编程接口 |
 | GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+
+## 为什么重要
+
+VLN 论文多、可运行代码少。按范式选一个能跑通的栈，可以先建立「地图—语言—策略—VLA」的完整直觉，再去读更前沿但暂未开源的工作，避免在无法复现的代码上耗时。
+
+## 核心原理
+
+四范式的差别在**决策中枢**：VLFM 用深度 occupancy map 找 frontier，并以 VLM 生成的语言对齐 value map 选择去向；NavGPT 把观测转成文本描述，由 LLM 结合历史与可探索方向逐步推理（官方 README 称其无需训练、零样本）；NoMaD 以扩散策略输出轨迹（goal masking 见下文表格）；Uni-NaVid 用视频式 VLA 直接生成动作，推理时靠在线 token merging 达到单 A100 约 5 Hz（官方 README）。
 
 ## 为什么按「范式」而不是「榜单」
 
@@ -117,6 +133,20 @@ flowchart LR
 2. **Uni-NaVid 与 UniVLA 混淆** — 前者导航 VLA，后者操作/跨平台潜动作（见 VLA 景观页）。
 3. **NavGPT 无成本** — 主要开销在 **LLM API**，非算力。
 4. **跳过 VLFM 直接 Uni-NaVid** — 失去对地图/前沿/语义代价的直觉，调试更难。
+
+## 工程实践
+
+- **VLFM：** 需分别下载 MobileSAM / GroundingDINO / YOLOv7 权重与 HM3D 场景（Matterport 账号），先 `launch_vlm_servers.sh` 起 flask 模型服务，再 `python -m vlfm.run`；用完关闭 tmux 释放 GPU。
+- **NavGPT：** 设置 `OPENAI_API_KEY`；先用 GPT-3.5 加 `--iters 10` 试跑，论文结果配置为 GPT-4。
+- **Uni-NaVid：** 仓库仅给 500 条小样本数据；优先跑 `offline_eval_uninavid.py` 离线样例，微调脚本分 stage 1 / stage 2。
+- NoMaD 的命令细节未在本页的通读范围内，以博客归档与其仓库为准。
+
+## 局限
+
+- 本页的复现门槛多为官方 README 与博客的**归纳**，未在本仓库实际运行；版本依赖（如 VLFM 的 torch 1.12.1+cu113）可能随环境失效。
+- VLFM 官方说明代码「as is」提供、无主动维护；Uni-NaVid 开源版为规避许可重写了部分函数，且未用 L3MVN，ObjectNav 性能可能略降。
+- NavGPT 作者自述零样本 R2R 性能仍不及训练模型。
+- 通读范围仅覆盖 VLFM、NavGPT、Uni-NaVid 三个官方 README；NoMaD 与各论文正文未通读。
 
 ## 关联页面
 

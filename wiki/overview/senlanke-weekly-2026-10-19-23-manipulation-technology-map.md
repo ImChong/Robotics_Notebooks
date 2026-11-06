@@ -10,12 +10,18 @@ related:
   - senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
+original:
+  - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23_reading_mt37.md
 summary: "senlanke 具身运控lab 10-19–10-23 Manipulation周报：37 条论文条目，每条对应唯一 arXiv 详情节点（新建 26 / 复用 11）。"
 ---
 
 # senlanke 周报索引：10-19–10-23 Manipulation（37 篇）
 
 > **本页定位**：为 [【10.19-10.23前沿论文动态】Manipulation 37篇](https://mp.weixin.qq.com/s/kn-3vRhkVME86YZupnuSmQ) 提供按周报分栏组织的 **37 个条目 → 唯一 arXiv 详情节点**索引。★ 为周报标注的重点论文。
+
+## 一句话定义
+
+senlanke 具身运控lab 10-19–10-23 一周 Manipulation 论文周报（37 篇）的分栏索引页，把每条映射到唯一 arXiv 详情节点。
 
 ## 一句话观点
 
@@ -29,6 +35,24 @@ summary: "senlanke 具身运控lab 10-19–10-23 Manipulation周报：37 条论�
 | WAM | World Action Model | 世界–动作联合建模 |
 | RL | Reinforcement Learning | 强化学习 |
 | IL | Imitation Learning | 模仿学习 |
+
+## 为什么重要
+
+周报把同一周的 37 篇操作论文按 10 个分栏归类，读者可先按栏目定位方向，再进入唯一的 arXiv 详情节点；VLA、WAM、RL 后训练、触觉与全身操作在同一周集中出现，便于观察研究重心（以下归纳为基于周报条目的推断）。
+
+## 核心原理
+
+索引遵循「周报分栏 → 唯一 arXiv 节点」的映射：同一 arXiv 论文跨「人形/四足」与「Manipulation」两篇周报时复用同一节点（本期新建 26 / 复用 11）。周报每条只给「解决的问题 / 创新点」摘要，本页不做横向排名。
+
+## 工程实践
+
+- 查证某篇论文的技术细节时，以详情节点引用的 arXiv 原文为准，不以周报摘要为准。
+- 新增周报时按分栏补表，并先按 arXiv ID 去重。
+
+## 局限
+
+- 周报多数条目机构为「待核实」，且仅有摘要级描述，无实验对比。
+- 本页未逐篇通读 37 篇 arXiv 原文，只通读了周报全文。
 
 ## 论文索引
 
@@ -116,6 +140,10 @@ summary: "senlanke 具身运控lab 10-19–10-23 Manipulation周报：37 条论�
 - [vla](../methods/vla.md)
 - [world-action-models](../concepts/world-action-models.md)
 - [人形/四足周报索引（同期另一篇）](senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md)
+
+## 继续阅读
+
+- [senlanke 10-26–10-30 Manipulation 周报](senlanke-weekly-2026-10-26-30-manipulation-technology-map.md)
 
 ## 参考来源
 

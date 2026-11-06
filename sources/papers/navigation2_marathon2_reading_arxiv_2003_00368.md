@@ -25,3 +25,4 @@
 ## 对 wiki 的映射
 
 - [`wiki/overview/navigation-slam-autonomy-stack.md`](../../wiki/overview/navigation-slam-autonomy-stack.md)
+- [`wiki/entities/navigation2.md`](../../wiki/entities/navigation2.md)

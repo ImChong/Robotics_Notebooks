@@ -3,6 +3,8 @@ type: overview
 tags: [hub, hub-tactile, haptic, force, contact, visuo-tactile]
 status: complete
 updated: 2026-10-27
+original:
+  - ../../sources/papers/tactile_based_manipulation_survey_reading_hubtac.md
 summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉融合、阻抗/力控与接触估计，强调「摸得着」对抓取与 loco-manip 稳定性的作用。"
 ---
 
@@ -49,6 +51,31 @@ summary: "触觉与力觉闭环知识链汇总：覆盖触觉传感、视触觉�
 | 管线轴综述 | 多模态 + 多阶段策略–控制 | [TF-ART](../entities/paper-tf-art-tactile-force-survey.md)（arXiv:2608.07558；Awesome 清单已开源） |
 | 研究范式综述 | 力学驱动 ↔ 数据驱动操作 | [Tactile-Based Robotic Manipulation](../entities/paper-tactile-based-robotic-manipulation-survey.md)（arXiv:2610.30438；Annual Review，触觉操作综述） |
 | 表征学习综述 | 自监督表示 + 策略/预测/泛化管线 | [Tactile-Guided Robot Learning](../entities/paper-tactile-guided-robot-learning-survey.md)（arXiv:2610.20134；触觉学习综述） |
+
+## 核心原理
+
+> 依据 [Tactile-Based Robotic Manipulation 综述](../entities/paper-tactile-based-robotic-manipulation-survey.md)（arXiv:2610.30438）通读归纳。
+
+- **力学驱动（感知→动作）**：把触觉解释为接触力/力矩、接触位置、物体位姿、滑移、外在接触等显式描述符，再用于闭环伺服、状态切换或调整底层控制参数；优点是可解释、轻量、低延迟。
+- **数据驱动**：模仿学习、强化学习、VLA 与预测模型直接从数据学触觉表征与策略；朴素地把触觉当额外输入常无增益，需专门的表征、融合或力输出设计。
+- **触觉本质是间接测量**：传感器测的是接触引起的形变，且强依赖具体硬件。
+
+## 工程实践
+
+- 需要低延迟反应时，常让慢速视觉策略与高频低维触觉（F/T、标记位移）策略分层，或输出力目标并交给阻抗/导纳控制执行。
+- 仿真训练倾向使用二值接触、接触位置等低维触觉以缩小 sim-to-real 差距；涉及力估计、摩擦、滑移时需更高保真度。
+- 选型建议见上表中的 TacO 基准与各传感器页；传感器耐久、延迟与易集成与信号丰富度同样重要（综述观点）。
+
+## 局限
+
+- 传感器异构使数据集与模型难以跨硬件复用；缺少统一评测任务，多数工作为窄任务成功率。
+- 触觉 VLA 多为一任务一策略，泛化论证薄弱；触觉世界模型目前只在短时程接触反应任务上见效。
+- 力学驱动方法在接触复杂、难建模时退化；真机触觉 RL 受数据成本与传感器磨损限制。
+
+## 继续阅读
+
+- [Tactile-Based Robotic Manipulation 综述](../entities/paper-tactile-based-robotic-manipulation-survey.md)、[Tactile-Guided Robot Learning 综述](../entities/paper-tactile-guided-robot-learning-survey.md)、[TF-ART](../entities/paper-tf-art-tactile-force-survey.md)
+- [Tactile Sensing](../concepts/tactile-sensing.md)、[Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 
 ## 与其他知识链的关系
 

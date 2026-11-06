@@ -40,6 +40,8 @@ related:
   - ../entities/current-robotics-currentworld.md
   - ../entities/paper-embodiedgen-v2-sim-ready-world-engine.md
   - ../tasks/vision-language-navigation.md
+original:
+  - ../../sources/papers/wm_robot_survey_reading_arxiv_2605_00080_tax1.md
 sources:
   - ../../sources/papers/wm_robot_survey_arxiv_2605_00080.md
   - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
@@ -62,7 +64,7 @@ summary: "依据 arXiv:2605.00080 与策展解读，把机器人世界模型整�
 
 > **本页定位**：为 [World Model for Robot Learning: A Comprehensive Survey](https://arxiv.org/abs/2605.00080)（NTUMARS 等，2026）提供 **机器人学习语境下的阅读坐标**；不复述 43 页文献清单，只保留 **问题重框、三线分工、评价口径** 与和本库已有页面的挂接。
 
-## 一句话观点
+## 一句话定义
 
 机器人世界模型的下一步，不是继续证明「会生成未来视频」，而是证明 **预测出的未来能进入策略学习、任务评估与闭环决策**——开环像不像真，不足以说明机器人有没有变强。
 
@@ -75,6 +77,10 @@ summary: "依据 arXiv:2605.00080 与策展解读，把机器人世界模型整�
 | RL | Reinforcement Learning | 可在想象环境中 rollouts 微调 |
 | VLA | Vision-Language-Action | 级联路线中动作解码的上层 |
 | IDM | Inverse Dynamics Model | 由预测未来反推动作的常见模块 |
+
+## 为什么重要
+
+纯反应式 VLA 在长程物理任务中易受时间信用分配与误差累积困扰（综述 §1）；世界模型补上「动作之后世界如何变」这一环，并可作为后训练环境、策略评估器与数据放大器。名称相同而目标不同的工作若不分线，评测口径会混乱，下一节展开。
 
 ## 为什么需要单独 taxonomy
 
@@ -102,6 +108,14 @@ flowchart TB
 | **① 策略内世界模型** | 执行 \(a\) 前，内部推演 \(o'\) 是否合理？ | [VLA](../methods/vla.md)、[WAM](../concepts/world-action-models.md)、[Being-H0.7](../methods/being-h07.md)（潜空间先验）、[mimic-video](../methods/mimic-video.md)、[τ₀-WM](../entities/tau0-world-model.md)（动作条件仿真 + 测试时修订）、[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md)（空中 VLN · 自回归 WAM） |
 | **② 学习型模拟器** | 真机数据贵、传统仿真不够真，能否学可用「中间环境」？ | [Model-Based RL](../methods/model-based-rl.md)、[Video-as-Simulation](../concepts/video-as-simulation.md)、[Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)（状态动力学口径）、[OSCAR](../entities/paper-oscar.md)（骨架条件 WM + RoboArena 虚拟策略评估）、[DriftWorld](../entities/paper-driftworld.md)（1-step drifting + 离线评估）、[Masked Visual Actions](../entities/paper-masked-visual-actions.md)（掩码动作条件 + 规划/评估）、[Ctrl-World](../entities/paper-ctrl-world.md)（多视角 VLA 闭环评估 + 合成 SFT）、[WALL-SS](../entities/paper-wall-ss.md)（next-scale AR 流式 + 虚实成功率校准）、[CurrentWorld-0](../entities/current-robotics-currentworld.md)（跨本体交互模拟器 + Human-in-the-World-Model）、[M⁴World](../entities/paper-m4world.md)（驾驶环视+LiDAR 可控仿真）、[ABot-World-0](../entities/paper-abot-world-0.md)（键盘交互桌面实时视频世界） |
 | **③ 机器人视频世界模型** | 生成的未来是否 **受动作控制** 且 **物理/几何可信**？ | [Generative World Models](../methods/generative-world-models.md)、[Latent Imagination](../concepts/latent-imagination.md)、[WEM](../entities/paper-wem-world-ego-modeling.md)（world/ego 解耦 + 混合长程基准 HTEWorld）、[GE-Sim 2.0](../entities/ge-sim-2.md)（闭环 rollout + 本体状态 + World Judge）、[OSCAR](../entities/paper-oscar.md)（跨具身骨架条件 + 四阶段数据管线）、[DriftWorld](../entities/paper-driftworld.md)（非扩散单次前向动作条件）、[Masked Visual Actions](../entities/paper-masked-visual-actions.md)（像素掩码轨迹统一前向/逆向）、[Ctrl-World](../entities/paper-ctrl-world.md)（帧级动作 + 多视角）、[WALL-SS](../entities/paper-wall-ss.md)（next-scale AR + 有界时间–尺度记忆）、[Wan](../entities/paper-wan-video.md) / [Wan-Move](../entities/paper-wan-move.md)（开源视频先验与轨迹可控 I2V）、[M⁴World](../entities/paper-m4world.md)（物体外观条件 + 分钟级驾驶流式）、[ABot-World-0](../entities/paper-abot-world-0.md)（LongForcing + 单卡 720P 流式） |
+
+## 核心原理：同一联合分布的不同查询（综述 §2–§4）
+
+综述（原文已通读，见 [通读归档](../../sources/papers/wm_robot_survey_reading_arxiv_2605_00080_tax1.md)）给出一个统一视角：策略 \(p(a\mid o,l)\)、被动世界模型（视频生成）\(p(o'\mid o,l)\)、可控世界模型与逆动力学模型，都是同一联合分布 \(p(o',a\mid o,l)\) 的不同边缘/条件查询，所以世界模型与策略可以自然耦合。其「世界模型」是功能性定义：必须捕获与机器人交互相关的环境演化，并能支撑策略相关计算（控制、规划、模拟、评估、数据生成）；仅生成好看的未来画面不算。
+
+- **与策略耦合的五种实现**：解耦 predict-then-act（IDM 式）、单骨干联合建模、MoE/MoT 专家耦合、统一 VLA 内化、潜空间世界建模；差别在推理时视觉分支保留多少。视频预训练骨干是否优于同规模 VLM 骨干，原文明确称仍是开放经验问题。
+- **作为模拟器的两种用途**：RL 后训练（世界模型输出观测、奖励、终止，用 GRPO 类目标优化策略；进阶是模拟器与策略共同演化）与决策时/离线评估（候选筛选、MPC、策略排名）；原文警示幻觉与长程误差会直接污染评估信号。
+- **机器人视频世界模型四阶段**：想象式监督 → 动作可控 → 结构感知 → 基础模型化。
 
 ## 路线演化：从「想象未来」到「训练闭环」
 
@@ -149,6 +163,18 @@ flowchart TB
 - 是否在 **闭环任务** 中提高成功率？
 
 若三者答不好，世界模型容易退化为 Demo。本库 [EWMBench](../entities/ewmbench.md) 讨论 **操纵场景守恒** 类指标；[GE-Sim 2.0](../entities/ge-sim-2.md) 把 **任务成功判定与奖励** 内置进模拟器并报告真机策略增益；[WEM / HTEWorld](../entities/paper-wem-world-ego-modeling.md) 进一步覆盖 **导航–操作交错、多轮长程** rollout；[OSCAR](../entities/paper-oscar.md) 在 [RoboArena](../methods/roboarena.md) 上验证 **开环 WM rollout 与真机策略排名相关性**；[DriftWorld](../entities/paper-driftworld.md) 用 **1-step drifting** 把离线评估相关性推到约 **0.99** 同时压低推理时搜索成本；[Masked Visual Actions](../entities/paper-masked-visual-actions.md) 用 **像素掩码动作** 做 RoboCasa 策略评估（**r=0.982**）并统一前向/逆向；[Ctrl-World](../entities/paper-ctrl-world.md) 用 **多视角 policy-in-the-loop** 对齐指令跟随排名并用合成轨迹 SFT；[WALL-SS](../entities/paper-wall-ss.md) 用 **next-scale AR** 做 **600** 对虚实成功率校准（\(r=0.93\)）；[CurrentWorld-0](../entities/current-robotics-currentworld.md) 把同一评测叙事扩到 **跨本体 + 力触觉 + 失败态回滚分支后训练**（官方博客自报，确认未开源）；[GigaWorld-1](../entities/paper-gigaworld-1-policy-evaluation.md) 系统论证 **长时序动作忠实 rollout** 比短时视觉逼真更决定策略评估质量，可与上述口径对照阅读。
+
+## 工程实践
+
+- **选型先问接口**：需要在线推演/规划时看世界模型能否被动作条件化并返回奖励；只想借视频先验时可走潜空间或训练期共训（原文提到 Fast-WAM 的收益更多来自训练期视频共训，推理期可不渲染未来）。
+- **评估用三类基准组合**：开环动作条件质量（如 EWMBench、RBench）、闭环策略排序/价值保真（WorldEval、WorldArena、World-in-World）、物理与可执行诊断（WorldSimBench、IDM 图灵测试）；原文结论是没有单一指标足够。
+- **推断（非原文）**：落地时优先报告「虚实策略排序相关性」这类闭环指标，并保留开环指标作为回归监控。
+
+## 局限
+
+- 原文列出的挑战：因果条件缺口（未来更依赖历史与任务意图而非待执行动作）、扩散去噪与 MPC 的计算开销、触觉/力觉等非视觉信号融合不足、与经典控制稳定性保证的整合、符号结构整合、缺少公认的功能导向评价指标。
+- 基准结果跨数据集迁移弱、汇报不标准（LIBERO、RoboTwin、CALVIN、SIMPLER），长程任务仍是主要区分点；失败恢复与决策敏感变化的数据稀缺。
+- 本页只覆盖综述主线，不复述文献清单；产业侧自报数字（如 CurrentWorld-0）未经独立复现。
 
 ## 姊妹篇：2026-07 动作后果横切面
 

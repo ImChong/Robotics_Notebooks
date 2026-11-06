@@ -13,6 +13,8 @@ related:
   - ./isaac-lab.md
 sources:
   - ../../sources/repos/awesome-physical-ai-aichr.md
+original:
+  - ../../sources/repos/awesome_physical_ai_aichr_readme_reading_ch7q.md
 summary: "aichr 组织维护的 Physical AI 策展清单：VLA、3D 视觉、仿真、边缘推理、硬件与 ROS 框架；CC0 列表。"
 ---
 
@@ -40,6 +42,18 @@ summary: "aichr 组织维护的 Physical AI 策展清单：VLA、3D 视觉、仿
 - **工业 VLA 入口快：** GR00T、π0、Gemini Robotics、Octo 等同屏，适合 **选型扫一眼**。
 - **CC0 列表：** 鼓励 fork/重组；与 natnew MIT 仓许可证不同，引用时注意 **条目上游 License**。
 
+
+## 核心机制
+
+- **组织方式：** README 以 12 个主题章节平铺（Contents 列出），章内再分小节（如 VLA 分 Industry Models / Academic Papers），条目为「名称 + 链接 — 一句话说明」，无打分或分类标签体系。
+- **图例（Legend）：** 📄 Paper、🎬 Demo Video、💻 Open Source Code、🤖 Hardware-Verified；其中 🤖 表示「硬件验证」，并非泛指机器人条目。
+- **与 natnew 版的结构差异（推断）：** 本清单约 250 行、章节少、偏资源入口；natnew 版有 14 类 taxonomy 与更长注释。
+
+## 工程实践
+
+- **选型扫读：** 先看 Foundation Models 与 Simulators 两章，再按部署目标跳到 Edge AI（Jetson / TensorRT / llama.cpp 量化）与 Hardware（EtherCAT、ROS 2 Control）。
+- **入门路径（推断，README 未明示）：** Gymnasium / MuJoCo / Isaac Lab 仿真 → LeRobot 训练 → 边缘部署；课程章列 Stanford CS 224R 与 LeRobot 教程。
+- **引用前核对：** 条目多为单行描述，规模、许可与指标（如 Open X-Embodiment 的 1M+ 轨迹）须回到上游页面确认。
 
 ## 清单条目覆盖（2026-09-20）
 

@@ -19,6 +19,8 @@ related:
   - ./awesome-egocentric-vision.md
   - ./awesome-touch.md
   - ./awesome-real2sim2real.md
+original:
+  - ../../sources/repos/awesome-world-models-readme-reading.md
 sources:
   - ../../sources/repos/awesome-world-models.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
@@ -66,6 +68,25 @@ summary: "sun254667 维护的 Awesome World Models：覆盖范式分册、WAM/VL
 | Interactive + WAM & VLA | Cascaded vs Joint；WM 用于 VLA 训练与评测 |
 | MBRL + Applications | 经典 Dreamer 系 → 具身操作/导航/loco-manip、驾驶、GUI Agents |
 | Data / Techniques / Sim | 基准、记忆与推理加速、物理引擎与可微仿真 |
+
+## 方法栈（清单的组织逻辑）
+
+通读 README 全文（见 [通读归档](../../sources/repos/awesome-world-models-readme-reading.md)）后，清单可看成一条从「世界怎么表示」到「怎么用于决策」的栈：
+
+1. **表示层（§4）**：语言 / 视频 / 3D·4D / 潜空间（JEPA、DINO-WM 一类）/ 物体中心 / 符号·神经符号 / 通用基础模型（Cosmos、Genie 等）七类范式。
+2. **交互层（§5）**：把视频生成改造为可按动作交互、带长程记忆的模型（含游戏与开放世界）。
+3. **决策接口层（§6–§7）**：WAM / VLA 分级联、联合统一、「WM 用于 VLA 训练与评测」三类；MBRL 分经典系列（Dreamer、TD-MPC2）、连续控制、离线与泛化。
+4. **应用与支撑层（§8–§12）**：机器人六个子类（基础 / 操作 / 导航 / 足式 / 与策略学习 / 策略评测）、驾驶、GUI、科学、社会仿真；数据集与基准、记忆 / 后训练 / 高效推理、仿真平台、理论与立场。
+5. **收尾（§13–§14）**：相关清单与「关键研究挑战」——持久状态核心、物理落地、指令泄漏、反事实可控性、模型失配下的重规划、反应能力评估、模态感知蒸馏、可验证性。
+
+清单收录标准偏好顶会顶刊；许可 CC0 1.0。
+
+## 工程实践（怎么用这份清单）
+
+- **按任务选入口**：做操作选 §8.1.2 与 §6；做评测选 §8.1.6、§9 与 §11.5（清单中 WorldArena、World-in-World、WorldEval 等并列）；做上手实现看 §2（Nano World Models、minWM、StableWM）。
+- **先看综述再下钻**：§1 含 World Action Models 综述、机器人学习综述、WM 评测立场文章（L0–L7 阶梯）等，可先定术语边界。
+- **每条只给一句话亮点**：选型后须回到论文 / 项目页核对结论与开源状态（推断：清单本身不做复现或质量筛查）。
+- **跟踪热点**：带 🆕 标记的条目为近期新增，适合追新；与站内 [技术地图](../overview/sun-awesome-wm-technology-map.md) 对照可看已深读的部分。
 
 ## 局限与使用注意
 

@@ -2,6 +2,8 @@
 type: comparison
 tags: [hardware, actuator, qdd, open-source, humanoid, quadruped, foc, motor-control, odri, berkeley]
 status: complete
+original:
+  - ../../sources/papers/3d_printed_open_source_actuators_reading_arxiv_2202_12395_qdd1.md
 updated: 2026-09-15
 related:
   - ../entities/odri-solo-and-bolt.md
@@ -47,6 +49,10 @@ summary: "开源力矩/QDD 关节选型对比：两类项目（成品电机+开�
 
 > 对比轴：**完整开源关节（电机采购）** vs **电机本体也开源**；附驱动器配套与建议学习顺序。
 
+## 一句话定义
+
+开源 QDD / 力矩关节执行器项目对比，是按「开放粒度」（成品电机 + 开源关节 vs 电机本体也开源）与学习目标，对 ODRI、Berkeley Humanoid Lite、Internal Cycloidal 等项目做选型与学习顺序的整理。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -68,6 +74,15 @@ summary: "开源力矩/QDD 关节选型对比：两类项目（成品电机+开�
 ## 为什么重要
 
 人形/腿足想自研力矩关节时，网上「开源执行器」混杂：有的只开 CAD，有的只开固件，几乎没有同时公开电磁设计、加工图、驱动 PCB、固件与可靠性测试的工业级方案。按**开放粒度**和**学习目标**分类，比按「星标高低」扫仓库更有效。
+
+## 核心原理：QDD 的取舍（以 Urs 论文为原文依据）
+
+> 依据 [Urs et al. 2022](https://arxiv.org/abs/2202.12395) 通读；下列为论文结论，推断处已标注。
+
+- QDD 用低减速比换背驱性与低反射惯量：Ja = N²·Jm，7.5:1 约 6.4e-4 kg·m²，15:1 约 2.2e-3 kg·m²。
+- 低减速意味着要靠大电流出力矩，**热是主要限制**：论文用独立风扇把总热阻降约 3.5 倍，持续力矩近乎翻倍（7.5:1 连续 4.4 N·m）。
+- 全 3D 打印传动（材料 <200 美元）在 57 小时、约 42 万步 Mini Cheetah 步态回放中无失效，背隙增长约 26 mrad；说明打印件可作研究级原型（推断：量产与冲击工况仍需另验）。
+- 选型含义：先定目标力矩/速度/惯量，再共同选电机与减速比；低 KT 电机可用更高减速比补偿，代价是反射惯量与效率（15:1 Wolfrom 效率偏低）。
 
 ## 核心对比：两类开源
 

@@ -15,6 +15,8 @@ related:
   - ./gravity-compensation.md
 sources:
   - ../../sources/courses/quadruped_control_simulation_rl_curriculum.md
+original:
+  - ../../sources/papers/bam_extended_friction_reading_arxiv_2410_08650_fc7.md
 summary: "Friction Compensation 在控制力矩上叠加摩擦前馈项，缩小仿真—真机力矩跟踪 gap；四足 Project 3 对比无补偿、补偿与补偿+DR。"
 ---
 
@@ -73,6 +75,22 @@ $$
 
 三者 **可叠加**；课程实验设计为「补偿+DR」优于单独一项。
 
+## 核心原理
+
+补偿的前提是摩擦模型足够准。Duclusaud 等（BAM，arXiv 2410.08650）指出主流仿真器的 Coulomb–Viscous 模型 $\tau_f=-K_v\dot\theta-\mathrm{sign}(\dot\theta)K_c$ 在 $\dot\theta=0$ 处为零且换向不连续，并把摩擦改写为"阻止运动的力矩预算"$\tau_f^m$（实际摩擦被限幅在 $[-\tau_f^m,\tau_f^m]$）。其扩展族 M2–M6 依次加入 Stribeck 效应、负载相关项、方向性与二次项；摩擦随负载 $|\tau_m-\tau_e|$ 增大，是上面"典型实现"中仅含 $\tau_c,b$ 的两参数式所缺的部分。
+
+## 工程实践
+
+- 参数来源：摆锤台架上以 CMA-ES 最小化仿真/实测轨迹 MAE（75% 辨识、25% 验证），含"抬起释放"轨迹以区分反电动势与粘滞（BAM §V）。
+- 模型选择不是越复杂越好：Dynamixel 上 M4 在 2R 臂最优，M5 辨识集更好但 2R 臂无提升（作者推测过拟合）；谐波减速器 eRob80:100 上 M6 最优（BAM §VI）。
+- 推断：把 BAM 辨识出的 $\hat\tau_f$ 作实机前馈项时，需与低增益 PD 下的力矩饱和、限幅一并考虑；论文本身只验证了仿真侧精度。
+
+## 局限
+
+- BAM 未建模温度、径向力与驻留时间（dwell time），补偿模型随温升漂移时需重新辨识。
+- 补偿只缩小系统性偏差，残余误差仍需 DR 等手段兜底（见上文）。
+- 以上定量结论来自两类舵机/谐波执行器的台架实验，是否外推到其他关节模组需自行验证。
+
 ## 常见误区
 
 - **补偿模型错符号**：换向瞬间力矩加倍振荡。
@@ -96,3 +114,4 @@ $$
 ## 参考来源
 
 - [sources/courses/quadruped_control_simulation_rl_curriculum.md](../../sources/courses/quadruped_control_simulation_rl_curriculum.md) — 课程 Ch6 与 Project 3
+- [sources/papers/bam_extended_friction_reading_arxiv_2410_08650_fc7.md](../../sources/papers/bam_extended_friction_reading_arxiv_2410_08650_fc7.md) — BAM 扩展摩擦模型全文通读归档

@@ -76,6 +76,8 @@ sources:
   - ../../sources/papers/p3_arxiv_2607_25541.md
   - ../../sources/papers/vb_com_arxiv_2502_14814.md
   - ../../sources/papers/solo_arxiv_2608_26583.md
+original:
+  - ../../sources/papers/extreme_parkour_reading_arxiv_2309_14341_sp1.md
 summary: "楼梯、台阶与离散障碍上的腿式/人形运动中心节点：按「是否显式地形感知」「上/下楼梯」「越障/跑酷」组织文献与概念，楼梯/越障方向的新工作也从这里找。"
 ---
 
@@ -200,6 +202,27 @@ flowchart TB
 | 特权地形 teacher | [Privileged Training](../concepts/privileged-training.md) |
 | 运动任务总览 | [Locomotion](./locomotion.md)、[Humanoid Locomotion](./humanoid-locomotion.md) |
 | 人形 RL 八层栈 | [Humanoid RL Motion Control Body System Stack](../overview/humanoid-rl-motion-control-body-system-stack.md) |
+
+## 核心原理 / 方法栈
+
+- **感知–控制路线（站内文献归纳）：** 显式地形/高程图 + RL、特权 teacher 蒸馏到深度学生、端到端深度/点云策略、model-based 落脚点 + RL、盲走本体历史，详见上方「分类坐标」与「选型速查」。
+- **以 Extreme Parkour 为例（已通读原文，见 [通读归档](../../sources/papers/extreme_parkour_reading_arxiv_2309_14341_sp1.md)）：** 阶段 1 在仿真中以 scandots + 路点航向训练特权教师；阶段 2 用 DAgger 蒸馏为 conv-GRU 深度学生，并以「教师/学生混合（MTS）」航向缓解预测航向的分布漂移；奖励用世界系速度内积跟踪 + 脚部边缘惩罚统一多种行为。
+- **可迁移结论（推断）：** 离散地形上「特权信息→可部署感知」的两阶段范式与足端边缘惩罚，是后续楼梯/跑酷工作的共同骨架。
+
+## 工程实践
+
+- **延迟与抖动处理：** Extreme Parkour 将深度延迟固定为 0.08 s、本体延迟固定为 0.016 s，深度 10 Hz、策略 50 Hz，运行于 Jetson NX（原文 §4.1）。
+- **课程与奖励：** 自动地形课程（走过一半升级、不足期望距离一半降级），并在世界系计算速度跟踪以防策略绕障。
+- **选型与误区：** 见下方「选型速查」「常见误区」。
+
+## 局限
+
+- 所引 Extreme Parkour 为 Unitree A1 四足，人形直接迁移需另行验证；其真机每地形仅 5 次试验，统计力度有限。
+- 本页是策展索引，各论文的具体数值以对应实体页与原文为准；新工作的结论尚未经本页统一复现。
+
+## 继续阅读
+
+- 见下方「推荐继续阅读」与「资料索引（站内）」。
 
 ## 选型速查
 

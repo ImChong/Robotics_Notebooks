@@ -17,6 +17,8 @@ related:
   - ../formalizations/bellman-equation.md
   - ../queries/rl-hyperparameter-guide.md
   - ../concepts/cartpole.md
+original:
+  - ../../sources/papers/ppo_reading_arxiv_1707_06347.md
 sources:
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
@@ -77,6 +79,10 @@ $$\nabla_\theta J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_t 
 $$A(s,a) = Q(s,a) - V(s)$$
 
 > "这个动作比平均水平好多少？"——而不是它的绝对回报。估计方法见 [Generalized Advantage Estimation (GAE)](./gae.md)，它通过 λ 权衡偏差与方差。
+
+## 核心原理
+
+策略优化的主线是"采样 → 估计优势 → 限制步长地更新"：策略梯度给出方向（见上文 Policy Gradient 定理），优势函数降方差，信赖域 / clip / 熵正则控制每步更新幅度。PPO 原文（Schulman et al., 2017）指出：对同一批轨迹反复优化未约束的策略梯度目标会造成破坏性的过大更新；裁剪概率比的代理目标是未裁剪目标的悲观下界，只用一阶优化即可对同一批数据做多 epoch 小批量更新。
 
 ## 主要分类
 
@@ -175,6 +181,20 @@ SAC 常用于：
 - `n_steps`：24～64 步
 - `clip_range`：0.1～0.2
 - `learning_rate`：3e-4（可衰减）
+
+## 工程实践
+
+- PPO 原文在 MuJoCo 上的默认配置：T=2048、Adam 3e-4、10 epoch、minibatch 64、γ=0.99、λ=0.95；ε=0.2 在其替代目标对比中最佳（ε=0.1 / 0.3 稍差）。
+- 并行 actor 各采 T 步再合并为 N·T 的批次是原文算法的标准结构，与上文 Isaac 大规模并行环境的做法一致。
+- 策略与价值共享参数时，总损失需加价值误差项与熵奖励项（原文式 9）。
+- 机器人侧的 reward 设计、观测设计与超参起点见上文"常见问题和调参技巧"。
+
+## 局限
+
+- on-policy 方法（PPO、TRPO）样本利用率低，依赖大规模并行仿真；样本受限场景更适合 off-policy（SAC 等）。
+- PPO 原文自述的结果主要来自 MuJoCo / Roboschool / Atari 基准；Atari 上按末 100 回合成绩 ACER 略占优（PPO 学得快、终局性能不一定最优）。
+- 无裁剪无惩罚的目标在其实验中表现明显变差，说明更新幅度约束不可省；clip 只是信赖域的近似，并非严格保证（推断，见 BRRL 对其理论的补充讨论）。
+- 超参（ε、epoch 数、minibatch）对不同任务敏感，需按任务调参。
 
 ## 参考来源
 

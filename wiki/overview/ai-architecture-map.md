@@ -15,6 +15,8 @@ related:
   - ./hub-vision-backbone.md
   - ./hub-learning.md
   - ./hub-vla.md
+original:
+  - ../../sources/papers/attention_is_all_you_need_reading_aam1.md
 sources:
   - ../../sources/personal/ai-architecture-map.md
   - ../../sources/papers/ai_architecture_foundations.md

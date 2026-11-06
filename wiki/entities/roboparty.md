@@ -31,12 +31,18 @@ sources:
   - ../../sources/sites/roboparty_rp1_official.md
   - ../../sources/repos/roboparty_rp1.md
   - ../../sources/repos/roboparty_deploy.md
+original:
+  - ../../sources/repos/roboto_origin_readme_reading_rp3.md
 summary: "RoboParty（上海萝博派对科技）是国内专注全栈开源双足人形的创业公司：Roboto Origin 整机开源基线 + RoboParty Lab / Party OS 研发基础设施（MimicLite、UFO、hhtools）；Lab 联署 INTACT 等世界模型工作。"
 ---
 
 # RoboParty（萝博派对）
 
 **RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 [Roboto Origin](./roboto-origin.md) 开源整机与文档降低复现门槛，再以 [RoboParty Lab](https://lab.roboparty.com) 与 [Party OS](./party-os.md) 沉淀训练、控制与数据工具链基础设施。
+
+## 一句话定义
+
+RoboParty 是以「全栈开源双足人形」为主线的国内创业公司：整机基线 Roboto Origin 加 Lab / Party OS 研发基础设施。
 
 ## 英文缩写速查
 
@@ -56,6 +62,10 @@ summary: "RoboParty（上海萝博派对科技）是国内专注全栈开源双�
 2. **整机 → 基础设施的演进**：2026 年起从 [Roboto Origin](./roboto-origin.md) 走向 [Party OS](./party-os.md)，显式解决年轻研究者「idea 输在基建」的问题。
 3. **工程与学术双线**：Lab 侧同时推进 MimicLite（监督跟踪）、UFO（无监督 RL）、[TeCH](./paper-tech-humanoid-control.md) 等可对标 SONIC / BFM-Zero 的产出，并与 [mjlab](./mjlab.md) 等训练栈对齐；另联署 [INTACT](./paper-intact.md)（意图→动作无搜索世界模型，组织镜像 [Roboparty/INTACT-JEPA](https://github.com/Roboparty/INTACT-JEPA)）。
 4. **生态位**：在国内开源人形谱系中与 [OpenLoong](./openloong.md)、[Berkeley Humanoid Lite](./berkeley-humanoid-lite.md) 等形成不同门槛与软件栈的对照（见 [开源人形硬件对比](./open-source-humanoid-hardware.md)）。
+
+## 核心原理
+
+公司的做法是把整机研发链路（结构、电子、训练、部署）公开为可复现的子仓库，再把运控方法沉淀为 Lab 工具。依据 roboto_origin README：原型四个月完成，可经淘宝采购与嘉立创打样自行组装，配合开源训练与部署代码实现行走与奔跑；聚合仓仅是子仓快照，贡献应提交到各子仓。详见下节「核心结构」。
 
 ## 核心结构
 
@@ -124,6 +134,10 @@ RoboParty 的 GitHub 组织入口为 [github.com/Roboparty](https://github.com/R
 |------|--------------|--------------|
 | RPO / Roboto Origin | 完整项目已开放；详见 [Roboto Origin 来源归档](../../sources/repos/roboto_origin.md) | [代码组织](https://github.com/Roboparty) · [官方文档](https://roboparty.com/roboto_origin/doc) |
 | RP1 | 硬件文件、固件、仿真模型、训练工具按路线图分批发布；各模块开放状态可能不同 | [GitHub 组织](https://github.com/Roboparty) · [RoboParty 官网](https://roboparty.com/) |
+
+## 工程实践
+
+按 roboto_origin README 的子仓分工上手：`rpo_hardware` 取结构与 BOM，`rpo_description` 取 URDF / MJCF，`roboparty_train` 在 IsaacLab 训练并 Sim2Sim 到 MuJoCo，`roboparty_deploy` 经 ROS2 部署，`roboparty_firmware` 负责固件与 USB2CAN。README 标注的软件栈为 ROS2 Humble、Isaac Sim 4.5.0、Isaac Lab 2.1.1、Python 3.10。实体机运行的后果由操作者自负，需先做充分安全测试。
 
 ## 常见误区 / 局限
 

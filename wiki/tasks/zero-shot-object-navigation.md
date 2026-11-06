@@ -29,6 +29,8 @@ sources:
   - ../../sources/papers/graph_mambanav_arxiv_2608_13723.md
   - ../../sources/papers/mocap_arxiv_2610_20998.md
   - ../../sources/papers/rtnav_arxiv_2608_26496.md
+original:
+  - ../../sources/papers/vlfm_reading_arxiv_2312_03275_zson.md
 summary: "零样本目标导航（ZSON / ObjectNav）：在未见环境中按开放词汇物体目标探索并到达，无需该目标类别的导航微调；常见 Habitat 评测与四足/轮腿真机部署。"
 ---
 
@@ -98,6 +100,16 @@ flowchart TB
 - **实时系统与墙钟评测：** [RTNav](../entities/paper-rtnav.md) 将 Habitat 以 30 Hz 墙钟持续推进，并行运行感知、建图、规划和导航；用 SCT 补充 SR/SPL，显式计入 VLM 推理等待时间。
 
 - **图关系 + 长时序方法：** [Graph-MambaNav](../entities/paper-sa-2608-13723-graph-mambanav.md) 在 ObjectNav 对象图里用目标关系先验控制 Graph-Mamba 扫描顺序，并以逐物体 Mamba 记忆补长程上下文；AI2-THOR / RoboTHOR 有仿真评测，但真机证据目前是轮式底盘找书演示。
+
+## 核心原理
+
+以下摘自对 VLFM（arXiv 2312.03275）的通读，作为「语义前沿 + 价值图」这一代表性零样本范式的原理说明（见[阅读归档](../../sources/papers/vlfm_reading_arxiv_2312_03275_zson.md)）：
+
+- **三阶段：** 原地转一圈初始化 → 在占据图前沿中按价值选择探索航点 → 检测到目标后走向其最近点并 STOP。
+- **价值图：** 用 BLIP-2 对当前 RGB 与含目标名的提示词算余弦相似度，投影到俯视栅格；每格另存置信度（光轴处高、视野边缘低），重复观测时按置信度加权平均，消融中优于直接覆盖和不加权平均。
+- **检测与执行：** COCO 类用 YOLOv7，其余用 Grounding-DINO，再由 Mobile-SAM 取轮廓求最近目标点；移动由仅用深度的 PointNav 策略（或真机的底层 API）完成，可替换。
+- **报告的结果：** 零样本下 HM3D SPL 30.4 / SR 52.5，MP3D 17.5 / 36.4，Gibson 52.2 / 84.0；成功判据为 500 步内距目标 1 m 内 STOP。
+- **原文自述的局限：** 仅单楼层（HM3D / MP3D 分别有 14.6% / 9.6% 的 episode 因需上下楼梯失败）；价值图只服务当前目标，不能跨任务复用；假设目标在默认相机高度可见。
 
 ## 工程实践
 

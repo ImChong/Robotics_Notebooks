@@ -15,6 +15,8 @@ related:
 sources:
   - ../../sources/repos/awesome-physical-ai-natnew.md
   - ../../sources/sites/awesome-physical-ai-natnew-github-io.md
+original:
+  - ../../sources/repos/awesome_physical_ai_natnew_readme_reading_pa7k2.md
 summary: "natnew 维护的工程导向 Physical AI 资源地图：14 canonical 类别、~229 条目、MIT 仓库 + GitHub Pages 导航站。"
 ---
 
@@ -61,6 +63,20 @@ summary: "natnew 维护的工程导向 Physical AI 资源地图：14 canonical �
 | Courses / Companies + 附录 | 学习路径与行业跟踪 |
 
 **文档站：** Overview 用 Learn/Build/Deploy/Measure/Track/Practice overlay 路由；**docs 14 类优先于 README 扫描节**。
+
+## 核心机制
+
+- **条目单元：** README 每条为「名称链接 — 一句话说明」，部分带 `tags` 注释（如 simulator / open-source / research-only / commercial / production-ready / paper），可按许可与成熟度初筛。
+- **两层结构：** 14 个 canonical 类别按「栈层」排列（Simulators → Datasets → Benchmarks → Evaluation → RFM / World Models → Manipulation / Locomotion → Sim-to-Real → Safety / Governance / Production → Courses / Companies），附录补书籍、教程、关键论文、综述、硬件、会议、社区。
+- **路线路由：** Get Started 的 Choose your route 把读者分到 Foundations / Robot Learning / Foundation Models / Evaluation & Safety / Hardware 五条路线。
+- **规模快照（推断）：** 上游 README 页首（2026-11-1）标注 257 条，本页正文的 ~229 条为 2026-09 快照，数字以上游为准。
+
+## 工程实践
+
+1. 按 Quick start 走：Gymnasium CartPole → MuJoCo → LeRobot → OpenVLA；无需硬件，先仿真。
+2. 选型时先看类别内条目的 tags，再到各自官方仓核版本与许可（列表本身不做项目页核查）。
+3. 做评测 / 部署前交叉读 Evaluation Methodology、Safety & Robustness、Governance & Policy 三类，再到 Production Patterns 选 ROS 2 / MCAP 等运行栈。
+4. 与 [aichr 清单](./awesome-physical-ai-aichr.md) 并读以补盲，见 [对比页](../comparisons/awesome-physical-ai-curated-lists.md)。
 
 ## 局限与使用注意
 

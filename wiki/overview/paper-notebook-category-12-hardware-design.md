@@ -6,11 +6,17 @@ updated: 2026-09-15
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）。"
+original:
+  - ../../sources/repos/robot_learning_paper_notebooks_readme_reading_cat12_hw.md
 ---
 
 # Paper Notebooks · Hardware Design
 
 **Hardware Design**（`12_Hardware_Design`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **12** 类。
+
+## 一句话定义
+
+分类 12 汇总人形 / 灵巧手等**硬件设计**方向的论文笔记索引：执行器、手、腿踝、整机平台与身体-控制协同设计。
 
 ## 英文缩写速查
 
@@ -19,6 +25,31 @@ summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
+## 为什么重要
+
+- 学习型控制最终要落到真机：执行器带宽与透明度、关节结构、手的自由度直接决定策略能做什么、sim2real 差距多大。
+- 上游 README 把硬件放在横跨整条路线的工程层（如 Berkeley Humanoid 作为 LCP 的部署平台、ToddlerBot 提供校准与数字孪生工具链）。
+
+## 核心原理
+
+本类条目大致可按主题分组（据上游站点分类 12 标题归纳，分组为推断）：
+
+- **整机平台**：Berkeley Humanoid、ToddlerBot、Fauna Sprout、Duke Humanoid、iRonCub 3 等。
+- **执行器**：Proprioceptive actuator（MIT Cheetah）、准直驱（QDD）、Human-Level Actuation、Bowden 腱驱。
+- **灵巧手 / 腕**：连杆驱动、SMA-电机混合、ORCA、RAPID、RUKA、ByteWrist、DexWrist。
+- **腿 / 踝与肌骨**：DecARt Leg、最优踝设计、肌骨人形。
+- **协同设计**：Brain-Body Co-design、Embracing Evolution、Chin-Up 协同设计（RL 与形态联合优化）。
+
+## 工程实践
+
+- 读单篇笔记时先看其硬件指标（自由度、扭矩 / 速度、成本、是否开源），再看是否配套仿真模型与训练代码。
+- 优先阅读带「深读笔记」链接的条目；标「待深读」的仅有 wiki 实体页，内容较浅。
+
+## 局限
+
+- 本页只是索引，不含各论文的定量对比；站点首页分类 12 为 21 条，本库为 39 条（含待深读与跨类条目），引用数字须注明口径。
+- 多数条目尚为「待深读」。
 
 ## 本类论文索引
 
@@ -62,6 +93,10 @@ summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）
 - [Zeroth Bot](../entities/paper-notebook-zeroth-bot-https-github-com-zeroth-robotics-zero.md) — 待深读
 - [iRonCub 3](../entities/paper-notebook-ironcub-3-the-jet-powered-flying-humanoid-robot.md) — 待深读
 
+## 关联页面
+
+- 本类在站点上的父级与同级关系见下。
+
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
@@ -74,5 +109,7 @@ summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）
 - 本类论文来源笔记（节选）：[ToddlerBot](../../sources/papers/loco_manip_161_survey_141_toddlerbot.md)、[CYJ Hand-0：21 自由度 SMA-电机混合驱动灵巧手](../../sources/papers/humanoid_pnb_a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md)、[Parallel_Ankle_Joint](../../sources/repos/parallel_ankle_joint.md)
 
 ## 推荐继续阅读
+
+- 上游 README 学习路线图的工程层可作为硬件主题的阅读顺序参考。
 
 - [机器人论文阅读笔记总站](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
