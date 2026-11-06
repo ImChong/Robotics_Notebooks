@@ -11,6 +11,8 @@ related:
   - ../tasks/manipulation.md
   - ../methods/vla.md
   - ../overview/affordance-awesome-technology-map.md
+original:
+  - ../../sources/papers/affordance_learning_embodied_ai_survey_preprints_2026100392.md
 sources:
   - ../../sources/papers/affordance_learning_embodied_ai_survey_preprints_2026100392.md
 summary: "综述以 affordance 感知、任务相关推理、引导动作三段组织具身交互文献，解释 affordance 如何从被动视觉区域预测发展为接地的规划与策略接口。"
