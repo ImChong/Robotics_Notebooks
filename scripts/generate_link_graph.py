@@ -1044,12 +1044,26 @@ def wiki_has_repo_source(content: str) -> bool:
     return bool(re.search(r"(?:\.\./)*sources/repos/[^)\s]+\.md\b", content))
 
 
+# ingest 未完成的 frontmatter status → 健康度上限（status 取值见 schema/page-types.md）。
+# 未列出的 status（complete / stable / active / 缺省）视为 ingest 已完成，不封顶。
+HEALTH_STATUS_CAPS = {
+    "stub": 1,
+    "planned": 1,
+    "draft": 2,
+    "drafting": 2,
+    "in-progress": 2,
+    "preview": 2,
+}
+
+
 def compute_health_score(content: str) -> int:
     """计算节点健康度（0-3）。
 
     +1: 有 summary frontmatter
     +1: 有 frontmatter sources 或正文含参考来源区块
     +1: 有 updated frontmatter，或至少包含关联页面区块（说明已纳入交叉引用网络）
+
+    再按 ingest 完成度封顶（``HEALTH_STATUS_CAPS``）：stub / planned ≤1，draft 类 ≤2。
     """
     if not content.startswith("---"):
         return 0
@@ -1076,6 +1090,11 @@ def compute_health_score(content: str) -> int:
             pass
     elif "## 关联页面" in body:
         score += 1
+    status_match = re.search(r"^status\s*:\s*(\S+)", fm, re.MULTILINE)
+    if status_match:
+        cap = HEALTH_STATUS_CAPS.get(status_match.group(1).strip("'\"").lower())
+        if cap is not None:
+            score = min(score, cap)
     return score
 
 

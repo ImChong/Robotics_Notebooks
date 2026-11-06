@@ -55,3 +55,28 @@ def test_quoted_updated_date_counts_as_fresh() -> None:
     for quoted in (f"'{today}'", f'"{today}"', today):
         content = f"---\nsummary: x\nupdated: {quoted}\n---\n\n## 参考来源\n\n- a\n"
         assert glg.compute_health_score(content) == 3
+
+
+def _full_page(status: str) -> str:
+    from datetime import date
+
+    return (
+        f"---\nstatus: {status}\nsummary: x\nupdated: {date.today().isoformat()}\n---\n\n"
+        "## 参考来源\n\n- a\n"
+    )
+
+
+def test_status_caps_health_by_ingest_completion() -> None:
+    """健康度与 ingest 完成度挂钩：stub / planned ≤1，draft 类 ≤2，complete 类不封顶。"""
+    for status in ("stub", "planned"):
+        assert glg.compute_health_score(_full_page(status)) == 1
+    for status in ("draft", "drafting", "in-progress", "preview"):
+        assert glg.compute_health_score(_full_page(status)) == 2
+    for status in ("complete", "stable", "active"):
+        assert glg.compute_health_score(_full_page(status)) == 3
+
+
+def test_status_cap_does_not_raise_low_score() -> None:
+    """封顶只降不升：缺 summary/sources 的 complete 页仍按原规则计分。"""
+    assert glg.compute_health_score("---\nstatus: complete\n---\n\n正文。\n") == 0
+    assert glg.compute_health_score("---\nstatus: draft\nsummary: x\n---\n\n正文。\n") == 1
