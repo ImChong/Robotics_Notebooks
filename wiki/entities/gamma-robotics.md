@@ -115,7 +115,7 @@ flowchart TB
 |------|--------|------------------------|
 | [NEXUS](./paper-nexus-terrain-adaptive-teleoperation.md) | 按机器人所处地形修正人体遥操作参考动作，深度 + 本体反馈的教师–学生全身策略，Unitree G1 | [代码](https://github.com/Gamma-Robot/NEXUS)、G1 ONNX 策略；CC BY-NC 4.0 |
 | [TTCO](./paper-ttco-test-time-compute-humanoid-bfm.md) | 不改 BFM 权重，在仿真里采样优化输入指令，缩小参考动作与执行的差距 | [代码](https://github.com/Gamma-Robot/bfm_ttc)；Apache-2.0（SPIDER 采样器 CC BY-NC） |
-| [GR-BC](./paper-gr-bc.md) | 用目标可达图估计剩余步数，给 VLA 行为克隆按进展加权，复用失败与人工接管片段 | [代码](https://github.com/Gamma-Robot/GR-BC)（2026-10-16 发布）；Apache-2.0 |
+| [GR-BC](./paper-gr-bc.md) | 用目标可达图估计剩余步数，给 VLA 行为克隆按进展加权，复用失败与人工接管片段 | 部分开源：[代码](https://github.com/Gamma-Robot/GR-BC)（2026-10-16，Apache-2.0）；四个任务数据集、训练好的策略权重与真机部署未发布 |
 | [KODA](./paper-koda-egocentric-vla.md) | 把人类第一视角演示转成人形运动学和机载视角视频 | [部分代码](https://github.com/Gamma-Robot/KODA)；动作标签与训练待发布 |
 | [LocoManiLab](./paper-locomanilab.md) | 234 任务的人形移动操作测试床，统一数据、策略、全身控制器与部署 | [代码](https://github.com/Gamma-Robot/LocoManiLab)，MIT；README 称部分模型集成未端到端复验 |
 
