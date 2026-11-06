@@ -5,6 +5,8 @@ status: complete
 created: 2026-09-06
 updated: 2026-10-12
 summary: "具身智能研究室「76 家机构 · 424 个开源项目」全景清单的站内阅读导航：每个项目对应站内哪一页、按机构与方向怎么找。"
+original:
+  - ../../sources/repos/hmi_readme_reading_424_coverage_reading_a1.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -867,6 +869,7 @@ sources:
 
 ## 参考来源
 
+- [HMI 仓库 README 通读归档](../../sources/repos/hmi_readme_reading_424_coverage_reading_a1.md)（原文通读：README 全文；上游中国一节仅统计抽查）
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 - [Humanoid Motion Intelligence（GitHub）](../../sources/repos/humanoid-motion-intelligence.md)
 

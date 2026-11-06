@@ -19,6 +19,8 @@ related:
   - ./sim2real.md
   - ./data-flywheel.md
   - ../methods/vla.md
+original:
+  - ../../sources/papers/simplerenv_reading_arxiv_2405_05941_eval_infra.md
 sources:
   - ../../sources/blogs/genesis_ai_simulation_world_10_blog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
@@ -26,6 +28,8 @@ summary: "将可信仿真作为机器人基础模型的可扩展闭环评测基�
 ---
 
 # 仿真评测基础设施（Simulation as Evaluation Infrastructure）
+
+## 一句话定义
 
 **仿真评测基础设施**指：在机器人学习与基础模型开发中，把仿真主要用作**可扩展、可复现的闭环评测与 recipe 迭代引擎**，而不是默认等同于「仿真数据生成器」。当评测与真机 rollout **统计相关**且训练管线刻意**不与评测共享同一仿真分布**时，团队可以在组合任务空间上高频打分，从而把进展速度更多绑定到 **GPU 算力** 而非 **真机墙钟**。
 
@@ -108,6 +112,24 @@ flowchart TB
 **驾驶神经仿真：** [Instant NuRec](../entities/paper-instant-nurec.md)（arXiv:2607.14203）在 AlpaSim 上用同一套策略、只换重建，140 场景上与逐场景 [NuRec](../entities/nvidia-nurec.md) **策略排序相同**——把「重建够不够当评测器」从 PSNR 换成 **换资产不改榜**。官方仓只能复现静态前向，闭环数字不在 CLI 里。
 
 **几何对齐 ≠ 策略相关：** [Lucida](../entities/paper-lucida-r2s.md)（arXiv:2608.30821）同样做室内 Real2Sim 资产生成，但主表是检测 mAP / ADD-SB / 场景 F-Score，**没有** Pearson/MMRV；读本页时不要把「可编辑副本」直接当成评测基础设施。
+
+## 工程实践
+
+以下由 SIMPLER（arXiv:2405.05941，已通读）的做法归纳，可作为搭建 real-to-sim 评测的最小清单；推断部分已标注。
+
+- **先选指标：** 同时报 Pearson r 与 MMRV（后者按真机成绩差距加权排序违例，对窄带噪声更稳）；论文显示 open-loop 验证 MSE 在 Google Robot 三任务上平均 Pearson r 仅 0.308，而 VisMatch 为 0.924。
+- **先补控制 gap：** 用现成真机示教数据开环回放，对 PD 参数做系统辨识；不做辨识会直接丢失抓取。
+- **再补视觉 gap：** 真机背景 green-screen + 物体/机械臂纹理匹配需联合使用，只做一部分可能毫无改善。
+- **不必全保真：** 目标是排序相关而非孪生复刻；物体质量、摩擦在合理范围内变化时结论稳健；SAPIEN 与 Isaac Sim 都能复现。
+- **用扰动轴做鲁棒性剖面：** 背景/光照/干扰物/桌面纹理/相机位姿逐轴扫描，论文中 sim 与真机一致显示相机位姿、桌面纹理影响最大。
+- **（推断）** 工业级栈（如 Genesis World）的 Pearson ~0.90 自报数字，应按同一协议（任务数、策略数、真机试验数）核对后再互比。
+
+## 局限
+
+- 相关性是**任务集与策略集特定**的：SIMPLER 仅覆盖刚体操作，软体/可变形物不在其结论范围内。
+- green-screen 只适用于固定相机且无法还原阴影；建环境仍需人工整理资产（关节物体最耗时）。
+- Pearson 对真机成绩分布范围敏感；窄带内的排序仍需更多真机试验才能裁决。
+- 本页中 Genesis World 的相关性数字为厂商自报，原博客正文未能在本次核对中抓取通读。
 
 ## 关联页面
 

@@ -7,6 +7,8 @@ updated: 2026-11-05
 summary: 具身智能研究室论文总索引（P001–P191）的站内阅读导航：每条论文对应站内哪一页、按主题怎么串着读。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
+original:
+  - ../../sources/repos/hmi_papers_index_reading_0995944.md
 ---
 
 > **Query 产物**：「论文总索引里的这篇，站内有没有对应的详情页、同主题还有哪些？」

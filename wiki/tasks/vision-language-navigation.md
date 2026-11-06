@@ -53,6 +53,8 @@ related:
   - ../entities/paper-optisight-embodied-navigation.md
   - ../entities/paper-satnav.md
   - locomotion.md
+original:
+  - ../../sources/papers/vln_task_reading_arxiv_1711_07280_reading_vlntask.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
@@ -84,6 +86,10 @@ sources:
 # 视觉–语言导航（Vision-and-Language Navigation, VLN）
 
 **VLN**：智能体接收 **自然语言导航指令** 与 **第一人称（egocentric）视觉观测**（渲染视图或真实相机图像），在离散或连续动作空间中决策，最终到达指令描述的目标位置或物体。**语言–视觉接地** 与 **路径效率** 是核心评价维度。
+
+## 一句话定义
+
+VLN = 在三维环境中依据自然语言指令，仅凭第一人称视觉观测逐步决策并在目标处主动停止的导航任务（奠基定义见 R2R，Anderson et al., CVPR 2018）。
 
 ## 英文缩写速查
 
@@ -193,6 +199,28 @@ sources:
 - **设定差异：** [ZONDA](../entities/paper-zonda.md) 目标是 **物体类别到达**（非细粒度语言路径）；评测主线为 Habitat **多楼层** HM3D/MP3D，并扩展 **HM3D-DYNA** 加入移动行人。
 - **方法要点：** OST 三图 + 启发式跨楼层（\(H_{\text{agent}}\)）+ 多视角 VLM 确认 + Kalman 行人预测；真机用 MPPI 连续跟踪。
 - **开源边界：** 截至 2026-07-24 **未发布** 官方代码/权重；可与已开源 [ASCENT](https://github.com/Zeying-Gong/ascent) / [VLFM](https://github.com/bdaiinstitute/vlfm) 对照读方法。
+
+## 核心原理
+
+> 以下内容主要来自 R2R 原文通读（[归档](../../sources/papers/vln_task_reading_arxiv_1711_07280_reading_vlntask.md)），其后各代方法在此任务定义上演进。
+
+- **任务形式化：** 输入指令 x̄=⟨x1…xL⟩ 与初始观测，输出动作序列 ⟨a0…aT⟩，以特殊 stop 动作结束；与 VQA 同为视觉接地序列转换，但序列更长、动作改变视角。
+- **离散导航图环境：** 视点图 G（R2R 平均 117 视点、度 4.1、边 ≤5 m），下一步只能走视野内相邻视点；这是后续 VLN-CE（连续环境）要放松的假设。
+- **评测：** 终点距目标 <3 m 记成功，不评整条轨迹，必须自己停止；R2R 划分为 train / val seen / val unseen / test（未见场景）。
+- **基线范式：** LSTM seq2seq + 指令注意力，student-forcing 优于 teacher-forcing；后续 Transformer、VLM、VLA 路线（见上文各节）是对此基线的替换。
+
+## 工程实践
+
+- 选基准时先区分 **离散图（R2R）与连续环境（VLN-CE）**、室内与户外 / 空中，指标不可跨协议直接比较（页内多处已按此区分）。
+- 报告成绩应同时给 val seen 与 val unseen / test，并说明是否使用 oracle stop 等宽松规则（R2R 原文即同时报告）。
+- 数据与模拟器存在整洁室内、少人少动物的采集偏差（原文 §3.2.4），迁移到真实机器人需额外验证（推断：页内真机 / 跨本体条目即为此类补充证据）。
+
+## 局限
+
+- **泛化鸿沟：** 原文基线 val seen 38.6% 对 val unseen 21.8%，且 unseen 上很快平台化——早期模型的视觉接地偏训练环境。
+- **离散动作与视点图：** 运动被离散到视点，回避了真实机器人的连续控制与避障。
+- **指令歧义与评测粗糙：** 人类也只有 86.4%（左右混淆等）；<3 m 成功判据不评路径、不评最终朝向（页内 REALM 条目指出的末段接地问题与此相关）。
+- 本节的"原文"部分仅覆盖 2018 年奠基论文；页内较新工作的数字来自各自论文页，未在本次通读中逐一核对。
 
 ## 常见误区
 

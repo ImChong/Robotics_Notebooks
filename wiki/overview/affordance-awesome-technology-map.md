@@ -8,6 +8,8 @@ related:
   - ../entities/paper-affordance-learning-embodied-ai-survey.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+original:
+  - ../../sources/repos/awesome_affordance_learning_reading_aff_map.md
 sources:
   - ../../sources/papers/affordance_awesome_catalog.md
   - ../../sources/repos/awesome-affordance-learning.md
@@ -34,6 +36,16 @@ sources:
 
 - 原清单每条只有标题与链接，站内逐条成页后可检索、可互链。
 - 同一论文在清单多个分组出现（如数据集 / 感知）时只保留一个节点；与站内既有页重复的条目复用既有页，不新建。
+
+## 核心原理
+
+清单沿综述的三问组织（据上游 README）：**感知**（哪个区域 affords 交互）→ **推理**（当前任务/环境/约束下哪个 affordance 相关）→ **引导动作**（如何转成可执行动作），另设数据集/基准与相关综述两组。跨角色论文交叉列出；本页每篇只保留一个节点，分组以首次出现为准。
+
+## 工程实践
+
+- 查某方向的论文：先按上方三问定位分组，再点进条目页；已有深读页的条目直接跳转。
+- 判断是否值得精读：条目页为索引级（标题、出处、分类），需读原文时走条目页中的论文链接。
+- 上游持续更新（README 表格行数已多于入库时的 248 行，推断为有增补），引用数量时以本页快照日期为准。
 
 ## 覆盖范围
 

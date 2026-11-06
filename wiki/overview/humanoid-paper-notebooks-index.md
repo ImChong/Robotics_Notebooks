@@ -18,6 +18,8 @@ related:
   - ./paper-notebook-category-12-hardware-design.md
   - ./paper-notebook-category-13-physics-based-animation.md
   - ./paper-notebook-category-14-human-motion.md
+original:
+  - ../../sources/papers/robot_learning_paper_notebooks_readme_reading_humanoid_index.md
 summary: "Robot Learning Paper Notebooks 论文笔记的站内总入口：14 个分类、共 518 篇，按分类进入每篇论文的站内页。"
 ---
 
@@ -27,6 +29,10 @@ summary: "Robot Learning Paper Notebooks 论文笔记的站内总入口：14 个
 
 > **更名（2026-08-28）：** 笔记站由 `Humanoid_Robot_Learning_Paper_Notebooks` 更名为 [`Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)；看到旧名，指的是同一个站。
 
+## 一句话定义
+
+本页是 Robot Learning Paper Notebooks 笔记站在本库的总入口：把 518 条分类清单按 14 个方向各给一页，点进分类页再到每篇论文的站内页。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -34,6 +40,17 @@ summary: "Robot Learning Paper Notebooks 论文笔记的站内总入口：14 个
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
+## 为什么重要
+
+- 笔记站按「基础 RL → 动作重定向 → 模仿/风格 → 全身控制 → 操作/移动操作 → 世界模型 → VLA/BFM」组织学习路线（上游 README 路线图），本页是进入这条路线在站内的入口。
+- 分类页与论文实体页数量庞大，没有总入口很难判断先读哪里、读到哪一步。
+
+## 核心原理
+
+- **两层结构：** 本页 → 14 个分类页 → 论文站内页；全文笔记留在笔记站，站内页是摘要与交叉链接。
+- **上游路线图（据上游 README 通读）：** ① 基础 RL（PPO、AWR）与 Transformer → 人体动作数据与重定向 → ② 精确模仿（DeepMimic、PHC）与风格学习（AMP、ADD/SMP）→ ③ 技能组合/扩散（ASE、CALM、PULSE、Diffusion Policy、BeyondMimic）→ ④ 全身控制（Expressive WBC、HOVER、H2O 等）→ ⑤–⑧ 操作、移动操作、世界模型、WAM → ⑨ VLA/BFM；状态估计、硬件、Sim-to-Real 作为横跨全线的工程层。
+- **分类编号不等于阅读顺序（推断）：** 14 个目录按主题划分，阅读顺序以路线图为准。
 
 ## 14 个分类（与笔记站主页一致）
 
@@ -64,9 +81,25 @@ summary: "Robot Learning Paper Notebooks 论文笔记的站内总入口：14 个
 - [BFM 41 篇技术地图](./bfm-41-papers-technology-map.md)
 - [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)
 
+## 工程实践
+
+- 先按路线图选方向，再进分类页；已有深读笔记的论文看站内摘要，标「待深读」的直接读原文。
+- 上游对基础 RL 算法附 MimicKit 官方源码对照（PPO、AWR、DeepMimic、AMP、ASE、ADD、SMP、LCP 已被覆盖；PHC、CALM、PULSE、Diffusion Policy、BeyondMimic 为独立仓库），动手复现时可按此找代码入口。
+
+## 局限
+
+- 数量口径不统一：上游 README 徽标（Papers 1423 / Notes 418，通读日）、本库分类清单（518 条，含跨类重复与待深读）、已生成 HTML 笔记（289 条）互不相等，引用须注明口径。
+- 本页只是索引：未逐篇核对分类页中各论文的内容，上游 papers/ 笔记与 PROGRESS.md 也未在此次通读范围内。
+
+## 关联
+
+- 分类页：见上文 14 个分类链接。
+- 路线图与技术地图：[人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)、[BFM 41 篇技术地图](./bfm-41-papers-technology-map.md)、[Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
+
 ## 参考来源
 
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
+- [sources/papers/robot_learning_paper_notebooks_readme_reading_humanoid_index.md](../../sources/papers/robot_learning_paper_notebooks_readme_reading_humanoid_index.md)（上游 README 通读）
 - [sources/sites/humanoid-robot-learning-paper-notebooks.md](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - [sources/sites/rl-sim2sim-demo-website.md](../../sources/sites/rl-sim2sim-demo-website.md)（姊妹演示站，非本索引范围）
 

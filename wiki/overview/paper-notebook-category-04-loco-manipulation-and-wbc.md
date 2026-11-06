@@ -6,11 +6,17 @@ updated: 2026-11-04
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深读笔记索引）。"
+original:
+  - ../../sources/repos/robot_learning_paper_notebooks_readme_reading_cat04.md
 ---
 
 # Paper Notebooks · Loco-Manipulation and WBC
 
 **Loco-Manipulation and WBC**（`04_Loco-Manipulation_and_WBC`）是 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 主页面的第 **04** 类。
+
+## 一句话定义
+
+分类 04 汇集人形机器人「移动 + 操作 + 全身控制」方向的论文笔记索引：从全身运动跟踪、力自适应、跌倒安全，到视觉 / 语言驱动的 loco-manipulation 与体育技能。
 
 ## 英文缩写速查
 
@@ -19,6 +25,23 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
+## 为什么重要
+
+上游 README 把移动操作列为全身控制之后的上行支线（HOMIE → ULTRA → Ψ₀；HOMIE ⇢ FALCON ⇢ CHIP；DeepMimic ⇢ HDMI），是通向人形基础模型的关键一环；本页是该类 142 篇笔记在本库的入口。
+
+## 核心原理
+
+上游路线图给出的主线（均据 README）：模仿 / 跟踪（DeepMimic、HDMI）→ 全身控制统一命令空间（HOVER、SONIC）→ 末端受力与柔顺（FALCON、CHIP）→ 多模态 / 视觉 / 语言接口（ULTRA、VIRAL、Ψ₀）。
+
+## 工程实践
+
+读法建议（推断）：先读 README 路线图中的移动操作支线，再按主题（力自适应、跌倒安全、人类视频数据、体育技能）查下方索引；条目标「待深读」者尚无上游笔记，需回到论文原文。
+
+## 局限
+
+- 数量口径不一：上游首页分类 04 为 75 条，本库清单 142 条（含待深读与跨类条目）。
+- 本页仅为索引，不含各论文的方法与实验结论；原文通读仅覆盖上游 README 与分类 04 标题列表，未逐篇读各论文。
 
 ## 本类论文索引
 
@@ -166,6 +189,11 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 - [ZeroWBC](../entities/paper-notebook-zerowbc.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ZeroWBC__Learning_Natural_Visuomotor_Humanoid_Control_from_Egocentric_Video/ZeroWBC__Learning_Natural_Visuomotor_Humanoid_Control_from_Egocentric_Video.html)
 - [Ψ₀](../entities/go-2.md) — 见 wiki 实体页
 
+## 关联
+
+- 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
+- 技术背景：[sim2real](../concepts/sim2real.md)
+
 ## 与其他页面的关系
 
 - 总索引：[humanoid-paper-notebooks-index.md](./humanoid-paper-notebooks-index.md)
@@ -176,6 +204,10 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深�
 - [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)
 - 站点来源归档：[humanoid-robot-learning-paper-notebooks](../../sources/sites/humanoid-robot-learning-paper-notebooks.md)
 - 本类论文来源笔记（节选）：[人形 Loco-Manip 161 篇论文 source 索引](../../sources/papers/humanoid_loco_manip_161_catalog.md)、[161 篇论文看人形移动操作技术版图](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)、[Loco-Manip 接触、力控与 VLA 梳理](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+
+## 继续阅读
+
+- 上游 README 学习路线图：<https://github.com/ImChong/Robot_Learning_Paper_Notebooks>
 
 ## 推荐继续阅读
 

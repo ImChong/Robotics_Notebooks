@@ -23,11 +23,17 @@ related:
   - ../entities/asd-ste100-skill.md
 summary: "LLM Wiki 是由 LLM 持续维护的结构化知识库模式；Karpathy 原始构想强调 sources/wiki/schema 与 ingest/query/lint，rohitg00 的 v2 Gist 提出生命周期、类型化图谱、混合检索、自动化与治理扩展。"
 updated: 2026-10-09
+original:
+  - ../../sources/blogs/karpathy_llm_wiki_gist_reading_full.md
 ---
 
 # LLM Wiki
 
 **LLM Wiki**：用 LLM **增量编译并维护持久 markdown 知识库**（ingest / query / lint），让 cross-reference 与综合洞见 **复利积累**，而非每次 RAG 重新检索原始资料。
+
+## 一句话定义
+
+LLM Wiki 是由 LLM 增量编译、持续维护的持久 markdown 知识库模式，由 raw sources / wiki / schema 三层与 ingest / query / lint 三操作构成。
 
 ## 英文缩写速查
 
@@ -41,6 +47,37 @@ updated: 2026-10-09
 | PII | Personally Identifiable Information | 个人可识别信息；v2 建议在入库时过滤敏感内容 |
 
 > Source: [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) · Saved: 2026-04-13 · 仓库归档: [sources/blogs/karpathy_llm_wiki_gist.md](../../sources/blogs/karpathy_llm_wiki_gist.md)
+
+## 为什么重要
+
+- 维护知识库的瓶颈是 bookkeeping（交叉引用、摘要更新、矛盾标记）而非阅读思考；LLM 把这部分成本降到近零，使 wiki 能随资料增长而不被放弃（Gist 原文论点）。
+- 知识"编译一次、持续更新"，cross-reference 与综合已就位，与每次查询重新检索的纯 RAG 形成对照。
+- 本仓库 sources → wiki → schema 的结构与 ingest / query / lint 流程直接源自该模式（见下文「关联页面」）。
+
+## 核心原理
+
+- **三层**：Raw sources（不可变，只读）、Wiki（LLM 拥有的 markdown 页）、Schema（CLAUDE.md / AGENTS.md，约定结构与工作流）。
+- **三操作**：Ingest（一个源可触达 10–15 页）、Query（好答案回写为新页）、Lint（矛盾、过时、孤儿、缺页、缺链）。
+- **两个导航文件**：index.md（内容目录，中等规模下可替代 embedding 检索）与 log.md（追加式时间线，统一前缀便于 grep）。
+- 分工：人策展来源、提问、判断意义；LLM 负责归纳、链接、归档。
+
+## 工程实践
+
+- 原文工具提示：Obsidian（Web Clipper、本地图片、graph view）、Marp、Dataview、qmd 混合检索（CLI + MCP）、git 版本管理；均为可选。
+- 逐个摄入并保持人在回路，是作者偏好；批量摄入监督更少，应在 schema 中记录所选流程。
+- 本仓库的落地见 [Ingest Workflow](../../schema/ingest-workflow.md) 与 `AGENTS.md`（推断：属于对 Gist 的域内实例化，Gist 本身不规定具体实现）。
+
+## 局限
+
+- Gist 自称刻意抽象，只描述想法而非实现；目录结构、schema、工具需依领域自行实例化。
+- "约 100 源、数百页内 index 即够用"是作者经验判断，非通用阈值；规模更大需搜索工具。
+- 原文未给出评测数据；自动写入的治理、矛盾自动解决等议题见上文 v2 扩展与「采用时的边界」。
+
+## 继续阅读
+
+- [LLM Wiki v2 Gist 原始资料](../../sources/blogs/rohitg00_llm_wiki_v2_gist.md) — 生命周期与治理扩展
+- [Karpathy Gist 通读归档](../../sources/blogs/karpathy_llm_wiki_gist_reading_full.md)
+- [RAG 概念页](../concepts/retrieval-augmented-generation.md) — 对照的检索式路线
 
 ## 参考来源
 

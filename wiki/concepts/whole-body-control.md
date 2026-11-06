@@ -23,6 +23,8 @@ related:
   - ../entities/paper-g1-confined-space-wbp.md
   - ../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md
   - ../entities/paper-rigid-soft-hybrid-link-humanoid.md
+original:
+  - ../../sources/papers/sentis_khatib_icra_2006_wbc_framework_reading_wbc.md
 summary: "WBC（全身控制）通常写成 QP / hierarchical QP：在全身动力学与任务优先级约束下统一求解关节力矩。"
 ---
 
@@ -134,6 +136,22 @@ print("joint acceleration command:", qdd_star)
 - 接触力变量
 - 摩擦锥、力矩限位、任务优先级
 - 从 `qdd` 到 `tau` 的映射
+
+## 核心原理
+
+经典 WBC（Sentis & Khatib, ICRA 2006，已通读）的骨架：
+
+- **浮基模型**：以 6 个无驱动虚拟自由度描述基座，任务运动学相对浮基定义，使全身关节统一参与。
+- **三层优先级**：约束（接触、关节限位、避碰）> 操作任务（手/脚/质心）> 姿态（利用剩余冗余）；任务投影到上层零空间，$\Gamma=\Gamma_c+N_c^T(\Gamma_t+N_t^T\Gamma_p)$。
+- **算子空间力控 + 阻抗**：$\Gamma=J^T F$，带约束惯量 $\Lambda_{t|c}$ 使任务解耦，可套阻抗或混合位置/力律。
+- **可行性监测**：任务在约束下不可行时 $J_{t|c}$ 奇异，可运行时检测。
+- 现代实现把"零空间严格优先"替换为 QP/HQP（含不等式），思想一致（本页上文"核心框架"）。
+
+## 工程实践
+
+- 上层 MPC/planner 给质心与接触计划，下层 WBC 每个控制周期求解力矩；接触集合来自接触估计。
+- 论文自述的实际难点同样存在：接触与近身障碍难定位，需在各层保留阻抗/柔顺（见"方法局限性"）。
+- 开源落地参考：TSID、legbot-MPC-WBC、wbc_fsm（见参考来源与关联页面）。
 
 ## 方法局限性
 

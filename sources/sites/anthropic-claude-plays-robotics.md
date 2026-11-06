@@ -11,6 +11,8 @@
 - **入库日期：** 2026-08-28
 - **一句话说明：** 无机器人预训练的通用语言模型，在 **控制接口抽象层级** 不同时，机器人能力可差一个数量级：直接力矩几乎失败，监督预训练策略 / 写控制器则能完成有限导航与操作。
 - **开源状态：** **宣称将开源 / 截至入库日未公开** — 文内写代码将落 `github.com/safety-research/embody`（`EXPERIMENTS.md` / `METRICS.md`）；2026-08-28 对该 URL 请求返回 **404**。见 [embody 仓占位](../repos/safety-research-embody.md)。
+- **核对范围：** 2026-11 重新抓取 Anthropic 研究页完整 HTML 并抽取正文，通读摘要、Simple settings、Direct control、Tools bridge、Bottleneck（视觉/推理/经验学习/真机 vignette）、Conclusion 与全部附录（模型、试验数、提示、延迟、RL 细节、视觉工具、算力）。柱状图/折线图的具体数值仅有图注文字，未读图像本身；`safety-research/embody` 代码仓未核对。
+- **通读：** 已完成
 - **项目页：** 无独立 `*.github.io`；以本研究报告页为入口。
 - **沉淀到 wiki：** [LLM 机器人控制接口](../../wiki/concepts/llm-robotics-control-interfaces.md)、[Embody 评测套件](../../wiki/entities/anthropic-embody.md)
 

@@ -40,6 +40,8 @@ related:
   - ../entities/paper-anti-gravity-flying-humanoid-wbc-mpc.md
   - ../entities/paper-visible-reachable-workspace-humanoid-design.md
   - ../entities/paper-swap-humanoid-collision-avoidance.md
+original:
+  - ../../sources/papers/humanoid_locomotion_reading_arxiv_2303_03381.md
 summary: "人形机器人在复杂地形下的平衡与移动任务，强调高维动力学处理、环境感知以及全身肢体协调。"
 ---
 
@@ -66,6 +68,12 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 | PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
 | MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
 | AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
+## 为什么重要
+
+- 人形是通用机器人的主要载体：Radosavovic 等（arXiv:2303.03381）开篇即指出，通用任务需要通用本体与通用控制器，而经典方法难以泛化到新环境。
+- locomotion 是人形一切下游能力（操作、导航、作业）的前提；本页下文各论文均以“站稳、走远”为共同底座。
+- 学习式控制已能在全尺寸人形上零样本上真机：该论文在 Digit 上一周户外测试无跌倒（原文结果）。
 
 ## 核心挑战
 
@@ -169,7 +177,30 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 - [RoboGesture](../entities/paper-robogesture.md) — 流式语音→G1 语义手势；DiT-CFM + MPC 安全滤波（arXiv:2608.28693；未开源）
 - [动态多模态 HRI 数据集协议](../entities/paper-dynamic-multimodal-hri-dataset-u1.md) — Unitree U1 三档复杂度采集设计（arXiv:2609.03255；数据待发布）
 
+## 核心原理
+
+> 以下以 Radosavovic 等（arXiv:2303.03381，已通读）为代表说明“仿真大规模 RL + 零样本上真机”这一主流范式；与上文各路线的关系为本页归纳。
+
+- **POMDP 表述**：真实机器人无法获得真实状态，策略只能依据带噪观测，故按部分可观测 MDP 处理，用观测-动作历史补足信息。
+- **教师-学生联合训练**：先用特权状态训练教师策略，再训练只看观测的学生，目标 L = L_RL + λ·KL(π_o‖π_s)，λ 退火到零，使学生先借力教师、后超越之。
+- **历史即上下文**：因果 Transformer 读取最近 16 步观测-动作对；步态随地形变化、足部卡阻后抬腿更高等行为为涌现，并非预设。
+- **大规模并行仿真 + 域随机化**：随机化动力学、控制参数、地形、观测噪声与延迟，再零样本部署；先在厂商高保真仿真器筛选策略。
+
+## 工程实践
+
+- 观测与奖励的具体设计见 [观测输入](../concepts/humanoid-policy-observation-inputs.md) 与 [奖励函数](../concepts/humanoid-policy-reward-functions.md)。
+- 闭链/欠驱动结构（如 Digit 小腿-跗骨）若仿真器不支持，原文用高刚度虚拟弹簧近似，并强调仍是 sim-to-real 的额外难点。
+- 部署频率上，原文策略 50 Hz、关节 PD 1 kHz；盲策略遇台阶会磕绊，需感知时参见 [楼梯与障碍感知移动](./stair-obstacle-perceptive-locomotion.md)。
+- 消融结论（原文）：Transformer 优于 MLP/TCN/LSTM，更长上下文更好，联合 KL+RL 优于单一目标。
+
+## 局限
+
+- 代表工作（Digit，纯本体感知）自述：左右步态不完全对称、速度跟踪不完美、极强外扰仍会摔倒；盲策略对离散障碍只能事后适应。
+- 仿真器对闭链结构只能近似，影响迁移上限。
+- 本页多数条目为单篇论文的自报结果，平台（G1、Digit、T1 等）与评测协议不统一，横向数字不宜直接比较（本页归纳）。
+
 ## 参考来源
+- [Real-World Humanoid Locomotion with RL（arXiv:2303.03381，通读归档）](../../sources/papers/humanoid_locomotion_reading_arxiv_2303_03381.md) — 因果 Transformer + 教师 KL 蒸馏/RL 联合，Digit 零样本户外行走。
 - [Walk Like This（CoRL 2026）](../../sources/papers/walk_like_this_corl2026.md) — 示例条件风格化 locomotion 与 G1 实机追踪。
 - [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)
 - [SPRINT: Efficient Spectral Priors for Humanoid Athletic Sprints](../../sources/papers/sprint_arxiv_2605_28549.md) — 5 条参考 + 频谱先验 + 残差 RL，G1 真机冲刺 6 m/s。

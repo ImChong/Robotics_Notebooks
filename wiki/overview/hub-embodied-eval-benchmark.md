@@ -41,6 +41,8 @@ related:
   - ../entities/paper-karma-hand-metric.md
   - ../entities/artificial-analysis.md
   - ./frontier-models-3d-cad-robotics-survey.md
+original:
+  - ../../sources/papers/robobench_reading_arxiv_2510_17801_hub_eval.md
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/papers/ewmbench.md
@@ -132,6 +134,15 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 
 **选型提示：** LIBERO 扰动扩展适合检查记忆依赖；RoboTwin 聚焦双臂与合成数据，RoboCasa 聚焦厨房分布，BEHAVIOR 聚焦长时程家务，RoboLab 关注真机训练策略在高保真仿真中的表现。它们互补，不能用单一平均成功率构成统一排名。
 
+## 核心原理
+
+四层分工的方法学底座（以下 RoboBench 细节出自一手论文通读归档 [robobench_reading_arxiv_2510_17801_hub_eval](../../sources/papers/robobench_reading_arxiv_2510_17801_hub_eval.md)，其余层的结论以各实体页为准）：
+
+- **按执行流水线切分能力**：RoboBench 把 MLLM 具身大脑拆成意图理解 → 感知 → 规划 → affordance → 失败诊断五维（14 能力、25 任务、6092 QA），本页 ① 层的认知评测即此思路；各维度分数可单独归因，而非只看最终成功率。
+- **开放式规划用结构化裁判而非文本相似度**：长程规划以 DAG 编码偏序，分 NodeCorrectness（skill/object/param 精确匹配）与 TaskCompletion（MLLM 世界模拟 rollout 判关键物体状态里程碑），与人评 r = 0.83，高于 LLM 直接打分基线的 0.73。
+- **代理指标要回到下游校验**：RoboBench 把认知分与 VLM→VLA 在 CALVIN / LIBERO-10 上的成功率做相关，CALVIN 与 object/scene 感知 r 约 0.83–0.88，LIBERO 与 affordance r = 0.677（p = 0.065，未达常规显著，仅 8 个模型）；说明「哪项能力有预测力」随下游基准而变。这正是本 hub 强调跨层代理指标须校准的依据。
+- **评测器自身要做鲁棒性检验**：跨评审模型 / prompt 的一致性（ICC）、标注噪声扰动、纯文本基线（排除语言先验）是同类 MLLM-as-judge 基准应有的配套（推断：可迁移到 ② 层的世界模型裁判）。
+
 ## 评测选型的关键取舍
 
 - **高处长时程维护**：[Fiatlux](../entities/paper-fiatlux.md)提供 G1 攀梯换灯的十二子任务门控。部分进度不是成功率；八项遥操作可达与四项攀爬欠验证须分别报告，子任务独立重置也不能证明完整串联成功。
@@ -145,6 +156,21 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 
 - **[具身大模型分类学选型闭环](./hub-embodied-foundation-model.md)**：模型选型的家族谱系，本知识链为其验收环节。
 - **[仿真到现实（Sim2Real）](./hub-sim2real.md)**：④ 层 sim↔real gap 校准与 sim2real 迁移共享同一物理根因。
+
+## 工程实践
+
+- **选型顺序（推断，综合本页四层表）**：先按评测目的定层（选骨干 → ①；选世界模型 → ②；选策略 → ③；声称可外推真机 → ④），再在层内选与机器人形态、观察/动作接口、任务分布对齐的基准，最后核对版本与子集；跨基准成功率不做硬排名。
+- **选 VLM 骨干**：可用 ① 层中与下游基准相关的维度做初筛（RoboBench 显示 CALVIN 类长程任务偏重感知、LIBERO 类偏重 affordance），但只是相关性证据，最终仍须下游微调验证。
+- **读榜注意**：核对评测器是否为 LLM 裁判及其一致性报告、真机 vs 仿真数据来源、是否有纯文本 / 随机基线、闭源模型版本是否可复现。
+- **落地入口**：具体选型决策树见 [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md)；仿真评测工程见 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)。
+
+## 局限
+
+- 本页是枢纽，只做分层导航，各基准的数值与结论以实体页及其原文为准；不同基准的分数口径不同，不能横向比较。
+- 认知评测（①）分数不等于可执行动作能力：RoboBench 自身报告执行层失败诊断即使是人类也仅约 47，且与下游 VLA 的相关性随基准变化、样本量小（8 个模型），仅为趋势证据。
+- MLLM-as-judge 类评测依赖裁判模型与 prompt；RoboBench 报告 node 层 ICC 0.948 但 composite 层较低（约 0.85–0.90），标注删除会抬高完成度分。
+- 评测榜单易随模型迭代与数据泄漏而饱和；本页收录的 2026 年新基准多为单一论文来源，尚缺独立复现。
+- 本页未覆盖所有具身评测基准，收录以仓库已 ingest 条目为限。
 
 ## 关联页面
 
@@ -188,6 +214,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 
 ## 参考来源
 
+- [RoboBench 通读归档](../../sources/papers/robobench_reading_arxiv_2510_17801_hub_eval.md) — 一手论文通读（五维、世界模拟器评测、与 VLA 相关性）
+
 - [Fiatlux 论文归档](../../sources/papers/fiatlux_arxiv_2609_38216.md) — 攀爬、易碎物与长时程任务评分
 
 - [RoboBench 论文](../../sources/papers/robo_bench_arxiv_2510_17801.md) — MLLM 具身大脑五维评测
@@ -206,3 +234,11 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [Imitator Game 论文](../../sources/papers/imitator_game_arxiv_2608_22301.md) — L0–L3 意图级模仿评测协议
 - [Bet4Sim2Real 论文](../../sources/papers/bet4sim2real_arxiv_2608_21572.md) — 下注式 anytime-valid 真机性能证书
 - 本页归纳自 [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) 及各评测基准实体/概念页
+
+## 继续阅读
+
+- 选型决策：[具身大模型评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md)
+- gap 校准：[仿真 vs 真机评测 gap](../concepts/sim-vs-real-eval-gap.md)、[Sim2Real 枢纽](./hub-sim2real.md)
+- 认知层一手论文：[RoboBench](../entities/robo-bench.md) 及其归档 [通读笔记](../../sources/papers/robobench_reading_arxiv_2510_17801_hub_eval.md)
+- 模型选型侧：[具身大模型分类学选型闭环](./hub-embodied-foundation-model.md)
+
