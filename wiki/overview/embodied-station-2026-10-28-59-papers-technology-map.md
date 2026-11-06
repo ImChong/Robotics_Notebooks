@@ -127,7 +127,7 @@ flowchart TB
 | RoboAuto | [paper-roboauto](../entities/paper-roboauto.md) | 待发布 |
 | Human-Guided Adaptive Residual Correction | [paper-human-guided-adaptive-residual-correction](../entities/paper-human-guided-adaptive-residual-correction.md) | 项目页未列 GitHub |
 | Quality-Controllable Policies | [paper-quality-controllable-policies](../entities/paper-quality-controllable-policies.md) | 待发布 |
-| OmniBrain-0 | [paper-omnibrain-0](../entities/paper-omnibrain-0.md) | 已开源 |
+| OmniBrain-0 | [paper-omnibrain-0](../entities/paper-omnibrain-0.md) | 模型代码待发布 |
 | AdaPolicy | [paper-adapolicy](../entities/paper-adapolicy.md) | 部分开源 |
 | RoboLongR | [paper-robolongr](../entities/paper-robolongr.md) | 项目页未列 GitHub |
 | FISRF | [paper-fisrf](../entities/paper-fisrf.md) | 项目页未列 GitHub |
