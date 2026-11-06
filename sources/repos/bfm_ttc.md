@@ -30,6 +30,7 @@
 - **数据边界：** 仓库提供实验配置和示例动作，项目页无单独数据集发布链接；AMASS 评测动作须按其来源与许可另行准备。
 - **运行边界：** README 的核心链路是仿真评估、重规划、指标与视频导出。论文/项目页真机片段为仿真优化命令的回放，不应将仓库描述为通用在线真机控制栈。
 - **许可证边界：** 主仓库 Apache-2.0，SPIDER sampler 为上游 CC BY-NC 4.0；复用 sampler 前需遵守对应 notice。
+- **2026-11-06 复核：** README 运行步骤与许可说明与上文记录一致。`docs/assets.md` 给出 HEFT-PMG、TWIST2（1017-20k）、SONIC（原版与 low-latency）checkpoint 的上游固定版本与转换步骤：TWIST2 固定文件可由运行时自动下载，HEFT-PMG 与 SONIC 需按上游取得后转换；`data/` 附 4 条转换后的示例动作（源自 AMASS 与 LAFAN1）。`THIRD_PARTY_NOTICES.md` 说明 CEM、PS、MPPI、MPPI-CMA、CBO、DIAL 改编自 hydrax（MIT）。
 
 ## 运行路线（README）
 

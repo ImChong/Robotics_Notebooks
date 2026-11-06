@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24",
+  "updated": "2026-11-06",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -3259,6 +3259,81 @@
           "url": "https://arxiv.org/abs/2609.37181",
           "date_note": "arXiv:2609.37181 v1 为 2026-09-29。",
           "date_source": "https://arxiv.org/abs/2609.37181"
+        }
+      ]
+    },
+    {
+      "key": "gamma",
+      "name": "伽马智能 Gamma Robotics",
+      "founded_year": 2026,
+      "founded_source": "https://tech.ifeng.com/c/8xOzOB5LWWf",
+      "founded_note": "TeleAI 2026-10-20 官宣「近日」在上海徐汇注册成立、入驻模速空间（IT之家、上观新闻转述）；具体注册日未公开。官网页脚主体为 Gamma Evolution Intelligence Technology (Shanghai) Co., Ltd，中文工商全称未确认。",
+      "lenses": [
+        "wbc",
+        "humanoid"
+      ],
+      "summary": "中国电信 TeleAI 孵化的人形「自进化 + 全身模型」路线：官网分 System 2 / 1 / 0 三层栈，产品为轮式双臂人形 GBot-W 与 GData 数采套件；Gamma-Robot 组织开源 NEXUS、TTCO、GR-BC、KODA、LocoManiLab 五个仓库，论文均与 TeleAI 联合署名。",
+      "official": "https://gammarobotics.com.cn/",
+      "nodes": [
+        {
+          "date": "2026-09",
+          "title": "NEXUS",
+          "track": "全身遥操作",
+          "desc": "离线把平地动作适配到地形，训练特权教师后蒸馏成只看平地命令、本体历史与单帧深度的学生策略，G1 零样本地形适配遥操作；训练管线与 G1 ONNX 权重开源（CC BY-NC 4.0），部署代码未发布。署名含 γ-Robotics。",
+          "id": "entity-paper-nexus-terrain-adaptive-teleoperation",
+          "url": "https://github.com/Gamma-Robot/NEXUS",
+          "date_note": "arXiv:2609.39000 v1 为 2026-09-30，早于 10-20 公司官宣。",
+          "date_source": "https://arxiv.org/abs/2609.39000"
+        },
+        {
+          "date": "2026-10",
+          "title": "TTCO",
+          "track": "行为基础模型",
+          "desc": "不改冻结 BFM 的权重，在仿真里采样优化输入指令，缩小参考动作与执行的差距；代码 Gamma-Robot/bfm_ttc 开源。署名含 Gamma Robotics。",
+          "id": "entity-paper-ttco-test-time-compute-humanoid-bfm",
+          "url": "https://github.com/Gamma-Robot/bfm_ttc",
+          "date_note": "arXiv:2610.14896 v1 为 2026-10-10。",
+          "date_source": "https://arxiv.org/abs/2610.14896"
+        },
+        {
+          "date": "2026-10",
+          "title": "GR-BC",
+          "track": "VLA 后训练",
+          "desc": "用目标可达图估计剩余步数，给 VLA 行为克隆按进展加权，复用失败与人工接管片段（CoRL 2026）；代码 2026-10-16 发布。署名含 Gamma Robotics。",
+          "id": "entity-paper-gr-bc",
+          "url": "https://github.com/Gamma-Robot/GR-BC",
+          "date_note": "arXiv:2610.20504 v1 为 2026-10-14。",
+          "date_source": "https://arxiv.org/abs/2610.20504"
+        },
+        {
+          "date": "2026-10",
+          "title": "KODA",
+          "track": "人到人形数据",
+          "desc": "把人类第一视角演示转成人形运动学与机载视角视频；公开版只含 M1/M2 管线，控制器动作标签与训练待发布。一作首单位为 Gamma Robotics。",
+          "id": "entity-paper-koda-egocentric-vla",
+          "url": "https://github.com/Gamma-Robot/KODA",
+          "date_note": "arXiv:2610.21152 v1 为 2026-10-15。",
+          "date_source": "https://arxiv.org/abs/2610.21152"
+        },
+        {
+          "date": "2026-10",
+          "title": "公司成立 · GBot-W / GData",
+          "track": "整机与数采",
+          "desc": "TeleAI 官宣孵化成立；官网产品为 22-DoF 轮式双臂人形 GBot-W（自报 PRTS 操作模型双臂任务均值 95.9%）与 GData-Finger / Ego 数采套件，价格与发布日期未写。",
+          "id": "entity-gamma-robotics",
+          "url": "https://gammarobotics.com.cn/product/gammabot",
+          "date_note": "TeleAI 2026-10-20 官宣成立（IT之家转述）；官网产品页未写 GBot-W / GData 发布日期。",
+          "date_source": "https://tech.ifeng.com/c/8xOzOB5LWWf"
+        },
+        {
+          "date": "2026-10",
+          "title": "LocoManiLab",
+          "track": "移动操作测试床",
+          "desc": "234 任务的人形移动操作测试床，统一数据、策略、全身控制器与仿真到真机部署；代码 MIT 开源，README 称部分模型集成未端到端复验。署名含 Gamma Robotics。",
+          "id": "entity-paper-locomanilab",
+          "url": "https://github.com/Gamma-Robot/LocoManiLab",
+          "date_note": "arXiv:2610.30876 v1 为 2026-10-22。",
+          "date_source": "https://arxiv.org/abs/2610.30876"
         }
       ]
     }
