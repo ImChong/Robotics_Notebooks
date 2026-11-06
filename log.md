@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-06] ingest | paper-dynasolver — 补充论文实验、局限与项目流程图
+
 ## [2026-11-05] ingest | sources/papers/vflash.md — 收录 VFlash 视觉图元解码与实验，核查代码链接
 
 ## [2026-11-06] ingest | 七项机器人资料 ingest：HALO、VABAR、Compounding Physical RSI、A³-VLA、Soccerbot 五篇论文全文通读并建独立节点；Cosmos 3 博文补全既有节点（更正三类/仅AgiBot说法）；智元 GO-3 新闻稿三榜核对（仅 RoboTwin 完整成立）
