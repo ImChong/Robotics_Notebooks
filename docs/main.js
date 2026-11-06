@@ -5717,6 +5717,25 @@
     }
   }
 
+  // 触屏：路线页知识地图节点点按弹出固定浮窗（再点同一节点收起），跳转交给浮窗里的 .tt-link
+  function bindKnowledgeMapTapPreview(hoverTip, detailPages) {
+    var mapEl = document.getElementById('roadmapKnowledgeMapTree');
+    if (!mapEl) return;
+    mapEl.addEventListener('click', function (ev) {
+      var link = ev.target.closest ? ev.target.closest('a.detail-inline-link') : null;
+      if (!link) return;
+      ev.preventDefault();
+      if (hoverTip.getPinned() === link) {
+        hoverTip.clearPin();
+        hoverTip.hide();
+        return;
+      }
+      hoverTip.show(ev, link, buildDetailInlineLinkTooltipHtml(link.dataset.wikiId, detailPages[link.dataset.wikiId] || {}));
+    });
+    hoverTip.bindBlankDismiss(mapEl, 'a.detail-inline-link');
+    hoverTip.bindOutsideDismiss(mapEl, document.body);
+  }
+
   // 正文 / 路线页本库内链悬停浮窗：复用图谱 hover 卡片，详情页同时点亮迷你图同一节点
   function setupDetailInlineLinkPreview(contentEl, detailPages) {
     var roots = collectInlineLinkPreviewRoots(contentEl);
@@ -5750,7 +5769,11 @@
     var tooltipEl = document.getElementById('detail-inline-link-tooltip');
     if (!tooltipEl) return;
     var hoverTip = setupGraphHoverTooltip(tooltipEl);
-    if (hoverTip.isMobile) return; // 触屏无 hover，点击内链直接跳转即可
+    if (hoverTip.isMobile) {
+      // 触屏无 hover：正文内链点击直接跳转；路线页知识地图节点第一次点按只弹出浮窗，点浮窗里的链接再跳转
+      bindKnowledgeMapTapPreview(hoverTip, detailPages);
+      return;
+    }
 
     function suppressNativeTitle(el) {
       var nativeTitle = el.getAttribute('title');
