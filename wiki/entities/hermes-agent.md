@@ -10,7 +10,7 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-10-15
+updated: 2026-11-06
 related:
   - ./deepseek-harness.md
   - ./ponytail.md
@@ -134,7 +134,7 @@ flowchart TB
 - **部署：** 一行脚本安装；`hermes` 进入 CLI，`hermes gateway` 启动消息网关，`hermes setup` / `hermes doctor` 配置与诊断；可选 Nous Portal 统一密钥。
 - **隔离：** 用 `hermes -p <name>` 的 Profile 隔离配置、记忆、会话与 gateway PID；终端后端可选 Docker / SSH / Modal / Daytona 等，Serverless 后端空闲休眠。
 - **迁移与扩展：** `hermes import-agent` 从 OpenClaw / Claude Code / Codex / Cursor 导入记忆与技能；插件三类发现源，记忆提供者与上下文引擎各单选。
-- **版本漂移：** 上游文档已写 25+ 平台适配器、六个内置终端后端；本页其他处的 20+ / 7 后端等数字以官方最新文档为准。
+- **版本漂移：** 上游文档已写 25+ 平台适配器、六个内置终端后端；本页其他处的 20+ / 7 后端等数字以复核当日的官方文档为准。
 
 ## 常见误区或局限
 

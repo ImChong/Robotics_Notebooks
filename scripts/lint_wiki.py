@@ -419,6 +419,10 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "run",
     "evaluate",
     "make",
+    # execute：MCP server / agent 工具的方法名与 CLI 子命令 token——openfoam-mcp-server、
+    # viznoir、solidcraft、ABot-Claw、AnsysAgent 源码阅读记录里的 `execute` 函数/路由，
+    # 与 run / evaluate / make 同为代码 token，非机器人概念，不建独立页。
+    "execute",
     # sim：仿真/真机切换开关的参数值（AUBO MoveIt `sim:=false`、Crazyswarm2
     # `backend:=sim`、LeTools deploy.yaml 的 `sim`/`real`）与 RoboSimStudio 的 `Sim`
     # 类名、AnyTouch2 数据集的 **Sim** 子集标签；仿真概念本体已由
@@ -688,6 +692,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 即 Sim2Real 部署层的格式契约，不是另一个待建的机制页。与 dinov2 / lerobot /
     # mujoco / libero 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
     "onnx",
+    # tensorrt：canonical 节点已是 entities/tensorrt.md（NVIDIA 推理优化 SDK），选型取舍由
+    # comparisons/onnxruntime-vs-mnn-vs-tensorrt.md 定调；各页正文里的 **TensorRT** 均为
+    # 部署路径指称（「checkpoint → ONNX → TensorRT」「Jetson 上 TensorRT 加速」），与 onnx
+    # 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
+    "tensorrt",
     "ethercat",  # 已由 concepts/ethercat-protocol.md 覆盖（slug 与页面 stem 不同名）
     # flow-matching：命中处均为「**flow-matching** 动作头 / 快规划器 / 监督」式的动作
     # 生成头指称，机制已由 concepts/flow-matching-embodied-policy.md（速度场 + ODE

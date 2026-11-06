@@ -144,7 +144,7 @@ sequenceDiagram
 | 调用接口 | G1 实验通过 OpenAI Responses API 调用模型（reasoning effort max），相关调用记录存档 | 报告 App. E（G1） |
 | 开源状态 | 据官方 README（2026-11-03 入库核查）：runtime、多项基准集成、ICL 包与 27B Preview 权重已发布；RoboDojo、SIMPLE 等集成与 RoboRSI 独立技术报告待发布。本次通读未重新核对该 README（未核实）。 | [官方仓库归档](../../sources/repos/gpt_6_astra_embodied_intelligence.md) |
 
-复现时注意：报告的主要结果依赖 GPT-6-Astra 的 API 版本，是否开放权重未在报告正文中说明（未核实）；SOTA 对比的截止日期为 2026-10-12（图 1 注）。
+复现时注意：报告的主要结果依赖 GPT-6-Astra 的 API 版本，是否开放权重未在报告正文中说明（未核实）；与各基准当时最优结果的对比截止于 2026-10-12（图 1 注）。
 
 ## 局限与风险
 
