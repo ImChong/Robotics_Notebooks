@@ -29,6 +29,8 @@ summary: "GST 从艺术家多幅作品学习扩散模型 h-space 风格残差，
 | CAG | Content Alignment Guidance | 免训练的内容对齐引导 |
 | DDIM | Denoising Diffusion Implicit Models | 用于内容图反演与采样 |
 | CLIP | Contrastive Language–Image Pre-training | 提供感知特征 |
+| CFSD | Content Feature Structural Distance | 内容结构保留指标，越低越好 |
+| LoRA | Low-Rank Adaptation | 低秩适配微调 |
 
 ## 核心信息
 
@@ -67,6 +69,13 @@ flowchart TB
 ## 实验与评测
 
 论文 Table 2 的梵高实验中，GST 的 CLIP-Div 为 **0.297**（真实作品 0.335），1-Precision 为 **0.988**；原始 Stable Diffusion 分别为 0.178 和 0.257。GST 的 FID 为 **9.46**、ArtFID 为 **19.25**，Textual Inversion 分别为 7.67 和 13.68（越低越好），因此不能说 GST 在所有指标领先。1-Precision 是论文使用的间接指标，不能单独证明没有记忆训练图像。
+
+## 与其他工作对比
+
+- **单图风格迁移**：StyleInjection、StyTR2、CAST、S2WAT、StyleSSP 都是一张内容图配一张风格图（§2.1）；论文把它们逐张作用于同一艺术家的作品再平均输出，只做定性对比（§4.1、图 5），未给出这些方法的定量指标。
+- **风格个性化**：Textual Inversion 优化词嵌入，DreamBooth 搭配 [LoRA](../concepts/lora.md) 微调，Custom Diffusion 只微调交叉注意力（§2.2）；论文让它们在每位艺术家全部作品上训练，而非原文的少样本设置（§4.1）。表 2 中梵高、夏加尔、雷诺阿三位艺术家上 GST 的 CLIP-Div 均为最高；FID、ArtFID 在梵高上不如 Textual Inversion，CFSD（越低越好）在三位艺术家上均高于 Custom Diffusion（梵高 0.2896 对 0.1208）。StyleAligned 只有定性对比（图 5）。
+- **原始 Stable Diffusion**：GST 基于 [Stable Diffusion](./paper-rcl-2112-10752-high-resolution-image-synthesis-with-latent-diff.md) v1.4（附录）；用「A painting of {artist} style」提示的原始模型偏向少数代表作图案，梵高上 CLIP-Div 0.178、1-Prec 0.257（表 2、附录图 13）。图 7 另与 Nano Banana 2、ChatGPT 5.2 做定性对比，未给数值。
+- **Asyrp**：GST 的风格提取函数沿用 Asyrp 的 h-space 隐式函数结构；Asyrp 用文本方向的 CLIP 损失做单图属性编辑，GST 固定提示词、只用作品图像的噪声重建损失学习艺术家级分布（§3.3、表 1）。
 
 ## 结论
 

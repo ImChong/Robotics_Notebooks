@@ -39,6 +39,13 @@ summary: "ODE Policy 学习动作的物理时间向量场，从上一目标动�
 | IL | Imitation Learning | 模仿学习 |
 | RL | Reinforcement Learning | 强化学习 |
 | VLA | Vision-Language-Action | 视觉语言动作模型 |
+| FM | Flow Matching | 流匹配生成式动作头 |
+| DiT | Diffusion Transformer | 扩散 Transformer 动作头结构 |
+| DDPM | Denoising Diffusion Probabilistic Model | 去噪扩散概率模型 |
+| A2A | Action-to-Action Flow Matching | 以历史动作为流起点的流匹配 |
+| ACT | Action Chunking with Transformers | 动作块 Transformer 策略 |
+| DMP | Dynamic Movement Primitives | 动态运动基元 |
+| PPO | Proximal Policy Optimization | 近端策略优化 |
 
 ## 核心机制与流程
 
@@ -70,6 +77,14 @@ flowchart TB
 - LIBERO 四套任务上，论文报告视觉运动策略训练 1 epoch 后成功率 79.2%，100 epoch 后 93.8%；π0.5 的 ODE 头在 1 epoch 为 96.0%，原 flow matching 专家为 75.5%。比较须注意后者头部容量和初始化不同。
 - 论文报告使用 Euler 积分时生成 8 个动作耗时 5.7 ms，比该实验中的 FM-DiT 快 10.8 倍；这不是所有硬件或求解器的通用倍数。
 - 作者报告在 14 项单臂、双臂、灵巧手和人形真机任务上均取得被比较方法中的最高成功率；具体任务、样本量和差异需逐项核对。
+
+## 与其他工作对比
+
+- **实验内对照**：仿真视觉运动 IL 对比六种只换动作头的策略——FM-DiT、FM-UNet、DDPM-DiT、DDPM-UNet、A2A-DiT 与 [ACT](./paper-act.md)，共享图像与语言编码器，编码器外约 24M 参数（§5）。训练 1 epoch 后 ODE Policy 在 LIBERO 四套任务平均成功率 79.2%，基线最高 43.2%（§1、§6.1.1、图 4）；口径为每任务 20 回合、三个随机种子。
+- **大模型动作头**：在 π0.5 中用 13.7M 参数、随机初始化的 ODE 头替换 430M 的 flow matching 动作专家（§5）；1 epoch 时 96.0%，随机初始化的 FM 专家为 75.5%，预训练 FM 专家从第 2 epoch 起追平（§6.1.2、图 5A，每任务 10 回合、单种子）。在 [ImageWAM](./paper-rcl-2606-19531-imagewam-do-world-action-models-really-need-vide.md) 中 1 epoch 为 82.6%，原 flow matching 头为 24.6%，A2A 头居中，三者从第 6 epoch 起收敛（图 5B，每任务 25 回合）。各设置回合数与种子数不同，数字不能相互横比。
+- **生成时间与物理时间**：[Diffusion Policy](../methods/diffusion-policy.md) 与 flow matching 在无物理意义的生成时间上积分；Streaming Flow Policy 让流时间对齐执行时间，但仍回归由示范导出的速度标签；[Chronos Policy](./paper-chronos-policy-physical-time.md) 把物理时间作为输入，动作仍按固定频率生成（§2.1）。本文在物理时间上积分，只用积分路径监督，不用速度标签，并从上一动作块末端延续。
+- **动力系统与动作块衔接**：[DMP](../methods/dmp.md)、稳定动力系统和神经动态策略预先固定向量场形式或收敛到吸引子，每个系统只能表示少数动作（§2.1）。块边界不一致此前靠 ACT 的时间集成或 [Real-Time Chunking](./paper-real-time-chunking.md) 以已提交动作为条件缓解（§2.2）；本文以动作块为积分单元，跨块从上一目标动作继续积分（§4.3）。
+- **强化学习**：替换 [SuperMimic](./paper-supermimic.md) 的直接动作 actor，保留其世界模型、critic、奖励和超参（§6.1.3）。在 G1 人形跟踪 40 段 LAFAN1 片段、单 GPU 训练 3 小时的设置下，40 段归一化评测回报为 0.885±0.007，原 actor 为 0.845±0.009，无世界模型的 PPO 为 0.452±0.021（§6.1.3、图 6，三个种子）。
 
 ## 结论
 

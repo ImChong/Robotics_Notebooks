@@ -90,7 +90,7 @@ flowchart TD
 - **动作头：** 流匹配；`action_horizon=40`、`max_state_dim=max_action_dim=132`、`max_num_embodiments=32`、`num_inference_timesteps=4`、`use_alternate_vl_dit=True`（`GR00T_N1_7_DEFAULTS`）；状态编码、动作编码、动作解码都是按本体 ID 取参数的 `CategorySpecificMLP` / `MultiEmbodimentActionEncoder`。
 - **训练目标：** `GR00TN17ActionHead.forward` 中对速度做 MSE，并乘 `action_mask`，除以掩码和；训练时可对状态特征做 `state_dropout_prob` 的整体置零。
 - **推理：** 噪声从 `sample_noise` 或外部传入；若带 RTC 选项，会把前一 chunk 的残余写入前缀并用 ramp 缩放速度；随后 `euler_integrate`。
-- **没有论文级评测数字：** 本页不转述未读到的 N1.7 成功率。LeRobot 文档只说在 LIBERO 上「strong performance」，其结果表在读到的文档段中为空。
+- **没有论文级评测数字：** LeRobot 文档只说在 LIBERO 上「strong performance」，其结果表在读到的文档段中为空；官方仓库自报的后训练基准结果见下文「评测结果」。
 
 ## 源码运行时序图
 
@@ -159,6 +159,28 @@ sequenceDiagram
 - **相对动作：** N1.7 检查点自带相对动作统计则走原生解码；否则退回通用 `RelativeActionsProcessorStep` 并打警告，称相对增量会用绝对动作统计归一化，与官方不完全一致。
 - **限制：** N1.5 不再支持；骨干依赖支持 Qwen3-VL 的 `transformers`；`select_action` 不支持相对动作；动作头用 `diffusers`。
 
+## 评测结果（官方仓库与模型卡）
+
+N1.7 无独立论文，以下数字只来自 Isaac-GR00T 主分支 `examples/` 下的基准 README 与 HF 模型卡（2026-11-05 读取），属官方自报，未经本仓库复现；各基准均为对应数据集上后训练的检查点，不是基座零样本结果。
+
+| 基准（检查点） | N1.7 | 同表 N1.6 | 口径 |
+|------|------|------|------|
+| SimplerEnv Bridge / WidowX（`GR00T-N1.7-SimplerEnv-Bridge`） | 平均 62.3% | 56.6% | 7 个任务，每任务约 100 次 |
+| SimplerEnv Fractal / Google Robot（`GR00T-N1.7-SimplerEnv-Fractal`） | 平均 72.5% | 52.0% | 6 个任务，每任务 100 次 |
+| LIBERO Spatial / Goal / Object / Long（`GR00T-N1.7-LIBERO`） | 97.65% / 97.5% / 98.45% / 94.35% | — | 每套件 200 次，四套件同一超参、20K 步 |
+
+- **逐任务并非全面提升**：Bridge 上 `put_eggplant_in_basket` 从 89.0% 降到 53.0%、`put_eggplant_in_sink` 从 33.0% 降到 2.0%；Fractal 上 `place_in_closed_drawer` 仅 7.0%（`examples/SimplerEnv/README.md`）。
+- **LIBERO 表内不自洽**：README 写 Spatial「195/200 (97.65%)」、Object「197/200 (98.45%)」、Long「189/200 (94.35%)」，括号百分比与次数之比（97.5%、98.5%、94.5%）不符，原因未说明，引用时应保留原文两种写法。
+- **模型卡评测段**：只写「按 GR00T N1 白皮书定义的仿真与真机基准评测」（DexMG 9 任务、RoboCasa 24 任务、Digital Cousin GR-1 24 任务及真机任务），未给 N1.7 的成功率数字。
+- **推理延迟（模型卡）**：4 步去噪、1 路相机，H100 上 PyTorch eager 端到端 85.8 ms（11.7 Hz），TensorRT 全流水线 27.9 ms（35.9 Hz）；Orin 上只能做 DiT 部分的 TensorRT，216.5 ms（4.6 Hz）。
+
+## 与其他工作对比
+
+- **相对 N1.6（官方 README「Key Changes from N1.6」）**：VLM 骨干由 Eagle（`nvidia/Eagle-Block2A-2B-v2`）换成 Cosmos-Reason2-2B（Qwen3-VL 架构）；状态/动作维 29→132，`action_horizon` 16→40；DiT 层数 32→16；采用跨人与机器人共享的相对末端执行器动作空间，并在预训练中加入 2 万小时 EgoScale 人类视频（参见 [EgoScale](./paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md)）。README 自述「与 N1.6 性能相当，泛化与语言跟随更好」，但仓库内同表对比只有上表 SimplerEnv 两项，未见语言跟随的量化对照。
+- **相对 N1 / N1.5**：模型卡称 N1.X 架构以 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) 白皮书为准，仍是「VLM + flow-matching DiT 动作头」；[GR00T N1.5](./paper-gr00t-n1-5.md) 已从 LeRobot 移除（`docs/source/groot.mdx`），官方未给 N1.7 与 N1.5 的同条件评测。
+- **相对 π0**：与 [π0](./paper-pi0.md) 同属「预训练 VLM + 流匹配动作专家」；N1.7 的状态编码、动作编码与解码按本体 ID 取参数（`CategorySpecificMLP`，LeRobot 源码），动作 token 以交叉注意力读取 VLM 特征。两者无官方同条件对比，LIBERO 等数字来自不同后训练配方，不能直接横比。
+- **第三方基线结果**：[AIRoA-0](./paper-airoa-0.md)（arXiv:2611.03815 §2.1、表 1）把 N1.7 作为基线，用手持夹爪示范后训练并逐任务搜索设置，在双臂 Franka 十项任务上平均 16%（含部分得分，每项 15 次）；该结果反映的是跨数据形态的后训练口径，不代表 N1.7 在官方基准上的表现。
+
 ## 发现的不一致
 
 - 模型卡「网络架构」段写视觉用 SigLip2、文本用 T5，而同卡骨干行与 LeRobot 源码均为 Cosmos-Reason2-2B / Qwen3-VL；前者疑为沿用旧版文字。模型卡中 Cosmos-Reason2-2B 的超链接实际指向 8B 页面。
@@ -169,7 +191,7 @@ sequenceDiagram
 
 **把 N1.7 当作「有开放权重和 LeRobot 适配、但没有独立论文」的工程版本来用：引用架构问 N1 白皮书，引用行为问模型卡和源码。**
 
-- 评测数字须自己跑，LeRobot 文档未给结果表
+- 官方仓库只给 SimplerEnv 与 LIBERO 后训练结果，LeRobot 文档未给结果表；其他任务的数字须自己跑
 - 新机器人用 `embodiment_tag=new_embodiment`，并核对动作维与 `chunk_size`
 - 相对动作要靠检查点原生统计，否则归一化口径不同
 - 想要全身人形（locomotion+manipulation）请看 [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)

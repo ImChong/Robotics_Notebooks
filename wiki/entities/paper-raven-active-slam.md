@@ -26,6 +26,9 @@ summary: "RAVEN：面向无人机的主动 SLAM，通过 Pareto 路线选择和�
 | CPG | Condensed Pose Graph | 稀疏化的位姿图 |
 | OFIF | Online Fisher Information Field | 在线 Fisher 信息场 |
 | ATE | Absolute Trajectory Error | 绝对轨迹误差 |
+| SRE | Shannon-Rényi Entropy | 香农-Rényi 熵，亦为同名基线方法 |
+| VINS | Visual-Inertial Navigation System | 视觉惯性导航系统（此处为 VINS-Mono） |
+| FIF | Fisher Information Field | Fisher 信息场（离线版本） |
 
 ## 核心信息
 
@@ -62,6 +65,14 @@ flowchart TB
 - 仿真基准覆盖四个场景，每个方法每场景 10 次；例如 Warehouse 中 λ 为 0、0.5、1 时，平均探索时间分别为 89.2、107.4、136.2 秒，平均 ATE 为 0.36、0.17、0.09 米。结果依赖实验设置；SRE 和 REAL 由作者按论文重新实现。
 - 三个真实场景中，规划、建图与定位均在机载运行。Flight Arena 用动捕真值算 ATE；走廊和停车场用手持激光点云计算地图最近邻距离（NND），不能将 NND 当作轨迹 ATE。每个参数分别运行 5 次和 3 次。
 - 论文承诺后续发布源码，目前未找到官方可运行实现。回环成功概率使用高斯漂移及经验阈值建模，迁移到其他传感器和环境需重新验证。
+
+## 与其他工作对比
+
+- **实验内基线**：仿真对比 SRE、REAL、ExplORB、FALCON 四个探索规划器（§VIII-A2）。SRE 与 REAL 无官方实现，由作者按原文重新实现；ExplORB 与 FALCON 用其开源代码移植到 EPEE+ 仿真器。所有方法统一使用 VINS-Mono 及回环检测作为 SLAM 模块，每方法每场景 10 次（§VIII-A2、§VIII-B2）。
+- **纯探索规划器 FALCON**：只优化探索效率并假设定位完美，探索时间最短但定位漂移明显更大（§VIII-B2、图 9）。以 Corridor 为例，FALCON 平均探索时间 74.8 s、ATE 0.43 m；RAVEN λ=0 为 88.8 s、0.29 m（表 III）。作者将 ATE 下降归于感知约束轨迹规划。
+- **主动 SLAM 规划器**：SRE 以 Shannon-Rényi 熵自动权衡探索与利用；REAL 在当前位姿与历史位姿的轨迹测地距离足够远、欧氏距离足够近时触发回环；ExplORB 按含潜在回环边的虚拟位姿图 D-optimality 贪心选边界（§VIII-A2）。Corridor 中三者探索时间 153.6–177.3 s、ATE 0.17–0.24 m，RAVEN λ=0.5 为 109.8 s、0.13 m（表 III）；作者认为三者的往返振荡轨迹来自回环策略不够有效且缺少感知约束规划（§VIII-B2）。
+- **决策方式**：多数主动 SLAM 在边界与回环候选中贪心选下一目标（§V-C）；RAVEN 先生成覆盖全局的路线候选，再用探索时间与定位效用两个目标构成 Pareto 前沿，通过 λ 显式表达用户偏好（§VI-C），而非像 SRE 那样隐式自动权衡（§I）。
+- **信息场**：OFIF 受离线 Fisher 信息场（FIF，arXiv:2008.03324）启发；原工作面向已知环境离线建图，不适合未知环境探索，RAVEN 改为在线增量构建（§VII-A）。数字仅适用于 EPEE+ 仿真四场景、最大线速度 1.0 m/s 等表 II 设置，不能与其他论文的探索时间或 ATE 直接横比。
 
 ## 结论
 

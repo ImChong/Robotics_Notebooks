@@ -8,7 +8,7 @@ tags:
   - preference-learning
   - vlm
   - qwen3-vl
-  - failure-detection
+  - failure-data
   - lerobot
   - open-source
 status: complete

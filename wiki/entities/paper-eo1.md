@@ -50,6 +50,8 @@ summary: "EO-1（arXiv:2508.21112）：Qwen2.5-VL 初始化的 3B 单一 decoder
 | LM head / Flow head | Language-Modeling head / Flow-matching head | 文本 logits 头 / 动作速度场输出头 |
 | BOI/EOI/BOR/EOR/BOA/EOA | Begin/End of Image / Robot state / Action | 论文交错序列中的边界 token |
 | ERQA | Embodied Reasoning QA | 具身推理问答基准（Gemini Robotics 提出） |
+| FAST | Frequency-space Action Sequence Tokenization | 基于 DCT 的动作离散化 tokenizer |
+| OFT | Optimized Fine-Tuning | OpenVLA-OFT 的微调配方 |
 
 ## 为什么重要
 
@@ -139,6 +141,14 @@ sequenceDiagram
 
 - 论文 Table 5：交错数据版 EO-1(interleaved) 在 AgiBot Sandwich 总分 0.84，高于 base 的 0.77；加入泛用 LLaVA 指令数据反而降到 0.66。
 - 这些数字来自论文自述实验，未经本仓库复现；LeRobot 转换权重在 LeRobot 上的成绩未核实。
+
+## 与其他工作对比
+
+- **真机对照**：多平台评测对比 π0-FAST、[π0](./paper-pi0.md) 与 [GR00T N1.5](./paper-gr00t-n1-5.md)，论文报告总体完成分 86.0%，对照依次为 43.0%、68.0%、71.0%（§4.5、图 6）；推理-控制四任务中两个对照接 GPT-4o 作外部规划器，EO-1 用单一解码器同时规划与控制（§4.8、图 11）。完成分为作者自建真机任务口径（长程任务每项 10 次，§4.6），不能与其他论文横比。
+- **离散自回归 VLA**：[RT-2](./paper-rt-2.md)、[OpenVLA](./paper-openvla.md) 及 [FAST](./paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md) 把连续动作离散成 token，论文认为存在推理延迟与分辨率限制（§5）；同条件消融中纯自回归的 EO-1(fast) 在 LIBERO 为 88.0%，混合解码 EO-1(base) 为 98.2%（§4.9、表 5）。
+- **连续动作专家**：[Octo](./paper-octo.md)、π0、GR00T N1 以扩散或 flow matching 动作专家输出连续动作（§5）；EO-1 不设单独动作专家，文本与动作共享同一 Qwen2.5-VL 权重，只加输入/输出两个 MLP（§2.2）。
+- **离散与连续结合、协同训练**：[OpenVLA-OFT](./paper-rcl-2502-19645-fine-tuning-vision-language-action-models-optimi.md) 等用两阶段微调或集成组合两种解码；[π0.5](./paper-pi05-open-world-vla.md) 先以 FAST token 多源预训练再训练动作专家，[Knowledge Insulation](./paper-knowledge-insulation.md) 在训练中隔离 VLM 骨干（§5）。论文认为这些方法多在分离的图文对或机器人轨迹上训练，EO-1 的区别在于交错视觉-文本-动作数据（§3.2）。
+- **具身推理基准**：RoboVQA、ERQA、EO-Bench 上对比公开 VLM（Qwen2.5-VL、InternVL2.5）、闭源 VLM（GPT-4o、Gemini 1.5 Flash、Claude 3.5）与协同训练 VLA（ChatVLA、Magma），论文称在 VLMEvalKit 统一条件下评测（§4.3、表 2）；EO-Bench 为作者自建。
 
 ## 结论
 

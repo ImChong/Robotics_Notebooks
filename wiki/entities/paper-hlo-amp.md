@@ -65,6 +65,14 @@ flowchart TD
 - 消融中去掉命令范围限制后，20 秒成功率降至 15.5%；去掉观测噪声后降至 3.0%。
 - 真机展示不同箱体与掉落后恢复；7–8 kg 试验接近执行器极限，持续运行可能热停机。
 
+## 与其他工作对比
+
+- **实验内基线（表 2，20 秒）**：三种对照共用本文的域随机化、PPO 配置、算力与任务。单体端到端策略成功率 3.6%（91.6% 能走到抬起阶段，但学不会双手抓取）；无物体 WBC 为 50.3%（轻箱 65.7%、重箱 19.7%）；加末端力扰动替代的 WBC 为 77.1%，但掉箱率 78.0%。本文 80.7%，掉箱率 26.8%，N&S 指数 1.00（基线 1.29 / 1.16，越高越差）（§4.2）。
+- **用随机力扰动代替物体的全身控制**：[FALCON](./paper-loco-manip-161-109-falcon.md) 用末端随机力课程训练上下肢双智能体，[HOMIE](./paper-loco-manip-161-040-homie.md)、[OmniH2O](./paper-hrl-stack-08-omnih2o.md) 等训练时不建模被操作物体（§2）。本文让箱体真实进入低层训练；消融中改用力替代后成功率只有 6.7%（表 3）。
+- **冻结 WBC + 高层策略**：[VIRAL](./paper-viral-humanoid-visual-sim2real.md)、[DoorMan](./paper-doorman-opening-sim2real-door.md) 在预训练 WBC 上蒸馏高层策略，[DemoHLM](./paper-loco-manip-161-136-demohlm.md) 用示范条件的行为克隆；论文称这类方案会继承低层不感知物体的局限（§2）。
+- **保留运动先验的桥接方法**：[VisualMimic](./paper-notebook-visualmimic.md) 同样限制下发给跟踪器的命令，最接近本文，但用两阶段蒸馏的关键点跟踪器；[PhysHSI](./paper-amp-survey-15-physhsi.md) 部署时也不需参考动作，但论文称其结果限于轻箱、未含大扰动恢复；[Pro-HOI](./paper-loco-manip-161-074-pro-hoi.md) 依赖运动学规划器提供根轨迹（§2「Positioning of our work」）。
+- **奖励塑形路线**：[WoCoCo](./paper-loco-manip-161-116-wococo.md) 把长程任务拆成顺序接触阶段，需要细致的奖励工程（§2）。以上相关工作的数字均未在同一设置下复现，不能与本文表 2 横比。
+
 ## 结论
 
 物体参与低层训练与高层命令约束共同服务于负载下的长时程双手操作。

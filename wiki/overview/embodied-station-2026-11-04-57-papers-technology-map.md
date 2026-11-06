@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-05
 related:
   - ../entities/paper-dna.md
   - ../entities/paper-ode-policy-action-dynamics.md

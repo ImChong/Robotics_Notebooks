@@ -76,6 +76,14 @@ flowchart TD
 
 预训练数据规模实验使用留出示范的动作损失而非机器人成功率；报告在约 1,000–16,000 小时范围内数据翻倍使后训练损失约降低 2.4%，是该实验口径下的拟合结果。
 
+## 与其他工作对比
+
+- **实验内对照**：[π0.5](./paper-pi05-open-world-vla.md)、[Xiaomi-Robotics-1](./xiaomi-robotics-1.md)、[GR00T N1.7](./paper-gr00t-n1-7.md)、[MolmoAct2](./paper-molmoact2.md) 均从公开预训练检查点出发，用与 AIRoA-0 相同的手持示范后训练；基线逐任务搜索动作长度 4–16、多种动作频率和 60,000/80,000/100,000 次更新并取最佳，AIRoA-0 十项任务只用表 4 一套配方（§2.1、表 1）。分数含部分得分、每项 15 次，不能与其他论文的二值成功率横比。
+- **手持采集路线**：[UMI](./paper-rcl-ref-e064f89fc62c8df5da9f-universal-manipulation-interface-in-the-wild-rob.md) 首先证明无机器人在场的手持示范可迁移到机器人；RDT2、Xiaomi-Robotics-1 把手持数据用于基础模型预训练；[HiFi-UMI](./paper-hifi-umi.md) 提升采集保真度并公开 2,000 小时数据（§7）。本文主张把这条路线推进到单条指令、仅腕部相机、训练数据未覆盖地点的长程双臂任务。
+- **VLA 数据来源**：[RT-2](./paper-rt-2.md)、[Octo](./paper-octo.md)、[OpenVLA](./paper-openvla.md) 依赖机器人上采集的数据（Open X-Embodiment、DROID），π\*0.6 进一步用机器人上强化学习与纠正（§7）。AIRoA-0 沿用 [π0](./paper-pi0.md)/π0.5 架构与公开权重，但论文称不采集机器人示范或机器人上经验。
+- **长程任务中的语言层级**：RT-H 在动作前预测语言动作，[Hi Robot](./paper-hi-robot.md) 用高层模型选下一步，π0.5 预测自由文本子任务（§7）。AIRoA-0 预训练沿用 S2 的步骤级语言监督，后训练把高层决策简化为阶段分类，做法参照 Larchenko 等在 2025 BEHAVIOR Challenge 中的阶段跟踪（§5.1、§7）。
+- **实时动作生成**：[ACT](./paper-act.md) 对重叠动作块取平均，[Real-Time Chunking](./paper-real-time-chunking.md) 在推理时与上一块未执行部分保持一致；Diffusion Forcing、Streaming Diffusion Policy 与 [FlashVLA](./paper-flashvla.md) 走分级噪声缓冲路线（§7）。AIRoA-0 在 FlashVLA 基础上提出非均匀噪声调度，并适配锚定动作与阶段条件策略（§6.2）；与均匀调度的差异只以示意图（图 11）和推箱子演示（§2.2、图 4）说明，未给出与上述解码方法的同条件定量对比。
+
 ## 结论
 
 手持双夹爪数据与共享末端执行器可支撑长程双臂操作，但跨本体效果依赖相匹配的夹爪、相机和控制接口。

@@ -96,6 +96,14 @@ sequenceDiagram
 
 RealEstate10K 权重零样本迁移至 DL3DV 的 139 个场景，PSNR 为 24.787 dB；ScanNet++ 验证集为 21.609 dB。两视图设置中 ReSplat 的 PSNR 在 RealEstate10K、ACID 和 DTU 三个测试集均高于 GradSplat。
 
+## 与其他工作对比
+
+- **有位姿前馈 3DGS**：pixelSplat、MVSplat、TranSplat、DepthSplat、VolSplat 主要在高斯中心的放置方式（采样分布、平面扫描代价体、单目深度先验）或解码与视图聚合上不同，都是单次前向预测、推理时不修正误差（§2.1）。表 1 六视图 narrow 协议中 DepthSplat、VolSplat 为 GradSplat 之后的次优（PSNR 31.418、31.243）；wide 协议中三种代价体方法落后于 YoNoSplat 与 ReSplat（§4.2）。MVSplat、DepthSplat、VolSplat 使用 VolSplat 发布的权重，输入视图增加时 PSNR 下降（§4.2、表 1）。
+- **无位姿方法**：NoPoSplat、AnySplat、YoNoSplat 在无输入位姿下预测高斯（§2.1）；GradSplat 沿用 AnySplat 协议，在两个六视图协议的所有指标上优于 AnySplat，但低于保留真值内参与目标相机的 YoNoSplat†（narrow PSNR 26.914 对 27.816）；输入视图数从 12 起 GradSplat 的 PSNR 反超（§4.3、表 1）。三者获得的相机信息不同，结果不能当作同条件比较。
+- **ReSplat（最接近的工作）**：同样用输入视图渲染误差更新前馈模型的高斯，但采用无梯度的循环网络；GradSplat 改为在前向中走学习的梯度步，并先更新不透明度和颜色、再更新形状（§2.2）。表 1 中 ReSplat 使用两视图权重；两视图协议（附录 A、表 A2）下 ReSplat 在 RealEstate10K、ACID、DTU 上 PSNR 均更高。
+- **其他细化路线**：NeRFLiX、GANeRF、Difix3D+ 修复渲染图，ReconFusion、CAT3D、ZeroNVS 借助生成先验，均作用于渲染或生成图像而非直接更新表示；DeepView、G3R、QuickSplat 学习基于渲染梯度的更新，但对象分别是多平面图像、大规模驾驶与无人机场景、室内表面重建（§2.2）。
+- **骨干与表示**：GradSplat 的几何骨干采用 [VGGT](./paper-vggt-visual-geometry-grounded-transformer.md) 式帧内/全局交替注意力，并以 VGGT-Omega 权重初始化（§3.1），输出 [3DGS](./paper-rcl-2308-04079-3d-gaussian-splatting-for-real-time-radiance-fie.md) 高斯；与逐场景优化的 3DGS 不同，推理只做固定次数的更新（§2.1、§3.3）。
+
 ## 结论
 
 固定次数的输入视图梯度细化可提升论文测试条件下的新视角重建质量。

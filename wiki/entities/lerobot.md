@@ -63,7 +63,7 @@ sources:
 
 ## 为什么重要
 
-- **一个库走完全流程：** 不用自己拼采集脚本、训练代码和部署胶水；同一个 `lerobot-record` 既能录示范，也能加载策略在真机上跑。
+- **一个库走完全流程：** 不用自己拼采集脚本、训练代码和部署胶水；`lerobot-record` 录示范、`lerobot-rollout` 在真机上跑策略，两条命令共用同一套机器人与相机配置。
 - **权重和数据可以直接复用：** 别人上传到 Hub 的 checkpoint 一行 `--policy.path` 就能拉下来微调或部署，常被称作「机器人领域的 Transformers」。
 - **入门成本低：** 原生支持 SO-100/101、Koch 等低成本开源机械臂，个人也能复现从采数到部署的完整闭环。
 - **格式成了事实标准：** 越来越多的 VLA、数据集和仿真基准直接发布 LeRobot 格式或 LeRobot 集成（见下文「生态」一节），学会它等于拿到了读这些项目的通用接口。
@@ -77,7 +77,7 @@ sources:
 
 ## 代码在 GitHub，权重和数据在 Hub
 
-- [github.com/huggingface/lerobot](https://github.com/huggingface/lerobot)：Python 包、CLI（`lerobot-record` / `lerobot-train` / `lerobot-eval`）、硬件驱动、策略源码。适合：安装、训练、改代码
+- [github.com/huggingface/lerobot](https://github.com/huggingface/lerobot)：Python 包、CLI（`lerobot-record` / `lerobot-train` / `lerobot-eval` / `lerobot-rollout`）、硬件驱动、策略源码。适合：安装、训练、改代码
 - [huggingface.co/lerobot](https://huggingface.co/lerobot)：预训练权重、演示数据集、EnvHub 环境仓、Spaces 可视化。适合：找 checkpoint、下数据、在线看数据
 - [官方文档](https://huggingface.co/docs/lerobot/index)：安装、硬件接线、各 CLI 参数。适合：照着跑具体命令
 
@@ -87,7 +87,7 @@ flowchart LR
   ds --> train["训练<br/>lerobot-train"]
   train --> ckpt["策略权重"]
   ckpt --> eval["仿真评测<br/>lerobot-eval / EnvHub"]
-  ckpt --> deploy["真机部署<br/>lerobot-record --policy.path"]
+  ckpt --> deploy["真机部署<br/>lerobot-rollout --policy.path"]
   ds <-.上传 / 下载.-> hub[("HF Hub")]
   ckpt <-.上传 / 下载.-> hub
 ```
@@ -107,9 +107,11 @@ lerobot-train --policy.path=lerobot/smolvla_base ...
 lerobot-eval --policy.path=lerobot/pi0_libero_finetuned \
   --env.type=libero --env.task=libero_object --eval.n_episodes=10
 
-# 4. 真机跑策略：还是 record 命令，换成加载策略
-lerobot-record --robot.type=so100_follower --policy.path=<checkpoint> ...
+# 4. 真机跑策略：用 rollout 命令加载策略
+lerobot-rollout --strategy.type=base --robot.type=so100_follower --policy.path=<checkpoint> ...
 ```
+
+PyPI 0.7.0 起，`lerobot-record` 只做数据采集，不再做策略推理；真机部署统一用 `lerobot-rollout`，它支持 `--strategy.type`（base / sentry / highlight / dagger / episodic）和 `--inference.type`（sync / rtc / remote，remote 配合 `lerobot-policy-server`）。生态里较早的项目文档写的 `lerobot-record --policy.path` 部署方式，对应的是旧版本。
 
 没有真机时，可以只做 2、3 两步：下载 Hub 上的数据集和权重，在 LIBERO 等仿真基准上训练和评测。
 

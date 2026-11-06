@@ -14,6 +14,7 @@ related:
   - ../methods/vla.md
   - ../methods/imitation-learning.md
   - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
+  - ../overview/hub-embodied-eval-benchmark.md
 sources:
   - ../../sources/papers/asynchronous_robot_policies_arxiv_2611_05155.md
   - ../../sources/sites/asynchronous-robot-policies.md
@@ -77,6 +78,7 @@ summary: "Asynchronous Robot Policies（arXiv:2611.05155）：大模型低频更
 - [vla](../methods/vla.md)
 - [imitation-learning](../methods/imitation-learning.md)
 - [embodied-station-2026-11-05-43-papers-technology-map](../overview/embodied-station-2026-11-05-43-papers-technology-map.md)
+- [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md)
 
 ## 参考来源
 

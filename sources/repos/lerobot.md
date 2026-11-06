@@ -13,6 +13,7 @@
 - **Stars：** ~24k+（2026-09）
 - **入库日期：** 2026-05-27
 - **最近复核：** 2026-09-06（EnvHub / `lerobot-eval`）
+- **CLI 复核：** 2026-11-05 核对 PyPI `lerobot` 0.7.0 wheel 的 `entry_points.txt` 与 `lerobot/scripts/lerobot_record.py` 文档串：`lerobot-record` 为纯数据采集工具，策略真机部署改用 `lerobot-rollout`（`lerobot/scripts/lerobot_rollout.py`：`--strategy.type` base / sentry / highlight / dagger / episodic，`--inference.type` sync / rtc / remote）。
 - **一句话说明：** Hugging Face 具身智能全栈：PyTorch 库与 CLI（GitHub）+ Hub 上的模型 / LeRobotDataset / **EnvHub 仿真环境**。
 - **代码：** https://github.com/huggingface/lerobot（**已开源**，Apache 2.0）
 - **沉淀到 wiki：** [lerobot](../../wiki/entities/lerobot.md)、[lerobot-humanoid](../../wiki/entities/lerobot-humanoid.md)、[lerobot-envhub](../../wiki/concepts/lerobot-envhub.md)、[lerobot-dataset-v3](../../wiki/concepts/lerobot-dataset-v3.md)

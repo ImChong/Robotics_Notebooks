@@ -14,6 +14,7 @@
 - 模型卡称 VLM 骨干为 Cosmos-Reason2-2B（但卡内「网络架构」段仍写 SigLip2 + T5，属沿用旧描述，与 LeRobot 源码的 Qwen3-VL 骨干不一致；卡内 Cosmos-Reason2-2B 的链接实指向 8B 页）。
 - LeRobot 文档称：仅支持 N1.7，N1.5 已移除（旧版用 `lerobot==0.5.1`）；骨干 Cosmos-Reason2/Qwen3-VL；基座 `nvidia/GR00T-N1.7-3B`。
 - web 搜索（2026-11-05）未找到 N1.7 专属 arXiv 报告。
+- 模型卡「Evaluation」段（只列白皮书定义的基准，无 N1.7 数字）与「System Requirements and Performance」推理延迟表；Isaac-GR00T 主分支 README「What's New in GR00T N1.7 / Key Changes from N1.6」、`examples/SimplerEnv/README.md`（N1.6 对 N1.7 逐任务表）、`examples/LIBERO/README.md`（四套件成功率，括号百分比与次数不符）；另用 AIRoA-0（arXiv:2611.03815 §2.1、表 1）的第三方基线结果：用于实体页「评测结果」与「与其他工作对比」（2026-11-05 补）。
 
 ## 对 wiki 的映射
 

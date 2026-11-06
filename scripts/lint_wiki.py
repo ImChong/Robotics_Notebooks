@@ -418,6 +418,11 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # 类名、AnyTouch2 数据集的 **Sim** 子集标签；仿真概念本体已由
     # concepts/robot-simulation-three-layers.md / sim2real.md 承载，不建 concepts/sim.md。
     "sim",
+    # scene：仿真/评测框架的类名与配置键——Inspect Robots 与 Isaac Lab Arena 的 **Scene**
+    # 抽象（与 Task / Scorer、Embodiment 并列的组件名）、RoboSimStudio / Particles4All 的
+    # `Scene` 类、FLUX.3 Action SO-101 检查点的 `scene` 相机键；各页指代各自框架的场景容器，
+    # 非独立机器人概念，场景描述本体已由 concepts/robot-simulation-three-layers.md 承载。
+    "scene",
     # update / forward / init / load / deploy / loop：源码阅读记录里的函数名与生命周期
     # 方法 token——控制器的 `init` / `update`（ros2_control、OCS2 LeggedController、
     # EMGFilters）、PyTorch 模块的 `forward`、PPO 的 `update`、Arduino 的 `setup` /
@@ -706,6 +711,10 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 加载策略真机回放），已由 entities/lerobot.md 的命令表与流程图覆盖，数据落盘格式归
     # concepts/lerobot-dataset-v3.md。工具链 token，不单建概念页。
     "lerobot-record",
+    # lerobot-rollout：LeRobot 0.7.0 起的真机策略部署 CLI（取代 `lerobot-record --policy.path`，
+    # 支持 base / sentry / dagger 等策略与 sync / rtc / remote 推理后端），已由 entities/lerobot.md
+    # 的命令表与流程图覆盖；与 lerobot-record / lerobot-train 同类工具链 token，不单建概念页。
+    "lerobot-rollout",
     "libero",  # 已由 entities/libero-benchmark.md 覆盖（基准，slug 与页面 stem 不同名）
     "libero-plus",  # LIBERO 的扰动增强套件，已由 entities/libero-benchmark.md 专节覆盖
     # mcap：canonical 节点已是 entities/mcap-log-format.md（日志容器格式），与 HDF5 /
@@ -782,7 +791,15 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 由 entities/nvidia-*.md（Isaac Lab、Jetson、CUDA、GEAR Lab 等）分项承载，
     # 机构不是概念/方法，不建 concepts/nvidia.md。
     "nvidia",
+    # sharpa：公司名（灵巧手厂商 Sharpa，论文作者单位与 **Sharpa** 手 / hot3d `sharpa` 本体键），
+    # canonical 节点已是 entities/sharpa-robotics.md 与 sharpa-w02-hand.md；与 nvidia 同类
+    # 「机构/产品归 entities」，不建 concepts/sharpa.md。
+    "sharpa",
     "sonic",
+    # transformers：Hugging Face Transformers 库名（`transformers` 包依赖、Jetson / Cosmos
+    # 部署表格的 **Transformers** 推理路径），是 Python 依赖而非概念；Transformer 架构本体
+    # 已由 concepts/transformer.md 覆盖（复数库名 slug 与页面 stem 不同名）。
+    "transformers",
     # state：三义各有归属——决策过程里的状态量已由 formalizations/mdp.md /
     # pomdp.md 定义（「**State** 是物理/机器人意义上的完整瞬时描述」即该形式化的
     # 复述），可观状态的估计归 concepts/state-estimation.md，仿真真值与观测之分归
