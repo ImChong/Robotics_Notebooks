@@ -6,7 +6,7 @@ tags:
   - benchmark
   - evaluation
 status: complete
-updated: 2026-11-01
+updated: 2026-11-06
 arxiv: "2610.24579"
 project: https://renshaojie233.github.io/LIBERO-Dynamic/
 code: https://github.com/renshaojie233/LIBERO-Dynamic

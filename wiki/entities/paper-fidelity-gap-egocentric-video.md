@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, egocentric-video, human-object-interaction, interaction-fidelity, video-diffusion, humanoid]
 status: complete
-updated: 2026-10-13
+updated: 2026-11-06
 arxiv: "2610.12464"
 project_id: fidelity-gap-egocentric-world-model-interaction-fidelity
 project: https://fidelity-gap.github.io/

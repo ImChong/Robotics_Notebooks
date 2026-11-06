@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, control, impedance-control, null-space, open-source, lund, franka, kuka]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-06
 arxiv: "2212.11215"
 code: https://github.com/matthias-mayr/Cartesian-Impedance-Controller
 related:

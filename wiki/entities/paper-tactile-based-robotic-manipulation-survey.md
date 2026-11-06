@@ -3,7 +3,7 @@ type: entity
 project_id: tactile-based-robotic-manipulation-survey
 tags: [paper, survey, manipulation, tactile, robot-learning]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-06
 arxiv: "2610.30438"
 venue: "Annual Review of Control, Robotics, and Autonomous Systems, Volume 10 (2027)"
 related:

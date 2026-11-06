@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, hardware, actuator, qdd, open-source, umich, thermal, legged]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-06
 arxiv: "2202.12395"
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
