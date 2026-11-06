@@ -18,6 +18,8 @@ related:
   - ../tasks/teleoperation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
   - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
+original:
+  - ../../sources/papers/mabel_arxiv_2611_04083.md
 sources:
   - ../../sources/papers/mabel_arxiv_2611_04083.md
   - ../../sources/repos/mabel.md
@@ -39,7 +41,9 @@ summary: "MABEL（arXiv:2611.04083）：将移动底盘、升降躯干、双臂�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| MABEL | MABEL: An Open Anthropomorphic Mobile Bimanual Platform for Teleoperation and Learning | 本文方法 / 基准的简称 |
+| MABEL | Mobile Anthropomorphic Bimanual Embodiment for Learning | 移动双臂机器人平台 |
+| ACT | Action Chunking with Transformers | 模仿学习策略 |
+| DOF | Degrees of Freedom | 自由度 |
 
 ## 为什么重要
 
@@ -68,7 +72,7 @@ flowchart TD
 | **arXiv** | [2611.04083](https://arxiv.org/abs/2611.04083) |
 | **开源** | **已开源** |
 | **要点** | 将移动底盘、升降躯干、双臂和灵巧手接入统一控制接口，贯通遥操作采集与模仿学习；适合评估工作空间、集成成本与整机协同的团队。 |
-| **文内指标** | 公众号未给具体数字，本页不引用。 |
+| **文内指标** | 论文摘要报告 56 个功能自由度、约 8100 美元零件成本，以及机器人热点下 137 ms 平均端到端视频延迟；其余实验条件与结果尚待全文核验。 |
 
 ## 源码运行时序图
 
