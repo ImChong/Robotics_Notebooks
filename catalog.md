@@ -6607,6 +6607,7 @@
 - [状态空间模型（SSM）](wiki/concepts/state-space-model-ssm.md) — SSM（State Space Model）** 用隐状态 $h_t$ 与输入 $x_t$ 的线性（或输入依赖的选择性）递推生成输出，可在频域/卷积视图与递推视图间转换；**Mamba** 为其选 `📅unknown` `[wiki_page]`
 - [强 Pair Data（Strong Pair Data）](wiki/concepts/strong-pair-data.md) — 强 pair data** 是 人–机迁移 数据策展里的一个精度档位：不只要求「同一任务语义」，还要求 **视觉场景（除本体外）一致、时序逐帧对 `📅unknown` `[wiki_page]`
 - [机器人结构公差仿真工具链](wiki/concepts/structure-tolerance-simulation-toolchain.md) — 公差仿真是把「每个尺寸都合格、整机精度却不达标」的问题拦在开模和投产之前的一套分层方法：从**标注**出发，经**尺寸链 / 三维仿真 / 蒙特卡洛 / 刚度耦合**，最后用**实测数据**回头校准。 `📅unknown` `[wiki_page]`
+- [监督微调（Supervised Fine-Tuning, SFT）](wiki/concepts/supervised-fine-tuning.md) — 监督微调（SFT）是在已预训练的模型上，用带标注的「输入 → 目标输出」样本做最大似然训练，把通用能力收窄到目标任务分布的后训练步骤；在机器人里，目标输出通常是示范动作，此时 SFT 与行为克隆是 `📅unknown` `[wiki_page]`
 - [Swinging Door Trending（摆动门趋势压缩）](wiki/concepts/swinging-door-trending-compression.md) — Swinging Door Trending（SDT）** 是一种在线、按单变量样本流工作的有损分段线性压缩算法：它维护锚点周围的上下斜率边界；只要新样本仍能落在容差走廊内，就暂不归档，走廊被新样 `📅unknown` `[wiki_page]`
 - [System Identification](wiki/concepts/system-identification.md) — System Identification（系统辨识 / SysID）**：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程。 `📅unknown` `[wiki_page]`
 - [Tactile Sensing（触觉感知）](wiki/concepts/tactile-sensing.md) — 触觉感知 (Tactile Sensing)** 是机器人感知系统中的重要组成部分。如果说视觉（Vision）赋予了机器人远距离和全局的场景理解能力，那么触觉则是机器人与物理世界发生**直接物理交 `📅unknown` `[wiki_page]`
@@ -7298,6 +7299,7 @@
 - [路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）](roadmap/depth-motion-generation.md) — 摘要**：面向"想用生成模型造出人体/人形动作"的纵深路线，从生成模型基础（扩散 / 流匹配）与动作表示、文本-动作数据集，到生成骨干主线（MDM 式扩散 → 可控生成 → HY-Motion / `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）](roadmap/depth-motion-retargeting.md) — 摘要**：面向"想把人体/动物动捕、视频、生成动作变成机器人可执行参考轨迹"的纵深路线，从重定向的问题定义与数据管线定位、运动学优化工具箱、参考动作数据源与质量控制，到方法谱系主线（运动学优化 G `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）](roadmap/depth-navigation.md) — 摘要**：面向"让机器人知道自己在哪、该往哪走"的纵深路线，从导航栈分层与 SLAM / 状态估计基座，到经典 ROS 2 导航闭环，再到学习型导航、视觉–语言导航（VLN）与导航 VLA / W `📅unknown` `[roadmap_page]`
+- [路线（纵深）：如果目标是 PCB 设计（电路零基础 → 第一块板 → 原理图 → Layout → 调试 → 功率 / 高速 / EMC → 量产）](roadmap/depth-pcb-design.md) — 摘要**：面向"从没画过电路板，想一路学到能独立交付机器人驱动板、传感器板与主控载板"的纵深路线：从电压电流、万用表与焊接起步，用一块双层小板走通 KiCad 全流程，再把原理图、Layout、调 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) — 摘要**：面向"让机器人看着地形上楼梯、跨障碍、跑酷"的纵深路线，从本体感知盲走基线到地形表征、感知策略训练，再到楼梯/跑酷进阶与导航栈整合，按 Stage 0–4 串通核心方法；本路线是 [运动 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](roadmap/depth-real2sim.md) — 摘要**：面向"想把真实世界变成能在仿真里训练与评测的资产"的纵深路线，从"可仿真（simulation-ready）"判据与 Real2Sim vs Sim2Real 定位，到几何与外观重建（3 `📅unknown` `[roadmap_page]`
 - [路线（纵深）：如果目标是人形 RL 运动控制](roadmap/depth-rl-locomotion.md) — 摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-co `📅unknown` `[roadmap_page]`

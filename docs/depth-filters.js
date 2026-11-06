@@ -23,6 +23,7 @@
   /* 主路线置顶，其后与首页 / roadmap/README 一致的纵深历史顺序（29 条）。 */
   var DEPTH_ORDER = [
     'motion-control',
+    'pcb-design',
     'teleoperation',
     'rocket-landing',
     'torque-motor-design',
@@ -56,6 +57,7 @@
 
   var DEPTH_HUB_IDS = {
     'motion-control': 'roadmap/motion-control.md',
+    'pcb-design': 'roadmap/depth-pcb-design.md',
     'teleoperation': 'roadmap/depth-teleoperation.md',
     'rocket-landing': 'roadmap/depth-rocket-landing.md',
     'torque-motor-design': 'roadmap/depth-torque-motor-design.md',
@@ -175,6 +177,33 @@
         'wiki/queries/wbc-tuning-guide.md',
         'wiki/tasks/locomotion.md',
         'wiki/tasks/manipulation.md'
+      ])
+    },
+    'pcb-design': {
+      segments: new Set([
+        'pcb', 'eda', 'kicad', 'altium', 'atopile', 'tscircuit', 'qucs',
+        'heypcb', 'konnect', 'part-db', 'electromagnetic-isolation'
+      ]),
+      ids: mergeIds('pcb-design', [
+        'wiki/concepts/uart-serial-communication.md',
+        'wiki/concepts/ttl-serial-logic-level.md',
+        'wiki/concepts/rs-485-serial-bus.md',
+        'wiki/concepts/rs-232-serial-interface.md',
+        'wiki/concepts/can-fd.md',
+        'wiki/concepts/robot-power-distribution-architecture.md',
+        'wiki/concepts/joint-encoder-selection.md',
+        'wiki/overview/humanoid-hardware-101-power-compute-electronics.md',
+        'wiki/overview/hub-actuator-drive-chain.md',
+        'wiki/entities/moteus.md',
+        'wiki/entities/vesc.md',
+        'wiki/entities/simplefoc.md',
+        'wiki/entities/tinymovr.md',
+        'wiki/entities/wokwi.md',
+        'wiki/entities/tinkercad.md',
+        'wiki/entities/serial-studio.md',
+        'wiki/entities/ukmarsbot.md',
+        'wiki/entities/wolfiemouse.md',
+        'wiki/entities/opentac.md'
       ])
     },
     'teleoperation': {
@@ -745,6 +774,12 @@
       label: '主路线-运动控制与 Physical AI（Motion Control & Physical AI）',
       wikiPath: DEPTH_HUB_IDS['motion-control'],
       description: '运动控制 → 物理智能全栈成长路线：L−1 全景 → L0–L7 运动控制主干 → L8–L12 Transformer / 动作生成 / VLA / 世界模型 / 部署。'
+    },
+    'pcb-design': {
+      emoji: '🔌',
+      label: 'PCB 设计（PCB Design）',
+      wikiPath: DEPTH_HUB_IDS['pcb-design'],
+      description: '电路零基础 → 第一块板 → 原理图 → Layout → 调试 → 功率 / 高速 / EMC → 量产。'
     },
     'teleoperation': {
       emoji: '🎮',

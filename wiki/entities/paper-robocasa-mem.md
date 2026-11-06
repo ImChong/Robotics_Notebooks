@@ -96,6 +96,7 @@ sequenceDiagram
 - [vision-language-navigation](../tasks/vision-language-navigation.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-11-06-20-papers-technology-map](../overview/embodied-station-2026-11-06-20-papers-technology-map.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 归其 ③ 策略任务成功率层：RoboCasa 厨房仿真的记忆依赖任务，测的是长程记忆而非单步操作
 
 ## 参考来源
 

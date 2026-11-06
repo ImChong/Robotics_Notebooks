@@ -4,6 +4,7 @@ tags: [post-training, vla, reinforcement-learning, foundation-policy, value-base
 status: complete
 updated: 2026-09-29
 related:
+  - ./supervised-fine-tuning.md
   - ./foundation-policy.md
   - ../methods/vla.md
   - ../methods/reinforcement-learning.md
@@ -131,6 +132,7 @@ Frontier VLA 常用 **扩散/flow 动作头**（多模态正确动作）。经�
 - [VLA 部署指南](../queries/vla-deployment-guide.md)
 - [The Bitter Lesson](./bitter-lesson.md)
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 本页的 post-training 议题落在 VLA 动作执行层（及 WAM / 世界模型层）：预训练已能演示行为后，如何把成功率推到可部署
+- [监督微调（SFT）](./supervised-fine-tuning.md) — 后训练栈第一段：示范 / 标注数据上的最大似然微调，动作空间上即行为克隆
 
 ## 参考来源
 
