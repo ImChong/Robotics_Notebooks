@@ -151,7 +151,8 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
       const ink = (r) => ({ left: r.left, right: r.right, top: r.top + 0.15 * r.height, bottom: r.bottom - 0.15 * r.height });
       // 图形与 svg 字：机器人是 robot3d.js 跟着模型投影外框走的透明 rect（后面紧跟画布的 foreignObject）
       for (const n of host.querySelectorAll('rect, circle, ellipse, line, path, polyline, polygon, text')) {
-        if (n.closest('defs, mask, clipPath, marker')) continue;
+        // KaTeX 的根号（\\sqrt）上面那条横线是一张 400em 宽的 svg，套在 .hide-tail（overflow: hidden）里本来就裁掉，看得到的部分在 .hide-tail 里面（012 用户要求根号用 LaTeX 表示）
+        if (n.closest('defs, mask, clipPath, marker, .hide-tail')) continue;
         const r = n.getBoundingClientRect();
         if (!(r.width > 0 || r.height > 0) || alpha(n) < 0.1) continue;
         const robot = n.tagName === 'rect' && n.nextElementSibling && n.nextElementSibling.tagName === 'foreignObject' && n.getAttribute('fill') === 'none';
@@ -185,6 +186,7 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
         // 公式整体（括号是 svg / 带边框的 span，取 .katex-html 里所有元素外框的并集）不许被裁掉
         let u = null;
         for (const e of [kh, ...kh.querySelectorAll('*')]) {
+          if (e.parentElement && e.parentElement.closest('.hide-tail')) continue;   // 根号横线：量 .hide-tail 自己（看得到的宽度），不量里面的超宽 svg
           const r = e.getBoundingClientRect();
           if (!(r.width > 0 && r.height > 0)) continue;
           u = u ? { left: Math.min(u.left, r.left), right: Math.max(u.right, r.right), top: Math.min(u.top, r.top), bottom: Math.max(u.bottom, r.bottom) } : { left: r.left, right: r.right, top: r.top, bottom: r.bottom };

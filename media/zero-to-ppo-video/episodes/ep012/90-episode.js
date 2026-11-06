@@ -41,7 +41,7 @@
     // 划重点 / 片尾里的加粗词（配色照「画面配色」和 00-common.js）：逆向运动学亮黄；肘上亮黄、肘下青；位置 / 手腕目标紫；角度蓝；
     // 没有解 / 用不了橙；圆环（工作空间）绿
     boldColors: { '逆向运动学': 'var(--hi)', '正向运动学': 'var(--demo-accent)', '肘上': 'var(--hi)', '肘下': '#4fc1ff', '手腕': 'var(--violet)',
-      '角度': 'var(--demo-accent)', '开平方': 'var(--demo-warn)', '圆环': 'var(--demo-good)', '无解': '#ff7b3a', '没有': '#ff7b3a',
+      '角度': 'var(--demo-accent)', '开平方': 'var(--demo-warn)', '开根号': 'var(--demo-warn)', '圆环': 'var(--demo-good)', '无解': '#ff7b3a', '没有': '#ff7b3a',
       '用不了': '#ff7b3a', '8 组': 'var(--hi)', '16 组': 'var(--hi)', '无穷多组': 'var(--hi)' },
     introDur: 25.39,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
@@ -53,7 +53,7 @@
       title: '位姿 → 关节角：倒过来求',
       items: [
         { c: 'var(--hi)', n: '① 逆向运动学', s: '给出手要到的位姿，求每个关节转多少', at: 1.87 },
-        { c: 'var(--demo-warn)', n: '② 两个圆的交点', s: '开平方有正负两个：肘上、肘下', at: 8.23 },
+        { c: 'var(--demo-warn)', n: '② 两个圆的交点', s: '开根号有正负两个：肘上、肘下', at: 8.23 },
         { c: '#ff7b3a', n: '③ 太远、太近：无解', s: '手能到的地方是一个圆环\n环里 2 组，边上 1 组，环外 0 组', at: 14.66 },
         { c: 'var(--demo-good)', n: '④ 六个关节：几组解', s: '这台（UR5）最多 8 组，一般最多 16 组\n关节再多：无穷多组', at: 22.08 }
       ],
