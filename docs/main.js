@@ -669,21 +669,33 @@
   // 旧缓存数据无 health_score 时输出空格位，保持整列对齐。
   var HEALTH_GAP_LABELS = ['缺 summary / 来源', '阅读骨架未达标', '原文未通读', 'status 未 complete'];
   var ROADMAP_HEALTH_GAP_LABELS = ['缺首屏导读', '站内链接不足 5 条', '缺阶段化结构'];
+  // 「2/3 · 原文未通读」：小条悬停提示与详情页 / 路线页元信息「健康度」行共用
+  function healthSummaryText(meta) {
+    var score = Math.max(0, Math.min(3, meta.health_score));
+    var isRoadmap = meta.type === 'roadmap_page' || meta.type === 'roadmap';
+    var labels = isRoadmap ? ROADMAP_HEALTH_GAP_LABELS : HEALTH_GAP_LABELS;
+    var gaps = [];
+    for (var gi = 0; gi < labels.length; gi++) {
+      if (meta.health_gaps & (1 << gi)) gaps.push(labels[gi]);
+    }
+    return score + '/3 · ' + (gaps.length ? gaps.join('、') : '三项齐全');
+  }
   function renderHealthBar(meta) {
     if (!meta || typeof meta.health_score !== 'number') {
       return '<span class="node-health node-health--empty" aria-hidden="true"></span>';
     }
     var score = Math.max(0, Math.min(3, meta.health_score));
-    var labels = meta.type === 'roadmap_page' ? ROADMAP_HEALTH_GAP_LABELS : HEALTH_GAP_LABELS;
-    var gaps = [];
-    for (var gi = 0; gi < labels.length; gi++) {
-      if (meta.health_gaps & (1 << gi)) gaps.push(labels[gi]);
-    }
-    var tip = '健康度 ' + score + '/3 · ' + (gaps.length ? gaps.join('、') : '三项齐全');
+    var tip = '健康度 ' + healthSummaryText(meta);
     var segs = '';
     for (var si = 0; si < 3; si++) segs += '<i' + (si < score ? ' class="is-on"' : '') + '></i>';
     return '<span class="node-health node-health--' + score + '" role="img" title="' +
       escapeHtml(tip) + '" aria-label="' + escapeHtml(tip) + '">' + segs + '</span>';
+  }
+  // 元信息行：小条 + 明文（触屏看不到悬停提示，这里直接写出缺项）
+  function renderHealthMetaHtml(meta) {
+    if (!meta || typeof meta.health_score !== 'number') return '';
+    return renderHealthBar(meta) +
+      '<span class="detail-meta-health-text">' + escapeHtml(healthSummaryText(meta)) + '</span>';
   }
 
   function renderActionBadge(action) {
@@ -729,6 +741,8 @@
     }
     var typeLabel = opts.typeLabel || wikiTypeLabel(item.type, opts.typeContext || 'updates');
     var metaHtml = opts.metaHtml || '';
+    // 关联项 / 相关推荐带健康度列；来源列表不带（列表须同时传 health，见 renderCompactHubStyleList）
+    var healthHtml = opts.health ? renderHealthBar(item) : '';
     var linkAttrs = opts.external
       ? ' target="_blank" rel="noopener noreferrer"'
       : '';
@@ -738,6 +752,7 @@
       : '<span>' + escapeHtml(item.label || item.title || id) + '</span>';
     return '<li class="detail-compact-row">' +
       '<span class="detail-compact-type">' + escapeHtml(typeLabel) + '</span>' +
+      healthHtml +
       '<span class="detail-compact-main">' + mainHtml +
       renderUpdatesItemSuffix(item) +
       '</span>' +
@@ -747,14 +762,15 @@
       '</li>';
   }
 
-  function renderCompactHubStyleList(container, rowsHtml, emptyText) {
+  function renderCompactHubStyleList(container, rowsHtml, emptyText, options) {
     if (!container) return;
     if (!rowsHtml) {
       container.innerHTML = '<p class="data-meta">' + escapeHtml(emptyText || '暂无数据') + '</p>';
       removeLoadingState(container);
       return;
     }
-    container.innerHTML = '<ol class="detail-compact-list">' + rowsHtml + '</ol>';
+    var listClass = options && options.health ? 'detail-compact-list detail-compact-list--health' : 'detail-compact-list';
+    container.innerHTML = '<ol class="' + listClass + '">' + rowsHtml + '</ol>';
     removeLoadingState(container);
   }
 
@@ -3704,7 +3720,7 @@
           '" aria-label="' + escapeHtml(page.title || rid) + '" style="--tt-c:' + color + ';">' +
           '<span class="roadmap-ltree-node-name">' + escapeHtml(roadmapLtreeShortLabel(page, rid)) + '</span>' +
           '<span class="roadmap-ltree-node-type"><span class="roadmap-kmap-dot" aria-hidden="true"></span>' +
-          escapeHtml(typeLabel) + '</span></a>';
+          escapeHtml(typeLabel) + renderHealthBar(page) + '</span></a>';
       }
       return html;
     }
@@ -4890,7 +4906,9 @@
       type: resolveCompactRowDisplayType(safePage, detailId, communityIndex),
       title: buildInternalLinkTitle(detailId, safePage),
       community_label: communityLabel,
-      has_repo: hasRepo
+      has_repo: hasRepo,
+      health_score: safePage.health_score,
+      health_gaps: safePage.health_gaps
     };
   }
 
@@ -4991,10 +5009,11 @@
           var rowMeta = buildCompactPageRowMeta(compactPage, compactId, communityIndex);
           compactRows += renderCompactHubStyleRow(rowMeta, {
             href: compactPage.type === 'roadmap_page' ? roadmapHref(compactId) : detailHref(compactId),
-            metaHtml: options.metaExtra ? escapeHtml(options.metaExtra(compactId, compactPage) || '') : ''
+            metaHtml: options.metaExtra ? escapeHtml(options.metaExtra(compactId, compactPage) || '') : '',
+            health: true
           });
         }
-        renderCompactHubStyleList(container, compactRows, emptyText);
+        renderCompactHubStyleList(container, compactRows, emptyText, { health: true });
       }
       if (options.enrichCommunity !== false) {
         ensureDetailCommunityIndex()
@@ -5677,6 +5696,7 @@
     } else {
       renderDetailMetaItemRow('roadmapMetaStages', '学习阶段', '');
     }
+    renderDetailMetaItemRow('roadmapMetaHealth', '健康度', renderHealthMetaHtml(detail));
 
     renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
     renderDetailMetaItemRow('roadmapMetaDepth', '路线视图', '');
@@ -6232,6 +6252,7 @@
         '更新时间',
         detailPage.updated ? renderDetailMetaDateBadge(detailPage.updated) : ''
       );
+      renderDetailMetaItemRow('detailMetaHealth', '健康度', renderHealthMetaHtml(detailPage));
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
       renderDetailMetaItemRow('detailMetaDepth', '所属路线', '');
       renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
@@ -6321,10 +6342,11 @@
           var rowMeta = buildCompactPageRowMeta(recPage, rec.id, communityIndex);
           recommendedRows += renderCompactHubStyleRow(rowMeta, {
             href: detailHref(rec.id),
-            metaHtml: escapeHtml(rec.score + ' 标签')
+            metaHtml: escapeHtml(rec.score + ' 标签'),
+            health: true
           });
         }
-        renderCompactHubStyleList(recommendedEl, recommendedRows, '暂无 tag 匹配的相关推荐。');
+        renderCompactHubStyleList(recommendedEl, recommendedRows, '暂无 tag 匹配的相关推荐。', { health: true });
       }
       ensureDetailCommunityIndex()
         .then(renderRecommendedRows)

@@ -886,6 +886,8 @@ a.hero-stat-num:focus-visible {
   row-gap: 10px;
   align-items: baseline;
 }
+/* 关联项 / 相关推荐：类型列后多一列健康度小条（来源列表不带） */
+.detail-compact-list--health { grid-template-columns: max-content max-content 1fr max-content; }
 .detail-compact-row { display: contents; }
 .detail-compact-type {
   color: var(--text-muted);
@@ -1754,6 +1756,7 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-meta-item strong {
   font-weight: 650;
 }
+.detail-meta-health-text { color: var(--text-muted); }
 .detail-meta-badge {
   display: inline-flex;
   align-items: center;
@@ -3776,6 +3779,9 @@ button.home-wiki-heatmap-cell.is-active {
   font-size: 0.68rem;
   line-height: 1.2;
 }
+/* 知识地图节点框：类型标签后的健康度小条缩小一号 */
+.roadmap-ltree-node-type .node-health { margin-left: 2px; }
+.roadmap-ltree-node-type .node-health i { width: 3px; height: 8px; }
 .roadmap-ltree-node .roadmap-kmap-dot {
   width: 0.5rem;
   height: 0.5rem;

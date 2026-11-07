@@ -773,6 +773,16 @@ def attach_paper_notebook_links(
             item["paper_notebook_links"] = links
 
 
+def page_health(path: Path, text: str) -> tuple[int, int]:
+    """节点健康度（得分 0-3, 缺项位掩码），与 link-graph / 互链榜单同口径。"""
+    # generate_link_graph 在模块级 import 本模块，这里延迟导入以免循环
+    import generate_link_graph as glg
+
+    if path.relative_to(ROOT).parts[0] == "roadmap":
+        return glg.compute_roadmap_health(text, len(glg.extract_internal_links(text, path)))
+    return glg.compute_health(text, path)
+
+
 def build_item(path: Path) -> dict[str, Any]:
     text = read_text(path)
     fm = parse_frontmatter(text)
@@ -794,6 +804,9 @@ def build_item(path: Path) -> dict[str, Any]:
         item["has_repo"] = True
 
     parts = path.relative_to(ROOT).parts
+    # 详情页「页面信息」/ 关联项 / 相关推荐、路线页元信息与知识地图节点的健康度小条
+    if parts[0] in ("wiki", "roadmap"):
+        item["health_score"], item["health_gaps"] = page_health(path, text)
     if parts[0] == "wiki":
         if parts[1] == "entities":
             item["type"] = "entity_page"
@@ -1054,6 +1067,9 @@ def build_site_data(items: List[Dict]) -> Dict:
         }
         if item.get("has_repo"):
             entry["has_repo"] = True
+        if item.get("health_score") is not None:
+            entry["health_score"] = item["health_score"]
+            entry["health_gaps"] = item["health_gaps"]
         # 论文笔记链接在导出期已按「映射 → source_links → 正文」顺序算好（上限 6 条），
         # 随目录下发后，无正文的消费端（图谱侧栏）不必再扫正文。
         if item.get("paper_notebook_links"):
