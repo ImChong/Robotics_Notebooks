@@ -3413,8 +3413,24 @@
       return nodeById2D.get(focusId) || nodeById2D.get(decoded)
         || nodes.find(n => n.detail_id === focusId || n.detail_id === decoded) || null;
     }
+    // 类型 / 开源 / 健康度各项的节点数（对齐「按社区」的计数）；归类判据同 nodeMatchesCurrentFilter
+    function countNodesByColorMode() {
+      const keyOf = colorMode === 'opensource' ? nodeOpensourceKey
+        : colorMode === 'health' ? (d) => String(d.health_score != null ? d.health_score : 0)
+        : (d) => d.type;
+      const counts = new Map();
+      for (const n of nodes) {
+        const key = keyOf(n);
+        counts.set(key, (counts.get(key) || 0) + 1);
+      }
+      return counts;
+    }
+    function legendCountHtml(size) {
+      return `<span class="legend-count">${escapeHtml(String(size || 0))}</span>`;
+    }
     function renderLegend() {
       const rows = [];
+      const counts = colorMode === 'community' ? null : countNodesByColorMode();
       if (colorMode === 'community') {
         rows.push('<div class="legend-title">按社区着色</div>');
         for (const community of getSortedCommunities()) {
@@ -3438,7 +3454,7 @@
         for (const row of openRows) {
           const isActive = (focusedOpensource === row.key);
           rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-opensource="${escapeHtml(String(row.key))}">
-            <div class="legend-dot" style="background:${escapeHtml(String(row.color))}"></div>${escapeHtml(String(row.label))}
+            <div class="legend-dot" style="background:${escapeHtml(String(row.color))}"></div><span class="legend-label-text">${escapeHtml(String(row.label))}</span>${legendCountHtml(counts.get(row.key))}
           </div>`);
         }
       } else if (colorMode === 'health') {
@@ -3446,7 +3462,7 @@
         for (const h of HEALTH_FILTER_OPTIONS) {
           const isActive = (focusedHealth === h.value);
           rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-health="${escapeHtml(String(h.value))}">
-            <div class="legend-dot" style="background:${escapeHtml(String(h.color))}"></div>${escapeHtml(String(h.label))}
+            <div class="legend-dot" style="background:${escapeHtml(String(h.color))}"></div><span class="legend-label-text">${escapeHtml(String(h.label))}</span>${legendCountHtml(counts.get(h.value))}
           </div>`);
         }
       } else {
@@ -3459,7 +3475,7 @@
         for (const t of typeRows) {
           const isActive = (focusedType === t.type);
           rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-type="${escapeHtml(String(t.type))}">
-            <div class="legend-dot" style="background:${escapeHtml(String(t.color))}"></div>${escapeHtml(String(t.label))}
+            <div class="legend-dot" style="background:${escapeHtml(String(t.color))}"></div><span class="legend-label-text">${escapeHtml(String(t.label))}</span>${legendCountHtml(counts.get(t.type))}
           </div>`);
         }
       }
@@ -4786,10 +4802,16 @@
       if (colorMode === 'opensource') {
         return getOpensourceFilterOptions();
       }
+      const counts = countNodesByColorMode();
       if (colorMode === 'health') {
-        return HEALTH_FILTER_OPTIONS;
+        return HEALTH_FILTER_OPTIONS.map((o) => ({ ...o, size: counts.get(o.value) || 0 }));
       }
-      return TYPE_FILTER_OPTIONS;
+      return TYPE_FILTER_OPTIONS.map((o) => ({
+        ...o,
+        size: o.value === '__orphan__'
+          ? nodes.filter((n) => n._degree <= 1).length
+          : (counts.get(o.value) || 0),
+      }));
     }
 
     function getColorModeLabel(mode) {
