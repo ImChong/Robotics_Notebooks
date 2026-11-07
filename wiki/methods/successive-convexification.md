@@ -15,6 +15,8 @@ sources:
   - ../../sources/papers/malyuta_2021_convex_trajectory_generation_tutorial.md
   - ../../sources/repos/scptoolbox_jl.md
   - ../../sources/repos/scvx_embersarc.md
+original:
+  - ../../sources/papers/szmuk_2018_scvx_6dof_free_final_time.md
 summary: "序列凸化（SCvx）：把非凸轨迹优化在上一轮轨迹附近线性化成凸子问题（通常是 SOCP），用虚拟控制防止人为不可行、用信赖域限制步长，迭代到收敛；是 6-DoF 火箭着陆制导的主流在线解法。"
 ---
 
