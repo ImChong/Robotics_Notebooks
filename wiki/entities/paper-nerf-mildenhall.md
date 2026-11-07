@@ -74,7 +74,7 @@ sequenceDiagram
  participant EMB as get_embedder / run_network
  participant RR as render_rays
  participant PDF as sample_pdf
- participant OPT as TensorFlow optimizer
+ participant UPDATE as TensorFlow optimizer
  CLI->>DATA: 读取图像和已知相机位姿
  CLI->>MOD: create_nerf(args)
  MOD->>EMB: 配置位置/方向频率编码
@@ -87,7 +87,7 @@ sequenceDiagram
   RR->>EMB: fine samples -> MLP
   EMB-->>RR: fine RGB/weights
   RR-->>CLI: RGB map + raw2outputs
-  CLI->>OPT: img2mse / gradients
+  CLI->>UPDATE: img2mse / gradients
  end
 ```
 
