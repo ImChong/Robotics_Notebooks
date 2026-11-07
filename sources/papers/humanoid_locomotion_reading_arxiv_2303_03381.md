@@ -27,3 +27,9 @@
 ## 对 wiki 的映射
 
 - [`wiki/tasks/humanoid-locomotion.md`](../../wiki/tasks/humanoid-locomotion.md)
+
+## 2026-11-07 二次核对补充（逐项对照 arXiv v2 正文）
+
+- 动作空间为 16 个驱动关节的 PD setpoint 加 8 个腿部驱动关节的预测 PD 增益；4 个脚趾电机不由策略控制，用固定增益保持默认位置；部署时策略 50 Hz、关节 PD 1 kHz。
+- 该 arXiv v2 PDF 的正文把超参数、状态 / 观测空间构成、奖励构成、随机化范围与指令范围表放在 “supplement” 中，**PDF 本身未附这些表**，因此逐关节 Kp / Kd 数值与随机化数值表无法由该 PDF 核对。
+- 策略输入为本体感知观测与动作的历史（上下文窗口 16），无任何外感知（无相机）；Transformer 4 层、嵌入 192、4 头、共 1.4M 参数。

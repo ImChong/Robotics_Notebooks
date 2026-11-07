@@ -3,6 +3,12 @@ type: query
 tags: [debugging, sim2real, locomotion, rl, deployment, real-robot]
 status: complete
 summary: RL 策略仿真中表现良好但真机失效时的系统排查手册，覆盖训练问题、部署问题、硬件问题三条排查路径。
+original:
+  - ../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md
+  - ../../sources/papers/rma_reading_arxiv_2107_04034_pt3.md
+  - ../../sources/papers/rapid_locomotion_rl_arxiv_2205_02824.md
+  - ../../sources/papers/humanoid_locomotion_reading_arxiv_2303_03381.md
+  - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/blogs/wechat_shenlan_rl_sim2real_deployment_2026-09-18.md
@@ -18,7 +24,7 @@ related:
   - ../entities/tensorboard.md
   - ../entities/weights-and-biases.md
   - ../comparisons/wandb-vs-tensorboard.md
-updated: 2026-09-18
+updated: 2026-11-07
 
 ---
 
@@ -130,6 +136,27 @@ ros2 topic echo /robot/obs --no-arr > obs_log.txt
 
 ---
 
+## 原文对照：症状背后的一手证据（2026-11-07 核对）
+
+上文的阈值（如「推理延迟 < 5 ms」「上机立即倒地先查 obs 顺序」）是维护者的工程经验，**一手论文并未给出这些数值**（推测性经验）。下面把能在论文里找到证据的排查点列出，供判断优先级时参考：
+
+| 症状 / 排查点 | 一手证据 | 排查含义 |
+|---------------|----------|----------|
+| 上机后抖动、肢体剧烈颤动 | Hwangbo 2019：用理想或手调解析执行器训练的策略，真机上「一步都走不了」，肢体剧烈抖动，作者归因于各处延迟没建对 | 先怀疑执行器 / 延迟模型，而不是奖励；考虑执行器网络或系统辨识 |
+| 仿真好、真机步速上不去 | Margolis 2022 表 IV：指令 6.0 m/s，仿真 5.46 m/s，真机 3.81 m/s（有在线辨识）/ 2.49 m/s（无）；作者承认仿真评估参数（电机强度、摩擦）可能被高估 | 把「仿真评估配置」当成待校准变量，而不是真值 |
+| 复杂地形或载荷下表现差 | RMA：同一策略在训练中未见的沙、泥、床垫、油布滑移区、8 kg 以上负载下，带适应模块的版本成功率显著高于无适应版本；无适应的版本在重载下几乎不动但很少摔 | 区分「完全失效」与「保守不动」，后者更像适应缺失而非接口错误 |
+| 延迟、时序抖动 | Extreme Parkour 把深度延迟固定为 0.08 s、本体延迟固定 0.016 s（不足则补等待）以消除抖动；DreamWaQ++ 训练里随机化 0–15 ms 本体延迟，作者称再大会让策略过保守；RMA 的适应模块 10 Hz 与策略 100 Hz 异步 | 测量并**固定**部署侧延迟，使其落在训练分布内 |
+| 策略对不准确的速度观测敏感 | Hwangbo：对关节速度加 U(−0.5, 0.5) rad/s 的强噪声使策略对速度测量误差更鲁棒；把速度从观测里去掉则训练完全失败 | 观测噪声应以真机量级为准，不要删观测 |
+| 同一策略仿真相近、真机相差大 | Hwangbo：不同激活函数的策略在仿真里表现相近，在真机上可能差别很大；有界激活（tanh）在受扰动时动作更温和 | 仿真分数不能代替真机验收 |
+| 低增益 / 高增益与 jitter | Margolis 取 Kp=20、Kd=0.5 的低增益促进平滑且不再调；Hwangbo 的 kd 取到足以抑制真机振荡 | 抖动时先核对 PD 增益与训练一致，其次才调 DR |
+| 长期运行退化 | Hwangbo 的策略三个月内多次测试期间机器人增重约 2 kg、换了 3 倍硬度弹簧，策略依然可用（论文未涉及热保护 / 电池，本页相关排查属经验） | 区分「硬件漂移」与「接口错误」 |
+
+使用方式：
+
+1. 症状指向「接口」时优先走【部署问题】清单，这一类的优先级判断（obs 顺序 > 硬件 > 训练）是本页的工程经验，原文无直接对照。
+2. 症状指向「动力学」（抖动、速度上不去、地面差）时，优先看执行器 / 延迟 / 在线适应，论文都有明确的反例（理想执行器模型训出的策略走不了；无在线辨识时高速差距显著变大）。
+3. 论文提醒的共同点：**别用单一仿真指标判断迁移成功**。
+
 ## 快速排查优先级
 
 1. 先验证【部署问题】——obs/action 接口是最常见的翻车点，修复成本最低
@@ -157,8 +184,11 @@ ros2 topic echo /robot/obs --no-arr > obs_log.txt
 ## 参考来源
 
 - [Sim2Real 源文档](../../sources/papers/sim2real.md)
-- Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021)
-- Margolis et al., *Rapid Locomotion via Reinforcement Learning* (2022)
+- Kumar et al., [*RMA: Rapid Motor Adaptation for Legged Robots*](https://arxiv.org/abs/2107.04034) (2021) — [通读归档](../../sources/papers/rma_reading_arxiv_2107_04034_pt3.md)
+- Margolis et al., [*Rapid Locomotion via Reinforcement Learning*](https://arxiv.org/abs/2205.02824) (2022) — [通读归档](../../sources/papers/rapid_locomotion_rl_arxiv_2205_02824.md)
+- Hwangbo et al., [*Learning Agile and Dynamic Motor Skills for Legged Robots*](https://arxiv.org/abs/1901.08652) (2019) — [通读归档](../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md)
+- Radosavovic et al., [*Real-World Humanoid Locomotion with RL*](https://arxiv.org/abs/2303.03381) (2023) — [通读归档](../../sources/papers/humanoid_locomotion_reading_arxiv_2303_03381.md)
+- Cheng et al., [*Extreme Parkour with Legged Robots*](https://arxiv.org/abs/2309.14341) (2023) — [通读归档](../../sources/papers/extreme_parkour_arxiv_2309_14341.md)
 - [Sim2Real 工程 Checklist](sim2real-checklist.md#快速部署检查)
 
 ## 关联页面

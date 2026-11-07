@@ -10,7 +10,7 @@ tags:
   - privileged-training
   - parkour
 status: complete
-updated: 2026-09-21
+updated: 2026-11-07
 arxiv: "2309.14341"
 venue: "ICRA 2024"
 related:
@@ -26,18 +26,20 @@ related:
   - ./paper-swap-parkour.md
   - ./paper-vision-locomotion-egocentric.md
   - ../methods/dagger.md
+original:
+  - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
 sources:
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
   - ../../sources/repos/extreme-parkour.md
   - ../../sources/sites/extreme-parkour-github-io.md
-summary: "Extreme Parkour（ICRA 2024）：Go1 级四足在单目深度下端到端跑酷；两阶段 RL（特权 scandots + oracle 航向 → 深度 + 自预测 yaw 双重 DAgger 蒸馏），约 20 小时仿真训练。"
+summary: "Extreme Parkour（ICRA 2024）：Unitree A1 低成本四足在单目深度下端到端跑酷；两阶段 RL（特权 scandots + oracle 航向 → 深度 + 自预测 yaw 双重 DAgger 蒸馏），约 20 小时仿真训练。"
 tags: [quadruped, reinforcement-learning, locomotion, perception, sim2real, privileged-training, parkour, unitree]
 
 ---
 
 # Extreme Parkour（端到端四足感知跑酷）
 
-**Extreme Parkour**（Cheng et al., [arXiv:2309.14341](https://arxiv.org/abs/2309.14341)，**ICRA 2024**）在 **Unitree Go1 级低成本四足** 上，用 **单目前向深度相机 + 大规模仿真 RL**，训练 **单神经网络** 直接输出关节控制，实现高跳、远跳、手倒立与斜 ramp 自主变向等 **极限跑酷** 技能。官方材料：[项目页](https://extreme-parkour.github.io/)、[GitHub](https://github.com/chengxuxin/extreme-parkour)。
+**Extreme Parkour**（Cheng et al., [arXiv:2309.14341](https://arxiv.org/abs/2309.14341)，**ICRA 2024**）在 **Unitree A1 低成本四足**（论文 §4.1；并非 Go1） 上，用 **单目前向深度相机 + 大规模仿真 RL**，训练 **单神经网络** 直接输出关节控制，实现高跳、远跳、手倒立与斜 ramp 自主变向等 **极限跑酷** 技能。官方材料：[项目页](https://extreme-parkour.github.io/)、[GitHub](https://github.com/chengxuxin/extreme-parkour)。
 
 ## 一句话定义
 
@@ -59,9 +61,9 @@ tags: [quadruped, reinforcement-learning, locomotion, perception, sim2real, priv
 
 ## 为什么重要
 
-- **端到端视觉 loco 的早期标杆：** 在 **执行器不精确、深度低频抖动** 的真实约束下，仍实现 **2× 身高 / 2× 体长** 级动态动作，影响后续 Robot Parkour Learning、DreamWaQ++ 等感知 locomotion 叙事。
+- **端到端视觉 loco 的早期标杆：** 在 **执行器不精确、深度低频抖动** 的真实约束下，仍实现 **高跳 0.5 m（约 2× 大腿关节高度 26 cm）、远跳 0.8 m（约 2× 前后足间距）** 级动态动作（论文 §4.2；Table 1 按「相对机身高度 / 体长 2×」比较，同期工作为 1.5×），影响后续 Robot Parkour Learning、DreamWaQ++ 等感知 locomotion 叙事。
 - **双重蒸馏范式清晰：** 不仅蒸馏 **motor commands**，还蒸馏 **rapidly fluctuating heading**（ramp 跳上角与即时变向人类无法遥操作给 waypoint）——比「只换 scandots→深度」更完整。
-- **训练成本可接受：** 官方 README 报告 **< 20 h（3090）** 两阶段合计，降低复现门槛；开源栈基于 **legged_gym + Isaac Gym**。
+- **训练成本可接受：** 论文 §4.1 与 README 均称单张 **3090 上 < 20 h** 可训出可部署策略，降低复现门槛；开源栈基于 **legged_gym + Isaac Gym**。
 - **奖励设计可迁移：** **Inner-product 航向跟踪 + clearance 边缘惩罚** 解决跑酷中「绕障 exploit」与「贴边省能」两类典型失败（项目页 ablation）。
 
 ## 核心结构
@@ -97,7 +99,7 @@ flowchart TB
     YAW --> STUDENT
   end
   TEACHER -.->|DAgger 标签| STUDENT
-  STUDENT --> ACT["关节控制 → 实机 Go1"]
+  STUDENT --> ACT["关节控制 → 实机 A1"]
 ```
 
 ## 方法栈（提炼）
@@ -106,18 +108,35 @@ flowchart TB
 - **Teacher–Student 谱系：** 与 [RMA](../concepts/privileged-training.md)、Robot Parkour Learning（ZiwenZhuang）同族；Extreme Parkour 特色是 **航向蒸馏** 与 **clearance 奖励** 针对跑酷几何。
 - **与 DreamWaQ++ 差异：** DreamWaQ++ 强调 **点云多模态 + 非对称 AC 单阶段** 与传感器失效回退；Extreme Parkour 强调 **极限动态技能 + 深度端到端 + 两阶段蒸馏**（见 [DreamWaQ++](./dreamwaq-plus.md) 对比表）。
 
-## 实验与 ablation（项目页）
+## 实验与 ablation（论文 §4 + 项目页）
 
-- **技能：** High jump、Long jump、Handstand、Tilted ramp、Step / Gap / Hurdle 组合；**新障碍组合与不同物理属性** 泛化。
-- **Vision Locomotion 对照：** 同团队 [CoRL 2022 ego-depth loco](./paper-vision-locomotion-egocentric.md) 在跑酷页展示的楼梯场景 **跌落**——说明极限动态技能需 **clearance + 航向蒸馏** 等增强，而非仅 scandots→深度两阶段。
-- **无 clearance：** 大 gap **触边失败**。
-- **无 direction distillation：** ramp **摇杆难以控制**。
+- **技能：** High jump（0.5 m 箱）、Long jump（0.8 m gap）、Handstand（无外感知，仅本体即可在草地与下楼梯行走）、37° 倾斜 ramp、Step / Gap / Hurdle 组合；对新障碍组合与不同物理属性泛化。
+- **仿真奖励消融（论文表 2，256 机器人 / 30 s，总计 MXD↑ / MEV↓）：** Ours 0.98 / 0.03；NoInner 0.75 / 0.04（Step 地形 MXD 仅 0.14，只会撞台阶重试，Hurdle 上学会绕行故 MEV 低）；NoClear 0.99 / 0.08（MXD 略高但贴边落脚，实机不稳）；Noisy（模拟融合高程图噪声）0.82 / 0.20，方差大。
+- **蒸馏消融（表 3）：** Ours 0.92 / 0.09，几乎等于 Oracle 的 0.94 / 0.10；Both（始终观测预测 yaw）0.12 / 0.26、Mask（yaw 置零）0.05 / 0.00，均因噪声 yaw 导致模仿数据分布漂移而不收敛。
+- **实机（图 7）：** 每地形每难度 5 次试验，最难一档成功率比 NoClear / NoDir 高 20–80%；NoDir（人用摇杆给方向）在跳跃与斜坡处需要突然变向，超出训练分布而失败。
+- **Vision Locomotion 对照：** 同团队 [CoRL 2022 ego-depth loco](./paper-vision-locomotion-egocentric.md) 在项目页的楼梯场景展示跌落（项目页材料，非论文表格）。
+
+## 工程实践
+
+| 项目 | 论文 / README 给出的设定 |
+|------|--------------------------|
+| 机器人 | Unitree A1，12 关节；站立大腿关节高 26 cm，体长 40 cm |
+| 感知硬件 | 头部 Intel RealSense D435，深度 10 ± 2 Hz；裁左侧坏像素并降采样至 58 × 87 |
+| 机载计算 | Jetson NX；深度骨干 10 Hz、基策略 50 Hz，UDP 通信 |
+| 延迟对齐 | 深度延迟强制补足到 0.08 s、本体延迟固定 0.016 s，用固定延迟抑制抖动（论文 §4.1；README 训练命令里 `--delay` 在 8k 迭代后启用延迟） |
+| 训练预算 | 单张 3090 < 20 h；README：Base 10–15k iter、Distillation 5–10k iter |
+| 课程 | 走过超过一半地形长度升级，走不到 $v_{cmd}T$ 一半降级 |
+| Phase 2 | DAgger，学生动作步进环境；actor 由 Phase 1 拷贝初始化；MTS：预测与 oracle 的 yaw 差小于 0.6 才用预测 yaw，否则用 oracle |
+| 部署 | `save_jit.py` 导出 traced 模型到 `logs/parkour_new/<exptid>/traced/`（README） |
+
+调参提示：先看 MEV（贴边次数）而非只看位移；若策略在 Hurdle 上绕行，优先检查跟踪奖励是否误用机体系速度；若 Phase 2 不收敛，先检查是否直接使用了预测 yaw（应走 MTS）。
 
 ## 常见误区或局限
 
 - **误区：** 把 Extreme Parkour 等同于「又一个 legged_gym 走路」——其核心是 **parkour 地形 + 统一奖励 + 双重蒸馏**，普通 velocity tracking 奖励不能直接迁移。
 - **误区：** 认为 Phase 1 可直接部署——Teacher 依赖 **scandots 与 oracle waypoint**，必须完成 Phase 2。
-- **局限：** 栈绑定 **Isaac Gym Preview 3/4 + PyTorch 1.10** 等较旧环境；深度 **单目前向**、障碍以 **结构化 box course** 为主，野外 unstructured terrain 需自行扩展。后续 **人形 PHP**、**Hiking in the Wild** 等将跑酷推向更大机体与更长技能链。
+- **局限（论文自述）：** 论文未设专门局限小节，讨论中仅指出下一步可扩展到移动操作；仅用单目前向深度、障碍为结构化 box / ramp 课程。
+- **局限（工程，仓库 README）：** 栈绑定 **Isaac Gym Preview 3/4 + PyTorch 1.10** 等较旧环境；深度 **单目前向**、障碍以 **结构化 box course** 为主，野外 unstructured terrain 需自行扩展。后续 **人形 PHP**、**Hiking in the Wild** 等将跑酷推向更大机体与更长技能链。
 
 ## 参考来源
 

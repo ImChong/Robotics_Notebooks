@@ -3,8 +3,13 @@ title: 开源运动控制项目结构化摘要
 type: query
 status: complete
 created: 2026-04-18
-updated: 2026-09-10
+updated: 2026-11-07
 summary: 将飞书公开文档《【开源】小而美的运动控制项目》整理为适合 Robotics_Notebooks 的方法地图，抽出训练机制优化、模仿学习、世界模型、交互与重定向五条主线。
+original:
+  - ../../sources/papers/beyondmimic_reading_arxiv_2508_08241.md
+  - ../../sources/papers/gmr_retargeting_matters_reading_motion_retargeting_arxiv_2510_02252.md
+  - ../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md
+  - ../../sources/papers/humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md
 sources:
   - ../../sources/papers/motion_control_projects.md
 ---
@@ -36,13 +41,13 @@ sources:
 - **动作输出必须贴着参考轨迹定义**：不要直接预测绝对目标关节角，更稳的方式是预测相对参考轨迹的残差
 - **奖励函数必须体现硬件与物理约束**：平滑性、功率安全、动作自然性都应进入 reward
 
-代表方法：
-- **HALO**：通过约束 QP 修正 base 位姿漂移，解决浮动基机器人只靠编码器时的几何不一致问题
-- **RGMT**：历史编码器 + 指令窗口交叉注意力，把“当前状态”和“未来参考动作”匹配起来
-- **Any2Track**：历史编码器 + 世界模型 + 适配器，两阶段把扰动理解与策略调整解耦
-- **OmniTrack**：根据参考关节速度自适应缩放动作平滑惩罚
-- **HumanX**：把 AMP 判别器奖励用于模仿学习，提高动作自然度
-- **OmniXtreme**：把负功率安全直接写进奖励，防止高动态动作损伤执行器
+代表方法（下列标「（飞书转述）」的项目，本次**未**对其论文原文核对；已核对的见后文「原文核对」）：
+- **HALO**（飞书转述）：通过约束 QP 修正 base 位姿漂移，解决浮动基机器人只靠编码器时的几何不一致问题
+- **RGMT**（飞书转述）：历史编码器 + 指令窗口交叉注意力，把“当前状态”和“未来参考动作”匹配起来
+- **Any2Track**（飞书转述）：历史编码器 + 世界模型 + 适配器，两阶段把扰动理解与策略调整解耦
+- **OmniTrack**（飞书转述）：根据参考关节速度自适应缩放动作平滑惩罚
+- **HumanX**：把 AMP 奖励作为身体模仿项的一部分，提高动作自然度（已对论文核对，见下）
+- **OmniXtreme**（飞书转述）：把负功率安全直接写进奖励，防止高动态动作损伤执行器
 
 **适合沉淀到现有 wiki 的知识点：**
 - [Reward Design](../concepts/reward-design.md)
@@ -82,15 +87,15 @@ sources:
 
 #### 3.2 适应层：世界模型 / 历史编码器
 - **Any2Track** 的关键不是直接换一个 actor，而是把“历史扰动识别”和“动作修正”拆出来：
-  - 历史编码器负责看过去 79 步
-  - 世界模型负责预测未来 20 步状态
-  - 适配器负责在冻结基础动作策略上做补偿
+  - 历史编码器负责看过去 79 步（飞书转述，未核对论文）
+  - 世界模型负责预测未来 20 步状态（飞书转述，未核对论文）
+  - 适配器负责在冻结基础动作策略上做补偿（飞书转述，未核对论文）
 
 #### 3.3 奖励与数据层：只在难动作处引入额外先验
-- **AMS** 说明一个很实用的工程原则：
-  - 普通动作不要过度加平衡约束
-  - 只在极端平衡动作、低成功率动作、脚滑严重动作上激活额外平衡奖励
-  - 先做运动学修正，再做静态稳定性筛选，生成物理可行数据
+- **AMS** 说明一个很实用的工程原则（已对论文核对并更正）：
+  - 普通动作不要过度加平衡约束：通用跟踪奖励用于**所有**数据，平衡先验奖励（质心对齐、足接触一致性）**只**用于合成平衡动作；论文并没有按「低成功率」「脚滑严重」去动态触发平衡奖励
+  - 合成平衡动作用两阶段批量轨迹优化：先保证运动学可行与平滑，再加质心落入支撑矩形的惩罚，并只接受 $\max_t d_t\le\epsilon$ 的轨迹
+  - 另有基于失败与误差分位数的自适应采样、按动作维护误差容忍的自适应奖励塑形
 
 **一句话总结：** 模仿学习主线正在从“模仿参考轨迹”走向“模仿 + 适应 + 数据过滤 + 部署约束”。
 
@@ -101,9 +106,9 @@ sources:
 这部分和普通 locomotion 最大的不同，是**接触关系本身变成了一等公民**。
 
 代表模式：
-- **HumanX 接触图奖励**：监督的不只是姿态像不像，还包括“哪些身体部位是否在与物体接触”
+- **HumanX 接触与交互向量奖励**：除身体 / 物体跟踪外，加入交互向量（身体点到物体中心的向量）模仿奖励与接触模仿奖励（观测 / 奖励表中列有 Contact Graph）
 - **[HAIC](../methods/haic.md) 两阶段教师-世界模型-学生训练**：把特权训练、世界模型预测与可部署学生策略统一起来
-- **HumanX 多教师蒸馏**：证明学生策略可以只依赖本体感知历史，学会对外力进行隐式估计与应对
+- **HumanX 多教师蒸馏**：每种技能先训特权教师，再蒸馏进一个学生；学生在 NEP 模式下仅靠本体感知即可完成投篮、运球、上篮等动作（真机 10 次试验 7–10 次成功）
 
 这条线和现有知识库里的这些页面天然相连：
 - [Manipulation](../tasks/manipulation.md)
@@ -138,6 +143,19 @@ sources:
 **retarget 之后的动力学修正层，才是机器人版本的关键增量。**
 
 ---
+
+## 原文核对（2026-11-07）
+
+本页的方法地图编译自一份飞书公开文档（正文无法直接获取，仅有文档转述），本次对其中 4 个项目读了论文原文：
+
+| 项目 | 核对结果 |
+|------|----------|
+| **BeyondMimic**（arXiv:2508.08241） | 属实：精确建模 armature、仅随机化少数关键参数（过度随机化使行为保守）、失败率驱动的自适应采样（无该机制时四条动作中三条在困难片段训练 3 万次迭代仍失败）。原文额外发现：观测里加历史反而降低 sim-to-real 性能（作者假设与极少随机化有关）；连续 Rot6D 优于四元数；部署延迟 2 / 5 / 10 ms 即已造成速度误差上升或失败 |
+| **GMR**（arXiv:2510.02252） | 属实：GMR 是运动学（逆运动学）重定向，用于缓解足滑、穿地、自穿透等伪影，不保证动力学可行；论文自述局限包括只考虑 Unitree G1（受 BeyondMimic 代码库限制）。详见 [GMR](../methods/motion-retargeting-gmr.md) |
+| **AMS**（arXiv:2511.17373） | **部分更正**：平衡奖励只加在合成平衡动作上，而不是按「低成功率 / 脚滑」触发；其余（运动学修正后做静态稳定性筛选）属实；见上文 |
+| **HumanX**（arXiv:2602.02473） | 属实并补充：AMP 项、接触模仿奖励 / Contact Graph、多教师蒸馏均有；核心是交互向量奖励 + IV 终止 + 交互扰动；真机 MoCap 模式 50 次试验成功 37–43 次 |
+
+**本页其余项目（HALO、RGMT、Any2Track、OmniTrack、OmniXtreme、HAIC、PVP、PHP、Hiking in the Wild、OmniRetarget、VIRAL 等）本次没有读论文原文**，对应描述保持飞书文档的转述，已标注「（飞书转述）」，不应当作论文结论引用。这些项目在知识库里各有独立页面，待逐篇 ingest 后再回填。
 
 ## 从这份材料里抽出来的 8 个通用工程模式
 
@@ -232,7 +250,8 @@ sources:
 
 ## 参考来源
 
-- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档与其列出的 PDF 来源归档
+- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档与其列出的 PDF 来源归档（二手）
+- 一手论文通读归档（2026-11-07）：[BeyondMimic](../../sources/papers/beyondmimic_reading_arxiv_2508_08241.md)、[GMR](../../sources/papers/gmr_retargeting_matters_reading_motion_retargeting_arxiv_2510_02252.md)、[AMS](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md)、[HumanX](../../sources/papers/humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md)
 
 ---
 

@@ -3,7 +3,7 @@ type: query
 tags: [rl, locomotion, humanoid, legged, sim2real, actuator, pd-control]
 status: complete
 summary: "腿足与人形 RL 中如何把 Kp/Kd（刚度/阻尼）与仿真步长、控制频率及 sim2real 对齐的工程要点与决策流程。"
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../concepts/implicit-explicit-actuator-modeling.md
@@ -26,6 +26,12 @@ related:
   - ./sim2real-checklist.md
   - ./rl-hyperparameter-guide.md
   - ./domain-randomization-guide.md
+original:
+  - ../../sources/notes/legged_humanoid_rl_pd_gains.md
+  - ../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md
+  - ../../sources/papers/humanoid_locomotion_reading_arxiv_2303_03381.md
+  - ../../sources/courses/isaac_lab_implicit_explicit_actuators.md
+  - ../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md
 sources:
   - ../../sources/notes/legged_humanoid_rl_pd_gains.md
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
@@ -63,10 +69,11 @@ sources:
 
 | 栈 | 配置名 | 典型单位（关节空间） |
 |----|--------|----------------------|
-| legged_gym | `control.stiffness` / `control.damping` | N·m/rad，N·m·s/rad |
+| legged_gym | `control.stiffness` / `control.damping`（`control_type='P'` 时 `torques = Kp·(action·action_scale + default − q) − Kd·q̇`，再按 `torque_limits` 截断；基类 `action_scale=0.5`、`decimation=4`、`sim.dt=0.005`，即策略 50 Hz） | N·m/rad，N·m·s/rad |
+| mjlab | `BuiltinPositionActuatorCfg(stiffness, damping, effort_limit, armature)`；explicit 为 `IdealPdActuator` 等 | 同上；默认 `implicitfast` 积分器 |
 | Isaac Lab `ImplicitActuator` | `stiffness` / `damping`（引擎内积分 PD） | 数值更稳；偏理想电机 |
 | Isaac Lab `IdealPDActuator` | `stiffness` / `damping` | **explicit**：用户侧算 τ 再限幅写入仿真 |
-| MuJoCo `<position>` 执行器 | `kp`（及力矩相关属性） | 见 MuJoCo XML 参考中 actuator 章节 |
+| MuJoCo `<position>` 执行器 | `kp`、`kv`（执行器阻尼），或 `dampratio`（以 $2\sqrt{k_p m}$ 为单位，1 为临界阻尼） | 文档建议用 `implicitfast` / `implicit` 积分器 |
 
 **Implicit vs Explicit：** 上表中的 `ImplicitActuator` 与 `IdealPDActuator` 差别不在 Kp/Kd 符号，而在 **PD 由引擎算还是用户算**——会影响收敛与 Sim2Real。详见 [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)。
 
@@ -169,15 +176,34 @@ flowchart TB
 ## 可执行建议（精简）
 
 1. **先锁接口与时间**：明确策略输出是 `q_des` 还是 `Δq`，以及每个策略步对应多少次仿真子步（legged_gym 的 `decimation` 即此意）。`dt` 加倍时，往往需重新评估阻尼与接触稳定性。
-2. **从厂商或辨识数据取量级**：若有关节阻抗表或电流环带宽，用其倒推「位置环」上合理的 Kp 上限；无数据时，从同机型开源配置（如 ANYmal-C 的 80 / 2 量级）出发，按质量和连杆长度缩放需谨慎，仅作初值。
+2. **从厂商或辨识数据取量级**：若有关节阻抗表或电流环带宽，用其倒推「位置环」上合理的 Kp 上限；也可按 Hwangbo 2019 的做法令 Kp ≈ 名义力矩范围 ÷ 名义活动范围（ANYmal：±30 N·m ÷ ±0.6 rad = 50 N·m/rad），或按 mjlab 示例由反射惯量与目标带宽推导；无数据时，从同机型开源配置（如 ANYmal-C 的 80 / 2 量级）出发，按质量和连杆长度缩放需谨慎，仅作初值。
 3. **分场景试**：先在悬空或小阻尼地面做关节阶跃，检查是否饱和与振荡；再上全接触训练。振荡优先减 Kp 或增 Kd（注意二者对接触噪声的不同影响）。
 4. **与 ActuatorNet 路线区分**：legged_gym 中 ANYmal 默认可走数据驱动执行器网络；此时「解析 PD」增益可能被旁路，但仍影响训练初期与 fallback 行为，需在配置层分清主路径。
 5. **训练期随机化**：在 checklist 思路上，对刚度/阻尼设物理合理区间做 DR，避免策略过拟合单一阻抗点；双足文献中除 ±30% 这类宽范围外，也有 **按标称 0.7–1.3 倍缩放** 的较窄区间实践（见 [2401.16889](https://arxiv.org/abs/2401.16889) 与 [Domain Randomization 指南](./domain-randomization-guide.md) 中关节刚度条目对照）。
-6. **人形公开锚点**：精读 [2303.03381](https://arxiv.org/abs/2303.03381) 附录中的 **逐关节 PD 表**，勿只记单一数字；社区讨论中常以 **\(K_p\approx 200\) N·m/rad、\(K_d\approx 10\) N·m·s/rad** 作为髋关节量级锚点 — **以 PDF 与代码为准复核**。
-7. **可变刚度路线**：若把刚度并入动作，优先读 [2502.09436](https://arxiv.org/abs/2502.09436) 中 **分组参数化** 与 **阻尼约束** 的设计动机，再决定仿真里是否允许 `Kd` 完全独立随机。
-8. **扭矩路线门控**：若考虑去掉 PD，用 [2203.05194](https://arxiv.org/abs/2203.05194) 与当前平台的 **电流环带宽、安全滤波** 做对照实验，而不是仅改 `control_type`。
+6. **人形公开锚点**：[2303.03381](https://arxiv.org/abs/2303.03381)（Digit）正文说明动作是 16 个驱动关节的 PD setpoint **加上 8 个腿部关节的预测 PD 增益**，4 个脚趾电机用固定增益；策略 50 Hz、关节 PD 1 kHz。2026-11-07 核对的 arXiv v2 PDF **没有**逐关节 Kp/Kd 数值表（正文把超参与观测 / 奖励 / 随机化表放在 “supplement”，该 PDF 未附），因此不要把本页或社区中的数值（如 \(K_p\approx 200\)、\(K_d\approx 10\)）当作该论文原文——**（推测）仅是社区量级传闻，需以论文补充材料或官方代码核对**。
+7. **由电机规格估量级**：mjlab 文档示例由反射惯量 \(J\) 与目标带宽 \(\omega_n\) 推 \(K_p=J\omega_n^2\)、\(K_d=2\zeta J\omega_n\)（示例 10 Hz、\(\zeta=2\) 过阻尼，原因是只算了电机反射惯量、低估了总惯量），G1 示例分组：髋 180/18、膝 150/15、踝 40/5（N·m/rad，N·m·s/rad），armature 髋 0.0015、膝 0.0025、踝 0.0008。
+8. **可变刚度路线**：若把刚度并入动作，优先读 [2502.09436](https://arxiv.org/abs/2502.09436) 中 **分组参数化** 与 **阻尼约束** 的设计动机，再决定仿真里是否允许 `Kd` 完全独立随机。
+9. **扭矩路线门控**：若考虑去掉 PD，用 [2203.05194](https://arxiv.org/abs/2203.05194) 与当前平台的 **电流环带宽、安全滤波** 做对照实验，而不是仅改 `control_type`。
 
 ---
+
+## 一手核对（2026-11-07）
+
+以下数字出自本次通读的原文，用作量级参照而非推荐值：
+
+| 来源 | 动作接口与增益 | 频率 |
+|------|----------------|------|
+| legged_gym 基类 | 位置目标 + 缩放 0.5；示例 Kp 10–15、Kd 1.0–1.5；ANYmal-C 配置 Kp 80、Kd 2（HAA/HFE/KFE 相同），**默认已开启 ActuatorNet（LSTM）**，解析 PD 仅在关闭开关时使用 | 仿真 dt 0.005 s，decimation 4 → 策略 50 Hz |
+| Hwangbo 2019（ANYmal） | 低阻抗位置目标经固定增益转力矩：kp=50 N·m/rad、kd=0.1 N·m·s/rad、目标速度为零。选法：kp ≈ 名义力矩范围（±30 N·m）÷ 名义关节活动范围（±0.6 rad），使策略输出在位置与力矩接口下量级相近；kd 取到足以在真机上抑制振荡；作者经验是性能对增益小幅变化不敏感（kp 增到 80 无明显变化） | 部署 200 Hz（跌倒恢复 100 Hz；该技能训练于 20 Hz，提到 100 Hz 性能一致） |
+| Radosavovic 2023（Digit） | 16 个关节 PD setpoint + 8 个腿关节的预测增益 | 策略 50 Hz，PD 1 kHz |
+| Watanabe 2025（aibo） | 目标位置 + 每关节一个增益缩放；\(P_i=3+4\sigma(x_i)\)、\(D_i=0.03+0.02\sigma(x_i)\)；触地前增益降低（阻尼）、支撑期回升 | 仿真 400 Hz、策略 100 Hz |
+| Peng & van de Panne 2017 | 2D 角色上 PD 目标角在全部运动中接近最优，7 条中 5 条学得最快；力矩动作最差；PD / 速度接口对更低查询频率（15–120 Hz 扫描）更不敏感；增益人工指定 | 主实验 60 Hz |
+
+读法：
+
+- **Hwangbo 的增益选法可复用，数值不可照搬**：kp 由「力矩量程 ÷ 位置量程」定标，kd 以不振荡为下限；ANYmal 的 50 / 0.1 对应 ±30 N·m、±0.6 rad 的量程，换机器人需重算。注意该论文的力矩由执行器网络给出（见 [Actuator Network](../methods/actuator-network.md)），上述固定增益描述的是策略的位置接口。
+- **可变增益有收益也有代价**：aibo 上固定增益版本也能降噪但不如可变增益；整套方法鲁棒性低于普通 baseline（最大可爬坡度更小）。
+- **接口决定语义**：Peng 的结论来自平面角色，3D 与真机的验证由后续工作（Digit、ANYmal、aibo）补充；论文自述超参选择会显著影响结论，趋势预期可推广但不能当定律。
 
 ## 论文共识（与调参强相关的几句）
 
@@ -201,6 +227,10 @@ flowchart TB
 
 - [腿足/人形 RL 关节 PD 增益原始资料索引](../../sources/notes/legged_humanoid_rl_pd_gains.md)
 - [RL+PD 动作接口与增益设计论文索引](../../sources/papers/rl_pd_action_interface_locomotion.md)
+- [Learning Quiet Walking 论文归档（arXiv:2502.10983，2026-11-07 全文通读）](../../sources/papers/learning_quiet_walking_aibo_arxiv_2502_10983.md)
+- [Real-World Humanoid Locomotion with RL 通读归档（arXiv:2303.03381）](../../sources/papers/humanoid_locomotion_reading_arxiv_2303_03381.md)
+- [Isaac Lab / mjlab 执行器官方文档归档（含 Peng arXiv:1611.01055 摘录）](../../sources/courses/isaac_lab_implicit_explicit_actuators.md)
+- [Hwangbo 2019 执行器网络论文通读归档](../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md)
 
 ---
 
