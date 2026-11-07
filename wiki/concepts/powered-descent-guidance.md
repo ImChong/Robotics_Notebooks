@@ -2,7 +2,7 @@
 type: concept
 tags: [optimal-control, trajectory-optimization, guidance, rocket-landing, aerospace]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-08
 related:
   - ../methods/lossless-convexification.md
   - ../methods/successive-convexification.md
