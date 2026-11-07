@@ -2048,6 +2048,7 @@
 - [CS-VGB（arXiv:2610.15281）](wiki/entities/paper-cs-vgb-inference-time-scaling.md) — CS-VGB**（*Imperfect Verifiers, Exact Targets: Inference-Time Scaling for Continuous Generation*，[a `📅unknown` `[entity_page]`
 - [CSF：让同一动作指令随场景改变的人形机器人语义安全过滤](wiki/entities/paper-csf-contextual-safety-filter.md) — CSF（Contextual Safety Filtering）**：在文本动作生成器推理时，以“危险动作—安全替代动作”参考构造语义安全边界，由语言与场景门控选择是否启用 CBF-QP 过滤。 `📅unknown` `[entity_page]`
 - [CTP：用一条示范的接触轨迹当提示](wiki/entities/paper-ctp.md) — Contact Trajectory Prompting（CTP）把一条示范里的运动和接触变化（指尖力矩、力图）编成一串有序提示 token，让冻结参数的策略在线用接触反馈去检索相关片段，从而在新 `📅unknown` `[entity_page]`
+- [Ctrl-F: Force as an Interface for Humanoid Loco-Manipulation / 力作为人形机器人运动与操作的接口](wiki/entities/paper-ctrl-f.md) — Ctrl-F让动作参考负责身体如何移动，让每个指定接触体的三维力命令表达如何用力，再根据物体运动反馈在线调节命令。 `📅unknown` `[entity_page]`
 - [Ctrl-World（可控机器人操作生成式世界模型）](wiki/entities/paper-ctrl-world.md) — Ctrl-World**（*Ctrl-World: A Controllable Generative World Model for Robot Manipulation*，[arXiv:251 `📅unknown` `[entity_page]`
 - [CTS：并发 Teacher–Student 腿足 Locomotion 强化学习](wiki/entities/paper-cts-concurrent-teacher-student-locomotion.md) — CTS**（*Concurrent Teacher-Student Reinforcement Learning for Legged Locomotion*；Hongxi Wang *、Haox `📅unknown` `[entity_page]`
 - [cuArms（arXiv:2610.36250）](wiki/entities/paper-cuarms.md) — cuArms**（*cuArms: GPU-Accelerated Conflict-Based Planning for Multi-Arm Manipulation*，[arXiv:2610. `📅unknown` `[entity_page]`
