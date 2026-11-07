@@ -3626,11 +3626,9 @@
    * 章节默认折叠，树宽为 0 时不画边，展开后由 ResizeObserver 补画。
    */
   function renderDepthStageTrees(trees) {
-    // 窄屏正文列只剩约 240px（时间线与章节框各占一截缩进）：每排最多 2 列，节点框才放得下名字
-    var maxCols = window.matchMedia('(max-width: 640px)').matches ? 2 : ROADMAP_LTREE_MAX_COLS;
     var wanted = {};
     trees.forEach(function (st) {
-      placeRoadmapLtreeNodes(st.tree, st.nodes, layoutRoadmapLearningStage(st.items, {}, maxCols));
+      placeRoadmapLtreeNodes(st.tree, st.nodes, layoutRoadmapLearningStage(st.items, {}));
       st.items.forEach(function (rid) { wanted[rid] = true; });
       function onHover(ev) {
         var node = ev.target.closest ? ev.target.closest('.roadmap-ltree-node') : null;
@@ -3661,7 +3659,7 @@
     ensureLinkGraphData().then(function (gd) {
       var linked = roadmapLtreeLinkedPairs(gd, wanted);
       trees.forEach(function (st) {
-        var lay = layoutRoadmapLearningStage(st.items, linked, maxCols);
+        var lay = layoutRoadmapLearningStage(st.items, linked);
         st.parent = lay.parent;
         st.centered = false;
         placeRoadmapLtreeNodes(st.tree, st.nodes, lay);
@@ -3882,10 +3880,11 @@
   /**
    * 单阶段小树的摆位。树边只取站内互链：节点挂到「与它互链、列表里排在它前面」的节点下
    * （优先最早一个子节点未满的，否则最深的），所以箭头方向就是路线列表的阅读先后，不另造依赖。
-   * 叶子依次占列、父节点居中于子节点上方；各根子树按列宽装进一排排（每排最多 maxCols 列，缺省
-   * ROADMAP_LTREE_MAX_COLS），放不下另起一排，每排居中。
+   * 叶子依次占列、父节点居中于子节点上方；各根子树按列宽装进一排排，放不下另起一排，每排居中。
+   * 每排最多 ROADMAP_LTREE_MAX_COLS 列；窄屏（≤640px）最多 2 列——节点框有最小宽度，列多了只能拖动着看。
    */
-  function layoutRoadmapLearningStage(items, linked, maxCols) {
+  function layoutRoadmapLearningStage(items, linked) {
+    var maxCols = window.matchMedia('(max-width: 640px)').matches ? 2 : ROADMAP_LTREE_MAX_COLS;
     var n = items.length;
     var parent = [];
     var depth = [];
@@ -3933,7 +3932,7 @@
     for (var r = 0; r < n; r++) {
       if (parent[r] >= 0) continue;
       var w = width(r);
-      if (!shelf || (shelf.width && shelf.width + w > (maxCols || ROADMAP_LTREE_MAX_COLS))) {
+      if (!shelf || (shelf.width && shelf.width + w > maxCols)) {
         shelf = { roots: [], width: 0, height: 0 };
         shelves.push(shelf);
       }
