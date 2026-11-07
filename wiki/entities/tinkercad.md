@@ -21,6 +21,10 @@ summary: "Tinkercad：Autodesk 免费浏览器端 STEM 平台，整合 3D 设计
 
 **Tinkercad**（[tinkercad.com](https://www.tinkercad.com/)）是 **Autodesk** 提供的 **免费 Web 应用**：在同一账号与课堂体系里覆盖 **3D 设计**、**电子电路仿真（Arduino Uno / BBC micro:bit 等）** 与 **Codeblocks 积木编程**。在机器人研究与工程知识库中，它定位为 **K–12 / 创客启蒙与焊板前入门层**——补齐「零门槛造型 + 入门 MCU 仿真」，**不是** [FreeCAD](./freecad.md) 级制造 CAD、[KiCad](./kicad.md) 级 PCB 真值，也 **不是** MuJoCo / Isaac 类刚体接触仿真器。
 
+## 一句话定义
+
+Tinkercad 是 Autodesk 的浏览器端教学建模与电路仿真工具，适合在真实 PCB 打样前学习基础电路与入门级微控制器程序，而不代替工程级 PCB 设计或精确电磁仿真。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
