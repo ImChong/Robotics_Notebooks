@@ -251,6 +251,14 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | Meta Astryx — 开源 React 设计系统与 Agent CLI
+
+- 意图：将 Meta Astryx 收录为独立工程工具节点，区别于机器人运动控制/强化学习框架。
+- 原文：阅读官方根 README、Core/CLI 说明及 Theme、Button、CLI init 核心源码，并以提交 SHA 固定技术依据。
+- 开源状态：组件、主题与 CLI 公开；MIT；官网与 README 组件数量口径不同，按来源分述。
+- 写回：wiki/entities/astryx.md，关联 react-bits.md；归档 sources/repos/astryx.md 与 sources/sites/astryx.md。
+- 图表：补真实架构数据流和 CLI init 源码时序图；无运行时测试断言。
+
 ## [2026-11-07] ingest | sources/papers/jitrl_arxiv_2601_18510.md — JitRL（arXiv:2601.18510）免梯度测试时经验检索 + logit 修正；新增 wiki/entities/paper-jitrl-just-in-time-rl.md，官方代码归档 sources/repos/jitrl.md；附 Table 2/13 骨架差异说明；Bilibili 解读未能获取
 
 ## [2026-11-07] ingest | Mechtool 与关联页健康度补读：螺纹文章全文含图、公差仿真 / 轴承 / 膝谐波 / 模态四篇 Zane Hub 文章重读，Mechtool 站点部分读完

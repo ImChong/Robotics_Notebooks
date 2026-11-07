@@ -5,6 +5,8 @@
 - **项目页：** <https://reactbits.dev>；[站点核查](../sites/react-bits.md)
 - **维护者：** David Haz（DavidHDev）
 - **入库日期：** 2026-10-02
+- **核对范围：** 2026-11-07 为 Astryx 交叉链接补查官方 README.md、LICENSE.md 与 src/content/TextAnimations/BlurText/BlurText.jsx 完整文本；只核查该组件实例，不代表读完全部 React Bits 组件。
+- **通读：** 已完成
 - **一句话说明：** 按组件复制或通过注册表安装的 React 动效素材，包含文字、背景、交互组件与微动效。
 
 ## 核查资料
