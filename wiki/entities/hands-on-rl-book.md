@@ -3,7 +3,7 @@
 type: entity
 tags: [textbook, reinforcement-learning, chinese, education, ppo, sac, dqn, marl, sjtu]
 status: complete
-updated: 2026-05-21
+updated: 2026-11-07
 related:
   - ../methods/reinforcement-learning.md
   - ../formalizations/mdp.md
@@ -14,7 +14,13 @@ related:
   - ../methods/model-predictive-control.md
   - ../methods/model-based-rl.md
   - ../methods/marl.md
+  - ../methods/her.md
+  - ../methods/sac.md
+  - ../methods/ppo.md
   - ./modern-robotics-book.md
+original:
+  - ../../sources/repos/boyu_ai_hands_on_rl.md
+  - ../../sources/sites/hrl-boyuai-hands-on-rl.md
 sources:
   - ../../sources/repos/boyu_ai_hands_on_rl.md
   - ../../sources/sites/hrl-boyuai-hands-on-rl.md
@@ -27,6 +33,10 @@ summary: "《动手学强化学习》（蘑菇书）：上海交大团队的中�
 **《动手学强化学习》**（社区常称**蘑菇书**）由上海交通大学张伟楠、沈键、俞勇等编写，以 Jupyter Notebook + 图文形式系统讲解强化学习。官方在线阅读与代码运行入口为 [hrl.boyuai.com](https://hrl.boyuai.com/)，源码在 [boyu-ai/Hands-on-RL](https://github.com/boyu-ai/Hands-on-RL)，配套 [伯禹学习平台免费视频课](https://www.boyuai.com/elites/course/xVqhU42F5IDky94x)。
 
 对本知识库而言，它是**中文 RL 基础与主流深度 RL 算法**的推荐底座，适合接 [`roadmap/depth-rl-locomotion.md`](../../roadmap/depth-rl-locomotion.md) 的 Stage 0，再进入人形 locomotion 与 sim2real 专题。
+
+## 一句话定义
+
+《动手学强化学习》是上海交大团队的中文 RL 开源教材：每章一个 Jupyter Notebook，从表格型 RL 讲到 PPO / SAC，再到模仿学习、MPC、离线 RL、目标导向 RL 与多智能体 RL。
 
 ## 英文缩写速查
 
@@ -51,6 +61,25 @@ summary: "《动手学强化学习》（蘑菇书）：上海交大团队的中�
 1. **中文友好、代码可跑**：每章一个 notebook，站点支持在线执行；比纯英文 Spinning Up 更易建立 MDP → PPO/SAC 的完整直觉。
 2. **算法栈与机器人 RL 主线对齐**：进阶篇直接覆盖策略梯度、Actor-Critic、TRPO、**PPO**、DDPG、**SAC**——与人形/腿足仿真里最常用的两类算法一致。
 3. **前沿篇衔接本库方法页**：模仿学习、MPC、基于模型的策略优化、离线 RL、多智能体 RL 均有对应章节，便于从教材跳到 wiki 深化。
+
+## 核心原理：书的结构与教学方式
+
+官方首页自述：全书分三部分——**基础篇**关注 tabular 场景（状态与动作空间有限）；**进阶篇**突破这一限制，考虑连续状态或动作并使用神经网络；**前沿篇**介绍有趣方向及相应前沿算法。每章是一个 Jupyter Notebook，含图文讲解与代码。
+
+章节目录（官方站点）：
+
+| 部分 | 章节 |
+|------|------|
+| 基础篇 | 初探强化学习、多臂老虎机、马尔可夫决策过程、动态规划算法、时序差分算法、Dyna-Q 算法 |
+| 进阶篇 | DQN、DQN 改进、策略梯度、Actor-Critic、TRPO、PPO、DDPG、SAC |
+| 前沿篇 | 模仿学习、模型预测控制、基于模型的策略优化、离线强化学习、目标导向的强化学习、多智能体强化学习入门 / 进阶 |
+
+几章的具体内容（抽查）：
+
+- **MDP 章**：从马尔可夫过程到马尔可夫奖励过程再到 MDP，给出 $(S,A,P,R,\gamma)$、回报、V/Q、Bellman 方程与占用度量，用小型马尔可夫链示例。
+- **PPO 章**：同时讲 PPO-Penalty 与 PPO-Clip，以 Clip 为主；示例为 `CartPole-v0`（离散）与 `Pendulum-v0`（连续）；章节说明 PPO 是 on-policy，只复用上一版策略的数据。
+- **SAC 章**：最大熵目标、软策略迭代（仅表格情形有收敛保证）、双 Q、重参数化、自动温度调节；示例为 `Pendulum-v0` 与离散版 `CartPole-v0`。
+- **目标导向 RL 章**：目标条件策略 + [HER](../methods/her.md)（DDPG 上用 "future" 策略），示例是自建 2D 网格世界。
 
 ## 学习路径总览
 
@@ -79,6 +108,7 @@ flowchart LR
 | 前沿篇 | 基于模型的策略优化 | [Model-Based RL](../methods/model-based-rl.md) |
 | 前沿篇 | 离线强化学习 | [Online vs Offline RL](../comparisons/online-vs-offline-rl.md) |
 | 前沿篇 | 多智能体 RL | [MARL](../methods/marl.md) |
+| 前沿篇 | 目标导向的强化学习 | [HER](../methods/her.md) |
 
 ## 三种学习形态
 
@@ -88,9 +118,11 @@ flowchart LR
 | 本地 clone + Jupyter | [GitHub 仓库](https://github.com/boyu-ai/Hands-on-RL) | 离线改代码、对接自有环境 |
 | 视频 + 讨论 | [伯禹课程](https://www.boyuai.com/elites/course/xVqhU42F5IDky94x) | 需要讲解节奏与社群讨论时 |
 
-**环境提示：** 仓库 README 建议 `gym==0.18.3`；若 notebook 报错，先核对 Gym 版本再查 issue。
+**环境提示：** 仓库 README 建议 `gym==0.18.3`；若 notebook 报错，先核对 Gym 版本再查 issue。抽查的章节代码使用旧版 gym API（如 `Pendulum-v0`、`CartPole-v0`），与现行 [Gymnasium](./gymnasium.md) 的 `reset` / `step` 返回值不同，迁移要改接口。
 
-## 局限（相对机器人研究）
+## 工程实践与局限（相对机器人研究）
+
+- **示例规模小：** 抽查的 SAC、HER 章节只在 Pendulum、CartPole 和自建网格世界上演示，每种配置单次运行、没有方差估计，不能当作性能对比依据。
 
 - **环境以经典 Gym 为主**，不包含 Isaac Lab、人形 URDF、接触丰富仿真。
 - **不覆盖** AMP/DeepMimic、WBC+RL 分层、域随机化 sim2real 等本库运动控制纵深——需在 Stage 0 之后转入 [`depth-rl-locomotion`](../../roadmap/depth-rl-locomotion.md) 与 [`Locomotion`](../tasks/locomotion.md)。
@@ -104,6 +136,11 @@ flowchart LR
 | 做人形 RL 前的算法准备 | 进阶篇 PPO + SAC | [depth-rl-locomotion Stage 0](../../roadmap/depth-rl-locomotion.md) |
 | 理解 IL 与 RL 如何并存 | 前沿篇模仿学习 | [RL vs IL](../comparisons/rl-vs-il.md) |
 | 了解离线 RL 与分布偏移 | 前沿篇离线 RL | [Online vs Offline RL](../comparisons/online-vs-offline-rl.md) |
+
+## 局限与风险
+
+- 抽查的示例只是教学规模（小环境、旧 gym API），算法超参不能直接搬到 Isaac Lab 或真机。
+- 本页对书中各章的描述，只覆盖官方目录与上述抽查章节；其余章节内容未读，按章节标题理解。
 
 ## 关联页面
 

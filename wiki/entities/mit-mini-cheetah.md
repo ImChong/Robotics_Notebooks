@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, mini-cheetah, mit, mpc, qdd, locomotion, sim2real, foc, open-source, hardware, actuator]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 code: https://github.com/mit-biomimetics/Cheetah-Software
 related:
   - ./benjamin-katz.md
@@ -25,6 +25,8 @@ related:
   - ../../roadmap/depth-torque-motor-design.md
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../tasks/locomotion.md
+original:
+  - ../../sources/repos/cheetah-software.md
 sources:
   - ../../sources/personal/mit_mini_cheetah_learning_stack_curator.md
   - ../../sources/blogs/robot_daycare_mini_cheetah_2019.md
@@ -76,10 +78,14 @@ summary: "MIT Mini Cheetah（~0.3 m / 9 kg）：部分开源 QDD 四足实验床
 |----|------|
 | **机构** | 麻省理工（MIT）Biomimetic Robotics Lab |
 | **主设计** | [Benjamin Katz](./benjamin-katz.md) 等 |
-| **尺度** | 高约 0.3 m，质量约 9 kg，12 DoF |
-| **平台论文** | ICRA 2019；cMPC 步态至约 **2.45 m/s**；360° 后空翻 |
+| **尺度** | 高约 0.3 m，质量约 9 kg，12 个准直驱执行器（Margolis 等 2022 报告单关节最大输出力矩 17 N·m） |
+| **平台论文** | ICRA 2019；cMPC 步态至约 **2.45 m/s**；360° 后空翻（**本次入库未取得该论文全文**，数字转引自 IEEE 摘要与后续论文：WBIC+MPC 论文称此前工作 MPC-only 最高 2.45 m/s，新控制器达 **3.7 m/s**；端到端 RL 达 **3.9 m/s**） |
 | **控制软件** | **已开源** [Cheetah-Software](../../sources/repos/cheetah-software.md) |
 | **驱动/电气** | **部分开源** [bgkatz](../../sources/repos/bgkatz.md) / [`3phase_integrated`](../../sources/repos/bgkatz_3phase_integrated.md) |
+
+## 核查范围与未读资料
+
+本页的"原文通读"只覆盖官方软件仓库 [Cheetah-Software](../../sources/repos/cheetah-software.md) 的 README 与三份文档（构建、仿真、上真机流程）。以下资料**本次没有取得全文**，相关表述是转引：ICRA 2019 平台论文（IEEE 付费墙，作者站点链接 404）、Katz 硕士论文（DSpace 下载返回 429 限流，未绕过）、Di Carlo 等 IROS 2018 Convex MPC 论文。硬件规格另与 Margolis 等（arXiv:2205.02824）和 WBIC+MPC（arXiv:1909.06586）两篇论文的相关段落交叉核对过（非通读）：二者都把平台描述为 30 cm 高、9 kg、12 个准直驱执行器。
 
 ## 开源状态（步骤 2.5 核查）
 
@@ -124,6 +130,7 @@ flowchart TB
 - **SRBD** 近似机身；固定接触时序下凸化摩擦与动力学 → **QP 可实时求足力**。
 - 下层 **WBIC / WBC** 把期望足力落到关节力矩（见 [WBIC+MPC](./paper-wbic-mpc-mini-cheetah.md)、[SRBD + 凸 MPC + WBC](../concepts/srbd-convex-mpc-wbc.md)）。
 - 官方软件用 **LCM** 而非 ROS；真机步骤见 [running_mini_cheetah.md](https://github.com/mit-biomimetics/Cheetah-Software/blob/master/documentation/running_mini_cheetah.md)。
+- 软件侧频率（官方文档）：用户控制器 `runController` 以 1 kHz 调用，腿数据与硬件同步约 700 Hz；WBIC+MPC 论文给出 MPC 约 30–40 Hz、WBC 500 Hz、关节 PD 40 kHz 的分层频率。
 
 ### 3）高动态、落地与感知扩展
 
@@ -151,7 +158,7 @@ flowchart TB
 
 ### 读代码时的入口
 
-1. 仿真：`sim/sim` + `user/...` 控制器（README：`3`=Cheetah 3，`m`=Mini；`s`=sim，`r`=robot）。
+1. 仿真：`sim/sim` + `user/...` 控制器，如 `user/MIT_Controller/mit_ctrl m s`（README：`3`=Cheetah 3，`m`=Mini；`s`=sim，`r`=robot；手柄用 Logitech F310）。
 2. 真机：`cmake -DMINI_CHEETAH_BUILD=TRUE` → `send_to_mini_cheetah.sh` → 机上 LCM 网络配置。
 3. 驱动：先单板电流阶跃，再挂行星与测功；勿跳过 [源码运行时序图](./paper-low-cost-modular-actuator-katz.md#源码运行时序图)。
 
@@ -180,6 +187,8 @@ flowchart TB
 - **电磁设计未开**：绕线数据与完整电磁模型不在公开集；学电磁应转 [开源力矩电机电磁完整度对比](../comparisons/open-source-torque-motor-em-design.md) 与 [力矩电机纵深](../../roadmap/depth-torque-motor-design.md)。
 - **LCM 学习成本**：官方栈对现代 ROS 用户不友好；可用社区 ROS/PyBullet 作脚手架，但算法权威仍以官方仓与论文为准。
 - **社区仓质量参差**：`mini_cheetah_ROS` 星标极低，仅作入门线索；生产勿绑死。
+- **官方真机文档的覆盖：** 文档注明真机上完整状态估计（位置、速度）与完整可视化尚不可用，只有姿态估计；上真机前需自行补状态估计。
+- **本页硬件细节转引：** 执行器、CAD 开源边界等来自策展与 thesis 归档，本次未对原文逐项复核。
 - **小尺度限制**：传感安装、越障净空与绝对速度上限（视觉论文反复强调）；外借机有限，仿制机需重标定动力学。
 - **与 ODRI 等勿混**：Solo/ODRI 是更完整的开源关节+整机叙事；Mini Cheetah 的价值在 **动态能力与控制范式**，不在「可购买的完整开源 BOM」。
 

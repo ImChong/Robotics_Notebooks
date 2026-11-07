@@ -3,7 +3,7 @@
 type: entity
 tags: [framework, rl, motion-imitation, isaac-gym, isaac-lab, newton, xbpeng, nvidia, berkeley, stanford, sfu]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
 related:
   - ../methods/deepmimic.md
   - ../methods/amp-reward.md
@@ -19,6 +19,8 @@ related:
   - ./robot-lab.md
   - ./paper-pfm-hr.md
   - ./paper-cmp.md
+original:
+  - ../../sources/repos/mimickit.md
 sources:
   - ../../sources/repos/mimickit.md
   - ../../sources/repos/mimickit_tan_norm.md
@@ -27,7 +29,11 @@ summary: "MimicKit 是由 Xue Bin Peng 团队开源的模块化强化学习框�
 
 # MimicKit: 运动模仿与控制研究套件
 
-**MimicKit** 是 [Xue Bin Peng（彭学斌）](./xue-bin-peng.md) 团队（Stanford / UC Berkeley / NVIDIA 等合作脉络）维护的 **物理角色运动模仿与控制** 研究代码库：把多篇代表性工作里的训练细节收敛到同一套环境、网络与 RL 循环上，便于对照实验与二次开发。
+**MimicKit** 是 [Xue Bin Peng（彭学斌）](./xue-bin-peng.md) 维护的 **物理角色运动模仿与控制** 研究代码库（Starter Guide 论文署名单位：Simon Fraser University 与 NVIDIA，arXiv:2510.13794；项目页在 Stanford motion 站点）：把多篇代表性工作里的训练细节收敛到同一套环境、网络与 RL 循环上，便于对照实验与二次开发。
+
+## 一句话定义
+
+MimicKit 是一个干净、轻量、依赖少的运动模仿 RL 框架：用统一的 Agent / Model / Environment / Engine 四层，把 DeepMimic、AMP、ASE、ADD、AWR、LCP、SMP 等方法放在同一个命令行入口 `mimickit/run.py` 下训练与测试。
 
 ## 英文缩写速查
 
@@ -37,6 +43,11 @@ summary: "MimicKit 是由 Xue Bin Peng 团队开源的模块化强化学习框�
 | ADD | Adversarial Differential Discriminator | 差分判别、减少碎片化 reward 的 AMP 演进 |
 | SMP | Score-Matching Motion Prior | 可复用的 score-matching 运动先验模块 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 大多数方法默认使用的 on-policy 底层 RL 算法 |
+| AWR | Advantage-Weighted Regression | 框架提供的 off-policy 替代算法（相对 PPO） |
+| ASE | Adversarial Skill Embeddings | 对抗模仿 + 互信息技能发现的潜技能空间 |
+| LCP | Lipschitz-Constrained Policies | 给 actor 加 Lipschitz 平滑损失的包装式 agent |
+| DeepMimic | DeepMimic | 显式跟踪参考动作的 RL 方法 |
 | MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
 | SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
 | Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
@@ -98,19 +109,22 @@ flowchart TD
     ASE --> LCP
 ```
 
-- **AWR**：更偏「稳定、样本效率友好」的策略更新形式，可与上述先验/任务奖励组合使用时阅读 [AWR](../methods/awr.md)。
+- **AWR**：Advantage-Weighted Regression，框架提供的 **off-policy** 算法，作为 PPO（on-policy、样本效率差）的替代；读 [AWR](../methods/awr.md)。
 
-## 核心架构（概念分层）
+## 核心原理：核心架构（概念分层）
 
-MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或换 RL / 对抗模块时，尽量 **不牵动全局胶水代码**。
+MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或换 RL / 对抗模块时，尽量 **不牵动全局胶水代码**。Starter Guide 论文把系统拆成 **Agent、Model、Environment、Engine** 四个组件：学习算法主要由 Agent 与 Model 实现，Environment 与 Engine 负责仿真任务。
 
 | 层级 | 职责 | 备注 |
 |------|------|------|
 | **配置** | `arg` 文本 + YAML：环境、引擎、智能体超参 | 指数映射姿态、并行环境数、可视化开关等 |
-| **Engine** | 并行物理步进、张量化观测与奖励 | 多后端抽象；以实际 release 支持矩阵为准 |
-| **Env** | 任务定义、奖励拼装、终止条件 | `DeepMimic` / `AMP` / `ASE` 等环境族 |
-| **Agent** | 采样、优化器、网络与（若有）判别器 | `PPOAgent`、`AMPAgent` 等 |
+| **Engine** | 统一的底层仿真 API，并行物理步进 | 支持 Isaac Gym、Isaac Lab、Newton；控制模式 `none` / `pos`（PD 目标旋转）/ `vel` / `torque` / `pd_1d`（Isaac Gym 引擎） |
+| **Env** | 任务定义、观测与奖励、终止条件 | `deepmimic` / `amp` / `ase` / `add` / `smp` 与 location、steering、dodgeball 任务环境族；`step` 返回 obs、reward、done、info |
+| **Model** | 网络结构（策略、价值、判别器等） | 在 agent 配置文件的 `model` 字段指定 |
+| **Agent** | 采样、经验缓冲、优化器与训练循环 | PPO、AWR、AMP、SMP、ASE、ADD、LCP（`agent_builder` 支持的名字） |
 | **Anim / Tools** | 动作表示、重定向与数据转换 | 与 MoCap、SMPL 系资产对接 |
+
+**done 标志：** Env 的 `done` 分四种——`NULL`（未结束）、`FAIL`（失败，可加终止惩罚）、`SUCC`（成功，可加终止奖励）、`TIME`（超时，用价值函数 bootstrap 以模拟无限时域）。训练时区分超时与失败，是策略梯度类训练的常见要点。
 
 ### 策略观测中的 tan_norm
 
@@ -122,15 +136,26 @@ MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或�
 |------|---------|----------|
 | **DeepMimic** | [DeepMimic](../methods/deepmimic.md) | 显式轨迹跟踪，复现参考动作 |
 | **AMP** | [AMP Reward](../methods/amp-reward.md) | 判别器奖励学习自然运动风格 |
-| **AWR** | [AWR](../methods/awr.md) | 优势加权回归，稳定策略更新 |
+| **AWR** | [AWR](../methods/awr.md) | 优势加权回归，off-policy，PPO 的替代 |
 | **ASE** | [ASE](../methods/ase.md) | 层次化控制与长程任务组合 |
 | **LCP** | [LCP](../methods/lcp.md) | 抑制高频振荡，提升策略平滑性 |
 | **ADD** | [ADD](../methods/add.md) | 差分判别器减轻脚滑与伪影 |
 | **SMP** | [SMP](../methods/smp.md) | 生成式运动先验替代纯在线对抗判别 |
 
-## 典型工作流
+## 方法对比：论文里的实验
 
-1. **数据准备**：MoCap / AMASS(SMPL) 等 → 重定向到目标骨架 → MimicKit 可读动作格式（`.pkl`，3D 指数映射表示旋转）。官方内置两条转换链：`tools/smpl_to_mimickit/`（AMASS SMPL 直转）与 `tools/gmr_to_mimickit/`（经 [GMR](../methods/motion-retargeting-gmr.md) 输出转格式）。
+Starter Guide 在 Isaac Gym 上对人形角色的多段动捕片段（Run、Jog、Sideflip、Crawl、Roll、Getup Facedown、Spinkick、Cartwheel、Backflip、Dance A、Walk 等）分别训练 DeepMimic、AMP、ADD，度量位置跟踪误差与 DoF 速度跟踪误差（5 个种子，每个模型 4096 个测试回合）：
+
+- AMP 的跟踪精度最差（分布匹配而非逐帧跟踪），但定性上仍能再现参考动作的整体行为；
+- DeepMimic 与 ADD 能准确跟踪多种动作；DeepMimic 依赖手工奖励，不同动作间一致性较差，ADD 的自适应跟踪目标一致性更好；
+- 为公平比较，实验**关闭了姿态偏差终止**；论文强调开启它能显著改善精度与一致性，所以跟踪类方法的默认配置带该终止；
+- 同一框架还训练了 SMPL 人形、Unitree G1（如 Run、Cartwheel）与 Unitree Go2（Trot、Canter）。
+
+## 工程实践
+
+### 典型工作流
+
+1. **数据准备**：MoCap / AMASS(SMPL) 等 → 重定向到目标骨架 → MimicKit 可读动作格式（`.pkl`，每帧为 `[根位置 3D, 根旋转 3D, 各关节旋转]`，3D 关节用指数映射、1D 关节用角度，关节顺序为运动学树深度优先遍历）。官方内置两条转换链：`tools/smpl_to_mimickit/`（AMASS SMPL 直转）与 `tools/gmr_to_mimickit/`（经 [GMR](../methods/motion-retargeting-gmr.md) 输出转格式）。
 2. **算法选择**：见上文流程图；从 `view_motion` / `dof_test` 类配置起步熟悉观测与动作维度。
 3. **训练与回放**：`train` 模式堆样本至 `max_samples`；`test` 模式加载 `model_file` 做策略检验与可视化。仓库在 `data/models/` 附带 **预训练模型**、在 `data/logs/` 附带对应训练日志，便于先跑通再复现。
 
@@ -146,7 +171,9 @@ MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或�
 
 ## 局限与注意
 
-- **仿真后端生命周期**：Isaac Gym 已进入维护尾声的行业共识；新工作优先确认 **Isaac Lab / Newton** 分支在本地的可用性与版本 pin。
+- **仿真后端生命周期**：Isaac Gym 已进入维护尾声（ETH 的 legged_gym 官方公告称环境已迁往 Isaac Lab，见 [legged_gym](./legged-gym.md)）；新工作优先确认 **Isaac Lab / Newton** 分支在本地的可用性与版本 pin（README 标注 Isaac Lab 测试过 commit `2ed331a…`、Newton 测试过 `v1.0.0`）。
+- **资产与动作数据不随仓库发布**：需从 README 给出的 SharePoint 链接下载并解压到 `data/`；链接失效或权限变化时会卡在第一步（本次未核对其内容）。
+- **论文 / 文档覆盖不均**：Starter Guide 正文只介绍 DeepMimic、AMP、ASE、ADD 与 AWR；LCP、SMP 的细节要看 `docs/README_*.md` 与各自论文。
 - **不是「开箱即真机」栈**：默认强项在 **并行仿真里的角色控制研究**；上真机仍需估计、安全层与部署管线。
 - **论文复现≠默认超参即最优**：不同角色质量、接触刚性与奖励权重对 AMP / 判别器类方法极敏感，需要留预算做消融。
 
@@ -167,4 +194,6 @@ MimicKit 采用高度解耦设计：更换仿真后端、替换环境模板或�
 
 ## 推荐继续阅读
 
+- [MimicKit Starter Guide（arXiv:2510.13794）](https://arxiv.org/abs/2510.13794) — 官方框架概述与实验
+- [MimicKit 官方仓库](https://github.com/xbpeng/MimicKit)
 - [机器人论文阅读笔记：MimicKit](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/MimicKit_A_Reinforcement_Learning_Framework_for_Motion_Imitation_and_Control/MimicKit_A_Reinforcement_Learning_Framework_for_Motion_Imitation_and_Control.html)

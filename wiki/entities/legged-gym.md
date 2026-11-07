@@ -1,8 +1,9 @@
 ---
 
 type: entity
-summary: "legged_gym"
-updated: 2026-11-01
+summary: "legged_gym 是 ETH RSL 基于 Isaac Gym 的足式机器人 RL 训练框架：配置驱动的 env/config/runner 结构、非零奖励尺度自动求和、摩擦与推力随机化、地形与指令课程，默认搭配 rsl_rl 的 PPO；已于 2024 年迁往 Isaac Lab，仓库仅有限维护。"
+status: complete
+updated: 2026-11-07
 related:
   - ../entities/extreme-parkour.md
   - ../entities/humanoid-gym.md
@@ -10,7 +11,12 @@ related:
   - ./tita-rl.md
   - ../concepts/procedural-terrain-generation.md
   - ../overview/quadruped-open-source-projects-technology-map.md
+original:
+  - ../../sources/repos/legged_gym.md
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
 sources:
+  - ../../sources/repos/legged_gym.md
+  - ../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
@@ -37,6 +43,8 @@ tags: [eth]
 | legged_gym | Legged Gym | ETH RSL 四足/双足 RL 训练框架 |
 | RL | Reinforcement Learning | PPO 训 loco 的主流入口 |
 | PD | Proportional–Derivative | 策略输出经 PD 转力矩执行 |
+| PPO | Proximal Policy Optimization | 默认训练算法，由配套的 rsl_rl 提供 |
+| DR | Domain Randomization | 训练中随机化摩擦、推力等物理与观测参数 |
 | GPU | Graphics Processing Unit | Isaac Gym 并行仿真依赖 |
 | Sim2Real | Simulation to Real | 训练后零样本/微调上真机 |
 
@@ -54,6 +62,43 @@ tags: [eth]
 一句话：
 
 > `legged_gym` 的价值，不只是跑一个四足策略，而是让你看见足式机器人 RL 工程栈是怎么组织起来的。
+
+## 核心机制（对照源码）
+
+以下内容逐项对照了官方 README 与 `master` 分支源码（见 [repos/legged_gym 归档](../../sources/repos/legged_gym.md)）。
+
+### 代码结构
+
+- 每个任务 = 一个 env 类 + 一个 config 文件；config 里有环境参数类 `LeggedRobotCfg` 与训练参数类 `LeggedRobotCfgPPO`，都靠继承复用。
+- `cfg.rewards.scales` 里每个**非零**尺度，会自动把名为 `_reward_<name>` 的函数加入求和；想关掉某项奖励，只要把尺度置 0。
+- 任务用 `task_registry.register(name, EnvClass, EnvConfig, TrainConfig)` 注册；仓库自带 `anymal_c_rough`、`anymal_c_flat`、`anymal_b`、`a1`、`cassie`。
+- 训练：`python legged_gym/scripts/train.py --task=anymal_c_flat`；README 提示训练开始后按 `v` 关掉渲染以提速。
+
+### 训练流程（数据流）
+
+```mermaid
+flowchart LR
+  Cfg["config 继承<br/>LeggedRobotCfg / CfgPPO"] --> Env["LeggedRobot env<br/>4096 并行"]
+  Env -->|"观测 235 维"| Pol["rsl_rl PPO<br/>actor / critic MLP"]
+  Pol -->|"动作 × 0.5 + 默认位姿"| PD["PD 位置控制<br/>decimation 4"]
+  PD --> Sim["Isaac Gym PhysX<br/>dt 0.005 s"]
+  Sim --> Env
+  Env -->|"奖励 + time_outs"| Pol
+```
+
+### 默认配置里的关键数
+
+| 项 | 值（源码） |
+|----|-----------|
+| 并行环境 | `num_envs=4096`，回合 20 s |
+| 观测 | 235 维 = 基座线速度、角速度、投影重力、3 维指令、关节位置/速度、上一动作（共 48 维）+ 187 个地形高度点（17×11） |
+| 动作 | 12 维关节位置偏移，`action_scale=0.5`，PD 控制，策略频率 50 Hz |
+| 奖励（基类） | 线速度跟踪 +1.0、角速度跟踪 +0.5、`lin_vel_z` −2.0、`ang_vel_xy` −0.05、`torques` −1e-5、`dof_acc` −2.5e-7、`feet_air_time` +1.0、`collision` −1.0、`action_rate` −0.01；总奖励默认截断到非负 |
+| PPO | `clip_param=0.2`、`entropy_coef=0.01`、5 epoch、4 mini-batch、自适应学习率（`desired_kl=0.01`）、`gamma=0.99`、`lam=0.95`、24 步/环境、1500 次迭代、[512,256,128] ELU |
+
+### 原论文怎么说
+
+Rudin 等人（arXiv:2109.11978）报告：4096 台并行机器人、批大小 98304，训练约 1500 次策略更新、不到 20 分钟；平地策略 4 分钟内、不平地形约 20 分钟即可；批大小与并行规模要权衡——机器人太多会让每台的时间视野过短、性能骤降。更多细节见 [论文归档](../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md)。
 
 ## 它到底是什么
 
@@ -108,7 +153,9 @@ tags: [eth]
 ### 3. 它把 sim2real 思路工程化了
 `legged_gym` 最大的一个历史贡献是：
 - 不只是训出一个策略
-- 而是把 **domain randomization、teacher-student、privileged training、鲁棒 locomotion** 这些思路放进训练框架
+- 而是把 **domain randomization（摩擦、推力、观测噪声）、执行器网络、地形/指令课程、特权观测接口** 这些思路写进训练框架
+
+需要注意：原仓库只提供了非对称 critic 用的特权观测**接口**（`num_privileged_obs` 默认 `None`），并没有 teacher-student 蒸馏训练；teacher-student 在 [Extreme Parkour](./extreme-parkour.md) 等基于它的 fork 里才出现。
 
 这让它和纯 benchmark 环境不一样。
 
@@ -156,12 +203,12 @@ tags: [eth]
 这些变量为什么会被放进 observation。
 
 ### 3. Domain Randomization 模板
-这是它最值得学的一块之一：
-- 摩擦随机化
-- 质量随机化
-- 推力扰动
-- 控制延迟近似
+这是它最值得学的一块之一，默认配置里实际有的是：
+- 摩擦随机化（系数 0.5–1.25）
+- 推力扰动（每 15 s 把基座 xy 速度随机置为 ±1 m/s 内）
 - 观测噪声
+- 质量随机化的代码存在，但默认关闭（`randomize_base_mass=False`）
+- 基类**没有**控制延迟随机化——需要延迟建模的话得自己加，或看后继框架
 
 这些都不是“为了学术好看”，而是为了 sim2real 更稳。
 
@@ -176,7 +223,7 @@ tags: [eth]
 
 ## 算法兼容性与演进
 
-虽然 `legged_gym` 诞生时与 PPO 深度绑定（通常使用 `rl-games` 或内部实现的 PPO），但其定义的环境接口、Reward 结构和 Domain Randomization 逻辑具有通用性。
+虽然 `legged_gym` 诞生时与 PPO 深度绑定（官方 README 要求配套 ETH 自家的 `rsl_rl` `v1.0.2`，其中只实现了 PPO），但其定义的环境接口、Reward 结构和 Domain Randomization 逻辑具有通用性。
 
 新一代算法如 **BRRL / BPO (2026)** 在研究中常借用 `legged_gym` 的环境定义作为 Baseline 对比，或者直接在 `legged_gym` 框架内替换优化器。这证明了其作为“足式机器人训练标准环境定义”的持久生命力。
 
@@ -241,6 +288,23 @@ tags: [eth]
 ### 4. 以为四足经验能无脑迁移到人形
 不行。很多经验能复用，但人形在平衡、接触切换、自由度耦合上更难。
 
+## 工程实践
+
+1. **环境要求：** README 写明 Python 3.8（推荐）、PyTorch 1.10 + CUDA 11.3、Isaac Gym **Preview 3**（Preview 2 不可用）、`rsl_rl` `v1.0.2`；这套栈较老，与新版 CUDA / PyTorch 的兼容性要自己验证（推测：未在本次入库中实测）。
+2. **加新机器人：** 在 `envs/` 新建文件夹放 config（继承现有 cfg）；把资产放进 `resources/`；在 cfg 里设置资产路径、关节默认位姿、PD 增益、`foot_name`/接触终止体名；必要时继承 env 类重写奖励；在 `envs/__init__.py` 注册；README 特别叮嘱「不要改其他环境的参数」。
+3. **调奖励：** 先看 `only_positive_rewards`（默认开）对早期终止的影响；`torques`、`dof_acc`、`action_rate` 这几项的量级差别很大，改动前对照 episode 日志里各项求和；见 [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)。
+4. **接触力读数：** README 的已知问题——GPU + 三角网格地形下 `net_contact_force_tensor` 不可靠，足端接触建议改用力传感器。
+5. **课程：** 地形课程以「走出距离 > 地块长度一半则升级，不到指令所需距离一半则降级」控制；指令课程默认关闭（`commands.curriculum=False`）。
+
+## 局限与风险
+
+- **维护状态：** 官方 README 公告（2024-01-09）称相关环境已迁往 Isaac Lab，本仓库仅有限更新，鼓励迁移；新项目应以 Isaac Lab 为平台。
+- **依赖老版栈：** Isaac Gym Preview 3 已被 Isaac Sim 路线取代；新显卡/新驱动上能否安装需自行验证。
+- **默认 DR 不完整：** 质量随机化默认关、无控制延迟随机化；直接上真机前要补。
+- **观测里含基座线速度：** 真机没有直接测量，需要状态估计或改观测设计（推测：属该基线与部署之间的常见差距）。
+- **只适配 PPO：** 随仓库提供的是 `rsl_rl` 的 PPO；想换 off-policy 算法需要自己接。
+- **本页对论文的覆盖：** 实验数字（如 20 分钟）来自 Rudin 论文，不同机器人、地形、GPU 下不会原样复现。
+
 ## 推荐使用建议
 
 ### 如果你是初学者
@@ -269,6 +333,8 @@ tags: [eth]
 
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2021) — legged_gym 原论文
 - 官方仓库：<https://github.com/leggedrobotics/legged_gym>
+- [legged_gym 仓库归档（README + 关键源码通读）](../../sources/repos/legged_gym.md)
+- [Learning to Walk in Minutes 论文归档（原文通读）](../../sources/papers/learning_to_walk_in_minutes_reading_arxiv_2109_11978.md)
 - **ingest 档案：** [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md) — Isaac Gym 原论文（legged_gym 的基础平台）
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — Rudin et al. 2022 详细摘录
 
