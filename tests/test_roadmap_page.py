@@ -100,6 +100,16 @@ class RoadmapPageTests(unittest.TestCase):
         self.assertIn(".roadmap-stage-kmap {", css)
         self.assertIn("function renderDepthStageTrees", content)
 
+    def test_roadmap_trees_pan_instead_of_shrinking(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        # 节点不随列数一路缩小，放不下就拖动查看：顶部单阶段视图、全局总览与正文小树共用
+        self.assertIn("function syncRoadmapLtreePan", content)
+        self.assertIn("function bindRoadmapLtreeMousePan", content)
+        self.assertIn("bindRoadmapLtreeMousePan(ovScroll)", content)
+        css = STYLE_CSS.read_text(encoding="utf-8")
+        self.assertIn(".roadmap-ltree-pan {", css)
+        self.assertIn(".roadmap-ltree-stage > .roadmap-ltree-tree {", css)
+
     def test_roadmap_knowledge_map_uses_learning_route_layout(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertIn("function renderRoadmapLearningTree", content)
