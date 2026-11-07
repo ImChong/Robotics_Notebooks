@@ -1,4 +1,4 @@
-# 人形整机硬件设计
+# 人形整机硬件设计（Humanoid Hardware Design）
 
 **首屏导读**：
 

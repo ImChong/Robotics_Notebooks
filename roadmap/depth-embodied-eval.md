@@ -1,4 +1,4 @@
-# 具身模型测评
+# 具身模型测评（Embodied Evaluation）
 
 **首屏导读**：
 

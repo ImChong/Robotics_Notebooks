@@ -1,4 +1,4 @@
-# 动作重定向
+# 动作重定向（Motion Retargeting）
 
 **首屏导读**：
 

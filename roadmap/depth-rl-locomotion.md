@@ -1,4 +1,4 @@
-# 人形 RL 运动控制
+# 人形强化学习运动控制（Humanoid RL Locomotion）
 
 **首屏导读**：
 

@@ -1,4 +1,4 @@
-# 模仿学习与技能迁移
+# 模仿学习与技能迁移（Imitation Learning & Skill Transfer）
 
 **首屏导读**：
 

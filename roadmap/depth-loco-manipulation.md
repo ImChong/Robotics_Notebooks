@@ -1,4 +1,4 @@
-# Loco-Manipulation（移动操作）
+# 移动操作（Loco-Manipulation）
 
 **首屏导读**：
 
