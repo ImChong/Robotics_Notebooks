@@ -13,6 +13,8 @@ sources:
   - ../../sources/papers/blackmore_2010_minimum_landing_error_pdg.md
   - ../../sources/papers/malyuta_2021_convex_trajectory_generation_tutorial.md
   - ../../sources/sites/jpl_gfold_xombie_flight_tests.md
+original:
+  - ../../sources/papers/blackmore_2010_minimum_landing_error_pdg.md
 summary: "无损凸化（LCvx）：用松弛变量把火箭着陆中'推力不能低于下限'这类非凸控制约束放松成二阶锥约束，并用最大值原理证明松弛问题的最优解就是原问题的最优解，从而能用内点法实时、全局地求解。"
 ---
 
