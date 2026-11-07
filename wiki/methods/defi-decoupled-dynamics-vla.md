@@ -2,7 +2,7 @@
 type: method
 tags: [defi, vla, forward-dynamics, inverse-dynamics, video-generation, self-supervised, manipulation, calvin, simplerenv]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-08
 date: 2026-05-20
 summary: "DeFI 将机器人策略学习解耦为 GFDM（混合视频上的指令条件前向动力学预训练）与 GIDM（无动作标签视频上的自监督逆动力学预训练），再在下游用扩散适配器端到端耦合，从而同时吃尽人/Web 视频与机器人演示。"
 related:
@@ -91,6 +91,13 @@ flowchart TB
   end
   stage1 --> stage2
 ```
+
+## 工程实践：分模块训练与验证清单
+
+1. **分别验证前向与逆向**：前向 GFDM 检查条件视频变化，逆向 GIDM 检查跨帧变化是否保留可行动作信息，不应只比较端到端成功率。
+2. **分数据源记录监督**：人/Web 视频不含机器人真值动作；机器人演示另用于动作适配，不能以预测潜动作冒充真实标注。
+3. **复现实验按相同任务协议对照**：CALVIN 连续任务长度、SimplerEnv 视觉匹配和 Franka 真机成功率应分开报告，并标注骨干冻结与下游微调边界。
+4. **部署前评估**：测量潜特征提取、逆向解码和扩散适配器累计时延；以下是依据论文结构整理的核验步骤，未在本批实际训练或上机。
 
 ## 论文报告结果（摘要级）
 
