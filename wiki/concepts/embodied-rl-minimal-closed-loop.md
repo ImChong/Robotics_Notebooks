@@ -19,7 +19,6 @@ related:
   - ../overview/robot-rl-motion-control-pipeline.md
 original:
   - ../../sources/books/sutton_barto_rl_intro_2nd_ed.md
-  - ../../sources/sites/pybullet-quickstart-guide.md
   - ../../sources/sites/gymnasium-cartpole.md
 sources:
   - ../../sources/books/sutton_barto_rl_intro_2nd_ed.md
