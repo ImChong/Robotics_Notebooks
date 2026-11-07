@@ -581,9 +581,10 @@
     }
 
     /* ── Tooltip ── */
+    /* 浮窗层级高于所有画面（与 style.css .graph-hover-tooltip 一致）；graph-tooltip.js 把它挪出 #graph-wrap */
     #graph-tooltip {
       position: fixed;
-      z-index: 200;
+      z-index: 10001;
       padding: 12px 15px;
       border-radius: 10px;
       background: rgba(22, 27, 34, 0.97);

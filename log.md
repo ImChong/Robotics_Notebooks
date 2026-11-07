@@ -251,6 +251,29 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | sources/papers/behavior_spatial_arxiv_2610_34051.md — BEHAVIOR-Spatial 三层空间诊断基准入库
+
+- 通读 arXiv:2610.34051v2 原文及附录；按 Understand（VQA）/ Ground（IR）/ Act（Action）编译单一 Wiki 实体。
+- 核实官方评测仓库、HF 数据和运行协议：源码包含 VQA/IR 打分、OmniGibson rollout harness，不含论文 VLA 的训练源码与权重。
+- 完成官方评测代码时序图与论文项目流程图；从 Manipulation 任务页建立入链，避免孤儿节点。
+- 主要诊断：held-out frozen-VLM soft 41.6%，prompt-probe soft 16.1%，wrong-target 70.0%；跨切片指标不可直接解释为因果降幅。
+
+## [2026-11-07] ingest | Recova（arXiv:2610.01178）论文与项目主页入库
+
+- 通读论文 v1 的方法、实验、附录 A–E，并对照作者项目页与 NVIDIA 项目镜像。
+- 新增 `sources/papers/recova_arxiv_2610_01178.md`、`sources/sites/recova.md` 与 `wiki/entities/paper-recova.md`。
+- 方法图包含数字孪生、双策略、VLM 失败监控与 DAgger 人工接管分流；真机四任务均值 23.8% → 77.5% → 87.5%。
+- 官方网页展示恢复代码片段，但未见公开的完整训练/部署仓库，故不伪造源码运行时序图。
+- 在 `wiki/tasks/manipulation.md` 增加相关研究入口。
+
+## [2026-11-07] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF（7400 节点），修复节点过小时悬停 / 点击两步被跳过
+
+- **触发：** 用户要求更新首页 GIF
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（88 frames / 1.45 MB；图谱 **7400** 节点 / **61087** 边）
+- **修复：** 选悬停 / 点击节点不再要求直径 ≥ 7 / 8px（7400 节点适配全屏后最大约 5px，两步原本被静默跳过）；只悬停视口偏上的节点，浮窗不被顶部工具栏遮挡
+- **流程：** `make export graph` → `docs/` 本地 `http.server 8765` → 重录并写回 `media/site-demo.gif`
+- **引用：** [`README.md`](README.md)「在线演示」仍指向 `media/site-demo.gif`
+
 ## [2026-11-07] ingest | OpenRoboKit 三套工具
 
 - 意图：区分 RoboKit 并行可微优化、RetargetingKit 人体动作映射与 GraspKit 抓取学习，并建立交叉引用、原文归档、源码运行时序。

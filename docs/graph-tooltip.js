@@ -292,6 +292,25 @@
       link;
   }
 
+  /**
+   * 浮窗置于最上层：#graph-tooltip 原在 #graph-wrap（position: fixed，自成层叠上下文）里，
+   * z-index 只在容器内生效，会被图谱工具栏盖住。统一挪到 body 直接下级，配合 CSS 的最高 z-index，
+   * 浮窗总在所有画面之上。浮窗都按视口坐标（fixed）定位，挪位置不影响摆放。
+   */
+  function liftTooltipsToBody() {
+    var els = document.querySelectorAll('#graph-tooltip, .graph-hover-tooltip');
+    for (var i = 0; i < els.length; i++) {
+      if (els[i].parentNode !== document.body) document.body.appendChild(els[i]);
+    }
+  }
+  if (typeof document !== 'undefined' && typeof document.querySelectorAll === 'function') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', liftTooltipsToBody);
+    } else {
+      liftTooltipsToBody();
+    }
+  }
+
   window.RNGraphTooltip = {
     bindBlankDismiss: bindGraphTooltipBlankDismiss,
     bindOutsideDismiss: bindGraphTooltipOutsideDismiss,

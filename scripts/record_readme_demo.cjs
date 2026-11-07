@@ -198,17 +198,23 @@ async function recordHomeAndGraph(browser, frameDir) {
   await shotN(6, 220);
 
   // Hover a few nodes to show the tooltip.
+  // 节点多时适配全屏后节点普遍只有几像素（7400 节点时最大约 5px），不设固定尺寸门槛：
+  // 按半径从大到小取枢纽节点，且彼此相距足够远，让浮窗落在不同位置。
   await setCaption(page, '⑦ 悬停节点查看简介与关联边');
   const hoverTargets = await page.evaluate(() => {
-    const nodes = Array.from(document.querySelectorAll('#graph-canvas .node-circle'));
+    const nodes = Array.from(document.querySelectorAll('#graph-canvas .node-circle'))
+      .map((c) => {
+        const r = c.getBoundingClientRect();
+        return { w: r.width, x: r.left + r.width / 2, y: r.top + r.height / 2 };
+      })
+      // 浮窗高约 200–230px：节点再靠下时页面会把浮窗翻到光标上方，495px 高的视口里会被顶部工具栏遮住
+      .filter((p) => p.w > 0 && p.x >= 120 && p.x <= window.innerWidth - 140 &&
+        p.y >= 120 && p.y <= window.innerHeight - 250)
+      .sort((a, b) => b.w - a.w);
     const pts = [];
-    for (const c of nodes) {
-      const r = c.getBoundingClientRect();
-      if (r.width < 7) continue;
-      const x = r.left + r.width / 2;
-      const y = r.top + r.height / 2;
-      if (x < 120 || x > window.innerWidth - 140 || y < 120 || y > window.innerHeight - 130) continue;
-      pts.push({ x, y });
+    for (const p of nodes) {
+      if (pts.some((q) => Math.hypot(q.x - p.x, q.y - p.y) < 60)) continue;
+      pts.push({ x: p.x, y: p.y });
       if (pts.length >= 3) break;
     }
     return pts;
@@ -236,17 +242,17 @@ async function recordHomeAndGraph(browser, frameDir) {
 
   // Click a node to open the detail sidebar.
   await setCaption(page, '⑨ 点击节点：右侧详情栏 + 一键进知识页');
+  // 同上，不设固定尺寸门槛：在留给侧栏的可点区域内取最大的节点
   const clickTarget = await page.evaluate(() => {
     const nodes = Array.from(document.querySelectorAll('#graph-canvas .node-circle'));
     let best = null;
     for (const c of nodes) {
       const r = c.getBoundingClientRect();
-      if (r.width < 8) continue;
+      if (!r.width) continue;
       const x = r.left + r.width / 2;
       const y = r.top + r.height / 2;
       if (x < 150 || x > window.innerWidth - 340 || y < 130 || y > window.innerHeight - 150) continue;
-      const d = Math.hypot(x - window.innerWidth / 2, y - window.innerHeight / 2);
-      if (!best || d < best.d) best = { x, y, d };
+      if (!best || r.width > best.w) best = { x, y, w: r.width };
     }
     return best;
   });

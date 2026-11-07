@@ -674,10 +674,10 @@
   // 信息框各行：「健康度 2/3」「摘要与来源（1/1）」「阅读骨架（1/1）」「原文通读（0/1）」[封顶说明]
   function healthTipLines(meta) {
     var score = Math.max(0, Math.min(3, meta.health_score));
-    var lines = ['健康度 ' + score + '/3'];
+    var isRoadmap = meta.type === 'roadmap_page' || meta.type === 'roadmap';
+    var lines = [(isRoadmap ? '路线健康度 ' : '健康度 ') + score + '/3'];
     // 旧缓存数据只有得分没有缺项位：只报分数，不误报各项达标
     if (typeof meta.health_gaps !== 'number') return lines;
-    var isRoadmap = meta.type === 'roadmap_page' || meta.type === 'roadmap';
     var labels = isRoadmap ? ROADMAP_HEALTH_ITEM_LABELS : HEALTH_ITEM_LABELS;
     for (var gi = 0; gi < labels.length; gi++) {
       lines.push(labels[gi] + '（' + (meta.health_gaps & (1 << gi) ? 0 : 1) + '/1）');
@@ -685,17 +685,43 @@
     if (!isRoadmap && (meta.health_gaps & HEALTH_GAP_STATUS)) lines.push('status 未完成，按 stub / draft 封顶');
     return lines;
   }
-  function renderHealthBar(meta) {
-    if (!meta || typeof meta.health_score !== 'number') {
-      return '<span class="node-health node-health--empty" aria-hidden="true"></span>';
-    }
-    var score = Math.max(0, Math.min(3, meta.health_score));
-    var lines = healthTipLines(meta);
+  // 小条本体：亮 score 格（0–3），lines 为信息框各行
+  function healthBarMarkup(score, lines) {
     var segs = '';
     for (var si = 0; si < 3; si++) segs += '<i' + (si < score ? ' class="is-on"' : '') + '></i>';
     // data-health-tip 按行（\n）存信息框文字；读屏软件读 aria-label
     return '<span class="node-health node-health--' + score + '" role="img" data-health-tip="' +
       escapeHtml(lines.join('\n')) + '" aria-label="' + escapeHtml(lines.join('；')) + '">' + segs + '</span>';
+  }
+  function renderHealthBar(meta) {
+    if (!meta || typeof meta.health_score !== 'number') {
+      return '<span class="node-health node-health--empty" aria-hidden="true"></span>';
+    }
+    return healthBarMarkup(Math.max(0, Math.min(3, meta.health_score)), healthTipLines(meta));
+  }
+  // 路线元信息「节点平均健康度」：路线知识地图节点（各阶段列出的节点，与增长趋势「纵深路线健康度」同口径）
+  // 的平均分，小条按四舍五入点亮，信息框给出精确平均分与各档节点数
+  function renderRouteNodeHealthHtml(roadmapPage, detailPages) {
+    var seen = {};
+    var counts = [0, 0, 0, 0];
+    var stages = (roadmapPage && roadmapPage.stages) || [];
+    for (var si = 0; si < stages.length; si++) {
+      var items = stages[si].related_items || [];
+      for (var ii = 0; ii < items.length; ii++) {
+        var page = detailPages[items[ii]];
+        if (seen[items[ii]] || !page || typeof page.health_score !== 'number') continue;
+        seen[items[ii]] = true;
+        counts[Math.max(0, Math.min(3, page.health_score))] += 1;
+      }
+    }
+    var n = counts[0] + counts[1] + counts[2] + counts[3];
+    if (!n) return '';
+    var avg = (counts[1] + 2 * counts[2] + 3 * counts[3]) / n;
+    return healthBarMarkup(Math.round(avg), [
+      '节点平均健康度 ' + avg.toFixed(2) + '/3',
+      '知识地图 ' + n + ' 个节点',
+      '3 分 ' + counts[3] + ' · 2 分 ' + counts[2] + ' · 1 分 ' + counts[1] + ' · 0 分 ' + counts[0]
+    ]);
   }
   // 元信息行：只放小条，无分数时整行隐藏
   function renderHealthMetaHtml(meta) {
@@ -5759,7 +5785,8 @@
     } else {
       renderDetailMetaItemRow('roadmapMetaStages', '学习阶段', '');
     }
-    renderDetailMetaItemRow('roadmapMetaHealth', '健康度', renderHealthMetaHtml(detail));
+    renderDetailMetaItemRow('roadmapMetaHealth', '路线健康度', renderHealthMetaHtml(detail));
+    renderDetailMetaItemRow('roadmapMetaNodeHealth', '节点平均健康度', renderRouteNodeHealthHtml(roadmapPage, detailPages));
 
     renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
     renderDetailMetaItemRow('roadmapMetaDepth', '路线视图', '');
@@ -5996,6 +6023,7 @@
         id: currentPath, label: current.label || currentPath,
         type: current.type || '', community: current.community || '',
         summary: current.summary || '', isCurrent: true,
+        health_score: current.health_score, health_gaps: current.health_gaps,
         _degree: degreeMap[currentPath] || 0,
         fx: W / 2, fy: H / 2
       }].concat(neighborIds.map(function (id) {
@@ -6003,6 +6031,7 @@
         return {
           id: id, label: n.label || id, type: n.type || '', community: n.community || '',
           summary: n.summary || '', isCurrent: false,
+          health_score: n.health_score, health_gaps: n.health_gaps,
           _degree: degreeMap[id] || 0
         };
       }));

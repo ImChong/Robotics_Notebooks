@@ -1117,7 +1117,7 @@ a.hero-stat-num:focus-visible {
 /* 健康度信息框（main.js setupHealthTip）：悬停小条弹出，逐行列出各得分项（1/1）/（0/1） */
 .node-health-tip {
   position: fixed;
-  z-index: 10000;
+  z-index: 10002; /* 可能弹在节点浮窗（10001）里的小条上，须再高一层 */
   max-width: 260px;
   padding: 8px 10px;
   border-radius: 8px;
@@ -1131,6 +1131,8 @@ a.hero-stat-num:focus-visible {
   pointer-events: none;
 }
 .node-health-tip[hidden] { display: none; }
+/* 路线页 Mermaid 图自带的悬停提示（库内默认 z-index 100）同样置于最上层 */
+.mermaidTooltip { z-index: 10001 !important; }
 .node-health--0 i { background: transparent; box-shadow: inset 0 0 0 1px #f87171; }
 .node-health--1 i.is-on { background: #fb923c; }
 .node-health--2 i.is-on { background: #facc15; }
@@ -4228,9 +4230,10 @@ button.home-wiki-heatmap-cell.is-active {
 }
 
 /* 首页 mini-graph 节点悬浮预览卡片（对齐 graph.html tooltip） */
+/* 浮窗层级高于全站所有画面（原最高为 .mermaid-lightbox 的 10000）；元素由 graph-tooltip.js 挪到 body 直接下级 */
 .graph-hover-tooltip {
   position: fixed;
-  z-index: 200;
+  z-index: 10001;
   padding: 12px 15px;
   border-radius: 10px;
   background: rgba(22, 27, 34, 0.97);
