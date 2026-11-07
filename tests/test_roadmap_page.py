@@ -39,7 +39,7 @@ class RoadmapPageTests(unittest.TestCase):
             "roadmapContentSourceLink",
             "findRoadmapStageEntryAnchor",
             "bindSelftestMermaidRerender",
-            "roadmap-stage-entry-embed",
+            "function buildRoadmapStageTreeBlock",
             "function latestNodeHref",
             "renderDetailMetaDateBadge(updated)",
             "roadmapMetaUpdated",
@@ -100,7 +100,7 @@ class RoadmapPageTests(unittest.TestCase):
         self.assertIn("embedDepthRoadmapStageNodes(contentEl, roadmapPage, detailPages)", content)
         css = STYLE_CSS.read_text(encoding="utf-8")
         self.assertIn(".roadmap-stage-kmap {", css)
-        self.assertIn("function renderDepthStageTrees", content)
+        self.assertIn("function renderRoadmapStageTrees", content)
 
     def test_roadmap_trees_pan_instead_of_shrinking(self):
         content = MAIN_JS.read_text(encoding="utf-8")

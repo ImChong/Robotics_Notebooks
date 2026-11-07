@@ -3324,9 +3324,6 @@ button.home-wiki-heatmap-cell.is-active {
   background: var(--surface-strong, var(--bg-alt));
   overflow: hidden;
 }
-.roadmap-vtree-stage-at-entry {
-  --roadmap-vtree-step-width: 1.25rem;
-}
 .roadmap-vtree-summary {
   display: flex;
   align-items: flex-start;
@@ -3353,17 +3350,6 @@ button.home-wiki-heatmap-cell.is-active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-.roadmap-vtree-step-icon {
-  width: auto;
-  height: auto;
-  min-width: var(--roadmap-vtree-step-width);
-  padding: 0;
-  border-radius: 0;
-  background: transparent;
-  color: inherit;
-  font-size: 1rem;
-  line-height: 1;
 }
 .roadmap-vtree-heading {
   flex: 1;
@@ -3962,21 +3948,7 @@ button.home-wiki-heatmap-cell.is-active {
   }
 }
 
-/* 嵌入正文各 L 章节下的单阶段「速览」块（与顶部整块二选一） */
-.roadmap-stage-embed-wrap {
-  margin: 12px 0 22px;
-}
-.roadmap-stage-embed-wrap .roadmap-vtree-item {
-  margin-bottom: 0;
-}
-/* 替换「本阶段入口」静态链接行时的下拉块 */
-.roadmap-stage-entry-embed {
-  margin: 10px 0 16px;
-}
-.roadmap-vtree-stage-at-entry .roadmap-vtree-summary {
-  font-size: 0.92rem;
-}
-/* 纵深路线正文各 Stage：知识地图同阶段节点（节点框沿用 .roadmap-ltree-node） */
+/* 路线正文各阶段（主路线「本阶段入口」处 / 纵深 Stage「推荐读什么」下）：知识地图同阶段小树（节点框沿用 .roadmap-ltree-node） */
 .roadmap-stage-kmap {
   margin: 10px 0 16px;
 }

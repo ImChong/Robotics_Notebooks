@@ -3277,16 +3277,11 @@
     var title = String(stage.title || '');
     var openAttr = opts.openByDefault ? ' open' : '';
     var stageClass = 'roadmap-vtree-stage roadmap-vtree-stage-embed';
-    if (opts.atEntry) stageClass += ' roadmap-vtree-stage-at-entry';
     var parts = [];
     parts.push('<li class="roadmap-vtree-item">');
     parts.push('<details class="' + stageClass + '"' + openAttr + '>');
     parts.push('<summary class="roadmap-vtree-summary">');
-    if (opts.atEntry) {
-      parts.push('<span class="roadmap-vtree-step roadmap-vtree-step-icon" aria-hidden="true">🔗</span>');
-    } else {
-      parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(index + 1)) + '</span>');
-    }
+    parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(index + 1)) + '</span>');
     parts.push(
       '<span class="roadmap-vtree-heading">' + escapeHtml(formatRoadmapStageBadge(sid) + ' · ' + title) + '</span>'
     );
@@ -3480,10 +3475,10 @@
   }
 
   /**
-   * 正文里已有对应 L 章节时，把各阶段相关链接下拉块放到「本阶段入口」处（替换原静态链接行），
-   * 不再插在 h2 标题下。若任一阶段找不到 h2 或入口锚点则返回 false，保留顶部整块速览。
+   * 主路线正文：各 L 章节「本阶段入口」处（替换原静态链接行，无则放在首个 h3 前）嵌入顶部知识地图同一阶段的小树，
+   * 与纵深路线正文同款。若任一阶段找不到 h2 或入口锚点则返回 false，保留顶部整块速览。
    */
-  function embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages) {
+  function embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, detailPages) {
     var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
     if (!contentEl || stages.length < 2) return false;
     var stageHeadings = [];
@@ -3506,23 +3501,46 @@
       if (seen.has(stageHeadings[i])) return false;
       seen.add(stageHeadings[i]);
     }
+    var trees = [];
     for (i = 0; i < stages.length; i++) {
-      var row = buildRoadmapStageRowHTML(stages[i], i, roadmapId, detailPages, {
-        openByDefault: false,
-        atEntry: true
-      });
-      var wrap = document.createElement('div');
-      wrap.className = 'roadmap-stage-embed-wrap roadmap-stage-entry-embed';
-      wrap.setAttribute('data-roadmap-stage-embed', String(stages[i].id || '').toLowerCase());
-      wrap.innerHTML = '<ol class="roadmap-vtree">' + row + '</ol>';
+      var items = Array.isArray(stages[i].related_items) ? stages[i].related_items : [];
+      if (!items.length) continue;
+      var built = buildRoadmapStageTreeBlock(String(stages[i].id).toLowerCase(), items, detailPages);
       var placement = entryAnchors[i];
       if (placement.mode === 'replace') {
-        placement.element.replaceWith(wrap);
+        placement.element.replaceWith(built.block);
       } else {
-        placement.element.parentNode.insertBefore(wrap, placement.element);
+        placement.element.parentNode.insertBefore(built.block, placement.element);
       }
+      trees.push(built.st);
     }
+    if (trees.length) renderRoadmapStageTrees(trees);
     return true;
+  }
+
+  /**
+   * 正文里的单阶段知识地图小树块（表头 + 可拖动树框），主路线与纵深路线共用；
+   * 返回 { block, st }，st 交给 renderRoadmapStageTrees 摆位、画边。
+   */
+  function buildRoadmapStageTreeBlock(sid, items, detailPages) {
+    var nodes = '';
+    for (var k = 0; k < items.length; k++) {
+      nodes += roadmapLtreeNodeHtml(items[k], detailPages, ' data-node="' + k + '" draggable="false"');
+    }
+    var block = document.createElement('div');
+    block.className = 'roadmap-stage-kmap';
+    block.setAttribute('data-roadmap-stage-embed', sid);
+    block.innerHTML =
+      '<p class="roadmap-stage-kmap-head"><span class="roadmap-ltree-mark" aria-hidden="true">' +
+      escapeHtml(formatRoadmapStageBadge(sid).replace(/^[SL](?=\d)/, '')) + '</span><span>知识地图 · 本阶段 ' +
+      items.length + ' 个节点<span class="roadmap-ltree-pan-hint"> · 左右拖动查看</span></span></p>' +
+      '<div class="roadmap-ltree-stage roadmap-ltree-pan"><div class="roadmap-ltree-tree">' +
+      '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>' + nodes + '</div></div>';
+    var tree = block.querySelector('.roadmap-ltree-tree');
+    return {
+      block: block,
+      st: { items: items, tree: tree, svg: tree.firstChild, nodes: tree.querySelectorAll('.roadmap-ltree-node'), parent: [] }
+    };
   }
 
   // 列表条目去掉本阶段节点链接后只剩这些分隔符，才算「纯节点链接」条目
@@ -3578,21 +3596,9 @@
         if (!outH3 && text.indexOf('学完输出什么') !== -1) outH3 = section[i];
       }
 
-      var nodes = '';
-      for (var k = 0; k < items.length; k++) {
-        nodes += roadmapLtreeNodeHtml(items[k], detailPages, ' data-node="' + k + '" draggable="false"');
-      }
-      var block = document.createElement('div');
-      block.className = 'roadmap-stage-kmap';
-      block.setAttribute('data-roadmap-stage-embed', sid);
-      block.innerHTML =
-        '<p class="roadmap-stage-kmap-head"><span class="roadmap-ltree-mark" aria-hidden="true">' +
-        escapeHtml(formatRoadmapStageBadge(sid).replace(/^S(?=\d)/, '')) + '</span><span>知识地图 · 本阶段 ' +
-        items.length + ' 个节点<span class="roadmap-ltree-pan-hint"> · 左右拖动查看</span></span></p>' +
-        '<div class="roadmap-ltree-stage roadmap-ltree-pan"><div class="roadmap-ltree-tree">' +
-        '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>' + nodes + '</div></div>';
-      var tree = block.querySelector('.roadmap-ltree-tree');
-      trees.push({ items: items, tree: tree, svg: tree.firstChild, nodes: tree.querySelectorAll('.roadmap-ltree-node'), parent: [] });
+      var built = buildRoadmapStageTreeBlock(sid, items, detailPages);
+      var block = built.block;
+      trees.push(built.st);
 
       if (readH3) {
         var itemSet = {};
@@ -3616,16 +3622,16 @@
         last.after(block);
       }
     }
-    if (trees.length) renderDepthStageTrees(trees);
+    if (trees.length) renderRoadmapStageTrees(trees);
     return found;
   }
 
   /**
-   * 纵深路线正文各 Stage 小树：摆位、树边、悬停点亮与顶部知识地图单阶段视图同一套
+   * 路线正文各阶段小树（主路线 L 层 / 纵深 Stage）：摆位、树边、悬停点亮与顶部知识地图单阶段视图同一套
    * （layoutRoadmapLearningStage / drawRoadmapLtreeEdges / traceRoadmapLtree），树边取站内互链。
    * 章节默认折叠，树宽为 0 时不画边，展开后由 ResizeObserver 补画。
    */
-  function renderDepthStageTrees(trees) {
+  function renderRoadmapStageTrees(trees) {
     var wanted = {};
     trees.forEach(function (st) {
       placeRoadmapLtreeNodes(st.tree, st.nodes, layoutRoadmapLearningStage(st.items, {}));
@@ -6879,7 +6885,7 @@
       enhanceDetailHeadings(contentEl);
       var stagesEmbedded = String(roadmapId).indexOf('roadmap-depth-') === 0
         ? embedDepthRoadmapStageNodes(contentEl, roadmapPage, detailPages)
-        : embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages);
+        : embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, detailPages);
       if (stagesEmbedded) {
         clearRoadmapStandaloneFlowSection();
       }
