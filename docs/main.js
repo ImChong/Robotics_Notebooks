@@ -565,7 +565,8 @@
     return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
   }
 
-  // 详情页标题：有 sources/repos 关联时在标题末尾加 ⭐️（与列表行同口径）
+  // 详情页标题：has_repo（导出期判定，见 export_minimal.page_has_repo_source）时在标题末尾加 ⭐️（与列表行同口径）；
+  // 正文 sources/repos 链接为旧缓存数据的兜底
   function detailPageHasRepo(detailPage) {
     if (!detailPage) return false;
     if (detailPage.has_repo) return true;
@@ -5409,6 +5410,7 @@
         communityColor: communityColor,
         communityLabel: d.community ? communityLabelMap[d.community] : '',
         health: d,
+        hasRepo: d.has_repo,
         linkHtml: linkHtml
       });
     }
@@ -5834,6 +5836,7 @@
         communityColor: (graphNode && graphNode.communityColor) || '',
         communityLabel: (graphNode && graphNode.communityLabel) || '',
         health: page,
+        hasRepo: page.has_repo,
         linkHtml: linkHtml
       });
     }
@@ -6024,6 +6027,7 @@
         type: current.type || '', community: current.community || '',
         summary: current.summary || '', isCurrent: true,
         health_score: current.health_score, health_gaps: current.health_gaps,
+        has_repo: current.has_repo,
         _degree: degreeMap[currentPath] || 0,
         fx: W / 2, fy: H / 2
       }].concat(neighborIds.map(function (id) {
@@ -6032,6 +6036,7 @@
           id: id, label: n.label || id, type: n.type || '', community: n.community || '',
           summary: n.summary || '', isCurrent: false,
           health_score: n.health_score, health_gaps: n.health_gaps,
+          has_repo: n.has_repo,
           _degree: degreeMap[id] || 0
         };
       }));
@@ -7892,8 +7897,10 @@
     var _fullSearchIndexPromise = null;
     var _searchGeneration = 0;
 
-    var _communityByPath = null;
-    var _communityByPathPromise = null;
+    // 路径 → link-graph 节点：社区筛选取 community，结果卡片取健康度 / 开源 / 社区标签
+    var _graphNodeByPath = null;
+    var _communityById = {};           // 社区 id → { label, color }（色与图谱社区色一致）
+    var _graphNodeByPathPromise = null;
     var _communitySelectPopulated = false;
 
     function populateCommunitySelect(communities) {
@@ -7922,37 +7929,43 @@
       }
     }
 
-    function ensureCommunityByPath() {
-      if (_communityByPath) return Promise.resolve(_communityByPath);
-      if (_communityByPathPromise) return _communityByPathPromise;
+    function ensureGraphNodeByPath() {
+      if (_graphNodeByPath) return Promise.resolve(_graphNodeByPath);
+      if (_graphNodeByPathPromise) return _graphNodeByPathPromise;
       // 复用全站共享的 link-graph 加载器（首页 mini-graph 同一份数据，只请求一次）。
       // 共享请求不可中止，这里只限定本次等待：超时先按无社区信息出结果，下次搜索再等一次
       var timeout;
       var waitCap = new Promise(function (resolve) {
         timeout = setTimeout(function () { resolve(null); }, 30000);
       });
-      _communityByPathPromise = Promise.race([window.RNLinkGraph.ensure(), waitCap])
+      _graphNodeByPathPromise = Promise.race([window.RNLinkGraph.ensure(), waitCap])
         .then(function(data) {
           if (!data) throw new Error('link-graph timeout');
           var m = new Map();
           var nodes = data.nodes || [];
           for (var ni = 0; ni < nodes.length; ni++) {
             var node = nodes[ni];
-            if (!node.id) continue;
-            if (node.community) m.set(node.id, node.community);
+            if (node.id) m.set(node.id, node);
           }
-          _communityByPath = m;
-          populateCommunitySelect(data.communities || []);
+          _graphNodeByPath = m;
+          var communities = data.communities || [];
+          var tooltipApi = window.RNGraphTooltip || {};
+          var colorMap = tooltipApi.buildCommunityColorMap ? tooltipApi.buildCommunityColorMap(communities) : {};
+          for (var ci = 0; ci < communities.length; ci++) {
+            var c = communities[ci];
+            if (c && c.id) _communityById[c.id] = { label: c.label || c.id, color: colorMap[c.id] || '' };
+          }
+          populateCommunitySelect(communities);
           return m;
         })
         .catch(function() {
-          _communityByPathPromise = null;
+          _graphNodeByPathPromise = null;
           return new Map();
         })
         .finally(function () {
           clearTimeout(timeout);
         });
-      return _communityByPathPromise;
+      return _graphNodeByPathPromise;
     }
 
     // 两层索引（编号 9，scripts/build_search_index.py）：轻量索引约 0.9 MB gzip，聚焦搜索框就加载；
@@ -8165,7 +8178,12 @@
         typeLabel = item.path.split('/').slice(1, 3).join(' / ');
       }
 
-      var tagLine = '';
+      // 社区标签：与详情页「所属社区」同一枚 🧭 徽标（点击进图谱社区视图），排在标签行最前
+      var community = item.community && _communityById[item.community];
+      var tooltipApi = window.RNGraphTooltip;
+      var tagLine = community && tooltipApi && tooltipApi.buildCommunityBadgeHtml
+        ? tooltipApi.buildCommunityBadgeHtml(item.community, community.label, community.color)
+        : '';
       var itemTags = item.tags || [];
       var maxTags = Math.min(itemTags.length, 4);
       for (var ti = 0; ti < maxTags; ti++) {
@@ -8173,8 +8191,7 @@
       }
 
       var explain = queryTokens && queryTokens.length
-        ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
-          + matchExplanation(item, queryTokens) + '</span>'
+        ? '<span class="result-match">' + matchExplanation(item, queryTokens) + '</span>'
         : '';
       var graphBtn = '<a href="' + escapeHtml(graphUrl) + '" class="js-graph-btn" '
         + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
@@ -8189,8 +8206,11 @@
             : '')
         : '';
       return '<article class="card" data-result-url="' + escapeHtml(detailUrl) + '">'
-        + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + explain + '</p>'
-        + '<h3><a href="' + escapeHtml(detailUrl) + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
+        + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">'
+        + '<span class="result-type">' + escapeHtml(typeLabel) + '</span>'
+        + renderHealthMetaHtml(item) + explain + '</p>'
+        + '<h3><a href="' + escapeHtml(detailUrl) + '">' + escapeHtml(item.title || item.id)
+        + renderUpdatesItemRepoStar(item) + '</a>' + graphBtn + '</h3>'
         + summaryHtml
         + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
         + '</article>';
@@ -8356,11 +8376,11 @@
       // 空查询：结果区留白（热门词入口是搜索框下方常驻的 tag-chip 行）
       if (!q && !communityVal) { searchResults.innerHTML = ''; miniGraphHighlight('', []); return; }
       searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载离线搜索索引中…</p>';
-      Promise.all([ensureSearchIndex(), ensureCommunityByPath()])
+      Promise.all([ensureSearchIndex(), ensureGraphNodeByPath()])
         .then(function(results) {
           if (generation !== _searchGeneration) return;
           var indexData = results[0];
-          var communityMap = results[1] || new Map();
+          var graphNodeMap = results[1] || new Map();
           var docs = (indexData && indexData.docs) || [];
           var queryTokens = tokenizeQuery(q);
 
@@ -8379,10 +8399,8 @@
           var matched = [];
           for (var i = 0; i < docs.length; i++) {
             var doc = docs[i];
-            if (communityVal) {
-              var docCommunity = communityMap.get(doc.path);
-              if (docCommunity !== communityVal) continue;
-            }
+            var graphNode = graphNodeMap.get(doc.path);
+            if (communityVal && (!graphNode || graphNode.community !== communityVal)) continue;
 
             var partial = 0;
             var bm25 = 0;
@@ -8409,6 +8427,10 @@
               page_type: doc.page_type,
               tags: doc.tags || [],
               search_aliases: doc.search_aliases || [],
+              health_score: graphNode && graphNode.health_score,
+              health_gaps: graphNode && graphNode.health_gaps,
+              has_repo: graphNode && graphNode.has_repo,
+              community: graphNode && graphNode.community,
               _score: bm25 + partial
             });
           }
@@ -8490,7 +8512,7 @@
     });
     if (communityFilter) {
       communityFilter.addEventListener('change', triggerSearch);
-      ensureCommunityByPath();
+      ensureGraphNodeByPath();
     }
 
     var _qParam = new URLSearchParams(window.location.search).get('q');

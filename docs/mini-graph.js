@@ -64,6 +64,7 @@
         communityColor: communityColor,
         communityLabel: d.community ? communityLabelMap[d.community] : '',
         health: d,
+        hasRepo: d.has_repo,
         linkHtml: '<a class="tt-link" href="' + escapeHtml(detailUrl) + '">' + linkLabel + '</a>'
       });
     }
@@ -212,6 +213,7 @@
         summary: n.summary || '',
         health_score: n.health_score,
         health_gaps: n.health_gaps,
+        has_repo: n.has_repo,
         _degree: degreeMap[n.id] || 0
       };
     });
@@ -523,6 +525,7 @@
           summary: n.summary || '',
           health_score: n.health_score,
           health_gaps: n.health_gaps,
+          has_repo: n.has_repo,
           _degree: n._degree
         };
       });

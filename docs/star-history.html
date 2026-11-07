@@ -281,7 +281,7 @@
           } },
         { id: 'opensource-nodes', label: '开源节点数', unit: '节点', kind: 'category',
           load: function () {
-            // 开源 = 关联 sources/repos/ 源码归档（与详情页 ⭐️、图谱「按开源」同口径），按社区堆叠
+            // 开源 = 节点 has_repo（关联 sources/repos/ 或 frontmatter code: 仓库，与详情页 ⭐️、图谱「按开源」同口径），按社区堆叠
             return linkGraph().then(function (g) {
               var list = RNGraphTooltip.getSortedCommunities(g.communities)
                 .filter(function (c) { return c.size > 0; });

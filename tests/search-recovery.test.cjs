@@ -43,7 +43,7 @@ test('community timeout does not block search permanently and can retry', async 
   h.expire(30000);
   await flush();
   assert.match(h.searchResults.innerHTML, /detail\.html\?id=ppo/);
-  assert.equal((await h.ensureCommunityByPath()).get('wiki/ppo.md'), 'control');
+  assert.equal((await h.ensureGraphNodeByPath()).get('wiki/ppo.md').community, 'control');
 });
 
 test('visible retry button recovers without a page reload', async () => {

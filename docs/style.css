@@ -516,6 +516,11 @@ a.hero-stat-num:focus-visible {
   font-size: .86rem;
   color: var(--text);
 }
+/* 搜索结果卡片标签行最前的社区徽标（main.js buildResultCardHtml）：字号与内边距对齐同行标签 */
+.chip-list > .detail-community-badge {
+  padding: 7px 12px;
+  font-size: .86rem;
+}
 .kpi-card {
   display: grid;
   gap: 8px;
@@ -3246,6 +3251,19 @@ button.home-wiki-heatmap-cell.is-active {
 .search-tier-heading.search-tier-exact { color:var(--accent, #2d74da); }
 .search-tier-heading .data-meta { font-weight:400; opacity:.75; margin-left:4px; }
 
+/* 结果卡片元信息行：类型标签不折行，命中说明（别名 / 标签 / 标题命中）最多两行 */
+.card-meta .result-type { white-space:nowrap; flex-shrink:0; }
+.card-meta .node-health { flex-shrink:0; }
+.result-match {
+  margin-left:6px;
+  font-size:.72rem;
+  color:var(--text-muted);
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+}
+
 /* --- Search Result Quick Preview（卡片式快速预览：默认收起摘要，可就地展开全文） --- */
 .result-summary { margin:0; }
 .result-summary.is-clamped {
@@ -4279,6 +4297,12 @@ button.home-wiki-heatmap-cell.is-active {
   line-height: 1.5;
 }
 .tt-health-label { font-weight: 600; }
+/* 浮窗标题末尾开源 ⭐️（graph-tooltip.js buildNodeTooltipHtml 的 hasRepo）：与详情页标题同标记 */
+.tt-title .updates-item-opensource {
+  margin-left: 0.2em;
+  padding-right: 0;
+  font-size: 0.82em;
+}
 /* 社区标签：摘要下方单独一行的描边胶囊（色取社区色），不与顶部实心类型徽章同行 */
 .graph-hover-tooltip .tt-community {
   display: flex;

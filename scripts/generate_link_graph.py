@@ -59,6 +59,7 @@ from urllib.parse import unquote, urlsplit
 
 from export_minimal import (
     extract_summary,
+    page_has_repo_source,
     parse_frontmatter,
     parse_roadmap_stages,
     strip_frontmatter,
@@ -1060,8 +1061,8 @@ def resolve_latest_nodes_max(cli_value: int | None) -> int:
 
 
 def wiki_has_repo_source(content: str) -> bool:
-    """Wiki 页是否关联开源仓库源码归档（``sources/repos/``）。"""
-    return bool(re.search(r"(?:\.\./)*sources/repos/[^)\s]+\.md\b", content))
+    """Wiki 页是否有开源代码（判据见 ``export_minimal.page_has_repo_source``）。"""
+    return page_has_repo_source(content)
 
 
 # ingest 未完成的 frontmatter status → 健康度上限（取值 stub | draft | complete，见 schema/page-types.md）。
@@ -1737,7 +1738,7 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             "_tags": node_tags,
             "_topics": parse_frontmatter_topics(content),
         }
-        # 图谱「按开源」着色 / 详情页 ⭐️：关联 sources/repos/ 源码归档
+        # 图谱「按开源」着色 / 详情页 ⭐️：关联 sources/repos/ 源码归档，或 frontmatter code: 是 GitHub / GitLab 仓库
         if wiki_has_repo_source(content):
             node["has_repo"] = True
         institutions = derive_node_institutions(content)
