@@ -2,8 +2,9 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-07
 related:
+  - ../entities/paper-recova.md
   - ../entities/paper-goaldex.md
   - ../entities/paper-viserdex.md
   - ../entities/paper-seer-vla.md
@@ -145,6 +146,8 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 让机器人的手能做事情——抓东西、搬东西、用东西。
 
 技能获取与跨任务复用的例子见 [RoboSkill：Explore, Execute, Evolve](../entities/paper-roboskill.md)。
+
+**失败恢复与回退学习：** [Recova](../entities/paper-recova.md) 把任务策略与恢复策略分开，在数字孪生中探索失败，真机核验后继续执行，并把人工示教按任务/恢复分流。
 
 ## 英文缩写速查
 
