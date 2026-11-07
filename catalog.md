@@ -2849,6 +2849,7 @@
 - [LaST-HD（Learning Latent Physical Reasoning from Scalable Human Data）](wiki/entities/paper-last-hd-latent-physical-reasoning.md) — LaST-HD** 是北京大学、香港中文大学、Simplexity Robotics 与 Aether Tech 等团队的 **人手→机器人操作 VLA** 论文（arXiv:2606.23685 `📅unknown` `[entity_page]`
 - [What Matters for Latent Actions](wiki/entities/paper-latent-actions-matter.md) — What Matters for Latent Actions in Robot Learning**（[arXiv:2608.19613](https://arxiv.org/abs/2608. `📅unknown` `[entity_page]`
 - [Latent Noise Representation Bridging（arXiv:2611.07275）](wiki/entities/paper-latent-noise-representation-bridging.md) — Latent Noise Representation Bridging**（*Efficient Diffusion Policy Fine Tuning with Latent Noise R `📅unknown` `[entity_page]`
+- [Latent RL Priors：面向数据高效灵巧操作的潜在强化学习先验](wiki/entities/paper-latent-rl-priors.md) — Latent RL Prior 把大量特权 RL 控制经验蒸馏成动作解码器，再冻结它、学习图像到潜在条件的接口，以较少视觉示范适配灵巧操作。 `📅unknown` `[entity_page]`
 - [LAW：以语义子任务进度统一语言、动作与世界建模](wiki/entities/paper-law.md) — LAW**（*Unifying Language, Action, and World Modeling for Agentic Physical Intelligence*，[arXiv:261 `📅unknown` `[entity_page]`
 - [LAWA：潜动作作未来意图](wiki/entities/paper-lawa.md) — LAWA**（*Latent Action as Intention Enables Efficient Future Imagination for World Action Models*， `📅unknown` `[entity_page]`
 - [LaWAM：LeRobot 原生潜空间 World Action Model](wiki/entities/paper-lawam.md) — LaWAM**（*Latent World Action Models for Efficient Dynamics-Aware Robot Policies*，[arXiv:2606.15768 `📅unknown` `[entity_page]`
@@ -5757,6 +5758,7 @@
 - [vla.simd（arXiv:2609.24274）](wiki/entities/paper-vla-simd.md) — vla.simd**（*vla.simd: Efficient CPU Inference for Language-Conditioned Manipulation*，[arXiv:2609.2 `📅unknown` `[entity_page]`
 - [VLA-Stem：基于强化学习的轻量化视觉语言动作模型安全机制](wiki/entities/paper-vla-stem-lightweight-safety-rl.md) — VLA-Stem**（*VLA-Stem: A Lightweight Safety Mechanism for Vision-Language-Action Models via Reinfor `📅unknown` `[entity_page]`
 - [VLA Survey（HMI P071）](wiki/entities/paper-vla-survey-embodied.md) — VLA Survey**（*A Survey on Vision-Language-Action Models for Embodied AI*，2024，[arXiv:2405.14093](h `📅unknown` `[entity_page]`
+- [VLA-Tug：通过校准潜变量探针预测与分类故障](wiki/entities/paper-vla-tug.md) — VLA-Tug 从 VLA 内部表征预测故障何时将发生及其类别，并校准告警阈值，为停止、重试或接管提供信号。 `📅unknown` `[entity_page]`
 - [VLA-ULAP：云端 VLA 与边缘超轻量动作预测交错](wiki/entities/paper-vla-ulap.md) — VLA-ULAP**（*Interleaving Cloud VLA Calls with Ultra-Lightweight Local Action Prediction at the Edg `📅unknown` `[entity_page]`
 - [VLA-ZO：VLA 的快速零阶适应](wiki/entities/paper-vla-zo-zeroth-order-adaptation.md) — VLA-ZO**（arXiv:2610.06271）解决的是「部署时相机换了视角，怎么在只有推理级显存的设备上把 VLA 适 `📅unknown` `[entity_page]`
 - [VLAct：数据缩放之外的 VLA 表征轴](wiki/entities/paper-vlact.md) — VLAct**（*Beyond Data Scaling: Representation-Centric Continued Pre-training for Vision-Language-Ac `📅unknown` `[entity_page]`
@@ -6914,6 +6916,7 @@
 ### Wiki Comparisons（对比页）
 
 - [ACP、SuperMimic 与 PHP：接触规划、训练方法和跑酷数据](wiki/comparisons/acp-supermimic-php.md) — 这四项工作分别关注接触规划、世界模型训练、感知跑酷和社区跑酷复现，不能仅凭名称推断它们已经组合为同一个系统。 `📅unknown` `[comparison_page]`
+- [Adams vs MuJoCo vs Isaac Sim（Newton）：按三类物理问题选型](wiki/comparisons/adams-vs-mujoco-vs-isaac-sim-three-problem-types.md) — 「Isaac Sim / MuJoCo 能不能取代 Adams」问错了问题：三者回答的是三类不同的物理问题，**取代发生在控制与机器人学习层，不发生在载荷与寿命层**（Zane Hub 第 385 篇 `📅unknown` `[comparison_page]`
 - [AMP vs ADD vs SMP：运动先验变体对比](wiki/comparisons/amp-add-smp-motion-prior-variants.md) — 背景**：在人形 RL 中，显式 tracking 奖励容易带来「能完成任务但不像人」的步态。AMP 用判别器学习参考动作分布；社区在此基础 `📅unknown` `[comparison_page]`
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](wiki/comparisons/anygrasp-vs-graspnet.md) — 背景**：在「点云 / RGBD → 6-DoF 抓取候选」这条链路上，最常被同时提及的是 **GraspNet 家族**（GraspNet-1Billion / Contact-GraspNet `📅unknown` `[comparison_page]`
 - [Physical AI 策展清单：natnew vs aichr](wiki/comparisons/awesome-physical-ai-curated-lists.md) — GitHub 上有两个都叫 **awesome-physical-ai** 的独立仓库，阅读与引用时按 **org 前缀** 区分，别混成一个。 `📅unknown` `[comparison_page]`

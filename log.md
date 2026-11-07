@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | 通读 VLA-Tug 与 Latent RL Priors，补充故障预警和冻结控制先验节点、论文流程及 VLA-Tug 源码时序；核实仿真数据已开放与真机/待发布边界。
+
+## [2026-11-07] ingest | Zane Hub 第385篇《Isaac Sim 和 MuJoCo 能取代 Adams 吗？》：新建三类物理问题选型对比页，一手核对 MuJoCo 3.17.0、Newton 1.0、Isaac Sim 许可/MCP、Cadence 收购（Isaac Sim 6.0 日期来源不一致且最新已 6.2）
+
 ## [2026-11-07] ingest | Ctrl-F：通读论文与项目页，归档三维力接口、反向力训练及G1增载实验；官方代码待发布
 
 ## [2026-11-06] lint | 全量 lint：清零 10 条信息型预警（execute/TensorRT 停用词、SCvx 选型落地、两篇论文补对比段、ITW-Ego Plus 数据速查、4 处陈旧措辞加日期限定）
