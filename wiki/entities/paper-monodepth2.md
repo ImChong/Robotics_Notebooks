@@ -104,6 +104,8 @@ arXiv v4 Table2 KITTI Eigen，640×192、仅单目视频 M：AbsRel 0.115、δ1 
 
 ## 关联页面
 
+- [SfMLearner（自监督单目深度与位姿的早期工作）](./paper-sfmlearner-zhou.md)
+
 - [OpenPCDet](./openpcdet.md)
 - [FeatDepth](./paper-featdepth.md)
 - [COLMAP](./colmap.md)
