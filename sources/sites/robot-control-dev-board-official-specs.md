@@ -5,6 +5,9 @@
 - **标题：** 机器人运控与机载策略推理常见开发板官方规格（Jetson Orin / Thor、RDK X5 / S100、RK3588、Raspberry Pi 5）
 - **类型：** site / hardware（多厂商产品页归档）
 - **入库日期：** 2026-09-26
+- **复核日期：** 2026-11-07（重新取得下列官方页面；Raspberry Pi 5 产品页被 Cloudflare 拦截，改读官方 Product Brief PDF）
+- **核对范围：** NVIDIA [Jetson Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/) 与 [Jetson Thor](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-thor/) 规格表；D-Robotics [RDK X5](https://en.d-robotics.cc/rdkx5) 与 [RDK S100](https://en.d-robotics.cc/rdks100) 页；Rockchip [RK3588 页](https://www.rock-chips.com/a/en/products/RK35_Series/2022/0926/1660.html)；Radxa [CM5 页](https://radxa.com/products/cm/cm5/)；Raspberry Pi 5 [Product Brief](https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-product-brief.pdf)；Unitree [G1 页](https://www.unitree.com/g1/) 的算力一栏；工具链部分读了 [rknn-toolkit2 README](https://github.com/airockchip/rknn-toolkit2)、rknn_model_zoo README、[rdk_model_zoo](https://github.com/D-Robotics/rdk_model_zoo) 与 rdk_model_zoo_s README、[RDK S 系列工具链 FAQ](https://developer.d-robotics.cc/rdk_doc/en/rdk_s/FAQ/toolchain/)。**未读**：Radxa CM5 的 docs.radxa.com 文档页（输入电压与供货年限仍沿用旧摘录）、JetsonHacks 转载页、CNX Software 评测、各厂商价格页、OpenExplorer 工具链本体。
+- **通读：** 已完成
 - **一句话说明：** 把人形 / 四足 / 小型足式机器人部署策略网络时最常见的几块开发板的 **官方标称规格**（CPU、AI 加速器、内存带宽、功耗、实时核与总线）集中归档，供 [按策略模型选开发板](../../wiki/comparisons/robot-policy-deployment-dev-board-selection.md) 对比页引用。
 - **开源状态：** 不适用（商业硬件产品页；软件栈与模型库另见各厂商开发者站）
 - **沉淀到 wiki：** [`wiki/comparisons/robot-policy-deployment-dev-board-selection.md`](../../wiki/comparisons/robot-policy-deployment-dev-board-selection.md)
@@ -112,3 +115,13 @@
 - [机器人运控开发板选型（按策略网络模型）](../../wiki/comparisons/robot-policy-deployment-dev-board-selection.md) — 主落点
 - [NVIDIA Jetson](../../wiki/entities/nvidia-jetson.md) — Jetson 产品线（Orin / Thor）已有摘要
 - [开源人形机器人「大脑」选型](../../wiki/entities/open-source-humanoid-brains.md) — x86 / Jetson / 国产平台三分法
+
+## 2026-11-07 复核更正
+
+- **Raspberry Pi 5 价格：** 官方 Product Brief（页首标「Published November 2026」）列出 1GB $45、2GB $77.50、4GB $110、8GB $175、**16GB $385**；本档早先摘录的 16GB 版 $305 已过期。其余规格一致：BCM2712 4× Cortex-A76 @ 2.4 GHz、VideoCore VII、LPDDR4X-4267、PCIe 2.0 x1（需 HAT）、5V/5A USB-C PD、无 NPU。
+- **Jetson Orin 页：** 规格表确认 AGX Orin 64GB 275 TOPS / 2048 核 / 12 核 A78AE @2.2GHz / 64GB 204.8 GB/s / 15–60 W；Orin NX 16GB 157 TOPS / 1024 核 / 8 核 @2.0GHz / 16GB 102.4 GB/s / 10–15–25–40 W；Orin Nano 8GB 67 TOPS / 6 核 @1.7GHz / 8GB 102 GB/s / 7–15–25 W。页面新增「Orin Nano 2」与 Thor 的 T3000 / T2000 新闻卡片（见 [nvidia-jetson-embedded-systems.md](./nvidia-jetson-embedded-systems.md)）。
+- **Jetson Thor 页：** T5000：2070 TFLOPS（FP4 稀疏）、2560 核、14 核 Neoverse-V3AE、128GB LPDDR5X 256-bit / 273 GB/s、40–130 W；T4000：1200 TFLOPS、1536 核、12 核、64GB / 273 GB/s、40–70 W；开发套件 2× 13-pin CAN 头。
+- **RDK S100：** 页面写 80/128 TOPS（INT8 等效）、「支持 160+ ONNX 标准算子」、4× Cortex-R52+ MCU（脚注：含一对锁步 DCLS 核与两个可 Split-Lock 的核）、12–20 V DC、2× 千兆口、4× USB 3.0；页面脚注 3 称 BPU 做运控模型推理、MCU 做运动指令插补与高频通信；**未列 CAN**。RDK X5 页写「CAN FD high-speed interface」、1× CAN FD、5V/5A、4/8GB。
+- **RK3588：** 官方页 8 nm、4× A76 + 4× A55、Mali-G610 MC4、**6 TOPS NPU（三核，INT4/INT8/INT16/FP16/BF16/TF32）**；Radxa CM5：56×41 mm，RK3588S2，LPDDR4x 最多 32GB，eMMC 最多 128GB，另有 CM5 Lite（RK3582，NPU 5 TOPS）。
+- **工具链口径：** RKNN 官方 README：PC 端 RKNN-Toolkit2 转换成 RKNN 格式，板端用 C/C++ RKNN Runtime 或 Python RKNN-Toolkit-Lite2；rknn_model_zoo 示例列 FP16 / INT8。RDK 工具链 FAQ：`.bin` 对应 PTQ、`.hbm` 对应 QAT（FAQ 原文），`hb_mapper makertbin` 为 PTQ 转换命令，超出 BPU 约束（CxHxW>8192）的算子回落 CPU，rdk_model_zoo 与 rdk_model_zoo_s README 均称纯 BPU 模型的输入输出量化/反量化节点也在 CPU 执行。rdk_model_zoo 把示例产物写作 `.bin / .hbm`。
+- **Unitree G1 页：** G1 与 G1 EDU 均写「8-core high-performance CPU」；EDU 可选高算力模组，页面原文含「such as Orin, etc.」，未给 TOPS。

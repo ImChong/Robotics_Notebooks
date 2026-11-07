@@ -7,6 +7,9 @@
 - **URL：** https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/
 - **厂商：** 英伟达（NVIDIA）
 - **入库日期：** 2026-09-06
+- **复核日期：** 2026-11-07（重新取得官方门户与 Jetson Orin / Jetson Thor 两个子页）
+- **核对范围：** 门户首页（概述、新闻卡片、产品系列与功耗/尺寸、软件、生态）；[Jetson Orin 页](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/)的型号规格表（AI 性能、GPU、CPU、内存带宽、功耗）；[Jetson Thor 页](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-thor/)的规格表与亮点。FAQ、成功案例、合作伙伴列表、Xavier/TX2 旧平台页未读。
+- **通读：** 已完成
 - **一句话说明：** Jetson 嵌入式边缘 AI 计算平台总入口：从 **Jetson Thor** 到 **Orin / Xavier / TX2 / Nano** 模组谱系、**JetPack** 软件栈、Physical AI 推理运行时与合作伙伴生态；机器人机载算力与 [HIL](../../wiki/concepts/hardware-in-the-loop.md) 目标硬件的主线选型页。
 - **开源状态：** **部分** — 硬件模组与 JetPack 为商业产品；开发者站提供 SDK/文档；**Jetson AI Lab** 聚合开源模型与示例；具体仓库以 developer.nvidia.com 为准。
 - **沉淀到 wiki：** [`wiki/entities/nvidia-jetson.md`](../../wiki/entities/nvidia-jetson.md)
@@ -70,3 +73,10 @@
 - HIL 目标硬件：[hardware-in-the-loop](../../wiki/concepts/hardware-in-the-loop.md)
 - Isaac 人形栈：[isaac-gr00t](../../wiki/entities/isaac-gr00t.md)（Thor 部署叙事）
 - 机载推理对比：[onnxruntime-vs-mnn-vs-tensorrt](../../wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+
+## 2026-11-07 复核补充（官方门户原文）
+
+- **产品线（门户）：** Jetson AGX Thor 系列最高 2070 TOPS（FP4）、40–130 W、100×87 mm；AGX Orin 最高 275 TOPS、15–60 W；Orin NX 最高 157 TOPS、10–25 W、70×45 mm；Orin Nano 最高 67 TOPS、7–15 W、起价 199 美元；另有 Xavier、TX2、Nano 旧系列。AGX Thor 开发套件：Blackwell GPU、128 GB 内存、2070 FP4 TFLOPS、130 W；相对 AGX Orin 称 AI 算力最高 7.5×、能效 3.5×。
+- **新动态（本次门户出现，旧归档未收）：** (1) 「Jetson Orin Nano 2」入门级机器人计算机，称推理性能近 2 倍、40 W 包络内省电 40%（页面 Notify Me，尚在预告）；(2) 「Jetson Thor」新增 Blackwell **T3000 / T2000** 模组，并推出 Jetson 内存优化与 agent skills（新闻卡片，具体规格本次未读）。
+- **Thor 规格表（Thor 子页）：** T5000：2070 TFLOPS（FP4 稀疏）、2560 核 Blackwell + 第 5 代 Tensor Core、14 核 Neoverse-V3AE、128 GB LPDDR5X / 273 GB/s、40–130 W、4×25GbE、含 4 路 CAN；T4000：1200 TFLOPS、1536 核、12 核 CPU、64 GB / 273 GB/s、40–70 W、3×25GbE；开发套件带 2 个 13-pin CAN 头与 QSFP28。
+- **Orin 子页规格表：** AGX Orin 64GB 275 TOPS、2048 核 Ampere + 64 Tensor Core、12 核 A78AE、64GB LPDDR5 204.8 GB/s、15–60 W；Orin NX 16GB 157 TOPS、8 核、16GB 102.4 GB/s、10–40 W（NX 8GB 117 TOPS）；Orin Nano 8GB 67 TOPS、6 核、8GB 102 GB/s、7–25 W（Nano 4GB 34 TOPS）。子页文字介绍里仍写 Orin NX「最高 100 TOPS、10–25 W」与 Orin Nano「最高 40 TOPS、7–15 W」，与表格里的 157 / 67 TOPS 口径不同（Super 模式与旧标称之分），引用时须写明版本与模式。

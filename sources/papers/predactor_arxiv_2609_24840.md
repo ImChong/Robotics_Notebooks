@@ -10,6 +10,9 @@
 - **代码：** **部分开放** — <https://github.com/MasterYip/PredActor> 提供带 PDP051 checkpoint 的 MuJoCo evaluator；训练/数据采集/DAgger/真机部署仍未发布；评测权重：[PredActor_Artifacts](https://huggingface.co/MasterYip/PredActor_Artifacts)，见 [`sources/repos/predactor.md`](../repos/predactor.md) 与 [`sources/repos/predactor-artifacts.md`](../repos/predactor-artifacts.md)
 - **机构：** 哈尔滨工业大学（Harbin Institute of Technology）、上海创新研究院（Shanghai Innovation Institute）、RoboParty Lab、清华大学（Tsinghua）、上海交通大学（SJTU）等
 - **入库日期：** 2026-09-24
+- **复核日期：** 2026-11-07（重新取得 arXiv 当前版 PDF，31 页）
+- **核对范围：** 摘要、引言要点、Table 1 的部署栏、第 4 章实验设置、4.2 推理加速与机载评测（Table 4）、附录 B.3 任务与部署接口、B.4 评测部署配置、附录 E 中与 TensorRT 基准有关的一处引用；其余方法推导、仿真对比表和附录**未读**。注意当前版摘要的仿真数字（44/45 目标、文本检索分 0.539）与本归档早先摘录（15/15、0.580）不同，本归档的仿真数字未更新。
+- **通读：** 未完成
 - **最近复核：** 2026-10-08
 - **一句话说明：** 联合状态–动作扩散：仅用本体感知历史 + 可选任务上下文，内部预测未来状态供 CG/CFG 引导，直接输出可执行动作；G1 Jetson Orin NX 机载 50 Hz（中位 16.79 ms / p95 19.38 ms）。
 
@@ -54,3 +57,9 @@
 
 - 复用并更新：[paper-predactor](../../wiki/entities/paper-predactor.md)
 - 交叉：[diffusion-policy](../../wiki/methods/diffusion-policy.md)、[sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)、[whole-body-control](../../wiki/concepts/whole-body-control.md)、[locomotion](../../wiki/tasks/locomotion.md)
+
+## 2026-11-07 部署相关核对（当前版 PDF）
+
+- 评测平台是 Unitree G1 板载 Jetson Orin NX；**策略导出为 TorchScript 主干 + C++ 运行时（LibTorch inference mode），batch-one FP32，两步确定性 DDIM**，并非 ONNX 或 TensorRT。完整控制回调（含观测处理、网络前向、下发）**中位 16.790 ms / p95 19.383 ms，593/600 次在 20 ms 预算内**；仅 actor 前向 p50 13.175 ms。时延逐项优化（Table 4）：结构基线 21.461 ms → 堆叠 WBG 18.315 → DDIM 预计算 17.442 → QKV 打包 16.331 → 条件缓存 15.930 → inference mode 13.175（actor p50）。
+- 控制为 29 个关节、50 Hz、预测 20 步状态-动作视野；物理 G1 试验每种设置 5 次（Table 3），如 Stand→Squat 5/5、Squat→Stand 4/5、站立被推 4/5。
+- 文中 Table 1 同时列出了其他系统的部署栏（如 RTX 4090 离板、Orin 机载等）；附录 B 还提到 DiffuseLoco 的 TensorRT 基准 116.5 Hz（RTX 4060 mini-PC）。
