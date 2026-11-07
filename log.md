@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | sources/papers/jitrl_arxiv_2601_18510.md — JitRL（arXiv:2601.18510）免梯度测试时经验检索 + logit 修正；新增 wiki/entities/paper-jitrl-just-in-time-rl.md，官方代码归档 sources/repos/jitrl.md；附 Table 2/13 骨架差异说明；Bilibili 解读未能获取
+
 ## [2026-11-07] ingest | Mechtool 与关联页健康度补读：螺纹文章全文含图、公差仿真 / 轴承 / 膝谐波 / 模态四篇 Zane Hub 文章重读，Mechtool 站点部分读完
 
 ## [2026-11-07] ingest | Mechtool 在线机械设计工具站 + 紧固件全接触《常用螺纹基础知识》：新增 mechtool 实体与 screw-thread-basics 概念页，复核公式与表值

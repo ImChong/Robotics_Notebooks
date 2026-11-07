@@ -2800,6 +2800,7 @@
 - [JEPA Policy：扩散-free 的动作与未来表征联合模仿学习](wiki/entities/paper-jepa-policy.md) — JEPA Policy**（*Diffusion-Free Imitation Learning via Paired Action and Future Representation Predi `📅unknown` `[entity_page]`
 - [JEPA-WAM（arXiv:2608.09381）](wiki/entities/paper-jepa-wam.md) — JEPA-WAM**（arXiv:2608.09381）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08. `📅unknown` `[entity_page]`
 - [JEPLO（arXiv:2609.15770）](wiki/entities/paper-jeplo.md) — JEPLO**（*JEPLO: Joint-Embedding Predictive Learning for LiDAR-Based Legged Locomotion*，[arXiv:2609 `📅unknown` `[entity_page]`
+- [JitRL：即时强化学习（Just-In-Time Reinforcement Learning）](wiki/entities/paper-jitrl-just-in-time-rl.md) — JitRL** 是一种**免梯度更新**的测试时策略优化方法：LLM 智能体部署后权重不变，它把每次交互存为 `<state, action, reward>` 经验，在决策时检索相似经验估计各候 `📅unknown` `[entity_page]`
 - [JitterVLA：VLA 人机操作的运动质量回放基准](wiki/entities/paper-jittervla-replay-benchmark.md) — JitterVLA**（arXiv:2610.13628，[项目页](https://faithogunwoye.githu `📅unknown` `[entity_page]`
 - [Joga：带主动视觉的人形足球技能学习](wiki/entities/paper-joga-humanoid-soccer.md) — Joga（Joint Optimization of Gaze and Action，视线与动作联合优化）** 是 MIT Improbable AI Lab 的全栈人形足球系统：Unitree  `📅unknown` `[entity_page]`
 - [JoyAI-RA 0.5：双动作对齐的 VLWA 通才操作](wiki/entities/paper-joyai-ra-05.md) — JoyAI-RA 0.5**（*Scaling Robot Manipulation Learning via Dual Action Alignment*，[arXiv:2608.05674 `📅unknown` `[entity_page]`
