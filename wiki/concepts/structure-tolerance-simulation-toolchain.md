@@ -141,6 +141,7 @@ summary: "依据 Zane Hub 公众号随笔，把机器人结构件公差仿真梳
 | 个人学习路径 | 手算一维链 → 通读 GD&T 标准原文 → Python 写蒙特卡洛 → 3D 工具试用 → FEA 基础；反过来学易沦为软件操作员 |
 
 ## 关联页面
+- [螺纹基础](./screw-thread-basics.md) · [Mechtool 在线机械设计工具](../entities/mechtool.md)
 
 - [人形整机机械布局设计](./humanoid-mechanical-layout-design.md)：构型与基准选择的上游
 - [人形量产工程](./humanoid-mass-production-engineering.md)：过程能力、SPC 与量产一致性
