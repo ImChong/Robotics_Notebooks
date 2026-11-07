@@ -121,3 +121,35 @@ def test_query_reading_skeleton_uses_query_sections() -> None:
     content = "## 英文缩写速查\n\n## TL;DR 决策结论\n\n## 关联页面\n\n## 参考来源\n"
     assert glg.has_reading_skeleton(content, "query")
     assert not glg.has_reading_skeleton(content, "concept")
+
+
+def _gaps(repo: Path, content: str) -> int:
+    return glg.compute_health(content, repo / "wiki" / "concepts" / "page.md")[1]
+
+
+def test_health_gaps_mark_each_missing_item(repo: Path) -> None:
+    """缺项位：1 元数据 / 2 阅读骨架 / 4 原文通读 / 8 status 为 stub|draft；得分不变。"""
+    assert _gaps(repo, _skeleton(original="done.md")) == 0
+    assert _gaps(repo, _skeleton(original="todo.md")) == 4
+    minimal = "---\nsummary: x\nsources: [a]\noriginal: ../../sources/done.md\n---\n\n正文。\n"
+    assert _gaps(repo, minimal) == 2
+    assert _gaps(repo, _skeleton("draft", "done.md")) == glg.HEALTH_GAP_STATUS
+    assert _gaps(repo, "# 标题\n\n正文。\n") == 7
+    for content in (_skeleton(original="todo.md"), _skeleton("stub", "done.md"), minimal):
+        score, _ = glg.compute_health(content, repo / "wiki" / "concepts" / "page.md")
+        assert score == _score(repo, content)
+
+
+def test_roadmap_health_gaps() -> None:
+    """路线页缺项位：1 首屏导读 / 2 站内链接 / 4 阶段化结构。"""
+    content = "# 主路线\n\n**首屏导读**：\n\n## L0 数学\n"
+    assert glg.compute_roadmap_health(content, internal_link_count=0) == (2, 2)
+    assert glg.compute_roadmap_health("# 标题\n", internal_link_count=10) == (1, 5)
+
+
+def test_list_rows_carry_health_fields() -> None:
+    """榜单 / 更新记录行写出 health_score + health_gaps；私有 _health_gaps 不外泄。"""
+    node = {"health_score": 2, "_health_gaps": 4}
+    assert glg._health_fields(node) == {"health_score": 2, "health_gaps": 4}
+    assert glg._health_fields({"health_score": 3}) == {"health_score": 3, "health_gaps": 0}
+    assert glg._health_fields({}) == {}

@@ -21,6 +21,7 @@ for (const reduced of [false, true]) {
     window.wikiTypeLabel = () => '实体';
     window.renderActionBadgeCell = () => '';
     window.renderUpdatesItemSuffix = () => '';
+    window.renderHealthBar = () => '';
     window.homeLatestItemsOf = (stats) => stats.latest_wiki_nodes;
     window.eval(source.slice(start, end));
     window.renderLatestWikiNode({ latest_wiki_nodes: [{ detail_id: 'sample', title: 'Sample', date: '2026-10-23', action: 'added' }] }, null);

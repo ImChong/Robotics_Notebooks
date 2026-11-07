@@ -695,14 +695,14 @@ a.hero-stat-num:focus-visible {
   pointer-events: none;
 }
 /* 首页「最新知识节点」紧凑模式：单行记录列表（完整时间线见 change-log.html）。
-   整表共用一个 grid（行内容 display:contents 提升为格子），日期/标签/类型/标题四列跨行对齐 */
+   整表共用一个 grid（行内容 display:contents 提升为格子），日期/标签/类型/健康度/标题五列跨行对齐 */
 .home-latest-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   --updates-badge-col-width: 3.25rem;
-  grid-template-columns: max-content var(--updates-badge-col-width) max-content 1fr;
+  grid-template-columns: max-content var(--updates-badge-col-width) max-content max-content 1fr;
   column-gap: 12px;
   row-gap: 10px;
   align-items: baseline;
@@ -804,7 +804,7 @@ a.hero-stat-num:focus-visible {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: max-content max-content 1fr max-content;
+  grid-template-columns: max-content max-content max-content 1fr max-content;
   column-gap: 12px;
   row-gap: 10px;
   align-items: baseline;
@@ -956,7 +956,8 @@ a.hero-stat-num:focus-visible {
   .home-hub-row:last-child { border-bottom: none; padding-bottom: 0; }
   .home-hub-row-rank, .home-hub-row-type, .home-hub-row-degree { font-size: .78rem; }
   .home-hub-row-rank { order: 1; }
-  .home-hub-row-type { order: 2; }
+  .home-hub-row-type,
+  .home-hub-row .node-health { order: 2; }
   .home-hub-row-degree { order: 3; margin-left: auto; }
   .home-hub-row-main {
     order: 4;
@@ -1057,7 +1058,7 @@ a.hero-stat-num:focus-visible {
 }
 .updates-item {
   display: grid;
-  grid-template-columns: var(--updates-badge-col-width, 3.25rem) max-content 1fr;
+  grid-template-columns: var(--updates-badge-col-width, 3.25rem) max-content max-content 1fr;
   column-gap: 10px;
   align-items: baseline;
   font-size: .93rem;
@@ -1093,9 +1094,29 @@ a.hero-stat-num:focus-visible {
   min-width: 4.5em;
 }
 .updates-item-main {
-  grid-column: 3;
+  grid-column: 4;
   min-width: 0;
 }
+/* 节点健康度 3 格小条（main.js renderHealthBar）：亮格数 = 得分，颜色与图谱「按健康度」一致 */
+.node-health {
+  display: inline-flex;
+  gap: 2px;
+  cursor: help;
+}
+.node-health i {
+  width: 4px;
+  height: 11px;
+  border-radius: 1px;
+  background: var(--border);
+}
+.node-health--empty { cursor: default; }
+.node-health--0 i { background: transparent; box-shadow: inset 0 0 0 1px #f87171; }
+.node-health--1 i.is-on { background: #fb923c; }
+.node-health--2 i.is-on { background: #facc15; }
+.node-health--3 i.is-on { background: #4ade80; }
+[data-theme="light"] .node-health--1 i.is-on { background: #ea580c; }
+[data-theme="light"] .node-health--2 i.is-on { background: #ca8a04; }
+[data-theme="light"] .node-health--3 i.is-on { background: #16a34a; }
 .updates-item-link {
   overflow-wrap: anywhere;
   padding-right: 0.55rem;

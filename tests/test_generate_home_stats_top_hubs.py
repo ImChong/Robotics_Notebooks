@@ -72,6 +72,24 @@ class HubEntriesTest(unittest.TestCase):
         self.assertEqual(result[0]["community_label"], "VLA（Vision-Language-Action） 社区")
         self.assertNotIn("id", result[0])
 
+    def test_passes_through_health_fields(self) -> None:
+        """行内健康度小条：透传 health_score / health_gaps。"""
+        stats = {
+            "top_hubs": [
+                {
+                    "detail_id": "wiki-methods-vla",
+                    "label": "VLA",
+                    "type": "method",
+                    "degree": 216,
+                    "health_score": 1,
+                    "health_gaps": 6,
+                }
+            ]
+        }
+        result = ghs.hub_entries(stats, "top_hubs")
+        self.assertEqual(result[0]["health_score"], 1)
+        self.assertEqual(result[0]["health_gaps"], 6)
+
     def test_missing_or_invalid_key(self) -> None:
         self.assertEqual(ghs.hub_entries({}, "top_hubs"), [])
         self.assertEqual(ghs.hub_entries({"top_hubs": None}, "top_hubs"), [])

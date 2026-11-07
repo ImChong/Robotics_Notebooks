@@ -284,6 +284,16 @@ def _expand_wiki_glob(pattern: str) -> list[str]:
     return sorted(paths)
 
 
+def _health_fields(node: dict[str, Any]) -> dict[str, int]:
+    """列表行（最新节点 / 更新记录 / 互链榜单）的健康度字段：得分 + 缺项位掩码。"""
+    if node.get("health_score") is None:
+        return {}
+    return {
+        "health_score": int(node["health_score"]),
+        "health_gaps": int(node.get("_health_gaps") or node.get("health_gaps") or 0),
+    }
+
+
 def _append_latest_node(
     rel: str,
     *,
@@ -335,6 +345,7 @@ def _append_latest_node(
     community_label = _community_label_for_node(base, community_labels)
     if community_label:
         entry["community_label"] = community_label
+    entry.update(_health_fields(base))
     out.append(entry)
 
 
@@ -864,6 +875,7 @@ def _pack_activity_days(metas_by_date: dict[str, list[dict[str, Any]]]) -> list[
             community_label = meta.get("community_label")
             if community_label:
                 node_entry["community_label"] = community_label
+            node_entry.update(_health_fields(meta))
             nodes_out.append(node_entry)
         day_entry: dict[str, Any] = {
             "date": log_date,
@@ -1051,6 +1063,11 @@ def wiki_has_repo_source(content: str) -> bool:
 # complete 与缺省不封顶。
 HEALTH_STATUS_CAPS = {"stub": 1, "draft": 2}
 
+# 健康度缺项位掩码（health_gaps，供列表行悬停提示「缺什么」）：第 i 位 = 第 i 个得分项未拿到，
+# 位 8 = status 为 stub/draft（与 report_health.py 的「status 未 complete」同口径）。
+# wiki 页三项：元数据 / 阅读骨架 / 原文通读；roadmap 页三项：首屏导读 / 站内链接 / 阶段化结构。
+HEALTH_GAP_STATUS = 8
+
 
 # 统一阅读骨架（page-types.md「新增页面最低质量标准」9 项），每项为 ``## `` 标题关键词；
 # 同义标题按 lint_wiki 口径放行（如论文页「核心机制」「局限与工程实践」）。
@@ -1075,61 +1092,71 @@ def has_reading_skeleton(content: str, page_type: str) -> bool:
     return all(has_section(content, list(keywords)) for keywords in sections)
 
 
-def compute_health_score(content: str, page: Path) -> int:
-    """计算节点健康度（0-3），与 ingest 完成度挂钩，三项均可自动检查：
+def compute_health(content: str, page: Path) -> tuple[int, int]:
+    """计算节点健康度（0-3）与缺项位掩码，与 ingest 完成度挂钩，三项均可自动检查：
 
-    +1: 元数据：有 summary frontmatter，且有 frontmatter sources 或正文参考来源区块
-    +1: 阅读骨架达标：``has_reading_skeleton``（page-types.md 最低质量标准）
-    +1: 原文已读完：``original_fully_read``（frontmatter original 指向的归档均标「通读：已完成」）
+    +1: 元数据：有 summary frontmatter，且有 frontmatter sources 或正文参考来源区块（缺则置位 1）
+    +1: 阅读骨架达标：``has_reading_skeleton``（page-types.md 最低质量标准；缺则置位 2）
+    +1: 原文已读完：``original_fully_read``（frontmatter original 指向的归档均标「通读：已完成」；缺则置位 4）
 
-    再按 frontmatter status 封顶（``HEALTH_STATUS_CAPS``）：stub ≤1，draft ≤2。
+    再按 frontmatter status 封顶（``HEALTH_STATUS_CAPS``）：stub ≤1，draft ≤2（置位 ``HEALTH_GAP_STATUS``）。
+    无 frontmatter 时三项均不计分。
     """
     if not content.startswith("---"):
-        return 0
+        return 0, 7
     end = content.find("\n---", 3)
     if end == -1:
-        return 0
+        return 0, 7
     fm = content[3:end]
     body = content[end + 4 :]
-    score = 0
     sources_match = re.search(r"^sources\s*:(.*?)(?=^\w|\Z)", fm, re.MULTILINE | re.DOTALL)
     has_sources = (sources_match and sources_match.group(1).strip()) or "## 参考来源" in body
-    if re.search(r"^summary\s*:", fm, re.MULTILINE) and has_sources:
-        score += 1
-    if has_reading_skeleton(content, parse_frontmatter_type(content)):
-        score += 1
-    if original_fully_read(content, page, SOURCES_DIR):
-        score += 1
+    checks = (
+        bool(re.search(r"^summary\s*:", fm, re.MULTILINE) and has_sources),
+        has_reading_skeleton(content, parse_frontmatter_type(content)),
+        original_fully_read(content, page, SOURCES_DIR),
+    )
+    score = sum(checks)
+    gaps = sum(1 << i for i, ok in enumerate(checks) if not ok)
     status_match = re.search(r"^status\s*:\s*(\S+)", fm, re.MULTILINE)
     if status_match:
         cap = HEALTH_STATUS_CAPS.get(status_match.group(1).strip("'\"").lower())
         if cap is not None:
             score = min(score, cap)
-    return score
+            gaps |= HEALTH_GAP_STATUS
+    return score, gaps
+
+
+def compute_health_score(content: str, page: Path) -> int:
+    """节点健康度（0-3），判据见 ``compute_health``。"""
+    return compute_health(content, page)[0]
 
 
 # roadmap/ 路线页站内链接达到该阈值视为「已接入交叉引用网络」
 ROADMAP_HEALTH_MIN_INTERNAL_LINKS = 5
 
 
-def compute_roadmap_health_score(content: str, internal_link_count: int) -> int:
-    """计算 roadmap/ 路线页健康度（0-3）。
+def compute_roadmap_health(content: str, internal_link_count: int) -> tuple[int, int]:
+    """计算 roadmap/ 路线页健康度（0-3）与缺项位掩码。
 
     路线页按仓库约定不带 frontmatter（见 lint_wiki 的豁免目录），
     frontmatter 规则会恒判 0 分，故改用正文自身的质量信号：
 
-    +1: 首屏有 **摘要** / **首屏导读** 导读行
-    +1: 站内链接数达到阈值（已接入 wiki 交叉引用网络）
-    +1: 有阶段化结构标题（纵深页 ``## Stage N`` / 主路线 ``## L−1``…``## L7``）
+    +1: 首屏有 **摘要** / **首屏导读** 导读行（缺则置位 1）
+    +1: 站内链接数达到阈值（已接入 wiki 交叉引用网络；缺则置位 2）
+    +1: 有阶段化结构标题（纵深页 ``## Stage N`` / 主路线 ``## L−1``…``## L7``；缺则置位 4）
     """
-    score = 0
-    if re.search(r"^\*\*(摘要|首屏导读)\*\*", content, re.MULTILINE):
-        score += 1
-    if internal_link_count >= ROADMAP_HEALTH_MIN_INTERNAL_LINKS:
-        score += 1
-    if re.search(r"^##+\s*(?:Stage\s|L[−-]?\d)", content, re.MULTILINE):
-        score += 1
-    return score
+    checks = (
+        bool(re.search(r"^\*\*(摘要|首屏导读)\*\*", content, re.MULTILINE)),
+        internal_link_count >= ROADMAP_HEALTH_MIN_INTERNAL_LINKS,
+        bool(re.search(r"^##+\s*(?:Stage\s|L[−-]?\d)", content, re.MULTILINE)),
+    )
+    return sum(checks), sum(1 << i for i, ok in enumerate(checks) if not ok)
+
+
+def compute_roadmap_health_score(content: str, internal_link_count: int) -> int:
+    """roadmap/ 路线页健康度（0-3），判据见 ``compute_roadmap_health``。"""
+    return compute_roadmap_health(content, internal_link_count)[0]
 
 
 def parse_frontmatter_type(content: str) -> str:
@@ -1685,15 +1712,17 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
         internal_links = extract_internal_links(content, page)
         # roadmap/ 路线页无 frontmatter，健康度走正文信号规则
         if page.relative_to(REPO_ROOT).parts[0] == "roadmap":
-            health_score = compute_roadmap_health_score(content, len(internal_links))
+            health_score, health_gaps = compute_roadmap_health(content, len(internal_links))
         else:
-            health_score = compute_health_score(content, page)
+            health_score, health_gaps = compute_health(content, page)
         node: dict[str, Any] = {
             "id": page_id,
             "detail_id": path_to_id(page, REPO_ROOT),
             "label": extract_title(content) or page.stem,
             "type": node_type,
             "health_score": health_score,
+            # 缺项位掩码（私有，只写进榜单 / 更新记录行，写 link-graph 前剔除）
+            "_health_gaps": health_gaps,
             "summary": extract_summary(strip_frontmatter(content), parse_frontmatter(content)),
             "_recency": wiki_recency_date(content, page).isoformat(),
             # 论文节点：type=entity/method 且 frontmatter tags 含 paper（私有标记，写出前剔除）。
@@ -1806,6 +1835,7 @@ def _compute_graph_stats(
         community_label = _community_label_for_node(node, community_labels)
         if community_label:
             entry["community_label"] = community_label
+        entry.update(_health_fields(node))
         return entry
 
     ranked_all = sorted(nodes, key=lambda node: (-total_degree.get(node["id"], 0), str(node["id"])))
@@ -1991,6 +2021,11 @@ def main() -> None:
         if last_activity:
             node["activity"] = last_activity
 
+    # 更新记录行要带健康度缺项：先算活动时间线，再剔除私有 _health_gaps 写 link-graph
+    activity_days = wiki_activity(nodes, community_labels=_community_label_map(community_meta))
+    for node in nodes:
+        node.pop("_health_gaps", None)
+
     institutions = build_institutions_summary(nodes)
 
     summaries = [str(node.pop("summary", "") or "") for node in nodes]
@@ -2054,7 +2089,6 @@ def main() -> None:
         f"{len(hub_rankings['paper'])} paper → {HUB_RANKINGS_PATH.relative_to(REPO_ROOT)}"
     )
 
-    activity_days = wiki_activity(nodes, community_labels=_community_label_map(community_meta))
     activity_source = "git" if collect_wiki_git_history().touches_by_date else "log.md"
     activity_node_index, activity_days_compact = pack_activity_days_compact(activity_days)
     activity = {
