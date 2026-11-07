@@ -262,6 +262,16 @@
       '<span aria-hidden="true">🧭</span><span>' + escapeHtml(shortenCommunityLabel(communityLabel)) + '</span></div>';
   }
 
+  /**
+   * 浮窗健康度行：「健康度」+ 3 格小条（逐项说明在悬停小条弹出的信息框里）。node 需带 health_score（可选 health_gaps / type）；
+   * 小条由 main.js 的 RNNodeHealth 提供（与列表行、页面信息同一套），未加载或无分数则不显示。
+   */
+  function buildTooltipHealthHtml(node) {
+    var api = window.RNNodeHealth;
+    if (!api || !node || typeof node.health_score !== 'number') return '';
+    return '<div class="tt-health"><span class="tt-health-label">健康度</span>' + api.renderMeta(node) + '</div>';
+  }
+
   function buildNodeTooltipHtml(opts) {
     opts = opts || {};
     var badges = buildMetaBadgesHtml(opts);
@@ -270,12 +280,14 @@
       ? '<div class="tt-summary">' + escapeHtml(prepareMathText(opts.summary)) + '</div>'
       : '';
     var community = buildTooltipCommunityHtml(opts.communityLabel, opts.communityColor);
+    var health = buildTooltipHealthHtml(opts.health);
     var extra = opts.extraHtml || '';
     var link = opts.linkHtml || '';
     return badges +
       '<div class="tt-title">' + title + '</div>' +
       summary +
       community +
+      health +
       extra +
       link;
   }
@@ -296,6 +308,7 @@
     buildMetaBadgesHtml: buildMetaBadgesHtml,
     buildCommunityBadgeHtml: buildCommunityBadgeHtml,
     buildNodeTooltipHtml: buildNodeTooltipHtml,
+    buildTooltipHealthHtml: buildTooltipHealthHtml,
     renderMath: renderTooltipMath
   };
 })();

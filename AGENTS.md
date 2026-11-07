@@ -197,6 +197,7 @@ python3 scripts/fetch_feishu_doc.py "https://<tenant>.feishu.cn/wiki/<token>" --
 
 除非用户明确要求不要提交或不要推送，否则 agent 完成修改后应：
 - 只 stage 本次任务相关文件，避免带入无关工作区变化。
+- 改动 `scripts/` 或 `tests/` 下的 Python 文件时，**提交前**先运行 `python3 -m ruff format scripts tests && python3 -m ruff check scripts tests`，都通过再 commit。用 `python3 -m ruff`（`pip install -r requirements-dev.txt` 装的版本，与 CI 一致），不要用 PATH 上可能过旧的 `ruff`：不同版本格式化结果不同。CI 的 `ruff format --check` 只做兜底。
 - 按本节格式创建中文 commit，commit 消息参考近期历史提交风格。
 - 将当前分支推送到 GitHub 远端（通常是 `origin main` 或当前工作分支）。
 

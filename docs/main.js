@@ -664,27 +664,101 @@
     return renderUpdatesItemRepoStar(meta) + renderUpdatesItemCommunityCat(meta);
   }
 
-  // 节点健康度 3 格小条：亮格数 = 得分（0–3），颜色与图谱「按健康度」一致；
-  // 悬停列出缺项（health_gaps 位掩码，判据见 scripts/generate_link_graph.py compute_health）。
+  // 节点健康度 3 格小条：亮格数 = 得分（0–3），颜色与图谱「按健康度」一致。
+  // 页面上只画小条；说明（逐项是否达标，health_gaps 位掩码，判据见 scripts/generate_link_graph.py
+  // compute_health）放进悬停小条时弹出的信息框（setupHealthTip）。
   // 旧缓存数据无 health_score 时输出空格位，保持整列对齐。
-  var HEALTH_GAP_LABELS = ['缺 summary / 来源', '阅读骨架未达标', '原文未通读', 'status 未 complete'];
-  var ROADMAP_HEALTH_GAP_LABELS = ['缺首屏导读', '站内链接不足 5 条', '缺阶段化结构'];
+  var HEALTH_ITEM_LABELS = ['摘要与来源', '阅读骨架', '原文通读'];
+  var ROADMAP_HEALTH_ITEM_LABELS = ['首屏导读', '站内链接 ≥5', '阶段化结构'];
+  var HEALTH_GAP_STATUS = 8; // wiki 页 status 为 stub / draft：得分按 1 / 2 封顶
+  // 信息框各行：「健康度 2/3」「摘要与来源（1/1）」「阅读骨架（1/1）」「原文通读（0/1）」[封顶说明]
+  function healthTipLines(meta) {
+    var score = Math.max(0, Math.min(3, meta.health_score));
+    var lines = ['健康度 ' + score + '/3'];
+    // 旧缓存数据只有得分没有缺项位：只报分数，不误报各项达标
+    if (typeof meta.health_gaps !== 'number') return lines;
+    var isRoadmap = meta.type === 'roadmap_page' || meta.type === 'roadmap';
+    var labels = isRoadmap ? ROADMAP_HEALTH_ITEM_LABELS : HEALTH_ITEM_LABELS;
+    for (var gi = 0; gi < labels.length; gi++) {
+      lines.push(labels[gi] + '（' + (meta.health_gaps & (1 << gi) ? 0 : 1) + '/1）');
+    }
+    if (!isRoadmap && (meta.health_gaps & HEALTH_GAP_STATUS)) lines.push('status 未完成，按 stub / draft 封顶');
+    return lines;
+  }
   function renderHealthBar(meta) {
     if (!meta || typeof meta.health_score !== 'number') {
       return '<span class="node-health node-health--empty" aria-hidden="true"></span>';
     }
     var score = Math.max(0, Math.min(3, meta.health_score));
-    var labels = meta.type === 'roadmap_page' ? ROADMAP_HEALTH_GAP_LABELS : HEALTH_GAP_LABELS;
-    var gaps = [];
-    for (var gi = 0; gi < labels.length; gi++) {
-      if (meta.health_gaps & (1 << gi)) gaps.push(labels[gi]);
-    }
-    var tip = '健康度 ' + score + '/3 · ' + (gaps.length ? gaps.join('、') : '三项齐全');
+    var lines = healthTipLines(meta);
     var segs = '';
     for (var si = 0; si < 3; si++) segs += '<i' + (si < score ? ' class="is-on"' : '') + '></i>';
-    return '<span class="node-health node-health--' + score + '" role="img" title="' +
-      escapeHtml(tip) + '" aria-label="' + escapeHtml(tip) + '">' + segs + '</span>';
+    // data-health-tip 按行（\n）存信息框文字；读屏软件读 aria-label
+    return '<span class="node-health node-health--' + score + '" role="img" data-health-tip="' +
+      escapeHtml(lines.join('\n')) + '" aria-label="' + escapeHtml(lines.join('；')) + '">' + segs + '</span>';
   }
+  // 元信息行：只放小条，无分数时整行隐藏
+  function renderHealthMetaHtml(meta) {
+    if (!meta || typeof meta.health_score !== 'number') return '';
+    return renderHealthBar(meta);
+  }
+  // 节点浮窗（graph-tooltip.js）与图谱侧栏复用同一套小条
+  if (typeof window !== 'undefined') {
+    window.RNNodeHealth = { renderBar: renderHealthBar, renderMeta: renderHealthMetaHtml };
+  }
+
+  // 健康度信息框：全站共用一个浮层，悬停任一小条时贴在其下方（放不下则在上方）。
+  // 触屏：轻点小条弹出、再点或点别处收起（不依赖模拟 mouseover，iOS 对普通元素不一定派发）；页面滚动即收起。
+  // 图谱节点浮窗本身不接收鼠标（pointer-events: none），桌面上其中的小条无法悬停，看侧栏或详情页即可。
+  function setupHealthTip() {
+    if (typeof document === 'undefined' || !document.addEventListener) return;
+    var tipEl = null;
+    var anchor = null;
+    function show(bar) {
+      if (!tipEl) {
+        tipEl = document.createElement('div');
+        tipEl.className = 'node-health-tip';
+        tipEl.setAttribute('role', 'tooltip');
+        document.body.appendChild(tipEl);
+      }
+      anchor = bar;
+      tipEl.textContent = bar.getAttribute('data-health-tip');
+      tipEl.hidden = false;
+      var r = bar.getBoundingClientRect();
+      var w = tipEl.offsetWidth;
+      var h = tipEl.offsetHeight;
+      var top = r.bottom + 6;
+      if (top + h > window.innerHeight - 8) top = Math.max(8, r.top - h - 6);
+      tipEl.style.left = Math.max(8, Math.min(r.left, window.innerWidth - w - 8)) + 'px';
+      tipEl.style.top = top + 'px';
+    }
+    function hide() {
+      anchor = null;
+      if (tipEl) tipEl.hidden = true;
+    }
+    function barOf(target) {
+      return target && target.closest ? target.closest('.node-health[data-health-tip]') : null;
+    }
+    var lastTouch = 0;
+    document.addEventListener('pointerup', function (ev) {
+      if (ev.pointerType === 'mouse') return;
+      lastTouch = Date.now();
+      var bar = barOf(ev.target);
+      if (bar && bar !== anchor) show(bar);
+      else if (anchor) hide();
+    });
+    document.addEventListener('mouseover', function (ev) {
+      if (Date.now() - lastTouch < 800) return; // 轻点之后的模拟 mouseover 交给上面的 pointerup
+      var bar = barOf(ev.target);
+      if (bar) {
+        if (bar !== anchor) show(bar);
+      } else if (anchor) {
+        hide();
+      }
+    });
+    document.addEventListener('scroll', function () { if (anchor) hide(); }, true);
+  }
+  setupHealthTip();
 
   function renderActionBadge(action) {
     if (action === 'added') {
@@ -729,6 +803,8 @@
     }
     var typeLabel = opts.typeLabel || wikiTypeLabel(item.type, opts.typeContext || 'updates');
     var metaHtml = opts.metaHtml || '';
+    // 关联项 / 相关推荐带健康度列；来源列表不带（列表须同时传 health，见 renderCompactHubStyleList）
+    var healthHtml = opts.health ? renderHealthBar(item) : '';
     var linkAttrs = opts.external
       ? ' target="_blank" rel="noopener noreferrer"'
       : '';
@@ -738,6 +814,7 @@
       : '<span>' + escapeHtml(item.label || item.title || id) + '</span>';
     return '<li class="detail-compact-row">' +
       '<span class="detail-compact-type">' + escapeHtml(typeLabel) + '</span>' +
+      healthHtml +
       '<span class="detail-compact-main">' + mainHtml +
       renderUpdatesItemSuffix(item) +
       '</span>' +
@@ -747,14 +824,15 @@
       '</li>';
   }
 
-  function renderCompactHubStyleList(container, rowsHtml, emptyText) {
+  function renderCompactHubStyleList(container, rowsHtml, emptyText, options) {
     if (!container) return;
     if (!rowsHtml) {
       container.innerHTML = '<p class="data-meta">' + escapeHtml(emptyText || '暂无数据') + '</p>';
       removeLoadingState(container);
       return;
     }
-    container.innerHTML = '<ol class="detail-compact-list">' + rowsHtml + '</ol>';
+    var listClass = options && options.health ? 'detail-compact-list detail-compact-list--health' : 'detail-compact-list';
+    container.innerHTML = '<ol class="' + listClass + '">' + rowsHtml + '</ol>';
     removeLoadingState(container);
   }
 
@@ -3704,7 +3782,7 @@
           '" aria-label="' + escapeHtml(page.title || rid) + '" style="--tt-c:' + color + ';">' +
           '<span class="roadmap-ltree-node-name">' + escapeHtml(roadmapLtreeShortLabel(page, rid)) + '</span>' +
           '<span class="roadmap-ltree-node-type"><span class="roadmap-kmap-dot" aria-hidden="true"></span>' +
-          escapeHtml(typeLabel) + '</span></a>';
+          escapeHtml(typeLabel) + renderHealthBar(page) + '</span></a>';
       }
       return html;
     }
@@ -4890,7 +4968,9 @@
       type: resolveCompactRowDisplayType(safePage, detailId, communityIndex),
       title: buildInternalLinkTitle(detailId, safePage),
       community_label: communityLabel,
-      has_repo: hasRepo
+      has_repo: hasRepo,
+      health_score: safePage.health_score,
+      health_gaps: safePage.health_gaps
     };
   }
 
@@ -4991,10 +5071,11 @@
           var rowMeta = buildCompactPageRowMeta(compactPage, compactId, communityIndex);
           compactRows += renderCompactHubStyleRow(rowMeta, {
             href: compactPage.type === 'roadmap_page' ? roadmapHref(compactId) : detailHref(compactId),
-            metaHtml: options.metaExtra ? escapeHtml(options.metaExtra(compactId, compactPage) || '') : ''
+            metaHtml: options.metaExtra ? escapeHtml(options.metaExtra(compactId, compactPage) || '') : '',
+            health: true
           });
         }
-        renderCompactHubStyleList(container, compactRows, emptyText);
+        renderCompactHubStyleList(container, compactRows, emptyText, { health: true });
       }
       if (options.enrichCommunity !== false) {
         ensureDetailCommunityIndex()
@@ -5301,6 +5382,7 @@
         summary: summary,
         communityColor: communityColor,
         communityLabel: d.community ? communityLabelMap[d.community] : '',
+        health: d,
         linkHtml: linkHtml
       });
     }
@@ -5677,6 +5759,7 @@
     } else {
       renderDetailMetaItemRow('roadmapMetaStages', '学习阶段', '');
     }
+    renderDetailMetaItemRow('roadmapMetaHealth', '健康度', renderHealthMetaHtml(detail));
 
     renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
     renderDetailMetaItemRow('roadmapMetaDepth', '路线视图', '');
@@ -5723,6 +5806,7 @@
         summary: formatGraphTooltipSummary(page.summary),
         communityColor: (graphNode && graphNode.communityColor) || '',
         communityLabel: (graphNode && graphNode.communityLabel) || '',
+        health: page,
         linkHtml: linkHtml
       });
     }
@@ -6232,6 +6316,7 @@
         '更新时间',
         detailPage.updated ? renderDetailMetaDateBadge(detailPage.updated) : ''
       );
+      renderDetailMetaItemRow('detailMetaHealth', '健康度', renderHealthMetaHtml(detailPage));
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
       renderDetailMetaItemRow('detailMetaDepth', '所属路线', '');
       renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
@@ -6321,10 +6406,11 @@
           var rowMeta = buildCompactPageRowMeta(recPage, rec.id, communityIndex);
           recommendedRows += renderCompactHubStyleRow(rowMeta, {
             href: detailHref(rec.id),
-            metaHtml: escapeHtml(rec.score + ' 标签')
+            metaHtml: escapeHtml(rec.score + ' 标签'),
+            health: true
           });
         }
-        renderCompactHubStyleList(recommendedEl, recommendedRows, '暂无 tag 匹配的相关推荐。');
+        renderCompactHubStyleList(recommendedEl, recommendedRows, '暂无 tag 匹配的相关推荐。', { health: true });
       }
       ensureDetailCommunityIndex()
         .then(renderRecommendedRows)

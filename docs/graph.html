@@ -2261,6 +2261,7 @@
         <div id="sb-meta-badges"></div>
         <div id="sb-community" class="sb-community"></div>
         <div class="sb-title" id="sb-title">选择节点查看详情</div>
+        <div id="sb-health" hidden></div>
       </div>
       <button id="sb-close" class="sb-close" aria-label="关闭侧边栏">✕</button>
     </div>
@@ -5101,6 +5102,7 @@
           communityColor: communityColorMap.get(d.community) || COMMUNITY_COLORS[9],
           title: info.title || d.label,
           summary,
+          health: d,
           linkHtml: `<a class="tt-link" href="${escapeHtml(detailUrl)}" target="_self">${escapeHtml(pageLinkLabelForNode(d))}</a>`
         });
       }
@@ -6634,6 +6636,7 @@
     const sbMetaBadges = document.getElementById('sb-meta-badges');
     const sbCommunity  = document.getElementById('sb-community');
     const sbTitle      = document.getElementById('sb-title');
+    const sbHealth     = document.getElementById('sb-health');
     const sbTags       = document.getElementById('sb-tags');
     const sbSummary    = document.getElementById('sb-summary');
     const sbNeighborsSec  = document.getElementById('sb-neighbors-section');
@@ -6810,6 +6813,11 @@
         }
       }
       sbTitle.textContent = info.title || d.label;
+      if (sbHealth) {
+        // 与节点浮窗同一行：「健康度」+ 3 格小条，悬停小条看逐项说明
+        sbHealth.innerHTML = window.RNGraphTooltip?.buildTooltipHealthHtml?.(d) || '';
+        sbHealth.hidden = !sbHealth.innerHTML;
+      }
       renderSidebarSummary(d);
 
       renderSidebarCatalogParts(d);

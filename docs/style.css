@@ -886,6 +886,8 @@ a.hero-stat-num:focus-visible {
   row-gap: 10px;
   align-items: baseline;
 }
+/* 关联项 / 相关推荐：类型列后多一列健康度小条（来源列表不带） */
+.detail-compact-list--health { grid-template-columns: max-content max-content 1fr max-content; }
 .detail-compact-row { display: contents; }
 .detail-compact-type {
   color: var(--text-muted);
@@ -1110,6 +1112,25 @@ a.hero-stat-num:focus-visible {
   background: var(--border);
 }
 .node-health--empty { cursor: default; }
+/* 小条只有 16×11px：四周加透明内边距放大悬停范围，负外边距抵消，不改变排版 */
+.node-health[data-health-tip] { padding: 4px 3px; margin: -4px -3px; }
+/* 健康度信息框（main.js setupHealthTip）：悬停小条弹出，逐行列出各得分项（1/1）/（0/1） */
+.node-health-tip {
+  position: fixed;
+  z-index: 10000;
+  max-width: 260px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  color: var(--text);
+  box-shadow: var(--shadow-md);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  white-space: pre-line;
+  pointer-events: none;
+}
+.node-health-tip[hidden] { display: none; }
 .node-health--0 i { background: transparent; box-shadow: inset 0 0 0 1px #f87171; }
 .node-health--1 i.is-on { background: #fb923c; }
 .node-health--2 i.is-on { background: #facc15; }
@@ -3776,6 +3797,9 @@ button.home-wiki-heatmap-cell.is-active {
   font-size: 0.68rem;
   line-height: 1.2;
 }
+/* 知识地图节点框：类型标签后的健康度小条缩小一号 */
+.roadmap-ltree-node-type .node-health { margin-left: 2px; }
+.roadmap-ltree-node-type .node-health i { width: 3px; height: 8px; }
 .roadmap-ltree-node .roadmap-kmap-dot {
   width: 0.5rem;
   height: 0.5rem;
@@ -4240,6 +4264,18 @@ button.home-wiki-heatmap-cell.is-active {
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+/* 节点浮窗 / 图谱侧栏的健康度行（graph-tooltip.js buildTooltipHealthHtml；graph.html 也加载本文件） */
+.tt-health {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+.tt-health-label { font-weight: 600; }
 /* 社区标签：摘要下方单独一行的描边胶囊（色取社区色），不与顶部实心类型徽章同行 */
 .graph-hover-tooltip .tt-community {
   display: flex;

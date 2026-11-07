@@ -8,6 +8,7 @@
 2. 涉及 `wiki/` 或派生索引时，提交前**必须**运行 `make ci-preflight`（或任务要求的等价 CI 门禁）做本地检查。派生文件（站点 JSON、sitemap、统计、徽章）全部 gitignore，**只提交源文件**；**不得修改 `catalog.md` / `log.md`**（main 上 `export.yml` 维护；日志用 `make log` 写 `log.d/` 碎片）。
    - **合并前与 main 冲突，或 Wiki Lint 的 guard 失败**：运行 `make sync-main` 后 push——派生文件冲突自动以 main 为准，无需人工介入；只有同一源文件（如同一 wiki 页）被双方改动时才需按内容合并。
 3. 仅 `stage` 与本次任务相关的文件；提交信息遵循根目录 [`AGENTS.md`](../../AGENTS.md) 中的 **中文 commit 规范**。
+4. 改动 `scripts/` 或 `tests/` 下的 Python 文件时，提交前运行 `python3 -m ruff format scripts tests && python3 -m ruff check scripts tests`，都通过再 commit（用 `requirements-dev.txt` 装的、与 CI 同版本的 `python3 -m ruff`，不用 PATH 上可能过旧的 `ruff`）。CI 的 `ruff format --check` 只做兜底。
 
 ## 2. 推送远端
 
