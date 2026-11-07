@@ -57,7 +57,12 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import unquote, urlsplit
 
-from export_minimal import extract_summary, parse_frontmatter, strip_frontmatter
+from export_minimal import (
+    extract_summary,
+    parse_frontmatter,
+    parse_roadmap_stages,
+    strip_frontmatter,
+)
 from lint_wiki import has_section
 from markdown_it import MarkdownIt
 from original_reading import original_fully_read
@@ -1740,6 +1745,13 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             node["institutions"] = institutions
         if node_type == "roadmap_page":
             node["route_order"] = extract_route_order(content, page)
+            # 路线知识地图节点（各阶段 related_items，与路线页知识地图同源；私有，写出前剔除）
+            route_items: list[str] = []
+            for stage in parse_roadmap_stages(content, page):
+                for item in stage.get("related_items", []):
+                    if item not in route_items:
+                        route_items.append(item)
+            node["_route_items"] = route_items
         nodes.append(node)
 
         for target in internal_links:
@@ -1798,6 +1810,25 @@ def pack_activity_days_compact(
             refs.append([detail_id, action] if action else [detail_id])
         packed_days.append({**day, "nodes": refs})
     return node_index, packed_days
+
+
+def route_health_distribution(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """增长趋势「纵深路线健康度」：每条路线知识地图节点的健康度分布 counts[得分]（0–3）。"""
+    health_by_detail = {str(n["detail_id"]): int(n.get("health_score") or 0) for n in nodes}
+    out: list[dict[str, Any]] = []
+    for node in nodes:
+        scores = [
+            health_by_detail[i] for i in node.get("_route_items") or [] if i in health_by_detail
+        ]
+        if scores:
+            out.append(
+                {
+                    "detail_id": str(node["detail_id"]),
+                    "label": str(node["label"]),
+                    "counts": [scores.count(score) for score in range(4)],
+                }
+            )
+    return out
 
 
 def _compute_graph_stats(
@@ -1929,6 +1960,7 @@ def _compute_graph_stats(
     latest_wiki_node: dict[str, Any] | None = latest_wiki_nodes[0] if latest_wiki_nodes else None
 
     stats = {
+        "route_health": route_health_distribution(nodes),
         "generated_at": date.today().isoformat(),
         "node_count": len(nodes),
         "edge_count": len(edges),
@@ -2012,6 +2044,7 @@ def main() -> None:
         node.pop("_tags", None)
         node.pop("_topics", None)
         node.pop("_topic_source", None)
+        node.pop("_route_items", None)
         # recency（导出时 mtime）全表同值，不再写出；更新明度 / Top N 用下面的 activity / added
         node.pop("_recency", None)
         added = added_dates.get(str(node["id"]))

@@ -160,3 +160,29 @@ def test_graph_nodes_carry_public_health_gaps() -> None:
     nodes, _edges = glg._build_graph_data()
     assert all(isinstance(n.get("health_gaps"), int) for n in nodes)
     assert all("_health_gaps" not in n for n in nodes)
+
+
+def test_route_health_distribution_counts_route_map_nodes() -> None:
+    """纵深路线健康度：按路线知识地图节点统计 0–3 分个数，未知节点忽略、无节点的路线不出现。"""
+    nodes = [
+        {
+            "detail_id": "roadmap-depth-x",
+            "label": "X",
+            "health_score": 3,
+            "_route_items": ["a", "b", "c", "zz"],
+        },
+        {"detail_id": "roadmap-depth-y", "label": "Y", "health_score": 3, "_route_items": []},
+        {"detail_id": "a", "label": "A", "health_score": 3},
+        {"detail_id": "b", "label": "B", "health_score": 1},
+        {"detail_id": "c", "label": "C", "health_score": 1},
+    ]
+    assert glg.route_health_distribution(nodes) == [
+        {"detail_id": "roadmap-depth-x", "label": "X", "counts": [0, 2, 0, 1]}
+    ]
+
+
+def test_repo_routes_have_route_map_nodes() -> None:
+    """roadmap/ 下的主路线与纵深路线都能解析出知识地图节点（图表不会缺路线）。"""
+    nodes, _edges = glg._build_graph_data()
+    routes = [n for n in nodes if str(n["id"]).startswith("roadmap/")]
+    assert routes and all(n.get("_route_items") for n in routes)

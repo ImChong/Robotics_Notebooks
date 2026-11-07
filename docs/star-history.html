@@ -144,6 +144,10 @@
           return expandExport('expandLinkGraph', g);
         }));
       }
+      var graphStatsPromise = null;
+      function graphStats() {
+        return graphStatsPromise || (graphStatsPromise = getJSON('exports/graph-stats.json'));
+      }
       var companyRoadmapsPromise = null;
       function companyRoadmaps() {
         return companyRoadmapsPromise || (companyRoadmapsPromise = getJSON('company-roadmaps.json'));
@@ -328,6 +332,38 @@
                 }],
                 total: g.nodes.length + ' 个节点，平均 ' + (sum / Math.max(g.nodes.length, 1)).toFixed(2) + ' 分；' +
                   scores.map(function (s) { return s + ' 分 ' + count[s] + '（' + share(s) + '）'; }).join('、')
+              };
+            });
+          } },
+        { id: 'route-health', label: '纵深路线健康度', unit: '节点', kind: 'category',
+          load: function () {
+            // 每条路线知识地图节点（路线页各阶段列出的节点）的健康度分布，
+            // 由 generate_link_graph.route_health_distribution 预先算进 graph-stats.json；平均分低的排在上面（最需要补）
+            return graphStats().then(function (st) {
+              var D = RNDepthFilters;
+              var nameByPath = {};
+              D.DEPTH_ORDER.forEach(function (k) { nameByPath[D.depthHubPath(k)] = D.DEPTH_META[k].label; });
+              var light = document.documentElement.getAttribute('data-theme') === 'light';
+              var colors = light
+                ? ['#ef4444', '#ea580c', '#ca8a04', '#16a34a']
+                : ['#f87171', '#fb923c', '#facc15', '#4ade80'];
+              var rows = (st.route_health || []).map(function (r) {
+                var n = r.counts.reduce(function (a, c) { return a + c; }, 0);
+                var path = 'roadmap/' + r.detail_id.replace(/^roadmap-/, '') + '.md';
+                return {
+                  id: r.detail_id, counts: r.counts, n: n,
+                  avg: (r.counts[1] + 2 * r.counts[2] + 3 * r.counts[3]) / Math.max(n, 1),
+                  name: nameByPath[path] || r.label
+                };
+              }).sort(function (a, b) { return a.avg - b.avg; });
+              var scores = [3, 2, 1, 0];
+              return {
+                cats: rows.map(function (r) { return r.name + ' · 均 ' + r.avg.toFixed(2); }),
+                links: rows.map(function (r) { return 'roadmap.html?id=' + encodeURIComponent(r.id); }),
+                series: scores.map(function (s) {
+                  return { name: s + ' 分', color: colors[s], values: rows.map(function (r) { return r.counts[s]; }) };
+                }),
+                total: rows.length + ' 条路线，统计各自知识地图里的节点（一个节点可属多条路线）；平均分低的排在上面，点路线名进入路线页'
               };
             });
           } },
