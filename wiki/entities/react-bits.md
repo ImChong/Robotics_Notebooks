@@ -2,8 +2,11 @@
 type: entity
 tags: [software, independent-maintainer, frontend, react, web-animation, visualization, source-available]
 status: complete
-updated: 2026-10-03
+updated: 2026-11-07
+original:
+  - ../../sources/repos/react-bits.md
 related:
+  - ./astryx.md
   - ./gsap-skills.md
   - ./threejs-game-skills.md
   - ./plotly.md
@@ -119,6 +122,7 @@ npx shadcn@latest add @react-bits/BlurText-TS-TW
 
 ## 关联页面
 
+- [Astryx](./astryx.md) — Meta 开源的完整 React 设计系统；React Bits 更聚焦动画和可复制动效组件。
 - [GSAP Skills](./gsap-skills.md) — 代理动画设计与调试规约；React Bits 是可直接选用的组件素材。
 - [Three.js Game Skills](./threejs-game-skills.md) — 浏览器 3D 运行时与交互作品的制作流程。
 - [Plotly](./plotly.md) — 机器人实验数据的交互式图表。
