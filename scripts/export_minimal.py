@@ -458,7 +458,7 @@ def extract_section_links(text: str, current_path: Path, headings: List[str]) ->
     return results
 
 
-def collect_markdown_links(text: str, current_path: Path) -> List[str]:
+def collect_markdown_links(text: str, current_path: Path, limit: int | None = 12) -> List[str]:
     priority = extract_section_links(text, current_path, ["关联页面", "继续深挖入口", "关联任务"])
     general = []
     for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
@@ -483,7 +483,7 @@ def collect_markdown_links(text: str, current_path: Path) -> List[str]:
         if item not in seen:
             seen.add(item)
             ordered.append(item)
-    return ordered[:12]
+    return ordered[:limit]
 
 
 def collect_external_links(text: str) -> List[str]:
@@ -632,12 +632,18 @@ def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, Any]]:
     stages: List[Dict[str, Any]] = []
     current: Dict[str, Any] | None = None
     section_lines: List[str] = []
+    # 纵深路线：正文各 Stage 直接嵌知识地图同阶段节点，故阶段只到下一个 ## 为止（不吞「快速入口汇总」
+    # 「参考来源」等后续章节）、节点不截断，两处才逐级一一对应
+    is_depth = current_path.name.startswith("depth-")
 
     def flush_current() -> None:
         if not current:
             return
         section_text = "\n".join(section_lines)
-        current["related_items"] = collect_markdown_links(section_text, current_path)[:10]
+        if is_depth:
+            current["related_items"] = collect_markdown_links(section_text, current_path, None)
+        else:
+            current["related_items"] = collect_markdown_links(section_text, current_path)[:10]
         current["source_links"] = collect_external_links(section_text)[:5]
         stages.append(current)
 
@@ -664,6 +670,10 @@ def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, Any]]:
                 "heading": stripped[3:].strip(),
             }
             section_lines = []
+            continue
+        if is_depth and stripped.startswith("## "):
+            flush_current()
+            current = None
             continue
         if current:
             section_lines.append(line)

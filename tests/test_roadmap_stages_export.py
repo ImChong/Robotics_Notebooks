@@ -32,6 +32,16 @@ class RoadmapStagesExportTests(unittest.TestCase):
         self.assertEqual(stages[0]["id"], "stage-0")
         self.assertEqual(stages[-1]["id"], "stage-5")
 
+    def test_depth_stage_keeps_all_links_and_stops_at_next_h2(self) -> None:
+        links = "\n".join(f"- [m{i}](../wiki/methods/m{i}.md)" for i in range(12))
+        text = f"## Stage 0 基础\n{links}\n\n## 参考来源\n- [ref](../wiki/methods/ref.md)\n"
+        depth = parse_roadmap_stages(text, ROOT / "roadmap" / "depth-x.md")
+        self.assertEqual(len(depth[0]["related_items"]), 12)
+        self.assertFalse(any(i.endswith("-ref") for i in depth[0]["related_items"]))
+        # 非纵深路线（主路线）保持原口径：截断 10 个
+        main = parse_roadmap_stages(text, ROOT / "roadmap" / "main-x.md")
+        self.assertEqual(len(main[0]["related_items"]), 10)
+
 
 if __name__ == "__main__":
     unittest.main()

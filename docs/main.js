@@ -3525,6 +3525,93 @@
     return true;
   }
 
+  // 列表条目去掉本阶段节点链接后只剩这些分隔符，才算「纯节点链接」条目
+  var ROADMAP_NODE_LINK_GLUE = /^[\s·•、，,;；/|+&与和及]*$/;
+
+  /** 条目只由本阶段节点链接（不带 #锚点）和分隔符组成：已由节点框覆盖，可删。 */
+  function isRoadmapNodeOnlyListItem(li, itemSet) {
+    if (li.querySelector('ul, ol')) return false;
+    var clone = li.cloneNode(true);
+    var anchors = clone.querySelectorAll('a');
+    if (!anchors.length) return false;
+    for (var i = 0; i < anchors.length; i++) {
+      var m = /^(?:detail|roadmap)\.html\?id=([^&#]+)$/.exec(anchors[i].getAttribute('href') || '');
+      if (!m || !itemSet[decodeURIComponent(m[1])]) return false;
+      anchors[i].remove();
+    }
+    return ROADMAP_NODE_LINK_GLUE.test(clone.textContent || '');
+  }
+
+  /**
+   * 纵深路线正文：各 Stage 章节「推荐读什么」下嵌入顶部知识地图同一阶段的节点框（同一份 stages 数据、同款节点），
+   * 并删掉该小节列表里只剩已在节点框中的本库链接的条目；带说明、外链或纯文字的条目原样保留。
+   * 无「推荐读什么」的阶段，节点框放在「学完输出什么」前，再没有就放在章节末尾。
+   * 找到任一 Stage 章节即返回 true（同 embedRoadmapStagesIntoMarkdownBody，此时隐藏独立的阶段速览区）。
+   */
+  function embedDepthRoadmapStageNodes(contentEl, roadmapPage, detailPages) {
+    var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
+    if (!contentEl || stages.length < 2) return false;
+    var headings = Array.from(contentEl.querySelectorAll('h2[id]'));
+    var found = false;
+    for (var s = 0; s < stages.length; s++) {
+      var sid = String(stages[s].id || '').toLowerCase();
+      var h2 = null;
+      for (var h = 0; h < headings.length && sid; h++) {
+        if (headings[h].id === sid || headings[h].id.indexOf(sid + '-') === 0) { h2 = headings[h]; break; }
+      }
+      if (!h2) continue;
+      found = true;
+      var items = Array.isArray(stages[s].related_items) ? stages[s].related_items : [];
+      if (!items.length) continue;
+
+      var section = [];
+      for (var el = h2.nextElementSibling; el && !(el.tagName === 'H2' && el.id); el = el.nextElementSibling) {
+        section.push(el);
+      }
+      var readH3 = null;
+      var outH3 = null;
+      for (var i = 0; i < section.length; i++) {
+        if (section[i].tagName !== 'H3') continue;
+        var text = section[i].textContent || '';
+        if (!readH3 && text.indexOf('推荐读什么') !== -1) readH3 = section[i];
+        if (!outH3 && text.indexOf('学完输出什么') !== -1) outH3 = section[i];
+      }
+
+      var nodes = '';
+      for (var k = 0; k < items.length; k++) nodes += roadmapLtreeNodeHtml(items[k], detailPages);
+      var block = document.createElement('div');
+      block.className = 'roadmap-stage-kmap';
+      block.setAttribute('data-roadmap-stage-embed', sid);
+      block.innerHTML =
+        '<p class="roadmap-stage-kmap-head"><span class="roadmap-ltree-mark" aria-hidden="true">' +
+        escapeHtml(formatRoadmapStageBadge(sid).replace(/^S(?=\d)/, '')) + '</span>知识地图 · 本阶段 ' +
+        items.length + ' 个节点</p><div class="roadmap-stage-kmap-nodes">' + nodes + '</div>';
+
+      if (readH3) {
+        var itemSet = {};
+        for (var n = 0; n < items.length; n++) itemSet[items[n]] = true;
+        for (var list = readH3.nextElementSibling; list && !/^H[1-3]$/.test(list.tagName); ) {
+          var next = list.nextElementSibling;
+          if (list.tagName === 'UL' || list.tagName === 'OL') {
+            Array.from(list.children).forEach(function (li) {
+              if (isRoadmapNodeOnlyListItem(li, itemSet)) li.remove();
+            });
+            if (!list.children.length) list.remove();
+          }
+          list = next;
+        }
+        readH3.after(block);
+      } else if (outH3) {
+        outH3.before(block);
+      } else {
+        var last = section.length ? section[section.length - 1] : h2;
+        while (last !== h2 && last.tagName === 'HR') last = last.previousElementSibling;
+        last.after(block);
+      }
+    }
+    return found;
+  }
+
   function clearRoadmapStandaloneFlowSection() {
     var flowRoot = document.getElementById('roadmapFlowMermaidRoot');
     if (flowRoot) flowRoot.innerHTML = '';
@@ -3672,6 +3759,23 @@
     return cut >= 2 ? title.slice(0, cut).trim() : title;
   }
 
+  /** 知识地图节点框（短名 + 类型色点 + 类型 + 健康度）：顶部知识地图与纵深路线正文各 Stage 共用。 */
+  function roadmapLtreeNodeHtml(rid, detailPages, attrs) {
+    var typeColors =
+      (window.RNGraphTooltip && window.RNGraphTooltip.GRAPH_NODE_TYPE_COLOR) || ROADMAP_KMAP_TYPE_COLOR;
+    var typeLabels = window.RNWikiTypeLabels;
+    var page = detailPages[rid] || {};
+    var href = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
+    var nodeType = roadmapKmapNodeType(page, rid);
+    var color = typeColors[nodeType] || typeColors[''] || '#64748b';
+    var typeLabel = typeLabels ? typeLabels.formatChinese(nodeType || page.type || '') : '';
+    return '<a class="roadmap-ltree-node"' + (attrs || '') + ' href="' + escapeHtml(href) +
+      '" aria-label="' + escapeHtml(page.title || rid) + '" style="--tt-c:' + color + ';">' +
+      '<span class="roadmap-ltree-node-name">' + escapeHtml(roadmapLtreeShortLabel(page, rid)) + '</span>' +
+      '<span class="roadmap-ltree-node-type"><span class="roadmap-kmap-dot" aria-hidden="true"></span>' +
+      escapeHtml(typeLabel) + renderHealthBar(page) + '</span></a>';
+  }
+
   /**
    * 单阶段小树的摆位。树边只取站内互链：节点挂到「与它互链、列表里排在它前面」的节点下
    * （优先最早一个子节点未满的，否则最深的），所以箭头方向就是路线列表的阅读先后，不另造依赖。
@@ -3781,9 +3885,6 @@
    * 相邻阶段的互链画成虚线。
    */
   function renderRoadmapLearningTree(columns, treeEl, metaEl, detailPages) {
-    var typeColors =
-      (window.RNGraphTooltip && window.RNGraphTooltip.GRAPH_NODE_TYPE_COLOR) || ROADMAP_KMAP_TYPE_COLOR;
-    var typeLabels = window.RNWikiTypeLabels;
     var marks = [];
     var offsets = []; // 第 s 阶段首个节点在全局总览里的序号
     var total = 0;
@@ -3798,18 +3899,7 @@
     function nodesHtml(s) {
       var html = '';
       for (var k = 0; k < columns[s].items.length; k++) {
-        var rid = columns[s].items[k];
-        var page = detailPages[rid] || {};
-        var href = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
-        var nodeType = roadmapKmapNodeType(page, rid);
-        var color = typeColors[nodeType] || typeColors[''] || '#64748b';
-        var typeLabel = typeLabels ? typeLabels.formatChinese(nodeType || page.type || '') : '';
-        html +=
-          '<a class="roadmap-ltree-node" data-stage="' + s + '" data-node="' + k + '" href="' + escapeHtml(href) +
-          '" aria-label="' + escapeHtml(page.title || rid) + '" style="--tt-c:' + color + ';">' +
-          '<span class="roadmap-ltree-node-name">' + escapeHtml(roadmapLtreeShortLabel(page, rid)) + '</span>' +
-          '<span class="roadmap-ltree-node-type"><span class="roadmap-kmap-dot" aria-hidden="true"></span>' +
-          escapeHtml(typeLabel) + renderHealthBar(page) + '</span></a>';
+        html += roadmapLtreeNodeHtml(columns[s].items[k], detailPages, ' data-stage="' + s + '" data-node="' + k + '"');
       }
       return html;
     }
@@ -6631,7 +6721,10 @@
       contentEl.innerHTML = renderMarkdownContent(contentMarkdown, headings, roadmapMarkdownContext);
       renderDetailMath(contentEl);
       enhanceDetailHeadings(contentEl);
-      if (embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages)) {
+      var stagesEmbedded = String(roadmapId).indexOf('roadmap-depth-') === 0
+        ? embedDepthRoadmapStageNodes(contentEl, roadmapPage, detailPages)
+        : embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages);
+      if (stagesEmbedded) {
         clearRoadmapStandaloneFlowSection();
       }
       wrapRoadmapCollapsibleMajorHeadings(contentEl);

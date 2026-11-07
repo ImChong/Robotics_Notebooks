@@ -3927,6 +3927,43 @@ button.home-wiki-heatmap-cell.is-active {
 .roadmap-vtree-stage-at-entry .roadmap-vtree-summary {
   font-size: 0.92rem;
 }
+/* 纵深路线正文各 Stage：知识地图同阶段节点（节点框沿用 .roadmap-ltree-node） */
+.roadmap-stage-kmap {
+  margin: 10px 0 16px;
+}
+.roadmap-stage-kmap-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.roadmap-stage-kmap-head > .roadmap-ltree-mark {
+  width: 20px;
+  height: 20px;
+  border-width: 1px;
+  border-color: var(--accent);
+  color: var(--accent);
+  font-size: 0.66rem;
+}
+.roadmap-stage-kmap-nodes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+/* 窄屏正文列只剩约 240px：节点框仍排两列，节点多的阶段不至于拉得太长 */
+@media (max-width: 640px) {
+  .roadmap-stage-kmap-nodes {
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 8px;
+  }
+}
+/* 盖过 .detail-markdown-body a 的链接色，与顶部知识地图节点同色 */
+.detail-markdown-body .roadmap-stage-kmap .roadmap-ltree-node {
+  margin: 0;
+  color: var(--text);
+}
 /* 路线正文：顶层 h2 章节默认折叠（wrapRoadmapCollapsibleMajorHeadings） */
 .roadmap-major-section {
   margin: 0 0 1rem;

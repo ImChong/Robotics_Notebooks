@@ -90,6 +90,15 @@ class RoadmapPageTests(unittest.TestCase):
         self.assertIn(".roadmap-ltree-ov {", css)
         self.assertNotIn(".roadmap-ttree", css)
 
+    def test_depth_roadmap_stages_embed_knowledge_map_nodes(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        # 纵深路线正文各 Stage 复用知识地图同阶段节点框，替换原「本阶段链接」下拉块
+        self.assertIn("function embedDepthRoadmapStageNodes", content)
+        self.assertIn("function roadmapLtreeNodeHtml", content)
+        self.assertIn("embedDepthRoadmapStageNodes(contentEl, roadmapPage, detailPages)", content)
+        css = STYLE_CSS.read_text(encoding="utf-8")
+        self.assertIn(".roadmap-stage-kmap-nodes {", css)
+
     def test_roadmap_knowledge_map_uses_learning_route_layout(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertIn("function renderRoadmapLearningTree", content)
