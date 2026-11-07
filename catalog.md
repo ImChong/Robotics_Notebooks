@@ -4336,7 +4336,7 @@
 - [RoboCompiler-Humanoids（arXiv:2610.14237）](wiki/entities/paper-robocompiler-humanoids-composable-dynamics.md) — RoboCompiler-Humanoids** 是面向闭链协作人形的可组合动力学建模扩展，支持将各机器人保留为可复用模块，再按手部连接和地面支撑状态组合整体模型。论文由坦佩雷大学 Mehdi H `📅unknown` `[entity_page]`
 - [RoboCraft](wiki/entities/paper-robocraft-particle-graph-dynamics.md) — RoboCraft** 收录于 具身智能研究室 · 具身世界模型六路线综述 **规划主导型 `📅unknown` `[entity_page]`
 - [RoboDawn（arXiv:2609.22966）](wiki/entities/paper-robodawn.md) — RoboDawn**（*Transferring the Intelligence of VLMs to Robotic Control*，[arXiv:2609.22966](https://a `📅unknown` `[entity_page]`
-- [RoboDoctor（arXiv:2610.35604）](wiki/entities/paper-robodoctor.md) — RoboDoctor**（*RoboDoctor: Training-Free Recursive Self-Improvement for Robot Policies*，[arXiv:2610 `📅unknown` `[entity_page]`
+- [RoboDoctor：无需重训的机器人策略递归自我改进 / Training-Free Recursive Self-Improvement for Robot Policies](wiki/entities/paper-robodoctor.md) — RoboDoctor** 不更新机器人策略与多模态 Agent 的权重，而用执行反馈决定由谁控制、是否打断当前动作、如何实现并验证局部物理修正；经验以外部记录传给后续回合。 `📅unknown` `[entity_page]`
 - [RoboDreamer（arXiv:2609.07096）](wiki/entities/paper-robodreamer-anticipatory-humanoid-locomotion.md) — RoboDreamer**（*RoboDreamer: Anticipatory Humanoid Locomotion with Predictive State-Space Models*， `📅unknown` `[entity_page]`
 - [RoboDrop（arXiv:2609.10021）](wiki/entities/paper-robodrop-vla-post-training.md) — RoboDrop**（*RoboDrop: Curating VLA Post-Training Data via Local Gradient Compatibility*，[arXiv:260 `📅unknown` `[entity_page]`
 - [RoboDuet：四足机器人协作式全身移动操作](wiki/entities/paper-roboduet-loco-manipulation.md) — 一句话定义：** RoboDuet 是面向“腿式移动底盘 + 机械臂”的双策略强化学习框架，让 locomotion policy 与 arm policy 协作完成边走边操作，而不是把两者作为互 `📅unknown` `[entity_page]`
@@ -6096,7 +6096,6 @@
 - [RoboClaw](wiki/entities/roboclaw.md) — RoboClaw**（GitHub: MINT-SJTU/RoboClaw）是上海交通大学 **MINT 实验室 `📅unknown` `[entity_page]`
 - [RoboColiseum（Genie Sim 仿真挑战赛）](wiki/entities/robocoliseum.md) — RoboColiseum**（官网，榜单）是智元在 **[Ge `📅unknown` `[entity_page]`
 - [Robocurve](wiki/entities/robocurve.md) —  字段 | 内容  `📅unknown` `[entity_page]`
-- [RoboDoctor](wiki/entities/robodoctor-rsi.md) — RoboDoctor 是一种面向机器人操作的训练免费自我改进框架：冻结低层机器人策略，通过 Agent 诊断、修正和验证执行过程，并依据任务表现调整控制组织与可复用经验。 `📅unknown` `[entity_page]`
 - [RoboDojo（统一仿真–真机通用操纵评测）](wiki/entities/robodojo.md) — RoboDojo**（*A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Mani `📅unknown` `[entity_page]`
 - [Roboflow Sports](wiki/entities/roboflow-sports.md) — Roboflow Sports**（roboflow/sports）是 Roboflow 开源的 **体育计算机视觉工具 `📅unknown` `[entity_page]`
 - [Roboflow Trackers：检测器无关的多目标跟踪库](wiki/entities/roboflow-trackers.md) — Roboflow Trackers** 是一组统一 Python 接口的多目标跟踪算法实现：检测器提供逐帧边界框，跟踪器负责跨帧关联目标并维护身份 ID。 `📅unknown` `[entity_page]`
