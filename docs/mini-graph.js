@@ -246,7 +246,11 @@
       applyMode3dTheme();
     }
 
-    var zoom = d3.zoom().scaleExtent([0.3,4]).on('zoom',function(ev){ g.attr('transform',ev.transform); });
+    var zoom = d3.zoom().scaleExtent([0.3,4])
+      // d3 默认 filter 之外再排除触屏：预览图在手机上占满一屏宽、高 480px，交给 d3 平移缩放时
+      // 手指一落到图上页面就滚不动（上滑回顶会卡在图处）。触屏点按节点浮窗不受影响。
+      .filter(function(ev){ return (!ev.ctrlKey || ev.type === 'wheel') && !ev.button && ev.type.indexOf('touch') !== 0; })
+      .on('zoom',function(ev){ g.attr('transform',ev.transform); });
     svg.call(zoom).on('dblclick.zoom',null);
 
     var sim = d3.forceSimulation(nodes)
