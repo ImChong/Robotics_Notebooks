@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, video-generation, vla, open-source]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ./cosmos-3.md
   - ./paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md
@@ -22,6 +22,9 @@ related:
   - ./paper-cosmos-transfer1.md
   - ./nvidia-physical-ai-datasets.md
   - ./nvidia-gtc.md
+original:
+  - ../../sources/papers/cosmos_wfm_arxiv_2501_03575.md
+  - ../../sources/repos/nvidia_cosmos.md
 sources:
   - ../../sources/sites/nvidia-cosmos.md
   - ../../sources/repos/nvidia_cosmos.md
@@ -78,6 +81,17 @@ code: https://github.com/NVIDIA/cosmos
 | **2.5（2025-10）** | [arXiv:2511.00062](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md) | Flow matching 单网 T2W/I2W/V2W；Reason1 作文本编码；Transfer2.5 ControlNet | [cosmos-predict2.5](https://github.com/nvidia-cosmos/cosmos-predict2.5) 等；**有限维护** |
 | **3（2026-05）** | [arXiv:2606.02800](./cosmos-3.md) | MoT：Reasoner（因果 AR）+ Generator（扩散）；原生动作 / 音频 | [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) + [cosmos-framework](https://github.com/NVIDIA/cosmos-framework) |
 
+**读过什么、没读什么（诚实标注）：** 本页「1.0」一行以 [Cosmos 1.0 论文](./paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)全文为准（平台五件套：视频策展器、视频 tokenizer、预训练 WFM、后训练样例、guardrail；全部模型约在 1 万张 H100 上训练 3 个月）；「3」一行以 NVIDIA/cosmos 仓库 README（2026-11-07 重读）为准；**2.5 与 Cosmos 3 的技术报告 PDF 本次未重读**，其架构细节仍来自既有归档，尚未经原文核对。
+
+### Cosmos 3 仓库 README 要点（2026-11-07）
+
+- 发布节奏：2026-05 Cosmos 3；2026-07 Cosmos3-Edge（4B，端侧实时）；2026-10 Interactive World Simulation 示例 checkpoint 与训练配方。
+- 「一个模型，两座塔」：**Reasoner**（文本/视觉 → 文本，用于世界理解、grounding、任务规划、具身推理）与 **Generator**（文本/视觉/音频/动作 → 视觉/音频/动作，用于世界仿真、未来预测、合成数据、策略学习）。
+- 三个基座：**Cosmos3-Super 64B**（H200/B200/GB200，最高质量、蒸馏教师）、**Cosmos3-Nano 16B**（RTX Pro 6000/H100/B200，均衡）、**Cosmos3-Edge 4B**（Jetson AGX Orin/Thor、RTX Pro 6000）；另有静态 FP8 版 Nano/Super。
+- 示例 checkpoint（后训练变体）：Nano-Sim-Auto（闭环驾驶仿真，多视角 + LiDAR）、Nano-Transfer-Auto（多视角驾驶 SDG，最多 11 视角 + LiDAR）、Nano-Sim-Bimanual（闭环交互式机器人策略仿真）、Nano-Sim-Transfer（自回归 transfer：深度/分割/边缘/模糊）、Super-Text2Image / Image2Video（含 4-Step 蒸馏，称快 17–25×）、Nano-Policy-DROID 与 Edge-Policy-DROID。
+- 平台配套：Cosmos Framework（SFT / LoRA / 蒸馏 / RL 后训练）、Cosmos Curator（分布式数据策展）、Cosmos Evaluator（输出自动评测）；可跑在 Diffusers、Transformers、vLLM、vLLM-Omni、SGLang、TensorRT-LLM、NIM。
+- 许可：README 写「源码与模型以 OpenMDW-1.1 发布」。
+
 ### 流程总览（与 Newton 的分工）
 
 ```mermaid
@@ -103,6 +117,9 @@ flowchart TB
 
 ## 工程实践
 
+**最小上手（README Quickstart）：** 先在 HF 申请并接受 [`nvidia/Cosmos-1.0-Guardrail`](https://huggingface.co/nvidia/Cosmos-1.0-Guardrail)（仅登录不等于有权限）；`uv venv --python 3.13`；装 diffusers（git 版）、accelerate、`cosmos_guardrail` 等；用 `Cosmos3OmniPipeline.from_pretrained("nvidia/Cosmos3-Nano", torch_dtype=torch.bfloat16)` 生成视频并 `export_to_video(..., fps=24)`。首次会下载 16B 检查点，扩散步骤很耗算力。
+
+
 | 目标 | 从哪进 | 备注 |
 |------|--------|------|
 | 新产品 / 全模态 | [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) cookbook | Diffusers、vLLM-Omni、SGLang、NIM；微调走 cosmos-framework |
@@ -118,6 +135,7 @@ flowchart TB
 
 ## 局限与风险
 
+- **一手原文自述的局限：** 1.0 论文承认当前 WFM 仍不是可靠的物理模拟器——缺物体恒存、接触密集动力学不准、指令跟随不一致，且物理对齐评测里更大的模型并没有更好；论文的五类用途（策略评估/初始化/带奖励训练/规划/合成数据）在 1.0 里没有实证。Cosmos 3 README 的 Limitations 一节则写：长时、高分辨率或物理复杂输出会出现时序不一致、物体形变、不合理动力学，安全关键场景需额外验证，生成默认开启 guardrail。
 - **像素世界 ≠ 物理引擎**：Cosmos 3 README 自列长视频时序漂移、声画错位、动作–状态不一致、morphing 与不合理动力学。
 - **代际许可与入口分裂**：1.0/2.5 走 NVIDIA Open Model License，3.0 对外讲 OpenMDW-1.1；clone 错仓会拿到停更的 Predict2.5。
 - **算力门槛**：3.0 Super 64B 面向数据中心；Edge 4B 才是边缘叙事。framework SFT 默认 8×H100。
@@ -125,6 +143,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Cosmos 1.0 论文原文通读归档](../../sources/papers/cosmos_wfm_arxiv_2501_03575.md) 与 [NVIDIA/cosmos README 通读归档](../../sources/repos/nvidia_cosmos.md)（2026-11-07）
 - [Cosmos Interactive World Simulation](./paper-cosmos-interactive-world-simulation.md) — 基于 Cosmos 3 的交互式世界仿真后训练与四个开源 Nano checkpoint（Transfer-Auto / Sim-Auto / Sim-Transfer / Sim-Bimanual）；含 2026-11-05 HF 博文口径
 
 - [Cosmos 3](./cosmos-3.md) — 当前全模态母栈

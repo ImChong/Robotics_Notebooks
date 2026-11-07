@@ -10,6 +10,8 @@
 - **代码/项目：** <https://github.com/rll-research/url_benchmark>
 - **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
 - **入库日期：** 2026-05-26
+- **核对范围：** 2026-11-07 通读 arXiv:2108.13956v1 正文（摘要、引言、相关工作、§3 预备（MDP 与后继特征）、§4 方法（VISR、APT、网格世界证据、APS 目标与伪代码、实现细节）、§5 Atari 结果与 Table 2、§6 消融（探索与利用各自贡献））；补充材料/附录与 57 款游戏全表未读；未运行代码。
+- **通读：** 已完成
 - **一句话说明：** 任务到来前的主动预训练；低层身体需先积累可迁移经验。
 
 ## 核心摘录（策展，非全文）

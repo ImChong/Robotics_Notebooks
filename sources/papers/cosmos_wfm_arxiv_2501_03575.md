@@ -6,7 +6,10 @@
 - **类型：** paper / Physical AI / 世界基础模型平台
 - **arXiv：** <https://arxiv.org/abs/2501.03575>
 - **机构：** NVIDIA
-- **入库日期：** 2026-09-05
+- **入库日期：** 2026-09-05（2026-11-07 全文复核）
+- **版本：** arXiv v1 PDF（Cosmos World Foundation Model Platform for Physical AI，NVIDIA，2025-01），正文 §1–§9 + 附录
+- **核对范围：** 2026-11-07 通读 PDF：§1–2 平台与五类用途、§3 数据策展全流程（含 Table 1–3 切分/转码/字幕吞吐）、§4 tokenizer（架构、两阶段损失、Table 4–9）、§5 扩散/自回归 WFM（EDM 目标、DiT 改动、Table 10–18、Medusa、扩散解码器、3D 一致性 Table 19、物理对齐 Table 20）、§6 三类后训练（相机/操纵/驾驶，Table 21–25）、§7 guardrail、§9 结论与局限；§8 相关工作仅浏览，附录贡献者名单未读；未运行官方代码或权重。
+- **通读：** 已完成
 - **一句话说明：** Cosmos **第一代** 世界基础模型平台：视频策展管线 + 扩散 / 自回归预训练 WFM + 后训练示例 + 视频 tokenizer + guardrail；开源入口当时为 NVIDIA Cosmos-Predict1。
 - **沉淀到 wiki：** 是 → [`wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md`](../../wiki/entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)（该 arXiv 的唯一 canonical 节点；由 Awesome 索引升格）
 

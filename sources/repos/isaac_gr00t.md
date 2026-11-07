@@ -3,7 +3,10 @@
 - **来源**：https://github.com/NVIDIA/Isaac-GR00T
 - **类型**：repo
 - **机构**：NVIDIA（GEAR / Isaac）
-- **归档日期**：2026-07-13
+- **归档日期**：2026-07-13（2026-11-07 复核 README 与源码）
+- **版本**：`main`（N1.7 GA），2026-11-07 raw.githubusercontent.com 抓取
+- **核对范围：** 2026-11-07 通读 `main` 分支 README.md 全文（含 What's New、Key Changes from N1.6 折叠段、安装与各平台注意事项、LeRobot 集成、checkpoint/embodiment tag、数据格式、推理/微调/评测/Training Tips、许可与引用），并读 `gr00t/configs/model/gr00t_n1d7.py`（`Gr00tN1d7Config` 全部默认值）、`gr00t/experiment/launch_finetune.py`、`gr00t/eval/run_gr00t_server.py` 全文与 `gr00t/policy/gr00t_policy.py` 的类/方法结构；未逐行读训练循环、数据加载与 TensorRT 导出代码，未运行代码，未读 `getting_started/*`、`examples/*` 子文档。
+- **通读：** 已完成
 - **GitHub**：约 7.5k+ stars（2026-07）；**代码** Apache-2.0，**模型权重** NVIDIA Open Model License
 - **关联技术博客**：[Develop Humanoid Robot Policies End-to-End with NVIDIA Isaac GR00T](../blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md)（NVIDIA Developer Blog，2026-07-07）
 

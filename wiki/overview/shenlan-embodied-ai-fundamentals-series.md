@@ -2,7 +2,7 @@
 type: overview
 tags: [embodied-ai, fundamentals, geometry, kinematics, shenlan, survey, jacobian]
 status: complete
-updated: 2026-09-12
+updated: 2026-11-07
 related:
   - ../formalizations/homogeneous-coordinates-transform.md
   - ../formalizations/lie-group-rigid-body-motions.md
@@ -19,6 +19,8 @@ related:
   - ../overview/world-models-15-open-source-technology-map.md
   - ../overview/humanoid-rl-policy-training-five-modules.md
   - ../entities/modern-robotics-book.md
+original:
+  - ../../sources/papers/modern_robotics_textbook.md
 sources:
   - ../../sources/blogs/wechat_shenlan_homogeneous_coordinates_transform.md
   - ../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md
@@ -40,9 +42,14 @@ summary: "深蓝具身智能《具身智能基础》专栏（专辑 10 篇已入
 
 > **本页定位**：为深蓝具身智能微信公众号 [**《具身智能基础》**](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkwMDcyNDUzMQ==&action=getalbum&album_id=4525948187102363653) 专辑 **已入库 10/10 篇** 提供 **父节点阅读坐标**；不复述公式推导，只保留 **专栏顺序、子节点分工、与 VLA/抓取/运控栈的挂接**。专辑清单见 [`sources/raw/wechat_shenlan_embodied_ai_fundamentals_album_2026.json`](../../sources/raw/wechat_shenlan_embodied_ai_fundamentals_album_2026.json)（2026-08-13 复核）。
 
-## 一句话观点
+## 一句话定义（核心观点）
 
 具身智能的大模型叙事容易掩盖两条必须打通的暗线：**几何**（多坐标系与弯曲状态空间上的合法变换）和 **运动学接口**（任务空间目标必须在关节空间执行）。专栏前半用齐次矩阵把刚体写进可连乘的 $4\times4$，后半用 FK → IK → 雅可比把「在哪 / 怎么变 / 怎么发力」收成同一套局部线性结构；RL 只叠在这层结构之上。
+
+## 为什么重要
+
+- **专栏是二手科普，教材才是一手依据。** 专栏几何与运动学部分（齐次变换、李群、FK/IK、雅可比）在 Lynch & Park《Modern Robotics》里有完整的一手推导；本页把专栏顺序当阅读坐标，把教材当核验底座，避免"看科普、写公式"的错位。
+- **把"在哪 / 怎么变 / 怎么发力"串成一条线：** 齐次矩阵连乘给出位姿，雅可比给出速度与力的线性映射，RL 与学习型 IK 叠在这层结构之上，而不是替代它。
 
 ## 英文缩写速查
 
@@ -78,6 +85,19 @@ flowchart TB
   C7 --> C9
   C10 --> C9
 ```
+
+## 一手教材核验（2026-11-07）
+
+用 Lynch & Park《Modern Robotics》（官方 2017-05 preprint PDF；通读范围见 [教材归档](../../sources/papers/modern_robotics_textbook.md)）逐条核对专栏的几何/运动学叙述：
+
+| 专栏篇目 | 教材依据 | 核对结论 |
+|----------|----------|----------|
+| 05 齐次坐标 / 01 李群 | Ch3：旋转矩阵、指数坐标、矩阵对数；齐次变换 $T=\begin{bmatrix}R&p\\0&1\end{bmatrix}\in SE(3)$ 与旋量；附录 B 欧拉角与单位四元数 | 一致。教材还指出欧拉角 / RPY 存在奇异性，单位四元数是无奇异的隐式表示（与专栏"四元数是 SO(3) 存储、齐次矩阵是 SE(3) 连乘默认形状"的分工吻合）。 |
+| 08 正向运动学 | Ch4：PoE 公式（空间式 / 体式）与 D-H 表示；总结写明 D-H 约定下相邻连杆变换"只需四个参数，其中三个描述运动学结构、一个是关节变量" | 一致；注意**教材的主线是 PoE，D-H 在附录 C 补充**，专栏用 D-H 四参数连乘更贴近传统工程习惯。 |
+| 10 雅可比 | Ch5：空间 / 体雅可比；静力学 $\tau=J^{\top}(\theta)F$（式 5.26，静平衡假设）；奇异构型与可操作度椭球 | 一致；教材强调 $\tau=J^\top F$ 以**静平衡**为前提，含重力 / 动态时需另加项。 |
+| 09 逆运动学 | Ch6：解析 IK（PUMA、Stanford 臂）、牛顿–拉夫森数值 IK、用 Moore–Penrose 伪逆做逆速度运动学 | 部分一致：教材覆盖解析、数值、伪逆；**阻尼最小二乘（DLS）与零空间冗余分解不在教材该章的论述范围内**，专栏这部分来自其他资料（推测：属常见工程做法，但未经教材核对）。 |
+| 02 / 03 坐标变换、流形 | 教材未专门讲相机内外参 $K,[R\|t]$ 与一般黎曼流形 | **未核对**（专栏的"欧氏插值多转 340°"等例子是专栏自己的叙述）。 |
+| 04 / 06 / 07 / 12（RL 最小闭环、运控管线、RL 解 IK、延伸篇） | 不在教材范围 | **未核对**：这些页面依据的是专栏文章本身；需要 PPO / SAC 原论文、legged-gym 类论文等另行核验。 |
 
 ## 子节点索引
 
@@ -130,6 +150,19 @@ flowchart TB
 
 - Source：[wechat_shenlan_locomotion_rl_vs_manipulation_il_vla.md](../../sources/blogs/wechat_shenlan_locomotion_rl_vs_manipulation_il_vla.md)（`9prT5Ds0paBthAiupFQTqA`）
 
+## 工程实践
+
+1. **先固定约定再写代码：** 位姿统一用 $4\times4$ 齐次变换连乘，明确 {s}（世界）与 {b}（末端）；旋转增量走指数坐标 / 李代数而不是直接加欧拉角。
+2. **FK → 雅可比 → IK 一条链：** 先有 FK 与雅可比，再做数值 IK（牛顿–拉夫森迭代需要雅可比或其伪逆）；奇异点附近要监控可操作度（教材 §5.3–5.4）。
+3. **力-关节力矩映射用于遥操作 / 阻抗：** $\tau=J^\top F$ 仅在静平衡下精确，动态运动需引入动力学项（教材 Ch8）。
+4. **学习型 IK 的位置：** 作为冗余、非标几何或多目标的补充，精度环仍由雅可比 / 数值迭代把关（专栏 07 的立场；该立场本次未对照一手论文）。
+
+## 局限与风险
+
+- 本页是**专栏导航页**，不是教材替代：专栏文章均为科普，公式与推导以教材 / 论文为准。
+- 与教材的对应只覆盖几何与运动学两章半；RL 相关四篇（04、06、07、12）与坐标变换 / 流形两篇（02、03）**本次未做一手核对**。
+- 微信原文可能需订阅访问，专辑清单 JSON 记录于 2026-08-13，之后新增篇目不在本页范围。
+
 ## 常见误区
 
 1. **「有三维视觉就不需要坐标变换」** — 点云再密，末端仍要在基座系规划。
@@ -141,6 +174,8 @@ flowchart TB
 
 ## 关联页面
 
+- [Modern Robotics 教材实体页](../entities/modern-robotics-book.md) — 本页核验用的一手教材
+
 - [旋转表示方法对比（SO(3)）](../comparisons/so3-rotation-representations.md)
 - [SE(3) Representation](../formalizations/se3-representation.md)
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md)
@@ -150,6 +185,7 @@ flowchart TB
 
 ## 参考来源
 
+- **一手教材（已通读相关章节）：** [modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md) — Lynch & Park, *Modern Robotics*（Ch2–6、Ch8 §8.7、Ch12 §12.2、附录 B/C，2026-11-07）
 - [深蓝具身智能：齐次坐标与齐次变换](../../sources/blogs/wechat_shenlan_homogeneous_coordinates_transform.md)
 - [深蓝具身智能：李群、李代数、四元数](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)
 - [深蓝具身智能：三维世界坐标变换](../../sources/blogs/wechat_shenlan_3d_coordinate_transforms.md)
