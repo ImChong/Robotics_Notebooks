@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, embedded, firmware, iot, arduino, esp32, education, wokwi]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-08
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./simplefoc.md
