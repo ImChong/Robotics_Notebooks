@@ -1112,6 +1112,25 @@ a.hero-stat-num:focus-visible {
   background: var(--border);
 }
 .node-health--empty { cursor: default; }
+/* 小条只有 16×11px：四周加透明内边距放大悬停范围，负外边距抵消，不改变排版 */
+.node-health[data-health-tip] { padding: 4px 3px; margin: -4px -3px; }
+/* 健康度信息框（main.js setupHealthTip）：悬停小条弹出，逐行列出各得分项（1/1）/（0/1） */
+.node-health-tip {
+  position: fixed;
+  z-index: 10000;
+  max-width: 260px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  color: var(--text);
+  box-shadow: var(--shadow-md);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  white-space: pre-line;
+  pointer-events: none;
+}
+.node-health-tip[hidden] { display: none; }
 .node-health--0 i { background: transparent; box-shadow: inset 0 0 0 1px #f87171; }
 .node-health--1 i.is-on { background: #fb923c; }
 .node-health--2 i.is-on { background: #facc15; }
@@ -1756,8 +1775,6 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-meta-item strong {
   font-weight: 650;
 }
-/* 窄处（浮窗 / 侧栏）只在顿号等标点处换行，不把「原文通读」拆成两行 */
-.detail-meta-health-text { color: var(--text-muted); word-break: keep-all; }
 .detail-meta-badge {
   display: inline-flex;
   align-items: center;

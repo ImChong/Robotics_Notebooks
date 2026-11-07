@@ -6814,7 +6814,7 @@
       }
       sbTitle.textContent = info.title || d.label;
       if (sbHealth) {
-        // 与节点浮窗同一行：小条 + 各得分项（1/1）/（0/1）
+        // 与节点浮窗同一行：「健康度」+ 3 格小条，悬停小条看逐项说明
         sbHealth.innerHTML = window.RNGraphTooltip?.buildTooltipHealthHtml?.(d) || '';
         sbHealth.hidden = !sbHealth.innerHTML;
       }

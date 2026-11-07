@@ -263,8 +263,8 @@
   }
 
   /**
-   * 浮窗健康度行：3 格小条 + 「2/3 · 摘要与来源（1/1）、阅读骨架（1/1）、原文通读（0/1）」。node 需带 health_score（可选 health_gaps / type）；
-   * 小条与文案由 main.js 的 RNNodeHealth 提供（与列表行、页面信息同一套），未加载或无分数则不显示。
+   * 浮窗健康度行：「健康度」+ 3 格小条（逐项说明在悬停小条弹出的信息框里）。node 需带 health_score（可选 health_gaps / type）；
+   * 小条由 main.js 的 RNNodeHealth 提供（与列表行、页面信息同一套），未加载或无分数则不显示。
    */
   function buildTooltipHealthHtml(node) {
     var api = window.RNNodeHealth;
