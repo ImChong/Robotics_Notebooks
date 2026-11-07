@@ -97,6 +97,9 @@ GTSAM 最值得学习的是**从量测到因子、从因子到流形优化**的�
 
 ## 关联页面
 
+- [Ceres Solver（非线性最小二乘优化工具）](./ceres-solver.md)
+- [VINS-Mono（视觉惯性滑窗估计）](./paper-vins-mono.md)
+
 - [LIO-SAM](./lio-sam.md)
 - [LVI-SAM](./paper-lvi-sam.md)
 
