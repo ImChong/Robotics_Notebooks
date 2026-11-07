@@ -14,7 +14,9 @@
 - **作者：** Lujie Yang*, Xiaoyu Huang*, Zhen Wu*, Angjoo Kanazawa†, Pieter Abbeel†, Carmelo Sferrazza†, C. Karen Liu†, Rocky Duan†, Guanya Shi†（* equal；† Amazon FAR co-lead）
 - **机构：** Amazon FAR、MIT、UC Berkeley、Stanford、CMU
 - **硬件：** Unitree G1（主实验）；亦展示 G1 / H1 / Booster T1 跨 embodiment 重定向
-- **入库日期：** 2026-06-08（深化；初版 2026-05-31）
+- **入库日期：** 2026-06-08（深化；初版 2026-05-31）；2026-11-07（全文通读更新）
+- **核对范围：** 通读 arXiv:2509.26633 v3 的摘要、引言、相关工作（表 I 对比）、§III 交互网格与硬约束的逐帧优化（式 1–3）、增广方法、§IV 最小 RL 训练配方、§V 实验（硬件结果、与 PHC / GMR / VideoMimic 的运动学与下游 RL 基准、表 II）与结论；附录推导与参数表仅浏览。未运行 holosoma 代码。
+- **通读：** 已完成
 - **一句话说明：** 基于 **interaction mesh** 的交互保留重定向引擎：逐帧 **Sequential SOCP** 最小化人–机 mesh 的 **Laplacian 形变能** 并满足**硬约束**（SDF 非穿透、关节/速度界、stance 脚粘附），支持单演示到多 embodiment / 地形 / 物体的**数据增广**；下游 RL 仅用 **5 项 reward + 4 项 DR**、**无 curriculum** 即可在 G1 上零样本实机执行长达 **30 s** 的 parkour / loco-manipulation。
 
 ## 相关资料（策展）
@@ -98,3 +100,11 @@ $$\min_{q_t} \sum_i \|L(p_{t,i}^{\text{source}}) - L(p_{t,i}^{\text{target}}(q_t
 - 代码：[`sources/repos/holosoma.md`](../repos/holosoma.md)
 - 数据集：[`sources/sites/omniretarget-dataset-huggingface.md`](../sites/omniretarget-dataset-huggingface.md)
 - 42 篇栈策展：[`humanoid_rl_stack_03_omniretarget_interaction_preserving_data_generat.md`](humanoid_rl_stack_03_omniretarget_interaction_preserving_data_generat.md)
+
+## 全文核对要点（2026-11-07，均出自论文）
+
+- **优化问题（式 3）：** 逐帧 $\min_{q_t}\sum_i\|L(p_{t,i}^{target}(q_t))-L(p_{t,i}^{source})\|^2+\|q_t-q_{t-1}\|_Q^2$，s.t. 碰撞 SDF $\phi_j(q_t)\ge0$、关节与速度界、**stance 脚位置与上一帧相同（防滑）**；Laplacian 坐标 $L(p_i)=p_i-\sum_jw_{ij}p_j$，**实验用均匀权重** $w_{ij}=1/|N(i)|$；网格由 Delaunay 四面体化用户定义的关键关节与更密的物体 / 环境表面采样点构成；用定制 **SQP 型求解器**（目标二次近似、硬约束线性化；表 I 称 Sequential SOCP），上一帧最优解 warm start，Drake 自动微分处理四元数。
+- **运动学基准（G1）：** 相对 PHC、GMR、VideoMimic，穿透与脚滑显著更少；GMR 的接触保持分数最高但手常嵌入物体；偶发的小穿透源于约束线性化，可由 RL 修复。下游 RL（39 个困难动作，BeyondMimic 超参数）成功率比基线高 10% 以上且方差更低。
+- **增广：** 在固定源网格下改物体位姿 / 尺寸或地形高度并重新求解，可由一段演示得到多种场景；增广数据全集成功率 79.1%，名义动作 82.2%。
+- **RL 配方：** 5 项奖励（身体跟踪、物体跟踪、动作变化率、软关节限位、自碰撞）、4 项机器人域随机化、纯本体感觉观测，零样本上 G1 实机（30 秒跑酷、搬箱、爬 0.9 m 平台等）。
+- **说明：** 开源数据集约 2.78 h 搬箱（OMOMO）+ 1 h 自采动捕 + 4.6 h LAFAN1。

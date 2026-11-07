@@ -12,7 +12,9 @@
 - **作者：** Jielin Wu*, Shenzhe Yao*, Guanqi He*‡, Xiaohan Liu*‡, Zhaoqing Zeng, Xiangrui Jiang, Han Yang, Wentao Zhang, Hang Zhao†（* equal；‡ project lead；† corresponding）
 - **机构：** IIIS, Tsinghua University
 - **硬件：** Wuji Hand（主真机实验）；亦展示 MANO、Leap 等跨 embodiment 增广
-- **入库日期：** 2026-06-17
+- **入库日期：** 2026-06-17；2026-11-07（全文通读更新）
+- **核对范围：** 通读 arXiv:2606.16272 v2 正文（摘要、引言、相关工作、§3 方法：骨方向初始化、交互网格、拓扑感知 Laplacian 优化、最小 RL 跟踪器、实验 Q1–Q3、结论与局限）；附录 A.1–A.5（固定参数表、基线细节、指标定义、数据集、奖励权重）仅浏览。未运行官方代码。
+- **通读：** 已完成
 - **一句话说明：** 基于 **稀疏 hand–object interaction graph** 与 **距离加权 Laplacian 形变能** 的交互保留灵巧重定向：骨方向一致性初始化 + 共享拓扑 Delaunay mesh + 穿透软/硬约束；**单组固定参数**覆盖多物体/尺度/手型；下游 **轻量 PPO 参考跟踪**（残差动作 + 4 项 reward + DR）在 ContactPose / Ho-cap / Pen-Spin 上显著优于 OmniRetarget、Mink、DexPilot、GeoRT，并 **零样本** 部署到 Wuji Hand 转笔与魔方重定向。
 
 ## 相关资料（策展）
@@ -81,3 +83,11 @@ Pen-Spin 相对最强基线（OmniRetarget 46.9%）提升 **+40.6 百分点**（
 ## 关联原始资料
 
 - 项目页：[`sources/sites/toporetarget-github-io.md`](../sites/toporetarget-github-io.md)
+
+## 全文核对要点（2026-11-07，均出自论文正文）
+
+- **输入输出：** 人手轨迹 $P^h_{1:N}$（MediaPipe 21 关键点）+ 物体位姿轨迹 + 物体网格 → 机器人基座位姿与关节轨迹。
+- **三步：** ①**相对骨方向初始化**：$E_{bone}=\sum_{(k,l)}\|(d_k^r-d_l^r)-(d_k^s-d_l^s)\|^2$（相邻骨方向差异对齐）+ 时间平滑；②**交互网格**：源手关键点与物体表面采样点做 Delaunay 四面体化，**机器人沿用同一连接关系**；③**拓扑感知 Laplacian 优化**：边权为源构型上的距离衰减 $w_{ij}\propto\exp(-\kappa\|v_i^s-v_j^s\|)$（归一化），目标 $\lambda_{IM}E_{IM}+\lambda_{bone}E_{bone}+E_{reg}+w_s\sum s_i^2$，s.t. 穿透约束 $\varphi_i(q)\ge-b$、$\varphi_i(q)+s_i\ge-\tau$、$0\le s_i\le b-\tau$（软容差 $\tau$、硬界 $b$、松弛 $s_i$）。**单组固定参数**用于所有实验。
+- **结果：** ContactPose 上接触精度 7.71 mm、接触对齐 15.67°，最大穿透 1.07 mm，求解 <5 ms/帧（"可实时"）；下游 RL 跟踪：Ho-cap 32 段成功率 84.4%（基线最高 75.0%），自采笔转 32 段成功率 87.5%，比所有基线高 40 个百分点以上（OmniRetarget 46.9%）；Wuji Hand 上零样本迁移魔方重定向与转笔。
+- **与 OmniRetarget 的差别：** OmniRetarget（人形全身）用**均匀权重** $w_{ij}=1/|N(i)|$ 的 Laplacian；TopoRetarget 改为**距离衰减权重** + 骨方向先验。
+- **局限（原文）：** 依赖上游人手参考质量；能处理源动作穿透造成的接触畸变，但对"虚拟接触"（源手指本想接触却没碰到物体）效果较差。

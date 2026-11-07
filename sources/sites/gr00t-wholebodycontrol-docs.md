@@ -8,7 +8,9 @@
 - **代码：** <https://github.com/NVlabs/GR00T-WholeBodyControl>
 - **关联：** [GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/) · [MotionBricks](https://nvlabs.github.io/motionbricks/)
 - **机构：** NVIDIA NVlabs / GEAR
-- **入库日期：** 2026-07-22
+- **入库日期：** 2026-07-22（首次）；2026-11-07（页面通读更新）
+- **核对范围：** 本次实际读取并核对的页面：首页（index）、`user_guide/training`、`user_guide/training_data`、`references/decoupled_wbc`（均为 2026-11-03 版本）；其余页面（安装、遥操作教程、ZMQ 协议、模型下载等）只核对到与 README 链接一致，未逐页通读。
+- **通读：** 未完成
 - **一句话说明：** NVlabs 人形全身控制统一平台官方文档：Decoupled WBC、GEAR-SONIC 训练/部署、MotionBricks 预览、VR 遥操作、VLA 数据链与真机 C++ 推理；与 Git 单仓 README 同步。
 
 ## 开源状态（2026-07-22）
