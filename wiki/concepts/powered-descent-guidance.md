@@ -19,6 +19,8 @@ sources:
   - ../../sources/sites/jpl_gfold_xombie_flight_tests.md
   - ../../sources/sites/spacex_reusable_booster_pages.md
   - ../../sources/sites/nasa_splice_new_shepard.md
+original:
+  - ../../sources/papers/blackmore_2010_minimum_landing_error_pdg.md
 summary: "动力下降制导：火箭只靠发动机推力，从下降段某一状态出发，在推力上下界、滑翔坡、姿态等约束下飞到着陆点并以零速触地的在线轨迹规划问题；火箭回收、行星着陆的核心。"
 ---
 
