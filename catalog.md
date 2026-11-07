@@ -7319,36 +7319,36 @@
 ### Roadmaps（路线页）
 
 - [成长路线总览](roadmap/README.md) — 本目录用于承载 `Robotics_Notebooks` 的成长路线设计。 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 BFM（人形行为基础模型）](roadmap/depth-bfm.md) — 摘要**：面向"想用一个 checkpoint 控住人形全身"的纵深路线，从 RL locomotion 与动捕数据基座、动作跟踪谱系（DeepMimic → ASE → PHC → Masked `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](roadmap/depth-classical-control.md) — 摘要**：面向"想用基于模型的传统控制栈驱动人形机器人"的纵深路线，从简化模型（LIP/ZMP）到 Centroidal 轨迹优化、MPC，再到 TSID/WBC 与真机状态估计，按 Stage  `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是接触丰富的操作任务](roadmap/depth-contact-manipulation.md) — 摘要**：面向"装配、拧螺丝、插拔等需要精细接触"的操作任务的纵深路线，按 Stage 0–3 串通从阻抗控制到 ACT / Diffusion Policy 的核心方法；本路线是 [运动控制主路 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是跨本体迁移（Cross-Embodiment）](roadmap/depth-cross-embodiment.md) — 摘要**：面向"想让一个策略适配不同本体——换夹爪、换相机、换一台人形甚至换一类形态都不必从零重训"的纵深路线，从「本体差异到底差在哪几层」的画像，到统一动作/状态接口、形态感知架构、多本体混训与 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是具身数据（采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比与飞轮）](roadmap/depth-embodied-data.md) — 摘要**：面向"想把具身数据当成一条可交付的工程管线来做"的纵深路线，从数据口径与金字塔分层（可扩展性 × 机器人对齐两轴、真机/UMI/Ego-Exo/仿真/通用五层），到采集范式与装置选型（遥 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）](roadmap/depth-embodied-eval.md) — 摘要**：面向"训完一个具身模型，接下来怎么『测/证明它』"的纵深路线，从评测目的与四层闭环边界，到 ① 具身大脑/MLLM 认知评测、② 世界模型预测保真度评测、③ 策略成功率与过程/判据评测， `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](roadmap/depth-humanoid-boxing.md) — 摘要**：面向"让两台人形机器人在擂台上像人一样对打"的纵深路线，从对抗全身任务的问题定义与自主 / 遥操作两条产品路线出发，经拳击 MoCap 的全身跟踪基座、技能蒸馏到潜空间动作流形，再到两玩 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](roadmap/depth-humanoid-hardware-design.md) — 摘要**：面向"想从一张任务需求做到一台能上电、能跑控制、能交付的人形整机"的纵深路线，从整机指标与质量/功率/延迟三大预算，到构型与机械布局、结构详设与验证、电气架构与配电、EMC 接地与板级落 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）](roadmap/depth-humanoid-soccer.md) — 摘要**：面向"让人形机器人追球、射门、打整场比赛"的纵深路线，从 RoboCup 任务全景与感知–决策–运动的耦合问题出发，经参数化全向行走与跌倒恢复的运动基座、球/场地/对手的机载感知，到闭环 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）](roadmap/depth-humanoid-swarm-performance.md) — 摘要**：面向"让一群人形机器人同台整齐跳舞、变换队形、协同炫技"的纵深路线（简写 **HSP**，Humanoid Swarm Performance）。从群控展演的任务谱系与"预编排时间轴 v `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 ICL（具身上下文学习）](roadmap/depth-icl.md) — 摘要**：面向"想让机器人读完一条示范就会做新任务、且不动权重"的纵深路线，从「什么才算真 ICL」的判别边界，到示范表征与动作 token、遥操作示范与人类视频两条数据线，再到零梯度上下文 /  `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是模仿学习与技能迁移](roadmap/depth-imitation-learning.md) — 摘要**：面向"从人类演示数据让机器人学习技能"的纵深路线，从时序建模基础到 ASE / Diffusion Policy，按 Stage 0–6 串通核心方法；本路线是 [运动控制主路线](mo `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 Loco-Manipulation（移动操作）](roadmap/depth-loco-manipulation.md) — 摘要**：面向"让机器人边走边动手（搬箱、开门、端托盘）"的纵深路线，从行走与操作的全身耦合问题出发，经全身控制基座、遥操作与数据采集、全身技能学习，到统一生成式模型与导航–操作联合，按 Stag `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是模型架构（骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署）](roadmap/depth-model-architecture.md) — 摘要**：面向"想知道一条机器人策略该用什么网络、多宽多深、动作怎么出"的纵深路线，从"由控制回路反推函数族"的选型判据出发，沿 MLP / CNN / RNN / Transformer / S `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）](roadmap/depth-motion-generation.md) — 摘要**：面向"想用生成模型造出人体/人形动作"的纵深路线，从生成模型基础（扩散 / 流匹配）与动作表示、文本-动作数据集，到生成骨干主线（MDM 式扩散 → 可控生成 → HY-Motion / `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）](roadmap/depth-motion-retargeting.md) — 摘要**：面向"想把人体/动物动捕、视频、生成动作变成机器人可执行参考轨迹"的纵深路线，从重定向的问题定义与数据管线定位、运动学优化工具箱、参考动作数据源与质量控制，到方法谱系主线（运动学优化 G `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）](roadmap/depth-navigation.md) — 摘要**：面向"让机器人知道自己在哪、该往哪走"的纵深路线，从导航栈分层与 SLAM / 状态估计基座，到经典 ROS 2 导航闭环，再到学习型导航、视觉–语言导航（VLN）与导航 VLA / W `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 PCB 设计（电路零基础 → 第一块板 → 原理图 → Layout → 调试 → 功率 / 高速 / EMC → 量产）](roadmap/depth-pcb-design.md) — 摘要**：面向"从没画过电路板，想一路学到能独立交付机器人驱动板、传感器板与主控载板"的纵深路线：从电压电流、万用表与焊接起步，用一块双层小板走通 KiCad 全流程，再把原理图、Layout、调 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) — 摘要**：面向"让机器人看着地形上楼梯、跨障碍、跑酷"的纵深路线，从本体感知盲走基线到地形表征、感知策略训练，再到楼梯/跑酷进阶与导航栈整合，按 Stage 0–4 串通核心方法；本路线是 [运动 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](roadmap/depth-real2sim.md) — 摘要**：面向"想把真实世界变成能在仿真里训练与评测的资产"的纵深路线，从"可仿真（simulation-ready）"判据与 Real2Sim vs Sim2Real 定位，到几何与外观重建（3 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是人形 RL 运动控制](roadmap/depth-rl-locomotion.md) — 摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-co `📅unknown` `[roadmap_page]`
-- [路线（纵深）：扩散与流匹配策略（Diffusion & Flow Matching）](roadmap/depth-robotics-diffusion-dit-flow.md) — 摘要**：面向「已会 BC/ACT，想沿 **Diffusion Policy → Transformer 去噪 → 大型 RDT → Flow Matching VLA → NVIDIA 人形  `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是火箭回收控制（动力下降制导 → 无损凸化 → 6-DoF 序列凸化 → 姿态与推力矢量 → 导航与机载求解 → 全剖面回收）](roadmap/depth-rocket-landing.md) — 摘要**：面向"想让一枚火箭自己飞回来、在指定点竖直落稳"的纵深路线。从变质量刚体动力学与制导/导航/控制分层讲起，经 Apollo 以来的经典下降制导与最优控制结构，到无损凸化（LCvx / G `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 RSI（递归自我改进）](roadmap/depth-rsi.md) — 摘要**：面向"想让研发闭环自己变强、并把这套东西用到机器人上"的纵深路线，从「四层判据 + 改的是哪个 artifact」的判别边界出发，沿着被系统改动对象逐层内收的顺序——记忆与技能库 → 权 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL / 真机安全部署）](roadmap/depth-safe-control.md) — 摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，最后落到真机上的分层安全部署（急停 / 安全状态机 / 跌倒减损  `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）](roadmap/depth-sim2real.md) — 摘要**：面向"想把仿真里训好的策略稳定搬上真机"的纵深路线，从 domain gap 六类来源画像与方法三分（仿真端随机化 / 分布对齐 / 真机适应），到资产与执行器对齐（SysID / Ac `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](roadmap/depth-teleoperation.md) — 摘要**：面向"想搭一套让人实时操控人形机器人、并顺带采集高质量示范数据"的纵深路线，从遥操作的问题定义与输出形态定位、输入接口与硬件通道选型、设备信号到机器人指令的映射与延迟/双边稳定，到**人 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）](roadmap/depth-torque-motor-design.md) — 摘要**：面向"想把关节电机从任务指标一路做到可验收力矩闭环模组"的纵深路线，从电机学地基与 TN/TI 读图，到关节指标定义与执行器架构选型、电磁热设计、驱动硬件与电流环、电机驱动 PCB 设计 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 VLA（视觉-语言-动作模型）](roadmap/depth-vla.md) — 摘要**：面向"想让机器人听懂指令干活"的纵深路线，从具身模型分类学、模仿学习策略基座，到 VLA 语义策略主线（RT 系列 → OpenVLA → π0）、数据与 Scaling，再到部署整合与 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 WAM（世界–动作模型）](roadmap/depth-wam.md) — 摘要**：面向"想让策略在出动作前显式预知世界会怎么变"的纵深路线，从 VLA / 世界模型 / WAM 的边界与 Cascaded–Joint 族谱，到生成式世界模型与动力学基座，再到 Casc `📅unknown` `[roadmap_page]`
+- [人形行为基础模型（BFM）](roadmap/depth-bfm.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [传统模型控制（Classical Control）](roadmap/depth-classical-control.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [接触丰富的操作任务（Contact-Rich Manipulation）](roadmap/depth-contact-manipulation.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [跨本体迁移（Cross-Embodiment）](roadmap/depth-cross-embodiment.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [具身数据（Embodied Data）](roadmap/depth-embodied-data.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [具身模型测评（Embodied Evaluation）](roadmap/depth-embodied-eval.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [人形拳击（Humanoid Boxing）](roadmap/depth-humanoid-boxing.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [人形整机硬件设计（Humanoid Hardware Design）](roadmap/depth-humanoid-hardware-design.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [人形足球（Humanoid Soccer）](roadmap/depth-humanoid-soccer.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [人形群控展演（Humanoid Swarm Performance）](roadmap/depth-humanoid-swarm-performance.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [具身上下文学习（ICL）](roadmap/depth-icl.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [模仿学习与技能迁移（Imitation Learning & Skill Transfer）](roadmap/depth-imitation-learning.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [移动操作（Loco-Manipulation）](roadmap/depth-loco-manipulation.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [模型架构（Model Architecture）](roadmap/depth-model-architecture.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [动作生成（Motion Generation）](roadmap/depth-motion-generation.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [动作重定向（Motion Retargeting）](roadmap/depth-motion-retargeting.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [导航（Navigation）](roadmap/depth-navigation.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [PCB 设计（PCB Design）](roadmap/depth-pcb-design.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [真实到仿真（Real2Sim）](roadmap/depth-real2sim.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [人形强化学习运动控制（Humanoid RL Locomotion）](roadmap/depth-rl-locomotion.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [扩散与流匹配策略（Diffusion & Flow Matching）](roadmap/depth-robotics-diffusion-dit-flow.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [火箭回收控制（Rocket Landing）](roadmap/depth-rocket-landing.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [递归自我改进（RSI）](roadmap/depth-rsi.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [安全控制（Safe Control）](roadmap/depth-safe-control.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [仿真到真机迁移（Sim2Real）](roadmap/depth-sim2real.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [遥操作（Teleoperation）](roadmap/depth-teleoperation.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [力矩控制电机设计（Torque Motor Design）](roadmap/depth-torque-motor-design.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [视觉-语言-动作模型（VLA）](roadmap/depth-vla.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [世界–动作模型（WAM）](roadmap/depth-wam.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
 - [主路线：运动控制 → 物理智能全栈成长路线](roadmap/motion-control.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
 
 ### Tech-map Nodes（技术栈节点）
