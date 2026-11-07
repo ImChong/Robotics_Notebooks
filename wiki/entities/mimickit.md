@@ -109,7 +109,7 @@ flowchart TD
     ASE --> LCP
 ```
 
-- **AWR**：Advantage-Weighted Regression，框架提供的 **off-policy** 算法，作为 PPO（on-policy、样本效率差）的替代；读 [AWR](../methods/awr.md)。
+- **AWR**：Advantage-Weighted Regression，框架提供的 **off-policy** 算法，作为 PPO（on-policy）之外的另一种 off-policy 训练选择；读 [AWR](../methods/awr.md)。
 
 ## 核心原理：核心架构（概念分层）
 

@@ -127,7 +127,7 @@ flowchart TB
 
 - **无动作标签视频：** 训练 VQ-VAE **latent action**（编码器吃 $x_t$ 与 $x_{t+H}$，解码器重建 $x_{t+H}$；训练后取编码器的量化前连续嵌入作标签，当作独立的「LAPA」embodiment）与 **IDM 伪动作**（沿用 DiT + SigLIP-2、flow-matching 训练、每个 embodiment 单独训 3 万或 6 万步），把人类/神经视频当作额外 embodiment 纳入 flow-matching。人类视频来源：Ego4D、Ego-Exo4D、Assembly-101、EPIC-KITCHENS、HOI4D、HoloAssist、RH20T-Human；真机来源另含 OXE 子集（RT-1、Bridge-v2、Language Table、DROID、MUTEX、RoboSet、Plex）与 AgiBot-Alpha（14 万条）。预训练总计约 **8375.7 小时 / 5.93 亿帧**（真机 3288.8 h、人类视频 2517.0 h、仿真 1742.6 h、神经 827.3 h，Table 7）。
 - **神经轨迹：** 用 LoRA 微调 WAN2.1-I2V-14B（3000 条 480P×81 帧带语言标注的 GR-1 样本，100 epoch），在 88 小时遥操作基础上生成约 **827 小时**（约 30 万条，≈10×）反事实语言条件轨迹；先由多模态 LLM 枚举物理可行的「把 A 从 B 移到 C」指令，再抽 8 帧让 MLLM 判官过滤并重新标注；生成成本约 10.5 万 L40 GPU 小时。后训练可与真机轨迹 **1:1** 共采样。
-- **仿真轨迹：** DexMimicGen（把人类 demo 切成以物体为中心的子任务片段，按新物体位姿变换、插值拼接并回放，仅保留成功轨迹）在 RoboCasa 框架下，从 Leap Motion 采集的数十条源 demo 出发，为 54 组（源,目标）容器组合各生成 1 万条，预训练共 **54 万条**；预训练 + 后训练合计 **78 万条 ≈ 6500 小时人类演示等价，仅用 11 小时生成**（论文 §2.2/§3.2）。
+- **仿真轨迹：** DexMimicGen（把人类 demo 切成以物体为中心的子任务片段，按新物体位姿变换、插值拼接并回放，仅保留成功轨迹）在 RoboCasa 框架下，从 Leap Motion 采集的数十份源 demo 出发，为 54 组（源,目标）容器组合各生成 1 万条，预训练共 **54 万条**；预训练 + 后训练合计 **78 万条 ≈ 6500 小时人类演示等价，仅用 11 小时生成**（论文 §2.2/§3.2）。
 - **类目级系统化：** 本节为 **单模型配方视角** 的三层金字塔；[具身数据金字塔综述](./paper-data-pyramid-embodied-manipulation.md)（arXiv:2607.24744）将其与 Motus 等模型专属金字塔统一为 **五层类目级坐标系**（真机/UMI/Ego-Exo/仿真/通用 × 六维属性），作跨模型数据选型对照阅读。
 
 ### 3）预训练与后训练
