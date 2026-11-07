@@ -91,8 +91,8 @@ flowchart TD
     MATCH --> FACTOR["LIS 因子图：IMU / 视觉 / 激光 / 闭环约束"]
     VIS -->|"视觉里程计初值"| MATCH
     VIS -->|"视觉里程计因子"| FACTOR
-    VIS --> LOOP["BRIEF + DBoW2 视觉回环候选"]
-    LOOP -->|"激光验证回环"| FACTOR
+    VIS --> LOOPDET["BRIEF + DBoW2 视觉回环候选"]
+    LOOPDET -->|"激光验证回环"| FACTOR
     FACTOR -->|"位姿与 IMU 偏置辅助初始化"| VIS
     IMU --> FACTOR
     FACTOR --> OUTPUT["全局优化里程计 / IMU 高频位姿"]
@@ -114,7 +114,7 @@ sequenceDiagram
     participant IM as imuPreintegration.cpp
     participant FT as feature_tracker_node.cpp
     participant VE as estimator_node.cpp
-    participant LOOP as loop_detection_node.cpp
+    participant LOOPDET as loop_detection_node.cpp
     Sensors->>IP: pointCloudTopic 与 imuTopic
     Sensors->>IM: imuTopic
     Sensors->>FT: IMAGE_TOPIC 图像
@@ -131,9 +131,9 @@ sequenceDiagram
     MO->>MO: laserCloudInfoHandler / updateInitialGuess / scan-to-map
     MO->>MO: 关键帧与因子图优化
     MO-->>IM: PROJECT_NAME/lidar/mapping/odometry
-    VE-->>LOOP: vins/odometry/keyframe_pose 与 keyframe_point
-    LOOP->>LOOP: process / DBoW 视觉回环检测
-    LOOP-->>MO: PROJECT_NAME/vins/loop/match_frame
+    VE-->>LOOPDET: vins/odometry/keyframe_pose 与 keyframe_point
+    LOOPDET->>LOOPDET: process / DBoW 视觉回环检测
+    LOOPDET-->>MO: PROJECT_NAME/vins/loop/match_frame
     MO->>MO: 回环约束验证和图优化
 ```
 
