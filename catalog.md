@@ -733,6 +733,7 @@
 - [Gymnasium（RL 环境 API 标准）](wiki/entities/gymnasium.md) — Gymnasium** 是 Farama Foundation 维护的 **单智能体强化学习环境接口** 与参考环境集合，官方文档见 [gymnasi `📅unknown` `[entity_page]`
 - [Habitat-Sim](wiki/entities/habitat-sim.md) — Habitat-Sim**（平台常简称 **Habitat**）是 Meta AI（原 Facebook AI Research）开源的 **高速 3D 具身仿真器**（[GitHub](http `📅unknown` `[entity_page]`
 - [HabitatGS](wiki/entities/habitatgs.md) — HabitatGS**（HabitatGS：高斯泼溅场景重建（LightNav 数据引擎来源））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实 `📅unknown` `[entity_page]`
+- [HachimoDock / 哈基米机：AI Agent 桌面交互终端](wiki/entities/hachimodock.md) — HachimoDock 是由 Windows/macOS 管理端与 ESP32-P4 小屏组成的桌面交互终端，将电脑端 Agent 任务状态映射为桌宠动画、会话气泡与提醒，并提供按键和语音输入。 `📅unknown` `[entity_page]`
 - [Halley](wiki/entities/halley-ambassador-robot.md) — Halley**（GitHub）是 [GitHubStore《19 款能 `📅unknown` `[entity_page]`
 - [Handroid](wiki/entities/handroid.md) — Handroid** 是北卡罗来纳大学教堂山分校与斯坦福大学团队提出的 **桌面级双形态机器人**：同一套 **27-DoF**、**0.33 m / 2.05 kg** 的 **3D 打印模块化 `📅unknown` `[entity_page]`
 - [动手学强化学习（Hands-on RL / 蘑菇书）](wiki/entities/hands-on-rl-book.md) — 《动手学强化学习》**（社区常称**蘑菇书**）由上海交通大学张伟楠、沈键、俞勇等编写，以 Jupyter Notebook + 图文形式系统讲解强化学习。官方在线阅读与代码运行入口为 [hrl. `📅unknown` `[entity_page]`
