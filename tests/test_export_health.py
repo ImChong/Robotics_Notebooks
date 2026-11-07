@@ -22,7 +22,9 @@ def test_roadmap_item_uses_roadmap_health_rule() -> None:
     item = build_item(path)
     text = path.read_text(encoding="utf-8")
     links = glg.extract_internal_links(text, path)
-    assert (item["health_score"], item["health_gaps"]) == glg.compute_roadmap_health(text, len(links))
+    assert (item["health_score"], item["health_gaps"]) == glg.compute_roadmap_health(
+        text, len(links)
+    )
 
 
 def test_non_graph_pages_have_no_health() -> None:
