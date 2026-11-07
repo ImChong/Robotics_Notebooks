@@ -19,7 +19,10 @@
   describing joint axis i, expressed in fixed-frame coordinates, as a function of the joint variables」（第 6 幕；伴随变换这一步留到 014 不讲）；
   运动旋量 = 螺旋轴 × 转速（3.3.2 节，第 9 集讲过）；转动关节 v = −ω × q（4.1.1 节，第 9 集的算法）。
 - 《Modern Robotics》官方 Python 库（modern_robotics 1.1.1）：JacobianSpace 算这一集的平面两关节（S1 = (0, 0, 1, 0, 0, 0)，S2 = (0, 0, 1, 2, −1, 0)）：
-  零位时两列就是 S1、S2；肩转 90° 时第 2 列 (0, 0, 1, 1, 2, 0)；零位乘 (1, −1) 得 (0, 0, 0, −2, 1, 0)。第 5 幕验算用第 11 集照官方库 FKinSpace 写的 fk_space
+  零位时两列就是 S1、S2；肩转 90° 时第 2 列 (0, 0, 1, 1, 2, 0)；零位乘 (1, −1) 得 (0, 0, 0, −2, 1, 0)。
+  第 6 幕结尾实时的 6 × 6（2026-11-07 用户要求）：例 4.5 的 UR5 螺旋轴（第 11 集列过）按式 (5.11) 在页面里算 J_s(θ1, 0, 0, 0, 0, 0)（00-common.js 的 E.jacS），
+  和 JacobianSpace 在 θ1 = 0、17.2°、30°、40.1° 和一般姿势 (0.3, −0.5, 0.4, 0.2, 0.6, −0.1) 对过，3 位小数全一致；底座转到 20° 时第 2 列 (−0.34, 0.94, 0, −0.08, −0.03, 0)。
+  第 5 幕验算用第 11 集照官方库 FKinSpace 写的 fk_space
   （MatrixExp6、VecTose3）。
 - NumPy 文档：numpy.column_stack「Stack 1-D arrays as columns into a 2-D array」；@ 是矩阵乘法（第 4 集，numpy.matmul）；ndarray.round。
 - 第 5 幕的代码按 Python 3.13 + NumPy 2.5.3 + modern_robotics 1.1.1 实跑：print(J) → [[-2  0] [ 3  2]]，print(J @ theta_dot) → [-2  1]，

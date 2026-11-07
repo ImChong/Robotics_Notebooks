@@ -669,6 +669,30 @@
     var h = J[2], e = J[1];
     return [-h[1] * r1 - (h[1] - e[1]) * r2, h[0] * r1 + (h[0] - e[0]) * r2];
   };
+  /* ── 空间雅可比 J_s(θ)（《Modern Robotics》5.1.1 节式 (5.11)：第 1 列是 S₁，第 i 列 = Ad(e^[S₁]θ₁ ⋯ e^[Sᵢ₋₁]θᵢ₋₁)(Sᵢ)；
+     螺旋轴都是转动关节，ω 长度为 1）。E.jacS(Slist, th) → 6 × n（按行存：前 3 排 ω、后 3 排 v）。
+     第 6 幕用例 4.5 的 UR5 螺旋轴（第 11 集列过），和官方库 JacobianSpace 核对过（θ₁ = 0、17.2°、30°，见 ../ep013.py） ── */
+  E.UR5_S = [[0, 0, 1, 0, 0, 0], [0, 1, 0, -0.089, 0, 0], [0, 1, 0, -0.089, 0, 0.425], [0, 1, 0, -0.089, 0, 0.817], [0, 0, -1, -0.109, 0.817, 0], [0, 1, 0, 0.006, 0, 0.817]];
+  E.jacS = function (SL, th) {
+    function mm(A, B) { return [0, 1, 2].map(function (i) { return [0, 1, 2].map(function (j) { return A[i][0] * B[0][j] + A[i][1] * B[1][j] + A[i][2] * B[2][j]; }); }); }
+    function mv(A, v) { return [0, 1, 2].map(function (i) { return A[i][0] * v[0] + A[i][1] * v[1] + A[i][2] * v[2]; }); }
+    function add(A, B, k) { return A.map(function (r, i) { return r.map(function (x, j) { return x + k * B[i][j]; }); }); }
+    function hat(w) { return [[0, -w[2], w[1]], [w[2], 0, -w[0]], [-w[1], w[0], 0]]; }
+    var I = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+    function expS(S, t) {   // 转动关节：R = I + sin θ [ω] + (1 − cos θ)[ω]²，p = (Iθ + (1 − cos θ)[ω] + (θ − sin θ)[ω]²) v（原书式 (3.51)(3.88)）
+      var W = hat(S.slice(0, 3)), W2 = mm(W, W);
+      var R = add(add(I, W, Math.sin(t)), W2, 1 - Math.cos(t));
+      var G = add(add(I.map(function (r) { return r.map(function (x) { return x * t; }); }), W, 1 - Math.cos(t)), W2, t - Math.sin(t));
+      return { R: R, p: mv(G, S.slice(3)) };
+    }
+    var T = { R: I, p: [0, 0, 0] }, cols = [];
+    SL.forEach(function (S, i) {
+      if (i > 0) { var e = expS(SL[i - 1], th[i - 1]); T = { R: mm(T.R, e.R), p: mv(T.R, e.p).map(function (x, k) { return x + T.p[k]; }) }; }
+      var w = mv(T.R, S.slice(0, 3)), v = mv(T.R, S.slice(3)), pw = mv(hat(T.p), w);   // Ad_T(S) = (R ω, [p] R ω + R v)
+      cols.push(w.concat(v.map(function (x, k) { return x + pw[k]; })));
+    });
+    return [0, 1, 2, 3, 4, 5].map(function (r) { return cols.map(function (c) { return c[r]; }); });
+  };
   // 网格坐标里的箭头：E.gv(parent, P, color, w, opts).at(x0, y0, x1, y1)
   E.gv = function (parent, P, color, w, opts) {
     var v = E.vec(parent, color, w || 4.5, opts || { head: 15 });

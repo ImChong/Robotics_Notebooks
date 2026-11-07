@@ -10,7 +10,7 @@
 // 句 7「肩先转了九十度」胳膊绕肩转 90°（同第 11 集：肘到 (−2, 1)、手到 (−4, 1)），「肘的轴挪了地方」肘的 ⊙ 亮；
 // 句 8 照第 9 集：白箭头 (−2, 1) → 原点 = (2, −1)，转 90°：红 2 × (0, 1)、绿 (−1) × (−1, 0)，加起来 (1, 2)；
 // 句 9「零、零、一、一、二、零」右栏新的一列，和零位时的 (0, 0, 1, 2, −1, 0) 对比，变了的两个数框亮；
-// 句 10 回到斜着看的 UR5：「六乘六」右栏 6 个格子一排（J₁…J₆），「每一列」各对应一根轴，「前面的关节一转」底座来回转，后面五根轴跟着挪；
+// 句 10 回到斜着看的 UR5：「六乘六」右栏 6 个格子一排（J₁…J₆），「每一列」各对应一根轴，「前面的关节一转」底座朝一个方向平滑转 30°，后面五根轴跟着挪，右栏实时的 6 × 6（例 4.5 的螺旋轴按式 (5.11) 算）跟着变；
 // 句 11「站在不动的底座上看」底座上画固定的坐标系 {s}，「站在手上看」手上的坐标系 {b} 亮，「第十四集讲」右栏写。
 // 时刻取自配音的逐词时间，见 ../ep013.py。
 (function () {
@@ -26,12 +26,13 @@
     rot90: 57.85, rotA: [58.4, 59.6], elbow: 59.69, el21: 60.8, moved: 61.96, col: 63.53, byNow: 64.26,
     ep9b: 67.13, toO: 68.2, d21: 70.3, turn: [71.49, 72.3], take2b: 72.49, n02: 73.61, takeM1: 74.73, n10: 76.07, sum: 77.14, n12: 77.84,
     newCol: 79.72, becomes: 80.74, nums: 81.31, diff: 84.3, out2d: 86.6,
-    six: 86.98, j66: 89.12, eachCol: 90.8, axisNow2: 91.44, front: 94.03, follow: 95.48, wag: [94.0, 97.9],
+    six: 86.98, j66: 89.12, eachCol: 90.8, axisNow2: 91.44, front: 94.03, follow: 95.48, turn6: [94.03, 97.6],
     base: 99.54, other: 101.91, handV: 103.08, ep14: 104.25
   };
   var END = 106.47;
+  var TH6 = 20 * Math.PI / 180;   // 句 10 底座转多少（单向，逆时针 20°）：转 30° 时 S₂、S₃、S₄、S₆ 差不多正对镜头、压成很短一段；顺时针转手会伸出画面
   // 斜着看的 UR5：标签摆法和每根轴画多长，同 011 第 5 幕（零位：胳膊平伸）
-  var LAB = [[1, 0, -12, 'middle'], [0, -18, 6, 'end'], [0, -18, 6, 'end'], [0, -12, 16, 'end'], [0, -10, 4, 'end'], [1, 14, 6, 'start']];
+  var LAB = [[1, 0, -12, 'middle'], [0, -18, 6, 'end'], [0, -18, 6, 'end'], [0, -22, 32, 'end'], [0, -10, 4, 'end'], [1, 14, 6, 'start']];
   var LEN = [[-0.05, 0.32], [-0.2, 0.2], [-0.18, 0.18], [-0.16, 0.16], [-0.15, 0.15], [-0.14, 0.14]];
 
   E.scenes[5] = {
@@ -122,19 +123,19 @@
       // 句 10–11：6 × 6
       var gD = grp();
       var e0 = RK.line(gD, X, 40, [['6 个关节：', E.INK, 900], ['雅可比', E.HI, 900], [' 6 × 6', E.INK, 900]], 22);
-      var boxes = [0, 1, 2, 3, 4, 5].map(function (k) {
-        var g = E.el('g', {}, gD), x0 = X + 6 + k * 52;
-        K.paint(E.el('rect', { x: x0, y: 64, width: 42, height: 132, rx: 8, 'stroke-width': 2.5 }, g), E.tint(E.WARN, 14, 'var(--demo-surface)'), E.WARN);
-        E.txt(g, x0 + 21, 136, 'S' + '₁₂₃₄₅₆'[k], 20, E.WARN, 'middle', 900);
-        return g;
-      });
-      var e1 = RK.line(gD, X, 230, [['每一列：一根关节轴', E.INK2], ['此刻', E.INK, 900], ['的螺旋轴', E.WARN, 900]], 19);
-      var e2 = RK.line(gD, X, 264, [['前面的关节一转，后面的轴都跟着挪', E.INK2]], 18);
-      var e3 = RK.line(gD, X, 312, [['站在不动的', E.INK2], ['底座', E.INK, 900], ['上看', E.INK2]], 19);
-      var e4 = RK.line(gD, X, 346, [['站在', E.INK2], ['手', E.INK, 900], ['上看：另一种写法', E.INK2]], 19);
-      var e5 = RK.line(gD, X, 378, [['（第 14 集）', E.MUT, 700]], 17);
+      // 实时的 6 × 6（2026-11-07 用户要求「机械臂旋转的时候实时显示 6 × 6 矩阵的数值」）：《Modern Robotics》例 4.5 的螺旋轴（第 11 集列过），
+      // 按原书式 (5.11) 用 E.jacS 每帧算 J_s(θ₁, 0, 0, 0, 0, 0)，保留 2 位小数；前 3 排是角速度那 3 个数（蓝），后 3 排是线速度（紫）
+      var W6 = [0, 1, 2, 3, 4, 5].map(function () { return ['−0.82', '−0.82', '−0.82', '−0.82', '−0.82', '−0.82']; });
+      var JM = E.matN(gD, X + 172, 146, W6, { size: 15, dx: 50, dy: 21, wide: W6, color: function (i) { return i < 3 ? E.OMEGA : E.V; } });
+      var jHead = [0, 1, 2, 3, 4, 5].map(function (k) { return E.txt(gD, JM.pos(0, k)[0], JM.box[1] - 8, 'S' + '₁₂₃₄₅₆'[k], 17, E.WARN, 'middle', 900); });
+      var thRow = E.txt(gD, X, 238, '', 17, E.INK2, 'start', 700);
+      var e1 = RK.line(gD, X, 268, [['每一列：一根关节轴', E.INK2], ['此刻', E.INK, 900], ['的螺旋轴', E.WARN, 900]], 19);
+      var e2 = RK.line(gD, X, 296, [['前面的关节一转，后面的轴都跟着挪', E.INK2]], 18);
+      var e3 = RK.line(gD, X, 330, [['站在不动的', E.INK2], ['底座', E.INK, 900], ['上看', E.INK2]], 19);
+      var e4 = RK.line(gD, X, 358, [['站在', E.INK2], ['手', E.INK, 900], ['上看：另一种写法', E.INK2]], 19);
+      var e5 = RK.line(gD, X, 384, [['（第 14 集）', E.MUT, 700]], 17);
 
-      var laid = false;
+      var laid = false, DASHN = [], PAN = 0;   // DASHN：每根轴虚线的段数（第一次量好就不变）；PAN：底座此刻的角度（右栏 6 × 6 用）
       function fr(st, a) { return E.fade(st, a, 0.3); }
       function rot(v, a) { return [v[0] * Math.cos(a) - v[1] * Math.sin(a), v[0] * Math.sin(a) + v[1] * Math.cos(a)]; }
 
@@ -148,16 +149,27 @@
           /* ── 斜着看的 UR5 ── */
           if (on3 > 0) {
             var elW = -E.win(st, T.one, T.so, 0.5) * 0.3 * (0.5 - 0.5 * Math.cos((st - T.one) * 2.2));   // 只往上抬：往下转手会伸出视景框
-            var pan = E.win(st, T.wag[0], T.wag[1], 0.5) * 0.32 * Math.sin((st - T.wag[0]) * 1.9);
+            // 「前面的关节一转」底座朝一个方向平滑转 30° 停住（原先来回摆）；右栏 6 × 6 的数跟着算
+            var pan = TH6 * f(st, T.turn6[0], T.turn6[1] - T.turn6[0]);
+            PAN = pan;
             V.joints({ shoulder_pan_joint: pan, shoulder_lift_joint: 0, elbow_joint: elW, wrist_1_joint: 0, wrist_2_joint: 0, wrist_3_joint: 0 });
             R6.update(LAB, LEN);
+            // 虚线的点划钉在三维轴上：每帧按这根轴此刻投影的长度重排间距（段数固定），点划跟着轴刚性转动。
+            // 原先间距按屏幕像素固定、从轴的一端排起，轴一转投影长度在变，点划沿线爬动、末端一段忽长忽短，看着一直在闪（2026-11-07 用户反馈）
+            R6.lines.forEach(function (ln, k) {
+              var q = (ln.getAttribute('d') || '').match(/-?[\d.]+/g); if (!q || q.length < 4) return;
+              var len = Math.hypot(q[2] - q[0], q[3] - q[1]);
+              if (!DASHN[k]) DASHN[k] = Math.max(3, Math.round(len / 13));
+              var per = len / DASHN[k];
+              ln.setAttribute('stroke-dasharray', (0.62 * per).toFixed(2) + ' ' + (0.38 * per).toFixed(2));
+            });
             V.clearTint();
             if (st < T.out3d) V.tint(['forearm_link', 'wrist_1_link', 'wrist_2_link', 'wrist_3_link'], E.J2, 0.5 * E.win(st, T.one, T.so, 0.4));
             var allAx = st < T.out3d + 0.4 ? fr(st, T.each) : fr(st, T.six);   // 跟着整台 UR5 一起淡出（原先在 out3d 一下没了）
             R6.lines.forEach(function (ln, k) {
               var on = k === 2 ? Math.max(E.win(st, T.one, T.so + 0.5, 0.3), allAx) : allAx;
               E.op(ln, on); E.op(R6.labs[k], on);
-              E.glow(ln, E.WARN, (k === 2 && E.win(st, T.isS, T.so, 0.3) > 0.5) || (st > T.out2d && b(st, T.eachCol + k * 0.3, 0.6) > 0.05) || (st > T.wag[0] && st < T.wag[1] && k > 0));
+              E.glow(ln, E.WARN, (k === 2 && E.win(st, T.isS, T.so, 0.3) > 0.5) || (st > T.out2d && b(st, T.eachCol + k * 0.3, 0.6) > 0.05) || (st > T.turn6[0] && k > 0));   // 转起来以后后面五根一直亮着，不中途熄灭
             });
             var h = R6.handAt(), hp = V.project(h.o);
             hDot.at(hp, 7 + 4 * b(st, T.pos, 0.8)); E.op(hDot, fr(st, T.pos));
@@ -229,7 +241,14 @@
           colOld.rangeBox(3, 4, E.ERR, fr(st, T.diff)); colNew.rangeBox(3, 4, E.ERR, fr(st, T.diff));
           E.op(gD, fr(st, T.six - 0.2));
           E.op(e0.g, fr(st, T.six)); E.op(e0.parts[1], fr(st, T.j66)); E.op(e0.parts[2], fr(st, T.j66));
-          boxes.forEach(function (g, k) { E.op(g, fr(st, T.j66 + 0.12 * k)); E.glow(g, E.WARN, b(st, T.eachCol + k * 0.3, 0.6) > 0.05); });
+          // 实时的 6 × 6：底座此刻转了 θ₁，别的关节都是 0
+          var J6 = E.jacS(E.UR5_S, [PAN, 0, 0, 0, 0, 0]);
+          JM.set(J6.map(function (r) { return r.map(function (x) { return E.num(x, 2); }); }));
+          E.op(JM.g, fr(st, T.j66));
+          jHead.forEach(function (n, k) { E.op(n, fr(st, T.j66 + 0.12 * k)); });
+          [0, 1, 2, 3, 4, 5].forEach(function (k) { JM.hl('c' + k, 0, k, 5, k, E.WARN, Math.max(b(st, T.eachCol + k * 0.3, 0.6), k > 0 ? 0.55 * E.fade(st, T.turn6[0], 0.4) : 0)); });
+          thRow.textContent = 'θ₁ = ' + String(Math.round(PAN * 180 / Math.PI)).replace('-', '−') + '°，其余 0°（例 4.5，单位：米）';
+          E.op(thRow, fr(st, T.j66));
           E.op(e1.g, fr(st, T.eachCol)); E.op(e1.parts[1], fr(st, T.axisNow2)); E.op(e1.parts[2], fr(st, T.axisNow2)); E.op(e2.g, fr(st, T.front));
           E.op(e3.g, fr(st, T.base)); E.op(e4.g, fr(st, T.other)); E.op(e5.g, fr(st, T.ep14));
         }

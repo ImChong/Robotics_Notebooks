@@ -70,8 +70,8 @@
           '　ẋ = J(θ) θ̇；两连杆式 (5.1)(5.2)、图 5.1（第 i 列 = 只转第 i 个关节）',
           '　θ₂ = 0° 时两列共线：奇异（singularity）',
           '**《Modern Robotics》** 5.1、5.1.1 节式 (5.11)：每列是此刻的螺旋轴',
-          '**《Modern Robotics》** 3.3.2 节（运动旋量 = 螺旋轴 × 转速）、4.1.1 节',
-          '**官方代码** modern_robotics：JacobianSpace 核对、FKinSpace 验算',
+          '**《Modern Robotics》** 3.3.2、4.1.1 节，例 4.5（UR5 的 6 根螺旋轴）',
+          '**官方代码** JacobianSpace 核对（含 UR5 的 6 × 6）、FKinSpace 验算',
           '**NumPy 文档** numpy.column_stack、@（matmul）、ndarray.round',
           '**UR5 URDF**（ur_description）：六个转动关节',
           '**Python 3.13、NumPy 2.5.3、modern_robotics 1.1.1** 实跑'
