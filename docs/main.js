@@ -665,22 +665,26 @@
   }
 
   // 节点健康度 3 格小条：亮格数 = 得分（0–3），颜色与图谱「按健康度」一致；
-  // 悬停列出缺项（health_gaps 位掩码，判据见 scripts/generate_link_graph.py compute_health）。
+  // 悬停逐项列出三个得分项是否达标（health_gaps 位掩码，判据见 scripts/generate_link_graph.py compute_health）。
   // 旧缓存数据无 health_score 时输出空格位，保持整列对齐。
-  var HEALTH_GAP_LABELS = ['缺 summary / 来源', '阅读骨架未达标', '原文未通读', 'status 未 complete'];
-  var ROADMAP_HEALTH_GAP_LABELS = ['缺首屏导读', '站内链接不足 5 条', '缺阶段化结构'];
-  // 「2/3 · 原文未通读」：小条悬停提示与详情页 / 路线页元信息「健康度」行共用
+  var HEALTH_ITEM_LABELS = ['摘要与来源', '阅读骨架', '原文通读'];
+  var ROADMAP_HEALTH_ITEM_LABELS = ['首屏导读', '站内链接 ≥5', '阶段化结构'];
+  var HEALTH_GAP_STATUS = 8; // wiki 页 status 为 stub / draft：得分按 1 / 2 封顶
+  // 「2/3 · 摘要与来源（1/1）、阅读骨架（1/1）、原文通读（0/1）」：
+  // 小条悬停提示、节点浮窗、图谱侧栏与详情页 / 路线页元信息「健康度」行共用
   function healthSummaryText(meta) {
     var score = Math.max(0, Math.min(3, meta.health_score));
-    // 旧缓存数据只有得分没有缺项位：只报分数，不误报「三项齐全」
+    // 旧缓存数据只有得分没有缺项位：只报分数，不误报各项达标
     if (typeof meta.health_gaps !== 'number') return score + '/3';
     var isRoadmap = meta.type === 'roadmap_page' || meta.type === 'roadmap';
-    var labels = isRoadmap ? ROADMAP_HEALTH_GAP_LABELS : HEALTH_GAP_LABELS;
-    var gaps = [];
+    var labels = isRoadmap ? ROADMAP_HEALTH_ITEM_LABELS : HEALTH_ITEM_LABELS;
+    var items = [];
     for (var gi = 0; gi < labels.length; gi++) {
-      if (meta.health_gaps & (1 << gi)) gaps.push(labels[gi]);
+      items.push(labels[gi] + '（' + (meta.health_gaps & (1 << gi) ? 0 : 1) + '/1）');
     }
-    return score + '/3 · ' + (gaps.length ? gaps.join('、') : '三项齐全');
+    var text = score + '/3 · ' + items.join('、');
+    if (!isRoadmap && (meta.health_gaps & HEALTH_GAP_STATUS)) text += '；status 未完成，按 stub / draft 封顶';
+    return text;
   }
   function renderHealthBar(meta) {
     if (!meta || typeof meta.health_score !== 'number') {
@@ -693,7 +697,7 @@
     return '<span class="node-health node-health--' + score + '" role="img" title="' +
       escapeHtml(tip) + '" aria-label="' + escapeHtml(tip) + '">' + segs + '</span>';
   }
-  // 元信息行：小条 + 明文（触屏看不到悬停提示，这里直接写出缺项）
+  // 元信息行：小条 + 明文（触屏看不到悬停提示，这里直接写出各项）
   function renderHealthMetaHtml(meta) {
     if (!meta || typeof meta.health_score !== 'number') return '';
     return renderHealthBar(meta) +

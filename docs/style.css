@@ -1756,7 +1756,8 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-meta-item strong {
   font-weight: 650;
 }
-.detail-meta-health-text { color: var(--text-muted); }
+/* 窄处（浮窗 / 侧栏）只在顿号等标点处换行，不把「原文通读」拆成两行 */
+.detail-meta-health-text { color: var(--text-muted); word-break: keep-all; }
 .detail-meta-badge {
   display: inline-flex;
   align-items: center;

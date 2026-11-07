@@ -6814,7 +6814,7 @@
       }
       sbTitle.textContent = info.title || d.label;
       if (sbHealth) {
-        // 与节点浮窗同一行：小条 + 「2/3 · 原文未通读」
+        // 与节点浮窗同一行：小条 + 各得分项（1/1）/（0/1）
         sbHealth.innerHTML = window.RNGraphTooltip?.buildTooltipHealthHtml?.(d) || '';
         sbHealth.hidden = !sbHealth.innerHTML;
       }
