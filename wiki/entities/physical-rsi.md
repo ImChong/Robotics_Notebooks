@@ -167,6 +167,7 @@ flowchart TB
 - [RSI 四 tier 选型](../queries/rsi-four-tier-five-pushes.md)
 - [VLA](../methods/vla.md) · [Manipulation](../tasks/manipulation.md)
 - [paper-compounding-physical-rsi](paper-compounding-physical-rsi.md) — Compounding Physical RSI（arXiv 2611.06654，不同论文；仿真、无代码）
+- [google-grounding-ai-agents-wet-labs](google-grounding-ai-agents-wet-labs.md) — Google Research 博客：湿实验自主化的三条研究线（接地到机器人 / 适配体闭环 / 蛋白结合剂）（湿实验侧的自主化，非机器人本体）
 
 ## 参考来源
 

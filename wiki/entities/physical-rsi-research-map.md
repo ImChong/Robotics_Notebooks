@@ -80,6 +80,7 @@ L5 的表述强调验证和控制变量；仅仅换了程序或得到一次更�
 - [HarnessPAI](./paper-harnesspai.md) 与 [Harness VLA](./paper-harness-vla.md) — 相关 harness 研究。
 - [RSI 四 tier 五 pushes](../queries/rsi-four-tier-five-pushes.md) — RSI 分类与选型框架。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 研究地图中的验证与评测、基准与平台主题可按该链的四层评测选型归位
+- [google-grounding-ai-agents-wet-labs](google-grounding-ai-agents-wet-labs.md) — Google Research 博客：湿实验自主化的三条研究线（接地到机器人 / 适配体闭环 / 蛋白结合剂）（湿实验侧的自主化，非机器人本体）
 
 ## 同名项目消歧
 
