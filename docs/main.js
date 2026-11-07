@@ -6335,6 +6335,9 @@
         .scaleExtent([0.45, 1])
         .filter(function (event) {
           if (event.type === 'wheel' || event.type === 'dblclick') return false;
+          // 触屏拖动留给页面滚动：窄屏下地图几乎占满一屏宽，交给 d3 平移时手指一落到地图上
+          // 页面就滚不动（上滑回顶会卡在地图处）。地图在布局结束时已自动取景，触屏点按节点仍可用。
+          if (event.type.indexOf('touch') === 0) return false;
           return !event.button;
         })
         .on('zoom', function (ev) {

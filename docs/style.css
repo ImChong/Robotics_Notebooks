@@ -1871,7 +1871,6 @@ button.home-wiki-heatmap-cell.is-active {
   border-radius: 8px;
   background: var(--bg);
   cursor: grab;
-  touch-action: none;
 }
 .detail-mini-map-svg:active {
   cursor: grabbing;
