@@ -8,13 +8,10 @@
 
 **摘要**：
 
-| 阶段 | 层级 | 学什么 |
-|------|------|--------|
-| 打底 | L−1 ~ L3 | 技术栈全景，数学、运动学、动力学、控制基础 |
-| 传统控制 | L4 | 简化模型（LIP/ZMP）到全身控制（MPC、TSID/WBC） |
-| 学习方法 | L5 | 强化学习、模仿学习、动作重定向 |
-| 落地 | L6 ~ L7 | Sim2Real，全栈视角与 2024–2026 前沿 |
-| 向上扩展 | L8 ~ L12 | Transformer、动作生成（Diffusion / Flow Matching）、VLA、世界模型、上真机部署 |
+- **一条主线**：L−1 ~ L7 讲透人形 / 双足运动控制，L8 ~ L12 再接大模型与真机部署。
+- **打底与传统控制**：L−1 ~ L3 打底（全景、数学、运动学、动力学、控制基础），L4 讲 LIP/ZMP、MPC、TSID/WBC。
+- **学习与落地**：L5 讲 RL / IL / 动作重定向，L6 ~ L7 讲 Sim2Real 与全栈出口。
+- **向上扩展**：L8 ~ L12 覆盖 Transformer、Diffusion / Flow Matching、VLA、世界模型、ONNX / ROS2 部署。
 
 <a id="roadmap-video"></a>
 
