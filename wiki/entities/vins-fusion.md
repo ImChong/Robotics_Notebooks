@@ -97,7 +97,6 @@ sequenceDiagram
 - [OpenVINS](../entities/open-vins.md)
 - [CO-Calib](../entities/paper-co-calib-multi-fisheye-calibration.md) — 同 HKUST Aerial Robotics 组的多鱼眼标定 plug-in
 - [ORB-SLAM3](../entities/orb-slam3.md)
-- [Kalibr：相机与 IMU 标定](./kalibr.md) — 相机-惯性时空标定与噪声参数来源
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 
 ## 推荐继续阅读

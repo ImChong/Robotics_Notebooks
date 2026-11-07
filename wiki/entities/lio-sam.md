@@ -164,7 +164,8 @@ sequenceDiagram
 
 ## 关联页面
 
-- [LVI-SAM：激光-视觉-IMU 双子系统](./paper-lvi-sam.md) — 在 LIO-SAM 之外增加 VIS/回环与退化场景互补
+- [LVI-SAM：激光-视觉-IMU 双子系统](./paper-lvi-sam.md)
+- [Kalibr：相机与 IMU 时空标定](./kalibr.md) — 传感器标定与时间同步先决条件 — 在 LIO-SAM 之外增加 VIS/回环与退化场景互补
 - [FAST-LIO](../entities/fast-lio.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 
