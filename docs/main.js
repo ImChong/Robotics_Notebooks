@@ -664,6 +664,28 @@
     return renderUpdatesItemRepoStar(meta) + renderUpdatesItemCommunityCat(meta);
   }
 
+  // 节点健康度 3 格小条：亮格数 = 得分（0–3），颜色与图谱「按健康度」一致；
+  // 悬停列出缺项（health_gaps 位掩码，判据见 scripts/generate_link_graph.py compute_health）。
+  // 旧缓存数据无 health_score 时输出空格位，保持整列对齐。
+  var HEALTH_GAP_LABELS = ['缺 summary / 来源', '阅读骨架未达标', '原文未通读', 'status 未 complete'];
+  var ROADMAP_HEALTH_GAP_LABELS = ['缺首屏导读', '站内链接不足 5 条', '缺阶段化结构'];
+  function renderHealthBar(meta) {
+    if (!meta || typeof meta.health_score !== 'number') {
+      return '<span class="node-health node-health--empty" aria-hidden="true"></span>';
+    }
+    var score = Math.max(0, Math.min(3, meta.health_score));
+    var labels = meta.type === 'roadmap_page' ? ROADMAP_HEALTH_GAP_LABELS : HEALTH_GAP_LABELS;
+    var gaps = [];
+    for (var gi = 0; gi < labels.length; gi++) {
+      if (meta.health_gaps & (1 << gi)) gaps.push(labels[gi]);
+    }
+    var tip = '健康度 ' + score + '/3 · ' + (gaps.length ? gaps.join('、') : '三项齐全');
+    var segs = '';
+    for (var si = 0; si < 3; si++) segs += '<i' + (si < score ? ' class="is-on"' : '') + '></i>';
+    return '<span class="node-health node-health--' + score + '" role="img" title="' +
+      escapeHtml(tip) + '" aria-label="' + escapeHtml(tip) + '">' + segs + '</span>';
+  }
+
   function renderActionBadge(action) {
     if (action === 'added') {
       return '<span class="updates-badge updates-badge-added">新增</span>';
@@ -691,6 +713,7 @@
       '<span class="home-latest-row-date">' + escapeHtml(item.recency ? String(item.recency) : '') + '</span>' +
       renderActionBadgeCell(item.action, 'home-latest-row-badge') +
       '<span class="home-latest-row-type">' + escapeHtml(rowType) + '</span>' +
+      renderHealthBar(item) +
       '<span class="home-latest-row-main"><a href="' + escapeHtml(href) + '">' +
       escapeHtml(item.label || item.title || item.detail_id || item.id || '') + '</a>' +
       renderUpdatesItemSuffix(item) +
@@ -754,6 +777,7 @@
         '<li class="home-hub-row">' +
         '<span class="home-hub-row-rank">' + rank + '</span>' +
         '<span class="home-hub-row-type">' + escapeHtml(wikiTypeLabel(hub.type, 'updates')) + '</span>' +
+        renderHealthBar(hub) +
         '<span class="home-hub-row-main"><a href="' + escapeHtml(href) + '">' +
         escapeHtml(hub.label || hub.detail_id) +
         renderUpdatesItemRepoStar(hub) + '</a>' +
@@ -1254,7 +1278,9 @@
           renderActionBadgeCell(rowMeta.action, 'home-latest-row-badge') +
           '<span class="home-latest-row-type">' +
           escapeHtml(rowType) +
-          '</span><span class="home-latest-row-main"><a href="' +
+          '</span>' +
+          renderHealthBar(rowMeta) +
+          '<span class="home-latest-row-main"><a href="' +
           escapeHtml(latestNodeHref(rowMeta)) +
           '">' +
           escapeHtml(rowMeta.label || rowMeta.detail_id) +
@@ -1326,6 +1352,7 @@
         '<li class="updates-item' + (folded ? ' updates-item-folded' : '') + '">' +
         renderActionBadgeCell(meta.action, 'updates-badge-cell') +
         '<span class="updates-item-type">' + escapeHtml(typeLabel) + '</span>' +
+        renderHealthBar(meta) +
         '<span class="updates-item-main">' +
         '<a class="updates-item-link" href="' + escapeHtml(latestNodeHref(meta)) + '">' +
         escapeHtml(meta.label || meta.detail_id) +
@@ -1456,7 +1483,9 @@
             source: nodeMeta.source || 'git',
             path: nodeMeta.path || '',
             has_repo: !!nodeMeta.has_repo,
-            community_label: nodeMeta.community_label || ''
+            community_label: nodeMeta.community_label || '',
+            health_score: nodeMeta.health_score,
+            health_gaps: nodeMeta.health_gaps
           });
         }
         if (!metas.length) continue;

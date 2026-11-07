@@ -60,6 +60,10 @@ def hub_entries(graph_stats: dict[str, Any], key: str) -> list[dict[str, Any]]:
         community_label = hub.get("community_label")
         if community_label:
             entry["community_label"] = str(community_label)
+        # 行内健康度小条：得分 + 缺项位掩码（见 generate_link_graph.compute_health）
+        if hub.get("health_score") is not None:
+            entry["health_score"] = int(hub["health_score"])
+            entry["health_gaps"] = int(hub.get("health_gaps") or 0)
         out.append(entry)
     return out
 
