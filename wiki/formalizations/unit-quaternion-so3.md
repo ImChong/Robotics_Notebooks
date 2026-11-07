@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, math, quaternion, so3, interpolation, embodied-ai, animation]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-08
 related:
   - ./lie-group-rigid-body-motions.md
   - ./se3-representation.md
