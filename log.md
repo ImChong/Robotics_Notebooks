@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | Mechtool 与关联页健康度补读：螺纹文章全文含图、公差仿真 / 轴承 / 膝谐波 / 模态四篇 Zane Hub 文章重读，Mechtool 站点部分读完
+
+## [2026-11-07] ingest | Mechtool 在线机械设计工具站 + 紧固件全接触《常用螺纹基础知识》：新增 mechtool 实体与 screw-thread-basics 概念页，复核公式与表值
+
 ## [2026-11-07] ingest | 健康度补强：physical-rsi 两页重读原文并更新（项目页 2026-10-08 口径、代码已开源）、研究地图补阅读骨架；pylabrobot 文档站补读 machine-agnostic 部分，仍未读完
 
 ## [2026-11-07] ingest | PyLabRobot（文档/仓库/Device 论文/机器清单/可视化器）与 Google 自主湿实验三篇论文及博客：各建独立节点并互链；PyLabRobot 通读未完成（Device 正式版 403、文档站大部分页面未读），保持 draft

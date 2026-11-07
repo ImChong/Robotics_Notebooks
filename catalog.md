@@ -946,6 +946,7 @@
 - [mc_rtc](wiki/entities/mc-rtc.md) — mc_rtc](https://github.com/jrl-umi3218/mc_rtc) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
 - [MCAP](wiki/entities/mcap-log-format.md) — MCAP**（foxglove/mcap，**MIT**）是 **模块化日志容器文件格式**：在单文件中记录 **带时间戳的 `📅unknown` `[entity_page]`
 - [McByte++：无训练的长时体育多目标跟踪](wiki/entities/mcbyte-plus-plus.md) — McByte++** 是 Inria STARS 开发的体育视频多目标跟踪系统：它在 McByte 的检测跟踪框架上整合轻量掩码传播、条件相机运动补偿和在线行人再识别（Re-ID），以便球员被遮挡 `📅unknown` `[entity_page]`
+- [Mechtool 在线机械设计工具](wiki/entities/mechtool.md) — Mechtool**（www.mechtool.cn）是中文机械设计资料导航与在线计算站，把设计手册式资料、标准对照和零部件计算器放在同一入口（站点自述，未核实运营方）。 `📅unknown` `[entity_page]`
 - [MediaPipe](wiki/entities/mediapipe.md) — MediaPipe** 是 Google 维护的 **端侧机器学习** 开源项目：既有可即插即用的 **Solutions / Tasks**（视觉、文本、音频），也有底层的 **Framewor `📅unknown` `[entity_page]`
 - [Mermaid.js（文本定义图表）](wiki/entities/mermaid-js.md) — Mermaid.js**（GitHub）是一个 MIT 开源的 JavaScript 图表库：作者用接近 Mark `📅unknown` `[entity_page]`
 - [Meshroom](wiki/entities/meshroom.md) — Meshroom**（alicevision/Meshroom，MPL-2.0）是 **AliceVision `📅unknown` `[entity_page]`
@@ -6612,6 +6613,7 @@
 - [RTOS 与实时调度](wiki/concepts/rtos-realtime-scheduling.md) — RTOS 与实时调度** 保证任务在 **截止时间前** 完成：MCU 侧常用 FreeRTOS/裸机，主控侧常用 PREEMPT_RT Linux + 隔离核与 FIFO 优先级。 `📅unknown` `[wiki_page]`
 - [Safe Real-World RL Fine-Tuning（真机安全 RL 微调）](wiki/concepts/safe-real-world-rl-fine-tuning.md) — 真机安全 RL 微调** 关心 Sim2Real 链路的**最后一段**：当仿真策略已经能跑、但真机上还差最后几成性能时，如何在**真实机器人上继续用 RL 调整 `📅unknown` `[wiki_page]`
 - [Safety Filter（安全过滤器）](wiki/concepts/safety-filter.md) — Safety Filter**：位于高层策略和低层控制器之间的一层在线修正模块。它接收一个“名义动作”或“候选控制输入”，在尽量少改动原动作的前提下，强制满足安全约束，例如关节限位、碰撞距离、接触 `📅unknown` `[wiki_page]`
+- [螺纹基础（分类、尺寸公式、性能等级）](wiki/concepts/screw-thread-basics.md) — 螺纹**是在圆柱或圆锥表面沿螺旋线形成的、具有相同牙型的连续凸起；按用途分连接螺纹、传动螺纹、密封（管）螺纹。本页依据微信公众号「紧固件全接触」的入门手册（2024-04-10）整理，并用 Pyt `📅unknown` `[wiki_page]`
 - [传感器融合（Sensor Fusion）](wiki/concepts/sensor-fusion.md) — 传感器融合**：将来自多个传感器（IMU、摄像头、激光雷达、腿部运动学）的测量值在概率框架下统一融合，估计机器人的位姿、速度和接触状态，为上层控制（MPC / WBC）提供实时、精确的状态输入。 `📅unknown` `[wiki_page]`
 - [概念：仿真评测可复现性 ↔ 真实世界代表性取舍（sim↔real 评测 gap）](wiki/concepts/sim-vs-real-eval-gap.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[wiki_page]`
 - [Sim2Real](wiki/concepts/sim2real.md) — Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。 `📅unknown` `[wiki_page]`
