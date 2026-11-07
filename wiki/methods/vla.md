@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-07
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
@@ -835,3 +835,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [VISTA](../entities/paper-vista-active-exploration.md) — 固定模型，通过仿真主动诊断和自主评估改进技能与决策框架。
 
 - [Liber-0：从人类经验学习机器人操作](../entities/liber-0.md) — 联合视觉预测与动作监督的世界动作模型。
+
+## 故障监测与控制先验补充
+
+- [VLA-Tug](../entities/paper-vla-tug.md)：从骨干特征预测故障起点与模式；分开评估 early detection、校准和干预能力。
+- [Latent RL Priors](../entities/paper-latent-rl-priors.md)：把特权 RL 经验蒸馏为冻结动作先验，以动作监督适配视觉接口；仿真中的示范效率提升不代表总计算效率或真机验证。
