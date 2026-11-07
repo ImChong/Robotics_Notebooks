@@ -3450,8 +3450,8 @@
       } else if (colorMode === 'opensource') {
         rows.push('<div class="legend-title">按开源着色</div>');
         const openRows = [
-          { key: 'open', color: OPENSOURCE_COLOR_OPEN, label: '已开源 — 关联 sources/repos' },
-          { key: 'closed', color: OPENSOURCE_COLOR_CLOSED, label: '未开源 — 无源码归档' },
+          { key: 'open', color: OPENSOURCE_COLOR_OPEN, label: '已开源 — 关联 sources/repos 或 code: 仓库' },
+          { key: 'closed', color: OPENSOURCE_COLOR_CLOSED, label: '未开源 — 无源码归档 / 仓库地址' },
         ];
         for (const row of openRows) {
           const isActive = (focusedOpensource === row.key);

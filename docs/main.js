@@ -565,7 +565,8 @@
     return '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
   }
 
-  // 详情页标题：有 sources/repos 关联时在标题末尾加 ⭐️（与列表行同口径）
+  // 详情页标题：has_repo（导出期判定，见 export_minimal.page_has_repo_source）时在标题末尾加 ⭐️（与列表行同口径）；
+  // 正文 sources/repos 链接为旧缓存数据的兜底
   function detailPageHasRepo(detailPage) {
     if (!detailPage) return false;
     if (detailPage.has_repo) return true;
@@ -8190,8 +8191,7 @@
       }
 
       var explain = queryTokens && queryTokens.length
-        ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
-          + matchExplanation(item, queryTokens) + '</span>'
+        ? '<span class="result-match">' + matchExplanation(item, queryTokens) + '</span>'
         : '';
       var graphBtn = '<a href="' + escapeHtml(graphUrl) + '" class="js-graph-btn" '
         + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
@@ -8206,7 +8206,8 @@
             : '')
         : '';
       return '<article class="card" data-result-url="' + escapeHtml(detailUrl) + '">'
-        + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel)
+        + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">'
+        + '<span class="result-type">' + escapeHtml(typeLabel) + '</span>'
         + renderHealthMetaHtml(item) + explain + '</p>'
         + '<h3><a href="' + escapeHtml(detailUrl) + '">' + escapeHtml(item.title || item.id)
         + renderUpdatesItemRepoStar(item) + '</a>' + graphBtn + '</h3>'

@@ -44,13 +44,24 @@ PAPER_NOTEBOOK_MD_LINK_RE = re.compile(
     r"/papers/[^)]+\.html)\)",
     re.IGNORECASE,
 )
-# 与 generate_link_graph.wiki_has_repo_source 同口径：关联 sources/repos/ 源码归档
+# 「有开源代码」判据（generate_link_graph.wiki_has_repo_source 复用本函数）：详情页 / 列表行 / 浮窗 / 搜索卡片 ⭐️、
+# 图谱「按开源」着色同一口径。① 关联 sources/repos/ 源码归档；② frontmatter `code:` 写的是官方仓库
+# （schema/page-types.md），只认 GitHub / GitLab 的 owner/repo 地址，项目主页（*.github.io）等不算。
 REPO_SOURCE_LINK_RE = re.compile(r"(?:\.\./)*sources/repos/[^)\s]+\.md\b")
+CODE_REPO_URL_RE = re.compile(
+    r"^code:\s*[\"']?https?://(?:www\.)?(?:github|gitlab)\.com/[\w.-]+/[\w.-]+",
+    re.MULTILINE,
+)
 
 
 def page_has_repo_source(text: str) -> bool:
-    """页面正文/frontmatter 是否关联开源仓库源码归档（sources/repos/）。"""
-    return bool(REPO_SOURCE_LINK_RE.search(text or ""))
+    """页面是否有开源代码：关联 sources/repos/ 归档，或 frontmatter code: 指向 GitHub / GitLab 仓库。"""
+    text = text or ""
+    if REPO_SOURCE_LINK_RE.search(text):
+        return True
+    # frontmatter 边界与 search_indexing.parse_frontmatter 一致
+    end = text.find("\n---", 3) if text.startswith("---") else -1
+    return end != -1 and bool(CODE_REPO_URL_RE.search(text[3:end]))
 
 
 def build_ingest_index() -> Dict[str, str]:
