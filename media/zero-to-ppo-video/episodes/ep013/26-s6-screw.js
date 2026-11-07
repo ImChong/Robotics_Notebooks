@@ -6,7 +6,7 @@
 // 句 3「每一列」「关节轴此刻的螺旋轴」六根轴都出来，右栏写，「第十一集提过」；
 // 句 4 换成侧视网格：「零位」肘 (1, 2)、手 (3, 2)，「两列」右栏出 6 × 2 的雅可比（两列就是第 11 集的 S₁、S₂，亮黄、青）；
 // 句 5「乘以转速一和负一」右边乘一列 (1, −1)，「第一列取一份」「第二列取负一份」框亮，「加起来」= (0, 0, 0, −2, 1, 0)（紫）；
-// 句 6「角速度是零」前 3 个数框亮，「小臂不转，只是平移」两个关节按 (1, −1) 来回转、小臂一直水平，「每一点」小臂上三点各一支紫箭头 (−2, 1)；
+// 句 6「角速度是零」前 3 个数框亮，「小臂不转，只是平移」两个关节按 (1, −1) 转（只朝紫箭头的方向）、小臂一直水平，「每一点」小臂上三点各一支紫箭头 (−2, 1)；
 // 句 7「肩先转了九十度」胳膊绕肩转 90°（同第 11 集：肘到 (−2, 1)、手到 (−4, 1)），「肘的轴挪了地方」肘的 ⊙ 亮；
 // 句 8 照第 9 集：白箭头 (−2, 1) → 原点 = (2, −1)，转 90°：红 2 × (0, 1)、绿 (−1) × (−1, 0)，加起来 (1, 2)；
 // 句 9「零、零、一、一、二、零」右栏新的一列，和零位时的 (0, 0, 1, 2, −1, 0) 对比，变了的两个数框亮；
@@ -22,7 +22,7 @@
     so: 22.42, jac: 24.3, each: 24.98, axisNow: 25.68, ep11: 28.25, out3d: 30.8,
     two: 31.22, now: 32.68, zero: 33.72, cols: 35.78, colsS: 36.32,
     times: 39.9, take1: 41.55, take2: 42.68, add: 43.99, res: 44.68,
-    w0: 49.08, noRot: 50.37, trans: 51.32, every: 52.27, same: 54.05, before: 55.4, wig: [50.3, 56.4],
+    w0: 49.08, noRot: 50.37, trans: 51.32, every: 52.27, same: 54.05, before: 55.4, prep: [49.0, 49.9], wig: [50.3, 56.6],
     rot90: 57.85, rotA: [58.4, 59.6], elbow: 59.69, el21: 60.8, moved: 61.96, col: 63.53, byNow: 64.26,
     ep9b: 67.13, toO: 68.2, d21: 70.3, turn: [71.49, 72.3], take2b: 72.49, n02: 73.61, takeM1: 74.73, n10: 76.07, sum: 77.14, n12: 77.84,
     newCol: 79.72, becomes: 80.74, nums: 81.31, diff: 84.3, out2d: 86.6,
@@ -153,7 +153,7 @@
             R6.update(LAB, LEN);
             V.clearTint();
             if (st < T.out3d) V.tint(['forearm_link', 'wrist_1_link', 'wrist_2_link', 'wrist_3_link'], E.J2, 0.5 * E.win(st, T.one, T.so, 0.4));
-            var allAx = st < T.out3d ? fr(st, T.each) : fr(st, T.six);
+            var allAx = st < T.out3d + 0.4 ? fr(st, T.each) : fr(st, T.six);   // 跟着整台 UR5 一起淡出（原先在 out3d 一下没了）
             R6.lines.forEach(function (ln, k) {
               var on = k === 2 ? Math.max(E.win(st, T.one, T.so + 0.5, 0.3), allAx) : allAx;
               E.op(ln, on); E.op(R6.labs[k], on);
@@ -172,7 +172,8 @@
           }
           /* ── 平面上的两个关节 ── */
           if (on2 > 0) {
-            var w = E.win(st, T.wig[0], T.wig[1], 0.5), phi = 0.3 * Math.sin((st - T.wig[0]) * 1.8) * w;
+            // 句 6 按 (1, −1) 一起转：只朝紫箭头的方向转（同第 3 幕）：先顺时针挪开 0.3 弧度（还没画箭头），再一路逆时针转回零位
+            var phi = -0.3 * f(st, T.prep[0], T.prep[1] - T.prep[0]) * (1 - f(st, T.wig[0], T.wig[1] - T.wig[0]));
             var r90 = D90 * f(st, T.rotA[0], T.rotA[1] - T.rotA[0]);
             pn.pose(E.ZERO[0] + phi + r90, r90);
             pn.view.clearTint();
@@ -180,8 +181,9 @@
             jS.at(P(0, 0)); jE.at(pE); hand.at(pH);
             E.glow(jE, E.WARN, b(st, T.moved, 1.0) > 0.05 || b(st, T.col, 0.8) > 0.05);
             sLab.setAttribute('x', (P(0, 0)[0] + 40).toFixed(1)); sLab.setAttribute('y', (P(0, 0)[1] + 30).toFixed(1));   // 原点右下：左上会被转动的胳膊和箭头扫过
-            var rotd = st > T.rotA[0];   // 零位时写在肘的右下（上方是紫色的速度箭头）；转过 90° 以后写在左上（右下是从肘指到原点的白箭头）
-            eLab.setAttribute('x', (pE[0] + (rotd ? -16 : 14)).toFixed(1)); eLab.setAttribute('y', (pE[1] + (rotd ? -14 : 30)).toFixed(1)); eLab.style.textAnchor = rotd ? 'end' : 'start';
+            // 零位时写在肘的右下（上方是紫色的速度箭头）；跟着肩转 90° 慢慢挪到左上（右下是从肘指到原点的白箭头）。原先一下跳过去
+            var rk = f(st, T.rotA[0], T.rotA[1] - T.rotA[0]);
+            eLab.setAttribute('x', (pE[0] + 26 - 52 * rk).toFixed(1)); eLab.setAttribute('y', (pE[1] + 30 - 44 * rk).toFixed(1)); eLab.style.textAnchor = 'middle';
             E.op(sLab, fr(st, T.colsS) * (1 - fr(st, T.rot90))); E.op(eLab, fr(st, T.colsS));   // 原点那边接着要画转 90°，S₁ 先收
             E.op(e21, fr(st, T.el21) * (1 - fr(st, T.toO)));
             // 句 6：小臂上三点的速度（按 (1, −1)：都是 rot90(肘的位置)）
@@ -192,7 +194,7 @@
             var g8 = f(st, T.toO, 0.8), tr = f(st, T.turn[0], T.turn[1] - T.turn[0]);
             dA.at(-2, 1, -2 + 2 * g8, 1 - 1 * g8); E.op(dA.g, (st > T.toO ? 1 : 0) * (1 - fr(st, T.out2d)));
             var dv = rot([2, -1], D90 * tr);
-            dTurn.at(0, 0, dv[0], dv[1]); E.op(dTurn.g, (st > T.turn[0] ? 1 : 0) * (1 - fr(st, T.sum)));
+            dTurn.at(0, 0, dv[0], dv[1]); E.op(dTurn.g, fr(st, T.turn[0] - 0.3) * (1 - fr(st, T.sum)));   // 转之前淡入（原先一下冒出来）
             turnArc.set(Math.atan2(-1, 2), Math.atan2(-1, 2) + D90 * Math.max(tr, 0.01)); E.op(turnArc.g, (tr > 0.01 ? 1 : 0) * (1 - fr(st, T.take2b)));
             red.at(0, 0, 0, 2 * f(st, T.take2b, 0.6)); E.op(red.g, (st > T.take2b ? 1 : 0) * (1 - fr(st, T.out2d)));
             grn.at(0, 2, 1 * f(st, T.takeM1, 0.6), 2); E.op(grn.g, (st > T.takeM1 ? 1 : 0) * (1 - fr(st, T.out2d)));

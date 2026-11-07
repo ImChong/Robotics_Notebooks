@@ -110,11 +110,12 @@
       /* ── 右上：终端（运行时出来） ── */
       var RX = 460, RW = 330;
       var termG = E.el('g', {}, s);
-      var term = E.code(termG, RX, 14, RW, 140, { title: '终端', size: 16, lh: 22 });
+      var term = E.code(termG, RX, 14, RW, 162, { title: '终端', size: 16, lh: 22 });   // 5 排：第 2 次运行 1 句命令 + 4 句输出（原先 4 排，命令出来 0.27 s 就被挤上去，闪一下）
       term.line('$ python3 jacobian.py', T.run + 0.2, { dur: 0.5 });
       var O1 = term.line('{h.o1:[[-2}  {c.o2:0]}', T.jOut, { out: true }), O2 = term.line(' {h.o3:[ 3}  {c.o4:2]]}', T.jOut, { out: true });
       var O3 = term.line('{v.o5:[-2  1]}', T.jOut, { out: true });
-      term.line('$ python3 jacobian.py', T.run2 + 0.1, { dur: 0.4, page: 1 });
+      term.line('', T.after, { dur: 0, page: 1, row: 0 });   // 终端收起时就换到第 2 页：原先第 2 次运行淡入的那 0.3 s 先闪出上一次的输出
+      term.line('$ python3 jacobian.py', T.run2 + 0.1, { dur: 0.4, page: 1, row: 0 });
       term.line('[[-2  0]', T.r21 - 0.3, { out: true, page: 1 }); term.line(' [ 3  2]]', T.r21 - 0.3, { out: true, page: 1 });
       term.line('[-2  1]', T.r21 - 0.3, { out: true, page: 1 });
       // 第 2 次运行：4 句输出，窗口放 4 排（命令那排滚上去）
@@ -130,7 +131,7 @@
           return row;
         }) };
       }
-      var TOP = 44, BOT = 186, TOP2 = 210;
+      var TOP = 44, BOT = 200, TOP2 = 210;
       var n1 = rows(TOP, [[0, [['写成代码', E.HI, 900]], 22], [40, [['第 1 句（第 4 集）：', E.INK2]]], [70, [['import numpy as np', E.INK, 700, 1]], 17],
         [100, [['导入 NumPy，起个短名字 np', E.INK2]], 17]]);
       var n2 = rows(TOP, [[0, [['R', E.HI, 700, 1], ['：转 90° 的矩阵（第 3、9 集）', E.INK2]], 18], [32, [['一个横排一个横排地写（第 4 集）', E.INK2]], 17],

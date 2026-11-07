@@ -663,6 +663,12 @@
     };
     return api;
   };
+  // 手此刻的速度（网格坐标）：J = panel.joints() 的 [肩, 肘, 手]，肩、肘的转速 r1、r2（逆时针为正）。
+  // 第 2、3 幕的算法：只转肩 = 手转 90°，只转肘 = (手 − 肘) 转 90°，再各乘转速加起来。画面里的箭头一律按它画，和胳膊真的运动方向一致
+  E.vHand = function (J, r1, r2) {
+    var h = J[2], e = J[1];
+    return [-h[1] * r1 - (h[1] - e[1]) * r2, h[0] * r1 + (h[0] - e[0]) * r2];
+  };
   // 网格坐标里的箭头：E.gv(parent, P, color, w, opts).at(x0, y0, x1, y1)
   E.gv = function (parent, P, color, w, opts) {
     var v = E.vec(parent, color, w || 4.5, opts || { head: 15 });

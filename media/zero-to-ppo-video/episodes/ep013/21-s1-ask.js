@@ -1,8 +1,8 @@
 // 013 第 1 幕：关节转多快，手走多快——把问题摆出来。左边第 9–12 集的侧视网格 + UR5（第 11 集的零位：肘在 (1, 2)，小臂水平，手在 (3, 2)），右栏一行行写。
 // 句 1「网格」网格淡入，「肩关节在原点」「肘在一、二」⊙ 和坐标，「手」小臂上离肘两格亮紫点、量出 2 格，「三、二」写坐标；
-// 句 2「只看肩和肘」两个 ⊙ 亮，「关节转得多快」两个关节来回转，「转速」两个关节旁出蓝色小弯箭头 + θ̇₁、θ̇₂，「逆时针」「顺时针」右栏各配一个小弯箭头写 + / −；
+// 句 2「只看肩和肘」两个 ⊙ 亮，「关节转得多快」两个关节逆时针慢慢转，「转速」两个关节旁出蓝色小弯箭头 + θ̇₁、θ̇₂，「逆时针」「顺时针」右栏各配一个小弯箭头写 + / −；
 // 句 3「手的速度」「一支箭头」手上出紫色箭头（举例：往右 1 格、往上 2 格），「往右」红色虚线、「往上」绿色虚线分量，「第三集的向量」右栏写；
-// 句 4「肩每秒转一些」「肘也每秒转一些」两个关节一起来回转，「手往什么方向走」手上出虚线箭头 + 问号；
+// 句 4「肩每秒转一些」「肘也每秒转一些」两个关节一起逆时针慢慢转，「手往什么方向走」手上出虚线箭头 + 问号（沿手此刻真的运动方向）；
 // 句 5「先一个一个来」右栏写 ① 只转肩、② 只转肘，「别的关节都不动」。
 // 右栏一行分几段出时，「、」「→」「：」这类符号跟它后面那一段一起出（同 012）。时刻取自配音的逐词时间，见 ../ep013.py。
 (function () {
@@ -35,6 +35,8 @@
       var O = P(0, 0);
       var jS = E.joint(top, E.HI), jE = E.joint(top, E.HI);
       var arcS = E.arcArrow(top, 0, 0, 0.62 * u, E.OMEGA, 3.5, { head: 12 }), arcE = E.arcArrow(top, 0, 0, 0.5 * u, E.OMEGA, 3.5, { head: 11 });
+      // 「顺时针」时换成的顺时针小弯箭头（两个关节同时按原路转回零位）
+      var arcS2 = E.arcArrow(top, 0, 0, 0.62 * u, E.OMEGA, 3.5, { head: 12 }), arcE2 = E.arcArrow(top, 0, 0, 0.5 * u, E.OMEGA, 3.5, { head: 11 });
       var thS = E.tex(top, 0, 0, '\\dot\\theta_1', 24, E.OMEGA, 'middle', { w: 50, h: 40 }), thE = E.tex(top, 0, 0, '\\dot\\theta_2', 24, E.OMEGA, 'middle', { w: 50, h: 40 });
       var hand = E.dot(top, E.V, 7);
       var oLab = E.halo(E.txt(top, O[0] - 14, O[1] + 30, '(0, 0)', 20, E.INK, 'end', 900));
@@ -96,10 +98,12 @@
         draw: function (st, t) {
           if (!laid && s.isConnected) { RK.layout(); laid = true; }
           var f = E.fade, b = E.bump;
-          /* ── UR5：句 2「关节转得多快」两个关节来回转，句 4 再转；别的时候停在零位 ── */
-          var wig = Math.max(E.win(st, T.fast, T.ep9 + 1.2, 0.6), E.win(st, T.shQ, T.out4, 0.6));
-          var w1 = 0.28 * Math.sin(t * 2.0) * wig, w2 = 0.32 * Math.sin(t * 1.6 + 1) * wig;
-          pn.pose(E.ZERO[0] + w1, E.ZERO[1] + w1 + w2);
+          /* ── UR5：只朝画出来的方向转，不来回摆（2026-11-07 用户反馈第 3 幕紫箭头和画面运动方向相反，全片同类改掉）：
+             句 2「关节转得多快」两个关节都逆时针慢慢转（同蓝色小弯箭头），「顺时针」小弯箭头换成顺时针、按原路转回零位；
+             句 4「肩每秒转一些」再一起逆时针转，问号箭头沿手此刻真的运动方向；别的时候停在零位 ── */
+          var A1 = 0.22, A2 = 0.3;   // 肩、肘（相对大臂）各转过多少弧度
+          var k = f(st, T.fast, T.ccw + 1.2 - T.fast) * (1 - f(st, T.cw, 1.8)) + f(st, T.shQ, T.out4 - 0.3 - T.shQ);
+          pn.pose(E.ZERO[0] + A1 * k, E.ZERO[1] + (A1 + A2) * k);
           pn.view.clearTint();
           var J = pn.joints(), pS = P(0, 0), pE = P(J[1][0], J[1][1]), pH = P(J[2][0], J[2][1]);
           E.op(pn.under, f(st, T.grid, 0.5));
@@ -111,12 +115,14 @@
           E.op(hand, fr(st, T.hand));
           E.drawOn(dim, f(st, T.two, 0.5)); E.op(dimL, fr(st, T.two) * (1 - fr(st, T.out1))); if (st > T.out1) E.op(dim, 1 - fr(st, T.out1));
           E.op(hLab, fr(st, T.c32) * (1 - fr(st, T.out1)));
-          // 转速：两个关节旁的小弯箭头（来回转时跟着转的方向翻）
+          // 转速：两个关节旁的小弯箭头，「顺时针」时换成顺时针（同胳膊转的方向）
           var rOn = fr(st, T.rate) * (1 - fr(st, T.out2));
           arcS.g.setAttribute('transform', 'translate(' + pS[0].toFixed(1) + ' ' + pS[1].toFixed(1) + ')');
           arcE.g.setAttribute('transform', 'translate(' + pE[0].toFixed(1) + ' ' + pE[1].toFixed(1) + ')');
-          arcS.set(-0.5, 0.9); arcE.set(-0.2, 1.1);
-          E.op(arcS.g, rOn); E.op(arcE.g, rOn);
+          arcS2.g.setAttribute('transform', arcS.g.getAttribute('transform')); arcE2.g.setAttribute('transform', arcE.g.getAttribute('transform'));
+          arcS.set(-0.5, 0.9); arcE.set(-0.2, 1.1); arcS2.set(0.9, -0.5); arcE2.set(1.1, -0.2);
+          var cwOn = fr(st, T.cw);
+          E.op(arcS.g, rOn * (1 - cwOn)); E.op(arcE.g, rOn * (1 - cwOn)); E.op(arcS2.g, rOn * cwOn); E.op(arcE2.g, rOn * cwOn);
           thS.setAttribute('transform', 'translate(' + (pS[0] - 44).toFixed(1) + ' ' + (pS[1] - 30).toFixed(1) + ')');
           thE.setAttribute('transform', 'translate(' + (pE[0] - 2).toFixed(1) + ' ' + (pE[1] - 52).toFixed(1) + ')');
           E.op(thS, rOn); E.op(thE, rOn);
@@ -128,8 +134,10 @@
           E.op(exRL, fr(st, T.right) * exOn); E.op(exUL, fr(st, T.up) * exOn);
           // 句 4：问号箭头跟着手
           var qOn = fr(st, T.dirQ) * (1 - fr(st, T.out4));
-          qV.set(pH[0], pH[1], pH[0] - 0.9 * u, pH[1] - 1.5 * u); E.op(qV.g, qOn);
-          qM.setAttribute('x', (pH[0] - 1.25 * u).toFixed(1)); qM.setAttribute('y', (pH[1] - 1.7 * u).toFixed(1));
+          var vq = E.vHand(J, A1, A2), lq = Math.hypot(vq[0], vq[1]), dq = [vq[0] / lq * 1.7, vq[1] / lq * 1.7];   // 方向 = 手此刻真的运动方向，长度固定
+          var qT = P(J[2][0] + dq[0], J[2][1] + dq[1]), qL = P(J[2][0] + dq[0] * 1.3, J[2][1] + dq[1] * 1.3);
+          qV.set(pH[0], pH[1], qT[0], qT[1]); E.op(qV.g, qOn);
+          qM.setAttribute('x', qL[0].toFixed(1)); qM.setAttribute('y', (qL[1] + 10).toFixed(1));
           E.op(qM, qOn * (0.6 + 0.4 * Math.max(b(st, T.dirQ + 0.3, 0.8), b(st, T.farQ, 0.8))));
 
           /* ── 右栏 ── */

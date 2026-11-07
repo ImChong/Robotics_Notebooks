@@ -132,8 +132,8 @@
           dSh2.at(R5, 0, FAR, 0); E.op(dSh2.g, (tr2 > 0.02 ? 0.6 : 0) * (1 - fr(st, T.moveC2[0])));
           turnArc2.set(0, D90 * Math.max(tr2, 0.01)); E.op(turnArc2.g, (tr2 > 0.01 ? 1 : 0) * (1 - fr(st, T.moveC2[0])));
           if (st >= T.sh) {
-            var x1 = FAR * m1; c1.at(x1, 0, x1, FAR); E.op(c1.g, st > T.moveC1[0] ? 1 : 0);
-            var x2 = R5 + 2 * m2; c2.at(x2, 0, x2, 2); E.op(c2.g, st > T.moveC2[0] ? 1 : 0);
+            var x1 = FAR * m1; c1.at(x1, 0, x1, FAR); E.op(c1.g, fr(st, T.moveC1[0]));   // 白箭头淡出、亮黄淡入（原先一下换色）
+            var x2 = R5 + 2 * m2; c2.at(x2, 0, x2, 2); E.op(c2.g, fr(st, T.moveC2[0]));
             var c1t = P(x1, FAR), c2t = P(x2, 2);
             c1L.setAttribute('x', (c1t[0] - 12).toFixed(1)); c1L.setAttribute('y', (c1t[1] + 6).toFixed(1)); E.op(c1L, fr(st, T.moveC1[1]) * (1 - fr(st, T.any)));
             c2L.setAttribute('x', (c2t[0] + 12).toFixed(1)); c2L.setAttribute('y', (c2t[1] + 6).toFixed(1)); E.op(c2L, fr(st, T.moveC2[1]) * (1 - fr(st, T.any)));
@@ -141,7 +141,7 @@
           /* 句 6：转速来回变，和只在竖线上伸缩 */
           var w6 = E.win(st, T.wig[0], T.wig[1], 0.4);
           var vy = 0.9 + 2.1 * Math.sin((st - T.wig[0]) * 1.5);   // 两列都朝上：和只在竖线上伸缩（往下最多 1.2 格，原先伸出画面）
-          vv.at(FAR, 0, FAR, vy); E.op(vv.g, w6 * (Math.abs(vy) > 0.15 ? 1 : 0));
+          vv.at(FAR, 0, FAR, vy); E.op(vv.g, w6);   // 不按长度显隐：原先穿过 0 时一下没了又冒出来（闪现）；太短时 E.vec 自己把箭头尖缩小
           if (st > T.wig[0]) { E.op(c1.g, 0.45 + 0.55 * (1 - w6)); E.op(c2.g, 0.45 + 0.55 * (1 - w6)); }
           var no = fr(st, T.lr);
           E.op(noL.g, no); E.op(noR.g, no); E.op(xL, fr(st, T.cant)); E.op(xR, fr(st, T.cant));
