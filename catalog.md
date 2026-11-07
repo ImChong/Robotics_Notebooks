@@ -4367,7 +4367,7 @@
 - [RoboSeed（arXiv:2610.40026）](wiki/entities/paper-roboseed.md) — RoboSeed**（*RoboSeed: Multidimensional Evaluation of Vision-Language-Action and World-Action Model `📅unknown` `[entity_page]`
 - [RoboSkill：Explore, Execute, Evolve](wiki/entities/paper-roboskill.md) — 一句话定义：** RoboSkill 让具身智能体把任务探索和执行经验整理成可复用技能，再用于后续任务的探索与执行，形成“探索—执行—进化”循环。 `📅unknown` `[entity_page]`
 - [RoboSTD（arXiv:2610.36685）](wiki/entities/paper-robostd.md) — RoboSTD**（*RoboSTD: Zero-Shot Single-to-Dual Transfer via Sagittal Mirroring for Bimanual Learning `📅unknown` `[entity_page]`
-- [RoboSteer：行为基础模型可操控性基准](wiki/entities/paper-robosteer-behavior-steerability-benchmark.md) — RoboSteer**（arXiv:2610.10198，[项目页](https://robosteer.github.io `📅unknown` `[entity_page]`
+- [RoboSteer：行为基础模型可操控性基准 / Benchmarking Behavioral Steerability in Behavior Foundation Models](wiki/entities/paper-robosteer-behavior-steerability-benchmark.md) — RoboSteer**（arXiv:2610.10198v2，[项目页](https://robosteer.gith `📅unknown` `[entity_page]`
 - [RoboSynChallenge：合成数据能不能算数，真机说了算](wiki/entities/paper-robosynchallenge.md) — RoboSynChallenge**（*Mastering Real-World Dexterity via Generalizing Synthesized Manipulation Skill `📅unknown` `[entity_page]`
 - [VLA 因果分析：定位动作条件接口并压缩连接](wiki/entities/paper-robot-foundation-model-causal-analysis.md) — 论文用 activation patching 追踪视觉语言信息如何因果影响机器人动作，并将动作专家的条件输入限制在少数关键层以降低计算量。 `📅unknown` `[entity_page]`
 - [Robot Group Joining（arXiv:2609.28467）](wiki/entities/paper-robot-group-joining.md) — Where Should I Join? Robot Group Joining via Language-Guided Goal Prediction**（[项目页](https://robot `📅unknown` `[entity_page]`
