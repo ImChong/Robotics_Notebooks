@@ -288,6 +288,7 @@ Isaac Sim 将一组可复用工作流指南随产品发布，让 AI 编码 Agent
 - [OmniGraph](./omnigraph.md) — 可视化脚本：ROS 2、传感器、控制器与 Replicator 编排
 - [NVIDIA Omniverse NuRec](./nvidia-nurec.md) — USDZ 神经体积 + `OmniNuRecVolumeAPI`
 - [Instant NuRec](./paper-instant-nurec.md) — 驾驶日志前向重建（AV 路径；机器人单目/双目走 3DGRUT）
+- [Adams vs MuJoCo vs Isaac Sim：三类物理问题选型](../comparisons/adams-vs-mujoco-vs-isaac-sim-three-problem-types.md) — 与 Adams / MuJoCo 的分工：三类物理问题选型（含 Isaac Sim 许可与 6.x 版本核对）
 
 ## 一句话记忆
 

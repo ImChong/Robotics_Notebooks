@@ -120,6 +120,7 @@ flowchart LR
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md) — 机器人学习侧平台史（ADAMS 属更早工业 CAE 层）
 - [Locomotion RL 仿真器选型](../queries/simulator-selection-guide.md) — 明确「不要用工业 Adams 替代 RL 仿真器」
 - [Sim2Real](../concepts/sim2real.md) — 仿真可信度与迁移；工业虚拟样机是另一条验证文化
+- [Adams vs MuJoCo vs Isaac Sim：三类物理问题选型](../comparisons/adams-vs-mujoco-vs-isaac-sim-three-problem-types.md) — Adams / MuJoCo / Isaac Sim 按三类物理问题（载荷寿命 / 控制策略 / 感知集成）选型，含 Cadence 收购核对
 
 ## 参考来源
 
