@@ -9,7 +9,7 @@
 - **代码：** https://github.com/PyLabRobot/pylabrobot（MIT，见 [pylabrobot 仓库归档](../repos/pylabrobot.md)）
 - **论文：** [pylabrobot_device_2023.md](../papers/pylabrobot_device_2023.md)
 - **抓取日期：** 2026-11-07（文档站随开发更新，machines 表为动态生成，数据以抓取日为准）
-- **核对范围：** 完整读了首页、Supported Machines（全表逐行含支持程度，约 950 行文本，其中 Mettler Toledo 型号子行逐条为 WIP）、Using the Visualizer（全文）、Installation（安装与依赖分组部分）；Liquid Handling 总览页只有 "TODO: remove this page"，无内容。**文档站其余大量页面（各机器教程、API 参考、贡献者指南等）未逐页阅读**，架构细节改由仓库源码静态阅读补足
+- **核对范围：** 第一轮读了首页、Supported Machines（全表）、Using the Visualizer、Installation。第二轮（2026-11-07，读的是仓库 `docs/` 源文件而非网页渲染）补读：index、User guide 索引、Definitions、Configuration、Devices that need testing、Installation、Raspberry Pi、Default Units，以及 Machine-Agnostic Features 全部页面（Error handling、EventBus 及其五个子页、Logging & Validation 概述 / Logging / Validation、Manual operator、SiLA discovery、Tip-spot generators、Using the simulator（已移除的占位页）、Writing machine-agnostic protocols）；其中 Visualizer、Trackers、Manual operator 与 Logging 的长笔记本 / 页面只读了每页前约 4500 字符。站点范围：sitemap 共 6819 个 URL，其中手写页约 228 个、其余约 6590 个为 API autosummary（由源码 docstring 生成）。**仍未读：** 手写页中的液体处理教程（`00_liquid-handling`）、Resource 管理各页与 `resources/library/*` 厂商目录、Contributor guide（device-driver-guide、event-schemas 等）、Cookbook、23 家厂商的设备 hello-world 页，以及全部 API autosummary 页；架构细节仍由仓库源码静态阅读补足
 - **通读：** 未完成
 
 ## 要点
@@ -35,6 +35,15 @@
 
 ### Installation
 - 需要 Python ≥ 3.10；`pip install pylabrobot`；按通信方式装可选依赖组：serial、usb（Hamilton STAR/STARlet、Tecan EVO 固件）、ftdi、hid、modbus、opentrons、sila 等。
+
+## 第二轮要点（2026-11-07）
+
+- **站点版本：** sitemap 的页面前缀是 `/en/1.0.0b1/`，与仓库 `version.txt` 的 `1.0.0b1` 一致。
+- **Validation：** io 层位于 backend 与硬件之间（Frontends ↔ backends ↔ io ↔ hardware）；`pylabrobot.start_capture` 录制全部读写为 JSON，`pylabrobot.validate` / `end_validation` 回放；不一致时用 Needleman-Wunsch 比对期望与实际；首次录制必须真机；适合 CI。
+- **Logging：** 标准 Python logging，logger 在 `pylabrobot` 名下，额外 `IO`（值 5）级记录原始字节；脚本默认不输出，Jupyter 默认 INFO 到控制台；`setup_logger(log_dir=...)` 写按日期命名的文件（同日多次运行会写同一文件）。
+- **EventBus：** 可选、进程内、订阅者异常与仪器操作隔离；语义事件 `<component>.<operation>.started|completed|failed`，同一操作共享 `operation_id`；另有 `io.read/io.write`、`firmware.command.*` 等诊断事件；单位用默认单位。
+- **ManualOperator：** 协议可 await 人工操作，结果为 completed / cancelled / failed；确认只记录操作员所报，不证明物理操作发生。
+- **其他：** `Strictness`（STRICT / WARN / IGNORE）控制对非法参数的处理；tip-spot 生成器可缓存到磁盘断点续跑；SiLA 1 / 2 设备发现；simulator 页明确写「simulator 已被 Visualizer 取代」；needs-testing 页要求区分 Works / Partly works / Does not work 并说明模拟不算硬件验证。
 
 ## 对 wiki 的映射
 

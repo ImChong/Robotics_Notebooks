@@ -2,7 +2,7 @@
 type: entity
 tags: [harness, rsi, agent, physical-ai, robodojo, vla, hku, kinetix-ai, ai-mmlab, manipulation, open-world]
 status: complete
-updated: 2026-09-28
+updated: 2026-11-07
 related:
   - ./physical-rsi-research-map.md
   - ./robodojo.md
@@ -19,7 +19,9 @@ related:
 sources:
   - ../../sources/sites/mmlab-physical-rsi.md
   - ../../sources/raw/mmlab_physical_rsi_page_extract_2026-09-28.md
-summary: "Physical RSI 1.0（HKU MMLab×Kinetix 项目页）：Darwinian Self-Harness — System 2 agent F 改写 System 1 代码 harness H，具身反馈 τ 驱动 vary–eval–select–inherit；RoboDojo-Sim Overall #1（2026-09-28：Score 36、SR 31%）；页内无 arXiv/GitHub，代码待发布。"
+original:
+  - ../../sources/sites/mmlab-physical-rsi.md
+summary: "Physical RSI 1.0（HKU MMLab×Kinetix 项目页）：Darwinian Self-Harness — System 2 agent F 改写 System 1 代码 harness H，具身反馈 τ 驱动 vary–eval–select–inherit；RoboDojo-Sim Overall #1（页内 2026-10-08 口径：Score 36.27、SR 31.38%）；项目页无 arXiv，核心框架代码已在 GitHub 公开（Apache-2.0），权重未见。"
 ---
 
 # Physical RSI 1.0（Recursive Self-Harness）
@@ -29,8 +31,8 @@ summary: "Physical RSI 1.0（HKU MMLab×Kinetix 项目页）：Darwinian Self-Ha
 | 机构 | 香港大学 MMLab；凯涅克斯人工智能（Kinetix AI） |
 |------|-----------------------------------------------|
 | 项目页 | <https://mmlab.hk/research/PhysicalRSI> |
-| 主榜单 | [RoboDojo Leaderboard](https://robodojo-benchmark.com/leaderboard)（页内 **2026-09-28** Overall **#1**） |
-| 开源（2026-09-28 核查） | **待发布** — 项目页未列 arXiv / GitHub / 权重 |
+| 主榜单 | [RoboDojo Leaderboard](https://robodojo-benchmark.com/leaderboard)（页内 **2026-10-08** 口径 Overall **#1**，Score **36.27** / SR **31.38%**；2026-09-28 初版为 36 / 31%） |
+| 开源（2026-11-07 复核） | 核心框架 [PhysicalRSI/PhysicalRSI](https://github.com/PhysicalRSI/PhysicalRSI)（Apache-2.0，`physicalrsi` 0.3.0，README 标 *Core release*）；评测接入 [XPolicyLab `policy/PhysicalRSI`](https://github.com/XPolicyLab/XPolicyLab)；项目页仍未列 arXiv / 权重 |
 
 ## 一句话定义
 
@@ -49,10 +51,10 @@ summary: "Physical RSI 1.0（HKU MMLab×Kinetix 项目页）：Darwinian Self-Ha
 
 ## 为什么重要
 
-- **RoboDojo 高难度综合榜的公开 #1（页内叙事，2026-09-28）：** Overall **Score 36 / SR 31%**，把讨论从「单任务 demo」拉回 **五维 42 任务** 上的 **generalist manipulation** 压力测试。
+- **RoboDojo 高难度综合榜的公开 #1（页内叙事，2026-10-08 口径）：** Overall **Score 36.27 / SR 31.38%**（同页榜单次席 Awomo-0.5 为 35.34 / 29.64，差距不大），把讨论从「单任务 demo」拉回 **五维 42 任务** 上的 **generalist manipulation** 压力测试。
 - **Harness 作为一等公民：** 与 [HarnessPAI](./paper-harnesspai.md)、[Harness VLA](./paper-harness-vla.md)、[Zetta ζ](./paper-zetta.md) 同族，但强调 **Native S1–S2 协同进化** 与 **code-policy skill 库**（页内 **212** clips / **40** tasks）而非仅 episode 级记忆。
 - **相对纯 VLA / WAM 的定位：** 页内将 **VLA/WAM** 标为 compounding error 与 OOD 风险，将 **GPT-as-policy** 标为慢与贵；Physical RSI 把 **π₀.₅** 降格为 **可编排 motor tool**，主力在 **可读写、可评测的 harness**。
-- **与公益榜规则对齐：** 长期复现仍须走 RoboDojo **verified 开源训推 + checkpoint**（见 [RoboDojo](./robodojo.md)）；当前项目页 **尚未** 给出仓库，读榜时需区分 **宣传页分数** 与 **可复现 artifact**。
+- **与公益榜规则对齐：** 长期复现仍须走 RoboDojo **verified 开源训推 + checkpoint**（见 [RoboDojo](./robodojo.md)）；项目页现已链到核心框架仓库与 XPolicyLab 接入目录，但 `eval.sh` 需要自备 agent API key 与冻结的 skill 配置，仓库 README 说基准适配器在 `benchmarks-and-demos` 分支；读榜时仍需区分 **宣传页分数** 与 **可复现 artifact**。
 
 ## 核心原理
 
@@ -121,16 +123,27 @@ flowchart TB
   PRSI --> SK
 ```
 
-## 实验与评测（项目页口径，2026-09-28）
+## 实验与评测（项目页口径，2026-10-08 复核）
 
 ### Overall（页内 Official Overall）
 
 | 指标 | Physical RSI |
 |------|----------------|
 | 排名 | **#1** |
-| Score | **36** |
-| SR | **31%** |
+| Score | **36.27** |
+| SR | **31.38%** |
 
+### 五维类别（页内 `category-analysis.json`，Score / SR）
+
+| 维度 | Physical RSI | 同页对照中更高者 |
+|------|--------------|------------------|
+| Generalization | 21.30 / 15.62 | Simate-beta 35.09 / 27.95；GPT-6 Astra 33.36 / 30.50；Liber-0 Lite 25.36 / 19.11 |
+| Precision | 38.05 / 32.50 | 无（Liber-0 Lite 36.60 / 31.08 次之） |
+| Long horizon | 46.37 / 37.33 | Simate-beta 57.84 / 43.42 |
+| Memory | 46.74 / 46.56 | DM0.5 47.74 / 47.44（Score、SR 均略高） |
+| Open | 28.88 / 24.92 | GPT-6 Astra 34.36 / 31.00 |
+
+综合 #1 并非各维第一：Generalization 与 Open 是相对短板（Generalization 的 random 布局子集页内为 11.04 / 5.56）。
 ### 分任务亮点（页内表；带 **≈** 为估计均值）
 
 | 维度 | 示例任务 | SR / Score（Physical RSI） |
@@ -147,14 +160,14 @@ flowchart TB
 ## 工程实践
 
 1. **读榜先读协议：** 对照 [RoboDojo Leaderboard Protocol](https://robodojo-benchmark.com/leaderboard/protocol) 与 [XPolicyLab](./xpolicylab.md) 观测–动作契约，避免与社区摘录榜混读。
-2. **区分「页内 #1」与「verified artifact」：** 2026-09-28 项目页 **未发布** 代码/权重；复现前等待 GitHub/HF 或 RoboDojo verified 条目。
+2. **区分「页内 #1」与「verified artifact」：** 复现前先读 [PhysicalRSI 仓库](https://github.com/PhysicalRSI/PhysicalRSI) README（主分支是通用核心，任务适配器与演示在 `benchmarks-and-demos` 分支）和 XPolicyLab `policy/PhysicalRSI/eval.sh`（需 agent API key 与冻结 skill 配置），并等 RoboDojo verified 条目。
 3. **Harness 进化对照：** 与 [HarnessPAI](./paper-harnesspai.md)（跨 rollout 程序进化）、[Zetta](./paper-zetta.md)（冻结 VLA + critics/recovery 代码）并读，明确 **改写对象**（整 harness vs 模块 vs runtime critics）。
 4. **Motor tool 视角看 π₀.₅：** 页内 π₀.₅ 为 **工具层** 而非唯一策略；长程/记忆/开放词汇任务依赖 **H** 中的符号规划与 memory，而非单次 VLA forward。
 5. **RSI 层级定位：** 见 [RSI 四 tier 五 pushes](../queries/rsi-four-tier-five-pushes.md) — Physical RSI 属于 **Physical / harness 层 RSI**，验证器来自 **RoboDojo 任务成功**，而非 SWE-bench 式单元测试。
 
 ## 局限与风险
 
-- **开源待发布：** 无 arXiv/GitHub → 外部无法独立复现页内 #1；分数可能随榜单刷新变化。
+- **复现门槛：** 无 arXiv 论文；核心框架已开源，但页内 #1 所用的冻结 skill 配置、agent 模型密钥与权重未见公开（本次未运行任何代码，推测复现需自备 System 2 模型 API）；分数随榜单刷新变化（9 月底 36 / 31% → 10 月初 36.27 / 31.38%）。
 - **估计分与 incomplete rollout：** 页内部分任务 SR/Score 标 **≈** 或 incomplete，跨模型对比需核对官方 sheet。
 - **Sim 优先：** 当前公开叙事集中在 **RoboDojo-Sim**；真机 RealEval 与 verified 视频链尚未在项目页给出。
 - **与 WAM 路线张力：** 页内指出高接触任务需要 **动作→世界变化** 建模（指向 [World-Action Models](../concepts/world-action-models.md)）；Cosmos 式 **视觉增广** 不替代交互动力学。
@@ -174,6 +187,7 @@ flowchart TB
 - [MMLab Physical RSI 项目页归档](../../sources/sites/mmlab-physical-rsi.md)
 - [页面正文摘录](../../sources/raw/mmlab_physical_rsi_page_extract_2026-09-28.md)
 - 官方项目页：<https://mmlab.hk/research/PhysicalRSI>
+- 代码仓库：<https://github.com/PhysicalRSI/PhysicalRSI>（README 已读，源码未读）；<https://github.com/XPolicyLab/XPolicyLab>（`policy/PhysicalRSI/` 仅读目录与 `eval.sh`）
 
 ## 推荐继续阅读
 

@@ -197,7 +197,8 @@ sequenceDiagram
 3. 搭甲板：`lh.deck.assign_child_resource(...)` 或 `Deck.load_from_json_file(...)`；`tip_rack.fill()`、`set_well_volumes()` 设初始状态；开启 tip / volume tracking。
 4. 换真机只换 backend 与 deck：`STARBackend()` / `OpentronsOT2Backend(host=...)` / `EVOBackend()`（README 示例）。
 5. 先确认机型在支持表中的程度，WIP / Basic 机型缺的命令需自行确认。
-6. 开放状态核查：MIT 许可、代码与文档公开、PyPI 发布；论文预印本为 CC-BY 4.0。仓库 HEAD 版本为 `1.0.0b1`（测试版），API 在 legacy 迁移期可能变动。
+6. 协议回归与审计：`pylabrobot.start_capture(file)` 在真机跑通时录下 io 层全部读写，之后 `pylabrobot.validate(file)` … `end_validation()` 回放比对，不一致时用 Needleman-Wunsch 给出差异（官方 Validation 页；首次录制必须真机，模拟器不行）；日志另有比 DEBUG 更低的 `IO` 级（官方 Logging 页）；可选的 `EventBus` 输出结构化 started / completed / failed 事件，`ManualOperator` 让协议等待人工操作并回写资源模型（官方 EventBus / Manual operator 页）。
+7. 开放状态核查：MIT 许可、代码与文档公开、PyPI 发布；论文预印本为 CC-BY 4.0。仓库 HEAD 版本为 `1.0.0b1`（测试版），API 在 legacy 迁移期可能变动。
 
 ## 局限
 
