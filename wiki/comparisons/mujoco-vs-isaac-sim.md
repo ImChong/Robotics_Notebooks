@@ -74,6 +74,7 @@ updated: 2026-07-21
 - [Isaac Gym](../entities/isaac-gym.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Adams vs MuJoCo vs Isaac Sim：三类物理问题选型](adams-vs-mujoco-vs-isaac-sim-three-problem-types.md) — 加入 Adams 后的三类物理问题选型（载荷寿命 vs 控制策略 vs 感知集成）
 
 ## 参考来源
 - [sources/papers/simulation.md](../../sources/papers/simulation.md)

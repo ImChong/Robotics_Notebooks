@@ -196,6 +196,7 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [OmniSim](./omnisim.md) — Newton 唯一后端的代理原生仿真器
 - [RoboSimStudio](./robosimstudio.md) — 基于 Newton、面向机器人操作任务 Real2Sim 的交互式 Agentic Robotics 工具包
+- [Adams vs MuJoCo vs Isaac Sim：三类物理问题选型](../comparisons/adams-vs-mujoco-vs-isaac-sim-three-problem-types.md) — Newton 在 Adams / MuJoCo / Isaac Sim 三类问题选型中的位置
 
 ## 参考来源
 
