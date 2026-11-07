@@ -5537,7 +5537,7 @@
 - [Tactus：用于自然灵巧操作数据采集的触觉与姿态感知手套](wiki/entities/paper-tactus-tactile-pose-sensing-glove.md) — Tactus**（*Tactus: Tactile & Pose Sensing Glove for Natural Dexterity Data Collection*，[arXiv:2610. `📅unknown` `[entity_page]`
 - [TADreamer](wiki/entities/paper-tadreamer.md) — TADreamer**（*Zero-Shot Language-Guided 3D Navigation for Terrestrial-Aerial Bimodal Robots via Vid `📅unknown` `[entity_page]`
 - [TAME-Nav：时序非对称 MoE 蒸馏的敏捷导航](wiki/entities/paper-tame-nav.md) — TAME-Nav**（*Temporal Asymmetric Mixture-of-Experts Distillation for Agile and Versatile Robot Navi `📅unknown` `[entity_page]`
-- [TAMPAgent（arXiv:2611.03584）](wiki/entities/paper-tampagent.md) — TAMPAgent**（*TAMPAgent: Agentic Belief-Space Planning for Mobile Manipulation*，[arXiv:2611.03584 `📅unknown` `[entity_page]`
+- [TAMPAgent: Agentic Belief-Space Planning for Mobile Manipulation / 面向移动操作的信念空间智能体规划](wiki/entities/paper-tampagent.md) — TAMPAgent 让视觉语言智能体根据未知世界的混合信念组织任务计划，再由规划器和几何工具认证下一动作，交替完成观察、操作与重规划。 `📅unknown` `[entity_page]`
 - [Sim-to-real: learning agile locomotion for quadruped robots](wiki/entities/paper-tan-quadruped-agile-locomotion-sim2real.md) — Sim-to-real: learning agile locomotion for quadruped robots**（[arXiv:1804.10332](https://arxiv.org `📅unknown` `[entity_page]`
 - [TANDEM（arXiv:2609.28314）](wiki/entities/paper-tandem.md) — TANDEM: Task and Motion Planning with As-Needed Demonstrations for Efficient Vision-Language-Actio `📅unknown` `[entity_page]`
 - [TANGO：杂乱室内的人形全身 VLA 导航](wiki/entities/paper-tango-vla.md) — TANGO**（*Humanoid Navigation in Cluttered Environments with a Whole-Body Vision-Language-Action Mo `📅unknown` `[entity_page]`
