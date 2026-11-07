@@ -1,6 +1,10 @@
-# 路线（纵深）：如果目标是 BFM（人形行为基础模型）
+# BFM（人形行为基础模型）
 
-**摘要**：面向"想用一个 checkpoint 控住人形全身"的纵深路线，从 RL locomotion 与动捕数据基座、动作跟踪谱系（DeepMimic → ASE → PHC → MaskedMimic → HOVER），到预训练三线与适应两线，再到"高层 VLA + 低层 BFM"层次化整合与进阶方向，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支，与 [VLA 纵深](depth-vla.md) 构成"身体级协调 / 任务级语义"的姊妹路线。
+**首屏导读**：
+
+- **为谁**：想用一个 checkpoint 控住人形全身的人。
+- **路径**：Stage 0–5 · 全景与前置 → RL locomotion 与动捕基座 → 跟踪主线（DeepMimic → HOVER）→ 预训练三线 → 适应与整合 → 进阶方向。
+- **纵深路线**：[运动控制主路线](motion-control.md)的一条分支；与 [VLA 纵深](depth-vla.md)构成"身体级协调 / 任务级语义"的姊妹路线。
 
 ## 路线一览
 

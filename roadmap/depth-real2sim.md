@@ -1,6 +1,10 @@
-# 路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）
+# Real2Sim
 
-**摘要**：面向"想把真实世界变成能在仿真里训练与评测的资产"的纵深路线，从"可仿真（simulation-ready）"判据与 Real2Sim vs Sim2Real 定位，到几何与外观重建（3DGS / mesh、接触动力学 vs 光真实感）、物性与关节化补全（碰撞体 / 质量摩擦 / 关节推断 / 接触引导遮挡补全 / sim-ready 资产生成），再到场景与 episode 孪生编排（VLM-agent 编排 · 数字表亲）与 Real2Sim2Real 闭环（回仿真训练 / real-to-sim 评测 / 真机回放收尾），最后到前沿口径与选型（像素世界模型 vs 物理孪生），按 Stage 0–5 串通核心方法；本路线是 [Sim2Real 纵深](depth-sim2real.md) 的**反向补集**，也是 [运动控制主路线](motion-control.md) L6/L7 仿真资产与评测环节的展开版。
+**首屏导读**：
+
+- **为谁**：想把真实世界变成能在仿真里训练与评测的资产的人。
+- **路径**：Stage 0–5 · "可仿真"判据 → 几何与外观重建 → 物性与关节化补全 → 场景 / episode 孪生 → Real2Sim2Real 闭环 → 前沿与选型。
+- **纵深路线**：[Sim2Real 纵深](depth-sim2real.md)的反向补集；也是[运动控制主路线](motion-control.md) L6/L7 仿真资产与评测环节的展开版。
 
 ## 路线一览
 

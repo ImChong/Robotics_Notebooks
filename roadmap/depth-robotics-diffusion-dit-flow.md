@@ -1,6 +1,10 @@
-# 路线（纵深）：扩散与流匹配策略（Diffusion & Flow Matching）
+# 扩散与流匹配策略（Diffusion & Flow Matching）
 
-**摘要**：面向「已会 BC/ACT，想沿 **Diffusion Policy → Transformer 去噪 → 大型 RDT → Flow Matching VLA → NVIDIA 人形 DiT** 读透八篇代表作」的专题路线；与 [VLA 纵深](depth-vla.md) Stage 1–2 重叠，但按 **动作生成机制演进** 排序，并区分 **图像 DiT / DiT-Block IL / Dita VLA** 命名。
+**首屏导读**：
+
+- **为谁**：已会 BC / ACT，想读透扩散与流匹配策略八篇代表作的人。
+- **路径**：Stage 1–8 · Diffusion Policy → DiT 配方 → RDT-1B → π₀ → GR00T N1 / N1.5 → Dita → PredActor。
+- **纵深路线**：专题路线：与 [VLA 纵深](depth-vla.md) Stage 1–2 重叠，但按动作生成机制的演进排序。
 
 ## 路线一览
 
