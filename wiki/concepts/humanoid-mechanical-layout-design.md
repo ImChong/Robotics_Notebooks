@@ -18,6 +18,9 @@ related:
   - ../../roadmap/depth-humanoid-hardware-design.md
   - ../entities/paper-humanoid-leg-generative-design-dynamics.md
   - ./humanoid-topology-optimization-toolchain.md
+original:
+  - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
+  - ../../sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md
@@ -101,6 +104,8 @@ flowchart TB
 关键参数速查：摆动腿惯量、整机质量与质量分配比、质心高度、最低阶模态频率、关键配合公差等级、单关节拆装工时。
 
 ## 局限与风险
+
+- 本页 `original` 只列已重读完的两篇 Zane Hub 文章（膝侧避开谐波、结构模态）；Hardware 101 / Actuator 102 长文与 HUST 学报论文三份来源本次**未重读**，相关表述仍依归档摘要。
 
 - **只做静强度不做模态**：最常见的失误；零件不断但力控做不上去。
 - **CAD 惯量当真值**：线束、胶、紧固件与实际材料密度偏差会让惯量误差达到 10% 量级，务必实测对账。

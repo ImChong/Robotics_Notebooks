@@ -6,6 +6,8 @@
 - **类型：** blog
 - **作者：** Zane Hub（公众号署名；第三方工程解读，非厂商官方）
 - **原始链接：** https://mp.weixin.qq.com/s/LHqqgTFUfgDSqdgJd0EfGw
+- **核对范围：** 2026-11-07 用 Chromium（微信 UA）重新抓取公众号文章全文，正文文字逐段读完（至文末「Like / Author's tip」）；文中配图4张已下载并看图读过，工业机器人关节剖视图、锤击法测点示意、模态振型云图、锤击与采集设备照片。**未做：**未核对文中引用的标准条文、厂商样本与数值，均为作者表述。
+- **通读：** 已完成
 - **发布日期：** 2026-09-01（抓取 frontmatter）
 - **入库日期：** 2026-09-01
 - **抓取工具：** Agent Reach + wechat-article-for-ai（Camoufox；`--no-images`）

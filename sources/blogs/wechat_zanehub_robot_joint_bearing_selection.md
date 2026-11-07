@@ -8,6 +8,8 @@
 - **原始链接：** https://mp.weixin.qq.com/s/rweTJtjvt8LaJLLM8eEYBg
 - **入库日期：** 2026-09-17
 - **抓取方式：** HTTP 正文提取（WebFetch；本环境无 Camoufox 快照）
+- **核对范围：** 2026-11-07 用 Chromium（微信 UA）重新抓取公众号文章全文，正文文字逐段读完（至文末「Like / Author's tip」）；文中配图4张已下载并看图读过，交叉滚子轴承、谐波传动示意图、薄壁轴承、RV 减速器爆炸图，均为示意图；归档里的「核心摘录」为摘录，原文另含载荷谱 Miner 合成寿命公式 1/Lh=Σ(qi/Li)、安装常见坑与失效模式四信号等。**未做：**未核对文中引用的标准条文、厂商样本与数值，均为作者表述。
+- **通读：** 已完成
 - **原始抓取落盘：** [`sources/raw/wechat_zanehub_robot_joint_bearing_selection.md`](../raw/wechat_zanehub_robot_joint_bearing_selection.md)
 - **一句话说明：** 按载荷路径梳理谐波/RV/直驱关节轴承布置；交叉滚子、柔性轴承、薄壁与四点接触选型；五笔账（载荷/刚度/精度/寿命谱/游隙预紧）+ 润滑温升 + 装配坑与失效判据。
 - **沉淀到 wiki：** [`wiki/concepts/robot-joint-bearing-selection.md`](../../wiki/concepts/robot-joint-bearing-selection.md)
