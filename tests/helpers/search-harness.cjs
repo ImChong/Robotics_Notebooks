@@ -45,6 +45,7 @@ function searchHarness(fetchIndex, fetchCommunity = async () => response({ nodes
     // 结果卡片健康度小条（main.js renderHealthMetaHtml）：无分数输出空串，有分数标出得分
     renderHealthMetaHtml: (meta) => (typeof meta.health_score === 'number'
       ? '<span class="node-health" data-score="' + meta.health_score + '"></span>' : ''),
+    renderUpdatesItemRepoStar: (meta) => (meta.has_repo ? '<span class="updates-item-opensource">⭐️</span>' : ''),
     focusSearchFromJump: (input) => input.focus(),
   });
   const source = readFileSync(resolve(__dirname, '../../docs/main.js'), 'utf8');

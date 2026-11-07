@@ -7896,8 +7896,9 @@
     var _fullSearchIndexPromise = null;
     var _searchGeneration = 0;
 
-    // 路径 → link-graph 节点：社区筛选取 community，结果卡片取健康度
+    // 路径 → link-graph 节点：社区筛选取 community，结果卡片取健康度 / 开源 / 社区标签
     var _graphNodeByPath = null;
+    var _communityById = {};           // 社区 id → { label, color }（色与图谱社区色一致）
     var _graphNodeByPathPromise = null;
     var _communitySelectPopulated = false;
 
@@ -7946,7 +7947,14 @@
             if (node.id) m.set(node.id, node);
           }
           _graphNodeByPath = m;
-          populateCommunitySelect(data.communities || []);
+          var communities = data.communities || [];
+          var tooltipApi = window.RNGraphTooltip || {};
+          var colorMap = tooltipApi.buildCommunityColorMap ? tooltipApi.buildCommunityColorMap(communities) : {};
+          for (var ci = 0; ci < communities.length; ci++) {
+            var c = communities[ci];
+            if (c && c.id) _communityById[c.id] = { label: c.label || c.id, color: colorMap[c.id] || '' };
+          }
+          populateCommunitySelect(communities);
           return m;
         })
         .catch(function() {
@@ -8169,7 +8177,12 @@
         typeLabel = item.path.split('/').slice(1, 3).join(' / ');
       }
 
-      var tagLine = '';
+      // 社区标签：与详情页「所属社区」同一枚 🧭 徽标（点击进图谱社区视图），排在标签行最前
+      var community = item.community && _communityById[item.community];
+      var tooltipApi = window.RNGraphTooltip;
+      var tagLine = community && tooltipApi && tooltipApi.buildCommunityBadgeHtml
+        ? tooltipApi.buildCommunityBadgeHtml(item.community, community.label, community.color)
+        : '';
       var itemTags = item.tags || [];
       var maxTags = Math.min(itemTags.length, 4);
       for (var ti = 0; ti < maxTags; ti++) {
@@ -8195,7 +8208,8 @@
       return '<article class="card" data-result-url="' + escapeHtml(detailUrl) + '">'
         + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel)
         + renderHealthMetaHtml(item) + explain + '</p>'
-        + '<h3><a href="' + escapeHtml(detailUrl) + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
+        + '<h3><a href="' + escapeHtml(detailUrl) + '">' + escapeHtml(item.title || item.id)
+        + renderUpdatesItemRepoStar(item) + '</a>' + graphBtn + '</h3>'
         + summaryHtml
         + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
         + '</article>';
@@ -8414,6 +8428,8 @@
               search_aliases: doc.search_aliases || [],
               health_score: graphNode && graphNode.health_score,
               health_gaps: graphNode && graphNode.health_gaps,
+              has_repo: graphNode && graphNode.has_repo,
+              community: graphNode && graphNode.community,
               _score: bm25 + partial
             });
           }

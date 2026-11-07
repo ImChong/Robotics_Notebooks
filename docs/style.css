@@ -516,6 +516,11 @@ a.hero-stat-num:focus-visible {
   font-size: .86rem;
   color: var(--text);
 }
+/* 搜索结果卡片标签行最前的社区徽标（main.js buildResultCardHtml）：字号与内边距对齐同行标签 */
+.chip-list > .detail-community-badge {
+  padding: 7px 12px;
+  font-size: .86rem;
+}
 .kpi-card {
   display: grid;
   gap: 8px;

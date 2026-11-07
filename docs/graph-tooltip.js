@@ -252,6 +252,142 @@
     if (el && api && api.render) api.render(el);
   }
 
+  /*
+   * 浮窗摘要的行内 Markdown（CommonMark 0.31 子集）：*强调* / _强调_ → <em>，**加粗** / __加粗__ → <strong>，
+   * `代码` → <code>，反斜杠转义。摘要里有大量字面星号（A*、RRT*、rmw_*），不能用「两个星号之间」的正则硬配，
+   * 按规范 §6.2 的左右侧接（flanking）规则判定能否开 / 闭强调，再按附录「process emphasis」配对。
+   * 公式段 \(..\)、\[..\]、$$..$$ 原样保留给 KaTeX（$..$ 已由 prepareMathText 归一）。
+   */
+  var MD_PUNCT = /[\p{P}\p{S}]/u;
+  var MD_SPACE = /\s/;
+  var MD_ESCAPABLE = /[!-/:-@[-`{-~]/;
+  var MD_MATH = /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$/y;
+
+  function codePointBefore(src, i) {
+    if (i <= 0) return ' '; // 行首按空白处理
+    var lo = src.charCodeAt(i - 1);
+    return (lo >= 0xdc00 && lo <= 0xdfff && i >= 2) ? src.slice(i - 2, i) : src[i - 1];
+  }
+
+  function codePointAt(src, i) {
+    if (i >= src.length) return ' '; // 行尾按空白处理
+    return String.fromCodePoint(src.codePointAt(i));
+  }
+
+  /** 与 i 处同长的反引号串结束位置（找不到返回 -1） */
+  function findCodeSpanClose(src, from, len) {
+    var re = /`+/g;
+    re.lastIndex = from;
+    var m;
+    while ((m = re.exec(src))) {
+      if (m[0].length === len) return m.index;
+    }
+    return -1;
+  }
+
+  function renderInlineMarkdown(text) {
+    var src = String(text || '');
+    var nodes = [];
+    var buf = '';
+    function flushText() {
+      if (buf) nodes.push({ html: escapeHtml(buf) });
+      buf = '';
+    }
+    var i = 0;
+    while (i < src.length) {
+      var ch = src[i];
+      MD_MATH.lastIndex = i;
+      var math = (ch === '\\' || ch === '$') ? MD_MATH.exec(src) : null;
+      if (math) {
+        buf += math[0];
+        i += math[0].length;
+      } else if (ch === '\\' && MD_ESCAPABLE.test(src[i + 1] || '')) {
+        buf += src[i + 1];
+        i += 2;
+      } else if (ch === '`') {
+        var ticks = /`+/y;
+        ticks.lastIndex = i;
+        var openLen = ticks.exec(src)[0].length;
+        var close = findCodeSpanClose(src, i + openLen, openLen);
+        if (close < 0) {
+          buf += src.substr(i, openLen);
+          i += openLen;
+          continue;
+        }
+        var code = src.slice(i + openLen, close).replace(/\n/g, ' ');
+        if (/^ [\s\S]*[^ ][\s\S]* $/.test(code)) code = code.slice(1, -1);
+        flushText();
+        nodes.push({ html: '<code>' + escapeHtml(code) + '</code>' });
+        i = close + openLen;
+      } else if (ch === '*' || ch === '_') {
+        var end = i;
+        while (src[end] === ch) end++;
+        var before = codePointBefore(src, i);
+        var after = codePointAt(src, end);
+        var beforeSpace = MD_SPACE.test(before);
+        var afterSpace = MD_SPACE.test(after);
+        var beforePunct = MD_PUNCT.test(before);
+        var afterPunct = MD_PUNCT.test(after);
+        var left = !afterSpace && (!afterPunct || beforeSpace || beforePunct);
+        var right = !beforeSpace && (!beforePunct || afterSpace || afterPunct);
+        flushText();
+        nodes.push({
+          delim: ch,
+          count: end - i,
+          origCount: end - i,
+          canOpen: ch === '*' ? left : left && (!right || beforePunct),
+          canClose: ch === '*' ? right : right && (!left || afterPunct),
+          active: true,
+          openTags: '',
+          closeTags: ''
+        });
+        i = end;
+      } else {
+        buf += ch;
+        i += 1;
+      }
+    }
+    flushText();
+
+    // process emphasis：逐个闭合符向前找同字符的开启符；「3 的倍数」规则防止 *foo**bar* 这类误配
+    for (var ci = 0; ci < nodes.length; ci++) {
+      var closer = nodes[ci];
+      if (!closer.delim || !closer.canClose || !closer.active) continue;
+      while (closer.count > 0) {
+        var oi = ci - 1;
+        for (; oi >= 0; oi--) {
+          var o = nodes[oi];
+          if (!o.delim || !o.active || !o.count || o.delim !== closer.delim || !o.canOpen) continue;
+          var sum = o.origCount + closer.origCount;
+          if ((o.canClose || closer.canOpen) && sum % 3 === 0 &&
+              !(o.origCount % 3 === 0 && closer.origCount % 3 === 0)) continue;
+          break;
+        }
+        if (oi < 0) break;
+        var opener = nodes[oi];
+        var use = (opener.count >= 2 && closer.count >= 2) ? 2 : 1;
+        var tag = use === 2 ? 'strong' : 'em';
+        opener.count -= use;
+        closer.count -= use;
+        opener.openTags = '<' + tag + '>' + opener.openTags;
+        closer.closeTags += '</' + tag + '>';
+        for (var k = oi + 1; k < ci; k++) {
+          if (nodes[k].delim) nodes[k].active = false;
+        }
+      }
+      if (!closer.count || !closer.canOpen) closer.active = false;
+    }
+
+    var html = '';
+    for (var ni = 0; ni < nodes.length; ni++) {
+      var node = nodes[ni];
+      html += node.delim
+        ? node.closeTags + new Array(node.count + 1).join(node.delim) + node.openTags
+        : node.html;
+    }
+    return html;
+  }
+
   /**
    * 浮窗社区标签：放在摘要下方单独一行（不进顶部类型徽章行，避免两枚徽章挤在一起），
    * 描边胶囊 + 🧭 与详情页「所属社区」按钮同一视觉语言，与实心类型徽章区分。
@@ -281,7 +417,7 @@
       title += '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
     }
     var summary = opts.summary
-      ? '<div class="tt-summary">' + escapeHtml(prepareMathText(opts.summary)) + '</div>'
+      ? '<div class="tt-summary">' + renderInlineMarkdown(prepareMathText(opts.summary)) + '</div>'
       : '';
     var community = buildTooltipCommunityHtml(opts.communityLabel, opts.communityColor);
     var health = buildTooltipHealthHtml(opts.health);
@@ -332,6 +468,7 @@
     buildCommunityBadgeHtml: buildCommunityBadgeHtml,
     buildNodeTooltipHtml: buildNodeTooltipHtml,
     buildTooltipHealthHtml: buildTooltipHealthHtml,
+    renderInlineMarkdown: renderInlineMarkdown,
     renderMath: renderTooltipMath
   };
 })();
