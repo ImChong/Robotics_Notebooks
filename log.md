@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | 完成多模态信息论综述 v1 正文核对，补全原始归档与 GMIL 实体、流程图及适用边界；未发现本文官方可运行实现。
+
 ## [2026-11-07] ingest | 核对 XMimic 论文全文与 JAX 多卡训练源码，区分同名项目并澄清 54 秒、3.5 倍和未证实的 85 倍口径
 
 ## [2026-11-07] ingest | HachimoDock — 核对软件源码、硬件物料与150元参考成本，补充流程和固件时序，记录许可冲突与验证边界
