@@ -5395,7 +5395,7 @@
 - [SlotDiT（arXiv:2609.17414）](wiki/entities/paper-slotdit.md) — SlotDiT**（*SlotDiT: Object-Centric Representations for Diffusion Transformers*，[arXiv:2609.17414 `📅unknown` `[entity_page]`
 - [SLowRL：安全低秩 RL 真机运动微调](wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — SLowRL**（*Safe Low-Rank Adaptation Reinforcement Learning for Locomotion*，arXiv:2603.17092）针对 **动态 `📅unknown` `[entity_page]`
 - [SMART：设计文档即源码的 ML 性能建模工具](wiki/entities/paper-smart-design-docs-ai-native-performance-model.md) — SMART**（论文 *Design Docs Are All You Need: An AI-native Machine-Learning Performance Tool*，[arXiv:2 `📅unknown` `[entity_page]`
-- [SmellDiffusion（arXiv:2609.20624）](wiki/entities/paper-smelldiffusion.md) — SmellDiffusion**（*SmellDiffusion: Diffusion-Based Quadruped Navigation with Olfactory Scene Graphs `📅unknown` `[entity_page]`
+- [SmellDiffusion / 基于嗅觉场景图的扩散式四足导航](wiki/entities/paper-smelldiffusion.md) — 基于 arXiv:2609.20624v2（2026-09-18），本次通读 §I–IX、图表与参考文献，升级既有节点。 `📅unknown` `[entity_page]`
 - [Legged robots that keep on learning: fine-tuning locomotion policies in the real world](wiki/entities/paper-smith-legged-robots-keep-learning.md) — Legged robots that keep on learning: fine-tuning locomotion policies in the real world**（[arXiv:21 `📅unknown` `[entity_page]`
 - [SmolVLA ONNX LIBERO：闭环部署审计](wiki/entities/paper-smolvla-onnx-libero.md) — SmolVLA ONNX LIBERO 部署研究**（*When Faster VLA Deployment Changes Closed-Loop Behavior: Task Success- `📅unknown` `[entity_page]`
 - [SmolVLA](wiki/entities/paper-smolvla.md) — SmolVLA**（arXiv:2506.01844，[GitHub](https://github.com/hugging `📅unknown` `[entity_page]`

@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | 通读 SmellDiffusion v2，升级既有节点，核对源修正、规划与语言评测及代码访问边界
+
 ## [2026-11-07] ingest | 通读触觉多模态融合综述 2605.17336v1，整理数据、融合、评测边界；核实官方仓库为文献索引，无自有运行实现。
 
 ## [2026-11-07] ingest | sources/papers/tampagent_arxiv_2611_03584.md — 通读正文与附录 A–H，升级既有 TAMPAgent 节点，补混合信念流程、评测边界与 Code soon 状态
