@@ -9,7 +9,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-05
+updated: 2026-11-07
 arxiv: '2504.16054'
 code: https://github.com/Physical-Intelligence/openpi
 venue: HMI curated · 2025
@@ -224,6 +224,8 @@ sequenceDiagram
 | 关系/取舍 | π0 的后继，加两阶段+分层；两种动作表示须对齐 | π0.5 的基座前身 | π 系更新代，蒸馏 RL 专精 | π 系均属其一种实现 |
 
 ## 关联页面
+
+- [SLA：持续空间预训练与空间教师对齐（arXiv:2611.08373）](./paper-sla-spatial-language-action.md) — 在 π0.5 基座上持续预训练，需区分论文自适应门控与公开固定层配置
 
 - [ActiveScale](./paper-activescale.md) — 在 π0.5 上加历史与位姿监督相机 token，联合学习视角及操作，不是此基座默认能力
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
