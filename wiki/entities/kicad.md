@@ -2,7 +2,7 @@
 type: entity
 tags: [software, eda, pcb, hardware, open-source, embedded, manufacturing, kicad]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-08
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
