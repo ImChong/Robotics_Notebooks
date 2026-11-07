@@ -8,7 +8,7 @@ tags:
   - self-hosted
 status: complete
 date: 2026-10-01
-updated: 2026-10-01
+updated: 2026-11-07
 related:
   - ./zhengyi-luo.md
   - ./hermes-agent.md
@@ -127,6 +127,8 @@ sequenceDiagram
 - **局限：** 客户端 stable/beta 与 server 版本需配对（如 Workspace Changes 要求 server 1.0.3+）。
 
 ## 关联页面
+
+- [HachimoDock / 哈基米机](hachimodock.md)：将电脑端 Agent 状态投射到 ESP32-P4 实体小屏，作为另一种任务交互界面。
 
 - [Zhengyi Luo（罗正宜）](./zhengyi-luo.md) — 维护者与 GEAR 人形研究脉络
 - [Hermes Agent](./hermes-agent.md) — 自带网关与工具环的代理运行时
