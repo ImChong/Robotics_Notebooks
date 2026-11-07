@@ -67,7 +67,7 @@ sequenceDiagram
  participant D as DepthDecoder
  participant P as PoseEncoder-Decoder
  participant W as BackprojectDepth-Project3D
- participant OPT as Adam
+ participant UPDATE as Adam
  CLI->>T: Trainer(opts).train()
  loop 每个 batch
   T->>D: process_batch 预测 disparity
@@ -75,7 +75,7 @@ sequenceDiagram
   T->>W: generate_images_pred
   W-->>T: warped source RGB
   T->>T: compute_losses
-  T->>OPT: loss.backward 与 step
+  T->>UPDATE: loss.backward 与 step
  end
 ```
 
