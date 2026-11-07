@@ -5825,7 +5825,7 @@
 - [Watch Your Step（arXiv:2610.29612）](wiki/entities/paper-watch-your-step.md) — Watch Your Step**（*Anticipated Perception for Humanoid Locomotion*）由 ETH Zürich Robotic Systems La `📅unknown` `[entity_page]`
 - [WAVE-0：用轻量潜在未来预测连接 VLA 与 WAM](wiki/entities/paper-wave-0-latent-future-prediction.md) — WAVE-0 在预训练 VLA 之上加一个小型潜在世界模型，让预测出的动作后果直接参与动作生成，而不生成完整视频。 `📅unknown` `[entity_page]`
 - [WAVE-Go（arXiv:2609.18193）](wiki/entities/paper-wave-go.md) — WAVE-Go**（*WAVE-Go: World-Model Navigation with Adaptive Execution for Wheel-Legged Robots*，[arXiv `📅unknown` `[entity_page]`
-- [WayTrace（arXiv:2611.05129）](wiki/entities/paper-waytrace.md) — WayTrace**（*WayTrace: A Map-to-Language-to-Trace Hierarchy for Embodied Urban Navigation*，[arXiv:2 `📅unknown` `[entity_page]`
+- [WayTrace: A Map-to-Language-to-Trace Hierarchy for Embodied Urban Navigation / WayTrace：面向具身城市导航的地图—语言—轨迹分层架构](wiki/entities/paper-waytrace.md) — 论文：** Manthan Patel 等，2026-11-03，arXiv:2611.05129v1（Under Review）｜[论文原文](https://arxiv.org/html/26 `📅unknown` `[entity_page]`
 - [WB-WAM（异构身–手预训练 · 人形 Loco-Manipulation WAM）](wiki/entities/paper-wb-wam.md) — WB-WAM**（*Heterogeneous Body-Hand Pre-training for Humanoid Loco-Manipulation*，[arXiv:2609.34199 `📅unknown` `[entity_page]`
 - [Highly Dynamic Quadruped Locomotion via WBIC and MPC](wiki/entities/paper-wbic-mpc-mini-cheetah.md) — Kim, Di Carlo, Katz, Bledt & Kim（MIT，arXiv:1909.06586）** 给出 Mi `📅unknown` `[entity_page]`
 - [WCM：给 VLA 强化学习换一个会预测世界的 Critic](wiki/entities/paper-wcm-world-critic-model.md) — WCM**（*World Critic Model*；论文 *WCM: A World Critic Model for Vision-Language-Action Reinforcement  `📅unknown` `[entity_page]`
