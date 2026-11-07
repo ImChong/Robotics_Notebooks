@@ -276,6 +276,10 @@
     opts = opts || {};
     var badges = buildMetaBadgesHtml(opts);
     var title = escapeHtml(prepareMathText(opts.title || opts.id || ''));
+    // 有开源代码（关联 sources/repos/，has_repo）：标题末尾加 ⭐️，与列表行 / 详情页标题同标记
+    if (opts.hasRepo) {
+      title += '<span class="updates-item-opensource" aria-label="含开源仓库" title="含开源仓库">⭐️</span>';
+    }
     var summary = opts.summary
       ? '<div class="tt-summary">' + escapeHtml(prepareMathText(opts.summary)) + '</div>'
       : '';

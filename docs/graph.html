@@ -5104,6 +5104,7 @@
           title: info.title || d.label,
           summary,
           health: d,
+          hasRepo: d.has_repo,
           linkHtml: `<a class="tt-link" href="${escapeHtml(detailUrl)}" target="_self">${escapeHtml(pageLinkLabelForNode(d))}</a>`
         });
       }

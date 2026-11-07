@@ -4279,6 +4279,12 @@ button.home-wiki-heatmap-cell.is-active {
   line-height: 1.5;
 }
 .tt-health-label { font-weight: 600; }
+/* 浮窗标题末尾开源 ⭐️（graph-tooltip.js buildNodeTooltipHtml 的 hasRepo）：与详情页标题同标记 */
+.tt-title .updates-item-opensource {
+  margin-left: 0.2em;
+  padding-right: 0;
+  font-size: 0.82em;
+}
 /* 社区标签：摘要下方单独一行的描边胶囊（色取社区色），不与顶部实心类型徽章同行 */
 .graph-hover-tooltip .tt-community {
   display: flex;
