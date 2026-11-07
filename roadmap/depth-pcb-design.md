@@ -1,6 +1,10 @@
-# 路线（纵深）：如果目标是 PCB 设计（电路零基础 → 第一块板 → 原理图 → Layout → 调试 → 功率 / 高速 / EMC → 量产）
+# PCB 设计（PCB Design）
 
-**摘要**：面向"从没画过电路板，想一路学到能独立交付机器人驱动板、传感器板与主控载板"的纵深路线：从电压电流、万用表与焊接起步，用一块双层小板走通 KiCad 全流程，再把原理图、Layout、调试 bring-up 练成基本功，然后进入机器人板级最常见的三类难题——功率与混合信号（电机驱动板）、高速信号与电源完整性（SI/PI）、EMC 与可靠性量产，按 Stage 0–7 串成从零基础到精通的完整链路；本路线是 [力矩电机设计纵深](depth-torque-motor-design.md) Stage 4 与 [整机硬件设计纵深](depth-humanoid-hardware-design.md) Stage 4 共用的**板级能力底座**。
+**首屏导读**：
+
+- **为谁**：没画过电路板、想学到能独立交付机器人驱动板 / 传感器板 / 主控载板的人。
+- **路径**：Stage 0–7 · 电路零基础 → 第一块板（KiCad）→ 原理图 → Layout → 调试 bring-up → 功率与混合信号 → 高速 SI/PI → EMC 与量产。
+- **纵深路线**：[力矩电机设计纵深](depth-torque-motor-design.md)与[整机硬件设计纵深](depth-humanoid-hardware-design.md) Stage 4 共用的板级能力底座。
 
 ## 路线一览
 

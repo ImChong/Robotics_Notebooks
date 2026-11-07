@@ -1,6 +1,10 @@
-# 路线（纵深）：如果目标是人形 RL 运动控制
+# 人形强化学习运动控制（Humanoid RL Locomotion）
 
-**摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支。
+**首屏导读**：
+
+- **为谁**：想用强化学习快速上手人形 locomotion 的人。
+- **路径**：Stage 0–5 · RL 基础 → locomotion 概念 → RL + Locomotion 方法 → MPC / WBC + RL → Sim2Real → 进阶方向。
+- **纵深路线**：[运动控制主路线](motion-control.md)的一条分支。
 
 ## 路线一览
 

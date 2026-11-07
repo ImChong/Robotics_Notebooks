@@ -1,6 +1,10 @@
-# 路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）
+# 传统模型控制（Classical Control）
 
-**摘要**：面向"想用基于模型的传统控制栈驱动人形机器人"的纵深路线，从简化模型（LIP/ZMP）到 Centroidal 轨迹优化、MPC，再到 TSID/WBC 与真机状态估计，按 Stage 0–4 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支。
+**首屏导读**：
+
+- **为谁**：想用基于模型的传统控制栈驱动人形机器人的人。
+- **路径**：Stage 0–4 · 动力学与优化基础 → LIP/ZMP → DCM → Centroidal 轨迹优化 → MPC → TSID / WBC 与真机落地。
+- **纵深路线**：[运动控制主路线](motion-control.md)的一条分支。
 
 ## 路线一览
 

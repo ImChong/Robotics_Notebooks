@@ -1,8 +1,10 @@
-# 路线（纵深）：如果目标是 RSI（递归自我改进）
+# 递归自我改进（RSI）
 
-**摘要**：面向"想让研发闭环自己变强、并把这套东西用到机器人上"的纵深路线，从「四层判据 + 改的是哪个 artifact」的判别边界出发，沿着被系统改动对象逐层内收的顺序——记忆与技能库 → 权重 → 打分器与验证锚 → harness → 研究过程——串起 Reflexion / STaR / CAI / DGM / SEAL 这条主线与 ASPIRE、ENPIRE、Motus2、LWD 这条具身对照线，最后收在 ignition 门槛、证据分级与人侧选题瓶颈，按 Stage 0–5 组织；本路线是 [运动控制主路线](motion-control.md) 的一条分支，与 [具身数据纵深](depth-embodied-data.md)（把数据飞轮做成供给管线）构成"改数据 / 改改进机制本身"的姊妹路线。
+**首屏导读**：
 
-**具身案例补充：** [WorldScape R²SI](../wiki/entities/manifold-worldscape-r2si.md) 报道展示内层执行 Agent 与外层改进 Agent 的 Skill / WSP 更新闭环；RoboDojo 排名和实验数字尚无独立核实，详见实体页。
+- **为谁**：想让研发闭环自己变强、并用到机器人上的人。
+- **路径**：Stage 0–5 · 判别边界 → 记忆与技能库 → 权重级闭环 → 打分器与验证锚 → harness 进化 → 研究过程与治理。
+- **纵深路线**：[运动控制主路线](motion-control.md)的一条分支；与[具身数据纵深](depth-embodied-data.md)构成"改数据 / 改改进机制本身"的姊妹路线。
 
 ## 路线一览
 
@@ -33,6 +35,8 @@ flowchart LR
 - 本路线挂在主路线 L7（出口层：工程化与研发效率）之外的元层面：它改的是"你怎么做机器人研究"，不是某个控制器
 - 起点是 EURISKO（Lenat，1983）这一支"程序自己改启发式"的前史；真正可用的一层从 2023 年之后的 agent 自进化工作开始
 - 机器人侧强依赖 [具身模型测评纵深](depth-embodied-eval.md)（没有可信评测就没有 accept 门）与 [Sim2Real 纵深](depth-sim2real.md)（仿真里的自进化增益能不能落真机）
+
+**具身案例补充：** [WorldScape R²SI](../wiki/entities/manifold-worldscape-r2si.md) 报道展示内层执行 Agent 与外层改进 Agent 的 Skill / WSP 更新闭环；RoboDojo 排名和实验数字尚无独立核实，详见实体页。
 
 ---
 

@@ -1,6 +1,10 @@
-# 路线（纵深）：如果目标是模仿学习与技能迁移
+# 模仿学习与技能迁移（Imitation Learning & Skill Transfer）
 
-**摘要**：面向"从人类演示数据让机器人学习技能"的纵深路线，从时序建模基础到 ASE / Diffusion Policy，按 Stage 0–6 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支。
+**首屏导读**：
+
+- **为谁**：想从人类演示数据让机器人学会技能的人。
+- **路径**：Stage 0–6 · 时序建模基础 → 模仿学习核心概念 → 动作重定向 → Diffusion Policy → 技能嵌入与对抗学习 → Sim2Real → 进阶方向。
+- **纵深路线**：[运动控制主路线](motion-control.md)的一条分支。
 
 ## 路线一览
 

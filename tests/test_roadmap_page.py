@@ -89,6 +89,28 @@ class RoadmapPageTests(unittest.TestCase):
         css = STYLE_CSS.read_text(encoding="utf-8")
         self.assertIn(".roadmap-ltree-ov {", css)
         self.assertNotIn(".roadmap-ttree", css)
+        # 总览节点同样带类型与健康度
+        self.assertNotIn(".roadmap-ltree-ov .roadmap-ltree-node-type {\n  display: none;", css)
+
+    def test_depth_roadmap_stages_embed_knowledge_map_nodes(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        # 纵深路线正文各 Stage 复用知识地图同阶段节点框，替换原「本阶段链接」下拉块
+        self.assertIn("function embedDepthRoadmapStageNodes", content)
+        self.assertIn("function roadmapLtreeNodeHtml", content)
+        self.assertIn("embedDepthRoadmapStageNodes(contentEl, roadmapPage, detailPages)", content)
+        css = STYLE_CSS.read_text(encoding="utf-8")
+        self.assertIn(".roadmap-stage-kmap {", css)
+        self.assertIn("function renderDepthStageTrees", content)
+
+    def test_roadmap_trees_pan_instead_of_shrinking(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        # 节点不随列数一路缩小，放不下就拖动查看：顶部单阶段视图、全局总览与正文小树共用
+        self.assertIn("function syncRoadmapLtreePan", content)
+        self.assertIn("function bindRoadmapLtreeMousePan", content)
+        self.assertIn("bindRoadmapLtreeMousePan(ovScroll)", content)
+        css = STYLE_CSS.read_text(encoding="utf-8")
+        self.assertIn(".roadmap-ltree-pan {", css)
+        self.assertIn(".roadmap-ltree-stage > .roadmap-ltree-tree {", css)
 
     def test_roadmap_knowledge_map_uses_learning_route_layout(self):
         content = MAIN_JS.read_text(encoding="utf-8")
