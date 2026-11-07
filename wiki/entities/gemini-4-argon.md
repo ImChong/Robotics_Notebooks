@@ -3,7 +3,7 @@ type: entity
 tags: [gemini, google-deepmind, robotics, embodied-ai, physical-reasoning, simulation]
 title: Gemini 4 Argon
 status: complete
-updated: 2026-10-14
+updated: 2026-11-07
 project_id: gemini-4-argon-robotics
 project: https://developers.googleblog.com/gemini-4-argon-for-robotics/
 summary: "Gemini 4 Argon 是 Google 面向物理世界推理的通用模型；官方博客展示了它辅助机器人控制、Real2Sim、视频 hindsight 标注、仿真数据生成与真机迭代的工作流。"
@@ -62,6 +62,8 @@ Google Developers 博客以四类应用组织示例：
 截至 **2026-10-14**，该博客介绍了通过 Google AI Studio、付费 Gemini API（模型标识 `gemini-4-argon`）和 Google Antigravity 使用 Argon；具体账户、地区和产品可用性以官方平台当前说明为准。文章没有给出 Argon 的机器人工作流代码仓库、模型权重或数据集下载链接。现有可见材料因此不足以独立复现其仿真数据生成和硬件改进结果。
 
 此外，文章中的任务演示与长提示词证明的是一种可行的模型辅助研发方式，不等同于已验证的机器人安全案例。实时性、恢复行为、接触鲁棒性和长期稳定性仍需在实际系统中分别测试。
+
+**第三方使用记录（2026-11-07 复核）：** VERID 论文（[arXiv:2610.32755](https://arxiv.org/abs/2610.32755)）的三个实验案例使用 Gemini 4 Argon 的**内部预览检查点**作为 agent，并非上文所述公开 API 模型；论文全文未提供该检查点的访问方式。见 [VERID 实体页](./paper-verid-semantic-representation-lab-self-play.md)。
 
 ## 关联页面
 
