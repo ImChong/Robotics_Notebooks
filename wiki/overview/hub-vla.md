@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-vla, vision-language-action, foundation, manipulation]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-07
 summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模、OpenVLA/π0/GR00T 等开源谱系，以及 BFM 身体接口与 loco-manip 任务接口；含社区多基准榜入口与驾驶 VLA（S²-VLA）锚点。"
 ---
 
@@ -64,6 +64,7 @@ summary: "VLA 与基础策略知识链汇总：视觉-语言-动作统一建模�
 - [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)
 - [Whole-Body VLA 相关实体](../entities/paper-hrl-stack-30-wholebodyvla.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [SLA：持续空间预训练 VLA](../entities/paper-sla-spatial-language-action.md) — π0.5 + OmniVGGT 训练期空间对齐；区分论文自适应门控与开源固定层配置
 - [UCAG-P](../entities/paper-ucag-p.md) — 相机系腕/抓取锚点几何通才操作
 - [AI 架构地图](./ai-architecture-map.md)
 
