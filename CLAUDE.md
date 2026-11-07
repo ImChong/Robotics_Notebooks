@@ -131,6 +131,12 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - **不改 `catalog.md` / `log.md`**：由 main 上的 `export.yml` 维护。日志用 `make log OP=... DESC="..."` 写入 `log.d/` 碎片。
 - **PR 与 main 冲突，或 Wiki Lint 的 guard 失败**：运行 `make sync-main` 后 push（派生文件自动以 main 为准，`log.md` 新增条目自动转存为碎片）。只剩真实源文件冲突时再按内容合并。
 
+### 5.5 提交前格式化 Python（不靠 CI 兜底）
+
+- 改动 `scripts/` 或 `tests/` 下的 Python 文件时，**每次 commit 前**运行 `python3 -m ruff format scripts tests && python3 -m ruff check scripts tests`，都通过再提交。
+- 用 `python3 -m ruff`（`requirements-dev.txt` 装的版本，与 CI 一致），不要用 PATH 上可能过旧的 `ruff`：版本不同格式化结果不同，本地「通过」到 CI 仍会失败。
+- CI 的 `ruff format --check` 只做兜底，不要依赖它发现格式问题。
+
 ---
 
 ## 6. 视频（`media/`）：一手资料核对
