@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, transformer, sequence-modeling, nlp, architecture, google, google-brain, deep-learning]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-07
 arxiv: "1706.03762"
 venue: "NeurIPS 2017"
 code: https://github.com/tensorflow/tensor2tensor
@@ -14,6 +14,8 @@ related:
   - ../methods/robotics-transformer-rt-series.md
   - ../methods/action-chunking.md
   - ./transformer-cv-curriculum.md
+original:
+  - ../../sources/papers/attention_is_all_you_need.md
 sources:
   - ../../sources/papers/attention_is_all_you_need.md
   - ../../sources/repos/tensor2tensor.md
@@ -23,7 +25,7 @@ summary: "Attention Is All You Need（NeurIPS 2017）：纯注意力 Transformer
 
 # Attention Is All You Need
 
-**Attention Is All You Need**（Vaswani et al.，[arXiv:1706.03762](https://arxiv.org/abs/1706.03762)，NeurIPS 2017）提出 **Transformer**：encoder–decoder 完全由 **自注意力（self-attention）** 与 **逐位置前馈网络（FFN）** 堆叠，**去掉循环与卷积**。在 WMT 2014 英德翻译上达到 **28.4 BLEU**（单模型，较当时 ensemble SOTA 提升 **>2 BLEU**），英译法 **41.8 BLEU**（8×GPU 训练 3.5 天），并泛化到英语成分句法分析。
+**Attention Is All You Need**（Vaswani et al.，[arXiv:1706.03762](https://arxiv.org/abs/1706.03762)，NeurIPS 2017）提出 **Transformer**：encoder–decoder 完全由 **自注意力（self-attention）** 与 **逐位置前馈网络（FFN）** 堆叠，**去掉循环与卷积**。在 WMT 2014 英德翻译上达到 **28.4 BLEU**（单模型，较当时 ensemble SOTA 提升 **>2 BLEU**），英译法 Table 2 报 **41.8 BLEU**（正文 §6.1 写 41.0，原文自身不一致，本页取表值），并泛化到英语成分句法分析。big 模型在 8×P100 上训练 300K 步、约 **3.5 天**（base 100K 步约 12 小时）。
 
 ## 一句话定义
 
@@ -52,7 +54,8 @@ summary: "Attention Is All You Need（NeurIPS 2017）：纯注意力 Transformer
 | **机构** | 谷歌（Google Brain / Google Research） |
 | **任务** | WMT 2014 EN↔DE/FR 机器翻译；英语 constituency parsing |
 | **基线模型** | base：$d_{model}=512$，8 头，6 层 enc/dec，$d_{ff}=2048$；big：$d_{model}=1024$，16 头 |
-| **训练** | Adam，lr warmup + inverse sqrt decay；label smoothing 0.1；dropout 0.1 |
+| **训练** | 8×P100；Adam（β2=0.98），warmup 4000 步后按步数平方根倒数衰减；label smoothing 0.1；base dropout 0.1，EN-DE big 0.3；末 5（base）/20（big）个检查点平均，beam=4、长度惩罚 α=0.6 |
+| **数据** | EN-DE 约 450 万句对（BPE，共享词表约 37000）；EN-FR 3600 万句（32000 词片） |
 | **开源** | **已开源**：官方 [tensor2tensor](https://github.com/tensorflow/tensor2tensor)（归档 [sources/repos/tensor2tensor.md](../../sources/repos/tensor2tensor.md)） |
 
 ## 核心原理
@@ -63,19 +66,19 @@ $$
 \text{Attention}(Q,K,V)=\text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
 $$
 
-除以 $\sqrt{d_k}$ 防止点积过大导致 softmax 饱和、梯度变小。
+除以 $\sqrt{d_k}$：设 q、k 各分量独立、均值 0、方差 1，则点积方差为 $d_k$；作者**猜测**大 $d_k$ 时点积幅度变大会把 softmax 推入梯度极小区（脚注 4，非严格证明）。点积注意力与加性注意力理论复杂度相近，但前者更快、更省空间（可用矩阵乘）。
 
 ### 2) 多头注意力
 
-$h$ 组独立 $(Q_i,K_i,V_i)$ 并行计算后 **concat + 线性投影**；让不同头在不同表示子空间关注不同依赖模式。
+$h=8$ 组独立线性投影 $(QW_i^Q,KW_i^K,VW_i^V)$，每头 $d_k=d_v=d_{model}/h=64$，并行计算后 `Concat(head_1..head_h)W^O`；总计算量与单头全维度相近。原文动机：单头时加权平均会抑制联合关注不同表示子空间的不同位置。
 
 ### 3) Encoder / Decoder Block
 
-每层：**MHA → Add&Norm → FFN → Add&Norm**（Post-LN 原版）。Decoder 额外 **masked self-attention**（因果）+ **encoder–decoder cross-attention**。
+每层：**MHA → Add&Norm → FFN → Add&Norm**，即子层输出 `LayerNorm(x + Sublayer(x))`（Post-LN 原版）；编码器与解码器均 N=6。解码器每层多一个对编码器输出的 **encoder–decoder cross-attention**，自注意力用 **因果掩码**（softmax 输入置 −∞）并配合输出右移一位，保证位置 i 只依赖更早的输出。嵌入与 pre-softmax 线性层共享权重，嵌入乘 $\sqrt{d_{model}}$。FFN 为 $\max(0,xW_1+b_1)W_2+b_2$（ReLU，$d_{ff}=2048$）。
 
 ### 4) 位置编码
 
-正弦/余弦函数注入绝对位置（或可学习 embedding）；因 self-attention 本身 **置换等变**，必须显式编码顺序。
+$PE_{(pos,2i)}=\sin(pos/10000^{2i/d_{model}})$、$PE_{(pos,2i+1)}=\cos(\cdot)$，波长从 $2\pi$ 到 $10000\cdot 2\pi$ 成几何级数，与词嵌入相加。作者假设它便于学习按相对位置注意（任意固定偏移 k，$PE_{pos+k}$ 是 $PE_{pos}$ 的线性函数）；换成可学习位置嵌入结果“几乎相同”（Table 3 行 E），选正弦是因为可能外推到更长序列。模型无循环无卷积，必须显式注入顺序。
 
 ### 流程总览
 
@@ -119,17 +122,17 @@ sequenceDiagram
 | 项 | 建议 |
 |----|------|
 | 选型 | 需要 **长历史融合 / 多模态 token 混排** 时优先 Transformer；极长上下文且算力紧则对照 [Mamba](../concepts/mamba.md) / TCN |
-| 归一化 | 原版 Post-LN；许多机器人/VLA 实现改用 **Pre-LN** 换训练稳定（与 ResNet 后验一致） |
+| 归一化 | 原版 Post-LN；后续不少实现改用 **Pre-LN** 换训练稳定（推测，非本文内容） |
 | 位置 | 机器人时序常用 **可学习 1D PE** 或 RoPE；视觉 patch 用 2D 扩展（ViT 路线） |
 | 算力 | 自注意力 **O(n²)**；动作 chunk 较短时通常可接受；整段高分辨率视频需稀疏/分层 |
 | 复现 | 读论文数值对照 T2T base/big hparams；新项勿混用 Post/Pre-LN 而不说明 |
 
 ## 实验与评测
 
-- **WMT14 EN→DE：** Transformer (big) **28.4 BLEU**；训练成本约为文献最佳模型的 **一小部分**（8×P100，3.5 天量级叙述见原文）。
-- **WMT14 EN→FR：** 单模型 **41.8 BLEU**（当时 SOTA）。
-- **Parsing：** WSJ 与半监督设定均 **优于** 多数专用 parser，说明架构 **跨任务泛化**。
-- **消融（论文 Fig/表）：** 减少头数/层数/FFN 维度均掉 BLEU；去掉 PE 严重退化——验证三要素缺一不可。
+- **WMT14 EN→DE：** Transformer (big) **28.4 BLEU**，超过此前最好结果（含 ensemble）2.0 以上；base 也是 27.3，已超过所有已发表模型与 ensemble；训练成本为竞争模型的一小部分（8×P100，big 3.5 天）。
+- **WMT14 EN→FR：** big 单模型 Table 2 为 **41.8 BLEU**（正文写 41.0），训练成本不到此前 SOTA 的 1/4；base 为 38.1。
+- **Parsing（Table 4，WSJ 23 F1）：** 4 层 Transformer 仅 WSJ 训练 91.3、半监督 92.7；仅 WSJ 约 4 万句时仍优于 BerkeleyParser；只有 RNN Grammar 的 93.3（生成式）更高。
+- **消融（Table 3，EN-DE 开发集）：** 单头比最优设置低 0.9 BLEU，头数过多也下降；缩小 $d_k$ 掉点；模型越大越好，dropout 有效；正弦位置编码换成可学习位置嵌入几乎无差别。**原文没有“去掉位置编码”的消融**，此前本页的“去掉 PE 严重退化”表述不是原文结论，已删除。
 
 ## 与其他工作对比
 
@@ -162,7 +165,8 @@ sequenceDiagram
 
 - **二次复杂度** 限制极长序列；需局部窗口、线性注意力或 SSM 折中。
 - **数据 hungry：** 小数据机器人任务常需预训练 + 微调或更强 inductive bias（CNN/MLP 低层）。
-- **Post-LN 训练敏感：** 复现/改架构时注意 LN 位置与 warmup。
+- **Post-LN 训练敏感（推测，非本文结论）：** 本文使用 Post-LN 并配 4000 步 warmup；后续工作常改 Pre-LN，复现时注意 LN 位置与 warmup。
+- **原文自述的局限与方向：** 只验证了文本任务（翻译、句法分析）；作者提出要扩展到其他模态，并研究局部/受限注意力以处理图像、音频、视频等大输入，且希望让生成更少顺序化。
 - **不等同于「理解」：** 在 MT 上的 BLEU 优势 **不自动** 迁移到接触丰富操控；仍需任务损失与数据闭环。
 
 ## 关联页面
@@ -180,6 +184,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- 原文 PDF：<https://arxiv.org/pdf/1706.03762>
 - 官方实现：<https://github.com/tensorflow/tensor2tensor>
 - 图解：<https://jalammar.github.io/illustrated-transformer/>
 - 机器人延伸：[bc-with-transformer.md](../methods/bc-with-transformer.md)

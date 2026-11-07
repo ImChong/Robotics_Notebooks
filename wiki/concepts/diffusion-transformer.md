@@ -2,7 +2,7 @@
 type: concept
 tags: [dit, diffusion, transformer, vla, architecture]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-07
 summary: "Diffusion Transformer 用 patch 化 Transformer 替换 U-Net 做扩散去噪骨干，提供可预测的算力–质量缩放，并成为 VLA/flow 连续动作头的主流结构。"
 related:
   - ./diffusion-model.md
@@ -12,6 +12,8 @@ related:
   - ../methods/vla.md
   - ../overview/ai-architecture-map.md
   - ../entities/paper-dit-scalable-diffusion-transformers.md
+original:
+  - ../../sources/papers/peebles_dit_arxiv_2212_09748.md
 sources:
   - ../../sources/papers/peebles_dit_arxiv_2212_09748.md
   - ../../sources/sites/dit-wpeebles-com.md
@@ -40,15 +42,15 @@ sources:
 
 ## 为什么重要
 
-- [Peebles & Xie, 2023](../../sources/papers/peebles_dit_arxiv_2212_09748.md) 给出清晰的 **Gflops–FID** 缩放：更大 DiT 更强，不必死守 U 形跳跃。
-- 机器人动作块是短序列，和 token 模型同构；公开 VLA（π、GR00T、Xiaomi 等）的连续头常写 **DiT + flow matching**。
-- 读 VLA 论文 Method 时，「DiT 动作专家」指的是这条骨干，而不是新的扩散数学。
+- [Peebles & Xie, 2023](../../sources/papers/peebles_dit_arxiv_2212_09748.md) 给出清晰的 **Gflops–FID** 缩放：400K 步时 12 个模型的 Gflops 与 FID 相关系数 −0.93，最大的 DiT-XL/2（118.6 Gflops）在 ImageNet 256×256 得 FID 2.27，不必死守 U 形跳跃。
+- 机器人动作块是短序列，和 token 模型同构（推测）；部分公开 VLA 的连续头沿用 **DiT / flow matching**（如 GR00T N1 的动作模块，见 [flow matching 具身策略](./flow-matching-embodied-policy.md)的核实）；但 π₀ 的动作专家是与 VLM 共享注意力的 Transformer，不是 DiT 的 adaLN 结构。
+- 读 VLA 论文 Method 时，「DiT 动作专家」是否指 DiT 论文的 adaLN 骨干，要看该论文自己的描述，不要默认。
 
 ## 核心原理
 
 1. VAE/AE 把图像（或动作）编到隐张量。
 2. 按 [DDPM](../../sources/papers/ho_ddpm_arxiv_2006_11239.md) 或 flow 加噪。
-3. 切 patch → Transformer（自注意力 + MLP），条件经 AdaLN / 交叉注意力进入。
+3. 切 patch → Transformer（自注意力 + MLP），条件经 AdaLN / 交叉注意力 / 额外 token 进入。DiT 论文比较了 in-context、cross-attention、adaLN、adaLN-Zero 四种，XL/2 在 400K 步时 adaLN-Zero 最好（FID-50K 19.47，对比 in-context 35.24、cross-attention 26.14），且最省 Gflops；它回归 γ、β 与残差前缩放 α，并零初始化使每个 block 初始为恒等。
 4. 预测噪声或速度场，采样器迭代到干净样本。
 
 ```mermaid
@@ -63,7 +65,8 @@ flowchart LR
 
 | 项 | 建议 |
 |----|------|
-| 图像生成 | 先用官方 DiT 权重复现 scaling，再改条件 |
+| 图像生成 | 先用官方 DiT 权重复现 scaling，再改条件；论文训练配方：AdamW、lr 1e-4 常数、无权重衰减、batch 256、EMA 0.9999，无需 warmup |
+| 复杂度度量 | 以 Gflops 而非参数量比较：patch 减半 token ×4、Gflops 至少 ×4，参数量不变 |
 | 动作头 | 观测走 VLM/CNN，动作块走小 DiT；步数压到实时预算 |
 | 与 U-Net DP | 视觉操作仍可见 U-Net Diffusion Policy；全身/语言条件更常 DiT |
 | 调试 | 分清「损失降了」与「控制环延迟炸了」 |
@@ -71,6 +74,8 @@ flowchart LR
 ## 局限与风险
 
 - 注意力随 token 数二次增长；高分辨率必须先隐压缩。
+- 采样算力不能替代模型算力（论文：L/2 用 1000 步仍劣于 XL/2 用 128 步），所以“小模型多步去噪”不是补救。
+- 论文只在类条件 ImageNet 上验证；对动作 DiT 的外推是本站推测。
 - 官方图像 DiT ≠ 即插即用的机器人策略。
 - flow matching 与 DDPM 采样器不同，复现时不要混用训练目标。
 
@@ -94,4 +99,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- 原论文：<https://arxiv.org/abs/2212.09748>
 - 官方仓：<https://github.com/facebookresearch/DiT>
