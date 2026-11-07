@@ -4246,6 +4246,18 @@ button.home-wiki-heatmap-cell.is-active {
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+/* 节点浮窗 / 图谱侧栏的健康度行（graph-tooltip.js buildTooltipHealthHtml；graph.html 也加载本文件） */
+.tt-health {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+.tt-health-label { font-weight: 600; }
 /* 社区标签：摘要下方单独一行的描边胶囊（色取社区色），不与顶部实心类型徽章同行 */
 .graph-hover-tooltip .tt-community {
   display: flex;

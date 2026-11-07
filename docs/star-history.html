@@ -68,7 +68,7 @@
           <h1 class="section-title" id="trend-heading">增长趋势</h1>
           <div class="home-hub-tabs" id="trend-tabs" role="group" aria-label="切换趋势视图"></div>
         </div>
-        <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区与纵深节点数取自当前知识图谱，公司 / 实验室节点数按各自技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
+        <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区、类型、开源、健康度与纵深节点数取自当前知识图谱，公司 / 实验室节点数按各自技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
         <ul class="trend-legend" id="trend-legend" aria-label="社区配色" hidden></ul>
         <div class="trend-range" id="trend-range" role="group" aria-label="时间范围" hidden></div>
@@ -248,6 +248,86 @@
                   color: list.map(function (c) { return color[c.id]; })
                 }],
                 total: list.length + ' 个社区，合计 ' + list.reduce(function (a, c) { return a + c.size; }, 0) + ' 节点'
+              };
+            });
+          } },
+        // 类型 / 开源 / 健康度：同取当前知识图谱快照，配色与 graph.html「按类型 / 按开源 / 按健康度」一致
+        { id: 'type-nodes', label: '类型节点数', unit: '节点', kind: 'category',
+          load: function () {
+            return linkGraph().then(function (g) {
+              var L = RNWikiTypeLabels;
+              var colors = RNGraphTooltip.GRAPH_NODE_TYPE_COLOR;
+              var count = {};
+              g.nodes.forEach(function (n) { count[n.type || ''] = (count[n.type || ''] || 0) + 1; });
+              var types = Object.keys(count).sort(function (a, b) { return count[b] - count[a]; });
+              return {
+                // 「中文（English）」：窄屏与社区图一样只留中文
+                cats: types.map(function (t) {
+                  var zh = L.formatChinese(t);
+                  var en = L.EN[t];
+                  return en && en !== zh ? zh + '（' + en + '）' : zh;
+                }),
+                series: [{
+                  values: types.map(function (t) { return count[t]; }),
+                  color: types.map(function (t) { return colors[t] || colors['']; })
+                }],
+                total: types.length + ' 种类型，合计 ' + g.nodes.length + ' 节点'
+              };
+            });
+          } },
+        { id: 'opensource-nodes', label: '开源节点数', unit: '节点', kind: 'category',
+          load: function () {
+            // 开源 = 关联 sources/repos/ 源码归档（与详情页 ⭐️、图谱「按开源」同口径），按社区堆叠
+            return linkGraph().then(function (g) {
+              var list = RNGraphTooltip.getSortedCommunities(g.communities)
+                .filter(function (c) { return c.size > 0; });
+              var open = {};
+              var all = {};
+              var openTotal = 0;
+              g.nodes.forEach(function (n) {
+                all[n.community] = (all[n.community] || 0) + 1;
+                if (n.has_repo) {
+                  open[n.community] = (open[n.community] || 0) + 1;
+                  openTotal += 1;
+                }
+              });
+              return {
+                cats: list.map(function (c) { return String(c.label || c.id).replace(/\s*社区\s*$/, ''); }),
+                links: list.map(function (c) { return 'hubs.html?community=' + encodeURIComponent(c.id); }),
+                series: [
+                  { name: '开源', color: '#2dd4bf', values: list.map(function (c) { return open[c.id] || 0; }) },
+                  { name: '未开源', color: '#fb7185', values: list.map(function (c) { return (all[c.id] || 0) - (open[c.id] || 0); }) }
+                ],
+                total: '开源 ' + openTotal + ' / ' + g.nodes.length + ' 节点（' +
+                  (100 * openTotal / Math.max(g.nodes.length, 1)).toFixed(1) + '%），按社区堆叠'
+              };
+            });
+          } },
+        { id: 'health-nodes', label: '健康度节点数', unit: '节点', kind: 'category',
+          load: function () {
+            // 得分口径见 scripts/generate_link_graph.py compute_health（路线页走 compute_roadmap_health）
+            return linkGraph().then(function (g) {
+              var light = document.documentElement.getAttribute('data-theme') === 'light';
+              var colors = light
+                ? ['#ef4444', '#ea580c', '#ca8a04', '#16a34a']
+                : ['#f87171', '#fb923c', '#facc15', '#4ade80'];
+              var count = [0, 0, 0, 0];
+              var sum = 0;
+              g.nodes.forEach(function (n) {
+                var s = Math.max(0, Math.min(3, n.health_score || 0));
+                count[s] += 1;
+                sum += s;
+              });
+              var scores = [3, 2, 1, 0];
+              var share = function (s) { return (100 * count[s] / Math.max(g.nodes.length, 1)).toFixed(1) + '%'; };
+              return {
+                cats: scores.map(function (s) { return s + ' 分'; }),
+                series: [{
+                  values: scores.map(function (s) { return count[s]; }),
+                  color: scores.map(function (s) { return colors[s]; })
+                }],
+                total: g.nodes.length + ' 个节点，平均 ' + (sum / Math.max(g.nodes.length, 1)).toFixed(2) + ' 分；' +
+                  scores.map(function (s) { return s + ' 分 ' + count[s] + '（' + share(s) + '）'; }).join('、')
               };
             });
           } },
@@ -509,14 +589,15 @@
         return (+b.slice(0, 4) - +a.slice(0, 4)) * 12 + (+b.slice(5, 7) - +a.slice(5, 7));
       }
 
-      // 甘特图时间窗：每月宽度低于该值时节点（直径 9–15px）会互相压住，改为默认只看近几年，
-      // 底部范围滑条左右平移 / 拖两端缩放，上方快捷按钮切换范围（触屏不开拖拽，靠滑条与按钮）
+      // 甘特图时间窗：跨度超过最短时间窗（2 年）就给出上方快捷按钮与底部范围滑条
+      //（滑条左右平移 / 拖两端缩放；触屏不开拖拽，靠滑条与按钮）。
+      // 每月宽度低于该值时节点（直径 9–15px）会互相压住，默认只看近 3 年，否则默认全部
       var GANTT_MIN_PX_PER_MONTH = 8;
       var GANTT_WINDOWS = [
         { years: 2, label: '近 2 年' }, { years: 3, label: '近 3 年' },
         { years: 5, label: '近 5 年' }, { years: 0, label: '全部' }
       ];
-      var ganttYears = 3;
+      var ganttYears = null; // null = 按上面的拥挤程度自动选；点过按钮后沿用所选范围
       var ganttRange = null; // 当前甘特图的 年数 → 范围 映射；非时间窗视图为 null
       var applyingRange = false;
       function markRange(years) {
@@ -584,7 +665,9 @@
         var full = s.first ? [shiftMonth(s.first, -1), shiftMonth(s.last, 1)] : null;
         // 桌面纵轴机构名约占图宽 1/4；窄屏名称在横线上方，时间轴占满整宽
         var plotW = document.getElementById('trend-chart').clientWidth * (narrow ? 1 : 0.75);
-        var windowed = !!full && plotW / monthsBetween(full[0], full[1]) < GANTT_MIN_PX_PER_MONTH;
+        var crowded = !!full && plotW / monthsBetween(full[0], full[1]) < GANTT_MIN_PX_PER_MONTH;
+        var windowed = !!full && monthsBetween(full[0], full[1]) > 12 * GANTT_WINDOWS[0].years;
+        var years = ganttYears === null ? (crowded ? 3 : 0) : ganttYears;
         var sliderH = 36;
         // 带滑条时绘图区不低于 72px：低于 Plotly 约 64px 的下限时它会压缩边距，滑条被挤出图底
         var plotH = Math.max((names.length - 0.5 - top) * rowH, windowed ? 72 : 0);
@@ -598,7 +681,7 @@
             return '<button type="button" data-years="' + w.years + '">' + w.label + '</button>';
           }).join('') + '<span class="trend-range-hint">' +
             (touch ? '拖动底部滑条两端选择时间范围' : '拖动底部滑条左右平移，拖两端缩放') + '</span>';
-          markRange(ganttYears);
+          markRange(years);
           rangeBar.hidden = false;
         }
         var plotted = Plotly.react('trend-chart', s.rows.length ? spans.concat([dots]) : [], {
@@ -609,7 +692,7 @@
           margin: { t: 30, r: 12, b: 10, l: 10 },
           xaxis: {
             type: 'date', side: 'top', gridcolor: grid, fixedrange: true,
-            range: windowed ? ganttRange(ganttYears) : full || undefined,
+            range: windowed ? ganttRange(years) : full || undefined,
             rangeslider: windowed
               ? { visible: true, range: full, thickness: sliderH / plotH, bordercolor: grid, borderwidth: 1, bgcolor: 'rgba(0,0,0,0)' }
               : { visible: false },

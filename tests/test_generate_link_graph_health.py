@@ -148,8 +148,15 @@ def test_roadmap_health_gaps() -> None:
 
 
 def test_list_rows_carry_health_fields() -> None:
-    """榜单 / 更新记录行写出 health_score + health_gaps；私有 _health_gaps 不外泄。"""
-    node = {"health_score": 2, "_health_gaps": 4}
+    """榜单 / 更新记录行写出 health_score + health_gaps。"""
+    node = {"health_score": 2, "health_gaps": 4}
     assert glg._health_fields(node) == {"health_score": 2, "health_gaps": 4}
     assert glg._health_fields({"health_score": 3}) == {"health_score": 3, "health_gaps": 0}
     assert glg._health_fields({}) == {}
+
+
+def test_graph_nodes_carry_public_health_gaps() -> None:
+    """link-graph 节点写出 health_gaps，图谱浮窗 / 侧栏据此列出缺项。"""
+    nodes, _edges = glg._build_graph_data()
+    assert all(isinstance(n.get("health_gaps"), int) for n in nodes)
+    assert all("_health_gaps" not in n for n in nodes)

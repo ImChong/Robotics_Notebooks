@@ -672,6 +672,8 @@
   // 「2/3 · 原文未通读」：小条悬停提示与详情页 / 路线页元信息「健康度」行共用
   function healthSummaryText(meta) {
     var score = Math.max(0, Math.min(3, meta.health_score));
+    // 旧缓存数据只有得分没有缺项位：只报分数，不误报「三项齐全」
+    if (typeof meta.health_gaps !== 'number') return score + '/3';
     var isRoadmap = meta.type === 'roadmap_page' || meta.type === 'roadmap';
     var labels = isRoadmap ? ROADMAP_HEALTH_GAP_LABELS : HEALTH_GAP_LABELS;
     var gaps = [];
@@ -696,6 +698,10 @@
     if (!meta || typeof meta.health_score !== 'number') return '';
     return renderHealthBar(meta) +
       '<span class="detail-meta-health-text">' + escapeHtml(healthSummaryText(meta)) + '</span>';
+  }
+  // 节点浮窗（graph-tooltip.js）与图谱侧栏复用同一套小条 / 文案
+  if (typeof window !== 'undefined') {
+    window.RNNodeHealth = { renderBar: renderHealthBar, renderMeta: renderHealthMetaHtml, summaryText: healthSummaryText };
   }
 
   function renderActionBadge(action) {
@@ -5320,6 +5326,7 @@
         summary: summary,
         communityColor: communityColor,
         communityLabel: d.community ? communityLabelMap[d.community] : '',
+        health: d,
         linkHtml: linkHtml
       });
     }
@@ -5743,6 +5750,7 @@
         summary: formatGraphTooltipSummary(page.summary),
         communityColor: (graphNode && graphNode.communityColor) || '',
         communityLabel: (graphNode && graphNode.communityLabel) || '',
+        health: page,
         linkHtml: linkHtml
       });
     }

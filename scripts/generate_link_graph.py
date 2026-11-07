@@ -290,7 +290,7 @@ def _health_fields(node: dict[str, Any]) -> dict[str, int]:
         return {}
     return {
         "health_score": int(node["health_score"]),
-        "health_gaps": int(node.get("_health_gaps") or node.get("health_gaps") or 0),
+        "health_gaps": int(node.get("health_gaps") or 0),
     }
 
 
@@ -1063,7 +1063,7 @@ def wiki_has_repo_source(content: str) -> bool:
 # complete 与缺省不封顶。
 HEALTH_STATUS_CAPS = {"stub": 1, "draft": 2}
 
-# 健康度缺项位掩码（health_gaps，供列表行悬停提示「缺什么」）：第 i 位 = 第 i 个得分项未拿到，
+# 健康度缺项位掩码（health_gaps，供浮窗 / 侧栏 / 列表行提示「缺什么」）：第 i 位 = 第 i 个得分项未拿到，
 # 位 8 = status 为 stub/draft（与 report_health.py 的「status 未 complete」同口径）。
 # wiki 页三项：元数据 / 阅读骨架 / 原文通读；roadmap 页三项：首屏导读 / 站内链接 / 阶段化结构。
 HEALTH_GAP_STATUS = 8
@@ -1721,8 +1721,8 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             "label": extract_title(content) or page.stem,
             "type": node_type,
             "health_score": health_score,
-            # 缺项位掩码（私有，只写进榜单 / 更新记录行，写 link-graph 前剔除）
-            "_health_gaps": health_gaps,
+            # 缺项位掩码：图谱浮窗 / 侧栏，以及榜单、更新记录行的悬停提示
+            "health_gaps": health_gaps,
             "summary": extract_summary(strip_frontmatter(content), parse_frontmatter(content)),
             "_recency": wiki_recency_date(content, page).isoformat(),
             # 论文节点：type=entity/method 且 frontmatter tags 含 paper（私有标记，写出前剔除）。
@@ -2021,10 +2021,7 @@ def main() -> None:
         if last_activity:
             node["activity"] = last_activity
 
-    # 更新记录行要带健康度缺项：先算活动时间线，再剔除私有 _health_gaps 写 link-graph
     activity_days = wiki_activity(nodes, community_labels=_community_label_map(community_meta))
-    for node in nodes:
-        node.pop("_health_gaps", None)
 
     institutions = build_institutions_summary(nodes)
 
