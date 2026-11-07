@@ -97,7 +97,8 @@ class RoadmapPageTests(unittest.TestCase):
         self.assertIn("function roadmapLtreeNodeHtml", content)
         self.assertIn("embedDepthRoadmapStageNodes(contentEl, roadmapPage, detailPages)", content)
         css = STYLE_CSS.read_text(encoding="utf-8")
-        self.assertIn(".roadmap-stage-kmap-nodes {", css)
+        self.assertIn(".roadmap-stage-kmap {", css)
+        self.assertIn("function renderDepthStageTrees", content)
 
     def test_roadmap_knowledge_map_uses_learning_route_layout(self):
         content = MAIN_JS.read_text(encoding="utf-8")

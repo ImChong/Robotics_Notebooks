@@ -3947,22 +3947,20 @@ button.home-wiki-heatmap-cell.is-active {
   color: var(--accent);
   font-size: 0.66rem;
 }
-.roadmap-stage-kmap-nodes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 10px;
-}
-/* 窄屏正文列只剩约 240px：节点框仍排两列，节点多的阶段不至于拉得太长 */
-@media (max-width: 640px) {
-  .roadmap-stage-kmap-nodes {
-    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
-    gap: 8px;
-  }
-}
 /* 盖过 .detail-markdown-body a 的链接色，与顶部知识地图节点同色 */
 .detail-markdown-body .roadmap-stage-kmap .roadmap-ltree-node {
-  margin: 0;
   color: var(--text);
+}
+/* 窄屏正文列只剩约 240px：节点框不再随列数一路缩小，过宽的小树在块内横向滚动 */
+@media (max-width: 640px) {
+  .roadmap-stage-kmap .roadmap-ltree-stage {
+    overflow-x: auto;
+  }
+  .roadmap-stage-kmap .roadmap-ltree-tree {
+    --dt-q: max(20px, min(30px, calc(100cqw / var(--dt-quarters, 20))));
+    width: max-content;
+    min-width: 100%;
+  }
 }
 /* 路线正文：顶层 h2 章节默认折叠（wrapRoadmapCollapsibleMajorHeadings） */
 .roadmap-major-section {

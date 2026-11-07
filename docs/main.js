@@ -3543,7 +3543,7 @@
   }
 
   /**
-   * 纵深路线正文：各 Stage 章节「推荐读什么」下嵌入顶部知识地图同一阶段的节点框（同一份 stages 数据、同款节点），
+   * 纵深路线正文：各 Stage 章节「推荐读什么」下嵌入顶部知识地图同一阶段的小树（同一份 stages 数据、同款节点与连线），
    * 并删掉该小节列表里只剩已在节点框中的本库链接的条目；带说明、外链或纯文字的条目原样保留。
    * 无「推荐读什么」的阶段，节点框放在「学完输出什么」前，再没有就放在章节末尾。
    * 找到任一 Stage 章节即返回 true（同 embedRoadmapStagesIntoMarkdownBody，此时隐藏独立的阶段速览区）。
@@ -3553,6 +3553,7 @@
     if (!contentEl || stages.length < 2) return false;
     var headings = Array.from(contentEl.querySelectorAll('h2[id]'));
     var found = false;
+    var trees = [];
     for (var s = 0; s < stages.length; s++) {
       var sid = String(stages[s].id || '').toLowerCase();
       var h2 = null;
@@ -3578,14 +3579,17 @@
       }
 
       var nodes = '';
-      for (var k = 0; k < items.length; k++) nodes += roadmapLtreeNodeHtml(items[k], detailPages);
+      for (var k = 0; k < items.length; k++) nodes += roadmapLtreeNodeHtml(items[k], detailPages, ' data-node="' + k + '"');
       var block = document.createElement('div');
       block.className = 'roadmap-stage-kmap';
       block.setAttribute('data-roadmap-stage-embed', sid);
       block.innerHTML =
         '<p class="roadmap-stage-kmap-head"><span class="roadmap-ltree-mark" aria-hidden="true">' +
         escapeHtml(formatRoadmapStageBadge(sid).replace(/^S(?=\d)/, '')) + '</span>知识地图 · 本阶段 ' +
-        items.length + ' 个节点</p><div class="roadmap-stage-kmap-nodes">' + nodes + '</div>';
+        items.length + ' 个节点</p><div class="roadmap-ltree-stage"><div class="roadmap-ltree-tree">' +
+        '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>' + nodes + '</div></div>';
+      var tree = block.querySelector('.roadmap-ltree-tree');
+      trees.push({ items: items, tree: tree, svg: tree.firstChild, nodes: tree.querySelectorAll('.roadmap-ltree-node'), parent: [] });
 
       if (readH3) {
         var itemSet = {};
@@ -3609,7 +3613,62 @@
         last.after(block);
       }
     }
+    if (trees.length) renderDepthStageTrees(trees);
     return found;
+  }
+
+  /**
+   * 纵深路线正文各 Stage 小树：摆位、树边、悬停点亮与顶部知识地图单阶段视图同一套
+   * （layoutRoadmapLearningStage / drawRoadmapLtreeEdges / traceRoadmapLtree），树边取站内互链。
+   * 章节默认折叠，树宽为 0 时不画边，展开后由 ResizeObserver 补画。
+   */
+  function renderDepthStageTrees(trees) {
+    // 窄屏正文列只剩约 240px（时间线与章节框各占一截缩进）：每排最多 2 列，节点框才放得下名字
+    var maxCols = window.matchMedia('(max-width: 640px)').matches ? 2 : ROADMAP_LTREE_MAX_COLS;
+    var wanted = {};
+    trees.forEach(function (st) {
+      placeRoadmapLtreeNodes(st.tree, st.nodes, layoutRoadmapLearningStage(st.items, {}, maxCols));
+      st.items.forEach(function (rid) { wanted[rid] = true; });
+      function onHover(ev) {
+        var node = ev.target.closest ? ev.target.closest('.roadmap-ltree-node') : null;
+        if (node) traceRoadmapLtree(st, roadmapLtreeChain(st.parent, Number(node.getAttribute('data-node'))));
+      }
+      function clear() {
+        st.tree.classList.remove('is-tracing');
+        st.tree.querySelectorAll('.is-path').forEach(function (el) { el.classList.remove('is-path'); });
+      }
+      st.tree.addEventListener('mouseover', onHover);
+      st.tree.addEventListener('focusin', onHover);
+      st.tree.addEventListener('mouseleave', clear);
+      st.tree.addEventListener('focusout', clear);
+    });
+    function draw(st) {
+      drawRoadmapLtreeEdges(st);
+      // 窄屏小树比块宽时在块内横向滚动：首次显示先滚到正中（各排居中摆放，窄的排正好落在视野里）
+      var box = st.tree.parentNode;
+      if (!st.centered && box.clientWidth) {
+        box.scrollLeft = (box.scrollWidth - box.clientWidth) / 2;
+        st.centered = true;
+      }
+    }
+    var resize = new ResizeObserver(function (entries) {
+      entries.forEach(function (entry) {
+        trees.forEach(function (st) { if (st.tree === entry.target) draw(st); });
+      });
+    });
+    trees.forEach(function (st) { resize.observe(st.tree); });
+    ensureLinkGraphData().then(function (gd) {
+      var linked = roadmapLtreeLinkedPairs(gd, wanted);
+      trees.forEach(function (st) {
+        var lay = layoutRoadmapLearningStage(st.items, linked, maxCols);
+        st.parent = lay.parent;
+        st.centered = false;
+        placeRoadmapLtreeNodes(st.tree, st.nodes, lay);
+        draw(st);
+      });
+    }).catch(function () {
+      // 取不到图谱只是没有连线，节点照常可用
+    });
   }
 
   function clearRoadmapStandaloneFlowSection() {
@@ -3779,9 +3838,10 @@
   /**
    * 单阶段小树的摆位。树边只取站内互链：节点挂到「与它互链、列表里排在它前面」的节点下
    * （优先最早一个子节点未满的，否则最深的），所以箭头方向就是路线列表的阅读先后，不另造依赖。
-   * 叶子依次占列、父节点居中于子节点上方；各根子树按列宽装进一排排，放不下另起一排，每排居中。
+   * 叶子依次占列、父节点居中于子节点上方；各根子树按列宽装进一排排（每排最多 maxCols 列，缺省
+   * ROADMAP_LTREE_MAX_COLS），放不下另起一排，每排居中。
    */
-  function layoutRoadmapLearningStage(items, linked) {
+  function layoutRoadmapLearningStage(items, linked, maxCols) {
     var n = items.length;
     var parent = [];
     var depth = [];
@@ -3829,7 +3889,7 @@
     for (var r = 0; r < n; r++) {
       if (parent[r] >= 0) continue;
       var w = width(r);
-      if (!shelf || (shelf.width && shelf.width + w > ROADMAP_LTREE_MAX_COLS)) {
+      if (!shelf || (shelf.width && shelf.width + w > (maxCols || ROADMAP_LTREE_MAX_COLS))) {
         shelf = { roots: [], width: 0, height: 0 };
         shelves.push(shelf);
       }
@@ -3876,6 +3936,56 @@
     return '<g class="roadmap-ltree-edge" ' + attrs + '><path class="roadmap-ltree-edge-line" d="' + d + '"/>' +
       '<path class="roadmap-ltree-edge-head" d="M' + (x2 - head * 0.8).toFixed(1) + ' ' + (y2 - head - 1).toFixed(1) +
       'H' + (x2 + head * 0.8).toFixed(1) + 'L' + x2.toFixed(1) + ' ' + y2.toFixed(1) + 'Z"/></g>';
+  }
+
+  /** 按 layoutRoadmapLearningStage 的结果把节点摆进网格：按四分之一列排，父节点居中时可落在两列之间。 */
+  function placeRoadmapLtreeNodes(tree, nodes, lay) {
+    tree.style.setProperty('--dt-quarters', lay.cols * 4);
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].style.gridRow = String(lay.pos[i].row);
+      nodes[i].style.gridColumn = (Math.round((lay.pos[i].col - 1) * 4) + 1) + ' / span 4';
+    }
+  }
+
+  /** 单阶段小树 st（tree / svg / nodes / parent）的树边；树未显示（宽度为 0）时跳过，等尺寸变化再画。 */
+  function drawRoadmapLtreeEdges(st) {
+    var box = st.tree.getBoundingClientRect();
+    if (!box.width) return;
+    var html = '';
+    for (var j = 0; j < st.parent.length; j++) {
+      if (st.parent[j] < 0) continue;
+      html += roadmapLtreeEdgeHtml(st.nodes[st.parent[j]].getBoundingClientRect(),
+        st.nodes[j].getBoundingClientRect(), box, 5, 'data-to="' + j + '"');
+    }
+    st.svg.innerHTML = html;
+  }
+
+  /** 点亮单阶段小树里 litNodes 中的节点及两端都点亮的树边，其余淡下去。 */
+  function traceRoadmapLtree(st, litNodes) {
+    st.tree.classList.add('is-tracing');
+    for (var n = 0; n < st.nodes.length; n++) st.nodes[n].classList.toggle('is-path', !!litNodes[n]);
+    var edges = st.svg.children;
+    for (var e = 0; e < edges.length; e++) {
+      var to = Number(edges[e].getAttribute('data-to'));
+      edges[e].classList.toggle('is-path', !!(litNodes[to] && litNodes[st.parent[to]]));
+    }
+  }
+
+  /** 图谱里 wanted 内两节点有站内互链即记 linked['a|b'] = linked['b|a'] = true（树边只取这些）。 */
+  function roadmapLtreeLinkedPairs(gd, wanted) {
+    var idOfPath = {};
+    var gNodes = (gd && gd.nodes) || [];
+    for (var gn = 0; gn < gNodes.length; gn++) {
+      if (gNodes[gn] && wanted[gNodes[gn].detail_id]) idOfPath[gNodes[gn].id] = gNodes[gn].detail_id;
+    }
+    var linked = {};
+    var gEdges = (gd && gd.edges) || [];
+    for (var ge = 0; ge < gEdges.length; ge++) {
+      var src = idOfPath[gEdges[ge].source];
+      var dst = idOfPath[gEdges[ge].target];
+      if (src && dst && src !== dst) linked[src + '|' + dst] = linked[dst + '|' + src] = true;
+    }
+    return linked;
   }
 
   /**
@@ -3974,27 +4084,8 @@
       var st = stages[s];
       var lay = layoutRoadmapLearningStage(columns[s].items, linked);
       st.parent = lay.parent;
-      st.tree.style.setProperty('--dt-quarters', lay.cols * 4);
-      ovTrees[s].style.setProperty('--dt-quarters', lay.cols * 4);
-      for (var i = 0; i < st.nodes.length; i++) {
-        // 网格按四分之一列排：父节点居中时可落在两列之间
-        var row = String(lay.pos[i].row);
-        var span = (Math.round((lay.pos[i].col - 1) * 4) + 1) + ' / span 4';
-        st.nodes[i].style.gridRow = ovNodes[offsets[s] + i].style.gridRow = row;
-        st.nodes[i].style.gridColumn = ovNodes[offsets[s] + i].style.gridColumn = span;
-      }
-    }
-
-    function drawEdges(st) {
-      var box = st.tree.getBoundingClientRect();
-      if (!box.width) return;
-      var html = '';
-      for (var j = 0; j < st.parent.length; j++) {
-        if (st.parent[j] < 0) continue;
-        html += roadmapLtreeEdgeHtml(st.nodes[st.parent[j]].getBoundingClientRect(),
-          st.nodes[j].getBoundingClientRect(), box, 5, 'data-to="' + j + '"');
-      }
-      st.svg.innerHTML = html;
+      placeRoadmapLtreeNodes(st.tree, st.nodes, lay);
+      placeRoadmapLtreeNodes(ovTrees[s], Array.prototype.slice.call(ovNodes, offsets[s], offsets[s] + st.nodes.length), lay);
     }
 
     // 全局总览：各阶段框内的树边 + 相邻阶段互链（阶段框上下排开，互链从上一阶段节点底边接到下一阶段节点顶边）
@@ -4038,19 +4129,13 @@
       if (stage === 'all') drawOverview();
       for (var i = 0; i < stages.length; i++) {
         stages[i].panel.hidden = i !== stage;
-        if (i === stage) drawEdges(stages[i]);
+        if (i === stage) drawRoadmapLtreeEdges(stages[i]);
       }
     }
 
     // 悬停节点：点亮它在树里的上下游链与它连着的前置 / 通往；悬停标签：点亮它连着的本阶段节点
     function trace(st, litNodes, isLitGate) {
-      st.tree.classList.add('is-tracing');
-      for (var n = 0; n < st.nodes.length; n++) st.nodes[n].classList.toggle('is-path', !!litNodes[n]);
-      var edges = st.svg.children;
-      for (var e = 0; e < edges.length; e++) {
-        var to = Number(edges[e].getAttribute('data-to'));
-        edges[e].classList.toggle('is-path', !!(litNodes[to] && litNodes[st.parent[to]]));
-      }
+      traceRoadmapLtree(st, litNodes);
       var gates = st.panel.querySelectorAll('.roadmap-ltree-gate');
       for (var g = 0; g < gates.length; g++) gates[g].classList.toggle('is-path', isLitGate(gates[g]));
     }
@@ -4124,7 +4209,7 @@
     var resize = new ResizeObserver(function (entries) {
       for (var i = 0; i < entries.length; i++) {
         if (entries[i].target === ov) drawOverview();
-        else drawEdges(stages[Number(entries[i].target.parentNode.parentNode.getAttribute('data-stage'))]);
+        else drawRoadmapLtreeEdges(stages[Number(entries[i].target.parentNode.parentNode.getAttribute('data-stage'))]);
       }
     });
     for (var ro = 0; ro < stages.length; ro++) resize.observe(stages[ro].tree);
@@ -4135,18 +4220,7 @@
       for (var c = 0; c < columns.length; c++) {
         for (var w = 0; w < columns[c].items.length; w++) wanted[columns[c].items[w]] = true;
       }
-      var idOfPath = {};
-      var gNodes = (gd && gd.nodes) || [];
-      for (var gn = 0; gn < gNodes.length; gn++) {
-        if (gNodes[gn] && wanted[gNodes[gn].detail_id]) idOfPath[gNodes[gn].id] = gNodes[gn].detail_id;
-      }
-      var linked = {};
-      var gEdges = (gd && gd.edges) || [];
-      for (var ge = 0; ge < gEdges.length; ge++) {
-        var src = idOfPath[gEdges[ge].source];
-        var dst = idOfPath[gEdges[ge].target];
-        if (src && dst && src !== dst) linked[src + '|' + dst] = linked[dst + '|' + src] = true;
-      }
+      var linked = roadmapLtreeLinkedPairs(gd, wanted);
       var treeEdges = 0;
       for (var s2 = 0; s2 < stages.length; s2++) {
         applyLayout(s2, linked);
@@ -4162,7 +4236,7 @@
           }
         }
       }
-      for (var v = 0; v < stages.length; v++) if (!stages[v].panel.hidden) drawEdges(stages[v]);
+      for (var v = 0; v < stages.length; v++) if (!stages[v].panel.hidden) drawRoadmapLtreeEdges(stages[v]);
       if (!overviewEl.hidden) drawOverview();
       if (metaEl && treeEdges) {
         metaEl.textContent += ' · ' + treeEdges + ' 条阶段内连线';
