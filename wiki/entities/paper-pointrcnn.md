@@ -64,7 +64,7 @@ sequenceDiagram
  participant RPN as RPN
  participant POOL as RoI pool
  participant RCNN as RCNNNet.forward
- participant OPT as Trainer
+ participant UPDATE as Trainer
  TRAIN->>NET: point cloud batch
  NET->>RPN: point segmentation + proposals
  RPN-->>NET: rois + point features
@@ -72,7 +72,7 @@ sequenceDiagram
  POOL->>RCNN: canonicalized local points
  RCNN-->>NET: cls + reg outputs
  NET-->>TRAIN: losses
- TRAIN->>OPT: optimizer.step
+ TRAIN->>UPDATE: optimizer.step
 ```
 
 ## 实验与评测
