@@ -89,6 +89,8 @@ class RoadmapPageTests(unittest.TestCase):
         css = STYLE_CSS.read_text(encoding="utf-8")
         self.assertIn(".roadmap-ltree-ov {", css)
         self.assertNotIn(".roadmap-ttree", css)
+        # 总览节点同样带类型与健康度
+        self.assertNotIn(".roadmap-ltree-ov .roadmap-ltree-node-type {\n  display: none;", css)
 
     def test_depth_roadmap_stages_embed_knowledge_map_nodes(self):
         content = MAIN_JS.read_text(encoding="utf-8")

@@ -3649,8 +3649,14 @@ button.home-wiki-heatmap-cell.is-active {
   font-weight: 500;
   -webkit-line-clamp: 2;
 }
+/* 总览节点同样带类型与健康度，比单阶段视图小一号 */
 .roadmap-ltree-ov .roadmap-ltree-node-type {
-  display: none;
+  gap: 3px;
+  font-size: 0.6rem;
+}
+.roadmap-ltree-ov .roadmap-ltree-node .roadmap-kmap-dot {
+  width: 0.4rem;
+  height: 0.4rem;
 }
 .roadmap-ltree-ov .roadmap-ltree-edge-line {
   stroke-width: 1.4;
