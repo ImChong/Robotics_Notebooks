@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, wam, vla, technology-map, wechat]
 status: complete
-updated: 2026-10-14
+updated: 2026-11-07
 related:
   - ../entities/paper-streamingwam.md
   - ../entities/paper-freebar-barrier-guidance-async-vla.md
@@ -75,7 +75,7 @@ flowchart TB
 | FreeBar | [paper-freebar-barrier-guidance-async-vla](../entities/paper-freebar-barrier-guidance-async-vla.md) | 已开源 |
 | CS-VGB | [paper-cs-vgb-inference-time-scaling](../entities/paper-cs-vgb-inference-time-scaling.md) | 已开源 |
 | FlowVLA | [paper-flowvla-pluggable-3d-flow](../entities/paper-flowvla-pluggable-3d-flow.md) | 已开源 |
-| Δ-Flow | [paper-delta-flow-matching-robot-foundation-models](../entities/paper-delta-flow-matching-robot-foundation-models.md) | 已开源 |
+| Δ-Flow | [paper-delta-flow-matching-robot-foundation-models](../entities/paper-delta-flow-matching-robot-foundation-models.md) | 待发布（仅 README） |
 | PRISM (Precision Forcing) | [paper-prism-precision-forcing-vla](../entities/paper-prism-precision-forcing-vla.md) | 已开源 |
 | VPA | [paper-vision-predictor-action-jepa](../entities/paper-vision-predictor-action-jepa.md) | 已开源 |
 | CFG-Policy | [paper-cfg-policy-unified-diffusion-policy](../entities/paper-cfg-policy-unified-diffusion-policy.md) | 待发布 |
@@ -153,7 +153,7 @@ flowchart TB
 - **延迟口径要分开：** StreamingWAM 原文把一次性暖启动（TTFA）与稳态重规划延迟分开报告；单次前向并不更便宜（57.3 ms 对 46.8 ms），省的是把每次重规划的模型评估从 10 次降到 1 次。
 - **执行视野 K 与预测视野 H：** 流式收益依赖 K 小于 H 且按块对齐；K=H 时只剩一个块，优势消失（原文边界实验）。
 - **动态任务的基线设置：** 原文对基线在动态任务上改用 1 步推理，因 10 步部署近乎零成功；读对比结果时需留意各方配置不同，属系统级对比。
-- **公众号本身的核验状态：** 页面各数字为公众号转述；StreamingWAM 的数字已对照 arXiv 原文，其余 40 篇仍以公众号一句话判断为准，细节见各节点。
+- **公众号本身的核验状态：** StreamingWAM、Δ-flow 已对照各自 arXiv 一手原文；Δ-flow 官方 GitHub 尚无可运行研究源码，修正旧版「已开源」判定。其余条目仍以公众号线索为主，细节见各节点。
 
 ## 局限
 
