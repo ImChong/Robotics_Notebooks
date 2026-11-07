@@ -4,7 +4,7 @@ tags:
   - dataset
   - data-panorama
 status: complete
-updated: 2026-10-20
+updated: 2026-11-07
 summary: "2026-10-19 公众号综述的 85 个具身智能数据集全景：逐项映射到唯一 wiki 节点，41 项复用已有节点、44 项新建节点。"
 related:
   - ../concepts/open-x-embodiment.md
@@ -73,6 +73,9 @@ original:
 - [2026-10-19 公众号综述：全球 85 个具身智能数据集全景](../../sources/datasets/wechat-embodied-dataset-panorama-2026-10-19.md)
 
 ## 推荐继续阅读
+
+- [10 类机器人操作数据/基准一手对照（2026-11-07）](../comparisons/robot-manipulation-data-benchmark-selection.md) — 本次新增官方入口核对（18 个链接），含未通读限制
+- [RoboSet：厨房多任务真实机器人数据集](../entities/roboset-dataset.md) — 官网通读新实体，**未纳入原 85 项计数**
 
 - [Open X-Embodiment 项目页](https://robotics-transformer-x.github.io/)
 - [LeRobot 数据集格式文档](https://huggingface.co/docs/lerobot/lerobot-dataset-v3)
