@@ -127,3 +127,15 @@
 - [ ] 所有原文全文与官方 README 通读完成
 - [ ] 全部独立项目 wiki 节点去重升级与 Mermaid 图核验
 - [ ] 本地 `make ci-preflight` + `make ci-test` 与每页健康度报告
+
+## 进一步核对后补充的原始论文（不计入上述 90 条截图索引 URL）
+
+这些论文是原先索引中**只有源码入口或合集入口**但缺失主论文时，依据原作者或论文出版方补找的原文。仍未通读全文，不计为完成实体 ingest。
+
+- **PointRCNN: 3D Object Proposal Generation and Detection From Point Cloud**（CVPR 2019）：[论文](https://openaccess.thecvf.com/content_CVPR_2019/html/Shi_PointRCNN_3D_Object_Proposal_Generation_and_Detection_From_Point_Cloud_CVPR_2019_paper.html) · [源码](https://github.com/sshaoshuai/PointRCNN) · [单独来源记录](../papers/vision3d_point_rcnn_primary_paper_20261108.md)
+- **PV-RCNN: Point-Voxel Feature Set Abstraction for 3D Object Detection**（CVPR 2020）：[论文](https://openaccess.thecvf.com/content_CVPR_2020/html/Shi_PV-RCNN_Point-Voxel_Feature_Set_Abstraction_for_3D_Object_Detection_CVPR_2020_paper.html) · [源码](https://github.com/open-mmlab/OpenPCDet) · [单独来源记录](../papers/vision3d_pv_rcnn_primary_paper_20261108.md)
+- **PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space**（NeurIPS 2017 / arXiv 1706.02413）：[论文](https://arxiv.org/abs/1706.02413) · [源码](https://github.com/charlesq34/pointnet2) · [单独来源记录](../papers/vision3d_pointnet2_primary_paper_20261108.md)
+- **NICE-SLAM: Neural Implicit Scalable Encoding for SLAM**（CVPR 2022）：[论文](https://openaccess.thecvf.com/content/CVPR2022/html/Zhu_NICE-SLAM_Neural_Implicit_Scalable_Encoding_for_SLAM_CVPR_2022_paper.html) · [源码](https://github.com/cvg/nice-slam) · [单独来源记录](../papers/vision3d_nice_slam_primary_paper_20261108.md)
+- **SplaTAM: Splat, Track & Map 3D Gaussians for Dense RGB-D SLAM**（CVPR 2024）：[论文](https://openaccess.thecvf.com/content/CVPR2024/html/Keetha_SplaTAM_Splat_Track__Map_3D_Gaussians_for_Dense_RGB-D_CVPR_2024_paper.html) · [源码](https://github.com/spla-tam/SplaTAM) · [单独来源记录](../papers/vision3d_splatam_primary_paper_20261108.md)
+- **Gaussian Splatting SLAM**（CVPR 2024）：[论文](https://openaccess.thecvf.com/content/CVPR2024/html/Matsuki_Gaussian_Splatting_SLAM_CVPR_2024_paper.html) · [源码](https://github.com/VSLAM-LAB/MonoGS) · [单独来源记录](../papers/vision3d_monogs_primary_paper_20261108.md)
+- **VINS-Mono: A Robust and Versatile Monocular Visual-Inertial State Estimator**（IEEE Transactions on Robotics 2018）：[论文](https://ieeexplore.ieee.org/document/8421746) · [源码](https://github.com/HKUST-Aerial-Robotics/VINS-Mono) · [单独来源记录](../papers/vision3d_vins_mono_primary_paper_20261108.md)
