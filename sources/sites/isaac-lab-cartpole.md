@@ -6,7 +6,9 @@
 - **Quickstart：** <https://isaac-sim.github.io/IsaacLab/main/source/setup/quickstart.html>
 - **仓库：** <https://github.com/isaac-sim/IsaacLab>（已开源，BSD-3-Clause）
 - **配套仓库归档：** [`sources/repos/isaac_lab.md`](../repos/isaac_lab.md)
-- **入库日期：** 2026-08-16
+- **入库日期：** 2026-08-16（2026-11-07 补通读核对）
+- **核对范围：** 2026-11-07 通读 Isaac Lab **v2.1.0 标签**（`main` 分支路径已搬迁，raw 链接 404）的三份源码：`manager_based/classic/cartpole/cartpole_env_cfg.py`、`direct/cartpole/cartpole_env.py`、`isaaclab_assets/robots/cartpole.py`，核对了上表数值；没有阅读相机变体（RGB/Depth/ResNet18/TheiaTiny）的配置，没有读 `main` 分支当前版本，也没有安装运行 Isaac Lab。资产里 v2.1.0 的字段名为 `effort_limit=400.0`（新版文档写作 `effort_limit_sim`），数值一致。
+- **通读：** 已完成
 - **一句话说明：** NVIDIA Isaac Lab 把经典 cart-pole 做成 GPU 并行 RL 教学任务：manager-based `Isaac-Cartpole-v0` 与 direct `Isaac-Cartpole-Direct-v0`，并派生 RGB/Depth/冻结视觉编码器变体。
 - **代码：** 已开源 → manager cfg [`cartpole_env_cfg.py`](https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/manager_based/classic/cartpole/cartpole_env_cfg.py)；direct env [`cartpole_env.py`](https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_tasks/isaaclab_tasks/direct/cartpole/cartpole_env.py)；资产 [`cartpole.py`](https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab_assets/isaaclab_assets/robots/cartpole.py)
 - **沉淀到 wiki：** 是 → [`wiki/concepts/cartpole.md`](../../wiki/concepts/cartpole.md)

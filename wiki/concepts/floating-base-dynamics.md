@@ -1,7 +1,17 @@
 ---
 type: concept
+status: complete
+original:
+  - ../../sources/papers/herzog_2016_momentum_control_hierarchical_inverse_dynamics_arxiv_1410_7284.md
+  - ../../sources/papers/modern_robotics_textbook.md
+sources:
+  - ../../sources/papers/herzog_2016_momentum_control_hierarchical_inverse_dynamics_arxiv_1410_7284.md
+  - ../../sources/papers/modern_robotics_textbook.md
+  - ../../sources/papers/robot_kinematics_tools.md
+  - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
+  - ../../sources/papers/robocompiler_humanoids_composable_dynamics_arxiv_2610_14237.md
 summary: "Floating Base Dynamics 描述底座不固定机器人在自由空间和接触条件下的整体动力学组织方式。"
-updated: 2026-10-26
+updated: 2026-11-07
 ---
 
 # Floating Base Dynamics
@@ -135,7 +145,9 @@ $$
 - \( \omega_b \)：base 角速度
 - \( \dot{q}_j \)：关节速度
 
-## 动力学方程长什么样
+## 核心原理：动力学方程长什么样
+
+先看固定基座的对照（*Modern Robotics* Ch 8，开链）：$\tau=M(\theta)\ddot\theta+h(\theta,\dot\theta)$，末端对环境施力时右端加 $J^\top(\theta)F_{tip}$；$M(\theta)=\sum_iJ_{ib}^\top\mathcal G_iJ_{ib}$ 对称正定，$\mathcal G_i$ 为连杆 $i$ 的 $6\times6$ 空间惯量。**教材的动力学只含固定基座**，下面的浮动基方程是它加上未驱动的基座自由度和接触力后的推广。
 
 浮动基机器人的经典动力学通常写成：
 
@@ -150,6 +162,8 @@ $$
 - \( S \)：选择矩阵（只对 actuated joints 有控制输入）
 - \( J_c \)：接触雅可比
 - \( f \)：接触力
+
+（Herzog et al. 2016 式 1 写作 $M(q)\ddot q+N(q,\dot q)=S^\top\tau+J_c^\top\lambda$，$N$ 含科氏 / 离心 / 重力 / 摩擦，$\lambda$ 为广义接触力；其 $S=[I_{n\times n}\ 0]$ 把 $n$ 个关节放在前、6 个浮动基自由度放在后，本页上文把基座写在前，只是排列不同。）
 
 这个式子和固定底座最不一样的点在于：
 
@@ -188,12 +202,14 @@ floating base 的 6 个自由度通常是 **unactuated**。
 
 ## 核心算法：RNEA / CRBA / ABA
 
-Featherstone（2008）给出了浮动基系统的三个 O(n) 递推算法，是 Pinocchio/RBDL 等工具的核心：
+> **原文核对说明：** 本节 RNEA / CRBA / ABA 与空间向量代数部分出自 Featherstone《Rigid Body Dynamics Algorithms》及 Pinocchio 等工具的通行说法，**本批原文核对未取得该书**，其复杂度与符号细节标「（未核对原书）」。已核对的相关内容是 *Modern Robotics* Ch 8 的固定基座牛顿–欧拉递推：前向迭代 $T_{i,i-1}=e^{-[A_i]\theta_i}M_{i,i-1}$，$\mathcal V_i=\mathrm{Ad}_{T_{i,i-1}}(\mathcal V_{i-1})+A_i\dot\theta_i$，$\dot{\mathcal V}_i=\mathrm{Ad}_{T_{i,i-1}}(\dot{\mathcal V}_{i-1})+\mathrm{ad}_{\mathcal V_i}(A_i)\dot\theta_i+A_i\ddot\theta_i$；后向迭代 $\mathcal F_i=\mathrm{Ad}^\top_{T_{i+1,i}}(\mathcal F_{i+1})+\mathcal G_i\dot{\mathcal V}_i-\mathrm{ad}^\top_{\mathcal V_i}(\mathcal G_i\mathcal V_i)$，$\tau_i=\mathcal F_i^\top A_i$；重力作为基座加速度 $\dot{\mathcal V}_0=(0,-g)$ 引入。浮动基推广把基座当作带 6 自由度的根关节。
+
+Featherstone（2008）给出了浮动基系统的三个递推算法（未核对原书的复杂度说法：RNEA、ABA 为 $O(n)$，CRBA 为 $O(n^2)$ 量级），是 Pinocchio/RBDL 等工具的核心：
 
 ### RNEA（Recursive Newton-Euler Algorithm）— 逆动力学
 
 **输入**：$q, \dot{q}, \ddot{q}$（广义位置/速度/加速度）  
-**输出**：关节力矩 $\tau$
+**输出**：关节力矩 $\tau$（教材固定基座版见上；浮动基版输出含根关节的 6 维力）
 
 递推流程（两遍扫描）：
 ```
@@ -214,14 +230,14 @@ Featherstone（2008）给出了浮动基系统的三个 O(n) 递推算法，是 
 
 $$M(q)\ddot{q} + h(q,\dot{q}) = S^T\tau + J_c^T f$$
 
-复杂度 $O(n^2)$，输出惯性矩阵 $M \in \mathbb{R}^{(n+6)\times(n+6)}$。
+复杂度 $O(n^2)$ 量级（未核对原书），输出惯性矩阵 $M \in \mathbb{R}^{(n+6)\times(n+6)}$。固定基座下教材给出等价的 $M(\theta)=\sum_iJ_{ib}^\top\mathcal G_iJ_{ib}$。
 
 ### ABA（Articulated Body Algorithm）— 正动力学
 
 **输入**：$q, \dot{q}, \tau$  
 **输出**：$\ddot{q}$（关节加速度）
 
-复杂度 $O(n)$，比直接求逆 $M$ 快得多，常用于仿真器时间积分。
+复杂度 $O(n)$（未核对原书），比直接求逆 $M$ 快得多，常用于仿真器时间积分；教材的固定基座前向动力学则是直接解 $M(\theta)\ddot\theta=\tau-h-J^\top F_{tip}$ 的线性方程。
 
 ---
 
@@ -234,13 +250,15 @@ Featherstone 的空间向量代数将 3D 力学量统一为 6D 向量，简化�
 | 空间速度（twist）| 6 | $[ω; v]$（角速度 + 线速度） |
 | 空间加速度 | 6 | $[\dot{ω}; \dot{v}]$ |
 | 空间力（wrench）| 6 | $[τ; f]$（力矩 + 力） |
-| 空间惯性 | 6×6 | $I^A = \begin{bmatrix} I_{cm} + mcc^T & mc \\ mc^T & mE \end{bmatrix}$ |
+| 空间惯性 | 6×6 | 质心系下 $\mathcal G=\mathrm{diag}(\mathcal I_b,\,mI)$（教材）；换系 $\mathcal G_a=[\mathrm{Ad}_{T_{ba}}]^\top\mathcal G_b[\mathrm{Ad}_{T_{ba}}]$ |
 
-空间运动方程简化为：
+> 修正：本页旧版把空间惯性写成 $\begin{bmatrix}I_{cm}+mcc^\top & mc\\ mc^\top & mE\end{bmatrix}$，该形式缺少叉乘矩阵（应为 $c$ 的反对称矩阵 $[c]$ 而非向量 $c$），已改为教材的质心系形式。教材排序为 twist $(\omega,v)$、wrench $(m,f)$（角 / 力矩在前）。
 
-$$I^A \dot{V} + v \times^* I^A V = F$$
+空间运动方程（教材单刚体 twist–wrench 形式）：
 
-其中 $v \times^*$ 是空间力的伴随算子。这种表示消除了大量符号混乱，Pinocchio 完全基于此实现。
+$$\mathcal F_b=\mathcal G_b\dot{\mathcal V}_b-[\mathrm{ad}_{\mathcal V_b}]^\top\mathcal G_b\mathcal V_b$$
+
+教材强调：只要 $\mathcal F,\mathcal V,\mathcal G$ 都在同一坐标系里表达，方程形式不随坐标系而变。Featherstone 的写法 $I^A\dot V+v\times^*I^AV=F$ 与此同构（符号不同，未核对原书）；「Pinocchio 完全基于此实现」未核对其源码，按推测处理。
 
 ---
 
@@ -258,9 +276,15 @@ $$\begin{bmatrix} M_{ff} & M_{fj} \\ M_{jf} & M_{jj} \end{bmatrix} \begin{bmatri
 
 WBC/TSID 的核心任务就是在满足此 EOM 和接触约束的前提下分配 $\tau$ 和 $f$。
 
+**浮动基行 = 整机牛顿–欧拉方程。** 把方程按驱动行与浮动基行拆开（Herzog et al. 2016 式 12–14）：浮动基的 6 行 $M_l\ddot q+N_l=J_{c,l}^\top\lambda$ 不含 $\tau$，正是整个系统的动量变化 = 外力（接触力 + 重力）；关节力矩只出现在驱动行，$\tau=M_u\ddot q+N_u-J_{c,u}^\top\lambda$ 由 $\ddot q,\lambda$ 唯一决定，所以可以从优化变量里消去（变量数从 $2n+6+6c$ 降到 $n+6+6c$，该论文因此让层级逆动力学跑进 1 kHz）。物理上说就是：你只能通过接触力 $\lambda$ 和关节运动间接改变基座，无法直接命令基座加速度。
+
+**姿态参数化陷阱：** 若基座姿态用四元数，则 $n_q=n_v+1$，$\dot q$ 里的四元数导数不是角速度 $\omega$，二者由四元数率与角速度的线性关系联系（Diebel 2006 §6.7）；教材用 $\dot RR^{-1}=[\omega_s]$、$R^{-1}\dot R=[\omega_b]$ 区分空间 / 体角速度。动力学方程里的 $\dot q$ 实际是广义速度 $v$。
+
 ---
 
 ## 和 centroidal dynamics 的关系
+
+Herzog et al. 2016 给出了二者的精确连接：质心动量 $h=H_G(q)\dot q$（$H_G$ 为 centroidal momentum matrix，$h=[h_{lin};h_{ang}]$ 取在质心），$\dot h=H_G\ddot q+\dot H_G\dot q$，同时由浮动基行得 $\dot h=\begin{bmatrix}I&0&\cdots\\ [x_i-x_{cog}]_\times&I&\cdots\end{bmatrix}\lambda+\begin{bmatrix}mg\\0\end{bmatrix}$——即 centroidal dynamics 恰是浮动基方程的这 6 行。
 
 Floating Base Dynamics 是更通用、更底层的整机动力学视角。
 
@@ -313,7 +337,11 @@ floating base 系统还有一个麻烦点：
 
 见：[State Estimation](./state-estimation.md)
 
-## 在机器人中的典型应用
+## 工程实践：在机器人中的典型应用
+
+- **控制栈接口：** 读取 $q,\dot q$（含基座估计，见 [State Estimation](./state-estimation.md)）→ 取 $M,N,J_c$ → 层级 QP / [TSID](./tsid.md) 求 $\ddot q,\lambda$ → 由驱动行算 $\tau$（Herzog 等 1 kHz 的做法）。
+- **调试检查：** 零力矩 + 零接触力时 $\ddot q=-M^{-1}N$ 必须满足动力学（自由落体）；浮动基 6 行的合力应等于 $m\ddot x_{cog}-mg$。
+- **库使用：** 注意 $n_q\neq n_v$、四元数顺序与基座在前 / 在后的排布差异，各库约定不同（以所用库文档为准）。
 
 ### 1. 人形机器人 locomotion
 只要你研究：
@@ -333,7 +361,12 @@ floating base 系统还有一个麻烦点：
 ### 4. 高动态动作
 跳跃、跑动、翻越等动作里，floating base dynamics 的影响会更强。
 
-## 常见误区
+## 局限与常见误区
+
+- **本页方程假设刚体、固定接触（$J_c\ddot q+\dot J_c\dot q=0$）：** 接触建立 / 断开、冲击、滑移不在方程内（见 [Contact Dynamics](./contact-dynamics.md)）；刚体假设忽略柔性与关节摩擦细节。
+- **模型误差：** 惯量参数不准会直接污染 $M,N$；Herzog 等指出模型误差与计算复杂度是实际部署的限制。
+
+### 常见误区
 
 ### 1. 以为只是在状态里多了 6 个自由度
 不止。真正难的是：
@@ -349,6 +382,15 @@ floating base 系统还有一个麻烦点：
 ### 4. 低估 contact 的重要性
 在 floating base 系统里，contact 不是附加项，而是系统动力学的一部分。
 
+## 关联页面
+
+- [Centroidal Dynamics](./centroidal-dynamics.md) — 浮动基方程的 6 个未驱动行
+- [Contact Dynamics](./contact-dynamics.md) — 接触力与接触约束如何进入方程
+- [TSID](./tsid.md)、[Whole-Body Control](./whole-body-control.md) — 在该方程上做任务空间控制
+- [State Estimation](./state-estimation.md) — 基座位姿 / 速度估计
+- [Modern Robotics 教材](../entities/modern-robotics-book.md) — 固定基座动力学（Ch 8）
+- [SO(3) 旋转表示对比](../comparisons/so3-rotation-representations.md) — 基座姿态表示
+
 ## 推荐使用建议
 
 ### 如果你做人形控制
@@ -362,10 +404,11 @@ floating base 系统还有一个麻烦点：
 
 ## 参考来源
 
+- [Herzog et al. 2016，arXiv:1410.7284 原文归档](../../sources/papers/herzog_2016_momentum_control_hierarchical_inverse_dynamics_arxiv_1410_7284.md) — 浮动基运动方程、驱动 / 浮动基行拆分、质心动量矩阵
 - [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — ingest 档案（Pinocchio 2019 / RBDL / Crocoddyl，均基于浮动基 RNEA/CRBA/ABA）
-- Featherstone, *Rigid Body Dynamics Algorithms* — 浮基动力学核心算法参考（RNEA/CRBA/ABA/空间向量代数）
-- Orin et al., *Centroidal Dynamics of a Humanoid Robot* (2013) — 人形浮基系统质心动力学
-- Siciliano et al., *Robotics: Modelling, Planning and Control* — 机器人动力学建模教材
+- Featherstone, *Rigid Body Dynamics Algorithms* — 浮基动力学核心算法参考（RNEA/CRBA/ABA/空间向量代数；本批未取得原书，相关陈述未核对）
+- Orin et al., *Centroidal Dynamics of a Humanoid Robot* (2013) — 人形浮基系统质心动力学（未取得原文，未核对；质心动量矩阵的定义以 Herzog 2016 引用的 Orin & Goswami 2008 为线索）
+- Siciliano et al., *Robotics: Modelling, Planning and Control* — 机器人动力学建模教材（未核对）
 - Lynch & Park (2017), *Modern Robotics*. Ch 8 *Dynamics of Open Chains* — 用李群 / 螺旋理论给出 Lagrange 与 Newton-Euler 形式的统一推导，本科级入口
 - [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
 - [sources/papers/diebel_2006_representing_attitude_quaternions.md](../../sources/papers/diebel_2006_representing_attitude_quaternions.md) — 四元数率 ↔ 角速度、$n_q \neq n_v$
@@ -373,6 +416,7 @@ floating base 系统还有一个麻烦点：
 
 ## 推荐继续阅读
 
+- [Herzog et al., *Momentum Control with Hierarchical Inverse Dynamics on a Torque-Controlled Humanoid* (arXiv:1410.7284)](https://arxiv.org/abs/1410.7284) — 浮动基运动方程拆分与动量控制
 - Featherstone, *Rigid Body Dynamics Algorithms*
 - [Modern Robotics 教材](../entities/modern-robotics-book.md)
 - [单位四元数与 SO(3)](../formalizations/unit-quaternion-so3.md) — 浮动基四元数在 $q$ 中的布局与 $\dot q$ 误区

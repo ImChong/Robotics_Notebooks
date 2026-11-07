@@ -11,7 +11,7 @@ tags:
 - awesome-sim2real
 - longchao-sim2real
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
 related:
 - ./gym-pybullet-drones.md
 - ./motion-imitation-quadruped.md
@@ -29,7 +29,11 @@ related:
 - ../concepts/sim2real.md
 - ../tasks/locomotion.md
 - ../tasks/manipulation.md
+original:
+- ../../sources/sites/pybullet-quickstart-guide.md
+- ../../sources/repos/bullet3.md
 sources:
+- ../../sources/sites/pybullet-quickstart-guide.md
 - ../../sources/repos/bullet3.md
 - ../../sources/sites/pybullet-org.md
 - ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
@@ -61,7 +65,6 @@ venue: PyBullet project site (no formal publication)
 | GUI | Graphical User Interface | `p.connect(p.GUI)` 可视化调试 |
 | LCP | Linear Complementarity Problem | Bullet 刚体接触常用 hard-contact 求解框架 |
 | FEM | Finite Element Method | Bullet3 可选可变形体仿真（相对 RL 主线较少用） |
-
 | Sim2Real | Simulation to Real | 仿真策略迁移到真机 |
 | MDP | Markov Decision Process | 状态–动作–转移–奖励形式化 |
 | DR | Domain Randomization | 域随机化 |
@@ -97,19 +100,30 @@ flowchart TB
 
 - **教学与最小闭环**：在进 Isaac Lab / MuJoCo 大规模训练前，用 KUKA 臂定点、倒立摆等 **几十行脚本** 把 MDP 五元组与仿真步进对齐（见 [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md)）。
 - **历史生态**：[motion_imitation](./motion-imitation-quadruped.md)（四足模仿动物，RSS 2020）、早期 DeepMimic 复现、[gym-pybullet-drones](./gym-pybullet-drones.md)（四旋翼 RL）均建立于 PyBullet；官方站亦索引 Assistive Gym、[Habitat-Sim](./habitat-sim.md) Bullet 集成（conda `withbullet`）等。
-- **依赖轻**：Colab 上 `pip install pybullet` 约十几秒；适合课程与算法 ablation。
+- **依赖轻**：官方提供预编译 manylinux wheel，可直接在 Colab 使用；适合课程与算法 ablation。
 
-## 核心能力
+## 核心原理：核心能力与 API
+
+官方 Quickstart 的架构说明：PyBullet 是**客户端–服务器**式 API——脚本（客户端）发命令，物理服务器返回状态。内置服务器有 `DIRECT`（无图形，同进程，适合无 GPU 云机）与 `GUI`（OpenGL 窗口）；`SHARED_MEMORY` / UDP / TCP 可连别的进程或远程机器。默认后端是 CPU 上的 Bullet 2.x，刚体、降维坐标多体与可变形体由统一的 LCP 约束求解器处理，正向动力学用 Articulated Body Algorithm。
 
 | 能力 | API 直觉 |
 |------|----------|
 | 加载场景 | `loadURDF("plane.urdf")`、机器人 `loadURDF(...)` |
-| 物理步进 | `stepSimulation()` 推进一个仿真 tick |
+| 物理步进 | `stepSimulation()` 推进一个仿真 tick（默认 1/240 s；服务器默认不自动步进，除非开 `setRealTimeSimulation`） |
 | 读状态 | `getLinkState` / `getJointState` → 末端位姿、关节角 |
-| 写动作 | `setJointMotorControl2`（位置 / 速度 / 力矩模式） |
+| 写动作 | `setJointMotorControl2`（`POSITION_CONTROL` 实为位置–速度 PD、`VELOCITY_CONTROL`、`TORQUE_CONTROL`、`PD_CONTROL`） |
 | 可视化 | `p.connect(p.GUI)` 或 `DIRECT` 无头 |
 | 共享内存 / VR | `p.connect(p.SHARED_MEMORY)` 对接 Bullet VR 沙盒 |
 | 内置 Gym 环境 | `pybullet_envs`：Ant、Humanoid、DeepMimic 等（随 bullet3 仓示例） |
+
+## 工程实践
+
+1. **力矩控制要先关默认电机：** 每个转动 / 移动关节默认带速度电机，做力矩控制须先 `setJointMotorControl2(..., VELOCITY_CONTROL, force=0)`；`TORQUE_CONTROL` 只在显式 `stepSimulation` 时生效。官方 FAQ 的建议是先从位置或速度控制起步，力矩控制要花更多功夫才可靠。
+2. **时间步与控制频率：** 默认 1/240 s；若想要 60 Hz 控制频率，需要每个控制周期调用 4 次 `stepSimulation`（算术推论，非文档原话），或用 `setTimeStep` 调整。
+3. **阻尼与速度钳制：** PyBullet 默认施加线 / 角阻尼，速度上限钳制为 100；做高速或需无阻尼动力学时用 `changeDynamics` 把阻尼置 0。
+4. **无头训练：** `p.connect(p.DIRECT)`；仍可用软件渲染的 `getCameraImage`。
+5. **内置 Gym 环境：** `pip install pybullet` 同时装 `pybullet_envs` 与 `pybullet_data`，`import pybullet_envs` 后自动注册，含 Ant / Hopper / Humanoid / Walker2D / HalfCheetah / 倒立摆、Minitaur、MIT Racecar、Kuka 抓取，以及 DeepMimic 的 Backflip / Walk 重实现；文档注明 Kuka 环境当时存在训练问题，DeepMimic 示例需要 TensorFlow 1.x。
+6. **读状态的坑：** `getLinkState` 返回的是**连杆质心**的世界位姿（四元数 [x,y,z,w]），要连杆坐标系需要再用返回的局部惯性系偏移换算。
 
 ## 局限与选型
 
@@ -118,9 +132,15 @@ flowchart TB
 | RL 入门、机械臂 reach 教学 | ✅ 足够 | — |
 | 四旋翼 RL 基准 | ✅ [gym-pybullet-drones](./gym-pybullet-drones.md) | Flightmare / Isaac |
 | 人形万环境并行 PPO | ⚠️ 慢 | [Isaac Lab](./isaac-gym-isaac-lab.md) |
-| 精细接触 / 足端力可信 | ⚠️ 简化（hard contact / LCP，见 [接触互补](../formalizations/contact-complementarity.md)） | [MuJoCo](./mujoco.md) |
+| 精细接触 / 足端力可信 | ⚠️ 官方文档称刚体由统一 LCP 约束求解器处理（见 [接触互补](../formalizations/contact-complementarity.md)）；相对 MuJoCo 的精度差异为社区经验判断（推测，未在本次入库中对比实测） | [MuJoCo](./mujoco.md) |
 | sim2real 精细接触操作 | ❌ 不宜唯一真理源 | MuJoCo + 系统辨识 |
 | 可微 / 百万步/秒 rollout | ⚠️ 非主线 | MuJoCo MJX、TDS 等可微栈 |
+
+更多局限（来自官方文档与 README）：
+
+- 默认后端是 CPU 上的 Bullet 2.x；Bullet 3.x 的 OpenCL GPU 路径被描述为实验性，需高端独显，且官方 README 称 OpenCL CPU 设备不可用。
+- bullet3 GitHub 的 issue 区因被支持类问题淹没而关闭，提问去 PyBullet 论坛。
+- 文档中的一些示例依赖 TensorFlow 1.x 与旧版 Gym，现代环境下需自行适配。
 
 ## 关联页面
 

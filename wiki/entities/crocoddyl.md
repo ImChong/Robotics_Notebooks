@@ -1,12 +1,16 @@
 ---
 
 type: entity
+status: complete
+original:
+  - ../../sources/papers/crocoddyl_icra2020_and_repo_reading.md
 sources:
+  - ../../sources/papers/crocoddyl_icra2020_and_repo_reading.md
   - ../../sources/papers/optimal_control.md
   - ../../sources/blogs/wechat_qt_adventure_cpp_motion_control_libs_2026-11-02.md
-summary: "Crocoddyl"
-updated: 2026-11-03
-tags: [inria]
+summary: "Crocoddyl 是 LAAS-CNRS / Edinburgh 等开发的接触序列最优控制库：Pinocchio 解析稀疏导数 + 李群状态 + FDDP 求解器，用于足式 / 人形的多接触轨迹优化与 NMPC。"
+updated: 2026-11-07
+tags: [inria, optimal-control, trajectory-optimization, ddp, legged]
 
 related:
   - ../overview/cpp-motion-control-open-source-libraries-map.md
@@ -61,7 +65,7 @@ Crocoddyl 重要的地方就在于：
 - 它和 Pinocchio 配合得非常紧密
 - 它几乎是 model-based robot control 工具栈里最值得学的一套开源方案之一
 
-## 它到底是什么
+## 核心原理：它到底是什么
 
 ### 1. 不是仿真器
 Crocoddyl 不负责像 MuJoCo / Isaac Gym 那样搭世界、推进物理仿真时间步。
@@ -75,12 +79,18 @@ Crocoddyl 不负责像 MuJoCo / Isaac Gym 那样搭世界、推进物理仿真�
 它也不是像 TSID / WBC 那样“拿来就输出关节力矩”的低层控制器。
 
 它更偏：
-- 离线规划
-- 中低频优化
-- 参考轨迹生成
+- 轨迹规划与参考轨迹生成
 - optimal control research
+- 作为 NMPC 的求解内核（见下）
 
 所以它通常站在控制链更前面。
+
+> **核对原文后的修正：** 本页此前把它定位为“离线 / 中低频”。论文和 README 的实际说法是：Crocoddyl 求解的是**给定接触序列**下的多接触最优控制问题，同时输出最优轨迹**和反馈增益**（DDP 的 Riccati 回代给出前馈项 $k_k$ 与反馈增益 $K_k$）；论文还报告单次迭代最高 859.6 Hz（ANYmal 跳跃 jump-4f，i9-9900K，60 节点），并指出非线性 MPC 对足式机器人实时控制是可行的。所以它既可离线规划，也可作 NMPC 的求解内核；“高频闭环”要看具体问题规模与迭代次数，论文本身只给了离线计算耗时。
+
+### 3. 论文里的数学骨架（Mastalli 等 2020）
+- **问题：** $\min_{X,U}\; l_N(x_N)+\sum_k\int l(x,u)\,dt$，状态 $x=(q,v)$ 在流形上，控制 $u=(\tau,\lambda)$ 含关节力矩与接触力；接触视为完整约束 $\phi(q)=0$，用 KKT 系统 $\begin{bmatrix}M&J_c^\top\\J_c&0\end{bmatrix}\begin{bmatrix}\dot v\\-\lambda\end{bmatrix}=\begin{bmatrix}\tau_b\\-a_0\end{bmatrix}$ 同时解加速度与接触力，因此可直接用无约束 DDP。
+- **FDDP（Feasibility-driven DDP）：** 经典 DDP 的 rollout 总闭合动力学 gap，初值须给控制序列，全球化策略差；FDDP 让后向传播接受不可行轨迹、前向 rollout 保持 gap 按 $(1-\alpha)$ 收缩，步长 $\alpha=1$ 时退化为经典 DDP，并用 Goldstein 条件接受步长。作者强调它等价于对仅含等式约束的多重打靶做牛顿法，却不增加决策变量。
+- **冲击：** 用恢复系数 $e$ 写脉冲动力学；论文观察到用冲击模型比惩罚接触速度收敛更好。
 
 ## 它在解决什么问题
 
@@ -232,7 +242,20 @@ Crocoddyl 可以用于更高层的轨迹优化与运动规划，再由 WBC / TSI
 
 > Crocoddyl 更像“先把整条动作想明白”，TSID / WBC 更像“现在这一拍怎么稳稳执行出来”。
 
-## 常见误区
+## 工程实践
+
+- **输入依赖：** 论文方法需要**预先给定接触序列与步时**（例如论文的步态例子由接触序列和步时直接决定）；它不在求解中发现接触模式，这与接触隐式（互补约束）的 TO 不同。
+- **初始化：** 论文用姿态线性插值得到状态初值，控制初值取准静态假设下的力矩，即使这是“幼稚且不可行”的初值，FDDP 也能在 12–36 次迭代内解出跳跃、前空翻。
+- **规模与速度（论文数字）：** 积分步长通常 $10^{-2}$ s（双足行走 $3\times10^{-2}$ s），60–115 个节点，地平线 0.6–3 s；10–34 次迭代收敛、总计算 < 0.5 s；单次迭代最高 859.6 Hz；4–8 线程把单次迭代耗时约减半，超线程无益。
+- **安装与入口（README）：** `pip install crocoddyl`、`conda install crocoddyl -c conda-forge`，或 apt(robotpkg)、Nix、源码；依赖 Pinocchio、Eigen、eigenpy、Boost；可选 OpenMP、CppADCodeGen、Ipopt。官方推荐从 `notebooks/01_introduction_to_crocoddyl.ipynb` 起读到 `06_scaling_to_robotics`，示例可跑 `python -m crocoddyl.examples.quadrupedal_gaits "display" "plot"`。
+- **求解器：** README 列出 FDDP、OdynSQP、Intro、Ipopt 等；导数可用 Pinocchio 解析导数、数值微分或 CppAD 自动微分（含代码生成）。
+
+## 局限与常见误区
+
+- 论文评测**刻意忽略摩擦锥与力矩限制**，不等式约束只能用惩罚 / 有效集 / 增广拉格朗日处理（论文将其列为后续工作）；README 的后续论文列表（如 Control-Limited DDP）才处理控制界。
+- 论文的计算耗时是离线测量；实机闭环部署需要自己评估迭代次数、模型误差与接触序列规划。
+- 求解结果是局部最优，初值与接触序列选择会影响结果。
+
 
 ### 1. 以为 Crocoddyl 是控制器
 不是，它更像最优控制求解与建模工具箱。
@@ -269,6 +292,7 @@ Crocoddyl 可以用于更高层的轨迹优化与运动规划，再由 WBC / TSI
 
 ## 推荐继续阅读
 
+- 论文全文：<https://arxiv.org/abs/1909.04947>
 - 官方仓库：<https://github.com/loco-3d/crocoddyl>
 - 文档：<https://gepettoweb.laas.fr/doc/loco-3d/crocoddyl/master/doxygen-html/>
 - 论文：Mastalli et al., *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control*
@@ -276,6 +300,7 @@ Crocoddyl 可以用于更高层的轨迹优化与运动规划，再由 WBC / TSI
 
 ## 参考来源
 
+- **原文通读归档：** [Crocoddyl 论文与官方仓库通读](../../sources/papers/crocoddyl_icra2020_and_repo_reading.md)（论文全文 + README，2026-11-07）
 - Mastalli et al., *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control* (2020) — Crocoddyl 论文
 - 官方仓库：<https://github.com/loco-3d/crocoddyl>
 

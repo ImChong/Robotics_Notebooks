@@ -7,6 +7,9 @@
 - **链接：** <https://docs.nvidia.com/jetson/archives/r39.2/DeveloperGuide/>
 - **对应版本：** **NVIDIA Jetson Linux 39.2 GA**（JetPack 7 系）
 - **入库日期：** 2026-09-06
+- **复核日期：** 2026-11-07
+- **核对范围：** 只读了 Welcome 页，以及 CAN 章节（见 [jetson-linux-r392-welcome-and-can.md](./jetson-linux-r392-welcome-and-can.md)）、「Platform Power and Performance」中 Orin 系列的 MAXN / MAXN_SUPER 电源模式一节；本指南其余章节（引导、内核定制与实时内核、相机、安全、OTA、Yocto 等）**未读**。
+- **通读：** 未完成
 - **一句话说明：** Jetson **BSP 定制主文档**：DevKit vs 量产模组、SDK Manager 刷机、Module Adaptation and Bring-Up、Thor/Orin 全系列 P-number 对照。
 - **沉淀到 wiki：** [`wiki/entities/nvidia-jetson.md`](../../wiki/entities/nvidia-jetson.md)
 

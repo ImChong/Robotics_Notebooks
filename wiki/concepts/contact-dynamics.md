@@ -1,7 +1,20 @@
 ---
 type: concept
+status: complete
+original:
+  - ../../sources/sites/mujoco_computation_docs.md
+  - ../../sources/papers/modern_robotics_textbook.md
+  - ../../sources/papers/caron_2015_contact_wrench_cone_rectangular_arxiv_1501_04719.md
+  - ../../sources/papers/herzog_2016_momentum_control_hierarchical_inverse_dynamics_arxiv_1410_7284.md
+sources:
+  - ../../sources/sites/mujoco_computation_docs.md
+  - ../../sources/papers/modern_robotics_textbook.md
+  - ../../sources/papers/caron_2015_contact_wrench_cone_rectangular_arxiv_1501_04719.md
+  - ../../sources/papers/herzog_2016_momentum_control_hierarchical_inverse_dynamics_arxiv_1410_7284.md
+  - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/gentlehumanoid_upper_body_compliance.md
 summary: "Contact Dynamics 研究接触力 (Contact Force)、摩擦锥 (Friction Cone) 和物理约束如何改变机器人动力学，是 locomotion 与操作控制的核心物理基础。"
-updated: 2026-09-15
+updated: 2026-11-07
 ---
 
 # Contact Dynamics
@@ -95,7 +108,7 @@ updated: 2026-09-15
 
 这些时刻往往会让动力学、约束和控制目标一起变化。
 
-## 接触如何进入动力学方程
+## 核心原理：接触如何进入动力学方程
 
 在 floating base 系统里，经典动力学通常写成：
 
@@ -135,6 +148,8 @@ $$
 
 这相当于给系统额外施加了运动学 / 动力学约束。
 
+这是**固定接触（sticking）**假设下的形式。Caron et al. (2015) 把一般情形写成互补关系：以一个自由度为例，固定接触时加速度 $\ddot x=0$ 而接触力满足 $|f_t|\le\mu f_n$；滑动时 $\ddot x>0$ 而 $f_t=-\mu_kf_n$——一个量被等式约束时，另一个量只受不等式约束。给定状态下存在满足固定接触模式的 $(\ddot q,\tau_a,f)$ 称为**弱接触稳定**（所有解都满足才是强稳定，Pang & Trinkle 的术语）。*Modern Robotics* 的接触运动学则用不可穿透约束 $F^\top(\mathcal V_A-\mathcal V_B)\ge0$ 并把每个接触标成滚动 / 粘着 R、滑动 S 或分离 B（接触模式 = 各接触标签的拼接）。
+
 ## 最重要的几个接触概念
 
 ### 1. Normal Force（法向力）
@@ -147,7 +162,7 @@ f_n \ge 0
 $$
 
 ### 2. Friction Cone（摩擦锥）
-如果切向力太大，就会打滑。
+如果切向力太大，就会打滑。*Modern Robotics* §12.2 用库仑模型：$\mu$ 取决于两种材料，硬质干燥材料常在 0.1–1；静摩擦系数 $\mu_s\ge$ 动摩擦系数 $\mu_k$；滑动时摩擦力在锥边上且与滑动方向相反（耗散能量）。仿真里常用棱锥近似圆锥：内接棱锥低估可用摩擦，外接高估。
 
 所以接触力必须满足摩擦锥约束：
 
@@ -165,6 +180,16 @@ $$
 
 ### 4. Contact Schedule（接触时序）
 什么时候哪只脚接触地面，什么时候抬起，是 locomotion 的核心变量之一。
+
+## 仿真器如何处理接触：硬接触 LCP vs 凸软接触
+
+库仑摩擦加不可穿透约束会得到互补问题（教材 §12.5 明说这类 LCP / NCP 仿真方法不在其讲述范围内）。MuJoCo 官方文档（Computation 一章）给出了另一种立场：
+
+- **丢掉严格互补约束，改成凸优化**（棱锥锥为 QP，椭圆锥为锥规划）。无摩擦时与 LCP 的 KKT 条件等价；有摩擦时不同——法向力与法向速度可同时为正、摩擦不一定最大耗散、起滑伴随一点法向运动。文档认为这些效应数值上很小，且对本来就软的机器人接触反而更真实。
+- 文档指出带摩擦 LCP 对应最坏情形 NP-hard，因此许多引擎靠文档不全的捷径；在其典型机器人模型上 PGS 迭代 10 次与全局最小「实际上无法区分」，困难问题可用共轭梯度或 Newton 求解器（默认）。
+- 摩擦接触在连续时间下不适定（Painlevé 悖论），所以硬接触引擎多用离散时间速度步进；MuJoCo 的模型定义在连续时间的力与加速度上，并用 `solref`/`solimp` 的弹簧–阻尼参考与阻抗 $d$ 调整软度；NoSlip 后处理可压低打滑，但文档承认它不再对应单一优化问题。
+
+这些取舍就是 [物理保真度](../queries/simulation-physics-fidelity.md) 里「接触模型」一层的具体内容。
 
 ## 和 Floating Base Dynamics 的关系
 
@@ -244,7 +269,11 @@ locomotion 本质上可以看成是：
 
 见：[State Estimation](./state-estimation.md)
 
-## 在机器人中的典型应用
+## 工程实践：在机器人中的典型应用
+
+- **控制侧：** 把 $\lambda$ 与 $\ddot q$ 一起作优化变量，约束为运动方程 + 固定接触约束 + 单边 / 摩擦锥（棱锥线性化）+ CoP 在支撑面内（Herzog et al. 2016；Caron et al. 2015 给出矩形脚的 6 维 [接触力旋量锥](../formalizations/contact-wrench-cone.md)）。
+- **仿真侧：** 选接触模型时先分清硬 / 软、LCP / 凸、棱锥 / 椭圆锥；调 `solref`、`solimp` 或摩擦系数前，先确认两侧（仿真与真机）用的是同一种摩擦锥近似。
+- **安全裕度：** 控制器里的 $\mu$ 取小于真实值（Caron 的实验用 0.4，对应仿真真值 0.8），并缩小有效接触面。
 
 ### 1. 人形站立与行走
 双足机器人几乎所有稳定控制都离不开接触力与支撑约束。
@@ -258,7 +287,12 @@ locomotion 本质上可以看成是：
 ### 4. 全身操作
 身体、手、脚同时接触环境时，接触动力学复杂度会明显上升。
 
-## 常见误区
+## 局限与常见误区
+
+- 本页的方程为刚体 + 库仑摩擦 + 固定接触形式；冲击（碰撞瞬间的速度跳变）与柔性接触需要额外模型，页内未展开。
+- 摩擦系数 $\mu$ 通常取常数，真实 $\mu(x,y)$ 随位置变化（Caron et al. 的说明）。
+
+### 常见误区
 
 ### 1. 以为接触只是“碰撞检测”
 不止。碰撞检测只是接触建立的一部分，真正难的是接触后的力和约束怎么进系统。
@@ -283,18 +317,32 @@ locomotion 本质上可以看成是：
 ### 如果你做 RL locomotion
 即使策略是端到端学的，也建议懂接触动力学，不然 reward、observation、termination 条件很容易设计得很盲。
 
+## 关联页面
+
+- [Floating Base Dynamics](./floating-base-dynamics.md) — 接触力作用的整机动力学
+- [Centroidal Dynamics](./centroidal-dynamics.md) — 接触力决定动量变化
+- [接触力旋量锥](../formalizations/contact-wrench-cone.md) — 面接触的 6 维凸约束
+- [Contact Complementarity](../formalizations/contact-complementarity.md) — LCP 数学框架
+- [Modern Robotics 教材](../entities/modern-robotics-book.md) — Ch 12 接触运动学与摩擦
+
 ## 参考来源
+
+- [MuJoCo 官方文档 Computation（原文归档）](../../sources/sites/mujoco_computation_docs.md) — 软接触 / 凸模型 / 摩擦锥 / 求解器
+- [Modern Robotics 教材归档](../../sources/papers/modern_robotics_textbook.md) — §12.2 库仑摩擦、摩擦锥、接触模式
+- [Caron et al. 2015 原文归档](../../sources/papers/caron_2015_contact_wrench_cone_rectangular_arxiv_1501_04719.md) — 互补条件、接触稳定性、面接触
+- [Herzog et al. 2016 原文归档](../../sources/papers/herzog_2016_momentum_control_hierarchical_inverse_dynamics_arxiv_1410_7284.md) — 固定接触约束与 CoP / 摩擦锥约束进 QP
 
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — ingest 档案（Featherstone 2008 / Stewart LCP 2000 / Todorov MuJoCo 2012）
 - [sources/papers/gentlehumanoid_upper_body_compliance.md](../../sources/papers/gentlehumanoid_upper_body_compliance.md) — GentleHumanoid 对 upper-body multi-link contact / compliance 的原始资料摘录
 - [GentleHumanoid（方法页）](../methods/gentlehumanoid-motion-tracking.md) — 统一弹簧式 resistive/guiding 交互力与 5–15 N 力阈值
 - [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)
-- Featherstone, *Rigid Body Dynamics Algorithms* — 刚体接触动力学核心算法参考
-- Murray et al., *A Mathematical Introduction to Robotic Manipulation* — 接触约束与闭链建模
-- Mirtich & Canny, *Impulse-based Simulation of Rigid Bodies* (1995) — 冲量接触建模基础
+- Featherstone, *Rigid Body Dynamics Algorithms* — 刚体接触动力学核心算法参考（本批未取得原书，未核对）
+- Murray et al., *A Mathematical Introduction to Robotic Manipulation* — 接触约束与闭链建模（未核对）
+- Mirtich & Canny, *Impulse-based Simulation of Rigid Bodies* (1995) — 冲量接触建模基础（未核对）
 
 ## 推荐继续阅读
 
+- [MuJoCo Computation 文档](https://mujoco.readthedocs.io/en/stable/computation/index.html) — 软接触、凸模型与 LCP 的官方对比
 - Featherstone, *Rigid Body Dynamics Algorithms*
 - [Floating Base Dynamics](./floating-base-dynamics.md)
 - [Centroidal Dynamics](./centroidal-dynamics.md)

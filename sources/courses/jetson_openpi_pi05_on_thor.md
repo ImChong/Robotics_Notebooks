@@ -7,7 +7,9 @@
 - **来源：** Jetson AI Lab
 - **链接：** https://www.jetson-ai-lab.com/tutorials/openpi_on_thor/
 - **作者：** Aditya Sahu、Anqi Liu
-- **入库日期：** 2026-09-28
+- **入库日期：** 2026-09-28（2026-11-07 抓取教程页面全文复核）
+- **核对范围：** 2026-11-07 抓取教程页并通读全文：简介、Pipeline Overview、Performance 表、Prerequisites、Step 1–13（含各步命令、Dockerfile 要点、精度选项折叠表、Step 12 compare 结果、Step 13 WebSocket 服务与客户端代码）、Troubleshooting、Acknowledgments 与 References；未下载 `download.sh` 与 `deployment_scripts/` 源码、未在 Thor 上实际运行，教程中的延迟数字均为作者自报。
+- **通读：** 已完成
 - **代码：** https://github.com/Physical-Intelligence/openpi（**已开源**；Thor 部署脚本与 TRT 补丁由教程 `download.sh` 注入，**不在 upstream 主仓**）
 - **部署脚本：** https://www.jetson-ai-lab.com/code-samples/openpi_on_thor/download.sh
 - **一句话说明：** 在 Jetson AGX Thor 上将 Physical Intelligence **π₀.₅** VLA 走通 **JAX → PyTorch → ONNX（ModelOpt FP8/NVFP4）→ TensorRT → 推理 / WebSocket serve** 全链路，并给出 `pi05_libero` 上 **~49 ms** 级延迟基准。

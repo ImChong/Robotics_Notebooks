@@ -1,7 +1,10 @@
 ---
 type: concept
+status: complete
 summary: "Capture Point / DCM 用线性倒立摆的发散分量描述步行平衡，是步位规划和扰动恢复的核心直觉工具。"
-updated: 2026-10-06
+updated: 2026-11-07
+original:
+  - ../../sources/papers/lip_zmp_dcm_walking_reading_primary_papers.md
 related:
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-fddc.md
@@ -9,6 +12,7 @@ related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./footstep-planning.md
 sources:
+  - ../../sources/papers/lip_zmp_dcm_walking_reading_primary_papers.md
   - ../../sources/papers/whole_body_control.md
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
@@ -49,8 +53,8 @@ sources:
 
 LIP / ZMP 是理解双足步行的经典入口，但它们有一个局限：
 
-- 更偏静态或准动态平衡理解
-- 对快速运动、强扰动恢复、高动态步态不够直观
+- ZMP 约束回答的是“当前接触力矩是否可行”，本身不告诉你质心的发散趋势
+- 对强扰动恢复、需要靠迈步才能稳住的情形不够直观（带 ZMP 约束的 MPC 并不比不带约束的 DCM 反馈控制更能提高速度，见下文 iCub 对比）
 
 一旦机器人已经在往前倒，光说“ZMP 要在支撑多边形里”就不够了。
 
@@ -62,7 +66,7 @@ LIP / ZMP 是理解双足步行的经典入口，但它们有一个局限：
 
 这正是 Capture Point / DCM 的核心价值。
 
-## 背后的模型直觉
+## 核心原理：背后的模型直觉
 
 这些概念通常建立在 **LIP（线性倒立摆）** 模型上。
 
@@ -82,6 +86,14 @@ $$
 这个系统很重要的一点是：
 - 它包含**稳定模式**和**发散模式**
 - Capture Point / DCM 正是在抓“发散那一支”
+
+**核对原文后的精确表述（Romualdi 等 2018；Khadiv 等 2016）：** 令 $\xi = x + \dot{x}/\omega$，LIP 可拆成
+
+$$
+\dot{x} = \omega(\xi - x),\qquad \dot{\xi} = \omega(\xi - x_{zmp})
+$$
+
+第一式说明 CoM 以时间常数 $1/\omega$ 追随 DCM（稳定），第二式说明 DCM 以正实根 $\omega$ 发散，只能靠 $x_{zmp}$（或迈步改变支撑点）去压。常值 ZMP 下的解析解为 $\xi(t)=x_{zmp}+e^{\omega t}(\xi_0-x_{zmp})$；ZMP 与 DCM 的关系为 $x_{zmp}=\xi-\dot{\xi}/\omega$。三维情形下 $\xi = x + b\dot{x}$，$b=\sqrt{z_0/g}$，用虚拟排斥点 VRP 写成 $\dot{\xi}=(\xi-r_{vrp})/b$；质心角动量恒定时 VRP 在地面的投影即 ZMP（Shafiee 等 2019）。Romualdi 等把 DCM 看作 Capture Point 向三维的推广（前提是 VRP 与 eCMP 高度差恒定）。
 
 ## Capture Point 是什么
 
@@ -110,7 +122,7 @@ $$
 
 ## DCM 是什么
 
-DCM（Divergent Component of Motion）在很多文献里和 Capture Point 非常接近，甚至在 LIP 条件下它们本质上就是一个东西。
+DCM（Divergent Component of Motion）在很多文献里和 Capture Point 非常接近，甚至在 LIP 条件下它们本质上就是一个东西。（历史归属据 Khadiv 等 2016 引言，属二手：Hof 以 extrapolated CoM 之名、Pratt 以 Capture Point 之名早已用过同一量，Takenaka 等用它生成轨迹，Englsberger 等提出对 DCM 不稳定部分做控制；本库此前把 DCM 归给 Koolen 等的说法未被核实。）
 
 它定义为：
 
@@ -191,7 +203,15 @@ Capture Point / DCM 是对这类发散趋势的简化描述。
 
 见：[Floating Base Dynamics](./floating-base-dynamics.md)
 
-## 在机器人中的典型应用
+## 工程实践：在机器人中的典型应用
+
+### 0. 一个已发表的 DCM 三层架构（Romualdi 等 2018；Shafiee 等 2019）
+- **轨迹优化层**：把机器人近似为独轮车规划落脚点与时刻，单支撑内按 $\xi(t)=r_{zmp}+e^{\omega(t-t_i)}(\xi^{eos}-r_{zmp})$ 反向递推各步终点 DCM；双支撑内用三次多项式保证 $C^1$ 连续，进而 ZMP 连续。
+- **简化模型控制层**：瞬时律 $r^{ref}=\xi_{ref}-\dot{\xi}_{ref}/\omega+K_p(\xi-\xi_{ref})+K_i\!\int(\xi-\xi_{ref})$，$K_p>I$ 时误差渐近收敛；缺点是不保证 ZMP 留在支撑多边形内、不看未来。预测律把 ZMP 作输入、加多边形线性约束，解 QP。
+- **全身 QP 层**：把期望 VRP 换成质心加速度 / 线动量变化率，在位置 / 速度 / 力矩模式下跟踪。
+- **iCub 实测对比**（最高直行速度）：预测+速度控制 0.19 m/s、预测+位置控制 0.20 m/s、瞬时+速度控制 0.22 m/s、瞬时+位置控制 **0.41 m/s**；作者发现预测律的期望 ZMP 变化过快，对 ZMP 跟踪误差更不鲁棒。
+- **推扰恢复**（Shafiee 等 2019，仿真）：iCub（33 kg）0.28 m/s 行走，盆骨受 150 N、0.05 s 侧推，step adapter 在单支撑里用一个 QP 同时调整步位与步时（平均步宽增 6 cm，步时较名义 0.53 s 缩短约 0.12 s），整套架构平均 < 3 ms。
+- **步时也要调**（Khadiv 等 2016，LIPM 仿真）：60 kg、质心 0.8 m，限制步长 ±50 cm、步时 0.2–0.8 s，受 325 N、0.1 s 推力时固定步时无法恢复，联合步位 + 步时可恢复；点足 / 被动踝机器人无法靠 CoP 调节 DCM，因此迈步更关键。
 
 ### 1. 扰动恢复
 机器人被推一把之后：
@@ -229,7 +249,10 @@ Capture Point 可以直接影响：
 
 [FastStair（arXiv:2601.10365）](../entities/paper-faststair-humanoid-stair-ascent.md) 把 **变高倒立摆（VHIP）** 上的 DCM 演化改写为 **离散候选集上的并行代价评估 + argmin**，用张量化 GPU 运算嵌入 Isaac Lab 大规模 RL——在保留 **接触可行性与平衡结构** 的同时，避免纯 model-free RL 在楼梯上的不安全行为。这与 [Footstep Planning](./footstep-planning.md) 中「DCM 触发步位更新」的经典路线不同：FastStair 让 DCM 规划器 **直接成为训练期特权监督**，而非仅作在线 MPC 模块。
 
-## 常见误区
+## 局限与常见误区
+
+### 0. 以为 DCM 控制不需要模型假设
+上面的结论都建立在 LIP / VRP 简化上；Shafiee 等自述其步位调整“只用 DCM 简化模型，不考虑角动量，大扰动可能需要对名义轨迹做过大修改”，且只在仿真里验证。DCM 瞬时律还默认 ZMP 可以随意设置，而点足 / 被动踝机器人根本无法调 CoP。
 
 ### 1. 以为 Capture Point 能完全替代 ZMP
 不能。它们关注的物理问题不同，常常是互补关系。
@@ -262,6 +285,8 @@ Capture Point / DCM 是很重要的中间概念。
 
 ## 参考来源
 
+- **原文通读归档：** [LIP / ZMP / DCM 四篇一手论文通读](../../sources/papers/lip_zmp_dcm_walking_reading_primary_papers.md) — Romualdi 2018、Shafiee 2019、Khadiv 2016、Herdt 2010，全文已读
+- **以下三篇经典原文本次未取得（付费墙），内容只经上述论文引述，属二手：**
 - Pratt et al., *Capture Point: A Step toward Humanoid Push Recovery* (2006) — Capture Point 概念提出
 - Englsberger et al., *Three-Dimensional Bipedal Walking Control Based on Divergent Component of Motion* (2015) — DCM 三维扩展
 - Koolen et al., *Capturability-based Analysis and Control of Legged Locomotion* (2012) — 可捕获性理论
@@ -270,8 +295,13 @@ Capture Point / DCM 是很重要的中间概念。
 - **ingest 档案：** [FDDC（arXiv:2608.00500）](../../sources/papers/fddc_arxiv_2608_00500.md) — 支撑相对动态 CoM 进可部署 actor + 单腿 sim2sim 基准
 - **ingest 档案：** [Fail-Passive Gap（arXiv:2608.02809）](../../sources/papers/fail_passive_gap_arxiv_2608_02809.md) — 保护停的单支撑下界与 ISO 13855 最坏 \(t_{\mathrm{stop}}\)
 
+## 关联页面
+
+- [LIP / ZMP](./lip-zmp.md) · [ZMP + LIP 形式化](../formalizations/zmp-lip.md) · [Footstep Planning](./footstep-planning.md) · [Balance Recovery](../tasks/balance-recovery.md) · [Contact Dynamics](./contact-dynamics.md)
+
 ## 推荐继续阅读
 
+- Romualdi et al., *A Benchmarking of DCM Based Architectures…* <https://arxiv.org/abs/1809.02167>；Shafiee et al., *Online DCM Trajectory Generation for Push Recovery…* <https://arxiv.org/abs/1909.10403>；Khadiv et al., *Step Timing Adjustment* <https://arxiv.org/abs/1610.02377>
 - Pratt et al., *Capture Point: A Step toward Humanoid Push Recovery*
 - Englsberger et al., *Three-Dimensional Bipedal Walking Control Based on Divergent Component of Motion*
 - [LIP / ZMP](./lip-zmp.md)

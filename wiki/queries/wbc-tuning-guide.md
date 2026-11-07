@@ -2,14 +2,29 @@
 type: query
 tags: [wbc, control, optimization, tuning, humanoid, qp]
 status: complete
-updated: 2026-10-18
+updated: 2026-11-07
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/tsid.md
   - ./wbc-implementation-guide.md
   - ../formalizations/friction-cone.md
 sources:
+  - ../../sources/papers/wbic_mpc_mini_cheetah_arxiv_1909_06586.md
+  - ../../sources/papers/delprete_tsid_arxiv_1410_3863.md
+  - ../../sources/papers/kanoun_task_priority_inequality_tro_2011.md
+  - ../../sources/papers/escande_hqp_ijrr_2014.md
+  - ../../sources/papers/saab_dynamic_whole_body_motion_tro_2013.md
+  - ../../sources/papers/osqp_admm_qp_arxiv_1711_08013.md
+  - ../../sources/repos/tsid.md
   - ../../sources/papers/whole_body_control.md
+original:
+  - ../../sources/papers/wbic_mpc_mini_cheetah_arxiv_1909_06586.md
+  - ../../sources/papers/delprete_tsid_arxiv_1410_3863.md
+  - ../../sources/papers/kanoun_task_priority_inequality_tro_2011.md
+  - ../../sources/papers/escande_hqp_ijrr_2014.md
+  - ../../sources/papers/saab_dynamic_whole_body_motion_tro_2013.md
+  - ../../sources/papers/osqp_admm_qp_arxiv_1711_08013.md
+  - ../../sources/repos/tsid.md
 summary: "WBC 调参指南：通过合理的任务权重分配、约束松弛、正则化技巧与求解器热启动配置，实现高性能全身控制的实践经验。"
 ---
 
@@ -91,6 +106,20 @@ WBC 通常是一个多目标优化问题 $\min \|Ax - b\|_W^2$。权重 $W$ 决�
 | **Base 姿态下沉** | CoM 权重太低，无法克服重力 | 增加 CoM 任务权重，检查动力学 $g(q)$ 补偿是否正确 |
 | **QP 频繁无解** | 任务冲突严重或硬约束太多 | 检查是否有相互排斥的等式约束，增加松弛变量 |
 
+## 6. 原文里的参数与现象（已对照原文）
+
+| 来源 | 内容 |
+|------|------|
+| Kim 2019（MIT WBIC，Mini Cheetah） | WBIC 500 Hz；任务（身体姿态 / 位置 / 足端）PD 增益 $k_p=100\,s^{-2}$、$k_d=10\,s^{-1}$；QP 权重：反力项 $Q_1=1$、浮动基座松弛项 $Q_2=0.1$；关节 PD $k_p=3$ N·m/rad、$k_d=0.3$ N·m·s/rad（外展关节 $k_d=1$），40 kHz；**同一组参数用于全部步态与环境**。对浮动基座加速度加松弛，让腾空相基座可偏离指令。 |
+| Del Prete 2014（TSID 原论文，仿真） | 任务 $K_p=10\,s^{-2}$、$K_d=5\,s^{-1}$；阻尼伪逆 $\lambda=0.02$（最大增益 25）；总要加最低优先级姿态任务 $\ddot q_p^*=K_p(q_p-q)-K_d\dot q$，使解与权重矩阵无关并稳定零空间。阻尼会给代价加 $\lambda\|\tau\|_W^2$ 的正则项：远离奇异时影响可忽略，接近奇异时以牺牲任务误差换取力矩有界。 |
+| Kanoun 2011（HRP-2 仿真） | 任务冲突时需把正则参数 $\rho$ 调到约 0.01 量级以防不稳定；把"视线"与"伸手"放同一优先级只能得到折中姿态，降低视线优先级后手才能到达目标。 |
+| Escande 2014 | 严格层级相对权重法的区别：权重 $Q$ 是"人为平衡"，层级保证低优先级不破坏高优先级；带不等式时有效集迭代次数不定，可用 warm start 与迭代上限换取确定耗时（代价少数周期次优）。 |
+| Saab 2013 | "法向力非负"层不可行（强接触不稳定）时松弛变量非零、解动力学不一致，应改变接触模式而不是继续下发。 |
+| OSQP 论文 | `warm_starting` 用上一次解初始化；仅向量 $q,l,u$ 变化时 KKT 分解可复用；默认精度中等（官方默认 `eps_abs=1e-3`、`max_iter=4000`），要高精度可开 polishing（需额外一次分解）。 |
+| `tsid` 库 | `addMotionTask(task, weight, priorityLevel)`：优先级 0 为硬约束层（该层权重无意义），其余层带权重；默认求解器至多 2 层；`Contact6d` 以线性化摩擦锥 + 法向力界约束接触力，`setFrictionCoefficient` 可调 $\mu$。 |
+
+> 以上数值都是**特定机器人 / 仿真下的取值**，不是通用推荐；其余章节里没有注明来源的比例与现象属于经验性说法（推测）。
+
 ---
 
 ## 关联页面
@@ -100,5 +129,15 @@ WBC 通常是一个多目标优化问题 $\min \|Ax - b\|_W^2$。权重 $W$ 决�
 - [Friction Cone 形式化](../formalizations/friction-cone.md)
 
 ## 参考来源
+- [Kim et al. 2019 — WBIC + MPC 通读归档](../../sources/papers/wbic_mpc_mini_cheetah_arxiv_1909_06586.md)（*Highly Dynamic Quadruped Locomotion via Whole-Body Impulse Control and Model Predictive Control*，arXiv:1909.06586；旧版此处写作 "Quadrupedal ... Whole-Body Impulse Control"，已按原文标题订正）
+- [Del Prete et al. 2014 — TSID 原论文通读归档](../../sources/papers/delprete_tsid_arxiv_1410_3863.md)
+- [Kanoun et al. 2011](../../sources/papers/kanoun_task_priority_inequality_tro_2011.md)、[Escande et al. 2014](../../sources/papers/escande_hqp_ijrr_2014.md)、[Saab et al. 2013](../../sources/papers/saab_dynamic_whole_body_motion_tro_2013.md)
+- [OSQP 论文通读归档](../../sources/papers/osqp_admm_qp_arxiv_1711_08013.md)
+- [TSID 仓库归档](../../sources/repos/tsid.md)
 - [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md)
-- Kim et al., *Highly Dynamic Quadrupedal Locomotion via Whole-Body Impulse Control* (2019).
+
+## 推荐继续阅读
+
+- Kim et al., *Highly Dynamic Quadruped Locomotion via WBIC and MPC*：<https://arxiv.org/abs/1909.06586>
+- Del Prete et al., *Task Space Inverse Dynamics*：<https://arxiv.org/abs/1410.3863>
+- Escande et al., *Hierarchical QP*：<https://hal.science/hal-00751924/document>

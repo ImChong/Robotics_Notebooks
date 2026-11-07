@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, inverse-kinematics, jacobian, embodied-ai, shenlan, manipulation]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-07
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./forward-kinematics.md
@@ -25,12 +25,16 @@ sources:
   - ../../sources/papers/newton_raphson_method_primary_refs.md
   - ../../sources/papers/null_space_control.md
   - ../../sources/blogs/orangeduck_inverse_kinematics_foot_locking.md
+original:
+  - ../../sources/papers/modern_robotics_textbook.md
 summary: "逆运动学求使末端达到目标 SE(3) 位姿的关节角：解可能不存在、不唯一或无穷多。工程主路径是解析（Pieper）→ 雅可比迭代+DLS → 冗余零空间；高维再用生成式候选池。"
 ---
 
 # 逆运动学（Inverse Kinematics）
 
-**一句话：** 已知末端目标位姿 $T^\star$，反求关节角 $q$，使 [FK](./forward-kinematics.md) 输出等于 $T^\star$——这是多值、不连续、在奇异点会失效的反函数题。
+## 一句话定义
+
+已知末端目标位姿 $T^\star$，反求关节角 $q$，使 [FK](./forward-kinematics.md) 输出等于 $T^\star$——这是多值、不连续、在奇异点会失效的反函数题。
 
 ## 英文缩写速查
 
@@ -53,7 +57,7 @@ summary: "逆运动学求使末端达到目标 SE(3) 位姿的关节角：解可
 | 现象 | 含义 |
 |------|------|
 | 无解 | 目标在工作空间外 |
-| 有限多解 | 6DOF 球腕最多 16 组（前/后 × 肘上/肘下 × 腕翻转） |
+| 有限多解 | $n=6$ 时通常有限多组：一般 6R 开链最多 16 组（Lee & Liang；Raghavan & Roth，*Modern Robotics* §6.7）；带偏置的 PUMA 型臂位置逆解 4 组（左/右肩 × 肘上/肘下，§6.1.1），腕部角再由 ZYX 欧拉角解出 |
 | 无穷多解 | 冗余 $n>6$ |
 | 数值崩溃 | $\mathrm{rank}(J)$ 下降，关节速度爆炸 |
 
@@ -61,7 +65,7 @@ summary: "逆运动学求使末端达到目标 SE(3) 位姿的关节角：解可
 
 ### 1. 解析解（能闭式就别迭代）
 
-满足 **Pieper 条件**（后三轴共点）时可拆：腕心位置解 $\theta_{1,2,3}$ → 由 $R_{36}$ 解姿态关节 → 滤限位 → 选相对当前 $q$ 位移最小的一组。微秒级，换构型要重推（IKFAST 一类代码生成）。
+满足 **Pieper 条件**（后三轴共点；教材未用此名，§6.1 的 PUMA / Stanford 臂正是这类「腕心 + 肩肘」可拆结构）时可拆：腕心位置解 $\theta_{1,2,3}$ → 由 $R_{36}$ 解姿态关节 → 滤限位 → 选相对当前 $q$ 位移最小的一组。微秒级，换构型要重推（IKFAST 一类代码生成）。
 
 ### 2. 数值解：雅可比是武器
 
@@ -69,7 +73,9 @@ $$
 v = J(q)\,\dot q
 $$
 
-每步：FK 得当前 $T$ → 6D 误差 $e$（或 SE(3) 上 body twist $V_b=\log(T_{bs}^{-1}T_{sd})$）→ $\Delta q = J^+ e$ 或 DLS → 限幅/限位。此即 [**Newton–Raphson 数值 IK**](../methods/newtons-method.md) 的 Jacobian 形式；*Modern Robotics* Example 6.1（平面 2R，三步收敛）见该页算例表。热启动（用上一拍 $q$）比随机初值重要得多。
+每步：FK 得当前 $T$ → 6D 误差 $e$（或 SE(3) 上 body twist $V_b=\log(T_{bs}^{-1}T_{sd})$）→ $\Delta q = J^+ e$ 或 DLS → 限幅/限位。此即 [**Newton–Raphson 数值 IK**](../methods/newtons-method.md) 的 Jacobian 形式；*Modern Robotics* Example 6.1（平面 2R，三步收敛）见该页算例表。热启动（用上一拍 $q$）比随机初值重要得多——教材（§6.2.2）的解释是：多解时迭代收敛到离初值「最近」的那组解，每组解有自己的吸引域，初值不在任何吸引域内可能不收敛。
+
+教材的数值 IK 只用 Moore–Penrose 伪逆 $J^\dagger$（$n>m$ 时 $J^\dagger=J^\top(JJ^\top)^{-1}$，$n<m$ 时 $(J^\top J)^{-1}J^\top$）：满秩时每步是 $\Delta\theta=J^\dagger e$；SE(3) 误差不能直接用 $T_{sd}-T_{sb}$ 相减，而取使 $T_{sb}$ 一单位时间走到 $T_{sd}$ 的体旋量 $\mathcal V_b$。**阻尼最小二乘（DLS）不在教材内**，下面这一式是工程常用的奇异附近稳定化，来自 DLS 文献而非本页核对的原文（推测其适用性，未经教材验证）。
 
 **DLS**：最小奇异值小时
 
@@ -81,7 +87,7 @@ $$
 
 ### 3. 奇异与操纵度
 
-$\det(JJ^\top)=0$ 时末端至少有一个方向瞬时不可控。Yoshikawa 操纵度 $w=\prod\sigma_i$；规划阶段可把 $w$ 当代价，让轨迹绕开奇异。工业常见坑：球腕 4 轴与 6 轴接近同轴还走直线。
+$\det(JJ^\top)=0$ 时末端至少有一个方向瞬时不可控。教材 §5.4 定义可操作度椭球（$A=JJ^\top$）及三个标量度量：$\mu_1=\sqrt{\lambda_{\max}/\lambda_{\min}}$、$\mu_2=\lambda_{\max}/\lambda_{\min}$（条件数）、$\mu_3=\sqrt{\det A}$（体积，越大越好）；满秩时 $\mu_3=\prod\sigma_i$，即常说的 Yoshikawa 操纵度 $w$（该名字只在教材 §5.7 附注出现，等式 $\mu_3=\prod\sigma_i$ 是本页由 $\sigma_i=\sqrt{\lambda_i(JJ^\top)}$ 推出）。线速度与角速度量纲不同，教材建议分开画两个椭球。规划阶段可把 $w$ 当代价，让轨迹绕开奇异。工业常见坑：球腕 4 轴与 6 轴接近同轴还走直线。
 
 ### 4. 冗余零空间
 
@@ -89,7 +95,7 @@ $$
 \dot q = J^+ \dot x + (I-J^+J)z
 $$
 
-第一项完成主任务，第二项不改末端，可最大化操纵度、关节居中、或沿障碍距离梯度避障。7 轴力矩阻抗、投影器选型与开源入口见 [零空间控制](../concepts/null-space-control.md)。
+第一项完成主任务，第二项不改末端。教材 §6.3 的对应结果是：伪逆解使 $\|\dot\theta\|_2$ 最小；若改最小化动能 $\tfrac12\dot\theta^\top M\dot\theta$，则 $\dot\theta=M^{-1}J^\top(JM^{-1}J^\top)^{-1}V_d$（质量加权伪逆），还可再加势能变化率项。上式的 $(I-J^+J)z$ 写法是标准零空间参数化，教材未逐字给出。零空间可用于最大化操纵度、关节居中、或沿障碍距离梯度避障。7 轴力矩阻抗、投影器选型与开源入口见 [零空间控制](../concepts/null-space-control.md)。
 
 ### 5. 学习型候选池
 
@@ -126,6 +132,7 @@ flowchart TB
 2. **忽略热启动** — 轨迹中途从零初值重解，会跳到另一套肘部解。
 3. **纯伪逆过奇异** — 必须 DLS 或操纵度回避。
 4. **学习型不解约束** — 采样后仍要用 FK + 碰撞检查过滤。
+5. **冗余臂的闭合末端轨迹不保证关节空间闭合** — 教材 §6.4：对冗余机器人，无论位置层还是速度层数值 IK 都可能使 $\theta(0)\neq\theta(t_f)$，需要闭环重复性时要加额外条件。
 
 ## 关联页面
 
@@ -149,3 +156,4 @@ flowchart TB
 
 - Lynch & Park, *Modern Robotics* Ch 6
 - 运动控制路线 [L1.2](../../roadmap/motion-control.md)
+- [Modern Robotics 官方 PDF](https://hades.mech.northwestern.edu/images/7/7f/MR.pdf) — Ch 6 与 §5.4 可操作度

@@ -11,7 +11,7 @@ tags:
   - nvidia
   - farama
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md
@@ -29,6 +29,10 @@ related:
   - ../entities/stable-baselines3.md
   - ../entities/cleanrl.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+original:
+  - ../../sources/papers/barto_sutton_anderson_1983_cartpole.md
+  - ../../sources/sites/gymnasium-cartpole.md
+  - ../../sources/sites/isaac-lab-cartpole.md
 sources:
   - ../../sources/papers/barto_sutton_anderson_1983_cartpole.md
   - ../../sources/sites/gymnasium-cartpole.md
@@ -88,7 +92,7 @@ flowchart TB
   pole -->|"倒向左或右"| fail["失败：杆角过大或车出轨"]
 ```
 
-Gymnasium 源码采用的解析积分（Florian 动力学，半长 \(l=0.5\,\mathrm{m}\)）把 \((x,\dot x,\theta,\dot\theta)\) 显式推进一步；Isaac Lab 则加载 Nucleus 上的 `cartpole.usd`，由 PhysX（或文档中的 Newton 后端）对 `slider_to_cart` / `cart_to_pole` 两个关节做刚体步进。
+Gymnasium 源码（注释称拷贝自 Sutton 的 `pole.c`）采用解析积分，杆半长 \(l=0.5\,\mathrm{m}\)，默认 Euler、\(\tau=0.02\,\mathrm{s}\)，把 \((x,\dot x,\theta,\dot\theta)\) 显式推进一步；Isaac Lab 则加载 Nucleus 上的 `cartpole.usd`，由 PhysX（或文档中的 Newton 后端）对 `slider_to_cart` / `cart_to_pole` 两个关节做刚体步进。
 
 ### 四维状态与观测陷阱
 
@@ -122,6 +126,13 @@ flowchart LR
 
 Gymnasium 还有第二层陷阱：**观测空间盒比未终止区间更宽**。位置盒 ±4.8 m，终止却在 ±2.4 m；杆角盒 ±24°，终止却在 ±12°。算法若把 `observation_space.high` 当成「还活着」，会在已经 `terminated=True` 的样本上继续 bootstrap。
 
+### 1983 原文设定（已对照论文全文）
+
+- **任务：** 控制器只能在离散时间步对小车施加固定大小（±10 N）、方向向左或向右的力；除"杆倒或车到轨道端点"的失败信号外没有任何评价反馈，失败后系统复位、控制器记忆保留，进入下一次试验。作者特意把问题设得比经典自适应控制更难，目的是研究"自适应网络中单个元件"面对的学习难度，并非关心倒立摆本身。
+- **BOXES 对照：** Michie & Chambers 把状态量化成 3×3×6×3 = 162 个盒子，每个盒子一个"局部小精灵"选左右；ASE 用 162 维二值输入向量复现这一点，ACE 再学习每个盒子的"失败预测"并产生内部强化，使学习在试验途中的每一步发生，而不只在失败时发生。
+- **结果：** 在同一仿真上 ASE/ACE 明显优于 BOXES，且大多数 ASE/ACE 运行在 100 次试验前就累计达到 500 000 步（约 2.8 小时仿真时间）而被截断；作者把这一优势几乎全部归因于 ACE 提供的逐步强化。参数 \(\gamma=0.95\)、\(\lambda=0.8\) 等只试过一组。
+- **动力学参数（附录）：** \(m_c=1.0\,\mathrm{kg}\)，\(m_p=0.1\,\mathrm{kg}\)，半杆长 0.5 m，**小车–轨道摩擦 0.0005、杆–铰链摩擦 0.000002**，Euler 步长 0.02 s；失败阈值 \(|\theta|>12^\circ\) 或 \(|x|>2.4\,\mathrm{m}\)。Gymnasium 与此基本同参，但文档称轨道无摩擦、不含这两个摩擦项，所以"逐项相同"并不成立。
+
 ### 写成 MDP
 
 对齐 [MDP](../formalizations/mdp.md) 五元组，Cartpole 是完全可观测、低维、短回合的特例：
@@ -132,7 +143,7 @@ Gymnasium 还有第二层陷阱：**观测空间盒比未终止区间更宽**。
 | \(A\) | `{左推, 右推}`，幅值 10 N | 连续关节力矩，scale 100 N |
 | \(P\) | Euler，\(\tau=0.02\,\mathrm{s}\) | PhysX，`dt=1/120`，decimation 2 |
 | \(R\) | 默认逐步 +1；或 1983 式 0/−1 | alive、失败、杆角、两路速度 shaping |
-| 回合 | 终止或 500 步截断 | 5 s 超时或车出 ±3 m |
+| 回合 | 终止或 500 步截断（`reward_threshold`=475） | 5 s 超时或车出 ±3 m |
 
 ```mermaid
 sequenceDiagram
@@ -228,7 +239,7 @@ for _ in range(500):
 env.close()
 ```
 
-物理常数（源码）：\(m_c=1.0\)，\(m_p=0.1\)，\(l=0.5\)（半长），\(F=\pm 10\,\mathrm{N}\)，50 Hz。随机策略很难撑满 500 步；线性特征 + 简单策略梯度或小 MLP PPO 通常几分钟内「solved」（均值回报触及阈值）。
+物理常数（源码）：\(m_c=1.0\)，\(m_p=0.1\)，\(l=0.5\)（半长），\(F=\pm 10\,\mathrm{N}\)，50 Hz；初始状态四维各在 \((-0.05, 0.05)\) 均匀采样，`reset(options={"low":..,"high":..})` 可改。随机策略很难撑满 500 步；小 MLP 的 PPO 通常很快达到阈值（推测：经验印象，本次入库未实际跑训练，不给出具体用时）。
 
 向量化不要和 Isaac 的 4096 GPU 环境混为一谈：`make_vec` 是 API 层批量 `step`，见 [Gymnasium](../entities/gymnasium.md) 的分层图。
 
@@ -306,7 +317,7 @@ flowchart TB
 
 ### 执行器：Isaac 不是无摩擦解析小车
 
-`CARTPOLE_CFG` 给 `slider_to_cart` 配了 **implicit** 执行器：`stiffness=0`、`damping=10`、`effort_limit_sim=400` N。杆侧 stiffness/damping 为 0。这与 Gym 的无摩擦解析车不同，也与腿足 RL 里「PD 追位置」的 implicit 用法不同——这里策略直接出力矩，阻尼是轨道摩擦的替代。切换 implicit/explicit 的一般原则见 [执行器建模](./implicit-explicit-actuator-modeling.md)。
+`CARTPOLE_CFG` 给 `slider_to_cart` 配了 **implicit** 执行器：`stiffness=0`、`damping=10`、`effort_limit=400` N（核对的 v2.1.0 字段名；新版文档写作 `effort_limit_sim`）。杆侧 stiffness/damping 为 0。这与 Gym 的无摩擦解析车不同，也与腿足 RL 里「PD 追位置」的 implicit 用法不同——这里策略直接出力矩，阻尼是轨道摩擦的替代。切换 implicit/explicit 的一般原则见 [执行器建模](./implicit-explicit-actuator-modeling.md)。
 
 ### 视觉变体
 
@@ -315,11 +326,13 @@ flowchart TB
 ## 局限与风险
 
 - **「CartPole」不是一个环境。** `CartPole-v1`、`Isaac-Cartpole-v0`、`Isaac-Cartpole-Direct-v0`、dm_control swingup 的动作类型、终止、奖励、积分器全不同。论文或聊天里只写 CartPole 时，先问注册 id。
-- **Solved 不等于会控制。** Gym v1 阈值 500 是 TimeLimit；策略可以在阈值附近抖。Isaac 5 s 同样是截断。要看杆角分布和动作平滑，不要只看 cumulative reward。
+- **Solved 不等于会控制。** Gym v1 的最大回报 500 来自 500 步 TimeLimit，注册的 `reward_threshold` 是 475（`sutton_barto_reward=True` 时为 0）；策略可以在阈值附近抖。Isaac 5 s 同样是截断。要看杆角分布和动作平滑，不要只看 cumulative reward。
+- **复现 1983 数字要连摩擦一起复现。** 原文含两项摩擦、并且 BOXES 状态阈值（±0.8/±2.4 m、0/±1/±6/±12° 等）是作者按自己参数化选的；直接用 Gymnasium 的无摩擦环境跑 ASE/ACE，曲线不会逐点对上论文图 4/5。
 - **离散力幅不是真机接口。** Gym ±10 N  bang-bang 会掩盖连续力矩饱和、延迟和执行器阻尼。真倒立摆台或把 Cartpole 当 sim2real 练习时，应走 Isaac 连续力矩或自建带延迟的环境。
 - **Manager 版不因 12° 结束。** 从 Gym 带着「杆一斜就 done」的直觉读 Lab 日志，会误判 shaping 在「奖励还行但杆已经过 12°」。
 - **观测顺序与相对量。** Direct 把杆放在前两维；manager 用 `*_rel`。抄网络结构可以，抄「第 0 维是 x」不行。
 - **并行数不是算法超参的免费午餐。** 4096 环境改变 on-policy 的 batch 与方差；把 CartPole-v1 的 PPO clip/lr 原样搬到 Lab，常常不稳定或过拟合短回合。
+- **Isaac 部分的核对版本。** 上文 Isaac 数值逐项对照的是 Isaac Lab v2.1.0 标签的源码，`main` 分支路径与字段名已变（例如 `effort_limit_sim`），升级后需重新核对。
 - **相机任务依赖 Isaac Sim 渲染。** 文档写明需 `--enable_cameras`；无显示节点的云主机要按 Lab 的 headless + 相机说明走，否则会在「环境列表里有 RGB id」处卡住。
 
 ## 关联页面

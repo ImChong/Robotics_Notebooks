@@ -3,12 +3,19 @@ type: query
 tags: [sim2real, deployment, locomotion, humanoid, rl]
 status: complete
 summary: "从仿真到真机部署的完整工程清单（含快速部署检查 3 分钟版）。"
-updated: 2026-09-18
+updated: 2026-11-07
 related:
   - ./sim2real-gap-reduction.md
   - ./sim2real-closed-loop-engineering.md
   - ./robot-policy-debug-playbook.md
   - ../concepts/sim2real.md
+original:
+  - ../../sources/papers/rma_reading_arxiv_2107_04034_pt3.md
+  - ../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md
+  - ../../sources/papers/rapid_locomotion_rl_arxiv_2205_02824.md
+  - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
+  - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
+  - ../../sources/papers/domain_randomization_tobin_reading_arxiv_1703_06907.md
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md
@@ -76,6 +83,30 @@ sources:
 | DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+
+## 已发表随机化范围对照（2026-11-07 核对原文）
+
+本页阶段 1 的百分比范围（质量 ±20%、延迟 0~40 ms、PD ±20% 等）是**工程经验值**（推测，非论文原文）。下表给出一手论文实际使用的范围，用于校准：
+
+| 参数 | RMA（A1，训练范围） | Margolis 2022（Mini Cheetah） | DreamWaQ++（Go1） | Hwangbo 2019（ANYmal） |
+|------|--------------------|-------------------------------|-------------------|------------------------|
+| 摩擦 | 0.05 – 4.5 | 0.05 – 4.00 | 0.2 – 1.25 | —（接触模型为硬接触 + 库仑摩擦） |
+| 负载 | 0 – 6 kg | −1.0 – 3.0 kg | −1 – 2 kg | 质量 U(−15, 15)% |
+| 质心 | ±0.15 m（表 I 单位以原文为准） | ±0.10 m | ±50 mm | U(−2, 2) cm（连杆质心与关节位置各自） |
+| 电机强度 | ×0.90 – 1.10 | 90% – 110% | ×0.9 – 1.1 | 用执行器网络建模，不随机化 |
+| PD 增益 | Kp 50–60，Kd 0.4–0.8 | 固定 Kp=20、Kd=0.5 | Kp、Kd 因子 ×0.9 – 1.1 | 固定 kp=50、kd=0.1 |
+| 延迟 | —（异步结构，未单独随机化延迟） | —（本文未报告延迟随机化） | 本体 0 – 15 ms，外感知三档噪声 + 安装偏置 | 由执行器网络吸收通信与机械延迟 |
+| 观测噪声 | 表 I 未列 | —（仅含地形噪声消融） | 关节位置 ±0.01 rad、关节速度 ±1.5 rad/s、体线速度 ±0.1 m/s、角速度 ±0.2 rad/s、重力向量 ±0.05 | 关节速度 U(−0.5, 0.5) rad/s，体线速度 ±0.08 m/s，角速度 ±0.16 |
+| 其他 | 重采样概率 0.004/步 | 地面恢复系数 0 – 1 | Roll-Drop；外感知安装位姿偏置 | 30 个随机惯性模型；施加扰动 |
+
+读表结论：
+
+- 论文里的摩擦范围比本页建议的 0.3~1.2 宽得多（RMA 到 4.5），说明「地面摩擦」是被刻意放宽的随机化维度；而 Hwangbo 在执行器上走的是**建模**而非**随机化**路线。
+- 延迟随机化 0~40 ms 的取值**在这几篇论文中没有出现**；DreamWaQ++ 明确把本体延迟限制在 0–15 ms，并说再加大会让策略过保守。因此「覆盖真实延迟上限」应以**实测延迟**为准，而不是照搬 40 ms。
+- 控制频率：RMA 100 Hz，Margolis 50 Hz，DreamWaQ++ 50 Hz（本体 200 Hz），Hwangbo 200 / 100 Hz，Digit 50 Hz（PD 1 kHz）。本页「50 Hz 或 100 Hz」的建议与之相符。
+- 动作与增益：想在 DR 里扰动 PD 增益，可参考 RMA（Kp 50–60、Kd 0.4–0.8）与 DreamWaQ++（×0.9–1.1）；本页「±20%」比两者都宽（经验值）。
+- DR 的代价：Margolis 与 RMA 都指出域随机化让策略偏保守；用特权编码器 + 历史回归（RMA / 在线系统辨识）可缓解——Margolis 表 IV 中带在线辨识的真机速度 3.81 m/s 对无辨识 2.49 m/s。
+- 域随机化的起源（Tobin 2017）针对**视觉**迁移：随机纹理、干扰物、相机位姿、光照，在 480 张真机图像上达到平均 1.5 cm 内的定位精度，不需要真实图像预训练；不能直接当作动力学随机化的数值依据。
 
 ## 阶段 0：仿真建模（训练之前）
 
@@ -203,8 +234,9 @@ sources:
 
 ## 参考来源
 
-- Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — RMA 两阶段框架
-- Tobin et al., *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* (2017) — 域随机化基础
-- Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 足式 sim2real 完整 pipeline
+- Kumar et al., [*RMA: Rapid Motor Adaptation for Legged Robots*](https://arxiv.org/abs/2107.04034) (2021) — RMA 两阶段框架；[通读归档](../../sources/papers/rma_reading_arxiv_2107_04034_pt3.md)
+- Tobin et al., [*Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World*](https://arxiv.org/abs/1703.06907) (2017) — 域随机化基础；[通读归档](../../sources/papers/domain_randomization_tobin_reading_arxiv_1703_06907.md)
+- Hwangbo et al. (2019)、Margolis et al. (2022)、DreamWaQ++ (2026)、Extreme Parkour (2023)：见各自通读归档 [Hwangbo](../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md)、[Margolis](../../sources/papers/rapid_locomotion_rl_arxiv_2205_02824.md)、[DreamWaQ++](../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md)、[Extreme Parkour](../../sources/papers/extreme_parkour_arxiv_2309_14341.md)
+- Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 足式 sim2real 完整 pipeline（本次未作为通读原文列入）
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要
 - [sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md](../../sources/blogs/wechat_shenlan_sim2real_sysid_to_adaptation.md) — 闭环六段与分层安全要点

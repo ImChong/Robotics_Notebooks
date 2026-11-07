@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-07
 related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ../methods/motionbricks.md
@@ -23,10 +23,16 @@ sources:
   - ../../sources/repos/gr00t_wholebodycontrol.md
   - ../../sources/sites/gr00t-wholebodycontrol-docs.md
   - ../../sources/repos/isaac_gr00t.md
-summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管解耦 WBC（GR00T N1.5/N1.6）、GEAR-SONIC（SONIC 训练/部署/C++ 推理/VR 采集）与 MotionBricks 预览子项目；文档站覆盖安装、VLA 数据链与低延迟遥操作 checkpoint（约 2.9k★，2026-07）。"
+original:
+  - ../../sources/repos/gr00t_wholebodycontrol.md
+summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管解耦 WBC（GR00T N1.5/N1.6）、GEAR-SONIC（SONIC 训练/部署/C++ 推理/VR 采集）与 MotionBricks 预览子项目；文档站覆盖安装、VLA 数据链与低延迟遥操作 checkpoint（★ 数以库内 2026-07 归档为准，本次未复核）。"
 ---
 
 # GR00T-WholeBodyControl（人形全身控制统一平台）
+
+## 一句话定义
+
+**GR00T-WholeBodyControl** 是 NVlabs 把人形全身控制（Decoupled WBC、GEAR-SONIC、MotionBricks）的训练、权重与部署栈收敛到一个 Git 单仓的官方代码库。
 
 **GR00T-WholeBodyControl** 把 NVIDIA **GR00T 全身控制（WBC）** 相关资产收敛到同一 Git 单仓：**解耦 WBC**（下肢 RL + 上肢 IK，用于 [GR00T N1.5 / N1.6](https://research.nvidia.com/labs/gear/gr00t-n1_5/) 等）、**GEAR-SONIC**（[SONIC](../methods/sonic-motion-tracking.md) 规模化运动跟踪通用策略）与 **MotionBricks**（[`motionbricks/`](https://github.com/NVlabs/GR00T-WholeBodyControl/tree/main/motionbricks) 预览代码）的训练脚本、权重托管说明与部署栈并列维护。
 
@@ -50,13 +56,22 @@ summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管
 - **与高层 VLA 文档同仓**：站点教程包含 **VLA 工作流、数据采集与推理**，便于和 [Foundation Policy](../concepts/foundation-policy.md) 中 GR00T 叙事交叉阅读。
 - **资源与许可边界清晰**：README 强调 **Git LFS**、按用途拆分的 **独立 Python 环境**，以及 **代码 Apache-2.0 + 权重 NVIDIA Open Model License** 的双许可结构。
 
-## 仓库内三大块（概念分工）
+## 核心原理：仓库内三大块（概念分工）
 
 | 方向 | 角色 |
 |------|------|
 | Decoupled WBC | GR00T N1.5 / N1.6 等产品化人形栈中的经典「下盘 RL + 上盘 IK」分解控制器 |
 | GEAR-SONIC | 以运动跟踪为统一预训练目标的通用人形行为模型；含 `gear_sonic` 训练与 `gear_sonic_deploy` C++ 部署 |
 | MotionBricks | 实时潜空间生成式运动控制（与 [MotionBricks 方法页](../methods/motionbricks.md) 及项目页一致） |
+
+**SONIC 的核心机制（官方训练指南）**：控制 Unitree G1（29 DoF）模仿人体动捕。多个并行编码器接收不同的运动输入格式——G1 关节轨迹、遥操作 3 点（头 + 双腕）、SMPL 关节位置，以及可选的 SOMA（BVH 骨架）——都经 **FSQ（有限标量量化）** 投影到共享的潜 token 空间（64 维），**单一解码器**输出关节动作，与输入形式无关；用 PPO 加辅助损失在 Isaac Lab 中训练，控制器 50 Hz 运行。模型卡给出三个检查点：默认版（10 帧 × 20 ms 的 SMPL 前瞻，约 200 ms）、低延迟遥操作版（4 帧，约 80 ms）、v1.1（朝向归一化目标 + 腕部位姿增广）。**前瞻帧数不是端到端遥操作延迟**（还含感知、网络、预处理与推理）。
+
+## 工程实践
+
+- **环境**：不同用途用独立 uv venv（`.venv_sim` MuJoCo 仿真、`.venv_teleop` PICO 遥操作、`.venv_data_collection` 数据采集），训练要单独装 Isaac Lab（README 徽章为 2.3.2）；仓库含 **Git LFS** 大文件，不拉取会得到指针文件并"静默失败"；MotionBricks 检查点（约 2.2 GiB）默认跳过，需 `git lfs pull --include="motionbricks/out/**"`。
+- **训练**：数据为 BONES-SEED（142,220 条 / 约 288 小时 / 522 名演员，含 G1 轨迹；过滤家具 / 载具 / 杂技 / 高处交互后约 8.7% 被去除，剩约 130K）；官方建议 **64+ GPU** 多机训练（单机 8 卡可行但慢）；可从发布的检查点微调。监控指标：`anchor_pos_err < 0.15 m`、`body_pos_err < 0.10 m`、吞吐约 4000+ FPS；收敛后评测 `success_rate > 0.97`、`mpjpe_l < 30 mm`、`mpjpe_g < 200 mm`。
+- **部署**：`gear_sonic_deploy/deploy.sh --input-type zmq_manager real`（C++ + TensorRT）；v1.1 的已测试调参是左右踝俯仰电机（索引 4、10）Kp / Kd 缩放 1.5，官方称可改善全身稳定性与腕部跟踪；务必先仿真再上真机。
+- **遥操作与 VLA**：PICO VR 全身遥操作用于采集；端到端 VLA 工作流 = 遥操作采集 → 微调 Isaac-GR00T N1.7 → SONIC 部署（README News 2026-05-07）。
 
 ## 源码运行时序图
 
@@ -93,6 +108,14 @@ sequenceDiagram
 ```
 
 关键复现路径：独立 venv 装训练栈 → HF 权重 → `train_agent_trl.py` / `eval_agent_trl.py` → ONNX 导出 → `gear_sonic_deploy/deploy.sh`；VLA 采集见文档站 Data Collection / VLA Workflow。
+
+## 局限与风险
+
+- **权重许可不同于代码**：代码 Apache-2.0，权重走 NVIDIA Open Model License（允许商用但需署名、遵守 Trustworthy AI 条款）。
+- **训练门槛高**：官方建议 64+ GPU；本页没有独立复现数据。
+- **硬件范围**：模型卡发布的是 **Unitree G1** 检查点；其他机型需自行适配（README 提到支持更多本体，但本次未核对）。
+- **部署需调参**：v1.1 的踝关节 Kp / Kd 缩放说明部署端增益对稳定性敏感。
+- **本次核对范围**：只读了官方 README 与文档站的训练 / 数据 / Decoupled WBC 页，**没有读源码文件**；下文时序图的节点名来自库内归档与官方命令，未逐文件核对实现。
 
 ## 关联页面
 

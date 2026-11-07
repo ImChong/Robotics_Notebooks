@@ -8,7 +8,7 @@ tags:
   - world-labs
   - shanghai-ai-lab
 status: complete
-updated: 2026-10-28
+updated: 2026-11-07
 summary: "Fei-Fei / World Labs 把过载的「世界模型」按 POMDP 闭环拆成 Renderer（输出观测）、Simulator（输出状态）、Planner（输出动作）；仿真是枢纽。上海人工智能实验室补上表征轴，并指出功能分类只描述解码、不定义内部压缩。"
 related:
   - ../entities/deepmind-genie-4.md
@@ -27,6 +27,8 @@ related:
   - ../entities/paper-gwm-first-principles.md
   - ../entities/paper-foredrive.md
   - ../entities/paper-worldline-action-driven-visual-simulation.md
+original:
+  - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
 sources:
   - ../../sources/blogs/deepmind_genie_4_world_simulation.md
   - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
@@ -63,6 +65,8 @@ sources:
 - **仿真是枢纽，却最少被讨论。** Renderer 商业最成熟，Planner demo 最吸睛；缺几何/物性/动力学，前两者都不可信。
 - **和本库已有 taxonomy 正交。** [五大具身模型](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) 按 VL* 的 I/O 家族分；[训练闭环三线](../overview/robot-world-models-training-loop-taxonomy.md) 按机器人学习接口分。本页问的是 **POMDP 环上吐出什么**。
 - **后续定义文补了一刀。** [上海人工智能实验室 2607.06401](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 承认功能分类有用，但指出它分类的是 **解码**，不是内部压缩表征。
+
+**核对说明（2026-11-07）：** 本页关于 Renderer / Simulator / Planner 的定义、POMDP 环、「仿真是枢纽」与边界塌缩均已对照 World Labs 官方博客全文；关于上海人工智能实验室 2607.06401 的论述只核对了其 §1–§2、§3 引言、§4.5、§6.1–6.2、§7–§8，**未通读全文**（归档标「通读：未完成」，故不列入 original）。Genie 4、SKY-001、WorldLine、ForeDrive 等样本沿用既有归档，本次未回原文复核。
 
 ## 核心原理
 
@@ -108,9 +112,17 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 - [WorldLine](../entities/paper-worldline-action-driven-visual-simulation.md) 展示另一种边界：输入相机观测与动作，输出未来视频，并把预测用于候选动作评估；按功能属于动作条件的 **Simulator**（服务外部策略的 rollout），但输出仍是像素，尚不提供可查询物理状态或实时接触求解。
 - 逻辑终点：一个基础模型按下游消费者切换输出模态。张力是数据不均（视频多、可执行 3D 与机器人轨迹少）以及「好看」与「可规划」互相牺牲。
 
+### 博客原文的几处关键措辞（2026-11-07 核对）
+
+- 三类里博客自己的排序是：**Renderer 商业最成熟**（文生视频产品与 Genie 3、RTFM 等交互式帧生成）、**Planner 最有意思也最早期**（"almost all have been confined to heavily constrained laboratory setups"）、**Simulator 受关注最少却最关键**——"If language is an abstraction of the world and pixels are a projection of it, then geometry, physics, and dynamics are the world itself."
+- Renderer 的合同是视觉（"carries no explicit understanding of three-dimensional structure"）；Simulator 的合同是结构，同时服务两类消费者：人类专业人士（建筑、设计、影视、游戏）与程序（RL 智能体、机器人控制器、自动驾驶）；Planner 是 Renderer 的"反面"：Renderer 吃动作吐观测，Planner 吃观测吐动作，闭合感知-行动环。博客把 VLA、基于模型的系统和新一波 World Action Models 都归为 Planner 的尝试。
+- 博客指出的 Simulator 难点：带显式几何、材质、物理标注的 3D 数据比互联网视频少几个数量级；sim-to-real 差距；生成式几何可能"看起来对"却有自交或错尺度；多物理（刚体、可变形体、流体、布料）耦合的仿真成本比单域高几个数量级。
+- 展望：统一世界模型 = 一个基础模型按下游消费者切换输出模态；博客认为目前数据不均衡（Renderer 有海量视频，Simulator 缺 3D 资产，Planner 缺机器人演示）与"视觉美感 vs 机器人所需精度"的取舍是最难的开放问题。
+- 博客举的塌缩例子：用预训练视频 Renderer 作联合"世界 + 动作"预测骨干；Marble 同时输出高斯 splat 与碰撞网格。
+
 ### 第二轴：功能 × 架构（定义文补充）
 
-功能分类不回答「内部状态存在哪种底物上」。[定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 加了表征轴：observation-level / latent-space / 3D-structured。同一产品可占多个格子——[Cosmos 3](../entities/cosmos-3.md) 是共享骨干上的多种 I/O 配置；WAM 是横跨 Planner+Simulator 的功能范式，**不是第四实现列**。
+功能分类不回答「内部状态存在哪种底物上」。[定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) 加了表征轴（论文 §2.4–2.5；其 Definition 2.1 把世界模型定义为"有限算力下对物理世界状态转移过程的压缩建模"，并列出 omnimodal、多维异步、局部性三条性质；还把三类功能与 POMDP 对应——Simulator≈转移模型、Renderer≈观测模型、Planner 评估信念条件下的未来；用 $x_t(s_t)\propto O(o_t|s_t)\sum_{s_{t-1}}T(s_t|s_{t-1},a_{t-1})x_{t-1}(s_{t-1})$ 写贝叶斯滤波）：observation-level / latent-space / 3D-structured。同一产品可占多个格子——[Cosmos 3](../entities/cosmos-3.md) 是共享骨干上的多种 I/O 配置；WAM 是横跨 Planner+Simulator 的功能范式，**不是第四实现列**。
 
 驾驶侧样本：[ForeDrive](../entities/paper-foredrive.md) 落在 **latent-space × Planner** 格子——JEPA 式预测器只在表征空间预测多时域未来（不吐像素，故不是 Renderer），预测结果经 stop-gradient 喂给 DiT 轨迹规划器；规划梯度只塑造共享编码器、不改写预测器。它说明「预测得准」与「对规划有用」是两个合同，功能标签要按下游消费者判。
 
@@ -152,6 +164,7 @@ Renderer 吃动作吐观测；Planner 吃观测吐动作。中间缺 **状态**�
 
 ## 参考来源
 
+- **原文通读：** [World Labs / Fei-Fei：功能分类博客归档](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md)（官方博客全文，2026-11-07）
 - [Genie 4 官方博客归档](../../sources/blogs/deepmind_genie_4_world_simulation.md)
 
 - [World Labs / Fei-Fei：功能分类博客归档](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md)

@@ -8,7 +8,9 @@
 - **代码：** <https://github.com/NVIDIA/cosmos>
 - **Stars：** ~11.7k（2026-09-05 再核）
 - **入库日期：** 2026-06-06
-- **再核日期：** 2026-09-05
+- **再核日期：** 2026-09-05；2026-11-07 重读 `main` 分支 README 全文
+- **核对范围：** 2026-11-07 通读 raw.githubusercontent.com 上 NVIDIA/cosmos `main` 的 README.md（What's new：2026-05 Cosmos 3、2026-07 Cosmos3-Edge、2026-10 Interactive World Simulation；What is Cosmos；Find your path；Generate your first video 的依赖与 `Cosmos3OmniPipeline` 代码；Models 与 Example checkpoints 表；Platform 表；Limitations & safety；Citation & license）；未读 COOKBOOK.md、docs/reference/*、Cosmos 3 技术报告 PDF 与 cosmos-framework 源码，也未运行代码。
+- **通读：** 已完成
 - **一句话说明：** NVIDIA **Physical AI 世界模型开放平台**：托管 **Cosmos 3** 全模态模型族、推理 cookbook、Diffusers / vLLM-Omni / SGLang / NIM 集成，以及指向 **cosmos-framework** 的微调 / 蒸馏配方。
 
 ## 开源边界（步骤 2.5）

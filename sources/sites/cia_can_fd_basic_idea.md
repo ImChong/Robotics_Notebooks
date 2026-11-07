@@ -7,6 +7,10 @@
 - **来源：** CAN in Automation (CiA)
 - **链接：** https://www.can-cia.org/can-knowledge/can-fd-the-basic-idea/
 - **入库日期：** 2026-05-19
+- **复核日期：** 2026-11-07（重新取得 CiA 页面全文）
+- **核对页面：** [CAN FD: the basic idea](https://www.can-cia.org/can-knowledge/can-fd-the-basic-idea)、[CAN FD light](https://www.can-cia.org/can-knowledge/can-fd-light)、[CANopen FD](https://www.can-cia.org/can-knowledge/canopen-fd-the-art-of-embedded-networking)
+- **核对范围：** 三页正文读完（含帧结构图表的字段说明、DLC 扩展表、FD 帧格式、FD light、CANopen FD 的应用层变化）；ISO 11898-1:2024 付费，未读；CiA 下方的 Newsletter 列表只看标题。
+- **通读：** 已完成
 - **一句话说明：** Bosch 2011 年起与车企推动的 CAN FD 扩展：在仲裁段保持 CAN 兼容速率，在数据段提高比特率并将载荷从 8 字节扩至 64 字节。
 
 ## 为什么值得保留
@@ -40,3 +44,10 @@
 ## 当前提炼状态
 
 - [x] 摘要与 wiki 映射完成
+
+## 2026-11-07 全文复核补充（CiA 原文）
+
+- 2011 年 Bosch 与车企合作启动 CAN FD；解决两个限制：1 Mbit/s 与 8 字节。**仲裁段速率受拓扑限制（≤1 Mbit/s），数据段速率受收发器特性限制**；仅一个节点发送时可提速，ACK 槽前需重新同步。
+- 吞吐：仲裁:数据比特率 1:8 时，考虑 FD 帧更长的控制场与 CRC，吞吐约为经典 CAN 的 **6 倍**（CiA 原话 approximately six times）。
+- FDF 位（隐性=FD 帧）、BRS 位（隐性=切换到数据段比特率，在 BRS 采样点切换）、ESI 位（显性=错误主动）；FD 帧格式 FBFF（11 位）/ FEFF（29 位）；**FD 不支持远程请求帧**；CAN CC 与 CAN FD 一并标准化于 ISO 11898-1:2024；FD 控制器同时支持 CC 帧。
+- 与 CAN SIC 等收发器的配合见 [cia_can_knowledge_can_classic_and_hs.md](cia_can_knowledge_can_classic_and_hs.md)。

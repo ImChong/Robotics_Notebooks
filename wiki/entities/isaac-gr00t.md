@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, vla, humanoid, nvidia, foundation-policy, lerobot, isaac-lab, deployment]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-07
 summary: "Isaac GR00T 是 NVIDIA 开源的人形 VLA 开发平台：GR00T N1.7 GA 参考代码、LeRobot 数据管线、后训练/评测/TensorRT 部署，并与 Isaac Lab-Arena、Teleop、Isaac ROS 组成端到端策略流水线。"
 related:
   - ./nvidia-gr00t-e2e-g1-workflow.md
@@ -22,6 +22,8 @@ related:
   - ./isaac-ros-deploy.md
   - ./nvidia-physical-ai-datasets.md
   - ./nvidia-gtc.md
+original:
+  - ../../sources/repos/isaac_gr00t.md
 sources:
   - ../../sources/courses/nvidia_gr00t_e2e_g1_workflow.md
   - ../../sources/repos/isaac_gr00t.md
@@ -61,6 +63,21 @@ Isaac GR00T 把「采集 demonstration → LeRobot 格式 → GR00T N1.7 后训�
 - **模块化端到端**：NVIDIA 技术博客强调可只用单组件（例如仅后训练脚本）或走完整五阶段栈，降低人形管线胶水成本。
 - **LeRobot 生态对齐**：数据格式基于 LeRobot v2 + `modality.json`；HF LeRobot 亦提供 `groot` policy type，与本仓 reference 实现互补。
 - **N1.7 GA 商用边界清晰**：代码 Apache 2.0；权重 NVIDIA Open Model License；Cosmos-Reason2-2B 为 gated HF 模型需单独申请访问。
+
+## 核心原理
+
+N1.7 的「模型内部」以仓库 `Gr00tN1d7Config`（`gr00t/configs/model/gr00t_n1d7.py`）为准，与 [N1 论文](./paper-hrl-stack-34-gr00t_n1.md)的双系统思路一脉相承，但主要超参已不同：
+
+| 模块 | N1 论文（2B） | N1.7 代码默认值 |
+|------|---------------|-----------------|
+| VLM | Eagle-2（SmolLM2 + SigLIP-2），取第 12 层 | `nvidia/Cosmos-Reason2-2B`（Qwen3-VL），`select_layer=12`，`backbone_embedding_dim=2048`；默认 `tune_llm=False`、`tune_visual=False` |
+| 动作头 | DiT + adaLN，交叉/自注意力交替 | flow-matching DiT，`num_layers=16`、32 头 × 48 维、`norm_type=ada_norm`、`interleave_self_attention=True`；`use_alternate_vl_dit=True`，每 2 个块（`attend_text_every_n_blocks=2`）切换关注文本 |
+| 动作块 / 维度 | $H=16$ | `action_horizon=40`，`max_state_dim=max_action_dim=132`，`max_num_embodiments=32` |
+| 去噪 | $K=4$，Beta(1.5,1) 采样 $\tau$，$s=0.999$ | `num_inference_timesteps=4`，`noise_beta_alpha=1.5`，`noise_beta_beta=1.0`，`noise_s=0.999`，1000 个时间步桶 |
+| 状态处理 | per-embodiment MLP | 同族；另有 `state_dropout_prob=0.8`（模型配置默认；微调 CLI 默认 0.2）以降低对本体状态的依赖 |
+| 动作表示 | 末端 axis-angle / 关节 | 微调入口强制 `use_relative_action=True`（相对 EEF delta） |
+
+推理侧由 `Gr00tPolicy`（`gr00t/policy/gr00t_policy.py`）封装观测校验（`check_observation`）、动作校验（`check_action`）与 `Gr00tSimPolicyWrapper`；`run_gr00t_server.py` 把它包成 ZMQ `PolicyServer`（默认 `0.0.0.0:5555`，`strict=True`）；若只给 `--dataset-path` 则起 `ReplayPolicy`（必须同时给正的 `--execution-horizon`），用于不加载模型地验证环境。
 
 ## 平台五阶段（NVIDIA 栈）
 
@@ -110,6 +127,19 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 
 相对 N1.6，N1.7 还强化：**多数据集 mixture 微调**、更广 benchmark 文档（RoboCasa、LIBERO、SimplerEnv、真机 G1）、**ONNX/TensorRT** 全链路导出，以及 server-client 推理硬化。
 
+## 工程实践
+
+| 项 | README / 源码给出的要点 |
+|----|-------------------------|
+| 硬件 | 推理 1 张 16 GB+ 显存 GPU（RTX 4090、L40、H100、Jetson Thor/Orin、DGX Spark）；微调建议 40 GB+，A6000 可行但更慢 |
+| 吞吐（README 实测） | N1.7 在 RTX PRO 6000 Blackwell Server 约 **40 Hz**、Jetson AGX Thor 约 **28 Hz**（TensorRT，batch-1 LIBERO）；单卡训练步（batch 1，BF16，骨干冻结）H100 115.5 ms、L40 190.5 ms |
+| 环境 | `uv sync --python 3.12`；视频后端仅 `torchcodec`（0.8.0 只支持 FFmpeg 4–7）；aarch64 平台须激活 `activate_<platform>.sh` 后用裸 `python`，不要 `uv run` |
+| 门控 | 所有 checkpoint 首次加载会拉 gated 的 `nvidia/Cosmos-Reason2-2B`，需 HF 申请访问与登录，否则 `GatedRepoError` |
+| 微调 | `launch_finetune.py`（tyro CLI）：`--base-model-path`、`--dataset-path`（多路径用 `os.pathsep` 分隔，`ds_weights_alpha` 控制混合权重）、`--embodiment-tag NEW_EMBODIMENT`、`--modality-config-path`；示例 `--max-steps 2000 --global-batch-size 32` |
+| 调参经验 | README「Training Tips」：尽量加大 batch、训几千步；因图像增强非确定性，不同次运行可有 **5–6%** 方差；依赖本体状态的任务应调低 `--state_dropout_prob`（LIBERO-10 用 0.2，SimplerEnv Bridge 0.8、Fractal 0.5）；`--strict_vl_padding_mask` / `--strict_action_padding_mask` 默认保持旧 checkpoint 行为，新训练可开启（切换后须重导 TensorRT 引擎） |
+| 评测 | 先 `open_loop_eval.py`（GT vs 预测 MSE 图），再 server-client 闭环；LIBERO、SimplerEnv、RoboCasa、SO100、DROID、RoboLab 各有 README |
+| 许可 | 代码 Apache 2.0；权重 NVIDIA Open Model License |
+
 ## 仓库内五步（Isaac-GR00T README）
 
 1. **Prepare data** — GR00T LeRobot 格式；内置 `demo_data/*` 可零配置试跑  
@@ -122,14 +152,21 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 
 对 `UNITREE_G1_SONIC` embodiment，VLA 输出 **紧凑 latent action token**，由 [GEAR-SONIC](../methods/sonic-motion-tracking.md) 全身控制器解码为腿/臂/手关节命令——单策略可端到端协调 **操作 +  locomotion**（详见 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) 教程）。
 
-## 常见误区
+## 局限与风险
+
+- **版本漂移：** 仓库 `main` 已是 N1.7，N1/N1.5 的行为只能从 `n1d5`、`n1d6` 分支或论文核对；本页的 N1.7 数值来自 README 与默认配置，**不等于**已复现的评测结论（README 也提示 5–6% 运行间方差）。
+- **门控依赖：** Cosmos-Reason2-2B 为 gated 模型，离线/受限网络环境需提前准备权重。
+- **平台环境脆弱：** README 记录了 FFmpeg 8 与 `torchcodec` 不兼容、CUDA 13 需要 Triton 补丁、GB300 (sm_103) 上 `torch.compile` 不可用等已知问题。
+- **N1.7 的 20K 小时 EgoScale 人类视频与博客「32K/8K 小时」口径来自官方描述，我们未获取其数据集做核验。**（推测：具体混合比例未在 README 披露）
+
+### 常见误区
 
 1. **Isaac GR00T ≠ 仅 GR00T N1 论文** — 论文页描述 N1 研究贡献；本仓随版本演进至 **N1.7 GA**，架构与数据接口以 GitHub `main` 为准。  
 2. **Embodiment tag 不可省略** — 决定 state/action/video 键与归一化；错 tag 会导致 silent 维度错配。  
 3. **LeRobot 与本仓分工** — HF LeRobot 适合 `groot` 原生训练/rollout；**模型内部、部署脚本、benchmark 细节**以 Isaac-GR00T 为 reference。  
 4. **WBC 与 VLA 仍分层验证** — 桌面短视界任务可能只需 AGILE WBC；loco-manip 需 SONIC 栈与 latent 解码联调。
 
-## 与其他页面的关系
+## 关联页面
 
 - 论文 canonical：[paper-hrl-stack-34-gr00t_n1.md](../entities/paper-hrl-stack-34-gr00t_n1.md)  
 - 低层 WBC / SONIC：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)  
@@ -152,7 +189,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 
 ## 参考来源
 
-- [isaac_gr00t.md](../../sources/repos/isaac_gr00t.md) — Isaac-GR00T 仓库 README 策展摘录  
+- **原文通读：** [isaac_gr00t.md](../../sources/repos/isaac_gr00t.md) — Isaac-GR00T 仓库 README 全文 + 关键源码（2026-11-07 复核）  
 - [nvidia_gr00t_e2e_g1_workflow.md](../../sources/courses/nvidia_gr00t_e2e_g1_workflow.md) — NVIDIA Learning 官方 G1 E2E 动手课归档（2026-09-23）
 - [nvidia_develop_humanoid_robot_policies_isaac_gr00t.md](../../sources/blogs/nvidia_develop_humanoid_robot_policies_isaac_gr00t.md) — NVIDIA Developer Blog 端到端平台介绍（2026-07-07）  
 - [wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md](../../sources/blogs/wechat_embodied_ai_lab_isaac_gr00t_n17_g1_e2e.md) — 具身智能研究室中文策展转载（G1 + VR/LeRobot 链路，2026-07-13）  

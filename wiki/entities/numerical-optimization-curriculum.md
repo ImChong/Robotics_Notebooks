@@ -3,7 +3,7 @@
 type: entity
 tags: [course, numerical-optimization, convex-optimization, mpc, trajectory-optimization, foundational, stanford]
 status: complete
-updated: 2026-08-09
+updated: 2026-11-07
 related:
   - ../formalizations/convex-functions.md
   - ../formalizations/kkt-conditions.md
@@ -14,6 +14,8 @@ related:
   - ../methods/convex-relaxation-robotics.md
   - ./linear-algebra-curriculum.md
   - ../../roadmap/motion-control.md
+original:
+  - ../../sources/courses/numerical_optimization_foundations_robotics.md
 sources:
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
 summary: "机器人数值优化 L0 策展：具身智能研究室《数值优化基础》六章大纲，映射无约束/约束/锥规划/凸松弛与 MPC、TrajOpt、WBC 工程应用。"
@@ -21,7 +23,9 @@ summary: "机器人数值优化 L0 策展：具身智能研究室《数值优化
 
 # 数值优化学习策展（机器人 L0+）
 
-**一句话：** 机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses/numerical_optimization_foundations_robotics.md) 六章大纲整理成可执行路线，并接到 [运动控制成长路线](../../roadmap/motion-control.md) L3–L4。
+## 一句话定义
+
+机器人控制栈里反复出现的 **QP、NMPC、TrajOpt、碰撞距离、控制分配** 共用同一套数值优化语言；本页把 [《数值优化基础》](../../sources/courses/numerical_optimization_foundations_robotics.md) 六章大纲整理成可执行路线，并接到 [运动控制成长路线](../../roadmap/motion-control.md) L3–L4。
 
 ## 英文缩写速查
 
@@ -44,7 +48,9 @@ summary: "机器人数值优化 L0 策展：具身智能研究室《数值优化
 2. **与 [线性代数策展](./linear-algebra-curriculum.md) 互补**：线代给矩阵语言；本页给 **如何在这些矩阵上下降、满足约束、做锥规划与松弛**。
 3. **直接服务 L4 主干**：Convex MPC → WBC QP → NMPC / TrajOpt 都依赖本章地图中的节点。
 
-## 推荐学习路径
+## 核心原理：推荐学习路径
+
+> **原文核对说明：** 本页的原文是课程大纲归档（来自微信公众号「具身智能研究室」，无课程官方主页可核）。2026-11-07 已逐节核对大纲层面的章节主题与顺序；课程视频、讲义、习题、作业代码**未获取**，因此下表「机器人相关产出」「本库页面」两列是知识库作者的映射判断，不是课程原话（推测）。
 
 ```mermaid
 flowchart LR
@@ -64,7 +70,7 @@ flowchart LR
 | 大规模无约束 | Ch2 BFGS / CG | cuRobo 类 TrajOpt 后端、大规模 IK | [quasi-newton-bfgs](../methods/quasi-newton-bfgs.md)、[conjugate-gradient-method](../methods/conjugate-gradient-method.md) |
 | 路径应用 | Ch2.4 平滑导航 | 移动机器人 / 无人机平滑路径 | [smooth-navigation-path-generation](../methods/smooth-navigation-path-generation.md) |
 | 约束核心 | Ch3 KKT / QP / 增广拉格朗日 | WBC QP、控制分配、NMPC | [kkt-conditions](../formalizations/kkt-conditions.md)、[quadratic-programming](../formalizations/quadratic-programming.md)、[penalty-barrier-augmented-lagrangian](../methods/penalty-barrier-augmented-lagrangian.md) |
-| 机器人应用 | Ch3.6–3.8 | 冗余驱动分配、SDF 碰撞、NMPC | [control-allocation](../concepts/control-allocation.md)、[collision-distance-optimization](../concepts/collision-distance-optimization.md)、[nonlinear-model-predictive-control](../methods/nonlinear-model-predictive-control.md) |
+| 机器人应用 | Ch3.6–3.8（控制分配、碰撞距离计算、NMPC） | 冗余驱动分配、碰撞距离（大纲只写「碰撞距离计算」，是否基于 SDF 未核对）、NMPC | [control-allocation](../concepts/control-allocation.md)、[collision-distance-optimization](../concepts/collision-distance-optimization.md)、[nonlinear-model-predictive-control](../methods/nonlinear-model-predictive-control.md) |
 | 锥规划 | Ch4 TOPP | 机械臂/足式沿路径时间最优 | [symmetric-cone-programming](../formalizations/symmetric-cone-programming.md)、[time-optimal-path-parameterization](../methods/time-optimal-path-parameterization.md) |
 | 工程技巧 | Ch5 伴随 / 求解器 | TrajOpt 梯度、选型 OSQP/Acados | [adjoint-sensitivity-analysis](../formalizations/adjoint-sensitivity-analysis.md)、[optimization-software-selection](../queries/optimization-software-selection.md) |
 | 非凸出口 | Ch6 凸松弛 | 姿态估计、抓取、多机器人 | [convex-relaxation-robotics](../methods/convex-relaxation-robotics.md) |
@@ -89,34 +95,42 @@ flowchart LR
 - 3.1 形式分类 → [Constrained Optimization](../concepts/constrained-optimization.md)
 - 3.2 Seidel LP → 见 [Constrained Optimization](../concepts/constrained-optimization.md)（低维 LP 特例）
 - 3.3 严格凸 QP → [Quadratic Programming](../formalizations/quadratic-programming.md)
-- 3.4–3.5 序列无约束化 / PHR → [Penalty / Barrier / Augmented Lagrangian](../methods/penalty-barrier-augmented-lagrangian.md)
+- 3.4 三种序列无约束化、3.5 KKT 条件与 PHR 增广拉格朗日 → [KKT](../formalizations/kkt-conditions.md)、 [Penalty / Barrier / Augmented Lagrangian](../methods/penalty-barrier-augmented-lagrangian.md)
 - 3.6 控制分配 → [Control Allocation](../concepts/control-allocation.md)
-- 3.7 碰撞距离 → [Collision Distance Optimization](../concepts/collision-distance-optimization.md)
+- 3.7 碰撞距离计算 → [Collision Distance Optimization](../concepts/collision-distance-optimization.md)
 - 3.8 NMPC → [Nonlinear MPC](../methods/nonlinear-model-predictive-control.md)
 - 3.9 实践 → [MPC Solver Selection](../queries/mpc-solver-selection.md)
 
 ### 第 4 章 对称锥规划
 
-- 4.1–4.2 锥 / 对称锥 ALM → [Symmetric Cone Programming](../formalizations/symmetric-cone-programming.md)
+- 4.4 实践「PHR 凸性证明与锥规划求解」（大纲）；4.1–4.2 锥 / 对称锥 ALM → [Symmetric Cone Programming](../formalizations/symmetric-cone-programming.md)
 - 4.3 TOPP → [Time-Optimal Path Parameterization](../methods/time-optimal-path-parameterization.md)
 
 ### 第 5 章 构建与求解技巧
 
-- 5.1 函数光滑化 → [Convex Relaxation in Robotics](../methods/convex-relaxation-robotics.md)（Huber / 软化约束）
+- 5.1 函数光滑化技巧 → [Convex Relaxation in Robotics](../methods/convex-relaxation-robotics.md)（Huber / 软化约束是映射者的推测，大纲仅写「函数光滑化技巧」）
 - 5.2 伴随 → [Adjoint Sensitivity Analysis](../formalizations/adjoint-sensitivity-analysis.md)
-- 5.3–5.4 求解器 / 软件 → [Optimization Software Selection](../queries/optimization-software-selection.md)、[MPC Solver Selection](../queries/mpc-solver-selection.md)
+- 5.3 线性系统求解器分类与特性、5.4 优化软件资源、5.5 实践「复杂障碍环境安全导航」 → [Optimization Software Selection](../queries/optimization-software-selection.md)、[MPC Solver Selection](../queries/mpc-solver-selection.md)
 
 ### 第 6 章 凸松弛
 
-- 6.2–6.5 QCQP 松弛 / Riemannian / 分布式 / GNC → [Convex Relaxation in Robotics](../methods/convex-relaxation-robotics.md)
+- 6.2 QCQP 凸松弛、6.3 Riemannian Staircase、6.4 分布式凸松弛、6.5 GNC、6.6 推荐参考文献（大纲） → [Convex Relaxation in Robotics](../methods/convex-relaxation-robotics.md)
 
-## 常见误区
+## 工程实践
+
+- **按大纲顺序做实践作业：** 大纲每个主题都配实践——1.6 线搜索最速下降、2.5 平滑导航路径、3.9 严格凸 QP + NMPC、4.4 PHR 凸性证明与锥规划、5.5 复杂障碍环境安全导航；先在本库方法页确认算法，再做作业。
+- **选型：** 用 [优化软件选型](../queries/optimization-software-selection.md)、[MPC 求解器选型](../queries/mpc-solver-selection.md) 把课程章节落到具体求解器。
+
+## 局限与常见误区
+
+- **大纲 ≠ 讲授内容：** 本页只依据章节大纲，具体推导深度、难度与代码质量未知；
+- 大纲无 2.1 节编号（原整理即如此，未查证是否缺失）。
 
 - **只会调 OSQP，不懂 KKT**：QP 无解时无法判断是建模冲突还是数值问题。
 - **把 NMPC 当黑盒**：非凸 NLP 对初值、约束光滑性、实时预算极敏感。
-- **跳过无约束章节**：TrajOpt 里 L-BFGS + 线搜索仍是工业默认组合（见 [cuRobo](./curobo.md)）。
+- **跳过无约束章节**：TrajOpt 里 L-BFGS + 线搜索仍是工业默认组合（见 [cuRobo](./curobo.md)；该说法为本库经验判断，课程大纲未涉及，推测）。
 
-## 与其他页面的关系
+## 关联页面（与其他页面的关系）
 
 - 上游数学：[Linear Algebra Curriculum](./linear-algebra-curriculum.md)
 - 控制应用：[MPC](../methods/model-predictive-control.md)、[Trajectory Optimization](../methods/trajectory-optimization.md)、[HQP](../concepts/hqp.md)

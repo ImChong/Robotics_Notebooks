@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, nvidia, world-models, physical-ai, wfm, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
 arxiv: "2501.03575"
 venue: "arXiv 2025 (v3)"
 code: https://github.com/NVIDIA/cosmos
@@ -18,6 +18,8 @@ related:
   - ../concepts/sim2real.md
   - ./cosmos-transfer.md
   - ./paper-cosmos-transfer1.md
+original:
+  - ../../sources/papers/cosmos_wfm_arxiv_2501_03575.md
 sources:
   - ../../sources/papers/cosmos_wfm_arxiv_2501_03575.md
   - ../../sources/papers/sun_awesome_wm_2501_03575_cosmos-world-foundation-model-platform-f.md
@@ -68,6 +70,17 @@ WFM \(\mathcal{W}\) 根据过去观测 \(x_{0:t}\)（RGB 视频）与当前扰�
 
 预训练用多样视频让模型接触真实世界物理；后训练用目标环境的 prompt–视频对做成 specialist，数据量可以小得多。Tokenizer 被写成类视频编解码器：既要压 token 数，又要保住视觉内容。Guardrail 分 pre-Guard（拦输入）与 post-Guard（拦输出）。
 
+### 论文各模块的关键事实（一手 PDF）
+
+| 模块 | 论文给出的内容 |
+|------|----------------|
+| 数据 | 约 2000 万小时 720p–4K 原始视频（驾驶 11%、手部/物体操作 16%、人体活动 10%、空间导航 16%、第一人称 8%、自然动态 20%、动态相机 8%、合成渲染 4%、其他 7%）；约 10⁸ 条 clip 用于预训练、约 10⁷ 条用于微调 |
+| 策展五步 | 切分（TransNetV2 做镜头检测，<2 s 丢弃、>60 s 再切；PyNvideoCodec + h264_nvenc 转码，吞吐比基线约 6.5×）→ 过滤（运动：ViT 分类器 + TensorRT 光流；画质：DOVER 去掉最低 15%、美学阈值 3.5；文本叠加：InternVideo2 + MLP；视频类型分类并上/下采样）→ 字幕（内部 13B VILA，8 帧输入，FP8 TRT-LLM 吞吐约 10×，平均 97 词）→ 语义去重（k-means，k=10,000，去掉约 30%）→ 分片 |
+| Tokenizer | 因果、小波（2 级 Haar）空间 + 因果时空卷积/注意力；连续版用普通 AE（潜维 16），离散版用 FSQ（级数 8,8,8,5,5,5 → 词表 64,000）；两阶段训练：L1 + VGG 感知损失，再加光流损失 + Gram 损失，微调阶段加对抗损失；压缩率 4×8×8 / 8×8×8 / 8×16×16；TokenBench（500 视频）上 4×8×8 的 CV 变体 PSNR 38.42（Cosmos-Tokenize1-CV4×8×8-360p，对比 CogVideoX 32.06） |
+| 扩散 WFM | 在 Cosmos-Tokenize1-CV8×8×8-720p 潜空间做 EDM 去噪（不是 flow matching）；DiT + 3D patchify（1×2×2）、FPS 感知 3D RoPE + 可学习绝对位置嵌入、T5-XXL 交叉注意力、QK-RMSNorm、AdaLN-LoRA（7B 从 11B 参数降到 7B，−36%）；7B：28 层/4096 维，14B：36 层/5120 维；渐进训练 512p×57 帧 → 720p×121 帧 → 高质量微调；Video2World 通过拼接条件帧 + 二值掩码实现 |
+| 自回归 WFM | Llama3 风格 GPT 从头训练（4B/12B 纯视频预测，5B/13B 加文本交叉注意力的 Video2World）；3D RoPE（YaRN 沿时间轴外推）+ 3D APE；QK-Norm + z-loss（λ=3e-4）；词表 64,000；Medusa 推测解码（9 个头最优）；320×512 低分辨率适配后 4B 可达 10.08 帧/s；扩散解码器（由 7B Text2World 微调）修复离散 token 模糊 |
+| 算力 | 全部模型在 10,000 张 H100 上训练约 3 个月；14B 训练用 FSDP（分片 64）+ 上下文并行（CP=8，P2P 重叠）；14B 参数/梯度/优化器状态约 280 GB，激活约 310 GB |
+
 ### 流程总览
 
 ```mermaid
@@ -110,7 +123,17 @@ sequenceDiagram
 
 ## 评测与指标
 
-本平台文以方法与系统叙述为主，定量榜单留给后续代际（Predict2.5 的 PAI-Bench、Cosmos 3 的 Artificial Analysis / RoboArena）。读者应记住的是 **数据与配方**：2000 万小时 → 1 亿 clip、双路线预训练、三类后训练，而不是某一 VBench 分数。
+论文有系统的定量评测（更正：本页早期版本曾写「本文无定量榜单」，与原文不符）。关键数字：
+
+| 评测 | 结果（论文表格） |
+|------|------------------|
+| 3D 一致性（RealEstate10K 500 条，Table 19） | Sampson 误差：VideoLDM 0.841 → Cosmos-7B-Text2World 0.355（真实视频 0.431）；相机位姿估计成功率 4.4% → 62.6%（真实视频 56.4%）；新视角合成 PSNR 26.23 → 33.02（真实 35.38） |
+| 物理对齐（8 类刚体仿真场景、800 条 1080p 视频，Table 20） | 条件帧越多预测越好；扩散 WFM 像素级优于自回归；**更大模型并不更好**，论文原话：所有 WFM 在物理遵从上同样吃力，需要更好的数据策展与模型设计（常见失败：物体凭空出现/消失、形变、重力违例） |
+| 相机控制（Table 22，对比 CamCo） | 位姿估计成功率 43.0% → 82.0%；旋转误差 8.277° → 1.646°；FID 57.49 → 14.30；FVD 433.24 → 120.49 |
+| 指令式机器人视频预测（Cosmos-1X 约 200 小时、约 1.2 万 episode；10 人评 23 条） | 7B 总体偏好 78.3% vs VideoLDM-Instruction 13.0% |
+| 动作条件下一帧（Bridge，Table 23） | IRASim-Action：PSNR 19.13 / SSIM 0.64 / FVD 593；5B-ActionCond：19.95 / 0.80 / FVD 434；7B-ActionCond：21.14 / 0.82 / FVD 190 |
+| 驾驶多视角（RDS 约 3.6M 条 20 秒六路视频 ≈ 2 万小时，Table 24–25） | FID 60.84 → 32.16、FVD 884.46 → 210.23；时间 Sampson 误差 TSE 1.24 → 0.68，跨视角 CSE 6.48 → 2.11；带轨迹条件的模型轨迹跟随误差 TFE 20.20 cm（真实视频 13.49 cm） |
+| 自回归失败率（100 条 Physical AI 输入，Table 18） | 单帧条件：4B 15%、5B 7%、12B 2%、13B 3%；9 帧条件均 ≤2% |
 
 ## 与其他工作对比
 
@@ -135,7 +158,10 @@ Awesome 策展索引仍指向本文件名；深度内容以本页与一手 PDF �
 
 ## 局限与风险
 
-- 论文自己说 WFM 远未解决；1.0 画质与指令对齐被 2.5 / 3.0 明确超越。
+- 论文自己说 WFM 远未解决：当前模型仍缺物体恒存、接触密集动力学不准、指令跟随不一致，生成视频不总是遵守重力、光照、流体等基本物理；论文还指出人工评测的物理保真度难以统一、且未必与下游 Physical AI 任务指标正相关（§9）。
+- **§2.1 列出的五类用途（策略评估/初始化/带奖励训练/规划/合成数据）论文明确写明「本文不含这些用途的实证结果」**；它们是愿景而非已验证结论，引用时勿当成论文成果。
+- 论文自评：扩散 WFM 当前生成质量更好，自回归 WFM 的潜力（继承 LLM 权重、更快推理）尚未兑现。
+- 1.0 画质与指令对齐被 2.5 / 3.0 超越（后继页面的陈述，非本论文）。
 - 把 Awesome Highlights 当完整方法证明会漏掉 tokenizer / guardrail / 五类用法。
 - 权重许可与仓名随代际变化，复现须核对模型卡。
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [course, education, textbook, kinematics, motion-planning, foundational, open-source]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-07
 related:
   - ./embodied-interview-qa.md
   - ./embodied-interview-qa.md
@@ -16,6 +16,8 @@ related:
   - ../methods/model-predictive-control.md
   - ../entities/moveit2.md
   - ../../roadmap/motion-control.md
+original:
+  - ../../sources/courses/learn_robotics_qqfly_guide.md
 sources:
   - ../../sources/courses/learn_robotics_qqfly_guide.md
 summary: "qqfly 开源中文机器人学自学指南：非科班读者从 Craig 工业臂入门到 Modern Robotics、3D 视觉与 C-Space 运动规划，配编程/ROS 实践清单；与本库人形运动控制路线 L−1–L3 互补。"
@@ -23,7 +25,9 @@ summary: "qqfly 开源中文机器人学自学指南：非科班读者从 Craig 
 
 # 开源机器人学学习指南（qqfly）
 
-**一句话：** [learn-robotics.qqfly.net](https://learn-robotics.qqfly.net/) 是 qqfly 维护的 **CC BY 4.0 中文自学手册**，面向大陆「非科班出身」工程师与研究生：用 **Craig 工业臂** 打底，再经 **Modern Robotics 李群语言**、**3D 视觉** 与 **构形空间运动规划** 三条线走向自主规控；每章配可执行的 Matlab/Python/ROS 练习。具身智能部分仍在整理。
+## 一句话定义
+
+ [learn-robotics.qqfly.net](https://learn-robotics.qqfly.net/) 是 qqfly 维护的 **CC BY 4.0 中文自学手册**，面向大陆「非科班出身」工程师与研究生：用 **Craig 工业臂** 打底，再经 **Modern Robotics 李群语言**、**3D 视觉** 与 **构形空间运动规划** 三条线走向自主规控；每章配可执行的 Matlab/Python/ROS 练习。具身智能部分仍在整理。
 
 ## 英文缩写速查
 
@@ -81,7 +85,7 @@ flowchart TB
 | 具身智能 | embodied-ai | Sutton RL、ML 工具链（章节重构中） | [reinforcement-learning](../methods/reinforcement-learning.md) |
 | 进阶实践 | advanced-practice | Penn Robotics 专项、MoveIt 十次规划对比实验 | [motion-control](../../roadmap/motion-control.md) L4+ |
 
-## 核心结构/机制
+## 核心原理：叙事立场与分章机制
 
 **叙事立场：** 从「祖传代码只发关节点、PID 在哪」的困惑出发，强调 **大陆项目制自学** 与 **港台/海外系统课程** 的差距，用开源手册把路径固定下来。
 
@@ -92,13 +96,30 @@ flowchart TB
 - **感知：** 针孔模型 + 手眼标定环，位姿估计从模板到 ICP，视觉伺服消累积误差；
 - **决策：** C-Space 与维度诅咒，图搜索/优化/采样/学习四类算法地图，约束流形与零空间，工业 semi-structured 环境的经验路图。
 
-**实践清单（摘录）：** 自写 FK/Jacobian/数值 IK 与工具箱对照；Slerp vs 李群 Bezier 角速度曲线；OpenCV + `calibrateHandEye`；MoveIt 同一任务连规划十次感受随机性。
+**关键论断（出自原文各章）：**
+- 数值逆解 $\Delta q=J^\dagger\Delta x$ 简洁但有四个缺点：慢、一次一组解、依赖初值、奇异点处不收敛；奇异性是构形属性，无法靠建模消除。
+- 动力学对参数线性：$\tau=A(q,\dot q,\ddot q)\Theta$，激励轨迹须使矩阵满秩；作者在单轴直驱平台上把计算力矩误差从约 50% 辨识到 8% 以内，但大减速比（如 86 倍行星传动）下摩擦不建模则完全无法拟合——「摩擦力，入坑需谨慎」。
+- 位置属于欧式空间而姿态不属于，故用 ⊕ / ⊖ / ⊙ 的群语言统一插值：$A(u)=A_1\oplus u\odot((\ominus A_1)\oplus A_2)$，姿态空间中即 $R_1(R_1^{-1}R_2)^u$，与 Slerp 一致；Slerp 只是姿态空间的「直线」，过渡点角速度仍突变，需李群 Bezier。
+- 规划按构形空间（C-Space）进行；六轴按 6° 离散会得到 $60^6\approx4.7\times10^{10}$ 个格点，故需采样 / 优化 / 学习；约束用零空间 $\dot q=J^\dagger\dot x+(I-J^\dagger J)v$ 或显式构造约束流形。
+
+## 工程实践
+
+按原文「动手清单」与入门实践，建议的可执行练习：
+
+1. **DH + 正解 + 雅可比 + 数值 IK**：自列六轴 DH（如 PUMA560、UR5），与 Robotics Toolbox 的 `fkine` / `ikine` 对答案；雅可比几何法与数值差分法互相对照（入门实践）。
+2. **三轴牛顿-欧拉动力学**：编程实现并与工具箱 `rne` 对照（可选）。
+3. **单轴伺服平台**：动力学辨识、基于电流的碰撞检测与拖动示教，需要硬件（原文称最能快速掌握知识的练习）。
+4. **进阶动手清单（5 项）**：Slerp 与李群 Bezier 对比；平均旋转（欧拉角 / 四元数 / 切空间 / 数值优化四法）；OpenCV 相机标定 + `calibrateHandEye`；PCL 点云体素降采样 + 半径滤波；MoveIt 同一问题连规划十次。
+5. **系统课程**：Penn Robotics 专项五门（Perception、Estimation and Learning、Aerial Robotics、Computational Motion Planning、Mobility）+ Corke《Robotics: Vision and Control》。
+
+约束：以上练习的参数、数值均出自原文；本库未亲自复现这些练习（推测其耗时从一个周末到数月不等，原文只明确「纯代码一个周末」一项）。
 
 ## 常见误区或局限
 
 - **误区：读完本书 = 会人形 WBC/RL** — 具身智能章仍在整理；全书主线是 **固定基机械臂 + 规控**，进人形需接本库 [motion-control](../../roadmap/motion-control.md) L4 以后。
 - **误区：Craig 与 Modern Robotics 二选一** — 作者明确 **先 DH/工业直觉，再 PoE/李群**；与本库「L0 线代 → MR Ch 2–3」可并行，不必冲突。
 - **局限：深度不及专著** — 动力学、SLAM、MPC 等多为路线图 + 关键词，细节仍要回 Craig/Khalil/Choset/LaValle 与本库方法页。
+- **局限：具身智能章整理中** — 原文标注「本部分整理中」，现仅含 ML 与 RL 入门，不覆盖 sim2real / 人形 RL 管线；本库腿足与人形 RL 请转 [Locomotion](../tasks/locomotion.md) 等页。
 - **局限：英文版为 AI 辅助翻译** — 技术审阅以中文站与 GitHub 为准。
 
 ## 参考来源

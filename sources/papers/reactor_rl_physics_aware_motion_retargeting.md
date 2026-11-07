@@ -11,7 +11,9 @@
   - <https://arxiv.org/html/2605.06593v1>
   - <https://arxiv.org/pdf/2605.06593>
 - **作者：** David Müller, Agon Serifi, Sammy Christen, Ruben Grandia, Espen Knoop, Moritz Bächer
-- **入库日期：** 2026-05-13
+- **入库日期：** 2026-05-13；2026-11-07（全文通读更新）
+- **核对范围：** 通读 arXiv:2605.06593 v1 全文 §1–§8（引言、相关工作、双层优化与近似梯度推导、重定向参数化、下层 RL 设计与奖励表 1、实现细节与超参数表 2、与 GMR / OmniRetarget 的对比表 3–4、参数化消融、泛化表 5、外力惩罚消融、四足 / 交互动画 / 真机用例、结论与局限）；参考文献仅浏览；未读论文补充材料与视频。
+- **通读：** 已完成
 - **最后更新：** 2026-05-13
 - **一句话说明：** 将运动重定向表述为**物理仿真内的强化学习问题**：**双层优化**同时学习**参数化参考运动**（上层，少量语义刚体对应 + 可学习偏移）与**跟踪该参考的策略**（下层 RL），用问题结构导出的**近似上层梯度**避免隐函数定理下的 Hessian 逆，在仿真与真机上验证人形与四足等强异构具身。
 
@@ -35,3 +37,15 @@
 - [x] arXiv 摘要 + HTML 公开章节中的方法主线（双层、近似梯度、参数化、RL 细节）已摘录
 - [x] wiki 方法页与流程图已落盘
 - [x] 与 motion-retargeting / GMR / NMR 交叉引用已补
+
+## 全文核对要点（2026-11-07，均出自论文）
+
+- **发表信息：** ACM Trans. Graph. 45(4), Article 97（SIGGRAPH 2026，July 2026）；作者 Disney Research（David Müller 一作，Agon Serifi、Sammy Christen、Ruben Grandia、Espen Knoop、Moritz Bächer）。旧 wiki 把一作写成"Müller M."有误。
+- **双层问题：** $\min_{p\in P}\mathcal L(p,\phi^*(p))$，s.t. $\phi^*(p)=\arg\max_\phi\mathcal R(p,\phi)$；$P$ 为凸集（参数范数有界：$\delta_{pos}=\delta_{ori}=\delta_z=0.5$）。采用 **单环（single-loop）** 双层算法，每个 RL 迭代更新一次上层参数 $p\leftarrow P_P(p-\eta\tilde d_p\mathcal L)$。
+- **近似梯度：** 不用隐函数定理（需下层 Hessian 逆）。假设①损失只依赖 $g_t-s_t^*$，故 $\partial_{s^*}\ell=-\partial_g\ell$；②最优轨迹对参考的灵敏度 $\partial_g s^*=\alpha I,\alpha\in[0,1]$（策略"部分"跟随参考的变化）。得 $\tilde d_p\ell=(1-\alpha)\,\partial_g\ell\,d_pg$，并用当前 rollout 的批数据估计。
+- **参数化：** 用户在名义构型（如 T-pose）给出稀疏的语义刚体对应对和一个根对应；全局尺度 $s=h_{target}/h_{source}$（根高度比）；每个对应有位置参数 $p_{pos}^b$、朝向参数 $p_{ori}^b$（指数映射），另有每段动作的竖直偏移 $p_z$；自由度少的目标用 swing-twist 分解忽略无驱动轴的旋转误差。
+- **下层 RL：** 策略输出关节位置设定值 + **根上的辅助残差力 / 力矩（RFC）**，50 Hz；RFC 带死区并被惩罚（便于单个策略学遍 AMASS，含倒立等形态上不可行的动作）；不用域随机化；retargeting 阶段变量 $\psi_t$ 先让机器人走到起始位姿；对失败多的片段自适应加大采样。PPO，MLP 3×512，Isaac Sim 4096 环境 / RTX 5090，20k 迭代约 6 小时。
+- **评测：** 目标：Unitree G1（1.27 m，35 kg，29 DoF）、Lima（0.84 m，16.2 kg，20 DoF 自制小型机器人）、ANYmal D 四足。基线：GMR、OmniRetarget。PHC 过滤后的 AMASS 全集上，ReActor 的地面穿透 / 自穿透 / 脚滑 / 悬空指标整体最好（G1 下游 RL 成功率：GMR 89.93%、OmniRetarget 95.51%、ReActor 97.45%；Lima 为 91.23% / 79.85% / 95.07%，OmniRetarget 在 Lima 上因非均匀缩放与根对齐表现差）。成本：ReActor 在单 GPU 上训练 + 重定向全 AMASS 约 6.5 h，OmniRetarget 约 7 h（CPU），GMR 约 5 h（CPU）。注意 ReActor 的脚滑 / 悬空**不为零**，因为不严格强制接触匹配。
+- **消融：** 双层优化持续降低跟踪损失并提高奖励；稀疏对应（只留根与末端）更偏离源动作但仍稳定；含位置目标优于仅朝向（跳跃起落时机更准）；**外力惩罚权重是最敏感超参数**——加大更物理但极端动作失败增多。泛化：100STYLE 上，训练于 AMASS 的单策略重定向误差略高于训练于同分布的策略（位置 0.19 vs 0.12 cm）。
+- **用例：** 交互式动画中重定向策略以 88.3 Hz 运行；真机：用 ReActor 重定向数据训练目标条件、DeepMimic 式奖励的跟踪策略，部署到 Lima 实机（sim-to-real）；四足上外观保留但"形态差距越大越需细致调奖励"，ANYmal 会为减少外力而放弃跟踪。
+- **局限（原文）：** 参数化设为时间不变；语义对应需人工选择；物理上不可能的动作本身是病态问题（走上虚拟楼梯还是投影到地面）。

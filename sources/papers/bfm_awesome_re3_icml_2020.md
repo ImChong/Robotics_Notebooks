@@ -10,6 +10,8 @@
 - **代码/项目：** <https://github.com/younggyoseo/RE3>
 - **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
 - **入库日期：** 2026-05-26
+- **核对范围：** 2026-11-07 通读 arXiv:2102.09430v4 正文（摘要、引言、相关工作、§3 方法（k-NN 熵估计、随机编码器、RE3 目标与算法 1）、§4 实验（DMC、MiniGrid、Atari，含无监督预训练、集成、超参敏感性）、结论）；附录（超参、算法 2 on-policy 版本、额外实验）未逐项读；未运行代码。注：归档文件名里的 icml_2020 沿用清单口径，实际 arXiv 版本为 2021 年 ICML 版（v4，2021-06）。
+- **通读：** 已完成
 - **一句话说明：** 状态熵最大化打开探索；人形需覆盖更多姿态以防 OOD 失败。
 
 ## 核心摘录（策展，非全文）

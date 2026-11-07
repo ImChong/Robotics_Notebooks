@@ -13,7 +13,7 @@ tags:
   - nyu
   - meta
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
 arxiv: "2212.09748"
 code: https://github.com/facebookresearch/DiT
 related:
@@ -25,6 +25,8 @@ related:
   - ./paper-dit4dit-video-action-model.md
   - ../overview/ai-architecture-map.md
   - ../overview/rcl-awesome-wam-technology-map.md
+original:
+  - ../../sources/papers/peebles_dit_arxiv_2212_09748.md
 sources:
   - ../../sources/papers/peebles_dit_arxiv_2212_09748.md
   - ../../sources/sites/dit-wpeebles-com.md
@@ -65,16 +67,19 @@ summary: "DiT（ICCV 2023，arXiv:2212.09748，Berkeley/NYU/Meta）：LDM 中用
 | **机构** | 加州大学伯克利分校（UC Berkeley）；纽约大学（NYU）；Meta AI FAIR（Peebles 实习） |
 | **出处** | ICCV 2023 Oral；arXiv:2212.09748（2022-12） |
 | **任务** | Class-conditional ImageNet 256×256 / 512×512 生成 |
-| **骨干** | 冻结卷积 VAE latent + **DiT**（patch embed + DiT blocks + AdaLN） |
+| **骨干** | 冻结卷积 VAE latent（Stable Diffusion 的 f8 VAE，256×256×3 → 32×32×4）+ **DiT**（patch embed + DiT blocks + adaLN-Zero） |
+| **规模** | S/B/L/XL：12/12/24/28 层，隐藏维 384/768/1024/1152；XL 约 675M 参数、118.6 Gflops（p=2） |
+| **训练** | AdamW，lr 1e-4 常数，无权重衰减，batch 256，仅水平翻转，EMA 0.9999；无需 warmup 与正则，未见 loss 尖峰 |
 | **缩放网格** | 4 规模 × 3 patch（2/4/8）= 12 配置；主结果 **DiT-XL/2** |
 | **开源** | **已开源** — [facebookresearch/DiT](https://github.com/facebookresearch/DiT)；权重 README 直链；[HF Space Demo](https://huggingface.co/spaces/wpeebles/DiT) |
 
 ## 核心原理
 
 1. **Patchify：** 带噪 latent \(z_t\)（如 32×32×4）切成 patch，线性嵌入为长度为 \(T=(I/p)^2\) 的 token 序列；**patch 大小 \(p\)** 是调节 Gflops 的主旋钮（\(p\) 减半 → token 约 ×4 → Gflops 约 ×4）。
-2. **DiT block：** 在标准 ViT block 上，用 **AdaLN-Zero** 注入扩散时间步与类标签 embedding，并在 **残差分支前** 做 scale/shift；初始化使 block 接近恒等，稳定训练。
-3. **训练目标：** 与 DDPM 一致，预测噪声 \(\epsilon_\theta(z_t,t,c)\)（及学习方差分支）；**CFG** 训练时随机将类标签换为 null embedding。
-4. **采样：** DDPM / DDIM 等标准迭代；项目页展示 DDIM 隐空间 walk 与 label embedding 插值。
+2. **DiT block（四种变体）：** 论文比较 in-context（t、c 作额外 token）、cross-attention（多一层交叉注意力，约 +15% Gflops）、adaLN（用 t 与 c 嵌入之和回归每层 LayerNorm 的 γ、β）和 **adaLN-Zero**（另回归残差前的缩放 α，MLP 零初始化使整块初始为恒等）。XL/2 在 400K 步的无引导 FID-50K：in-context 35.24、cross-attention 26.14、adaLN 25.21、adaLN-Zero 19.47，此后全文用 adaLN-Zero。adaLN 是唯一对所有 token 施加同一函数的条件机制。
+3. **解码与输出：** 最后一个 block 后经（自适应）LayerNorm 与线性层，把每个 token 解码为 $p\times p\times 2C$ 张量（噪声 + 对角协方差），再重排回空间布局。
+4. **训练目标：** 沿用 ADM/DDPM，$\epsilon_\theta$ 用 $L_{simple}=\|\epsilon_\theta(x_t)-\epsilon_t\|^2$ 训练，方差 $\Sigma_\theta$ 用完整 $L$ 训练；**CFG** 训练时随机将类标签换为 null embedding，采样时 $\hat\epsilon=\epsilon_\theta(x_t,\varnothing)+s\,(\epsilon_\theta(x_t,c)-\epsilon_\theta(x_t,\varnothing))$。
+5. **采样：** 论文评测用 250 步 DDPM；项目页展示 DDIM 隐空间 walk 与 label embedding 插值。
 
 ### 流程总览
 
@@ -115,12 +120,16 @@ sequenceDiagram
 
 | 模型 | 分辨率 | FID-50K | Inception Score | 去噪 Gflops |
 |------|--------|---------|-----------------|-------------|
-| DiT-XL/2 | 256×256 | **2.27** | 278.24 | 119 |
-| DiT-XL/2 | 512×512 | **3.04** | 240.82 | 525 |
-| 对照 LDM-4 / ADM-U | 256 | 3.60 / — | — | 103 / 742 Gflops 级 |
+| DiT-XL/2（cfg=1.5，训练 7M 步） | 256×256 | **2.27** | 278.24 | 118.6 |
+| DiT-XL/2（cfg=1.5，训练 3M 步） | 512×512 | **3.04** | 240.82 | 524.6 |
+| 对照 LDM-4-G（cfg=1.5） | 256 | 3.60 | 247.67 | 约 104（正文 103.6） |
+| 对照 ADM-G,ADM-U | 256 / 512 | 3.94 / 3.85 | — | 742 / 2813（ADM-U） |
+| 对照 StyleGAN-XL | 256 | 2.30 | 265.12 | — |
 
-- **Scaling：** 400K iter 快照下，12 配置呈 **Gflops–FID** 单调改善；**XL/2** 在相同训练预算下 **算力效率** 优于多种 U-Net 扩散（论文 Fig.2）。
-- **CFG：** 256 常用 scale 4.0、512 常用 6.0（项目页采样设置）。
+- **Scaling：** 400K 步时 12 个配置的 Gflops 与 FID-50K 相关系数为 −0.93（Fig. 8）；DiT-S/2 与 DiT-B/4 Gflops 相近、FID 相近；保持模型大小只减小 patch 时参数量几乎不变（略降）而 FID 显著改善，故“算力而非参数量”是关键。
+- **采样算力补不了模型算力：** L/2 用 1000 步（80.7 Tflops）FID-10K 为 25.9，劣于 XL/2 用 128 步（15.2 Tflops）的 23.7。
+- **CFG：** 论文 2.27 对应 cfg=1.5，且**引导只施加在 latent 的前 3 个通道**（附录 A；四通道约 1.375 得 2.20）。此前页面写的“256 常用 4.0、512 常用 6.0”是官方仓库 `sample.py` 的采样设置，不是论文的评测设置，勿混用。
+- **VAE 解码器：** original / ft-MSE / ft-EMA 解码器的 FID 为 2.46 / 2.30 / 2.27（Table 5），最终表用 ft-EMA；参数与 Gflops 不含 84M 参数的 VAE。
 - **机器人 relevance：** 本文 **不** 含操控/导航 benchmark；对具身栈的价值在 **架构与缩放证据**，见 [diffusion-transformer](../concepts/diffusion-transformer.md)。
 
 ## 与其他工作对比
@@ -141,6 +150,7 @@ sequenceDiagram
 - 复现论文图像结果走 `sample.py` + 官方权重；训练全量 ImageNet 需 DDP 与数据管线，与机器人小数据微调不是同一路径。
 - 读 VLA 论文中的 DiT 头：数学仍是扩散/flow，**骨干结构** 可回溯本文。
 - ImageNet 类条件 ≠ 语言/动作条件；跨模态需另设计 cross-attn 或观测 encoder（见 WAM/VLA 页）。
+- 论文本身只讨论类条件与时间步条件，没有文本条件，也没有机器人实验；其结论外推到“VLA 动作头”属于本站推测，需以具体 VLA 论文核实。
 
 ## 工程实践
 
@@ -153,7 +163,8 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **二次注意力成本：** token 数随分辨率/patch 爆炸；机器人实时环需截断步数或蒸馏。
+- **二次注意力成本：** token 数随分辨率/patch 爆炸（512×512 的 XL/2 为 1024 token、524.6 Gflops）；机器人实时环需截断步数或蒸馏（推测）。
+- **原文自述范围：** 仅在 ImageNet 类条件生成上验证；总结把文本到图像骨干（DALL·E 2、Stable Diffusion）和更大规模扩展列为未来工作。FID 对实现细节敏感，论文统一用 ADM 的 TensorFlow 评测套件。
 - **类条件 ImageNet 配方** 不能直接套用到语言条件 VLA，需重训条件接口。
 - VAE 质量与 latent 尺度绑定；换 VAE 须重训 DiT。
 

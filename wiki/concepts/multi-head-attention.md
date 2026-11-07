@@ -7,14 +7,17 @@ tags:
   - deep-learning
   - vit
 status: complete
-updated: 2026-08-12
+updated: 2026-11-07
 summary: "多头注意力将 Q/K/V 投影到多个子空间并行做缩放点积注意力再拼接，是 Transformer/ViT/VLA 骨干的核心交互算子。"
 related:
   - ./transformer.md
   - ./vision-transformer.md
   - ../formalizations/cross-modal-attention.md
   - ../entities/transformer-cv-curriculum.md
+original:
+  - ../../sources/papers/attention_is_all_you_need.md
 sources:
+  - ../../sources/papers/attention_is_all_you_need.md
   - ../../sources/courses/transformer_cv_applications_syllabus.md
 ---
 
@@ -46,7 +49,16 @@ $$
 \mathrm{Attention}(Q,K,V)=\mathrm{softmax}\Big(\frac{QK^\top}{\sqrt{d_k}}\Big)V
 $$
 
-多头：将 $Q,K,V$ 线性分成 $h$ 组，每组注意力后 `Concat` 再乘 $W^O$。自注意力中序列任意两位置路径长度为 $O(1)$，但复杂度随长度平方增长。
+多头（Vaswani et al., 2017, §3.2.2）：
+
+$$
+\mathrm{MultiHead}(Q,K,V)=\mathrm{Concat}(\mathrm{head}_1,\dots,\mathrm{head}_h)W^O,\quad
+\mathrm{head}_i=\mathrm{Attention}(QW_i^Q,KW_i^K,VW_i^V)
+$$
+
+其中 $W_i^Q,W_i^K\in\mathbb R^{d_{model}\times d_k}$，$W_i^V\in\mathbb R^{d_{model}\times d_v}$，$W^O\in\mathbb R^{hd_v\times d_{model}}$。原文取 $h=8$、$d_k=d_v=d_{model}/h=64$（$d_{model}=512$），每头维度缩小，所以总计算量与单头全维度注意力相近。动机：单头时加权平均会抑制模型同时关注不同表示子空间中的不同位置。
+
+原文在 Transformer 里用多头注意力的三种方式：编码器-解码器注意力（Q 来自解码器上一层，K/V 来自编码器输出）、编码器自注意力、解码器带因果掩码的自注意力（把非法连接在 softmax 输入处置 $-\infty$）。自注意力中序列任意两位置路径长度为 $O(1)$，但每层复杂度为 $O(n^2 d)$，随长度平方增长。
 
 ```mermaid
 flowchart TB
@@ -73,7 +85,8 @@ flowchart TB
 ## 局限与风险
 
 - **$O(n^2)$** 限制高分辨率密集视觉；需补丁化、窗口、可变形采样等。
-- 多头并非「越多越好」——头数与 $d_k$ 需匹配隐藏维；过碎会欠表达。
+- 多头并非「越多越好」——原文 Table 3 行 (A) 在计算量不变下改头数：单头比最优设置低 0.9 BLEU，头数过多（如 32 头、$d_k=16$）质量也下降；行 (B) 显示只缩小 $d_k$ 会伤害质量，作者据此猜测“兼容性函数不容易”，点积可能不是最佳形式。
+- 原文是机器翻译实验；原文附录的注意力图显示不同头似乎学到不同任务（如长距离依赖、指代），属于定性观察，不是机制证明。视觉/机器人上的头功能需另行验证（推测）。
 - 跨模态时应对齐哪侧做 Q（见 [跨模态注意力](../formalizations/cross-modal-attention.md)）。
 
 ## 关联页面
@@ -86,10 +99,11 @@ flowchart TB
 ## 参考来源
 
 - [Transformer 视觉应用课程大纲](../../sources/courses/transformer_cv_applications_syllabus.md)
-- [Attention Is All You Need（sources）](../../sources/papers/attention_is_all_you_need.md)
+- [Attention Is All You Need（sources）](../../sources/papers/attention_is_all_you_need.md)（原文通读：arXiv:1706.03762v7）
 
 ## 推荐继续阅读
 
+- [Attention Is All You Need 论文实体](../entities/paper-attention-is-all-you-need.md)
 - [Vaswani et al. Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 - [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
 

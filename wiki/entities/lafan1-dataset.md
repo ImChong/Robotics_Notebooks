@@ -4,7 +4,7 @@ type: entity
 title: LaFAN1（Ubisoft La Forge 动捕数据集）
 tags: [dataset, mocap, bvh, locomotion, animation, ubisoft, siggraph-2020, sfu]
 summary: "LaFAN1 是 Ubisoft La Forge 在 GitHub 发布的 BVH 动捕数据集（SIGGRAPH 2020 论文配套），覆盖行走、舞蹈、跌倒恢复等多主题；许可为 CC BY-NC-ND 4.0，工程上常被用作全身跟踪与重定向研究的基准动作源。"
-updated: 2026-10-23
+updated: 2026-11-07
 related:
   - ../concepts/motion-retargeting.md
   - ./wbc-fsm.md
@@ -16,6 +16,9 @@ related:
   - ./amass.md
   - ./omomo-dataset.md
   - ../comparisons/humanoid-reference-motion-datasets.md
+original:
+  - ../../sources/repos/ubisoft-laforge-animation-dataset.md
+  - ../../sources/papers/robust_motion_inbetweening_acm_tog_2020.md
 sources:
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
@@ -23,6 +26,8 @@ sources:
 ---
 
 # LaFAN1（Ubisoft La Forge Animation Dataset）
+
+## 一句话定义
 
 **LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ubisoft-laforge-animation-dataset) 中发布的 **La Forge 动捕动画数据集**：序列以 **BVH** 存储，README 给出 **5 名被试、77 条序列、约 49.6 万帧 @30Hz（约 4.6 小时）** 等统计，并配套 **Python 评估脚本** 与若干插值基线。
 
@@ -40,13 +45,31 @@ sources:
 | AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
 | SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
 | Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| BVH | Biovision Hierarchy | 层级骨架 + 逐帧关节旋转的动捕文件格式，LaFAN1 的存储格式 |
+| NPSS | Normalized Power Spectrum Similarity | 基于关节角功率谱的动作相似度指标，README 评估所用 |
+| L2Q / L2P | Global Quaternion / Position L2 loss | 过渡生成基准的全局四元数 / 归一化位置误差 |
 
-## 为什么重要？
+## 为什么重要
 
 - **动作语义覆盖**：除平地行走外，包含 **障碍地形、跌倒起身、爬行、瞄准移动** 等，对 **recovery / 多接触** 研究比单一行走库更有信息量。
 - **社区可复现基准**：README 定义 **L2Q / L2P / NPSS** 等指标与 `evaluate_test.py` 期望区间，便于论文对比。
 - **与部署案例衔接**：例如 **[wbc_fsm](./wbc-fsm.md)** 公开链路中采用 LAFAN1 子集经重定向训练 ONNX 跟踪策略，读者可把「数据形态」与「上机策略」对照阅读。
 - **极简参考统一走/跑/起身**：[SD-AMP（arXiv:2605.18611）](./paper-unified-walk-run-recovery-sdamp.md) 仅用 **三条 LAFAN1 retarget 片段** 训练 **单一 G1 策略**，部署 **无运行时 FSM**。
+
+## 核心原理：数据集速查与基准定义
+
+| 项目 | 内容（出自 README 与论文 §4.3） |
+|------|------------------------------|
+| 规模 | 5 名被试、77 条序列、496,672 帧 @30 Hz（约 4.6 小时），2017 年 5 月棚拍 |
+| 格式 | BVH，命名 `[theme][take]_[subject].bvh`；同 theme 与 take 号为同期录制 |
+| 主题（序列数） | Obstacles 17、Walk 12、Dance 8、Fall and get up 6、Aiming 5、Ground 5、Run 4、Multiple actions 4、Fight 3、Jumps 3、Push and stumble 3、Sprint 2 等，合计 77 |
+| 骨架 | 论文使用 22 关节人形骨架，局部四元数表示 |
+| 划分 | Subject 1–4 训练、Subject 5 测试；测试窗口 65 帧、每 40 帧一个，共 2232 个窗口 |
+| 基线 | Zero-Velocity（重复末个种子帧）、Interpolation（根位置 LERP + 四元数 SLERP） |
+| 指标 | L2Q（全局四元数 L2）、L2P（归一化全局位置 L2）、NPSS（关节角功率谱相似度） |
+| 论文模型 | LSTM 预测器 + time-to-arrival 嵌入 + 调度式目标噪声 + 双判别器；表 3 上过渡 45 帧 L2Q 由插值 1.25 降到 0.94 |
+
+数据集为动画过渡生成而设计：强调有明显全局位移的动作与更长时域泛化。论文消融显示去掉约 10% 的舞蹈序列后风格保持下降，大量通用数据与专门数据结合最关键。
 
 ## 配套论文：Robust Motion In-Betweening
 
@@ -59,13 +82,14 @@ Harvey、Yurick、Nowrouzezahrai 与 Pal 的论文发表于 ACM TOG 39(4), 2020�
 - 仓库声明采用 **CC BY-NC-ND 4.0**（见 `license.txt`）：**非商业**且对**衍生作品**限制严格。
 - 若目标包含 **商业产品**、**再分发清洗后的子集**或与训练权重一并发布，必须在法务流程中单独评估；本页不构成法律意见。
 
-## 工程要点
+## 工程实践
 
 - **Git LFS**：大 zip 通过 LFS 存储；未安装 LFS 时克隆可能导致 zip 损坏与 `BadZipfile`（README 明确提示）。
 - **文件命名**：`[theme][take]_[subjectID].bvh`；同主题同 take 号表示同期棚内录制，可做多被试对齐分析。
 
 ## 常见误区或局限
 
+- **论文自述局限（§6）：** 过渡生成模型在条件不现实或超出训练分布时变差；调度目标噪声不能控制变化方式；位置偏移因 FK 反传太慢而未使用。注意这是动画领域工作，不涉及机器人。
 - **「BVH 可直接驱动任意人形」**：骨骼比例、根坐标与世界缩放仍须与 **[Motion Retargeting](../concepts/motion-retargeting.md)** 管线一致处理。
 - **许可≠开源权重**：在 GitHub 上训练得到的模型权重是否可随项目分发，取决于你的训练数据使用场景与上层许可，不等同于「代码 MIT 即可商用」。
 
@@ -120,6 +144,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- 2026-11-07 原文通读：README 全文 + `evaluate.py` + `benchmarks.py`（见仓库归档）；论文 arXiv v1 全文（见论文归档）。
 - [Ubisoft La Forge Animation Dataset 仓库归档](../../sources/repos/ubisoft-laforge-animation-dataset.md)
 - [sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — SD-AMP 三条 LAFAN1 clip
 - [sources/papers/sprint_arxiv_2605_28549.md](../../sources/papers/sprint_arxiv_2605_28549.md) — SPRINT 五条单周期步态 + GMR 重定向
@@ -139,4 +164,5 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [Ubisoft La Forge 论文介绍页归档](../../sources/sites/ubisoft-laforge-robust-motion-inbetweening.md)
-- README 中列出的后续使用该数据集的代表性论文（Learned Motion Matching、DReCon 等）
+- README 中列出的后续使用该数据集的代表性论文：[Learned Motion Matching](http://theorangeduck.com/media/uploads/other_stuff/Learned_Motion_Matching.pdf)、[DReCon](https://static-wordpress.akamaized.net/montreal.ubisoft.com/wp-content/uploads/2019/11/13214229/DReCon.pdf) 等
+- 论文 arXiv 版：[Robust Motion In-betweening（arXiv:2102.04942）](https://arxiv.org/abs/2102.04942)

@@ -2,7 +2,11 @@
 type: entity
 tags: [entity, hardware, edge-ai, nvidia, jetson, onboard-compute, robotics, physical-ai]
 status: complete
-updated: 2026-09-26
+updated: 2026-11-07
+original:
+  - ../../sources/sites/nvidia-jetson-embedded-systems.md
+  - ../../sources/sites/nvidia-jetpack.md
+  - ../../sources/sites/jetson-linux-r392-welcome-and-can.md
 related:
   - ./jetson-ai-lab.md
   - ./holoscan-sensor-bridge.md
@@ -21,13 +25,14 @@ sources:
   - ../../sources/sites/jetson-ai-lab.md
   - ../../sources/sites/nvidia-jetpack.md
   - ../../sources/sites/jetson-linux-r392-developer-guide.md
+  - ../../sources/sites/jetson-linux-r392-welcome-and-can.md
   - ../../sources/sites/nvidia-holoscan-sensor-bridge.md
-summary: "NVIDIA Jetson 是机器人与边缘 Physical AI 的嵌入式 GPU 计算平台家族：JetPack 软件栈 + Orin/Thor 等模组谱系，承担机载感知、VLA/GR00T 推理与 HIL 目标硬件选型。"
+summary: "NVIDIA Jetson 是机器人与边缘 Physical AI 的嵌入式 GPU 计算平台家族：JetPack 7 软件栈（Linux 6.8 / Ubuntu 24.04）+ Orin/Thor 模组谱系，承担机载感知、VLA/GR00T 推理与 HIL 目标硬件；选型须同时看功耗模式、板载 CAN 与 DevKit/量产模组差异。"
 ---
 
 # NVIDIA Jetson
 
-**NVIDIA Jetson** 是面向 **机器人与边缘 AI** 的嵌入式计算平台：以 **Jetson 模组**（SoM）+ **JetPack SDK** 提供机载 CUDA/TensorRT 推理、多路相机与网络 I/O，并与 **Isaac**、**GR00T**、**Cosmos** 等 Physical AI 软件栈对齐。官方将 Jetson 定位为 *physical AI hardware*——把开放模型与仿真训练产物部署到真机边缘。
+**NVIDIA Jetson** 是面向 **机器人与边缘 AI** 的嵌入式计算平台：以 **Jetson 模组**（SoM）+ **JetPack SDK** 提供机载 CUDA/TensorRT 推理、多路相机与网络 I/O，并与 **Isaac**、**GR00T**、**Cosmos** 等 Physical AI 软件栈对齐。官方将 Jetson 定位为 *physical AI hardware*——把开放模型与仿真训练产物部署到真机边缘。本页以 NVIDIA 官方门户、Orin / Thor 产品页、JetPack 页与 Jetson Linux r39.2 开发指南为一手依据（2026-11-07 核对）；官方页面更新频繁，规格数字以当日官方页为准。
 
 ## 一句话定义
 
@@ -40,6 +45,9 @@ summary: "NVIDIA Jetson 是机器人与边缘 Physical AI 的嵌入式 GPU 计�
 | Jetson | NVIDIA Jetson | 本页嵌入式边缘 AI 平台品牌 |
 | JetPack | NVIDIA JetPack SDK | 驱动、CUDA、TensorRT、Ubuntu 根文件系统捆绑 |
 | SoM | System on Module | 可插拔计算模组（如 Orin NX SO-DIMM） |
+| BSP | Board Support Package | Jetson Linux 提供的内核、引导程序、驱动与刷机工具集合 |
+| CAN | Controller Area Network | Jetson 片上 TTCAN 控制器（`mttcan`）连接关节驱动器的总线，见 [CAN 总线](../concepts/can-bus-protocol.md) |
+| MAXN | Maximum Performance Mode | 不设上限的实验性功耗模式；超出 TDP 预算时硬件会节流 |
 | TOPS | Tera Operations Per Second | INT8 等边缘 AI 算力常用标称 |
 | HIL | Hardware-in-the-Loop | 真实 Jetson 接入仿真环境的软硬件集成测试 |
 | VLA | Vision-Language-Action | 多模态策略；Thor/Orin 为常见机载推理目标 |
@@ -47,12 +55,13 @@ summary: "NVIDIA Jetson 是机器人与边缘 Physical AI 的嵌入式 GPU 计�
 
 ## 为什么重要
 
-- **机载算力默认答案：** 四足/人形课程与论文反复出现 **Orin NX / AGX Orin / Jetson Thor** 作为机载节点，与桌面 RTX 形成「边缘推理 vs 离板训练」分工（见 [边缘–云机器人](../concepts/edge-cloud-robotics.md)）。
+- **机载算力默认答案（本库其他页的归纳，二手）：** 四足/人形课程与论文反复出现 **Orin NX / AGX Orin / Jetson Thor** 作为机载节点，与桌面 RTX 形成「边缘推理 vs 离板训练」分工（见 [边缘–云机器人](../concepts/edge-cloud-robotics.md)）。
 - **Physical AI 落地层：** 官方将 **Nemotron、Cosmos、Isaac GR00T** 与社区开源模型的 **边缘运行时** 绑定在 Jetson 上，而非仅作通用嵌入式板。
-- **HIL 管线硬件：** Isaac Sim 课程路径在 SIL 之后，将 **Jetson + Isaac ROS** 作为 [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md) 的典型目标平台。
-- **跨代选型复杂：** 从 **$199 Orin Nano** 到 **2070 TFLOPS Thor**，功耗、CSI 路数、PCIe 代际差异直接影响能否跑满帧 VLA 或多相机 SLAM。
+- **HIL 管线硬件：** Isaac Sim 课程路径在 SIL 之后，将 **Jetson + Isaac ROS** 作为 [Hardware-in-the-Loop](../concepts/hardware-in-the-loop.md) 的典型目标平台。（据本库 HIL 页与 Isaac Sim 课程归档，二手，本页未回查课程原文。）
+- **跨代选型复杂：** 从 **起价 $199 的 Orin Nano**（官方门户）到 **2070 TFLOPS（FP4 稀疏）的 Thor**，功耗、CSI 路数、PCIe 代际差异直接影响能否跑满帧 VLA 或多相机 SLAM。
+- **板上就有总线：** Orin 与 Thor 系列片上都有 CAN 控制器，意味着机载 Jetson 可直连关节驱动器（见下文），但电气层仍需自己选收发器与载板（Thor 开发套件除外）。
 
-## 核心结构
+## 核心原理与结构
 
 ```mermaid
 flowchart TB
@@ -89,7 +98,7 @@ flowchart TB
 
 | 系列 | 典型 AI 标称 | 功耗 | 适用场景 |
 |------|-------------|------|----------|
-| **Jetson Thor** | 最高 2070 FP4 TFLOPS | 40–130 W | 人形 VLA、多模态大模型机载、高帧率分割 |
+| **Jetson Thor** | T5000：2070 FP4 TFLOPS（稀疏），128 GB LPDDR5X / 273 GB/s；T4000：1200 TFLOPS，64 GB | T5000 40–130 W；T4000 40–70 W | 人形 VLA、多模态大模型机载、高帧率分割 |
 | **Jetson AGX Orin** | 最高 275 TOPS | 15–60 W | 多传感器融合、中大型机器人主脑 |
 | **Jetson Orin NX** | 最高 157 TOPS | 10–25 W | 四足/小型 AMR 机载（本库有 [专页](./jetson-orin-nx.md)） |
 | **Jetson Orin Nano** | 最高 67 TOPS | 7–15 W | 入门教育、轻量视觉、成本敏感 |
@@ -97,13 +106,15 @@ flowchart TB
 
 相对 **AGX Orin**，官方称 **Jetson Thor** 最高约 **7.5×** AI 算力、**3.5×** 能效（同门户数据）。
 
+**2026-11-07 官方门户新动态：** (1) 页面出现 **Jetson Orin Nano 2**，称同尺寸、40 W 包络内推理性能近 2 倍并省电 40%（仍标 Notify Me，规格未公布）；(2) Thor 家族新增 Blackwell **T3000 / T2000** 模组与「内存优化」软件（本页未读其规格，需查官方）。另外，Orin 子页文字介绍仍写 NX「最高 100 TOPS」、Nano「最高 40 TOPS」，而规格表是 157 / 67 TOPS，两者口径（旧标称 vs Super 模式）不同，引用时要写明。
+
 ### 软件与生态
 
 | 组件 | 作用 |
 |------|------|
-| **JetPack 7** | Linux **6.8** + **Ubuntu 24.04**；CUDA/cuDNN/**TensorRT**；**vLLM/SGLang/Triton**；preemptable RT、MIG、[Holoscan Sensor Bridge](./holoscan-sensor-bridge.md) |
+| **JetPack 7** | Linux **6.8** + **Ubuntu 24.04 LTS**；完整支持 Orin 与 Thor；CUDA/cuDNN/**TensorRT**；PyTorch、**vLLM/SGLang/Triton**；**可抢占实时内核**、MIG、[Holoscan Sensor Bridge](./holoscan-sensor-bridge.md)；安全启动、磁盘加密、fTPM、安全 OTA；Isaac ROS / DeepStream / Holoscan SDK |
 | **JetPack 7.2 agentic** | **NemoClaw** 单命令安装；**Jetson Agent Skills**（Device + BSP）；官方 **Yocto/OE4T** 支持 |
-| **Jetson Linux r39.2** | Developer Guide：DevKit vs 量产模组、SDK Manager 刷机、**Module Adaptation and Bring-Up** |
+| **Jetson Linux r39.2** | Developer Guide：内核、引导程序、驱动、刷机工具、示例文件系统；DevKit vs 量产模组、SDK Manager 刷机、**Module Adaptation and Bring-Up**；支持 Thor 与 Orin 两个系列 |
 | **Jetson AI Lab 2.0** | 分步教程：Getting Started/SSH、GenAI、**GR00T/OpenPi Thor**、Cosmos Reason、优化 workshop（见 [专页](./jetson-ai-lab.md)） |
 | **Isaac ROS / Sim** | 感知、SLAM、SIL/HIL 与仿真对齐 |
 | **Thor SBSA** | Thor 走 **SBSA + CUDA 13** 统一安装器（与数据中心 Arm 栈对齐） |
@@ -112,17 +123,33 @@ flowchart TB
 
 ## 工程实践
 
+### DevKit 与量产模组
+
+官方开发指南明确：**开发者套件 = 非量产规格模组 + 参考载板，不用于量产**；量产模组单独销售、出厂不预装软件，需装到自己设计或采购的载板并刷入自己开发的镜像。型号对照：Thor 为 T5000 128GB（P3834-0008，仅开发套件）与 T4000 64GB（P3834-0000，量产）；Orin NX 16GB（P3767-0000）/ 8GB（P3767-0001）；Orin Nano 8GB（P3767-0003）/ 4GB（P3767-0004）；AGX Orin 32GB（P3701-0004）/ 64GB（P3701-0005）/ Industrial（P3701-0008）。选型和采购时要区分「DevKit 专用模组」（如 T5000 只在开发套件里）与可量产料号。
+
+### 板载 CAN（连接关节驱动器）
+
+Jetson Linux r39.2 开发指南的 CAN 章节：Thor、AGX Orin、Orin NX、Orin Nano 均有 **Time-Triggered CAN 控制器**（驱动 `mttcan`），支持标准 / 扩展帧，位速率 10 kbps–1 Mbps，**数据位速率 Thor 最高 8 Mbps、其他平台最高 15 Mbps**；Orin NX / Nano 1 路，AGX Orin 与 Thor 各 2 路；除 Thor 开发套件自带收发器外都要外接支持 ≥3.3 V 的收发器。启用流程：设备树 `mttcan` 节点默认 okay → Orin 系列按表设置 pinmux（Thor 默认即 CAN 功能）→ `modprobe can can_raw mttcan` → `ip link set can0 up type can bitrate 500000 dbitrate 1000000 fd on` → 用 `can-utils` 收发；内部环回 `loopback on` 可先确认控制器正常。协议层语义见 [CAN 总线](../concepts/can-bus-protocol.md) 与 [CAN FD](../concepts/can-fd.md)。
+
+### 电源模式与热
+
+开发指南对 Orin 系列的说明：**MAXN 是不设上限的实验模式**，总模组功耗超过 TDP 预算时硬件仍会节流，所以它**不是「最高性能模式」**，也不建议长时间重负载运行；需要长时间 MAXN 实验时应刷带 `-maxn` 后缀的配置以采用更保守的热设置；Orin NX / Nano 与 AGX Orin 32GB 另有 `MAXN_SUPER`。机载策略应固定一个有预算的 `nvpmodel` 模式并在该模式下测 p95 延迟（建议，推测），不要拿 MAXN 的短时 benchmark 当长期指标。
+
+### 步骤速查
+
 | 目标 | 做法 |
 |------|------|
 | **从零上手** | 1) 官方 DevKit Quick Start（[AI Lab Getting Started](https://www.jetson-ai-lab.com/tutorials/getting-started-with-jetson/) 链 docs.nvidia.com）→ 2) SSH / Remote-SSH → 3) [Jetson AI Lab](./jetson-ai-lab.md) GenAI/VLA 路径 |
 | 选型 | 先定 **功耗预算 + 相机路数 + 模型算力**，再查官方 [Compare Specifications](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/) 表 |
 | 软件基线 | 模组与 **JetPack 版本** 一一对应（当前文档 **r39.2 / JP7**）；升级前核对 Isaac ROS / GR00T 支持矩阵 |
 | BSP/量产 | DevKit 开发 → [Module Adaptation and Bring-Up](https://docs.nvidia.com/jetson/archives/r39.2/DeveloperGuide/) 迁量产载板 |
-| 推理优化 | 机载优先 **TensorRT** / **TensorRT Edge-LLM**（见 [ORT vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)） |
+| 推理优化 | 机载优先 **TensorRT** / **TensorRT Edge-LLM**（见 [ORT vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) 与 [TensorRT](./tensorrt.md)）；TensorRT 11.4.1 官方支持 Jetson AGX Orin / Thor（JetPack 7.2.2+），DLA 仅 AGX Orin 支持、Thor 不支持；Orin 无 FP8 Tensor Core，FP8 仅 Thor（出自 [APXInf](./apxinf.md) README） |
 | HIL | SIL 通过后，将 ROS 2 节点部署到 Jetson，Sim 侧仍提供虚拟环境与传感器（见 [HIL 概念页](../concepts/hardware-in-the-loop.md)） |
 | 热与供电 | Thor/AGX 持续推理需核对散热与峰值功耗；传感器与控制电源宜独立保护 |
 
 ## 局限与风险
+
+- **规格口径多变：** 同一产品在官方不同页面有不同标称（Super 模式 vs 旧标称、稀疏 vs 稠密 TOPS、FP4 稀疏 TFLOPS），官方页又在不断增补型号（Orin Nano 2、T3000/T2000）；比较时务必写明版本、模式与精度。
 
 - **硬件闭源商业模组：** 无整机 CAD/电气开源；定制载板需自行设计或走合作伙伴方案。
 - **标称 TOPS ≠ 端到端帧率：** VLA、扩散、多路解码会争抢内存带宽与 CPU；须实测全链路延迟。
@@ -145,11 +172,12 @@ flowchart TB
 
 ## 参考来源
 
-- [NVIDIA Jetson Embedded Systems 门户归档](../../sources/sites/nvidia-jetson-embedded-systems.md)
-- [Jetson AI Lab 教程站](../../sources/sites/jetson-ai-lab.md)
-- [NVIDIA JetPack 产品页](../../sources/sites/nvidia-jetpack.md)
-- [Jetson Linux r39.2 Developer Guide](../../sources/sites/jetson-linux-r392-developer-guide.md)
+- [NVIDIA Jetson Embedded Systems 门户归档](../../sources/sites/nvidia-jetson-embedded-systems.md)（原文，已通读）
+- [Jetson AI Lab 教程站](../../sources/sites/jetson-ai-lab.md)（仅读索引与入门教程，未列为原文）
+- [NVIDIA JetPack 产品页](../../sources/sites/nvidia-jetpack.md)（原文，已通读）
+- [Jetson Linux r39.2 Developer Guide](../../sources/sites/jetson-linux-r392-developer-guide.md)（整本指南未通读）
 - [NVIDIA Jetson Orin 产品页归档](../../sources/sites/nvidia-jetson-orin-nx.md)
+- [Jetson Linux r39.2 开发指南 Welcome 与 CAN 章节归档](../../sources/sites/jetson-linux-r392-welcome-and-can.md)（原文，已通读）
 
 ## 推荐继续阅读
 

@@ -2,17 +2,16 @@
 
 **首屏导读**：
 
-- **为谁**：想做人形 / 双足运动控制，并想一路看懂 Physical AI（VLA / World Model / 部署）的算法工程师。
-- **怎么走**：L−1 全景入门 → L0–L7 运动控制主干 → L8–L12 Physical AI 全栈扩展，每层都给「读什么 / 做什么 / 输出什么」。
-- **五段骨架**：打底（L0–L3）→ 传统控制（L4）→ RL/IL（L5）→ Sim2Real 与全栈出口（L6–L7）→ Transformer · 动作生成 · VLA · 世界模型 · 部署（L8–L12）。
+- **为谁**：想做人形 / 双足运动控制，并想一路看懂 Physical AI（VLA、世界模型、部署）的算法工程师。
+- **一句话**：先学会让机器人**稳稳站住、走起来**（传统控制 + 强化学习），再学怎么让它**听懂指令、上真机**（大模型 + 部署）。
+- **每层怎么学**：都给「读什么 / 做什么 / 输出什么」。
 
 **摘要**：
 
-- **一条主线**：从 L−1 全景到 L7 出口，串通人形 / 双足运动控制；L8–L12 再向上接 Foundation Model、向下接真机部署。
-- **L−1 → L3**：机器人技术栈全景与术语，再用数学、运动学、动力学、控制基础打底。
-- **L4 → L5**：传统控制主干（LIP/ZMP → Centroidal → MPC → TSID/WBC），再把 RL / IL / 动作重定向接上去。
-- **L6 → L7**：sim2real 闭环，以及全栈视角与 2024–2026 前沿地图。
-- **L8 → L12**：Transformer / VLM → Action Chunk · Diffusion · Flow Matching · DiT → π0 / GR00T → Cosmos 世界模型 → ONNX / ROS2 / 实时总线上真机。
+- **一条主线**：L−1 ~ L7 讲透人形 / 双足运动控制，L8 ~ L12 再接大模型与真机部署。
+- **打底与传统控制**：L−1 ~ L3 打底（全景、数学、运动学、动力学、控制基础），L4 讲 LIP/ZMP、MPC、TSID/WBC。
+- **学习与落地**：L5 讲 RL / IL / 动作重定向，L6 ~ L7 讲 Sim2Real 与全栈出口。
+- **向上扩展**：L8 ~ L12 覆盖 Transformer、Diffusion / Flow Matching、VLA、世界模型、ONNX / ROS2 部署。
 
 <a id="roadmap-video"></a>
 

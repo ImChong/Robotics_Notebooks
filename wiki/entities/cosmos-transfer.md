@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, sim2real, video-generation, open-source]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-07
 related:
   - ./paper-cosmos-transfer1.md
   - ./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md
@@ -16,6 +16,8 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/video-as-simulation.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/cosmos_transfer1_arxiv_2503_14492.md
 sources:
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/cosmos-transfer1-project.md
@@ -65,7 +67,20 @@ code: https://github.com/nvidia-cosmos/cosmos-transfer2.5
 | **Transfer2.5（2025-10）** | Predict2.5 flow | **2B**；auto 多视角；robot-multiview | JSON `controlnet_specs`；可当场算 depth/seg | [cosmos-transfer2.5](https://github.com/nvidia-cosmos/cosmos-transfer2.5) |
 | **Cosmos 3（2026-06）** | 全模态 MoT | 4B / 16B / 64B | 统一 Generator；Edge **不支持** V2V transfer | [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) |
 
+**核对说明：** 本页「Transfer1」一栏及下文机制/数字已对照 arXiv:2503.14492v2 全文（2026-11-07）；**Transfer2.5 与 Cosmos 3 两栏沿用既有归档（官方文档 / 仓库 / Predict2.5 摘录），本次未回到原文复核**。
+
 机制细节与 TransferBench 数字见 [Transfer1 论文](./paper-cosmos-transfer1.md)；2.5 代 PAI-Bench-C 见 [PAI-Bench 基准](./paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md) 与 [Predict2.5 / Transfer2.5](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)。
+
+### Transfer1 论文的关键机制与数字
+
+- **结构：** 在 Cosmos-Predict1 DiT 上每种模态加一条 ControlNet 控制支（3 个 transformer 块，权重取自基座对应块，输出经**零初始化线性层**加回主支，训练时基座冻结）。各支**单独训练、推理时融合**：省显存、各模态可用不同数据、推理时可增删模态。融合时第 $j$ 块的输出乘以时空权重 $w_i\in\mathbb R^{X\times Y\times T}$ 再加回；若各模态权重在某处之和大于 1 则归一化。控制图可手工设计、按启发式规则推导，或由神经模块预测。
+- **训练：** 每个控制支用 1024 张 H100 训练 2–4 周（依模态）；一次推理出 5 秒 1280×704、24 fps 视频（约 5.6 万 token）。模态预处理：Vis=双边模糊，Edge=Canny（阈值随机增强），Depth=DepthAnythingV2 归一化，Seg=GroundingDINO + SAM2（颜色随机化，不带语义）；AV 版另有 HDMap（含 3D 框）与 LiDAR（10 Hz 扫描插值到 30 fps 并投影）。AV 数据 RDS-HQ：6.5 万段 20 秒环视片段（约 360 小时）+ 10 Hz LiDAR。4K Upscaler：Real-ESRGAN 式退化训练，推理时 3×3 重叠网格分块去噪取平均。
+- **TransferBench（600 条：AgiBot World / OpenDV / Ego-Exo4D 各 200）Table 1：** Vis 控制的 Blur SSIM 0.96，Edge 控制的 Edge F1 0.28（该指标要求像素级细边对齐，所有方法都偏低）；均匀加权全模态（每模态 0.25）Quality Score 8.54，高于所有单模态（5.48–6.51）；去掉 Vis / Edge 使多样性 LPIPS 升到 0.37 / 0.31，去掉 Depth / Seg 降到 0.25 / 0.23，说明稠密结构（Vis/Edge）高保真低多样、稀疏结构（Depth/Seg）相反。
+- **时空控制图（SalientObject：VLM 判前景/背景）：** 前景 Vis+Edge 权重各 0.5、背景 Depth+Seg 各 0.5 时，前景 Blur SSIM 0.81、背景 Depth si-RMSE 0.52；把前背景模态对调，多样性 LPIPS 前景 0.01→0.12、背景 0.03→0.33，质量持平。前景 Vis 权重与前景 Blur SSIM 的 Pearson 相关 0.93；背景 Depth 权重与 si-RMSE 相关 −0.92。
+- **机器人 Sim2Real（Isaac Lab 厨房，20 场景 × 6 prompt = 120 视频，Table 3）：** Setting 1（前景 Edge+Vis、背景 Seg，权重均为 1）Quality 9.57、FG Mask mIoU 0.61；Setting 2（前景仅 Edge、背景 Seg）Quality 10.42、FG mIoU 0.63、Diversity 0.58；单模态 Seg 的 Diversity 最高（0.60）但前景机器人易出伪影、Blur SSIM 仅 0.47。
+- **AV（Table 4）：** HDMap 3D-Bbox mAP 41.89 / Lane mIoU 50.37 / 重投影误差 9.46；LiDAR 46.50 / 48.19 / 8.60；两者融合（$w_{map}=0.3,w_{lidar}=0.7$）44.66 / 51.55 / 8.67——LiDAR 保障碍物位置、HDMap 保车道，融合车道最好。用 Omniverse Sensor RTX 模拟的 LiDAR 也能驱动（尽管训练用真实 LiDAR）。
+- **实时（Table 5，B200）：** 1 卡端到端 141.7 s → 64 卡 4.2 s（扩散部分 141.0 s → 3.5 s，约 40× 加速）；策略为非注意力层纯数据并行 + 注意力层按头并行（all-to-all），正负 prompt 的 CFG 分到两组 GPU。
+- **Prompt upsampler：** 微调 Pixtral-12B，输入条件视频 + 短 prompt，每种模态 100 万视频、训练一个 epoch（附录 A）。
 
 ### 流程总览
 
@@ -142,6 +157,8 @@ sequenceDiagram
 
 ## 局限与风险
 
+- **论文中的边界：** 仅在 TransferBench 与两个案例上评测；机器人案例只有 20 个仿真场景，且质量/多样性指标是自动指标，没有下游策略训练收益的对照；Edge F1 这类指标本身严苛。论文没有给出用 Transfer 数据训练策略后真机成功率提升的实验。
+
 - **像素世界 ≠ 物理引擎：** 控制图对齐高也不保证接触力、摩擦、关节限位正确。策略仍要真机或解析仿真验收。
 - **仓已停更：** 从 Transfer2.5 起步会接到「请迁 Cosmos 3」。Cosmos 3 Edge **明确不支持** video-to-video transfer——需要 V2V 时仍只能停在 2.5 或等 3.x 补口。
 - **算力：** Transfer1-7B 单卡生成 5 s 720p 约 142 s；实时要 64×B200。Transfer2.5-2B 单卡仍要 65 GB 级。
@@ -168,6 +185,7 @@ Transfer1 的 arXiv:2503.14492 v1 提交于 2025-03-18；Transfer2.5 等后续�
 
 ## 参考来源
 
+- **原文通读：** [Transfer1 论文归档](../../sources/papers/cosmos_transfer1_arxiv_2503_14492.md)（arXiv v2 全文，2026-11-07）
 - [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [Transfer1 项目页](../../sources/sites/cosmos-transfer1-project.md)

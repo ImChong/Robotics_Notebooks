@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, locomotion, rl, observation, proprioception, exteroception, state-estimation, privileged-training, sim2real]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-07
 summary: "主流人形运控策略（RL/IL/跟踪系）的输入按「部署是否可得」分五类：本体感知、指令与参考、历史上下文、外部感知、特权信息（仅训练）；每类的关键工程问题是真机上如何获得——直读、滤波估计、学习估计、感知管线还是上层给定。"
 related:
   - ./state-estimation.md
@@ -21,6 +21,14 @@ related:
   - ../entities/paper-pac-man-perceptive-cbf-rl.md
   - ../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md
   - ../entities/paper-tactilestep.md
+original:
+  - ../../sources/papers/rma_reading_arxiv_2107_04034_pt3.md
+  - ../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md
+  - ../../sources/papers/rapid_locomotion_rl_arxiv_2205_02824.md
+  - ../../sources/papers/humanoid_locomotion_reading_arxiv_2303_03381.md
+  - ../../sources/papers/vb_com_arxiv_2502_14814.md
+  - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
+  - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
 sources:
   - ../../sources/personal/humanoid-loco-policy-observation-inputs-faq.md
   - ../../sources/papers/privileged_training.md
@@ -152,16 +160,39 @@ flowchart LR
 | 量 | 训练中的角色 | 部署搬运方式 |
 |----|-------------|-------------|
 | 地形高度/未来地形真值 | Teacher 观测 | 蒸馏进 D 类学生（DAgger） |
-| 摩擦系数、质量、电机强度 | RMA 17 维 extrinsics → z | 历史回归 ẑ（C 类 latent） |
+| 摩擦系数、质量、电机强度 | RMA 的 17 维环境向量 e_t（经编码器压成 8 维 extrinsics z） | 历史回归 ẑ（C 类 latent） |
 | 接触真值/接触力 | 特权 critic 输入 | 非对称 Actor-Critic，critic 不部署 |
 | 基座线速度真值 | critic 或 teacher 观测 | 真机由 EKF / 学习估计替代 |
 | 全局位姿（GPS-like） | 训练与评估 | 部署用 VIO / 估计替代或剔除 |
 
 统一获取方式：**仿真器状态直读**——这正是它「特权」的原因；类型清单与代表算法详见 [Privileged Training](./privileged-training.md)。
 
+## 原文观测清单对照（2026-11-07 核对）
+
+下列清单均出自各论文正文，用来校准「五大类」在真实工作里的取舍：
+
+| 工作 | 本体 / 指令 | 历史 | 外感知 | 特权（仅训练） | 频率 |
+|------|-------------|------|--------|----------------|------|
+| legged_gym 基类观测 | 基座线速度 + 角速度 + 重力投影 + 指令(3) + 关节偏移 + 关节速度 + 上一动作；可选高度测量 | 无（单帧） | `measure_heights` 时的高度扫描 | —（线速度在原版中直读，真机需估计或删除） | 策略 50 Hz（dt 0.005 × decimation 4） |
+| Hwangbo 2019（ANYmal） | 重力方向（IMU 仅 2 自由度）、基座高度（1D 卡尔曼，腾空时去掉）、线 / 角速度、关节位置 / 速度、上一动作、指令 | 关节状态在 t−0.01 s、t−0.02 s | 无 | 无（直接部署） | 200 Hz（恢复 100 Hz） |
+| RMA（A1） | 30 维状态 = 12 关节位置 + 12 关节速度 + roll/pitch + 4 个二值足端接触，另加上一动作 | 适应模块读 50 步（0.5 s） | 无 | 17 维环境向量（质量及位置、电机强度 12 维、摩擦、局部地形高度）→ 8 维 z | 策略 100 Hz，适应模块 10 Hz |
+| Margolis 2022（Mini Cheetah） | 关节角、关节速度、IMU 重力方向、上一动作 + 3 维速度指令 = 42 维 | 15 步 | 无 | 12 维域参数 d_t → 8 维 z_t | 50 Hz |
+| Radosavovic 2023（Digit） | 本体观测与动作历史、速度指令 | Transformer 上下文 16 | 无 | 教师「状态」策略（完全可观测，MLP） | 策略 50 Hz，PD 1 kHz |
+| Extreme Parkour（A1） | 本体 + 行走标志 + 速度指令 | ROA 隐式环境估计 | 单目前向深度 58×87（10 Hz，固定 0.08 s 延迟） | scandots 与 oracle 航向（路点方向） | 策略 50 Hz，深度骨干 10 Hz |
+| DreamWaQ++（Go1） | 本体 H=5 帧 @50 Hz（关节位置 / 速度、IMU 姿态与角速度） | MLP-Mixer 编码 | 3D 点云 10 Hz，K=5 帧经 SE(3) 对齐成记忆 | 高度图 + 真值速度 / 力 / 足位 / 物理参数（给 critic） | 本体 200 Hz，控制 50 Hz |
+| VB-Com（G1 / H1） | 关节位置 / 速度、基座角速度、重力方向、路点方向 d₁d₂ + 线速度指令 | 状态估计器读历史预测下一速度 | 机器人中心高度图（actor 1.2×0.7 m） | critic 额外得线速度、更大高度图（1.6×1.0 m），且不加噪 | — |
+
+对照得到的几条原文事实：
+
+- **基座线速度的处理三选一**：legged_gym 原版直读（真机没有）、Hwangbo 只给高度与角速度并靠 1D 卡尔曼估高度、VB-Com / DreamWaQ++ 训练一个在线速度估计器并把估计值接入后续模块。
+- **无外感知的人形也能户外行走**：Radosavovic 2023 的 Digit 控制器没有任何相机，仅凭观测 – 动作历史在一周全天户外测试中未观察到跌倒；代价是遇到台阶会磕碰、被卡住后靠适应绕开（论文 §结果）。
+- **外感知的频率与延迟必须显式处理**：Extreme Parkour 把深度延迟固定为 0.08 s 并在仿真中同值建模；DreamWaQ++ 外感知 10 Hz 对 50 Hz 控制，用位姿积分对齐并在训练中随机化 0–15 ms 本体延迟与三档外感知噪声（占比 30/50/20%）加传感器安装偏置。
+- **外感知也会「说谎」**：VB-Com 的高程图需平滑时间窗口整合点云，对动态障碍天然失效；训练仅含 10% 高斯噪声与 0.5 s 内随机延迟，评估到更强噪声时视觉策略大幅退化，作者因此用两个仅看本体历史的回报估计器决定何时切到盲策略。
+- **特权信息的两种用法并存**：RMA / Margolis / Extreme Parkour 把特权信息经编码器压成 latent 再用历史回归；DreamWaQ++ / VB-Com 把它只给 critic（非对称 AC）。
+
 ## 工程实践
 
-**最小可用观测（legged_gym / Isaac Lab 系入门基线，总维度 3+3+3+3n）：**
+**最小可用观测（legged_gym / Isaac Lab 系入门基线的**可部署子集**，总维度 3+3+3+3n；原版 legged_gym 另含 3 维基座线速度，部署时须估计或删除）：**
 
 | 变量 | 维度 | 来源 |
 |------|------|------|
@@ -206,6 +237,7 @@ flowchart LR
 
 ## 参考来源
 
+- 2026-11-07 一手论文通读归档：[RMA](../../sources/papers/rma_reading_arxiv_2107_04034_pt3.md)、[Hwangbo 2019](../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md)、[Margolis 2022](../../sources/papers/rapid_locomotion_rl_arxiv_2205_02824.md)、[Radosavovic 2023](../../sources/papers/humanoid_locomotion_reading_arxiv_2303_03381.md)、[DreamWaQ++](../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md)、[Extreme Parkour](../../sources/papers/extreme_parkour_arxiv_2309_14341.md)；legged_gym `compute_observations` 源码（见 [Kp/Kd 原始资料归档](../../sources/notes/legged_humanoid_rl_pd_gains.md)）。
 - [人形运控策略观测输入分类 FAQ 摘录（维护者整理）](../../sources/personal/humanoid-loco-policy-observation-inputs-faq.md)
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — 特权信息类型与 Teacher–Student（Kumar RMA 2021 / Lee Science Robotics 2020）
 - [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — 基座/接触状态估计一手文献（Bloesch 2013 / Hartley InEKF 2020）

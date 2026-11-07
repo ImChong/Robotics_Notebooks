@@ -6,7 +6,9 @@
 - **源码：** <https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/envs/classic_control/cartpole.py>
 - **动力学注释引用：** Florian, *Correct equations for the dynamics of the cart-pole system*（2005/2007）— <https://coneural.org/florian/papers/05_cart_pole.pdf>
 - **配套仓库归档：** [`sources/repos/gymnasium.md`](../repos/gymnasium.md)
-- **入库日期：** 2026-08-16
+- **入库日期：** 2026-08-16（2026-11-07 补通读核对）
+- **核对范围：** 2026-11-07 通读 Gymnasium `main` 分支 `gymnasium/envs/classic_control/cartpole.py` 全文（类文档字符串：Description / Action / Observation / Rewards / Starting State / Episode End / Arguments / Version History，及 `step`、`reset`、向量化版 `CartPoleVectorEnv` 的实现）；没有逐页阅读 gymnasium.farama.org 网页渲染版（其内容来源于同一文档字符串），没有实际运行训练。
+- **通读：** 已完成
 - **一句话说明：** Farama 对 Barto–Sutton–Anderson 1983 cart-pole 的标准 Python 实现与 API 契约；是 RL 入门与算法对照的默认离散动作基准。
 - **代码：** 已开源（MIT）→ [Farama-Foundation/Gymnasium](https://github.com/Farama-Foundation/Gymnasium)
 - **沉淀到 wiki：** 是 → [`wiki/concepts/cartpole.md`](../../wiki/concepts/cartpole.md)
@@ -23,10 +25,10 @@
 | 观测盒边界 | 位置 ±4.8、杆角 ±24°（约 0.418 rad）；速度无界 |
 | 终止（terminated） | \|杆角\| > 12°（0.2095 rad）或 \|小车位置\| > 2.4 m |
 | 截断（truncated） | v1：500 步；v0：200 步（`TimeLimit` wrapper） |
-| 默认奖励 | 每步 +1（含终止步）；solved 阈值 500（v1）/ 200（v0） |
-| `sutton_barto_reward=True` | 未终止 0、终止 −1；阈值改为 0（对齐 1983 失败信号） |
+| 默认奖励 | 每步 +1（含终止步）；**最大回合回报 500（v1）/ 200（v0）；注册的 `reward_threshold` 为 475（v1）/ 195（v0）**（2026-11-07 据源码文档字符串更正：此前误记为 500 / 200） |
+| `sutton_barto_reward=True` | 未终止 0、终止 −1；阈值为 0（对齐 1983 失败信号） |
 | 初始状态 | 四维均匀随机 `(-0.05, 0.05)`；`reset(options={low, high})` 可改 |
-| 物理参数 | \(g=9.8\)，\(m_c=1.0\)，\(m_p=0.1\)，杆半长 \(l=0.5\)，\(\tau=0.02\) s（50 Hz） |
+| 物理参数 | \(g=9.8\)，\(m_c=1.0\)，\(m_p=0.1\)，杆半长 \(l=0.5\)，\(\tau=0.02\) s（50 Hz）；源码文档称轨道 frictionless，不含 1983 原文的两个摩擦项 |
 | 积分 | 默认 Euler；源码另有 semi-implicit Euler 分支 |
 | 向量化 | `make_vec("CartPole-v1", ...)`；专用 `CartPoleVectorEnv` |
 

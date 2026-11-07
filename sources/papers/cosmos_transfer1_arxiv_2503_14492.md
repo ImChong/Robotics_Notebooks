@@ -9,6 +9,9 @@
 - **代码：** <https://github.com/nvidia-cosmos/cosmos-transfer1>
 - **项目页：** <https://research.nvidia.com/labs/cosmos-lab/cosmos-transfer1/>
 - **入库日期：** 2026-09-05
+- **版本：** arXiv v2（2025-04-01），正文 §1–§8 + 附录 A（prompt upsampler）/ B（贡献者）
+- **核对范围：** 2026-11-07 通读 arXiv:2503.14492v2 全文：摘要与引言、§2 ControlNet 预备、§3 自适应多模态方法（时空控制图 w、分支独立训练推理融合）、§4 各模态与训练（Vis/Edge/Depth/Seg、AV 的 HDMap/LiDAR、RDS-HQ、4K Upscaler）、§5 评测（TransferBench 600 条、Table 1–4、Fig. 7 相关性、机器人 Sim2Real 与 AV 案例）、§6 GB200 NVL72 实时推理（Table 5）、§7 相关工作、§8 结论、附录 A prompt upsampler；附录 B 贡献者名单未读；未运行官方代码或权重，未读 Transfer2.5 文档（见 nvidia_cosmos_transfer25.md / cosmos-transfer25-docs.md 归档）。
+- **通读：** 已完成
 - **一句话说明：** 在 Cosmos-Predict1 DiT 上加 **分模态 ControlNet 支**，用时空控制图自适应加权；训练时一支一支训、推理时融合。服务机器人 Sim2Real 与 AV 数据增广；GB200 NVL72 上 64 卡可实时生成 5 秒 720p。
 - **沉淀到 wiki：** 是 → [`wiki/entities/paper-cosmos-transfer1.md`](../../wiki/entities/paper-cosmos-transfer1.md)
 

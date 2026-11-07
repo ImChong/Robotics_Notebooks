@@ -2,7 +2,7 @@
 type: method
 tags: [simulation, sim2real, hardware, control, deep-learning]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-07
 related:
   - ../concepts/implicit-explicit-actuator-modeling.md
   - ../concepts/sim2real.md
@@ -13,7 +13,10 @@ related:
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../concepts/system-identification.md
   - ../entities/nvidia-getting-started-isaac-lab.md
+original:
+  - ../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md
 sources:
+  - ../../sources/papers/hwangbo_actuator_net_reading_arxiv_1901_08652_sysid1.md
   - ../../sources/papers/system_identification.md
   - ../../sources/courses/nvidia_getting_started_isaac_lab.md
   - ../../sources/papers/locomotion_rl.md
@@ -22,7 +25,9 @@ summary: "执行器网络（Actuator Network）通过神经网络在仿真中拟
 
 # Actuator Network (执行器网络)
 
-**执行器网络 (Actuator Network)** 是一种在机器人仿真中用于模拟物理驱动器（如电控伺服电机、SEA 驱动器）真实物理行为的深度学习模型。它是解决**足式机器人 Sim2Real 鸿沟**中“动力学不匹配”问题的利器。
+## 一句话定义
+
+**执行器网络 (Actuator Network)** 是用监督学习从真机数据拟合「关节位置误差与速度历史 → 关节力矩」的小型神经网络（Hwangbo et al., Science Robotics 2019，ANYmal），在仿真循环里充当驱动器层，替代理想 PD，以缩小 sim2real 中「动作到力矩」这一段的动力学误差。
 
 ## 英文缩写速查
 
@@ -39,59 +44,71 @@ summary: "执行器网络（Actuator Network）通过神经网络在仿真中拟
 | Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 | Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
 
-## 为什么需要 Actuator Network？
+## 为什么重要
 
 在物理仿真器（如 MuJoCo 或 Isaac Gym）中，默认的关节驱动通常是理想化的 PD 控制：
 $$ \tau = K_p (q_{target} - q) + K_d (\dot{q}_{target} - \dot{q}) $$
-然而，真实的机器人电机存在以下复杂的非线性特性，而这些特性很难用简单的代数公式精确描述：
-1. **反向电动势 (Back-EMF)**：高速转动时电机输出扭矩会下降。
-2. **非线性摩擦**：谐波减速器带来的静摩擦与动摩擦。
-3. **总线延迟**：从控制指令下发到电流产生作用的 2-10ms 不等时延。
-4. **SEA 物理特性**：ANYmal 等机器人使用的串联弹性执行器中的弹簧动力学。
+
+论文指出（Hwangbo 2019，引言与方法）：真实执行器的动力学含非线性非光滑耗散、级联反馈环与大量不可观测的内部状态；ANYmal 的 SEA 链路依次是位置命令 → PD 得期望力矩 → PID 得期望电流 → FOC 得相电压 → 传动与弹性元件形变产生关节力矩，且有多层硬件与软件带来的延迟。已有的解析 SEA 模型（Gehring et al. 2016）含近百个参数，难以辨识。
+
+**论文的消融证据**：用理想执行器模型（带宽无限、零延迟）或手调解析执行器模型训出的策略，在真机上「一步都走不了」，肢体剧烈抖动；作者调了一周以上解析模型仍不成功，而执行器网络调通不到一天。力矩预测误差：执行器网络验证集 0.740 Nm（力矩测量分辨率 0.2 Nm），理想模型 3.55 Nm；在真实策略产生的测试数据上分别是 0.966 Nm 与 5.74 Nm。
+
+（以下为一般工程常识，非本论文摘录，故标「推测」：反电动势、谐波减速器摩擦、总线延迟等也是同类拟合要吸收的因素。）
 
 ## 核心机制
 
 执行器网络不再使用解析公式，而是训练一个小型神经网络来充当驱动器层：
 
-- **输入**：当前位置误差 $(q_d - q)$、关节速度 $\dot{q}$、历史动作序列 $a_{t-k:t}$。
-- **输出**：该时刻真实的驱动力矩 $\tau_{real}$。
-- **训练数据**：通过真机实验采集，输入随机动作指令，测量真实产生的关节响应。
+- **输入**：关节位置误差（命令位置减实际位置）与关节速度的**历史**——论文取当前、$t-0.01$ s、$t-0.02$ s 三个时刻；每个关节独立建模（假设执行器之间无耦合）。
+- **输出**：该关节的真实驱动力矩 $\tau$。
+- **结构**：MLP，3 个隐藏层、每层 32 单元；激活函数在 tanh 与 softsign 间选了 softsign（验证误差几乎相同，约 0.7–0.8 Nm RMS，但 12 个关节评估耗时 12.2 µs 对 31.6 µs）。
+- **历史长度**：应显著长于通信延迟与机械响应之和，太稀疏抓不住高频动态，太密则易过拟合且更慢；实际按验证误差调，通常不到一天。
+- **训练数据**：真机上用足端正弦轨迹（幅值 5–10 cm、频率 1–25 Hz）经逆运动学驱动，足端不断触地与离地以贴近真实步态，并人工扰动；须覆盖宽频谱，否则训练出的模型会产生不自然振荡；400 Hz 采样，用时不到 4 分钟（12 个同型执行器并行采集），超过一百万样本，约 90% 训练 / 10% 验证。注意这**不是**悬空啁啾激励。
 
 ## 流程总览
 
 ```mermaid
 flowchart LR
   subgraph offline["离线：辨识与训练"]
-    R[真机悬空激励] --> D[(q, q_dot, tau, 指令)]
-    D --> T[MLP / LSTM 拟合]
-    T --> W[ActuatorNet 权重 / TorchScript]
+    R["真机足端正弦轨迹 + 人工扰动\n(触地/离地交替, 400 Hz)"] --> D[("位置误差历史, 速度历史, 力矩")]
+    D --> T["监督学习 MLP 3x32 softsign"]
+    T --> W["ActuatorNet 权重"]
   end
   subgraph sim["仿真步内闭环"]
-    P[策略或 PD 目标] --> F[误差 / 速度 / 历史动作特征]
-    W --> N[执行器网络前向]
+    P["策略输出关节位置目标"] --> F["误差 / 速度历史特征"]
+    W --> N["执行器网络前向"]
     F --> N
-    N --> Tau[tau_real]
-    Tau --> Phy[物理仿真一步]
+    N --> Tau["tau"]
+    Tau --> Phy["刚体仿真一步"]
     Phy --> F
   end
 ```
 
 ## 主要技术路线
 
-1. **数据采集**：让真机悬空，下发啁啾信号（Chirp Signal）或随机频率的 PD 目标，记录 $(q, \dot{q}, \tau)$。
-2. **离线训练**：训练一个 MLP 或 LSTM 模型，使其能准确预测真机的力矩输出。
-3. **仿真集成**：将训练好的网络（通常转为 TorchScript）嵌入到仿真器的控制循环中。
-4. **策略训练**：在带有执行器网络的仿真环境中训练 RL 策略。
+论文流程四步（Fig. 1）：①辨识刚体参数并估计不确定度（惯性参数来自 CAD，预计约 20% 误差，用 30 个随机化模型训练）；②训练执行器网络；③在混合仿真（刚体 + 执行器网络，约 50 万步/秒）中用 TRPO 训练策略；④直接部署。
+
+后续框架实现（以 Isaac Lab 为例，见 [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)）：`ActuatorNetMLP` 用位置误差与速度历史预测力矩，输出再被 DC 电机包络截断，需 TorchScript 检查点；`ActuatorNetLSTM` 用循环网络隐状态代替历史缓冲。
 
 ## 带来的价值
 
-- **频率对齐**：网络能够自发学出系统的传输延迟特性。
-- **功耗预测**：由于能够拟合真实力矩，RL 学出来的策略会更加节能。
-- **零样本迁移**：极大提升了 Locomotion 策略在复杂地形上的稳健性，减少了在真机上二次调参的需求。
+- **频率对齐**：网络从历史中隐式学出系统传输延迟与响应特性。
+- **能耗与精度**：论文策略在同一硬件上速度跟踪误差 0.143 m/s（此前最佳模型方法 0.231 m/s）、平均力矩 8.23 Nm 对 11.7 Nm，最高速 1.5 m/s（较此前纪录高 25%）。这些是整套方法（含 RL）的结果，不是执行器网络单独的贡献。
+- **零样本迁移**：策略纯仿真训练，部署无需真机微调；对硬件变化（约 2 kg 配重、换成 3 倍硬度弹簧的新驱动）三个月测试内策略仍工作。
 
-## 在仿真栈中的位置（Explicit 路线）
+## 工程实践
 
-执行器网络属于 **explicit 执行器** 的数据驱动形态：在用户代码中由网络算 $\tau$，再写入物理仿真，而非由引擎隐式积分 PD。Isaac Lab 的 `LearnedMlpActuator`、mjlab 的 `LearnedMlpActuator` 与之同类。与 **implicit**（引擎内置 PD）相比，explicit 更贴近真机非线性，但数值上更挑步长与 `armature`；概念总览见 [Implicit / Explicit 执行器建模](../concepts/implicit-explicit-actuator-modeling.md)。
+1. **采集**：覆盖宽频、含接触交替的轨迹；保留一份由真实策略产生的数据做测试，因为分布外误差明显更高（0.966 对 0.740 Nm）。
+2. **建模范围**：每个关节独立；若多个执行器耦合（如共用蓄能器的液压），论文提示需要更大的联合网络（论文未验证）。
+3. **历史配置**：先按延迟估计，再按验证误差微调；策略观测里也需要稀疏历史（t−0.01 s、t−0.02 s），论文推测其作用是替代足端力传感器检测接触。
+4. **仿真集成**：网络评估占混合仿真约一半时间，故保持小网络；框架里用 TorchScript 加载。
+5. **随机化仍需要**：论文同时对惯性参数、观测噪声做随机化，执行器网络并不替代域随机化。
+
+## 局限与风险
+
+- 论文自述局限：需要日志、回归、力矩测量等基础设施；对执行器耦合的系统精度存疑；一次训练得到的单个策略只表现单一技能。
+- 分布外误差：测试数据上的力矩误差明显高于验证集，说明数据覆盖决定上限。
+- 黑箱：不给出可解释参数，换电机或负载需重新采集。后续工作（BAM、PACE、NeuralActuator）试图补可解释性，见下文。
 
 ## 与解析摩擦模型（BAM）及 NeuralActuator 的关系
 
@@ -117,3 +134,8 @@ flowchart LR
 - [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — 足式 RL 论文索引（ANYmal 等应用背景）。
 - Isaac Lab 执行器栈工程参考（理想/隐式 PD、数据驱动力矩路径等）：[`actuator_pd.py`](https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab/isaaclab/actuators/actuator_pd.py)。
 - [Getting Started With Isaac Lab 课程归档](../../sources/courses/nvidia_getting_started_isaac_lab.md) — 模块 4：指令+关节历史 → 弹簧偏转力矩，冻结后替换 PID
+
+## 推荐继续阅读
+
+- [Learning Agile and Dynamic Motor Skills for Legged Robots（arXiv:1901.08652）](https://arxiv.org/abs/1901.08652) — 本页的一手原文，方法章节有执行器网络的全部训练细节
+- [Isaac Lab Actuators 概念页](https://isaac-sim.github.io/IsaacLab/main/source/concepts/actuators.html) — `ActuatorNetMLP / ActuatorNetLSTM` 在框架中的用法与限幅逻辑

@@ -7,7 +7,9 @@
 - **来源：** Erwin Coumans 等（Bullet Physics 社区）
 - **链接：** https://github.com/bulletphysics/bullet3
 - **Stars：** ~14.5k（2026-06）
-- **入库日期：** 2026-06-17
+- **入库日期：** 2026-06-17（2026-11-07 补通读核对）
+- **核对范围：** 2026-11-07 读完 `master` 分支 `README.md` 全文（定位、PyBullet 推荐、安装、引用、C++ 要求、实验性 OpenCL GPGPU、zlib 许可、vcpkg 构建说明）；Python 侧 API 以 [PyBullet Quickstart Guide 归档](../sites/pybullet-quickstart-guide.md) 为准。**没有读**C++ 源码与各示例实现。
+- **通读：** 已完成
 - **一句话说明：** 官方 **C++ 实时碰撞检测与多物理仿真 SDK**：刚体、软体/FEM、VR 与游戏向示例；**PyBullet Python 绑定与 `pybullet_envs` 均在本仓 `examples/pybullet`**，机器人 RL 领域通常经 PyBullet 而非直接链接 C++ API。
 - **沉淀到 wiki：** [PyBullet](../../wiki/entities/pybullet.md)
 

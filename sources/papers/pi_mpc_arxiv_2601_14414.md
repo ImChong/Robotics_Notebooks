@@ -9,7 +9,9 @@
 - **PDF：** <https://arxiv.org/pdf/2601.14414>
 - **作者：** Liang Wu†, Bo Yang†, Junheng Li†, Xu Yang, Yilin Mo, Yang Shi, Aaron D. Ames, Ján Drgoňa（† 共同一作）
 - **机构：** Johns Hopkins University；Tsinghua University；Caltech；University of Victoria
-- **入库日期：** 2026-06-10
+- **入库日期：** 2026-06-10（首次）；2026-11-07（核对更新）
+- **核对范围：** 读摘要、§I 引言与相关工作、§II 问题形式、§V 数值实验（AFTI-16、随机线性 MPC 规模对比、CSTR NMPC）与结论；§IV 的变量分裂推导、定理与收敛证明只浏览，**未逐式核对**，其余部分以二手摘录为准。
+- **通读：** 未完成
 - **一句话说明：** 基于 ADMM 的 **parallel-in-horizon、construction-free** NMPC：新变量分裂 + **velocity-form** 表示使各时域步 **闭式并行更新**；避免 Riccati 递推的串行瓶颈与 MPC→稀疏 QP 在线组装；含 Nesterov 加速与 restart；为 [MPC-RL](https://arxiv.org/abs/2606.05687) 的 **πⁿ MPC** GPU 批实现提供算法基础。
 
 ## 核心论文摘录（MVP）

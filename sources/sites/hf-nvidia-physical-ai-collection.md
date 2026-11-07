@@ -6,7 +6,9 @@
 - **类型：** site / huggingface-collection
 - **URL：** <https://huggingface.co/collections/nvidia/physical-ai>
 - **机构：** NVIDIA
-- **入库日期：** 2026-09-05
+- **入库日期：** 2026-09-05（2026-11-07 重读集合 API 与数据卡）
+- **核对范围：** 2026-11-07 用 HF API 读完集合元数据与全部条目清单（`lastUpdated` 2026-10-20，**50** 项：48 个 nvidia 数据集 + 1 个 nvidia 模型 VoMP-Model + 第三方 `bones-studio/seed`、`NianticSpatial/real2sim-sample-usdz-scenes`；逐条 license 标签、门控、大小、创建日期），并通读其中 20 张数据卡（GR00T-X-Embodiment-Sim、GR00T-Teleop-Sim/G1/GR1、GR00T-GR1、GR00T-Eval、GR00T-Tuned-Tasks、Open-H-Embodiment、GR00T-N1.7-AppleToPlate、GRAIL 头部、LIBERO_LeRobot_v3、WorldModel-Synthetic-Embodied-Robot-Scenes 头部、SimReady-Warehouse-01、SmartSpaces、VANTAGE-Bench、Manipulation-Kitchen、Cosmos-Drive-Dreams、Traffic-Anomaly-Reasoning、Anchor-Lab、GraspGen）；其余约 24 张卡只读了 API 元数据（其中 Autonomous-Vehicles / NuRec / NCore / Foundation4D / Robotics-NuRec / Spatial-Intelligence-Warehouse / bones-studio/seed 为门控，匿名取卡返回 401，未读卡片正文）；未下载任何数据文件。
+- **通读：** 未完成
 - **集合更新：** 2026-08-11（API `lastUpdated`）
 - **一句话说明：** NVIDIA 面向 Physical AI 开发者的 **开放商业级数据集与资产** 官方索引：机器人操纵 / 遥操作、自动驾驶 NuRec、合成世界模型场景、SimReady 仓库与空间智能 benchmark 等 **49** 条 HF 仓。
 

@@ -11,6 +11,8 @@
 - **许可：** BSD-3-Clause
 - **入库日期：** 2026-08-13
 - **一句话说明：** 力矩控制机械臂的笛卡尔阻抗 C++ 库 + ros2_control 插件；主任务柔顺，次级任务经雅可比零空间做关节阻抗（7 轴 Panda/FR3、iiwa7）。
+- **核对范围：** 2026-11-07 `git clone --depth 1`（提交 `8009a7b`）。通读 `README.md`（特性、力矩构成、限制、依赖、安装、YAML 参数模板、话题接口、轨迹与 MoveIt 说明、安全建议）、`src/cartesian_impedance_controller.cpp` 中设定刚度 / 阻尼规则 / `calculateCommandedTorques()` 与零空间滤波部分、`src/pseudo_inversion.h`。**未阅读** `src/cartesian_impedance_controller_ros.cpp`（951 行 ROS 封装）、`test/`、Dockerfile 与脚本，未编译或运行。
+- **通读：** 已完成
 - **沉淀到 wiki：** [`wiki/entities/paper-cartesian-impedance-controller.md`](../../wiki/entities/paper-cartesian-impedance-controller.md)
 
 ## 开源核查（2026-08-13）

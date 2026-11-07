@@ -2,7 +2,7 @@
 type: comparison
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ../entities/paper-vgi-white-paper.md
   - ./robot-learning-five-paradigms-taxonomy.md
@@ -17,6 +17,12 @@ related:
   - ../overview/world-models-15-open-source-technology-map.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ../methods/unified-multimodal-tokens.md
+original:
+  - ../../sources/papers/paligemma_arxiv_2407_07726.md
+  - ../../sources/papers/gr00t_n1_arxiv_2503_14734.md
+  - ../../sources/papers/cosmos_wfm_arxiv_2501_03575.md
+  - ../../sources/papers/pi07.md
+  - ../../sources/blogs/worldlabs_functional_taxonomy_world_models.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/blogs/wechat_shenlan_robot_learning_five_paradigms.md
@@ -47,7 +53,20 @@ summary: "VLM、VLN、VLA、VLX 与世界模型共享 Transformer 与多模态�
 - **系统拆分**：真实机器人栈常需 **感知塔（VLM）→ 导航/操作头（VLN/VLA）→ 仿真预演（WM）** 分层部署；厘清 I/O 有助于 Sim2Real 与延迟预算。
 - **趋势判断**：分立专精模型、VLX 式统一大模型、WM 赋能三条路线并行——本分类是阅读 [VLA 开源谱系](../overview/vla-open-source-repro-landscape-2025.md) 与 [世界模型地图](../overview/world-models-15-open-source-technology-map.md) 的前置框架。
 
-## 统一技术底座
+## 一手资料核验（2026-11-07）
+
+「VLM / VLN / VLA / VLX / WM」这套五分法**出自产业二手文章**（深蓝具身智能公众号），不是某篇论文提出的标准定义。本页用已通读的一手论文给每个家族找"代表样本"，逐条核对二手叙述：
+
+| 家族 | 用来核对的一手样本 | 核对结论 |
+|------|--------------------|----------|
+| **VLM** | [PaliGemma](../entities/paper-rcl-2407-07726-paligemma-a-versatile-3b-vlm-for-transfer.md)（arXiv:2407.07726） | 与"无动作、纯认知层"一致：输入图像 + 文本前缀，输出文本后缀（含检测框 / 分割 token 的文本化表示），< 3B。论文本身不含机器人内容。 |
+| **VLA** | [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md)（arXiv:2503.14734）、[π₀.₇](../methods/pi07-policy.md)（arXiv:2604.15483） | 与"整合 VLM、观测到动作"一致：N1 以 Eagle-2 VLM（System 2）+ DiT flow-matching 动作头（System 1）联合训练，输入图像 + 语言 + 本体状态，输出 16 步动作块。但二手文章说的"单网闭环"需放宽：N1 是**同一模型内两个模块**；π₀.₇ 在部署时是 **VLA + 同架构高层语言策略 + 独立世界模型**组成的系统。 |
+| **WM** | [Cosmos 1.0](../entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)（arXiv:2501.03575） | 与"观测 + 扰动（动作/文本）→ 未来观测、不直接驱动硬件"一致。但"VLA 出候选动作 → WM 逐帧推演 → 择优执行"这条级联**在 Cosmos 1.0 里只是列出的五类用途之一，论文明确写"本文不含这些用途的实证结果"**；真实出现的是别的接法：π₀.₇ 用轻量世界模型（BAGEL 14B 初始化）生成**子目标图像**喂给 VLA；GR00T N1 用视频生成模型生成 827 小时**神经轨迹**当训练数据。 |
+| **VLN** | 本次未通读任何 VLN 一手论文 | "VLN ⊂ VLA""仅底盘移动、无操作分支"等说法**未经一手核实**，只是二手文章的叙述（推测：对多数 VLN 基准成立，但不应当成定义）。 |
+| **VLX** | 本次未通读任何以 VLX 自称的一手论文 | VLX 是二手文章归纳的"愿景型"名词，**未经一手核实**；一手资料里更常见的是 VLA / WAM 等名字。 |
+| 功能轴对照 | [Fei-Fei / World Labs 博客](../concepts/functional-taxonomy-world-models.md) | 博客把 VLA、基于模型的系统与 World Action Models 都归为 **Planner**（输出动作），世界模型按输出分 Renderer（观测）/ Simulator（状态）；这说明"VLA 与 WM 同属世界模型家族还是互为上下游"取决于所用轴，与本页的 I/O 家族轴正交。 |
+
+## 核心原理：统一技术底座
 
 五类模型 **不存在本质架构割裂**：
 
@@ -99,6 +118,13 @@ flowchart TB
 
 二者 **多模态编码与物理规律学习可互通**，便于特征与数据协同；WM 也可独立服务数据生成、策略评估与 [Sim2Real](../concepts/sim2real.md) 闭环。
 
+## 工程实践
+
+1. **用 I/O 契约而不是缩写做接口评审。** 每个模块写清：输入模态、输出是文本 / 动作块 / 未来观测；例如 GR00T N1 的动作头输出 $H=16$ 的动作块，PaliGemma 输出文本。
+2. **VLM 骨干既可冻结也可联合训练，别照搬二手文章的"通常冻结"。** PaliGemma 论文的消融显示预训练时**不冻结**图像编码器与语言模型更好；GR00T N1 后训练冻结 VLM 的语言部分、其余可训；GR00T N1.5 则全程冻结 VLM（项目页）。
+3. **世界模型接入点至少有三种：** 数据生成（N1 的神经轨迹）、子目标生成（π₀.₇ 的世界模型生图）、候选动作评估（Cosmos 1.0 列为愿景，未验证）。选型时先问接入点。
+4. **延迟预算分层核算。** π₀.₇ 论文数字：最小变体 VLA 推理约 38 ms，开启历史与子目标图最坏约 127 ms，子目标生图 25 步约 1.25 s（4 卡）——世界模型环节常在慢速异步线程里，不进控制主回路。
+
 ## 常见误区或局限
 
 1. **「VLA 已包含一切，VLN/VLM 过时。」** 工程上仍常 **冻结 VLM 骨干**、单独训导航头或分层部署以满足延迟与可解释性。
@@ -106,7 +132,7 @@ flowchart TB
 3. **「VLX 已量产。」** VLX 多为 **架构愿景**；当前开源主力仍是分立 VLA + 专用 WBC/导航模块。
 4. **术语融合加速**：WAM（[World Action Models](../concepts/world-action-models.md)）等新概念把 WM 与动作生成 **耦合**，与本页「分立 WM + VLA」级联叙事并存——选型时需看清 **联合训练 vs 事后串联**。
 
-## 与其他页面的关系
+## 关联页面
 
 - [世界模型功能分类](../concepts/functional-taxonomy-world-models.md)：按 POMDP **输出**（观测 / 状态 / 动作）划分，与本页 VL* I/O 家族正交；本页的 WM 推演层在那边多半是 Renderer 或 Simulator。
 - [世界模型定义与路线图](../entities/paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md)：再加表征轴，并声明 WAM 不是第四实现列。
@@ -128,6 +154,7 @@ flowchart TB
 
 ## 参考来源
 
+- **一手论文（已通读，2026-11-07）：** [PaliGemma](../../sources/papers/paligemma_arxiv_2407_07726.md)、[GR00T N1](../../sources/papers/gr00t_n1_arxiv_2503_14734.md)、[Cosmos 1.0](../../sources/papers/cosmos_wfm_arxiv_2501_03575.md)、[π₀.₇](../../sources/papers/pi07.md)、[World Labs 功能分类博客](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md)
 - [wechat_shenlan_five_embodied_model_taxonomy.md](../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md) — 深蓝具身智能《五大具身模型详解：VLM、VLA、VLN、VLX、世界模型》（<https://mp.weixin.qq.com/s/xj-rc6v64Ge6onoUPvkHLg>）
 - [worldlabs_functional_taxonomy_world_models.md](../../sources/blogs/worldlabs_functional_taxonomy_world_models.md) — Fei-Fei / World Labs 功能分类
 - [world_model_definition_roadmap_arxiv_2607_06401.md](../../sources/papers/world_model_definition_roadmap_arxiv_2607_06401.md) — 功能×架构二维表

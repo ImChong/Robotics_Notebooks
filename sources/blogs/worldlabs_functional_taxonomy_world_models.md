@@ -9,7 +9,9 @@
 - **官方博客：** <https://www.worldlabs.ai/blog/taxonomy-of-world-models>
 - **Substack 镜像：** <https://drfeifei.substack.com/p/a-functional-taxonomy-of-world-models>
 - **日期：** 2026-06-03
-- **入库日期：** 2026-09-05
+- **入库日期：** 2026-09-05（2026-11-07 重读官方博客全文）
+- **核对范围：** 2026-11-07 直接抓取 worldlabs.ai 官方博客页面并通读正文全文：开篇「世界不是由词构成的」、POMDP 环与「state」释义、Renderer / Simulator / Planner 三类功能、「为什么仿真是枢纽」、边界塌缩与统一世界模型展望；页面其余导航与推荐阅读条目未读；未读 Substack 镜像（内容同源）。
+- **通读：** 已完成
 - **一句话说明：** 用 POMDP 闭环把过载的「世界模型」拆成三类功能投影：Renderer 输出观测、Simulator 输出状态、Planner 输出动作；并主张仿真是枢纽，三类边界正在塌缩。
 
 ## 为什么值得保留

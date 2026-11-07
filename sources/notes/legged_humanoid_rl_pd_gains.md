@@ -4,7 +4,10 @@
 
 - **标题：** Legged / Humanoid RL 中 PD 增益（Kp/Kd）与执行器建模原始资料
 - **类型：** notes（工程文档与开源实现索引）
-- **入库日期：** 2026-05-12
+- **入库日期：** 2026-05-12（2026-11-07 重读各锚点一手资料复核）
+- **版本：** legged_gym master 分支；Isaac Lab main（文档页脚 Nov 07, 2026）；MuJoCo stable XML 参考；mjlab main 文档（2026-11-07 获取）
+- **核对范围：** 通读 `legged_gym/envs/base/legged_robot_config.py` 的 `control` / `sim` / `domain_rand` 段、`anymal_c_rough_config.py` 的 `control` 段、`base/legged_robot.py::_compute_torques`、`anymal_c/anymal.py::_compute_torques`；通读 Isaac Lab Actuators 概念页并读 `actuator_pd.py` / `actuator_net.py` 相关类（详见 `sources/courses/isaac_lab_implicit_explicit_actuators.md`）；读 MuJoCo XML 参考中 `actuator/position` 段；读 mjlab Actuators 页（含由电机规格推导增益示例）。未读：MuJoCo `general` 执行器与积分器章节全文、Isaac Lab 其他执行器源码。
+- **通读：** 已完成
 - **一句话说明：** 汇总 Isaac / legged_gym / MuJoCo 等栈里「刚度–阻尼」参数在代码与文档中的定义位置，供 sim2real 与 RL 策略接口设计对照。
 - **沉淀到 wiki：** 是 → [`wiki/queries/legged-humanoid-rl-pd-gain-setting.md`](../../wiki/queries/legged-humanoid-rl-pd-gain-setting.md)
 
@@ -54,3 +57,11 @@
 
 - [x] 已建立开源实现与文档 URL 索引
 - [~] 后续可按具体机型（Unitree、Booster、Agility 等）增补厂商白皮书中的关节阻抗表
+
+## 2026-11-07 一手核对补充
+
+- **legged_gym 基类（`legged_robot_config.py`）：** `control_type = 'P'`（P 位置 / V 速度 / T 力矩）；示例 `stiffness = {'joint_a': 10, 'joint_b': 15}` N·m/rad，`damping = {'joint_a': 1.0, 'joint_b': 1.5}` N·m·s/rad；`action_scale = 0.5`（目标角 = action_scale × action + default）；`decimation = 4`；`sim.dt = 0.005`（即策略 50 Hz）；`domain_rand` 中 `randomize_friction = True, friction_range = [0.5, 1.25]`、`push_robots = True`。**基类默认并不含 Kp/Kd 随机化项。**
+- **`_compute_torques`（P 模式）：** `torques = p_gains * (actions_scaled + default_dof_pos - dof_pos) - d_gains * dof_vel`，随后按 `torque_limits` 截断；V 模式用速度误差，T 模式直接把缩放后的动作当力矩。
+- **ANYmal-C rough：** `stiffness = {'HAA': 80, 'HFE': 80, 'KFE': 80}`，`damping = {'HAA': 2, 'HFE': 2, 'KFE': 2}`，`action_scale = 0.5`，`decimation = 4`，且**该配置里 `use_actuator_network = True`**，加载 `resources/actuator_nets/anydrive_v3_lstm.pt`（LSTM，输入为目标角减当前角与关节速度）；关闭该开关才走上述解析 PD。
+- **MuJoCo `<position>`：** 等价于 `gainprm = kp`、`biasprm = (0, -kp, -kv)`；`kv` 为执行器阻尼（文档建议配 `implicitfast` 或 `implicit` 积分器）；`dampratio` 以 $2\sqrt{k_p m}$ 为单位（1 为临界阻尼），反射质量 $m=(JM^{-1}J^T)^{-1}$ 在参考构型计算且考虑 armature，但不含被动阻尼与 frictionloss（这两者不可忽略时可能需 <1 的值）。
+- **mjlab 示例：** 由电机反射惯量与目标带宽推导增益 $K_p=J\omega_n^2$、$K_d=2\zeta J\omega_n$（示例 10 Hz、$\zeta=2$），G1 示例中髋 / 膝 / 踝分组使用不同 stiffness / damping / effort_limit / armature（髋 180 / 18，膝 150 / 15，踝 40 / 5）。

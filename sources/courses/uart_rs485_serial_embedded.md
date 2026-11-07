@@ -7,6 +7,7 @@
 - **来源：**
   - Wikipedia：[Universal asynchronous receiver-transmitter](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter)
   - Texas Instruments 应用笔记：[SLLA383 — UART-to-RS-485 Interface](https://www.ti.com/lit/an/slla383b/slla383b.pdf)（PDF，200 可访问）
+    - **2026-11-07 核对更正：** 该链接实际指向 TI《LIN Protocol and Physical Layer Requirements》（LIN 总线），不是 UART-to-RS-485 接口笔记；RS-485 依据请见 [TI RS-485 应用笔记归档](../sites/ti-rs485-slla070d.md)。
   - Microsoft Learn（架构参考）：[UART architecture](https://learn.microsoft.com/en-us/windows-hardware/drivers/serports/uart-architecture)
 - **入库日期：** 2026-05-19
 - **一句话说明：** 板间点对点调试、IMU/遥控器/旧款驱动器常用的异步串行栈：UART 帧格式 + 电平标准（TTL/RS-232/RS-485）与机器人布线注意点。

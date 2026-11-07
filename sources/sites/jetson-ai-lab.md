@@ -8,6 +8,9 @@
 - **入门教程：** <https://www.jetson-ai-lab.com/tutorials/getting-started-with-jetson/>
 - **容器索引：** <https://www.jetson-ai-lab.com/>（Browse All Jetson Containers）
 - **入库日期：** 2026-09-06
+- **复核日期：** 2026-11-07
+- **核对范围：** [Tutorials 索引页](https://www.jetson-ai-lab.com/tutorials/) 全页与 [Getting Started with Jetson](https://www.jetson-ai-lab.com/tutorials/getting-started-with-jetson/) 教程全文；其余教程（GenAI、GR00T / OpenPi Thor、Cosmos、优化 workshop 等）只读索引卡片，未读正文。
+- **通读：** 未完成
 - **版本：** 站点 **2.0**（curated tutorials；旧内容见 archive）
 - **一句话说明：** Jetson 上部署 **LLM/VLM/VLA** 与机器人应用的 **分步教程 hub**：Getting Started、GenAI、Gemma/Cosmos Reason、GR00T/OpenPi Thor、Agent Skills、优化与 GTC workshop。
 - **沉淀到 wiki：** [`wiki/entities/jetson-ai-lab.md`](../../wiki/entities/jetson-ai-lab.md)

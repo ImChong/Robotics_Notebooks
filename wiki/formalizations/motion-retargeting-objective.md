@@ -3,7 +3,7 @@ type: formalization
 tags: [robotics, motion-retargeting, optimization, ik, math, humanoid]
 status: complete
 created: 2026-05-17
-updated: 2026-05-17
+updated: 2026-11-07
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -15,10 +15,20 @@ related:
   - ./tsid-formulation.md
   - ./friction-cone.md
 sources:
-  - ../../sources/papers/motion_control_projects.md
+  - ../../sources/papers/gmr_retargeting_matters_arxiv_2510_02252.md
   - ../../sources/papers/neural_motion_retargeting_nmr.md
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
   - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
+  - ../../sources/papers/toporetarget_arxiv_2606_16272.md
+  - ../../sources/papers/omniretarget_arxiv_2509_26633.md
+  - ../../sources/papers/motion_control_projects.md
+original:
+  - ../../sources/papers/gmr_retargeting_matters_arxiv_2510_02252.md
+  - ../../sources/papers/neural_motion_retargeting_nmr.md
+  - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
+  - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
+  - ../../sources/papers/toporetarget_arxiv_2606_16272.md
+  - ../../sources/papers/omniretarget_arxiv_2509_26633.md
 summary: "动作重定向目标函数形式化：把姿态相似项、末端/接触约束项、平衡项、关节限位与平滑罚项写成统一的加权和；并展示该目标在纯 IK / RL 跟踪 / 双层优化三种工程实现下的退化与扩展形态。"
 ---
 
@@ -52,6 +62,12 @@ summary: "动作重定向目标函数形式化：把姿态相似项、末端/接
 | SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
 | PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
 
+## 为什么重要
+
+- **读论文的统一坐标**：GMR、NMR、ReActor、SPIDER、OmniRetarget、TopoRetarget 都在最小化"姿态 / 末端 / 接触 / 限位 / 平滑"的某种组合，只是把哪些项放进目标、哪些项外移到约束、过滤或仿真器里不同；把它们放进同一张表，才能看清各自在哪一步修补误差。
+- **重定向质量会传到下游**：GMR 的受控实验显示，地面穿透、自穿透、关节值突变这三类伪影会降低跟踪策略的鲁棒性；这些伪影都能对应到本页目标中缺失或被弱化的项（高度 / 接触项、限位 / 自碰项、平滑项）。
+- **选型与调参的抓手**：知道一项在目标里的权重（或被外移到何处），才知道出现脚滑、穿模、关节跳变时该改权重、改约束还是换方法。
+
 ## 决策变量与符号
 
 | 符号 | 含义 |
@@ -64,7 +80,7 @@ summary: "动作重定向目标函数形式化：把姿态相似项、末端/接
 | $\mathcal{C}_t$ | 时刻 $t$ 的支撑接触集合（哪些末端贴地） |
 | $\boldsymbol{\theta}$ | 可选的可学习重定向参数（如 [ReActor](../methods/reactor-physics-aware-motion-retargeting.md) 中的有界刚体偏移、全局尺度等） |
 
-## 通用目标函数
+## 核心原理：通用目标函数
 
 $$
 \min_{\mathbf{q}^r_{1:T},\ \boldsymbol{\theta}}\quad
@@ -158,10 +174,10 @@ $[\cdot]_+$ 取正部，质心进入支撑多边形时为 0。
 **根残差力压制**（[ReActor](../methods/reactor-physics-aware-motion-retargeting.md) 等仿真内方法中常见）：
 
 $$
-\mathcal{L}^{\text{bal,rfc}}_t = \big\| \boldsymbol{\tau}^{\text{root}}_t \big\|_2^2.
+\mathcal{L}^{\text{bal,rfc}}_t = \big\| \mathbf{f}^{\text{rt}}_t \big\|_1 + \big\| \boldsymbol{\tau}^{\text{rt}}_t \big\|_1 .
 $$
 
-> 根残差力（RFC）相当于在浮动基上"扶一把"。允许它松弛会让上层更容易跟参考，但代价是结果未完全动力学一致；评测时常做「带 RFC / 关 RFC」消融。
+> 根残差力（RFC）相当于在浮动基上"扶一把"。ReActor 的下层 RL 让策略输出作用在根上的辅助力 $\mathbf f^{rt}$ 与力矩 $\boldsymbol\tau^{rt}$（带死区 $d=0.1$），并在奖励里用 **L1 范数**惩罚；允许它松弛会让单个策略能学遍 AMASS（含倒立等形态上不可行的动作），但代价是结果未完全动力学一致。原文称该惩罚权重是最敏感的超参数。
 
 ### 4. 关节限位与执行器边界（Limits）
 
@@ -192,39 +208,50 @@ $$
 
 | 方法 | 退化形态 | 主项 | 弱化/外移项 |
 |------|----------|------|-------------|
-| **离线 QP / IK**（[GMR](../methods/motion-retargeting-gmr.md)） | 单帧或滑窗 QP | $\mathcal{L}^{\text{pose,kp}}+\mathcal{L}^{\text{lim}}+\mathcal{L}^{\text{smooth}}$ | 平衡/动力学项外移到下游 QP/RL；接触相位由源直接复用 |
+| **逐帧微分 IK**（[GMR](../methods/motion-retargeting-gmr.md)） | 两阶段：第一阶段 $\min_{\dot q}\|e(q)+J\dot q\|_W^2$ 只含全部匹配刚体的**朝向**与**末端位置**，第二阶段加入全部关键刚体的位置 + 旋转并换一组权重；Mink 求解，上一帧结果作初值 | $\mathcal{L}^{\text{pose,kp}}$（含 SO(3) 测地项 1c）+ 关节限位硬约束；非均匀局部缩放决定 $\hat p^h$（根平移统一缩放） | 无显式平滑项（靠上一帧初值与可选速度上限）；**不使用接触相位**，仅靠根统一缩放抑制脚滑、序列末做高度修正；平衡 / 动力学项外移到下游 |
 | **RL Tracking Reward**（[DeepMimic](../methods/deepmimic.md) 风格） | 指数核奖励之和 | $r^{\text{pose}}+r^{\text{ee}}+r^{\text{root}}$ | 限位/平滑由仿真器与早停隐式给出；平衡由是否摔倒（终止条件）触发 |
-| **双层优化**（[ReActor](../methods/reactor-physics-aware-motion-retargeting.md)） | 上层 $\min_{\boldsymbol{\theta}}\mathcal{L}^{\text{pose,kp}}(\mathbf{g}(\boldsymbol{\theta}),\mathbf{s})$；下层 RL | 参数化参考 $\mathbf{g}(\boldsymbol{\theta})$ + RFC 压制 | 限位/接触相位由仿真器接管；上层用近似梯度回传 |
-| **配对监督**（[NMR](../methods/neural-motion-retargeting-nmr.md) CEPR 阶段） | L1 序列回归 | $\|\mathbf{q}^r-\mathbf{q}^{\text{sim}}\|_1$（仿真物理一致轨迹做标签） | 重定向项已"内化"到标签里；网络不显式优化几何对应 |
-| **采样轨迹优化**（[SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)） | 退火噪声 + 课程式虚拟接触力 | 仿真 rollout 上的轨迹级评分（含接触/姿态聚合） | 显式约束转为采样空间的可行域筛选；几何参考做初值 |
-| **Interaction mesh Laplacian**（[TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md)、[OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md)） | 源帧固定拓扑 + 距离衰减权重 | $\| \Delta(V^r) - \Delta(V^s) \|^2$ + 骨方向先验 + 穿透 slack | 姿态/指尖项弱化为 mesh 内局部几何；灵巧手场景强调 hand–object 相对交互 |
+| **双层优化**（[ReActor](../methods/reactor-physics-aware-motion-retargeting.md)） | 上层 $\min_{\boldsymbol{p}\in P}\mathcal L(\boldsymbol p,\phi^*(\boldsymbol p))$：参数化参考 $\mathbf g_t(\boldsymbol p)$ 与仿真状态 $\mathbf s_t$ 之差，$\ell=\sum_b(w_x\ell_x^b+w_R\ell_R^b+w_v\ell_v^b+w_\omega\ell_\omega^b)$（位置 / 测地旋转 / 线速度 / 角速度）；下层 RL 最大化同形的跟踪奖励 | 参数化参考（原文记号 $\boldsymbol p$，本页前文的 $\boldsymbol\theta$）+ RFC 压制 | 限位/接触/自穿透由仿真器接管；上层用 $(1-\alpha)$ 缩放的近似梯度回传 |
+| **配对监督**（[NMR](../methods/neural-motion-retargeting-nmr.md) CEPR 阶段） | $L=\sum_t\|m^t_{bot}-\hat m^t_{bot}\|_1$（L1 序列回归，作用于含根速度、局部关节位置 / 速度、关节 DoF 的运动表示） | 仿真物理一致轨迹做标签 | 重定向项已"内化"到标签里；网络不显式优化几何对应 |
+| **采样轨迹优化**（[SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)） | $\min_u\|x_T\ominus x^{ref}_T\|^2_{Q_T}+\sum_t(\|x_{t+1}\ominus x^{ref}_{t+1}\|^2_{Q_t}+\|u_t\|^2_{R_t})$，退火噪声无梯度采样 + 仿真 rollout 评分；可加最坏情形鲁棒项与课程式虚拟接触 | 状态跟踪（SE(3) 对数映射）+ 控制代价（对角 $Q,R$） | 物理 / 接触约束由仿真器承担；无策略网络；开环轨迹仅在对齐的初始状态附近有效 |
+| **Interaction mesh Laplacian**（[OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md)、[TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md)） | OmniRetarget：$\min_q\sum_i\|L(p_i^{tgt}(q))-L(p_i^{src})\|^2+\|q-q_{t-1}\|_Q^2$，**均匀权重** $w_{ij}=1/|N(i)|$，硬约束 SDF 非穿透、关节 / 速度界、stance 脚不动；TopoRetarget：**距离衰减权重** $w_{ij}\propto e^{-\kappa\|v_i-v_j\|}$ + 骨方向先验 $E_{bone}$ + 穿透软 / 硬界与松弛 | $\|\Delta(V^r)-\Delta(V^s)\|^2$（人形全身 / 灵巧手各自的网格顶点） | 姿态 / 指尖项弱化为 mesh 内局部几何；强调 hand–object / body–object 相对交互；OmniRetarget 用 SQP 型求解器逐帧 warm start |
 
 ## 物理可行性筛选 = 目标函数的硬阈值化
 
-[NMR 的 CEPR 管线](../methods/neural-motion-retargeting-nmr.md)等工程做法常把上述罚项 **离散为硬阈值**，作为"是/否进入下一阶段"的二值过滤：
+[NMR 的 CEPR 管线](../methods/neural-motion-retargeting-nmr.md)把上述罚项 **离散为硬阈值**，作为"是/否进入下一阶段"的二值过滤（对照原文）：
+
+- **第 1 步（沿用 PHUMA 的人体侧过滤）**：去除过大 jerk、CoM 远离支撑域、足地接触不足（悬空 / 穿地）的人体序列；
+- **第 2 步（GMR 重定向后的机器人侧过滤）**：
 
 $$
-\text{accept}(t) =
-\mathbb{1}\big[v^{\max}\le v^*\big]\,\cdot\,
-\mathbb{1}\big[\text{自碰占比}\le \rho^*\big]\,\cdot\,
-\mathbb{1}\big[\text{脚 } z \text{ 速度}\le \epsilon\big]\,\cdot\,
-\mathbb{1}\big[\mathrm{CoM}\in\mathrm{Poly}\big].
+\text{accept}=
+\mathbb{1}\big[\max_t\|\dot{\mathbf q}_t\|_\infty\le\dot q_{\max}\big]\cdot
+\mathbb{1}\big[\text{自相交帧占比}\le 0.05\big]\cdot
+\mathbb{1}\big[\text{最低脚点平均离地}\le 0.10\,\text{m}\big],
 $$
 
-这等价于把连续罚项写成"超出某阈值即损失趋向无穷"，工程实现简单但失去梯度信息——所以下游通常仍需要在保留段上跑 RL 或 QP 精修。
+其中 $\dot q_{\max}$ 为硬件速度饱和上限（自相交由 MuJoCo 碰撞检测，阈值 0.05；悬空阈值 0.10 m 均为原文取值）。旧版把"脚 z 速度 $\le\epsilon$""CoM $\in$ Poly"也写进同一个指示函数，实际它们分属 PHUMA 的人体侧过滤，不在第 2 步的三条里。
 
-## 求解器侧的常见选择
+这等价于把连续罚项写成"超出某阈值即损失趋向无穷"，工程实现简单但失去梯度信息——所以下游仍需要在保留段上跑 RL（NMR 用每簇 PPO 专家 rollout 得到约 30K 对物理一致的配对）。
 
-- **QP / WBC 风格**：把姿态、末端、限位、接触线性化进二次规划，借助 [TSID 形式化](./tsid-formulation.md) 的执行器选择矩阵把"重定向轨迹 → 力矩"接到底层。
-- **非线性优化**（IPOPT / Ceres）：处理 SO(3) 测地距离与非线性接触约束。
+## 工程实践：求解器侧的常见选择
+
+- **微分 IK / QP 风格**：GMR 用 Mink 每步求解 $\min_{\dot q}\|e(q)+J\dot q\|_W^2$；下游要"重定向轨迹 → 力矩"时，可借助 [TSID 形式化](./tsid-formulation.md) 的执行器选择矩阵接到底层 WBC。
+- **SQP / 序列凸优化**：OmniRetarget 对 Laplacian 目标 + 硬约束逐帧用定制 SQP 型（序列 SOCP）求解，Drake 自动微分处理四元数；非线性优化器（IPOPT / Ceres）是同类可选项（推测，论文未用）。
 - **采样优化**（CMA-ES / MPPI / 退火噪声）：用于 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md) 式的并行仿真轨迹搜索。
 - **RL 优化器**（PPO / SAC）：当目标函数以奖励形态出现且策略与轨迹同时学习时。
 
 ## 评测口径
 
-- **几何**：MPJPE（关键点误差）、末端跟随误差、$d_{\mathrm{SO}(3)}$ 姿态误差。
-- **物理**：脚滑距离、自碰帧占比、根残差力均值、仿真 PD 跟踪成功率。
+- **几何**：MPJPE（关键点误差）、末端跟随误差、$d_{\mathrm{SO}(3)}$ 姿态误差；用户研究对"忠实度"的主观评价（GMR 论文）。
+- **物理**：地面 / 自穿透（时间占比 + 深度）、脚滑速度、脚悬空高度（OmniRetarget / ReActor 的口径）；关节跳变（单步 >0.5 rad）、自碰帧占比、关节极限帧占比（NMR 的口径）；根残差力均值、仿真 PD 跟踪成功率。
 - **下游**：以这批参考训练出的 [模仿学习](../methods/imitation-learning.md) / RL tracking 策略的真机/仿真成功率与样本效率（最终指标）。
+
+## 局限与风险
+
+- **目标函数是"拼装图"而非单一标准**：各方法的权重、阈值（0.05、0.10 m、$\delta_{pos}=0.5$ 等）是各自论文的取值，不能跨方法直接套用。
+- **运动学目标放不下动力学**：GMR / OmniRetarget 这类逐帧运动学目标不含力矩与接触力，物理一致要靠下游 RL / 仿真；OmniRetarget 自述约束线性化会带来偶发小穿透，由 RL 修复。
+- **学习式 / 仿真式方法的代价**：NMR 的 CEPR 是机型特定的；SPIDER 的开环轨迹只在对齐的初始状态附近有效；ReActor 的外力惩罚权重在"物理真实"与"极端动作可重定向"之间取舍，并且脚滑 / 悬空不为零。
+- **源数据质量**：TopoRetarget 对"虚拟接触"（源手指本想接触却没碰到物体）效果较差；SPIDER 受感知重建误差影响；NMR 依赖上游过滤。
 
 ## 关联页面
 
@@ -243,10 +270,17 @@ $$
 
 ## 参考来源
 
-- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书《开源运动控制项目》对运动学重定向项与下游动力学一致化分层的总结。
-- [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR / CEPR：把罚项写成硬阈值过滤 + 仿真 RL rollout 标签。
-- [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：上层参数化参考 + 下层 RL 跟踪的双层目标。
-- [sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — SPIDER：采样轨迹优化下的目标函数写法与虚拟接触课程。
-- [sources/papers/toporetarget_arxiv_2606_16272.md](../../sources/papers/toporetarget_arxiv_2606_16272.md) — TopoRetarget：hand–object Laplacian + 穿透 slack 约束写法。
-- Peng et al., *DeepMimic: Example-Guided Deep RL of Physics-Based Character Skills* (SIGGRAPH 2018) — 多分量加权奖励的范式。
-- Prete A. et al., *Task Space Inverse Dynamics* (2016) — QP 形式约束下任务加权和的工程化雏形（与 [TSID 形式化](./tsid-formulation.md) 对照）。
+- [GMR（Retargeting Matters）通读归档](../../sources/papers/gmr_retargeting_matters_arxiv_2510_02252.md) — arXiv:2510.02252：非均匀局部缩放 + 两阶段 Mink IK。
+- [NMR 通读归档](../../sources/papers/neural_motion_retargeting_nmr.md) — arXiv:2603.22201：CEPR 硬阈值过滤 + 配对监督（L1）。
+- [ReActor 通读归档](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — arXiv:2605.06593：双层优化与近似梯度、RFC。
+- [SPIDER 通读归档](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — arXiv:2511.09484：采样轨迹优化与虚拟接触课程。
+- [TopoRetarget 通读归档](../../sources/papers/toporetarget_arxiv_2606_16272.md) — arXiv:2606.16272：距离衰减 Laplacian + 骨方向先验 + 穿透松弛。
+- [OmniRetarget 通读归档](../../sources/papers/omniretarget_arxiv_2509_26633.md) — arXiv:2509.26633：均匀权重 Laplacian + 硬约束 + SQP 型求解。
+- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书《开源运动控制项目》对运动学重定向项与下游动力学一致化分层的总结（二手，未列入 original）。
+
+## 推荐继续阅读
+
+- Araujo et al., *Retargeting Matters*：<https://arxiv.org/abs/2510.02252>
+- Müller et al., *ReActor*：<https://arxiv.org/abs/2605.06593>
+- Yang et al., *OmniRetarget*：<https://arxiv.org/abs/2509.26633>
+- Pan et al., *SPIDER*：<https://arxiv.org/abs/2511.09484>

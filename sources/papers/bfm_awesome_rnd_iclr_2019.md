@@ -10,6 +10,8 @@
 - **代码/项目：** <https://github.com/openai/random-network-distillation>
 - **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
 - **入库日期：** 2026-05-26
+- **核对范围：** 2026-11-07 通读 arXiv:1810.12894v1 正文（摘要、引言、§2 方法（探索奖励、RND、预测误差来源、与不确定性量化的关系、内外在回报结合、归一化）、§3 实验（纯探索、双价值头、折扣因子、规模、循环网络、与 PPO 及动力学基线对比、定性分析）、§4 相关工作、§5 讨论）；附录 A 超参与网络结构未读；未运行代码。
+- **通读：** 已完成
 - **一句话说明：** 内在奖励探索经典；身体预训练常需自发现新状态。
 
 ## 核心摘录（策展，非全文）

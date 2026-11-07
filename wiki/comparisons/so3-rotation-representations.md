@@ -2,7 +2,7 @@
 type: comparison
 tags: [kinematics, math, so3, rotation, quaternion, deep-learning, embodied-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ../formalizations/se3-representation.md
   - ../formalizations/unit-quaternion-so3.md
@@ -11,6 +11,10 @@ related:
   - ../formalizations/homogeneous-coordinates-transform.md
   - ../concepts/floating-base-dynamics.md
   - ../entities/modern-robotics-book.md
+original:
+  - ../../sources/papers/modern_robotics_textbook.md
+  - ../../sources/papers/zhou_2019_cvpr_continuity_rotation_representations.md
+  - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
 summary: "SO(3) 旋转表示选型：欧拉角做人读、四元数做存储/插值、旋转矩阵做复合、so(3) 做优化增量、6D/tan_norm 做神经网络回归；不要用一种表示打通全栈。"
 sources:
   - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
@@ -58,7 +62,7 @@ $$
 SO(3)=\bigl\{R\in\mathbb{R}^{3\times 3}\ \big|\ R^\top R=I,\ \det R=1\bigr\}
 $$
 
-$SO(3)$ 是 **3 维流形**。任何 $\mathbb{R}^n$ 参数化要么 **冗余**（$n>3$ 加约束），要么 **有奇异/不连续**（$n=3$ 无法全局光滑覆盖）。这是选型的几何根因，不是实现偏好。
+*Modern Robotics* Def. 3.1 同样定义 $SO(3)$ 为满足 $R^\top R=I$、$\det R=1$ 的实矩阵集合（这 6 个等式约束把 9 个元素降到 3 个独立量），其逆即转置，且群乘法一般不可交换。$SO(3)$ 是 **3 维流形**。任何 $\mathbb{R}^n$ 参数化要么 **冗余**（$n>3$ 加约束），要么 **有奇异/不连续**（$n=3$ 无法全局光滑覆盖）。这是选型的几何根因，不是实现偏好。教材脚注也明说：任何三参数表示都必有奇异，欧拉角与 RPY 同样如此（§3.2.3.3）。更强的结论来自 Zhou et al.：$SO(3)\cong\mathbb{RP}^3$ 可嵌入 $\mathbb{R}^5$ 但不能嵌入 $\mathbb{R}^d,d<5$，所以 **$\le4$ 维的任何表示都不连续**（四元数也不例外），连续表示至少要 5 维（5D 立体投影版）或 6 维。
 
 ### 七种常用表示
 
@@ -100,6 +104,8 @@ Zhou et al. CVPR 2019：若 $f:\mathbb{R}^n\to SO(3)$ 在欧氏参数空间 **�
 | 轴角（全局） | 否 | $2\pi$ 多值；$\pi$ 处 log 奇异 |
 | 旋转矩阵 / 6D / tan_norm | 是（decode 后） | 用多余维度换连续性，再正交化回群 |
 
+实验数字（Zhou et al. Fig. 5，测地误差）：旋转自编码器上 6D / 5D 平均 0.49°，四元数 3.32°（最大 179.93°）、轴角 3.69°、欧拉 6.98°；点云姿态估计中 6D 2.85°、5D 4.78°、四元数 9.03°、轴角 11.93°、欧拉 14.13°、直接回归 $3\times3$ 矩阵 4.21°。论文还观察到降维的 5D 并不优于 6D。
+
 **损失仍建议在群上算**：测地距离 $\arccos((\mathrm{tr}(R\hat R^\top)-1)/2)$，而不是直接 L2 欧拉角或未对齐符号的四元数。
 
 ## 工程实践
@@ -118,7 +124,7 @@ Zhou et al. CVPR 2019：若 $f:\mathbb{R}^n\to SO(3)$ 在欧氏参数空间 **�
 ### 实现检查清单
 
 1. **轴序**：`xyz` / `zyx` / intrinsic vs extrinsic 必须写进接口；Diebel 列了 12 组，不要凭「RPY」猜。
-2. **四元数顺序**：Diebel / DeepMimic 常用 $(w,x,y,z)$；Pinocchio / scipy `Rotation` 常用 $(x,y,z,w)$。
+2. **四元数顺序**：Diebel 采用 scalar-first $[q_0,q_{1:3}]$，*Modern Robotics* 附录 B.3 也是 $(\cos\frac\theta2,\hat\omega\sin\frac\theta2)$；DeepMimic、Pinocchio、scipy `Rotation` 的顺序是工程印象，本页未逐库核对源码（推测，使用前以各库文档为准）。
 3. **双覆盖**：SLERP 前若 $q_1\cdot q_2<0$，翻转一侧；回归损失用 $\min(\|q-\hat q\|,\|q+\hat q\|)$ 或改 6D。
 4. **积分后投影**：四元数 `normalize`；矩阵 SVD / Gram–Schmidt 拉回 $SO(3)$。
 5. **观测维数**：球形关节若用 tan_norm，每关节是 **6** 不是 4。
@@ -146,7 +152,8 @@ Zhou et al. CVPR 2019：若 $f:\mathbb{R}^n\to SO(3)$ 在欧氏参数空间 **�
 - [Diebel 2006 姿态参数化](../../sources/papers/diebel_2006_representing_attitude_quaternions.md) — 欧拉 / 四元数 / 旋转向量转换表
 - [Shoemake 1985 SLERP](../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md)
 - [Zhou et al. CVPR 2019](../../sources/papers/zhou_2019_cvpr_continuity_rotation_representations.md) — 连续 6D
-- [Modern Robotics Ch 3 四元数摘录](../../sources/papers/modern_robotics_ch3_unit_quaternion.md)
+- [Modern Robotics Ch 3 四元数摘录](../../sources/papers/modern_robotics_ch3_unit_quaternion.md)（注意：教材中单位四元数在附录 B.3，Ch 3 正文用指数坐标）
+- [Modern Robotics 教材归档](../../sources/papers/modern_robotics_textbook.md) — Ch 3 / 附录 B 通读核对
 - [深蓝具身智能：李群、李代数、四元数](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)
 - [MimicKit tan_norm 摘录](../../sources/repos/mimickit_tan_norm.md)
 

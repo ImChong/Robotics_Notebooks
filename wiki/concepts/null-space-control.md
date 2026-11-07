@@ -2,7 +2,11 @@
 type: concept
 tags: [control, redundancy, inverse-kinematics, impedance-control, wbc, jacobian, manipulation]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
+original:
+  - ../../sources/papers/dietrich_null_space_projections_ijrr_2015.md
+  - ../../sources/papers/mayr_cartesian_impedance_joss_2024.md
+  - ../../sources/repos/cartesian-impedance-controller.md
 related:
   - ../formalizations/inverse-kinematics.md
   - ../formalizations/robot-jacobian.md
@@ -89,7 +93,15 @@ $(J^\top)^\#$ 的加权决定**一致性**：
 | $W=M(q)$（Khatib $\bar J$） | 动力学一致 | 次级力矩不产生主任务加速度；要可信惯量模型 |
 | 刚度信息 | 刚度一致（Dietrich 2015） | 高层任务由机械弹簧维持时，避免主动环对抗弹簧 |
 
-Dietrich 指出：满足动力学一致的 $W$ 有无穷多，$M$ 只是特例。真机上因摩擦与惯量误差，**$W=I$ 往往够用**——这正是 Franka 示例和 Mayr 开源控制器的选择。
+Dietrich 指出：满足动力学一致的 $W$ 有无穷多（一般式 $W(q)=X_1^\top X_1B_X+B_YY_1^\top Y_1M$，Khatib 与 Park 的加权是特例），它们给出同一个投影器，能块对角化惯量并**与负载无关**。真机上因摩擦与惯量误差，**$W=I$ 往往够用**——这正是 Mayr 开源控制器的选择（论文写 Moore–Penrose；仓库代码实际调用带阻尼的 `pseudoInverse`，默认阻尼 $\lambda=0.2$）。
+
+**核对 Dietrich 2015 原文后的补充：**
+
+- **层次严格性 ≠ 一致性，二者独立。** Successive 的 $N_i$（$i>2$）一般**不幂等**，每多乘一个矩阵都会破坏前面的正交性，因此层次**不严格**，但不会产生算法奇异，也便于在线改优先级；Augmented 幂等、层次严格，但增广 $J$ 掉秩时出现算法奇异。作者指出任意层数层次的稳定性证明目前只对增广投影成立。
+- **加速度层投影器 $N=M\,(I-J^{W+}J)\,M^{-1}$（式 (41)，$W=I$）理论上动力学一致，但在 LWR-III 真机上直接失稳**（实验中 $t\approx1.2$ s 急停）：$M$ 有小特征值时 $M^{-1}$ 把待投影力矩"激进"放大，再投影后乘回 $M$ 并不抵消，结果超出执行器限幅和力矩带宽；作者结论"没有令人信服的理由使用它"。它还不具备负载无关性。
+- **真机三层实验**（平移阻抗 > 姿态阻抗 > 关节构型）：增广 + $W=I$ 与增广 + $W=M$ 表现相当；successive 的第三层误差更小但第二层受干扰更大；$W=M$ 并不优于 $W=I$，而且在某些方向误差更大。"严格层次并不一定需要动力学一致性"。
+- **刚度一致性**仅适用于关节并联机械弹簧、主任务由弹簧被动维持的子类机器人（$W=K(q_0)$）：此时主任务不受低层任务扰动，仿真里明显优于其他投影器（动力学一致的 $W=M$ 因不知道弹簧反而比 $W=I$ 更差）。
+- 若把每层都拆成 $m_i=1$，可免去 SVD 等昂贵数值运算也得到动力学一致投影，利于在线增删任务。
 
 ### 3. 7 轴几何
 
@@ -104,7 +116,7 @@ flowchart LR
 ```
 
 - **解析 IK**（[ssik](../entities/ssik.md)）把该 1 维离散成 swivel 采样，返回多分支。
-- **实时控制**不枚举分支，而是每周期投影：Franka FCI 笛卡尔运动生成器用 **elbow** 参数暴露这 1 维；力矩环则显式乘 $N$。
+- **实时控制**不枚举分支，而是每周期投影：Franka FCI 笛卡尔运动生成器用 **elbow** 参数暴露这 1 维（此条来自本页既有表述，本次未核对 libfranka 文档）；力矩环则显式乘 $N$。
 - 不要把 7 轴零空间想象成「随便甩肘」：接近奇异时 $\mathrm{rank}(J)<6$，核的维数跳变，投影必须加 DLS 或改任务。
 
 ### 4. 与 HQP / TSID 的分界
@@ -125,6 +137,8 @@ HQP 的「低优先级在高优先级零空间里优化」与 Nakamura 公式是
 3. 次级：$\tau_0=-K_{\mathrm{ns}}(q-q_{\mathrm{ns}})-D_{\mathrm{ns}}\dot q$，再 $\tau_{\mathrm{ns}}=N\tau_0$。
 4. 可选 $\tau_{\mathrm{ext}}=J^\top F_{\mathrm{cmd}}$（力控/混合）。
 5. 叠加后限 $|\Delta\tau|$，下发；重力若机体内补偿则不要再加 $g(q)$。
+
+**Mayr 控制器源码对照（仓库提交 `8009a7b`，`calculateCommandedTorques()`）：** `tau_task = Jᵀ(−K·error − D·(J·dq))`；`tau_nullspace = (I₇ − Jᵀ·pinv(Jᵀ))·(K_ns(q_d,ns − q) − D_ns·dq)`；`tau_ext = Jᵀ·wrench`；三者相加后经 `saturateTorqueRate`（每周期 $\Delta\tau_{\max}$）下发。其中 `pinv` 是带阻尼的 SVD 伪逆（$\lambda=0.2$，非论文中的纯 $(JJ^\top)^{-1}$ 写法），零空间投影写死 $7\times7$；阻尼按 $d=2\sqrt{k}$ 的经验规则取、乘以可调因子（范围 [0.01, 2]）；刚度、位姿、wrench、零空间构型都经一阶低通滤波后才生效。README 自述限制：不含关节摩擦补偿、笛卡尔刚度与阻尼各轴不耦合、不含工具 / 工件重力补偿（可用 wrench 命令补）；作者实测平移刚度到 1000 N/m 仍很稳，奇异附近也稳定，并建议在 URDF 里把关节最大力矩限到约 20 Nm 以便人随时介入。
 
 | 检查项 | 建议 |
 |--------|------|
@@ -167,6 +181,7 @@ HQP 的「低优先级在高优先级零空间里优化」与 Nakamura 公式是
 
 ## 参考来源
 
+- **原文通读归档（2026-11-07）：** [Dietrich 2015 综述](../../sources/papers/dietrich_null_space_projections_ijrr_2015.md)；[Mayr JOSS 论文（arXiv 版）](../../sources/papers/mayr_cartesian_impedance_joss_2024.md)；[Cartesian-Impedance-Controller 仓库](../../sources/repos/cartesian-impedance-controller.md)
 - [零空间控制论文簇](../../sources/papers/null_space_control.md)
 - [Dietrich et al. IJRR 2015 综述归档](../../sources/papers/dietrich_null_space_projections_ijrr_2015.md)
 - [Mayr JOSS 2024 归档](../../sources/papers/mayr_cartesian_impedance_joss_2024.md)
@@ -178,4 +193,4 @@ HQP 的「低优先级在高优先级零空间里优化」与 Nakamura 公式是
 
 - Dietrich, Ott, Albu-Schäffer, *An overview of null space projections for redundant, torque-controlled robots*, IJRR 2015（开放 PDF：<https://elib.dlr.de/101443/2/NullspaceSurvey.pdf>）
 - Mayr 控制器 README 与 ROSCon 闪电讲：<https://github.com/matthias-mayr/Cartesian-Impedance-Controller>
-- Lynch & Park, *Modern Robotics* Ch 6（冗余 IK）
+- Lynch & Park, *Modern Robotics* Ch 6（冗余 IK；本次核对 Ch.11 阻抗控制，第 6 章未逐节通读）：<http://modernrobotics.org>
