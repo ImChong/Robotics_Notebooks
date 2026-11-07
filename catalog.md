@@ -725,6 +725,7 @@
 - [GR00T-WholeBodyControl（人形全身控制统一平台）](wiki/entities/gr00t-wholebodycontrol.md) — GR00T-WholeBodyControl** 把 NVIDIA **GR00T 全身控制（WBC）** 相关资产收敛到同一 Git 单仓：**解耦 WBC**（下肢 RL + 上肢 IK，用于 `📅unknown` `[entity_page]`
 - [GRAIL Loco-Manipulation Dataset（G1 合成轨迹）](wiki/entities/grail-locomanipulation-dataset.md) — PhysicalAI-Robotics-Locomanipulation-GRAIL**（<https://huggingface.co/datasets/nvidia/PhysicalAI-Ro `📅unknown` `[entity_page]`
 - [graphify（Graphify Labs）](wiki/entities/graphify.md) — graphify** 是 Graphify-Labs/graphify 分发的 **编码代理技能 + 命令 `📅unknown` `[entity_page]`
+- [GraspKit：从抓取合成到策略训练和部署](wiki/entities/graspkit.md) — GraspKit 基于 RoboKit 的可微优化与仿真能力，把抓取生成、轨迹规划、仿真筛选、点云监督数据和抓取策略学习连接成端到端流水线。 `📅unknown` `[entity_page]`
 - [GRIT Deploy Onboard G1](wiki/entities/grit-deploy-onboard-g1.md) — 一句话定义：** GRIT_Deploy_Onboard_G1 是 Unitr `📅unknown` `[entity_page]`
 - [GRIT v0.0.1](wiki/entities/grit-v0-0-1.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[entity_page]`
 - [Grove-G1](wiki/entities/grove-g1.md) — Grove-G1**（Adyansh04/grove-g1）是面向 **Unitree G1** 的开源 **自主 `📅unknown` `[entity_page]`
@@ -6063,6 +6064,7 @@
 - [Replica Skill（app 克隆 Agent Skills）](wiki/entities/replica-skill.md) — Replica Skill** 是一组面向 Claude 的 11 个 Agent Skills，按从应用调研到上线的顺序，将目标应用的功能和交互整理成可执行的重建计划，并在用户自己的项目中实现。 `📅unknown` `[entity_page]`
 - [GO2 Backflip（Robot-Nav / PPO-backflip）](wiki/entities/repo-go2-backflip.md) — GO2 Backflip** 是 Robot-Nav 社区在 **Unitree Go2** 上开源的 **高动态后空翻** 全流程 `📅unknown` `[entity_page]`
 - [Rerun](wiki/entities/rerun-io.md) — Rerun 是面向机器人与 Physical AI 的多模态数据工具链：用 SDK 或导入器接入多频率数据，在统一时间轴中可视化和查询，并将记录用于预处理与训练数据准备。 `📅unknown` `[entity_page]`
+- [RetargetingKit：机器人动作重定向与遥操作工具包](wiki/entities/retargetingkit.md) — RetargetingKit 将实时或录制的人体动作整理成规范帧，通过优化式或神经式求解映射为灵巧手、机械臂或人形机器人的关节命令。 `📅unknown` `[entity_page]`
 - [RetinaNet](wiki/entities/retinanet.md) — RetinaNet** 是带 FPN 的单阶段密集检测器，核心用 **Focal Loss** 降低易分负样本权重，缓解 one-stage 精度长期落后两阶段的问题。 `📅unknown` `[entity_page]`
 - [OM-1：通才操作策略（Reward AI）](wiki/entities/reward-ai-om1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Reward AI（机器人方向）](wiki/entities/reward-ai-robotics.md) — Reward AI**：聚焦 **人类同速灵巧操作** 的商业实体；对外叙事以 **Omnibody** 全栈为核心——可穿戴采集、统一多模态数据接口、**OM-1** 通才策略与跨工业臂/人形的 `📅unknown` `[entity_page]`
@@ -6098,6 +6100,7 @@
 - [Roboflow Trackers：检测器无关的多目标跟踪库](wiki/entities/roboflow-trackers.md) — Roboflow Trackers** 是一组统一 Python 接口的多目标跟踪算法实现：检测器提供逐帧边界框，跟踪器负责跨帧关联目标并维护身份 ID。 `📅unknown` `[entity_page]`
 - [RoboFlywheel](wiki/entities/roboflywheel.md) — RoboFlywheel**（<http://roboflywheel.com>）是面向 **Physical AI / 具身智能** 的 **开放数据基础设施门户**，由 **阿里巴巴** 联合 `📅unknown` `[entity_page]`
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
+- [RoboKit：并行可微机器人优化与仿真](wiki/entities/robokit-openrobokit.md) — RoboKit 把机器人 URDF/MJCF 模型、可微运动学、任务代价与并行优化连接起来，既能求解析约束问题，也能在物理仿真中做 MPC 与机器人学习。 `📅unknown` `[entity_page]`
 - [RoboLab（通用策略高保真仿真评测）](wiki/entities/robolab.md) — RoboLab**（*RoboLab: A High-Fidelity Simulation Benchmark for Analysis of Task Generalist Policies `📅unknown` `[entity_page]`
 - [robomimic](wiki/entities/robomimic.md) — robomimic 是 ARISE Initiative 发布的机器人示范学习研究框架。它把数据集、离线模仿学习与强化学习算法、训练配置和评估工具组织在统一接口下，方便在同一批机器人操作示范上比较方法 `📅unknown` `[entity_page]`
 - [roboparty_deploy（RPO / RP1 ROS 2 部署框架，原 atom01_deploy）](wiki/entities/roboparty-deploy.md) — roboparty_deploy** 是 RoboParty 把训练好的 ONNX 策略送上真机的 **ROS 2（Humble / Jazzy）C++17 部署框架**：主仓库只有文档、脚本与资 `📅unknown` `[entity_page]`
@@ -7200,6 +7203,7 @@
 - [开源可复现性：9 篇论文的阅读坐标](wiki/overview/open-source-reproducibility-9-papers-technology-map.md) — 这一批开源论文的价值不在又一个模型名，而在把表征、数据、评测与硬件同时变成可复现资产。 `📅unknown` `[overview_page]`
 - [开源系统闭环：7 篇论文的阅读坐标](wiki/overview/open-source-system-loop-7-papers-technology-map.md) — 具身智能正进入「开源入口 + 系统闭环」阶段：语言生成技能档案、VLM 统一导航、记忆与世界模型自进化、推理期纠错、多智能体编排与光学几何感知一并推进可复现部署。 `📅unknown` `[overview_page]`
 - [开源系统可靠性：8 篇论文的阅读坐标](wiki/overview/open-source-system-reliability-8-papers-technology-map.md) — 具身智能的竞争点正从单一模型能力扩展到系统级可靠性：意图保持、3D 世界模型、接触安全评测、急停可恢复性、灵巧迁移、多视角几何、部署期自改进与证据可计数融合。 `📅unknown` `[overview_page]`
+- [OpenRoboKit：优化、遥操作与抓取工具集](wiki/overview/openrobokit-toolkit.md) — OpenRoboKit 是围绕机器人可微优化、动作重定向和抓取学习形成的三个独立 GitHub 开源项目集合；不是一个将所有算法封装在同一仓库的单体框架。 `📅unknown` `[overview_page]`
 - [海外具身智能实验室地图（2026）](wiki/overview/overseas-embodied-ai-labs-landscape-2026.md) — 海外具身智能与机器人实验室呈现 **「顶尖高校研究所 + PI 衍生 AI/机器人公司」** 格局：美国以斯坦福 / MIT / CMU / Berkeley 为方法策源，欧洲以牛津–帝国理工–ETH `📅unknown` `[overview_page]`
 - [Paper Notebooks · Foundational RL](wiki/overview/paper-notebook-category-01-foundational-rl.md) — Foundational RL**（`01_Foundational_RL`）是 [Robot Learning Paper Notebooks](https://imchong.github.i `📅unknown` `[overview_page]`
 - [Paper Notebooks · Motion Retargeting](wiki/overview/paper-notebook-category-02-motion-retargeting.md) — Motion Retargeting**（`02_Motion_Retargeting`）是 [Robot Learning Paper Notebooks](https://imchong.gi `📅unknown` `[overview_page]`
