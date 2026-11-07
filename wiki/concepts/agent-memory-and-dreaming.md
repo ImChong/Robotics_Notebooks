@@ -98,6 +98,7 @@ flowchart LR
 - [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md) — 本库自身的 wiki 模式，与「wiki 作为记忆表示」同构
 - [Robot In-Context Learning](./robot-in-context-learning.md)
 - [AI Agent 评测](./ai-agent-evaluation.md)
+- [JitRL：免梯度的测试时经验检索与 logit 修正](../entities/paper-jitrl-just-in-time-rl.md)（经验库 + 推理时修正，论文实验在 WebArena / Jericho）
 - [Agentic Coding 软件基础](./agentic-coding-software-fundamentals.md)
 - [MemForest（agent 记忆论文节点）](../entities/paper-memforest.md)
 - [RoboCasa-Mem（长程移动操作中的环境与过程记忆基准）](../entities/paper-robocasa-mem.md)
