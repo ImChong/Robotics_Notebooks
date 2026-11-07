@@ -37,7 +37,7 @@ summary: "BEHAVIOR-Spatial（arXiv:2610.34051v2）把空间问答、目标定位
 | 缩写 | 英文全称 | 简要说明 |
 |---|---|---|
 | VQA | Visual Question Answering | Understand：对场景相对方向、距离、大小等进行空间问答 |
-| IR | Instruction Referring / Instruction Grounding | Ground：将空间指令定位为图像目标点或区域，论文称 IR |
+| IR | Intermediate Representation | 论文中的目标点/视觉标记中间表示；Ground 评测其定位准确率 |
 | VLM | Vision-Language Model | 在图像与自然语言上回答空间问题、预测目标点的感知语言模型 |
 | VLA | Vision-Language-Action | Act：接收指令和观测并预测机器人动作的策略 |
 | BDDL | BEHAVIOR Domain Definition Language | BEHAVIOR-1K 任务状态与目标谓词描述 |
