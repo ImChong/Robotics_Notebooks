@@ -446,6 +446,20 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "load",
     "deploy",
     "loop",
+    # original：各页正文里的 `original` 均指 frontmatter 的 ``original:`` 字段（「原文通读
+    # （见 `original`）」「本页 `original` 通读的教程」），是页面元数据字段名，
+    # 与 sources / updated 同类，不建独立页。
+    "original",
+    # cli：各页正文里的 **CLI** / `cli` 均为工具实体「接口形态」表的行标签或仓库子命令
+    # 目录名（zstandard / lz4 / arnis / embodichain 的命令行入口、SoccerDiffusion 的
+    # `cli` 模块），是软件交付形态 token，非机器人概念/方法/形式化；与 conda / printf
+    # 同类基础设施停用词。
+    "cli",
+    # data：各页正文里的 `data` / **Data** / `DATA` 均为文件格式或代码里的键/目录名——
+    # RoboSet HDF5 的 `Trial0/data` 组、MCAP 的 **Data** record 类型、embodichain /
+    # valen 的 `data` 目录、X-Tokenizer 官网图表 `DATA` 标签；与 qpos / actions 同类代码
+    # token，数据本体已由各数据集实体页与 overview/hub-data-pipeline.md 承载。
+    "data",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -861,6 +875,16 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 后续工作谱系由 overview/vggt-geometric-state-survey.md 汇总，不建 concepts/vggt.md。
     "vggt",
     "vlm",  # 模型家族标签，已由 comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md 定义
+    # implicitfast：MuJoCo 的积分器枚举值（`<option integrator="implicitfast">`），
+    # 积分器选型（Euler / implicit / implicitfast / RK4）与提速顺序已由 entities/mujoco.md
+    # 「积分器」条目释义，与执行器 PD 的配合由 concepts/implicit-explicit-actuator-modeling.md
+    # 承载；是仿真器配置值而非独立机制，不建 concepts/implicitfast.md。
+    "implicitfast",
+    # planner：主要命中是 Fei-Fei / World Labs 世界模型功能分类里的 **Planner** 类别
+    # （输出动作的一类，与 Simulator 等并列），已由 concepts/functional-taxonomy-world-models.md
+    # 定义；其余为各系统流水线的模块名（UniAD 的 Planner 头、FADA 的 Planner、Nav2 的
+    # planner server），机制各归对应实体页，与 base / training-free 同类多义标签。
+    "planner",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key

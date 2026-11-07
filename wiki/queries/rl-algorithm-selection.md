@@ -198,6 +198,7 @@ PPO 更容易调试：reward 曲线平滑，超参数不敏感，失败原因更
 ## 关联页面
 
 - [Policy Optimization](../methods/policy-optimization.md) — PPO/SAC/TD3 算法详细说明
+- [TD3](../methods/td3.md) — 双 Q 取小、延迟策略更新、目标策略平滑三招修正 DDPG 的确定性 off-policy 基线
 - [RL Runner（训练循环编排）](../concepts/rl-runner.md) — 先选循环形态（on/off-policy、离线、蒸馏），再选具体损失
 - [AWR](../methods/awr.md) — 优势加权回归，离策/演示数据场景的回归式备选
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法全景

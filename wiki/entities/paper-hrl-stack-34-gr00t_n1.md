@@ -231,6 +231,15 @@ sequenceDiagram
 5. **实现细节** — VLM 取第 **12** 层隐状态（较末层更快且下游更高）；DiT flow-matching \(H=16\)、推理 \(K=4\)；每 embodiment 独立 state/action MLP。
 6. **后训练风险** — 仅右手数据微调可能洗掉预训练双手递送等能力；当前主覆盖短视界桌面操作，长视界 loco-manip 仍属后续。
 
+## 与其他工作对比
+
+| 项目 | 定位区别 |
+|---|---|
+| [Diffusion Policy](../methods/diffusion-policy.md) | 单任务从零训练的生成式 BC；本文作主要基线，GR00T N1 以预训练 + 后训练在 10% 数据下 42.6% 接近 DP 全量 46.4% |
+| [π₀](./paper-pi0.md) | 同为 VLM + flow-matching 动作专家；π₀ 用 mixture-of-experts 桥接，GR00T N1 只用简单交叉注意力，便于替换 VLM 或动作模块（论文未做正面对比） |
+| [GR00T N1.5](./paper-gr00t-n1-5.md) | 后继版本：冻结 Eagle VLM + FLARE 未来 latent 对齐，语言跟随与少样本 post-train 优于 N1 |
+| [具身数据金字塔综述](./paper-data-pyramid-embodied-manipulation.md) | 本文是单模型配方的三层金字塔；综述将其统一为五层类目级坐标系，作跨模型数据选型参照 |
+
 ## 局限与风险
 
 **论文自述（§4.6）：** 当前主要覆盖短视界桌面操作；长视界 loco-manipulation 需要更强硬件、架构与训练语料；合成数据在「多样性、反事实、遵守物理」上仍有挑战；期待更强的 VLM 以提升空间推理与语言理解。**论文报告的边界：** 神经轨迹共训练的结论是「初步结果」，仅在 RoboCasa 与两类真机任务上量化；真机评测是 GR-1 上单一硬件、每任务 10 次试验，统计置信区间较宽；对比基线只有 BC-Transformer 与 Diffusion Policy，没有与其他 VLA（如 π₀、OpenVLA）的正面对比。
