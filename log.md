@@ -251,6 +251,16 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-08] ingest | 视觉感知与三维重建一手研究入口归档
+
+- 去重保存 90 条外部一手链接，归入 63 个项目/方法身份组；未新增重复 wiki 实体。
+- 新增 59 份来源初编，复用 4 份既有来源记录；补一张跨主题研究地图。
+- 资料仍需逐篇通读，项目实体 Mermaid 流程及源码真实时序尚未全部完成，PR 保持 draft。
+- 注意 OED 分类纠错、FeatDepth 作者代码身份、GaussianMesh 中文题名对应待核。
+
+- [总表](../sources/sites/vision3d_primary_sources_20261108.md)
+- [研究地图](../wiki/overview/vision-3d-perception-reconstruction.md)
+
 ## [2026-11-07] structural | roadmap/depth-*.md — 30 条纵深路线精简标题为「中文（English）」（去掉「路线（纵深）：如果目标是」前缀与流程链），长摘要改为首屏导读三要点（为谁 / 路径 / 纵深路线）
 
 ## [2026-11-07] ingest | OpenRewrite 官方源码与文档：LST / Recipe / Visitor / 调度器

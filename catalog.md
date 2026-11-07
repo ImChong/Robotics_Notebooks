@@ -7276,6 +7276,7 @@
 - [T-RO 分类 04：生成模型综述](wiki/overview/tro-manip-category-04-generative-models-survey.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [VGGT 几何状态综述视角](wiki/overview/vggt-geometric-state-survey.md) — VGGT 的价值不在「又出一个 depth 网络」，而在一次前馈同时给出可复用的几何状态：** 多视图 latent **Z<sub>geo</sub>** 与结构化输出 **R<sub>geo< `📅unknown` `[overview_page]`
 - [视频–接触–控制：10 篇论文的阅读坐标](wiki/overview/video-contact-control-10-papers-technology-map.md) — 具身智能正在把「看懂人类视频」、「仿真与控制接口」、「接触几何」与「大模型持续适配」焊成同一条动作链路——单点刷榜不如看机制能否复用到更长视野与更开放场景。 `📅unknown` `[overview_page]`
+- [视觉感知与三维重建研究地图 / 3D Vision and Reconstruction](wiki/overview/vision-3d-perception-reconstruction.md) — 一句话定义：** 这是一张跨 SLAM、自动驾驶多传感器融合、深度估计、点云检测、结构光、NeRF 和 Gaussian Splatting 的任务与原始资料导航图，而非任何单篇论文的复现报告。 `📅unknown` `[overview_page]`
 - [视觉聚焦与数据效率：10 篇论文的阅读坐标](wiki/overview/visual-focus-data-efficiency-10-papers-technology-map.md) — 把视觉局部性、规划器经验、记忆压缩与空间/交互中间表示写进训练接口，比单纯堆数据或堆参数更省样本、更可解释。 `📅unknown` `[overview_page]`
 - [VLA 部署与系统可靠性：12 篇论文阅读坐标](wiki/overview/vla-deploy-12-papers-technology-map.md) — 「代码能否帮部署」取决于工程契约是否统一、感知退化是否被评测、以及安全/通信是否进入闭环——而非再多一个策略结构。 `📅unknown` `[overview_page]`
 - [VLA 演进：从动作 Token 到分层具身智能体](wiki/overview/vla-evolution-lineage.md) — VLA 的真正演进不是「VLM 越来越大」，而是 **语义主干与动作生成逐步解耦**，并重新发现 **多时间尺度分层**（慢语义 → 快 chunk → 更快全身稳定）；2026 年前沿把 **记忆、 `📅unknown` `[overview_page]`
