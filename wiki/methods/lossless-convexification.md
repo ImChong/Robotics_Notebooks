@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, optimal-control, trajectory-optimization, convex-relaxation, rocket-landing]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-08
 related:
   - ../concepts/powered-descent-guidance.md
   - ./successive-convexification.md
