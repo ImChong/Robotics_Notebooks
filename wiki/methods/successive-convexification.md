@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, trajectory-optimization, optimal-control, sequential-convex-programming, rocket-landing]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-08
 related:
   - ../concepts/powered-descent-guidance.md
   - ./lossless-convexification.md
