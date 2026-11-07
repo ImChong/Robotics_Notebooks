@@ -333,6 +333,8 @@
     "entity-project-cari4d": "entity-paper-cari4d",
     "entity-paper-trace-cross-embodiment-bfm": "entity-paper-trace-humanoid-transfer",
     "entity-atom01-train": "entity-roboparty-train",
-    "entity-atom01-deploy": "entity-roboparty-deploy"
+    "entity-atom01-deploy": "entity-roboparty-deploy",
+    "entity-robodoctor-rsi": "entity-paper-robodoctor",
+    "wiki-entities-robodoctor-rsi": "entity-paper-robodoctor"
   }
 }

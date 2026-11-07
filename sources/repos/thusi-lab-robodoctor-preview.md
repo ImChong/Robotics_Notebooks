@@ -8,6 +8,10 @@
 - **关联论文**：截至收录日，官网尚未发布 arXiv / 论文链接
 - **开放状态**：官网将此仓库列为 Code 入口；当前 GitHub 仓库无文件（size 为 0），未见可运行代码或数据发布。项目页本身提供实验结果与部分运行记录。
 
+## 2026-11-07 后续进展
+
+正式 Python 实现在 <https://github.com/THUSI-Lab/RoboDoctor> 已公开。此页仅保留 2026-10-22 Preview 空仓库的历史核验，避免与 [正式源码归档](robodoctor.md) 混淆。
+
 ## 一句话
 
 RoboDoctor-Preview 是 RoboDoctor 项目官网当前指向的代码仓库，但截至 2026-10-22 尚为空仓库，不构成可复现实现。
@@ -20,7 +24,7 @@ RoboDoctor-Preview 是 RoboDoctor 项目官网当前指向的代码仓库，但�
 
 ## 对 wiki 的映射
 
-- 主实体：[RoboDoctor](../../wiki/entities/robodoctor-rsi.md)
+- 主实体：[RoboDoctor](../../wiki/entities/paper-robodoctor.md)
 - 项目页原始资料：[RoboDoctor 官方项目页](../sites/robodoctor-rsi-github-io.md)
 
 ## 参考来源（原始）
