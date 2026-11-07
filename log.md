@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | Scenario skills 与 Scenario for Blender：按实读内容校正结构数字、验证声明与机器人关联，通读范围如实标注（均未完成）
+
+## [2026-11-07] ingest | scenario-labs/skills（Scenario Agent Skills）：新增 scenario-labs-skills 实体与来源归档
+
 ## [2026-11-07] ingest | Anthropic《The components of agent memory》与 Claude Cookbook《Dreaming with a dynamic workflow》：新建 agent 记忆与 dreaming 概念页和 cookbook 节点，核对 sleep-time compute 引用与仓库（MIT），读完页面与 notebook 全部说明/关键代码，未运行代码
 
 ## [2026-11-07] ingest | 通读 Hi Robot 原文与附录，复用既有节点，纠正高层回应流向和指标口径，补原文溯源与开放状态核查。

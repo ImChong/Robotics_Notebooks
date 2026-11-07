@@ -6163,6 +6163,7 @@
 - [Scalabot / HERON-World Model（松延动力）](wiki/entities/scalabot-heron-world-model.md) — Scalabot（缩放机器人）** 是 松延动力（Noetix Robotics） 于 2026-09-08 发布的通用 `📅unknown` `[entity_page]`
 - [Scanford（图书馆盘点机器人）](wiki/entities/scanford.md) — Scanford** 是 Robot-Powered Data Flywheel 框架在  `📅unknown` `[entity_page]`
 - [Scenario for Blender](wiki/entities/scenario-blender-plugin.md) — Scenario for Blender** 是 Scenario Labs 的实验性 Blender Python 扩展，能把场景截图、相机视图、动画 playblast、选中网格和文本提示发送 `📅unknown` `[entity_page]`
+- [Scenario Agent Skills（scenario-labs/skills）](wiki/entities/scenario-labs-skills.md) — scenario-labs/skills** 是 Scenario Inc. 发布的 Agent Skills 合集（MIT）：把「如何用 Scenario 生成并交付内容」写成 `SKILL.m `📅unknown` `[entity_page]`
 - [SceneVerse++](wiki/entities/sceneverse-pp.md) — SceneVerse++** 是一套面向 **3D 场景理解** 的互联网级训练数据：从海量无标注网络视频中重建相机位姿与稠密几何，再自动生成实例级分割与高层语义标注（含空间问答与导航指令），用于 `📅unknown` `[entity_page]`
 - [ScheduleStream](wiki/entities/schedulestream.md) — ScheduleStream**（项目页 · [NVlabs/schedulestream](https://github `📅unknown` `[entity_page]`
 - [ScienceDiscovery](wiki/entities/sciencediscovery.md) — ScienceDiscovery**（GitHub · [AtomGit](https:/ `📅unknown` `[entity_page]`
