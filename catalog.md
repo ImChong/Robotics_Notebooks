@@ -716,6 +716,7 @@
 - [God's Eye View](wiki/entities/gods-eye-view.md) — God's Eye View**（bilawalsidhu/gods-eye-view，入口 [m `📅unknown` `[entity_page]`
 - [Google Cloud GPU](wiki/entities/google-cloud-gpu.md) — Google Cloud GPU** 涵盖 **Compute Engine GPU 虚拟机**与 **Vertex AI** 托管 ML 服务，是除 AWS 外最常用的 **超大规模云 GPU `📅unknown` `[entity_page]`
 - [Google Colab](wiki/entities/google-colab.md) — Google Colab**（colab.research.google.com）是 Google 提供的 **云端 J `📅unknown` `[entity_page]`
+- [Google Research：Grounding AI agents in biological reality（自主湿实验的构件）](wiki/entities/google-grounding-ai-agents-wet-labs.md) — Google Research 的一篇综述性博客：把「物理接地的实验台孪生（VERID）」「适配体闭环沙盒」「表位切除的 de novo 蛋白结合剂设计」三项独立研究，讲成通向 AI agent  `📅unknown` `[entity_page]`
 - [GPU Unlock](wiki/entities/gpu-unlock.md) — GPU Unlock** 是一组 Linux 内核模块项目，在 NVIDIA 驱动接管 GPU 前调整特定 SM speed-select 配置，以改变部分张量指令的发射速率。截图中的 RTX 3 `📅2026-10-25` `[entity_page]`
 - [算力自由（GPUFree）](wiki/entities/gpufree.md) — 算力自由**（gpufree.cn，北京算力自由科技有限公司）是国内 **GPU 云平台**：整合多地 IDC 资源，用**容器化**方式把物 `📅unknown` `[entity_page]`
 - [恒源云（GPUShare）](wiki/entities/gpushare.md) — 恒源云**（gpushare.com）是专注 AI 的 **共享 GPU 算力平台**，提供云市场租卡、官方深度学习镜像与自研 **OSS 个人数 `📅unknown` `[entity_page]`
@@ -1588,6 +1589,7 @@
 - [Agensh（多 agent 组织智能扩展）](wiki/entities/paper-agensh.md) — Agensh 是一个没有中心编排者的多 agent harness：worker 通过共享工作区、消息与共享上下文自行认领、执行与合并，并把规模扩大到 1,024 个 agent。 `📅unknown` `[entity_page]`
 - [Agent-Friendly by Design：用 SQL 引擎比较 MoonBit 与 Rust](wiki/entities/paper-agent-friendly-by-design.md) — Agent-Friendly by Design: An Empirical Comparison of MoonBit and Rust in AI-Driven Software Constr `📅unknown` `[entity_page]`
 - [AgentGarten（Code Worlds for Evolving Agents）](wiki/entities/paper-agentgarten.md) — AgentGarten**（arXiv:2610.12374，[项目页](https://mirros-lab.github `📅unknown` `[entity_page]`
+- [Aptamers as a sandbox for lab-in-the-loop agentic molecular discovery](wiki/entities/paper-agentic-aptamer-sandbox.md) — 论文：** arXiv:2610.24806（q-bio.BM，v1，2026-10-17）／[PDF（gstatic，27 `📅unknown` `[entity_page]`
 - [Agentic Coding Agent（arXiv:2609.26499）](wiki/entities/paper-agentic-coding-manipulation.md) — Agentic Coding Agent**（*Generalizing Manipulation Skills with a Local Coding Agent*，[arXiv:2609.26 `📅unknown` `[entity_page]`
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](wiki/entities/paper-agentic-real2sim.md) — Agentic Real2Sim**（*Physics-based World Modeling with Vision-Language Agents*，[arXiv:2607.19190](h `📅unknown` `[entity_page]`
 - [AgenticRoboRL：把 Coding-Agent 后训练用于机器人 Planner](wiki/entities/paper-agentic-roborl.md) — AgenticRoboRL**（arXiv:2610.28589，[项目页](https://xinxinliu-ai.gi `📅unknown` `[entity_page]`
@@ -2307,6 +2309,7 @@
 - [Energy-Based Policy Orchestration（arXiv:2611.02546）](wiki/entities/paper-energy-based-policy-orchestration.md) — Energy-Based Policy Orchestration**（*Energy-Based Policy Orchestration*，[arXiv:2611.02546](https:/ `📅unknown` `[entity_page]`
 - [环境编辑奖励学习：将环境编辑作为奖励学习的纠正信号](wiki/entities/paper-environment-edits-corrective-reward-learning.md) — 环境编辑奖励学习**（*Environment Edits as a Corrective Signal for Reward Learning*，[arXiv:2610.35659](https `📅unknown` `[entity_page]`
 - [EO-1（EO-Robotics）](wiki/entities/paper-eo1.md) — EO-1**（arXiv:2508.21112，[GitHub](https://github.com/EO-Robotic `📅unknown` `[entity_page]`
+- [Agent-guided Epitope Excision（表位切除 + 智能体引导的 de novo 结合体设计）](wiki/entities/paper-epitope-excision-binder-design.md) — 本页依据 Google Research / DeepMind / Cloud 论文 *Agent-guided epitope excision enables economical de novo `📅unknown` `[entity_page]`
 - [EPOpt: learning robust neural network policies using model ensembles](wiki/entities/paper-epopt-robust-policies-model-ensembles.md) — EPOpt: learning robust neural network policies using model ensembles**（[arXiv:1610.01283](https:// `📅unknown` `[entity_page]`
 - [e-puck 通信价值演化：信号只在带来新信息时出现](wiki/entities/paper-epuck-value-of-information-communication.md) — 论文：** *The value of information and the emergence of communication in evolved e-puck robots*（[arXi `📅unknown` `[entity_page]`
 - [EquivDP3：面向数据高效人形移动操作的SIM(3)不变点云编码器](wiki/entities/paper-equivdp3.md) — EquivDP3: A SIM(3)-Invariant Point-Cloud Encoder for Data-Efficient Humanoid Loco-Manipulation**（ `📅unknown` `[entity_page]`
@@ -5704,6 +5707,7 @@
 - [Veo World Simulator](wiki/entities/paper-veo-world-simulator-policy-testing.md) — Veo World Simulator** 收录于 [具身智能研究室 · 具身世界模型六路线综述](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5G `📅unknown` `[entity_page]`
 - [VEOcc++（arXiv:2610.27704）](wiki/entities/paper-veocc-plus-plus.md) — VEOcc++**（*VEOcc++: Learning Persistent Voxel Feature Maps for Embodied Online Semantic Occupancy  `📅unknown` `[entity_page]`
 - [VERAGMIL：VR 颗粒食物喂食仿真与模仿学习](wiki/entities/paper-veragmil.md) — VERAGMIL**（*Virtual Environment for Scooping Granular Foods with Imitation Learning Models*；[arXiv `📅unknown` `[entity_page]`
+- [VERID：自动化实验室里 agentic self-play 的语义表示](wiki/entities/paper-verid-semantic-representation-lab-self-play.md) — VERID**（VERified Infrastructure for Discovery Laboratories）是 Google 研究者（Delley、Sirkovic、Pawlosky 等 `📅unknown` `[entity_page]`
 - [VeriFine（arXiv:2610.08761）](wiki/entities/paper-verifine-scaling-verification-self-improvement.md) — VeriFine**（*VeriFine: Scaling Verification for Self-Improvement in Embodied Reasoning*，[arXiv:2610 `📅unknown` `[entity_page]`
 - [VerifLM（arXiv:2611.03268）](wiki/entities/paper-veriflm.md) — VerifLM**（*VerifLM: Physically Verified Image-Edit-Guided Goal Pose Generation for Robotic Manipul `📅unknown` `[entity_page]`
 - [VeriVLA：Flow-VLA 的自适应测试时验证](wiki/entities/paper-verivla-test-time-verification.md) — VeriVLA 利用 Flow-VLA 生成的随机性：只在判断为关键的步骤上，从多个候选动作块中挑出预测进度最好的一个。 `📅unknown` `[entity_page]`
@@ -6016,6 +6020,7 @@
 - [菠萝狗 Py-Apple Dog](wiki/entities/py-apple-quadruped.md) — 菠萝狗 Py-Apple Dog**（GitHub）来自 [古月居转载的四足机器人开 `📅unknown` `[entity_page]`
 - [PyBullet](wiki/entities/pybullet.md) — PyBullet** 把 **Bullet3** C++ 物理 SDK 封装为 **Python API `📅unknown` `[entity_page]`
 - [pygeartrain（摆线/行星齿廓与传动比工具）](wiki/entities/pygeartrain.md) — pygeartrain**（CKraft11/pygeartrain）是面向 **齿轮系运动学与齿廓导出**  `📅unknown` `[entity_page]`
+- [PyLabRobot](wiki/entities/pylabrobot.md) — PyLabRobot（PLR）** 是 MIT Media Lab（Esvelt 组）等人开发的开源 Python 库（[文档](https://docs.pylabrobot.org/stabl `📅unknown` `[entity_page]`
 - [PYLEECAN（径向磁通电机开源设计框架）](wiki/entities/pyleecan.md) — PYLEECAN**（Eomys/pyleecan，[pyleecan.org](https://www.pyleecan `📅unknown` `[entity_page]`
 - [pysoem](wiki/entities/pysoem.md) — SOEM 的 Python 绑定，用于快速脚本化调试 EtherCAT 网络。（分类：EtherCAT 语言绑定/封装；语言/形态：Python（绑定 SOEM）） `📅unknown` `[entity_page]`
 - [PythonRobotics](wiki/entities/python-robotics.md) — PythonRobotics**（AtsushiSakai/PythonRobotics）是 G `📅unknown` `[entity_page]`
