@@ -7,7 +7,7 @@ tags:
   - deep-learning
   - foundation-model
 status: complete
-updated: 2026-10-28
+updated: 2026-11-07
 summary: "多模态学习联合建模图像、文本、音频等异质信号，核心是对齐共享语义空间并支持跨模态检索、生成与推理；是 VLM/VLA 的概念地基。"
 related:
   - ./vision-language-feature-fusion.md
@@ -65,6 +65,8 @@ flowchart LR
 「多模态」不等于「具身」；缺少动作与力模态时不能直接当策略。幻觉与错误接地在物理世界代价更高。
 
 ## 关联页面
+
+- [依赖、压缩与协同：多模态信息论](../entities/paper-multimodal-information-theory.md) — 用信息总量、压缩与交互分型补充融合目标的选型视角。
 
 - [视觉–语言特征融合](./vision-language-feature-fusion.md)
 - [VLM 分类法](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
