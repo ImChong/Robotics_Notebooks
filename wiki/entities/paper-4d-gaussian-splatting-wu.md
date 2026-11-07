@@ -82,7 +82,7 @@ sequenceDiagram
     participant G as GaussianModel
     participant DEF as scene/deformation.py
     participant R as gaussian_renderer.render
-    participant OPT as torch optimizer
+    participant UPDATE as torch optimizer
     CLI->>G: GaussianModel(sh_degree, hidden_params)
     G->>DEF: 初始化 deform_network 与 HexPlaneField
     CLI->>S: Scene(dataset, gaussians)
@@ -90,7 +90,7 @@ sequenceDiagram
     loop coarse 优化
         CLI->>R: render(viewpoint, gaussians, stage=coarse)
         R-->>CLI: render_pkg RGB
-        CLI->>OPT: 重建损失反传和参数更新
+        CLI->>UPDATE: 重建损失反传和参数更新
     end
     CLI->>CLI: scene_reconstruction(stage=fine)
     loop fine 优化
@@ -98,7 +98,7 @@ sequenceDiagram
         R->>DEF: deform_network(point, times_sel)
         DEF-->>R: 变形后的 XYZ、scale、rotation
         R-->>CLI: 可微 RGB 与中间量
-        CLI->>OPT: L1/SSIM/时空正则反传与更新
+        CLI->>UPDATE: L1/SSIM/时空正则反传与更新
         CLI->>G: 视参数配置进行 densify/prune
     end
     CLI->>G: 保存 checkpoint / 高斯表示
