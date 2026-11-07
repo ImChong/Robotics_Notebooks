@@ -1,5 +1,10 @@
 ---
 type: entity
+project_id: agentsdock
+project: https://agentsdock.net/
+code: https://github.com/ZhengyiLuo/AgentsDock
+original:
+  - ../../sources/repos/agentsdock-readme-review.md
 tags:
   - llm-agents
   - coding-agents
@@ -45,7 +50,7 @@ summary: "AgentsDock（ZhengyiLuo）是面向 agentic AI 研究的开源跨端 I
 - **与 Hermes / Agent Reach 互补**：[Hermes Agent](hermes-agent.md) 是 **自带工具环与消息网关的代理 OS**；[Agent Reach](agent-reach.md) 是 **外网读搜脚手架**；AgentsDock **不替换** 代理运行时，而是给 **已有 Claude Code / Codex / Cursor** 套一层 **持久会话 + 富媒体审阅 + 多客户端** 壳。交付流程 skills 仍可对齐 [Superpowers（obra）](superpowers-obra.md)。
 - **开源状态清晰（2026-10-01 项目页核查）**：agentsdock.net 与 GitHub 均链双仓；**无**「待发布代码」占位。限制在于 **模型非本地**、Windows 安装包可能未签名、Team Network 等能力仍标 beta — 见官方 FAQ / release notes。
 
-## 核心结构
+## 核心原理
 
 | 组件 | 职责 |
 |------|------|
@@ -109,6 +114,10 @@ sequenceDiagram
   C-->>U: 审阅图片/视频/代码变更
 ```
 
+## 2026-11-07 原文复核
+
+已完整阅读客户端与独立后端根 README。客户端现提供 `npm install -g agentsdock` 安装入口，并支持版本包含该集成时的桌面 Gemini API 连接。两个仓库的后端归属说明存在冲突：客户端称 `server/` 是维护中的后端，独立 AgentsServer README 则称其为兼容夹具。部署前需按选定发行版核对，不能把不同仓库 main 当作同一发布快照。下文旧版本特性说明保留历史语境，不作为当前功能保证；具体变化见[原文复核归档](../../sources/repos/agentsdock-readme-review.md)。
+
 ## 工程实践
 
 | 主题 | 读法 |
@@ -138,6 +147,8 @@ sequenceDiagram
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译范式；AgentsDock 编译的是 **代理会话与产物审阅体验**
 
 ## 参考来源
+
+- [官方 README 完整复核](../../sources/repos/agentsdock-readme-review.md)
 
 - [AgentsDock 产品站归档](../../sources/sites/agentsdock-net.md)
 - [AgentsDock 客户端仓库归档](../../sources/repos/zhengyiluo_agentsdock.md)
