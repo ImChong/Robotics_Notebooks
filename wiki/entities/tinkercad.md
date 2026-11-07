@@ -2,7 +2,7 @@
 type: entity
 tags: [software, cad, education, simulation, embedded, arduino, circuits, autodesk, stem, maker]
 status: complete
-updated: 2026-08-02
+updated: 2026-11-08
 related:
   - ./wokwi.md
   - ./freecad.md
