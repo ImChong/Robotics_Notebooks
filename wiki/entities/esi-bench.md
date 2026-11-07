@@ -193,7 +193,7 @@ sequenceDiagram
 - 关注是否会证伪、修正信念及合理停止，不能只增加视觉输入和探索步数。
 - 复现属于高层离散动作的仿真空间 QA；**不能**当作真实机器人 manipulation success rate 或 Sim2Real 证明。
 
-## 工程复现要点
+## 工程实践与复现要点
 
 - **环境：** 官方 README 使用既有 **`behavior` conda** 环境；需本地 **OmniGibson + BEHAVIOR-1K** 资产。
 - **运行器：** `src/main.py` 调用 `src/active_explore/pipeline.py`，经注册表分发任务、加载 OmniGibson、逐步截图和调用 **GPT / Gemini** 模型；每题写 `*_answer.json` 并保存 `step_*.png`（见 [仓库归档](../../sources/repos/esi_bench.md)）。
