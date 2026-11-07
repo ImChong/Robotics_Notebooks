@@ -107,6 +107,9 @@ README：python run_slam.py configs/Replica/room0.yaml --input_path ... --output
 
 ## 关联页面
 
+- [GS-SLAM（基于高斯的另一种 RGB-D SLAM 方法）](./paper-gs-slam-yan.md)
+- [NeRF（神经辐射场与可微体渲染基础）](./paper-nerf-mildenhall.md)
+
 - [4D-GS（动态新视角合成）](./paper-4d-gaussian-splatting-wu.md)
 - [COLMAP 稀疏/稠密重建](./colmap.md)
 - [LVI-SAM](./paper-lvi-sam.md)
