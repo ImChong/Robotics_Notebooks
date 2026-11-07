@@ -2,8 +2,9 @@
 type: entity
 project_id: pv-rcnn
 arxiv: "1912.13192"
-project: https://github.com/open-mmlab/OpenPCDet
 code: https://github.com/open-mmlab/OpenPCDet
+code_scope: pcdet/models/detectors/pv_rcnn.py
+project_distinction: "PV-RCNN 是独立论文提出的 3D 目标检测算法；这里复用 OpenPCDet 工具箱的 PVRCNN 实现，不是第二个 OpenPCDet 项目。"
 tags: [3d-vision, point-cloud, depth-estimation, autonomous-perception]
 status: complete
 updated: 2026-11-08
