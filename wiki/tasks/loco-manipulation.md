@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-10-29
+updated: 2026-11-07
 original:
   - ../../sources/papers/humanoid_loco_manipulation_survey_reading_arxiv_2501_02116.md
 sources:
@@ -612,3 +612,7 @@ flowchart TD
 ## 统一测试床与系统级评测
 
 - [LocoManiLab](../entities/paper-locomanilab.md) — 将任务、示范数据、策略、全身控制器与仿真到真机评测整合进同一人形移动操作测试床（arXiv:2610.30876）。
+
+## 显式力命令接口
+
+- [Ctrl-F](../entities/paper-ctrl-f.md)：无物体反向力训练低层，高层以物体反馈在线调力；G1验证推踢与增载适应，尚不支持未见动作直接泛化。
