@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-10-24
+updated: 2026-11-07
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./tactile-sensing.md
@@ -259,6 +259,8 @@ flowchart LR
 - RL 视角的具体实现 → [在 RL 中利用触觉反馈](../queries/tactile-feedback-in-rl.md)
 
 ## 关联页面
+
+- [触觉多模态融合综述](../entities/paper-tactile-multimodal-fusion-survey.md) — 从数据、方法、硬件与评测维度组织触觉视觉语言融合；用于区分语义对齐与接触控制证据。
 
   - [TouchScale](../entities/touchscale.md) — 大规模人手视触觉数据，用于触觉感知的机器人操作策略训练
 
