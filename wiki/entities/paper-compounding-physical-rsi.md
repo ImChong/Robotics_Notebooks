@@ -21,7 +21,7 @@ related:
   - ./awesome-rsi.md
   - ./robodojo.md
   - ./xpolicylab.md
-  - ./robodoctor-rsi.md
+  - ./paper-robodoctor.md
   - ./paper-last-ai-built-by-humans-rsi.md
   - ./paper-rsi-survey-2607-07663.md
   - ./paper-rsi-anything.md
@@ -84,7 +84,7 @@ summary: "Compounding Physical RSI（arXiv:2611.06654v1，CSU MinosLab）：诊�
 | [Physical RSI Research Map](./physical-rsi-research-map.md) | SAIL 的 Physical RSI 文献地图（配套论文 arXiv:2610.18842，库内未单独建论文节点） | 本文 §2.1 引用 [16]=该论文（「Who Improves the Robot? Toward Physical Recursive Self-Improvement」）作为 Physical RSI 的定义来源，本文是其框架下的一个具体实例；按其 L0–L5 读法，本文的改进算子 A、C、Uoff 固定（论文 §7 自述），更新对象是策略权重，属于「继承执行系统更新」一类，推测约在 L1–L3，**不是**程序级的元改进 |
 | [Physical RSI 1.0（HKU MMLab×Kinetix）](./physical-rsi.md) | 项目页型节点，Darwinian Self-Harness，改写代码 harness | 同在 RoboDojo-Sim 上竞榜，路线不同：它改 harness 代码，本文改 VLA 权重。**数字出入见「核对与出入」** |
 | [Awesome RSI](./awesome-rsi.md) | RSI 精选列表 | 索引页；本文可作为其「具身 / 机器人」方向的条目 |
-| [RoboDoctor-RSI](./robodoctor-rsi.md) | 训练免费、冻结低层策略、诊断后选择控制模式 | 同为「诊断 + 复用验证经验」，但 RoboDoctor 不更新权重；本文更新权重并做保留 |
+| [RoboDoctor-RSI](./paper-robodoctor.md) | 训练免费、冻结低层策略、诊断后选择控制模式 | 同为「诊断 + 复用验证经验」，但 RoboDoctor 不更新权重；本文更新权重并做保留 |
 | [The Last AI Built by Humans](./paper-last-ai-built-by-humans-rsi.md) | 五级自治框架与 HCI 的概念论文 | 本文 [15] 引用它作为「现代 RSI」来源；按其框架，本文属于执行改进而非元改进 |
 | [RSI Survey 2607.07663](./paper-rsi-survey-2607-07663.md) | 1,250 篇自改进文献 survey | 综述，非同篇 |
 | [RSI-Anything](./paper-rsi-anything.md) / [MetaRSI-v1](./paper-metarsi-v1.md) / [Dream-RSI](./paper-dream-rsi.md) | 其他 RSI 论文节点 | 均为不同 arXiv 编号与方法，非同篇 |
@@ -224,7 +224,7 @@ seed 间跨度为 1.07 分和 0.74 个百分点（§6.2）；论文据此称留�
 - **与草稿登记（v1 摘要口径）：** 草稿只写「摘要提出能力缺口评估、离线强化学习修补和权重空间候选筛选；是否支持真机部署需核对全文」。全文核对结论：**不支持真机**，仅仿真；并且摘要里的三环节在全文里只有式 (1)–(3) 级别的描述，没有可复现超参。版本号仍为 v1（arXiv 摘要页仅列 [v1]）。
 - **与库内 [Physical RSI 1.0](./physical-rsi.md) 的数字出入：** 该页记录项目页口径「RoboDojo-Sim Overall #1（2026-09-28：Score 36、SR 31%）」，而本文表 2 的最高值为 26.15 / 20.70%，且表中无 HKU MMLab 的 Physical RSI 1.0。可能原因（均为推测）：评测日期 / 赛道 / 协议不同，或该榜条目不满足本文所称的「公开基线」口径。我尝试访问 RoboDojo 榜单页，页面为前端渲染，抓取不到榜单内容，**无法核实**当前榜单上是否存在 CSU-AI-07 及其排名；两页数字请分别按各自出处引用，不要合并比较。
 - **作者署名：** 论文题头只写 CSU MinosLab；作者上标 1–6 在页面上定义为贡献角色（核心算法、主要贡献者、资源贡献者、项目负责人、执行负责人、技术负责人），不是机构编号。CSU 的全称论文未展开（推测为某高校缩写，未核实）；通讯作者为 Xiu Su。
-- **数据集计数：** 本文称 RoboDojo-Sim 42 任务，与 [RoboDojo](./robodojo.md) 页一致；[RoboDoctor-RSI](./robodoctor-rsi.md) 页提到的 54 任务是另一设置，不要混用。
+- **数据集计数：** 本文称 RoboDojo-Sim 42 任务，与 [RoboDojo](./robodojo.md) 页一致；[RoboDoctor-RSI](./paper-robodoctor.md) 页提到的 54 任务是另一设置，不要混用。
 
 ## 源码运行时序图
 
@@ -236,7 +236,7 @@ seed 间跨度为 1.07 分和 0.74 个百分点（§6.2）；论文据此称留�
 |------|--------|------------|----------|------------|
 | 本文 | 策略权重（离线 RL） | 锚定项 + 线性插值 + 全基准晋升 | RoboDojo-Sim 仿真 | — |
 | [Physical RSI 1.0](./physical-rsi.md) | 代码 harness（System 2 改写 System 1） | 评测选择 / 继承 | RoboDojo-Sim（项目页口径） | 同基准、不同对象；数字见上节 |
-| [RoboDoctor-RSI](./robodoctor-rsi.md) | 不改权重，选控制模式并复用验证经验 | 冻结策略 | RoboDojo | 同为诊断驱动，但无权重更新 |
+| [RoboDoctor-RSI](./paper-robodoctor.md) | 不改权重，选控制模式并复用验证经验 | 冻结策略 | RoboDojo | 同为诊断驱动，但无权重更新 |
 | [RSI-Anything](./paper-rsi-anything.md) | 预测式世界模型 + 可验证改进环 | 真实评估反馈 | 见该页 | 方法路径不同 |
 | [Dream-RSI](./paper-dream-rsi.md) / [MetaRSI-v1](./paper-metarsi-v1.md) | 探索策略 / 多算子元调度 | 见各页 | 非本文基准 | 概念层相邻 |
 | [DAgger](../methods/dagger.md) / [Behavior Cloning](../methods/behavior-cloning.md) | 用专家回标缓解分布偏移 | — | — | 本文 §4.2 引用 DAgger 论文作为「近分布数据」的依据，但不依赖专家回标，改用已验证片段 |
@@ -247,7 +247,7 @@ seed 间跨度为 1.07 分和 0.74 个百分点（§6.2）；论文据此称留�
 - [Recursive Self-Improvement（概念）](../concepts/recursive-self-improvement.md)
 - [Physical RSI 1.0](./physical-rsi.md) · [Physical RSI Research Map](./physical-rsi-research-map.md) · [Awesome RSI](./awesome-rsi.md)
 - [RoboDojo](./robodojo.md) · [XPolicyLab](./xpolicylab.md) · [具身评测基准总览](../overview/hub-embodied-eval-benchmark.md)
-- [RoboDoctor-RSI](./robodoctor-rsi.md) · [RSI 四层五推动](../queries/rsi-four-tier-five-pushes.md)
+- [RoboDoctor-RSI](./paper-robodoctor.md) · [RSI 四层五推动](../queries/rsi-four-tier-five-pushes.md)
 - [VLA](../methods/vla.md) · [Manipulation](../tasks/manipulation.md)
 - 表 2 基线：[G0.5](./paper-galaxea-g05.md) · [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) · [π0.5](./paper-pi05-open-world-vla.md) · [π0](./paper-pi0.md) · [SimpleMemVLA](./paper-simplememvla.md) · [InternVLA-A1.5](./paper-internvla-a15-unified-vla.md) · [X-VLA](./paper-x-vla.md)
 

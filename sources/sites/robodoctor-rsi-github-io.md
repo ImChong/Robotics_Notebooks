@@ -7,6 +7,10 @@
 - **论文**：截至收录日，项目页将 Paper / arXiv 标为待发布，未提供论文链接
 - **开源状态**：部分公开。项目页公开方法说明、任务结果和运行记录；代码按钮所指的官方 Preview 仓库当前为空（GitHub 仓库大小为 0），尚不能据此复现运行时。
 
+## 状态追踪（2026-11-07）
+
+2026-10-22 的 Preview 空仓库判断为历史快照。新的正式开源实现位于 <https://github.com/THUSI-Lab/RoboDoctor>，请参见 [更新归档](robodoctor.md)。
+
 ## 一句话
 
 RoboDoctor 是一个训练免费（training-free）的机器人策略自我改进系统：在冻结低层策略的前提下，基于观测诊断任务困难，适时改用 Agent 控制或修正策略动作，并复用经过验证的操作经验。
@@ -23,7 +27,7 @@ RoboDoctor 是一个训练免费（training-free）的机器人策略自我改�
 
 ## 对 wiki 的映射
 
-- 主实体：[RoboDoctor](../../wiki/entities/robodoctor-rsi.md)
+- 主实体：[RoboDoctor](../../wiki/entities/paper-robodoctor.md)
 - 代码入口归档：[RoboDoctor-Preview](../repos/thusi-lab-robodoctor-preview.md)
 - RSI 背景：[递归自我改进](../../wiki/concepts/recursive-self-improvement.md)
 
