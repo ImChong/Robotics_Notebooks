@@ -4,7 +4,7 @@ project_id: blinkmimic
 code: https://github.com/fuyichen0725/blinkmimic
 tags: [humanoid, motion-tracking, world-model, reinforcement-learning, mujoco, unitree-g1]
 status: draft
-updated: 2026-11-03
+updated: 2026-11-07
 summary: "BlinkMimic 在社区 SuperMimic 和 InstantTrack 基础上，研究 G1 仿真动作跟踪的分钟级训练。"
 related:
   - ./instanttrack.md
@@ -88,6 +88,8 @@ sequenceDiagram
 - 主要阅读 README、入口、预设、训练循环及环境和网络相关段落；尚未完整审计奖励、评测、数据转换和异步实现。
 
 ## 关联页面
+
+- [XMimic（JAX）](./paper-xmimic-jax.md)：将本训练器重构为编译程序与多 GPU 流水线；其 H100 对比排除编译，勿与本页 RTX 4090 时间混算。
 
 - [InstantTrack](./instanttrack.md)：共同基础与同机基线。
 - [SuperMimic](./paper-supermimic.md)：可微世界模型方法。
