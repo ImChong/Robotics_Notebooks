@@ -1347,13 +1347,16 @@ button.home-wiki-heatmap-cell.is-active {
 @media (max-width: 679px) {
   .home-wiki-heatmap-inner { min-width: max-content; }
   /* 星期列吸附左侧，滚到最右时「一/三/五」仍可见；
-     左右 box-shadow 盖住滚动容器 2px padding 与列间 gap，避免格子从缝里露出 */
+     左右 box-shadow 盖住滚动容器 2px padding 与列间 gap，避免格子从缝里露出；
+     padding-top/负 margin-top 18px（= 月份行高）向上延伸底色，盖住滚过的月份标签 */
   .home-wiki-heatmap-weekdays {
     position: sticky;
     left: 0;
     z-index: 1;
     background: var(--bg);
     box-shadow: -2px 0 0 var(--bg), var(--hm-gap) 0 0 var(--bg);
+    padding-top: 18px;
+    margin-top: -18px;
   }
 }
 .section-subtitle {
