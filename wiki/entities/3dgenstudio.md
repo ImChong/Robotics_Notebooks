@@ -38,6 +38,10 @@ summary: "3D Gen Studio（visualbruno/3DGenStudio，v2.1.0）是本地优先的�
 
 # 3D Gen Studio
 
+## 一句话定义
+
+**3D Gen Studio** 是以 ComfyUI 与外部 AI API 为生成后端的本地优先 3D 网格资产工作台，与 CozyClay 的场景/动作/镜头预演定位不同。
+
 **3D Gen Studio**（[visualbruno/3DGenStudio](https://github.com/visualbruno/3DGenStudio)，官网 [3dgenstudio.com](https://www.3dgenstudio.com/)，产品版本 **v2.1.0**）是面向 **AI 驱动 3D 网格生产** 的 **本地优先** 开源工作台：在单一可视化界面中编排 **文生图 → 图像编辑 → 网格生成 → UV / 纹理 → 导出**，原生对接 **ComfyUI** 与外部 REST/GraphQL API，并提供 Kanban、Node Graph、Assets Library、Mesh Editor 与 **MCP Server**。由 **Bruno Fargnoli（visualbruno）** 维护。
 
 ## 英文缩写速查
@@ -63,7 +67,7 @@ summary: "3D Gen Studio（visualbruno/3DGenStudio，v2.1.0）是本地优先的�
 | 代码 | <https://github.com/visualbruno/3DGenStudio> |
 | 许可 | 3D Gen Studio Community License（生成物归用户；禁转售软件本体与付费 SaaS） |
 
-## 为什么对机器人栈重要
+## 为什么重要：对机器人栈的价值
 
 1. **场景道具与外观资产瓶颈：** 具身仿真与演示常需要大量 **静态网格道具**（桌椅、物体外壳、背景件）。本工作室把 **ComfyUI 工作流 + 第三方 mesh API** 编排成可复用的 **Images → Mesh Gen → Texturing** 管线，降低「单次黑盒网站生成」的摩擦。 需要参考图和粗网格的高细节细化可另看 [Hi3D v1.0](./hi3d-v1-0.md)，其输出仍需下游验证后才能作为仿真资产。
 2. **与制造 CAD / 仿真关节资产的选型边界：** 输出是 **GLB / OBJ / FBX 等网格**，适合渲染与粗碰撞近似；**不是** [文字生成 CAD](../concepts/text-to-cad.md) 的 STEP/B-rep，也不是 [Articraft](./articraft.md) / [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) 的 **仿真就绪可关节** 真值——进入 MuJoCo / Isaac 前仍须简化碰撞、惯量与坐标系（见 [Sim2Real](../concepts/sim2real.md)）。
