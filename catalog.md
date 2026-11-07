@@ -5401,6 +5401,7 @@
 - [SkillX：人形足球统一多技能策略学习](wiki/entities/paper-skillx-humanoid-soccer.md) — SkillX**（*SkillX: Unified Multi-Skill Policy Learning for Humanoid Soccer*，[arXiv:2609.06718](http `📅unknown` `[entity_page]`
 - [Skyfall-GS：从卫星影像合成沉浸式 3D 城市场景](wiki/entities/paper-skyfall-gs.md) — Skyfall-GS**（Lee et al., arXiv:2510.15869，项目页，[代码](https://gith `📅unknown` `[entity_page]`
 - [SkyJEPA（四旋翼长时域世界模型）](wiki/entities/paper-skyjepa.md) — SkyJEPA** 用 JEPA 式潜动力学预测四旋翼的长时域状态，并用物理启发探针把潜变量映射为可解释状态，再用采样型最优控制在嵌入式硬件上做高频闭环控制。 `📅unknown` `[entity_page]`
+- [SLA: Scaling Spatial-Language-Action Model via Continual Pre-training / 通过持续预训练扩展空间-语言-动作模型](wiki/entities/paper-sla-spatial-language-action.md) — SLA** 是在 π0.5 视觉-语言-动作策略上引入跨本体持续预训练与**仅训练期存在**的三维空间特征监督，让动作策略学习更 `📅unknown` `[entity_page]`
 - [SLAMFormer-∞（Infinite SLAM Transformer）](wiki/entities/paper-slamformer-infinity.md) — SLAMFormer-∞**（*Infinite SLAM Transformer for Unbounded Frontend and Backend Processing*，[arXiv:26 `📅unknown` `[entity_page]`
 - [SleepWalking (SWAQ)：特权表征塑造盲走](wiki/entities/paper-sleepwalking.md) — SleepWalking / SWAQ**（arXiv:2608.30883）由 **西北工业大学（NWPU）、上海交通大学 `📅unknown` `[entity_page]`
 - [SLIM-0.5B（动作接地预测隐变量策略 · arXiv:2608.09771）](wiki/entities/paper-slim-05b.md) — SLIM-0.5B**（*Learning Action-Grounded Predictive Latents for Robot Manipulation*，[arXiv:2608.09771 `📅unknown` `[entity_page]`
