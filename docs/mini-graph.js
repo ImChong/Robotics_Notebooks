@@ -210,6 +210,8 @@
         type: n.type || '',
         community: n.community || '',
         summary: n.summary || '',
+        health_score: n.health_score,
+        health_gaps: n.health_gaps,
         _degree: degreeMap[n.id] || 0
       };
     });
@@ -519,6 +521,8 @@
           type: n.type,
           community: n.community,
           summary: n.summary || '',
+          health_score: n.health_score,
+          health_gaps: n.health_gaps,
           _degree: n._degree
         };
       });

@@ -5996,6 +5996,7 @@
         id: currentPath, label: current.label || currentPath,
         type: current.type || '', community: current.community || '',
         summary: current.summary || '', isCurrent: true,
+        health_score: current.health_score, health_gaps: current.health_gaps,
         _degree: degreeMap[currentPath] || 0,
         fx: W / 2, fy: H / 2
       }].concat(neighborIds.map(function (id) {
@@ -6003,6 +6004,7 @@
         return {
           id: id, label: n.label || id, type: n.type || '', community: n.community || '',
           summary: n.summary || '', isCurrent: false,
+          health_score: n.health_score, health_gaps: n.health_gaps,
           _degree: degreeMap[id] || 0
         };
       }));
