@@ -3855,7 +3855,9 @@
   /** 节点短名：去掉括注 / 冒号后的副标题；全称留给悬停浮窗与读屏。 */
   function roadmapLtreeShortLabel(page, id) {
     var title = String((page && page.title) || id || '');
-    if (page && page.type === 'roadmap_page') title = title.replace(/^路线（[^）]*）[：:]\s*/, '');
+    // 纵深路线标题「中文（缩写）」：节点显示缩写（VLA / BFM / Sim2Real…）；「中文（Teleoperation）」这类完整英文词仍显示中文
+    var abbr = page && page.type === 'roadmap_page' ? /（([A-Za-z0-9]+)）$/.exec(title) : null;
+    if (abbr && /[A-Z].*[A-Z]|\d/.test(abbr[1])) return abbr[1];
     var cut = title.search(/[（(：]|:\s/);
     return cut >= 2 ? title.slice(0, cut).trim() : title;
   }
