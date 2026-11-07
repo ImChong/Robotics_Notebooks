@@ -222,3 +222,4 @@ Robotics_Notebooks 已有 `sources/`、`wiki/`、`schema/`、独立的 ingest/qu
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 是本知识库最核心的主题，体现"好问题回写 wiki"原则
 - [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型代表机器人领域对 LLM 范式的借鉴
 - [AI Auto-Research（学术研究自动化）](../concepts/ai-auto-research.md) — 综述视角下的全生命周期 agent 辅助与 **人机共治 / 溯源** 边界，与本页 ingest/query/lint 同构
+- [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md) — Anthropic 的 agent 记忆与 dreaming（wiki 作为记忆表示，与本库模式同构）
