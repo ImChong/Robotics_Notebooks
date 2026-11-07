@@ -71,7 +71,7 @@ sequenceDiagram
     participant MODEL as pcdet.models.build_network
     participant RUN as train_utils.train_model
     participant NET as detector3d_template
-    participant OPT as optimizer
+    participant UPDATE as optimizer
     CLI->>DATA: build_dataloader(cfg.DATA_CONFIG)
     DATA-->>CLI: train_loader / dataset
     CLI->>MODEL: build_network(cfg.MODEL, dataset)
@@ -80,7 +80,7 @@ sequenceDiagram
     loop 每个训练批次
         RUN->>NET: forward(batch_dict)
         NET-->>RUN: loss_dict / train metrics
-        RUN->>OPT: backward / step
+        RUN->>UPDATE: backward / step
     end
     Note over CLI,NET: tools/demo.py 推理时单独创建 DemoDataset
     CLI->>NET: 加载 checkpoint 后 eval forward
