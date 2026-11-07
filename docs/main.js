@@ -3579,14 +3579,17 @@
       }
 
       var nodes = '';
-      for (var k = 0; k < items.length; k++) nodes += roadmapLtreeNodeHtml(items[k], detailPages, ' data-node="' + k + '"');
+      for (var k = 0; k < items.length; k++) {
+        nodes += roadmapLtreeNodeHtml(items[k], detailPages, ' data-node="' + k + '" draggable="false"');
+      }
       var block = document.createElement('div');
       block.className = 'roadmap-stage-kmap';
       block.setAttribute('data-roadmap-stage-embed', sid);
       block.innerHTML =
         '<p class="roadmap-stage-kmap-head"><span class="roadmap-ltree-mark" aria-hidden="true">' +
-        escapeHtml(formatRoadmapStageBadge(sid).replace(/^S(?=\d)/, '')) + '</span>知识地图 · 本阶段 ' +
-        items.length + ' 个节点</p><div class="roadmap-ltree-stage"><div class="roadmap-ltree-tree">' +
+        escapeHtml(formatRoadmapStageBadge(sid).replace(/^S(?=\d)/, '')) + '</span><span>知识地图 · 本阶段 ' +
+        items.length + ' 个节点<span class="roadmap-stage-kmap-pan"> · 左右拖动查看</span></span></p>' +
+        '<div class="roadmap-ltree-stage"><div class="roadmap-ltree-tree">' +
         '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>' + nodes + '</div></div>';
       var tree = block.querySelector('.roadmap-ltree-tree');
       trees.push({ items: items, tree: tree, svg: tree.firstChild, nodes: tree.querySelectorAll('.roadmap-ltree-node'), parent: [] });
@@ -3644,9 +3647,11 @@
     });
     function draw(st) {
       drawRoadmapLtreeEdges(st);
-      // 窄屏小树比块宽时在块内横向滚动：首次显示先滚到正中（各排居中摆放，窄的排正好落在视野里）
+      // 节点框有最小宽度，小树比块宽时在块内拖动查看：首次显示先滚到正中（各排居中摆放，窄的排正好落在视野里）
       var box = st.tree.parentNode;
-      if (!st.centered && box.clientWidth) {
+      if (!box.clientWidth) return;
+      box.parentNode.classList.toggle('is-pannable', box.scrollWidth > box.clientWidth + 1);
+      if (!st.centered) {
         box.scrollLeft = (box.scrollWidth - box.clientWidth) / 2;
         st.centered = true;
       }
@@ -3656,7 +3661,10 @@
         trees.forEach(function (st) { if (st.tree === entry.target) draw(st); });
       });
     });
-    trees.forEach(function (st) { resize.observe(st.tree); });
+    trees.forEach(function (st) {
+      resize.observe(st.tree);
+      bindRoadmapLtreeMousePan(st.tree.parentNode);
+    });
     ensureLinkGraphData().then(function (gd) {
       var linked = roadmapLtreeLinkedPairs(gd, wanted);
       trees.forEach(function (st) {
@@ -3669,6 +3677,49 @@
     }).catch(function () {
       // 取不到图谱只是没有连线，节点照常可用
     });
+  }
+
+  /**
+   * 鼠标按住拖动横向平移 box（触屏用原生滑动，不接管）。拖动中在 window 上收事件（节点悬停浮窗可能
+   * 盖在光标下）；拖过 4px 才算平移，松手后吞掉这次点击，免得误开节点；点按节点不受影响。
+   */
+  function bindRoadmapLtreeMousePan(box) {
+    var drag = null;
+    var swallowClick = false;
+    function onMove(ev) {
+      var dx = ev.clientX - drag.x;
+      if (!drag.moved) {
+        if (Math.abs(dx) < 4) return;
+        drag.moved = true;
+        box.classList.add('is-panning');
+      }
+      if (window.getSelection) window.getSelection().removeAllRanges();
+      box.scrollLeft = drag.left - dx;
+    }
+    function onUp() {
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+      if (drag.moved) {
+        box.classList.remove('is-panning');
+        swallowClick = true;
+        setTimeout(function () { swallowClick = false; }, 0);
+      }
+      drag = null;
+    }
+    box.addEventListener('pointerdown', function (ev) {
+      if (drag || ev.pointerType !== 'mouse' || ev.button !== 0 || box.scrollWidth <= box.clientWidth) return;
+      drag = { x: ev.clientX, left: box.scrollLeft, moved: false };
+      window.addEventListener('pointermove', onMove);
+      window.addEventListener('pointerup', onUp);
+      window.addEventListener('pointercancel', onUp);
+    });
+    box.addEventListener('click', function (ev) {
+      if (!swallowClick) return;
+      ev.preventDefault();
+      ev.stopPropagation();
+      swallowClick = false;
+    }, true);
   }
 
   function clearRoadmapStandaloneFlowSection() {

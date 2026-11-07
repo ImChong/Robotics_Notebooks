@@ -3951,16 +3951,29 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-markdown-body .roadmap-stage-kmap .roadmap-ltree-node {
   color: var(--text);
 }
-/* 窄屏正文列只剩约 240px：节点框不再随列数一路缩小，过宽的小树在块内横向滚动 */
-@media (max-width: 640px) {
-  .roadmap-stage-kmap .roadmap-ltree-stage {
-    overflow-x: auto;
-  }
-  .roadmap-stage-kmap .roadmap-ltree-tree {
-    --dt-q: max(20px, min(30px, calc(100cqw / var(--dt-quarters, 20))));
-    width: max-content;
-    min-width: 100%;
-  }
+/* 小树按列数缩放会把节点挤得太小：四分之一列最少 28px（节点框约 112px，近顶部知识地图的 120px），
+   放不下就在块内横向拖动查看（鼠标按住拖、触屏滑动） */
+.roadmap-stage-kmap .roadmap-ltree-stage {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+.roadmap-stage-kmap .roadmap-ltree-tree {
+  --dt-q: max(28px, min(30px, calc(100cqw / var(--dt-quarters, 20))));
+  width: max-content;
+  min-width: 100%;
+}
+.roadmap-stage-kmap-pan {
+  display: none;
+}
+.roadmap-stage-kmap.is-pannable .roadmap-stage-kmap-pan {
+  display: inline;
+}
+.roadmap-stage-kmap.is-pannable .roadmap-ltree-stage {
+  cursor: grab;
+}
+.roadmap-stage-kmap .roadmap-ltree-stage.is-panning {
+  cursor: grabbing;
+  user-select: none;
 }
 /* 路线正文：顶层 h2 章节默认折叠（wrapRoadmapCollapsibleMajorHeadings） */
 .roadmap-major-section {
