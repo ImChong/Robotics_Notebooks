@@ -6114,6 +6114,7 @@
 - [RoboParty（萝博派对）](wiki/entities/roboparty.md) — RoboParty（上海萝博派对科技有限公司）** 是国内少数将「全栈开源双足人形」作为公司主线的创业团队：先以 Roboto Origin 开源整机与 `📅unknown` `[entity_page]`
 - [RoboPrime](wiki/entities/roboprime.md) — RoboPrime**（GitHub）是 [GitHubStore《19 款能自己造的开源人形机器人》](htt `📅unknown` `[entity_page]`
 - [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA**（*Vision-Language-Object-Action*）是 **RoboScience**（北京机科未来科技有限公司，2024-12 成立）对外披露的 **端到端通用具身大模 `📅unknown` `[entity_page]`
+- [RoboSet：真实世界多任务操作数据集 / RoboSet Dataset](wiki/entities/roboset-dataset.md) — RoboSet** 是面向真实世界厨房多任务机器人操作的数据集，结合远程遥操作与动作示教回放轨迹，提供四路相机观测与按试次组织的 HDF5 数据。其官方主页报告 **28,500 条轨迹**。 `📅unknown` `[entity_page]`
 - [RoboSimStudio（机器人操作 Real2Sim 工具包）](wiki/entities/robosimstudio.md) — RoboSimStudio** 是面向机器人操作任务的开放交互式仿真工具包，让人或编码 Agent 根据真实场景观察构建、检查和调整物理仿真；当前仓库也提供 CPU 路径。 `📅unknown` `[entity_page]`
 - [RoboSpatial](wiki/entities/robospatial.md) — RoboSpatial**（arXiv:2411.16537，[项目页](https://chanh.ee/RoboSpat `📅unknown` `[entity_page]`
 - [robosuite](wiki/entities/robosuite.md) — robosuite](https://github.com/ARISE-Initiative/robosuite) 是一个以 MuJoCo 为后端的机器人学习仿真框架。它把机器人模型、操作场景、物体 `📅unknown` `[entity_page]`
@@ -6981,6 +6982,7 @@
 - [机器人描述目录选型](wiki/comparisons/robot-description-catalogs.md) — 四份公开入口解决同一问题的不同切片：**发现、Python 加载、ROS 2/Isaac 国内机型、冻结研究语料**。 `📅unknown` `[comparison_page]`
 - [机器人基础模型与通用人形：公司技术路线对照（2026）](wiki/comparisons/robot-foundation-model-company-paths-2026.md) — 把公司技术分享按**世界与动作建模、整机层级控制、全身技能与仿真迁移**三种阅读视角组织，可以更快找到训练目标、动作接口和真机闭环的不同答案；一家公司可以同时出现在几条路线中。 `📅unknown` `[comparison_page]`
 - [机器人学习五大范式：模仿、强化、视频、多模态与持续学习](wiki/comparisons/robot-learning-five-paradigms-taxonomy.md) — 机器人学习五大范式** 是按 **学习信号来源** 划分的选型框架：示范（IL）、奖励交互（RL）、互联网视频先验（LfV）、视觉–语言–动作统一（VLA）、以及时间维上的能力保持（持续学习）；核 `📅unknown` `[comparison_page]`
+- [机器人操作数据集与基准选型 / Robot Manipulation Dataset and Benchmark Selection](wiki/comparisons/robot-manipulation-data-benchmark-selection.md) — 这是一份以 **18 个官方仓库、数据卡及项目/论文入口** 为依据的**数据与评测层级对照**：在选择用于 VLA/模仿学习的资源前，先区分**仿真任务基准**、**真实机器人轨迹**、**跨本体数 `📅unknown` `[comparison_page]`
 - [机器人路径规划五大范式：图搜索、采样、势场、最优控制与 AI](wiki/comparisons/robot-path-planning-five-paradigms-taxonomy.md) — 路径规划五大范式** 是按 **环境信息形态与决策层次** 划分的选型框架：在完整地图上搜路（图搜索）、在高维空间采样可行轨迹（采样）、用势场做近场反应（APF）、用滚动优化保证动力学可行（最优控 `📅unknown` `[comparison_page]`
 - [机器人运控开发板选型（按策略网络模型）](wiki/comparisons/robot-policy-deployment-dev-board-selection.md) — 先看策略网络的「FLOPs × 控制频率」和「权重占多少内存」，再选板：本体小网跑 CPU 就够，带视觉 / 扩散的低层策略从 Orin NX 起步，完整 VLA 要 Jetson Thor 或离 `📅unknown` `[comparison_page]`
 - [机器人顶会顶刊发表渠道对比](wiki/comparisons/robotics-research-venues.md) — 在机器人学习与系统方向投稿或引用时，**会议**（ICRA、IROS、CoRL、RSS）与 **期刊**（T-RO、IJRR、Science Robotics）的 **主办方、审稿节奏、论文集托管 `📅unknown` `[comparison_page]`
