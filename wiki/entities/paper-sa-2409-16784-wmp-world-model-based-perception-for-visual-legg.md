@@ -104,6 +104,17 @@ sequenceDiagram
 - 实机 Unitree A1 配 Jetson NX 和 Intel D435i；文中报告跨越 85 cm 缺口、攀上 55 cm 台阶、穿过 22 cm 低矮空间。成功率图中每种条件为 10 次试验；这些尺寸不代表所有试验均成功。
 - 世界模型仅用仿真训练，论文展示真实轨迹的深度图开环预测；形状可能不一致，但示例中可通行空间的位置和角度较一致。
 
+## 与其他工作对比
+
+依据论文 §II Related Work 与 §V-A 基线设置。
+
+| 路线 | 做法 | 与 WMP 的差异 |
+|------|------|---------------|
+| 盲走策略（仅本体感知） | 奖励设计、域随机化、课程学习 | 斜坡、楼梯可行，但缺口、坑等需提前看见的地形困难；WMP 去掉深度图的 Blind 消融除 Slope 外均明显退化 |
+| [特权学习 teacher–student](../concepts/privileged-training.md) | 先用 scandots 等特权信息训练 teacher，再让深度图 ConvNet-RNN student 模仿（论文复现 Cheng 等的 student） | 受特权信息设计与师生性能差限制；scandots 稀疏且表示不了离地障碍，所以 Tilt、Crawl 无此基线。Gap 上 WMP 32.37 接近 Teacher 32.80，Student 为 27.07 |
+| 用历史观测估计 scandots（并行工作） | 从过去观测恢复 scandots 再控制 | 仍受 scandots 表示能力限制 |
+| [Dreamer](paper-dreamer-latent-imagination.md) / [DreamerV3](paper-shenlan-wm-13-dreamerv3.md) | RSSM 潜空间世界模型，在潜空间想象中学习行为 | WMP 沿用 RSSM 架构，但世界模型不生成策略训练 rollout，只把循环状态交给用仿真采样训练的 PPO 策略 |
+
 ## 结论
 
 世界模型提供可用于运动控制的历史感知表征，论文在特定 A1 实验中展示了 sim-to-real 效果。
@@ -116,6 +127,8 @@ sequenceDiagram
 ## 关联页面
 
 - [基于模型的强化学习](../methods/model-based-rl.md)
+- [特权训练](../concepts/privileged-training.md)：WMP 对比的 teacher–student 路线
+- [Dreamer](paper-dreamer-latent-imagination.md)：WMP 世界模型沿用的 RSSM 架构来源
 - [足式运动](../tasks/locomotion.md)
 - [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 

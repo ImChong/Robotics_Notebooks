@@ -48,7 +48,7 @@ summary: "Compounding Physical RSI（arXiv:2611.06654v1，CSU MinosLab）：诊�
 
 # Compounding Physical RSI（Turning Execution Failure into Inherited Capability）
 
-**Compounding Physical RSI**（[arXiv:2611.06654](https://arxiv.org/abs/2611.06654)，v1，2026-11-04，cs.RO；技术报告，署名 CSU MinosLab，题头标注「ECCV 2026 RoboDojo Safe World Models Challenge | Champion | CSU-AI-07」）把「物理递归自我改进」落成一个三段式循环：先把失败定位到任务阶段，再用离线 RL 修补，最后在权重空间做候选插值并用全量基准评测选出下一代。本页依据 v1 PDF 全文（10 页，含参考文献）通读整理；v1 即截至 2026-11-06 的最新版本。
+**Compounding Physical RSI**（[arXiv:2611.06654](https://arxiv.org/abs/2611.06654)，v1，2026-11-04，cs.RO；技术报告，署名 CSU MinosLab，题头标注「ECCV 2026 RoboDojo Safe World Models Challenge | Champion | CSU-AI-07」）把「物理递归自我改进」落成一个三段式循环：先把失败定位到任务阶段，再用离线 RL 修补，最后在权重空间做候选插值并用全量基准评测选出下一代。本页依据 v1 PDF 全文（10 页，含参考文献）通读整理；截至 2026-11-06，arXiv 上只有 v1 这一个版本。
 
 ## 一句话定义
 

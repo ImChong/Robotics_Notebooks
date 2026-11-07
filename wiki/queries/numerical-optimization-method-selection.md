@@ -2,7 +2,7 @@
 type: query
 tags: [optimization, trajectory-optimization, optimal-control, constrained-optimization, method-selection]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-06
 related:
   - ../methods/particle-swarm-optimization.md
   - ../methods/cma-es.md
@@ -14,12 +14,15 @@ related:
   - ../comparisons/second-order-optimizers.md
   - ../methods/penalty-barrier-augmented-lagrangian.md
   - ../methods/convex-relaxation-robotics.md
+  - ../methods/successive-convexification.md
+  - ../methods/lossless-convexification.md
   - ./optimization-software-selection.md
 sources:
   - ../../sources/papers/pso_foundations_1995_2012.md
   - ../../sources/papers/genetic_algorithms_foundations.md
   - ../../sources/papers/genetic_programming_foundations.md
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
+  - ../../sources/papers/malyuta_2021_convex_trajectory_generation_tutorial.md
 summary: "机器人数值优化方法选型：按问题结构（含时序动力学 / 一般 NLP / 约束处理 / 非凸几何）在 LQR·iLQR、拟牛顿 BFGS、罚/障碍/增广拉格朗日、凸松弛四类算法间分层组合。"
 ---
 
@@ -44,6 +47,9 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 | IPM | Interior-Point Method | 内点/障碍法 |
 | SDP | Semidefinite Program | 凸松弛常用形式 |
 | GNC | Graduated Non-Convexity | 凸松弛中逐步收紧非凸 |
+| SOCP | Second-Order Cone Program | 二阶锥规划，LCvx / SCvx 的凸子问题类型 |
+| LCvx | Lossless Convexification | 无损凸化：松弛后最优解不变，一次 SOCP 求解 |
+| SCvx | Successive Convexification | 序列凸化：反复线性化成凸子问题迭代求解 |
 
 ## 选型决策树
 
@@ -52,6 +58,9 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 ├─ 是
 │   ├─ 系统近线性、二次代价 → LQR（一步 Riccati 解析反馈）
 │   ├─ 非线性动力学、要轨迹 → iLQR / DDP（Crocoddyl）
+│   ├─ 约束是锥/非凸几何（推力上下界、指向角），想让每步都是凸问题
+│   │     ├─ 能证明松弛无损（如 3-DoF 推力下界）→ LCvx：一次 SOCP，全局最优
+│   │     └─ 不能无损凸化（6-DoF 姿态、自由终端时间）→ SCvx：线性化 → SOCP 迭代
 │   └─ 有硬路径约束（接触力、关节限位）
 │         → iLQR/DDP 外套 增广拉格朗日 / 障碍法
 └─ 否（一般 NLP，无显式时序结构）
@@ -78,6 +87,7 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 - **机械臂运动生成**：[凸松弛](../methods/convex-relaxation-robotics.md) 或采样给初值 → [L-BFGS](../methods/quasi-newton-bfgs.md) 在 GPU 上批量细化（cuRobo 范式）。
 - **位姿/配准类感知**：[凸松弛](../methods/convex-relaxation-robotics.md) 求全局下界 → GNC 抗外点 → 局部 [拟牛顿](../methods/quasi-newton-bfgs.md) 精修。
 - **离线全身 TrajOpt**：[iLQR/DDP](../methods/lqr-ilqr.md) 主循环 + 障碍/AL 处理接触与限位。
+- **火箭动力下降制导**：3-DoF 且推力下界可无损松弛时用 [LCvx](../methods/lossless-convexification.md) 一次 SOCP 求全局最优；6-DoF 用 [SCvx](../methods/successive-convexification.md)，每轮在上一条轨迹附近线性化成 SOCP，靠虚拟控制防人为不可行、信赖域限步长——只保证收敛到驻点，对缩放、初值与罚权敏感（见 [Malyuta 等教程](../../sources/papers/malyuta_2021_convex_trajectory_generation_tutorial.md)）。
 
 ## 补充：没有可靠梯度时的黑箱分支
 
@@ -105,6 +115,8 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 - [拟牛顿 BFGS / L-BFGS](../methods/quasi-newton-bfgs.md) — 高维 NLP 默认下降引擎
 - [罚 / 障碍 / 增广拉格朗日](../methods/penalty-barrier-augmented-lagrangian.md) — 约束处理与序列无约束化
 - [凸松弛](../methods/convex-relaxation-robotics.md) — 非凸问题的可解近似与全局下界
+- [序列凸化（SCvx）](../methods/successive-convexification.md) — 非凸 OCP 的「线性化 → SOCP」迭代解法
+- [无损凸化（LCvx）](../methods/lossless-convexification.md) — 可证无损的一次性凸松弛
 - [优化软件选型](./optimization-software-selection.md) — 选定算法后选求解器/框架
 - [MPC 求解器选型](./mpc-solver-selection.md) — 凸 MPC / WBC 的 QP 求解器专项
 - [遗传算法（GA）](../methods/genetic-algorithm.md) — 离散 / 组合编码的黑箱外层搜索
@@ -116,4 +128,5 @@ summary: "机器人数值优化方法选型：按问题结构（含时序动力�
 - [遗传算法基础来源](../../sources/papers/genetic_algorithms_foundations.md) — GA 编码、选择、交叉与变异的黑箱外层搜索
 - [遗传编程基础来源](../../sources/papers/genetic_programming_foundations.md) — GP 程序树搜索与表达式膨胀风险
 - [sources/courses/numerical_optimization_foundations_robotics.md](../../sources/courses/numerical_optimization_foundations_robotics.md) — 数值优化基础课程（约束化、拟牛顿、最优控制、凸松弛各章）
+- [Malyuta 等, Convex Optimization for Trajectory Generation](../../sources/papers/malyuta_2021_convex_trajectory_generation_tutorial.md) — LCvx / SCvx / GuSTO 序列凸规划教程
 - Crocoddyl / cuRobo 官方文档（iLQR/DDP 与 GPU L-BFGS 工程实现）

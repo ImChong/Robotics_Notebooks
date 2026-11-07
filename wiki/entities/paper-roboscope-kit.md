@@ -131,6 +131,21 @@ sequenceDiagram
 
 **计时边界**：正式评测排除初始化、搜索/离线调参与清理；862 s 优化运行端到端 928 s。LIBERO 的约 504–506 s 搜索开销不可遗漏，短任务可能不划算。跨系统对比使用不同主机/同型号 GPU 配置；RLinf 的 LIBERO 路径存在动作采样差异（附录 B.3），不能将其结果解释成严格相同的确定性推理。
 
+## 与其他工作对比
+
+依据论文 §6 Related Work 的定位；加速倍数取自上文「实验与评测」表，均为作者报告。
+
+| 对象 | 它解决什么 | RoboScope Kit 的差异 |
+|---|---|---|
+| 原生评测脚本（OpenVLA、StarVLA 官方评测） | 任务选择、reset 与模型推理、终止、计分耦合在同一评测循环 | 模型边界统一为 Policy，基准专属 rollout 逻辑留在 adapter；LIBERO-Long 相对官方 StarVLA 4.45 倍（MPS 关）/ 6.16 倍（MPS 开） |
+| vla-eval | 跨基准批量并行评测 VLA | 同为「一次接入」目标；RoboScope 另加分开定规模的 worker / replica 池、实测并发搜索和观测步幅声明；LIBERO-Long 1.52 / 2.10 倍 |
+| [RLinf](paper-rlinf-vla.md) | 具身模型强化学习基础设施，含并行环境评测 | LIBERO 路径存在动作采样差异（附录 B.3），对比不是严格相同的确定性推理 |
+| [XPolicyLab](xpolicylab.md) | 公共观测 / 动作 / 轨迹 schema + client/server，N 个策略与 M 个环境只需 O(N+M) 次集成 | 共享 integrate-once 目标；RoboScope 侧重评测速度所需的进程池与运行时优化 |
+| [RoboDojo](robodojo.md) | 在 Isaac Sim 中做异构并行仿真评测 | RoboScope 不替换仿真引擎，而是围绕现有基准运行时调度 |
+| Isaac Gym / ManiSkill3 / EnvPool | GPU 并行仿真与渲染，或并行执行引擎 | 与这些引擎互补：协调独立的仿真进程与模型副本 |
+| SEED RL / Sample Factory | 把推理移入批量加速器 worker，服务训练采样吞吐 | 同样分离环境与推理，但目标是固定检查点下完整、可复现的回合记录 |
+| Gymnasium | 标准化环境边界 | RoboScope 标准化互补的模型边界 |
+
 ## 结论
 
 该项目主要改善评测基础设施的效率；25.04 倍是特定任务、硬件扩容与运行时优化共同产生的结果。
@@ -158,6 +173,8 @@ sequenceDiagram
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [VLA 方法](../methods/vla.md)
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md)
+- [XPolicyLab](xpolicylab.md)：同为「一次接入、多基准评测」的策略–环境接口
+- [RoboDojo](robodojo.md)：Isaac Sim 异构并行仿真评测
 
 ## 参考来源
 

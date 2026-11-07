@@ -32,7 +32,7 @@ summary: "Open-HumanWAM（arXiv:2611.06817，公众号称 Open-HumanScale）：�
 
 ## 一句话定义
 
-**Open-HumanWAM**（公众号写作 Open-HumanScale，arXiv 最新题名 Open-HumanWAM）是把第一人称人类视频预训练扩展到 5 万小时的开放配方：含 Open-HumanWAM-50K 语料、HumanWAM-Vanilla（仅人类视频预训练的世界–动作模型）与 HumanWAM-Goal（视觉目标条件、人机联合预训练）（arXiv 摘要）。
+**Open-HumanWAM**（公众号写作 Open-HumanScale，arXiv 截至 2026-11-06 的题名为 Open-HumanWAM）是把第一人称人类视频预训练扩展到 5 万小时的开放配方：含 Open-HumanWAM-50K 语料、HumanWAM-Vanilla（仅人类视频预训练的世界–动作模型）与 HumanWAM-Goal（视觉目标条件、人机联合预训练）（arXiv 摘要）。
 
 ## 英文缩写速查
 
@@ -44,7 +44,7 @@ summary: "Open-HumanWAM（arXiv:2611.06817，公众号称 Open-HumanScale）：�
 ## 为什么重要
 
 - 人手操作视频能帮机器人适应新桌面吗。作者固定机器人预训练数据和每项任务的示范数，检验加入人类视频后，策略能否适应新的灯光与桌面。
-- 开源结论：**部分开源**（步骤 2.5，2026-11-06）。公众号称 Open-HumanScale，arXiv 最新题名为 Open-HumanWAM；DAGroup-PKU/HumanNet 的 open-humanscale 分支经 git ls-remote 可达（Apache-2.0，含 humanwam_vanilla / humanwam_goal 目录）。README 新闻栏（2026-11-05）写代码与文档仍在整理，Open-HumanWAM-50K 语料标 Coming soon，模型权重集合上传中，因此只算部分开源。
+- 开源结论：**部分开源**（步骤 2.5，2026-11-06）。公众号称 Open-HumanScale，arXiv 截至 2026-11-06 的题名为 Open-HumanWAM；DAGroup-PKU/HumanNet 的 open-humanscale 分支经 git ls-remote 可达（Apache-2.0，含 humanwam_vanilla / humanwam_goal 目录）。README 新闻栏（2026-11-05）写代码与文档仍在整理，Open-HumanWAM-50K 语料标 Coming soon，模型权重集合上传中，因此只算部分开源。
 - 同期同组工作见 [按路段调速的规划、虚拟房间到真机的人形动作与人类视频缩放：具身智能小站 11-06 期 20 篇阅读坐标](../overview/embodied-station-2026-11-06-20-papers-technology-map.md)。
 
 ## 核心机制
@@ -87,7 +87,7 @@ sequenceDiagram
 
 **人手操作视频能帮机器人适应新桌面吗：每项用 50 条干净示范微调后，RoboTwin 随机场景成功率从 70.80% 升至 74.36%（50 项仿真任务，各测 100 次）。**
 
-1. 开源边界：**部分开源** — 公众号称 Open-HumanScale，arXiv 最新题名为 Open-HumanWAM；DAGroup-PKU/HumanNet 的 open-humanscale 分支经 git ls-remote 可达（Apache-2.0，含 humanwam_vanilla / humanwam_goal 目录）。README 新闻栏（2026-11-05）写代码与文档仍在整理，Open-HumanWAM-50K 语料标 Coming soon，模型权重集合上传中，因此只算部分开源。
+1. 开源边界：**部分开源** — 公众号称 Open-HumanScale，arXiv 截至 2026-11-06 的题名为 Open-HumanWAM；DAGroup-PKU/HumanNet 的 open-humanscale 分支经 git ls-remote 可达（Apache-2.0，含 humanwam_vanilla / humanwam_goal 目录）。README 新闻栏（2026-11-05）写代码与文档仍在整理，Open-HumanWAM-50K 语料标 Coming soon，模型权重集合上传中，因此只算部分开源。
 2. 核心机制：Open-HumanScale 从第一人称视频里提取手部动作。
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
