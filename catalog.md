@@ -5879,6 +5879,7 @@
 - [XCoT-VLA（arXiv:2608.10976）](wiki/entities/paper-xcot-vla-driving.md) — XCoT-VLA**（*XCoT-VLA: Executable Chain-of-Thought for Vision-Language-Action Driving*，[arXiv:2608. `📅unknown` `[entity_page]`
 - [XHugWBC（HMI P037）](wiki/entities/paper-xhugwbc-cross-humanoid.md) — XHugWBC**（*Scalable and General Whole-Body Control for Cross-Humanoid Locomotion*，2026，[arXiv:2602 `📅unknown` `[entity_page]`
 - [Xiaomi-CocktailASR-1（目标说话人 LLM-ASR）](wiki/entities/paper-xiaomi-cocktailasr-1.md) — Xiaomi-CocktailASR-1**（*Xiaomi-CocktailASR-1 Technical Report*，[arXiv:2609.11274](https://arxiv.or `📅unknown` `[entity_page]`
+- [XMimic：一分钟内学习全身动作跟踪 / Learning Whole-Body Motion Tracking in Under a Minute](wiki/entities/paper-xmimic-jax.md) — XMimic** 是 Nico Bohlinger、Jan Peters 将 BlinkMimic 世界模型训练器迁移至 JAX 的独立工作，以整段编译及多 GPU 并行缩短 Unitree G1 `📅unknown` `[entity_page]`
 - [X-Morph：跨形态人体运动先验](wiki/entities/paper-xmorph.md) — X-Morph**（*Human Motion Priors for Scalable Robot Learning Across Morphologies*，[arXiv:2606.30290 `📅unknown` `[entity_page]`
 - [XPACE（Joint World and Action Modeling · arXiv:2609.17372）](wiki/entities/paper-xpace.md) — XPACE**（*XPACE: Joint World and Action Modeling from Heterogeneous Experience*，[arXiv:2609.17372 `📅unknown` `[entity_page]`
 - [XR-2：1500 小时双臂家务到在线修正](wiki/entities/paper-xr2-bimanual-household.md) — Scaling Bimanual Household Manipulation from 1,500 hours of Demonstrations to On-Policy Correction `📅unknown` `[entity_page]`
