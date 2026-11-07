@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: cozyclay
-tags: [software, 3d, previs, animation, motion, storyboard, camera, mcp, ai-agents, open-source]
+tags: [software, nomadamas, 3d, previs, animation, motion, storyboard, camera, mcp, ai-agents, open-source]
 status: complete
 updated: 2026-11-07
 project: https://cozyclay.org/
