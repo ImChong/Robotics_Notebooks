@@ -2621,7 +2621,7 @@
 - [HERON（arXiv:2610.38233）](wiki/entities/paper-heron-obstacle-aware-reachability-maps.md) — HERON**（*HERON: Real-Time Obstacle-Aware Reachability Maps for Mobile Manipulators*，[arXiv:2610.38 `📅unknown` `[entity_page]`
 - [HexaShell：探索视觉语言模型机器人编码能力的轻量框架](wiki/entities/paper-hexashell.md) — HexaShell: A Thin Harness for Exploring the Limits of VLM Agents as Robot Coding Agents `📅unknown` `[entity_page]`
 - [HF-WM：向人类交互学习并建模失败动力学的世界模型](wiki/entities/paper-hf-wm-failure-dynamics-world-model.md) — HF-WM**（论文 *Beyond Successful Robot Demonstrations: Learning from Human Interactions and Modeling  `📅unknown` `[entity_page]`
-- [Hi Robot：分层交互式指令跟随](wiki/entities/paper-hi-robot.md) — Hi Robot**（*Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Mo `📅unknown` `[entity_page]`
+- [Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models / 分层视觉语言动作模型的开放式指令遵循](wiki/entities/paper-hi-robot.md) — Hi Robot**（*Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Mo `📅unknown` `[entity_page]`
 - [HiBRIDGE](wiki/entities/paper-hibridge-dialogue.md) — HiBRIDGE**（*A Hierarchical Bayesian Neural Network Framework for Interpretable Dialogue Management `📅unknown` `[entity_page]`
 - [HiFi-UMI / HiFi-UMI-2K](wiki/entities/paper-hifi-umi.md) — HiFi-UMI**（*Learning Deployable Manipulation Policies from High-Fidelity UMI Data Alone*，[arXiv:26 `📅unknown` `[entity_page]`
 - [HiFOR：面向视觉语言动作模型的分层未来预测与动作引导世界信息关联](wiki/entities/paper-hifor-hierarchical-foresight-vla.md) — HiFOR**（*HiFOR: Hierarchical Foresight with Action-Guided World Grounding for Vision-Language-Acti `📅unknown` `[entity_page]`
