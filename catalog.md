@@ -1097,6 +1097,7 @@
 - [OpenLoong-Dyn-Control](wiki/entities/openloong-dyn-control.md) — OpenLoong-Dyn-Control** 提供青龙人形在 **MuJoCo** 上的 **MPC + 全身控制** 研究与仿真 demo。 `📅unknown` `[entity_page]`
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`
 - [OpenMAIC](wiki/entities/openmaic.md) — OpenMAIC**（THU-MAIC/OpenMAIC，Demo [open.maic.chat](https:/ `📅unknown` `[entity_page]`
+- [OpenRewrite｜基于 LST 的自动化源码重构框架](wiki/entities/openrewrite.md) — OpenRewrite** 是由 Moderne 维护的源码重构生态：解析源码为具有类型信息、保留原始格式的 **Lossless Semantic Tree（LST）**，再用可配置的 **Re `📅unknown` `[entity_page]`
 - [OpenSCAD（脚本化参数 CAD）](wiki/entities/openscad.md) — 一句话定义**：OpenSCAD 是一款以脚本构造参数化 2D/3D 实体的开源 CAD 工具，核心是 CSG 布尔建模与二维轮廓挤出，而不是传统鼠标式特征树编辑。 `📅unknown` `[entity_page]`
 - [OpenSML](wiki/entities/opensml.md) — 适配 CiA402 的轻量 SoftMotion 运动控制库，提供点位与插补。（分类：EtherCAT 伺服 CiA402 配套；语言/形态：SoftMotion 轻量运动控制库） `📅unknown` `[entity_page]`
 - [OpenTac（可定制 3D 触觉皮肤生态）](wiki/entities/opentac.md) — OpenTac** 是面向机器人任意可覆盖表面的开放触觉感知工具链。它将皮肤设计、制造、传感器读取、仿真、跨传感器数据映射和自适应采样放在一个共享 manifest 驱动的生态中；项目提供 [在线 `📅unknown` `[entity_page]`

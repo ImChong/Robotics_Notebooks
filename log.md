@@ -251,6 +251,13 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | OpenRewrite 官方源码与文档：LST / Recipe / Visitor / 调度器
+
+- 意图：将自动化源码重构框架 OpenRewrite 收录到机器人软件工程知识图，提供可核对的源代码执行路径。
+- 一手资料：openrewrite/rewrite 官方 README 与关键源码、docs.openrewrite.org 原始技术文档；源码快照 08560af3c93b7a87d1cd798a97c1b212e303b16e。
+- 结论：核心 Apache-2.0 与部分 Source Available/商业配方应区分；RecipeScheduler 按 scan / generate / edit 周期处理源码，Wiki 附主 Mermaid flowchart 与非 RPC 源码 sequenceDiagram。
+- 关键页：[OpenRewrite](../wiki/entities/openrewrite.md)；未运行重构示例或整库验证。
+
 ## [2026-11-07] ingest | sources/papers/robodoctor_arxiv_2610_35604.md — RoboDoctor 原文通读、保留抓握的局部修正与重复节点合并
 
 - 意图：根据 <https://robodoctor-rsi.github.io/> 对照论文 Figure 4(b) 的瓶口/杯口偏移，一手通读后更新 RoboDoctor 的**单一论文/项目实体**，补 Mermaid 项目流程与已核实代码时序。
