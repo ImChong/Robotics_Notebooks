@@ -64,6 +64,7 @@ summary: "Zilize 维护的 awesome-text-to-motion：文本驱动单人人体运�
 - [MoLingo](./paper-molingo.md) — 语义对齐连续 latent + 掩码自回归 rectified flow（CVPR 2026；HumanML3D SOTA）
 - [DART（DartControl）](../methods/dart-control.md) — 自回归原语潜扩散 + 在线文本流与空间控制（ICLR 2025）
 - [GENMO（统一人体运动估计与生成）](../methods/genmo.md) — 本列表收录的代表性人体扩散「通才」模型（GEM 发布名）
+- [Möbius｜统一动作语言模型](./paper-mobius-motion-language.md) — 统一动作理解、生成与编辑的多模态模型（arXiv:2611.05279，草稿）
 - [General Motion Retargeting（GMR）](../methods/motion-retargeting-gmr.md) — 人体运动→机器人骨架的常见工程落点
 - [HumanML3D](./paper-notebook-humanml3d.md) — 主流文本–运动数据集与评测锚点
 - [UniMate（跨拓扑 rig 动画）](./paper-unimate.md) — 非 SMPL 模板、任意骨骼 + 文本的 SIGGRAPH Asia 2026 基础模型（已开源）

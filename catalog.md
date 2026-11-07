@@ -3099,6 +3099,7 @@
 - [MMAU：音频理解与推理基准](wiki/entities/paper-mmau.md) — MMAU 使用音频与选择题评估音频语言模型的感知、知识提取和推理，不直接测试机器人动作。 `📅unknown` `[entity_page]`
 - [MMHU（驾驶场景人体行为理解基准 · arXiv:2507.12463）](wiki/entities/paper-mmhu.md) — MMHU**（*MMHU: A Massive-Scale Multimodal Benchmark for Human Behavior Understanding*，[arXiv:2507.1 `📅unknown` `[entity_page]`
 - [MobiAgent（arXiv:2610.03476）](wiki/entities/paper-mobiagent-dual-loop-self-improvement.md) — MobiAgent**（*MobiAgent: Dual-Loop Recursive Policy Self-Improvement for Long-Horizon Mobile Manipu `📅unknown` `[entity_page]`
+- [Möbius｜统一动作语言模型（arXiv:2611.05279）](wiki/entities/paper-mobius-motion-language.md) — Möbius 将人体动作的去噪生成与动作理解放入同一个多模态骨干，支持文本生成动作、动作描述、时序补全及指令编辑。 `📅unknown` `[entity_page]`
 - [MoCaP：让机器人找到目标后站到能抓的位置](wiki/entities/paper-mocap-mobile-code-as-policies.md) — MoCaP**（*Mobile Code-as-Policies*）从被动人类视频提取“物体在哪里”和“人从哪个方向准备操作”的线索，让移动操作机器人在找到目标后继续寻找符合自身机械臂可达性与碰撞 `📅unknown` `[entity_page]`
 - [基于步间预测的模型引导安全双足运动强化学习](wiki/entities/paper-model-informed-safe-reinforcement-learning.md) — Model-Informed Safe Reinforcement Learning for Bipedal Locomotion via Step-to-Step Prediction**（[a `📅unknown` `[entity_page]`
 - [MoDex（arXiv:2610.23888）](wiki/entities/paper-modex.md) — MoDex**（*MoDex: Towards Universal Multi-Object Dexterous Grasping*，[arXiv:2610.23888](https://arxi `📅unknown` `[entity_page]`
