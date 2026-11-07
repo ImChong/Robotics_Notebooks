@@ -64,7 +64,7 @@ sequenceDiagram
  participant CNN as sparse3Dbackbone
  participant VSA as voxel set abstraction
  participant ROI as roi_head
- participant OPT as train_model
+ participant UPDATE as train_model
  CLI->>NET: build_network(cfg)
  NET->>CNN: sparse voxel feature encoding
  CNN-->>NET: multi-scale voxel features
@@ -73,7 +73,7 @@ sequenceDiagram
  NET->>ROI: proposal + RoiGrid pooling
  ROI-->>NET: refined box and cls
  NET-->>CLI: RPN+point+RoI losses
- CLI->>OPT: optimizer.step
+ CLI->>UPDATE: optimizer.step
 ```
 
 ## 实验与评测
