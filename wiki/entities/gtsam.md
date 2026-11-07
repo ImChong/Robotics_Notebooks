@@ -66,15 +66,15 @@ sequenceDiagram
     participant APP as examples/Pose2SLAMExample.cpp
     participant GRAPH as NonlinearFactorGraph
     participant V as Values
-    participant OPT as GaussNewtonOptimizer
+    participant UPDATE as GaussNewtonOptimizer
     participant M as Marginals
     APP->>GRAPH: add PriorFactor(Pose2)
     APP->>GRAPH: add BetweenFactor(odom)
     APP->>GRAPH: add BetweenFactor(loop closure)
     APP->>V: insert 初始 Pose2 变量
-    APP->>OPT: GaussNewtonOptimizer(graph,initial)
-    OPT->>OPT: iterate / linearize / solve
-    OPT-->>APP: optimize() 得到 Values
+    APP->>UPDATE: GaussNewtonOptimizer(graph,initial)
+    UPDATE->>UPDATE: iterate / linearize / solve
+    UPDATE-->>APP: optimize() 得到 Values
     APP->>M: Marginals(graph,result)
     M-->>APP: marginalCovariance / 不确定度
 ```
