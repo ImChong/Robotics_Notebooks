@@ -71,6 +71,11 @@ B=\begin{bmatrix}T^3/6\\T^2/2\\T\end{bmatrix},\quad
 z_k=\begin{bmatrix}1&0&-z_c/g\end{bmatrix}\hat{x}_k
 $$
 
+其中：
+
+- $A$：状态转移矩阵（把位置、速度、加速度按周期 $T$ 向前递推一步）。
+- $B$：输入矩阵（分段常值 jerk 对三个状态分量的影响）。
+
 递推 $N$ 步得 $Z_{k+1}=P_{zs}\hat{x}_k+P_{zu}\dddot{X}_k$，代价取 $\frac{\alpha}{2}\|\dddot{X}\|^2+\frac{\gamma}{2}\|Z-Z^{ref}\|^2$ 即得到 Kajita 式预览控制所对应的 QP（Herdt 式 (11)–(16)）。
 
 **DCM 分解（Romualdi 等 2018 式 (2)–(3)）：** 令 $\xi = x+\dot{x}/\omega$，则 $\dot{x}=\omega(\xi-x)$，$\dot{\xi}=\omega(\xi-x_{zmp})$：CoM 稳定地追随 DCM，DCM 自身有正实特征根 $\omega$。

@@ -61,6 +61,14 @@ summary: "动作分词（Action Tokenization）是将机器人的高维连续动
 ### 1. 标量分箱 (Scalar Binning)
 
 对每个维度、每个时间步独立量化：把训练集取值范围均匀分成 $N$ 个 bin，最常用 $N=256$。一个 $H$ 步、$D$ 维动作块变成 $H\times D$ 个 token。
+
+$$
+b_{t,j}=\left\lfloor N\,\frac{a_{t,j}-a_j^{\min}}{a_j^{\max}-a_j^{\min}}\right\rfloor,\qquad t=1,\dots,H,\; j=1,\dots,D
+$$
+
+- $N$：bin 数（常取 256）。
+- $H$：动作块的时间步数。
+- $D$：动作维度数。
 - **RT-1**：每个动作维度离散成 256 个 bin（在各变量范围内均匀分布），共 7 个手臂变量、3 个底盘变量和 1 个模式切换变量；用类别交叉熵训练，输出 3 Hz。
 - **RT-2**：沿用 256 bin；PaLI-X 直接用整数 token，PaLM-E 覆盖 256 个最少使用的 token。
 - **OpenVLA**：同样的逐维 256 分箱（据 FAST 论文对其的描述）。
