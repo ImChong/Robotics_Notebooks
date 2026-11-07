@@ -251,6 +251,14 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF（7400 节点），修复节点过小时悬停 / 点击两步被跳过
+
+- **触发：** 用户要求更新首页 GIF
+- **脚本：** [`scripts/record_readme_demo.cjs`](scripts/record_readme_demo.cjs)（88 frames / 1.45 MB；图谱 **7400** 节点 / **61087** 边）
+- **修复：** 选悬停 / 点击节点不再要求直径 ≥ 7 / 8px（7400 节点适配全屏后最大约 5px，两步原本被静默跳过）；只悬停视口偏上的节点，浮窗不被顶部工具栏遮挡
+- **流程：** `make export graph` → `docs/` 本地 `http.server 8765` → 重录并写回 `media/site-demo.gif`
+- **引用：** [`README.md`](README.md)「在线演示」仍指向 `media/site-demo.gif`
+
 ## [2026-11-07] ingest | OpenRoboKit 三套工具
 
 - 意图：区分 RoboKit 并行可微优化、RetargetingKit 人体动作映射与 GraspKit 抓取学习，并建立交叉引用、原文归档、源码运行时序。
