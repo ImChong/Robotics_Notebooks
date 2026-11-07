@@ -295,3 +295,8 @@ flowchart TB
 - [Nav2 官方文档](https://docs.nav2.org/)
 - [Autoware 文档](https://autowarefoundation.github.io/autoware-documentation/)
 - [Isaac ROS](https://nvidia-isaac-ros.github.io/)
+
+
+## 扩展阅读：三维视觉与神经重建
+
+- [视觉感知与三维重建研究地图](./vision-3d-perception-reconstruction.md) — 跨 VIO/LIO、点云检测、深度、结构光、NeRF 与 3DGS 的原始研究导航（全批次精读未完成）。
