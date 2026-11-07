@@ -2,8 +2,13 @@
 type: entity
 tags: [benchmark, embodied-ai, spatial-intelligence, mllm, omnigibson, behavior-1k, evaluation, vlm, huggingface]
 status: complete
+project_id: esi-bench
+project: "https://esi-bench.github.io/"
+code: "https://github.com/ESI-Bench/ESI-Bench"
+original:
+  - ../../sources/papers/esi_bench_arxiv_2605_18746.md
 arxiv: "2605.18746"
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/3d-spatial-vqa.md
@@ -52,6 +57,10 @@ summary: "ESI-Bench（arXiv:2605.18746）在 OmniGibson 上评测具身空间智
 | **从 sensing 到 competence** | 不只评「看见什么」，还评「是否知道为看见而 **部署何种能力**」 |
 | **选择性传感** | 须优先任务相关信息，而非冗余视角堆砌 |
 | **消解感知幻象** | 在误导性观测下推断 **遮挡后结构、物理约束、功能** |
+
+## 原文版本与命名核对
+
+本页对应 **arXiv:2605.18746v2（2026-05-25）**，核对了正文 §1–5、附录 A–Q、[官方项目站](https://esi-bench.github.io/) 和 [官方源码](https://github.com/ESI-Bench/ESI-Bench)。项目站 `Physical Capacity` / `Temporal Scene` 与论文及任务 JSON 的 `Physical Structure` / `Temporal Understanding` 分别对应同两类，运行时以实际 JSON 和任务注册表名称为准，**不要误算为新增类别**。
 
 ## 任务与知识组织
 
@@ -121,6 +130,45 @@ flowchart LR
   ORA --> P
 ```
 
+## 源码运行时序图
+
+以下时序依据官方 [`src/main.py`](https://github.com/ESI-Bench/ESI-Bench/blob/main/src/main.py)、[`pipeline.py`](https://github.com/ESI-Bench/ESI-Bench/blob/main/src/active_explore/pipeline.py)、[`_registry.py`](https://github.com/ESI-Bench/ESI-Bench/blob/main/src/active_explore/tasks/_registry.py) 与 [模型客户端](https://github.com/ESI-Bench/ESI-Bench/tree/main/src/active_explore/models) 的**实际调用结构**整理；任务专属的 `preprocess`、物体操作、`should_stop` 和 `score` 由对应模块 hook 决定。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as src/main.py
+  participant P as active_explore/pipeline.py
+  participant J as dataset/json_clean
+  participant R as tasks/_registry.py + task module
+  participant S as OmniGibson
+  participant M as models/gemini.py or gpt.py
+  CLI->>P: pipeline.main(argv)
+  P->>P: parse_args() / run_one()
+  P->>J: select_question(metadata, question_index)
+  J-->>P: scene, room, question, ground truth
+  P->>R: load_task_module_for_payload()
+  R-->>P: task-specific hooks and schema
+  P->>S: og.Environment(configs=task_build_env_config(...))
+  loop 每个探索步，至停止或 max_steps
+    P->>S: task_capture_image()
+    S-->>P: step_NNN.png (RGB)
+    P->>M: generate_json(current image, history, task prompt)
+    M-->>P: action / answer / confidence
+    P->>R: task_should_stop()
+    alt 继续探索
+      P->>S: execute_action(camera or task action)
+      S-->>P: action_result, updated scene
+    else 停止探索
+      P->>P: resolve_final_answer() / optional force_final_choice()
+    end
+  end
+  P->>R: task_score()
+  R-->>P: evaluation metrics
+  P->>P: write *_answer.json + history
+```
+
+**复现入口：** `python src/main.py --task spatial_segmentation --metadata "dataset/json_clean/Enumerative Perception/Spatial Segmentation/Merom_0_int/living_room_0/q_000.json" --provider gemini --model gemini-3.1-pro-preview --max-steps 30 --min-steps 1 --threshold 0.9 --results-root outputs/results --step-image-root outputs/steps --overwrite`。完整参数及环境修改要求见 [官方 README](https://github.com/ESI-Bench/ESI-Bench/blob/main/README.md)。
 ## 评测范式与主要发现（摘要）
 
 | 范式 | 角色 |
@@ -135,10 +183,21 @@ flowchart LR
 2. **完美 3D 有帮助，坏 3D 更糟**（Material Transparency +16.4 pt vs 2D；Geometric Configuration 重建可跌至 **9.9%**）。
 3. **元认知**：人类偏证伪与信念更新；模型 **高置信早停**，重复同向探索。
 
-## 工程复现要点
+## 结论
+
+**总判：** ESI-Bench 衡量的核心是**为回答空间问题主动选择有信息量的行动**，不是单帧识别能力，也不是低层机器人运动控制性能。
+
+- 评测主动探索能力时，应与 **单视图、随机多视图和 oracle 轨迹视图**同场对照，区分“选错动作”和“看不懂图”。
+- 不应把论文“随机多视角加噪”的结果推广到所有多视角融合方法。
+- 需要 3D 辅助时须同时报告**真值 3D 与实际重建 3D**；错误的重建结构可能比仅用 2D 更差。
+- 关注是否会证伪、修正信念及合理停止，不能只增加视觉输入和探索步数。
+- 复现属于高层离散动作的仿真空间 QA；**不能**当作真实机器人 manipulation success rate 或 Sim2Real 证明。
+
+## 工程实践与复现要点
 
 - **环境：** 官方 README 使用既有 **`behavior` conda** 环境；需本地 **OmniGibson + BEHAVIOR-1K** 资产。
-- **运行器：** `src/active_explore` 加载场景 → 逐步截图 → **OpenAI / Gemini** → `answer.json`（见 [仓库归档](../../sources/repos/esi_bench.md)）。
+- **运行器：** `src/main.py` 调用 `src/active_explore/pipeline.py`，经注册表分发任务、加载 OmniGibson、逐步截图和调用 **GPT / Gemini** 模型；每题写 `*_answer.json` 并保存 `step_*.png`（见 [仓库归档](../../sources/repos/esi_bench.md)）。
+- **开源状态：** 官方实现及题目/被动图像数据已公开，仓库为 MIT；复现仍需 OmniGibson / BEHAVIOR-1K 资产、显卡/渲染环境和模型 API key。本次完成源码静态核对，**未在本地实际跑完整 benchmark**。
 - **数据：** `dataset/json_clean/` 按任务类分目录；HF **`esi-bench/ESI-Bench`**。
 
 ## 常见误区或局限
