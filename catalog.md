@@ -169,6 +169,7 @@
 - [CherryECAT](wiki/entities/cherryecat.md) — 面向 MCU + RTOS 裁剪的轻量 EtherCAT 主站，文章称基于 IgH 改造。（分类：EtherCAT 主站；语言/形态：C，基于 IgH 改造） `📅unknown` `[entity_page]`
 - [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
 - [Claude Code Game Studios（CCGS）](wiki/entities/claude-code-game-studios.md) — Claude Code Game Studios**（[Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claud `📅unknown` `[entity_page]`
+- [Claude Cookbook：用动态工作流做 dreaming](wiki/entities/claude-cookbook-dreaming-dynamic-workflow.md) — Dreaming with a dynamic workflow**（Brad Abrams，2026-11-02）是 Claude Cookbook 里一个可改造的小型 dreaming 实现： `📅unknown` `[entity_page]`
 - [Claude for Legal](wiki/entities/claude-for-legal.md) — Claude for Legal** 是 Anthropic 为法律工作流提供的一组开源 Claude 插件与参考配置，覆盖法律团队常见的领域流程，并允许团队围绕自身 playbook 配置工作方 `📅unknown` `[entity_page]`
 - [Claude-shaped science：适配 AI 能力的科研选题](wiki/entities/claude-shaped-science.md) — Claude-shaped science** 是 Matthew Schwartz 在 Anthropic 发布的科研实践文章，主张先匹配代理的计算优势，再由人确定值得研究的问题；不是一项机器人 `📅unknown` `[entity_page]`
 - [CleanRL](wiki/entities/cleanrl.md) — CleanRL](https://github.com/vwxyzjn/cleanrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/huma `📅unknown` `[entity_page]`
@@ -6407,6 +6408,7 @@
 
 - [2D→3D 语义提升 Gap（2D 检测/分割 ↔ 3D 语义几何）](wiki/concepts/2d-to-3d-semantic-lifting-gap.md) — 机器人感知里几乎都默认一个隐含抽象：**2D 检测/分割结果可以干净地提升到 3D**——一个准的 2D 框或掩码，配上深度，就能得到策略可直接消费的「这个类别的对象在世界坐标里哪个位置、什么几何」。 `📅unknown` `[wiki_page]`
 - [3D 空间 VQA（3D Spatial Visual Question Answering）](wiki/concepts/3d-spatial-vqa.md) — 3D 空间 VQA**：在 **三维室内场景** 条件下，模型需要结合视觉观测与自然语言问题，推理物体间 **几何关系**（远近、相对方位、计数、尺度、路径顺序等）并给出答案——常见形式包括选择题 `📅unknown` `[wiki_page]`
+- [Agent 记忆与 dreaming（Anthropic：记忆的组成）](wiki/concepts/agent-memory-and-dreaming.md) — Agent 记忆**是 Claude 从经验（与用户的交互、被指派的任务）中获得、在会话之间保留、并以上下文形式存放以供之后读取的知识；**dreaming** 是在空闲时回看过往转写与笔记、用事 `📅unknown` `[wiki_page]`
 - [Agentic Coding 时代的软件工程基础](wiki/concepts/agentic-coding-software-fundamentals.md) — AI Engineering Skills Map: Software Engineering Fundamentals `📅unknown` `[wiki_page]`
 - [AI Agent 评测](wiki/concepts/ai-agent-evaluation.md) — AI agent evaluation** 指对 **agent harness（脚手架）+ 模型** 在固定 task 集上的自动化测量：不仅看最终自然语言，还看 **环境终态、工具轨迹与 tr `📅unknown` `[wiki_page]`
 - [AI Auto-Research（学术研究自动化）](wiki/concepts/ai-auto-research.md) — AI Auto-Research**：用大语言模型及其 **agentic 扩展**，在学术研究 **全生命周期** — 从假设与文献、代码与实验、图表与写作，到同行评议、答辩修订与 Paper2 `📅unknown` `[wiki_page]`
