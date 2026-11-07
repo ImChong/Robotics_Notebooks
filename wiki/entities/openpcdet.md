@@ -105,6 +105,10 @@ OpenPCDet 值得作为 3D 检测的工程**统一复现层**；真正比较 Poin
 
 ## 关联页面
 
+- [PointNet++（点集分层特征学习）](./paper-pointnet2.md)
+- [PointRCNN（原始点云二阶段检测）](./paper-pointrcnn.md)
+- [PV-RCNN（点体素特征融合检测）](./paper-pv-rcnn.md)
+
 - [LIO-SAM](./lio-sam.md)
 - [LVI-SAM](./paper-lvi-sam.md)
 
