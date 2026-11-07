@@ -3,6 +3,8 @@ type: entity
 project_id: openpcdet
 project: https://github.com/open-mmlab/OpenPCDet
 code: https://github.com/open-mmlab/OpenPCDet
+code_scope: "OpenPCDet framework: pcdet/, tools/, docs/"
+project_distinction: "OpenPCDet 是共享 3D 检测框架项目；PV-RCNN 是在其框架中实现的独立论文算法，不能共用 project 身份。"
 tags: [point-cloud, 3d-detection, pytorch, lidar, autonomy]
 status: complete
 updated: 2026-11-08
