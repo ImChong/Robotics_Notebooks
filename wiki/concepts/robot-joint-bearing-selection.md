@@ -22,6 +22,8 @@ related:
   - ./humanoid-mass-production-engineering.md
   - ./robot-structural-modal-analysis.md
   - ../queries/actuator-drive-chain-selection-loop.md
+original:
+  - ../../sources/blogs/wechat_zanehub_robot_joint_bearing_selection.md
 sources:
   - ../../sources/blogs/wechat_zanehub_robot_joint_bearing_selection.md
   - ../../sources/blogs/wechat_zanehub_joint_module_self_development_workflow.md
@@ -129,10 +131,12 @@ P = X F_r + Y F_a + Z M
 ## 局限与风险
 
 - 本文为 **工程经验归纳**（Zane Hub 第三方解读），非某厂商官方设计手册；具体系数以所选轴承厂样本为准。
+- 本页 `original` 仅列主文（关节轴承选型文章，已读完）；页内引用的姊妹文与 Hardware 101 未在本次重读。
 - **载荷谱依赖系统仿真/实测** — 早期无谱时寿命计算偏差大。
 - 柔性轴承、RV 内部轴承 **定制件多**，供应链与备件策略需单独规划。
 
 ## 关联页面
+- [螺纹基础](./screw-thread-basics.md) · [Mechtool 在线机械设计工具](../entities/mechtool.md)
 
 - [Hardware 101 · 直线传动与轴承](../overview/humanoid-hardware-101-linear-transmission-bearings.md) — 图谱分类节点（丝杠 + 轴承概览）
 - [自研关节模组开发流程](./joint-module-self-development-workflow.md) — 五件套与装配一致性

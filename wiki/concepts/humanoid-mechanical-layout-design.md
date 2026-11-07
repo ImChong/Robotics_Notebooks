@@ -18,6 +18,9 @@ related:
   - ../../roadmap/depth-humanoid-hardware-design.md
   - ../entities/paper-humanoid-leg-generative-design-dynamics.md
   - ./humanoid-topology-optimization-toolchain.md
+original:
+  - ../../sources/blogs/wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md
+  - ../../sources/blogs/wechat_zanehub_robot_structural_modal_analysis.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md
@@ -102,6 +105,8 @@ flowchart TB
 
 ## 局限与风险
 
+- 本页 `original` 只列已重读完的两篇 Zane Hub 文章（膝侧避开谐波、结构模态）；Hardware 101 / Actuator 102 长文与 HUST 学报论文三份来源本次**未重读**，相关表述仍依归档摘要。
+
 - **只做静强度不做模态**：最常见的失误；零件不断但力控做不上去。
 - **CAD 惯量当真值**：线束、胶、紧固件与实际材料密度偏差会让惯量误差达到 10% 量级，务必实测对账。
 - **先选电机再定构型**：容易把货架执行器的形状约束变成整机构型，掉进 [工业执行器陷阱](../overview/humanoid-actuator-102-industrial-actuator-trap.md)。
@@ -109,6 +114,7 @@ flowchart TB
 - **公差留得过紧**：加工与装配成本非线性上升，应只在影响运动学与轴系对齐的关键面收紧。
 
 ## 关联页面
+- [螺纹基础](./screw-thread-basics.md) · [Mechtool 在线机械设计工具](../entities/mechtool.md)
 
 - [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md) — 本页在 Stage 1–2 展开为学习顺序
 - [人形并联/连杆关节运动学](./humanoid-parallel-joint-kinematics.md)

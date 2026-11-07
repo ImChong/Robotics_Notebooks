@@ -6,6 +6,8 @@
 - **类型：** blog
 - **作者：** Zane Hub（公众号署名；第三方工程解读，非厂商官方）
 - **原始链接：** https://mp.weixin.qq.com/s/GowJUzbDjWQMcujtUezLGA
+- **核对范围：** 2026-11-07 用 Chromium（微信 UA）重新抓取公众号文章全文，正文文字逐段读完（至文末「Like / Author's tip」）；文中配图3张已下载并看图读过，谐波柔轮 / 波发生器零件照、Menlo 腿部方案对比图、线性执行器布置示意图。**未做：**未核对文中引用的标准条文、厂商样本与数值，均为作者表述。
+- **通读：** 已完成
 - **发布日期：** 2026-08-09（抓取 frontmatter）
 - **入库日期：** 2026-08-09
 - **抓取工具：** Agent Reach + wechat-article-for-ai（Camoufox；`--no-images`）
