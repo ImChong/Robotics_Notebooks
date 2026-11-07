@@ -169,6 +169,7 @@ sequenceDiagram
 | [VINS-Fusion](./vins-fusion.md) / VINS-Mono | 基于视觉、IMU 的滑窗优化（VINS-Fusion 还支持其他传感器/全局融合） | 激光点云提供尺度、特征深度与几何初值 |
 | [LIO-SAM](./lio-sam.md) | 激光和 IMU 因子图优化 | 视觉里程计先验、视觉回环候选、弱几何退化场景互补 |
 | 纯激光 LOAM | 以激光几何匹配为核心 | 在空旷平面弱几何条件下由视觉约束补充可观性 |
+| [FeatDepth](./paper-featdepth.md) | 自监督视频深度与自运动学习（训练过程） | 属于纯视觉几何学习，不能直接替代实时多传感器 SLAM |
 
 ## 工程实践
 
