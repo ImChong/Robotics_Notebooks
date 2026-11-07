@@ -94,3 +94,8 @@ Möbius 的研究价值在于将动作理解和生成放入共享多模态表示
 - [论文归档](../../sources/papers/mobius_arxiv_2611_05279.md)
 - [官方项目页归档](../../sources/sites/mobius-motion-language.md)
 - [官方仓库归档](../../sources/repos/mobius-code.md)
+
+## 关联页面
+
+- [Awesome Text-to-Motion（Zilize）](./awesome-text-to-motion-zilize.md) — 文本到动作生成论文索引，可对照其他 T2M 方法
+- [HumanML3D](./paper-notebook-humanml3d.md) — 论文摘要报告的主要评测数据集
