@@ -251,6 +251,13 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | OpenRoboKit 三套工具
+
+- 意图：区分 RoboKit 并行可微优化、RetargetingKit 人体动作映射与 GraspKit 抓取学习，并建立交叉引用、原文归档、源码运行时序。
+- 代码开放：三个官方 GitHub 仓库均已公开，具有实际可运行入口；不等同于本地成功复现或第三方整机适配认证。
+- 关键页：wiki/overview/openrobokit-toolkit.md；wiki/entities/robokit-openrobokit.md；wiki/entities/retargetingkit.md；wiki/entities/graspkit.md。
+- 阻塞：OpenReview 论文全文受验证阻碍，官网正文不可直接读取；相关页面保持 draft。
+
 ## [2026-11-07] ingest | Meta Astryx — 开源 React 设计系统与 Agent CLI
 
 - 意图：将 Meta Astryx 收录为独立工程工具节点，区别于机器人运动控制/强化学习框架。
