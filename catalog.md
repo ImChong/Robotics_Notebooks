@@ -2065,7 +2065,7 @@
 - [cuNRTO：GPU 加速非线性鲁棒轨迹优化（CUDA Nonlinear Robust Trajectory Optimization）](wiki/entities/paper-cunrto-gpu-robust-trajectory-optimization.md) — cuNRTO**（*cuNRTO: GPU-Accelerated Nonlinear Robust Trajectory Optimization*，[arXiv:2603.02642](htt `📅unknown` `[entity_page]`
 - [CuPIQP（arXiv:2610.41021）](wiki/entities/paper-cupiqp.md) — CuPIQP**（*CuPIQP: A Batched and Differentiable QP Solver on GPUs for Robot Learning and Control*， `📅unknown` `[entity_page]`
 - [CuraEval（arXiv:2610.38221）](wiki/entities/paper-curaeval.md) — CuraEval**（*CuraEval: Evaluating Demonstration Curation on Mixed-Skill Robot Data*，[arXiv:2610.382 `📅unknown` `[entity_page]`
-- [cuRoboV2-Fast（arXiv:2611.06913）](wiki/entities/paper-curobov2-fast.md) — cuRoboV2-Fast**（*cuRoboV2-Fast: Fast Torque-Limited Collision-Free Motion Planning*，[arXiv:2611.06 `📅unknown` `[entity_page]`
+- [cuRoboV2-Fast：快速力矩受限无碰撞运动规划 / Fast Torque-Limited Collision-Free Motion Planning](wiki/entities/paper-curobov2-fast.md) — cuRoboV2-Fast** 是英伟达（NVIDIA）公开的 GPU 加速运动规划器：先获取无碰撞的关节空间路径并用 B 样条优化，再对固定几何路径进行 TimeOpt 时间分配，在速度、加速度 `📅unknown` `[entity_page]`
 - [Current as Touch（Proprioceptive Contact Feedback · arXiv:2607.03529）](wiki/entities/paper-current-as-touch-proprioceptive-contact.md) — Current as Touch**（*Current as Touch: Proprioceptive Contact Feedback for Compliant Dexterous Mani `📅unknown` `[entity_page]`
 - [CusADi2（arXiv:2610.25476）](wiki/entities/paper-cusadi2.md) — CusADi2**（*CusADi2: Latency-Optimized Batch Computation of Robot Kinematics, Jacobians, and Hessia `📅unknown` `[entity_page]`
 - [CUSP（arXiv:2610.07882）](wiki/entities/paper-cusp-survival-hazard-alarms-offroad.md) — CUSP**（*CUSP: CUSUM-Governed Survival Hazard Alarms at the Perception Onset for Off-Road Navigatio `📅unknown` `[entity_page]`
