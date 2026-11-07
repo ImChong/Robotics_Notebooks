@@ -19,7 +19,7 @@ tags:
   - cuhk
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 arxiv: "2502.14814"
 venue: "ICRA 2026"
 related:
@@ -110,6 +110,7 @@ flowchart TB
   cmp -->|否| ab
 ```
 
+- **状态三分法（§I）：** 作者把输入分为 Accessible（编码器、IMU 等真机可靠可得）、Privileged（真机不可得，如线速度与静态硬件参数）、External（可观测但本质有噪声、偶尔不可靠，如高程图）；VB-Com 只对第三类做「可丢弃」处理。
 - **两条子策略共享 (S, A, R)。** πv 吃本体 op + 机器人中心高程图 ov；πb 训练时不给 ov。命令是 goal-reaching：`ct = [d1, d2, vc]`（接下来两个航点方向 + 线速度），而不是纯速度跟踪。
 - **非对称 critic：** 特权准确线速度；critic 高程图 **1.6 m × 1.0 m**，actor **1.2 m × 0.7 m**；critic 侧观测不加噪声。
 - **轻量状态估计：** 用历史观测回归下一时刻速度 `vt+1`，单阶段即可部署，避免再开 teacher–student 第二阶段。

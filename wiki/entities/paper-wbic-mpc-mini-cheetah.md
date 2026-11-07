@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, mpc, wbc, locomotion, mit, control]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 arxiv: "1909.06586"
 code: https://github.com/mit-biomimetics/Cheetah-Software
 related:
@@ -63,6 +63,7 @@ flowchart LR
 
 - 不同于只跟踪躯干轨迹的 WBC：以 MPC 反力为桥梁，使全身命令与接触冲量一致。
 - 适合空中相与高速腿摆——正是小四足「动起来」的难点。
+- **WBIC 的做法（原文 §IV）：** 先用零空间投影的优先级逆运动学递推关节位置 / 速度 / 加速度指令；再解一个小 QP，最小化反力偏差 $\delta f_r$ 与浮动基座加速度松弛 $\delta_f$（权重 $Q_1=1$、$Q_2=0.1$），约束为浮动基座动力学、$f_r=f_r^{MPC}+\delta f_r$ 与接触约束；作者明确选择松弛浮动基座动力学而不是 HQP 严格层级。论文未报告 MPC 预测时域长度与 Q/R 数值。
 
 ## 源码运行时序图
 
@@ -85,7 +86,7 @@ sequenceDiagram
 
 | 项 | 建议 |
 |----|------|
-| 频率 | MPC 数十–百 Hz 量级；WBIC/关节环更高（见概念页表） |
+| 频率 | 原文：凸 MPC 约 30–40 Hz、WBIC 500 Hz、关节 PD 40 kHz（机载低功耗计算机） |
 | 调试 | 先仿真对齐接触时刻与摩擦锥，再提高速度命令 |
 | 阅读 | 与 [srbd-convex-mpc-wbc](../concepts/srbd-convex-mpc-wbc.md) 对照公式直觉 |
 
@@ -93,7 +94,7 @@ sequenceDiagram
 
 | 维度 | 要点 |
 |------|------|
-| 动态性 | 面向高动态四足步态与接触切换 |
+| 动态性 | 跑速 3.7 m/s（Froude 数 4.65；观测峰值 4 m/s 后失稳）；同一组参数跑六种步态（含 gallop、pronk、bound） |
 | 平台 | Mini Cheetah 真机验证 |
 | 复现 | Cheetah-Software 可对照 |
 

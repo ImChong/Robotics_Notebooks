@@ -4,7 +4,7 @@ sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/whole_body_control.md
 summary: "MPC-WBC integration 说明高层预测规划与低层全身控制如何分层协同完成稳定运动。"
-updated: 2026-10-28
+updated: 2026-11-07
 ---
 
 # MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构
@@ -118,7 +118,7 @@ QP 优化层：
 
 | 机器人 | MPC 层 | WBC 层 |
 |--------|--------|--------|
-| MIT Mini Cheetah | Convex MPC (100Hz) | QP WBC (1kHz) |
+| MIT Mini Cheetah | Convex MPC（约 30–40 Hz） | WBIC（500 Hz，关节 PD 40 kHz；Kim et al. 2019） |
 | Unitree H1 | NMPC | WBC (Hierarchical QP) |
 | ANYmal | Hierarchical NMPC | Whole-body QP |
 | Atlas (Boston Dynamics) | MPC (Model Predictive Planning) | WBC |

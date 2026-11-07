@@ -2,7 +2,7 @@
 type: entity
 tags: [reinforcement-learning, education, textbook, theory, curated-index, awesome-physical-ai, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
 related:
   - ./richard-sutton.md
   - ../concepts/reinforcement-learning-history.md

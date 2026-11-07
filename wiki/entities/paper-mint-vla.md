@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, imitation-learning, action-tokenization, generalization, one-shot, libero, sjtu, rss-2026]
 status: complete
-updated: 2026-10-04
+updated: 2026-11-07
 arxiv: "2602.08602"
 venue: RSS 2026
 code: https://github.com/RenMing-Huang/MINT
@@ -36,7 +36,7 @@ summary: "MINT（RSS 2026）：用 SDAT 在频域多尺度分词中解耦 Intent
 | MINT | Mimic Intent, Not Just Trajectories | 本文 IL/VLA 泛化框架简称 |
 | SDAT | Spectrally Disentangled Action Tokenizer | 频域多尺度动作分词器，解耦意图与执行 |
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态策略方向 |
-| DCT | Discrete Cosine Transform | 离散余弦变换，将动作块映射到频域 |
+| DCT | Discrete Cosine Transform | 离散余弦变换；SDAT 用它把逐尺度重建结果与真值变到频域做监督 |
 | IL | Imitation Learning | 从专家演示学习策略的范式 |
 | RSS | Robotics: Science and Systems | 机器人顶会，本文录用 venue |
 
@@ -50,7 +50,7 @@ summary: "MINT（RSS 2026）：用 SDAT 在频域多尺度分词中解耦 Intent
 
 | 模块 | 角色 |
 |------|------|
-| **SDAT（Stage I）** | 滑动窗口动作块 → **DCT 频域**；**多尺度残差 VQ** 得 \(S_1,\dots,S_K\)；**\(S_1\)** 为 **Intent token**（单 token，低频全局结构），**\(S_2\sim S_K\)** 为 **Execution tokens**（高频残差） |
+| **SDAT（Stage I）** | 滑动窗口动作块（时域）→ 编码器 → **多尺度残差 VQ**（共享码本）得 \(S_1,\dots,S_K\)；**DCT 不作用于输入**，而是对逐尺度累计重建做 DCT、在频域监督（v3 §IV）；**\(S_1\)** 为 **Intent token**（单 token，低频全局结构），**\(S_2\sim S_K\)** 为 **Execution tokens**（高频残差） |
 | **渐进频域重建** | 训练时依次用 \(S_1\)、\(S_1{+}S_2\)、… 重建频谱，**\(\mathcal{L}_{\text{freq.}}\)** 迫使不同尺度分工；辅以时域 \(l_1\) 重建保证解码可执行 |
 | **MINT policy（Stage II）** | 视觉–语言骨干 + **action expert**；**next-scale autoregression**：尺度内并行、跨尺度自回归；解码器继承 SDAT |
 | **Intent ensemble** | 重叠 action chunk 在推理时按 **意图 token 一致性** 加权融合，稳定长视界执行 |
@@ -62,10 +62,11 @@ summary: "MINT（RSS 2026）：用 SDAT 在频域多尺度分词中解耦 Intent
 flowchart TB
   subgraph sdat["Stage I：SDAT 预训练"]
     chunk[动作块 A]
-  chunk --> dct[DCT 频域表示]
-  dct --> msrq[多尺度残差 VQ<br/>S1 Intent + S2..SK Execution]
-  msrq --> lfreq[逐尺度频域重建损失]
-  lfreq --> dec[共享解码器 → 连续轨迹]
+  chunk --> enc[时域编码器]
+  enc --> msrq[多尺度残差 VQ<br/>S1 Intent + S2..SK Execution]
+  msrq --> dec[共享解码器 → 逐尺度累计重建]
+  dec --> dct[对重建做 DCT]
+  dct --> lfreq[逐尺度频域重建损失]
   end
   subgraph mint["Stage II：MINT 策略"]
     obs[视觉 + 语言 + 本体]
@@ -87,9 +88,10 @@ flowchart TB
 |------|------|
 | **仿真基准** | LIBERO、MetaWorld、CALVIN、扰动增强 **LIBERO-Plus** |
 | **强基线** | π₀.₅、UniVLA、OpenVLA-OFT、ACT、Diffusion Policy 等 |
-| **鲁棒性** | LIBERO 训练 → LIBERO-Plus 评测：较 OpenVLA-OFT 约 **+15%** 成功率 |
-| **One-shot** | 意图注入迁移：新任务/环境约 **+60%** 相对基线（论文叙事） |
-| **真机** | 每任务约 **20 演示**；较 π₀.₅ 约 **+29%** |
+| **标准基准（v3 Table I）** | LIBERO 平均：MINT-30M 97.1、MINT-4B 98.3（π0.5 96.9）；CALVIN ABCD→D 平均长度 4.57；MetaWorld 平均 67.2（π0 50.8） |
+| **鲁棒性** | LIBERO 训练 → LIBERO-Plus 评测：较 OpenVLA-OFT 约 **+15%** 成功率（v3 平均：MINT-4B 80.1、OpenVLA-OFT 71.4、π0.5 65.0） |
+| **One-shot** | 意图注入迁移：新任务/环境约 **+60%** 相对基线（v3 Table III 平均：Intent 注入 0.77，微调 0.17，回放 0.11） |
+| **真机** | 6-DoF Piper-X，每任务 **20 演示**、每策略 20 次试验；较最强基线（动作头重新初始化的改动版 π₀.₅）约 **+29%** |
 | **模型规模** | **MINT-30M**（Transformer 从头）与 **MINT-4B**（预训练 VLM + action head） |
 
 ## 结论

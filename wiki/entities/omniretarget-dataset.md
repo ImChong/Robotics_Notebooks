@@ -3,7 +3,7 @@ type: entity
 title: OmniRetarget Dataset（G1 交互重定向轨迹）
 tags: [dataset, humanoid, loco-manipulation, motion-retargeting, unitree-g1, huggingface, amazon-far, omomo]
 summary: "Hugging Face 上的 OmniRetarget 公开子集：约 4.0 小时 Unitree G1 物体/地形/联合交互重定向轨迹（.npz qpos+fps）；OMOMO 与自采 MoCap 来源；LAFAN1 需用 holosoma 自行重定向。"
-updated: 2026-09-15
+updated: 2026-11-07
 status: complete
 related:
   - ./paper-hrl-stack-03-omniretarget.md
@@ -49,7 +49,7 @@ sources:
 | `robot-object-terrain/` | 物体 + 地形 | 自采 MoCap | 0.5 h |
 | **合计** | | | **4.0 h** |
 
-> 论文/项目页报告重定向总量 **8–9+ 小时**（含 LAFAN1 等）；HF 当前为 **许可允许发布** 的子集。
+> 论文/项目页报告重定向总量 **8–9+ 小时**（含 LAFAN1 等）；HF 当前为 **许可允许发布** 的子集。论文正文的口径是约 **2.78 h** 搬箱（OMOMO）+ **1 h** 自采动捕 + **4.6 h** LAFAN1，与 HF 页面所标的 3.0 h / 0.5 h / 0.5 h 分项略有出入，引用时注明口径。
 
 ## 数据格式
 

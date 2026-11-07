@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perceptive-locomotion, depth, cross-attention, gru, foothold, stairs, parkour, sim2real, ppo, isaac-gym, zju, sdu, agibot]
 status: complete
-updated: 2026-09-22
+updated: 2026-11-07
 arxiv: "2603.29452"
 venue: "IEEE RA-L 体例（received 2026-04-22, accepted 2026-07-26）"
 related:
@@ -62,7 +62,7 @@ summary: "CReF（arXiv:2603.29452，浙大/山大）：单阶段前向深度+本
 | 项 | 内容 |
 |----|------|
 | **机构** | 浙江大学（网络传感与控制研究所 / 控制科学与工程学院）；山东大学控制科学与工程学院 |
-| **平台** | AgiBot X2 Ultra（约 1.31 m、39 kg）；RealSense D435i 下俯 50°；Jetson AGX Orin |
+| **平台** | AgiBot X2 Ultra（约 1.31 m、39 kg）；RealSense D435i 下俯 50°；Jetson AGX Orin 机载推理（论文未说明推理 runtime / 精度） |
 | **栈** | Isaac Gym + NVIDIA Warp 胶囊自遮挡深度；PPO；控制 50 Hz；深度 \(64\times48\) @ 20 Hz |
 | **训练** | 4096 并行环境；约 20,000 iter / 单卡 RTX 4090 ≈30 h；落脚奖励约 +0.5 s/iter |
 | **开源** | **确认未开源**（截至 2026-08-18）：项目页仅为 GitHub Pages 静态站，无训练/推理仓 |

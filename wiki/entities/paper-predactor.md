@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, diffusion-policy, onboard-control, hit, roboparty, tsinghua, sjtu, shanghai-innovation-institute]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-07
 project_id: predactor
 project: https://masteryip.github.io/predactor.github.io/
 code: https://github.com/MasterYip/PredActor
@@ -50,7 +50,7 @@ summary: "PredActor（arXiv:2609.24840）：proprio-only joint state–action �
 - **在扩散学习路线中的位置：** 可作为[扩散与流匹配纵深路线](../../roadmap/depth-robotics-diffusion-dit-flow.md)的人形机载控制专题；重点从通用动作 chunk 去噪转向 joint state–action prediction、test-time steering 与端侧时延预算。
 
 - **统一 steering 接口：** 代表 joint diffusion 里少见的 **CFG（文本/行为）+ CG（状态目标）并存**，且 **仅 proprio** 输入 — 对比 Diffuse-CLoC、SCDP、SCRIPT 等（见论文 Table 1）。
-- **机载闭环证据：** 声称首个 **全 onboard** joint state–action diffusion 在 G1 Orin NX **50 Hz** 部署；p50 **16.790 ms**、p95 **19.383 ms**。
+- **机载闭环证据：** 声称首个 **全 onboard** joint state–action diffusion 在 G1 Orin NX **50 Hz** 部署；p50 **16.790 ms**、p95 **19.383 ms**。部署形态为 TorchScript 主干 + C++ 运行时（LibTorch inference mode）、batch-one FP32、两步确定性 DDIM，并非 ONNX 或 TensorRT；仅 actor 前向 p50 为 13.175 ms（论文 Table 4）。
 - **相对 hierarchy：** 不做 generator→tracker 分拆，disturbance recovery 留在同一策略，避免规划/控制双时钟。
 
 ## 核心信息
@@ -134,6 +134,8 @@ sequenceDiagram
 | Text retrieval | 0.580 | vs conditional action diffusion 0.373 |
 | Push survival | 0.535 | vs 0.564（相近） |
 | Orin NX callback p50/p95 | 16.790 / 19.383 ms | 593/600 ≤ 20 ms |
+
+> **版本提示：** 上表仿真数字（15/15、0.580）摘自早先版本；2026-11-07 复核的 arXiv 当前版摘要写作 44/45 目标、文本检索分 0.539，仿真对比表尚未逐项复核，引用时以当前版原文为准（见[论文摘录](../../sources/papers/predactor_arxiv_2609_24840.md)）。
 
 论文与项目页展示了 G1 真机文本控制、摇杆转向、外扰反应和语义插值；这些真机结果仍属于论文/项目演示，当前公开仓的评测入口运行在 MuJoCo，不提供真机部署工具链。
 

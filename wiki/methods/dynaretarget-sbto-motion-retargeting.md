@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, humanoid, loco-manipulation, trajectory-optimization, sampling-based-optimization, imitation-learning, contact-rich-manipulation]
 status: complete
 date: 2026-06-17
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -99,6 +99,8 @@ flowchart LR
 | 早期决策 | 执行后难回溯 | 长 effective horizon 内持续 refine 早期 knot |
 | 轨迹形态 | 反馈控制易 **抖动** | 开环控制序列，smoothness 优于 SPIDER（Table III） |
 | OmniRetarget 285 motions | **37.9%** success | **76.8%**（SBTO_skip） |
+
+成功判据：物体平均位置误差 <10 cm 且旋转误差 <25°。论文的有效视距分析中，某案例 SBTO 的有效视距约 **3.4 s**（SPIDER 固定视距 1.2 s），主要由 $\sigma_{\min}$ 决定；直接在全时域上一次性优化（不做增量）在测试案例上系统性失败。
 
 ## 局限与阅读时注意点
 

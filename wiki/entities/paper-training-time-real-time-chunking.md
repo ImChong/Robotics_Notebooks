@@ -8,7 +8,7 @@ tags:
   - physical-intelligence
   - berkeley
 status: complete
-updated: 2026-09-30
+updated: 2026-11-07
 arxiv: "2512.05964"
 related:
   - ../methods/action-chunking.md
@@ -46,7 +46,7 @@ summary: "Training-Time RTC（arXiv:2512.05964，PI/Berkeley）：训练时随�
 
 ## 为什么重要
 
-- **补齐 RTC 的工程税：** inference-time 版为 soft mask 付 VJP 成本，延迟越高越吃亏；T-RTC 把条件化前移到训练，**推理路径与标准 flow 采样相同**。
+- **补齐 RTC 的工程税：** inference-time 版为 soft mask 付 VJP 成本（RTC 原文附录：π0.5 上去噪单步 35 ms vs 无 RTC 14 ms，模型总耗时 97 ms vs 76 ms），延迟越高越吃亏；T-RTC 把条件化前移到训练，**推理路径与标准 flow 采样相同**。
 - **与 π\*₀.₆ 产品线绑定：** 博客写明 **咖啡演示** 使用 training-time 版，不要与 2025-06 纯推理 RTC 混读成功率。
 - **和 WAM 实证对读：** [WAM 异步部署](./paper-wam-realtime-async.md) 把 training-time 前缀条件标为 **train** 策略且综合最好；本文给出 PI 侧正式方法与 Kinetix / 真机证据。
 

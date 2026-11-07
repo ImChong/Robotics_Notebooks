@@ -2,7 +2,7 @@
 type: entity
 tags: [manipulator, cobot, force-control, open-source, franka, research]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue02-curator.md

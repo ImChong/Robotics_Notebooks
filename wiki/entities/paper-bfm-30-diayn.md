@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, unsupervised-rl, skill-discovery, google, berkeley, awesome-bfm-papers, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
 arxiv: "1802.06070"
 venue: "2018 · ICLR"
 code: https://github.com/ben-eysenbach/sac/blob/master/DIAYN.md

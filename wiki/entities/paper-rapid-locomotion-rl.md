@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, rl, locomotion, quadruped, sim2real, mit, agility]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
 arxiv: "2205.02824"
 code: https://github.com/Improbable-AI/rapid-locomotion-rl
 related:
@@ -65,6 +65,8 @@ summary: "Margolis et al. arXiv:2205.02824：端到端 RL 使 Mini Cheetah 野�
 2. **Online system identification：** 借鉴先验适应模块思想，缩小 sim–real 动力学缝。
 3. 单一神经网络策略端到端输出，真机部署。
 
+原文接口与训练设置（arXiv v1 通读）：观测为关节位置/速度、IMU 重力方向与上一步动作的历史，拼速度指令得 42 维；动作为 12 维关节位置目标，PD 增益固定 $K_p=20,\ K_d=0.5$；网络在机载 Jetson TX2 NX 上 50 Hz 运行。Isaac Gym 4000 并行体、4 亿仿真步（3090 上不到 3 小时）；随机化地面摩擦 0.05–4.00、负载 −1.0 到 3.0 kg、电机强度 90%–110% 等。教师–学生结构：教师编码特权参数，学生适应模块读 15 步观测历史。
+
 ```mermaid
 flowchart TB
   curr["速度课程"] --> train["仿真 RL 训练"]
@@ -97,7 +99,7 @@ sequenceDiagram
 | 项 | 建议 |
 |----|------|
 | 课程 | 监控速度指令分位数与跌倒率，避免过早拉满 |
-| 适应 | 确认在线辨识模块频率与观测历史长度 |
+| 适应 | 原文学生适应模块读 15 步 42 维历史；确认部署时频率与历史长度一致 |
 | 场地 | 冰/砾石测试注意打滑与保护 |
 
 ## 评测
@@ -107,6 +109,9 @@ sequenceDiagram
 | 速度 | 至 3.9 m/s |
 | 地形 | 草、冰、砾石等 |
 | 扰动 | 报告鲁棒响应 |
+| 课程 | 无课程时策略学不会；Grid 课程优于 Box 课程 |
+| sim-to-real 差距（表 IV） | 指令 6.0 m/s：仿真有/无系统辨识 5.46 / 5.07 m/s，真机 3.81 ± 0.09 / 2.49 ± 0.07 m/s；作者称剩余差距来源不确定 |
+| 粗糙地形消融 | 盲策略训练地形越粗糙，平地可跟踪指令范围越小（鲁棒性与平地极速取舍）；仅平地训练也可部署于多种户外地形 |
 
 ## 结论
 

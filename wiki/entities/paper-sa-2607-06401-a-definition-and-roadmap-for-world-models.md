@@ -19,7 +19,7 @@ tags:
     sun254667-wm,
   ]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
 arxiv: "2607.06401"
 venue: "arXiv 2026"
 summary: "上海人工智能实验室 perspective：世界模型是有限算力下对物理状态转移的压缩；在 Fei-Fei 渲染/模拟/规划功能轴上补观测级/潜空间/3D 架构轴；WAM 不是第四列；倒金字塔数据与三阶段路线。Awesome Surveys 第 532 条升格。"
@@ -230,4 +230,4 @@ flowchart TD
 - [Awesome World Models 条目笔记](../../sources/papers/sun_awesome_wm_2607_06401_a-definition-and-roadmap-for-world-model.md)
 - [Awesome World Models catalog](../../sources/papers/sun_awesome_wm_catalog.md)
 - [Awesome World Models 仓库](../../sources/repos/awesome-world-models.md)
-- [arXiv PDF](https://arxiv.org/pdf/2607.06401)：已通读目录、§1 引言、§2 世界模型的定义与分类、§7 路线图、§8 展望（§3–§6 仅读章节标题，附录与参考文献略读）；图依据论文 §1、§2、§7、§8 与 Fig. 1/5/9/10。
+- [arXiv PDF](https://arxiv.org/pdf/2607.06401)（39 页，**通读未完成**）：2026-11-07 精读摘要、§1 引言、§2 全部（定义与三性质、POMDP、理解 vs 预测、功能分类、二维分类、科学/社会域延伸）、§3 引言与 Table 1、§4.5 物理约束学习、§6 引言与 6.1–6.2、§7 路线图、§8 展望；§3.1–3.4 其余部分、§4 其余小节、§5、§6.3–6.6 只浏览或未读，参考文献与贡献者名单未读；图依据论文 §1、§2、§7、§8 与 Fig. 1/5/9/10。

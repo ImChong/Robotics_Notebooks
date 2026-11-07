@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, math, quaternion, so3, interpolation, embodied-ai, animation]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ./lie-group-rigid-body-motions.md
   - ./se3-representation.md
@@ -143,6 +143,7 @@ flowchart LR
 ## 局限与风险
 
 - **单位约束二次型**：直接 NLP / 无约束 Adam 优化四元数需 renormalize 或惩罚（Diebel Sec. 6.16）。
+- **Diebel §1 的选型立场**：多数标准优化算法无法直接编码四元数的二次单位范数约束；旋转向量把该约束折进参数化，既无欧拉奇异也无二次约束，适合在奇异不可避免时对姿态做优化，但原文也说它「在其他情形未必最佳」。
 - **不是全局唯一坐标**：$q$ 与 $-q$；大范围姿态 **回归** 不连续（Zhou et al. CVPR 2019，见 se3-representation 页）。
 - **scalar 顺序混用** 是静默 bug 高发区（仿真 ↔ 真机 ↔ 数据集）。
 - **误把 $\dot q$ 当角速度** 会导致浮动基动力学与 IMU 融合错误。
@@ -162,7 +163,7 @@ flowchart LR
 
 - [Diebel 2006 姿态参数化统一参考](../../sources/papers/diebel_2006_representing_attitude_quaternions.md)
 - [Shoemake 1985 四元数曲线与 SLERP](../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md)
-- [Modern Robotics Ch 3 四元数摘录](../../sources/papers/modern_robotics_ch3_unit_quaternion.md)
+- [Modern Robotics Ch 3 四元数摘录](../../sources/papers/modern_robotics_ch3_unit_quaternion.md) — 四元数定义与互转实际在教材附录 B.3，Ch 3 正文用指数坐标与 Rodrigues 公式
 - [Modern Robotics 教材归档](../../sources/papers/modern_robotics_textbook.md)
 
 ## 推荐继续阅读

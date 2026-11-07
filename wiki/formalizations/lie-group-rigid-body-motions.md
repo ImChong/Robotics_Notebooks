@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, math, lie-group, so3, se3, quaternion, embodied-ai, optimization]
 status: complete
-updated: 2026-10-01
+updated: 2026-11-07
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ../overview/modern-robotics-wechat-principles-series.md
@@ -101,7 +101,7 @@ $$
 |------|------|------|------|
 | **单位四元数** | 4 | 紧凑、无万向锁、SLERP 平滑 | $\|q\|=1$ 约束；$q \sim -q$；不宜直接 unconstrained 反传 |
 
-Hamilton 积、SLERP、scalar 顺序与 $q\equiv -q$ 的工程处理见专页 [单位四元数与 SO(3)](./unit-quaternion-so3.md)（一手资料：Diebel 2006、Shoemake SIGGRAPH 1985、Modern Robotics Ch 3）。
+Hamilton 积、SLERP、scalar 顺序与 $q\equiv -q$ 的工程处理见专页 [单位四元数与 SO(3)](./unit-quaternion-so3.md)（一手资料：Diebel 2006、Shoemake SIGGRAPH 1985、Modern Robotics 附录 B.3；该教材 Ch 3 正文用的是指数坐标与 Rodrigues 公式，四元数不在 Ch 3）。
 
 | 工具 | 维度 | 优势 | 局限 |
 |------|------|------|------|

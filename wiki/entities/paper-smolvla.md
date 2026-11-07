@@ -9,7 +9,7 @@ tags:
   - lerobot
   - open-source
 status: complete
-updated: 2026-11-05
+updated: 2026-11-07
 arxiv: "2506.01844"
 code: https://github.com/huggingface/lerobot
 related:
@@ -84,6 +84,7 @@ flowchart TD
 - **arXiv：** [2506.01844](https://arxiv.org/abs/2506.01844)（提交 2025-06-02），作者：Shukor, Aubakirova, Capuano, Kooijmans, Palma, Zouitine 等（arXiv 摘要页前 6 位）
 - 论文摘要与文章一致的部分：小型、社区数据、异步推理、flow matching 之外的「10 倍更大 VLA 可比」；文章里的 450M、前一半层、64 token、「吞吐翻倍」等具体数字来自文章，未在摘要中核对。lerobot 仓库 README 的 VLA 模型列表含 SmolVLA（文档 policy_smolvla_README），仓库 git ls-remote 可达。
 - 论文 §4.3 正文核对：主模型 450M 参数（其中动作专家约 100M），只用 VLM 内 LLM 的前 16 层，动作 chunk n=50，flow matching 推理固定 10 步；预训练冻结 VLM、只训动作专家。§4.6 实测异步推理把 Pick-Place 平均完成时间从 13.75 s 降到 9.7 s（论文称约快 30%），60 s 定时内完成 19 次 vs 9 次——文章的「吞吐大约翻倍」对应的是后一个定时计数口径。
+- 2026-11-07 通读补充：论文 §3.1 确认不做图像切块、每帧限制 64 个视觉 token。**训练目标符号：** 论文沿用 $A^\tau=\tau A+(1-\tau)\epsilon$（$\tau$ 取 Beta 分布），但文字把目标场写成 $u=\epsilon-A$，按该插值式对 $\tau$ 求导应为 $A-\epsilon$，原文自身不一致，实现须以代码为准。
 
 ## 评测
 
@@ -177,7 +178,7 @@ sequenceDiagram
 ## LeRobot 实现要点
 
 - **入口与权重：** `policy.type=smolvla`；预训练权重 [`lerobot/smolvla_base`](https://hf.co/lerobot/smolvla_base)（LeRobot 文档 `docs/source/smolvla.mdx` 称其为 450M 模型）；`configuration_smolvla.py` 默认 VLM 为 `HuggingFaceTB/SmolVLM2-500M-Video-Instruct`。
-- **默认超参（读自 `configuration_smolvla.py`）：** `chunk_size=50`、`n_action_steps=50`、`num_steps=10`（flow matching 去噪步）、`num_vlm_layers=16`、`self_attn_every_n_layers=2`、`expert_width_multiplier=0.75`、`max_state_dim=max_action_dim=32`、输入图 resize-with-pad 到 512×512、`freeze_vision_encoder=True`、`train_expert_only=True`。与论文 §3.1 的「只取前 16 层、n=50、10 步」一致；`0.75` 的专家宽度倍率论文中的取值本页未核实。
+- **默认超参（读自 `configuration_smolvla.py`）：** `chunk_size=50`、`n_action_steps=50`、`num_steps=10`（flow matching 去噪步）、`num_vlm_layers=16`、`self_attn_every_n_layers=2`、`expert_width_multiplier=0.75`、`max_state_dim=max_action_dim=32`、输入图 resize-with-pad 到 512×512、`freeze_vision_encoder=True`、`train_expert_only=True`。与论文 §3.1 的「只取前 16 层、n=50、10 步」一致；论文也写动作专家隐层宽度为 VLM 的 0.75×，与 `expert_width_multiplier=0.75` 一致。
 - **交错注意力在代码里的样子：** `SmolVLMWithExpertModel.forward` 中，`layer_idx % self_attn_every_n_layers == 0` 的层走 `forward_attn_layer`（自注意力），其余走 `forward_cross_attn_layer`（专家对 VLM KV 做交叉注意力）；填充 KV cache 的那次前向全部走自注意力。
 - **推理加速：** `sample_actions` 先对 prefix（图像+语言+state）跑一次并缓存 KV，再用 `euler_integrate` 反复只算 suffix；`select_action` 用 `_queues[ACTION]` 队列逐步弹出。
 - **⚠ 与上文流程图/论文异步栈的版本差异：** 论文 §3.3 与本页「流程总览」里的 `RobotClient / PolicyServer` 是论文/旧版 `lerobot.async_inference` 的叫法；在上述固定提交里该目录已不存在，`docs/source/remote_inference.mdx` 明确写「`lerobot[async]` extra 与 `lerobot.async_inference` 已被 `lerobot[remote]`、`lerobot-policy-server`、`lerobot-rollout --inference.type=remote` 取代，旧的 chunk 阈值与聚合权重不可直接沿用」。因此异步推理现在对应 `src/lerobot/remote_inference/`（`RemoteClient`、`PolicyServer`）与 `inference/rtc.py`，不是论文里的同名类。
@@ -212,4 +213,4 @@ sequenceDiagram
 - [x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md](../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md)
 - [lerobot 仓库归档](../../sources/repos/lerobot.md)：固定提交 `9e5ee98…` 的 `policies/smolvla/` 源码与 `docs/source/smolvla.mdx`、`remote_inference.mdx`
 - [arXiv:2506.01844](https://arxiv.org/abs/2506.01844)
-- [arXiv PDF](https://arxiv.org/pdf/2506.01844)：已通读方法部分与实验：§3.1 模型结构、§3.2 预训练数据、§3.3 异步推理、§4 实验（Table 2–13、Fig.5）、§5.1 局限
+- [arXiv PDF](https://arxiv.org/pdf/2506.01844)（24 页）：2026-11-07 读完摘要、§1 引言、§2 相关工作、§3 方法（模型结构、社区数据预训练、异步推理）、§4 实验（Table 2–13、Fig.5）、§5 讨论与局限；附录 A 的 481 个社区数据集清单与任务标注提示词只浏览

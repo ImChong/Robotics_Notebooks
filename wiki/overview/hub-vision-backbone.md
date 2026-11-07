@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-vision-backbone, cnn, vit, perception, detection]
 status: complete
-updated: 2026-10-07
+updated: 2026-11-07
 summary: "视觉感知骨干知识链汇总：CNN/ViT 骨干、检测/分割头与策略输入的衔接，覆盖 ResNet/YOLO 选型与生成式视觉预训练对机器人表征的影响；课程级全量节点见 Transformer 视觉应用策展。"
 related:
   - ../entities/transformer-cv-curriculum.md

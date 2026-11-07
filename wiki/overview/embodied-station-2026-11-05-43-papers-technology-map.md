@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-07
 related:
   - ../entities/paper-grasp.md
   - ../entities/paper-mesa.md
@@ -103,7 +103,7 @@ flowchart TB
 
 | 论文 | 节点 | 开源 |
 |------|------|------|
-| WayTrace | [paper-waytrace](../entities/paper-waytrace.md) | 项目页未列 GitHub |
+| WayTrace | [paper-waytrace](../entities/paper-waytrace.md) | 待发布（论文称 will release，仓库与权重待核） |
 | Practical Causal Framework for Mobile Robots | [paper-practical-causal-framework-for-mobile-robots](../entities/paper-practical-causal-framework-for-mobile-robots.md)（复用） | 已开源 |
 | FEIJOA | [paper-feijoa](../entities/paper-feijoa.md)（复用） | 已开源 |
 | Expressive Swarm Perceptual Gaps | [paper-expressive-swarm-perceptual-gaps](../entities/paper-expressive-swarm-perceptual-gaps.md) | 部分开源 |
