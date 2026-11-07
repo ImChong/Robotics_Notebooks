@@ -13,10 +13,11 @@ tags:
   - dcc
   - 3d-gen-studio
 status: complete
-updated: 2026-10-28
+updated: 2026-11-07
 related:
   - ../concepts/text-to-cad.md
   - ./blender.md
+  - ./cozyclay.md
   - ./comfyui.md
   - ./articraft.md
   - ./img2threejs.md
@@ -157,6 +158,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [CozyClay](./cozyclay.md) — 浏览器内先编排角色动作与镜头，再导出供 AI 视频模型使用的灰盒预演；与本页静态网格生成管线互补。
 - [Modly](./modly.md) — 本地模型扩展驱动的图片到网格桌面工作流。
 
 - [Infinigen V2](./infinigen.md) — 程序化生成整套室内外场景和合成数据，与本页的 AI 网格生成工作台互补。
