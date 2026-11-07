@@ -9,13 +9,16 @@ related:
   - ../methods/model-predictive-control.md
   - ../entities/paper-adp.md
   - ../entities/paper-adaptive-whole-body-mpc-payload.md
+original:
+  - ../../sources/papers/herzog_2016_momentum_control_hierarchical_inverse_dynamics_arxiv_1410_7284.md
 sources:
+  - ../../sources/papers/herzog_2016_momentum_control_hierarchical_inverse_dynamics_arxiv_1410_7284.md
   - ../../sources/papers/mpc.md
   - ../../sources/papers/whole_body_control.md
   - ../../sources/papers/adp_arxiv_2607_03454.md
   - ../../sources/papers/adaptive_whole_body_mpc_2610_12972.md
 summary: "Centroidal Dynamics 以质心动量为核心描述全身运动，是 MPC、WBC 和多接触规划的重要中间层。"
-updated: 2026-10-28
+updated: 2026-11-07
 ---
 
 # Centroidal Dynamics
@@ -60,7 +63,9 @@ Centroidal Dynamics 重要就在这：
 
 一句话，**它是“机器人整体怎么站住、怎么发力、怎么挪质心”的主干模型。**
 
-## 核心对象：质心动量
+## 核心原理：质心动量与动力学方程
+
+### 核心对象：质心动量
 
 Centroidal Dynamics 关注的不是每个关节变量本身，而是机器人整体的：
 
@@ -82,11 +87,13 @@ $$
 \end{bmatrix}
 $$
 
+（排序因文献而异：Herzog et al. 2016 写 $h=[h_{lin};h_{ang}]$，线动量在前，均取在质心。）
+
 这玩意儿本质上是在说：
 
 > 别先问每个关节怎么动，先问整台机器人整体的动量怎么演化。
 
-## 核心动力学方程
+### 核心动力学方程
 
 在有多个接触点时，质心动力学通常可写成：
 
@@ -118,6 +125,12 @@ $$
 - 还会通过力臂影响整体角动量
 
 这正是它比 LIP 强很多的地方。
+
+**这两个式子是怎么来的（Herzog et al. 2016 的推导）：** 浮动基机器人的运动方程 $M\ddot q+N=S^\top\tau+J_c^\top\lambda$ 中，对应 6 个未驱动基座自由度的最后 6 行不含关节力矩，就是整机牛顿–欧拉方程：质心动量变化率 = 外力（接触力 + 重力）。写成矩阵形式即
+$$
+\dot h=\begin{bmatrix}I&0&\cdots\\ [x_i-x_{cog}]_\times&I&\cdots\end{bmatrix}\lambda+\begin{bmatrix}mg\\0\end{bmatrix},\qquad \dot x_{cog}=\frac{1}{m}h_{lin}
+$$
+其中 $x_i$ 为第 $i$ 个接触点、$\lambda$ 为广义接触力（力 + 力矩）。所以在已知接触力时，**这个层次本身是精确的**，不是近似；近似发生在把惯量 / 构型耦合 $h=H_G\dot q$ 用简化模型代替的时候（推测：如单刚体模型）。详见 [Floating Base Dynamics](./floating-base-dynamics.md)。
 
 ## 和 LIP / ZMP 的关系
 
@@ -168,7 +181,7 @@ Centroidal Dynamics 正好抓住这几个核心量。
 
 这是工程里非常常见、也非常靠谱的分层方案。
 
-## 在机器人中的典型用法
+## 工程实践：典型用法
 
 ### 1. 足式机器人平衡与行走
 最经典用途：
@@ -182,7 +195,7 @@ Centroidal Dynamics 正好抓住这几个核心量。
 - 扰动恢复控制
 
 ### 2. Convex MPC
-很多 MIT Cheetah / ANYmal / 人形 locomotion 控制器都会用 centroidal dynamics 的离散形式来做凸优化。
+很多 MIT Cheetah / ANYmal / 人形 locomotion 控制器都会用 centroidal dynamics 的离散形式来做凸优化（此条为通行说法，本批未逐篇核对这些系统）。
 
 因为它比全刚体动力学更适合实时求解。
 
@@ -216,7 +229,7 @@ Whole-Body Controller
 机器人整体动量可以写成：
 
 $$
-\mathbf{h} = \mathbf{A}_g(\mathbf{q}) \dot{\mathbf{q}}
+\mathbf{h} = \mathbf{A}_g(\mathbf{q}) \dot{\mathbf{q}},\qquad \dot{\mathbf h}=\mathbf A_g\ddot{\mathbf q}+\dot{\mathbf A}_g\dot{\mathbf q}
 $$
 
 其中：
@@ -227,6 +240,8 @@ $$
 它的意义是：
 
 > 给定当前姿态和关节速度，CMM 告诉你整台机器人的整体动量是多少。
+
+Herzog et al. 称它为 centroidal momentum matrix $H_G$，引自 Orin & Goswami (IROS 2008)（本批未取得该原文）。动量变化率因此既可当**运动学任务**（$\ddot q$ 的函数，需要 $\dot H_G$，常由数值微分得到而放大噪声），也可当**力任务**（$\lambda$ 的函数）；作者主张用力形式设计动量控制律，并对它线性化后做 LQR，利用线 / 角动量耦合，避免在各接触构型下手调 PD 增益。
 
 这在：
 - momentum control
@@ -248,6 +263,9 @@ $$
 这些约束比 LIP / ZMP 框架更自然。
 
 ## 常见局限
+
+### 0. 来自原文的实测限制
+Herzog et al. 在 Sarcos 液压人形上用该层 + 层级逆动力学做平衡 / 跟踪实验，作者在结论中指出：模型不准与计算复杂度仍是现实约束；他们的方法需要接更高层规划器才能行走（未来工作）。控制器要求每步物理一致（运动方程 + 力矩饱和）作为最高优先级，其余任务才在其零空间里满足。
 
 ### 1. 还是忽略了很多关节级细节
 Centroidal Dynamics 比 LIP 强，但它依然不是全刚体动力学。
@@ -307,11 +325,12 @@ print("com acceleration:", com_acc)
 
 ## 参考来源
 
-- Orin, Goswami, Lee, *Centroidal dynamics of a humanoid robot* — centroidal dynamics 系统性阐述
+- [Herzog et al. 2016，arXiv:1410.7284 原文归档](../../sources/papers/herzog_2016_momentum_control_hierarchical_inverse_dynamics_arxiv_1410_7284.md) — 已通读：质心动量矩阵、动量变化率的力 / 运动学两种写法、LQR 动量控制
+- Orin, Goswami, Lee, *Centroidal dynamics of a humanoid robot* — centroidal dynamics 系统性阐述（本批未取得原文，未核对）
 - Herzog et al., *Momentum Control with Hierarchical Inverse Dynamics on a Torque-Controlled Humanoid* — WBC 与 centroidal 结合代表
-- Winkler et al., *Gait and Trajectory Optimization for Legged Systems through Phase-based End-Effector Parameterization* — 接触规划代表
+- Winkler et al., *Gait and Trajectory Optimization for Legged Systems through Phase-based End-Effector Parameterization* — 接触规划代表（未核对）
 
-## 和已有页面的关系
+## 关联页面（和已有页面的关系）
 
 ### 和 LIP / ZMP 的关系
 LIP / ZMP 是更简化的双足平衡模型，Centroidal Dynamics 则是更接近真实机器人的中层动力学。
@@ -360,7 +379,8 @@ Centroidal Dynamics 是很多足式 / 人形 MPC 控制器最常见的预测模�
 
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - Orin, Goswami, Lee, *Centroidal dynamics of a humanoid robot*
-- Herzog et al., *Momentum Control with Hierarchical Inverse Dynamics on a Torque-Controlled Humanoid*
+- [Herzog et al., *Momentum Control with Hierarchical Inverse Dynamics on a Torque-Controlled Humanoid* (arXiv:1410.7284)](https://arxiv.org/abs/1410.7284)
+- [接触力旋量锥](../formalizations/contact-wrench-cone.md) — 把摩擦锥推广到 6 维 wrench，作为质心层的接触约束
 - Winkler et al., *Gait and Trajectory Optimization for Legged Systems through Phase-based End-Effector Parameterization*
 
 ## 一句话记忆

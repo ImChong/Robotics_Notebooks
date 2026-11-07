@@ -11,6 +11,8 @@
 - **关联 source:** [`modern_robotics_textbook.md`](modern_robotics_textbook.md)
 - **一句话说明:** 教材 Ch 3 以 **旋转矩阵 + 指数坐标（旋转向量）** 为主轴建立 SO(3)/SE(3)；单位四元数作为与轴角等价的紧凑存储，并给出与 PoE / twist 一致的群论语言——机器人学课程级一手推导。
 
+> **2026-11-07 更正：** 对照官方 PDF，单位四元数的定义与互转在**附录 B.3**（"Other Representations of Rotations"），不在 Ch 3 正文；Ch 3 §3.2.3 用指数坐标 $\hat\omega\theta$ 与 Rodrigues 公式（式 3.51），本归档下方「Ch 3.2 归纳」的四元数一行应读作「附录 B.3」。教材通读核对见 [`modern_robotics_textbook.md`](modern_robotics_textbook.md)。
+
 ## 开源状态（步骤 2.5）
 
 - **配套 Python/MAThematica 库:** [ModernRobotics packages](https://github.com/NxRobotics/ModernRobotics)（Northwestern 维护）
