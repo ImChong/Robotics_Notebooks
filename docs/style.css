@@ -1327,9 +1327,11 @@ button.home-wiki-heatmap-cell.is-active {
     flex: 0 1 auto;
   }
 }
-/* PC：热力图在内容区内完整放下，隐藏横向滚动；列宽用 calc 均分避免 fr 子像素溢出 */
+/* PC：热力图在内容区内完整放下，不做滚动容器；列宽用 calc 均分避免 fr 子像素溢出。
+   用 visible 而非 hidden：末列月份标签（如「11月」）会溢出几 px，hidden 时仍可被
+   JS 的 scrollLeft 锚定滚过去，把左侧「一/三/五」裁掉 */
 @media (min-width: 680px) {
-  .home-wiki-heatmap-scroll { overflow-x: hidden; }
+  .home-wiki-heatmap-scroll { overflow-x: visible; }
   .home-wiki-heatmap-months,
   .home-wiki-heatmap-grid {
     --hm-col-width: calc((100% - (var(--hm-weeks) - 1) * var(--hm-gap)) / var(--hm-weeks));
@@ -1344,6 +1346,15 @@ button.home-wiki-heatmap-cell.is-active {
 /* 极窄屏：格子到下限后恢复横向滚动，默认锚定最右（最新日期） */
 @media (max-width: 679px) {
   .home-wiki-heatmap-inner { min-width: max-content; }
+  /* 星期列吸附左侧，滚到最右时「一/三/五」仍可见；
+     左右 box-shadow 盖住滚动容器 2px padding 与列间 gap，避免格子从缝里露出 */
+  .home-wiki-heatmap-weekdays {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--bg);
+    box-shadow: -2px 0 0 var(--bg), var(--hm-gap) 0 0 var(--bg);
+  }
 }
 .section-subtitle {
   color: var(--text-muted);
