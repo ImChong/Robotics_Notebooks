@@ -13,6 +13,8 @@
 - **机构：** 隆德大学（Lund University）计算机系 / 自动控制系；WASP
 - **入库日期：** 2026-08-13
 - **一句话说明：** 面向力矩控制机械臂的笛卡尔阻抗 C++ 实现：主任务柔顺 + **零空间关节阻抗** + 期望末端 wrench；已在 **Franka Panda / FR3** 与 **KUKA iiwa7** 真机与仿真部署。
+- **核对范围：** 2026-11-07 通读 arXiv:2212.11215v1（2022-12，7 页，与 JOSS 2024 版同题；本次读的是 arXiv 版，JOSS 终稿未逐字对照）全文：摘要、需求陈述与功能对比表、式 (1)–(9) 的控制实现与滤波 / 限幅 / 速率限制安全措施、框图、参考文献条目。
+- **通读：** 已完成
 - **沉淀到 wiki：** [`wiki/entities/paper-cartesian-impedance-controller.md`](../../wiki/entities/paper-cartesian-impedance-controller.md)
 
 ## 开源状态（步骤 2.5）

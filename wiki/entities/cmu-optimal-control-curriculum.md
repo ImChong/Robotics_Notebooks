@@ -2,7 +2,9 @@
 type: entity
 tags: [course, optimal-control, lqr, mpc, trajectory-optimization, ddp, ilc, kalman-filter, cmu, curriculum]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
+original:
+  - ../../sources/courses/cmu_16_745_site_and_lecture_notes_reading_2025.md
 related:
   - ../concepts/optimal-control.md
   - ../methods/lqr-ilqr.md
@@ -15,6 +17,7 @@ related:
   - ../methods/convex-relaxation-robotics.md
   - ../../roadmap/motion-control.md
 sources:
+  - ../../sources/courses/cmu_16_745_site_and_lecture_notes_reading_2025.md
   - ../../sources/courses/cmu_optimal_control_16_745_2025_youtube.md
   - ../../sources/sites/cmu_optimal_control_16_745.md
   - ../../sources/repos/optimal_control_16_745.md
@@ -22,6 +25,8 @@ summary: "CMU 16-745 Optimal Control 2025（Zac Manchester）公开录像策展�
 ---
 
 # CMU Optimal Control 2025 学习策展（16-745）
+
+## 一句话定义
 
 **一句话：** [Zachary Manchester](https://www.ri.cmu.edu/ri-people/zachary-manchester/) 主讲的 CMU **16-745 Optimal Control and Reinforcement Learning**（Spring 2025）把动力学、数值优化、经典 OCP、凸 MPC、TrajOpt/DDP、姿态、混杂系统与案例串成一条可对照本库方法页的公开视频课；入口是 YouTube 播放列表 [Optimal Control 2025](../../sources/courses/cmu_optimal_control_16_745_2025_youtube.md)。
 
@@ -43,7 +48,7 @@ summary: "CMU 16-745 Optimal Control 2025（Zac Manchester）公开录像策展�
 2. **对齐 [运动控制主路线](../../roadmap/motion-control.md) L3–L4**：动力学 → 优化 → LQR/DP → MPC/TrajOpt → 足式/案例，正好覆盖「控制基础 → 传统主干」过渡带。
 3. **与 [数值优化策展](./numerical-optimization-curriculum.md) 互补**：数值优化课给 QP/KKT/锥规划语言；本课给 **OCP 视角下如何把优化嵌进控制器**（射击法、直接法、DDP、凸 MPC）。
 
-## 推荐学习路径
+## 流程总览：推荐学习路径
 
 ```mermaid
 flowchart LR
@@ -88,15 +93,21 @@ flowchart LR
 | 12 | DDP | [LQR/iLQR](../methods/lqr-ilqr.md) |
 | 13 | Direct TrajOpt / collocation / SQP | [Trajectory Optimization](../methods/trajectory-optimization.md) |
 
+**核对官方讲义后的要点（讲义仓 `Lecture N.pdf`，2026-11-07 通读）：**
+
+- 第 7–9 讲把 LQR 讲成三种推导：间接打靶（Pontryagin）、堆叠成等式约束 QP、反向 Riccati 递推；后两者精确一致，QP 为 $O((N(n+m))^3)$，Riccati 为 $O(N(n+m)^3)$；拉格朗日乘子就是值函数梯度；第 9 讲同时讲可控性矩阵秩条件与 Bellman 最优性原理。
+- 第 10 讲凸 MPC = “带约束的 LQR”，以 LQR cost-to-go 作终端代价，无约束时对任意时域与 LQR 一致。
+- 第 11–13 讲对比 DDP（总动力学可行、可配 TVLQR 跟踪，状态约束难）与 DIRCOL / SQP（可处理任意约束、可不可行初始化）；直接配点用 Hermite–Simpson。
+
 ### Rotations & Special Topics（Lec 14–24）
 
 | 讲 | 主题 | 独立节点 |
 |----|------|----------|
 | 14–16 | 三维旋转、姿态优化、四旋翼 LQR | [LQR](../formalizations/lqr.md) |
 | 17 | 混杂系统与足式 | [Locomotion](../tasks/locomotion.md)、[Humanoid Locomotion](../tasks/humanoid-locomotion.md) |
-| 18 | Iterative Learning Control | [滚动优化与 ILC](../overview/robot-control-paradigm-receding-horizon-ilc.md) |
+| 18 | Iterative Learning Control（真机 rollout 取代模型预测，每轮更新前馈） | [滚动优化与 ILC](../overview/robot-control-paradigm-receding-horizon-ilc.md) |
 | 19 | 随机 OCP 与 LQG | [Kalman Filter](../formalizations/kalman-filter.md)、[LQR](../formalizations/lqr.md) |
-| 20 | How to Walk | [Locomotion](../tasks/locomotion.md)、[LIP/ZMP](../concepts/lip-zmp.md) |
+| 20 | How to Walk（John Zhang 嘉宾讲座：步行机器人史、凸 MPC 单刚体模型、iLQR、sim2real RL；**不含 LIP/ZMP**） | [Locomotion](../tasks/locomotion.md)、[Model Predictive Control](../methods/model-predictive-control.md) |
 | 21 | Kalman 与对偶 | [Kalman Filter](../formalizations/kalman-filter.md)、[State Estimation](../concepts/state-estimation.md) |
 | 22 | 凸松弛与火箭着陆 | [Convex Relaxation in Robotics](../methods/convex-relaxation-robotics.md) |
 | 23 | 自动驾驶与博弈 | [自动驾驶核心算法地图](../overview/autonomous-driving-core-algorithms-series.md) |
@@ -107,11 +118,13 @@ flowchart LR
 1. **先看课程站 Lectures 表，再开 playlist**：每讲有 notebook 目录（[`lecture-notebooks`](../../sources/repos/optimal_control_16_745.md)），边看边跑比只听录像效率高。
 2. **L3 最小子集**：Lec 7–10 + 12（Pontryagin → LQR → DP → 凸 MPC → DDP）即可对接本库控制主干；姿态与案例按需加。
 3. **与数值优化课并行**：卡在 QP/KKT/线搜索时跳到 [Numerical Optimization Curriculum](./numerical-optimization-curriculum.md)，再回 Lec 3–6 / 10。
-4. **注意年份标签**：playlist 中 Lec 8、13 标题写 2024，内容仍挂在 2025 列表；以 playlist 顺序为准。
+4. **站点与仓库的讲次口径不同：** 官方 Lectures 页 2025 表只列到第 20 讲（How to Walk）；讲义仓有 24 个 `Lecture N` 目录，第 21–24 讲（Kalman 与对偶、火箭着陆与凸松弛、驾驶与博弈、数据驱动 / 行为克隆）的讲义在仓里，对应录像以 playlist 为准。
+5. **课程设置（首页）：** 无教材、无考试；项目 50%、作业 40%（4 次）、测验 5%、参与 5%；先修强线代 + Python / MATLAB / Julia + 基础 ODE。
+6. **注意年份标签**：playlist 中 Lec 8、13 标题写 2024，内容仍挂在 2025 列表；以 playlist 顺序为准。
 
 ## 局限与风险
 
-- **本页是策展而非字幕精读**：入库日未能稳定抽取 YouTube 字幕；公式细节以 notebook + 课程站为准。
+- **本页是策展而非字幕精读**：入库日未能稳定抽取 YouTube 字幕；公式细节以 notebook + 课程站为准。2026-11-07 的原文核对读了课程站与全部 24 讲讲义文字层（手写讲义经 OCR，噪声大），未观看视频、未运行除 Lecture 8 外的 notebook、未读作业。
 - **作业不完全公开**：不要假设 Gradescope/私有 HW 仓可复现全部练习。
 - **勿与 Tedrake Underactuated 混为一谈**：同主题邻域课程；本 playlist 的权威归属是 **CMU 16-745 / Manchester**（见来源归档说明）。
 - **频道名含 MIT**：录像频道为 `MIT Robotic Exploration Lab`，课程建制仍是 CMU 16-745——引用时写清课程代号以免检索混淆。
@@ -161,6 +174,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- **原文通读归档：** [sources/courses/cmu_16_745_site_and_lecture_notes_reading_2025.md](../../sources/courses/cmu_16_745_site_and_lecture_notes_reading_2025.md) — 课程站 + 讲义仓（2026-11-07）
 - [sources/courses/cmu_optimal_control_16_745_2025_youtube.md](../../sources/courses/cmu_optimal_control_16_745_2025_youtube.md) — YouTube *Optimal Control 2025* 全表（24 讲）
 - [sources/sites/cmu_optimal_control_16_745.md](../../sources/sites/cmu_optimal_control_16_745.md) — 官方课程站
 - [sources/repos/optimal_control_16_745.md](../../sources/repos/optimal_control_16_745.md) — GitHub 讲义组织

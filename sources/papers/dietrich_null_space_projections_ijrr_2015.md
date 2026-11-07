@@ -11,6 +11,8 @@
 - **机构：** 德国航空航天中心（DLR）机器人与机电一体化研究所；慕尼黑工业大学（TUM）
 - **入库日期：** 2026-08-13
 - **一句话说明：** 力矩控制冗余解析的权威综述：比较 successive/augmented 层次与 static/dynamic/stiffness 一致性，并在 **7 轴 LWR-III** 上做真机对照。
+- **核对范围：** 2026-11-07 取 DLR elib 开放 PDF（<https://elib.dlr.de/101443/2/NullspaceSurvey.pdf>，17 页）全文通读：摘要、§1 引言、§2 层次的严格性（successive / augmented）、§3 一致性（静力学 / 动力学 W=M 与无穷多 W(q) / 加速度层投影器 / 刚度一致）、§4 仿真与 LWR-III 实验、§5 讨论与表 2、§6 结论、附录证明（动力学一致性证明读了结构）。图中曲线只读图注与正文描述；参考文献仅浏览。
+- **通读：** 已完成
 - **沉淀到 wiki：** [`wiki/entities/paper-null-space-projections-survey.md`](../../wiki/entities/paper-null-space-projections-survey.md)
 
 ## 开源状态（步骤 2.5）

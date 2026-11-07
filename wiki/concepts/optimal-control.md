@@ -1,7 +1,17 @@
 ---
 type: concept
 summary: "Optimal Control 研究如何在动力学约束下最优地生成控制序列，是 MPC、trajectory optimization 和 RL 的共同上游。"
-updated: 2026-09-15
+status: complete
+updated: 2026-11-07
+original:
+  - ../../sources/courses/cmu_16_745_site_and_lecture_notes_reading_2025.md
+  - ../../sources/sites/mit_underactuated_ch8_lqr_reading.md
+sources:
+  - ../../sources/courses/cmu_16_745_site_and_lecture_notes_reading_2025.md
+  - ../../sources/sites/mit_underactuated_ch8_lqr_reading.md
+  - ../../sources/papers/crocoddyl_icra2020_and_repo_reading.md
+  - ../../sources/papers/optimal_control.md
+  - ../../sources/papers/lqr_ilqr_primary_refs.md
 ---
 
 # Optimal Control (OCP)
@@ -50,7 +60,7 @@ updated: 2026-09-15
 
 不懂 OCP，就看不懂当前人形控制算法的底层逻辑。
 
-## 核心问题：OCP 的标准形式
+## 核心原理：OCP 的标准形式
 
 一个标准最优控制问题（OCP）包括：
 
@@ -87,9 +97,11 @@ $$H(x, u, \lambda) = g(x, u) + \lambda^T f(x, u)$$
 
 求解一阶必要条件得到最优控制。
 
-结果：**最优控制是正交条件下的"最优"动作**。
+结果（CMU 16-745 第 7 讲）：Pontryagin 给出的是**一阶必要条件**，离散时间下就是 KKT 条件的特例：
 
-优点是有解析解，缺点是只适合线性和简单非线性问题。
+$$x_{k+1}=\nabla_\lambda H,\quad \lambda_k=\nabla_x H,\quad u_k=\arg\min_{u\in\mathcal{U}} H(x_k,u,\lambda_{k+1})$$
+
+（含控制界时 $u$ 在可行集内取 $H$ 的最小；连续时间下 $\lambda(t)$ 称协态。）历史上很多算法是前后向积分 ODE 再做梯度下降，称**间接法 / 打靶法**；课程指出这类方法随算力提升已大多不再被使用。只有少数问题（如 LQR）有解析解。
 
 ### 2. 动态规划（DP）
 从终点往回推。
@@ -102,7 +114,9 @@ $$V_k(x_k) = \min_{u_k, ..., u_{N-1}} \sum_{i=k}^{N-1} g(x_i, u_i) + g_N(x_N)$$
 
 $$u_k^* = \arg\min_u [g(x_k, u) + V_{k+1}(f(x_k, u))]$$
 
-问题：**维度灾难**——状态空间一大，DP 就不可行。
+基于 Bellman 最优性原理——最优轨迹的子轨迹对相应子问题也最优。LQR 下 $V_k(x)=\tfrac12x^\top P_kx$ 保持二次，反向递推即 Riccati；连续时间对应 HJB：$0=\min_u[\ell(x,u)+\partial_xJ^*\,f(x,u)]$（Tedrake）。附带结论：动力学约束的拉格朗日乘子就是值函数梯度（CMU 第 9 讲）。
+
+问题：**维度灾难**——DP 保证全局最优，但只对简单问题（LQR、低维价值迭代）可行，代价随状态维度因表示 $V$ 的成本暴涨；对非线性问题连一步 $\min$ 都难解析写出。用函数逼近近似 DP 就是现代 RL 的基础。
 
 ### 3. 数值优化方法
 把 OCP 变成大规模数值优化问题来解。
@@ -110,10 +124,12 @@ $$u_k^* = \arg\min_u [g(x_k, u) + V_{k+1}(f(x_k, u))]$$
 适合复杂系统、非线性、约束多的情况。
 
 典型方法：
-- **直接法（Direct Methods）**：把连续最优控制问题离散化，然后用 NLP 求解
+- **直接法（Direct Methods）**：把连续最优控制问题离散化，然后用 NLP 求解；样本 $x_k,u_k$ 称"结点（knot points）"。CMU 第 13 讲：直接配点（DIRCOL）用样条表示轨迹并把动力学作为结点间等式约束，Hermite–Simpson 精度与 RK3 相当但调用动力学更少；可从动力学不可行的初猜出发；最小时间问题把步长 $h$ 作为决策变量并加界
 - **间接法（Indirect Methods）**：先求解析条件，再数值求解
 - **打靶法（Shooting Methods）**：只优化控制序列，用模型前向传播验证
-- **多打靶（Multiple Shooting）**：把状态也作为优化变量，解决打靶法的数值不稳定性
+- **多打靶（Multiple Shooting）**：把状态也作为优化变量，解决打靶法的数值不稳定性；结点间"间隙（gap）"由等式约束闭合。Crocoddyl 的 FDDP 让 DDP 接受不可行轨迹、保留 gap（Mastalli 等 2020）
+- **DDP / iLQR**：沿轨迹对 cost-to-go 与 action-value 做二阶展开得到前馈 + 反馈；总是动力学可行、可配 TVLQR，但状态约束难处理（CMU 第 11–14 讲）
+- **线性二次 + 约束 = 凸 MPC**：线性动力学 + 凸约束时每步解 QP，可给出时间上界（CMU 第 10 讲）
 
 ### 4. 强化学习 vs 最优控制
 
@@ -164,9 +180,10 @@ print("first control:", u0.ravel())
 - **模型依赖强**：动力学模型错了，最优解也可能是错的
 - **计算量可能很大**：状态维度、约束数量、预测时域一上来就爆炸
 - **非凸问题难解**：人形机器人很多 OCP 只能找到局部最优
+- **局部最优与约束处理**：DDP / iLQR 局部收敛快但约束难；直接法能处理任意约束但依赖 NLP 求解器与初值（CMU 第 14 讲对比）
 - **很难直接表达高层语义目标**：例如“动作自然”“像人走路”这类目标更常借助 IL / RL / motion prior
 
-## 在机器人中的典型应用
+## 工程实践：在机器人中的典型应用
 
 ### 轨迹优化
 给定起点终点，求最优轨迹。
@@ -191,7 +208,7 @@ OCP 的在线滚动求解版本，是**最常用**的机器人实时控制框架
 
 ## 和 WBC 的关系
 
-WBC（全身控制）本质上是一个**分层最优控制**：
+WBC（全身控制）常被写成**逐时刻的分层优化**（核对原文后的修正：它通常是单个时刻的瞬时 QP，不含预测时域，因此严格说不是轨迹级 OCP；Romualdi 等把全身 QP 层与带时域的 MPC 层区分，指出全身 QP 层"不使用 MPC"）：
 
 ```
 任务空间目标（末端执行器轨迹）
@@ -203,7 +220,7 @@ WBC（全身控制）本质上是一个**分层最优控制**：
 
 其中：
 - 上层可以用 MPC
-- 下层 QP 是凸优化，等价于一种特殊的最优控制
+- 下层 QP 是凸优化，可视作预测时域只有一步的特殊优化问题
 
 ## 常见坑
 
@@ -225,6 +242,8 @@ OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 
 ## 参考来源
 
+- **原文通读归档：** [CMU 16-745 课程站与讲义](../../sources/courses/cmu_16_745_site_and_lecture_notes_reading_2025.md)；[Tedrake Underactuated Ch.8 LQR](../../sources/sites/mit_underactuated_ch8_lqr_reading.md)（均 2026-11-07 通读）；[Crocoddyl 论文与仓库通读](../../sources/papers/crocoddyl_icra2020_and_repo_reading.md)（多打靶与 FDDP 部分）
+- 以下经典教材本次未取得，属二手：
 - Kirk, *Optimal Control Theory: An Introduction* — OCP 经典入门教材
 - Bertsekas, *Dynamic Programming and Optimal Control* — DP 与 OCP 理论基础
 - Betts, *Practical Methods for Optimal Control Using Nonlinear Programming* — 直接法数值实现参考
@@ -247,6 +266,8 @@ OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 
 ## 推荐继续阅读
 
+- Tedrake, *Underactuated Robotics*（HJB / DP / LQR / 轨迹优化各章）<https://underactuated.csail.mit.edu/>
+- CMU 16-745 课程站 <https://optimalcontrol.ri.cmu.edu/>
 - [CMU Optimal Control 2025（YouTube playlist 归档）](../../sources/courses/cmu_optimal_control_16_745_2025_youtube.md) — Zac Manchester / 16-745，24 讲
 - [Optimal Control 2025 (YouTube)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI)
 - 《Optimal Control Theory: An Introduction》- Kirk
