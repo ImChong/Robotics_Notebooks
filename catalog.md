@@ -10,7 +10,7 @@
 - [1X Technologies](wiki/entities/1x-technologies.md) — 1X Technologies** 专注于「能在真实环境里长期运行的人形机器人」，当前公开产品线以 **轮式人形 EVE**（面向仓储 / 安防 / 医疗等结构化场景）与 **双足 NEO**（强 `📅unknown` `[entity_page]`
 - [CAD Operations Skill（2836048681/cad-operations-skill）](wiki/entities/2836048681-cad-operations-skill.md) — CAD Operations Skill（2836048681/cad-operations-skill）是便携 Codex 技能面向 CAD 操作、DXF/PDF 生成，含 AutoCAD/Free `📅unknown` `[entity_page]`
 - [3D Model Anything：室内场景重建](wiki/entities/3d-model-anything.md) — 3D Model Anything 采集房间的 LiDAR 几何与照片，再由编程智能体借助测量和照片比对，迭代生成可编辑的 Three.js 场景。 `📅unknown` `[entity_page]`
-- [3D Gen Studio](wiki/entities/3dgenstudio.md) — 3D Gen Studio**（visualbruno/3DGenStudio，官网 [3dgenstu `📅unknown` `[entity_page]`
+- [3D Gen Studio](wiki/entities/3dgenstudio.md) — 3D Gen Studio** 是以 ComfyUI 与外部 AI API 为生成后端的本地优先 3D 网格资产工作台，与 CozyClay 的场景/动作/镜头预演定位不同。 `📅unknown` `[entity_page]`
 - [COMSOL MCP（777gegewu/comsol-mcp）](wiki/entities/777gegewu-comsol-mcp.md) — COMSOL MCP（777gegewu/comsol-mcp）是非官方 COMSOL MCP 学习项目，通过 Java Shell 控制已经打开的 COMSOL Desktop GUI。 `📅unknown` `[entity_page]`
 - [AA-Robotics v0.1](wiki/entities/aa-robotics.md) — AA-Robotics v0.1** 是 Artificial Analysis 于 2026-10-14 发布的具身智能研究预览：让通用语言模型在 coding-agent Harness 中直 `📅unknown` `[entity_page]`
 - [Claude Skills for Computational Designers（Abhinavbwj/Claude-skills-for-Computational-Designers）](wiki/entities/abhinavbwj-claude-skills-for-computational-designers.md) — Claude Skills for Computational Designers（Abhinavbwj/Claude-skills-for-Computational-Designers）是面向建筑 `📅unknown` `[entity_page]`
@@ -471,6 +471,7 @@
 - [Cosmos Curator（视频策展）](wiki/entities/cosmos-curator.md) — Cosmos Curator** 是 NVIDIA Cosmos 生态里专门处理 **海量原始视频 → 可训练 clip + caption + emb `📅unknown` `[entity_page]`
 - [Cosmos Transfer（条件世界翻译）](wiki/entities/cosmos-transfer.md) — Cosmos Transfer** 是 NVIDIA Cosmos 里专门做 **world-to-world** 的一支：输入不是「从零生成世界」，而 `📅unknown` `[entity_page]`
 - [Spec-Driven Development with Coding Agents（DeepLearning.AI 短课）](wiki/entities/course-spec-driven-development-coding-agents.md) — DeepLearning.AI](https://www.deeplearning.ai/courses/spec-driven-development-with-coding-agents/) 与 `📅unknown` `[entity_page]`
+- [CozyClay — Browser-Based 3D Previsualization / 浏览器端 3D 预演与 Agent 镜头编排](wiki/entities/cozyclay.md) — CozyClay** 是 Doyun／NomaDamas 开源的 **浏览器端三维预演（Previsualization）工具**：先布置场景和角色动作、编排相机与剪辑，再导出关键帧、灰盒参考视频 `📅unknown` `[entity_page]`
 - [Craft Anything：软件分析与重建工具](wiki/entities/craft-anything.md) — Craft Anything 是开源 Rust 工具，面向网站、应用和游戏，组织目标检查、coding agent 构建与结果比较。 `📅unknown` `[entity_page]`
 - [CraftNet：Sharpa 的分层视觉-触觉-语言-动作模型](wiki/entities/craftnet.md) — CraftNet** 是 Sharpa 的端到端分层 VTLA 模型，按“System 0 触觉交互 / System 1 运动”分工，把“最后一毫米”的接触交给高频底层。 `📅unknown` `[entity_page]`
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
@@ -1096,6 +1097,7 @@
 - [OpenLoong-Dyn-Control](wiki/entities/openloong-dyn-control.md) — OpenLoong-Dyn-Control** 提供青龙人形在 **MuJoCo** 上的 **MPC + 全身控制** 研究与仿真 demo。 `📅unknown` `[entity_page]`
 - [OpenLoong（青龙·公版机）](wiki/entities/openloong.md) — OpenLoong** 是面向「青龙」全尺寸公版人形机器人的 **四层全栈开源** 项目（云端大脑 / 具身小脑 / 具身实体 / 具身数据），由 [OpenLoong 社区](https://w `📅unknown` `[entity_page]`
 - [OpenMAIC](wiki/entities/openmaic.md) — OpenMAIC**（THU-MAIC/OpenMAIC，Demo [open.maic.chat](https:/ `📅unknown` `[entity_page]`
+- [OpenRewrite｜基于 LST 的自动化源码重构框架](wiki/entities/openrewrite.md) — OpenRewrite** 是由 Moderne 维护的源码重构生态：解析源码为具有类型信息、保留原始格式的 **Lossless Semantic Tree（LST）**，再用可配置的 **Re `📅unknown` `[entity_page]`
 - [OpenSCAD（脚本化参数 CAD）](wiki/entities/openscad.md) — 一句话定义**：OpenSCAD 是一款以脚本构造参数化 2D/3D 实体的开源 CAD 工具，核心是 CSG 布尔建模与二维轮廓挤出，而不是传统鼠标式特征树编辑。 `📅unknown` `[entity_page]`
 - [OpenSML](wiki/entities/opensml.md) — 适配 CiA402 的轻量 SoftMotion 运动控制库，提供点位与插补。（分类：EtherCAT 伺服 CiA402 配套；语言/形态：SoftMotion 轻量运动控制库） `📅unknown` `[entity_page]`
 - [OpenTac（可定制 3D 触觉皮肤生态）](wiki/entities/opentac.md) — OpenTac** 是面向机器人任意可覆盖表面的开放触觉感知工具链。它将皮肤设计、制造、传感器读取、仿真、跨传感器数据映射和自适应采样放在一个共享 manifest 驱动的生态中；项目提供 [在线 `📅unknown` `[entity_page]`
@@ -2105,7 +2107,7 @@
 - [DeformSmith（arXiv:2609.18620）](wiki/entities/paper-deformsmith.md) — DeformSmith**（*Physics Harness-Guided Hierarchical Generation of Deformable Assets for Robot Manip `📅unknown` `[entity_page]`
 - [DeicticVLA：语言与指示手势三模式统一 VLA](wiki/entities/paper-deicticvla.md) — DeicticVLA**（*Unifying Instruction Modes Based on Language and Deictic Gestures in a Single VLA*， `📅unknown` `[entity_page]`
 - [顺应性欠驱动机器人手（A Novel Type of Compliant, Underactuated Robotic Hand for Dexterous Grasping）](wiki/entities/paper-deimel-compliant-underactuated-robotic-hand.md) — Deimel & Brock 柔性手**（*A Novel Type of Compliant, Underactuated Robotic Hand for Dexterous Grasping `📅unknown` `[entity_page]`
-- [Δ-Flow（arXiv:2610.15794）](wiki/entities/paper-delta-flow-matching-robot-foundation-models.md) — Δ-Flow**（*Δ Flow Matching for Robot Foundation Models*，[arXiv:2610.15794](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
+- [Δ-flow：基于历史起点的一步式流匹配 / Δ Flow Matching for Robot Foundation Models](wiki/entities/paper-delta-flow-matching-robot-foundation-models.md) — 论文：** arXiv:2610.15794v1（2026-10-11）｜**作者与机构：** Kuangji Zuo、Tu `📅unknown` `[entity_page]`
 - [DeltaWAM](wiki/entities/paper-deltawam.md) — DeltaWAM: Delta World Action Models for Bimanual Manipulation**（[arXiv:2609.28811](https://arxiv.o `📅unknown` `[entity_page]`
 - [Demiurge（arXiv:2610.14685）](wiki/entities/paper-demiurge-navigable-4d-worlds.md) — Demiurge**（*Demiurge: Forging Navigable 4D Worlds via Autoregressive Video Rerendering*，[arXiv:261 `📅unknown` `[entity_page]`
 - [DemoMimic（One Demonstration, Many Objects）](wiki/entities/paper-demomimic.md) — DemoMimic**（*Dexterous Motion Mimic*；Stanford；[arXiv:2609.01938](https://arxiv.org/abs/2609.01938 `📅unknown` `[entity_page]`
@@ -5400,6 +5402,7 @@
 - [SkillX：人形足球统一多技能策略学习](wiki/entities/paper-skillx-humanoid-soccer.md) — SkillX**（*SkillX: Unified Multi-Skill Policy Learning for Humanoid Soccer*，[arXiv:2609.06718](http `📅unknown` `[entity_page]`
 - [Skyfall-GS：从卫星影像合成沉浸式 3D 城市场景](wiki/entities/paper-skyfall-gs.md) — Skyfall-GS**（Lee et al., arXiv:2510.15869，项目页，[代码](https://gith `📅unknown` `[entity_page]`
 - [SkyJEPA（四旋翼长时域世界模型）](wiki/entities/paper-skyjepa.md) — SkyJEPA** 用 JEPA 式潜动力学预测四旋翼的长时域状态，并用物理启发探针把潜变量映射为可解释状态，再用采样型最优控制在嵌入式硬件上做高频闭环控制。 `📅unknown` `[entity_page]`
+- [SLA: Scaling Spatial-Language-Action Model via Continual Pre-training / 通过持续预训练扩展空间-语言-动作模型](wiki/entities/paper-sla-spatial-language-action.md) — SLA** 是在 π0.5 视觉-语言-动作策略上引入跨本体持续预训练与**仅训练期存在**的三维空间特征监督，让动作策略学习更 `📅unknown` `[entity_page]`
 - [SLAMFormer-∞（Infinite SLAM Transformer）](wiki/entities/paper-slamformer-infinity.md) — SLAMFormer-∞**（*Infinite SLAM Transformer for Unbounded Frontend and Backend Processing*，[arXiv:26 `📅unknown` `[entity_page]`
 - [SleepWalking (SWAQ)：特权表征塑造盲走](wiki/entities/paper-sleepwalking.md) — SleepWalking / SWAQ**（arXiv:2608.30883）由 **西北工业大学（NWPU）、上海交通大学 `📅unknown` `[entity_page]`
 - [SLIM-0.5B（动作接地预测隐变量策略 · arXiv:2608.09771）](wiki/entities/paper-slim-05b.md) — SLIM-0.5B**（*Learning Action-Grounded Predictive Latents for Robot Manipulation*，[arXiv:2608.09771 `📅unknown` `[entity_page]`
@@ -5823,7 +5826,7 @@
 - [Watch Your Step（arXiv:2610.29612）](wiki/entities/paper-watch-your-step.md) — Watch Your Step**（*Anticipated Perception for Humanoid Locomotion*）由 ETH Zürich Robotic Systems La `📅unknown` `[entity_page]`
 - [WAVE-0：用轻量潜在未来预测连接 VLA 与 WAM](wiki/entities/paper-wave-0-latent-future-prediction.md) — WAVE-0 在预训练 VLA 之上加一个小型潜在世界模型，让预测出的动作后果直接参与动作生成，而不生成完整视频。 `📅unknown` `[entity_page]`
 - [WAVE-Go（arXiv:2609.18193）](wiki/entities/paper-wave-go.md) — WAVE-Go**（*WAVE-Go: World-Model Navigation with Adaptive Execution for Wheel-Legged Robots*，[arXiv `📅unknown` `[entity_page]`
-- [WayTrace（arXiv:2611.05129）](wiki/entities/paper-waytrace.md) — WayTrace**（*WayTrace: A Map-to-Language-to-Trace Hierarchy for Embodied Urban Navigation*，[arXiv:2 `📅unknown` `[entity_page]`
+- [WayTrace: A Map-to-Language-to-Trace Hierarchy for Embodied Urban Navigation / WayTrace：面向具身城市导航的地图—语言—轨迹分层架构](wiki/entities/paper-waytrace.md) — 论文：** Manthan Patel 等，2026-11-03，arXiv:2611.05129v1（Under Review）｜[论文原文](https://arxiv.org/html/26 `📅unknown` `[entity_page]`
 - [WB-WAM（异构身–手预训练 · 人形 Loco-Manipulation WAM）](wiki/entities/paper-wb-wam.md) — WB-WAM**（*Heterogeneous Body-Hand Pre-training for Humanoid Loco-Manipulation*，[arXiv:2609.34199 `📅unknown` `[entity_page]`
 - [Highly Dynamic Quadruped Locomotion via WBIC and MPC](wiki/entities/paper-wbic-mpc-mini-cheetah.md) — Kim, Di Carlo, Katz, Bledt & Kim（MIT，arXiv:1909.06586）** 给出 Mi `📅unknown` `[entity_page]`
 - [WCM：给 VLA 强化学习换一个会预测世界的 Critic](wiki/entities/paper-wcm-world-critic-model.md) — WCM**（*World Critic Model*；论文 *WCM: A World Critic Model for Vision-Language-Action Reinforcement  `📅unknown` `[entity_page]`
@@ -7316,36 +7319,36 @@
 ### Roadmaps（路线页）
 
 - [成长路线总览](roadmap/README.md) — 本目录用于承载 `Robotics_Notebooks` 的成长路线设计。 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 BFM（人形行为基础模型）](roadmap/depth-bfm.md) — 摘要**：面向"想用一个 checkpoint 控住人形全身"的纵深路线，从 RL locomotion 与动捕数据基座、动作跟踪谱系（DeepMimic → ASE → PHC → Masked `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是传统模型控制（LIP/ZMP → MPC → WBC）](roadmap/depth-classical-control.md) — 摘要**：面向"想用基于模型的传统控制栈驱动人形机器人"的纵深路线，从简化模型（LIP/ZMP）到 Centroidal 轨迹优化、MPC，再到 TSID/WBC 与真机状态估计，按 Stage  `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是接触丰富的操作任务](roadmap/depth-contact-manipulation.md) — 摘要**：面向"装配、拧螺丝、插拔等需要精细接触"的操作任务的纵深路线，按 Stage 0–3 串通从阻抗控制到 ACT / Diffusion Policy 的核心方法；本路线是 [运动控制主路 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是跨本体迁移（Cross-Embodiment）](roadmap/depth-cross-embodiment.md) — 摘要**：面向"想让一个策略适配不同本体——换夹爪、换相机、换一台人形甚至换一类形态都不必从零重训"的纵深路线，从「本体差异到底差在哪几层」的画像，到统一动作/状态接口、形态感知架构、多本体混训与 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是具身数据（采集 → 清洗标注 → 格式聚合 → 扩增合成 → 配比与飞轮）](roadmap/depth-embodied-data.md) — 摘要**：面向"想把具身数据当成一条可交付的工程管线来做"的纵深路线，从数据口径与金字塔分层（可扩展性 × 机器人对齐两轴、真机/UMI/Ego-Exo/仿真/通用五层），到采集范式与装置选型（遥 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是具身模型测评（认知 → 世界模型 → 策略成功率 → 运控指标 → sim↔real 校准）](roadmap/depth-embodied-eval.md) — 摘要**：面向"训完一个具身模型，接下来怎么『测/证明它』"的纵深路线，从评测目的与四层闭环边界，到 ① 具身大脑/MLLM 认知评测、② 世界模型预测保真度评测、③ 策略成功率与过程/判据评测， `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是人形拳击（动作跟踪 → 潜空间技能 → 对抗自博弈）](roadmap/depth-humanoid-boxing.md) — 摘要**：面向"让两台人形机器人在擂台上像人一样对打"的纵深路线，从对抗全身任务的问题定义与自主 / 遥操作两条产品路线出发，经拳击 MoCap 的全身跟踪基座、技能蒸馏到潜空间动作流形，再到两玩 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是人形整机硬件设计（指标预算 → 机械 → 电气 → 通信 → 整机验收）](roadmap/depth-humanoid-hardware-design.md) — 摘要**：面向"想从一张任务需求做到一台能上电、能跑控制、能交付的人形整机"的纵深路线，从整机指标与质量/功率/延迟三大预算，到构型与机械布局、结构详设与验证、电气架构与配电、EMC 接地与板级落 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）](roadmap/depth-humanoid-soccer.md) — 摘要**：面向"让人形机器人追球、射门、打整场比赛"的纵深路线，从 RoboCup 任务全景与感知–决策–运动的耦合问题出发，经参数化全向行走与跌倒恢复的运动基座、球/场地/对手的机载感知，到闭环 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）](roadmap/depth-humanoid-swarm-performance.md) — 摘要**：面向"让一群人形机器人同台整齐跳舞、变换队形、协同炫技"的纵深路线（简写 **HSP**，Humanoid Swarm Performance）。从群控展演的任务谱系与"预编排时间轴 v `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 ICL（具身上下文学习）](roadmap/depth-icl.md) — 摘要**：面向"想让机器人读完一条示范就会做新任务、且不动权重"的纵深路线，从「什么才算真 ICL」的判别边界，到示范表征与动作 token、遥操作示范与人类视频两条数据线，再到零梯度上下文 /  `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是模仿学习与技能迁移](roadmap/depth-imitation-learning.md) — 摘要**：面向"从人类演示数据让机器人学习技能"的纵深路线，从时序建模基础到 ASE / Diffusion Policy，按 Stage 0–6 串通核心方法；本路线是 [运动控制主路线](mo `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 Loco-Manipulation（移动操作）](roadmap/depth-loco-manipulation.md) — 摘要**：面向"让机器人边走边动手（搬箱、开门、端托盘）"的纵深路线，从行走与操作的全身耦合问题出发，经全身控制基座、遥操作与数据采集、全身技能学习，到统一生成式模型与导航–操作联合，按 Stag `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是模型架构（骨干族谱 → 感知编码 → 动作头 → 多模态基座 → 规模与部署）](roadmap/depth-model-architecture.md) — 摘要**：面向"想知道一条机器人策略该用什么网络、多宽多深、动作怎么出"的纵深路线，从"由控制回路反推函数族"的选型判据出发，沿 MLP / CNN / RNN / Transformer / S `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是动作生成（文本/多模态 → 人形动作）](roadmap/depth-motion-generation.md) — 摘要**：面向"想用生成模型造出人体/人形动作"的纵深路线，从生成模型基础（扩散 / 流匹配）与动作表示、文本-动作数据集，到生成骨干主线（MDM 式扩散 → 可控生成 → HY-Motion / `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是动作重定向（人体动作 → 机器人参考轨迹）](roadmap/depth-motion-retargeting.md) — 摘要**：面向"想把人体/动物动捕、视频、生成动作变成机器人可执行参考轨迹"的纵深路线，从重定向的问题定义与数据管线定位、运动学优化工具箱、参考动作数据源与质量控制，到方法谱系主线（运动学优化 G `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是导航（SLAM → Nav2 → VLN → 导航 VLA）](roadmap/depth-navigation.md) — 摘要**：面向"让机器人知道自己在哪、该往哪走"的纵深路线，从导航栈分层与 SLAM / 状态估计基座，到经典 ROS 2 导航闭环，再到学习型导航、视觉–语言导航（VLN）与导航 VLA / W `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 PCB 设计（电路零基础 → 第一块板 → 原理图 → Layout → 调试 → 功率 / 高速 / EMC → 量产）](roadmap/depth-pcb-design.md) — 摘要**：面向"从没画过电路板，想一路学到能独立交付机器人驱动板、传感器板与主控载板"的纵深路线：从电压电流、万用表与焊接起步，用一块双层小板走通 KiCad 全流程，再把原理图、Layout、调 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) — 摘要**：面向"让机器人看着地形上楼梯、跨障碍、跑酷"的纵深路线，从本体感知盲走基线到地形表征、感知策略训练，再到楼梯/跑酷进阶与导航栈整合，按 Stage 0–4 串通核心方法；本路线是 [运动 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 Real2Sim（真实世界 → 可仿真资产/场景/孪生）](roadmap/depth-real2sim.md) — 摘要**：面向"想把真实世界变成能在仿真里训练与评测的资产"的纵深路线，从"可仿真（simulation-ready）"判据与 Real2Sim vs Sim2Real 定位，到几何与外观重建（3 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是人形 RL 运动控制](roadmap/depth-rl-locomotion.md) — 摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-co `📅unknown` `[roadmap_page]`
-- [路线（纵深）：扩散与流匹配策略（Diffusion & Flow Matching）](roadmap/depth-robotics-diffusion-dit-flow.md) — 摘要**：面向「已会 BC/ACT，想沿 **Diffusion Policy → Transformer 去噪 → 大型 RDT → Flow Matching VLA → NVIDIA 人形  `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是火箭回收控制（动力下降制导 → 无损凸化 → 6-DoF 序列凸化 → 姿态与推力矢量 → 导航与机载求解 → 全剖面回收）](roadmap/depth-rocket-landing.md) — 摘要**：面向"想让一枚火箭自己飞回来、在指定点竖直落稳"的纵深路线。从变质量刚体动力学与制导/导航/控制分层讲起，经 Apollo 以来的经典下降制导与最优控制结构，到无损凸化（LCvx / G `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 RSI（递归自我改进）](roadmap/depth-rsi.md) — 摘要**：面向"想让研发闭环自己变强、并把这套东西用到机器人上"的纵深路线，从「四层判据 + 改的是哪个 artifact」的判别边界出发，沿着被系统改动对象逐层内收的顺序——记忆与技能库 → 权 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是安全控制（CLF / CBF / Safe RL / 真机安全部署）](roadmap/depth-safe-control.md) — 摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，最后落到真机上的分层安全部署（急停 / 安全状态机 / 跌倒减损  `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 Sim2Real（仿真到真机迁移）](roadmap/depth-sim2real.md) — 摘要**：面向"想把仿真里训好的策略稳定搬上真机"的纵深路线，从 domain gap 六类来源画像与方法三分（仿真端随机化 / 分布对齐 / 真机适应），到资产与执行器对齐（SysID / Ac `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是遥操作（人形全身遥操作 + 手指遥操作 → 示范数据/实时接管）](roadmap/depth-teleoperation.md) — 摘要**：面向"想搭一套让人实时操控人形机器人、并顺带采集高质量示范数据"的纵深路线，从遥操作的问题定义与输出形态定位、输入接口与硬件通道选型、设备信号到机器人指令的映射与延迟/双边稳定，到**人 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是力矩控制电机设计（指标 → 电磁热 → FOC 力矩闭环 → 关节模组）](roadmap/depth-torque-motor-design.md) — 摘要**：面向"想把关节电机从任务指标一路做到可验收力矩闭环模组"的纵深路线，从电机学地基与 TN/TI 读图，到关节指标定义与执行器架构选型、电磁热设计、驱动硬件与电流环、电机驱动 PCB 设计 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 VLA（视觉-语言-动作模型）](roadmap/depth-vla.md) — 摘要**：面向"想让机器人听懂指令干活"的纵深路线，从具身模型分类学、模仿学习策略基座，到 VLA 语义策略主线（RT 系列 → OpenVLA → π0）、数据与 Scaling，再到部署整合与 `📅unknown` `[roadmap_page]`
-- [路线（纵深）：如果目标是 WAM（世界–动作模型）](roadmap/depth-wam.md) — 摘要**：面向"想让策略在出动作前显式预知世界会怎么变"的纵深路线，从 VLA / 世界模型 / WAM 的边界与 Cascaded–Joint 族谱，到生成式世界模型与动力学基座，再到 Casc `📅unknown` `[roadmap_page]`
+- [人形行为基础模型（BFM）](roadmap/depth-bfm.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [传统模型控制（Classical Control）](roadmap/depth-classical-control.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [接触丰富的操作任务（Contact-Rich Manipulation）](roadmap/depth-contact-manipulation.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [跨本体迁移（Cross-Embodiment）](roadmap/depth-cross-embodiment.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [具身数据（Embodied Data）](roadmap/depth-embodied-data.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [具身模型测评（Embodied Evaluation）](roadmap/depth-embodied-eval.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [人形拳击（Humanoid Boxing）](roadmap/depth-humanoid-boxing.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [人形整机硬件设计（Humanoid Hardware Design）](roadmap/depth-humanoid-hardware-design.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [人形足球（Humanoid Soccer）](roadmap/depth-humanoid-soccer.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [人形群控展演（Humanoid Swarm Performance）](roadmap/depth-humanoid-swarm-performance.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [具身上下文学习（ICL）](roadmap/depth-icl.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [模仿学习与技能迁移（Imitation Learning & Skill Transfer）](roadmap/depth-imitation-learning.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [移动操作（Loco-Manipulation）](roadmap/depth-loco-manipulation.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [模型架构（Model Architecture）](roadmap/depth-model-architecture.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [动作生成（Motion Generation）](roadmap/depth-motion-generation.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [动作重定向（Motion Retargeting）](roadmap/depth-motion-retargeting.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [导航（Navigation）](roadmap/depth-navigation.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [PCB 设计（PCB Design）](roadmap/depth-pcb-design.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [感知越障（Perceptive Locomotion）](roadmap/depth-perceptive-locomotion.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [真实到仿真（Real2Sim）](roadmap/depth-real2sim.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [人形强化学习运动控制（Humanoid RL Locomotion）](roadmap/depth-rl-locomotion.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [扩散与流匹配策略（Diffusion & Flow Matching）](roadmap/depth-robotics-diffusion-dit-flow.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [火箭回收控制（Rocket Landing）](roadmap/depth-rocket-landing.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [递归自我改进（RSI）](roadmap/depth-rsi.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [安全控制（Safe Control）](roadmap/depth-safe-control.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [仿真到真机迁移（Sim2Real）](roadmap/depth-sim2real.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [遥操作（Teleoperation）](roadmap/depth-teleoperation.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [力矩控制电机设计（Torque Motor Design）](roadmap/depth-torque-motor-design.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [视觉-语言-动作模型（VLA）](roadmap/depth-vla.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
+- [世界–动作模型（WAM）](roadmap/depth-wam.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
 - [主路线：运动控制 → 物理智能全栈成长路线](roadmap/motion-control.md) — 首屏导读**： `📅unknown` `[roadmap_page]`
 
 ### Tech-map Nodes（技术栈节点）

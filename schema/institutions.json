@@ -4432,6 +4432,12 @@
         "datawhale",
         "datawhalechina"
       ]
+    },
+    "nomadamas": {
+      "label": "开源预演团队（NomaDamas）",
+      "aliases": [
+        "nomadamas"
+      ]
     }
   }
 }

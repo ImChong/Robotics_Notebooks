@@ -34,6 +34,7 @@ related:
   - ../entities/paper-agent-friendly-by-design.md
   - ../entities/agentic-design-patterns.md
   - ../entities/tidy-design.md
+  - ../entities/openrewrite.md
 original:
   - ../../sources/blogs/anthropic_context_engineering_reading_agcsf1.md
 sources:
@@ -182,6 +183,7 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 - [Superpowers（obra）](../entities/superpowers-obra.md) — brainstorm → worktree → TDD → 评审的代理交付管线
 - [Agentic Design Patterns](../entities/agentic-design-patterns.md) — 通用 agent 模式目录及 coding agents 附录；不是软件工程验证的替代品
 - [Tidy Design](../entities/tidy-design.md) — 将可编辑设计画布接入 coding agent 的 MCP 工作流
+- [OpenRewrite](../entities/openrewrite.md) — 用可组合的语义级 Recipe 批量重构代码；变更仍须构建、CI 与人工评审
 - [NVIDIA OpenShell](../entities/nvidia-openshell.md) — 带外沙箱与 YAML 策略；与 prompt 级「安全可靠」互补
 - [CodeGraph](../entities/codegraph.md) — 通过本地代码关系图向 coding agent 提供符号上下文与变更影响线索；静态图不能替代测试与运行时核验
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — 有 agent 仍要先做 reset/verify 环境工程
