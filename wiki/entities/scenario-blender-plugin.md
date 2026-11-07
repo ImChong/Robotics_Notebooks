@@ -65,6 +65,7 @@ flowchart LR
 - **许可分层**：GitHub 仓库标注 GPL-3.0-or-later；插件许可不自动决定云服务条款或生成资产的许可与使用边界。
 
 ## 关联页面
+- [Scenario Agent Skills](./scenario-labs-skills.md)
 
 - [Blender（开源 3D 创作套件）](./blender.md) — 插件宿主与资产编辑层。
 - [3D Gen Studio](./3dgenstudio.md) — 独立 AI 网格工作台与编排层。
