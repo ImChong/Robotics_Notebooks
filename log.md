@@ -251,6 +251,14 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-07] ingest | Recova（arXiv:2610.01178）论文与项目主页入库
+
+- 通读论文 v1 的方法、实验、附录 A–E，并对照作者项目页与 NVIDIA 项目镜像。
+- 新增 `sources/papers/recova_arxiv_2610_01178.md`、`sources/sites/recova.md` 与 `wiki/entities/paper-recova.md`。
+- 方法图包含数字孪生、双策略、VLM 失败监控与 DAgger 人工接管分流；真机四任务均值 23.8% → 77.5% → 87.5%。
+- 官方网页展示恢复代码片段，但未见公开的完整训练/部署仓库，故不伪造源码运行时序图。
+- 在 `wiki/tasks/manipulation.md` 增加相关研究入口。
+
 ## [2026-11-07] structural | media/site-demo.gif — 按最新图谱重录 README 演示 GIF（7400 节点），修复节点过小时悬停 / 点击两步被跳过
 
 - **触发：** 用户要求更新首页 GIF
