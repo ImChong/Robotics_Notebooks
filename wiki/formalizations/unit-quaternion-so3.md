@@ -18,12 +18,18 @@ sources:
   - ../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md
   - ../../sources/papers/modern_robotics_ch3_unit_quaternion.md
   - ../../sources/papers/modern_robotics_textbook.md
+original:
+  - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
 summary: "单位四元数是 SO(3) 的紧凑双覆盖参数化：Hamilton 积、与旋转矩阵互转、SLERP 插值、scalar 顺序约定与 q≡−q 工程处理；存储用四元数，优化增量仍多在 so(3)/se(3)。"
 ---
 
 # 单位四元数与 SO(3)
 
 **一句话：** **单位四元数** $q \in S^3 \subset \mathbb{H}$ 用 4 个数紧凑表示三维旋转：无万向锁、复合为 Hamilton 积、平滑插值用 **SLERP**；但 $q$ 与 $-q$ 同一旋转（双覆盖），且 $\|q\|=1$ 约束使 **不宜** 当作神经网络的无约束回归目标——工程上常与 so(3) 增量或 6D 连续表示分工。
+
+## 一句话定义
+
+单位四元数用四个满足单位范数约束的实数表示三维旋转；同一旋转对应 `q` 和 `−q` 两个点，控制、估计与动作插值必须统一乘法和标量分量约定。
 
 ## 英文缩写速查
 
@@ -55,7 +61,7 @@ $$
 q \cdot p =
 \begin{bmatrix}
 q_0 p_0 - q_{1:3}^\top p_{1:3} \\
-q_0 p_{1:3} + p_0 q_{1:3} - q_{1:3} \times p_{1:3}
+q_0 p_{1:3} + p_0 q_{1:3} + q_{1:3} \times p_{1:3}
 \end{bmatrix}
 $$
 
