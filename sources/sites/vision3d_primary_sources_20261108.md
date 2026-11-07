@@ -17,35 +17,6 @@
 - OED（dynamic scene graph generation）不是 3DGS；FeatDepth 候选代码作者身份和 GaussianMesh 中文映射尚待确认。
 - 截图中的基础方法/歧义标题（例如部分结构光组合编码、Complex-YOLO）没有唯一原始论文，不凭猜测入库。
 
-## 10｜Gaussian Splatting 与动态重建
-
-| 项目（中文 / English） | 一手链接 | 本仓库资料档案 |
-|---|---|---|
-| COLMAP-Free 3DGS（无需外部 COLMAP 位姿的 Gaussian 建模） | [主来源](https://github.com/NVlabs/CF-3DGS) | [初编](../../sources/repos/vision3d_cf_3dgs.md) |
-| GaussianPro（渐进传播 Gaussian） | [主来源](https://proceedings.mlr.press/v235/cheng24f.html) | [初编](../../sources/papers/vision3d_gaussianpro.md) |
-| EWA Volume Splatting（体渲染历史方法） | [主来源](https://vcg.seas.harvard.edu/publications/20011001-ewa-volume-splatting) | [初编](../../sources/papers/vision3d_ewa_volume.md) |
-| Surface Splatting（表面点片渲染） | [主来源](https://vcg.seas.harvard.edu/publications/20010101-surface-splatting) | [初编](../../sources/papers/vision3d_surface_splatting.md) |
-| LightGaussian（高斯表示压缩） | [主来源](https://github.com/VITA-Group/LightGaussian) | [初编](../../sources/repos/vision3d_lightgaussian.md) |
-| BAD-Gaussians（去模糊与束调整） | [主来源](https://github.com/WU-CVGL/BAD-Gaussians) | [初编](../../sources/repos/vision3d_bad_gaussians.md) |
-| Spec-Gaussian（高光外观建模） | [主来源](https://github.com/ingra14m/Specular-Gaussians) | [初编](../../sources/repos/vision3d_spec_gaussian.md) |
-| GeoGaussian（几何感知 Gaussian） | [主来源](https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/5218_ECCV_2024_paper.php)、[配套来源2](https://yanyan-li.github.io/project/gs/geogaussian) | [初编](../../sources/papers/vision3d_geogaussian.md) |
-| Street Gaussians（动态街景） | [主来源](https://arxiv.org/abs/2401.01339) | [初编](../../sources/papers/vision3d_street_gaussians.md) |
-| 4D Gaussian Splatting（动态高斯表示） | [主来源](https://github.com/hustvl/4DGaussians)、[配套来源2](https://openaccess.thecvf.com/content/CVPR2024/html/Wu_4D_Gaussian_Splatting_for_Real-Time_Dynamic_Scene_Rendering_CVPR_2024_paper.html) | [初编](../../sources/repos/vision3d_4dgaussians.md) |
-| 3D Geometry-Aware Deformable Gaussian Splatting（动态几何） | [主来源](https://openaccess.thecvf.com/content/CVPR2024/html/Lu_3D_Geometry-Aware_Deformable_Gaussian_Splatting_for_Dynamic_View_Synthesis_CVPR_2024_paper.html) | [初编](../../sources/papers/vision3d_geometry_aware_deformable.md) |
-| Deformable 3D Gaussians（单目动态重建） | [主来源](https://github.com/ingra14m/Deformable-3D-Gaussians)、[配套来源2](https://openaccess.thecvf.com/content/CVPR2024/html/Yang_Deformable_3D_Gaussians_for_High-Fidelity_Monocular_Dynamic_Scene_Reconstruction_CVPR_2024_paper.html) | [初编](../../sources/repos/vision3d_deformable_gaussians.md) |
-| 2D Gaussian Splatting（表面重建） | [主来源](https://github.com/hbb1/2d-gaussian-splatting)、[配套来源2](https://surfsplatting.github.io/) | [初编](../../sources/repos/vision3d_2d_gaussian.md) |
-| SuGaR（Gaussian 表面几何提取） | [主来源](https://anttwo.github.io/sugar/) | [初编](../../sources/sites/vision3d_sugar.md) |
-| 4D-Rotor Gaussian Splatting（动态重建） | [主来源](https://research.nvidia.com/publication/2024-02_4d-rotor-gaussian-splatting-towards-efficient-novel-view-synthesis-dynamic)、[配套来源2](https://github.com/weify627/4D-Rotor-Gaussians) | [初编](../../sources/repos/vision3d_4d_rotor.md) |
-| Splatter Image（单视图快速三维重建） | [主来源](https://github.com/szymanowiczs/splatter-image)、[配套来源2](https://openaccess.thecvf.com/content/CVPR2024/html/Szymanowicz_Splatter_Image_Ultra-Fast_Single-View_3D_Reconstruction_CVPR_2024_paper.html) | [初编](../../sources/repos/vision3d_splatter_image.md) |
-| Triplane Meets Gaussian Splatting（单视图重建） | [主来源](https://github.com/VAST-AI-Research/TriplaneGaussian)、[配套来源2](https://openaccess.thecvf.com/content/CVPR2024/html/Zou_Triplane_Meets_Gaussian_Splatting_Fast_and_Generalizable_Single-View_3D_Reconstruction_CVPR_2024_paper.html) | [初编](../../sources/repos/vision3d_triplane_gaussian.md) |
-| GaussianMesh（高斯网格形变，题名待核） | [主来源](https://github.com/IGLICT/GaussianMesh) | [初编](../../sources/repos/vision3d_gaussianmesh.md) |
-| GauFRe（Gaussian Deformation Fields） | [主来源](https://arxiv.org/abs/2312.11458) | [初编](../../sources/papers/vision3d_gaufre.md) |
-| mip-NeRF（抗锯齿神经辐射场） | [主来源](https://github.com/google/mipnerf)、[配套来源2](https://openaccess.thecvf.com/content/ICCV2021/html/Barron_Mip-NeRF_A_Multiscale_Representation_for_Anti-Aliasing_Neural_Radiance_Fields_ICCV_2021_paper.html) | [初编](../../sources/repos/vision3d_mip_nerf.md) |
-| Zip-NeRF（抗锯齿网格辐射场） | [主来源](https://openaccess.thecvf.com/content/ICCV2023/html/Barron_Zip-NeRF_Anti-Aliased_Grid-Based_Neural_Radiance_Fields_ICCV_2023_paper.html) | [初编](../../sources/papers/vision3d_zip_nerf.md) |
-| GS-Pose（Gaussian 物体位姿估计） | [主来源](https://dingdingcai.github.io/gs-pose)、[配套来源2](https://github.com/dingdingcai/GSPose) | [初编](../../sources/repos/vision3d_gs_pose.md) |
-| BAGS（模糊感知 Gaussian Splatting） | [主来源](https://nwang43jhu.github.io/BAGS/)、[配套来源2](https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/10394_ECCV_2024_paper.php) | [初编](../../sources/papers/vision3d_bags.md) |
-| OED（动态场景图生成，非 3DGS） | [主来源](https://openaccess.thecvf.com/content/CVPR2024/html/Wang_OED_Towards_One-stage_End-to-End_Dynamic_Scene_Graph_Generation_CVPR_2024_paper.html)、[配套来源2](https://github.com/guanw-pku/OED) | [初编](../../sources/repos/vision3d_oed.md) |
-
 ## 01｜视觉惯性 SLAM
 
 | 项目（中文 / English） | 一手链接 | 本仓库资料档案 |
@@ -129,6 +100,35 @@
 | MonoGS（Gaussian SLAM） | [主来源](https://github.com/VSLAM-LAB/MonoGS) | [初编](../../sources/repos/vision3d_monogs.md) |
 | Gaussian-SLAM（高斯表示 SLAM） | [主来源](https://github.com/VladimirYugay/Gaussian-SLAM) | [初编](../../sources/repos/vision3d_gaussian_slam.md) |
 | GS-SLAM（稠密视觉 Gaussian SLAM） | [主来源](https://gs-slam.github.io/)、[配套来源2](https://openaccess.thecvf.com/content/CVPR2024/html/Yan_GS-SLAM_Dense_Visual_SLAM_with_3D_Gaussian_Splatting_CVPR_2024_paper.html) | [初编](../../sources/papers/vision3d_gs_slam.md) |
+
+## 10｜Gaussian Splatting 与动态重建
+
+| 项目（中文 / English） | 一手链接 | 本仓库资料档案 |
+|---|---|---|
+| COLMAP-Free 3DGS（无需外部 COLMAP 位姿的 Gaussian 建模） | [主来源](https://github.com/NVlabs/CF-3DGS) | [初编](../../sources/repos/vision3d_cf_3dgs.md) |
+| GaussianPro（渐进传播 Gaussian） | [主来源](https://proceedings.mlr.press/v235/cheng24f.html) | [初编](../../sources/papers/vision3d_gaussianpro.md) |
+| EWA Volume Splatting（体渲染历史方法） | [主来源](https://vcg.seas.harvard.edu/publications/20011001-ewa-volume-splatting) | [初编](../../sources/papers/vision3d_ewa_volume.md) |
+| Surface Splatting（表面点片渲染） | [主来源](https://vcg.seas.harvard.edu/publications/20010101-surface-splatting) | [初编](../../sources/papers/vision3d_surface_splatting.md) |
+| LightGaussian（高斯表示压缩） | [主来源](https://github.com/VITA-Group/LightGaussian) | [初编](../../sources/repos/vision3d_lightgaussian.md) |
+| BAD-Gaussians（去模糊与束调整） | [主来源](https://github.com/WU-CVGL/BAD-Gaussians) | [初编](../../sources/repos/vision3d_bad_gaussians.md) |
+| Spec-Gaussian（高光外观建模） | [主来源](https://github.com/ingra14m/Specular-Gaussians) | [初编](../../sources/repos/vision3d_spec_gaussian.md) |
+| GeoGaussian（几何感知 Gaussian） | [主来源](https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/5218_ECCV_2024_paper.php)、[配套来源2](https://yanyan-li.github.io/project/gs/geogaussian) | [初编](../../sources/papers/vision3d_geogaussian.md) |
+| Street Gaussians（动态街景） | [主来源](https://arxiv.org/abs/2401.01339) | [初编](../../sources/papers/vision3d_street_gaussians.md) |
+| 4D Gaussian Splatting（动态高斯表示） | [主来源](https://github.com/hustvl/4DGaussians)、[配套来源2](https://openaccess.thecvf.com/content/CVPR2024/html/Wu_4D_Gaussian_Splatting_for_Real-Time_Dynamic_Scene_Rendering_CVPR_2024_paper.html) | [初编](../../sources/repos/vision3d_4dgaussians.md) |
+| 3D Geometry-Aware Deformable Gaussian Splatting（动态几何） | [主来源](https://openaccess.thecvf.com/content/CVPR2024/html/Lu_3D_Geometry-Aware_Deformable_Gaussian_Splatting_for_Dynamic_View_Synthesis_CVPR_2024_paper.html) | [初编](../../sources/papers/vision3d_geometry_aware_deformable.md) |
+| Deformable 3D Gaussians（单目动态重建） | [主来源](https://github.com/ingra14m/Deformable-3D-Gaussians)、[配套来源2](https://openaccess.thecvf.com/content/CVPR2024/html/Yang_Deformable_3D_Gaussians_for_High-Fidelity_Monocular_Dynamic_Scene_Reconstruction_CVPR_2024_paper.html) | [初编](../../sources/repos/vision3d_deformable_gaussians.md) |
+| 2D Gaussian Splatting（表面重建） | [主来源](https://github.com/hbb1/2d-gaussian-splatting)、[配套来源2](https://surfsplatting.github.io/) | [初编](../../sources/repos/vision3d_2d_gaussian.md) |
+| SuGaR（Gaussian 表面几何提取） | [主来源](https://anttwo.github.io/sugar/) | [初编](../../sources/sites/vision3d_sugar.md) |
+| 4D-Rotor Gaussian Splatting（动态重建） | [主来源](https://research.nvidia.com/publication/2024-02_4d-rotor-gaussian-splatting-towards-efficient-novel-view-synthesis-dynamic)、[配套来源2](https://github.com/weify627/4D-Rotor-Gaussians) | [初编](../../sources/repos/vision3d_4d_rotor.md) |
+| Splatter Image（单视图快速三维重建） | [主来源](https://github.com/szymanowiczs/splatter-image)、[配套来源2](https://openaccess.thecvf.com/content/CVPR2024/html/Szymanowicz_Splatter_Image_Ultra-Fast_Single-View_3D_Reconstruction_CVPR_2024_paper.html) | [初编](../../sources/repos/vision3d_splatter_image.md) |
+| Triplane Meets Gaussian Splatting（单视图重建） | [主来源](https://github.com/VAST-AI-Research/TriplaneGaussian)、[配套来源2](https://openaccess.thecvf.com/content/CVPR2024/html/Zou_Triplane_Meets_Gaussian_Splatting_Fast_and_Generalizable_Single-View_3D_Reconstruction_CVPR_2024_paper.html) | [初编](../../sources/repos/vision3d_triplane_gaussian.md) |
+| GaussianMesh（高斯网格形变，题名待核） | [主来源](https://github.com/IGLICT/GaussianMesh) | [初编](../../sources/repos/vision3d_gaussianmesh.md) |
+| GauFRe（Gaussian Deformation Fields） | [主来源](https://arxiv.org/abs/2312.11458) | [初编](../../sources/papers/vision3d_gaufre.md) |
+| mip-NeRF（抗锯齿神经辐射场） | [主来源](https://github.com/google/mipnerf)、[配套来源2](https://openaccess.thecvf.com/content/ICCV2021/html/Barron_Mip-NeRF_A_Multiscale_Representation_for_Anti-Aliasing_Neural_Radiance_Fields_ICCV_2021_paper.html) | [初编](../../sources/repos/vision3d_mip_nerf.md) |
+| Zip-NeRF（抗锯齿网格辐射场） | [主来源](https://openaccess.thecvf.com/content/ICCV2023/html/Barron_Zip-NeRF_Anti-Aliased_Grid-Based_Neural_Radiance_Fields_ICCV_2023_paper.html) | [初编](../../sources/papers/vision3d_zip_nerf.md) |
+| GS-Pose（Gaussian 物体位姿估计） | [主来源](https://dingdingcai.github.io/gs-pose)、[配套来源2](https://github.com/dingdingcai/GSPose) | [初编](../../sources/repos/vision3d_gs_pose.md) |
+| BAGS（模糊感知 Gaussian Splatting） | [主来源](https://nwang43jhu.github.io/BAGS/)、[配套来源2](https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/10394_ECCV_2024_paper.php) | [初编](../../sources/papers/vision3d_bags.md) |
+| OED（动态场景图生成，非 3DGS） | [主来源](https://openaccess.thecvf.com/content/CVPR2024/html/Wang_OED_Towards_One-stage_End-to-End_Dynamic_Scene_Graph_Generation_CVPR_2024_paper.html)、[配套来源2](https://github.com/guanw-pku/OED) | [初编](../../sources/repos/vision3d_oed.md) |
 
 ## 质量审计（未完成）
 
