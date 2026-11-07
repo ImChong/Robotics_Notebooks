@@ -165,6 +165,7 @@
 - [x] 再次同步刷新 README `media/site-demo.gif`：首页主标题已为「从运动控制到 Physical AI」、主路线入口卡为「一条主线打通具身智能全栈」（`scripts/record_readme_demo.cjs`，5420 节点 / 47779 边；82 frames / 1.78 MB）。
 - [x] 再次同步刷新 README `media/site-demo.gif`：首页主标题已为「从运动控制到物理智能」（`scripts/record_readme_demo.cjs`，5423 节点 / 47876 边；67 frames / 1.39 MB）。
 - [x] 再次同步刷新 README `media/site-demo.gif`（`scripts/record_readme_demo.cjs`，5947 节点 / 51954 边；82 frames / 1.99 MB）。
+- [x] 再次同步刷新 README `media/site-demo.gif`（`scripts/record_readme_demo.cjs`，7400 节点 / 61087 边；88 frames / 1.45 MB）。录制脚本选悬停 / 点击节点时不再设固定直径门槛（7400 节点适配全屏后最大节点约 5px，原 7 / 8px 门槛让「悬停看简介」「点击开侧栏」两步被跳过），并只悬停视口偏上的节点，免得浮窗翻到上方被工具栏遮住。
 - [x] 全站 footer 作者名「Chong Liu」可点击跳转个人主页 `https://imchong.github.io/index.html`（新标签打开）；`.footer a` 继承次要文字色、悬停强调色。
 - [x] 全站 sticky footer：`body:has(> .footer)` 用 flex 列布局 + `main { flex: 1 }`，短内容页把 `.footer` 推到视口最底部；无 footer 的页面（`graph.html` / `references.html`）不启用。
 
