@@ -4,6 +4,7 @@ tags: [manipulation, il, diffusion-policy, humanoid]
 status: complete
 updated: 2026-11-01
 related:
+  - ../entities/paper-behavior-spatial.md
   - ../entities/paper-goaldex.md
   - ../entities/paper-viserdex.md
   - ../entities/paper-seer-vla.md
@@ -168,6 +169,8 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 操作涉及多指接触、摩擦、约束——比纯运动控制复杂。
 
 ### 2. 视觉感知
+
+**空间指令评测：** [BEHAVIOR-Spatial](../entities/paper-behavior-spatial.md) 在同一类 BEHAVIOR-1K 场景中分别测量空间问答、指代目标点与仿真操作，并通过“训练布局不变、切换有效目标指令”的 prompt-probe 排查模型是否真正按语言选择目标。
 需要识别物体、理解姿态、估计空间位置；**2D 目标检测**（见 [目标检测](../methods/object-detection.md)、[YOLO v1](../entities/paper-yolo-unified-realtime-detection.md)）常作第一级 **物体锚点**；抓取子问题中常需要 **6D/7DoF 抓取位姿** 或 **候选集合**（见 [AnyGrasp](../entities/anygrasp.md) 一类检测式管线）。**多物体 clutter 下的物体系 6D 跟踪与在线 mesh**（无 CAD、遮挡可恢复）见 [Point2Pose](../entities/paper-point2pose.md)。视觉特征多来自 [视觉骨干](../concepts/vision-backbones.md)（如 [ResNet](../entities/paper-resnet-deep-residual-learning.md)）预训练微调。
 
 ### 3. 灵巧操作
