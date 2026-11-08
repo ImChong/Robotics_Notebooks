@@ -3,7 +3,7 @@ type: entity
 project_id: dreamscale-labs
 project: https://www.dreamscalelabs.com/
 code: https://github.com/Dreamscale-Labs/dreamscale-hud
-tags: [robotics, physical-ai, vla, wam, cloud-inference, deployment, edge-cloud, robot-manipulation, simulation, evaluation, sdk]
+tags: [dreamscale-labs, robotics, physical-ai, vla, wam, cloud-inference, deployment, edge-cloud, robot-manipulation, simulation, evaluation, sdk]
 status: complete
 updated: 2026-11-08
 summary: "Dreamscale Labs 是机器人基础模型的云端训练、推理和部署平台：按具体机器人模型合同上传视觉与本体状态并返回动作块；提供 CLI/SDK、SO-101/YAM 实机路径与 LIBERO/HUD 仿真评测，端侧安全闭环仍须独立保障。"
