@@ -22,7 +22,9 @@ summary: 面向历史机器人经验的动作感知预测式 VLA 检索；用 Em
 # Robota-Embed：统一 VLA 嵌入用于机器人上下文学习与经验演化
 # Robota-Embed: Unified VLA Embeddings for Robot In-Context Learning and Evolution
 
-**一句话定义：** Robota-Embed 把当前**任务 + 视觉 + 实际动作表示**与历史轨迹的**下一段运动**编码到同一检索空间，按执行阶段找到可用经验，再为机器人策略提供上下文或演化局部记忆。
+## 一句话定义
+
+Robota-Embed 把当前**任务 + 视觉 + 实际动作表示**与历史轨迹的**下一段运动**编码到同一检索空间，按执行阶段找到可用经验，再为机器人策略提供上下文或演化局部记忆。
 
 ## 英文缩写速查
 
