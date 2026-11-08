@@ -5820,6 +5820,7 @@
 - [ScaleVLN](wiki/entities/paper-vln-08-scalevln.md) — ScaleVLN** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 08/ `📅unknown` `[entity_page]`
 - [ETPNav](wiki/entities/paper-vln-09-etpnav.md) — ETPNav** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 09/10 `📅unknown` `[entity_page]`
 - [NaVid](wiki/entities/paper-vln-10-navid.md) — NaVid** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 10/10 `📅unknown` `[entity_page]`
+- [VNT-PA：基于位姿注意力的视觉导航 Transformer](wiki/entities/paper-vnt-pa.md) — Visual Navigation Transformer with Pose Attention `📅unknown` `[entity_page]`
 - [VoxPoser](wiki/entities/paper-voxposer.md) — VoxPoser**（arXiv:2307.05973，[代码](https://github.com/huangwl18/ `📅unknown` `[entity_page]`
 - [VQ-BeT：用潜在动作码字做行为生成](wiki/entities/paper-vq-bet-behavior-generation-latent-actions.md) — VQ-BeT**（*Behavior Generation with Latent Actions*，[arXiv:2403.03181](https://arxiv.org/abs/2403.0 `📅unknown` `[entity_page]`
 - [vS-Graphs（视觉 SLAM + 3D 场景图）](wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md) — vS-Graphs**（Tourani et al., arXiv:2503.01783，IEEE RA-L 2026，[代 `📅unknown` `[entity_page]`
