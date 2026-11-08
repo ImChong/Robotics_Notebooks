@@ -7,10 +7,11 @@ project: https://vla-tug.github.io/
 code: https://anonymous.4open.science/r/VLA-Tug/
 tags: [paper, vla, failure-detection, uncertainty, ut-austin, tufts]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-08
 summary: "VLA-Tug 以失败前的骨干特征训练轻量时序探针，输出校准告警和故障模式；正式校准保证限于可交换分布。"
 related:
   - ../methods/vla.md
+  - ./paper-gazevla.md
   - ../concepts/robot-safety-state-machine.md
 original:
   - ../../sources/papers/vla-tug.md
@@ -156,6 +157,8 @@ sequenceDiagram
 - 真机数据不公开；本文完成源码阅读，未做训练或硬件复现。
 
 ## 关联页面
+
+- [GazeVLA](./paper-gazevla.md) — 在动作生成前显式预测人类注视意图，与本页执行中的故障探测形成互补。
 
 - [VLA 方法](../methods/vla.md)：本方法读取策略内部表征，不替代动作策略。
 - [机器人安全状态机](../concepts/robot-safety-state-machine.md)：告警到停止/接管的执行边界。
