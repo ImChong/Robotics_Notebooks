@@ -15,6 +15,7 @@ sources:
   - ../../sources/repos/sandflow-sand3d.md
 related:
   - ./articraft.md
+  - ../comparisons/3d-as-code-to-robot-simulation.md
   - ./urdf-studio.md
   - ./zero-to-cad.md
   - ../concepts/text-to-cad.md
@@ -170,6 +171,7 @@ s3d.export(bracket(), "bracket.glb")
 
 ## 关联页面
 
+- [3D-as-Code、网格与机器人仿真描述选型](../comparisons/3d-as-code-to-robot-simulation.md) — 分辨可编辑代码资产、网格与动力学完整的物理仿真模型。
 - [Articraft](./articraft.md) — Sand3D 五子集之一来源；Articraft 强调 agent + SDK + harness 的可关节资产生成，Sand3D 强调**统一表达语言及跨源代码重写数据**。
 - [Zero-To-CAD](./zero-to-cad.md) — 是 Sand3D CAD 子集的部分上游来源；两者建模 API、任务和授权需分别核对。
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md) — 上游文字/视觉条件生成与下游可编辑程序建模的区别。
@@ -188,4 +190,4 @@ s3d.export(bracket(), "bracket.glb")
 
 - [官方 API 文档](https://github.com/Sandflow-ai/sand3d/blob/main/docs/api.md) 与 [建模规范八条](https://github.com/Sandflow-ai/sand3d/blob/main/docs/guidelines.md)
 - [washing_machine.py — 四关节模型示例](https://github.com/Sandflow-ai/sand3d/blob/main/programs/washing_machine.py)
-- [官方 Excelorer 在线浏览程序与 USDA](https://huggingface.co/spaces/Sandflow/sand3d-explorer)
+- [官方 Explorer 在线浏览程序与 USDA](https://huggingface.co/spaces/Sandflow/sand3d-explorer)
