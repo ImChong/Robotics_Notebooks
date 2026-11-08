@@ -9,11 +9,14 @@
 - **官方站：** https://open-codereview.ai
 - **npm：** `@alibaba-group/open-code-review`（全局命令 `ocr`）
 - **入库日期：** 2026-09-19
+- **复核日期：** 2026-11-08
+- **核对范围：** 通读官方 README 的架构、AACR-Bench 口径、安装、CLI 示例、限制与许可；逐段核对 `cmd/opencodereview/main.go`、`root.go`、`review_cmd.go` 的评审入口，以及 `internal/agent/agent.go` 中 `Run`、`selection.go` 中 `selectFiles`、`grouping.go` 中 `groupDiffs` 的实现。未审计完整仓库，也未运行二进制。
+- **通读：** 已完成
 - **热度快照（2026-10-01）：** Trendshift 叙事约 **+21.2k stars/月**；GitHub API 约 **43.0k** stars
 - **协议：** Apache-2.0
 - **一句话说明：** 阿里巴巴内部 AI 代码评审助手开源版：以 **确定性工程管线**（精确选文件、智能分包、模板规则匹配、评论定位/反思）约束评审过程，再叠加 **带 tool-use 的 Agent** 做动态上下文检索；支持 `ocr review` / `ocr scan` / Delegation Mode 与多 harness 插件。
 - **为什么值得保留：** 与本知识库维护者常用的 **Cursor / Codex / Claude Code** 及 [Superpowers](../../wiki/entities/superpowers-obra.md) 工作流中的 **requesting-code-review** 环节直接相邻；对「如何把 code review 从纯 prompt skill 升级为可审计管线」有对照价值。
-- **沉淀到 wiki：** 是 → [`wiki/entities/open-code-review.md`](../wiki/entities/open-code-review.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/open-code-review.md`](../../wiki/entities/open-code-review.md)
 
 ## README 要点（归纳）
 
@@ -26,6 +29,18 @@
 - **基准数据：** [AACR-Bench on Hugging Face](https://huggingface.co/datasets/Alibaba-Aone/aacr-bench)。
 - **实现语言：** Go（`cmd/opencodereview` + `internal/*`）；npm 包装为跨平台 CLI 分发。
 - **前置依赖：** Git ≥ 2.41。
+
+## 可复核源码调用链
+
+1. `cmd/opencodereview/main.go:main` 经 `rootCmd.Execute()` 进入 Cobra 子命令；`root.go` 注册 `reviewCmd`、`scanCmd`、`delegateCmd` 等。
+2. `review_cmd.go:executeReviewContext` 装载 Git 仓库上下文、评审规则、LLM provider、tool registry / MCP，然后创建 `agent.New(...)` 并执行 `ag.Run(...)`。
+3. `internal/agent/agent.go:Run` 调用 `loadDiffs`，通过 `selection.go:selectFiles` 依据二进制/密钥路径、include/exclude、扩展名和大小限制筛选，再进行 `dispatchSubtasks`。
+4. `grouping.go:groupDiffs` 根据变更规模决定本地单文件/合并分组，或在较大变更中调用 LLM 语义分组；分组后的 Agent 借助 `internal/tool/` 读取文件、搜索代码并提交评论。
+5. CLI 汇总评论、manifest、会话记录，按 `text`、`json` 或 `sarif` 输出。**不能简单断言所有分组步骤都是确定性的。**
+
+**官方运行入口：** `npm install -g @alibaba-group/open-code-review` → `ocr version` → `ocr config provider` → `ocr llm test` → `ocr review --preview` → `ocr review`。
+
+**一手文件：** [README](https://github.com/alibaba/open-code-review/blob/main/README.md) · [review_cmd.go](https://github.com/alibaba/open-code-review/blob/main/cmd/opencodereview/review_cmd.go) · [agent.go](https://github.com/alibaba/open-code-review/blob/main/internal/agent/agent.go) · [selection.go](https://github.com/alibaba/open-code-review/blob/main/internal/agent/selection.go) · [grouping.go](https://github.com/alibaba/open-code-review/blob/main/internal/agent/grouping.go)
 
 ## 与本站 sources 的其它锚点
 
