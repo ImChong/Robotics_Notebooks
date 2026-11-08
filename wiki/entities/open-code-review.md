@@ -118,7 +118,7 @@ sequenceDiagram
     participant CLI as review_cmd.go
     participant Agent as internal/agent
     participant Diff as internal/diff
-    participant Loop as internal/llmloop
+    participant ReviewRunner as internal/llmloop
     participant Tool as internal/tool
     participant Session as internal/session
     Dev->>CLI: ocr review --from main --to feature
@@ -128,10 +128,10 @@ sequenceDiagram
     Diff-->>Agent: Git diff 文件集合
     Agent->>Agent: selectFiles / dispatchSubtasks / groupDiffs
     loop 各分组评审
-        Agent->>Loop: 执行 review 子任务
-        Loop->>Tool: file_read / code_search / code_comment
-        Tool-->>Loop: 代码上下文及评论收集
-        Loop-->>Agent: 评审结果
+        Agent->>ReviewRunner: 执行 review 子任务
+        ReviewRunner->>Tool: file_read / code_search / code_comment
+        Tool-->>ReviewRunner: 代码上下文及评论收集
+        ReviewRunner-->>Agent: 评审结果
     end
     Agent->>Session: 完成会话和 manifest
     Agent-->>CLI: comments / run manifest
