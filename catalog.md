@@ -6107,6 +6107,7 @@
 - [Replica Skill（app 克隆 Agent Skills）](wiki/entities/replica-skill.md) — Replica Skill** 是一组面向 Claude 的 11 个 Agent Skills，按从应用调研到上线的顺序，将目标应用的功能和交互整理成可执行的重建计划，并在用户自己的项目中实现。 `📅unknown` `[entity_page]`
 - [GO2 Backflip（Robot-Nav / PPO-backflip）](wiki/entities/repo-go2-backflip.md) — GO2 Backflip** 是 Robot-Nav 社区在 **Unitree Go2** 上开源的 **高动态后空翻** 全流程 `📅unknown` `[entity_page]`
 - [Rerun](wiki/entities/rerun-io.md) — Rerun 是面向机器人与 Physical AI 的多模态数据工具链：用 SDK 或导入器接入多频率数据，在统一时间轴中可视化和查询，并将记录用于预处理与训练数据准备。 `📅unknown` `[entity_page]`
+- [ResearchBoost-Agent — Autonomous AI Training Optimization / 基于冻结判官的 Agent 自主训练加速](wiki/entities/researchboost-agent.md) — ResearchBoost-Agent（RBA）** 是一套让 Codex 或 Claude Code **自动分析研究训练代码、按热点逐轮改进并接受冻结评测器（Judge）约束**的开源可见工程 `📅unknown` `[entity_page]`
 - [RetargetingKit：机器人动作重定向与遥操作工具包](wiki/entities/retargetingkit.md) — RetargetingKit 将实时或录制的人体动作整理成规范帧，通过优化式或神经式求解映射为灵巧手、机械臂或人形机器人的关节命令。 `📅unknown` `[entity_page]`
 - [RetinaNet](wiki/entities/retinanet.md) — RetinaNet** 是带 FPN 的单阶段密集检测器，核心用 **Focal Loss** 降低易分负样本权重，缓解 one-stage 精度长期落后两阶段的问题。 `📅unknown` `[entity_page]`
 - [OM-1：通才操作策略（Reward AI）](wiki/entities/reward-ai-om1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
