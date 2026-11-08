@@ -255,6 +255,14 @@ op: ingest
 
 按主论文核对 DINOv3、GAWM、DUET-DINO、PointWorld、FlowWM、RLA-WM、JEPA-WMs；DINO-WM 作为使用 DINOv2 的历史对照。复用已有实体，追加缺少的原文/代码/项目页归档。原文和源码尚未全部通读；PR 保持 Draft 直至复核通过。
 
+## [2026-11-08] ingest | Open Code Review 官方核验与既有节点升级
+
+- **意图：** 收录 Alibaba 官方项目仓库、npm 包 `@alibaba-group/open-code-review` 与 `ocr` CLI，复核现有知识节点，不重复新建实体。
+- **开源结论：** `alibaba/open-code-review` 公开核心 Go CLI 与 npm 包装，Apache-2.0；官方支持工作区/分支/commit 评审、`scan`、Delegation Mode、MCP 与 CI 集成。
+- **一手通读：** 核对 README、官方快速开始与 CLI 文档，并审阅 `review_cmd.go`、`agent.go`、`selection.go`、`grouping.go` 关键调用链。
+- **节点修订：** `wiki/entities/open-code-review.md` 增加 project_id、original 归档、英中双标题，校正分组机制并更新 Mermaid 主流程/源码时序图。
+- **范围：** 只改知识源文件，不提交 `catalog.md`、`log.md` 或其他自动生成文件；未实际安装或运行 OCR。
+
 ## [2026-11-08] ingest | dreamscale-labs | 云端机器人基础模型推理平台
 
 - **意图：** 收录 “I want to run a model on a robot to do something” 的官方产品与技术实现，区别机器人模型和云端推理服务。
