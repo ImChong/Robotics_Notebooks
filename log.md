@@ -251,6 +251,10 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+# 2026-11-08 ingest｜DINOv3 与世界模型技术谱系
+
+按主论文核对 DINOv3、GAWM、DUET-DINO、PointWorld、FlowWM、RLA-WM、JEPA-WMs；DINO-WM 作为使用 DINOv2 的历史对照。复用已有实体，追加缺少的原文/代码/项目页归档。原文和源码尚未全部通读；PR 保持 Draft 直至复核通过。
+
 ## [2026-11-08] ingest | sources/papers/stabilizing_rl_with_llms_arxiv_2512_01374.md — 通读 Qwen MiniRL 论文并关联策略优化
 
 - 通读 arXiv:2512.01374v3 全文 13 页（含附录），收录 MiniRL、IS 校正、clipping、MoE R2/R3 与数学推理实验。

@@ -2434,6 +2434,7 @@
 - [FlowVLA（arXiv:2610.16160）](wiki/entities/paper-flowvla-pluggable-3d-flow.md) — FlowVLA**（*FlowVLA: Enabling World Dynamics Understanding through Pluggable 3D Flow Learning*，[arX `📅unknown` `[entity_page]`
 - [FlowVLA：面向定量机器人倾倒操作的流动感知物理完成状态学习](wiki/entities/paper-flowvla-quantitative-robotic-pouring.md) — FlowVLA 倾倒**（*FlowVLA: Learning Flow-Aware Physical Completion for Quantitative Robotic Pouring*， `📅unknown` `[entity_page]`
 - [FlowVLA（Visual CoT）](wiki/entities/paper-flowvla-visual-cot.md) — FlowVLA（Visual CoT）**（arXiv:2508.18269，[项目页](https://irpn-lab. `📅unknown` `[entity_page]`
+- [FlowWM — Flow Matching in Feature Space for Stochastic World Modeling / 特征空间流匹配随机世界模型](wiki/entities/paper-flowwm-feature-space-stochastic-wm.md) — FlowWM** 将条件流匹配直接用于预训练 DINOv3 视觉特征，预测多种可能的未来潜空间状态，而不是预测一张确定性的未来图像。 `📅unknown` `[entity_page]`
 - [Fluidic Body（arXiv:2611.06068）](wiki/entities/paper-fluidic-body.md) — Fluidic Body**（*Fluidic Body: Swarm Robots as a Fluid Extension of the Hand*，[arXiv:2611.06068](ht `📅unknown` `[entity_page]`
 - [Fly-by-Code：让空中操作的编码智能体主动查明失败原因](wiki/entities/paper-fly-by-code-aerial-manipulation.md) — Fly-by-Code**（arXiv:2610.12549，[项目页](https://fly-by-code.githu `📅unknown` `[entity_page]`
 - [FlyCNS（arXiv:2609.28816）](wiki/entities/paper-flycns-connectome-communication.md) — FlyCNS**（*FlyCNS: Connectome-Grounded Information Organization for Communication-Constrained Embod `📅unknown` `[entity_page]`
@@ -2818,6 +2819,7 @@
 - [JEPA-Anything（跨世界预测模型）](wiki/entities/paper-jepa-anything.md) — JEPA-Anything 以 **Orthogonal Predictive Factorization（OPF）** 组织跨领域 JEPA：把未来潜在目标拆成互补因素、分别预测后重组为共享预测表示 `📅unknown` `[entity_page]`
 - [JEPA Policy：扩散-free 的动作与未来表征联合模仿学习](wiki/entities/paper-jepa-policy.md) — JEPA Policy**（*Diffusion-Free Imitation Learning via Paired Action and Future Representation Predi `📅unknown` `[entity_page]`
 - [JEPA-WAM（arXiv:2608.09381）](wiki/entities/paper-jepa-wam.md) — JEPA-WAM**（arXiv:2608.09381）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08. `📅unknown` `[entity_page]`
+- [JEPA-WMs — Joint-Embedding Predictive World Models / 联合嵌入预测物理规划世界模型](wiki/entities/paper-jepa-wms-physical-planning.md) — JEPA-WMs** 以冻结视觉表征、动作及可选本体状态输入训练未来嵌入预测器，再在测试时通过模型预测搜索动作；部分机器人任务使用 DINOv3 ViT-L/16。 `📅unknown` `[entity_page]`
 - [JEPLO（arXiv:2609.15770）](wiki/entities/paper-jeplo.md) — JEPLO**（*JEPLO: Joint-Embedding Predictive Learning for LiDAR-Based Legged Locomotion*，[arXiv:2609 `📅unknown` `[entity_page]`
 - [JitRL：即时强化学习（Just-In-Time Reinforcement Learning）](wiki/entities/paper-jitrl-just-in-time-rl.md) — JitRL** 是一种**免梯度更新**的测试时策略优化方法：LLM 智能体部署后权重不变，它把每次交互存为 `<state, action, reward>` 经验，在决策时检索相似经验估计各候 `📅unknown` `[entity_page]`
 - [JitterVLA：VLA 人机操作的运动质量回放基准](wiki/entities/paper-jittervla-replay-benchmark.md) — JitterVLA**（arXiv:2610.13628，[项目页](https://faithogunwoye.githu `📅unknown` `[entity_page]`
