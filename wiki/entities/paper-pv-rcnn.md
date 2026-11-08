@@ -80,6 +80,16 @@ sequenceDiagram
 
 原论文 v2 KITTI test R40（Table1）Car easy/mod/hard AP **90.25/81.43/76.82**，KITTI val R40（Table3）**92.57/84.83/82.69**。Table7 KITTI val moderate 消融：只用体素 RPN 80.87、直接编码器池化 82.86、完整 VSA+RoI-grid 84.83。OpenPCDet README 的 val R11 83.61 属不同评估口径，不要混用。
 
+## 与其他工作对比
+
+PV-RCNN 把体素 CNN 的高效主干与点集抽象的灵活感受野合在一起；下表只引用论文自报或同一仓库同一口径的数字。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| [PointRCNN](./paper-pointrcnn.md) | PointRCNN 在原始点上做前景分割出 proposal、RoI 内用 PointNet++ 精修；PV-RCNN 的 proposal 来自稀疏体素 CNN，精修特征来自 VSA 关键点和 6×6×6 RoI-grid | [OpenPCDet](./openpcdet.md) README 同一口径（KITTI val Car moderate R11）：PointRCNN 78.70、PV-RCNN 83.61；PV-RCNN 原文为 R40，与 PointRCNN 原文数字口径不一致，不能直接相减 |
+| 仅体素 RPN（本文消融，单阶段体素主干） | 去掉 VSA 与 RoI-grid，只保留体素 CNN 出框 | 本文 Table7 KITTI val moderate：80.87 → 直接编码器池化 82.86 → 完整 VSA+RoI-grid 84.83 |
+| [PointNet++](./paper-pointnet2.md) | PV-RCNN 借用其 FPS 采样和 set abstraction 聚合，但聚合对象是多层体素特征而非原始点邻域 | 定性：点集抽象在这里是体素特征到关键点的汇聚器，不是主干 |
+
 ## 结论
 
 **PV-RCNN 的价值在于明确的数据流与约束设计，而不是无条件提高所有场景的性能。**
@@ -101,6 +111,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ③层：LiDAR 点云 3D 检测（点体素二阶段），精度换稀疏卷积算力与时延
 - [OpenPCDet](./openpcdet.md)
 - [FeatDepth](./paper-featdepth.md)
 - [COLMAP](./colmap.md)

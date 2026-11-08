@@ -86,6 +86,18 @@ sequenceDiagram
 
 论文 §4.2/Table2 TUM RGB-D ATE RMSE（cm，作者从 5 次运行取最佳）：NICE-SLAM fr1/desk **2.7**、fr2/xyz **1.8**、fr3/office **3.0**；ORB-SLAM2 对应 1.6/0.4/1.0，不能宣称全局胜传统定位。论文还报告 Replica 重建和 ScanNet 大场景，渲染/跟踪使用不同指标。
 
+## 与其他工作对比
+
+NICE-SLAM 处于"隐式神经场 SLAM"阶段，是后续 3DGS SLAM 常用的对照基线；以下仅比较设计，数值注明出处。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| iMAP（论文内基线） | iMAP 用单个全局 MLP 表示整个场景；NICE-SLAM 换成 coarse/mid/fine 分层局部 feature grid + 预训练固定解码器，只更新视锥内局部特征 | 这是 NICE-SLAM 能扩展到 ScanNet 大场景的关键设计（论文 §3） |
+| ORB-SLAM2（论文内基线） | 稀疏特征点 SLAM，不产出稠密地图 | 本论文 Table2 TUM ATE：NICE-SLAM 2.7/1.8/3.0 cm vs ORB-SLAM2 1.6/0.4/1.0 cm，**轨迹精度上传统方法仍更优** |
+| [NeRF](./paper-nerf-mildenhall.md) | 共享射线采样 + 可微体渲染；NeRF 需已知位姿离线训练单场景 MLP，NICE-SLAM 在线同时估计位姿与地图 | NICE-SLAM 依赖 RGB-D 深度监督几何，NeRF 只用 RGB |
+| [SplaTAM](./paper-splatam.md) / [Gaussian-SLAM](./paper-gaussian-slam.md) / [GS-SLAM（Yan）](./paper-gs-slam-yan.md) | 以显式 3D 高斯 + 光栅化取代隐式网格 + 射线采样，新区域直接按深度反投影添加高斯 | 显式高斯渲染更快，但各论文渲染 FPS 均不等于完整 SLAM 帧率 |
+| [MonoGS](./paper-monogs.md) | 显式高斯，且支持单目；NICE-SLAM 需要 RGB-D | 同为 TUM fr1/desk、fr2/xyz、fr3/office：MonoGS RGB-D Table1 报 1.50/1.44/1.49 cm；两篇论文运行协议不同（NICE-SLAM 为 5 次取最佳），仅作参考 |
+
 ## 结论
 
 **NICE-SLAM 采用 coarse/mid/fine 分层局部几何特征网格、颜色网格和预训练几何解码器，实现 RGB-D 稠密 SLAM 的大场景重建与相机跟踪。**

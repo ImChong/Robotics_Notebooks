@@ -79,6 +79,16 @@ sequenceDiagram
 
 arXiv v2 KITTI test（Table1）车类 easy/mod/hard 3D AP 85.94/75.76/68.32（IoU 0.7）；val（Table2、GT-AUG）88.88/78.63/77.38，不能把 test 与 val 结果混用。50 个 proposal、IoU 0.5 的召回率为 96.01%（val、car moderate，Table3）。
 
+## 与其他工作对比
+
+PointRCNN 直接在原始点上生成 proposal，处在「PointNet++ 骨干 → 点式二阶段检测 → 点体素融合检测」这条线的中间；下表只引用论文自报或同一仓库同一口径的数字。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| [PointNet++](./paper-pointnet2.md) | PointRCNN 把 PointNet++ 当两阶段共用骨干，新增的是逐点前景分割、bin-based 框回归和 canonical 坐标精修 | 本文 Table4 消融：去掉 canonical transform，val Car moderate AP 13.68 vs 完整 77.67 |
+| [PV-RCNN](./paper-pv-rcnn.md) | 同作者后续工作：proposal 改由稀疏体素 CNN 生成，RoI 精修改用关键点 + RoI-grid pooling，不再在原始点上做前景分割出框 | PV-RCNN 原文数字为 R40 口径，本页 PointRCNN 原文数字未标注同一口径，两篇原文结果不宜直接相减；[OpenPCDet](./openpcdet.md) README 同一口径（KITTI val Car moderate R11）：PointRCNN 78.70、PV-RCNN 83.61 |
+| [OpenPCDet](./openpcdet.md) 中的单阶段方法（SECOND、PointPillar） | 两者先体素化/柱化再用卷积主干一次出框，没有 RoI 内的第二阶段精修 | OpenPCDet README 同口径：PointPillar 77.28、SECOND 78.62、PointRCNN 78.70；属框架复现数，不是本论文结果 |
+
 ## 结论
 
 **PointRCNN 的价值在于明确的数据流与约束设计，而不是无条件提高所有场景的性能。**
@@ -100,6 +110,7 @@ arXiv v2 KITTI test（Table1）车类 easy/mod/hard 3D AP 85.94/75.76/68.32（Io
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ③层：LiDAR 点云上直接做 3D 检测（原始点二阶段），绕过 2D 框再提升
 - [OpenPCDet](./openpcdet.md)
 - [FeatDepth](./paper-featdepth.md)
 - [COLMAP](./colmap.md)

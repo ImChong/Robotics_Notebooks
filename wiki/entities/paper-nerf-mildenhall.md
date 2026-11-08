@@ -103,6 +103,18 @@ sequenceDiagram
 
 真实 LLFF 方法在 Real Forward-Facing LPIPS 为 **0.212**，优于 NeRF 的 0.250；不能称所有单项完胜。Table2 去 positional encoding 的 PSNR 28.77，去 view dependence 27.66，完整 31.01。作者原始 TF 代码 V100 高分辨率渲染约 30 秒/帧，需要数小时级单场景训练，不能描述为实时 SLAM。
 
+## 与其他工作对比
+
+NeRF 是离线、已知位姿的单场景重建方法；下表说明后续 SLAM / 高斯方法在哪些设计上与它分道。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| [NICE-SLAM](./paper-nice-slam.md) | 继承"沿射线采样 + 可微体渲染"思想，但把单个大 MLP 换成分层局部 feature grid + 固定预训练解码器，并在线优化相机位姿，输入为 RGB-D | NeRF 需要外部 SfM 位姿、数小时单场景训练；NICE-SLAM 把渲染误差同时用于追踪和建图 |
+| [3D Gaussian Splatting](./paper-rcl-2308-04079-3d-gaussian-splatting-for-real-time-radiance-fie.md) | 用显式各向异性高斯 + 光栅化替代 MLP 查询 + 射线逐点采样 | 本论文 §6 给出原 TF 实现 V100 约 30 秒/帧渲染；后续提速属于其他工作，不归功于原始 NeRF |
+| [SplaTAM](./paper-splatam.md) / [MonoGS](./paper-monogs.md) | 用 3DGS 做在线 SLAM，相机位姿由渲染残差直接优化；NeRF 不估计位姿 | 任务不同：NeRF 报告新视角合成 PSNR（Table1），SLAM 论文主要报告 ATE 与渲染质量 |
+| [COLMAP](./colmap.md) | COLMAP 提供 NeRF 训练所需的相机内外参（LLFF 预处理） | 上游依赖关系，位姿误差会直接传导为 NeRF 几何/外观漂移 |
+| LLFF（论文内基线） | 基于多平面图像的局部光场融合 | 本论文 Table1 Real Forward-Facing 上 NeRF PSNR/SSIM 更高，但 LLFF 的 LPIPS 0.212 优于 NeRF 的 0.250 |
+
 ## 结论
 
 **核心不是体渲染本身，而是已知多视角图像监督下位置高频编码、view-dependent appearance 与粗细重要性采样。** 不能仅按新渲染基准速度忽略原实现真实训练和采样成本。

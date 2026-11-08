@@ -104,6 +104,7 @@ flowchart LR
 - 奖励与仿真：[奖励设计](./reward-design.md) · [人形策略奖励函数](./humanoid-policy-reward-functions.md) · [域随机化](./domain-randomization.md) · [Sim2Real](./sim2real.md)
 - 论文节点：[Eureka](../entities/paper-eureka-llm-reward-design.md) · [DrEureka](../entities/paper-dreureka-sim-to-real.md) · [VLA 泛化实证](../entities/paper-rl-vla-generalization-empirical-study.md) · [SimpleVLA-RL](../entities/paper-simplevla-rl.md) · [物体中心残差 RL](../entities/paper-object-centric-residual-rl-vla.md) · [VLA-MBPO](../entities/paper-rcl-2603-20607-towards-practical-world-model-based-reinforcemen.md)
 - 人形训练：[GR00T 全身控制](../entities/gr00t-wholebodycontrol.md)
+- 知识链枢纽：[具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 本文的「RL 接到预训练 VLA 之后」对应其 ③ VLA 动作执行层的后训练，世界模型内 rollout 对应 ⑤ WM 推演层
 
 ## 参考来源
 
