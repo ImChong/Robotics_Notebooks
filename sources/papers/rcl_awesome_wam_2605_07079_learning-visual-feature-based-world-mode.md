@@ -30,3 +30,16 @@
 
 - 实体页：[`wiki/entities/paper-rcl-2605-07079-learning-visual-feature-based-world-models-via-r.md`](../../wiki/entities/paper-rcl-2605-07079-learning-visual-feature-based-world-models-via-r.md)
 - 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)
+
+## 2026-11-08 一手资料核对
+
+- **原文：** <https://arxiv.org/html/2605.07079>
+- **核对范围：** 完整阅读 v2 正文 1–5、附录 A.1–A.4，以及官方 docs/training.md 与 train.py。
+- **通读：** 已完成
+- **官方代码核验：** <https://github.com/mlzxy/rla-wm>；以仓库 README / 可见文件为准，不等同于复现成功。
+
+## 2026-11-08 论文逐段核验要点
+
+- **方法：** 冻结 DINOv3-L/16 特征，RLA 自编码器压缩相邻 DINO patch 残差，动作条件 Flow Matching 在 **紧凑 RLA** 而非原始百万维 DINO 空间中预测未来，解码重建视觉 token。
+- **实验：** ManiSkill 未来帧 LPIPS 0.071、SSIM 0.931、DINO L1 0.030；SO-101 叠杯 BC 3/20 → BC+RLA 8/20。
+- **局限：** 世界模型 OOD 幻觉成功：加噪 PushT 模拟器 24.0%，RLA-WM 预测仍为 84.8%；WMRL 需要防止利用模型错误。

@@ -26,3 +26,18 @@
 **对 wiki 的映射**
 
 - [paper-gawm-compact-latent-world-action-model](../../wiki/entities/paper-gawm-compact-latent-world-action-model.md)
+
+## 2026-11-08 一手资料核对
+
+- **原文：** <https://arxiv.org/html/2610.37091>
+- **核对范围：** 完整阅读 v1 I–V（方法、主要结果、消融与真机；无独立附录），并阅读作者 README/评测入口。
+- **通读：** 已完成
+- **官方代码核验：** <https://github.com/gaoxiang12/ga-wm>；以仓库 README / 可见文件为准，不等同于复现成功。
+
+- **勘误：** 作者仓库已经发布 GAWM-S 评测代码和权重；Training 部分仍写 `Coming soon`。旧版“未见代码”仅针对旧日期的摘要核对。
+
+## 2026-11-08 论文逐段核验要点
+
+- **方法：** 冻结 DINOv3 ViT-S/16，每视角压缩为 64 个 token；**根据任务而不是动作**预测两时间尺度未来特征，直接输出动作块；无需 CEM。
+- **实验：** Extended LIBERO（6585 轨迹）平均 95.6%；RoboTwin2 Clean 93.94%，Randomized 93.10%；单次动作块约 7.1/8.8 ms（RTX PRO 5000，batch 1）。
+- **局限：** 公开权重与 LIBERO/RoboTwin 评测脚本，训练代码 README 仍为 Coming soon；不同论文数据协议不能横比。

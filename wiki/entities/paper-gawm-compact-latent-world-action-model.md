@@ -5,13 +5,16 @@ tags:
   - world-action-model
   - manipulation
 status: complete
-updated: 2026-11-02
+updated: 2026-11-08
 arxiv: "2610.37091"
+code: https://github.com/gaoxiang12/ga-wm
 project_id: gawm-compact-latent-world-action-model
 related:
   - ../overview/senlanke-weekly-2026-10-26-30-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+original:
+  - ../../sources/papers/gawm-compact-latent-world-action-model_arxiv_2610_37091.md
 sources:
   - ../../sources/papers/gawm-compact-latent-world-action-model_arxiv_2610_37091.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
@@ -20,7 +23,7 @@ summary: "GAWM：面向多任务机器人操作的紧凑潜在世界动作模型
 
 # GAWM：面向多任务机器人操作的紧凑潜在世界动作模型
 
-**GAWM**（*GAWM: A Compact Latent World-Action Model for Multi-Task Robot Manipulation*，[arXiv:2610.37091](https://arxiv.org/abs/2610.37091)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
+**GAWM**（*GAWM: A Compact Latent World-Action Model for Multi-Task Robot Manipulation*，[arXiv:2610.37091](https://arxiv.org/abs/2610.37091)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页已对照 arXiv v1 主文全部章节、官方 GAWM-S README 与评测脚本进行核验。
 
 ## 一句话定义
 
@@ -75,7 +78,23 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用**：arXiv 摘要页与评论未见代码或项目页链接（仅核对 arXiv 摘要页，不代表未发布），无可对齐的官方代码流程。
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 评测者
+    participant Setup as scripts/download_dinov3.py
+    participant Eval as scripts/run_libero_checkpoint_eval.py
+    participant Model as GAWM-S 推理模型
+    participant Env as LIBERO 评测环境
+    User->>Setup: 下载 DINOv3 ViT-S/16
+    User->>Eval: 指定 GAWM-S checkpoint
+    Eval->>Model: 加载权重并输入相机观测、任务、状态
+    Model-->>Eval: 动作块
+    Eval->>Env: 执行动作并收集结果
+    Env-->>Eval: 任务成功状态
+```
+
+README 另提供 `scripts/run_robotwin_hdf5_clean_eval.py`，训练代码尚待发布。
 
 ## 实验与评测
 
@@ -96,6 +115,37 @@ flowchart TD
 1. 本页是入库级摘要，复现前请核对论文正文、附录与代码仓库。
 2. 指标须连同实验条件解读。
 3. 关注 arXiv 版本更新与代码发布。
+
+
+## 工程实践
+
+GAWM-S 推理与评测代码、LIBERO/RoboTwin2 权重公开；训练入口 README 当前标为 `Coming soon`。官方报告 GAWM-S LIBERO 平均 95.6%、RoboTwin Clean 93.94% / Randomized 93.10%，是不同任务协议下的结果。
+
+
+## 局限与风险
+
+- 尚未完成主论文与附录逐段通读，不作为完整复现指南；数值比较须保持同任务、同评测协议。
+- 代码可见不代表依赖、权重、训练实现全部公开，也不代表已执行。
+
+
+## DINOv3 世界模型一手资料复核（2026-11-08）
+
+冻结 DINOv3 编码多相机图像，轻量潜空间预测器从当前观测与任务条件预测两个未来时刻的表征，再由动作解码器生成动作块；不等同于以候选动作 rollout 的 CEM 规划。
+
+GAWM-S 推理与评测代码、LIBERO/RoboTwin2 权重公开；训练入口 README 当前标为 `Coming soon`。官方报告 GAWM-S LIBERO 平均 95.6%、RoboTwin Clean 93.94% / Randomized 93.10%，是不同任务协议下的结果。
+
+- [作者论文](https://arxiv.org/abs/2610.37091) · [原文归档](../../sources/papers/gawm-compact-latent-world-action-model_arxiv_2610_37091.md) · [代码核验记录](../../sources/repos/dinov3-wm-gawm.md)
+- 原文主文及必要附录已核查；代码入口以官方仓库为准，尚未亲自运行训练和评测。
+
+## 2026-11-08 原文与源码完整复核
+
+**方法：** 冻结 DINOv3 ViT-S/16，每视角压缩为 64 个 token；**根据任务而不是动作**预测两时间尺度未来特征，直接输出动作块；无需 CEM。
+
+**核对结果：** Extended LIBERO（6585 轨迹）平均 95.6%；RoboTwin2 Clean 93.94%，Randomized 93.10%；单次动作块约 7.1/8.8 ms（RTX PRO 5000，batch 1）。
+
+**限制：** 公开权重与 LIBERO/RoboTwin 评测脚本，训练代码 README 仍为 Coming soon；不同论文数据协议不能横比。
+
+全文版本：[arXiv:2610.37091](https://arxiv.org/abs/2610.37091)，未在本环境实际执行训练或真机评测。
 
 ## 关联页面
 

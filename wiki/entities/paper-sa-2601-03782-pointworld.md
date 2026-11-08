@@ -1,8 +1,9 @@
 ---
 type: entity
+project_id: pointworld-3d-world-model
 tags: [paper, world-models, 3d, point-cloud, cross-embodiment, nvidia, stanford, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-08
 arxiv: "2601.03782"
 venue: "CVPR 2026 Highlight"
 code: https://github.com/NVlabs/PointWorld
@@ -13,6 +14,8 @@ related:
   - ./paper-hrl-stack-35-dreamdojo.md
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -45,7 +48,9 @@ summary: "PointWorld（arXiv:2601.03782，NVIDIA/Stanford，CVPR 2026 Highlight�
 - 文内口径：约 **200 万** 条轨迹规模化；推理约 **0.1 s** 可做 MPC。
 - **已开源** `NVlabs/PointWorld`（清单原未标代码，2026-09-02 补查）。
 
-## 核心信息
+## 核心原理
+
+- **表示边界：** PointWorld 的 DINOv3 视觉特征只提供 3D 点属性；真正预测的未来量是场景点位移，且论文的采样式 MPC 规划器是 MPPI。
 
 | 项 | 内容 |
 |----|------|
@@ -55,17 +60,19 @@ summary: "PointWorld（arXiv:2601.03782，NVIDIA/Stanford，CVPR 2026 Highlight�
 | **规划** | MPC，约 0.1 s |
 | **开源** | **已开源** [NVlabs/PointWorld](https://github.com/NVlabs/PointWorld) |
 
-### 流程总览
+## 流程总览
 
 ```mermaid
 flowchart LR
-  rgb[RGB-D] --> scene[场景点云]
-  q[关节动作] --> rflow[机器人点流]
-  scene --> pw[PointWorld]
-  rflow --> pw
-  pw --> pred[全场景 3D 点流]
-  pred --> mpc[MPC 0.1s]
-  mpc --> act[可执行动作]
+    A["多相机 RGB-D 初始场景"] --> B["3D 点云与相机标定"]
+    A --> C["冻结 DINOv3 ViT-L 2D 特征"]
+    C --> D["投影汇聚到 3D 场景点"]
+    B --> D
+    E["机器人动作与 URDF 正运动学"] --> F["未来机器人表面点流"]
+    D --> G["PointWorld 预测 3D 场景点流"]
+    F --> G
+    G --> H["MPPI 评估目标点位移代价"]
+    H --> I["末端 SE3 动作轨迹"]
 ```
 
 ## 评测
@@ -89,20 +96,30 @@ flowchart LR
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Dev as 开发者
-    participant Repo as NVlabs/PointWorld
-    participant PCD as RGB-D 点云
-    participant PW as 点流世界模型
-    participant MPC as 0.1s 规划
-    participant Robot as 真机
-    Dev->>Repo: clone + 权重
-    Dev->>PCD: 构建场景点云
-    PCD->>PW: 状态
-    Note over PW: 关节→机器人点流
-    PW->>MPC: 预测点流
-    MPC->>Robot: 控制指令
-    Robot-->>Dev: 野外操作结果
+    actor User as 研究者
+    participant Data as data 分支 / WebDataset
+    participant Feat as scene_featurizer.py
+    participant Train as train.py
+    participant WM as pointworld/ + ptv3/
+    participant Eval as eval.py
+    User->>Data: 准备 RGB-D 与机器人轨迹数据
+    User->>Feat: 准备场景/视觉点特征
+    User->>Train: --domains=droid --data_dirs=...
+    Train->>WM: 训练点流预测器
+    User->>Eval: 加载官方 checkpoint 与评测配置
+    Eval->>WM: 推理 3D 点流
+    WM-->>Eval: 预测点运动
 ```
+
+该图按训练/评测 README 入口整理，不表示本次已在本机运行。
+
+## 工程实践
+
+- **训练数据：** 按 [NVlabs/PointWorld 官方 README](https://github.com/NVlabs/PointWorld) 先在 `data` 分支准备 DROID / BEHAVIOR 的 WebDataset，再切换 `main` 训练与评测。
+- **视觉特征：** RGB-D 生成场景点云，结合冻结 DINOv3 的二维稠密特征并投影到三维点；机器人的 URDF 与正运动学把候选关节动作变为夹爪点流。
+- **训练入口：** `python train.py --domains=droid --data_dirs=/path/to/droid/wds --norm_stats_path=stats/droid ...`；多卡可用 `torchrun --nproc_per_node=... train.py --distributed=true ...`。
+- **评测入口：** `eval.py` 按官方配置读取检查点。模型以 3D 点流预测为目标，不能把图像生成指标当成接触动力学误差。
+- **部署关注：** RGB-D 标定和深度噪声、机器人几何与观测同步、0.1 s 推理延迟，以及 MPC 目标函数与实际安全约束。
 
 ## 局限与风险
 
@@ -117,6 +134,29 @@ sequenceDiagram
 | [DreamDojo](./paper-hrl-stack-35-dreamdojo.md) | 人视频 2D/隐空间，非点流 |
 | [LaDi-WM](./paper-sa-2505-11528-ladi-wm-a-latent-diffusion-based-world-model-for.md) | 图像隐空间扩散 |
 | [CLAP 跨本体地图](../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md) | 视频跨本体对照 |
+
+
+
+
+
+## DINOv3 世界模型一手资料复核（2026-11-08）
+
+PointWorld 的动态状态/动作表示是 3D 点流：结合 RGB-D 场景点云和机器人运动，预测全场景逐点位移；DINOv3 用于图像/3D 点的视觉特征增强，不是它唯一或最终的世界状态。
+
+官方仓库 `NVlabs/PointWorld` 提供 `train.py`、`eval.py`、`scene_featurizer.py`，数据分支负责数据准备；DINOv3 权重需自行获取，数据和检查点由官方 Hugging Face 分发。
+
+- [作者论文](https://arxiv.org/abs/2601.03782) · [原文归档](../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md) · [代码核验记录](../../sources/repos/nvlabs-pointworld.md)
+- 已核对全文和必要附录；相关源码的公开入口已核查，模型和训练尚未在本环境执行。
+
+## 2026-11-08 原文及附录完整核对
+
+**方法：** PointWorld 把 DINOv3 ViT-L/16 多层二维特征经 camera intrinsics/extrinsics 投影到 3D 场景点，将机器人表面点未来流作为动作，学习 action-conditioned 3D 点流预测；实际规划用 **MPPI** 优化末端 SE(3) 目标轨迹。
+
+**实验：** 在 DROID 与 BEHAVIOR 大规模混合数据上预训练；作者使用移动 Franka 与单台 RealSense D435 测试刚体推、柔性/铰接物体及工具交互，预测 10-step 点流。约 0.1s 模型预测不等于全 MPPI 优化时间。
+
+**局限：** 论文附录：只见初始单帧，默认初始静态；不预测光度变化；以刚体 URDF 前向运动学处理机器人，细小物体受深度/外参误差影响；不代表学到了因果物理机制。
+
+[论文版本 arXiv:2601.03782](https://arxiv.org/abs/2601.03782)。已审阅主要源码入口和官方说明；未实际运行训练或机器人部署。
 
 ## 关联页面
 

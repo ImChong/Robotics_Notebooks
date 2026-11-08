@@ -1,15 +1,18 @@
 ---
 type: entity
+project_id: duet-dino
 tags: [paper, world-models, latent-planning, multi-view, manipulation]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-08
 arxiv: "2609.10506"
-code: https://github.com/utn-air/DUET-DINO
+code: https://github.com/nisarganc/DUET-DINO
 related:
   - ../methods/imitation-learning.md
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
   - ../overview/vlm-manipulation-11-papers-technology-map.md
+original:
+  - ../../sources/papers/duet-dino_arxiv_2609_10506.md
 sources:
   - ../../sources/papers/duet-dino_arxiv_2609_10506.md
   - ../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md
@@ -18,7 +21,7 @@ summary: "静态侧视+腕部相机联合预测动作条件未来表征，CEM �
 
 # DUET-DINO（arXiv:2609.10506）
 
-**DUET-DINO**（[DUET-DINO: Simultaneous Cross-View World Modeling for Latent Planning in Robot Manipulation](https://arxiv.org/abs/2609.10506)）来自 [具身智能小站 11 篇盘点](../../sources/blogs/wechat_embodied_station_11_papers_vlm_manipulation_2026-09-10.md)。静态侧视+腕部相机联合预测动作条件未来表征，CEM 在 7-DoF 空间做 latent planning；RoboLab reach 92%、angled-reach 72.5%、grasp-and-lift 60%。
+**DUET-DINO**（[DUET-DINO: Simultaneous Cross-View World Modeling for Latent Planning in Robot Manipulation](https://arxiv.org/abs/2609.10506)）已按 [arXiv 原文](https://arxiv.org/abs/2609.10506) 全文核验。静态侧视+腕部相机联合预测动作条件未来表征，CEM 在 7-DoF 空间做 latent planning；RoboLab reach 92%、angled-reach 72.5%、grasp-and-lift 60%。
 
 ## 一句话定义
 
@@ -81,8 +84,7 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用**（截至入库日 GitHub 仓仅为学术主页模板，无可运行训练/规划代码。）。
-
+**不适用**：截至 2026-11-08 [官方公开仓库](https://github.com/nisarganc/DUET-DINO) 仅有 README，标记 `Code coming soon`。论文的双视角/CEM 结构已见方法流程图，但无法可靠绘制源码模块调用时序。
 
 ## 实验与评测
 
@@ -112,6 +114,37 @@ flowchart TD
 1. 索引来源为公众号导读，实验细节以 arXiv PDF 为准。
 2. 开源结论：**待发布** — 截至入库日 GitHub 仓仅为学术主页模板，无可运行训练/规划代码。。
 3. 选型时对照 [11 篇地图](../overview/vlm-manipulation-11-papers-technology-map.md) 中相邻节点，避免重复造页。
+
+
+## 工程实践
+
+[作者项目主页](https://utn-air.github.io/DUET-DINO/) 的 Code 指向 `nisarganc/DUET-DINO`；截至 2026-11-08 该仓仅 README，明确 `Code coming soon`，不是已公开的可运行实现。
+
+
+## 局限与风险
+
+- 尚未完成主论文与附录逐段通读，不作为完整复现指南；数值比较须保持同任务、同评测协议。
+- 代码可见不代表依赖、权重、训练实现全部公开，也不代表已执行。
+
+
+## DINOv3 世界模型一手资料复核（2026-11-08）
+
+DUET-DINO 同时利用静态外部视角与手腕视角的 DINOv3 表征，学习动作条件跨视角未来特征预测，并使用 CEM 搜索机器人动作序列。
+
+[作者项目主页](https://utn-air.github.io/DUET-DINO/) 的 Code 指向 `nisarganc/DUET-DINO`；截至 2026-11-08 该仓仅 README，明确 `Code coming soon`，不是已公开的可运行实现。
+
+- [作者论文](https://arxiv.org/abs/2609.10506) · [原文归档](../../sources/papers/duet-dino_arxiv_2609_10506.md) · [代码核验记录](../../sources/repos/dinov3-wm-duet-dino.md)
+- 原文主文及必要附录已核查；代码入口以官方仓库为准，尚未亲自运行训练和评测。
+
+## 2026-11-08 原文与源码完整复核
+
+**方法：** 冻结 DINOv3 ViT-H+/16，对侧视和腕视通过 cross-attention 交互后做 7-DoF 动作条件未来特征预测；CEM 搜索动作序列。
+
+**核对结果：** 仿真 Reach 92%、Angled-Reach 72.5%、Lift 60%；真机 Angled-Reach 仅 26.7%（30 次）；仿真每步 CEM 用时约 15–17s。
+
+**限制：** 作者代码仓 nisarganc/DUET-DINO 目前仅 README 并写 Code coming soon，因此不存在可核验的源码运行调用链。
+
+全文版本：[arXiv:2609.10506](https://arxiv.org/abs/2609.10506)，未在本环境实际执行训练或真机评测。
 
 ## 关联页面
 
