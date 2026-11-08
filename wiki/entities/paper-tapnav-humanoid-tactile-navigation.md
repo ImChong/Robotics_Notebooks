@@ -28,6 +28,8 @@ sources:
 
 # TAPNAV：通过触觉主动感知实现人形机器人导航
 
+## 一句话定义
+
 **TAPNAV**（*Humanoid Navigation through Tactile Active Perception*，arXiv:2610.10748，Georgia Tech 的 Ye Zhao 团队等）是一个**不依赖相机/LiDAR 的人形导航框架**：在已知静态平面图上，机器人维护 SE(2) 位姿粒子信念，规划路径时让不确定性始终有界，并在不确定性过大时用手上的触觉末端主动“摸墙”，把接触/未接触结果当作定位观测来校正里程计漂移。
 
 **论文身份：** *TAPNAV: Humanoid Navigation through Tactile Active Perception*（《TAPNAV：通过触觉主动感知实现人形机器人导航》），arXiv:2610.10748v1，2026-10-07；作者 Huaze Liu、Zhenyu Wu、Jaehwi Jang、Junjie Sheng、Andrew Collins、Aaron Xie、Zhaoyuan Gu、Kaijie Zhu、Ding Jiang、Kevin Cai、Ye Zhao。所属机构为佐治亚理工学院（Georgia Institute of Technology）、哈维穆德学院（Harvey Mudd College）及 Walton High School；前三位作者共同一作。**当前是预印本 / 在审稿件，不等于已正式录用。**核对依据：[arXiv HTML 原文](https://arxiv.org/html/2610.10748v1)、[Georgia Tech IDAR 团队论文目录](https://lab-idar.gatech.edu/publications/)。
