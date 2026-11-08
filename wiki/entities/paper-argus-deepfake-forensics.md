@@ -12,7 +12,7 @@ tags:
   - tsinghua
   - ant-group
 status: complete
-updated: 2026-09-15
+updated: 2026-11-08
 arxiv: "2608.06865"
 code: https://github.com/XavierJiezou/ARGUS
 related:
@@ -23,6 +23,7 @@ related:
   - ./paper-argus-dynamic-symmetry.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ./deep-live-cam.md
 sources:
   - ../../sources/papers/argus_arxiv_2608_06865.md
   - ../../sources/sites/argus-deepfake-github-io.md
@@ -200,6 +201,8 @@ sequenceDiagram
 - **生成器漂移：** Seedance 2.0 等已纳入，但更新生成法仍会持续 OOD；需定期扩库与重训。
 
 ## 关联页面
+
+- [Deep-Live-Cam：本地单图实时换脸](./deep-live-cam.md) — 对照生成端的身份替换、掩膜与实际使用授权；ARGUS 侧负责伪造检测与取证
 
 - [SIDA](./sida.md) — 图像鉴伪 MLLM（DET/SEG）
 - [多模态基础](../concepts/multimodality-basics.md)
