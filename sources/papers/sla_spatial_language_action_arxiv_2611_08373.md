@@ -7,7 +7,11 @@
 - **论文 PDF：** https://arxiv.org/pdf/2611.08373
 - **官方代码：** https://github.com/OpenHelix-Team/Spatial-Forcing/tree/master/SLA
 - **官方 README：** https://github.com/OpenHelix-Team/Spatial-Forcing/blob/master/SLA/README.md
-- **项目页线索：** https://embodiedsla.github.io/ （本次页面正文未能读取，不能据此判断当前展示内容）
+- **官方项目页：** https://sla-team.github.io/omnisf_projectpage/ （已读取）
+- **作者备用项目入口：** https://embodiedsla.github.io/ （已读取，同一项目）
+- **Hugging Face 论文页：** https://huggingface.co/papers/2611.08373
+- **作者模型/数据合集：** https://huggingface.co/collections/haofuly/sla-collection
+- **资料复核：** 2026-11-08，新增作者双项目页、HF 论文索引与 4 个官方资源条目的一手交叉验证
 - **入库日期：** 2026-11-07
 - **核对范围：** 通读 arXiv 官方 HTML v1 正文中的研究动机、方法、数据与预训练、各评测基准、消融及局限，并检查对应附录；逐项对照官方 GitHub SLA/README 与关键训练、推理源码。使用官方 HTML 全文作为阅读底本，未将摘要或二手报道充作全文。
 - **通读：** 已完成
@@ -46,6 +50,15 @@
 - README 同时标记 RoboDojo-Real 后训练/评测与持续预训练数据仍待开放；不能把代码可见等同所有原始数据可复现。
 - 当前公开的示例配置 train_libero_plus.py 与 pretrain.py 中，vla_adapt_layers_align=False、vla_layers_align=12；**默认代码配置是固定层选择**，不能直接宣称其默认已启用论文所述自适应门控。复现论文门控消融需进一步核对配置与实验细节。
 - RoboDojo-Real 的历史帧记忆机制是基准特定推理设定；“部署期没有额外空间教师”不代表所有评测配置具有完全相同的输入/计算成本。
+
+## 2026-11-08 项目主页、训练规模和复现资源复核
+
+- 已打开论文 HTML v1 的方法（§3）、数据（§3.3）、实验（§4）、消融（§4.4）和附录（A、B），并对照作者两处项目主页；二者目前均能展示方法介绍、数据表与 4 个主基准成绩。原「站点无法核验」的表述不再适用。
+- **实际训练开销（论文 §4.2）：** 持续预训练 36k 步、effective global batch 4,608，48× H100 约 110 小时；不等于「14,330 小时」的**原始数据源统计**，后者见论文 Table 1。
+- **正式协议：** LIBERO-Plus 10,030 rollouts、七扰动维度按样本数加权；RoboTwin 2.0 共 50 任务，每任务 50 条 clean 示范，Clean2Clean 与 Clean2Random 各 100 trials/task；RoboCasa-Panda 24 任务、每任务 50 demonstrations、每任务每种子 50 trials×3 seeds。
+- **论文可控消融：** §4.4 自适应层选择 72.3% Clean2Random vs 固定 12 层 67.3%，状态 Dropout 25% 为 72.3% vs 0% 为 20.7%，均为该 RoboTwin 设置下的作者结果；公开示例配置默认 `vla_adapt_layers_align=False` 不能等同论文自适应版本。
+- **HF 资源与完整语料不等同：** 作者 Collection 目前含 `SLA_base`、`SLA_training_component`、`SLA_benchmark_ckpts` 和 `SLA_real_world_demo` 四项；后者是演示数据。官方 README 同时标记「continual pre-training data」未发布。
+- **边界：** HF 论文页为同一 arXiv 论文的社区索引，不是重复工作；未下载权重或运行代码，评测均沿用作者论文与官网原始报告。
 
 ## 对 wiki 的映射
 

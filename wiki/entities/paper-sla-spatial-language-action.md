@@ -3,10 +3,10 @@ type: entity
 tags: [paper, vla, spatial-alignment, imitation-learning, manipulation]
 topic: [vla]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-08
 project_id: sla-spatial-language-action
 arxiv: '2611.08373'
-project: https://embodiedsla.github.io/
+project: https://sla-team.github.io/omnisf_projectpage/
 code: https://github.com/OpenHelix-Team/Spatial-Forcing/tree/master/SLA
 code_scope: SLA/
 project_distinction: "独立的 SLA 持续预训练论文 arXiv:2611.08373；与前作 Spatial Forcing 不同研究工作，源码位于共享仓库的 SLA 子目录。"
@@ -57,8 +57,27 @@ sources:
 | 基座 | π0.5；flow matching 动作生成 |
 | 空间教师 | OmniVGGT，冻结；训练期使用 |
 | 公开实现 | [OpenHelix-Team/Spatial-Forcing 的 SLA 子目录](https://github.com/OpenHelix-Team/Spatial-Forcing/tree/master/SLA) |
-| 状态 | **部分开源**：LIBERO-Plus / RoboTwin 训练与评测入口及部分权重公开；持续预训练原始数据和 RoboDojo-Real 完整复现仍有 TODO |
-| 项目主页 | [作者提供的项目页线索](https://embodiedsla.github.io/)；2026-11-07 本次读取未取得可验证正文 |
+| 状态 | **部分开源**：LIBERO-Plus / RoboTwin 训练与评测、部分预训练/后训练权重公开；完整持续预训练原始数据和 RoboDojo-Real 复现仍有 TODO |
+| 项目主页 | [官方页（arXiv 链接）](https://sla-team.github.io/omnisf_projectpage/)；[作者第二入口](https://embodiedsla.github.io/)，2026-11-08 已核对两处正文一致 |
+
+## 官方项目页与 Hugging Face 资源（2026-11-08）
+
+已实际读取 [官方项目主页](https://sla-team.github.io/omnisf_projectpage/) 和 [作者另一入口](https://embodiedsla.github.io/)；两页均展示相同的 SLA 方法、数据表和指标。Hugging Face 的 [论文索引页](https://huggingface.co/papers/2611.08373) 不应误当成另一篇独立论文。
+
+[作者的 SLA Collection](https://huggingface.co/collections/haofuly/sla-collection) 当前有四项公开资源，按**下载用途**区分：
+
+| 资源 | 内容与使用阶段 |
+|---|---|
+| [SLA_base](https://huggingface.co/haofuly/SLA_base) | 持续预训练后的模型基座，作为下游训练初始化 |
+| [SLA_training_component](https://huggingface.co/haofuly/SLA_training_component) | OmniVGGT / DINOv2 等辅助训练组件；不是独立动作策略 |
+| [SLA_benchmark_ckpts](https://huggingface.co/haofuly/SLA_benchmark_ckpts) | 已后训练的基准 checkpoint，用于对照公开评测入口 |
+| [SLA_real_world_demo](https://huggingface.co/datasets/haofuly/SLA_real_world_demo) | 真机示范数据资源，**不是**六来源完整持续预训练语料 |
+
+官方 [SLA/README 的 TODO](https://github.com/OpenHelix-Team/Spatial-Forcing/blob/master/SLA/README.md) 同时将「continual pre-training corpus」代码工作项列为完成、将「continual pre-training data」列为未开放；这两项不能混淆。HF 的模型/数据资源页面可访问，但**本次没有下载权重、核验模型文件完整性或运行 benchmark**。
+
+### 训练和评测口径补充
+
+论文 §4.2 报告持续预训练采用 48× NVIDIA H100、约 110 小时、36k optimizer steps（effective global batch 4,608）；这是**作者实验成本**，不能由四个 Hugging Face 资源反推可复现该阶段。论文中 LIBERO-Plus 的 87.4% 由 10,030 次评测 rollout 按扰动维度加权；RoboTwin 72.3% 是 50 任务的 Clean2Random；RoboDojo-Real 33.9% 是三种本体上任务成功率均值。不同评测协议不能直接混排。
 
 ## 核心原理
 
@@ -138,7 +157,7 @@ sequenceDiagram
 
 ## 工程实践
 
-1. 按 [SLA/README](https://github.com/OpenHelix-Team/Spatial-Forcing/blob/master/SLA/README.md) 的 uv 安装说明准备环境及 LIBERO-Plus 数据；再从 Hugging Face 获取 SLA_base 与 SLA_training_component。**这里只做代码与文档核对，未执行下载、训练或评测。**
+1. 按 [SLA/README](https://github.com/OpenHelix-Team/Spatial-Forcing/blob/master/SLA/README.md) 的 uv 安装说明准备环境及 LIBERO-Plus 数据；从[官方 Collection](https://huggingface.co/collections/haofuly/sla-collection) 获取 SLA_base、SLA_training_component，评测可另取 SLA_benchmark_ckpts。**这里只做源码与文档核对，未执行下载、训练或评测。**
 2. 计算动作/状态统计：```uv run scripts/compute_norm_stats.py --config-name train_libero_plus```（这里为单行命令示意）。
 3. 对齐训练入口：```uv run --no-sync scripts/train_align.py train_libero_plus --exp-name=experiments```；内部模型通过 Pi0Align.compute_align_losses 联合动作与视觉空间约束。模型配置与 checkpoint 路径以官方 README 实际说明为准。
 4. 推理服务用 scripts/serve_policy.py 的 policy:checkpoint 模式加载训练权重，examples/libero/main.py 通过 WebSocket 请求动作块，执行前 replan_steps 步后再次规划。
@@ -182,7 +201,7 @@ sequenceDiagram
 - **评测不是普适保证。** RoboTwin、LIBERO-Plus、RoboCasa 与真机任务的示范数据、初始状态、评测指标不同；论文报告数字不等于在其他本体上的保证成功率。
 - **源码与实验存在配置边界。** 官方公开示例采用固定层设置；不宜据此声称已验证自适应门控对全部基准的增益。
 - **开源不完整。** README 尚将“持续预训练数据”和 RoboDojo-Real 的 post-train/eval 列为待办，且部分大规模训练资源要求高。
-- **项目网页无法核验。** 本次未能读取项目主页正文，开源判断取自论文与作者仓库，后续应复核网页是否更新。
+- **项目页已核验，但不是独立复现。** 已读取 [官方主页](https://sla-team.github.io/omnisf_projectpage/) 与 [作者另一入口](https://embodiedsla.github.io/)，并核对到相同指标；项目展示和 HF 权重可访问不代表完整语料、RoboDojo-Real 脚本已开放。
 - **部署输入依设置而异。** 论文在 RoboDojo-Real 评测借助历史帧记忆；即便空间教师不进推理，这部分输入及缓存成本仍需单独核算。
 
 ## 关联页面
@@ -199,6 +218,9 @@ sequenceDiagram
 - [官方源码入口与模块核对](../../sources/repos/sla_openhelix.md)
 - [论文原文 HTML v1](https://arxiv.org/html/2611.08373v1)
 - [OpenHelix 官方实现](https://github.com/OpenHelix-Team/Spatial-Forcing/tree/master/SLA)
+- [SLA 官方项目页（已核验）](https://sla-team.github.io/omnisf_projectpage/)
+- [SLA Hugging Face 论文页](https://huggingface.co/papers/2611.08373)
+- [SLA 作者模型/数据合集](https://huggingface.co/collections/haofuly/sla-collection)
 
 ## 推荐继续阅读
 

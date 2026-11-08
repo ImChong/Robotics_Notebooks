@@ -4,8 +4,10 @@
 - **SLA 独立实现：** https://github.com/OpenHelix-Team/Spatial-Forcing/tree/master/SLA
 - **运行说明：** https://github.com/OpenHelix-Team/Spatial-Forcing/blob/master/SLA/README.md
 - **论文：** https://arxiv.org/abs/2611.08373
-- **检查日期：** 2026-11-07
-- **开放状态：** 部分开源；公开训练、推理入口和可下载的部分模型权重/组件；部分数据和 RoboDojo-Real 复现仍在 TODO。
+- **检查日期：** 2026-11-08
+- **官方项目主页：** https://sla-team.github.io/omnisf_projectpage/
+- **作者资源合集：** https://huggingface.co/collections/haofuly/sla-collection
+- **开放状态：** 部分开源；已有训练、推理与评估入口以及预训练/后训练模型资源；完整持续预训练原始数据和 RoboDojo-Real 训练与评估仍在 TODO。
 - **核对范围：** 阅读 SLA/README.md、scripts/train_align.py、scripts/serve_policy.py、examples/libero/main.py、src/openpi/models/pi0_align.py、src/openpi/training/align_utils.py 的相关实现，以及 external_config/pretrain.py、external_config/train_libero_plus.py。非全仓代码审计，未实际训练/运行。
 
 ## 关键路径（基于源码）
@@ -18,6 +20,17 @@
 | 训练配置 | [src/openpi/external_config/pretrain.py](https://github.com/OpenHelix-Team/Spatial-Forcing/blob/master/SLA/src/openpi/external_config/pretrain.py)、[train_libero_plus.py](https://github.com/OpenHelix-Team/Spatial-Forcing/blob/master/SLA/src/openpi/external_config/train_libero_plus.py) |
 | 推理服务 | [scripts/serve_policy.py](https://github.com/OpenHelix-Team/Spatial-Forcing/blob/master/SLA/scripts/serve_policy.py)：从指定 checkpoint 建立 Policy，经 WebsocketPolicyServer 服务 |
 | 仿真评测 | [examples/libero/main.py](https://github.com/OpenHelix-Team/Spatial-Forcing/blob/master/SLA/examples/libero/main.py)：WebsocketClientPolicy 请求动作块，在 LIBERO 环境执行并统计成功率 |
+
+## 作者当前发布的模型与数据入口
+
+| 资源 | 官方地址 | README 中角色 |
+|---|---|---|
+| SLA_base | https://huggingface.co/haofuly/SLA_base | 持续预训练后的基础 checkpoint |
+| SLA_training_component | https://huggingface.co/haofuly/SLA_training_component | OmniVGGT、DINOv2 等对齐训练辅助组件 |
+| SLA_benchmark_ckpts | https://huggingface.co/haofuly/SLA_benchmark_ckpts | 已后训练的 benchmark checkpoint |
+| SLA_real_world_demo | https://huggingface.co/datasets/haofuly/SLA_real_world_demo | 真实世界演示数据，不是全量持续预训练语料 |
+
+截至 2026-11-08，官方 README TODO 将「Continual pre-training corpus」列为已完成，但「Continual pre-training data」仍列待发布；两者分别对应代码/处理工作与数据开放程度，不能用 ✅ 误证全量数据可下载。RoboDojo-Real post-training and evaluation 仍为 ❌。作者仓库根目录同时包含 Spatial Forcing 旧版；**SLA 特有实现位于 `SLA/`**，不可将两项工作合并为一个论文实体。
 
 ## README 中可复现的最小操作路径
 
