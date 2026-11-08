@@ -648,6 +648,7 @@
 - [Extreme Parkour（端到端四足感知跑酷）](wiki/entities/extreme-parkour.md) — Extreme Parkour**（Cheng et al., arXiv:2309.14341，**ICRA 2024 `📅unknown` `[entity_page]`
 - [OpenFOAM Simulation（EzraJay2333/openfoam-simulation）](wiki/entities/ezrajay2333-openfoam-simulation.md) — OpenFOAM Simulation（EzraJay2333/openfoam-simulation）是文章总结为 13 步从规划、建模、运行、验证到文档的流程，强调流道拓扑/形状优化的证据链。 `📅unknown` `[entity_page]`
 - [F1TENTH Gym](wiki/entities/f1tenth-gym.md) — F1TENTH Gym** 是 F1TENTH 自主竞速社区维护的 **Python Gymnasium 环境**，用简化但可调的单车动力学在 CP `📅unknown` `[entity_page]`
+- [FaceFusion — Face Manipulation Platform / 人脸图像与视频处理平台](wiki/entities/facefusion.md) — FaceFusion** 是 facefusion/facefusion 提供的 Python 人脸影像处理 `📅unknown` `[entity_page]`
 - [FACET](wiki/entities/facet-impedance.md) — FACET](https://facet.pages.dev/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/humanoid-motion- `📅unknown` `[entity_page]`
 - [fairmotion](wiki/entities/fairmotion.md) — fairmotion**（<https://github.com/facebookresearch/fairmotion>）是 Meta Research 的通用**动捕数据处理库**：统一管理运 `📅unknown` `[entity_page]`
 - [FAR Planner](wiki/entities/far-planner.md) — FAR Planner**（Fast, Attemptable Route Planner）用 **动态更新的可见图（visibility graph）** 在已知或未知环境中做长距离快速重规划： `📅unknown` `[entity_page]`
