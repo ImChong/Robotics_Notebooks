@@ -1,5 +1,8 @@
 ---
 type: entity
+project_id: alibaba-open-code-review
+project: https://open-codereview.ai/
+code: https://github.com/alibaba/open-code-review
 tags:
   - alibaba
   - llm-agents
@@ -10,7 +13,7 @@ tags:
   - software-engineering
   - agent-skills
 status: complete
-updated: 2026-10-01
+updated: 2026-11-08
 related:
   - ./ecc.md
   - ./superpowers-obra.md
@@ -23,13 +26,16 @@ related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
+original:
+  - ../../sources/repos/open-code-review.md
+  - ../../sources/sites/open-codereview-ai.md
 sources:
   - ../../sources/repos/open-code-review.md
   - ../../sources/sites/open-codereview-ai.md
 summary: "Open Code Review（alibaba/open-code-review，CLI 命令 ocr）是阿里巴巴内部 AI 代码评审助手开源版：用确定性工程管线约束选文件、分包、规则匹配与评论定位，再叠加带 tool-use 的 Agent 做深度上下文检索；支持 Delegation Mode、MCP、CI 集成与 Cursor/Codex/Claude Code 等插件，在 AACR-Bench 上强调高 Precision 与低 token 成本。"
 ---
 
-# Open Code Review（Alibaba OCR）
+# Open Code Review — 阿里巴巴 AI 代码评审工具 / Alibaba AI Code Review CLI
 
 **Open Code Review**（仓库 [alibaba/open-code-review](https://github.com/alibaba/open-code-review)，npm `@alibaba-group/open-code-review`，全局命令 **`ocr`**）是阿里巴巴从内部官方 AI 代码评审助手孵化并开源的 CLI 工具。它读取 Git diff（或 `ocr scan` 全文件），在 **确定性工程步骤** 保证覆盖与规则匹配的前提下，调用可配置 LLM Agent 产出 **行级结构化评审意见**，并可通过插件嵌入 Cursor、Codex、Claude Code 等宿主。
 
@@ -53,7 +59,7 @@ summary: "Open Code Review（alibaba/open-code-review，CLI 命令 ocr）是阿�
 |------|------|
 | 机构 | 阿里巴巴（Alibaba） |
 | 许可 | Apache-2.0 |
-| Stars（入库日） | ~37k（GitHub，以克隆时为准） |
+| npm 分发 | [`@alibaba-group/open-code-review`](https://www.npmjs.com/package/@alibaba-group/open-code-review)；命令 `ocr` |
 | 官方站 | [open-codereview.ai](https://open-codereview.ai) |
 | 开源状态 | **已开源** — 代码、规则、插件与 CI 文档均在 GitHub；见 [项目页核查](../../sources/sites/open-codereview-ai.md) |
 
@@ -64,12 +70,12 @@ summary: "Open Code Review（alibaba/open-code-review，CLI 命令 ocr）是阿�
 - **Agent 生态对照：** 与 [Agent Reach](agent-reach.md)（外网读搜脚手架）、[Hermes Agent](hermes-agent.md)（常驻运行时）不同，OCR 是 **垂直于 code review 的可审计工具链**；与 [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 中「生产可靠 / 评审」项同向。
 - **Recall 取舍透明：** 官方基准刻意 **牺牲 Recall 换 Precision**，适合 **降噪 triage** 而非「找尽所有问题」；选型时需与团队 SLA 对齐。
 
-## 核心结构
+## 核心原理与结构
 
 | 层次 | 内容 |
 |------|------|
 | **分发** | npm 全局包 `ocr`；GitHub Release 二进制；各 harness 插件目录 `plugins/open-code-review/` |
-| **确定性工程** | 精确文件选择；相关文件 bundling + 子 agent 分治；模板引擎规则匹配（`.opencodereview` 规则）；评论定位与反思模块 |
+| **工程编排** | 规则驱动的文件选择与排除；小变更集本地分组，大变更集可调用 LLM 分组；路径规则匹配、评论定位与反思模块 |
 | **Agent** | 场景化 review prompt；从生产 trace 蒸馏的 toolset（读全文件、repo 搜索、跨变更文件上下文） |
 | **执行模式** | **OCR-managed**（自配 provider/model）；**Delegation Mode**（`ocr delegate`，宿主 LLM 执行，OCR 只做选择与规则） |
 | **扩展** | MCP Server；Review Rules 路径过滤；Session Viewer；OpenTelemetry |
@@ -79,14 +85,15 @@ summary: "Open Code Review（alibaba/open-code-review，CLI 命令 ocr）是阿�
 
 ```mermaid
 flowchart TD
-  A[Git 工作区 / 分支 diff / 单 commit] --> B[确定性: 选文件 + 过滤 + bundling]
-  B --> C[确定性: 按文件特征匹配 Review Rules]
-  C --> D[子任务: Review Agent + tool-use]
-  D --> E[读全文件 / 代码搜索 / 跨文件上下文]
-  E --> F[定位 + 反思模块]
-  F --> G[结构化行级评论 JSON / 终端 / Session Viewer]
-  H[ocr delegate] --> B
-  H --> I[宿主编码代理按规则自审\n无 OCR LLM key]
+  A["Git 工作区 / 分支区间 / 单次提交"] --> B["CLI 解析变更 diff"]
+  B --> C["路径与大小规则筛选"]
+  C --> D["本地策略或 LLM 分组"]
+  D --> E["各分组独立 Review Agent"]
+  E --> F["读取文件 / 代码搜索 / 提交评论工具"]
+  F --> G["评论定位 / 过滤 / 汇总"]
+  G --> H["终端 / JSON / SARIF / 会话记录"]
+  I["ocr delegate"] --> J["文件预览和规则解析"]
+  J --> K["宿主编码代理执行评审"]
 ```
 
 ## 工程实践
@@ -100,39 +107,38 @@ flowchart TD
 | CI | [cicd 文档](https://open-codereview.ai/docs/cicd) | GitHub Actions / GitLab / Gerrit |
 | 宿主 agent 消费 | `ocr review --format json --output result.json` | 与 Delegation Mode 二选一或组合 |
 
-### 源码运行时序图
+## 源码运行时序图
 
-官方仓 **已开源** 且 CLI 可运行；下列时序对齐 README 与 `cmd/opencodereview` / `internal/*` 模块边界（非逐函数摘录）：
+官方仓 **已开源** 且 CLI 可运行；下列时序依据官方 `cmd/opencodereview/review_cmd.go:executeReviewContext`、`internal/agent/agent.go:Run`、`internal/agent/selection.go:selectFiles`、`internal/agent/grouping.go:groupDiffs` 和 `internal/tool/` 的公开调用边界绘制。它展示真实的关键模块关系，并非已完成运行时 profiling：
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Dev as 开发者 / CI
-    participant OCR as ocr CLI (cmd/opencodereview)
-    participant Git as internal/gitcmd + Git
-    participant Pipe as internal/diff + rules
-    participant Agent as internal/agent + internal/llm
-    participant Tools as internal/tool + MCP
-    participant Out as internal/session + viewer
-
-    Dev->>OCR: ocr review [--from/--to | workspace]
-    OCR->>Git: 生成 diff / 枚举变更
-    Git-->>OCR: 变更文件集
-    OCR->>Pipe: 选文件、bundling、规则匹配
-    Pipe-->>OCR: 分包子任务 + 规则包
-    loop 每个 bundle
-        OCR->>Agent: 启动 review agent
-        Agent->>Tools: 读文件 / 搜索 / 跨文件上下文
-        Tools-->>Agent: 上下文片段
-        Agent-->>OCR: 原始评论草稿
-        OCR->>Pipe: 定位 + 反思
-        Pipe-->>OCR: 行级精确评论
+    actor Dev as 开发者或 CI
+    participant CLI as review_cmd.go
+    participant Agent as internal/agent
+    participant Diff as internal/diff
+    participant Loop as internal/llmloop
+    participant Tool as internal/tool
+    participant Session as internal/session
+    Dev->>CLI: ocr review --from main --to feature
+    CLI->>CLI: loadCommonContext / loadLLMRuntime
+    CLI->>Agent: agent.New(args).Run(ctx)
+    Agent->>Diff: loadDiffs(ctx)
+    Diff-->>Agent: Git diff 文件集合
+    Agent->>Agent: selectFiles / dispatchSubtasks / groupDiffs
+    loop 各分组评审
+        Agent->>Loop: 执行 review 子任务
+        Loop->>Tool: file_read / code_search / code_comment
+        Tool-->>Loop: 代码上下文及评论收集
+        Loop-->>Agent: 评审结果
     end
-    OCR->>Out: 持久化 session / JSON / 终端输出
-    Out-->>Dev: 评审结果
+    Agent->>Session: 完成会话和 manifest
+    Agent-->>CLI: comments / run manifest
+    CLI-->>Dev: emitRunResult 文本或机器可读结果
 ```
 
-**复现路径：** `npm install -g @alibaba-group/open-code-review` → `ocr config provider` → 在目标仓库执行 `ocr review`（需 Git ≥ 2.41 与 LLM 配置，Delegation Mode 除外）。
+**复现路径：** `npm install -g @alibaba-group/open-code-review` → `ocr version` → `ocr config provider` → `ocr llm test` → 在目标 Git 仓库执行 `ocr review --preview`、再运行 `ocr review`。官方快速开始列出 Git ≥ 2.41、Node.js ≥ 18；委托模式不需要 OCR 自己的模型凭据。本次仅静态阅读官方资料和源码，未运行 LLM 评审。
 
 ## 局限与风险
 
@@ -157,6 +163,9 @@ sequenceDiagram
 - [Open Code Review 仓库源归档（本站）](../../sources/repos/open-code-review.md)
 - [open-codereview.ai 项目页核查（本站）](../../sources/sites/open-codereview-ai.md)
 - [alibaba/open-code-review（GitHub）](https://github.com/alibaba/open-code-review)
+- [官方 README 与可执行入口](https://github.com/alibaba/open-code-review/blob/main/README.md)
+- [官方快速开始（中文）](https://github.com/alibaba/open-code-review/blob/main/pages/src/content/docs/zh/quickstart.md)
+- [官方 `review_cmd.go` 入口](https://github.com/alibaba/open-code-review/blob/main/cmd/opencodereview/review_cmd.go)
 - [Open Code Review 文档](https://open-codereview.ai/docs)
 
 ## 推荐继续阅读
