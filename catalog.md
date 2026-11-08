@@ -2532,6 +2532,7 @@
 - [GaussiAnimate：从 4D 角色序列自动构建可驱动绑定](wiki/entities/paper-gaussianimate.md) — GaussiAnimate**（*Reconstruct and Rig Animatable Categories with Level of Dynamics*，arXiv:2604.0854 `📅unknown` `[entity_page]`
 - [On the identification of the inertial parameters of robots](wiki/entities/paper-gautier-khalil-inertial-parameter-identification-1988.md) — On the identification of the inertial parameters of robots**（CDC 1988）收录于 [自由度FreeDof · Sim2Real 四 `📅unknown` `[entity_page]`
 - [GAWM：面向多任务机器人操作的紧凑潜在世界动作模型](wiki/entities/paper-gawm-compact-latent-world-action-model.md) — GAWM**（*GAWM: A Compact Latent World-Action Model for Multi-Task Robot Manipulation*，[arXiv:2610.3 `📅unknown` `[entity_page]`
+- [GazeVLA：从人类注视学习机器人操作意图](wiki/entities/paper-gazevla.md) — GazeVLA**（*GazeVLA: Learning Human Intention for Robotic Manipulation*，[arXiv:2604.22615v3](https: `📅unknown` `[entity_page]`
 - [GE-Act 2.0：世界–动作模型预训练与规模扩展](wiki/entities/paper-ge-act-2.md) — GE-Act 2.0**（*GE-Act 2.0: Pretraining and Scaling a World-Action Model for Robotic Manipulation*，全 `📅unknown` `[entity_page]`
 - [Gearbox Lubricant Temperature Observer（arXiv:2610.23881）](wiki/entities/paper-gearbox-lubricant-temperature-observer.md) — Gearbox Lubricant Temperature Observer**（*Lubricant Temperature Observer for Gearboxes in Industri `📅unknown` `[entity_page]`
 - [GEMS（arXiv:2610.33158）](wiki/entities/paper-gems.md) — GEMS**（*Gaussian Episodic Memory for Long-Term Spatiotemporal Reasoning*，[arXiv:2610.33158](https: `📅unknown` `[entity_page]`
