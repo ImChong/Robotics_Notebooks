@@ -3,7 +3,7 @@ type: entity
 project_id: recova
 tags: [paper, robotics, manipulation, recovery, vla, imitation-learning, real2sim, nvidia]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-08
 arxiv: "2610.01178"
 project: https://www.liuisabella.com/Recova/
 related:
@@ -98,6 +98,61 @@ flowchart TD
 
 **不适用（截至 2026-11-07）**：项目页支持查看部分恢复程序片段，但没有核实到官方公开的完整训练/推理/部署源码仓库。上面的 Mermaid 是**论文方法流程图**，不是已核验源码的调用时序；不虚构函数、脚本或依赖。
 
+## 附录 A 真机编排时序图（论文 Algorithm 1，非公开源码）
+
+下图逐步复核 [论文附录 A Algorithm 1](https://arxiv.org/html/2610.01178v1) 的控制分支。**这是论文伪代码对应的调度时序，不是未公开实现的源码调用图**。仿真基准用 MolmoAct2 任务策略配合程序型恢复，真机则微调两条独立的 π0.5 策略，不能把两种实验配置混为一谈。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant P as Task policy pi
+  participant M as VLM monitor
+  participant R as Recovery policy rho
+  participant H as Human operator
+  participant D as DAgger datasets
+  P->>M: task g, initial cameras, request Cg if uncached
+  M-->>P: cached completion requirement Cg
+  loop task attempt at 30 Hz, at most 5400 steps
+    P->>P: predict and execute actions
+    opt every 600 steps
+      P->>M: completion query, robot held
+      M-->>P: done verdict
+    end
+    opt every 300 steps
+      P->>M: asynchronous intervention query
+      Note over P,M: Task actions continue during query
+      M-->>P: intervene, intact, instruction z
+    end
+    alt completed
+      P->>D: Success trajectory S
+    else intervention with intact scene
+      H->>D: Task demonstration E
+    else disturbed scene
+      alt z in learned registry
+        P->>R: recovery request z, max 1500 steps
+        R->>M: restoration query, robot held
+        alt restoration verified
+          R->>D: Autonomous recovery A
+        else unverified or time limit
+          H->>D: Recovery demonstration Rset
+        end
+      else no learned skill
+        H->>D: Recovery demonstration Rset
+      end
+      Note over P,R: Home pose then a new task attempt
+    end
+  end
+  Note over D: Per round - task dataset gets S and E, recovery gets Rset and A
+```
+
+**不能忽略的运行时约束（附录 A–C）：**
+
+- completion 每 **600 步 / 20 s**、intervention 每 **300 步 / 10 s**；后者**异步执行**，而 completion / restoration 检查时机器人保持静止。单次恢复上限 **1500 步 / 50 s**，单任务尝试上限 **5400 步 / 3 min**。
+- Monitor 判定携带采集轮次和提交步号：**过期轮次或人工修改场景前的结果必须丢弃**。intervention 已返回但 completion 尚未完成时，需先保持机器人静止并等待 completion 判定；completion 优先。
+- 连续介入达到 **2 次**后，下次使用**完整人工任务示教**；若恢复技能未注册或恢复校验不通过，采集只针对恢复问题的人类示教。
+- 数据路由为 `D_task^(k+1) = D_task^k ∪ S_k ∪ E_k`、`D_rec^(k+1) = D_rec^k ∪ R_k ∪ A_k`。失败策略前缀存审计日志，但**不作为监督训练数据**。
+- 训练动作并非通用“14D 绝对关节位置”：**12 个关节目标为相对当前状态的偏移，2 个夹爪命令为绝对值**；每段 50 个控制步，30 Hz 下约 1.67 s（附录 C.3）。
+
 ## 实验与评测
 
 | 评测 | Recova 平均成功率 | 论文中最强均值对照 | 增益 |
@@ -109,6 +164,19 @@ flowchart TD
 | 真机四任务：+ 恢复技能 | 87.5% | DAgger 77.5% | +10.0 pp |
 
 真机为装铅笔盒、叠环、摸牌、弃牌，每项每配置各测 20 次。单独的摸牌任务在四轮数据收集中，人工接管比例从 **7/8（87.5%）降至 0/7（0%）**；这是该实验的有限样本观察，不代表所有任务永不需要人工。
+
+### Table 3：四项真机成功率逐项核验
+
+| 配置 | 装铅笔盒 | 叠环 | 摸麻将牌 | 出麻将牌 | 四任务平均 |
+|---|---:|---:|---:|---:|---:|
+| 基础任务策略 | 20.0% | 35.0% | 25.0% | 15.0% | 23.8% |
+| + DAgger | 70.0% | 75.0% | 85.0% | 80.0% | 77.5% |
+| + 恢复技能 | 85.0% | 90.0% | 90.0% | 85.0% | 87.5% |
+| 恢复相对 DAgger 增益 | +15 pp | +15 pp | +5 pp | +5 pp | +10 pp |
+
+每格每任务仅 **20 次试验**；成功由操作者按照附录 C.1、Table 4 的物理终态标准判断。Fig. 4 的摸牌任务四轮采集，从人工接管 **7/8** 降至 **0/7**，同时任务策略自主完成率从 **1/8** 增至 **6/7**；这不是四项任务共同的零接管结果。论文另报告一次四工位 14 分钟会话：策略完成 **22/31** 个 episode，人工控制占四工位累计时间 **11%**，与四轮末次零接管是不同统计口径。
+
+**论文数字差异提示：**§4.2 Setup 记载数字孪生总共开发 **25 项**恢复技能；附录 D 图 8–9 则标为展示 **24 项**。本文保留两处原文的不同统计口径，不擅自推断缺少哪一项。
 
 ## 结论
 
