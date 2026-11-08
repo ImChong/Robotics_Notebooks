@@ -2,8 +2,10 @@
 type: entity
 project_id: flexglue
 tags: [paper, perception, computer-vision, feature-matching, eth, google, microsoft]
-status: complete
-updated: 2026-11-06
+status: draft
+updated: 2026-11-08
+original:
+  - ../../sources/papers/flexglue.md
 arxiv: "2610.32976"
 code: https://github.com/cvg/FlexGlue
 related:
@@ -12,6 +14,7 @@ related:
 sources:
   - ../../sources/papers/flexglue.md
   - ../../sources/repos/flexglue.md
+  - ../../sources/sites/flexglue-colmap.md
 summary: "FlexGlue 联合稀疏到稠密图像匹配与共视性判断，面向视觉定位和多视图重建。"
 ---
 
@@ -42,7 +45,7 @@ FlexGlue 用稠密图像上下文为稀疏查询点预测对应位置，同时�
 | 作者 | Philipp Lindenberger、Paul-Edouard Sarlin、Ondrej Miksik、Marc Pollefeys |
 | 机构 | 苏黎世联邦理工、谷歌、微软 Spatial AI Lab |
 | 代码 | [cvg/FlexGlue](https://github.com/cvg/FlexGlue)（推理代码与权重，MIT 许可） |
-| 核对范围 | 论文正文全部章节、附录 A-E 及参考文献前的全部文字（经 `pdftotext` 提取）；图片仅读取图注，未做视觉逐图核对；代码在核对提交 `c6cbc7a` 上做静态阅读，未运行 |
+| 核对范围 | 本次复查 arXiv v1 正文第 1–6 节、附录 B–G 的主要机制/实验/局限和代表性 PDF 图表，尚未逐段核读全部附录图像；源码对 PyTorch 与 COLMAP ONNX/C++ 入口做静态阅读，未运行 |
 
 ## 为什么重要
 
@@ -111,6 +114,36 @@ sequenceDiagram
     M-->>U: 过滤后的匹配和共视分数
 ```
 
+### COLMAP 官方 C++ / ONNX 集成时序
+
+以下路径对应 [COLMAP `src/colmap/feature/flexglue.cc`](https://github.com/colmap/colmap/blob/main/src/colmap/feature/flexglue.cc) 的 `FlexGlueFeatureMatcher::Match` 和 `ComputeDenseFeatures`；展示官方代码实际读取图像并复用稠密特征的路径，**不同于上面的 PyTorch `match_pair` 示例**。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant C as COLMAP 匹配控制器
+    participant F as FlexGlueFeatureMatcher
+    participant K as LRU 稠密特征缓存
+    participant D as ONNX 图像描述器
+    participant M as ONNX 稀疏匹配器
+    C->>F: Match(image1, image2)
+    F->>K: Get(image1.name), Get(image2.name)
+    alt 缓存未命中
+        K->>F: ComputeDenseFeatures(name)
+        F->>F: 从 image_path 读取 RGB 并缩放成 CHW
+        F->>D: Run(image tensor)
+        D-->>F: stride 8 dense features
+        F-->>K: 缓存该图特征
+    end
+    K-->>F: 两图 dense features
+    F->>F: 将 keypoints 缩放到 descriptor 输入坐标
+    F->>M: Run(features, keypoints, 阈值)
+    M-->>F: matches0, covisibility_score
+    F-->>C: 有效匹配索引对
+```
+
+COLMAP 自己不使用原始关键点描述子匹配：`matches0` 的非负项转为离散点对，共视过滤、互为最近邻与距离过滤在导出的 ONNX 模型内完成；源文件明确不支持 guided matching。该集成通过源码静态核对，未在本环境构建或运行。
+
 ## 实验与评测
 
 以下数值均来自论文，并仅适用于论文的评测配置（输入分辨率、关键点数量、阈值和基线实现以原文为准）。
@@ -155,9 +188,30 @@ sequenceDiagram
 2. **共视阈值要在目标场景上标定**：论文推理设定为 $t=0.9$、$\gamma=0.9$；仓库默认 `min_covisibility=0.0`，即默认不因共视分数拒绝匹配（仓库核对，未运行验证）。重复结构场景需显式设置阈值。
 3. **分辨率是最直接的精度杠杆**：论文称提高输入分辨率在表 2 的多数基准上带来一致增益，仓库 README 也推荐这一做法；代价是计算量增加。
 4. **粗网格读出有已知误差模式**：查询误差相关，深度不连续处精度下降。需要更高精度时可叠加 RoMa v2 精修，代价是匹配耗时增加（表 7 中 SP + Ours 精修后 HardMatch 为 57.2，耗时 46.8 ms，未精修为 56.4，耗时 28.7 ms）。
-5. **权重许可需单独审查**：代码为 MIT 许可；仓库另附 DINOv3 许可文件（`DINOv3_LICENSE.md`），冻结主干的 DINOv3 权重适用其自身条款，部署前须核查。
+5. **COLMAP 集成需要 ONNX 与正确阈值**：`FLEXGLUE` 接受任意检测器的关键点，需显式指定图像路径；不要把 PyTorch 默认关闭的共视过滤误认为 COLMAP 也关闭，旧版安装需核对功能可用性。
+6. **权重许可需单独审查**：代码为 MIT 许可；仓库另附 DINOv3 许可文件（`DINOv3_LICENSE.md`），冻结主干的 DINOv3 权重适用其自身条款，部署前须核查。
 
 ## 工程实践
+
+### 在 COLMAP 中使用 FlexGlue（官方文档核对）
+
+当前 COLMAP 官方文档与主分支源码已经包含 `FLEXGLUE` 匹配器，并提供 `automatic_reconstructor --feature flexglue` 预设。**这不代表所有已安装的旧版 COLMAP 都包含它**；需检查版本并以 `-DONNX_ENABLED=ON` 构建，最好使用 GPU。
+
+在先完成关键点提取的数据库上，官方给出的命令为：
+
+```bash
+colmap exhaustive_matcher \
+  --database_path "$DATASET_PATH/database.db" \
+  --FeatureMatching.type FLEXGLUE \
+  --FlexGlueMatching.image_path "$DATASET_PATH/images"
+```
+
+- `FlexGlueMatching.image_path` 是必填项；匹配器从图像像素提取 DINOv3 稠密特征，沿用任意特征检测器的**关键点坐标**，不依赖原描述子。
+- **默认参数要区分**：COLMAP `FlexGlueMatching.min_covisibility=0.5`，`early_stop_decay=0.5`；而单独使用 PyTorch `FlexGlue()` 时默认 `min_covisibility=0.0`、`early_stop_decay=None`，默认不会拒绝非共视图像对。
+- 在官方提供的 early-stop ONNX 模型里，第 2/4/6/8 层可拒绝高度不共视图像对。COLMAP 文档报告的 ETH3D DSLR **35% 提前停止**，仅对其所列的 22569 对图像及默认阈值适用，不能理解成全部任务的通用提速比。
+- 默认缓存 **128 张**图像的稠密特征，每张约 **4 MB**；CUDA 算力 ≥7.0 时默认优先选择 fp16 matcher，初始化失败或不满足条件回退 fp32。
+- COLMAP 的 guided matching 不支持该匹配器；`min_covisibility` 的漏拒或误拒在同一图集内仍需实测。官方已提供 [功能文档](https://colmap.github.io/features.html#flexglue)、[C++ 实现](https://github.com/colmap/colmap/blob/main/src/colmap/feature/flexglue.cc) 与 [ONNX 导出示例](https://github.com/cvg/FlexGlue/blob/main/onnx/match_pair.py)。
+
 
 - **推理入口**：`FlexGlue().match_pair(image0, image1, detector=...)` 为单对图像的便捷入口；`match` 接受已有特征或关键点；`sparse=True` 在两图都有关键点时做互为最近邻匹配。仓库 README 给出的示例使用 ALIKED 检测器。
 - **坐标约定**：FlexGlue 假定关键点为角点坐标（COLMAP 约定），左上像素中心为 (0.5, 0.5)；LightGlue 检测器默认使用中心坐标，与 FlexGlue 配合时需传入 `origin="corner"`（仓库 README 的 IMPORTANT 说明）。
@@ -169,6 +223,10 @@ sequenceDiagram
 - **基准数据可得性**：论文未明确 LaMAR-DG 是否随代码公开（未核实）。ViSym-F 为作者人工重标注的测试子集（去掉 51 个 unsure 对，并在每个场景中平衡正负样本、每类至多 100 对），与原始 ViSym 标签上的结果不可直接比较。
 
 ## 局限与风险
+
+- **官方 COLMAP 集成的适用范围**：本次验证的是在线官方文档及主分支实现；未核实特定发行版或系统预装版本，未在本环境进行编译、推理或 SfM 回归测试。
+- **原文通读状态**：来源归档已按固定字段记录当前仍存在的全文逐段复核缺口；本 PR 保持草稿，不能把静态来源审阅当作实验复现。
+
 
 论文第 F 节列出的局限，以及实验中观察到的失败模式：
 
@@ -192,9 +250,11 @@ sequenceDiagram
 
 - [论文归档](../../sources/papers/flexglue.md)
 - [官方仓库归档](../../sources/repos/flexglue.md)
+- [COLMAP 官方集成及源码归档](../../sources/sites/flexglue-colmap.md)
 
 ## 推荐继续阅读
 
 - [论文原文（arXiv:2610.32976）](https://arxiv.org/abs/2610.32976v1)
 - [官方仓库 cvg/FlexGlue](https://github.com/cvg/FlexGlue)
+- [COLMAP 官方 FlexGlue 选项与使用文档](https://colmap.github.io/features.html#flexglue)
 - [Colab 演示 demo.ipynb](https://colab.research.google.com/github/cvg/FlexGlue/blob/main/demo.ipynb)
