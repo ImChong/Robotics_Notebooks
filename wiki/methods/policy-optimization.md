@@ -10,6 +10,7 @@ related:
   - ./flashsac.md
   - ./intentional-updates-streaming-rl.md
   - ./reinforcement-learning.md
+  - ../entities/paper-stabilizing-rl-with-llms.md
   - ./imitation-learning.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
@@ -25,7 +26,7 @@ sources:
   - ../../sources/blogs/wechat_pinkrobot_off_on_policy_rl_evolution_2026-09-15.md
   - ../overview/deep-rl-off-on-policy-evolution.md
 summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
-updated: 2026-09-15
+updated: 2026-11-08
 ---
 
 # Policy Optimization
@@ -209,6 +210,7 @@ SAC 常用于：
 
 ## 关联页面
 
+- [稳定 LLM 强化学习：MiniRL / IS / MoE Routing Replay](../entities/paper-stabilizing-rl-with-llms.md) — 训练—推理分布偏差与策略陈旧的另一种形式化；论文验证对象是语言模型数学推理而非机器人运控。
 - [PPO（Proximal Policy Optimization）](./ppo.md) — clip 代理目标的 on-policy 主力算法
 - [SAC（软演员-评论家）](./sac.md) — 最大熵 off-policy 主力
 - [FlashSAC](./flashsac.md) — 高维机器人 scaling 式 off-policy（2026）
