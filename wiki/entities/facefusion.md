@@ -3,7 +3,8 @@ type: entity
 project_id: facefusion
 project: https://facefusion.io/
 code: https://github.com/facefusion/facefusion
-tags: [software, deepfake, face-swap, face-manipulation, video-processing, lip-sync, onnx, digital-human, hri]
+tags: [software, deepfake, face-swap, face-manipulation, video-processing, lip-sync, onnx, digital-human, hri, independent-maintainer]
+institutions: [independent-maintainer]
 status: complete
 updated: 2026-11-08
 summary: "FaceFusion 是官方提供 CLI、UI、任务队列与可组合处理器的人脸图像/视频处理平台；源码区分图片与视频工作流，使用人脸检测/选择、模型推理及掩膜贴回，代码与模型许可需分别核实。"
@@ -37,6 +38,8 @@ related:
 | HRI | Human–Robot Interaction | 可选的人机交互合成化身演示背景，非本项目核心研究成果 |
 
 ## 为什么重要
+
+- **维护归属：** 代码发布于 [facefusion GitHub 组织](https://github.com/facefusion)，仓库 `LICENSE.md` 标注 Henry Ruhs 版权；本站按已有的「独立维护者（Independent Maintainer）」图谱类别归档。这是知识库的归类方式，不代表对其法律主体、雇佣关系或完整授权条款作出认定。
 
 FaceFusion 把多种面部影像任务统一到一套 **命令入口、任务调度、可插拔处理器、模型推理与媒体 IO** 下。对机器人视觉工程、数字人展示与 HRI 研究，值得学习的是软件管线的模块化及图像/视频时序处理边界，而不是将换脸效果误认为身份认证、真实面部运动测量或机器人的自主操作能力。
 
