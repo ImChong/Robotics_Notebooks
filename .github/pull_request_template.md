@@ -21,7 +21,7 @@
 
 ## 节点健康度（ingest / wiki 改动必填）
 
-<!-- 粘贴 `python3 scripts/report_health.py --changed` 输出；非 wiki 改动写「N/A」。规则见 schema/ingest-workflow.md 步骤 8.5 -->
+<!-- 粘贴 `python3 scripts/report_health.py --changed` 输出；非 wiki 改动写「N/A」。未满分的行在缺项列写明原因。Wiki Lint CI 会实测比对，缺页、分数不符或未写原因都会失败。规则见 schema/ingest-workflow.md 步骤 8.5 -->
 
 ## 相关 Issue
 
