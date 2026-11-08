@@ -141,6 +141,7 @@ $$ \tau_c = J^T(-K\Delta\xi - D J\dot q) + (I - J^T (J^T)^\dagger)\tau_0 + J^T F
 - [GentleHumanoid（方法页）](../methods/gentlehumanoid-motion-tracking.md) — RL motion tracking 中嵌入虚拟弹簧–阻尼参考动力学与力阈值
 
 ## 关联页面
+- [MIT 模式模拟 CSP 的前馈优先整定](../methods/mit-mode-csp-emulation-tuning.md)
 
 - [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
 - [位置/力混合控制（体系⑤）](../overview/robot-control-paradigm-hybrid-position-force.md)
