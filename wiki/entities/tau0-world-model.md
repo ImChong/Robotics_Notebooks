@@ -12,7 +12,7 @@ tags:
   - multi-view
   - heterogeneous-data
 status: complete
-updated: 2026-09-15
+updated: 2026-11-08
 related:
   - ../concepts/world-action-models.md
   - ../concepts/video-as-simulation.md
@@ -56,7 +56,7 @@ summary: "τ₀-WM（5B）：在 Wan-2.2 级视频扩散骨干上联合训练多
 - **测试时算力换成功率：** 多候选 action + **Re-denoising Consistency Score** + 必要时 **仿真选优再预测**，把瓶颈从「单次采样」移到 **执行前推理**——与 [VLA](../methods/vla.md) 反应式前馈形成对照。
 - **Agibot 视频 WM 谱系延伸：** 与 [GE-Sim 2.0](./ge-sim-2.md)（闭环模拟器 + World Judge + 本体专家）同生态；τ₀-WM 更强调 **策略与世界预测共享 5B 表征** 及 **操纵策略侧的测试时搜索**。同团队 **[τ₀-VLA](./paper-tau0-vla.md)** 把测试时想象上移到 **开放语言子任务** 级 beam search + **可修订执行记忆**，低层仍为 generalist flow-VLA。
 
-## 核心结构
+## 核心原理：共享视频–动作预测与推理期修订
 
 | 模块 | 作用 |
 |------|------|
@@ -111,13 +111,13 @@ flowchart TB
 | **推理** | **内置** 动作条件仿真 + 一致性分数 + 修订环 | 默认 **潜计划 + 动作解码**，论文侧重部分去噪 | **闭环 rollout** 供策略 / 评测 / 奖励 |
 | **参数规模** | **5B**（公开 VAM 权重） | 论文实现约 **2B** 级 Cosmos 系 | 公开榜强调 **2B** 视觉专家 |
 
-## 部署与开源（截至 2026-05-31）
+## 工程实践：部署与开源（截至 2026-05-31）
 
 - **已发布：** VAM **Hugging Face 权重**（Apache-2.0）、**策略推理 server**（WebSocket，借鉴 [openpi](https://github.com/Physical-Intelligence/openpi)）；需自备 **Wan2.2-TI2V-5B** 与配置文件路径。
 - **动作空间（部署）：** 双臂 **绝对 EEF** 位姿 + 夹爪；与预训练 **相对位姿 + 6D 旋转** 自动互转（见 [官方 README](https://github.com/sii-research/tau-0-wm)）。
 - **待发布：** **Simulator 权重**、完整 **测试时计算** 代码（README 口径）。
 
-## 常见误区
+## 局限与风险：常见误区
 
 - **误区 1：有视频生成就等于 WAM。** 若推理从不依赖 **未来预测或仿真评分**，更接近带辅助头的 VLA；τ₀-WM 的测试时环 **显式** 使用世界模型选动作。
 - **误区 2：人视频监督等于有机器人动作。** 人视频样本 **只训未来视频**，不伪造 robot action；混训靠 **掩码** 而非标签填充。

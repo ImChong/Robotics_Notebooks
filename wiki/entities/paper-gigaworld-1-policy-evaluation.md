@@ -11,7 +11,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-10-06
+updated: 2026-11-08
 arxiv: "2607.02642"
 related:
   - ../overview/wm-action-consequence-category-04-eval-posttrain.md
@@ -64,7 +64,7 @@ summary: "GigaWorld-1（arXiv:2607.02642）：WMBench + 7 类视频 WM、4 种�
 - **324k rollout 量级 roadmap：** 数据配比（**PhysData + robot controllability**）、**显式低层 action 接口**、**分层 memory**、evaluator-oriented post-training → **GigaWorld-1** 可复现设计图。
 - **与 [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) / [EmbodiedGen V2](./paper-embodiedgen-v2-sim-ready-world-engine.md) 互补：** 筛选 / **环境扩展** / **版本评估** 三条研发 expensive 链路。
 
-## 核心结构与方法
+## 核心原理与方法
 
 | 组件 | 方法要点 |
 |------|----------|
@@ -97,6 +97,13 @@ flowchart TB
 | **长时序 action-faithful rollout** | 评估器首要优化 **动作条件一致性**，非单帧 FVD |
 | **预训练数据配比** | 平衡 **通用世界知识** 与 **机器人可控性**（PhysData 关键） |
 | **架构** | **低层 action 表征 + spatial alignment + memory** 决定真机对齐 |
+
+## 工程实践：策略评估器验证清单
+
+- 用相同起始状态与动作序列构造真机执行和世界模型 rollout 的配对样本，分开保存动作条件、长时间演化和真实结局。
+- 分别报告开环视频质量、时序动作忠实性、模型评估分数与真机成功率的相关关系，不能用 FVD 等视觉指标直接替代成功率。
+- 针对接触失败和长时程误差分组做可靠性检查；真机分布外任务不得用世界模型评分直接给安全保证。
+- 以上为依据已有论文介绍整理的**验证协议**，本批未运行 WMBench 或复现其报告数字。
 
 ## 实验要点
 
@@ -141,7 +148,7 @@ flowchart TB
 - **误区：** WM 评估可 **完全替代真机**；仍须 **人类核验边界 case**；contact failure **乐观 bias** 待降。
 - **局限：** WMBench **8 任务族** 未覆盖移动操作/ in-hand / 安全关键；聚焦 **video-centric WM**；VLM 自动标注 **需抽检**。
 
-## 与其他页面的关系
+## 关联页面与评估技术路线
 
 - [wm-action-consequence-category-04-eval-posttrain](../overview/wm-action-consequence-category-04-eval-posttrain.md) — 评估与后训练 hub
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 「策略版本评估」入口

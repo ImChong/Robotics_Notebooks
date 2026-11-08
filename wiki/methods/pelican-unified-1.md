@@ -4,7 +4,7 @@ type: method
 tags: [pelican-unified, uei, vla, world-models, diffusion, joint-wam, embodied-ai, qwen3-vl, x-humanoid]
 status: complete
 date: 2026-05-16
-updated: 2026-09-15
+updated: 2026-11-08
 summary: "Pelican-Unified 1.0 将 Qwen3-VL 作为统一理解与推理模块，把末态稠密潜变量 z 送入 Wan 系 Unified Future Generator，在同一扩散去噪中联合生成未来视频与动作块，使语言、视频与动作损失共同塑造共享表示。"
 related:
   - ../concepts/world-action-models.md
@@ -57,7 +57,7 @@ Pelican-Unified 1.0 将 Qwen3-VL 的语义理解与链式推理末态 \(z\)，�
 - **统一生成（UFG）**：在 **\(z\)** 条件下用扩散同时去噪 **未来视频 token** 与 **动作 chunk token**，并在读出前做 **action-refine**；训练上对齐 [Generative World Models](./generative-world-models.md) 的「像素动力学」工具箱，但把控制与想象锁在同一反传图里。
 - **与 WAM 分类的接点**：整体落在 [World Action Models（WAM）](../concepts/world-action-models.md) 的 **Joint** 族一侧——联合未来与动作——并显式插入 **语言推理状态** 作为枢纽变量。
 
-## 核心结构
+## 核心原理：VLM 推理与联合视频–动作潜状态
 
 ### 三统一（论文范式）
 
@@ -89,6 +89,12 @@ flowchart LR
 | **Cascaded WAM** | 非「世界模型先 rollout、再外挂策略」两阶段商品化拼接；**推理潜变量与联合扩散**耦合更紧 |
 | **Joint WAM** | 与「共享模型联合预测未来与动作」同族；附加亮点是 **VLM CoT → \(z\)** 作为可解释、可监督的 **循环状态** |
 | **Being-H0.7 类潜空间世界–动作** | 同为「世界信号训练时参与、部署可减轻像素 roll」讨论族；Pelican 更强调 **扩散联合生成 + VLM 推理枢纽** |
+
+## 工程实践：推理预算与复现边界
+
+- 将 VLM 推理、潜变量更新与视频–动作联合扩散的耗时拆开测量；只在满足目标机器人控制周期的条件下把视频生成纳入在线决策，必要时比较仅动作采样与分层异步方案。
+- 核对 Qwen3-VL / Wan2.2 初始化版本、冻结/更新参数和数据许可；不能由公开技术报告推断完整训练权重与代码已经可复现。
+- 这是读者向工程核验清单，并非已完成的复现实验或作者报告的实测延迟。
 
 ## 局限与阅读注意
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [world-models, wam, video-action-model, dexmal, manipulation, diffusion, mixture-of-transformers, robotwin, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-09-16
+updated: 2026-11-08
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -49,7 +49,7 @@ summary: "Dexmal DW05（OpenDW）：Wan 骨干 + MoT 三专家头联合未来视
 - **与 DM0.5 形成机构双线：** [Dexmal DM0.5](./dexmal-dm05.md) 走 **Gemma VLM + Flow 动作专家** 的开放世界 **VLA**；DW05 走 **Wan 视频骨干 + MoT** 的 **世界–动作联合** 线，覆盖「先想象再控制」的研究与集成需求。
 - **RoboTwin 生态落地：** **DW05-Robotwin** 自带 **policy 归一化统计** 与在线评测配置；Base checkpoint **不含** `norm_stats.json`，避免误把通用权重当 RobotWin 即插即用策略。
 
-## 核心结构
+## 核心原理：视频、动作与价值专家
 
 | 模块 | 作用 |
 |------|------|
@@ -99,7 +99,7 @@ flowchart TB
   VE --> O3
 ```
 
-## 部署与工程要点
+## 工程实践：部署与评测要点
 
 - **环境：** Python 3.10+、CUDA PyTorch；`pip install -e .`（可选 `'.[attention]'`）。
 - **路径变量：** `DW05_MODEL_BASE_PATH`、`DIFFSYNTH_MODEL_BASE_PATH`、`TOKENIZERS_PARALLELISM=false`。
@@ -116,7 +116,7 @@ flowchart TB
 | **数据接口** | **RobotWin JSONL** 一等公民 | 多视角遥操作 + UMI + 人视频掩码 | 多本体操作 + 导航 + 人视频混合 |
 | **价值头** | 架构预留，公开版侧重 video/action | 动作条件 **task-progress** 评估 | 不显式世界 rollout |
 
-## 常见误区
+## 局限与风险：常见误区
 
 - **误区 1：DW05-Base 可直接跑 RobotWin policy demo。** Base **不带** policy `norm_stats.json`；请用 **DW05-Robotwin** 或自算统计后微调。
 - **误区 2：有视频生成就等于 VLA。** DW05 的核心是 **动作条件世界动态** 与 **联合动作头**；纯语言→动作反应式部署应看 VLA 线（如 DM0.5）。

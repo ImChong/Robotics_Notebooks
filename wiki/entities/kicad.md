@@ -2,7 +2,7 @@
 type: entity
 tags: [software, eda, pcb, hardware, open-source, embedded, manufacturing, kicad]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-08
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
@@ -34,6 +34,10 @@ summary: "KiCad 是 GPLv3 开源跨平台 EDA：原理图、PCB 布局、ERC/DRC
 
 **KiCad**（[kicad.org](https://www.kicad.org/)）是面向 **原理图 → PCB → 制造文件** 的 **免费开源电子设计自动化（EDA）套件**：跨 Windows / macOS / Linux，覆盖层次化原理图、交互式布线、电气/设计规则检查、集成 SPICE、3D 机械预览与 **kicad-cli** 批处理。在机器人研究与工程中，它处于 **机械 CAD（[FreeCAD](./freecad.md)）与固件 bring-up（[Wokwi](./wokwi.md)）之间**——把关节驱动、BMS、主控与传感转接等 **PCB 设计真值** 落到可打样的 Gerber 与 BOM。
 
+## 一句话定义
+
+KiCad 是以原理图和 PCB 文件为核心设计真值、以 ERC/DRC 检查为关卡、最终导出可制造数据的开源电子设计自动化工具链。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -55,7 +59,7 @@ summary: "KiCad 是 GPLv3 开源跨平台 EDA：原理图、PCB 布局、ERC/DRC
 - **开源硬件生态对齐**：[EN02-OP](./en02-op.md)、[Asimov V1](./asimov-v1.md)、[SimpleFOC](./simplefoc.md) 参考板等路径都涉及 **可复现的原理图/Gerber**；KiCad 便于 fork、改版与社区 PR 审查（工程文件可进 Git）。
 - **与底软总线设计同屏**：画驱动板时需同时定 **CAN/EtherCAT 收发器、隔离、终端与调试 UART**——见 [电机底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)。
 
-## 核心结构/机制
+## 核心原理：原理图到 PCB 的设计数据流
 
 ### 套件模块与数据流
 

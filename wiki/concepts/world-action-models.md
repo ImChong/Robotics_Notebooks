@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-08
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-self-evolving-wam-futuring.md
@@ -669,6 +669,7 @@ flowchart TB
 ## 长上下文因果 WAM：Long-WAM
 
 - [Long-WAM](../entities/paper-long-wam-scaling-context.md)（arXiv:2610.10528）以因果视频专家预测未来 latent，再由动作专家生成动作块；RoboCasa GR-1 报告历史从 0 秒扩至 19.2 秒时 SR 由 63.3% 升至 78.7%。代码位于 NVlabs/LongLive 的 Long-WAM/ 子目录；官方仓库说明完整 benchmark 尚未验证。
+- [LongLive 2.0 视频生成基础设施](../entities/paper-longlive-2-nvfp4-long-video-generation.md)（arXiv:2605.18739）以 NVFP4、Balanced SP 支持 5B 长视频生成；Long-WAM 从其 checkpoint 继续适配机器人视觉数据，但两者是同仓不同项目，45.7 FPS 不是机器人动作策略速度。
 
 
 ## 动作条件视觉模拟器：Uranus

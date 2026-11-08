@@ -13,7 +13,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-10-06
+updated: 2026-11-08
 arxiv: "2607.00678"
 related:
   - ../concepts/world-action-models.md
@@ -63,7 +63,7 @@ summary: "ABot-M0.5（arXiv:2607.00678）：移动操作专用 WAM——帧级 l
 - **Dream Forcing 针对 WAM 特有 exposure bias：** 相对 Teacher Forcing / Diffusion Forcing，在 **自生成 $\hat{z}, \hat{m}$** 上训动作，**5k 步** 即可把 RoboCasa365 Target atomic-seen 从 **67.55%** 拉到 **70.56%**，而继续 Teacher Forcing 同期 **降至 66.78%**。
 - **评测覆盖面广：** 同时报告 **移动操作（RoboCasa365）**、**双臂操纵（RoboTwin 2.0）**、**桌面组合（LIBERO / LIBERO-Plus 零样本）** 与 **真机长程**，说明改进不只绑定单一 benchmark。
 
-## 核心结构与方法
+## 核心原理与方法
 
 | 模块 | 作用 |
 |------|------|
@@ -102,6 +102,12 @@ flowchart TB
 | **动作空间** | 单一纠缠向量 | **D-MoT 解耦 move / manip** |
 | **逆动力学监督** | GT 或联合扩散噪声 | **SFT2：自 dreamed 视频条件** |
 | **主评测语境** | 桌面/通用操纵 | **RoboCasa365 移动操作 + 多榜** |
+
+## 工程实践：移动操作闭环的评测边界
+
+- 在移动底座与操作臂联合任务中分别检查目标导航状态、未来表征和动作输出是否处于同一时间坐标系，记录相机延迟、底座里程计漂移与操作接触失败。
+- 对照消融应分清视觉未来监督、动作生成与 rollout 对齐各自的收益；仿真 RoboCasa/RoboTwin 的成功率不能直接外推为未验证真机成功率。
+- 本批整理的是论文架构层的验证建议，没有执行官方训练或部署代码。
 
 ## 实验要点
 

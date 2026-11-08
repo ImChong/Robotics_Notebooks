@@ -14,7 +14,9 @@ tags:
   - mit
   - stanford
 status: complete
-updated: 2026-11-04
+updated: 2026-11-08
+original:
+  - ../../sources/papers/rax_scaling_online_exploration.md
 arxiv: "2610.22496"
 project: https://robot-agent-exploration.com/
 code: https://github.com/robot-agent-exploration/rax
@@ -34,6 +36,8 @@ summary: "RAX（Robot Agent eXploration）让冻结的 coding agent 通过机器
 ---
 
 # RAX：把机器人在线探索编译成可复用程序
+
+## 一句话定义
 
 **RAX**（[论文 PDF](https://robot-agent-exploration.com/rax.pdf)、[项目页](https://robot-agent-exploration.com/)、[代码](https://github.com/robot-agent-exploration/rax)）将通用 coding agent 接入机器人感知和控制 API。冻结的模型在在线交互中尝试任务、记录反馈并编写程序；后续运行由验证过的程序执行，经验与技能留在工作区供复用。
 
@@ -63,7 +67,7 @@ summary: "RAX（Robot Agent eXploration）让冻结的 coding agent 通过机器
 - **把本体接口与 agent 流程解耦：** 各模拟器和机器人作为 backend 接到统一工具接口，项目页称新本体可通过 API 适配。
 - **技能能够跨会话累积：** companion skills-lib 按本体保存可执行技能及验证证据，后续 agent 可读取、组合并改进已有技能。
 
-## 工作流程
+## 核心原理与工作流程
 
 ```mermaid
 flowchart TB
@@ -90,7 +94,7 @@ flowchart TB
 | 评测口径 | 项目页报告 | 解读 |
 | --- | --- | --- |
 | 未见仿真场景 | 探索预算从 4 增至 128 episode 时，平均成功率 25%→79%；项目页对比中的此前最佳基线为 41.2%。 | 反映探索量与 held-out 场景泛化的关系。 |
-| 仿真基线对比 | 相对顶级 baseline 平均高 37.4%。 | 这是跨仿真任务的汇总，不能视作每个任务均提升同一幅度。 |
+| 仿真基线对比 | 五组仿真基准相对各自最强基线平均领先 **37.4 个百分点**。 | 论文附录 §13 分别报告 RoboDojo +53.4、BEHAVIOR-1K +38.3、HumanoidArena +7.9、DexJoCo 五项双臂任务 +45.5、LIBERO-Pro +42.1 个百分点；各基准使用各自指标，不可笼统称为「相对提升 37.4%」。 |
 | 推理耗时 | Air fryer：72.3 分钟→18 秒（约 241×）；Bandu tower：17.2 分钟→10 秒（约 103×）。 | 论文表 9 统计的是机器人调用之外的推理墙钟时间；机器人执行时间分别为 2.9→2.5 分钟、9.3→10.9 分钟，因此不能称为任务总耗时或端到端加速。 |
 | 真机任务 | 项目页报告记忆依赖、关节结构、高精度、可变形物体和长时程移动操作任务。 | 证明任务覆盖面；不替代多场景成功率与运行可靠性统计。 |
 
@@ -100,6 +104,7 @@ flowchart TB
 - **人形无动作消融：** 表 10 去掉示范中的动作后，RAX 在每任务 60 个官方测试回合的平均成功率为 81.9%，主要设置为 89.8%；无动作版本使用更大的探索预算，且仍保留无动作的示范信息，不能称为完全无示范。
 - **评测方式：** 论文第 10.2 节区分冻结程序的自动评估与 agent-in-the-loop 评估；自动程序在未见场景中执行，无 agent 修改或重试，但允许按协议调用视觉语言模型。RoboDojo 的原生评分可能含部分得分，不能一律称为成功率。
 - **成本与真机接管：** 论文附录第 15 节称全部仿真和真机实验的模型 API 费用超过 10 万美元，不能当作单任务成本。空气炸锅试验中曾发生手臂碰撞相机，部分运行需要恢复，记录中另有 4 次无需人工接管的成功运行。
+- **真机任务自动化程度不同：** 附录 §14.4 的高精度插销任务使用 agent 工具交互、未运行无人值守的编译程序；§14.6 的长时程移动操作展示在部分环节需要操作者介入。不能把所有真机展示统称为独立无人值守执行。
 
 ## 工程实践与局限
 
@@ -135,7 +140,7 @@ sequenceDiagram
   Agent->>Agent: 编写和测试任务程序
 ```
 
-图按 [real/franka 分支 README](https://github.com/robot-agent-exploration/rax/tree/real/franka) 的配置与服务架构整理；Python 脚本也可通过 `api.runtime.Context` 使用同一服务。其他分支的启动入口和接口可能不同。
+图对照 [real/franka 分支 README](https://github.com/robot-agent-exploration/rax/tree/real/franka) 以及 `scripts/configure_session.py`、`scripts/start_agent.sh`、`harness/claude_cli/mcp_bridge.py`、`services/controller/frontend.py`：`start_agent.sh` 实际调用 `python -m harness.claude_cli.launcher`，MCP stdio bridge 经私有 Unix socket 接入持有机器人控制权的单进程服务；agent 的 Python 脚本也可通过 `api.runtime.Context` 使用同一服务。此图为服务调用路径概览，其他分支入口与接口可能不同。
 
 ## 与相近路线的区别
 
