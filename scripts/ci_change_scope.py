@@ -42,9 +42,7 @@ def classify(entries: list[tuple[str, tuple[str, ...]]]) -> dict:
         path.endswith(".md") and path.startswith(CONTENT_ROOTS) for path in changed
     )
     # Deletions and renames need special handling by incremental lint; no silent omission.
-    removed = sorted(
-        {paths[0] for status, paths in entries if status.startswith(("D", "R"))}
-    )
+    removed = sorted({paths[0] for status, paths in entries if status.startswith(("D", "R"))})
     mode = "ingest" if content_only else "full"
     return {
         "mode": mode,
@@ -93,9 +91,7 @@ def validate_mermaid(scope: dict) -> None:
     if scope["mode"] != "ingest":
         raise ValueError("incremental Mermaid validation requires ingest mode")
     files = [
-        path
-        for path in scope["changed_wiki"]
-        if path.endswith(".md") and (ROOT / path).is_file()
+        path for path in scope["changed_wiki"] if path.endswith(".md") and (ROOT / path).is_file()
     ]
     if not files:
         print("No changed published Markdown: Mermaid check skipped")
