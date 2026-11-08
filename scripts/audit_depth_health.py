@@ -39,9 +39,7 @@ def ordered_depth_routes() -> list[Path]:
             ordered.append(ROOT / "roadmap" / name)
     # Unlisted routes are audited too, but should not outrank the known newest topic.
     extras = [
-        extra
-        for extra in sorted((ROOT / "roadmap").glob("depth-*.md"))
-        if extra.name not in seen
+        extra for extra in sorted((ROOT / "roadmap").glob("depth-*.md")) if extra.name not in seen
     ]
     return list(reversed(ordered)) + extras
 
