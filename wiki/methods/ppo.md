@@ -187,6 +187,7 @@ $\gamma$ 的有效视野约 $1/(1-\gamma)$ **步**。50 Hz 下 $\gamma=0.99$ 大
 - **Critic 是训练脚手架。** 部署只跑 actor；把特权信息喂进 actor 会在真机上立刻对不齐观测。
 
 ## 关联页面
+- [机器人强化学习三年观察（2023–2026）](../concepts/robot-rl-three-years-2026.md)
 - [Policy Optimization（算法族总览）](./policy-optimization.md)
 - [Reinforcement Learning（强化学习基础）](./reinforcement-learning.md)
 - [RL Runner（训练循环编排）](../concepts/rl-runner.md) — PPO 默认的 On-policy 循环：采完算 GAE、更新后丢掉
