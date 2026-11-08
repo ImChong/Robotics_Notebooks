@@ -15,8 +15,14 @@
 ## 2026-11-08 一手资料核对
 
 - **原文：** <https://arxiv.org/html/2609.10506>
-- **核对范围：** DUET-DINO 论文 III 双视角世界模型、IV Reach/Angled Reach/Grasp-Lift；仍待通读附录。
-- **通读：** 未完成
+- **核对范围：** 完整阅读 v1 I–VI（双视角方法、CEM、仿真、真机和消融；无独立附录），并核验官方项目页和仓库。
+- **通读：** 已完成
 - **官方代码核验：** <https://github.com/nisarganc/DUET-DINO>；以仓库 README / 可见文件为准，不等同于复现成功。
 
 - **勘误：** 项目页 Code 实际指向 `nisarganc/DUET-DINO`，当前仓库只有 README，标注 `Code coming soon`；非 `utn-air/DUET-DINO`。
+
+## 2026-11-08 论文逐段核验要点
+
+- **方法：** 冻结 DINOv3 ViT-H+/16，对侧视和腕视通过 cross-attention 交互后做 7-DoF 动作条件未来特征预测；CEM 搜索动作序列。
+- **实验：** 仿真 Reach 92%、Angled-Reach 72.5%、Lift 60%；真机 Angled-Reach 仅 26.7%（30 次）；仿真每步 CEM 用时约 15–17s。
+- **局限：** 作者代码仓 nisarganc/DUET-DINO 目前仅 README 并写 Code coming soon，因此不存在可核验的源码运行调用链。

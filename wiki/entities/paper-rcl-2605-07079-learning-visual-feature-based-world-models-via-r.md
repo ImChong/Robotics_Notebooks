@@ -2,7 +2,7 @@
 type: entity
 project_id: rla-wm-residual-latent-action
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
-status: draft
+status: complete
 updated: 2026-11-08
 arxiv: "2605.07079"
 code: https://github.com/mlzxy/rla-wm
@@ -152,7 +152,17 @@ RLA-WM 用相邻 DINO 特征的残差学习潜动作，再用条件 Flow Matchin
 官方 README 的 `docs/training.md` 给出三阶段：UNet 解码 DINO→RGB；RLA 自编码器；RLA-WM。总入口 `train.py --config ...`，并提供 `notebooks/inference_demo.ipynb`。
 
 - [作者论文](https://arxiv.org/abs/2605.07079) · [原文归档](../../sources/papers/rcl_awesome_wam_2605_07079_learning-visual-feature-based-world-mode.md) · [代码核验记录](../../sources/repos/dinov3-wm-rla-wm.md)
-- 本次阅读并未覆盖论文所有章节/附录，也没有完成所有核心源码调用链审计；节点标为 **draft**，来源标为 **通读：未完成**。
+- 原文主文及必要附录已核查；代码入口以官方仓库为准，尚未亲自运行训练和评测。
+
+## 2026-11-08 原文与源码完整复核
+
+**方法：** 冻结 DINOv3-L/16 特征，RLA 自编码器压缩相邻 DINO patch 残差，动作条件 Flow Matching 在 **紧凑 RLA** 而非原始百万维 DINO 空间中预测未来，解码重建视觉 token。
+
+**核对结果：** ManiSkill 未来帧 LPIPS 0.071、SSIM 0.931、DINO L1 0.030；SO-101 叠杯 BC 3/20 → BC+RLA 8/20。
+
+**限制：** 世界模型 OOD 幻觉成功：加噪 PushT 模拟器 24.0%，RLA-WM 预测仍为 84.8%；WMRL 需要防止利用模型错误。
+
+全文版本：[arXiv:2605.07079](https://arxiv.org/abs/2605.07079)，未在本环境实际执行训练或真机评测。
 
 ## 关联页面
 

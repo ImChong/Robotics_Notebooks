@@ -4,7 +4,7 @@ tags:
   - paper
   - world-action-model
   - manipulation
-status: draft
+status: complete
 updated: 2026-11-08
 arxiv: "2610.37091"
 code: https://github.com/gaoxiang12/ga-wm
@@ -23,7 +23,7 @@ summary: "GAWM：面向多任务机器人操作的紧凑潜在世界动作模型
 
 # GAWM：面向多任务机器人操作的紧凑潜在世界动作模型
 
-**GAWM**（*GAWM: A Compact Latent World-Action Model for Multi-Task Robot Manipulation*，[arXiv:2610.37091](https://arxiv.org/abs/2610.37091)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页依据**周报条目 + arXiv 摘要页**整理，流程图依据论文方法部分（见参考来源），未逐页核对实验数字；指标与结论以论文为准。
+**GAWM**（*GAWM: A Compact Latent World-Action Model for Multi-Task Robot Manipulation*，[arXiv:2610.37091](https://arxiv.org/abs/2610.37091)）收录于 senlanke「具身运控lab」10-26–10-30 前沿论文动态（Manipulation）。本页已对照 arXiv v1 主文全部章节、官方 GAWM-S README 与评测脚本进行核验。
 
 ## 一句话定义
 
@@ -135,7 +135,17 @@ GAWM-S 推理与评测代码、LIBERO/RoboTwin2 权重公开；训练入口 READ
 GAWM-S 推理与评测代码、LIBERO/RoboTwin2 权重公开；训练入口 README 当前标为 `Coming soon`。官方报告 GAWM-S LIBERO 平均 95.6%、RoboTwin Clean 93.94% / Randomized 93.10%，是不同任务协议下的结果。
 
 - [作者论文](https://arxiv.org/abs/2610.37091) · [原文归档](../../sources/papers/gawm-compact-latent-world-action-model_arxiv_2610_37091.md) · [代码核验记录](../../sources/repos/dinov3-wm-gawm.md)
-- 本次阅读并未覆盖论文所有章节/附录，也没有完成所有核心源码调用链审计；节点标为 **draft**，来源标为 **通读：未完成**。
+- 原文主文及必要附录已核查；代码入口以官方仓库为准，尚未亲自运行训练和评测。
+
+## 2026-11-08 原文与源码完整复核
+
+**方法：** 冻结 DINOv3 ViT-S/16，每视角压缩为 64 个 token；**根据任务而不是动作**预测两时间尺度未来特征，直接输出动作块；无需 CEM。
+
+**核对结果：** Extended LIBERO（6585 轨迹）平均 95.6%；RoboTwin2 Clean 93.94%，Randomized 93.10%；单次动作块约 7.1/8.8 ms（RTX PRO 5000，batch 1）。
+
+**限制：** 公开权重与 LIBERO/RoboTwin 评测脚本，训练代码 README 仍为 Coming soon；不同论文数据协议不能横比。
+
+全文版本：[arXiv:2610.37091](https://arxiv.org/abs/2610.37091)，未在本环境实际执行训练或真机评测。
 
 ## 关联页面
 

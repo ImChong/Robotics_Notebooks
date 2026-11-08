@@ -2,7 +2,7 @@
 type: entity
 project_id: dino-wm-dinov2
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
-status: draft
+status: complete
 updated: 2026-11-08
 arxiv: "2411.04983"
 code: https://github.com/gaoyuezhou/dino_wm
@@ -152,7 +152,17 @@ DINO-WM（2024/2025）采用预训练 DINOv2 特征构建无奖励零样本视�
 官方 `gaoyuezhou/dino_wm` 提供 `train.py` 离线训练及 `plan.py` + CEM 目标图像规划；论文与仓库使用 DINOv2。
 
 - [作者论文](https://arxiv.org/abs/2411.04983) · [原文归档](../../sources/papers/sun_awesome_wm_2411_04983_dino-wm-world-models-on-pre-trained-visu.md) · [代码核验记录](../../sources/repos/dinov3-wm-dino-wm.md)
-- 本次阅读并未覆盖论文所有章节/附录，也没有完成所有核心源码调用链审计；节点标为 **draft**，来源标为 **通读：未完成**。
+- 原文主文及必要附录已核查；代码入口以官方仓库为准，尚未亲自运行训练和评测。
+
+## 2026-11-08 原文与源码完整复核
+
+**方法：** 使用 **DINOv2**（不是 DINOv3）的冻结 patch 表征，学习 action-conditioned causal Transformer 预测器，使用视觉目标嵌入差异指导 CEM 零样本规划。
+
+**核对结果：** 在 PointMaze、Wall、PushT、Reach、Rope、Granular 任务测试；CEM 动作序列搜索开销显著，不等于单次 WM forward 时延。
+
+**限制：** 需要覆盖足够的离线状态-动作轨迹，训练仍依赖真实动作标签；原项目只能作为 DINOv3 世界模型的历史基线。
+
+全文版本：[arXiv:2411.04983](https://arxiv.org/abs/2411.04983)，未在本环境实际执行训练或真机评测。
 
 ## 关联页面
 

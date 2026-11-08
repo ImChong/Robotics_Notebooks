@@ -31,8 +31,14 @@
 ## 2026-11-08 一手资料核对
 
 - **原文：** <https://arxiv.org/html/2411.04983>
-- **核对范围：** DINO-WM 论文 §3–§4、CEM 规划简介与官方训练入口；实验附录待全读。
-- **通读：** 未完成
+- **核对范围：** 完整阅读正文 1–5、附录 A 的数据/模型/规划与消融，核查官方 train.py 和 plan.py。
+- **通读：** 已完成
 - **官方代码核验：** <https://github.com/gaoyuezhou/dino_wm>；以仓库 README / 可见文件为准，不等同于复现成功。
 
 - **版本辨析：** 本文使用 DINOv2，不是 DINOv3；作为后续 DINOv3 世界模型的历史基线收录。
+
+## 2026-11-08 论文逐段核验要点
+
+- **方法：** 使用 **DINOv2**（不是 DINOv3）的冻结 patch 表征，学习 action-conditioned causal Transformer 预测器，使用视觉目标嵌入差异指导 CEM 零样本规划。
+- **实验：** 在 PointMaze、Wall、PushT、Reach、Rope、Granular 任务测试；CEM 动作序列搜索开销显著，不等于单次 WM forward 时延。
+- **局限：** 需要覆盖足够的离线状态-动作轨迹，训练仍依赖真实动作标签；原项目只能作为 DINOv3 世界模型的历史基线。
