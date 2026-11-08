@@ -172,6 +172,7 @@ sequenceDiagram
 6. **许可** — PAL 教程可编译但许可证为 TODO，不能当生产依赖的法律基线。
 
 ## 关联页面
+- [MIT 模式模拟 CSP 的前馈优先整定](../methods/mit-mode-csp-emulation-tuning.md)
 
 - [Friction Compensation](./friction-compensation.md) — 真机示教几乎总是 $g(q)+\hat\tau_f$
 - [Articulated Body Algorithms](../formalizations/articulated-body-algorithms.md) — $g(q)$ 怎么算
