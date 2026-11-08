@@ -49,13 +49,14 @@ summary: "Blueprint3D 将二维建筑平面图通过结构四类与房间分割�
 ## 流程总览
 
 ```mermaid
-flowchart TD
-  A["二维户型图 JPG / PNG"] --> B["SplitFloor: 墙门窗四类掩码"]
-  A --> C["SemaFloor: 房间掩码"]
-  B --> D["ForgeFloor / ShapeProcessor: 形态学清理与结构细化"]
+flowchart LR
+  A[FloorPlanImage] --> B[SplitFloor]
+  A --> C[SemaFloor]
+  B --> D[ShapeProcessor]
   C --> D
-  D --> E["MorphoExtruder: 楼板、墙体与窗洞拉伸"]
-  E --> F["OBJ 网格与 2D 调试可视化"]
+  D --> E[MorphoExtruder]
+  E --> F[OBJMesh]
+  E --> G[Preview]
 ```
 
 ## 源码运行时序图
@@ -64,29 +65,28 @@ flowchart TD
 
 ```mermaid
 sequenceDiagram
-  autonumber
-  actor User as 用户
-  participant CLI as extruder.py / CLI
-  participant P as ForgePlanPipeline
-  participant N as NeuralInferenceOrchestrator
-  participant S as SplitFloor / deploy.py
-  participant R as SemaFloor / deploy_sema.py
-  participant SH as ShapeProcessor
-  participant M as MorphoExtruder
-  User->>CLI: python ForgeFloor/extruder.py --input floor.png --auto
-  CLI->>P: run(input_image, auto_neural=true)
-  P->>N: run_both(image, output_dir)
-  N->>N: check_dependencies (checkpoints)
-  N->>S: subprocess: deploy.py --image
-  S-->>N: output_mask.csv, PNG
-  N->>R: 临时推理脚本调用 SemafloorPredictor.predict
-  R-->>N: sema.csv 与 mask
-  N-->>P: CSV 路径
-  P->>SH: process(sema_path, split_path)
-  SH-->>P: rooms_csv, struct_csv
-  P->>M: extrude(rooms_csv, struct_csv)
-  M-->>P: OBJ / preview
-  P-->>CLI: 输出路径或错误
+  participant User
+  participant CLI
+  participant Pipeline
+  participant Orchestrator
+  participant SplitFloor
+  participant SemaFloor
+  participant ShapeProcessor
+  participant MorphoExtruder
+  User->>CLI: StartAutoMode
+  CLI->>Pipeline: Run
+  Pipeline->>Orchestrator: RunBoth
+  Orchestrator->>Orchestrator: CheckCheckpoints
+  Orchestrator->>SplitFloor: RunDeploy
+  SplitFloor-->>Orchestrator: StructuralCSV
+  Orchestrator->>SemaFloor: PredictRooms
+  SemaFloor-->>Orchestrator: RoomCSV
+  Orchestrator-->>Pipeline: MaskPaths
+  Pipeline->>ShapeProcessor: ProcessMasks
+  ShapeProcessor-->>Pipeline: RefinedCSV
+  Pipeline->>MorphoExtruder: Extrude
+  MorphoExtruder-->>Pipeline: OBJAndPreview
+  Pipeline-->>CLI: OutputPaths
 ```
 
 ## 工程实践

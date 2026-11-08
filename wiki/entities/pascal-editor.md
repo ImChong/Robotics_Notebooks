@@ -51,14 +51,14 @@ summary: "Pascal Editor 是 MIT 开源的本地优先参数化建筑 3D 编辑�
 ## 流程总览
 
 ```mermaid
-flowchart TD
-  A["用户图形操作 / MCP Agent 工具请求"] --> B["编辑工具 / SceneOperations"]
-  B --> C["Core useScene: 创建或更新建筑节点"]
-  C --> D["Zustand 场景状态与 dirtyNodes"]
-  D --> E["Viewer NodeRenderer / SceneRegistry"]
-  E --> F["useFrame 系统: 增量几何与构件渲染"]
-  D --> G["本地持久化 IndexedDB / CLI SQLite"]
-  F --> H["浏览器交互三维视图"]
+flowchart LR
+  A[UserOrAgent] --> B[SceneOperations]
+  B --> C[SceneStore]
+  C --> D[DirtyNodes]
+  D --> E[NodeRenderer]
+  E --> F[GeometrySystems]
+  F --> G[ThreeDView]
+  C --> H[Persistence]
 ```
 
 说明：图中的 IndexedDB（浏览器 scene store）与 SQLite（CLI/MCP 本地项目库）是不同持久化边界，**不是** 单次更新同时写两个数据库。
@@ -69,25 +69,25 @@ flowchart TD
 
 ```mermaid
 sequenceDiagram
-  autonumber
-  actor Agent as MCP 客户端
-  participant BIN as pascal-mcp.ts
-  participant ST as createSceneStore
-  participant BR as SceneBridge
-  participant SV as createPascalMcpServer
-  participant OP as SceneOperations
-  Agent->>BIN: 启动 pascal-mcp (默认 stdio)
-  BIN->>ST: createSceneStore()
-  BIN->>BR: new SceneBridge(); loadDefault 或 loadJSON
-  BIN->>SV: createPascalMcpServer(bridge, store)
-  SV->>OP: createSceneOperations
-  SV->>SV: registerTools / Resources / Prompts
-  BIN-->>Agent: connectStdio (或 --http)
-  Agent->>SV: 调用场景工具 (例如创建墙)
-  SV->>OP: 执行 scene mutation
-  OP->>BR: 读取或更新 scene graph
-  OP-->>SV: 返回结果或拒绝原因
-  SV-->>Agent: MCP tool response
+  participant Agent
+  participant Entry
+  participant Store
+  participant Bridge
+  participant Server
+  participant Operations
+  Agent->>Entry: StartMCP
+  Entry->>Store: CreateSceneStore
+  Entry->>Bridge: LoadScene
+  Entry->>Server: CreateMCPServer
+  Server->>Operations: RegisterSceneOperations
+  Server->>Server: RegisterTools
+  Entry-->>Agent: ConnectTransport
+  Agent->>Server: CallSceneTool
+  Server->>Operations: ExecuteTool
+  Operations->>Bridge: ReadOrMutateScene
+  Bridge-->>Operations: SceneResult
+  Operations-->>Server: OperationResult
+  Server-->>Agent: ToolResponse
 ```
 
 ## 工程实践

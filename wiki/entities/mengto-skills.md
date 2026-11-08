@@ -50,13 +50,13 @@ LLM 直接写代码时，常把「会生成」误当作「已验证」。这个�
 
 ```mermaid
 flowchart LR
-  A["用户需求与参考素材"] --> B["Agent 选择合适的 SKILL.md"]
-  B --> C["读取步骤与 REFERENCES"]
-  C --> D["依据规范实现 UI / 3D / 工作流"]
-  D --> E["截图、测试、质量核验"]
-  E --> F{"验收门通过?"}
-  F -->|否| D
-  F -->|是| G["提交可复用结果与证据"]
+  A[Task] --> B[SelectSkill]
+  B --> C[ReadInstructions]
+  C --> D[Implement]
+  D --> E[Verify]
+  E --> F{Passed}
+  F -->|No| D
+  F -->|Yes| G[DeliverEvidence]
 ```
 
 此图组合官方 README 的 Skill 加载约定和 `iterate-until-verified` 示例的验证循环，不表示仓库中存在独立的自动路由或统一任务调度服务。
@@ -67,23 +67,21 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-  autonumber
-  actor Dev as 维护者
-  participant Node as Node.js
-  participant Git as git ls-files
-  participant FS as SKILL.md 与 demo 文件
-  participant Check as validate-skill-demos.mjs
-  Dev->>Node: node scripts/validate-skill-demos.mjs
-  Node->>Check: 加载脚本
-  Check->>Git: git ls-files agent-skills/**/SKILL.md
-  Git-->>Check: 已跟踪技能文件列表
-  loop 遍历每个 skill
-    Check->>FS: 读取 demo/index.html 与 PROMPT.md
-    FS-->>Check: 文本或缺失
-    Check->>FS: 校验 preview.jpg、source.json 等资源
-    Check->>Check: 记录失败与统计
+  participant Maintainer
+  participant Node
+  participant Validator
+  participant Git
+  participant Files
+  Maintainer->>Node: RunValidator
+  Node->>Validator: Start
+  Validator->>Git: ListTrackedSkills
+  Git-->>Validator: SkillPaths
+  loop EachSkill
+    Validator->>Files: ReadDemoFiles
+    Files-->>Validator: FileContents
+    Validator->>Validator: CheckAssets
   end
-  Check-->>Dev: 校验汇总 / 异常
+  Validator-->>Maintainer: ReportResults
 ```
 
 ## 工程实践
