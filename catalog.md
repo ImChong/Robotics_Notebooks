@@ -1072,7 +1072,7 @@
 - [OCS2](wiki/entities/ocs2.md) — OCS2**](https://github.com/leggedrobotics/ocs2)（**O**ptimal **C**ontrol for **S**witched **S**yst `📅unknown` `[entity_page]`
 - [Meta Quest (Oculus) 遥操作](wiki/entities/oculust-quest-teleop.md) — 在机器人模仿学习（Imitation Learning）和 VLA 模型训练中，**Meta Quest (原 Oculus Quest)** 系列 VR 头显已成为获取大规模高质量人类演示数据的核心 `📅unknown` `[entity_page]`
 - [ODRI Solo / Bolt（开源腿式平台）](wiki/entities/odri-solo-and-bolt.md) — ODRI（Open Dynamic Robot Initiative）** 提供面向研究的开源 **扭矩控制** 腿足平台：**Solo**（四足）与 **Bolt**（双足）常被引作 **低惯量 `📅unknown` `[entity_page]`
-- [Odyssey-3](wiki/entities/odyssey-3.md) — Odyssey-3** 是一个从视觉观察中学习物理演化规律、并据此生成或预测交互环境变化的基础世界模型。 `📅unknown` `[entity_page]`
+- [Odyssey-3：通用物理智能基础世界模型](wiki/entities/odyssey-3.md) — Odyssey-3** 是 Odyssey 于 2026-09-15 首次公布、2026-10-08 开放研究预览的自回归视频扩散 Transformer 基础世界模型。它学习视觉世界的时序演化； `📅unknown` `[entity_page]`
 - [OmniGraph（Omniverse 可视化脚本）](wiki/entities/omnigraph.md) — OmniGraph** 是 Omniverse 的 **可视化脚本 / 图计算框架**：在 OpenUSD stage 上把静态场景变成可交互、可闭环的仿真世界。它不是单一图类型，而是 **Act `📅unknown` `[entity_page]`
 - [OmniRetarget Dataset（G1 交互重定向轨迹）](wiki/entities/omniretarget-dataset.md) — OmniRetarget Dataset**（<https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset>）是 Amazo `📅unknown` `[entity_page]`
 - [OmniSim](wiki/entities/omnisim.md) — OmniSim** 是 OmniLink 面向 **编码代理** 的开源机器人仿真工作台：clone 仓库、打 `📅unknown` `[entity_page]`
