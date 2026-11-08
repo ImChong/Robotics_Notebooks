@@ -130,6 +130,7 @@ flowchart LR
 - [Galaxea G0.5](../wiki/entities/paper-galaxea-g05.md) — VLM-as-Actor + 学出来的 ActionCodec 27 维去掉自回归 token 税，原生 CoT 直接 attend；真机六设定 76.7% vs π0.5 53.3%，LIBERO 98.9% / RoboTwin 93.3%；GalaxeaVLA + HF 权重已开源（G0.5 Community License，非商用）
 - [GSR / ParaVLA](../wiki/entities/paper-gsr-paravla.md) — 指出 VLA 指令改写崩溃来自联合 V-L 路由而非不懂语义，冻结 T5 重绑原生视觉并重训动作专家；LIBERO-Para 上 SmolVLA +44.6 pp；训练与 HF 权重已开源
 - [Indi](../wiki/entities/paper-indi.md) — 冻结教师 VLM 把示范片段的局部行为意图蒸馏进动作解码器，部署时无需教师；GR00T-N1.7 在 SimplerEnv-Bridge 64.3%→84.7%，真机 62.0%→68.7%
+- [GazeVLA：从人类注视学习机器人操作意图](../wiki/entities/paper-gazevla.md) — CoRL 2026 Spotlight，先预测二维注视意图再生成动作；人类视频预训练→人/机混合后训练，机器人侧不需要 gaze 标注，官方权重及评测脚本仍待发布
 - [Topology-VLA](../wiki/entities/paper-topology-informed-visual-prompting-vla.md) — 用拓扑签名区分外观相似却需不同绕行的状态，借仿真规划扩增示范，再让 VLM 生成视觉路径提示。
 - [RoboMP-DINOv2](../wiki/entities/paper-robomp-dinov2.md) — 在完整图像特征上加入区域提示，而不是用硬掩码过滤，避免丢掉障碍与背景线索。
 - [X-Planner](../wiki/entities/paper-x-planner-event-structured-task-planning.md) — 用事件状态衔接高层指令与下游动作模型，把长任务计划写成可执行事件，并探索连续潜在推理接口。
