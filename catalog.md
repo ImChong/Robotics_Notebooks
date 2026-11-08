@@ -3824,7 +3824,7 @@
 - [PointZero（arXiv:2609.19142）](wiki/entities/paper-pointzero.md) — PointZero**（*PointZero: 3D Point Track Completion for Learning Transferable 3D Dynamics*，[arXiv:26 `📅unknown` `[entity_page]`
 - [POISE：手内物体到达任意 6D 位姿](wiki/entities/paper-poise-in-hand-6d-pose-reaching.md) — POISE**（*Learning In-Hand Object Reaching to General 6D Poses*，[arXiv:2609.13761](https://arxiv.or `📅unknown` `[entity_page]`
 - [Beyond Validation Loss: Coverage and Reliability Dynamics in Robot Policy Pretraining / 超越验证损失：机器人策略预训练的覆盖度与可靠性动态](wiki/entities/paper-policy-coverage-reliability.md) — 本文研究机器人策略预训练中覆盖度与可靠性的权衡，提出离线检查点选择和生成式数据增强。 `📅unknown` `[entity_page]`
-- [PolicyIK（arXiv:2611.05372）](wiki/entities/paper-policyik.md) — PolicyIK**（*PolicyIK: High-Precision Inverse Kinematics for Robot Arms with Reinforcement Learning `📅unknown` `[entity_page]`
+- [PolicyIK：高精度强化学习逆运动学 / High-Precision RL Inverse Kinematics](wiki/entities/paper-policyik.md) — PolicyIK**（*PolicyIK: High-Precision Inverse Kinematics for Robot Arms with Reinforcement Learning `📅unknown` `[entity_page]`
 - [PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization](wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md) — PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomizat `📅unknown` `[entity_page]`
 - [PolyUMI](wiki/entities/paper-polyumi.md) — PolyUMI**（*Accessible Visual-Tactile-Audio Data Collection for Object Inference and Manipulation*， `📅unknown` `[entity_page]`
 - [POSE（arXiv:2609.19460）](wiki/entities/paper-pose-semantic-legged-exploration.md) — POSE**（*Pose-aware Legged Robot Semantic Exploration with Omnidirectional Perception in Confined U `📅unknown` `[entity_page]`
