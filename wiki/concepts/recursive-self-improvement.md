@@ -167,6 +167,8 @@ flowchart LR
 
 ## 关联页面
 
+- [Gödel Agent（ACL 2025）](../entities/paper-godel-agent.md) — 在 Python 运行时自省、动态修改 solver 与自改逻辑的早期自指 agent；属于 harness 级实验，不等于完全模型级 RSI。
+
 - [ResearchBoost-Agent：冻结判官驱动的训练代码优化](../entities/researchboost-agent.md) — 真实可运行的有界 AI4AI/Infra 性能改进实例；与自主设计、训练完整后继模型的完全 RSI 不同。
 
 - [RSI 纵深路线](../../roadmap/depth-rsi.md) — Stage 0–5 学习路径（判别边界 → 持久改进 → 权重级有界闭环 → 打分器与验证锚 → harness 进化 → ignition 与治理）
