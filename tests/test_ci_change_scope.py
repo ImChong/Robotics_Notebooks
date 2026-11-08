@@ -51,9 +51,7 @@ class ChangeScopeTests(unittest.TestCase):
                 self.assertEqual(scope.classify([("M", (path,))])["mode"], "full")
 
     def test_rename_has_both_paths_and_removed_old_path(self) -> None:
-        result = scope.classify(
-            [("R100", ("wiki/entities/old.md", "wiki/entities/new.md"))]
-        )
+        result = scope.classify([("R100", ("wiki/entities/old.md", "wiki/entities/new.md"))])
         self.assertEqual(result["mode"], "ingest")
         self.assertEqual(result["removed"], ["wiki/entities/old.md"])
         self.assertEqual(len(result["changed_wiki"]), 2)
