@@ -2,7 +2,7 @@
 type: entity
 project_id: pointworld-3d-world-model
 tags: [paper, world-models, 3d, point-cloud, cross-embodiment, nvidia, stanford, awesome-world-models, sun254667-wm]
-status: draft
+status: complete
 updated: 2026-11-08
 arxiv: "2601.03782"
 venue: "CVPR 2026 Highlight"
@@ -50,6 +50,8 @@ summary: "PointWorld（arXiv:2601.03782，NVIDIA/Stanford，CVPR 2026 Highlight�
 
 ## 核心原理
 
+- **表示边界：** PointWorld 的 DINOv3 视觉特征只提供 3D 点属性；真正预测的未来量是场景点位移，且论文的采样式 MPC 规划器是 MPPI。
+
 | 项 | 内容 |
 |----|------|
 | **机构** | 英伟达；斯坦福大学 |
@@ -58,17 +60,19 @@ summary: "PointWorld（arXiv:2601.03782，NVIDIA/Stanford，CVPR 2026 Highlight�
 | **规划** | MPC，约 0.1 s |
 | **开源** | **已开源** [NVlabs/PointWorld](https://github.com/NVlabs/PointWorld) |
 
-### 流程总览
+## 流程总览
 
 ```mermaid
 flowchart LR
-  rgb[RGB-D] --> scene[场景点云]
-  q[关节动作] --> rflow[机器人点流]
-  scene --> pw[PointWorld]
-  rflow --> pw
-  pw --> pred[全场景 3D 点流]
-  pred --> mpc[MPC 0.1s]
-  mpc --> act[可执行动作]
+    A["多相机 RGB-D 初始场景"] --> B["3D 点云与相机标定"]
+    A --> C["冻结 DINOv3 ViT-L 2D 特征"]
+    C --> D["投影汇聚到 3D 场景点"]
+    B --> D
+    E["机器人动作与 URDF 正运动学"] --> F["未来机器人表面点流"]
+    D --> G["PointWorld 预测 3D 场景点流"]
+    F --> G
+    G --> H["MPPI 评估目标点位移代价"]
+    H --> I["末端 SE3 动作轨迹"]
 ```
 
 ## 评测
@@ -142,7 +146,17 @@ PointWorld 的动态状态/动作表示是 3D 点流：结合 RGB-D 场景点云
 官方仓库 `NVlabs/PointWorld` 提供 `train.py`、`eval.py`、`scene_featurizer.py`，数据分支负责数据准备；DINOv3 权重需自行获取，数据和检查点由官方 Hugging Face 分发。
 
 - [作者论文](https://arxiv.org/abs/2601.03782) · [原文归档](../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md) · [代码核验记录](../../sources/repos/nvlabs-pointworld.md)
-- 本次阅读并未覆盖论文所有章节/附录，也没有完成所有核心源码调用链审计；节点标为 **draft**，来源标为 **通读：未完成**。
+- 已核对全文和必要附录；相关源码的公开入口已核查，模型和训练尚未在本环境执行。
+
+## 2026-11-08 原文及附录完整核对
+
+**方法：** PointWorld 把 DINOv3 ViT-L/16 多层二维特征经 camera intrinsics/extrinsics 投影到 3D 场景点，将机器人表面点未来流作为动作，学习 action-conditioned 3D 点流预测；实际规划用 **MPPI** 优化末端 SE(3) 目标轨迹。
+
+**实验：** 在 DROID 与 BEHAVIOR 大规模混合数据上预训练；作者使用移动 Franka 与单台 RealSense D435 测试刚体推、柔性/铰接物体及工具交互，预测 10-step 点流。约 0.1s 模型预测不等于全 MPPI 优化时间。
+
+**局限：** 论文附录：只见初始单帧，默认初始静态；不预测光度变化；以刚体 URDF 前向运动学处理机器人，细小物体受深度/外参误差影响；不代表学到了因果物理机制。
+
+[论文版本 arXiv:2601.03782](https://arxiv.org/abs/2601.03782)。已审阅主要源码入口和官方说明；未实际运行训练或机器人部署。
 
 ## 关联页面
 

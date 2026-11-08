@@ -4,7 +4,7 @@ project_id: flowwm-feature-space-stochastic-wm
 arxiv: "2606.29059"
 code: https://github.com/facebookresearch/Flow-World-Models
 tags: [paper, world-models, dinov3, flow-matching, meta]
-status: draft
+status: complete
 updated: 2026-11-08
 summary: "FlowWM：直接在冻结 DINOv3 的视觉特征空间用条件流匹配建模多模态随机未来；与机器人动作策略须区分。"
 original:
@@ -50,6 +50,8 @@ flowchart TD
 ```
 
 ## 核心机制
+
+**原文限制：** 该模型不使用机器人动作条件；作者在附录 J 将动作条件规划列为未来工作，而不是当前功能。
 
 - 在 DINOv3 patch latent 上直接训练条件生成动态模型，保留视觉语义与空间特征。
 - 使用采样方式预测随机未来；合成 Bouncing Shapes 与真实 Waymo FuturePerception 是不同任务场景。
@@ -104,6 +106,16 @@ sequenceDiagram
 - 主论文方法与部分实验已核查，所有附录和训练源码尚未完整通读，状态 **draft**。
 - 推理采样次数、显存与数据预处理成本会影响实际应用。
 - CC BY-NC 4.0 的许可边界需要单独审查。
+
+## 2026-11-08 原文及附录完整核对
+
+**方法：** 冻结 DINOv3 高维 patch 特征，在未来视频特征空间执行条件流匹配并配合单步投影时间一致性及检测任务损失；**按历史视觉上下文条件化，不输入候选机器人动作**。
+
+**实验：** Waymo FuturePerception 附录消融 AP_L(3)：基线19.1，加时间一致性20.1，加 detector loss 20.9；多采样可提升随机未来覆盖度，但这些是目标感知指标不是机器人成功率。
+
+**局限：** 作者附录 J 明确 action-conditioned dynamics 与 planning 仍是 future work；冻结编码器、长视频采样成本与 CC BY-NC 许可约束。
+
+[论文版本 arXiv:2606.29059](https://arxiv.org/abs/2606.29059)。已审阅主要源码入口和官方说明；未实际运行训练或机器人部署。
 
 ## 关联页面
 

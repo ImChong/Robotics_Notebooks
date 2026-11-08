@@ -34,6 +34,12 @@
 ## 2026-11-08 一手资料核对
 
 - **原文：** <https://arxiv.org/html/2508.10104>
-- **核对范围：** DINOv3 论文 §3–§5 的数据、训练、Gram Anchoring 与模型家族；实验全表、附录、全部源码未通读。
-- **通读：** 未完成
+- **核对范围：** 原文第 1–10 章（训练方法/Gram Anchoring/蒸馏/稠密评测/遥感与局限），并核对附录 A、C、D 与官方 hubconf.py、模型 README。
+- **通读：** 已完成
 - **官方代码核验：** <https://github.com/facebookresearch/dinov3>；以仓库 README / 可见文件为准，不等同于复现成功。
+
+## 2026-11-08 一手资料精读笔记
+
+- **模型架构：** **DINOv3 是视觉编码器而非世界模型**。训练以 DINO/iBOT/KoLeo 与 Gram anchoring 保持稠密 patch 特征，7B ViT 教师经蒸馏提供 ViT-S/B/L/H+；下游世界模型各自决定冻结层和预测目标。
+- **实验口径：** 论文 ViT-7B/16 的 DAVIS-L J&F=83.3，对比 DINOv2-g/14 的 76.6；ADE20k / 深度等视觉评测不能解释为动作规划成功率。
+- **局限风险：** 权重独立许可、输入分辨率与 patch token 影响显存；论文本身没有 action-conditioned transition、动力学或 MPC。

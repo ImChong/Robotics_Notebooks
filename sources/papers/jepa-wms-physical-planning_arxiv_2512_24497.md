@@ -5,8 +5,8 @@
 - **HTML 原文：** <https://arxiv.org/html/2512.24497>
 - **官方代码：** <https://github.com/facebookresearch/jepa-wms>
 - **入库日期：** 2026-11-08
-- **核对范围：** 阅读 HTML §3–§5 的方法、对比与部分结果以及官方 README；完整附录、源码调用链尚未逐项核查
-- **通读：** 未完成
+- **核对范围：** 全文背景/设计空间/全部主实验与结论（§1–6），附录 A–G 的训练细节、误差传播、规划器、机器人数据和失败案例；核验 app/main.py 与官方 README。
+- **通读：** 已完成
 
 ## 核心方法
 
@@ -21,3 +21,9 @@
 ## 对 wiki 的映射
 
 - [paper-jepa-wms-physical-planning.md](../../wiki/entities/paper-jepa-wms-physical-planning.md)
+
+## 2026-11-08 一手资料精读笔记
+
+- **模型架构：** 冻结视觉编码器 + 动作编码器 + 可选本体状态输入 + causal JEPA predictor，以未来潜空间目标误差进行 CEM/NG/梯度规划。**DROID/RoboCasa 使用 DINOv3 ViT-L/16；其他常用仿真任务的最佳模型使用 DINOv2**。
+- **实验口径：** CEM+L2 通常表现最稳；Metaworld 梯度方法有竞争力；训练多步 loss 的最优步数随任务变化。论文 DROID/RoboCasa 上仍有 Pick 与末端标定失误，规划成功率不能用单步预测误差代替。
+- **局限风险：** 真实机器人域偏移、夹爪位置、标定及动作尺度影响目标达成；CEM 候选数量和迭代开销显著；不可把所有 JEPA-WM checkpoint 混成一个 DINOv3 模型。

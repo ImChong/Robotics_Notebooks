@@ -2,7 +2,7 @@
 type: entity
 project_id: dinov3
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
-status: draft
+status: complete
 updated: 2026-11-08
 arxiv: "2508.10104"
 venue: "Transactions on Machine Learning Research"
@@ -25,7 +25,7 @@ sources:
 
 # DINOv3
 
-**DINOv3** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 070/564** 篇，分组 **Components of WAMs**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+**DINOv3** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 070/564** 篇，分组 **Components of WAMs**。本页已按 DINOv3 官方论文和公开源码补全关键原理、实验与世界模型衔接。
 
 ## 一句话定义
 
@@ -160,7 +160,17 @@ DINOv3 是视觉表征骨干，不输入机器人动作，也不自行预测未�
 官方 `facebookresearch/dinov3` README 使用 `torch.hub.load(REPO_DIR, 'dinov3_vits16', source='local', weights=...)` 加载视觉编码器；权重获取与许可证另查 MODEL_CARD、LICENSE。
 
 - [作者论文](https://arxiv.org/abs/2508.10104) · [原文归档](../../sources/papers/rcl_awesome_wam_2508_10104_dinov3.md) · [代码核验记录](../../sources/repos/dinov3-wm-dinov3.md)
-- 本次阅读并未覆盖论文所有章节/附录，也没有完成所有核心源码调用链审计；节点标为 **draft**，来源标为 **通读：未完成**。
+- 已核对全文和必要附录；相关源码的公开入口已核查，模型和训练尚未在本环境执行。
+
+## 2026-11-08 原文及附录完整核对
+
+**方法：** **DINOv3 是视觉编码器而非世界模型**。训练以 DINO/iBOT/KoLeo 与 Gram anchoring 保持稠密 patch 特征，7B ViT 教师经蒸馏提供 ViT-S/B/L/H+；下游世界模型各自决定冻结层和预测目标。
+
+**实验：** 论文 ViT-7B/16 的 DAVIS-L J&F=83.3，对比 DINOv2-g/14 的 76.6；ADE20k / 深度等视觉评测不能解释为动作规划成功率。
+
+**局限：** 权重独立许可、输入分辨率与 patch token 影响显存；论文本身没有 action-conditioned transition、动力学或 MPC。
+
+[论文版本 arXiv:2508.10104](https://arxiv.org/abs/2508.10104)。已审阅主要源码入口和官方说明；未实际运行训练或机器人部署。
 
 ## 关联页面
 

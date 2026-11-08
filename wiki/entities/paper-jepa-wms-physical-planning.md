@@ -4,7 +4,7 @@ project_id: jepa-wms-physical-planning
 arxiv: "2512.24497"
 code: https://github.com/facebookresearch/jepa-wms
 tags: [paper, world-models, planning, jepa, dinov3, meta]
-status: draft
+status: complete
 updated: 2026-11-08
 summary: "JEPA-WMs：比较冻结视觉编码器、动作条件联合嵌入预测器与采样规划器的物理规划能力；DROID/RoboCasa 使用 DINOv3，部分基准使用 DINOv2。"
 original:
@@ -54,6 +54,8 @@ flowchart TD
 ```
 
 ## 核心机制
+
+**编码器选型：** 正文 §5.3 明确 DROID/RoboCasa 采用 DINOv3 ViT-L，其他最佳模型采用 DINOv2；原论文不是通用的单一 DINOv3 模型。
 
 - 将未来状态预测写在联合嵌入空间中，使用未来视觉特征作为学习目标，不要求先重建像素。
 - 训练预测器时可使用动作条件、机器人本体感知，推理时规划器比较候选轨迹。
@@ -109,6 +111,16 @@ sequenceDiagram
 - 本次未完整逐段阅读全文附录与源码；节点保持 **draft**。
 - 规划成本与数据分布会影响跨本体迁移；不得直接外推论文整体真机表现。
 - 官方仓库模型与数据依赖体量较大，复现需额外准备。
+
+## 2026-11-08 原文及附录完整核对
+
+**方法：** 冻结视觉编码器 + 动作编码器 + 可选本体状态输入 + causal JEPA predictor，以未来潜空间目标误差进行 CEM/NG/梯度规划。**DROID/RoboCasa 使用 DINOv3 ViT-L/16；其他常用仿真任务的最佳模型使用 DINOv2**。
+
+**实验：** CEM+L2 通常表现最稳；Metaworld 梯度方法有竞争力；训练多步 loss 的最优步数随任务变化。论文 DROID/RoboCasa 上仍有 Pick 与末端标定失误，规划成功率不能用单步预测误差代替。
+
+**局限：** 真实机器人域偏移、夹爪位置、标定及动作尺度影响目标达成；CEM 候选数量和迭代开销显著；不可把所有 JEPA-WM checkpoint 混成一个 DINOv3 模型。
+
+[论文版本 arXiv:2512.24497](https://arxiv.org/abs/2512.24497)。已审阅主要源码入口和官方说明；未实际运行训练或机器人部署。
 
 ## 关联页面
 
