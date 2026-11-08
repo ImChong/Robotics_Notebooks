@@ -131,7 +131,7 @@ sequenceDiagram
   participant Tr as humanwam.trainer
   User->>Sh: --config configs/robotwin.yaml 等
   Sh->>Py: 单进程 Python 或 torch.distributed.run
-  Py->>Rt: load_config; run_training(cfg)
+  Py->>Rt: load_config 后调用 run_training(cfg)
   Rt->>Tr: 构造数据集与训练器 / 执行训练
   Tr-->>User: 保存 checkpoint 与训练状态
   Note over User,Tr: 训练输入/权重需另行准备，本图不是已实际跑通的证明
@@ -180,7 +180,7 @@ sequenceDiagram
   CLI->>Engine: predict(observation)
   Engine->>Proc: 物理状态及观测预处理
   Proc-->>Engine: normalized inputs
-  Engine->>Back: set_instruction (变化时); predict
+  Engine->>Back: 更新指令（如变化）后执行 predict
   Back-->>Engine: action chunk
   Engine->>Proc: 按需恢复物理动作
   Engine-->>CLI: normalized_actions / actions
