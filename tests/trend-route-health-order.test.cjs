@@ -51,7 +51,7 @@ test('route health follows the historical depth order, not the average health sc
   // Order must be applied consistently to all four stacked score series.
   assert.deepEqual(result.series.map((item) => item.values), [
     [0, 3, 1, 0, 0, 0], // 3 分
-    [0, 0, 3, 0, 0, 0], // 2 分
+    [1, 0, 3, 0, 0, 0], // 2 分
     [1, 0, 0, 2, 0, 0], // 1 分
     [0, 0, 0, 0, 1, 3], // 0 分
   ]);
