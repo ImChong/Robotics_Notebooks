@@ -6396,6 +6396,7 @@
 - [VLX-Seek（Om AI Lab）](wiki/entities/vlx-seek.md) — VLX-Seek**（om-ai-lab/VLX-Seek，Apache-2.0）是 **联汇科技 OmAI 实验 `📅unknown` `[entity_page]`
 - [VMamba](wiki/entities/vmamba.md) — VMamba 提出 2D 选择性扫描（SS2D）等视觉化状态空间模块，构建分层 Visual State Space 骨干，在分类/检测/分割上挑战 ViT。 `📅unknown` `[entity_page]`
 - [VoiceStudio](wiki/entities/voicestudio.md) — VoiceStudio**（debpalash/VoiceStudio，AGPL-3.0）是面向 **全本地 `📅unknown` `[entity_page]`
+- [Vork — Agent-native 3D and VFX engine / 面向 AI Agent 的无界面 3D 与影视特效引擎](wiki/entities/vork.md) — Vork** 是 Voyager 推出的 **headless（无 GUI）3D 与 VFX GPU 渲染引擎**：Agent 用场景 JSON / Python 或 TypeScript SDK `📅unknown` `[entity_page]`
 - [Ansys MCP Server（PyAnsys）（vorobjewsen30-max/ansys-mcp-server）](wiki/entities/vorobjewsen30-max-ansys-mcp-server.md) — Ansys MCP Server（PyAnsys）（vorobjewsen30-max/ansys-mcp-server）是PyAnsys 路线的 Ansys MCP 服务，文章概述约 24 个工具， `📅unknown` `[entity_page]`
 - [Voxgraph](wiki/entities/voxgraph.md) — Voxgraph** 在 **TSDF 子图** 上进行 **位姿图优化**，适合多会话对齐与稠密地图融合。 `📅unknown` `[entity_page]`
 - [WalkTheDog](wiki/entities/walk-the-dog.md) — WalkTheDog**（*Cross-Morphology Motion Alignment via Phase Manifolds*，SIGGRAPH 2024）由 Peizhuo Li 等提 `📅unknown` `[entity_page]`

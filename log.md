@@ -255,6 +255,13 @@ op: ingest
 
 按主论文核对 DINOv3、GAWM、DUET-DINO、PointWorld、FlowWM、RLA-WM、JEPA-WMs；DINO-WM 作为使用 DINOv2 的历史对照。复用已有实体，追加缺少的原文/代码/项目页归档。原文和源码尚未全部通读；PR 保持 Draft 直至复核通过。
 
+## [2026-11-08] ingest | Vork Agent 原生 3D/VFX 渲染引擎 — 核对官方项目、源码、许可证与性能边界
+
+- 意图：为知识库补充 agent-native GPU 渲染工具，并与 Sand3D / 3D-as-Code 和机器人仿真描述建立对照。
+- 一手证据：voyager.so/vork、官方技术解读、voyager-so/vork 的 README、CLI/Shot 源码、Benchmark RESULTS 与 LICENSE。
+- 核心判断：Vork 是 source-available、非开放源码许可证；L4 百万鸟 96.942 秒不计 setup/warmup，Blender 耗时为外推数据，不能宣传为 24 倍等画质提速；不是机器人动力学仿真器。
+- 输出：新增 wiki/entities/vork.md 及 sites/repos 溯源归档、原文 Mermaid 流程图和基于真实 CLI 的运行时序图，链接至 3D-as-Code 选型页。
+
 ## [2026-11-08] ingest | Open Code Review 官方核验与既有节点升级
 
 - **意图：** 收录 Alibaba 官方项目仓库、npm 包 `@alibaba-group/open-code-review` 与 `ocr` CLI，复核现有知识节点，不重复新建实体。
