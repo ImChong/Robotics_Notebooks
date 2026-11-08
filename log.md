@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-08] ingest | 具身小站《MIT模拟CSP的力控参数整定浅析》：新增 mit-mode-csp-emulation-tuning 方法页，公式自洽核对并标出与既有整定页的顺序差异
+
 ## [2026-11-08] ingest | Deep-Live-Cam — 单图实时换脸源码、官方版本与许可核验
 
 - 意图：将 Deep-Live-Cam 作为视觉/数字人合成工具纳入单一 wiki 实体，附真实 Live 调用链与 Mermaid 图。

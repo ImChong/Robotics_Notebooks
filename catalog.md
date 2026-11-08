@@ -6807,6 +6807,7 @@
 - [MBPO（Model-Based Policy Optimization）](wiki/methods/mbpo.md) — MBPO**（Janner et al., 2019）是「学习型动力学模型 + 无模型策略优化」的典型组合：模型只负责生成**短期**虚拟数据，策略仍由 SAC 更新。 `📅unknown` `[method_page]`
 - [mimic-video（Video-Action Model, VAM）](wiki/methods/mimic-video.md) — mimic-video 是一类把互联网规模视频生成模型当作操作语义与物理动力学先验的通用操作策略：先在视频潜空间里形成与语言指令一致的视觉动力学计划，再以流匹配动作头输出机器人动作块。 `📅2026-05-17` `[method_page]`
 - [MIT 关节阻抗模式参数整定](wiki/methods/mit-joint-impedance-mode-tuning.md) — MIT 模式**（开源四足/部分协作臂驱动器中的 **紧凑阻抗帧** 语义，见 [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-proto `📅unknown` `[method_page]`
+- [MIT 模式模拟 CSP：前馈优先的内环整定与五关验证](wiki/methods/mit-mode-csp-emulation-tuning.md) — 在机械臂 MIT 关节模式（τ = Kp·(q_des − q) + Kd·(q̇_des − q̇) + τff）下，用**高 Kp、临界阻尼 Kd、完整前馈 τff** 让关节功能上逼近位置伺服， `📅unknown` `[method_page]`
 - [Model-Based RL（基于模型的强化学习）](wiki/methods/model-based-rl.md) — Model-Based RL（MBRL）**：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率。 `📅unknown` `[method_page]`
 - [Model Predictive Control (MPC，模型预测控制)](wiki/methods/model-predictive-control.md) — 模型预测控制：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
 - [GMR: 通用动作重定向](wiki/methods/motion-retargeting-gmr.md) — GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。 `📅unknown` `[method_page]`
