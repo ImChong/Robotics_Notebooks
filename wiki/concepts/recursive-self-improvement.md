@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-08
 related:
   - ../../roadmap/depth-rsi.md
   - ../queries/rsi-four-tier-five-pushes.md
@@ -27,6 +27,7 @@ related:
   - ../entities/paper-robodoctor.md
   - ../entities/paper-harness2.md
   - ../entities/paper-duplexagent-rsi.md
+  - ../entities/researchboost-agent.md
 sources:
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
   - ../../sources/sites/anthropic-recursive-self-improvement.md
@@ -165,6 +166,8 @@ flowchart LR
 - **加速未覆盖部分更危险。** 代码变多而理解变少（文内员工引言）；真机上这会变成不可复现的危险策略。
 
 ## 关联页面
+
+- [ResearchBoost-Agent：冻结判官驱动的训练代码优化](../entities/researchboost-agent.md) — 真实可运行的有界 AI4AI/Infra 性能改进实例；与自主设计、训练完整后继模型的完全 RSI 不同。
 
 - [RSI 纵深路线](../../roadmap/depth-rsi.md) — Stage 0–5 学习路径（判别边界 → 持久改进 → 权重级有界闭环 → 打分器与验证锚 → harness 进化 → ignition 与治理）
 - [RSI 四层标准与五次边界推进](../queries/rsi-four-tier-five-pushes.md) — 记忆→权重→打分→harness→研究过程的技术史与 2026 信号
