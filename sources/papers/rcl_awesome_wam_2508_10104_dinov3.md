@@ -30,3 +30,10 @@
 
 - 实体页：[`wiki/entities/paper-rcl-2508-10104-dinov3.md`](../../wiki/entities/paper-rcl-2508-10104-dinov3.md)
 - 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)
+
+## 2026-11-08 一手资料核对
+
+- **原文：** <https://arxiv.org/html/2508.10104>
+- **核对范围：** DINOv3 论文 §3–§5 的数据、训练、Gram Anchoring 与模型家族；实验全表、附录、全部源码未通读。
+- **通读：** 未完成
+- **官方代码核验：** <https://github.com/facebookresearch/dinov3>；以仓库 README / 可见文件为准，不等同于复现成功。

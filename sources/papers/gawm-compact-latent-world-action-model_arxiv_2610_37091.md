@@ -26,3 +26,12 @@
 **对 wiki 的映射**
 
 - [paper-gawm-compact-latent-world-action-model](../../wiki/entities/paper-gawm-compact-latent-world-action-model.md)
+
+## 2026-11-08 一手资料核对
+
+- **原文：** <https://arxiv.org/html/2610.37091>
+- **核对范围：** GAWM 论文 III 方法、IV 主要实验与消融；仍待核对全部附表与部署源码。
+- **通读：** 未完成
+- **官方代码核验：** <https://github.com/gaoxiang12/ga-wm>；以仓库 README / 可见文件为准，不等同于复现成功。
+
+- **勘误：** 作者仓库已经发布 GAWM-S 评测代码和权重；Training 部分仍写 `Coming soon`。旧版“未见代码”仅针对旧日期的摘要核对。

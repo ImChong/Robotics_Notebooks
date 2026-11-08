@@ -27,3 +27,10 @@
 
 - 实体页：[`wiki/entities/paper-sa-2601-03782-pointworld.md`](../../wiki/entities/paper-sa-2601-03782-pointworld.md)
 - 列表实体：[`wiki/entities/awesome-world-models.md`](../../wiki/entities/awesome-world-models.md)
+
+## 2026-11-08 一手资料核对
+
+- **原文：** <https://arxiv.org/html/2601.03782>
+- **核对范围：** PointWorld 论文 §3–§5、附录 3D DINOv3 特征；全部实验与附录尚未逐项核查。
+- **通读：** 未完成
+- **官方代码核验：** <https://github.com/NVlabs/PointWorld>；以仓库 README / 可见文件为准，不等同于复现成功。

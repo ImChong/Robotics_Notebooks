@@ -30,3 +30,10 @@
 
 - 实体页：[`wiki/entities/paper-rcl-2605-07079-learning-visual-feature-based-world-models-via-r.md`](../../wiki/entities/paper-rcl-2605-07079-learning-visual-feature-based-world-models-via-r.md)
 - 列表实体：[`wiki/entities/paper-rcl-wam-robot-learning-control-survey.md`](../../wiki/entities/paper-rcl-wam-robot-learning-control-survey.md)
+
+## 2026-11-08 一手资料核对
+
+- **原文：** <https://arxiv.org/html/2605.07079>
+- **核对范围：** RLA-WM 论文 §3 方法、§4 实验、训练文档；附录尚未全部通读。
+- **通读：** 未完成
+- **官方代码核验：** <https://github.com/mlzxy/rla-wm>；以仓库 README / 可见文件为准，不等同于复现成功。
