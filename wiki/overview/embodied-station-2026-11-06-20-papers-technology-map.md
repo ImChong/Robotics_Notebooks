@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-08
 related:
   - ../entities/paper-curobov2-fast.md
   - ../entities/paper-halo-perceptive-humanoid-motion-sim.md

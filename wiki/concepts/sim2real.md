@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-08
 related:
   - ../entities/egalahad-sim2real.md
   - ../entities/paper-flatlab.md
@@ -418,7 +418,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [cuNRTO GPU 鲁棒轨迹优化](../entities/paper-cunrto-gpu-robust-trajectory-optimization.md)
 - [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
 - [RealSimLoop](../entities/paper-realsimloop.md) — 3DGS 视觉反馈驱动的可微降阶软体仿真在线 Real-to-Sim 校准（SIGGRAPH Asia 2026，arXiv:2609.09828）
-
+- [DrEureka](../entities/paper-dreureka-sim-to-real.md) — LLM 写奖励 + RAPP 约束生成域随机化配置，只用目标任务仿真做零样本 sim-to-real（Go1 行走、LEAP Hand 方块旋转）
 
 ## 继续深挖入口
 

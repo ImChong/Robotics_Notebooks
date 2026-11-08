@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-08
 related:
   - ../entities/paper-behavior-spatial.md
   - ../entities/paper-recova.md

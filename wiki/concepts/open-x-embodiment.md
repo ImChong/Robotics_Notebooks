@@ -2,7 +2,7 @@
 type: concept
 tags: [dataset, scaling, cross-embodiment, manipulation, community]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-08
 related:
   - ../entities/paper-open-x-embodiment.md
   - ../queries/contact-wrench-closed-loop.md

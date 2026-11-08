@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-08
 related:
   - ../entities/paper-kamino.md
   - ../entities/paper-monorace-champion-level-drone-racing.md
@@ -362,6 +362,7 @@ flowchart LR
 
 - [FineEnvs](../entities/fineenvs.md) — 面向 LLM agent 的环境设计、训练与部署配方
 - [AI Engineering from Scratch](../entities/ai-engineering-from-scratch.md) — PPO 等 RL 基础与 Agent 工程的可运行课程入口
+- [EmbodiedRSI](../entities/paper-embodiedrsi.md) — PPO 用在 Harness 的记忆管理上，而不是在线重训机器人策略权重；仿真演化后零样本迁移 SO-101 真机
 
 ## 继续深挖入口
 
