@@ -14,7 +14,7 @@
 
 ## 一手页面核验
 
-1. 官网明确列有“OPEN-SOURCE ROOTS”，指向 \`hacksider/Deep-Live-Cam\`，同时设有 **Find your plan / subscription** 入口。故“免费开源”只适用于可自行部署的公开代码，不应扩展为“所有版本都免订阅”。
+1. 官网明确列有“OPEN-SOURCE ROOTS”，指向 `hacksider/Deep-Live-Cam`，同时设有 **Find your plan / subscription** 入口。故“免费开源”只适用于可自行部署的公开代码，不应扩展为“所有版本都免订阅”。
 2. 官网对 **NVIDIA Windows** 建议 RTX 3060 或更新、显存 6 GB 以上，对 **AMD Windows** 建议显存 6 GB 以上；这属于**官网订阅产品建议配置**，并不是 GitHub 开源版在全部条件下保证实时帧率的基准。
 3. 官网 FAQ 明言：**本地人脸替换在用户机器执行**；**可选的云 AI 工作流**（例如 Decart）使用外部服务并要求单独 API key。“全部离线”不可泛化到所有版本。
 4. GitHub Releases 中 **2.6d** 公告明确引入 Virtual Camera 与 OBS 工作流；**2.7 / 2.8 Ultimate** 的多项新能力与优化明确标注需经官网获取。不能不经代码核查便断言主分支具有全部 Ultimate 功能。
@@ -24,8 +24,8 @@
 
 | 发行渠道 | 可核实事实 | 选型含义 |
 |---------|-----------|---------|
-| GitHub \`main\` | README 标题为 Deep-Live-Cam 2.1.6；公开 Python / PySide6 / ONNX Runtime 代码 | 可审计、可自行安装与测试 |
-| 官方 Release 2.6d | Release 文本宣布“Virtual Camera support ... via OBS” | 是官方**发布功能声明**，非 GitHub \`main\` 代码等价证明 |
+| GitHub `main` | README 标题为 Deep-Live-Cam 2.1.6；公开 Python / PySide6 / ONNX Runtime 代码 | 可审计、可自行安装与测试 |
+| 官方 Release 2.6d | Release 文本宣布“Virtual Camera support ... via OBS” | 是官方**发布功能声明**，非 GitHub `main` 代码等价证明 |
 | 官网 Lite / Ultimate | 官网明确提供订阅计划；2.8 Ultimate 早期访问 | 单独核对付费权益和软件构建 |
 | 可选云 AI 集成 | 官方网站 FAQ 表明需使用外部服务/API key | **不满足纯本地** 数据路径 |
 
