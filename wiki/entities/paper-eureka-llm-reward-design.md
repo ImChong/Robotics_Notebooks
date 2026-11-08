@@ -15,6 +15,7 @@ code: https://github.com/eureka-research/Eureka
 related:
   - ../entities/painode-332-eurekanvidia.md
   - ../concepts/reward-design.md
+  - ./paper-end-of-reward-engineering.md
   - ../methods/ppo.md
   - ../methods/reinforcement-learning.md
   - ../concepts/curriculum-learning.md
@@ -142,6 +143,7 @@ flowchart TD
 
 - [Eureka (NVIDIA) 清单索引页](../entities/painode-332-eurekanvidia.md)：awesome-physical-ai 里的 Eureka 条目，仅有清单坐标；本页是同一工作的论文独立节点，同一 arXiv 的深读以本页为准
 - [奖励设计](../concepts/reward-design.md)
+- [奖励工程的终结：LLM 与多智能体协作（观点论文）](./paper-end-of-reward-engineering.md) — 将 Eureka 的单智能体奖励生成证据放到两条 MARL 路径与待验证假说中，勿误读为新多智能体实测。
 - [人形策略奖励函数](../concepts/humanoid-policy-reward-functions.md)
 - [强化学习](../methods/reinforcement-learning.md)
 - [PPO](../methods/ppo.md)
