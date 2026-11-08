@@ -69,6 +69,8 @@ flowchart LR
 
 ## 工程实践
 
+**新增可编程渲染层的对照：** [Vork — Agent 原生 3D/VFX 引擎](../entities/vork.md) 让 Agent 编写 Scene/Slang 并以 Vulkan/Metal GPU 输出镜头与合成结果；它与 Sand3D 的参数化资产生成职责不同，且目前没有验证其能替代 MuJoCo 或 Isaac Sim 的刚体动力学、碰撞接触和控制训练。**“渲染出图”不等于“获得可信物理仿真”。**
+
 1. **只要外形/渲染或快速布景：** 取 Sand3D 数据中的程序，修改部件尺寸并导出 GLB；保留原始 `program` 以便维护。
 2. **要机械结构或可动机构：** 使用 `s3d.joint` 定义关节轴与范围，导出 `URDF` 或 `USDA` 并检查父子 link / 原点 / 关节范围。
 3. **要 ROS、MuJoCo 或 Isaac Sim 真正运动/接触：** 在导出基础上补充 mass/inertia、collision、effort、velocity、actuation 与接触参数，在目标引擎中进行加载与运动测试；官方源码没有提供这些完整属性。
@@ -84,6 +86,8 @@ flowchart LR
 - 本页面依据原文和公开 writer 源码做选型分析，**未独立执行 Blender、MuJoCo 或 Isaac Sim 基准测试**。
 
 ## 关联页面
+
+- [Vork — Agent-native 3D/VFX](../entities/vork.md) — Scene/Slang 编程渲染与物理仿真资产的边界。
 
 - [Sand3D](../entities/sand3d.md) — 统一程序语言、10 万级数据与源代码导出的详细核验。
 - [Articraft](../entities/articraft.md) — 可关节资产的 Agent + SDK 管线；也是 Sand3D 的原始数据来源之一。
