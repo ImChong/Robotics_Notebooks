@@ -49,27 +49,23 @@ def affected_pages(scope: dict, pages: list[Path], broken: dict) -> list[Path]:
                 affected.add(target)
         current = ROOT / name
         if current.is_file():
-            for target in wiki.extract_internal_links(
-                current.read_text(encoding="utf-8"), current
-            ):
+            for target in wiki.extract_internal_links(current.read_text(encoding="utf-8"), current):
                 if target in page_set:
                     affected.add(target)
 
     removed_wiki = {
-        (ROOT / name).resolve()
-        for name in scope["removed"]
-        if name.startswith("wiki/")
+        (ROOT / name).resolve() for name in scope["removed"] if name.startswith("wiki/")
     }
-    changed_sources = {
-        (ROOT / name).resolve() for name in scope["changed_sources"]
-    }
+    changed_sources = {(ROOT / name).resolve() for name in scope["changed_sources"]}
     if removed_wiki or changed_sources:
         for page in pages:
             content = page.read_text(encoding="utf-8")
             # Revalidate pages whose original: archive or Markdown links changed.
             targets = set(wiki.extract_internal_links(content, page))
-            if any((page.parent / entry).resolve() in changed_sources
-                   for entry in wiki.original_entries(content)):
+            if any(
+                (page.parent / entry).resolve() in changed_sources
+                for entry in wiki.original_entries(content)
+            ):
                 affected.add(page.resolve())
             if targets & (removed_wiki | changed_sources):
                 affected.add(page.resolve())
@@ -77,9 +73,7 @@ def affected_pages(scope: dict, pages: list[Path], broken: dict) -> list[Path]:
     # Check all pages linking to newly deleted wiki targets (including broken links).
     for page, targets in broken.items():
         if any(
-            (ROOT / name).resolve() in removed_wiki
-            for name in targets
-            if name.startswith("wiki/")
+            (ROOT / name).resolve() in removed_wiki for name in targets if name.startswith("wiki/")
         ):
             affected.add(page)
     return sorted(path for path in affected if path in page_set)
