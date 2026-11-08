@@ -13,6 +13,7 @@ sources:
   - ../../sources/repos/deep-live-cam.md
   - ../../sources/sites/deep-live-cam-official.md
 related:
+  - ./facefusion.md
   - ./paper-argus-deepfake-forensics.md
   - ./keentools-facebuilder.md
   - ../concepts/image-segmentation-taxonomy.md
@@ -132,6 +133,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [FaceFusion：人脸图像与视频处理平台](./facefusion.md) — 多处理器 CLI / job 调度及图像-视频工作流，对照本项目的实时摄像头路径
 - [ARGUS：可泛化深度伪造视频鉴伪](./paper-argus-deepfake-forensics.md) — 人脸合成与伪造检测为攻防不同任务
 - [KeenTools FaceBuilder](./keentools-facebuilder.md) — 真实头部几何重建与 2D 换脸的边界
 - [图像分割方法分类](../concepts/image-segmentation-taxonomy.md) — 区域掩膜、边界合成的视觉工程背景
