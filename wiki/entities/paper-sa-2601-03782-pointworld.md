@@ -48,7 +48,7 @@ summary: "PointWorld（arXiv:2601.03782，NVIDIA/Stanford，CVPR 2026 Highlight�
 - 文内口径：约 **200 万** 条轨迹规模化；推理约 **0.1 s** 可做 MPC。
 - **已开源** `NVlabs/PointWorld`（清单原未标代码，2026-09-02 补查）。
 
-## 核心信息
+## 核心原理
 
 | 项 | 内容 |
 |----|------|
@@ -132,9 +132,7 @@ sequenceDiagram
 | [CLAP 跨本体地图](../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md) | 视频跨本体对照 |
 
 
-## 工程实践
 
-官方仓库 `NVlabs/PointWorld` 提供 `train.py`、`eval.py`、`scene_featurizer.py`，数据分支负责数据准备；DINOv3 权重需自行获取，数据和检查点由官方 Hugging Face 分发。
 
 
 ## DINOv3 世界模型一手资料复核（2026-11-08）
