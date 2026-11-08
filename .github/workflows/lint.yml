@@ -2,7 +2,7 @@ name: Wiki Lint
 
 on:
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review]
@@ -29,6 +29,16 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-ci-lite.txt
 
+      - name: Detect PR change scope
+        id: scope
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            python3 scripts/ci_change_scope.py --base "origin/${{ github.base_ref }}" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
+          else
+            python3 scripts/ci_change_scope.py --full --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
+          fi
+
       - name: Install dependencies
         run: pip install -r requirements-ci-lite.txt
 
@@ -50,7 +60,13 @@ jobs:
 
       # graph-stats.json 不入库（部署时生成），lint 的孤儿节点检查需要先现场生成
       - name: Generate graph-stats before lint
+        if: steps.scope.outputs.mode == 'full'
         run: python3 scripts/generate_link_graph.py
 
       - name: Run wiki lint
+        if: steps.scope.outputs.mode == 'full'
         run: python3 scripts/lint_wiki.py --report
+
+      - name: Lint changed and affected wiki pages
+        if: steps.scope.outputs.mode == 'ingest'
+        run: python3 scripts/ci_incremental_lint.py --scope-file "$RUNNER_TEMP/ci-scope.json"

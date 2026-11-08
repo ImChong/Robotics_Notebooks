@@ -2,6 +2,7 @@ import json
 import unittest
 from pathlib import Path
 
+import pytest
 from export_minimal import collect_paths
 from utils.paths import path_to_id
 
@@ -14,6 +15,7 @@ class WikiRoadmapsExportTests(unittest.TestCase):
         rel_paths = {p.relative_to(ROOT).as_posix() for p in paths}
         self.assertIn("wiki/roadmaps/humanoid-practitioner-entry-roadmap.md", rel_paths)
 
+    @pytest.mark.full_only
     def test_humanoid_practitioner_entry_roadmap_exports_to_detail_pages(self):
         page_id = path_to_id(
             ROOT / "wiki" / "roadmaps" / "humanoid-practitioner-entry-roadmap.md",

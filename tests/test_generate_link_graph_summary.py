@@ -5,10 +5,12 @@ from __future__ import annotations
 import re
 
 import generate_link_graph as glg
+import pytest
 
 _YAML_KEY_LINE = re.compile(r"^(title|type|status|created|updated|tags|summary|sources)\s*:")
 
 
+@pytest.mark.full_only
 def test_graph_node_summary_not_frontmatter_line() -> None:
     nodes, _edges = glg._build_graph_data()
     by_id = {str(n["id"]): n for n in nodes}

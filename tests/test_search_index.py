@@ -3,6 +3,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
@@ -10,6 +12,7 @@ from build_search_index import generate_search_index  # noqa: E402
 
 
 class SearchIndexTests(unittest.TestCase):
+    @pytest.mark.full_only
     def test_search_index_includes_tech_map_nodes(self):
         # Write to a temp path so running the test does not mutate the
         # real docs/search-index.json artifact in the working tree.

@@ -2,7 +2,7 @@ name: Tests
 
 on:
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review]
@@ -31,49 +31,82 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-dev.txt
 
+      - name: Detect PR change scope
+        id: scope
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            python3 scripts/ci_change_scope.py --base "origin/${{ github.base_ref }}" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
+          else
+            python3 scripts/ci_change_scope.py --full --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
+          fi
+
       - name: Install dev dependencies
         run: pip install -r requirements-dev.txt
 
       - name: Ruff check
+        if: steps.scope.outputs.mode == 'full'
         run: ruff check scripts/ tests/
 
       - name: Ruff format (check)
+        if: steps.scope.outputs.mode == 'full'
         run: ruff format --check scripts tests
 
       - name: Mypy
+        if: steps.scope.outputs.mode == 'full'
         env:
           PYTHONPATH: scripts
         run: mypy scripts
 
       - name: pip-audit (requirements-dev)
+        if: steps.scope.outputs.mode == 'full'
         run: python3 -m pip_audit -r requirements-dev.txt
 
       - name: Set up Node
+        if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.has_wiki == 'true'
         uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
 
       - name: npm ci (ESLint)
+        if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.has_wiki == 'true'
         run: npm ci
 
       - name: ESLint docs/main.js
+        if: steps.scope.outputs.mode == 'full'
         run: npm run lint:js
 
       - name: Validate all published Mermaid diagrams
+        if: steps.scope.outputs.mode == 'full'
         run: npm run lint:mermaid
 
+      - name: Validate Mermaid in changed wiki pages
+        if: steps.scope.outputs.mode == 'ingest' && steps.scope.outputs.has_wiki == 'true'
+        run: python3 scripts/ci_change_scope.py --validate-mermaid-from "$RUNNER_TEMP/ci-scope.json"
+
+      # 内容也会打破部分测试（如 company/lab 路线图指向的页面须有指定区块）；
+      # 只跳过 full_only（全图构建慢测试、依赖部署生成 exports），main 全量 CI 仍运行它们。
+      - name: Pytest without full_only tests (ingest)
+        if: steps.scope.outputs.mode == 'ingest'
+        env:
+          PYTHONPATH: scripts
+        run: python3 -m pytest -m "not full_only" --no-cov --durations=10
+
       - name: Frontend reliability behavior tests
+        if: steps.scope.outputs.mode == 'full'
         run: npm run test:frontend
 
       # 快照测试（test_community_naming / test_wiki_roadmaps_export）读取
       # exports/link-graph.json 与 exports/site-data-v1.json，二者不再入库，先生成
       - name: Generate export snapshots for tests
+        if: steps.scope.outputs.mode == 'full'
         run: |
           python3 scripts/export_minimal.py
           python3 scripts/generate_link_graph.py
 
       - name: Pytest with coverage
+        if: steps.scope.outputs.mode == 'full'
         env:
           PYTHONPATH: scripts
-        run: python3 -m pytest
+        run: python3 -m pytest --durations=20

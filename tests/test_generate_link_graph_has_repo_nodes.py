@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import generate_link_graph as glg
+import pytest
 
 
+@pytest.mark.full_only
 def test_build_graph_nodes_write_public_has_repo() -> None:
     nodes, _edges = glg._build_graph_data()
     by_id = {str(n["id"]): n for n in nodes}

@@ -2,6 +2,8 @@ import sys
 import unittest
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
@@ -32,6 +34,7 @@ class CommunitySearchAliasTests(unittest.TestCase):
         self.assertEqual(aliases[0], "视觉-语言-动作")
         self.assertIn("Vision-Language-Action, VLA", aliases)
 
+    @pytest.mark.full_only
     def test_search_index_includes_aliases_for_paper_notebooks_hub(self) -> None:
         import tempfile
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import generate_link_graph as glg
+import pytest
 
 
 def test_pack_edges_as_indices_follows_node_order_and_drops_unknown_endpoints(capsys) -> None:
@@ -92,6 +93,7 @@ def test_pack_activity_days_compact_round_trips_every_reference() -> None:
     assert restored == days
 
 
+@pytest.mark.full_only
 def test_exported_graph_uses_index_edges() -> None:
     nodes, edges = glg._build_graph_data()
     packed = glg.pack_edges_as_indices(nodes, edges)

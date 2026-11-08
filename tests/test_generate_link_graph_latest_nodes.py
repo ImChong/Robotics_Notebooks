@@ -9,6 +9,7 @@ from pathlib import Path
 from unittest import mock
 
 import generate_link_graph as glg
+import pytest
 
 
 def _node(rel_path: str, label: str = "", type_: str = "concept") -> dict[str, object]:
@@ -140,12 +141,14 @@ class ResolveLatestNodesMaxTest(unittest.TestCase):
         self.assertEqual(glg.resolve_latest_nodes_max(0), 1)
         self.assertEqual(glg.resolve_latest_nodes_max(-3), 1)
 
+    @pytest.mark.full_only
     def test_build_graph_data_skips_self_loop_edges(self) -> None:
         nodes, edges = glg._build_graph_data()
         self_loops = [e for e in edges if e["source"] == e["target"]]
         self.assertEqual(self_loops, [])
 
 
+@pytest.mark.full_only
 class PaperHubStatsTest(unittest.TestCase):
     """top_paper_hubs：仅论文节点（type=entity/method 且带 paper 标签）按互链度排序。"""
 
@@ -254,6 +257,7 @@ class PaperHubStatsTest(unittest.TestCase):
             )
 
 
+@pytest.mark.full_only
 class RoadmapGraphNodesTest(unittest.TestCase):
     """roadmap/ 页面应作为 roadmap_page 节点进入 link-graph。"""
 
