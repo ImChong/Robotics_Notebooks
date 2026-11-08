@@ -255,6 +255,14 @@ op: ingest
 
 按主论文核对 DINOv3、GAWM、DUET-DINO、PointWorld、FlowWM、RLA-WM、JEPA-WMs；DINO-WM 作为使用 DINOv2 的历史对照。复用已有实体，追加缺少的原文/代码/项目页归档。原文和源码尚未全部通读；PR 保持 Draft 直至复核通过。
 
+## [2026-11-08] ingest | EmbodiedRSI 假设引导的机器人持续学习
+
+- **意图：** 收录哥伦比亚大学与普林斯顿大学 EmbodiedRSI 一手研究；澄清“机器人自己教自己”的模型/执行框架边界。
+- **论文：** arXiv:2610.10498v1（公开 12 页全文已读）；整理 VOI 选择、Hypothesis Graph、Code-Skill 联合试验、PPO 记忆 Manager、仿真与 SO-101 真机结果。
+- **可复现性：** 官方项目仓库只开放网站源码，未发现 EmbodiedRSI 可运行训练/部署实现；论文引用但未附的附录 A–I 另列公开材料缺口。
+- **知识节点：** [EmbodiedRSI](../wiki/entities/paper-embodiedrsi.md)；从 [RoboDoctor](../wiki/entities/paper-robodoctor.md) 加入站内关联。
+- **关键事实：** 冻结基础 VLA；真机零样本对象是仿真演化后的 harness；眼镜精密抓取任务出现回退。
+
 ## [2026-11-08] ingest | Vork Agent 原生 3D/VFX 渲染引擎 — 核对官方项目、源码、许可证与性能边界
 
 - 意图：为知识库补充 agent-native GPU 渲染工具，并与 Sand3D / 3D-as-Code 和机器人仿真描述建立对照。
