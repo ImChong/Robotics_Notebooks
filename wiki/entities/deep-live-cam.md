@@ -3,7 +3,7 @@ type: entity
 project_id: deep-live-cam
 project: https://deeplivecam.net/
 code: https://github.com/hacksider/Deep-Live-Cam
-tags: [software, deepfake, face-swap, webcam, video, onnx, digital-human, open-source]
+tags: [software, deepfake, face-swap, webcam, video, onnx, digital-human, open-source, independent-maintainer]
 status: complete
 updated: 2026-11-08
 original:
@@ -37,6 +37,8 @@ summary: "Deep-Live-Cam：单图身份驱动的本地实时换脸/视频处理�
 | GPU | Graphics Processing Unit | 加速人脸检测、替换及可选增强 |
 
 ## 为什么重要
+
+- **维护者归属：** 公开代码位于 GitHub 用户账号 [hacksider](https://github.com/hacksider) 下，本知识库按已有“独立维护者（Independent Maintainer）”类目归档；该分类不代表项目只有一位贡献者。
 
 - **数字人/演示链路的轻量入口**：无需为每个身份重新训练一个模型，适合在得到当事人授权时制作角色演示、直播特效与 HRI（人机交互）视觉化身。
 - **有明确的运行时结构**：把摄像头采集、目标人脸检测、身份替换、后处理与 UI 分离，便于学习真实视频推理系统中的缓存、有界队列与延迟权衡。
