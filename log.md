@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-08] ingest | Zane Hub #386《人形机器人的机械臂有哪几种构型》：新增 humanoid-arm-configuration 概念页，核对宇树 G1 / 傅利叶 GR-2 官方规格
+
 ## [2026-11-08] ingest | 视觉三维一手研究资源归档
 
 - **目的：** 用户给出十张课程目录，提取真正的原始论文、官方项目、源码和技术文档，明确排除 3D视觉工坊自身课程。

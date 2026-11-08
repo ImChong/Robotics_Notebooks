@@ -6536,6 +6536,7 @@
 - [HDF5 文件格式](wiki/concepts/hdf5-file-format.md) — HDF5**（Hierarchical Data Format version 5）是 **The HDF Group** 定义的 **二进制文件格式与逻辑数据模型**：用 **Group** 组 `📅unknown` `[wiki_page]`
 - [Hierarchical Quadruped Navigation Stack（四足分层导航栈）](wiki/concepts/hierarchical-quadruped-navigation-stack.md) — 四足分层导航栈** 将 **语义/语言目标、全局路径、局部运动、关节力矩** 拆成多层模块，避免「一个端到端网络从像素直接到电机」的工程不可控性。 `📅unknown` `[wiki_page]`
 - [HQP（Hierarchical QP）](wiki/concepts/hqp.md) — 分层二次规划（Hierarchical Quadratic Programming，HQP）**：全身控制（WBC）中处理多任务优先级冲突的优化框架，通过将任务按优先级分层求解，确保高优先级任务精 `📅unknown` `[wiki_page]`
+- [人形机械臂构型（自由度、轴线布置与传动）](wiki/concepts/humanoid-arm-configuration.md) — 机械臂构型**指关节数量与类型、每根轴的驱动方式、各轴线的空间布置三件事；人形机械臂是工业「垂直串联」（全转动 6R / 7R）臂按人体比例压缩后的后代，常见布置是每臂「肩三轴、肘一轴、腕三轴」七 `📅unknown` `[wiki_page]`
 - [人形整机闭环惯量标定（出厂体检）](wiki/concepts/humanoid-closed-loop-inertia-calibration.md) — 量产人形从「能演示」到「能稳定干活」，先要一份与身体一致的参数报告：运动学、惯量、IMU 零偏、足底力。工业臂那套**拆关节上台架**覆盖不了分布式质量与终身漂移；足式闭环会把上游误差放大进 [WBC `📅unknown` `[wiki_page]`
 - [人形认知可靠性鸿沟（抓杯 vs 过马路）](wiki/concepts/humanoid-cognitive-reliability-gap.md) — 人形认知可靠性鸿沟**指：当前 VLA 与技能组合已让机器人 increasingly 会「抓杯子」（目标识别 + 手眼协调），但距离「过马路」式 **有 `📅unknown` `[wiki_page]`
 - [人形关节驱控三层框架（FOC → 力矩环 → 阻抗层）](wiki/concepts/humanoid-joint-drive-control-framework.md) — 人形机器人关节模组（无框力矩电机 + 减速器 + 双编码器 + 驱控板）的驱控，是一套**以 FOC 电流环为底座、以力矩为中间语言、以阻抗控制为对外表达**的分层实时系统；每层带宽逐级留 5–10  `📅unknown` `[wiki_page]`
