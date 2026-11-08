@@ -5501,6 +5501,7 @@
 - [SSIO（自监督惯性里程计）](wiki/entities/paper-ssio.md) — SSIO** 使用已标定 IMU 数据构造训练信号，无需速度或位置标签即可从头训练惯性速度估计模型。 `📅unknown` `[entity_page]`
 - [SSP（arXiv:2608.14024）](wiki/entities/paper-ssp-syn2sim2phy-vla-eval.md) — SSP**（arXiv:2608.14024）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08.10–08 `📅unknown` `[entity_page]`
 - [SSR：开放世界人形安全对称穿越](wiki/entities/paper-ssr-humanoid-open-world-traversal.md) — SSR**（*Scaling Surefooted and Symmetric Humanoid Traversal to the Open World*，浙江大学，arXiv:2605.3077 `📅unknown` `[entity_page]`
+- [Stabilizing Reinforcement Learning with LLMs：稳定大语言模型的强化学习](wiki/entities/paper-stabilizing-rl-with-llms.md) — Stabilizing Reinforcement Learning with LLMs: Formulation and Practices**（*稳定大语言模型的强化学习：形式化分析与实践*； `📅unknown` `[entity_page]`
 - [StableMimic：人形动作跟踪与跌倒恢复](wiki/entities/paper-stablemimic.md) — StableMimic 以跟踪专家、恢复专家和本体感觉门控统一处理人形动作跟踪、跌倒后恢复及当前命令重获。 `📅unknown` `[entity_page]`
 - [STAIR：用目录做寻址的生成式检索](wiki/entities/paper-stair-toc-generative-retrieval.md) — STAIR**（*STructure Aware Information Retriever*，[arXiv:2609.03874](https://arxiv.org/abs/2609.0387 `📅unknown` `[entity_page]`
 - [StairMaster（四足机器人攀爬镂空楼梯）](wiki/entities/paper-stairmaster.md) — StairMaster 用三阶段 RL 训练四足机器人攀爬镂空楼梯：在噪声稀疏的深度输入下避免腿被卡住，并通过落脚点相关奖励改善踩点。 `📅unknown` `[entity_page]`

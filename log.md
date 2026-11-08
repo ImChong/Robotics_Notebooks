@@ -251,6 +251,13 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-08] ingest | sources/papers/stabilizing_rl_with_llms_arxiv_2512_01374.md — 通读 Qwen MiniRL 论文并关联策略优化
+
+- 通读 arXiv:2512.01374v3 全文 13 页（含附录），收录 MiniRL、IS 校正、clipping、MoE R2/R3 与数学推理实验。
+- 纠正误述：本文讨论 LLM 本身的强化学习稳定性，不涉及 LLM 环境反馈校验或机器人奖励塑造。
+- 官方复现状态：论文/arXiv 条目未列出可确认的作者官方训练代码入口；不虚构源码运行时序图。
+- 关键页面：wiki/entities/paper-stabilizing-rl-with-llms.md；反向关联 wiki/methods/policy-optimization.md。
+
 ## [2026-11-08] ingest | arXiv:2601.08237 — 语言化奖励与多智能体协作展望
 
 - 通读 arXiv v1 §1–8 和图 1–3 图注；归档 `sources/papers/end_of_reward_engineering_arxiv_2601_08237.md`，编译双语论文实体并补 Mermaid 机制流程。
