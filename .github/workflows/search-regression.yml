@@ -39,18 +39,36 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-ci-lite.txt
 
+      - name: Detect PR change scope
+        id: scope
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            python3 scripts/ci_change_scope.py --base "origin/${{ github.base_ref }}" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
+          else
+            python3 scripts/ci_change_scope.py --full --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
+          fi
+
       - name: Install dependencies
         run: pip install -r requirements-ci-lite.txt
 
       - name: Set up Node
+        if: steps.scope.outputs.mode == 'full'
         uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
 
       - name: Run CI preflight
+        if: steps.scope.outputs.mode == 'full'
         id: preflight
         run: python3 scripts/ci_preflight.py
+
+      # Full export still smoke-tests site generation for content-only ingest PRs;
+      # graph/lint/mermaid quality is checked separately in incremental jobs.
+      - name: Export smoke test (ingest)
+        if: steps.scope.outputs.mode == 'ingest'
+        run: python3 scripts/export_minimal.py
 
       - name: Summary
         if: always()
@@ -59,4 +77,4 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "步骤结果：**${{ steps.preflight.outcome }}**" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "脚本 \`ci_preflight.py\` 依次执行：目录同步与导出、搜索质量回归、\`lint_wiki --report\`、导出一致性检查。详见日志中的各子步骤。" >> "$GITHUB_STEP_SUMMARY"
+          echo "完整模式执行 ci_preflight；纯 ingest PR 仅运行导出 smoke test，其余校验交给增量 Wiki Lint / Mermaid 门禁。" >> "$GITHUB_STEP_SUMMARY"
