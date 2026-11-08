@@ -251,6 +251,8 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-08] ingest | 深蓝具身君《机器人强化学习最近三年在做什么》：新增综述概念页，并为 Eureka / DrEureka / VLA 泛化实证 / SimpleVLA-RL / 物体中心残差 RL 各建论文节点，VLA-MBPO 节点升级到 3/3，逐篇核对文章说法
+
 ## [2026-11-08] ingest | DAWN 对比学习投影头与深度鲁棒性机制复核
 
 - **意图：** 对现有 DAWN 项目条目补齐 Projection Head 的理论动机、正负样本构造及与随机潜状态的关系。

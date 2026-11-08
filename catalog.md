@@ -2210,6 +2210,7 @@
 - [DreamWaQ：从本体历史学习鲁棒四足行走](wiki/entities/paper-dreamwaq.md) — DreamWaQ**（*Learning Robust Quadrupedal Locomotion With Implicit Terrain Imagination via Deep Rein `📅unknown` `[entity_page]`
 - [DreamX-Phi：好看的未来不等于听动作的未来](wiki/entities/paper-dreamx-phi.md) — DreamX-Phi 1.0**（*Action-Conditioned Video World Model for Robotic Manipulation*；[arXiv:2608.13489 `📅unknown` `[entity_page]`
 - [DreamX（arXiv:2611.05377）](wiki/entities/paper-dreamx.md) — DreamX**（*DreamX: Video Diffusion Model is a Universal Latent Action Learner*，[arXiv:2611.05377](h `📅unknown` `[entity_page]`
+- [DrEureka（arXiv:2406.01967）](wiki/entities/paper-dreureka-sim-to-real.md) — DrEureka**（*DrEureka: Language Model Guided Sim-To-Real Transfer*，Ma、Liang 等，宾夕法尼亚大学 / NVIDIA / UT `📅unknown` `[entity_page]`
 - [DriftWorld（Fast World Modeling through Drifting）](wiki/entities/paper-driftworld.md) — DriftWorld**（*DriftWorld: Fast World Modeling through Drifting*，[arXiv:2607.15065](https://arxiv.o `📅unknown` `[entity_page]`
 - [DRIVE（多样性驱动的 VLA 强化微调）](wiki/entities/paper-drive-diversity-rl-vla.md) — DRIVE**（*Diversity-driven RL fIne-tuning for VLA gEneralization*，论文 *Many Ways to Succeed*，arXiv:2 `📅unknown` `[entity_page]`
 - [DriveTeach-VLA：教 VLA 看什么、看哪里](wiki/entities/paper-driveteach-vla.md) — DriveTeach-VLA**（*Teaching Vision-Language-Action Models What to See and Where to Look*，[arXiv:260 `📅unknown` `[entity_page]`
@@ -2333,6 +2334,7 @@
 - [ESCAPE（arXiv:2610.23943）](wiki/entities/paper-escape.md) — ESCAPE**（*ESCAPE: Egocentric Sensing for Collision Avoidance and Policy Execution*，[arXiv:2610.239 `📅unknown` `[entity_page]`
 - [ESP（Energy-Score Policy）](wiki/entities/paper-esp-energy-score-policy.md) — ESP**（arXiv:2610.07696，Makabe / Kim / Matsushita）是一种**无教师的一步多模态动作生成**方法：把策略上下文与噪声 z ~ N(0, I) 一次映射 `📅unknown` `[entity_page]`
 - [ESRP：具身场景家具重排规划](wiki/entities/paper-esrp.md) — ESRP**（*Embodied Scene Rearrangement Planning*，[arXiv:2608.27371](https://arxiv.org/abs/2608.27371 `📅unknown` `[entity_page]`
+- [Eureka：用编程大模型做奖励设计（arXiv:2310.12931）](wiki/entities/paper-eureka-llm-reward-design.md) — Eureka**（*Eureka: Human-Level Reward Design via Coding Large Language Models*，Ma 等，NVIDIA / UPenn  `📅unknown` `[entity_page]`
 - [事件相机动作识别：多帧表示上的 MAE 预训练](wiki/entities/paper-event-action-recognition-multi-frame-mae.md) — 论文：** *Event-based Action Recognition by Pre-Training on Multi-Frame Representations*（[arXiv:2610. `📅unknown` `[entity_page]`
 - [Event2Reward（arXiv:2610.39212）](wiki/entities/paper-event2reward.md) — Event2Reward**（*Event2Reward: Learning Robotic Rewards from Progress Relations*，[arXiv:2610.39212 `📅unknown` `[entity_page]`
 - [EventSync（arXiv:2610.27917）](wiki/entities/paper-eventsync.md) — EventSync**（*EventSync: Event-Driven Memory Updates for History-Dependent Manipulation*，[arXiv:261 `📅unknown` `[entity_page]`
@@ -3596,6 +3598,7 @@
 - [Nymeria（论文）](wiki/entities/paper-nymeria.md) — Nymeria: A Massive Collection of Multimodal Egocentric Daily Motion in the Wild**（Ma et al.，[arXiv `📅unknown` `[entity_page]`
 - [OAT：有序动作 Tokenization（Ordered Action Tokenization）](wiki/entities/paper-oat-ordered-action-tokenization.md) — OAT**（*Ordered Action Tokenization*，arXiv:2602.04215，Harvard / `📅unknown` `[entity_page]`
 - [ObjDream：用物体级理解与未来状态预测引导 VLA](wiki/entities/paper-objdream.md) — ObjDream**（论文 *ObjDream: Guiding Vision-Language-Action Models with Object-Level Understanding and `📅unknown` `[entity_page]`
+- [Object-Centric Residual RL for Zero-Shot Sim-to-Real VLA Enhancement（arXiv:2606.18953）](wiki/entities/paper-object-centric-residual-rl-vla.md) — Object-Centric Residual RL**（Kinam Kim, Namiko Saito, Heecheol Kim, Katsushi Ikeuchi, Jaegul Choo, `📅unknown` `[entity_page]`
 - [Obstacle-Conditioned Safety Nav（arXiv:2610.34674）](wiki/entities/paper-obstacle-conditioned-safety-nav.md) — Obstacle-Conditioned Safety Nav**（*Benchmarking Obstacle-Conditioned Safety in Household Robot Nav `📅unknown` `[entity_page]`
 - [OccAnyScene（统一室内外 3D 占据预测）](wiki/entities/paper-occanyscene.md) — OccAnyScene**（*Towards Unified Indoor-Outdoor 3D Occupancy Prediction*，[arXiv:2608.08696](https:// `📅unknown` `[entity_page]`
 - [OccluDex：自遮挡第一视角灵巧操作的分层三维视触觉表征学习](wiki/entities/paper-occludex.md) — OccluDex: Hierarchical 3D Visuo-Tactile Representation Learning for Egocentric Dexterous Manipulat `📅unknown` `[entity_page]`
@@ -4023,7 +4026,7 @@
 - [GigaWorld-Policy](wiki/entities/paper-rcl-2603-17240-gigaworld-policy-an-efficient-action-centered-wo.md) — GigaWorld-Policy: An Efficient Action-Centered World–Action Model** 收录于 [Awesome World-Action Mode `📅unknown` `[entity_page]`
 - [EVA](wiki/entities/paper-rcl-2603-17808-eva-aligning-video-world-models-with-executable.md) — EVA: Aligning Video World Models with Executable Robot Actions via Inverse Dynamics Rewards** 收录于  `📅unknown` `[entity_page]`
 - [VAMPO](wiki/entities/paper-rcl-2603-19370-vampo-policy-optimization-for-improving-visual-d.md) — VAMPO: Policy Optimization for Improving Visual Dynamics in Video Action Models** 收录于 [Awesome Wor `📅unknown` `[entity_page]`
-- [Towards Practical World Model-based Reinforcement Learning for Vision-Languag...](wiki/entities/paper-rcl-2603-20607-towards-practical-world-model-based-reinforcemen.md) — Towards Practical World Model-based Reinforcement Learning for Vision-Language-Action Models** 收录于 `📅unknown` `[entity_page]`
+- [Towards Practical World Model-based Reinforcement Learning for Vision-Language-Action Models（VLA-MBPO）](wiki/entities/paper-rcl-2603-20607-towards-practical-world-model-based-reinforcemen.md) — Towards Practical World Model-based Reinforcement Learning for Vision-Language-Action Models**（简称  `📅unknown` `[entity_page]`
 - [Do World Action Models Generalize Better than VLAs? A Robustness Study](wiki/entities/paper-rcl-2603-22078-do-world-action-models-generalize-better-than-vl.md) — Do World Action Models Generalize Better than VLAs? A Robustness Study** 收录于 [Awesome World-Action `📅unknown` `[entity_page]`
 - [DreamerAD](wiki/entities/paper-rcl-2603-24587-dreamerad-efficient-reinforcement-learning-via-l.md) — DreamerAD: Efficient Reinforcement Learning via Latent World Model for Autonomous Driving** 收录于 [A `📅unknown` `[entity_page]`
 - [Persistent Robot World Models](wiki/entities/paper-rcl-2603-25685-persistent-robot-world-models-stabilizing-multi.md) — Persistent Robot World Models: Stabilizing Multi-Step Rollouts via Reinforcement Learning** 收录于 [A `📅unknown` `[entity_page]`
@@ -4336,6 +4339,7 @@
 - [RISE：感知式人形起身的测试时运动引导](wiki/entities/paper-rise-humanoid-fall-recovery.md) — 一句话定义：** RISE 把未来身体状态作为可引导的运动意图，在测试时按目标路径、朝向或起身速度选择人形机器人的起身方式。 `📅unknown` `[entity_page]`
 - [RL Generalist Policy Improvement（arXiv:2611.06905）](wiki/entities/paper-rl-generalist-policy-improvement.md) — RL Generalist Policy Improvement**（*Reinforcement Learning Enables Scaling Generalist Robot Policy `📅unknown` `[entity_page]`
 - [海上异构任务分配 RL（arXiv:2610.15237）](wiki/entities/paper-rl-heterogeneous-task-allocation-spatio-temporal.md) — 海上异构任务分配 RL**（*Reinforcement Learning Based Heterogeneous Task Allocation Under Spatio-Temporal En `📅unknown` `[entity_page]`
+- [What Can RL Bring to VLA Generalization?（arXiv:2505.19789）](wiki/entities/paper-rl-vla-generalization-empirical-study.md) — What Can RL Bring to VLA Generalization? An Empirical Study*（Jijia Liu、Feng Gao 等，清华大学，NeurIPS 2025 `📅unknown` `[entity_page]`
 - [RL vs GC：对称比较四旋翼轨迹跟踪里的学习控制与几何控制](wiki/entities/paper-rl-vs-gc.md) — RL vs GC**（论文 *Leveling the Playing Field: Carefully Comparing Classical and Learned Controllers f `📅unknown` `[entity_page]`
 - [RLinf-USER：真机在线策略学习统一系统](wiki/entities/paper-rlinf-user.md) — RLinf-USER**（*A Unified and Extensible System for Real-World Online Policy Learning in Embodied AI `📅unknown` `[entity_page]`
 - [RLinf-VLA（arXiv:2510.06710）](wiki/entities/paper-rlinf-vla.md) — RLinf-VLA**（*RLinf-VLA: A Unified and Efficient Framework for Reinforcement Learning of Vision-Lan `📅unknown` `[entity_page]`
@@ -5406,6 +5410,7 @@
 - [SimpleMemVLA（Native-Video Memory for VLA）](wiki/entities/paper-simplememvla.md) — SimpleMemVLA**（arXiv:2609.05533，[OpenBMB/SimpleMemVLA](https:/ `📅unknown` `[entity_page]`
 - [SIMPLER：仿真里评真实数据训练的 manipulation 策略](wiki/entities/paper-simplerenv-real2sim-eval.md) — SIMPLER**（*Evaluating Real-World Robot Manipulation Policies in Simulation*，[arXiv:2405.05941](htt `📅unknown` `[entity_page]`
 - [SimpleTouch：用触觉专家扩展 VLA](wiki/entities/paper-simpletouch.md) — SimpleTouch 在预训练 π₀.₅ 上加入触觉专家，通过任务演示中的动作监督和未来触觉预测学习接触丰富操作。 `📅unknown` `[entity_page]`
+- [SimpleVLA-RL（arXiv:2509.09674）](wiki/entities/paper-simplevla-rl.md) — SimpleVLA-RL**（*SimpleVLA-RL: Scaling VLA Training via Reinforcement Learning*，[arXiv:2509.09674 `📅unknown` `[entity_page]`
 - [SimPT：面向干预式 VLA 后训练的自动化仿真框架](wiki/entities/paper-simpt-intervention-based-vla-post-training.md) — SimPT**（*SimPT: An Automated Simulation Framework for Intervention-Based VLA Post-Training*，[arXiv `📅unknown` `[entity_page]`
 - [Simulator Contact Artifacts Audit（arXiv:2610.41857）](wiki/entities/paper-simulator-contact-artifacts-audit.md) — Simulator Contact Artifacts Audit**（*When the Simulator Fails, Not the Policy:Auditing Contact Art `📅unknown` `[entity_page]`
 - [SimVLA：从仿真到真实家庭的移动操作 VLA](wiki/entities/paper-simvla-zero-shot-mobile-manipulation.md) — SimVLA**（Zero-Shot Sim-to-Real VLA Learning for Mobile Manipulation）提出完全依靠仿真监督训练移动操作视觉-语言-动作策略，并直接 `📅unknown` `[entity_page]`
@@ -6639,6 +6644,7 @@
 - [连杆惯量与转子惯量（Robot Link vs Rotor Inertia）](wiki/concepts/robot-link-and-rotor-inertia.md) — 人形与腿足机器人的「关节有多沉」，在工程上往往来自 **两件不同的事**：**连杆刚体惯量**（机械结构质量分布）与 **电机转子经减速器反射的等效惯量**（传动链旋转部件）。混淆两者会导致仿真偏轻、 `📅unknown` `[wiki_page]`
 - [机器人整机通信架构（总线分域 → 拓扑 → 时钟同步 → 延迟预算）](wiki/concepts/robot-onboard-communication-architecture.md) — 整机通信架构**回答：几十个关节、多路相机与 IMU、主控与外部运维工具之间，**数据分几个域、走什么拓扑、时间基准怎么统一、从传感到力矩输出的延迟预算怎么分配**——单点协议选型（[CAN vs `📅unknown` `[wiki_page]`
 - [机器人整机配电架构（电池 → 母线 → DC/DC → 线束 → 安全回路）](wiki/concepts/robot-power-distribution-architecture.md) — 整机配电架构**回答：电池里的能量经过哪些开关、变换与导线，才能在**几十个关节同时爆发力矩**时既不掉压、不烧线、不干扰编码器，又能在异常时**以可预期的方式停下来**。 `📅unknown` `[wiki_page]`
+- [机器人强化学习三年观察（2023–2026）](wiki/concepts/robot-rl-three-years-2026.md) — 深蓝学院「具身君」2026-11-08 的观察文章给出的论点是：这三年**变的不是优化器，而是强化学习被用在什么东西上**——从「教机器人做一个动作」变成「把一批已经会做的动作磨到可靠」；PPO 没被 `📅unknown` `[wiki_page]`
 - [机器人安全状态机（硬件 / 通信故障）](wiki/concepts/robot-safety-state-machine.md) — 机器人安全状态机** 用确定性有限状态机，在 **驱动器报错、总线超时、控制 deadline miss、估计发散** 时切到预定义安全态（阻尼、无力矩、冻结姿态），保证故障响应不依赖网络。 `📅unknown` `[wiki_page]`
 - [机器人仿真三层分工（Physics / Platform / Learning）](wiki/concepts/robot-simulation-three-layers.md) — 机器人仿真三层分工**把 Isaac、MuJoCo、Genesis 等工具按职责拆成：**物理引擎**算运动与接触，**仿真平台**组织场景与传感器，**学习框架**连接观测、奖励与训练评测。同一 `📅unknown` `[wiki_page]`
 - [Robot Structural Modal Analysis（机器人结构模态分析）](wiki/concepts/robot-structural-modal-analysis.md) — 结构模态**是线性多自由度结构振动的「基本形态」：每一阶模态由 **固有频率**（按什么节奏振）、**振型**（哪里怎样动）和 **阻尼比**（衰减多快）唯一描述；对机器人而言，低阶模态往往比静强 `📅unknown` `[wiki_page]`
