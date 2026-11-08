@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-08
 related:
   - ../concepts/embodied-perception-six-spatial-representations.md
   - ./autonomous-driving-core-algorithms-series.md
@@ -24,6 +24,7 @@ related:
   - ../entities/paper-panolog-ggps.md
   - ../entities/paper-gaussian-lic2.md
   - ../entities/paper-glob3r.md
+  - ../entities/paper-vnt-pa.md
   - ../entities/paper-slamformer-infinity.md
   - ../entities/paper-occanyscene.md
   - ../entities/paper-vs-graphs-visual-slam-scene-graph.md
@@ -73,6 +74,7 @@ sources:
   - ../../sources/repos/osiris-ai.md
   - ../../sources/repos/rustgis.md
   - ../../sources/sites/rustgis-app.md
+  - ../../sources/papers/vnt-pa_arxiv_2609_21212.md
 original:
   - ../../sources/papers/navigation2_marathon2_reading_arxiv_2003_00368.md
 summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR/VIO 里程计、Autoware 自动驾驶、Isaac ROS 加速感知建图，并与 OpenLoong 动力学、LeRobot/OpenVLA 具身学习对照分层选型。"
@@ -173,6 +175,8 @@ flowchart TB
 - **[MuSHR](../entities/mushr.md)**：低成本阿克曼平台 + 课程式 ROS 导航实验。
 - **[OOMWOO](../entities/oomwoo.md)**：开源家用扫地机器人整机（Gazebo + slam_toolbox + Nav2；仿真与安装已开源，硬件早期）。
 
+- **[VNT-PA（Visual Navigation Transformer with Pose Attention）](../entities/paper-vnt-pa.md)**：宾夕法尼亚大学的**已探索环境 PointGoal** 研究路线，以历史深度关键帧的平面位姿作 Pose RoPE，直接注意力规划（HM3D SR 93.3% / SPL 90.4%）。**不生成 Nav2 占据代价地图、仍依赖定位，也未验证真实 ROS2 导航替代**；官方训练/评估代码已开源。
+
 ### 2D SLAM
 
 - **[SLAM Toolbox](../entities/slam-toolbox.md)**：Karto 后端、序列化大地图、定位/建图模式切换；Nav2 社区常用搭档。
@@ -253,6 +257,7 @@ flowchart TB
 
 ## 参考来源
 
+- [VNT-PA 原论文通读（arXiv:2609.21212）](../../sources/papers/vnt-pa_arxiv_2609_21212.md)
 - [Navigation2 原论文通读：The Marathon 2](../../sources/papers/navigation2_marathon2_reading_arxiv_2003_00368.md)
 - [sources/repos/navigation_slam_autonomy_stack_catalog.md](../../sources/repos/navigation_slam_autonomy_stack_catalog.md)
 - 本页所列各 `sources/repos/*.md` 条目
@@ -269,6 +274,7 @@ flowchart TB
 - [人形系统课程策展](../entities/humanoid-system-curriculum.md) — Ch3–5 导航/探索映射
 - [LiDAR / LIO / VIO 选型对比](../comparisons/lidar-slam-lio-vio-selection.md)
 - [Navigation2](../entities/navigation2.md)
+- [VNT-PA](../entities/paper-vnt-pa.md) — 位姿索引深度记忆 + 学习式规划，对照显式地图和 A*
 - [OOMWOO](../entities/oomwoo.md) — 开源家用扫地机整机（Nav2 应用入口）
 - [Autoware](../entities/autoware.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
