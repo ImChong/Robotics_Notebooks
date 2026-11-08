@@ -5,7 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-    types: [opened, synchronize, reopened, ready_for_review]
+    # edited：改 PR 正文后重跑，正文健康度汇报检查才能转绿
+    types: [opened, synchronize, reopened, ready_for_review, edited]
   workflow_dispatch:
 
 concurrency:
@@ -70,3 +71,11 @@ jobs:
       - name: Lint changed and affected wiki pages
         if: steps.scope.outputs.mode == 'ingest'
         run: python3 scripts/ci_incremental_lint.py --scope-file "$RUNNER_TEMP/ci-scope.json"
+
+      # 新增/改动 wiki 页的 PR 须在正文贴 report_health.py 表格（schema/ingest-workflow.md 步骤 8.5）。
+      # 前面步骤失败也照跑，一次运行就能看到全部问题；正文经环境变量传入，不拼进脚本。
+      - name: Check node health report in PR body
+        if: ${{ !cancelled() && github.event_name == 'pull_request' }}
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: python3 scripts/report_health.py --check-pr-body
