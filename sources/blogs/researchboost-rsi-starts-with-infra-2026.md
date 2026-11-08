@@ -3,7 +3,7 @@
 - **类型：** 官方技术博客／研究系统方法
 - **英文标题：** ResearchBoost: RSI starts with Infra
 - **中文标题：** ResearchBoost：从研究基础设施出发的有界 AI4AI 优化
-- **作者：** Xu Huang（黄旭；原文署名网页）
+- **作者：** Xu Huang（原文作者站点署名）
 - **原文发表：** 2026-10-19
 - **原文：** https://ydove0324.github.io/hx_resume/blog/researchboost/
 - **官方代码：** https://github.com/DAGroup-PKU/ResearchBoost-Agent
