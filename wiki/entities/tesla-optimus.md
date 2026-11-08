@@ -50,7 +50,6 @@ sources:
 | **演示** | 工厂/活动演示频繁；量产能力仍行业争议 |
 
 ## 关联页面
-- [人形机械臂构型](../concepts/humanoid-arm-configuration.md)
 
 - [人形机器人](./humanoid-robot.md)
 - [1X Technologies](./1x-technologies.md)
