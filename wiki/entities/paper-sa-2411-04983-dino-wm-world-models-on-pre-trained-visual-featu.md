@@ -1,9 +1,11 @@
 ---
 type: entity
+project_id: dino-wm-dinov2
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
-status: complete
-updated: 2026-10-12
+status: draft
+updated: 2026-11-08
 arxiv: "2411.04983"
+code: https://github.com/gaoyuezhou/dino_wm
 venue: "arXiv 2024"
 summary: "World models on pre-trained visual features enable zero-shot planning."
 related:
@@ -13,6 +15,8 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+original:
+  - ../../sources/papers/sun_awesome_wm_2411_04983_dino-wm-world-models-on-pre-trained-visu.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2411_04983_dino-wm-world-models-on-pre-trained-visu.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
@@ -106,6 +110,49 @@ World models on pre-trained visual features enable zero-shot planning.
 
 1. 不要把 Awesome 条目的 Highlights 当成完整方法证明——它只是策展导读。
 2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 用户
+    participant Train as train.py
+    participant Data as datasets/
+    participant WM as models/
+    participant Plan as plan.py
+    participant CEM as planning/
+    User->>Train: --config-name train.yaml env=point_maze
+    Train->>Data: 加载离线视觉轨迹
+    Train->>WM: 训练 DINOv2 特征预测世界模型
+    User->>Plan: model_name=point_maze planner=cem
+    Plan->>WM: 加载模型并预测未来特征
+    Plan->>CEM: 优化动作序列与视觉目标距离
+    CEM-->>Plan: 规划动作
+```
+
+图只表示 `README.md` 提供的训练/规划调用接口；未执行。
+
+
+## 工程实践
+
+官方 `gaoyuezhou/dino_wm` 提供 `train.py` 离线训练及 `plan.py` + CEM 目标图像规划；论文与仓库使用 DINOv2。
+
+
+## 局限与风险
+
+- 尚未完成主论文与附录逐段通读，不作为完整复现指南；数值比较须保持同任务、同评测协议。
+- 代码可见不代表依赖、权重、训练实现全部公开，也不代表已执行。
+
+
+## DINOv3 世界模型一手资料复核（2026-11-08）
+
+DINO-WM（2024/2025）采用预训练 DINOv2 特征构建无奖励零样本视觉目标规划的世界模型，属于 DINOv3 时代的前作/基线，不应标成 DINOv3 世界模型。
+
+官方 `gaoyuezhou/dino_wm` 提供 `train.py` 离线训练及 `plan.py` + CEM 目标图像规划；论文与仓库使用 DINOv2。
+
+- [作者论文](https://arxiv.org/abs/2411.04983) · [原文归档](../../sources/papers/sun_awesome_wm_2411_04983_dino-wm-world-models-on-pre-trained-visu.md) · [代码核验记录](../../sources/repos/dinov3-wm-dino-wm.md)
+- 本次阅读并未覆盖论文所有章节/附录，也没有完成所有核心源码调用链审计；节点标为 **draft**，来源标为 **通读：未完成**。
 
 ## 关联页面
 

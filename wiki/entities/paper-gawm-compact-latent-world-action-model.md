@@ -4,14 +4,17 @@ tags:
   - paper
   - world-action-model
   - manipulation
-status: complete
-updated: 2026-11-02
+status: draft
+updated: 2026-11-08
 arxiv: "2610.37091"
+code: https://github.com/gaoxiang12/ga-wm
 project_id: gawm-compact-latent-world-action-model
 related:
   - ../overview/senlanke-weekly-2026-10-26-30-manipulation-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+original:
+  - ../../sources/papers/gawm-compact-latent-world-action-model_arxiv_2610_37091.md
 sources:
   - ../../sources/papers/gawm-compact-latent-world-action-model_arxiv_2610_37091.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
@@ -75,7 +78,23 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用**：arXiv 摘要页与评论未见代码或项目页链接（仅核对 arXiv 摘要页，不代表未发布），无可对齐的官方代码流程。
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 评测者
+    participant Setup as scripts/download_dinov3.py
+    participant Eval as scripts/run_libero_checkpoint_eval.py
+    participant Model as GAWM-S 推理模型
+    participant Env as LIBERO 评测环境
+    User->>Setup: 下载 DINOv3 ViT-S/16
+    User->>Eval: 指定 GAWM-S checkpoint
+    Eval->>Model: 加载权重并输入相机观测、任务、状态
+    Model-->>Eval: 动作块
+    Eval->>Env: 执行动作并收集结果
+    Env-->>Eval: 任务成功状态
+```
+
+README 另提供 `scripts/run_robotwin_hdf5_clean_eval.py`，训练代码尚待发布。
 
 ## 实验与评测
 
@@ -96,6 +115,27 @@ flowchart TD
 1. 本页是入库级摘要，复现前请核对论文正文、附录与代码仓库。
 2. 指标须连同实验条件解读。
 3. 关注 arXiv 版本更新与代码发布。
+
+
+## 工程实践
+
+GAWM-S 推理与评测代码、LIBERO/RoboTwin2 权重公开；训练入口 README 当前标为 `Coming soon`。官方报告 GAWM-S LIBERO 平均 95.6%、RoboTwin Clean 93.94% / Randomized 93.10%，是不同任务协议下的结果。
+
+
+## 局限与风险
+
+- 尚未完成主论文与附录逐段通读，不作为完整复现指南；数值比较须保持同任务、同评测协议。
+- 代码可见不代表依赖、权重、训练实现全部公开，也不代表已执行。
+
+
+## DINOv3 世界模型一手资料复核（2026-11-08）
+
+冻结 DINOv3 编码多相机图像，轻量潜空间预测器从当前观测与任务条件预测两个未来时刻的表征，再由动作解码器生成动作块；不等同于以候选动作 rollout 的 CEM 规划。
+
+GAWM-S 推理与评测代码、LIBERO/RoboTwin2 权重公开；训练入口 README 当前标为 `Coming soon`。官方报告 GAWM-S LIBERO 平均 95.6%、RoboTwin Clean 93.94% / Randomized 93.10%，是不同任务协议下的结果。
+
+- [作者论文](https://arxiv.org/abs/2610.37091) · [原文归档](../../sources/papers/gawm-compact-latent-world-action-model_arxiv_2610_37091.md) · [代码核验记录](../../sources/repos/dinov3-wm-gawm.md)
+- 本次阅读并未覆盖论文所有章节/附录，也没有完成所有核心源码调用链审计；节点标为 **draft**，来源标为 **通读：未完成**。
 
 ## 关联页面
 

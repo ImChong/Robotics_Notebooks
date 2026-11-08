@@ -1,8 +1,9 @@
 ---
 type: entity
+project_id: pointworld-3d-world-model
 tags: [paper, world-models, 3d, point-cloud, cross-embodiment, nvidia, stanford, awesome-world-models, sun254667-wm]
-status: complete
-updated: 2026-10-06
+status: draft
+updated: 2026-11-08
 arxiv: "2601.03782"
 venue: "CVPR 2026 Highlight"
 code: https://github.com/NVlabs/PointWorld
@@ -13,6 +14,8 @@ related:
   - ./paper-hrl-stack-35-dreamdojo.md
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md
 sources:
   - ../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -89,20 +92,22 @@ flowchart LR
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Dev as 开发者
-    participant Repo as NVlabs/PointWorld
-    participant PCD as RGB-D 点云
-    participant PW as 点流世界模型
-    participant MPC as 0.1s 规划
-    participant Robot as 真机
-    Dev->>Repo: clone + 权重
-    Dev->>PCD: 构建场景点云
-    PCD->>PW: 状态
-    Note over PW: 关节→机器人点流
-    PW->>MPC: 预测点流
-    MPC->>Robot: 控制指令
-    Robot-->>Dev: 野外操作结果
+    actor User as 研究者
+    participant Data as data 分支 / WebDataset
+    participant Feat as scene_featurizer.py
+    participant Train as train.py
+    participant WM as pointworld/ + ptv3/
+    participant Eval as eval.py
+    User->>Data: 准备 RGB-D 与机器人轨迹数据
+    User->>Feat: 准备场景/视觉点特征
+    User->>Train: --domains=droid --data_dirs=...
+    Train->>WM: 训练点流预测器
+    User->>Eval: 加载官方 checkpoint 与评测配置
+    Eval->>WM: 推理 3D 点流
+    WM-->>Eval: 预测点运动
 ```
+
+该图按训练/评测 README 入口整理，不表示本次已在本机运行。
 
 ## 局限与风险
 
@@ -117,6 +122,21 @@ sequenceDiagram
 | [DreamDojo](./paper-hrl-stack-35-dreamdojo.md) | 人视频 2D/隐空间，非点流 |
 | [LaDi-WM](./paper-sa-2505-11528-ladi-wm-a-latent-diffusion-based-world-model-for.md) | 图像隐空间扩散 |
 | [CLAP 跨本体地图](../overview/clap-cross-embodiment-vla-wm-9-papers-technology-map.md) | 视频跨本体对照 |
+
+
+## 工程实践
+
+官方仓库 `NVlabs/PointWorld` 提供 `train.py`、`eval.py`、`scene_featurizer.py`，数据分支负责数据准备；DINOv3 权重需自行获取，数据和检查点由官方 Hugging Face 分发。
+
+
+## DINOv3 世界模型一手资料复核（2026-11-08）
+
+PointWorld 的动态状态/动作表示是 3D 点流：结合 RGB-D 场景点云和机器人运动，预测全场景逐点位移；DINOv3 用于图像/3D 点的视觉特征增强，不是它唯一或最终的世界状态。
+
+官方仓库 `NVlabs/PointWorld` 提供 `train.py`、`eval.py`、`scene_featurizer.py`，数据分支负责数据准备；DINOv3 权重需自行获取，数据和检查点由官方 Hugging Face 分发。
+
+- [作者论文](https://arxiv.org/abs/2601.03782) · [原文归档](../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md) · [代码核验记录](../../sources/repos/dinov3-wm-pointworld.md)
+- 本次阅读并未覆盖论文所有章节/附录，也没有完成所有核心源码调用链审计；节点标为 **draft**，来源标为 **通读：未完成**。
 
 ## 关联页面
 
