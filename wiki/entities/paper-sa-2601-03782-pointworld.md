@@ -109,6 +109,14 @@ sequenceDiagram
 
 该图按训练/评测 README 入口整理，不表示本次已在本机运行。
 
+## 工程实践
+
+- **训练数据：** 按 [NVlabs/PointWorld 官方 README](https://github.com/NVlabs/PointWorld) 先在 `data` 分支准备 DROID / BEHAVIOR 的 WebDataset，再切换 `main` 训练与评测。
+- **视觉特征：** RGB-D 生成场景点云，结合冻结 DINOv3 的二维稠密特征并投影到三维点；机器人的 URDF 与正运动学把候选关节动作变为夹爪点流。
+- **训练入口：** `python train.py --domains=droid --data_dirs=/path/to/droid/wds --norm_stats_path=stats/droid ...`；多卡可用 `torchrun --nproc_per_node=... train.py --distributed=true ...`。
+- **评测入口：** `eval.py` 按官方配置读取检查点。模型以 3D 点流预测为目标，不能把图像生成指标当成接触动力学误差。
+- **部署关注：** RGB-D 标定和深度噪声、机器人几何与观测同步、0.1 s 推理延迟，以及 MPC 目标函数与实际安全约束。
+
 ## 局限与风险
 
 - **深度质量：** 野外 RGB-D 噪声直接进点云。
@@ -135,7 +143,7 @@ PointWorld 的动态状态/动作表示是 3D 点流：结合 RGB-D 场景点云
 
 官方仓库 `NVlabs/PointWorld` 提供 `train.py`、`eval.py`、`scene_featurizer.py`，数据分支负责数据准备；DINOv3 权重需自行获取，数据和检查点由官方 Hugging Face 分发。
 
-- [作者论文](https://arxiv.org/abs/2601.03782) · [原文归档](../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md) · [代码核验记录](../../sources/repos/dinov3-wm-pointworld.md)
+- [作者论文](https://arxiv.org/abs/2601.03782) · [原文归档](../../sources/papers/sun_awesome_wm_2601_03782_pointworld.md) · [代码核验记录](../../sources/repos/nvlabs-pointworld.md)
 - 本次阅读并未覆盖论文所有章节/附录，也没有完成所有核心源码调用链审计；节点标为 **draft**，来源标为 **通读：未完成**。
 
 ## 关联页面
