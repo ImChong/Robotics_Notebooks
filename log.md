@@ -251,6 +251,14 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-08] ingest | DAWN 对比学习投影头与深度鲁棒性机制复核
+
+- **意图：** 对现有 DAWN 项目条目补齐 Projection Head 的理论动机、正负样本构造及与随机潜状态的关系。
+- **一手资料：** arXiv:2609.29092v1 全文、<https://dawn-parkour.github.io/>、<https://github.com/DocyNoah/dawn-parkour> 的世界模型和 runner 关键训练源码。
+- **开源结论：** 官方已发布训练/仿真回放；未见独立预训练权重或真机通信部署入口。
+- **关键更新：** 论文式 (9) 与实现的 BT×BT 双向 CE 负样本组织差异；对应方法流程图、源码训练时序图与消融数字。
+- **知识页：** [DAWN](../wiki/entities/paper-dawn.md)。
+
 ## [2026-11-08] ingest | 具身小站《MIT模拟CSP的力控参数整定浅析》：新增 mit-mode-csp-emulation-tuning 方法页，公式自洽核对并标出与既有整定页的顺序差异
 
 ## [2026-11-08] ingest | Deep-Live-Cam — 单图实时换脸源码、官方版本与许可核验
