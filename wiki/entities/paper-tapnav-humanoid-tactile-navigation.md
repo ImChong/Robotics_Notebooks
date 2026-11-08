@@ -3,9 +3,11 @@
 type: entity
 tags: [paper, humanoid, navigation, tactile-sensing, active-perception, state-estimation, particle-filter, whole-body-control, unitree-g1, georgia-tech, harvey-mudd]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-08
 project_id: tapnav-humanoid-tactile-navigation
 arxiv: "2610.10748"
+original:
+  - ../../sources/papers/tapnav_arxiv_2610_10748.md
 project: https://tapnav.github.io/TAPNAV-Project/
 venue: "arXiv 2026"
 summary: "TAPNAV：无视觉人形导航——粒子滤波融合里程计/IMU/触觉接触，A* 全局规划约束不确定性、期望信息增益选择探触动作，RL 全身控制执行；MuJoCo 四图平均成功率 95%（Random-touch 77.5%，Odometry-only 22.5%），Unitree G1 仅定性演示。"
@@ -28,11 +30,13 @@ sources:
 
 **TAPNAV**（*Humanoid Navigation through Tactile Active Perception*，arXiv:2610.10748，Georgia Tech 的 Ye Zhao 团队等）是一个**不依赖相机/LiDAR 的人形导航框架**：在已知静态平面图上，机器人维护 SE(2) 位姿粒子信念，规划路径时让不确定性始终有界，并在不确定性过大时用手上的触觉末端主动“摸墙”，把接触/未接触结果当作定位观测来校正里程计漂移。
 
+**论文身份：** *TAPNAV: Humanoid Navigation through Tactile Active Perception*（《TAPNAV：通过触觉主动感知实现人形机器人导航》），arXiv:2610.10748v1，2026-10-07；作者 Huaze Liu、Zhenyu Wu、Jaehwi Jang、Junjie Sheng、Andrew Collins、Aaron Xie、Zhaoyuan Gu、Kaijie Zhu、Ding Jiang、Kevin Cai、Ye Zhao。所属机构为佐治亚理工学院（Georgia Institute of Technology）、哈维穆德学院（Harvey Mudd College）及 Walton High School；前三位作者共同一作。**当前是预印本 / 在审稿件，不等于已正式录用。**核对依据：[arXiv HTML 原文](https://arxiv.org/html/2610.10748v1)、[Georgia Tech IDAR 团队论文目录](https://lab-idar.gatech.edu/publications/)。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| TAPNAV | Tactile Active Perception Navigation | 本文框架：触觉主动感知 + 不确定性受限导航 |
+| TAPNAV | Humanoid Navigation through Tactile Active Perception | 本文框架名称，结合触觉主动感知、位姿信念规划与全身运动控制 |
 | EIG | Expected Information Gain | 局部规划选探触动作的准则，EIG = p·IG_c + (1−p)·IG_f |
 | IMU | Inertial Measurement Unit | 为粒子滤波提供偏航（航向）似然 |
 | PPO | Proximal Policy Optimization | 训练上/下半身全身控制器的 RL 算法 |
@@ -114,6 +118,13 @@ sequenceDiagram
     PF-->>GP: 位姿偏离 0.1 m 则重规划
 ```
 
+## 触觉定位中的关键区别
+
+- **触到墙：** 触点应落在地图中的表面上，因而形成沿局部表面法线的距离约束；在转角或柱体附近，不同表面法线能提供互补的二维位置约束（论文 Fig. 7）。
+- **未触到墙：** 并非“无数据”；若某个粒子预测手在停止前应碰到墙，那么未接触观测会降低该粒子的权重。EIG 明确纳入触到与未触到两种结果（论文式 (3)、(5)、(6)）。
+- **粒子滤波不等于规划时全粒子推演：** 估计器保留 600 个粒子；为了控制搜索成本，全局规划阶段以单峰高斯近似传播均值和协方差，并假设可达表面会提供一个近似的接触更新。
+- **控制指令接口：** 上半身目标包含左右末端在机身坐标系下的期望位姿、法向力、接触标志；下半身目标包含支撑脚坐标系下的期望落脚位姿、剩余步时及摆动脚标志。两策略共享关节、角速度、重力投影和历史动作；最终输出经 action scale 与默认关节位置相加送入 PD 控制器（论文 IV-D）。
+
 ## 实验与评测
 
 **仿真（MuJoCo）**：四张图（弯曲走廊 a、分隔房间 b、之字走廊 c、散落障碍房间 d），每图每方法 20 次（seed 0–19），1800 s 超时。基线：Odometry-only（不探触）、Random-touch（随机方向探触）、Sweep-touch（网格扫掠）。
@@ -144,8 +155,23 @@ sequenceDiagram
 ## 工程实践
 
 - **硬件**：G1 + 两只自制触觉末端（SensX 160 + 硅胶垫），无相机/LiDAR。
-- **开源状态（核查日 2026-10-12）**：[项目页](../../sources/sites/tapnav-project.md) 的 Code 项为 “Coming soon”，arXiv 页也未列仓库，**待发布**；故无 `sources/repos/` 条目。
+- **开源状态（2026-11-08 再核）**：[项目页](../../sources/sites/tapnav-project.md) 的 Code 项仍为 “Coming soon”。[TapNav/TAPNAV-Project](https://github.com/TapNav/TAPNAV-Project) 是**项目展示网站源码**（HTML/CSS/JS/视频素材），不是论文算法的训练、推理或部署实现，因此暂不建立算法 `sources/repos/` 归档。
 - **复现要点**：粒子数 600、网格 0.1 m、探触上限 4 次、停止阈值 0.15 nats、σ_c 0.018 m、σ_control 0.045 m 都已在论文给出，可先复现规划层，控制器需自行训练。
+
+## 复现检查清单（对照论文原文）
+
+| 检查项 | 公开信息与待补项 |
+|---|---|
+| 地图与先验 | 已知静态二维地图、已知初始位姿；未验证未知地图/拓扑对称导致的多模态定位 |
+| 位姿估计 | 600 粒子；里程计预测 + IMU 航向 + 接触/未接触更新；按有效粒子数重采样 |
+| 路径规划 | 0.1 m 栅格，0.2 m 墙体间隙，最大 0.4 m 位移，预测不确定性约束 0.18 m / 20° |
+| 主动触探 | 左/右末端、探测方向、EIG 评分、每子目标最多 4 次；低于 0.15 nats 停止 |
+| 控制器 | PPO 上下半身联合训练；上半身位姿/力跟踪、下半身落脚点跟踪；200/50 Hz |
+| 仿真验收 | 4 地图 × 20 seeds/方法 = 80 次/方法；同时报告成功率与**仅成功试验**的定位误差 |
+| 真机验收 | G1 厨房与走廊为定性演示；**无原文统计成功率**，不能把仿真 95% 视为真机表现 |
+| 复刻阻塞项 | 论文未给出触觉力阈值、完整 PPO 超参数和训练权重；科研实现源码尚未开放 |
+
+**一手证据定位：** arXiv v1 的 III–IV 节（传感器/算法/控制）、Table I（参数）、Table II（四地图对比）、Fig. 8（航向噪声敏感性）、Fig. 9（落脚点与速度控制）、Fig. 10（真机）。[逐节核对记录](../../sources/papers/tapnav_arxiv_2610_10748.md)。
 
 ## 局限与风险
 
@@ -180,4 +206,5 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [TAPNAV 项目页](https://tapnav.github.io/TAPNAV-Project/)
+- [官方项目页 HTML 源文件（仅网站，不是研究代码）](https://github.com/TapNav/TAPNAV-Project/blob/main/index.html)
 - [arXiv HTML 全文](https://arxiv.org/html/2610.10748v1)
