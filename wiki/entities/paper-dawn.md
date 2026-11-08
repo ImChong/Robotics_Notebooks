@@ -112,6 +112,7 @@ sequenceDiagram
     Runner->>Env: step(actions)
     Runner->>Storage: 保存干净和带噪深度及动作
   end
+  Runner->>Alg: compute_returns() 和 update() PPO / AMP
   Runner->>Storage: sample_world_model_indices()
   Storage-->>Runner: 序列数据
   Runner->>WM: _train(image, image_clean, action)
@@ -120,7 +121,6 @@ sequenceDiagram
   WM->>Head: latent_traj.s 和 latent_clean.s
   Head-->>WM: 双向交叉熵对比损失
   WM-->>Runner: 重建损失 + KL + 对比损失
-  Runner->>Alg: update() PPO / AMP
 ```
 
 入口来自[源码核查](../../sources/repos/dawn-parkour.md)；回放使用 `dawn.play → DawnEvalRunner`。图描述训练主干调用，不是 Go1 真机通信实现。
