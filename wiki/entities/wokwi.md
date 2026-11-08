@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, embedded, firmware, iot, arduino, esp32, education, wokwi]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-08
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./simplefoc.md
@@ -22,6 +22,10 @@ summary: "Wokwi：浏览器端嵌入式电路仿真器，覆盖 Arduino/ESP32/ST
 # Wokwi
 
 **Wokwi**（[wokwi.com](https://wokwi.com/)）是面向 **MCU + 外围电路** 的 **在线电子仿真平台**：在浏览器里组装 Arduino、ESP32、STM32、Raspberry Pi Pico 与传感器/显示器/总线外设，运行真实工具链编译出的固件，并可选接入 Wi-Fi、GDB 与自动化测试。**它不是** MuJoCo / Isaac 类的机器人物理仿真器，而是机器人栈中 **嵌入式 bring-up、IoT 遥测原型与教学** 的轻量工具。
+
+## 一句话定义
+
+Wokwi 用模拟 MCU 与外设执行编译后的固件，以低成本复现串口、I2C、SPI 等接口逻辑和自动化测试；它不模拟机器人刚体动力学或接触。
 
 ## 英文缩写速查
 
@@ -43,7 +47,7 @@ summary: "Wokwi：浏览器端嵌入式电路仿真器，覆盖 Arduino/ESP32/ST
 - **ESP32 IoT 路径官方背书**：[ESP-IDF 文档](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/third-party-tools/wokwi.html) 将 Wokwi 列为第三方仿真工具，并说明 VS Code、CLion、`wokwi-cli` 与 `pytest-embedded-wokwi` 工作流。
 - **补「物理仿真管不了」的一层**：腿足 RL 的 [仿真器选型](../queries/simulator-selection-guide.md) 讨论的是刚体与接触；Wokwi 覆盖 **固件线程、外设寄存器语义与网络栈**——与 [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md) 目标相邻，但 fidelity 与搭建成本远低于全栈 PiL。
 
-## 核心结构/机制
+## 核心原理：固件与外设协同仿真
 
 ### 仿真对象分层
 
@@ -78,7 +82,11 @@ flowchart LR
 
 [Betaflight](./betaflight.md) 等飞控固件面向 **STM32 飞控板真机烧录**；Wokwi 可仿真部分 STM32 与外设教学场景，但 **不能** 作为 FPV 飞控 SITL 或 PX4 动力学替代品。空中栈仿真仍见 [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)。
 
-## 常见误区或局限
+## 工程实践
+
+以机器人传感器节点为例，先在 Wokwi 配置目标 MCU、I2C 设备和 UART 调试串口，加载与实机一致的固件构建产物；启动仿真并核对地址扫描、寄存器读写与串口日志，再使用 `wokwi-cli` 将关键用例纳入回归。仿真通过后仍需在真机测量电气时序、噪声与实时性，此步骤不可省略。
+
+## 局限与风险
 
 - **误区：Wokwi = 机器人仿真器** — 无浮基动力学、接触力或关节 RL 环境；locomotion 训练应选 [MuJoCo](./mujoco.md) / [Isaac Lab](./isaac-lab.md) 等。
 - **误区：Wi-Fi 仿真等于真机射频环境** — 协议栈可跑通，但延迟、丢包与天线遮挡与实物仍有差距。
