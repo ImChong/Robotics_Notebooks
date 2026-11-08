@@ -136,6 +136,7 @@
 - [Blender（开源 3D 创作套件）](wiki/entities/blender.md) — Blender** 是由 **Blender Foundation** 维护的 **免费开源 3D 创作套件**，覆盖建模、雕刻、UV、绑定、动画、物理模拟、路径追踪渲染、合成、运动跟踪与视频编辑 `📅unknown` `[entity_page]`
 - [BlinkMimic：分钟级人形全身动作跟踪](wiki/entities/blinkmimic.md) — BlinkMimic** 基于社区 SuperMimic 实现和 InstantTrack，通过结构化世 `📅unknown` `[entity_page]`
 - [BLIP](wiki/entities/blip.md) — BLIP 统一理解与生成的图文预训练：通过自举过滤噪声网图，并联合对比、匹配与语言模型目标，为后续 BLIP-2 奠基。 `📅unknown` `[entity_page]`
+- [Blueprint3D｜二维户型图到三维建筑模型（Floor Plan to 3D）](wiki/entities/blueprint3d-ashnomad.md) — Blueprint3D**（ashnomad/Blueprint3D）是把 2D 平面图转成粗 3D 建筑几何的三模块 Python 管线：SplitFloor 识别建筑结构，SemaFloor  `📅unknown` `[entity_page]`
 - [BONES-SEED：日常具身动作数据集](wiki/entities/bones-seed.md) — 一句话定义：** BONES-SEED 是面向人形机器人研究的动作捕捉库，提供日常行为、全身动作、语言描述与 SOMA / Unitree G1 兼容轨迹。 `📅unknown` `[entity_page]`
 - [book-to-skill（将技术资料编译为 Agent Skill）](wiki/entities/book-to-skill.md) — book-to-skill** 是一个开源资料编译器：把技术书籍、文档目录或研究资料集合整理成可由多个代理读取的 skill，并将章节内容拆分为按需加载的文件。 `📅unknown` `[entity_page]`
 - [booster_mjlab（Booster K1 × mjlab）](wiki/entities/booster-mjlab.md) — booster_mjlab** 是由 whIRLwind Amsterdam（Intelligent Robotics Lab）维护的开源项目 `📅unknown` `[entity_page]`
@@ -956,6 +957,7 @@
 - [McByte++：无训练的长时体育多目标跟踪](wiki/entities/mcbyte-plus-plus.md) — McByte++** 是 Inria STARS 开发的体育视频多目标跟踪系统：它在 McByte 的检测跟踪框架上整合轻量掩码传播、条件相机运动补偿和在线行人再识别（Re-ID），以便球员被遮挡 `📅unknown` `[entity_page]`
 - [Mechtool 在线机械设计工具](wiki/entities/mechtool.md) — Mechtool**（www.mechtool.cn）是中文机械设计资料导航与在线计算站，把设计手册式资料、标准对照和零部件计算器放在同一入口（站点自述，未核实运营方）。 `📅unknown` `[entity_page]`
 - [MediaPipe](wiki/entities/mediapipe.md) — MediaPipe** 是 Google 维护的 **端侧机器学习** 开源项目：既有可即插即用的 **Solutions / Tasks**（视觉、文本、音频），也有底层的 **Framewor `📅unknown` `[entity_page]`
+- [MengTo/Skills｜设计师与开发者的 AI Agent 技能库（Agent Skills）](wiki/entities/mengto-skills.md) — MengTo/Skills** 是 Meng To 开源的可移植 Agent Skills 集合，把网页设计、Three.js、游戏、插画、媒体与质量验证流程做成 `SKILL.md` 规约，由  `📅unknown` `[entity_page]`
 - [Mermaid.js（文本定义图表）](wiki/entities/mermaid-js.md) — Mermaid.js**（GitHub）是一个 MIT 开源的 JavaScript 图表库：作者用接近 Mark `📅unknown` `[entity_page]`
 - [Meshroom](wiki/entities/meshroom.md) — Meshroom**（alicevision/Meshroom，MPL-2.0）是 **AliceVision `📅unknown` `[entity_page]`
 - [MetaHuman（Epic 数字人平台）](wiki/entities/metahuman.md) — MetaHuman** 是 **Epic Games** 在 **Unreal Engine** 生态内提供的 **高保真数字人（digital human）** 创作与动画平台：通过 **Met `📅unknown` `[entity_page]`
@@ -5956,6 +5958,7 @@
 - [Part-DB（电子元件库存管理）](wiki/entities/part-db.md) — Part-DB** 是部署在服务器、通过浏览器访问的开源电子元件库存管理系统。 `📅unknown` `[entity_page]`
 - [Particles4All](wiki/entities/particles4all.md) — Particles4All**（GitHub，[在线 Demo](https://particle `📅unknown` `[entity_page]`
 - [Party OS（RoboParty 人形研发底座）](wiki/entities/party-os.md) — Party OS** 是 RoboParty 旗下 RoboParty Lab 对外沉淀的 **开放研 `📅unknown` `[entity_page]`
+- [Pascal Editor｜开源三维建筑编辑器（3D Building Editor）](wiki/entities/pascal-editor.md) — Pascal Editor**（pascalorg/editor）是面向建筑/工程/施工运维（AECO）的本地优先浏览器 3D 建模系统，可由用户直接编辑 Site、Building、Level、 `📅unknown` `[entity_page]`
 - [Boston Dynamics 足式控制与硬件专利栈](wiki/entities/patent-boston-dynamics-legged-control-stack.md) — 本页归纳 **Boston Dynamics** 五件与 **Spot / Atlas 类足式平台** 相关的授权或公开专利（见 [`sources/patents/boston_dynamics_l `📅unknown` `[entity_page]`
 - [Tesla 人形机器人膝关节机构（WO2024073135）](wiki/entities/patent-tesla-robot-knee-joint-assembly.md) — 专利 **WO2024073135A1**（*Systems and methods for a robot knee joint assembly*，权利人 **Tesla Inc.**）公开一种  `📅unknown` `[entity_page]`
 - [小鹏 IRON · 单推杆联动多指的轻量化机械手（CN117359667A）](wiki/entities/patent-xpeng-cn117359667a-multi-finger-single-pushrod.md) — 专利 **CN117359667A**（*单推杆联动多指的轻量化机械手*，小鹏机器人 / IRON 相关布局，2024-01-09）公开 **灵巧手·关节** 方向的结构或控制方案 — 编译自 [54 `📅unknown` `[entity_page]`
