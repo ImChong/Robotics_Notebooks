@@ -475,7 +475,7 @@
 - [Cosmos Transfer（条件世界翻译）](wiki/entities/cosmos-transfer.md) — Cosmos Transfer** 是 NVIDIA Cosmos 里专门做 **world-to-world** 的一支：输入不是「从零生成世界」，而 `📅unknown` `[entity_page]`
 - [Spec-Driven Development with Coding Agents（DeepLearning.AI 短课）](wiki/entities/course-spec-driven-development-coding-agents.md) — DeepLearning.AI](https://www.deeplearning.ai/courses/spec-driven-development-with-coding-agents/) 与 `📅unknown` `[entity_page]`
 - [CozyClay — Browser-Based 3D Previsualization / 浏览器端 3D 预演与 Agent 镜头编排](wiki/entities/cozyclay.md) — CozyClay** 是 Doyun／NomaDamas 开源的 **浏览器端三维预演（Previsualization）工具**：先布置场景和角色动作、编排相机与剪辑，再导出关键帧、灰盒参考视频 `📅unknown` `[entity_page]`
-- [Craft Anything：软件分析与重建工具](wiki/entities/craft-anything.md) — Craft Anything 是开源 Rust 工具，面向网站、应用和游戏，组织目标检查、coding agent 构建与结果比较。 `📅unknown` `[entity_page]`
+- [Craft Anything：软件证据驱动的分析与重建](wiki/entities/craft-anything.md) — Craft Anything 是一套 Rust 开源工作台：对网站、应用或游戏采集可核对的证据，驱动 coding agent 创建独立实现，再按目标检查并迭代。它**不是**机器人仿真器或通用逆向结 `📅unknown` `[entity_page]`
 - [CraftNet：Sharpa 的分层视觉-触觉-语言-动作模型](wiki/entities/craftnet.md) — CraftNet** 是 Sharpa 的端到端分层 VTLA 模型，按“System 0 触觉交互 / System 1 运动”分工，把“最后一毫米”的接触交给高频底层。 `📅unknown` `[entity_page]`
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
 - [Crazyswarm2](wiki/entities/crazyswarm2.md) — Crazyswarm2**（IMRCLab/crazyswarm2）在 **[Crazyflie 固件](./c `📅unknown` `[entity_page]`
