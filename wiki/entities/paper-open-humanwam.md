@@ -48,7 +48,7 @@ summary: "Open-HumanWAM（arXiv:2611.06817）构建约 5 万小时人类第一�
 | IDM | Inverse Dynamics Model | 利用未来视觉信息辅助动作预测的分支/注意力条件 |
 | OOD | Out of Distribution | 训练分布之外的场景、外观或任务 |
 | VLA | Vision-Language-Action | 视觉、语言到机器人动作的策略范式 |
-| W0 | World-to-Action multiview stage | 本项目使用的多视角机器人适配配置名；以官方配置为准 |
+| W0 | 论文与代码中的配置代号（无统一展开） | 多视角机器人适配阶段；不强行扩写缩写 |
 
 ## 为什么重要
 
