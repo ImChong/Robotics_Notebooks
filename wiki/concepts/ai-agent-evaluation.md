@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-10-28
+updated: 2026-11-08
 related:
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/rle-bench.md
@@ -191,6 +191,8 @@ Agent 评测的底层逻辑（出自 Anthropic 工程博文通读）：被评对
 - 本页的机器人迁移（仿真、真机 autoresearch）为本库推断，原文并未讨论机器人场景。
 
 ## 关联页面
+
+- [Agent S3 / Behavior Judge](../entities/paper-agent-s3.md) — OSWorld 多轨迹择优和单轨成功率须区分；评测需保持环境隔离，防止共享外部副作用。
 
 见下文「与其他页面的关系」：[仿真评测基础设施](./simulation-evaluation-infrastructure.md)、[RLE-Bench](../entities/rle-bench.md)、[ENPIRE](../methods/enpire.md)、[anthropic-claude-api-skill](../entities/anthropic-claude-api-skill.md)。
 
