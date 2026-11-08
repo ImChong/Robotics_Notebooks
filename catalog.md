@@ -2320,6 +2320,7 @@
 - [EMMA（Waymo）（EMMA: End-to-End Multimodal Model for Autonomous Driving · arXiv:2410.23262）](wiki/entities/paper-emma-waymo-e2e.md) — EMMA（Waymo）**（*EMMA: End-to-End Multimodal Model for Autonomous Driving*，[2410.23262](https://arxi `📅unknown` `[entity_page]`
 - [EMoG：情绪调制人形步态生成](wiki/entities/paper-emog.md) — EMoG**（arXiv:2609.14432）——连续情绪风格码与物理步态指令解耦；统一 RL tracker；G1 真机 `📅unknown` `[entity_page]`
 - [EmoPose（arXiv:2609.23414）](wiki/entities/paper-emopose-emotion-gesture.md) — EmoPose**（*EmoPose: Vision-Language Model Guided Emotion-Aware Gesture Generation for Humanoid Rob `📅unknown` `[entity_page]`
+- [奖励工程的终结：大语言模型如何重塑多智能体协作（The End of Reward Engineering）](wiki/entities/paper-end-of-reward-engineering.md) — 论文：** *The End of Reward Engineering: How LLMs Are Redefining Multi-Agent Coordination*，Haoran Su、 `📅unknown` `[entity_page]`
 - [ENEAS：文本提示实例跟踪与语义发现](wiki/entities/paper-eneas.md) — ENEAS**（*Embedding-guided Neural Ensemble for Adaptive Segmentation*，[arXiv:2609.03756](https://ar `📅unknown` `[entity_page]`
 - [Energy-Based Policy Orchestration（arXiv:2611.02546）](wiki/entities/paper-energy-based-policy-orchestration.md) — Energy-Based Policy Orchestration**（*Energy-Based Policy Orchestration*，[arXiv:2611.02546](https:/ `📅unknown` `[entity_page]`
 - [环境编辑奖励学习：将环境编辑作为奖励学习的纠正信号](wiki/entities/paper-environment-edits-corrective-reward-learning.md) — 环境编辑奖励学习**（*Environment Edits as a Corrective Signal for Reward Learning*，[arXiv:2610.35659](https `📅unknown` `[entity_page]`

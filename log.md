@@ -251,6 +251,12 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-08] ingest | arXiv:2601.08237 — 语言化奖励与多智能体协作展望
+
+- 通读 arXiv v1 §1–8 和图 1–3 图注；归档 `sources/papers/end_of_reward_engineering_arxiv_2601_08237.md`，编译双语论文实体并补 Mermaid 机制流程。
+- 区分离线 LLM 奖励生成与运行时语言协作；将 EUREKA、CARD、RLVR 既有证据与第 6 节尚未执行的实验设计分开。
+- 本文未提供专用可运行源码，源码时序图标为不适用；从 EUREKA 节点添加可追溯互链。
+
 ## [2026-11-08] ingest | 深蓝具身君《机器人强化学习最近三年在做什么》：新增综述概念页，并为 Eureka / DrEureka / VLA 泛化实证 / SimpleVLA-RL / 物体中心残差 RL 各建论文节点，VLA-MBPO 节点升级到 3/3，逐篇核对文章说法
 
 ## [2026-11-08] ingest | DAWN 对比学习投影头与深度鲁棒性机制复核
