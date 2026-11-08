@@ -111,9 +111,11 @@ def check_source_links(scope: dict, results: dict) -> None:
 
 
 def contradiction_fact_ids(scope: dict) -> set[str]:
-    """Canonical facts a changed page mentions: only these can gain a new contradiction.
+    """Canonical facts on which a changed page takes exactly one side.
 
-    Deleted pages are skipped because removing a page can only remove claims.
+    Only these can gain a new contradiction: a page that merely mentions a fact (or states
+    both sides, which the full check ignores) adds no claim, and deleting a page only
+    removes claims.
     """
     facts = wiki.load_canonical_facts()
     hit: set[str] = set()
@@ -122,11 +124,13 @@ def contradiction_fact_ids(scope: dict) -> set[str]:
         if not path.is_file():
             continue
         content = wiki.strip_misconception_sections(path.read_text(encoding="utf-8"))
-        hit.update(
-            fact_id
-            for fact_id, fact in facts.items()
-            if all(re.search(term, content, re.IGNORECASE) for term in fact["terms"])
-        )
+        for fact_id, fact in facts.items():
+            if not all(re.search(term, content, re.IGNORECASE) for term in fact["terms"]):
+                continue
+            has_pos = any(re.search(p, content, re.IGNORECASE) for p in fact["pos_claims"])
+            has_neg = any(re.search(p, content, re.IGNORECASE) for p in fact["neg_claims"])
+            if has_pos != has_neg:
+                hit.add(fact_id)
     return hit
 
 

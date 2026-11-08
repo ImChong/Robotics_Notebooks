@@ -91,13 +91,18 @@ class IncrementalAffectedPagesTests(unittest.TestCase):
 class IncrementalContradictionTests(unittest.TestCase):
     FACTS = {"demo": {"terms": ["PPO"], "pos_claims": ["PPO.*高"], "neg_claims": ["PPO.*低"]}}
 
-    def test_only_facts_mentioned_by_existing_changed_pages_are_selected(self) -> None:
+    def test_only_facts_a_changed_page_takes_one_side_on_are_selected(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             (root / "wiki").mkdir()
             (root / "wiki" / "changed.md").write_text("PPO 样本效率低", encoding="utf-8")
-            facts = {**self.FACTS, "other": {"terms": ["SAC"], "pos_claims": [], "neg_claims": []}}
-            scope = {"changed_wiki": ["wiki/changed.md", "wiki/deleted.md"]}
+            (root / "wiki" / "both.md").write_text("SAC 快，但 SAC 也慢", encoding="utf-8")
+            facts = {
+                **self.FACTS,
+                "mention_only": {"terms": ["PPO"], "pos_claims": ["PPO.*快"], "neg_claims": []},
+                "both_sides": {"terms": ["SAC"], "pos_claims": ["快"], "neg_claims": ["慢"]},
+            }
+            scope = {"changed_wiki": ["wiki/changed.md", "wiki/both.md", "wiki/deleted.md"]}
             with (
                 mock.patch.object(incremental, "ROOT", root),
                 mock.patch.object(incremental.wiki, "load_canonical_facts", return_value=facts),
