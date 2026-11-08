@@ -16,7 +16,7 @@ tags:
   - miaodong
   - mondo-robotics
 status: complete
-updated: 2026-10-06
+updated: 2026-11-08
 arxiv: "2603.10448"
 code: https://github.com/Mondo-Robotics/DiT4DiT
 related:
@@ -92,6 +92,12 @@ flowchart TB
   end
   OT --> AT
 ```
+
+## 工程实践：双 DiT 训练与推理边界
+
+- 训练检查应分别记录视频分支与动作分支的优化对象、共享中间状态和是否冻结视频编码组件，避免把独立视频生成算力算进动作控制闭环。
+- 推理验证至少分开测量 **仅动作输出** 与 **同时预测未来视频** 两种模式的耗时、动作误差与任务成功率，并报告部署硬件。
+- 本页沿用原论文与源码归档中的模块描述；本批未运行训练、未提供新的实时性实测结果。
 
 ## 实验要点
 

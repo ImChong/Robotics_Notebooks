@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, world-action-models, latent-world-model, manipulation, humanoid, bimanual, astribot, foundation-model, flow-matching]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-08
 arxiv: "2607.11270"
 related:
   - ../concepts/world-action-models.md
@@ -49,7 +49,7 @@ summary: "Lumo-2（Astribot, arXiv:2607.11270）：Qwen3.5-4B 潜空间世界–
 - **可部署的效率：** **BAR** 在 RTX 5090 + vLLM 上端到端 **93.53 ms**（标准 AR **253.66 ms**，**2.71×**），配合历史动作 **短程记忆** 缓解多阶段 **感知别名**（如透明液体倾倒前后视觉相似）。
 - **异构数据与人–机迁移：** 原生共训 **VLM 语料、野外视频、多本体机器人 + egocentric 人视频**；VisionPro 与无动作标注多视角人视频可在 **无专用迁移算法** 下提升机器人 **unseen object** pick-place。
 
-## 核心结构/机制
+## 核心原理：潜在世界状态与动作生成
 
 | 模块 | 作用 |
 |------|------|
