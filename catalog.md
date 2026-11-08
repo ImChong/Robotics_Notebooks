@@ -6714,7 +6714,7 @@
 - [Auto-labeling Pipelines (自动化标注流水线)](wiki/methods/auto-labeling-pipelines.md) — 自动化标注流水线** 是构建具身基础模型（Foundation Models）的关键基础设施。它解决了具身智能中最昂贵的环节：**让数据具备语义（Semantic Grounding）**。 `📅unknown` `[method_page]`
 - [AWR: 优势加权回归](wiki/methods/awr.md) — Advantage-Weighted Regression (AWR)** 提供了一种不同于 PPO 的 RL 路径，它完全基于回归分析。 `📅unknown` `[method_page]`
 - [Behavior Cloning with Transformer](wiki/methods/bc-with-transformer.md) — 在模仿学习（IL）中，传统的基于 MLP 或 CNN 的行为克隆往往难以处理**多模态动作**（例如专家有时左绕，有时右绕）和**长时间依赖**。将 **Transformer** 引入 BC 架构， `📅unknown` `[method_page]`
-- [BC-Z](wiki/methods/bc-z.md) — BC-Z**：面向机器人操控的规模化模仿学习系统，结合共享遥操作收集与多种任务条件（自然语言、示范视频等），在大量真实轨迹上训练单一策略并评测未见任务的迁移。 `📅unknown` `[method_page]`
+- [BC-Z](wiki/methods/bc-z.md) — BC-Z**：面向机器人操控的规模化模仿学习系统，结合交互式数据收集（遥操作示范 + 策略执行中的人工干预）与多种任务条件（预训练语言嵌入、人类执行任务的视频），在大量真实轨迹上训练单一策略并评测 `📅unknown` `[method_page]`
 - [Behavior Cloning（行为克隆）](wiki/methods/behavior-cloning.md) — Behavior Cloning, BC**：把专家演示数据当作监督学习数据集，直接学习从观测到动作的映射，是模仿学习最直接的做法。 `📅unknown` `[method_page]`
 - [Being-H0.7（潜空间世界–动作模型）](wiki/methods/being-h07.md) — Being-H0.7** 是 BeingBeyond 提出的机器人策略：把「世界建模带来的未来结构」压缩进**紧凑潜空间**，用**可学习 latent queries** 作为多模态上下文与低层 `📅unknown` `[method_page]`
 - [BeyondMimic](wiki/methods/beyondmimic.md) — BeyondMimic** 是由 Hybrid Robotics 等团队开发的高性能机器人动作模仿框架。相比早期的 DeepMimic 或 AMP，BeyondMimic 更侧重于从仿真到真实物理 `📅unknown` `[method_page]`
@@ -6787,7 +6787,7 @@
 - [Joint Actuator Parameter Identification（关节执行器参数辨识）](wiki/methods/joint-actuator-parameter-identification.md) — 关节执行器参数辨识**：用激励轨迹和测量，估计写在**关节坐标**上的动力学参数——首先是 **转子反射惯量 $I_a$（armature）** 与 **摩擦（库仑 / 粘滞 / 可选 Strib `📅unknown` `[method_page]`
 - [L-BFGS（Limited-memory BFGS）](wiki/methods/l-bfgs.md) — L-BFGS**：BFGS 的 **有限内存** 变体，只保留最近 $m$ 对 $(s_k, y_k)$，用 **two-loop recursion** 隐式计算 $H `📅unknown` `[method_page]`
 - [LCP: Lipschitz 约束策略](wiki/methods/lcp.md) — Lipschitz-Constrained Policies (LCP)** 旨在提高深度强化学习策略在物理控制任务中的数值稳定性和鲁棒性。 `📅unknown` `[method_page]`
-- [Learning from Play（Play-LMP）](wiki/methods/learning-from-play-lmp.md) — Learning from Play**：利用大量未标注任务边界的机器人交互片段（play），学习潜在「计划」表征与条件策略，从而在少量任务标注下完成复杂操控序列。 `📅unknown` `[method_page]`
+- [Learning from Play（Play-LMP）](wiki/methods/learning-from-play-lmp.md) — Learning from Play**：利用大量未标注任务边界的机器人交互片段（play），学习潜在「计划」表征与条件策略，从而在**无需任务标签**的情况下，给定目标（如目标图像）即可完成操控 `📅unknown` `[method_page]`
 - [Levenberg-Marquardt（LM 阻尼最小二乘）](wiki/methods/levenberg-marquardt.md) — Levenberg-Marquardt（LM）**：在 Gauss-Newton 的 $J^T J$ 上加入阻尼 $\lambda I$，搜索方向 $p  `📅unknown` `[method_page]`
 - [里程计与激光雷达融合定位](wiki/methods/lidar-odometry-fusion.md) — 里程计–激光融合定位**用 **高频相对运动（轮式/腿式 odom 或 IMU）** 做短时预测，用 **激光扫描匹配或 LIO** 提供绝对/半绝对校正，在滤波器或因子图中融合出稳定的 `map `📅unknown` `[method_page]`
 - [LIMMT / GQS：人形 Motion Tracking 的数据策展](wiki/methods/limmt-gqs-motion-curation.md) — LIMMT**（Guan 等，ICML 2026，arXiv:2606.06953）提出 **「Less Is More for Motion Tracking」**：在物理人形 tracking `📅unknown` `[method_page]`
@@ -6809,7 +6809,7 @@
 - [MotionBricks: 模块化生成式运动合成框架](wiki/methods/motionbricks.md) — MotionBricks** 是 NVIDIA Research 推出的一种用于人形机器人和数字角色的高保真运动生成框架。它代表了从「判别式运动先验」（如 [AMP](./amp-reward.m `📅unknown` `[method_page]`
 - [Model Predictive Path Integral (MPPI)](wiki/methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
 - [MRAC（模型参考自适应控制）](wiki/methods/mrac.md) — MRAC：指定理想参考模型动态，用自适应律在线调节控制器，使实际输出渐近匹配参考模型。 `📅unknown` `[method_page]`
-- [MT-Opt](wiki/methods/mt-opt.md) — MT-Opt**：在多机器人并行采集框架下，同时学习多项操控技能的连续动作多任务深度强化学习系统；强调任务规范、成功检测器与跨任务表示共享。 `📅unknown` `[method_page]`
+- [MT-Opt](wiki/methods/mt-opt.md) — MT-Opt**：在多机器人并行采集框架下，同时学习多项操控技能的连续动作多任务深度强化学习系统；强调任务规范、成功检测器与跨任务表示共享。算法上扩展自单任务的 [QT-Opt](./qt-opt `📅unknown` `[method_page]`
 - [MTRG / GfR: Multi-Task Reference and Goal-Driven RL](wiki/methods/mtrg-reference-goal-driven-rl.md) — GfR**（Generalizing from References，**RSS 2026**）提出多任务 RL 范式， `📅unknown` `[method_page]`
 - [Mu Synthesis Control（μ 综合控制）](wiki/methods/mu-synthesis-control.md) — μ 综合：在 H∞ 框架上显式处理 **结构化参数不确定性**（多关节耦合、多参数漂移），优化稳定裕度。 `📅unknown` `[method_page]`
 - [Multi-Expert Distillation（多专家蒸馏）](wiki/methods/multi-expert-distillation.md) — Multi-Expert Distillation** 是足式/人形 **感知 locomotion 与跑酷** 中的主流 **技能合成** 范式：先为 **不同地形、障碍或技能** 训练 **独 `📅unknown` `[method_page]`
@@ -6833,10 +6833,10 @@
 - [Policy Optimization](wiki/methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [PPO（Proximal Policy Optimization）](wiki/methods/ppo.md) — PPO（近端策略优化）**：用 **clip 代理目标** 限制每次策略更新中新旧策略概率比的偏离幅度，在保持 TRPO 级别更新稳定性的同时，把实现复杂度降到一阶优化器即可训练，是机器人 RL  `📅unknown` `[method_page]`
 - [PSPNet](wiki/methods/pspnet.md) — PSPNet 通过金字塔池化模块聚合多尺度全局上下文，显著提升场景解析类语义分割精度。 `📅unknown` `[method_page]`
-- [QT-Opt](wiki/methods/qt-opt.md) — QT-Opt**：面向视觉输入机械臂抓取的异策深度强化学习框架，用交叉熵方法等近似在连续动作空间上做 Q 学习，并结合长时间运行的真实机器人数据采集闭环。 `📅unknown` `[method_page]`
+- [QT-Opt](wiki/methods/qt-opt.md) — QT-Opt**：面向视觉输入机械臂抓取的异策深度强化学习框架，不训练显式 actor，而是用交叉熵方法（CEM）在 Q 函数上做随机优化来选动作与算目标值，从而在连续动作空间上做 Q 学习，并结 `📅unknown` `[method_page]`
 - [Quasi-Newton BFGS / L-BFGS（拟牛顿法总览）](wiki/methods/quasi-newton-bfgs.md) — 拟牛顿法**：不显式形成 Hessian，用梯度差分维护近似矩阵。本页为 **总览入口**；各算法细节见独立节点 **BFGS** 与 **[L-BFGS](./l-bf `📅unknown` `[method_page]`
 - [R-CNN 族（R-CNN / Fast R-CNN / Faster R-CNN）](wiki/methods/rcnn-family.md) — 两阶段检测**先产生候选区域，再对区域做分类与框回归；从 R-CNN 的独立 CNN 分类，经 Fast 的共享卷积与 RoI Pooling，到 Faster 的 **RPN** 内生提议，形成 `📅unknown` `[method_page]`
-- [ReActor（物理感知 RL 运动重定向）](wiki/methods/reactor-physics-aware-motion-retargeting.md) — ReActor**（*Reinforcement Learning for Physics-Aware Motion Retargeting*，Müller 等，SIGGRAPH 2026 预印本 `📅2026-05-13` `[method_page]`
+- [ReActor（物理感知 RL 运动重定向）](wiki/methods/reactor-physics-aware-motion-retargeting.md) — ReActor**（*Reinforcement Learning for Physics-Aware Motion Retargeting*，David Müller 等，Disney Rese `📅2026-05-13` `[method_page]`
 - [Recursive Least Squares Control（RLS 递归最小二乘辨识）](wiki/methods/recursive-least-squares-control.md) — RLS：递推最小化预测误差，在线更新动力学参数估计，为自适应/前馈控制提供参数流。 `📅unknown` `[method_page]`
 - [REGRIND（重定向引导灵巧操作 RL）](wiki/methods/regrind-retargeting-guided-rl.md) — REGRIND**（*A Minimalist Retargeting-Guided Reinforcement Learning Recipe for Dexterous Manipulatio `📅2026-07-16` `[method_page]`
 - [Reinforcement Learning (RL, 强化学习)](wiki/methods/reinforcement-learning.md) — 强化学习 (Reinforcement Learning)**：通过与环境交互，以最大化累积奖励 (Reward) 为目标学习决策策略的机器学习范式。 `📅unknown` `[method_page]`
