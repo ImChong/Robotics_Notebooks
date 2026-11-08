@@ -173,7 +173,7 @@ agent_s --provider openai --model gpt-5-2025-08-07 \
 - **不可逆操作**：邮件发送、订单、删改文件、云端共享状态不一定能靠重置虚拟机撤销，不宜无监督运行多轨择优。
 - **任意代码执行风险**：`cli_app.py` 会对生成的 GUI Python 动作执行 `exec(code[0])`；`--enable_local_env` 进一步允许 Python/Bash 在启动用户权限下执行，应最小授权、容器隔离、设置人工审批。
 - **研究外推限制**：单一 benchmark 的平均超人类，不足以证明所有办公任务可靠替代人；BJudge 本身也会错误理解截图事实。
-- **任务定位**：computer use agent 不直接替代 [机器人控制](../concepts/ai-auto-research.md) 与真实物理系统的安全执行层。
+- **任务定位**：computer use agent 可服务 [AI Auto-Research](../concepts/ai-auto-research.md) 的软件操作环节，但不直接替代真实物理系统的安全执行层。
 
 ## 关联页面
 
