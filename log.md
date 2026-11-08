@@ -251,6 +251,14 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-08] ingest | 视觉三维一手研究资源归档
+
+- **目的：** 用户给出十张课程目录，提取真正的原始论文、官方项目、源码和技术文档，明确排除 3D视觉工坊自身课程。
+- **去重：** 原始链接 90 条；按 63 个主题/项目组归并；已存在核心节点（vins-fusion, orb-slam3, lio-sam, 3dgs）不另建重复 sources 档案。
+- **本次变更：** 原始清单 + 新增 36 份源码归档、31 份论文归档和 12 份文档/项目归档。
+- **原文状态：** 仅完成 URL 来源身份和部分 README 核对，大量论文全文/实验/局限/代码入口未完成；不标记完成或伪造 Mermaid。
+- **PR：** https://github.com/ImChong/Robotics_Notebooks/pull/3497（草稿）
+
 ## [2026-11-08] ingest | 深读 NVIDIA cuRoboV2-Fast 论文与源码并修正性能对比口径
 
 - 复用既有 arXiv:2611.06913 节点，不重复建项目；论文、官网、官方代码三层一手归档复核。
