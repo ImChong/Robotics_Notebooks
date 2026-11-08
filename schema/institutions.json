@@ -4438,6 +4438,14 @@
       "aliases": [
         "nomadamas"
       ]
+    },
+    "dreamscale-labs": {
+      "label": "机器人云推理平台团队（Dreamscale Labs）",
+      "aliases": [
+        "dreamscale-labs",
+        "dreamscale labs",
+        "dreamscalelabs"
+      ]
     }
   }
 }

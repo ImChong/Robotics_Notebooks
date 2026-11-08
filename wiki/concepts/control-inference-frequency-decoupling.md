@@ -9,6 +9,7 @@ related:
   - ../entities/anthropic-embody.md
   - ../formalizations/control-loop-latency-modeling.md
   - ./edge-cloud-robotics.md
+  - ../entities/dreamscale-labs.md
   - ../queries/vla-with-low-level-controller.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/hub-embodied-foundation-model.md
@@ -99,6 +100,8 @@ flowchart LR
 - 两边状态不同步（观测时刻 vs 执行时刻）会造成分布偏移。
 
 ## 关联页面
+
+- [Dreamscale Labs — 云端机器人基础模型推理](../entities/dreamscale-labs.md) — 官方 SDK 和 HUD 集成展示模型云端推理、动作块与本地执行/安全边界。
 
 - [RTOS 与实时调度](./rtos-realtime-scheduling.md)
 - [边缘–云端协同](./edge-cloud-robotics.md)
