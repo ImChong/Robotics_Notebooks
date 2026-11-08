@@ -6,7 +6,10 @@
 - **作者：** Karl Pertsch, Kyle Stachowicz 等（Physical Intelligence / UC Berkeley / Stanford）
 - **类型：** paper / vla / action-tokenization
 - **arXiv：** <https://arxiv.org/abs/2501.09747> · PDF：<https://arxiv.org/pdf/2501.09747>
-- **项目页：** <https://www.pi.website/research/fast>；**代码/权重：** <https://huggingface.co/physical-intelligence/fast>
+- **项目页（研究介绍，不是代码仓库）：** <https://www.pi.website/research/fast>
+- **FAST+ tokenizer 官方代码与资产：** <https://huggingface.co/physical-intelligence/fast/tree/main>
+- **π₀-FAST 官方训练/推理代码：** <https://github.com/Physical-Intelligence/openpi>
+- **2026-11-08 资源复核：** [项目页归档](../sites/fast-action-tokenization.md) · [官方源码函数归档](../repos/fast-action-tokenizer.md)。两个实现层次分开：HF 提供分词器，openpi 提供策略实现及 checkpoint 入口。
 - **入库日期：** 2026-11-07
 - **版本：** arXiv:2501.09747（2025-01-16 提交；本次下载 PDF 共 19 页）
 - **核对范围：** 2026-11-07 下载 PDF 并通读摘要、§I 引言、§II 相关工作、§III 预备（含分箱 tokenization 定义）、§IV 案例研究、§V 方法（DCT 压缩、FAST 算法、通用分词器 FAST+）、§VI 全部实验（对比分词器、Table I 压缩率、FAST+ 通用性、消融、与扩散 π0 对比、10k 小时规模化）、§VII 讨论与局限，以及附录 A（FAST+ 训练数据配比）、B（压缩-重建权衡）、C（策略训练）、D（DROID 设置）、E（评测任务）；Table III 的完整数据集列表和各任务细节评分表只浏览；参考文献仅浏览；未运行 FAST+ 代码。
@@ -26,3 +29,9 @@
 - **本地推理与训练细节（附录 C）：** 图像 224×224；本体状态也用 256 分箱写进文本；AdamW（β1=0.9，β2=0.95），恒定学习率 5e-5，EMA 0.999；推理贪心解码，双臂任务用温度 0.7。
 - **原文自述局限与展望：** 只在固定基座机械臂上做了策略评测，移动/灵巧手/人形只做了离线压缩测试；非自回归（扩散）解码与压缩编码的结合、自回归 VLA 推理加速留作未来工作。
 - **原文没有的内容：** 论文没有把 FAST 与 Octo、MINT 对比；“VQ 类分词（Octo、π0 部分组件）”之类说法不是本文内容（本文把 VQ 类称作另一类学习式分词，并实测了 FSQ）。
+
+## 2026-11-08 源码核对补充
+
+- 官方 FAST+ `UniversalActionProcessor.__call__` 使用 `dct(..., axis=1, norm="ortho")`、系数量化、BPE；`decode` 再反变换。如果 BPE 解码/矩阵形状错误，源码会退回**全零系数**，需在实际控制链路检测异常，而不是默认输出可信。
+- openpi 的 `FASTTokenizer.tokenize/extract_actions` 实现动作 token ↔ PaliGemma 词表的映射，`Pi0FAST.compute_loss/sample_actions` 对应交叉熵训练与逐 token 解码。推理由 `Policy.infer` 调用，并由 output transform 将 tokens 解码为动作。
+- 源码与 API 的阅读范围、开源边界见 [FAST / FAST+ 官方源码归档](../repos/fast-action-tokenizer.md)；本次未运行模型或真机，不将论文的 5× 训练加速视作在线推理加速。

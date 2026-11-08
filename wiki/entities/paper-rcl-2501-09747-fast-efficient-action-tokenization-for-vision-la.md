@@ -6,7 +6,11 @@ tags:
 - action-tokenization
 - vla
 status: complete
-updated: 2026-11-05
+updated: 2026-11-08
+project_id: fast-action-tokenization
+project: https://www.pi.website/research/fast
+original:
+- ../../sources/papers/fast_action_tokenization_arxiv_2501_09747.md
 arxiv: '2501.09747'
 venue: '2025'
 code: https://huggingface.co/physical-intelligence/fast
@@ -26,9 +30,13 @@ sources:
 - ../../sources/repos/awesome-world-action-models-rcl.md
 - ../../sources/sites/pi-memory-rlt-fast.md
 - ../../sources/repos/lerobot.md
+- ../../sources/papers/fast_action_tokenization_arxiv_2501_09747.md
+- ../../sources/sites/fast-action-tokenization.md
+- ../../sources/repos/fast-action-tokenizer.md
+- ../../sources/repos/openpi.md
 ---
 
-# FAST：高效动作分词
+# FAST: Efficient Action Tokenization for Vision-Language-Action Models｜FAST：高效动作分词
 
 ## 一句话定义
 
@@ -74,22 +82,38 @@ flowchart TD
 
 ## 源码运行时序图
 
-### A. FAST 分词器接口（官方 `physical-intelligence/fast`，论文 §V-C 的 AutoProcessor 用法）
+### A. 官方 FAST+ 分词器（Hugging Face `processing_action_tokenizer.py`）
 
-论文给出的调用方式是 `AutoProcessor.from_pretrained("physical-intelligence/fast", trust_remote_code=True)` 后直接 `tokenizer(action_chunk)`，以及 `tokenizer.fit(action_dataset)` 训练新分词器；下图只画这一接口，不含策略训练。
+已核对官方 `UniversalActionProcessor` 的 `__call__`、`decode` 和 `fit`。此处只表示 tokenizer 函数调用，不将其误画成策略训练入口。
 
 ```mermaid
 sequenceDiagram
     autonumber
-    participant D as 动作数据
-    participant T as HF FAST tokenizer
-    participant P as 自回归策略
-    participant R as 机器人适配器
-    D->>T: 归一化动作 chunk
-    T-->>P: 压缩 tokens（训练监督）
-    P->>T: 预测 tokens（推理）
-    T-->>R: 解码连续动作 chunk
+    participant U as 使用者或数据管线
+    participant H as transformers.AutoProcessor
+    participant T as UniversalActionProcessor
+    participant S as scipy.fft
+    participant B as BPE tokenizer
+    U->>H: from_pretrained physical-intelligence/fast
+    H-->>U: FAST+ processor
+    U->>T: __call__(归一化的 action_chunk)
+    T->>S: dct(action_chunk, axis=1, norm=ortho)
+    S-->>T: 频域系数
+    T->>T: scale 乘法与 around 量化后展平
+    T->>B: encode 系数字符串
+    B-->>T: action token IDs
+    T-->>U: tokens
+    U->>T: decode(tokens, time_horizon, action_dim)
+    T->>B: decode tokens
+    B-->>T: DCT 系数字符串
+    T->>T: 恢复系数矩阵并校验形状
+    T->>S: idct(coefficients / scale, axis=0, norm=ortho)
+    S-->>T: 连续动作 chunk
+    T-->>U: 动作块
+    Note over T,U: decode 出错时源码打印错误并退回全零 DCT 系数
 ```
+
+训练自己的 tokenizer 可调用 `UniversalActionProcessor.fit(action_data)`：源码对动作块沿时间轴做 DCT 与量化，使用 `BpeTrainer` 训练新词表后返回 processor；与模型训练是两条不同的流程。
 
 ### B. LeRobot 的 Pi0Fast（`policy.type=pi0_fast`，固定提交 `9e5ee98…`）
 
@@ -135,6 +159,41 @@ sequenceDiagram
     P-->>PP: 连续动作 → postprocessor 反归一化
 ```
 
+### C. Physical Intelligence 的 `openpi` 官方 π₀-FAST（JAX）
+
+另核实官方 `openpi/src/openpi/models/{pi0_fast.py,tokenizer.py}`、`training/config.py`、`policies/policy.py` 与 `policy_config.py` 的实际调用关系；下图是 **推理** 链路，与上面的 LeRobot 实现区分。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 使用者
+    participant P as openpi.policies.Policy
+    participant TF as TokenizeFASTInputs
+    participant M as Pi0FAST
+    participant G as PaliGemma
+    participant OT as ExtractFASTActions
+    participant FT as FASTTokenizer
+    U->>P: infer(观测与任务指令)
+    P->>TF: input transforms
+    TF->>FT: tokenize(prompt, state, actions=None)
+    FT-->>TF: Task State 前缀 token 与掩码
+    TF-->>P: 模型 Observation
+    P->>M: sample_actions(rng, observation)
+    M->>G: prefix KV cache prefill
+    loop 直到 EOS 或最大解码步数
+        M->>G: 读取当前 token 并预测下一个
+        G-->>M: token logits
+    end
+    M-->>P: 自回归 token 序列
+    P->>OT: output transforms
+    OT->>FT: extract_actions(tokens, horizon, dim)
+    FT-->>OT: FAST BPE 解码与逆 DCT 后的连续动作
+    OT-->>P: 反归一化及机器人适配后的动作
+    P-->>U: actions 与 policy_timing.infer_ms
+```
+
+源码边界：`Pi0FAST.compute_loss` 用 next-token 交叉熵训练；`sample_actions` 执行上述自回归推理。当前 `openpi` README 公开 `pi0_fast_base` / `pi0_fast_droid` checkpoint 入口，但不等于论文全部训练数据都公开。源码核对记录见 [FAST 官方实现归档](../../sources/repos/fast-action-tokenizer.md)。
+
 ## Pi0-FAST 与 LeRobot 实现要点
 
 - **身份：** Pi0-FAST = 用 FAST 分词器训练的 π0 自回归版本。论文（[arXiv:2501.09747](https://arxiv.org/abs/2501.09747)，Pertsch、Stachowicz、Ichter、Driess、Nair、Vuong、Mees、Finn、Levine，2025-01-16）摘要称：与 π0 VLA 结合可扩展到 10k 小时机器人数据，匹配扩散式 VLA 的性能，同时训练时间最多减少 5 倍；**本库对 FAST 与 Pi0-FAST 只保留这一个 canonical 节点**，π0 本体见 [π0](./paper-pi0.md)。
@@ -147,12 +206,21 @@ sequenceDiagram
 - **复现（文档自述，未重跑）：** 从 `lerobot/pi0fast-base` 在 HuggingFace LIBERO 数据上再微调 40k 步（bfloat16、batch 256、8×H100），产物 `lerobot/pi0fast-libero`，评测时 `n_action_steps=10`（文档称与 OpenPI 一致）。文档结果表：Spatial 70.0 / Object 100.0 / Goal 100.0 / LIBERO-10 60.0，平均 82.5（%）。评测命令为 `--eval.batch_size=1 --eval.n_episodes=1`，各套件分数都是 10 的倍数，推测每套件只跑了 10 个 episode（每任务 1 个），统计置信度很低，且明显低于 `pi05.mdx` 里 π0.5 的 97.5 平均（两份文档口径不同，仅作量级参照）；不要把它当作 π0-FAST 的能力上限。
 - **限制：** RTC 在 `select_action` 中不可用；`PI0FastPolicy.predict_action_chunk` 的 `action_horizon` 取 `n_action_steps`，若 `n_action_steps` 与训练时的 `chunk_size` 不一致，解码 reshape 可能出错或被补零（推测，未跑过）；文档的训练/评测示例都把二者设为 10，与配置默认值 50 不同。
 
+## 官方代码与开源边界（2026-11-08）
+
+- **官网：** [Physical Intelligence FAST 研究页](https://www.pi.website/research/fast) 是技术介绍，不是 GitHub 代码仓。
+- **可直接使用的 FAST+：** [官方 Hugging Face tokenizer](https://huggingface.co/physical-intelligence/fast/tree/main) 开放 `processing_action_tokenizer.py`、词表、配置与自定义 `.fit()`；入口是 `AutoProcessor.from_pretrained(..., trust_remote_code=True)`，不是将 tokenizer 误用成通用 `AutoModel`。
+- **官方策略实现：** [Physical-Intelligence/openpi](https://github.com/Physical-Intelligence/openpi) 提供 π₀-FAST 自回归 VLA 的训练/推理代码和 checkpoint 入口；[LeRobot](../../sources/repos/lerobot.md) 的 Pi0Fast 则是另一个可用实现，二者实现细节不应混为一谈。
+- **训练与实时性须分别评估：** 论文 §VI-E 在 RTX 4090 的测试条件下报告 π₀-FAST 生成一个动作块约 **750 ms**，而 flow π₀ 约 **100 ms**；最多 5× 是训练计算开销降低，不能当成控制回路的推理加速。这个数值不是本次复现测得。
+
 ## 工程实践
 
 1. 从官方 HF 模型卡加载 tokenizer，先验证自己的动作 chunk 编码→解码重建。
 2. 对齐采样率、chunk 长度、归一化与动作顺序，检查重建误差和每个 chunk 的 token 数。
 3. 比较闭环成功率与真实时延：训练序列缩短不保证逐 token 生成满足控制预算。
 4. 已有 tokenizer 实现与资产；全套策略/机器人接口须另查 [openpi](../methods/π0-policy.md)。
+5. 针对真实机器人增加 **解码失败/零动作降级告警**：官方 HF `decode` 遇到损坏 token 或形状不匹配会退回全零频域系数；`openpi.FASTTokenizer.extract_actions` 未检测到 `Action: ` 标志时也返回零动作。需区分“策略意图停止”和“解析失败”。
+6. 对于自定义 action horizon / action dim，调用 `decode` 时显式指定形状；`trust_remote_code=True` 加载前审核代码并固定可信 revision。
 
 ## 评测与指标
 
@@ -182,6 +250,11 @@ sequenceDiagram
 - [VLA](../methods/vla.md)
 
 ## 参考来源
+
+- [FAST 论文原文全文归档（含实验与附录）](../../sources/papers/fast_action_tokenization_arxiv_2501_09747.md)
+- [FAST 官网研究页核查](../../sources/sites/fast-action-tokenization.md)
+- [FAST+ / openpi 官方源码逐函数核对](../../sources/repos/fast-action-tokenizer.md)
+- [openpi 官方仓库归档](../../sources/repos/openpi.md)
 
 - [PI 一手资料补核](../../sources/sites/pi-memory-rlt-fast.md)
 - [LeRobot 仓库归档](../../sources/repos/lerobot.md)：固定提交 `9e5ee98…` 的 `policies/pi0_fast/`、`docs/source/pi0fast.mdx`、`scripts/lerobot_train_tokenizer.py`
