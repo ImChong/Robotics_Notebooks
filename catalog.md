@@ -1599,6 +1599,7 @@
 - [AffordCraft（arXiv:2610.06643）](wiki/entities/paper-affordcraft-task-ready-simulation-assets.md) — AffordCraft**（*AffordCraft: Scalable Construction of Task-Ready Simulation Assets from Single Imag `📅unknown` `[entity_page]`
 - [Agensh（多 agent 组织智能扩展）](wiki/entities/paper-agensh.md) — Agensh 是一个没有中心编排者的多 agent harness：worker 通过共享工作区、消息与共享上下文自行认领、执行与合并，并把规模扩大到 1,024 个 agent。 `📅unknown` `[entity_page]`
 - [Agent-Friendly by Design：用 SQL 引擎比较 MoonBit 与 Rust](wiki/entities/paper-agent-friendly-by-design.md) — Agent-Friendly by Design: An Empirical Comparison of MoonBit and Rust in AI-Driven Software Constr `📅unknown` `[entity_page]`
+- [Agent S3：Scaling Agents for Computer Use｜可扩展电脑操作智能体](wiki/entities/paper-agent-s3.md) — Agent S3**（Simular Research，论文 arXiv:2510.02250，[官方源码](https:/ `📅unknown` `[entity_page]`
 - [AgentGarten（Code Worlds for Evolving Agents）](wiki/entities/paper-agentgarten.md) — AgentGarten**（arXiv:2610.12374，[项目页](https://mirros-lab.github `📅unknown` `[entity_page]`
 - [Aptamers as a sandbox for lab-in-the-loop agentic molecular discovery](wiki/entities/paper-agentic-aptamer-sandbox.md) — 论文：** arXiv:2610.24806（q-bio.BM，v1，2026-10-17）／[PDF（gstatic，27 `📅unknown` `[entity_page]`
 - [Agentic Coding Agent（arXiv:2609.26499）](wiki/entities/paper-agentic-coding-manipulation.md) — Agentic Coding Agent**（*Generalizing Manipulation Skills with a Local Coding Agent*，[arXiv:2609.26 `📅unknown` `[entity_page]`
