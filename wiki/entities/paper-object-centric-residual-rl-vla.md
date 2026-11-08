@@ -1,6 +1,7 @@
 ---
 type: entity
 tags: [paper, vla, residual-learning, reinforcement-learning, td3, sim2real, manipulation, microsoft-research, kaist]
+project_id: object-centric-residual-rl-vla
 status: complete
 updated: 2026-11-08
 arxiv: "2606.18953"

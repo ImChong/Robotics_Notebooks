@@ -8,6 +8,7 @@ tags:
   - libero
   - robotwin
   - sim2real
+project_id: simplevla-rl
 status: complete
 updated: 2026-11-08
 arxiv: "2509.09674"

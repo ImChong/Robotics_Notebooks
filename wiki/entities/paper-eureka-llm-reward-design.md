@@ -7,6 +7,7 @@ tags:
   - rl
   - dexterous-manipulation
   - nvidia
+project_id: eureka-llm-reward-design
 status: complete
 updated: 2026-11-08
 arxiv: "2310.12931"

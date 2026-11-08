@@ -7,6 +7,7 @@ tags:
   - ppo
   - generalization
   - tsinghua
+project_id: rl-vla-generalization-empirical-study
 status: complete
 updated: 2026-11-08
 arxiv: "2505.19789"

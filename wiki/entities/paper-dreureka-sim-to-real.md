@@ -7,6 +7,7 @@ tags:
   - reward-design
   - domain-randomization
   - quadruped
+project_id: dreureka-sim-to-real
 status: complete
 updated: 2026-11-08
 arxiv: "2406.01967"
