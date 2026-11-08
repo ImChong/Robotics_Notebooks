@@ -70,11 +70,17 @@ jobs:
         if: steps.scope.outputs.mode == 'ingest'
         run: python3 scripts/export_minimal.py
 
+      # 搜索回归结果随内容变化（新页面可能挤掉期望结果），只依赖上一步导出，开销小，PR 上保留。
+      - name: Search regression (ingest)
+        if: steps.scope.outputs.mode == 'ingest'
+        id: search_ingest
+        run: python3 scripts/eval_search_quality.py
+
       - name: Summary
         if: always()
         run: |
           echo "## CI preflight（搜索回归 / Wiki lint / 导出质量）" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "步骤结果：**${{ steps.preflight.outcome }}**" >> "$GITHUB_STEP_SUMMARY"
+          echo "模式：**${{ steps.scope.outputs.mode }}**；preflight：**${{ steps.preflight.outcome }}**；ingest 搜索回归：**${{ steps.search_ingest.outcome }}**" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "完整模式执行 ci_preflight；纯 ingest PR 仅运行导出 smoke test，其余校验交给增量 Wiki Lint / Mermaid 门禁。" >> "$GITHUB_STEP_SUMMARY"
+          echo "完整模式执行 ci_preflight；纯 ingest PR 运行导出 smoke test + 搜索回归，Wiki lint / Mermaid 交给增量门禁，导出一致性与图谱检查留给 main 全量 CI。" >> "$GITHUB_STEP_SUMMARY"

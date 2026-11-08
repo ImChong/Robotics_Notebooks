@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
+import ast
+import inspect
 import sys
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -83,6 +86,58 @@ class IncrementalAffectedPagesTests(unittest.TestCase):
             with mock.patch.object(incremental, "ROOT", root):
                 selected = incremental.affected_pages(scope, [page], {})
             self.assertEqual(selected, [page.resolve()])
+
+
+class IncrementalContradictionTests(unittest.TestCase):
+    FACTS = {"demo": {"terms": ["PPO"], "pos_claims": ["PPO.*高"], "neg_claims": ["PPO.*低"]}}
+
+    def test_only_facts_mentioned_by_existing_changed_pages_are_selected(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "wiki").mkdir()
+            (root / "wiki" / "changed.md").write_text("PPO 样本效率低", encoding="utf-8")
+            facts = {**self.FACTS, "other": {"terms": ["SAC"], "pos_claims": [], "neg_claims": []}}
+            scope = {"changed_wiki": ["wiki/changed.md", "wiki/deleted.md"]}
+            with (
+                mock.patch.object(incremental, "ROOT", root),
+                mock.patch.object(incremental.wiki, "load_canonical_facts", return_value=facts),
+            ):
+                self.assertEqual(incremental.contradiction_fact_ids(scope), {"demo"})
+
+    def test_selected_fact_is_compared_against_unchanged_pages(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            unchanged = Path(tmp) / "unchanged.md"
+            changed = Path(tmp) / "changed.md"
+            unchanged.write_text("PPO 样本效率高", encoding="utf-8")
+            changed.write_text("PPO 样本效率低", encoding="utf-8")
+            results = incremental.wiki._empty_results()
+            with mock.patch.object(
+                incremental.wiki, "load_canonical_facts", return_value=self.FACTS
+            ):
+                incremental.wiki._check_contradictions([unchanged, changed], results, set())
+                self.assertEqual(results["contradictions"], [])
+                incremental.wiki._check_contradictions([unchanged, changed], results, {"demo"})
+            self.assertEqual(len(results["contradictions"]), 1)
+
+
+def _called_checks(func) -> set[str]:
+    names = set()
+    for node in ast.walk(ast.parse(textwrap.dedent(inspect.getsource(func)))):
+        if isinstance(node, ast.Call):
+            target = node.func
+            name = target.attr if isinstance(target, ast.Attribute) else getattr(target, "id", "")
+            if name.startswith("_check_"):
+                names.add(name)
+    return names
+
+
+class FullLintParityTests(unittest.TestCase):
+    def test_every_full_lint_check_is_run_or_explicitly_skipped(self) -> None:
+        full = _called_checks(incremental.wiki.lint)
+        ran = _called_checks(incremental.lint_changed)
+        skipped = set(incremental.FULL_LINT_ONLY_CHECKS)
+        self.assertEqual(full - ran, skipped, "update FULL_LINT_ONLY_CHECKS or lint_changed")
+        self.assertFalse(ran & skipped)
 
 
 if __name__ == "__main__":

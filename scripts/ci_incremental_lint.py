@@ -17,6 +17,24 @@ import lint_wiki as wiki
 
 ROOT = Path(__file__).resolve().parents[1]
 
+# Checks in lint_wiki.lint() deliberately not run here, with the reason. A test keeps this
+# in sync with lint(), so a new full-lint check cannot silently skip the incremental path.
+FULL_LINT_ONLY_CHECKS = {
+    "_check_missing_concepts": "info only",
+    "_check_missing_concept_pages": "info only",
+    "_check_log_activity": "repository activity; an ingest PR can only add activity",
+    "_check_readme_badges": "README.md is outside the ingest scope (changes run full CI)",
+    "_check_graph_orphans": "needs generated graph-stats; per-page orphan check covers affected",
+    "_check_methods_without_practitioner_query": "info only",
+    "_check_stale_claims": "info only",
+    "_check_physics_concept_crosslink": "info only",
+    "_check_contact_control_crosslink": "info only",
+    "_check_embodied_fm_crosslink": "info only",
+    "_check_eval_benchmark_crosslink": "info only",
+    "_check_actuator_drive_chain_crosslink": "info only",
+    "_check_perception_stack_crosslink": "info only",
+}
+
 
 def old_links(path: str, base: str) -> set[Path]:
     if not base:
@@ -92,6 +110,26 @@ def check_source_links(scope: dict, results: dict) -> None:
                 results["sources_orphans"].append(f"{name} → {href}")
 
 
+def contradiction_fact_ids(scope: dict) -> set[str]:
+    """Canonical facts a changed page mentions: only these can gain a new contradiction.
+
+    Deleted pages are skipped because removing a page can only remove claims.
+    """
+    facts = wiki.load_canonical_facts()
+    hit: set[str] = set()
+    for name in scope["changed_wiki"]:
+        path = ROOT / name
+        if not path.is_file():
+            continue
+        content = wiki.strip_misconception_sections(path.read_text(encoding="utf-8"))
+        hit.update(
+            fact_id
+            for fact_id, fact in facts.items()
+            if all(re.search(term, content, re.IGNORECASE) for term in fact["terms"])
+        )
+    return hit
+
+
 def lint_changed(scope: dict) -> dict:
     if scope["mode"] != "ingest" or not scope["base"]:
         raise ValueError("incremental lint requires a detected PR ingest scope")
@@ -118,6 +156,8 @@ def lint_changed(scope: dict) -> dict:
 
     # Full-index invariants are cheap relative to full lint and must not be lost.
     wiki._check_duplicate_arxiv(pages, results)
+    # Contradictions are cross-page: compare all pages, but only for facts a changed page hits.
+    wiki._check_contradictions(pages, results, contradiction_fact_ids(scope))
     if any(name.startswith("wiki/") for name in scope["removed"]):
         wiki._check_sources_health(results)
     check_source_links(scope, results)

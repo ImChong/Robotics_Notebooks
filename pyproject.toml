@@ -25,6 +25,9 @@ addopts = [
     "--cov-report=term-missing",
     "--cov-fail-under=52",
 ]
+markers = [
+    "full_only: 全图构建等慢测试或依赖部署生成 exports 的测试；纯内容 ingest PR 以 -m \"not full_only\" 跳过，main 全量 CI 仍运行",
+]
 
 [tool.coverage.run]
 branch = true

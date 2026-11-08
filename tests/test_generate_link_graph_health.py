@@ -155,6 +155,7 @@ def test_list_rows_carry_health_fields() -> None:
     assert glg._health_fields({}) == {}
 
 
+@pytest.mark.full_only
 def test_graph_nodes_carry_public_health_gaps() -> None:
     """link-graph 节点写出 health_gaps，图谱浮窗 / 侧栏据此列出缺项。"""
     nodes, _edges = glg._build_graph_data()
@@ -181,6 +182,7 @@ def test_route_health_distribution_counts_route_map_nodes() -> None:
     ]
 
 
+@pytest.mark.full_only
 def test_repo_routes_have_route_map_nodes() -> None:
     """roadmap/ 下的主路线与纵深路线都能解析出知识地图节点（图表不会缺路线）。"""
     nodes, _edges = glg._build_graph_data()

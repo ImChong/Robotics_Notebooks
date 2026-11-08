@@ -115,6 +115,7 @@ def test_gate_rejects_corrupt_or_incomplete_split_exports(tmp_path, payload, cor
         validate_page_exports(source, mirror)
 
 
+@pytest.mark.full_only
 def test_all_generated_pages_reconstruct_the_legacy_export():
     root = Path(__file__).resolve().parents[1]
     count = validate_page_exports(root / "exports", root / "docs" / "exports")

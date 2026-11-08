@@ -7,6 +7,7 @@ import unittest
 from typing import Any
 
 import generate_link_graph as glg
+import pytest
 from utils.community_labels import COMMUNITY_NAME_OVERRIDES
 
 LINK_GRAPH_SNAPSHOT = glg.OUT_PATH
@@ -71,6 +72,7 @@ class CommunityHubNamePatternTest(unittest.TestCase):
             with self.subTest(topic=topic["id"]):
                 self.assertIsNotNone(glg.COMMUNITY_HUB_NAME_RE.fullmatch(topic["label"]))
 
+    @pytest.mark.full_only
     def test_exported_community_ids_are_registered_topics(self) -> None:
         """快照里的命名社区 id 均来自注册表（community-<topic-id>），不再是按规模排序的下标。"""
         registered = {glg.topic_community_id(tid) for tid in glg.TOPIC_BY_ID}
@@ -80,6 +82,7 @@ class CommunityHubNamePatternTest(unittest.TestCase):
             with self.subTest(community_id=meta.get("id")):
                 self.assertIn(meta.get("id"), registered)
 
+    @pytest.mark.full_only
     def test_exported_community_hub_belongs_to_its_own_community(self) -> None:
         """主题锚点页（seeds[0]）必须归属本主题，否则详情页会显示错误社区（如 Locomotion 被标成操作）。"""
         data = _load_exported_graph()
@@ -101,6 +104,7 @@ class CommunityHubNamePatternTest(unittest.TestCase):
                     f"自身却归属 {labels.get(actual, actual)!r}",
                 )
 
+    @pytest.mark.full_only
     def test_exported_community_labels_conform_to_pattern(self) -> None:
         """快照里全部社区（含兜底桶）的 label 应符合 中文（English） 社区。"""
         for meta in _load_exported_communities():

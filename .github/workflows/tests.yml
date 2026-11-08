@@ -42,7 +42,6 @@ jobs:
           fi
 
       - name: Install dev dependencies
-        if: steps.scope.outputs.mode == 'full'
         run: pip install -r requirements-dev.txt
 
       - name: Ruff check
@@ -86,9 +85,13 @@ jobs:
         if: steps.scope.outputs.mode == 'ingest' && steps.scope.outputs.has_wiki == 'true'
         run: python3 scripts/ci_change_scope.py --validate-mermaid-from "$RUNNER_TEMP/ci-scope.json"
 
-      - name: Run scope classification tests (ingest)
+      # 内容也会打破部分测试（如 company/lab 路线图指向的页面须有指定区块）；
+      # 只跳过 full_only（全图构建慢测试、依赖部署生成 exports），main 全量 CI 仍运行它们。
+      - name: Pytest without full_only tests (ingest)
         if: steps.scope.outputs.mode == 'ingest'
-        run: python3 -m unittest discover -s tests -p 'test_ci_change_scope.py'
+        env:
+          PYTHONPATH: scripts
+        run: python3 -m pytest -m "not full_only" --no-cov --durations=10
 
       - name: Frontend reliability behavior tests
         if: steps.scope.outputs.mode == 'full'

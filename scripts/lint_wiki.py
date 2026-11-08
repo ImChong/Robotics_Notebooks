@@ -1518,9 +1518,18 @@ def _check_sources_health(results: dict[str, Any]) -> None:
                     )
 
 
-def _check_contradictions(pages: list[Path], results: dict[str, Any]) -> None:
-    """矛盾检测 — 检查同一概念在不同页面是否有相反的定性描述。"""
+def _check_contradictions(
+    pages: list[Path], results: dict[str, Any], fact_ids: set[str] | None = None
+) -> None:
+    """矛盾检测 — 检查同一概念在不同页面是否有相反的定性描述。
+
+    ``fact_ids`` 给定时只检查这些事实（增量 lint：仅改动页命中的事实需要全库比对）。
+    """
     canonical_facts = load_canonical_facts()
+    if fact_ids is not None:
+        canonical_facts = {k: v for k, v in canonical_facts.items() if k in fact_ids}
+        if not canonical_facts:
+            return
     all_pages_content = {
         p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages
     }
