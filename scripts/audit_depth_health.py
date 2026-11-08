@@ -37,11 +37,13 @@ def ordered_depth_routes() -> list[Path]:
         if name not in seen:
             seen.add(name)
             ordered.append(ROOT / "roadmap" / name)
-    # Include routes missed by the README so auditing cannot silently omit them.
-    for extra in sorted((ROOT / "roadmap").glob("depth-*.md")):
-        if extra.name not in seen:
-            ordered.append(extra)
-    return list(reversed(ordered))
+    # Unlisted routes are audited too, but should not outrank the known newest topic.
+    extras = [
+        extra
+        for extra in sorted((ROOT / "roadmap").glob("depth-*.md"))
+        if extra.name not in seen
+    ]
+    return list(reversed(ordered)) + extras
 
 
 def stage_wiki_links(route: Path) -> tuple[str, dict[str, list[str]]]:
