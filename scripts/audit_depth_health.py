@@ -6,6 +6,7 @@ Default: print a Markdown audit to stdout (no writes).
 --latest N: inspect only the N most recent *historical* depth topics (README reverse order).
 Never changes health scoring or marks a source as fully read.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -77,7 +78,9 @@ def check_wiki(rel_path: str) -> dict:
         return {"score": -1, "status": "missing", "reason": "节点文件不存在"}
     content = path.read_text(encoding="utf-8")
     score, gaps = graph.compute_health(content, path)
-    status_match = STATUS_PATTERN.search(content.split("---", 2)[1] if content.startswith("---") else "")
+    status_match = STATUS_PATTERN.search(
+        content.split("---", 2)[1] if content.startswith("---") else ""
+    )
     status = status_match.group(1) if status_match else "unknown"
     reasons: list[str] = []
     if gaps & 1:
@@ -111,23 +114,27 @@ def collect(latest: int = 0) -> tuple[list[dict], dict[str, dict], list[dict]]:
                 unique.add(rel)
                 if rel not in nodes:
                     nodes[rel] = check_wiki(rel)
-                records.append({
-                    "roadmap": route.relative_to(ROOT).as_posix(),
-                    "stage": stage,
-                    "node": rel,
-                    **nodes[rel],
-                })
+                records.append(
+                    {
+                        "roadmap": route.relative_to(ROOT).as_posix(),
+                        "stage": stage,
+                        "node": rel,
+                        **nodes[rel],
+                    }
+                )
         count = Counter(nodes[rel]["score"] for rel in unique)
-        route_stats.append({
-            "roadmap": route.relative_to(ROOT).as_posix(),
-            "route_health": f"{health}/3",
-            "route_gaps": route_gaps,
-            "stages": len(stages),
-            "unique": len(unique),
-            "by_score": count,
-            "full": count[3],
-            "pending": len(unique) - count[3],
-        })
+        route_stats.append(
+            {
+                "roadmap": route.relative_to(ROOT).as_posix(),
+                "route_health": f"{health}/3",
+                "route_gaps": route_gaps,
+                "stages": len(stages),
+                "unique": len(unique),
+                "by_score": count,
+                "full": count[3],
+                "pending": len(unique) - count[3],
+            }
+        )
     return records, nodes, route_stats
 
 
@@ -152,9 +159,9 @@ def markdown(records: list[dict], nodes: dict[str, dict], routes: list[dict]) ->
     for r in routes:
         scores = r["by_score"]
         lines.append(
-            f'| [`{r["roadmap"]}`](../../{r["roadmap"]}) | {r["route_health"]} | '
-            f'{r["stages"]} | {r["unique"]} | {scores[3]} | {scores[2]} | '
-            f'{scores[1]} | {scores[0]} | {scores[-1]} | {r["pending"]} |'
+            f"| [`{r['roadmap']}`](../../{r['roadmap']}) | {r['route_health']} | "
+            f"{r['stages']} | {r['unique']} | {scores[3]} | {scores[2]} | "
+            f"{scores[1]} | {scores[0]} | {scores[-1]} | {r['pending']} |"
         )
     by_route: dict[str, dict[str, list[dict]]] = defaultdict(lambda: defaultdict(list))
     for record in records:
@@ -162,14 +169,20 @@ def markdown(records: list[dict], nodes: dict[str, dict], routes: list[dict]) ->
     lines += ["", "## Stage → 节点 → 分值 → 缺项（保留重复引用关系）", ""]
     for r in routes:
         route = r["roadmap"]
-        lines.append(f"### {route}（路线 {r['route_health']}，节点 3/3: {r['full']}/{r['unique']}）")
+        lines.append(
+            f"### {route}（路线 {r['route_health']}，节点 3/3: {r['full']}/{r['unique']}）"
+        )
         lines.append("")
         for stage, entries in by_route[route].items():
-            lines.extend([f"#### {stage}", "", "| 节点 | 分值 | 状态 | 缺项原因 |", "|---|---:|---|---|"])
+            lines.extend(
+                [f"#### {stage}", "", "| 节点 | 分值 | 状态 | 缺项原因 |", "|---|---:|---|---|"]
+            )
             for item in entries:
-                score = "缺失" if item["score"] < 0 else f'{item["score"]}/3'
-                lines.append(f'| [`{item["node"]}`](../../{item["node"]}) | {score} | '
-                             f'{item["status"]} | {item["reason"]} |')
+                score = "缺失" if item["score"] < 0 else f"{item['score']}/3"
+                lines.append(
+                    f"| [`{item['node']}`](../../{item['node']}) | {score} | "
+                    f"{item['status']} | {item['reason']} |"
+                )
             lines.append("")
     lines += [
         "## 验收说明",
@@ -185,7 +198,9 @@ def markdown(records: list[dict], nodes: dict[str, dict], routes: list[dict]) ->
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--latest", type=int, default=0, help="Limit to newest N historical depth topics")
+    parser.add_argument(
+        "--latest", type=int, default=0, help="Limit to newest N historical depth topics"
+    )
     parser.add_argument("--write", action="store_true", help="Write full Markdown and CSV backlog")
     args = parser.parse_args()
     if args.latest < 0 or (args.write and args.latest):
@@ -197,7 +212,9 @@ def main() -> int:
         out.mkdir(parents=True, exist_ok=True)
         (out / "depth-health-backlog.md").write_text(report + "\n", encoding="utf-8")
         with (out / "depth-health-backlog.csv").open("w", encoding="utf-8", newline="") as file:
-            writer = csv.DictWriter(file, fieldnames=["roadmap", "stage", "node", "score", "status", "reason"])
+            writer = csv.DictWriter(
+                file, fieldnames=["roadmap", "stage", "node", "score", "status", "reason"]
+            )
             writer.writeheader()
             writer.writerows(records)
         print(f"Backlog updated: {len(routes)} routes, {len(nodes)} unique nodes")
