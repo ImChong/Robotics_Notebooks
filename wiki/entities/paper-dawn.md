@@ -95,22 +95,32 @@ flowchart TB
 sequenceDiagram
   autonumber
   participant Entry as dawn.train
-  participant Env as build_env / IsaacLab
+  participant Env as IsaacLab VecEnv
   participant Runner as DawnRunner
+  participant Storage as DAWNRolloutStorage
   participant WM as DAWNWorldModel
+  participant Head as Projection Head
   participant Alg as PPOAMPAlgorithm
-  Entry->>Env: 创建 Go1 环境
+  Entry->>Env: build_env()
   Entry->>Runner: learn()
   loop rollout
-    Env->>Runner: 本体与深度
-    Runner->>WM: 带噪观测与动作历史
-    WM-->>Runner: 世界模型特征
-    Runner->>Alg: 策略观测
-    Alg-->>Runner: 关节目标动作
+    Env-->>Runner: 本体与深度观测
+    Runner->>WM: rssm.observe_step()
+    WM-->>Runner: latent.h
+    Runner->>Alg: act(obs + wm_feature)
+    Alg-->>Runner: 关节动作
     Runner->>Env: step(actions)
+    Runner->>Storage: 保存干净和带噪深度及动作
   end
-  Runner->>WM: 序列训练：干净重建与对齐
-  Runner->>Alg: PPO / AMP 更新
+  Runner->>Storage: sample_world_model_indices()
+  Storage-->>Runner: 序列数据
+  Runner->>WM: _train(image, image_clean, action)
+  WM->>WM: _target_key(image) 指向 image_clean
+  WM->>WM: _extra_losses() 创建 clean 分支
+  WM->>Head: latent_traj.s 和 latent_clean.s
+  Head-->>WM: 双向交叉熵对比损失
+  WM-->>Runner: 重建损失 + KL + 对比损失
+  Runner->>Alg: update() PPO / AMP
 ```
 
 入口来自[源码核查](../../sources/repos/dawn-parkour.md)；回放使用 `dawn.play → DawnEvalRunner`。图描述训练主干调用，不是 Go1 真机通信实现。
@@ -123,9 +133,9 @@ sequenceDiagram
 | IsaacLab 4,096 并行环境 | 默认规模，先检查显存与相机开销 |
 | 关闭 D435i 内置滤波 | 验证学习出的抗噪表征；仍需检查观测时序 |
 | 官方代码 | 训练/仿真回放已发布；独立权重下载与真机入口未见 |
-| 源码对照 | `_target_key()` 切到 `image_clean`；`_extra_losses()` 计算对齐 |
+| 源码对照 | `_target_key()` 切到 `image_clean`；`_extra_losses()` 构造干净分支；`_compute_contrastive_loss()` 实现双向 CE |
 
-源码采用带噪/干净相似度矩阵的双向交叉熵；论文描述 SimCLR 风格目标，复现应以具体样本组织为准，不假设完全相同。本次未执行机器人训练。
+对比损失在共享 Projection Head 输出计算，依旧对编码器反向传播。官方 runner 将 `image`（noisy）和 `image_clean`（clean）写入 batch 后执行 `_world_model._train`；本次仅静态核查，没有执行机器人训练。
 
 ## 实验与评测
 
@@ -133,6 +143,8 @@ sequenceDiagram
 |---|---|
 | 仿真楼梯 / 沟 / 台阶平均成功率 | 96.9%；3 个种子，各条件 100 episodes |
 | 真机零样本能力 | 18 cm 楼梯、70 cm 沟、45 cm 高台；每难度 10 次试验 |
+| 室外最高难度成功率 | 楼梯 80%、沟 60%、高台 70%（论文 IV-H，各难度 10 次） |
+| 仿真最高难度消融 | 联合 DAWN 88.2%；相对单纯加噪：仅去噪 +5.7 p.p.、仅对齐 +4.6 p.p.、联合 +11.5 p.p. |
 
 96.9% 是特定仿真地形平均值，不是现实所有任务的成功率。
 
@@ -141,8 +153,9 @@ sequenceDiagram
 **把深度噪声纳入表征监督，并分别验收感知与闭环控制。**
 
 1. 对照重建与对齐的消融，避免把收益归因于单纯加噪。
-2. 分别测量 10 Hz 深度与 50 Hz 控制路径的延迟。
-3. 先用官方入口训练与回放，再补真机 IO；公开视频不能替代部署包。
+2. 投影头只在训练期使用；虽然对比损失不直接比较原始潜状态，但梯度仍能更新主干。
+3. 分别测量 10 Hz 深度与 50 Hz 控制路径的延迟。
+4. 先用官方入口训练与回放，再补真机 IO；公开视频不能替代部署包。
 
 ## 与其他工作对比
 
