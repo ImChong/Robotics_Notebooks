@@ -251,6 +251,14 @@ op: ingest
 - **开源结论：** 项目页已核查；页面没有提供可核实的公开代码仓库链接，记录为源码链接未核实。
 - **关键页：** `sources/papers/robot_motion_transition_human_motion_prior_arxiv_2610_30817.md`；`wiki/entities/paper-stamp.md`。
 
+## [2026-11-08] ingest | Deep-Live-Cam — 单图实时换脸源码、官方版本与许可核验
+
+- 意图：将 Deep-Live-Cam 作为视觉/数字人合成工具纳入单一 wiki 实体，附真实 Live 调用链与 Mermaid 图。
+- 一手来源：GitHub README 和主分支摄像头、换脸、后处理源码；官网首页与官方 Releases。
+- 开源结论：Python / ONNX Runtime 主分支公开、AGPL-3.0；官方 Ultimate 版本另有订阅制功能，模型授权不等于源码授权。
+- 事实校正：2026-11-08 GitHub API 为 97,780 Stars；GitHub main 直接输出 Qt 预览，OBS 可窗口采集；官方 Release 宣布虚拟摄像头但不能混同开源 main 的已验证功能。
+- 入库：`sources/repos/deep-live-cam.md`、`sources/sites/deep-live-cam-official.md`、`wiki/entities/deep-live-cam.md`，并从 ARGUS 鉴伪页面建立反向关联。
+
 ## [2026-11-08] ingest | FlexGlue 现有实体补充 COLMAP ONNX 官方集成
 
 - 去重：沿用已合并 PR #3418 建立的 `paper-flexglue`，不新增项目节点。
