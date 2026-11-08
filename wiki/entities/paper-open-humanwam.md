@@ -65,7 +65,7 @@ summary: "Open-HumanWAM（arXiv:2611.06817）构建约 5 万小时人类第一�
 | **项目** | [Open-HumanWAM 官方主页](https://dagroup-pku.github.io/open-humanwam/) |
 | **源码** | [DAGroup-PKU/HumanNet · open-humanscale](https://github.com/DAGroup-PKU/HumanNet/tree/open-humanscale)，包含 `humanwam_vanilla/` 与 `humanwam_goal/` |
 | **开放程度** | **部分开源**（截至 2026-11-08）：已见训练/评测/推理入口及部分权重；完整 50K 语料仍在上传，Goal 后训练脚本未公开 |
-| **名称辨析** | 部分早期资料写作 Open-HumanScale；本页按官方项目/论文题名 Open-HumanWAM 维护，且不同于 [HumanScale](paper-sa-2606-20521.md) |
+| **名称辨析** | 部分早期资料写作 Open-HumanScale；本页按官方项目/论文题名 Open-HumanWAM 维护，且不同于 [HumanScale](paper-sa-2606-20521-humanscale-egocentric-human-video-can-outperform.md) |
 
 ## 核心原理
 
@@ -207,7 +207,7 @@ sequenceDiagram
 - **视频-only 预训练 vs 带动作监督的人类视频：** 本文的消融关注可对齐双臂动作的第一人称语料对机器人操作的可迁移性；不宜把贡献简化为“视频规模增加”。
 - **固定机器人语料 vs 人机联合：** Goal 先固定 14,618 h 机器人数据，再额外加入不同规模人类演示以隔离人类经验增益；仍需考虑两类数据分布与采样比例。
 - **Vanilla vs Goal：** 前者主要研究预训练缩放、IDM 和多视角适配；后者用显式目标图像、人机联合及目标缓存支持零样本/后训练，模型与动作输出维度均不同。
-- **与 [HumanScale（2606.20521）](paper-sa-2606-20521.md)：** 论文实体不同；另与 [HumanNet](humannet.md) 原始人类动作数据集的职责区分，避免同仓同名误归并。
+- **与 [HumanScale（2606.20521）](paper-sa-2606-20521-humanscale-egocentric-human-video-can-outperform.md)：** 论文实体不同；另与 [HumanNet](humannet.md) 原始人类动作数据集的职责区分，避免同仓同名误归并。
 
 ## 结论
 
