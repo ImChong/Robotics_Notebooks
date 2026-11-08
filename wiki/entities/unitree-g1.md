@@ -189,6 +189,7 @@ sequenceDiagram
 图依据：unitree_ros2@668d1ec，`example/src/src/g1/lowlevel/g1_low_level_example.cpp`（`main`、`LowLevelCmdSender` 构造、`LowStateHandler`、`Control`），`example/src/CMakeLists.txt`（`g1_low_level_example` 目标），`README.md`（示例列表与 `source setup.sh` 步骤）。`get_crc` 的实现位于 `common/motor_crc_hg`，未打开阅读，图中只表示调用。未编译或运行示例，未在真机验证。
 
 ## 关联页面
+- [人形机械臂构型](../concepts/humanoid-arm-configuration.md)
 
 - [G1 软件服务栈](./unitree-g1-software-stack.md) — SDK2/DDS 与仿真桥接口（课程 1.4）
 - [unitree_ros2](./unitree-ros2.md) — v0.3.0 G1 双臂 / Dex3 / Arm SDK 官方 ROS 2 入口

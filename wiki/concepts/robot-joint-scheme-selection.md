@@ -147,6 +147,7 @@ L ≈ L_rated × (τ_rated / τ_eq)³
 结论（作者）：关节方案没有最优解，只有与工况匹配的解；先定义负载谱、运动谱、精度要求，再让传动方案去满足，返工概率低于先定路线再找理由。
 
 ## 关联页面
+- [人形机械臂构型](./humanoid-arm-configuration.md)
 
 - [人形执行器选型的决策物种](../overview/humanoid-actuator-102-decision-species.md)
 - [减速器反射惯量](../overview/humanoid-actuator-102-gear-reflected-inertia.md)

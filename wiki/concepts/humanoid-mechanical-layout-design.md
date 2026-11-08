@@ -114,6 +114,7 @@ flowchart TB
 - **公差留得过紧**：加工与装配成本非线性上升，应只在影响运动学与轴系对齐的关键面收紧。
 
 ## 关联页面
+- [人形机械臂构型](./humanoid-arm-configuration.md)
 - [螺纹基础](./screw-thread-basics.md) · [Mechtool 在线机械设计工具](../entities/mechtool.md)
 
 - [人形整机硬件设计纵深路线](../../roadmap/depth-humanoid-hardware-design.md) — 本页在 Stage 1–2 展开为学习顺序
