@@ -139,6 +139,14 @@ sequenceDiagram
 - 项目页仍显示 Data link soon，源码配置已有公开数据 ID；真机 399 条不公开，3180 不含真机。匿名镜像有到期日，后续需跟踪正式仓库。
 - 一次探针更新对应一次 VLA action chunk：LIBERO-X 为 8/20=0.4 s，真机为 6/50=0.12 s；不能把 0.12 ms 的探针延迟写成控制周期。
 
+## 与其他工作对比
+
+| 项目 | 定位区别 |
+|---|---|
+| [FARM](./paper-farm-failure-readout.md) | 读取冻结 VLA-JEPA 世界模型预测态，用约 34k 参数 readout 逐步打失败分；VLA-Tug 读取 VLA 骨干层特征，以 LSTM 同时输出故障评分与故障模式，并单独校准告警阈值 |
+| [进度探针 P²](./paper-progress-probes-p2-vla-runtime-monitoring.md) | 只用成功演示，在 π0.5 激活上线性回归任务进度，以落后名义进度判定失败；VLA-Tug 需要失败轨迹的 onset 与模式标注，直接学习失败前预兆 |
+| [Robot-WATCHDOG](./paper-robot-watchdog-object-graph-failure-detection.md) | 从 RGB 视频构建物体中心时空图，只需正常示范，不依赖策略内部表征；VLA-Tug 必须接入 VLA 骨干特征，换模型需重新训练与校准 |
+
 ## 局限与风险
 
 - 正式校准保证依赖可交换性；分布外仅经验检验，PPV 还依赖失败基率。
@@ -152,6 +160,7 @@ sequenceDiagram
 - [VLA 方法](../methods/vla.md)：本方法读取策略内部表征，不替代动作策略。
 - [机器人安全状态机](../concepts/robot-safety-state-machine.md)：告警到停止/接管的执行边界。
 - [Latent RL Priors](paper-latent-rl-priors.md)：同样利用潜在表征，但任务是控制先验复用。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：本方法不另接检测/分割头，而是直接池化 VLA 骨干对 agent/wrist 图像的内部特征做失败预测，可与显式感知栈方案（如 Robot-WATCHDOG 的物体图）对照取舍。
 
 ## 参考来源
 

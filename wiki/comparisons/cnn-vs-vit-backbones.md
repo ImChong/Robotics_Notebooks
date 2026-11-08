@@ -9,7 +9,7 @@ tags:
   - deep-learning
   - robotics
 status: complete
-updated: 2026-09-21
+updated: 2026-11-07
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -24,6 +24,7 @@ sources:
   - ../../sources/blogs/wechat_human_five_vit_intro.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
+  - ../../sources/papers/vit_dosovitskiy_arxiv_2010_11929.md
 summary: "CNN（ResNet 系）以卷积归纳偏置在小数据/边缘部署占优，ViT 系靠大数据与全局注意力在规模化时反超；机器人感知按数据量、分辨率/吞吐与下游迁移需求在两者间取舍。"
 ---
 
@@ -56,8 +57,8 @@ summary: "CNN（ResNet 系）以卷积归纳偏置在小数据/边缘部署占�
 | 维度 | CNN（ResNet 系） | ViT 系 |
 |------|------------------|--------|
 | 归纳偏置 | 强（局部性、平移等变） | 弱（位置全靠学习） |
-| 数据量需求 | 中小数据即可收敛 | 小数据易欠拟合，需大数据/SSL 预训练 |
-| 全局上下文 | 靠堆叠加深感受野，偏局部 | 浅层即获全局关系 |
+| 数据量需求 | 中小数据即可收敛 | 小数据预训练时比算力相近的 ResNet 更易**过拟合**（原文 JFT 子集实验 90M+ 才反超），需大数据/SSL 预训练 |
+| 全局上下文 | 靠堆叠加深感受野，偏局部 | 部分注意力头在最低层即关注大范围（另一些头保持局部），注意力距离随深度增加 |
 | 分辨率/吞吐 | 卷积对分辨率线性友好 | 朴素注意力随 token 数 **二次** 增长 |
 | 多尺度特征 | 天然层次金字塔（配 FPN 顺手） | 需 Swin/分层变体或专门 neck |
 | 边缘部署 | 成熟（TensorRT/量化算子全） | 算子支持与延迟仍偏重 |
@@ -103,6 +104,7 @@ flowchart TB
 - [wechat_human_five_vit_intro.md](../../sources/blogs/wechat_human_five_vit_intro.md) — human five《ViT入门》机制与微调实操归纳
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
 - [经典视觉骨干与检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)
+- [ViT 论文通读笔记（arXiv:2010.11929）](../../sources/papers/vit_dosovitskiy_arxiv_2010_11929.md) — 数据需求（§4.3）与注意力距离（§4.5）依据
 
 ## 推荐继续阅读
 

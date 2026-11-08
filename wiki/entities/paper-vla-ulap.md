@@ -8,7 +8,7 @@ tags:
   - action-chunking
   - u-tokyo
 status: complete
-updated: 2026-09-18
+updated: 2026-11-07
 arxiv: "2609.18663"
 related:
   - ../methods/vla.md
@@ -19,7 +19,7 @@ related:
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/vla-ulap_arxiv_2609_18663.md
-summary: "VLA-ULAP（arXiv:2609.18663，东京大学）：7.4M ULAP 边缘 chunk 预测与云端 VLA 交错；Orin Nano 19.9 ms；减 48.8–76.7% VLA 调用仍留 95–97.5% SR；SO-101 真机与 latency-aware LIBERO-Safety +11–15.5 pp vs π₀.₅。"
+summary: "VLA-ULAP（arXiv:2609.18663，东京大学）：7.4M ULAP 边缘 chunk 预测与云端 VLA 交错；Orin Nano 20.7 ms（当前版）；减 45.3–77.3% VLA 调用仍留 95.0–98.5% SR；SO-101 真机与 latency-aware LIBERO-Safety +11–15.5 pp vs π₀.₅。"
 ---
 
 # VLA-ULAP：云端 VLA 与边缘超轻量动作预测交错
@@ -43,8 +43,8 @@ summary: "VLA-ULAP（arXiv:2609.18663，东京大学）：7.4M ULAP 边缘 chunk
 
 ## 为什么重要
 
-- **边缘算力现实：** Jetson Orin Nano 上 ULAP **19.9 ms / 0.183 J** vs GR00T on A6000 **284.3 ms / 50.55 J** — 数量级差距。
-- **Operating point 可选：** 三仿真 base-policy/benchmark 对上，减 **48.8–76.7%** VLA 调用仍留 **95.0–97.5%** baseline SR。
+- **边缘算力现实：** 当前版 arXiv（2026-11-07 复核）报告 Jetson Orin Nano 上 ULAP **20.7 ms / 0.122 J** vs GR00T N1.7 on A6000 **289.3 ms / 40.46 J** — 数量级差距（早先归档的 19.9 ms / 0.183 J / 284.3 ms / 50.55 J 是旧版数字）。
+- **Operating point 可选：** 四个仿真 base-policy/benchmark 对上（选定工作点），减 **45.3–77.3%** VLA 调用仍留 **95.0–98.5%** baseline SR（旧版为三对、48.8–76.7%、95.0–97.5%）。
 - **动态任务：** latency-aware LIBERO-Safety 上较 **π₀.₅** **+11.0 / +15.5 pp**，约减半 VLA 调用。
 - **与 [APXInf](./apxinf.md) 对照：** APXInf 压单模型 onboard 延迟；VLA-ULAP 接受 cloud VLA + 极小本地 predictor 混合。
 
@@ -89,15 +89,15 @@ flowchart TB
 
 | 设定 | 数字 |
 |------|------|
-| Orin Nano ULAP | **19.9 ms**，**0.183 J**/inference |
-| vs GR00T A6000 | **284.3 ms**，**50.55 J** |
-| 三仿真对 | **95.0–97.5%** baseline SR；VLA 调用 **−48.8–76.7%** |
+| Orin Nano ULAP（当前版） | **20.7 ms**，**0.122 J**/inference（ensemble；单模型 19.73 ms / 0.1140 J；能耗已扣除空闲功率） |
+| vs GR00T N1.7 A6000 | **289.3 ms**，**40.46 J** |
+| 四仿真对 | **95.0–98.5%** baseline SR；VLA 调用 **−45.3–77.3%** |
 | SO-101 真机 | **95.2–100%** baseline SR；time **−47.9–58.0%**；energy **−52.1–62.5%** |
 | LIBERO-Safety | vs π₀.₅ **+11.0 / +15.5 pp** |
 
 ## 与其他工作对比
 
-> 下表做**定位对照**：19.9 ms / 0.183 J 与 284.3 ms / 50.55 J 分别在 Orin Nano 与 A6000 上测得，硬件不同不可直接相减；能耗按 successful-episode 计，失败 trial 不计会偏乐观。
+> 下表做**定位对照**：20.7 ms / 0.122 J 与 289.3 ms / 40.46 J 分别在 Orin Nano 与 A6000 上测得，硬件不同不可直接相减；测量口径也不同——Orin Nano 用 15 W DVFS（非最高 Super 模式）、FP32/TF32 CUDA Graphs，能耗取 VDD_IN 模组功率，A6000 为 bf16 计算、4 步去噪，能耗取 NVML 板级功率；能耗按 successful-episode 计，失败 trial 不计会偏乐观。
 
 | 对照 | 差异读法 |
 |------|----------|
@@ -105,7 +105,7 @@ flowchart TB
 | [π₀.₅](./paper-pi05-open-world-vla.md) | 本文的对照基线：latency-aware LIBERO-Safety 上 +11.0 / +15.5 pp，约减半 VLA 调用。注意优势只在 **latency-aware** 设定下显现，静态 LIBERO 不足以说明 |
 | **ACT / SP-VLA**（论文对照组） | 同为加速路线，发力点不同：SP-VLA 压 VLA 自身推理，ULAP 不碰 VLA 内部表征、**独立训练**一个填空头。后者的工程好处是边缘侧可单独迭代 |
 | [Harness VLA](./paper-harness-vla.md) | 抽象层不同：Harness 在 agent 编排层调度策略，VLA-ULAP 调度的是**同一任务内的调用节奏**。两者可叠加 |
-| [Action Chunking](../methods/action-chunking.md) | ULAP 填的正是 chunk 与 chunk 之间的空档；该页给 chunk 执行语义，读「减 48.8–76.7% 调用」应按 chunk 计而非按控制步计 |
+| [Action Chunking](../methods/action-chunking.md) | ULAP 填的正是 chunk 与 chunk 之间的空档；该页给 chunk 执行语义，读「减 45.3–77.3% 调用」应按 chunk 计而非按控制步计 |
 
 ## 结论
 
@@ -113,7 +113,7 @@ flowchart TB
 
 1. **独立训练 ULAP 是工程亮点** — 不必碰 VLA 内部表征。
 2. **latency-aware benchmark 才显优势** — 静态 LIBERO 不足以说明 dynamic 任务收益。
-3. **19.9 ms 改变闭环语义** — 与 280 ms 级 VLA 不是同一控制环。
+3. **约 20 ms 改变闭环语义** — 与约 290 ms 级 VLA 不是同一控制环。
 4. **cloud 依赖仍在** — 交错 ≠ 完全边缘化。
 5. **代码未发布** — operating point 选择细节待开源验证。
 

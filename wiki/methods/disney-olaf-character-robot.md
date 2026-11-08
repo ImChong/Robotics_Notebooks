@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, rl, imitation, entertainment-robotics, reward-shaping, thermal, sim2real, isaac-sim]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ../concepts/reward-design.md
   - ../tasks/locomotion.md

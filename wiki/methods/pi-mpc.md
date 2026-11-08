@@ -3,7 +3,7 @@
 type: method
 tags: [mpc, solver, admm, nmpc, gpu, parallel-computing, tsinghua, horizon-robotics]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-07
 related:
   - ./model-predictive-control.md
   - ../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md
@@ -100,6 +100,7 @@ flowchart LR
 - **误区：** π MPC 等于「任意非线性全身 MPC 的万能解」；实际用于 **凸 LTV / RTI 线性化** 子问题（如质心 MPC）。
 - **误区：** 并行等于「比 Riccati 总时间一定更短」；短 horizon 或少量环境时，ADMM 迭代开销可能仍需 profile。
 - **局限：** 论文为 technical note 级算法贡献；真机大规模验证主要通过 [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) 训练栈体现。
+- **本页核对范围：** 2026-11-07 对照原文核过摘要、§I–§II、§V 数值实验（AFTI-16、随机线性 MPC 规模对比、CSTR NMPC）与结论；§IV 的变量分裂推导、Theorem 1/2 与收敛证明只浏览、**未逐式核对**，上文「主要技术路线」中相应公式以来源档案摘录为准（见 [π MPC 论文摘录](../../sources/papers/pi_mpc_arxiv_2601_14414.md)）。
 
 ## 关联页面
 

@@ -11,7 +11,7 @@ tags:
   - isaac-sim
   - ucas
 status: complete
-updated: 2026-10-01
+updated: 2026-11-07
 arxiv: "2604.23702"
 related:
   - ../tasks/humanoid-locomotion.md

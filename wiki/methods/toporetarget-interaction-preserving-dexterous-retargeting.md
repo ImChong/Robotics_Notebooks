@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learning, contact-rich-manipulation, sim2real]
 status: complete
 date: 2026-06-17
-updated: 2026-10-31
+updated: 2026-11-07
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -129,7 +129,7 @@ sequenceDiagram
 
 ## 与常见路线的关系
 
-- **相对 OmniRetarget：** 同用 **interaction mesh + Laplacian** 保留人–物/手–物局部关系；OmniRetarget 面向 **人形全身 + 地形/物体 Sequential SOCP**（~41 ms/帧），TopoRetarget 面向 **灵巧手 + 固定参数实时优化**（~4.7 ms/帧），在 ContactPose 接触精度/对齐上更优。
+- **相对 OmniRetarget：** 同用 **interaction mesh + Laplacian** 保留人–物/手–物局部关系；OmniRetarget 面向 **人形全身 + 地形/物体 Sequential SOCP**（~41 ms/帧），TopoRetarget 面向 **灵巧手 + 固定参数实时优化**（~4.7 ms/帧），在 ContactPose 接触精度/对齐上更优。Laplacian 边权也不同：OmniRetarget 用均匀权重 $w_{ij}=1/|N(i)|$，TopoRetarget 改用源构型上的距离衰减权重 $w_{ij}\propto\exp(-\kappa\|v_i^s-v_j^s\|)$（归一化），并加骨方向先验。
 - **相对 DexPilot / GeoRT：** 后者以 **手部中心** 或 **极速几何** 为目标，论文显示在 hand–object 穿透与接触对齐上劣势明显（GeoRT 最大穿透 **22.22 mm**）。
 - **相对 SPIDER：** SPIDER 用 **并行仿真采样** 做动力学 refinement；TopoRetarget 停留在 **运动学交互保留 + 下游 RL 修补**，不重写控制序列，更轻、更适合实时遥操与大规模参考生成。
 - **相对 REGRIND：** 同族 **interaction mesh + Laplacian + 残差 RL**；REGRIND 面向 **MoCap 单次演示 → 剪刀/螺丝刀工具操作 → LEAP/WUJI 真机**，并系统对比 SPIDER/DexMachina（见 [REGRIND](../methods/regrind-retargeting-guided-rl.md)）。

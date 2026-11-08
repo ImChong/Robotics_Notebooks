@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, reinforcement-learning, bilevel-optimization, humanoid, quadruped, imitation-learning, paper, humanoid-paper-notebooks]
 status: complete
 date: 2026-05-13
-updated: 2026-09-15
+updated: 2026-11-07
 arxiv: "2605.06593"
 related:
   - ../overview/paper-notebook-category-02-motion-retargeting.md
@@ -24,7 +24,7 @@ summary: "ReActor 将跨具身运动重定向建成物理仿真中的双层问�
 
 # ReActor（物理感知 RL 运动重定向）
 
-**ReActor**（*Reinforcement Learning for Physics-Aware Motion Retargeting*，Müller 等，SIGGRAPH 2026 预印本 arXiv:2605.06593）把「人体运动学参考 → 目标机器人可执行参考」写成**物理仿真内**的联合求解：不是先离线做纯几何重定向再把结果交给下游，而是让**可学习的重定向参数**与**跟踪策略**在同一个双层目标下协同更新，使接触、自碰与脚滑等约束由仿真与奖励**内生化**。
+**ReActor**（*Reinforcement Learning for Physics-Aware Motion Retargeting*，David Müller 等，Disney Research；ACM Trans. Graph. 45(4) Article 97 / SIGGRAPH 2026，arXiv:2605.06593）把「人体运动学参考 → 目标机器人可执行参考」写成**物理仿真内**的联合求解：不是先离线做纯几何重定向再把结果交给下游，而是让**可学习的重定向参数**与**跟踪策略**在同一个双层目标下协同更新，使接触、自碰与脚滑等约束由仿真与奖励**内生化**。
 
 ## 英文缩写速查
 
@@ -97,10 +97,20 @@ flowchart LR
 - **相对 NMR**：NMR 用 **CEPR** 把 GMR 输出拉进仿真，再训练**独立前向网络**做快速推断；ReActor 不显式训练大网络，而是**在线联合优化 \(\mathbf{p}\) 与跟踪策略**，强调双层结构与近似梯度的算法侧贡献。
 - **相对可微控制类（如 DOC）**：同属「物理一致参考」思路，但下层用 **RL** 处理非光滑接触与非可微项，上层梯度走**工程化近似**而非完整隐函数定理链。
 
+## 实验要点（论文原文，2026-11-07 通读核对）
+
+- **目标与基线：** Unitree G1（29 DoF）、Lima（20 DoF 自制小型机器人）、ANYmal D 四足；基线为 GMR 与 OmniRetarget。
+- **下游 RL 成功率（PHC 过滤后的 AMASS）：** G1 上 GMR 89.93%、OmniRetarget 95.51%、ReActor 97.45%；Lima 上 91.23% / 79.85% / 95.07%（OmniRetarget 在 Lima 上受非均匀缩放与根对齐影响表现差）。
+- **成本：** 单 GPU 训练 + 重定向全 AMASS 约 6.5 h（PPO，Isaac Sim 4096 环境），OmniRetarget 约 7 h、GMR 约 5 h（均为 CPU）。
+- **伪影：** 穿透 / 脚滑 / 悬空指标整体最好，但脚滑与悬空**不为零**，因为不严格强制接触匹配。
+- **用例：** 用 ReActor 重定向数据训练的跟踪策略部署到 Lima 实机；交互式动画中重定向策略以 88.3 Hz 运行。
+
 ## 局限与阅读时注意点
 
 - **RFC 与动力学松弛**：根残差力矩降低跨动作、跨形态训练难度，但与「完全物理一致的人体动力学复现」不是同一目标；阅读实验需区分**参考质量指标**与**是否零辅助力**。
 - **近似梯度假设**：\(\alpha\) 标量化策略响应对参考变化的灵敏度是算法核心假设，分布外形态或奖励重塑时需评估稳定性。
+- **外力惩罚权重最敏感**：消融显示加大 RFC 惩罚更物理，但极端动作失败增多；四足上形态差距越大越需细调奖励，ANYmal 会为减少外力而放弃跟踪。
+- **原文局限**：参数化设为时间不变；语义对应需人工选择；物理上不可能的动作本身是病态问题。
 - **算力与调参**：单环双层 + 大规模动作库的训练成本高于单次运动学重定向；是否优于「高质量运动学 + 下游专用 tracking」取决于数据与硬件预算。
 
 ## 关联页面

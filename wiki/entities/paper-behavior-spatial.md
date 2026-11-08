@@ -204,6 +204,7 @@ python bench/sim_eval/score.py --results runs/my_method
 - [BEHAVIOR-1K 仿真基准](./behavior-1k.md)
 - [Manipulation：机器人操作](../tasks/manipulation.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 
 ## 参考来源
 

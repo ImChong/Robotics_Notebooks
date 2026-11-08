@@ -2,7 +2,7 @@
 type: method
 tags: [rl, policy-optimization, sac, off-policy, maximum-entropy, manipulation]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-07
 summary: "SAC 是连续控制中最主流的 off-policy 最大熵算法：用 Replay Buffer 反复利用经验、双 Q 抑制高估、自动调温度平衡探索与利用，样本效率远高于 PPO，是真机 RL 与精细操作的首选。"
 related:
   - ./td3.md
@@ -30,6 +30,7 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/importance_sampling_pca_av_failures_arxiv_2607_18106.md
   - ../../sources/papers/v_simba_arxiv_2608_07870.md
+  - ../../sources/papers/sac_reading_arxiv_1801_01290.md
 ---
 
 # SAC（Soft Actor-Critic）
@@ -77,6 +78,7 @@ $$
 - Critic 学习 **软 Q 函数**：在 [Bellman 方程](../formalizations/bellman-equation.md) 的目标值中加入下一步的熵项，使价值评估与最大熵目标一致。
 - 采用 **Clipped Double-Q**：维护两个 Q 网络 $Q_{\phi_1}, Q_{\phi_2}$，取两者较小值构造目标，抑制 off-policy 自举带来的 Q 值高估。
 - 用 **目标网络软更新**（系数 $\tau$）平滑 Bootstrap 目标，稳定训练。
+- 版本差异：1801.01290 原版另有状态价值网络 $V_\psi$ 及其目标网络；续作 1812.05905 的作者说明该价值网络后来发现不必要，只保留双 Q 与目标 Q（见 [SAC 论文归档](../../sources/papers/sac_reading_arxiv_1801_01290.md)）。
 
 ### 3. 演员更新（重参数化）
 
@@ -91,7 +93,7 @@ $$
 \min_\alpha\ \mathbb{E}_{a\sim\pi}\big[-\alpha\big(\log\pi(a|s) + \bar{\mathcal{H}}\big)\big]
 $$
 
-- 这一改进（Haarnoja et al., 2018 的第二版）让 SAC 在不同任务间几乎免调温度，是其鲁棒性的关键。
+- 这一改进出自续作 *Soft Actor-Critic Algorithms and Applications*（arXiv:1812.05905，§5）；原版 1801.01290 用固定温度，消融显示 SAC 对奖励尺度（相当于温度）敏感。自动调温度让 SAC 在不同任务间几乎免调温度，是其鲁棒性的关键。
 
 ### 5. Off-policy 训练循环
 
@@ -138,6 +140,7 @@ $$
 
 ## 参考来源
 - [Policy Optimization 来源归档（PPO/SAC/TD3/TRPO/Rudin/BRRL）](../../sources/papers/policy_optimization.md)
+- [SAC 论文归档（原文通读）](../../sources/papers/sac_reading_arxiv_1801_01290.md) — 最大熵目标、软策略迭代、自动温度、Minitaur / 灵巧手真机
 - Haarnoja, T., et al. (2018). *Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor*. <https://arxiv.org/abs/1801.01290>
 - Haarnoja, T., et al. (2018). *Soft Actor-Critic Algorithms and Applications*. <https://arxiv.org/abs/1812.05905>
 - Fujimoto, S., et al. (2018). *Addressing Function Approximation Error in Actor-Critic Methods (TD3)*. <https://arxiv.org/abs/1802.09477>

@@ -102,6 +102,7 @@ flowchart TD
 - [Open X-Embodiment](../entities/paper-open-x-embodiment.md) · [DROID](../entities/paper-rcl-ref-aa9c28fbf4242ea03696-droid-a-large-scale-in-the-wild-robot-manipulati.md)
 - [BridgeData V2](../entities/painode-085-bridgedatav2.md) · [RoboSet](../entities/roboset-dataset.md) · [RH20T](../entities/painode-092-rh20t.md)
 - [AgiBot World Colosseo](../entities/paper-sa-2503-06669-agibot-world-colosseo-a-large-scale-manipulation.md) · [LeRobot](../entities/lerobot.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) · [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md)
 
 ## 参考来源
 

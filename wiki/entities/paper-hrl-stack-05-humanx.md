@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, human-video, data-generation, imitation-learning, interaction-skills, unitree-g1, shanghai-ai-lab, hkust]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
 arxiv: "2602.02473"
 venue: "arXiv 2026"
 related:
@@ -60,6 +60,8 @@ flowchart TB
 
 HumanX 的重点不是“机器人会打球”本身，而是数据生产：视频中的人体动作和机器人形态不一致，物体状态也不完整。XGen 需要恢复/合成物理合理的机器人-物体交互数据，并通过物体 mesh、尺寸、轨迹增强扩大分布；XMimic 则学习统一策略，使同一技能能在对象状态变化下泛化。
 
+按 arXiv v2（CoRL 2026）原文：XGen 以锚点为中心合成数据（单目视频 → 人体运动重定向 → 接触 / 非接触分段 → 接触优化与物理仿真生成物体轨迹 → 几何缩放与轨迹变化增广，单条视频可扩成约 50 条交互片段）。XMimic 有三个交互优先设计：交互向量（IV，身体点到物体中心的向量）模仿奖励、交互失败时概率性提前终止（IV 终止）、初始化与训练中的交互扰动；身体模仿项另含 AMP 奖励。训练为每技能一个特权教师（PPO）→ 在合并数据上训练的学生（RL 奖励 + 对教师行为克隆，非对称 AC）；学生可只用本体感知（NEP 模式），或带 MoCap 物体观测（训练中模拟物体信号丢帧）。
+
 与 OmniRetarget 相比，OmniRetarget 更像 interaction-preserving retargeting engine；HumanX 更像从视频到技能的完整数据+策略闭环。与 SUGAR 相比，HumanX 更强调敏捷交互和球类/反应任务。
 
 ## 关键实验数字
@@ -70,7 +72,10 @@ HumanX 的重点不是“机器人会打球”本身，而是数据生产：视�
 | 技能数 | **10** different skills |
 | 真机 | zero-shot transfer to physical Unitree G1 |
 | Passing | human-robot passing over **10 consecutive cycles** |
-| 泛化 | over **8×** higher generalization success than prior methods |
+| 泛化 | over **8×** higher generalization success than prior methods（v2 仿真：最终模型 GSR 平均超 80%，约为 HDMI 的 8 倍） |
+| 真机 NEP 模式（10 次） | 投篮 8/10、运球 8/10、拾球 10/10、上篮 7/10、假动作转身后仰 9/10 |
+| 真机 MoCap 模式（50 次） | 传接球 41/50、反应格斗 37/50、搬货 43/50、足球踢球 42/50 |
+| 训练 | Isaac Gym、单张 RTX 4090、16,384 并行环境、每策略 20,000 次迭代；策略 100 Hz、PD 1 kHz |
 
 ## 源码运行时序图
 
@@ -92,6 +97,7 @@ HumanX 的重点不是“机器人会打球”本身，而是数据生产：视�
 
 - 起作用的关键不是模仿本身，而是 **增强**：物体 mesh / 尺寸 / 轨迹的扩增撑开分布，使同一技能在对象状态变化下仍可执行，论文报告泛化成功率超 prior methods **8×**。
 - 覆盖面是主要证据：**5 类域、10 个技能** zero-shot 迁移到 Unitree G1，人–机 passing 可持续 **10 连续回合**（项目页称单个视频示范即可学得）。
+- 作者自述局限（v2）：XGen 不支持手内重定向，不能处理可变形 / 可切割物体，未用灵巧手；MoCap 感知难覆盖多样物体且部署成本高。
 - 主要风险在数据源头：球类 / 格斗中的物体速度、接触力与遮挡比静态物体难恢复得多；部分自主交互演示还依赖外部 MoCap sensing，高速接触任务在真机上安全约束很强。
 - 复现受限：截至 **2026-07-22** 项目页 Code 链接 404，`wyhuai/human-x` 只是项目页资源仓，**XGen/XMimic 实现无法验证**。
 - 相对定位：[OmniRetarget](./paper-hrl-stack-03-omniretarget.md) 只做重定向、不含策略；[SUGAR](./paper-loco-manip-161-076-sugar.md) 面向通用移动操作；HumanX 押的是 **agile 交互** 这一子集上的「数据 + 策略」闭环。

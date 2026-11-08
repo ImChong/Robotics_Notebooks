@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, newton, newton-raphson, root-finding, inverse-kinematics, second-order, numerical-methods, trajectory-optimization]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-07
 summary: "牛顿–拉夫森法用一阶 Taylor 线性化迭代求根；标量式为 NR，向量式即 Jacobian 伪逆 IK；在优化语境等价于 Hessian 牛顿步。"
 related:
   - ./gauss-newton.md
@@ -70,7 +70,7 @@ $$
 J(\theta_k)\,\Delta\theta = x_d - f(\theta_k), \qquad \Delta\theta = J^\dagger(\theta_k)\bigl(x_d-f(\theta_k)\bigr),
 $$
 
-$\theta_{k+1}=\theta_k+\Delta\theta$。SE(3) 目标 $T_{sd}$ 时，用 body twist $V_b=\log(T_{bs}^{-1}T_{sd})$ 与 **body Jacobian** $J_b$，更新 $\theta_{k+1}=\theta_k+J_b^\dagger V_b$（见 *Modern Robotics* §6.2.2）。
+$\theta_{k+1}=\theta_k+\Delta\theta$。SE(3) 目标 $T_{sd}$ 时，用 body twist $V_b=\log(T_{sb}^{-1}T_{sd})$ 与 **body Jacobian** $J_b$，更新 $\theta_{k+1}=\theta_k+J_b^\dagger V_b$（见 *Modern Robotics* §6.2.2）。
 
 ### 3. 与优化牛顿步
 
@@ -114,7 +114,7 @@ flowchart LR
 | 场景 | 用法 |
 |------|------|
 | 实时 IK | 上一周期 $\theta_d$ 作 $\theta_0$；$T_{sd}$ 慢变 |
-| 奇异 / 冗余 | $J^\dagger$ 或 [DLS](../formalizations/inverse-kinematics.md) 替代 $J^{-1}$ |
+| 奇异 / 冗余 | $J^\dagger$ 或 [DLS](../formalizations/inverse-kinematics.md) 替代 $J^{-1}$（*Modern Robotics* 只在 $J^{-1}$ 不存在时改用 Moore–Penrose 伪逆，书中没有 DLS） |
 | 有小闭式解 | 闭式解作 NR 初值，修正机构误差 |
 | TrajOpt / NLP | 全 Hessian 牛顿或 [GN](./gauss-newton.md) / [L-BFGS](./l-bfgs.md) |
 | 库函数 | *Modern Robotics* `IKinBody(Blist,M,T,thetalist0,eomg,ev)` |

@@ -11,8 +11,9 @@ related:
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md
+  - ../../sources/papers/gae_reading_arxiv_1506_02438.md
 summary: "GAE（广义优势估计）"
-updated: 2026-08-17
+updated: 2026-11-07
 ---
 
 # GAE（广义优势估计）
@@ -87,6 +88,8 @@ $$\hat{A}_t = \delta_t + \gamma \lambda \hat{A}_{t+1}$$
 
 **为什么有 variance？** $\lambda = 1$ 时，使用真实回报，每条轨迹的随机性都完整保留，方差大。
 
+**原文的区分（§3）：** $\gamma<1$ 总会引入偏差（$\gamma$ 决定价值函数尺度），而 $\lambda<1$ 只在 $V$ 不准时才引入偏差，因此原文实验里最佳 $\lambda$ 常比最佳 $\gamma$ 小。原文 §6.1 还强调**先用旧的 $V$ 计算优势、再更新 $V$**，否则 $V$ 过拟合会让 TD 残差与梯度估计趋零（见 [GAE 论文归档](../../sources/papers/gae_reading_arxiv_1506_02438.md)）。
+
 ## 在 PPO 中的应用
 
 ```python
@@ -127,6 +130,7 @@ $$\hat{A}_{T-1} = \delta_{T-1} + \gamma \lambda V(s_T)$$
 
 - [RobotsHub：万字解析运控 PPO](../../sources/blogs/wechat_robotshub_ppo_locomotion_fundamentals.md) — $\gamma$ vs $\lambda$、截断 rollout 与 bootstrap
 - Schulman et al., *High-Dimensional Continuous Control Using Generalized Advantage Estimation* (2016) — GAE 原始论文
+- [GAE 论文归档（原文通读）](../../sources/papers/gae_reading_arxiv_1506_02438.md) — 估计器推导、$\gamma$/$\lambda$ 偏差来源、先算优势再更新 $V$
 - Schulman et al., *Proximal Policy Optimization Algorithms* (2017) — GAE 在 PPO 中的标准应用
 - Sutton & Barto, *Reinforcement Learning: An Introduction* Ch.12 — TD(λ) 理论背景
 

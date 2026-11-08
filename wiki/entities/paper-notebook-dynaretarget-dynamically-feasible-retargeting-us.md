@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, loco-manipulation, trajectory-optimization, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-30
+updated: 2026-11-07
 arxiv: "2602.06827"
 related:
   - ../methods/dynaretarget-sbto-motion-retargeting.md
@@ -115,7 +115,8 @@ sequenceDiagram
 
 ## 实验与评测
 
-- **Refinement（OmniRetarget 285 motions）：** SBTO_skip **76.8%** success；SPIDER **37.9%**；物体 pos/rot 误差显著更低（Table III）。
+- **Refinement（OmniRetarget 285 motions）：** SBTO_skip **76.8%** success；SPIDER **37.9%**；物体 pos/rot 误差显著更低（Table III）。成功判据为物体平均位置误差 <10 cm 且旋转误差 <25°。
+- **下游跟踪误差（Table V）：** 用 SBTO 参考时物体位置误差 8.81±1.16 cm、朝向误差 0.11±0.02 rad；用 OmniRetarget 运动学参考为 12.50±6.70 cm、0.18±0.09 rad。
 - **下游 RL（8 motions · 1024 episodes）：** DynaRetarget **97.09%** vs OmniRetarget kinematic **79.41%** object tracking success（Table V）。
 - **增广：** box 质量 **0.1–8 kg**、边长 **0.2–0.4 m**；chair / shelf mesh 亦可 refine。
 - **计算：** SBTO_skip 约 **20 s / 1 s** motion（112-core CPU）；相对 SPIDER 仿真步约 **0.96×**。

@@ -21,7 +21,7 @@ tags:
   - stanford
   - berkeley
 status: complete
-updated: 2026-10-21
+updated: 2026-11-07
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md

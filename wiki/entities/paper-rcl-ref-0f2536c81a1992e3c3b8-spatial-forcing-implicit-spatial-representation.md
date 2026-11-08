@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-07
 venue: "ICLR 2026"
 summary: "RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。"
 related:
@@ -89,6 +89,7 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 - 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
 - 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- 后续工作：[SLA（空间-语言-动作模型持续预训练）](paper-sla-spatial-language-action.md) — 同一官方仓（OpenHelix-Team/Spatial-Forcing）下的 SLA 以 π0.5 为主干、用冻结 OmniVGGT 作空间教师做持续预训练对齐；其论文在 LIBERO-Plus、RoboTwin 2.0 等基准上以 Spatial Forcing 为对照（作者报告，见[SLA 论文摘录](../../sources/papers/sla_spatial_language_action_arxiv_2611_08373.md)）
 
 ## 参考来源
 
