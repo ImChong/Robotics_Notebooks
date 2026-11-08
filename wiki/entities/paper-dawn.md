@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, quadruped, locomotion, parkour, perceptive-locomotion, world-model, rssm, depth, contrastive-learning, sim2real, unitree-go1, isaaclab]
 status: complete
-updated: 2026-10-02
+updated: 2026-11-08
+project_id: dawn-parkour
 arxiv: "2609.29092"
 venue: IROS 2026
 code: https://github.com/DocyNoah/dawn-parkour
@@ -15,10 +16,12 @@ sources:
   - ../../sources/papers/dawn_arxiv_2609_29092.md
   - ../../sources/sites/dawn-parkour.md
   - ../../sources/repos/dawn-parkour.md
+original:
+  - ../../sources/papers/dawn_arxiv_2609_29092.md
 summary: "DAWN：深度去噪重建 + 潜状态对比对齐；Go1 原始深度零样本跑酷，控制 50 Hz / 深度 10 Hz；已发布训练与仿真回放，真机部署入口未见。"
 ---
 
-# DAWN：深度去噪世界模型四足跑酷
+# DAWN：基于深度去噪世界模型的鲁棒四足跑酷（Noise-Robust Quadruped Parkour）
 
 ## 一句话定义
 
@@ -35,6 +38,8 @@ summary: "DAWN：深度去噪重建 + 潜状态对比对齐；Go1 原始深度�
 | AMP | Adversarial Motion Priors | 官方实现中的动作先验 |
 | GRU | Gated Recurrent Unit | 确定性记忆状态的序列网络 |
 | KL | Kullback–Leibler Divergence | 后验与预测先验的差异约束 |
+| NT-Xent | Normalized Temperature-scaled Cross Entropy | 论文中的温度缩放对比损失 |
+| MLP | Multi-Layer Perceptron | 投影头：用于训练期的对比特征映射 |
 
 ## 为什么重要
 
@@ -52,22 +57,37 @@ summary: "DAWN：深度去噪重建 + 潜状态对比对齐；Go1 原始深度�
 
 ## 方法栈：核心原理
 
-1. **去噪重建：** 编码器接收带噪深度，解码器重建干净目标；重建项与 KL 约束保留几何信息。
-2. **对比对齐：** 同场景干净/带噪潜状态经投影头拉近，不同场景分开。
-3. **闭环策略：** RSSM 的 GRU 状态保留历史信息；训练损失与投影头不增加相对 WMP 的推理路径开销。这不代表整体没有推理耗时。
+1. **去噪重建（III-B，式 7–8）：** RSSM 编码器读取带噪深度 $d_t^n$，解码器使用同一时刻的干净深度 $d_t^c$ 监督；与 KL 信息瓶颈结合，鼓励状态保留地形几何而非噪声。
+2. **投影空间对比对齐（III-C，式 9）：** 同一场景同一时刻的干净/带噪观测经过共享编码器和投影头，得到 $v_t^c=g_\psi(h_t,z_t^c)$、$v_t^n=g_\psi(h_t,z_t^n)$；这一对为正样本，其他场景作为负样本，采用余弦相似度、温度 $\tau$ 和 NT-Xent 拉近正对、区分负对。
+3. **Projection Head 的必要性：** 对比损失作用于投影后的 $v_t$，**不是直接作用于完整随机状态 $z_t$**，从而减少表征被对比目标主导而损失策略所需信息的风险。注意：对比损失仍通过 Projection Head 反向传播到共享世界模型，并非梯度截断。
+4. **联合目标和部署（III-D）：** $\mathcal{L}_{DAWN}=\mathcal{L}_{denoise}+\lambda\mathcal{L}_{contrast}$。Projection Head 与重建监督仅用于训练；部署只保留编码器与策略的主干，不调用干净深度分支，推理成本相对于 WMP 不增加。
+5. **论文与源码细节不能混同：** 论文的 NT-Xent 公式把 $2N$ 个 embedding 放入候选集合；当前开源实现把 $[B,T,D]$ 展平为 $[BT,D]$，使用 clean/noisy 跨分支 $BT\times BT$ 相似度矩阵和两个方向的交叉熵均值，并非完全相同的负样本组织。详见[源码核验](../../sources/repos/dawn-parkour.md)。
+
+### 流程总览（论文图 1）
 
 ```mermaid
 flowchart TB
-  clean["干净深度"] --> noise["噪声增广"]
-  noise --> rssm["RSSM 编码与记忆"]
-  prop["本体与动作历史"] --> rssm
-  rssm --> recon["重建深度"]
-  clean -. "重建监督" .-> recon
-  clean --> pair["干净分支编码"]
-  pair --> align["潜状态对齐损失"]
-  rssm --> align
-  rssm --> policy["关节目标策略"]
+  clean["干净深度 d_c"] --> noise["深度噪声增广"]
+  noise --> noisy["带噪深度 d_n"]
+  clean --> encC["共享 RSSM 编码器：干净分支"]
+  noisy --> encN["共享 RSSM 编码器：带噪分支"]
+  prop["本体观测和动作历史"] --> encC
+  prop --> encN
+  encC --> stateC["干净潜状态 h 与 z_c"]
+  encN --> stateN["带噪潜状态 h 与 z_n"]
+  stateC --> projC["Projection Head：共享参数"]
+  stateN --> projN["Projection Head：共享参数"]
+  projC --> contrast["L_contrast：正样本相似，负样本可分"]
+  projN --> contrast
+  stateN --> decode["干净深度重建"]
+  decode --> denoise["L_denoise"]
+  clean --> denoise
+  stateN --> policy["部署主干：RSSM + 策略"]
+  contrast --> total["联合训练目标"]
+  denoise --> total
 ```
+
+干净与带噪支路共用编码器和投影头参数；干净支路、Projection Head、两个训练损失都不是部署时的额外计算模块。实际策略主要依赖世界模型确定性状态 $h_t$，而非对比投影向量。
 
 ## 源码运行时序图
 
@@ -75,22 +95,32 @@ flowchart TB
 sequenceDiagram
   autonumber
   participant Entry as dawn.train
-  participant Env as build_env / IsaacLab
+  participant Env as IsaacLab VecEnv
   participant Runner as DawnRunner
+  participant Storage as DAWNRolloutStorage
   participant WM as DAWNWorldModel
+  participant Head as Projection Head
   participant Alg as PPOAMPAlgorithm
-  Entry->>Env: 创建 Go1 环境
+  Entry->>Env: build_env()
   Entry->>Runner: learn()
   loop rollout
-    Env->>Runner: 本体与深度
-    Runner->>WM: 带噪观测与动作历史
-    WM-->>Runner: 世界模型特征
-    Runner->>Alg: 策略观测
-    Alg-->>Runner: 关节目标动作
+    Env-->>Runner: 本体与深度观测
+    Runner->>WM: rssm.observe_step()
+    WM-->>Runner: latent.h
+    Runner->>Alg: act(obs + wm_feature)
+    Alg-->>Runner: 关节动作
     Runner->>Env: step(actions)
+    Runner->>Storage: 保存干净和带噪深度及动作
   end
-  Runner->>WM: 序列训练：干净重建与对齐
-  Runner->>Alg: PPO / AMP 更新
+  Runner->>Alg: compute_returns() 和 update() PPO / AMP
+  Runner->>Storage: sample_world_model_indices()
+  Storage-->>Runner: 序列数据
+  Runner->>WM: _train(image, image_clean, action)
+  WM->>WM: _target_key(image) 指向 image_clean
+  WM->>WM: _extra_losses() 创建 clean 分支
+  WM->>Head: latent_traj.s 和 latent_clean.s
+  Head-->>WM: 双向交叉熵对比损失
+  WM-->>Runner: 重建损失 + KL + 对比损失
 ```
 
 入口来自[源码核查](../../sources/repos/dawn-parkour.md)；回放使用 `dawn.play → DawnEvalRunner`。图描述训练主干调用，不是 Go1 真机通信实现。
@@ -103,9 +133,9 @@ sequenceDiagram
 | IsaacLab 4,096 并行环境 | 默认规模，先检查显存与相机开销 |
 | 关闭 D435i 内置滤波 | 验证学习出的抗噪表征；仍需检查观测时序 |
 | 官方代码 | 训练/仿真回放已发布；独立权重下载与真机入口未见 |
-| 源码对照 | `_target_key()` 切到 `image_clean`；`_extra_losses()` 计算对齐 |
+| 源码对照 | `_target_key()` 切到 `image_clean`；`_extra_losses()` 构造干净分支；`_compute_contrastive_loss()` 实现双向 CE |
 
-源码采用带噪/干净相似度矩阵的双向交叉熵；论文描述 SimCLR 风格目标，复现应以具体样本组织为准，不假设完全相同。本次未执行机器人训练。
+对比损失在共享 Projection Head 输出计算，依旧对编码器反向传播。官方 runner 将 `image`（noisy）和 `image_clean`（clean）写入 batch 后执行 `_world_model._train`；本次仅静态核查，没有执行机器人训练。
 
 ## 实验与评测
 
@@ -113,6 +143,8 @@ sequenceDiagram
 |---|---|
 | 仿真楼梯 / 沟 / 台阶平均成功率 | 96.9%；3 个种子，各条件 100 episodes |
 | 真机零样本能力 | 18 cm 楼梯、70 cm 沟、45 cm 高台；每难度 10 次试验 |
+| 室外最高难度成功率 | 楼梯 80%、沟 60%、高台 70%（论文 IV-H，各难度 10 次） |
+| 仿真最高难度消融 | 联合 DAWN 88.2%；相对单纯加噪：仅去噪 +5.7 p.p.、仅对齐 +4.6 p.p.、联合 +11.5 p.p. |
 
 96.9% 是特定仿真地形平均值，不是现实所有任务的成功率。
 
@@ -121,8 +153,9 @@ sequenceDiagram
 **把深度噪声纳入表征监督，并分别验收感知与闭环控制。**
 
 1. 对照重建与对齐的消融，避免把收益归因于单纯加噪。
-2. 分别测量 10 Hz 深度与 50 Hz 控制路径的延迟。
-3. 先用官方入口训练与回放，再补真机 IO；公开视频不能替代部署包。
+2. 投影头只在训练期使用；虽然对比损失不直接比较原始潜状态，但梯度仍能更新主干。
+3. 分别测量 10 Hz 深度与 50 Hz 控制路径的延迟。
+4. 先用官方入口训练与回放，再补真机 IO；公开视频不能替代部署包。
 
 ## 与其他工作对比
 
