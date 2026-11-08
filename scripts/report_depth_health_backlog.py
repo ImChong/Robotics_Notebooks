@@ -17,16 +17,16 @@ import generate_link_graph as graph
 ROOT = Path(__file__).resolve().parent.parent
 ROADMAPS = ROOT / "roadmap"
 WIKI = ROOT / "wiki"
-STAGE_RE = re.compile(r"^## (Stage\\s+\\d+[^\\n]*)$", re.MULTILINE)
-SECTION_RE = re.compile(r"^## [^\\n]*$", re.MULTILINE)
-LINK_RE = re.compile(r"\\]\\(([^)]+\\.md)(?:#[^)]*)?\\)")
+STAGE_RE = re.compile(r"^## (Stage\s+\d+[^\n]*)$", re.MULTILINE)
+SECTION_RE = re.compile(r"^## [^\n]*$", re.MULTILINE)
+LINK_RE = re.compile(r"\]\(([^)]+\.md)(?:#[^)]*)?\)")
 
 
 def roadmap_order() -> list[Path]:
     """README reading order is oldest to newest; process newest first."""
     overview = (ROADMAPS / "README.md").read_text(encoding="utf-8")
     ordered = []
-    for match in re.finditer(r"\\]\\((depth-[^)]+\\.md)\\)", overview):
+    for match in re.finditer(r"\]\((depth-[^)]+\.md)\)", overview):
         path = ROADMAPS / match.group(1)
         if path.is_file() and path not in ordered:
             ordered.append(path)
