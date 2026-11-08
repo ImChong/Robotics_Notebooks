@@ -6206,6 +6206,7 @@
 - [SAGE（Sim2Real Actuator Gap Estimator）](wiki/entities/sage-sim2real-actuator-gap-estimator.md) — SAGE** 是面向 **关节运动执行器层** 的 sim2real 度量工具链：同一组参考轨迹分别在 **Isaac Sim 仿真** 与 **真实机器人** 上执行，对齐日志格式后做 **统计 `📅unknown` `[entity_page]`
 - [SAM 3D Body（3DB）](wiki/entities/sam-3d-body.md) — SAM 3D Body（3DB）**（arXiv:2602.15989，Meta Superintelligence Labs）是 **SAM 3D** 产品线中的 **人体支路**：从 **单张 `📅unknown` `[entity_page]`
 - [SAM3DBody-cpp](wiki/entities/sam3dbody-cpp.md) — SAM3DBody-cpp**（AmmarkoV/SAM3DBody-cpp）是 [SAM 3D Body `📅unknown` `[entity_page]`
+- [Sand3D: 106,094 个可编辑 3D-as-Code 资产 · 用 Python 统一描述几何与关节](wiki/entities/sand3d.md) — Sand3D: 106,094 3D Objects in One Code Substrate for Language Models / Sand3D：面向语言模型的十万级可编辑 3D 程序资 `📅unknown` `[entity_page]`
 - [FreeCAD MCP（sandraschi）（sandraschi/freecad-mcp）](wiki/entities/sandraschi-freecad-mcp.md) — FreeCAD MCP（sandraschi）（sandraschi/freecad-mcp）是通过 FastMCP 自动化 FreeCAD，支持 headless 文档/导出，并扩展 FluidX3 `📅unknown` `[entity_page]`
 - [SAPIEN (仿真引擎)](wiki/entities/sapien.md) — SAPIEN** (A Scannable Articulated Part Engine) 是一个专门针对**关节体（Articulated Objects）**交互和机器人操作设计的高性能物理 `📅unknown` `[entity_page]`
 - [sbto（DynaRetarget SBTO 官方实现）](wiki/entities/sbto.md) — sbto**（<https://github.com/Atarilab/sbto>，MIT）是 [DynaRetarget](./paper-notebook-dynaretarget-dynam `📅unknown` `[entity_page]`
@@ -6976,6 +6977,7 @@
 
 ### Wiki Comparisons（对比页）
 
+- [3D-as-Code、网格与机器人仿真描述：如何选择可编辑资产](wiki/comparisons/3d-as-code-to-robot-simulation.md) — Sand3D 把物体结构、形状参数和关节写为 **Python 程序**；GLB/OBJ/STL 主要存储已生成的网格结果；URDF/USDA 则表达**机器人连杆与关节结构**。这三层能够串联，但 `📅unknown` `[comparison_page]`
 - [ACP、SuperMimic 与 PHP：接触规划、训练方法和跑酷数据](wiki/comparisons/acp-supermimic-php.md) — 这四项工作分别关注接触规划、世界模型训练、感知跑酷和社区跑酷复现，不能仅凭名称推断它们已经组合为同一个系统。 `📅unknown` `[comparison_page]`
 - [Adams vs MuJoCo vs Isaac Sim（Newton）：按三类物理问题选型](wiki/comparisons/adams-vs-mujoco-vs-isaac-sim-three-problem-types.md) — 「Isaac Sim / MuJoCo 能不能取代 Adams」问错了问题：三者回答的是三类不同的物理问题，**取代发生在控制与机器人学习层，不发生在载荷与寿命层**（Zane Hub 第 385 篇 `📅unknown` `[comparison_page]`
 - [AMP vs ADD vs SMP：运动先验变体对比](wiki/comparisons/amp-add-smp-motion-prior-variants.md) — 背景**：在人形 RL 中，显式 tracking 奖励容易带来「能完成任务但不像人」的步态。AMP 用判别器学习参考动作分布；社区在此基础 `📅unknown` `[comparison_page]`
