@@ -106,6 +106,29 @@ flowchart LR
 - **与潜空间 WAM 对比（表 3）：** JEPA-WAM 只在 RoboTwin 的 20 任务训练评测，La-JEPA 在 50 任务训练；作者做了线性外推以对齐（附录 B），外推本身是作者的估计，不入结果表。
 - **含具身预训练的参考（图 4）：** B 的 clean 与 randomized 均值高于除 OLA-Sem、GigaBrain-0.7、Qwen-RobotManip、4D-WAM 外的全部具身预训练策略，这四者 randomized 更高、clean 更低（§5.1）。
 
+## 结论
+
+**La-JEPA 表明：在冻结 V-JEPA 2.1 特征上从零训练的紧凑 WAM，可在无具身预训练策略中达到最优任务成功率并显著降低推理延迟；但多数设计结论为单次训练、基线口径不一，应读作「控制专用架构可行」的证据而非定论。**
+
+1. **真正该看的是 randomized / 修正指令下的成功率：** RoboTwin 2.0 randomized B 为 35.4（Fast-WAM 1.9，表 2），LIBERO-Plus 修正指令 L 为 88.0（NowWAM 86.2，表 1）；LIBERO 97.9 至 98.1 已接近饱和，区分度低。
+2. **延迟是最实在的收益：** 10 步去噪 S/B/L 为 17.78/25.16/59.72 ms，对比 Fast-WAM 88.09 ms、π0.5 71.89 ms（表 15）；但测量条件不完全一致，选型时应在自有硬件上复测。
+3. **引用 LIBERO-Plus 前先查指令口径：** 官方评测器把扰动参数拼进指令，修正后 Fast-WAM +19.3，并改变排名（§5.2）。
+4. **最有把握的设计结论只有「联合未来预测」：** 三 seed 平均 +2.1 且有配对检验（表 7）；V-JEPA 对 VAE 的优势在 clean 条件下不一致（附录 A.1）。
+5. **规模不单调：** RoboTwin 上 L 不优于 B（表 2），原因未隔离（§6），不要默认「更大更好」。
+6. **实机按可行性读：** 四任务、每格 20 次，平均 17.50 对 π0.5 17.25（§5.5），差距远小于统计不确定性。
+
+## 与其他工作对比
+
+论文的对照主要是两类 WAM：**改造视频生成器的 WAM**（[Fast-WAM](./paper-fast-wam.md)、[Faster-WAM](./paper-rcl-2608-02365-faster-wam-do-world-action-models-need-deep-acti.md)、[NowWAM](./paper-nowwam.md)、[Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md)）与**潜空间 WAM**（[JEPA-WAM](./paper-jepa-wam.md)，表 3）；另有 VLA 参考 π0.5（实机与延迟，表 5、15）。「训练联合预测、推理只出动作」沿用 Fast-WAM / Faster-WAM，不是本文首创。
+
+| 对比对象 | 论文给出的差异 | 出处 |
+|----------|----------------|------|
+| Fast-WAM | RoboTwin randomized 1.9 对 La-JEPA 32.1 至 35.4；延迟 88.09 ms 对 17.78 至 59.72 ms | 表 2、15 |
+| NowWAM | 官方指令下高于 La-JEPA L，修正指令后 L 领先 1.8 点；部署 7.1 B 对 1.78 B | 表 1、§5.2 |
+| JEPA-WAM | 仅在 RoboTwin 20 任务训练评测，La-JEPA 在 50 任务；作者用线性外推对齐，不入结果表 | 表 3、附录 B |
+| π0.5（具身预训练 VLA） | 实机平均 17.25 对 17.50；延迟 71.89 ms | 表 5、15 |
+| 含具身预训练策略 | randomized RoboTwin 上仍低于最强者（如 OLA-Sem、GigaBrain-0.7 等） | 图 4、§6 |
+
 ## 工程实践
 
 - **预计算特征（附录 B）：** 冻结编码器预先编码全部演示并存储；最终策略观测在线编码（因为 LoRA 与增强），未来目标仍读存储的冻结特征，原因是目标在线编码会使编码器成本占主导，且「自适应目标」不提升成功率（E.1：81.65% 对 82.26%，p = 0.096）。

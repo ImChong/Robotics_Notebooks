@@ -109,6 +109,27 @@ flowchart LR
 - **时间维度对应（Sec. IV-B，Fig. 4）：** 一条成功轨迹上 DTW 最近参考依次为 High（1.50-4.88 s）→ Mid（4.88-8.00 s）→ Low（8.00-12.54 s），作者称这是定性证据。
 - **真机（表 V）：** Low 10/10、Mid 9/10、High 10/10（共 29/30）、混合 4/5、OOD 13/15，零样本、无真机微调（Sec. IV-D）。
 
+## 结论
+
+**三阶段「模仿当脚手架」在仿真混合与 OOD 赛道上明显优于单 AMP 与多技能蒸馏基线，但各阶段贡献与训练预算混在一起，真机样本也很小。**
+
+1. **真影响指标是 Hybrid 与 OOD 成功率**：单障碍上 Multi-Skill Distillation 与 Ours 接近，差距主要在 Hybrid（79.65 对 96.34）与 OOD（65.33 对 93.46）（表 III）。
+2. **地形索引 AMP 是必要的技能来源**：w/o Stage 2 的 Hybrid / OOD 均为 0；Single AMP 在 High 与 Hybrid 也为 0。
+3. **几何支撑主要在非标准顶面上起作用**：平台测试 w/o Candidates 46.24%、w/o Relaxation 58.89%（表 IV），而 Low 几乎无差别。
+4. **次要但需自测的指标**：论文不主张更低接触力或更大稳定裕度，部署前需补接触力与安全测量。
+5. **部署读法**：单平台 Noetix E1、真机每类 10 次以内、无置信区间；混合赛道的突然转向是已观察到的失败模式；无公开代码。
+
+## 与其他工作对比
+
+| 对照（表 III） | 路线 | Hybrid / OOD | 读法 |
+|------|------|------|------|
+| Velocity Tracking | 无动作先验的速度跟踪 | 0 / 0 | 只能过 Low |
+| Single AMP | 单判别器 AMP，不按地形路由 | 0 / 44.29 | 地形索引多头判别器的必要性（但不能单独证明主干共享） |
+| Multi-Skill Distillation | 作者基于 [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 的本地实现：多技能专家蒸馏为单一深度策略 | 79.65 / 65.33 | 单障碍接近，混合与 OOD 落后；不代表 PHP 原文性能 |
+| **Ours** | 特权模仿 → 地形索引 AMP → 降先验 + 手 / 膝几何支撑 | 96.34 / 93.46 | — |
+
+本页关联的 [HIL](./paper-hil-hybrid-imitation-learning.md)、[Deep Whole-Body Parkour](./paper-deep-whole-body-parkour.md)、[Now You See That](./paper-now-you-see-that-humanoid-vision-locomotion.md)、[Light-Loco-Parkour](./paper-light-loco-parkour.md) 同属人形感知跑酷方向，但论文未与之做实验对比，平台与评测口径不同，不能横比成功率。
+
 ## 局限与未验证之处
 
 **论文自述的局限（Sec. IV、V）：**

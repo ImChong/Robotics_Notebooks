@@ -23,6 +23,7 @@ related:
   - ./libero-benchmark.md
   - ./robocasa.md
   - ./awesome-rsi.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/flex-rsi_arxiv_2611_08946.md
 original:
@@ -101,6 +102,27 @@ flowchart TD
 | 任务实现细节 | RoboDojo 与 RoboCasa 的 starter 是「每个动作块调一次模型」的程序，不训练策略；LIBERO-MAX/PRO 的 starter 直接执行冻结的 X-VLA 策略动作块、不调模型（附录 A.1） |
 | 收益到达时间 | 中位运行在 Perception、Reasoning 第 3 轮、Creation 第 4 轮就拿到 90% 的增益，Action、Reconstruction 要到第 6、第 8 轮（§4.4） |
 
+## 结论
+
+**Flex-RSI 给出了「冻结权重、只改 harness」这一层自我改进的跨领域对照基线，但它测的是单次运行下的相对排名，机器人部分全在仿真且多为大模型在环的程序。**
+
+1. **先看配对实验而不是总榜**：§5.4 的冻结 harness 对照（7 对里 6 对测试分更高）才把 harness 改写的贡献与任务解迭代分开；Figure 2 的总榜是「击败其他模型比例」，且各模型覆盖任务数不同。
+2. **只看隐藏测试分**：验证集参与接受/回退决策，提升应以测试集为准；附录 C 里有测试分不高于 starter 的运行（Table 18、20、32）。
+3. **反馈粒度决定弱模型能否进步**：只记成败的任务上开源模型中位增益仅 1.6（§5.2），用于机器人自动研究时应优先设计量表式或过程式反馈。
+4. **次要成本**：单次运行 token 中位 49.7M，机器人任务单任务 GPU 上限达 256 小时（§4.5、Table 10）；token 用量与得分基本不相关（秩相关 −0.05）。
+5. **外推边界**：每模型每任务只跑一次、多数 σ 取 0，未给置信区间；结论不直接覆盖训练式策略或真机部署（§6 与本页局限）。
+
+## 与其他工作对比
+
+作者的定位（§1）：已有自我改进 / 自动研究基准多固定 harness、只给产出打分，且集中在机器学习研究任务；Flex-RSI 允许智能体改写自身 harness，并把任务面扩到感知、推理、机器人动作、3D 重建、创作与基础设施。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [RRSI](./paper-rrsi-2609-24972.md) | RRSI 是 harness 进化**方法**，用提案与筛选正则化抑制对演化集过拟合；Flex-RSI 是**基准**，用开发/验证/测试三切分与 δ 接受规则衡量同类改进 |
+| [EmbodiedRSI](./paper-embodiedrsi.md) | 同样冻结模型、改外层 harness，但 EmbodiedRSI 面向机器人试验与 SO-101 真机迁移；Flex-RSI 的机器人任务全部在仿真 |
+| [EmbodiedSWE](./paper-embodiedswe.md) | 其基准被收为 Flex-RSI 的 Embodied-SWE 任务，但该任务目前只有 2 个模型、不进主结果（Table 12） |
+| [LIBERO](./libero-benchmark.md) / [RoboCasa](./robocasa.md) | 作为任务环境被纳入（LIBERO-MAX/PRO 的 starter 直接执行冻结 X-VLA 动作块，附录 A.1）；Flex-RSI 总榜是跨模型相对排名，不能与这些基准的原榜单直接比 |
+
 ## 工程实践
 
 - 仓库提供 `rsib` 命令行：`rsib run new --task <task> --model <model> --mode full`，再 `rsib run start`，`rsib report` 汇总（仓库 README，仅静态阅读，未运行）。
@@ -139,6 +161,7 @@ flowchart TD
 - [LIBERO 基准](./libero-benchmark.md)
 - [RoboCasa](./robocasa.md)
 - [Awesome RSI](./awesome-rsi.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — Flex-RSI 的机器人任务落在其「③ 策略任务成功率层」且全在仿真，外推真机需按「④ sim↔real gap 校准层」另行验证
 
 ## 参考来源
 

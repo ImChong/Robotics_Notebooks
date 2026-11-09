@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, mujoco, mjlab, reinforcement-learning, locomotion, unitree, booster]
 status: complete
-updated: 2026-05-12
+updated: 2026-11-09
 related:
   - ./mjlab.md
   - ./unitree-rl-mjlab.md
@@ -80,7 +80,7 @@ flowchart TD
 | `Mjlab-Getup-Flat-Unitree-Go1` | Unitree Go1 | 平地摔倒恢复 |
 | `Mjlab-Getup-Flat-Booster-T1` | Booster T1 | 平地摔倒恢复 |
 
-README 给出了在 **NVIDIA 5090** 上的粗量级收敛时间（Go1 getup 约 2 分钟、T1 约 8 分钟）并强调 **继续训练** 时收紧动作变化率与功率相关惩罚以换更平滑策略；具体耗时随 GPU、环境数与随机种子变化，只宜作数量级参考。
+README 给出了在 **NVIDIA 5090** 上的粗量级收敛时间（Go1 getup 约 2 分钟、T1 约 8 分钟）并强调 **继续训练** 时收紧动作变化率与功率相关惩罚以换更平滑策略；具体耗时随 GPU、环境数与随机种子变化，只宜作数量级参考。2026-11-09 复核上游 README：任务表与命令未变。
 
 ## 关联页面
 

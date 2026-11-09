@@ -9,6 +9,7 @@ status: complete
 updated: 2026-11-09
 summary: "测量智能体利用反馈修改自身后，能力能否迁移到未见任务，而非只记住训练关卡。"
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/ai-agent-evaluation.md
   - ../entities/rle-bench.md
   - paper-deliverbench.md
@@ -144,6 +145,7 @@ DeliverBench 关心项目最终多文件交付质量，SelfImprove-Bench 关心*
 - [RLE-Bench](rle-bench.md) — 与机器人学习工程交付相关的 Agent 评测。
 - [DeliverBench](paper-deliverbench.md) — 区分被评对象与评价指标。
 - [AmbiHTMLBench](paper-ambihtmlbench.md) — 区分被评对象与评价指标。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 未见任务泛化评测可对照该闭环中「单任务过拟合冒充跨任务泛化」的典型误判。
 
 ## 参考来源
 

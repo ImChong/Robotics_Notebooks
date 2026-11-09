@@ -20,6 +20,7 @@ related:
   - ../concepts/sensor-fusion.md
   - ../methods/object-detection.md
   - ./paper-msfp-embodied-ai-survey.md
+  - ../queries/robot-perception-stack-selection-loop.md
 summary: "DSERT-RoLL（CVPR 2026）：22K 帧多天气/光照多模态自动驾驶数据集及统一 2D/3D 检测评测，配套体素中心自适应融合 3D 检测基线。"
 ---
 
@@ -192,6 +193,7 @@ sequenceDiagram
 - [传感器融合（Sensor Fusion）](../concepts/sensor-fusion.md) — 区分定位状态融合与此处的目标检测任务融合。
 - [目标检测（Object Detection）](../methods/object-detection.md) — 2D/3D 目标检测与 AP 基础。
 - [MSFP Survey](./paper-msfp-embodied-ai-survey.md) — 具身多传感器融合感知的跨方法分类。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本数据集对应其 ① 传感与标定层（多模态互补 vs 标定/同步复杂度）与 ② 检测层的按天气/光照分桶评测。
 
 ## 参考来源
 

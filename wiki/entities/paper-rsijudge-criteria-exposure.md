@@ -24,6 +24,7 @@ related:
   - ../concepts/sim-vs-real-eval-gap.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/reward-design.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/rsijudge_arxiv_2611_08318.md
 original:
@@ -97,7 +98,7 @@ flowchart TD
 - 判据受限：判据与指令要求的成功在某些轨迹上不一致（§3.2）。RoboDojo 42 个任务人工逐个审查，19 个不一致，加 solve_equation（判据有 bug）共 20 个、26 个变体；33 个任务要求双臂回 home，而只有 5 条指令要求复位（附录 B）。类型名为作者自拟，最常见为隐藏规则与硬阈值。
 - C^faith：只改 `run_reward` 与 `get_score`，不改指令、不动原仓库；两套判据对同一回合独立判定，所有结论翻转的回合人工检查，作者称未发现新判据误判（§3.3，附录 C 表 6）。
 
-### 主要结果（均为论文数字）
+## 评测与结果（均为论文数字）
 
 | 实验 | 结果（出处） |
 |------|------|
@@ -121,6 +122,26 @@ flowchart TD
 - **复现入口：** 代码在 PyRUA-Lean 仓库的 RSIJudge 分支，README 列出循环（`pyrualean.learn`）、`faithful_criteria/`（C^faith 覆盖层与双判据）、`eval/`、`transfer/` 与 `configs/`；依赖 RoboDojo 指定提交、Isaac Sim 5.1.0、Isaac Lab 0.54.3、约 45 GB 显存的 GPU、SAM 3，以及一个执行者模型端点和 Claude Code。本页只静态阅读了 README，未运行代码。
 - **读懂数字时：** 附录 D 表 7 给出逐任务的双判据计数，判据受限任务的汇总数字受少数任务驱动（如 press_by_number：w/ CE 20 回合在 C^orig 下成功、C^faith 下 0；w/o CE 相反 19 回合只在 C^faith 下成功；swap_blocks 与 make_kong 也呈极端分化），引用均值前建议同时看逐任务表。这是本页对表 7 的读法，不是论文结论。
 - 与本库其他 PyRUA / 编码智能体论文的对照见 [PyRUA-Real](../entities/paper-pyrua-real.md)（同一执行者框架家族）与 [EmbodiedEvo](../entities/paper-embodied-evo-coding-agent.md)（论文 §2 称其为最近的对照消融：任务描述对「描述加 wiki」，但两组都用原判据评分）。
+
+## 与其他工作对比
+
+论文 §2 把已有自我改进 / 智能体系统按「向学习者暴露多少判据」排列：规则描述、公开评分表、数值阈值、形式化目标谓词、验证器源码；这些系统的暴露程度多由设计固定，RSIJudge 的差别是把暴露当作**唯一实验变量**拆开，并用 C^faith 重判同一批回合（§2、§3）。
+
+| 对照 | 关系（出处） |
+|------|------|
+| [EmbodiedEvo](../entities/paper-embodied-evo-coding-agent.md) | 论文 §2 称其为最近的对照消融：比较「任务描述」与「描述加 wiki」，但两组都用原判据评分；RSIJudge 额外换判据重判 |
+| [PyRUA-Real](../entities/paper-pyrua-real.md) | 同一 PyRUA 执行者框架家族；RSIJudge 用其 Lean 版本作冻结执行者，本身不比较策略能力 |
+| [奖励设计](../concepts/reward-design.md) 中的奖励误设 / 规格博弈 | 论文相关工作引用奖励误设研究（§2）；RSIJudge 把同一问题落到「基准判据比指令要求更多」这一具身评测场景 |
+
+## 结论
+
+**RSIJudge 说明：在判据比指令多要求的任务上，自我改进循环读判据带来的得分提升主要是在适配验证器，换成忠于指令的判据后差距基本消失，迁移也无额外收益。**
+
+1. 真正该看的指标是 C^faith 下的成功率：判据受限 16 任务上 w/ CE 45.0% 对 w/o CE 47.2%（§4.2.1），而不是 C^orig 下的 51.6% 对 27.8%。
+2. 汇总差距的不确定性很大（差距缩小 25.9 点，95% 区间 4.7–54.4），且受 press_by_number 等少数任务驱动，引用前看附录 D 表 7 逐任务计数。
+3. 迁移数字（表 2）是次要证据：RoboDojo 新任务 w/o CE 80/200 对 w/ CE 71/200，跨基准受天花板与技能几乎不被调用限制。
+4. 评测设计读法：报告自我改进时默认不向学习者暴露判据，并同时给出忠于指令判据下的成功率（§4.2.3、§6）；基准在指令中写清计数、顺序、终态、复位要求（§4.1.2）。
+5. 结论边界：C^faith 由作者编写、仅覆盖 RoboDojo，执行者与学习者各一种模型，本页未见学习过程的重复报告；外推到其他基准或模型前需复核。
 
 ## 局限
 
@@ -151,6 +172,7 @@ flowchart TD
 - [仿真评测与真实世界差距](../concepts/sim-vs-real-eval-gap.md)
 - [AI 智能体评测](../concepts/ai-agent-evaluation.md)
 - [奖励设计](../concepts/reward-design.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 落在其 ③ 策略任务成功率层：基准判据与指令不一致会让成功率虚高，RSIJudge 给出判据层面的典型误判案例
 
 ## 参考来源
 

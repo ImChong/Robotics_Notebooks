@@ -138,6 +138,28 @@ flowchart LR
 - 开源状态：论文称将开源；项目页 Code 入口在 2026-11-09 核对时显示 Coming soon，因此当前无可运行代码。
 - 相关概念：[师生训练](../methods/teacher-student-dagger-training.md)、[特权训练](../concepts/privileged-training.md)、[域随机化](../concepts/domain-randomization.md)。
 
+## 与其他工作对比
+
+| 对照 | 剪切 / 切向信号 | 与 TactileLab 的差别（出处） |
+|------|-----------------|------------------------------|
+| 软体触觉仿真（论文 §I 泛指） | 能表达剪切 | 作者称对大规模 RL 太慢；TactileLab 保留刚体吞吐，不模拟弹性体形变 |
+| 深度式刚体触觉仿真 | 通常只有深度类信号 | 难支持依赖剪切、滑移的任务（§I）；TactileLab 另加稠密光流 |
+| [TacSL](paper-sa-2408-06506-tacsl-a-library-for-visuotactile-sensor-simulati.md)、HydroShear | 能给剪切信号 | 都需预先拿到接触物体的 SDF（§II-A）；TactileLab 由刚体接触运动学直接算光流，无物体专属预处理 |
+| HORA（两阶段师生框架） | — | TactileLab 沿用其框架，学生侧换成 PETS-Net 并加入深度 / 光流（§IV-B、§IV-C） |
+| AnyRotate 式低维接触观测 | 力、位置、剪切低维量 | 作为表 I / IV / V 的基线；在本文「仅胶囊」训练协议下真机立方体类低于仅本体（表 V），不宜当作对 AnyRotate 的一般结论 |
+
+[Taccel](paper-sa-2504-17614-taccel-scaling-up-vision-based-tactile-robotics.md)、[ETac](paper-sa-2604-20295-etac-a-lightweight-and-efficient-tactile-simulat.md) 是本仓库已有的触觉仿真页，论文正文未与二者做实验对比，此处只列作入口。
+
+## 结论
+
+**TactileLab 的主要贡献是证明「刚体仿真 + 模拟触觉光流 + 真实到仿真翻译」能在剪切相关的灵巧任务上完成 sim-to-real，但光流相对深度的真机增益证据偏弱。**
+
+1. 最能说明问题的指标是仿真 OOD 物体的 Fall Rate（深度+光流 18.69% 对仅本体 57.85%，表 I）与真机圈数（1.95 ± 0.81 对仅本体 0.82 ± 0.56，表 IV）。
+2. 光流对深度的增益主要来自仿真消融（图 6）；真机上深度+光流与仅深度的均值差小于标准差，10 个初始抓取、未做显著性检验。
+3. 换传感器的成本集中在翻译器：需为每种传感器采集真实图像对；无标记传感器翻译误差仍偏高（表 II）。
+4. 「高效」缺定量吞吐数字，选型时不能据此与软体仿真比速度。
+5. 部署读法：迁移假定黏着接触，外扰或滑移会破坏假设（§VIII-D）；代码截至 2026-11-09 尚未开放。
+
 ## 局限
 
 作者自述（§VIII-D）：

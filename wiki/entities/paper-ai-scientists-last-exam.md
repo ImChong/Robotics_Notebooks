@@ -7,6 +7,7 @@ updated: 2026-11-09
 project: https://aisle.science/
 code: https://github.com/MasterAI-EAM/ai-scientists-last-exam
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./google-grounding-ai-agents-wet-labs.md
   - ./paper-agentic-aptamer-sandbox.md
   - ./pylabrobot.md
@@ -156,6 +157,7 @@ sequenceDiagram
 - [Agentic Aptamer Sandbox](paper-agentic-aptamer-sandbox.md)
 - [PyLabRobot](pylabrobot.md)
 - [AI Agent Evaluation](../concepts/ai-agent-evaluation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 以「实验结果而非文本作答」判分的思路，可对照该闭环中「过程 vs 结果」与可复现性取舍。
 
 ## 参考来源
 

@@ -8,6 +8,7 @@ arxiv: "2610.33026"
 original:
   - ../../sources/papers/false_belief_dissemination_mandela_effect_arxiv_2610_33026.md
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/agent-memory-and-dreaming.md
   - ../concepts/ai-agent-evaluation.md
   - ./paper-memcompiler-state-conditioned-memory.md
@@ -184,6 +185,7 @@ flowchart TB
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
 - [MemCompiler](./paper-memcompiler-state-conditioned-memory.md)
 - [Spatial Memory Agent](./paper-spatial-memory-agent.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 多智能体信念评测属相邻的 agent 评测；可对照该闭环中可复现性与指标真实代表性的取舍。
 
 ## 参考来源
 
