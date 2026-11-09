@@ -2589,6 +2589,7 @@
 - [GPT-Policy：VLM 代理的上下文机器人学习](wiki/entities/paper-gpt-policy.md) — GPT-Policy**（*In-Context Robot Learning with VLM Agents*，[arXiv:2609.19138](https://arxiv.org/abs/ `📅unknown` `[entity_page]`
 - [GPU Incremental EDT（arXiv:2610.41667）](wiki/entities/paper-gpu-incremental-edt.md) — GPU Incremental EDT**（*GPU-accelerated Incremental Euclidean Distance Transform for Online Motion  `📅unknown` `[entity_page]`
 - [GPU-Resident Multi-Robot Inspection（arXiv:2610.26106）](wiki/entities/paper-gpu-resident-multi-robot-inspection.md) — GPU-Resident Multi-Robot Inspection**（*A GPU-Resident Pipeline for Multi-Robot 3D Inspection with  `📅unknown` `[entity_page]`
+- [GPWM：把世界建成 3D 粒子运动模型](wiki/entities/paper-gpwm.md) — 利用多分辨率 3D 粒子与 Flow Matching / Diffusion Forcing 统一建模多种物理动力学；ParticleWorlds 约 2550 万帧。 `📅unknown` `[entity_page]`
 - [GR-BC：用目标可达图给混合质量数据里的动作块加权](wiki/entities/paper-gr-bc.md) — GR-BC** 是一种离线迭代的 VLA 后训练方法：在混合质量的演示、成功与失败 rollout 以及人工接管片段上构建任务条件的目标可达图，用反向图搜索得到的剩余步数衡量每个动作块的进展贡献， `📅unknown` `[entity_page]`
 - [GR00T-Dreams（HMI P068）](wiki/entities/paper-gr00t-dreams-synthetic-trajectories.md) — GR00T-Dreams**（*GR00T-Dreams: Synthetic Trajectory Generation for Humanoid Robot Learning*，2025）收录 `📅unknown` `[entity_page]`
 - [GR00T N1.5：通用人形 VLA 的改进版](wiki/entities/paper-gr00t-n1-5.md) — GR00T N1.5**（*An Improved Open Foundation Model for Generalist Humanoid Robots*，[NVIDIA GEAR 项目页 `📅unknown` `[entity_page]`
@@ -3645,6 +3646,7 @@
 - [Online MBRL via Online Optimization（真机在线模型基强化学习）](wiki/entities/paper-online-mbrl-robot-control.md) — Efficient Model-Based Reinforcement Learning for Robot Control via Online Optimization**（[arXiv:25 `📅unknown` `[entity_page]`
 - [在线闭环 Sim2Real（arXiv:2609.28878）](wiki/entities/paper-online-sim2real-closed-loop-modeling.md) — 在线闭环 Sim2Real**（*Online Sim-to-Real Adaptation via Closed-Loop System Modeling*，[arXiv:2609.28878 `📅unknown` `[entity_page]`
 - [OnOff：可微物理笔刷打通在线轨迹与离线手写](wiki/entities/paper-onoff-handwriting.md) — OnOff**（*Bridging Online and Offline Handwriting via Differentiable Physical Rendering*；[arXiv:260 `📅unknown` `[entity_page]`
+- [OopsieRecover：从语义干预中学习可迁移的 VLA 纠错](wiki/entities/paper-oopsierecover.md) — 从少量语义纠错生成带门控条件的几何代价函数，以测试时候选动作评分引导冻结 VLA 恢复执行。 `📅unknown` `[entity_page]`
 - [Open-HumanWAM：规模化人类与机器人经验的具身基础模型开放配方 / An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models](wiki/entities/paper-open-humanwam.md) — Open-HumanWAM**（arXiv:2611.06817，2026-11-04 首次提交）构建约 **50,000  `📅unknown` `[entity_page]`
 - [An Open Torque-Controlled Modular Robot Architecture（Solo / ODRI）](wiki/entities/paper-open-torque-controlled-modular-robot-solo.md) — Grimminger et al.（MPI-IS / NYU / LAAS，arXiv:1910.00093，IEEE RA `📅unknown` `[entity_page]`
 - [Open-world Robot Autonomy（arXiv:2610.34649）](wiki/entities/paper-open-world-robot-autonomy.md) — Open-world Robot Autonomy**（*Towards Open-world Robot Autonomy*，[arXiv:2610.34649](https://arxiv.o `📅unknown` `[entity_page]`
@@ -4361,6 +4363,7 @@
 - [Robo-Dopamine 2.0（arXiv:2608.15680）](wiki/entities/paper-robo-dopamine-2.md) — Robo-Dopamine 2.0**（*Robo-Dopamine 2.0: History-Conditioned and OOD-Aware Process Reward Modeling  `📅unknown` `[entity_page]`
 - [RoboHarness（SJTU）（arXiv:2603.24060）](wiki/entities/paper-robo-harness-memory-ic-adaptation.md) — RoboHarness（SJTU）**（*RoboHarness: A Memory-Augmented Policy Harness for Vision-Language-Action Mod `📅unknown` `[entity_page]`
 - [RoboHarness（异构策略编排 · arXiv:2607.18060）](wiki/entities/paper-robo-harness.md) — RoboHarness**（*Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planni `📅unknown` `[entity_page]`
+- [RoboARCade：智能体式机器人控制评测](wiki/entities/paper-roboarcade.md) — 面向 22 个长时程操作任务的 agentic robot control 评测，提供模拟器、工具接口、分步打分与可运行开放代码。 `📅unknown` `[entity_page]`
 - [RoboArchitect（arXiv:2610.42141）](wiki/entities/paper-roboarchitect.md) — RoboArchitect**（*RoboArchitect: Automating the Design ofRobotic Agents with Persistent Memory*，[ar `📅unknown` `[entity_page]`
 - [RoboAssist：面向长时手术辅助的交互式人—人形规划](wiki/entities/paper-roboassist.md) — RoboAssist: Interactive Human-Humanoid Planning for Long-Horizon Surgical Assistance**（[arXiv:2609 `📅unknown` `[entity_page]`
 - [RoboAtom：面向机器人学习的大规模原子动作监督](wiki/entities/paper-roboatom-atomic-action-supervision.md) — RoboAtom**（*RoboAtom: Large-scale Atomic-Action Supervision for Robot Learning*，[arXiv:2610.40207 `📅unknown` `[entity_page]`
@@ -5459,6 +5462,7 @@
 - [SNAP（arXiv:2611.03498）](wiki/entities/paper-snap.md) — SNAP**（*SNAP: Semantic Navigation Among Pedestrians*，[arXiv:2611.03498](https://arxiv.org/abs/2611 `📅unknown` `[entity_page]`
 - [SO-101 Bench（arXiv:2610.36420）](wiki/entities/paper-so-101-bench.md) — SO-101 Bench**（*SO-101 Bench: Accessible Spatial Manipulation*，[arXiv:2610.36420](https://arxiv.or `📅unknown` `[entity_page]`
 - [SoccerBot：潜在运动先验的统一人形足球](wiki/entities/paper-soccerbot-latent-motion-priors.md) — SoccerBot**（*Playing Soccer Like Humans Do: Learning Versatile and Agile Humanoid Soccer via Laten `📅unknown` `[entity_page]`
+- [Social Humanoid：可社交响应的人–人形交互](wiki/entities/paper-social-humanoid.md) — 感知人类交互 → 共享 VQ 运动表示 → 扩散式协同响应生成 → G1 全身跟踪的双人社交交互系统；约 260 小时数据。 `📅unknown` `[entity_page]`
 - [A Fix for Softmax and Cross-Entropy](wiki/entities/paper-softmax-cross-entropy-fix.md) — A Fix for Softmax and Cross-Entropy**（Jonathan T. Barron、Dan Gnanapragasam、Michael Tschannen，Googl `📅unknown` `[entity_page]`
 - [SoftMimicGen](wiki/entities/paper-softmimicgen.md) — SoftMimicGen**（ICRA 2026，NVIDIA 等）是一套面向**可变形物体操作（deformable object manipulation）**的自动化示范数据生成系统。 `📅unknown` `[entity_page]`
 - [SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）](wiki/entities/paper-softvtbench.md) — SoftVTBench**（*SoftVTBench: A Safety-Aware Visuo-Tactile Benchmark for Physically Constrained Robo `📅unknown` `[entity_page]`
@@ -6332,6 +6336,7 @@
 - [TNT（Transformer-in-Transformer）](wiki/entities/tnt.md) — TNT** 把每个图像块进一步拆成 **pixel-level token**，用内层 Transformer 建模块内结构，外层 Transformer 建模块间关系，形成「Transforme `📅unknown` `[entity_page]`
 - [TouchScale: 500 Hours of Human Vision and Touch for Visual-Tactile Learning](wiki/entities/touchscale.md) — TouchScale** 是一个把头戴 RGB-D、双腕 RGB 和双手全掌触觉数据同步记录的人类接触丰富交互数据集，用于视觉-触觉学习和机器人操作研究。 `📅unknown` `[entity_page]`
 - [TOWR](wiki/entities/towr-trajectory-optimization.md) — TOWR**（GitHub）来自 [古月居转载的四足机器人开源项目综述](https://mp.weixin.qq.com `📅unknown` `[entity_page]`
+- [ToyBlocks：可控的机器人学习与评测基础世界](wiki/entities/toyblocks.md) — Ai2 基于 Isaac Sim/Isaac Lab 的桌面积木仿真、PDDL 任务生成与大规模自动演示流水线，提供 LeRobot 数据与闭环策略评测。 `📅unknown` `[entity_page]`
 - [TrackerLab](wiki/entities/trackerlab.md) — TrackerLab](https://github.com/Renforce-Dynamics/trackerLab) 收录于具身智能研究室 [开源项目主表](https://github.com `📅unknown` `[entity_page]`
 - [Transformer 视觉应用课程策展](wiki/entities/transformer-cv-curriculum.md) — 把「Transformer 在计算机视觉中的应用」八章大纲落成可交叉引用的知识图：从 **CNN/注意力基础** 走到 **分类·检测·分割·多模态·Mamba·视觉基础模型**，截图中的每个知识点都 `📅unknown` `[entity_page]`
 - [tscircuit（代码化电子设计工具链）](wiki/entities/tscircuit.md) — tscircuit** 是以 TypeScript/React 组件描述电路的开源电子设计工具链：将芯片、电阻、网络与 PCB 走线等表示为代码，再预览原理图、PCB 和 3D 模型，并导出制造文 `📅unknown` `[entity_page]`
