@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-11-08
+updated: 2026-11-09
 related:
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/rle-bench.md
@@ -191,6 +191,11 @@ Agent 评测的底层逻辑（出自 Anthropic 工程博文通读）：被评对
 - 本页的机器人迁移（仿真、真机 autoresearch）为本库推断，原文并未讨论机器人场景。
 
 ## 关联页面
+
+- [DeliverBench](../entities/paper-deliverbench.md) — 评测连续多阶段专业项目交付与独立终态交付验收。
+- [SelfImprove-Bench](../entities/paper-selfimprove-bench.md) — 将自我改进后的收益按 G0–G4 泛化阶梯拆开测试。
+- [AmbiHTMLBench](../entities/paper-ambihtmlbench.md) — 对截图到 HTML 的客观结构和主观偏好进行双轨评测。
+
 
 - [Agent S3 / Behavior Judge](../entities/paper-agent-s3.md) — OSWorld 多轨迹择优和单轨成功率须区分；评测需保持环境隔离，防止共享外部副作用。
 
