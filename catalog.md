@@ -3921,7 +3921,7 @@
 - [QUEEN（arXiv:2610.03695）](wiki/entities/paper-queen-chess-language-model-explanations.md) — QUEEN**（*Language Models that Play Chess and Explain Their Moves*，[arXiv:2610.03695](https://arxiv `📅unknown` `[entity_page]`
 - [QuietWalk：面向多样鞋型的物理感知低噪人形行走](wiki/entities/paper-quietwalk-humanoid-locomotion.md) — QuietWalk**（*Physics-Informed Reinforcement Learning for Ground Reaction Force-Aware Humanoid Loco `📅unknown` `[entity_page]`
 - [Qwen-Audio-Agent：全双工语音与异步任务怎么同时跑？](wiki/entities/paper-qwen-audio-agent.md) — Qwen-Audio-Agent**（*Qwen-Audio-Agent Technical Report*，[arXiv:2609.25195](https://arxiv.org/abs/26 `📅unknown` `[entity_page]`
-- [Qwen-Drive-1.0：共享 VLM 的自动驾驶基础模型](wiki/entities/paper-qwen-drive-1-0.md) — 一句话定义：** Qwen-Drive-1.0 保持 Qwen3.5-4B 预训练视觉语言模型架构不变，以外接 BEV 感知头和规划专家统一 3D 感知、驾驶问答与自车轨迹预测。 `📅unknown` `[entity_page]`
+- [Qwen-Drive-1.0：共享 VLM 的自动驾驶基础模型](wiki/entities/paper-qwen-drive-1-0.md) — Qwen-Drive-1.0 保持 Qwen3.5-4B 预训练视觉语言模型架构不变，以外接 BEV 感知头和规划专家统一 3D 感知、驾驶问答与自车轨迹预测。 `📅unknown` `[entity_page]`
 - [QWM（Q-Learning With World Models）](wiki/entities/paper-qwm.md) — QWM**（*Q-Learning With World Models*，arXiv:2608.17163，[项目页](ht `📅unknown` `[entity_page]`
 - [R²-WAM：世界动作模型需要什么视觉表征？](wiki/entities/paper-r2-wam-visual-representations.md) — R²-WAM** 对 WAM 的视觉输入做受控比较：固定训练设置，分别改变预训练视觉表征、特征集成机制和多源组合，研究这些选择如何影响机器人操作策略。 `📅unknown` `[entity_page]`
 - [R²-WAM：让世界动作模型靠整流后的自生成回放不忘旧任务](wiki/entities/paper-r2-wam.md) — R²-WAM 让世界动作模型（WAM）凭任务指令重新生成旧任务的 rollout 作为回放数据，并先做两步整流：用 VLM 评估器在任务完成处截断，再用光流一致性过滤动作与观测不一致的样本，从而在 `📅unknown` `[entity_page]`
@@ -5996,6 +5996,7 @@
 - [XCoT-VLA（arXiv:2608.10976）](wiki/entities/paper-xcot-vla-driving.md) — XCoT-VLA**（*XCoT-VLA: Executable Chain-of-Thought for Vision-Language-Action Driving*，[arXiv:2608. `📅unknown` `[entity_page]`
 - [XHugWBC（HMI P037）](wiki/entities/paper-xhugwbc-cross-humanoid.md) — XHugWBC**（*Scalable and General Whole-Body Control for Cross-Humanoid Locomotion*，2026，[arXiv:2602 `📅unknown` `[entity_page]`
 - [Xiaomi-CocktailASR-1（目标说话人 LLM-ASR）](wiki/entities/paper-xiaomi-cocktailasr-1.md) — Xiaomi-CocktailASR-1**（*Xiaomi-CocktailASR-1 Technical Report*，[arXiv:2609.11274](https://arxiv.or `📅unknown` `[entity_page]`
+- [OneVL：用视觉–语言潜推理实现一步式驾驶规划](wiki/entities/paper-xiaomi-onevl.md) — OneVL（One-Step Latent Reasoning and Planning with Vision-Language Explanation）** 是小米具身智能团队提出的驾驶视觉语 `📅unknown` `[entity_page]`
 - [XMimic：一分钟内学习全身动作跟踪 / Learning Whole-Body Motion Tracking in Under a Minute](wiki/entities/paper-xmimic-jax.md) — XMimic** 是 Nico Bohlinger、Jan Peters 将 BlinkMimic 世界模型训练器迁移至 JAX 的独立工作，以整段编译及多 GPU 并行缩短 Unitree G1 `📅unknown` `[entity_page]`
 - [X-Morph：跨形态人体运动先验](wiki/entities/paper-xmorph.md) — X-Morph**（*Human Motion Priors for Scalable Robot Learning Across Morphologies*，[arXiv:2606.30290 `📅unknown` `[entity_page]`
 - [XPACE（Joint World and Action Modeling · arXiv:2609.17372）](wiki/entities/paper-xpace.md) — XPACE**（*XPACE: Joint World and Action Modeling from Heterogeneous Experience*，[arXiv:2609.17372 `📅unknown` `[entity_page]`
