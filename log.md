@@ -287,6 +287,13 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-09] ingest | AdaPolicy 原论文深读与已发布源码复核
+
+- 意图：将二手摘要级 AdaPolicy 节点升级为论文一手证据驱动的工程笔记，不重复建实体。
+- 来源：arXiv:2610.34280v1（含附录）、作者项目主页与 teee000/AdaPolicy 源码。
+- 开源结论：MetaWorld / RoboTwin 2.0 仿真训练评测代码已发布；未核实完整 LIBERO 与真机部署源代码。
+- 知识产物：补 next-chunk 梯度机制、实验/消融与训练成本、Mermaid 流程及已核验入口的源码运行时序图；改进 wiki/entities/paper-adapolicy.md。
+
 ## [2026-11-09] ingest | HWAM arXiv:2610.12026v2 增量深读与节点校核
 
 - 已有 HWAM 主节点，未重复建页；论文 v2 全文 §1–5 与附录 A–D 已核对，并更新来源、三路径 Mermaid 主流程与原文通读状态。

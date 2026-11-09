@@ -1389,7 +1389,7 @@
 - [AdaMimic：单条参考运动上的自适应全身跟踪](wiki/entities/paper-adamimic.md) — AdaMimic**（*Towards Adaptable Humanoid Control via Adaptive Motion Tracking*，[arXiv:2510.14454](ht `📅unknown` `[entity_page]`
 - [AdaMorph](wiki/entities/paper-adamorph-unified-motion-retargeting.md) — AdaMorph**（*AdaMorph: Unified Motion Retargeting via Embodiment-Aware Adaptive Transformers*，arXiv `📅unknown` `[entity_page]`
 - [AdaOcc：自适应具身三维占据预测](wiki/entities/paper-adaocc.md) — AdaOcc 把多视角 RGB 与深度或 LiDAR 几何融合为稀疏语义点，再按计算预算调整预测精度，为导航和操作提供局部三维占据表示。 `📅unknown` `[entity_page]`
-- [AdaPolicy（arXiv:2610.34280）](wiki/entities/paper-adapolicy.md) — AdaPolicy**（*AdaPolicy: Action-Driven Anticipatory Robot Policies via Next-Chunk Prediction*，[arXi `📅unknown` `[entity_page]`
+- [AdaPolicy：动作驱动的前瞻机器人策略 / Action-Driven Anticipatory Robot Policies via Next-Chunk Prediction](wiki/entities/paper-adapolicy.md) — 论文：** arXiv:2610.34280v1（2026-10-25） · **项目：** [官方主页](https:// `📅unknown` `[entity_page]`
 - [ADAPT：端到端文本驱动人形控制](wiki/entities/paper-adapt-text-driven-humanoid.md) — ADAPT**（*Agile Diffusion Action Priors for Robust and Steerable Online Text-Driven Humanoid Contro `📅unknown` `[entity_page]`
 - [AdaPT（人形网球自适应规划与跟踪）](wiki/entities/paper-adapt.md) — AdaPT**（*Towards Professional Tennis Styles for Humanoid Robots with Adaptive Motion Planning and  `📅unknown` `[entity_page]`
 - [AHC：多行为蒸馏与强化微调的自适应人形控制](wiki/entities/paper-adaptive-humanoid-control.md) — AHC**（*Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tunin `📅unknown` `[entity_page]`
@@ -2238,6 +2238,7 @@
 - [DriveVLM（DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models · arXiv:2402.12289）](wiki/entities/paper-drivevlm.md) — DriveVLM**（*DriveVLM: The Convergence of Autonomous Driving and Large Vision-Language Models*，[240 `📅unknown` `[entity_page]`
 - [DRL Proxemics：把「别贴太近」写进可学习奖励](wiki/entities/paper-drl-proxemics-social-nav.md) — DRL Proxemics**（*Towards Socially Compliant Navigation in Deep Reinforcement Learning via Proxemic `📅unknown` `[entity_page]`
 - [DSDyn-VLA：具有运动感知、未来感知与实时修正的双流动态操作框架](wiki/entities/paper-dsdyn-vla.md) — DSDyn-VLA: A Dual-Stream Dynamic Manipulation Framework with Motion Perception, Future Awareness,  `📅unknown` `[entity_page]`
+- [DSERT-RoLL：多天气驾驶的双目事件/RGB/热成像、4D 雷达与双 LiDAR 鲁棒感知](wiki/entities/paper-dsert-roll.md) — DSERT-RoLL（Driving with Stereo Event-RGB-Thermal Cameras, 4D Radar, and DuaL LiDAR）** 是 KAIST VILA `📅unknown` `[entity_page]`
 - [DSGN（arXiv:2610.34084）](wiki/entities/paper-dsgn.md) — DSGN**（*DSGN: A Dual-Stream Gated Network for Scalable Simultaneous Surveillance and Containment*， `📅unknown` `[entity_page]`
 - [DSLC：隐蔽执行器攻击下的多机器人安全学习控制](wiki/entities/paper-dslc-multirobot-secure-control.md) — Distributed Secure Learning Control（DSLC）** 将分布式模型预测控制与对抗式策略学习结合，在多机器人系统中同时优化攻击者和防御者策略，以应对隐蔽执行器攻击。 `📅unknown` `[entity_page]`
 - [DSP：从有监督玩耍中学习灵巧操作](wiki/entities/paper-dsp-supervised-play.md) — DSP 将机器人灵巧操作的数据获取本身变成可学习的玩耍策略：人类短时示范启动策略，机器人再自主收集数据并用世界模型规划。 `📅unknown` `[entity_page]`
