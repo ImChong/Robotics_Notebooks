@@ -94,6 +94,27 @@ flowchart TD
 | 系统级笼 | G1，12 m x 12 m，15 条指令 x 4 前端 x 开关 = 120 次 | 无笼 60/60 碰撞，有笼 0/60 | VI-E 表 IV |
 | 目标接近 | Vision 60，终点 5（关）/ 3（开） | 平均 NE 1.50 m -> 0.29 m | VI-F 表 V |
 
+## 结论
+
+**这层「笼」在论文的实验范围内把碰撞率压到 0（G1），且不改语义前端；但它保证的是「不撞」，不是「做成」，任务完成率仍由前端和 SDF 覆盖决定。**
+
+1. **真正要看的指标**是 E2E SR（完成任务且无碰撞）而不只是 CR：G1 端到端实验 CR 降到 0 而 SR 维持 0.75 不变（表 III），说明笼主要换来安全、不直接换来成功率。
+2. **注意保守性代价**：表 I 中 Claude 前端开笼后无碰撞但接近任务 E2E SR 从 40% 掉到 0%；γ 越大越保守（V-C、图 3a），部署需按场景调 γ。
+3. **证明的前提要逐条核对**：定理 1 依赖 (A1)–(A5) 与平面模型，不含估计误差、延迟、跟踪误差和运动障碍物（VI-G）；未建图的细杆、电线等无法认证，是 Vision 60 剩余碰撞的主因。
+4. **传感器是安全上限**：同一规划层在 G1（高质量 LiDAR）上 CR 归零，在 Vision 60（VLP16）上复杂任务仍有 CR 0.08（表 III）。
+5. **贡献未拆分**：系统级消融是 MPPI、JPS、dEBF 全开对全关（VI-E），也没有和其他屏障函数 MPPI 或 CBF-QP 做对比实验，选型时不能据此判断哪个组件起主要作用。
+
+## 与其他工作对比
+
+作者在相关工作（II）把本文放在三条线之间：学习式腿式 VLN 前端（如 NaVILA、QUAR-VLA）、操作侧的安全 VLA（SafeVLA、VLSA/AEGIS），以及 MPPI 加屏障函数的方法（Shield-MPPI、BR-MPPI、MPPI-DBaS）。
+
+| 对照 | 差异读法 |
+|------|----------|
+| [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) | 学习式腿式 VLA 导航前端；本文不替代它，而是把它作为四个可替换前端之一放在笼内（VI-A、表 IV） |
+| [LOVON](./paper-notebook-lovon-legged-open-vocabulary-object-navigator.md) | 同为腿式开放词表目标导航，偏重分层规划与执行鲁棒性；本文重点是对前端输出做几何硬认证 |
+| Shield-MPPI / BR-MPPI 等（见 [MPPI](../methods/mppi.md)） | 作者在相关工作中列为同类屏障函数 MPPI；本文用贝塞尔低维参数化加 dEBF 显式逐点检查与一步备用策略，但未做实验对比 |
+| [Barrier-state 安全导航](./paper-barrier-state-safe-navigation.md) | 同为屏障类安全导航，该页沿路径拼接安全区域成单一约束；本文以 SDF 取值和多球足迹做离散指数屏障检查 |
+
 ## 工程实践
 
 - 平台与计算（VI-A）：Unitree G1（高质量 LiDAR，FastLIVO2 里程计）与 Ghost Robotics Vision 60（不变 EKF，较旧的 VLP16 激光雷达）；建图与规划跑在 NVIDIA A4500 上；语义前端本地或通过接口调用。

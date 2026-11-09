@@ -12,6 +12,7 @@ related:
   - ../concepts/ai-agent-evaluation.md
   - ../entities/rle-bench.md
   - paper-deliverbench.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/ambihtmlbench_arxiv_2611_06449.md
   - ../../sources/sites/ambihtmlbench.md
@@ -141,6 +142,7 @@ sequenceDiagram
 - [RLE-Bench](rle-bench.md) — 与机器人学习工程交付相关的 Agent 评测。
 - [DeliverBench](paper-deliverbench.md) — 区分被评对象与评价指标。
 - [SelfImprove-Bench](paper-selfimprove-bench.md) — 区分被评对象与评价指标。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 借其「客观指标 vs 偏好代理、可复现性 vs 真实代表性」的取舍框架阅读本基准的双榜单；本基准测文档→HTML，不属于机器人四层评测本身。
 
 ## 参考来源
 
