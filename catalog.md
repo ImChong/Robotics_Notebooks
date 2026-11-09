@@ -2372,6 +2372,7 @@
 - [Eye, Robot：基于 VLM 引导 Transformer-VAE 的表达性注视动力学学习](wiki/entities/paper-eye-robot-gaze.md) — Eye, Robot**（*Learning Expressive Gaze Dynamics via a VLM-Guided Transformer-VAE*，[arXiv:2610.1963 `📅unknown` `[entity_page]`
 - [EyeRobot 2.0（arXiv:2610.03710）](wiki/entities/paper-eyerobot-2-active-gaze-manipulation.md) — EyeRobot 2.0**（*EyeRobot 2.0: Active Gaze for Precise Manipulation without Wrist Cameras*，[arXiv:2 `📅unknown` `[entity_page]`
 - [Off-dynamics reinforcement learning: training for transfer with domain classifiers](wiki/entities/paper-eysenbach-off-dynamics-rl.md) — Off-dynamics reinforcement learning: training for transfer with domain classifiers**（[arXiv:2006.1 `📅unknown` `[entity_page]`
+- [F2G-Pose：无需实例 CAD 的 RGB-D 物体 6D 位姿与形状补全](wiki/entities/paper-f2g-pose.md) — F2G-Pose**（*Geometry-Aware Foundation Feature Lifting for Direct RGB-D Category-Level Object Pose  `📅2026-10-22` `[entity_page]`
 - [FA-RDP](wiki/entities/paper-fa-rdp.md) — FA-RDP**（*Frequency-Adaptive Reactive Diffusion Policy*，[arXiv:2607.28596](https://arxiv.org/abs/2 `📅unknown` `[entity_page]`
 - [FabriMAE](wiki/entities/paper-fabrimae-vla-self-eval.md) — FabriMAE I Trust Myself? Self-Evaluating VLA Action Generation with Markov Attention Entropy**（arX `📅unknown` `[entity_page]`
 - [FabriVLA：轻量 VLA 与精确多任务操作](wiki/entities/paper-fabrivla.md) — FabriVLA**（*A Lightweight Vision-Language-Action Model for Precise Multi-Task Manipulation*，[arXiv `📅unknown` `[entity_page]`
