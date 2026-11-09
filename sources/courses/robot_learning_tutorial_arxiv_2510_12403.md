@@ -42,3 +42,16 @@
 - **Sutton & Barto 教材：** [wiki/entities/sutton-barto-rl-book.md](../../wiki/entities/sutton-barto-rl-book.md)
 - **Open X-Embodiment：** [wiki/entities/paper-open-x-embodiment.md](../../wiki/entities/paper-open-x-embodiment.md)
 - **DROID：** [wiki/entities/paper-rcl-ref-aa9c28fbf4242ea03696-droid-a-large-scale-in-the-wild-robot-manipulati.md](../../wiki/entities/paper-rcl-ref-aa9c28fbf4242ea03696-droid-a-large-scale-in-the-wild-robot-manipulati.md)
+
+## 2026-11-09 原文全文复核
+
+- **核对范围：** 2026-11-09 通读 arXiv:2510.12403v1 主文（前言、§1–6）、LeRobotDataset/数据采集、RL/SAC/HIL示例、BC与VAE/扩散/流匹配、ACT/DP、异步推理与 π₀/SmolVLA 示例、全部图表说明及文末引用表；未逐一执行 LeRobot 代码。
+- **通读：** 已完成
+
+- 教程既有 §2 的 FK/IK、diff-IK 与反馈闭环，指出摩擦/接触建模与分布变化对显式管线的局限；作者并未主张用端到端学习完全替代经典控制。
+- §3 以 MDP/RL、SAC 与真实 HIL 引出奖励设计/交互成本/Sim2Real 难题；§4 BC 用专家轨迹学习分布，分别介绍 VAE、DDPM 与 flow matching 的生成机制、ACT/DP 的动作块接口。
+- §4.4 的异步推理把机器人客户端执行已有 action chunk 与远端策略服务器推理分离；队列低于阈值时触发非阻塞新观测推理，并做观测去重与 overlap 合并，不能直接等同每个控制周期都等待 GPU。
+- §5 比较 VLM/VLA、π₀ 的 VLM 与 action expert、SmolVLA 的小模型及社区数据集；§6 讨论传统模型和学习策略互补。
+- 注意：arXiv v1 明示 2025-10-14，而当前 HTML 正文自带 Date: August 24, 2026 字样；归档身份按 arXiv v1，不把页面内部日期当投稿时间。
+
+> “全文通读”仅指本篇官方原文的主要章节及原文附录，不等同逐篇审计所有参考论文、运行作者代码或复现实验。
