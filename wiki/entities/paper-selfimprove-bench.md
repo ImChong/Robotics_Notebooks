@@ -5,7 +5,7 @@ arxiv: "2611.02797"
 project: https://theseus-labs-rsi.github.io/SelfImprove-Bench/
 code: https://github.com/theseus-labs-rsi/SelfImprove-Bench
 tags: [benchmark, rsi, llm-agents, evaluation]
-status: draft
+status: complete
 updated: 2026-11-09
 summary: "测量智能体利用反馈修改自身后，能力能否迁移到未见任务，而非只记住训练关卡。"
 related:
@@ -24,7 +24,7 @@ original:
 
 ## 一句话定义
 
-SelfImprove-Bench 是面向测量智能体利用反馈修改自身后，能力能否迁移到未见任务，而非只记住训练关卡。
+SelfImprove-Bench 衡量智能体在反馈驱动自我改进之后，收益是否能从已见实例迁移到新实例、新难度和跨任务场景。
 
 ## 英文缩写速查
 
@@ -97,7 +97,18 @@ sequenceDiagram
 
 - G0–G4 五层分别检验重放、新实例、难度迁移、任务迁移和跨能力迁移。
 - 公开 README 提供 18 套六游戏×三 RSI 方法的主要实验配置；训练、holdout 与初始框架比较需要保持种子、任务范围和模型后端一致。
+- 论文报告 18 个方法-游戏组合里 16 个在 G1 改善，但 8 个 G0 回放退步；G1 的提升不能保证更高难度和跨能力迁移。
 - 没有在本次环境跑实测任务，因此不将论文结果冒充本机复现。
+
+## 论文全文复核要点（v1）
+
+- **能力与范围（§3.2、附录 B）：** 三项主能力为 Exploration、Reasoning、Planning；六类游戏 Farm、Combat、Sweepmine、Hero's Journey、Minecraft、Astray。前四种支持难度 1–5，后两种使用 GameWorld 固定保留任务。
+- **五层泛化（§3.3）：** G0 对相同历史实例的 replay 比较（不触发 refine）；G1 同难度新实例；G2 同游戏更高难度；G3 同能力类别中另一游戏；G4 跨类别迁移。**不要把 G0 称为未见实例泛化**。
+- **保持测试独立（§3.1、附录 A.1–A.3）：** 训练候选验证只使用 held-in 任务；held-out 仅测试已保存的改进状态，禁止在其上修订。Replay 由 interval 和 lag 定义，不计入训练任务数；不同种子控制实例生成，去重是 descriptor/hash 层面的而非游戏真实状态严格唯一。
+- **主结果（§4.2，表 2）：** 18 个方法×游戏组合中，**8 个 G0 复测低于历史表现**，但 **16 个 G1 HCI 为正**；G1 改善不能保证 G2–G4 改善。Hero→Sweepmine 能改善而反方向退步，说明 transfer 方向敏感。HyperAgents 在跨能力八个方向中五个 HCI 为正。
+- **修订归因（§3.4、§4.3）：** 对最终保留的 915 条 refinement opinions 按语义、适用范围、目标功能、修改面标注；ACE、AHE、HyperAgents 中类别通用/通用的比例分别为 14.2%、7.8%、36.5%。主实验保留修改中 87.9% 指向 prompt/memory、12.1% 指向 harness，未观察到对 improver 本身的改写。
+- **消融（§4.4）：** 随机中等难度训练在部分 Combat/Hero 的更难 holdout 上优于逐级增难；直接修订 DeepSeek Harness 的 HyperDSH 是探索性实验，和主实验元级修改对象不同。
+- **证据限制（附录 A.4）：** 100 条样例的人工辅助复核是带机器标签的事后审阅，Scope 88%、Surface 99% 等一致性**不是盲测分类准确率**。
 
 ## 结论
 
@@ -124,7 +135,7 @@ DeliverBench 关心项目最终多文件交付质量，SelfImprove-Bench 关心*
 ## 局限与风险
 
 - 这是一套以游戏环境为主的 RSI 评测，不能直接推出机器人真机泛化；HyperAgents 内嵌代码有非商业许可，主仓 MIT 不覆盖全部三方依赖。
-- 论文全文及附录尚未逐节完成核对；**本节点保留 draft**，健康度不应写为满分。
+- 已核对论文正文与附录，详见论文一手归档的核对范围；这不代表独立重跑模型实验。
 - 本次仅静态阅读公开仓库和入口，尚未安装完整环境或独立复现实验成绩。
 
 ## 关联页面
