@@ -7,7 +7,7 @@ project_id: hwam-humanoid-world-action-model
 arxiv: "2610.12026"
 project: https://hwam.vercel.app/
 venue: "arXiv 2026"
-summary: "HWAM：参考动作与执行后本体状态联合生成，Policy/FDM/IDM 三路径联合训练；LimX OLI 三项真机成功率 70.6/46.7/73.3%，官方代码本轮未核实。"
+summary: "HWAM：参考动作与执行后本体状态联合生成，Policy/FDM/IDM 三路径联合训练；LimX OLI 真机成功率 70.6/46.7/73.3%，官方项目页 Code/Dataset 仍为 Coming soon（2026-11-09）。"
 related:
   - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
   - ../concepts/world-action-models.md
@@ -95,7 +95,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用（当前缺少可核实的 HWAM 可运行源码入口）**：[项目页归档](../../sources/sites/hwam-project.md) 记录 2026-10-12 Code / Dataset / Video 为 “Coming soon”；2026-11-09 页面无法再次读取，公开检索未发现可验证的官方 HWAM 实现。论文 v2 摘要称代码与数据可用，但尚未核实可下载入口。故不从论文架构臆造 `sequenceDiagram`；待核实官方运行脚本后补充。
+**不适用（官方尚未公开可运行 HWAM 源码入口）**：[官方项目页](https://hwam.vercel.app/) 于 2026-11-09 复核，Code / Dataset / Video 均显示 “Coming soon”，没有对应下载链接。论文 v2 摘要虽写代码与数据可用，但与实际页面开放情况不符；不能据此编造 `sequenceDiagram`。待作者提供训练/推理脚本后阅读实际入口再补时序图。
 
 ## 实验与评测
 
@@ -131,7 +131,7 @@ flowchart TB
 
 - 复刻时先确认低层是全身跟踪控制器，且能记录**执行后本体状态**（训练时需成对 (参考动作, 执行后状态) 数据）。
 - 训练配置公开：6 epoch、AdamW 1e-4、batch 128、16×A800；无需机器人预训练。
-- **开源状态**：2026-10-12 项目页历史核查为 **待发布**；2026-11-09 复核访问受限，**最新状态待核实**。尽管 arXiv v2 摘要声称代码和数据可用，目前缺少可验证的官方 HWAM 下载/执行入口，故暂不建 `sources/repos/`。
+- **开源状态（2026-11-09 已复核）**：项目页 Code / Dataset / Video 均为 “Coming soon”，无可访问的 HWAM 官方实现/数据入口；与 v2 摘要的可用性描述不一致，按项目页实际可下载内容记录为 **待发布**，不建 `sources/repos/`。
 
 ## 局限与风险
 
@@ -139,7 +139,7 @@ flowchart TB
 - 路径与架构选择未分别消融。
 - 真机置信区间不含种子方差；Fast-WAM、Cosmos3-Edge 在 Object Collection 得 0%，说明任务对基线很敏感。
 - ALOHA 结果是任务专用训练，非零样本迁移。
-- 本轮无法确认官方代码、数据是否已开放；在源码入口及数据许可未经核实前，复现性仍待验证。
+- 官方项目页尚未提供可下载的 HWAM 源码或数据，现阶段难以独立复现实验；不能把摘要中的 “available” 等同于实际开源。
 
 ## 与其他工作对比
 
