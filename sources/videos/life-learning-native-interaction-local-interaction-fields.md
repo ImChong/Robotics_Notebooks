@@ -1,47 +1,39 @@
-# LIFe — Learning Native Interaction via Local Interaction Fields｜原生交互与局部交互场（待核验）
+# LIFe — Learning Native Interaction via Local Interaction Fields｜截图及官方一手资料交叉核验
 
-> **入库状态：待补一手论文、项目主页与原视频链接。** 本记录只保留用户提供的视频截图中可直接辨认的信息，**不代表已完成论文 ingest**。不要将标题中的术语解读为已经验证的模型结构。
+> **入库状态：已找到官方项目网页与演示资源；论文仍未公开。** 标题来自用户提供的短视频截图，“Local Interaction Fields” 算法结构尚不能核验。
 
-- **类型：** video（社交平台视频封面截图／线索归档）
-- **英文标题：** LIFe — Learning Native Interaction via Local Interaction Fields
-- **中文暂译：** LIFe：通过局部交互场学习原生交互
-- **截图显示的发布账号：** QihanZhao（仅能确认截图文字，账号与论文作者身份未交叉核验）
+- **类型：** video / 截图线索 + 官方视频入口
+- **截图中的英文完整标题：** LIFe — Learning Native Interaction via Local Interaction Fields
+- **中文暂译：** 通过局部交互场学习原生交互
+- **截图账号：** QihanZhao（账号文字；官方 GitHub 仓库也由 `QihanZhao` 发布）
 - **展示文案：** “Move by Teleop. Interact Natively.”
-- **平台：** 用户提供的短视频 App 页面截图；界面未显示原视频 URL 或作品 ID。
-- **提供日期：** 2026-11-09
-- **原视频 URL：** 待补（截图没有提供可访问的固定链接）
-- **论文 URL / arXiv ID：** 待核验，不能凭标题推定编号
-- **项目主页：** 待核验
-- **官方源码 / 模型 / 数据：** 状态未知；未验证开放情况
-- **核对范围：** 已核对所提供截图的项目名、英文副标题、展示文案、发布账号与画面；通过公开网络按完整项目名及缩写检索，未取得可逐页通读的对应原始论文、项目技术文档或官方仓库。截图之外的实验、方法与效果均未核验。
+- **官方项目网页：** <https://qihanzhao.github.io/LIFe/>
+- **官方 GitHub：** <https://github.com/QihanZhao/LIFe>
+- **官方演示文件：** <https://github.com/QihanZhao/LIFe/blob/main/assets/video/life-demo.mp4>
+- **原社交短视频 URL：** 尚未知（用户截图未提供固定地址）
+- **论文 / arXiv ID：** 尚未公开，不推定编号
+- **入库日期：** 2026-11-09
+- **核对范围：** 对照用户截图辨认标题与宣传文案，完整阅读官网源文件 `index.html` 与 `README.md`；未取得论文全文，未观看社交平台原视频，也未对 MP4 逐帧分析。
 - **通读：** 未完成
 
-## 可直接确认的画面与文字
+## 已核实的一手事实
 
-1. 视频封面标有 **LIFe**、完整标题 **Learning Native Interaction via Local Interaction Fields**。
-2. 图像包含人形机器人、向机器人伸手的人与一位穿戴追踪设备的人；画面为演示宣传素材，不能仅凭静帧判断控制接口或自主性。
-3. 封面底部写有 **“Move by Teleop. Interact Natively.”**；只能将其列为宣传表述，不能推断动作跟踪和交互控制的具体架构、奖励、训练数据或性能。
+- 官网标题为 **LIFe — Native Interaction for Humanoid Robots**，口号为 *Move by teleop. Interact natively.*。完整 “Learning Native Interaction via Local Interaction Fields” 是截图副标题，在已读官网正文中尚无正式算法定义。
+- 作者署名 Qihan Zhao、Jiayang He、Yinhuai Wang、Ping Tan；标注 HKUST、SLAI 和前三位平等贡献。
+- 官网标注 **Unitree G1**，嵌入一段 **93 秒、1080p60** 真机演示，网站提供 Catch、Continuous interaction、Exchange、Reorient 四个章节。
+- 官方网站展示的案例含球类连续交互、动态接球、人机传接球和椅子位置调整。
+- 官方 README **明确**：仓库只有项目页面素材，不含机器人训练/推理代码、模型权重、policy observations、实现细节及论文手稿；没有 ICRA/CoRL 录用声明。
 
-## 尚不能确认的要点
+## 尚未核实
 
-- 研究团队、完整作者名单、论文版本、接收会议；
-- Local Interaction Fields 的数学定义、状态/动作输入与策略训练细节；
-- Teleop 与交互策略的模块边界，以及是否提供可复现训练或部署源码；
-- 模拟或真机实验的环境、基线、指标和消融；
-- 原视频永久链接和许可。
+- Local Interaction Fields 的数学形式、观测/动作空间与训练目标；
+- 遥操作与接触自主控制的运行时分工、推理频率、机器人输入输出；
+- 实验成功率、基线、消融、泛化与安全可靠性；
+- 论文全文、会议版本与机器人模型/代码许可。
 
-## 下一步核验（阻塞项）
+## 归档映射与后续
 
-1. 找到发布者的原视频固定 URL、主页简介与其指向的一手论文/项目资源。
-2. 打开论文 PDF 通读方法、实验、局限和附录，登记版本与核对范围，再将本记录拆分或补充至 `sources/papers/`、`sources/sites/`、`sources/repos/`。
-3. 论文确认后查重并建立唯一 `wiki/entities/paper-*.md` 论文项目实体；按原文绘制 Mermaid 流程图。
-4. 若有官方可运行代码，核对 README 与实际入口后补充源码运行时序图。完成后运行 `make ci-preflight` 与节点健康度检查。
-
-## 相关研究线索（**并非** LIFe 的一手来源）
-
-- [Yinhuai Wang 研究主页](https://wyhuai.github.io/info/)：确认 Qihan Zhao 出现在 HumanX、Switch 等论文的作者列表；这些项目与截图中的 LIFe **不得混同**，也不能据此断言 LIFe 的团队或方法。
-
-## 对 wiki 的映射
-
-- **暂不创建 LIFe 实体页：** 缺少可通读的项目原始资料和可核实的模块/数据流，不满足项目实体流程图、原文通读与健康度要求。
-- 后续如有全文，可关联仓库既有的模仿学习、遥操作和人形交互主题页面，并以实际机制为依据撰写。
+- [官方项目页一手归档](../sites/life-native-interaction-official.md)
+- [官方网站仓库归档](../repos/life-humanoid-project-page.md)
+- [唯一 wiki 实体：LIFe（draft）](../../wiki/entities/life-native-interaction.md)
+- 论文和算法源码发布后，先通读全文和运行入口，再绘制训练/控制架构与源码时序图、更新评测和节点健康度。
