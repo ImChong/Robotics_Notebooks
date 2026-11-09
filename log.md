@@ -287,6 +287,13 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-09] ingest | MIIB：多模态信息交互瓶颈，通读论文与补充材料并核验开源状态
+
+- 一手原文：arXiv:2611.07718v1（正文 I–VII 与 3 页 supplementary Appendix A–C）；作者在 arXiv 声明已获 IEEE TPAMI 接收，未核实正式刊出卷期。
+- 核心方法：模态专属、联合融合、协同表征经双视图自监督与熵/对齐代理目标共同优化；新增论文方法 Mermaid 流程图。
+- 开源状态：2026-11-09 核验 wanglingzaishi/MIIB 公开空仓，无可运行实现；源码运行时序图不适用。
+- 知识节点：wiki/entities/paper-miib-multimodal-information-bottleneck.md，与 arXiv:2609.14421 信息论综述实体双向关联。
+
 ## [2026-11-09] ingest | arXiv:2610.33026v1 — 通读曼德拉效应多智能体虚假信念传播、持续与缓解论文；归档 540 条合成断言与三拓扑的实验设计，记录搜索污染主通道和定向纠错结果；源码及数据按作者声明尚待发布。
 
 ## [2026-11-09] ingest | senlanke 具身运控lab 11.02-11.06 前沿论文动态（人形/四足 30 + Manipulation 23）：新建 27 个独立论文详情节点（逐篇通读核对周报说法），复用 26 篇既有节点，新增两份周报来源归档与技术地图
