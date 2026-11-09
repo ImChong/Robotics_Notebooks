@@ -1,4 +1,4 @@
-# AmbiHTMLBench: Benchmarking Image-to-HTML Reconstruction｜图像到可执行 HTML 的结构与视觉保真评测
+# AmbiHTMLBench: A Benchmark for HTML-based Visually Rich Document parsing｜图像到可执行 HTML 的结构与视觉保真评测
 
 > 原论文归档（截至 2026-11-09：核查过论文摘要、官方项目说明和代码 README；全文逐节核对尚未完成）
 

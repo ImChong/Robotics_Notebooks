@@ -2,7 +2,7 @@
 
 > 来源归档（官方站点）
 
-- **标题：** AmbiHTMLBench: Benchmarking Image-to-HTML Reconstruction
+- **标题：** AmbiHTMLBench: A Benchmark for HTML-based Visually Rich Document parsing
 - **类型：** site
 - **链接：** <https://ambihtmlbench.tech/>
 - **论文：** <https://arxiv.org/abs/2611.06449>

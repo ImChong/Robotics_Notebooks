@@ -20,7 +20,7 @@ original:
   - ../../sources/papers/ambihtmlbench_arxiv_2611_06449.md
 ---
 
-# AmbiHTMLBench: Benchmarking Image-to-HTML Reconstruction｜图像到可执行 HTML 的结构与视觉保真评测
+# AmbiHTMLBench: A Benchmark for HTML-based Visually Rich Document parsing｜图像到可执行 HTML 的结构与视觉保真评测
 
 ## 一句话定义
 

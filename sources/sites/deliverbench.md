@@ -2,7 +2,7 @@
 
 > 来源归档（官方站点）
 
-- **标题：** DeliverBench: Benchmarking AI Agents on Continuous Professional Project Delivery
+- **标题：** DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects
 - **类型：** site
 - **链接：** <https://deliverbench.github.io/>
 - **论文：** <https://arxiv.org/abs/2611.03412>

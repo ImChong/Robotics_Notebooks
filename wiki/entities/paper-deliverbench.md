@@ -20,7 +20,7 @@ original:
   - ../../sources/papers/deliverbench_arxiv_2611_03412.md
 ---
 
-# DeliverBench: Benchmarking AI Agents on Continuous Professional Project Delivery｜面向连续专业项目交付的智能体评测
+# DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects｜面向连续专业项目交付的智能体评测
 
 ## 一句话定义
 

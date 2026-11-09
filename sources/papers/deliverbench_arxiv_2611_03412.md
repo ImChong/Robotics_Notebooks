@@ -1,4 +1,4 @@
-# DeliverBench: Benchmarking AI Agents on Continuous Professional Project Delivery｜面向连续专业项目交付的智能体评测
+# DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects｜面向连续专业项目交付的智能体评测
 
 > 原论文归档（截至 2026-11-09：核查过论文摘要、官方项目说明和代码 README；全文逐节核对尚未完成）
 
