@@ -8,9 +8,10 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-10-28
+updated: 2026-11-09
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身；当代码吞吐扩张后，源码控制、检出、CI 与评审也会成为基础设施瓶颈。"
 related:
+  - ../roadmaps/llm-inference-open-source-contribution-by-stage.md
   - ../entities/mattpocock-skills.md
   - ../entities/archify.md
   - ../entities/superpowers-obra.md
@@ -216,6 +217,8 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 - *The Batch* 同文：<https://www.deeplearning.ai/the-batch/the-ai-engineering-skills-map-in-detail-software-engineering-fundamentals>
 
 ## 推荐继续阅读
+
+- [LLM 推理开源贡献分阶段路线](../roadmaps/llm-inference-open-source-contribution-by-stage.md) — 以 Nano-vLLM、FlashInfer、vLLM 等具体项目训练源码阅读、回归测试、性能证据与 PR 评审的工程闭环。
 
 - Andrew Ng，[The AI Engineering Skills Map](https://www.linkedin.com/pulse/ai-engineering-skills-map-andrew-ng-m479c) — 四支柱总图（职位/访谈依据）
 - Andrew Ng，[AI Engineering Skills Map: Building and deploying AI applications](https://www.linkedin.com/pulse/ai-engineering-skills-map-building-deploying-ai-applications-andrew-ng-gyn5e) — 同系列上一篇（LLM、grounding、agentic systems、eval-driven、生产、ML 基础）
