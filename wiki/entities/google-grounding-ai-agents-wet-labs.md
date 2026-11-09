@@ -12,7 +12,7 @@ tags:
   - google
   - google-deepmind
 status: complete
-updated: 2026-11-07
+updated: 2026-11-09
 project: https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs/
 related:
   - ../entities/paper-physical-agentic-ai.md
@@ -172,6 +172,8 @@ flowchart TD
 - 复现价值目前限于底座 PyLabRobot 与公开 PDF，VERID 与两条生物流水线无公开代码或数据。
 
 ## 关联页面
+
+- [AISLE / AI Scientists' Last Exam（科学智能体实验反馈评测）](paper-ai-scientists-last-exam.md) — 对照可复现的实验任务与独立验证器
 
 - [Physical Agentic AI（可验证的物理执行门控）](paper-physical-agentic-ai.md) — 同一类「LLM 提议、物理执行需门控」思路
 - [Physical RSI](physical-rsi.md) — 用物理反馈改写 agent harness 的对照线
