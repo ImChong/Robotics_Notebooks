@@ -161,6 +161,7 @@ sources:
 | 系统 | 机器人 | 输入设备 | 数据规模 | 特点 |
 |------|--------|---------|---------|------ |
 | UMI（Stanford 2024） | 通用 | GoPro + 夹爪 | 可扩展 | 无需专用机器人，数据可迁移 |
+| **[Specialist](../entities/specialist-umi.md)**（UC Berkeley 2026） | 匹配形态的主动夹爪与机械臂（训练/部署待公开） | **Insta360 双鱼眼 + IMU + AprilTag** 手持夹爪 | 公开重建管线；未核实公共示范规模 | **公制 VI-BA 轨迹 + 指节角**，无需现场机器人采集；硬件/数据处理/驱动已开源，BC/LeRobot 仍待发布 |
 | [HandUMI](../entities/handumi.md)（RoboNet 2026） | PiPER / OpenArm / TRLC-DK1 / YAM 等平行夹爪双臂 | HandUMI 手持接口（~$110 tip 可换）+ PICO / Quest | 无机器人采集 | **一次采集、多臂重定向**；Feetech 直测开合；LeRobot v3 + `handumi validate` QA |
 | **[HiFi-UMI](../entities/paper-hifi-umi.md)（Simple AI 2026）** | 真机双臂（评测部署） | 头戴 stereo-inertial SLAM + 双手广角（六视角，~3 mm / <40 µs） | **HiFi-UMI-2K 2000 h** 已开源 | **zero-robot 后训练**匹配同域 teleop；数据 CC BY 4.0；采数代码未列 |
 | [BifrostUMI](../entities/paper-bifrost-umi.md)（BAAI Aether 2026） | Unitree G1 | Pico 追踪 + 双腕鱼眼夹爪 | 无机器人采集 | UMI 式示范 + 扩散高层 + SKR → 人形全身 WBC |
