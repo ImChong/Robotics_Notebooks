@@ -14,7 +14,7 @@ tags:
   - microsoft
   - eth
 status: complete
-updated: 2026-09-15
+updated: 2026-11-09
 arxiv: "2608.23831"
 related:
   - ../methods/vla.md
@@ -25,6 +25,8 @@ related:
   - ./paper-why-action-chunking-improves-bc.md
   - ../tasks/manipulation.md
   - ./paper-qplanning.md
+original:
+  - ../../sources/papers/arli_arxiv_2608_23831.md
 sources:
   - ../../sources/papers/arli_arxiv_2608_23831.md
   - ../../sources/sites/async-rl-intermediate-information.md
@@ -65,6 +67,32 @@ summary: "ARLI（arXiv:2608.23831，西门子×伯克利×微软×ETH）：异�
 | **真机** | 双臂 UR5e，腕+基座相机；\(\pi_{0.5}\) 小演示微调；60 Hz；chunk 50 |
 | **开源** | **确认未开源**（项目页无代码链；GitHub 仅 Pages 静态站） |
 
+## 流程总览（论文方法）
+
+以下主干流程依据 [论文 §4.1、图 2](https://arxiv.org/html/2608.23831) 及附录 A.1 绘制，表示**推理数据流与 RL 后训练反馈**，不是 ARLI 源码调用栈。
+
+```mermaid
+flowchart TD
+    Obs["推理开始：初始观测"] --> VLM["冻结 VLM 骨干：视觉语言嵌入"]
+    Obs --> State["组装增强 RL 状态"]
+    Old["上一个 action chunk：已承诺动作"] --> Run["异步继续执行旧 chunk"]
+    Old --> State
+    Run --> Mid["采集中间观测"]
+    Mid --> State
+    State --> Actor["轻量 DSRL-SAC 噪声策略"]
+    Actor --> Noise["选择初始噪声 w"]
+    Noise --> Expert["冻结 flow / diffusion 动作专家"]
+    VLM --> Expert
+    Old -.-> RTC["可选 RTC：inpainting 连续性约束"]
+    RTC -.-> Expert
+    Expert --> NewChunk["生成新的 action chunk"]
+    NewChunk --> Play["对齐延迟并执行新 chunk 可用后缀"]
+    Play --> Reward["交互反馈、奖励与经验回放"]
+    Reward --> Actor
+```
+
+**关键时机：** VLM 先使用旧观测推理；RL 噪声策略在动作专家启动前利用更近的观测和已承诺动作生成噪声，旧 chunk 在此期间持续执行；RTC 只作为可选连续性机制。附录 A.1 指出训练以 **action chunk 为潜在 MDP 的一步**，不把 chunk 内每个底层控制步当成单独 RL 决策。
+
 ## 核心原理（方法）
 
 设通才策略在 \(t-t_{\mathrm{delay}}\) 开始推理，动作用于时刻 \(t\)。RL 状态：
@@ -76,6 +104,8 @@ s^{\mathrm{rl}}_{t} \leftarrow \bigl(s_{t-t_{\mathrm{delay}}},\; a_{t-t_{\mathrm
 - **中间动作：** 推理窗口内将执行的旧 chunk 后缀，用于估计将到达的状态。
 - **中间观测：** VLM 骨干通常占延迟大头；DSRL 噪声只需在动作专家启动前就绪，故可在 \(t-t_{\mathrm{delay}}^{\mathrm{rl}}\) 再读一帧而不加端到端延迟。
 - **RTC（可选）：** 前 \(t_{\mathrm{delay}}\) 步冻噪声并 inpaint；提高连续，但可能限制 RL 表达力。
+
+**论文 Fig. 2 推理调度时序（非源码调用链）：**
 
 ```mermaid
 sequenceDiagram
@@ -92,7 +122,7 @@ sequenceDiagram
     AE->>Env: 新 action chunk（自 n_delay 起播放）
 ```
 
-命题（非正式）：若环境的 delayed oracle gap 为 \(\omega_d\)，对延迟观测做 action-chunk Q-learning 的次优有界；中间状态相当于减小有效 \(d\)。
+理论结论（§4.2、附录 D）：对满足 delayed oracle gap \(\omega_d\) 及**数据支持集覆盖、最优 chunk 补全可达**等条件的 action-chunk Q-learning，论文给出 \(\omega_d/(1-\gamma^{k-d})\) 型次优界；中间观测有助于减小有效延迟，但**不是任意环境下的无条件保证**。
 
 ## 工程实践
 
@@ -108,7 +138,7 @@ sequenceDiagram
 
 - **仿真：** ARLI 相对 naive 异步 DSRL 终成功更高、墙钟更短；DSRL+RTC 单独不够；相对逐步残差 RL，能舵冻结专家时终成功明显更高。
 - **延迟敏感：** 加大 \(t_{\mathrm{delay}}\) 时 ARLI+RTC 掉点慢于 DSRL；\(t_{\mathrm{delay}}^{\mathrm{rl}}\) 小于一半总延迟时学习明显更好。
-- **真机三任务：** Assembly / Shoe-in-Bag / Bag-Placement。基线约 **40%**；ARLI **100–125 episode** 近 **100%**。同步 DSRL 与 DSRL+RTC 同预算难到 80%，Shoe-in-Bag 约需双倍时间才追上。吞吐（成功/小时）全面更高。
+- **真机三任务：** Assembly / Shoe-in-Bag / Bag-Placement。基线约 **40%**；ARLI **100–125 episode** 近 **100%**。同步 DSRL 与 DSRL+RTC 同预算难到 80%，Shoe-in-Bag 约需双倍时间才追上。论文的成功/小时为**按 rollout 时长与失败时长假设计算的估算吞吐**（§5.2、图 5），并非连续生产实测。
 
 ## 结论
 
@@ -136,7 +166,7 @@ sequenceDiagram
 - **架构假设：** 不能拆 VLM/动作专家时失去中间观测通道。
 - **RTC 可能伤反应：** 强迫播放旧动作。
 - **绑 DSRL：** 扩散/flow 噪声舵失败的任务，本框架帮不上。
-- **真机曲线为单细胞、自报吞吐：** 独立复现前不作硬基准。
+- **证据边界：** 真机实验来自单套 UR5e 双臂系统；吞吐由时长假设估算，未提供独立复现。附录 C 的噪声变化仅基于 4 条留出轨迹，属于描述性分析。
 
 ## 关联页面
 
@@ -152,6 +182,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [ARLI 原始全文（arXiv v2，含附录）](https://arxiv.org/html/2608.23831)
 - [ARLI 论文摘录](../../sources/papers/arli_arxiv_2608_23831.md)
 - [ARLI 项目页归档](../../sources/sites/async-rl-intermediate-information.md)
 
