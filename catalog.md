@@ -896,6 +896,7 @@
 - [Liber-0：从人类经验学习机器人操作](wiki/entities/liber-0.md) — LiberAI 的 Liber-0 是联合预测未来视觉帧和动作的世界动作模型，利用人类视频、测量的手部动作和跨本体数据学习机器人操作。 `📅unknown` `[entity_page]`
 - [LIBERO](wiki/entities/libero-benchmark.md) — LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) 收录于具身智能研究室 [开源项目主表](https://github.com/R `📅unknown` `[entity_page]`
 - [libethercat（DLR）](wiki/entities/libethercat-dlr.md) — 德国宇航中心（DLR）的 EtherCAT C 库，文章称用于空间机电控制、偏科研。（分类：EtherCAT 主站；语言/形态：C 库） `📅unknown` `[entity_page]`
+- [LIFe — 原生物理交互（Native Interaction for Humanoid Robots）](wiki/entities/life-native-interaction.md) — LIFe** 展示一种面向 Unitree G1 的人形机器人交互研究愿景：由人引导整体运动，让机器人在真实物体交互中处理接触过程；当前公开证据是定性真机演示，而非可复现的训练/部署方案。 `📅unknown` `[entity_page]`
 - [LIFT（人形大规模预训练 + 高效微调）](wiki/entities/lift-humanoid.md) — LIFT**（论文缩写：**L**arge-scale pretra**I**ning and efficient **F**ine**T**uning）是面向 **人形机器人 locomotio `📅unknown` `[entity_page]`
 - [Light-O1](wiki/entities/light-o1.md) — Light-O1**（*Scaling Whole-Body Intelligence with Human Action Pretraining*，亮源新创 **2026-09-21** [Te `📅unknown` `[entity_page]`
 - [亮源新创（Light Origins）](wiki/entities/light-origins.md) — 亮源新创（Light Origins）** 是面向 **Physical AI / 通用具身智能** 的人工智能公司（[About 页](https://www.lightorigins.com/ `📅unknown` `[entity_page]`
