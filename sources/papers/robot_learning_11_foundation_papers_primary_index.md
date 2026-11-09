@@ -1,6 +1,6 @@
 # 11 篇机器人学习论文：原始入口与去重映射（2026-11-09）
 
-> 类型：primary bibliography / ingest index。**本文件是 11 篇论文的检索映射，不冒充 11 篇全文通读记录。** 新增四篇原始阅读归档以各自的“通读”标记为准。
+> 类型：primary bibliography / ingest index。**11 篇一手论文各有通读归档，具体范围以来源文件的“核对范围”与“通读”字段为准。** 这些记录不代表独立复现实验或通读其全部参考论文。
 
 | 编号 | 官方原始论文 | 本库节点或来源 | 状态 |
 |---|---|---|---|
@@ -26,4 +26,4 @@
 ## 后续校验
 
 - 四篇本次新增论文的原始正文、主要图表与所附附录已核查，来源归档已标注“通读：已完成”。教程、ACT、Diffusion Policy、RT-1 需继续独立核验整个正文/附录；DAgger、π₀、LIBERO 已有先前完整通读归档。
-- 需要本地完成 `make ci-preflight` / `npm run lint:mermaid`，本会话没有可联网克隆仓库的构建环境。
+- 需要在仓库工作树或 GitHub Actions 环境完成 `make ci-preflight` / `npm run lint:mermaid` 与报告脚本复核。
