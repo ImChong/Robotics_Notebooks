@@ -287,6 +287,12 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-09] ingest | HWAM arXiv:2610.12026v2 增量深读与节点校核
+
+- 已有 HWAM 主节点，未重复建页；论文 v2 全文 §1–5 与附录 A–D 已核对，并更新来源、三路径 Mermaid 主流程与原文通读状态。
+- 明确 ALOHA Clothes Folding 的 86.00 为 0–100 分任务完成评分（含部分完成得分），不是成功率。
+- 2026-11-09 直接核对官方项目页：Code / Dataset / Video 均为 “Coming soon”，与 arXiv v2 摘要中的 available 描述存在落差；无可运行官方 HWAM 源码入口，不伪造源码运行时序图。
+
 ## [2026-11-09] ingest | LLM 推理开源贡献职业分层与六项目一手文档核验
 
 - 意图：按学生、1–2 年工程师和资深跨行工程师给出可验证的推理引擎 / kernel 开源贡献入口。
