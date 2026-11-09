@@ -4293,7 +4293,7 @@
 - [RECAL（arXiv:2609.16405）](wiki/entities/paper-recal-collision-aware-wbc.md) — RECAL**（*Collision-Aware Humanoid Whole-Body Control under Imperfect Tracking Targets*，[arXiv:2609 `📅unknown` `[entity_page]`
 - [ReCAP（arXiv:2610.14583）](wiki/entities/paper-recap-long-horizon-world-model-memory.md) — ReCAP**（*Remembering What Matters for Long-Horizon Robotic World Models*，[arXiv:2610.14583](https: `📅unknown` `[entity_page]`
 - [RecMorph：跨形态共享控制策略](wiki/entities/paper-recmorph.md) — RecMorph**（*Topology-Guided Spatial Recurrence for Generalized Morphology Control*，[arXiv:2609.183 `📅unknown` `[entity_page]`
-- [ReCo：采用策略感知MPC的响应一致腿式移动操作](wiki/entities/paper-reco.md) — ReCo: Response-Consistent Locomotion with Policy-Aware MPC for Legged Manipulation**（[arXiv:2610.0 `📅unknown` `[entity_page]`
+- [ReCo：面向腿式移动操作的响应一致运动控制与策略感知 MPC](wiki/entities/paper-reco.md) — ReCo: Response-Consistent Locomotion with Policy-Aware MPC for Legged Manipulation** · Kuankuan Si `📅unknown` `[entity_page]`
 - [Recon-Augmented Bimanual Pretrain：利用三维重建增强的视觉运动预训练，从纯 RGB 人类视频学习双臂灵巧操作](wiki/entities/paper-reconstruction-augmented-bimanual-pretraining-rgb-human-video.md) — Recon-Augmented Bimanual Pretrain**（*Reconstruction-Augmented Visuomotor Pre-Training of 3D-Ground `📅unknown` `[entity_page]`
 - [ReContact（arXiv:2611.02968）](wiki/entities/paper-recontact.md) — ReContact**（*ReContact: Reconstruct and Retarget Human Contacts from Video for Contact-Rich Humano `📅unknown` `[entity_page]`
 - [Recova：智能体引导的机器人操作失败恢复 / Agent-Guided Failure Recovery](wiki/entities/paper-recova.md) — Recova** 将常规机器人操作与异常场景恢复分开训练：Agent 先在数字孪生中探索失败并产生可复用纠正技能，真机再用视觉语言监控器核验恢复效果，将必要的人工接管转化为下轮策略训练数据。 `📅unknown` `[entity_page]`
