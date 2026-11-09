@@ -287,6 +287,12 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-09] ingest | 三项评测基准
+
+- 意图：按一手论文、官方项目页与可运行开源入口，新增 DeliverBench、SelfImprove-Bench、AmbiHTMLBench 三个唯一知识节点并建立到 Agent 评测概念页的双向链接。
+- 开源核查：三项主仓均公开；DeliverBench 当前只有三项完整公开案例，SelfImprove-Bench 包含受限第三方依赖，AmbiHTMLBench 的主观原始数据需另行准备。
+- 限制：论文全文/附录尚未完成逐节通读，保留 Draft PR 与每项 2/3 健康度；仓库 CI 和端到端复现实验待执行。
+
 ## [2026-11-09] ingest | MIIB：多模态信息交互瓶颈，通读论文与补充材料并核验开源状态
 
 - 一手原文：arXiv:2611.07718v1（正文 I–VII 与 3 页 supplementary Appendix A–C）；作者在 arXiv 声明已获 IEEE TPAMI 接收，未核实正式刊出卷期。

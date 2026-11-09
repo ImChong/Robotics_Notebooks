@@ -1630,6 +1630,7 @@
 - [AlphaNIST：只用二元奖励学会 NIST 装配](wiki/entities/paper-alphanist.md) — AlphaNIST**（*Emergent Assembly Skills from Binary Task Rewards*，[arXiv:2610.13354](https://arxiv.o `📅unknown` `[entity_page]`
 - [AlphaStar：联赛式多智能体强化学习](wiki/entities/paper-alphastar.md) — 一句话定义：** AlphaStar 是一个以人类回放作行为先验、再通过 League 中多种对手训练的 StarCraft II 智能体。 `📅unknown` `[entity_page]`
 - [AlphaZero：跨棋类的自我对弈强化学习](wiki/entities/paper-alphazero.md) — 一句话定义：** AlphaZero 是用同一套策略/价值网络与 MCTS、自我对弈闭环，在多种棋类中从规则而非人类棋谱学习的系统。 `📅unknown` `[entity_page]`
+- [AmbiHTMLBench: A Benchmark for HTML-based Visually Rich Document parsing｜图像到可执行 HTML 的结构与视觉保真评测](wiki/entities/paper-ambihtmlbench.md) — AmbiHTMLBench 评测模型将真实文档页面图像重建成可渲染 HTML 时的内容、表格、空间布局和感知保真度。 `📅unknown` `[entity_page]`
 - [AMC（arXiv:2609.15012）](wiki/entities/paper-amc.md) — AMC**（*Atomic Motion Coordinate for Language-Steerable and Force-Responsive Manipulation*，[arXiv:2 `📅unknown` `[entity_page]`
 - [AME — Attention-Based Map Encoding](wiki/entities/paper-ame-attention-based-map-encoding.md) — AME**（*Attention-Based Map Encoding for Learning Generalized Legged Locomotion*，[Science Robotics  `📅unknown` `[entity_page]`
 - [AMP Locomotion（HMI P023）](wiki/entities/paper-amp-locomotion-quadruped-rewards.md) — AMP Locomotion**（*Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions*，20 `📅unknown` `[entity_page]`
@@ -2125,6 +2126,7 @@
 - [DeformSmith（arXiv:2609.18620）](wiki/entities/paper-deformsmith.md) — DeformSmith**（*Physics Harness-Guided Hierarchical Generation of Deformable Assets for Robot Manip `📅unknown` `[entity_page]`
 - [DeicticVLA：语言与指示手势三模式统一 VLA](wiki/entities/paper-deicticvla.md) — DeicticVLA**（*Unifying Instruction Modes Based on Language and Deictic Gestures in a Single VLA*， `📅unknown` `[entity_page]`
 - [顺应性欠驱动机器人手（A Novel Type of Compliant, Underactuated Robotic Hand for Dexterous Grasping）](wiki/entities/paper-deimel-compliant-underactuated-robotic-hand.md) — Deimel & Brock 柔性手**（*A Novel Type of Compliant, Underactuated Robotic Hand for Dexterous Grasping `📅unknown` `[entity_page]`
+- [DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects｜面向连续专业项目交付的智能体评测](wiki/entities/paper-deliverbench.md) — DeliverBench 衡量智能体在持续多阶段专业项目中能否维护依赖关系、修订文件，并交付符合整包验收要求的成果。 `📅unknown` `[entity_page]`
 - [Δ-flow：基于历史起点的一步式流匹配 / Δ Flow Matching for Robot Foundation Models](wiki/entities/paper-delta-flow-matching-robot-foundation-models.md) — 论文：** arXiv:2610.15794v1（2026-10-11）｜**作者与机构：** Kuangji Zuo、Tu `📅unknown` `[entity_page]`
 - [DeltaWAM](wiki/entities/paper-deltawam.md) — DeltaWAM: Delta World Action Models for Bimanual Manipulation**（[arXiv:2609.28811](https://arxiv.o `📅unknown` `[entity_page]`
 - [Demiurge（arXiv:2610.14685）](wiki/entities/paper-demiurge-navigable-4d-worlds.md) — Demiurge**（*Demiurge: Forging Navigable 4D Worlds via Autoregressive Video Rerendering*，[arXiv:261 `📅unknown` `[entity_page]`
@@ -5399,6 +5401,7 @@
 - [SPT 自标注偏好迁移：面向可控机器人操作的自标注偏好迁移](wiki/entities/paper-self-labeled-preference-transfer-steerable-manipulation.md) — SPT 自标注偏好迁移**（*Self-Labeled Preference Transfer for Steerable Robot Manipulation*，[arXiv:2610.3800 `📅unknown` `[entity_page]`
 - [Self-Retrospection Distillation：将事后经验蒸馏为事前预见](wiki/entities/paper-self-retrospection-distillation.md) — SRD 把完成轨迹中揭示的知识和陷阱蒸馏回同一策略，使策略训练时学会预测需求，而非推理时额外运行反思模型。 `📅unknown` `[entity_page]`
 - [Self-Demonstrated Generative Control：VLA 跨本体微调的自生成回放](wiki/entities/paper-self-supervised-control.md) — Self-Demonstrated Generative Control**（*Fine-Tuning VLAs with Self-Demonstrated Generative Control `📅unknown` `[entity_page]`
+- [SelfImprove-Bench: Evaluating Generalization in Self-Improving Agents｜自我改进智能体的泛化评测](wiki/entities/paper-selfimprove-bench.md) — SelfImprove-Bench 衡量智能体在反馈驱动自我改进之后，收益是否能从已见实例迁移到新实例、新难度和跨任务场景。 `📅unknown` `[entity_page]`
 - [语义音频驱动人形全身控制（Lab-RoCoCo）](wiki/entities/paper-semantic-audio-wbc-humanoid.md) — Semantic Audio-driven Understanding for Dynamic Humanoid Whole Body Control**（Sapienza / UNINT，arX `📅unknown` `[entity_page]`
 - [高程图看不到什么：语义感知运动与执行感知导航](wiki/entities/paper-semantic-aware-locomotion-execution-aware-nav.md) — What the Elevation Map Cannot See**（arXiv:2610.07396，Yao 等）指出人 `📅unknown` `[entity_page]`
 - [Semantic Tube Prediction（STP）](wiki/entities/paper-semantic-tube-prediction.md) — Semantic Tube Prediction: Beating LLM Data Efficiency with JEPA**（arXiv:2602.22617）由 Hai Huang、Yan `📅unknown` `[entity_page]`
