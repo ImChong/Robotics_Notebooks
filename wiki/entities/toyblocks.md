@@ -80,6 +80,9 @@ flowchart TD
 - 相对以视觉模型吞吐为主的 Benchmark，ToyBlocks 的重点是可控数据分布和可归因的学习/评测闭环。
 - 相对遥操作数据采集，ToyBlocks 使用可规划任务与自动技能产生训练演示，但仍受 simulator reality gap 限制。
 
+
+- [GPWM](paper-gpwm.md) 通过学习粒子动态预测物理演化；ToyBlocks 通过 Isaac 仿真产生可控数据，两者适合比较学习的世界模型与显式模拟器之不同用途。
+
 ## 结论
 
 1. 区分演示规模、策略评测结果和模型/代码的开放状态。

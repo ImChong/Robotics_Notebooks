@@ -75,6 +75,10 @@ flowchart TD
 - 与以单步抓取成败为中心的低层基准不同，RoboARCade 显式评价多步骤工具选择与动作执行。
 - 与真实机器人评测不同，这里主要在 MuJoCo 仿真中运行，接口与资产限制需单独说明。
 
+
+- [ToyBlocks](toyblocks.md) 同样提供仿真操作测试，但侧重可控数据生成与策略学习；RoboARCade 侧重多工具智能体的长期控制表现。
+- [Social Humanoid](paper-social-humanoid.md) 专注在线人形社交响应，体现本评测的任务覆盖边界（RoboARCade 以机械臂操作为主）。
+
 ## 结论
 
 **面向 22 个长时程操作任务的 agentic robot control 评测，提供模拟器、工具接口、分步打分与可运行开放代码。**
