@@ -1,32 +1,24 @@
 # Explaining How a Deep Neural Network Trained with End-to-End Learning Steers a Car（arXiv:1704.07911）
 
-- **类型：** paper / primary-source reading
+- **类型：** paper / first-party original reading
 - **标题：** Explaining How a Deep Neural Network Trained with End-to-End Learning Steers a Car
-- **作者：** Mariusz Bojarski, Philip Yeres, Anna Choromanska et al.
-- **arXiv：** https://arxiv.org/abs/1704.07911
+- **作者：** Mariusz Bojarski、Philip Yeres、Anna Choromanska 等
+- **原文：** https://arxiv.org/abs/1704.07911v1
 - **HTML：** https://arxiv.org/html/1704.07911v1
-- **原文 PDF：** https://arxiv.org/pdf/1704.07911
-- **核对范围：** 论文摘要、§1–4 的架构、可视化步骤与显著区域平移消融；参考文献与结论已定位，图像逐幅检查仍待完成。
-- **通读：** 未完成
-- **一句话摘录：** 对 PilotNet 卷积层特征图逐层平均、上采样并相乘得到显著性掩码，并通过区域平移实验验证输出转向对掩码区域的敏感性。
+- **PDF：** https://arxiv.org/pdf/1704.07911v1
+- **核对范围：** 2026-11-09 阅读 arXiv v1 正文所有章节、图注，PDF可视算法和实验图；未独立复现原实验。
+- **通读：** 已完成
+- **一句话说明：** PilotNet 的平均卷积激活热图用于定位端到端转向网络的视觉依据。
 
-## 基于当前已核实原文的要点
+## 原文方法和评测核对
 
-- 上层激活平均图放大，用作下一层平均激活图的乘性掩码，逐层向输入图像恢复。
-- 最终掩码归一化到 [0,1]，叠加在相机图像上。
-- 消融：平移显著区域，输出转向变化大；单独平移背景，变化较小。
-- 边界：显示相关的决策线索，不等于形式化安全性证明。
+每层 CNN feature maps 沿通道取平均，上层图反卷积上采样（权重=1、bias=0）后逐层乘低层平均图；生成归一化至[0,1]的可视热图。对热图选出的显著区域先膨胀约30像素，再单独平移显著区域、非显著区域和整图；显著区域移动对转向影响接近整图，非显著移动影响较小。图中显示道路边界、草地、停靠车辆等线索。
 
-## 开放资源核查
+## 局限与复现边界
 
-- arXiv 论文及 NVIDIA 官方技术博客为一手入口；本轮没有核实到与论文逐项对应的公开可运行实现，不能据此断言永远未开源。
-- 补充一手入口：https://developer.nvidia.com/blog/explaining-deep-learning-self-driving-car/
+输入区域平移的敏感性检验不是端到端驾驶的因果安全证明；未复现实验。
 
 ## 对 wiki 的映射
 
-- [paper-pilotnet-saliency.md](../../wiki/entities/paper-pilotnet-saliency.md)
-- [11 篇论文路线](../../wiki/overview/robot-learning-foundations-11-papers.md)
-
-## 未完成事项
-
-- 继续阅读尚未核实的正文/附录、表格及可复现资产；完成后方可将“通读”改成“已完成”。
+- [论文实体](../../wiki/entities/paper-pilotnet-saliency.md)
+- [11 篇阅读路线](../../wiki/overview/robot-learning-foundations-11-papers.md)
