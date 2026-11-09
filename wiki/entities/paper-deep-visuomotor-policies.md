@@ -2,7 +2,7 @@
 type: entity
 project_id: end-to-end-deep-visuomotor-policies
 tags: [paper, guided-policy-search, manipulation, reinforcement-learning, berkeley]
-status: draft
+status: complete
 updated: 2026-11-09
 arxiv: '1504.00702'
 code: https://github.com/cbfinn/gps
@@ -13,7 +13,7 @@ sources:
 related:
   - ../overview/robot-learning-foundations-11-papers.md
   - ./paper-dave2-end-to-end-driving.md
-summary: "用训练时可获得的完整状态进行局部轨迹优化，将控制知识转移给仅依赖视觉观测的 CNN 策略，实现直接预测机器人电机力矩。"
+summary: "用训练时可获得的完整状态进行局部轨迹优化，将控制知识转移给仅依赖视觉观测的 CNN 策略，输出 PR2 effort 接口的前馈电机电压，近似代表力矩而非闭环力矩控制。"
 ---
 
 # Deep Visuomotor Policies：GPS 联合学习视觉与力矩
@@ -43,7 +43,7 @@ summary: "用训练时可获得的完整状态进行局部轨迹优化，将控�
 |---|---|
 | 原始论文 | [arXiv:1504.00702](https://arxiv.org/abs/1504.00702) |
 | 研究机构 | 加利福尼亚大学伯克利分校（UC Berkeley） |
-| 原文复核状态 | **待完成全文/附录核对**；详见来源归档 |
+| 原文复核状态 | **已阅读原始论文全文（含方法与实验，附录情况见来源归档）** |
 
 ## 核心原理
 
@@ -94,7 +94,7 @@ sequenceDiagram
 
 ## 实验与评测
 
-JMLR 论文评估了真机视觉与接触协同操作（包括拧瓶盖等）以及模拟消融。作者报告相对固定视觉层的改进；具体实验数字、每一行表格待继续核对后补充。
+JMLR 论文在 PR2 上测试挂衣架、形状分类、玩具锤子、拧瓶盖等任务，并有模拟与固定视觉特征的对照。Table 4 中四项测试轨迹数为 156、171、240、288，注意它们是测试样本数而非成功率。论文报告约 3–4 小时总训练墙钟时间；Appendix B.2 明确说明实际执行接口是 effort/前馈电机电压，不是闭环 torque control。
 
 ## 结论
 
