@@ -6151,7 +6151,7 @@
 - [Roboflow Trackers：检测器无关的多目标跟踪库](wiki/entities/roboflow-trackers.md) — Roboflow Trackers** 是一组统一 Python 接口的多目标跟踪算法实现：检测器提供逐帧边界框，跟踪器负责跨帧关联目标并维护身份 ID。 `📅unknown` `[entity_page]`
 - [RoboFlywheel](wiki/entities/roboflywheel.md) — RoboFlywheel**（<http://roboflywheel.com>）是面向 **Physical AI / 具身智能** 的 **开放数据基础设施门户**，由 **阿里巴巴** 联合 `📅unknown` `[entity_page]`
 - [RoboGen](wiki/entities/robogen.md) — RoboGen** 是面向 **机器人学习数据扩展** 的 **自动生成框架**，利用大语言模型与仿真器联动 **程序化生成任务、场景与演示轨迹**。 `📅unknown` `[entity_page]`
-- [RoboKit：并行可微机器人优化与仿真](wiki/entities/robokit-openrobokit.md) — RoboKit 把机器人 URDF/MJCF 模型、可微运动学、任务代价与并行优化连接起来，既能求解析约束问题，也能在物理仿真中做 MPC 与机器人学习。 `📅unknown` `[entity_page]`
+- [RoboKit：并行可微机器人优化与仿真（RoboKit: Accelerating Parallel Differentiable Optimization for Robot Learning）](wiki/entities/robokit-openrobokit.md) — RoboKit 把机器人 URDF/MJCF 模型、可微运动学、任务代价与并行优化连接起来，既能求解析约束问题，也能在物理仿真中做 MPC 与机器人学习。 `📅unknown` `[entity_page]`
 - [RoboLab（通用策略高保真仿真评测）](wiki/entities/robolab.md) — RoboLab**（*RoboLab: A High-Fidelity Simulation Benchmark for Analysis of Task Generalist Policies `📅unknown` `[entity_page]`
 - [robomimic](wiki/entities/robomimic.md) — robomimic 是 ARISE Initiative 发布的机器人示范学习研究框架。它把数据集、离线模仿学习与强化学习算法、训练配置和评估工具组织在统一接口下，方便在同一批机器人操作示范上比较方法 `📅unknown` `[entity_page]`
 - [roboparty_deploy（RPO / RP1 ROS 2 部署框架，原 atom01_deploy）](wiki/entities/roboparty-deploy.md) — roboparty_deploy** 是 RoboParty 把训练好的 ONNX 策略送上真机的 **ROS 2（Humble / Jazzy）C++17 部署框架**：主仓库只有文档、脚本与资 `📅unknown` `[entity_page]`
