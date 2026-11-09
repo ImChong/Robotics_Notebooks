@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, autonomous-driving, motion-planning, end-to-end, vlm, bev, 3d-perception, qwen, hust]
 status: complete
-updated: 2026-10-14
+updated: 2026-11-09
 project_id: qwen-drive-1-0
 arxiv: "2609.00111"
 project: https://qwen.ai/blog?id=qwen-drive-1.0
@@ -13,6 +13,7 @@ related:
   - ../methods/vla.md
   - ./paper-s-squared-vla.md
   - ./paper-birdriver.md
+  - ./paper-xiaomi-onevl.md
 sources:
   - ../../sources/papers/qwen_drive_1_0_arxiv_2609_00111.md
   - ../../sources/sites/qwen-drive-1-0.md
@@ -22,7 +23,9 @@ summary: "Qwen-Drive-1.0 以 Qwen3.5-4B 共享视觉语言表征，外接 BEV �
 
 # Qwen-Drive-1.0：共享 VLM 的自动驾驶基础模型
 
-**一句话定义：** Qwen-Drive-1.0 保持 Qwen3.5-4B 预训练视觉语言模型架构不变，以外接 BEV 感知头和规划专家统一 3D 感知、驾驶问答与自车轨迹预测。
+## 一句话定义
+
+Qwen-Drive-1.0 保持 Qwen3.5-4B 预训练视觉语言模型架构不变，以外接 BEV 感知头和规划专家统一 3D 感知、驾驶问答与自车轨迹预测。
 
 ## 英文缩写速查
 
@@ -123,6 +126,8 @@ scripts/demo.py 依次运行 VQA、直接规划、带理由规划；scripts/run_
 | 快速运行 | Python 3.10；pip install -e . --no-build-isolation；建议 24 GB+ GPU |
 | 推理模式 | VQA、direct planning、reasoning planning；planner-rl 仅用于 reasoning planning，planner-sft 支持两种规划模式 |
 
+## 局限与风险
+
 **局限：** 权重与推理脚本不能代替训练复现；闭环指标来自特定仿真协议，不能直接代表真实道路安全。多任务结果应按数据和评测协议分别复核。
 
 ## 与其他工作对比
@@ -136,6 +141,8 @@ scripts/demo.py 依次运行 VQA、直接规划、带理由规划；scripts/run_
 三者的分歧在 3D 结构放在哪里、轨迹由谁生成：Qwen-Drive 让 BEV 成为可检查输出并由专用规划专家出轨迹；BIRDriver 让 BEV 成为输入并把精细规划交给经典规划器；S²-VLA 则在表征层拆分语义与空间。NAVSIM PDMS 数字需在相同 SFT / RL 设置下对照。
 
 ## 关联页面
+
+- [小米 OneVL](./paper-xiaomi-onevl.md) — 以视觉和语言潜状态的双辅助监督实现驾驶规划，适合对照 Qwen-Drive 的 BEV 感知头与专用规划专家。
 
 - [端到端自动驾驶：十大前沿算法技术地图](../overview/e2e-autonomous-driving-top10-algorithms.md) — 放入既有方法谱系
 - [视觉–语言–动作（VLA）](../methods/vla.md) — VLM 与动作 / 轨迹输出接口
