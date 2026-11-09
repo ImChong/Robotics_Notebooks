@@ -64,6 +64,10 @@ summary: "ACT（arXiv:2304.13705，Stanford）：CVAE + Transformer 预测动作
 | **控制** | chunk 预测 + 时间集成 |
 | **开源** | **已开源** [tonyzhaozh/act](https://github.com/tonyzhaozh/act) |
 
+## 核心原理
+
+训练时，CVAE 编码器结合专家动作块与当前关节状态估计潜变量；视觉编码器处理多视角图像，Transformer 在关节状态与潜变量条件下预测未来一段动作。推理时将潜变量设为零，针对同一执行时刻的重叠预测进行指数加权时间集成（Temporal Ensembling）。这一机制与 Diffusion Policy 的滚动重规划不同。
+
 ### 流程总览
 
 ```mermaid
