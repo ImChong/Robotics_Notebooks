@@ -287,6 +287,8 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-09] ingest | 具身智能小站 11-09（29 篇：SLA 深读 + Flex-RSI / 美团 MR0 跟进 + 26 篇扫读）：新建 19 个独立论文详情节点（逐篇通读核对小站说法），复用 10 个既有节点，新增来源归档与阅读坐标页
+
 ## [2026-11-09] ingest | CamX / CamUVA | 跨本体机器人数据与 rollout 展示
 
 - **意图：** 收录 https://camx-anonymous.github.io/ 的 CamX 数据集、CamUVA 评测回放与公开源码。
