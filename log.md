@@ -287,6 +287,14 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-09] ingest | LLM 推理开源贡献职业分层与六项目一手文档核验
+
+- 意图：按学生、1–2 年工程师和资深跨行工程师给出可验证的推理引擎 / kernel 开源贡献入口。
+- 一手资料：Nano-vLLM、Mini-SGLang、FlashInfer、vLLM、SGLang、TensorRT-LLM 官方源码、README 与贡献指南，全部为公开仓库。
+- 写回：一页分阶段 wiki 路线与六个互不重复的项目详情节点（新建 Nano-vLLM、Mini-SGLang、FlashInfer、SGLang、TensorRT-LLM；升级已有 vLLM 清单节点），项目均含流程图与基于代码入口的时序图，补充既有软件工程知识页入链。
+- 证据边界：尚未定位用户所述视频原稿；“10 月 24 日 Discord 组队”和“更容易合并”的表述不作为已证实事实；官方性能数字不冒充本站实测。
+- 节点健康度：本 PR 涉及的 8 个 Wiki 页按仓库健康度三项规则逐项检查均为 3/3；完整 CI 仍待检查，以最终 Actions 结果为准。
+
 ## [2026-11-09] ingest | 具身智能小站 11-09（29 篇：SLA 深读 + Flex-RSI / 美团 MR0 跟进 + 26 篇扫读）：新建 19 个独立论文详情节点（逐篇通读核对小站说法），复用 10 个既有节点，新增来源归档与阅读坐标页
 
 ## [2026-11-09] ingest | CamX / CamUVA | 跨本体机器人数据与 rollout 展示

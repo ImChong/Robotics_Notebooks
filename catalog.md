@@ -663,6 +663,7 @@
 - [FindAnything](wiki/entities/findanything.md) — FindAnything**（项目页，arXiv:2504.08603）是面向机器人探索的 **开放词汇、对 `📅unknown` `[entity_page]`
 - [FineEnvs（LLM 强化学习环境与端到端配方）](wiki/entities/fineenvs.md) — FineEnvs** 是一组面向 LLM agent 的开源强化学习环境和端到端训练配方，包含任务实现、框架适配、notebook、训练脚本、评测与部署资源。 `📅unknown` `[entity_page]`
 - [fiveages-sim/robot_descriptions](wiki/entities/fiveages-sim-robot-descriptions.md) — fiveages-sim/robot_descriptions](https://github.com/fiveages-sim/robot_descriptions) 是 **ROS 2 desc `📅unknown` `[entity_page]`
+- [FlashInfer｜跨框架 GPU 推理 Kernel 库](wiki/entities/flashinfer.md) — FlashInfer 提供推理所需的 attention、GEMM、MoE、sampling 等高性能 GPU kernel/API，供 vLLM、SGLang 及 TensorRT-LLM 生态复用 `📅unknown` `[entity_page]`
 - [FlashProve：大模型可证明推理](wiki/entities/flashprove.md) — FlashProve 是 Anthropic 等发布的研究原型：提供模型权重承诺和推理证明，让验证者无需获取权重即可检查指定计算是否与承诺一致。 `📅unknown` `[entity_page]`
 - [Flexion × Niantic Spatial × NVIDIA：RGB 导航 Sim2Real 管线](wiki/entities/flexion-niantic-nvidia-rgb-sim2real-pipeline.md) —  字段 | 内容  `📅unknown` `[entity_page]`
 - [Flexion Reflect v1.0（长程人形自主平台）](wiki/entities/flexion-reflect-v1.md) —  字段 | 内容  `📅unknown` `[entity_page]`
@@ -979,6 +980,7 @@
 - [MimicLite（监督运动跟踪基础设施）](wiki/entities/mimiclite.md) — MimicLite** 是 Party OS 首批开源的 **监督学习运动跟踪基础设施**，贯通数据组织、策略训练、统一评测与真机部署，使研究者能以更低算力快速迭 `📅unknown` `[entity_page]`
 - [MiMo-V2.6（Scaling RL Toward Self-Improvement）](wiki/entities/mimo-v2-6.md) — MiMo-V2.6**（发布说明 · [技术报告 PDF](https://huggingfa `📅unknown` `[entity_page]`
 - [Mini Pupper](wiki/entities/mini-pupper.md) — Mini Pupper** 是 MangDang 推出的小型开源四足机器人，仓库 [mangdangroboticsclub/mini_pupper](https://github.com/man `📅unknown` `[entity_page]`
+- [Mini-SGLang｜精简但完整的在线 LLM Serving 系统](wiki/entities/mini-sglang.md) — Mini-SGLang 以作者标注约 5000 行 Python 展示在线 serving 的多进程组件，包含 API Server、Tokenizer/Detokenizer、每 GPU Sched `📅unknown` `[entity_page]`
 - [MiniGPT-4](wiki/entities/minigpt4.md) — MiniGPT-4 将冻结视觉编码器与冻结 Vicuna 等 LLM 经单一投影层对齐，展示用较少可训参数即可获得类 GPT-4V 的图像对话能力。 `📅unknown` `[entity_page]`
 - [MiniLoong（强化小子 / RL-Boy）](wiki/entities/miniloong-humanoid.md) — MiniLoong（强化小子 / RL-Boy）** 是 OpenLoong 生态中的小型开源人形机器人，仓库 [loongOpen/MiniLoong](ht `📅unknown` `[entity_page]`
 - [MiniMax-H3 360° Orbit LoRA（Pablo Dawson）](wiki/entities/minimax-h3-360-orbit-lora.md) — MiniMax-H3 360° Orbit LoRA** 是 FL2VA 适配器：将同一张参考图设置为视频首帧和尾帧，模型在中间生成连续环绕视角，最后回到输入视角。 `📅unknown` `[entity_page]`
@@ -1030,6 +1032,7 @@
 - [muscle-supermimic：肌骨人体的世界模型动作跟踪](wiki/entities/muscle-supermimic.md) — muscle-supermimic** 将 SuperMimic 风格的可微世界模型训练应用于肌肉驱动的人体仿真，策略以 100 Hz 输出肌肉激励来跟踪动作捕捉轨迹。 `📅unknown` `[entity_page]`
 - [Muse Gadgets](wiki/entities/muse-gadgets.md) — Muse Gadgets** 是 Meta Muse 助手的开源设备扩展：用 ESP32 固件或 Linux SDK，把屏幕、按钮、音频、传感器和本地服务接入 Muse。 `📅unknown` `[entity_page]`
 - [MuSHR](wiki/entities/mushr.md) — MuSHR**（Multi-agent System for non-Holonomic Racing）是面向 **教学与研究** 的 ROS 小车开源平台。 `📅unknown` `[entity_page]`
+- [Nano-vLLM｜面向学习的极简 LLM 推理引擎](wiki/entities/nano-vllm.md) — Nano-vLLM 以可读的简化推理内核呈现 prefix caching、block KV cache、分批调度、Tensor Parallelism 与 CUDA Graph；适合先读懂一次离线生 `📅unknown` `[entity_page]`
 - [natural-disasters（ABYSSAL）](wiki/entities/natural-disasters-abyssal.md) — natural-disasters**（品牌名 **ABYSSAL**，[`Token-Gremlin/natural-disasters`](https://github.com/Token-G `📅unknown` `[entity_page]`
 - [Natura-1：行动意志（The Will to Act，Nature Will）](wiki/entities/naturewill-natura-1.md) — Natura-1** 是 Nature Will 宣布的物理世界基础模型：先从大规模人类第一人称操作视频学习，再用有限真实机器人数据适配到双臂灵巧操作，目标是让同一策略根据语言指令操纵多自由度手部 `📅unknown` `[entity_page]`
 - [Navigation2（Nav2）](wiki/entities/navigation2.md) — Navigation2**（ros-navigation/navigation2）是 ROS 2  `📅unknown` `[entity_page]`
@@ -1206,7 +1209,7 @@
 - [AutoGPTQ](wiki/entities/painode-098-autogptq.md) — AutoGPTQ** 收录于 awesome-physical-ai（aichr）**第 098/384** 条，分组 **Edge AI & Inference**。本页是 **清单索引**：给 `📅unknown` `[entity_page]`
 - [llama.cpp](wiki/entities/painode-099-llamacpp.md) — llama.cpp** 收录于 awesome-physical-ai（aichr）**第 099/384** 条，分组 **Edge AI & Inference**。本页是 **清单索引**： `📅unknown` `[entity_page]`
 - [TensorRT-LLM for Edge](wiki/entities/painode-102-tensorrtllmforedge.md) — TensorRT-LLM for Edge** 收录于 awesome-physical-ai（aichr）**第 102/384** 条，分组 **Edge AI & Inference**。本 `📅unknown` `[entity_page]`
-- [vLLM](wiki/entities/painode-103-vllm.md) — vLLM** 收录于 awesome-physical-ai（aichr）**第 103/384** 条，分组 **Edge AI & Inference**。本页是 **清单索引**：给出它在清 `📅unknown` `[entity_page]`
+- [vLLM｜生产级大模型推理与持续批处理](wiki/entities/painode-103-vllm.md) — vLLM 面向多模型、多请求的高吞吐 inference serving，早期核心贡献包括 PagedAttention；本项目在该知识库已有 `painode-103-vllm.md` 清单实体，应 `📅unknown` `[entity_page]`
 - [Bench2Drive](wiki/entities/painode-104-bench2drive.md) — Bench2Drive** 收录于 awesome-physical-ai（natnew）**第 104/384** 条，分组 **Evaluation Methodology**。本页是 **清 `📅unknown` `[entity_page]`
 - [CARLA ScenarioRunner](wiki/entities/painode-105-carlascenariorunner.md) — CARLA ScenarioRunner** 收录于 awesome-physical-ai（natnew）**第 105/384** 条，分组 **Evaluation Methodology `📅unknown` `[entity_page]`
 - [CodaLab Competitions](wiki/entities/painode-106-codalabcompetitions.md) — CodaLab Competitions** 收录于 awesome-physical-ai（natnew）**第 106/384** 条，分组 **Evaluation Methodology `📅unknown` `[entity_page]`
@@ -6302,6 +6305,7 @@
 - [Serial Studio](wiki/entities/serial-studio.md) — Serial Studio** 是跨平台硬件遥测仪表盘：将设备数据解析成字段，显示曲线、仪表与传感器状态，帮助机器人开发者观察电机和通信链路。 `📅unknown` `[entity_page]`
 - [Sesame Robot](wiki/entities/sesame-robot.md) — Sesame Robot**（GitHub）来自 [古月居转载的四足机器人开源项目综述](https `📅unknown` `[entity_page]`
 - [SETR（SEgmentation TRansformer）](wiki/entities/setr.md) — SETR** 以 **ViT 编码器** 提取全局 patch 表示，再用渐进上采样或多级聚合解码器输出语义分割图，是 Transformer 进入密集预测的早期代表。 `📅unknown` `[entity_page]`
+- [SGLang｜大规模语言与多模态模型推理服务框架](wiki/entities/sglang.md) — SGLang 是为 LLM、多模态及 agentic workloads 的服务框架；与精简的 Mini-SGLang 区别在于完整的生产调度、硬件适配和丰富的服务组件。官方仓库把 Mini-SGLa `📅unknown` `[entity_page]`
 - [shadcn-admin](wiki/entities/shadcn-admin.md) — shadcn-admin** 是基于 Shadcn UI 和 Vite 的 MIT 开源管理后台界面集合，提供可修改的页面与组件。 `📅unknown` `[entity_page]`
 - [Shadow Hand (灵巧手)](wiki/entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [FreeCAD AI Skill（shanputaoye）（shanputaoye/freecad-ai-skill）](wiki/entities/shanputaoye-freecad-ai-skill.md) — FreeCAD AI Skill（shanputaoye）（shanputaoye/freecad-ai-skill）是与 reyk 的同名项目独立。 `📅unknown` `[entity_page]`
@@ -6375,6 +6379,7 @@
 - [Tennis-Vision](wiki/entities/tennis-vision.md) — Tennis-Vision**（HarshTomar1234/Tennis-Vision）是一 `📅unknown` `[entity_page]`
 - [TensorBoard](wiki/entities/tensorboard.md) — TensorBoard**（tensorflow/tensorboard）是一套 **Web 端实验检查工 `📅unknown` `[entity_page]`
 - [TensorFlow](wiki/entities/tensorflow.md) — TensorFlow** 是由 **Google Brain** 团队最初开发、现由全球社区维护的 **端到端开源机器学习平台**。它以 **`tf.keras`** 高层 API 降低建模门槛， `📅2026-06-25` `[entity_page]`
+- [TensorRT-LLM｜NVIDIA 大模型推理运行时与 LLM API](wiki/entities/tensorrt-llm.md) — TensorRT-LLM 提供面向 NVIDIA GPU 的 LLM / Visual Gen 专用 kernel、运行时与 Python API；它不同于通用 TensorRT SDK，也不能与另一 `📅unknown` `[entity_page]`
 - [TensorRT](wiki/entities/tensorrt.md) — NVIDIA TensorRT** 是 NVIDIA 的 **深度学习推理加速 SDK 生态**：在 **build 阶段**将训练好的网络（常见入口为 ONNX 或 P `📅2026-06-25` `[entity_page]`
 - [Tesla Optimus](wiki/entities/tesla-optimus.md) — Tesla Optimus** 是特斯拉的 **通用人形机器人** 项目，与 **FSD 车队视觉数据** 共享部分「真实世界人类行为」数据叙事。LeoInAI Substack（2026-09） `📅unknown` `[entity_page]`
 - [FreeCAD MCP（Tessalabs）（tessalabs-space/freecad-mcp）](wiki/entities/tessalabs-space-freecad-mcp.md) — FreeCAD MCP（Tessalabs）（tessalabs-space/freecad-mcp）是提供 FreeCAD 工程 MCP，包括参数扫描、绘图/渲染和可选 CAE 交接。 `📅unknown` `[entity_page]`
