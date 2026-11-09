@@ -87,6 +87,8 @@ flowchart LR
 
 三项直接相加、无可学习融合权重（式 3）；r_exec 内部各检查的权重 w_k 与容差 τ_k 的具体取值正文未给出（我在正文中未找到，可能在代码中，推测）。
 
+## 评测与结果
+
 ### 实验设置（§5.1）
 
 - RoboLab：Cosmos 3 Edge，10 任务 × 5 episode = 50 episode。LIBERO：DreamZero（公开 RLinf WAN2.2-5B LIBERO SFT checkpoint，step 26,000），四 suite 各 500 episode，共 2,000。
@@ -104,6 +106,27 @@ flowchart LR
 - RoboLab 单分量选择器：Exec-only 10.0、Cons-only 16.0、Prog-only 20.0，完整 24.0（表 5）。
 - 分量分歧：三项偏好同一候选仅 7.8%（RoboLab）/ 7.0%（LIBERO）；去掉任务进度分改变 47.1% / 48.5% 的选择，去掉一致性分改变 16.8% / 30.4%，去掉执行分改变 24.7% / 12.4%（表 6–7）。
 - 耗时：相对 B=1，WISE 在 RoboLab 为 3.4×（3062.5 vs 892.5 s/ep），LIBERO 为 3.5×（25.2 vs 7.1 s/ep）（表 4）。
+
+## 结论
+
+**WISE 相对直接执行（B=1）有稳定提升，但相对其他 B=4 选择器的优势落在抽样波动内；它的价值在于把「动作与想象未来是否自洽」变成可插拔的选择信号。**
+
+1. **真影响指标是相对 B=1 的成功率增益**：RoboLab 6.0→24.0、LIBERO 75.1→78.3；对最强基线只多 4.0 / 0.9 个百分点（作者自承在波动内 / 约一个标准误）。
+2. **任务进度分是最强单分量**：Prog-only 20.0 已与 Robometer 基线持平，完整 WISE 24.0（表 5）；一致性与执行分是增量而非主力，且增量未被单独量化。
+3. **推理成本是主要代价**：3.4–3.5× 单 rollout 耗时（表 4），还需每个本体训练 IDM 并匹配 WAM 预测视野。
+4. **分 suite 看而非看平均**：LIBERO Goal / Long 上 GeoBoN / Robometer 领先，选择器优劣依任务而变。
+5. **部署读法**：两个 WAM–本体组合、纯仿真、RoboLab 仅 50 episode 且 B=1 绝对成功率极低；无公开代码，真机可用性未知。
+
+## 与其他工作对比
+
+| 选择器（均 B=4） | 打分信号 | RoboLab / LIBERO 平均（%） |
+|------|------|------|
+| [Future Consensus](./paper-sa-2605-07514-action-state-consistency-is-the-future-compatibl.md)（本文参考文献 [7]） | 各候选想象未来与候选均值（共识未来）的接近程度（见其页面流程图） | 18.0 / 75.9 |
+| [GeoBoN](./paper-rcl-2607-17454-test-time-scaling-for-world-action-models-via-ze.md) | 对想象未来做零样本跨视角几何一致性评估（见其页面流程图） | 20.0 / 77.3 |
+| [Robometer](./paper-robometer.md) | 最终想象帧的任务进度 | 20.0 / 77.4 |
+| **WISE** | 执行有效性 + IDM 动作–未来一致性 + 任务进度 | 24.0 / 78.3 |
+
+按论文 §1 与表 1 的归类，既有 WAM 决策时信号分别只评未来、只评动作或依赖外部模拟器，WISE 的差异在于评估同一候选内动作与想象未来的 cross-output coherence。同类「不改模型、测试时自校验」路线另见 [World-Coherent Decoding](./paper-rcl-2609-02159-world-coherent-decoding-self-verifying-test-time.md)，论文未与之做实验对比。
 
 ## 工程实践
 

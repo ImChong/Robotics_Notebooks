@@ -12,6 +12,7 @@ related:
   - ../concepts/ai-agent-evaluation.md
   - ../entities/rle-bench.md
   - paper-selfimprove-bench.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/deliverbench_arxiv_2611_03412.md
   - ../../sources/sites/deliverbench.md
@@ -139,6 +140,7 @@ sequenceDiagram
 - [RLE-Bench](rle-bench.md) — 与机器人学习工程交付相关的 Agent 评测。
 - [SelfImprove-Bench](paper-selfimprove-bench.md) — 区分被评对象与评价指标。
 - [AmbiHTMLBench](paper-ambihtmlbench.md) — 区分被评对象与评价指标。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 非具身 Agent 基准，但「过程分 ≠ 最终交付分」与该闭环的过程 vs 结果指标取舍同源，可对照阅读。
 
 ## 参考来源
 

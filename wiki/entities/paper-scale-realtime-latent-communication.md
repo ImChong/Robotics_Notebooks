@@ -14,6 +14,7 @@ related:
   - ./libero-benchmark.md
   - ../concepts/robot-onboard-communication-architecture.md
   - ../methods/vla.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/scale-realtime-latent-communication_arxiv_2611_08390.md
 original:
@@ -78,6 +79,10 @@ flowchart TD
 ## 工程实践
 
 - **输入前提：** 需要发送端与接收端都用同一套编码器 / 隐 token 格式，接收端维护并确认参考状态，发送端维护对方状态版本（§4.3、§4.4）。
+- **代码：** 匿名评审仓库，README 称含 `method/scale/`（特征选择、调度、状态复用）、`benchmark/`（共享模拟器与三个基准的适配和 `results.csv`）、`tests/`；README 自述 demo 在合成特征上运行，不复现论文精度表，完整神经网络实验需要外部数据集、权重与特征缓存，未随仓库提供。本页只静态读了 README，未运行、未核对 CSV 与论文表是否一致。
+
+## 评测与结果
+
 - **评测设置（§5.1、附录 B 表 5）：** CooperScene（真实，3,936 检测 + 18,693 预测目标）、OPV2V（仿真，528 检测 + 265 分割）、LIBERO（SmolVLA，单个语言条件任务，每设置 45 episode）。带宽取完整隐传输所需带宽的一部分（CooperScene 约 118.5 Mbps、OPV2V 约 153.0、LIBERO 约 13.46，均为按验证或标定数据估计）以及时变链路（每 2 秒在高低速率间切换，§5.1）。
 - **实验结果（表 1–4，均为论文数字）：**
 
@@ -91,7 +96,26 @@ flowchart TD
 | 蜘蛛机器人检测（表 4） | 1 / 2 / 8 Mbps | 成功率 77.62% / 91.67% / 100%，OT 100% / 96.43% / 100% | Raw RGB 与 Full-send 在 1、2 Mbps 均为 0，8 Mbps 均为 100% |
 
 - **蜘蛛机器人案例（§5.4）：** 树莓派蜘蛛机器人，检测任务通信截止 1,000 ms，超声测距作为背景流量，路线 55.4 秒。
-- **代码：** 匿名评审仓库，README 称含 `method/scale/`（特征选择、调度、状态复用）、`benchmark/`（共享模拟器与三个基准的适配和 `results.csv`）、`tests/`；README 自述 demo 在合成特征上运行，不复现论文精度表，完整神经网络实验需要外部数据集、权重与特征缓存，未随仓库提供。本页只静态读了 README，未运行、未核对 CSV 与论文表是否一致。
+
+## 结论
+
+**SCALE 在多数带宽设置下同时提高了按时率与任务指标，关键证据是「按时送达 ≠ 任务成功」；但真实机器人与操作任务的证据规模很小，且有不占优的例外。**
+
+1. **主指标要成对看**：按时率（OT）和任务指标（AP / mIoU / 成功率）缺一不可；LIBERO 3.4 Mbps 下 Uniform 按时率 74.47% 接近 SCALE 的 77.76%，成功率却为 0（§5.2）。
+2. **收益最大的是低带宽**：CooperScene 检测 20 Mbps 下 AP 51.53 对 CoSDH 31.34；LIBERO 3.4 Mbps 下成功率 44.44% 对 Full-send / Uniform 的 0（表 1a、表 3）。
+3. **存在例外**：OPV2V 检测 8 Mbps 下 AP 低于 CooperTrim、按时率低于 Uniform（表 2a），「几乎所有设置最高」需带着此例外读。
+4. **次要代价是调度开销与状态维护**：每条消息总开销 0.813–0.884 ms（附录 C 表 6）；收发双方需同一编码器、接收端确认状态（§4.3、§4.4）。
+5. **部署前要补的验证**：场景突变、突发带宽下降、ACK 延迟 / 丢失均未做受控实验；LIBERO 只测 1 个任务、蜘蛛机器人只有一种检测任务。
+
+## 与其他工作对比
+
+| 类别 | 代表（论文引用） | 与 SCALE 的差异（依据 §1、§2、§5.1） |
+|------|------------------|--------------------------------------|
+| 单任务协同感知通信 | CoSDH、V2X-ViT、CooperTrim、Where2comm | 原本不面向「多任务共享链路 + 截止时间」；论文实验中统一给它们加 EDF 发送顺序作基线 |
+| LLM 隐表示通信 | KVComm 等 | 论文在 §1、§2 中区分定位，但未做实验对比 |
+| 朴素基线 | Full-send、Uniform 压缩 | 不做语义变化评估与按截止时间分配 token |
+
+本 wiki 中相邻的「带宽受限下按任务价值传信息」讨论见 [目标导向通信与物理 AI](./paper-goal-oriented-comms-physical-ai.md) 与 [最小充分通信](./paper-minimum-sufficient-communication.md)，论文未与它们做实验比较。
 
 ## 局限与风险
 
@@ -113,6 +137,7 @@ flowchart TD
 - [LIBERO 基准](./libero-benchmark.md)：本文操作评测的基准
 - [机器人板载通信架构](../concepts/robot-onboard-communication-architecture.md)：机器人内部通信的背景
 - [VLA 方法页](../methods/vla.md)：VLA 总览
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：协同感知特征的传输时延与截止时间，对应其第④层「感知延迟计入控制带宽预算」
 
 ## 参考来源
 

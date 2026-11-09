@@ -25,6 +25,7 @@ related:
   - ../entities/paper-force-driven-hook-disassembly-object-centric-rl.md
   - ../entities/paper-distilled-tree-search-multi-object-rearrangement.md
   - ../tasks/manipulation.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/tangrambench-goma_arxiv_2611_08814.md
 summary: "TangramBench + GOMA（arXiv:2611.08814）：把七巧板每块零件当作智能体，用图网络共享策略 + MAPPO 在给定目标位姿下学习平面运动协调；仿真并发执行，真机仅定性顺序演示；紧密装配成功率仍落后于联合 RRT 加重规划。"
@@ -100,6 +101,28 @@ flowchart LR
 
 作者自述的读法：GOMA 提供快速、低接触的执行，联合规划加重规划在紧约束装配上仍更可靠（V-D）。
 
+## 结论
+
+**GOMA 用图网络共享策略把七巧板式平面装配做成了快速、低接触的反馈策略，但在需要严格插入顺序的紧密装配上，成功率仍明显落后于联合 RRT 加重规划。**
+
+1. **主指标是按档位的成功率**：Cluster 75% 对 RRT-J+replan 98%，Puzzle 41% 对 88%（Table I）；围合度高的 Puzzle 档才是区分方法的关键档。
+2. **GOMA 的优势在次要指标**：推理 0.68 ms（对 49 ms / 1.1 s）、接触率 4%（对 12% / 37%）、Cluster 中位时间 8 s（对 21 s）；适合对时延与碰撞敏感、可接受较低成功率的场景。
+3. **对比口径需谨慎**：规划器只在通过碰撞检查的 117 / 258 个留出配置上评测，正文未写明 GOMA 是否在同一子集上统计。
+4. **真机只是可行性展示**：单臂 FR3 顺序执行，无成功率与试验次数，并发协调未在真机验证（V-E、VI）。
+5. **基准的使用边界**：目标位姿与指派给定、平面刚体、无机器人运动学；把 TangramBench 分数当作通用装配能力会高估（判断）。
+
+## 与其他工作对比
+
+| 方法（Table I） | 类型 | Cluster 成功率 | Puzzle 成功率 | 推理 / 计算 |
+|------|------|------|------|------|
+| GOMA | 学习的反馈策略（GNN + MAPPO） | 75% | 41% | 0.68 ms |
+| RRT-J + replan（[RRT-Connect](../methods/rrt-connect.md)，21 维联合） | 联合规划，每 5 s 重规划 | 98% | 88% | 49 ms / 1.1 s |
+| RRT-J | 联合规划，一次规划 | 73% | 58% | — |
+| RRT-P（+replan） | 逐件规划（3 维） | 3%（9%） | 0% | — |
+| APF | 仅吸引项人工势场 | 3% | 0% | — |
+
+结构消融（V-B，Trio）还与单智能体 PPO（几乎无成功）和 MLP-MAPPO（成功率约 50%）比较，GOMA 与联合动作版 GOMA-J 接近，逐智能体优化的增益证据较弱，作者只称其为有用的归纳偏置（V-B）。与本 wiki 的 [钩子拆卸力驱动物体中心 RL](./paper-force-driven-hook-disassembly-object-centric-rl.md)、[蒸馏树搜索多物体重排](./paper-distilled-tree-search-multi-object-rearrangement.md) 同属物体中心 / 多物体操作，论文未与它们做实验对比。
+
 ## 工程实践
 
 - 感知链（V-E）：场景相机 RealSense D435i 做全局位姿，腕部 D405 定位插口；FoundationPose 估计位姿，HSV 颜色分割给每块零件掩膜，几何一致性滤波剔除物理上不可能的重叠。
@@ -136,6 +159,7 @@ flowchart LR
 - [钩子拆卸力驱动物体中心 RL](../entities/paper-force-driven-hook-disassembly-object-centric-rl.md)
 - [蒸馏树搜索多物体重排](../entities/paper-distilled-tree-search-multi-object-rearrangement.md)
 - [操作任务](../tasks/manipulation.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — TangramBench 属于第③层「策略任务成功率」基准，真机仅定性，未覆盖第④层 sim↔real 校准
 
 ## 参考来源
 
