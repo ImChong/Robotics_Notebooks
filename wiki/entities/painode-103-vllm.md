@@ -9,6 +9,7 @@ original:
   - ../../sources/repos/vllm-official-contribution.md
 sources:
   - ../../sources/repos/vllm-official-contribution.md
+  - ../../sources/repos/pai_awesome_resource_103_vllm.md
   - ../../sources/repos/llm-inference-open-source-contribution-primary-docs-2026-11.md
 related:
   - ../roadmaps/llm-inference-open-source-contribution-by-stage.md
@@ -102,6 +103,8 @@ sequenceDiagram
 - [TensorRT-LLM｜NVIDIA 大模型推理运行时与 LLM API](./tensorrt-llm.md)
 
 ## 参考来源
+
+- [既有 Physical AI 清单资源 #103](../../sources/repos/pai_awesome_resource_103_vllm.md) — 保留本仓此前收录的策展来源与原有 URL 身份。
 
 - [vLLM｜生产级大模型推理与持续批处理：一手文档和代码核验归档](../../sources/repos/vllm-official-contribution.md)
 - [六项目对照与原视频证据边界](../../sources/repos/llm-inference-open-source-contribution-primary-docs-2026-11.md)
