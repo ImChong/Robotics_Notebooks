@@ -15,12 +15,12 @@
 ## 已核验的运行入口
 
 1. 安装：README 中 Python 3.10、PyTorch 2.7.1、DINOv3 与 MetaWorld/MuJoCo 依赖；按 README 获取 ModelScope HDF5 演示数据与视觉权重。
-2. MetaWorld 数据：\`metaworld/dataloader/dataset.py\` 构造动作块及 \`next_action_sequence\`；\`metaworld/utils/compute_norm_stats_metaworld.py\` 生成归一化统计。
-3. MetaWorld 训练：在 \`metaworld/\` 目录运行 \`./run_train_ema.sh all 40\`，脚本调用 \`train_metaworld_ema.py --config configs/metaworld.yaml\`；训练产生模型与 EMA shadow checkpoint。
-4. 模型前向：\`models/model_runner_ema.py::VLAWrapper.forward\` 提取冻结视觉特征、归一化当前/下块动作、取 EMA 参数，并调用 \`vla_model_fm_ema.py::calc_flow_matching_loss\`。
-5. 梯度与 EMA：两次 flow matching 前向通过 \`torch.func.functional_call\` 调用第二次模型；第二次使用不带梯度的 EMA 权重，但保留 \`obs_tokens_evolved\` 的计算图。训练循环在 \`loss.backward()\` / \`optimizer.step()\` 后调用 \`ema_helper.update(action_model)\`。
-6. MetaWorld 评测：\`./run_train_ema.sh eval checkpoints_vla/<run>/checkpoint_epoch_40.pt all 50\` → \`scripts/eval_metaworld_parallel.py\`。
-7. RoboTwin：\`robotwin/train_robotwin_ema.py\` 使用同类 EMA + next-chunk 损失；\`robotwin/robotwin_infer.py::RobotWinInference\` 提供推理接口，评测另有 \`robotwin/eval.sh\`。数据获取/预处理步骤 README 指向 LiLa-WAM。
+2. MetaWorld 数据：`metaworld/dataloader/dataset.py` 构造动作块及 `next_action_sequence`；`metaworld/utils/compute_norm_stats_metaworld.py` 生成归一化统计。
+3. MetaWorld 训练：在 `metaworld/` 目录运行 `./run_train_ema.sh all 40`，脚本调用 `train_metaworld_ema.py --config configs/metaworld.yaml`；训练产生模型与 EMA shadow checkpoint。
+4. 模型前向：`models/model_runner_ema.py::VLAWrapper.forward` 提取冻结视觉特征、归一化当前/下块动作、取 EMA 参数，并调用 `vla_model_fm_ema.py::calc_flow_matching_loss`。
+5. 梯度与 EMA：两次 flow matching 前向通过 `torch.func.functional_call` 调用第二次模型；第二次使用不带梯度的 EMA 权重，但保留 `obs_tokens_evolved` 的计算图。训练循环在 `loss.backward()` / `optimizer.step()` 后调用 `ema_helper.update(action_model)`。
+6. MetaWorld 评测：`./run_train_ema.sh eval checkpoints_vla/<run>/checkpoint_epoch_40.pt all 50` → `scripts/eval_metaworld_parallel.py`。
+7. RoboTwin：`robotwin/train_robotwin_ema.py` 使用同类 EMA + next-chunk 损失；`robotwin/robotwin_infer.py::RobotWinInference` 提供推理接口，评测另有 `robotwin/eval.sh`。数据获取/预处理步骤 README 指向 LiLa-WAM。
 
 ## 关键源文件
 
