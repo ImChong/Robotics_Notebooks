@@ -23,7 +23,9 @@ summary: "Qwen-Drive-1.0 以 Qwen3.5-4B 共享视觉语言表征，外接 BEV �
 
 # Qwen-Drive-1.0：共享 VLM 的自动驾驶基础模型
 
-**一句话定义：** Qwen-Drive-1.0 保持 Qwen3.5-4B 预训练视觉语言模型架构不变，以外接 BEV 感知头和规划专家统一 3D 感知、驾驶问答与自车轨迹预测。
+## 一句话定义
+
+Qwen-Drive-1.0 保持 Qwen3.5-4B 预训练视觉语言模型架构不变，以外接 BEV 感知头和规划专家统一 3D 感知、驾驶问答与自车轨迹预测。
 
 ## 英文缩写速查
 
@@ -123,6 +125,8 @@ scripts/demo.py 依次运行 VQA、直接规划、带理由规划；scripts/run_
 | 源码范围 | **部分开源：** 推理、场景读取、可视化和评测脚本已公开；文件树中未见训练入口 |
 | 快速运行 | Python 3.10；pip install -e . --no-build-isolation；建议 24 GB+ GPU |
 | 推理模式 | VQA、direct planning、reasoning planning；planner-rl 仅用于 reasoning planning，planner-sft 支持两种规划模式 |
+
+## 局限与风险
 
 **局限：** 权重与推理脚本不能代替训练复现；闭环指标来自特定仿真协议，不能直接代表真实道路安全。多任务结果应按数据和评测协议分别复核。
 
