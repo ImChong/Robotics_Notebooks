@@ -2103,6 +2103,7 @@
 - [DA-AO：外骨骼辅助中的步态相位估计](wiki/entities/paper-data-augmented-adaptive-oscillators.md) — Data-Augmented Adaptive Oscillators（DA-AO）** 是一套面向外骨骼辅助行走的步态相位估计框架。公开摘要将其描述为：由感知模块判断运动模式，再为自适应振荡器检 `📅unknown` `[entity_page]`
 - [Data Pyramid for Embodied Manipulation（具身数据金字塔综述）](wiki/entities/paper-data-pyramid-embodied-manipulation.md) — Data Pyramid for Embodied Manipulation**（arXiv:2607.24744，2026 `📅unknown` `[entity_page]`
 - [DATAFARM（arXiv:2609.12316）](wiki/entities/paper-datafarm.md) — DATAFARM**（[DATAFARM: Distribution-Aligned Task and Motion Planning for Fine-Tuning Vision-Languag `📅unknown` `[entity_page]`
+- [DAVE-2：从前视图像端到端预测汽车转向](wiki/entities/paper-dave2-end-to-end-driving.md) — End to End Learning for Self-Driving Cars*（arXiv:1604.07316）。 `📅unknown` `[entity_page]`
 - [DAVIS（深度-only 主动视觉人形足球）](wiki/entities/paper-davis-humanoid-soccer.md) — DAVIS: A Depth-Only End-to-End Active-Vision Framework for Humanoid Soccer Skills**（Jiakang Jin 等， `📅unknown` `[entity_page]`
 - [DAWN：基于扩散策略的对准与螺钉拆卸流程网络](wiki/entities/paper-dawn-diffusion-alignment-unfastening.md) — DAWN**（*DAWN: Diffusion-based Alignment and unfastening Workflow Network*，[arXiv:2610.40537](https `📅unknown` `[entity_page]`
 - [DAWN：基于深度去噪世界模型的鲁棒四足跑酷（Noise-Robust Quadruped Parkour）](wiki/entities/paper-dawn.md) — 让世界模型在训练中学会忽略深度噪声，把地形表征交给跑酷策略。 `📅unknown` `[entity_page]`
@@ -2114,6 +2115,7 @@
 - [去中心化多人形搬运（arXiv:2609.17824）](wiki/entities/paper-decentralized-multi-humanoid-pickup.md) — 去中心化多人形搬运**（*Learning Multi-Humanoid Pickup and Transport via Decentralized Object-Centric Control `📅unknown` `[entity_page]`
 - [DECOWAM（腿足移动操作解耦全身 WAM）](wiki/entities/paper-decowam.md) — DECOWAM**（*Decoupled Whole-Body World-Action Model for Legged Mobile Manipulation*，[arXiv:2608.201 `📅unknown` `[entity_page]`
 - [DEED：零售人形 VLA 的数据高效后训练与经验驱动学习](wiki/entities/paper-deed.md) — DEED**（*Data-Efficient Post-Training and Experience-Driven Learning*；论文 *Closing the Lab-to-Store  `📅unknown` `[entity_page]`
+- [Deep Visuomotor Policies：GPS 联合学习视觉与力矩](wiki/entities/paper-deep-visuomotor-policies.md) — End-to-End Training of Deep Visuomotor Policies*（[arXiv:1504.00702](https://arxiv.org/abs/1504.0070 `📅unknown` `[entity_page]`
 - [Deep Whole-Body Control（HMI P042）](wiki/entities/paper-deep-whole-body-control-loco-manip.md) — Deep Whole-Body Control**（*Deep Whole-Body Control: Learning a Unified Policy for Manipulation and `📅unknown` `[entity_page]`
 - [Deep Whole-body Parkour：感知式全身跑酷](wiki/entities/paper-deep-whole-body-parkour.md) — Deep Whole-body Parkour**（arXiv:2601.07701）隶属 Project Instinct，在 [42 篇 RL `📅unknown` `[entity_page]`
 - [Learning Locomotion Skills Using DeepRL: Does the Choice of Action Space Matter?](wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md) — 一句话定义**：在 **平面物理角色** 的 **步态周期模仿** 上，用深度 RL **对照四种动作参数化**（扭矩、肌肉激活、**目标关节角 + PD**、目标关节角速度），从 **学习时间、 `📅unknown` `[entity_page]`
@@ -3816,6 +3818,7 @@
 - [PIE：腿式机器人的隐式—显式感知跑酷](wiki/entities/paper-pie-parkour-implicit-explicit.md) — PIE**（*Parkour with Implicit-Explicit Learning Framework for Legged Robots*，[arXiv:2408.13740](htt `📅unknown` `[entity_page]`
 - [PILOT：非结构化场景感知统一 loco-manipulation 低层控制器](wiki/entities/paper-pilot-perceptive-loco-manipulation.md) — PILOT**（*A Perceptive Integrated Low-level Controller for Loco-manipulation over Unstructured Scen `📅unknown` `[entity_page]`
 - [PILOT (Visual Subgoals)（arXiv:2610.14335）](wiki/entities/paper-pilot-visual-subgoal-world-model-planning.md) — PILOT (Visual Subgoals)**（*PILOT: Guiding Long-Horizon World-Model Planning for Robot Manipulation `📅unknown` `[entity_page]`
+- [PilotNet：解释端到端转向网络的视觉依据](wiki/entities/paper-pilotnet-saliency.md) — Explaining How a Deep Neural Network Trained with End-to-End Learning Steers a Car*（[arXiv:1704.079 `📅unknown` `[entity_page]`
 - [PingpongDuo：人形乒乓球双打与安全团队协同](wiki/entities/paper-pingpongduo.md) — PingpongDuo**（论文 *PingpongDuo: Agile Humanoid Table Tennis Doubles with Safe Team Coordination*，[a `📅unknown` `[entity_page]`
 - [拓扑保持的多用途管路中心线精修](wiki/entities/paper-pipe-centerline-refinement.md) — 拓扑保持的多用途管路中心线精修**（*Topology-Preserving Multi-Usage Pipe Centerline Refinement under Permanent Tubu `📅unknown` `[entity_page]`
 - [Pixel-UMI（arXiv:2611.03647）](wiki/entities/paper-pixel-umi.md) — Pixel-UMI**（*Pixel-UMI: Learning Environment-Aware Whole-Body Manipulation from Sensorized Human D `📅unknown` `[entity_page]`
@@ -5832,6 +5835,7 @@
 - [V-JEPA 2（自监督视频世界模型 · arXiv:2506.09985）](wiki/entities/paper-vjepa2.md) — V-JEPA 2**（*V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning*， `📅unknown` `[entity_page]`
 - [VL-JEPA: Joint Embedding Predictive Architecture for Vision-language](wiki/entities/paper-vl-jepa.md) — VL-JEPA**（arXiv:2512.10942）由 Meta FAIR、香港科技大学、Sorbonne Université 与纽约大学研究者提出。它把常见的视觉到文本 token 生成改为 `📅unknown` `[entity_page]`
 - [VLA Depth Decodability（arXiv:2608.08904）](wiki/entities/paper-vla-action-post-training-depth-decodability.md) — VLA Depth Decodability**（arXiv:2608.08904）收录于 [多模空间 · 一周 VLA 研 `📅unknown` `[entity_page]`
+- [VLA 动作 Token 化综述：八类输出接口](wiki/entities/paper-vla-action-tokenization-survey.md) — A Survey on Vision-Language-Action Models: An Action Tokenization Perspective*（[arXiv:2507.01925](h `📅unknown` `[entity_page]`
 - [VLA-Adapter（arXiv:2509.09372）](wiki/entities/paper-vla-adapter.md) — VLA-Adapter**（*VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model*，[ar `📅unknown` `[entity_page]`
 - [VLA 后训练数据增强（arXiv:2610.05994）](wiki/entities/paper-vla-augm-data-augmentation-post-training.md) — VLA 后训练数据增强**（*How (and How Not) to Use Data Augmentation in VLA Post-Training*，[arXiv:2610.05994 `📅unknown` `[entity_page]`
 - [VLA Bit-Flip Attacks（arXiv:2608.15475）](wiki/entities/paper-vla-bit-flip-attacks-int8.md) — VLA Bit-Flip Attacks**（*Bit-Flip Attacks on Vision-Language-Action Models: Action-Decoding Archite `📅unknown` `[entity_page]`
@@ -7324,6 +7328,7 @@
 - [滚动优化与迭代学习控制（体系⑥）](wiki/overview/robot-control-paradigm-receding-horizon-ilc.md) — 分别面向带硬约束的动态轨迹与高度重复工业轨迹，突破单步反馈的局部性。 `📅unknown` `[overview_page]`
 - [强化学习智能控制（体系⑧）](wiki/overview/robot-control-paradigm-rl-intelligent-control.md) — 无标注环境交互试错，靠奖励函数优化策略，面向未知动力学与复杂多任务。 `📅unknown` `[overview_page]`
 - [鲁棒控制（体系③）](wiki/overview/robot-control-paradigm-robust-control.md) — 在模型不精确与外部扰动下保证稳定与有界误差，强调「最坏情况」下的性能保证。 `📅unknown` `[overview_page]`
+- [机器人学习 11 篇奠基文献：从端到端控制到 VLA](wiki/overview/robot-learning-foundations-11-papers.md) — 按**问题驱动而非发表年份**组织 11 篇一手论文：先看分布偏移与端到端策略，再看动作生成与大规模 VLA，最后用 LIBERO 的知识迁移问题检验能力。 `📅unknown` `[overview_page]`
 - [Robot Learning Overview](wiki/overview/robot-learning-overview.md) — 机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。 `📅unknown` `[overview_page]`
 - [机器人开源项目 18 例（微信 GitHubStore）— 索引](wiki/overview/robot-open-source-wechat-githubstore-18-projects.md) — 按原文编号 1–18 列出入门向开源机器人项目，**每个项目只对应一个实体节点**；已有节点（Poppy、Stanford Doggo、SO-ARM100、OpenMANIPULATOR、Turtle `📅unknown` `[overview_page]`
 - [机器人开源宝库（微信策展第01期）— 索引](wiki/overview/robot-open-source-wechat-issue01-curator.md) — 本页把第三方微信清单中的 **10 个开源机器人/平台**拆成独立实体节点，并在此集中列出**官方文档与组织级 GitHub**入口，避免把网盘短链当作唯一分发源。 `📅unknown` `[overview_page]`
