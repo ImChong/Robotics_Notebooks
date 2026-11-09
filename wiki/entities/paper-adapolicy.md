@@ -61,7 +61,7 @@ summary: "AdaPolicy（天津大学等，arXiv:2610.34280）：以下一动作块
 
 ### 流程总览
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
     obs["当前图像和任务条件"] --> vision["冻结视觉编码器"]
     vision --> adapter["Context Adapter"]
@@ -80,7 +80,7 @@ flowchart TD
     loss0 --> total["联合损失"]
     loss1 --> total
     online -. "部署时保留" .-> deploy["当前动作块推理与执行"]
-\`\`\`
+```
 
 **注意：** 下一块监督不需要未来时刻的图像输入；这里的「展开头」指训练时的第二次动作模型前向，而非在真机循环中多运行一个模型。
 
@@ -88,7 +88,7 @@ flowchart TD
 
 下图按照官方公开的 **MetaWorld 训练入口**与实际函数调用绘制，不以泛化模板代替源码：
 
-\`\`\`mermaid
+```mermaid
 sequenceDiagram
     autonumber
     participant CLI as run_train_ema.sh
@@ -114,18 +114,18 @@ sequenceDiagram
     Train->>Train: loss.backward(), optimizer.step()
     Train->>EMA: update(action_model)
     Note over CLI,Train: eval mode -> scripts/eval_metaworld_parallel.py
-\`\`\`
+```
 
-**代码定位：** [训练脚本](https://github.com/teee000/AdaPolicy/blob/main/metaworld/train_metaworld_ema.py) → [VLAWrapper.forward](https://github.com/teee000/AdaPolicy/blob/main/metaworld/models/model_runner_ema.py) → [calc_flow_matching_loss](https://github.com/teee000/AdaPolicy/blob/main/metaworld/models/vla_model_fm_ema.py)；通过 \`torch.func.functional_call\` 使用不计算参数梯度的 EMA 权重，**保留演化状态计算图**。RoboTwin 同源实现在 \`robotwin/train_robotwin_ema.py\`、\`robotwin/models/model_runner_ema.py\` 和 \`model_fm_ema.py\`。
+**代码定位：** [训练脚本](https://github.com/teee000/AdaPolicy/blob/main/metaworld/train_metaworld_ema.py) → [VLAWrapper.forward](https://github.com/teee000/AdaPolicy/blob/main/metaworld/models/model_runner_ema.py) → [calc_flow_matching_loss](https://github.com/teee000/AdaPolicy/blob/main/metaworld/models/vla_model_fm_ema.py)；通过 `torch.func.functional_call` 使用不计算参数梯度的 EMA 权重，**保留演化状态计算图**。RoboTwin 同源实现在 `robotwin/train_robotwin_ema.py`、`robotwin/models/model_runner_ema.py` 和 `model_fm_ema.py`。
 
 ## 工程实践
 
 | 项目 | 论文 / 官方实现口径 |
 |---|---|
-| MetaWorld 入口 | 在 \`metaworld/\` 执行 \`./run_train_ema.sh all 40\`；需要 README 指定的 ModelScope HDF5 演示数据与 DINOv3 权重 |
-| 仿真评测 | \`./run_train_ema.sh eval <checkpoint.pt> all 50\`；调用 \`scripts/eval_metaworld_parallel.py\` |
-| 训练标志 | \`training.use_next_chunk_pred: true\`；MetaWorld README 给出 \`lambda_next_chunk: 0.8\`、\`ema_decay: 0.99\`、\`action_chunk_size: 8\` |
-| RoboTwin 实现 | \`robotwin/train_robotwin_ema.py\`、\`robotwin/robotwin_infer.py\`；数据预处理依 README 的 LiLa-WAM 指引 |
+| MetaWorld 入口 | 在 `metaworld/` 执行 `./run_train_ema.sh all 40`；需要 README 指定的 ModelScope HDF5 演示数据与 DINOv3 权重 |
+| 仿真评测 | `./run_train_ema.sh eval <checkpoint.pt> all 50`；调用 `scripts/eval_metaworld_parallel.py` |
+| 训练标志 | `training.use_next_chunk_pred: true`；MetaWorld README 给出 `lambda_next_chunk: 0.8`、`ema_decay: 0.99`、`action_chunk_size: 8` |
+| RoboTwin 实现 | `robotwin/train_robotwin_ema.py`、`robotwin/robotwin_infer.py`；数据预处理依 README 的 LiLa-WAM 指引 |
 | 真机协议 | 论文报告 PiPER 与双 RGB-D、30 Hz 控制、32 步动作块和异步滚动执行；此**非**已发布真机部署实现的声明 |
 | 复现对照 | 相同数据与视觉骨干下，比较原始 FM、增加预测长度、未来视觉特征监督、停止下一块梯度及 AdaPolicy |
 
@@ -164,7 +164,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **开源范围：部分开源。** 截至 2026-11-09，官方 \`teee000/AdaPolicy\` 已发布 MetaWorld 50 任务、RoboTwin 2.0 50 任务的可辨识训练和评测入口；未在此仓库核实完整 LIBERO 或真机部署脚本，不能把论文全实验视为已复现。
+- **开源范围：部分开源。** 截至 2026-11-09，官方 `teee000/AdaPolicy` 已发布 MetaWorld 50 任务、RoboTwin 2.0 50 任务的可辨识训练和评测入口；未在此仓库核实完整 LIBERO 或真机部署脚本，不能把论文全实验视为已复现。
 - 本方法通过动作而非未来图像约束预判；**不保证**演化潜状态是真实世界动力学模型，也不能自动外推至任意新环境。
 - 训练成本不仅是 FLOPs：EMA 参数副本、展开前向与 batch 内下一段动作提高显存占用。
 - 报告的任务成功率依赖操作任务、相机、示范分布与异步执行；不是毫米级位姿测量指标。
