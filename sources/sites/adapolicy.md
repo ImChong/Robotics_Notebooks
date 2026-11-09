@@ -14,7 +14,7 @@
 
 ## 当前开源核查
 
-- **部分开源（2026-11-09）**：作者公开仓库 \`teee000/AdaPolicy\` 实际包含 MetaWorld 与 RoboTwin 2.0 的训练、损失、EMA 与仿真评测脚本；此前标注「代码链接无效、不可复现」已经过时。
+- **部分开源（2026-11-09）**：作者公开仓库 `teee000/AdaPolicy` 实际包含 MetaWorld 与 RoboTwin 2.0 的训练、损失、EMA 与仿真评测脚本；此前标注「代码链接无效、不可复现」已经过时。
 - **未确认部分：** 本次仓库目录中未见真机部署管线与 LIBERO 全套复现入口；不能据此宣称论文所有实验完整开源。
 - **证据：** [官方 README](https://github.com/teee000/AdaPolicy/blob/main/README.md)，[源码归档](../repos/adapolicy_teee000.md)，[论文归档](../papers/adapolicy_arxiv_2610_34280.md)。
 
