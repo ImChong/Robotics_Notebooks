@@ -185,6 +185,7 @@ sequenceDiagram
 - [AI Auto-Research](../concepts/ai-auto-research.md)：Agent 在人设目标下自主研究与实验。
 - [真机策略 Autoresearch Harness](../queries/real-robot-policy-autoresearch-harness.md)：机器人领域如何建立可靠 benchmark 与外部裁判。
 - [Karpathy Autoresearch](./karpathy-autoresearch.md)：相似的固定预算优化闭环，但目标和验收口径不同。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：RBA 的冻结 Judge 只验证训练迭代加速与数值等价，不替代该闭环中的 ③ 策略任务成功率与 ④ sim↔real 校准评测。
 
 ## 参考来源
 

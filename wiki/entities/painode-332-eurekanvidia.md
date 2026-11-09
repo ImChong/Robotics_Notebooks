@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, paper]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-08
 summary: "LLM-driven reward design that enables sim-to-real transfer for dexterous skills."
 related:
   - ../entities/awesome-physical-ai-natnew.md
@@ -93,6 +93,7 @@ LLM-driven reward design that enables sim-to-real transfer for dexterous skills.
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
+- [Eureka 论文实体](./paper-eureka-llm-reward-design.md) — 本项目对应论文的逐节通读（进化式奖励搜索、29 个 IsaacGym 任务结果与局限）
 
 ## 参考来源
 

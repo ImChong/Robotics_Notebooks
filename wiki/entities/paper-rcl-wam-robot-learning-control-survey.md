@@ -14,7 +14,7 @@ tags:
 - rcl
 - curated-list
 status: complete
-updated: 2026-10-06
+updated: 2026-11-08
 arxiv: '2609.16074'
 code: https://github.com/RCL-Robotics/Awesome-World-Action-Models
 related:
@@ -259,6 +259,7 @@ flowchart TB
 
 - [paper-rcl-2605-12090-world-action-models-the-next-frontier-in-embodie](../entities/paper-rcl-2605-12090-world-action-models-the-next-frontier-in-embodie.md)
 - [paper-data-pyramid-embodied-manipulation](../entities/paper-data-pyramid-embodied-manipulation.md)
+- [DINOv3](./paper-rcl-2508-10104-dinov3.md) — 同一 RCL Awesome WAM 清单「Components of WAMs」收录的视觉骨干
 
 ## 参考来源
 

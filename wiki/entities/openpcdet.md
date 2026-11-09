@@ -111,6 +111,7 @@ OpenPCDet 值得作为 3D 检测的工程**统一复现层**；真正比较 Poin
 
 - [LIO-SAM](./lio-sam.md)
 - [LVI-SAM](./paper-lvi-sam.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — LiDAR 点云 3D 检测工具箱，跨过 2D 检测直接在 ③ 3D 层出框；KITTI / Waymo 上的检测分数不等于 ④ 下游策略消费层可用的时延与坐标约定
 
 ## 参考来源
 

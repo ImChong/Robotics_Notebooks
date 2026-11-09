@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-08
 related:
   - ../entities/paper-terrain-traversal-without-motion-priors.md
   - ../entities/paper-dawn.md

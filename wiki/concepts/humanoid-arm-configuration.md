@@ -93,6 +93,7 @@ flowchart LR
 - [人形机械布局](./humanoid-mechanical-layout-design.md) · [关节方案选型](./robot-joint-scheme-selection.md) · [行星滚柱丝杠](./planetary-roller-screw-humanoid-leg-actuation.md)
 - [灵巧手负载指标](./dexterous-hand-payload-core-metrics.md) · [灵巧运动学](./dexterous-kinematics.md) · [零空间控制](./null-space-control.md) · [全身协调](./whole-body-coordination.md)
 - [Unitree G1](../entities/unitree-g1.md) · [Tesla Optimus](../entities/tesla-optimus.md) · [Figure AI](../entities/figure-ai.md) · [1X](../entities/1x-technologies.md) · [Franka Research 3](../entities/franka-research-3.md)
+- 知识链枢纽：[接触力旋量闭环](../queries/contact-wrench-closed-loop.md)（臂构型的雅可比 / 冗余决定 ② 表示层把末端力旋量映回关节的条件数） · [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)（旋转模组 / 直线执行器 / 腱绳三种传动的取舍落到 ③ 执行器建模与摩擦辨识层）
 
 ## 参考来源
 

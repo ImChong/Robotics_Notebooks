@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-08
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
@@ -794,6 +794,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [XR-2](../entities/paper-xr2-bimanual-household.md) — 1500 小时双臂家务 + DAgger 修正（arXiv:2609.03591；数据已开）
 - [开源可复现性 9 篇技术地图](../overview/open-source-reproducibility-9-papers-technology-map.md) — 2026-09-04 九篇盘点横切面
 - [Qwen-Drive-1.0](../entities/paper-qwen-drive-1-0.md) — 驾驶域：共享 Qwen3.5-4B VLM 外接 BEV 感知头与 flow-matching 规划专家，统一 3D 感知、驾驶问答与轨迹生成（arXiv:2609.00111；推理/权重已开源）
+- [EmbodiedRSI](../entities/paper-embodiedrsi.md) — 冻结 VLA 权重，只在外层 Harness 用假设图、实验选择与代码-技能联合进化做持续学习（arXiv:2610.10498）
 
 ## 推荐继续阅读
 

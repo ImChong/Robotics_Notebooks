@@ -239,6 +239,20 @@ def test_runtime_camera_frame_latest_is_not_flagged(tmp_path, monkeypatch) -> No
     assert _run([claim, newer])["stale_claims"] == []
 
 
+def test_runtime_depth_image_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
+    # 「依据最新深度图与运动状态追踪」指策略每步读取的当前深度输入，是运行时量而非时效性断言。
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    claim = _page(
+        wiki,
+        "a.md",
+        "2025-01-01",
+        ["navigation"],
+        "RL 策略依据最新深度图与运动状态在 5 Hz 下追踪前方 carrot。",
+    )
+    newer = _page(wiki, "b.md", "2026-01-01", ["navigation"], "更晚的同主题页。")
+    assert _run([claim, newer])["stale_claims"] == []
+
+
 def test_runtime_candidate_latest_is_not_flagged(tmp_path, monkeypatch) -> None:
     # 「只在最新候选过门后刷新」描述预览服务的运行时行为，与「最新 pending 帧」同类。
     wiki = _setup_wiki(tmp_path, monkeypatch)

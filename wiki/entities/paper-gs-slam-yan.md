@@ -107,6 +107,17 @@ sequenceDiagram
 
 关键消融（§4.5/Table7-9）：不添加新高斯导致完整场景无法建出；不清理 floaters 损害渲染/几何；无 coarse-to-fine 跟踪使 ATE 和 Recall/PSNR 恶化。不能用 386.91 FPS 推断手机、机器人端 386 FPS 定位。
 
+## 与其他工作对比
+
+GS-SLAM（Yan）、[MonoGS](./paper-monogs.md)、[Gaussian-SLAM](./paper-gaussian-slam.md) 与 [SplaTAM](./paper-splatam.md) 同为 3DGS 稠密 SLAM，名字相近但设计与开源程度不同。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| [SplaTAM](./paper-splatam.md) | 两者都只在 RGB-D 下工作；SplaTAM 用 silhouette 掩码选追踪像素、决定增密，GS-SLAM 用"先半分辨率粗追踪、再按深度一致性筛可靠高斯精追踪"，并显式衰减前景浮空高斯 | 本论文消融（Table7–9）显示去掉 coarse-to-fine 或 floater 清理均会恶化 ATE/PSNR；SplaTAM 页面报告的是 ScanNet++ PSNR，与本页 Replica 指标数据集不同 |
+| [MonoGS](./paper-monogs.md) | MonoGS 推导了相机位姿的解析雅可比，支持单目与 RGB-D，前后端异步；GS-SLAM 位姿追踪只用 RGB 光度项（Eq.10），且公开 rasterizer 的 depth→pose 梯度有已知 bug | MonoGS 完整系统开源；GS-SLAM 仅开源改造 rasterizer |
+| [Gaussian-SLAM](./paper-gaussian-slam.md) | Gaussian-SLAM 把地图分成独立子地图，只优化活跃子图；GS-SLAM 维护单一地图，靠关键帧 BA 联合优化场景和位姿 | Gaussian-SLAM 指标为 TUM-RGBD 训练视角 PSNR，与本页 Replica Table6 不同条件 |
+| [NICE-SLAM](./paper-nice-slam.md) | NICE-SLAM 是隐式分层 feature grid + 射线采样体渲染；GS-SLAM 用显式高斯 + tile rasterizer，渲染速度是主要卖点 | 本论文 386.91 FPS 为纯渲染，完整 SLAM 约 8.34 FPS（§4.4）；比较 SLAM 速度时只能用后者 |
+
 ## 结论
 
 **GS-SLAM 的方法创新在于自适应维护高斯地图与可靠高斯选择，而非只使用高效 splatting。** 论文说明其在 RGB-D 室内场景兼顾质量与追踪速度，但开源的不是完整 SLAM 系统，只提供改造渲染内核，因此不能据此声称复现了论文的全部追踪/建图数字。

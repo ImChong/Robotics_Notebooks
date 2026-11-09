@@ -80,6 +80,16 @@ sequenceDiagram
 
 arXiv v1 Table2 ModelNet40 点坐标输入：PointNet 89.2%、PointNet++ 90.7% 分类准确率；输入增加法线并用 5000 点时达到 91.9%，不能与前者视为同条件。论文另在 ScanNet、SHREC15 和附录分割、kNN/ball query、FPS 随机性进行分析。
 
+## 与其他工作对比
+
+PointNet++ 在 PointNet 的「逐点 MLP + 全局 max-pool」上加入层级局部分组，之后又被用作 3D 检测的点云骨干；下表数字为论文自报。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| [PointNet](./paper-rcl-ref-a6e65f34d4c161a2ba59-pointnet-deep-learning-on-point-sets-for-3d-clas.md) | PointNet 对全部点做一次全局 max-pool，没有局部邻域结构；PointNet++ 用 FPS + ball query 分组，在局部区域递归运行 mini PointNet，并用 MSG/MRG 应对密度不均 | 论文 Table2 ModelNet40、仅 xyz 输入：PointNet 89.2% vs PointNet++ 90.7%；91.9% 用了法线和 5000 点，不是同条件 |
+| [PointRCNN](./paper-pointrcnn.md) | 下游使用者：PointRCNN 在两个阶段都用 PointNet++ 作骨干，分别做逐点前景分割/proposal 和 RoI 内框精修 | 定性：PointNet++ 提供的是逐点特征，3D 框的生成与精修由 PointRCNN 另行设计 |
+| [PV-RCNN](./paper-pv-rcnn.md) | 只借用 set abstraction 思路：FPS 选关键点，再用 PointNet 式聚合把稀疏体素特征汇到关键点（VSA）；主干换成稀疏体素 CNN | 定性：体素 CNN 负责主干特征和 proposal，点集抽象只负责关键点特征汇聚 |
+
 ## 结论
 
 **PointNet++ 的价值在于明确的数据流与约束设计，而不是无条件提高所有场景的性能。**
@@ -101,6 +111,7 @@ MSG 多半径局部特征计算较重，ball query 半径需要依据实际采�
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ③层 2D→3D 提升与语义建图：点云语义/分割的骨干表征
 - [OpenPCDet](./openpcdet.md)
 - [FeatDepth](./paper-featdepth.md)
 - [COLMAP](./colmap.md)

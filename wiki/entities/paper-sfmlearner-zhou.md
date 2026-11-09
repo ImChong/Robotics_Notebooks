@@ -106,6 +106,17 @@ sequenceDiagram
 
 原论文 Table3，KITTI 5-frame snippet ATE Seq09/10：本法 **0.021/0.020**；完整 ORB-SLAM 使用整段视频为 **0.014/0.012**，后者信息量更大，不能声称深度学习版优于全量 SLAM。README 另一个变更后模型 KITTI-only AbsRel 0.183，与原论文标准配置不同。
 
+## 与其他工作对比
+
+SfMLearner 是这一支自监督单目深度/位姿方法的起点，后续工作多在它的重投影损失上修补遮挡、动态和尺度问题；下表数字均为各论文自报。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| [Monodepth2](./paper-monodepth2.md) | 同为 DepthNet + PoseNet + 可微 warp；Monodepth2 用逐像素最小重投影代替各来源帧误差累加、用 auto-mask 代替学习得到的 explainability mask，光度项加入 SSIM，并在原图分辨率算多尺度损失 | SfMLearner Table1 KITTI-only AbsRel 0.208（416×128）；Monodepth2 Table2 仅单目 AbsRel 0.115（640×192）。分辨率和骨干不同，不是同条件消融 |
+| 本文去掉 explainability mask | 同网络、同数据，只关掉 mask | Table1：AbsRel 0.221 vs 0.208、δ1 0.676 vs 0.678，mask 的作用较温和 |
+| ORB-SLAM（full） | ORB-SLAM full 使用整段视频做几何优化；SfMLearner 只看 5 帧片段、由网络直接回归位姿 | Table3 ATE Seq09/10：SfMLearner 0.021/0.020，ORB-SLAM full 0.014/0.012；输入信息量不同 |
+| [FeatDepth](./paper-featdepth.md) | 后续工作，在光度重投影之外引入特征空间监督，缓解低纹理区域光度损失无约束的问题 | 定性对照，数值见 FeatDepth 页 |
+
 ## 结论
 
 **核心贡献是通过已知相机 K、估计深度/相对位姿定义连续图像可微重投影损失，建立无标注单目训练机制。** 这不是一个完整的长序列鲁棒定位系统，也不能恢复可靠公制单目尺度。

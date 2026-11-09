@@ -123,9 +123,10 @@ STALE_CLAIM_OVERREAD_CUES: tuple[str, ...] = (
 # 命中词后前看的字符数（同样限制在同一句内）
 STALE_CLAIM_OVERREAD_WINDOW = 30
 # 「最新」后紧跟的运行时对象名词；中间允许夹一段英文/数字标识（如「最新 pending 帧」）。
-# 「画面 / 图像」指策略每步拿到的当前相机输入（「小模型结合最新画面高频出动作」），同属运行时量。
+# 「画面 / 图像」指策略每步拿到的当前相机输入（「小模型结合最新画面高频出动作」），同属运行时量；
+# 「深度图」同理（「RL 策略依据最新深度图与运动状态追踪 carrot」）。
 STALE_CLAIM_RUNTIME_OBJECT_RE = re.compile(
-    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数|候选|画面|图像)"
+    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数|候选|画面|图像|深度图)"
 )
 # 「SOTA / state-of-the-art + 基线」是对照组的类别名（「相对经典/SOTA 基线，证书
 # 平均收窄 51.6%」），指的是被比较的那批既有方法，不是本页对自身的时效性断言；
@@ -455,6 +456,15 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # `cli` 模块），是软件交付形态 token，非机器人概念/方法/形式化；与 conda / printf
     # 同类基础设施停用词。
     "cli",
+    # image / render / inspect：各页正文里的 `image` / `render` / `inspect` 均为代码或工具
+    # token——`image` 是观测字典 / 数据集 / Pipeline 的字段与参数名（Open X-Embodiment、
+    # Evo-1、Qwen-Image 2.1、exercises 数据集）；`render` 是 Gymnasium 的环境 API 方法、
+    # 数据集卡字段与 ArXiVisual 的 **Render** 阶段名；`inspect` 是 CAD skill / AIRoA 的
+    # CLI 子命令、Python 标准库 `inspect` 与 INSPECT 论文名。与 export / validate /
+    # reset 同类命令 / 字段名，非机器人概念/方法/形式化，不建独立页。
+    "image",
+    "render",
+    "inspect",
     # data：各页正文里的 `data` / **Data** / `DATA` 均为文件格式或代码里的键/目录名——
     # RoboSet HDF5 的 `Trial0/data` 组、MCAP 的 **Data** record 类型、embodichain /
     # valen 的 `data` 目录、X-Tokenizer 官网图表 `DATA` 标签；与 qpos / actions 同类代码
@@ -885,6 +895,16 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 定义；其余为各系统流水线的模块名（UniAD 的 Planner 头、FADA 的 Planner、Nav2 的
     # planner server），机制各归对应实体页，与 base / training-free 同类多义标签。
     "planner",
+    # imu：Inertial Measurement Unit 的缩写，原理（加速度计 / 陀螺仪误差模型、预积分）与
+    # 相机协同已由 concepts/imu-principles-algorithms-camera-sync.md 定义；各页正文里的
+    # **IMU** / `imu` 均为「某本体带 IMU / MJCF 的 `imu` site」的传感配置指称。缩写 slug
+    # 与页面 stem 不同名，与 urdf / wbc 同类。
+    "imu",
+    # solver：命中处多为 Newton 的 `Model` / `State` / `Solver` 引擎抽象（MuJoCo Warp /
+    # Kamino 作为可插拔 `Solver`），已由 entities/newton-physics.md 释义；其余是 HydroGym
+    # / Gödel Agent 的配置键 `solver`。与 implicitfast 同类「仿真器 / 框架配置名」，
+    # 接触求解机制本体归 concepts/contact-dynamics.md，不建 concepts/solver.md。
+    "solver",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key

@@ -3,7 +3,7 @@ type: concept
 original:
   - ../../sources/papers/domain_randomization_tobin_reading_arxiv_1703_06907.md
 summary: "Domain Randomization 通过在仿真中随机化参数扩大训练分布，是 sim2real 的主流鲁棒化手段。"
-updated: 2026-09-29
+updated: 2026-11-08
 ---
 
 # Domain Randomization
@@ -173,6 +173,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - [RL vs 几何控制](../comparisons/rl-vs-geometric-control.md)
 - [NVIDIA Getting Started With Isaac Lab](../entities/nvidia-getting-started-isaac-lab.md) — 官方课把视觉/深度/点云 DR 放进「仿真增强」一类，并警告 DR 过宽会变成弱通才
 - [tita_rl](../entities/tita-rl.md) / [wheel_legged_genesis](../entities/wheel-legged-genesis.md) — 双轮足训练里的摩擦/质量/滞后随机化实例
+- [DrEureka](../entities/paper-dreureka-sim-to-real.md) — 让 LLM 在奖励感知物理先验（RAPP）约束的范围内生成域随机化配置，替代手工划定随机化区间
 
 ## 推荐继续阅读
 

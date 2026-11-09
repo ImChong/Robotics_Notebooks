@@ -3,7 +3,7 @@ type: query
 tags: [rl, locomotion, humanoid, legged, sim2real, actuator, pd-control]
 status: complete
 summary: "腿足与人形 RL 中如何把 Kp/Kd（刚度/阻尼）与仿真步长、控制频率及 sim2real 对齐的工程要点与决策流程。"
-updated: 2026-11-07
+updated: 2026-11-08
 related:
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../concepts/implicit-explicit-actuator-modeling.md
@@ -256,6 +256,7 @@ flowchart TB
 - [Sim2Real Checklist](./sim2real-checklist.md)
 - [RL 超参数调节指南（locomotion）](./rl-hyperparameter-guide.md)
 - [Domain Randomization 指南](./domain-randomization-guide.md)
+- [MIT 关节阻抗模式参数整定](../methods/mit-joint-impedance-mode-tuning.md) — 同一 $\tau = K_p e + K_d \dot e + \tau_{ff}$ 在驱动器 MIT 帧上的手工整定（先前馈后增益、逐关节阶跃验收），可作 RL 下发 Kp/Kd 前的真机内环基线
 - [Locomotion](../tasks/locomotion.md)
 - [legged_gym](../entities/legged-gym.md)
 - [Isaac Gym / Isaac Lab](../entities/isaac-gym-isaac-lab.md)

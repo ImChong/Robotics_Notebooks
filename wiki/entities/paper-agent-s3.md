@@ -181,6 +181,7 @@ agent_s --provider openai --model gpt-5-2025-08-07 \
 - [OpenClaw](./openclaw.md) — 个人助手与工具技能路线对照
 - [Hermes Agent](./hermes-agent.md) — 常驻工具运行时与 Computer Use 执行链对照
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 自动化流程中执行、验证与回归评测的角色
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 对照：OSWorld 测桌面 GUI 任务成功率，不属于具身四层评测中的任何一层；其 best-of-N 择优口径与 ③ 策略任务成功率层「均值成功率的陷阱」同类，横比时须注明单轨还是择优
 
 ## 参考来源
 

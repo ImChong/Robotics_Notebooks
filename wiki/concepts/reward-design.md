@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, reward, locomotion, humanoid, policy-optimization]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-08
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md
@@ -148,6 +148,7 @@ $$R'(s, a, s') = R(s, a, s') + \gamma \Phi(s') - \Phi(s)$$
 
 ### LLM-based Reward Design
 近期趋势：用 LLM 自动生成初始奖励函数，再通过迭代 RL 训练+人工反馈修正。代表：EUREKA (Ma et al. 2023)。
+论文节点：[Eureka](../entities/paper-eureka-llm-reward-design.md)（进化式奖励代码搜索）、[DrEureka](../entities/paper-dreureka-sim-to-real.md)（把同一思路扩展到域随机化配置）；多智能体场景下离线奖励代码生成与运行时语言协调的区分，见观点论文 [The End of Reward Engineering](../entities/paper-end-of-reward-engineering.md)。
 
 ### 4. 从成功轨迹挖掘时间效率（TSIL）
 长时域操作 RL 中，加大稀疏成功奖励或逐步时间惩罚往往**不能**稳定区分「快成功」与「慢成功 / 绕路刷 shaping」。[TSIL](../entities/paper-tsil-temporal-self-imitation-learning.md) 把训练期涌现的**最快成功完成时间**按任务配置写成自适应目标 $D(\phi)$，并回放效率加权轨迹——把**时间结构**当作自监督，而非只靠手工 shaping 调参。
