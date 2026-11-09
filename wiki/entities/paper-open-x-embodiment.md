@@ -190,6 +190,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [CamX / CamUVA：跨本体数据浏览与真机评测](./project-camx-camuva.md) — 侧重统一数据目录、许可筛选和 rollout 视频，非同一训练论文。
+
 - [Open X-Embodiment 概念](../concepts/open-x-embodiment.md)
 - [跨本体迁移策略](../queries/cross-embodiment-transfer-strategy.md)
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
