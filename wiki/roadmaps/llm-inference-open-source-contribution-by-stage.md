@@ -10,7 +10,12 @@ sources:
 related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../concepts/llm-inference-vram-estimation.md
+  - ../entities/nano-vllm.md
+  - ../entities/mini-sglang.md
+  - ../entities/flashinfer.md
   - ../entities/painode-103-vllm.md
+  - ../entities/sglang.md
+  - ../entities/tensorrt-llm.md
   - ../entities/tensorrt.md
 summary: "LLM 推理开源贡献按经验与可验证交付物分层：学习型 Nano-vLLM / Mini-SGLang、跨框架 kernel 层 FlashInfer、生产级 vLLM / SGLang / TensorRT-LLM；以源码调用链、正确性测试与可复现性能基准构成 PR 作品集。视频作者与 Discord 日期未核实，技术依据为六项目官方一手文档。"
 ---
@@ -44,11 +49,27 @@ summary: "LLM 推理开源贡献按经验与可验证交付物分层：学习型
 
 | 阶段 / 背景 | 推荐第一站 | 适合的首项交付 | 注意 |
 |---|---|---|---|
-| 学生、初学推理服务 | [Nano-vLLM](https://github.com/GeeeekExplorer/nano-vllm) 或 [Mini-SGLang](https://github.com/sgl-project/mini-sglang) | 从文档到调用链实现一个可运行特性；增加回归测试，展示复现命令和 tokens/s | Nano 以离线生成入口为主；Mini 支持在线服务，选题复杂度不同 |
-| 有 1–2 年工程经验、想做 GPU 优化 | [FlashInfer](https://github.com/flashinfer-ai/flashinfer) | 小范围 kernel 优化或覆盖边界 case，附数值一致性 + kernel benchmark | 需要 CUDA/算子基础；硬件支持按具体后端核验 |
-| 资深工程师跨入推理基础设施 | [vLLM](https://github.com/vllm-project/vllm)、[SGLang](https://github.com/sgl-project/sglang)、[TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) | 先围绕已存在 issue 写 regression / accuracy / performance test，再提交小功能或修复 | 项目大小不等于个人代码能力；测试入口可能需要特定硬件 |
+| 学生、初学推理服务 | [Nano-vLLM](../entities/nano-vllm.md) 或 [Mini-SGLang](../entities/mini-sglang.md) | 从文档到调用链实现一个可运行特性；增加回归测试，展示复现命令和 tokens/s | Nano 以离线生成入口为主；Mini 支持在线服务，选题复杂度不同 |
+| 有 1–2 年工程经验、想做 GPU 优化 | [FlashInfer](../entities/flashinfer.md) | 小范围 kernel 优化或覆盖边界 case，附数值一致性 + kernel benchmark | 需要 CUDA/算子基础；硬件支持按具体后端核验 |
+| 资深工程师跨入推理基础设施 | [vLLM](../entities/painode-103-vllm.md)、[SGLang](../entities/sglang.md)、[TensorRT-LLM](../entities/tensorrt-llm.md) | 先围绕已存在 issue 写 regression / accuracy / performance test，再提交小功能或修复 | 项目大小不等于个人代码能力；测试入口可能需要特定硬件 |
 
 上述**职业分层是用户提供的视频转述和本页工程建议**，不是这些项目官方制定的招聘或贡献者等级标准。没有证据表明测试 PR 一定比功能 PR 更容易合并。
+
+
+### 独立项目详情与去重关系
+
+以下 **6 个官方独立仓库**对应 **6 个非重复详情节点**，而非仅为一张职业推荐清单：
+
+| 子项目 | 本站详情节点 | 项目身份 / 区别 |
+|---|---|---|
+| Nano-vLLM | [Nano-vLLM](../entities/nano-vllm.md) | `GeeeekExplorer/nano-vllm`；教学型轻量离线引擎 |
+| Mini-SGLang | [Mini-SGLang](../entities/mini-sglang.md) | `sgl-project/mini-sglang`；精简但具在线 API 的多进程系统 |
+| FlashInfer | [FlashInfer](../entities/flashinfer.md) | `flashinfer-ai/flashinfer`；GPU kernel/算子层，而非 serving 引擎 |
+| vLLM | [vLLM](../entities/painode-103-vllm.md) | `vllm-project/vllm`；升级已有编号 103 清单节点，不重复新建 |
+| SGLang | [SGLang](../entities/sglang.md) | `sgl-project/sglang`；完整生产型服务框架，与 Mini-SGLang 独立 |
+| TensorRT-LLM | [TensorRT-LLM](../entities/tensorrt-llm.md) | `NVIDIA/TensorRT-LLM`；区别于通用 [TensorRT SDK](../entities/tensorrt.md) 和 [TensorRT-LLM for Edge](../entities/painode-102-tensorrtllmforedge.md) 文章索引 |
+
+每个实体页都有单独的官方原始资料归档、Mermaid 项目流程图、源码运行时序图和可复现贡献切口；**此处没有把学生/年限标签写成项目本身的官方定位**。
 
 ### 项目流程总览：从选仓到可复现 PR
 
