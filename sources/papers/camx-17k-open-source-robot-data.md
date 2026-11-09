@@ -20,6 +20,12 @@ CamX 官网显示标题为 “What did we learn from 17K hours of open-source ro
 - CamUVA rollout 展示页在源码中列出同分布与跨本体评测任务；其成功标记来自视频索引，不是第三方复测。
 - 不存在由已读站点源码足以支持的 CamUVA 架构细节、训练超参数、统计显著性或完整消融结论。
 
+## 公开论文排查记录（2026-11-09 补核）
+
+- [CoRL 2026 UMI Arena 官方录用名单](https://umi-arena.airoa.io/accepted) 和 [CoRL 2026 Pretrain to Adapt 官方录用名单](https://corl2026-robotcl.github.io/papers/) 均列出题为 **What Did We Learn from 20k Hours of Open-Source Robot Data?** 的研究。
+- 这两份名单未提供可在本次阅读中核验的 CamX / CamUVA 同一性证据，也未提供所需论文全文；其“20k”标题与 CamX 官网的“17K”不同。**不据相似标题将其当作本文的完整版，也不将其作者/机构写入 CamX 的权威元数据**。
+- CamX 项目站点和两个官方仓库 README 可以核查数据平台、样本下载、许可及 rollout 视频工具，但这些公开材料**不足以完成研究论文方法、实验、附录的逐节通读**。保留 `通读：未完成`，直至获得可明确归属该项目的原文。
+
 ## 待完成
 
 1. 获取论文公开 PDF 或正式 OpenReview/arXiv 版本，逐节阅读方法、训练、实验、附录并核对主要数值。
