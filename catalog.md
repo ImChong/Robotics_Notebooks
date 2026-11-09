@@ -6279,6 +6279,7 @@
 - [OXR](wiki/entities/somark-oxr.md) — OXR 是 SoMark 的文档解析模型，将 PDF 和文档图像转换为包含版面坐标的 Markdown 或 JSON，可用于资料整理。 `📅unknown` `[entity_page]`
 - [Spark（Web 3DGS 渲染器）](wiki/entities/spark-3dgs-renderer.md) — Spark** 是 World Labs 维护的 **开源 3D Gaussian Splatting（3DGS）** 渲染栈，面向 **THREE.js + `📅unknown` `[entity_page]`
 - [SPEAR（Photorealistic Embodied AI Simulator）](wiki/entities/spear-sim.md) — SPEAR**（spear-sim/spear）是面向 **光真实感具身 AI 与合成视觉** 的 **Unreal E `📅unknown` `[entity_page]`
+- [Specialist：手持夹爪与视觉惯性重建的 UMI 采集系统](wiki/entities/specialist-umi.md) — Specialist**（*Specialist: Yet Another Universal Manipulator Interface*，**Specialist：另一种通用机器人操作接口 `📅2026-11-09` `[entity_page]`
 - [Spingi（Unitree G1 分层物理 Agent 原型）](wiki/entities/spingi.md) — Spingi** 是面向人形机器人的 sim-first Physical Agent Runtime：它把自然语言任务或静态 YAML 计划转成可验证的技能步骤，在 MuJoCo 的 Unitr `📅unknown` `[entity_page]`
 - [Spot Mini Mini](wiki/entities/spot-mini-mini.md) — Spot Mini Mini**（GitHub）来自 [古月居转载的四足机器人开源项目综述 `📅unknown` `[entity_page]`
 - [SpotMicro（mike4192）](wiki/entities/spotmicro-ros-mike4192.md) — SpotMicro（mike4192）**（GitHub）来自 [古月居转载的四足机器人开源项目综述](https `📅unknown` `[entity_page]`
