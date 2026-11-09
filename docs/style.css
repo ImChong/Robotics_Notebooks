@@ -2537,6 +2537,10 @@ button.home-wiki-heatmap-cell.is-active {
 .detail-markdown-body .math-inline,
 .detail-summary .math-inline {
   display: inline-block;
+  /* Long inline LaTeX (e.g. DAgger bounds) must not push past mobile content widths. */
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
   vertical-align: middle;
   padding: .05em .35em;
   border-radius: 6px;
