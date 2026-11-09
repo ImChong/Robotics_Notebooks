@@ -470,6 +470,10 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # valen 的 `data` 目录、X-Tokenizer 官网图表 `DATA` 标签；与 qpos / actions 同类代码
     # token，数据本体已由各数据集实体页与 overview/hub-data-pipeline.md 承载。
     "data",
+    # draft：命中处均为页面成熟度 ``status`` 的取值（「本页暂为 `draft`」「本页为
+    # **draft**」），或 CAD 代码里的拔模参数名 `draft`（multi-agent-cad）；与 type /
+    # updated 同类页面元数据 token，非机器人概念/方法/形式化，不建独立页。
+    "draft",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -686,6 +690,10 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 均为「**CUDA** 加速 / CUDA 版本依赖」式的运行环境指称（cuVSLAM、cuRobo、TensorRT、
     # Genesis）。与 onnx / mcap 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
     "cuda",
+    # curobo：canonical 节点已是 entities/curobo.md（NVIDIA GPU 并行运动生成库）与
+    # entities/paper-curobov2-fast.md，各页命中处均为「**cuRobo** 做碰撞距离 / IK / 轨迹
+    # 优化」式的工具指称；与 mujoco / lerobot 同类「工具库归 entities」。
+    "curobo",
     "damping",  # MuJoCo/Isaac Lab 关节属性，已由阻抗控制 + PD 增益 / 参数辨识页覆盖
     # depth：命中处是观测/输出字段名（Isaac Lab `presets=depth`、VGG-T³ / LingBot-Depth
     # 的 `depth` 输出键、Cosmos-Transfer 的 **Depth** 控制条件行、VisualMimic 学生策略的
