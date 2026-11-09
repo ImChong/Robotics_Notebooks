@@ -35,6 +35,7 @@ test('DAgger aggregation and error-bound formulas keep valid KaTeX delimiters', 
     lines.find((line) => line.startsWith('5. 将新样本并入数据集：')),
     lines.find((line) => line.includes('**BC 的二次误差界**')),
     lines.find((line) => line.includes('**DAgger 的线性界**')),
+    lines.find((line) => line.includes('**β 的选择**')),
   ];
   assert.ok(samples.every(Boolean), 'all original DAgger examples are available');
   let formulaCount = 0;
@@ -48,5 +49,12 @@ test('DAgger aggregation and error-bound formulas keep valid KaTeX delimiters', 
     assert.doesNotMatch(rendered, /@@MDMATHTOKEN/);
     formulaCount += expressions.length;
   }
-  assert.equal(formulaCount, 8, 'all eight representative DAgger formulas were checked');
+  assert.equal(formulaCount, 9, 'all nine representative DAgger formulas were checked');
+});
+
+test('DAgger beta choice keeps a valid TeX backslash rather than a backspace control character', () => {
+  const line = dagger.split('\n').find((item) => item.includes('**β 的选择**'));
+  assert.ok(line, 'DAgger beta-choice bullet exists');
+  assert.ok(line.includes("\\beta_i=\\mathbb{I}(i=1)"), 'beta choice retains the complete TeX expression');
+  assert.equal(dagger.includes(String.fromCharCode(8)), false, 'markdown must not contain a backspace control character');
 });
