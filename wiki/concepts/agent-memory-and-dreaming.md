@@ -2,7 +2,7 @@
 type: concept
 tags: [agents, agent-memory, context-engineering, dreaming, sleep-time-compute, claude]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-09
 original:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
 related:
@@ -13,6 +13,7 @@ related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../entities/paper-memforest.md
   - ../entities/paper-robocasa-mem.md
+  - ../entities/paper-false-belief-mandela-effect-multi-agent.md
 sources:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
   - ../../sources/sites/claude_cookbook_dreaming_dynamic_workflow_2026-11-02.md
@@ -92,6 +93,10 @@ flowchart LR
 - 作者自述的开放问题：何时创建记忆（当场写会分散主任务注意力，dreaming 产物不一定立刻可用）；如何保持更新（dreaming 要算力，持续检查所有记忆不现实）；表示需要维护算力并防止累积错误或幻觉；以转写检索为基础是否足够。
 - 文章没有涉及机器人或具身场景，对机器人的含义是本页的推断。
 
+## 延伸：错误记忆如何在多 Agent 群体传播
+
+- [False Belief Dissemination（arXiv:2610.33026）](../entities/paper-false-belief-mandela-effect-multi-agent.md)：不同于本文的个体记忆维护研究，该论文在隔离的社交网络模拟中分析邻居消息、私有记忆和共享网页搜索如何共同维持虚假断言；其通道消融表明共享搜索在该设置中比单独使用记忆更易导致错误接受。涉及机器人的意义是工程延伸推论，并非论文真机实验。
+
 ## 关联页面
 
 - [Claude Cookbook：用动态工作流做 dreaming](../entities/claude-cookbook-dreaming-dynamic-workflow.md)
@@ -102,6 +107,7 @@ flowchart LR
 - [Agentic Coding 软件基础](./agentic-coding-software-fundamentals.md)
 - [MemForest（agent 记忆论文节点）](../entities/paper-memforest.md)
 - [RoboCasa-Mem（长程移动操作中的环境与过程记忆基准）](../entities/paper-robocasa-mem.md)
+- [False Belief Dissemination：多 Agent 错误信念传播](../entities/paper-false-belief-mandela-effect-multi-agent.md)
 
 ## 参考来源
 
