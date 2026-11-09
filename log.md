@@ -287,6 +287,8 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-09] ingest | senlanke 具身运控lab 11.02-11.06 前沿论文动态（人形/四足 30 + Manipulation 23）：新建 27 个独立论文详情节点（逐篇通读核对周报说法），复用 26 篇既有节点，新增两份周报来源归档与技术地图
+
 ## [2026-11-08] ingest | sources/papers/open-x-embodiment-arxiv-2310-08864-v9.md — 通读 OXE v9，升级既有 RT-X 节点
 
 - 官方项目主页是 `robotics-transformer-x.github.io`，源码为 `google-deepmind/open_x_embodiment`；复用既有论文实体，避免重复。
