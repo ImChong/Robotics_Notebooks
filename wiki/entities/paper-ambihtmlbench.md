@@ -34,7 +34,7 @@ AmbiHTMLBench 是面向评价从页面截图重建可执行 HTML 时文字、表
 | LLM | Large Language Model | 基准中的语言智能体或评分模型 |
 | API | Application Programming Interface | 运行模型或裁判的程序接口 |
 | HTML | HyperText Markup Language | 待还原的可执行页面标记 |
-| OLS5 | Frozen five-judge preference proxy protocol | 固定五裁判的主观偏好代理协议 |
+| OLS5 | Ordinary Least Squares (five judges) | 对五名裁判投票做线性校准的冻结偏好代理 |
 
 ## 为什么重要
 
