@@ -1623,6 +1623,7 @@
 - [AGQ（arXiv:2610.33074）](wiki/entities/paper-agq.md) — AGQ**（*AGQ: Action-Guided Ultra-Low-Bit Quantization for Vision-Language-Action Models*，[arXiv:261 `📅unknown` `[entity_page]`
 - [AHMP：接触序列发现 + SE(3) 切空间全身规划](wiki/entities/paper-ahmp.md) — AHMP**（*Agile Humanoid Motion Planning with Contact Sequence Discovery*，Humanoids 2025，[DOI](https `📅unknown` `[entity_page]`
 - [AHOY：遮挡 YouTube 视频也能重建可动画 3D 数字人](wiki/entities/paper-ahoy.md) — AHOY**（*Animatable Humans under Occlusion from YouTube Videos with Gaussian Splatting and Video Di `📅unknown` `[entity_page]`
+- [AI Scientists' Last Exam（AISLE）：以实验结果验证科学智能体](wiki/entities/paper-ai-scientists-last-exam.md) — AISLE**（AI Scientists' Last Exam，AI 科学家的最后一场考试）是一个以实验选择、反馈学习、预算约束与可验证结果为主轴的 **科学智能体评测**项目；官方公开了 Ha `📅unknown` `[entity_page]`
 - [AIDA（arXiv:2610.15572）](wiki/entities/paper-aida-agent-interface-aligned-mobile-manipulation.md) — AIDA**（*Look Before You Move: Agent-Interface-Aligned Supervision for Open-World Mobile Manipulati `📅unknown` `[entity_page]`
 - [Action Influence Maximization（AIM，提升世界模型动作可控性的数据采集）](wiki/entities/paper-aim-action-influence-maximization.md) — AIM 认为动作条件世界模型「不听话」的根因在数据：专家示范里动作影响太小，因此主动采集能产生更多动作影响的 episode，而不是只扩大模型。 `📅unknown` `[entity_page]`
 - [AIRoA-0：从手持数据学习长程精细跨本体操作](wiki/entities/paper-airoa-0.md) — AIRoA-0** 以手持 YUBI 夹爪数据进行预训练和任务后训练，并在配备相同夹爪与腕部相机的机器人上执行双臂任务。本文依据 [arXiv v1](https://arxiv.org/html `📅unknown` `[entity_page]`
