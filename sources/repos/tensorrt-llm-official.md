@@ -29,4 +29,3 @@
 ## 对 Wiki 的映射
 
 - [TensorRT-LLM｜NVIDIA 大模型推理运行时与 LLM API](../../wiki/entities/tensorrt-llm.md)
-- [LLM 开源贡献阶段路线](../../wiki/roadmaps/llm-inference-open-source-contribution-by-stage.md)

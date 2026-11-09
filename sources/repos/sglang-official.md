@@ -28,4 +28,3 @@ SGLang 的 `python/sglang/srt/managers/tokenizer_manager.py` 在请求入口负�
 ## 对 Wiki 的映射
 
 - [SGLang｜大规模语言与多模态模型推理服务框架](../../wiki/entities/sglang.md)
-- [LLM 开源贡献阶段路线](../../wiki/roadmaps/llm-inference-open-source-contribution-by-stage.md)

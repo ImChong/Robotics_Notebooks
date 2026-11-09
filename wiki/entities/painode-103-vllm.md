@@ -12,7 +12,6 @@ sources:
   - ../../sources/repos/pai_awesome_resource_103_vllm.md
   - ../../sources/repos/llm-inference-open-source-contribution-primary-docs-2026-11.md
 related:
-  - ../roadmaps/llm-inference-open-source-contribution-by-stage.md
   - ../concepts/llm-inference-vram-estimation.md
   - ./nano-vllm.md
   - ./flashinfer.md
@@ -95,7 +94,6 @@ sequenceDiagram
 
 ## 关联页面
 
-- [LLM 推理开源贡献分阶段路线](../roadmaps/llm-inference-open-source-contribution-by-stage.md)
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [Nano-vLLM｜面向学习的极简 LLM 推理引擎](./nano-vllm.md)
 - [FlashInfer｜跨框架 GPU 推理 Kernel 库](./flashinfer.md)
@@ -113,4 +111,3 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [官方仓库与最新文档](https://github.com/vllm-project/vllm)
-- [推理开源贡献路线](../roadmaps/llm-inference-open-source-contribution-by-stage.md)

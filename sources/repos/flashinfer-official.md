@@ -28,4 +28,3 @@
 ## 对 Wiki 的映射
 
 - [FlashInfer｜跨框架 GPU 推理 Kernel 库](../../wiki/entities/flashinfer.md)
-- [LLM 开源贡献阶段路线](../../wiki/roadmaps/llm-inference-open-source-contribution-by-stage.md)

@@ -11,7 +11,6 @@ sources:
   - ../../sources/repos/flashinfer-official.md
   - ../../sources/repos/llm-inference-open-source-contribution-primary-docs-2026-11.md
 related:
-  - ../roadmaps/llm-inference-open-source-contribution-by-stage.md
   - ../concepts/llm-inference-vram-estimation.md
   - ./mini-sglang.md
   - ./painode-103-vllm.md
@@ -88,7 +87,6 @@ README 写明支持 SM75 及以上多代 NVIDIA GPU，但不是每个功能都�
 
 ## 关联页面
 
-- [LLM 推理开源贡献分阶段路线](../roadmaps/llm-inference-open-source-contribution-by-stage.md)
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [Mini-SGLang｜精简但完整的在线 LLM Serving 系统](./mini-sglang.md)
 - [vLLM｜生产级大模型推理与持续批处理](./painode-103-vllm.md)
@@ -104,4 +102,3 @@ README 写明支持 SM75 及以上多代 NVIDIA GPU，但不是每个功能都�
 ## 推荐继续阅读
 
 - [官方仓库与最新文档](https://github.com/flashinfer-ai/flashinfer)
-- [推理开源贡献路线](../roadmaps/llm-inference-open-source-contribution-by-stage.md)

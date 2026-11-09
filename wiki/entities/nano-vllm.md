@@ -11,7 +11,6 @@ sources:
   - ../../sources/repos/nano-vllm-official.md
   - ../../sources/repos/llm-inference-open-source-contribution-primary-docs-2026-11.md
 related:
-  - ../roadmaps/llm-inference-open-source-contribution-by-stage.md
   - ../concepts/llm-inference-vram-estimation.md
   - ./mini-sglang.md
   - ./painode-103-vllm.md
@@ -93,7 +92,6 @@ README 标称约 1200 行 Python；官方在 RTX 4070 Laptop 8GB、Qwen3-0.6B、
 
 ## 关联页面
 
-- [LLM 推理开源贡献分阶段路线](../roadmaps/llm-inference-open-source-contribution-by-stage.md)
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [Mini-SGLang｜精简但完整的在线 LLM Serving 系统](./mini-sglang.md)
 - [vLLM｜生产级大模型推理与持续批处理](./painode-103-vllm.md)
@@ -107,4 +105,3 @@ README 标称约 1200 行 Python；官方在 RTX 4070 Laptop 8GB、Qwen3-0.6B、
 ## 推荐继续阅读
 
 - [官方仓库与最新文档](https://github.com/GeeeekExplorer/nano-vllm)
-- [推理开源贡献路线](../roadmaps/llm-inference-open-source-contribution-by-stage.md)

@@ -29,4 +29,3 @@
 ## 对 Wiki 的映射
 
 - [vLLM｜生产级大模型推理与持续批处理](../../wiki/entities/painode-103-vllm.md)
-- [LLM 开源贡献阶段路线](../../wiki/roadmaps/llm-inference-open-source-contribution-by-stage.md)

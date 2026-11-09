@@ -41,7 +41,6 @@ Mini-SGLang 的 `docs/structures.md` 明列 `API Server → Tokenizer Worker →
 
 ## 对 wiki 的映射
 
-- [LLM 推理开源贡献：按经验阶段选项目](../../wiki/roadmaps/llm-inference-open-source-contribution-by-stage.md)
 - [Agentic Coding 时代的软件工程基础](../../wiki/concepts/agentic-coding-software-fundamentals.md)
 
 ## 待补证据

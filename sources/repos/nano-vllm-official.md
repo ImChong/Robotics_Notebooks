@@ -31,4 +31,3 @@
 ## 对 Wiki 的映射
 
 - [Nano-vLLM｜面向学习的极简 LLM 推理引擎](../../wiki/entities/nano-vllm.md)
-- [LLM 开源贡献阶段路线](../../wiki/roadmaps/llm-inference-open-source-contribution-by-stage.md)

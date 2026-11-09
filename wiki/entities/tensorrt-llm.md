@@ -11,7 +11,6 @@ sources:
   - ../../sources/repos/tensorrt-llm-official.md
   - ../../sources/repos/llm-inference-open-source-contribution-primary-docs-2026-11.md
 related:
-  - ../roadmaps/llm-inference-open-source-contribution-by-stage.md
   - ../concepts/llm-inference-vram-estimation.md
   - ./painode-103-vllm.md
   - ./sglang.md
@@ -89,7 +88,6 @@ README 标注 CUDA/PyTorch/发行版本会变化；部分模型与高性能路�
 
 ## 关联页面
 
-- [LLM 推理开源贡献分阶段路线](../roadmaps/llm-inference-open-source-contribution-by-stage.md)
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [vLLM｜生产级大模型推理与持续批处理](./painode-103-vllm.md)
 - [SGLang｜大规模语言与多模态模型推理服务框架](./sglang.md)
@@ -104,4 +102,3 @@ README 标注 CUDA/PyTorch/发行版本会变化；部分模型与高性能路�
 ## 推荐继续阅读
 
 - [官方仓库与最新文档](https://github.com/NVIDIA/TensorRT-LLM)
-- [推理开源贡献路线](../roadmaps/llm-inference-open-source-contribution-by-stage.md)

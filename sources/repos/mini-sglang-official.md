@@ -32,4 +32,3 @@
 ## 对 Wiki 的映射
 
 - [Mini-SGLang｜精简但完整的在线 LLM Serving 系统](../../wiki/entities/mini-sglang.md)
-- [LLM 开源贡献阶段路线](../../wiki/roadmaps/llm-inference-open-source-contribution-by-stage.md)
