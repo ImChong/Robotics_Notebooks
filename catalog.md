@@ -1368,7 +1368,7 @@
 - [ACT-LAM：重建得更像不等于动作学得更好](wiki/entities/paper-act-lam.md) — ACT-LAM**（*Reconstructing Is Not Acting: Action-Centric Latent Dynamics Modeling*，[arXiv:2609.1518 `📅unknown` `[entity_page]`
 - [ACT：低成本硬件上的动作块 Transformer](wiki/entities/paper-act.md) — ACT**（*Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware*，[arXiv:2304.13705](http `📅unknown` `[entity_page]`
 - [ActFovea：给 VLA 策略加一层运行时防护](wiki/entities/paper-actfovea.md) — ActFovea**（论文 *ActFovea: Runtime Safeguarding for VLA Policies via Spatiotemporal Visual-Action Co `📅unknown` `[entity_page]`
-- [ActGaze](wiki/entities/paper-actgaze.md) — ActGaze: Learning Action-Grounded Gaze through Counterfactual Visual Interventions for High-Precis `📅unknown` `[entity_page]`
+- [ActGaze：让动作目标指导视觉注视的精密操作方法 / Learning Action-Grounded Gaze through Counterfactual Visual Interventions](wiki/entities/paper-actgaze.md) — 论文：** [ActGaze: Learning Action-Grounded Gaze through Counterfactual Visual Interventions for High `📅unknown` `[entity_page]`
 - [Action-Conditioned Latent Foresight（arXiv:2611.04839）](wiki/entities/paper-action-conditioned-latent-foresight.md) — Action-Conditioned Latent Foresight**（*Coordinating Humanoid Loco-Manipulation through Action-Cond `📅unknown` `[entity_page]`
 - [Action Representation Pretraining（arXiv:2610.34453）](wiki/entities/paper-action-representation-pretraining.md) — Action Representation Pretraining**（*Scaling Dexterous Manipulation via Action Representation Pret `📅unknown` `[entity_page]`
 - [Action-Token Supervision（arXiv:2611.05249）](wiki/entities/paper-action-token-supervision.md) — Action-Token Supervision**（*Should the Action Expert Train the VLM? Action-Token Supervision and G `📅unknown` `[entity_page]`
