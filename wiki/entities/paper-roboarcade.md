@@ -10,6 +10,7 @@ status: complete
 updated: 2026-11-09
 summary: "面向 22 个长时程操作任务的 agentic robot control 评测，提供模拟器、工具接口、分步打分与可运行开放代码。"
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
   - ./paper-oopsierecover.md
@@ -123,6 +124,7 @@ sequenceDiagram
 - [manipulation ](../tasks/manipulation.md)
 - [vla ](../methods/vla.md)
 - [paper-oopsierecover ](./paper-oopsierecover.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 分步打分的长时程操作评测，对应该闭环 ③ 策略任务成功率层与「过程 vs 结果」取舍。
 
 ## 参考来源
 
