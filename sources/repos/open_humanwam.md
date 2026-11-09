@@ -4,10 +4,11 @@
 
 - **标题：** Open-HumanWAM: An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models
 - **类型：** repo
-- **官方代码：** <https://github.com/DAGroup-PKU/HumanNet/tree/open-humanscale>
+- **官方代码（论文与项目页当前入口）：** <https://github.com/DAGroup-PKU/HumanNet/tree/Open-HumanWAM>
+- **历史分支别名：** <https://github.com/DAGroup-PKU/HumanNet/tree/open-humanscale>；2026-11-09 GitHub API 核验两者均指向提交 `4e90ff6d4eafd762ec49eb0e44f2c0f0dab5ad2a`，未来可能独立变化。
 - **项目页：** <https://dagroup-pku.github.io/open-humanwam/>
 - **arXiv：** <https://arxiv.org/abs/2611.06817>
-- **入库日期：** 2026-11-06；2026-11-08 补充源码核查
+- **入库日期：** 2026-11-06；2026-11-08 补充源码核查；2026-11-09 校准官方分支
 - **核对范围：** 根 README、humanwam_vanilla/README.md、humanwam_goal/README.md；Vanilla 的 scripts/train.sh、train.py、eval_robotwin.sh、eval_robotwin.py、humanwam/runtime.py、trainer.py、robotwin_policy.py；Goal 的 src/goalwam/cli.py、engine.py、server.py、examples/infer.py
 - **沉淀到 wiki：** [paper-open-humanwam](../../wiki/entities/paper-open-humanwam.md)
 
