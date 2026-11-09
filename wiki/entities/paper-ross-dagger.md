@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, dagger, online-learning, covariate-shift, cmu]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-09
 venue: "AISTATS 2011"
 related:
   - ../methods/dagger.md
@@ -11,6 +11,8 @@ related:
   - ../methods/inverse-reinforcement-learning.md
   - ../formalizations/behavior-cloning-loss.md
   - ../comparisons/rl-vs-il.md
+original:
+  - ../../sources/papers/dagger_reading_arxiv_1011_0686.md
 sources:
   - ../../sources/papers/ross_dagger_aistats_2011.md
   - ../../sources/papers/imitation_learning.md
@@ -56,11 +58,15 @@ summary: "Ross et al.（AISTATS 2011）提出 DAgger：把模仿学习与结构�
 
 未来观测依赖先前动作/预测；纯 BC 在专家分布 $d_{\pi^*}$ 上优化，部署却在 $d_{\pi_\theta}$ 上评测 → **covariate shift** 与 **compounding error**（长 horizon 上误差累积）。
 
-### DAgger 迭代
+### DAgger 迭代（原论文 Algorithm 3.1）
 
-1. 用专家轨迹初始化 $D_0$，得 $\pi_1$
-2. 第 $i$ 轮：用 $\pi_i$ rollout → 收集状态 $s$ → 专家标注 $\pi^*(s)$ → $D_i = D_{i-1} \cup \{(s,\pi^*(s)\}$
-3. 在聚合集上重训/更新得 $\pi_{i+1}$
+1. 初始化聚合数据集 D=∅ 和学习策略 π̂₁（可任选初始策略）；常以第一轮完全由专家执行（β₁=1）获取数据。
+2. 第 i 轮用混合策略 πᵢ = βᵢπ* + (1−βᵢ)π̂ᵢ 采集 T 步轨迹；βᵢ 随迭代衰减，简单版本为 βᵢ = 𝟙(i=1)。
+3. 对轨迹中**实际访问的每个状态**查询专家动作，得到 Dᵢ = {(s, π*(s))}；将 Dᵢ 并入全部历史数据 D。
+4. 用聚合数据 D 训练下一轮学习策略 π̂ᵢ₊₁；重复采集、标注和训练。
+5. 返回**验证集上表现最佳**的历史策略 π̂ᵢ，而非无条件返回最后一轮。
+
+**理论保证的前提：** 原文将该过程与 Follow-The-Leader / no-regret 在线学习联系起来；在代理损失、专家相对任务代价上界等条件下，可将相对专家的 T 步代价增量约束为随 T 线性增长的量级，而不是说任意深度策略都无条件成立。
 
 ### 与 BC 的误差量级（常用读法）
 
@@ -69,9 +75,38 @@ summary: "Ross et al.（AISTATS 2011）提出 DAgger：把模仿学习与结构�
 | 纯 BC | $\mathcal{O}(\epsilon H^2)$ |
 | DAgger 类在线聚合 | $\mathcal{O}(\epsilon H)$ |
 
+## 流程总览
+
+根据原论文 §3 的 Algorithm 3.1 绘制，βᵢ 表示专家与当前策略的混合比例：
+
+```mermaid
+flowchart TD
+    Init["初始化聚合数据 D 与策略 π̂₁"] --> Mix["设置 βᵢ：混合专家 π* 与学习者 π̂ᵢ"]
+    Mix --> Rollout["使用 πᵢ rollout，记录实际访问的状态"]
+    Rollout --> Label["专家为每个访问状态提供动作标签"]
+    Label --> Aggregate["聚合 D ← D ∪ Dᵢ"]
+    Aggregate --> Train["在 D 上训练下一轮策略 π̂ᵢ₊₁"]
+    Train --> Loop{"仍有训练轮次？"}
+    Loop -->|是| Mix
+    Loop -->|否| Validate["在验证集选出最佳历史策略"]
+```
+
+图示区分了**采样策略**（可混合专家）与**最终部署策略**（平稳确定性学习策略）；数据标注由专家完成，学习者主要决定下一轮会访问哪些状态。
+
 ## 源码运行时序图
 
 **不适用** — 2011 原论文无官方可运行代码仓；工程实现分散于各机器人栈（如 [Holosoma](./holosoma.md) 的 DAgger 式蒸馏、LeHome 真机 `record_real_dagger.py` 等），见 [DAgger 方法页](../methods/dagger.md)。
+
+## 工程实践
+
+**按原论文复现的最小闭环**（不是新增的官方实现）：
+
+1. 固定任务、训练预算与基础监督学习器，先建立只用专家示范训练的 BC 基线。
+2. 依 Algorithm 3.1 迭代：执行混合策略 → 收集当前策略访问的状态 → 查询专家动作 → 聚合全量历史数据 → 重新训练。
+3. 在**相同验证任务**上挑选历史最优策略，报告成功率、错误恢复能力、在线专家标注量及随训练轮次变化的曲线；不能只比较最终训练损失。
+4. 保留专家混合日程 βᵢ、采样步数、轨迹数与每轮训练配置，便于区别数据分布改善和总数据量增加带来的收益。
+
+**真实机器人的迁移建议（非 2011 年论文实验）**：先在仿真/安全沙盒做学生 rollout；真机增加碰撞边界、急停和人工接管。若专家仅在失败时回标或仅能覆盖有限状态，这是 HG-DAgger 等工程变体，须与原论文的“每轮状态由专家标注”假设区分。
 
 ## 局限与风险
 
@@ -81,11 +116,17 @@ summary: "Ross et al.（AISTATS 2011）提出 DAgger：把模仿学习与结构�
 
 ## 实验与评测
 
-- **本文的「评测」主要是理论与受控实验，不是机器人基准：** 核心结论是 **误差量级** 的改善——纯 BC 在 horizon $H$ 上的常用上界量级为 $\mathcal{O}(\epsilon H^2)$，DAgger 类在线聚合为 $\mathcal{O}(\epsilon H)$。
-- **实证面：** 原文在若干模拟游戏/控制任务与手写识别类结构化预测上验证「迭代聚合优于单轮 BC」；具体任务集与逐项数值 **以 [PMLR v15 原文](https://proceedings.mlr.press/v15/ross11a.html) 为准**（本页为 ingest 级摘要，未复核表格）。
-- **怎么在今天复核：** 没有官方代码仓；可验证的最小实验是在任意长 horizon 任务上对比「只用专家分布数据」与「迭代加入策略访问状态」的成功率曲线——复合误差是否随 $H$ 平方增长，是这条结论的可证伪点。
-- **评测口径提醒：** DAgger 的收益随 **horizon 增长** 放大；在短 horizon、接近 i.i.d. 的任务上与 BC 差距很小，用这类任务做对照会得出「DAgger 没用」的错误结论。
+原论文 §5 不是现代机器人真机基准，而是两个模仿学习游戏任务和一个序列标注任务；以下为原论文**具体实验**，不是外部复现：
 
+| 任务 | 设定 | 论文报告的关键结果 |
+|---|---|---|
+| Super Tux Kart（§5.1） | 由画面特征预测转向、线性岭回归、每轮约 1 圈、20 轮 | DAgger 约在第 15 轮后达到每圈 0 次掉出赛道；SMILe 20 轮后仍约每圈掉出 2 次 |
+| Super Mario Bros.（§5.2） | 用规划器作为专家，线性 SVM 预测动作 | DAgger 明显优于纯监督基线与测试的 SMILe / SEARN 变体；论文还比较不同 βᵢ 衰减日程 |
+| 手写词识别（§5.3） | 左到右逐字符预测，前一个预测字符作为后续输入 | 字符准确率：无结构基线 82%，监督训练 83.6%，DAgger 85.5% |
+
+**理论结果与局限：** §2 的 BC 误差界允许 T²ε 级增长；§3–§4 在 no-regret、代理损失与代价上界等假设下推导 DAgger 的线性 T 量级保证（定理 3.1–3.4）。这不是对任意策略、任意深度神经网络或真实机器人安全性的无条件保证。
+
+详情及核对范围见 [原文通读归档](../../sources/papers/dagger_reading_arxiv_1011_0686.md)（§1–§6）；图中曲线与论文页码以 [PMLR 原文 PDF](https://proceedings.mlr.press/v15/ross11a/ross11a.pdf) 为准。
 ## 与其他工作对比
 
 | 维度 | DAgger（本文） | 纯 BC | [逆强化学习](../methods/inverse-reinforcement-learning.md) |
@@ -120,6 +161,7 @@ summary: "Ross et al.（AISTATS 2011）提出 DAgger：把模仿学习与结构�
 ## 参考来源
 
 - [ross_dagger_aistats_2011.md](../../sources/papers/ross_dagger_aistats_2011.md) — 本次 ingest 档案
+- [dagger_reading_arxiv_1011_0686.md](../../sources/papers/dagger_reading_arxiv_1011_0686.md) — 原文 §1–§6 通读归档
 - [imitation_learning.md](../../sources/papers/imitation_learning.md) — IL 合集条目
 - PMLR：<https://proceedings.mlr.press/v15/ross11a.html>
 
