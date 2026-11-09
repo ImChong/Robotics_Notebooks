@@ -287,6 +287,13 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-09] ingest | CamX / CamUVA | 跨本体机器人数据与 rollout 展示
+
+- **意图：** 收录 https://camx-anonymous.github.io/ 的 CamX 数据集、CamUVA 评测回放与公开源码。
+- **核验：** 区分许可裁剪后的 17.1K h 网站数据与未裁剪的 25.85K h 原论文附录统计；核对 LeRobot v3 单 episode 样本与视频同步工具。
+- **开源结论：** 数据索引、样本/视频处理工具及回放网页可见；完整训练集、论文全文和 CamUVA 策略权重/训练代码尚未核实。
+- **知识页：** [CamX / CamUVA](../wiki/entities/project-camx-camuva.md)（draft，待原文通读）。
+
 ## [2026-11-09] ingest | 三项评测基准
 
 - 意图：按一手论文、官方项目页与可运行开源入口，新增 DeliverBench、SelfImprove-Bench、AmbiHTMLBench 三个唯一知识节点并建立到 Agent 评测概念页的双向链接。

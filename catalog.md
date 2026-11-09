@@ -6098,6 +6098,7 @@
 - [Poppy 开源机器人平台](wiki/entities/poppy-project-robots.md) — Poppy** 是由 **法国 Inria** 相关社区推动的 **开源 3D 打印机器人** 家族：包含 **Poppy Humanoid**、**Poppy Torso**、**Ergo Jr `📅unknown` `[entity_page]`
 - [ppf-contact-solver（ZOZO Contact Solver）](wiki/entities/ppf-contact-solver.md) — ppf-contact-solver**（README 亦称 *ZOZO's Contact Solver*）是 ZOZO, Inc. 技 `📅unknown` `[entity_page]`
 - [PRIME](wiki/entities/prime-system-id.md) — PRIME**（*Physically-consistent Robotic Inertial and Motion Estimation*，[arXiv:2605.17681](https:// `📅unknown` `[entity_page]`
+- [CamX / CamUVA：17K 小时跨本体机器人操作数据与策略评测](wiki/entities/project-camx-camuva.md) — CamX（跨本体机器人操作数据集）**将不同机械臂、双臂、移动操作和手持采集的数据汇集为带相机信息的 LeRobot v3 数据目录；**CamUVA**是配套策略评测视频库。两个站点来自同一匿名 `📅unknown` `[entity_page]`
 - [Project Instinct](wiki/entities/project-instinct.md) — 本页汇总 Project Instinct 公开站点与子课题主张；定量结论与实现细节以各论文 PDF 与代码仓库为准。 `📅2026-05-12` `[entity_page]`
 - [Project Quiver](wiki/entities/project-quiver.md) — Project Quiver**（Arrow-air/project-quiver）是 Arrow A `📅unknown` `[entity_page]`
 - [Project SuperDex](wiki/entities/project-superdex.md) — Project SuperDex** 是 Meta（[facebookresearch](https://github.com/facebookresearch/project_superdex `📅unknown` `[entity_page]`
