@@ -11,11 +11,11 @@ tags:
   - ucsb
   - nvidia
 status: complete
-updated: 2026-11-08
+updated: 2026-11-09
 arxiv: "2611.06817"
 project: https://dagroup-pku.github.io/open-humanwam/
-code: https://github.com/DAGroup-PKU/HumanNet/tree/open-humanscale
-code_scope: "DAGroup-PKU/HumanNet 的 open-humanscale 分支，humanwam_vanilla 与 humanwam_goal 模块"
+code: https://github.com/DAGroup-PKU/HumanNet/tree/Open-HumanWAM
+code_scope: "DAGroup-PKU/HumanNet 的 Open-HumanWAM 分支，humanwam_vanilla 与 humanwam_goal 模块；2026-11-09 两个分支别名指向同一提交"
 project_distinction: "Open-HumanWAM（arXiv 2611.06817）是 HumanNet 相关的人类经验扩展/世界动作模型开放配方；humannet 节点侧重原数据集，与 HumanScale（arXiv 2606.20521）不是同一篇论文"
 original:
   - ../../sources/papers/open_humanwam_arxiv_2611_06817.md
@@ -29,6 +29,7 @@ sources:
   - ../../sources/papers/open_humanwam_arxiv_2611_06817.md
   - ../../sources/repos/open_humanwam.md
   - ../../sources/sites/open-humanwam.md
+  - ../../sources/datasets/open-humanwam-50k.md
   - ../../sources/blogs/wechat_embodied_station_20_papers_curobov2_fast_halo_humanwam_2026-11-06.md
 summary: "Open-HumanWAM（arXiv:2611.06817）构建约 5 万小时人类第一视角动作语料，并比较纯人类预训练 HumanWAM-Vanilla 与人机联合、视觉目标条件 HumanWAM-Goal；区分受控缩放、最终后训练和零样本评测口径。"
 ---
@@ -63,8 +64,8 @@ summary: "Open-HumanWAM（arXiv:2611.06817）构建约 5 万小时人类第一�
 | **机构** | 北京大学（PKU）、新加坡国立大学（NUS）、麻省理工学院（MIT）、加州大学圣巴巴拉分校（UCSB）、NVIDIA |
 | **论文** | [arXiv:2611.06817](https://arxiv.org/abs/2611.06817)，首次提交 2026-11-04；本次核对 v2（2026-11-05）的 [HTML 全文](https://arxiv.org/html/2611.06817) |
 | **项目** | [Open-HumanWAM 官方主页](https://dagroup-pku.github.io/open-humanwam/) |
-| **源码** | [DAGroup-PKU/HumanNet · open-humanscale](https://github.com/DAGroup-PKU/HumanNet/tree/open-humanscale)，包含 `humanwam_vanilla/` 与 `humanwam_goal/` |
-| **开放程度** | **部分开源**（截至 2026-11-08）：已见训练/评测/推理入口及部分权重；完整 50K 语料仍在上传，Goal 后训练脚本未公开 |
+| **源码** | [DAGroup-PKU/HumanNet · Open-HumanWAM](https://github.com/DAGroup-PKU/HumanNet/tree/Open-HumanWAM)，包含 `humanwam_vanilla/` 与 `humanwam_goal/` |
+| **开放程度** | **部分开源**（2026-11-09）：已见训练/评测/推理入口及部分权重；完整 50K 语料仍在上传且 HF 需接受访问条款，Goal 后训练脚本未公开 |
 | **名称辨析** | 部分早期资料写作 Open-HumanScale；本页按官方项目/论文题名 Open-HumanWAM 维护，且不同于 [HumanScale](paper-sa-2606-20521-humanscale-egocentric-human-video-can-outperform.md) |
 
 ## 核心原理
@@ -188,6 +189,13 @@ sequenceDiagram
   IO-->>User: actions.npz
 ```
 
+### Open-HumanWAM-50K 数据集发布核对（2026-11-09）
+
+- [HF 官方数据卡](https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K) 确认：**LeRobot v3**（压缩 MP4 + Parquet 动作/状态 + captions + episode 元数据 + 来源追溯），分成 `egostandard`、`egopro`、`egodex`、`egoverse`、`humannet` 等目录；原始不同来源的使用条款依旧适用。
+- **计数不可混同：** 论文报告约 **35.9M 选中 clips**，HF 发布物使用 **31,396,799 physical episodes**，并非作者成果互相矛盾，而是单位/打包口径不同。
+- **训练子集索引**含 100h、500h、1000h、5000h、10000h、20500h、50000h 七档，索引为 Parquet 地址记录，**不含实际视频/动作 payload**；做缩放复现必须另获取对应内容文件。
+- **访问与上传状态：** HF 页面公开但 gated，需登录接受条件。其 **2026-11-09 14:53（UTC+8）快照**为已验证上传 22.43 / 26.67 TB（84.09%），仍在上传；这是时间戳快照，不能当作实时进度。详情见[数据集来源归档](../../sources/datasets/open-humanwam-50k.md)。
+
 ## 实验与评测
 
 | 实验与协议 | 条件 | 结果 | 如何解读 |
@@ -224,7 +232,7 @@ sequenceDiagram
 - 论文中的“对数线性”是**有限数据规模范围内的经验拟合**，不保证继续堆数据便持续同比改善；语料多样性和动作对齐质量也重要。
 - Goal 使用视觉目标图像；目标可见性不等于目标在真实物理约束下可达，且需精确匹配相机/本体动作协议。
 - 某些结果使用人工审查的目标缓存、任务级机器人后训练与固定基准，不代表开放世界任意任务零样本泛化；长程序列示例也要区分是否经过后训练。
-- **部分开源，非全部复现已就绪。** 论文数字是作者报告；本次为原文全文及关键入口静态核查，**未在 GPU 上训练或独立复现**。
+- **部分开源，非全部复现已就绪。** 数据集需接受 HF 访问条件、底层来源许可并仍在上传；论文数字是作者报告，本次只做原文与源码静态核对，**未在 GPU 上训练或独立复现**。
 - 项目根代码标注 Apache-2.0；Goal 原生模型组件还涉及 NVIDIA Cosmos 的 OpenMDW-1.1、独立的模型权重与数据卡许可，应分别检查。
 
 ## 关联页面
@@ -240,6 +248,7 @@ sequenceDiagram
 - [论文全文核对归档](../../sources/papers/open_humanwam_arxiv_2611_06817.md)
 - [官方项目页核对归档](../../sources/sites/open-humanwam.md)
 - [官方源码入口核对归档](../../sources/repos/open_humanwam.md)
+- [Open-HumanWAM-50K 数据集来源归档](../../sources/datasets/open-humanwam-50k.md)
 - [具身智能小站原始盘点（仅线索，不作为核心数字依据）](../../sources/blogs/wechat_embodied_station_20_papers_curobov2_fast_halo_humanwam_2026-11-06.md)
 
 ## 推荐继续阅读
@@ -247,5 +256,6 @@ sequenceDiagram
 - [arXiv v2 全文 HTML](https://arxiv.org/html/2611.06817)
 - [arXiv PDF](https://arxiv.org/pdf/2611.06817)
 - [Open-HumanWAM 项目主页](https://dagroup-pku.github.io/open-humanwam/)
-- [HumanNet 官方 Open-HumanWAM 源码分支](https://github.com/DAGroup-PKU/HumanNet/tree/open-humanscale)
-- [HumanWAM-Goal 推理与基准说明](https://github.com/DAGroup-PKU/HumanNet/blob/open-humanscale/humanwam_goal/README.md)
+- [Open-HumanWAM-50K HF 数据卡](https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K)
+- [HumanNet 官方 Open-HumanWAM 源码分支](https://github.com/DAGroup-PKU/HumanNet/tree/Open-HumanWAM)
+- [HumanWAM-Goal 推理与基准说明](https://github.com/DAGroup-PKU/HumanNet/blob/Open-HumanWAM/humanwam_goal/README.md)
