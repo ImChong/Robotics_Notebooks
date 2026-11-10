@@ -287,6 +287,27 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+# 2026-11-10 · ingest · FLORA 原文深读与开源状态修正
+
+- **意图：** 用户指定 Sicong Leng、Yunze Man、Zhiqi Li 等的 `FLORA: An Open Model Suite for Scaling Robotics Data Engines`（arXiv:2610.31779v1）进行 ingest。
+- **去重：** 保留已有唯一实体 `wiki/entities/flora-robotics-data-engine.md`；论文、项目主页和源码均挂到此实体，不创建重复论文节点。
+- **原文：** 核对 arXiv v1 正文与 Appendix A–H，补分段/字幕 GRPO、Rewarder SFT、不同测试协议及成本与生产吞吐的估计口径。
+- **开放状态：** NVIDIA 官方 Code 链接现指向 `NVlabs/Flora`；开源推理示例与三类模型权重，**不含训练代码/生产服务**。补 `sources/repos/flora-nvlabs.md` 源码实际入口与 `sequenceDiagram`。
+- **输出：** 完整中英标题、方法流程图、对照表、边界/许可说明；同步更新 paper / site / repo 归档。
+- **未复现：** 未下载 130 GB / 56 GB 权重，也未在 H100 或 512×GB300 集群运行实验。
+- **原文：** <https://arxiv.org/html/2610.31779v1>
+- **项目：** <https://research.nvidia.com/labs/gear/flora/>
+- **代码：** <https://github.com/NVlabs/Flora>
+
+## [2026-11-10] ingest | EgoWild2Dex | 既有节点论文全文与附录精读升级
+
+- **意图：** 避免与历史 PR #2296 的 EgoWild2Dex 同项目节点重复，沿用唯一论文实体，补充原始文献通读证据。
+- **原文：** arXiv:2609.23755v1（§I–VI，Algorithm 1，附录 A–D，图表）与 https://mmlab.hk/egowild2dex/。
+- **研究事实：** EgoWild 538.9 h、179,049 episodes；GeoFormer 五级 8 参数单应变换，学 robot→ego，使用逆变换对齐 ego；三阶段 FM VLA（task-specific ego、robot-view glove、expert robot + 10 条 DAgger）。
+- **工程边界：** 96.7% 是三任务各 10 次共 29/30 次真机成功；图像对齐 21.9× 不是控制策略加速；每任务 robot <1 h 不包含人类数据与 A100 训练算力。
+- **开放核查：** 2026-11-10 项目页无可下载的 EgoWild/GeoFormer 官方实现与模型资源，论文仅承诺待发布，源码时序图不适用。
+- **回写：** [EgoWild2Dex](../wiki/entities/paper-egowild2dex.md)；[论文源归档](../sources/papers/egowild2dex_arxiv_2609_23755.md)；[项目页源归档](../sources/sites/mmlab-egowild2dex.md)。
+
 ## [2026-11-10] ingest | Flow-GRPO（arXiv:2505.05470）：流匹配模型在线 GRPO
 
 - 通读 arXiv v5 正文与附录，归档 ODE→SDE、GRPO、训练/推理步数和实验边界。
