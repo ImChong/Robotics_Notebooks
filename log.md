@@ -287,6 +287,8 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-10] ingest | Zane Hub #388《机器人动力学仿真和动力学标定有什么区别和联系》：新增 robot-dynamics-simulation-vs-calibration 概念页，自算质心偏差与差分噪声量级，标出未核的标准条款与笔误疑点
+
 ## [2026-11-09] ingest | AdaPolicy 原论文深读与已发布源码复核
 
 - 意图：将二手摘要级 AdaPolicy 节点升级为论文一手证据驱动的工程笔记，不重复建实体。
