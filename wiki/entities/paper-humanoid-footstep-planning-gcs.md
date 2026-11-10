@@ -1,7 +1,6 @@
 ---
 type: entity
 project_id: humanoid-footstep-planning-gcs-ral-2026
-paper: https://doi.org/10.1109/LRA.2026.3746865
 doi: "10.1109/LRA.2026.3746865"
 venue: "IEEE Robotics and Automation Letters (RA-L), 2026"
 tags: [paper, humanoid, footstep-planning, convex-optimization, graphs-of-convex-sets, qcqp, sdp, kaist, toro]
