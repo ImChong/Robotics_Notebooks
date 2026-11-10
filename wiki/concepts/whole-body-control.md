@@ -2,8 +2,9 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-10
 related:
+  - ../entities/paper-dkwbc.md
   - ../entities/paper-humanoid-touch-dream.md
   - ../entities/embodied-interview-qa.md
   - ../tasks/locomotion.md
@@ -137,6 +138,10 @@ print("joint acceleration command:", qdd_star)
 - 摩擦锥、力矩限位、任务优先级
 - 从 `qdd` 到 `tau` 的映射
 
+### 新增论文：解析跟踪与学习平衡的解耦
+
+- [DKWBC（arXiv:2611.09605）](../entities/paper-dkwbc.md) 在 G1 上结合浮基逆动力学前馈、关节 PD 反馈与 RL 直接力矩残差。其核心是把**运动跟踪**交给名义动力学、把**接触/载荷下的平衡**交给学习残差；与 [ForPC](../entities/paper-forpc-cart-pushing.md) 的推车任务残差、[STEP](../entities/paper-step-spatiotemporal-humanoid-locomotion.md) 的深度感知运动互补，评测不可直接横比。
+
 ## 核心原理
 
 经典 WBC（Sentis & Khatib, ICRA 2006，已通读）的骨架：
@@ -183,6 +188,8 @@ print("joint acceleration command:", qdd_star)
 四足 **MPC→WBC** 开源参考：[legbot-MPC-WBC](../entities/legbot-mpc-wbc.md)。总览见 [hub-wbc](../overview/hub-wbc.md)。
 
 ## 参考来源
+
+- [DKWBC（arXiv:2611.09605）全文归档](../../sources/papers/dkwbc_arxiv_2611_09605.md) — 浮基逆动力学跟踪与 RL 平衡残差。
 
 - [khatib_sentis_ijhr_2004_whole_body_dynamic_behavior.md](../../sources/papers/khatib_sentis_ijhr_2004_whole_body_dynamic_behavior.md) — WBC 系统化起点（IJHR 2004）
 - [sentis_khatib_icra_2006_whole_body_control_framework.md](../../sources/papers/sentis_khatib_icra_2006_whole_body_control_framework.md) — 人形环境 WBC 框架（ICRA 2006）
