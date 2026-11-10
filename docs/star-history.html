@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#191919" />
-  <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"></script>
+  <!-- Plotly 同域加载（vendor/，版本 2.35.2）；同域脚本失败时回退 jsDelivr，避免外网 CDN 不可达导致 "Plotly is not defined" -->
+  <script src="vendor/plotly.min.js"></script>
+  <script>if (!window.Plotly) document.write('<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"><\/script>');</script>
   <script src="graph-tooltip.js"></script>
   <script src="depth-filters.js"></script>
   <style>
@@ -514,7 +516,7 @@
           return job;
         }).catch(function (e) {
           if (current !== view) return;
-          status.textContent = '加载失败：' + e.message;
+          status.textContent = window.Plotly ? '加载失败：' + e.message : '图表库（Plotly）加载失败，请检查网络后刷新页面重试';
           if (window.Plotly) Plotly.purge('trend-chart');
         });
         history.replaceState(null, '', '?view=' + view.id);
