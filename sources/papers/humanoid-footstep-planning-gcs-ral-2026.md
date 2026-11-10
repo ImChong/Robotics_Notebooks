@@ -27,6 +27,16 @@
 
 用户提供的项目页与 GitHub URL 均为截断文本，公开检索未发现可以可靠与本文 DOI 绑定的完整官方地址。**开源状态为“待核实”，不是“确认未开源”。** 完整项目页、具体代码模块及数据下载链接均留待补充。
 
+## 全文追索记录（2026-11-10，未完成通读）
+
+- **IEEE 出版入口：** [DOI](https://doi.org/10.1109/LRA.2026.3746865) 和 [IEEE Xplore](https://ieeexplore.ieee.org/) 已尝试，但当前检索环境无法读取本论文正文／PDF；不把链接可解析与读到全文混为一谈。
+- **题名与摘要：** [EurekaMag 书目及摘要页](https://eurekamag.com/research/112/001/112001467.php) 可读取。此页是**二次索引，不是论文全文**，只支撑当前五条摘要级摘录。
+- **机构一手来源：** [KAIST DRCD 官方成员页](https://www.dynamicrobot.kaist.ac.kr/contact) 可确认 Hyunseok Kim、Hae-Won Park 为实验室成员；不提供本文论文正文、代码或定量实验表。
+- **预印本与作者版：** 对 arXiv、KAIST 域名及 DLR eLib 进行题名和作者组合检索，尚未发现能够与本 DOI 一一对应的公开全文；检出的其他 GCS、TORO 或 DLR 论文不能当成本论文。
+- **项目／源码：** 用户原始消息中的 `hyuns-kim.gith…`、`github.com/Hyu…` 被截断；无法核实实际项目链接、README、求解器入口、许可证或部署路径。
+
+**尚待完成：** 获取正式全文或作者授权预印本，逐节阅读方法／优化式／数值实验／TORO 实验／局限与附录；核对论文原图，并在确认官方可运行实现后补源码时序图。完成前保持 `通读：未完成` 与实体页 `status: draft`，节点健康度不得虚报 3/3。
+
 ## 对 wiki 的映射
 
 - [GCS 人形步位规划论文实体](../../wiki/entities/paper-humanoid-footstep-planning-gcs.md)
