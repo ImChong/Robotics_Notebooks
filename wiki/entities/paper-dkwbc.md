@@ -84,7 +84,7 @@ flowchart TD
   PD --> SUM
   RES --> SUM
   SUM --> PLANT["G1 关节与接触环境"]
-  PLANT -. "训练时跟踪误差和稳定性奖励" .-> RL
+  PLANT -. 训练期奖励 .-> RL
 ```
 
 **核心力矩接口**（III-B，式 3–7）：
@@ -129,7 +129,7 @@ flowchart TD
 - **真机安全：** 本工作直接输出关节力矩残差，部署前需额外验证电流/力矩峰值、执行器限幅、通信周期、急停与接触状态稳定性；论文实验结果不代替硬件安全审查。
 - **代码开放状态（2026-11-10）：** [项目页](https://robbyant-research.github.io/DKWBC/) 链到 [robbyant-research/DKWBC](https://github.com/robbyant-research/DKWBC)，但官方仓库 README 标注它是 *Official project page*，默认分支为 `gh-pages`；尚未检出算法训练、推理或部署入口，暂不能按论文源码复现。
 
-### 源码运行时序图
+## 源码运行时序图
 
 **不适用（暂缺官方可运行算法源码）。** 公开仓库是项目展示页面，尚无可核对的 `train` / `eval` / 真机 runtime 入口；上面的流程图仅基于论文方法，待实际开源后再读取运行代码并补充 Mermaid `sequenceDiagram`。
 
