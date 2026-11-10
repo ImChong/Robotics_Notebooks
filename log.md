@@ -311,6 +311,22 @@ op: ingest
 - **项目：** <https://robolineage.github.io/>
 - **代码：** <https://github.com/robolineage/robolineage>
 
+## [2026-11-10] ingest | sources/repos/velxio.md — 核验 Velxio 开源嵌入式固件与 SPICE 协同仿真平台
+
+- 意图：将真实固件编译、CPU 指令仿真、ngspice-WASM 数模联合求解的架构整理为独立知识节点。
+- 一手资料：Velxio 官网与年付定价、官方 README / 架构文档 / 模拟器实现、作者在 Espressif Developer Portal 的技术文章。
+- 事实校正：正确拼写 Velxio；官网 35 板/6 类与源码 README 40 板/5 CPU 家族统计不一致；Linux 不是 ISA。
+- 开源结论：AGPL-3.0 核心开源，STM32 / 树莓派 Linux 等商业板卡后端及 AI Agent / 账号功能由私有 overlay 提供。
+- 沉淀：新增 [Velxio](../wiki/entities/velxio.md)，并与 [Wokwi](../wiki/entities/wokwi.md) 双向互链。
+
+## [2026-11-10] ingest | sources/papers/tf2_steering_tactile_forecast_arxiv_2611_01483.md — TF²-Steering 原文精读与唯一节点升级
+
+- **意图：** 将 11-04 周报的索引级 TF²-Steering 升级为直接阅读 arXiv v1 正文、附录的可检索知识节点；复用原项目身份，不新增重复实体。
+- **原文核验：** 阅读作者官方 HTML 全文，核对触觉预测/反馈双专家、Flow Matching 速度场修正、stop-gradient、异步 chunk 执行、三阶段训练和 Tables 1–7。
+- **结果与口径：** 六项仿真成功率 68.3%（较 FTP-1 摘要报告 +10.7 pp）；六项真机 PSR 71.5%（较 T-Rex +9.1 pp，非二值成功率）。
+- **开源结论（2026-11-10）：** 项目主页暂未提供可访问的 Code / 官方 GitHub 地址；已补方法 Mermaid 流程图，源码时序图不适用，不编造代码入口。
+- **修改：** 同步更新 sources/papers、sources/sites 与 wiki/entities/paper-tf2-steering-tactile-forecast.md；不改 catalog.md / log.md 等派生文件。
+
 ## [2026-11-10] ingest | 具身智能小站 11-10（22 篇：A²-MEAS 深读 + TPS-A* / 被动折叠四旋翼 + 19 篇扫读）：新建 20 个独立论文详情节点（逐篇通读核对小站说法），复用 2 个既有节点，新增来源归档与阅读坐标页
 
 ## [2026-11-10] ingest | sources/papers/dgm_arxiv_2505_22954v3.md | DGM arXiv v3

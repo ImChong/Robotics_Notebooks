@@ -5725,7 +5725,7 @@
 - [测试时智能综述：反馈驱动的适应、学习与扩展](wiki/entities/paper-test-time-intelligence-survey.md) — A Survey on Self-Improving Test-Time Intelligence: Feedback-Driven Adapting, Learning, and Scaling `📅unknown` `[entity_page]`
 - [Text2Motion](wiki/entities/paper-text2motion.md) — Text2Motion**（arXiv:2303.12153）收录于 Lumina [Embodied-AI-Guide 微 `📅unknown` `[entity_page]`
 - [TF-ART：接触学习要同时画模态和阶段](wiki/entities/paper-tf-art-tactile-force-survey.md) — TF-ART**（*Learning Physical Interaction: A Survey of Tactile- and Force-aware Robot Learning*；[arX `📅unknown` `[entity_page]`
-- [TF²-Steering（arXiv:2611.01483）](wiki/entities/paper-tf2-steering-tactile-forecast.md) — TF²-Steering**（*TF²-Steering: Action Refinement with Tactile Forecasts and Feedback via Velocity-F `📅unknown` `[entity_page]`
+- [TF²-Steering：以触觉预测与反馈引导速度场的动作精修 / Action Refinement with Tactile Forecasts and Feedback via Velocity-Field Steering](wiki/entities/paper-tf2-steering-tactile-forecast.md) — TF²-Steering**（Yiming Chen 等，2026；论文、[作者项目页](https://yiming-cc `📅unknown` `[entity_page]`
 - [TF8 / MC-RFSEA：Reaction-Force Series Elastic 仿生膝踝假肢](wiki/entities/paper-tf8-reaction-force-sea-prosthesis.md) — TF8**（MIT Media Lab Biomechatronics，Matthew Carney 等，[IEEE TMRB 2021](https://doi.org/10.1109/TMRB `📅unknown` `[entity_page]`
 - [TFGCA（arXiv:2609.09925）](wiki/entities/paper-tfgca-chunked-vla.md) — TFGCA**（*Time-Frequency Geometric Cross-Attention for Chunked Vision-Language-Action Models*，[arXi `📅unknown` `[entity_page]`
 - [THAW-VLA（arXiv:2609.24682）](wiki/entities/paper-thaw-vla.md) — THAW-VLA**（*Think Like a World Model, Act Like a VLA*，UW–Madison / UIUC，[arXiv:2609.24682](https:/ `📅unknown` `[entity_page]`
@@ -6493,6 +6493,7 @@
 - [Valera](wiki/entities/valera.md) — Valera**（GitHub）是 [GitHubStore《19 款能自己造的开源人形机器人》](http `📅unknown` `[entity_page]`
 - [Variable Chain Motor（可变链电机 / VC motor）](wiki/entities/variable-chain-motor.md) — Variable Chain Motor（VC motor，可变链电机）** 是东京大学团队提出的电动作动器：将 **四个小电机单元** 以「链式」集成，并通过 **专用电路** 在绕组 **串联 `📅unknown` `[entity_page]`
 - [Vast.ai](wiki/entities/vast-ai.md) — Vast.ai**（vast.ai）运营 **GPU 算力市场**：分散主机报价，用户按价格、显存、可靠性分数租卡，是国外 **极致低价** 实验路径。 `📅unknown` `[entity_page]`
+- [Velxio：真实固件与 SPICE 电路协同的嵌入式仿真平台](wiki/entities/velxio.md) — Velxio**（旧误拼 Vexlio）是嵌入式固件与外围电路的可视化仿真工作台：连线组装 Arduino、ESP32、Raspberry Pi Pico 等开发板，编译生成真实固件，通过指令级  `📅unknown` `[entity_page]`
 - [启明-1 Venus-1](wiki/entities/venus-1-four-link-wheel-legged-robot.md) — 启明-1 Venus-1**（GitHub）来自 [古 `📅unknown` `[entity_page]`
 - [agent-browser（Vercel Labs Skill）](wiki/entities/vercel-agent-browser-skill.md) — agent-browser**（vercel-labs/agent-browser）是面向 codi `📅unknown` `[entity_page]`
 - [VESC（开源大电流电机驱动）](wiki/entities/vesc.md) — VESC**（vesc-project.com）是 Benjamin Vedder 发起的开源电机控制器生态：固件仓 [vedderb/b `📅unknown` `[entity_page]`
