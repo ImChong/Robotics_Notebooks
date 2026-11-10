@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, autonomous-driving, vla, world-model, latent-reasoning, xiaomi]
 status: complete
-updated: 2026-11-09
+updated: 2026-11-10
 project_id: xiaomi-onevl
 arxiv: "2604.18486"
 venue: NeurIPS 2026
@@ -13,6 +13,7 @@ related:
   - ../methods/vla.md
   - ../methods/generative-world-models.md
   - ./paper-qwen-drive-1-0.md
+  - ./paper-plancontext.md
   - ../overview/e2e-autonomous-driving-top10-algorithms.md
 sources:
   - ../../sources/papers/onevl_arxiv_2604_18486.md
@@ -185,6 +186,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [PlanContext：上下文驾驶决策评测](./paper-plancontext.md) — 固定同一场景并切换导航意图，独立诊断 OneVL 等模型的执行/等待/拒绝能力；本基准 mPDMS、NCS 不与 OneVL 原文的 PDM-score 混用。
 - [VLA（Vision-Language-Action）](../methods/vla.md) — 视觉语言骨干接规划输出的模型家族。
 - [生成式世界模型](../methods/generative-world-models.md) — 未来视觉预测作为潜推理监督的归类边界。
 - [Qwen-Drive-1.0](./paper-qwen-drive-1-0.md) — 驾驶 VLM 的另一种感知、规划架构。
