@@ -8,6 +8,9 @@
 - **链接：** https://wokwi.com/
 - **文档：** https://docs.wokwi.com/
 - **入库日期：** 2026-06-24
+- **本次补充核对：** 2026-11-10
+- **核对范围：** 完整核读 Wokwi Docs 的 Welcome、Supported Hardware 与 ESP32 Simulation 三份官方页面；GDB、VS Code 和 CI 其他专题未在本次逐页重读。
+- **通读：** 已完成
 - **一句话说明：** 浏览器端 **嵌入式电子电路仿真器**：支持 Arduino、ESP32、STM32、Raspberry Pi Pico 等 MCU 与大量传感器/外设；提供 Wi-Fi 仿真、逻辑分析仪、GDB 调试、VS Code/CLion 插件与 **wokwi-cli** CI 集成；ESP-IDF 官方列为第三方仿真工具。
 - **沉淀到 wiki：** [Wokwi](../../wiki/entities/wokwi.md)、[电机底软通信总览](../../wiki/overview/motor-drive-firmware-bus-protocols.md)
 
@@ -30,7 +33,7 @@
 | **STM32** | STM32C031、STM32L031、STM32F103C8 |
 | **Pi Pico** | RP2040（双核 Cortex-M0+） |
 
-\* C5、S31 为 alpha；P4 为 beta。
+\* C5、P4、S31 为 beta（官方 Supported Hardware，2026-11-10）。
 
 另仿真大量 **传感器、显示器、舵机驱动、I2C/SPI/UART 外设** 与社区 **Chips API** 自定义元件。
 

@@ -16,6 +16,8 @@ related:
   - ./mosquitto.md
 sources:
   - ../../sources/sites/wokwi-com.md
+original:
+  - ../../sources/sites/wokwi-com.md
 summary: "Wokwi：浏览器端嵌入式电路仿真器，覆盖 Arduino/ESP32/STM32/Pico 与传感器外设；支持 Wi-Fi/MQTT、逻辑分析仪、GDB、VS Code/CLion 与 wokwi-cli CI——用于机器人固件 bring-up 与教学，而非刚体物理 RL 训练。"
 ---
 
@@ -101,6 +103,8 @@ flowchart LR
 - [ESP-IDF：Wokwi 第三方工具](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/third-party-tools/wokwi.html)
 
 ## 关联页面
+
+- [Velxio](./velxio.md) — 开源核心、真实固件与 ngspice-WASM 数模协同的嵌入式仿真平台；官网商业版与开源自部署能力须区分。
 
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [SimpleFOC](./simplefoc.md)
