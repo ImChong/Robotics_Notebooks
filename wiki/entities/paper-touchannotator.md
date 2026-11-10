@@ -87,6 +87,23 @@ flowchart LR
 | FPHA 零样本接触（124 序列） | RGB+估计手姿 | AUROC 0.7431、Recall 0.6169、F1 0.3658（HACO 0.7376 / 0.5742 / 0.3768；TouchAnything F1 0.1209） | Table 3 |
 | 自采手套录像（860 episode、21 任务） | 对比 TouchAnything | T.Acc 63.29→68.67，V.IoU 9.10→14.12，C.IoU 6.89→10.73，MAE 0.0830→0.0875（变差） | Table 4 |
 
+## 与其他工作对比
+
+| 工作 | 输入 / 监督 | 与 TouchAnnotator 的关系 |
+|------|-------------|--------------------------|
+| [TouchAnything](./paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md) | EgoTouch 手套压力数据与基线 | 主对照：自采录像 T.Acc 63.29→68.67，但 MAE 变差；FPHA F1 0.1209 对 0.3658；EgoTouch 划分等价性未核实 |
+| HACO（本站无独立页） | 仅 RGB 的接触估计 | FPHA 上 AUROC / Recall 略低于本文，F1 0.3768 高于本文；输入组别不同（Table 3） |
+| [HumanTouch](./humantouch.md)、[T-Rex](./paper-trex-tactile-reactive-dexterous-manipulation.md) | 压阻手套 / 机器人指尖形变 | 不是对手，而是被统一进 21×21 网格的监督来源（第 3.2 节） |
+
+## 结论
+
+**TouchAnnotator 的贡献是把手套压力、几何接触与机器人指尖形变统一成一个带掩码的训练目标，并用特权视图蒸馏让只看第一视角视频的学生输出双手接触与相对压力图。**
+
+1. source-aware mask 让异质触觉数据共训而不给未观测格虚构标签（第 3.2 节）。
+2. 腕部视图只在训练期给教师；同一 checkpoint 推理时加腕部视图，EgoTouch unseen T.Acc 0.8687→0.9127（Table 2）。
+3. 相对 TouchAnything 的提升主要体现在接触与体积交并比，MAE 反而略差；论文自称这些对比不足以支持全面领先的结论（第 4.2 节）。
+4. 输出是传感器相对响应而非标定的力，且 clip 内双向，只适合离线标注；下游策略收益未测（第 4.5、5 节）。
+
 ## 工程实践
 
 - **部署形态：** 输入一段 ego 视频，WiLoR 估计手姿，8 帧 / 15 Hz / 224×224 的 clip 逐段推理，输出 2×21×21 的压力与接触图（第 3.1、4.1 节，Table A.1）。因 clip 内双向，**只适合离线标注**，不适合逐帧在线反馈（第 5 节）。

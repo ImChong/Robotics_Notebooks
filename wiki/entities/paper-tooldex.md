@@ -83,6 +83,14 @@ flowchart TD
 | 人→机器人策略迁移 | Kinematic 14.0%、BC 4.6%、ManipTrans-RL 40.5%、Dex-X-RL **55.1%** | 论文选择的 6 个工具操作任务平均 |
 | 工具选择 / VLM | 工具识别、BBox IoU、轨迹距离 | 允许多个可接受工具；不能等同真机成功 |
 
+## 与其他工作对比
+
+| 工作 | 侧重 | 与 ToolDex 的区别 |
+|------|------|-------------------|
+| [Ego-Exo4D](./dataset-ego-exo4d.md) | 第一 / 第三视角同步的技能活动视频 | 同为 ego-exo 采集；ToolDex 聚焦桌面工具使用，并显式标注操作者、工具、目标、支撑物角色 |
+| [HOI4D](./dataset-hoi4d.md)、[ARCTIC](./dataset-arctic.md) | 手—物交互（含双手操作铰接物体）的 4D / 3D 真值 | 以「手与对象交互」为目标；ToolDex 关注工具经接触间接改变目标状态 |
+| [Dex-X](./paper-dex-x.md) | 人类视频 → 仿真 RL 教师 → 蒸馏策略 | 在 ToolDex 的 6 项策略迁移任务中作为基线，平均 55.1%，高于 ManipTrans-RL 40.5% |
+
 ## 结论
 
 **ToolDex 的价值在于将工具选择、接触传递与人机动作迁移放到同一个可量化的数据与基准框架中。**
