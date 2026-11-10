@@ -12,7 +12,7 @@ tags:
   - sim2real
   - unitree-g1
 status: complete
-updated: 2026-11-09
+updated: 2026-11-10
 arxiv: "2611.08664"
 related:
   - ../concepts/whole-body-control.md
@@ -23,12 +23,15 @@ related:
   - ../concepts/sim2real.md
   - ../entities/unitree-g1.md
   - ../entities/isaac-lab.md
+  - ../entities/paper-dkwbc.md
+  - ../entities/paper-step-spatiotemporal-humanoid-locomotion.md
   - ../entities/paper-haic.md
   - ../entities/paper-loco-manip-161-109-falcon.md
   - ../entities/paper-hulk-forceful-loco-manipulation.md
   - ../entities/paper-resmimic.md
 sources:
   - ../../sources/papers/forpc-cart-pushing_arxiv_2611_08664.md
+  - ../../sources/sites/forpc.md
 original:
   - ../../sources/papers/forpc-cart-pushing_arxiv_2611_08664.md
 summary: "ForPC（arXiv:2611.08664）：两阶段 RL 的力感知人形全身推车控制。先训带手部外力扰动的移动先验，再从机载观测推断力隐变量与状态隐变量，驱动残差策略协调臂、腰、腿；仿真最多降低车速 RMSE 68.2%，零样本迁移 Unitree G1 推 30 kg 车。"
@@ -36,7 +39,7 @@ summary: "ForPC（arXiv:2611.08664）：两阶段 RL 的力感知人形全身推
 
 # ForPC：力感知人形全身推车（arXiv:2611.08664）
 
-**ForPC**（*ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing*，[arXiv:2611.08664](https://arxiv.org/abs/2611.08664)，v1，2026-11-05，cs.RO）。作者 ZhenYu Zou 等（通讯作者 Cheng Cheng），论文首页未列机构，项目页 [roboforpc.github.io](https://roboforpc.github.io/) 为未填充的模板页，未见代码链接（未核实开源）。
+**ForPC**（*ForPC: Force-Aware Whole-Body Control for Precise Humanoid Cart Pushing*，[arXiv:2611.08664](https://arxiv.org/abs/2611.08664)，v1，2026-11-05，cs.RO）。作者 ZhenYu Zou 等（通讯作者 Cheng Cheng），论文首页未列作者机构；[官方项目页](https://roboforpc.github.io/) 已展示方法与真机实验，并标注 **Code Coming soon**（2026-11-10 核查），尚无可用算法源码。
 
 ## 一句话定义
 
@@ -103,7 +106,8 @@ flowchart TD
 - **复现要点：** 先训移动先验（带随机手部旋量与臂 / 腰姿态偏移，偏移范围与第二阶段残差范围匹配，第 4.1 节），冻结后再训残差与 teacher-student 估计器。
 - **部署链路：** 部署时去掉特权编码器，只保留归一化器、student 推断网络与任务策略；真机只用本体感知、关节力矩与 AprilTag 相对朝向（第 5.4 节）。
 - **硬件与设置：** Unitree G1 + Dex3-1 三指手固定抓握，腰 roll / pitch 固定，头部 RealSense（第 5.1 节）。关联实现可参考 [Isaac Lab](../entities/isaac-lab.md)、[Unitree G1](../entities/unitree-g1.md)。
-- **未披露项：** RL 算法名、网络结构细节、训练步数、奖励权重、随机化范围正文均未给出，复现需等代码（未见开放）。
+- **未披露项：** RL 算法名、网络结构细节、训练步数、奖励权重、随机化范围正文均未给出，复现需等代码。项目页标注 **Code Coming soon**（截至 2026-11-10）。
+- **源码运行时序图：** **不适用**（训练、推理与部署代码尚未发布，不能编造实际函数调用）。
 
 ## 结论
 
@@ -118,7 +122,7 @@ flowchart TD
 ## 局限
 
 - **作者自述：** 仅覆盖一种四脚轮平台车与固定抓握姿态，后续要扩展到其他轮式物体与接触模式，并加入更丰富的外部感知以应对杂乱环境（第 5.1、6 节）。
-- **读者观察（非作者结论）：** 定量对比只有仿真（Isaac Sim，速度跟踪另含 MuJoCo 的 sim-to-sim）；真机为定性演示，无与 Loco-only 的实机对照或误差表。仿真载荷只测 15 / 25 kg，30 kg 仅在真机演示。力与速度估计精度只在 Isaac Sim 内报告。内力比评估中各配置的手部载荷取自仿真参考旋量，而不是估计值（第 5.3.2 节）。基线只有自身消融，未与 HAIC、FALCON 等做数值对比。表 1 中 RMSF 并非每格 ForPC 最优。前向运动下各配置内力比都很高、差异小，作者给出的解释标为「可能」。机构与开源状态论文 / 项目页均未确认。
+- **读者观察（非作者结论）：** 定量对比只有仿真（Isaac Sim，速度跟踪另含 MuJoCo 的 sim-to-sim）；真机为定性演示，无与 Loco-only 的实机对照或误差表。仿真载荷只测 15 / 25 kg，30 kg 仅在真机演示。力与速度估计精度只在 Isaac Sim 内报告。内力比评估中各配置的手部载荷取自仿真参考旋量，而不是估计值（第 5.3.2 节）。基线只有自身消融，未与 HAIC、FALCON 等做数值对比。表 1 中 RMSF 并非每格 ForPC 最优。前向运动下各配置内力比都很高、差异小，作者给出的解释标为「可能」。论文未列作者机构；项目页提供研究展示并标注 **Code Coming soon**，源码仍未发布。
 
 ## 与其他工作对比
 
@@ -129,8 +133,15 @@ flowchart TD
 | [HULK](../entities/paper-hulk-forceful-loco-manipulation.md) | 论文引用其 150 kg 推拉车（第 2.1 节），ForPC 强调精确车速而非极限载重 |
 | [ResMimic](../entities/paper-resmimic.md) | 同为残差，但论文称其依赖逐任务参考动作与物体状态，推车无参考动作且车速不可测（第 2.3 节） |
 
+## 互补关系：与 DKWBC / STEP
+
+- [DKWBC](./paper-dkwbc.md) 用逆动力学 + PD 承担参考全身运动跟踪，RL 输出平衡力矩残差；ForPC 不跟踪任意全身动作参考，而是冻结移动先验，通过力与状态隐变量估计后输出**推车任务**残差，实机需 AprilTag 相对车朝向。
+- [STEP](./paper-step-spatiotemporal-humanoid-locomotion.md) 在深度与本体多模态下学习越障运动策略，而 ForPC 重点是双手接触力与载荷扰动；两者评测任务及指标不相同。
+
 ## 关联页面
 
+- [DKWBC：运动跟踪与平衡解耦](./paper-dkwbc.md)
+- [STEP：感知式人形运动](./paper-step-spatiotemporal-humanoid-locomotion.md)
 - [全身控制](../concepts/whole-body-control.md)
 - [残差策略学习](../methods/residual-policy-learning.md)
 - [特权训练](../concepts/privileged-training.md)
@@ -147,8 +158,9 @@ flowchart TD
 ## 参考来源
 
 - [forpc-cart-pushing_arxiv_2611_08664.md](../../sources/papers/forpc-cart-pushing_arxiv_2611_08664.md)
+- [ForPC 官方项目页核查](../../sources/sites/forpc.md)（截至 2026-11-10 标注 Code Coming soon）
 - [arXiv:2611.08664](https://arxiv.org/abs/2611.08664)
-- [项目页](https://roboforpc.github.io/)（模板页，未见代码链接）
+- [项目页](https://roboforpc.github.io/)（含 G1 真机演示，Code Coming soon）
 
 ## 推荐继续阅读
 
