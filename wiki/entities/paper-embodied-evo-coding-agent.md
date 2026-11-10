@@ -124,6 +124,13 @@ sequenceDiagram
 [`simulators/robodojo_api.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/simulators/robodojo_api.py)。
 代码执行发生在持久仿真会话内；仅 Playground 允许更新经验，Test 新 agent 的程序可改但共享 Skills/Lessons 冻结。具体源码路径见[源码归档](../../sources/repos/embodied-evo.md)。
 
+## 工程实践
+
+- **官方入口：** `pyproject.toml` 将 `embodiedevo` 映射至 `orchestrator.__main__:main`；命令 `explore`、`test`、`run` 分别对应 Playground、Test 与顺序运行。运行须先准备 Python 3.11+、Docker agent 镜像、RoboDojo/Isaac Sim 资产、可用 GPU 与模型凭据。
+- **可审计复现步骤：** 以同一 `--run-dir` 先执行 `embodiedevo explore --task RoboDojo --run-dir RUN --gpu 0`，再执行 `embodiedevo test --task RoboDojo --run-dir RUN --gpu 0`；首次探索需使用实际配置的 native task 和资源。不要把命令能启动等同于论文结果可复现。
+- **隔离和安全约束：** `session_runner.explore` 仅冻结 `skills/` 与 `lessons/` 并记录内容哈希；`session_runner.test` 为每个 Test 场景创建独立 agent。源码 `Session.handle` 拒绝 Test 中调用 `reset`，且每次代码执行会推进持久仿真状态，不能当作无副作用的离线推理。
+- **验收建议：** 先验证 Playground / Test 分离、Test 场景之间经验不写回和控制程序的可执行性，再评估任务成功率、单次原生动作预算与错误日志；真机控制还需独立安全措施和接口验证。
+
 ## 实验与评测
 项目页 **2026-10-09 RoboDojo leaderboard 快照**报告下列结果。各参评系统协议不完全相同，不能解释为严格同条件排名。
 
