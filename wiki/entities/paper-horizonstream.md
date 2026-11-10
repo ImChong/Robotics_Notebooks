@@ -168,7 +168,7 @@ sequenceDiagram
     Core->>Model: advance_sequence_state(state, is_last_chunk)
     Model->>Cache: advance: state_new -> state_ori
   end
-  Core->>Out: compute_motion_averaged_camera_maps; save poses/depth/points
+  Core->>Out: compute_motion_averaged_camera_maps and save poses/depth/points
   Out-->>CLI: output-root sequence artifacts
   opt enabled loop closure and required assets ready
     CLI->>Loop: run_loop_closure_cfg -> run_online_loop_reinfer
