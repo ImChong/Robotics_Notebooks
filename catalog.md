@@ -2105,6 +2105,7 @@
 - [DAMP：去噪信念学习 + 对抗动作先验的人形运动控制](wiki/entities/paper-damp-humanoid-denoised-belief-amp.md) — DAMP**（*Humanoid Locomotion via Denoised Belief Learning and Adversarial Motion Priors*，arXiv:2610 `📅unknown` `[entity_page]`
 - [DAPL：杂乱场景中的外在灵巧性（Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning）](wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md) — DAPL**（*Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning*，[arXi `📅unknown` `[entity_page]`
 - [DART：SAM3 实时多类别开放词汇检测](wiki/entities/paper-dart-sam3-realtime.md) — DART**（*Detect Anything in Real Time*；论文 *From Single-Prompt Segmentation to Multi-Class Detection `📅unknown` `[entity_page]`
+- [Darwin Gödel Machine（DGM）：达尔文哥德尔机——自我改进智能体的开放式进化](wiki/entities/paper-darwin-godel-machine.md) — 论文：** *Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents*（[arXiv:2505.22954v3](h `📅unknown` `[entity_page]`
 - [DASH：面向串联机械臂与人形机器人的达芬奇器械适配器](wiki/entities/paper-dash-da-vinci-adapter.md) — DASH**（*A da Vinci Adapter for Serial-link and Humanoid Robots as an Accessible Platform for Surgi `📅unknown` `[entity_page]`
 - [DASH：分歧自适应的 OPSD 监督视界](wiki/entities/paper-dash-opsd.md) — DASH**（*Divergence-Adaptive Supervision Horizons*；[arXiv:2608.06243](https://arxiv.org/abs/2608.06 `📅unknown` `[entity_page]`
 - [DAT：Divide and Truncate 多物理无穿透接触](wiki/entities/paper-dat-divide-and-truncate.md) — Divide and Truncate（DAT）**（*A Penetration and Inversion Free Framework for Coupled Multi-physics S `📅unknown` `[entity_page]`
