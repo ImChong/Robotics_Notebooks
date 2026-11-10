@@ -926,6 +926,7 @@
 - [LocoMuJoCo](wiki/entities/loco-mujoco.md) — LocoMuJoCo](https://github.com/robfiras/loco-mujoco) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXia `📅unknown` `[entity_page]`
 - [LocoLeggedWheel](wiki/entities/locoleggedwheel.md) — LocoLeggedWheel**（GitHub）来自 [古月居转载的四足机器人开源项目综述 `📅unknown` `[entity_page]`
 - [Logo Design Skill](wiki/entities/logo-design-skill.md) — Logo Design Skill** 是一个跨 Claude、Gemini CLI、Codex 等支持 Agent Skills 的 Logo 设计技能：它把品牌发现、概念发散、SVG 构造与实 `📅unknown` `[entity_page]`
+- [LongCat-2.5（美团原生多模态与 Agent 基座）](wiki/entities/longcat-2-5.md) — LongCat-2.5** 是美团发布的原生多模态 MoE 基座，合并离散视觉表示、长程 Agent 强化学习、多教师在线策略蒸馏与大规模推理部署：**总参数约 1.6T、每 token 激活约  `📅unknown` `[entity_page]`
 - [Lot Vulture](wiki/entities/lotvulture.md) — Lot Vulture**（lotvulture/lotvulture，[lotvulture.com](h `📅unknown` `[entity_page]`
 - [Low Cost Mocap](wiki/entities/low-cost-mocap.md) — Low Cost Mocap** 是 Joshua Bird 开源的室内光学动捕系统：多台改装 PS3 Eye 相机跟踪无人机上的红外 LED，通过多视角几何获得房间坐标中的目标位置，并经 ESP `📅unknown` `[entity_page]`
 - [Lumina 具身智能社区](wiki/entities/lumina-embodied.md) — Lumina**（官网 <https://lumina-embodied.ai/>，GitHub Org <https://github.com/Lumina-EAI>）是由十余位具身智能方向研究 `📅unknown` `[entity_page]`
@@ -3082,6 +3083,7 @@
 - [Lodos: A Lightweight Simulator Designed for Contact-Rich Interactions with Detailed Meshes](wiki/entities/paper-lodos.md) — arXiv:2611.08872](https://arxiv.org/abs/2611.08872)（v1，2026-11-06）；作者 Onur Beker、A. René Geist、Geor `📅unknown` `[entity_page]`
 - [LOGIV（arXiv:2610.40016）](wiki/entities/paper-logiv.md) — LOGIV**（*LOGIV: Graph-Verified Execution with Causal Local Repair for Long-Horizon Robot Tasks*，[a `📅unknown` `[entity_page]`
 - [Long-WAM：Scaling the Context of World-Action Models](wiki/entities/paper-long-wam-scaling-context.md) — Long-WAM**（*Long-WAM: Scaling the Context of World-Action Models*）研究因果世界–动作模型（WAM）如何利用更长的观测历史。它保持未 `📅unknown` `[entity_page]`
+- [LongCat-Next: Lexicalizing Modalities as Discrete Tokens（将多模态词汇化为离散 Token）](wiki/entities/paper-longcat-next.md) — LongCat-Next**（美团 LongCat 团队，arXiv:2603.27538v1）以 **DiNA（Dis `📅unknown` `[entity_page]`
 - [LongLive 2.0：NVFP4 并行长视频生成基础设施 / An NVFP4 Parallel Infrastructure for Long Video Generation](wiki/entities/paper-longlive-2-nvfp4-long-video-generation.md) — LongLive 2.0** 将 Balanced Sequence Parallelism、NVFP4 训练、DMD LoRA 蒸馏与 W4A4/KV Cache 量化、流式 VAE 解码联合设 `📅unknown` `[entity_page]`
 - [Look Before You Leap（LBYL）](wiki/entities/paper-look-before-you-leap.md) — Look Before You Leap（LBYL）**（arXiv:2311.17842）收录于 Lumina [Embo `📅unknown` `[entity_page]`
 - [LooperMuscle：结构化 MoE 加速人形全身跟踪](wiki/entities/paper-loopermuscle.md) — LooperMuscle**（*LooperMuscle: Fast and Stable Learning of Humanoid Whole-Body Tracking via Structu `📅unknown` `[entity_page]`
