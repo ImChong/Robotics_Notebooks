@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, planning, footstep, contact-sequence, dcm, mpc]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-10
 summary: "Footstep Planning 负责决定腿式机器人下一步踩哪里、踩多久，是地形感知和控制执行之间的关键桥梁。"
 sources:
   - ../../sources/papers/mpc.md
@@ -10,6 +10,7 @@ sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/papers/cref_arxiv_2603_29452.md
+  - ../../sources/papers/humanoid-footstep-planning-gcs-ral-2026.md
 related:
   - ../entities/paper-se2-navigation-mesh.md
   - ../queries/contact-wrench-closed-loop.md
@@ -18,6 +19,7 @@ related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-cref.md
+  - ../entities/paper-humanoid-footstep-planning-gcs.md
 ---
 
 # Footstep Planning（步位规划）
@@ -87,6 +89,10 @@ related:
 
 [CReF](../entities/paper-cref.md)（arXiv:2603.29452）不输出显式步位：从足端局部点云抽 **平面、近水平、非凹陷** 候选窗，触地时奖励靠近最近候选。部署仍是端到端深度策略。相对 FastStair 的 DCM 硬监督，这是 **软塑形**；相对「禁止踩」接触质量项，它给出朝向可支撑区的方向。
 
+### 8. 凸集图（GCS）联合规划离散步序与连续落脚点
+
+[Humanoid Footstep Planning using Graphs of Convex Sets](../entities/paper-humanoid-footstep-planning-gcs.md)（IEEE RA-L 2026）将地形与运动学可达性写为非凸 QCQP，以运动模式关联的可行凸区域作为图节点、可行模式转换作为边，并通过 GCS 和 SDP 凸松弛联合优化步序与脚位置。论文摘要报告在 TORO 上验证；**尚未通读全文，数值性能和源码状态待核实**。与上面的 FastStair 不同，此处是**显式在线规划**问题，不是将落脚搜索作为 RL 训练监督。
+
 ---
 
 ## 与其他模块的关系
@@ -138,6 +144,7 @@ related:
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — ingest 档案（MICP / CITO / Tonneau 综述）
 - [sources/papers/faststair_arxiv_2601_10365.md](../../sources/papers/faststair_arxiv_2601_10365.md) — 并行 DCM 落脚点 + RL 三阶段训练上楼梯
 - [sources/papers/cref_arxiv_2603_29452.md](../../sources/papers/cref_arxiv_2603_29452.md) — CReF 足端点云可支撑落脚奖励
+- [GCS 步位规划论文归档](../../sources/papers/humanoid-footstep-planning-gcs-ral-2026.md) — QCQP／模式感知 GCS／SDP；原文待通读
 - Pratt et al., *Capture the Flag: Instantaneous Capture Point for Humanoid Push Recovery* (2006) — CP 步位规划基础
 - Bledt et al., *MIT Cheetah 3: Design and Control of a Robust, Dynamic Quadruped Robot* (2018) — 接触序列在线规划
 
@@ -153,6 +160,7 @@ related:
 - [Gait Generation](./gait-generation.md) — 步态模式是步位规划的上游输入
 - [Terrain Adaptation](./terrain-adaptation.md) — 把地形感知转成可落脚区域与在线重规划
 - [CReF](../entities/paper-cref.md) — 足端点云可支撑落脚奖励；训练塑形，部署无规划器
+- [GCS 人形步位规划（RA-L 2026）](../entities/paper-humanoid-footstep-planning-gcs.md) — 离散步序与连续脚位置联合优化
 
 ---
 
