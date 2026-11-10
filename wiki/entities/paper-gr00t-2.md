@@ -69,11 +69,13 @@ flowchart TD
     WAM --> FUT["预测未来视频帧"]
     WAM --> HEAD["本体专属动作解码"]
     HEAD --> CHUNK["动作 chunk / 潜在全身命令"]
-    CHUNK --> BODY["机器人执行器"]
+    CHUNK --> BODY["夹爪/灵巧手机器人本体控制器"]
+    CHUNK --> SON["G1 路径：SONIC 50 Hz"]
+    SON --> G1["Unitree G1 关节执行"]
     BODY --> OBS["新观测与本体状态"]
+    G1 --> OBS
     OBS --> CAM
     OBS --> STA
-    CHUNK --> SON["G1 路径：SONIC 50 Hz"]
 ```
 
 注：图中 SONIC 是 G1 路径的执行接口，非所有本体通用的控制器；预测的视频是模型生成的未来画面，不是环境真值。
