@@ -5,7 +5,6 @@ tags: [paper, nvidia, vla, world-model, world-action-model, cross-embodiment, de
 status: draft
 updated: 2026-11-10
 project: https://research.nvidia.com/labs/gear/gr00t-2/
-paper: https://research.nvidia.com/labs/gear/gr00t-2/assets/gr00t2_whitepaper.pdf
 related:
   - ./paper-gr00t-n1-7.md
   - ./paper-gr00t-n1-5.md
