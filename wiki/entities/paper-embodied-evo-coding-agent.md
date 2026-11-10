@@ -3,7 +3,7 @@ type: entity
 project_id: embodied-evo-coding-agent
 tags: [paper, robotics, coding-agent, agentic, memory, self-improvement, physical-ai, simulation, tsinghua, arxiv]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-10
 arxiv: "2610.18867"
 project: https://lab.einsia.ai/embodiedevo/
 code: https://github.com/Einsia/EmbodiedEvo
@@ -11,6 +11,8 @@ related:
   - ./paper-robo-harness.md
   - ./paper-asena-self-evolving-agents.md
   - ../concepts/behavior-tree-vla-orchestration.md
+original:
+  - ../../sources/papers/embodied_evo_arxiv_2610_18867.md
 sources:
   - ../../sources/papers/embodied_evo_arxiv_2610_18867.md
   - ../../sources/sites/embodied-evo.md
@@ -63,33 +65,64 @@ summary: "EmbodiedEvo 把 RoboDojo-Sim 交互反馈沉淀为代码 Skills 与诊
 ### 流程总览
 ```mermaid
 flowchart LR
-  P["Playground 单场景探索"] --> C["编写并执行 Python 控制程序"]
-  C --> F["读取物理反馈与失败信号"]
-  F --> S["修订 Skills 与 Lessons"]
-  S --> Z["冻结经验文件"]
-  Z --> T["新 agent 进入未见 Test 场景"]
-  T --> C
+  subgraph PG["Playground：单场景，可 reset"]
+    P["观察任务和当前状态"] --> C["编写并执行 Python 程序"]
+    C --> F["获取视觉、状态与执行反馈"]
+    F --> S["修订可写 Skills 和 Lessons"]
+    S -->|"继续探索"| P
+  end
+  S -->|"仅导出经验文件"| Z["冻结 Skills 和 Lessons"]
+  subgraph TEST["Test：新场景与独立 agent，不可 reset"]
+    T["加载只读经验"] --> R["适配当前场景的控制代码"]
+    R --> E["执行原生动作并读取反馈"]
+    E -->|"只修订当前程序"| R
+  end
+  Z --> T
 ```
 
 流程的关键是经验跨回合保留、测试场景彼此隔离：Test agent 每次从冻结经验开始，场景内继续闭环适配，但不写回共享经验或 reset 重试同一场景。
 
 ## 源码运行时序图
+
+以下时序核对了官方源码入口和模块调用，**不是**通用的 agent 示意图：
+
 ```mermaid
 sequenceDiagram
   autonumber
-  participant O as Orchestrator
-  participant A as Coding Agent
-  participant E as RoboDojo Adapter
-  participant S as Simulator
-  O->>A: 提供任务说明、接口手册与 Skills/Lessons
-  A->>E: 提交 Python 控制程序
-  E->>S: 执行原生动作
-  S-->>E: 返回图像、机器人状态与完成信号
-  E-->>A: 返回观测、日志与剩余预算
-  A->>A: 修订程序并在 Playground 更新经验
-  O->>O: 冻结经验并启动新 Test agent
+  participant CLI as embodiedevo CLI
+  participant Runner as orchestrator.session_runner
+  participant Agent as Docker Coding Agent
+  participant Client as scripts/env.py
+  participant Host as orchestrator.session.Session
+  participant Code as simulators.execution.CodeTask
+  participant API as RoboDojoLowLevelApi
+  participant Sim as RoboDojo Simulator
+  CLI->>Runner: explore / run，准备 Playground
+  Runner->>Host: run_episode，启动固定 seed 会话
+  Runner->>Agent: 创建 workspace 并提供 instruction.md
+  loop 单场景交互与程序修订
+    Agent->>Client: exec submission/solution.py，可 include Skills
+    Client->>Host: Unix socket 发送代码快照
+    Host->>Code: environments.execute(env, code)
+    Code->>API: Python 内调用 step(action)
+    API->>Sim: control_step(action)
+    Sim-->>Code: 图像、机器人状态与完成信号
+    Code-->>Host: 程序输出、反馈和动作统计
+    Host-->>Client: 记录 observations 和执行状态
+    Client-->>Agent: 返回反馈，决定修订及下一次操作
+  end
+  Runner->>Runner: 仅冻结 skills/、lessons/ 与 hashes
+  Runner->>Agent: Test 各新场景复制只读经验
+  Note over Agent,Host: Test 禁止 reset，不共享跨场景写入
 ```
-仓库 README 将 freeze/Test 生命周期放在 orchestrator，将 Python 执行和 RoboDojo 适配放在 environments、simulators；该图描述论文的运行时交互，不代表训练模型权重的过程。
+
+源码依据：[`orchestrator/__main__.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/orchestrator/__main__.py) →
+[`orchestrator/session_runner.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/orchestrator/session_runner.py) →
+[`tasks/RoboDojo/Workspace/scripts/env.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/tasks/RoboDojo/Workspace/scripts/env.py) →
+[`orchestrator/session.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/orchestrator/session.py) →
+[`simulators/execution.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/simulators/execution.py) /
+[`simulators/robodojo_api.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/simulators/robodojo_api.py)。
+代码执行发生在持久仿真会话内；仅 Playground 允许更新经验，Test 新 agent 的程序可改但共享 Skills/Lessons 冻结。具体源码路径见[源码归档](../../sources/repos/embodied-evo.md)。
 
 ## 实验与评测
 项目页 **2026-10-09 RoboDojo leaderboard 快照**报告下列结果。各参评系统协议不完全相同，不能解释为严格同条件排名。
@@ -103,7 +136,13 @@ sequenceDiagram
 | Memory | 71.90 | 69.67% |
 | Open | 55.52 | 53.00% |
 
-配对实验中，继承经验后成功率从 **8.50%** 提高到 **30.17%**。Astra 经验迁移至 Sol / Luna 后，成功率分别增加 **8.86 / 5.50 个百分点**。Skills / Lessons 与原始交互历史的成功率为 **30.17% / 29.78%**，论文估算每回合成本从 **$12.203** 降至 **$5.732**（下降 53.0%）。
+**实验口径：** Full Evaluation 使用 42 任务 × 每任务 50 个场景（2,100 episodes），包含任务描述与官方 wiki；以下对照主要使用 42 任务 × 5 场景（210 episodes），仅任务描述，均是固定执行器与配对场景，不能将不同实验设置的百分比直接相减。
+
+配对实验中，继承经验后成功率从 **8.50%** 提高到 **30.17%**。Astra 经验迁移至 Sol / Luna 后，成功率分别增加 **8.86 / 5.50 个百分点**。Skills / Lessons 与原始交互历史的成功率为 **30.17% / 29.78%**。
+
+**成本有两个基准：** 无经验 Test 约 **$4.058/episode**，继承 Skills/Lessons 为 **$5.732**（约 **+41.3%**）；直接输入原始探索历史为 **$12.203**，相对后者才节省 **53.0%**。这些均是基于 token 费率的 **Test 阶段估算，不含 Playground 采集经验的费用**。
+
+跨任务测试（12 个目标任务）中，相关 / 标签不相似任务经验分别带来 **+14.72 / +16.67 个百分点** SR 增益；未在 Playground 完成的传送带按图抓取任务仍可把新场景 SR 从 **0% 提高到 40%**。这说明任务是否完成不等同于局部技能是否有复用价值，但跨任务也存在无收益或回退（详见论文 §4.4–4.5、附录 C–D）。
 
 ## 与其他工作对比
 
@@ -129,7 +168,7 @@ sequenceDiagram
 - **仿真外推：** 报告的基准是 RoboDojo-Sim，不能替代真机验证。
 - **接触精度：** Precision 成功率为 13.25%；到达目标位姿不等于稳定抓取或精密接触。
 - **长时程：** Long-Horizon 成功率为 23.50%；中间步骤进展不保证最终任务完成。
-- **成本口径：** 53.0% 是按论文模型 token 费率估算，不是实际账单保证。
+- **成本口径：** 相较原始历史的 -53.0% 不代表相较无经验也省钱；后者实为约 +41.3%。均按模型 token 费率估算且不含 Playground 成本。
 - **开源边界：** 官方源码已公开，但项目级许可证未选定，运行还依赖独立模拟器资产、GPU 和模型服务。
 
 ## 关联页面
@@ -137,6 +176,10 @@ sequenceDiagram
 - [ASENA](./paper-asena-self-evolving-agents.md) — 使用环境反馈改进具身导航 agent，任务和经验表示不同。
 - [RAX](./rax-scaling-online-exploration.md) — 冻结 coding agent 经机器人 API 在线探索，再把成功经验编译成可复用的感知—规划—控制程序。
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 具身 agent 的任务分解与执行编排。
+
+## 原文通读与版本
+- **论文：** [arXiv HTML v2](https://arxiv.org/html/2610.18867v2)，2026-10-14；已核对 §1–6、附录 A–F、完整 Agent Trace（附录 F）。原文通读状态与范围记录在[论文来源归档](../../sources/papers/embodied_evo_arxiv_2610_18867.md)。
+- **源码：** 已阅读 CLI、orchestrator、Unix socket 客户端、持久会话与 RoboDojo adapter 关键路径；尚未在真实 RoboDojo/Isaac Sim 环境重放实验。
 
 ## 参考来源
 - [论文来源归档](../../sources/papers/embodied_evo_arxiv_2610_18867.md)
