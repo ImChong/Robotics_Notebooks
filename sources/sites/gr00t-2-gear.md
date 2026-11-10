@@ -7,7 +7,7 @@
 - **发布日期：** 2026-11（项目页）
 - **入库日期：** 2026-11-10
 - **代码：** **待发布**；项目页顶部明确写 `Code Available in December`，截至入库日无 GR00T 2 对应公开代码入口
-- **数据：** [Human-1M-100K（Hugging Face）](https://huggingface.co/datasets/nvidia/Human-1M-100K)（项目页声明 10 万小时人类视频公开；具体卡片权限/许可未单独核验）
+- **数据：** [Human-1M-100K（Hugging Face）](https://huggingface.co/datasets/nvidia/PhysicalAI-Human-1M-100K)（项目页声明 10 万小时人类视频公开；具体卡片权限/许可未单独核验）
 - **核对范围：** 2026-11-10 阅读 NVIDIA GEAR 项目页全部可抓取的文字：介绍、架构、三类预训练数据、72 任务人类视频规模消融、X-Adapt 三条迁移路径、双灵巧手、50 任务零/少样本适配、真机 RL、Agentic WAM API、visual steering、Turbo/SONIC/G1、Sim2Real、real-to-sim 评测与参考引文。网页中的嵌入视频与动态图表未逐帧观看；白皮书全文及附录不属于本条核对范围，另见论文归档。
 - **通读：** 已完成
 
