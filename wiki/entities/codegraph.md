@@ -20,6 +20,7 @@ related:
   - ./kensaku.md
   - ./understand-anything.md
   - ./open-code-review.md
+  - ./kensaku.md
   - ../concepts/agentic-coding-software-fundamentals.md
 sources:
   - ../../sources/repos/colbymchenry-codegraph.md
@@ -86,6 +87,7 @@ flowchart TD
 |------|----------|----------------|
 | **CodeGraph** | Tree-sitter / 静态关系图、MCP 查询、文件变化自动同步 | agent 需要代码级符号、调用路径和变更影响上下文 |
 | [Kensaku](./kensaku.md) | 本地文件名、全文、OCR 与语义搜索，CLI/MCP 接入 | 从多格式文件和截图中查找错误、文档与代码文本（不构建跨文件调用关系图） |
+| [Kensaku](./kensaku.md) | 面向本地文件名、OCR 文本、PDF/Office/代码全文与语义搜索，支持只读 MCP/CLI | Agent 需要定位文件、错误截图或跨格式文档内容，而非解析函数调用关系 |
 | [Graphify](./graphify.md) | 从代码与文档等混合资料构建知识图，可结合语义抽取和图遍历 | 探索包含代码、文档、论文等多类材料的资料目录 |
 | [Understand Anything](./understand-anything.md) | 结构分析加业务语义视图、导览与交互式 dashboard | 需要面向人的代码库导览和高层业务解释 |
 
@@ -107,6 +109,7 @@ flowchart TD
 
 - [Kensaku](./kensaku.md) — 本地跨格式文件检索与只读 MCP，可作为查找文档、日志和截图的互补工具。
 
+- [Kensaku](./kensaku.md) — 本地文件名、全文与 OCR 检索；和 CodeGraph 的代码依赖图分析互补。
 - [Graphify](./graphify.md) — 从代码与文档等混合语料构建可遍历图，语义抽取范围更广。
 - [Understand Anything](./understand-anything.md) — 代码图谱结合业务语义视图、导览与 dashboard。
 - [Open Code Review](./open-code-review.md) — 对变更 diff 做结构化代码评审；可与代码库结构探索互补。
