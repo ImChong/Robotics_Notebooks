@@ -84,6 +84,10 @@ flowchart TB
 - **同时押注 VLA 和 WAM 两条路线：** LingBot-VLA 走「看到 → 直接出动作」，LingBot-VA 走「边想象未来边出动作」，便于在同一数据体系下对照这两条路线。
 - **引用纪律：** 下文的数据小时数、成功率、帧率均为 **官方披露 / 官方自报**，除 README 公开的基准外未见第三方独立复现。
 
+## 核心机制：能力分层而非单模型串行
+
+LingBot 各模型按感知、空间、世界建模和策略输出分工。Vision / Depth / Map 形成几何感知能力，Video / World / VA 分别面向视频预训练、动态预测与动作耦合，VLA 承担机器人动作学习；[LingBot-Touch](./paper-lingbot-touch.md) 是**并行的触觉 encoder**，通过规范化传感器信号给下游操纵策略提供接触特征。各模块可以独立评估，不能把下面的模型阅读顺序当作真实在线推理调用栈。
+
 ## Physical AI 技术栈全景
 
 ### LingBot 按层组织
@@ -130,6 +134,12 @@ flowchart TB
 | Depth → VLA 2.0 | Dual-Query 以 LingBot-Depth（几何）+ DINO-Video（时序语义）为教师 | [LingBot-VLA 2.0](./lingbot-vla-v2.md) |
 
 读者可以这样回答「Robbyant 怎么从感知走到真机控制」：底下三层（Vision / Depth / Map）负责把像素变成**可度量的几何状态**；中间两层（Video / World）负责学**物理世界的动态**；上面两层（VA / VLA）负责把前面的能力落到**机器人动作**。
+
+## 工程实践
+
+- 各模型须按[官方技术入口](../../sources/sites/technology-robbyant-com.md)和相应 GitHub README 独立选择权重、推理依赖、机器人适配接口。
+- 优先使用各模型仓库的可验证样例与 baseline；VLA、世界模型与触觉 encoder 的输出/输入不自动兼容，需要单独验证部署链和控制安全。
+- LingBot-Touch 最新开放边界见[源码核验](../../sources/repos/lingbot-touch-official.md)：公开的是冻结 encoder 特征提取与 Tiny/Small 权重，不是完整预训练或真机任务训练管线。
 
 ## LingBot-Touch
 
