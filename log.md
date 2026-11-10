@@ -311,6 +311,8 @@ op: ingest
 - **项目：** <https://robolineage.github.io/>
 - **代码：** <https://github.com/robolineage/robolineage>
 
+## [2026-11-10] ingest | 具身智能小站 11-10（22 篇：A²-MEAS 深读 + TPS-A* / 被动折叠四旋翼 + 19 篇扫读）：新建 20 个独立论文详情节点（逐篇通读核对小站说法），复用 2 个既有节点，新增来源归档与阅读坐标页
+
 ## [2026-11-10] ingest | sources/papers/dgm_arxiv_2505_22954v3.md | DGM arXiv v3
 
 - **意图：** 将 Darwin Gödel Machine（Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents）整理为 Robotics_Notebooks 可检索的独立中英双语知识实体，复用已有源码归档。
