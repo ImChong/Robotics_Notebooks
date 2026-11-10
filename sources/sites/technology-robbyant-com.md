@@ -7,7 +7,10 @@
 - **机构：** 蚂蚁灵波科技（Robbyant），蚂蚁集团旗下
 - **官方入口：** <https://technology.robbyant.com/>
 - **入库日期：** 2026-09-29
-- **一句话说明：** 官方把 LingBot 七个模型按「感知 → 空间 → 视频 → 世界 → 动作」组织成全栈具身智能叙事；本档补齐 Vision / Depth / Video / VA 2.0 四个此前未单独归档的项目页。
+- **核验更新：** 2026-11-10
+- **核对范围：** 官方 technology.robbyant.com 首页完整正文、页首分类与八个模型家族简述、页底官方 GitHub/Hugging Face/ModelScope 入口；LingBot-Touch 作为第八条模型家族已核对。下文四个项目页的历史重点摘要保留原有 2026-09-29 入库口径，不将其等同于这些项目的论文全文复核。
+- **通读：** 已完成
+- **一句话说明：** 官方把 LingBot 八个模型按「感知 → 空间 → 视频 → 世界 → 动作」组织成全栈具身智能叙事；本档补齐 Vision / Depth / Video / VA 2.0 四个此前未单独归档的项目页。
 - **为什么值得保留：** 版本号（如 VA 2.0、World 2.0）与每个模型的一句话定位以官网为准；VA 2.0 的架构细节目前只在项目页和仓内 PDF 中公开。
 
 ## 首页叙事（2026-09-29 抓取，引号内为原文）
@@ -17,6 +20,7 @@
 
 | 模型（官网版本号） | 官网一句话 |
 |--------------------|------------|
+| LingBot-Touch 1.0 | "A JEPA‑based tactile foundation model that unifies heterogeneous tactile sensors and transfers to dexterous hands without extra training." |
 | LingBot-Vision 1.0 | "A spatial‑perception‑native vision foundation model by masked boundary modeling" |
 | LingBot-Depth 1.0 | "High‑accuracy depth perception that helps robots see transparent and reflective objects" |
 | LingBot-Map 1.0 | "A pure autoregressive streaming 3D reconstruction foundation model for high‑accuracy reconstruction over 10,000+ video frames" |
