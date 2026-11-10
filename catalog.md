@@ -2969,6 +2969,7 @@
 - [LIMBO（arXiv:2609.22075）](wiki/entities/paper-limbo-barrier-objectives-wbc.md) — LIMBO**（*LIMBO: Learning and Internalizing Model-Free Barrier Objectives for Agile and Safe Whole- `📅unknown` `[entity_page]`
 - [The Linear Representation Hypothesis for Vision-Language-Action Models](wiki/entities/paper-linear-representation-vla.md) — 该工作检验VLA潜在表示是否存在可线性操控的任务变量。 `📅unknown` `[entity_page]`
 - [LingBot-Map：流式 3D 重建几何上下文 Transformer](wiki/entities/paper-lingbot-map.md) — LingBot-Map**（*LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction*，arXiv: `📅unknown` `[entity_page]`
+- [LingBot-Touch：面向通用灵巧操作的异构触觉基础表征模型](wiki/entities/paper-lingbot-touch.md) — Learning Heterogeneous Tactile Representation for General Dexterous Manipulation `📅unknown` `[entity_page]`
 - [连杆驱动人形灵巧手：基于连杆驱动的全关节人形灵巧手](wiki/entities/paper-linkage-driven-humanoid-dexterous-hand.md) — 连杆驱动人形灵巧手**（*A Fully Articulated Humanoid Dexterous Hand with Human-Level Joint Structure Enabled  `📅unknown` `[entity_page]`
 - [ListenVLA：音频条件的机器人操作](wiki/entities/paper-listenvla-audio-conditioned-manipulation.md) — ListenVLA 让 VLA 把声音当作条件输入：某些物体状态或交互结果只能通过声音判断时，策略可以据此调整动作。 `📅unknown` `[entity_page]`
 - [LIT（arXiv:2609.12641）](wiki/entities/paper-lit-latent-interface-training.md) — LIT**（[Breaking the Vision-Action Shortcut: Latent Interface Training for Generalizable Robotics F `📅unknown` `[entity_page]`
