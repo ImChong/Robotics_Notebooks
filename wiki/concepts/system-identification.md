@@ -373,6 +373,7 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - Hwangbo et al., *Control of a Quadrotor With Reinforcement Learning*（可类比理解执行器与模型 gap 处理）
 
 ## 关联
+- [动力学仿真与动力学标定](./robot-dynamics-simulation-vs-calibration.md)
 
 - [Sim2Real](./sim2real.md)、[关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)、[关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)、[FloBaRoID](../entities/flobaroid.md)、[PRIME](../entities/prime-system-id.md)
 
