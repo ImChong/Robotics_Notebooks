@@ -94,9 +94,9 @@ flowchart TD
 
 一轮工作流可表示为：
 
-[
-(b,\tau,c_k)\rightarrow \mathcal{R}_k\rightarrow\mathcal{A}_k\rightarrow D_k\rightarrow T_k\rightarrow\pi_k\rightarrow\mathcal{E}_k\rightarrow G_k
-]
+$
+(b,\tau,c_k)\rightarrow\mathcal{R}_k\rightarrow\mathcal{A}_k\rightarrow D_k\rightarrow T_k\rightarrow\pi_k\rightarrow\mathcal{E}_k\rightarrow G_k
+$
 
 这里 \(\mathcal{R}_k\) 是采集回合，\(\mathcal{A}_k\) 是审阅和准入 artifact，\(D_k\) 是锁定数据集，\(T_k\) 是训练，\(G_k\) 是下一轮的部署/回退/复采治理决策。谱系图 \(\mathcal{L}_k=(\mathcal{V}_k,\mathcal{P}_k)\) 用类型化节点和依赖边记录谁产生了什么决策、引用了哪些证据。
 
