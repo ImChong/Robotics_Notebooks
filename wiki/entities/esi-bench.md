@@ -12,6 +12,7 @@ updated: 2026-11-07
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/3d-spatial-vqa.md
+  - ./paper-splatanything.md
   - ../tasks/vision-language-navigation.md
   - ../methods/vla.md
   - ./paper-wem-world-ego-modeling.md
@@ -207,6 +208,8 @@ sequenceDiagram
 - **仿真依赖重**：复现成本主要在 BEHAVIOR 栈与 API 调用，而非单卡静态 VQA。
 
 ## 关联页面
+
+- [SplatAnything：GSNorm 跨场景 3DGS 重建](./paper-splatanything.md) — 对照：更好的跨域 3DGS 重建质量能改善几何先验，但不等于具身主动探索的评测能力。
 
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 被动/多视图空间 QA 范式；ESI-Bench 强调 **主动闭合环**
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 同为「语言 + 空间 + 行动序列」，VLN 偏 **导航轨迹**，ESI-Bench 偏 **细粒度空间问答**
