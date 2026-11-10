@@ -1,6 +1,8 @@
 // 014 第 1 幕：站在底座上看——空间运动旋量的后 3 个数，是原点那一点的速度（《Modern Robotics》3.3.2 节式 (3.73)(3.74)、图 3.17；第 9 集讲过透明板）。
 // 左边第 9–13 集的侧视网格 + UR5，姿势照第 13 集第 6 幕「肩先转了 90°」：肘 (−2, 1)，小臂竖着朝上，手 (−2, 3)。
-// 句 1「网格」网格淡入，「肩先转了九十度」胳膊从第 11 集的零位逆时针转 90°（蓝弧），「肘」「负二、一」「小臂竖着潮上」「手」「负二、三」逐个标出；
+// 句 1「网格」网格淡入，「零位时，肘在一、二，手在三、二」先标零位的坐标（第 11 集），「肩先转了九十度」胳膊逆时针转 90°（蓝弧）；
+// 句 2（2026-11-10 用户要求「不要只说第几集说过，要快速过一下怎么得到的」）「乘第三集的矩阵」右栏出 [[0, −1], [1, 0]]，肘、手各按列拿份：
+//    1 × (0, 1) + 2 × (−1, 0) = (−2, 1)，3 × (0, 1) + 2 × (−1, 0) = (−2, 3)，念到哪一列、哪一列框亮，左边标出新坐标、「小臂竖着潮上」；
 // 句 2「底座上画着两根轴」原点画底座的坐标系（x 红、y 绿），「站在这里看」底座亮，「固定坐标系」右栏写；
 // 句 3「只让肩每秒转一弧度」肩旁蓝色小弯箭头，胳膊逆时针转（句 2 末尾、画面上没有方向标记时先顺时针挪开 0.3 弧度，这里一路逆时针转回这一集的姿势），
 //    「肩的螺旋轴」右栏 6 个数 (0, 0, 1, 0, 0, 0) 逐个出；
@@ -14,35 +16,37 @@
   var E = window.EP014, K = E.K, H = E.HEX;
   var X = 455, D90 = Math.PI / 2;
   var T = {
-    grid: 1.89, sh: 2.62, rot: [3.08, 4.3], el: 4.2, e21: 4.71, fore: 5.83, up: 6.6, hand: 7.19, h23: 7.6, out1: 9.5,
-    base: 9.8, axes: 10.63, xr: 11.66, yu: 12.63, ep13: 13.99, here: 16.0, book: 17.31, fixed: 18.47, pre1: [18.9, 20.3], out2: 20.45,
-    only: 20.68, sh3: 21.04, rate: 21.76, whole: 22.76, rot3: [22.0, 24.9], ep13b: 25.19, twist: 27.1, isS: 28.65,
-    nums: [29.53, 30.01, 30.5, 31.04, 31.56, 32.07],
-    front: 33.53, omega: 34.47, z: 35.54, perSec: 36.2, back: 37.97, zero: 38.75, moving: 39.94, why: 41.19, outQ: 42.9,
-    ep9: 43.26, pre2: [43.3, 44.4], boardOn: 45.3, back3: 47.01, onBoard: 47.99, atO: 49.01, speed: 49.98,
-    origin: 51.57, isSh: 52.75, rot6: [53.3, 55.4], noMove: 54.55, soZero: 55.48, notHand: 57.24, outB: 58.3,
-    hp: 59.5, walk: 60.88, shJ: 61.66, n23: 63.09, turn: [64.23, 65.1], c1: 65.19, take1: 65.84, r02: 66.71, c2: 67.73, take2: 68.36, r30: 69.13,
-    add: 70.22, sum: 70.91, out7: 72.6,
-    hv: 73.19, left3: 74.08, down2: 75.15,
-    ep13c: 77.35, equal: 80.07, because: 81.29, trans: 82.49, every: 84.33, same: 85.3,
-    want: 86.79, hpt: 87.79, change: 89.39, onHand: 90.48
+    grid: 1.88, zpose: 2.58, zE: 3.33, zH: 4.53, sh: 6.63, rot: [7.09, 8.5], mat: 10.37, cols: 11.98, el: 14.18, eC1: 15.19, eC2: 16.25, e21: 17.37,
+    hand: 18.66, hC1: 19.71, hC2: 20.86, h23: 22.02, fore: 23.36, up: 23.8, out1: 25.6,
+    base: 25.87, axes: 26.7, xr: 27.73, yu: 28.7, ep13: 30.06, here: 32.07, book: 33.38, fixed: 34.54, pre1: [34.97, 36.37], out2: 36.52,
+    only: 36.75, sh3: 37.11, rate: 37.83, whole: 38.83, rot3: [38.07, 40.97], ep13b: 41.26, twist: 43.17, isS: 44.72,
+    nums: [45.6, 46.08, 46.57, 47.11, 47.63, 48.14],
+    front: 49.6, omega: 50.54, z: 51.61, perSec: 52.27, back: 54.04, zero: 54.82, moving: 56.01, why: 57.26, outQ: 58.97,
+    ep9: 59.33, pre2: [59.37, 60.47], boardOn: 61.37, back3: 63.08, onBoard: 64.06, atO: 65.08, speed: 66.05,
+    origin: 67.64, isSh: 68.82, rot6: [69.37, 71.47], noMove: 70.62, soZero: 71.55, notHand: 73.31, outB: 74.37,
+    hp: 75.57, walk: 76.95, shJ: 77.72, n23: 79.16, turn: [80.3, 81.17], c1: 81.26, take1: 81.91, r02: 82.78, c2: 83.8, take2: 84.44, r30: 85.2,
+    add: 86.29, sum: 86.98, out7: 88.67,
+    hv: 89.26, left3: 90.15, down2: 91.22,
+    ep13c: 93.42, rates: 96.41, vNums: 97.39, equal: 99.78, because: 101.05, trans: 103.16, every: 104.94, same: 106.26,
+    want: 107.78, hpt: 108.78, change: 110.38, onHand: 111.47
   };
-  var END = 93.08;
+  var END = 114.07;
 
   E.scenes[0] = {
     title: '站在底座上看',
     dur: END,
     cues: [
-      { at: 0, s: '还是第 13 集的网格：肩先转了 $90^\\circ$，肘到了 $(-2,\\,1)$，小臂竖着朝上，手在 $(-2,\\,3)$' },
-      { at: 9.7, s: '底座上的坐标系：$x$ 往右、$y$ 往上。第 13 集的**运动旋量**都是站在这里看的——书上叫**固定坐标系**' },
-      { at: 20.58, s: '只让肩每秒转 $1$ 弧度：这时的**运动旋量**就是肩的**螺旋轴** $(0,\\,0,\\,1,\\,0,\\,0,\\,0)$（第 13 集）' },
-      { at: 33.43, s: '前 $3$ 个数是角速度：绕 $z$ 轴每秒转 $1$ 弧度。后 $3$ 个数全是 $0$——手明明在走？' },
-      { at: 43.16, s: '第 9 集：把胳膊想成一张很大的透明板，后 $3$ 个数是板上**此刻在原点那一点**的速度' },
-      { at: 51.47, s: '原点这一点就是肩：只在原地转、不挪地方，所以是 $0$——后 $3$ 个数**不是手的速度**' },
-      { at: 59.4, s: '手这一点：从肩关节指向手 $(-2,\\,3)$，转 $90^\\circ$：$(-2)\\times(0,\\,1)+3\\times(-1,\\,0)=(-3,\\,-2)$' },
-      { at: 73.09, s: '**手的速度**：每秒往左走 $3$ 格、往下走 $2$ 格' },
-      { at: 77.25, s: '第 13 集第 6 幕正好相等：那时小臂只平移、不转，板上每一点都走得一样' },
-      { at: 86.69, s: '想直接知道手这一点的速度：换个地方站——**站在手上看**' }
+      { at: 0, s: '第 13 集的网格：零位时肘在 $(1,\\,2)$、手在 $(3,\\,2)$；现在肩先转了 $90^\\circ$' },
+      { at: 9.13, s: '转 $90^\\circ$ = 乘第 3 集的矩阵、按列拿份：肘到 $(-2,\\,1)$，手到 $(-2,\\,3)$' },
+      { at: 25.77, s: '底座上的坐标系：$x$ 往右、$y$ 往上。第 13 集的**运动旋量**都是站在这里看的——书上叫**固定坐标系**' },
+      { at: 36.65, s: '只让肩每秒转 $1$ 弧度：这时的**运动旋量**就是肩的**螺旋轴** $(0,\\,0,\\,1,\\,0,\\,0,\\,0)$（第 13 集）' },
+      { at: 49.5, s: '前 $3$ 个数是角速度：绕 $z$ 轴每秒转 $1$ 弧度。后 $3$ 个数全是 $0$——手明明在走？' },
+      { at: 59.23, s: '第 9 集：把胳膊想成一张很大的透明板，后 $3$ 个数是板上**此刻在原点那一点**的速度' },
+      { at: 67.54, s: '原点这一点就是肩：只在原地转、不挪地方，所以是 $0$——后 $3$ 个数**不是手的速度**' },
+      { at: 75.47, s: '手这一点：从肩关节指向手 $(-2,\\,3)$，转 $90^\\circ$：$(-2)\\times(0,\\,1)+3\\times(-1,\\,0)=(-3,\\,-2)$' },
+      { at: 89.16, s: '**手的速度**：每秒往左走 $3$ 格、往下走 $2$ 格' },
+      { at: 93.32, s: '第 13 集第 6 幕：转速 $(1,\\,-1)$，后 $3$ 个数字 $(-2,\\,1)$ = 手的速度：小臂只平移' },
+      { at: 107.68, s: '想直接知道手这一点的速度：换个地方站——**站在手上看**' }
     ],
     build: function (K) {
       var s = K.sceneSvg('还是第十三集的网格：肩先转了九十度，肘到了 (−2, 1)，小臂竖着朝上，手在 (−2, 3)。底座上画着两根轴：往右是 x、往上是 y，第十三集的运动旋量都是站在这里看的，书上叫固定坐标系。只让肩每秒转一弧度，这时的运动旋量就是肩的螺旋轴 (0, 0, 1, 0, 0, 0)：前三个数是角速度，后三个数全是零，手明明在走。第九集讲过：把胳膊想成一张很大的透明板，后三个数是板上此刻在原点那一点的速度；原点这一点就是肩，只在原地转、不挪地方，所以是零，后三个数不是手的速度。手这一点的速度：从肩关节指向手 (−2, 3)，转九十度得 (−3, −2)，每秒往左走三格、往下走两格。第十三集第六幕正好相等，是因为那时小臂只平移不转。想直接知道手这一点的速度，就站在手上看');
@@ -59,6 +63,9 @@
       var eLab = E.halo(E.txt(top, P(-2, 1)[0] - 18, P(-2, 1)[1] + 30, '肘 (−2, 1)', 20, E.HI, 'end', 900));
       var hLab = E.halo(E.txt(top, P(-2, 3)[0] - 18, P(-2, 3)[1] + 8, '手 (−2, 3)', 20, E.V, 'end', 900));
       var foreL = E.halo(E.txt(top, P(-2, 2)[0] - 18, P(-2, 2)[1] + 6, '竖着朝上', 18, E.INK2, 'end', 900));
+      // 零位（第 11 集）：肘 (1, 2)、手 (3, 2)，肩转 90° 之前标出来
+      var zEL = E.halo(E.txt(top, P(1, 2)[0] - 16, P(1, 2)[1] - 16, '肘 (1, 2)', 20, E.HI, 'end', 900));
+      var zHL = E.halo(E.txt(top, P(3, 2)[0] - 4, P(3, 2)[1] - 22, '手 (3, 2)', 20, E.V, 'middle', 900));
       // 原点那一点（透明板上）：白圈 + 「速度 = 0」
       var oPt = E.el('g', {}, top);
       K.paint(E.el('circle', { cx: O[0], cy: O[1], r: 13, fill: 'none', 'stroke-width': 3.5 }, oPt), null, E.INK);
@@ -80,11 +87,16 @@
       var RK = E.rowKit(), Rg = E.el('g', {}, s);
       function grp() { return E.el('g', {}, Rg); }
       var g1 = grp();
-      var a1 = RK.line(g1, X, 60, [['第 13 集的网格', E.INK, 900]], 24);
-      var a2 = RK.line(g1, X, 108, [['肩先转了 ', E.INK2], ['90°', E.OMEGA, 900], ['（第 13 集第 6 幕）', E.MUT, 700]], 21);
-      var a3 = RK.line(g1, X, 152, [['肘', E.HI, 900], ['：', E.INK2], ['(−2, 1)', E.HI, 900]], 22);
-      var a4 = RK.line(g1, X, 192, [['小臂', E.INK, 900], ['竖着朝上', E.INK2]], 22);
-      var a5 = RK.line(g1, X, 232, [['手', E.V, 900], ['：', E.INK2], ['(−2, 3)', E.V, 900]], 22);
+      var a1 = RK.line(g1, X, 46, [['第 13 集的网格', E.INK, 900]], 22);
+      var a2 = RK.line(g1, X, 82, [['零位：', E.INK2], ['肘 (1, 2)', E.HI, 900], ['，', E.INK2], ['手 (3, 2)', E.V, 900]], 19);
+      var a3 = RK.line(g1, X, 118, [['肩先转了 ', E.INK2], ['90°', E.OMEGA, 900]], 19);
+      var a4 = RK.line(g1, X, 160, [['转 90° = 乘第 3 集的矩阵', E.INK2]], 18);
+      var R90 = E.matN(g1, X + 300, 152, [[0, -1], [1, 0]], { size: 17, dx: 30, dy: 24, color: function (i, j) { return j === 0 ? E.X : E.Y; } });
+      var a5 = RK.line(g1, X, 214, [['肘：', E.HI, 900], ['1 × ', E.INK, 900], ['(0, 1)', E.X, 900], [' + ', E.INK2], ['2 × ', E.INK, 900], ['(−1, 0)', E.Y, 900]], 18);
+      var a6 = RK.line(g1, X, 242, [['　= ', E.INK2], ['(−2, 1)', E.HI, 900]], 18);
+      var a7 = RK.line(g1, X, 284, [['手：', E.V, 900], ['3 × ', E.INK, 900], ['(0, 1)', E.X, 900], [' + ', E.INK2], ['2 × ', E.INK, 900], ['(−1, 0)', E.Y, 900]], 18);
+      var a8 = RK.line(g1, X, 312, [['　= ', E.INK2], ['(−2, 3)', E.V, 900]], 18);
+      var a9 = RK.line(g1, X, 354, [['小臂', E.INK, 900], ['竖着朝上', E.INK2]], 19);
       var g2 = grp();
       var b1 = RK.line(g2, X, 60, [['底座上的坐标系', E.INK, 900]], 24);
       var b2 = RK.line(g2, X, 104, [['x', E.X, 900], [' 往右　', E.INK2], ['y', E.Y, 900], [' 往上', E.INK2]], 22);
@@ -116,9 +128,10 @@
       var f5 = RK.line(g7, X, 200, [['= ', E.INK2], ['(−3, −2)', E.V, 900]], 21);
       var f6 = RK.line(g7, X, 252, [['每秒：往左 ', E.INK2], ['3', E.INK, 900], [' 格、往下 ', E.INK2], ['2', E.INK, 900], [' 格', E.INK2]], 20);
       var g9 = grp();
-      var h1 = RK.line(g9, X, 310, [['第 13 集第 6 幕：后 3 个数 = 手的速度？', E.INK2]], 17);
-      var h2 = RK.line(g9, X, 340, [['那时小臂只平移、不转', E.INK, 900]], 18);
-      var h3 = RK.line(g9, X, 368, [['板上每一点都走得一样', E.INK2]], 18);
+      var h1 = RK.line(g9, X, 302, [['第 13 集第 6 幕：转速 ', E.INK2], ['(1, −1)', E.OMEGA, 900]], 17);
+      var h1b = RK.line(g9, X, 326, [['后 3 个数字 ', E.INK2], ['(−2, 1)', E.V, 900], [' = 手的速度', E.INK2]], 17);
+      var h2 = RK.line(g9, X, 352, [['小臂只平移、不转', E.INK, 900]], 18);
+      var h3 = RK.line(g9, X, 378, [['板上每一点都走得一样', E.INK2]], 18);
       var g10 = grp();
       var k1 = RK.line(g10, X, 330, [['想直接知道手这一点的速度', E.INK2]], 19);
       var k2 = RK.line(g10, X, 368, [['→ ', E.INK2], ['站在手上看', E.V, 900]], 22);
@@ -142,9 +155,9 @@
           board.set(th - D90);
           E.op(board.g, E.win(st, T.boardOn, T.outB, 0.5));
           jS.at(O); jE.at(pE); hand.at(pH, 7 + 4 * Math.max(b(st, T.hand, 0.8), b(st, T.moving, 0.8), b(st, T.hp, 0.8), b(st, T.hpt, 0.8), b(st, T.onHand, 0.8)));
-          E.op(jS, fr(st, T.sh)); E.op(jE, fr(st, T.el)); E.op(hand, fr(st, T.hand));
+          E.op(jS, fr(st, T.zpose)); E.op(jE, fr(st, T.zE)); E.op(hand, fr(st, T.zH));
           E.glow(jS, E.HI, b(st, T.sh, 0.8) > 0.05 || b(st, T.sh3, 0.8) > 0.05 || b(st, T.isSh, 0.8) > 0.05);
-          E.glow(jE, E.HI, b(st, T.el, 0.8) > 0.05);
+          E.glow(jE, E.HI, b(st, T.zE, 0.8) > 0.05 || b(st, T.e21, 0.8) > 0.05);
           E.glow(hand, E.V, st > T.onHand);
           // 句 1：转 90° 的蓝弧、标签
           arc90.set(E.ZERO[0], E.ZERO[0] + Math.max(0.01, D90 * f(st, T.rot[0], T.rot[1] - T.rot[0])));
@@ -152,6 +165,7 @@
           E.op(arc90.g, on90);
           var la = E.ZERO[0] + D90 * 0.5, lq = P(1.35 * Math.cos(la), 1.35 * Math.sin(la));
           a90L.setAttribute('x', lq[0].toFixed(1)); a90L.setAttribute('y', (lq[1] + 6).toFixed(1)); E.op(a90L, fr(st, T.rot[1] - 0.3) * (1 - fr(st, T.out1)));
+          E.op(zEL, fr(st, T.zE) * (1 - fr(st, T.rot[0] - 0.3))); E.op(zHL, fr(st, T.zH) * (1 - fr(st, T.rot[0] - 0.3)));
           E.op(eLab, fr(st, T.e21) * (1 - fr(st, T.out1))); E.op(foreL, fr(st, T.up) * (1 - fr(st, T.out1))); E.op(hLab, fr(st, T.h23) * (1 - fr(st, T.out1)));
           // 句 2：底座的坐标系（之后一直在）
           bF.set(0, 0, 0);
@@ -190,9 +204,12 @@
 
           /* ── 右栏 ── */
           E.op(g1, 1 - fr(st, T.out1));
-          E.op(a1.g, fr(st, T.grid)); E.op(a2.g, fr(st, T.sh)); E.op(a2.parts[1], fr(st, T.rot[0] + 0.3)); E.op(a2.parts[2], fr(st, T.rot[0] + 0.3));
-          E.op(a3.g, fr(st, T.el)); E.op(a3.parts[1], fr(st, T.e21)); E.op(a3.parts[2], fr(st, T.e21));
-          E.op(a4.g, fr(st, T.fore)); E.op(a4.parts[1], fr(st, T.up)); E.op(a5.g, fr(st, T.hand)); E.op(a5.parts[1], fr(st, T.h23)); E.op(a5.parts[2], fr(st, T.h23));
+          E.op(a1.g, fr(st, T.grid)); E.op(a2.g, fr(st, T.zpose)); E.op(a2.parts[1], fr(st, T.zE)); [2, 3].forEach(function (k) { E.op(a2.parts[k], fr(st, T.zH)); });
+          E.op(a3.g, fr(st, T.sh)); E.op(a3.parts[1], fr(st, T.rot[0])); E.op(a4.g, fr(st, T.mat)); E.op(R90.g, fr(st, T.cols));
+          R90.hl('c1', 0, 0, 1, 0, E.X, E.win(st, T.eC1, T.eC2, 0.25) + E.win(st, T.hC1, T.hC2, 0.25)); R90.hl('c2', 0, 1, 1, 1, E.Y, E.win(st, T.eC2, T.e21, 0.25) + E.win(st, T.hC2, T.h23, 0.25));
+          E.op(a5.g, fr(st, T.el)); [1, 2].forEach(function (k) { E.op(a5.parts[k], fr(st, T.eC1)); }); [3, 4, 5].forEach(function (k) { E.op(a5.parts[k], fr(st, T.eC2)); }); E.op(a6.g, fr(st, T.e21));
+          E.op(a7.g, fr(st, T.hand)); [1, 2].forEach(function (k) { E.op(a7.parts[k], fr(st, T.hC1)); }); [3, 4, 5].forEach(function (k) { E.op(a7.parts[k], fr(st, T.hC2)); }); E.op(a8.g, fr(st, T.h23));
+          E.op(a9.g, fr(st, T.fore)); E.op(a9.parts[1], fr(st, T.up));
           E.op(g2, E.win(st, T.base - 0.1, T.out2, 0.3));
           E.op(b1.g, fr(st, T.base)); E.op(b2.g, fr(st, T.xr)); E.op(b2.parts[2], fr(st, T.yu)); E.op(b2.parts[3], fr(st, T.yu));
           E.op(b3.g, fr(st, T.ep13)); E.op(b4.g, fr(st, T.here)); E.op(b5.g, fr(st, T.book)); E.op(b5.parts[1], fr(st, T.fixed)); E.op(b6.g, fr(st, T.fixed + 0.4));
@@ -213,7 +230,7 @@
           E.op(f5.g, fr(st, T.sum)); E.op(f6.g, fr(st, T.left3)); E.op(f6.parts[2], fr(st, T.down2)); E.op(f6.parts[3], fr(st, T.down2)); E.op(f6.parts[4], fr(st, T.down2));
           // 句 9–10：上面留着手的速度那几行（淡一点），下面写
           E.op(g9, E.win(st, T.ep13c - 0.1, T.want - 0.1, 0.3));
-          E.op(h1.g, fr(st, T.ep13c)); E.op(h2.g, fr(st, T.because)); E.op(h3.g, fr(st, T.every));
+          E.op(h1.g, fr(st, T.ep13c)); E.op(h1.parts[1], fr(st, T.rates)); E.op(h1b.g, fr(st, T.vNums)); E.op(h1b.parts[2], fr(st, T.equal)); E.op(h2.g, fr(st, T.trans)); E.op(h3.g, fr(st, T.every));
           E.op(g10, fr(st, T.want - 0.1));
           E.op(k1.g, fr(st, T.want)); E.op(k2.g, fr(st, T.change)); E.op(k2.parts[1], fr(st, T.onHand));
         }

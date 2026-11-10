@@ -141,7 +141,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 ## 6. 视频（`media/`）：一手资料核对
 
-- **观众完全零基础**：零基础篇的观众除了看过本系列前面几集，对其他相关知识（数学、编程、机器人）完全没有概念。做视频时，每个词、符号、公式、代码写法，要么前面几集讲过（说明第几集），要么当场讲清楚，不默认观众会。细则见 [RELEASE_PLAN.md](media/zero-to-ppo-video/RELEASE_PLAN.md)「每集一个主题」。
+- **观众完全零基础**：零基础篇的观众除了看过本系列前面几集，对其他相关知识（数学、编程、机器人）完全没有概念。做视频时，每个词、符号、公式、代码写法，要么前面几集讲过（说明第几集，并用一两句快速过一下怎么得到的，不能只说「第几集讲过 / 算过」就直接用结果），要么当场讲清楚，不默认观众会。细则见 [RELEASE_PLAN.md](media/zero-to-ppo-video/RELEASE_PLAN.md)「每集一个主题」。
 - 做或改 `media/` 下的视频（零基础篇等）时，片中每个定义、术语、公式、数值，**除本仓库内容外，都要找官方一手资料核对**（教材原文、官方规范 / 文档、源码、原始论文；百科、博客只当线索），术语按一手资料的严格叫法。
 - **借鉴的一手资料列在视频最末尾一页**（`outro.refs`），发布清单那一行写明。
 - 细则见 [media/zero-to-ppo-video/RELEASE_PLAN.md](media/zero-to-ppo-video/RELEASE_PLAN.md)「内容核对：一手资料」。起因：006 初版把绕固定轴的「固定角」叫成了欧拉角，观众指出后改正。

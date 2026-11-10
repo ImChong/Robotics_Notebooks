@@ -12,37 +12,38 @@
   var X = 455, D90 = Math.PI / 2;
   var T = {
     hand: 0.7, frame: 1.6, ep11: 2.29, xr: 3.61, yg: 5.27, book: 6.45, body: 7.04,
-    rot: [9.2, 11.4],   // 「肩转了九十度，手的坐标系也跟着转」：慢一点，跟着念到「跟着转」
-    follow: 11.4, xUp: 12.52, yLeft: 13.58, out1: 15.4,
-    stand: 15.65, twist: 16.83, six: 17.77, bodyTw: 18.86, front: 20.2, omega: 21.31, back: 22.22, self: 23.18,
-    both: 25.86, byHand: 26.53, alongX: 28.38, alongY: 30.13,
-    only: 32.78, hv: 33.75, left3: 34.58, down2: 35.6, axes: 37.1, howMany: 38.25,
-    xUp2: 41.93, down2b: 43.18, isM2: 45.45, yLeft2: 46.81, left3b: 48.22, is3: 50.22,
-    check: 51.67, cx: 52.3, cx2: 53.62, cy: 54.92, cy2: 56.2, sum: 57.43, sumR: 58.12, ok: 59.38,
-    omegaZ: 61.16, handZ: 61.98, baseZ: 62.96, same: 63.99, out: 64.6, still1: 65.92,
-    vb: 67.94, nums: [70.65, 71.23, 71.82, 72.4, 73.19, 73.77],
-    sameMove: 75.22, two: 76.23, six2: 77.64, diff: 78.11, twoPlaces: 78.72,
-    p1: 81.32, where: 82.71, baseP: 83.98, originP: 85.17, handP: 86.27, handPt: 87.43,
-    p2: 89.37, whose: 90.13, baseAx: 91.25, handAx: 92.7
+    rot: [9.2, 12.6],   // 「肩转了九十度，手的坐标系也跟着转九十度」：慢一点，转到「九十度」念完
+    follow: 11.66, xWas: 13.05, xUp: 14.43, yWas: 15.56, yLeft: 16.95, out1: 18.76,
+    stand: 19.06, twist: 20.24, six: 21.18, bodyTw: 22.27, front: 23.61, omega: 24.72, back: 25.63, self: 26.59,
+    both: 29.27, byHand: 29.94, alongX: 31.79, alongY: 33.54,
+    only: 36.2, hv: 43.26, left3: 44.12, down2: 45.19, axes: 46.73, howMany: 47.89,
+    xUp2: 51.55, down2b: 52.8, isM2: 55.07, yLeft2: 56.43, left3b: 57.84, is3: 59.83,
+    check: 61.29, cx: 61.92, cx2: 63.24, cy: 64.54, cy2: 65.81, sum: 67.05, sumR: 67.74, ok: 69,
+    omegaZ: 70.78, handZ: 71.6, baseZ: 72.58, same: 73.61, out: 74.22, still1: 75.54,
+    vb: 77.56, nums: [80.27, 80.85, 81.44, 82.01, 82.8, 83.39],
+    sameMove: 84.84, two: 85.85, six2: 87.25, diff: 87.73, twoPlaces: 88.34,
+    p1: 90.94, where: 92.33, baseP: 93.6, originP: 94.79, handP: 95.89, handPt: 97.05,
+    p2: 98.99, whose: 99.75, baseAx: 100.87, handAx: 102.32,
+    ep1: 37.02, fromSH: 37.96, n23s: 39.65, turnS: 40.83, r32s: 41.92
   };
-  var END = 95.47;
+  var END = 105.09;
 
   E.scenes[1] = {
     title: '站在手上看',
     dur: END,
     cues: [
       { at: 0, s: '手上的坐标系（第 11 集）：$x$ 红、$y$ 绿——书上叫**物体坐标系**' },
-      { at: 9.06, s: '肩转了 $90^\\circ$，手的坐标系跟着转：手的 $x$ 轴朝上，$y$ 轴朝左' },
-      { at: 15.55, s: '**站在手上看**：**物体运动旋量**也是 $6$ 个数——前 $3$ 个角速度，后 $3$ 个是**手这一点自己的速度**' },
-      { at: 25.76, s: '都按手的轴来算：沿手的 $x$ 轴走几格，沿手的 $y$ 轴走几格' },
-      { at: 32.25, s: '只转肩：**手的速度** $(-3,\\,-2)$，手的 $2$ 根轴各要取几份才拼得出来？' },
-      { at: 41.43, s: '$x$ 轴朝上：往下 $2$ 格 → $-2$；$y$ 轴朝左：往左 $3$ 格 → $3$' },
-      { at: 51.57, s: '验算：$(-2)\\times(0,\\,1)+3\\times(-1,\\,0)=(-3,\\,-2)$ ✓' },
-      { at: 61.06, s: '角速度：手的 $z$ 轴和底座的一样，都垂直屏幕朝外，还是 $1$' },
-      { at: 67.84, s: '**站在手上看**：$(0,\\,0,\\,1,\\,-2,\\,3,\\,0)$' },
-      { at: 75.12, s: '同一个动作，$6$ 个数不一样——不同的地方有 $2$ 处' },
-      { at: 81.22, s: '① 后 $3$ 个数是什么地方的速度：底座看的是原点那一点，手上看的是手这一点' },
-      { at: 89.27, s: '② 按谁的轴来算：一个按底座的轴，一个按手的轴' }
+      { at: 9.06, s: '肩转了 $90^\\circ$，手的坐标系也跟着转 $90^\\circ$：$x$ 轴朝右 → 朝上，$y$ 轴朝上 → 朝左' },
+      { at: 18.96, s: '**站在手上看**：**物体运动旋量**也是 $6$ 个数——前 $3$ 个角速度，后 $3$ 个是**手这一点自己的速度**' },
+      { at: 29.17, s: '都按手的轴来算：沿手的 $x$ 轴走几格，沿手的 $y$ 轴走几格' },
+      { at: 35.66, s: '只转肩（第 1 幕）：$(-2,\\,3)$ 转 $90^\\circ$ → **手的速度** $(-3,\\,-2)$；手的 $2$ 根轴各取几份？' },
+      { at: 51.05, s: '$x$ 轴朝上：往下 $2$ 格 → $-2$；$y$ 轴朝左：往左 $3$ 格 → $3$' },
+      { at: 61.19, s: '验算：$(-2)\\times(0,\\,1)+3\\times(-1,\\,0)=(-3,\\,-2)$ ✓' },
+      { at: 70.68, s: '角速度：手的 $z$ 轴和底座的一样，都垂直屏幕朝外，还是 $1$' },
+      { at: 77.46, s: '**站在手上看**：$(0,\\,0,\\,1,\\,-2,\\,3,\\,0)$' },
+      { at: 84.74, s: '同一个动作，$6$ 个数不一样——不同的地方有 $2$ 处' },
+      { at: 90.84, s: '① 后 $3$ 个数是什么地方的速度：底座看的是原点那一点，手上看的是手这一点' },
+      { at: 98.89, s: '② 按谁的轴来算：一个按底座的轴，一个按手的轴' }
     ],
     build: function (K) {
       var s = K.sceneSvg('手上也有一个坐标系，第十一集讲过：红色是手的 x 轴，绿色是 y 轴，书上叫物体坐标系。肩转了九十度，手的坐标系也跟着转：手的 x 轴朝上，y 轴朝左。站在手上看，运动旋量也是六个数，叫做物体运动旋量：前三个数是角速度，后三个数是手这一点自己的速度，都按手的轴来算。只转肩时手每秒往左走三格、往下走两格：手的 x 轴朝上，往下走两格，沿 x 轴是负二；手的 y 轴朝左，往左走三格，沿 y 轴是三；验算 (−2) × (0, 1) + 3 × (−1, 0) = (−3, −2)。角速度：手的 z 轴和底座的一样，都垂直屏幕朝外，还是一。站在手上看，这个运动旋量是 (0, 0, 1, −2, 3, 0)；站在底座上看是 (0, 0, 1, 0, 0, 0)。不同的地方有两处：后三个数是什么地方的速度（原点那一点 / 手这一点），按谁的轴来算（底座的轴 / 手的轴）');
@@ -60,6 +61,7 @@
       var lnY = K.paint(E.el('path', { fill: 'none', 'stroke-width': 2.5, 'stroke-dasharray': '7 6' }, under2), null, E.Y);
       var rArc = E.arcArrow(top, O[0], O[1], 0.6 * u, E.OMEGA, 3.5, { head: 12 });
       var rLab = E.tex(top, O[0] - 132, O[1] + 46, '\\dot\\theta_1=1', 22, E.OMEGA, 'start', { w: 90, h: 36 });
+      var wSH = E.gv(top, P, E.INK, 3.5, { head: 13, dash: '8 6' });
       var vio = E.gv(top, P, E.V, 5.5, { head: 17 }), vioL = E.halo(E.txt(top, P(-3.5, 2)[0] + 18, P(-3.5, 2)[1] + 30, '(−3, −2)', 19, E.V, 'middle', 900));
       var qM = E.halo(E.txt(top, P(-4.2, 3.4)[0], P(-4.2, 3.4)[1] + 10, '?', 32, E.INK, 'middle', 900));
       var red = E.gv(top, P, E.X, 5, { head: 14 }), grn = E.gv(top, P, E.Y, 5, { head: 14 });
@@ -89,8 +91,8 @@
       var a3 = RK.line(gA, X, 148, [['书上：', E.INK2], ['物体坐标系', E.INK, 900]], 22);
       var a4 = RK.line(gA, X, 182, [['（body frame，记作 {b}）', E.MUT, 700]], 17);
       var a5 = RK.line(gA, X, 240, [['肩转了 ', E.INK2], ['90°', E.OMEGA, 900], ['，跟着转：', E.INK2]], 21);
-      var a6 = RK.line(gA, X, 280, [['手的 ', E.INK2], ['x', E.X, 900], [' 轴朝上', E.INK, 900]], 21);
-      var a7 = RK.line(gA, X, 316, [['手的 ', E.INK2], ['y', E.Y, 900], [' 轴朝左', E.INK, 900]], 21);
+      var a6 = RK.line(gA, X, 280, [['手的 ', E.INK2], ['x', E.X, 900], [' 轴：朝右 → ', E.INK2], ['朝上', E.INK, 900]], 20);
+      var a7 = RK.line(gA, X, 316, [['手的 ', E.INK2], ['y', E.Y, 900], [' 轴：朝上 → ', E.INK2], ['朝左', E.INK, 900]], 20);
       var gB = grp();
       var b1 = RK.line(gB, X, 50, [['站在手上看：', E.V, 900], ['物体运动旋量', E.WARN, 900]], 22);
       var twS = E.tw6(gB, X + 40, 180, ['ω₁', 'ω₂', 'ω₃', 'v₁', 'v₂', 'v₃'], { size: 22, dy: 28, w: 54 });
@@ -101,7 +103,7 @@
       var b4 = RK.line(gB, X, 384, [['沿手的 ', E.INK2], ['y', E.Y, 900], [' 轴走几格', E.INK2]], 19);
       var gC = grp();
       var c1 = RK.line(gC, X, 46, [['只转肩：', E.INK, 900], ['手的速度 ', E.INK2], ['(−3, −2)', E.V, 900]], 20);
-      var c2 = RK.line(gC, X, 78, [['每秒往左 3 格、往下 2 格（第 1 幕）', E.MUT, 700]], 17);
+      var c2 = RK.line(gC, X, 78, [['第 1 幕：', E.MUT, 700], ['(−2, 3)', E.INK, 900], [' 转 90° → ', E.OMEGA, 900], ['(−3, −2)', E.V, 900]], 16);
       var c3 = RK.line(gC, X, 116, [['手的两根轴，各取几份？', E.INK, 900]], 20);
       var c4 = RK.line(gC, X, 160, [['x', E.X, 900], [' 轴朝上：往下 2 格 → ', E.INK2], ['−2', E.X, 900]], 20);
       var c5 = RK.line(gC, X, 196, [['y', E.Y, 900], [' 轴朝左：往左 3 格 → ', E.INK2], ['3', E.Y, 900]], 20);
@@ -170,14 +172,15 @@
           E.op(gA, 1 - fr(st, T.out1));
           E.op(a1.g, fr(st, T.frame)); E.op(a1.parts[1], fr(st, T.ep11)); E.op(a2.g, fr(st, T.xr)); E.op(a2.parts[2], fr(st, T.yg)); E.op(a2.parts[3], fr(st, T.yg));
           E.op(a3.g, fr(st, T.book)); E.op(a3.parts[1], fr(st, T.body)); E.op(a4.g, fr(st, T.body + 0.4));
-          E.op(a5.g, fr(st, T.rot[0])); E.op(a5.parts[2], fr(st, T.follow)); E.op(a6.g, fr(st, T.xUp)); E.op(a7.g, fr(st, T.yLeft));
+          E.op(a5.g, fr(st, T.rot[0])); E.op(a5.parts[2], fr(st, T.follow)); E.op(a6.g, fr(st, T.xWas)); E.op(a6.parts[3], fr(st, T.xUp)); E.op(a7.g, fr(st, T.yWas)); E.op(a7.parts[3], fr(st, T.yLeft));
           E.op(gB, E.win(st, T.stand - 0.1, T.only - 0.2, 0.3));
           E.op(b1.g, fr(st, T.stand)); E.op(b1.parts[1], fr(st, T.bodyTw)); E.op(twS.g, fr(st, T.six));
           twS.rangeBox(0, 2, E.OMEGA, E.win(st, T.omega, T.back, 0.3)); twS.rangeBox(3, 5, E.V, fr(st, T.self));
           E.op(bW, fr(st, T.omega)); E.op(bV, fr(st, T.self));
           E.op(b2.g, fr(st, T.both)); E.op(b2.parts[1], fr(st, T.byHand)); E.op(b2.parts[2], fr(st, T.byHand)); E.op(b3.g, fr(st, T.alongX)); E.op(b4.g, fr(st, T.alongY));
           E.op(gC, E.win(st, T.only - 0.1, T.vb - 0.2, 0.3));
-          E.op(c1.g, fr(st, T.only)); E.op(c1.parts[1], fr(st, T.hv)); E.op(c1.parts[2], fr(st, T.hv)); E.op(c2.g, fr(st, T.left3));
+          E.op(c1.g, fr(st, T.only)); E.op(c1.parts[1], fr(st, T.hv)); E.op(c1.parts[2], fr(st, T.hv)); E.op(c2.g, fr(st, T.ep1)); E.op(c2.parts[1], fr(st, T.n23s)); E.op(c2.parts[2], fr(st, T.turnS)); E.op(c2.parts[3], fr(st, T.r32s));
+          wSH.at(0, 0, -2, 3); E.op(wSH.g, E.win(st, T.fromSH, T.hv + 0.4, 0.3));   // 第 1 幕的算法：从肩关节指向手（白虚线），转 90° 就是手的速度
           E.op(c3.g, fr(st, T.axes));
           E.op(c4.g, fr(st, T.xUp2)); E.op(c4.parts[2], fr(st, T.isM2)); E.op(c5.g, fr(st, T.yLeft2)); E.op(c5.parts[2], fr(st, T.is3));
           E.op(c6.g, fr(st, T.check)); E.op(c6.parts[1], fr(st, T.cx)); E.op(c6.parts[2], fr(st, T.cx)); [3, 4, 5].forEach(function (k) { E.op(c6.parts[k], fr(st, T.cy)); });
