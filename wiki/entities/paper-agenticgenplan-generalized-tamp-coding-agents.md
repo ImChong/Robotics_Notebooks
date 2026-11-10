@@ -46,7 +46,7 @@ summary: "AgenticGenPlan（arXiv:2609.30233）让编码代理自行调用黑盒�
 | IK | Inverse Kinematics | 根据目标末端位置反求机械臂关节配置 |
 | API | Application Programming Interface | reset/step/render 仿真调用接口 |
 | LLM | Large Language Model | 合成期代理使用的大语言模型；评估期无需调用 |
-| KinDER | Kinesthetic Inference through Dynamics and Embodied Reasoning | 本文采用的对象中心物理推理基准 |
+| KinDER | Kinematic and Dynamic Embodied Reasoning | 本文采用的对象中心物理推理基准 |
 | PDDL | Planning Domain Definition Language | 经典符号任务规划表示；PDDLStream 混合采样与符号规划 |
 
 ## 为什么重要
@@ -109,8 +109,9 @@ sequenceDiagram
   participant Runner as experiments/run_experiment.py
   participant Agent as AgenticApproach
   participant Sandbox as Docker Sandbox + Coding Agent
-  participant Sim as env_server + Simulator
+  participant Sim as env_server (synthesis)
   participant Loader as episode.load_generated_approach
+  participant EvalEnv as Local evaluation env
   participant Eval as episode.run_episode_with_timeout
   Runner->>Runner: Hydra 构造 env / task description
   Runner->>Agent: train()
@@ -129,8 +130,8 @@ sequenceDiagram
     Runner->>Eval: run_episode_with_timeout(env, approach, seed)
     Eval->>Agent: reset / get_action
     Agent-->>Eval: 调用已装载程序并返回动作
-    Eval->>Sim: step(action)
-    Sim-->>Eval: state / reward / done
+    Eval->>EvalEnv: env.step(action)
+    EvalEnv-->>Eval: state / reward / done
     Eval-->>Runner: metrics
   end
   Runner->>Runner: 汇总并保存 results.json
