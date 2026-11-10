@@ -2765,6 +2765,7 @@
 - [Humanoid-DART](wiki/entities/paper-humanoid-dart.md) — Humanoid-DART: Humanoid Loco-Manipulation using Diffusion-guided Augmentation through Relabeling a `📅unknown` `[entity_page]`
 - [Humanoid Dodgeball：人形躲避球：快速动态障碍规避动作学习](wiki/entities/paper-humanoid-dodgeball-dynamic-obstacle-avoidance.md) — Humanoid Dodgeball**（*Humanoid Dodgeball: Learning Fast Dynamic Obstacle Avoidance Motions for Hum `📅unknown` `[entity_page]`
 - [果蝇启发循环控制器的人形行走分析](wiki/entities/paper-humanoid-fly-inspired-rnn.md) — Humanoid Locomotion with a Fly-Inspired Recurrent Controller**（[arXiv:2609.27001](https://arxiv.or `📅unknown` `[entity_page]`
+- [Humanoid Footstep Planning using Graphs of Convex Sets / 基于凸集图的人形机器人步位规划](wiki/entities/paper-humanoid-footstep-planning-gcs.md) — 把“下一步迈哪只脚、采用何种可行转换”和“脚具体落在哪里”放进同一个 Graphs of Convex Sets（GCS）规划框架，通过凸松弛寻找符合地形与运动学限制的步位序列。** 这篇论文发表 `📅unknown` `[entity_page]`
 - [Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）](wiki/entities/paper-humanoid-gpt.md) — Humanoid-GPT** 是清华、Galbot、上交、北大与期智等团队的 **人形全身在线 motion tracking** 工作（arXiv:2606.03985，项目页标注 **CVPR `📅unknown` `[entity_page]`
 - [Humanoid Horizon：用并行训练、动态起始与奖励门控扩展全身移动操作时域](wiki/entities/paper-humanoid-horizon-long-horizon-loco-manipulation.md) — Humanoid Horizon**（arXiv:2610.08320，[项目页](https://haozhuo-zhan `📅unknown` `[entity_page]`
 - [动力学仿真驱动的人形机器人下肢衍生式设计](wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 罗元春 / 纵怀志 / 周蕾\* / 张军辉**（浙江大学 流体动力基础件与机电系统全国重点实验室；[中航工业西安飞行自动控制研究所](htt `📅unknown` `[entity_page]`
