@@ -2,13 +2,14 @@
 type: method
 tags: [hand-pose, 3d-vision, manipulation, perception, video-to-control]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-10
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./exoactor.md
   - ./genmo.md
   - ../entities/sam-3d-body.md
   - ../entities/paper-vidihand.md
+  - ../entities/paper-fah.md
   - ../entities/paper-hand-visibility-detector.md
   - ../tasks/manipulation.md
   - ./sonic-motion-tracking.md
@@ -27,6 +28,10 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 
 **WiLoR**（CVPR 2025）面向 **单目 RGB** 场景下的 **双手** 检测与 **MANO 类 3D 重建**：先用轻量全卷积结构在高分辨率特征上定位手部，再用 Transformer 细化三维姿态与形状，强调野外光照、遮挡与交互多样性。其输出可作为 [State Estimation（状态估计）](../concepts/state-estimation.md) 链条中的 **视觉前处理**，为下游策略提供手部关节级观测。
 
+## 一句话定义
+
+**WiLoR 对单目 RGB 图像先检测左右手，再用视觉特征估计参数化手网格、三维关节及对应的手部位姿。**
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -41,13 +46,19 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 - **与全身估计互补**：全身 SMPL（如 [GENMO](./genmo.md)）或 MHR（如 [SAM 3D Body](../entities/sam-3d-body.md)）对手指细节往往不足，WiLoR 这类专用网络可并行估计双手并再融合到控制接口。
 - **数据驱动泛化**：作者构建大规模野外手部数据集（论文报告数百万帧量级），支撑 in-the-wild 叙事与后续微调。
 
-## 主要技术路线
+## 主要技术路线（核心原理）
 
 | 模块 | 要点 |
 |------|------|
 | **定位** | 实时卷积检测器输出手部框与粗糙 3D 线索，降低后续重建搜索空间。 |
 | **重建** | Transformer 结构细化顶点 / 关节参数，兼顾精度与跨数据集泛化。 |
 | **时序** | 默认可逐帧应用；无需专用 RNN 亦可形成视频轨迹（ temporal smoothing 可由后处理或上游视频模型承担）。 |
+
+## 工程实践
+
+- **输入与输出：** 将单帧 RGB 送入手部检测和网格重建，再把相机系手关节或参数化网格交给下游机器人重定向/视觉观测管线。
+- **视频使用：** 逐帧估计时需额外检测漏帧、左右手身份跳变与轨迹抖动；不要将逐帧网络输出等同已具备因果时序校正。
+- **与 FAH 的工程选型：** 有直接 2D/3D 关节对应点、逐点接触概率与单机实时预算需求时，可比较 [FAH](../entities/paper-fah.md) 的可选输出和 FPS 测试边界。
 
 ## 常见误区或局限
 
@@ -56,6 +67,8 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 - **接触与力**：WiLoR 输出运动学假设，不包含接触力或抓取稳定性信息。
 
 ## 与其他页面的关系
+
+- [FAH：快速准确的手部估计](../entities/paper-fah.md)：使用直接 2D/3D 关节及稠密点预测，再独立拟合 MANO/MHR-Hand；另提供部位、接触和因果视频/世界系能力。HOT3D FAH-L 关节 PA-MPJPE 4.31 mm，RTX 4070 Ti SUPER 上含拟合 65 FPS（不含部位与接触）。
 
 - [ExoActor](./exoactor.md)：将 WiLoR 用作生成视频的双手分支估计。
 - [ViDiHand](../entities/paper-vidihand.md)：同为 egocentric 双手 MANO 路线；WiLoR 是 **per-frame 检测+重建** 强基线，ViDiHand 在 ARCTIC/HOT3D/HOI4D 上以 **无 detector** 取得更低 jitter；截至 2026-08-13 ViDiHand **代码仍待发布**（项目页有 GitHub 占位）。
