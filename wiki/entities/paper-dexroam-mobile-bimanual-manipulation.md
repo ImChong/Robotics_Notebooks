@@ -144,6 +144,17 @@ sequenceDiagram
 
 源码边界：采集 / 对齐 CLI 可运行；GR00T 和 π0.5 为**两个独立训练环境**，均需另备预训练权重及相应数据。以上时序仅基于可见入口与调用关系，不表示已实测完整真机部署。
 
+## 工程实践
+
+公开实现拆为三段离线过程，**不是同一实时运行程序**：
+
+1. **人体采集：** 在 Quest 3、ZED Mini SDK、WebXR 等环境配置就绪后，执行 `python -m ego_wholebody_mocap`，经手势状态机记录同步人体姿态、手指关键点及双目 RGB，保存为 HDF5 episode。
+2. **人机对齐：** 在 `human_robot_alignment/` 执行 `python -m dexroam_alignment <人体 HDF5 路径> -o <输出目录> --robot-dir <机器人 HDF5 目录>`。该参数用于计算机器人 episode 的平均长度，实际逐帧重定向走 `runner.retarget_path → pipeline.retarget_sequence`，再经 `resampling` 输出对齐数据。
+3. **策略数据转换：** 运行训练仓 `data_scripts/dexroam_hdf5_to_lerobot.py`，将对齐的 HDF5 转换成 LeRobot v2.1（含 stereo RGB、53-D state 和 56-D action），并和机器人示教按同一模态准备。
+4. **两条训练路径：** GR00T 依据 `docs/gr00t_training.md` 执行 `bash scripts/run_train_gr00t.sh`；π0.5 依据 `docs/pi05_training.md` 先执行 `bash scripts/run_compute_norm_stats.sh` 再 `bash scripts/run_train_pi.sh`。二者需要不同软件环境及各自预训练权重。
+
+**验证范围：** 以上命令与源码调用链已静态核对；未在本环境执行硬件采集、GPU 微调或完整真机评测。官方 HF 50 条 episode 为单任务机器人数据示例，不包含论文完整训练语料。
+
 ## 实验与评测
 
 论文 §IV 在五项真机任务中，每个方法/任务 20 次试验：Pick Chips Can、Pour Water、Throw Trash、Deliver Fruit、Push Chair & Close Laptop。
