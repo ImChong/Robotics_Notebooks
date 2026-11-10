@@ -287,6 +287,14 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-10] ingest | 收录 Steel、ToolDex、Agentic Robotics 与 ODEAction，复用 GR00T 2 和 AMP1
+
+- 意图：核对六项原始论文/项目，统一收录一手资料、作者实验指标、Mermaid 流程与开源状态。
+- 去重：GR00T 2 与 Apple AMP1 已存在完整项目实体，本次只补充相关节点交叉链接。
+- 新入库：Steel/Newton 求解器、ToolDex 工具示范数据集、智能体机器人对照研究、ODEAction 连续动作演化。
+- 源码核验：Steel 的 SolverSteel 在 Newton 主仓已公开；其余新研究的官方完整代码/数据开放范围已标注证据边界。
+- 指标边界：Steel 最高 13× 是异构仿真吞吐峰值；ODEAction 61.8% 是 EBench 成功率相对提升。均未在本地重测。
+
 ## [2026-11-10] ingest | sources/papers/fah_arxiv_2611_07711.md — 收录 FAH 手部 2D/3D 对应点估计、网格拟合与接触/世界系扩展
 
 - 原始资料：arXiv:2611.07711v1、官方项目主页和 noahcao/FAH 开源实现；分别归档至 sources/papers、sources/sites、sources/repos。
