@@ -102,7 +102,7 @@ sequenceDiagram
   participant Runner as OnPolicyRunnerTB / RSL-RL
   participant Deploy as deploy/run.py
   participant Device as deploy/env.py
-  participant Loop as runloop_lib.Runloop
+  participant RuntimeCtrl as runloop_lib.Runloop
 
   Note over Train,Runner: 训练 CLI --env 与 --logdir
   Train->>Registry: get(env_id)
@@ -113,14 +113,14 @@ sequenceDiagram
   Train->>Runner: OnPolicyRunnerTB(env, cfg)
   Train->>Runner: learn(max_iterations)
   Note over Runner: 训练产生 checkpoint；play.py 可载入并调用 viewer.launch
-  Note over Deploy,Loop: 独立部署 CLI --mode=sim 或 real
+  Note over Deploy,RuntimeCtrl: 独立部署 CLI --mode=sim 或 real
   Deploy->>Deploy: resolve_checkpoint(path)
   Deploy->>Device: create_sim_env 或 create_real_env
   Device-->>Deploy: Environment
   Deploy->>Runner: load_actor(checkpoint) / get_inference_policy
   Runner-->>Deploy: actor
-  Deploy->>Loop: Runloop(environment, policy, loggers)
-  Deploy->>Loop: run(num_episodes)
+  Deploy->>RuntimeCtrl: Runloop(environment, policy, loggers)
+  Deploy->>RuntimeCtrl: run(num_episodes)
 ```
 
 源码锚点：`train.py:main` 使用 `env_registry.get`、`RslRlVecEnvWrapper`、`OnPolicyRunnerTB.learn`；`play.py:main` 使用 `runner.load`、`get_inference_policy` 与 `reaf.simulation.torch.viewer.launch`；`deploy/run.py:main` 先 `resolve_checkpoint`，按 mode 建环境并使用 `runloop.run`。图内的 RSL-RL actor 重建是部署脚本自己的调用，**不表示复用训练进程中的 Runner 实例**。
