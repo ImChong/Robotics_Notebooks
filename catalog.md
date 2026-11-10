@@ -2458,6 +2458,7 @@
 - [FLEXOR：动态脊-腿协同与微小型四足高速推进](wiki/entities/paper-flexor-dynamic-spine-leg-synergy.md) — Unlocking fast robotic locomotor propulsion through dynamic spine-leg synergy**（Wang Ruochao 等，**北 `📅unknown` `[entity_page]`
 - [FloMo（arXiv:2611.05062）](wiki/entities/paper-flomo.md) — FloMo**（*FloMo: 3D Scene Flow as a World Action Model Intermediate for Learning from Human Video*， `📅unknown` `[entity_page]`
 - [FLoRe: Learning Force-Reactive Humanoid Loco-Manipulation（力反馈响应式人形移动操作学习）](wiki/entities/paper-flore.md) — FLoRe**（*Learning Force-Reactive Humanoid Loco-Manipulation*，[arXiv:2610.35862](https://arxiv.org/ `📅unknown` `[entity_page]`
+- [Flow-GRPO：通过在线强化学习训练流匹配模型 / Training Flow Matching Models via Online RL](wiki/entities/paper-flow-grpo.md) — Flow-GRPO**（*Flow-GRPO: Training Flow Matching Models via Online RL*，Jie Liu 等，**NeurIPS 2025**，ar `📅unknown` `[entity_page]`
 - [技能级世界模型的流策略动作（arXiv:2610.04767）](wiki/entities/paper-flow-policies-skill-level-world-models.md) — 技能级世界模型的流策略动作**（*Flow Policies as Actions of Skill-Level World Models: Learned and Symbolic Abstra `📅unknown` `[entity_page]`
 - [Flow-Reversed Action Anchors（arXiv:2610.22852）](wiki/entities/paper-flow-reversed-action-anchors.md) — Flow-Reversed Action Anchors**（*Sample-Efficient Reinforcement Learning for Policy Improvement via `📅unknown` `[entity_page]`
 - [FlowBench（arXiv:2611.03937）](wiki/entities/paper-flowbench.md) — FlowBench**（*FlowBench: Counterfactual Imagination Training for Spatial Intelligence*，[arXiv:2611. `📅unknown` `[entity_page]`

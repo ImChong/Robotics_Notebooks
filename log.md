@@ -287,6 +287,12 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-10] ingest | Flow-GRPO（arXiv:2505.05470）：流匹配模型在线 GRPO
+
+- 通读 arXiv v5 正文与附录，归档 ODE→SDE、GRPO、训练/推理步数和实验边界。
+- 核对官网与已公开的训练代码；新增论文实体，附 Mermaid 方法流程图和基于真实源码的训练时序图。
+- 与 Diffusion Policy 双向关联；GenEval 63%→95% 和 OCR 59%→92% 为图像生成评测，不能误读为机器人真机结果。
+
 ## [2026-11-10] ingest | 收录 Steel、ToolDex、Agentic Robotics 与 ODEAction，复用 GR00T 2 和 AMP1
 
 - 意图：核对六项原始论文/项目，统一收录一手资料、作者实验指标、Mermaid 流程与开源状态。
