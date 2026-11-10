@@ -4440,6 +4440,7 @@
 - [RoboImagine（arXiv:2611.07850）](wiki/entities/paper-roboimagine.md) — RoboImagine**（*Learning Robotic World Models with Semantic and Visual Feedback*，[arXiv:2611.07850 `📅unknown` `[entity_page]`
 - [RoboInter1.5（中间表示操作与世界建模套件）](wiki/entities/paper-robointer-1-5.md) — RoboInter1.5**（*A Holistic Intermediate Representation Suite for Embodied World Modeling and Robot `📅unknown` `[entity_page]`
 - [RoboJev（arXiv:2610.33718）](wiki/entities/paper-robojev.md) — RoboJev**（*RoboJev: An Open Vision-Language Judge for Robot Success Detection*，[arXiv:2610.33718 `📅unknown` `[entity_page]`
+- [RoboLineage：跨机器人策略迭代的 Agent 原生数据生命周期治理](wiki/entities/paper-robolineage.md) — RoboLineage: Agent-Native Data Lifecycle Governance Across Robot Policy Iterations `📅unknown` `[entity_page]`
 - [RoboLongR（arXiv:2610.33863）](wiki/entities/paper-robolongr.md) — RoboLongR**（*RoboLongR: Causally Consistent Rewards Teach Robots to Progressively Master Long-Hori `📅unknown` `[entity_page]`
 - [RoboMemory](wiki/entities/paper-robomemory-multi-type-embodied-memory.md) — RoboMemory** 收录于 具身智能研究室 · 具身世界模型六路线综述 **上下文主 `📅unknown` `[entity_page]`
 - [Robometer：靠轨迹对比较扩展通用机器人奖励模型](wiki/entities/paper-robometer.md) — Robometer**（*Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons*， `📅unknown` `[entity_page]`

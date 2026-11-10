@@ -299,6 +299,18 @@ op: ingest
 - **项目：** <https://research.nvidia.com/labs/gear/flora/>
 - **代码：** <https://github.com/NVlabs/Flora>
 
+# 2026-11-10 · ingest · RoboLineage（CoRL 2026）
+
+- **意图：** 根据用户指定的《RoboLineage: Agent-Native Data Lifecycle Governance Across Robot Policy Iterations》（Qian Luo 等；arXiv:2606.22142）收录跨机器人策略轮次的数据生命周期治理。
+- **去重：** 检索 Robotics_Notebooks 主分支代码与 PR，未发现同名实体；论文/官网/代码统一到 `wiki/entities/paper-robolineage.md` 一个稳定 `project_id: robolineage` 节点。
+- **原文：** 通读 arXiv HTML §1–5 和 Appendix A–K，保留 25 tasks / 500 rollouts、12 对 session、八任务匹配训练和三轮复采的口径，并区分人工活跃时间与物理采集。
+- **开放状态：** 官方 GitHub MIT 许可，已提供 Python runtime、ROS2 数据采集与 VSA、review、dataset lock、训练/评测适配、FastAPI/Vue frontend；mock replay、打包评分脚本和更广覆盖 adapter 尚在 README 待办。
+- **输出：** 中英双标题、原始资料三层归档、方法 Mermaid flowchart、基于 `run.sh` / `UnifiedRuntime` / `PostRolloutReviewWorker` / `TrainingLifecycleRunner` / `PolicyEvaluationAgent` 的 Mermaid sequenceDiagram，并从数据飞轮已有页面入链。
+- **核验边界：** 静态阅读官方源码与文档；未在真机、GPU 或 ROS2 完整 workstation 运行，不声称复现论文中定量结果。
+- **论文：** <https://arxiv.org/html/2606.22142v1>
+- **项目：** <https://robolineage.github.io/>
+- **代码：** <https://github.com/robolineage/robolineage>
+
 ## [2026-11-10] ingest | EgoWild2Dex | 既有节点论文全文与附录精读升级
 
 - **意图：** 避免与历史 PR #2296 的 EgoWild2Dex 同项目节点重复，沿用唯一论文实体，补充原始文献通读证据。
