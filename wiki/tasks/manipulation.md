@@ -4,6 +4,7 @@ tags: [manipulation, il, diffusion-policy, humanoid]
 status: complete
 updated: 2026-11-08
 related:
+  - ../entities/paper-agenticgenplan-generalized-tamp.md
   - ../entities/paper-behavior-spatial.md
   - ../entities/paper-recova.md
   - ../entities/paper-goaldex.md
@@ -618,6 +619,8 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [Commander–Executor 协作操作](../entities/paper-commander-executor-coordination.md) — 共享物体轨迹驱动的多角色仿真操作；真实机器人部署仍待验证。
 
 - [GENESIS-Handover](../entities/paper-genesis-handover.md) — 通过多种生成式手-物假设选择任务导向的人机递物姿态。
+
+- [AgenticGenPlan：跨实例通用 TAMP 代码合成](../entities/paper-agenticgenplan-generalized-tamp.md) — 代码代理在同一任务族中经仿真交互、边界测试与策略迭代，冻结程序复用到未见布局；不是任意跨环境/引擎迁移保证。
 
 ## 参考来源
 
