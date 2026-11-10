@@ -30,6 +30,7 @@ related:
   - ./paper-xrobotoolkit.md
   - ./paper-humantracker.md
   - ./paper-humanoidttt.md
+  - ./paper-diffwbc.md
 original:
   - ../../sources/papers/twist2_reading_arxiv_2511_02832_t2rd.md
 sources:

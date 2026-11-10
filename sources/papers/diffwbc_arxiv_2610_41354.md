@@ -2,7 +2,7 @@
 
 - **标题：** DiffWBC: Unlocking Steerable General Humanoid Motion Tracking via One-Step Diffusion Whole-Body Control
 - **作者：** Yifei Huang, Yazhao Yang, Weijia Li, Zhiheng Ma, Dian Shen
-- **机构：** 东南大学（Southeast University）；南方科技大学（Southern University of Science and Technology）；香港理工大学（The Hong Kong Polytechnic University）；深圳先进技术大学（Shenzhen University of Advanced Technology）
+- **机构：** 东南大学（Southeast University）；南方科技大学（Southern University of Science and Technology）；香港理工大学（The Hong Kong Polytechnic University）；深圳理工大学（Shenzhen University of Advanced Technology）
 - **日期与版本：** 2026-10-30，arXiv:2610.41354v1（cs.RO）
 - **原文：** https://arxiv.org/html/2610.41354v1 （论文 PDF：https://arxiv.org/pdf/2610.41354）
 - **项目页：** https://diffwbc.github.io/
@@ -44,4 +44,5 @@
 ## 对 wiki 的映射
 
 - [DiffWBC 统一论文实体](../../wiki/entities/paper-diffwbc.md)
+- [主分支原文通读归档](./diffwbc_arxiv_2610_41354_reading.md)
 - [DiffWBC 项目页与代码状态](../sites/diffwbc-project.md)

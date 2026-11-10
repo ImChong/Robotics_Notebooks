@@ -171,6 +171,11 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Agentic Robotics 对照研究：模型、技能、反馈、课程](paper-agentic-robotics-controlled-study.md) — 对照代码型 agent 的修复能力与反馈粒度。
+- [ToolDex：创造性工具操作演示数据](paper-tooldex.md) — 对照零样本代码型操作与示范策略迁移。
+- [ODEAction：连续演化动作头](paper-odeaction.md) — 对照高层闭环编程与低层连续动作生成。
+- [Steel：异构 GPU 刚体仿真](steel-newton-solver.md) — 仿真吞吐的独立工程轴。
+
 - [智能体机器人操作策略：Agentic Manipulation Policies](../methods/agentic-manipulation-policies.md) — 从接口与时延角度理解代码型 agent。
 - [VLA](../methods/vla.md) — 直接动作预测的另一条路线。
 - [机器人操作（Manipulation）](../tasks/manipulation.md) — 动作执行、接触与泛化任务。

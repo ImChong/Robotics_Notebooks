@@ -181,6 +181,10 @@ flowchart TD
 
 ## 关联页面
 
+- [ODEAction：无动作块的连续演化头](paper-odeaction.md) — 对照联合视频/动作预测与递归动作生成。
+- [Steel：异构机器人/任务仿真求解器](steel-newton-solver.md) — 跨本体数据与仿真吞吐的不同层。
+- [ToolDex：工具使用演示数据集](paper-tooldex.md) — 对照人类视频示范和工具接触标注。
+
 - [GR00T N1.7：VLM + flow-matching action head](./paper-gr00t-n1-7.md)
 - [GR00T N1.5](./paper-gr00t-n1-5.md)
 - [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)

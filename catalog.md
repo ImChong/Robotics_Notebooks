@@ -1616,6 +1616,7 @@
 - [Agentic Coding Agent（arXiv:2609.26499）](wiki/entities/paper-agentic-coding-manipulation.md) — Agentic Coding Agent**（*Generalizing Manipulation Skills with a Local Coding Agent*，[arXiv:2609.26 `📅unknown` `[entity_page]`
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](wiki/entities/paper-agentic-real2sim.md) — Agentic Real2Sim**（*Physics-based World Modeling with Vision-Language Agents*，[arXiv:2607.19190](h `📅unknown` `[entity_page]`
 - [AgenticRoboRL：把 Coding-Agent 后训练用于机器人 Planner](wiki/entities/paper-agentic-roborl.md) — AgenticRoboRL**（arXiv:2610.28589，[项目页](https://xinxinliu-ai.gi `📅unknown` `[entity_page]`
+- [智能体机器人中模型、技能、反馈与课程的对照研究 / A Controlled Study of Models, Skills, Feedback, and Curriculum in Agentic Robotics](wiki/entities/paper-agentic-robotics-controlled-study.md) — 这项控制变量研究把机器人 coding agent 的“生成策略—仿真执行—收集反馈—改写代码”拆解为模型、技能先验、反馈结构和训练课程四类因素，研究为什么有反馈也不一定能学会修复物理操作失败。 `📅unknown` `[entity_page]`
 - [AgentSTAR（单目视频 Agentic 形状跟踪与重建）](wiki/entities/paper-agenticstar.md) — AgentSTAR**（*Agentic Shape Tracking and Reconstruction from Monocular Videos*，[arXiv:2609.24487](h `📅unknown` `[entity_page]`
 - [AGILE：人形 Loco-Manipulation 学习工作流](wiki/entities/paper-agile-humanoid-loco-manipulation.md) — AGILE**（*A Generic Isaac-Lab based Engine*；论文 *AGILE: A Comprehensive Workflow for Humanoid Loco-M `📅unknown` `[entity_page]`
 - [Agile Perceptive Traversal：人形稀疏 3D 结构敏捷感知穿越](wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md) — Agile Perceptive Traversal**（*Learning Agile Perceptive Traversal of Sparse 3D Structures for Huma `📅unknown` `[entity_page]`
@@ -2180,6 +2181,7 @@
 - [Diffusion-VLA](wiki/entities/paper-diffusion-vla.md) — Diffusion-VLA**（arXiv:2412.03293）收录于 Lumina [Embodied-AI-Guide `📅unknown` `[entity_page]`
 - [DiffusionDrive（DiffusionDrive: Truncated Diffusion Model for End-to-End Autonomous Driving · arXiv:2411.15139）](wiki/entities/paper-diffusiondrive.md) — DiffusionDrive**（*DiffusionDrive: Truncated Diffusion Model for End-to-End Autonomous Driving*，[24 `📅unknown` `[entity_page]`
 - [DiffWAM: A Fast and Efficient Navigation World Action Model（快速高效的导航世界–动作模型）](wiki/entities/paper-diffwam.md) — 从视频模型的早期未来表示直接预测相机运动，省掉在线未来视频渲染和多帧重建，再由规划与飞控将候选轨迹变成可执行飞行。** 本页以 arXiv:2609.39763v1 的具体方法章节和表格为准，项目 `📅2026-09-30` `[entity_page]`
+- [DiffWBC：单步生成式全身控制与测试时运动引导 / Steerable General Humanoid Motion Tracking](wiki/entities/paper-diffwbc.md) — DiffWBC**（*Unlocking Steerable General Humanoid Motion Tracking via One-Step Diffusion Whole-Body  `📅unknown` `[entity_page]`
 - [Real-World Humanoid Locomotion with Reinforcement Learning（Digit）](wiki/entities/paper-digit-humanoid-locomotion-rl.md) — 一句话定义**：在 Agility Digit 全尺寸人形上，用 **大规模并行仿真 + 域随机化** 训练 **因果 Transformer**，从本体感觉与动作历史自回归预测下一步关节指令，经 `📅unknown` `[entity_page]`
 - [DigitCode：按解剖单元做手部动作符号化](wiki/entities/paper-digitcode.md) — DigitCode**（*Symbolic Tokenization of Hand Motion by Anatomical Units*；[arXiv:2608.03127](https:// `📅unknown` `[entity_page]`
 - [DIMOS：室内 3D 场景中的多样人体运动合成](wiki/entities/paper-dimos-human-scene-motion-synthesis.md) — DIMOS**（*Synthesizing Diverse Human Motions in 3D Indoor Scenes*，arXiv:2305.12411，ICCV 2023，[项目页 `📅unknown` `[entity_page]`
@@ -2200,6 +2202,7 @@
 - [DiT4DiT（双 DiT 联合视频–动作建模）](wiki/entities/paper-dit4dit-video-action-model.md) — DiT4DiT**（*Jointly Modeling Video Dynamics and Actions for Generalizable Robot Control*，arXiv:2603 `📅unknown` `[entity_page]`
 - [Dita：可扩展的扩散 Transformer 通才 VLA](wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md) — Dita**（*Dita: Scaling Diffusion Transformer for Generalist Vision-Language-Action Policy*，[arXiv:2 `📅unknown` `[entity_page]`
 - [DiTaR（arXiv:2610.14159）](wiki/entities/paper-ditar-task-relevant-latent-dynamics-reward.md) — DiTaR**（*Disentangling Task-Relevant Latent Dynamics for Reward Modeling*，[arXiv:2610.14159](https `📅unknown` `[entity_page]`
+- [DKWBC：解耦动作跟踪与平衡的人形全身控制（Decoupling Motion Tracking and Balancing for Humanoid Whole-Body Control）](wiki/entities/paper-dkwbc.md) — 论文：** arXiv:2611.09605v1（2026-11-06） `📅unknown` `[entity_page]`
 - [可变形线性物体 3D 力估计：基于因子图的双臂可变形线状物体三维受力估计](wiki/entities/paper-dlo-3d-force-estimation-factor-graphs.md) — 可变形线性物体 3D 力估计**（*3D-Force Estimation for Dual-arm Manipulation of Deformable Linear Objects via F `📅unknown` `[entity_page]`
 - [DLO 关键点定位的强化学习实证研究（arXiv:2611.07261）](wiki/entities/paper-dlo-keypoint-rl-empirical-study.md) — An Empirical Study of Reinforcement Learning for Keypoint Positioning of Deformable Linear Objects `📅unknown` `[entity_page]`
 - [DLSRL（arXiv:2609.11270）](wiki/entities/paper-dlsrl.md) — DLSRL**（[Beyond Noise Steering: Dual-Latent Space Reinforcement Learning for Generative Robot Poli `📅unknown` `[entity_page]`
@@ -2763,6 +2766,7 @@
 - [Humanoid-DART](wiki/entities/paper-humanoid-dart.md) — Humanoid-DART: Humanoid Loco-Manipulation using Diffusion-guided Augmentation through Relabeling a `📅unknown` `[entity_page]`
 - [Humanoid Dodgeball：人形躲避球：快速动态障碍规避动作学习](wiki/entities/paper-humanoid-dodgeball-dynamic-obstacle-avoidance.md) — Humanoid Dodgeball**（*Humanoid Dodgeball: Learning Fast Dynamic Obstacle Avoidance Motions for Hum `📅unknown` `[entity_page]`
 - [果蝇启发循环控制器的人形行走分析](wiki/entities/paper-humanoid-fly-inspired-rnn.md) — Humanoid Locomotion with a Fly-Inspired Recurrent Controller**（[arXiv:2609.27001](https://arxiv.or `📅unknown` `[entity_page]`
+- [Humanoid Footstep Planning using Graphs of Convex Sets / 基于凸集图的人形机器人步位规划](wiki/entities/paper-humanoid-footstep-planning-gcs.md) — 把“下一步迈哪只脚、采用何种可行转换”和“脚具体落在哪里”放进同一个 Graphs of Convex Sets（GCS）规划框架，通过凸松弛寻找符合地形与运动学限制的步位序列。** 这篇论文发表 `📅unknown` `[entity_page]`
 - [Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）](wiki/entities/paper-humanoid-gpt.md) — Humanoid-GPT** 是清华、Galbot、上交、北大与期智等团队的 **人形全身在线 motion tracking** 工作（arXiv:2606.03985，项目页标注 **CVPR `📅unknown` `[entity_page]`
 - [Humanoid Horizon：用并行训练、动态起始与奖励门控扩展全身移动操作时域](wiki/entities/paper-humanoid-horizon-long-horizon-loco-manipulation.md) — Humanoid Horizon**（arXiv:2610.08320，[项目页](https://haozhuo-zhan `📅unknown` `[entity_page]`
 - [动力学仿真驱动的人形机器人下肢衍生式设计](wiki/entities/paper-humanoid-leg-generative-design-dynamics.md) — 罗元春 / 纵怀志 / 周蕾\* / 张军辉**（浙江大学 流体动力基础件与机电系统全国重点实验室；[中航工业西安飞行自动控制研究所](htt `📅unknown` `[entity_page]`
@@ -3657,6 +3661,7 @@
 - [Octo：灵活输入的开源通才操作策略](wiki/entities/paper-octo.md) — Octo**（*Octo: An Open-Source Generalist Robot Policy*，[arXiv:2405.12213](https://arxiv.org/abs/240 `📅unknown` `[entity_page]`
 - [E-SOAM：仿章鱼可传感软臂的环境交互](wiki/entities/paper-octopus-inspired-esoam-soft-arm.md) — Octopus-inspired sensorized soft arm for environmental interaction**（Fan Yang† / Hao Ding†、Tianmia `📅unknown` `[entity_page]`
 - [ODE Policy: Robot Learning via Action Dynamics, Not Actions（基于动作动力学的机器人学习）](wiki/entities/paper-ode-policy-action-dynamics.md) — ODE Policy**（*ODE Policy: Robot Learning via Action Dynamics, Not Actions*，[arXiv:2611.01729](http `📅unknown` `[entity_page]`
+- [ODEAction：从预测动作块到连续演化动作 / From Predicting Chunks to Evolving Actions](wiki/entities/paper-odeaction.md) — ODEAction 通过条件动作转移场的常微分方程积分，从当前动作持续演化后续动作，替代把多个独立预测的 action chunks 直接拼接的做法。 `📅unknown` `[entity_page]`
 - [ODEWorld（物理时间流连续预测架构）](wiki/entities/paper-odeworld.md) — ODEWorld**（*A Continuous Predictive Architecture via Physical-Time Flow*，[arXiv:2607.27924](https: `📅unknown` `[entity_page]`
 - [OdorSpaces（arXiv:2611.05738）](wiki/entities/paper-odorspaces.md) — OdorSpaces**（*OdorSpaces: Visual-Olfactory Embodied Navigation in 3D Environments*，[arXiv:2611.057 `📅unknown` `[entity_page]`
 - [Off-Road Global Nav：可通行感知的长程越野全局规划](wiki/entities/paper-offroad-global-nav.md) — Learning Traversability-Aware Global Planners for Long Horizon Off-Road Navigation**（[arXiv:2607.2 `📅unknown` `[entity_page]`
@@ -5713,6 +5718,7 @@
 - [TMRL（arXiv:2605.12236）](wiki/entities/paper-tmrl-diffusion-timestep-pretraining.md) — TMRL**（*TMRL: Diffusion Timestep-Modulated Pretraining Enables Exploration for Efficient Policy Fi `📅unknown` `[entity_page]`
 - [TOLEBI](wiki/entities/paper-tolebi.md) — TOLEBI**（TOLEBI: Learning Fault-Tolerant Bipedal Locomotion via Online Status Estimation and Falli `📅unknown` `[entity_page]`
 - [TONAV：导航从一开始就服务于接触](wiki/entities/paper-tonav.md) — TONAV**（*Task-Oriented Navigation and Action-Velocity Chunk Learning for Articulated Object Quadru `📅unknown` `[entity_page]`
+- [ToolDex：创造性物理工具使用的第一/第三人称演示数据集 / An Ego-Exo Human Demonstration Dataset](wiki/entities/paper-tooldex.md) — ToolDex 是针对人类创造性工具使用的同步多相机示范数据集，显式标注“手—工具—目标”的接触任务结构，支持物理推理、重建与机器人学习。 `📅unknown` `[entity_page]`
 - [顶层布料分割：软物体操作常输在边界](wiki/entities/paper-top-layer-fabric-seg.md) — 顶层布料分割**（*Precise Top-Layer Fabric Segmentation for Fabric Destacking with Edge- and Shape-Aware D `📅unknown` `[entity_page]`
 - [Topology-VLA（arXiv:2609.23944）](wiki/entities/paper-topology-informed-visual-prompting-vla.md) — Topology-VLA**（*Topology-Informed Visual Prompting For Vision Language Action Policies*，[arXiv:260 `📅unknown` `[entity_page]`
 - [TOPReward：Token 概率作零样本机器人进度奖励](wiki/entities/paper-topreward.md) — TOPReward**（*Token Probabilities as Hidden Zero-Shot Rewards for Robotics*，[arXiv:2602.19313](http `📅unknown` `[entity_page]`
@@ -6360,6 +6366,7 @@
 - [Stanford Doggo / Pupper（开源四足）](wiki/entities/stanford-doggo-and-pupper.md) — Stanford Doggo** 与 **Stanford Pupper** 同属斯坦福学生机器人俱乐部叙事下的 **开源四足**：**Doggo** 强调 **高动态跳跃**（转载中约 **5  `📅unknown` `[entity_page]`
 - [HAI Closing Fireside: Discovery Loop / HAI 闭幕对谈：科研实验闭环与递归自改进](wiki/entities/stanford-hai-discovery-loop-2026.md) — 这是 Jeff Dean 的科研自动化演讲及其与李飞飞的闭幕对谈，核心是让模型与 agent 通过工具执行、实验评估和经验反馈推进研究，同时辨明任务改进与递归自改进的边界。 `📅unknown` `[entity_page]`
 - [starter-kit-racing](wiki/entities/starter-kit-racing.md) — starter-kit-racing** 是 **mrdoob** 将 Kenney「Starter Kit Racing」从 **Godot 4.6** 移植到 **纯 JavaScript + `📅unknown` `[entity_page]`
+- [Steel：跨机器人、任务与世界的 GPU 刚体仿真 / Scaling Simulation Across Robots, Tasks, and Worlds](wiki/entities/steel-newton-solver.md) — Steel 是 Newton Physics Engine 内的 GPU 刚体约束求解器 `SolverSteel`，面向多本体、多任务、异构环境并行仿真，而非策略网络或整套训练框架。 `📅unknown` `[entity_page]`
 - [step2urdf](wiki/entities/step2urdf.md) — step2urdf**（原 URDFlyS2U）是 [Democratizing-Dexterous/step2urdf](https://github.com/Democratizing-Dex `📅unknown` `[entity_page]`
 - [STMR 四足时空重定向](wiki/entities/stmr-quadruped-retargeting.md) — STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557 `📅unknown` `[entity_page]`
 - [StreamRig 项目：多相机流式视觉里程计](wiki/entities/streamrig.md) — StreamRig**（*Exploiting Intra-Rig Geometry for Streaming Multi-Camera Odometry*，[arXiv:2609.40244 `📅unknown` `[entity_page]`
