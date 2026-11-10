@@ -15,6 +15,7 @@ related:
   - ../entities/paper-apple-amp1.md
   - ../entities/paper-harness-vla.md
   - ../entities/paper-robo-harness.md
+  - ../concepts/behavior-tree-vla-orchestration.md
   - ./vla.md
   - ../tasks/manipulation.md
 sources:
@@ -69,6 +70,16 @@ flowchart TD
 
 **接口原则：** 大模型输出“代码级、任务级命令”，低层控制器落实关节目标/接触稳定性；观测闭环的时间尺度比电机伺服慢得多。
 
+## 主要技术路线
+
+以**上层任务决策和下层机器人执行的接口**为分类依据，可以区分以下三种已公开的架构：
+
+1. **代码生成型 agent（[Apple AMP1](../entities/paper-apple-amp1.md)）**：模型直接在持久 Python 环境编写程序，调用感知、几何和轨迹 SDK；适合需要现场几何推理、重复观察和可执行代码审查的操作，但决策回路时延高。
+2. **固定原语型 agent（[Harness VLA](../entities/paper-harness-vla.md)）**：上层模型选择已定义的解析原语及冻结 VLA 接触原语，利用记忆恢复和重绑定；不是允许模型无限制生成机器人控制 API。
+3. **异构技能编排（[RoboHarness](../entities/paper-robo-harness.md)）**：根据任务和执行证据选择不同的 VLA / RL / TAMP 策略，再处理策略之间的状态交接。
+
+三种路线均不同于直接以大模型输出高频力矩。工程选型时应明确 **谁产生动作、动作接口的权限、反馈频率和恢复边界**；与 [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) 对照，可进一步区分确定性流程控制与模型主导的动态工具调用。
+
 ## 与其他工作对比
 
 | 范式 | 计划生成 | 低层动作 | 能力/时延取舍 |
@@ -112,6 +123,7 @@ Apple 的 RoboLab-120 实验同时变更了模型与 harness，报告 AMP1 + Gem
 - [Harness VLA 记忆编排](../entities/paper-harness-vla.md)
 - [RoboHarness 异构策略路由](../entities/paper-robo-harness.md)
 - [机器人操作任务](../tasks/manipulation.md)
+- [行为树 × VLA 编排（概念）](../concepts/behavior-tree-vla-orchestration.md)
 
 ## 参考来源
 
