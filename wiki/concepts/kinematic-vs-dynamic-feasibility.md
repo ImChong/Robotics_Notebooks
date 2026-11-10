@@ -73,6 +73,8 @@ original:
 
 ## 关联页面
 
+- [AgenticGenPlan：代码代理泛化 TAMP](../entities/paper-agenticgenplan-generalized-tamp-coding-agents.md) — 在同时含运动学和动力学约束的仿真任务中，代码代理合成可跨实例复用的程序；并非任意跨引擎迁移
+
 - [Motion Retargeting](./motion-retargeting.md)
 - [人形 vs 其他机器人](./humanoid-vs-other-robots.md)
 - [Know-How 技术地图](../overview/humanoid-motion-control-know-how-technology-map.md)
