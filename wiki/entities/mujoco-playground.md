@@ -29,7 +29,9 @@ sources:
 summary: "MuJoCo Playground 1.0（2026-11）将 JAX/MJX 研究版升级为 PyTorch + reaf-sim + MuJoCo/MuJoCo Warp 的机器人仿真、RSL-RL 训练与真机共享任务框架；历史 JAX 环境留在 rss2025。"
 ---
 
-# MuJoCo Playground 1.0｜从 JAX/MJX 到 PyTorch 与 Sim-to-Real 工作流
+# MuJoCo Playground
+
+> **1.0 更新（2026-11）：** 从 JAX/MJX 转向 PyTorch、MuJoCo Warp 与 Sim-to-Real 工作流。
 
 ## 一句话定义
 
