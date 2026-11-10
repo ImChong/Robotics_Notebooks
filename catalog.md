@@ -3105,6 +3105,7 @@
 - [MARGoS：把群体强化学习的复现变成平台职责](wiki/entities/paper-margos-reproducible-marl-argos.md) — MARGoS**（论文 *MARGoS: A Configuration-Driven Platform for Reproducible MARL Experiments in ARGoS*， `📅unknown` `[entity_page]`
 - [Masked Visual Actions（统一世界建模的掩码视觉动作）](wiki/entities/paper-masked-visual-actions.md) — Masked Visual Actions**（*Masked Visual Actions for Unified World Modeling*，[arXiv:2607.19343](http `📅unknown` `[entity_page]`
 - [MASkillBlender：通过技能混合实现多个人形机器人分散式全身协同](wiki/entities/paper-maskillblender.md) — MASkillBlender: Decentralized Whole-Body Coordination for Multi- Humanoid Loco-Manipulation via Sk `📅unknown` `[entity_page]`
+- [MATE：异步多速率扩散策略组合 / Asynchronous Multi-Rate Diffusion Policy Composition](wiki/entities/paper-mate-asynchronous-multirate-diffusion.md) — MATE**（作者 Zihao He、Hongjie Fang 等，上海交通大学、Noematrix 等；[arXiv:2607.17257v2](https://arxiv.org/html/2 `📅unknown` `[entity_page]`
 - [MATE（arXiv:2609.26520）](wiki/entities/paper-mate-virtual-teleop.md) — MATE**（*MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collectio `📅unknown` `[entity_page]`
 - [MAVP（arXiv:2609.26378）](wiki/entities/paper-mavp.md) — MAVP**（*MAVP: Map-Aware Visuomotor Policies for Mobile Manipulation*，[arXiv:2609.26378](https://ar `📅unknown` `[entity_page]`
 - [ME-Brain-1.0：记忆、认知与动作的自我演进具身框架](wiki/entities/paper-me-brain-1-0.md) — ME-Brain-1.0**（*Memory, Cognition and Action for Evolving Embodied Intelligence*，[arXiv:2609.24271 `📅unknown` `[entity_page]`
