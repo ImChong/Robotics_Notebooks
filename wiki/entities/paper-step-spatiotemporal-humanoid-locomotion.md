@@ -11,7 +11,7 @@ tags:
   - ustc
   - noetix
 status: complete
-updated: 2026-11-09
+updated: 2026-11-10
 arxiv: "2611.08097"
 original:
   - ../../sources/papers/step-spatiotemporal-humanoid-locomotion_arxiv_2611_08097.md
@@ -23,6 +23,8 @@ related:
   - ../concepts/privileged-training.md
   - ../concepts/terrain-adaptation.md
   - ../concepts/sim2real.md
+  - ./paper-dkwbc.md
+  - ./paper-forpc-cart-pushing.md
   - ./paper-lejepa.md
   - ./paper-ame-attention-based-map-encoding.md
   - ./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
@@ -166,8 +168,15 @@ flowchart LR
 - Fig. 3(a) 延迟为策略推理 p50，不含感知与控制整环（IV-B 自述）；延迟数值在图中约 0.03–0.15 ms 量级（读图估计）。
 - 正文未给出代码、权重或项目页，复现需要自行实现（见源码归档的开源状态）。
 
+## 方法比较补充
+
+- [DKWBC](./paper-dkwbc.md)：同属人形运动控制，但 DKWBC 用显式逆动力学跟踪 + RL 力矩平衡残差；STEP 用深度/本体感知表征训练并通过位置目标控制地形运动，两者在感知输入、执行器接口和目标任务上不同，**不能直接对比成功率**。
+- [ForPC](./paper-forpc-cart-pushing.md)：同样涉及步态与平衡，但 ForPC 额外处理双手推车接触力耦合，实机 G1 演示不代表 STEP 的感知式越障指标。
+
 ## 关联页面
 
+- [DKWBC：动力学跟踪与平衡解耦](./paper-dkwbc.md)
+- [ForPC：推车全身控制](./paper-forpc-cart-pushing.md)
 - [人形机器人运动控制](../tasks/humanoid-locomotion.md)
 - [楼梯与障碍的感知式运动](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [PPO](../methods/ppo.md)
