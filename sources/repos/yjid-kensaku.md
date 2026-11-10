@@ -9,7 +9,7 @@
 - **文档：** <https://github.com/yjid/kensaku/tree/master/docs>
 - **发行版：** <https://github.com/yjid/kensaku/releases>
 - **许可证：** MIT
-- **核对版本：** 官方默认分支 `master`；README / ARCHITECTURE.md 对已发布版本 v1.0.16 的描述
+- **核对版本：** `yjid/kensaku@9585797888e8b7260daf9d1334ea1c8282dee2f3`（2026-11-09 的 `master` HEAD）；README / ARCHITECTURE.md 对 v1.0.16 的描述
 - **入库日期：** 2026-11-10
 - **核对范围：** 通读官方 README.md、docs/ARCHITECTURE.md、docs/BENCHMARKS.md、docs/AGENTS.md、docs/EXTRACTORS.md；核对 LICENSE、cli/src/main.rs、src-tauri/src/cli.rs 的 `run`/MCP 分发、src-tauri/src/agent/mod.rs 的 `HeadlessIndex`/检索调用、src-tauri/src/agent/mcp.rs 的 `tools/call` 与 `search_page` 分支、src-tauri/src/indexer/mod.rs 的 `start_indexing`、src-tauri/src/search/mod.rs 的检索入口。源码仅核对相关调用链，并未逐行通读全部代码或实际运行基准。
 - **通读：** 已完成
