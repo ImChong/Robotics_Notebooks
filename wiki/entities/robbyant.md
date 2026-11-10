@@ -3,8 +3,9 @@ type: entity
 tags: [company, robbyant, ant-group, lingbot, physical-ai, embodied-foundation-model, vla, world-model, world-action-model, open-source]
 title: Robbyant（蚂蚁灵波）
 status: complete
-updated: 2026-09-29
+updated: 2026-11-10
 related:
+  - ./paper-lingbot-touch.md
   - ./lingbot-vla.md
   - ./lingbot-vla-v2.md
   - ./lingbot-world.md
@@ -23,6 +24,7 @@ related:
   - ./paper-1xwm-redwood-world-model.md
   - ../comparisons/robot-foundation-model-company-paths-2026.md
 sources:
+  - ../../sources/sites/lingbot-touch-official.md
   - ../../sources/sites/antgroup_robbyant.md
   - ../../sources/sites/technology-robbyant-com.md
   - ../../sources/sites/robbyant_github.md
@@ -38,7 +40,7 @@ summary: "Robbyant（蚂蚁灵波）是蚂蚁集团旗下具身智能公司，�
 
 ## 一句话定义
 
-**蚂蚁集团旗下的具身智能公司：用一套 LingBot 模型家族，把「看清物理世界 → 理解三维空间 → 预测世界怎么变 → 输出机器人动作」拆成七个可单独下载的模型，目标是官网所说的 "one brain for all robots"。**
+**蚂蚁集团旗下的具身智能公司：用一套 LingBot 模型家族，把视觉、深度、地图、视频、世界预测、动作策略与触觉表示拆成八条模型线（各模型权重开放程度以官方页面为准），目标是官网所说的 "one brain for all robots"。**
 
 ## 英文缩写速查
 
@@ -72,7 +74,7 @@ flowchart TB
 |------|------|------|
 | 上级集团 | Ant Group / 蚂蚁集团 | 关于页原文 "An embodied AI company under Ant Group" |
 | 公司 / 团队 | Robbyant / 蚂蚁灵波科技 | CEO Xing Zhu，首席科学家 Yujun Shen（沈宇军） |
-| 模型品牌 | LingBot | Vision / Depth / Map / Video / World / VA / VLA 七条模型线 |
+| 模型品牌 | LingBot | Vision / Depth / Map / Video / World / VA / VLA / Touch 八条模型线 |
 | 代码与权重 | [github.com/robbyant](https://github.com/robbyant) · [huggingface.co/robbyant](https://huggingface.co/robbyant) | 见 [组织归档](../../sources/sites/robbyant_github.md) |
 
 ## 为什么重要
@@ -97,6 +99,7 @@ flowchart TB
   STACK --> R["Robot Foundation Model 机器人基础模型"]
   P --> P1["LingBot-Vision"]
   P --> P2["LingBot-Depth"]
+  P --> P3["LingBot-Touch"]
   S --> S1["LingBot-Map"]
   V --> V1["LingBot-Video"]
   W --> W1["LingBot-World / World 2.0"]
@@ -127,6 +130,14 @@ flowchart TB
 | Depth → VLA 2.0 | Dual-Query 以 LingBot-Depth（几何）+ DINO-Video（时序语义）为教师 | [LingBot-VLA 2.0](./lingbot-vla-v2.md) |
 
 读者可以这样回答「Robbyant 怎么从感知走到真机控制」：底下三层（Vision / Depth / Map）负责把像素变成**可度量的几何状态**；中间两层（Video / World）负责学**物理世界的动态**；上面两层（VA / VLA）负责把前面的能力落到**机器人动作**。
+
+## LingBot-Touch
+
+**定位：** 跨压阻、磁性与视触觉传感器的冻结 JEPA 触觉基础表征，服务于精细接触与灵巧操作；与 LingBot-VLA 的动作输出互补，不是一个新的 VLA。
+
+- 官方项目页披露 **4,983 小时**多源触觉数据、**26 个真机任务**和**12 个仿真 RL 任务**，均为作者发布数据。
+- [GitHub](https://github.com/Robbyant/lingbot-touch) 提供 Apache-2.0 推理代码与输入适配；[HF 集合](https://huggingface.co/collections/robbyant/lingbot-touch) 提供 Tiny / Small 冻结 encoder 权重，非全部预训练复现代码。
+- 详见 [LingBot-Touch 主实体](./paper-lingbot-touch.md)；该条目的技术报告 PDF 全文仍待核验，PR 暂为 Draft。
 
 ## LingBot-Vision
 
