@@ -2,16 +2,17 @@
 
 - **类型：** paper
 - **作者：** Hyunseok Kim, George Mesesan, Robert Schuller, Jinoh Lee, Hae-Won Park
-- **机构：** 韩国科学技术院 KAIST（Dynamic Robot Control and Design Laboratory，用户提供，实验室官网可访问）
+- **机构：** 韩国科学技术院 KAIST（DRCD 实验室官方成员页列有 Hyunseok Kim 和 Hae-Won Park；其余作者所属机构待全文核实）
 - **期刊：** IEEE Robotics and Automation Letters（RA-L），2026
 - **DOI：** 10.1109/LRA.2026.3746865
 - **论文官方入口：** https://doi.org/10.1109/LRA.2026.3746865
 - **实验室：** https://www.dynamicrobot.kaist.ac.kr/
+- **实验室成员页（官方）：** https://www.dynamicrobot.kaist.ac.kr/contact
 - **摘要索引（非论文原文）：** https://eurekamag.com/research/112/001/112001467.php
 - **项目页：** 用户给出的 hyuns-kim.gith… 链接已截断，未取得可核实的完整 URL
 - **代码：** 用户给出的 github.com/Hyu… 链接已截断，尚未核实仓库、许可证和训练／部署入口；不等同于“未开源”
 - **核查日期：** 2026-11-10
-- **核对范围：** 论文标题、作者、期刊、DOI 及第三方索引转载的摘要；KAIST 实验室官网首页。IEEE 全文未获取，方法正文、公式、实验表、补充材料及源码均未通读。
+- **核对范围：** 论文标题、作者、期刊、DOI 及第三方索引转载的摘要；KAIST 实验室官网与成员页（列明 Hyunseok Kim 博士候选人、Hae-Won Park 教授）。IEEE 全文未获取，方法正文、公式、实验表、补充材料及源码均未通读。
 - **通读：** 未完成
 
 ## 核心摘录（仅依据已核对的摘要）
