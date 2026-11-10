@@ -311,6 +311,14 @@ op: ingest
 - **项目：** <https://robolineage.github.io/>
 - **代码：** <https://github.com/robolineage/robolineage>
 
+## [2026-11-10] ingest | PlanContext | 原文精读与导航意图成对评测基准
+
+- **意图：** 收录 arXiv:2611.03067v1，建立独立论文实体并把六类驾驶情境、三要素成功判定、NAS/CPS/NCS/LAS/MCS 与 23 模型结论连到已有 OneVL。
+- **来源：** sources/papers/plancontext_arxiv_2611_03067.md；sources/sites/plancontext-project.md。
+- **原文：** 阅读 arXiv v1 正文与附录 A–E，来源归档记录了章节/表格/实验及局限。
+- **开源：** 官方项目页截至 2026-11-10 标注 Code / Datasets Coming soon；不虚构代码入口或源码运行时序图。
+- **落点：** wiki/entities/paper-plancontext.md；补 OneVL 交叉引用。避免修改 main 自动维护的 catalog.md / log.md。
+
 ## [2026-11-10] ingest | sources/repos/velxio.md — 核验 Velxio 开源嵌入式固件与 SPICE 协同仿真平台
 
 - 意图：将真实固件编译、CPU 指令仿真、ngspice-WASM 数模联合求解的架构整理为独立知识节点。

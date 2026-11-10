@@ -3873,6 +3873,7 @@
 - [PixelUMM：Encoder-Free Unified Image and Video Understanding and Generation](wiki/entities/paper-pixelumm.md) — PixelUMM** 是 NVIDIA 与 University of Waterloo 提出的像素空间多模态模型：用空间 patch 与时空 tubelet 作为视觉 token，在共享多模态注 `📅unknown` `[entity_page]`
 - [PixVerse R2：Scaling Real-Time Omni World Models](wiki/entities/paper-pixverse-r2.md) — PixVerse R2**（项目页，[技术报告](https://pixverse.ai/en/blog/p `📅unknown` `[entity_page]`
 - [Plan First, Act Later（arXiv:2610.29329）](wiki/entities/paper-plan-first-act-later.md) — Plan First, Act Later**（*Plan First, Act Later: Streaming Reasoning for Executable Memory in Robot `📅unknown` `[entity_page]`
+- [PlanContext：上下文驾驶决策基准 / Benchmarking In-Context Driving Decision-Making](wiki/entities/paper-plancontext.md) — PlanContext**（Ruikai Li 等，2026）是北京航空航天大学、地平线、澳门大学、北京智源人工智能研究院、清华大学智能产业研究院及香港大学 OpenDriveLab 合作提出的自 `📅unknown` `[entity_page]`
 - [PlaNet（Learning Latent Dynamics for Planning from Pixels）](wiki/entities/paper-planet-latent-dynamics.md) — PlaNet**（*Deep Planning Network*，arXiv:1811.04551，ICML 2019，Da `📅unknown` `[entity_page]`
 - [PLANTORV（arXiv:2609.28184）](wiki/entities/paper-plantorv.md) — VLMs Can Describe, But Not Measure: Object-Centric Scene Understanding for Robotic Manipulation**（ `📅unknown` `[entity_page]`
 - [PLAT（arXiv:2609.25754）](wiki/entities/paper-plat-sparse-keyframe-tracking.md) — PLAT**（*PLAT: Sparse Timed Keyframe Motion Tracking for Humanoid Control via Privileged Latent Tra `📅unknown` `[entity_page]`
