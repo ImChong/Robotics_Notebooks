@@ -3,7 +3,7 @@ type: method
 tags: [paper, humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation, rl, motion-control, bfm, behavior-foundation-model, loco-manipulation, body-system-stack, loco-manip-161-survey]
 status: complete
 date: 2026-05-14
-updated: 2026-11-08
+updated: 2026-11-10
 arxiv: "2511.07820"
 doi: "10.1126/scirobotics.aed4592"
 venue: "Science Robotics 2026"
@@ -505,3 +505,4 @@ sequenceDiagram
 - [PredActor](../entities/paper-predactor.md) — 把未来状态留在扩散策略内部做引导，无需独立 motion-reference tracker（与 SONIC 式 tracker 路线对照；arXiv:2609.24840；截至 2026-10-08 仅开放 MuJoCo 评测器与 checkpoint，训练/真机部署未发布）
 - [HumanoidTTT](../entities/paper-humanoidttt.md) — 在全身跟踪控制器之上做测试时动作复用与动作库管理
 - [ViT-H](../entities/paper-vit-h-video-to-humanoid.md) — 单目视频直接生成 G1 参考动作，以全身 tracker 执行反馈做 DPO 后训练；跟踪策略作为视频生成的下游接口（arXiv:2610.32966）
+- [DiffWBC：单步扩散式可引导全身跟踪](../entities/paper-diffwbc.md) — 在 SONIC 所属的确定性跟踪基线之外，将规划和动作合为 50 Hz 单步生成器，冻结权重经输入噪声梯度适配障碍与身体分组（arXiv:2610.41354；仅基础跟踪有 G1 真机验证）。
