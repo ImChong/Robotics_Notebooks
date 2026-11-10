@@ -68,7 +68,7 @@ summary: "DKWBC（arXiv:2611.09605）：用浮基逆动力学前馈 + 关节 PD 
 
 以下模块和流向依据论文 III-A～III-C 与图 2，虚线表示训练阶段反馈；本图不是源码调用图。
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
   REF["参考全身运动 q_ref 和速度加速度"] --> ID["浮基逆动力学前馈<br/>tau_acc + tau_cor + tau_grav"]
   REF --> PD["关节位置速度反馈 PD"]
@@ -85,7 +85,7 @@ flowchart TD
   RES --> SUM
   SUM --> PLANT["G1 关节与接触环境"]
   PLANT -. "训练时跟踪误差和稳定性奖励" .-> RL
-\`\`\`
+```
 
 **核心力矩接口**（III-B，式 3–7）：
 
@@ -127,11 +127,11 @@ flowchart TD
 - **数据链：** G1 重定向动作 → 参考速度/加速度 → 动力学前馈；运行时须保证 \(\mathrm{SO}(3)\) 姿态差分、关节序列、浮基质量惯性参数与驱动电机力矩约束一致。
 - **调试顺序：** 先在无接触干扰的跟踪任务中量测 ID/PD 误差，再逐步加入外力扰动与残差策略，分别绘制 \(\tau_{\mathrm{id}}\)、\(\tau_{\mathrm{pd}}\)、\(\tau_{\mathrm{bal}}\) 的时间序列，避免把饱和误判为学习失败。
 - **真机安全：** 本工作直接输出关节力矩残差，部署前需额外验证电流/力矩峰值、执行器限幅、通信周期、急停与接触状态稳定性；论文实验结果不代替硬件安全审查。
-- **代码开放状态（2026-11-10）：** [项目页](https://robbyant-research.github.io/DKWBC/) 链到 [robbyant-research/DKWBC](https://github.com/robbyant-research/DKWBC)，但官方仓库 README 标注它是 *Official project page*，默认分支为 \`gh-pages\`；尚未检出算法训练、推理或部署入口，暂不能按论文源码复现。
+- **代码开放状态（2026-11-10）：** [项目页](https://robbyant-research.github.io/DKWBC/) 链到 [robbyant-research/DKWBC](https://github.com/robbyant-research/DKWBC)，但官方仓库 README 标注它是 *Official project page*，默认分支为 `gh-pages`；尚未检出算法训练、推理或部署入口，暂不能按论文源码复现。
 
 ### 源码运行时序图
 
-**不适用（暂缺官方可运行算法源码）。** 公开仓库是项目展示页面，尚无可核对的 \`train\` / \`eval\` / 真机 runtime 入口；上面的流程图仅基于论文方法，待实际开源后再读取运行代码并补充 Mermaid \`sequenceDiagram\`。
+**不适用（暂缺官方可运行算法源码）。** 公开仓库是项目展示页面，尚无可核对的 `train` / `eval` / 真机 runtime 入口；上面的流程图仅基于论文方法，待实际开源后再读取运行代码并补充 Mermaid `sequenceDiagram`。
 
 ## 局限与风险
 
