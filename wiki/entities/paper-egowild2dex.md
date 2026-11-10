@@ -89,7 +89,7 @@ flowchart TB
   s3 --> deploy[真机长时程灵巧任务]
 ```
 
-## 方法要点
+## 核心原理与方法要点
 
 ### GeoFormer
 
