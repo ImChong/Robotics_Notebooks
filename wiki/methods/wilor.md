@@ -2,13 +2,14 @@
 type: method
 tags: [hand-pose, 3d-vision, manipulation, perception, video-to-control]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-10
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./exoactor.md
   - ./genmo.md
   - ../entities/sam-3d-body.md
   - ../entities/paper-vidihand.md
+  - ../entities/paper-fah.md
   - ../entities/paper-hand-visibility-detector.md
   - ../tasks/manipulation.md
   - ./sonic-motion-tracking.md
@@ -56,6 +57,8 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 - **接触与力**：WiLoR 输出运动学假设，不包含接触力或抓取稳定性信息。
 
 ## 与其他页面的关系
+
+- [FAH：快速准确的手部估计](../entities/paper-fah.md)：使用直接 2D/3D 关节及稠密点预测，再独立拟合 MANO/MHR-Hand；另提供部位、接触和因果视频/世界系能力。HOT3D FAH-L 关节 PA-MPJPE 4.31 mm，RTX 4070 Ti SUPER 上含拟合 65 FPS（不含部位与接触）。
 
 - [ExoActor](./exoactor.md)：将 WiLoR 用作生成视频的双手分支估计。
 - [ViDiHand](../entities/paper-vidihand.md)：同为 egocentric 双手 MANO 路线；WiLoR 是 **per-frame 检测+重建** 强基线，ViDiHand 在 ARCTIC/HOT3D/HOI4D 上以 **无 detector** 取得更低 jitter；截至 2026-08-13 ViDiHand **代码仍待发布**（项目页有 GitHub 占位）。
