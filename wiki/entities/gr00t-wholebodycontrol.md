@@ -5,6 +5,7 @@ status: complete
 updated: 2026-11-07
 related:
   - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-gr00t-2.md
   - ../methods/motionbricks.md
   - ../methods/sonic-motion-tracking.md
   - ./kimodo.md
@@ -131,6 +132,8 @@ sequenceDiagram
 - [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 基于本仓改写的全身 VLA 采集/部署配方
 - [HumanoidArena](./paper-humanoidarena.md) — 以 SONIC 为 GMT 后端之一的分层基准
 - [HTD 解耦 WBC](paper-humanoid-touch-dream.md) — CMU/Bosch 开源的另一条「下肢 RL + 上肢默认/外部命令」解耦栈，勿与本仓 N1.5 解耦 WBC 混权重
+- [GR00T 2：WAM 联合预测未来视频/动作、Turbo 通过 SONIC 控制 G1](./paper-gr00t-2.md)
+
 
 ## 公司路线日期口径
 
