@@ -2399,6 +2399,7 @@
 - [FACT: A Multimodal Force–Action–Track Foundation Model for Human-to-Robot Dexterity（人到机器人灵巧操作的多模态力–动作–轨迹基础模型）](wiki/entities/paper-fact-egoforce-human-dexterity.md) — FACT**（*A Multimodal Force–Action–Track Foundation Model for Human-to-Robot Dexterity*，[arXiv:2610 `📅unknown` `[entity_page]`
 - [FACT（Failure-Aware Causal Training · arXiv:2608.10232）](wiki/entities/paper-fact.md) — FACT**（*FACT: Failure-Aware Causal Training for World-Action Models*，[arXiv:2608.10232](https://ar `📅unknown` `[entity_page]`
 - [FADA（Few-Shot Domain Adaptation via Dynamics Alignment）](wiki/entities/paper-fada-humanoid.md) — FADA** 是 CMU LeCAR-Lab 提出的 **人形控制少样本域适应** 框架（arXiv:2606.28476，[项目页](https://lecar-lab.github.io/FA `📅unknown` `[entity_page]`
+- [FAH：快速准确的手部估计 / Fast and Accurate Hand Estimation in Pixels, Interaction and World Space](wiki/entities/paper-fah.md) — 论文：** arXiv:2611.07711v1（2026-11-05） · **作者：** Jinkun Cao ·  `📅unknown` `[entity_page]`
 - [Fail-Passive Gap：工业人形功能安全的认证缺口](wiki/entities/paper-fail-passive-gap.md) — Toward Certified Functional Safety for Industrial Humanoid Robots**（Caiwu Ding、Tao Cui、Lingyun Wan `📅unknown` `[entity_page]`
 - [FailBench：VLM 当裁判有多可靠](wiki/entities/paper-failbench.md) — FailBench**（*How Reliable are VLMs at Judging Robot Task Success?*，[arXiv:2609.03611](https://arxi `📅unknown` `[entity_page]`
 - [Failure-Boundary Profiles（arXiv:2611.06453）](wiki/entities/paper-failure-boundary-profiles.md) — Failure-Boundary Profiles**（*Beyond Infraction Scores: Failure-Boundary Profiles for Closed-Loop E `📅unknown` `[entity_page]`
@@ -2613,6 +2614,7 @@
 - [GPU-Resident Multi-Robot Inspection（arXiv:2610.26106）](wiki/entities/paper-gpu-resident-multi-robot-inspection.md) — GPU-Resident Multi-Robot Inspection**（*A GPU-Resident Pipeline for Multi-Robot 3D Inspection with  `📅unknown` `[entity_page]`
 - [GPWM：把世界建成 3D 粒子运动模型](wiki/entities/paper-gpwm.md) — 利用多分辨率 3D 粒子与 Flow Matching / Diffusion Forcing 统一建模多种物理动力学；ParticleWorlds 约 2550 万帧。 `📅unknown` `[entity_page]`
 - [GR-BC：用目标可达图给混合质量数据里的动作块加权](wiki/entities/paper-gr-bc.md) — GR-BC** 是一种离线迭代的 VLA 后训练方法：在混合质量的演示、成功与失败 rollout 以及人工接管片段上构建任务条件的目标可达图，用反向图搜索得到的剩余步数衡量每个动作块的进展贡献， `📅unknown` `[entity_page]`
+- [GR00T 2：跨本体世界动作基础模型 / Scaling Robot Foundation Models for Generalization, Dexterity, and Adaptation](wiki/entities/paper-gr00t-2.md) — GR00T 2 是 NVIDIA 的 World-Action Model（WAM）：给定视频历史、语言与机器人状态，在共享模型内同时生成未来视频和未来动作块，并用本体专属头支持平行夹爪机械臂、灵 `📅unknown` `[entity_page]`
 - [GR00T-Dreams（HMI P068）](wiki/entities/paper-gr00t-dreams-synthetic-trajectories.md) — GR00T-Dreams**（*GR00T-Dreams: Synthetic Trajectory Generation for Humanoid Robot Learning*，2025）收录 `📅unknown` `[entity_page]`
 - [GR00T N1.5：通用人形 VLA 的改进版](wiki/entities/paper-gr00t-n1-5.md) — GR00T N1.5**（*An Improved Open Foundation Model for Generalist Humanoid Robots*，[NVIDIA GEAR 项目页 `📅unknown` `[entity_page]`
 - [GR00T N1.7：多本体 flow-matching 人形 VLA](wiki/entities/paper-gr00t-n1-7.md) — GR00T N1.7** 是 NVIDIA Isaac GR00T 系列当前的开放权重版本（[`nvidia/GR00T-N1.7-3B`](https://huggingface.co/nvid `📅unknown` `[entity_page]`

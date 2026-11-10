@@ -287,6 +287,13 @@ op: ingest
 - **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
 - **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
 
+## [2026-11-10] ingest | sources/papers/fah_arxiv_2611_07711.md — 收录 FAH 手部 2D/3D 对应点估计、网格拟合与接触/世界系扩展
+
+- 原始资料：arXiv:2611.07711v1、官方项目主页和 noahcao/FAH 开源实现；分别归档至 sources/papers、sources/sites、sources/repos。
+- 知识沉淀：wiki/entities/paper-fah.md；使用论文主干流程图及可执行推理路径的源码时序图。
+- 开源结论：代码 Apache-2.0；FAH 模型权重研究/非商用许可；MANO/SAM 等外部资产另行授权。
+- 指标边界：HOT3D PA-MPJPE 4.31 mm、65 FPS 含网格拟合，不包含部位/接触全功能；与世界系模式速度区别记录。
+
 ## [2026-11-10] ingest | Zane Hub #388《机器人动力学仿真和动力学标定有什么区别和联系》：新增 robot-dynamics-simulation-vs-calibration 概念页，自算质心偏差与差分噪声量级，标出未核的标准条款与笔误疑点
 
 ## [2026-11-09] ingest | AdaPolicy 原论文深读与已发布源码复核
