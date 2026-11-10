@@ -1022,7 +1022,7 @@
 - [MS-Human-700：全身人体肌骨模型](wiki/entities/ms-human-700.md) — 一句话定义：** MS-Human-700 是用于 MuJoCo 全身动力学与运动控制研究的人体肌骨模型，以 700 条肌腱单元驱动身体运动，并配套公开模型资产和强化学习环境。 `📅unknown` `[entity_page]`
 - [MuJoCo Menagerie](wiki/entities/mujoco-menagerie.md) — google-deepmind/mujoco_menagerie**](https://github.com/google-deepmind/mujoco_menagerie) 是 DeepMi `📅unknown` `[entity_page]`
 - [MuJoCo MJX（MuJoCo XLA）](wiki/entities/mujoco-mjx.md) — MuJoCo MJX**（常写作 **MJX**）是 Google DeepMind 在 **JAX** 上对 MuJoCo 物理引擎的 **重实现**：通过 PyP `📅2026-05-18` `[entity_page]`
-- [MuJoCo Playground](wiki/entities/mujoco-playground.md) — MuJoCo Playground**（[google-deepmind/mujoco_playground](https://github.com/google-deepmind/mujoco_ `📅unknown` `[entity_page]`
+- [MuJoCo Playground](wiki/entities/mujoco-playground.md) — MuJoCo Playground 1.0** 是 Google DeepMind 维护的开源机器人学习与真机工作流集合：通过 [reaf-sim](https://github.com/goog `📅unknown` `[entity_page]`
 - [MuJoCo Warp（MJWarp）](wiki/entities/mujoco-warp.md) — MuJoCo Warp**（常写作 **MJWarp**）是 Google DeepMind 与 NVIDIA **作为 Newton 的一部分**  `📅unknown` `[entity_page]`
 - [MuJoCo WASM（浏览器物理仿真）](wiki/entities/mujoco-wasm.md) — MuJoCo WASM** 是把 MuJoCo C 核心编译为 **WebAssembly**、并通过 **JavaScript/TypeScript** 暴露 `M `📅unknown` `[entity_page]`
 - [MuJoCo (物理引擎)](wiki/entities/mujoco.md) — MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apac `📅unknown` `[entity_page]`
