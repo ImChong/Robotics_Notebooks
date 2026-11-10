@@ -1,0 +1,44 @@
+name: Temporary LingBot-Touch technical report reading
+on:
+  push:
+    branches: [ingest/lingbot-touch-20261110]
+    paths: [.github/workflows/lingbot-paper-read.yml]
+permissions:
+  contents: read
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        segment: [0, 1, 2, 3, 4, 5, 6]
+    steps:
+      - name: Download official LFS PDF and print pages
+        shell: bash
+        env:
+          SEGMENT: ${{ matrix.segment }}
+        run: |
+          set -euo pipefail
+          PDF=/tmp/lingbot-touch.pdf
+          curl --fail --location --retry 3 --silent --show-error \
+            "https://github.com/Robbyant/lingbot-touch/raw/refs/heads/main/paper/Learning_Heterogeneous_Tactile_Representation_for_General_Dexterous_Manipulation.pdf" -o "$PDF"
+          if [ "$(head -c 5 "$PDF")" != "%PDF-" ]; then
+            curl --fail --location --retry 3 --silent --show-error \
+              "https://media.githubusercontent.com/media/Robbyant/lingbot-touch/main/paper/Learning_Heterogeneous_Tactile_Representation_for_General_Dexterous_Manipulation.pdf" -o "$PDF"
+          fi
+          [ "$(head -c 5 "$PDF")" = "%PDF-" ]
+          command -v pdftotext >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y poppler-utils)
+          TOTAL=$(pdfinfo "$PDF" | awk '/^Pages:/ {print $2}')
+          echo "PDF_PAGES=$TOTAL"
+          SHA=$(sha256sum "$PDF" | cut -d' ' -f1)
+          echo "PDF_SHA256=$SHA"
+          if [ "$SHA" != "1d68b6ce43470b9ffbdfd7425480581845b2515eb7897661e26152c5b257a3ce" ]; then
+            echo "Wrong content checksum"; exit 2
+          fi
+          START=$((SEGMENT * 6 + 1))
+          END=$((START + 5))
+          if [ "$START" -gt "$TOTAL" ]; then echo "NO_MORE_PAGES"; exit 0; fi
+          if [ "$END" -gt "$TOTAL" ]; then END=$TOTAL; fi
+          echo "EXTRACTING_PAGES $START-$END / $TOTAL"
+          pdftotext -layout -f "$START" -l "$END" "$PDF" -
+          echo "END_EXTRACTING_PAGES $START-$END"
