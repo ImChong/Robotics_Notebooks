@@ -20,6 +20,7 @@ related:
   - ./lingbot-vla.md
   - ./lingbot-vla-v2.md
   - ../tasks/manipulation.md
+  - ../queries/robot-perception-stack-selection-loop.md
 ---
 
 # LingBot-Touch：面向通用灵巧操作的异构触觉基础表征模型
@@ -169,6 +170,17 @@ Touch 的 across-seed 成功率标准差平均 **3.9 pp**，最高 **9.2 pp**；
 4. 按本文实测，触觉 raw input 在部分任务会变差，训练数据有限时优先验证 frozen embedding 是否真正带来增益。
 5. 论文没有发布完整预训练训练器、五千小时原始数据或端到端机器人策略；可复现实验应从官方 sample + Tiny/Small 的冻结 encoder 开始。
 
+## 与其他工作对比
+
+论文 §2 将 Sparsh、T3、AnyTouch/AnyTouch 2、FTP-1、HTT 列为对照；核心区别是**统一几何地址 + 三种模态边界 tokenizer + 共享 HaT + masked JEPA latent prediction**，且定位为表征基座、不负责低层控制。
+
+| 工作 | 输入与目标 | 与 LingBot-Touch 的区别 |
+|------|------------|--------------------------|
+| [Sparsh](./paper-sparsh.md) | 视触觉（VBTS）图像上的自监督表征 | 只覆盖视触觉图像；LingBot-Touch 同时接磁性、压阻、视触觉（解码后标量），不输入原始 RGB |
+| [AnyTouch](./paper-anytouch.md) / [AnyTouch 2](./paper-anytouch2.md) | 光学触觉的统一静态—动态表征、跨传感器匹配 | 同样追求跨传感器，但面向光学触觉；LingBot-Touch 以物理位置与上下文统一异构接口 |
+| FTP-1（论文基线，本库无独立页） | 共享 backbone + 传感器 adapter | Sharpa 探针力 MAE 2.31 N 对 Touch 0.81 N，且需额外训练 adapter；VLA 下游 67.5% 对 Touch 5K 的 82.2%（§4.1、§5.4） |
+| [Touch-JEPA](./paper-touch-jepa.md) | 手部几何上预测被遮蔽的视觉特征 | 同属 JEPA 思路；LingBot-Touch 在触觉 token 自身做 masked latent prediction |
+
 
 
 ## 源码运行时序图（实际发布的推理实现）
@@ -231,6 +243,7 @@ sequenceDiagram
 - [LingBot-VLA](./lingbot-vla.md)：视觉-语言-动作策略，与触觉特征互补
 - [LingBot-VLA 2.0](./lingbot-vla-v2.md)：另一条动作策略线
 - [机器人 Manipulation 任务](../tasks/manipulation.md)：灵巧操作任务背景
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：选型时把冻结触觉 token 作为相机之外的接触观测层，与视觉感知栈一同交给下游策略消费
 
 ## 参考来源
 

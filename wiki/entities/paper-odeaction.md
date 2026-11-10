@@ -94,6 +94,15 @@ flowchart TD
 4. 递归误差可能累积，因此邻域采样和回归示范的修正项不可省略。
 5. 需要监控动作时戳、执行延迟与在线观测刷新，而不仅是离线轨迹平滑。
 
+## 与其他工作对比
+
+| 路线 | 动作生成单元 | 与 ODEAction 的区别 |
+|------|--------------|---------------------|
+| [Action Chunking](../methods/action-chunking.md) | 一次输出未来多步动作块 | ODEAction 不再独立预测各块再拼接，而以当前动作为初值连续递推；BDR 正是在原块边界上衡量跳变 |
+| [Real-Time Chunking（RTC）](./paper-real-time-chunking.md) | 推理期 inpainting 衔接相邻 flow chunk | RTC 仍保留块结构、修补边界；ODEAction 去掉块，本页将 RTC 列为跨块接续基线 |
+| 后处理平滑 | 生成后对轨迹滤波 | 只改形状，不保证接续动作与新视觉观测一致；ODEAction 每次观测更新条件 c 后继续积分 |
+| [Diffusion Policy](./paper-diffusion-policy.md) | 去噪生成动作块 | 同属块式生成范式；ODEAction 用示范诱导向量场直接监督，而非去噪 |
+
 ## 工程实践
 
 - 接口：`Fθ(current_action, evolution_time | visual, language, proprio)` → 动作变化率。

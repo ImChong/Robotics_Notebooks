@@ -12,6 +12,7 @@ related:
   - ./agent-reach.md
   - ../concepts/model-context-protocol.md
   - ../concepts/retrieval-augmented-generation.md
+  - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/repos/yjid-kensaku.md
 original:
@@ -165,6 +166,7 @@ MCP 客户端配置示例：`{"mcpServers":{"kensaku":{"command":"kensaku-cli","
 - [Agent Reach](agent-reach.md) — 外网资料读取与渠道安装，与 Kensaku 的本机数据检索互补
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — Kensaku 工具暴露采用的互操作协议
 - [Retrieval-Augmented Generation（RAG）](../concepts/retrieval-augmented-generation.md) — Kensaku 只提供检索层，不替代理宿主执行生成
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 对照用：Kensaku 的「语义」指文件文本的静态 embedding 检索、OCR 只读截图文字，不属于机器人语义建图/视觉感知栈
 
 ## 参考来源
 
