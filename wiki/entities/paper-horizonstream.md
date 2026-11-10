@@ -149,7 +149,7 @@ sequenceDiagram
   participant Agg as HorizonStreamAggregator / GLA
   participant Cache as GLACache
   participant Out as MotionAveraging / IO
-  participant Loop as run_online_loop_reinfer
+  participant LCModule as run_online_loop_reinfer
   User->>CLI: --config --video-path --checkpoint
   CLI->>CLI: load config / prepare_video_input_if_needed
   CLI->>Core: run_inference_cfg(cfg)
@@ -171,8 +171,8 @@ sequenceDiagram
   Core->>Out: compute_motion_averaged_camera_maps and save poses/depth/points
   Out-->>CLI: output-root sequence artifacts
   opt enabled loop closure and required assets ready
-    CLI->>Loop: run_loop_closure_cfg -> run_online_loop_reinfer
-    Loop-->>CLI: loop pose / refined pointcloud
+    CLI->>LCModule: run_loop_closure_cfg -> run_online_loop_reinfer
+    LCModule-->>CLI: loop pose / refined pointcloud
   end
   CLI-->>User: output files
 ```
