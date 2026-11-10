@@ -11,7 +11,7 @@ tags:
   - ucsb
   - nvidia
 status: complete
-updated: 2026-11-09
+updated: 2026-11-11
 arxiv: "2611.06817"
 project: https://dagroup-pku.github.io/open-humanwam/
 code: https://github.com/DAGroup-PKU/HumanNet/tree/Open-HumanWAM
@@ -30,6 +30,7 @@ sources:
   - ../../sources/repos/open_humanwam.md
   - ../../sources/sites/open-humanwam.md
   - ../../sources/datasets/open-humanwam-50k.md
+  - ../../sources/datasets/humannet-modelscope-ego.md
   - ../../sources/blogs/wechat_embodied_station_20_papers_curobov2_fast_halo_humanwam_2026-11-06.md
 summary: "Open-HumanWAM（arXiv:2611.06817）构建约 5 万小时人类第一视角动作语料，并比较纯人类预训练 HumanWAM-Vanilla 与人机联合、视觉目标条件 HumanWAM-Goal；区分受控缩放、最终后训练和零样本评测口径。"
 ---
@@ -189,12 +190,18 @@ sequenceDiagram
   IO-->>User: actions.npz
 ```
 
-### Open-HumanWAM-50K 数据集发布核对（2026-11-09）
+### HumanNet 原始 Ego 来源核验（2026-11-11）
+
+- Open-HumanWAM v2 表 1 中所采用 HumanNet 子集为 **90,275.25 h 策展前 → 40,743.58 h 策展后**；五源累计 **104,289.41 h → 50,000 h**，与 HumanNet 原论文百万小时的一三人称混合全库**不是同一口径**。
+- 用户提供的 [HumanNet ModelScope 原始 Ego 数据目录](https://www.modelscope.cn/datasets/DAGroup-PKU/HumanNet/tree/master/data) 无法读取数据卡或文件清单，“20 万小时”仍是**未独立核实**的外部数据线索。
+- [官方 Open-HumanWAM 分支 README](https://github.com/DAGroup-PKU/HumanNet/tree/Open-HumanWAM) 另列 [ModelScope 50K 数据集](https://modelscope.cn/datasets/DAGroup-PKU/EgoCorpus-50kH-LeRobot-v3)，**与原始 HumanNet ModelScope 目录不同**，镜像可下载性也尚未核实。详情见[来源核验归档](../../sources/datasets/humannet-modelscope-ego.md)。
+
+### Open-HumanWAM-50K 数据集发布核对（2026-11-11）
 
 - [HF 官方数据卡](https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K) 确认：**LeRobot v3**（压缩 MP4 + Parquet 动作/状态 + captions + episode 元数据 + 来源追溯），分成 `egostandard`、`egopro`、`egodex`、`egoverse`、`humannet` 等目录；原始不同来源的使用条款依旧适用。
 - **计数不可混同：** 论文报告约 **35.9M 选中 clips**，HF 发布物使用 **31,396,799 physical episodes**，并非作者成果互相矛盾，而是单位/打包口径不同。
 - **训练子集索引**含 100h、500h、1000h、5000h、10000h、20500h、50000h 七档，索引为 Parquet 地址记录，**不含实际视频/动作 payload**；做缩放复现必须另获取对应内容文件。
-- **访问与上传状态：** HF 页面公开但 gated，需登录接受条件。其 **2026-11-09 14:53（UTC+8）快照**为已验证上传 22.43 / 26.67 TB（84.09%），仍在上传；这是时间戳快照，不能当作实时进度。详情见[数据集来源归档](../../sources/datasets/open-humanwam-50k.md)。
+- **访问与上传状态：** HF 页面公开但 gated，需登录接受条件。其 **2026-11-10 11:27（UTC+8）快照**为已验证上传 23.24 / 26.67 TB（87.13%），仍在上传；这是时间戳快照，不能当作实时进度。详情见[数据集来源归档](../../sources/datasets/open-humanwam-50k.md)。
 
 ## 实验与评测
 
