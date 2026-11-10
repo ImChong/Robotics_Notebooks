@@ -6,6 +6,8 @@ status: complete
 updated: 2026-11-10
 project: https://skild.ai/blogs/steel
 code: https://github.com/newton-physics/newton/tree/main/newton/_src/solvers/steel
+code_scope: newton/_src/solvers/steel
+project_distinction: "Steel 是 Skild AI 与 NVIDIA 合作开发的基于缩减坐标与 PGS 的异构机器人刚体求解器（SolverSteel）；与同一 Newton 单仓内 Disney Research 的闭链极大坐标 PADMM 求解器 Kamino（newton/_src/solvers/kamino）是独立实现和独立研究项目。"
 original:
   - ../../sources/sites/steel-skild-ai.md
 related:
