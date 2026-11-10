@@ -167,6 +167,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Darwin Gödel Machine（DGM）](../entities/paper-darwin-godel-machine.md) — 冻结基础模型下，以开放式版本档案与编程基准验证 Agent 代码自改；区分 harness 级 RSI 与模型权重级 RSI。
 - [Gödel Agent（ACL 2025）](../entities/paper-godel-agent.md) — 在 Python 运行时自省、动态修改 solver 与自改逻辑的早期自指 agent；属于 harness 级实验，不等于完全模型级 RSI。
 
 - [ResearchBoost-Agent：冻结判官驱动的训练代码优化](../entities/researchboost-agent.md) — 真实可运行的有界 AI4AI/Infra 性能改进实例；与自主设计、训练完整后继模型的完全 RSI 不同。

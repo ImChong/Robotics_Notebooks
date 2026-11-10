@@ -188,6 +188,7 @@ flowchart LR
 - 机器人侧：把"改控制程序"当 harness 搜索做一遍，对照 ASPIRE 的进化搜索设定
 
 ### 推荐读什么
+- [Darwin Gödel Machine（DGM）](../wiki/entities/paper-darwin-godel-machine.md) — 冻结基础模型外层的自修改编码 Agent；开放式档案保留过渡分支，区分 50 题和全量 Polyglot 成绩
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
 - [RSI-Harness](../wiki/entities/paper-metarsi-v1.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
 - [HarnessBank](../wiki/entities/paper-harnessbank.md) — 冻结模型下的语义归档与门控式 harness 自进化
