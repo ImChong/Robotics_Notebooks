@@ -2644,6 +2644,7 @@
 - [GSBR（arXiv:2611.05295）](wiki/entities/paper-gsbr.md) — GSBR**（*GSBR: Geometric Support Behavior Regularization for Online RL*，[arXiv:2611.05295](https:// `📅unknown` `[entity_page]`
 - [GSR / ParaVLA：把任务语义从脆弱的联合路由里拆出来](wiki/entities/paper-gsr-paravla.md) — Grounded Semantic Re-binding（GSR）**（arXiv:2608.02497，[代码](http `📅unknown` `[entity_page]`
 - [GTA-2（arXiv:2609.09808）](wiki/entities/paper-gta-2.md) — GTA-2**（[GTA-2: A Multi-VLM Framework for Synthesizing Robot Manipulation Skills via Grounded Task `📅unknown` `[entity_page]`
+- [Guava：机器人操作 Harness 中的前沿 VLM 蒸馏](wiki/entities/paper-guava-harness.md) — Guava: Distilling Frontier VLMs into a Compact Agent through a Robotic Manipulation Harness `📅unknown` `[entity_page]`
 - [GUILD（arXiv:2611.05368）](wiki/entities/paper-guild.md) — GUILD**（*GUILD: Guided Iterative Data Collection for Imitation Learning*，[arXiv:2611.05368](https: `📅unknown` `[entity_page]`
 - [GVLA：夹爪感知的视觉–语言–动作模型](wiki/entities/paper-gvla-gripper-aware-vla.md) — GVLA**（*Gripper-aware Vision Language Action Models*，[arXiv:2608.24603](https://arxiv.org/abs/2608 `📅unknown` `[entity_page]`
 - [General World Models from First-Principles（生数 / 清华）](wiki/entities/paper-gwm-first-principles.md) — General World Models from First-Principles**（Jun Zhu 等，生数科技 × 清华大学，2026 手稿，[WRC 2026 主题演讲](https:/ `📅unknown` `[entity_page]`
