@@ -849,6 +849,7 @@
 - [Kayra](wiki/entities/kayra.md) — Kayra**（GitHub）是 [GitHubStore《19 款能自己造的开源人形机器人》](https://m `📅unknown` `[entity_page]`
 - [KeenTools FaceBuilder for Blender](wiki/entities/keentools-facebuilder.md) — KeenTools FaceBuilder for Blender** 是 **KeenTools** 的 **Blender 插件**：从 **少量照片**（或非中性表情图像）在 DCC 内构建 `📅unknown` `[entity_page]`
 - [Ken Goldberg：Agentic Robotics 范式位移（Goosebumps）](wiki/entities/ken-goldberg-agentic-robotics-goosebumps.md) — Ken Goldberg**（UC Berkeley，Ambi / Jacobi Robotics 联创）2026-09-18 在 X 发布 [Goosebumps: a Paradigm Shi `📅unknown` `[entity_page]`
+- [Kensaku（検索）：本地文件、全文与语义搜索 / Local Search](wiki/entities/kensaku.md) — Kensaku** 是 yjid/kensaku 开源的本地检索工具（MIT）：在 Windows、macOS、Linux 上 `📅unknown` `[entity_page]`
 - [KiCad（开源 PCB 与原理图 EDA）](wiki/entities/kicad.md) — KiCad**（kicad.org）是面向 **原理图 → PCB → 制造文件** 的 **免费开源电子设计自动化（EDA）套件**：跨 Wi `📅unknown` `[entity_page]`
 - [KickCAT](wiki/entities/kickcat.md) — C++ 面向对象的 EtherCAT 主站库，自带软件模拟从站，适合上位机开发调试。（分类：EtherCAT 主站；语言/形态：C++） `📅unknown` `[entity_page]`
 - [Kimera](wiki/entities/kimera.md) — Kimera** 将 **视觉-惯性里程计、鲁棒位姿图与语义网格** 组合为度量-语义地图。 `📅unknown` `[entity_page]`
