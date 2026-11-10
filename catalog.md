@@ -1666,6 +1666,7 @@
 - [AnyWorld（因子化 Egocentric 跨具身世界模型）](wiki/entities/paper-anyworld.md) — AnyWorld**（*Factorized Egocentric World Models for Cross-Embodiment Generalization*，[arXiv:2608.29 `📅unknown` `[entity_page]`
 - [AOV-GS（arXiv:2610.29374）](wiki/entities/paper-aov-gs.md) — AOV-GS**（*AOV-GS: Active Open-Vocabulary Semantic Mapping with 3D Gaussian Splatting*，[arXiv:2610. `📅unknown` `[entity_page]`
 - [APOLLO Blender](wiki/entities/paper-apollo-blender.md) — APOLLO Blender**（*A Robotics Library for Visualization and Animation in Blender*，[arXiv:2512.23103 `📅unknown` `[entity_page]`
+- [Apple AMP1：面向机器人操作的智能体策略 / On Agentic Manipulation Policies](wiki/entities/paper-apple-amp1.md) — Apple AMP1**（论文 arXiv:2611.09892、[项目页](https://apple-aiml-rese `📅unknown` `[entity_page]`
 - [APT-RL：野外敏捷感知多技能四足 Locomotion](wiki/entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — Agile perceptive multi-skill locomotion for quadrupedal robots in the wild**（Jun-Gill Kang / Jaehy `📅unknown` `[entity_page]`
 - [APTree：用扩展行为树把符号规划器接入建筑预制](wiki/entities/paper-aptree.md) — APTree 是一个模型驱动框架：用领域 DSL 描述建筑预制任务，运行时调用多个符号规划器（PDDL 系）生成模块化计划，拼成扩展行为树执行，并在出错时只替换受影响的计划模块。 `📅unknown` `[entity_page]`
 - [Arcadia（具身终身学习全生命周期）](wiki/entities/paper-arcadia.md) — Arcadia**（*Toward a Full-Lifecycle Framework for Embodied Lifelong Learning*，[arXiv:2512.00076](ht `📅unknown` `[entity_page]`
@@ -6807,6 +6808,7 @@
 - [Adaptive Computed Torque Control（自适应计算力矩，A-CTC）](wiki/methods/adaptive-computed-torque-control.md) — A-CTC：在 CTC 框架内在线辨识/更新惯性、质量等动力学参数，动态修正前馈补偿。 `📅unknown` `[method_page]`
 - [ADD: 对抗性微分判别器](wiki/methods/add.md) — Adversarial Differential Discriminator (ADD)** 是对 amp-reward 架构的重要改进，旨在解决生成动作中的物理 `📅unknown` `[method_page]`
 - [Admittance Control（导纳控制）](wiki/methods/admittance-control.md) — 导纳控制：以测得的外力为输入，输出位置/速度修正，实现力→运动的柔顺响应，与阻抗控制对偶。 `📅unknown` `[method_page]`
+- [Agentic Manipulation Policies：可编程的智能体机器人操作策略](wiki/methods/agentic-manipulation-policies.md) — 智能体操作策略把大模型作为可复查、可修改的上层控制器，通过机器人 SDK 感知、编写并执行工具程序、再观测纠错，而不是让大模型直接替代低层伺服控制。** [Apple AMP1](../entit `📅unknown` `[method_page]`
 - [AMP & HumanX: 判别器驱动的风格学习](wiki/methods/amp-reward.md) — 在机器人动作模仿中，单纯的轨迹跟踪奖励（如关节角度 MSE）往往会导致机器人出现高频抖动、抽搐或不自然的步态。**AMP** 引入了生成对抗的思想来提升运动质量，而 **HumanX** 将其扩展到了 `📅unknown` `[method_page]`
 - [AMS: 物理可行性过滤与混合奖励](wiki/methods/ams.md) — 在人形机器人动作合成与学习中，很多参考动捕数据（MoCap）由于人体与机器人的动力学差异，直接模仿会导致物理不可行。**AMS** 提供了一套系统化的数据清洗与奖励设计方法。 `📅unknown` `[method_page]`
 - [Any2Track & RGMT: 增强型自适应与时序建模](wiki/methods/any2track.md) — 在复杂的人形机器人控制任务（如多步动作模仿或动态越障）中，传统的单帧马尔可夫决策过程 (MDP) 往往不足以捕捉环境的非平稳性（如地面滑移、外力扰动）。**Any2Track** 与 **RGMT `📅unknown` `[method_page]`
