@@ -5,7 +5,7 @@ project: https://longcat.chat/longcat-next/intro
 code: https://github.com/meituan-longcat/LongCat-Next
 arxiv: "2603.27538"
 tags: [paper, meituan, longcat, native-multimodal, discrete-token, visual-tokenizer, audio, moe]
-status: draft
+status: complete
 updated: 2026-11-10
 related:
   - ./longcat-2-5.md
@@ -49,7 +49,7 @@ summary: "LongCat-Next（arXiv:2603.27538v1）：DiNA 离散原生自回归，SA
 | 模态 | 文本、视觉理解、视觉生成、语音理解与合成 |
 | 代码 | [meituan-longcat/LongCat-Next](https://github.com/meituan-longcat/LongCat-Next) |
 | 权重 | [Hugging Face](https://huggingface.co/meituan-longcat/LongCat-Next) |
-| 状态 | 模型、tokenizer、SFT 与推理接入已公开；附录/全部消融尚待进一步通读复核 |
+| 状态 | **arXiv v1 正文及附录 §9.1–9.6 已通读**；模型、tokenizer、SFT 和推理接入已公开；原论文实验尚未独立复现 |
 
 ## 为什么重要
 
@@ -105,8 +105,33 @@ flowchart LR
 | 图像生成 | DPG | **84.66** |
 | 文本生成保真 | LongText EN / ZH | **93.15 / 89.08** |
 | 视觉编码 | 压缩配置 | **28×** |
+| 音频理解 | MMAU（Table 4） | **76.40** |
+| 通用语言 | MMLU-Pro（Table 5） | **77.02** |
 
 读数时需注意生成表和跨模型表中的 GenEval 在数值呈现与舍入上可能不同（主表 84.44，统一模型表 84），不能擅自合并两种口径。论文还给出语音识别和音频问答测评；部分对手基线取自公开报告、评测协议并非完全同源。
+
+### 消融与附录证据（§3.2、§9.1–9.6）
+
+| 证据 | 原文实验/现象 | 工程读法 |
+|---|---|---|
+| **Pre-Buffer（§3.2.1）** | 单层 FFN 重映射多级嵌入求和特征；数据规模增大后离散/连续理解差距缩小 | 离散 token 从随机视觉 embedding 起步，早期收敛不及连续特征；不能只比短训 loss |
+| **信息恢复（§3.2.2）** | Table 6：随机 ViT-B/16 PSNR **30.52±3.42**，预训练 ViT-B/16 **21.86±3.14** | 重建容易不等于语义好；残差通路可能保留像素细节 |
+| **联合理解与生成（§3.2.3）** | 两个纯任务模型各 100B token，联合为 50B+50B；归一化训练 loss 与纯理解相差 **0.006**、优于纯生成 **0.02** | 论文只在该训练配置下观察到生成收益；不应无限外推到其它模型 |
+| **音频串并行（§3.2.4）** | LlamaQuestions 并行 **79.33** vs 串行 **81.67**；ReasoningQA **74.95** vs **80.30** | 低时延语音并行输出仍有语义准确率代价 |
+| **原生 MoE（§3.2.5–3.2.6）** | 平均每专家路由 token 数 **507.1→584.6**；t-SNE 中跨模态 embedding 更交织 | 自发专门化和混合嵌入是作者观察，不是泛化保证 |
+| **RL 稳定性（§9.1）** | 单个 token 的 sampler 概率可大于 0.4，actor 仅约 0.01；TIS/MIS 仍可能无法制止 entropy explosion | 双重过滤：序列熵阈值 + 任一 token 训练/采样概率差阈值 |
+| **RL 缩小规模（§9.2）** | Qwen-7B 实验：MMMU **64.22→66.45**、ChartQA **88.56→92.08**、GenEval **83.94→87.33** | 不是 68.5B LongCat-Next 主模型的同口径增益 |
+| **量化层数（§9.3）** | 八级 RVQ 比普通 VQ 与二级 RVQ 的特征重建损失更低 | 默认八级是容量/误差权衡的实证选择 |
+| **多级解码（§9.4）** | 视觉理解端求和多级 embedding；生成端 DepthTransformer 在单一 AR 时间步预测多级 token | 单步是**一个视觉 token 位置**，不是整张图一步生成 |
+| **定性与重建（§9.5–9.6）** | Fig.21–24 展示公式 OCR / 数阵 / 几何；Fig.25 为 Pixel Decoder 与 Refiner 对比 | 论文明确优先生成质量与语义一致性，像素级高频恢复仍需 refiner |
+
+### 训练配方与基础设施（§4–§5）
+
+- **视觉 tokenizer：** 本版使用 Qwen2.5-ViT 近似 SAE，约 **50M** 训练图像；先 RVQ 量化、再冻结 SAE/码本训练 pixel decoder 与 refiner，最大图像分辨率 1736×1736。
+- **统一模型训练：** Pre-Align（冻结 backbone，训练 embedding/DepthTransformer）→ Pre-training → Mid-training → SFT；官方 Table 7 的 sequence length 依次为 **8K、8K、32K、64K**，总计约 **2T 训练 token**。
+- **数据配方：** 图像生成约 300M 图文对，训练以过滤/重标、语义聚类重平衡、精细 SFT 三步推进；音频按文中多源数据清洗与合成，不能视为完全开放数据集。
+- **VHalf / V-shaped pipeline：** 为对付模态 embedding 和 DepthTransformer loss 的不均衡计算，将**第一个嵌入 stage 与最后的模态 loss stage**放在同一设备，减少跨阶段通信与流水线空泡；是训练基础设施策略，不是模型结构中的额外视觉编码器。
+- **视觉 GRPO（§6.1）：** 图像生成时按 RVQ 各层的 policy probability ratio 加权优化，并通过冻结解码器/多维图像奖励得分；理解时使用**序列熵**和**sampler/actor 单 token 概率差**的过滤来抑制训练崩塌。这不是机器人动作 RL。
 
 ## 结论
 
@@ -158,7 +183,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-1. **证据范围：** 论文附录中的所有补充实验尚未逐项复核，本节点保留 `draft`，不声明原文已全部通读。
+1. **证据范围：** 已通读 arXiv v1 正文、方法、主表、附录 §9.1–9.6；这是**来源阅读完成**，不表示主模型训练、GPU 基准、量化曲线或图像复现已经由本仓库独立验证。
 2. **压缩损失：** 离散视觉词表仍可能丢失局部细节；论文报告的表现受 SAE、码本深度、分辨率与训练数据影响。
 3. **训练复现门槛：** 开源 SFT 不是全流程训练数据与集群配置的公开证明；单机/单卡成本较高。
 4. **具身边界：** 模态一致性和统一多任务性能不是动作条件世界模型或真机任务成功率。
