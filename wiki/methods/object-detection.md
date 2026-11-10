@@ -7,7 +7,7 @@ tags:
   - real-time
   - robotics
 status: complete
-updated: 2026-10-01
+updated: 2026-11-11
 related:
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
@@ -147,7 +147,12 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - **误区：「只换最新 YOLO 就够。」** 数据分布（仿真纹理 vs 真机）、**输入分辨率与 NMS 阈值** 往往比架构版本更敏感。
 - **局限：** 纯 2D 框不提供 **完整 6DoF**；操作常需级联 **深度/点云/位姿网络**。
 
+## 伪装目标数据增强：CamoDreamer
+
+[CamoDreamer（ACM MM 2026）](../entities/paper-camodreamer-context-decoupled-camouflage-generation.md) 在输入前景掩码和背景检索库的条件下，用 CCB/CDAS/FACB 生成与环境视觉协调的伪装图像。其作者在 LAKE-RED 训练数据合成后，以 ZoomNet 的 CAMO、COD10K、NC4K 伪装目标识别/分割测试检验增强价值；这是**图像级合成数据实验，不是机器人实时目标框检测或真机结果**。截至 2026-11-11 官方仓库无可运行代码。
+
 ## 关联页面
+- [CamoDreamer：上下文解耦伪装图像生成](../entities/paper-camodreamer-context-decoupled-camouflage-generation.md) — 伪装目标识别训练数据合成与下游验证
 
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [CNN vs ViT 视觉骨干（对比）](../comparisons/cnn-vs-vit-backbones.md)
