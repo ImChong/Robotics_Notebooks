@@ -143,6 +143,15 @@ L = L_traj + 0.001·L_seg + 0.01·L_box。轨迹 MSE 对 (x, y, θ) 加权 (1, 3
 
 **真机（§V-D）：** 四足机器人在室外步行街的叠加可视化（图 6）与两段对基线的定性对比（图 7）；无成功率等量化指标。
 
+## 结论
+
+**DobotTrack 说明：让小 VLA 显式预测目标掩码与框、并用目标框条件化历史压缩，能在 0.8B 规模上把语言指定行人跟随做到接近大模型的 EVT-Bench 成绩，同时保持端侧可用延迟。**
+
+1. 同 0.8B 下，相对仅轨迹基线，STT / DT / AT SR 从 79.2 / 55.9 / 52.4 升到 90.2 / 72.5 / 70.9（表 I）。
+2. 增益主要来自目标条件：无条件 Q-identity 的 DT SR（55.3）甚至低于 16-token 池化（表 III / IV）。
+3. Q-identity 每历史帧 16 token，Orin Nano P95 延迟 93.4 ms，约为 256-token 池化的 1/2.18（表 IV）。
+4. 仍落后 ReferTrack（DT / AT）与 RL 后训练的 LightNav-0（STT / DT），碰撞率高于 TrackVLA++；真机只有定性展示，数据集与权重未放出。
+
 ## 工程实践
 
 - **README（静态读取，未运行）：** 训练与 Habitat 评测代码已发布（news 2026-10-30）；训练入口 `scripts/train.py` + `configs/dobottrack_internvl3_1b_q_identity_box_mask.yaml`；评测脚本 `scripts/run_trackvla_habitat_eval.sh`。环境要求 Habitat-Sim 0.3.1（Bullet）、Python 3.10、固定 commit 的 SAM2 与 SAM2.1 Base+ 权重；需外部准备 TrackVLA / EVT-Bench 资产，并另从 gitee 拉取一个 `embodvla` 分支安装。

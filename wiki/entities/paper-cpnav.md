@@ -113,6 +113,24 @@ flowchart TD
 - 敏感性（V-B，Table III）：HFoV 69° 时 SR 40.0，高度 0.45 m 时 67.0，换 GPT-4o-mini 为 71.3，去掉体素地图为 66.0；作者结论为感知几何与模型容量影响很大。
 - token（附录 D）：CPNAV 总 201.6K，无校准 231.4K，Ensemble Set 约为 CPNAV 的 8.9 倍。
 
+## 与其他工作对比
+
+| 工作 | 思路 | 与 CPNAV 的区别（数字为本文 Table II / 附录 D） |
+|------|------|-----------------------------------------------|
+| [WMNav](./paper-sa-2503-02247-wmnav-integrating-vision-language-models-into-wo.md) | VLM 接入世界模型做物体目标导航 | 无动作置信度校准；HM3D SR 80.0 vs 86.0，MP3D 75.0 vs 77.0，但行走距离更短（18.2 / 18.5 m） |
+| STRIVE（arXiv:2505.06729，本库无页） | VLM 导航框架 | HM3D SR 82.5、距离 17.6 m；token 99.3K 少于 CPNAV |
+| [类条件保形预测与 STL 推断](./paper-class-conditional-conformal-stl-inference.md) | 保形预测用于时序逻辑推断 | 同用保形预测给统计保证，但 CPNAV 校准的是 VLM 动作分数阈值，保证对象是「oracle 路径不被剪」 |
+| [安全滤波器](../concepts/safety-filter.md) | 在决策外加带保证的过滤层 | 思路相近，但 CPNAV 是统计覆盖保证而非控制不变集保证 |
+
+## 结论
+
+**CPNAV 说明：不重训 VLM，只把它的动作分数用保形预测校准成阈值并配树式回退，就能在物体目标导航上稳定提升成功率——前提是校准与部署 episode 可交换。**
+
+1. 相对无校准基线，HM3D / MP3D / 真机 SR 分别从 81.0 / 68.5 / 66.7 升到 86.0 / 77.0 / 83.3。
+2. 校准层模型无关，但换 VLM（GPT-4o-mini 降到 71.3）或换相机配置需重跑 500 个 episode 的校准。
+3. 保证对象是「oracle 动作不被剪」，不等于「一定到达目标」。
+4. 真机仅 24 个 episode 且校准来自仿真，可交换性在硬件上基本未检验。
+
 ## 工程实践
 
 - **硬件（IV-A）：** 改装的 Hiwonder MentorPi M1（麦轮底盘），SLAM Toolbox 融合 2D LiDAR、轮速计与 IMU，ZED 2i 双目相机提供 RGB-D；图 1(d) 还显示 NVIDIA Jetson Orin Nano / 树莓派 5 控制板。附录 D 称 CPNAV 无需单独算力服务器即可在该平台运行（VLM 通过 API 调用，见局限）。
