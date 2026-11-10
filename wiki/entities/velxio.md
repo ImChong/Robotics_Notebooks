@@ -3,7 +3,7 @@ type: entity
 project_id: velxio
 project: https://velxio.dev/
 code: https://github.com/davidmonterocrespo24/velxio
-tags: [software, simulation, embedded, firmware, arduino, esp32, rp2040, spice, electronics, open-source]
+tags: [velxio, software, simulation, embedded, firmware, arduino, esp32, rp2040, spice, electronics, open-source]
 status: complete
 updated: 2026-11-10
 related:
