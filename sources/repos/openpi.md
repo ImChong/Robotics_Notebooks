@@ -44,6 +44,14 @@
 - [Jetson Thor π₀.₅ 教程](../courses/jetson_openpi_pi05_on_thor.md)
 - [Knowledge Insulation 论文实体](../../wiki/entities/paper-knowledge-insulation.md)
 
+## π₀.₅ 官方源码调用核对（2026-11-10）
+
+- **核查版本：** GitHub `Physical-Intelligence/openpi` 的 `main` 分支（当次读取；**未锁定 commit**），查看 README、`scripts/serve_policy.py`、`src/openpi/policies/policy_config.py`、`policy.py`、`src/openpi/models/pi0.py` 和 `src/openpi/serving/websocket_policy_server.py`。已阅读所列推理关键入口；**未运行训练、评测或真机推理**。
+- **训练入口（README）：** `uv run scripts/compute_norm_stats.py --config-name pi05_libero` → `XLA_PYTHON_CLIENT_MEM_FRACTION=0.9 uv run scripts/train.py pi05_libero --exp-name=my_experiment --overwrite`；均为公开 flow head 微调示例，**不是**论文完整的离散/连续两阶段 co-training 复现。
+- **策略服务（README）：** `uv run scripts/serve_policy.py policy:checkpoint --policy.config=pi05_libero --policy.dir=checkpoints/pi05_libero/my_experiment/20000`。命令中的路径是官方示例，并非表示本次已生成本地权重。
+- **运行时真实链路：** `serve_policy.main → create_policy → policy_config.create_trained_policy`（载入权重、normalization stats、变换）→ `WebsocketPolicyServer._handler → Policy.infer → Pi0.sample_actions`（图像语言 prefix 建 KV cache，默认 10 次流场积分）→ 逆归一化 action chunk 通过 websocket 返回。实际训练配置须确保 `pi05` 模式；此流程**不包含**论文的显式文本高层 subtask 生成路径。
+- **开源状态：** 官方 README 明言 π₀.₅ 的公开路径只支持 flow-matching head 的训练和推理；π₀.₅ base / LIBERO / DROID 权重公开，不代表 2025 论文所用所有家庭数据与高层语义训练阶段已复现。
+
 ## π₀ 官方源码核对（2026-11-06）
 
 - **固定版本：** `215abfb217dbac7d5f1273282331b9b1866c0479`。

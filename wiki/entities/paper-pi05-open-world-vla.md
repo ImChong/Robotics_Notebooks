@@ -9,7 +9,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-07
+updated: 2026-11-10
 arxiv: '2504.16054'
 code: https://github.com/Physical-Intelligence/openpi
 venue: HMI curated · 2025
@@ -161,27 +161,35 @@ sequenceDiagram
     Note over P,M: 推理：PI05Policy.select_action → predict_action_chunk → PI05Pytorch.sample_actions<br/>先 prefix 前向缓存 KV，再 denoise_step × num_inference_steps(10)，与 π0 相同的队列取动作
 ```
 
-### B. 官方原仓 openpi（沿旧版，已用 GitHub main 分支 `scripts/serve_policy.py` 抽查）
+### B. 官方原仓 openpi（2026-11-10 复核 main；非固定 commit）
 
-openpi 已提供可运行的 π₀.₅ 推理与微调入口；代码公开，但原始预训练数据未全部公开。抽查确认：`serve_policy.py` 的 `create_default_policy` 为 `pi05_droid`、`pi05_libero` 等环境配置分别指定 `gs://openpi-assets/checkpoints/…` 检查点，经 `_policy_config.create_trained_policy` 建策略，再由 `websocket_policy_server.WebsocketPolicyServer` 提供服务（该抽查针对 main 分支，不是固定提交）。机器人侧仍需适配观测与动作接口。
+`openpi` 已提供可运行 π₀.₅ **flow head** 微调和推理入口：README 的 `pi05_libero` 先运行 `scripts/compute_norm_stats.py`，再运行 `scripts/train.py`；可用 `scripts/serve_policy.py policy:checkpoint --policy.config=pi05_libero --policy.dir=...` 启动推理服务。以下时序依据官方 `serve_policy.py`、`policy_config.py`、`policy.py`、`websocket_policy_server.py` 与 `models/pi0.py` 当前源码；**没有**把论文未开放的高层文本推理编造进开源调用路径。
 
 ```mermaid
 sequenceDiagram
   autonumber
-  participant Robot as Robot Client / Adapter
-  participant Server as serve_policy.py<br/>WebsocketPolicyServer
-  participant Config as pi05_droid / pi05_libero Config
-  participant Model as π₀.₅ Policy
-  participant Store as openpi-assets Checkpoint
-  Robot->>Server: observation + prompt
-  Server->>Config: _config.get_config
-  Server->>Store: create_trained_policy 下载检查点
-  Store-->>Model: π₀.₅ weights
-  Server->>Model: policy.infer(example)
-  Model-->>Server: action chunk
-  Server-->>Robot: action chunk
-  Robot->>Robot: adapt actions and execute
+  participant Main as scripts/serve_policy.py main
+  participant Config as policy_config.create_trained_policy
+  participant Server as WebsocketPolicyServer._handler
+  participant Robot as Robot Client
+  participant Policy as policies/policy.py Policy.infer
+  participant Model as models/pi0.py Pi0.sample_actions
+  Main->>Config: create_policy(config, checkpoint)
+  Config->>Config: load weights, norm stats, transforms
+  Config-->>Main: Policy instance
+  Main->>Server: WebsocketPolicyServer(policy).serve_forever()
+  Robot->>Server: serialized observation and prompt
+  Server->>Policy: infer(obs)
+  Policy->>Policy: input transforms and normalization
+  Policy->>Model: sample_actions(rng, observation)
+  Model->>Model: prefix KV cache, denoise steps x10
+  Model-->>Policy: action chunk
+  Policy->>Policy: output transforms and unnormalize
+  Policy-->>Server: actions and policy timing
+  Server-->>Robot: actions and server timing
 ```
+
+**源码核查：** [openpi 官方仓库归档](../../sources/repos/openpi.md)；该时序是已发布低层推理链路，不代表论文完整的高层语义推理与异构预训练。
 
 ## LeRobot 实现要点
 
@@ -194,25 +202,34 @@ sequenceDiagram
 
 ## 实验与评测读法
 
-- 把「仿真指标 / 真机证据 / 仅项目演示」分开记账。
-- 对照同组相邻工作（见关联页面）时，对齐任务定义与观测接口，再比成功率。
-- 综述类条目关注分类框架与缺口，不把引用列表当作选型排名。
+| 问题 | 原文实验与可复核结论 | 关键出处 |
+|------|--------------------|----------|
+| 是否真正跨场景 | 在训练未见的 **3 户真实家庭**及 mock home 执行厨房/卧室任务；展示 **10–15 分钟**长时操作，但不要把演示时长误读为统一成功率 | §V-A、Fig.6–7；官方博客 |
+| 训练地点需要多少 | 训练家庭数从 **3 / 12 / 22 / 53 / 82 / 104** 增加，任务进度随之改善；104 地点下表现接近专门在测试家庭采样训练的对照，而非证明任意新家都稳定成功 | §V-B、Fig.8–9 |
+| 异构机器人数据重要吗 | **no ME / no CE** 均显著恶化性能，同时移除两者更差；图 10 在 4 项任务上每策略每任务各测 **10 次** | §V-C、Fig.10 |
+| 网页语义数据有什么用 | 在整体家务进度的图 10 中，去 WD 的差异**不显著**；在陌生对象语言跟随任务中，官网公布的 OOD Success Rate 为完整模型 **94%**、no WD **74%**、no CE **49%**、no ME **31%**；**这是特定对象操作指标，不是整屋清洁成功率** | §V-C、Fig.10–11；官方博客 Ablation |
+| 显式高层推理是否必要 | 完整 π₀.₅ 最好；训练含 HL、部署省略显式高层步骤的 implicit HL 次之；去除 HL/VI/WD 的相应变体下降。VI 在高层移动操作样本中仅约 **11%**，但缺失会明显削弱结果 | §V-E、Fig.13、17 |
+| 相比 π₀ 改进从何而来 | π₀.₅ 优于 π₀ 和 π₀-FAST+Flow；两阶段 FAST 预训加异构语义共训不能拆成“只是换了 flow head” | §V-D、Fig.12 |
+
+**复现读法：** 论文的全量配方为 **280k 步 FAST 离散预训练 + 80k 步后训练**（后者 α=10），在推理时先自回归预测子任务，再通过动作专家生成 **50 步 / 1 秒**的连续动作块。公开 `openpi` 示例只是其中的 flow 动作头路径，不能直接代表论文完整系统。（原文 §IV、官方 README）
 
 ## 结论
 
-**π0.5 应作为 HMI「世界模型、VLA与Agent」线上的独立一页来读：先抓住其真正改变的问题接口，再决定是否进入复现或对比实验。**
+**π₀.₅ 的关键不是单独增大 VLA，而是把跨本体操作、网页语义和高层任务标注转成可协同学习的监督，从而改善新家庭场景泛化。**
 
-- 核心贡献是问题表达或管线接口，而不只是单一网络结构名。
-- 开源状态：部分开源（openpi；完整数据与训练管线未全部公开）。
-- 可与站内相邻页交叉阅读。
-- 数值、消融与许可以一手来源为准；本页是编译索引。
-- openpi 已发布可运行训练/推理代码及部分 checkpoint；完整预训练数据与完整训练数据配方仍未全部公开。
+1. **先认准评测口径：** 论文展示的是未见家庭的家务任务能力；单项 OOD 对象指令跟随 94% 不代表整屋清洁成功率 94%。
+2. **优先关注数据配比：** ME / CE 的缺失对操作性能影响显著，WD 对陌生物体理解和高层决策更关键，不能只看总体家务进度。
+3. **分清训练与部署表示：** FAST token 主要用于高效率离散预训练；最终底层控制来自 flow-matching action expert 的连续动作。
+4. **验证语义层的价值：** “implicit HL” 已能从子任务训练数据受益，显式语义规划还可以继续提高任务执行效果。
+5. **复现前核对发布边界：** openpi 发布权重与 flow head 微调/推理代码，不等于论文的全量异构数据、文本高层决策与两阶段训练全部开放。
 
 ## 局限与风险
 
-- 后训练集中使用与目标家庭机器人最相关的数据，加入flow-matching action expert，并包含人类监督者给出的高层子任务。运行时，模型以较慢节奏输出“走到水槽前”、“拿起海绵”这类语义动作，再以当前子任务为条件高频生成action chunk。这是模型内的分层控制：两层共享表示，但不用同一频率重做全部决策。
-- openpi 公开的是可运行代码与特定 checkpoint，不能据此推断原始预训练数据和完整数据混合物均已公开。
-- 经典控制论文与现代 RL/VLA 论文的「可复现」标准不同，选型时分开评估。
+- **原文 §VI：** 对不熟悉的抽屉把手、难以开启的柜门仍会失败；机械臂遮挡污渍时存在部分可观测性困难；高层有时重复开关抽屉或被任务干扰。
+- **上下文与任务约束：** 当前处理的用户指令相对简单，长期跨房间导航、记住物品放置位置等仍需要更强记忆和状态追踪。
+- **控制安全：** 原论文移动平台以 **50 Hz** 输出目标姿态与底盘速度，用简单 PD 追踪，**没有额外轨迹规划或碰撞检测**；不宜把论文演示直接理解为具备独立安全保障的部署方案（§IV-E）。
+- **开源边界（2026-11-10 核查）：** 官方博客不是代码仓库；[openpi](https://github.com/Physical-Intelligence/openpi) README 声明目前只支持 π₀.₅ 的 flow-matching head 训练和推理，未公开原始实验的全部异构数据。LeRobot 适配的可运行代码也不等于完整语义高层推理系统。
+- **复现状态：** 本次复核了论文、项目页与官方源码入口，尚未在本仓库执行训练、推理 benchmark 或真实机器人实验。
 
 ## 与其他工作对比
 
@@ -266,7 +283,8 @@ sequenceDiagram
 - [官方 π₀.₅ 项目页归档](../../sources/sites/pi05-open-world-generalization.md)
 - [openpi 官方仓库归档](../../sources/repos/openpi.md)
 - [LeRobot 仓库归档](../../sources/repos/lerobot.md)：固定提交 `9e5ee98…` 的 `policies/pi05/` 源码与 `docs/source/pi05.mdx`
-- [arXiv PDF](https://arxiv.org/pdf/2504.16054)：2026-11-05 重读 §III-A/B、Fig.3
+- [Physical Intelligence 官方论文 PDF](https://www.pi.website/download/pi05.pdf)：2026-11-10 复核 §IV–VI 与原文图表；前次 §I–VI、附录通读记录见下方阅读归档
+- [官方博客：π₀.₅](https://www.pi.website/blog/pi05)：2026-11-10 对照训练流程、开放世界评测及 OOD 消融图
 - [pi05_reading_arxiv_2504_16054](../../sources/papers/pi05_reading_arxiv_2504_16054.md)：arXiv 全文通读归档
 - [sources/papers/hmi_p059_pi05-open-world-vla.md](../../sources/papers/hmi_p059_pi05-open-world-vla.md)
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 灵巧真机上 π0 风格 chunk 对照
