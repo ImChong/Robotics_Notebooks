@@ -2,7 +2,7 @@
 type: overview
 tags: [slam, visual-inertial, sensor-fusion, point-cloud, monocular-depth, structured-light, nerf, gaussian-splatting]
 status: draft
-updated: 2026-11-08
+updated: 2026-11-10
 related:
   - ./navigation-slam-autonomy-stack.md
   - ../entities/vins-fusion.md
@@ -69,6 +69,7 @@ flowchart TD
 | 神经隐式表示 | NeRF、iMAP、NICE-SLAM | 稠密表示与视觉定位的耦合 |
 | Gaussian 表示与 SLAM | 3DGS、SplaTAM、MonoGS | 高斯地图与定位/渲染 |
 | 动态 Gaussian | 4DGaussians、Deformable Gaussians | 跨时间动态场景表示 |
+| 流式 3D 重建 | [HorizonStream](../entities/paper-horizonstream.md)、[LingBot-Map](../entities/paper-lingbot-map.md)、[ABot-Recon](../entities/paper-abot-recon.md) | 比较有界长期记忆、局部上下文与回环优化 |
 
 ## 工程实践
 
