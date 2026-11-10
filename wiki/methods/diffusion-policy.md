@@ -5,8 +5,9 @@ status: complete
 original:
   - ../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-11-05
+updated: 2026-11-10
 related:
+  - ../entities/paper-flow-grpo.md
   - ../overview/ai-architecture-map.md
   - ../concepts/diffusion-transformer.md
   - ../concepts/diffusion-model.md
@@ -82,6 +83,8 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 ### 滚动执行（Receding Horizon）
 
 原论文把 **receding-horizon control** 写进部署设计：一次去噪得到长度 \(T_p\) 的 chunk，**只执行前 \(T_e\) 步**（\(T_e < T_p\)），再用新观测 **重新预测** 下一段；未执行后缀 **丢弃**，而非与下一 chunk 融合。这与 ACT 默认的 **Temporal Ensembling**（每步重叠预测 + 加权平均） **不是同一执行协议**。机制对照见 [滚动预测执行](../concepts/receding-horizon-policy-execution.md)。
+
+**流匹配在线强化学习扩展：** [Flow-GRPO](../entities/paper-flow-grpo.md)（NeurIPS 2025）通过 ODE→SDE 的随机转移和 GRPO 的组内相对优势，为 flow matching 生成器提供在线 reward 优化接口；原论文验证的是**文本生成图像**，并非机器人 Diffusion Policy 或 VLA 的真机效果。
 
 ## 两种主要实现变体
 
