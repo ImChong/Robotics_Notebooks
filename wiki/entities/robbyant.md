@@ -23,6 +23,9 @@ related:
   - ./skild-ai.md
   - ./paper-1xwm-redwood-world-model.md
   - ../comparisons/robot-foundation-model-company-paths-2026.md
+original:
+  - ../../sources/sites/antgroup_robbyant.md
+  - ../../sources/sites/technology-robbyant-com.md
 sources:
   - ../../sources/sites/lingbot-touch-official.md
   - ../../sources/sites/antgroup_robbyant.md
@@ -31,7 +34,7 @@ sources:
   - ../../sources/sites/lingbot-vla-v2-technology-robbant.md
   - ../../sources/sites/lingbot-world-v2-technology-robbant.md
   - ../../sources/sites/lingbot-map-technology-robbant.md
-summary: "Robbyant（蚂蚁灵波）是蚂蚁集团旗下具身智能公司，以 LingBot 为模型家族品牌，从视觉、深度、流式 3D、视频预训练、世界模型、世界–动作模型一路做到跨本体 VLA；多数模型代码与权重已开源，VA 2.0 目前只公开技术报告。"
+summary: "Robbyant（蚂蚁灵波）是蚂蚁集团旗下具身智能公司，以 LingBot 为模型家族品牌，从视觉、深度、流式 3D、视频预训练、世界模型、世界–动作模型一路做到跨本体 VLA 与 Touch 触觉表征共八条产品线；各模型发布范围不同，VA 2.0 仅技术报告，Touch 公开冻结 encoder 推理代码和 Tiny/Small 权重。"
 ---
 
 # Robbyant（蚂蚁灵波）
@@ -125,7 +128,7 @@ flowchart TB
   L7 --> ROBOT["Robot<br/>真机"]
 ```
 
-这张图是**阅读顺序**，不是推理时的数据流：七个模型各自独立发布、独立推理。它们在训练期的实际连接（依据论文 / README）主要有三处：
+这张图是**七条原有模型线的阅读顺序**，不是推理时的数据流；新增 Touch 是并列触觉分支，见上方能力分层图。八条模型线各自独立发布、独立推理。它们在训练期的实际连接（依据论文 / README）主要有三处：
 
 | 连接 | 方式 | 来源 |
 |------|------|------|
@@ -147,7 +150,7 @@ flowchart TB
 
 - 官方项目页披露 **4,983 小时**多源触觉数据、**26 个真机任务**和**12 个仿真 RL 任务**，均为作者发布数据。
 - [GitHub](https://github.com/Robbyant/lingbot-touch) 提供 Apache-2.0 推理代码与输入适配；[HF 集合](https://huggingface.co/collections/robbyant/lingbot-touch) 提供 Tiny / Small 冻结 encoder 权重，非全部预训练复现代码。
-- 详见 [LingBot-Touch 主实体](./paper-lingbot-touch.md)；该条目的技术报告 PDF 全文仍待核验，PR 暂为 Draft。
+- 详见 [LingBot-Touch 主实体](./paper-lingbot-touch.md)；该条目[技术报告 27 页及附录已通读](../../sources/papers/lingbot-touch-technical-report.md)，并已补充真实/仿真指标及训练边界。
 
 ## LingBot-Vision
 
