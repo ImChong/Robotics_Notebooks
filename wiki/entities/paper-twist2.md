@@ -30,6 +30,7 @@ related:
   - ./paper-xrobotoolkit.md
   - ./paper-humantracker.md
   - ./paper-humanoidttt.md
+  - ./paper-diffwbc.md
 original:
   - ../../sources/papers/twist2_reading_arxiv_2511_02832_t2rd.md
 sources:
@@ -213,6 +214,8 @@ sequenceDiagram
 - 前作与对照：[paper-twist.md](./paper-twist.md)、[paper-bifrost-umi.md](./paper-bifrost-umi.md)、[paper-amp-survey-16-clot.md](./paper-amp-survey-16-clot.md)
 - XR 中间层：[paper-xrobotoolkit.md](./paper-xrobotoolkit.md)；重定向：[motion-retargeting-gmr.md](../methods/motion-retargeting-gmr.md)
 - 高层策略：[diffusion-policy.md](../methods/diffusion-policy.md)；任务：[teleoperation.md](../tasks/teleoperation.md)
+
+- [DiffWBC：单步扩散可操控全身跟踪](./paper-diffwbc.md) — 低层跟踪器内部可微引导未来计划；与 TWIST2 的分层遥操作/采集链路形成方法对照。
 
 ## 参考来源
 

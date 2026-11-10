@@ -30,6 +30,7 @@
 
 - [DiffWBC 实体](../../wiki/entities/paper-diffwbc.md)
 - [论文通读归档](../papers/diffwbc_arxiv_2610_41354_reading.md)
+- [补充原文通读归档](../papers/diffwbc_arxiv_2610_41354.md)
 
 ## 参考来源
 

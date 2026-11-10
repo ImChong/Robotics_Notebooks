@@ -11,12 +11,14 @@ related:
   - ../methods/beyondmimic.md
   - ./paper-yahmp.md
   - ./paper-extreme-rgmt.md
+  - ./paper-twist2.md
   - ../concepts/whole-body-control.md
   - ../methods/diffusion-policy.md
 original:
   - ../../sources/papers/diffwbc_arxiv_2610_41354_reading.md
 sources:
   - ../../sources/papers/diffwbc_arxiv_2610_41354_reading.md
+  - ../../sources/papers/diffwbc_arxiv_2610_41354.md
   - ../../sources/sites/diffwbc-project.md
 summary: "DiffWBC（arXiv:2610.41354v1，2026-10-30）：将 50 Hz 人形全身运动跟踪器建模为单步扩散式未来状态/动作预测器；单次前向 3.8 ms，冻结权重后可用梯度引导和身体分组遮蔽完成零样本 steering，并用噪声计划离散度挖掘失败；G1 真机仅验证普通跟踪，代码截至 2026-11-10 尚未公开。"
 ---
@@ -186,6 +188,7 @@ flowchart TD
 
 - [论文全文通读归档](../../sources/papers/diffwbc_arxiv_2610_41354_reading.md) — arXiv v1 §1–§5、Tables 1–6、Appendix A–C 核对与版本差异
 - [项目主页归档](../../sources/sites/diffwbc-project.md) — 匿名旧名、开源状态与额外 demo 的边界
+- [PR #3590 补充论文通读归档](../../sources/papers/diffwbc_arxiv_2610_41354.md) — 保留独立核对的论文机制与实验口径
 - [原论文：DiffWBC，arXiv:2610.41354v1](https://arxiv.org/abs/2610.41354)（2026-10-30）
 - [官方项目演示：diffwbc.github.io](https://diffwbc.github.io/)（网站当前标题 OneSteer）
 
