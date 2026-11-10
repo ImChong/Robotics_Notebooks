@@ -14,9 +14,10 @@ tags:
   - software-engineering
   - open-source
 status: complete
-updated: 2026-10-14
+updated: 2026-11-10
 related:
   - ./graphify.md
+  - ./kensaku.md
   - ./understand-anything.md
   - ./open-code-review.md
   - ../concepts/agentic-coding-software-fundamentals.md
@@ -42,6 +43,10 @@ CodeGraph 是一个本地运行的代码索引、图查询与 MCP 服务：把�
 | MCP | Model Context Protocol | 模型上下文协议；CodeGraph 用它向 coding agent 提供查询工具 |
 | FTS5 | Full-Text Search 5 | SQLite 全文检索扩展，用于本地符号与文本搜索 |
 | CLI | Command-Line Interface | 命令行接口；可初始化、查询、检查调用方和分析影响范围 |
+
+## 为什么重要
+
+对 ROS 2 多包工作区、驱动、仿真和控制代码做自动化修改时，单纯按文件名或正文关键词检索不足以回答跨文件调用链和改动影响。CodeGraph 的静态符号图可以补充调用、引用和依赖关系；若目标是搜索本机 PDF、截图或日志，宜与 [Kensaku](./kensaku.md) 等跨格式本地搜索工具分工。
 
 ## 核心机制
 
@@ -80,10 +85,15 @@ flowchart TD
 | 工具 | 核心侧重 | 适合解决的问题 |
 |------|----------|----------------|
 | **CodeGraph** | Tree-sitter / 静态关系图、MCP 查询、文件变化自动同步 | agent 需要代码级符号、调用路径和变更影响上下文 |
+| [Kensaku](./kensaku.md) | 本地文件名、全文、OCR 与语义搜索，CLI/MCP 接入 | 从多格式文件和截图中查找错误、文档与代码文本（不构建跨文件调用关系图） |
 | [Graphify](./graphify.md) | 从代码与文档等混合资料构建知识图，可结合语义抽取和图遍历 | 探索包含代码、文档、论文等多类材料的资料目录 |
 | [Understand Anything](./understand-anything.md) | 结构分析加业务语义视图、导览与交互式 dashboard | 需要面向人的代码库导览和高层业务解释 |
 
 这些工具都把代码或资料组织成图，但提取机制、交互方式和侧重点不同。对于机器人仓库，若目标是调用链与变更影响分析，应重点看静态解析的语言和框架覆盖；若要把代码与设计文档、论文一起连起来，则还需评估混合资料和语义抽取能力。
+
+## 工程实践
+
+在机器人软件仓库先按官方说明完成 `codegraph install` 与 `codegraph init`，再用 MCP 的 `codegraph_explore` 或 CLI 的调用方、被调用方和影响分析能力定位代码路径。静态依赖分析得到的候选变更范围，需要用构建、仿真和真机测试继续验证；文件、日志或 OCR 内容检索可交给 [Kensaku](./kensaku.md)，两者目标不同。
 
 ## 局限与风险
 
@@ -94,6 +104,8 @@ flowchart TD
 - **遥测设置需纳入评估。** 索引保存在本地不等于所有使用数据都不离开设备；官方说明存在匿名汇总使用遥测，并提供关闭选项。部署时应核查当前版本的 `TELEMETRY.md` 和配置。
 
 ## 关联页面
+
+- [Kensaku](./kensaku.md) — 本地跨格式文件检索与只读 MCP，可作为查找文档、日志和截图的互补工具。
 
 - [Graphify](./graphify.md) — 从代码与文档等混合语料构建可遍历图，语义抽取范围更广。
 - [Understand Anything](./understand-anything.md) — 代码图谱结合业务语义视图、导览与 dashboard。
