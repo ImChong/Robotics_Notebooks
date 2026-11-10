@@ -25,7 +25,7 @@ related:
 # LingBot-Touch：面向通用灵巧操作的异构触觉基础表征模型
 **Learning Heterogeneous Tactile Representation for General Dexterous Manipulation**
 
-> **核验状态：已通读技术报告全文（27 页，包括 `1–6、附录 A–C、Tables 1–8、Figures 1–16 与 References 1–37）。** 从 Git LFS 下载的正式 PDF 经 SHA-256 `1d68b6ce43470b9ffbdfd7425480581845b2515eb7897661e26152c5b257a3ce` 核对。以下实验为**论文作者报告**，不代表独立复现。
+> **核验状态：已通读技术报告全文（27 页，包括 §1–6、附录 A–C、Tables 1–8、Figures 1–16 与 References 1–37）。** 从 Git LFS 下载的正式 PDF 经 SHA-256 `1d68b6ce43470b9ffbdfd7425480581845b2515eb7897661e26152c5b257a3ce` 核对。以下实验为**论文作者报告**，不代表独立复现。
 
 ## 一句话定义
 
@@ -55,7 +55,7 @@ related:
 | 三种输入 | 磁性（XYZ）、压阻（标量）、视触觉（解码后的标量，非原始 RGB） |
 | 官方真机演示 | **26 项**（Sharpa Wave 20，XHand 6；每任务 20 trials） |
 | 官方仿真 RL | **12 项**，网页标注每任务 3 random seeds |
-| 参数规模 | 论文 `4.1：HaT-Tiny **5.46M / 192 hidden**、HaT-Small **21.76M / 384 hidden**；二者均为 **12 层 Transformer**，不包含 predictor/策略头 |
+| 参数规模 | 论文 §4.1：HaT-Tiny **5.46M / 192 hidden**、HaT-Small **21.76M / 384 hidden**；二者均为 **12 层 Transformer**，不包含 predictor/策略头 |
 
 ## 为什么重要
 
@@ -64,7 +64,7 @@ related:
 - **与视觉/VLA 互补：** 接触压力、打滑和局部力学变化可能不在相机视野内；本模型填补触觉观测，不负责动作生成。
 - **已能试推理：** 官方开放 Tiny/Small target encoder + CLI、Sharpa/XHand 两种可核验 adapter、样例数据；区别于完整预训练代码开源。
 
-## 流程总览（论文 Figure 3、`3.1–3.3）
+## 流程总览（论文 Figure 3、§3.1–3.3）
 
 ```mermaid
 flowchart TD
@@ -103,19 +103,19 @@ L = mean_masked L1(pred, stopgrad(target)) + 0.5 × mean_visible L1(pred, stopgr
 
 四个 HaT 层的特征分别正规化后拼接为 token 表征。**空间 mask 按整段时间同步**，掩码从 40% 经过 300 optimizer updates 线性提升到 80%，共训练 200,000 updates；避免把很稀疏的接触事件在起步阶段全部遮蔽。只有 online encoder / predictor 被梯度更新，EMA target 不经反向传播。
 
-### 3. Layout augmentation：为什么能处理陌生型号（论文 `3.3）
+### 3. Layout augmentation：为什么能处理陌生型号（论文 §3.3）
 
 磁性每指以 24/32/48/64/76/96 点随机训练；视触觉 32/96/200 点；低分辨率压阻保留原生布局。taxel 的点位抖动满足 `||δ_i||₂ ≤ 0.5 d_i`（同指最近邻点距）；同一片段的时间窗及 context / target 共用扰动。跨硬件推理时无需调触觉 encoder 权重，但**新硬件依旧必须完成物理定标和点序/左右手映射**。
 
-### 4. 冻结表征如何进入真实机器人（论文 `5.1）
+### 4. 冻结表征如何进入真实机器人（论文 §5.1）
 
 真机采用 **30Hz 的 16 帧** tactile history，Tiny 5.46M 冻结 target encoder 生成 token，trainable cross-attention 每手压缩成 **40 个 token**，再映射到各策略 conditioning dim，与视觉和 proprioception 一起用于**后训练的策略**；相对于 T-Rex / π0.5 / LingBot-VLA，encoder 参数量增加 **0.16% / 0.15% / 0.13%**。策略本身仍需使用演示进行 post-training。
 
-## 实验与评测（论文 `4–5）
+## 实验与评测（论文 §4–5）
 
 ### 触觉探针：Tiny / Small 与已见/未见 sensor 的不同口径（Figures 5–8）
 
-`4.1–4.2 默认是 **5K 预训练的 Small（21.76M）** + 冻结 encoder 后训练 probe；Sharpa Wave 在预训练中见过，XHand1 的**传感器型号**没有见过。五个 probes 对接触强度、中心、覆盖面积、未来力变化和 tactile-to-video retrieval 进行评估：
+§4.1–4.2 默认是 **5K 预训练的 Small（21.76M）** + 冻结 encoder 后训练 probe；Sharpa Wave 在预训练中见过，XHand1 的**传感器型号**没有见过。五个 probes 对接触强度、中心、覆盖面积、未来力变化和 tactile-to-video retrieval 进行评估：
 
 | Sensor | Force MAE | Center error | Coverage MAE | Future force MAE | Retrieval Recall@5 |
 |---|---:|---:|---:|---:|---:|
@@ -157,7 +157,7 @@ Touch 的 across-seed 成功率标准差平均 **3.9 pp**，最高 **9.2 pp**；
 
 ### 政策表现与预训练规模（Figure 13）
 
-同一 LingBot-VLA 主干和五项 Sharpa 任务，原策略平均 **55.9%**；分别接 **1K/2K/3K/4K/5K** 预训练的 Touch 得 **69.8/74.3/77.4/81.4/82.2%**，以 FTP-1 encoder 替代得 **67.5%**。这一组 **5K** 是 `5.4 的 scaling study，不能误归于 Table 2 的 4K 结果。
+同一 LingBot-VLA 主干和五项 Sharpa 任务，原策略平均 **55.9%**；分别接 **1K/2K/3K/4K/5K** 预训练的 Touch 得 **69.8/74.3/77.4/81.4/82.2%**，以 FTP-1 encoder 替代得 **67.5%**。这一组 **5K** 是 §5.4 的 scaling study，不能误归于 Table 2 的 4K 结果。
 
 ## 结论
 
@@ -217,7 +217,7 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **论文 `6 明确限制：** 真机和仿真手型仍需扩展；电容式传感数据因质量不达标未进入预训练；数据主要覆盖指尖，手掌和手指其他区域的接触尚不足。
+- **论文 §6 明确限制：** 真机和仿真手型仍需扩展；电容式传感数据因质量不达标未进入预训练；数据主要覆盖指尖，手掌和手指其他区域的接触尚不足。
 - **不能混用指标：** 探针测量本体表征，不等于成功执行机器人任务；实验均为作者自报，没有在本 PR 独立重训/真机复现实验。
 - **跨硬件不是免校准：** 新 taxel 必须核验坐标轴、手指编号、几何参考、力方向和固定数值范围，且下游策略仍需 post-training。
 - **频率与时窗：** Tiny/Small inference bundle 的 tubelet_size 分别 2/4；时间窗需整除，并不代表任一实际机器人都可稳定达到某 Hz 端到端闭环。
