@@ -70,7 +70,7 @@ flowchart TD
 ```text
 d_i(u) ≈ D_i(u) / sqrt(fx_i * fy_i)
 s_g = median_{i,u in valid pixels} d_i(u)
-```) 
+```
 
 论文通过用 `s_g` 等比例缩放深度、三维点和相机**平移**，令归一化后的高斯间距中位数约为 1；旋转和相机内参不随这个空间尺度改变。其目标是对齐 Gaussian scale 的学习参照，不是估计绝对米制。
 
