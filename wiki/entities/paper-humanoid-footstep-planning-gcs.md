@@ -46,7 +46,7 @@ related:
 |------|------|
 | 论文 | *Humanoid Footstep Planning using Graphs of Convex Sets* |
 | 作者 | Hyunseok Kim；George Mesesan；Robert Schuller；Jinoh Lee；Hae-Won Park |
-| 机构 | 韩国科学技术院（KAIST）Dynamic Robot Control and Design Laboratory；其他作者归属待全文核对 |
+| 机构 | [KAIST DRCD Lab](https://www.dynamicrobot.kaist.ac.kr/contact) 的成员页证实 Hyunseok Kim、Hae-Won Park 在该组；其他作者归属待全文核对 |
 | 出版 | IEEE Robotics and Automation Letters，2026；DOI: 10.1109/LRA.2026.3746865 |
 | 规划变量 | 离散步序／运动模式与连续落脚位置（由摘要确认） |
 | 真机平台 | 力矩控制人形机器人 TORO；节奏式定时踏步任务 |
@@ -142,7 +142,7 @@ flowchart TD
 
 - [本论文来源归档](../../sources/papers/humanoid-footstep-planning-gcs-ral-2026.md) — 标明仅摘要级核查与未完成项
 - [论文 DOI（IEEE RA-L）](https://doi.org/10.1109/LRA.2026.3746865) — 论文原始出版入口（全文目前不可读）
-- [DRCD Lab 官方网站](https://www.dynamicrobot.kaist.ac.kr/) — KAIST 实验室主页
+- [DRCD Lab 官方成员页](https://www.dynamicrobot.kaist.ac.kr/contact) — 独立核对 Hyunseok Kim、Hae-Won Park 的所属信息
 
 ## 推荐继续阅读
 
