@@ -5,9 +5,9 @@ arxiv: "2611.01560"
 project: https://uni-robot-agent.com
 code: https://github.com/Open-RUA/uni-robot-agent
 tags: [llm-agents, robot-manipulation, benchmark, open-source, tsinghua, uc-berkeley]
-status: draft
-updated: 2026-11-06
-summary: "Uni-Robot-Agent 通过共享工具、资源调度及环境适配器，将模型接入机器人操作闭环，并研究开放权重模型的机器人使用能力。"
+status: complete
+updated: 2026-11-11
+summary: "Uni-Robot-Agent 以统一工具和环境适配器连接开放模型与机器人，借助并行调度、物理状态快照及动作反馈完成跨环境闭环操作。"
 related:
   - ../entities/ora-open-robot-use-agents.md
   - ../concepts/llm-robotics-control-interfaces.md
@@ -22,112 +22,155 @@ original:
   - ../../sources/papers/uni_robot_agent_arxiv_2611_01560.md
 ---
 
-# Democratizing Robot-Use Agents: A Unified Harness with Open Models｜开放模型的统一机器人智能体框架
+# Democratizing Robot-Use Agents: A Unified Harness with Open Models｜开放模型机器人使用智能体统一框架
 
 ## 一句话定义
 
-Uni-Robot-Agent 将模型、共享机器人工具与环境适配器连接成可反馈的操作闭环，支持开放权重模型进行零样本机器人任务。
+**Uni-Robot-Agent（OpenRUA）是机器人使用智能体（RUA）的统一执行框架，而非新训练的 VLA 权重。** 它以可互换的 Agent runtime、共享工具、调度器、环境服务与后端适配器，连接语言模型推理和机器人动作，并保留跨环境互动记录，为后续训练开放模型提供基础。论文： [arXiv:2611.01560v2](https://arxiv.org/html/2611.01560v2)；[官方博客](https://openrua.ai/uni-robot-agent)；[开源实现](https://github.com/Open-RUA/uni-robot-agent)。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |---|---|---|
-| RUA | Robot-Use Agent | 使用机器人工具完成任务的智能体 |
-| VLA | Vision-Language-Action | 视觉语言动作模型 |
+| RUA | Robot-Use Agent | 通过工具与环境交互的机器人使用智能体 |
+| VLA | Vision-Language-Action | 视觉语言动作策略 |
 | WAM | World Action Model | 世界动作模型 |
-| SR | Success Rate | 完成任务成功率 |
+| SR | Success Rate | 完整完成任务的成功率；不同于部分得分 |
+| EEF | End-Effector | 末端执行器 |
+| RGB-D | Red, Green, Blue + Depth | 彩色图像与深度测量 |
 
-## 流程总览
+## 为什么重要：方法边界
 
-以下按论文 v1 图 2 的逻辑层组织；服务与后端是可替换组件。
+- **Unified：** 共享运动、感知、技能及 episode 控制工具，环境适配器负责不同仿真/真机的原生 API；不需为每个工具与每个环境分别写实现（论文 §2.2）。
+- **Efficient：** Agent 推理与工具执行流水线重叠；同一独占资源的动作按提交顺序执行，结果依赖型决策仍必须等待（§2.3）。
+- **Realistic：** RoboDojo 主要实验使用 RGB、多视角相机标定、机器人描述/本体状态，不提供仿真真值深度、物体 CAD、隐藏场景标注或 task-verifier 反馈。**无特权输入不代表没有标定/本体信息。** 真机实验则使用 RealSense 深度（§2.4、§3）。
+- **Modular：** runtime / context / tools / services / simulator 或机器人后端可分别替换，交互日志可用于未来的智能体训练；**论文并未报告已经用这些日志训练出新基础模型**（§2.1、§8）。
+
+## 核心机制与项目数据流程
+
+按论文 v2 图 2–5 和 §2.5 整理。虚线表示独立的反馈链，非网络进程调用拓扑。
 
 ```mermaid
 flowchart TD
-  A[任务与观测] --> B[Agent 推理与工具请求]
-  B --> C[编排与资源调度]
-  C --> D[共享感知和动作工具]
-  D --> E[环境与模型服务]
-  E --> F[仿真或机器人后端]
-  F --> E
-  E --> D
-  D --> B
+  TASK["任务指令 + RGB / 标定 / 本体信息"] --> AGENT["Agent runtime：规划与工具调用"]
+  AGENT --> ORCH["编排层：后台任务 / 独占资源队列"]
+  ORCH --> TOOLS["共享工具：场景、运动、技能、finish"]
+  TOOLS --> SERVICE["服务层：环境、感知、动作模型"]
+  SERVICE --> ADAPTER["环境适配器：统一接口 → 原生控制"]
+  ADAPTER --> ROBOT["RoboDojo 等仿真 / ARX ONE 等真机"]
+  ROBOT --> SNAP["不可变观测快照 + 动作执行回执"]
+  SNAP --> SERVICE
+  SERVICE --> TOOLS
+  TOOLS -. "结果 / 图像 / 误差 / 停止原因" .-> AGENT
+  ORCH -. "后台 job handle / 等待结果" .-> AGENT
 ```
 
-- 统一接口将运动、感知、技能和 episode 工具映射到环境适配器；可通过后台调用与资源队列重叠推理和执行。
-- 图像、标定和机器人状态绑定为快照；动作带请求身份以防通信失败后重复执行。移动工具根据实测位姿迭代生成中间目标并反馈误差、停止原因和图像。
-- 旧图像按滑动窗口淘汰而保留周围文本；结果依赖的后续决策仍需等待执行反馈。
+六项关键设计（§2.5）：图像/相机位姿/机器人状态绑定快照；请求身份防止超时后重复动作；运动和夹爪开合联合命令；基于实测进度而非固定步数终止；返回量化误差、拒绝/停滞原因与执行后图像；旧图像窗口化清理同时保留指令与调用文本。机器人到达目标 pose **不等于** 抓取或任务成功。
 
-## 源码运行时序图
+## 源码运行时序图（官方 main，2026-11-11）
 
-核对仓库 commit `9d6a051e2045fa23ad863cfed49101e699d520de` 的 CLI、session、executor 和 toolkit；下图只描述已核实的工具调用主干。
+核对 `uni_robot_agent/cli.py`、`session.py`、`execution/parallel.py`、`execution/scheduler.py`、`tools/toolkit.py` 和 [架构文档](https://github.com/Open-RUA/uni-robot-agent/blob/main/docs/architecture.md)。下图是 CLI → 工具实际主干，环境原生服务与模型 provider 依所选集成变化。
 
 ```mermaid
 sequenceDiagram
-  participant U as 使用者
+  participant U as User
   participant C as cli.py
-  participant S as session.py
-  participant A as Agent
+  participant S as Session / session.py
+  participant A as Agent runtime
   participant E as ParallelToolExecutor
+  participant Q as ResourceScheduler
   participant T as Toolkit
-  U->>C: uni-robot-agent run
-  C->>S: run(args)
-  S->>S: 组装环境、工具及执行器
-  S->>A: run_agent 与工具接口
-  A->>E: 提交工具请求
-  E->>T: execute_tool
-  T-->>E: handler 结果
-  E-->>A: 结果或后台任务句柄
-  A-->>S: Agent 结束
+  participant H as Native handler / adapter
+  U->>C: uni-robot-agent run --integration robodojo
+  C->>S: run(args) / assemble_session(args)
+  S->>S: create integration session and register tools
+  S->>E: create_executor(toolkit, policies)
+  S->>A: run_agent()
+  A->>E: call / submit(tool, arguments)
+  E->>Q: submit(job, resource policy)
+  Q->>T: execute_tool(name, arguments)
+  T->>H: tool_def.handler(**arguments)
+  H-->>T: ToolOutput + images / diagnostics
+  T-->>E: ToolOutput / recorded result
+  E-->>A: immediate result or job handle
+  opt Background job
+    A->>E: job_result(job_id)
+    E-->>A: completed result or pending status
+  end
+  A-->>S: agent outcome
 ```
 
-源码入口及公开范围见 [仓库归档](../../sources/repos/uni-robot-agent.md)；尚未实际运行仿真。
+资源独占与后台等待来自 `ResourceScheduler`；工具调用由 `Toolkit.execute_tool` 分派到注册 handler，结果有结构化回执。上图只说明已阅读的源码调用链，**未在本次环境实际启动仿真或真机**。官方 [Python SDK](https://github.com/Open-RUA/uni-robot-agent/blob/main/docs/sdk.md) 也可用 `Session.tools` 自行执行策略。
 
-## 评测与局限
+## 实验结果与对照条件
 
-论文 v1 的 RoboDojo 评测为 42 任务、每任务 3 seeds × 2 布局，共 252 episodes；主设置提供 RGB、相机标定及机器人信息，不向 agent 提供仿真真值深度或任务验证器反馈。
+### RoboDojo（论文 v2 表 1）
 
-| 配置 | 成功率 | RoboDojo 分数 |
+42 个任务、五个维度；主要设置每任务 3 seeds × 2 layouts，计 252 episodes。Score（0–100）可给中途进度分，SR 是完整成功率。下面为论文列出的不同 harness 和模型配置，**不是相同模型、相同输入的全控制实验**。
+
+| 模型 + Harness（主表无仿真深度） | SR | Score |
 |---|---:|---:|
-| Qwen3.8-Flash-Next + 本框架 | 25.00% | 31.39 |
+| Qwen3.8-Flash-Next + RoboProbe | 0.83% | 1.90 |
+| Qwen3.8-Flash-Next + GAP Hybrid（含 π₀.₅） | 16.11% | 21.01 |
+| **Qwen3.8-Flash-Next + Uni-Robot-Agent** | **25.00%** | **31.39** |
+| DeepSeek-V4.1-Flash + Uni-Robot-Agent | 21.39% | 27.11 |
 | GPT-6 Astra + RoboProbe（已发表基线） | 22.48% | 28.97 |
-| GPT-6 Astra + 本框架 | 46.67% | 51.90 |
+| GPT-6 Astra + Uni-Robot-Agent | 46.67% | 51.90 |
 
-比较涉及不同模型与 harness，不能将优势单独归因于模型。真机 19 个任务、五个维度中 Qwen 得 49.50/100，微调 π₀.₅ 得 47.75/100；该分数包含部分完成得分，**不是任务成功率**。Agent 额外使用 RealSense 深度，而 π₀.₅ 和 Dream-1 使用 RGB，输入条件不同。
+这说明 harness 本身是重要变量，而不能将跨配置优势全部归功于模型。论文还显示 VLA/WAM 在某些长时任务表现更强（§3.1）。
 
-去除仿真深度但保留相机标定时 Qwen 为 31.39 分；进一步去除相机参数降至 9.13。技能库消融为 30.31 分。论文通过轨迹分析指出视觉理解、空间定位、几何代码及具身推理四类失败；其相关性分析不等于因果证明。
+### 真机 Real Eval（论文 v2 表 2、附录 B）
+
+双臂桌面平台、19 项任务、五个各占 20 分的维度；每项细则包括任务完成和指定的中间进度。**分数不是任务成功率。**
+
+| 模型 | 训练/输入条件 | 总分 / 100 |
+|---|---|---:|
+| GPT-6 Astra + Uni-Robot-Agent | 零样本；RGB + D405 深度 | 80.50 |
+| **Qwen3.8-Flash-Next + Uni-Robot-Agent** | **零样本；RGB + D405 深度** | **53.50** |
+| π₀.₅ | 每任务约 10 小时示范微调；RGB | 47.75 |
+| Dream-1 | 零样本；RGB | 43.50 |
+
+论文 v1 早期文本曾给出 Qwen 真机 49.50；**v2 表 2、表 4 和作者博客一致为 53.50**。输入模态、示范训练和协议差异不允许直接解释成同等条件的政策胜负；真机 unseen tasks 两个 Agent 都只有 8/20（§3.2、附录 B）。
+
+### 消融与效率
+
+- 去除仿真深度、保留标定：Qwen 由 **35.89** 降至 **31.39**；若继续移除相机参数，论文报告降至 **9.13**（§5.1），表明“无深度”不等同于“无几何信息”。
+- 取消技能库及技能编写：**30.31 Score / 24.58% SR**，相较使用技能库的 **31.39 / 25.00%**，说明主要收益并非依赖预设技能，但不排除任务说明/工具接口的影响（§5.2）。
+- 五个示例任务的单回合串行/流水线比较：**84.5%–93.8%** 物理执行时间与模型请求重叠，回合耗时减少 **4.8%–73.7%**；每配置每任务仅一次运行，不代表跨任务或跨硬件的统计保证（§6.2）。
+- 按代际/家族/大小分析的四类失败：**视觉理解、跨视角空间定位、几何变换代码、具身交互推理**。相关性和部分辅助评审来自作者的观察与分析，并非因果定律（§4）。
+
+## 工程实践：复现入口与开源状态
+
+- 官方项目页、[博客](https://openrua.ai/uni-robot-agent)、[MIT 仓库](https://github.com/Open-RUA/uni-robot-agent)、[文档](https://uni-robot-agent.com/docs/) 已核实可访问。2026-11-11 仓库 README 列出 **v0.2.0**、RoboDojo / RoboUse / RoboLab、RoboTwin / LIBERO 等适配器，以及已公开的 **ARX ONE** 真机集成；Franka 仍标为 coming soon。新扩展并不等于论文已完成相应评测。
+- 基础复现：Python 3.11 Linux GPU 环境中安装 `uni-robot-agent`，使用 `setup --integration robodojo` 准备环境；运行前需配置模型 endpoint/key。**RoboDojo 代码默认启用 depth**，复现实验主设置须显式传 `--no-depth` 且保留相机标定。详见 [官方 README](https://github.com/Open-RUA/uni-robot-agent#quick-start) 和 [配置说明](https://github.com/Open-RUA/uni-robot-agent/blob/main/docs/integrations.md)。
+- 开源仓库中的真机执行涉及物理设备、驱动、标定及操作者安全流程，不应把安装示例直接当成上机验证。作者没有证明任意机器人即插即用；精密空间定位、双臂协调和长任务仍具挑战。
+- 本次仅进行论文与公开源码静态核查；**未实测复现 benchmark、API 成本或硬件控制**。
+
+## 局限与风险
+
+现有成果以工具驱动的零样本推理与执行为主，尚未证实跨平台模型权重训练收益或在所有真实硬件上的稳健性。实验仍存在多视角定位、精密操作、长时规划、端到端吞吐和外部模型服务依赖等边界；真机对照的感知输入、训练预算与任务成功判据并不完全相同，不能无条件比较。
 
 ## 与其他工作对比
 
-| 维度 | 本页 Uni-Robot-Agent | [ORA](./ora-open-robot-use-agents.md) | [GPT-6-Astra 具身智能报告](./paper-gpt-6-astra-embodied-intelligence.md) |
-|------|------|------|------|
-| 定位 | 共享工具、资源调度与环境适配器组成的统一 harness | 面向机器人使用任务的开源 ReAct harness | 评测通用模型在仿真、控制框架与真机上的表现 |
-| 闭环方式 | 工具请求经编排执行，可后台调用重叠推理与执行；动作带请求身份防重复 | 逐轮调用工具，supervisor 执行有界动作并返回回执 | 模型生成动作或动作序列，可使用冻结 ICL 知识包与扩展步数 |
-| 主要评测 | RoboDojo 42 任务 252 episodes；真机 19 任务计分 | RoboTwin C2R、LIBERO-Pro 仿真 | 12 个仿真设置 + G1 真机抓放与行走 |
-| 信息边界 | 不提供仿真真值深度或任务验证器反馈，保留 RGB 与相机标定 | 不向模型提供成功判定实现、仿真真值与接触信息 | 允许用训练示范构建知识包 |
-
-- **怎么选**：要在 RoboDojo 上复现开放模型 agent 并研究调度与观测消融看本页；要跨 RoboTwin / LIBERO-Pro 的工具调用基线看 ORA；要理解示范与预算对通用模型分数的影响看 GPT-6-Astra 报告。
-- **读法**：三者基准、模型与观测条件均不同，成功率只能在各自协议内解读。
-
-## 结论
-
-共享接口和执行机制可显著影响机器人智能体的实验表现，但评价必须保留模型、观测和评测协议的条件。
-
-- 复现无深度仿真设置时需保留相机标定；公开仓库 RoboDojo 默认有深度，须显式选择 `--no-depth`。
-- 精密操作、空间定位和长时任务仍是弱项；到达目标位姿也不代表抓取成功。
-- 论文真机实验不等于公开包已支持真机；官方 README 将 ARX One、Franka 集成标为待发布。
-
-## 待核查
-
-论文全文尚未逐节通读，在线文档及开放数据仍待核对；本页保持草稿。2026-11-06 已访问[作者团队博客](https://openrua.ai/uni-robot-agent)：博客报告 Qwen 真机总分为 **53.50/100**，与当前论文 v1 归档记录的 **49.50/100** 不一致。两者是否来自不同版本或评分口径尚未核实，暂时分别保留，不能视作相同结果。博客同样指出 agent 使用深度，而对照使用 RGB。
+| 维度 | 本页 Uni-Robot-Agent | [ORA](./ora-open-robot-use-agents.md) | [GPT-6 Astra 具身报告](./paper-gpt-6-astra-embodied-intelligence.md) |
+|---|---|---|---|
+| 主要目标 | 跨模型与环境共享工具、调度和反馈，研究开放权重 RUA | 开源 ReAct 机器人使用框架 | 测量通用模型在仿真及真机的具身能力 |
+| 控制闭环 | Agent 工具调用 + 后台队列 + 原生 adapter | ReAct 工具调用与有界 supervisor 执行 | 直接/混合模型策略与执行反馈 |
+| 评测参考 | RoboDojo、19 项 Real Eval | RoboTwin C2R、LIBERO-Pro | 不同任务与独立协议 |
+| 注意 | 强调 harness 与观测边界 | 不能直接迁移得分 | 不能与本页跨基准横比 |
 
 ## 关联页面
 
-- [ORA](ora-open-robot-use-agents.md) — 另一套机器人使用智能体框架。
-- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 理解工具与控制接口的分层。
-- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：RoboDojo 成功率随模型与 harness 组合、深度与相机标定条件变化，真机 0–100 计分含部分完成，防止跨 harness 横比或把计分当成功率。
+- [ORA](ora-open-robot-use-agents.md) — 类似研究方向与 harness 设计。
+- [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 工具控制与低层控制的边界。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 区分 score、SR、模型输入与评测协议。
+
+## 推荐继续阅读
+
+建议依次阅读 [论文 §2：框架机制](https://arxiv.org/html/2611.01560v2)、[论文 §3–6：实验与消融](https://arxiv.org/html/2611.01560v2)、[源码架构文档](https://github.com/Open-RUA/uni-robot-agent/blob/main/docs/architecture.md) 和 [ARX ONE 集成说明](https://github.com/Open-RUA/uni-robot-agent/blob/main/uni_robot_agent/integrations/arx_one/README.md)。
 
 ## 参考来源
 
-- [论文 v1 归档](../../sources/papers/uni_robot_agent_arxiv_2611_01560.md)
+- [论文 v2 全文归档](../../sources/papers/uni_robot_agent_arxiv_2611_01560.md)
 - [官方源码归档](../../sources/repos/uni-robot-agent.md)
-- [项目页面归档](../../sources/sites/uni-robot-agent.md)
+- [官网与博客归档](../../sources/sites/uni-robot-agent.md)
