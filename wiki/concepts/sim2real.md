@@ -2,8 +2,9 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-11
 related:
+  - ../entities/paper-gamma-art-smart.md
   - ../entities/egalahad-sim2real.md
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -335,6 +336,8 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - **ingest 档案：** [sources/papers/cref_arxiv_2603_29452.md](../../sources/papers/cref_arxiv_2603_29452.md) — CReF：深度条件人形行走零样本；训练不注入合成深度损坏
 
 ## 关联页面
+
+- [SMART / Gamma-Art：百万级铰接操作合成数据与真机零样本迁移](../entities/paper-gamma-art-smart.md) — 以 Isaac Lab 结构约束合成、域随机化和 SMART-VLA 训练覆盖多类铰接操作；含真机验证与开源边界。
 
   - [AWS Physical AI Toolchain](../entities/aws-physical-ai-toolchain.md) — 云端仿真、合成数据、训练与 HIL/Sim2Real 部署参考架构
   - [RoboRender](../entities/robo-render.md) — 将模拟视频转为保留几何与运动标签的真实感图像，用于仿真数据到真实视觉的迁移
