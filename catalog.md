@@ -3832,6 +3832,7 @@
 - [PanoWorld：真实世界全景可控生成](wiki/entities/paper-panoworld-real-world-panoramic-generation.md) — PanoWorld**（*Real-World Panoramic Generation*，[arXiv:2607.09661](https://arxiv.org/abs/2607.09661 `📅unknown` `[entity_page]`
 - [PanTact：用可穿戴接触接口教人形机器人全身操作](wiki/entities/paper-pantact-whole-body-contact-interface.md) — PanTact**（arXiv:2610.12558，项目页）由 `📅unknown` `[entity_page]`
 - [Paper2Agent：把研究论文编译成可调用的 AI agent](wiki/entities/paper-paper2agent.md) — Paper2Agent**（Miao et al., Nature 2026，DOI [10.1038/s41586-026-11044-y](https://doi.org/10.1038/s4 `📅unknown` `[entity_page]`
+- [Parallel-Attention Myoelectric Gesture Recognition：并行注意力肌电手势识别（JBE 2026）](wiki/entities/paper-parallel-attention-myoelectric-gesture-recognition.md) — 为减轻手臂姿态变化造成的 sEMG 手势分类漂移，论文提出 DCNN-GRU：在窗口级特征上并行建模全局通道权重与局部通道—空间注意力，再通过 GRU 整合有序窗口表征。** 本页目前仅基于出版商 `📅unknown` `[entity_page]`
 - [ParcelStow：模仿学习是否保留时间鲁棒性？](wiki/entities/paper-parcelstow.md) — ParcelStow**（*Does Imitation Learning Preserve Temporal Robustness in Dexterous Manipulation?*，[ar `📅unknown` `[entity_page]`
 - [Parkour in the Wild（PITW）](wiki/entities/paper-parkour-in-the-wild.md) — Parkour in the Wild**（*Learning a General and Extensible Agile Locomotion Policy Using Multi-Exper `📅unknown` `[entity_page]`
 - [ParkourFormer（预测监督 + 序列建模人形跑酷）](wiki/entities/paper-parkourformer.md) — ParkourFormer**（*Integrating Predictive Supervision and Sequence Modeling into Parkour Locomotion `📅unknown` `[entity_page]`
