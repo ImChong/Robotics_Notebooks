@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robot-data, egocentric, vla, synthesis, ruc, alibaba, shanghaitech, bigai, buaa]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-12
 arxiv: "2608.02580"
 related:
   - ../methods/vla.md
@@ -12,6 +12,7 @@ related:
   - ./paper-egoverse.md
   - ./paper-embodiedvae.md
   - ./paper-gsr-paravla.md
+  - ./paper-ego2robot-learning-survey.md
 sources:
   - ../../sources/papers/ego2robot_arxiv_2608_02580.md
   - ../../sources/sites/ego2robot-blog.md
@@ -107,6 +108,8 @@ flowchart TB
 - 合成臂外观与真实灯光/材质仍有域差；Franka 数字说明形态鸿沟不会被渲染抹平。
 
 ## 关联页面
+
+- [Ego2Robot Learning 综述（arXiv:2611.13610）](./paper-ego2robot-learning-survey.md) — 归纳 EHV→机器人操作的四范式与数据/评测要求，**不同于本页的单项数据合成算法**。
 
 - [VLA](../methods/vla.md)
 - [EgoScale](../methods/egoscale.md) — 人视频规模化的另一条对齐路径
