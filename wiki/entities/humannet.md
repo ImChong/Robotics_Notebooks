@@ -1,9 +1,14 @@
 ---
 type: entity
+project_id: humannet
+arxiv: "2605.06747"
+project: https://dagroup-pku.github.io/HumanNet/
+original:
+  - ../../sources/papers/humannet.md
 title: HumanNet（百万小时人中心视频语料）
 tags: [dataset, egocentric-video, exocentric-video, vla, imitation-learning, embodied-pretraining, pku, dagroup]
 summary: "HumanNet 是面向具身学习的大规模人中心视频语料（论文宣称约一百万小时），一三人称混合并配套交互导向标注与可扩展策展管线；适合作为 VLA/表示学习的人类侧数据基础设施参照。"
-updated: 2026-09-15
+updated: 2026-11-11
 status: complete
 related:
   - ../methods/vla.md
@@ -21,10 +26,15 @@ sources:
   - ../../sources/papers/humannet.md
   - ../../sources/papers/humannet_table1_benchmark_corpora.md
   - ../../sources/repos/humannet.md
+  - ../../sources/datasets/humannet-modelscope-ego.md
   - ../../sources/papers/egoverse_arxiv_2604_07607.md
 ---
 
-# HumanNet
+# HumanNet：百万小时人中心视频语料 / Human-Centric Video Learning at Million-Hour Scale
+
+## 一句话定义
+
+HumanNet 是面向具身学习的第一人称与第三人称混合人中心视频语料与策展管线，官方论文描述约一百万小时整体数据，不能将其全部视为第一人称 Ego 片段。
 
 **HumanNet** 是一套把 **互联网级人中心视频** 加工成「可喂给大规模模型」的具身向语料：强调 **第一人称与第三人称并存**、**物理相关行为** 的策展、以及 **手体几何 + 语言描述 + 活动语义** 等多层标注；论文在固定下游设定下对比了 **egocentric 人视频小时数** 与 **真机机器人数据小时数** 作为 VLA 类模型持续预训练来源的相对价值。
 
@@ -71,8 +81,24 @@ flowchart LR
 
 **robot-ready 子集（论文公开阈值）**：重定向误差约 **<15 mm** 且有效帧覆盖率 **>60%** 的片段被标为更适合跨本体运动监督；具体比例与字段以官方数据卡与仓库说明为准。
 
+## 工程实践：原始 Ego 与 Open-HumanWAM 的数据边界
+
+| 数据资产 | 官方一手证据 | 当前开放边界 |
+| --- | --- | --- |
+| HumanNet 整体 | 约 1,000,000 小时，含**第一与第三人称** | 官方 main README 的全量语料发布任务仍未完成 |
+| 用于 Open-HumanWAM 的 HumanNet 子集 | **90,275.25 h → 40,743.58 h**（筛选前→后） | 是 **选取的 Ego 子集**，不能倒推完整 HumanNet Ego 时长 |
+| Open-HumanWAM-50K | 五来源共 **104,289.41 h → 50,000 h** | HF 公开数据卡仍显示 gated、上传中（2026-11-10 快照） |
+| HumanNet ModelScope 原始 Ego | 用户提及“20 万小时” | [ModelScope 路径](https://www.modelscope.cn/datasets/DAGroup-PKU/HumanNet/tree/master/data) 数据卡/文件清单尚不能读取，**规模未核实** |
+
+**复现建议：** 优先根据[Open-HumanWAM](paper-open-humanwam.md) 已有的模型训练、推理与评测入口，使用其 [50K 数据归档](../../sources/datasets/open-humanwam-50k.md)中的 LeRobot v3 格式和 subset index；不能默认能下载 HumanNet 全量 1M 小时。数据条款与代码 Apache-2.0 不应混用。
+
+### 源码运行时序图
+
+**不适用（HumanNet 原始数据本体）：** 官方 main 文档仍将完整 HumanNet 数据下载及处理部署留作待发布事项，没有可核验的完整独立运行入口。上方 Mermaid 为论文管线抽象，不冒充运行源码。相关可运行训练/推理源码及其真实时序图见[Open-HumanWAM](paper-open-humanwam.md)独立分支。
+
 ## 常见误区或局限
 
+- **「百万小时」不是「百万小时 Ego」**：原论文包括一三人称；所谓“20 万小时原始 Ego”未得到可读取的数据卡证据。
 - **「百万小时」≠ 均匀覆盖**：论文强调长尾行为需要规模，但分布仍受互联网来源偏置与过滤规则影响；下游任务仍需匹配数据切片。
 - **不能替代安全与物理一致**：人视频可改善视觉–语义–动作接口的先验，但接触动力学、执行器与系统延迟仍需真机或高保真仿真闭环。
 - **许可与隐私**：一三人称室内场景可能涉及身份与空间隐私；工程使用需以发布方条款与本地合规审查为准。
@@ -89,12 +115,15 @@ flowchart LR
 - [HumanNet 论文 ingest 归档](../../sources/papers/humannet.md)
 - [HumanNet Table 1 代表性语料与官方入口索引](../../sources/papers/humannet_table1_benchmark_corpora.md)
 - [HumanNet 仓库与项目索引](../../sources/repos/humannet.md)
+- [ModelScope 原始 Ego 目录核验](../../sources/datasets/humannet-modelscope-ego.md)
+- [Open-HumanWAM 论文与配方](paper-open-humanwam.md)
 - Deng et al., *HumanNet: Scaling Human-centric Video Learning to One Million Hours* (arXiv:2605.06747)
 - 项目主页：<https://dagroup-pku.github.io/HumanNet/>
 - 代码仓库：<https://github.com/DAGroup-PKU/HumanNet/>
 
 ## 关联页面
 
+- [Open-HumanWAM（50K 数据与 WAM 模型）](paper-open-humanwam.md)
 - [HumanNet Table 1：代表性人类视频语料对照](../comparisons/humannet-table1-human-video-corpora.md)
 - [VLA](../methods/vla.md)
 - [Imitation Learning](../methods/imitation-learning.md)
