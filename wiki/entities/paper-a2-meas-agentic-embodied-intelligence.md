@@ -11,7 +11,7 @@ tags:
   - whole-body-manipulation
   - sjtu
 status: complete
-updated: 2026-11-10
+updated: 2026-11-11
 arxiv: "2611.09124"
 code: https://github.com/AutoLab-SAI-SJTU/A2MEAS
 original:
@@ -33,6 +33,8 @@ related:
   - ./paper-pi05-open-world-vla.md
 sources:
   - ../../sources/papers/a2-meas-agentic-embodied-intelligence_arxiv_2611_09124.md
+  - ../../sources/sites/a2-meas.md
+  - ../../sources/repos/a2meas.md
 summary: "A²-MEAS（arXiv:2611.09124，上海交通大学 AutoLab 与 Anyverse Dynamics）：用学习的纠错码把 MetaBrain 的恢复指令、空间证据、执行历史和基础动作提案送进动作专家的残差 Adapter，底座冻结、部署权重固定；BEHAVIOR 2026 公开集 100 任务完整系统 Q 0.6411、成功率 45.40%。"
 ---
 
@@ -101,19 +103,68 @@ flowchart TD
 5. **A²-WLA（§3）。** 运动感知历史编码（相邻帧对表征相减后做门控交叉注意力）、多视角潜空间世界模型（反向模型产生共享转移潜变量，部署时由骨干预测）、动作专家交替交叉注意当前与预测的未来上下文；训练用流匹配、FAST 预训练、知识隔离（见 [知识隔离](./paper-knowledge-insulation.md) 论文页）、Local Muon 优化器等（§3.4）。
 6. **运行预算（§2.6）。** 每次异常最多额外两个视角（各 5 秒）、三次物理重试，MetaBrain 请求 10 秒超时，整个恢复事件 60 秒上限；预算不会因重发问询而重置。
 
+## 源码运行时序图
+
+以下仅对应官方 `evaluation` 分支的公开 BEHAVIOR 运行链：`benchmarks/behavior/run.py`、`a2meas/behavior/server.py`、`a2meas/behavior/policy.py` 和 `a2meas/behavior/correction/controller.py`；不是论文完整系统的已验证复现。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as "评测命令"
+  participant Runner as "benchmarks.behavior.run"
+  participant Sim as "BEHAVIOR 仿真评测器"
+  participant Server as "behavior.server WebSocket"
+  participant Policy as "RouteManager / VLAPolicy"
+  participant Model as "ModelService / A2-WLA"
+  participant Corr as "CorrectionController"
+  User->>Runner: "运行公开集评测 --adapter"
+  Runner->>Server: "启动任务路由服务"
+  Runner->>Sim: "调度任务和实例"
+  loop "每个仿真控制步"
+    Sim->>Server: "MessagePack 观测"
+    Server->>Policy: "RouteManager.forward / route_worker / step"
+    alt "待执行 chunk 队列为空"
+      opt "配置的任务启用 Adapter"
+        Policy->>Corr: "predict(sample)"
+        Corr->>Model: "prepare_flow / predict_flow"
+        Model-->>Corr: "基础动作提案"
+        Corr->>Corr: "need/progress 审核、grounding、纠错上下文"
+        Corr->>Model: "predict_flow 注入 hidden_residual"
+        Model-->>Corr: "修正动作候选"
+        Corr->>Corr: "安全门控，不通过退回基础动作"
+        Corr-->>Policy: "纠错或基础 chunk"
+      end
+      opt "未启用 Adapter"
+        Policy->>Model: "predict(sample)"
+        Model-->>Policy: "基础动作 chunk"
+      end
+      Policy->>Policy: "滤波与填充动作队列"
+    end
+    Policy-->>Server: "弹出 23D float32 单步动作"
+    Server-->>Sim: "MessagePack action"
+  end
+  Sim-->>Runner: "episode 结果"
+  Runner-->>User: "汇总统计与 JSON"
+```
+
+复现入口：`runtime/model/bin/python -m benchmarks.behavior.run ... --adapter`（需先备齐权重、资产和硬件）。其中 `--adapter` 仅对 `configs/behavior/adapter.json` 所列任务生效。本次只核对源码调用链，未执行 GPU benchmark。
+
 ## 工程实践
 
 - **训练规模（§3.4.4、表 3）：** 基础三阶段各用 64 GPU；连续动作阶段全局 batch 2,048、500,000 步；纠错阶段 8 GPU、batch 256、6,000 步、学习率 1e-4 余弦衰减到 1e-5。
 - **吞吐优化（§4.1）：** 批量 JPEG 解码、Arrow 共享内存缓存、前缀计算共享（多个噪声-时间对共用一次骨干前向）、静态缓存与分桶减少 Triton 重编译、分片 Local Muon；8 GPU 达 427.1 samples/s，对比 π0.5 参考实现 106 samples/s。论文给出的是各自选 batch 的实现间对比，不是控制变量实验。
 - **服务部署（§4.2）：** 27B 的 MetaBrain 用 BF16、两卡张量并行；A²-WLA 单独一卡；仿真与策略通过同步 WebSocket 通信；30 Hz 下 32 步前缀约 1.07 秒。
 - **评测基础设施（§4.3、表 4）：** 8 张 Pro6000，每卡 3 个 worker 并发 24 个仿真 worker，1,000 episode 用 18.1 小时；对比的 159.4 小时是由估计的 1,275 小时串行耗时按理想线性缩放推算得到。
-- **复现注意：** 论文把「完整四输入纠错接口」（仿真，图 3）与「失败历史条件 Adapter」（真机，§5.4.2）区分为两个变体；隐藏集提交的是 2B 协调器版本；代码按论文是渐进开放，本站未能核实仓库现状。
+- **复现注意：** 论文把「完整四输入纠错接口」（仿真）与「失败历史条件 Adapter」（真机）区分为两个变体；隐藏集提交的是 2B 协调器版本。官方仓库现已发布推理/评测实现，但训练基础设施与完整纠错配置不能据此认定全部开源。
+- **官方开源状态（2026-11-11）：** 已核验 [项目页](../../sources/sites/a2-meas.md) 与 [源码入口](../../sources/repos/a2meas.md)。官方 `evaluation` 分支具备 BEHAVIOR 2026、RoboTwin 2.0 的推理和评测代码、一个 Adapter、权重获取指引；README 明确省略完整 Adapter 配置及部分任务执行策略（包括导航）。训练脚本与训练基础设施不在当前 README 的公开复现路径内。
+- **论文完整系统 ≠ 当前发布版：** 论文 BEHAVIOR 100 任务公开集 Q **0.6411**、成功率 **45.40%**；官方 README 的发布版复现表 Q **0.5287**、成功率 **32.40%**，RoboTwin 发布版平均 **95.05%**。本次没有运行 GPU 评测。
 
 ## 实验与评测
 
 | 设置 | 结果（论文章节） |
 |------|------------------|
 | BEHAVIOR 2026 公开集，100 任务 × 10 实例（表 5） | 单模型 0.4597 / 27.20%，多模型 0.6040 / 40.60%（406/1000），完整系统 0.6411 / 45.40%（454/1000），覆盖任务 70 / 80 / 88 |
+| 官方发布版复现表（README，2026-11-11） | BEHAVIOR **0.5287 / 32.40%**，RoboTwin **95.05%**；只含一个 Adapter，部分策略省略，不能视作论文完整系统复现 |
 | 官方隐藏集（§5.2.3） | A²-MEAS 0.4975 / 32.05%（2B 协调器），A²-WLA 0.4951 / 30.95% |
 | 50 任务子集（表 7） | 单模型 0.4522 / 25.60%，25 个特化 checkpoint 0.5755 / 37.40%，完整系统 0.6191 / 41.40%；RLC 0.2605 / 11.20% |
 | RoboTwin 2.0（表 8） | A²-WLA 93.98%，完整系统 95.05%，π0.5 79.75%，G0.5 93.25%，MotuBrain 95.95% |
@@ -142,7 +193,12 @@ flowchart TD
 
 ## 结论
 
-A²-MEAS 的主张是：长程能力主要靠动作模型自身学习，agent 层只在关键点做验证和纠错（§7）。证据上，底座 A²-WLA 在 BEHAVIOR 上的提升有较完整的消融支撑（表 11），纠错接口有固定策略的仿真消融（表 12–13、图 14）与两步真机恢复实验支撑。本页读者可以带走两点：评测完整成功率而非只看 Q-score；把失败历史接入动作生成而不是只在语言层重试。
+A²-MEAS 的主张是：长程能力主要靠动作模型自身学习，agent 层在关键点做验证和纠错；论文提供底座消融、固定策略纠错消融与两步真机恢复证据。
+
+- 评测同时报告 **Q-score** 与**完整任务成功率**，不可将 0.6411 读作 64.11% 完成率。
+- 复现时区分论文系统和官方**部分开源发布版**：BEHAVIOR 0.6411/45.40% 与 0.5287/32.40% 是不同配置。
+- 先复用 `evaluate.py`、BEHAVIOR/RoboTwin 评测入口和权重配置；不可假设已提供完整训练脚本。
+- 失败恢复需要保存真实执行的控制与历史，并验证恢复动作可执行性，避免原样重试。
 
 ## 局限与风险
 
@@ -162,7 +218,7 @@ A²-MEAS 的主张是：长程能力主要靠动作模型自身学习，agent �
 - 真机变体与完整接口不是同一模块（参数约 86 万、读失败历史，不含语言和空间证据四输入编码），所以真机结果不能直接当作完整纠错码接口的真机验证；论文也明确区分了二者。
 - 公开集结果来自「published self-report」类榜单与论文自述记录，且 A²-MEAS 公开集 0.6411 与隐藏集 0.4975 之间差距较大，公开集过拟合程度论文未量化（推测）。
 - 多模型配置依赖按任务选择 checkpoint 与执行配置（§6.2，选择在评测前固定），完整系统与其比较的收益里是否也含选择效应，论文以固定策略消融单独检验。
-- 本页代码仓库 README 未核实。该论文是系统与技术报告，不是单一算法论文。
+- **当前公开实现边界已核实：** 仓库只放出一个 Adapter 与部分任务策略，论文完整配置及训练栈未全部开放；官方 README BEHAVIOR 0.5287/32.40% 与论文 0.6411/45.40% 不同，不能宣称已独立复现论文成绩。该论文是系统与技术报告，不是单一算法论文。
 
 ## 关联页面
 - [具身智能小站 11-10：22 篇论文阅读坐标](../overview/embodied-station-2026-11-10-22-papers-technology-map.md)
@@ -185,6 +241,8 @@ A²-MEAS 的主张是：长程能力主要靠动作模型自身学习，agent �
 ## 参考来源
 
 - [a2-meas-agentic-embodied-intelligence_arxiv_2611_09124.md](../../sources/papers/a2-meas-agentic-embodied-intelligence_arxiv_2611_09124.md)
+- [项目主页核查归档](../../sources/sites/a2-meas.md)
+- [官方源码与运行入口归档](../../sources/repos/a2meas.md)
 - [arXiv:2611.09124](https://arxiv.org/abs/2611.09124)
 - [项目页](https://a2-meas.github.io/)
 
