@@ -44,6 +44,7 @@
 - [AI2-THOR](wiki/entities/ai2-thor.md) — AI2-THOR**（An Interactive 3D Environment for Visual AI）是艾伦人工智能研究所（AI2）于 2017 年推出的早期代表性 **交互式 3D 室内 `📅unknown` `[entity_page]`
 - [AirSim](wiki/entities/airsim.md) — AirSim**（microsoft/AirSim）是微软开源的 **高保真视觉仿真平台**，基于 **[Unreal `📅unknown` `[entity_page]`
 - [AlexNet](wiki/entities/alexnet.md) — AlexNet** 是 2012 ImageNet 竞赛冠军 CNN：更大深度/宽度、ReLU、Dropout 与 GPU 训练，证明端到端深度卷积特征可碾压传统手工特征。 `📅unknown` `[entity_page]`
+- [AI Agent Handbook（阿里云企业级智能体工程白皮书）](wiki/entities/aliyun-ai-agent-handbook.md) — AI Agent Handbook** 是阿里云（Alibaba Cloud）与社区共同维护的**企业级 Agent 工程实践指南**，围绕架构、构建、运行、治理、调优五个责任域，解释如何把模型能 `📅unknown` `[entity_page]`
 - [All Hands Up（RLWRLD 灵巧手档案）](wiki/entities/all-hands-up.md) — All Hands Up !** 是瑞沃世界（RLWRLD）维护的 **腕装模块化灵巧手公开档案**：在浏览器里加载各手 URDF、对照规格，并用仿真扫掠给出 **Kapandji 对掌分**；配 `📅unknown` `[entity_page]`
 - [Allegro Hand (灵巧手)](wiki/entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
 - [ALOHA 2（增强型低成本双臂遥操作硬件）](wiki/entities/aloha-2.md) — ALOHA 2** 是 Google DeepMind **ALOHA 2 Team** 在初代 ALOHA 上的硬件迭代：面向 **机队级大规模双臂演示采数**，同时 `📅unknown` `[entity_page]`
