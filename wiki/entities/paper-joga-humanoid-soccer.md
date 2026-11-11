@@ -24,6 +24,10 @@ project: https://joga.csail.mit.edu/
 
 **Joga（Joint Optimization of Gaze and Action，视线与动作联合优化）** 是 MIT Improbable AI Lab 的全栈人形足球系统：Unitree G1 使用机载相机和本体感知，在仿真强化学习策略中共同控制身体与主动视觉颈部，并通过少量真机数据对齐仿真误差。
 
+## 一句话定义
+
+Joga（Joint Optimization of Gaze and Action）是 MIT Improbable AI Lab 提出的 Unitree G1 人形足球系统：在仿真强化学习中联合优化主动视觉颈部与全身动作，并利用真实数据学习感知误差模型 PAM 与全身执行器残差 WB-UAN，以支持运球、传球、射门和接球技能。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
