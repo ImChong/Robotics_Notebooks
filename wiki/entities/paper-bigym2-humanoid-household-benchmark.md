@@ -32,6 +32,8 @@ sources:
 
 # BiGym 2.0：学习策略与编程智能体的人形家庭操作基准（Benchmarking Learned and Agent-Developed Policies for Humanoid Household Manipulation）
 
+## 一句话定义
+
 **BiGym 2.0**（[arXiv:2610.07594](https://arxiv.org/abs/2610.07594)，Imperial College London 的 Zhang、Zhu、Chen、Tuya、James；[代码](https://github.com/swirl-uk/BiGym2)）把 [原版 BiGym](./paper-notebook-bigym-a-demo-driven-mobile-bi-manual-manipulatio.md)（H1 浮动基座、40 任务）改造成 **Unitree G1 真正行走的家庭操作基准**：20 项任务、每项 60 条 VR 示范，统一评测 VLA 微调、模仿学习、示范强化学习和 **冷启动编码智能体**（LLM 写 `policy.py`）。注意它与 2024 年的 BiGym（arXiv:2407.07788）是不同论文，二者不合并。
 
 **机构：** 帝国理工学院计算机系（Department of Computing, Imperial College London）。论文 [arXiv:2610.07594v2](https://arxiv.org/html/2610.07594v2) 的正文 I–VII 与附录 A–G 已于 2026-11-11 通读复核；见 [论文原文归档](../../sources/papers/bigym2_arxiv_2610_07594.md)。
