@@ -11,6 +11,8 @@
 - **官方代码：** 页面未列论文作者维护的 GitHub、Hugging Face 或其他代码/数据下载入口，亦未标注即将开源（2026-10-22 核查）
 - **社区复现：** [Motphys/Uni-SuperMimic](../repos/supermimic-unilab.md) 与 [zita-ch/supermimic_vibed](../repos/supermimic-vibed.md) 均为独立复现，不是官方实现
 - **入库日期：** 2026-10-22
+- **再核日期：** 2026-11-11
+- **研究团队公开实现（网站未直接链出）：** [HybridRobotics/supermimic](../repos/supermimic-hybridrobotics.md)（包含训练及回放入口；与论文全部实验的逐项对应关系未验证）
 - **一句话说明：** 展示基于可微世界模型训练人形全身动作跟踪策略的方法、计算对比、仿真覆盖率与 Unitree G1 真机结果。
 
 ## 页面核查要点
@@ -32,3 +34,8 @@
 
 - [paper-supermimic](../../wiki/entities/paper-supermimic.md) — 论文与项目统一节点
 - [sources/papers/supermimic_arxiv_2610_28480.md](../papers/supermimic_arxiv_2610_28480.md) — 论文原始资料归档
+
+## 2026-11-11 补记：研究团队代码与 CoRL 视频入口
+
+- 发现 [HybridRobotics/supermimic](../repos/supermimic-hybridrobotics.md)，其 README 自称基于 mjlab 的 SuperTrack 实现，代码有训练、回放、两个 G1 task。此前“页面无官方代码链接”是页面本身的历史观测，**不代表现今没有公开实现**。
+- 官方 [CoRL 2026 Program](../sites/corl-2026-program.md) 作为直播/录像检索入口已入库；目前未核验到 SuperMimic 单场视频直链。
