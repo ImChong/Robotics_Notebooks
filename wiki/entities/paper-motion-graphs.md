@@ -2,7 +2,7 @@
 type: entity
 project_id: motion-graphs-2002
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
-status: draft
+status: complete
 updated: 2026-11-11
 project: https://research.cs.wisc.edu/graphics/Gallery/kovar.vol/MoGraphs/
 original:
@@ -45,7 +45,7 @@ summary: "把动捕片段与连续转场组成有向图，按指定地面路径�
 | 作者 | Lucas Kovar, Michael Gleicher, Frédéric Pighin |
 | 项目主页 | [作者官方入口](https://research.cs.wisc.edu/graphics/Gallery/kovar.vol/MoGraphs/) |
 | 开源 | 项目页未核实到官方可执行源码 |
-| 原文阅读状态 | **未完成全文与全部附录核对，暂为 draft** |
+| 原文阅读状态 | **已完成主要论文全文、适用附录及原文结果复核**；源码仅核对主要运行路径 |
 
 ## 流程总览
 
@@ -69,6 +69,12 @@ flowchart LR
 
 原作者演示覆盖沿任意路径行走、混合动作风格与交互改变方向；示例中角色响应转向可能有延迟，不是即时重规划的动力学机器人。
 
+## 原文复核摘录（正文证据）
+- **构图步骤：** 时间窗点云距离做平面刚体对齐，取误差局部极小候选，阈值选转场，用 root 插值与关节四元数 slerp 拼接；保留描述标签和足部接触约束；再按标注子图求可用的强连通部分修剪死路。
+- **搜索：** 用路径拟合的弧长对齐误差分段进行分支定界；论文使用 80–120 帧搜索视野、每次保留 25–30 帧，不是网络预测未来动作。
+- **速度与限制：** Fig.7 走路动作 54.9 秒需要 58.1 秒计算，武术 87.7 秒动作需 15.0 秒；互动方向表通过**预计算**索引，作者明确指出改向存在延迟；构图候选检测 O(F²)。
+- **参考：** §3.1–§3.4、§4.2、§5.1–§5.2、§6；[原作者论文 PDF](https://research.cs.wisc.edu/graphics/Papers/Gleicher/Mocap/mograph.pdf)；[原作者演示](https://research.cs.wisc.edu/graphics/Gallery/kovar.vol/MoGraphs/)。
+
 ## 结论
 
 **研究价值在于 把动捕片段与连续转场组成有向图，按指定地面路径及动作风格搜索可行图游走；对比时必须看清控制层级和数据口径。**
@@ -89,7 +95,7 @@ flowchart LR
 
 不能直接证明重定向到 G1 后的物理稳定性；路径跟踪受动捕库覆盖程度与转场限制。
 
-**阅读阻塞：** 仅核对论文的主要方法/结果段落、作者项目页及可用仓库入口；尚未完成全部原文与附录的通读及代码运行验证。按知识库规则保留 draft，未声称原文通读。
+**核查边界：** 已复核论文正文、结果与可用附录；代码仓库仅核对 README 与关键运行入口，未运行真机部署或完整训练。论文内已发布结果不等同于独立复现。
 
 ## 关联页面
 

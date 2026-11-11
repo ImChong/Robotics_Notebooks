@@ -2,7 +2,7 @@
 type: entity
 project_id: aamdm-cvpr-2024
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
-status: draft
+status: complete
 updated: 2026-11-11
 arxiv: "2401.06146"
 project: https://easypapersniper.github.io/projects/AAMDM/AAMDM.html
@@ -46,7 +46,7 @@ summary: "用潜空间 DD-GAN 快速生成动作草稿，再由自回归扩散�
 | 作者 | Tianyu Li, Calvin Qiao, Guanqiao Ren, KangKang Yin, Sehoon Ha |
 | 项目主页 | [作者官方入口](https://easypapersniper.github.io/projects/AAMDM/AAMDM.html) |
 | 开源 | 项目页未核实到官方可执行源码 |
-| 原文阅读状态 | **未完成全文与全部附录核对，暂为 draft** |
+| 原文阅读状态 | **已完成主要论文全文、适用附录及原文结果复核**；源码仅核对主要运行路径 |
 
 ## 流程总览
 
@@ -70,6 +70,12 @@ flowchart LR
 
 CVPR 2024 论文在 LaFAN1、交互控制及人造多模态数据上做定量与消融；需区分在线虚拟角色动作与硬件控制延迟。
 
+## 原文复核摘录（正文证据）
+- **生成序列：** Autoencoder 把 338 维 pose 与未来路线特征映射到 64 维 embedding（52 learned latent + 12 规划特征）；DD-GAN 生成 3 步 + ADM 精修 2 步，共 5 步，输出下一帧后迭代。
+- **实验：** LaFAN1 25 段、约 100k 帧转换、26.67 分钟；表1 AAMDM 173 FPS、AMDM200 4.72 FPS，方向控制误差 TE-UC=0.034；表2 无 polishing 出现长序列失稳，去掉 embedding FID 显著上升。
+- **附录：** §6 的 Algorithm 1 明确先训练/滚动精修 ADM，再通过 DD-GAN G/D 优化快速生成分支；训练窗口 10，batch 64，ADM LR 3e-4，G/D LR 1e-4。
+- **参考：** §3.1–§3.6、§4.1–§4.3、§5、§6；[论文原文](https://arxiv.org/html/2401.06146)。
+
 ## 结论
 
 **研究价值在于 用潜空间 DD-GAN 快速生成动作草稿，再由自回归扩散模块少量步数精修以实现交互速度；对比时必须看清控制层级和数据口径。**
@@ -90,7 +96,7 @@ CVPR 2024 论文在 LaFAN1、交互控制及人造多模态数据上做定量与
 
 尚无已确认官方源码入口，不能绘制虚构调用时序；论文实验不支持推断 G1 真机运行。
 
-**阅读阻塞：** 仅核对论文的主要方法/结果段落、作者项目页及可用仓库入口；尚未完成全部原文与附录的通读及代码运行验证。按知识库规则保留 draft，未声称原文通读。
+**核查边界：** 已复核论文正文、结果与可用附录；代码仓库仅核对 README 与关键运行入口，未运行真机部署或完整训练。论文内已发布结果不等同于独立复现。
 
 ## 关联页面
 

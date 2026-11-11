@@ -2,7 +2,7 @@
 type: entity
 project_id: kimodo-policy
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
-status: draft
+status: complete
 updated: 2026-11-11
 arxiv: "2611.11554"
 project: https://kimodo-policy.github.io/
@@ -48,7 +48,7 @@ summary: "冻结 Kimodo-G1 生成骨干，用视觉 ControlNet 与手部 HandNet
 | 作者 | Yunheng Wang et al. |
 | 项目主页 | [作者官方入口](https://kimodo-policy.github.io/) |
 | 开源 | [官方仓库](https://github.com/kimodo-policy/kimodo-policy)（依赖和模型文件另行准备） |
-| 原文阅读状态 | **未完成全文与全部附录核对，暂为 draft** |
+| 原文阅读状态 | **已完成主要论文全文、适用附录及原文结果复核**；源码仅核对主要运行路径 |
 
 ## 流程总览
 
@@ -81,7 +81,14 @@ KAM 的预训练对象是运动学序列，而不是视觉语义；冻结的 Kim
 
 ## 实验与评测
 
-论文报告 HumanoidArena 七任务联合训练平均 72.14%；模型 678M 参数、92M 可训练；真机八任务 60%（48/80），对照移除 419 小时交互数据预训练为 36/80。仿真三项 HOI 消融 18.33/31.67/51.67% 不能和七任务总分混算。
+论文报告 HumanoidArena 七任务多任务平均 72.14%，但单任务聚合预训练版本 67.14% 低于直接微调 69.76%；SIMPLE 八任务 75.83%（182/240）与 Ψ₀ 的 75.42% 接近。真机八任务 60%（48/80），不加 419h 交互预训练是 45%（36/80）。三项 HOI 消融 18.33/31.67/51.67% 与七任务汇总口径不同。
+
+## 原文复核摘录（正文证据）
+- **图像到动作：** 保留冻结 Kimodo-G1 Root/Body 与 DINOv3，使用视觉 ControlNet 两路融合；训练 HandNet 的手部梯度不回传给 Motion Backbone；训练损失 root/body/hand/transition 权重 4/1/1/0.2。
+- **时间与部署：** 30 Hz 历史 100 帧、预测 50 帧（1.67 秒）、执行 15 帧（0.5 秒）；SONIC 50 Hz。真机启用 RTC，仿真评测关 RTC；SIMPLE 可执行 15 或 50 帧（论文 §4.2）。
+- **结果区别：** HumanoidArena 七任务多任务 72.14%，但单任务直接微调 69.76%，额外预训练后 67.14%；SIMPLE 8 任务 75.83%（182/240）对照 Ψ0 75.42%（181/240）。真机 36/80→48/80（45%→60%）。三项 HOI 消融 18.33/31.67/51.67% 与七任务总分不同。
+- **局限：** §6 明确当前只适配 SONIC tracker，跨 tracker 未验证；独立 419h robot-interaction pretraining 的收益不可与 Kimodo-G1 运动骨干预训练混淆。
+- **参考：** §3–§6 含全部主要结果表与 Figure 14 消融；[论文原文](https://arxiv.org/html/2611.11554v1)。
 
 ## 结论
 
@@ -123,7 +130,7 @@ sequenceDiagram
 
 文中 1.67 秒预测、0.5 秒执行前缀只属于本策略配置；部署依赖视觉、机器人状态与 SONIC，预训练消融与真实交互数据来源不可混算。
 
-**阅读阻塞：** 仅核对论文的主要方法/结果段落、作者项目页及可用仓库入口；尚未完成全部原文与附录的通读及代码运行验证。按知识库规则保留 draft，未声称原文通读。
+**核查边界：** 已复核论文正文、结果与可用附录；代码仓库仅核对 README 与关键运行入口，未运行真机部署或完整训练。论文内已发布结果不等同于独立复现。
 
 ## 关联页面
 

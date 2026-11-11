@@ -2,7 +2,7 @@
 type: entity
 project_id: mdm-human-motion-diffusion
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
-status: draft
+status: complete
 updated: 2026-11-11
 arxiv: "2209.14916"
 project: https://guytevet.github.io/mdm-page/
@@ -48,7 +48,7 @@ Transformer 扩散模型直接预测去噪动作样本，允许位置、速度�
 | 作者 | Guy Tevet, Sigal Raab, Brian Gordon, Yonatan Shafir, Daniel Cohen-Or, Amit H. Bermano |
 | 项目主页 | [作者官方入口](https://guytevet.github.io/mdm-page/) |
 | 开源 | [官方仓库](https://github.com/GuyTevet/motion-diffusion-model)（依赖和模型文件另行准备） |
-| 原文阅读状态 | **未完成全文与全部附录核对，暂为 draft** |
+| 原文阅读状态 | **已完成主要论文全文、适用附录及原文结果复核**；源码仅核对主要运行路径 |
 
 ## 流程总览
 
@@ -71,6 +71,12 @@ flowchart LR
 ## 实验与评测
 
 原文在 HumanML3D、KIT-ML 等文本动作基准与动作类别条件任务上评测；官方仓库特别提示早期评价代码曾修复，不应跨版本直接抄旧表。
+
+## 原文复核摘录（正文证据）
+- **关键机制：** 不是逐帧自回归。MDM 在给定动作序列长度上对**整段动作**做扩散，Transformer 预测 clean motion x0，CFG 让文本或动作类条件与无条件采样共存。
+- **损失边界：** 位置、速度和足接触几何项在有 joint rotations/FK 的场景中使用；论文 §4.1 说明 HumanML3D/KIT 的显式表示**未再施加几何损失**，不可笼统说所有基准都用该项。
+- **结果：** HumanML3D FID=0.544；KIT FID=0.497（以 arXiv v2 表1/2 为准），早期论文一次约 1000 次前向、生成一段约 1 分钟，实时交互不在其评测结论中。
+- **参考：** §3、§4.1–§4.2、§5.1–§5.2、§6；[论文原文](https://arxiv.org/html/2209.14916)。
 
 ## 结论
 
@@ -108,7 +114,7 @@ sequenceDiagram
 
 文生运动学序列并不包含真实机器人的接触估计和控制反馈；原始 MDM 的单次整段生成不等价于 0.5 秒视觉闭环。
 
-**阅读阻塞：** 仅核对论文的主要方法/结果段落、作者项目页及可用仓库入口；尚未完成全部原文与附录的通读及代码运行验证。按知识库规则保留 draft，未声称原文通读。
+**核查边界：** 已复核论文正文、结果与可用附录；代码仓库仅核对 README 与关键运行入口，未运行真机部署或完整训练。论文内已发布结果不等同于独立复现。
 
 ## 关联页面
 

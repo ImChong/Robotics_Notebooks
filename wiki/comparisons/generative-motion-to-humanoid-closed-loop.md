@@ -1,8 +1,14 @@
 ---
 type: comparison
 tags: [humanoid, motion-generation, diffusion, closed-loop, loco-manipulation, motion-tracking, comparison]
-status: draft
+status: complete
 updated: 2026-11-11
+original:
+  - ../../sources/papers/motion_graphs_primary.md
+  - ../../sources/papers/mdm_human_motion_diffusion_primary.md
+  - ../../sources/papers/a_mdm_interactive_character_control_primary.md
+  - ../../sources/papers/aamdm_accelerated_motion_diffusion_primary.md
+  - ../../sources/papers/kimodo_policy_primary.md
 sources:
   - ../../sources/papers/kimodo_policy_primary.md
   - ../../sources/papers/aamdm_accelerated_motion_diffusion_primary.md
@@ -119,7 +125,14 @@ flowchart TD
 
 1. 以上项目的论文主结果跨动画、仿真和 G1 真机，不能按单一“生成速度”或“成功率”排名。
 2. 0.5 秒执行前缀不能直接套用到 ARDY；HALO 的跟踪器也不能随意等同 SONIC。
-3. 新增五份论文原始归档的全部正文、附录和源码仍需完整复核；本关联页保留 draft，不把跨系统的解释写成论文直接验证过的因果关系。
+3. 本关联页引用的五篇原文已按正文/适用附录复核；论文之外的项目仓库尚未完整运行复现，跨系统的解释是对照归纳而非已验证的统一软件架构。
+
+## 一手材料核验结论
+
+- [Motion Graphs](../entities/paper-motion-graphs.md) §5.2 的走路路径拟合需要 58.1 秒计算生成 54.9 秒动作，不能与神经网络实时帧数直接比较。
+- [MDM](../entities/paper-mdm-human-motion-diffusion.md) 原始整段扩散约 1 分钟/结果，和 [A-MDM](../entities/paper-a-mdm-interactive-character-control.md) 单帧 40 步约 21 毫秒、[AAMDM](../entities/paper-aamdm-accelerated-motion-diffusion.md) 173 FPS 的延迟口径不同。
+- [Kimodo-Policy](../entities/paper-kimodo-policy.md) 额外 419h 预训练在 HumanoidArena 单任务总体指标未增益（69.76%→67.14%），但多任务和真机增益明确；不应只报有利的聚合分数。
+- G1 的 **SONIC 50 Hz** 是低层跟踪频率，而非动作生成查询频率；不同系统的成功率也不是一个可合并的统一基准。
 
 ## 关联页面
 

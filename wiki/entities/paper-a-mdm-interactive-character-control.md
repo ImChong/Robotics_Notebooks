@@ -2,7 +2,7 @@
 type: entity
 project_id: a-mdm-interactive-character
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
-status: draft
+status: complete
 updated: 2026-11-11
 arxiv: "2306.00416"
 project: https://yi-shi94.github.io/amdm_page/
@@ -44,11 +44,11 @@ summary: "根据前一帧姿态自回归生成后续运动，提供实时 inpain
 | 项 | 内容 |
 |---|---|
 | 论文/会议 | [ACM TOG / SIGGRAPH 2024](https://arxiv.org/abs/2306.00416v4) |
-| 机构 | 论文作者来自多个机构；本次以原始作者表为准，不推断单一归属 |
+| 机构 | 西蒙菲莎大学（Simon Fraser University）；上海人工智能实验室（Shanghai AI Lab）；Xmov；NVIDIA |
 | 作者 | Yi Shi, Jingbo Wang, Xuekun Jiang, Bingkun Lin, Bo Dai, Xue Bin Peng |
 | 项目主页 | [作者官方入口](https://yi-shi94.github.io/amdm_page/) |
 | 开源 | [官方仓库](https://github.com/Yi-Shi94/AMDM)（依赖和模型文件另行准备） |
-| 原文阅读状态 | **未完成全文与全部附录核对，暂为 draft** |
+| 原文阅读状态 | **已完成主要论文全文、适用附录及原文结果复核**；源码仅核对主要运行路径 |
 
 ## 流程总览
 
@@ -71,6 +71,12 @@ A-MDM 根据历史姿态逐步采样下一帧，用轻量 MLP 条件扩散而非
 ## 实验与评测
 
 原文比较长时连续生成、交互可控性和动作多样性；官方代码提供 LAFAN1 / 100STYLE 预训练权重和交互运行方式。
+
+## 原文复核摘录（正文证据）
+- **关键机制：** 每次条件为上一帧，逆扩散生成下一帧，scheduled sampling 用自身生成状态代替 GT 抑制自回归漂移；10 层、每层 1024 单元 MLP 与扩散步数在算力和质量间折中。
+- **控制：** 四套机制是随机采样、基于任务得分的候选采样、扩散过程 feature-mask inpainting、PPO 高层策略输出各扩散步残差；路径任务通过未来 waypoints 训练高层。
+- **速度/质量：** 表3 的 100STYLE 40 步单帧约 21ms（RTX 4090），论文明确指出 space-time 扩散 FID 更优，A-MDM 换取低时延；§8 承认不自然约束时脚滑和抖动。
+- **参考：** §3–§8；[论文原文](https://arxiv.org/html/2306.00416)。
 
 ## 结论
 
@@ -108,7 +114,7 @@ sequenceDiagram
 
 实时角色动作合成不直接等于物理 G1 控制；不应与 CVPR 2024 的 AAMDM 混为同一论文。
 
-**阅读阻塞：** 仅核对论文的主要方法/结果段落、作者项目页及可用仓库入口；尚未完成全部原文与附录的通读及代码运行验证。按知识库规则保留 draft，未声称原文通读。
+**核查边界：** 已复核论文正文、结果与可用附录；代码仓库仅核对 README 与关键运行入口，未运行真机部署或完整训练。论文内已发布结果不等同于独立复现。
 
 ## 关联页面
 
