@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-11
 related:
   - ../entities/paper-grasp.md
   - ../entities/paper-mesa.md
@@ -11,6 +11,7 @@ related:
   - ../concepts/world-action-models.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
+  - ../../sources/papers/grasp_arxiv_2611_05754.md
 summary: "具身智能小站 2026-11-05 盘点：GRASP 梯度引导采样的接触丰富物理重定向（深读）、MESA 分项泛化评测、AIRoA-0 手持夹爪示范，以及灵巧操作、策略评测、世界模型与控制、移动导航与人机交互等 43 篇；43/43 独立节点（新建 28 / 复用 15）。"
 ---
 
@@ -33,7 +34,7 @@ summary: "具身智能小站 2026-11-05 盘点：GRASP 梯度引导采样的接�
 ## 为什么单独做这张地图
 
 - 公众号一次列出 43 篇（1 深读 + 2 跟进 + 40 扫读）、方向跨度大，需要横切面索引；每篇只保留一个判断，细节在各节点。
-- 节点内的数字为公众号转述，未核验原文表格；开源结论为入库日核查结果，见各节点「为什么重要」。
+- 节点内的数字为公众号转述，未核验原文表格（GRASP 已通读原文，例外）；开源结论为入库日核查结果，见各节点「为什么重要」。
 
 ## 流程总览
 
@@ -119,6 +120,7 @@ flowchart TB
 ## 参考来源
 
 - [wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md](../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md)
+- [grasp_arxiv_2611_05754.md](../../sources/papers/grasp_arxiv_2611_05754.md) — GRASP 原文通读：OakInk2 Sharpa 双手 1,352 条示范，1,024 粒子成功率 92.8%、2,000 粒子 94.2%（成功率来自仿真；arXiv:2611.05754）
 
 ## 推荐继续阅读
 

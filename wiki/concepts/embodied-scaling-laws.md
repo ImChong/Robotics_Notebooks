@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-10-13
+updated: 2026-11-11
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
@@ -22,6 +22,7 @@ related:
   - ../concepts/world-action-models.md
   - ../methods/auto-labeling-pipelines.md
   - ../formalizations/foundation-policy-alignment.md
+  - ../entities/humannet.md
 sources:
   - ../../sources/blogs/sutton_bitter_lesson.md
   - ../../sources/blogs/generalist_gen15_one_shot.md
@@ -34,6 +35,7 @@ sources:
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/blogs/perceptron_isaac_05.md
   - ../../sources/sites/naturewill-natura-1.md
+  - ../../sources/papers/humannet.md
 summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模型中数据规模、模型参数量与下游任务泛化能力之间的幂律关系；含 EgoScale（~20k h）、Dyna-2（1M h 人→机跨具身）与 Perceptron Isaac 0.5（1M h 视频置换 teleop）等案例。"
 ---
 
@@ -96,6 +98,7 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [Light-O1](../entities/light-o1.md) — 人类动作 pretraining Transfer Scaling Law（Nymeria / HIW-500 / LightBot）
 - [Kaplan Scaling Laws](../entities/paper-scaling-laws-neural-language-models.md) — LM 幂律方法论原典
 - [Nymeria Dataset](../entities/paper-nymeria.md) — egocentric 人类 motion scaling 探针
+- [HumanNet](../entities/humannet.md) — 固定 LingBot-VLA 与下游后训练，仅换持续预训练数据：约 1000 h egocentric 人视频在验证损失上逼近或部分优于约 100 h 真机数据（arXiv:2605.06747）
 - [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) — 开源 1M h 通用视频置换 teleop（210×；权重入库日未齐）
 - [Natura-1（Nature Will）](../entities/naturewill-natura-1.md) — 百万小时人类经验与灵巧手后训练的闭源研究预览
 - [World Action Models](./world-action-models.md) — Dyna-2 所属 Joint WAM 族谱
@@ -118,3 +121,4 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [GEN-1 千手博客归档](../../sources/blogs/generalist_thousand_hands.md) — 多末端多样性 scaling 产业样本
 - [Isaac 0.5 博客归档](../../sources/blogs/perceptron_isaac_05.md) — 无动作视频小时置换 teleop 的开源对照
 - [Natura-1 官方项目页归档](../../sources/sites/naturewill-natura-1.md) — 百万小时人类经验与灵巧手后训练的厂商研究预览
+- [HumanNet 论文摘录（arXiv:2605.06747）](../../sources/papers/humannet.md) — 人视频 vs 真机小时的受控预训练对照

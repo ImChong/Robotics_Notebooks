@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-11
 summary: "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
 sources:
   - ../../sources/papers/imitation_learning.md
@@ -217,7 +217,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md) — G1 人形双臂交接等接触丰富任务的部署期闭环改进（53%→96%）
 - [AutoIntervene](../entities/paper-autointervene.md) — action-chunking 双臂策略的校准自动接管与针对性干预数据（arXiv:2608.07065）
 - [NestDex](../entities/paper-nestdex.md) — 双臂 Toast / Binder 用 clutch copilot 采长程灵巧示范（arXiv:2608.13362）
-- [DexRoam](../entities/paper-dexroam-mobile-bimanual-manipulation.md) — 免外置追踪器的人类全身示教，经三阶段对齐后改善移动双臂 VLA 真机表现
+- [DexRoam](../entities/paper-dexroam-mobile-bimanual-manipulation.md) — Quest 3 + 头戴 ZED Mini 采集第一视角全身示教（无需环境相机/外部标记），经具身、动作语义、任务进度三阶段对齐后与机器人示教联合训练；五项真机任务平均 SR：GR00T N1.7 29%→56%、π0.5 32%→57%（arXiv:2609.35761）
 - [M3](../entities/paper-m3-modality-masking.md) — 训练期模态遮蔽稳住查询式双臂 VLA（arXiv:2608.22419；未开源）
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真双臂 Piper 厨房 PnP：EnvHub 闭环、cuRobo 可达性闸门与自过滤数据飞轮
 - [SAI](../entities/paper-sai-sequential-asymmetric-imitation.md) — 双移动操作臂物理耦合：单遥操作三阶段模仿课程（arXiv:2606.16490；代码待发布）
