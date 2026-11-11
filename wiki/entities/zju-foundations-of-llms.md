@@ -2,7 +2,7 @@
 type: entity
 project_id: zju-foundations-of-llms
 tags: [llm, textbook, language-model, transformer, prompt-engineering, peft, model-editing, rag]
-status: draft
+status: complete
 updated: 2026-11-11
 code: https://github.com/ZJU-LLMs/Foundations-of-LLMs
 related:
@@ -22,7 +22,7 @@ summary: "浙江大学 DAILY Lab《大模型基础》（Foundations of Large Lan
 
 **教材：** 毛玉仁、高云君等著，浙江大学 DAILY Lab。**官方资源：** [ZJU-LLMs/Foundations-of-LLMs](https://github.com/ZJU-LLMs/Foundations-of-LLMs) · [中文完整 PDF](https://github.com/ZJU-LLMs/Foundations-of-LLMs/blob/main/%E3%80%8A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80%E3%80%8B%E6%95%99%E6%9D%90/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80%20%E5%AE%8C%E6%95%B4%E7%89%88.pdf) · [英文 PDF](https://github.com/ZJU-LLMs/Foundations-of-LLMs/blob/main/Foundations_of_LLMs%28English_version%29/Foundation_of_LLMs.pdf)
 
-> **核验状态：** 官方 README 已完整阅读，教材原文已核对目录和六章部分内容；**PDF 全文尚未逐页通读**，故此页保留 draft，不把抽读当作通读。
+> **核验范围：** 已读官方 README 及中文教材六章可检索全文，逐节整理原始章节、公式与案例（见[阅读归档](../../sources/books/zju-foundations-of-llms.md)）。**版本边界：** 使用与官方书名、署名、六章结构一致的 PDF 可检索镜像；尚未证明镜像与 GitHub `main` 的 PDF 二进制逐字相同，也未逐章校对英文版。
 
 ## 一句话定义
 
@@ -63,6 +63,15 @@ summary: "浙江大学 DAILY Lab《大模型基础》（Foundations of Large Lan
 - **模型编辑 vs RAG：** 前者改动模型内部知识表示，后者通过外部检索补充上下文；两者可组合，但不等价。
 - **教材 vs 工程实现：** 有六章 PDF 和 Paper List，不代表提供训练、推理或机器人部署的配套实现。
 
+### 逐章校验中易混淆的事实
+
+- **第 1 章：** n-gram 的马尔可夫近似与 RNN/Transformer 的条件建模不同；PPL 衡量给定文本概率，BLEU/ROUGE 是参考答案重叠指标。
+- **第 2 章：** Encoder-only、Encoder–Decoder 与 Decoder-only 的注意力可见域不同；SSM 的递归表示与卷积表示对应不同的计算权衡。
+- **第 3 章：** Zero-shot / few-shot 属于样例配置，CoT 属于显式推理步骤提示；原文明确指出简单任务可能不从 CoT 获益。
+- **第 4 章：** PEFT 的参数附加、参数选择、低秩适配是不同类别；LoRA 的秩与模块位置是需调参的工程选择。
+- **第 5 章：** 模型编辑不能仅报告目标准确率，还须考虑泛化、迁移、局部性和效率；ROME 与 T-Patcher 属于不同路径。
+- **第 6 章：** RAG 的黑/白盒分类取决于语言模型参数是否参与微调；检索器训练、文档检索、答案增强分别是可独立优化的步骤。
+
 ## 流程总览（依据教材目录组织的学习依赖）
 
 ```mermaid
@@ -96,10 +105,10 @@ flowchart TD
 
 ## 局限与风险
 
-1. **原文阅读尚未完结：** 已核对官方 README 和教材部分正文，但完整 PDF 的所有推导、表格与图例尚需逐页研读；本页不包含未经核实的实验结论。
+1. **PDF 版本差异：** 中文六章正文已按镜像可检索全文复核，官方仓库当前 PDF 与镜像的二进制同一性及图版像素未独立校验；原文引用及目录以官方仓库为准。
 2. **时间敏感性：** 仓库声明“月度更新”的意图，不意味着当前版本按月更新；技术进展需以各章 Paper List 和被引用论文的版本为准。
 3. **工程复现边界：** 主要是学习材料，不能依赖它直接完成训练、推理或机器人部署。
-4. **语言版本：** 英文 PDF 已确认存在，尚未比较其与中文完整 PDF 的章节/修订一致性。
+4. **语言版本：** 英文 PDF 已确认存在，但尚未逐段比较其与中文完整 PDF 的修订差异。
 5. **发布日期核查：** 官方仓库创建于 2024-06-30；“2024 年 8 月首次开源”缺乏仓库历史支持。
 
 ## 关联页面
