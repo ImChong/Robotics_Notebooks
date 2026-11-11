@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-10
 venue: "NeurIPS 2024 Datasets and Benchmarks Track"
 summary: "RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF / 项目页为准。"
 related:
@@ -89,6 +89,7 @@ RCL Awesome WAM 清单收录（Benchmarks & simulators）；细节以原文 PDF 
 - 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
 - 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
 - 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- 下游基准：[PlanContext](paper-plancontext.md) — 在 NAVSIM navtest 场景上固定观测、切换导航意图，评测上下文驾驶决策（arXiv:2611.03067）
 
 ## 参考来源
 

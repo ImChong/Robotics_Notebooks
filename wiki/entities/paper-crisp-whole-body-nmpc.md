@@ -8,7 +8,7 @@ tags:
   - whole-body-control
   - bimanual
 status: complete
-updated: 2026-11-09
+updated: 2026-11-10
 arxiv: "2611.07268"
 related:
   - ../methods/nonlinear-model-predictive-control.md
@@ -35,7 +35,7 @@ summary: "CRISP（arXiv:2611.07268，UTEP）：把人形拆成躯干 SRB 与浮�
 
 # CRISP：约束解析的子系统交互 · 预测式全身协同（arXiv:2611.07268）
 
-**CRISP**（*Constraint-Resolved Interactions between Subsystems for Predictive Whole-Body Cooperation*，[arXiv:2611.07268](https://arxiv.org/abs/2611.07268)，v1 2026-11-05，cs.RO）。作者 Dario Valenzuela、Jeeseop Kim，机构为 University of Texas at El Paso（UTEP）航空航天与机械工程系（论文首页脚注）。这是一篇**基于模型的 NMPC 控制论文，不是强化学习**。注意它与 [paper-crisp](./paper-crisp.md)（接触引导 real2sim，arXiv:2609.21761）只是缩写撞名。
+**CRISP**（*Constraint-Resolved Interactions between Subsystems for Predictive Whole-Body Cooperation*，[arXiv:2611.07268](https://arxiv.org/abs/2611.07268)，v1 2026-11-05，cs.RO）。作者 Dario Valenzuela、Jeeseop Kim，机构为 University of Texas at El Paso（UTEP）航空航天与机械工程系（论文首页脚注）。这是一篇**基于模型的 NMPC 控制论文，不是强化学习**。注意它与 [paper-crisp](./paper-crisp.md)（接触丰富仿真平台，arXiv:2609.21761）只是缩写撞名。
 
 ## 一句话定义
 
@@ -163,7 +163,7 @@ flowchart TD
 - [Unitree G1](./unitree-g1.md)
 - [MuJoCo](./mujoco.md)
 - [MPC 与 RL 对比](../comparisons/mpc-vs-rl.md)
-- [同名 CRISP（real2sim，非同一篇）](./paper-crisp.md)
+- [同名 CRISP（接触丰富仿真平台，非同一篇）](./paper-crisp.md)
 
 ## 参考来源
 

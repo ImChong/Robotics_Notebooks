@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, vla, action-chunking, latency, transformers, deployment]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-10
 summary: "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配；机制上可拆为延迟观测条件化与隐式集成，部署不必等于播放整段 chunk；长 open-loop 执行多因短上下文模仿非马尔可夫专家。"
 sources:
   - ../../sources/papers/discrete_forcing_arxiv_2609_39526.md
@@ -216,7 +216,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 
 ## 局限
 
-- 原文自述：ACT 未学会拆糖纸（10 次 0 成功）与桌面平放小号密封袋；Thread Velcro 仅 20% 成功率；硬件侧做不了多指协同、大力矩、需指甲的任务。
+- 原文自述：ACT 未学会拆糖纸（10 次 0 成功）与桌面平放小号密封袋；Thread Velcro「插入」子步骤仅 20%（原文 Table II 按子步骤读值，非整任务成功率）；硬件侧做不了多指协同、大力矩、需指甲的任务。
 - chunk 过长会削弱反馈、环境变化后整段动作过期（见上文「Chunk 长度不能盲目变大」）；其余局限见「常见误区」。
 
 ## 继续阅读

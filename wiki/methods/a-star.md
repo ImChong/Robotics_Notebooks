@@ -2,7 +2,7 @@
 type: method
 tags: [path-planning, search, navigation, graph-search, mobile-robot]
 status: complete
-updated: 2026-10-14
+updated: 2026-11-10
 related:
   - ./rrt.md
   - ./dwa.md
@@ -142,6 +142,7 @@ flowchart TB
 - [Micromouse](../concepts/micromouse.md) — 迷宫格图上 Flood Fill / A\* 族的竞赛压缩场景
 - [Off-Road Global Nav](../entities/paper-offroad-global-nav.md) — 开销地理学习 costmap 后仍用 A\* 做公里级越野 LRP
 - [Terrain-Aware UGV DEM + LiDAR 路径规划](../entities/paper-terrain-aware-ugv-dem-local-planning.md) — 用 SRTM DEM/A\* 提供大范围路线，再用 LiDAR 处理源地图分辨率以下的局部避障与修正。
+- [TPS-A\*](../entities/paper-tps-astar.md) — SE(2) 加权 A\* 以 PTG 轨迹为边，在轨迹参数空间做经证明保守的碰撞检查，适配任意形状脚印（arXiv:2611.09210；规划库已开源）
 
 ## 参考来源
 

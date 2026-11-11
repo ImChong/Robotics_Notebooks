@@ -10,7 +10,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-04
+updated: 2026-11-10
 arxiv: '2212.06817'
 code: https://github.com/google-research/robotics_transformer
 related:

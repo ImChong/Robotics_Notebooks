@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-10
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
@@ -359,6 +359,7 @@ flowchart TD
 - **HuRo（RLWRLD / 延世大学，CoRL 2026，arXiv:2609.10706）**：**10 阶段机器人化流水线** 把五源 egocentric 人视频变成 **联合 robot-aligned 观测+重定向动作**（630K episode / 142M 帧）；ALLEX 上 VLA 预训练 scaling 使 Overall **51.5→80.3%**、**OOD 34.9→72.2%**；**流水线 Apache-2.0 已开源**，预构建 HuRo 语料与 VLA 权重待发布（见 [HuRo](../entities/paper-huro.md)）
 - **EgoScale**：在 **>20k h** 带 **腕 + 重定向高 DoF 手** 标签的 egocentric 人视频上预训练 **流式 VLA**，给出 **人数据规模 ↔ 验证损失（log-linear）↔ 真机灵巧后训练表现** 的实证链条，并以 **小规模视点对齐的人–机 mid-training** 承接 embodiment gap（见 [EgoScale](./egoscale.md)）
 - **EgoSteer**：用 **EgoSmith** 策展 **9.6K h** 全标注 egocentric 语料 + **统一 Robot Stack HITL DAgger** + **训练-only DINOv3 世界专家** 的 flow-VLA；**40+** 自由语言双灵巧任务约 **75%** SR，双具身长程 few-shot **75+%**；**代码与权重已开源**（全量处理后数据待发）（见 [EgoSteer](../entities/paper-egosteer.md)，arXiv:2607.09701）
+- **EgoWild2Dex（港大 / Kinetix AI，arXiv:2609.23755）**：**538.9 h** 野外 egocentric 数据预训练 + **GeoFormer** 二维单应把 ego 视角对齐机器人相机 + 三阶段人–机渐进训练（共享 H=50 flow-matching 动作块）；双臂灵巧手三项长程真机共 **29/30**，每任务 robot 示范 <1 h 但另需任务专用人类 ego 与手套数据；data/models/code 待发布（见 [EgoWild2Dex](../entities/paper-egowild2dex.md)）
 - **Psi-R2.5**（PsiBot，2026-09 博客）：**[强 pair data](../concepts/strong-pair-data.md)** + Psi-W0 蒸馏转换器；QwenVL3.5-4B 规划 + Wan2.2-IT2V-5B 轨迹；ICL 与 HIL 后训练；**未开源**（见 [Psi-R2.5](../entities/psibot-r25.md)）
 - **T-Rex**：在 EgoScale 同族 **人视频预训练** 之上，用 **100 h 触觉同步 play mid-training** 与 **变频率 MoT + 异步触觉 flow matching** 实现 **毫秒级触觉反应**；**12 项双手灵巧真机任务** 宏平均 **65%**，且 **朴素拼接触觉会损害 π₀.₅**（见 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）
 - **UCAG-P（小米具身智能 × 澳门大学，arXiv:2608.26058）**：共享 **相机系腕/抓取锚点几何**，翻译器再出 80 维稀疏命令；人手当独立 embodiment 直接监督；单 checkpoint LIBERO **98.3%** / RoboTwin **88.7%/89.2%** / GR-1 **62.0%** / LIBERO-Plus 零样本 **82.0%**；**代码 coming soon**（见 [UCAG-P](../entities/paper-ucag-p.md)）

@@ -10,7 +10,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-05
+updated: 2026-11-10
 arxiv: '2303.04137'
 code: https://github.com/real-stanford/diffusion_policy
 related:

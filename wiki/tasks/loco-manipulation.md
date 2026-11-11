@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-11-07
+updated: 2026-11-10
 original:
   - ../../sources/papers/humanoid_loco_manipulation_survey_reading_arxiv_2501_02116.md
 sources:
@@ -401,6 +401,7 @@ flowchart TD
 对应技术路线的前两组：分层接口、接触规划、低层执行栈与接口诊断。
 
 - [SMPC-to-RL（论文实体）](../entities/paper-smpc2rl-loco-manipulation.md) — SMPC 仿真专家 + 稀疏 offline-to-online RL；Spot/G1 真机（arXiv:2608.12063；截至 2026-08-17 未开源）
+- [ReCo（论文实体）](../entities/paper-reco.md) — 响应整形四足 RL 策略 + 闭环响应辨识，由策略感知 MPC 联合规划底盘命令与机械臂速度（Go2+ARX X5；arXiv:2610.01612；未核验到官方代码）
 - [AGILE（论文实体）](../entities/paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab 人形 RL 工作流：核验→训练→评测→描述符部署（G1/T1；arXiv:2603.20147）
 - [LAC](../entities/paper-lac.md) — G1 上身线+角柔顺；拧腕/托物可读 \(K_\theta\)（部分开源）
 - [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md) — HTD 开源下肢+腰控制器（Isaac Lab，G1 零样本）

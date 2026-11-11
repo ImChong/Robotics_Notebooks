@@ -41,4 +41,4 @@
 ## 对 wiki 的映射
 
 - [paper-crisp-whole-body-nmpc](../../wiki/entities/paper-crisp-whole-body-nmpc.md)
-- 注意：与 [paper-crisp](../../wiki/entities/paper-crisp.md)（CRISP：接触引导 real2sim，arXiv:2609.21761）同名但不是同一篇。
+- 注意：与 [paper-crisp](../../wiki/entities/paper-crisp.md)（CRISP：接触丰富仿真平台，统一 mesh/SDF 几何 + CANAL/SubADMM 接触求解，arXiv:2609.21761）同名但不是同一篇。
