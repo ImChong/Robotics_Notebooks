@@ -116,6 +116,23 @@ flowchart TD
 - 前四点基本符合，但需补充：「无需相对位姿」只指推理；训练真值需要位姿（§III-B），主实验也用里程计先验。「图像」是激光距离图像，不是相机图像。四种输入不是必需的（Table V，Ford 仅用几何）。
 - 「环境突变时准确率降低」在论文中没有出处，属于综述作者的推断；论文最接近的证据是未见环境上 F1 略低（Table II）与低重叠偏航误差大（Fig. 8）。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [Scan Context](./paper-scan-context.md) | 手工鸟瞰描述子（方位角 × 半径最大高度），列平移比较给出偏航初值 | 不需训练；OverlapNet 学习式地直接回归重叠率与偏航，并在 Ford 未见数据上评测泛化（Table II） |
+| [SuMa++](./paper-suma-plus-plus.md) | 在 SuMa 上用 RangeNet++ 语义滤除动态面元、加权 ICP | 同组同框架；SuMa++ 改进的是里程计 / 建图，OverlapNet 替换的是 SuMa 的回环候选选择（§III-E） |
+| [OverlapTransformer](./paper-overlaptransformer.md) | 同组后续：Transformer + NetVLAD 的偏航不变全局描述子 | OT 用单一描述子快速检索（3.28 + 0.44 ms），OverlapNet 需成对过网络、全部候选最坏 630 ms，但额外给出偏航角 |
+
+## 结论
+
+**OverlapNet 把回环检测重写成「预测两帧距离图像的重叠率与相对偏航」，让候选打分与 ICP 初值来自同一个网络。**
+
+1. KITTI 00 上 AUC 0.87 / F1 0.88，略优于 M2DP、Histogram；加里程计先验后升至 0.96 / 0.96（Table II/III）。
+2. 偏航均值误差 1.13 度，远小于 OREOS 的 12.67 度；法向量、强度、语义通道主要改善偏航而非检测 AUC（Table IV/V）。
+3. 只用 KITTI 训练、仅几何输入时在 Ford 上 F1 0.84，泛化可用但略低于 M2DP（§IV-A）。
+4. 局限：只验证 64 线车载雷达两条测试序列，最好结果依赖位姿先验，成对推理在候选多时较慢，季节 / 环境变化未测（§IV-G、§V）。
+
 ## 关联页面
 
 - [激光雷达感知](../concepts/lidar-sensing.md)
