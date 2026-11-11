@@ -311,6 +311,13 @@ op: ingest
 - **项目：** <https://robolineage.github.io/>
 - **代码：** <https://github.com/robolineage/robolineage>
 
+## [2026-11-11] ingest | SeeBFM：接入地形扫描后训练与双深度相机视觉感知路线
+
+- **意图：** 以作者项目页、官方完整演示脚本/字幕和浏览器源代码为一手材料，将 SeeBFM 纳入 BFM 技术谱系；记录高度扫描条件化、地形无关 backward 提示、独立深度学生估计器、仿真穿越率与失败模式。
+- **开源结论：** `capfab/seebfm-media` 公开的是项目网页、视频及预录仿真动作的 3D 回放，并非控制策略训练、推理或 G1 部署源码。
+- **关键边界：** 作者主页标注 under review，尚未取得完整论文/附录；现有官方演示为仿真，G1 搭载深度学生的真实测试待完成。因此知识节点保持 `draft`、原文通读标为未完成，PR 保持 Draft。
+- **关键页：** `wiki/entities/paper-seebfm.md`，`sources/papers/seebfm_preprint_2026.md`；从行为基础模型概念页增加交叉引用。
+
 ## [2026-11-11] ingest | sources/sites/qiayuan-liao-homepage.md — 通读 Qiayuan Liao 学术主页并升级研究索引
 
 - **意图：** 复用既有 `wiki/entities/qiayuan-liao.md`，把六项研究、五个软件项目映射至已有实体而不重复建页。

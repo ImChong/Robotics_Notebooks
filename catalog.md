@@ -5437,6 +5437,7 @@
 - [SE(2) Navigation Mesh](wiki/entities/paper-se2-navigation-mesh.md) — SE(2) Navigation Mesh**（arXiv:2607.01454，Robotic Systems Lab, ETH Zürich）重新定义全局导航地图：经典 NavMesh 用圆柱 `📅unknown` `[entity_page]`
 - [SE(3) 切空间浮动基轨迹优化](wiki/entities/paper-se3-tangent-to.md) — SE(3) Tangent TO**（论文 *A Comparative Study of Floating-Base Space Parameterizations for Agile Whol `📅unknown` `[entity_page]`
 - [SEAR：机器人智能体到底有没有在学习](wiki/entities/paper-sear.md) — SEAR 是一个框架加基准：让语言模型智能体以写控制代码、在控制回路中实时行动、或微调 VLA 三种方式改进机器人行为，并用对照组把「保留下来的经验」与「重复尝试、熟悉任务、特权状态、更大预算、运 `📅unknown` `[entity_page]`
+- [SeeBFM：能“看”的行为基础模型 / Behavior Foundation Model That Sees](wiki/entities/paper-seebfm.md) — 项目身份：** SeeBFM（2026，作者主页标记 *under review*）；作者 Thanh Ly、Truong-Duy Dang、Hung Nguyen、Duy M. H. Nguye `📅unknown` `[entity_page]`
 - [SEED-UMI（arXiv:2609.11753）](wiki/entities/paper-seed-umi.md) — SEED-UMI**（[SEED-UMI: Sharing the Exoskeleton between human and robot for onE-to-one Dexterous dem `📅unknown` `[entity_page]`
 - [Seeker：从动作里长出视觉注意力](wiki/entities/paper-seeker.md) — Seeker**（*Attention from Action, for Action: Emergent Visual Bottlenecks for Policy Learning*，[arX `📅unknown` `[entity_page]`
 - [Seen2Scene：Visibility-Guided Flow 真实 3D 场景补全](wiki/entities/paper-seen2scene.md) — Seen2Scene**（*Completing Realistic 3D Scenes with Visibility-Guided Flow*；[arXiv:2603.28548](https `📅unknown` `[entity_page]`
