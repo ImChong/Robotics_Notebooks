@@ -336,6 +336,8 @@ op: ingest
 - 从既有 Agent 记忆 wiki 建反向链接；未改动 catalog/log/export 派生文件。
 - 论文数字属作者报告，未进行 CUDA benchmark 与实机复现；项目主页正文抓取未完成，具体边界记录在 sources/sites。
 
+## [2026-11-11] ingest | 具身智能小站 11-11（53 篇）与 43 个论文节点
+
 ## [2026-11-11] ingest | sources/sites/huawei-harmonyos-developer-doc-center.md — 收录华为 HarmonyOS 5.0+ 开发者文档中心
 
 - 将官方文档入口、开发者知识 MCP、llms.txt 两级索引编译为单个双语实体节点；附 Mermaid 文档获取流程。
