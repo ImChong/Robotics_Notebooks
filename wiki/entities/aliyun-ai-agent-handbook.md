@@ -80,8 +80,8 @@ flowchart TB
   Data --> Gold["业务复核的黄金数据集"]
   Gold --> Eval["实验与回归：效果 / 延迟 / 成本"]
   Eval --> Fix{"问题归因"}
-  Fix -->|"Harness / Context / Tool"| Task
-  Fix -->|"模型能力"| ModelTune["模型侧调优"]
+  Fix -->|Harness或工具问题| Task
+  Fix -->|模型能力缺口| ModelTune["模型侧调优"]
   ModelTune --> Eval
 ```
 
