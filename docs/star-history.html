@@ -25,6 +25,7 @@
   <script>if (!window.Plotly) document.write('<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"><\/script>');</script>
   <script src="graph-tooltip.js"></script>
   <script src="depth-filters.js"></script>
+  <script src="wiki-type-labels.js"></script>
   <style>
     /* 七个视图在窄屏换行，并与副标题拉开距离 */
     #trend-tabs { flex-wrap: wrap; }
@@ -52,6 +53,9 @@
     .trend-range { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 8px; }
     .trend-range[hidden] { display: none; }
     .trend-range-hint { color: var(--text-muted); font-size: .8rem; margin-left: 4px; }
+    @media (max-width: 640px) {
+      #trend-stack .trend-range-hint { flex-basis: 100%; margin-left: 0; }
+    }
     /* 时间线的公司 / 实验室名是 Plotly 文本链接；.main-svg 默认 pointer-events:none，需单独放开才能点击 */
     #trend-chart .main-svg a { pointer-events: all; cursor: pointer; }
   </style>
@@ -81,6 +85,9 @@
         </div>
         <p class="section-subtitle" id="trend-description">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区、类型、开源、健康度与纵深节点数取自当前知识图谱，公司 / 实验室节点数按各自技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
+        <div class="trend-range" id="trend-stack" role="group" aria-label="堆叠依据" hidden>
+          <span class="trend-range-hint">堆叠依据</span>
+        </div>
         <ul class="trend-legend" id="trend-legend" aria-label="社区配色" hidden></ul>
         <div class="trend-range" id="trend-range" role="group" aria-label="时间范围" hidden></div>
         <div id="trend-chart" style="width:100%;min-height:460px"></div>
@@ -106,6 +113,7 @@
       var status = document.getElementById('trend-status');
       var legend = document.getElementById('trend-legend');
       var rangeBar = document.getElementById('trend-range');
+      var stackBar = document.getElementById('trend-stack');
       var chart = document.getElementById('trend-chart');
       var description = document.getElementById('trend-description');
       var defaultDescription = description.textContent;
@@ -118,6 +126,50 @@
       }
 
       var DAY_MS = 86400000;
+      var NODE_STACK_MODES = {
+        community: { label: '社区', description: '主社区', key: function (n) { return n.community; } },
+        type: { label: '类型', description: '页面类型', key: function (n) { return n.type || ''; } },
+        opensource: { label: '开源', description: '源码仓库关联状态', key: function (n) { return n.has_repo ? 'open' : 'closed'; } },
+        health: { label: '健康度', description: '节点健康度', key: function (n) { return String(Math.max(0, Math.min(3, n.health_score || 0))); } }
+      };
+      var nodeStackMode = 'community';
+      var OPEN_SOURCE_COLORS = { open: '#2dd4bf', closed: '#fb7185' };
+
+      function healthColors(theme) {
+        return theme === 'light'
+          ? ['#ef4444', '#ea580c', '#ca8a04', '#16a34a']
+          : ['#f87171', '#fb923c', '#facc15', '#4ade80'];
+      }
+
+      function nodeTrendGroups(graph, mode, theme) {
+        if (mode === 'type') {
+          var count = {};
+          graph.nodes.forEach(function (n) { count[n.type || ''] = (count[n.type || ''] || 0) + 1; });
+          return Object.keys(count).sort(function (a, b) { return count[b] - count[a]; }).map(function (id) {
+            var zh = RNWikiTypeLabels.formatChinese(id);
+            var en = RNWikiTypeLabels.EN[id];
+            var colors = RNGraphTooltip.GRAPH_NODE_TYPE_COLOR;
+            return { id: id, label: en && en !== zh ? zh + '（' + en + '）' : zh,
+              color: colors[id] || colors[''], size: count[id] };
+          });
+        }
+        if (mode === 'opensource') {
+          return [
+            { id: 'open', label: '开源', color: OPEN_SOURCE_COLORS.open, showEmpty: true },
+            { id: 'closed', label: '未开源', color: OPEN_SOURCE_COLORS.closed, showEmpty: true }
+          ];
+        }
+        if (mode === 'health') {
+          var colors = healthColors(theme);
+          return [3, 2, 1, 0].map(function (score) {
+            return { id: String(score), label: score + ' 分', color: colors[score], showEmpty: true };
+          });
+        }
+        var colors = RNGraphTooltip.buildCommunityColorMap(graph.communities);
+        return RNGraphTooltip.getSortedCommunities(graph.communities).map(function (c) {
+          return { id: c.id, label: c.label, color: colors[c.id], size: c.size };
+        });
+      }
 
       // 按日计数 → 累计序列
       function cumulative(daily) {
@@ -161,11 +213,11 @@
         }));
       }
 
-      function buildNodeTrends(added, graph) {
-        var communities = RNGraphTooltip.getSortedCommunities(graph.communities);
-        var colors = RNGraphTooltip.buildCommunityColorMap(graph.communities);
-        var known = new Set(communities.map(function (c) { return c.id; }));
-        var byPath = new Map(graph.nodes.map(function (n) { return [n.id, n.community]; }));
+      function buildNodeTrends(added, graph, mode, theme) {
+        mode = mode || 'community';
+        var groups = nodeTrendGroups(graph, mode, theme);
+        var known = new Set(groups.map(function (c) { return c.id; }));
+        var byPath = new Map(graph.nodes.map(function (n) { return [n.id, n]; }));
         var unclassified = '__unclassified__';
         var seen = new Set();
         var used = new Set();
@@ -175,7 +227,8 @@
           var key = entry.path || (entry.detailId && 'detail:' + entry.detailId);
           if (key && seen.has(key)) return;
           if (key) seen.add(key);
-          var id = byPath.get(entry.path);
+          var node = byPath.get(entry.path);
+          var id = node && NODE_STACK_MODES[mode].key(node);
           if (!known.has(id)) id = unclassified;
           used.add(id);
           if (!byDay.has(entry.date)) byDay.set(entry.date, new Map());
@@ -188,12 +241,12 @@
         for (var t = Date.parse(dates[0]), end = Date.parse(dates[dates.length - 1]); t <= end; t += DAY_MS) {
           x.push(new Date(t).toISOString().slice(0, 10));
         }
-        var series = communities.concat([{ id: unclassified, label: '未分类' }]).filter(function (c) {
-          return x.length && (c.size > 0 || used.has(c.id));
+        var series = groups.concat([{ id: unclassified, label: '未分类' }]).filter(function (c) {
+          return x.length && (c.showEmpty || c.size > 0 || used.has(c.id));
         }).map(function (c) {
           var daily = x.map(function (date) { return byDay.get(date)?.get(c.id) || 0; });
           return { id: c.id, name: RNGraphTooltip.shortenCommunityLabel(c.label || c.id),
-            color: colors[c.id] || '#64748b', daily: daily, cumulative: cumulative({ x: x, y: daily }).y };
+            color: c.color || '#64748b', daily: daily, cumulative: cumulative({ x: x, y: daily }).y };
         });
         var daily = x.map(function (_, i) {
           return series.reduce(function (sum, c) { return sum + c.daily[i]; }, 0);
@@ -202,10 +255,18 @@
       }
 
       var nodeTrendsPromise;
+      var nodeTrendCache = new Map();
       function nodeTrends() {
-        return nodeTrendsPromise || (nodeTrendsPromise = Promise.all([addedNodes, linkGraph()]).then(function (data) {
-          return buildNodeTrends(data[0], data[1]);
-        }));
+        var mode = nodeStackMode;
+        var theme = mode === 'health' ? document.documentElement.getAttribute('data-theme') : 'dark';
+        var key = mode + '/' + theme;
+        if (!nodeTrendCache.has(key)) {
+          nodeTrendsPromise = nodeTrendsPromise || Promise.all([addedNodes, linkGraph()]);
+          nodeTrendCache.set(key, nodeTrendsPromise.then(function (data) {
+            return buildNodeTrends(data[0], data[1], mode, theme);
+          }));
+        }
+        return nodeTrendCache.get(key);
       }
 
       var graphStatsPromise = null;
@@ -321,21 +382,13 @@
         { id: 'type-nodes', label: '类型节点数', unit: '节点', kind: 'category',
           load: function () {
             return linkGraph().then(function (g) {
-              var L = RNWikiTypeLabels;
-              var colors = RNGraphTooltip.GRAPH_NODE_TYPE_COLOR;
-              var count = {};
-              g.nodes.forEach(function (n) { count[n.type || ''] = (count[n.type || ''] || 0) + 1; });
-              var types = Object.keys(count).sort(function (a, b) { return count[b] - count[a]; });
+              var types = nodeTrendGroups(g, 'type');
               return {
                 // 「中文（English）」：窄屏与社区图一样只留中文
-                cats: types.map(function (t) {
-                  var zh = L.formatChinese(t);
-                  var en = L.EN[t];
-                  return en && en !== zh ? zh + '（' + en + '）' : zh;
-                }),
+                cats: types.map(function (t) { return t.label; }),
                 series: [{
-                  values: types.map(function (t) { return count[t]; }),
-                  color: types.map(function (t) { return colors[t] || colors['']; })
+                  values: types.map(function (t) { return t.size; }),
+                  color: types.map(function (t) { return t.color; })
                 }],
                 total: types.length + ' 种类型，合计 ' + g.nodes.length + ' 节点'
               };
@@ -361,8 +414,8 @@
                 cats: list.map(function (c) { return String(c.label || c.id).replace(/\s*社区\s*$/, ''); }),
                 links: list.map(function (c) { return 'hubs.html?community=' + encodeURIComponent(c.id); }),
                 series: [
-                  { name: '开源', color: '#2dd4bf', values: list.map(function (c) { return open[c.id] || 0; }) },
-                  { name: '未开源', color: '#fb7185', values: list.map(function (c) { return (all[c.id] || 0) - (open[c.id] || 0); }) }
+                  { name: '开源', color: OPEN_SOURCE_COLORS.open, values: list.map(function (c) { return open[c.id] || 0; }) },
+                  { name: '未开源', color: OPEN_SOURCE_COLORS.closed, values: list.map(function (c) { return (all[c.id] || 0) - (open[c.id] || 0); }) }
                 ],
                 total: '开源 ' + openTotal + ' / ' + g.nodes.length + ' 节点（' +
                   (100 * openTotal / Math.max(g.nodes.length, 1)).toFixed(1) + '%），按社区堆叠'
@@ -373,10 +426,7 @@
           load: function () {
             // 得分口径见 scripts/generate_link_graph.py compute_health（路线页走 compute_roadmap_health）
             return linkGraph().then(function (g) {
-              var light = document.documentElement.getAttribute('data-theme') === 'light';
-              var colors = light
-                ? ['#ef4444', '#ea580c', '#ca8a04', '#16a34a']
-                : ['#f87171', '#fb923c', '#facc15', '#4ade80'];
+              var colors = healthColors(document.documentElement.getAttribute('data-theme'));
               var count = [0, 0, 0, 0];
               var sum = 0;
               g.nodes.forEach(function (n) {
@@ -410,10 +460,7 @@
                 nameByPath[path] = D.DEPTH_META[k].label;
                 orderByPath[path] = i;
               });
-              var light = document.documentElement.getAttribute('data-theme') === 'light';
-              var colors = light
-                ? ['#ef4444', '#ea580c', '#ca8a04', '#16a34a']
-                : ['#f87171', '#fb923c', '#facc15', '#4ade80'];
+              var colors = healthColors(document.documentElement.getAttribute('data-theme'));
               var rows = (st.route_health || []).map(function (r) {
                 var n = r.counts.reduce(function (a, c) { return a + c; }, 0);
                 var path = 'roadmap/' + r.detail_id.replace(/^roadmap-/, '') + '.md';
@@ -562,12 +609,21 @@
       // Plotly 调用串行化：上一次 react 未完成时再 react 会留下错乱的内部状态
       //（范围滑条被撑到 2000-01-01），拖动滑条后坐标轴随之跑偏
       var drawing = Promise.resolve();
-      var hiddenCommunities = new Set();
+      var renderVersion = 0;
+      var hiddenGroups = new Map(Object.keys(NODE_STACK_MODES).map(function (mode) { return [mode, new Set()]; }));
       function render(view) {
-        if (current !== view && legend.classList.contains('trend-legend--interactive')) legend.hidden = true;
+        var version = ++renderVersion;
+        if (legend.classList.contains('trend-legend--interactive')) legend.hidden = true;
         current = view;
+        stackBar.hidden = view.load !== nodeTrends;
+        stackBar.querySelectorAll('button').forEach(function (b) {
+          var active = b.dataset.stack === nodeStackMode;
+          b.className = 'home-hub-tab' + (active ? ' is-active' : '');
+          b.setAttribute('aria-pressed', String(active));
+        });
         description.textContent = view.load === nodeTrends
-          ? '按现存页面的 Git 首次加入日统计，按当前知识图谱的主社区回溯归类。'
+          ? '按现存页面的 Git 首次加入日统计，按当前知识图谱的' + NODE_STACK_MODES[nodeStackMode].description + '回溯归类。'
+            + (nodeStackMode === 'opensource' ? '开源表示已关联源码仓库。' : '')
           : defaultDescription;
         Array.prototype.forEach.call(tabs.children, function (b) {
           var active = b.dataset.view === view.id;
@@ -576,41 +632,45 @@
         });
         status.textContent = '加载中…';
         view.load().then(function (s) {
-          var job = drawing.then(function () { return draw(view, s); });
+          var job = drawing.then(function () { if (version === renderVersion) return draw(view, s); });
           drawing = job.catch(function () {});
           return job;
         }).catch(function (e) {
-          if (current !== view) return;
+          if (version !== renderVersion) return;
           status.textContent = window.Plotly ? '加载失败：' + e.message : '图表库（Plotly）加载失败，请检查网络后刷新页面重试';
           if (view.load === nodeTrends) legend.hidden = true;
           if (window.Plotly) Plotly.purge('trend-chart');
         });
-        history.replaceState(null, '', '?view=' + view.id);
+        history.replaceState(null, '', '?view=' + view.id +
+          (view.load === nodeTrends && nodeStackMode !== 'community' ? '&stack=' + nodeStackMode : ''));
       }
 
       function draw(view, s) {
         if (current !== view) return;
+        var version = renderVersion;
         var css = getComputedStyle(document.documentElement);
         var text = css.getPropertyValue('--text').trim();
         var muted = css.getPropertyValue('--text-muted').trim();
         var grid = css.getPropertyValue('--border').trim();
         var accent = css.getPropertyValue('--accent').trim();
         var bg = css.getPropertyValue('--bg').trim();
-        var communityTrend = view.load === nodeTrends;
+        var nodeTrend = view.load === nodeTrends;
+        var hidden = hiddenGroups.get(nodeStackMode);
         var bar = view.kind === 'bar';
         rangeBar.hidden = true;
         ganttRange = null;
-        legend.classList.toggle('trend-legend--interactive', communityTrend);
+        legend.classList.toggle('trend-legend--interactive', nodeTrend);
+        if (!nodeTrend) legend.setAttribute('aria-label', '社区配色');
         // 交互图例放在两张趋势图下方，窄屏先显示时间轴和图表。
-        if (communityTrend) chart.after(legend);
+        if (nodeTrend) chart.after(legend);
         else if (legend.previousElementSibling === chart) rangeBar.before(legend);
         // 甘特图与条形图高度按行数计算；行少时（如实验室时间线 / 节点数）不再被 460px 最小高度撑出空白
         chart.style.minHeight = view.kind === 'gantt' || view.kind === 'category' ? '0' : '460px';
         if (view.kind === 'category') return drawCategory(view, s, text, muted, grid);
         if (view.kind === 'gantt') return drawGantt(view, s, text, muted, grid, bg);
-        if (!communityTrend) legend.hidden = true;
-        var y = communityTrend ? (bar ? s.daily : s.cumulative) : s.y;
-        var traces = communityTrend ? nodeTrendTraces(s, bar, text) : [Object.assign(bar
+        if (!nodeTrend) legend.hidden = true;
+        var y = nodeTrend ? (bar ? s.daily : s.cumulative) : s.y;
+        var traces = nodeTrend ? nodeTrendTraces(s, bar, text, hidden) : [Object.assign(bar
           ? { type: 'bar', marker: { color: accent }, width: 0.8 * DAY_MS } // 日期不连续时固定为 0.8 天宽
           : { type: 'scatter', mode: 'lines', line: { color: accent, width: 2, shape: 'hv' } }, {
           x: s.x, y: y, hovertemplate: '%{x|%Y-%m-%d}<br>%{y} ' + view.unit + '<extra></extra>'
@@ -634,7 +694,7 @@
           // 触屏上拖拽框选会吞掉页面滚动；缩放交给下方范围滑条
           dragmode: touch ? false : 'zoom'
         };
-        if (communityTrend) {
+        if (nodeTrend) {
           layout.barmode = 'stack';
           layout.showlegend = false;
           layout.hovermode = 'x unified';
@@ -645,24 +705,25 @@
         }
         var config = { responsive: true, displaylogo: false, displayModeBar: !touch };
         // Plotly 会把触摸和随后的模拟鼠标事件识别成双击，重置滑条选定的范围。
-        if (communityTrend && touch) config.doubleClick = false;
+        if (nodeTrend && touch) config.doubleClick = false;
         var plotted = Plotly.react('trend-chart', traces, layout, config);
         var total = bar ? y.reduce(function (a, b) { return a + b; }, 0) : (y[y.length - 1] || 0);
         status.textContent = view.label + '：' + (bar ? '合计 ' : '当前 ') + total + ' ' + view.unit
           + (s.x.length ? '（' + s.x[0] + ' → ' + s.x[s.x.length - 1] + '）' : '');
-        return communityTrend ? plotted.then(function (gd) {
-          if (current === view) drawNodeTrendLegend(gd, view, s.series);
+        return nodeTrend ? plotted.then(function (gd) {
+          if (version === renderVersion) drawNodeTrendLegend(gd, view, s.series, hidden);
           return gd;
         }) : plotted;
       }
 
-      function nodeTrendTraces(s, daily, text) {
+      function nodeTrendTraces(s, daily, text, hidden) {
         var key = daily ? 'daily' : 'cumulative';
-        var traces = s.series.map(function (c) {
-          return Object.assign({ name: c.name, x: s.x, y: c[key], hoverinfo: 'skip',
-            visible: hiddenCommunities.has(c.id) ? 'legendonly' : true }, daily
+        var traces = s.series.map(function (c, i) {
+          // Plotly 将 uid 用于 CSS 选择器。每种堆叠模式使用独立的图层标识。
+          return Object.assign({ uid: 'stack-' + nodeStackMode + '-' + i, name: c.name, x: s.x, y: c[key], hoverinfo: 'skip',
+            visible: hidden.has(c.id) ? 'legendonly' : true }, daily
             ? { type: 'bar', marker: { color: c.color }, width: 0.8 * DAY_MS }
-            : { type: 'scatter', mode: 'lines', stackgroup: 'communities', fillcolor: c.color,
+            : { type: 'scatter', mode: 'lines', stackgroup: 'nodes', fillcolor: c.color,
               line: { color: c.color, width: 0, shape: 'hv' } });
         });
         // 合计独立于图例开关，同时为零新增的日期保留整日悬停目标。
@@ -681,31 +742,33 @@
         return traces;
       }
 
-      function drawNodeTrendLegend(gd, view, series) {
+      function drawNodeTrendLegend(gd, view, series, hidden) {
+        var version = renderVersion;
         bindChartLinks(gd, view, null);
         gd.on('plotly_unhover', function () {
           // 轻点后的兼容鼠标移出事件可能立即关闭浮窗，恢复同一次轻点的日期。
           if (trendTap?.point && performance.now() - trendTap.endedAt < 500) showTrendTap(trendTap);
         });
         legend.replaceChildren();
+        legend.setAttribute('aria-label', NODE_STACK_MODES[nodeStackMode].label + '图例');
         legend.hidden = !series.length;
         series.forEach(function (c, i) {
           var item = document.createElement('li');
           var button = document.createElement('button');
           var swatch = document.createElement('i');
           button.type = 'button';
-          button.setAttribute('aria-pressed', String(!hiddenCommunities.has(c.id)));
+          button.setAttribute('aria-pressed', String(!hidden.has(c.id)));
           swatch.style.backgroundColor = c.color;
           swatch.setAttribute('aria-hidden', 'true');
           button.append(swatch, c.name);
           item.appendChild(button);
           legend.appendChild(item);
           button.addEventListener('click', function () {
-            var visible = hiddenCommunities.delete(c.id);
-            if (!visible) hiddenCommunities.add(c.id);
+            var visible = hidden.delete(c.id);
+            if (!visible) hidden.add(c.id);
             button.setAttribute('aria-pressed', String(visible));
             var job = drawing.then(function () {
-              if (current === view) return Plotly.restyle(gd, { visible: visible ? true : 'legendonly' }, [i]);
+              if (version === renderVersion) return Plotly.restyle(gd, { visible: visible ? true : 'legendonly' }, [i]);
             });
             drawing = job.catch(function () {});
           });
@@ -1007,11 +1070,26 @@
       narrowMq.addEventListener('change', function () {
         if (current && (current.kind === 'category' || current.kind === 'gantt')) render(current);
       });
-      var wanted = new URLSearchParams(location.search).get('view');
+      Object.keys(NODE_STACK_MODES).forEach(function (mode) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = NODE_STACK_MODES[mode].label;
+        b.dataset.stack = mode;
+        b.addEventListener('click', function () {
+          if (nodeStackMode === mode) return;
+          nodeStackMode = mode;
+          trendTap = null;
+          render(current);
+        });
+        stackBar.appendChild(b);
+      });
+      var params = new URLSearchParams(location.search);
+      var requestedStack = params.get('stack');
+      if (Object.prototype.hasOwnProperty.call(NODE_STACK_MODES, requestedStack)) nodeStackMode = requestedStack;
+      var wanted = params.get('view');
       render(VIEWS.filter(function (v) { return v.id === wanted; })[0] || VIEWS[0]);
     })();
   </script>
-  <script src="wiki-type-labels.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
