@@ -311,6 +311,12 @@ op: ingest
 - **项目：** <https://robolineage.github.io/>
 - **代码：** <https://github.com/robolineage/robolineage>
 
+## [2026-11-11] ingest | sources/sites/corl-2026-program.md — 扩充 CoRL 2026 官方议程、Keynotes 与论文检索导航
+
+- 对照大会 Program、首页、Keynotes、报告说明与 OpenReview 会议入口，增补场地、日期、报告类型、三场 keynote 和论文 ingest 追溯路径。
+- 复用已存在的 CoRL Program 来源与 SuperMimic 关联，未新建重复会议项目或未核实的论文占位节点。
+- Accepted Papers 动态正文与 Cvent 场次表未取得；直播公告不等于单篇论文可验证的录播 URL。此次仅修改 sources/ 和 log.d/，不触及 wiki 与派生文件。
+
 ## [2026-11-10] lint | 全量 lint 清零：29 个 wiki 实体补齐对比/评测/结论/重定向就绪度章节与评测基准、感知栈枢纽回链；flex-rsi 陈旧声明误报改写；gr00t-2 补 venue；缺页概念巡检豁免 openpi / start；review 22 个陈旧页面（补论文回链、修正 action-chunking 子步骤口径与 CRISP 同名页描述）
 
 ## [2026-11-11] ingest | Zane Hub #389《如何对机器人关节模组进行轻量化设计》：新增 robot-joint-module-lightweight-design 概念页，一手核对 Sandia 散热数字、国标与 CSG 对 CSF，标出未核实数字与槽满率自相矛盾
