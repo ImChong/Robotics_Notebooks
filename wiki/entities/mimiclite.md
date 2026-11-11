@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, motion-tracking, imitation-learning, sim2real, teleoperation, open-source, roboparty]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-11
 related:
   - ./egalahad-sim2real.md
   - ./party-os.md
@@ -24,6 +24,8 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 ---
 
 # MimicLite（监督运动跟踪基础设施）
+
+## 一句话定义
 
 **MimicLite** 是 [Party OS](./party-os.md) 首批开源的 **监督学习运动跟踪基础设施**，贯通数据组织、策略训练、统一评测与真机部署，使研究者能以更低算力快速迭代跟踪策略，并将来自不同训练框架的策略接入同一套 sim2real 系统。
 
@@ -108,6 +110,7 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 ## 关联页面
 
 - [Party OS](./party-os.md)
+- [PartyMimic：单卡可微世界模型全身跟踪](./partymimic.md) — 相比 MimicLite 的多 codebase 训练部署基础设施定位，PartyMimic 聚焦 SuperMimic 系可微模型训练配方与单卡评测
 - [human-humanoid-tools](./human-humanoid-tools.md)
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
 - [BFM-Zero（论文实体）](./paper-bfm-zero.md)
