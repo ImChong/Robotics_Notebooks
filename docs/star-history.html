@@ -126,6 +126,7 @@
       }
 
       var DAY_MS = 86400000;
+      var NODE_BAR_WIDTH = 0.8 * DAY_MS;
       var NODE_STACK_MODES = {
         community: { label: '社区', description: '主社区', key: function (n) { return n.community; } },
         type: { label: '类型', description: '页面类型', key: function (n) { return n.type || ''; } },
@@ -702,6 +703,17 @@
           layout.hoverlabel = { bgcolor: bg, bordercolor: grid, font: { color: text, size: 12 } };
           layout.xaxis.hoverformat = '%Y-%m-%d';
           layout.uirevision = view.id;
+          if (s.x.length) {
+            var firstDate = Date.parse(s.x[0]);
+            var lastDate = Date.parse(s.x[s.x.length - 1]);
+            // 柱图按柱边缘确定范围。累计图只有一天时仍给时间轴一个有效跨度。
+            var halfWidth = bar ? NODE_BAR_WIDTH / 2 : (firstDate === lastDate ? DAY_MS / 2 : 0);
+            var start = firstDate - halfWidth;
+            var end = lastDate + halfWidth;
+            layout.xaxis.autorangeoptions = { minallowed: start, maxallowed: end };
+            // 滑条用 ISO 日期字符串，避免毫秒值经过浏览器时区转换。
+            layout.xaxis.rangeslider.range = [new Date(start).toISOString(), new Date(end).toISOString()];
+          }
         }
         var config = { responsive: true, displaylogo: false, displayModeBar: !touch };
         // Plotly 会把触摸和随后的模拟鼠标事件识别成双击，重置滑条选定的范围。
@@ -722,7 +734,7 @@
           // Plotly 将 uid 用于 CSS 选择器。每种堆叠模式使用独立的图层标识。
           return Object.assign({ uid: 'stack-' + nodeStackMode + '-' + i, name: c.name, x: s.x, y: c[key], hoverinfo: 'skip',
             visible: hidden.has(c.id) ? 'legendonly' : true }, daily
-            ? { type: 'bar', marker: { color: c.color }, width: 0.8 * DAY_MS }
+            ? { type: 'bar', marker: { color: c.color }, width: NODE_BAR_WIDTH }
             : { type: 'scatter', mode: 'lines', stackgroup: 'nodes', fillcolor: c.color,
               line: { color: c.color, width: 0, shape: 'hv' } });
         });
