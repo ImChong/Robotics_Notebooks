@@ -69,7 +69,7 @@ summary: "InstantHMR 是基于 SAM 3D Body 已发布 MHR 标注训练的手机�
 
 ### 推理流程图（论文图 2 + 源码）
 
-~~~mermaid
+```mermaid
 flowchart LR
   A["RGB 图像 / 视频帧"] --> B["RF-DETR 检测或复用跟踪框"]
   B --> C["288×288 crop + CLIFF 相机条件"]
@@ -85,13 +85,13 @@ flowchart LR
   J --> K
   K --> L["70 个 3D 关键点 + 人体网格"]
   L --> M["相机坐标系输出 / Rerun / 重定向前处理"]
-~~~
+```
 
 **版本差异**：论文 v1 的主体模型基准是网络直接推理（`--fit 0`）；官方仓库 **2026-11-08 v1.1** 新增网络图内的 kinematic fit，`--fit 2` 成为 demo 默认。拟合采用 1 步 Levenberg–Marquardt，利用网络自己输出的 2D 关键点优化 MHR 姿态；它**不是额外联合训练的神经网络**，也不能把 fit 后精度和论文 fit0 延迟混用。
 
 ### 源码时序图（`demo.py` / `PosePipeline` / `InstantHMR.predict`）
 
-~~~mermaid
+```mermaid
 sequenceDiagram
   autonumber
   participant U as demo.py
@@ -121,7 +121,7 @@ sequenceDiagram
   P->>P: keypoint_box 更新下一帧检测框
   P-->>U: FrameResult + 各阶段耗时
   U->>V: log(frame, persons, timings)
-~~~
+```
 
 **源码边界**：`instanthmr/inference.py` 会再调用**独立的 `mhr-body.onnx`** 输出 18,439 顶点；“单个 ONNX 文件完成全流程、无需 body graph”不符合当前 Python demo。论文中的计时图则把 6,890 顶点 MHR FK/蒙皮打包计算，评测口径不同。
 
