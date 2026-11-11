@@ -2,7 +2,7 @@
 type: concept
 summary: "深度学习基础是现代机器人感知、控制与生成式策略的函数逼近底座，涵盖神经网络表示、优化训练和泛化机制。"
 description: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
-updated: 2026-09-21
+updated: 2026-11-11
 related:
   - ../entities/embodied-interview-qa.md
   - ./backpropagation.md
@@ -95,6 +95,7 @@ sources:
 - [TensorFlow](../entities/tensorflow.md)
 - [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
 - [MiniMind](../entities/minimind.md) — 中文社区「从 0 训练小 LLM」PyTorch 全链路开源教程
+- [《大模型基础》（浙江大学 DAILY Lab）](../entities/zju-foundations-of-llms.md) — 六章 LLM 教材：语言模型、架构、Prompt、PEFT、模型编辑、RAG
 - [Andrej Karpathy](../entities/andrej-karpathy.md)
 - [机制可解释性](./mechanistic-interpretability.md)
 
