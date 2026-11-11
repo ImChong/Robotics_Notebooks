@@ -336,6 +336,13 @@ op: ingest
 - 从既有 Agent 记忆 wiki 建反向链接；未改动 catalog/log/export 派生文件。
 - 论文数字属作者报告，未进行 CUDA benchmark 与实机复现；项目主页正文抓取未完成，具体边界记录在 sources/sites。
 
+## [2026-11-12] ingest | sources/papers/rethinking_figures_arxiv_2611_08486.md — 通读 NTU 科研图示生成式 AI 评价研究
+
+- 核对 arXiv:2611.08486v1 官方全文及 NTU AI4X 图集，收录 200 篇论文、371 张引导图/框架图的样本设计与保真评估。
+- 记录 369 张修订图通过研究流程中的保真核查、清晰度模型评分均值 +0.428、美学协调评分均值 −0.111；明确单模型评价不能代表人类读者测试或 AI 使用的因果效应。
+- 图集及 CSV 公开，但项目页未列出可核实的研究可运行源码仓库；不虚构源码时序图。
+- 写回：wiki/entities/paper-rethinking-ai-scientific-figures.md，并从 AI Auto-Research 页面建立站内入链。
+
 ## [2026-11-11] ingest | sources/papers/self_refine_arxiv_2303_17651.md — 收录 Self-Refine 自反馈迭代改进
 
 - 核对 arXiv v2 原文与附录，七任务评测及数学推理的自评瓶颈。

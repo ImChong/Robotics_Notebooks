@@ -4472,6 +4472,7 @@
 - [ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）](wiki/entities/paper-resmimic.md) — ResMimic**（*From General Motion Tracking to Humanoid Whole-body Loco-Manipulation via Residual Lea `📅unknown` `[entity_page]`
 - [ResNet（Deep Residual Learning for Image Recognition）](wiki/entities/paper-resnet-deep-residual-learning.md) — ResNet**（Residual Network）是 Kaiming He 等提出的 **深度残差学习** 框架（arXiv:1512.03385，CVPR 2016 Best Paper）。其 `📅unknown` `[entity_page]`
 - [ResSafe：G1 残差安全过滤](wiki/entities/paper-ressafe.md) — ResSafe**（*Learning Safety Filtering with Residual Reinforcement Learning for Humanoids*，[arXiv:26 `📅unknown` `[entity_page]`
+- [Do You Miss the Nights We Spent Crafting Figures?｜生成式 AI 时代的论文引导图与框架图](wiki/entities/paper-rethinking-ai-scientific-figures.md) — 南洋理工大学 2026 年研究（arXiv:2611.08486v1）用 **200 篇论文、371 张科研图**与 **369 `📅unknown` `[entity_page]`
 - [Retrieve to Act（arXiv:2610.37215）](wiki/entities/paper-retrieve-to-act.md) — Retrieve to Act**（*Retrieve to Act: Motion Primitive Graph Retrieval for Robust VLA Execution*，[ar `📅unknown` `[entity_page]`
 - [Reuse Before You Retrieve](wiki/entities/paper-reuse-before-you-retrieve-tta-vla.md) — Reuse Before You Retrieve: Diagnosing Headroom and Complementarity for Test-Time Augmentation of E `📅unknown` `[entity_page]`
 - [Revisiting Open-Loop Execution（长上下文 reactive 策略）](wiki/entities/paper-revisiting-open-loop-action-chunking.md) — Revisiting Open-Loop Execution in Robotics: Toward Reactive, Higher-Performing Policies**（[arXiv:2 `📅unknown` `[entity_page]`
