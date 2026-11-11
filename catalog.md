@@ -1947,6 +1947,7 @@
 - [CALM：多机空中操作的去中心化 MARL 控制](wiki/entities/paper-calm-decentralized-aerial-manipulation.md) — CALM 为多架带机械臂的无人机共同搬运篮筐并跟踪移动地面机器人提供去中心化控制：参数共享的 MAPPO 策略接收扰动观测、质量估计与目标预测，再叠加按目标转向提前旋转编队的偏航前馈。 `📅unknown` `[entity_page]`
 - [Cambrian-1：视觉中心 MLLM 开源探索](wiki/entities/paper-cambrian-1.md) — Cambrian-1**（*A Fully Open, Vision-Centric Exploration of Multimodal LLMs*，[arXiv:2406.16860](http `📅unknown` `[entity_page]`
 - [相机到四足位姿估计：基于序列图像的外部相机—四足机器人姿态估计](wiki/entities/paper-camera-to-quadruped-pose-estimation.md) — 相机到四足位姿估计**（*Camera-to-Quadruped Robot Pose Estimation from Sequential Images*，[arXiv:2610.36599 `📅unknown` `[entity_page]`
+- [CamoDreamer：先解耦、后融合的伪装图像生成 / To Blend In, First Decouple: Rethinking Camouflage Image Generation via Context-Decoupled Representations](wiki/entities/paper-camodreamer-context-decoupled-camouflage-generation.md) — CamoDreamer** 是一种基于 Stable Diffusion 的**上下文解耦伪装图像生成**方法：用双条件与双潜空间控制流先分别处理物体和背景，再以频域自适应融合实现背景同化，尽量保 `📅unknown` `[entity_page]`
 - [CAMP](wiki/entities/paper-camp-arm-hand-motion-planning.md) — CAMP**（*Cooperative Arm–Hand Motion Planning in Constrained Spaces*，[arXiv:2609.29021](https://arx `📅unknown` `[entity_page]`
 - [CANDO（arXiv:2611.04543）](wiki/entities/paper-cando-residual-rl.md) — CANDO**（*CANDO: Conservative Action-Noise Directional Optimization for Residual Reinforcement Lear `📅unknown` `[entity_page]`
 - [CAP（arXiv:2609.11553）](wiki/entities/paper-cap-perception-blind-humanoid.md) — CAP**（*Continuously Adaptive Perception-Blind Humanoid Locomotion via Learned Denoising*，[arXiv:26 `📅unknown` `[entity_page]`
