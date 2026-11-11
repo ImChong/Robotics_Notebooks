@@ -10,8 +10,9 @@
 - **协议：** Apache-2.0（GitHub 仓库 LICENSE）
 - **开源状态：** 已公开 Markdown 书稿、VitePress 站点、脚本与测试；**并非**一套自带生产 Agent Loop / 模型权重的可执行 Agent 框架
 - **知识节点：** [AI Agent Handbook](../../wiki/entities/aliyun-ai-agent-handbook.md)
+- **逐章深读：** [第 01–30 章阅读记录及 17 篇企业案例](aliyun-ai-agent-handbook-chapter-notes.md)
 - **站点归档：** [官方在线站点](../sites/aliyun-ai-agent-handbook.md)
-- **核对范围：** 已完整阅读官方 README、`00-preface/00-preface.md`、架构/构建/运行/治理/调优/实践六篇导读，以及第 21 章《Agent 黄金数据集》；另核查第 04、05、06、13 章的标题结构、开头、重点片段与结尾。核对官方站点首页、仓库目录、GitHub 创建时间和 commit。**未通读 01–30 章全部逐章全文**，未运行示例、测试或站点构建；本归档的“通读”仅指上述列明的核心一手材料。
+- **核对范围：** 依据官方固定提交逐章读取第 01–30 章 Markdown 正文（第 09、17、18 章分别由多篇文稿组成），逐章检查章节结构、核心技术论证、示例与结论；补核第 25–28 章的 17 篇案例、开发者调研报告，并核查 Jev、Personal Agent、FDE 附加专题的主要内容。README、前言、各篇导读及官网首页已核读。详细逐章出处、机制与边界见下方 30 章索引。图片中的每个图表、外部项目代码与云控制台实际行为未独立复现，所有案例性能数字保留原书自述属性。
 - **通读：** 已完成
 
 ## 官方一手资料定位
@@ -28,6 +29,11 @@
 - [第 21 章 Agent 黄金数据集](https://github.com/aliyun/ai-agent-handbook/blob/a1dd02ec080c4e18930660c0154da1ef589df639/05-optimization/%E7%AC%AC%2021%20%E7%AB%A0%E3%80%80Agent%20%E9%BB%84%E9%87%91%E6%95%B0%E6%8D%AE%E9%9B%86.md)：候选集、参考答案、rubric、专家确认、回归评估、版本留痕。
 - [阿里云官方发布文章（2026-10-23）](https://developer.aliyun.com/article/1774447)。
 - [2025 年 9 月旧版白皮书](https://developer.aliyun.com/ebook/8479)：属于前身，不应误作本仓库的发布日。
+
+## 30 章逐章阅读摘要
+
+- [30 章逐章阅读记录（固定上游 commit）](aliyun-ai-agent-handbook-chapter-notes.md) 覆盖架构（01–02）、构建（03–06）、运行（07–12）、治理（13–16）、调优（17–24）、企业实践（25–29）与展望（30）；第 09、17、18 章的多文件正文和第 25–28 章的独立案例均单独标注原文路径。章节主要方法、验证边界和 17 篇具体案例均已整理为可追溯的 Markdown 笔记，不复制上游全文。
+- **特别核实：** 第 09 章区分限流、余额配额与严格预算，后者要求最坏成本原子预留和幂等结算；第 16 章区分 Agent Simulation 与结果 Evaluation；第 17 章要求先排除 Harness/执行环境故障，再考虑调模型；第 30 章 Agentic OS 是前瞻架构，并非现成独立操作系统。
 
 ## 从原文提取的工程结论
 
