@@ -4,6 +4,7 @@ tags: [slam, lidar, vio, lio, selection, ros]
 status: complete
 updated: 2026-09-21
 related:
+  - ../concepts/lidar-slam-survey-2026.md
   - ../queries/slam-second-spring-embodied.md
   - ../overview/navigation-slam-autonomy-stack.md
   - ../entities/paper-ultra-fusion-multi-sensor-slam.md

@@ -4,6 +4,7 @@ tags: [localization, lidar, odometry, sensor-fusion, slam, navigation, ekf]
 status: complete
 updated: 2026-09-21
 related:
+  - ../concepts/lidar-slam-survey-2026.md
   - ../concepts/sensor-fusion.md
   - ../formalizations/ekf.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
