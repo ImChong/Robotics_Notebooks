@@ -2,7 +2,7 @@
 type: concept
 tags: [agents, agent-memory, context-engineering, dreaming, sleep-time-compute, claude]
 status: complete
-updated: 2026-11-09
+updated: 2026-11-11
 original:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
 related:
@@ -11,6 +11,7 @@ related:
   - ../concepts/robot-in-context-learning.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md
+  - ../entities/paper-life-learning-to-live.md
   - ../entities/paper-memforest.md
   - ../entities/paper-robocasa-mem.md
   - ../entities/paper-false-belief-mandela-effect-multi-agent.md
@@ -96,6 +97,10 @@ flowchart LR
 ## 延伸：错误记忆如何在多 Agent 群体传播
 
 - [False Belief Dissemination（arXiv:2610.33026）](../entities/paper-false-belief-mandela-effect-multi-agent.md)：不同于本文的个体记忆维护研究，该论文在隔离的社交网络模拟中分析邻居消息、私有记忆和共享网页搜索如何共同维持虚假断言；其通道消融表明共享搜索在该设置中比单独使用记忆更易导致错误接受。涉及机器人的意义是工程延伸推论，并非论文真机实验。
+
+## 具身长时记忆对照：LIFE
+
+- [LIFE / Learning to Live（arXiv:2611.00180v2）](../entities/paper-life-learning-to-live.md)：RoboBeats 事件门控选择视觉证据、Plastic Memory 保留原始影像与可更新索引，EDM 将经验转成可复用能力；与本页的语言 agent 笔记及 dreaming 不同，公开代码当前重点是视觉门控与 SSS-Bench 评测，尚不能视为完整长期自主控制栈。
 
 ## 关联页面
 
