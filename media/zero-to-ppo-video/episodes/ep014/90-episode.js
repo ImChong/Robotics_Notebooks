@@ -32,6 +32,7 @@
   window.EpisodeVideo = {
     ep: '014',                      // 用于文件名和封面顶栏正中的集数（「No.014」）；正片画面里不出现集数
     badge: '第二季',
+    recall: E.RECALL,               // 回顾画面取自哪一集、哪一幕、什么时刻（recall.mjs 照这个截图）
     robots: ['ur5'],                // robot3d.js 预先加载的 URDF（robots.json；先跑 python3 fetch_robots.py）
     title: '两种雅可比',
     name: 'Space ↔ Body：伴随变换',
@@ -43,7 +44,7 @@
     boldColors: { '伴随变换': 'var(--hi)', '伴随表示': 'var(--hi)', '空间雅可比': 'var(--text)', '物体雅可比': 'var(--text)', '固定坐标系': 'var(--text)', '物体坐标系': 'var(--text)',
       '站在底座上看': 'var(--text)', '站在手上看': 'var(--text)', '换一个点': 'var(--violet)', '换一套轴': 'var(--demo-accent)', '手的速度': 'var(--violet)',
       '螺旋轴': 'var(--demo-warn)', '运动旋量': 'var(--demo-warn)', '物体运动旋量': 'var(--demo-warn)', '雅可比': 'var(--hi)', '目标': 'var(--demo-good)' },
-    introDur: 32.87,
+    introDur: 32.95,
     hero: function (K) { return E.hero ? E.hero(K) : placeholder('主图', '主图还没写').build(); },
     scenes: scenes,
     // 片尾总结：四张卡片，结论一行（at 是弹出的分镜时间，和 ../ep014.py 的 recap 句对齐）

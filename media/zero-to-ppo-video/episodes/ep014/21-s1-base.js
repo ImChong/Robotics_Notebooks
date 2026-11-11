@@ -50,6 +50,7 @@
     ],
     build: function (K) {
       var s = K.sceneSvg('还是第十三集的网格：肩先转了九十度，肘到了 (−2, 1)，小臂竖着朝上，手在 (−2, 3)。底座上画着两根轴：往右是 x、往上是 y，第十三集的运动旋量都是站在这里看的，书上叫固定坐标系。只让肩每秒转一弧度，这时的运动旋量就是肩的螺旋轴 (0, 0, 1, 0, 0, 0)：前三个数是角速度，后三个数全是零，手明明在走。第九集讲过：把胳膊想成一张很大的透明板，后三个数是板上此刻在原点那一点的速度；原点这一点就是肩，只在原地转、不挪地方，所以是零，后三个数不是手的速度。手这一点的速度：从肩关节指向手 (−2, 3)，转九十度得 (−3, −2)，每秒往左走三格、往下走两格。第十三集第六幕正好相等，是因为那时小臂只平移不转。想直接知道手这一点的速度，就站在手上看');
+      var recall = E.recall(s, [['r13grid', 0.95, 4.1], ['r03rot', T.mat - 0.1, 13.45], ['r13base', T.ep13 - 0.05, 32.98], ['r13s1', T.ep13b - 0.05, 45.15], ['r09v', T.ep9 - 0.05, 66.2], ['r13zero', T.ep13c - 0.05, 100.45]]);   // 回顾：第十三集的网格；第三集的矩阵；第十三集的运动旋量站在这里看；肩的螺旋轴；第九集的透明板；第十三集第六幕
 
       var pn = E.panel14(s), P = pn.P, u = pn.u, top = pn.top;
       var board = E.board(pn.under, P);
@@ -81,7 +82,7 @@
       var redL = E.halo(E.txt(top, P(0, -1.55)[0] + 12, P(0, -1.55)[1] + 6, '(0, −2)', 18, E.X, 'start', 900));
       var grnL = E.halo(E.txt(top, P(-1.5, -2)[0], P(-1.5, -2)[1] + 24, '(−3, 0)', 18, E.Y, 'middle', 900));
       var vioL = E.halo(E.txt(top, 0, 0, '(−3, −2)', 19, E.V, 'middle', 900));
-      var standL = E.halo(E.txt(top, P(-2, 3)[0], P(-2, 3)[1] - 26, '站在手上看', 19, E.V, 'middle', 900));
+      var standL = E.viewTag(top, P(-2, 3)[0], P(-2, 3)[1] - 46, 'hand').g;   // 视角标签（全片同一个样式）
 
       /* ══ 右栏 ══ */
       var RK = E.rowKit(), Rg = E.el('g', {}, s);
@@ -108,6 +109,7 @@
       var c1 = E.symRow(g3, RK, X, 50, '\\dot\\theta_1=1', E.OMEGA, 80, [['只转肩，每秒 1 弧度', E.INK2]], 20);
       var c2 = RK.line(g3, X, 92, [['运动旋量', E.WARN, 900], [' = 肩的', E.INK2], ['螺旋轴', E.WARN, 900], ['（第 13 集）', E.MUT, 700]], 20);
       var tw = E.tw6(g3, X + 46, 238, [0, 0, 1, 0, 0, 0], { size: 23, dy: 28, w: 50 });
+      var twTag = E.tagAbove(g3, tw, 'base').g;   // 6 个数的正上方：底座上看（全片同一个样式、同一个位置）
       var twW = E.txt(g3, X + 92, 207, '角速度', 20, E.OMEGA, 'start', 900), twV = E.txt(g3, X + 92, 291, '线速度', 20, E.V, 'start', 900);
       var twW2 = E.txt(g3, X + 170, 207, '绕 z 轴，每秒 1 弧度', 18, E.OMEGA, 'start', 700);
       var twV2 = E.txt(g3, X + 170, 291, '全是 0？', 20, E.ERR, 'start', 900);
@@ -142,6 +144,7 @@
       return {
         el: s,
         draw: function (st, t) {
+        recall(st);
           if (!laid && s.isConnected) { RK.layout(); laid = true; }
           var f = E.fade, b = E.bump;
           /* ── UR5：肩转过的角度 th（第 11 集的零位算 0）。只朝蓝色小弯箭头的方向（逆时针）转；要归位时趁画面上没有方向标记先顺时针挪开 ── */
@@ -215,7 +218,7 @@
           E.op(b3.g, fr(st, T.ep13)); E.op(b4.g, fr(st, T.here)); E.op(b5.g, fr(st, T.book)); E.op(b5.parts[1], fr(st, T.fixed)); E.op(b6.g, fr(st, T.fixed + 0.4));
           E.op(g3, E.win(st, T.only - 0.1, T.ep9 - 0.2, 0.3));
           E.op(c1.g, fr(st, T.rate)); E.op(c2.g, fr(st, T.twist)); E.op(c2.parts[2], fr(st, T.isS)); E.op(c2.parts[3], fr(st, T.isS));
-          E.op(tw.g, fr(st, T.nums[0] - 0.4));
+          E.op(tw.g, fr(st, T.nums[0] - 0.4)); E.op(twTag, fr(st, T.nums[0] - 0.4));
           tw.cells.forEach(function (c, k) { E.op(c, fr(st, T.nums[k])); });
           tw.rangeBox(0, 2, E.OMEGA, fr(st, T.omega)); tw.rangeBox(3, 5, E.ERR, fr(st, T.zero));
           E.op(twW, fr(st, T.omega)); E.op(twW2, fr(st, T.z)); E.op(twV, fr(st, T.back)); E.op(twV2, fr(st, T.zero));

@@ -2,7 +2,7 @@
 
 按 [发布清单](RELEASE_PLAN.md) 从 L−1 讲到 L5.1 的 PPO，一集只讲一个主题，竖屏 1080×1920，中文配音 + 烧录字幕，发视频号。讲完 062，想读 PPO 原论文可以接姊妹系列《从头学人形机器人算法》（论文精读，[Robot_Learning_Paper_Notebooks](https://github.com/ImChong/Robot_Learning_Paper_Notebooks)）的 001 PPO。
 
-**观众完全零基础**：除了看过本系列前面几集，对其他相关知识（数学、编程、机器人）完全没有概念。片中每个词、符号、公式、代码写法，要么前面几集讲过（说明第几集，并用一两句快速过一下怎么得到的，不能只说「第几集讲过 / 算过」就直接用结果），要么当场讲清楚，不默认观众会（细则见发布清单「每集一个主题」）。
+**观众完全零基础**：除了看过本系列前面几集，对其他相关知识（数学、编程、机器人）完全没有概念。片中每个词、符号、公式、代码写法，要么前面几集讲过（说明第几集，并用一两句快速过一下怎么得到的，不能只说「第几集讲过 / 算过」就直接用结果；画面上还要放出那一集当时的画面，见下面的 `recall.mjs`），要么当场讲清楚，不默认观众会（细则见发布清单「每集一个主题」）。
 
 渲染流程改自论文系列的 [`scripts/paper_video`](https://github.com/ImChong/Robot_Learning_Paper_Notebooks/tree/main/scripts/paper_video)（BSD-3，见 `vendor/LICENSE`）：安全区、逐帧版式检查、旁白与分镜对时的做法都照搬。
 
@@ -31,6 +31,7 @@
 | `robots.json` | 片中机器人的 URDF 来源：取自 [Robot Description Gallery Online](https://github.com/ImChong/Robot_Description_Gallery_Online)（固定 commit）的 `data/robots.json`，每台只记上游仓库 + 固定 commit 的 jsDelivr 地址与许可证。现用 Unitree G1（人形）、UR5（机械臂）、Unitree Go2（四足）、iRobot Create 2（扫地机）、Toyota Prius（汽车，OSRF car_demo）、Clearpath Jackal（轮式底盘） |
 | `fetch_robots.py` | 按 `robots.json` 把 URDF 与可视网格下载到 `assets/robots/<id>/`（不入库），路径解析同画廊；上游只发布 xacro 的（Create 2、Jackal）连同它 include 的文件一起下载（照画廊的规则：`$(optenv)` 取默认值、`xacro_stubs` 里的包不下载），舞台加载时用 xacro-parser 展开 |
 | `robot3d.js` | 舞台里的 URDF 渲染（three.js + urdf-loader，ES module）：全页共用一个离屏 WebGL 画布、正交相机，世界坐标线性映射到分镜坐标，叠加标注按正运动学定位；加载后用 meshoptimizer 减面到约 15%。另有和手画版同接口的封装：侧视 / 正面 G1、UR5、Go2、小人形图标、扫地机 / 汽车 / 轮式底盘，分镜里改样式的部件变成给连杆上色 |
+| `recall.mjs` | 「回顾」画面：讲到以前几集的内容时，分镜上叠出那一集当时的画面。要哪几张写在这一集的 `EpisodeVideo.recall`（取自哪一集、哪一幕、分镜时间几秒），`node recall.mjs <ep>` 照那一集的源码截下分镜框到 `out/recall/<id>.png`（不入库；渲染、`check_layout` 之前先跑一次）|
 | `serve.mjs` | 本目录的极简静态 http 服务：ES module 和 fetch 在 `file://` 下不能用，`render.mjs` / `check_layout.mjs` 都经它打开舞台 |
 
 ## 用法
@@ -42,6 +43,7 @@ pip3 install edge-tts imageio-ffmpeg
 python3 fetch_robots.py                # 下载片中机器人的 URDF 与网格（约 60 MB）-> assets/robots/
 node render.mjs ep001 scene 3 0,5,12   # 做分镜时：不配音，单看第 3 幕这几个分镜时刻
 python3 build.py ep001                 # 旁白 TTS -> out/ep001/timeline.json + narration.wav
+node recall.mjs ep001                  # 有「回顾」画面的集：截以前几集当时的画面 -> out/recall/
 node render.mjs ep001 stills 5,40,90   # 先抽几帧看排版
 node check_layout.mjs ep001            # 输出 no overlap 才算过
 node render.mjs ep001 video 30         # -> out/ep001/ep001_video.mp4（默认 3 段并行，第 4 个参数可改段数，1 = 一口气渲染）

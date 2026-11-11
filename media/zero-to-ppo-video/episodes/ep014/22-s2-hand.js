@@ -47,6 +47,7 @@
     ],
     build: function (K) {
       var s = K.sceneSvg('手上也有一个坐标系，第十一集讲过：红色是手的 x 轴，绿色是 y 轴，书上叫物体坐标系。肩转了九十度，手的坐标系也跟着转：手的 x 轴朝上，y 轴朝左。站在手上看，运动旋量也是六个数，叫做物体运动旋量：前三个数是角速度，后三个数是手这一点自己的速度，都按手的轴来算。只转肩时手每秒往左走三格、往下走两格：手的 x 轴朝上，往下走两格，沿 x 轴是负二；手的 y 轴朝左，往左走三格，沿 y 轴是三；验算 (−2) × (0, 1) + 3 × (−1, 0) = (−3, −2)。角速度：手的 z 轴和底座的一样，都垂直屏幕朝外，还是一。站在手上看，这个运动旋量是 (0, 0, 1, −2, 3, 0)；站在底座上看是 (0, 0, 1, 0, 0, 0)。不同的地方有两处：后三个数是什么地方的速度（原点那一点 / 手这一点），按谁的轴来算（底座的轴 / 手的轴）');
+      var recall = E.recall(s, [['r11hand', 2.25, 4.45]]);   // 回顾：第十一集讲过：手的坐标系
 
       var pn = E.panel14(s), P = pn.P, u = pn.u, top = pn.top, O = P(0, 0);
       var under2 = E.el('g', {}, top);
@@ -94,10 +95,11 @@
       var a6 = RK.line(gA, X, 280, [['手的 ', E.INK2], ['x', E.X, 900], [' 轴：朝右 → ', E.INK2], ['朝上', E.INK, 900]], 20);
       var a7 = RK.line(gA, X, 316, [['手的 ', E.INK2], ['y', E.Y, 900], [' 轴：朝上 → ', E.INK2], ['朝左', E.INK, 900]], 20);
       var gB = grp();
-      var b1 = RK.line(gB, X, 50, [['站在手上看：', E.V, 900], ['物体运动旋量', E.WARN, 900]], 22);
-      var twS = E.tw6(gB, X + 40, 180, ['ω₁', 'ω₂', 'ω₃', 'v₁', 'v₂', 'v₃'], { size: 22, dy: 28, w: 54 });
-      var bW = E.txt(gB, X + 84, 152, '角速度', 20, E.OMEGA, 'start', 900);
-      var bV = E.txt(gB, X + 84, 236, '手这一点自己的速度', 20, E.V, 'start', 900);
+      var b1 = RK.line(gB, X, 50, [['手上看的运动旋量：', E.INK2, 700], ['物体运动旋量', E.WARN, 900]], 20);
+      var twS = E.tw6(gB, X + 40, 186, ['ω₁', 'ω₂', 'ω₃', 'v₁', 'v₂', 'v₃'], { size: 22, dy: 28, w: 54 });
+      var twSTag = E.tagAbove(gB, twS, 'hand').g;   // 6 个数的正上方：手上看
+      var bW = E.txt(gB, X + 84, 158, '角速度', 20, E.OMEGA, 'start', 900);
+      var bV = E.txt(gB, X + 84, 242, '手这一点自己的速度', 20, E.V, 'start', 900);
       var b2 = RK.line(gB, X, 318, [['都按', E.INK2], ['手的轴', E.V, 900], ['来算：', E.INK2]], 20);
       var b3 = RK.line(gB, X, 352, [['沿手的 ', E.INK2], ['x', E.X, 900], [' 轴走几格', E.INK2]], 19);
       var b4 = RK.line(gB, X, 384, [['沿手的 ', E.INK2], ['y', E.Y, 900], [' 轴走几格', E.INK2]], 19);
@@ -114,7 +116,7 @@
       var gD = grp(), VY = 150;
       var dS = E.tw6(gD, X + 70, VY, [0, 0, 1, 0, 0, 0], { size: 21, dy: 25, w: 46, bracket: E.INK });
       var dB = E.tw6(gD, X + 250, VY, [0, 0, 1, -2, 3, 0], { size: 21, dy: 25, w: 46, bracket: E.V });
-      var dSL = E.txt(gD, X + 70, 52, '站在底座上看', 18, E.INK, 'middle', 900), dBL = E.txt(gD, X + 250, 52, '站在手上看', 18, E.V, 'middle', 900);
+      var dSL = E.tagAbove(gD, dS, 'base').g, dBL = E.tagAbove(gD, dB, 'hand').g;   // 两列正上方：底座上看 / 手上看
       var neq = E.txt(gD, X + 160, VY + 8, '≠', 30, E.ERR, 'middle', 900);
       var e1 = RK.line(gD, X, 290, [['① 后 3 个数：', E.INK, 900], ['原点那一点', E.INK, 900], [' / ', E.MUT], ['手这一点', E.V, 900]], 18);
       var e2 = RK.line(gD, X, 330, [['② 按谁的轴：', E.INK, 900], ['底座的轴', E.INK, 900], [' / ', E.MUT], ['手的轴', E.V, 900]], 18);
@@ -126,6 +128,7 @@
       return {
         el: s,
         draw: function (st, t) {
+        recall(st);
           if (!laid && s.isConnected) { RK.layout(); laid = true; }
           var f = E.fade, b = E.bump;
           // UR5：开场是第 11 集的零位，句 2 逆时针转 90°（蓝弧），之后停在这一集的姿势
@@ -174,7 +177,7 @@
           E.op(a3.g, fr(st, T.book)); E.op(a3.parts[1], fr(st, T.body)); E.op(a4.g, fr(st, T.body + 0.4));
           E.op(a5.g, fr(st, T.rot[0])); E.op(a5.parts[2], fr(st, T.follow)); E.op(a6.g, fr(st, T.xWas)); E.op(a6.parts[3], fr(st, T.xUp)); E.op(a7.g, fr(st, T.yWas)); E.op(a7.parts[3], fr(st, T.yLeft));
           E.op(gB, E.win(st, T.stand - 0.1, T.only - 0.2, 0.3));
-          E.op(b1.g, fr(st, T.stand)); E.op(b1.parts[1], fr(st, T.bodyTw)); E.op(twS.g, fr(st, T.six));
+          E.op(b1.g, fr(st, T.stand)); E.op(b1.parts[1], fr(st, T.bodyTw)); E.op(twSTag, fr(st, T.stand)); E.op(twS.g, fr(st, T.six));
           twS.rangeBox(0, 2, E.OMEGA, E.win(st, T.omega, T.back, 0.3)); twS.rangeBox(3, 5, E.V, fr(st, T.self));
           E.op(bW, fr(st, T.omega)); E.op(bV, fr(st, T.self));
           E.op(b2.g, fr(st, T.both)); E.op(b2.parts[1], fr(st, T.byHand)); E.op(b2.parts[2], fr(st, T.byHand)); E.op(b3.g, fr(st, T.alongX)); E.op(b4.g, fr(st, T.alongY));

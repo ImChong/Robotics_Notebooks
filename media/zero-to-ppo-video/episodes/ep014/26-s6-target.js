@@ -14,15 +14,15 @@
     t2: 26.4, hand2: 27.06, still: 28.43, self: 29.64, rot2: [29.9, 33.6], screw: 32.22,
     same6: 34.21, diffMove: 35.61, so: 37.29, where: 38.44, match: 40.27, out2: 43.4,
     j1: 43.75, js: 44.88, j2: 46.05, jb: 46.87,
-    other: 48.99, adj: 50.97, conv: 51.98, to1: 53.83, ep: 56.53, n1: 62.44,
-    to2: 66.73, spin: 68.33, oPt: 69.56, circ: 70.67, fromH: 72.43, n23: 74.35, turn: [75.38, 76.14], mv: [76.19, 76.94],
-    c1: 76.35, take2: 76.96, r02: 77.7, c2: 78.62, takeM3: 79.26, r30: 80.16, add: 81.15, sum: 81.88,
-    res: 84.43, both: 87.79, sameAdj: 89.87, onlyIf: 91.41, sameRate: 94.38, out8: 96.14,
-    book: 96.53, care: 97.4, useB: 99.62, better: 101.08, back3: 101.99, isHand: 103.23,
-    ep15: 105.63, ep15b: 108.39,
-    ep2: 55.45, hv6: 57.44, rG6: 59.34
+    other: 48.99, adj: 50.97, conv: 51.98, to1: 53.83, ep: 57.28, n1: 63.31,
+    to2: 67.67, spin: 69.52, oPt: 70.71, circ: 71.81, fromH: 73.6, n23: 75.52, turn: [76.54, 77.31], mv: [77.35, 78.1],
+    c1: 77.51, take2: 78.12, r02: 78.87, c2: 79.79, takeM3: 80.42, r30: 81.32, add: 82.31, sum: 83.04,
+    res: 85.59, both: 88.95, sameAdj: 91.03, onlyIf: 92.57, sameRate: 95.54, out8: 97.3,
+    book: 97.69, care: 98.56, useB: 100.78, better: 102.24, back3: 103.15, isHand: 104.39,
+    ep15: 106.79, ep15b: 109.55,
+    ep2: 55.78, hv6: 58.18, rG6: 60.09
   };
-  var END = 110.98;
+  var END = 112.14;
 
   E.scenes[5] = {
     title: '目标写在哪，就配哪一个',
@@ -34,11 +34,11 @@
       { at: 26.3, s: '② 站在手上写：手这一点不动，自己原地转——像拧螺丝刀' },
       { at: 34.11, s: '$6$ 个数一模一样，动作完全不同：**目标**站在什么地方写，就配站在同一个地方看的雅可比' },
       { at: 43.65, s: '① 配**空间雅可比**；② 配**物体雅可比**' },
-      { at: 48.89, s: '偏要用另一个：先用**伴随变换**把**目标**换过去。① 换到手上 = 第 2 幕只转肩那个 $(0,\\,0,\\,1,\\,-2,\\,3,\\,0)$' },
-      { at: 66.63, s: '② 换到底座上：从手指向原点 $(2,\\,-3)$，转 $90^\\circ$：$2\\times(0,\\,1)+(-3)\\times(-1,\\,0)=(3,\\,2)$' },
-      { at: 83.77, s: '$(0,\\,0,\\,1,\\,3,\\,2,\\,0)$。两边乘的是同一个**伴随变换**：只要站在同一个地方，算出的关节转速一样' },
-      { at: 96.43, s: '书上：关心手这一点自己的速度，用**物体雅可比**更合适——后 $3$ 个数就是手这一点的速度' },
-      { at: 105.53, s: '从**目标**怎么反过来算出关节转速：第 15 集' }
+      { at: 48.89, s: '偏要用另一个：先用**伴随变换**把**目标**换过去。① 换到**手上看**：$(0,\\,0,\\,1,\\,-2,\\,3,\\,0)$' },
+      { at: 67.57, s: '② 换到**底座上看**：从手指向原点 $(2,\\,-3)$，转 $90^\\circ$：$2\\times(0,\\,1)+(-3)\\times(-1,\\,0)=(3,\\,2)$' },
+      { at: 84.93, s: '$(0,\\,0,\\,1,\\,3,\\,2,\\,0)$。两边乘的是同一个**伴随变换**：只要站在同一个地方，算出的关节转速一样' },
+      { at: 97.59, s: '书上：关心手这一点自己的速度，用**物体雅可比**更合适——后 $3$ 个数就是手这一点的速度' },
+      { at: 106.69, s: '从**目标**怎么反过来算出关节转速：第 15 集' }
     ],
     build: function (K) {
       var s = K.sceneSvg('这两种雅可比用起来有什么不同？控制手的时候，先给手定一个想要的速度，叫做目标，再算各个关节该转多快。两个目标写出来都是 (0, 0, 1, 0, 0, 0)：第一个站在底座上写，绕着原点每秒转一弧度，手绕着肩转一个大圈；第二个站在手上写，手这一点不动，自己原地转，像拧螺丝刀。六个数一模一样，动作完全不同，所以目标站在什么地方写，就配站在同一个地方看的雅可比：第一个配空间雅可比，第二个配物体雅可比。偏要用另一个，就先用伴随变换把目标换过去：第一个换到手上是 (0, 0, 1, −2, 3, 0)；第二个换到底座上，从手指向原点 (2, −3)，转九十度得 (3, 2)，是 (0, 0, 1, 3, 2, 0)。两边乘的是同一个伴随变换，算出来的关节转速一样。书上说，关心手这一点自己的速度时，用物体雅可比更合适。从目标怎么反过来算出关节转速，第十五集讲');
@@ -46,8 +46,6 @@
       var pn = E.panel14(s), P = pn.P, u = pn.u, top = pn.top, O = P(0, 0);
       pn.pose(E.P90[0], E.P90[1]);
       var J = pn.joints(), pE = P(J[1][0], J[1][1]), pH = P(J[2][0], J[2][1]);
-      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62], tipOff: E.BASE_TIP }), hF = E.frame2(top, P, 1, '手', { labAt: [0.45, 0.45], labColor: E.V });
-      bF.set(0, 0, 0); hF.set(-2, 3, D90);
       var jS = E.joint(top, E.HI), jE = E.joint(top, E.HI), hand = E.dot(top, E.V, 7);
       jS.at(O); jE.at(pE); hand.at(pH);
       // 目标①、②：淡一点的坐标系（只是想要的动作，机械臂这两个关节做不出②）
@@ -68,6 +66,9 @@
       var redL = E.halo(E.txt(top, P(0, 1.5)[0] - 12, P(0, 1.5)[1] + 6, '(0, 2)', 18, E.X, 'end', 900));
       var grnL = E.halo(E.txt(top, P(1.5, 2)[0], P(1.5, 2)[1] - 14, '(3, 0)', 18, E.Y, 'middle', 900));
       var vioL = E.halo(E.txt(top, P(2.2, 0.8)[0], P(2.2, 0.8)[1] + 8, '(3, 2)', 19, E.V, 'start', 900));
+      // 两个坐标系最后画：转 90° 的白箭头扫过底座的 y 字母时，字母（描了底色）在上面，看得清
+      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62], tipOff: E.BASE_TIP }), hF = E.frame2(top, P, 1, '手', { labAt: [0.45, 0.45], labColor: E.V });
+      bF.set(0, 0, 0); hF.set(-2, 3, D90);
 
       /* ══ 右栏 ══ */
       var RK = E.rowKit(), Rg = E.el('g', {}, s);
@@ -79,9 +80,16 @@
       var gB = grp();
       var b1 = RK.line(gB, X, 44, [['2 个', E.INK2], ['目标', E.GOOD, 900], ['，写出来都是', E.INK2]], 19);
       var b2 = RK.line(gB, X, 76, [['(0, 0, 1, ', E.OMEGA, 900], ['0, 0, 0)', E.V, 900]], 22);
-      var b3 = RK.line(gB, X, 120, [['① 站在底座上写：', E.INK, 900]], 18);
+      // 「① / ②」后面挂视角标签（全片同一个样式），和这一行一起淡入
+      function numTag(g, y, num, which, text, parts, size) {
+        var r = RK.line(g, X, y, [[num, E.INK, 900]], size), w = E.tagW(which, text);
+        E.viewTag(r.g, X + 24, y - E.TAGH + 6, which, { anchor: 'start', text: text });
+        if (parts) { var r2 = RK.line(r.g, X + 24 + w + 6, y, parts, size); r.rest = r2; }
+        return r;
+      }
+      var b3 = numTag(gB, 120, '①', 'base', '底座上写', [['：', E.INK2]], 18);
       var b4 = RK.line(gB, X, 148, [['绕原点每秒转 1 弧度 → 手绕着肩转大圈', E.INK2]], 16);
-      var b5 = RK.line(gB, X, 190, [['② 站在手上写：', E.V, 900]], 18);
+      var b5 = numTag(gB, 190, '②', 'hand', '手上写', [['：', E.INK2]], 18);
       var b6 = RK.line(gB, X, 218, [['手这一点不动、原地转 → 像拧螺丝刀', E.INK2]], 16);
       var b7 = RK.line(gB, X, 262, [['6 个数一样，动作完全不同', E.ERR, 900]], 18);
       var b8 = RK.line(gB, X, 300, [['目标', E.GOOD, 900], ['在什么地方写，', E.INK2]], 18);
@@ -89,9 +97,9 @@
       var b10 = RK.line(gB, X, 370, [['① → ', E.INK2], ['空间雅可比', E.INK, 900], ['　② → ', E.INK2], ['物体雅可比', E.V, 900]], 18);
       var gC = grp();
       var c1 = RK.line(gC, X, 44, [['偏要用另一个：先用', E.INK2], ['伴随变换', E.HI, 900], ['换目标', E.INK2]], 17);
-      var c2 = RK.line(gC, X, 80, [['① 换到手上：', E.INK, 900], ['(0, 0, 1, −2, 3, 0)', E.V, 900]], 17);
+      var c2 = numTag(gC, 80, '①', 'hand', null, [['：', E.INK2], ['(0, 0, 1, −2, 3, 0)', E.V, 900]], 17);   // 换到手上看
       var c2b = RK.line(gC, X, 104, [['（第 2 幕只转肩：', E.MUT, 700], ['(−3, −2)', E.V, 900], [' 按手的轴 → ', E.MUT, 700], ['(−2, 3)', E.INK, 900], ['）', E.MUT, 700]], 15);
-      var c3 = RK.line(gC, X, 140, [['② 换到底座上：', E.V, 900], ['原点那一点绕手走圆', E.INK2]], 17);
+      var c3 = numTag(gC, 140, '②', 'base', null, [['：', E.INK2], ['原点那一点绕手走圆', E.INK2]], 17);   // 换到底座上看
       var c4 = RK.line(gC, X, 168, [['从手指向原点 ', E.INK2], ['(2, −3)', E.INK, 900], ['，', E.INK2], ['转 90°', E.OMEGA, 900]], 17);
       var c5 = RK.line(gC, X, 196, [['2 × ', E.INK, 900], ['(0, 1)', E.X, 900], [' + ', E.INK2], ['(−3) × ', E.INK, 900], ['(−1, 0)', E.Y, 900]], 17);
       var c6 = RK.line(gC, X, 224, [['= ', E.INK2], ['(0, 2)', E.X, 900], [' + ', E.INK2], ['(3, 0)', E.Y, 900], [' = ', E.INK2], ['(3, 2)', E.V, 900]], 17);
@@ -163,8 +171,8 @@
           E.op(b7.g, fr(st, T.same6)); E.op(b8.g, fr(st, T.so)); E.op(b9.g, fr(st, T.match)); E.op(b10.g, fr(st, T.j1)); E.op(b10.parts[1], fr(st, T.js)); [2, 3].forEach(function (k) { E.op(b10.parts[k], fr(st, T.j2)); });
           E.op(gC, E.win(st, T.other - 0.1, T.book - 0.2, 0.3));
           E.op(c1.g, fr(st, T.other)); E.op(c1.parts[1], fr(st, T.adj)); E.op(c1.parts[2], fr(st, T.conv));
-          E.op(c2.g, fr(st, T.to1)); E.op(c2.parts[1], fr(st, T.n1)); E.op(c2b.g, fr(st, T.ep2)); E.op(c2b.parts[1], fr(st, T.hv6)); [2, 3, 4].forEach(function (k) { E.op(c2b.parts[k], fr(st, T.rG6)); });
-          E.op(c3.g, fr(st, T.to2)); E.op(c3.parts[1], fr(st, T.oPt)); E.op(c4.g, fr(st, T.fromH)); E.op(c4.parts[1], fr(st, T.n23)); E.op(c4.parts[2], fr(st, T.turn[0])); E.op(c4.parts[3], fr(st, T.turn[0]));
+          E.op(c2.g, fr(st, T.to1)); E.op(c2.rest.parts[1], fr(st, T.n1)); E.op(c2b.g, fr(st, T.ep2)); E.op(c2b.parts[1], fr(st, T.hv6)); [2, 3, 4].forEach(function (k) { E.op(c2b.parts[k], fr(st, T.rG6)); });
+          E.op(c3.g, fr(st, T.to2)); E.op(c3.rest.parts[1], fr(st, T.oPt)); E.op(c4.g, fr(st, T.fromH)); E.op(c4.parts[1], fr(st, T.n23)); E.op(c4.parts[2], fr(st, T.turn[0])); E.op(c4.parts[3], fr(st, T.turn[0]));
           E.op(c5.g, fr(st, T.c1)); E.op(c5.parts[0], fr(st, T.take2)); E.op(c5.parts[1], fr(st, T.take2)); [2, 3, 4].forEach(function (k) { E.op(c5.parts[k], fr(st, T.takeM3)); });
           E.op(c6.g, fr(st, T.r02)); E.op(c6.parts[2], fr(st, T.r30)); E.op(c6.parts[3], fr(st, T.r30)); E.op(c6.parts[4], fr(st, T.sum)); E.op(c6.parts[5], fr(st, T.sum));
           E.op(c7.g, fr(st, T.res)); E.op(c8, fr(st, T.both)); E.op(c9.g, fr(st, T.sameAdj)); E.op(c10.g, fr(st, T.onlyIf)); E.op(c10.parts[0], fr(st, T.onlyIf));

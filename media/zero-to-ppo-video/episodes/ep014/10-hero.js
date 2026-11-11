@@ -11,11 +11,12 @@
   var T = {
     ep13: 0.7, each: 2.11, rate: 2.9, jac: 3.85, hand: 4.93, write: 5.91, eachCol: 7.19, screw: 9.34,
     now: 11.12, same: 12.87, base: 13.94, handV: 15.28, jac2: 17.2, why: 18.03, how: 19.61,
-    ans: 21.69, m66: 22.67, adj: 24.4, only: 25.68, pos: 27.22, ori: 27.74, mul: 28.53, other: 30.78
+    ans: 21.69, m66: 22.67, adj: 24.4, only: 26.51, pos: 27.62, ori: 28.14, mul: 28.93, other: 30.87
   };
 
   E.hero = function (K) {
-    var s = K.sceneSvg('片头主图：第十三集讲过，每个关节的转速乘上雅可比，就是手的速度；写成运动旋量，每一列就是关节轴此刻的螺旋轴。这一集回答一个问题：同一个速度，站在底座上看、和站在手上看，写出来的雅可比为什么不一样？怎么互相换？答案是一个六乘六的矩阵，叫做伴随变换：它只用到手此刻的位置和朝向，乘上它，就从一种换成另一种');
+    var s = K.sceneSvg('片头主图：第十三集讲过，每个关节的转速乘上雅可比，就是手的速度；写成运动旋量，每一列就是关节轴此刻的螺旋轴。这一集回答一个问题：同一个速度，站在底座上看、和站在手上看，写出来的雅可比为什么不一样？怎么互相换？答案是一个六乘六的矩阵，叫做伴随变换：它用到的，只有手此刻的位置和朝向，乘上它，就从一种换成另一种');
+    var recall = E.recall(s, [['r13hero', 0.55, 5.55], ['r13cols', 5.85, 10.65]]);   // 回顾：第十三集讲过：转速乘雅可比（013 片头）；每一列是螺旋轴（013 第 6 幕）
 
     var pn = E.panel14(s, { ox: 268, oy: 292 }), P = pn.P, u = pn.u, top = pn.top, O = P(0, 0);
     pn.pose(E.P90[0], E.P90[1]);
@@ -28,8 +29,9 @@
     sArc.set(3.45, 4.55); eArc.set(3.6, 2.4);   // 肩逆时针（+1）、肘顺时针（−1），都画在关节左边（右边是大臂）
     var vv = E.gv(top, P, E.V, 5.5, { head: 17 }); vv.line.style.filter = 'drop-shadow(0 0 2px #000)';
     var v1 = E.vHand(J, 1, -1);   // (−1, −2)
-    var standB = E.halo(E.txt(top, P(0.4, -1.45)[0], P(0.4, -1.45)[1] + 6, '站在底座上看', 18, E.INK, 'start', 900));
-    var standH = E.halo(E.txt(top, P(-2.55, 4.35)[0], P(-2.55, 4.35)[1] + 4, '站在手上看', 18, E.V, 'end', 900));
+    // 视角标签（全片同一个样式，见 00-common.js 的 E.viewTag）：底座旁「底座上看」、手旁「手上看」
+    var standB = E.viewTag(top, P(0.4, -1.45)[0], P(0.4, -1.45)[1] - 12, 'base', { anchor: 'start' }).g;
+    var standH = E.viewTag(top, P(-2.55, 4.35)[0], P(-2.55, 4.35)[1] - 14, 'hand', { anchor: 'end' }).g;
     // 伴随变换：从底座弯到手的虚线箭头
     var adP = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '8 6' }, top), null, E.HI);
     var a0 = P(0.9, 0.6), a1 = P(-0.9, 3.6), cp = P(1.2, 3.8);
@@ -48,7 +50,7 @@
     var MY = 256;
     var Js = E.matN(bQ, RX + 70, MY, [[0, 0], [0, 0], [1, 1], [0, 1], [0, 2], [0, 0]], { size: 16, dx: 28, dy: 20, color: function (i, j) { return j === 0 ? E.J1 : E.J2; } });
     var Jb = E.matN(bQ, RX + 262, MY, [[0, 0], [0, 0], [1, 1], [-2, 0], [3, 2], [0, 0]], { size: 16, dx: 30, dy: 20, color: function (i, j) { return j === 0 ? E.J1 : E.J2; } });
-    var jsT = E.txt(bQ, RX + 70, 180, '站在底座上看', 17, E.INK, 'middle', 900), jbT = E.txt(bQ, RX + 262, 180, '站在手上看', 17, E.V, 'middle', 900);
+    var jsT = E.viewTag(bQ, RX + 70, 160, 'base').g, jbT = E.viewTag(bQ, RX + 262, 160, 'hand').g;   // 两个雅可比正上方各挂视角标签
     var qm = E.txt(bQ, RX + 166, MY + 6, '≠ ?', 28, E.ERR, 'middle', 900);
     var q1 = E.txt(bQ, CX, 342, '为什么不一样？怎么互相换？', 21, E.HI, 'middle', 900);
     var gAns = E.el('g', {}, R);
@@ -58,6 +60,7 @@
     return {
       el: s,
       draw: function (t) {
+      recall(t);
         var f = E.fade, b = E.bump, fr = function (a) { return f(t, a, 0.3); };
         pn.pose(E.P90[0], E.P90[1]); pn.view.clearTint();
         E.op(jS, fr(0.2)); E.op(jE, fr(0.2)); E.op(hand, fr(0.2));
