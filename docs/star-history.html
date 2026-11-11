@@ -39,6 +39,15 @@
     .trend-legend[hidden] { display: none; }
     .trend-legend li { display: flex; align-items: center; gap: 6px; min-width: 0; }
     .trend-legend i { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+    .trend-legend--interactive { grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); gap: 4px 8px; }
+    .trend-legend--interactive button {
+      display: flex; align-items: center; gap: 6px; width: 100%; min-height: 30px; padding: 3px 6px;
+      border: 1px solid var(--border); border-radius: 5px; background: transparent; color: var(--text);
+      font: inherit; text-align: left; cursor: pointer;
+    }
+    .trend-legend--interactive button:hover { border-color: var(--border-strong); }
+    .trend-legend--interactive button[aria-pressed="false"] { color: var(--text-muted); text-decoration: line-through; }
+    .trend-legend--interactive button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
     /* 时间线跨度过长时的快捷范围按钮：一行置于图上方，提示文字跟在按钮后 */
     .trend-range { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 8px; }
     .trend-range[hidden] { display: none; }
@@ -70,7 +79,7 @@
           <h1 class="section-title" id="trend-heading">增长趋势</h1>
           <div class="home-hub-tabs" id="trend-tabs" role="group" aria-label="切换趋势视图"></div>
         </div>
-        <p class="section-subtitle">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区、类型、开源、健康度与纵深节点数取自当前知识图谱，公司 / 实验室节点数按各自技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
+        <p class="section-subtitle" id="trend-description">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区、类型、开源、健康度与纵深节点数取自当前知识图谱，公司 / 实验室节点数按各自技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
         <ul class="trend-legend" id="trend-legend" aria-label="社区配色" hidden></ul>
         <div class="trend-range" id="trend-range" role="group" aria-label="时间范围" hidden></div>
@@ -97,6 +106,9 @@
       var status = document.getElementById('trend-status');
       var legend = document.getElementById('trend-legend');
       var rangeBar = document.getElementById('trend-range');
+      var chart = document.getElementById('trend-chart');
+      var description = document.getElementById('trend-description');
+      var defaultDescription = description.textContent;
 
       function getJSON(url) {
         return fetch(url).then(function (r) {
@@ -104,6 +116,8 @@
           return r.json();
         });
       }
+
+      var DAY_MS = 86400000;
 
       // 按日计数 → 累计序列
       function cumulative(daily) {
@@ -133,19 +147,67 @@
         var out = [];
         a.days.forEach(function (d) {
           d.nodes.forEach(function (n) {
-            if (n.action === 'added') out.push({ date: d.date, path: n.path || '' });
+            if (n.action === 'added') out.push({ date: d.date, path: n.path || '', detailId: n.detail_id });
           });
         });
         return out;
       });
 
-      // 社区 / 纵深 / 公司节点数：取当前知识图谱快照（仅在切到对应视图时加载）
+      // 社区、节点趋势及分类统计共用当前图谱快照，按需加载。
       var linkGraphPromise = null;
       function linkGraph() {
         return linkGraphPromise || (linkGraphPromise = getJSON('exports/link-graph.json').then(function (g) {
           return expandExport('expandLinkGraph', g);
         }));
       }
+
+      function buildNodeTrends(added, graph) {
+        var communities = RNGraphTooltip.getSortedCommunities(graph.communities);
+        var colors = RNGraphTooltip.buildCommunityColorMap(graph.communities);
+        var known = new Set(communities.map(function (c) { return c.id; }));
+        var byPath = new Map(graph.nodes.map(function (n) { return [n.id, n.community]; }));
+        var unclassified = '__unclassified__';
+        var seen = new Set();
+        var used = new Set();
+        var byDay = new Map();
+        // 重复路径只计最早的新增日。缺路径时可用详情 ID 去重，仍归为未分类。
+        added.slice().sort(function (a, b) { return a.date.localeCompare(b.date); }).forEach(function (entry) {
+          var key = entry.path || (entry.detailId && 'detail:' + entry.detailId);
+          if (key && seen.has(key)) return;
+          if (key) seen.add(key);
+          var id = byPath.get(entry.path);
+          if (!known.has(id)) id = unclassified;
+          used.add(id);
+          if (!byDay.has(entry.date)) byDay.set(entry.date, new Map());
+          var counts = byDay.get(entry.date);
+          counts.set(id, (counts.get(id) || 0) + 1);
+        });
+
+        var dates = Array.from(byDay.keys());
+        var x = [];
+        for (var t = Date.parse(dates[0]), end = Date.parse(dates[dates.length - 1]); t <= end; t += DAY_MS) {
+          x.push(new Date(t).toISOString().slice(0, 10));
+        }
+        var series = communities.concat([{ id: unclassified, label: '未分类' }]).filter(function (c) {
+          return x.length && (c.size > 0 || used.has(c.id));
+        }).map(function (c) {
+          var daily = x.map(function (date) { return byDay.get(date)?.get(c.id) || 0; });
+          return { id: c.id, name: RNGraphTooltip.shortenCommunityLabel(c.label || c.id),
+            color: colors[c.id] || '#64748b', daily: daily, cumulative: cumulative({ x: x, y: daily }).y };
+        });
+        var daily = x.map(function (_, i) {
+          return series.reduce(function (sum, c) { return sum + c.daily[i]; }, 0);
+        });
+        return { x: x, series: series, daily: daily, cumulative: cumulative({ x: x, y: daily }).y };
+      }
+
+      var nodeTrendsPromise;
+      function nodeTrends() {
+        return nodeTrendsPromise || (nodeTrendsPromise = Promise.all([addedNodes, linkGraph()]).then(function (data) {
+          return buildNodeTrends(data[0], data[1]);
+        }));
+      }
+
       var graphStatsPromise = null;
       function graphStats() {
         return graphStatsPromise || (graphStatsPromise = getJSON('exports/graph-stats.json'));
@@ -230,10 +292,8 @@
               return { x: s.x, y: s.y.map(function (n, i) { return n - (i ? s.y[i - 1] : 0); }) };
             });
           } },
-        { id: 'nodes', label: '节点数趋势', unit: '节点', kind: 'line',
-          load: function () { return addedNodes.then(function (n) { return cumulative(dailyFromDates(n.map(function (v) { return v.date; }))); }); } },
-        { id: 'nodes-daily', label: '每日节点数', unit: '新增节点', kind: 'bar',
-          load: function () { return addedNodes.then(function (n) { return dailyFromDates(n.map(function (v) { return v.date; })); }); } },
+        { id: 'nodes', label: '节点数趋势', unit: '节点', kind: 'line', load: nodeTrends },
+        { id: 'nodes-daily', label: '每日节点数', unit: '新增节点', kind: 'bar', load: nodeTrends },
         { id: 'depth', label: '纵深数趋势', unit: '纵深路线', kind: 'line', hidden: true,
           load: function () { return depthDaily().then(cumulative); } },
         { id: 'depth-daily', label: '每日纵深数', unit: '新增纵深路线', kind: 'bar', hidden: true,
@@ -502,8 +562,13 @@
       // Plotly 调用串行化：上一次 react 未完成时再 react 会留下错乱的内部状态
       //（范围滑条被撑到 2000-01-01），拖动滑条后坐标轴随之跑偏
       var drawing = Promise.resolve();
+      var hiddenCommunities = new Set();
       function render(view) {
+        if (current !== view && legend.classList.contains('trend-legend--interactive')) legend.hidden = true;
         current = view;
+        description.textContent = view.load === nodeTrends
+          ? '按现存页面的 Git 首次加入日统计，按当前知识图谱的主社区回溯归类。'
+          : defaultDescription;
         Array.prototype.forEach.call(tabs.children, function (b) {
           var active = b.dataset.view === view.id;
           b.className = 'home-hub-tab' + (active ? ' is-active' : '');
@@ -517,6 +582,7 @@
         }).catch(function (e) {
           if (current !== view) return;
           status.textContent = window.Plotly ? '加载失败：' + e.message : '图表库（Plotly）加载失败，请检查网络后刷新页面重试';
+          if (view.load === nodeTrends) legend.hidden = true;
           if (window.Plotly) Plotly.purge('trend-chart');
         });
         history.replaceState(null, '', '?view=' + view.id);
@@ -529,20 +595,27 @@
         var muted = css.getPropertyValue('--text-muted').trim();
         var grid = css.getPropertyValue('--border').trim();
         var accent = css.getPropertyValue('--accent').trim();
+        var bg = css.getPropertyValue('--bg').trim();
+        var communityTrend = view.load === nodeTrends;
+        var bar = view.kind === 'bar';
         rangeBar.hidden = true;
         ganttRange = null;
+        legend.classList.toggle('trend-legend--interactive', communityTrend);
+        // 交互图例放在两张趋势图下方，窄屏先显示时间轴和图表。
+        if (communityTrend) chart.after(legend);
+        else if (legend.previousElementSibling === chart) rangeBar.before(legend);
         // 甘特图与条形图高度按行数计算；行少时（如实验室时间线 / 节点数）不再被 460px 最小高度撑出空白
-        document.getElementById('trend-chart').style.minHeight = view.kind === 'gantt' || view.kind === 'category' ? '0' : '460px';
+        chart.style.minHeight = view.kind === 'gantt' || view.kind === 'category' ? '0' : '460px';
         if (view.kind === 'category') return drawCategory(view, s, text, muted, grid);
-        if (view.kind === 'gantt') return drawGantt(view, s, text, muted, grid, css.getPropertyValue('--bg').trim());
-        legend.hidden = true;
-        var trace = view.kind === 'bar'
-          ? { type: 'bar', marker: { color: accent }, width: 0.8 * 86400000 } // 日期不连续时固定为 0.8 天宽
-          : { type: 'scatter', mode: 'lines', line: { color: accent, width: 2, shape: 'hv' } };
-        trace.x = s.x;
-        trace.y = s.y;
-        trace.hovertemplate = '%{x|%Y-%m-%d}<br>%{y} ' + view.unit + '<extra></extra>';
-        var plotted = Plotly.react('trend-chart', [trace], {
+        if (view.kind === 'gantt') return drawGantt(view, s, text, muted, grid, bg);
+        if (!communityTrend) legend.hidden = true;
+        var y = communityTrend ? (bar ? s.daily : s.cumulative) : s.y;
+        var traces = communityTrend ? nodeTrendTraces(s, bar, text) : [Object.assign(bar
+          ? { type: 'bar', marker: { color: accent }, width: 0.8 * DAY_MS } // 日期不连续时固定为 0.8 天宽
+          : { type: 'scatter', mode: 'lines', line: { color: accent, width: 2, shape: 'hv' } }, {
+          x: s.x, y: y, hovertemplate: '%{x|%Y-%m-%d}<br>%{y} ' + view.unit + '<extra></extra>'
+        })];
+        var layout = {
           paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
           // 显式高度：分类视图更高，切回时 react 不会按容器重算高度
           font: { color: text }, height: 460, margin: { t: 20, r: 20, b: 50, l: 60 },
@@ -550,9 +623,9 @@
             gridcolor: grid, type: 'date', rangeslider: { visible: true },
             // 数字日期格式，避免 Plotly 默认的英文月份（May 2026）
             tickformatstops: [
-              { dtickrange: [null, 86400000 - 1], value: '%m-%d %H:%M' },
-              { dtickrange: [86400000, 14 * 86400000], value: '%m-%d' },
-              { dtickrange: [14 * 86400000 + 1, null], value: '%Y-%m' }
+              { dtickrange: [null, DAY_MS - 1], value: '%m-%d %H:%M' },
+              { dtickrange: [DAY_MS, 14 * DAY_MS], value: '%m-%d' },
+              { dtickrange: [14 * DAY_MS + 1, null], value: '%Y-%m' }
             ]
           },
           yaxis: { gridcolor: grid, title: view.unit, rangemode: 'tozero' },
@@ -560,14 +633,97 @@
           modebar: { bgcolor: 'rgba(0,0,0,0)', color: muted, activecolor: text },
           // 触屏上拖拽框选会吞掉页面滚动；缩放交给下方范围滑条
           dragmode: touch ? false : 'zoom'
-        }, { responsive: true, displaylogo: false, displayModeBar: !touch });
-        var total = view.kind === 'bar'
-          ? s.y.reduce(function (a, b) { return a + b; }, 0)
-          : (s.y[s.y.length - 1] || 0);
-        status.textContent = view.label + '：' + (view.kind === 'bar' ? '合计 ' : '当前 ') + total + ' ' + view.unit
+        };
+        if (communityTrend) {
+          layout.barmode = 'stack';
+          layout.showlegend = false;
+          layout.hovermode = 'x unified';
+          layout.hoverdistance = -1;
+          layout.hoverlabel = { bgcolor: bg, bordercolor: grid, font: { color: text, size: 12 } };
+          layout.xaxis.hoverformat = '%Y-%m-%d';
+          layout.uirevision = view.id;
+        }
+        var plotted = Plotly.react('trend-chart', traces, layout, { responsive: true, displaylogo: false, displayModeBar: !touch });
+        var total = bar ? y.reduce(function (a, b) { return a + b; }, 0) : (y[y.length - 1] || 0);
+        status.textContent = view.label + '：' + (bar ? '合计 ' : '当前 ') + total + ' ' + view.unit
           + (s.x.length ? '（' + s.x[0] + ' → ' + s.x[s.x.length - 1] + '）' : '');
-        return plotted;
+        return communityTrend ? plotted.then(function (gd) {
+          if (current === view) drawNodeTrendLegend(gd, view, s.series);
+          return gd;
+        }) : plotted;
       }
+
+      function nodeTrendTraces(s, daily, text) {
+        var key = daily ? 'daily' : 'cumulative';
+        var traces = s.series.map(function (c) {
+          return Object.assign({ name: c.name, x: s.x, y: c[key], hoverinfo: 'skip',
+            visible: hiddenCommunities.has(c.id) ? 'legendonly' : true }, daily
+            ? { type: 'bar', marker: { color: c.color }, width: 0.8 * DAY_MS }
+            : { type: 'scatter', mode: 'lines', stackgroup: 'communities', fillcolor: c.color,
+              line: { color: c.color, width: 0, shape: 'hv' } });
+        });
+        // 合计独立于图例开关，同时为零新增的日期保留整日悬停目标。
+        var names = document.createElement('span');
+        var labels = s.series.map(function (c) {
+          names.textContent = c.name;
+          return '<br><span style="color:' + c.color + '">■</span> ' + names.innerHTML + ' ';
+        });
+        traces.push({ type: 'scatter', mode: daily ? 'markers' : 'lines+markers', name: '合计', x: s.x, y: s[key],
+          line: { color: text, width: 1.5, shape: 'hv' }, marker: { color: text, opacity: 0 },
+          customdata: s.x.map(function (_, i) {
+            return s.series.map(function (c, j) { return c[key][i] ? labels[j] + c[key][i] : ''; }).join('');
+          }),
+          hovertemplate: '<b>' + (daily ? '当日新增' : '截至当日') + '合计 %{y} 节点</b>%{customdata}<extra></extra>'
+        });
+        return traces;
+      }
+
+      function drawNodeTrendLegend(gd, view, series) {
+        bindChartLinks(gd, view, null);
+        legend.replaceChildren();
+        legend.hidden = !series.length;
+        series.forEach(function (c, i) {
+          var item = document.createElement('li');
+          var button = document.createElement('button');
+          var swatch = document.createElement('i');
+          button.type = 'button';
+          button.setAttribute('aria-pressed', String(!hiddenCommunities.has(c.id)));
+          swatch.style.backgroundColor = c.color;
+          swatch.setAttribute('aria-hidden', 'true');
+          button.append(swatch, c.name);
+          item.appendChild(button);
+          legend.appendChild(item);
+          button.addEventListener('click', function () {
+            var visible = hiddenCommunities.delete(c.id);
+            if (!visible) hiddenCommunities.add(c.id);
+            button.setAttribute('aria-pressed', String(visible));
+            var job = drawing.then(function () {
+              if (current === view) return Plotly.restyle(gd, { visible: visible ? true : 'legendonly' }, [i]);
+            });
+            drawing = job.catch(function () {});
+          });
+        });
+      }
+
+      // 触屏轻点按日期定位，即使点在空白或零新增的日期也能查看明细。
+      var trendTap = null;
+      chart.addEventListener('pointerdown', function (ev) {
+        if (!current || current.load !== nodeTrends || ev.pointerType !== 'touch' || !ev.target.matches('.nsewdrag')) return;
+        trendTap = { view: current, target: ev.target, id: ev.pointerId, x: ev.clientX, y: ev.clientY };
+      });
+      chart.addEventListener('pointercancel', function () { trendTap = null; });
+      chart.addEventListener('pointerup', function (ev) {
+        if (!trendTap || trendTap.id !== ev.pointerId) return;
+        var tap = trendTap;
+        trendTap = null;
+        if (Math.hypot(ev.clientX - tap.x, ev.clientY - tap.y) > 8) return;
+        var rect = tap.target.getBoundingClientRect();
+        var point = { xpx: ev.clientX - rect.left, ypx: ev.clientY - rect.top };
+        // 等 Plotly 结束触摸手势，再显示统一浮窗。
+        requestAnimationFrame(function () {
+          if (current === tap.view && chart.contains(tap.target)) Plotly.Fx.hover(chart, point);
+        });
+      });
 
       // 社区名 / 纵深名 / 公司名做横向条形图：长标签放纵轴水平排布，不再斜排挤占图面；
       // 保持数据给出的顺序，首项在上，条末标数值；多个 series 时按社区堆叠并显示图例
