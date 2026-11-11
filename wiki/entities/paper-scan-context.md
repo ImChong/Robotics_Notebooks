@@ -96,6 +96,24 @@ flowchart LR
 | 偏航初值 | KITTI 08 上给 ICP 提供初值后，反向回环可配准，并减少耗时与 RMSE（IV-C，Fig. 7、8，曲线图） |
 | 耗时（Matlab，KITTI 00） | 描述符 0.1291 s（含平移增强，不含约 0.0143 s），搜索 0.0807 s（-10）与 0.3331 s（-50）；M2DP 搜索 0.0032 s（IV-D，Table II） |
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| 本文 Scan Context | 极坐标 bin 最大高度矩阵 + ring key 检索 + 列平移精排 | 不需训练，保留 bin 位置信息，可检出反向回环并给偏航初值 |
+| M2DP（论文基线） | 多视角 2D 投影得到的 192 维全局描述符 | 搜索更快（0.0032 s 对 0.0807 s，Table II），但无法检出 KITTI 08 的反向回环（IV-B） |
+| [Scan Context++](./paper-scan-context-plus-plus.md) | 同一作者的期刊扩展版 | 加 Cart Context 抗横向平移、对齐键预对齐，检索复杂度从 O(N^3) 降到 O(N^2) |
+| [NeuroGPR](./paper-neurogpr-brain-inspired-place-recognition.md) | 视觉 + LiDAR 的类脑混合网络地点识别 | 学习式、多模态；Scan Context 只用单帧 LiDAR 几何、无训练 |
+
+## 结论
+
+**Scan Context 用「方位角 × 半径」bin 的最大高度矩阵加旋转不变 ring key，给 LiDAR 回环检测提供了一个免训练、能识别反向重访的全局描述符。**
+
+1. 三个数据集 12 条序列上 PR 曲线总体优于 M2DP、Z-projection、ESF，KITTI 08 反向回环优势最明显（IV-B，只有曲线，无汇总数值）。
+2. 匹配得到的列平移 n* 可作 ICP 偏航初值，使反向回环可配准（IV-C）。
+3. 代价是检索更慢：Matlab 下搜索 0.0807 s（top-10）至 0.3331 s（top-50），慢于 M2DP（Table II）。
+4. 局限：依赖垂直高度变化，室内与窄路重复结构下性能下降；对噪声与遮挡没有受控实验，平移只靠增强处理（III-A、IV-B）。
+
 ## 工程实践
 
 - 参数：论文取 Ns = 60、Nr = 20、Lmax = 80 m，下采样体素 0.6 m³，候选数 10 或 50，真阳性半径 4 m，排除相邻 50 个节点；阈值 τ 是唯一随 PR 曲线变化的参数（IV-A）。这些是 KITTI 一类室外车载数据上的设置，换传感器与场景需重新调，推测。

@@ -106,6 +106,24 @@ flowchart TD
 | ATE（Table IV） | KAIST 03 平移 20.7/42.7 → 3.4/8.8 m；Riverside 02 47.7/130.5 → 15.2/50.5 m（LeGO-LOAM → SC-LeGO-LOAM，均值/最大） | §VII-F |
 | 建议（§VIII-G） | 城市道路用 CC / A-CC，通用环境与重视半度量定位用 PC / A-PC | §VIII-G |
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| 本文 Scan Context++ | 旋转（PC）与横向平移（CC）两条不变轴 + 检索键 / 对齐键三阶段检索 | 增强描述子得到复合变化下的伪不变性，并给出 1-DOF 半度量初值 |
+| [Scan Context](./paper-scan-context.md)（前作，IROS 2018） | 极坐标 BEV 描述子，抗旋转 | 只有 Polar Context，候选验证靠全描述子逐列移位比较，无横向不变与对齐键 |
+| M2DP / SegMatch / PointNetVLAD（论文基线） | 投影统计、分割匹配、学习式全局描述子 | Table V 计时：M2DP 5.8 ms 比本文 PC 8.3 ms 更快；SegMatch 796.0 ms 且评测时用了真值里程计；PointNetVLAD 34.0 ms 需 GPU |
+| [SA-LOAM](./paper-sa-loam.md) | 语义图匹配做回环 | 依赖语义分割与 GPU；Scan Context++ 只用几何高度、CPU 即可 |
+
+## 结论
+
+**Scan Context++ 把 LiDAR 地点识别拆成「旋转不变的 PC」与「横向不变的 CC」两种描述子，并用检索键加对齐键把检索复杂度从 O(N^3) 降到 O(N^2)，在城市道路的反向重访与换道场景里都能稳定闭环。**
+
+1. PC 适合反向重访（KITTI 08），CC 适合同向换道（Riverside 02），复合变化下 A-CC 总体最好（§VII-B、§VII-C）。
+2. 对齐键给出的 1-DOF 初值平均误差为 A-PC 1.03°、A-CC 0.84 m，可作 ICP 初值（§VII-E）。
+3. 接入 LeGO-LOAM 后 KAIST 03 平均 ATE 从 20.7 m 降到 3.4 m（Table IV）；检索平均约 7.3 ms（Fig. 18）。
+4. 局限：单个描述子只在一个方向不变，依赖平面运动与城市道路结构，横滚俯仰扰动、走廊类混叠与跨雷达建图定位不在覆盖范围（§VIII）。
+
 ## 工程实践
 
 - 代码：作者仓库 [gisbi-kim/scancontext](https://github.com/gisbi-kim/scancontext)，README 说明 C++ 实现为单头文件加源文件（`Scancontext.h/.cpp`）、依赖 nanoflann、API 为 `makeAndSaveScancontextAndKeys` 与 `detectLoopClosureID`，并列出 SC-A-LOAM、SC-LeGO-LOAM、SC-LIO-SAM、FAST_LIO_SLAM 等集成仓库。该 README 未出现 Scan Context++ 字样，仓库代码是否含 CC / 增强 / 对齐键，**未核实**（只读了 README，未读源码）。
