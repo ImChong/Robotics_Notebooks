@@ -1,9 +1,10 @@
 ---
 type: entity
 project_id: lingbot-touch
+arxiv: "2611.12806"
 tags: [robotics, tactile-perception, dexterous-manipulation, representation-learning, jepa, transformer, robbyant, ant-group]
 status: complete
-updated: 2026-11-10
+updated: 2026-11-11
 project: "https://technology.robbyant.com/lingbot-touch"
 code: "https://github.com/Robbyant/lingbot-touch"
 summary: "LingBot-Touch 是 Robbyant 发布的异构触觉 JEPA 表征模型：将压阻、磁性与视触觉信号统一为可迁移触觉 token，并提供 Tiny/Small 冻结 encoder 推理代码及权重；官方技术报告 27 页已通读；明确 JEPA 训练目标、布局增强、真实/仿真评测及有限开源边界。"
@@ -48,6 +49,7 @@ related:
 | 维度 | 公开信息与核验口径 |
 |---|---|
 | 机构 | 蚂蚁灵波（Robbyant，蚂蚁集团旗下） |
+| arXiv | [arXiv:2611.12806](https://arxiv.org/abs/2611.12806)（论文条目，与原技术报告归于同一项目节点） |
 | 论文 | [官方技术报告 PDF](https://github.com/Robbyant/lingbot-touch/blob/main/paper/Learning_Heterogeneous_Tactile_Representation_for_General_Dexterous_Manipulation.pdf)（27 页全文与附录已核验） |
 | 主页 | [LingBot-Touch](https://technology.robbyant.com/lingbot-touch) |
 | 代码 | [Robbyant/lingbot-touch](https://github.com/Robbyant/lingbot-touch)：Apache-2.0 |
@@ -247,7 +249,8 @@ sequenceDiagram
 
 ## 参考来源
 
-- [官方技术报告读取状态与后续核验清单](../../sources/papers/lingbot-touch-technical-report.md)
+- [官方技术报告全文通读归档](../../sources/papers/lingbot-touch-technical-report.md)
+- [arXiv:2611.12806](https://arxiv.org/abs/2611.12806)（新增论文身份，不新建重复项目节点）
 - [官方项目主页全文核验](../../sources/sites/lingbot-touch-official.md)
 - [推理源码 / HF 权重与输入接口核验](../../sources/repos/lingbot-touch-official.md)
 
