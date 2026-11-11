@@ -2113,6 +2113,7 @@
 - [DAPL：杂乱场景中的外在灵巧性（Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning）](wiki/entities/paper-dapl-extrinsic-dexterity-clutter.md) — DAPL**（*Emerging Extrinsic Dexterity in Cluttered Scenes via Dynamics-aware Policy Learning*，[arXi `📅unknown` `[entity_page]`
 - [DART：SAM3 实时多类别开放词汇检测](wiki/entities/paper-dart-sam3-realtime.md) — DART**（*Detect Anything in Real Time*；论文 *From Single-Prompt Segmentation to Multi-Class Detection `📅unknown` `[entity_page]`
 - [Darwin Gödel Machine（DGM）：达尔文哥德尔机——自我改进智能体的开放式进化](wiki/entities/paper-darwin-godel-machine.md) — 论文：** *Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents*（[arXiv:2505.22954v3](h `📅unknown` `[entity_page]`
+- [DASH：面向人形机器人的异步视觉语言动作控制](wiki/entities/paper-dash-async-humanoid-vla.md) — DASH — Asynchronous Humanoid Vision-Language-Action Control `📅unknown` `[entity_page]`
 - [DASH：面向串联机械臂与人形机器人的达芬奇器械适配器](wiki/entities/paper-dash-da-vinci-adapter.md) — DASH**（*A da Vinci Adapter for Serial-link and Humanoid Robots as an Accessible Platform for Surgi `📅unknown` `[entity_page]`
 - [DASH：分歧自适应的 OPSD 监督视界](wiki/entities/paper-dash-opsd.md) — DASH**（*Divergence-Adaptive Supervision Horizons*；[arXiv:2608.06243](https://arxiv.org/abs/2608.06 `📅unknown` `[entity_page]`
 - [DAT：Divide and Truncate 多物理无穿透接触](wiki/entities/paper-dat-divide-and-truncate.md) — Divide and Truncate（DAT）**（*A Penetration and Inversion Free Framework for Coupled Multi-physics S `📅unknown` `[entity_page]`
@@ -2392,6 +2393,7 @@
 - [EXE: Egocentric Cross-Embodiment Pretraining via Factorized Latent Actions for VLA Models](wiki/entities/paper-exe-cross-embodiment.md) — 一句话定义：** 将第一视角视频的潜在动作分解为可迁移的共享操作先验与具身特有运动学，借共享动作表示向不同机器人传递操作语义。 `📅unknown` `[entity_page]`
 - [Execution Horizon vs Sampling Depth（arXiv:2610.32102）](wiki/entities/paper-execution-horizon-vs-sampling-depth.md) — Execution Horizon vs Sampling Depth**（*Coupling Execution Horizon and Sampling Depth in Flow-Match `📅unknown` `[entity_page]`
 - [Execution Logs Sway VLM Judges（arXiv:2610.34151）](wiki/entities/paper-execution-logs-sway-vlm-judges.md) — Execution Logs Sway VLM Judges**（*Execution Logs Sway VLM Judges of Robot Progress*，[arXiv:2610.34 `📅unknown` `[entity_page]`
+- [ExoStack：面向可穿戴外骨骼的模块化 ROS 2 软件栈](wiki/entities/paper-exostack.md) — ExoStack: A Modular ROS 2 Framework for Wearable Robotics `📅unknown` `[entity_page]`
 - [本体不匹配条件下基于经验可行性感知的生成式对抗观察模仿](wiki/entities/paper-experience-based-feasibility-aware-generative.md) — Experience-Based Feasibility-Aware Generative Adversarial Imitation from Observation under Embodim `📅unknown` `[entity_page]`
 - [基于经验驱动持续学习的四足地形可通行性预测](wiki/entities/paper-experience-driven-continual-learning-of.md) — Experience-Driven Continual Learning of Terrain Traversability for Quadruped Robots**（[arXiv:2609. `📅unknown` `[entity_page]`
 - [Explicit Frictional Contact Modeling in Neural Garment Simulation](wiki/entities/paper-explicit-friction.md) — 一句话定义：** 神经布料预测器之后加入可调摩擦的接触算子，估计法向载荷、执行库仑修正并传播布料运动。 `📅unknown` `[entity_page]`
@@ -2970,6 +2972,7 @@
 - [LeVJEPA（无启发式视频预训练 · arXiv:2608.27395）](wiki/entities/paper-levjepa.md) — LeVJEPA**（*LeVJEPA: Efficient & Scalable Video Pretraining without the Heuristics*，[arXiv:2608.273 `📅unknown` `[entity_page]`
 - [LeWAM：用同一个潜在模型执行与规划](wiki/entities/paper-lewam.md) — LeWAM**（*End-to-End World and Action Modeling with JEPAs*，[arXiv:2610.12818](https://arxiv.org/abs `📅unknown` `[entity_page]`
 - [LeWorldModel / LeWM（像素端到端 JEPA WM · arXiv:2603.19312）](wiki/entities/paper-lewm.md) — LeWorldModel（LeWM）**（*Stable End-to-End Joint-Embedding Predictive Architecture from Pixels*，[arXi `📅unknown` `[entity_page]`
+- [LHNav：面向 Unitree G1 的长时程分层人形导航](wiki/entities/paper-lhnav.md) — LHNav: Long-Horizon Humanoid Navigation `📅unknown` `[entity_page]`
 - [LIBERO-Dynamic（arXiv:2610.24579）](wiki/entities/paper-libero-dynamic.md) — LIBERO-Dynamic**（*LIBERO-Dynamic: Benchmarking Robotic Manipulation in Dynamic Environments*，[arXi `📅unknown` `[entity_page]`
 - [LIBERO-PeRM：个性化机器人操作基准](wiki/entities/paper-libero-perm-personalized-manipulation.md) — LIBERO-PeRM 将用户偏好作为任务执行条件，在受控的 LIBERO 场景中评测策略是否既完成任务、又按用户要求的方式完成。 `📅unknown` `[entity_page]`
 - [LIBERO-Pro2.0（arXiv:2610.24587）](wiki/entities/paper-libero-pro2-0.md) — LIBERO-Pro2.0**（*LIBERO-Pro2.0: A Benchmark for Evaluating the Robustness of Embodied Foundation M `📅unknown` `[entity_page]`
@@ -5908,6 +5911,7 @@
 - [VL-JEPA: Joint Embedding Predictive Architecture for Vision-language](wiki/entities/paper-vl-jepa.md) — VL-JEPA**（arXiv:2512.10942）由 Meta FAIR、香港科技大学、Sorbonne Université 与纽约大学研究者提出。它把常见的视觉到文本 token 生成改为 `📅unknown` `[entity_page]`
 - [VLA Depth Decodability（arXiv:2608.08904）](wiki/entities/paper-vla-action-post-training-depth-decodability.md) — VLA Depth Decodability**（arXiv:2608.08904）收录于 [多模空间 · 一周 VLA 研 `📅unknown` `[entity_page]`
 - [VLA 动作 Token 化综述：八类输出接口](wiki/entities/paper-vla-action-tokenization-survey.md) — A Survey on Vision-Language-Action Models: An Action Tokenization Perspective*（[arXiv:2507.01925](h `📅unknown` `[entity_page]`
+- [VLA Adaptation Chess：以机器人棋王搬运研究真实与仿真数据适配](wiki/entities/paper-vla-adaptation-chess.md) — VLA Adaptation with Real and Simulated Data: A Case Study on Robotic Chess `📅unknown` `[entity_page]`
 - [VLA-Adapter（arXiv:2509.09372）](wiki/entities/paper-vla-adapter.md) — VLA-Adapter**（*VLA-Adapter: An Effective Paradigm for Tiny-Scale Vision-Language-Action Model*，[ar `📅unknown` `[entity_page]`
 - [VLA 后训练数据增强（arXiv:2610.05994）](wiki/entities/paper-vla-augm-data-augmentation-post-training.md) — VLA 后训练数据增强**（*How (and How Not) to Use Data Augmentation in VLA Post-Training*，[arXiv:2610.05994 `📅unknown` `[entity_page]`
 - [VLA Bit-Flip Attacks（arXiv:2608.15475）](wiki/entities/paper-vla-bit-flip-attacks-int8.md) — VLA Bit-Flip Attacks**（*Bit-Flip Attacks on Vision-Language-Action Models: Action-Decoding Archite `📅unknown` `[entity_page]`
