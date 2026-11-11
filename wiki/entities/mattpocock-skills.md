@@ -11,6 +11,7 @@ tags:
 status: complete
 updated: 2026-10-15
 related:
+  - ./code-review-skill.md
   - ./find-skills-skill.md
   - ./vercel-agent-browser-skill.md
   - ./anthropic-frontend-design-skill.md
@@ -117,6 +118,8 @@ flowchart TD
 - **局限：** 技能集合随作者迭代（含 `deprecated/`、`in-progress/` 目录）；跨 harness 行为以 skills.sh 安装结果为准；英文为主，领域示例偏前端/TS 课程工程。
 
 ## 关联页面
+
+- [Code Review Skill（awesome-skills）](code-review-skill.md) — 专注 PR 四阶段代码审查、按需语言指南及差异风险预分析
 
 - [Superpowers（obra）](superpowers-obra.md) — **重流程、可强制** 的编码交付技能库（worktree、子代理评审）
 - [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — **全 SDLC 技能包**（25 skills + 9 commands）；上游 [comparison.md](https://github.com/addyosmani/agent-skills/blob/main/docs/comparison.md) 与本页、Superpowers 三角对照
