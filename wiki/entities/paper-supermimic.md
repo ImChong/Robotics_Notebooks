@@ -2,11 +2,14 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-11
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
 project: https://supermimic.github.io/
+code: https://github.com/HybridRobotics/supermimic
+original:
+  - ../../sources/papers/supermimic_arxiv_2610_28480.md
 summary: "SuperMimic 将运动跟踪策略与一个从仿真器转移数据学习的可微世界模型联合训练，用短时想象 rollout 和解析梯度显著降低大规模人形全身控制的训练计算。"
 related:
   - ../concepts/bptt.md
@@ -23,6 +26,8 @@ sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/supermimic_arxiv_2610_28480.md
   - ../../sources/sites/supermimic-project.md
+  - ../../sources/sites/corl-2026-program.md
+  - ../../sources/repos/supermimic-hybridrobotics.md
   - ../../sources/repos/supermimic-repro-sim2real.md
   - ../../sources/repos/supermimic-unilab.md
   - ../../sources/repos/supermimic-vibed.md
@@ -33,6 +38,8 @@ sources:
 ---
 
 # SuperMimic：用一个可微世界模型扩展人形全身控制
+
+## 一句话定义
 
 **SuperMimic**（*Scaling Humanoid Whole-Body Control with One Differentiable World Model*，arXiv:2610.28480，CoRL 2026 Oral）由加州大学伯克利分校提出：将一个可微人形动力学世界模型与全身动作跟踪策略放进同一训练循环，以短时想象轨迹上的反向传播替代大量昂贵的模型无关仿真 rollout。
 
@@ -67,6 +74,16 @@ flowchart TB
 
 图依据：论文摘要与官方项目页「How it works」；两个学习器交替：仿真器供数据、世界模型拟合、策略在模型内用 BPTT 更新。
 
+## 研究团队开源实现与 CoRL 议程（2026-11-11 核对）
+
+- **代码：** [HybridRobotics/supermimic](../../sources/repos/supermimic-hybridrobotics.md) 已公开 mjlab 基础的世界模型 + 策略训练及回放实现，仓库 README 自称 SuperTrack implementation；本页复用原有论文实体，不另建同名 repo 项目节点。
+- **代码身份边界：** `supermimic.github.io` 论文项目页至本次核对仍未直接链出该仓库，不能断言它包含论文 CoRL 全部训练配置、BONES-SEED 动作资产、checkpoint 和 G1 真机部署代码。以下社区独立实现依然不是研究团队仓库。
+- **训练入口：** `src/supermimic/scripts/train.py` 可选择 `SuperMimic-GenCoord-G1` 或 `SuperMimic-MaxCoord-G1`，从 W&B Registry 或显式 `--motion-file` 获取动作；经 `SuperMimicRunner` 循环采样、缓存、世界模型更新及策略想象更新。
+- **回放入口：** `src/supermimic/scripts/play.py` 从 W&B 取得训练配置与 `actor.pt` / `world_model.pt`，在 native/Viser viewer 中播放；尚未实测。
+- **CoRL 直播/录像：** [CoRL 2026 官方 Program](../../sources/sites/corl-2026-program.md) 是大会公布的直播入口。**本次未找到可核实归属 SuperMimic 单场 Oral 的录像直链**，因此不捏造单场视频地址。
+
+源码默认的世界模型采样 horizon=8、策略想象 horizon=32，属于当前开源配置；与论文实验的全部超参/模型权重对应关系还需独立比对。
+
 ## 核心原理
 
 ### 世界模型如何分摊训练成本
@@ -83,11 +100,11 @@ flowchart TB
 | 数据规模 | 使用 BONES-SEED 公开子集 264.56 小时；SONIC 使用 611 小时 | SuperMimic 数据量更少，仍须注意方法与硬件并非完全相同条件 |
 | 真机 | Unitree G1 展示多种动态动作，项目页称所有片段用同一策略且无按动作调参 | 展示 sim-to-real 可行性，不等于论文已提供开源部署栈 |
 
-## 独立复现与工程入口
+## 工程实践：独立复现与工程入口
 
 社区维护的 [awesome-supermimic 索引](../../sources/repos/awesome-supermimic.md) 汇总了多种实现、扩展、演示与数据资源；它是导航入口，不是官方代码或对各项目指标的独立验证。
 
-官方项目页截至 2026-10-22 仍未发布论文作者维护的源码；以下两个公开仓库是社区独立复现，不能视为论文官方实现，也不能据其结果推断官方代码已开放。
+2026-11-11 已发现 [HybridRobotics/supermimic](../../sources/repos/supermimic-hybridrobotics.md) 研究团队公开实现（上文），并非下面的社区复现。但项目页尚无该仓库外链、完整训练资产与实验逐项对应关系也未得到证实。以下两个仓库是**独立复现**，不能将其结果算作论文官方实测。
 
 | 仓库 | 实现路线 | 可复现入口与边界 |
 |---|---|---|
@@ -134,7 +151,49 @@ sequenceDiagram
 
 ## 源码运行时序图
 
-**官方实现不适用：** 截至 2026-10-22，论文官方项目页没有公开训练、推理或部署源码入口。2026-11-05 复核项目页（supermimic.github.io）：导航与链接只有论文 PDF、演示与引用，仍无 GitHub / Hugging Face 链接。现在有两个社区独立复现（见上表），但它们并非论文作者的官方代码，因此本图不将任何一个复现仓库当成论文源码运行时序。
+下图逐项对照研究团队代码的入口和调用链：`scripts/train.py`、`runners/supermimic_runner.py`、`learners/wm_learner.py`、`learners/policy_learner.py` 与 `envs/world_model_env.py`。这是**代码静态分析**，不是已运行验证。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 运行者
+  participant CLI as train.py
+  participant Registry as mjlab Tasks
+  participant Sim as ManagerBasedRlEnv
+  participant Runner as SuperMimicRunner
+  participant Buffer as ReplayBuffer
+  participant WM as WorldModelLearner
+  participant Policy as ActorCriticPolicyLearner
+  participant Imagination as WorldModelEnv
+  User->>CLI: 选择 GenCoord 或 MaxCoord G1 任务
+  CLI->>Registry: load_env_cfg(task_id)
+  CLI->>CLI: 解析本地动作或 W&B Registry artifact
+  CLI->>Sim: create_env(cfg, num_envs, device)
+  CLI->>Runner: SuperMimicRunner(env, cfg)
+  Runner->>Sim: reset()
+  loop 每次训练迭代
+    Runner->>Sim: get_observations() + step(actions)
+    Runner->>Buffer: insert(state, action, sim_ctx, ...)
+    opt 回放数据已足够
+      Runner->>Buffer: sample(horizon, batch_size)
+      Buffer-->>Runner: 序列样本
+      Runner->>WM: update(data)
+      WM->>WM: Dynamics rollout + 状态损失优化
+      Runner->>Policy: update()
+      Policy->>Imagination: sample_initial_states()
+      Imagination->>Buffer: sample cached states
+      Buffer-->>Imagination: 初始状态
+      loop 想象 horizon
+        Policy->>Imagination: step(actor(obs))
+        Imagination-->>Policy: next obs, reward, termination
+      end
+      Policy->>Policy: BPTT 更新 actor + GAE 更新 critic
+    end
+  end
+  Runner->>Runner: 保存 world_model.pt / actor.pt / critic.pt
+```
+
+其中 `WorldModelLearner.update` 用缓存的真实仿真轨迹训练模型；`ActorCriticPolicyLearner.update` 冻结 Dynamics 参数，通过可微 WorldModelEnv 回传 actor 梯度，critic 由 GAE 监督。保存和 W&B 上传由 Runner 控制；不代表真机部署代码已经公开。
 
 ## 结论
 
@@ -143,13 +202,13 @@ sequenceDiagram
 1. **先看完整训练环节：** 报告的 3 小时包含采集、世界模型拟合和策略更新，不含 checkpoint 评估。
 2. **正确解读加速比：** 作者以“超过 1000×”概括 GPU-hour 节省；页面列出的 21,000 与 3 GPU-hours 算术比值约 7,000×，硬件和数据规模也不同。
 3. **不要把覆盖率当泛化：** 129,514 个测试动作来自双方训练动作集；结果说明训练动作覆盖，不证明未见动作泛化。
-4. **真机结果仍需复现入口：** G1 视频支持迁移可行性，但目前项目页未提供训练/部署代码、权重或可核验的开放流程。
+4. **研究团队实现已公开，但资产边界仍需核验：** HybridRobotics 仓库提供训练与回放源码；当前不能据此确认论文全部训练数据、权重、精确基准配置与 G1 实机部署链已经完整开放。
 
 ## 局限与风险
 
 - **评测边界：** 动作失败统计基于过滤后的 BONES-SEED 训练集、固定摩擦与确定性仿真设置，和带噪观测、域随机化或未见动作的泛化问题不同。
 - **模型误差：** 策略优化会利用世界模型；若模型在接触切换或训练分布外状态预测失准，想象轨迹上的梯度可能带来错误更新。迁移时仍需检查模型误差与真机动作安全性。
-- **开源状态：** 截至 2026-10-22，论文官方项目页未列作者维护的代码、数据或权重入口；社区已有 UniLab 与 Isaac Lab 两种独立代码复现，但实现和实验结论需分别核对，不能等同于官方发布。
+- **开源状态（2026-11-11）：** 研究团队的 HybridRobotics 仓库已公开训练/回放实现，但论文项目页仍未直接链接它，完整实验资产、权重及真机部署不可直接假定已提供；UniLab 与 Isaac Lab 仓库仍属社区独立复现。
 - **基线可比性：** SONIC 与 SuperMimic 的 GPU、训练数据时长和实验管线不同，不能把单一比例当成跨硬件普适规律。
 
 ## 关联页面
@@ -163,6 +222,8 @@ sequenceDiagram
 - [模仿学习](../methods/imitation-learning.md) — 从参考动作学习跟踪策略的相关方法。
 
 ## 参考来源
+- [HybridRobotics/supermimic 研究团队开源代码及源码核查](../../sources/repos/supermimic-hybridrobotics.md)
+- [CoRL 2026 官方 Program 直播/议程入口](../../sources/sites/corl-2026-program.md)
 - [SuperMimic-Repro-Sim2Real 社区复现](../../sources/repos/supermimic-repro-sim2real.md)
 - [senlanke 复习文章：借着 SuperMimic 复习 Model-Based、可微世界模型、BPTT](../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md)
 
@@ -176,6 +237,7 @@ sequenceDiagram
 - [具身智能研究室：SuperMimic 42 个复现与扩展项目盘点](../../sources/blogs/wechat_yuanxq_supermimic_42_community_projects_2026-10-30.md)
 
 ## 推荐继续阅读
+- [CoRL 2026 官方 Program（直播与议程）](https://2026.corl.org/program) — 尚未核验到 SuperMimic 单场录像直链。
 
 - [SuperMimic 官方项目页与浏览器演示](https://supermimic.github.io/)
 - [SONIC 项目页](https://nvlabs.github.io/GEAR-SONIC/) — 对照理解模型无关大规模 motion-tracking 的算力路线。
