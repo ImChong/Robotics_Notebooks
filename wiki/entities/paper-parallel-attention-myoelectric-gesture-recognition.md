@@ -5,7 +5,7 @@ tags: [paper, semg, myoelectric-control, gesture-recognition, prosthetic-hand, a
 status: draft
 updated: 2026-11-11
 venue: "Journal of Bionic Engineering (2026-10-20)"
-papers: ["10.1007/s42235-026-01012-7"]
+doi: "10.1007/s42235-026-01012-7"
 project: https://link.springer.com/article/10.1007/s42235-026-01012-7
 related:
   - ./paper-dexemg.md
