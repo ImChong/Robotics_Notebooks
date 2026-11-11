@@ -3,9 +3,11 @@ type: entity
 tags: [google-deepmind, vla, gemini, embodied-ai, product, hmi-papers, whole-body, on-device]
 title: Gemini Robotics
 status: complete
+project_id: gemini-robotics
+project: https://deepmind.google/models/gemini-robotics/
 arxiv: "2503.20020"
-summary: "Gemini Robotics 是 Google DeepMind 基于 Gemini 多模态栈的机器人模型族；Gemini Robotics 2（2026-07）把 VLA 推进到全身人形控制，并配套公开预览的 ER 2 agent 与端侧 On-Device 2。"
-updated: 2026-10-14
+summary: "Gemini Robotics 模型族持续迭代：Gemini Robotics 2.5（2026-11）在官方报告的 200 多种任务、奔驰 Apollo 2 零件分拣试点与安全引导中改进灵巧性和可靠性；VLA 仍面向合作伙伴，ER 2 与 Argon 分别承担具身编排与研发辅助。"
+updated: 2026-11-11
 related:
   - ./paper-roborefer.md
   - ./robospatial.md
@@ -22,7 +24,10 @@ related:
   - ./perceptron-egocentric.md
   - ../queries/hmi-papers-coverage.md
   - ../queries/embodied-six-routes-holes.md
+original:
+  - ../../sources/blogs/gemini_robotics_25_general_dexterity.md
 sources:
+  - ../../sources/blogs/gemini_robotics_25_general_dexterity.md
   - ../../sources/papers/gemini_robotics_arxiv_2503_20020.md
   - ../../sources/blogs/gemini_robotics_2_whole_body.md
   - ../../sources/blogs/gemini_4_argon_robotics.md
@@ -34,11 +39,11 @@ sources:
 
 # Gemini Robotics
 
-**Gemini Robotics** 是 Google DeepMind 面向物理交互的 Gemini 系列机器人模型族。HMI 论文/报告总索引将其收录为 **P061**（世界模型、VLA 与 Agent）。当前主版本叙事为 **Gemini Robotics 2**（2026-07-30）。
+**Gemini Robotics** 是 Google DeepMind 面向物理交互的 Gemini 系列机器人模型族。HMI 论文/报告总索引将其收录为 **P061**（世界模型、VLA 与 Agent）。最新发布版本为 **Gemini Robotics 2.5**（2026-11-10）；原有 **Robotics 2 / ER 2 / On-Device 2** 历史内容保留。
 
 ## 一句话定义
 
-**Gemini Robotics**：面向物理交互的 Gemini 系列机器人模型族，由 **VLA 策略骨干**、强调空间/任务编排的 **Embodied Reasoning（ER）** agent，以及可本地运行的 **On-Device VLA** 组成；**Gemini Robotics 2** 把可控范围从桌面上身扩展到人形 **feet-to-fingertips** 全身，并引入多机协作与数小时级跨本体适配。
+**Gemini Robotics**：面向物理交互的 Gemini 系列机器人模型族，由 **VLA 策略骨干**、强调空间/任务编排的 **Embodied Reasoning（ER）** agent，以及可本地运行的 **On-Device VLA** 组成；**Gemini Robotics 2** 把控制推进到人形 **feet-to-fingertips** 全身；**2.5** 将重点推进到复杂灵巧操作、生产试点可靠性和推理时物理安全引导。
 
 ## 英文缩写速查
 
@@ -53,7 +58,7 @@ sources:
 ## 为什么重要
 
 - 代表闭源多模态大模型接入机器人控制的产品化叙事，常与开源 [Octo](../methods/octo-model.md) / [OpenVLA](paper-openvla.md) / [π 系列](../methods/pi07-policy.md) 对照阅读。
-- **GR2** 明确把「全身 loco-manipulation + 多指灵巧 + 多机协作」写进同一产品线，是产业侧对 [loco-manipulation](../tasks/loco-manipulation.md) 与学习式 [WBC](../concepts/whole-body-control.md) 的强信号。
+- **GR2 / GR2.5** 把「全身 loco-manipulation + 多指灵巧 + 多机协作 + 复杂接触任务」写进同一产品线，是产业侧对 [loco-manipulation](../tasks/loco-manipulation.md) 与学习式 [WBC](../concepts/whole-body-control.md) 的强信号。
 - ER 变体把「会做动作」与「会分解长程任务」拆开；ER 2 另提供 **可调用的 API + 样例仓**，而 VLA 权重仍 gated。
 - 在自动标注与评测生态中常被用作强教师/对照（见 [Perceptron Egocentric](./perceptron-egocentric.md) 对 ER-1.6 的用法）。
 
@@ -69,11 +74,12 @@ sources:
 
 ```mermaid
 flowchart TB
-  H["人类指令 / 语音"] --> ER["Gemini Robotics ER 2<br/>VLM agent"]
+  H["人类指令 / 语音"] --> ER["Gemini Robotics ER 2<br/>任务跟踪与编排"]
   CAM["多相机 / 视频流"] --> ER
-  ER -->|"子目标 / tool call"| VLA["Gemini Robotics 2 VLA<br/>或 On-Device 2"]
+  ER -->|"子目标 / tool call"| VLA["Gemini Robotics 2.5 VLA<br/>（端侧另有 On-Device 2）"]
   ER -->|"导航 / Spot API 等"| API["机器人技能 API"]
-  VLA --> BODY["全身人形 / 双臂 / 末端"]
+  VLA --> SAFETY["GR 2.5 推理时安全引导<br/>避开物理风险"]
+  SAFETY --> BODY["全身人形 / 双臂 / 末端"]
   API --> BODY
   BODY --> CAM
 ```
@@ -87,6 +93,47 @@ flowchart TB
 | 多机协作 | 异构机器人分工完成单机难做的 workflow | ER 2 编排；样例偏 Spot API |
 | 跨本体 | 同 checkpoint 跨 Apollo 手型与 Franka；On-Device 适配 SO101 等 | 适配数据量自报 |
 | 安全 | ASIMOV-Agentic；人靠近急停；安全报告 PDF | 自报基准 + 公开 PDF |
+
+
+## Gemini Robotics 2.5｜2026-11-10 官方更新
+
+> 英文标题：**Gemini Robotics 2.5 accelerates real-world general dexterity**；以下指标均为 **Google DeepMind 官方自报**。主要资料已逐节通读，见[2026-11-10 发布归档](../../sources/blogs/gemini_robotics_25_general_dexterity.md)。
+
+### 可核实的评测与工业试点
+
+| 指标 / 场景 | 官方结果 | 研究与工程读法 |
+|---|---|---|
+| 任务覆盖 | 200 多项不同操作任务 | 食物夹取、礼盒蝴蝶结、移液等；并非统一开放 benchmark |
+| 操作成功率 | 各任务类别较旧版基线提高 **30%–100%** | 相对改进范围，不是「总成功率 30%–100%」 |
+| 完成速度 | 任务耗时缩短对应 **20%–30% 更快** | 不能解读为模型推理速度、控制频率提升 |
+| 工业 proof-of-concept | 奔驰 Kecskemét（匈牙利）和 Sindelfingen（德国）产线，Apptronik Apollo 2 汽车配件 **kitting 成功率 96%** | ER 负责跟踪分拣流程，GR 2.5 负责双手/手臂动作；非量产级 SLA |
+| 物理安全引导 | 靠近障碍物时安全任务完成表现 **+33%**；人员附近 **+43%** | 指内部评测的 safe task completion，非事故概率或安全认证 |
+| Agentic 对抗安全 | **Gemini 4 Argon** 的越狱抵抗率 **99.5%**，旧 **ER 2** 基线 **82%** | **不同模型与评测维度**，不可作为 VLA 2.5 动作准确率 |
+
+官方图表列举了夹子装糕点（5%→100%）、解开缎带蝴蝶结（0%→70%）、合上工具箱盖（0%→93%）等场景。这些是**具体单项任务**而不是通用成功率；文中没有提供完整可复现的任务数据和评测协议。
+
+### Gemini Robotics 2.5 任务控制流程
+
+```mermaid
+flowchart TD
+  CMD["任务指令 / 作业目标"] --> ER25["Gemini Robotics ER<br/>高层分拣工作流"]
+  CAM25["机器人视觉观测"] --> ER25
+  CAM25 --> POLICY25["Gemini Robotics 2.5 VLA<br/>视觉 + 语言到动作"]
+  ER25 -->|"子任务目标"| POLICY25
+  POLICY25 --> GUIDE25["推理时 reasoning guidance<br/>安全 steerability"]
+  GUIDE25 --> MOVE25["Apollo 2 手臂 / 手指运动"]
+  MOVE25 --> TASK25["金属支架料箱拾取与排序入盘"]
+  TASK25 -->|"观测与缺漏修正"| CAM25
+```
+
+此图是按官方博客整理的**功能级信息/控制流**，不是公开实现的调用栈：官方未披露 VLA 内部网络、控制周期、低层安全控制器、ER→VLA 通信协议及统计显著性。**Gemini 4 Argon** 通过数字孪生、仿真练习和失败分析帮助**研发/训练**，不能画成在线动作控制的必经节点。
+
+### 开源与安全评测边界（2026-11-11）
+
+- **2.5 VLA**：仅面向机器人合作伙伴 rollout，官方产品页和博客未给出公开权重、训练/推理仓或公众 VLA API；**不能当作已开源基线**。
+- **ER 2 / On-Device 2**：仍是产品线中分开的高层编排、端侧 VLA 组件；ER 2 有 API / [robotics-samples](../../sources/repos/google-gemini-robotics-samples.md)，但该样例**不是 GR 2.5 VLA 代码**。
+- **ASIMOV-Jailbreak 已公开评测资源**：Google 在 [ASIMOV-Agentic Hugging Face 数据集](https://huggingface.co/datasets/google/asimov_agentic) 发布 `asimov_physical_safety_eval.py` 与 `physical_safety_duo/` 多轮对抗评测资源；这与 GR 2.5 模型权重的开放状态无关。
+- **音频边界**：官方产品页明确 GR 2.5 的 VLA 输入为**视觉和语言**，任务语音交互由产品线交互 / ER 层承担；目前没有直接证据表明 GR 2.5 VLA 模型原生消费原始音频流。
 
 ## 流程总览
 
@@ -110,7 +157,7 @@ sequenceDiagram
 
 ## 源码运行时序图
 
-**VLA / On-Device 训练与权重：不适用**（early-access，无公开训练仓）。
+**2.5 VLA / On-Device 训练与权重：不适用**（合作伙伴受限访问，未提供可运行训练 / 推理源码）；以下是**已有 ER 2 编排样例**的时序图，不能冒充 2.5 VLA 的运行代码。
 
 **ER 2 编排样例（可运行，对齐 [`robotics-samples`](../../sources/repos/google-gemini-robotics-samples.md)）：**
 
@@ -139,13 +186,13 @@ sequenceDiagram
 ## 工程实践
 
 1. **能力边界与数值以官方博客 + 安全 PDF + Model Card 为准**，不要只引用二手摘要；读取日期写进笔记。
-2. **开源状态（2026-07-31 项目页核查）**
+2. **开源状态（基于 2026-07-31 历史项目页 + 2026-11-11 新版本复核）**
 
 | 组件 | 状态 | 入口 |
 |------|------|------|
 | ER 2 | API public preview | [AI Studio / `gemini-robotics-er-2-preview`](https://ai.dev/prompts/new_chat?model=gemini-robotics-er-2-preview)、[Robotics docs](https://ai.google.dev/gemini-api/docs/robotics-overview) |
 | 编排样例 | **已开源** Apache-2.0 | [robotics-samples](https://github.com/google-gemini/robotics-samples) |
-| VLA 2 / On-Device 2 | **未开源权重** | Trusted Tester / partners |
+| VLA 2.5 / On-Device 2 | **未开源权重** | GR 2.5：robotics partners；On-Device 2：此前 Trusted Tester / partners |
 | 安全报告 | 公开 PDF | [Gemini-Robotics-2-Safety.pdf](https://storage.googleapis.com/deepmind-media/gemini-robotics/Gemini-Robotics-2-Safety.pdf) |
 
 3. 与开源通用策略对比时，对齐任务定义、数据可见性与是否允许专用微调。
@@ -154,9 +201,10 @@ sequenceDiagram
 
 ## 结论
 
-**Gemini Robotics 2 适合作为「闭源全身 VLA + 可调用 ER agent」对照节点：ER 侧可跟 API/样例仓动手，VLA 权重仍不可当作本地开源基线。**
+**Gemini Robotics 2.5 适合作为「闭源灵巧 VLA + ER 任务编排 + 工业试点」对照节点：其相对改进需按官方任务基线理解，ER 侧可用已有 API/样例，2.5 VLA 暂不能独立复现。**
 
-- 读 GR2 时分开三层：ER 编排、云端 VLA、On-Device 适配——访问权限不同。
+- 读 GR2/2.5 时分开三层：ER 编排、合作伙伴 VLA、On-Device 适配——访问权限不同。
+- 奔驰 96% 是零件 kitting 试点成功率；人员附近 +43% 是安全完成表现的相对改进，不是事故降低率。
 - 全身与多指是宣传主轴，但官方自承 **速度与多指灵巧仍弱**；引用成功率必须回图并标「自报」。
 - 跨本体叙事（同 checkpoint / 数小时适配）与 [hub-cross-embodiment](../overview/hub-cross-embodiment.md) 对照读，勿与 OXE 开源迁移混为一谈。
 - 安全侧优先读 Safety PDF 与 ASIMOV-Agentic，而不是演示视频。
@@ -169,13 +217,14 @@ sequenceDiagram
 - 「同一 checkpoint 跨本体」的泛化边界（传感器、DoF、接触模态）未在公开材料中完整披露。
 - HF 上 ASIMOV-Agentic 可能有访问限制；写入评测前先核对该数据集实际可见性。
 
-## 版本沿革：1.0 → 1.5 → 2
+## 版本沿革：1.0 → 1.5 → 2 → 2.5
 
 | 发布 | 版本 | 可确认的变化与开放边界 |
 | --- | --- | --- |
 | 2025-03 | Gemini Robotics / ER | 视觉语言动作与具身推理两类模型，历史起点 |
 | 2025-09-25 | Robotics 1.5 / ER 1.5 | ER 调工具并规划，VLA 执行且加入行动前推理、跨本体迁移；ER 提供 API，VLA 面向选定合作伙伴 |
-| 2026-07-30 | Robotics 2 / ER 2 / On-Device 2 | 本页主要叙述的全身控制、具身 agent 与端侧模型 |
+| 2026-07-30 | Robotics 2 / ER 2 / On-Device 2 | 全身控制、具身 agent 与端侧模型 |
+| 2026-11-10 | **Robotics 2.5** | 200 多种操作任务、奔驰 Apollo 2 零件分拣试点（96%）与推理时安全引导；ER 2 / On-Device 2 仍作为不同组件列示 |
 
 2026-10-13 的 Google Developers 博客另介绍了通用物理推理模型 **Gemini 4 Argon** 在机器人开发中的用法。本文将其作为相邻模型单独整理在 [Gemini 4 Argon](./gemini-4-argon.md)，不把它并入 Gemini Robotics 2 的版本能力。来源：[Gemini 4 Argon for Robotics](../../sources/blogs/gemini_4_argon_robotics.md)。
 
@@ -197,7 +246,8 @@ sequenceDiagram
 
 ## 参考来源
 
-- [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — GR2 主发布博客归档
+- [gemini_robotics_25_general_dexterity.md](../../sources/blogs/gemini_robotics_25_general_dexterity.md) — GR2.5 官方发布、工业试点、指标、开放边界（2026-11-10）
+- [gemini_robotics_2_whole_body.md](../../sources/blogs/gemini_robotics_2_whole_body.md) — GR2 历史发布博客归档
 - [gemini-robotics.md（产品页）](../../sources/sites/gemini-robotics.md)
 - [google-gemini-robotics-samples.md](../../sources/repos/google-gemini-robotics-samples.md)
 - [ted_xiao_embodied_three_eras_primary_refs.md](../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md)
@@ -205,6 +255,8 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [Gemini Robotics 2.5 官方发布](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/) — 最新 VLA 进展、奔驰试点与安全引导
+- [Gemini Robotics 2.5 产品子页](https://deepmind.google/models/gemini-robotics/vla/) — 当前产品定位和访问状态
 - [Gemini 4 Argon for Robotics](https://developers.googleblog.com/gemini-4-argon-for-robotics/) — 通用物理推理模型在机器人研发工作流中的示例
 - [Gemini Robotics 2 发布博客](https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/)
 - [Introducing Gemini Robotics ER 2（开发者博文）](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2/)
