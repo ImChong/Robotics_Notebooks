@@ -45,8 +45,8 @@
 ## 本次全文复核补充（2026-11-11）
 
 - **理论条件：** 在固定协方差规模/总方差等约束和相应回归/平滑性假设下，讨论任意未知下游目标的风险；线性 probe 的协方差各向同性是关键，非线性 kNN 与核 probe 的结论需依赖附录 A/B 的额外正则性条件。勿误读成对任意任务、任意训练网络均无条件最优。
-- **SIGReg 的识别性与可实现性：** 依靠 Cramér–Wold 方向投影和一维特征函数的 Epps–Pulley 检验；与高阶矩及 CDF 排序方法相比，作者强调梯度有界、DDP 易并行和按固定投影数/积分节点数近似线性扩展。有限随机方向、数值积分和有限 batch 仍是近似；第 5 节注明 minibatch 带来随 \`O(1/N)\` 缩小的统计偏差。
-- **模型目标：** 第 5 节式 (9) 为 \`(1-λ) × global-view prediction loss + λ × SIGReg\`，所有视图对齐全局视图均值；主方法不需要独立 predictor、EMA teacher 或 stop-gradient。论文在 ViT 上允许用 SWA 作为可选的性能增强，但不是防坍塌必要条件。
-- **有出处的起始超参数：** 第 6.1 节推荐 \`λ=0.05\`、2 张 global + 8 张 local views、batch ≥128；SIGReg 推荐 1024 随机方向、17 个积分节点与 \`[-5,5]\` 区间。这些是论文实验建议，不是所有数据或架构的精确最优值。官方 README 的代码示例可能采用 2+6 视图，勿与论文推荐混为同一固定值。
+- **SIGReg 的识别性与可实现性：** 依靠 Cramér–Wold 方向投影和一维特征函数的 Epps–Pulley 检验；与高阶矩及 CDF 排序方法相比，作者强调梯度有界、DDP 易并行和按固定投影数/积分节点数近似线性扩展。有限随机方向、数值积分和有限 batch 仍是近似；第 5 节注明 minibatch 带来随 `O(1/N)` 缩小的统计偏差。
+- **模型目标：** 第 5 节式 (9) 为 `(1-λ) × global-view prediction loss + λ × SIGReg`，所有视图对齐全局视图均值；主方法不需要独立 predictor、EMA teacher 或 stop-gradient。论文在 ViT 上允许用 SWA 作为可选的性能增强，但不是防坍塌必要条件。
+- **有出处的起始超参数：** 第 6.1 节推荐 `λ=0.05`、2 张 global + 8 张 local views、batch ≥128；SIGReg 推荐 1024 随机方向、17 个积分节点与 `[-5,5]` 区间。这些是论文实验建议，不是所有数据或架构的精确最优值。官方 README 的代码示例可能采用 2+6 视图，勿与论文推荐混为同一固定值。
 - **评测范围：** 冻结线性 probe、少样本/全量微调、In-domain Galaxy10/Food101、训练 loss 与下游相关性、不同模型与规模稳定性；原文不包含机器人实体闭环控制或动作条件系统的成功率测量。
-- **代码地址更新：** 原 \`rbalestr-lab/lejepa\` 地址现重定向到 <https://github.com/galilai-group/lejepa>；官方 LICENSE 核对为 CC BY-NC 4.0，使用时仍需遵循非商业限制。
+- **代码地址更新：** 原 `rbalestr-lab/lejepa` 地址现重定向到 <https://github.com/galilai-group/lejepa>；官方 LICENSE 核对为 CC BY-NC 4.0，使用时仍需遵循非商业限制。
