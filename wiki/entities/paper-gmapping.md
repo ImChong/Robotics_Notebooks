@@ -137,6 +137,7 @@ flowchart TD
 
 ## 关联页面
 
+- [激光雷达 SLAM 综述整理（2026 转载文）](../concepts/lidar-slam-survey-2026.md)
 - [SLAM Toolbox](./slam-toolbox.md)：ROS 2 常用的 2D lifelong SLAM（Karto 后端，见该页）
 - [Cartographer](./cartographer.md)：子图扫描匹配加位姿图优化的 2D/3D 激光建图（见该页）
 - [LeGO-LOAM](./lego-loam.md)、[LIO-SAM](./lio-sam.md)、[FAST-LIO](./fast-lio.md)：3D 激光里程计与建图

@@ -112,6 +112,7 @@ flowchart LR
 
 ## 关联页面
 
+- [激光雷达 SLAM 综述整理（2026 转载文）](../concepts/lidar-slam-survey-2026.md)
 - [LeGO-LOAM](./lego-loam.md)：在 LOAM 之上加入地面分割与地面优化
 - [LIO-SAM](./lio-sam.md)：因子图加 IMU 紧耦合的激光惯性方案
 - [LVI-SAM](./paper-lvi-sam.md)：激光、视觉、惯性融合

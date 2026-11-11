@@ -160,6 +160,7 @@ flowchart TD
 
 ## 关联页面
 
+- [激光雷达 SLAM 综述整理（2026 转载文）](../concepts/lidar-slam-survey-2026.md)：按算法映射到独立节点并汇总措辞偏差
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [Navigation2](../entities/navigation2.md)
 - [LingBot-Map](../methods/lingbot-map.md) — 学习型流式建图对照

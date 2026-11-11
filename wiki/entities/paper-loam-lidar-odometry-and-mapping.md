@@ -122,6 +122,7 @@ flowchart LR
 
 ## 关联页面
 
+- [激光雷达 SLAM 综述整理（2026 转载文）](../concepts/lidar-slam-survey-2026.md)
 - [LeGO-LOAM](./lego-loam.md)：在 LOAM 之上加入地面优化的轻量版本
 - [A-LOAM](./paper-a-loam.md)：港科大基于 LOAM 的 Eigen + Ceres 改写版
 - [LIO-SAM](./lio-sam.md)：因子图紧耦合激光惯性方案，里程计部分沿用 LOAM 思想

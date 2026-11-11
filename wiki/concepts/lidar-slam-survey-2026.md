@@ -47,11 +47,6 @@ summary: 对一篇激光雷达 SLAM 综述转载文章的结构化整理：框�
 
  综述按「前端 → 后端 → 回环 → 建图」拆框架，再按 2D、3D 里程计、多传感器融合、深度学习分类列出主流算法；本页把文中点名的算法映射到本库节点，并汇总逐算法核对中发现的偏差。综述本身不含新实验。
 
-## 为什么重要
-
-- 作为入口地图：从一篇文章进入 20 余个独立算法节点，而不是读一份无出处的清单。
-- 综述的措辞有若干处与原论文不一致，直接引用会带入错误（见下表）。
-
 ## 英文缩写速查
 
 | 缩写 | 全称 |
@@ -61,6 +56,11 @@ summary: 对一篇激光雷达 SLAM 综述转载文章的结构化整理：框�
 | ICP / NDT / GICP | Iterative Closest Point / Normal Distributions Transform / Generalized ICP |
 | ESKF / IEKF | Error-State / Iterated Extended Kalman Filter |
 | ATE / RPE | Absolute Trajectory Error / Relative Pose Error |
+
+## 为什么重要
+
+- 作为入口地图：从一篇文章进入 20 余个独立算法节点，而不是读一份无出处的清单。
+- 综述的措辞有若干处与原论文不一致，直接引用会带入错误（见下表）。
 
 ## 核心原理与流程总览
 
