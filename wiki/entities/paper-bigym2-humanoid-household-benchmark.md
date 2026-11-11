@@ -3,7 +3,7 @@ type: entity
 project_id: bigym2-humanoid-household-benchmark
 tags: [paper, benchmark, humanoid, manipulation, bimanual-manipulation, imitation-learning, vla, demo-driven-rl, coding-agent, unitree-g1, mujoco, imperial-college, open-source]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-11
 arxiv: "2610.07594"
 code: https://github.com/swirl-uk/BiGym2
 project: https://bigym2.github.io/
@@ -20,6 +20,8 @@ related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
   - ../methods/diffusion-policy.md
+original:
+  - ../../sources/papers/bigym2_arxiv_2610_07594.md
 sources:
   - ../../sources/papers/bigym2_arxiv_2610_07594.md
   - ../../sources/sites/bigym2-project.md
@@ -28,9 +30,11 @@ sources:
   - ../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md
 ---
 
-# BiGym 2.0：人形家庭操作基准
+# BiGym 2.0：学习策略与编程智能体的人形家庭操作基准（Benchmarking Learned and Agent-Developed Policies for Humanoid Household Manipulation）
 
 **BiGym 2.0**（[arXiv:2610.07594](https://arxiv.org/abs/2610.07594)，Imperial College London 的 Zhang、Zhu、Chen、Tuya、James；[代码](https://github.com/swirl-uk/BiGym2)）把 [原版 BiGym](./paper-notebook-bigym-a-demo-driven-mobile-bi-manual-manipulatio.md)（H1 浮动基座、40 任务）改造成 **Unitree G1 真正行走的家庭操作基准**：20 项任务、每项 60 条 VR 示范，统一评测 VLA 微调、模仿学习、示范强化学习和 **冷启动编码智能体**（LLM 写 `policy.py`）。注意它与 2024 年的 BiGym（arXiv:2407.07788）是不同论文，二者不合并。
+
+**机构：** 帝国理工学院计算机系（Department of Computing, Imperial College London）。论文 [arXiv:2610.07594v2](https://arxiv.org/html/2610.07594v2) 的正文 I–VII 与附录 A–G 已于 2026-11-11 通读复核；见 [论文原文归档](../../sources/papers/bigym2_arxiv_2610_07594.md)。
 
 ## 英文缩写速查
 
@@ -53,16 +57,24 @@ sources:
 
 ```mermaid
 flowchart LR
-  vr["Quest 3 VR 示范\nMink IK 手臂 + 摇杆身体指令"] --> demo["60 条/任务 × 20 任务\n3 路 84×84 RGB + 本体 + 动作"]
-  demo --> il["ACT / Diffusion Policy"]
-  demo --> vla["π0.5 微调"]
-  demo --> rl["CQN-AS / DrQ-v2+ / DEAS"]
-  vid["1 条示范视频 + 任务描述"] --> agent["编码智能体\nGPT-6 Astra / Opus 5.5 写 policy.py"]
-  il --> env
-  vla --> env
-  rl --> env
-  agent --> env["MuJoCo G1 环境\n冻结 GR00T-WBC 下身"]
-  env --> eval["100 个固定种子评测"]
+  vr["Quest 3 VR 操作<br/>Mink IK + 身体摇杆"] --> data["G1 原生示范<br/>20 任务 × 每任务 60 条"]
+  data --> il["ACT / Diffusion Policy<br/>离线模仿学习"]
+  data --> vla["π0.5<br/>任务级微调"]
+  data --> rl["CQN-AS / DrQ-v2+ / DEAS<br/>示范驱动强化学习"]
+  one["1 条三视角视频<br/>任务句子与 API 文档"] --> agent["Codex / Claude Code<br/>编写并试验 policy.py"]
+  il --> act["20/21 维身体、双臂、夹爪指令"]
+  vla --> act
+  rl --> act
+  agent --> act
+  act --> sim["MuJoCo 中的 Unitree G1<br/>50 Hz 策略 / 1 ms 物理"]
+  sim --> wbc["冻结 GR00T-WBC<br/>执行行走、平衡及下身关节目标"]
+  wbc --> sim
+  sim --> obs["头部 + 双腕 RGB<br/>本体感受反馈"]
+  obs --> il
+  obs --> vla
+  obs --> rl
+  obs --> agent
+  sim --> eval["100 个隔离评测种子<br/>成功谓词连续保持 1 s"]
 ```
 
 ## 方法
@@ -83,32 +95,58 @@ flowchart LR
 sequenceDiagram
     autonumber
     actor U as 使用者
-    participant DL as bigym-download<br/>(bigym/loco/demos)
-    participant ENV as bigym.loco 环境<br/>(env.py + lowerbody.py)
-    participant WBC as GR00T-WBC 适配器<br/>(bigym/loco/adapters)
     participant TR as examples/train_act.py
-    participant EV as bigym.loco.eval
-    participant AG as bigym-agent<br/>(bigym/loco/agent)
-    U->>DL: --task move_plate（HF: bigym-g1-native60）
-    DL-->>U: LeRobot v3 示范
-    U->>TR: 训练简化 ACT
-    loop 控制 50 Hz
-        TR->>ENV: 20 维动作（身体指令 + 手臂目标 + 夹爪）
-        ENV->>WBC: 速度/偏航/高度指令
-        WBC-->>ENV: 腿与腰目标
-        ENV-->>TR: 3 路 RGB + 本体
+    participant DM as make_gym().get_demos()
+    participant NN as PyTorch ACT
+    participant EV as bigym.loco.eval.evaluate
+    participant ENV as bigym.loco.env.BiGym
+    participant LB as bigym.loco.lowerbody
+    participant WBC as GR00T-WBC adapter
+    participant AG as bigym-agent run
+    participant SB as agent.sandbox
+    participant SV as agent.server
+    participant PL as sandbox/policy.py
+    participant AE as agent.evaluate
+    U->>TR: --task move_plate
+    TR->>DM: get_demos(60)
+    DM-->>TR: 已录制的示范帧与动作
+    loop 离线梯度更新，不调用 env.step
+        TR->>NN: 监督学习动作块（L1）
     end
-    TR->>EV: 100 个固定种子评测
-    U->>AG: --harness codex --model gpt-6-astra
-    AG->>ENV: 写 policy.py，并在 10.1 万步预算内试错
-    AG->>EV: 同一 100 种子打分
+    TR->>EV: evaluate(EnsemblePolicy, task_name)
+    loop 100 个评测种子
+        EV->>ENV: reset(seed) / step(action)
+        ENV->>LB: update_command + expand_action
+        LB->>WBC: 速度、偏航率、身高等身体指令
+        WBC-->>LB: 腿与腰关节目标
+        LB-->>ENV: 合成高层动作与下身目标
+        ENV-->>EV: 图像、本体、奖励及终止信号
+    end
+    U->>AG: run --task move_plate --harness codex
+    AG->>SB: 构建含 1 条示范和 API 的沙箱
+    AG->>SV: 启动多工作进程的环境服务
+    AG->>PL: 调用 coding harness 编写和调试程序
+    loop 101000 环境步预算（重置计 200）
+        PL->>SV: 通过 client 请求 reset/step
+        SV->>ENV: 调用同一 G1 任务环境
+    end
+    AG->>AE: 冻结 policy.py 并启动打分
+    AE->>ENV: 100 个隐藏种子评测
 ```
 
-要点：`examples/train_act.py` 是简化 ACT，README 明说不复现论文 ACT 数字；复现论文基线需另外实现。`bigym-collect` 在 Linux 上用 Quest 3 采集新示范。
+要点：已逐行核对 `examples/train_act.py`：`train()` 仅从 `get_demos(60)` 离线做 L1 训练，训练完成后 `evaluate()` 才调用 `reset/step`；它**不是在线 RL 训练脚本**，也不是论文 ACT 模型（论文含 CVAE、ResNet-18）。`bigym-agent run` 由 `agent/launch.py` 依次构建沙箱、启动服务、调用编程 harness，最后由 `agent/evaluate.py` 评测冻结程序。`bigym-collect` 用 Quest 3 采集新示范。
+
+## 论文附录核验：接口、确定性与失败模式
+
+- **动作细节（Appendix B，Table A2）**：身体指令为 `vx` ±0.35 m/s、`vy` ±0.25 m/s、`base height` 0.40–1.00 m、`yaw rate` ±0.50 rad/s；支持躯干俯仰的 14 项任务另有 `pitch` −0.20–0.80 rad。14 个手臂关节的绝对位置目标，加双夹爪命令，组成 20/21 维动作。例外：`π0.5` 的手臂以 action chunk 起点为基准预测相对增量。
+- **成功与初态（Appendix A）**：成功谓词要连续成立 50 个控制步（1 s）；17 项任务按 seed 随机化，`dishwasher_close` 和 `wall_cupboard_open/close` 采用固定初态。这三项不应被解读为广泛初态泛化。
+- **可靠性（Appendix C/E）**：录像回放必须恢复 `init_qpos/init_qvel/init_ctrl/init_qacc_warmstart` 和 `lb_state.*` 等 engage 快照，不能只用 seed；评测种子是 `620000–620099`。非 VLA 采用 3 次训练、每次最后 5 个 checkpoint × 100 episodes；`π0.5` 只有 1 次训练、最后 5 点 × 50 episodes。
+- **接触物理（Appendix F）**：步态脚端冲击使抓握中的盘子在 Dex1 指垫上逐渐滑移；作者将 torsional friction 由 0.01 提至 0.05，修正 `solref/solimp`，在特定放大扰动试验中将 6 s 滑移从 0.745 mm 降至近零，**未使用 weld**。DrQ-v2+ 在分析的 20 个 reaching 回合均偏离工作区超时，但论文并未将失败因果归结为缺少 action chunking。
+- **严格接口与模型先验（Appendix G）**：智能体开发只有一条 3 视角示范视频、`low_dim_obs` 和控制 API；无 IK、相机标定与物体真值。Opus 5.5 在 27 个程序中 24 个自行求数值 IK，其中 22 个使用从旧版公开 G1 URDF 回忆的连杆尺寸，不能视为对未知机器人具有零先验。
 
 ## 工程实践
 
-- **开源状态（2026-10-12 核查）**：项目页可访问；GitHub 仓库含环境、评测协议与 CLI（Apache-2.0）；Hugging Face 上示范与智能体回合可访问。GR00T-WBC 权重以 NVIDIA Open Model License 再分发。README 路线图未完成：WebXR 遥操作、PyPI、公开榜单。
+- **开源状态（2026-11-11 复核）**：项目页、GitHub 环境与 CLI（Apache-2.0）、Hugging Face 示范与智能体回合均可访问；GR00T-WBC 权重另受 NVIDIA Open Model License 约束。作者已上线[实时榜单](https://bigym2.github.io/leaderboard/)，其模型和样本集会更新，应与论文 v2 的 Table II 分开引用。
 - **数据体量**：全部 20 任务示范约 29 GB；仅下载智能体所需文件（`--agent`）约 68 MB。
 - **评测实践**：论文预先固定报告最后五个检查点的均值，避免峰值检查点偏高。
 
@@ -133,6 +171,8 @@ sequenceDiagram
 
 **观察**：严格智能体会从公开描述回忆 G1 运动学，Opus 5.5 在 27 个程序里有 24 个数值求解 IK。
 
+**版本说明：** 上表严格使用 arXiv v2（2026-10-08）Table II 的九任务结果；[作者维护的实时榜单](https://bigym2.github.io/leaderboard/)可能显示不同的模型、任务集或追加训练结果，不能直接代替论文原始对照。
+
 ## 结论
 
 **BiGym 2.0 的价值是首个把「会走的 G1」放进统一家庭操作基准，并把编码智能体当作与学习方法同台的基线；π0.5 均值最高，但智能体在双臂独立 reach 上领先，多物体搬运与跨工作区堆叠仍是开放问题。**
@@ -156,9 +196,9 @@ sequenceDiagram
 ## 局限与风险
 
 - **适用边界**：仅仿真，仅一个冻结全身控制器；84×84 低分辨率观测（π0.5 需重渲染到 224×224，仓库提供 `bigym-rerender-lerobot`）。
-- **统计风险**：π0.5 部分分数来自单次训练，部分结果来自小规模预发布样本；抓取的 HTML 超过 10 万字符，尾部（可能为附录）未读。
+- **统计风险**：π0.5 每任务只有单次训练，无跨随机种子的 SE；工具增强与严格接口对照来自单独的预发布构建，不能和主表中的严格接口成绩混成同一组实验。论文 v2 正文和附录 A–G 已补读。
 - **解释风险**：智能体结果是冷启动参考而非上限，且可能受 G1 公开资料的预训练先验影响。
-- **开源状态**：代码、示范、智能体回合均已发布；公开榜单与 PyPI 未发布。
+- **开源状态**：代码、示范与智能体评测回合已发布；作者已推出实时榜单。PyPI 发布是否完成不以旧 README 路线图作当前事实。
 
 ## 关联页面
 
@@ -176,7 +216,8 @@ sequenceDiagram
 - [bigym2-project.md](../../sources/sites/bigym2-project.md) — 项目页核查
 - [bigym2.md](../../sources/repos/bigym2.md) — 仓库归档
 - [frontier_humanoid_quadruped_2026_10_05_10_09.md](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)、[frontier_manipulation_2026_10_05_10_09.md](../../sources/blogs/frontier_manipulation_2026_10_05_10_09.md) — 周报线索
-- 论文：<https://arxiv.org/abs/2610.07594>
+- 论文 v2 全文：<https://arxiv.org/html/2610.07594v2>（含正文与附录 A–G）
+- 作者论文结果页：<https://bigym2.github.io/paper/>；实时榜单：<https://bigym2.github.io/leaderboard/>（滚动更新，与论文数表分别标注）
 
 ## 推荐继续阅读
 
