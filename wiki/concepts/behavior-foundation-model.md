@@ -2,7 +2,7 @@
 type: concept
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, foundation-policy, pretraining, survey]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-11
 related:
   - ./foundation-policy.md
   - ./whole-body-control.md
@@ -11,6 +11,7 @@ related:
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-perceptive-bfm.md
   - ../entities/paper-p-bfm.md
+  - ../entities/paper-seebfm.md
   - ../entities/paper-reactivebfm.md
   - ../entities/paper-scaling-bfm-humanoid.md
   - ../entities/paper-ttco-test-time-compute-humanoid-bfm.md
@@ -172,6 +173,7 @@ flowchart TB
 - [BFM 分类 05：Hierarchical control](../overview/bfm-category-05-hierarchical-control.md) — awesome 列表 + 公众号五类问题导读
 
 - [P-BFM](../entities/paper-p-bfm.md) — FB 意图空间 + 深度感知地形适配，ERI 显式约束根运动
+- [SeeBFM](../entities/paper-seebfm.md) — BFM-Zero 地形扫描后训练、双深度相机估计高度扫描；真机验证待完成
 
 ## 参考来源
 
