@@ -10,7 +10,7 @@ tags:
   - kaist
 status: complete
 updated: 2026-11-11
-paper: https://gisbi-kim.github.io/publications/gkim-2018-iros.pdf
+pdf: https://gisbi-kim.github.io/publications/gkim-2018-iros.pdf
 code: https://github.com/irapkaist/scancontext
 related:
   - ../concepts/lidar-sensing.md

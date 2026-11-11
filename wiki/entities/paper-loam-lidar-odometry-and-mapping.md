@@ -4,7 +4,7 @@ project_id: loam-lidar-odometry-and-mapping
 tags: [paper, lidar, slam, odometry, mapping, cmu, loam]
 status: complete
 updated: 2026-11-11
-paper: https://www.roboticsproceedings.org/rss10/p07.pdf
+pdf: https://www.roboticsproceedings.org/rss10/p07.pdf
 code: https://github.com/laboshinl/loam_velodyne
 original:
   - ../../sources/papers/loam-lidar-odometry-and-mapping_rss_2014.md

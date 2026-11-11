@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: suma-plus-plus
-paper: https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/chen2019iros.pdf
+pdf: https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/chen2019iros.pdf
 code: https://github.com/PRBonn/semantic_suma
 tags: [paper, slam, lidar, semantic-slam, dynamic-objects, surfel, kitti, university-of-bonn]
 status: complete

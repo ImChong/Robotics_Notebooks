@@ -10,7 +10,7 @@ tags:
 status: complete
 updated: 2026-11-11
 project_id: hector-slam
-paper: https://doi.org/10.1109/SSRR.2011.6106777
+doi: 10.1109/SSRR.2011.6106777
 code: https://github.com/tu-darmstadt-ros-pkg/hector_slam
 original:
   - ../../sources/papers/hector-slam_doi_10_1109_ssrr_2011_6106777.md

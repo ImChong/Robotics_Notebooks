@@ -11,7 +11,7 @@ tags:
 status: complete
 date: 2026-11-11
 updated: 2026-11-11
-paper: https://doi.org/10.1109/TRO.2006.889486
+doi: 10.1109/TRO.2006.889486
 code: https://github.com/ros-perception/openslam_gmapping
 original:
   - ../../sources/papers/gmapping_tro_2007_icra_2005.md

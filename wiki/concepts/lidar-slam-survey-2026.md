@@ -34,6 +34,8 @@ related:
   - ../entities/paper-efficientlo-net.md
   - ../entities/paper-gmapping.md
   - ../entities/paper-hector-slam.md
+original:
+  - ../../sources/blogs/wechat_xinjiqishijue_lidar_slam_survey_2026-11-11.md
 sources:
   - ../../sources/blogs/wechat_xinjiqishijue_lidar_slam_survey_2026-11-11.md
 summary: 对一篇激光雷达 SLAM 综述转载文章的结构化整理：框架、算法到节点的映射，以及各算法对照论文 / 仓库后发现的措辞偏差。
@@ -41,14 +43,26 @@ summary: 对一篇激光雷达 SLAM 综述转载文章的结构化整理：框�
 
 # 激光雷达 SLAM 综述（2026 转载文）整理
 
-**一句话：** 综述按「前端 → 后端 → 回环 → 建图」拆框架，再按 2D、3D 里程计、多传感器融合、深度学习分类列出主流算法；本页把文中点名的算法映射到本库节点，并汇总逐算法核对中发现的偏差。综述本身不含新实验。
+## 一句话定义
+
+ 综述按「前端 → 后端 → 回环 → 建图」拆框架，再按 2D、3D 里程计、多传感器融合、深度学习分类列出主流算法；本页把文中点名的算法映射到本库节点，并汇总逐算法核对中发现的偏差。综述本身不含新实验。
 
 ## 为什么重要
 
 - 作为入口地图：从一篇文章进入 20 余个独立算法节点，而不是读一份无出处的清单。
 - 综述的措辞有若干处与原论文不一致，直接引用会带入错误（见下表）。
 
-## 框架
+## 英文缩写速查
+
+| 缩写 | 全称 |
+|------|------|
+| SLAM | Simultaneous Localization and Mapping |
+| LIO / LIVO | LiDAR-Inertial / LiDAR-Inertial-Visual Odometry |
+| ICP / NDT / GICP | Iterative Closest Point / Normal Distributions Transform / Generalized ICP |
+| ESKF / IEKF | Error-State / Iterated Extended Kalman Filter |
+| ATE / RPE | Absolute Trajectory Error / Relative Pose Error |
+
+## 核心原理与流程总览
 
 ```mermaid
 flowchart LR
@@ -95,6 +109,11 @@ flowchart LR
 | 深度学习 | SA-LOAM | [paper-sa-loam](../entities/paper-sa-loam.md) | 新建 |
 | 深度学习 | EfficientLO-Net | [paper-efficientlo-net](../entities/paper-efficientlo-net.md) | 新建 |
 
+## 工程实践
+
+- 选型先看传感器与场景：2D 平面用 GMapping / Hector / Cartographer 一类；3D 机械雷达可从 LOAM 系入手；需要 IMU / 相机紧耦合看 FAST-LIO、LIO-SAM、R3LIVE 系（选型见 [LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)）。
+- 引用综述中的速度、精度、适用场景之前，先看下表与对应节点。
+
 ## 综述说法 vs 一手资料（节选）
 
 以下各条由对应节点逐句核对得出，详细出处见各节点。
@@ -119,11 +138,27 @@ flowchart LR
 
 综述把「CP-ICP」写作 CT-ICP 的变体名，属笔误（我的判断：对照 CT-ICP 论文标题）。
 
+## 局限
+
+- 综述无出处、表 1–5 缺失，下表只核对了文字中的论断。
+- 本页的映射只覆盖已建节点，其余见下节。
+
 ## 未建节点（本次不展开）
 
 综述还提到下列算法 / 概念，本次未建独立节点：FastSLAM、Karto、ICP / NDT / GICP / VGICP 等配准变体、FCGF / SpinNet / Lepard / REGTR、FPFH、OctoMap、SLAMesh、ASL-SLAM、基于强度的 SLAM、DOOR-SLAM、Kimera-Multi（库里有 [kimera](../entities/kimera.md) 但未核对多机版本）、D2SLAM、Swarm-LIO、g2o / iSAM / SE-Sync，以及 KITTI、SemanticKITTI 等数据集。表 1–5 在抓取文本中缺失，未核对。
+
+## 关联页面
+
+- [激光里程计融合](../methods/lidar-odometry-fusion.md)
+- [LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
+- 其余见上表各节点。
 
 ## 参考来源
 
 - [综述转载文归档](../../sources/blogs/wechat_xinjiqishijue_lidar_slam_survey_2026-11-11.md)
 - 各算法的一手资料见对应节点的 `sources/papers/` 归档。
+
+## 继续阅读
+
+- 从上表任一节点进入，各节点末尾有该算法的一手资料链接。
+- 起点推荐：[LOAM](../entities/paper-loam-lidar-odometry-and-mapping.md) → [FAST-LIO](../entities/fast-lio.md) → [R3LIVE](../entities/paper-r3live.md)（这是我的阅读顺序建议，不是综述所列）。
