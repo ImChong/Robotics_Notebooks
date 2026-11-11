@@ -72,6 +72,7 @@
 - [ArduPilot](wiki/entities/ardupilot.md) — ArduPilot**（官方文档 · [ArduPilot/ardupilot](https://github.com/ArduPilot/ar `📅unknown` `[entity_page]`
 - [ARDY：交互式可控 3D 人体运动生成](wiki/entities/ardy.md) — ARDY**（*Autoregressive Diffusion with Hybrid Representation for Interactive Human Motion Generatio `📅unknown` `[entity_page]`
 - [Arena-Rosnav（社交导航仿真与 Benchmark）](wiki/entities/arena-rosnav.md) — Arena-Rosnav**（5.0 项目页，文档，[GitHub `📅unknown` `[entity_page]`
+- [ARIS — Auto-Research-In-Sleep（自动科研技能流程）](wiki/entities/aris-auto-research-in-sleep.md) — ARIS** 将 `idea-discovery`、`experiment-bridge`、`auto-review-loop` 与论文写作组织为可组合的 Markdown Skill 工作流，支 `📅unknown` `[entity_page]`
 - [CAD CAE Copilot（armpro24-blip/cad-cae-copilot）](wiki/entities/armpro24-blip-cad-cae-copilot.md) — CAD CAE Copilot（armpro24-blip/cad-cae-copilot）是以自然语言生成 CAD/CAE 任务，使用 build123d 与 OpenCASCADE 创建真实可编辑 `📅unknown` `[entity_page]`
 - [Arnis](wiki/entities/arnis.md) — Arnis**（`louis-e/arnis`，Apache-2.0，~17.7k★）把 **真实世界地理** 编译进  `📅unknown` `[entity_page]`
 - [JEPA, from language models to world models（VideoDB）](wiki/entities/article-videodb-jepa-world-models.md) — VideoDB Labs 于 2026-07-07 发布的技术长文，从 next-token prediction 与 latent prediction 的差异讨论 JEPA 如何进入 VLM、VL `📅unknown` `[entity_page]`
@@ -1036,6 +1037,7 @@
 - [MuSHR](wiki/entities/mushr.md) — MuSHR**（Multi-agent System for non-Holonomic Racing）是面向 **教学与研究** 的 ROS 小车开源平台。 `📅unknown` `[entity_page]`
 - [Nano-vLLM｜面向学习的极简 LLM 推理引擎](wiki/entities/nano-vllm.md) — Nano-vLLM 以可读的简化推理内核呈现 prefix caching、block KV cache、分批调度、Tensor Parallelism 与 CUDA Graph；适合先读懂一次离线生 `📅unknown` `[entity_page]`
 - [natural-disasters（ABYSSAL）](wiki/entities/natural-disasters-abyssal.md) — natural-disasters**（品牌名 **ABYSSAL**，[`Token-Gremlin/natural-disasters`](https://github.com/Token-G `📅unknown` `[entity_page]`
+- [nature-polishing（学术润色 Skill）](wiki/entities/nature-polishing.md) — nature-polishing** 是原仓库 `Yuan1z0825/nature-skills` 下的可复用 Agent Skill，不是独立仓库；它根据论文类型、章节、语言与目标期刊，路由到 `📅unknown` `[entity_page]`
 - [Natura-1：行动意志（The Will to Act，Nature Will）](wiki/entities/naturewill-natura-1.md) — Natura-1** 是 Nature Will 宣布的物理世界基础模型：先从大规模人类第一人称操作视频学习，再用有限真实机器人数据适配到双臂灵巧操作，目标是让同一策略根据语言指令操纵多自由度手部 `📅unknown` `[entity_page]`
 - [Navigation2（Nav2）](wiki/entities/navigation2.md) — Navigation2**（ros-navigation/navigation2）是 ROS 2  `📅unknown` `[entity_page]`
 - [ncnn](wiki/entities/ncnn.md) — ncnn** 是 **腾讯** 开源的 **高性能神经网络推理框架**，自设计之初面向 **手机与嵌入式**。它以 **纯 C++** 实现、**无第三方运行时依赖**（不依赖 BLAS/NNPA `📅2026-06-25` `[entity_page]`
@@ -6078,6 +6080,7 @@
 - [ZONDA：多楼层动态避障的零样本 ObjectNav](wiki/entities/paper-zonda.md) — ZONDA**（*Zero-shot Object Navigation with Dynamic Avoidance*，[arXiv:2607.21025](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [ZYT-World：闭环智驾实时可控世界模型](wiki/entities/paper-zyt-world.md) — ZYT-World**（*ZYT-World: A Real-Time Controllable World Model for Closed-Loop Autonomous-Driving Si `📅unknown` `[entity_page]`
 - [Paperclip](wiki/entities/paperclip.md) — Paperclip**（paperclipai/paperclip，[paperclip.ing](http `📅unknown` `[entity_page]`
+- [PaperSpine5（贡献优先的学术论文生产）](wiki/entities/paperspine.md) — PaperSpine5** 是本地优先、证据约束的论文构建及审阅工作流；核心原则是先确认研究能辩护的 **Contribution 与 Claim Boundary**，再让 Motivation `📅unknown` `[entity_page]`
 - [Parkour MJLab：G1 / Go2 跑酷强化学习代码库](wiki/entities/parkour-mjlab.md) — 一句话定义：** Parkour MJLab 是基于 MJLab 的公开强化学习代码库，提供 Unitree `📅unknown` `[entity_page]`
 - [PAROL6（Source Robotics）](wiki/entities/parol6-source-robotics.md) — PAROL6** 是 **Source Robotics** 推出的 **开源桌面六轴机械臂**：强调 **低成本、可 DIY、ROS 控制**；产品介绍在 **[source-robotics. `📅unknown` `[entity_page]`
 - [Part-DB（电子元件库存管理）](wiki/entities/part-db.md) — Part-DB** 是部署在服务器、通过浏览器访问的开源电子元件库存管理系统。 `📅unknown` `[entity_page]`
@@ -6418,6 +6421,7 @@
 - [SuperMimic Parkour：跑酷动作跟踪](wiki/entities/supermimic-parkour.md) — SuperMimic Parkour** 是受 SuperMimic 启发的社区实现，使用 PHP 跑酷动作与地形训练 G1 动作跟踪策略；它不是原论文官方实现。 `📅unknown` `[entity_page]`
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md) — Superpowers** 是 obra/superpowers 仓库及其插件分发形态的总称：把作者团队在实践中沉淀的 `📅unknown` `[entity_page]`
 - [SuperTuxKart](wiki/entities/supertuxkart.md) — SuperTuxKart**（项目主页，代码，[R `📅unknown` `[entity_page]`
+- [Supervisor-Skills（科研副导师技能库）](wiki/entities/supervisor-skills.md) — Supervisor-Skills 是由 HKUSTDial 维护的 **Handbook 理论指南 + Agent Skills 可执行清单**，用于协助研究者从 Idea 评估、文献调研、技术论文 `📅unknown` `[entity_page]`
 - [Sutton & Barto RL 教材](wiki/entities/sutton-barto-rl-book.md) — Reinforcement Learning: An Introduction**（Richard S. Sutton & Andrew G. Barto）是强化学习领域的**标准教材**：以 M `📅unknown` `[entity_page]`
 - [sim-cli（svd-ai-lab/sim-cli）](wiki/entities/svd-ai-lab-sim-cli.md) — sim-cli（svd-ai-lab/sim-cli）是不直接启动求解器，而是将既有 `.mph`、`.inp`、`.cas.h5`、`.aedt`、`.mechdb`、`.tzr` 文件解析为结构化 `📅unknown` `[entity_page]`
 - [sim-plugin-openfoam（svd-ai-lab/sim-plugin-openfoam）](wiki/entities/svd-ai-lab-sim-plugin-openfoam.md) — sim-plugin-openfoam（svd-ai-lab/sim-plugin-openfoam）是sim-cli 的 OpenFOAM 外置驱动插件，提供运行算例、检查结果和可回放 CFD 产物 `📅unknown` `[entity_page]`
