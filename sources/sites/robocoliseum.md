@@ -10,6 +10,7 @@
 - **代码集成：** <https://github.com/AgibotTech/genie_sim/tree/main/source/geniesim_benchmark/skills/robocoliseum>（Genie Sim 仓内 Challenge skill 集）
 - **训练数据：** ModelScope [`agibot_world/GenieSim3.0-Dataset`](https://www.modelscope.cn/datasets/agibot_world/GenieSim3.0-Dataset)（LeRobot v2.1）
 - **入库日期：** 2026-09-15
+- **复核日期：** 2026-11-11（官网 Overall 展示与官方 Challenge SKILL 的提交枚举分开核对）
 - **一句话说明：** 智元面向 **Genie Sim 3.0** 的 **在线仿真挑战赛平台**：四块能力榜（instruction / spatial / manip / robust）、WebSocket 隧道远程推理评测、ModelScope 训练数据与 checkpoint；参赛者经 API 提交 job 并在自有 GPU 上跑 inference agent。
 
 ## 开源核查（步骤 2.5，2026-09-15）
@@ -32,7 +33,7 @@
 | `manip` | 精细操作执行 |
 | `robust` | 扰动 / 鲁棒性 |
 
-各榜 **独立计分与排名**；无跨榜「总分」。公开 API：`GET /api/challenge/leaderboard?board=<board>&page=1&per-page=20`。
+**Challenge API 以四个独立 board 提交、计分与排名**；官网首页另设 **Overall** 聚合展示区（2026-11-11 核查），不能将其当作第五个 `config.board`。公开分榜 API：`GET /api/challenge/leaderboard?board=<board>&page=1&per-page=20`。
 
 ## 参赛者管线（skill 路由）
 
@@ -45,6 +46,13 @@
 
 - **观测协议：** msgpack JSON-RPC `infer`；三相机 JPEG（head / hand_left / hand_right）+ 双臂/腰/夹爪 state + `prompt`；默认 `robot_type=G2_omnipicker`（权威实现见 genie_sim `corobotpolicy.py`）。
 - **状态文件：** `~/.simubotix-challenge.env`（`CHALLENGE_TOKEN`、`JOB_UUID`、`JOB_TOKEN` 等）。
+
+## 协议纠错（官方 Skills，2026-11-11）
+
+- `POST /api/challenge/job` 使用 `name`、`config.board`，显示模型名由账户 profile 提供，不在提交请求里传 `model_name`。
+- 状态与结果查询使用数字 `JOB_ID`；WebSocket 隧道连接使用 `JOB_UUID`。job 级 token 优先用于隧道认证。
+- 提交的 board 名是 `manip`；数据下载脚本 suite 名是 `manipulation`，两者不能互换。
+- 官网 Overall 属展示聚合口径；平台 `challenge-submit-job` 仅列四个合法 board。主页排名实时变化，旧榜单截面不可当作现时结果。
 
 ## 对 wiki 的映射
 
