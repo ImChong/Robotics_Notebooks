@@ -216,6 +216,8 @@ sequenceDiagram
 - [Mem4Act](./paper-mem4act-latent-memory.md) — 面向具身动作的记忆
 - [ReKi-VLA](./paper-reki-vla-register-memory.md) — VLA 中的记忆与长期状态
 - [ReSight 原始论文](https://arxiv.org/abs/2610.33487) — EDM 前置研究
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — SSS-Bench 等流式事件评测在具身基准选型中的位置
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — RoboBeats 视觉事件检测在感知栈中的分工
 
 ## 参考来源
 

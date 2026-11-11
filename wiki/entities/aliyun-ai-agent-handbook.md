@@ -124,6 +124,7 @@ flowchart TB
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md)：与 Harness 的架构权责、交付验证形成对照。
 - [Data Flywheel](../concepts/data-flywheel.md)：Trajectory 和 Badcase 反馈回路的机器人数据侧迁移。
 - [Agnes Harness](agnes-harness.md)：可执行 Agent runtime 项目；与本书的文档定位不同。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：把本书的 Agent 评估闭环（golden dataset、回归、Badcase）对接到具身侧基准的选型与结果解读。
 
 ## 参考来源
 

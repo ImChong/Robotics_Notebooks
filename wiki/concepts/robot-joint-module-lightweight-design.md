@@ -101,6 +101,7 @@ flowchart LR
 - [关节方案选型](./robot-joint-scheme-selection.md) · [减速器难点](./joint-module-reducer-difficulty.md) · [拓扑优化工具链](./humanoid-topology-optimization-toolchain.md) · [膝关节谐波极限](./humanoid-knee-harmonic-drive-limits.md)
 - [关节轴承选型](./robot-joint-bearing-selection.md) · [人形机械布局](./humanoid-mechanical-layout-design.md) · [关节自研流程](./joint-module-self-development-workflow.md) · [行星滚柱丝杠](./planetary-roller-screw-humanoid-leg-actuation.md)
 - [Katz 低成本模块化执行器](../entities/paper-low-cost-modular-actuator-katz.md) · [Tesla Optimus](../entities/tesla-optimus.md)
+- [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 轻量化取舍放回电机—减速器—驱动器整链选型
 
 ## 参考来源
 

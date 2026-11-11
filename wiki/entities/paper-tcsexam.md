@@ -172,6 +172,7 @@ sequenceDiagram
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究自动化的可执行验证节点。
 - [Math 2.0](../concepts/math-2-0.md) — 正确证明与研究理解/新颖性之间的区别。
 - [FlashProve](flashprove.md) — 证明“正确执行”与“结果内容正确”属于不同层级。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 基准设计与 grader 可信度的通用选型框架。
 
 ## 参考来源
 

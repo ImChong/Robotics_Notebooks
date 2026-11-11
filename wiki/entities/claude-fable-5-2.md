@@ -76,6 +76,7 @@ flowchart LR
 
 - [Embodied First Exam](./embodied-first-exam.md)：标准化 coding-agent 具身测评
 - [WICL / RoboScript](./paper-world-in-context-learning-roboscript.md)：明确的仿真反馈与 agent 交互机制
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：厂商公布的具身/agent 基准分数应放回基准选型框架中复核口径
 
 ## 参考来源
 

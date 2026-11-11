@@ -180,6 +180,7 @@ sequenceDiagram
 - [递归自改进（RSI）的边界](../concepts/recursive-self-improvement.md)
 - [RSI Survey：从有界自改写到自主研究闭环](./paper-rsi-survey-2607-07663.md)
 - [AI Auto-Research](../concepts/ai-auto-research.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 自反馈改写只是推理期自评；外部基准与 evaluator 选型见此
 
 ## 参考来源
 

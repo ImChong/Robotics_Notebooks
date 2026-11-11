@@ -13,7 +13,7 @@ tags:
   - agent-infrastructure
   - open-source
 status: complete
-updated: 2026-10-04
+updated: 2026-11-11
 related:
   - ./mermaid-js.md
   - ./archify.md
@@ -172,6 +172,7 @@ sequenceDiagram
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 架构沟通仍要人取舍；本工具把已决定的边界画清楚
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译进 wiki；Diagram Design 编译沟通工件
 - [ingest 工作流](../../schema/ingest-workflow.md) — 本站资料入库规范
+- [Rethinking Figures（arXiv:2611.08486）](./paper-rethinking-ai-scientific-figures.md) — 对 AI 辅助修订科研图的评估：清晰度提升、美学协调略降，强调科学语义须由研究者把关；与本工具「画清已决定的边界」互补
 
 ## 参考来源
 
