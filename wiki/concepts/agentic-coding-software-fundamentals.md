@@ -8,7 +8,7 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-10-28
+updated: 2026-11-11
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身；当代码吞吐扩张后，源码控制、检出、CI 与评审也会成为基础设施瓶颈。"
 related:
   - ../entities/mattpocock-skills.md
@@ -22,6 +22,7 @@ related:
   - ./data-flywheel.md
   - ../methods/enpire.md
   - ../references/llm-wiki-karpathy.md
+  - ../entities/huawei-harmonyos-developer-doc-center.md
   - ../entities/learnprompt.md
   - ../entities/easy-vibe.md
   - ../entities/paper-recursive-game-creator.md
@@ -173,6 +174,8 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 - **无代码可复现。** 步骤 2.5：**不适用**（论述文，无项目仓）。
 
 ## 关联页面
+
+- [华为 HarmonyOS 开发者文档中心](../entities/huawei-harmonyos-developer-doc-center.md) — 官方知识 MCP 与 llms.txt 提供可检索、可溯源的开发文档；AI 代码生成仍须核实 API 版本并做实际构建验证。
 
 - [Astra Games / Awesome GPT-6 Astra](../entities/astra-games.md) — 从可演示作品观察参数交互、暂停和测试边界；目录归因不构成模型基准。
 
