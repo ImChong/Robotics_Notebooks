@@ -6,6 +6,7 @@ updated: 2026-11-11
 related:
   - ./egalahad-sim2real.md
   - ./party-os.md
+  - ./partymimic.md
   - ../overview/roboparty-lab-party-os-technology-map.md
   - ../methods/sonic-motion-tracking.md
   - ../concepts/motion-retargeting.md
@@ -16,10 +17,14 @@ related:
   - ../concepts/sim2real.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
+  - ../../sources/sites/mimiclite-official-guide-2026-11-11.md
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/repos/mimiclite.md
   - ../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md
   - ../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md
+original:
+  - ../../sources/sites/mimiclite-official-guide-2026-11-11.md
+  - ../../sources/repos/mimiclite.md
 summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练与部署基础设施：any4hdmi 统一多来源动作，mjhub 保证资产一致性，支持小时级训练与跨 SONIC/BFM-Zero/TWIST2 等 codebase 的统一评测与 sim2real 部署。"
 ---
 
@@ -79,6 +84,62 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 
 已接入（文内列表）：SONIC、HEFT、[TeleopIT / Teleopit](./paper-teleopit.md)、Humanoid-GPT、BFM-Zero、TWIST2。
 
+### 官方流程总览（RoboParty 文档，第 1–6 章）
+
+以下流程基于 [官方完整使用指南](https://roboparty.com/documents/party-os?doc=mimiclite&lang=zh) 与 `EGalahad/mimic-lite` 实际训练/导出入口，不借用 PartyMimic 的可微世界模型算法。
+
+```mermaid
+flowchart TD
+  A["LAFAN / 100STYLE / PICO / BONES-SEED 等参考动作"] --> B["any4hdmi 转换并校验 qpos + MJCF"]
+  B --> C["Hydra 选择机器人、混合动作集和仿真后端"]
+  C --> D{"训练方式"}
+  D -->|PPO| E["train.py：并行仿真 + PPO 更新"]
+  D -->|PPO-ROA| F["train_sequential.py：教师 Train"]
+  F --> G["Adapt：学生拟合教师"]
+  G --> H["Finetune：学生 PPO 微调"]
+  E --> I["策略 Checkpoint"]
+  H --> I
+  I --> J["play.py 导出 ONNX + 同配套 YAML"]
+  J --> K["sim2real 统一观察接口 + 机器人 I/O"]
+  K --> L["MuJoCo Sim2Sim / MotionDecode 评测"]
+  K --> M["Unitree G1 / PICO 实时参考"]
+```
+
+### 官方源码运行时序图
+
+读过的源码入口为 `EGalahad/mimic-lite/scripts/train.py`、`train_sequential.py`、`play.py`、`eval.py`；运行前需独立克隆 `Agent-3154/active-adaptation` 并将训练仓库放在其 `projects/mimic-lite/` 中。
+
+```mermaid
+sequenceDiagram
+  actor User as 用户
+  participant Launch as active-adaptation 启动脚本
+  participant Seq as train_sequential.py
+  participant Train as train.py
+  participant AA as make_env_policy / PPOBase
+  participant Play as play.py::export_policy
+  participant Sim as sim2real::tracking.py
+  User->>Launch: launch_ddp.sh / train_sequential.py
+  alt PPO-ROA
+    Launch->>Seq: Train / Adapt / Finetune stages
+    loop 三个阶段
+      Seq->>Train: 子进程 + Hydra 配置 + 前阶段 checkpoint
+      Train->>AA: make_env_policy
+      AA-->>Train: 环境和策略
+      Train->>AA: rollout + PPO 更新
+      Train-->>Seq: 保存 checkpoint
+    end
+  else PPO
+    Launch->>Train: 多 GPU PPO 单阶段
+    Train->>AA: make_env_policy + rollout + PPO 更新
+    Train-->>User: checkpoint
+  end
+  User->>Play: play.py export_policy=true
+  Play->>Play: export_onnx + write YAML
+  Play-->>User: policy.onnx / policy.yaml
+  User->>Sim: --policy-config + --motion-path
+  Sim-->>User: MuJoCo sim2sim 或机器人 I/O 输出
+```
+
 ## 工程实践
 
 | 步骤 | 建议 |
@@ -99,6 +160,19 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 - **数据：** 训练数据集在 Hugging Face `any4hdmi` collection；BONES-SEED 因许可不转存，仅提供转换脚本。
 - **评测口径：** README 的对比图仅为 **G1**；动作前瞻延迟表（50 Hz）：MimicLite-PPO/ROA 0.08 s，SONIC 0.90 s，BFM-Zero 0.12 s，TWIST2 0.00 s。
 
+### 官方版本与复现实证（2026-11-11 复核）
+
+| G1 官方发布模型 | Actor | 并行环境 | 官方记录 GPU-hours | Motion lookahead |
+|---|---|---|---:|---:|
+| MimicLite-PPO | 1024×3 | 16×16384 | 92.3 | 0.08 s |
+| MimicLite-ROA | 1024×3 | 16×16384 | 173.2 | 0.08 s |
+| MimicLite v1.1 ROA student | 512×3 | 8×8192 | 50.106 | 0.08 s |
+
+- 以上数据来自 [实施仓库 README](https://github.com/EGalahad/mimic-lite) 以及 [RoboParty 官方使用指南](https://roboparty.com/documents/party-os?doc=mimiclite&lang=zh)，**不是**「8×4090 约 3 小时」的同一实验；后者是项目总述。
+- v1.1 Train / Adapt / Finetune 分别是 **4000 / 1000 / 2000** 次更新。教师可看额外未来参考帧（0.32 s），但部署学生只有 0.08 s 前瞻。
+- `sim2real` 统一 MotionDecode 评测包含 **Locomotion-80、Manipulation-48、Ground-60、Dance-40**；完成度与身体误差要同时看，误差只计失败前片段。部署 ONNX 和 YAML 必须来自同次导出。
+- 其他机器人的 checkpoint 以 [官方明细](https://github.com/EGalahad/mimic-lite/blob/main/docs/checkpoints.md) 为准；A3 发布包的集成 ONNX / sim2real 验证**仍未完成**，不能从“有权重”推出已证实真机效果。
+
 ## 局限与风险
 
 - **监督跟踪边界：** 强依赖参考 motion 质量与分布；与 [UFO](./roboparty-ufo.md) 无监督线互补而非替代。
@@ -106,6 +180,7 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 - **性能声明：** 1/875、3h 等数字为公众号自述，跨硬件与任务须独立 benchmark。
 - **RP1 依赖：** 部分真机叙事绑定 RoboParty RP1 发布节奏；RP1 总览 README 将 MimicLite 列为 RP1 demo 项目之一。
 - **落地页非代码库：** 复现需分别拉取上述子仓库，版本以落地页固定的子模块提交为准。
+- **原文阅读边界：** 2026-11-11 已完整通读官方使用指南、英中 README 和配套发布说明，并核对训练/导出核心代码；另有 GitHub 托管的 `mimic-lite.pdf` 技术报告，**本轮未成功取得 PDF 全文**，不声称其已通读。健康度的原文项限定于 frontmatter `original` 指向的已读官方技术文档。
 
 ## 关联页面
 
@@ -129,6 +204,7 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 - [公司路线日期核查](../../sources/sites/company-roadmap-date-audit-2026-10-08.md)
 
 - [mimiclite.md](../../sources/repos/mimiclite.md)
+- [RoboParty MimicLite 官方完整使用指南（2026-11-11 全文核查）](../../sources/sites/mimiclite-official-guide-2026-11-11.md)
 - [Roboparty/MimicLite README（2026-10-27 核查）](https://github.com/Roboparty/MimicLite)
 - [wechat_roboparty_lab_party_os_3_tools.md](../../sources/blogs/wechat_roboparty_lab_party_os_3_tools.md)
 - [zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md](../../sources/blogs/zhihu_jagger_task_space_fb_bfm_intact_mimic_vla.md)
@@ -136,5 +212,6 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 ## 推荐继续阅读
 
 - [MimicLite GitHub](https://github.com/Roboparty/MimicLite)
+- [MimicLite 官方使用指南](https://roboparty.com/documents/party-os?doc=mimiclite&lang=zh)
 - [机器人论文阅读笔记：SONIC](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Sonic__Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole-Body_Control/Sonic__Supersizing_Motion_Tracking_for_Natural_Humanoid_Whole-Body_Control.html)
 - [RoboParty Lab / Party OS 技术地图](../overview/roboparty-lab-party-os-technology-map.md)
