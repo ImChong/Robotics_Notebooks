@@ -54,7 +54,7 @@
       var pn = E.panel14(s), P = pn.P, u = pn.u, top = pn.top;
       var board = E.board(pn.under, P);
       var O = P(0, 0);
-      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62] });
+      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62], tipOff: E.BASE_TIP });
       var jS = E.joint(top, E.HI), jE = E.joint(top, E.HI), hand = E.dot(top, E.V, 7);
       var arc90 = E.arcArrow(top, O[0], O[1], 0.95 * u, E.OMEGA, 3.5, { head: 12 });
       var a90L = E.halo(E.txt(top, 0, 0, '90°', 20, E.OMEGA, 'middle', 900));
@@ -64,7 +64,7 @@
       var hLab = E.halo(E.txt(top, P(-2, 3)[0] - 18, P(-2, 3)[1] + 8, '手 (−2, 3)', 20, E.V, 'end', 900));
       var foreL = E.halo(E.txt(top, P(-2, 2)[0] - 18, P(-2, 2)[1] + 6, '竖着朝上', 18, E.INK2, 'end', 900));
       // 零位（第 11 集）：肘 (1, 2)、手 (3, 2)，肩转 90° 之前标出来
-      var zEL = E.halo(E.txt(top, P(1, 2)[0] - 16, P(1, 2)[1] - 16, '肘 (1, 2)', 20, E.HI, 'end', 900));
+      var zEL = E.halo(E.txt(top, P(1, 2)[0] + 12, P(1, 2)[1] + 34, '肘 (1, 2)', 20, E.HI, 'start', 900));
       var zHL = E.halo(E.txt(top, P(3, 2)[0] - 4, P(3, 2)[1] - 22, '手 (3, 2)', 20, E.V, 'middle', 900));
       // 原点那一点（透明板上）：白圈 + 「速度 = 0」
       var oPt = E.el('g', {}, top);
@@ -81,7 +81,7 @@
       var redL = E.halo(E.txt(top, P(0, -1.55)[0] + 12, P(0, -1.55)[1] + 6, '(0, −2)', 18, E.X, 'start', 900));
       var grnL = E.halo(E.txt(top, P(-1.5, -2)[0], P(-1.5, -2)[1] + 24, '(−3, 0)', 18, E.Y, 'middle', 900));
       var vioL = E.halo(E.txt(top, 0, 0, '(−3, −2)', 19, E.V, 'middle', 900));
-      var standL = E.halo(E.txt(top, P(-2, 3)[0] + 18, P(-2, 3)[1] - 18, '站在手上看', 19, E.V, 'start', 900));
+      var standL = E.halo(E.txt(top, P(-2, 3)[0], P(-2, 3)[1] - 26, '站在手上看', 19, E.V, 'middle', 900));
 
       /* ══ 右栏 ══ */
       var RK = E.rowKit(), Rg = E.el('g', {}, s);

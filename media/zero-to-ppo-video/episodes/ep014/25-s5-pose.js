@@ -34,7 +34,7 @@
       var s = K.sceneSvg('姿势一变，两种雅可比都要重算，但变的方式不一样。让肩继续转：站在底座上看，肘的轴被带着挪了地方，空间雅可比的第二列一直在变；站在手上看，物体雅可比两列一个数都不变，整条胳膊跟着你一起转。再让肘转：站在底座上看两列都不变；站在手上看第一列在变，从手上看肩挪了地方。站在底座上看，前面的关节一转，后面的轴跟着挪；站在手上看，后面的关节一转，前面的轴跟着挪。不管姿势怎么变，两种雅可比之间永远隔着一个伴随变换');
 
       var pn = E.panel14(s), P = pn.P, u = pn.u, top = pn.top, O = P(0, 0);
-      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62] }), hF = E.frame2(top, P, 1, '手', { labAt: [0.5, -0.45], labColor: E.V });
+      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62], tipOff: E.BASE_TIP }), hF = E.frame2(top, P, 1, '手', { labAt: [0.5, -0.45], labColor: E.V, tipOff: [[-0.15, 0.3], [-0.35, 0.1]] });   // 肘转完手的 y 轴朝左下，字母写在尖外面会压到白色 x 轴：改写在尖的左上
       var jS = E.joint(top, E.HI), jE = E.joint(top, E.HI), hand = E.dot(top, E.V, 7);
       var eoA = E.gv(top, P, E.INK, 3.5, { head: 13, dash: '8 6' });   // 第 2 列怎么算：从肘关节指向原点（跟着肘一起挪）
       var sArc = E.arcArrow(top, O[0], O[1], 0.6 * u, E.OMEGA, 3.5, { head: 12 });

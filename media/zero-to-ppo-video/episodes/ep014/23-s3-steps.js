@@ -60,13 +60,13 @@
       var pn = E.panel14(s), P = pn.P, u = pn.u, top = pn.top, O = P(0, 0);
       pn.pose(E.P90[0], E.P90[1]);
       var J = pn.joints(), pE = P(J[1][0], J[1][1]), pH = P(J[2][0], J[2][1]);
-      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62] }), hF = E.frame2(top, P, 1, '手', { labAt: [0.62, 0.5], labColor: E.V, tipOff: [[-0.3, -0.05], [0.1, 0.38]] });   // 手的 y 轴朝左，箭头尖外面要画 (−2, 0)：字母写在尖的上面
+      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62], tipOff: E.BASE_TIP }), hF = E.frame2(top, P, 1, '手', { labAt: [0.62, 0.5], labColor: E.V, tipOff: [[-0.3, -0.05], [0.1, 0.38]] });   // 手的 y 轴朝左，箭头尖外面要画 (−2, 0)：字母写在尖的上面
       bF.set(0, 0, 0); hF.set(-2, 3, D90);
       var jS = E.joint(top, E.HI), jE = E.joint(top, E.HI), hand = E.dot(top, E.V, 7);
       jS.at(O); jE.at(pE); hand.at(pH);
       var eArc = E.arcArrow(top, pE[0], pE[1], 0.55 * u, E.OMEGA, 3.5, { head: 12 });
       eArc.set(3.3, 4.5);   // 肘的左下（右下是大臂）
-      var eLab = E.tex(top, pE[0] - 112, pE[1] + 50, '\\dot\\theta_2=1', 22, E.OMEGA, 'start', { w: 90, h: 36 });
+      var eLab = E.tex(top, pE[0] - 112, pE[1] + 30, '\\dot\\theta_2=1', 22, E.OMEGA, 'start', { w: 90, h: 36 });   // x 轴上面（原先压在白色 x 轴上）
       function ring(p) { return K.paint(E.el('circle', { cx: p[0], cy: p[1], r: 14, fill: 'none', 'stroke-width': 3.5 }, top), null, E.INK); }
       var rgO = ring(O), rgH = ring(pH);
       var mvA = E.gv(top, P, E.STEP1, 3.5, { head: 13, dash: '7 6' });
@@ -91,7 +91,7 @@
       var dRed = E.gv(top, P, E.X, 5, { head: 14 }), dGrn = E.gv(top, P, E.Y, 5, { head: 14 });
       [dT, dRed, dGrn].forEach(function (a) { a.line.style.filter = 'drop-shadow(0 0 2px #000)'; });
       var dRedL = E.halo(E.txt(top, P(0, 1.2)[0] - 12, P(0, 1.2)[1] + 6, '(0, 2)', 17, E.X, 'end', 900));
-      var dGrnL = E.halo(E.txt(top, P(0.5, 2)[0], P(0.5, 2)[1] - 14, '(1, 0)', 17, E.Y, 'middle', 900));
+      var dGrnL = E.halo(E.txt(top, P(0, 2)[0] + 8, P(0, 2)[1] - 14, '(1, 0)', 17, E.Y, 'start', 900));
       var sumL = E.halo(E.txt(top, 0, 0, '(−2, 0)', 19, E.V, 'middle', 900));
       // 句 7：从肘关节指向手 (0, 2)，绕肘转 90°
       var eA = E.gv(top, P, E.INK, 4, { head: 14, dash: '9 6' }), eT = E.gv(top, P, E.INK, 4, { head: 14 });

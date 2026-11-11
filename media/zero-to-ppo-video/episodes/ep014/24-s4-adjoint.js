@@ -54,7 +54,7 @@
       var pn = E.panel14(s), P = pn.P, u = pn.u, top = pn.top, O = P(0, 0);
       pn.pose(E.P90[0], E.P90[1]);
       var J = pn.joints(), pE = P(J[1][0], J[1][1]), pH = P(J[2][0], J[2][1]);
-      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.8, -0.95] });   // 往下挪一点：x 轴下面要画原点那一点的紫箭头
+      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.8, -0.95], tipOff: E.BASE_TIP });   // 往下挪一点：x 轴下面要画原点那一点的紫箭头
       var hF = E.frame2(top, P, 1, '手', { labAt: [0.62, 0.5], labColor: E.V, tipOff: [[-0.3, -0.05], [0.1, 0.38]] });   // 手的 y 轴字母写在尖的上面（尖的外面要画箭头）
       bF.set(0, 0, 0); hF.set(-2, 3, D90);
       var jS = E.joint(top, E.HI), jE = E.joint(top, E.HI), hand = E.dot(top, E.V, 7);
@@ -69,17 +69,17 @@
       var r3L = lab(-5.35, 2, '−2', E.X, 'end'), g3L = lab(-3.5, 3.38, '3', E.Y);
       // 第 4 列：往右平移 1 格（手、原点各一支），绿 −1（朝右）；第 5 列：往上平移 1 格，红 1
       var v4 = arrow(E.V, 5.5), v4o = E.gv(top, P, E.V, 3.5, { head: 12, dash: '6 5' }), g4 = arrow(E.Y, 4);
-      var x0L = lab(-1.35, 4.4, '沿 x：0', E.X, 'start'), g4L = lab(-1.5, 2.3, '沿 y：−1', E.Y, 'start');
-      var v5 = arrow(E.V, 7), x5L = lab(-1.35, 4.4, '沿 x：1', E.X, 'start');
+      var x0L = lab(-2, 4.55, '沿 x：0', E.X), g4L = lab(-0.15, 2.3, '沿 y：−1', E.Y, 'end');   // 都在 y 轴左边，不压白色坐标轴
+      var v5 = arrow(E.V, 7), x5L = lab(-2, 4.55, '沿 x：1', E.X);
       // 乘只转肘那一列：蓝 (−3, −2) + 红 (1, 0) + 绿 (0, 2) 头尾相接 = 紫 (−2, 0)；按手的轴：沿 y 轴 2
       var m3 = arrow(E.OMEGA), m4 = arrow(E.X), m5 = arrow(E.Y), mS = arrow(E.V, 6);
       var m3L = lab(-3.6, 1.35, '× 1', E.OMEGA, 'start'), m4L = lab(-4.5, 0.62, '× 1', E.X), m5L = lab(-4.3, 2, '× 2', E.Y, 'end');
       var mSL = lab(-3, 3.42, '(−2, 0)', E.V), mY = lab(-3, 3.42, '沿 y：2', E.Y);
-      var qA = E.gv(top, P, E.INK, 3.5, { head: 13, dash: '8 6' }), qAL = lab(-1.4, -0.2, '(2, −1)', E.INK, 'end');
+      var qA = E.gv(top, P, E.INK, 3.5, { head: 13, dash: '8 6' }), qAL = lab(-1.4, -0.4, '(2, −1)', E.INK, 'end');   // x 轴下面，不压坐标轴
       var qV = arrow(E.V, 5), qVL = lab(0.75, 1.0, '(1, 2)', E.V, 'start');
       // 句 10：位置（白虚线）
       var pA = E.gv(top, P, E.INK, 3.5, { head: 13, dash: '8 6' });
-      var pAL = lab(-0.55, 1.95, '位置', E.INK, 'start');
+      var pAL = lab(-0.2, 1.95, '位置', E.INK, 'end');   // 白虚线和 y 轴之间
       // 句 11：伴随变换的两条弯箭头
       function curve(a, c, b) {
         var g = E.el('g', {}, top), pth = K.paint(E.el('path', { fill: 'none', 'stroke-width': 3.5, 'stroke-dasharray': '8 6' }, g), null, E.HI);

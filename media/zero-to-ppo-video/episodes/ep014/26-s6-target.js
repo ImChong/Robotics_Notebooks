@@ -46,7 +46,7 @@
       var pn = E.panel14(s), P = pn.P, u = pn.u, top = pn.top, O = P(0, 0);
       pn.pose(E.P90[0], E.P90[1]);
       var J = pn.joints(), pE = P(J[1][0], J[1][1]), pH = P(J[2][0], J[2][1]);
-      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62] }), hF = E.frame2(top, P, 1, '手', { labAt: [0.45, 0.45], labColor: E.V });
+      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62], tipOff: E.BASE_TIP }), hF = E.frame2(top, P, 1, '手', { labAt: [0.45, 0.45], labColor: E.V });
       bF.set(0, 0, 0); hF.set(-2, 3, D90);
       var jS = E.joint(top, E.HI), jE = E.joint(top, E.HI), hand = E.dot(top, E.V, 7);
       jS.at(O); jE.at(pE); hand.at(pH);
@@ -64,7 +64,7 @@
       var tArc = E.arcArrow(top, pH[0], pH[1], 0.7 * u, E.OMEGA, 3, { head: 10 });
       var red = E.gv(top, P, E.X, 5, { head: 14 }), grn = E.gv(top, P, E.Y, 5, { head: 14 }), vio = E.gv(top, P, E.V, 5.5, { head: 17 });
       [wT, red, grn, vio].forEach(function (a) { a.line.style.filter = 'drop-shadow(0 0 2px #000)'; });
-      var wL = E.halo(E.txt(top, P(-0.6, 2.35)[0], P(-0.6, 2.35)[1] + 4, '(2, −3)', 19, E.INK, 'start', 900));
+      var wL = E.halo(E.txt(top, P(-0.1, 2.35)[0], P(-0.1, 2.35)[1] + 4, '(2, −3)', 17, E.INK, 'end', 900));
       var redL = E.halo(E.txt(top, P(0, 1.5)[0] - 12, P(0, 1.5)[1] + 6, '(0, 2)', 18, E.X, 'end', 900));
       var grnL = E.halo(E.txt(top, P(1.5, 2)[0], P(1.5, 2)[1] - 14, '(3, 0)', 18, E.Y, 'middle', 900));
       var vioL = E.halo(E.txt(top, P(2.2, 0.8)[0], P(2.2, 0.8)[1] + 8, '(3, 2)', 19, E.V, 'start', 900));

@@ -20,7 +20,7 @@
     var pn = E.panel14(s, { ox: 268, oy: 292 }), P = pn.P, u = pn.u, top = pn.top, O = P(0, 0);
     pn.pose(E.P90[0], E.P90[1]);
     var J = pn.joints(), pE = P(J[1][0], J[1][1]), pH = P(J[2][0], J[2][1]);
-    var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62] }), hF = E.frame2(top, P, 1, '手', { labAt: [0.45, 0.45], labColor: E.V });
+    var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62], tipOff: E.BASE_TIP }), hF = E.frame2(top, P, 1, '手', { labAt: [0.45, 0.45], labColor: E.V });
     bF.set(0, 0, 0); hF.set(-2, 3, D90);
     var jS = E.joint(top, E.HI), jE = E.joint(top, E.HI), hand = E.dot(top, E.V, 7);
     jS.at(O); jE.at(pE); hand.at(pH);

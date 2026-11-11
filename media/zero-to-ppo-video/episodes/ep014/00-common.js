@@ -219,7 +219,7 @@
     var grid = el('g', {}, g), x, y;
     for (x = o.x0; x <= o.x1; x++) K.paint(el('line', { x1: P(x, 0)[0], y1: box[1], x2: P(x, 0)[0], y2: box[3], 'stroke-width': 1.5 }, grid), null, o.color || E.GRID);
     for (y = o.y0; y <= o.y1; y++) K.paint(el('line', { x1: box[0], y1: P(0, y)[1], x2: box[2], y2: P(0, y)[1], 'stroke-width': 1.5 }, grid), null, o.color || E.GRID);
-    var axes = el('g', {}, g);
+    var axes = el('g', { 'data-axes': '1' }, g);   // data-axes：坐标轴比格线粗、颜色深，压在没描底色的字（公式）上看不清，查「字压线」时照算
     if (o.axes !== false) {
       var ax = E.vec(axes, E.INK2, 2.5, { head: 12 }), ay = E.vec(axes, E.INK2, 2.5, { head: 12 });
       ax.set(box[0], oy, box[2] + 14, oy); ay.set(ox, box[3], ox, box[1] - 14);
@@ -932,6 +932,8 @@
     return { Js: rows(cs), Jb: rows(cb) };
   };
   // 平面上的一个坐标系：两根小箭头（x 红、y 绿），原点在网格 (x, y)，x 轴方向角 a，长 L 格；lab 写在原点旁边。set(x, y, a) 每帧可改
+  // 底座的坐标系和网格的坐标轴重合：x、y 两个字母默认会写在白色坐标轴上（看不清），挪到箭头尖的斜上方、斜右方（tipOff 用）
+  E.BASE_TIP = [[0.4, 0.3], [0.3, 0.4]];
   E.frame2 = function (parent, P, L, lab, opts) {
     var o = opts || {}, g = el('g', {}, parent);
     var ax = E.vec(g, E.X, o.w || 5, { head: 15 }), ay = E.vec(g, E.Y, o.w || 5, { head: 15 });

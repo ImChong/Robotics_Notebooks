@@ -50,7 +50,7 @@
 
       var pn = E.panel14(s), P = pn.P, u = pn.u, top = pn.top, O = P(0, 0);
       var under2 = E.el('g', {}, top);
-      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62] });
+      var bF = E.frame2(top, P, 1, '底座', { labAt: [0.75, -0.62], tipOff: E.BASE_TIP });
       var jS = E.joint(top, E.HI), jE = E.joint(top, E.HI);
       var hF = E.frame2(top, P, 1, '手', { labAt: [0.62, 0.5], labColor: E.V });
       var hand = E.dot(top, E.V, 7);
