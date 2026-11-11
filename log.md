@@ -311,6 +311,12 @@ op: ingest
 - **项目：** <https://robolineage.github.io/>
 - **代码：** <https://github.com/robolineage/robolineage>
 
+## [2026-11-11] ingest | sources/papers/dexroam_arxiv_2609_35761.md — DexRoam 全文精读并提升既有论文实体健康度
+
+- 复核 arXiv 全文与附录、CoRL 2026 项目页、采集对齐与双 VLA 训练代码的实际入口。
+- 不新建重复节点，升级既有 DexRoam 论文实体，补原文通读标记、Mermaid 主流程图、源码运行时序图与工程实践。
+- 核实 29%→56% / 32%→57% 的五任务成功率及人机混合示教边界，公开 HF 50 条 episode 仅为单任务示例数据。
+
 ## [2026-11-11] ingest | CamoDreamer / arXiv:2607.17768v2 — 上下文解耦伪装图像生成
 
 - 阅读作者 arXiv HTML v2 全文含附录，归档 CCB、CDAS、FACB、LAKE-RED 结果、下游 ZoomNet 验证及方法局限。

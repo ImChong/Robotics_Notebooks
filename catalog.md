@@ -2169,7 +2169,7 @@
 - [Dexora（arXiv:2605.18722）](wiki/entities/paper-dexora.md) — Dexora**（*Dexora: Open-source VLA for High-DoF Bimanual Dexterity*，[arXiv:2605.18722](https://arxi `📅unknown` `[entity_page]`
 - [DeXplicit（arXiv:2610.30781）](wiki/entities/paper-dexplicit.md) — DeXplicit**（*DeXplicit: Making Physical State Explicit in Dexterous Manipulation World Models*，[ar `📅unknown` `[entity_page]`
 - [DexPort（arXiv:2610.32969）](wiki/entities/paper-dexport.md) — DexPort**（*DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection*，[arXiv:2610.32 `📅unknown` `[entity_page]`
-- [DexRoam：从第一视角全身示教学习移动双臂灵巧操作](wiki/entities/paper-dexroam-mobile-bimanual-manipulation.md) — DexRoam 将无需外部追踪器的人类全身示教映射到机器人动作空间，再与机器人示教联合学习移动双臂灵巧操作策略。 `📅unknown` `[entity_page]`
+- [DexRoam: Learning Mobile Bimanual Dexterous Manipulation from Egocentric Whole-Body Human Demonstrations｜DexRoam：基于第一视角全身人体示教学习移动双臂灵巧操作](wiki/entities/paper-dexroam-mobile-bimanual-manipulation.md) — DexRoam** 将第一视角双目 RGB 与连续人体全身动作，经具身、动作语义和任务进度三阶段对齐到机器人控制接口，和真实机器人示教共同训练统一全身动作的 VLA 策略（CoRL 2026）。 `📅unknown` `[entity_page]`
 - [DexSafe：灵巧手位姿到达与安全过滤](wiki/entities/paper-dexsafe.md) — DexSafe** 在仿真训练灵巧手移动手中物体到目标位姿，并以学习式残差过滤器降低掉落风险。 `📅unknown` `[entity_page]`
 - [DexStitch：从人类视频学习并组合灵巧技能](wiki/entities/paper-dexstitch-skill-stitching-human-videos.md) — DexStitch 把长视频切成技能段与过渡段，再把人类手部示范转换成机器人可用的数据，使单个技能可以按需串联。 `📅unknown` `[entity_page]`
 - [DexSuite（arXiv:2610.37799）](wiki/entities/paper-dexsuite.md) — DexSuite**（*DexSuite: An All-in-One Framework for Dexterous Manipulation Across Arms, Hands, and T `📅unknown` `[entity_page]`
