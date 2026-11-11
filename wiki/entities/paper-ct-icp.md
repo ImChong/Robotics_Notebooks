@@ -143,6 +143,24 @@ flowchart TD
 - 「约束过多」是综述的措辞；论文本身写的是回环模块要求地面平面运动与 z 轴对齐地面法向（IV），会限制传感器配置和运动，方向一致，但论文用词是「requires」「limits」，不是「约束过多」。
 - 综述没有提到回环是挂在 pyLiDAR-SLAM 里的独立 Python 模块、且当前并非实时。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与 CT-ICP 的区别 |
+|------|--------|------------------|
+| IMLS-SLAM / MULLS（Table I 对照） | 先用常速模型整帧去畸变，再做 scan-to-model 配准 | ICP 迭代中畸变不变；KITTI-raw 上 RTE 0.71% / 1.41%，CT-ICP 0.55%（Table I） |
+| [LOAM](./paper-loam-lidar-odometry-and-mapping.md) | 边缘 / 平面特征配准，sweep 内匀速插值去畸变 | 特征点路线且无回环；CT-ICP 用稠密点到面配准，帧内起止双位姿联合优化，论文未直接与 LOAM 比较 |
+| [DLO](./paper-dlo-direct-lidar-odometry.md) | 稠密点云 + GICP 的轻量前端 | 同为不提特征的稠密配准，但无连续时间位姿、无回环 |
+| [FAST-LIO](./fast-lio.md) | 迭代卡尔曼滤波紧耦合 IMU | 用 IMU 解决畸变与高频运动；CT-ICP 纯激光，靠弹性位姿吸收抖动 |
+
+## 结论
+
+**CT-ICP 用「帧内连续、帧间不连续」的双位姿参数化，把去畸变放进配准优化，在未校正与高频运动数据上明显优于常速去畸变方法。**
+
+1. KITTI-raw / KITTI-360 / KITTI-CARLA 平均 RTE 0.55% / 0.45% / 0.09%，均优于 IMLS-SLAM、MULLS、F2M（Table I）。
+2. 消融显示弹性是收益来源：换回常速去畸变后 KITTI-raw 0.55% → 0.79%（V-B）；在已校正数据上则无优势。
+3. 高程图回环让 KITTI-360 00 的 ATE 从 29.87 m 降到 1.07 m，但另两条序列回环后略增（Table II）。
+4. 局限：回环要求平面运动与 z 轴对齐，回环与位姿图在主线程运行不实时，对照方法少且无 LIO 系比较。
+
 ## 关联页面
 
 - [LeGO-LOAM](./lego-loam.md)

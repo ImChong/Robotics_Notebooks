@@ -116,6 +116,14 @@ flowchart LR
   - 只有 ALOHA 一个平台，尚无仿真或其他机器人结果。
 - 论文标注 Preprint；README 称为 NeurIPS 2026 Robot Learning Workshop 论文，未经我独立核实。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与 CAC 的区别 |
+|------|--------|---------------|
+| [ACT](./paper-act.md) 时序集成 | 同步执行，对多次预测按指数权重平均（式 4） | 是 CAC 的 Sync 基线；CAC 不改训练，只把输出经跟踪式指令生成变平滑并改为异步，pen storage 执行时间 52.6 → 34.4 s（表 2） |
+| [Real-Time Chunking](./paper-real-time-chunking.md) | 推理期 inpainting 衔接扩散 / 流匹配动作块 | 只适用于扩散 / 流匹配策略；CAC 面向 ACT、OpenVLA-OFT 这类非扩散策略，在执行层做平滑（§5），论文未做二者实验对比（§6） |
+| [OpenVLA](./paper-openvla.md)（OFT 变体） | 大 VLA 动作块推理 | 作为被加速对象；异步无 CAC 时严重振荡，加 CAC 后等待时间约 18.5 s 降到不足 0.8 s（§5.2） |
+
 ## 结论
 
 **把执行层当成一个跟踪控制问题来设计，是一个低成本、可插拔的加速思路，但目前证据只覆盖一台 ALOHA、三个任务。**
