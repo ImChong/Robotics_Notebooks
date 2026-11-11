@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-11-09
+updated: 2026-11-11
 related:
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/rle-bench.md
@@ -192,6 +192,8 @@ Agent 评测的底层逻辑（出自 Anthropic 工程博文通读）：被评对
 - 本页的机器人迁移（仿真、真机 autoresearch）为本库推断，原文并未讨论机器人场景。
 
 ## 关联页面
+
+- [TCSExam](../entities/paper-tcsexam.md) — 理论计算机科学研究任务的可核验 agent 评测：Lean 证明、Solver 隐藏测试、构造与开放猜想；与具身基准的任务、分数不能混用。
 
 - [阿里云 AI Agent Handbook](../entities/aliyun-ai-agent-handbook.md) — 将 Trace、黄金数据集、回归评估置于 Harness、运行与治理的企业级工程生命周期中；本书是方法论白皮书，不是评测基准。
 
