@@ -6623,6 +6623,7 @@
 - [宅码 Common Know-How（二手知识点汇编）](wiki/entities/zhaima-common-know-how.md) — 这是一份由「宅码」公众号转载到飞书的 VLA 与机器人学习知识点汇编，适合作为入门索引，但它是二手笔记，结论需回到一手论文核对。 `📅unknown` `[entity_page]`
 - [兆威机电 ZWHAND 灵巧手](wiki/entities/zhaowei-zwhand-dexterous-hand.md) — 兆威机电 ZWHAND 灵巧手** 属于 Zane Hub 灵巧手行业综述 的「零部件下探 `📅unknown` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](wiki/entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
+- [大模型基础（Foundations of Large Language Models）](wiki/entities/zju-foundations-of-llms.md) — 教材：** 毛玉仁、高云君等著，浙江大学 DAILY Lab。**官方资源：** [ZJU-LLMs/Foundations-of-LLMs](https://github.com/ZJU-LLM `📅unknown` `[entity_page]`
 - [Zowi](wiki/entities/zowi.md) — Zowi**（GitHub，相关链接）是 [GitHub `📅unknown` `[entity_page]`
 - [Zstandard（zstd）](wiki/entities/zstandard.md) — Zstandard**（**zstd**）是面向 **实时压缩** 的 **无损** 算法与格式（参考实现 [facebook/zstd](https://github.com/facebook/ `📅unknown` `[entity_page]`
 - [OpenFOAM Expert Skill（Zyzhan417/OpenFOAM_expert_SKILL）](wiki/entities/zyzhan417-openfoam-expert-skill.md) — OpenFOAM Expert Skill（Zyzhan417/OpenFOAM_expert_SKILL）是面向源码阅读而非自动跑算例：让代理沿 OpenFOAM 源码定位实现，分析类继承、边界条件 `📅unknown` `[entity_page]`
