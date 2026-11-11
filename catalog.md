@@ -6091,6 +6091,7 @@
 - [Part-DB（电子元件库存管理）](wiki/entities/part-db.md) — Part-DB** 是部署在服务器、通过浏览器访问的开源电子元件库存管理系统。 `📅unknown` `[entity_page]`
 - [Particles4All](wiki/entities/particles4all.md) — Particles4All**（GitHub，[在线 Demo](https://particle `📅unknown` `[entity_page]`
 - [Party OS（RoboParty 人形研发底座）](wiki/entities/party-os.md) — Party OS** 是 RoboParty 旗下 RoboParty Lab 对外沉淀的 **开放研 `📅unknown` `[entity_page]`
+- [PartyMimic — 单卡分钟级人形全身运动跟踪 / General Humanoid Motion Tracking in Minutes](wiki/entities/partymimic.md) — PartyMimic** 是 RoboParty Lab 在 SuperMimic / BlinkMimic 技术线上发展的可微世界模型全身动作跟踪方法：从多来源动作库训练一份人形策略，通过 32 `📅unknown` `[entity_page]`
 - [Pascal Editor｜开源三维建筑编辑器（3D Building Editor）](wiki/entities/pascal-editor.md) — Pascal Editor**（pascalorg/editor）是面向建筑/工程/施工运维（AECO）的本地优先浏览器 3D 建模系统，可由用户直接编辑 Site、Building、Level、 `📅unknown` `[entity_page]`
 - [Boston Dynamics 足式控制与硬件专利栈](wiki/entities/patent-boston-dynamics-legged-control-stack.md) — 本页归纳 **Boston Dynamics** 五件与 **Spot / Atlas 类足式平台** 相关的授权或公开专利（见 [`sources/patents/boston_dynamics_l `📅unknown` `[entity_page]`
 - [Tesla 人形机器人膝关节机构（WO2024073135）](wiki/entities/patent-tesla-robot-knee-joint-assembly.md) — 专利 **WO2024073135A1**（*Systems and methods for a robot knee joint assembly*，权利人 **Tesla Inc.**）公开一种  `📅unknown` `[entity_page]`
