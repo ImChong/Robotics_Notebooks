@@ -7,21 +7,25 @@
 - **arXiv：** <https://arxiv.org/abs/2611.09124>
 - **PDF：** <https://arxiv.org/pdf/2611.09124v1>（v1，2026-11-06，cs.RO，正文 50 页，无独立附录）
 - **项目页：** <https://a2-meas.github.io/>
-- **代码：** https://github.com/AutoLab-SAI-SJTU/A2MEAS
+- **代码：** <https://github.com/AutoLab-SAI-SJTU/A2MEAS>（公开 `evaluation` 分支）
+- **项目页归档：** [sources/sites/a2-meas.md](../sites/a2-meas.md)
+- **代码归档：** [sources/repos/a2meas.md](../repos/a2meas.md)
 - **机构（论文首页）：** AutoLab, School of Artificial Intelligence, Shanghai Jiao Tong University；Research Lab, Anyverse Dynamics
 - **作者（Authors and contributions 节）：** 核心贡献者 Chao Liang、Ke Chen、Fengxiaoxiao Li、Shibo Huang、Yufeng Sun；项目负责人 Chao Liang、Zhipeng Zhang（通讯）
 - **入库日期：** 2026-11-10
 - **一句话说明：** 以「纠错码（correction code）」作为推理与连续控制之间的学习接口：MetaBrain 的恢复指令、诊断智能体的空间证据、执行历史与一份未纠正的基础动作提案被编码成码，经残差 Adapter 改写动作专家隐状态；底座动作模型 A²-WLA（视觉语言动作 + 运动感知历史 + 潜空间世界模型）在 BEHAVIOR 2026 公开集 100 任务上完整系统 Q-score 0.6411、完整任务成功率 45.40%。
 
-## 开源状态
+## 开源状态（2026-11-11 再核验）
 
-- 论文摘要与「Code availability」节写的是 **will progressively release**（计划渐进开放：多智能体编排、A²-WLA 与权重、训练脚本、数据处理与基础设施）。
-- 项目页 https://a2-meas.github.io/ 已静态读取（HTTP 200，含 Code & releases、Hugging Face、BibTeX 入口，具体链接未逐一核对）。
-- 代码仓库 README **未核实**：本会话访问 GitHub 被拒，无法确认当前已放出哪些组件。
+- **论文陈述：** `Code availability` 提出逐步开放多智能体编排、A²-WLA、训练脚本、数据处理和基础设施；这是发布计划，不等于完整训练栈已经开源。
+- **项目主页：** 已核实 Code & releases 指向 <https://github.com/AutoLab-SAI-SJTU/A2MEAS>，并提供 Hugging Face 入口。
+- **当前发布版：** 官方仓库默认 `evaluation` 分支包含 BEHAVIOR 2026 / RoboTwin 2.0 推理、评测、一个 Adapter、权重下载与安装步骤，Apache-2.0（第三方资产另计）。README 明确省略完整 Adapter 配置与部分任务特化执行策略（包括导航），未展示完整训练脚本与基础设施的发布路径，故按 **部分开源** 记录。
+- **论文完整系统 vs 公开复现版：** 论文完整系统 BEHAVIOR Q-score `0.6411`、成功率 `45.40%`；官方仓库当前复现表为 **`0.5287` / `32.40%`**。两组数字不对应同一发布配置。RoboTwin 公开复现表平均成功率 `95.05%`。
+- **证据：** [官方项目页归档](../sites/a2-meas.md)；[源码归档、运行入口与发布差异](../repos/a2meas.md)；GitHub README `Results` / `Release scope`。本次没有运行 GPU 评测，引用的是作者官方复现记录。
 
 ## 核对范围与通读
 
-- **核对范围：** 下载 arXiv v1 PDF（首页标题与编号核对一致），用 pdftotext 抽取全文并逐段读完：摘要、引言、§1 框架、§2 纠错码与 Adapter、§3 A²-WLA 与训练细节（公式 1–23、表 3）、§4 基础设施（表 4、图 8–9）、§5 实验（表 5–10）、§6 消融与长程分析（表 11–15）、§7 讨论与局限、Data / Code availability、作者与参考文献列表；该 PDF 没有独立附录或补充材料章节。图表数据以正文表格与图注为准，仅直接看了图 13（真机咖啡恢复柱状图）一页的渲染图，其余图（架构图、轨迹图等）只读了图注与抽取文字。项目页只读了概览文字；GitHub 仓库 README、引用的外部排行榜与基准官网未访问。
+- **核对范围：** 下载 arXiv v1 PDF（首页标题与编号核对一致），用 pdftotext 抽取全文并逐段读完：摘要、引言、§1 框架、§2 纠错码与 Adapter、§3 A²-WLA 与训练细节（公式 1–23、表 3）、§4 基础设施（表 4、图 8–9）、§5 实验（表 5–10）、§6 消融与长程分析（表 11–15）、§7 讨论与局限、Data / Code availability、作者与参考文献列表；该 PDF 没有独立附录或补充材料章节。图表数据以正文表格与图注为准，仅直接看了图 13（真机咖啡恢复柱状图）一页的渲染图，其余图（架构图、轨迹图等）只读了图注与抽取文字。原入库时项目页只读了概览文字、GitHub README 未访问。2026-11-11 补读项目页 System/Model/Infra/Simulation/Real World 及官方 README、评测入口、BEHAVIOR 服务/纠错 Controller、RoboTwin 服务等相关源码；代码是静态核验，未逐文件审计仓库，未执行 benchmark。引用的外部排行榜与基准官网未逐一再核验。
 - **通读：** 已完成
 
 ## 核心摘录
@@ -39,6 +43,13 @@
 11. **子任务调度（表 14–15，§6.4）：** VLM 选择的 Focus 子任务提示在 Selected12 上比完整任务条件更差（Q 0.4411 对 0.5417，成功 30.83% 对 45.83%）；固定动作模型下四种调度差异很小（F-VLM 0.4411 / 30.83%，F-Global 0.4201 / 30.00%）。
 12. **基础设施（§4、表 4）：** 8 卡训练 427.1 samples/s，对比 π0.5 参考实现 106 samples/s（约 4.03 倍，各自 batch 取利用率最优）；64 卡 Pro6000 扩展效率约 98%；1,000 episode 评测 18.1 小时，对比理想线性缩放推算的 159.4 小时（约 8.8 倍，论文自注基线是推算而非实测）。
 13. **论文自述局限（§7.3、§6.5.2）：** 纠错需暂停诊断，不适合需立即反应的事件；纠错训练数据是演示状态上的偏差，缺真实失败状态；量化评测集中于家居仿真；车翻倒、灯掉进缝隙、食物散落等场景破坏会让恢复超出机器人可达范围。
+
+## 源码对应关系（2026-11-11 补充）
+
+- `evaluate.py` 分发 BEHAVIOR / RoboTwin 两种评测模式；BEHAVIOR 多任务示例使用 `python -m benchmarks.behavior.run` 进行多 GPU 调度。
+- `a2meas/behavior/server.py` 的 WebSocket 网关将 MessagePack 观测交给 `RouteManager` 和隔离的 `route_worker`；worker 的 `VLAPolicy.step()` 从 chunk 队列输出逐步动作。
+- `a2meas/behavior/policy.py` 在没有待执行 chunk 时调用 `ModelService` 或 `CorrectionController`；纠错模块读取执行历史，生成基础提案、请求接触/空间审查、注入 Adapter 隐状态残差并执行动作安全检查。
+- BEHAVIOR Adapter 只对配置列出的任务生效。当前仓库的一个 Adapter 实现与论文完整系统中的多任务适配配置不能等同。详情见 [源码归档](../repos/a2meas.md)。
 
 ## 对 wiki 的映射
 
