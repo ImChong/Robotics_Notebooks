@@ -170,6 +170,7 @@ related:
   - ../entities/paper-discrete-forcing.md
   - ../entities/paper-geomvla-2609-13812.md
   - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
+  - ../entities/paper-tacitvla.md
 original:
   - ../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md
   - ../../sources/papers/openvla_reading_arxiv_2406_09246.md
@@ -536,6 +537,10 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
   [RoboBench](../entities/robo-bench.md) 显示 SOTA MLLM 在 **隐式指令、robot-view 感知、执行失败诊断** 等轴仍远低于人类；且 RoboBench 分与 **CALVIN/LIBERO** 下游 VLA 相关——选型 VLM 骨干时宜同时看 **操纵流水线认知诊断** 与 **控制基准**。
 - **误区 6：VLM/VLA「会看」⇒ 能通过身体闭环行动。**
   [HumanCLAW](../entities/paper-humanclaw.md) 在 1,218 条 HSSD egocentric find–navigate–interact 回合上测 **冻结 VLM 的 action intelligence**；九款 SOTA VLM 最高 InteractSR 仅 **16.8%**，FindSR 与 NavSR/InteractSR 断崖暴露 **embodied self-awareness** 缺口——勿用静态 VQA 或桌面 VLA 分数外推全身决策能力。
+
+## TacitVLA：训练推理监督与部署动作延迟解耦（2026）
+
+[TacitVLA（arXiv:2610.17540）](../entities/paper-tacitvla.md) 通过掩蔽动作专家对当次推理文本的注意力，让推理目标继续训练 VLA 骨干表征，部署时却不必等待这段文本自回归生成；在需要记住历史子任务的 RoboMME / RMBench 中，仍在动作执行期间异步生成下一条账本。论文在 LIBERO 的动作就绪延迟从显式推理 495 ms 降至 147 ms（单 H100，成功率 73.5% vs 72.9%）；不同硬件部署须重新计时。详见[完整机制、Mermaid 流程与基准边界](../entities/paper-tacitvla.md)。
 
 ## 工程实践
 
