@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-12
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-self-evolving-wam-futuring.md
@@ -113,6 +113,7 @@ related:
   - ../entities/paper-thinker-wm-unified-world-model.md
   - ../entities/paper-onewm-unified-causal-training.md
   - ../entities/paper-prismwam.md
+  - ../entities/runway-praxis-1.md
 original:
   - ../../sources/papers/wam_survey_reading_arxiv_2605_12090.md
 sources:
@@ -688,3 +689,7 @@ flowchart TB
 
 
 - [Self-Evolving WAM](../entities/paper-self-evolving-wam-futuring.md)：联合生成动作与未来，结合 Stored-K 和有限配置的训练反馈。
+
+## Runway Praxis-1：视频预训练转机器人控制
+
+- [Runway Praxis-1](../entities/runway-praxis-1.md) 通过视频生成预训练、具身视频中训练与联合视频—动作中训练，将 26.9B MoE 视频骨干和 314M 动作专家结合；在窗口联合去噪时用视频骨干中间特征生成机器人动作块。官方已发布权重、MuJoCo 闭环与微调/服务代码；报告称 RoboLab-120 成功率为 555/1200（46.2%），属于其指定协议的报告值。该项目与同名的第一视角全身操作 Praxis 是独立工作。
