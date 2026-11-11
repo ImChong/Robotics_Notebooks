@@ -86,7 +86,7 @@ flowchart LR
 - **评测（README）：** 复现数字需匹配 `configs/evaluation/` 里记录的检查点、denoising steps、seed 与执行 horizon。
 - **延迟（IV-D）：** H20 单卡、batch 1，LIBERO 168 ms、约 2.1B 参数；文字称成功率相近时延迟约为 Cosmos Policy 的三分之一，且快于 Fast-WAM。
 
-### 关键结果
+## 实验结果：关键数字（LIBERO、SimplerEnv-Bridge、真机）
 
 | 项目 | 数字 | 出处 |
 |------|------|------|
@@ -112,6 +112,23 @@ flowchart LR
 | 不能把整套策略称为单步推理 | 与论文措辞一致：论文说的是骨干 single-pass，未称整套策略单步；动作头的去噪步数论文正文未给，README 提到 denoising steps 需与配置匹配，具体值本次未读（未核实）。 |
 
 文章未写数字；论文数字见上表。
+
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md) | 同一 Cosmos 视频骨干上联合生成未来帧与动作 | 走迭代去噪；ForeAct 只做 t_diff=0 单次前向，LIBERO 96.6 对 98.5 略低，作者称延迟约为其三分之一（Table I、IV-D） |
+| [Fast-WAM](./paper-fast-wam.md) | 训练用视频联合目标、推理跳过未来帧生成的 WAM | 思路相近；ForeAct 额外用下一帧相对深度塑形表征，LIBERO 96.6 对 97.6 略低，真机 67/90 对 58/90（Table I、Fig. 5） |
+| [π0](./paper-pi0.md) | VLM 骨干 + 流匹配动作专家的 VLA | 骨干为视觉语言模型而非视频世界模型；真机 52/90 低于 ForeAct（Fig. 5） |
+
+## 结论
+
+**ForeAct 说明「视频世界模型单次前向 + 训练期下一帧相对深度辅助监督」能在不增加推理开销的情况下提升动作学习，但绝对成功率并未超过更重的 WAM。**
+
+1. 增益主要来自深度监督：完整版 96.6，几何 token 无监督 94.7，Action Only 94.3（Table III）。
+2. 监督目标以「下一帧」最好，更远或当前帧都变差；8 个几何 token 最佳（Fig. 7）。
+3. 部署只需 RGB 与语言，H20 上 LIBERO 单次 168 ms（IV-D）。
+4. 局限：LIBERO-Long 91.8 与 Stack Blocks 12.5 偏弱，真机样本少且无几何消融，对照数取自各自论文、训练设置未必统一。
 
 ## 局限
 

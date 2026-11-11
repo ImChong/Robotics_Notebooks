@@ -112,6 +112,24 @@ flowchart TD
 | 性能优于近期所有基于学习的激光雷达里程计 | 论文摘要原话 “outperforms all recent learning-based methods”，但比较对象仅是表 2 / 4 / 5 / 6 中的 Velas、LO-Net、DMLO、LodoNet、DeepPCO、Cho 等，且 KITTI 各表使用不同的训练 / 测试划分，由作者重新训练；LO-Net 与 DMLO 无公开代码，数值取自其论文（表 2 注）。「所有」应理解为「作者当时对比的那些」。 |
 | 甚至优于基于几何方法的 LOAM | 勉强成立且限定很多：摘要原话是 “even … LOAM with mapping optimization, on most sequences of KITTI odometry dataset”。数据集仅 KITTI；v2 表 2 的 07-10 均值 trel 0.795 对 Full LOAM 0.828，领先只来自序列 07，08-10 本方法均略差（差 0.01-0.02）；对 Full A-LOAM，trel 0.795 对 0.810 略好，但 rrel 0.395 对 0.323 反而更差。在 M2DGR（表 11）上均值输给 pyLiDAR，且比较的几何方法均为「无建图」版本，不是带建图的 LOAM。v1 表 2 的 LOAM 数值（均值 1.145，取自 LO-Net 论文）与 v2 表 2（0.828）不同，且 v2 表 8 仍沿用 1.145，论文自身前后不一致。 |
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [LOAM](./paper-loam-lidar-odometry-and-mapping.md) | 线 / 面特征 + 高频里程计 + 低频建图的几何激光 SLAM | 本文是监督式学习、只做里程计；KITTI 07-10 均值 trel 0.795 对 Full LOAM 0.828，但 08-10 逐序列略差（表 2） |
+| [A-LOAM](./paper-a-loam.md) | LOAM 的 Ceres 精简复现 | 带建图的 Full A-LOAM trel 0.810 略逊、rrel 0.323 反而更好；无建图 A-LOAM 明显更差（3.894，表 2） |
+| [LeGO-LOAM](./lego-loam.md) | 地面分割 + 轻量几何激光里程计 | 论文仅以「无建图」设置在 KITTI 11-21、M2DGR、Argoverse 上对照（表 7、表 11、表 12） |
+| [FAST-LIO](./fast-lio.md) | IMU 紧耦合的迭代 EKF 激光惯性里程计 | 本文不用 IMU、无后端，不在论文对比范围内，两者不是同一层级系统 |
+
+## 结论
+
+**EfficientLO-Net 说明「投影只用于加速索引、特征仍在原始 3D 点上学」能让监督式激光里程计在 KITTI 上与带建图的 LOAM 同量级，并以约 20 Hz 运行。**
+
+1. 圆柱投影 XYZ 图 + 投影感知分组把总耗时从 120.1 ms 压到 45.3 ms（表 8）。
+2. PWC 由粗到细 + 可训练嵌入掩码是精度关键：去掉 cost volume 或 warp-refinement 误差大幅上升（表 9）。
+3. 跨数据集上 Argoverse 表现好，但 M2DGR 均值输给 pyLiDAR（表 11、表 12）。
+4. 局限：只做里程计、需位姿真值监督、对 LOAM 的领先幅度小且集中在序列 07，动态物体多的场景会出错（§5.4、§6）。
+
 ## 工程实践
 
 - 官方实现：TensorFlow（README 列出 Python 3.6.8、CUDA 9.0、TensorFlow 1.12.0），需要先编译自定义 TF 算子（`tf_ops`）；README 注明 PyTorch 版在 `pytorch` 分支。以上仅静态读 README 前部，未运行，未读源码。
