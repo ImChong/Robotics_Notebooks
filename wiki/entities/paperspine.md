@@ -2,7 +2,7 @@
 type: entity
 project_id: paperspine
 tags: [ai-auto-research, academic-writing, research-workflow, llm-agents, evidence-grounding]
-status: draft
+status: complete
 updated: 2026-11-11
 code: https://github.com/WUBING2023/PaperSpine
 project: https://wubing2023.github.io/PaperSpine/v5/
@@ -62,7 +62,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-以下仅示意已查看的 **官方入口与工具契约**，不是全部内部调度已验证的调用栈。
+核对主 `SKILL.md`、`paper-spine-production-protocol.md` 17 步全文，以及 Web launcher、public MCP client、Pandoc exporter 的核心入口源码。下图是 **PaperSpine5 当前宿主 Agent + 公共 Web + 导出器** 的已确认调用路径，非用户实际论文的测试日志。
 
 ```mermaid
 sequenceDiagram
@@ -70,36 +70,50 @@ sequenceDiagram
   actor User as 用户
   participant Agent as 宿主 Agent
   participant Skill as src/skill/SKILL.md
-  participant Web as src/scripts/paperspine5_web.py
-  participant Export as src/scripts/manuscript_export.py
+  participant Web as paperspine5_web.py
+  participant Client as paperspine_public_client.py
+  participant RPC as 公共 MCP 任务服务
+  participant Export as manuscript_export.py
   participant Pandoc as Pandoc
-  User->>Agent: 提供研究目标和材料
-  Agent->>Skill: 读取任务、证据和权限约束
+  User->>Agent: 提供材料和论文任务
+  Agent->>Skill: 读取 17 步协议和任务权限
   Agent->>Web: launch --no-open
-  Web-->>Agent: 返回本地 Web 地址
-  Agent-->>User: 请在 Web 保存配置与选择
-  User-->>Agent: 完成材料与配置确认
-  Agent->>Agent: 贡献和动机确认、起草、审阅
-  opt 需要文稿导出且依赖可用
-    Agent->>Export: 调用文稿导出 CLI
-    Export->>Pandoc: 转换语义 Markdown 文稿
-    Pandoc-->>Export: 转换结果
-    Export-->>Agent: 文稿文件或需修复的问题
+  Web->>Client: web_launch
+  Client-->>Web: 本地 Web 地址
+  Web-->>Agent: 返回相同 profile 的服务地址
+  Agent->>Web: host tools / snapshot
+  Web->>Client: call
+  Client->>RPC: paperspine_get_task
+  RPC-->>Client: task_id、配置和版本
+  Client-->>Agent: 已保存任务快照
+  User->>RPC: 在 Web 确认配置、贡献与选图
+  Agent->>Web: host wait / snapshot
+  Web->>Client: call
+  Client->>RPC: paperspine_wait_for_task_change
+  RPC-->>Agent: 更新后的任务选择
+  Agent->>Agent: 基于实际证据写作与独立评审
+  opt 用户已授权导出且依赖可用
+    Agent->>Export: 传入语义 Markdown 文稿
+    Export->>Pandoc: markdown 转 JSON AST
+    Pandoc-->>Export: 文稿 AST
+    Export->>Pandoc: JSON AST 转 DOCX 或 LaTeX
+    Pandoc-->>Export: 可编辑产物
+    Export-->>Agent: 文件及核验报告
   end
 ```
 
-`paperspine5_web.py` 定义 `launch` 与 `host` 命令，`manuscript_export.py` 实现 Pandoc 导出；其余内部状态转换尚未通读，不声称经过实机完整运行。
+上图明确区分 **host Agent 的科研工作**、**公共 MCP 的状态/权限保存** 与 **Pandoc 的格式导出**。已读完官方 17 步生产协议与关键运行源码；完整实机执行及最终页面视觉审查仍待另行验证。
 
 ## 工程实践
 
-- 使用上游非 Fork 仓库 `WUBING2023/PaperSpine`，固定核查版本 `42312b8d9c76`，当前 README 是 **PaperSpine5 Alpha**。
+- 已通读主 Skill 与 17 步生产协议；使用上游非 Fork 仓库 `WUBING2023/PaperSpine`，固定核查版本 `42312b8d9c76`，当前 README 是 **PaperSpine5 Alpha**。
 - 将作者材料、真实实验指标、可信参考文献放入论文任务；严格区分证据已具备与尚待实验。
 - 优先确认 `Main contribution statement`、`Evidence required/available/missing`，再定动机与章节；把任何改变科学含义的候选文字交还作者确认。
 - 导出涉及 `Pandoc >=3`，生成 PDF 还需 LaTeX 引擎，需在实际环境检查。
 
 ## 局限与风险
 
-项目仍为 Alpha；17 步协议、所有导出路径与交付质量尚未端到端验证。自动修改和 Web 操作依赖用户确认的任务绑定及授权；语言流畅不等于研究贡献成立。**尚未通读全部主 Skill 与运行实现，故本次为 draft。**
+项目仍为 Alpha；虽然官方主 Skill 与 17 步协议已通读，但没有在本次执行环境运行整套任务、遍历所有插件或验证最终可下载 Word/PDF 的视觉质量。自动修改和 Web 操作依赖用户确认的任务绑定及授权；语言流畅不等于研究贡献成立。**文档通读完成不代表端到端功能测评完成。**
 
 ## 关联页面
 
@@ -115,5 +129,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
+- [完整 17 步原始生产协议](https://github.com/WUBING2023/PaperSpine/blob/42312b8d9c76/src/skill/references/paper-spine-production-protocol.md)
 - [Contribution-First 规则](https://github.com/WUBING2023/PaperSpine/blob/42312b8d9c76/src/skill/references/contribution.md)
 - [PaperSpine5 官方产品页](https://wubing2023.github.io/PaperSpine/v5/)
