@@ -216,3 +216,8 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 - [PPO](./policy-optimization.md)
 - [Probability Flow](../formalizations/probability-flow.md) — 扩散模型的数学基础
 - [Contact Dynamics](../concepts/contact-dynamics.md)
+
+
+## 延伸对照（2026-11-11）
+
+- [从生成全身动作到人形闭环：跨项目关系与证据对比](../comparisons/generative-motion-to-humanoid-closed-loop.md) — 区分角色动画扩散、实时重规划、合成数据策略与 G1 物理跟踪；非 roadmap。
