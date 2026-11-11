@@ -5,7 +5,7 @@ arxiv: "2611.12870"
 project: "https://char-lotte-xia.github.io/swam-official/"
 code: "https://github.com/shaaaaron/SWAM"
 tags: [robotics, world-action-model, cross-modal-alignment, flow-matching, imitation-learning]
-status: draft
+status: complete
 updated: 2026-11-11
 summary: "SWAM 通过语言-视频-动作对齐利用论文约4.7万小时混合经验；RoboTwin Easy/Hard 88.10%/61.56%、三项真机 40.00%；已开放代码与部分数据。"
 original:
@@ -56,7 +56,7 @@ flowchart TD
 
 ## 核心原理
 
-以 Wan2.2 视频初始化作为世界表征起点，动作分支通过联合注意力得到视频条件信息，并用对应的动作训练目标学习控制。数据混合、语言注释质量、模型扩展共同影响结果；训练与评测资源按官方 SETUP.md 配置。
+视频分支由 Wan2.2-TI2V-5B 初始化，动作分支随机初始化并保持独立残差流；通过视频到动作的单向 masked attention 传输条件，动作分支不直接对文本 cross-attend。各来源视频样本优化视频 flow matching，仅具有效动作标签的示范样本优化动作 flow matching。数据混合、语言注释质量、模型扩展共同影响结果；训练与评测资源按官方 SETUP.md 配置。
 
 ## 实验与评测（作者报告）
 
@@ -109,6 +109,7 @@ sequenceDiagram
 - 训练使用 `examples/sft/train_dreamzero.sh`，要求配置 Ray 节点、GPU、基础模型和本地数据路径。
 - 评测入口 `dreamzero/robotwin_eval/run_block_full50.sh`；通过 `describe` 模式预检分片，再按真实 checkpoint 启动。
 - 公开 SWAM-Pretrain 不包含 Panda70M、Ego4D、EgoSuite、UMI；遵循上游数据许可。
+- 论文附录给出 Flexiv 真机 10 个固定布局、每布局 3 次，30Hz，同设定允许最多 5 次自主重规划；需依此解释 40.00% SR。
 
 ## 局限与风险
 

@@ -5,7 +5,7 @@ arxiv: "2611.12885"
 project: "https://ArcheOne-AI.github.io/RoboScript/"
 code: "https://github.com/ArcheOne-AI/RoboScript"
 tags: [robotics, agentic-manipulation, in-context-learning, simulation, imitation-learning]
-status: draft
+status: complete
 updated: 2026-11-11
 summary: "WICL/RoboScript 以单条示范、冻结模型和模拟世界的试演反馈构建 Task Memory；RoboTwin 2.0 五十任务作者报告平均83.4%，可运行框架已开源。"
 original:
@@ -65,7 +65,7 @@ RoboScript 把模型网关、Hub/toolsets、控制平面与模拟世界拆分成
 | clean / randomized | 83.6% / 83.2% |
 | 对照：最强训练策略、50 demos/task | 61.7% |
 
-上表不是不同预算下的完全同条件重训练对照；还需结合论文实验设置解读。
+论文每任务每设定 10 次；上表不是不同预算下的完全同条件重训练对照，还需结合论文实验设置解读。论文另报告双臂 PiPER 四项任务 10/10、7/10、7/10、6/10；真机部署代码仍待公开。
 
 ## 结论
 

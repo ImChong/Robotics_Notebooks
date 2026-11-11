@@ -3,7 +3,7 @@ type: entity
 project_id: claude-fable-5-2
 project: "https://www.anthropic.com/claude-fable-and-mythos-5-2"
 tags: [embodied-ai, robotics, agents, foundation-model, benchmark]
-status: draft
+status: complete
 updated: 2026-11-11
 summary: "Anthropic Claude Fable 5.2 官方展示 RoboDojo Sim 最高努力档 64.9% 和多项真机操作演示；不等于公开机器人控制策略或独立复现。"
 original:
@@ -49,7 +49,7 @@ flowchart LR
 
 ## 核心原理与实验
 
-官方在 RoboDojo Sim **最高努力档**报告 **64.9%**。博客展示真机魔方、旋瓶盖、绘画等任务，但未将这些演示等价定义为 RoboDojo 的同一任务分母或可靠性统计。
+官方以**内部运行**在 RoboDojo Sim **最高努力档（Max effort）**报告 **64.9%**。博客展示真机魔方、旋瓶盖、绘画等任务，但未将这些演示等价定义为 RoboDojo 的同一任务分母或可靠性统计。
 
 ## 结论
 
@@ -66,7 +66,7 @@ flowchart LR
 
 ## 局限与风险
 
-公开介绍没有构成可独立复现的完整具身评估研究；完整指标表、附录、控制接口和运行入口待逐项查证。本节点暂为草稿。
+完整官方发布博客已通读；但当前没有对机器人控制 API、RoboDojo 各子任务分数和仿真到真机复现协议的独立公开验证。完整阅读不等于独立复现。
 
 ## 源码运行时序图
 

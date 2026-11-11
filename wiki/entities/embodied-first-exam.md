@@ -13,7 +13,7 @@ tags:
   - robotics
   - simulation
   - open-source
-status: draft
+status: complete
 updated: 2026-11-11
 related:
   - ./rle-bench.md
@@ -165,7 +165,7 @@ sequenceDiagram
 
 - 论文主要测量仿真环境里的 coding agent 编程与控制能力；与具身动作策略模型、真实机器人闭环和安全部署的评价对象不同。
 - 部分任务没有完整参考解，成功标准依赖各 suite verifier；单次尝试与 agent 运行预算影响统计。
-- 新增套件后仓库总数与论文口径不同，论文全文附录尚未完全核查，本次扩充暂保持 draft。
+- 新增套件后仓库总数与论文口径不同，论文正文与附录 A–K 已核对；完整仓库复现与多次重复评测尚未执行。
 
 ## 关联页面
 
