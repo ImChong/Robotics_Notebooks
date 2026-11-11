@@ -5782,6 +5782,7 @@
 - [任务进度追踪基准：通过错误与恢复跟踪任务进度：评测基准与循环分布模型](wiki/entities/paper-task-progress-tracking-errors-recovery-benchmark.md) — 任务进度追踪基准**（*Tracking Task Progress Through Errors and Recovery: A Benchmark and Recurrent Distribu `📅unknown` `[entity_page]`
 - [τ₀-VLA：世界模型引导测试时计算的分层机器人基础模型](wiki/entities/paper-tau0-vla.md) — τ₀-VLA**（*a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation*，[ar `📅unknown` `[entity_page]`
 - [TCAM（arXiv:2608.10718）](wiki/entities/paper-tcam-deformable-manipulation-wbcd.md) — TCAM**（*TCAM for Autonomous Deformable Manipulation: The RMC2 Champion System for WBCD 2026 Track  `📅unknown` `[entity_page]`
+- [TCSExam: Evaluating Frontier LLMs on the Full Range of TCS Research｜理论计算机科学研究全谱系评测](wiki/entities/paper-tcsexam.md) — TCSExam** 是评测 LLM + Agent 在**理论计算机科学研究任务**上可验证产出的基准：Full 100 题、Lite 20 题，覆盖定理证明、Solver 研发、离散构造与开放猜 `📅unknown` `[entity_page]`
 - [TD-Aug：想象可达目标来增广目标条件行为克隆](wiki/entities/paper-td-aug.md) — TD-Aug 训练一个几何视界模型（GHM）去逼近行为混合策略的后继测度，从中采样"从当前状态可达的未来状态"当作想象目标，与真实未来状态混合后训练目标条件行为克隆（BC），从而在离线数据上拼接出 `📅unknown` `[entity_page]`
 - [TD-MPC2（Scalable, Robust World Models for Continuous Control）](wiki/entities/paper-td-mpc2.md) — TD-MPC2**（arXiv:2310.16828，ICLR 2024 Spotlight，Nicklas Hansen、 `📅unknown` `[entity_page]`
 - [TDHD（arXiv:2608.09125）](wiki/entities/paper-tdhd-surgical-dual-arm.md) — TDHD**（arXiv:2608.09125）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.08.10–0 `📅unknown` `[entity_page]`
