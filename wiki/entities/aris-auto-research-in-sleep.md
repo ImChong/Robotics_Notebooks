@@ -2,7 +2,7 @@
 type: entity
 project_id: aris-auto-research-in-sleep
 tags: [ai-auto-research, autonomous-experimentation, research-agents, gpu, peer-review, llm-agents]
-status: draft
+status: complete
 updated: 2026-11-11
 code: https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep
 original:
@@ -43,6 +43,7 @@ summary: "ARIS 用可组合的 Markdown Skills 将文献与选题、GPU 实验�
 2. `/experiment-bridge` 阅读 `EXPERIMENT_PLAN.md`，按 sanity、baseline、main、ablation 顺序实现，并可在代码审阅后部署。默认 `SANITY_FIRST=true`、`CODE_REVIEW=true`，同时 `AUTO_DEPLOY=true`。
 3. `/auto-review-loop` 的 `MAX_ROUNDS=4`；最新 Skill 明确终止条件同时要求评分阈值及 verdict，独立评审的有效性取决于实际 reviewer 返回。
 4. `docs/CUSTOMIZATION.md` 的 `MAX_TOTAL_GPU_HOURS=8` 属于 **idea discovery 的 pilot**，绝不应当作后续 `experiment-bridge`、`run-experiment` 或任意云 GPU 费用的全局硬上限。
+5. `research-pipeline/SKILL.md` 明确 `AUTO_WRITE=false` 为默认值：实验/审阅到 Stage 4 产出 `NARRATIVE_REPORT.md` 为止，写论文需要另外选择或启用 `AUTO_WRITE=true`，不是自动投稿。
 
 ## 流程总览
 
@@ -55,7 +56,8 @@ flowchart LR
   Sanity --> Run["run-experiment 记录结果"]
   Run --> Review["auto-review-loop 独立评审"]
   Review -->|需要修改且未到上限| Bridge
-  Review --> Write["paper-writing 写作与审阅"]
+  Review --> Handoff["NARRATIVE_REPORT.md 研究交接"]
+  Handoff -->|AUTO_WRITE true 且满足条件| Write["paper-writing 写作与审阅"]
   Write --> Deliver["论文交付与人工核验"]
 ```
 
@@ -63,7 +65,48 @@ flowchart LR
 
 ## 源码运行时序图
 
-**待补（不适用本次部分源码核查）**：仓库包含独立的 `mcp-servers/`、`tools/` 和宿主适配层，属于可能有真实可运行实现的项目；本次只验证了上层 Markdown Skill 的明确调用契约，尚未通读具体 `run-experiment` 执行器、reviewer bridge 和 GPU IO 源码。为避免把推断当作源码，暂不绘制未经确认的 runtime sequenceDiagram，完成源码复核后补上。
+基于 `research-pipeline`、`experiment-bridge`、`run-experiment` 的官方 Skill 入口，以及实际 `mcp-servers/codex-exec/server.py` 的 `handle_call`、`build_argv`、`run_codex` 与 `codex-reply`。展示 Claude Code + **默认 Codex MCP reviewer** 的一条已核实条件路径，其他宿主/后端会不同。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 研究者
+  participant Host as 宿主 Agent
+  participant Pipeline as research-pipeline SKILL
+  participant Bridge as experiment-bridge SKILL
+  participant Runner as run-experiment SKILL
+  participant GPU as Local/SSH/Vast/Modal
+  participant Review as auto-review-loop SKILL
+  participant MCP as codex-exec/server.py
+  participant Codex as codex exec
+  User->>Host: /research-pipeline 研究方向
+  Host->>Pipeline: idea-discovery 产出实验计划
+  Pipeline->>Bridge: experiment-bridge 使用 EXPERIMENT_PLAN
+  Bridge->>Host: 实现代码并审阅 sanity 结果
+  alt 少量实验任务
+    Bridge->>Runner: run-experiment
+    Runner->>GPU: 启动脚本和记录日志
+    GPU-->>Runner: 实验日志和结果文件
+  else 大规模任务或有阶段依赖
+    Bridge->>Host: 调用 experiment-queue
+    Host->>GPU: 队列调度训练任务
+    GPU-->>Host: 结果与队列状态
+  end
+  Host->>Review: auto-review-loop 读取代码和结果
+  Review->>MCP: mcp__codex__codex 评审请求
+  MCP->>Codex: codex exec --json
+  Codex-->>MCP: threadId 与 turn.completed 等事件
+  MCP-->>Review: reviewer 输出和 threadId
+  opt 需要下一轮审阅
+    Review->>MCP: codex-reply 传入 threadId
+    MCP->>Codex: codex exec resume
+    Codex-->>Review: 同一会话后续评审结果
+  end
+  Review-->>Pipeline: 评审结论与审稿记录
+  Pipeline-->>User: NARRATIVE_REPORT 及待办
+```
+
+上图不是运行测试截图；`run-experiment` 在本地使用 Python 进程，在远程 SSH/Vast.ai 路线使用 `screen`，Modal 路线委托 `serverless-modal`。除默认 Codex 外还支持可选择 reviewer，且只有符合审稿独立性门禁的结果才可获得相应接受状态。
 
 ## 工程实践
 
@@ -82,9 +125,9 @@ flowchart LR
 
 ## 局限与风险
 
-- 主 README 体量较大且本次尚未全篇阅读，源码和 GPU 实验未端到端运行；因此保持 **draft**。
+- 核心技术原文已阅读并核对运行路径，但主 README 的冗长历史更新记录和全仓库 87 个技能没有逐一验证；不把本页 3/3 文档健康度等同于全仓源码或 GPU 测试合格。
 - review 分数不等于实验可复现，也不等于真实论文被接收。
-- 远程 GPU、密钥、自动部署以及外部模型审阅带来费用和权限风险；需在宿主侧设置独立硬限制。
+- 远程 GPU、密钥、自动部署以及外部模型审阅带来费用和权限风险；需在宿主侧设置独立硬限制。默认 `AUTO_DEPLOY=true` 并非用户确认费用的机制。
 - 本项目是 ML 科研工作流工具，不是机器人真实时间控制系统。
 
 ## 关联页面
@@ -102,5 +145,8 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [ARIS Agent Guide（技术路由总入口）](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/blob/8f3110718259/AGENT_GUIDE.md)
+- [run-experiment 实际部署入口](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/blob/8f3110718259/skills/run-experiment/SKILL.md)
+- [Codex MCP Bridge 源码](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/blob/8f3110718259/mcp-servers/codex-exec/server.py)
 - [ARIS Customization（预算与权限）](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/blob/8f3110718259/docs/CUSTOMIZATION.md)
 - [实验桥接入口](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep/blob/8f3110718259/skills/experiment-bridge/SKILL.md)
