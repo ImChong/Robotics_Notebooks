@@ -17,6 +17,7 @@ related:
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../entities/agentic-design-patterns.md
+  - ../entities/aliyun-ai-agent-handbook.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/real-robot-policy-autoresearch-harness.md
 original:
@@ -191,6 +192,8 @@ Agent 评测的底层逻辑（出自 Anthropic 工程博文通读）：被评对
 - 本页的机器人迁移（仿真、真机 autoresearch）为本库推断，原文并未讨论机器人场景。
 
 ## 关联页面
+
+- [阿里云 AI Agent Handbook](../entities/aliyun-ai-agent-handbook.md) — 将 Trace、黄金数据集、回归评估置于 Harness、运行与治理的企业级工程生命周期中；本书是方法论白皮书，不是评测基准。
 
 - [DeliverBench](../entities/paper-deliverbench.md) — 评测连续多阶段专业项目交付与独立终态交付验收。
 - [SelfImprove-Bench](../entities/paper-selfimprove-bench.md) — 将自我改进后的收益按 G0–G4 泛化阶梯拆开测试。
