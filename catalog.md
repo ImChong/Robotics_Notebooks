@@ -174,6 +174,7 @@
 - [青瞳视觉（CHINGMU Vision）](wiki/entities/chingmu.md) — 青瞳视觉**（en.chingmu.com，上海青瞳视觉科技有限公司）是国内 **光学动作捕捉（MoCap）全栈自研** 供应商：自 **20 `📅unknown` `[entity_page]`
 - [Claude Code Game Studios（CCGS）](wiki/entities/claude-code-game-studios.md) — Claude Code Game Studios**（[Donchitos/Claude-Code-Game-Studios](https://github.com/Donchitos/Claud `📅unknown` `[entity_page]`
 - [Claude Cookbook：用动态工作流做 dreaming](wiki/entities/claude-cookbook-dreaming-dynamic-workflow.md) — Dreaming with a dynamic workflow**（Brad Abrams，2026-11-02）是 Claude Cookbook 里一个可改造的小型 dreaming 实现： `📅unknown` `[entity_page]`
+- [Claude Fable 5.2（克劳德 Fable 5.2）](wiki/entities/claude-fable-5-2.md) — Claude Fable 5.2 是 Anthropic 发布的模型，官方以机器人仿真测评和真机操作视频展示其具身任务能力；现有公开信息不能将其等同于已开放权重的机器人动作策略。 `📅unknown` `[entity_page]`
 - [Claude for Legal](wiki/entities/claude-for-legal.md) — Claude for Legal** 是 Anthropic 为法律工作流提供的一组开源 Claude 插件与参考配置，覆盖法律团队常见的领域流程，并允许团队围绕自身 playbook 配置工作方 `📅unknown` `[entity_page]`
 - [Claude-shaped science：适配 AI 能力的科研选题](wiki/entities/claude-shaped-science.md) — Claude-shaped science** 是 Matthew Schwartz 在 Anthropic 发布的科研实践文章，主张先匹配代理的计算优势，再由人确定值得研究的问题；不是一项机器人 `📅unknown` `[entity_page]`
 - [CleanRL](wiki/entities/cleanrl.md) — CleanRL](https://github.com/vwxyzjn/cleanrl) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/huma `📅unknown` `[entity_page]`
@@ -2024,6 +2025,7 @@
 - [Commodity-Price Closed-Loop Evaluation（arXiv:2611.07441）](wiki/entities/paper-commodity-price-closed-loop-evaluation.md) — Commodity-Price Closed-Loop Evaluation**（*Closed-Loop Physics-Based Manipulation Evaluation at a C `📅unknown` `[entity_page]`
 - [Compact Visuotactile WM（arXiv:2609.09597）](wiki/entities/paper-compact-visuotactile-wm-lifting.md) — Compact Visuotactile WM**（*Compact Visuotactile World Models for Lifting: Prediction, Reward Align `📅unknown` `[entity_page]`
 - [CompactSplat](wiki/entities/paper-compactsplat.md) — CompactSplat** 是一种稀疏视图前馈 3D Gaussian Splatting（3DGS）重建方法：按图像区域纹理复杂度分配高斯，并通过层级采样让平坦区域使用更大、更少的原语，从而在 `📅unknown` `[entity_page]`
+- [Compass 1: Towards Open-World and Persistent Embodied Navigation from Monocular RGB Videos（开放世界持久单目导航）](wiki/entities/paper-compass-1-navigation.md) — Compass 1** 是统一视觉导航中的语言理解、视频生成和长时视觉历史检索的单目 RGB 基础模型，使用压缩关键帧记忆帮助机器人回忆之前走过的环境。 `📅unknown` `[entity_page]`
 - [Compliant GMT：残差参考适配的全身柔顺运动跟踪](wiki/entities/paper-compliant-gmt.md) — 一句话定义**：C-GMT 为预训练通用运动跟踪器加入参考动作残差，使机器人在跟踪多样动作时对外力产生全身柔顺响应。 `📅unknown` `[entity_page]`
 - [CompliantWBC：重型人形的全身柔顺](wiki/entities/paper-compliantwbc-heavy-humanoid.md) — CompliantWBC 估计外力 latent，并以有界阻抗目标残差调节冻结的全身策略，实现多身体接触位置的柔顺响应。 `📅unknown` `[entity_page]`
 - [Compositional Motion Styles（arXiv:2610.24008）](wiki/entities/paper-compositional-motion-styles.md) — Compositional Motion Styles**（*Weakly Supervised Discovery of Motion Styles for Compositional Robo `📅unknown` `[entity_page]`
@@ -2474,6 +2476,7 @@
 - [Flex-RSI（arXiv:2611.08946）](wiki/entities/paper-flex-rsi.md) — Flex-RSI**（*Flex-RSI: Benchmarking Recursive Self-Improvement of Frontier Agents*，[arXiv:2611.0894 `📅unknown` `[entity_page]`
 - [FlexGlue：稀疏到稠密特征匹配与视觉消歧](wiki/entities/paper-flexglue.md) — FlexGlue 用稠密图像上下文为稀疏查询点预测对应位置，同时判断图像对是否共视，以降低视觉相似场景导致的错误匹配。 `📅unknown` `[entity_page]`
 - [FLEXOR：动态脊-腿协同与微小型四足高速推进](wiki/entities/paper-flexor-dynamic-spine-leg-synergy.md) — Unlocking fast robotic locomotor propulsion through dynamic spine-leg synergy**（Wang Ruochao 等，**北 `📅unknown` `[entity_page]`
+- [Flip Anything with Agentic Robotics Self-Learning（通过智能体式机器人自学翻转物体）](wiki/entities/paper-flip-anything-agentic-self-learning.md) — Flip Anything** 让编码智能体在仿真里设计、试运行和改进双臂物体翻转技能，以自动测试结果驱动程序/运动原语迭代，再检验其跨物体和真机迁移。 `📅unknown` `[entity_page]`
 - [FloMo（arXiv:2611.05062）](wiki/entities/paper-flomo.md) — FloMo**（*FloMo: 3D Scene Flow as a World Action Model Intermediate for Learning from Human Video*， `📅unknown` `[entity_page]`
 - [FLoRe: Learning Force-Reactive Humanoid Loco-Manipulation（力反馈响应式人形移动操作学习）](wiki/entities/paper-flore.md) — FLoRe**（*Learning Force-Reactive Humanoid Loco-Manipulation*，[arXiv:2610.35862](https://arxiv.org/ `📅unknown` `[entity_page]`
 - [Flow-GRPO：通过在线强化学习训练流匹配模型 / Training Flow Matching Models via Online RL](wiki/entities/paper-flow-grpo.md) — Flow-GRPO**（*Flow-GRPO: Training Flow Matching Models via Online RL*，Jie Liu 等，**NeurIPS 2025**，ar `📅unknown` `[entity_page]`
@@ -5658,6 +5661,7 @@
 - [SurgCast（arXiv:2610.15645）](wiki/entities/paper-surgcast-surgical-world-model-skeletons.md) — SurgCast**（*SurgCast: Action-Conditioned Future Skeletons for Controllable Surgical World Models*， `📅unknown` `[entity_page]`
 - [SurgLAT：腹腔镜要跟的是意图轨迹，不是器械中心](wiki/entities/paper-surglat.md) — SurgLAT**（*Surgical Latent Attention Tracking*；[arXiv:2608.07876](https://arxiv.org/abs/2608.07876 `📅unknown` `[entity_page]`
 - [Sim2Real RL 综述（2502.13187）](wiki/entities/paper-survey-sim2real-rl-foundation-models.md) — A Survey of Sim-to-Real Methods in RL: Progress, Prospects and Challenges with Foundation Models `📅unknown` `[entity_page]`
+- [SWAM: Scaling World Action Models with Cross-Modal Alignment（用跨模态对齐规模化世界动作模型）](wiki/entities/paper-swam-cross-modal-alignment.md) — SWAM** 将一般视频、第一视角视频、UMI 与机器人示范共同用于世界-动作模型训练，通过保持语言-视频对齐并在有动作标签数据上学习动作分支，提高机器人操作泛化。 `📅unknown` `[entity_page]`
 - [SWAP：测试时可控的人形全身避障](wiki/entities/paper-swap-humanoid-collision-avoidance.md) — SWAP**（*Steerable Whole-body Avoidance Policy*， [arXiv:2610.25711](https://arxiv.org/abs/2610.2571 `📅unknown` `[entity_page]`
 - [SWAP：对称等变世界模型四足跑酷](wiki/entities/paper-swap-parkour.md) — SWAP**（*Symmetric Equivariant World-Model for Agile Robot Parkour*，Lan et al., [arXiv:2606.19928 `📅unknown` `[entity_page]`
 - [SwapBot（arXiv:2610.40646）](wiki/entities/paper-swapbot.md) — SwapBot**（*SwapBot: Tool-Centric Robot Manipulation via Interchangeable End-Effectors and Tactile  `📅unknown` `[entity_page]`
@@ -6021,6 +6025,7 @@
 - [WOLF-VLA](wiki/entities/paper-wolf-vla.md) — WOLF-VLA: Whole-Body Humanoid Optimal Locomotion Framework for Vision-Language-Action Learning**（a `📅unknown` `[entity_page]`
 - [World Action Agent（arXiv:2609.29964）](wiki/entities/paper-world-action-agent-rehearsal.md) — World Action Agent**（*World Action Agent: Harnessing VLMs for Robot Manipulation via World Action  `📅unknown` `[entity_page]`
 - [World Action Planner](wiki/entities/paper-world-action-planner.md) — World Action Planner（WAP）**（*Generalizable Decision-Making with Action-Conditioned World Models*， `📅unknown` `[entity_page]`
+- [World In-Context Learning for Agentic Robot Manipulation（WICL：面向智能体式机器人操作的世界上下文学习）](wiki/entities/paper-world-in-context-learning-roboscript.md) — WICL** 把机器人任务学习写进 agent 上下文的 Task Memory：只用一条演示，在仿真世界反复试演和总结，而**不通过梯度更新基础模型**。 `📅unknown` `[entity_page]`
 - [World Model Consultation Study：何时值得咨询世界模型？](wiki/entities/paper-world-model-consultation-study.md) — 该研究把“世界模型是否值得在控制时调用”变成可比较的策略选择问题：对照直接执行已学策略、用预测未来状态挑选候选动作，以及直接给候选动作打分；并分析任务条件、预测器容量、前视长度与推理代价。 `📅unknown` `[entity_page]`
 - [World-T³：测试时训练作为持久记忆](wiki/entities/paper-world-t3.md) — mermaid `📅unknown` `[entity_page]`
 - [World Tokens](wiki/entities/paper-world-tokens-inference-trimmed-wam.md) — World Tokens** 收录于 具身智能研究室 · 具身世界模型六路线综述 **行动 `📅unknown` `[entity_page]`
