@@ -17,18 +17,18 @@
 
 | 文件 / 函数 | 实际代码行为 |
 |---|---|
-| [robobeats/gate.py](https://github.com/AgibotTech/LIFE/blob/main/robobeats/gate.py) — \`Gate.__init__\` | 读取 Qwen3.5 基座 / PEFT 适配器；定位 false、true 的单 token id；离线实现设置 \`use_cache=False\` |
-| \`Gate._text\` / \`Gate._chunk\` | 构造条件、时间戳、图像与标记；查找标记末 token 位置，一次前向计算多个标记的 2 类 softmax |
-| \`Gate.stream\` | \`CHUNK=100\`、\`OVERLAP=10\`、\`STRIDE=90\`；后续 chunk 前 10 帧只做上下文，不重复打分 |
-| \`select\` | \`p>0.5\` 开事件、\`p<0.3\` 关事件；保留开事件前 2 秒到关闭时刻；进行中的事件保留至截断 |
-| [sss_bench/reproduce/pipeline.py](https://github.com/AgibotTech/LIFE/blob/main/sss_bench/reproduce/pipeline.py) — \`stage_gate\` | 按视频与观测起点分组，缓存 1 fps 帧与门控概率 |
-| \`stage_answer\` | **逐题**截取 \`tick <= query_time_s\`；按照该题截断结果选帧并生成对应 memory cache，再调用 reader；写 JSONL |
-| [sss_bench/reproduce/agent.py](https://github.com/AgibotTech/LIFE/blob/main/sss_bench/reproduce/agent.py) — \`packs\` / \`write_memory\` | 每包最多 60 帧、跨度小于 60 秒，用不含问题的 27B writer 写带原始时间戳的记忆；失败时重写或拆包 |
-| \`read\` / \`review_frames\` | \`memoryonly\` 仅看记忆；\`hard10\` 最多向观察前缀发起 **一次**回看，且最多取 10 帧；JSON schema 与边界检查阻止读取提问后的帧 |
+| [robobeats/gate.py](https://github.com/AgibotTech/LIFE/blob/main/robobeats/gate.py) — `Gate.__init__` | 读取 Qwen3.5 基座 / PEFT 适配器；定位 false、true 的单 token id；离线实现设置 `use_cache=False` |
+| `Gate._text` / `Gate._chunk` | 构造条件、时间戳、图像与标记；查找标记末 token 位置，一次前向计算多个标记的 2 类 softmax |
+| `Gate.stream` | `CHUNK=100`、`OVERLAP=10`、`STRIDE=90`；后续 chunk 前 10 帧只做上下文，不重复打分 |
+| `select` | `p>0.5` 开事件、`p<0.3` 关事件；保留开事件前 2 秒到关闭时刻；进行中的事件保留至截断 |
+| [sss_bench/reproduce/pipeline.py](https://github.com/AgibotTech/LIFE/blob/main/sss_bench/reproduce/pipeline.py) — `stage_gate` | 按视频与观测起点分组，缓存 1 fps 帧与门控概率 |
+| `stage_answer` | **逐题**截取 `tick <= query_time_s`；按照该题截断结果选帧并生成对应 memory cache，再调用 reader；写 JSONL |
+| [sss_bench/reproduce/agent.py](https://github.com/AgibotTech/LIFE/blob/main/sss_bench/reproduce/agent.py) — `packs` / `write_memory` | 每包最多 60 帧、跨度小于 60 秒，用不含问题的 27B writer 写带原始时间戳的记忆；失败时重写或拆包 |
+| `read` / `review_frames` | `memoryonly` 仅看记忆；`hard10` 最多向观察前缀发起 **一次**回看，且最多取 10 帧；JSON schema 与边界检查阻止读取提问后的帧 |
 
 ## 最小复现命令（以官方 README 为准）
 
-\`\`\`bash
+```bash
 git clone https://github.com/AgibotTech/LIFE.git && cd LIFE
 pip install -r requirements.txt
 python -m robobeats my_video.mp4 --gate-model superbigsaw/RoboBeats-2B --out probs.json
@@ -36,13 +36,13 @@ python -m robobeats my_video.mp4 --gate-model superbigsaw/RoboBeats-2B --out pro
 SSS_DATA_ROOT=/path/to/videos LLM_MODEL=/path/to/Qwen3.8-27B GATE=2B bash sss_bench/scripts/run_robobeats.sh
 # 实时门控服务：
 python -m robobeats.serve --gate-model superbigsaw/RoboBeats-2B
-\`\`\`
+```
 
 **依赖注意：** 主 README 指定的 PyTorch CUDA 13 构建需较新的 NVIDIA 驱动；CUDA 12.x 需要按 README 替换 wheel，不能保证任意机器直接运行。
 
 ## 开放范围、许可与反例
 
-- **已公开**：推理源代码、0.8B/2B/4B LoRA adapter、基准定义 / evaluator / reproduction scripts。README 2026-11-10 新增实时缓存版 \`LiveGate\`；**不要把离线 \`Gate._chunk\` 误称为使用 KV cache 的实时版本**。
+- **已公开**：推理源代码、0.8B/2B/4B LoRA adapter、基准定义 / evaluator / reproduction scripts。README 2026-11-10 新增实时缓存版 `LiveGate`；**不要把离线 `Gate._chunk` 误称为使用 KV cache 的实时版本**。
 - **未在本次核实范围内确认完整开源**：Plastic Memory 全部长期运行服务、EDM 训练 / 持续自改进的端到端可运行闭环。
 - **许可**：官方 README 说明代码 Apache-2.0；SSS-Bench data / rubrics CC BY-NC 4.0；原始视频遵循来源各自许可证，不重新分发。
 - 仅静态阅读代码；**未实测**速度、精度、显存或真实机器人闭环。
