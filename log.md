@@ -311,6 +311,8 @@ op: ingest
 - **项目：** <https://robolineage.github.io/>
 - **代码：** <https://github.com/robolineage/robolineage>
 
+## [2026-11-10] lint | 全量 lint 清零：29 个 wiki 实体补齐对比/评测/结论/重定向就绪度章节与评测基准、感知栈枢纽回链；flex-rsi 陈旧声明误报改写；gr00t-2 补 venue；缺页概念巡检豁免 openpi / start；review 22 个陈旧页面（补论文回链、修正 action-chunking 子步骤口径与 CRISP 同名页描述）
+
 ## [2026-11-11] ingest | Zane Hub #389《如何对机器人关节模组进行轻量化设计》：新增 robot-joint-module-lightweight-design 概念页，一手核对 Sandia 散热数字、国标与 CSG 对 CSF，标出未核实数字与槽满率自相矛盾
 
 ## [2026-11-11] ingest | sources/papers/dexroam_arxiv_2609_35761.md — DexRoam 全文精读并提升既有论文实体健康度
