@@ -12,6 +12,8 @@ related:
   - ../methods/action-chunking.md
   - ../concepts/flow-matching-embodied-policy.md
   - ../entities/paper-ecot.md
+  - ./paper-fast-ecot.md
+  - ./paper-hi-robot.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/tacitvla_arxiv_2610_17540.md
@@ -120,11 +122,13 @@ flowchart TD
 | LIBERO (+Plus) | 147 ms | 495 ms | 3.4× |
 | PhysicalAI-AV 闭环 | 127 ms | 269 ms | 2.1× |
 
-RMBench 四项任务的 TacitVLA 为 169–171 ms，Explicit 为 236–294 ms。LIBERO 的五动作执行窗口是 250 ms，TacitVLA 的 147 ms 满足该时序，而 Explicit 的 495 ms 不满足。论文表 15 在相同单 H100、bf16、CUDA graph 的实现条件下计时，**不能直接外推到 RTX、Jetson 或 ROS 2 实机**。
+RMBench 四项任务的 TacitVLA 为 169–171 ms，Explicit 为 236–294 ms。RMBench 的 Press Button 子任务分别为 TacitVLA **74.3%**、Explicit **73.3%**、No Reasoning **7.7%**；两种 reasoning 策略最终账本正确率均为 **99.7%**（论文 Appendix B）。整体 RMBench **77.5% − 60.4% = +17.1 个百分点**，不是相对增长 17.1%。LIBERO 的五动作执行窗口是 250 ms，TacitVLA 的 147 ms 满足该时序，而 Explicit 的 495 ms 不满足。论文表 15 在相同单 H100、bf16、CUDA graph 的实现条件下计时，**不能直接外推到 RTX、Jetson 或 ROS 2 实机**。
 
 ## 与其他工作对比
 
 - **相对 ECoT / 显式推理 VLA：** 保留文本监督，却切断当次推理文本到动作专家的部署依赖。相关起点见 [Embodied Chain-of-Thought](./paper-ecot.md)。
+- **相对 [Fast ECoT](./paper-fast-ecot.md)：** Fast ECoT 不改权重，靠思维缓存、并行和异步调度加快已有 ECoT；TacitVLA 在训练期通过 attention mask 解除动作对当前推理 token 的依赖。
+- **相对 [Hi Robot](./paper-hi-robot.md)：** Hi Robot 将语言子任务交给单独的高层 VLM，低层 π₀ 执行；TacitVLA 使用共享视觉语言主干与动作专家，并按是否需要历史账本决定是否在线生成推理文本。
 - **相对 No Reasoning：** 相同动作路径时延；成功率差异体现推理训练目标的价值。但在 RoboMME、RMBench，额外账本也同时改变了信息条件，不能单独把增益归于 CE。
 - **相对异步快慢双系统：** 不引入单独低频高层 planner；使用同一个 backbone + action expert 计算动作，必要时才在执行窗口生成记忆条目。
 - **相对 latent reasoning：** 不是用隐式 token 替代思维链，而是训练文本目标仍存在、动作分支有意不读本次文本。
@@ -171,6 +175,8 @@ RMBench 四项任务的 TacitVLA 为 169–171 ms，Explicit 为 236–294 ms。
 - [Action Chunking：动作块生成与执行](../methods/action-chunking.md)
 - [Flow Matching](../concepts/flow-matching-embodied-policy.md)
 - [Embodied Chain-of-Thought](./paper-ecot.md)
+- [Fast ECoT：推理缓存与异步加速](./paper-fast-ecot.md)
+- [Hi Robot：显式高层语言与低层动作策略](./paper-hi-robot.md)
 - [机器人操作（Manipulation）](../tasks/manipulation.md)
 
 ## 参考来源
