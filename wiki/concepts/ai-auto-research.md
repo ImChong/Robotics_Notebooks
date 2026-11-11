@@ -2,7 +2,7 @@
 type: concept
 tags: [ai-auto-research, research-agents, llm-agents, scientific-workflow, survey, governance, literature-review]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-12
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
   - ../entities/stanford-hai-discovery-loop-2026.md
@@ -26,6 +26,7 @@ related:
   - ../entities/paper-metarsi-v1.md
   - ../entities/agent-lightning.md
   - ../entities/paper-paper2agent.md
+  - ../entities/paper-rethinking-ai-scientific-figures.md
 original:
   - ../../sources/papers/ai_auto_research_survey_reading_arxiv_2605_18661_aar1.md
 sources:
@@ -209,6 +210,8 @@ flowchart LR
 - [openJiuwen 官网归档](../../sources/sites/openjiuwen-com.md)
 
 ## 关联页面
+
+- [科研图示设计的 AI 评分与保真边界](../entities/paper-rethinking-ai-scientific-figures.md) — 将 S4 Figures 从“能生成”推进到六维评分与语义保真审查，注意模型评分不代表真人理解。
 - [Paper2Agent](../entities/paper-paper2agent.md) — 将论文与代码方法封装为经过运行验证的 MCP 工具和 paper skill。
 
 - [Claude-shaped science](../entities/claude-shaped-science.md) — 适配模型能力的科研选题与专家判断。
