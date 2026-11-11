@@ -6773,6 +6773,7 @@
 - [动力学仿真与动力学标定：区别与四个接口](wiki/concepts/robot-dynamics-simulation-vs-calibration.md) — 动力学仿真**在参数已知时推算机器人的响应（力矩、轨迹、接触力、功率）；**动力学标定**在运动与受力数据已知时反推机器人的参数（质量、质心、惯量、摩擦、传动与负载参数）。一个是正向题，一个是反问 `📅unknown` `[wiki_page]`
 - [机器人 In-Context Learning（上下文学习）](wiki/concepts/robot-in-context-learning.md) — 机器人 In-Context Learning（ICL，上下文学习）**：在 **不更新模型权重** 的前提下，把一段 **示范轨迹、人类视频或任务无关交互片段** 放进策略的 **上下文窗口 `📅unknown` `[wiki_page]`
 - [机器人关节轴承选型（载荷路径与五笔账）](wiki/concepts/robot-joint-bearing-selection.md) — 关节轴承**占 BOM 比例不高，却处在 **径向–轴向–倾覆力矩** 复合载荷的关键节点；选型不是翻样本选最大 C 值，而是先画清 **谐波 / RV / 直驱** 各自载荷路径，再用 **载荷 `📅unknown` `[wiki_page]`
+- [机器人关节模组轻量化设计](wiki/concepts/robot-joint-module-lightweight-design.md) — 关节模组轻量化是**在满足刚度、精度与热边界的前提下，把每一克质量花在受力路径上**；它不是孤立的减重目标，刚度、传动精度、连续输出能力、寿命和成本任何一项退让都会否决方案（Zane Hub #389 `📅unknown` `[wiki_page]`
 - [机器人关节方案选型](wiki/concepts/robot-joint-scheme-selection.md) — 关节方案选型就是：先把负载谱、运动谱、精度与交互要求定义清楚，再从旋转、直线、力控三条线里挑出力学边界匹配的传动与集成方案；原理上不匹配的传动链，控制算法补偿不回来。 `📅unknown` `[wiki_page]`
 - [连杆惯量与转子惯量（Robot Link vs Rotor Inertia）](wiki/concepts/robot-link-and-rotor-inertia.md) — 人形与腿足机器人的「关节有多沉」，在工程上往往来自 **两件不同的事**：**连杆刚体惯量**（机械结构质量分布）与 **电机转子经减速器反射的等效惯量**（传动链旋转部件）。混淆两者会导致仿真偏轻、 `📅unknown` `[wiki_page]`
 - [机器人整机通信架构（总线分域 → 拓扑 → 时钟同步 → 延迟预算）](wiki/concepts/robot-onboard-communication-architecture.md) — 整机通信架构**回答：几十个关节、多路相机与 IMU、主控与外部运维工具之间，**数据分几个域、走什么拓扑、时间基准怎么统一、从传感到力矩输出的延迟预算怎么分配**——单点协议选型（[CAN vs `📅unknown` `[wiki_page]`

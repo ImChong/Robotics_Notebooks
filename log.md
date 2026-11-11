@@ -311,6 +311,8 @@ op: ingest
 - **项目：** <https://robolineage.github.io/>
 - **代码：** <https://github.com/robolineage/robolineage>
 
+## [2026-11-11] ingest | Zane Hub #389《如何对机器人关节模组进行轻量化设计》：新增 robot-joint-module-lightweight-design 概念页，一手核对 Sandia 散热数字、国标与 CSG 对 CSF，标出未核实数字与槽满率自相矛盾
+
 ## [2026-11-11] ingest | sources/papers/dexroam_arxiv_2609_35761.md — DexRoam 全文精读并提升既有论文实体健康度
 
 - 复核 arXiv 全文与附录、CoRL 2026 项目页、采集对齐与双 VLA 训练代码的实际入口。
