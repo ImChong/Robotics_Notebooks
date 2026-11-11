@@ -5700,6 +5700,7 @@
 - [TacBPM：触觉条件的行为先验，用于灵巧手内重定向](wiki/entities/paper-tacbpm.md) — TacBPM**（*TacBPM: A Tactile-conditioned Behavior Prior Model for Dexterous Reorientation*，[arXiv:2 `📅unknown` `[entity_page]`
 - [TacClaw-Infinity：面向灵巧操作的大规模视触觉语言动作数据集](wiki/entities/paper-tacclaw-infinity.md) — TacClaw-Infinity 是面向接触丰富灵巧操作的视觉-触觉-语言-动作（VTLA）数据集：用无需目标机器人的手持触觉接口采集同步的视觉、指尖触觉与末端轨迹，再经质量控制、可执行性筛选与结 `📅unknown` `[entity_page]`
 - [TACET：面向四足机器人的情境适配声学—社会导航](wiki/entities/paper-tacet.md) — TACET: Context-Appropriate Acoustic-Social Navigation for Quadrupeds**（[arXiv:2610.03828](https:// `📅unknown` `[entity_page]`
+- [TacitVLA：无需等待推理文本的 VLA（Reasoning Vision-Language-Action Models Without Reasoning Latency）](wiki/entities/paper-tacitvla.md) — 论文：** [TacitVLA: Reasoning Vision-Language-Action Models Without Reasoning Latency](https://arxiv. `📅unknown` `[entity_page]`
 - [Tacmap：几何一致的穿透深度图触觉仿真](wiki/entities/paper-tacmap.md) — Tacmap**（*Tacmap: Bridging the Tactile Sim-to-Real Gap via Geometry-Consistent Penetration Depth M `📅unknown` `[entity_page]`
 - [TacMind（arXiv:2611.00455）](wiki/entities/paper-tacmind.md) — TacMind**（*TacMind: Benchmarking and Modeling Tactile Interaction States for Robotic Manipulation `📅unknown` `[entity_page]`
 - [TacO（触觉传感器操作基准 · arXiv:2605.21976）](wiki/entities/paper-taco-tactile-sensor-benchmark.md) — TacO**（*TacO: Benchmarking Tactile Sensors for Object Manipulation*，[arXiv:2605.21976](https://arx `📅unknown` `[entity_page]`

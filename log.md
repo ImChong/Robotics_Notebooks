@@ -336,6 +336,14 @@ op: ingest
 - 从既有 Agent 记忆 wiki 建反向链接；未改动 catalog/log/export 派生文件。
 - 论文数字属作者报告，未进行 CUDA benchmark 与实机复现；项目主页正文抓取未完成，具体边界记录在 sources/sites。
 
+## [2026-11-11] ingest | TacitVLA（arXiv:2610.17540）— 推理监督与动作时延解耦
+
+- 意图：通读论文 v1 正文与 Appendix A–D，补充 VLA 的 attention-mask、流匹配动作专家和异步子任务账本知识。
+- 一手来源：sources/papers/tacitvla_arxiv_2610_17540.md、sources/sites/tacitvla.md。
+- 编译实体：wiki/entities/paper-tacitvla.md；从 wiki/methods/vla.md 建立入链。
+- 官方开源状态：截至 2026-11-11 项目页仍标“Code soon”，无可核实运行入口；未编造源码时序。
+- 证据边界：区分 RoboMME Counting-only 89.5% 与 16-task 训练 82.7%；最多 3.4× 为动作就绪延迟对比，不是全系统控制周期。
+
 ## [2026-11-11] ingest | sources/repos/code-review-skill.md — 模块化代码审查技能
 
 - **目标：** 引入 Code Review Skill 的四阶段审查、语言指南按需读取、严重性等级和差异分析器机制。
