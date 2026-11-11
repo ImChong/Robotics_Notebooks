@@ -4410,7 +4410,7 @@
 - [ReEnvision：未来引导的选择性动作修复](wiki/entities/paper-reenvision.md) — ReEnvision 在长程操作中维护「未来 + 动作」的联合信念，执行偏离时用反馈修订该信念，预测缓存动作块里哪些未执行动作受影响，只修复这些动作、保留仍有效的部分，偏离严重才整体重规划。 `📅unknown` `[entity_page]`
 - [ReferTrack（Referring Then Tracking · arXiv:2607.20061）](wiki/entities/paper-refertrack.md) — ReferTrack**（*Referring Then Tracking for Embodied Visual Tracking*，[arXiv:2607.20061](https://arx `📅unknown` `[entity_page]`
 - [Reflex：视觉驱动的人形机器人反应式接球](wiki/entities/paper-reflex-visually-grounded-reactive-humanoid-control.md) — Reflex**（*Visually Grounded Reactive Humanoid Control*，项目页）研究  `📅unknown` `[entity_page]`
-- [ReflexArc（arXiv:2611.04424）](wiki/entities/paper-reflexarc.md) — ReflexArc**（*ReflexArc: Bottom-Up Integration of Instantaneous Tactile Reflexes into Whole-Body Hu `📅unknown` `[entity_page]`
+- [ReflexArc：瞬时触觉反射融入人形机器人全身控制 / Bottom-Up Integration of Instantaneous Tactile Reflexes into Whole-Body Humanoid Control](wiki/entities/paper-reflexarc.md) — 论文：** ReflexArc（arXiv:2611.04424v1，2026-11-03） · **项目：** [官 `📅unknown` `[entity_page]`
 - [ReflexVLA：动态任务低延迟 VLA](wiki/entities/paper-reflexvla.md) — ReflexVLA**（*Reflex: Enabling Fast and Predictive Vision-Language-Action Models for Reaction-Criti `📅unknown` `[entity_page]`
 - [ReForce](wiki/entities/paper-reforce.md) — ReForce: Learning Force-aware Retargeting for Dexterous Manipulation**（[arXiv:2608.15560](https:// `📅unknown` `[entity_page]`
 - [ReFORM：Support 约束的 Reflected Flow Offline RL](wiki/entities/paper-reform-iclr-2026.md) — ReFORM**（*Reflected Flows for On-support Offline RL via Noise Manipulation*，**ICLR 2026**，[OpenRev `📅unknown` `[entity_page]`
