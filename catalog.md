@@ -3941,6 +3941,7 @@
 - [PredActor（arXiv:2609.24840）](wiki/entities/paper-predactor.md) — PredActor**（*Predictive Action Diffusion for Steerable Onboard Humanoid Control*，[arXiv:2609.24840 `📅unknown` `[entity_page]`
 - [Predict Before You Deploy（arXiv:2609.19441）](wiki/entities/paper-prede.md) — Predict Before You Deploy**（*Offline Prediction of Quantization-Induced Task Degradation for World `📅unknown` `[entity_page]`
 - [面向鲁棒腿式运动的预测式安全课程学习](wiki/entities/paper-predictive-safety-curricula-for-robust.md) — Predictive Safety Curricula for Robust Legged Locomotion**（[arXiv:2609.37070](https://arxiv.org/ab `📅unknown` `[entity_page]`
+- [用 JEPA 证明并改进柏拉图式表征假说（Proving and Improving the Platonic Representation Hypothesis with JEPAs）](wiki/entities/paper-prh-jepas.md) — PRH with JEPAs** 研究不同模态独立训练的 JEPA 何时能学习同一个世界的表征，并指出用**同一世界状态的不同真实观测**构造正样本，比只对单次观测裁剪/遮蔽，更有利于得到跨模态一 `📅unknown` `[entity_page]`
 - [PRIME W0：利用世界模型物理先验进行具身操作](wiki/entities/paper-prime-w0-physical-priors-world-models.md) — PRIME W0**（*PRIME W0: Physical Priors from World Models for Embodied Manipulation*，[arXiv:2610.395 `📅unknown` `[entity_page]`
 - [PrimeSim（arXiv:2611.04870）](wiki/entities/paper-primesim.md) — PrimeSim**（*PrimeSim: A Generalist World Model Simulator from Large-Scale Cross-Embodiment Demonst `📅unknown` `[entity_page]`
 - [PRIMO（arXiv:2609.23610）](wiki/entities/paper-primo-human-motion-odometry.md) — PRIMO**（*PRIMO: Prior-Informed Odometry from Human-Motion Tracking for Humanoid Robots*，[arXiv:260 `📅unknown` `[entity_page]`
