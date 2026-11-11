@@ -26,3 +26,38 @@
 
 - [paper-grasp](../../wiki/entities/paper-grasp.md)
 - [接触丰富的手物重定向、分项泛化评测与手持夹爪示范：具身智能小站 11-05 期 43 篇阅读坐标](../../wiki/overview/embodied-station-2026-11-05-43-papers-technology-map.md)
+
+
+## 一手资料补充核验（2026-11-11）
+
+- 作者：Yang Liu、Tong Wang（共同一作）、Yiming Bao、Heng Yang；机构：Harvard University, School of Engineering and Applied Sciences。
+- arXiv 首版：2026-11-03；论文共 26 页（含参考文献和附录）。
+- 论文摘要：OakInk2 的 1,352 条双手示范成功率 **92.8%**；项目主页目前列出 Sharpa 双手 **94.2%**，且跨本体展示 Sharpa 94.2%、Wuji 92.4%、XHand 95.0%。**两份一手材料口径存在差异，不能直接互换，须在后续版本核对样本与成功定义。**
+- 官方项目页定义成功条件：物体平均位置误差小于 10 cm，平均旋转误差小于 0.5 rad；执行失败计入失败。
+- 项目主页报告的 Sharpa 对照：Dex-retargeting 28.6%、SPIDER mjwp 71.4%、SPIDER mjwp_act 77.1%、Do-as-I-Do 81.0%、GRASP 94.2%；项目页提示各基线评估集不完全一致，不能视为严格同协议横向对比。
+- 核心算法：GRASP-TO 在 tempered SMC 中用历史 rollout 的控制—代价对拟合局部二次代理模型，恢复梯度引导 MCMC rejuvenation；用真实物理仿真代价与正反提议密度进行 Metropolis–Hastings 接受率校正。GRASP-MPC 采用 warm-start 的滚动时域规划扩展到长示范。
+- 不需要可微分模拟器，也不需要任务专用接触奖励；优化参考轨迹用于 PPO 转笔和人形与物体交互跟踪；作者展示真机灵巧手和人形运动，但不能把仿真成功率解释为真机成功率。
+- 源码地址：https://github.com/ComputationalRobotics/GRASP_code （与项目展示网站仓库 https://github.com/ComputationalRobotics/GRASP 区分）。
+- 核验范围：本次核对 arXiv 摘要与官方项目页的方法、指标和表格；**未逐页通读 PDF 的全部 26 页，未逐文件审计源码，未运行实验**。
+
+### 论文方法流程（依据官方项目页）
+
+```mermaid
+flowchart TD
+    A["人体运动 / 物体参考轨迹"] --> B["机器人控制候选与物理仿真"]
+    B --> C["记录控制—真实代价对（接受与拒绝样本）"]
+    C --> D["局部二次代价模型拟合"]
+    D --> E["恢复梯度，生成引导式 MCMC 提议"]
+    E --> F["物理仿真计算真实代价"]
+    F --> G["Metropolis–Hastings 校正"]
+    G --> C
+    G --> H["GRASP-TO 优化轨迹"]
+    H --> I["GRASP-MPC 滚动时域 warm-start"]
+    I --> J["可用于 PPO 跟踪的物理参考轨迹"]
+```
+
+### 一手来源
+
+1. [arXiv:2611.05754（摘要与版本）](https://arxiv.org/abs/2611.05754)
+2. [Harvard GRASP 官方项目主页（方法、评估表格、成功定义）](https://computationalrobotics.seas.harvard.edu/GRASP/)
+3. [官方代码仓库](https://github.com/ComputationalRobotics/GRASP_code)
