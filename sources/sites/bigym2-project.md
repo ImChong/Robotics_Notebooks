@@ -10,11 +10,14 @@
 - **代码：** <https://github.com/swirl-uk/BiGym2>（归档见 [bigym2.md](../repos/bigym2.md)）
 - **数据集：** <https://huggingface.co/datasets/SWIRL-Lab/bigym-g1-native60>（示范，2026-10-12 核查可访问）、<https://huggingface.co/datasets/SWIRL-Lab/bigym2-agent-rollouts>（智能体回合）
 - **入库日期：** 2026-10-12
+- **复核日期：** 2026-11-11
+- **论文结果页：** <https://bigym2.github.io/paper/>
+- **动态榜单：** <https://bigym2.github.io/leaderboard/>
 - **一句话说明：** Imperial College London SWIRL 的 G1 家庭操作基准官方站，含任务表、评测协议、示范与智能体回合下载说明。
 
 ## 核查结论（步骤 2.5）
 
-已开源：环境代码（Apache-2.0）、1,200 条 VR 示范（LeRobot v3，每任务一个数据集）、5,400 条智能体评测回合均公开。许可注意：GR00T-WBC 权重以 NVIDIA Open Model License 再分发；场景道具为 CC0 / CC BY 4.0。README 路线图未完成项：WebXR 遥操作、PyPI 发布、公开榜单。
+已开源：环境代码（Apache-2.0）、1,200 条 VR 示范（LeRobot v3，每任务一个数据集）、5,400 条智能体评测回合均公开。许可注意：GR00T-WBC 权重以 NVIDIA Open Model License 再分发；场景道具为 CC0 / CC BY 4.0。作者现已提供实时榜单；榜单可能加入后续评测，不等同于 arXiv v2 Table II。WebXR 遥操作与 PyPI 发布情况应单独按当时官方页面核对，不再沿用 2026-10-12 的「未完成」结论。
 
 ## 对 wiki 的映射
 
