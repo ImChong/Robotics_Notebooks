@@ -46,7 +46,7 @@ original:
 - **Realistic：** RoboDojo 主要实验使用 RGB、多视角相机标定、机器人描述/本体状态，不提供仿真真值深度、物体 CAD、隐藏场景标注或 task-verifier 反馈。**无特权输入不代表没有标定/本体信息。** 真机实验则使用 RealSense 深度（§2.4、§3）。
 - **Modular：** runtime / context / tools / services / simulator 或机器人后端可分别替换，交互日志可用于未来的智能体训练；**论文并未报告已经用这些日志训练出新基础模型**（§2.1、§8）。
 
-## 项目数据与控制流程
+## 核心机制与项目数据流程
 
 按论文 v2 图 2–5 和 §2.5 整理。虚线表示独立的反馈链，非网络进程调用拓扑。
 
@@ -139,12 +139,16 @@ sequenceDiagram
 - 五个示例任务的单回合串行/流水线比较：**84.5%–93.8%** 物理执行时间与模型请求重叠，回合耗时减少 **4.8%–73.7%**；每配置每任务仅一次运行，不代表跨任务或跨硬件的统计保证（§6.2）。
 - 按代际/家族/大小分析的四类失败：**视觉理解、跨视角空间定位、几何变换代码、具身交互推理**。相关性和部分辅助评审来自作者的观察与分析，并非因果定律（§4）。
 
-## 复现入口、开源状态与局限
+## 工程实践：复现入口与开源状态
 
 - 官方项目页、[博客](https://openrua.ai/uni-robot-agent)、[MIT 仓库](https://github.com/Open-RUA/uni-robot-agent)、[文档](https://uni-robot-agent.com/docs/) 已核实可访问。2026-11-11 仓库 README 列出 **v0.2.0**、RoboDojo / RoboUse / RoboLab、RoboTwin / LIBERO 等适配器，以及已公开的 **ARX ONE** 真机集成；Franka 仍标为 coming soon。新扩展并不等于论文已完成相应评测。
 - 基础复现：Python 3.11 Linux GPU 环境中安装 `uni-robot-agent`，使用 `setup --integration robodojo` 准备环境；运行前需配置模型 endpoint/key。**RoboDojo 代码默认启用 depth**，复现实验主设置须显式传 `--no-depth` 且保留相机标定。详见 [官方 README](https://github.com/Open-RUA/uni-robot-agent#quick-start) 和 [配置说明](https://github.com/Open-RUA/uni-robot-agent/blob/main/docs/integrations.md)。
 - 开源仓库中的真机执行涉及物理设备、驱动、标定及操作者安全流程，不应把安装示例直接当成上机验证。作者没有证明任意机器人即插即用；精密空间定位、双臂协调和长任务仍具挑战。
 - 本次仅进行论文与公开源码静态核查；**未实测复现 benchmark、API 成本或硬件控制**。
+
+## 局限与风险
+
+现有成果以工具驱动的零样本推理与执行为主，尚未证实跨平台模型权重训练收益或在所有真实硬件上的稳健性。实验仍存在多视角定位、精密操作、长时规划、端到端吞吐和外部模型服务依赖等边界；真机对照的感知输入、训练预算与任务成功判据并不完全相同，不能无条件比较。
 
 ## 与其他工作对比
 
@@ -160,6 +164,10 @@ sequenceDiagram
 - [ORA](ora-open-robot-use-agents.md) — 类似研究方向与 harness 设计。
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 工具控制与低层控制的边界。
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 区分 score、SR、模型输入与评测协议。
+
+## 推荐继续阅读
+
+建议依次阅读 [论文 §2：框架机制](https://arxiv.org/html/2611.01560v2)、[论文 §3–6：实验与消融](https://arxiv.org/html/2611.01560v2)、[源码架构文档](https://github.com/Open-RUA/uni-robot-agent/blob/main/docs/architecture.md) 和 [ARX ONE 集成说明](https://github.com/Open-RUA/uni-robot-agent/blob/main/uni_robot_agent/integrations/arx_one/README.md)。
 
 ## 参考来源
 
