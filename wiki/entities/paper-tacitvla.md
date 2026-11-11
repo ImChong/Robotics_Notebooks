@@ -10,7 +10,7 @@ project: https://tacitvla.github.io/
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
-  - ../methods/flow-matching.md
+  - ../concepts/flow-matching-embodied-policy.md
   - ../entities/paper-ecot.md
   - ../tasks/manipulation.md
 sources:
@@ -169,7 +169,7 @@ RMBench 四项任务的 TacitVLA 为 169–171 ms，Explicit 为 236–294 ms。
 
 - [视觉–语言–动作模型（VLA）](../methods/vla.md)
 - [Action Chunking：动作块生成与执行](../methods/action-chunking.md)
-- [Flow Matching](../methods/flow-matching.md)
+- [Flow Matching](../concepts/flow-matching-embodied-policy.md)
 - [Embodied Chain-of-Thought](./paper-ecot.md)
 - [机器人操作（Manipulation）](../tasks/manipulation.md)
 
