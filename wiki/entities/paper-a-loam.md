@@ -3,7 +3,7 @@ type: entity
 title: "A-LOAM"
 project_id: a-loam
 code: https://github.com/HKUST-Aerial-Robotics/A-LOAM
-tags: [paper, repo, lidar, loam, slam, ceres, ros]
+tags: [paper, repo, lidar, loam, slam, ceres, ros, hkust]
 status: complete
 updated: 2026-11-11
 original:
