@@ -3,7 +3,7 @@ type: concept
 status: complete
 summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长程依赖成为现代序列建模与机器人基础策略（VLA、ACT、扩散策略骨干）的通用架构底座。"
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
-updated: 2026-11-07
+updated: 2026-11-11
 related:
   - ../entities/paper-attention-is-all-you-need.md
   - ../entities/transformer-cv-curriculum.md
@@ -15,6 +15,7 @@ related:
   - ../methods/robotics-transformer-rt-series.md
   - ../methods/action-chunking.md
   - ../entities/llms-from-scratch-raschka.md
+  - ../entities/zju-foundations-of-llms.md
   - ../entities/andrej-karpathy.md
   - ../entities/paper-effective-degree.md
 original:
@@ -120,6 +121,7 @@ $n<d$ 时自注意力层比循环层更省；$n$ 很大时需受限自注意力�
 - [BC with Transformer](../methods/bc-with-transformer.md)
 - [Robotics Transformer（RT 系列）](../methods/robotics-transformer-rt-series.md)
 - [动作分块（Action Chunking）](../methods/action-chunking.md)
+- [《大模型基础》（浙江大学 DAILY Lab）](../entities/zju-foundations-of-llms.md) — 系统整理语言模型、架构、Prompt、PEFT、模型编辑和 RAG 六章教材
 - [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
 - [Andrej Karpathy](../entities/andrej-karpathy.md)
 - [Effective Degree](../entities/paper-effective-degree.md) — ViT / BERT 上用路径多项式正则提升泛化（ICML 2026）
