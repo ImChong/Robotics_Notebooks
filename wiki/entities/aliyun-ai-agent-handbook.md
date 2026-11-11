@@ -12,6 +12,7 @@ original:
 sources:
   - ../../sources/repos/aliyun-ai-agent-handbook.md
   - ../../sources/sites/aliyun-ai-agent-handbook.md
+  - ../../sources/repos/aliyun-ai-agent-handbook-chapter-notes.md
 related:
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md
@@ -101,11 +102,20 @@ flowchart TB
 
 官方在线阅读：<https://aliyun.github.io/ai-agent-handbook/>；上游许可证 Apache-2.0。版本核验点：`aliyun/ai-agent-handbook@a1dd02ec080c4e18930660c0154da1ef589df639`。
 
+## 30 章逐章研读与技术纠偏
+
+已按上游固定版本核读第 01–30 章。各章的原文路径、机制、适用条件与边界及第 25–28 章 17 篇企业案例，详见[30 章逐章阅读记录](../../sources/repos/aliyun-ai-agent-handbook-chapter-notes.md)。与最初仅依据导读整理的版本相比，以下四点值得补充：
+
+1. **第 09 章（两篇正文）：** LLM/MCP/Agent Gateway 是三种治理语义，不意味着独立产品或三层成熟度。限流、事后余额扣减不提供严格并发成本上限；严格预算需要最坏费用原子预留、每次实际重试单独计费及未知用量对账。HiRoute 的节约数据属于特定实验，不可当通用收益。
+2. **第 16–18 章：** Simulation 负责生成、运行受控场景并留证；Evaluation 对结果按业务判据打分。模型 SFT、Agentic RL、蒸馏应以排除工具/Context/执行环境故障为前提。
+3. **第 19–23 章：** Trace→Trajectory→候选集→人工复核的黄金集→Badcase 回归→受控资产更新构成优化闭环。参与调优的样本与独立验收样本要隔离，不得将旧回答重打分充当新版本重测。
+4. **第 25–30 章：** 工程案例的百分比与效率来源于原书作者/企业的具体任务，竞赛概念验证不等于生产认证；第 30 章 Agentic OS 是“可复用、强制执行、独立验收的系统责任下沉”的架构展望。
+
 ## 局限与风险
 
 - **文档不是独立实测：** 原书企业案例、产品能力介绍不能推导出本库已复现实验或通用性能增益。
 - **更新节奏不是保证：** README 的“每周收录”是维护承诺，不保证每周同一天提交，也不能固定章节/案例数。
-- **核对范围：** 已通读官方 README、前言、六篇导读及第 21 章；抽样检查第 04、05、06、13 章；**30 章全文并未逐章通读**。归档标记的“通读已完成”仅针对已明确列出的核心一手材料，不应扩写成“整本白皮书已全量深读”。
+- **核对范围：** 现已按固定版本逐章核读官方第 01–30 章的 Markdown 正文和各篇导读（含第 09/17/18 章拆分正文、第 25–28 章的 17 篇独立企业案例）；将章节机制、论证和限制编译为[逐章阅读记录](../../sources/repos/aliyun-ai-agent-handbook-chapter-notes.md)。图表中每项数字、外部实现源码和案例端到端效果并未独立测试；“通读”不等于完成工程复现。
 - **适用对象：** 主体是企业软件 Agent 工程；机器人真机执行周期、物理安全与实时控制不属于本次官方案例的独立验证范围。
 
 ## 关联页面
@@ -118,6 +128,7 @@ flowchart TB
 ## 参考来源
 
 - [阿里云上游仓库资料归档](../../sources/repos/aliyun-ai-agent-handbook.md)
+- [30 章逐章原文位置及阅读笔记](../../sources/repos/aliyun-ai-agent-handbook-chapter-notes.md)
 - [官方在线阅读站点归档](../../sources/sites/aliyun-ai-agent-handbook.md)
 - [Alibaba Cloud AI Agent Handbook 官方 GitHub](https://github.com/aliyun/ai-agent-handbook)
 - [阿里云官方发布文章（2026-10-23）](https://developer.aliyun.com/article/1774447)
