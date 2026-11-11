@@ -2,13 +2,14 @@
 type: entity
 tags: [paper, jepa, self-supervised-learning, sigreg, brown, nyu, meta, lejepa]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-11
 arxiv: "2511.08544"
 venue: "arXiv 2025"
 code: https://github.com/rbalestr-lab/lejepa
 related:
   - ./paper-lewm.md
   - ./paper-levjepa.md
+  - ./paper-prh-jepas.md
   - ./paper-lpwm.md
   - ./paper-wcm-world-critic-model.md
   - ../methods/generative-world-models.md
@@ -110,6 +111,7 @@ sequenceDiagram
 | [LeWM](./paper-lewm.md) | 同一 SIGReg，加上动作条件预测器 |
 | [LeVJEPA](./paper-levjepa.md) | 视频编码器配方 |
 | [LpWM](./paper-lpwm.md) | 把高斯目标换成整流广义高斯 → 稀疏 |
+| [PRH with JEPAs](./paper-prh-jepas.md) | 使用 LeJEPA 实验框架研究 good views 与跨模态表征对齐；理论与论文主问题不同 |
 
 ## 结论
 
@@ -124,6 +126,7 @@ sequenceDiagram
 
 - [LeWM](./paper-lewm.md)
 - [LeVJEPA](./paper-levjepa.md)
+- [PRH with JEPAs：跨模态表征对齐](./paper-prh-jepas.md)
 - [LpWM](./paper-lpwm.md)
 - [WCM](./paper-wcm-world-critic-model.md)
 - [生成式世界模型](../methods/generative-world-models.md)
