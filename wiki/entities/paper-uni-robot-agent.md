@@ -83,7 +83,7 @@ sequenceDiagram
   participant H as Native handler / adapter
   U->>C: uni-robot-agent run --integration robodojo
   C->>S: run(args) / assemble_session(args)
-  S->>S: create integration session; register tools
+  S->>S: create integration session and register tools
   S->>E: create_executor(toolkit, policies)
   S->>A: run_agent()
   A->>E: call / submit(tool, arguments)
