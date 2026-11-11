@@ -643,7 +643,10 @@
           layout.xaxis.hoverformat = '%Y-%m-%d';
           layout.uirevision = view.id;
         }
-        var plotted = Plotly.react('trend-chart', traces, layout, { responsive: true, displaylogo: false, displayModeBar: !touch });
+        var config = { responsive: true, displaylogo: false, displayModeBar: !touch };
+        // Plotly 会把触摸和随后的模拟鼠标事件识别成双击，重置滑条选定的范围。
+        if (communityTrend && touch) config.doubleClick = false;
+        var plotted = Plotly.react('trend-chart', traces, layout, config);
         var total = bar ? y.reduce(function (a, b) { return a + b; }, 0) : (y[y.length - 1] || 0);
         status.textContent = view.label + '：' + (bar ? '合计 ' : '当前 ') + total + ' ' + view.unit
           + (s.x.length ? '（' + s.x[0] + ' → ' + s.x[s.x.length - 1] + '）' : '');
@@ -680,6 +683,10 @@
 
       function drawNodeTrendLegend(gd, view, series) {
         bindChartLinks(gd, view, null);
+        gd.on('plotly_unhover', function () {
+          // 轻点后的兼容鼠标移出事件可能立即关闭浮窗，恢复同一次轻点的日期。
+          if (trendTap?.point && performance.now() - trendTap.endedAt < 500) showTrendTap(trendTap);
+        });
         legend.replaceChildren();
         legend.hidden = !series.length;
         series.forEach(function (c, i) {
@@ -709,21 +716,29 @@
       var trendTap = null;
       chart.addEventListener('pointerdown', function (ev) {
         if (!current || current.load !== nodeTrends || ev.pointerType !== 'touch' || !ev.target.matches('.nsewdrag')) return;
+        ev.preventDefault(); // 此处只处理触摸手势，避免兼容鼠标事件盖掉日期浮窗。
         trendTap = { view: current, target: ev.target, id: ev.pointerId, x: ev.clientX, y: ev.clientY };
       });
       chart.addEventListener('pointercancel', function () { trendTap = null; });
       chart.addEventListener('pointerup', function (ev) {
         if (!trendTap || trendTap.id !== ev.pointerId) return;
         var tap = trendTap;
-        trendTap = null;
-        if (Math.hypot(ev.clientX - tap.x, ev.clientY - tap.y) > 8) return;
+        if (Math.hypot(ev.clientX - tap.x, ev.clientY - tap.y) > 8) {
+          trendTap = null;
+          return;
+        }
         var rect = tap.target.getBoundingClientRect();
-        var point = { xpx: ev.clientX - rect.left, ypx: ev.clientY - rect.top };
+        tap.point = { xpx: ev.clientX - rect.left, ypx: ev.clientY - rect.top };
+        tap.endedAt = performance.now();
+        showTrendTap(tap);
+      });
+
+      function showTrendTap(tap) {
         // 等 Plotly 结束触摸手势，再显示统一浮窗。
         requestAnimationFrame(function () {
-          if (current === tap.view && chart.contains(tap.target)) Plotly.Fx.hover(chart, point);
+          if (trendTap === tap && current === tap.view && chart.contains(tap.target)) Plotly.Fx.hover(chart, tap.point);
         });
-      });
+      }
 
       // 社区名 / 纵深名 / 公司名做横向条形图：长标签放纵轴水平排布，不再斜排挤占图面；
       // 保持数据给出的顺序，首项在上，条末标数值；多个 series 时按社区堆叠并显示图例
