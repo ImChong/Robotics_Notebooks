@@ -39,6 +39,8 @@ sources:
 
 # SuperMimic：用一个可微世界模型扩展人形全身控制
 
+## 一句话定义
+
 **SuperMimic**（*Scaling Humanoid Whole-Body Control with One Differentiable World Model*，arXiv:2610.28480，CoRL 2026 Oral）由加州大学伯克利分校提出：将一个可微人形动力学世界模型与全身动作跟踪策略放进同一训练循环，以短时想象轨迹上的反向传播替代大量昂贵的模型无关仿真 rollout。
 
 ## 英文缩写速查
@@ -98,7 +100,7 @@ flowchart TB
 | 数据规模 | 使用 BONES-SEED 公开子集 264.56 小时；SONIC 使用 611 小时 | SuperMimic 数据量更少，仍须注意方法与硬件并非完全相同条件 |
 | 真机 | Unitree G1 展示多种动态动作，项目页称所有片段用同一策略且无按动作调参 | 展示 sim-to-real 可行性，不等于论文已提供开源部署栈 |
 
-## 独立复现与工程入口
+## 工程实践：独立复现与工程入口
 
 社区维护的 [awesome-supermimic 索引](../../sources/repos/awesome-supermimic.md) 汇总了多种实现、扩展、演示与数据资源；它是导航入口，不是官方代码或对各项目指标的独立验证。
 
