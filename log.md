@@ -318,6 +318,12 @@ op: ingest
 - 关键结论：LHNav 现有仓仅展示网页；DASH 未核得官方代码；Chess 公开 MuJoCo/训练/评测和 261 条真实轨迹；ExoStack 公开 ROS 2/micro-ROS 代码但 PolyForm Noncommercial 限非商用。
 - 边界：结果为原作者报告；未在本环境完成硬件或完整 CI 复现，待 PR GitHub Actions 检查。
 
+## [2026-11-11] ingest | 生成动作与人形闭环关联综述
+
+- 意图：去重补齐 Motion Graphs / MDM / A-MDM / AAMDM / Kimodo-Policy，并建立非 roadmap 对照节点。
+- 开源核查：MDM、A-MDM 与 Kimodo-Policy 有官方可运行仓库；Motion Graphs、AAMDM 官方项目页本次未确认可运行代码。
+- 阅读状态：后续已通读五篇论文正文及适用附录，复核实验表、代码入口和关键边界；本次七个修改 wiki 页健康度均为 3/3；未在本地复现训练或真机。
+
 ## [2026-11-11] ingest | SeeBFM：接入地形扫描后训练与双深度相机视觉感知路线
 
 - **意图：** 以作者项目页、官方完整演示脚本/字幕和浏览器源代码为一手材料，将 SeeBFM 纳入 BFM 技术谱系；记录高度扫描条件化、地形无关 backward 提示、独立深度学生估计器、仿真穿越率与失败模式。

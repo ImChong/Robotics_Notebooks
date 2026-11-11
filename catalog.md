@@ -1353,9 +1353,11 @@
 - [4DAnyone：单目随意视频做出 4D 人](wiki/entities/paper-4danyone.md) — 4DAnyone**（*Create Anyone in 4D from a Casual Monocular Video*，[arXiv:2608.20335](https://arxiv.or `📅unknown` `[entity_page]`
 - [4-DoF 视觉引导桌面笔具分拣](wiki/entities/paper-4dof-pen-sorting.md) — Tabletop Pen Manipulation With a Vision-Guided 4-DoF Arm**（[arXiv:2608.15968](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [A Circuit for In-Context Learning / 上下文学习的电路](wiki/entities/paper-a-circuit-for-in-context-learning.md) — 论文提出并干预验证：在所研究的少样本短句分类任务中，模型使用标签位置上的关联记忆完成门控检索。 `📅unknown` `[entity_page]`
+- [A-MDM：自回归扩散角色交互控制](wiki/entities/paper-a-mdm-interactive-character-control.md) — 根据前一帧姿态自回归生成后续运动，提供实时 inpainting、任务采样及强化学习高层控制，重点在虚拟角色交互。 `📅unknown` `[entity_page]`
 - [A²-MEAS：用「纠错码」把诊断接入连续控制](wiki/entities/paper-a2-meas-agentic-embodied-intelligence.md) — A²-MEAS**（*Toward the Era of Agentic Embodied Intelligence*，[arXiv:2611.09124](https://arxiv.org/a `📅unknown` `[entity_page]`
 - [A2I-Calib++：面向腿式机器人全身多 IMU 的运动学驱动抗噪主动标定](wiki/entities/paper-a2i-calib-plus-multi-imu-legged-calibration.md) — A2I-Calib++**（*A2I-Calib++: A Kinematics-Driven Anti-noise Active Calibration Framework for Whole- `📅unknown` `[entity_page]`
 - [A³-VLA：感知引导的注意力对齐](wiki/entities/paper-a3-vla-attention-alignment.md) — A³-VLA**（*Automatic Perception-Guided Attention Alignment for Robot Manipulation*，[arXiv:2611.0644 `📅unknown` `[entity_page]`
+- [AAMDM：快速生成与扩散精修双模块](wiki/entities/paper-aamdm-accelerated-motion-diffusion.md) — 用潜空间 DD-GAN 快速生成动作草稿，再由自回归扩散模块少量步数精修以实现交互速度；独立于 A-MDM。 `📅unknown` `[entity_page]`
 - [ABot-M0.5（Unified Mobility-and-Manipulation · World Action Model）](wiki/entities/paper-abot-m05-mobile-manipulation-wam.md) — ABot-M0.5**（*ABot-M0.5: Unified Mobility-and-Manipulation World Action Model*，arXiv:2607.00678，AMA `📅unknown` `[entity_page]`
 - [ABot-N1（通用视觉–语言导航基础模型）](wiki/entities/paper-abot-n1.md) — ABot-N1**（*ABot-N1: Toward a General Visual Language Navigation Foundation Model*，[arXiv:2607.1038 `📅unknown` `[entity_page]`
 - [ABot-Recon：局部上下文长视频流式 3D 重建](wiki/entities/paper-abot-recon.md) — ABot-Recon**（*Revisiting Local Context for Long-Horizon Streaming 3D Reconstruction*，[arXiv:2608.2 `📅unknown` `[entity_page]`
@@ -2903,6 +2905,7 @@
 - [Whole body dynamic behavior and control of human-like robots（IJHR 2004）](wiki/entities/paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md) — Whole body dynamic behavior and control of human-like robots**（Khatib, Sentis, Park, Warren；*Inter `📅unknown` `[entity_page]`
 - [Parameter identification of robot dynamics](wiki/entities/paper-khosla-robot-dynamics-parameter-identification-1985.md) — Parameter identification of robot dynamics**（CDC 1985）收录于 [自由度FreeDof · Sim2Real 四条路线梳理](../../sou `📅unknown` `[entity_page]`
 - [KILVO：人形多传感器运动学–惯性–激光–视觉里程计](wiki/entities/paper-kilvo.md) — KILVO**（*Kinematic-Inertial-LiDAR-Visual Odometry with Robust Multimodal Adaptation for Humanoid R `📅unknown` `[entity_page]`
+- [Kimodo-Policy：运动动作模型的视觉闭环移动操作](wiki/entities/paper-kimodo-policy.md) — 冻结 Kimodo-G1 生成骨干，用视觉 ControlNet 与手部 HandNet 接入图像、手部状态及实测运动历史；分段预测、执行前缀再规划，实现 G1 视觉闭环移动操作。 `📅unknown` `[entity_page]`
 - [Kine2Go：Unitree Go2 多步态运动学数据集](wiki/entities/paper-kine2go.md) — Kine2Go 是面向 Unitree Go2 的四足运动学数据集与生成管线：将狗、马和合成机器人动作重定向到 Go2，在 Genesis 中训练逐动作 PPO 模仿策略，再采集扰动 rollout。 `📅unknown` `[entity_page]`
 - [KineBench（IDM-free 运动学接地的具身世界模型基准）](wiki/entities/paper-kinebench.md) — KineBench**（*Benchmarking Embodied World Models via IDM-Free Kinematic Grounding*，[arXiv:2607.1987 `📅unknown` `[entity_page]`
 - [运动学-触觉对齐灵巧重定向：通过接触力旋量空间对齐实现运动学与触觉联合灵巧重定向](wiki/entities/paper-kinematic-tactile-aligned-dexterous-retargeting.md) — 运动学-触觉对齐灵巧重定向**（*Kinematic-Tactile Aligned Dexterous Retargeting with Contact Wrench Space Alignme `📅unknown` `[entity_page]`
@@ -3138,6 +3141,7 @@
 - [MATE：异步多速率扩散策略组合 / Asynchronous Multi-Rate Diffusion Policy Composition](wiki/entities/paper-mate-asynchronous-multirate-diffusion.md) — MATE**（作者 Zihao He、Hongjie Fang 等，上海交通大学、Noematrix 等；[arXiv:2607.17257v2](https://arxiv.org/html/2 `📅unknown` `[entity_page]`
 - [MATE（arXiv:2609.26520）](wiki/entities/paper-mate-virtual-teleop.md) — MATE**（*MATE: Multi-Agent Virtual Teleoperation Platform for Humanoid Collaboration Data Collectio `📅unknown` `[entity_page]`
 - [MAVP（arXiv:2609.26378）](wiki/entities/paper-mavp.md) — MAVP**（*MAVP: Map-Aware Visuomotor Policies for Mobile Manipulation*，[arXiv:2609.26378](https://ar `📅unknown` `[entity_page]`
+- [MDM：文本与动作条件人体运动扩散](wiki/entities/paper-mdm-human-motion-diffusion.md) — Transformer 扩散模型直接预测去噪动作样本，允许位置、速度与足接触几何损失；可做文生动作、动作类条件生成及编辑。 `📅unknown` `[entity_page]`
 - [ME-Brain-1.0：记忆、认知与动作的自我演进具身框架](wiki/entities/paper-me-brain-1-0.md) — ME-Brain-1.0**（*Memory, Cognition and Action for Evolving Embodied Intelligence*，[arXiv:2609.24271 `📅unknown` `[entity_page]`
 - [ME-Dex 1.0：异构触觉进入 World Action Modeling](wiki/entities/paper-me-dex-1-0.md) — ME-Dex 1.0**（*Bringing Heterogeneous Tactile Sensing into World Action Modeling*，[arXiv:2609.21449 `📅unknown` `[entity_page]`
 - [MachEmbodied-U0（arXiv:2609.25627）](wiki/entities/paper-me-u0.md) — MachEmbodied-U0**（*MachEmbodied-U0: Unified Understanding and Generation Model for Embodied Intell `📅unknown` `[entity_page]`
@@ -3235,6 +3239,7 @@
 - [Stubborn](wiki/entities/paper-motion-cerebellum-stubborn.md) — Stubborn**（*A Streamlined and Unified Reinforcement Learning Framework for Robust Motion Tracking  `📅unknown` `[entity_page]`
 - [T-GMP：地形条件生成式运动先验的人形多地形行走](wiki/entities/paper-motion-cerebellum-t-gmp.md) — T-GMP**（*Terrain-conditioned Generative Motion Priors for Versatile and Natural Humanoid Locomotio `📅unknown` `[entity_page]`
 - [TAGA](wiki/entities/paper-motion-cerebellum-taga.md) — TAGA** 收录于 具身智能研究室 · 运动小脑 64 篇长文 **第 09/64**  `📅unknown` `[entity_page]`
+- [Motion Graphs：动捕片段图与路径控制](wiki/entities/paper-motion-graphs.md) — 把动捕片段与连续转场组成有向图，按指定地面路径及动作风格搜索可行图游走；属于数据库式合成而非扩散模型或真机闭环。 `📅unknown` `[entity_page]`
 - [Motion-Induced WiFi-CSI Sim（arXiv:2610.34034）](wiki/entities/paper-motion-induced-wifi-csi-sim.md) — Motion-Induced WiFi-CSI Sim**（*Enabling Motion-Induced WiFi-CSI Sensing in Multi-Robot Systems: A  `📅unknown` `[entity_page]`
 - [MotionBricks：模块化潜空间实时运动生成](wiki/entities/paper-motionbricks.md) — MotionBricks**（*Scalable Real-Time Motions with Modular Latent Generative Model and Smart Primitiv `📅unknown` `[entity_page]`
 - [MotionDisco（极端人形 Loco-Manipulation 运动发现）](wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — MotionDisco**（*Motion Discovery for Extreme Humanoid Loco-Manipulation*，arXiv:2606.06139，TUM · NYU `📅unknown` `[entity_page]`
@@ -7129,6 +7134,7 @@
 - [DynaRetarget vs TopoRetarget：接触保真重定向两条路线对比](wiki/comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 背景**：把人–物体演示喂给机器人时，「像不像」往往不在关节角而在 **接触**——脚是否真踩实、指尖是否真贴物。2026 年两篇代表性工作分别从两端攻这道闸：[DynaRetarget](../ `📅unknown` `[comparison_page]`
 - [EtherCAT vs EtherNet/IP（工业总线选型对比）](wiki/comparisons/ethercat-vs-ethernet-ip.md) — 在人形机器人、工业机械臂、移动操作平台落地时，"主控板 ↔ 关节驱动器"的连接几乎都跑在工业以太网上。**EtherCAT** 和 **EtherNet/IP** 是当前装机量最大的两种以太网现场总线 `📅unknown` `[comparison_page]`
 - [FB / BFM-Zero / INTACT / Mimic / VLA：任务空间表征对比](wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — 背景**：围绕 RoboParty Lab 近期 MimicLite、[UFO](. `📅unknown` `[comparison_page]`
+- [从生成全身动作到人形闭环：研究对照与接口关系](wiki/comparisons/generative-motion-to-humanoid-closed-loop.md) — 这是跨论文的**系统关系与证据对比**，不是学习 roadmap：一段全身运动可以作为训练参考、在线运动规划结果或闭环策略输出，但各层的观测、物理反馈和控制职责不可互换。 `📅unknown` `[comparison_page]`
 - [GMR vs NMR vs ReActor：动作重定向方法谱系对比](wiki/comparisons/gmr-vs-nmr-vs-reactor.md) — 背景**：当源动作（动捕、视频估计、生成模型）要喂给目标人形 / 异构机器人时，重定向是必须穿过的一道闸。围绕「**像不像**」与「**能不能跟得上**」两条评价线，社区涌现了三类代表性路线——以 `📅unknown` `[comparison_page]`
 - [HDF5 vs MCAP vs LeRobot 数据集格式](wiki/comparisons/hdf5-mcap-lerobot-data-formats.md) — 三种格式在具身数据管线中 **常串联出现**，但 **设计目标不同**：HDF5 是 **通用科学数组容器**；MCAP 是 **多通道时间序列日志**；LeRobot v3 是 **面向 IL/RL `📅unknown` `[comparison_page]`
 - [HIL vs MTRG vs ZEST：跑酷模仿学习路线对比](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 同一作者群从 **物理角色动画跑酷**（HIL，[TOG 2026 实体](../entities/pap `📅unknown` `[comparison_page]`
