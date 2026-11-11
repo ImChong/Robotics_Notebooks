@@ -1,186 +1,192 @@
 ---
 type: entity
-title: "TacitVLA: Reasoning VLA Without Reasoning Latency / 无推理等待的视觉语言动作模型"
 project_id: tacitvla
-tags: [paper, vla, embodied-reasoning, inference-acceleration, flow-matching, manipulation, autonomous-driving, nvidia]
+tags: [paper, vla, embodied-reasoning, flow-matching, action-chunking, manipulation, autonomous-driving, nvidia]
+topic: [vla, imitation-learning]
 status: complete
 updated: 2026-11-11
 arxiv: "2610.17540"
 project: https://tacitvla.github.io/
-original:
-  - ../../sources/papers/tacitvla_arxiv_2610_17540.md
 related:
-  - ./paper-ecot.md
-  - ./paper-fast-ecot.md
-  - ./paper-hi-robot.md
   - ../methods/vla.md
   - ../methods/action-chunking.md
+  - ../concepts/flow-matching-embodied-policy.md
+  - ../entities/paper-ecot.md
+  - ./paper-fast-ecot.md
+  - ./paper-hi-robot.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/tacitvla_arxiv_2610_17540.md
   - ../../sources/sites/tacitvla.md
-summary: "TacitVLA（arXiv:2610.17540v1）：保留推理文本的训练监督，但让 flow-matching 动作专家屏蔽当前推理 token；无记忆任务省掉文本解码，有记忆任务在动作执行期间异步更新 ledger。四个基准中接近显式推理的效果、最多 3.4× 更低动作就绪延迟；官方代码待发布。"
+original:
+  - ../../sources/papers/tacitvla_arxiv_2610_17540.md
+summary: "TacitVLA（arXiv:2610.17540）：对当次推理文本施加动作专家注意力掩码，用推理监督提升 VLA 骨干表示；记忆任务异步写入子任务账本，在 RoboMME、RMBench、LIBERO、PhysicalAI-AV 上以接近显式推理的性能实现最多 3.4 倍更低调用延迟。"
 ---
 
-# TacitVLA：不等推理文本也能行动 / Reasoning VLA Without Reasoning Latency
+# TacitVLA：无需等待推理文本的 VLA（Reasoning Vision-Language-Action Models Without Reasoning Latency）
 
-**TacitVLA**（*TacitVLA: Reasoning Vision-Language-Action Models Without Reasoning Latency*，[arXiv:2610.17540v1](https://arxiv.org/html/2610.17540v1)，[项目页](https://tacitvla.github.io/)）由英伟达（NVIDIA）牵头，联合纽约大学、加州大学伯克利分校、约翰斯·霍普金斯大学与斯坦福大学作者提出（Jack Lu 等，2026-10-13）。
+**论文：** [TacitVLA: Reasoning Vision-Language-Action Models Without Reasoning Latency](https://arxiv.org/abs/2610.17540)（Jack Lu 等，2026-10-13，arXiv v1）
+**项目：** [tacitvla.github.io](https://tacitvla.github.io/) · **源码：** 截至 2026-11-11 项目页仍为“Code soon”，暂无官方可运行仓库入口。
 
 ## 一句话定义
 
-**训练时仍让视觉语言主干学习生成推理文本，动作专家却看不到本次推理 token：动作无需等待自回归推理；需要跨步记忆时，文本在动作执行期间异步写入下次调用使用的 ledger。**
+**TacitVLA** 让动作专家仅依赖当前观测和历史上下文，不读取**本次调用刚生成的推理文本**；推理文本继续作为训练监督，记忆任务的文本账本则在动作执行期间生成，从而保留推理收益并缩短动作就绪时延。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|---|---|---|
-| TacitVLA | Tacit Vision-Language-Action | 本文以推理监督塑造主干、但不把当前文本送入动作专家的策略 |
-| VLA | Vision-Language-Action | 视觉、语言条件下生成机器人/车辆动作的策略 |
-| CoT | Chain-of-Thought | 显式自回归推理文本；TacitVLA 将其与当次动作路径解耦 |
-| FM | Flow Matching | 动作专家去噪生成连续动作块的训练目标 |
-| LIBERO | Lifelong Robot Learning | 机器人操作基准；Plus 版含分布扰动 |
-| AV | Autonomous Vehicle | 本文 PhysicalAI-AV 闭环驾驶评测类别 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 从视觉、语言和机器人状态产生动作的模型 |
+| VLM | Vision-Language Model | 接收视觉与语言上下文并学习推理的骨干 |
+| MoT | Mixture-of-Transformers | 视觉语言骨干与独立动作 Transformer 共用分层注意力的架构 |
+| FM | Flow Matching | 动作专家训练与迭代去噪采用的生成目标 |
+| CE | Cross-Entropy | 训练时对推理文本和离散动作 token 的监督损失 |
+| ADE | Average Displacement Error | 驾驶规划轨迹位移误差；越小越好 |
 
 ## 为什么重要
 
-- **把训练价值与在线代价拆开：** 推理监督改进 backbone 表征，但“先把整段推理写完再行动”不是这四组受控实验中获取收益的必要条件。
-- **明确两类部署：** 无状态记忆的任务直接省掉文本生成；需要计数与历史子任务的任务不丢记忆，而是将 ledger 更新移动到执行窗口。
-- **可对齐对照实验：** 同架构、同训练数据/序列/prompt/optimizer，对比 No Reasoning、Explicit Reasoning、TacitVLA，排除直接改模型规模带来的混淆。
-
-## 核心信息
-
-| 项目 | 论文核实值 |
-|---|---|
-| 论文版本 | arXiv:2610.17540v1，2026-10-13；全文 §1–7、附录 A–D |
-| 机构 | 英伟达（NVIDIA）；纽约大学（NYU）；加州大学伯克利分校（UC Berkeley）；约翰斯·霍普金斯大学（JHU）；斯坦福大学（Stanford） |
-| 结构 | Mixture-of-Transformers：视觉语言 backbone + flow-matching action expert |
-| RoboMME | PaliGemma / π0.5 风格，约 3.7B；带记忆 |
-| RMBench 与 LIBERO | RynnBrain-2B 风格，约 2.6B / 2.5B；前者带记忆 |
-| PhysicalAI-AV | Qwen3-VL-2B 风格主干、约 3.9B；无任务 ledger |
-| 开源情况 | **代码待发布**：2026-11-11 项目页显示 Code soon；无可运行官方入口 |
+- **把推理作为监督而不是推理前置步骤。** 显式链式推理需要先自回归输出文本再生成动作；TacitVLA 在训练中仍学习推理，却不让动作等待文本。
+- **对长程操作保留真正的跨步记忆。** RoboMME、RMBench 的子任务账本用于记录当前画面不可见的历史事件，不能简单删去；作者将文本生成移入当前动作块的物理执行窗口。
+- **受控对比而非堆模型。** Explicit Reasoning 与 TacitVLA 的训练序列、提示词、优化器、损失和数据保持一致，关键差异是动作专家对当前推理 token 的 attention mask（论文 §4.1）。
+- **部署指标需看动作就绪时延。** 本文测量 observation→action-ready，不能直接当作硬件总控制环路延迟。
 
 ## 核心原理
 
-### 1. 用一个 attention mask 解开「推理监督 ≠ 动作前生成」
+### 三种策略与注意力掩码
 
-- **输入：** 上下文 c_t，含视觉、指令与本体状态；带记忆任务还含此前子任务账本 M_t。
-- **训练目标：** backbone 用交叉熵预测本次推理文本 r_t 与辅助 tokenized actions；动作专家用 flow matching 去噪连续 action chunk。
-- **Explicit Reasoning：** 动作专家同时读取 c_t 和刚生成的 r_t；要等完整文本自回归解码。
-- **TacitVLA：** 动作专家只读取 c_t（历史 ledger 可在 c_t 内），不 attend 本次 r_t；推理监督仍通过 backbone 参数与表征影响动作输出。
-- **No Reasoning：** 同架构但不使用推理监督，也不维护推理 ledger，作为低延迟对照。
+设 c_t 为图像、机器人状态、语言指令及必要历史；记忆任务还包括过去子任务账本 M_t。设 r_t 是当前推理文本，a_t 是流匹配动作块。三者的差异：
 
-因此“去掉的”是**本次动作对当前推理 token 的条件依赖**，不是丢弃训练期推理监督，也不是删除全部历史信息。
+| 策略 | 动作专家读取的上下文 | 训练推理文本目标 | 运行时安排 |
+|------|--------------------|-----------------|------------|
+| No Reasoning | c_t | 无 | 直接生成动作，不维护文本账本 |
+| Explicit Reasoning | c_t 与本次 r_t | 有 | 先解码 r_t，再生成动作 |
+| **TacitVLA** | **仅 c_t，不读取本次 r_t** | **有** | 非记忆任务不生成文本；记忆任务边执行动作边生成账本条目 |
 
-### 2. 流程总览（基于论文 Fig. 2、§3–4）
+- **共享训练目标**（论文式 (1)）：流匹配动作损失 + λ × 推理文本和离散化动作 token 的 CE 损失。离散动作 token 是辅助训练目标；最终动作由 FM action expert 产生。
+- **单格 mask 的作用**（论文式 (2)、(3)）：仅屏蔽 action expert → 本次 r_t 的注意力；reasoning CE 仍将梯度送入骨干，动作专家继续读取骨干在 c_t 上形成的表示。不能误读为“模型没有训练推理”。
+- **历史与当前分离**：在记忆任务里，动作专家读取 M_t（**过去**条目），但不读取 r_t（**当前**条目）。动作块完成后再把 r_t 写入 M_(t+1)。
+- **不加新双模型调度器**：作者沿用一个 VLM backbone + 一个 action expert；变化集中在注意力和文本生成的时序。
+
+## 流程总览
 
 ```mermaid
 flowchart TD
-  DATA["训练数据：图像、指令、状态<br/>历史 ledger + 推理标签 + 动作"]
-  BB["视觉语言 Backbone"]
-  REASON["推理文本 r_t<br/>交叉熵监督"]
-  TOK["辅助动作 token<br/>交叉熵监督"]
-  MASK["Action Expert 的 attention mask<br/>只能访问当前上下文 c_t"]
-  FM["Flow-matching 动作专家<br/>预测 action chunk"]
-  DATA --> BB
-  BB --> REASON
-  BB --> TOK
-  BB --> MASK --> FM
-  DATA -.->|"连续动作监督"| FM
-  REASON -.->|"训练梯度更新 backbone；<br/>不作为本次动作输入"| BB
-  FM --> DEC{"部署：任务需跨步记忆？"}
-  DEC -->|"否：LIBERO / Driving"| DIRECT["直接执行 action<br/>不生成本次推理文本"]
-  DEC -->|"是：RoboMME / RMBench"| EXEC["执行 action chunk"]
-  EXEC --> ASYNC["执行窗口内异步生成 r_t"]
-  ASYNC --> LEDGER["追加 ledger M_(t+1)<br/>下一次观测调用读入"]
-  LEDGER --> BB
+  subgraph Train["训练：同一序列和监督目标"]
+    C["上下文 c_t：视觉、语言、状态及历史账本"] --> B["视觉语言 Backbone"]
+    B --> R["预测当次推理 r_t 与离散动作 token"]
+    R --> CE["交叉熵 CE 训练监督"]
+    B --> KV["c_t 的分层隐表示 / KV"]
+    KV --> A["Flow-Matching 动作专家"]
+    M["Attention mask：动作位置不能读取当次 r_t"] --> A
+    DEMO["示范动作块 a_t"] --> FM["Flow-Matching 损失"]
+    A --> FM
+  end
+  subgraph Deploy["部署：先生成动作，不等待当次推理"]
+    OBS["当前观测 + 指令 + 过去账本 M_t"] --> ENC["骨干计算上下文表示"]
+    ENC --> ACT["动作专家去噪 → 动作块 a_t"]
+    ACT --> EXEC["提交动作块并执行"]
+    EXEC --> MEM{"任务需要跨调用账本？"}
+    MEM -->|"否：LIBERO / 驾驶"| NEXT["不生成 r_t；下一次观测"]
+    MEM -->|"是：RoboMME / RMBench"| TXT["动作执行窗口内生成 r_t"]
+    TXT --> APP["执行结束后写入 M_(t+1)"]
+    APP --> NEXT
+  end
 ```
 
-注：图中回边表示**下一次调用**读取新 ledger，不表示当前 action expert 使用刚生成的文本。原文的 tokenized actions 仅为训练辅助目标，不是部署时实际控制输出。
+图依据：论文 §3–§4、Fig.1–2、Appendix A（Ledger semantics / Deployment）。图中的训练/部署分区是对作者机制的概括，不是尚未公开的程序调用图。
 
-### 3. 时延与调度条件
+### 时延方程与适用条件
 
-- **无记忆任务：** TacitVLA 不生成 r_t，动作就绪延迟约为 T_action。
-- **记忆任务：** 先完成动作预测、在执行期间生成 ledger。下一次调用的延迟可表示为 **T_action + max(0, T_reason − T_exec)**。
-- 因此“无推理等待”**有适用条件**：如果生成的记忆条目耗时超过动作执行窗口，依然会在下一次调用处等待。
-- RoboMME Counting 的 T_action = 127 ms，T_reason = 93 ms，T_exec = 800 ms；与 Explicit Reasoning 的 **220 ms** 相比，动作就绪为 **127 ms**。
-
-## 源码运行时序图
-
-**不适用（官方代码待发布）**。截至 **2026-11-11**，[官方项目页](https://tacitvla.github.io/)资源区标注 **Code soon**，尚无 TacitVLA 官方可运行训练/推理仓库或明确入口；上图仅是依据论文原文绘制的**算法数据流**，不是源码运行时序图。待发布后应核对 attention mask、共享 KV cache、ledger 更新时机及部署控制环。
-
-## 工程实践
-
-| 工程问题 | 论文内可落地的核对点 |
-|---|---|
-| 训练实现 | 保留 reasoning CE 和辅助动作 token CE；只对 action-expert → 本次 reasoning token 的 attention 做屏蔽（论文 §4.1、Fig. 2） |
-| 非记忆 VLA | 部署不生成本次推理文本；若需要审计，可以在动作已计算后另行生成，但不作为动作输入 |
-| 记忆 VLA | ledger 仅在 chunk 执行完成后成为后续调用的上下文；与当前生成文本区分 |
-| 性能评测 | 同时记录成功率、动作就绪时延、T_reason、T_exec、ledger 正确率；不能只报一项加速比 |
-| 推理算力 | 论文单 H100 80GB、bf16、CUDA graph 计时，其他显卡/运行时需单独测量 |
-| 复现入口 | **尚不可直接复现**：项目尚无官方实现；不能把 WLA、π0.5、DeepThinkVLA 的公开代码说成 TacitVLA 源码 |
+- 显式推理：动作就绪时间 = T_action + T_reason。
+- TacitVLA 无记忆任务：动作就绪时间 = T_action。
+- TacitVLA 有记忆任务：若必须等待下一次调用读取完成的账本，则有效等待为 **T_action + max(0, T_reason − T_exec)**（论文式 (4)）。T_exec 是当前动作块实际执行时间。
+- 因此“without reasoning latency”是**同次动作不等待文本**的条件性结论，不等于文本生成零算力、毫无记忆调度负担或系统零延迟。
 
 ## 实验与评测
 
-| Benchmark | No Reasoning | Explicit Reasoning | **TacitVLA** | 备注 |
-|---|---:|---:|---:|---|
-| RoboMME Counting | 79.2% | 81.5% | **82.7%** | 训练含全部 16 任务，计数子集 |
-| RoboMME 全 16 任务 | 46.5% | 45.8% | **48.1%** | 同上，800 cases |
-| RMBench 4-task | 60.4% | 77.0% | **77.5%** | 各任务 100 cases |
-| LIBERO 标准四套件 | 98.5% | 98.1% | **98.6%** | 2,000 cases |
-| LIBERO-Plus | 67.6% | **73.5%** | 72.9% | 10,030 扰动 cases |
-| PhysicalAI-AV minADE ↓ | 1.166 m | 1.140 m | **1.116 m** | 开环，1,434 segments |
-| PhysicalAI-AV scene score | 46.4% | 52.3% | **52.5%** | 闭环，441 scenes |
+| 基准（评价指标） | No Reasoning | Explicit Reasoning | TacitVLA |
+|---|---:|---:|---:|
+| RoboMME Counting（16 任务联合训练；成功率） | 79.2% | 81.5% | **82.7%** |
+| RoboMME 全 16 任务（成功率） | 46.5% | 45.8% | **48.1%** |
+| RMBench 四任务（成功率） | 60.4% | 77.0% | **77.5%** |
+| LIBERO 四套件（成功率） | 98.5% | 98.1% | **98.6%** |
+| LIBERO-Plus（成功率） | 67.6% | **73.5%** | 72.9% |
+| PhysicalAI-AV（闭环 scene score） | 46.4% | 52.3% | **52.5%** |
+| PhysicalAI-AV（开环 minADE，米） | 1.166 | 1.140 | **1.116** |
 
-**额外消融：** 单独在 RoboMME Counting 4 任务训练时 TacitVLA **89.5%**（联合 16 任务训练时是 **82.7%**，勿混用）。RMBench Press Button 中带 ledger 的 TacitVLA **74.3%**、无推理 **7.7%**；ledger 最终正确率 **99.7%**（论文 Appendix B）。
+表据：论文 Table 3–6；机器人成功率是作者报告的三次评测 seed 均值。**注意：** RoboMME 只在四个 Counting 任务上单独训练时，TacitVLA 达 89.5%（Explicit 86.7%，No Reasoning 79.0%，Table 2），与上表的“16 任务联合训练”**不是同一实验**。
 
-**延迟（H100 单卡，均值）：** RoboMME Counting **127 vs 220 ms**；LIBERO **147 vs 495 ms**；PhysicalAI-AV **127 vs 269 ms**（TacitVLA vs Explicit）。上限 **3.4×** 表示动作就绪延迟对比，不是实际整项任务时间缩短三倍。RMBench 77.5% − 60.4% = **+17.1 个百分点**。
+| 单 H100 平均每次动作就绪时延 | TacitVLA | Explicit | 比率（Explicit / Tacit） |
+|---|---:|---:|---:|
+| RoboMME Counting | 127 ms | 220 ms | 1.7× |
+| LIBERO (+Plus) | 147 ms | 495 ms | 3.4× |
+| PhysicalAI-AV 闭环 | 127 ms | 269 ms | 2.1× |
+
+RMBench 四项任务的 TacitVLA 为 169–171 ms，Explicit 为 236–294 ms。RMBench 的 Press Button 子任务分别为 TacitVLA **74.3%**、Explicit **73.3%**、No Reasoning **7.7%**；两种 reasoning 策略最终账本正确率均为 **99.7%**（论文 Appendix B）。整体 RMBench **77.5% − 60.4% = +17.1 个百分点**，不是相对增长 17.1%。LIBERO 的五动作执行窗口是 250 ms，TacitVLA 的 147 ms 满足该时序，而 Explicit 的 495 ms 不满足。论文表 15 在相同单 H100、bf16、CUDA graph 的实现条件下计时，**不能直接外推到 RTX、Jetson 或 ROS 2 实机**。
 
 ## 与其他工作对比
 
-| 对照路线 | 不同点 |
-|---|---|
-| [ECoT](./paper-ecot.md) | 显式自回归具身 CoT，再输出动作；TacitVLA 训练仍学推理、执行时不依赖当次推理文本 |
-| [Fast ECoT](./paper-fast-ecot.md) | 通过缓存、复用、并行和异步调度加速**已存在**的推理链；TacitVLA 在训练期改变 attention mask，使本次动作无需读取文本 |
-| [Hi Robot](./paper-hi-robot.md) | 高层 VLM 单独生成语言子任务、低层 π0 执行，可响应用户插话；TacitVLA 是一套共享主干 + 动作专家，并区分有/无 episodic ledger |
-| No Reasoning 对照 | 同架构但不训练推理目标；TacitVLA 无记忆任务可与其有相同部署时延，但效果更好 |
+- **相对 ECoT / 显式推理 VLA：** 保留文本监督，却切断当次推理文本到动作专家的部署依赖。相关起点见 [Embodied Chain-of-Thought](./paper-ecot.md)。
+- **相对 [Fast ECoT](./paper-fast-ecot.md)：** Fast ECoT 不改权重，靠思维缓存、并行和异步调度加快已有 ECoT；TacitVLA 在训练期通过 attention mask 解除动作对当前推理 token 的依赖。
+- **相对 [Hi Robot](./paper-hi-robot.md)：** Hi Robot 将语言子任务交给单独的高层 VLM，低层 π₀ 执行；TacitVLA 使用共享视觉语言主干与动作专家，并按是否需要历史账本决定是否在线生成推理文本。
+- **相对 No Reasoning：** 相同动作路径时延；成功率差异体现推理训练目标的价值。但在 RoboMME、RMBench，额外账本也同时改变了信息条件，不能单独把增益归于 CE。
+- **相对异步快慢双系统：** 不引入单独低频高层 planner；使用同一个 backbone + action expert 计算动作，必要时才在执行窗口生成记忆条目。
+- **相对 latent reasoning：** 不是用隐式 token 替代思维链，而是训练文本目标仍存在、动作分支有意不读本次文本。
 
 ## 结论
 
-**本论文的关键不是把推理变快，而是验证：推理的主要收益可以在训练期沉淀到 backbone 表征，未必需要阻塞每次动作的文本生成。**
+**该工作的主要收益来自“推理监督塑造表征 + 历史账本”，而不是每次执行前先输出并消费当前推理文本；在论文四组任务中，动作专家可省去这段等待。**
 
-1. **不要把“训练时推理监督”与“每次行动前输出推理文本”绑死。** TacitVLA 和 Explicit 保持相同监督，仅屏蔽动作专家对当前 r_t 的 attention。
-2. **非记忆任务可直接省掉在线文本生成。** LIBERO-Plus 由无推理 67.6% 提升至 72.9%，单次动作就绪 147 ms。
-3. **计数和长程任务保留历史 ledger。** RMBench 四任务由 60.4% 提升至 77.5%，说明不能简单将所有文本状态删掉。
-4. **异步有边界。** 只有 T_reason 不超出动作执行窗口，才真正不延误下一次策略调用。
-5. **部署指标按任务区分。** PhysicalAI-AV 的 127 ms 动作路径大于其 100 ms 重规划步长；不能把论文平均延迟直接当作已满足车端实时安全要求。
-6. **复现仍有缺口。** 官方项目页代码待发布，驾驶训练还有非公开 380 万条事件数据。
+1. **模型改动点**：控制 action expert 对当次 r_t 的注意力权限，保持其余训练配方配对，以便进行公平消融。
+2. **带记忆时不能删除文本**：先执行动作，窗口内生成账本条目，下一调用读取历史账本。
+3. **先比同硬件同协议时延**：论文最多 3.4× 的加速是相对 Explicit Reasoning 的动作就绪时间，不是电机控制率加速。
+4. **不要混用 RoboMME 数字**：联合训练 Counting 82.7%，Counting-only 训练 89.5%，对应训练设置不同。
+5. **实际部署先验证窗口裕量**：特别检查 T_reason 是否溢出 T_exec，否则会阻塞下一调用。
+6. **复现门槛仍在**：官方未公开完整实现，驾驶训练含私有数据，现阶段只能按论文重建方法，不能称有开箱即用源码。
+
+## 工程实践
+
+| 核查点 | 论文给出的可执行思路 / 参数 | 工程注意事项 |
+|-------|----------------------------|--------------|
+| 训练样本 | c_t、当次 r_t、离散动作监督及动作块目标 | c_t 的历史条目和 r_t 不应在 mask 中混为一谈 |
+| 注意力 | action positions 可见 c_t 与自身动作位置，但不可见当次 r_t | 需验证位置与 mask 行列对应；只在概念上指导重实现 |
+| 训练目标 | FM + λ·CE（论文式 1） | RoboMME 扫 λ=0.1/0.01/0.001；其余参数见 Appendix A |
+| 动作生成 | 论文 Appendix A 表 8/10：RoboMME 10、RMBench/LIBERO 32、驾驶 10 步 Euler 去噪 | 采样步数与基准、动作维度和执行块长相关，不能无条件复制 |
+| 运行时账本 | 动作计算完开始生成，执行完成才添加日志条目 | 保留上一调用的 key/value cache；下一观测到来前检查生成是否结束 |
+| 验证 | 同结构对照 No / Explicit / Tacit；计时动作就绪与账本完成 | 机器人成功率与真实端到端延迟分别测，不把异步算力藏在平均值里 |
+
+## 源码运行时序图
+
+**不适用（官方可运行代码待发布）。** 截至 2026-11-11，作者主页资源栏标注“Code soon”，没有官方 GitHub、训练/评测脚本或可核实的执行入口；本页 Mermaid 是**论文概念流程**，不冒充源码的 sequenceDiagram。代码发布后应先通读 README 与实际入口，再补运行时序图。
 
 ## 局限与风险
 
-- **研究结论的范围：** 四类规定基准上的三组受控实验，不等价于所有 VLA、真机控制环或开放世界安全性证明。
-- **对推理标签质量敏感：** 监督的收益不能与低质量 reasoning 语料划等号。
-- **异步 ledger 可能超窗：** 动作 chunk 更短、文本更长或 GPU 更慢时，下一调用仍可能等待生成。
-- **驾驶复现受限：** 训练于非公开事件语料；闭环评分不能代替真车安全验证。公开的 PhysicalAI-AV 是评测切分，不是完整训练来源。
-- **代码尚不可用：** 不提供未核验的可运行命令或伪源码时序图。
+1. **分布与监督依赖**：推理目标的质量影响收益；四个基准结果不意味着所有需要即刻文本条件化的任务都等价。
+2. **同步约束**：只有当账本文本在动作执行窗口内生成完成时，记忆任务的额外等待才为零；若动作短、文本长，下一调用被阻塞。
+3. **评测边界**：RoboMME 与 RMBench 的 No Reasoning 也移除了账本，不能把它们与 TacitVLA 的差全部归给推理监督；LIBERO 与驾驶对照更接近 isolating supervision。
+4. **性能差异不全是正向**：LIBERO-Plus 中 TacitVLA 72.9%，略低于 Explicit 73.5%；“匹配表现”是论文的整体结论，不是逐项完全相等。
+5. **数据与算力**：驾驶训练使用 380 万条非公开事件，训练在 8×H100 节点完成；推理平均时延在一张 H100 上测得。
+6. **可解释性与审计**：无记忆场景默认不生成文本，不能把其运行日志当作完整推理过程；若要审计需要另设异步文本输出并验证时序。
+7. **官方代码状态**：项目主页截至 2026-11-11 仅标“Code soon”，不宣称任何可运行开源实现、复现成功或公开权重。
 
 ## 关联页面
 
-- [ECoT：具身思维链](./paper-ecot.md) — 显式先推理再行动
-- [Fast ECoT](./paper-fast-ecot.md) — 以推理缓存/并行来降延迟
-- [Hi Robot](./paper-hi-robot.md) — 双层语言子任务调度
-- [VLA 方法](../methods/vla.md) — 动作专家与端到端策略背景
-- [Action Chunking](../methods/action-chunking.md) — 控制节拍与时延窗口
-- [Manipulation](../tasks/manipulation.md) — 操作任务与评价口径
+- [视觉–语言–动作模型（VLA）](../methods/vla.md)
+- [Action Chunking：动作块生成与执行](../methods/action-chunking.md)
+- [Flow Matching](../concepts/flow-matching-embodied-policy.md)
+- [Embodied Chain-of-Thought](./paper-ecot.md)
+- [Fast ECoT：推理缓存与异步加速](./paper-fast-ecot.md)
+- [Hi Robot：显式高层语言与低层动作策略](./paper-hi-robot.md)
+- [机器人操作（Manipulation）](../tasks/manipulation.md)
 
 ## 参考来源
 
-- [TacitVLA 论文全文核对归档](../../sources/papers/tacitvla_arxiv_2610_17540.md)
-- [TacitVLA 官方项目页核对](../../sources/sites/tacitvla.md)
-- [arXiv HTML v1（含附录）](https://arxiv.org/html/2610.17540v1)
-- [官方项目](https://tacitvla.github.io/)
+- [TacitVLA 论文通读归档（arXiv:2610.17540v1）](../../sources/papers/tacitvla_arxiv_2610_17540.md)
+- [TacitVLA 官方项目页核查归档](../../sources/sites/tacitvla.md)
+- [作者论文 HTML 全文（含 Appendix A–D）](https://arxiv.org/html/2610.17540v1)
 
 ## 推荐继续阅读
 
 - [TacitVLA 原论文 PDF](https://arxiv.org/pdf/2610.17540)
-- [TacitVLA Project Page](https://tacitvla.github.io/)
-- [Hi Robot：分层 VLA 的另一路组织方式](./paper-hi-robot.md)
+- [作者项目主页及性能对照](https://tacitvla.github.io/)
+- [Robotic Control via Embodied Chain-of-Thought Reasoning（CoRL 2024）](https://arxiv.org/abs/2407.08693)

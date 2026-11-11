@@ -1,29 +1,27 @@
-# TacitVLA 官方项目页 / Project Site
+# TacitVLA 官方项目页
 
-> 来源归档（site），页面内容于 2026-11-11 核对。
+> 来源归档（site · 作者项目主页）
 
 - **标题：** TacitVLA: Reasoning Vision-Language-Action Models Without Reasoning Latency
-- **类型：** site
-- **链接：** <https://tacitvla.github.io/>
-- **论文：** <https://arxiv.org/abs/2610.17540>
-- **PDF：** <https://arxiv.org/pdf/2610.17540>
+- **类型：** site / project-page
+- **官网：** <https://tacitvla.github.io/>
+- **论文：** <https://arxiv.org/abs/2610.17540>（v1，2026-10-13）
+- **代码：** 官方网站截至 2026-11-11 标记“Code soon”，未展示 GitHub / Hugging Face / 运行入口
+- **权重与数据：** 网站未提供 TacitVLA 模型权重或自有训练数据下载链接
 - **入库日期：** 2026-11-11
-- **核对范围：** 通读项目页头部、Method、Results、Latency、Benchmarks、Rollouts、BibTeX、资源按钮，并与论文原文 §4–6 交叉核实。
+- **核对范围：** 通读主页 Abstract、Method、Results、Latency、Benchmarks、BibTeX 与资源入口，并对照 arXiv v1 正文和附录。
 - **通读：** 已完成
-- **沉淀到 wiki：** [TacitVLA 论文实体](../../wiki/entities/paper-tacitvla.md)
+- **沉淀到 wiki：** [TacitVLA](../../wiki/entities/paper-tacitvla.md)
 
-## 开源状态（2026-11-11）
+## 项目定位与机制
 
-**待发布。** 项目页资源栏列出 arXiv 与 PDF，代码位置显示 **Code soon**；未列官方可运行仓库、权重或独立数据下载入口。不得把论文使用的公开评测基准视为本文训练代码/权重已开源。
+- 作者团队来自 NVIDIA、NYU、UC Berkeley、Johns Hopkins 和 Stanford。
+- 关键对照只有同次文本推理 token 对动作专家的可见性：TacitVLA 继续接受 reasoning 训练监督，但动作不读当前 r_t。
+- 无记忆任务部署时省略推理文本输出；记忆任务先输出动作，动作执行期间生成账本条目供后续调用读取。
+- 主页列举 RoboMME、RMBench、LIBERO (+Plus)、PhysicalAI-AV 的对照指标以及单张 H100 的调用延迟。
 
-## 官方页面核对摘要
+## 可复现性与限制
 
-- **核心差异：** TacitVLA 与显式推理 VLA 共享训练序列和监督，动作专家的 attention mask 不允许读取当前生成的推理文本。
-- **非记忆任务：** LIBERO、PhysicalAI-AV 部署时跳过推理文本生成。
-- **记忆任务：** RoboMME、RMBench 在 action chunk 执行期间生成 ledger 条目，供下一次调用读取。
-- **关键结果：** LIBERO-Plus **72.9%**、RoboMME Counting **82.7%**、RMBench 四任务 **77.5%**、PhysicalAI-AV 闭环 **52.5%** scene score；最大 **3.4×** 动作就绪时延对照。
-
-## 互链
-
-- [原始论文通读归档](../papers/tacitvla_arxiv_2610_17540.md)
-- [主知识节点](../../wiki/entities/paper-tacitvla.md)
+- **状态：待发布代码**，既不是“已开源”，也不是“已验证不能复现”。
+- 不建立虚构的 sources/repos/ 页面，官方出现有效源码仓库后再核查 README、权重、许可证与可运行入口。
+- 论文驾驶训练使用 380 万条私有数据；公开基准结果不等于全部训练材料已公开。
