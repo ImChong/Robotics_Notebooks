@@ -2644,7 +2644,7 @@
 - [GRAIL](wiki/entities/paper-grail.md) — GRAIL**（*Generating Humanoid Loco-Manipulation from 3D Assets and Video Priors*，[arXiv:2606.05160 `📅unknown` `[entity_page]`
 - [GraphPoint（arXiv:2609.18358）](wiki/entities/paper-graphpoint.md) — GraphPoint**（*GraphPoint: Semantic Entity Graphs and Point Trajectories for Compositional Robot Ma `📅unknown` `[entity_page]`
 - [Grasp-TAGS（arXiv:2611.09864）](wiki/entities/paper-grasp-tags.md) — Grasp-TAGS**（*Task-Aware Grasp Selection via Critic Distillation for Prehensile Loco-Manipulation `📅unknown` `[entity_page]`
-- [GRASP（arXiv:2611.05754）](wiki/entities/paper-grasp.md) — GRASP**（*GRASP: Gradient-Guided Sampling for Contact-Rich Physics-Based Motion Retargeting*，[arXiv `📅unknown` `[entity_page]`
+- [GRASP：梯度引导采样的接触丰富物理运动重定向](wiki/entities/paper-grasp.md) — 论文：** [GRASP: Gradient-Guided Sampling for Contact-Rich Physics-Based Motion Retargeting](https:// `📅unknown` `[entity_page]`
 - [GraspMF：积群 MeanFlow 快速生成抓取](wiki/entities/paper-graspmf.md) — GraspMF**（*Fast Generative Grasping via Lie Group-Constrained MeanFlow*；[arXiv:2608.26076](https:/ `📅unknown` `[entity_page]`
 - [Green for Go（VLA 导航可通行性视觉接地）](wiki/entities/paper-green-for-go-vla-nav-grounding.md) — Green for Go, Red for No**（*Visual Grounding via Semantic Segmentation for VLA Navigation Policies `📅unknown` `[entity_page]`
 - [Green-VLA：分阶段通才 VLA 与人形部署](wiki/entities/paper-greenvla-staged-vla-humanoid.md) — Green-VLA** 是 Sber Robotics Center 提出的 **分阶段 Vision–Language–Action 框架**（arXiv:[2602.00919](https: `📅unknown` `[entity_page]`
