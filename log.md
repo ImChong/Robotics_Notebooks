@@ -318,6 +318,8 @@ op: ingest
 - 关键结论：LHNav 现有仓仅展示网页；DASH 未核得官方代码；Chess 公开 MuJoCo/训练/评测和 261 条真实轨迹；ExoStack 公开 ROS 2/micro-ROS 代码但 PolyForm Noncommercial 限非商用。
 - 边界：结果为原作者报告；未在本环境完成硬件或完整 CI 复现，待 PR GitHub Actions 检查。
 
+## [2026-11-11] ingest | 激光雷达SLAM综述（新机器视觉转载）：综述归档 + 概念页 + 19 个算法独立节点
+
 ## [2026-11-11] ingest | PartyMimic 单卡分钟级全身运动跟踪
 
 - 意图：将 RoboParty Lab 的 PartyMimic 一手项目资料、全套训练数据配方、统一评测与 SuperMimic 消融落地为独立知识节点。
