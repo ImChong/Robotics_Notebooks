@@ -5,7 +5,7 @@
 - **标题：** Paper Figure Study — Original and Revised Figures
 - **项目：** Rethinking Teaser and Framework Figures in the Age of Generative AI
 - **URL：** <https://ntu-ai4x.github.io/Rethinking_Figures/index_en.html>
-- **中文页面：** <https://ntu-ai4x.github.io/Rethinking_Figures/index_zh.html>（官网“Chinese gallery”导航）
+- **中文页面：** <https://ntu-ai4x.github.io/Rethinking_Figures/index.html>（官网“Chinese gallery”导航）
 - **论文：** <https://arxiv.org/abs/2611.08486>
 - **论文归档：** [arXiv v1 全文通读](../papers/rethinking_figures_arxiv_2611_08486.md)
 - **机构：** 南洋理工大学（Nanyang Technological University）
