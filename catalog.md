@@ -5523,6 +5523,7 @@
 - [Self-Evolving Harness：从视觉语言规划器到机器人智能体：面向历史依赖操作的自演化执行框架](wiki/entities/paper-self-evolving-harness-history-dependent-manipulation.md) — Self-Evolving Harness**（*From VLM Planners to Robotic Agents: Self-Evolving Harnesses for History- `📅unknown` `[entity_page]`
 - [Self-Evolving WAM：自演化世界动作模型](wiki/entities/paper-self-evolving-wam-futuring.md) — 未来不远的 **Self-Evolving WAM** 将未来状态与机器人动作联合生成，用真实交互和训练结果改进模型及经验选择策略。 `📅unknown` `[entity_page]`
 - [SPT 自标注偏好迁移：面向可控机器人操作的自标注偏好迁移](wiki/entities/paper-self-labeled-preference-transfer-steerable-manipulation.md) — SPT 自标注偏好迁移**（*Self-Labeled Preference Transfer for Steerable Robot Manipulation*，[arXiv:2610.3800 `📅unknown` `[entity_page]`
+- [Self-Refine：基于自反馈的迭代改进 / Iterative Refinement with Self-Feedback](wiki/entities/paper-self-refine-2303-17651.md) — Self-Refine**（Aman Madaan 等，NeurIPS 2023）是一种 **无需更新模型权重** 的推理期改写方法：同一个大语言模型先生成答案，再给出可执行反馈，最后结合此前答案 `📅unknown` `[entity_page]`
 - [Self-Retrospection Distillation：将事后经验蒸馏为事前预见](wiki/entities/paper-self-retrospection-distillation.md) — SRD 把完成轨迹中揭示的知识和陷阱蒸馏回同一策略，使策略训练时学会预测需求，而非推理时额外运行反思模型。 `📅unknown` `[entity_page]`
 - [Self-Demonstrated Generative Control：VLA 跨本体微调的自生成回放](wiki/entities/paper-self-supervised-control.md) — Self-Demonstrated Generative Control**（*Fine-Tuning VLAs with Self-Demonstrated Generative Control `📅unknown` `[entity_page]`
 - [SelfImprove-Bench: Evaluating Generalization in Self-Improving Agents｜自我改进智能体的泛化评测](wiki/entities/paper-selfimprove-bench.md) — SelfImprove-Bench 衡量智能体在反馈驱动自我改进之后，收益是否能从已见实例迁移到新实例、新难度和跨任务场景。 `📅unknown` `[entity_page]`

@@ -336,6 +336,12 @@ op: ingest
 - 从既有 Agent 记忆 wiki 建反向链接；未改动 catalog/log/export 派生文件。
 - 论文数字属作者报告，未进行 CUDA benchmark 与实机复现；项目主页正文抓取未完成，具体边界记录在 sources/sites。
 
+## [2026-11-11] ingest | sources/papers/self_refine_arxiv_2303_17651.md — 收录 Self-Refine 自反馈迭代改进
+
+- 核对 arXiv v2 原文与附录，七任务评测及数学推理的自评瓶颈。
+- 核实官网 Code 指向 madaan/self-refine，源码已开源；记录缩写生成与对话生成的真实入口以及论文算法和脚本停止条件的差异。
+- 升格唯一论文实体节点并与 RSI 现有知识页互链，加入 Mermaid 主流程图和源码时序图。
+
 ## [2026-11-11] ingest | sources/papers/tcsexam_arxiv_2611_07962.md — TCSExam v1 论文、项目与评测源码
 
 - 意图：归档理论计算机科学研究的四赛道可核验 benchmark，避免把指数误作准确率或机器人能力。
