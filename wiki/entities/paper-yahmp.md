@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-tracking, sim2real, onnx, empirical-study, unitree-g1, inria, mjlab]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-10
 arxiv: "2607.19903"
 code: https://github.com/hucebot/yahmp
 related:
@@ -156,6 +156,7 @@ sequenceDiagram
 | [TWIST2](./paper-twist2.md) | 完整遥操作+采集栈；YAHMP 是 **GMT 设计消融试验台**，并用同数据重训 TWIST2 作外部基线 |
 | [Extreme-RGMT](./paper-extreme-rgmt.md) | 高动态 continual learning（PACE/STAR）；**未开源**；YAHMP 覆盖日常 GMT 因子与 ONNX 复现 |
 | [SONIC](../methods/sonic-motion-tracking.md) / [BeyondMimic](../methods/beyondmimic.md) | 规模化或接触丰富方法贡献；YAHMP 贡献在 **可控消融协议** |
+| [DiffWBC](./paper-diffwbc.md) | G1 50 Hz 单步扩散式跟踪器，冻结权重后做测试时梯度 steering（仿真）；YAHMP 关注命令、历史、PD、残差动作等设计因子的受控消融 |
 
 ## 局限与风险
 

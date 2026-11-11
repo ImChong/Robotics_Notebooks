@@ -21,6 +21,7 @@ related:
   - ../concepts/diffusion-transformer.md
   - ../entities/awesome-world-models.md
   - ../methods/vla.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/tiresias_arxiv_2611_10392.md
 original:
@@ -102,6 +103,24 @@ flowchart LR
 | 延迟（val seen） | 128→8→1：SR 0.60，36 s；128→2→1：SR 0.55，9 s；NoMaD (lang)：0.32，0.7 s；LCVN-Uni：0.47，85 s | 表 A5 |
 | 指令风格 | Landmark 最好，Concise 略优于 Intricate | 图 5 |
 
+## 与其他工作对比
+
+| 对照 | 在 LCWM-Bench 上的读法（论文数字） |
+|------|--------------------------------------|
+| [NWM](./paper-sa-2412-03572-nwm-navigation-world-models.md) | 原版不看语言，总分 seen 45 / unseen 33；加语言后 48 / 35，仍低于 Tiresias 63 / 51（表 1） |
+| [NoMaD](./paper-notebook-nomad-goal-masked-diffusion-policies-for-navigat.md)（lang 版） | 作提案器时不筛选 SR 0.32，单次 0.7 s；接 Tr + V 筛选后 0.47，低于 LDP 的 0.60（表 7、表 A5） |
+| LCVN-WM / LCVN-Uni（本站无独立页） | 各划分的最强对照：seen 54、unseen 42；LCVN-Uni 单次 85 s（表 1、表 A5） |
+| [DIAMOND](./paper-sa-2405-12399-diamond-diffusion-for-world-modeling-visual-deta.md) | 作为世界模型对照之一；与 Wan2.2 骨干规模不同，论文未做同规模对照（推测） |
+
+## 结论
+
+**Tiresias 的价值是把四个域的语言条件世界建模放进同一基准，并验证「便宜筛选在前、昂贵想象在后」的推理预算分配。**
+
+1. 总分 val seen 63 / unseen 51，高于表中最强对照 54 / 42；但所有方法在 unseen 上总分都更低（表 1、§5.2）。
+2. Tr-Ranker 承担大部分增益：LDP 不筛选 SR 0.13，加 Tr-Ranker 0.53，再加 V-Ranker 0.60（表 7）。
+3. 保留 k=8 已覆盖 128 池中大部分好候选（保留率 0.85），k=16 只到 0.86（表 6）。
+4. SR 是对参考轨迹终点的贴合而非闭环任务成功，单次规划 36 s 且无真机实验，更适合作离线评测与规划研究工具（附录 C.1、D，表 A5）。
+
 ## 工程实践
 
 - 默认配置：N=128、k=8、λ_tr:λ_v=2:1；世界模型在 LCWM-Bench 上训练 10 个 epoch，8×A100 80GB；DINOv3 ViT-L/16 distilled（300M）、umT5、VAE 冻结（§5.1、C.2）。
@@ -141,6 +160,7 @@ flowchart LR
 - [模型预测控制](../methods/model-predictive-control.md)
 - [Awesome World Models](../entities/awesome-world-models.md)
 - [VLA 方法页](../methods/vla.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：LCWM-Bench 用统一动作参数化与 SR / nDTW 横跨四域，可作为世界模型评测选型的候选
 
 ## 参考来源
 

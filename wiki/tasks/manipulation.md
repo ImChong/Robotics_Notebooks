@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-10
 related:
   - ../entities/paper-behavior-spatial.md
   - ../entities/paper-recova.md
@@ -489,6 +489,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [ENPIRE](../methods/enpire.md) — coding agent 驱动的真机策略自改进闭环（自动 reset/verify + 多 PI 范式 + 机队 scaling）
 - [ASPIRE](../methods/aspire.md) — 持续学习 code-as-policy：逐原语 trace 调试 + 技能库复利 + 进化搜索（LIBERO-Pro / Robosuite / BEHAVIOR-1K；官方代码 NVlabs/ASPIRE v1.0 已开源）
 - [EmbodiedSkills](../entities/paper-embodiedskills.md) — AgentLoop + skill contract；Qwen3-VL + π₀.₅；RoboTwin 86.20% / LIBERO 97.40%（arXiv:2609.01281，已开源）
+- [Apple AMP1 / AMP1+](../entities/paper-apple-amp1.md) — 通用前沿模型在持久 Python 环境调用感知/几何/运动 SDK，观察—计划—行动—核验循环写代码操作；RoboLab-120 AMP1 + Gemini 4 Argon 85.6%，AMP1+ 以练习记忆自我改进（arXiv:2611.09892，已开源；路线总览见 [Agentic Manipulation Policies](../methods/agentic-manipulation-policies.md)）
 - [GaP](../entities/paper-gap-graph-as-policy.md) — Graph-as-Policy 多 agent harness：ROS 式计算图 + MORSL 技能 + 仿真排练自学习，面向 [变体自动化](../concepts/variational-automation.md)（arXiv:2607.05369）
 
 ### 可变形体与家务操作

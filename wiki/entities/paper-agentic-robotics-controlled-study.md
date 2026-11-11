@@ -11,6 +11,7 @@ related:
   - ./paper-apple-amp1.md
   - ./steel-newton-solver.md
   - ../methods/agentic-manipulation-policies.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/agentic_robotics_controlled_study_arxiv_2611_09030.md
 summary: "Agentic Robotics 对照研究（arXiv:2611.09030）在 9 项操作任务、631 配置、27,620 次 rollout 中发现：模型的策略自修复、语义技能级反馈、对象相对几何与碰撞规划比单纯增加执行反馈更关键。"
@@ -84,6 +85,14 @@ flowchart TD
 | 空间反馈 | 对象相对位置、功能几何比原始世界坐标更有助于修复 | 信息组织方式不同 |
 | 课程 | privileged 迁移可帮助或妨碍 perception 学习 | 取决于预先习得的控制结构 |
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [Code as Policies](./paper-pai-2209-07753-codeaspolicies.md) | 把语言指令编译为可执行机器人策略程序 | 本文不提新系统，而是控制变量拆解「生成后如何依据失败反馈改写代码」 |
+| [Apple AMP1](./paper-apple-amp1.md) | 前沿模型反复写 Python 调感知/几何/轨迹 SDK，报告 RoboLab-120 等总成功率 | 本文关注模型、技能、反馈粒度与课程各自的贡献，而非单一系统的 benchmark 成绩 |
+| [RAPID](./paper-rapid-agentic-programming.md) | 从示范推断目标/原语并迭代验证程序，对象关系表征利于迁移 | 本文同样发现对象相对几何比世界坐标更有助于修复，但以 631 配置的对照实验量化 |
+
 ## 结论
 
 **瓶颈不总是缺数据或缺反馈，而是能否将物理失败归因到上游决策并做结构性的策略改写。**
@@ -113,6 +122,7 @@ flowchart TD
 - [Apple AMP1：直接用代码闭环操作](paper-apple-amp1.md)
 - [Steel：异构仿真引擎](steel-newton-solver.md)
 - [Agentic Manipulation Policies 方法](../methods/agentic-manipulation-policies.md)
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：本文以 held-out 布局、验证集选择与 27,620 次 rollout 做控制变量评测，可作评测协议设计参考。
 
 ## 参考来源
 

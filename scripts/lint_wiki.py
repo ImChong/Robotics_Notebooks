@@ -204,6 +204,10 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "http",
     "https",
     "main",
+    # start：命中处均为源码路径后括号里的函数 / 方法名（`robot_interface.hpp`（`Start`、
+    # `SetJointCommand`）、`daemon.py`（`start`、`_setup_backend`））或 CLI 子命令名
+    # （`start` 启动、`status` 查询），是代码 token 而非机器人概念，与 main 同类。
+    "start",
     # venue：各页正文里的 `Venue` / **Venue** 均为 paper-* 实体页「核心信息」表的
     # 发表信息行标签（`| **Venue** | ECCV 2026 |`），与 frontmatter 的 venue 来源键
     # 同义（见 _check_paper_entity_metadata 的 source_keys），是出版元数据字段名，
@@ -800,6 +804,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # mjlab 同类「仿真器归 entities」。牛顿法一义已由 methods 下的
     # newtons-method.md / gauss-newton.md 覆盖。
     "newton",
+    # openpi：Physical Intelligence 的官方源码仓名，π₀ / π₀.₅ 的代码入口；已由
+    # entities/paper-pi0.md（frontmatter code 指向 Physical-Intelligence/openpi）承载，
+    # 各页命中处均为「官方开源入口是 **openpi**」「`openpi` README / 示例」式的仓库指称，
+    # 与 lerobot 同类「工具库归 entities」。
+    "openpi",
     "onpolicyrunner",  # rsl_rl 的 Runner 类名，已由 concepts/rl-runner.md 覆盖
     # pace：同名异义——四足 pace 步态（concepts/gait-generation.md 步态表行）与多篇
     # 互不相干的 PACE 论文缩写（ETH 足式 sim2real 系统辨识、精细插入、示范条件长程

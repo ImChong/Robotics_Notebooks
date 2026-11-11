@@ -20,6 +20,7 @@ related:
   - ./dataset-hot3d.md
   - ./paper-mint-ego-world-space-camera-hand-motion.md
   - ../tasks/manipulation.md
+  - ../queries/robot-perception-stack-selection-loop.md
 summary: "FAH（Jinkun Cao，arXiv:2611.07711）：先估计 2D/3D 关节与稠密表面对应点，再独立拟合 MANO/MHR-Hand；可选部位、接触、因果视频及世界坐标。HOT3D FAH-L PA-MPJPE 4.31 mm、RTX 4070 Ti SUPER 上 TensorRT 65 FPS（含拟合，不含可选部位/接触）；代码开源，权重非商用。"
 ---
 
@@ -186,6 +187,7 @@ sequenceDiagram
 - [HOT3D 数据集](./dataset-hot3d.md)
 - [MINT：世界空间相机与手运动](./paper-mint-ego-world-space-camera-hand-motion.md)
 - [机器人操作任务](../tasks/manipulation.md)
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：FAH 的手部关节、分割与接触估计可作为 2D→3D 提升层的手部专用模块，选型时与时延（65 FPS 仅指特定配置）一并权衡
 
 ## 参考来源
 

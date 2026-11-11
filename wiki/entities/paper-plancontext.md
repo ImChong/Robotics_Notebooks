@@ -13,6 +13,7 @@ related:
   - ./paper-rcl-ref-e25271fa6f028e5611cf-navsim-data-driven-non-reactive-autonomous-vehic.md
   - ../methods/vla.md
   - ../overview/e2e-autonomous-driving-top10-algorithms.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/plancontext_arxiv_2611_03067.md
   - ../../sources/sites/plancontext-project.md
@@ -217,6 +218,7 @@ flowchart TD
 - [NAVSIM：基础非反应式驾驶基准](./paper-rcl-ref-e25271fa6f028e5611cf-navsim-data-driven-non-reactive-autonomous-vehic.md) — 数据与 PDMS 规则来源。
 - [VLA 方法](../methods/vla.md) — 解释被评测的视觉语言动作模型范式。
 - [端到端自动驾驶技术地图](../overview/e2e-autonomous-driving-top10-algorithms.md) — 放回自动驾驶技术路线中理解。
+- [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — PlanContext 属于固定观测、切换意图的开环决策基准，选型时需与闭环仿真基准互补使用。
 
 ## 参考来源
 

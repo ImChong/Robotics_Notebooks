@@ -135,6 +135,15 @@ K(t,i)=K_{\mathrm{spatial}}(t,i)\,K_{\mathrm{time}}(t,i)
 4. 复现实验时固定滑窗大小、`sliding-size`、相机预处理、数据集切分与 LC 开关。
 5. 代码开放不等于训练可复现或商业可直接部署：训练管线未开源且许可限制商业使用。
 
+## 与其他工作对比
+
+| 工作 | 历史信息如何保留 | 与 HorizonStream 的区别 |
+|---|---|---|
+| [VGGT](./paper-vggt-visual-geometry-grounded-transformer.md) | 离线一次性输入多视图做前馈推理 | HorizonStream 用其/DINOv2 视觉先验初始化，但改为因果流式；KITTI δ<1.25 为 94.8%，低于 VGGT 的 97.0% |
+| [LingBot-Map](./paper-lingbot-map.md) | 锚点 / 局部位姿参考窗 / 轨迹记忆三类几何上下文 | 论文 Table 2（无 LC）：KITTI ATE 19.75 vs 25.29 m，Oxford Spires 9.38 vs 15.46 m |
+| [ABot-Recon](./paper-abot-recon.md) | 只缓存短窗 KV，序贯组合相对位姿 | HorizonStream 在局部窗之外另加 GLA 定长跨窗状态，按通道学习遗忘速度 |
+| [R³](./paper-r3-relative-regression.md) | 成对相对位姿 + 有界 keyframe bank | 同为有界记忆路线；HorizonStream 的回环为可选后处理，主指标按无 LC 报告 |
+
 ## 源码运行时序图（依据官方仓库实际入口）
 
 ```mermaid

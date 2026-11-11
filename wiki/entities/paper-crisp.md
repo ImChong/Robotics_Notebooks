@@ -7,7 +7,7 @@ tags:
   - manipulation
   - physics-engine
 status: complete
-updated: 2026-09-21
+updated: 2026-11-10
 arxiv: "2609.21761"
 code: https://github.com/INRoL/crisp
 related:
@@ -101,6 +101,7 @@ sequenceDiagram
 - [sim2real](../concepts/sim2real.md)
 - [manipulation](../tasks/manipulation.md)
 - [vla](../methods/vla.md)
+- 同名区分：[CRISP 全身 NMPC](./paper-crisp-whole-body-nmpc.md)（arXiv:2611.07268，UTEP）是人形躯干 SRB + 手臂子系统约束协同的 NMPC 论文，与本页接触仿真平台不是同一篇
 
 ## 参考来源
 

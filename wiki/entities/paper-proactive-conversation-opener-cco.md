@@ -93,6 +93,24 @@ flowchart LR
 
 「好」的定义是六维（trigger alignment、saliency selection、constraint adherence、value sensitivity、noise suppression、coherence）均分 ≥ 4.0（§VI-C-e）。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与 CCO 的区别 |
+|------|--------|---------------|
+| 本文 CCO | 单轮主动开场白：给定触发与语境说什么 | 合成数据 + QLoRA 小模型，文本指标与 LLM 裁判评测 |
+| [Proactive Agent](./paper-sa-2410-12361-proactive-agent-shifting-llm-agents-from-reactiv.md) | LLM 智能体从被动应答转向主动的过程性协助 | 同属「主动」范式，但不聚焦社交开场措辞 |
+| [RealCompanion](./paper-realcompanion.md) | 真实 AI companion 关系中的纵向用户理解与记忆调用 | 用真实长期对话评测；CCO 只有合成语境、单轮 |
+| [HiBridge 对话](./paper-hibridge-dialogue.md) | 群体对话中「对谁说话 / 说什么」的不确定性建模 | 含实时群体交互；CCO 无真人或真机实验 |
+
+## 结论
+
+**CCO 的贡献是一套「触发 + 语境」的结构化 schema 与配套合成数据，让 3B~4B 小模型在文本指标与 LLM 裁判下超过零样本大模型。**
+
+1. 四类变量（用户特质、用户状态、环境状态、触发事件）加五种功能角色，构成可复用的开场白输入接口（§III）。
+2. 微调 gemma-3-4b-it 三裁判平均「好」占比 83.61，高于 grok-4-1-fast 的 70.44；成对比较胜 337/482（表 III、表 IV）。
+3. 单卡 RTX 4090 即可 QLoRA 微调，适合本地部署的低时延与隐私诉求（§I、§V-E）。
+4. 证据只来自合成数据与 LLM 裁判，GPT-5-mini 兼任数据生成与评审，真人偏好、多轮对话与「何时开口」均未验证。
+
 ## 工程实践
 
 - 训练成本低：单卡 RTX 4090（原文写 16 GB VRAM）即可完成 QLoRA 微调（§V-E）；论文未给学习率、LoRA rank、epoch、batch size，复现需自行补齐或查仓库（仓库 README 只描述数据集，未核实训练代码）。

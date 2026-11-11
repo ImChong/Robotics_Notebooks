@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, ros2, navigation, nav2, mobile-robot, planning, linux-foundation]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-10
 related:
   - ./python-robotics.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -138,6 +138,7 @@ sequenceDiagram
 - [OOMWOO](./oomwoo.md) — 开源家用扫地机（Nav2 应用整机）
 - [Language-to-Navigation-Goals（VLM+RGB-D→Nav2）](./paper-language-to-navigation-goals-rgbd.md)
 - [Autoware](./autoware.md)
+- [TPS-A\*（论文实体）](./paper-tps-astar.md) — 以 Nav2 Hybrid-A\* / 圆形与多边形脚印配置为对照的任意形状认证碰撞 A\*；BARN 共享目标位姿下作者报告 Nav2 仅 54.7% 路径通过独立精确检验
 
 ## 推荐继续阅读
 

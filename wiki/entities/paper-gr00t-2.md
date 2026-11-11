@@ -5,6 +5,7 @@ tags: [paper, nvidia, vla, world-model, world-action-model, cross-embodiment, de
 status: complete
 updated: 2026-11-10
 project: https://research.nvidia.com/labs/gear/gr00t-2/
+venue: "NVIDIA GEAR technical whitepaper, 2026"
 related:
   - ./paper-gr00t-n1-7.md
   - ./paper-gr00t-n1-5.md
@@ -140,6 +141,14 @@ flowchart TD
 - **RoboDojo（Tab.19 vs Tab.31）：** **35.52%** 来自正式 3-layout-bank 测试；**35.2% SFT / 75.8% SFT+RL+Agent** 来自只测 layout bank 0 的 agentic 对照，不能把二者直接当同一测试集合。
 - **G1 仿真数据（Tab.26）：** OOD 条件 real-only 成功率两模型 6.7%；加 sim 后 N1.7 为 40.0%、Turbo 为 63.3%，但每格仅 30 次，论文报告两者差距 Fisher exact 双侧 **p≈0.12**，不能断言比较已显著。
 - **GearArena：** YAM V2 用 6035 次盲测 pairwise match（35% tie），按任务 bootstrap 估 Elo；GR00T 2 相比 π0.5 为 +236 Elo、相比 N1.7 为 +95 Elo；不同 suite 不能比较 Elo 绝对值。
+
+## 与其他工作对比
+
+| 工作 | 架构路线 | 与 GR00T 2 的区别（数字为白皮书自报） |
+|------|----------|--------------------------------------|
+| [GR00T N1.7](./paper-gr00t-n1-7.md) | VLM 骨干 + flow-matching DiT 动作头，只生成动作 | GR00T 2 改为视频/动作联合生成的 WAM；GearArena 上 +95 Elo；G1 仿真 OOD 加 sim 后 N1.7 40.0% vs Turbo 63.3%（p≈0.12，未显著） |
+| [π0.5](./paper-pi05-open-world-vla.md) | VLA 动作策略 | GearArena YAM V2 上 GR00T 2 相对 +236 Elo（同 suite 内比较） |
+| [ODEAction](./paper-odeaction.md) | ODE 动作递推替代动作块 | 只改动作生成头，不预测未来视觉；GR00T 2 用联合视频预测吸收无动作标签的人类视频 |
 
 ## 结论
 
