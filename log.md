@@ -336,6 +336,13 @@ op: ingest
 - 从既有 Agent 记忆 wiki 建反向链接；未改动 catalog/log/export 派生文件。
 - 论文数字属作者报告，未进行 CUDA benchmark 与实机复现；项目主页正文抓取未完成，具体边界记录在 sources/sites。
 
+## [2026-11-11] ingest | sources/sites/huawei-harmonyos-developer-doc-center.md — 收录华为 HarmonyOS 5.0+ 开发者文档中心
+
+- 将官方文档入口、开发者知识 MCP、llms.txt 两级索引编译为单个双语实体节点；附 Mermaid 文档获取流程。
+- 已通读文档中心主页、MCP 与 llms.txt 官方指南、一级索引；未扩大宣称至整个 API 文档库。
+- 开源边界：网页与索引公开；知识 MCP 为远程服务，未找到可核验的官方服务端源码运行入口，源码时序图不适用。
+- 与 Agentic Coding 工程实践建立双向交叉引用，强调按 API 版本检索、留存出处和运行验证。
+
 ## [2026-11-11] ingest | ReflexArc 论文全文精读与现有节点升级
 
 - 在原有唯一实体上升级 ReflexArc（arXiv:2611.04424v1）的完整方法、训练、真机冲击实验与消融对照，避免同论文重复建页。
