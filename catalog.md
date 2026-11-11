@@ -1925,7 +1925,7 @@
 - [面向强化学习的双向Voronoi偏置探索课程](wiki/entities/paper-bidirectional-voronoi-biased-exploration-curriculum.md) — Bidirectional Voronoi-Biased Exploration Curriculum for Reinforcement Learning**（[arXiv:2610.03395 `📅unknown` `[entity_page]`
 - [BifrostUMI（Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation）](wiki/entities/paper-bifrost-umi.md) — BifrostUMI** 是 BAAI Aether 团队提出的人形 **全身 visuomotor** 数据采集与部署框架（arXiv:2605.03452，[项目页](https://baai `📅unknown` `[entity_page]`
 - [Bifur-circuits：可 bifurcate 的交互式模块化超材料积木](wiki/entities/paper-bifur-circuits.md) — Bifur-circuits**（*Interactive and Modular Metamaterial Building Blocks Via Bifurcated Geometries*， `📅unknown` `[entity_page]`
-- [BiGym 2.0：人形家庭操作基准](wiki/entities/paper-bigym2-humanoid-household-benchmark.md) — BiGym 2.0**（arXiv:2610.07594，Imperial College London 的 Zhang、Z `📅unknown` `[entity_page]`
+- [BiGym 2.0：学习策略与编程智能体的人形家庭操作基准（Benchmarking Learned and Agent-Developed Policies for Humanoid Household Manipulation）](wiki/entities/paper-bigym2-humanoid-household-benchmark.md) — BiGym 2.0**（arXiv:2610.07594，Imperial College London 的 Zhang、Z `📅unknown` `[entity_page]`
 - [将潜在运动适应扩展到协调双臂操作](wiki/entities/paper-bimanual-rma-latent-motor-adaptation.md) — 这篇工作检验 RMA 式的历史推断能否从单臂扩展到双臂：双臂策略需要从交互历史中推断物体质量、摩擦与形状等未观测属性。 `📅unknown` `[entity_page]`
 - [BioAgent（arXiv:2610.41383）](wiki/entities/paper-bioagent.md) — BioAgent**（*BioAgent: Self-Directed Skill Acquisition and Capability Growth for Long-Horizon Labor `📅unknown` `[entity_page]`
 - [Bioimpedance meets biomechanics（可穿戴 EIM）](wiki/entities/paper-bioimpedance-eim-wearable-myography.md) — Bioimpedance meets biomechanics: Wearable electrical impedance myography encodes fascicle and acti `📅unknown` `[entity_page]`
