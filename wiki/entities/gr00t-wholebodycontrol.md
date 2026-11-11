@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-11
 related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ./paper-gr00t-2.md
@@ -129,7 +129,7 @@ sequenceDiagram
 - [Isaac Teleop](./isaac-teleop.md) — README 把「跟踪全身 loco-manip + GR00T-WBC (SONIC)」列为已支持用例；XR 流经 Teleop 再进本仓，不是本仓自带头显栈
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) — 同品牌视觉 Sim2Real 仓库，任务侧重不同
 - [Kimodo](./kimodo.md) — 文生人体/人形运动学轨迹的上游；GEAR-SONIC 在线 Demo 集成
-- [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 基于本仓改写的全身 VLA 采集/部署配方
+- [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 基于本仓改写的全身 VLA 采集/部署配方：机器人侧 `GR00T-WholeBodyControl4OpenHLM/scripts/deploy_stream.sh`，π₀.₅ 系 VLA 以 action chunk 输出 34-D 目标（32-D 身体 + 2 夹爪），由 SONIC 跟踪器约 50 Hz 执行（arXiv:2606.22174）
 - [HumanoidArena](./paper-humanoidarena.md) — 以 SONIC 为 GMT 后端之一的分层基准
 - [HTD 解耦 WBC](paper-humanoid-touch-dream.md) — CMU/Bosch 开源的另一条「下肢 RL + 上肢默认/外部命令」解耦栈，勿与本仓 N1.5 解耦 WBC 混权重
 - [GR00T 2：WAM 联合预测未来视频/动作、Turbo 通过 SONIC 控制 G1](./paper-gr00t-2.md)
