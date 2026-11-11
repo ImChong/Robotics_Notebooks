@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-11
 related:
   - ../../roadmap/depth-rsi.md
   - ../queries/rsi-four-tier-five-pushes.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-rrsi-2609-24972.md
   - ../entities/paper-metarsi-v1.md
   - ../entities/awesome-rsi.md
+  - ../entities/paper-self-refine-2303-17651.md
   - ../entities/paper-rsi-survey-2607-07663.md
   - ../entities/paper-last-ai-built-by-humans-rsi.md
   - ../entities/paper-neohorse-1.md
@@ -61,6 +62,8 @@ summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自
 | Amdahl | Amdahl's law | 加速未覆盖的部分成为新瓶颈（如人审代码） |
 
 ## 为什么重要
+
+[Self-Refine（2303.17651）](../entities/paper-self-refine-2303-17651.md) 用同一个 LLM 在推理期反复生成、反馈与改写当前输出，属于**不更新模型权重的有界自改进**，与此处自主设计训练下一代模型的 RSI 严格区分。
 
 具身操作中的一个训练免费策略改进案例见 [RoboDoctor](../entities/paper-robodoctor.md)：它冻结低层策略，通过 Agent 调整控制组织、介入判断与经验复用。
 
