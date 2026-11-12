@@ -2,7 +2,7 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-12
 related:
   - ../entities/paper-viola-human-data-control.md
   - ./locomotion.md
@@ -250,3 +250,9 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 ## 人体步态先验与可转向策略
 
 - [HuMBLE：人体动作驱动的具身 locomotion](../entities/paper-humble-human-motion-driven-behavior.md) — 人体动捕→全身 teacher 蒸馏→参考模仿 + 指令跟踪双任务 PPO；在 Atlas R1/D1 与 Unitree G1 验证（arXiv:2610.10489）。
+
+
+## 新进展：非对称负载与动作局部编辑
+
+- [ReACT：单手负载速度跟踪](../entities/paper-react-asymmetric-load-tracking.md)（arXiv:2611.13929）以反射一致的外载调制、跨负载轨迹一致性训练提高 G1 单手持物时的移动稳定性；真机侧向误差并非所有项目领先。
+- [RedirectMimic：局部动作内容抑制](../entities/paper-redirectmimic.md)（arXiv:2611.14049）对 G1 模仿策略训练期的上肢局部奖励参考做编辑，在不编辑其他身体段和未编辑时间窗的情况下抑制指定动作。它解决动作内容约束，不等同于 ReACT 的负载速度跟踪。
