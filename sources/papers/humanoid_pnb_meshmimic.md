@@ -24,3 +24,8 @@
 
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/MeshMimic__Geometry-Aware_Humanoid_Motion_Learning_through_3D_Scene_Reconstructi/MeshMimic__Geometry-Aware_Humanoid_Motion_Learning_through_3D_Scene_Reconstructi.html>
 - 论文：<https://arxiv.org/abs/2602.15733>
+
+## 本次原文精读复核（2026-11-12）
+
+- **核对范围：** arXiv:2602.15733v1 HTML 全文：§2 相关方法、§3 三维场景/人体/接触重建和 MeshRetargeting、§4 重建与八种场景交互实验、§5 局限；项目页面核对开源状态。
+- **通读：** 已完成

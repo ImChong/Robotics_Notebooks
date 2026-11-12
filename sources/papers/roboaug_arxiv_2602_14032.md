@@ -52,3 +52,8 @@
 - [x] 更新开源核查：数据集及数据增广 Stage 1–2 已发布，Stage 3 仍待开源
 - [x] wiki 映射：`wiki/entities/paper-roboaug.md`（更新已存在的同项目实体）
 - [x] 官方代码映射：`sources/repos/roboaug.md`
+
+## 本次原文精读复核（2026-11-12）
+
+- **核对范围：** arXiv:2602.14032 HTML 全文方法、主实验与补充材料，核对 one-shot GroundingDINO/DINOv2+SAM2、SD3 背景合成、区域对比损失、三平台 OOD 测试；对照官方 README，区分已发布数据增广 Stage 1–2 与尚未开放 Stage 3。
+- **通读：** 已完成

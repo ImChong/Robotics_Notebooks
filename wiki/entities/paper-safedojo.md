@@ -94,6 +94,25 @@ flowchart LR
 - **公平性细节（附录 I）：** WMPO 与 SafeDojo 每任务单独 checkpoint，WoVR 每套件一个 checkpoint，训练粒度不同。
 - **代码：** 论文未给出仓库或项目页，本页不设 `code:`。
 
+## 实验与评测
+
+- 论文 SafeLIBERO Level I 四套件平均安全成功率 SSR **53.25%**；Level II 与最优对照的安全成功率差异仅 **0.12 个百分点**，属于很小的报告差距。
+- Franka 机械臂五项真实任务平均 SSR **70.00%**，每项与对照各 10 次；不能外推成已在人形全身控制中获得安全保证。
+- 安全头标签由仿真器提供的接触标注监督；论文本身承认预测世界模型误差随长时 rollout 积累。
+
+## 源码运行时序图
+
+**不适用**：论文与配套材料未发布可核实的完整训练/推理代码入口；上方流程是论文算法图，不能视为真实软件调用图。
+
+## 结论
+
+**SafeDojo 用交互式世界模型在训练期评估 VLA 任务奖励和碰撞代价，但没有构成部署时的硬件安全认证。**
+
+1. 需要区分 **SSR**（安全且完成任务）与单纯任务成功率；Level II 的小幅领先需谨慎阅读。
+2. 安全标签依赖仿真接触，世界模型 rollout 会积累误差。
+3. 真机结果是 Franka 桌面机械臂验证，不能直接写成已部署人形机器人全身安全控制。
+4. 与 [FreeBar](./paper-freebar-barrier-guidance-async-vla.md) 的异步时间一致性、[Robo-ValueRL](./paper-robo-valuerl.md) 的任务价值筛选解决不同问题。
+
 ## 与清单说法的核对
 
 清单一句话摘要：「Model-based safe RL for VLAs inside an interactive video world model, with imagined progress rewards and a learned safety head.」
@@ -125,6 +144,9 @@ flowchart LR
 - 优势项 Â^c 经组内归一化后均值为零，d 只通过 η 的更新起作用（式 5–7）；这是对公式的本页解读，论文未讨论其对约束满足的含义，也未报告训练后实际平均代价是否低于 d。
 
 ## 关联页面
+
+- [Robo-ValueRL：进度价值与在线残差](./paper-robo-valuerl.md) — 价值可靠性与训练期安全代价的不同轴。
+- [FreeBar：异步动作块约束](./paper-freebar-barrier-guidance-async-vla.md) — 时间一致性不等同于碰撞安全保证。
 
 - [GRPO](../methods/grpo.md)：本文的优化骨架。
 - [VLA（Vision-Language-Action）](../methods/vla.md)：基座 OpenVLA-OFT 所属方法族。

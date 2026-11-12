@@ -25,3 +25,8 @@
 - [HAF 实体页](../../wiki/entities/paper-haf-humanoid-vla-adaptation.md) — 与 arXiv:2608.16837 合并维护
 - [VLA](../../wiki/methods/vla.md) — flow-matching 策略的人形全身动作生成
 - [Loco-Manipulation](../../wiki/tasks/loco-manipulation.md) — 移动与操作耦合任务
+
+## 本次原文精读复核（2026-11-12）
+
+- **核对范围：** arXiv:2610.26584 v1 HTML 全文：摘要、方法中的共享全身动作空间、三阶段去噪/跨阶段 KV、六项真机实验、消融、局限及附录；对照 HAF 主框架归档，未将主框架七任务成绩冒充本论文六任务成绩。
+- **通读：** 已完成
