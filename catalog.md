@@ -2784,6 +2784,7 @@
 - [HINT：长视野操作的人类意图注入](wiki/entities/paper-hint-robot-manipulation.md) — HINT**（*Human-Intent Inception for Long-Horizon Robot Manipulation*，[arXiv:2609.02653](https://arx `📅unknown` `[entity_page]`
 - [hint²：层级世界模型推理时 LTL 引导](wiki/entities/paper-hint2.md) — hint²**（*Hierarchical World Models for Inference-Time Temporal Logic Guidance*；[arXiv:2608.13678 `📅unknown` `[entity_page]`
 - [HiPHI（高精度人体运动与人–物交互基准）](wiki/entities/paper-hiphi.md) — HiPHI** 是面向人形学习的光学动捕数据集与基准：以语义结构设计运动覆盖，同时记录人体动作、物体轨迹和物体几何，作为重定向与全身模仿的参考源。 `📅unknown` `[entity_page]`
+- [HiPhys-RSI：Scaling by Structure｜结构化扩展：BEHAVIOR 2026 冠军 Agent 驱动机器人 Pipeline](wiki/entities/paper-hiphys-rsi.md) — HiPhys-RSI（Hierarchical Physical Recursive Self-Improvement）** 让冻结的视觉语言编程 Agent 把导航、视觉感知、规划、逆运动学和控 `📅unknown` `[entity_page]`
 - [HiRE（arXiv:2609.27068）](wiki/entities/paper-hire-hindsight-reward-editing.md) — HiRE**（*HiRE: Hindsight Reward Editing for Policy Finetuning*，Niu、Han 等，UC Berkeley 与香港中文大学，CoRL 2 `📅unknown` `[entity_page]`
 - [HiRe-MoMa：稀疏人工引导下的移动操作分层残差微调](wiki/entities/paper-hire-moma.md) — HiRe-MoMa**（*Hierarchical Residual Mobile Manipulation*；论文 *Hierarchical Residual Policy Learning  `📅unknown` `[entity_page]`
 - [HiTac-WAM（分层触觉世界–动作模型）](wiki/entities/paper-hitac-wam.md) — HiTac-WAM**（*A Hierarchical Tactile World Action Model for Contact-Rich Robot Manipulation*，[arXiv `📅unknown` `[entity_page]`
