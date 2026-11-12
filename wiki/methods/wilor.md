@@ -2,7 +2,7 @@
 type: method
 tags: [hand-pose, 3d-vision, manipulation, perception, video-to-control]
 status: complete
-updated: 2026-11-10
+updated: 2026-11-12
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./exoactor.md
@@ -65,6 +65,10 @@ summary: "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部�
 - **语义离散化另需一层**：在 [ExoActor](./exoactor.md) 等系统中，抓取语义常把手部映射为 {open, half-open, closed} 等离散状态——这不属于 WiLoR 原生输出，需要任务相关的规则或小型分类头。
 - **视角与左右手歧义**：第三人称视频中左右手与机器人末端对应需额外几何或标定逻辑，否则易出现手腕轴向错误（相关讨论见 ExoActor 失败案例分析）。
 - **接触与力**：WiLoR 输出运动学假设，不包含接触力或抓取稳定性信息。
+
+## 在 4D-HOF 中的角色
+
+[4D-HOF：手-物体流匹配驱动的 4D 交互重建](../entities/paper-4d-hof.md)（arXiv:2610.08782）将 WiLoR 的 MANO 手部状态与 2D 关节点作为**初始化**，再融合 MoGe-3 度量深度与物体 FoundationPose 初值，通过条件流匹配细化手/物体接触和时间连续性；因此 WiLoR 的单帧误差不可直接当成最终 4D HOI 重建质量。详见 [4D-HOF 原文归档](../../sources/papers/4d_hof_arxiv_2610_08782.md)。
 
 ## 与其他页面的关系
 
