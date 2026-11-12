@@ -43,6 +43,16 @@ RoboCasa 基座 Cosmos-Predict2-2B，4×H200、64h、global batch 1024、12000 s
 
 - 论文成功率与延迟属于作者报告结果，尚未在本地复现实验；需检查代码和数据版本是否可获取。
 
+## 方法–源码交叉核验（2026-11-12）
+
+- **论文 §4.2（§5–6 页）：** 将 task、current proprio、action chunk、future proprio、value 写入互斥通道频域系数的 `k_H=0` 行，**输入使用 IDCT（频域→空间）**，去噪后使用 **DCT（空间→频域）+ Unpack**；不得反写成 “逆 DCT 解码动作”。
+- **论文 §4.3–4.4（§6 页）：** 两个元帧加六个多视角 latent 时间槽共 8 帧，按 policy/world/value 在槽位级切换条件与预测目标；输入元帧复用预留空白槽。
+- **论文 §4.5、表 2–5：** diffusion loss 联合动作/未来本体/value 等辅助损失；RoboCasa 68.9%（Cosmos Policy 67.1%），查询时延 0.291 s（对照 0.479 s）；LIBERO Original 98.1% **低于** Cosmos Policy 98.5%，LIBERO-Plus 83.4% 高于 82.2%；真机 85.0% ID / 68.3% OOD。
+- **附录 A–C：** Wan2.1/Wan2.2 仅做 frozen-denoiser 表征兼容性分析，**不能表述为在 Wan 骨干上完整训练并复现 RoboCasa 指标**。固定频带、损失权重和语言接地是明确局限。
+- **源码对应：** `cosmos_policy/models/policy_text2world_model.py` 中 `_encode_frequency_meta_frame_v2` 与 `_dct2_per_channel_ortho`；`cosmos_policy/models/policy_video2world_model.py` 中条件槽 mask；`cosmos_policy/experiments/robot/cosmos_utils.py` 中动作读出；额外的 `slot_mask_embedder` 位于 DiT 实现。详见 [官方源码归档](../repos/metawam.md)。
+
+这轮为方法/实现核验；论文数值均以作者实验为准，未运行 GPU 训练或复现实验。
+
 ## 对 wiki 的映射
 
 - [MetaWAM](../../wiki/entities/paper-metawam.md)
