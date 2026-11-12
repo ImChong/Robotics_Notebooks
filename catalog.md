@@ -2480,7 +2480,7 @@
 - [Fast ECoT：思维复用的高效具身链式推理](wiki/entities/paper-fast-ecot.md) — Fast ECoT**（*Efficient Embodied Chain-of-Thought via Thoughts Reuse*，[arXiv:2506.07639](https://ar `📅unknown` `[entity_page]`
 - [Fast Feature Field (F³)：面向机器人感知的事件预测表示](wiki/entities/paper-fast-feature-field-f3.md) — Fast Feature Field (F³)**（Richeek Das、Kostas Daniilidis、Pratik Chaudhari，宾夕法尼亚大学 GRASP Laboratory； `📅unknown` `[entity_page]`
 - [FAST-LIVO（arXiv:2203.00893）](wiki/entities/paper-fast-livo.md) — FAST-LIVO**（*FAST-LIVO: Fast and Tightly-coupled Sparse-Direct LiDAR-Inertial-Visual Odometry*，[ar `📅unknown` `[entity_page]`
-- [Fast Retargeting：面向规模化人形学习的快速动作重定向流程](wiki/entities/paper-fast-motion-retargeting-pipeline-humanoid.md) — Fast Retargeting**（*Fast Motion Retargeting Pipeline for Scalable Humanoid Robot Learning*，[arXiv: `📅unknown` `[entity_page]`
+- [FRDV：给动作重定向加一道物理体检 / Fast Motion Retargeting Pipeline for Scalable Humanoid Robot Learning](wiki/entities/paper-fast-motion-retargeting-pipeline-humanoid.md) — FRDV（Fast Retargeting with Dynamics Validation）**将人体 MoCap 转成人形机器人关节参考动作：先以约束逆运动学高速对齐身体，再在论文提出的**可 `📅unknown` `[entity_page]`
 - [Fast Plans, Faithful Actions: Closing the Planning-Execution Gap in Hierarchical Vision-Language-Action Models](wiki/entities/paper-fast-plans-faithful-actions.md) — 该工作研究高层路点如何被低层动作专家忠实执行。 `📅unknown` `[entity_page]`
 - [Fast-VLA：每个操作回合只思考一次](wiki/entities/paper-fast-vla-once-per-episode.md) — Fast-VLA 将慢速任务理解放在 episode 开始时运行一次，之后由轻量 actor 用当前观测查询固定 KV 任务记忆并持续输出动作块。 `📅unknown` `[entity_page]`
 - [Fast-WAM（arXiv:2603.16666）](wiki/entities/paper-fast-wam.md) — Fast-WAM**（*Fast-WAM: Do World Action Models Need Test-time Future Imagination?*，[arXiv:2603.16666 `📅unknown` `[entity_page]`

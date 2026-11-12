@@ -352,6 +352,12 @@ op: ingest
 - **概述页：** `wiki/overview/corl-2026-glen-berseth-reading-list.md` 重写为 101 篇索引，含跨论文观察与局限。
 - **说明：** arXiv 号由标题精确匹配搜得；OpenReview 被验证页挡住，未逐篇核对；会场标注取自清单。
 
+## [2026-11-12] ingest | sources/papers/fast-motion-retargeting-pipeline-humanoid_arxiv_2610_28470.md — 精读 FRDV 并核对 2.0 开源实现
+
+- 升级已有 FRDV 唯一论文实体，补全文中约束 SQP／RTI、可选 CI-iLQR 及两张 Mermaid 图，纠正过时的 pixi 运行命令与模块路径。
+- 新增官方项目页和代码仓库来源归档；2.0 README 确认**公开的是运动学阶段，动力学验证阶段未开源**。
+- 明确区分论文 1.0（9,156 FPS）与 2.0 Apple M1 热运行 8 workers（503,288.6 FPS）不同设置和测量口径；未宣称本地复现。
+
 ## [2026-11-12] ingest | CoRL 2026 Glen Berseth 阅读清单 101 篇：博客全文归档 + 概述页 + 逐篇详情节点（新建 / 升级到 3/3，2 篇 draft）
 
 ## [2026-11-12] ingest | sources/repos/mingrammer-diagrams.md — 收录 Diagrams（Python Diagram as Code）
