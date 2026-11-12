@@ -4,6 +4,7 @@ tags: [nvidia, edge-ai, hardware, robotics, physical-ai, open-source, sensor-fus
 status: complete
 updated: 2026-09-06
 related:
+  - ./nvidia-holoscan-sdk.md
   - ./nvidia-jetson.md
   - ./jetson-orin-nx.md
   - ./tensorrt.md
@@ -125,6 +126,7 @@ sequenceDiagram
 
 ## 局限与风险
 
+- **版本边界：** 本页所引 Sensor Bridge 资料基于此前 Holoscan operator / `HoloscanApplication` 接口，不能直接视为与 [Holoscan SDK 5.0](./nvidia-holoscan-sdk.md) 原生 Graph API 兼容；需核对所用 HSB/HoloHub 组件的 SDK 版本要求。
 - **硬件依赖：** 无 HSB FPGA 设备则仅有软件无法复现端到端延迟；Jetson Devkit **不能**假设具备 ConnectX GPUDirect 路径。
 - **标称延迟需实测：** 17 ms / <1 ms 为官方特定平台与场景；机器人全栈（SLAM + 规划 + 控制）须单独预算。
 - **Holoscan 栈绑定：** 应用模型为 **Holoscan operator**，与纯 ROS 2 节点需额外桥接（可对比 [Isaac ROS Visual SLAM](./isaac-ros-visual-slam.md) 路径）。
@@ -132,6 +134,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [NVIDIA Holoscan SDK 5.0](./nvidia-holoscan-sdk.md) — 实时处理与 Temporal Contract 运行时；本页聚焦 FPGA/Ethernet 设备接入，既有 `HoloscanApplication` 示例属于 4.x 接口，移植至 5.0 需按新 API 适配
 - [NVIDIA Jetson](./nvidia-jetson.md) — AGX Orin/Thor 主机与 JetPack 7 HSB 组件
 - [Jetson Orin NX](./jetson-orin-nx.md) — 轻量机载模组（HSB 文档主列 AGX 级主机）
 - [TensorRT](./tensorrt.md) — Holoscan 链后推理优化
