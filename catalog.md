@@ -1355,6 +1355,7 @@
 - [3DCodeVerse：以代码构建三维世界](wiki/entities/paper-3dcodeverse.md) — 3DCodeVerse 结合三维可执行代码数据集和多智能体生成框架，以代码生成、检查并迭代修改三维资产。 `📅unknown` `[entity_page]`
 - [3DWay](wiki/entities/paper-3dway.md) — 3DWay**（*Generalizing Robot Manipulation via 3D Consistent Waypoints*，[arXiv:2609.08224](https://a `📅unknown` `[entity_page]`
 - [4D Gaussian Splatting：面向动态场景实时渲染的时空高斯变形](wiki/entities/paper-4d-gaussian-splatting-wu.md) — 4D Gaussian Splatting（4D-GS，Wu et al., CVPR 2024）并非为每个时间戳存储一套高斯，而是**维护 canonical 3D Gaussian 集合**，以  `📅unknown` `[entity_page]`
+- [4D-HOF — Hand-Object Flow Matching for Feed-Forward 4D Interaction Reconstruction（手-物体流匹配驱动的前馈式 4D 交互重建）](wiki/entities/paper-4d-hof.md) — 4D-HOF** 把单目视频中视觉基础模型给出的粗糙手部 MANO 和物体 6D 轨迹作为 **条件流匹配（Flow Matching）** 起点，学习联合校正手–物体的时空几何与接触，而不是从纯 `📅unknown` `[entity_page]`
 - [4D-WAM：用轨迹场给 WAM 补上局部运动和终点](wiki/entities/paper-4d-wam.md) — 4D-WAM**（*Infusing Spatiotemporal Awareness into World Action Models through Trajectory Fields*；[a `📅unknown` `[entity_page]`
 - [4DAnyone：单目随意视频做出 4D 人](wiki/entities/paper-4danyone.md) — 4DAnyone**（*Create Anyone in 4D from a Casual Monocular Video*，[arXiv:2608.20335](https://arxiv.or `📅unknown` `[entity_page]`
 - [4-DoF 视觉引导桌面笔具分拣](wiki/entities/paper-4dof-pen-sorting.md) — Tabletop Pen Manipulation With a Vision-Guided 4-DoF Arm**（[arXiv:2608.15968](https://arxiv.org/ab `📅unknown` `[entity_page]`

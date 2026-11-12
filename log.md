@@ -345,6 +345,14 @@ op: ingest
 - **编译形式：** 3 份论文通读归档、2 份项目站点归档、1 份官方源码归档、3 个含 Mermaid 方法流程的中英双语实体页；可运行 BEHAVIOR 源码另附时序图；回链挂至人形移动与 VLA 方法页。
 - **说明：** 本次仅基于一手论文和公开源码静态核查，尚未在本环境执行本地仿真或全仓预检。
 
+## [2026-11-12] ingest | 4D-HOF 与三篇基础文献
+
+- 意图：补足 4D 手物体交互中，视觉初始化、条件流匹配、物体 6D 位姿、手部 MANO 之间的技术联系。
+- 主要结果：新增 4D-HOF 主知识实体（论文/官网/实现统一身份）与双语阅读、Mermaid 流程图和真实源码推理时序；归档 Albergo et al.、WiLoR、FoundationPose 三篇一手文献。
+- 开源边界：TAMU-Visual-AI/4D-HOF 当前公开 HO3D 的推理/评估，不等于完整训练与原始视频初始化。
+- 关联：复用已有 WiLoR 方法页，新增与 4D-HOF 的互链。
+- 通读边界：已完成 4D-HOF v1 全文；本次补读 WiLoR CVPR 2025 正文和 supplementary，并结合官方 demo.py 补全来源、流程和实验边界。Stochastic Interpolants 与 FoundationPose 尚属初步核验，未标记已通读。
+
 ## [2026-11-12] ingest | Eureka ICLR 2024 官方论文与源码复核
 
 - 在已有 [Eureka 论文实体](../wiki/entities/paper-eureka-llm-reward-design.md) 上增补基于源码的 Mermaid 运行时序图，没有新增重复项目节点。
