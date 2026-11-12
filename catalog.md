@@ -166,6 +166,7 @@
 - [carm-lerobot（CVTE CARM × LeRobot）](wiki/entities/carm-lerobot.md) — carm-lerobot**（`cvte-robotics/carm-lerobot`）把 [Le `📅unknown` `[entity_page]`
 - [Cartographer](wiki/entities/cartographer.md) — Cartographer** 是 Google 开源的 **子图 SLAM** 系统，支持 2D/3D 激光与多传感器配置。 `📅unknown` `[entity_page]`
 - [Cartwheel Comic：单目视频三维人体动作捕捉](wiki/entities/cartwheel-comic.md) — Cartwheel Comic** 是 Cartwheel 的云端视觉动捕模型系列，可从普通单目视频提取带世界空间信息的人体动作，并支持将结果导入动画工具或作为后续机器人重定向的输入。 `📅unknown` `[entity_page]`
+- [Cartwheel Control｜全身动作跟踪控制策略](wiki/entities/cartwheel-control.md) — 官方模型卡与权重](https://huggingface.co/andrew-cartwheel/cartwheel-control) · [GitHub 源码](https://github.c `📅unknown` `[entity_page]`
 - [Swing Choreo：Cartwheel 复合文本到人体动作生成](wiki/entities/cartwheel-swing-choreo.md) — 一句话定义：** Swing Choreo 是 Cartwheel 面向复杂表演的人体动作生成模型，可从一段分步文本提示生成连续动作，并同时处理手指、面部、多角色互动与空间方向。 `📅unknown` `[entity_page]`
 - [Caveman](wiki/entities/caveman.md) — Caveman** 是 JuliusBrussee/caveman 仓库分发的 **编码代理输出压缩技能/插 `📅unknown` `[entity_page]`
 - [Fluent CFD Skill（cavoiie/fluent-cfd-skill）](wiki/entities/cavoiie-fluent-cfd-skill.md) — Fluent CFD Skill（cavoiie/fluent-cfd-skill）是面向 Ansys Fluent/PyFluent 的判断与流程指导，不打包 Fluent 本体。 `📅unknown` `[entity_page]`

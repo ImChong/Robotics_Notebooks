@@ -352,6 +352,11 @@ op: ingest
 - **概述页：** `wiki/overview/corl-2026-glen-berseth-reading-list.md` 重写为 101 篇索引，含跨论文观察与局限。
 - **说明：** arXiv 号由标题精确匹配搜得；OpenReview 被验证页挡住，未逐篇核对；会场标注取自清单。
 
+## [2026-11-12] ingest | Cartwheel Control 三机型全身跟踪控制策略
+
+- 通读官方模型卡、README 和核心仿真/策略运行源码，新增一手来源与知识实体；附 Mermaid 主流程及已核实的源码运行时序图。
+- 明确三款机器人模型、50 Hz 控制 / 200 Hz 物理步进，以及无训练开源、无真机验证、无仿真随机化等边界。
+
 ## [2026-11-12] ingest | Cosmos 3 Interactive World Simulation 官方报告复核
 
 - 复用已存在的 Cosmos Interactive World Simulation 唯一实体，不拆分四个 checkpoint 或重复建页。
