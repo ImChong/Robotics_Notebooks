@@ -6445,6 +6445,7 @@
 - [星动纪元（ROBOTERA）：数据、大脑与人形整机路线](wiki/entities/robotera.md) — 星动纪元以数据、大脑、运控、灵巧手、人形整机组成软硬件全栈；研究入口能分别观察“预测未来怎样帮助动作”和“策略怎样部署到机器人”。 `📅unknown` `[entity_page]`
 - [Robotic World Model（ETH RSL：RWM / RWM-U）](wiki/entities/robotic-world-model-eth-rsl.md) — Robotic World Model（RWM）** 与 **Uncertainty-Aware RWM（RWM-U）** 是 ETH Zurich（RSL / LAS 等）开源的 **模型基强化 `📅unknown` `[entity_page]`
 - [Robotics Bench（交互式机器人硬件学习演示）](wiki/entities/robotics-bench.md) — Robotics Bench 是以 Colorfigures 制作的浏览器交互式机器人硬件教学演示，通过等距插画和步骤控件讲解电路板装配、元件放置、焊点与供电等场景。 `📅unknown` `[entity_page]`
+- [Robotics Lab — Movez 的在线 3D 机器人工程实验室 / Interactive 3D Robotics Hardware Lab](wiki/entities/robotics-lab-movez.md) — Robotics Lab** 是 Movez 于 **2026-11-10** 发布的浏览器端 **3D 机器人硬件学习演示**：从开发板外观和元件位置入手，通过虚拟装配、焊接与接线任务帮助初学者 `📅unknown` `[entity_page]`
 - [Robotics Library（RL）](wiki/entities/robotics-library-rl.md) — Robotics Library（RL）**（[https://github.com/roboticslibrary/rl](https://github.com/roboticslibrary/ `📅unknown` `[entity_page]`
 - [Robotics Toolbox for Python](wiki/entities/robotics-toolbox-python.md) — 一句话：** Robotics Toolbox for Python（RTB-P）是面向研究与教育的 Python 工具箱，用同一套可运行 API 表达机械臂与移动机器人的常见建模、运动学、动力学 `📅unknown` `[entity_page]`
 - [We Asked Opus-5.5 to Edit π₀.₅'s Weights / 让 Opus 5.5 编辑机器人策略权重](wiki/entities/robotics-weight-editing.md) — 研究者让 Opus 5.5 根据离线轨迹和模型机制，不经反向传播地修改 π₀.₅ Training-Time RTC 策略的权重，以探索更快执行和更平滑的动作块切换。 `📅unknown` `[entity_page]`
