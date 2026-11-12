@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-11
 related:
   - ../entities/paper-dna.md
   - ../entities/paper-ode-policy-action-dynamics.md
@@ -93,7 +93,7 @@ flowchart TB
 | 论文 | 节点 | 开源 |
 |------|------|------|
 | ForceLDM | [paper-forceldm](../entities/paper-forceldm.md) | 已开源 |
-| ReflexArc | [paper-reflexarc](../entities/paper-reflexarc.md) | 项目页未列 GitHub |
+| ReflexArc | [paper-reflexarc](../entities/paper-reflexarc.md) | 待发布（项目页标「Code Coming soon」，2026-11-11 核对） |
 | ReContact | [paper-recontact](../entities/paper-recontact.md) | 项目页未列 GitHub |
 | Self-Directed Dynamics Gap Closing | [paper-self-directed-dynamics-gap-closing](../entities/paper-self-directed-dynamics-gap-closing.md) | 项目页未列 GitHub |
 | BeyondContact | [paper-beyondcontact](../entities/paper-beyondcontact.md) | 已开源 |

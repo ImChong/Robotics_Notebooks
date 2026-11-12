@@ -159,6 +159,15 @@ sequenceDiagram
 | 评测参考 | RoboDojo、19 项 Real Eval | RoboTwin C2R、LIBERO-Pro | 不同任务与独立协议 |
 | 注意 | 强调 harness 与观测边界 | 不能直接迁移得分 | 不能与本页跨基准横比 |
 
+## 结论
+
+**Uni-Robot-Agent 表明在机器人使用智能体里，harness（工具、调度与反馈接口）本身是与模型同等重要的变量：同一模型换 harness，RoboDojo 成绩可相差一个数量级。**
+
+1. Qwen3.8-Flash-Next 在 RoboDojo 上从 RoboProbe 的 0.83% SR 升到本框架的 25.00%，GPT-6 Astra 从 22.48% 升到 46.67%（论文 v2 表 1）。
+2. 真机 19 项 Real Eval 中零样本 Qwen 配置 53.50 分，高于每任务微调的 π₀.₅（47.75），但两者输入模态与训练预算不同，分数也不是成功率（表 2、附录 B）。
+3. 去掉相机参数会让成绩从 31.39 跌到 9.13，几何信息比技能库更关键（§5.1、§5.2）。
+4. 局限：跨配置对比不是全控制实验，真机 unseen tasks 仅 8/20，依赖外部模型服务，本页也未实测复现。
+
 ## 关联页面
 
 - [ORA](ora-open-robot-use-agents.md) — 类似研究方向与 harness 设计。

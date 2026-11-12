@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-11-10
+updated: 2026-11-11
 related:
   - ../entities/paper-dkwbc.md
   - ../entities/paper-humanoid-touch-dream.md
@@ -249,6 +249,7 @@ print("joint acceleration command:", qdd_star)
 - [PredActor](../entities/paper-predactor.md) — joint state–action 扩散直接输出 G1 全身动作，CG/CFG 可 steer，Orin NX 机载 50 Hz（arXiv:2609.24840；公开 MuJoCo 评测代码与 checkpoint，训练/真机部署未开放）
 - [TRACE（人形跨形态迁移）](../entities/paper-trace-humanoid-transfer.md) — 预训练全身控制器（SONIC）跨本体迁移的低成本路线：G1→H2，PHUMA 运动成功率 96.08%（作者报告）
 - [COWBOY](../entities/paper-cowboy-contextual-whole-body-manipulation.md) — 环境感知 WBC 负责无碰接近、局部 RL 专家负责接触抓取，再蒸馏为协调底座/手臂/灵巧手/主动视觉的单一移动操作策略
+- [OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md) — 全身原生人形 VLA 配方：高层 ~10 Hz 输出 32-D 身体参考（根姿态 3 + G1 29 关节）+ 2 夹爪，SONIC 类跟踪器 ~50 Hz 出关节目标；关节空间优于 81-D SMPL（四任务进度 88% vs 75%；arXiv:2606.22174）
 
 ## 继续深挖入口
 

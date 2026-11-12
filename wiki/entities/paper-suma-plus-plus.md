@@ -109,6 +109,24 @@ flowchart TD
 - Table II 中 SuMa++ 平均平移误差 0.70%，**不是**表中最优：IMLS-SLAM 为 0.55%。
 - Table II 中 SuMa nomovable 的平均栏写作 23.3/9.24，与逐序列数字（旋转列为十几到二十几）的格式不一致，疑为论文排版问题，引用时应只用逐序列数值。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| 本文 SuMa++ | surfel 地图 + RangeNet++ 语义：语义一致性惩罚滤动态、语义加权 ICP | 纯 LiDAR，语义只用于配准与动态滤除，回环仍是几何的 |
+| SuMa（基础系统） | surfel 地图上的投影 ICP 与几何回环 | 无语义；KITTI Road 平均平移误差 6.13% 对 SuMa++ 1.46%（Table I） |
+| [LOAM](./paper-loam-lidar-odometry-and-mapping.md) / IMLS-SLAM | 几何特征 / 隐式曲面的激光里程计 | 无语义；Table II 平均平移 LOAM 0.84%、IMLS-SLAM 0.55%，后者优于 SuMa++ 的 0.70% |
+| [SA-LOAM](./paper-sa-loam.md) | 在 LOAM 类前端上把语义同时用于里程计与回环 | 加了语义图回环；SuMa++ 把语义回环留作未来工作（§IV-C） |
+
+## 结论
+
+**SuMa++ 证明在 LiDAR SLAM 里用语义「一致性」而非类别一刀切来处理动态物体，能显著改善动态车辆多的场景下的里程计精度。**
+
+1. 在动态车辆多的 KITTI Road 序列上平均平移误差从 SuMa 的 6.13% 降到 1.46%，序列 35 从 26.8% 降到 1.11%（Table I）。
+2. 一律删可移动类（SuMa nomovable）在城市序列发散，说明停放车辆仍是有用的配准特征（Table II）。
+3. KITTI 测试集平移误差 1.06% 对 SuMa 1.39%（§IV-B），但 Odometry 训练序列上平均平移不及 IMLS-SLAM。
+4. 局限：依赖 GPU 与 SemanticKITTI 类别，首帧动态物体无法滤除，评测只覆盖 KITTI 一种传感器，回环未使用语义（§IV-C）。
+
 ## 局限
 
 **论文自己承认（§IV-C）：**
@@ -144,6 +162,7 @@ flowchart TD
 - [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md)
 - [FCN 语义分割](../methods/fcn-semantic-segmentation.md)：RangeNet++ 的网络范式背景
 - [状态估计](../concepts/state-estimation.md)、[激光雷达感知](../concepts/lidar-sensing.md)
+- [机器人感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：语义分割结果如何进入建图与定位
 
 ## 参考来源
 

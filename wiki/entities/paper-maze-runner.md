@@ -146,6 +146,23 @@ flowchart LR
 - README 称 Hybrid A* 约 100 到 170 ms，论文表 I 为 242.7 ms，口径差异未说明。
 - 性质说明：这是系统 / 软件栈类论文，贡献在工程整合与可复现性，不是新算法；各模块（RANSAC、EKF、A*、Hybrid A*、离散 CBF-MPC）均引用已有工作。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [Navigation2](./navigation2.md) | ROS 2 标准导航框架：行为树、规划 / 控制插件、代价地图与恢复行为 | Nav2 有动态代价地图与恢复行为；本文规划只认已知墙，遇未建图障碍只停不绕路，且论文未与 Nav2 做对比 |
+| [slam_toolbox](./slam-toolbox.md) | 基于 Karto 后端的 2D lifelong 栅格 SLAM，带回环 | 本文是以线为地标的 EKF SLAM，无回环，误差随新走廊累积（V-B） |
+| [Barrier-State 安全导航](./paper-barrier-state-safe-navigation.md) | 沿路径拼接安全区域，把弯道与窄通道纳入同一约束 | 本文对每个 LiDAR 扇区最近点各加一条离散 CBF 约束，不构造路径走廊 |
+
+## 结论
+
+**Maze Runner 是一个参数和代码都公开的「激光线特征 + EKF + A* + 离散 CBF-NMPC」小型导航栈，在 Gazebo 迷宫中完成 135 m 路线，但证据只有单次仿真运行。**
+
+1. 同一 RANSAC + TLS 线前端既服务已知图 EKF 定位（位置 RMSE 1.0 cm），也服务 EKF SLAM（RMSE 24 cm，无回环）（V-A、V-B）。
+2. CBF-NMPC 求解中位数 12.2 ms、P99 35.6 ms，足以支撑 10 Hz 控制（V-D）。
+3. 柱子实验清楚展示了「CBF 保证安全，不保证进展」：路径被压时停在 0.52 m 处不再前进（V-D）。
+4. 局限：仅仿真、单迷宫、单次运行；SLAM 地图不回灌规划；未建图障碍会让机器人永久停住；无与现成栈的对比（VI）。
+
 ## 关联页面
 
 - [控制屏障函数（CBF）](../concepts/control-barrier-function.md)

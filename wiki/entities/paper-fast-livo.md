@@ -98,6 +98,24 @@ flowchart TD
 | 视觉挑战 | 室内外切换、两次剧烈运动、无纹理白墙，79.52 m 路程端到端误差 0.04 m | VI-B.3 |
 | 耗时 | Intel i7 桌面机总 36.75 ms（VIO 10.23 + LIO 26.52）；RB5 ARM 上 VIO 13.82 + LIO 51.51 ms；R2LIVE 为 45.16 + 59.27 ms | VI-C，Table III |
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [FAST-LIO](./fast-lio.md)（FAST-LIO2） | 原始点配准 + ikd-Tree 的激光惯性里程计 | FAST-LIVO 的 LIO 子系统即来自它；加入视觉光度残差后 NTU-VIRAL 8/9 序列更好，但 sbs_01 0.29 对 0.25 m 略差（Table II） |
+| [R2LIVE](./paper-r2live.md) | 滤波 + 因子图的激光-视觉-惯性融合 | R2LIVE 的 LIO 与 VIO 在状态层合并、各自处理数据；FAST-LIVO 在单个 ESIKF 内测量层耦合，私有数据上耗时 36.75 对 104.43 ms（VI-C、Table III） |
+| [LVI-SAM](./paper-lvi-sam.md) | 因子图平滑的 LIS + VIS 双子系统 | 优化式且带回环；FAST-LIVO 是滤波式纯里程计，论文未与其做数值对比 |
+| [FAST-LIVO2](./paper-rcl-2408-14035-fast-livo2-fast-direct-lidar-inertial-visual-odo.md) | 同组后续：顺序更新、曝光估计等 | 是本文的后续独立论文，本页未展开对比 |
+
+## 结论
+
+**FAST-LIVO 用一个 ESIKF 把 LiDAR 点到面残差和基于 LiDAR 地图点的稀疏直接光度残差在测量层耦合，以低于 R2LIVE 的计算量取得更好的里程计精度。**
+
+1. 视觉地图点直接复用 LiDAR 点的深度，省掉特征提取、三角化与滑窗后端（II-A、II-B）。
+2. NTU-VIRAL 9 条序列中 8 条 RMSE 最低（0.17~0.29 m），长墙退化场景漂移 0.05 m（Table II、VI-B.2）。
+3. 在 ARM（RB5）上也能实时，LIO 51.51 + VIO 13.82 ms（Table III）。
+4. 局限：只做里程计、无回环；依赖硬同步与预标定外参；运动模糊时视觉无益，且缺少消融与光照剧变的量化实验。
+
 ## 工程实践
 
 - 代码：[hku-mars/FAST-LIVO](https://github.com/hku-mars/FAST-LIVO)（README 称依赖 ROS、PCL、Eigen、OpenCV、Sophus，Ubuntu 16.04~20.04；本次仅读 README 前部，未核后续章节与源码）。

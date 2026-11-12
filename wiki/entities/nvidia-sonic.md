@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, whole-body-control, foundation-model, reinforcement-learning, nvidia, unitree-g1]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-11
 project_id: nvidia-sonic-humanoid-wbc-2026
 doi: "10.1126/scirobotics.aed4592"
 code: https://github.com/NVlabs/GR00T-WholeBodyControl
@@ -63,7 +63,7 @@ sim2real 的榜单包含 **SONIC、SONIC-Low-Latency 与 SONIC-v1.1** 三个策�
 
 - [SONIC motion tracking 方法](../methods/sonic-motion-tracking.md) — 相关方法节点；论文 arXiv ID 仅在该节点登记。
 - [SONIC-Transfer](./paper-sonic-transfer.md) — 不同的跨形态迁移工作。
-- [SuperMimic](./paper-supermimic.md) — 用可微世界模型降低动作跟踪训练成本的相关路线。
+- [SuperMimic](./paper-supermimic.md) — 用可微世界模型降低动作跟踪训练成本的相关路线：在 129,514 个 BONES-SEED 训练动作上，SONIC 已发布 checkpoint 失败 179 个，SuperMimic 单卡 H100 3 h 失败 25 个、双卡 9.8 h 失败 0 个（训练动作覆盖率，非未见动作泛化；硬件与评估口径不同；arXiv:2610.28480）。
 - [sim2real leaderboard 映射](./egalahad-sim2real.md) — SONIC 三个运行配置共用本项目实体。
 - [TRACE（人形跨形态迁移）](./paper-trace-humanoid-transfer.md) — 把预训练 SONIC 从 Unitree G1 迁到 H2：投影注入运动学先验 + 编码器蒸馏 + 低秩 RL，约 8 GPU 小时
 

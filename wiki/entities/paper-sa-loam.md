@@ -92,6 +92,24 @@ flowchart LR
 - 本页核对：按表 III 逐序列读，Ours-LOOP 在 00、02、07 三个序列最小，05、06、09 为 SUMA++ 或 SUMA 更小，08 号 SUMA 最小（2.09 对 3.24）；因此"多数序列最小"（IV-B 原话 "smaller ATE on most sequences"）按表数字并不成立，成立的是 7 序列平均值最小（2.34）。表 II 中 Ours-LOOP 平均旋转误差与 SUMA++ 相同（0.28），平移更低。
 - Ford 上 ODOM 平均 ATE（5.18）劣于 FLOAM（4.62），Ours-LOOP（4.16）才超过；说明语义 ICP 本身在跨数据集时并无稳定增益（本页判断，基于表 IV）。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| 本文 SA-LOAM | 语义同时用于 LOAM 类里程计（语义辅助 ICP）与回环（语义图匹配） | 在 FLOAM 之上后融合 RangeNet++ 语义，纯 LiDAR |
+| [LOAM](./paper-loam-lidar-odometry-and-mapping.md) / [A-LOAM](./paper-a-loam.md) | 边缘 / 平面特征的几何里程计与建图 | 无语义、无回环；表 II 中 LOAM 平均平移误差 0.84%（引自原文），本文 0.76% |
+| [SuMa++](./paper-suma-plus-plus.md) | 面元地图 + 语义投影 ICP，剔除动态物体 | 语义主要用于配准；KITTI 7 序列平均 ATE 2.76 m 对本文 2.34 m（表 III），Ford 上 33.75 m 对 4.16 m（表 IV） |
+| [Scan Context](./paper-scan-context.md) | 无语义的极坐标全局描述子做地点识别 | 纯几何回环；对照基线 ISC-LOAM 用强度版 Scan Context，表 III 平均 ATE 2.52 m |
+
+## 结论
+
+**SA-LOAM 说明在 LOAM 类几何前端上后接现成语义分割、并把语义同时用于配准与回环，可以降低长序列的绝对轨迹误差，但增益主要来自回环模块。**
+
+1. 语义辅助 ICP 使 KITTI 平均 RPE 从 FLOAM 的 0.49/1.27 降到 0.31/0.76（表 II）。
+2. 语义图回环使 ATE 相对里程计平均降低 32.9%，7 序列平均 2.34 m 为最低（表 III），但并非多数序列都最优。
+3. Ford Campus 上只有 Ours-LOOP（4.16 m）优于 FLOAM（4.62 m），语义里程计本身（5.18 m）并无稳定增益（表 IV）。
+4. 局限：无模块消融、语义权重取等值、未报告运行时间，语义模型与 KITTI 评测同源，泛化证据只有 Ford 两条序列。
+
 ## 工程实践
 
 - 运行环境（IV-A）：i7-9750H、16GB、GTX1080；语义分割与图匹配网络均为 PyTorch 实现，需 GPU；RangeNet++ 预训练模型取自 SemanticKITTI，保留 12 类。
@@ -126,6 +144,7 @@ flowchart LR
 - [状态估计](../concepts/state-estimation.md)
 - [LiDAR 感知](../concepts/lidar-sensing.md)
 - [LiDAR SLAM / LIO / VIO 选型对比](../comparisons/lidar-slam-lio-vio-selection.md)
+- [机器人感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：语义分割输出如何进入建图与下游模块
 
 ## 参考来源
 

@@ -108,6 +108,8 @@ STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
     "不包装",  # 「诚实的 technical report：不包装成 SOTA」：同为「不 + 谓词」的辟谣
     "不提出",  # 「不提出单一 SOTA 系统，而是做结构性对照实验」：同为「不 + 谓词」的辟谣
     "未给出",  # 「未给出单一 SOTA 训练配方」：同为「未 + 谓词」的辟谣
+    "不能称",  # 「Pull Out Key 等任务未全面领先，不能称每个任务都 SOTA」：否认落在谓词上
+    "不支持",  # 「论文自称不支持 SOTA 结论」：同为「不 + 谓词」的辟谣
     "未必",
     "勿",
 )
@@ -742,6 +744,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "g1",
     "gmr",
     "heracles",
+    # hil：同名异义缩写，两义均已有 canonical 页——Hardware-in-the-Loop 由
+    # concepts/hardware-in-the-loop.md 定义（与 concepts/software-in-the-loop.md 成对），
+    # Hybrid Imitation Learning 由 methods/hil-hybrid-imitation-learning.md 承载；
+    # 两页已互链消歧。与 pace 同类「同名异义、各有归属」，不再单建 hil 页。
+    "hil",
     # idm：Inverse Dynamics Model 的缩写，已由 concepts/inverse-dynamics-model.md 定义
     # （「当前 + 未来观测 → 动作」的级联 WAM 动作解码接口）。缩写 slug 与页面 stem
     # 不同名，与 dit / ood / wam 同类。
@@ -772,6 +779,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # LeRobot 的取舍由 comparisons/hdf5-mcap-lerobot-data-formats.md 定调；与 onnx /
     # lerobot 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
     "mcap",
+    # manipulation：任务大类，canonical 节点是 tasks/manipulation.md（检查只认
+    # concepts/methods/formalizations）；命中处多为论文分类目录（paper-notebook-category-06-
+    # manipulation、painode-* 的「**Manipulation**」分组标签）与基准任务类别名，
+    # 子主题另有 concepts/contact-rich-manipulation.md 等页，不另建同名概念页。
+    "manipulation",
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
     # model：库内 6 处引用全是代码 token，不是待建的机制页——Newton 的

@@ -76,15 +76,38 @@ flowchart LR
 - **调度（III-D）：** 按物体交互、空间约束、末端分配判断兼容性，得到阶段序列 S；每阶段有局部目标和原子谓词前后条件。
 - **验证与恢复（III-E，表 II）：** 条件三值；前条件被违反则直接 replan；后条件被违反则结合两张场景图和历史 L 选择：有进展但未完成选 repeat，可归因于动作参数选 modify（Action Revision VLM 改 mode / contact / side），阶段不再适用、证据不足或局部策略不支持选 replan；超过尝试次数 abort。三者重新调用的模块逐级变大。
 
-## 工程实践
+## 实验结果
 
-- **平台（IV-A）：** CENTAURO，双臂各 6 自由度，Dagana 末端；关节参考由 QP 逆运动学计算；基座全程静止；头载 RealSense D435 RGB。
-- **VLM：** 默认 Gemini Robotics-ER 1.6；表 IV 换成 GPT-o3、GPT-5.2。
 - **九个场景（图 3，表 III）：** 规划类（Stacked Boxes、Boxes Aside、Bottles on Box、Fragile Box、Long Horizon）、动态适应（Scene Update）、恢复类（Bottle Failure、Push Failure、Stacked Boxes w/ Failure），每场景 20 次，相同初始配置；恢复类的失败为人为注入（项目页）。
 - **基线（IV-B.1）：** 非执行感知 + 二元验证、执行感知 + 二元验证、完整框架，三者共享骨干、指令、原语与底层执行。
 - **关键数字（表 III）：** Boxes Aside 0% / 75% / 85%；Fragile Box 0% / 70% / 70%；Long Horizon 0% / 35% / 50%；Bottles on Box 70% / 90% / 95%；Push Failure 15% / 85% / 95%（依次为三种配置）。查询数：Bottle Failure 10 降到 8.1；Push Failure 10 降到 9.1（IV-B.1）。每次恢复决策平均查询：repeat 1、modify 2、replan 3（图 5）。
 - **模块级（表 III 右）：** 执行调度 SR 在 9 个场景中 7 个为 100%；Long Horizon 的规划 SR 67%，延迟 31.78 s。
 - **并行调度（图 6）：** 执行时间降 40%（Bottles on Box）与 11%（Long Horizon），阶段 5 到 3 与 9 到 8；论文说明这不是 20 次均值。
+- **骨干对比（表 IV，三场景平均）：** Gemini Robotics-ER 1.6 为 73.3% / 41.9 s，GPT-o3 为 80.0% / 91.4 s，GPT-5.2 仅 5.0% / 34.6 s。
+- 全部为 CENTAURO 真机实验，论文无仿真实验。
+
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [SayCan](../methods/saycan.md) | LLM 出子任务候选，价值函数估计可行性 | 可行性来自学习的技能价值函数；本文把面级可接近 / 可达直接写进场景图，零样本、无训练 |
+| [SayPlan](./paper-sayplan-llm-scene-graph-planning.md) | 大场景图检索子图 + 符号约束检查计划 | 关注大尺度场景与语义关系；本文表 III 显示只有符号关系在并排物体场景成功率为 0% |
+| [硬件感知 LLM-VLM 零样本规划](./paper-hardware-aware-llm-vlm-zero-shot-task-planning.md) | LLM 出符号任务，确定性模块处理抓取、碰撞与可达性 | 同样把可达性交给几何模块，但在 Isaac Sim 数字孪生验证；本文是真机双臂并行阶段与分层恢复 |
+| [ERR](./paper-err-replan-error-recovery.md) | 具身 VLM 错误恢复的基准与 RL 训练 | 训练专用恢复模型；本文用零样本 VLM 按 repeat / modify / replan 规则恢复 |
+
+## 结论
+
+**把「物体哪个面能接近、能否可达」写进场景图，是零样本 VLM 双臂规划成功率提升的主要来源；分层验证与恢复主要节省查询而非提升成功率。**
+
+1. 执行感知表示让 Boxes Aside、Fragile Box、Long Horizon 从 0% 升到 85%、70%、50%（表 III）。
+2. repeat / modify / replan 分别平均 1 / 2 / 3 次查询，恢复类场景查询数下降（图 5、IV-B.1）。
+3. 并行调度在代表性样例中缩短执行时间 11%–40%（图 6）。
+4. 局限：基座固定、只支持平行面夹持、每场景单一初始配置 20 次、失败为人为注入，对 VLM 骨干高度敏感（GPT-5.2 仅 5.0%），代码未公开。
+
+## 工程实践
+
+- **平台（IV-A）：** CENTAURO，双臂各 6 自由度，Dagana 末端；关节参考由 QP 逆运动学计算；基座全程静止；头载 RealSense D435 RGB。
+- **VLM：** 默认 Gemini Robotics-ER 1.6；表 IV 换成 GPT-o3、GPT-5.2。
 - **复现：** 无公开代码，提示词与完整实现细节本页不可核；本页未运行任何代码。
 
 ## 与文章说法的核对

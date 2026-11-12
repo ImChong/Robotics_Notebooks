@@ -126,6 +126,23 @@ flowchart LR
 6. Haomo 的 Fig. 5–7 只有曲线、无数值表，难以复现核对；训练在 Haomo 上用库序列（§V-C），与 KITTI 的「未见环境」设定不同。
 7. 本页只读了 v1；RA-L 正式版可能有补充（未核对）。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [OverlapNet](./paper-overlapnet.md) | 孪生网络成对预测重叠率与偏航，多模态输入 | OT 只用深度通道、输出单帧全局描述子，检索可用 FAISS；KITTI 00 上 AUC 0.907 对 0.867，检索 0.44 ms 对 3233.3 ms（表 III、表 IV），但不给偏航角 |
+| [Scan Context](./paper-scan-context.md) | 手工鸟瞰描述子，列平移比较，两阶段检索 | 无需训练；Ford 上 Recall@1% 与 OT 接近（0.958 对 0.954），但描述子 + 检索耗时 57.95 + 492.63 ms（表 III、表 IV） |
+| [Scan Context++](./paper-scan-context-plus-plus.md) | 极坐标 / 笛卡尔两种描述子，兼顾旋转与横向平移 | OT 只论证偏航不变，对横向平移没有专门设计 |
+
+## 结论
+
+**OverlapTransformer 用「只压高度的等变卷积 + Transformer + NetVLAD」得到偏航不变的全局描述子，把激光回环检索做到毫秒级，同时在 KITTI 与 Ford 上保持领先精度。**
+
+1. 旋转不变性来自等变编码加排列不变聚合，而非 Transformer 本身（§III）。
+2. KITTI 00 上 AUC 0.907 / Recall@1 0.906，未训练的 Ford 00 上 AUC 0.923（表 III）。
+3. 描述子 3.28 ms + 检索 0.44 ms，比 OverlapNet、Scan Context 快两到三个数量级（表 IV）。
+4. 局限：无 Transformer 消融、只在车载机械雷达城市道路上评测、未接入完整 SLAM 做轨迹精度实验。
+
 ## 关联页面
 
 - [LiDAR 感知](../concepts/lidar-sensing.md)

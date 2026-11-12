@@ -77,7 +77,7 @@ flowchart LR
 - **执行与反馈（III-D）：** 目标缺失、前置违反或效果异常则中止该序列并请求纠错；完成任务上下文用于后续去重。
 - **评测设定（IV-A）：** 12 个 AI2-THOR 场景（浴室、客厅、厨房），每任务重复 10 次，记忆从空开始，类别先验与技能固定，不训练不微调；DeepSeek-V3、Qwen3-Max、Gemini-2.5-Pro 三种骨干。
 
-### 关键结果（均为仿真，Table II / III，Qwen3-Max）
+## 关键结果（均为仿真，Table II / III，Qwen3-Max）
 
 | 项目 | 数值 | 出处 |
 |------|------|------|
@@ -125,6 +125,24 @@ flowchart LR
 - 摘要说 GCR「高于被评基线」，但对照实验（Table III）只用 Qwen3-Max 单一骨干，结论在其他骨干上是否成立论文未给出；Table III 未见方差或置信区间（我读到的文本中没有）。
 - 提示词示例（few-shot）对 sUC 影响很大（IV-D），不同示例设计的敏感性未评估。
 - 仓库为匿名评审材料，项目页与源码本次未核验，可复现性为「推测」尚待检验。
+
+## 与其他工作对比
+
+| 工作 | 关注点 | 与 CAFE 的区别 |
+|------|--------|----------------|
+| [SayCan](./paper-saycan.md) | 给定语言指令，用技能可行性给子任务打分 | 「供给目标」路线，任务来自人；CAFE 由语义记忆自己发现待办（II-A） |
+| ProgPrompt（适配版，Table II 基线） | 以程序式提示生成计划 | 作者把其显式指令换成语义记忆；Complex GCR 0.464 对 CAFE 0.789，但 Compound CUR 0.757 高于 CAFE 的 0.725（IV-B） |
+| [SayPlan](./paper-sayplan-llm-scene-graph-planning.md) | 大场景图子图检索 + 计划校验 | 同为结构化场景表示驱动规划，但目标仍由指令给出；CAFE 加了触发准入与执行结果回写 |
+| [ERR](./paper-err-replan-error-recovery.md) | 具身 VLM 错误恢复评测与训练 | 专攻失败后恢复；CAFE 的纠错是绕过触发门的局部旁路，是闭环的一部分 |
+
+## 结论
+
+**CAFE 表明在预设类别内，「语义记忆 + 选择性触发 + Draft-Complete-Audit 三段式」能让 LLM 规划器在无实例指令时自己提出并执行任务，在 AI2-THOR 上明显优于单 LLM 与适配 ProgPrompt。**
+
+1. Complex 场景 GCR 0.789，对 Single-LLM 0.446、ProgPrompt 0.464（Table II）。
+2. 三个角色各管一块：去 Complete 使 sUC 0.892 → 0.194，去 Audit 使 CUR 0.815 → 0.515（Table III）。
+3. 选择性触发把规划轮数从 6.5 降到 3.1，同时 sUC 更高（IV-D）。
+4. 局限：定量结果全在仿真、真机只有定性轨迹，任务类别预定义，参考集由作者构造，消融只用单一骨干且对 few-shot 示例敏感。
 
 ## 关联页面
 

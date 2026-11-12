@@ -113,6 +113,25 @@ flowchart TD
 - 运行时间的硬件与实现细节论文未写（本次未读源码，未核实）。
 - 题名与项目页 BibTeX（Language and Embodied AI）不一致，本页以 arXiv v1 PDF 为准。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [ACT](./paper-act.md) | CVAE + Transformer 预测动作块，开环执行一个块 | 本文冻结 ACT，只在推理时对其动作块做扰动搜索与门控，不改训练 |
+| [DISCO 树搜索蒸馏](./paper-distilled-tree-search-multi-object-rearrangement.md) | 仿真中 PW-MCTS 生成长程计划，再蒸馏回策略 | DISCO 把搜索结果蒸馏进参数；本文只做测试时搜索，策略不更新 |
+| [MuZero](./paper-muzero-planning-latent-dynamics.md) | 在学到的潜在动力学里做树搜索 | 本文直接克隆真实模拟器状态推演，依赖特权覆盖率，不学动力学模型 |
+
+论文第 2 节把 VLA-Reasoner、VLAPS 列为最相关的测试时搜索工作，但第 5 节承认没有与它们做共享基准对比；本库暂无这两篇的论文页。
+
+## 结论
+
+**在 PushT 仿真里，对冻结 ACT 的动作块做模拟器内 beam search 能把成功率从 0% 拉到 18%，而 OSA 门控能以约 3 倍的提速保住大部分收益。**
+
+1. 搜索预算不是越大越好：BW=8 比 BW=4 更差，单独加深无益，重规划频率（执行视野 H）比树大小更关键（Table 1、Figure 2）。
+2. OSA 用“名义块预测覆盖率下降超过 0.05”作触发，是一个可复现的极简门控样例（第 3.3、4.4 节）。
+3. 方法前提是可保存 / 恢复的模拟器状态和任务覆盖率，这在真机上不成立（第 3.2、5 节）。
+4. 局限：单检查点、单任务、50 回合无置信区间，基线 0%、最强 18%，结论强度有限，也未验证语言 VLA 或真机（第 5 节）。
+
 ## 关联页面
 
 - [Action Chunking](../methods/action-chunking.md)

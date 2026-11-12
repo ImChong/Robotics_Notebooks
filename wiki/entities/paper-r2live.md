@@ -161,6 +161,15 @@ flowchart TD
 | 非结构化环境下易失效 | 论文**未显示 R2LIVE 整体失效**：Exp-2 在重复纹理加行人的隧道中它可用，失效的是 Vins-Mono 与 R2LIVE 的单独子系统；“易失效”应是综述的转述或推断 |
 | 隐含：R3LIVE 的“光流法代替特征点法” | 与 R2LIVE 对比不准确：R2LIVE 已用 KLT 光流跟踪，R3LIVE 的主要变化是 frame-to-map 光度误差与 RGB 地图渲染（据 R3LIVE v1 引言与图 2 浏览，非本页主体） |
 
+## 结论
+
+**R2LIVE 用一个 ESIKF 同时消化 LiDAR 点面残差与相机重投影误差，再以固定 LiDAR 位姿的滑窗因子图精化视觉侧，在 Livox 小视场与剧烈运动下比单独的 LIO / VIO 更稳。**
+
+1. Exp-4 的 300 m 子序列上 RTE 0.24% / 0.12%，低于 Fast-Lio 的 0.33% / 0.37% 与 VINS-Mono 的 3.76% / 2.77%（修订稿 Table I）。
+2. 在 190 m 地铁隧道与约 900 m 室内外闭环路线中保持可用，而 VINS-Mono 与单独子系统失效或漂移（Exp-2、Exp-3，定性）。
+3. 机载 i7 上各模块数十毫秒内完成，因子图在独立线程低频运行（Table II）。
+4. 局限：定量证据只有两条序列且无方差，需预标定时间偏移与 LiDAR-IMU 外参，无回环，子系统 R2LIVE-LIO 差于 FAST-LIO 的原因未解释。
+
 ## 关联页面
 
 - [FAST-LIO](../entities/fast-lio.md)：R2LIVE 的 LIO 基础

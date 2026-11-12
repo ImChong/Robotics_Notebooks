@@ -80,6 +80,8 @@ flowchart LR
 
 - **头像与事件（§3.2、附录 C.2）：** 46 个蒙皮头像外观继承自 Virtual Community；动作来自 Mixamo 与 AMASS，人工裁剪并标注物体交互关键帧，可做手物附着，部分场景用 IK 调整。人侧事件是脚本化的，机器人侧是物理仿真。触发：Contribution 在早期随机时刻开始，Interruption 依赖夹爪位置，Co-presence 随机选无关动作。
 - **指标（§3.2）：** 成功要求完成且无机器人 - 头像碰撞；另报 Collision、Min. Dist.、Violat.（距离小于 0.10 m 的时间步比例）。
+## 评测设置与基线结果
+
 - **评测设置（§4.1）：** 训练 11,100 条脚本示教（37 × 300），每任务 100 个评测种子。两个专家参考：全状态专家（能看到头像位姿与事件子目标）与无意图专家。
 - **关键结果（§4.2）：**
 
@@ -93,6 +95,25 @@ flowchart LR
 | SmolVLA | 0.06 | 0.214 | 0.104 m |
 
 按条件看（表 2 平均行）：π0 在 Co-presence 0.31、Cueing 0.16、Contribution 0.16、Interruption 0.09；无意图专家在 Interruption 为 0.00，在 Co-presence 为 0.97。
+
+补充结果：逐任务训练的 ACT 加入人类变体示教后，25 任务子集的人类变体平均成功率 0.10→0.15，基础任务 0.42→0.41（表 4）；学习策略失败中「操作 / 恢复」占 60–66%、碰撞占 22–27%（图 3）；真机 xArm dump bin 任务族上 Contribution 0.13→0.33，Interruption 仍为 0.00（表 5）。
+
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [LIBERO](./libero-benchmark.md) | 终身学习操作基准，变化物体、布局与指令 | 工作空间里只有机器人在改变环境；HARP-Bench 把会动的人作为变量，并加入碰撞 / 距离安全指标 |
+| [RoboCasa](./robocasa.md) | 大规模厨房日常任务 MuJoCo 仿真基准 | 场景与任务规模远大，但无主动人类；HARP-Bench 只有 37 个桌面任务 - 条件实例 |
+| [RoboTwin](./robotwin.md) | 双臂操作的自动数据生成与仿真平台 | 同样提供脚本专家生成示教；HARP-Bench 的示教与评测都围绕人类事件触发展开 |
+
+## 结论
+
+**HARP-Bench 表明「人在场且在动」是现有操作策略的明显短板：脚本专家可达 0.99，而最佳学习策略 π0 只有 0.19。**
+
+1. 四类条件（Cueing、Contribution、Interruption、Co-presence）把人的影响拆开评测，成对的有人 / 无人变体可单独量化人的作用（§3.1）。
+2. 成功率与安全指标并不一致：π0 成功率最高但碰撞与最小距离更差，ACT 安全指标最好（表 3）。
+3. Interruption 最难，无意图专家与真机都为 0.00，说明需要理解人的意图而非只做避障（表 2、表 5）。
+4. 局限：人是脚本化头像、无持续适应；以桌面操作为主；10 cm 阈值只是评测约定；真机只覆盖一个任务族，仿真安全不等于部署安全（§6）。
 
 ## 工程实践
 
@@ -147,6 +168,7 @@ flowchart LR
 - [RoboTwin](../entities/robotwin.md)、[RoboCasa](../entities/robocasa.md)、[LIBERO](../entities/libero-benchmark.md)（论文表 1 对比的同类操作基准，LIBERO 在引言中被引）
 - [Sim2Real](../concepts/sim2real.md)
 - [安全滤波器 Safety Filter](../concepts/safety-filter.md)
+- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)：选基准时可把「有无主动人类」作为一个维度，HARP-Bench 是该维度的代表
 
 ## 参考来源
 

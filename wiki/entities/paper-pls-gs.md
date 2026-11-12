@@ -129,6 +129,23 @@ flowchart LR
 - 本页未取得代码（未发布），所有数字都是论文自报，未复现。项目页未访问，未核实。
 - 论文性质：方法论文，非机器人任务论文，与机器人落地的距离需要自行评估。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [Reduced 3DGS](./paper-reduced-3dgs.md) | 训练后剪枝、球谐自适应与量化压缩基元 | 事后压缩；PLS-GS 从测量几何生成支架，在训练前就限制锚点数量与位置 |
+| [CompactSplat](./paper-compactsplat.md) | 前馈 3DGS 按纹理分区与层级采样自适应分配高斯 | 纯图像前馈、关注推理期稀疏度；PLS-GS 是逐场景优化，依赖配准彩色 LiDAR |
+| [Gaussian-LIC2](./paper-gaussian-lic2.md) | 实时 LiDAR-惯性-相机高斯 SLAM，LiDAR 深度监督建图 | 在线 SLAM 系统；PLS-GS 是离线重建，LiDAR 以 HGMM 支架而非深度损失的形式进入，论文未与其对比 |
+
+## 结论
+
+**PLS-GS 把配准彩色点云拟合成 6D 层级高斯混合并用作 Scaffold-GS 的固定锚点支架，以略低的画质换来更贴近测量表面、体积约 42% 的更紧凑 3DGS。**
+
+1. GauU-Scene V2 五场景均值：精度 0.484、Chamfer 0.703 m，均优于两个 Scaffold-GS 基线；模型 172.9 MB、190.4 FPS（Table 1）。
+2. PSNR 低 1.03 至 1.65 dB，召回 / F1 低于 LiDAR 基线；匹配容量后几何优势保留，画质差距收窄到 0.21 dB（Table 2）。
+3. 概率生长只增加 1.06 倍锚点，远少于光度生长的 3.23 倍（Table 3）。
+4. 局限：单数据集、静态离线场景、LiDAR 同时作输入与几何真值、含预处理总时间高于基线，代码尚未发布（Sec. 5、7，Table S1）。
+
 ## 关联页面
 
 - [CompactSplat：前馈紧凑 3D 高斯](./paper-compactsplat.md)

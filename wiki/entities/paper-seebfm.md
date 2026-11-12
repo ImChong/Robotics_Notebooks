@@ -200,6 +200,7 @@ sequenceDiagram
 - [Perceptive BFM / PMT](./paper-perceptive-bfm.md) — 感知运动跟踪路线对照
 - [Behavior Foundation Model 概念](../concepts/behavior-foundation-model.md) — 总体分类与主干知识
 - [BFM 纵深路线](../../roadmap/depth-bfm.md) — 学习路径
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 深度感知输入在感知栈中的选型位置
 
 ## 参考来源
 

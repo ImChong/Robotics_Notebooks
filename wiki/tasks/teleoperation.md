@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-11-08
+updated: 2026-11-11
 original:
   - ../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md
 sources:
@@ -364,6 +364,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [motion_tracking（代码实体）](../entities/axellwppr-motion-tracking.md) — HEFT 官方 mjlab 训练与 sim2real 检查点
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — PICO egocentric 采集管线与 TWIST2/SONIC 双 GMT 分层 benchmark（arXiv:2606.17833）
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — VR 遥操作约 50 条 + 启发式扩数据，再 DPPO 联合微调（arXiv:2603.13707）
+- [OpenHLM（论文实体）](../entities/paper-loco-manip-161-154-openhlm.md) — PICO 全身遥操作接口对照：21-D decoupled / 24-D VR 三点 / 32-D 关节级，仅关节级覆盖踩踏板、蹲身穿架等全部任务（task progress，非二值成功率）；HuMI 无机器人采集每 40 条约 7 min（arXiv:2606.22174）
 
 ### 平台、中间件与操作员工作站
 

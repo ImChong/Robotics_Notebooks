@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, jepa, world-models, latent-dynamics, planning, mila, nyu, brown, samsung, ami-labs]
 status: complete
-updated: 2026-10-11
+updated: 2026-11-11
 arxiv: "2603.19312"
 venue: "arXiv 2026"
 code: https://github.com/lucas-maes/le-wm
@@ -144,7 +144,7 @@ sequenceDiagram
 - [Traj-LeWM](./paper-traj-lewm.md) — 潜轨迹代价扩展
 - [State–Readout Decoupling](./paper-state-readout-decoupling.md) — rollout 解耦
 - [CausalVAE WM Plug-in](./paper-causalvae-world-models.md) — 同组因果动力学线
-- [LeJEPA](./paper-lejepa.md)
+- [LeJEPA](./paper-lejepa.md) — SIGReg 出处：随机 1D 投影 + Epps–Pulley 特征函数检验，时间/内存对维数与 batch 近似线性；原文只做图像 SSL，无动作条件或机器人闭环评测（arXiv:2511.08544）
 - [LpWM](./paper-lpwm.md)
 - [LeVJEPA](./paper-levjepa.md)
 - [Music-JEPA](./paper-music-jepa.md) — 同一 JEPA 框架迁移到音频动作条件动力学

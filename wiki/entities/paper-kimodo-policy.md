@@ -90,6 +90,14 @@ KAM 的预训练对象是运动学序列，而不是视觉语义；冻结的 Kim
 - **局限：** §6 明确当前只适配 SONIC tracker，跨 tracker 未验证；独立 419h robot-interaction pretraining 的收益不可与 Kimodo-G1 运动骨干预训练混淆。
 - **参考：** §3–§6 含全部主要结果表与 Figure 14 消融；[论文原文](https://arxiv.org/html/2611.11554v1)。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [Kimodo](./kimodo.md) | 文本 / 约束条件的运动学扩散生成骨干 | 只做开环运动生成；本文冻结其 G1 Root/Body，外加视觉 ControlNet 与 HandNet，用实测历史分段再规划形成视觉闭环 |
+| [Ψ0](./paper-loco-manip-161-156-psi0.md) | 人形移动操作基础策略 | SIMPLE 八任务上为本文主对照：75.42%（181/240）对本文 75.83%（182/240），差距仅 1 次成功 |
+| [NVIDIA SONIC](./nvidia-sonic.md) | 通用全身运动跟踪控制器 | 本文的下层执行器（50 Hz），论文只适配 SONIC，跨 tracker 未验证（§6） |
+
 ## 结论
 
 **研究价值在于 冻结 Kimodo-G1 生成骨干，用视觉 ControlNet 与手部 HandNet 接入图像、手部状态及实测运动历史；对比时必须看清控制层级和数据口径。**

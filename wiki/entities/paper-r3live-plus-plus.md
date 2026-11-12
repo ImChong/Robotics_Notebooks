@@ -140,7 +140,7 @@ flowchart LR
 - Table 2 汇总时长 7354 s（约 2.04 h），而摘要/正文写 2.4 h，二者不一致（作者数字，未能解释）。
 - 本页是对论文与 README 的静态阅读，没有复现实验，也没有读核心源码。
 
-## 与其他方法的关系
+## 与其他工作对比
 
 | 对照 | 差异读法 |
 |------|----------|
@@ -149,6 +149,15 @@ flowchart LR
 | [LIO-SAM](../entities/lio-sam.md) | 因子图 LIO，本文 Table 3 的基线之一 |
 | [FAST-LIVO2](../entities/paper-rcl-2408-14035-fast-livo2-fast-direct-lidar-inertial-visual-odo.md) | 同组后续的直接法 LIVO，本页未读其正文，关系仅按同组与方法名判断（推测） |
 | [Gaussian-LIC2](../entities/paper-gaussian-lic2.md) | 另一类以 LiDAR-惯性-相机构建可渲染地图的工作，本页未比较 |
+
+## 结论
+
+**R3LIVE++ 让 LIO 与 VIO 共享一张存辐射度的点云地图，并加入光度标定与曝光在线估计，在 NCLT 上取得最低的平均 APE，同时能重建可重新渲染的辐射度地图。**
+
+1. NCLT 25 序列平均 APE 8.51 m，低于 FAST-LIO2 9.59、R2LIVE 10.58 与 LVI-SAM 15.03；但逐序列只赢 10 条，优势集中在长序列（§6.4，Table 3）。
+2. LiDAR 退化场景中纯 LiDAR 系统失败，R3LIVE++ 靠视觉回到起点，漂移约 4 cm（§6.5）。
+3. 辐射度地图光度误差 18.01，低于 R3LIVE 的 23.58，曝光时间估计误差也低于 Tum-cali（Table 4、5）。
+4. 局限：无回环，CRF 与渐晕需预标定，假设恒定光源与朗伯反射，NCLT 上未用光度标定，地图分辨率受点云间距限制（§8.2）。
 
 ## 关联页面
 

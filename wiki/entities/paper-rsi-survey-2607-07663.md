@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, recursive-self-improvement, llm-agents, ai-auto-research, self-evaluation, governance, literature-review]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-11
 arxiv: "2607.07663"
 code: https://github.com/deepgrounding/recursive-self-improvement
 related:
@@ -83,7 +83,7 @@ flowchart TB
 
 | 类别 | 论文数 | 2026 占比 | 典型代表（survey 锚点） |
 |------|--------|-----------|-------------------------|
-| Deployment | 393 | 74% | Self-Refine 系；harness/skill 进化 |
+| Deployment | 393 | 74% | [Self-Refine](./paper-self-refine-2303-17651.md) 系；harness/skill 进化 |
 | Training | 340 | 69% | STaR；Self-Rewarding；zero-data self-play |
 | Self-evaluation | 318 | 82% | LLM-as-judge；PRM；meta-eval |
 | Auto Research | 139 | 76% | FunSearch；The AI Scientist 系 |
@@ -207,6 +207,7 @@ sequenceDiagram
 - [递归自改进（概念）](../concepts/recursive-self-improvement.md)
 - [RSI 四层标准与五次推进](../queries/rsi-four-tier-five-pushes.md)
 - [AI Auto-Research](../concepts/ai-auto-research.md)
+- [Self-Refine（2303.17651）](./paper-self-refine-2303-17651.md) — 推理期「生成 → 自反馈 → 改写」的有界 self-refinement 原型，权重不变、evaluator 固定，属本文 deployment 类而非开放式 RSI
 - [The Last AI Built by Humans（2609.11873）](./paper-last-ai-built-by-humans-rsi.md) — 五级改进自治 + HCI 判别框架
 - [Awesome RSI](./awesome-rsi.md) · [MetaRSI-v1](./paper-metarsi-v1.md) · [Dream-RSI（2609.14858）](./paper-dream-rsi.md) · [karpathy/autoresearch](./karpathy-autoresearch.md)
 

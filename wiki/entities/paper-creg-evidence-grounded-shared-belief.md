@@ -68,6 +68,8 @@ flowchart LR
 - **表示条件（Sec. III-C）：** 主条件 canonical JSON、structured list、full graph、graph without relations；仅 Qwen2.5-7B 做 5 个因子消融（flat edge-removed、no provenance、no timestamps、no confidence、shuffled graph）。
 - **指标分层（Sec. IV-B）：** 可靠性（JSON 有效 / 修复率）、实体落地、信念轨迹（1 − TV，另有严格前缀信念态准确率、保持准确率、正确修正率、Brier 距离、更新延迟）、证据归因 F1、矛盾检测 / 定位 / 类型、动作（精确策略一致、动作族一致、证据支持率）、解释落地（引用覆盖，非忠实度）。
 
+## 评测结果
+
 主要数字（Table II/III，Qwen-7B 为基准）：
 
 | 系统 | 轨迹得分 | 严格态准确率 | 落地率 |
@@ -85,6 +87,25 @@ flowchart LR
 - **序列化无一致优势：** structured list − canonical JSON = +0.045；shuffled − full graph = +0.034；full graph − flat edge-removed = +0.041。严格态准确率上 canonical JSON 反而比 full graph 高 0.136，但 canonical JSON 提示更短（0.843 倍），作者不把差异归于格式本身（Sec. V-B）。
 - **轨迹非单调（Sec. V-C）：** 第 3 个前缀图族条件准确率 0.20–0.25，第 4 个回升到 0.62–0.81。
 - **透明基线（Table IV）：** 来源可靠度加权最高 0.700，最低 latest-observation 0.603，均高于诊断层、低于全部核心神经系统；作者指出「可靠度加权最好」来自参考语义，不是独立发现。
+
+## 与其他工作对比
+
+| 工作 | 关注点 | 与 CREG 的区别 |
+|------|--------|----------------|
+| 只评终点的智能体评测（见 [AI Agent 评测](../concepts/ai-agent-evaluation.md)） | 最终答案、任务成功或所选动作 | 分不清「推理正确」与「碰巧正确」；CREG 对每个证据前缀给参考后验，并把实体落地、证据归因、矛盾、动作、解释分层打分（Sec. I、IV-B） |
+| 透明融合基线（Table IV，如来源可靠度加权、latest-observation） | 不用语言模型的规则式 [传感器融合](../concepts/sensor-fusion.md) | 轨迹得分 0.603–0.700，高于诊断层模型、低于全部核心神经系统；「可靠度加权最好」由参考语义决定，不是独立发现 |
+| AGM 信念修正理论（Sec. II-B） | 形式化的信念修正公设 | 是理论框架；CREG 把信念更新落成可打分的合成数据与指标，并引入关系、取代链与到达时间 |
+
+选型时如何把这类诊断型基准与任务成功率基准搭配使用，见 [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)。
+
+## 结论
+
+**CREG 的核心价值是评测方法：按证据前缀给参考后验并分层打分，能暴露只看终点时看不到的失败——尤其是弱模型的大部分缺口其实是实体落地失败。**
+
+1. Qwen-1.5B 与 Mistral-7B 落地率仅 0.786 / 0.694，轨迹得分 0.397 / 0.239，远低于 Qwen-7B 的 0.797（Table II）。
+2. 关系内容有用（关系关联 regime 严格准确率 +0.153，Holm p = 0.0001），但图序列化本身无一致优势（Table III、Sec. V-B）。
+3. 信念准确率沿证据序列强烈非单调，第 3 个前缀图族条件只有 0.20–0.25（Sec. V-C）。
+4. 局限：全合成、二值状态、单目标实体，只测 1.5B–12B 四个开源模型且完整矩阵只在 Qwen-7B，无真机或仿真机器人实验，语义审计仅 1 位专家。
 
 ## 工程实践
 

@@ -74,7 +74,7 @@ flowchart LR
 - **损失（Sec. III-A4）：** Ruzicka 损失 + BCE + Focal(γ=3) + 时序一致项，权重 (1.2, 0.8, 0.7, 0.5)。
 - **训练设置（Sec. III-B, III-D）：** TartanGround 136 条轨迹 / 24 个环境，94 / 20 / 22 划分；T=24、stride 2；AdamW 3e-5；RTX 5090。
 
-### 关键结果
+## 实验结果
 
 | 对比 | 数字 | 出处 |
 |------|------|------|
@@ -86,6 +86,24 @@ flowchart LR
 | 消融：撤深度 / 二值目标 | 0.853 / 0.733 | Table II |
 | 无可行路径占比，铺装 | 32.4% → 9.9%（15 次运行） | Table III |
 | 无可行路径占比，粗糙地形 | 20.6% → 3.0%（21 次运行，10 对配对） | Table III |
+
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| 本文 SAM-VTP | 视频记忆 + 深度几何的连续可通行性分割 | 无提示、无位姿，记忆放在稠密预测器内部 |
+| [SAM 2](./paper-sam2.md) | 可提示的图像 / 视频分割基础模型，带流式记忆 | 本文的骨干；本文用学习到的固定提示替代点击，并改为连续可通行性输出 |
+| SAM-TP（GeNIE，论文基线） | 逐帧 SAM2 可通行性预测，不用记忆通路 | 仅 RGB、逐帧；fJacc 0.908 对 0.924，Flicker 0.0175 对 0.0120（Table I） |
+| WayFASTER / WVN（论文基线） | 自监督 / 在线学习的可通行性估计 | 论文只做单次运行对比，fJacc 0.791 / 0.760（Table I）；本仓库暂无对应页面 |
+
+## 结论
+
+**SAM-VTP 表明把 SAM2 的视频记忆与深度测得的几何一起用于稠密可通行性预测，可同时提升精度与时序稳定性，并能在 Orin Nano 上以 21.4 FPS 运行。**
+
+1. 合成测试集上 fJacc 0.908 → 0.924、Flicker 降约 31%，种子间差异小于 0.001（Table I）。
+2. 消融显示记忆与几何互补：单独加几何 0.900、单独加记忆 0.894、两者 0.914；改用二值目标降到 0.733（Table II）。
+3. 实机闭环中「无可行路径」周期占比在铺装与粗糙地形分别降到 9.9% 与 3.0%（Table III）。
+4. 局限：精度只在合成数据、对照自家规则生成的目标评测；实机样本小且 RGB 与 RGB-D 两因素混杂；依赖深度传感器，换平台需重新生成标签（Sec. V）。
 
 ## 工程实践
 
@@ -138,6 +156,7 @@ flowchart LR
 - [视觉基础模型趋势](../concepts/visual-foundation-model-trends.md)
 - [分层四足导航栈](../concepts/hierarchical-quadruped-navigation-stack.md)
 - [具身感知的六种空间表示](../concepts/embodied-perception-six-spatial-representations.md)
+- [机器人感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)：分割与 2D→3D 提升在感知栈中的选型取舍
 
 ## 参考来源
 

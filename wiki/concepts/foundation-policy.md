@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-10-19
+updated: 2026-11-11
 related:
   - ./universal-post-training-robotics.md
   - ./embodied-foundation-model-hardware-codesign.md
@@ -36,6 +36,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../tasks/locomotion.md
   - ../tasks/manipulation.md
+  - ../entities/humannet.md
 sources:
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/pi07.md
@@ -47,6 +48,7 @@ sources:
   - ../../sources/blogs/pd_perry_universal_post_training_robotics_2026-09.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
   - ../../sources/blogs/perceptron_isaac_05.md
+  - ../../sources/papers/humannet.md
 original:
   - ../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md
   - ../../sources/papers/bfm_survey_reading_arxiv_2506_20487_btm41.md
@@ -241,6 +243,7 @@ flowchart TD
 - [Generalist AI / GEN-1 千手](../entities/generalist-gen1-thousand-hands.md) — 闭源通才策略的多末端扩展叙事
 - [S1 / Skild AI](../entities/skild-s1.md) — 闭源通才策略的显式视频 ICL 叙事
 - [HOST](../entities/paper-host-one-shot-human-video.md) — 开源单视频 one-shot；不是百千小时涌现叙事
+- [HumanNet](../entities/humannet.md) — 约百万小时人中心视频语料（一三人称合计）；约 1000 h egocentric 子集作 LingBot-VLA 持续预训练，验证损失逼近约 100 h 真机数据，是人视频作基础策略先验的数据侧依据（arXiv:2605.06747）
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2
 
 ## 继续阅读
@@ -262,4 +265,5 @@ flowchart TD
 - [sources/repos/gr00t_wholebodycontrol.md](../../sources/repos/gr00t_wholebodycontrol.md) — GR00T WBC 官方单仓（解耦 WBC、GEAR-SONIC、MotionBricks 与 VLA 教程文档）
 - [wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md](../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md) — 机器人 ICL taxonomy 综述
 - [skild_s1_in_context_learning.md](../../sources/blogs/skild_s1_in_context_learning.md) — S1 视频 ICL 产业样本
+- [humannet.md](../../sources/papers/humannet.md) — HumanNet 人中心视频语料与 VLA 受控预训练对照
 - [机器人论文阅读笔记：GR00T N1](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/GR00T_N1_Humanoid_Foundation_Model/GR00T_N1_Humanoid_Foundation_Model.html)

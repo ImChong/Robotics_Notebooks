@@ -82,6 +82,19 @@ flowchart LR
 - 角点：5 近邻做协方差特征分解，最大特征值大于次大的 3 倍才当作直线；面点：5 近邻最小二乘拟合平面，任一点到平面距离超过 0.2 则弃用。
 - 优化设置与里程计相同（Huber 0.1、DENSE_QR、每次最多 4 次迭代、2 轮）；地图点按 `mapping_line_resolution`、`mapping_plane_resolution` 体素下采样。
 
+## 评测与实验
+
+A-LOAM 只有代码仓库，**没有任何定量评测**：README 只提供 VLP-16（NSH indoor outdoor 数据）与 KITTI（HDL-64）两个运行示例，以及 KITTI 截图和 GIF，没有轨迹误差、耗时或消融表（[来源归档](../../sources/papers/a-loam.md)「核对范围」）。本页也只做了静态读码，未编译运行，所以精度和速度都无法在本页给出数字。要看 LOAM 路线的定量结果，需回到 [LOAM 原论文](./paper-loam-lidar-odometry-and-mapping.md) 或后续工作自己的实验。
+
+## 与其他工作对比
+
+| 工作 | 关注点 | 与 A-LOAM 的区别 |
+|------|--------|------------------|
+| [LOAM](./paper-loam-lidar-odometry-and-mapping.md) | 算法原型：高频里程计 + 低频建图，边缘 / 平面特征配准 | A-LOAM 是其代码的 Eigen + Ceres 改写，畸变补偿默认关闭，不提供新实验 |
+| [LeGO-LOAM](./lego-loam.md) | 地面车辆：点云分割与地面约束 | 多了地面分割与优化；A-LOAM 无地面处理、无回环 |
+| [LIO-SAM](./lio-sam.md) | 因子图 + IMU 紧耦合 | 引入 IMU 与后端；A-LOAM 是纯激光、无后端 |
+| [DLO](./paper-dlo-direct-lidar-odometry.md) | 不提特征的稠密 GICP 前端 | 直接配准稠密点云；A-LOAM 仍走曲率特征点路线 |
+
 ## 工程实践
 
 - 环境（README）：Ubuntu 16.04 或 18.04、ROS Kinetic 或 Melodic、Ceres、PCL；提供 VLP-16（NSH indoor outdoor 数据）与 KITTI（HDL-64）两个示例以及 Docker 支持。
@@ -109,6 +122,15 @@ flowchart LR
 - **畸变补偿默认关闭**，高速运动或旋转下可能受影响（推测，未实测）。
 - **维护状态：** 读取的 `devel` 分支最新提交为 2019-03-28；README 针对 ROS 1 与 Ubuntu 16.04/18.04，在较新系统上能否直接编译未验证。
 - **我的核对范围：** 仅静态读，未编译运行；`laserMapping.cpp` 的缓存与发布样板代码只扫读；`kittiHelper.cpp`、Docker、rviz 配置未细读。
+
+## 结论
+
+**A-LOAM 的价值在于「可读的 LOAM」：用 Ceres 自动求导把 LOAM 三段流水线压到约 2000 行，适合学习而不是作为精度基线。**
+
+1. 保留 LOAM 的特征提取、scan-to-scan 里程计、scan-to-map 建图三节点结构，残差由 Ceres AutoDiff 求解，无手推 Jacobian。
+2. 与综述说法相比，它是改写自 LOAM 与 LOAM_NOTED 的既有代码，而不是从论文从零复现。
+3. 默认配置不做运动畸变补偿（`DISTORTION 0`），移植前需注意。
+4. 局限：没有回环、IMU 与后端，只支持 Velodyne 16/32/64 线，仓库无任何定量评测，维护停在 2019 年。
 
 ## 关联页面
 

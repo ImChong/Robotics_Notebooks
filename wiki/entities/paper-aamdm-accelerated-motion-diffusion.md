@@ -76,6 +76,14 @@ CVPR 2024 论文在 LaFAN1、交互控制及人造多模态数据上做定量与
 - **附录：** §6 的 Algorithm 1 明确先训练/滚动精修 ADM，再通过 DD-GAN G/D 优化快速生成分支；训练窗口 10，batch 64，ADM LR 3e-4，G/D LR 1e-4。
 - **参考：** §3.1–§3.6、§4.1–§4.3、§5、§6；[论文原文](https://arxiv.org/html/2401.06146)。
 
+## 与其他工作对比
+
+| 工作 | 关注点 | 与 AAMDM 的区别 |
+|------|--------|-----------------|
+| [A-MDM](./paper-a-mdm-interactive-character-control.md) | 逐帧自回归扩散 + 采样 / inpainting / PPO 交互控制 | 原生扩散逐帧去噪；AAMDM 用潜空间 DD-GAN 3 步 + ADM 2 步把步数压到 5，表1 中 AAMDM 173 FPS 对 AMDM200 4.72 FPS |
+| [MDM](./paper-mdm-human-motion-diffusion.md) | 整段动作扩散生成，文生动作与编辑 | 非自回归、离线整段生成，不面向交互速度 |
+| [ARDY](./ardy.md) | 自回归扩散交互生成，4-step 约 33 ms，含 G1 闭环演示 | 同样追求少步实时，但在潜空间 Transformer 去噪并带文本条件；AAMDM 无真机实验 |
+
 ## 结论
 
 **研究价值在于 用潜空间 DD-GAN 快速生成动作草稿，再由自回归扩散模块少量步数精修以实现交互速度；对比时必须看清控制层级和数据口径。**

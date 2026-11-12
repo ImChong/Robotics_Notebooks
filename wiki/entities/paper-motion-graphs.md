@@ -4,6 +4,7 @@ project_id: motion-graphs-2002
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
 status: complete
 updated: 2026-11-11
+venue: "SIGGRAPH 2002"
 project: https://research.cs.wisc.edu/graphics/Gallery/kovar.vol/MoGraphs/
 original:
   - ../../sources/papers/motion_graphs_primary.md
@@ -74,6 +75,14 @@ flowchart LR
 - **搜索：** 用路径拟合的弧长对齐误差分段进行分支定界；论文使用 80–120 帧搜索视野、每次保留 25–30 帧，不是网络预测未来动作。
 - **速度与限制：** Fig.7 走路动作 54.9 秒需要 58.1 秒计算，武术 87.7 秒动作需 15.0 秒；互动方向表通过**预计算**索引，作者明确指出改向存在延迟；构图候选检测 O(F²)。
 - **参考：** §3.1–§3.4、§4.2、§5.1–§5.2、§6；[原作者论文 PDF](https://research.cs.wisc.edu/graphics/Papers/Gleicher/Mocap/mograph.pdf)；[原作者演示](https://research.cs.wisc.edu/graphics/Gallery/kovar.vol/MoGraphs/)。
+
+## 与其他工作对比
+
+| 工作 | 关注点 | 与本文的区别 |
+|------|--------|--------------|
+| [MDM](./paper-mdm-human-motion-diffusion.md) | Transformer 扩散模型按文本 / 动作类条件生成整段动作 | Motion Graphs 不学模型，只在动捕库的片段与转场间做图搜索，输出动作不超出数据库覆盖范围 |
+| [ARDY](./ardy.md) | 自回归扩散的交互式生成，流式文本条件，4-step 约 33 ms | Motion Graphs 的交互改向靠预计算方向表，作者明说有延迟（§5.2） |
+| [MotionBricks](../methods/motionbricks.md) | 潜空间底座加智能基元的大规模技能库实时合成 | 同属「拼接已有技能 / 片段」的思路，但 Motion Graphs 直接拼原始动捕帧，转场靠插值与 slerp |
 
 ## 结论
 

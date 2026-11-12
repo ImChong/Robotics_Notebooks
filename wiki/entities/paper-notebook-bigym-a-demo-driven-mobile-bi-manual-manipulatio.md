@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-11
 arxiv: "2407.07788"
 related:
   - ../overview/paper-notebook-category-11-simulation-benchmark.md
@@ -183,7 +183,7 @@ Table 2 中 40 个任务的平均成功率（论文 Average 行）：
 
 - 分类父节点：[paper-notebook-category-11-simulation-benchmark](../overview/paper-notebook-category-11-simulation-benchmark.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
-- 名称相近的另一基准页：[paper-bigym2-humanoid-household-benchmark](paper-bigym2-humanoid-household-benchmark.md)（两者关系本页未核实）
+- 后续工作：[BiGym 2.0](paper-bigym2-humanoid-household-benchmark.md)（arXiv:2610.07594，同一 Imperial College London 团队）——不是本文的新版本，而是另一篇论文：把基准从本文 H1 的浮动基座（腿部只回放动画）迁移到每个环境步都真实行走、保持平衡的 Unitree G1，并统一比较模仿学习、VLA、示范强化学习与编码智能体（见 [bigym2_arxiv_2610_07594.md](../../sources/papers/bigym2_arxiv_2610_07594.md)）
 - 同期家居基准：[robocasa](robocasa.md)（论文 §2 提及）
 - 方法背景：[imitation-learning](../methods/imitation-learning.md)、[behavior-cloning](../methods/behavior-cloning.md)、[diffusion-policy](../methods/diffusion-policy.md)、[paper-act](paper-act.md)
 - 仿真平台：[mujoco](mujoco.md)
