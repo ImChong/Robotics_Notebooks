@@ -4,6 +4,7 @@ tags: [control, wbc, humanoid, optimization]
 status: complete
 updated: 2026-11-11
 related:
+  - ../entities/cartwheel-control.md
   - ../entities/paper-dkwbc.md
   - ../entities/paper-humanoid-touch-dream.md
   - ../entities/embodied-interview-qa.md
@@ -186,6 +187,10 @@ print("joint acceleration command:", qdd_star)
 | 4 | Fok et al. (2015) ControlIt! WBOSC 软件 | [ControlIt!](../entities/controlit.md) |
 
 四足 **MPC→WBC** 开源参考：[legbot-MPC-WBC](../entities/legbot-mpc-wbc.md)。总览见 [hub-wbc](../overview/hub-wbc.md)。
+
+## 学习式动作跟踪案例：Cartwheel Control
+
+[Cartwheel Control](../entities/cartwheel-control.md) 公开 RP1、Asimov-1、G1 三款机器人专属跟踪权重，以 50 Hz 输出 PD 位置目标，在 200 Hz MuJoCo Warp 仿真中回放。它属于**学习式参考运动跟踪**，与上文 QP/HQP WBC 是不同技术路线；目前公开推理/仿真代码及权重，训练实现与实机验证仍缺乏公开证据。
 
 ## 参考来源
 
