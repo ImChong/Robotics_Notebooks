@@ -2007,6 +2007,7 @@
 - [Chronos（Physics-Informed Full-History Framework for Non-Markovian Long-Horizon Manipulation）](wiki/entities/paper-chronos.md) — Chronos**（arXiv:2606.30318，[项目页](https://chronos-manipulation. `📅unknown` `[entity_page]`
 - [ChronoSRL：自监督强化学习的时间几何表征](wiki/entities/paper-chronosrl.md) — ChronoSRL: Temporal Geometry for Self-Supervised Reinforcement Learning**（[arXiv:2609.36238](https `📅unknown` `[entity_page]`
 - [ChunkTrust（arXiv:2609.39754）](wiki/entities/paper-chunktrust.md) — ChunkTrust: Adapting Execution Horizons for Robot Policies with Action-Expert Evidence**（[arXiv:26 `📅unknown` `[entity_page]`
+- [CIALLO： 学习跨本体操作的共享意图表示](wiki/entities/paper-ciallo.md) — CIALLO 让不同机器人的动作先映射到共享短程意图空间，再利用本体条件动作解码器控制新机器人。 `📅unknown` `[entity_page]`
 - [CLAP：跨本体视频世界模型当零样本物理模拟器](wiki/entities/paper-clap-cross-embodiment.md) — CLAP**（*Cross-Embodiment Video World Models are Zero-Shot Physical Simulators*，[arXiv:2608.27406 `📅unknown` `[entity_page]`
 - [类条件保形 STL 推断（arXiv:2610.14352）](wiki/entities/paper-class-conditional-conformal-stl-inference.md) — 类条件保形 STL 推断**（*Class-Conditional Conformal Prediction for Signal Temporal Logic Inference with Ma `📅unknown` `[entity_page]`
 - [CLIFT：不打开模型盒子的闭环迭代微调](wiki/entities/paper-clift-closed-loop-iterative-finetuning.md) — CLIFT**（*Closed-Loop Iterative Fine-Tuning*；论文 *CLIFT: Turning Gemini Robotics On-Device into Huma `📅unknown` `[entity_page]`
@@ -2195,6 +2196,7 @@
 - [DexPort（arXiv:2610.32969）](wiki/entities/paper-dexport.md) — DexPort**（*DexPort: A Hand-Held Skill Interface for Dexterous Hand Data Collection*，[arXiv:2610.32 `📅unknown` `[entity_page]`
 - [DexRoam: Learning Mobile Bimanual Dexterous Manipulation from Egocentric Whole-Body Human Demonstrations｜DexRoam：基于第一视角全身人体示教学习移动双臂灵巧操作](wiki/entities/paper-dexroam-mobile-bimanual-manipulation.md) — DexRoam** 将第一视角双目 RGB 与连续人体全身动作，经具身、动作语义和任务进度三阶段对齐到机器人控制接口，和真实机器人示教共同训练统一全身动作的 VLA 策略（CoRL 2026）。 `📅unknown` `[entity_page]`
 - [DexSafe：灵巧手位姿到达与安全过滤](wiki/entities/paper-dexsafe.md) — DexSafe** 在仿真训练灵巧手移动手中物体到目标位姿，并以学习式残差过滤器降低掉落风险。 `📅unknown` `[entity_page]`
+- [DexSeed： 将人手–物体交互扩展为灵巧操作示范](wiki/entities/paper-dexseed.md) — DexSeed 是把少量人手–物体交互映射、扩增并物理验证为机器人灵巧抓取示范的数据合成框架。 `📅unknown` `[entity_page]`
 - [DexStitch：从人类视频学习并组合灵巧技能](wiki/entities/paper-dexstitch-skill-stitching-human-videos.md) — DexStitch 把长视频切成技能段与过渡段，再把人类手部示范转换成机器人可用的数据，使单个技能可以按需串联。 `📅unknown` `[entity_page]`
 - [DexSuite（arXiv:2610.37799）](wiki/entities/paper-dexsuite.md) — DexSuite**（*DexSuite: An All-in-One Framework for Dexterous Manipulation Across Arms, Hands, and T `📅unknown` `[entity_page]`
 - [DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）](wiki/entities/paper-dexverse.md) — DexVerse**（arXiv:2607.08751，[项目页](https://ycyao216.github.io/D `📅unknown` `[entity_page]`
@@ -2361,6 +2363,7 @@
 - [EGR：面向鲁棒 VLA 的证据门控正则](wiki/entities/paper-egr.md) — EGR**（*Evidence-Gated Regularization*；*Sensing Which Modality Matters*，[arXiv:2609.03142](https:// `📅unknown` `[entity_page]`
 - [EigenDEXplore](wiki/entities/paper-eigendexplore.md) — EigenDEXplore**（*Structured Exploration for Dexterous Manipulation with Human Priors*，arXiv:2610.0 `📅unknown` `[entity_page]`
 - [ELA（arXiv:2611.05571）](wiki/entities/paper-ela.md) — ELA**（*ELA: End-to-End Latent Action Policy Learning from Video Demonstrations*，[arXiv:2611.05571 `📅unknown` `[entity_page]`
+- [Elastic-WAM： 自适应时空想象的高效机器人控制](wiki/entities/paper-elastic-wam.md) — Elastic-WAM 是为世界–动作模型动态分配视频未来想象计算的控制方法，决定何时停止、做多少步、更新哪些区域。 `📅unknown` `[entity_page]`
 - [ElastiQP（arXiv:2609.19080）](wiki/entities/paper-elastiqp.md) — ElastiQP**（*ElastiQP: An Always-Feasible QP Solver for Constrained Robot Control*，[arXiv:2609.1908 `📅unknown` `[entity_page]`
 - [ELEVATE（arXiv:2610.38388）](wiki/entities/paper-elevate.md) — ELEVATE**（*ELEVATE: Agentic Controller Acquisition from Task Failure for Quadrupedal Manipulation `📅unknown` `[entity_page]`
 - [Embodied at Sea（arXiv:2610.38199）](wiki/entities/paper-embodied-at-sea.md) — Embodied at Sea**（*Embodied at Sea: Imitation Learning for Multi-Task Underwater Manipulation*，[ar `📅unknown` `[entity_page]`
@@ -2982,6 +2985,7 @@
 - [Laparoscopic Distillation：重新研究腹腔镜机器人操作中从状态到视觉的策略蒸馏分布匹配](wiki/entities/paper-laparoscopic-state-to-vision-policy-distillation.md) — Laparoscopic Distillation**（*Revisiting Distribution Matching for State-to-Vision Policy Distillat `📅unknown` `[entity_page]`
 - [The Last AI Built by Humans: Toward Genuine Recursive Self-Improvement](wiki/entities/paper-last-ai-built-by-humans-rsi.md) — 这篇论文不是一个新模型，而是用五级自治框架和 HCI 衡量 AI 改进闭环离“真正递归自改进”还有多远。 `📅unknown` `[entity_page]`
 - [LaST-HD（Learning Latent Physical Reasoning from Scalable Human Data）](wiki/entities/paper-last-hd-latent-physical-reasoning.md) — LaST-HD** 是北京大学、香港中文大学、Simplexity Robotics 与 Aether Tech 等团队的 **人手→机器人操作 VLA** 论文（arXiv:2606.23685 `📅unknown` `[entity_page]`
+- [LaST0.5： 以交互为中心的潜空间推理通才世界–动作模型](wiki/entities/paper-last05.md) — LaST0.5 是将视频未来生成、物体交互潜变量推理和连续机器人动作解码连接起来的 World Action Model。 `📅unknown` `[entity_page]`
 - [What Matters for Latent Actions](wiki/entities/paper-latent-actions-matter.md) — What Matters for Latent Actions in Robot Learning**（[arXiv:2608.19613](https://arxiv.org/abs/2608. `📅unknown` `[entity_page]`
 - [Latent Noise Representation Bridging（arXiv:2611.07275）](wiki/entities/paper-latent-noise-representation-bridging.md) — Latent Noise Representation Bridging**（*Efficient Diffusion Policy Fine Tuning with Latent Noise R `📅unknown` `[entity_page]`
 - [Latent RL Priors：面向数据高效灵巧操作的潜在强化学习先验](wiki/entities/paper-latent-rl-priors.md) — Latent RL Prior 把大量特权 RL 控制经验蒸馏成动作解码器，再冻结它、学习图像到潜在条件的接口，以较少视觉示范适配灵巧操作。 `📅unknown` `[entity_page]`
@@ -3211,6 +3215,7 @@
 - [MetaGenSim：学习该在仿真里生成什么数据](wiki/entities/paper-metagensim.md) — MetaGenSim** 把仿真器的数据生成分布当作待优化对象（论文称 Active Generative Simulation）：先在参数空间上均匀采样一个探针数据集，用元梯度训练一个 rate `📅unknown` `[entity_page]`
 - [MetaRSI-v1：递归自改进系统的元递归自改进](wiki/entities/paper-metarsi-v1.md) — MetaRSI-v1**（项目页亦称 MetaRSI / RSI2；arXiv:2609.06396，[CosmosMind `📅unknown` `[entity_page]`
 - [METATRON：可提示的人形全身动作执行层](wiki/entities/paper-metatron-promptable-whole-body-execution.md) — METATRON**（*METATRON: A Promptable Whole-Body Execution Layer for Humanoids*，[arXiv:2610.38027](ht `📅unknown` `[entity_page]`
+- [MetaWAM： 从视频帧到机器人元帧：世界–动作模型的统一潜空间接口](wiki/entities/paper-metawam.md) — MetaWAM 将机器人动作、状态和价值信号塞入与视频扩散兼容的频域 meta-frame，形成统一世界–动作潜空间接口。 `📅unknown` `[entity_page]`
 - [MEVION：高力高速双臂数据采集系统](wiki/entities/paper-mevion.md) — MEVION** 是面向重载、高速双臂模仿学习的开源 leader–follower 数据采集平台，用四条 6-DoF 机械臂与平行夹爪扩展 ALOHA 的力速工作区。 `📅unknown` `[entity_page]`
 - [MGDP：四足通用深度感知模型](wiki/entities/paper-mgdp-generalized-depth-perception.md) — MGDP**（*Mastering a Generalized Depth Perception Model for Quadruped Locomotion*，*Advanced Science `📅unknown` `[entity_page]`
 - [Model Hierarchy Predictive Control (MHPC)](wiki/entities/paper-mhpc.md) — Li, Frei & Wensing（圣母大学，arXiv:2010.08881）** 提出 **MHPC**：把传统「先简 `📅unknown` `[entity_page]`
