@@ -95,7 +95,7 @@ sequenceDiagram
     A->>T: draw / scaffold 选定主题
     T->>F: 生成 CSS tokens 与基准样式
     A->>F: 编写页面 HTML/CSS
-    A->>L: node sloplint.mjs <file> --render
+    A->>L: node sloplint.mjs pagePath --render
     L->>F: 读取 HTML/CSS 或前端组件
     L->>L: 执行静态规则检查
     L->>R: renderCheck(...)
