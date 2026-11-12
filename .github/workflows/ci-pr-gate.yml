@@ -1,10 +1,11 @@
-# 轻量 smoke：用于确认 GitHub Actions 已对 push/PR 恢复调度。
+# 轻量 smoke：验证 main push 和 PR 的 GitHub Actions 调度。
 # 若本 workflow 仍不出现 run，请到仓库 Settings → Actions 启用 Actions（与 Claude/Cursor App checks 无关）。
 name: CI PR Gate (smoke)
 
 on:
+  # PR 分支的同一 SHA 会同时产生 push 与 pull_request 事件；仅在 main push 时触发，避免双跑。
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review]
