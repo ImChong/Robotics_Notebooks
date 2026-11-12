@@ -2,7 +2,9 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-12
+original:
+  - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 related:
   - ../entities/paper-grasp.md
   - ../entities/paper-mesa.md
@@ -12,6 +14,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
   - ../../sources/papers/grasp_arxiv_2611_05754.md
+  - ../../sources/sites/reflexarc.md
 summary: "具身智能小站 2026-11-05 盘点：GRASP 梯度引导采样的接触丰富物理重定向（深读）、MESA 分项泛化评测、AIRoA-0 手持夹爪示范，以及灵巧操作、策略评测、世界模型与控制、移动导航与人机交互等 43 篇；43/43 独立节点（新建 28 / 复用 15）。"
 ---
 
@@ -19,7 +22,9 @@ summary: "具身智能小站 2026-11-05 盘点：GRASP 梯度引导采样的接�
 
 > **本页定位**：为 [具身智能小站 · 人能稳稳提起的罐子，换一双机器手怎么提？](https://mp.weixin.qq.com/s/VS8xbDtQbQTJM3f_WuB9Og)（2026-11-05）提供按研究方向组织的阅读坐标；43 篇全部有独立详情节点。
 
-## 一句话观点
+## 一句话定义
+
+**这是一份对具身智能小站 2026-11-05 期 43 篇论文的主题导航与阅读优先级索引，不是 43 篇论文的系统综述或实验复现报告。**
 
 **本期主线是把人手示范变成机器手真能执行的动作，并把泛化与评测拆开看：GRASP 在物理仿真里用梯度引导采样重定向手物接触，MESA 分项测摆位 / 物体 / 类别 / 子任务组合泛化，AIRoA-0 用手持夹爪采集长程双臂示范；其余覆盖世界模型与控制、移动导航与人机交互。深读 GRASP，跟进 MESA 与 AIRoA-0。**
 
@@ -31,7 +36,7 @@ summary: "具身智能小站 2026-11-05 盘点：GRASP 梯度引导采样的接�
 | WAM | World Action Model | 世界–动作联合模型 |
 | VLM | Vision-Language Model | 视觉语言模型 |
 
-## 为什么单独做这张地图
+## 为什么重要
 
 - 公众号一次列出 43 篇（1 深读 + 2 跟进 + 40 扫读）、方向跨度大，需要横切面索引；每篇只保留一个判断，细节在各节点。
 - 节点内的数字为公众号转述，未核验原文表格（GRASP 已通读原文，例外）；开源结论为入库日核查结果，见各节点「为什么重要」。
@@ -47,6 +52,12 @@ flowchart TB
   GOAL[可部署具身系统]
 ```
 
+## 工程实践
+
+1. **按任务筛选：** 从下方四个主题分组找到目标问题，跳转独立论文节点阅读方法、实验证据和局限，避免把 43 条短摘要当成完整论证。
+2. **核对实验数字：** 公众号给出的指标仅作为初筛线索；定量比较必须回到对应论文、实验设置和表格。GRASP 已有独立全文通读记录；其余节点的阅读/复现程度分别以各自页面为准。
+3. **检查复现入口：** 开源列为入库或最近核验时的状态，点击独立实体页核对代码、权重与训练入口。例：ReflexArc 可在官方页看交互演示，但作者仍标注 `Code Coming soon`，不能据此将其计为可复现开源实现。
+
 ## 分组索引
 
 ### 灵巧操作与示范学习（13 篇）
@@ -61,7 +72,7 @@ flowchart TB
 | RoboTryOn | [paper-robotryon](../entities/paper-robotryon.md) | 已开源 |
 | Human-to-Robot Transfer via VLA Bridging | [paper-human-to-robot-transfer-via-vla-bridging](../entities/paper-human-to-robot-transfer-via-vla-bridging.md)（复用） | 已开源 |
 | DexHOT | [paper-dexhot](../entities/paper-dexhot.md) | 部分开源 |
-| ReflexArc | [paper-reflexarc](../entities/paper-reflexarc.md)（复用） | 已开源 |
+| ReflexArc | [paper-reflexarc](../entities/paper-reflexarc.md)（复用） | 代码待发布（官网标注 Code Coming soon，2026-11-12 核查） |
 | GUILD | [paper-guild](../entities/paper-guild.md) | 项目页未列 GitHub |
 | ELA | [paper-ela](../entities/paper-ela.md) | 项目页未列 GitHub |
 | Shape Servoing Tutorial Part II | [paper-shape-servoing-tutorial-part-ii](../entities/paper-shape-servoing-tutorial-part-ii.md)（复用） | 已开源 |
@@ -112,6 +123,12 @@ flowchart TB
 | For You, Not for Everyone | [paper-for-you-not-for-everyone](../entities/paper-for-you-not-for-everyone.md) | 已开源 |
 | Just Between Us | [paper-just-between-us](../entities/paper-just-between-us.md)（复用） | 已开源 |
 
+## 局限与风险
+
+- **原文范围：** 已通读的 `original` 是 2026-11-05 微信汇总文章，覆盖它列出的 43 篇条目；**不是**逐篇通读 43 篇论文。只有对应独立节点及其原始论文归档才能证明单篇论文是否已通读。
+- **二手指标：** 汇总中的模型性能、数据规模与成功率等多源数据不能直接横比；如需评测，应先确认任务、样本数、计量口径及仿真/真机协议。
+- **开源信息的时效性：** 代码和权重可能在汇总发布后变化。本页只对明确复核的 ReflexArc 更新至 2026-11-12，其余开源列不代表今日逐项重新验证；以各实体页的最新核查记录为准。
+
 ## 关联页面
 
 - [VLA](../methods/vla.md)
@@ -120,6 +137,7 @@ flowchart TB
 ## 参考来源
 
 - [wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md](../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md)
+- [ReflexArc 官方项目页核查归档](../../sources/sites/reflexarc.md) — 2026-11-12 代码仍待发布
 - [grasp_arxiv_2611_05754.md](../../sources/papers/grasp_arxiv_2611_05754.md) — GRASP 原文通读：OakInk2 Sharpa 双手 1,352 条示范，1,024 粒子成功率 92.8%、2,000 粒子 94.2%（成功率来自仿真；arXiv:2611.05754）
 
 ## 推荐继续阅读
