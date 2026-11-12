@@ -6413,6 +6413,7 @@
 - [Ruckig](wiki/entities/ruckig.md) — Ruckig**（https://github.com/pantor/ruckig）是 [Qt历险记《C/C++ 运动控制开 `📅unknown` `[entity_page]`
 - [RUKA-v2 Hand](wiki/entities/ruka-v2-hand.md) — RUKA-v2** 是纽约大学团队发布的 **全硬件、全软件、全文档开源** 腱驱动仿人灵巧手：在 [RUKA v1](./paper-notebook-ruka-rethinking-the-d `📅unknown` `[entity_page]`
 - [RunPod](wiki/entities/runpod.md) — RunPod**（runpod.io）提供 **GPU Pods**（Docker 容器）、**Serverless GPU** 与 **Net `📅unknown` `[entity_page]`
+- [Praxis-1：从视频预训练到机器人控制 / From Video Pretraining to Robot Control](wiki/entities/runway-praxis-1.md) — Praxis-1** 是 Runway 发布的视频—动作联合机器人基础模型：利用通用及具身视频学习未来世界演化，再从共享视频骨干的中间特征生成可执行动作块，并按机器人本体微调。 `📅unknown` `[entity_page]`
 - [RustGIS](wiki/entities/rustgis.md) — RustGIS** 是以 Rust 编写、可运行于 Windows、macOS、Linux 和浏览器的 GIS 工作台，用于地理空间数据制图、编辑与分析，并提供可脚本化命令。 `📅unknown` `[entity_page]`
 - [FEP Agent Hub（S2mon123/FEP-Agent-Hub）](wiki/entities/s2mon123-fep-agent-hub.md) — FEP Agent Hub（S2mon123/FEP-Agent-Hub）是将 FreeCAD 参数化 CAD、Elmer FEM 网格/求解和 ParaView 无头后处理串成免费三件套，并以多个独 `📅unknown` `[entity_page]`
 - [Sa2VA](wiki/entities/sa2va.md) — Sa2VA**（*Marrying SAM2 with LLaVA*，arXiv:2501.04001）把 **SAM 2 `📅unknown` `[entity_page]`

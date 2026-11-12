@@ -336,6 +336,12 @@ op: ingest
 - 从既有 Agent 记忆 wiki 建反向链接；未改动 catalog/log/export 派生文件。
 - 论文数字属作者报告，未进行 CUDA benchmark 与实机复现；项目主页正文抓取未完成，具体边界记录在 sources/sites。
 
+## [2026-11-12] ingest | Runway Praxis-1 视频预训练到机器人控制
+
+- 通读 Runway 官方技术报告，核对视频预训练、具身中训练、视频—动作联合训练、本体适配与 benchmark 的评测边界。
+- 已核查 Runway 官方仓库公开权重、推理、MuJoCo 仿真、策略服务及微调入口；记录源码运行时序并补充 WAM 概念交叉引用。
+- 新建独立项目节点，与历史同名 Praxis（第一视角全身操作）及 OAT 的 praxis-vla 明确区分。
+
 ## [2026-11-12] ingest | sources/papers/ego2robot_learning_survey_arxiv_2611_13610.md — 通读 Ego2Robot Learning 综述并建立独立实体
 
 - 对 2026-11-10 的 arXiv:2611.13610v1 通读四范式、三类数据资源、五项开放挑战并绘制论文分类 Mermaid 图；区分库内 arXiv:2608.02580 同名合成方法。
