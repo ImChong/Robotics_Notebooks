@@ -27,7 +27,7 @@ related:
   - ./paper-dreamsteer-vla-deployment-steering.md
   - ./paper-kairos-native-world-model-stack.md
   - ../tasks/manipulation.md
-  - ../methods/flow-matching-embodied-policy.md
+  - ../concepts/flow-matching-embodied-policy.md
 sources:
   - ../../sources/papers/fact_arxiv_2608_10232.md
   - ../../sources/repos/fact.md
@@ -198,7 +198,7 @@ sequenceDiagram
 - [World Action Models](../concepts/world-action-models.md)
 - [VLA](../methods/vla.md)
 - [生成式世界模型](../methods/generative-world-models.md)
-- [Flow Matching 具身策略](../methods/flow-matching-embodied-policy.md)
+- [Flow Matching 具身策略](../concepts/flow-matching-embodied-policy.md)
 - [操作任务](../tasks/manipulation.md)
 - [DreamWAM](./paper-dreamwam.md)
 - [Flex-π](./paper-flex-pi.md)
