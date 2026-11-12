@@ -10,6 +10,8 @@
 - **入库日期：** 2026-11-05
 - **抓取方式：** `scripts/fetch_wechat_article.py`（Chromium + 微信 UA）
 - **原始抓取落盘：** [`sources/raw/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md`](../raw/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md)
+- **核对范围：** 已完整阅读 2026-11-05 公众号原始抓取（`sources/raw/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md`）：阅读路线、GRASP 深读、MESA 与 AIRoA-0 跟进、其余 40 篇逐条摘要、来源链接及末尾说明；逐项核对这份**汇总文章本身**与 43 篇索引的对应关系。另根据 ReflexArc 官方项目页复核其代码仍待发布。这里的通读仅针对公众号汇总原文，**不表示已逐篇通读其引用的 43 篇论文**。
+- **通读：** 已完成
 - **一句话说明：** 本期主线是把人手示范变成机器手真能执行的动作，并把泛化与评测拆开看：GRASP 在物理仿真里用梯度引导采样重定向手物接触，MESA 分项测摆位 / 物体 / 类别 / 子任务组合泛化，AIRoA-0 用手持夹爪采集长程双臂示范；其余覆盖世界模型与控制、移动导航与人机交互。深读 GRASP，跟进 MESA 与 AIRoA-0。 共 43 篇；**43/43 独立详情节点**（本 ingest **新建 28**、**复用 15**）。
 
 ## 43 篇 → 本库节点
@@ -38,7 +40,7 @@
 | 20 | 灵巧操作与示范学习 | Human-to-Robot Transfer via VLA Bridging | [2611.04391](https://arxiv.org/abs/2611.04391) | **已开源** | [paper-human-to-robot-transfer-via-vla-bridging](../../wiki/entities/paper-human-to-robot-transfer-via-vla-bridging.md)（**复用**） |
 | 21 | 灵巧操作与示范学习 | DexHOT | [2611.05119](https://arxiv.org/abs/2611.05119) | **部分开源** | [paper-dexhot](../../wiki/entities/paper-dexhot.md) |
 | 22 | 世界模型与控制 | Future Representation Distillation | [2611.04527](https://arxiv.org/abs/2611.04527) | **待发布** | [paper-future-representation-distillation](../../wiki/entities/paper-future-representation-distillation.md) |
-| 23 | 灵巧操作与示范学习 | ReflexArc | [2611.04424](https://arxiv.org/abs/2611.04424) | **已开源** | [paper-reflexarc](../../wiki/entities/paper-reflexarc.md)（**复用**） |
+| 23 | 灵巧操作与示范学习 | ReflexArc | [2611.04424](https://arxiv.org/abs/2611.04424) | **代码待发布（官网 Code Coming soon，2026-11-12 复核）** | [paper-reflexarc](../../wiki/entities/paper-reflexarc.md)（**复用**） |
 | 24 | 世界模型与控制 | Closed-Loop Ocean Sampling | [2611.05776](https://arxiv.org/abs/2611.05776) | **已开源** | [paper-closed-loop-ocean-sampling](../../wiki/entities/paper-closed-loop-ocean-sampling.md) |
 | 25 | 移动导航与人机交互 | WayTrace | [2611.05129](https://arxiv.org/abs/2611.05129) | **项目页未列 GitHub** | [paper-waytrace](../../wiki/entities/paper-waytrace.md) |
 | 26 | 世界模型与控制 | Barrier-State Safe Navigation | [2611.05617](https://arxiv.org/abs/2611.05617) | **已开源** | [paper-barrier-state-safe-navigation](../../wiki/entities/paper-barrier-state-safe-navigation.md) |
@@ -71,4 +73,5 @@
 - [x] 公众号正文抓取（2026-11-05）
 - [x] 43 篇独立节点（28 新建 / 15 复用）
 - [x] 项目页 / 仓库开源状态核查（步骤 2.5）
+- [x] 完整通读公众号汇总原文（仅代表汇总文章，非 43 篇论文逐篇通读）
 - [ ] 原文实验表格核验（节点内数字仅为公众号转述）
