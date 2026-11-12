@@ -691,6 +691,7 @@
 - [FreeCAD MCP](wiki/entities/freecad-mcp.md) — FreeCAD MCP** 是 neka-nat/freecad-mcp 开源的 **Model Contex `📅unknown` `[entity_page]`
 - [FreeCAD（开源参数化机械 CAD）](wiki/entities/freecad.md) — FreeCAD** 是由社区与 FreeCAD 组织 维护的 **免费开源、跨平台参数化 3D CAD**，以 **OpenCASCAD `📅unknown` `[entity_page]`
 - [FreeMoCap（开源多相机动捕平台）](wiki/entities/freemocap.md) — FreeMoCap**（仓库名 `freemocap`）是一套 **免费开源** 的运动捕捉 **软件与流程**：在 README 中自描述为 *hardware-and-software-agn `📅unknown` `[entity_page]`
+- [G1 Football：Metatron 驱动的 Unitree G1 视觉守门员](wiki/entities/g1-football-metatron-goalkeeper.md) — G1 Football**（*ProtoMotions G1 Football*）是 NVIDIA 的**浏览器五次点球仿真游戏**：守门员使用自身仿真摄像头检测足球、估计来球轨迹，将任务目标与扑 `📅unknown` `[entity_page]`
 - [银河通用 AstraBrain：世界–动作与全身控制路线](wiki/entities/galbot-astrabrain.md) — AstraBrain** 把银河通用的世界–动作学习与身体执行组织成一套模型系列；研究时应分别追踪 **WAM 的数据与动作接口**、**WBC 的参考运动跟踪**。 `📅unknown` `[entity_page]`
 - [伽马智能（Gamma Robotics）](wiki/entities/gamma-robotics.md) — 伽马智能（Gamma Robotics，官网 gammarobotics.com.cn）** 是中国电信人工智能研究院（TeleAI）孵化的第一家市场化具身公司。TeleAI 于 2026-10- `📅unknown` `[entity_page]`
 - [Gazebo Sim](wiki/entities/gazebo-sim.md) — Gazebo Sim](https://github.com/gazebosim/gz-sim) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
