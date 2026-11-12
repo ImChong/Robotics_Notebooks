@@ -12,7 +12,7 @@ tags:
   - stanford
   - cornell
 status: complete
-updated: 2026-10-16
+updated: 2026-11-12
 project_id: play2perfect
 arxiv: "2606.26428"
 project: "https://play2perfect.github.io"
@@ -34,6 +34,8 @@ related:
   - ../concepts/domain-randomization.md
   - ../concepts/sim2real.md
   - ../concepts/curriculum-learning.md
+original:
+  - ../../sources/papers/play2perfect_arxiv_2606_26428.md
 sources:
   - ../../sources/papers/play2perfect_arxiv_2606_26428.md
   - ../../sources/blogs/wechat_sharpa_dexterous_manipulation_2026-10-16.md
@@ -169,10 +171,10 @@ sequenceDiagram
 | Tight-Insertion | 10 mm | 10/10 | 6.8 ± 1.5 s |
 | Tight-Insertion | 2 mm | 9/10 | 9.4 ± 1.9 s |
 | Tight-Insertion | 0.5 mm | 6/10 | 11.1 ± 5.1 s |
-| Assemble-Beam | Step 1 | 16/20 | 21.0 ± 8.9 s |
-| Assemble-Beam | Step 2（以 Step 1 成功为条件） | 12/16 | 15.6 ± 2.9 s |
-| Screw-Leg | 插入 | 7/10 | – |
-| Screw-Leg | 拧入（以插入成功为条件） | 5/7 | – |
+| Assemble-Beam | Step 1 | 16/20 | 21.0 ± 8.9 s（原表为跨 Step 1/2 的合并单元格） |
+| Assemble-Beam | Step 2（以 Step 1 成功为条件） | 12/16 | 同上 |
+| Screw-Leg | 插入 | 7/10 | 15.6 ± 2.9 s（合并单元格；正文称含插入与拧入两阶段） |
+| Screw-Leg | 拧入（以插入成功为条件） | 5/7 | 同上 |
 
 端到端两步梁装配（附录 B）12/20；60 次真机 rollout 共 18 次失败：超时 6、插入时掉落 5、重定向时掉落 3、位姿追踪灾难性失败 4。
 
@@ -206,15 +208,30 @@ sequenceDiagram
 6. **真机依赖 CAD 位姿追踪** — FoundationPose 在遮挡与快速运动下会失败（60 次中 4 次灾难性失败）；策略也不直接观测夹具几何。
 7. **不是端到端装配系统** — 任务排序、主动零件选择与目标位姿由外部给定，每个任务单独微调。
 
+## 与清单说法的核对
+
+对象：Glen Berseth 的 CoRL 2026 阅读清单（P0，RL Algorithms & Exploration，Oral）里的一句摘要「Task-agnostic RL play pretraining for a multi-fingered hand, and a study of which play factors matter for precise assembly」。清单自述该句由 LLM 据摘要起草，排序是作者按自己研究兴趣打分，不是论文质量评价。
+
+| 清单限定词 | 论文里的对应 | 核对结果 |
+|------------|--------------|----------|
+| Task-agnostic | 预训练只在程序化物体与随机 6D 目标上做，不含装配信息（第 3.1 节） | 一致 |
+| RL play pretraining | 无示范的目标条件 RL，算法 SAPG（第 3.3 节、附录 I） | 一致 |
+| multi-fingered hand | 22-DoF Sharpa 手加 7-DoF iiwa 臂（第 4 节） | 一致 |
+| a study of which play factors matter | 四项消融：物体数、训练目标、轨迹多样性、目标精度（第 4.2 节、附录 C、K） | 一致；但摘要漏了论文的另一半：预训练之后还要装配微调，且微调不可省（第 4.3 节） |
+| 未提（仿真或真机） | 消融与样本效率全在仿真；真机只有 Table 1 的零样本结果，每项 10 或 20 次 | 清单摘要未区分，读者应注意「what matters」的结论来自仿真曲线，真机只验证了最终系统 |
+
+摘要未提的数字（33 倍、0.5 mm 60%）本页已按论文口径限定，见下节。
+
 ## 常见误区与局限
 
 - **误区：33 倍适用于所有任务。** 仅限简化的 Tight-Insertion（Fixtured）对 Scratch（稠密）；摘要里的「即便给稠密多阶段奖励」也是这个口径。
 - **误区：0.5 mm 60% = 亚毫米定位精度。** 论文把间隙定义为孔与销横截面尺寸之差（例：销截面 30 × 20 mm，1 mm 间隙对应 31 × 21 mm 的孔；按同一定义 0.5 mm 对应 30.5 × 20.5 mm）；成功判据则是零件到达目标位姿的 1 cm 容差内；真机仅 10 次试验，6 次成功。
+- **Table 1 的用时列：** 原表对 Assemble-Beam 与 Screw-Leg 用合并单元格，21.0 s 属梁装配、15.6 s 属拧腿（第 4.4 节正文明确）；不要读成 Step 1/Step 2 各自的用时。
 - **「超过 50%」的长程成功率口径：** 摘要称长程多零件装配与拧螺丝超过 50%。按表 1 自行换算，端到端两步梁装配 12/20 为 60%，Screw-Leg 端到端约 5/10 即 50%（本页换算，非论文原话）；引用时以论文原文为准。
 - **局限（作者自述）：** 学短时程技能；序列、主动零件、目标位姿外部给定；按任务或基准族分别微调；依赖物体位姿估计；策略不直接观测夹具与周围几何，可考虑引入视觉或触觉。
 - **局限（本页补充）：** 真机每任务只有 10 或 20 次试验，固定夹具位姿；Assemble-Beam 与 Screw-Leg 用 3 倍放大零件；日常插入只在仿真验证；play 预训练约 7 天（单卡 RTX A6000），算力门槛不低。
 
-## 复现边界
+## 工程实践与复现边界
 
 | 项 | 结论（2026-10-16 核查：项目页 + GitHub README / LICENSE / 脚本） |
 |----|------|

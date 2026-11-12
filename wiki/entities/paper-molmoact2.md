@@ -8,19 +8,25 @@ tags:
   - ai2
   - open-source
 status: complete
-updated: 2026-11-05
+updated: 2026-11-12
 arxiv: "2605.02881"
 code: https://github.com/allenai/molmoact2
 related:
   - ./molmo-er.md
   - ./molmo2-vlm.md
+  - ./paper-molmoact.md
   - ../methods/vla.md
+  - ../methods/action-chunking.md
+  - ../concepts/flow-matching-embodied-policy.md
+  - ./libero-benchmark.md
   - ../tasks/manipulation.md
   - ./lerobot.md
   - ./manda-robotics-open-policy-evaluation.md
   - ./anthropic-embody.md
   - ../overview/spatial-reasoning-benchmarks-technology-map.md
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
+original:
+  - ../../sources/papers/molmoact2_arxiv_2605_02881.md
 sources:
   - ../../sources/papers/molmoact2_arxiv_2605_02881.md
   - ../../sources/sites/allenai-molmoact2.md
@@ -51,7 +57,7 @@ summary: "MolmoAct2（arXiv:2605.02881，Ai2）：Molmo2-ER 具身推理骨干 +
 ## 为什么重要
 
 - **开源可部署 VLA 栈：** 相对闭源 frontier VLA，提供 base checkpoint、fine-tuned policy、BimanualYAM 数据集与 ManiSkill/DROID 零样本评测脚本。
-- **ER→Action 两段式：** 与 LightNav「先 ER 再 SFT」、[Gemini Robotics ER](./gemini-robotics.md) 同路线；Molmo2-ER 数据集单独发布供 mid-training 研究。
+- **ER→Action 两段式：** Molmo2-ER 在 13 个具身推理基准上平均 63.8%，高于论文列出的 GPT-5（57.9%）与 Gemini-ER 1.5 Thinking（61.3%）（§6.1，Table 3），并在 LIBERO-Long 单套件离散动作消融里带来 77.6% 到 83.6% 的提升（§6.7，Table 10）；与 [Gemini Robotics ER](./gemini-robotics.md) 同属「先具身推理 VLM、再接动作」思路（与 LightNav 同路线的说法未在论文中找到出处，未核实）。
 - **产业评测触点：** [Manda Robotics 开放策略评测](./manda-robotics-open-policy-evaluation.md) 将 MolmoAct 2 列为 DROID 五策略之一；[Embody](./anthropic-embody.md) 用作 LLM 监督的操作基线。
 
 ## 核心信息
@@ -132,7 +138,7 @@ flowchart TD
 |----|------|------|
 | LIBERO 平均 | MolmoAct2 97.2%（Spatial 97.8 / Object 100 / Goal 97.8 / Long 93.2）；Think 98.1% | 同表 π0.5 96.9、GR00T N1.7 97.0、π0 94.2 |
 | RoboEval | 44.3% | 论文称高于次优 π0.5 3.8 个百分点 |
-| 真机 8 个任务 | 平均 50.1% | 论文称比次优 OpenVLA-OFT 高 15 个百分点 |
+| 真机 8 个任务 | 平均 50.1%（§6.3 正文）；附录 Table 19 平均列为 50.6 | 论文称比次优 OpenVLA-OFT 高 15 个百分点；两处平均数不一致，见下文核对 |
 | 单张 H100 控制频率（LIBERO，horizon 10） | MolmoAct2 优化后 55.79 Hz；离散动作路径 14.17 Hz | 论文自述；连续路径比离散快约 3.94 倍 |
 
 上面的 Manda 13.8% 与 MolmoSpace 第一，是第三方/项目 README 口径，不在论文 Table 8 中。
@@ -170,7 +176,7 @@ sequenceDiagram
 
 官方训练/评测/FastAPI 推理代码在 [allenai/molmoact2](https://github.com/allenai/molmoact2)（`sources/repos/allenai-molmoact2.md` 仅有概述）。本次未逐文件阅读该仓库，因此不在此绘制其时序图，避免以通用模板冒充；原页面此处原有的三节点示意图已被上面的 LeRobot 源码图取代。
 
-## LeRobot 实现
+## 工程实践：LeRobot 实现与部署
 
 - **范围：** 仅常规 MolmoAct2 的训练与评测；文档明确 MolmoAct2-Think（自适应深度推理）尚未包含在 LeRobot 策略中。原始论文实验的训练代码用 allenai/molmoact2。
 - **安装与硬件：** `uv sync --locked --extra molmoact2`，需要 NVIDIA GPU；`policy.dtype=bfloat16` 时 VLM 大矩阵用 bf16、动作专家整体 fp32；`policy.compile_model=true` 只编译动作专家 block。未暴露原版的 `fsdp_devices` 模型并行。
@@ -178,18 +184,54 @@ sequenceDiagram
 - **默认与推荐（文档）：** `action_mode` 可选 continuous / discrete / both，官方机器人微调用 continuous；`train_mode_vlm` 默认 lora（fft / freeze 可选），动作专家始终全量训练；LIBERO 用 `chunk_size=n_action_steps=10`、`num_flow_timesteps=8`；`enable_knowledge_insulation` 默认 false，与论文微调阶段一致。
 - **限制：** 图像增强默认关闭，需手动开 `--dataset.image_transforms.enable=true`，并且 LeRobot 通用变换配置无法表达原配方的 20% 高斯模糊。
 
+## 与清单说法的核对
+
+清单（Glen Berseth 的 CoRL 2026 阅读清单第 049 条，P1，作者说明一句话摘要由 LLM 据摘要起草）写的是：「Fully open action-reasoning VLA built for deployment: embodied-reasoning VLM backbone, new datasets and low-cost platforms.」逐项对论文：
+
+| 清单措辞 | 论文里的对应 | 判断 |
+|----------|--------------|------|
+| Fully open | 摘要与 §1、§8 自述发布模型权重、训练代码和完整训练数据；§3.1 说明 BimanualYAM 数据由 Cortex AI 协助采集 | 与论文自述一致；链接可达性本次未逐个验证 |
+| action-reasoning VLA | 标准 MolmoAct2 的「推理」主要体现在 Molmo2-ER 骨干的具身推理预训练；显式的中间推理（深度 token）只在 MolmoAct2-Think 变体里（§5），而 LeRobot 版本不含 Think | 用词沿用论文标题，但要注意基础模型本身不输出深度推理 |
+| built for deployment | 摘要列出的四个痛点之一就是部署；§6.2 在 DROID 与 SO-100/101 上做零样本真机测试，§6.3 在 YAM 上做真机微调 | 论文有真机证据，但零样本只覆盖三种本体（附录 §E 自述） |
+| embodied-reasoning VLM backbone | Molmo2-ER：Molmo2（Qwen3-4B）上约 3.3M 具身推理样本的两阶段训练（§2） | 一致 |
+| new datasets | MolmoAct2-BimanualYAM（34.5k 条、720 小时以上）、SO-100/101（184 小时左右）、DROID 过滤子集（§3） | 一致；SO-100/101 与 DROID 是对已有数据的过滤和重标注，不是新采集 |
+| low-cost platforms | 论文说法是「low-to-medium cost」；YAM 采集装置低于 6000 美元（图 3），SO-100/101 是低成本平台，DROID 用的是 Franka | 清单少了 medium；Franka 不算低成本 |
+
+清单没有提到的：论文的主要数字来自作者自己的评测协议和自选基线，且真机评测 YAM 部分由合作方 Cortex AI 执行（附录 §C.3）；清单也没有区分 MolmoAct2 与 MolmoAct2-Think。
+
+## 局限
+
+论文自己承认的（附录 §E）：
+
+- 固定长度动作块（YAM 与 SO-100/101 为 30 步 30 Hz，DROID 为 15 步 15 Hz，LIBERO 为 10 步 10 Hz）开环执行，块边界没有连续性损失，可能出现速度或加速度不连续；块内无法对扰动和接触做出反应；55.79 Hz 是摊销吞吐而非闭环反应速度。
+- 零样本部署只覆盖 YAM、SO-100/101、DROID 三种本体，其他本体仍需微调。
+
+阅读中看到的未验证或不一致之处（作者自述之外的判断）：
+
+- 真机 YAM 8 任务平均在正文为 50.1%，附录 Table 19 为 50.6；Table 19 的任务名与正文任务名并不对应，列头写的是 MolmoAct 而非 MolmoAct2（§6.3，附录 Table 19）。
+- Table 8 中 Think 在 LIBERO-Object 为 99.8%，低于 MolmoAct2 的 100.0%，正文说「持平」（§6.4）。LIBERO 上 MolmoAct2 97.2% 对 GR00T N1.7 的 97.0%、π0.5 的 96.9%，差距很小，论文未给出多随机种子或置信区间。
+- 摘要强调 Think 的低延迟，但 §6.8 只比较了 Think 与基础模型（12.71 对 55.79 Hz），没有与前作 MolmoAct 或其他带推理的策略比延迟；Think 比基础模型慢约 4.4 倍（推测：由两个数字相除得出）。
+- 消融集中在 LIBERO（Table 10–14），部分差异在 1 个百分点以内（如 K=4 的 95.15% 对 K=2 的 95.05%），论文未报方差；去掉 knowledge insulation 与加上它的差别（97.20% 对 97.05%）同样很小。
+- 零样本仿真基线 StereoVLA、LAP-VLA、X-VLA 等在 Table 4/5 里的绝对成功率很低，MolmoAct2 的优势部分来自基线在该协议下近乎失效；真机 DROID 每个任务只有 15 次试验（Table 6）。
+- OOD 鲁棒性（§6.5，Table 9）每种扰动每任务 20 次试验，且只选了 8 个真机任务中的 4 个；表中最后一行标 MolmoAct2-Think，正文称 MolmoAct2。
+- 清单所述的 MolmoSpace「第一 VLA」不是论文里的表述（论文 Table 4/5 的比较对象是 LAP-VLA、StereoVLA、π0-DROID、π0.5-DROID、X-VLA），来源是项目 README，未核实。
+
 ## 关联页面
 
 - [MolmoER](./molmo-er.md)
 - [Molmo2 VLM](./molmo2-vlm.md)
+- [MolmoAct（前作）](./paper-molmoact.md)
 - [VLA](../methods/vla.md)
+- [动作分块](../methods/action-chunking.md)
+- [Flow Matching 具身策略](../concepts/flow-matching-embodied-policy.md)
+- [LIBERO 基准](./libero-benchmark.md)
 - [LeRobot](./lerobot.md)
 - [空间推理 benchmark 地图](../overview/spatial-reasoning-benchmarks-technology-map.md)
 
 ## 参考来源
 
 - [lerobot.md](../../sources/repos/lerobot.md)：LeRobot 固定提交 9e5ee98 的 `docs/source/molmoact2.mdx` 与 `src/lerobot/policies/molmoact2/`
-- [molmoact2_arxiv_2605_02881.md](../../sources/papers/molmoact2_arxiv_2605_02881.md)
+- [molmoact2_arxiv_2605_02881.md](../../sources/papers/molmoact2_arxiv_2605_02881.md)：论文全文通读归档（v1 与 v2）
 - [allenai-molmoact2.md](../../sources/sites/allenai-molmoact2.md)
 - [allenai-molmoact2.md](../../sources/repos/allenai-molmoact2.md)
 

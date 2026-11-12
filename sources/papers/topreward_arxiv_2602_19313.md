@@ -13,6 +13,8 @@
 - **作者：** Shirui Chen, Cole Harrison, Ying-Chun Lee, Angela Jin Yang, Zhongzheng Ren, Lillian J. Ratliff, Jiafei Duan*, Dieter Fox*, Ranjay Krishna*（\*共同指导）
 - **机构：** 华盛顿大学（UW）；艾伦人工智能研究所（AI2）；亚马逊（Amazon）；北卡罗来纳大学教堂山分校（UNC–Chapel Hill）
 - **入库日期：** 2026-07-27
+- **核对范围：** 2026-11-12 读 arXiv:2602.19313v2（2026-07-22）PDF 全文：摘要、§1–6（方法式 1–3、表 1–4、图 2 的文字与数字）、附录 A–F（含表 5–7、E.2 聊天模板消融、C 成功检测分数）；图 1/3–17 的图像本身只读了图注与图中文字，未逐图核对曲线；未读项目页视频与代码仓（项目页/代码部分沿用 2026-07-27 入库记录与 2026-11-05 LeRobot 固定提交核对，不在本次通读范围）；参考文献只看了标题。
+- **通读：** 已完成
 - **一句话说明：** 训练无关的零样本进度奖励：用预训练视频 VLM 对「任务已完成」肯定回答 token（如 `True`）的 log-likelihood，把轨迹前缀打成稠密时序进度信号；并发布真机操作奖励基准 ManiRewardBench。
 
 ## 开源核查（2026-07-27）

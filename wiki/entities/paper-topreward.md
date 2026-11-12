@@ -16,6 +16,7 @@ tags:
   - unc-chapel-hill
   - lerobot
 status: complete
+original: ../../sources/papers/topreward_arxiv_2602_19313.md
 updated: 2026-11-05
 arxiv: "2602.19313"
 code: https://github.com/TOPReward/TOPReward
@@ -223,12 +224,28 @@ ManiRewardBench 分平台（LeRobot / Franka / 双臂·单臂 YAM）上，Qwen3-
 5. **下游优先 TOP-AWR / 过滤** — 比直接当在线 RL 稠密奖励更稳妥。
 6. **复现从官方 `predict_topreward` 起步** — 对照跑 `predict_gvl`。
 
+## 与清单说法的核对
+
+清单（Glen Berseth 的 CoRL 2026 阅读清单 P2，由 LLM 据摘要起草）一句话：「Zero-shot dense progress rewards from a video-language model's token probabilities, without reward-model training.」逐项对照 arXiv v2 全文：
+
+| 清单措辞 | 论文里的实际情况 |
+|----------|------------------|
+| zero-shot | 成立：不训练、不微调（摘要、§3.1）。但 `True` 这个答案 token 是作者在成功/失败轨迹上比较各 token 概率差后挑的（§3.1、附录 B），β=0.2、δmax=2.0 也是下游设定，不是完全免调参 |
+| dense progress rewards | 部分成立：原始分数 r_t=log p(True) 是因果的，范围 (−∞,0]，要对 K 个均匀前缀各做一次前向（§3.2）；论文展示的 0–1「进度曲线」靠 episode 内 min-max（式 2），论文自己说它是非因果的，仅用于评测与可视化，不是在线奖励 |
+| video-language model 的 token probabilities | 成立，评测了 Qwen3-VL-8B/32B、Molmo2-8B、Gemini-2.5-Pro（§4）；但在 Gemini 上 TOPReward VOC 0.430 低于 GVL 0.572（表 1，作者归因于 API 强制聊天模板，推测性解释，附录 E.2 只在开源模型上做了模板消融） |
+| without reward-model training | 成立；与训练型 Robometer-4B 比，OXE VOC 0.874 对 0.838（表 1）、ManiRewardBench 0.942 对 0.858（表 2），摘要用词是「competitive」。成功检测用两项分数标准化后相加（附录 C 式 7–9），不用学习的分类器，但需要 prompt 组合 |
+| 清单没提到的 | 全部评测在已录好的演示视频上离线进行（§4.1），真机闭环只有 §4.4 的奖励加权 BC（6 个 SO-100 任务，每任务 10 次试验的部分成功分，无方差）；并没有把它当在线 RL 奖励用。聊天模板会使 Qwen3-VL-8B 的平均 VOC 0.945→0.500（表 6） |
+
+结论：清单这句话与论文摘要基本一致，没有错；差别在「dense」的含义（需要离线 min-max 才得到有界进度）和「zero-shot」的边界（token 与超参由作者在自建数据上选定）。
+
 ## 局限与风险
 
 - 细粒度空间推理不足时，进度信号噪声大（VLM 感知上限）。
 - Per-episode min-max 限制跨轨迹绝对比较。
 - 逐步查询大 VLM 成本高，难直接作高频在线 reward。
 - 性能绑定底层视频理解；模型升级会带动方法，但也会换 API/部署成本。
+- **论文自述（§5）：** 继承底层 VLM 的感知局限，细粒度空间推理、精确对齐、小物体操作的进度估计可能有噪声；式 (2) 归一化非因果；对聊天模板和答案 token 选择敏感，部署前要验证。
+- **笔者观察（未经论文证实）：** 表 1/2 只给均值，无置信区间；Qwen3-VL-32B 在 ManiRewardBench 上（0.864）低于 8B（0.942），论文未解释；真机 RWBC（表 4）每任务仅 10 次试验、单次实验；论文图 10 图例写作 TOP-AWR 而正文为 TOP-RWBC，命名不一致；图像本身（进度曲线、图 2 混淆矩阵）本次只核对了图注数字。
 
 ## 与其他工作对比
 
@@ -261,6 +278,7 @@ ManiRewardBench 分平台（LeRobot / Franka / 双臂·单臂 YAM）上，Qwen3-
 - [sources/repos/lerobot.md](../../sources/repos/lerobot.md)
 - LeRobot 文档 [`topreward.mdx`](https://github.com/huggingface/lerobot/blob/9e5ee9859480e425a97a6836bb3fee479539beb5/docs/source/topreward.mdx) 与 `src/lerobot/rewards/topreward/`（固定提交 `9e5ee98`，本次通读）
 - arXiv:2602.19313v2 全文（2026-07-22，本次通读；上文早期数字来自项目页）
+- 清单出处：Glen Berseth，My CoRL 2026 Reading List（2026-11-10），第 095/101 条，P2
 
 ## 推荐继续阅读
 

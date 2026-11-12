@@ -3,7 +3,7 @@ type: entity
 project_id: ftp-1
 tags: [paper, tactile-sensing, foundation-policy, vla, vtla, cross-embodiment, tactile-pretraining, contact-rich, dexterous-manipulation, sharpa-robotics, tsinghua, sjtu, berkeley, eth, fudan, shanghai-innovation-institute]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-12
 arxiv: "2606.13102"
 venue: "CoRL 2026（据 arXiv v3 PDF 页脚，未另行核对录用公告；v1 2026-06-11）"
 project: https://ftp1-policy.github.io/
@@ -25,6 +25,8 @@ related:
   - ./paper-openvitac.md
   - ./paper-tacmap.md
   - ./paper-sata.md
+original:
+  - ../../sources/papers/ftp-1_arxiv_2606_13102.md
 sources:
   - ../../sources/papers/ftp-1_arxiv_2606_13102.md
   - ../../sources/blogs/wechat_sharpa_dexterous_manipulation_2026-10-16.md
@@ -85,7 +87,7 @@ flowchart LR
   pre --> ft["下游微调 20k 步\n已见或未见传感器"]
 ```
 
-## 核心机制
+## 核心原理与机制
 
 ### 1）MTTS：用功能区做跨传感器的公共坐标
 
@@ -141,6 +143,8 @@ sequenceDiagram
 图下说明：关键复现路径是「数据转 zarr、算归一化统计、从检查点微调、`FTP1InferenceWrapper.infer` 推理、UniVTAC 评测」。预训练侧仓库只给 `scripts_exp_zarr/pretrain_small` 小规模示例，多域联合训练时由仓库的异构预训练基础设施自动按域分配 GPU。
 
 ## 实验与评测
+
+通读状态：2026-11-12 已按 arXiv v3 全文（含附录 B–F）核对本节数字；图 7 柱状图未读数值。
 
 以下数字均为 **论文自报**（PDF；Table 1–3 在 v1 与 v3 一致，v3 新增第 4.3 节与附录 F）。仿真每任务 100 次、真机每任务 20 次，故真机单任务成功率以 5 个百分点为一步。
 
@@ -202,16 +206,32 @@ sequenceDiagram
 6. **部署读法是微调而非零样本** — 官方路径是转 zarr、算归一化、从检查点微调；未见传感器需新训传感器专属编码器，复用触觉专家与功能区嵌入。
 7. **评测要看去 Lift 的口径** — Lift Bottle、Lift Can 靠视觉即可大部分解决，对比触觉价值应看去 Lift 的平均（FTP-1 59.5，对 π0.5 31.5）。
 
+## 与清单说法的核对
+
+来源：Glen Berseth 的 CoRL 2026 阅读清单（P1，VLAs & Generalist Policies 组）对本文的一句话摘要（作者说明由 LLM 据摘要起草）：「Generalist tactile policy pretrained on 3,000 hours from 21 sensors, with morphology-aware tokens for cross-sensor transfer.」逐项对照 arXiv v3 全文：
+
+| 清单说法 | 论文 | 判断 |
+|----------|------|------|
+| 约 3000 小时 | 摘要、第 2.4 节、附录 C：「around 3,000 hours」，由 26 个来源重采样后得到 | 一致；是聚合而来的估计，非单一采集 |
+| 21 种传感器 | 第 2.4 节：图像 7 + 阵列 5 + 状态 9 = 21；其中 9 种是力 / 力矩或手部状态，并非都是狭义触觉皮肤 | 一致，但「传感器」含义较宽 |
+| 形态感知 token | 第 2.1 节 MTTS：24 个功能区、每区 1 个 token、共享功能区嵌入 | 一致 |
+| 跨传感器迁移 | 第 4.1 节：未见 Xense、Contactile 两种传感器，**经微调**迁移，需新训传感器专属编码器；非零样本 | 清单未写「微调」这一限定；迁移证据仅 2 个配置共 3 个真机任务（Table 3） |
+| 清单未提 | 摘要与第 3 节：基于 π0.5 的独立触觉专家；已见 +17.2、未见 +31.6（均为百分点差，真机每任务 20 次） | 清单省略了量化结果与评测规模 |
+
+结论：清单摘要与论文没有冲突，属于忠实但极简的概括；读者需补两个限定——迁移靠微调，且未见传感器证据面很窄。论文「首个」说法是作者自述（v3 为 to the best of our knowledge）。清单档位排序来自作者个人兴趣模型，不是对论文质量的评价。
+
 ## 局限与风险
 
 - **未覆盖触觉伺服与力控制：** 论文自述主要做通用触觉感知，不含基于触觉 / 力的伺服控制；扩展到触觉预测与基于预测的低层控制是后续方向。
 - **预训练数据规模与多样性有限：** 论文自述；50k 步后饱和也指向数据多样性瓶颈。
+- **「已见」口径偏宽：** UniVTAC 仿真被计入已见传感器，是因为 GelSight-Mini 在预训练里出现过；仿真域与 Franka 本体本身在预训练外（论文 Table 8 标 unseen）。
+- **NTP-1 对照有两面：** 论文 Table 9 里 NTP-1 平均 50.00 高于 FTP-π0.5 的 45.16（论文归因于预训练数据分布更近 UniVTAC），去 Lift 后却是 36.5 低于 42；Lift Can 上 FTP-1（65）还低于 π0.5（72）。结论应读作整体领先而非逐项领先。
 - **评测面窄：** 5 个机构各用不同任务集，每个配置仅 1–6 个任务；各方法在同一 π0.5 代码库、相近规模下实现，但并非独立复现。
 - **「首个」口径在 v3 被弱化：** v1 写「first generalist foundation tactile policy」，v3 改为「据作者所知的首个」并限定为「用于微调迁移」；使用此说法时宜引用 v3 措辞。
 - **数据与来源口径：** 公开数据集页自述 18 个压缩包、实际列 15 个名称，按目录名比对未见论文表中的 EgoTac-*、OpenTouch、OmniSharingDB 等来源；全量预训练数据未必能复现。
 - **版本口径差异：** v3 PDF 摘要写模型、数据、代码「将在未来发布」，与项目页和仓库现状不一致，以实际可打开的链接为准。
 
-## 复现边界
+## 工程实践：复现边界
 
 | 项 | 结论（核对日 2026-10-16） |
 |----|------|
@@ -242,7 +262,7 @@ sequenceDiagram
 - [arXiv:2606.13102](https://arxiv.org/abs/2606.13102)
 - [项目页](https://ftp1-policy.github.io/)
 
-## 推荐继续阅读
+## 继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2606.13102)
 - [官方仓库 ftp1-policy](https://github.com/michaelyuancb/ftp1-policy)
