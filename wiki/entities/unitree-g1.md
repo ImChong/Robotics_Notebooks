@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-10-21
+updated: 2026-11-12
 related:
   - ./humanoid-robot.md
   - ./rek.md
@@ -17,6 +17,7 @@ related:
   - ./grove-g1.md
   - ./humanoid-system-curriculum.md
   - ./botlab-motioncanvas.md
+  - ./g1-football-metatron-goalkeeper.md
   - ./paper-adp.md
   - ./paper-humoslope-physics-guided-slope-locomotion.md
   - ./paper-uni-lavira.md
@@ -248,6 +249,7 @@ sequenceDiagram
 - [HumoSlope（论文实体）](./paper-humoslope-physics-guided-slope-locomotion.md) — G1 盲穿户外草地坡至 32.1°（局部平面 ZMP + BSGA；arXiv:2607.07830；代码未开源）。
 - [G1 屋顶斜坡全身作业](./paper-g1-slope-adaptive-roofing-locomotion.md) — PICO 演示→坡面 mesh 语义优化→RL 跟踪；钉枪/锤/推（arXiv:2609.20558；未开源）。
 - [Uni-LaViRA（论文实体）](./paper-uni-lavira.md) — G1 真机零样本 VLN/ObjectNav/EQA 部署之一（arXiv:2605.27582）。
+- [G1 Football：Metatron 视觉守门员仿真](./g1-football-metatron-goalkeeper.md) — 使用机载相机检测球轨迹，MuJoCo 浏览器五次点球体验；只公开编译游戏包，非真机控制器。
 - [DimOS（Dimensional）](./dimensionalos-dimos.md) — G1 MuJoCo 仿真与 beta 级 agent/导航集成栈。
 - [Spingi](./spingi.md) — sim-first 任务级 Physical Agent Runtime；MuJoCo 中的 G1 以运动学方式移动，当前不含真机 adapter 或动态步行控制。
 - [Grove-G1](./grove-g1.md) — ROS 2 Humble 自主栈：Nav2 + MoveIt + BehaviorTree 端到端 pick-place（[Adyansh04/grove-g1](https://github.com/Adyansh04/grove-g1)）。
