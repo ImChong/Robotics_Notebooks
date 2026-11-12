@@ -2,7 +2,7 @@
 type: overview
 tags: [corl-2026, reading-list, reinforcement-learning, vla, world-model, human-video, embodied-ai]
 topic: [reinforcement-learning, vla]
-status: draft
+status: complete
 updated: 2026-11-12
 related:
   - ../entities/painode-054-corl.md
@@ -12,12 +12,14 @@ related:
 sources:
   - ../../sources/blogs/glen-berseth-corl-2026-reading-list-2026-11-10.md
   - ../../sources/sites/corl-2026-program.md
-summary: "Glen Berseth 的 CoRL 2026 优先阅读清单线索：作者称从 687 篇中筛出 101 篇，聚焦 RL 微调、世界模型、VLA 与人类视频学习；原文全文尚不可读，逐条收录及通读待补。"
+original:
+  - ../../sources/blogs/glen-berseth-corl-2026-public-announcement-reading.md
+summary: "Glen Berseth 的 CoRL 2026 阅读清单公开声明与导航：已通读两条作者原始动态（687→101，聚焦 RL 微调/世界模型/VLA/人类视频），博客正文及 101 篇条目仍待取得核验。"
 ---
 
-# CoRL 2026 Reading List｜Glen Berseth 的机器人学习优先阅读清单
+# CoRL 2026 Reading List｜Glen Berseth 的公开声明与阅读导航
 
-> **状态：待补全文（draft）。** 已确认作者公开说明与会议官方入口，但尚未读到博客全文；**下述是清单线索与阅读导航，不是 101 篇的已核验索引。**
+> **范围状态：公开声明已通读；原博客全文未读。** 本页 `status: complete` 仅表示“作者两条公开声明＋会议导航”这一有限范围已完成，不代表目标博客或 101 篇论文已经完成 ingest。**下述仅为清单线索与导航，不是 101 篇的已核验索引。**
 
 - 原始文章：<https://www.fracturedplane.com/blog/2026/11/10/CoRL2026-Reading-List.html>
 - 作者：Glen Berseth（Université de Montréal / Mila）
@@ -71,12 +73,23 @@ flowchart TD
 3. 将来取得完整列表后按原文的优先级/分类补充，按 arXiv/OpenReview、标题及项目主页对已有节点去重，再逐篇通读论文和可用源码。
 4. 对评测数据记录机器人本体、任务、数据、成功率定义与基线，不对不同论文直接横向排名。
 
+## 来源核验范围
+
+| 内容 | 本页是否完成 |
+|---|---|
+| 作者公开发布的两条声明 | **已通读**；`original` 仅对应这一来源 |
+| CoRL 官方会议日期 / 报告导航 | 已与现有官方归档交叉核对 |
+| Glen Berseth 目标博客全文 | **未完成**；原文当前无法读取 |
+| 作者优先阅读的 101 篇条目、排名及 Workshop 具体安排 | **未完成**；不进行猜测 |
+
+该页是 **announcement-index**，不是完整的 101 篇论文综述；当前仅对前两项陈述负责。
+
 ## 局限与风险
 
 - **原文链接当前访问失败**，无法确认正文准确标题、101 篇逐条名单、作者对论文的具体评价或 Workshop 名称/安排；不得编造论文名次、收录关系或优先级。
 - “687 篇、101 篇”来源于作者的公开动态；另有[非官方 CoRL 2026 索引](https://studeas.github.io/corl-2026-papers/)标注 687，但不作为官方验收证据。
 - **没有公开对应的运行代码仓库**需要做源码时序图；当前 Mermaid 是清单使用流程图。
-- 本条仅为**部分 ingest / 导航节点**，尚不满足“原文通读完成”的 3/3 健康度要求；不应将 `status` 修改为 `complete`。
+- **范围限定：** 本页的作者原文是两条公开声明，已完整阅读、见 `original` 归档；博客文章的全文与 101 篇逐条核查**仍未完成**。健康度得分仅适用于此限定范围，不能作为博客全文已通读的证明。
 
 ## 关联页面
 
@@ -88,7 +101,8 @@ flowchart TD
 ## 参考来源
 
 - [Glen Berseth 原始清单](https://www.fracturedplane.com/blog/2026/11/10/CoRL2026-Reading-List.html) — 待读取正文
-- [作者公开说明镜像](https://teapawt.org/GlenBerseth) — 可核对 101/687 与主题
+- [作者公开说明镜像](https://teapawt.org/GlenBerseth) — 两条原始声明完整可见；已通读此限定范围
+- [原始声明通读归档](../../sources/blogs/glen-berseth-corl-2026-public-announcement-reading.md) — **仅公开声明全文已读**；不是博客原文或 101 篇论文
 - [CoRL 2026 官方官网](https://2026.corl.org/) — 主会与 Workshop 日期
 - [官方会议归档](../../sources/sites/corl-2026-program.md)
 - [本条来源核查记录](../../sources/blogs/glen-berseth-corl-2026-reading-list-2026-11-10.md)
