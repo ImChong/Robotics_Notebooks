@@ -345,6 +345,15 @@ op: ingest
 - **编译形式：** 3 份论文通读归档、2 份项目站点归档、1 份官方源码归档、3 个含 Mermaid 方法流程的中英双语实体页；可运行 BEHAVIOR 源码另附时序图；回链挂至人形移动与 VLA 方法页。
 - **说明：** 本次仅基于一手论文和公开源码静态核查，尚未在本环境执行本地仿真或全仓预检。
 
+# 2026-11-12 · Glen Berseth CoRL 2026 Reading List（全文 ingest）
+
+- **来源：** 博客全文已取得并通读（`sources/blogs/glen-berseth-corl-2026-reading-list-2026-11-10.md`，原文落盘 `sources/raw/`）；101 篇（P0 26 / P1 45 / P2 30）。
+- **节点：** 101 篇逐条对应唯一详情节点：新建与升级的节点逐篇读论文并核对清单摘要；2 篇全文拿不到（FlashRFCL、Emergent Control via Prior-Based Free Energy Minimization），节点为 draft、未达 3/3。
+- **概述页：** `wiki/overview/corl-2026-glen-berseth-reading-list.md` 重写为 101 篇索引，含跨论文观察与局限。
+- **说明：** arXiv 号由标题精确匹配搜得；OpenReview 被验证页挡住，未逐篇核对；会场标注取自清单。
+
+## [2026-11-12] ingest | CoRL 2026 Glen Berseth 阅读清单 101 篇：博客全文归档 + 概述页 + 逐篇详情节点（新建 / 升级到 3/3，2 篇 draft）
+
 ## [2026-11-12] ingest | sources/repos/mingrammer-diagrams.md — 收录 Diagrams（Python Diagram as Code）
 
 - 意图：将 Diagrams 作为可版本管理的 Python 云系统架构可视化工具单独收录，并与 Mermaid.js 关联。
