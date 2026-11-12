@@ -4558,6 +4558,7 @@
 - [Robo-Dopamine 2.0（arXiv:2608.15680）](wiki/entities/paper-robo-dopamine-2.md) — Robo-Dopamine 2.0**（*Robo-Dopamine 2.0: History-Conditioned and OOD-Aware Process Reward Modeling  `📅unknown` `[entity_page]`
 - [RoboHarness（SJTU）（arXiv:2603.24060）](wiki/entities/paper-robo-harness-memory-ic-adaptation.md) — RoboHarness（SJTU）**（*RoboHarness: A Memory-Augmented Policy Harness for Vision-Language-Action Mod `📅unknown` `[entity_page]`
 - [RoboHarness（异构策略编排 · arXiv:2607.18060）](wiki/entities/paper-robo-harness.md) — RoboHarness**（*Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planni `📅unknown` `[entity_page]`
+- [Robo-ValueRL：可靠价值引导的离线到在线机器人强化学习](wiki/entities/paper-robo-valuerl.md) — 用历史条件价值函数评估示教动作的真实进度，并把价值可靠性贯穿离线数据筛选和真机残差微调，实现从杂质示教到高精度操作的持续改进。** 论文：[arXiv:2607.09866](https://ar `📅unknown` `[entity_page]`
 - [RoboARCade：智能体式机器人控制评测](wiki/entities/paper-roboarcade.md) — 面向 22 个长时程操作任务的 agentic robot control 评测，提供模拟器、工具接口、分步打分与可运行开放代码。 `📅unknown` `[entity_page]`
 - [RoboArchitect（arXiv:2610.42141）](wiki/entities/paper-roboarchitect.md) — RoboArchitect**（*RoboArchitect: Automating the Design ofRobotic Agents with Persistent Memory*，[ar `📅unknown` `[entity_page]`
 - [RoboAssist：面向长时手术辅助的交互式人—人形规划](wiki/entities/paper-roboassist.md) — RoboAssist: Interactive Human-Humanoid Planning for Long-Horizon Surgical Assistance**（[arXiv:2609 `📅unknown` `[entity_page]`
@@ -4580,6 +4581,7 @@
 - [RoboFoundry（System-as-Policy · arXiv:2609.32862）](wiki/entities/paper-robofoundry.md) — RoboFoundry**（*RoboFoundry: System-as-Policy Evolution for Self-Learning Embodied Agents*，[arXiv:2 `📅unknown` `[entity_page]`
 - [RoboFQE：不跑 rollout，从离线轨迹评估视觉机器人策略](wiki/entities/paper-robofqe.md) — RoboFQE 把「策略评估」当成离线策略评估（OPE）问题：在已有轨迹上用拟合 Q 评估（FQE）、预训练视觉编码器与一个终端成功标注器，直接估计目标策略的折扣回报并给多个策略排序，不需要新的真 `📅unknown` `[entity_page]`
 - [RoboGauge：MoE 四足运动与 Sim-to-Real 可预测性](wiki/entities/paper-robogauge-moe-quadruped-locomotion.md) — Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion**（RSS 2026， `📅unknown` `[entity_page]`
+- [RoboGene：多样性驱动的机器人任务智能体生成](wiki/entities/paper-robogene.md) — 用“均衡采样→LLM 提案→具身可行性自反思→人类执行反馈记忆”的闭环自动设计机器人示教任务，再由真实采集形成更广覆盖的 VLA 预训练数据。** 论文：[arXiv:2602.16444](ht `📅unknown` `[entity_page]`
 - [RoboGesture：人形实时语义对齐伴随语音手势](wiki/entities/paper-robogesture.md) — RoboGesture: Real-Time Semantic-aligned Co-Speech Gestures Generation for Humanoid Interaction**（ `📅unknown` `[entity_page]`
 - [RoboHarn-Evo（可演化分层物理知识 · arXiv:2609.37583）](wiki/entities/paper-roboharn-evo.md) — RoboHarn-Evo**（论文、[项目页](https://ruckbreasoning.github.io/RoboH `📅unknown` `[entity_page]`
 - [RoboImagine（arXiv:2611.07850）](wiki/entities/paper-roboimagine.md) — RoboImagine**（*Learning Robotic World Models with Semantic and Visual Feedback*，[arXiv:2611.07850 `📅unknown` `[entity_page]`
