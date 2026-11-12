@@ -61,7 +61,7 @@ flowchart TB
 | RoboTryOn | [paper-robotryon](../entities/paper-robotryon.md) | 已开源 |
 | Human-to-Robot Transfer via VLA Bridging | [paper-human-to-robot-transfer-via-vla-bridging](../entities/paper-human-to-robot-transfer-via-vla-bridging.md)（复用） | 已开源 |
 | DexHOT | [paper-dexhot](../entities/paper-dexhot.md) | 部分开源 |
-| ReflexArc | [paper-reflexarc](../entities/paper-reflexarc.md)（复用） | 已开源 |
+| ReflexArc | [paper-reflexarc](../entities/paper-reflexarc.md)（复用） | 代码待发布（官网标注 Code Coming soon，2026-11-12 核查） |
 | GUILD | [paper-guild](../entities/paper-guild.md) | 项目页未列 GitHub |
 | ELA | [paper-ela](../entities/paper-ela.md) | 项目页未列 GitHub |
 | Shape Servoing Tutorial Part II | [paper-shape-servoing-tutorial-part-ii](../entities/paper-shape-servoing-tutorial-part-ii.md)（复用） | 已开源 |
