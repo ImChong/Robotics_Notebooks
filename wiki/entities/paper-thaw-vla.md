@@ -52,12 +52,9 @@ summary: "THAW-VLA（UW–Madison/UIUC, arXiv:2609.24682）：离线缓存 Cosmo
 
 ## 核心信息
 
-| 作者 | Trung Dao、Sankalp Yamsani、Jaden Park、Joohyung Kim、Yong Jae Lee |
-|------|------|
-
-
 | 字段 | 内容 |
 |------|------|
+| 作者 | Trung Dao、Sankalp Yamsani、Jaden Park、Joohyung Kim、Yong Jae Lee |
 | 机构 | 威斯康星大学麦迪逊分校（UW–Madison）、伊利诺伊大学厄巴纳-香槟分校（UIUC） |
 | arXiv | [2609.24682](https://arxiv.org/abs/2609.24682) |
 | 项目页 | <https://thaw-vla.trung-dt.com/> |
