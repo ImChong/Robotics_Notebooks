@@ -1,8 +1,11 @@
 ---
 type: entity
+project_id: ego2robot-synthesis
+project: https://www-ye.github.io/ego2robot_blog/
+code: https://github.com/www-Ye/ego2robot_blog
 tags: [paper, robot-data, egocentric, vla, synthesis, ruc, alibaba, shanghaitech, bigai, buaa]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-12
 arxiv: "2608.02580"
 related:
   - ../methods/vla.md
@@ -12,11 +15,15 @@ related:
   - ./paper-egoverse.md
   - ./paper-embodiedvae.md
   - ./paper-gsr-paravla.md
+  - ./paper-ego2robot-learning-survey.md
 sources:
   - ../../sources/papers/ego2robot_arxiv_2608_02580.md
   - ../../sources/sites/ego2robot-blog.md
+  - ../../sources/repos/ego2robot-ye-code.md
   - ../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md
-summary: "Ego2Robot（arXiv:2608.02580，人大/阿里Qwen/上科大/BIGAI）：第一人称人视频经重定向+臂合成+三级质检，做成 15 形态 18,561 h 机器人数据；与真机共训提升 RoboTwin 解耦 OOD。项目页已发，管线未开源。"
+original:
+  - ../../sources/papers/ego2robot_arxiv_2608_02580.md
+summary: "Ego2Robot（arXiv:2608.02580，人大/阿里Qwen/上科大/BIGAI）：第一人称人视频经重定向、机器人视觉合成和质检得到 15 形态 18,561 h 数据，和机器人示范共同预训练改进解耦 OOD；合成管线与 RoboTwin 评测代码现已公开。"
 ---
 
 # Ego2Robot：第一人称人视频规模化合成机器人数据
@@ -47,10 +54,10 @@ summary: "Ego2Robot（arXiv:2608.02580，人大/阿里Qwen/上科大/BIGAI）：
 
 | 项 | 内容 |
 |----|------|
-| **规模** | 约 1,940 h 人视频 → **18,561 h** 合成机器人数据；共训真机约 6,565 h |
+| **规模** | 约 1,940 h 人视频 → **18,561 h** 合成机器人数据；共训机器人数据约 6,565 h（含 InternData 仿真） |
 | **形态** | 15 种：Panda、UR5e、ARX-L5、xArm7、Aloha-Agilex 等 |
 | **源** | ANT / EgoDex / ViTRA / EgoVerse |
-| **开源** | **仅项目页**；仓 `www-Ye/ego2robot_blog` 是静态站（截至 2026-08-15） |
+| **开源** | **代码已开放（2026-11-12 重新核查）**：`www-Ye/ego2robot_blog` 含合成管线、LeRobot 转换与 RoboTwin 评测代码；原“仅静态站”是 2026-08-15 历史快照。完整 18,561 h 合成数据、权重与第三方依赖不能假设直接提供。 |
 
 ## 核心原理
 
@@ -71,11 +78,59 @@ flowchart TB
   ego --> hand --> act --> vis --> qc --> vla
 ```
 
+## 源码运行时序图（2026-11-12 官方 main 静态核对）
+
+源码入口来自 [作者的 `scripts/run_pipeline.py`](https://github.com/www-Ye/ego2robot_blog/blob/main/scripts/run_pipeline.py)，阶段编排核对 [`ego2robot/pipeline.py`](https://github.com/www-Ye/ego2robot_blog/blob/main/ego2robot/pipeline.py) 与 [`configs/egoverse_mecka.yaml`](https://github.com/www-Ye/ego2robot_blog/blob/main/configs/egoverse_mecka.yaml)。下图对应**EgoVerse 已有手姿态标注的默认配置**，不是假定所有数据都统一经过 raw-video 的手重建。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as 用户
+  participant CLI as scripts/run_pipeline.py
+  participant P as ego2robot/pipeline.py
+  participant W as joblib worker
+  participant B as base_egoverse processor
+  participant A as action / smoothing
+  participant V as arm_segmentation / hand_inpaint
+  participant R as robot_inpaint
+  participant FS as episode files
+  U->>CLI: python scripts/run_pipeline.py --config configs/egoverse_mecka.yaml
+  CLI->>CLI: OmegaConf.load + CLI overrides
+  CLI->>P: run_parallel(cfg)
+  P->>P: resolve_modes + get_demo_folders
+  loop 按 config.mode 依序执行各阶段
+    P->>P: check_exists + split demos
+    P->>W: joblib Parallel(_process_chunk)
+    W->>W: load_processor_class(stage)
+    alt base_egoverse
+      W->>B: process_one_demo(demo)
+      B->>FS: 保存基础输入 / 中间结果
+    else action 或 smoothing
+      W->>A: process_one_demo(demo)
+      A->>FS: 保存动作 / 平滑中间结果
+    else arm_segmentation 或 hand_inpaint
+      W->>V: process_one_demo(demo)
+      V->>FS: 保存分割 / 修补结果
+    else robot_inpaint
+      W->>R: process_one_demo(demo)
+      R->>FS: 保存 NPZ / MP4 合成输出
+    end
+    W-->>P: stage result + JSONL log
+  end
+  P-->>CLI: pipeline finished
+  opt 独立导出命令，不属于 run_parallel
+    U->>FS: scripts/convert_to_lerobot.py 读取 NPZ/MP4
+    FS-->>U: 转换为 LeRobot 数据集
+  end
+```
+
+源码中的 `STAGE_DEFS` 维护阶段到 Processor 的映射；`run_parallel` 外层按配置逐 stage 运行，`_process_chunk` 为每个 demo 调用 `process_one_demo`。README 的**原始视频**模式另需 `subtask → depth_pose → hand → ...`，不能将它和已标注视频模式混为一谈。LeRobot 导出为独立脚本，未运行完整生成任务。具体文件及依赖见 [源码一手归档](../../sources/repos/ego2robot-ye-code.md)。
+
 ## 工程实践
 
 | 项 | 建议 |
 |----|------|
-| 源码运行时序图 | **不适用**（管线与 18,561 h 数据未发布） |
+| 源码运行时序图 | **已按当前官方源码补充**；本地未执行 GPU 和训练复现 |
 | 混合比 | 项目页默认 **1:1** 合成:真机；本体对齐可试 3:1 |
 | 动作空间 | 跨相机、跨形态时优先相机系相对 EEF，不要强行世界系 |
 | 真机补数据 | 现场拍几分钟 ego-play，再走同一管线混进 few-shot 微调 |
@@ -98,15 +153,18 @@ flowchart TB
 3. **本体迁移部分有效** — ARX/UR5 有增益，Franka 仍近乎失败。
 4. **生视频不是废物** — 管线后仍可当第 16 种「形态」混入。
 5. **真机 few-shot 用现场 ego-play** — 比只靠离线合成更贴部署场景。
-6. **数据未开源** — 读者目前只能复用协议思想，不能复现 18k h。
+6. **合成管线已开源** — 官方仓提供运行入口与 RoboTwin 评测；重跑仍需原始视频、DA3/SAM 3/ProPainter 等第三方模型与 GPU，未核实作者 18,561 h 全量产物可下载。
 
 ## 局限与风险
 
 - 夹爪假设（平行爪 TCP）覆盖不了多指灵巧接触。
 - 质检 L3 依赖 VLM，可能系统性漏过细交互错误。
 - 合成臂外观与真实灯光/材质仍有域差；Franka 数字说明形态鸿沟不会被渲染抹平。
+- 当前可读代码不是完整开箱即用的论文复现实验：需要额外的模型权重、数据路径、依赖和本体/相机标定；仓库静态核对不能等同于跑通训练或验证论文结果。
 
 ## 关联页面
+
+- [Ego2Robot Learning 综述（arXiv:2611.13610）](./paper-ego2robot-learning-survey.md) — 归纳 EHV→机器人操作的四范式与数据/评测要求，**不同于本页的单项数据合成算法**。
 
 - [VLA](../methods/vla.md)
 - [EgoScale](../methods/egoscale.md) — 人视频规模化的另一条对齐路径
@@ -122,10 +180,12 @@ flowchart TB
 
 - [Ego2Robot 论文摘录](../../sources/papers/ego2robot_arxiv_2608_02580.md)
 - [Ego2Robot 项目页归档](../../sources/sites/ego2robot-blog.md)
+- [官方开源代码、README 与实际时序调用归档](../../sources/repos/ego2robot-ye-code.md)
 - [具身智能小站 9 篇盘点](../../sources/blogs/wechat_embodied_station_ego2robot_mango_grasp_2026-08-11.md)
 - [arXiv:2608.02580](https://arxiv.org/abs/2608.02580)
 
 ## 推荐继续阅读
 
 - [Ego2Robot 项目页](https://www-ye.github.io/ego2robot_blog/)
+- [官方合成管线及 RoboTwin 评测代码](https://github.com/www-Ye/ego2robot_blog)
 - Yuan et al., [Qwen-RobotManip](https://arxiv.org/abs/2606.17846) — 文内称使用本合成数据
