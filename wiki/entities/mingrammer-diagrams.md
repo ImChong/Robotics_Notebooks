@@ -62,7 +62,7 @@ flowchart LR
   EDGE --> DOT
   DOT --> GV["Graphviz 布局渲染"]
   GV --> IMG["PNG / JPG / SVG / PDF / DOT"]
-  PY -. "与应用代码一起入 Git" .-> GIT["Git 版本管理"]
+  PY -.-> GIT["Git 版本管理"]
 ```
 
 这里的 Provider 指模块分类而非云厂商计数：官方文档同时列出 IBM、Firebase、Elastic、GIS、Programming、SaaS 等。图示仅描述库自身的数据流，**不会主动获取真实云资源**。
