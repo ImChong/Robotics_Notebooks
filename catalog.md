@@ -772,7 +772,7 @@
 - [HoloAgent](wiki/entities/holoagent.md) — HoloAgent](https://github.com/HorizonRobotics/HoloAgent) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
 - [HoloBoxing：复用全身跟踪器的人形拳击策略](wiki/entities/holoboxing.md) — HoloBoxing** 是地平线面向 H-bot Track 2 的高层拳击策略方案：学习者负责比赛决策与未来身体目标，比赛提供的冻结 HoloMotion V2 控制器负责关节级跟踪执行。 `📅unknown` `[entity_page]`
 - [HoloMotion（HoloMotion-1 / v2）](wiki/entities/holomotion.md) — HoloMotion** 是 **Horizon Robotics（地平线）** 的人形全身控制开源栈：v1 用大规模异质动作语料训练全身跟踪策略；v2 预览尝试用单策略统一稀疏关键点与全身指令； `📅unknown` `[entity_page]`
-- [Holoscan Sensor Bridge（HSB）](wiki/entities/holoscan-sensor-bridge.md) — Holoscan Sensor Bridge**（产品页， `📅unknown` `[entity_page]`
+- [Holoscan Sensor Bridge｜NVIDIA FPGA 传感器以太网桥接](wiki/entities/holoscan-sensor-bridge.md) — Holoscan Sensor Bridge（HSB）** 是 NVIDIA 的 Sensor-over-Ethernet 数据采集与控制平台：FPGA/MCU 桥接相机、雷达、LiDAR、RF  `📅unknown` `[entity_page]`
 - [holosoma（Amazon FAR 人形 RL + 重定向框架）](wiki/entities/holosoma.md) — holosoma**（<https://github.com/amazon-far/holosoma>，Apache-2.0）是 Amazon FAR 发布的 **人形机器人全身强化学习** 开源 `📅unknown` `[entity_page]`
 - [ANSYS Workbench MCP（hongwenwang36-eng/ANSYS-Workbench-mcp）](wiki/entities/hongwenwang36-eng-ansys-workbench-mcp.md) — ANSYS Workbench MCP（hongwenwang36-eng/ANSYS-Workbench-mcp）是中文 Workbench 本地桥接项目：以 Workbench journal 和 `📅unknown` `[entity_page]`
 - [Vortex Funnel Generator（hooyao/vortex-funnel-gen）](wiki/entities/hooyao-vortex-funnel-gen.md) — Vortex Funnel Generator（hooyao/vortex-funnel-gen）是用 AI 设计 3D 打印防咕咚涡流漏斗，贯通 CadQuery 参数建模、OpenFOAM int `📅unknown` `[entity_page]`
@@ -1065,6 +1065,7 @@
 - [NVIDIA Getting Started With Isaac Lab](wiki/entities/nvidia-getting-started-isaac-lab.md) — Getting Started With Isaac Lab** 是 Physical AI Learning 门户下的  `📅unknown` `[entity_page]`
 - [NVIDIA GR00T G1 端到端参考 workflow](wiki/entities/nvidia-gr00t-e2e-g1-workflow.md) — How to Develop and Deploy Humanoid Robots End-to-End with NVIDIA Isaac GR00T and Unitree G1** 是 [P `📅unknown` `[entity_page]`
 - [NVIDIA GTC（机器人 / Physical AI 一手资料）](wiki/entities/nvidia-gtc.md) — NVIDIA GTC**（GPU Technology Conference，现定位为 **AI Conference**）是 NVIDIA 年度/global 大会：主题演讲、技术分论坛与 Ha `📅unknown` `[entity_page]`
+- [NVIDIA Holoscan SDK｜英伟达实时 AI 传感器处理框架](wiki/entities/nvidia-holoscan-sdk.md) — NVIDIA Holoscan SDK**（官方项目页、[官方文档](https://docs.nvidi `📅unknown` `[entity_page]`
 - [NVIDIA Isaac Lab Spot locomotion Sim2Real](wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md) — Closing the Sim-to-Real Gap: Training Spot Quadruped Locomotion with NVIDIA Isaac Lab** 是 NVIDIA D `📅unknown` `[entity_page]`
 - [NVIDIA Isaac Lab UR10e 工业装配 Sim2Real](wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) — Bridging the Sim-to-Real Gap for Industrial Robotic Assembly Applications Using NVIDIA Isaac Lab `📅unknown` `[entity_page]`
 - [NVIDIA Jetson](wiki/entities/nvidia-jetson.md) — NVIDIA Jetson** 是面向 **机器人与边缘 AI** 的嵌入式计算平台：以 **Jetson 模组**（SoM）+ **JetPack SDK** 提供机载 CUDA/TensorR `📅unknown` `[entity_page]`

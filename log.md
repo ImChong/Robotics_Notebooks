@@ -345,6 +345,13 @@ op: ingest
 - **编译形式：** 3 份论文通读归档、2 份项目站点归档、1 份官方源码归档、3 个含 Mermaid 方法流程的中英双语实体页；可运行 BEHAVIOR 源码另附时序图；回链挂至人形移动与 VLA 方法页。
 - **说明：** 本次仅基于一手论文和公开源码静态核查，尚未在本环境执行本地仿真或全仓预检。
 
+## [2026-11-12] ingest | NVIDIA Holoscan SDK 5.0 — 实时多传感器与 Physical AI 运行时
+
+- **意图：** 将 NVIDIA Holoscan 平台 SDK 与此前已收录的 Sensor Bridge 区分，新增带原文/源码证据的完整技术节点。
+- **一手资料：** NVIDIA 官方 SDK 5.0 文档、2026-10-21 发布的 `v5.0.0` release、`slow_fast_fusion.cpp` 与 `camera_imu_control.cpp`。
+- **开源结论：** SDK 本体与可运行 C++ / Python 示例已公开；HSB 是另一个独立接入项目；未在本地编译或做真实机器人时延实测。
+- **关键页：** [Holoscan SDK](../wiki/entities/nvidia-holoscan-sdk.md)、[官方文档归档](../sources/sites/nvidia-holoscan-sdk-5.md)、[源码归档](../sources/repos/nvidia_holoscan_sdk.md)。
+
 ## [2026-11-12] ingest | sources/repos/nutlope-hallmark.md — 收录 Hallmark 前端设计 Agent Skill 与源码检查链
 
 - 意图：将用户提供的 Nutlope/hallmark 原始仓库转换为可交叉引用的工具实体知识页。
