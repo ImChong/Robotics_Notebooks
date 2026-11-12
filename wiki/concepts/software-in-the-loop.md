@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, isaac-sim, ros2, software-in-the-loop, validation, nvidia, physical-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-12
 related:
   - ../entities/isaac-sim.md
   - ../entities/nvidia-physical-ai-learning.md
@@ -13,6 +13,8 @@ related:
   - ../entities/nvidia-spatial-intelligence-lab.md
   - ../queries/robot-policy-debug-playbook.md
   - ../queries/simulation-physics-fidelity.md
+original:
+  - ../../sources/sites/nvidia-isaac-sim-sil-tutorial.md
 sources:
   - ../../sources/sites/nvidia-isaac-sim-sil-tutorial.md
 summary: "Software-in-the-Loop（SIL）是在仿真虚拟机器人与环境上验证机器人软件、再接 ROS 2 等外部栈的工程方法；Isaac Sim 提供 ROS 2 bridge、OmniGraph 与 Python API，与 Hardware-in-the-Loop（HIL）及 Spatial Intelligence Lab 缩写消歧。"
@@ -44,7 +46,7 @@ summary: "Software-in-the-Loop（SIL）是在仿真虚拟机器人与环境上�
 - **ROS 2 生态对齐：** 许多部署栈以 ROS 2 为中心；SIL 让你在 Sim 里先跑 **同一套节点与话题图**，再切真机 driver。
 - **与 HIL 递进：** 课程路径上 SIL 之后引入 HIL，把 **真实 ECU/计算平台** 接入仿真世界，缩小「算力与驱动差异」盲区。
 
-## 核心结构
+## 核心原理与流程总览
 
 ```mermaid
 flowchart LR
@@ -57,18 +59,24 @@ flowchart LR
     VAL[功能回归 / 模型验证]
     SDG[合成数据可选分支]
   end
-  SW <--> BR <--> SIM
+  SW <-->|"ROS 2 消息"| BR
+  BR <-->|"仿真观测 / 控制命令"| SIM
+  SW --> VAL
   SIM --> VAL
   SIM --> SDG
 ```
 
-### Isaac Sim 中的三条脚本路径
+上图中的 SIL 是一个**闭环集成测试**：仿真产生传感器观测，软件栈经 ROS 2 消息获取观测并产生动作/规划命令，仿真执行命令后提供下一时刻状态；回归测试同时检查软件输出与仿真结果。**合成数据生成（SDG）是可选旁路，不是判定 SIL 成功的必需步骤。**
+
+### Isaac Sim 的三类开发接口
 
 | 路径 | 适用 |
 |------|------|
 | **ROS 2 bridge** | 已有 ROS 包，SIL 联调 segmentation、导航、驾驶等 |
 | **OmniGraph** | 无代码搭仿真逻辑与传感器图（见 [OmniGraph 实体页](../entities/omnigraph.md)） |
-| **Python API** | 批量场景、CI 回归、自定义传感器 |
+| **Python API** | 定制仿真逻辑、批量场景、自动化验证；CI 回归是可在其上构建的工程用法 |
+
+三者可组合使用：OmniGraph 编排仿真图，ROS 2 bridge 接外部软件栈，Python 脚本控制场景和自动化过程，并非必须三选一。以上接口能力见 NVIDIA 官方 SIL 教程的 *SIL in Isaac* 章节；自动化回归组织方式属于下文工程建议。
 
 ### SIL vs HIL vs Sim2Real
 
@@ -79,6 +87,24 @@ flowchart LR
 | **Sim2Real** | 仿真策略/模型在真机是否可用 | 域随机化、系统辨识、真机标定等 |
 
 ## 工程实践
+
+### 最小 SIL 回归闭环（工程建议）
+
+以下为根据官方 SIL / ROS 2 bridge 能力整理的**可执行测试设计**，不是 NVIDIA 教程规定的唯一工作流或验收阈值。
+
+1. **固定被测合同：** 记录待测 ROS 2 节点与版本、输入/输出 topic、消息类型、QoS、坐标系、控制周期与仿真步长，确保后续回归可比较。
+2. **搭建可重放场景：** 在 Isaac Sim 装载虚拟机器人和必要传感器，为基线场景固定配置与随机种子；另准备遮挡、光照变化、障碍物等扰动用例。
+3. **闭环运行：** 通过 ROS 2 bridge 将仿真传感器数据交给真实待测节点，把规划/控制输出回送仿真；检查消息能否按期到达、时间戳/坐标系是否一致、动作是否生效。
+4. **记录并判定：** 记录场景、软件版本、ROS 日志、rosbag 与任务结果。针对具体任务设定成功率、碰撞次数、超时次数、延迟分布等验收指标；**阈值由项目自行定义**，NVIDIA SIL 概念教程未给出统一数值。
+5. **进入下一验证层：** 软件回归通过后再做 HIL / 真机集成，重点验证目标板资源、驱动与通信时序、传感器和接触动力学偏差。
+
+### 典型问题定位
+
+| 现象 | SIL 阶段优先检查 | 后续仍需验证 |
+|------|-----------------|--------------|
+| 传感器无输出或话题不匹配 | bridge、topic、QoS、时间戳、TF 链 | 真实传感器驱动与标定 |
+| 算法输出正常但机器人不动作 | 命令 topic / action 接口、控制器订阅、仿真执行链 | 实际电机/驱动使能与安全限制 |
+| 仿真任务通过但真实部署不稳 | 场景覆盖、噪声与延迟模型是否过于理想 | 硬件算力、接触/摩擦、执行器动态 |
 
 | 目标 | 做法 |
 |------|------|
@@ -107,7 +133,9 @@ flowchart LR
 
 ## 参考来源
 
-- [Isaac Sim SIL 教程模块归档](../../sources/sites/nvidia-isaac-sim-sil-tutorial.md)
+- [Isaac Sim SIL 教程模块归档（2026-11-12 官方全文复核）](../../sources/sites/nvidia-isaac-sim-sil-tutorial.md)
+- [NVIDIA 原文：Software-in-the-Loop (SIL)](https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-sim/latest/developing-robots-with-sil-in-isaac-sim/02-software-in-the-loop-sil.html)
+- [NVIDIA 原文：HIL Fundamentals（验证 SIL/HIL 边界）](https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-sim/latest/leveraging-ros-2-and-hil-in-isaac-sim/01-hardware-in-the-loop-hil-fundamentals.html)
 
 ## 推荐继续阅读
 
