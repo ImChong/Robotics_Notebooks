@@ -10,6 +10,8 @@ related:
   - ./mingrammer-diagrams.md
   - ./gitdiagram.md
   - ./drawnix.md
+original:
+  - ../../sources/repos/mermaid-js.md
 sources:
   - ../../sources/repos/mermaid-js.md
   - ../../sources/sites/mermaid-ai-open-source.md
@@ -40,7 +42,7 @@ summary: "Mermaid.js 是 MIT 开源的文本式图表语法与 JavaScript 渲染
 - **从试写到自动化有连续工具链。** Live Editor 可用于即时预览；主库可嵌入网页产品；CLI 可用于流水线导出。
 - **宿主平台支持广。** GitHub 等支持 Mermaid fenced code block；其它编辑器或知识库需核对集成方式与实际版本。
 
-## 核心机制与流程
+## 核心原理
 
 Mermaid 图定义是文本；渲染器解析语法与图类型，再生成 SVG 图形。常见作者工作流如下：
 
@@ -61,7 +63,36 @@ flowchart LR
 
 代码块首行的 Mermaid 是 Markdown 围栏的语言标记；下一行的 flowchart LR 才是 Mermaid 图表定义。节点 ID（如 A、B、C）用于连线，方括号内文本作为显示标签。
 
-## 工具入口与使用场景
+### 源码运行时序图
+
+下图对照官方主库 `packages/mermaid/src/mermaid.ts`、`packages/mermaid/src/mermaidAPI.ts`，以网页 `mermaid.run()` 的执行路径为例；CLI 导出是独立项目的另一条入口。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 开发者
+  participant Web as 网页 mermaid 元素
+  participant Entry as mermaid.ts
+  participant API as mermaidAPI.ts
+  participant Diagram as Diagram.fromText
+  participant Draw as 图类型 renderer
+  User->>Entry: initialize(config), run()
+  Entry->>Web: 读取尚未处理的 .mermaid 文本
+  Web-->>Entry: 图表定义
+  Entry->>Entry: render(id, text) 进入串行队列
+  Entry->>API: render(id, text, element)
+  API->>Diagram: 解析并检测图表类型
+  Diagram-->>API: Diagram 对象
+  API->>Draw: renderer.draw(text, id, version, diagram)
+  Draw-->>API: SVG 图形结构
+  API->>API: 按 securityLevel 净化或沙箱包装
+  API-->>Entry: SVG 与可选 bindFunctions
+  Entry->>Web: 写入 SVG 并绑定交互
+```
+
+在 `securityLevel=sandbox` 下，源码使用 sandboxed iframe；其它安全级别的净化策略不同，不应把来源不可信的图定义当成可信代码。<https://github.com/mermaid-js/mermaid/blob/develop/packages/mermaid/src/mermaidAPI.ts>
+
+## 工程实践
 
 | 工具 | 入口 | 适用场景 |
 |------|------|----------|
@@ -72,6 +103,13 @@ flowchart LR
 | 官方文档 | [Mermaid Open Source](https://mermaid.ai/open-source/) | 查询图类型、语法、配置与集成 |
 | 集成清单 | [Community Integrations](https://mermaid.ai/open-source/ecosystem/integrations-community.html) | 检查目标应用的支持方式 |
 
+### 最小工程复现
+
+1. **Markdown / GitHub：** 使用标准三反引号 `mermaid` 围栏；先用官方 Live Editor 或项目的 Mermaid lint 检查语法，再确认目标平台实际支持的版本。
+2. **网页集成：** `npm install mermaid`，插入 `<pre class="mermaid">` 的定义，并通过 ESM 模块导入 Mermaid；按需调用 `mermaid.initialize()` 和 `mermaid.run()`。官方 Usage 文档说明新版包的运行环境约束，部署时需按安装版本检查。
+3. **批量导出：** `npm install -g @mermaid-js/mermaid-cli` 后，运行 `mmdc -i input.mmd -o output.svg`；CLI 也支持 PNG/PDF 与 Markdown 内图表转换。
+4. **机器人应用：** 用 `sequenceDiagram` 明确 ROS 2 传感器、状态估计、策略、执行器的消息顺序；用 `flowchart` 描述训练与 Sim2Real 发布环节。它是**人工建模的说明图**，不是运行时探针。
+
 ### 写图与排错建议
 
 1. 先选图类型，再写最短的节点和连线；确认结构正确后再增加长标签、主题和样式。
@@ -80,6 +118,8 @@ flowchart LR
 4. 在 CI 或静态站点中批量导出时用官方 CLI；网页端集成则按官方 Usage 文档初始化 Mermaid API。
 
 ## 局限与风险
+
+- **源码运行与安全：** 浏览器入口 `mermaid.run()` 调度渲染并生成 SVG；低层 `mermaidAPI.render` 依赖实际图类型的解析器/renderer。根据 `securityLevel`，源码会采用 SVG 净化或 iframe 沙箱。不同版本和宿主的配置不可直接互换。
 
 - **版本兼容：** 新图类型、形状语法或配置项可能不受旧版宿主支持；需以目标环境版本为准。
 - **自动布局不是手工排版。** 节点较多或标签较长时，布局方向、换行和阅读顺序可能与预期不同，应在目标渲染器中验证。
@@ -98,6 +138,8 @@ flowchart LR
 ## 参考来源
 
 - [主库、Live Editor 与 CLI 归档](../../sources/repos/mermaid-js.md)
+- [主仓核心浏览器入口（mermaid.ts）](https://github.com/mermaid-js/mermaid/blob/develop/packages/mermaid/src/mermaid.ts)
+- [低层渲染 API（mermaidAPI.ts）](https://github.com/mermaid-js/mermaid/blob/develop/packages/mermaid/src/mermaidAPI.ts)
 - [官方站点与文档核查](../../sources/sites/mermaid-ai-open-source.md)
 
 ## 推荐继续阅读
