@@ -9,7 +9,7 @@ tags:
   - action-chunking
   - guidance
 status: complete
-updated: 2026-10-14
+updated: 2026-11-12
 arxiv: "2610.14997"
 code: https://github.com/NamelessCrew/FreeBar
 related:
@@ -18,6 +18,8 @@ related:
   - ../methods/action-chunking.md
   - ./paper-streamingwam.md
   - ../overview/embodied-station-2026-10-14-41-papers-technology-map.md
+original:
+  - ../../sources/papers/freebar_barrier_guidance_async_vla_arxiv_2610_14997.md
 sources:
   - ../../sources/papers/freebar_barrier_guidance_async_vla_arxiv_2610_14997.md
   - ../../sources/repos/freebar_barrier_guidance_async_vla.md
@@ -56,30 +58,68 @@ summary: "FreeBar（arXiv:2610.14997）：推理期用障碍约束引导对齐�
 | **要点** | 按时间分区施加一致性约束，用 barrier 形式在采样过程中引导流匹配策略，不改训练；仿真与真机报告改善。 |
 | **文内指标** | 作者在仿真与真机报告改善；具体数字以原文为准。 |
 
+## 流程总览
+
+```mermaid
+flowchart TB
+  OBS["当前观测和旧 chunk 已承诺动作"] --> FLOW["预训练 flow-matching 策略提出新 chunk"]
+  FLOW --> PRE["已承诺前缀：严格对齐"]
+  FLOW --> NEAR["近未来：指数衰减软对齐"]
+  FLOW --> FAR["远未来：允许自由重规划"]
+  PRE --> GUIDE["QP 闭式权重给出 barrier 式速度引导"]
+  NEAR --> GUIDE
+  FAR --> GUIDE
+  GUIDE --> DENOISE["修正流场逐步生成下一 chunk"]
+  DENOISE --> RUN["接续执行与 Kinetix / RoboCasa 评价"]
+```
+
 ## 源码运行时序图
 
-以下为按仓库入口（`NamelessCrew/FreeBar`）推断的通用运行链路；入库日仅核实仓库可达，未逐文件阅读，具体脚本名以 README 为准。
+已阅读官方 [FreeBar](https://github.com/NamelessCrew/FreeBar) 的 `kinetix/src/eval_flow_rtc.py`、`kinetix/src/model.py` 与 README；以下严格对应 **Kinetix** 公开评测入口，不把通用训练套路伪装为源码调用。
 
 ```mermaid
 sequenceDiagram
-  participant U as 用户
-  participant R as NamelessCrew/FreeBar
-  participant E as 环境 / 数据
-  participant M as 模型 / 策略
-  U->>R: clone + 安装依赖（README）
-  U->>E: 准备基准 / 数据集或真机接口
-  U->>R: 训练或加载预训练权重
-  R->>M: 构建 FreeBar 模型
-  U->>R: 运行评测脚本
-  R->>E: 重置环境、取观测
-  E-->>M: 观测
-  M-->>E: 动作 / 预测
-  R-->>U: 指标与日志
+  autonumber
+  actor Dev as 评测开发者
+  participant Eval as kinetix/src/eval_flow_rtc.py
+  participant Policy as kinetix/src/model.py FlowPolicy
+  participant Env as Kinetix BatchEnvWrapper
+  participant Metrics as 评测结果
+  Dev->>Eval: uv run src/eval_flow_rtc.py --methods freebar --run-path ./pretrained/bc
+  Eval->>Policy: 读取已有 BC checkpoint 并初始化策略
+  Eval->>Env: reset 并取得初始观测
+  loop action chunk 执行轮次
+    Eval->>Policy: freebar_action(obs, previous_chunk, delay, horizon, alpha...)
+    Policy->>Policy: 前缀硬约束 + 近未来软约束 + 闭式 guidance 权重
+    Policy-->>Eval: 生成 next_action_chunk
+    Eval->>Env: 执行已承诺前缀及新 chunk 的可执行段
+    Env-->>Eval: reward / done / observations
+  end
+  Eval->>Metrics: 写出成功率和延时比较
 ```
+
+另有 RoboCasa/GR00T 路径 `Isaac-GR00T/scripts/run_eval_async.py --method freebar`，调用 `gr00t/model/action_head/freebar.py`；需要另备 RoboCasa 资产与 GR00T 权重。仓库 README 的引用区仍为待填写占位，不依赖该占位推断作者与正式引用格式。
+
+## 工程实践
+
+| 配置 | 代码依据 |
+|---|---|
+| Kinetix | `cd kinetix && uv sync` → `uv run src/eval_flow_rtc.py --run-path ./pretrained/bc --methods freebar` |
+| 算法接口 | `FlowPolicy.freebar_action(..., inference_delay, execute_horizon, alpha, max_guidance_weight, exp_decay_rate)` |
+| RoboCasa | `Isaac-GR00T/scripts/run_eval_async.py --method freebar --inference_delay 3` |
+| 基线 | 官方对比 `naive`、`rtc` 与 `freebar`（RoboCasa 公布 naive/freebar） |
+| 资产限制 | 预训练 BC 与 GR00T checkpoint、RoboCasa 模型和 ~10GB 素材另行准备 |
+
+## 局限与风险
+
+- 这里的 CBF 风格约束保护的是**跨 chunk 时间一致性**，不是碰撞、速度/力矩、人体安全的硬实时控制安全证明。
+- 推理延迟与动作执行周期需要正确估计；大幅改变 delay/horizon 后应重新评测。
+- FreeBar 能推理期接入 flow-matching action head，但不同硬件与策略 backbone 性能不能仅凭 Kinetix/RoboCasa 外推。
 
 ## 实验与评测
 
-- 作者在仿真与真机报告改善；具体数字以原文为准。
+- 论文 Kinetix 和 RoboCasa 对比 naive/RTC/FreeBar，目标是动作块连接的连续性、任务成功率和推理周期；数字应以各自实验配置为准。
+- 不以推理时 chunk 约束等同硬件安全认证。
 - **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
 
 ## 与其他工作对比

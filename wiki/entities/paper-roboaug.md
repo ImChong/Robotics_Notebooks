@@ -11,7 +11,7 @@ tags:
   - buaa
   - pku
 status: complete
-updated: 2026-10-23
+updated: 2026-11-12
 project_id: roboaug
 project: https://x-roboaug.github.io/
 code: https://github.com/Open-X-Humanoid/RoboAug
@@ -22,6 +22,9 @@ related:
   - ../methods/imitation-learning.md
   - ../concepts/sim2real.md
   - ./paper-roboedit.md
+  - ./paper-robogene.md
+original:
+  - ../../sources/papers/roboaug_arxiv_2602_14032.md
 sources:
   - ../../sources/papers/roboaug_arxiv_2602_14032.md
   - ../../sources/sites/x-roboaug-project.md
@@ -173,6 +176,8 @@ sequenceDiagram
 - **开源边界：** 已公开数据集和 Stage 1–2 增广代码；Stage 3 区域对比策略学习仍未开源，论文完整训练结果暂不能由该仓库端到端复现。
 
 ## 关联页面
+
+- [RoboGene：采集前的任务多样性设计](./paper-robogene.md) — RoboAug 处理已有示教中的背景与特征稳健性，两者数据流水线互补。
 
 - [Manipulation 任务](../tasks/manipulation.md) — 真机 pick-place / 双臂等任务语境
 - [Imitation learning](../methods/imitation-learning.md) — ACT 与示教数据效率

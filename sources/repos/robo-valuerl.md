@@ -1,20 +1,20 @@
-# Robo-ValueRL
+# Robo-ValueRL 官方训练与部署仓库
 
-> 来源归档（国内具身开源全景）
+- **仓库：** https://github.com/Open-X-Humanoid/Robo-ValueRL
+- **论文：** https://arxiv.org/abs/2607.09866
+- **项目：** https://gewu-lab.github.io/Robo-ValueRL/
+- **核验日期：** 2026-11-12
+- **开放结论：** 训练、评测、离线/在线迭代与部署入口已发布；所需真机、示教数据、模型 checkpoint 与多卡资源须单独准备。
 
-- **标题：** Robo-ValueRL
-- **类型：** repo
-- **机构：** 北京人形机器人创新中心
-- **链接：** https://github.com/Open-X-Humanoid/Robo-ValueRL
-- **分类：** 评测
-- **入库日期：** 2026-09-06
-- **一句话说明：** 北京人形机器人创新中心 开源项目 Robo-ValueRL（评测），见 [国内具身开源全景](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)。
-- **沉淀到 wiki：** [`wiki/entities/cn-os-robo-valuerl.md`](../../wiki/entities/cn-os-robo-valuerl.md)
+## 实际运行入口
 
-## 开源状态
+1. `install_simple.sh` 建环境（安装含 Transformers 兼容补丁）。
+2. `scripts/train_robo_valuerl_value_estimator.sh` 调用 `train_robo_valuerl_value_estimator.py`。
+3. `annotate_value_function_sparse_part.py` 标注剩余时间，`generate_action_quality/generate_quality.py` 排序产出动作质量字段。
+4. `scripts/train_robo_valuerl_offline.sh` 调用 `train_robo_value_rl_offline_rl.py` 训练质量条件策略。
+5. GPU 端 `deploy_robo_valuerl.py` 与机器人端 `rtc_env_client_inference_with_delta.py` 用 socket 通信、实时执行动作块；机器人环境 `rl_envs/realworld_x_humanoid_env.py`。
+6. `scripts/train_robo_valuerl_online.sh` 调用 `train_robo_value_rl_online_rl.py` 训练残差适配。
 
-- **已开源**：公开仓库（以 README 与 release 为准）。
+官方 README 的硬件参考：8×A100 训练、RTX4090 推理；这些是作者配置，非实测最低配置。
 
-## 对 wiki 的映射
-
-- [wiki/entities/cn-os-robo-valuerl.md](../../wiki/entities/cn-os-robo-valuerl.md)
+- **关联：** [来源论文](../papers/robo_value_rl_arxiv_2607_09866.md)；[wiki](../../wiki/entities/paper-robo-valuerl.md)
