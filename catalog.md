@@ -5878,7 +5878,7 @@
 - [TF²-Steering：以触觉预测与反馈引导速度场的动作精修 / Action Refinement with Tactile Forecasts and Feedback via Velocity-Field Steering](wiki/entities/paper-tf2-steering-tactile-forecast.md) — TF²-Steering**（Yiming Chen 等，2026；论文、[作者项目页](https://yiming-cc `📅unknown` `[entity_page]`
 - [TF8 / MC-RFSEA：Reaction-Force Series Elastic 仿生膝踝假肢](wiki/entities/paper-tf8-reaction-force-sea-prosthesis.md) — TF8**（MIT Media Lab Biomechatronics，Matthew Carney 等，[IEEE TMRB 2021](https://doi.org/10.1109/TMRB `📅unknown` `[entity_page]`
 - [TFGCA（arXiv:2609.09925）](wiki/entities/paper-tfgca-chunked-vla.md) — TFGCA**（*Time-Frequency Geometric Cross-Attention for Chunked Vision-Language-Action Models*，[arXi `📅unknown` `[entity_page]`
-- [THAW-VLA（arXiv:2609.24682）](wiki/entities/paper-thaw-vla.md) — THAW-VLA**（*Think Like a World Model, Act Like a VLA*，UW–Madison / UIUC，[arXiv:2609.24682](https:/ `📅unknown` `[entity_page]`
+- [THAW-VLA｜像世界模型一样思考，像 VLA 一样行动（Think Like a World Model, Act Like a VLA）](wiki/entities/paper-thaw-vla.md) — THAW-VLA**（*Think Like a World Model, Act Like a VLA: Distilling World-Model Representations into  `📅unknown` `[entity_page]`
 - [Thermal-Headroom Routing（arXiv:2610.35231）](wiki/entities/paper-thermal-headroom-routing.md) — Thermal-Headroom Routing**（*Thermal-Headroom Routing for Efficient Robot Perception in Extreme Hea `📅unknown` `[entity_page]`
 - [Thermo-VLA（arXiv:2611.11981）](wiki/entities/paper-thermo-vla.md) — Thermo-VLA**（*Thermo-VLA: A Thermal-Aware Vision-Language-Action Model with Gated Residual Modulat `📅unknown` `[entity_page]`
 - [Thinker-WM：共享多模态表征的具身统一世界模型](wiki/entities/paper-thinker-wm-unified-world-model.md) — Thinker-WM**（*Thinker-WM: A Unified World Model with Shared Multimodal Representations for Embodie `📅unknown` `[entity_page]`
