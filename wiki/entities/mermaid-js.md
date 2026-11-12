@@ -2,11 +2,12 @@
 type: entity
 tags: [diagramming, diagrams-as-code, visualization, javascript, svg, mermaid, open-source]
 status: complete
-updated: 2026-10-09
+updated: 2026-11-12
 code: https://github.com/mermaid-js/mermaid
 related:
   - ./diagram-design.md
   - ./archify.md
+  - ./mingrammer-diagrams.md
   - ./gitdiagram.md
   - ./drawnix.md
 sources:
@@ -90,6 +91,7 @@ flowchart LR
 
 - [Diagram Design](./diagram-design.md) — 可读取 Mermaid 语义并重绘为独立 HTML/SVG 工件的 Agent Skill
 - [Archify](./archify.md) — 用结构化 JSON IR 与校验器生成系统图的工具，可与 Mermaid 文本语法路线对照
+- [Diagrams（Python）](./mingrammer-diagrams.md) — 使用 Python 和 Graphviz 组合云服务图标与连接关系；可在 Git 中审查拓扑描述
 - [GitDiagram](./gitdiagram.md) — 从代码仓库证据生成可交互 Mermaid 架构图的工具
 - [Drawnix](./drawnix.md) — 将 Mermaid 流程图转换为 Plait 画布元素，便于继续进行白板式编辑
 
