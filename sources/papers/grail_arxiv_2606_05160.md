@@ -12,11 +12,13 @@
 - **作者：** Tianyi Xie*, Haotian Zhang*, Jinhyung Park*, Zi Wang*, Bowen Wen, Jiefeng Li, Xueting Li, Qingwei Ben, Haoyang Weng, Yufei Ye, David Minor, Tingwu Wang, Chenfanfu Jiang, Sanja Fidler, Jan Kautz, Linxi Fan, Yuke Zhu, Zhengyi Luo‡, Umar Iqbal‡, Ye Yuan‡（*co-first；‡project leads）
 - **机构：** NVIDIA、UCLA
 - **入库日期：** 2026-06-30
-- **复核日期：** 2026-07-22
+- **复核日期：** 2026-11-12
+- **核对范围：** arXiv:2606.05160v1 正文（Introduction、Related Work、Method、Experiments、Conclusion）及方法图、实验表与主要附录；结合官方 NVlabs/GRAIL README 核对生成与重建脚本入口。此标记限上述论文和指定入口，不代表执行模型训练、全部第三方依赖或真实 G1 测试。
+- **通读：** 已完成
 - **文档：** <https://nvlabs.github.io/GRAIL/>
 - **一句话说明：** 全数字人形 loco-manipulation 数据生成管线：在已知 3D 场景/相机/尺度/机器人比例角色下，用视频基础模型合成交互视频，再重建 metric 4D HOI 轨迹、重定向到 Unitree G1 并训练任务通用 tracker；仅用生成数据训练 egocentric 视觉策略，真机 pick-up 84%、爬楼梯 90%。
 
-## 核心摘录（策展，非全文）
+## 全文方法、实验与边界归纳（原文通读后的提炼）
 
 1. **问题设定：** 人形 loco-manipulation 需要跨物体、全身动作与场景几何的机器人可执行示范，但遥操作与动捕难规模化；从野外视频重建 4D 轨迹又面临相机、尺度、形态与接触歧义。
    - **对 wiki 的映射：** [paper-grail](../../wiki/entities/paper-grail.md)、[Loco-Manipulation 任务页](../../wiki/tasks/loco-manipulation.md)
@@ -56,3 +58,10 @@
 - 代码：<https://github.com/NVlabs/GRAIL>
 - 数据集：<https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL>
 - 接触横切面编译：[wechat_embodied_ai_lab_loco_manip_contact_survey.md](../blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
+
+
+## 原文核对补记（2026-11-12）
+
+- **方法：** 先以已知物体、相机和 3D 场景锚定生成条件，后通过视觉模型输出视频，再结合关键点、深度、接触、物体位姿约束优化 metric 4D 人物交互；最后重定向人形机器人并以 tracker 过滤不可执行轨迹。
+- **实验：** arXiv 报告 20,000+ 生成序列；84% 真机拾取成功率、90% 真机楼梯成功率属于不同的目标任务；95% 生成数据 + 5% teleop 的 GR00T 微调是另一种模型与数据混合实验，不作为上述成功率的分母。
+- **局限：** 视频先验生成的物理合理性需要接触/3D 优化与跟踪筛选，视觉真实性不等于接触可执行性；开源代码依赖外部视频生成 API、第三方权重及明确许可证条款。

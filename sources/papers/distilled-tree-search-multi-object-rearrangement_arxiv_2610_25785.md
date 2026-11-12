@@ -42,3 +42,10 @@
 
 - 策展来源：[【10.19-10.23前沿论文动态】Manipulation 37篇](../blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)
 - Saha, K., Hong, Y., Li, A., Choi, Y., Likhachev, M., Held, D. (2026). *Long-Horizon Multi-Object Rearrangement via Distilled Tree Search over Continuous Actions*. CoRL 2026. <https://arxiv.org/abs/2610.25785>
+
+
+## 官方代码状态更新（2026-11-12）
+
+- **代码：** <https://github.com/kallol-saha/DISCO>（已开放；此前“未见代码”仅是旧时点记录）。
+- **核心入口：** `pretrain.py` → `run_disco.py` / `disco/search/` → `disco/data.py` → `disco/flowmatch/train_policy.py` 和 `train_value.py` → `demo.py`（训练、蒸馏和测试期是不同命令，不是单次执行的固定调用顺序）。
+- **官方权重/数据：** <https://huggingface.co/kallol-saha/disco>、<https://huggingface.co/datasets/kallol-saha/disco-data>；环境依赖和执行详情见 [源码归档](../repos/disco-distilled-tree-search-official.md)。
