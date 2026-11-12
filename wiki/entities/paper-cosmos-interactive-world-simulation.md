@@ -31,6 +31,8 @@ sources:
   - ../../sources/sites/hf_cosmos3_nano_sim_checkpoints_model_cards.md
   - ../../sources/sites/nvidia_cosmos_interactive_world_simulation.md
   - ../../sources/blogs/wechat_embodied_station_20_papers_curobov2_fast_halo_humanwam_2026-11-06.md
+original:
+  - ../../sources/papers/cosmos_interactive_world_simulation_tech_report_2026.md
 summary: "NVIDIA Cosmos Interactive World Simulation（技术报告 2026-11-04）：Cosmos3-Nano 四个 16B 后训练 checkpoint（Transfer-Auto、Sim-Auto、Sim-Transfer、Sim-Bimanual）覆盖离线多传感器生成、交互式双臂视觉预测、sim-to-real 渲染与闭环驾驶仿真；论文原表显示单 GB300 双臂 48.1 FPS、16 GB200 的 7 路 RGB+LiDAR 驾驶仅 16.7 FPS。"
 ---
 
@@ -60,14 +62,14 @@ summary: "NVIDIA Cosmos Interactive World Simulation（技术报告 2026-11-04�
 
 ## 方法与机制
 
-- **后训练配方：** 依照官方技术报告 §2–3 的 Fig. 3–4 和方法段落复核：块内干净控制与噪声视觉可联合注意，禁止读未来块；Stage 0 双向适配 → Stage 1 因果 Teacher Forcing → Stage 2 TF-dCM → Stage 3 基于学生自生成历史的 SF-DMD。其余章节与附录尚未逐页通读。
+- **后训练配方：** 依照官方技术报告 §2–3 的 Fig. 3–4 和方法段落复核：块内干净控制与噪声视觉可联合注意，禁止读未来块；Stage 0 双向适配 → Stage 1 因果 Teacher Forcing → Stage 2 TF-dCM → Stage 3 基于学生自生成历史的 SF-DMD。正文 §1–9 与附录 A–D 已完成可读文本与图注通读；具体读法见一手归档。
 - **输入输出：** 动作或场景控制流入，视觉观测流出；外部仿真器可保持物理状态的权威。
 - **模型族：** Bimanual（动作条件动力学）、Transfer（空间控制 → RGB）、Auto（多视角驾驶，可含 LiDAR）。
 - **⚠ 2026-11-06 更正：** 三个“族”对应 **四个独立 checkpoint**——Auto 族含 Transfer-Auto（双向离线）与 Sim-Auto（因果蒸馏流式）两个不同权重，见下文「博文口径补充」。早先技术报告归档把二者当作同一方向的两种命名，不准确。
 
 ## 流程总览
 
-依据官方技术报告 §2–3 的因果注意力与后训练机制、以及 NVIDIA HF 博文与模型卡。此图为机制提炼，报告其他章节及附录尚未逐页核验。
+依据官方技术报告 §2–3 的因果注意力与后训练机制、以及 NVIDIA HF 博文与模型卡。此图为机制提炼，已以报告正文 §1–9 和附录 A–D 的文字、表格及图注交叉核对；PDF 高分辨率图像细节未逐像素检查。
 
 ```mermaid
 flowchart TD
@@ -114,6 +116,25 @@ flowchart TD
 - **真正时延：** 论文 Auto 实验使用预取控制；接收新控制还需 WSM 准备与编码。7 路传感器配置低于 30 FPS 视频目标，不能因某个演示称“实时”就推断普通 GPU 上的全系统实时性能。
 - **另一个口径：** Sim-Transfer 官网展示单张 GB200、640×640 **15.85 FPS / 240 ms**，其输出分辨率、输入和硬件负载与上述表格不同。
 
+### §6 机器人策略闭环：Sim-Transfer 的真实证据与反例
+
+报告 §6.5 和附录 C.4 不只有生成质量指标，还把 **GR00T N1.7 策略**接入 Isaac Lab 的苹果抓放闭环：物理引擎决定状态、渲染器提供观测、策略回传动作，再做下一次物理更新。以下是**同一份论文作者报告**在经校准的 **32 个起始条件**上的成功次数：
+
+| 策略/评估条件 | Isaac Lab RTX 原生视觉 | Cosmos Sim-Transfer 生成视觉 |
+|---|---:|---:|
+| GR00T N1.7，15k-step fine-tune | **22/32** | **27/32** |
+| GR00T N1.7，20k-step fine-tune | **24/32** | **21/32** |
+| 红色托盘设置 | **22/32** | **19/32** |
+
+这表明视觉域改写在**特定校准条件和策略**上可能改善闭环，但同一论文也给出性能反转的反例。评价计数依赖仿真器的物体放置、支撑/接触及释放判据，而非真机成功率；不能把 27/32 当作任意策略的普遍提升。
+
+### 长序列与失败模式（报告附录 C、D）
+
+- **Sim-Transfer 限制：** 附录 C.5 展示时间涂抹、鬼影、外观漂移、几何形变、空间控制不一致，意味着“仿真器物理真值”与“模型生成画面”之间仍可能不一致。
+- **驾驶闭环边界：** §7 的一小时生成展示依赖循环 WSM、文字条件与 KV 历史，不是车辆策略逐帧决定新驾驶动作的真实闭环成功率；生成前还需 WSM 路由/渲染，推理吞吐不包含全部系统开销。
+- **额外训练细节：** 附录 B 记录 Bimanual 数据/字幕、训练、解码器与消融；C 记录 Transfer 的原始素材筛选、推理剖析与生成失败；D 记录 Auto 的相机/LiDAR 对齐、配方、跨摄像头窗口与长序列训练消融。不同消融配置与模型卡吞吐不可混用。
+- **原文阅读：** 2026-11-12 已按章节完成 [PDF 正文 §1–9 / 附录 A–D 通读归档](../../sources/papers/cosmos_interactive_world_simulation_tech_report_2026.md)；依据可读文本、表格和图注，不代表高分辨率图像逐像素审计或模型已复现。
+
 ## 与其他工作对比
 
 - 与 DreamDojo、LingBot-World 2.0 的对比见上方模型卡数字；模型卡称基线的提示词设置可能不同。
@@ -125,7 +146,7 @@ flowchart TD
 
 - 流式与因果训练是交互性的关键，报告以此区别于离线视频模型。
 - 控制保真（分割、深度、边缘）是 sim-to-real 视频迁移的主要改进点，画质指标并未全面提升。
-- 证据已补入技术报告关键机制与 Tab. 3/14/15/16/17；但**报告整篇及附录仍未完成通读**，本次也未在本地执行模型或独立验证论文性能。
+- 已通读技术报告 §1–9、附录 A–D 的可读文本、表格与图注，并补入 **Sim-Transfer 32 组起点的闭环结果及反例**；本次**未执行 GPU 推理、训练或真机实验**，性能指标均为 NVIDIA 报告的作者自测值。
 
 ## 工程实践
 
