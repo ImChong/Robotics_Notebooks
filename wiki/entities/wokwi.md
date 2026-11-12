@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, embedded, firmware, iot, arduino, esp32, education, wokwi]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-12
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./simplefoc.md
@@ -10,6 +10,7 @@ related:
   - ./betaflight.md
   - ./inmoov-humanoid.md
   - ./tinkercad.md
+  - ./robotics-lab-movez.md
   - ../concepts/uart-serial-communication.md
   - ../concepts/processor-in-the-loop-sim2real.md
   - ../concepts/mqtt-protocol.md
@@ -114,6 +115,7 @@ flowchart LR
 - [UART 串行通信](../concepts/uart-serial-communication.md)
 - [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md)
 - [Tinkercad](./tinkercad.md) — Autodesk 浏览器端 3D + Arduino/micro:bit 入门仿真
+- [Robotics Lab（Movez）](./robotics-lab-movez.md) — 侧重浏览器 3D 元件装配和交互教学，电气模型精度未获验证；不同于可运行固件的 Wokwi。
 
 ## 推荐继续阅读
 
