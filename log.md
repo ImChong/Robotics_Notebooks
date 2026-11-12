@@ -345,6 +345,14 @@ op: ingest
 - **编译形式：** 3 份论文通读归档、2 份项目站点归档、1 份官方源码归档、3 个含 Mermaid 方法流程的中英双语实体页；可运行 BEHAVIOR 源码另附时序图；回链挂至人形移动与 VLA 方法页。
 - **说明：** 本次仅基于一手论文和公开源码静态核查，尚未在本环境执行本地仿真或全仓预检。
 
+## [2026-11-12] ingest | sources/repos/nutlope-hallmark.md — 收录 Hallmark 前端设计 Agent Skill 与源码检查链
+
+- 意图：将用户提供的 Nutlope/hallmark 原始仓库转换为可交叉引用的工具实体知识页。
+- 核对：通读官方 README 与 SKILL.md，核查主题选择和 sloplint 的源码入口；官网确认安装命令 `npx skills add nutlope/hallmark -g`。
+- 开源结论：MIT；技能文档、50 个主题目录和 Node.js 检查脚本公开；浏览器渲染检查另需 Chrome 与 puppeteer-core。
+- 写回：新增 [Hallmark](../wiki/entities/hallmark.md)，关联 [MengTo/Skills](../wiki/entities/mengto-skills.md)。
+- 验证边界：已核对源码与官方文档，未实际安装执行，也未运行完整知识库 CI。
+
 ## [2026-11-12] ingest | 4D-HOF 与三篇基础文献
 
 - 意图：补足 4D 手物体交互中，视觉初始化、条件流匹配、物体 6D 位姿、手部 MANO 之间的技术联系。
