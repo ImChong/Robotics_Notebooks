@@ -7,6 +7,7 @@ summary: "Conference on Robot Learning."
 related:
   - ../entities/awesome-physical-ai-natnew.md
   - ../overview/awesome-physical-ai-technology-map.md
+  - ../overview/corl-2026-glen-berseth-reading-list.md
   - ../methods/vla.md
   - ../concepts/sim2real.md
 sources:
@@ -72,6 +73,8 @@ Conference on Robot Learning.
 - 清单中的实验室 / 硬件 / 人物条目偶发链到错误 org，复现或引用前先打开官方页核对。
 
 ## 关联页面
+
+- [CoRL 2026：Glen Berseth 的优先阅读清单（待原文通读）](../overview/corl-2026-glen-berseth-reading-list.md) — 作者称从 687 篇中筛出 101 篇，当前仅归档作者公开说明，尚未核对具体名单。
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)
