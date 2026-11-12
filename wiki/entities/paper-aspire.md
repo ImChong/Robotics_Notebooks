@@ -7,7 +7,7 @@ tags:
   - llm-agent
   - tudelft
 status: complete
-updated: 2026-11-11
+updated: 2026-11-12
 arxiv: "2611.13114"
 code: https://github.com/erik-derner/aspire-sysid
 original: ../../sources/papers/aspire_arxiv_2611_13114.md
@@ -19,6 +19,7 @@ related:
   - ../concepts/sim2real.md
 sources:
   - ../../sources/papers/aspire_arxiv_2611_13114.md
+  - ../../sources/repos/erik-derner-aspire-sysid.md
 summary: "ASPIRE（arXiv:2611.13114）：LLM 智能体自选辨识方法，从实测数据构造闭式非线性模型；harness 封存测试集、独立核验形式化物理要求，并要求每个模型附参数 / 估计 / 解释记录。"
 ---
 
@@ -70,9 +71,55 @@ flowchart TD
 - **评估**：动态模型默认用 RK4 仿真；可指定视界 H 把训练 / 验证轨迹切段（4.5）。智能体的推荐与测试排名分开；测试集上最低 S 称「基于 oracle 的选择」（4.5）。
 - **预算**：默认 60 轮、3600 s、10 美元（4.4）。
 
+## 源码运行时序图
+
+官方已发布可运行 Python harness。下图依据 `aspire/pyproject.toml`、`cli.py`、`experiment/commands.py`、`worker.py`、`runner.py`、`agent/loop.py`、`brief/workspace.py` 和 `evaluate/pool.py` 的实际入口与调用绘制；是**静态源码审阅**，没有执行实验。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 使用者
+  participant CLI as aspire CLI
+  participant Grid as experiment.grid
+  participant Worker as experiment.worker
+  participant Runner as experiment.runner
+  participant Workspace as brief.workspace
+  participant Agent as agent.loop
+  participant Checks as model.check_workspace
+  participant Eval as evaluate.pool
+  participant Record as 运行记录与导出
+  User->>CLI: aspire experiment run <experiment-dir>
+  CLI->>Grid: commands._cmd_run 调用 run_grid
+  Grid->>Worker: 启动单次实验 worker
+  Worker->>Runner: execute_run
+  Runner->>Workspace: provision_workspace(task)
+  Workspace-->>Runner: TASK.md、train/val、模型格式和检查脚本
+  Runner->>Agent: run_round（传入评估回调）
+  loop 模型请求与工具执行，受预算限制
+    Agent->>Agent: 读取数据、执行命令、写候选模型
+  end
+  Agent->>Checks: DONE 后 check_workspace
+  Checks-->>Agent: 检查报告
+  opt 首次检查失败且预算允许
+    Agent->>Agent: 收到失败原因后修正候选
+    Agent->>Checks: 再次 DONE 与检查
+    Checks-->>Agent: 检查报告
+  end
+  opt 有通过检查的候选
+    Agent->>Eval: evaluate_callback → evaluate_pool
+    Eval-->>Agent: 候选评估（封存字段保留在 harness）
+  end
+  Agent-->>Runner: RoundResult
+  Runner->>Record: 快照、leak_scan、write_run_record、导出
+  Record-->>User: 运行记录及模型成果
+```
+
+`aspire experiment run` 是自主实验入口；另有 `aspire session` / `aspire web` 交互入口。候选文件为 `models/<label>.json` 与 `models/pool.json`。具体路径和调用证据见[官方源码归档](../../sources/repos/erik-derner-aspire-sysid.md)。
+
 ## 工程实践
 
-- 复现入口：仓库 README（静态读）列出 `aspire web`、`aspire session`、`aspire experiment run/aggregate/report`、`aspire record verify`（离线重算评估，无需 API key）。默认需要 OpenAI 账号有 `gpt-6.1-sol` 权限（README）。本页未运行任何代码。
+- 复现入口：仓库 README（静态读）列出 `aspire web`、`aspire session`、`aspire experiment run/aggregate/report`、`aspire record verify`（离线重算评估，无需 API key）。默认需要 OpenAI 账号有 `gpt-6.1-sol` 权限（README）。**已静态审阅主要运行入口与调用链，但未实际运行代码**；详见[源码归档](../../sources/repos/erik-derner-aspire-sysid.md)。
+- **测试数据隔离的安全边界：** harness 正常工作目录只供给 train/val，不主动向智能体提供测试集与测试误差；但官方 `aspire/README.md` 明示**没有操作系统级沙箱**：agent 命令与 harness 为同一 OS 用户，且有网络权限，故恶意脚本可能越过工具/目录分隔读取测试文件，事后泄露扫描也无法检测静默读取。不能将“sealed evaluation”理解为对抗性安全隔离；强隔离需额外容器、虚拟机或独立 OS 用户。
 - 数据：机器人与摩擦系统数据由作者录制；发酵罐数据出自 van Can 等 1995（README）。
 - 实验设置（第 5 节）：TurtleBot 2 离散时间 3 状态，训练 3 条轨迹 450 样本，测试 12 条 25 样本（H=25，Ts=0.2 s）；摩擦系统连续时间，训练 13 条 3522 样本，测试 4 条 978 个得分样本，含三条形式化要求 R1-R3（Table 3、4）；发酵罐单状态压力，训练 / 验证 / 测试各 1 条轨迹，Ts=5 s，五条自然语言要求 R1-R5（Table 3、5.3）。均为实测数据，仿真评估用的是已记录输入下的开环仿真，非闭环控制。
 - 「盲」任务：同数据、同划分，变量名改 x1、x2…，去掉单位、描述、用途与要求（5.4）。
@@ -150,7 +197,8 @@ claims 文件未提任何数字，此处无数字不符。
 
 - [aspire_arxiv_2611_13114.md](../../sources/papers/aspire_arxiv_2611_13114.md)
 - [arXiv:2611.13114](https://arxiv.org/abs/2611.13114)
-- 代码：[erik-derner/aspire-sysid](https://github.com/erik-derner/aspire-sysid)（静态读 README，未运行）
+- [官方源码归档与调用链](../../sources/repos/erik-derner-aspire-sysid.md)
+- 代码：[erik-derner/aspire-sysid](https://github.com/erik-derner/aspire-sysid)（静态阅读入口及关键模块，未运行）
 
 ## 推荐继续阅读
 
