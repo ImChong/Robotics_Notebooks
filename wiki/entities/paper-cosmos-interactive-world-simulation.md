@@ -12,7 +12,7 @@ tags:
   - hf-blog
   - streaming-generation
 status: complete
-updated: 2026-11-06
+updated: 2026-11-12
 project_id: cosmos-interactive-world-simulation
 arxiv: "2611.06627"
 project: https://research.nvidia.com/labs/cosmos-lab/cosmos-simulation/
@@ -29,8 +29,9 @@ sources:
   - ../../sources/papers/cosmos_interactive_world_simulation_tech_report_2026.md
   - ../../sources/blogs/nvidia_cosmos_interactive_world_simulation_hf_blog.md
   - ../../sources/sites/hf_cosmos3_nano_sim_checkpoints_model_cards.md
+  - ../../sources/sites/nvidia_cosmos_interactive_world_simulation.md
   - ../../sources/blogs/wechat_embodied_station_20_papers_curobov2_fast_halo_humanwam_2026-11-06.md
-summary: "Cosmos Interactive World Simulation（2026-10，NVIDIA）：把 Cosmos 3 改造成可流式交互的世界仿真，开源 Transfer-Auto、Sim-Auto、Sim-Transfer、Sim-Bimanual 四个 16B Nano 后训练 checkpoint（OpenMDW 1.1），覆盖机器人交互、sim-to-real 视频迁移与多视角驾驶仿真；2026-11-05 HF 博文与模型卡口径已补入。"
+summary: "NVIDIA Cosmos Interactive World Simulation（技术报告 2026-11-04）：Cosmos3-Nano 四个 16B 后训练 checkpoint（Transfer-Auto、Sim-Auto、Sim-Transfer、Sim-Bimanual）覆盖离线多传感器生成、交互式双臂视觉预测、sim-to-real 渲染与闭环驾驶仿真；论文原表显示单 GB300 双臂 48.1 FPS、16 GB200 的 7 路 RGB+LiDAR 驾驶仅 16.7 FPS。"
 ---
 
 # Cosmos Interactive World Simulation（交互式世界仿真）
@@ -59,14 +60,14 @@ summary: "Cosmos Interactive World Simulation（2026-10，NVIDIA）：把 Cosmos
 
 ## 方法与机制
 
-- **后训练配方：** 报告目录包括 Cosmos 3 骨干、多模态 token 排布、时序因果注意力，以及双向适配、因果训练（teacher forcing）与因果一致性蒸馏（据目录）。
+- **后训练配方：** 依照官方技术报告 §2–3 的 Fig. 3–4 和方法段落复核：块内干净控制与噪声视觉可联合注意，禁止读未来块；Stage 0 双向适配 → Stage 1 因果 Teacher Forcing → Stage 2 TF-dCM → Stage 3 基于学生自生成历史的 SF-DMD。其余章节与附录尚未逐页通读。
 - **输入输出：** 动作或场景控制流入，视觉观测流出；外部仿真器可保持物理状态的权威。
 - **模型族：** Bimanual（动作条件动力学）、Transfer（空间控制 → RGB）、Auto（多视角驾驶，可含 LiDAR）。
 - **⚠ 2026-11-06 更正：** 三个“族”对应 **四个独立 checkpoint**——Auto 族含 Transfer-Auto（双向离线）与 Sim-Auto（因果蒸馏流式）两个不同权重，见下文「博文口径补充」。早先技术报告归档把二者当作同一方向的两种命名，不准确。
 
 ## 流程总览
 
-依据 HF 博文「How streaming generation works」「The four-stage training recipe」与模型卡 Description（作者表述，非技术报告方法图转绘；报告完整方法章节未逐页核对）。
+依据官方技术报告 §2–3 的因果注意力与后训练机制、以及 NVIDIA HF 博文与模型卡。此图为机制提炼，报告其他章节及附录尚未逐页核验。
 
 ```mermaid
 flowchart TD
@@ -96,6 +97,23 @@ flowchart TD
   - Transfer（PAI-Bench-C）：分割 mIoU 0.738 对比 Cosmos3-Nano 的 0.643；深度 SI-RMSE 0.619 对比 0.842（越低越好）。
   - Transfer-Auto（720p）：文生视频 Frame FID 45.5 对比 Cosmos-Transfer2.5-2B Multiview 的 61.9。
 
+### 官方技术报告性能与闭环评测复核（2026-11-12）
+
+以下按 NVIDIA 报告原表列出，不与不同配置的 HF 模型卡吞吐混为一谈：
+
+| 模型 | 报告配置 | 吞吐与单块时延 | 一手出处 |
+|---|---|---|---|
+| Sim-Bimanual | **1× GB300**，480p，2 latent steps = 8 RGB 帧/块，4 去噪步；compiled + CUDA graphs / TAEHV Super | **48.1 FPS**，p50 / p95 **166 / 169 ms** | §5.4，Tab. 3；使用录制动作，丢弃预热块 |
+| Sim-Auto | **1× GB200**，1 路 832×480 RGB，12 帧/块，4 步 | **32.6 FPS**，p50 **364 ms** | §7.4，Tab. 14 |
+| Sim-Auto | **16× GB200**，7 路 832×480 RGB **+ LiDAR** | **16.7 FPS**，p50 **701 ms** | §7.4，Tab. 14 |
+| Sim-Auto | **32× GB200**，7 路 RGB，无 LiDAR | **23.2 FPS**，p50 **511 ms** | §7.4，Tab. 14 |
+
+- **生成质量：** 7 路 720p Driving-Sim-Eval 的 T2V Frame FID：Transfer-Auto **45.5**、Sim-Auto **48.6**、Cosmos-Transfer2.5 **61.9**（越低越好）。但 FVD(I3D) 的 Sim-Auto **480** 略好于 Transfer-Auto **488**（Tab. 15）；蒸馏版不是在所有指标上都下降。
+- **控制指标：** Traffic-Scenario-Eval 车辆 F1 为 Transfer-Auto **0.908**、Sim-Auto **0.853**、旧基线 **0.741**（Tab. 17）；LiDAR 检测 F1@3m 的 Sim-Auto **0.188** 低于 LidarVerse（116 sweeps）**0.200**（Tab. 16）。
+- **长序列：** 报告 Fig. 27 用**循环的 WSM 控制和文本提示**及滚动 KV 缓存生成一小时，两组场景部分画质指标未见持续下降；作者仍指出长期物体外观和物理合理性可能退化。不是“真实自动驾驶策略连续安全闭环一小时”的证据。
+- **真正时延：** 论文 Auto 实验使用预取控制；接收新控制还需 WSM 准备与编码。7 路传感器配置低于 30 FPS 视频目标，不能因某个演示称“实时”就推断普通 GPU 上的全系统实时性能。
+- **另一个口径：** Sim-Transfer 官网展示单张 GB200、640×640 **15.85 FPS / 240 ms**，其输出分辨率、输入和硬件负载与上述表格不同。
+
 ## 与其他工作对比
 
 - 与 DreamDojo、LingBot-World 2.0 的对比见上方模型卡数字；模型卡称基线的提示词设置可能不同。
@@ -107,7 +125,7 @@ flowchart TD
 
 - 流式与因果训练是交互性的关键，报告以此区别于离线视频模型。
 - 控制保真（分割、深度、边缘）是 sim-to-real 视频迁移的主要改进点，画质指标并未全面提升。
-- 证据主要来自模型卡与摘要；完整报告的实验表与附录未逐页核对。
+- 证据已补入技术报告关键机制与 Tab. 3/14/15/16/17；但**报告整篇及附录仍未完成通读**，本次也未在本地执行模型或独立验证论文性能。
 
 ## 工程实践
 
@@ -134,7 +152,7 @@ flowchart TD
 
 - **checkpoint 数量与命名：** 博文与四张卡显示是 4 个独立权重；既有页摘要与 [Cosmos 3](./cosmos-3.md)、[NVIDIA Cosmos](./nvidia-cosmos.md) 关联页写“三类”，指的是三个模型族。
 - **训练配方：** 本页早先只据目录写“双向适配、因果训练、因果一致性蒸馏”；博文补出 Stage 0 – 3 的完整四阶段，第四阶段 self-forcing（学生自身生成历史 + 冻结教师与辅助 score 模型）是此前页面缺失的一环。仓库 `examples/toml/sft_config/` 里有 `sim_bimanual_stage0_bidir`、`stage1_tf`、`stage2_tfdcm`、`stage3_sfdmd` 四个同名 TOML，与之对应（后缀含义为推测）。
-- **块长：** 首帧之后每个潜变量时间步对应 4 帧 RGB；Transfer 每块 1 个时间步，报告中优化后的 Bimanual 配置每块 2 个（博文表述，报告原表未核对）。
+- **块长：** 首帧之后每个潜变量时间步对应 4 帧 RGB；Transfer 每块 1 个时间步，报告中优化后的 Bimanual 配置每块 2 个（博文叙述；对应块长已对照技术报告 Tab. 3）。
 - **本体范围：** 博文称 Sim-Bimanual 支持 **YAM 与 AgiBot**；模型卡 Inputs 却写 "Supported embodiment: AgiBot"。仓库 `cosmos_framework/inference/bimanual.py` 的域表含 `abc_yam`、`molmoact2_yam`、`xdof_yam`，HF 仓内也有 `assets/sim_bimanual/yam/` 示例，`docs/inference_bimanual.md` 提到“Additional YAM inputs”，所以以博文 + 仓库为准，模型卡该行疑为滞后（推测）。
 - **“实时”口径：** 模型卡称 Sim-Auto 面向实时闭环驾驶仿真；同卡吞吐表（vLLM-Omni 单 GPU，无 LiDAR）里 GB200 的 1 视图 480p 为 16.8 fps、7 视图 480p 为 3 fps、11 视图 720p 为 0.74 fps，均低于 30 fps 播放帧率；卡面写“多 GPU 优化进行中”，且未说明吞吐是否按视图折算。
 - **Sim-Auto 与 Transfer-Auto 质量取舍（模型卡）：** Sim-Auto 单图像质量指标（如 720p I2V Frame FID 33.6）逊于 Transfer-Auto（27.8），跨视图 Sampson 误差也高于基线 Cosmos-Transfer2.5-2B Multiview；LiDAR 物体检测 F1 为 0.188，低于 LidarVerse（116 scans）的 0.200。这是少步蒸馏换流式的代价。
@@ -274,6 +292,7 @@ sequenceDiagram
 - [Cosmos 3 技术报告（arXiv:2606.02800）](./cosmos-3.md)
 - [HF 博文归档（2026-11-05）](../../sources/blogs/nvidia_cosmos_interactive_world_simulation_hf_blog.md)
 - [四张 HF 模型卡归档](../../sources/sites/hf_cosmos3_nano_sim_checkpoints_model_cards.md)
+- [NVIDIA Cosmos Lab 官方项目演示与开源核验归档](../../sources/sites/nvidia_cosmos_interactive_world_simulation.md)
 
 ## 推荐继续阅读
 
