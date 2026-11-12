@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper, world-action-models, wam, diffusion, cosmos, robot-manipulation, open-source]
-status: draft
+status: complete
 updated: 2026-11-12
 project_id: metawam
 arxiv: "2611.14365"
@@ -40,7 +40,7 @@ MetaWAM 将机器人动作、状态和价值信号塞入与视频扩散兼容的
 
 ## 核心原理
 
-从视觉潜变量构建含通道分槽的 meta-frame。正交 DCT 系数的不同槽分别承载任务、当前本体状态、动作块、未来本体状态与价值；反变换读回连续控制信息。原始视频潜变量与 meta-frame 一起进入共享扩散网络，并以槽位任务条件与掩码限定监督；推理时仅对必要目标作较短去噪。
+采用一帧输入元帧、六帧多视角视频潜变量、一帧输出元帧的 **8 帧 latent 序列**（逐信号分帧基线是 11 帧）。从视觉潜变量构建含通道分槽的 meta-frame。正交 DCT 系数的不同槽分别承载任务、当前本体状态、动作块、未来本体状态与价值；反变换读回连续控制信息。原始视频潜变量与 meta-frame 一起进入共享扩散网络，并以槽位任务条件与掩码限定监督；推理时仅对必要目标作较短去噪。
 
 ## 流程总览
 
@@ -59,7 +59,7 @@ flowchart TD
 
 ## 实验与评测
 
-论文 RoboCasa 24 任务平均成功率 68.9%（对照 Cosmos Policy 67.1%），推理延迟约 0.479 s → 0.291 s（约 -39%）；Franka 三项真机任务平均成功率 85.0%，OOD 设置 68.3%。这些数值是论文自报；时延不等于机器人低层控制周期。
+论文 RoboCasa 24 任务、3 随机种子共 3600 次评测平均成功率 68.9%（对照 Cosmos Policy 67.1%），推理延迟约 0.479 s → 0.291 s（约 -39%）；Franka 三项真机任务平均成功率 85.0%，OOD 设置 68.3%。这些数值是论文自报；时延不等于机器人低层控制周期。
 
 ## 结论
 
@@ -101,6 +101,8 @@ sequenceDiagram
 
 ## 工程实践
 
+附录列出 RoboCasa 默认 4×H200、global batch 1024、12000 优化步与 32-step chunk（执行 16 步）；视频分帧从 11 降为 8，39% 指单次模型查询时延，不是关节伺服周期。[原文归档](../../sources/papers/metawam_arxiv_2611_14365.md)。
+
 官方仓库提供 RoboCasa、LIBERO 和真机训练/评测脚本，以及 MetaWAM RoboCasa 权重。RoboCasa 复现实验入口为 scripts/train_robocasa.sh 与 scripts/test_robocasa.sh；需要准备 RoboCasa 数据、Cosmos-Predict2-2B 权重、环境依赖，训练默认 4 GPU。模型 meta-frame 频域槽位实现在 cosmos_policy/models/policy_text2world_model.py。
 
 ## 局限与风险
@@ -124,4 +126,4 @@ RoboCasa 成功率改进相对幅度有限，延迟收益与任务/硬件/去噪
 - [论文原文](https://arxiv.org/abs/2611.14365)
 - [官方代码](https://github.com/showlab/MetaWAM)
 
-> **复核状态（2026-11-12）：** 论文关键方法与结果已核对，但全文与全部附录尚未逐项通读，故本节点保持 draft；不得将自报数值视为独立复现。
+> **复核状态（2026-11-12）：** 已通读并核对 arXiv v1 HTML 正文、实验与附录，数据均按作者论文口径记录；本次未独立复现其训练、推理、性能指标。

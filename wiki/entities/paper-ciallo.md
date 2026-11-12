@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper, cross-embodiment, intent-representation, imitation-learning, vla, robot-manipulation]
-status: draft
+status: complete
 updated: 2026-11-12
 project_id: ciallo
 arxiv: "2611.13732"
@@ -38,7 +38,7 @@ CIALLO 让不同机器人的动作先映射到共享短程意图空间，再利�
 
 ## 核心原理
 
-预训练阶段分别将机器人动作、视觉变化以及语言提示编码到相同短程意图表示，用动作重建和跨模态对比损失对齐；动作编解码器通过机器人/关节 embedding 区分本体。为新本体采集至多约 10 秒校准记录，只调整本体相关表征/解码；策略模型据视觉语言预测意图，由目标本体的解码器转换为执行动作。
+预训练阶段分别将机器人动作、视觉变化以及语言提示编码到相同短程意图表示，用动作重建和跨模态对比损失对齐；动作编解码器通过机器人/关节 embedding 区分本体。为新本体采集至多约 10 秒校准记录，只调整本体 essential 向量与 axis/arm embedding（共享 codec 权重不变，校准约需单 GPU 30 分钟），然后冻结 codec；策略模型据视觉语言预测意图，由目标本体的解码器转换为执行动作。
 
 ## 流程总览
 
@@ -78,6 +78,8 @@ flowchart TD
 
 ## 工程实践
 
+校准新本体 **≤10 秒记录**不等于 **≤10 秒训练**：附录说明对约 174k 本体参数执行 5,000 AdamW steps，单 H20 约 30 分钟。用于 Qwen-CIALLO 的目标任务仍需 20 demonstrations/task。作者报告在同一 H20 测试中 action head PyTorch 为 4.89ms、JAX 为 1.46ms（不含主干）。[原文归档](../../sources/papers/ciallo_arxiv_2611_13732.md)。
+
 复现时要固定共享编码器，仅用本体校准样本调整本体嵌入或解码器，并明确校准与下游任务 20 条示范是两个不同环节。论文页面未核实到公开可运行仓库。
 
 ## 局限与风险
@@ -99,4 +101,4 @@ flowchart TD
 
 - [论文原文](https://arxiv.org/abs/2611.13732)
 
-> **复核状态（2026-11-12）：** 论文关键方法与结果已核对，但全文与全部附录尚未逐项通读，故本节点保持 draft；不得将自报数值视为独立复现。
+> **复核状态（2026-11-12）：** 已通读并核对 arXiv v1 HTML 正文、实验与附录，数据均按作者论文口径记录；本次未独立复现其训练、推理、性能指标。

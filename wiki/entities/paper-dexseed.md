@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper, dexterous-manipulation, motion-retargeting, imitation-learning, vla, simulation]
-status: draft
+status: complete
 updated: 2026-11-12
 project_id: dexseed
 arxiv: "2611.14092"
@@ -60,7 +60,7 @@ flowchart TD
 
 ## 实验与评测
 
-论文报告由 19 条种子人手交互生成约 25,270 条机器人示范；仿真已见对象组合成功率 97.5%、未见组合配置约 91.25%；真实机器人所列八种抓取方式中，基线到方法的表现跨度约 20%→80%。实验协议与汇总方式需对照原表，不能误写成所有任务统一 80%。
+论文报告由 19 条种子人手交互生成约 25,270 条机器人示范；仿真已见对象组合成功率 97.5%、未见组合配置约 91.25%；真实机器人所列八种抓取方式分别为 60/40/70/70/20/50/50/80%（每种 10 次试验）。**20%–80% 是不同抓取模式的成功率范围，不是相对基线的提升。**
 
 ## 结论
 
@@ -80,6 +80,8 @@ flowchart TD
 官方仓库截至 2026-11-12 仅有 README 与 assets，并标注 Code release coming soon；无公开可运行训练/推理入口，故源码时序图不适用。
 
 ## 工程实践
+
+附录无独立章节；论文表 I–VII 与正文完整核对：19 条人手种子 → 25,270 条物理验证轨迹；采用 Isaac Lab 4,096 env 训练手指 RL，并用 LingBot-VLA 执行 7 轴 Franka + 20 轴灵巧手动作，真机每抓取模式 10 次试验。[原文归档](../../sources/papers/dexseed_arxiv_2611_14092.md)。
 
 验证时要区分「几何上能到达」与「动力学上可持续抓稳」，确保手指 RL 轨迹在仿真接触参数变化后仍可复现。原始网页附带的官方 GitHub 当前仅有 README、assets，写明代码待发布。
 
@@ -106,4 +108,4 @@ flowchart TD
 - [项目主页](https://robbyant-research.github.io/DexSeed/)
 - [官方代码](https://github.com/robbyant-research/DexSeed)
 
-> **复核状态（2026-11-12）：** 论文关键方法与结果已核对，但全文与全部附录尚未逐项通读，故本节点保持 draft；不得将自报数值视为独立复现。
+> **复核状态（2026-11-12）：** 已通读并核对 arXiv v1 HTML 正文、实验与附录，数据均按作者论文口径记录；本次未独立复现其训练、推理、性能指标。
