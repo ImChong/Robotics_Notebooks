@@ -8,10 +8,11 @@ tags:
   - code-as-policy
   - apple
 status: complete
-updated: 2026-11-10
+updated: 2026-11-12
 original:
   - ../../sources/papers/apple_amp1_arxiv_2611_09892.md
 related:
+  - ../entities/paper-hiphys-rsi.md
   - ../entities/paper-apple-amp1.md
   - ../entities/paper-harness-vla.md
   - ../entities/paper-robo-harness.md
@@ -80,6 +81,8 @@ flowchart TD
 
 三种路线均不同于直接以大模型输出高频力矩。工程选型时应明确 **谁产生动作、动作接口的权限、反馈频率和恢复边界**；与 [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) 对照，可进一步区分确定性流程控制与模型主导的动态工具调用。
 
+4. **结构化程序递归改进（[HiPhys-RSI](../entities/paper-hiphys-rsi.md)）**：冻结编程 Agent，在固定训练实例上反复运行、诊断和修订可执行 Pipeline；跨任务复用后按 policy cards 路由 Pipeline 或 VLA。该方案在 BEHAVIOR 2026 隐藏测试取得 Q-score 0.683、完整任务成功率 48.2%，报告已公开但冠军源码尚未开源。
+
 ## 与其他工作对比
 
 | 范式 | 计划生成 | 低层动作 | 能力/时延取舍 |
@@ -87,6 +90,7 @@ flowchart TD
 | [AMP1](../entities/paper-apple-amp1.md) | LLM 写 Python 并反复验证 | SDK 运动轨迹/夹爪 | 高表达力、慢推理、易插桩 |
 | [Harness VLA](../entities/paper-harness-vla.md) | LLM 调度固定原语 | 冻结 VLA 接触原语 + 解析动作 | 复用已有 VLA，技能接口固定 |
 | [RoboHarness](../entities/paper-robo-harness.md) | Agent 路由异构技能 | VLA / RL / TAMP 等 | 多策略协作与交接成本 |
+| [HiPhys-RSI](../entities/paper-hiphys-rsi.md) | 冻结 Agent 设计并迭代修订 Pipeline，推理时路由 | 自主程序 / 被选 VLA | 可复用程序级结构和失败恢复；冠军实现未公开 |
 | [端到端 VLA](vla.md) | 网络内部生成动作 | 动作 chunk/位姿/关节目标 | 在线执行可快，依赖示范和训练分布 |
 
 ## 实验与证据
@@ -118,6 +122,7 @@ Apple 的 RoboLab-120 实验同时变更了模型与 harness，报告 AMP1 + Gem
 
 ## 关联页面
 
+- [HiPhys-RSI：BEHAVIOR 2026 冠军方案](../entities/paper-hiphys-rsi.md)
 - [Apple AMP1 论文与实现](../entities/paper-apple-amp1.md)
 - [VLA 方法](vla.md)
 - [Harness VLA 记忆编排](../entities/paper-harness-vla.md)
