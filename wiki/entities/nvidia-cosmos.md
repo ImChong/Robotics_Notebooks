@@ -2,9 +2,10 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, video-generation, vla, open-source]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-12
 related:
   - ./cosmos-3.md
+  - ./alpamayo2-edge.md
   - ./paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md
   - ./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md
   - ./newton-physics.md
@@ -147,6 +148,7 @@ flowchart TB
 - [Cosmos Interactive World Simulation](./paper-cosmos-interactive-world-simulation.md) — 基于 Cosmos 3 的交互式世界仿真后训练与四个开源 Nano checkpoint（Transfer-Auto / Sim-Auto / Sim-Transfer / Sim-Bimanual）；含 2026-11-05 HF 博文口径
 
 - [Cosmos 3](./cosmos-3.md) — 当前全模态母栈
+- [Alpamayo 2 Edge](./alpamayo2-edge.md) — 基于 Cosmos 3 Edge 的车端自适应推理 VLA，融合六相机导航与扩散轨迹专家
 - [Robbyant（蚂蚁灵波）](./robbyant.md) — LingBot-Video / LingBot-World 与 Cosmos 的概念对照（非一一对应）
 - [Cosmos 1.0 WFM 平台论文](./paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)
 - [Cosmos-Predict2.5 / Transfer2.5 论文](./paper-sa-2511-00062-world-simulation-with-video-foundation-models-fo.md)
