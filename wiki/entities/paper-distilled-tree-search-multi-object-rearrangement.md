@@ -11,10 +11,12 @@ updated: 2026-11-12
 arxiv: "2610.25785"
 project_id: distilled-tree-search-multi-object-rearrangement
 project: https://distilled-search.github.io
+code: https://github.com/kallol-saha/DISCO
 original: ../../sources/papers/distilled-tree-search-multi-object-rearrangement_arxiv_2610_25785.md
 related:
   - ../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md
   - ../tasks/manipulation.md
+  - ./paper-manipulation-benchmark-audit.md
   - ../methods/vla.md
   - ../methods/imitation-learning.md
   - ../methods/behavior-cloning.md
@@ -27,6 +29,8 @@ related:
   - ../entities/paper-notebook-maniskill3-gpu-parallelized-robotics-simulation.md
 sources:
   - ../../sources/papers/distilled-tree-search-multi-object-rearrangement_arxiv_2610_25785.md
+  - ../../sources/repos/disco-distilled-tree-search-official.md
+  - ../../sources/sites/disco-distilled-tree-search.md
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md
 summary: "DISCO（arXiv:2610.25785，CoRL 2026 Oral）：用 progressive-widening MCTS 在 GPU 并行仿真中自生成长程多物体重排计划，周期性蒸馏进点云条件的策略-价值模型，测试时直接 rollout，无需搜索与仿真；仿真货架留出集成功率 80.0%，真机每任务仅 3 次试验。"
 ---
@@ -103,7 +107,7 @@ flowchart TD
 - **数据规模（§5.1、附录 B.6）：** 每任务训练一个共享策略-价值模型，50 个随机化训练实例，15 个留出实例；预训练数据来自几何采样器生成的单步抓放（Table 6 右：全量 D 为 1,776 条，奖励在 1,332 条后基本饱和）。
 - **sim2real（附录 B.5）：** 输入只用点云（不用本体与 RGB），训练时加点云噪声（上限 0.01 m）、局部挖洞补均匀点、物体绕竖轴 / 货架全 3D 旋转增强，并做质心与半径归一化。
 - **基线公平性（§5.2）：** Beam Search、MPPI 与两个消融只替换训练期的计划生成器；测试时除专门的测试期规划器外，都是「采样动作并取价值最高」，无搜索。
-- **代码：** 论文只给项目页，未见代码仓库链接，故无法对照实现。
+- **代码（2026-11-12 更新）：** 官方 [kallol-saha/DISCO](https://github.com/kallol-saha/DISCO) 已公开训练/搜索/蒸馏及 demo 入口，另提供 [Hugging Face 权重](https://huggingface.co/kallol-saha/disco) 与 [数据](https://huggingface.co/datasets/kallol-saha/disco-data)。论文撰写时或旧页未发现代码的说法已经过时。官方 README 测试环境为 Linux、Python 3.10、CUDA 12.6、2× RTX 4090；不等同于论文中某次实验的单卡成本。
 
 ## 与清单说法的核对
 
@@ -117,6 +121,54 @@ flowchart TD
 | 蒸馏进「策略」 | 不完整：蒸馏进的是策略与价值函数两者（摘要、§4.3），测试时靠价值函数从策略采样的候选里选动作（附录 F.2），价值函数是关键部分。 |
 | 长程多物体重排 | 属实，但任务是三个仿真任务（Shelf Packing、Object Stacking、Constrained Packing）与两个真机任务，物体数 3–7 个（附录 B.2），较窄（§5.1）。 |
 | 未写：真机结果 | 清单摘要未提真机。论文真机仅 Shelf Packing（2/3）与 Table Bussing（1/3），每任务 3 次，基线仅 3DFA（Table 2）。 |
+
+## 源码运行时序图
+
+依据 [官方 README](https://github.com/kallol-saha/DISCO/blob/main/README.md)、[`run_disco.py`](https://github.com/kallol-saha/DISCO/blob/main/run_disco.py)、[`pretrain.py`](https://github.com/kallol-saha/DISCO/blob/main/pretrain.py) 与公开目录核对。下面是公开执行路径，非运行结果复现：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as User CLI
+    participant R as run_disco.py
+    participant S as disco/search/run.py
+    participant T as MCTS / expansion
+    participant M as ManiSkill + cuRobo
+    participant D as disco/data.py
+    participant P as flowmatch trainers
+    U->>R: python run_disco.py task=stacking
+    R->>S: 调度环境搜索子进程
+    S->>T: 迭代选择与渐进增宽
+    T->>M: 规划并执行 grasp/place 候选
+    M-->>T: 状态转移与进度奖励
+    T-->>S: 搜索树与可行边
+    S-->>R: 序列化搜索结果
+    R->>D: 提取策略与价值训练数据
+    D-->>R: 监督样本
+    R->>P: 启动 grasp/place/value 训练
+    P-->>R: 更新后的网络 checkpoint
+    R->>S: 下一轮搜索使用更新网络
+```
+
+- 初始策略入口：`python pretrain.py`；评测入口：`python demo.py --task shelf --split test`。根据 README，测试期不需要 MCTS。详见 [代码归档](../../sources/repos/disco-distilled-tree-search-official.md)。
+
+## 与其他工作对比
+
+| 维度 | DISCO | [SuperMimic](./paper-supermimic.md) | [操作基准审计](./paper-manipulation-benchmark-audit.md) |
+|---|---|---|---|
+| 训练额外计算 | 仿真中的 MCTS 搜索与策略/价值蒸馏 | 学到的动力学中的 BPTT | 不提出新策略，诊断评测机制 |
+| 部署时行为 | 策略-价值直接选抓放候选，不做搜索 | 学到的全身运动跟踪策略 | 不适用 |
+| 核心验收 | 留出场景多物体完整任务成功率、真机完整成功率 | 动作库跟踪失败数与部署表现 | 扰动、数据来源、统计显著性 |
+
+## 结论
+
+**DISCO 将训练期耗时的连续空间 MCTS 转化为不依赖线上搜索的抓放策略与价值估计，但收益依赖仿真和任务进度设计。**
+
+1. 复现时必须区分 `pretrain.py` 单步模仿、`run_disco.py` 搜索蒸馏和 `demo.py` 直接评测三条路径。
+2. 测试期模型同时使用策略与价值函数；不能简化成“只有一个行为克隆策略”。
+3. 真机 Shelf Packing **2/3**、Table Bussing **1/3** 各仅三次，泛化与稳定性需增加重复次数。
+4. 无可行初始候选、错位的进度奖励或失真的仿真会向蒸馏目标引入偏差。
+5. 开源项目包含训练入口与权重/数据下载，但不代表本文全部实验环境已独立复现。
 
 ## 局限
 
@@ -134,6 +186,8 @@ flowchart TD
 
 ## 关联页面
 
+- [What Are We Actually Benchmarking in Robot Manipulation?](./paper-manipulation-benchmark-audit.md)：提醒对长程真机的 2/3、1/3 结果报告试次与不确定性。
+
 - [Manipulation周报技术地图](../overview/senlanke-weekly-2026-10-19-23-manipulation-technology-map.md)：同周论文索引
 - [manipulation](../tasks/manipulation.md)：操作任务总览
 - [模仿学习](../methods/imitation-learning.md)、[行为克隆](../methods/behavior-cloning.md)：初始策略与 DISCO 对比的基线类别
@@ -146,6 +200,9 @@ flowchart TD
 - [vla](../methods/vla.md)：论文自述尚未结合 VLA
 
 ## 参考来源
+
+- [DISCO 官方源码核对](../../sources/repos/disco-distilled-tree-search-official.md)
+- [DISCO 官方项目页](../../sources/sites/disco-distilled-tree-search.md)
 
 - [来源归档（通读）](../../sources/papers/distilled-tree-search-multi-object-rearrangement_arxiv_2610_25785.md)
 - [senlanke 周报归档](../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-19_23.md)

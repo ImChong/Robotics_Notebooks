@@ -2,7 +2,11 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, synthetic-data, sim2real, motion-control, generated-video, loco-manip-contact-survey, nvidia, ucla, unitree-g1]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-12
+project_id: grail-humanoid-locomanipulation
+project: https://research.nvidia.com/labs/dair/grail/
+code: https://github.com/NVlabs/GRAIL
+original: ../../sources/papers/grail_arxiv_2606_05160.md
 arxiv: "2606.05160"
 venue: "arXiv 2026"
 summary: "GRAIL（NVIDIA/UCLA，arXiv:2606.05160）是一条全数字人形 loco-manipulation 数据生成管线：先在已知 3D 资产、场景、相机和机器人比例下用 VFM 合成 HOI 视频，再用 GENMO/WiLoR/FoundationPose 与特权 3D 配置重建 metric 4D HOI，重定向到 Unitree G1 并训练 task-general tracker 与 egocentric RGB 策略；官方 NVlabs/GRAIL 已开源 Docker、pipeline entrypoints、checkpoint 下载和 Hugging Face 数据集。"
@@ -231,6 +235,13 @@ sequenceDiagram
 - **不是万能真实视频学习。** GRAIL 用可控虚拟世界换可重建性；对真实开放场景、未知物体和人类行为分布仍需 domain gap 处理。
 - **低层能力依赖 SONIC / tracker。** 数据生成质量最终受全身 tracker 可执行性限制，不是所有生成 HOI 都能保真落到 G1。
 - **接触物理仍由重建与仿真筛选兜底。** VFM 可能生成视觉合理但物理不一致的交互，必须经 4D 优化、retargeting 和 tracker 过滤。
+
+## 2026-11-12 论文口径复核
+
+- **方法顺序：** 已知 3D 场景/相机/物体尺度 → 条件生成交互视频 → 人体、物体、接触与深度约束下恢复 *metric* 4D HOI → 重定向 G1 → 仿真追踪与视觉策略训练。视频模型不是直接输出关节动作的策略。
+- **数据规模：** 论文 **20,000+** 生成序列属于论文实验表述；后续数据集页面出现的轨迹/样本数可能包含新发布版本，不应把两个快照混成同一实验样本量。
+- **真机验证：** 84% 物体拾取与 90% 楼梯任务对应论文中的两类受测任务；不构成所有生成类别（如坐下、跨障）均有同等真机性能的证据。
+- **工程边界：** 官方 [NVlabs/GRAIL](https://github.com/NVlabs/GRAIL) 公开生成与重建管线，但依赖外部视频模型 API / 第三方组件；数据、授权和 README TODO 需按当前仓库版本逐项检查。
 
 ## 关联页面
 
