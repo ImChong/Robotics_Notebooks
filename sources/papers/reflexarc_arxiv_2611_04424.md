@@ -13,7 +13,7 @@
 - **HTML 全文：** https://arxiv.org/html/2611.04424v1
 - **PDF：** https://arxiv.org/pdf/2611.04424
 - **项目页：** https://minusmodulo.github.io/reflexarc-website/
-- **入库日期：** 2026-11-04；本次全文核对：2026-11-11
+- **入库日期：** 2026-11-04；全文核对：2026-11-11；官网资源复核：2026-11-12
 - **核对范围：** arXiv HTML v1 论文 Abstract、I Introduction、II Related Work、III Instantaneous Reflex（A/B）、IV Bottom-Up Reflex Integration（A/B/C）、V Experiments（A/B/C，含 Table I 数值与图注）、VI Conclusion、参考文献与项目主页的相应图表/说明。原文 HTML 未另列附录；未读取尚未公开的代码。
 - **通读：** 已完成
 
@@ -91,7 +91,7 @@
 
 - 主要论文结论：把低层反射直达电机并训练高层策略容纳该反射，兼顾前峰抑制、平衡和数秒尺度恢复。
 - 论文明确的主限制是 **覆盖率**：触觉贴片只装在常碰撞的凸出部位，其他接触区域尚未受到保护。
-- 2026-11-11 官方项目页仍标注「Code Coming soon」；未发现可核验的 ARC-Gym、LQP 求解器、训练权重或硬件驱动的官方可运行源码，因此不能给出真实源码调用时序，不能称独立复现已完成。
+- 2026-11-12 复核官方项目页：仍标注「Code Coming soon」；虽有「Interactive trained policy」浏览器演示，但没有可核验的 ARC-Gym、LQP 求解器、训练权重或硬件驱动的官方可运行源码，因此不能给出真实源码调用时序，不能称独立复现已完成。
 - 此方法以模型优化 + PPO + AMP 为核心，不是 VLA 大语言模型的直接控制方法；不能将碰撞定量结果解读成任意人机接触安全认证。
 
 ## 对 wiki 的映射
