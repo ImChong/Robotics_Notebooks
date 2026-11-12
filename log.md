@@ -345,6 +345,28 @@ op: ingest
 - **编译形式：** 3 份论文通读归档、2 份项目站点归档、1 份官方源码归档、3 个含 Mermaid 方法流程的中英双语实体页；可运行 BEHAVIOR 源码另附时序图；回链挂至人形移动与 VLA 方法页。
 - **说明：** 本次仅基于一手论文和公开源码静态核查，尚未在本环境执行本地仿真或全仓预检。
 
+## [2026-11-12] ingest | sources/repos/mingrammer-diagrams.md — 收录 Diagrams（Python Diagram as Code）
+
+- 意图：将 Diagrams 作为可版本管理的 Python 云系统架构可视化工具单独收录，并与 Mermaid.js 关联。
+- 开源结论：官方 MIT 开源，源码及预置图标、CLI 均可公开获取；仅绘图，不控制实际云资源或生成 Terraform/CloudFormation。
+- 证据：通读 README、pyproject.toml、Diagram/Node/Edge/Cluster 实现、CLI 入口与官方 Installation/Diagram/Cluster/Edge/Playground 文档。
+- 知识沉淀：[Diagrams](../wiki/entities/mingrammer-diagrams.md)；附 Mermaid 流程及源代码时序，纠正“17 家云”与 Python 版本要求混淆。
+
+## [2026-11-12] ingest | NVIDIA Holoscan SDK 5.0 — 实时多传感器与 Physical AI 运行时
+
+- **意图：** 将 NVIDIA Holoscan 平台 SDK 与此前已收录的 Sensor Bridge 区分，新增带原文/源码证据的完整技术节点。
+- **一手资料：** NVIDIA 官方 SDK 5.0 文档、2026-10-21 发布的 `v5.0.0` release、`slow_fast_fusion.cpp` 与 `camera_imu_control.cpp`。
+- **开源结论：** SDK 本体与可运行 C++ / Python 示例已公开；HSB 是另一个独立接入项目；未在本地编译或做真实机器人时延实测。
+- **关键页：** [Holoscan SDK](../wiki/entities/nvidia-holoscan-sdk.md)、[官方文档归档](../sources/sites/nvidia-holoscan-sdk-5.md)、[源码归档](../sources/repos/nvidia_holoscan_sdk.md)。
+
+## [2026-11-12] ingest | sources/repos/nutlope-hallmark.md — 收录 Hallmark 前端设计 Agent Skill 与源码检查链
+
+- 意图：将用户提供的 Nutlope/hallmark 原始仓库转换为可交叉引用的工具实体知识页。
+- 核对：通读官方 README 与 SKILL.md，核查主题选择和 sloplint 的源码入口；官网确认安装命令 `npx skills add nutlope/hallmark -g`。
+- 开源结论：MIT；技能文档、50 个主题目录和 Node.js 检查脚本公开；浏览器渲染检查另需 Chrome 与 puppeteer-core。
+- 写回：新增 [Hallmark](../wiki/entities/hallmark.md)，关联 [MengTo/Skills](../wiki/entities/mengto-skills.md)。
+- 验证边界：已核对源码与官方文档，未实际安装执行，也未运行完整知识库 CI。
+
 ## [2026-11-12] ingest | 4D-HOF 与三篇基础文献
 
 - 意图：补足 4D 手物体交互中，视觉初始化、条件流匹配、物体 6D 位姿、手部 MANO 之间的技术联系。

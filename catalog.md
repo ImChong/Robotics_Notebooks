@@ -691,6 +691,7 @@
 - [FreeCAD MCP](wiki/entities/freecad-mcp.md) — FreeCAD MCP** 是 neka-nat/freecad-mcp 开源的 **Model Contex `📅unknown` `[entity_page]`
 - [FreeCAD（开源参数化机械 CAD）](wiki/entities/freecad.md) — FreeCAD** 是由社区与 FreeCAD 组织 维护的 **免费开源、跨平台参数化 3D CAD**，以 **OpenCASCAD `📅unknown` `[entity_page]`
 - [FreeMoCap（开源多相机动捕平台）](wiki/entities/freemocap.md) — FreeMoCap**（仓库名 `freemocap`）是一套 **免费开源** 的运动捕捉 **软件与流程**：在 README 中自描述为 *hardware-and-software-agn `📅unknown` `[entity_page]`
+- [G1 Football：Metatron 驱动的 Unitree G1 视觉守门员](wiki/entities/g1-football-metatron-goalkeeper.md) — G1 Football**（*ProtoMotions G1 Football*）是 NVIDIA 的**浏览器五次点球仿真游戏**：守门员使用自身仿真摄像头检测足球、估计来球轨迹，将任务目标与扑 `📅unknown` `[entity_page]`
 - [银河通用 AstraBrain：世界–动作与全身控制路线](wiki/entities/galbot-astrabrain.md) — AstraBrain** 把银河通用的世界–动作学习与身体执行组织成一套模型系列；研究时应分别追踪 **WAM 的数据与动作接口**、**WBC 的参考运动跟踪**。 `📅unknown` `[entity_page]`
 - [伽马智能（Gamma Robotics）](wiki/entities/gamma-robotics.md) — 伽马智能（Gamma Robotics，官网 gammarobotics.com.cn）** 是中国电信人工智能研究院（TeleAI）孵化的第一家市场化具身公司。TeleAI 于 2026-10- `📅unknown` `[entity_page]`
 - [Gazebo Sim](wiki/entities/gazebo-sim.md) — Gazebo Sim](https://github.com/gazebosim/gz-sim) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/ `📅unknown` `[entity_page]`
@@ -753,6 +754,7 @@
 - [HabitatGS](wiki/entities/habitatgs.md) — HabitatGS**（HabitatGS：高斯泼溅场景重建（LightNav 数据引擎来源））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实 `📅unknown` `[entity_page]`
 - [HachimoDock / 哈基米机：AI Agent 桌面交互终端](wiki/entities/hachimodock.md) — HachimoDock 是由 Windows/macOS 管理端与 ESP32-P4 小屏组成的桌面交互终端，将电脑端 Agent 任务状态映射为桌宠动画、会话气泡与提醒，并提供按键和语音输入。 `📅unknown` `[entity_page]`
 - [Halley](wiki/entities/halley-ambassador-robot.md) — Halley**（GitHub）是 [GitHubStore《19 款能 `📅unknown` `[entity_page]`
+- [Hallmark｜反 AI 模板化前端设计技能（Agent Skill）](wiki/entities/hallmark.md) — Hallmark** 是 Together AI 发布的开源前端设计 Agent Skill，为 Claude Code、Codex、Cursor、OpenCode 的网页生成、重设计和审查流程提 `📅unknown` `[entity_page]`
 - [Handroid](wiki/entities/handroid.md) — Handroid** 是北卡罗来纳大学教堂山分校与斯坦福大学团队提出的 **桌面级双形态机器人**：同一套 **27-DoF**、**0.33 m / 2.05 kg** 的 **3D 打印模块化 `📅unknown` `[entity_page]`
 - [动手学强化学习（Hands-on RL / 蘑菇书）](wiki/entities/hands-on-rl-book.md) — 《动手学强化学习》**（社区常称**蘑菇书**）由上海交通大学张伟楠、沈键、俞勇等编写，以 Jupyter Notebook + 图文形式系统讲解强化学习。官方在线阅读与代码运行入口为 [hrl. `📅unknown` `[entity_page]`
 - [HandUMI](wiki/entities/handumi.md) — HandUMI** 是一套面向 **固定基座双臂 + 平行夹爪（parallel-jaw gripper）** 的 **无机器人示教（robot-free demonstration）** 接口与 `📅unknown` `[entity_page]`
@@ -771,7 +773,7 @@
 - [HoloAgent](wiki/entities/holoagent.md) — HoloAgent](https://github.com/HorizonRobotics/HoloAgent) 收录于具身智能研究室 [开源项目主表](https://github.com/Rea `📅unknown` `[entity_page]`
 - [HoloBoxing：复用全身跟踪器的人形拳击策略](wiki/entities/holoboxing.md) — HoloBoxing** 是地平线面向 H-bot Track 2 的高层拳击策略方案：学习者负责比赛决策与未来身体目标，比赛提供的冻结 HoloMotion V2 控制器负责关节级跟踪执行。 `📅unknown` `[entity_page]`
 - [HoloMotion（HoloMotion-1 / v2）](wiki/entities/holomotion.md) — HoloMotion** 是 **Horizon Robotics（地平线）** 的人形全身控制开源栈：v1 用大规模异质动作语料训练全身跟踪策略；v2 预览尝试用单策略统一稀疏关键点与全身指令； `📅unknown` `[entity_page]`
-- [Holoscan Sensor Bridge（HSB）](wiki/entities/holoscan-sensor-bridge.md) — Holoscan Sensor Bridge**（产品页， `📅unknown` `[entity_page]`
+- [Holoscan Sensor Bridge｜NVIDIA FPGA 传感器以太网桥接](wiki/entities/holoscan-sensor-bridge.md) — Holoscan Sensor Bridge（HSB）** 是 NVIDIA 的 Sensor-over-Ethernet 数据采集与控制平台：FPGA/MCU 桥接相机、雷达、LiDAR、RF  `📅unknown` `[entity_page]`
 - [holosoma（Amazon FAR 人形 RL + 重定向框架）](wiki/entities/holosoma.md) — holosoma**（<https://github.com/amazon-far/holosoma>，Apache-2.0）是 Amazon FAR 发布的 **人形机器人全身强化学习** 开源 `📅unknown` `[entity_page]`
 - [ANSYS Workbench MCP（hongwenwang36-eng/ANSYS-Workbench-mcp）](wiki/entities/hongwenwang36-eng-ansys-workbench-mcp.md) — ANSYS Workbench MCP（hongwenwang36-eng/ANSYS-Workbench-mcp）是中文 Workbench 本地桥接项目：以 Workbench journal 和 `📅unknown` `[entity_page]`
 - [Vortex Funnel Generator（hooyao/vortex-funnel-gen）](wiki/entities/hooyao-vortex-funnel-gen.md) — Vortex Funnel Generator（hooyao/vortex-funnel-gen）是用 AI 设计 3D 打印防咕咚涡流漏斗，贯通 CadQuery 参数建模、OpenFOAM int `📅unknown` `[entity_page]`
@@ -987,6 +989,7 @@
 - [MimicKit: 运动模仿与控制研究套件](wiki/entities/mimickit.md) — MimicKit** 是 Xue Bin Peng（彭学斌） 维护的 **物理角色运动模仿与控制** 研究代码库（Starter Guide 论文署名单位 `📅unknown` `[entity_page]`
 - [MimicLite（监督运动跟踪基础设施）](wiki/entities/mimiclite.md) — MimicLite** 是 Party OS 首批开源的 **监督学习运动跟踪基础设施**，贯通数据组织、策略训练、统一评测与真机部署，使研究者能以更低算力快速迭 `📅unknown` `[entity_page]`
 - [MiMo-V2.6（Scaling RL Toward Self-Improvement）](wiki/entities/mimo-v2-6.md) — MiMo-V2.6**（发布说明 · [技术报告 PDF](https://huggingfa `📅unknown` `[entity_page]`
+- [Diagrams: Diagram as Code｜用 Python 绘制云系统架构图](wiki/entities/mingrammer-diagrams.md) — Diagrams**（GitHub · [官方文档](https://diagrams.mingrammer.c `📅unknown` `[entity_page]`
 - [Mini Pupper](wiki/entities/mini-pupper.md) — Mini Pupper** 是 MangDang 推出的小型开源四足机器人，仓库 [mangdangroboticsclub/mini_pupper](https://github.com/man `📅unknown` `[entity_page]`
 - [Mini-SGLang｜精简但完整的在线 LLM Serving 系统](wiki/entities/mini-sglang.md) — Mini-SGLang 以作者标注约 5000 行 Python 展示在线 serving 的多进程组件，包含 API Server、Tokenizer/Detokenizer、每 GPU Sched `📅unknown` `[entity_page]`
 - [MiniGPT-4](wiki/entities/minigpt4.md) — MiniGPT-4 将冻结视觉编码器与冻结 Vicuna 等 LLM 经单一投影层对齐，展示用较少可训参数即可获得类 GPT-4V 的图像对话能力。 `📅unknown` `[entity_page]`
@@ -1064,6 +1067,7 @@
 - [NVIDIA Getting Started With Isaac Lab](wiki/entities/nvidia-getting-started-isaac-lab.md) — Getting Started With Isaac Lab** 是 Physical AI Learning 门户下的  `📅unknown` `[entity_page]`
 - [NVIDIA GR00T G1 端到端参考 workflow](wiki/entities/nvidia-gr00t-e2e-g1-workflow.md) — How to Develop and Deploy Humanoid Robots End-to-End with NVIDIA Isaac GR00T and Unitree G1** 是 [P `📅unknown` `[entity_page]`
 - [NVIDIA GTC（机器人 / Physical AI 一手资料）](wiki/entities/nvidia-gtc.md) — NVIDIA GTC**（GPU Technology Conference，现定位为 **AI Conference**）是 NVIDIA 年度/global 大会：主题演讲、技术分论坛与 Ha `📅unknown` `[entity_page]`
+- [NVIDIA Holoscan SDK｜英伟达实时 AI 传感器处理框架](wiki/entities/nvidia-holoscan-sdk.md) — NVIDIA Holoscan SDK**（官方项目页、[官方文档](https://docs.nvidi `📅unknown` `[entity_page]`
 - [NVIDIA Isaac Lab Spot locomotion Sim2Real](wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md) — Closing the Sim-to-Real Gap: Training Spot Quadruped Locomotion with NVIDIA Isaac Lab** 是 NVIDIA D `📅unknown` `[entity_page]`
 - [NVIDIA Isaac Lab UR10e 工业装配 Sim2Real](wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md) — Bridging the Sim-to-Real Gap for Industrial Robotic Assembly Applications Using NVIDIA Isaac Lab `📅unknown` `[entity_page]`
 - [NVIDIA Jetson](wiki/entities/nvidia-jetson.md) — NVIDIA Jetson** 是面向 **机器人与边缘 AI** 的嵌入式计算平台：以 **Jetson 模组**（SoM）+ **JetPack SDK** 提供机载 CUDA/TensorR `📅unknown` `[entity_page]`
