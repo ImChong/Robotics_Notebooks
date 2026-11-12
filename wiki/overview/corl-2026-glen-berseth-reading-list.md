@@ -1,7 +1,7 @@
 ---
 type: overview
 tags: [corl-2026, reading-list, reinforcement-learning, vla, world-model, human-video, embodied-ai]
-topic: [robot-learning]
+topic: [reinforcement-learning, vla]
 status: draft
 updated: 2026-11-12
 related:
