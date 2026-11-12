@@ -40,26 +40,50 @@ MetaWAM 将机器人动作、状态和价值信号塞入与视频扩散兼容的
 
 ## 核心原理
 
-采用一帧输入元帧、六帧多视角视频潜变量、一帧输出元帧的 **8 帧 latent 序列**（逐信号分帧基线是 11 帧）。从视觉潜变量构建含通道分槽的 meta-frame。正交 DCT 系数的不同槽分别承载任务、当前本体状态、动作块、未来本体状态与价值；反变换读回连续控制信息。原始视频潜变量与 meta-frame 一起进入共享扩散网络，并以槽位任务条件与掩码限定监督；推理时仅对必要目标作较短去噪。
+
+
+论文采用 **输入元帧 + 当前三视角 latent + 输出元帧 + 未来三视角 latent**，合计 **8 个 latent 时间槽**；逐信号分帧的 Cosmos Policy 基线为 11 槽。输入元帧复用 tokenizer 原有的空白槽，输出元帧联合承载动作、未来本体与价值。
+
+编码过程是 **Pack → 2D 正交逆 DCT（IDCT）→ 空间 latent**，而不是“先做 DCT 再注入”：归一化机器人信号被写入互斥通道的 `k_H=0` 频域系数；模型去噪后执行 **2D DCT → 固定槽位 Unpack** 直接恢复动作、未来本体与价值，**没有学习式动作解码器**。
+
+槽位掩码按任务改变条件/预测目标：策略预测动作；世界模型在已知动作下预测未来状态；价值分支使用转移信息预测价值。论文主实验采用 Cosmos-Predict2-2B 视频扩散骨干，多视角图像仍走视频 VAE。具体实现还有可选的零初始化 `slot_mask_embedder` 残差分支，用于将细粒度掩码嵌入 DiT；“无需改动骨干”应理解为保留视频去噪主干与潜变量接口，**不等于没有新增任何可训练模块**。
 
 ## 流程总览
 
+
+
 ```mermaid
 flowchart TD
-  CAM["相机图像 / 历史视频"] --> LAT["视频 VAE 潜变量"]
-  STATE["任务 / 当前本体 / 动作 / 未来本体 / 价值"] --> DCT["分槽 DCT 元帧编码"]
-  LAT --> DIT["共享扩散网络 / 条件掩码"]
-  DCT --> DIT
-  DIT --> READ["元帧逆 DCT / 动作槽解码"]
-  READ --> ROBOT["机器人动作执行"]
-  ROBOT --> CAM
+  IMG["当前三视角图像"] --> VAE["视频 VAE / 当前视觉潜变量"]
+  TEXT["任务文字条件"] --> DENOISE["Cosmos-Predict2 联合去噪"]
+  SIG["任务 / 当前本体 / 动作块 / 未来本体 / 价值"] --> PACK["固定通道频域槽位 Pack"]
+  PACK --> IDCT["2D IDCT / 输入与输出元帧"]
+  IDCT --> MASK["任务路由: 条件槽 / 去噪目标槽"]
+  MASK --> DENOISE
+  VAE --> DENOISE
+  DENOISE --> READ["输出元帧 2D DCT + Unpack"]
+  READ --> ACTION["动作块"]
+  READ --> STATE["未来本体 / 价值"]
+  DENOISE --> FUTURE["世界模型模式: 未来视觉潜变量"]
+  ACTION --> EXEC["执行动作块前 16 步"]
+  EXEC --> IMG
 ```
 
-> **注意：** 此图仅抽象论文所述方法模块与数据/控制流，非未公开代码的实际调用路径。
+> 依据论文 §4、图 3 和官方源码，图中的 DCT/IDCT 方向不同：**注入用 IDCT；读回用 DCT**。不同任务的条件槽由掩码决定，并非所有输入信号都在每种任务中可见。
 
 ## 实验与评测
 
-论文 RoboCasa 24 任务、3 随机种子共 3600 次评测平均成功率 68.9%（对照 Cosmos Policy 67.1%），推理延迟约 0.479 s → 0.291 s（约 -39%）；Franka 三项真机任务平均成功率 85.0%，OOD 设置 68.3%。这些数值是论文自报；时延不等于机器人低层控制周期。
+
+
+| 评测 | MetaWAM | 关键对照 / 条件 |
+|---|---:|---|
+| RoboCasa（24 任务） | **68.9%** | Cosmos Policy 67.1%；每任务 50 次演示 |
+| 模型查询时延 | **0.291 s** | Cosmos Policy 0.479 s，降低约 39%（11 → 8 latent 槽） |
+| LIBERO 原始基准 | **98.1%** | Cosmos Policy **98.5%**；MetaWAM 在该项并非领先 |
+| LIBERO-Plus 综合 | **83.4%** | Cosmos Policy 82.2%；对背景/初始状态扰动仍敏感 |
+| Franka 真机三任务 | **85.0% ID / 68.3% OOD** | 每任务每设置 20 次测试；论文作者报告 |
+
+这些数据均为作者评测，未在本次工作中独立复现。RoboCasa 官方评测脚本设 24 任务 × 50 次 trial × 3 seeds（195/196/197），总计 3600 回合；**训练时每任务 50 条演示**与**评测时每任务 50 次 trial**是不同概念。0.291 秒是模型单次查询时延，不是低层伺服周期。
 
 ## 结论
 
@@ -76,38 +100,74 @@ flowchart TD
 
 ## 源码运行时序图
 
-已读官方 README、RoboCasa 训练/评测 shell 入口与频域槽位实现，以下仅表示代码所证实的 RoboCasa 训练/评测调用链；并未实际执行复现实验。
+
+
+已核查官方训练/评测 shell 入口、RoboCasa 评测主程序、频域编码、掩码与推理 readout 的对应源码。下图仅表示已验证的调用层次；本次**未执行**训练或真机实验。
 
 ```mermaid
 sequenceDiagram
   autonumber
-  participant User as 研究者
-  participant Train as scripts/train_robocasa.sh
-  participant Core as cosmos_policy.scripts.train
-  participant Model as policy_text2world_model.py
-  participant Eval as scripts/test_robocasa.sh
-  participant Bench as run_robocasa_eval.py
-  User->>Train: 设置 BASE_DATASETS_DIR 后启动训练
-  Train->>Core: torchrun experiment=metawam_robocasa
-  Core->>Model: 构建频域 meta-frame 和联合去噪模型
-  Model-->>Core: 动作 / 未来本体 / 价值的训练目标
-  Core-->>User: 生成 DCP checkpoint
-  User->>Eval: 提供已转换 .pt 权重
-  Eval->>Bench: python -m ...run_robocasa_eval
-  Bench->>Model: 加载 checkpoint 推理动作块
-  Model-->>Bench: 解码动作槽
-  Bench-->>User: RoboCasa 回合结果及日志
+  participant U as 研究者
+  participant T as scripts/train_robocasa.sh
+  participant Train as cosmos_policy.scripts.train
+  participant E as scripts/test_robocasa.sh
+  participant Eval as run_robocasa_eval.py
+  participant Utils as cosmos_utils.py
+  participant Model as policy_video2world_model.py
+  participant Robot as RoboCasa 仿真环境
+  U->>T: 设置 BASE_DATASETS_DIR 后启动
+  T->>Train: torchrun experiment=metawam_robocasa
+  Train->>Model: 训练元帧编码 / 槽位掩码 / 去噪
+  Model-->>Train: diffusion 与频域辅助损失
+  Train-->>U: DCP 分片 checkpoint
+  U->>E: 准备转换后的 .pt 或官方权重
+  E->>Eval: 各 seed 运行 24 任务评测
+  Eval->>Utils: get_model 加载权重 / get_action 查询动作
+  Utils->>Model: 去噪推理生成 meta-frame latent
+  Model-->>Utils: 输出潜变量序列
+  Utils->>Utils: 2D DCT + extract_action_chunk_from_meta_frame
+  Utils-->>Eval: 反归一化动作块
+  Eval->>Robot: 执行动作块前 16 步
+  Robot-->>Eval: 新观测与成功判定
+  Eval-->>U: 各任务与随机种子结果
 ```
+
+源码依据：[`scripts/train_robocasa.sh`](https://github.com/showlab/MetaWAM/blob/main/scripts/train_robocasa.sh)、[`scripts/test_robocasa.sh`](https://github.com/showlab/MetaWAM/blob/main/scripts/test_robocasa.sh)、[`policy_video2world_model.py`](https://github.com/showlab/MetaWAM/blob/main/cosmos_policy/models/policy_video2world_model.py)、[`cosmos_utils.py`](https://github.com/showlab/MetaWAM/blob/main/cosmos_policy/experiments/robot/cosmos_utils.py)。
 
 ## 工程实践
 
-附录列出 RoboCasa 默认 4×H200、global batch 1024、12000 优化步与 32-step chunk（执行 16 步）；视频分帧从 11 降为 8，39% 指单次模型查询时延，不是关节伺服周期。[原文归档](../../sources/papers/metawam_arxiv_2611_14365.md)。
 
-官方仓库提供 RoboCasa、LIBERO 和真机训练/评测脚本，以及 MetaWAM RoboCasa 权重。RoboCasa 复现实验入口为 scripts/train_robocasa.sh 与 scripts/test_robocasa.sh；需要准备 RoboCasa 数据、Cosmos-Predict2-2B 权重、环境依赖，训练默认 4 GPU。模型 meta-frame 频域槽位实现在 cosmos_policy/models/policy_text2world_model.py。
+
+### 频域槽位的源码约束
+
+在 [`policy_text2world_model.py`](https://github.com/showlab/MetaWAM/blob/main/cosmos_policy/models/policy_text2world_model.py) 中，`use_single_meta_frame=True` 的主要频域布局要求 latent **至少 16 通道**，固定分配如下：
+
+| 通道 | 对应变量 | 实现约束 |
+|---|---|---|
+| 0 | task type | 三类任务 one-hot |
+| 1–3 | current proprio | 9 个数值，按 3×3 槽位写入 |
+| 4–11 | action chunk | 动作展平后写入第 0 行系数；容量为 `8 × latent_width` |
+| 12–14 | future proprio | 9 个数值 |
+| 15 | value | 单标量 |
+
+`_encode_frequency_meta_frame_v2` 通过专门的 row-0 IDCT 实现频域提升；`cosmos_utils.extract_action_chunk_from_meta_frame` 对输出元帧做正交 **2D DCT**，选取通道 4–11 的 `k_H=0` 槽并重塑动作。这是确定性解析读取，而非额外训练动作 decoder。`policy_video2world_model.py` 实现细/粗两级条件掩码，[`minimal_v1_lvg_dit.py`](https://github.com/showlab/MetaWAM/blob/main/cosmos_policy/_src/predict2/networks/minimal_v1_lvg_dit.py) 中 `slot_mask_embedder` 为**零初始化的附加残差输入**；`use_single_meta_frame=False` 则回退 Cosmos Policy 分帧布局。
+
+### 复现入口
+
+- 训练：`bash scripts/train_robocasa.sh`；使用 `Cosmos-Predict2-2B-Video2World`、默认 4 GPU、每 GPU batch 64、4 次梯度累积，有效 batch 1024；论文表述为 4×H200。
+- 仿真评测：`bash scripts/test_robocasa.sh`；5 步动作去噪、`chunk_size=32`、`num_open_loop_steps=16`，默认 195/196/197 三个种子。
+- 官方权重：[RoboCasa](https://huggingface.co/Ethanliang99/MetaWAM-RoboCasa-Predict2-2B)、[LIBERO](https://huggingface.co/Ethanliang99/MetaWAM-LIBERO-Predict2-2B)、[RealWorld](https://huggingface.co/Ethanliang99/MetaWAM-RealWorld-Predict2-2B)。真机权重依赖作者的 Franka 设置，不能假定开箱即适用于任意平台。
+
+完整环境、数据下载与 checkpoint 转换步骤以官方 [ROBOCASA.md](https://github.com/showlab/MetaWAM/blob/main/ROBOCASA.md) 为准。源码入口与配置已经复核，**未做硬件级或 benchmark 结果复现**。
 
 ## 局限与风险
 
-RoboCasa 成功率改进相对幅度有限，延迟收益与任务/硬件/去噪步数相关；框架仍依赖大规模视频模型及任务专属数据规范，不能直接用作高频关节闭环。
+
+
+- **固定布局的泛化边界：** 实现硬编码 16 通道和 9D 本体状态等槽位，动作长度还受 `8 × latent_width` 限制；接入新机器人需核对动作维度、归一化、相机数量与频域容量，不能仅替换 URDF。
+- **实验适用范围：** RoboCasa 相对 Cosmos Policy 的成功率仅提高 1.8 个百分点，LIBERO Original 低于该基线；延迟主要受硬件、视频分辨率、序列长度与去噪步数影响。
+- **论文自述局限：** 固定频段分配与损失权重对任务比例/信号尺度变化敏感；语言指令理解受视频骨干限制；LIBERO-Plus 暴露背景和初始状态变化下的鲁棒性不足。
+- **部署边界：** 依赖较重的 Cosmos 视频模型、数据统计量与相机标定；推理时延不能直接当作低层控制频率。
 
 ## 关联页面
 
