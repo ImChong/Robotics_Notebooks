@@ -9,7 +9,7 @@ tags:
   - nvidia
 project_id: eureka-llm-reward-design
 status: complete
-updated: 2026-11-08
+updated: 2026-11-12
 arxiv: "2310.12931"
 code: https://github.com/eureka-research/Eureka
 related:
@@ -29,6 +29,8 @@ original:
 sources:
   - ../../sources/papers/eureka-llm-reward-design_arxiv_2310_12931.md
   - ../../sources/repos/pai_awesome_paper_332_eureka-nvidia.md
+  - ../../sources/repos/eureka-research-eureka.md
+  - ../../sources/sites/eureka-research.md
 summary: "Eureka（arXiv:2310.12931，ICLR 2024）：把环境源码交给 GPT-4 写奖励代码，用「采样、PPO 评估、训练曲线文字反思、改写」的进化循环迭代，在 29 个 IsaacGym 仿真任务上 83% 超过人类专家奖励，并在仿真中配合课程学习做出 Shadow Hand 转笔。"
 ---
 
@@ -99,6 +101,53 @@ flowchart TD
 - **人类初始化**：把人写的奖励当作第 1 轮输出，Eureka 在所选的几个 Dexterity 任务上都比纯 Eureka 和纯人类奖励更好（图 8）。作者的解释是人懂得该用哪些状态变量，但不擅长怎么用它们设计奖励（作者自述，§4.4；这是假设，不是实验检验的因果结论）。
 - **人类文字反思（Eureka-HF）**：不用适应度函数，由人看策略视频后用口语写反馈（例如「机器人在用单脚跳着前进，请改成直立奔跑」，附录 G.4）。20 名用户里 15 人更喜欢 Eureka-HF 的 Humanoid，尽管它前进速度更低（5.58 对 7.53，图 9）。
 
+## 源码运行时序图
+
+以下是对官方源码快照 [eureka-research/Eureka@9eee428](https://github.com/eureka-research/Eureka/tree/9eee42808b52d8abc14845d1547bfde886403ccc) 的**运行时调用链核对**，并非仅按论文算法图推测。入口为 `eureka/eureka.py`，由 Hydra 装载任务配置、`envs/*/*_obs.py` 和 `utils/prompts/`；候选奖励写回任务类后，实际由 `isaacgymenvs/isaacgymenvs/train.py` 调用 `rl_games` 训练。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant E as eureka/eureka.py
+    participant L as OpenAI ChatCompletion
+    participant P as AST 与任务代码注入
+    participant T as isaacgymenvs/train.py
+    participant R as rl_games 和 Isaac Gym
+    participant B as TensorBoard
+    E->>E: Hydra 载入任务、环境观测代码与 prompts
+    loop cfg.iteration 轮
+        E->>L: ChatCompletion.create 采样奖励代码
+        L-->>E: 返回 cfg.sample 个候选
+        loop 逐个候选
+            E->>P: get_function_signature 解析代码
+            P-->>E: 注入 compute_reward 并保存任务 .py
+            E->>T: subprocess.Popen 启动训练进程
+            T->>R: Runner.run 执行 RL 训练
+            R-->>B: 写入任务指标及奖励分量统计
+            T-->>E: stdout 给出 Tensorboard Directory
+            E->>B: load_tensorboard_logs 读取标量
+            B-->>E: task_score 与分量统计
+        end
+        E->>E: 选最佳候选并构造 reward reflection
+        E->>E: 将最佳代码及反馈写入下一轮 messages
+    end
+    E->>T: 使用全局最优代码按 cfg.num_eval 多种子训练
+    T->>R: 每次训练一个策略
+    E->>B: 收集最终评估标量
+    E->>E: 保存 final_eval.npz
+```
+
+**关键源码对应：** [主循环](https://github.com/eureka-research/Eureka/blob/9eee42808b52d8abc14845d1547bfde886403ccc/eureka/eureka.py) 生成候选、提取 AST 函数签名、将 `self.rew_buf` 与 `self.rew_dict` 注入 `compute_reward`，调用 `subprocess.Popen` 启动训练；[训练入口](https://github.com/eureka-research/Eureka/blob/9eee42808b52d8abc14845d1547bfde886403ccc/isaacgymenvs/isaacgymenvs/train.py) 构建仿真环境并由 `Runner.run` 训练；[TensorBoard 读取器](https://github.com/eureka-research/Eureka/blob/9eee42808b52d8abc14845d1547bfde886403ccc/eureka/utils/file_utils.py) 读取标量。中间搜索中多个训练进程依次启动，**并非**每个候选先完成训练才启动下一个；仅最后的最优候选接受 `num_eval` 轮复评。
+
+**复现入口与限制（README / 配置文件核对）：**
+
+- 安装 Python 3.8、Isaac Gym **Preview 4**、仓库根目录以及其 `isaacgymenvs`、`rl_games` 子项目；设置 `OPENAI_API_KEY`；然后在 `eureka/` 下运行 `python eureka.py env=shadow_hand sample=4 iteration=2 model=gpt-4-0314`（README 示例，**不代表**当前模型 API 仍可调用）。
+- **默认值有文档差异：** README 的 Getting Started 写 `sample=16`、`iteration=5`；实际版本 [`eureka/cfg/config.yaml`](https://github.com/eureka-research/Eureka/blob/9eee42808b52d8abc14845d1547bfde886403ccc/eureka/cfg/config.yaml) 为 `sample: 3`、`iteration: 1`，同时 `max_iterations: 3000`、`num_eval: 5`；复现实验应显式设置参数，论文搜索预算不能直接当 CLI 默认值。
+- 官方提供 ShadowHandSpin checkpoint 展示命令：`python train.py test=True headless=False force_render=True task=ShadowHandSpin checkpoint=checkpoints/EurekaPenSpinning.pth`（需在 `isaacgymenvs/isaacgymenvs` 运行）。这里只核对了代码与 README，**未执行训练或视频渲染**。
+- 仓库主许可证为 **MIT**；依赖的 Isaac Gym Preview 4、修改版 IsaacGymEnvs / rl_games 须按各自安装要求和许可证分别核对。执行生成的 Python 奖励代码涉及动态代码运行，建议在隔离环境中测试（工程建议，非论文实测结论）。
+
+以上文件级阅读记录见 [官方源码归档](../../sources/repos/eureka-research-eureka.md)，项目主页核对见 [官方项目页归档](../../sources/sites/eureka-research.md)。
+
 ## 实验结果速览（论文数字，带出处）
 
 | 项 | 内容 | 出处 |
@@ -136,7 +185,7 @@ Eureka 证明了编程大模型可以只凭环境源码和任务描述，写出�
 - **反思质量取决于奖励代码的可观测性**：Eureka 要求奖励以「总奖励加各分量字典」的形式返回，反思才有素材；人写的奖励一般没有这种结构，做人类初始化时作者要重构代码并去掉无关变量（附录 D.2）。
 - **成本**：每个中间候选只跑 1 次 PPO 以省算力，但只有一次种子，单次评估噪声没有在论文中单独量化（推测：这是搜索中的噪声来源，论文未讨论）。
 - **与既有奖励设计知识的关系**：Eureka 产出的是 [奖励设计](../concepts/reward-design.md) 里「自动化奖励设计」一类方法的 LLM 版本，前人的做法是在固定奖励模板的参数上做进化搜索（§5，如遗传编程见 [遗传编程](../methods/genetic-programming.md)）。人形运动里的手写奖励组成见 [人形策略奖励函数](../concepts/humanoid-policy-reward-functions.md)。
-- **开源**：论文承诺开源提示词、环境与生成的奖励（§1）；项目页有 Code 链接 <https://github.com/eureka-research/Eureka>，仓库内容本站未核实（见来源归档「开源状态」）。
+- **开源**：项目页 Code 指向 [官方 MIT 许可仓库](https://github.com/eureka-research/Eureka)；已核对 README、主循环、训练入口、工具函数与运行配置，具体见 [代码归档](../../sources/repos/eureka-research-eureka.md) 与上文源码时序图。
 
 ## 局限
 
@@ -172,6 +221,8 @@ Eureka 证明了编程大模型可以只凭环境源码和任务描述，写出�
 ## 参考来源
 
 - [`sources/papers/eureka-llm-reward-design_arxiv_2310_12931.md`](../../sources/papers/eureka-llm-reward-design_arxiv_2310_12931.md)：本页的论文原文归档（含核对范围与通读状态）
+- [官方 Eureka 源码归档](../../sources/repos/eureka-research-eureka.md)：源码入口、训练流程与复现默认值核对
+- [官方 Eureka 项目页归档](../../sources/sites/eureka-research.md)：项目页面与 Code/PDF 链接
 - [`sources/repos/pai_awesome_paper_332_eureka-nvidia.md`](../../sources/repos/pai_awesome_paper_332_eureka-nvidia.md)：awesome 清单里的策展摘录
 - 论文：<https://arxiv.org/abs/2310.12931>
 
