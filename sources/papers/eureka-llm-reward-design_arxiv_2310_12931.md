@@ -9,7 +9,7 @@
 - **PDF：** <https://arxiv.org/pdf/2310.12931>
 - **发表：** ICLR 2024（PDF 页眉 “Published as a conference paper at ICLR 2024”）
 - **项目页：** <https://eureka-research.github.io/>
-- **代码：** <https://github.com/eureka-research/Eureka>（项目页 Code 链接；本次未能打开仓库核对内容，见「开源状态」）
+- **代码：** <https://github.com/eureka-research/Eureka>（2026-11-12 已完成官方 README 与主运行源码核验；见下方增量核查）
 - **入库日期：** 2026-11-08
 - **一句话说明：** 把环境源码和任务描述交给 GPT-4，让它写可执行的奖励函数代码，用「采样一批、在 Isaac Gym 里各跑一次 PPO、把各奖励分量的训练曲线写成文字反馈、再让 LLM 改写最优者」的进化循环迭代；在 29 个仿真任务上与人类专家奖励对比。
 - **核对范围：** 读了 arXiv v2 PDF（45 页）正文第 1–6 节全文；附录 A（全部提示词）、B（环境与适应度函数）、C（L2R 基线）、D（实现细节、笔转实验、人类初始化、人类反馈、算力）、E（MuJoCo Humanoid）、F（补充结果，含 Fig. 10–16 的文字与图注）、H（局限与讨论）逐段读；图 1 与图 4 看了渲染图读数，其余图只读了图注与正文描述。附录 G（奖励代码示例）读了各例标题、得分、文字说明与反思文本，具体奖励代码逐行未细读（它们是示例清单，不承载新的定量结论）。没读：参考文献逐条内容；项目页上的视频与奖励文本（只读了项目页文字）；未下载或运行任何代码。
@@ -18,7 +18,16 @@
 ## 开源状态
 
 - 论文 §1 写「承诺开源所有提示词、环境与生成的奖励函数」。
-- 项目页（入库日 2026-11-08 抓取）头部有 Code、Models、Benchmark、Dataset 入口，其中 Code 指向 github.com/eureka-research/Eureka；该仓库本次访问被代理拒绝（HTTP 403），因此仓库内实际有哪些文件、许可证是什么，**本归档未核实**。项目页还列出各环境「最佳 Eureka 奖励」文本（assets/reward_functions/*.txt 的链接形式）。
+- **历史状态（2026-11-08）：** 初次抓取时官方仓库请求受限，当时未核实内部代码。项目页展示各环境最佳奖励文本。
+- **本次补核（2026-11-12）：** 官方项目页有 arXiv、PDF、Code 三个直接入口；Code 指向 <https://github.com/eureka-research/Eureka>。已通过 GitHub 官方仓库读取 README、LICENSE 信息、`eureka/eureka.py`、`eureka/cfg/config.yaml`、`eureka/utils/create_task.py`、`eureka/utils/extract_task_code.py`、`eureka/utils/file_utils.py`、`eureka/utils/misc.py` 与 `isaacgymenvs/isaacgymenvs/train.py`。仓库主许可证 **MIT**，包含可运行奖励生成/训练入口；项目页及代码归档分别见 [站点归档](../sites/eureka-research.md) 和 [源码归档](../repos/eureka-research-eureka.md)。**未实际执行训练**。
+
+## 2026-11-12 源码增量核查（与论文全文通读分开）
+
+- **代码版本：** 官方仓库 `eureka-research/Eureka` 的 `main` 提交 `9eee42808b52d8abc14845d1547bfde886403ccc`；源码审阅范围及命令见 [仓库阅读记录](../repos/eureka-research-eureka.md)。
+- **实际入口：** `eureka/eureka.py` 用 Hydra 构造对话提示，OpenAI `ChatCompletion.create` 采样候选，将 AST 解析出的奖励函数写入任务 `compute_reward`；子进程运行 `isaacgymenvs/isaacgymenvs/train.py`，使用 `rl_games` 训练并通过 TensorBoard 读取 `consecutive_successes`、`gt_reward`、各奖励项。
+- **迭代与复评：** 按每轮任务指标选择最优候选形成反馈；全局最优代码用 `num_eval` 次不同 seed 重新训练后保存 `final_eval.npz`。中间候选不是每个都做多随机种子复评。
+- **配置差异：** 官方 README 中说明的 `sample=16`、`iteration=5` 与仓库 `config.yaml` 当前实际默认 `sample=3`、`iteration=1` 不一致；复现应通过 CLI 显式指定，不能按说明文字推断启动默认值。
+- **复现边界：** README 要求 Isaac Gym Preview 4、Python 3.8、OpenAI API Key；已提供 ShadowHandSpin checkpoint 演示入口。只检查代码与说明，未验证现代 Python/LLM API 的兼容性、训练结果或真机实验。
 
 ## 核心摘录（均出自论文，带章节）
 
