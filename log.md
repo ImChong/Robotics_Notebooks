@@ -345,6 +345,13 @@ op: ingest
 - **编译形式：** 3 份论文通读归档、2 份项目站点归档、1 份官方源码归档、3 个含 Mermaid 方法流程的中英双语实体页；可运行 BEHAVIOR 源码另附时序图；回链挂至人形移动与 VLA 方法页。
 - **说明：** 本次仅基于一手论文和公开源码静态核查，尚未在本环境执行本地仿真或全仓预检。
 
+## [2026-11-12] ingest | sources/repos/mingrammer-diagrams.md — 收录 Diagrams（Python Diagram as Code）
+
+- 意图：将 Diagrams 作为可版本管理的 Python 云系统架构可视化工具单独收录，并与 Mermaid.js 关联。
+- 开源结论：官方 MIT 开源，源码及预置图标、CLI 均可公开获取；仅绘图，不控制实际云资源或生成 Terraform/CloudFormation。
+- 证据：通读 README、pyproject.toml、Diagram/Node/Edge/Cluster 实现、CLI 入口与官方 Installation/Diagram/Cluster/Edge/Playground 文档。
+- 知识沉淀：[Diagrams](../wiki/entities/mingrammer-diagrams.md)；附 Mermaid 流程及源代码时序，纠正“17 家云”与 Python 版本要求混淆。
+
 ## [2026-11-12] ingest | NVIDIA Holoscan SDK 5.0 — 实时多传感器与 Physical AI 运行时
 
 - **意图：** 将 NVIDIA Holoscan 平台 SDK 与此前已收录的 Sensor Bridge 区分，新增带原文/源码证据的完整技术节点。

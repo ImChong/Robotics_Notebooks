@@ -989,6 +989,7 @@
 - [MimicKit: 运动模仿与控制研究套件](wiki/entities/mimickit.md) — MimicKit** 是 Xue Bin Peng（彭学斌） 维护的 **物理角色运动模仿与控制** 研究代码库（Starter Guide 论文署名单位 `📅unknown` `[entity_page]`
 - [MimicLite（监督运动跟踪基础设施）](wiki/entities/mimiclite.md) — MimicLite** 是 Party OS 首批开源的 **监督学习运动跟踪基础设施**，贯通数据组织、策略训练、统一评测与真机部署，使研究者能以更低算力快速迭 `📅unknown` `[entity_page]`
 - [MiMo-V2.6（Scaling RL Toward Self-Improvement）](wiki/entities/mimo-v2-6.md) — MiMo-V2.6**（发布说明 · [技术报告 PDF](https://huggingfa `📅unknown` `[entity_page]`
+- [Diagrams: Diagram as Code｜用 Python 绘制云系统架构图](wiki/entities/mingrammer-diagrams.md) — Diagrams**（GitHub · [官方文档](https://diagrams.mingrammer.c `📅unknown` `[entity_page]`
 - [Mini Pupper](wiki/entities/mini-pupper.md) — Mini Pupper** 是 MangDang 推出的小型开源四足机器人，仓库 [mangdangroboticsclub/mini_pupper](https://github.com/man `📅unknown` `[entity_page]`
 - [Mini-SGLang｜精简但完整的在线 LLM Serving 系统](wiki/entities/mini-sglang.md) — Mini-SGLang 以作者标注约 5000 行 Python 展示在线 serving 的多进程组件，包含 API Server、Tokenizer/Detokenizer、每 GPU Sched `📅unknown` `[entity_page]`
 - [MiniGPT-4](wiki/entities/minigpt4.md) — MiniGPT-4 将冻结视觉编码器与冻结 Vicuna 等 LLM 经单一投影层对齐，展示用较少可训参数即可获得类 GPT-4V 的图像对话能力。 `📅unknown` `[entity_page]`
