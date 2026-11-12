@@ -83,7 +83,7 @@ original:
 
 ## 关联页面
 
-- [CoRL 2026：Glen Berseth 的优先阅读清单（待原文通读）](../overview/corl-2026-glen-berseth-reading-list.md) — 已完整核对作者两条公开声明，**博客全文和实际 101 篇名单仍待核验**。
+- [CoRL 2026：Glen Berseth 的 101 篇优先阅读清单](../overview/corl-2026-glen-berseth-reading-list.md) — 博客全文已通读，101 篇逐条指向本库详情节点（作者个人筛选，非官方排名）。
 
 - [awesome-physical-ai（natnew）](../entities/awesome-physical-ai-natnew.md)
 - [awesome-physical-ai（aichr）](../entities/awesome-physical-ai-aichr.md)

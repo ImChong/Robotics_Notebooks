@@ -14,7 +14,7 @@ tags:
 - sun254667-wm
 status: complete
 venue: curated
-updated: 2026-10-06
+updated: 2026-11-12
 related:
 - ../concepts/world-action-models.md
 - ../methods/imitation-learning.md
@@ -35,167 +35,160 @@ related:
 - ../methods/model-based-rl.md
 - ../tasks/locomotion.md
 sources:
+- ../../sources/papers/egowam_arxiv_2607_08436.md
 - ../../sources/papers/egowam.md
 - ../../sources/papers/egosteer_arxiv_2607_09701.md
 - ../../sources/papers/egoverse_arxiv_2604_07607.md
 - ../../sources/papers/sun_awesome_wm_2607_08436_egowam-world-action-models-beyond-pixels.md
 - ../../sources/papers/sun_awesome_wm_catalog.md
 - ../../sources/repos/awesome-world-models.md
-summary: EgoWAM（Georgia Tech RL²）：固定 HPT 骨干与数据混合、仅替换世界预测目标（Pixel/DINO/3D flow）的受控人–机协同训练——WAM 状态分支弥合具身差距，使机器人性能随野外 egocentric 人数据扩展；DINO 最高约 4× OOD 泛化，3D flow 域内 +20–30%，未对齐人数据下 BC 可跌至 robot-only 以下而 3D Flow 仍鲁棒。
+summary: EgoWAM（Georgia Tech RL²，arXiv:2607.08436）：固定 HPT 骨干、flow-matching 动作头与数据混合，仅替换世界预测目标（Pixel VAE / DINO / 3D flow），在三项真实双臂任务上研究野外 egocentric 人数据的人到机迁移；DINO 的 OOD 增益最大，3D flow 域内空间泛化最强，未对齐人数据下 BC 跌破 robot-only 而 3D flow 仍稳。
 project_id: egowam-egocentric-human-wam-co-training
+original: ../../sources/papers/egowam_arxiv_2607_08436.md
 arxiv: '2607.08436'
 ---
 
 # EgoWAM（野外 Egocentric 人数据 · World Action Model 协同训练）
 
-**EgoWAM**（*World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data*，[项目页](https://gatech-rl2.github.io/egowam.github.io/)，佐治亚理工学院 **RL²** · Danfei Xu 组）提出：自我中心 **野外人数据** 虽丰富，但朴素 **BC 人–机协同训练** 常因 **具身差距** 反而 **损害** 性能；在 **固定策略骨干与数据配方** 下，仅改变 **世界预测分支的目标表征**，可系统检验 **WAM 动力学监督** 是否把人数据变成 **可扩展正监督**。
+**EgoWAM**（*World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data*，[arXiv:2607.08436](https://arxiv.org/abs/2607.08436)，[项目页](https://gatech-rl2.github.io/egowam.github.io/)，佐治亚理工学院 RL² · Danfei Xu 组）研究：自我中心人数据丰富，但 BC 人–机共训会把可迁移内容与不可迁移的人体态纠缠；在固定策略骨干与数据配方下，只换世界预测分支的目标表征，看哪种目标最能让人数据变成机器人策略的增益。全文通读归档见 [来源归档](../../sources/papers/egowam_arxiv_2607_08436.md)。
 
 ## 一句话定义
 
-**用可替换的世界预测头（Pixel / DINO / 3D flow）在 HPT 上做人–机协同训练，让「场景将如何变」的监督筛掉不可迁移的人体态与头动，从而把野外 egocentric 人数据变成机器人策略的增益而非噪声。**
+**在 HPT 骨干上给 flow-matching 动作头并联一个可替换的世界预测头（Pixel VAE / DINO / 3D flow），联合训练人与机器人数据、推理时丢弃世界头，以此受控比较哪种世界目标最利于野外 egocentric 人数据向机器人迁移。**（摘要与 §4、§4.3）
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| WAM | World Action Model | 联合未来状态/观测预测与动作生成的具身策略 |
-| BC | Behavior Cloning | 仅监督动作的模仿学习；本文主要负面对照 |
-| HPT | Heterogeneous Pretrained Transformer | 具身专用 stem + 共享 trunk 的异构预训练 Transformer |
-| OOD | Out-of-Distribution | 未见物体或场景的分布外泛化评测 |
-| RAE | Reconstruction Autoencoder | DINO 世界头的重建式表征空间（项目页用语） |
-| Ego | Egocentric | 第一人称视角采集的人或机器人观测 |
-
-| WM | World Model | 环境前向预测模型 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| MBRL | Model-Based RL | 基于模型的强化学习 |
+| WAM | World Action Model | 动作之外还预测场景未来的策略；本文把未来预测当训练期的第二条监督通道 |
+| BC | Behavior Cloning | 仅监督动作的模仿学习；本文的对照基线 |
+| HPT | Heterogeneous Pretrained Transformer | 具身专用 stem 加共享 trunk 的骨干（§4.1，引用 [16]） |
+| OOD | Out-of-Distribution | 本文指未见物体或新场景（§5.1） |
+| RAE | Representation Autoencoder | DINO 世界头所用的表征自编码器框架及其宽 DDT 头（§4.2，引用 [13]） |
+| VAE | Variational Autoencoder | Pixel 目标所用的预训练视频 VAE 潜空间（Wan，§4.2） |
+| DINO | self-DIstillation with NO labels | 本文用冻结 DINOv2-B 的 patch 特征作目标（附录 B.2） |
+| VIO | Visual-Inertial Odometry | Aria 眼镜给出的头部位姿，用于稳定 3D flow（§4.2） |
+| ID | In-Distribution | 本文指见过的物体与场景（§5.1） |
 
 ## 为什么重要
 
-- **直面「人数据很多，但 BC 不一定更好」：** 可迁移的 **物体/场景/任务语义** 与不可迁移的 **人体形态、头动、行为风格** 在 BC 里纠缠；论文用 **受控消融**（只换世界目标）把 **表征选择** 从「堆更多小时」里 **单独拎出来** 讨论。
-- **世界表征是下一根关键轴：** **Pixel** 迁移弱；**DINO** 驱动 **OOD 物体/场景**（最高约 **4×** 相对 BC）；**3D motion flow** 带来 **20–30%** **域内** 增益——说明 WAM 的价值不只在于「有没有世界头」，而在于 **预测什么空间的动力学**。
-- **misalignment 鲁棒性有真机数字：** **故意未对齐** 人数据时，**BC** 可跌至 **robot-only 以下**（例：**40% → 20%**），**3D-Flow WAM** 仍 **75%**；对齐数据上 **3D Flow** 达 **85%** 且稳定——支持「**动力学共训** 抵抗错误动作监督、**对齐人数据** 作缩放飞轮」的判断。
-- **与 VLA 人视频路线互补对照：** [EgoScale](../methods/egoscale.md) 走 **显式腕–手动作预训练 + 对齐 mid-training**；EgoWAM 走 **Joint WAM + 可替换世界目标**，不依赖把人动作直接当机器人监督，而靠 **未来状态预测** 对齐跨具身表征（UMAP 显示人机嵌入由分簇变为共享）。
+- **把「世界表征」从「堆更多小时」里单独拎出来：** 论文固定骨干、动作头与数据混合，只改世界目标（§1 贡献一），这是它相对许多整体系统论文的受控之处。
+- **作者的发现（自述）：** WAM 共训比 BC 共训更能随野外人数据扩展；Pixel 迁移弱，DINO 与 3D flow 明显更好且各有所长（摘要与 §1）。
+- **部署成本不变：** 推理丢弃世界头，延迟与同尺寸 BC 策略相当（30 Hz，RTX 4090，附录 B.3）。
 
-## 核心结构与方法
+## 核心原理与流程总览
 
-| 模块 | 作用 |
-|------|------|
-| **Ego / Wrist / Proprio stem** | 具身专用编码，汇入共享 trunk |
-| **共享 Transformer trunk** | 产出 **obs / action / future** 三类 token |
-| **动作头（固定）** | **Conditional flow matching**；读 action tokens；推理唯一执行路径 |
-| **世界头（可替换）** | 读 future tokens；在 **Pixel VAE / DINO RAE / 3D flow** 空间重建未来观测；训练时与动作头 **联合反传**，推理 **关闭** |
-| **三源数据混合（固定配方）** | 机器人遥操作 + **域内人**（同场景物体、视点/行为不匹配）+ **野外人**（[EgoVerse](./paper-egoverse.md)） |
-
-### 流程总览
+**有效世界目标的三条假设（§4）：** D1 抽象外观；D2 跨具身一致（表示效应而非执行者）；D3 分离 ego-motion 与环境变化。作者称 Pixel 违反三条，DINO 满足 D1/D2、对 D3 仅部分缓解，3D flow 按构造满足三条（§4.2）。
 
 ```mermaid
 flowchart TB
-  subgraph stems [具身专用 Stem]
+  subgraph stems [具身专用 stem]
     EGO[ego vision]
-    WRIST[wrist vision]
+    WRIST[wrist vision 仅机器人]
     PROP[proprio]
   end
-  stems --> TRUNK[HPT 共享 Transformer]
+  stems --> TRUNK[HPT 共享 trunk]
   TRUNK --> AT[action tokens]
   TRUNK --> FT[future tokens]
-  AT --> AH[动作头\nflow matching\nℒ_action]
-  FT --> WH["世界头（可替换）\nPixel | DINO | 3D flow\nℒ_world"]
-  AH --> POL[推理：仅动作路径]
-  WH -.训练时联合反传.-> TRUNK
-  subgraph data [三源协同训练]
+  AT --> AH[动作头 conditional flow matching]
+  FT --> WH[世界头可替换 Pixel VAE 或 DINO 或 3D flow]
+  AH --> LA[L_action]
+  WH --> LW[L_world]
+  LW -.训练期反传塑形 trunk.-> TRUNK
+  AH --> INF[推理只走动作路径]
+  subgraph data [训练数据]
     ROB[机器人遥操作]
-    IDH[域内人示教]
-    WILD[野外人 · EgoVerse]
+    IDH[域内人 约 1比1]
+    WILD[EgoVerse-A 野外人 约 10比1]
   end
   data --> stems
 ```
 
-### 有效世界目标的三个判据（论文假设）
+**动作通道对齐（§3.1）：** 统一为 14 维末端空间；人手姿态重新表达到时刻 t 设备系以消除头动；人窗口 1 s、机器人窗口 1.5 s；1%/99% 分位数归一化。
 
-1. **抽象外观** — 弱化像素级人体/纹理差异  
-2. **跨具身一致的物理效应** — 保留物体与接触如何变化  
-3. **分离 ego-motion 与环境变化** — 减少头部运动带来的虚假监督  
+**三种世界目标（§4.2、附录 B.2）：**
 
-## 实验要点
+| 目标 | 内容 | 头部 |
+|------|------|------|
+| Pixel / Pixel-PT | 未来 ego 帧（128×128）的 Wan 视频 VAE 潜码（16×16×16） | 6 块 DiT 从零训练 / 预训练 VACE-1.3B 初始化 |
+| DINO | 未来 ego 帧的冻结 DINOv2-B patch 特征（16×16×768，去 CLS 与 register） | RAE 的 DiTDH 宽头 |
+| 3D flow | Track4World 追踪 + Aria VIO 位姿稳定到时刻 t 相机系的稠密 3D 位移，1120 个锚点，100 步 | 4 块 flow-matching 解码器，以锚点位置作条件 |
 
-| 轴 | 报告口径（以项目页为准） |
-|----|--------------------------|
-| **平台** | **三项真实双臂** 操作任务（项目页 Data Gallery / Robot Demos） |
-| **训练方案** | **Robot Only**、**+ In-Domain Human**、**+ EgoVerse（野外）** |
-| **对照方法** | **BC**、**Pixel**、**Pixel-PT**、**DINO**、**3D Flow** |
-| **主结论** | WAM 协同训练随野外人数据 **扩展优于 BC**；**DINO** **OOD** 最高约 **4×**；**3D flow** 域内 **+20–30%** |
-| **对齐消融** | 未对齐人数据：**BC 20% < robot-only 40%**；**3D Flow 75%**；对齐：**3D Flow 85%** |
-| **表征** | UMAP：**BC** 人机分簇 → **WAM（3D Flow）** 共享嵌入空间 |
-| **数据生态** | 野外人数据来自 **[EgoVerse](./paper-egoverse.md)**（见 [HumanNet 对比表](../comparisons/humannet-table1-human-video-corpora.md) 中的 EgoVerse 行） |
+**联合训练（§4.3）：** L = L_action(机器人 + 人) + λ(L_world(机器人) + L_world(人))，λ=1；每步 32 条机器人 + 32 条人样本。
 
-## 结论
+## 工程实践
 
-**野外 egocentric 人数据能否变增益，取决于世界预测目标空间（Pixel / DINO / 3D flow），而不是「加更多人视频 + BC」本身。**
+- **平台（§5.1，附录 C.1）：** 两条直立 ARX5 6-DoF 臂，Aria 眼镜头戴，两个腕部 RealSense D405，Quest 3 遥操作，Mink IK 执行。
+- **数据（表 3）：** 机器人示教 300/360/300 条（cup-on-saucer / fold-clothes / bag-grocery，2.5/3.0/2.5 h）；域内人各 2 h；EgoVerse-A 人数据 20.5/21/7 h。
+- **训练（附录 B.3）：** 单张 L40S，每任务每方法约两天（Pixel-PT 用两张）；AdamW lr 1e-4。
+- **评测（§5.1）：** 每方法 ID 20 次 + OOD 20 次，全文共 1800 次真机 rollout；一任务一策略。
+- **主要结果（§5.2，图 3 读数，作者以柱状图给出）：** DINO 的 OOD 成功率增益最大（cup +43、bag +40、fold OOD 场景 +70 个百分点）；3D flow 在域内空间泛化最强（图 6），整体分数最高；fold-clothes 域内除 BC 外已饱和到 100%。
+- **未对齐人数据（§5.2 Q3，图 8，bag-grocery）：** BC 机器人单独 40%、域内共训 45%、未对齐共训 20%；3D flow 机器人单独 60%、域内 80%、未对齐 75%。
+- **对齐人数据（附录 A.1，图 9，cup-on-saucer）：** 演示者刻意对齐后，Pixel 35%→65%，DINO 50%→70%，3D flow 两种情形均 85%。
+- **人数据模态（附录 A.2，图 11，表 1）：** 仅 3D flow 监督优于仅动作监督（OOD Scene 0% 对 10%），动作加 flow 在每个切分最好。
+- **仿真复核（附录 D，表 4）：** RoboTwin 2.0 上跨具身共训优于单具身；pick-diverse-bottles 跨具身 BC 6、Pixel 11、DINO 28、3D flow 16；hanging-mug 全部不超过 1%。
 
-1. **BC 人–机共训可负迁移** — 故意未对齐人数据时，BC 可跌至 **20%**（低于 robot-only **40%**）；同设定下 **3D-Flow WAM 仍 75%**，对齐数据上达 **85%**。
-2. **世界表征分工明确** — **DINO** 驱动 OOD 物体/场景（最高约 **4×** 相对 BC）；**3D motion flow** 带来域内约 **+20–30%**；**Pixel** 在本设定下迁移弱。
-3. **受控消融只换世界头** — 固定 HPT 骨干、动作头（flow matching）与三源数据配方；推理时世界头关闭，只走动作路径。
-4. **有效世界目标三判据** — 抽象外观、跨具身一致的物理效应、分离 ego-motion 与环境变化；UMAP 显示 WAM（3D Flow）使人机嵌入由分簇变为共享。
-5. **选型对照** — 相对 [EgoScale](../methods/egoscale.md) 的显式腕–手动作预训练，EgoWAM 靠未来状态预测对齐跨具身表征；截至 ingest arXiv/代码尚未公开，任务规模为三项双臂真机。
+## 与清单说法的核对
 
-## 常见误区或局限
+清单（Glen Berseth 的 CoRL 2026 阅读清单，P2，作者称摘要由 LLM 据摘要起草）一句话：「Controlled study of which world-prediction target makes world action models best at transferring in-the-wild egocentric human data.」
 
-- **误区：** 认为「加更多人视频 + BC」必然提升；论文显示 **misaligned** 人数据可让 BC **差于纯机器人数据**，而 **WAM** 仍可利用 **对齐** 与部分 **未对齐** 数据。
-- **误区：** 把任意 **video prediction loss** 等同于有效 WAM；关键是 **世界目标空间**——**Pixel** 在本设定下 **迁移弱**。
-- **局限：** 截至 ingest **arXiv / 代码尚未公开**；任务规模为 **三项双臂真机**；与 **人形全身 loco-manip**（如 [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)）形态不同；**HPT** 细节以项目页为准；野外数据底座见已入库的 [EgoVerse](./paper-egoverse.md)。
+| 清单措辞 | 论文核对 |
+|----------|----------|
+| Controlled study | 成立：固定骨干、动作头与数据混合，只换世界目标（§1、§4.1）。但对照臂是 BC 与 Pixel/Pixel-PT/DINO/3D flow 共五种，且每任务一个策略、每格 20 次 rollout（§5.1）。 |
+| which target makes WAMs best | 论文没有给出唯一的「最佳」：DINO 的 OOD 最强，3D flow 的域内空间最强且整体分数最高（§1、§5.2 Q2）；作者在 §6 明确说「最佳」世界表征仍是开放问题。 |
+| in-the-wild egocentric human data | 成立：EgoVerse-A 野外人数据（约 10:1）；但另有域内人数据与刻意对齐/未对齐的自采数据（附录 C.2）。 |
+| 仿真还是真机 | 主结果为三项真实双臂任务；仿真（RoboTwin）只是附录 D 的机器人到机器人复核，不涉及人数据。 |
+| 清单未提及 | 推理时丢弃世界头、BC 在人数据上可低于 robot-only、以及作者自述增益只在语境层面。 |
 
-## 与其他页面的关系
+## 局限
 
-- [World Action Models（WAM）](../concepts/world-action-models.md) — Joint 族中 **人数据协同训练 + 世界目标消融** 的桌面/双臂实例
-- [Imitation Learning](../methods/imitation-learning.md) — BC 与人数据缩放的基线语境与 **负迁移** 讨论
-- [EgoScale](../methods/egoscale.md) — **VLA + 显式人动作标签** 的人视频缩放对照
-- [EgoSteer](./paper-egosteer.md) — 训练-only DINOv3 世界专家 + 显式腕–指动作；对照「世界头作主监督」vs「世界头作表征整形」
-- [Manipulation](../tasks/manipulation.md) — 双臂操作与人数据驱动策略任务族
-- [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 同 WAM 范式、不同形态（人形实时 loco-manip）
-- [DiT4DiT](./paper-dit4dit-video-action-model.md) — 双 DiT flow-matching WAM；EgoWAM 强调 **人–机共训与世界表征轴**
-- [WAM-TTT](./paper-wam-ttt-human-video-test-time-steering.md) — **部署期** 人视频 TTT 记忆 steering；与 EgoWAM **训练期共训** 互补
-- [JoyAI-RA 0.5](./paper-joyai-ra-05.md) — 全栈 VLWA + 双动作对齐的人视频缩放系统（对照受控世界目标消融）
-- [LD4WAM](./paper-ld4wam.md) — 语义空间 + Delta EE 运动对齐潜码再进 Joint WAM；部署仍滚视频
+**论文自己承认（§6）：** 增益停留在语境层面，无法从人数据学到新的运动技能；每任务一个策略，未做多任务共训；「最佳」世界表征未定。
+
+**读论文时看到的未验证之处（我的判断）：**
+- 只有三项任务、每格 20 次 rollout，图 3 的置信区间较宽，部分差异应谨慎读；fold-clothes 域内已饱和，信息量小。
+- 摘要中的「最高 4×」「20–30%」未在正文给出明确的计算口径（比率还是点数、哪个任务），本页对此未能复核。
+- 未对齐消融（图 8）只在 bag-grocery 做、只比 BC 与 3D flow；对齐消融（图 9）只在 cup-on-saucer 做，未对每个世界目标做完整对称消融。
+- RoboTwin 的 stack 任务评测物体外观被意外改变（作者标 †），数字不宜当标准基准成绩。
+- 论文未给出代码仓库地址；本页不写 `code:`。
 
 ## 关联页面
 
 - [World Action Models（WAM）](../concepts/world-action-models.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Manipulation](../tasks/manipulation.md)
-- [EgoScale](../methods/egoscale.md)
-- [EgoSteer](./paper-egosteer.md)
-- [HumanNet 人视频语料对比](../comparisons/humannet-table1-human-video-corpora.md)
-- [EgoVerse](./paper-egoverse.md)
-- [JoyAI-RA 0.5](./paper-joyai-ra-05.md)
+- [EgoScale](../methods/egoscale.md) — 显式人动作标签的人视频缩放对照
+- [EgoVerse](./paper-egoverse.md) — 本文的野外人数据来源
+- [EgoSteer](./paper-egosteer.md) — 训练期 DINOv3 世界专家加显式腕–指动作
 - [LD4WAM](./paper-ld4wam.md)
-
-- 列表实体：[Awesome World Models](../entities/awesome-world-models.md)
-- 技术地图：[Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
-
-- [vla](../methods/vla.md)
-- [humannet](./humannet.md)
-- [model-based-rl](../methods/model-based-rl.md)
-- [locomotion](../tasks/locomotion.md)
+- [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)
+- [DiT4DiT](./paper-dit4dit-video-action-model.md)
+- [WAM-TTT](./paper-wam-ttt-human-video-test-time-steering.md)
+- [JoyAI-RA 0.5](./paper-joyai-ra-05.md)
+- [HumanNet 人视频语料对比](../comparisons/humannet-table1-human-video-corpora.md)
+- [HumanNet](./humannet.md)
+- [VLA](../methods/vla.md)
+- [生成式世界模型](../methods/generative-world-models.md)
+- [Model-Based RL](../methods/model-based-rl.md)
+- [Locomotion](../tasks/locomotion.md)
+- [Awesome World Models](./awesome-world-models.md)
+- [Awesome World Models 技术地图](../overview/sun-awesome-wm-technology-map.md)
 
 ## 参考来源
 
+- [EgoWAM 论文通读归档（arXiv:2607.08436）](../../sources/papers/egowam_arxiv_2607_08436.md)
 - [EgoWAM 项目页摘录](../../sources/papers/egowam.md)
 - [EgoSteer 论文摘录（对照）](../../sources/papers/egosteer_arxiv_2607_09701.md)
 - [EgoVerse 论文摘录](../../sources/papers/egoverse_arxiv_2604_07607.md)
-
-- [`sources/papers/sun_awesome_wm_2607_08436_egowam-world-action-models-beyond-pixels.md`](../../sources/papers/sun_awesome_wm_2607_08436_egowam-world-action-models-beyond-pixels.md) — 本条目策展摘录
+- [`sources/papers/sun_awesome_wm_2607_08436_egowam-world-action-models-beyond-pixels.md`](../../sources/papers/sun_awesome_wm_2607_08436_egowam-world-action-models-beyond-pixels.md) — 策展摘录
 - [`sources/papers/sun_awesome_wm_catalog.md`](../../sources/papers/sun_awesome_wm_catalog.md) — 列表总表
 - [`sources/repos/awesome-world-models.md`](../../sources/repos/awesome-world-models.md)
 - 论文：<https://arxiv.org/abs/2607.08436>
 
-## 推荐继续阅读
+## 继续阅读
 
 - [EgoWAM 项目页](https://gatech-rl2.github.io/egowam.github.io/)
+- [EgoWAM arXiv PDF](https://arxiv.org/pdf/2607.08436)
 - [EgoVerse 论文实体](./paper-egoverse.md)
-- [EgoVerse 项目页](https://egoverse.ai/)
 - [World Action Models 概念页](../concepts/world-action-models.md)
-- [EgoScale 方法页](../methods/egoscale.md) — VLA 人视频缩放对照
-
+- [EgoScale 方法页](../methods/egoscale.md)
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
-- [原文](https://arxiv.org/abs/2607.08436)
