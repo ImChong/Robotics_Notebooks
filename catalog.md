@@ -2218,6 +2218,7 @@
 - [DexSeed： 将人手–物体交互扩展为灵巧操作示范](wiki/entities/paper-dexseed.md) — DexSeed 是把少量人手–物体交互映射、扩增并物理验证为机器人灵巧抓取示范的数据合成框架。 `📅unknown` `[entity_page]`
 - [DexStitch：从人类视频学习并组合灵巧技能](wiki/entities/paper-dexstitch-skill-stitching-human-videos.md) — DexStitch 把长视频切成技能段与过渡段，再把人类手部示范转换成机器人可用的数据，使单个技能可以按需串联。 `📅unknown` `[entity_page]`
 - [DexSuite（arXiv:2610.37799）](wiki/entities/paper-dexsuite.md) — DexSuite**（*DexSuite: An All-in-One Framework for Dexterous Manipulation Across Arms, Hands, and T `📅unknown` `[entity_page]`
+- [DexTacWAM：面向灵巧操作的视触觉世界—动作模型](wiki/entities/paper-dextacwam.md) — DexTacWAM: A Visuo-Tactile World-Action Model for Dexterous Manipulation `📅unknown` `[entity_page]`
 - [DexVerse（Multi-Task, Multi-Embodiment Dexterous Manipulation Benchmark）](wiki/entities/paper-dexverse.md) — DexVerse**（arXiv:2607.08751，[项目页](https://ycyao216.github.io/D `📅unknown` `[entity_page]`
 - [DexWeave：从人体示范学习灵巧人形移动操作](wiki/entities/paper-dexweave-humanoid-loco-manipulation.md) — DexWeave 将身体、手腕、手指和物体交互共同重定向，再以解剖区域注意力策略学习全身灵巧移动操作。 `📅unknown` `[entity_page]`
 - [Grip, Trace, Write（arXiv:2611.10451）](wiki/entities/paper-dexwriting.md) — Grip, Trace, Write: Force-Aware Imitation and Reinforcement Learning for High-DoF Robotic Handwriti `📅unknown` `[entity_page]`

@@ -374,6 +374,12 @@ op: ingest
 - **开放结论：** 2026-11-13 官方仓库只有 README 与 assets，README 将代码/权重列为 11 月底待发布；不绘制虚构源码运行时序图。
 - **质量：** 为原文归档补显式通读记录，wiki 增加 original 和统一阅读骨架；仓库完整预检需以 GitHub Actions 为准。
 
+## [2026-11-13] ingest | sources/papers/dextacwam_arxiv_2609_24976.md — DexTacWAM 视触觉世界—动作模型
+
+- 核对论文 `1–6 与附录 A.1–A.11，单一 wiki 实体收录跨指触觉压缩、预测式接触世界模型、六任务实验及局限。
+- 核实代码及权重开放边界：三阶段训练与离线推理代码、Stage 1 触觉编码器与数据公开；作者任务专属 Stage 2/3 checkpoint 未发布；部署脚本在 deploy 分支。
+- 为节点添加方法 Mermaid 流程图和源码训练时序图，并从触觉感知概念页建立入链。
+
 ## [2026-11-13] ingest | TipSim 触觉仿真平台：官方技术文档、闭环示例与许可证核实
 
 - 收录华威科 TIP 的 MuJoCo Loong/Universa 触觉仿真，补充双语实体介绍、Mermaid 接触/反馈流程、Python 示例运行时序。
