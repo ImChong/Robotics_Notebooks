@@ -56,7 +56,7 @@ summary: "人形机器人群控：多机在同一动态环境中分配角色、�
 
 | 路线 | 代表一手资料 | 决策拓扑 | 通信假设 | 验证形态 |
 |------|--------------|----------|----------|----------|
-| **集中式行为管理** | [ARTEMIS arXiv:2512.09431](../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md) | 每机 **behavior planner** 维护赛况记忆、预测、角色与射门；DAVG+cf-MPC 避障 | 队友/对手主要靠 **立体视觉检测** | **Adult-Size 真机国际赛冠军** |
+| **单机内集中式行为管理** | [ARTEMIS arXiv:2512.09431](../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md) | 每机内部 **behavior planner** 维护赛况记忆、预测、角色与射门；DAVG+cf-MPC 避障 | 队友/对手主要靠 **立体视觉检测** | **Adult-Size 真机国际赛冠军** |
 | **Swarm ACO + flocking** | [Sensors 2025](../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md) | **全去中心化** 信息素角色 + Reynolds 编队 | **周期性 UDP** 位置/角色/健康；RLE+退避 | Webots 4v4；进球 **+25–40%** vs 集中式仿真基线 |
 | **市场拍卖 + Voronoi（SPL）** | [arXiv:2401.15026](../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md) | **DWM** 预测补全 + **UEM 拍卖**；Voronoi 修正站位 | **极低带宽事件**（非周期全状态） | **NAO 真机 RoboCup** + SimRobot |
 
@@ -114,7 +114,7 @@ flowchart LR
 - **把「群控」当成单机 policy 复制 N 份：** 没有角色与站位机制会出现 **扎堆追球、空门无人**。
 - **忽视通信规则：** 仿真里无限带宽训练的协调策略 **不能直接** 上 SPL 真机。
 - **把娱乐编队等同于足球群控：** 舞台 **毫秒级编舞同步**（如多机舞蹈）通常是 **预录时间轴 + 分布式时钟**；足球需要 **在线战术响应** 与对抗建模。
-- **认为去中心化一定优于集中式：** ARTEMIS 证明在 Adult-Size **真机赛** 中，**强感知 + 集中战术 + 避障导航** 仍可达冠军；swarm 论文目前以 **仿真优势** 为主，需看部署场景。
+- **认为去中心化一定优于集中式：** ARTEMIS 证明在 Adult-Size **真机赛** 中，**强感知 + 单机内部集中式战术管理 + 避障导航** 仍可达冠军；swarm 论文目前以 **仿真优势** 为主，需看部署场景。
 
 ## 关联页面
 
@@ -130,6 +130,15 @@ flowchart LR
 - [PingpongDuo](../entities/paper-pingpongduo.md) — 双人形乒乓球双打：风险过滤站位实现高动态多机协同
 - [OmniInteract](../entities/paper-omniinteract-dual-humanoids.md) — 双人形表面接触重定向与伙伴条件化全身交互控制
 - [RoboCompiler-Humanoids](../entities/paper-robocompiler-humanoids-composable-dynamics.md) — 合作人形的动力学建模侧：成员级模型复用 + 手部连接 / 地面支撑两级约简（MuJoCo 环形舞蹈与侧步验证，arXiv:2610.14237）
+
+## 原文核验补充（2026-11-13）
+
+- **Sensors 2025（§2–5）**：作者的 ACO 角色分配、角色加权 flocking、UDP 退化策略及 4v4 Webots 实验构成同一仿真框架；**25–40% 进球增益**与 **8–10% 控球增益**均为仿真相对基线，不能推广为真机指标。原文：https://doi.org/10.3390/s25113496
+- **SPL 有限通信（§1–5）**：通信配额缩减 84% 是 2019–2022 规则变化；方法结合局部世界模型外推、市场式任务分配和基于对手位置的 Voronoi 站位，报告 NAO 赛事和 SimRobot 的任务重叠改善，不应误称完全无通信。原文：https://arxiv.org/html/2401.15026
+- **ARTEMIS（§I–VII）**：论文所谓 centralized behavior manager 是机器人内部决策层，不代表全队由远端中央服务器控制；DAVG 路径规划、cf-MPC 轨迹跟踪与本体感知/踢球共同组成系统。原文：https://arxiv.org/html/2512.09431
+- **RoboCompiler-Humanoids（§I–VI）**：两级约简组合各机器人内部约束与地面/手部连接；264 状态数值一致性与 0.73 mm 骨盆 RMS 均来自模型校验或 MuJoCo 仿真，**未验证真机跟踪精度**。原文：https://arxiv.org/html/2610.14237
+
+以上为原文重点章节核验记录；完整通读状态应在各来源归档逐篇确认后再标记。
 
 ## 参考来源
 
