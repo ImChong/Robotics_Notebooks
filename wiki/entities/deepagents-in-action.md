@@ -68,7 +68,7 @@ sequenceDiagram
   participant P1 as npm
   participant P2 as 预处理脚本
   participant P3 as Astro
-  P0->>P1: P1 run dev
+  P0->>P1: npm run dev
   P1->>P2: predev 调用 scripts/prep-content.mjs
   P1->>P3: astro dev
   P3-->>P0: 提供本地章节预览
