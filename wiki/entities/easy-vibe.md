@@ -122,6 +122,20 @@ sequenceDiagram
 
 ## 关联页面
 
+### 同届课程与工程延伸
+
+- [Happy-LLM](happy-llm.md) — 从模型调用回到 Transformer 与模型训练基础。
+- [llm-algo-leetcode](llm-algo-leetcode.md) — 算法与推理/系统优化的可运行 Notebook 学习路线。
+- [All-in-RAG](all-in-rag.md) — RAG 的加载、检索与生成工程分层。
+- [Easy Data × AI](easy-data-x-ai.md) — 数据层、Memory、Skill 与 Agent 的工程路径。
+- [Hello-Agents](hello-agents.md) — 智能体框架入门及进阶的同一教程。
+- [Deep Agents 实战](deepagents-in-action.md) — Agent Harness、权限和上下文工程。
+- [hello-gpu](hello-gpu.md) — GPU profiling、算子与 Agent 优化。
+- [hello-rocm](hello-rocm.md) — AMD GPU/ROCm 环境与部署教程。
+- [GGUF 量化内幕](gguf-quant-internals.md) — 低比特量化格式与验证。
+- [cpp-llm-engine](cpp-llm-engine.md) — 用 C++ 实现模型推理服务主线。
+
+
 - [Astra Games / Awesome GPT-6 Astra](astra-games.md) — AI 辅助浏览器作品案例；参考交互与验证方法，源码和许可按作品核查。
 
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — vibe coding 之后必补的 SE 取舍
