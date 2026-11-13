@@ -57,7 +57,7 @@ summary: "BitRobot RoboCap LiDAR-100 是头戴固态 LiDAR、鱼眼 RGB 与 IMU 
 
 该图依据官方数据卡的 Capture device、Selection 和 Contents：**记录与选择是实际的数据组织过程**，不代表已训练出机器人控制策略。
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
   Work["厨房、汽修与汽车精洗真实作业"] --> Capture["头戴同步采集"]
   Capture --> Lidar["固态 LiDAR 10 或 30 Hz"]
@@ -75,7 +75,7 @@ flowchart TD
   MCAP --> Research["第一视角深度、操作理解和策略预训练研究"]
   Metadata --> Research
   Calib --> Research
-\`\`\`
+```
 
 - 固态 LiDAR 每帧输出 320×240 距离图，数据卡给出三种消息编码：原始 xyz 平面、distance_f32 加光线方向附件、少数 foxglove.PointCloud 打包数据。读取时必须分支处理，不能假设全部 MCAP 使用同一 protobuf schema。
 - 标定文件给出鱼眼相机内参与畸变、LiDAR 视场和相机到 LiDAR 的外参。头戴传感器向前下方取景，手与工作台居多；头后方和远角落覆盖有限。
@@ -83,10 +83,10 @@ flowchart TD
 
 ## 工程实践
 
-1. 在 [HF 数据集页](https://huggingface.co/datasets/BitRobot/RoboCap-LiDAR-100) 登录并同意数据使用条款，再按官方 README 用 \`snapshot_download(repo_type="dataset", allow_patterns=...)\` 获取 \`metadata/*\` 与 \`calibration/*\`。
-2. 按 \`metadata/episodes.parquet\` 选定任务、LiDAR 采样率及片段，只下载对应 \`episodes/<session_id>/<episode_id>.mcap\`，避免直接拉取约 3.4 TB。
-3. 使用 \`mcap\` 与 \`mcap-protobuf-support\` 读取 \`/rs_lidar/points\`、\`/rs_camera/color/image_raw\`、\`/rs_imu\`；按原生 xyz、distance + \`lidar_angle_vectors.bin\` 和 foxglove 打包格式分别解码。
-4. 处理无效深度和图像旋转，使用 \`calibration.yaml\` 做跨传感器几何对齐；不能直接将相机像素与 LiDAR 点视为已配准。
+1. 在 [HF 数据集页](https://huggingface.co/datasets/BitRobot/RoboCap-LiDAR-100) 登录并同意数据使用条款，再按官方 README 用 `snapshot_download(repo_type="dataset", allow_patterns=...)` 获取 `metadata/*` 与 `calibration/*`。
+2. 按 `metadata/episodes.parquet` 选定任务、LiDAR 采样率及片段，只下载对应 `episodes/<session_id>/<episode_id>.mcap`，避免直接拉取约 3.4 TB。
+3. 使用 `mcap` 与 `mcap-protobuf-support` 读取 `/rs_lidar/points`、`/rs_camera/color/image_raw`、`/rs_imu`；按原生 xyz、distance + `lidar_angle_vectors.bin` 和 foxglove 打包格式分别解码。
+4. 处理无效深度和图像旋转，使用 `calibration.yaml` 做跨传感器几何对齐；不能直接将相机像素与 LiDAR 点视为已配准。
 5. 这里仅有官方数据卡中的 **Python 加载片段**，未发布独立训练/推理系统及运行入口，因此**源码运行时序图不适用**。本次未下载原始 MCAP，也未验证数值解码。
 
 ## 局限与风险
