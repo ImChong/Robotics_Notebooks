@@ -4649,6 +4649,7 @@
 - [ROOF（arXiv:2610.42097）](wiki/entities/paper-roof.md) — ROOF**（*ROOF: Learning Humanoid Fall Recovery under Overhead Constraints*，[arXiv:2610.42097](https `📅unknown` `[entity_page]`
 - [Root Locus Harmonic Path Generation（arXiv:2610.31625）](wiki/entities/paper-root-locus-harmonic-path-generation.md) — Root Locus Harmonic Path Generation**（*Extending Harmonic Function Methods via Root Locus for Coor `📅unknown` `[entity_page]`
 - [Ropedia W0：跨本体运动-操作世界模型](wiki/entities/paper-ropedia-w0.md) — Ropedia W0 将人类第一视角经验与多种机器人数据编码到共享运动学接口中，学习跨本体预测运动和操作后果的世界模型。 `📅unknown` `[entity_page]`
+- [Ropedia Xperience 2：面向物理 AI 环境与行为规模化的高标准数据基座](wiki/entities/paper-ropedia-xperience-2.md) — Ropedia Xperience 2（《A Gold Standard for Scaling Physical AI Environments and Behaviors》）**通过「一次场景 `📅unknown` `[entity_page]`
 - [RopeFormer（arXiv:2609.23432）](wiki/entities/paper-ropeformer.md) — RopeFormer**（*Cross-Trial Adaptation from Interaction History for Dynamic Rope Manipulation*，加州大学伯 `📅unknown` `[entity_page]`
 - [ROS2MR（arXiv:2611.11830）](wiki/entities/paper-ros2mr.md) — ROS2MR**（*ROS2MR: Connecting ROS 2 Motion Planning to Mixed-Reality Trajectory Visualization*，[arX `📅unknown` `[entity_page]`
 - [ROS2SmolVLA：工业轻量臂上的本地小型 VLA](wiki/entities/paper-ros2smolvla.md) — ROS2SmolVLA**（*Enabling Small Vision-Language-Action Models for Integration into Industrial-Grade  `📅unknown` `[entity_page]`

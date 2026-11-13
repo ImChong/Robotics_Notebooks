@@ -374,6 +374,12 @@ op: ingest
 - **开放结论：** 2026-11-13 官方仓库只有 README 与 assets，README 将代码/权重列为 11 月底待发布；不绘制虚构源码运行时序图。
 - **质量：** 为原文归档补显式通读记录，wiki 增加 original 和统一阅读骨架；仓库完整预检需以 GitHub Actions 为准。
 
+## [2026-11-13] ingest | sources/papers/ropedia_xperience_2_arxiv_2611_17060.md — 收录 Ropedia Xperience 2 环境与行为数据基座
+
+- 通读 arXiv v1 正文及重要附录，归档官方项目、数据集、配准源码，并建立统一论文实体节点。
+- 区分 1,589 个保留扫描与 Hugging Face 首批 126 个场景的分批上传状态；区分采集清单与可下载内容。
+- 通过源码确认仅配准工具已公开可执行，并补主干 Mermaid 与配准运行时序图。
+
 ## [2026-11-13] ingest | sources/papers/dextacwam_arxiv_2609_24976.md — DexTacWAM 视触觉世界—动作模型
 
 - 核对论文 `1–6 与附录 A.1–A.11，单一 wiki 实体收录跨指触觉压缩、预测式接触世界模型、六任务实验及局限。
