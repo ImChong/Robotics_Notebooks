@@ -15,6 +15,7 @@ updated: 2026-10-15
 related:
   - ./threejs-game-skills.md
   - ./mattpocock-skills.md
+  - ./learnharness.md
   - ./paper-wikiskill.md
   - ../concepts/agentic-coding-software-fundamentals.md
 sources:
@@ -96,6 +97,7 @@ Get It. 是通用学习应用，不是机器人研究平台。对本知识库读
 
 - [Three.js Game Skills](./threejs-game-skills.md) — 浏览器 3D 技能库；同用 Three.js，但 Get It. 的目标是文档学习可视化
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 可安装编码代理技能库，作为通用 Agent Skills 参照
+- [LearnHarness](./learnharness.md) — 同为桌面 AI 学习工具；LearnHarness 优先摸底诊断、依赖规划与命题推理图，而 Get It. 优先文档概念可视化与复习评估
 - [WikiSkill（论文实体）](./paper-wikiskill.md) — 把研究文献与 agent skill/wiki 连接的研究方向
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 理解代理工作流的可验证边界与人工判断
 
