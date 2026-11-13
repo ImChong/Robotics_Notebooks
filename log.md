@@ -359,6 +359,13 @@ op: ingest
 - **开源边界：** SuperMimic 研究团队有训练/回放源码但完整实验资产未知；RoboCap LiDAR-100 是非商业许可数据集，下载须接受条件，目前 50 / 100 小时开放，没有独立可运行策略训练仓库。
 - **涉及页面：** wiki/entities/paper-supermimic.md 与 wiki/entities/dataset-robocap-lidar-100.md；另给 wiki/entities/paper-robomocap.md 添加区别说明与反向链接。
 
+## [2026-11-13] ingest | Kimodo-Policy 官方资源与源码闭环核验
+
+- 意图：复用现有 `wiki/entities/paper-kimodo-policy.md`，避免重复项目节点；补全论文全体作者署名。
+- 一手来源：arXiv:2611.11554v1 全文（既有归档已通读）；本次增量核对官方 GitHub README、训练/评测核心入口与真机部署脚本。
+- 开源结论：官方发布了预训练、HumanoidArena、SIMPLE、真机 G1 + Dex3 数据/检查点/部署流程；BiGym 2.0、HumanoidToolBench 仍为计划项。
+- 写回：`wiki/entities/paper-kimodo-policy.md`、`sources/papers/kimodo_policy_primary.md`、`sources/repos/kimodo-policy-official.md`；区分模型生成、SONIC 跟踪、两套仿真环境与实测成绩；记录未独立复现。
+
 ## [2026-11-13] lint | 基于 main@7dd940a4 全量清理 Wiki 阻塞及信息预警，补齐论文阅读结构并复核来源更新
 
 - 基线：`main@7dd940a4dd73021b9a80b10d36f6d71a36b8cca1`；全库 7,715 个 wiki 页面。
