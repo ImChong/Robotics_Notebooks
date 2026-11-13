@@ -16,6 +16,7 @@ related:
   - ./paper-wan-video.md
   - ./minimax-h3-orb360-cardspin.md
   - ./minimax-h3-360-orbit-lora.md
+  - ./minimax-h3-image.md
 sources:
   - ../../sources/sites/minimax-h3-blog.md
   - ../../sources/repos/minimax-h3.md
@@ -130,6 +131,8 @@ MiniMax-H3 生态中已有两种独立的第三方环绕适配器，条件路径
 - **机器人闭环：** 生成视频用于 **数据增广 / 预览** 时，须另做 **物理一致性、动作标签、标定** 管线。
 
 ## 关联页面
+
+- [MiniMax H3-Image](./minimax-h3-image.md) — 同源 33.1B 单流 DiT 的静态图像生成与编辑分支，使用不同检查点及许可证
 
 - [ComfyUI](./comfyui.md) — 节点图运行时；H3 为 Partner 卡片之一
 - [HarnessEval-W](./paper-harnesseval-w.md) — 330 例 Prompt I2V 主榜
