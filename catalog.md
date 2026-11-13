@@ -2379,6 +2379,7 @@
 - [EgoWild2Dex：从野外人类经验学习灵巧操作 / Learning Dexterous Robotic Manipulation from In-the-Wild Human Experience（arXiv:2609.23755v1）](wiki/entities/paper-egowild2dex.md) — EgoWild2Dex**（*Learning Dexterous Robotic Manipulation from In-the-Wild Human Experience*，[arXiv:2 `📅unknown` `[entity_page]`
 - [EgoWM（Egocentric World Model from Internet Priors）](wiki/entities/paper-egowm-egocentric-world-model.md) — EgoWM**（*Walk through Paintings: Egocentric World Models from Internet Priors*，ECCV 2026，[arXiv:26 `📅unknown` `[entity_page]`
 - [EgoWorld（exo→ego 视图翻译）](wiki/entities/paper-egoworld.md) — EgoWorld**（*Translating Exocentric View to Egocentric View using Rich Exocentric Observations*，[ar `📅2026-07-24` `[entity_page]`
+- [EgoX：基于 Embodiment Dreaming 的第一视角跨本体操作学习](wiki/entities/paper-egox-mxt-plus.md) — EgoX**（*Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming*）把人类、真机和仿真的第一视角示范对齐到共同模态 `📅unknown` `[entity_page]`
 - [EgoXperience：世界坐标系中的第一视角重建](wiki/entities/paper-egoxperience.md) — mermaid `📅unknown` `[entity_page]`
 - [EGR：面向鲁棒 VLA 的证据门控正则](wiki/entities/paper-egr.md) — EGR**（*Evidence-Gated Regularization*；*Sensing Which Modality Matters*，[arXiv:2609.03142](https:// `📅unknown` `[entity_page]`
 - [EigenDEXplore](wiki/entities/paper-eigendexplore.md) — EigenDEXplore**（*Structured Exploration for Dexterous Manipulation with Human Priors*，arXiv:2610.0 `📅unknown` `[entity_page]`
@@ -2443,7 +2444,7 @@
 - [EvoScene-VLA（arXiv:2605.21862）](wiki/entities/paper-evoscene-vla.md) — EvoScene-VLA**（*EvoScene-VLA: Evolving Scene Beliefs Inside the Action Decoder for Chunked Robot C `📅unknown` `[entity_page]`
 - [EVPeriscope（arXiv:2609.11920）](wiki/entities/paper-evperiscope.md) — EVPeriscope**（[EVPeriscope: Extended Perception across Aerial and Ground Vehicles with Event-based `📅unknown` `[entity_page]`
 - [ExBody（HMI P028）](wiki/entities/paper-exbody-expressive-humanoid.md) — ExBody**（*Expressive Whole-Body Control for Humanoid Robots*，2024，[arXiv:2402.16796](https://arxiv `📅unknown` `[entity_page]`
-- [EXE: Egocentric Cross-Embodiment Pretraining via Factorized Latent Actions for VLA Models](wiki/entities/paper-exe-cross-embodiment.md) — 一句话定义：** 将第一视角视频的潜在动作分解为可迁移的共享操作先验与具身特有运动学，借共享动作表示向不同机器人传递操作语义。 `📅unknown` `[entity_page]`
+- [EXE: Egocentric Cross-Embodiment Pretraining via Factorized Latent Actions for VLA Models](wiki/entities/paper-exe-cross-embodiment.md) — EXE 是一个**把人类第一视角手部动作与机器人动作分解为共享、专用两种离散潜在因子**的跨本体预训练方法，先学离散码本与视觉语言模型（VLM），再用 Action Expert 输出下游机器人的连续 `📅unknown` `[entity_page]`
 - [Execution Horizon vs Sampling Depth（arXiv:2610.32102）](wiki/entities/paper-execution-horizon-vs-sampling-depth.md) — Execution Horizon vs Sampling Depth**（*Coupling Execution Horizon and Sampling Depth in Flow-Match `📅unknown` `[entity_page]`
 - [Execution Logs Sway VLM Judges（arXiv:2610.34151）](wiki/entities/paper-execution-logs-sway-vlm-judges.md) — Execution Logs Sway VLM Judges**（*Execution Logs Sway VLM Judges of Robot Progress*，[arXiv:2610.34 `📅unknown` `[entity_page]`
 - [ExoStack：面向可穿戴外骨骼的模块化 ROS 2 软件栈](wiki/entities/paper-exostack.md) — ExoStack: A Modular ROS 2 Framework for Wearable Robotics `📅unknown` `[entity_page]`
