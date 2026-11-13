@@ -28,7 +28,7 @@ summary: "沐曦与 Datawhale 等联合主办的国产 GPU 加速科研线上实
 |---|---|---|
 | AI4S | AI for Science | 用 AI 工具与计算模型辅助科研 |
 | GPU | Graphics Processing Unit | 支撑模型推理与分子动力学加速的计算硬件 |
-| MIM | Model Inference Management | 官方页面出现的科学模型服务入口名称；具体实现以课程资料为准 |
+| MIM | 官方页面未解释英文全称 | 官方课程提及的科学模型服务入口；不自行扩写缩写 |
 | Skill | Agent Skill | 将科学模型调用整理为智能体可复用工具 |
 
 ## 为什么重要
