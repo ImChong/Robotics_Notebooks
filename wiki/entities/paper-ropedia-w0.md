@@ -3,11 +3,12 @@ type: entity
 project_id: ropedia-w0
 tags: [paper, world-model, loco-manipulation, cross-embodiment]
 status: complete
-updated: 2026-10-31
+updated: 2026-11-13
 arxiv: "2610.26855"
 project: "https://ropedia.github.io/ropedia-w0/"
 code: "https://github.com/Ropedia/ropedia-w0"
 related:
+  - ./paper-ropedia-xperience-2.md
   - ../entities/unifolm-world-model-action.md
   - ../methods/generative-world-models.md
   - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
@@ -94,6 +95,8 @@ sequenceDiagram
 - 跨本体结果不保证零样本真机控制安全；仍需单独验证闭环执行。
 
 ## 关联页面
+
+- [Ropedia Xperience 2](./paper-ropedia-xperience-2.md) — 将米制真实场景与第一视角行为对齐的数据基础设施，区别于 W0 的世界模型训练。
 
 - [Holi-World](./paper-holi-world.md) — 用第一视角经验构建时空世界记录。
 - [EgoXperience](./paper-egoxperience.md) — 在统一世界坐标系中重建手、物体与场景。
