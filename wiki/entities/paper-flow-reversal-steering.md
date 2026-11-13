@@ -80,7 +80,7 @@ flowchart LR
 - **对照基线：** 基础策略、直接执行 VLM 动作、部分加噪、sample-and-rank（16 个并行样本，按与 VLM 参考的余弦相似度排序）、标准 BC、标准 DSRL、残差 RL（简化版 PLD）、Robometer 奖励（第 5.2-5.4 节、附录 E）。
 - **复现：** 论文页有项目页，未见公开代码仓库（核查日期 2026-11-12），故本页不填 `code:`。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单原话（据摘要由 LLM 起草）：「Inverts suboptimal actions to their latent noise and maps them to nearby modes of a flow-matching generalist, steering it to better behavior.」
 
@@ -92,6 +92,14 @@ flowchart LR
 | 清单未提及 | 论文的另两项贡献 DSBC 与 DSRL + FRS，以及真机结果；清单摘要只覆盖了方法最核心的一步 |
 
 清单的排序是作者研究兴趣打分，不代表论文质量。
+
+## 结论
+
+FRS 提供了把粗动作参考映射回生成策略噪声空间的干预接口，效果受参考形式与重构误差限制。
+
+- 先检查反向积分后的动作是否仍符合任务与策略分布，再用于 DSBC 或 DSRL 预热。
+- 将平移型参考与精细旋转任务分开验收，不能默认键盘或 VLM 指引覆盖所有控制维度。
+- 在未筛选的任务集和其他流策略上复验，避免把已挑选子集的提升当普遍规律。
 
 ## 局限
 

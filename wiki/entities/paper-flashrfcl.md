@@ -7,6 +7,7 @@ tags:
   - curriculum
   - ucsd
 openreview: https://openreview.net/forum?id=DBLXUxxslN
+venue: "CoRL 2026（据阅读清单；全文尚未核实）"
 status: draft
 updated: 2026-11-12
 related:
@@ -64,7 +65,7 @@ flowchart LR
 - 未读到代码或实现细节；未找到公开仓库，故不写 `code:`。
 - 前作 RFCL 有项目页 https://reverseforward-cl.github.io/（来自 arXiv 条目注释），可作背景阅读，非本文内容。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth CoRL 2026 阅读清单，LLM 据摘要起草）：「Sparse-reward RL from a single demonstration using a reverse-forward curriculum and high-throughput GPU simulation.」
 
@@ -77,6 +78,14 @@ flowchart LR
 | 仿真还是真机、任务数、速度提升倍数 | **无法核对**：摘要未提，全文未读到 |
 
 清单摘要本身就来自摘要，故只能证明两者互相一致，不能证明论文正文的结果。
+
+## 结论
+
+FlashRFCL 目前在本库只达到摘要级线索，单示范与加速主张仍需正文证据。
+
+- 保留草稿状态，不把前作 RFCL 的调度规则或代码当作本论文实现。
+- 取得全文后核对实际 RL 算法、任务数、GPU 仿真配置和速度比较对象。
+- 补齐同等示范与算力预算的评测后，再判断反向与正向课程各自的收益。
 
 ## 局限
 

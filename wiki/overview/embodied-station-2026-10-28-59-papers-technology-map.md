@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-13
 related:
   - ../entities/paper-rendering-free-event-sim.md
   - ../entities/paper-rynnvla-latent.md

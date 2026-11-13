@@ -150,7 +150,7 @@ flowchart TB
 
 具身消融（附录 F、Table 3）：去腿的浮动基座变体平均 0.90，与 G1 的 0.89 相近，但逐任务差异大（Push Shelf Forward 1.00→0.53，Box Table to Shelf 0.53→1.00）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Berseth CoRL 2026 阅读清单，P2，序号 097/101，作者称摘要由 LLM 据摘要起草）一句话：*MimicGen-style data generation for humanoid loco-manipulation, adapting whole-body skills from a few demos with planning.*
 
@@ -159,6 +159,14 @@ flowchart TB
 - **「adapting whole-body skills from a few demos」**：基本成立，但「a few」在实验里是每任务**一条**源示范（§6.1，Table 1 注）；摘要写 a handful of source demonstrations。
 - **「with planning」**：成立，是核心区别：locomotion 与上身运动规划 + 碰撞球 + 批量 IK（§4.3、附录 C）。
 - **清单省略的限定**：(1) 需要人工技能分段与约束标注（§7）；(2) 仿真→真机的收益是 co-training（仅真机 0.51 → 0.71），不是纯合成数据直接部署；(3) 论文摘要写的「outperform by 20%」是成功率的绝对差 0.20，不是相对提升（0.71/0.51 约 +39% 相对）；(4) 清单的 OpenReview 编号（9kXz22fI7a）与本库原记录（ekzk7TSLKr）不同，可能是不同投稿，本次无法打开核对。
+
+## 结论
+
+HumanoidMimicGen 把示范适配扩展到人形移动操作，适用于既定技能结构内的数据扩增。
+
+- 先标注技能片段和协调约束，并核验 IK、规划与碰撞检查的接口。
+- 把合成数据质量、仿真策略成功率和真机部分得分分开统计。
+- 涉及新技能顺序或较大物体几何变化时另做验证，单条示范扩增不能替代高层规划与接触适配。
 
 ## 局限
 

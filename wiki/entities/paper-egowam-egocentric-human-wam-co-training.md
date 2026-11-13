@@ -128,7 +128,7 @@ flowchart TB
 - **人数据模态（附录 A.2，图 11，表 1）：** 仅 3D flow 监督优于仅动作监督（OOD Scene 0% 对 10%），动作加 flow 在每个切分最好。
 - **仿真复核（附录 D，表 4）：** RoboTwin 2.0 上跨具身共训优于单具身；pick-diverse-bottles 跨具身 BC 6、Pixel 11、DINO 28、3D flow 16；hanging-mug 全部不超过 1%。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P2，作者称摘要由 LLM 据摘要起草）一句话：「Controlled study of which world-prediction target makes world action models best at transferring in-the-wild egocentric human data.」
 
@@ -139,6 +139,14 @@ flowchart TB
 | in-the-wild egocentric human data | 成立：EgoVerse-A 野外人数据（约 10:1）；但另有域内人数据与刻意对齐/未对齐的自采数据（附录 C.2）。 |
 | 仿真还是真机 | 主结果为三项真实双臂任务；仿真（RoboTwin）只是附录 D 的机器人到机器人复核，不涉及人数据。 |
 | 清单未提及 | 推理时丢弃世界头、BC 在人数据上可低于 robot-only、以及作者自述增益只在语境层面。 |
+
+## 结论
+
+EgoWAM 说明世界预测目标会改变人类视频共训练的收益，现有证据更支持语境迁移而非获得新运动技能。
+
+- 保持策略骨干、动作头和混合比例一致，再对比 Pixel VAE、DINO 与 3D flow。
+- 把域内空间泛化与域外语境泛化分别验收，不能用一个平均分选定所有任务的表征。
+- 加入未对齐人类数据的消融，检查 BC 退化是否被世界目标缓解，并扩大三项真机任务的重复验证。
 
 ## 局限
 

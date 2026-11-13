@@ -92,7 +92,7 @@ flowchart LR
 - **熵正则**：作者称不加会让判别器输出饱和、奖励退化（第 3.2 节）；消融中加熵正则整体提升（补充 8，作者解释为「可能」）。
 - **代码**：论文与项目页首页均未见公开仓库链接（本页不写 `code:`）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单第 073/101 条，P2，据作者说由 LLM 依摘要起草）一句话：「Offline RL for VLAs from expert data alone, using instruction relabeling to create counterfactual negative supervision.」
 
@@ -102,6 +102,14 @@ flowchart LR
 | 用指令重标注造反事实负监督 | 部分准确：指令重标注只是其一。论文还用动作重标注、联合重标注（nnPU 当 unlabeled）、近正样本给 critic，并叠加 GAIL 式对抗判别器与熵正则（第 3.2、3.3 节）。清单漏掉了 nnPU 与对抗部分。 |
 | 未提 VLA 基座与评测 | 论文基座为 π0.5；仿真是 LIBERO 训练、LIBERO-PRO 评测；真机为 TX-G2（第 4 节）。 |
 | 隐含「有效」 | 增益主要在 Pos 与 Task 扰动；Sem、Obj 与 BC 基线无明显差距（第 4.2 节，作者自述）。CALVIN ABC→D 平均长度仅 3.93 → 4.03（补充 10）。 |
+
+## 结论
+
+CounterAlign 展示了成功示范经反事实重标注支持 VLA 离线改进的路径，收益集中在部分扰动类型。
+
+- 按指令、动作及联合重标注分别验收，并保留 nnPU 与对抗奖励的作用边界。
+- 对照 BC 时同时对齐训练算力和数据，额外参数与 GPU 开销必须计入收益判断。
+- 按 Pos、Task、Sem、Obj 分开报告，并增加真机重复次数，不能由局部扰动提升推断全面鲁棒。
 
 ## 局限
 

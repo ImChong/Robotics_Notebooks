@@ -87,7 +87,7 @@ flowchart TD
 - **算力与延迟：** 世界模型 34.1B 参数，论文未见推理时延、调用频率或硬件占用的数字。
 - **代码：** 摘要给出项目页 vista-wm.github.io，本次未见代码仓库地址，因此本页 frontmatter 不写 `code:`。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth《My CoRL 2026 Reading List》第 076/101 条，P2）对该论文的一句话摘要：「Hierarchical VLA: a pretrained world model generates subgoal images and a VLA executes them, improving OOD generalization.」清单明确说摘要是 LLM 据摘要起草、排序为作者个人兴趣打分，非质量评价。逐项核对：
 
@@ -97,6 +97,14 @@ flowchart TD
 | pretrained world model | 部分一致：它是在开源 Emu3.5 上继续训练 2000 步并以机器人数据为主（外加 Any-to-Image 共训）得到的（IV-A），不是现成的预训练世界模型直接使用。 |
 | improving OOD generalization | 一致，但限定词缺失：仅真机、仅抓放（VII）；摘要的 14% 到 69% 是 63 个新场景的平均，对象是「相同结构的 VLA」π0（摘要）；Table I 的未见目标物设置为 0.04 到 0.67，与之不同。 |
 | 未提及的限定 | 世界模型的子目标质量没有定量指标，论文以样例图展示（Fig. 5 至 8）；评测里没有与其他分层或视频规划方法的对比，基线只有 π0 与 π0-subtask（V-A，本页判断）。 |
+
+## 结论
+
+VISTA 以文本与目标图连接高层世界模型和低层策略，主要证据是抓放任务中的分布外改善。
+
+- 分别验收子任务语义、目标图质量与 GoalVLA 执行，避免高层幻觉传播。
+- 对照 π0 时对齐预训练数据和目标接口，并区分域内与域外表现。
+- 增加单场景重复试验和长程任务验证，不能由少量抓放配置推断通用层级规划能力。
 
 ## 局限
 

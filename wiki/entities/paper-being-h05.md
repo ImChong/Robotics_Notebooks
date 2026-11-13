@@ -90,7 +90,7 @@ flowchart LR
 - **评测协议：** 统一黑盒推理服务、随机抽布局与策略、操作员不知道在评哪个模型，默认每策略每布局 K=20 trial（§7.1.1）。
 - **开源：** 引言承诺发布权重、训练管线、仿真脚本，之后还有真机部署基础设施和预训练配方（§1）。仓库实际内容见 [cn-os-being-h](./cn-os-being-h.md)，那里的核对只覆盖 LIBERO 训练与评测入口，MPG 实现与 RoboCasa 评测未读。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（CoRL 2026 Glen Berseth 阅读清单，P1，Oral，VLAs & Generalist Policies）对该论文的一句话摘要（作者说由 LLM 据摘要起草）：「Human-centric cross-embodiment VLA pretrained on 35,000 hours from humans and 30 robots, with a unified action space.」排序是作者的兴趣模型打分，不是论文质量评价。
 
@@ -104,6 +104,14 @@ flowchart LR
 | （清单未提）LIBERO 98.9%、RoboCasa 53.9% | §7.2，Table 4、5；摘要即写 | 清单未提，论文的两个主要仿真数字 |
 
 另有一处论文自身的不一致：Table 8 里去掉 L_mask 后 MWDS 反而更高（Lab 0.35 对 0.33，Wild 0.28 对 0.20），与正文「去掉后明显下降」相反，见局限。
+
+## 结论
+
+Being-H0.5 为人类视频与多机器人统一训练提供了系统方案，但跨本体零样本的可靠性仍需更充分验证。
+
+- 统计训练规模时拆开人类、机器人、仿真与视觉语言等效小时，避免把 35K 小时全当机器人遥操。
+- 分别测试分布内和未见任务本体组合，仿真均分不能代替目标真机的泛化评测。
+- 复现时拆分统一动作空间、预训练、MPG 与 UAC 的贡献，并保留论文表文不一致的掩码实验疑点。
 
 ## 局限
 

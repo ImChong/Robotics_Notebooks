@@ -86,7 +86,7 @@ flowchart TD
 - **评测：** 真机每任务 20 次，Wilson 95% 区间；仿真 3 个训练种子各 50 次试验，误差条为跨种子标准差（图 3）。
 - 代码：论文称在项目页 <https://viccccciv.github.io/glam/> 提供，本次未访问，故 frontmatter 不写 `code:`。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单摘要原文：「Grounds actions in prediction with a latent-action world model so heterogeneous, partly action-free data share one action representation.」（作者自述为 LLM 据摘要起草；该条属「Learning from Human Video」分组，P0）。
 
@@ -101,6 +101,14 @@ flowchart TD
 
 - 摘要称「平均 +48%」，正文给出的是「真机三任务平均 +35%，stack-two +44%，stack-three +69%」，均为 GLAM-O 对最强基线；按这些数简单平均不等于 48%，口径正文未说明。我在正文中没有找到 +48% 的来源，视为摘要口径，真实口径不明。
 - 清单「异质」指目标 Kinova 与辅助 UMI 夹爪（跨形态）以及仿真与真机（跨域），但辅助数据与部署共享相机位置和桌面场景、物体与任务语义（第 5 节局限），所以异质程度有限。
+
+## 结论
+
+GLAM 通过对齐潜动作利用无动作标签辅助资料，但现有证据主要限于场景与语义接近的桌面数据。
+
+- 复现时核对 IDM 后验与动作后验的非对称对齐，并分别测试动作重建项。
+- 把仿真 UMI 辅助数据与真实野外人类视频分开评价，不能直接外推跨源收益。
+- 在目标场景补做相机变化、末端形态和接触模态实验，再判断其跨本体适用性。
 
 ## 局限
 

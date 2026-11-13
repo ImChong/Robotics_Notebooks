@@ -107,7 +107,7 @@ flowchart TD
 | 迁移：Pick-and-Place 反向（迁移后） | 94±10.2 / 47±29.4 | 16±17.9 | 18±5.8 | 均 0 |
 | 迁移：Pick-and-Place 反向（从零） | 53±36.7 / 43±29 | 12±11.7 | 12±5.8 | 均 0 |
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单对该论文的一句话摘要（作者说明是 LLM 据摘要起草）：「First real-world inverse RL from observation only (video, no actions or rewards), learning visual manipulation from scratch with an online world model.」
 
@@ -121,6 +121,14 @@ flowchart TD
 | 清单未提到的 | 真机迁移（§4 Q3）、与 RLPD / BC 的对比（RLPD 真机全 0，Block Push 上 BC 94.1 高于 MPAIL2 的 Last 61.8，Best 100 是事后挑选）、3 个种子 | 清单只覆盖标题层面的论点，没有反映这些限定 |
 
 另有一处版本差异：arXiv v1 标题是 *Planning from Observation and Interaction*，清单用的是 v3 标题；v1 与 v3 的真机任务集和数字不同（见来源归档「版本差异」）。
+
+## 结论
+
+MPAIL2 展示了仅凭任务观测在真机在线学习的可行性，但仍依赖人工复位、工作空间限制和事后检查点选择。
+
+- 同时报告 Best 与 Last，检查对抗训练后期是否衰退，不能只引用最佳成功率。
+- 按规划深度核验模型奖励误差，避免长想象轨迹放大失真。
+- 区分无示范动作与无人参与，迁移到高分辨率、延迟或跨本体场景前需另做验证。
 
 ## 局限
 

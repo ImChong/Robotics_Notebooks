@@ -113,7 +113,7 @@ flowchart LR
 - **对视频生成（§4.5）：** HuRo 0.7M 帧在 ID 与 OOD 都超过 I2V+IDM 7.0M 帧；后者 OOD 在 3.5M 到 7.0M 帧无增益。该组在独立环境重新采集。
 - **附录消融：** 相机运动感知的 HuRo-EEF+Hand 优于固定外参的 Masquerade 式基线（Table 3，OOD 63.9 对 50.0 与 61.1）；机器人化优于同数据的人域预训练 Human-HRDT 与 Human-VITRA（Table 4）；混合来源 Mixed 50% 少于 EgoDex-only 全量帧数却更高（78.2/69.8 对 63.9/54.2）；ALLEX 预训练可迁移 OpenArm（Table 7）；ALLEX+OpenArm 联合预训练在 Diverse P&P 上 OOD 77.8 对 63.9（附录 E.3，数据量约翻倍）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P1 档，「Learning from Human Video」分组；作者说明摘要由 LLM 据摘要起草）对该论文的一句话：「Robotizes heterogeneous human videos (visuals and action trajectories) as a scalable source for VLA pretraining.」逐项核对：
 
@@ -126,6 +126,14 @@ flowchart LR
 | 清单未提的内容 | 视觉去人叠加的收益主要体现在 OOD（§4.3）；动作监督优于仅视觉迁移（§4.4）；对视频生成基线的规模对比（§4.5）；论文自述局限（§6） | 摘要式一句话遗漏了这些实验结论 |
 
 补充：清单没有给出数字，本页没有与之冲突的数值。需要提醒读者的是，本页之前版本写的「少规模 PT → 全量 51.5→80.3%」不准确，论文中 51.5% 对应 0% PT（不做 HuRo 预训练），已更正。
+
+## 结论
+
+HuRo 支持大规模人类视频机器人化预训练，但运动学标签可用性与真实接触可执行性仍须区分。
+
+- 分别检查关节限位、自碰撞和视觉叠加伪影，不能把重定向后的轨迹直接当真机指令。
+- 统计缩放收益时拆开数据总量与来源构成，四个比例点不能确定通用缩放律。
+- 在新物体、技能和机器人形态上补做评测，当前 OOD 结果主要覆盖空间与视觉变化。
 
 ## 局限
 

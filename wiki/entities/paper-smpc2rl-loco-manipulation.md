@@ -137,7 +137,7 @@ flowchart TB
 | 数据质量 | 采样环境 64/128/256：多数任务稳，滚胎掉点（图 7） |
 | 有界 critic | critic lr 提到 \(8\times10^{-4}\) 时，无界 critic 出现尖峰掉点，有界更稳（图 10） |
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单 P0 第 010 条，据摘要由 LLM 起草）：*Sampling-based MPC in simulation generates offline data so off-policy RL can learn loco-manipulation from sparse rewards without shaping.* 排序是清单作者用自身兴趣模型打分得来，不是论文质量评价。
 
@@ -148,6 +148,14 @@ flowchart TB
 | 「无需 shaping」 | **限定**：作者自己承认 SMPC 仍要调稠密代价，只是可交互、分钟级、无需训练（§3.3），并非免调参；论文所称「tuning-free」指 RL 训练阶段 |
 | 摘要未提 | 学的是**高层**策略，低层 ReLIC 全身控制器是预先训练并冻结的（§3.1）；这是「稀疏奖励可行」的重要前提 |
 | 摘要未提 | 论文有真机：Spot 四任务 10 次运行 10/10、9/10、10/10、8/10（表 1），G1 未量化；超过教师的结论来自仿真时长（图 5） |
+
+## 结论
+
+SMPC-to-RL 把可交互规划专家转成高效策略，收益主要在既有数据分布附近，不能解释为全局最优。
+
+- 先验证 SMPC 专家覆盖、离线热启动与在线 FastTD3 的接口。
+- 把仿真任务时长与真机成功率分开汇报，不能由仿真更快推断真机更快。
+- 新物体或户外部署需补做感知与低层适配，并明确项目视频和 judo 不等于官方可运行实现。
 
 ## 局限与风险
 

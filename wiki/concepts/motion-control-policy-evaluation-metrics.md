@@ -2,7 +2,7 @@
 type: concept
 tags: [evaluation, benchmark, metrics, locomotion, whole-body-tracking, motion-tracking, humanoid, wbc, mpc, sim2real]
 status: complete
-updated: 2026-09-03
+updated: 2026-11-13
 related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md

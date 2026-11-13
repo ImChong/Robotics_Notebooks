@@ -83,7 +83,7 @@ flowchart LR
 - **评测口径（Sec. V-A）：** 杂货任务为二值成功率；长程任务为人工按细则给的子步骤分（1 / 0.5 / 0）均值。
 - **代码：** 论文首页只给项目页，正文与附录未见代码仓库链接，本页不列 code。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P1，RL Fine-Tuning of VLAs & Generative Policies 组，作者称摘要由 LLM 据论文摘要起草）一句话：「Fleet-scale offline-to-online RL for continual post-training of generalist VLAs from autonomous rollouts and human interventions.」
 
@@ -96,6 +96,14 @@ flowchart LR
 | from autonomous rollouts and human interventions | 部分成立：算法里干预是「可选」的（Fig. 2、Algorithm 1），回放同时含干预段；但主结果表没有单独消融干预的作用，因此「靠干预提升」没有直接证据。 |
 
 清单没有提到、但读论文时应知道的：基线只有 SFT、RECAP、HG-DAgger 三个，且 RECAP 是作者为多任务设定自行改写的实现（附录 C1）；成功率表没有给出每格评测回合数与方差（Table I），所以小差距（如 0.97 对 1.00）不宜过度解读。
+
+## 结论
+
+LWD 展示了机队价值学习驱动 VLA 后训练的系统能力，但均分不能替代逐任务效率和可靠性分析。
+
+- 复现时同时检查 DIVL 价值学习、QAM 抽取与在线调度，分开计入机器人小时和训练算力。
+- 将二值成功与人工长程进度分开报告，并公开评测次数与评分协议。
+- 按任务验证自适应价值参数，避免把部分任务收益写成全面领先或持续自改进保证。
 
 ## 局限
 

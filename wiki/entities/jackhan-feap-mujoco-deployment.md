@@ -3,7 +3,7 @@ type: entity
 title: FEAP MuJoCo 部署（E3 ONNX）
 tags: [humanoid, mujoco, onnx, feap, locomotion, terrain, jackhan-sdu]
 summary: "论文 FEAP（Feature-Enhanced Adversarial Priors）配套：在 MuJoCo 用 HumanEncodernet.onnx + HumanActornet.onnx 驱动 E3，多地形与多风格运动；支持键盘/手柄互斥输入、扰动测试与终端状态条。"
-updated: 2026-05-16
+updated: 2026-11-13
 status: complete
 related:
   - ./jackhan-walke3-e3-ecosystem.md
@@ -52,6 +52,7 @@ flowchart TD
 
 ## 常见误区或局限
 
+- **2026-11-13 维护复核：** [官方 README（59035b8）](https://github.com/JackHan-Sdu/Feap_Mujoco_deployment/blob/59035b8d5bd3e4f3ee1c56b3ec95ade1b6d00b01/README.md) 仍明确为部署与验证框架；入口为 `python scripts/feap_e3_mujoco_deploy.py configs/e3.yaml`，模型为 Encoder + Actor 两个 ONNX，键盘和手柄配置互斥。本次核对文档，未运行策略或验证速度/地形性能。
 - **训练代码不在本仓**：README 定位为 deployment/validation；复现论文训练需回到论文主仓或官方补充材料。
 - **ONNX Runtime 版本**：README troubleshooting 提到固定 `onnxruntime==1.19.2` 类提示，升级需重新验证算子支持。
 

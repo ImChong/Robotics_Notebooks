@@ -87,7 +87,7 @@ flowchart TD
 - **评测（附录 9.2）：** 每个维度固定 30 次真机试验，所有策略共用同一套试验。
 - **开源状态：** 截至 2026-11-12，论文与项目页（faceong.github.io/ComSim）均未给出代码或数据链接，页面因此不写 `code:`。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，条目 099/101，P2，由 LLM 据摘要起草）一句话：「Combines classical and neural simulation in a real-sim-real loop to generate large, real-consistent action-video datasets.」
 
@@ -99,6 +99,14 @@ flowchart TD
 | real-consistent | 以表 1（视频指标）与表 2–3（真机成功率）为证据，属实但有限。表 1 里 Sim 的 FID（187.40）优于 Baseline（254.59）；动作一致性由「保留仿真动作」构造得到，论文没有单独的动作保真度定量指标。 |
 | action-video datasets | 属实，数据为 (V_real 风格视频, A) 对，动作直接来自模拟器。 |
 | 缺失的限定 | 清单未提：只测桌面操作、只测 Diffusion Policy 一种策略、真机试验每格 30 次、需要先做人工 Real2Sim 对齐（卡尺、取色、棋盘格标定）。 |
+
+## 结论
+
+ComSim 的收益来自几何对齐的仿真轨迹与真实风格视频配对，不能把神经外观转换当成已验证的物理世界模型。
+
+- 复现前先解决正文与附录的模型实现差异，明确使用的风格迁移管线。
+- 把人工场景对齐成本和伪真实数据生成成本分别记录，检验换场景是否仍划算。
+- 同时对照纯真机、纯伪真实和混合数据，并核验动作一致性，避免仅以视频质量指标推断控制收益。
 
 ## 局限
 

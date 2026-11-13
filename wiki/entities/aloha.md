@@ -3,13 +3,13 @@
 type: entity
 title: ALOHA (双臂遥操作硬件)
 tags: [hardware, teleoperation, dual-arm, dataset-collection, deepmind, stanford, google]
-summary: "ALOHA 是由 Google DeepMind 开发的低成本、开源双臂遥操作硬件系统，是获取精细操作演示数据的事实标准。"
-updated: 2026-09-15
+summary: "ALOHA 是 Tony Z. Zhao 等研究者提出的低成本、开源双臂遥操作硬件系统，与 ACT 配套；原始项目与后续 ALOHA 2 应区分。"
+updated: 2026-11-13
 ---
 
 # ALOHA (双臂遥操作硬件)
 
-**ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是由 Google DeepMind (Tony Zhao 等人) 开发的一套低成本、开源的双臂遥操作硬件系统。它是目前机器人学习领域，尤其是双臂精细操作（Fine Manipulation）中获取人类演示数据的**事实标准**。
+**ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是 Tony Z. Zhao、Vikash Kumar、Sergey Levine、Chelsea Finn 提出的低成本、开源双臂遥操作硬件系统，原始论文作者单位涉及 Stanford / UC Berkeley / Meta，不能与 Google DeepMind 后续的 ALOHA 2 混同。它常用于双臂精细操作（Fine Manipulation）的演示采集；作者与硬件范围见 [ALOHA / ACT 原文归档](../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md)。
 
 ## 英文缩写速查
 
@@ -38,7 +38,7 @@ updated: 2026-09-15
 - **算法搭档**：它是 [action-chunking](../methods/action-chunking.md) (ACT) 算法的官方硬件底座。
 - **仿真对应**：[robotwin](robotwin.md) 2.0 等平台常提供 ALOHA 的仿真版本以进行数据增强。
 - **进阶版本**：[ALOHA 2](./aloha-2.md)（D405 四相机、开源硬件 2.0、Menagerie SysID 工位）；另有 Mobile ALOHA（移动底盘）等分支。
-- **机体共设计验证**：[Transformer Transformer](paper-transformer-transformer.md) 在 ALOHA2 上对抛布轨迹做运动条件机体优化，真机制造后跟踪误差约 −73%、峰值关节速度约 −30%。
+- **机体共设计验证**：[Transformer Transformer](paper-transformer-transformer.md) 在 ALOHA 上对抛布轨迹做运动条件机体优化，真机制造后跟踪误差约 −73%、峰值关节速度约 −30%；论文未指定为 ALOHA 2，且只报告一次对比，未给重复次数或方差。
 
 ## 数据速查
 
@@ -50,12 +50,13 @@ updated: 2026-09-15
 - [双臂操作](../tasks/bimanual-manipulation.md) — ALOHA / ACT 任务语境
 - [ALOHA 2](./aloha-2.md) — 增强硬件与仿真工位
 - [遥操作](../tasks/teleoperation.md) — 数据采集与硬件谱系
-- [Transformer Transformer](paper-transformer-transformer.md) — ALOHA2 抛布机体共设计真机验证
+- [Transformer Transformer](paper-transformer-transformer.md) — ALOHA 抛布机体共设计真机验证
 - [χ₀ / kai0](paper-kai0.md) — 两套协作双臂（ALOHA 系布局；Piper / ARX X5）上的长时程服装操作
 
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [ALOHA 2 项目页归档](../../sources/sites/aloha-2-github-io.md)
 - [ALOHA Project Page](https://tonyzhaozh.github.io/aloha/)
-- [Transformer Transformer 论文摘录](../../sources/papers/transformer_transformer_arxiv_2607_25798.md) — ALOHA2 cloth flinging 共设计结果
+- [Transformer Transformer 论文摘录](../../sources/papers/transformer_transformer_arxiv_2607_25798.md) — ALOHA cloth flinging 共设计结果及旧页面名称纠正
+- [ALOHA / ACT 原文归档](../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md) — 原始作者、硬件与示范采集接口
 - [χ₀ / kai0 论文摘录](../../sources/papers/chi0_kai0_arxiv_2602_09021.md) — 双臂协同服装操作硬件布局

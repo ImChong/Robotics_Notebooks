@@ -86,7 +86,7 @@ flowchart LR
 - 真机：Isaac Gym 训练，12 关节残差位置指令加 PD，Go2 双足站立并跟踪速度；奖励项与权重见附录 C.3.1 表 3。对照用 SAC，因为 TD-MPC2 的迭代规划与同一 TorchScript 前馈部署接口不兼容（第 4.2 节）。
 - 消融（第 4.3 节表 2）：w/o CM（块策略加单步模型）Walk 22.2、Run 9.6、Stair 37.1、Slide 36.1，对 CMPO 954.1、629.2、60.9、265.8；加 MPPI 为 931.1、864.5、71.9、391.2。作者称 MPC 在未饱和任务上有帮助，推测原因是采样带来额外探索（作者的推测）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，据摘要由 LLM 起草）一句话：「Model-based RL with a chunk world model as a differentiable evaluator for chunked actors, avoiding recurrent rollouts and BPTT.」
 
@@ -97,6 +97,14 @@ flowchart LR
 | avoiding BPTT | 吻合但略强。论文说的是梯度只穿过一次块级预测、深度缩短约 H 倍（第 3.3 节），不是完全没有反传；证据是 MAAC 梯度范数对比（图 4），梯度稳定性的证明部分是定性分析（式 3、4） |
 | 清单未提 | 实验主体是仿真人形 HumanoidBench 19 任务；真机只有 Go2 双足站立一项，对照仅 SAC，10 次试验 7/10 对 4/10（第 4.2 节），无 TD-MPC2 真机对照；论文没有操作任务或视觉输入实验（推测：HumanoidBench 的全部任务用本体状态，论文未明说观测类型，未核实） |
 | Spotlight 档位 | 论文文本不含评审档位信息，未核实 |
+
+## 结论
+
+CMPO 用块级世界模型缩短 actor 优化的梯度路径，适合研究训练效率，但长块预测和真机收益仍有边界。
+
+- 从短块开始同时测模型误差、梯度稳定性和回报，避免把省去循环展开理解为无需反传。
+- 比较纯 actor 与 MPPI 时按任务核对回报和计算成本，规划在部分任务仍更好。
+- 将 Go2 的小样本站立验证与 HumanoidBench 主实验分开汇报，并补做同类模型方法的真机对照。
 
 ## 局限
 

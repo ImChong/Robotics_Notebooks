@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, embodied-ai, qwen, benchmark]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-13
 related:
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ./vla.md
@@ -12,7 +12,7 @@ related:
   - ../entities/nvidia-omniverse.md
   - ./diffusion-policy.md
   - ../entities/paper-objdream.md
-summary: "StarVLA 是具身智能领域的极简基准模型，证明了强 VLM 底座（如 Qwen3-VL）配合简单 MLP 动作头即可实现最先进的控制性能。"
+summary: "StarVLA 是模块化 VLA 基准框架，以强 VLM 配合轻量动作头作为对照；具体控制表现须按模型版本、训练数据和评测协议比较。"
 ---
 
 # StarVLA
@@ -21,7 +21,7 @@ summary: "StarVLA 是具身智能领域的极简基准模型，证明了强 VLM 
 
 ## 一句话定义
 
-> StarVLA 证明了：不需要复杂的动作分词或扩散生成头，只需“强大的 VLM 底座 + 简单的 MLP 回归头”，就能在 LIBERO 和 SimplerEnv 等基准测试中打破 SOTA。
+> StarVLA 以“VLM 底座 + 轻量动作头”构造 VLA 基线，并提供不同动作头的模块化对照；LIBERO、SimplerEnv 等报告值限于对应版本和数据配方，不能视为所有场景的性能上界。
 
 ---
 

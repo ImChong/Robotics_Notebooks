@@ -112,7 +112,7 @@ sequenceDiagram
 - **真机（第 5.4 节，图 9，每任务 20 次）**：Pretrain 到 Offline 到 Online 的成功次数为 Pick Eggplant 12、18、20，Peg Insertion 10、19、20，Pour 9、15、18，Cabinet Retrieval 5、14、17；按表汇总为 36/80、66/80、75/80，即 45.0%、82.5%、93.75%。只在 Pick Eggplant 上比较了 BC Aggregation（14/20）、DRWR（12/20）与 RL100（20/20），在线 RoboFFT 为 20/20（相同数据预算）。
 - **消融与诊断（第 5.3 节，附录 D）**：SDE 噪声过小会坍塌、过大也退化；N_mc 在 flow 上由 1 到 2 即有收益，扩散上 1 明显弱于 4 或 16；去掉优势加权或 PPO 裁剪会不稳；RoboFFT-D 去掉负优势折扣明显恶化。surrogate 与 ReinFlow 式闭式参考比率的 Spearman 秩相关约 0.2，相对误差末期 90% 以上样本低于 5%（图 8），论文说明这不证明两者严格对应。
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，005/101，P0，分组「RL Fine-Tuning of VLAs and Generative Policies」）对该论文的一句话摘要为：Online RL fine-tuning of diffusion and flow policies via forward noising and a weighted flow-matching surrogate for the policy ratio。排序是作者用自己的研究兴趣模型打分得来，不是论文质量评价，摘要由 LLM 据摘要起草。逐项核对：
 
@@ -125,6 +125,14 @@ sequenceDiagram
 | （清单未提）VLA 与真机 | 第 5.2 节 π0 on LIBERO，第 5.4 节四项真机任务 | 清单摘要缺失该论文的另外两块实验 |
 
 两点值得留意：第一，该论文的「更稳定、更高效」均为作者自述，训练时间加速限定为更新时间且 38.0× 只覆盖 state 任务；第二，清单摘要不含任何数字，故无可核对的数字错误。
+
+## 结论
+
+RoboFFT 为生成策略构造可优化的 PPO 代理比率，但它不等同精确似然比，校准与在线样本成本仍关键。
+
+- 按噪声日程、动作维度与结构重新标定代理比率尺度。
+- 比较算法时对齐基础策略、负优势处理、数据聚合和离线预热。
+- 把完整真机流程的收益与 surrogate ratio 的单独贡献分开，少量任务不能证明通用后训练优势。
 
 ## 局限
 

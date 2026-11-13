@@ -173,6 +173,6 @@ flowchart TD
 
 ## 继续阅读
 
-- [arXiv PDF（最新版）](https://arxiv.org/pdf/2111.02135)
+- [arXiv PDF（版本以 arXiv 记录为准）](https://arxiv.org/pdf/2111.02135)
 - 会议前身：Wang 等，PWCLO-Net，CVPR 2021（论文参考文献 [39]，仓库 <https://github.com/IRMVLab/PWCLONet>）
 - [激光-惯性里程计融合](../methods/lidar-odometry-fusion.md)

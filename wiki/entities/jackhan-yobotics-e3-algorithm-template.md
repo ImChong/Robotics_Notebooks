@@ -3,7 +3,7 @@ type: entity
 title: Yobotics HumanoidE3 外接算法模板（LCM）
 tags: [humanoid, lcm, onnx, pytorch, template, jackhan-sdu, yobotics]
 summary: "提供 AlgorithmBase：ONNX 或 PyTorch 加载、LCM 订阅/发布、50Hz 策略线程 + 500Hz 发令线程与锁；开发者实现 compute_observation / process_action 即可接入 WalkE3-Controller 的 DEVELOPMENT 模式。"
-updated: 2026-05-16
+updated: 2026-11-13
 status: complete
 related:
   - ./jackhan-walke3-controller.md
@@ -25,6 +25,7 @@ sources:
 |------|----------|----------|
 | ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| LCM | Lightweight Communications and Marshalling | 状态订阅与控制命令发布的通信接口 |
 
 ## 核心机制（工程切片）
 
@@ -49,6 +50,7 @@ flowchart TD
 
 ## 常见误区或局限
 
+- **2026-11-13 维护复核：** [官方 README（6b7243c）](https://github.com/JackHan-Sdu/Algorithm_Template_For_Developer/blob/6b7243c43823718a834dc4b1db79c59366242d8d/README.md) 将接收主线程、可配置策略推理线程（示例 50 Hz）与 500 Hz 发令线程分开；50 Hz 是推荐配置，并非所有算法固定频率。通道、robot_id 与关节顺序须匹配控制器。本次未运行模板。
 - **通道与 robot_id**：`config.yaml` 中 `state_channel` / `command_channel` / `robot_id` 必须与状态机一致，否则表现为「无状态」或指令被丢弃。
 - **关节顺序**：README 给出 21 维标准顺序；若模型导出顺序不同，必须在观测与动作两侧同时做映射。
 

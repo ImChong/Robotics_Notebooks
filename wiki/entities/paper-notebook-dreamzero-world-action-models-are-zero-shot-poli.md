@@ -98,7 +98,7 @@ flowchart TD
 - **评测协议（§4.1）：** 评测场地与采集场地不同；AgiBot 已见与未见任务各 80 次 rollout，DROID 共 80 次 rollout 覆盖 40 个任务，按 0 到 1 的部分完成度打分。
 - **复现入口：** 开源权重、推理代码与 DROID-sim（PolaRiS）评测代码在 [dreamzero0/dreamzero](https://github.com/dreamzero0/dreamzero)；AgiBot 数据集论文称「计划开源」（§4.1 脚注 5）。本页未运行或审阅该仓库。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，014/101，P0，Oral）的一句话摘要为：「DreamZero: a world action model on a video diffusion backbone that jointly predicts video and actions, doubling VLA generalization to new tasks.」清单说明该摘要由 LLM 据摘要起草，排序是作者按自己研究兴趣打分，并非论文质量评价。逐项核对：
 
@@ -111,6 +111,14 @@ flowchart TD
 | 清单没有提到的内容 | 7 Hz 实时（2 块 GB200，Flash 为训练期方案）、跨本体视频迁移（+42% 相对）、30 分钟新本体适配，这些是论文的另外几项主要贡献 |
 
 另：评测次数不多（每种设置 80 次 rollout，8 次/任务），Table 2 的标准误较大（约 ±7 到 ±10 个百分点）。「零样本」指任务与环境不在该机器人的训练数据中，而非从未见过任何机器人数据：WAM 骨干见过大量网络视频，对比的预训练 VLA 也被允许见过跨本体数据（§5.1 Q2）。
+
+## 结论
+
+DreamZero 支持联合视频动作建模改善未见任务进度，但计算成本、视频错误和精细操作仍是部署约束。
+
+- 按目标硬件实测闭环频率与延迟，7 Hz 的双 GB200 配置不能直接搬到消费级 GPU。
+- 把部分任务进度、完整成功率和跨本体结果分开汇报，避免把早期迁移信号当成熟能力。
+- 为视频计划错误设置监测与恢复，并单独验收长记忆和亚厘米操作任务。
 
 ## 局限
 

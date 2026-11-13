@@ -93,7 +93,7 @@ flowchart TD
 - **真机迁移的特殊设置（附录 C.2）：** Aria 真机任务用更松的可行阈值（物体位置 0.08 m、旋转 2.5 rad）、8 条随机化 rollout、域随机化（物体质量比例 0.8 到 1.2 等），TACO 仿真评测不用域随机化，也关掉了类人约束和平滑奖励。
 - **复现成本：** 作者说在单张 RTX 4090、不并行时 Aria 约 2.88 条成功演示每小时（§4.3）。未见代码仓库地址，项目页仅在论文摘要给出。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单第 020 项，P0，Learning from Human Video 组；摘要由 LLM 据论文摘要起草）的一句话：「Converts egocentric human videos into robot observation videos and executable dexterous action trajectories for policy training.」
 
@@ -105,6 +105,14 @@ flowchart TD
 | for policy training | 是，HPT 策略真机零样本：Mustard 0.40、Drawer 0.35、Flower 0.70、Hammer 0.60，平均 0.51（Tab. 3、4） | 属实；清单未提「仅 4 个任务、单臂单手、成功率 0.35 到 0.70」，也未提这是摘要里的「首个零样本」自称 |
 
 清单摘要未涉及但读者应知的事：(1) 方法依赖物体网格与标定（AprilTag），不是纯 RGB 视频输入；(2) 动作分支比视觉分支重要得多（Tab. 4：0.43 对 0.05 相对人类视频 0.03）；(3) 真机示教在 Mustard、Drawer 上明显更强（0.80 对 0.40 与 0.35）。
+
+## 结论
+
+EgoEngine 支持通过数字孪生把人类视频编译为机器人训练资料，但目前真机增益主要来自动作分支。
+
+- 先确认资产与接触重建质量，再比较动作精修和视觉合成各自的增益。
+- 将仿真可执行轨迹与真机策略成功率分开统计，前者不能保证后者。
+- 扩展到野外视频前量化资产制作、遮挡估计及仿真优化成本，并补做新物体和新场景真机验证。
 
 ## 局限
 

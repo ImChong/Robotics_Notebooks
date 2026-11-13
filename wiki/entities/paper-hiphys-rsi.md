@@ -2,6 +2,7 @@
 type: entity
 project_id: hiphys-rsi-behavior-2026
 project: https://behavior1k-champion.com/
+venue: "BEHAVIOR Challenge 2026 官方冠军技术报告"
 tags: [paper, huawei, agentic, embodied-ai, behavior-1k, robot-manipulation, recursive-self-improvement, code-as-policy, vla]
 status: complete
 updated: 2026-11-12

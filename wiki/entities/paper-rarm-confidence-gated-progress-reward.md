@@ -98,7 +98,7 @@ flowchart TD
 - **开源：** 项目页链接 GitHub 与 Hugging Face。仓库 main 分支 README 说明含奖励模型训练与片段相似度推理，需要另下 DINOv3 ViT-B/16 官方权重加 RARM 检查点，DrQ-v2 策略训练在 `policy_training_RARM` 分支（本次只读了 README，未读代码，未核对权重）。
 - **复现提示（推测）：** 阈值 δ_j 的具体标定公式（分位数还是均值减标准差）正文未写明，复现需读代码。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单对该论文的一句话摘要（作者说由 LLM 据摘要起草）：「Reference-anchored, confidence-gated progress reward model from a single demonstration, robust to failures and reward hacking.」逐项核对：
 
@@ -112,6 +112,14 @@ flowchart TD
 | 结果规模 | 真机每格仅 10 条评测 rollout、无重复种子或置信区间（Table 1）；仿真为 5 种子曲线（图 3），正文没有汇总数值表 |
 
 另外，论文宣称「best overall success rates」，但基线的复现细节（各基线用的权重、提示词、阈值）在正文与附录均未详述（我的观察，非作者承认）。
+
+## 结论
+
+RARM 以置信门控的示范进度奖励缓解稀疏反馈，但依赖参考示范和视觉片段可比性。
+
+- 先检查参考视频的代表性与视角差异，再设定奖励置信阈值。
+- 对循环、回退与细粒度接触任务单独验收，RGB 进度不能直接表示力学成功。
+- 真机对照应固定 DSRL 与采集预算，并增加重复试验后再判断奖励本身的贡献。
 
 ## 局限
 

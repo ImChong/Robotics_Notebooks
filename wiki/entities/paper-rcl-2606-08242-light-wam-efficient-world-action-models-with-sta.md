@@ -94,7 +94,7 @@ flowchart TD
 | 真机 T1/T2/T3 | 67 / 87 / 53 | π0.5 80 / 93 / 60 | Fig.4 |
 | 消融（LIBERO-Spatial） | 默认 98.2 | 不下采样 99.0、5 个 adapter 层 98.0、8 个 query 95.4 | Table 5 |
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，作者说明摘要由 LLM 据摘要起草；排序是作者兴趣模型打分，不是质量评价）对该论文的一句话摘要为：「Lightweight world action model with latent future-video supervision and a state-fusion action expert for efficient closed-loop control.」逐项核对：
 
@@ -106,6 +106,14 @@ flowchart TD
 | efficient closed-loop control | 部分成立：延迟 72.03ms、4.1GiB 是在 RTX 4090 上测的单次动作查询，不含仿真与 I/O（Table 4），且与 π0.5 的 76ms 只相差约 5%（π0.5 数字引自他文）；论文的闭环成功率证据来自 LIBERO、RoboTwin 2.0（仿真）与 3 个真机任务，其中真机三项均低于 π0.5（Fig.4），RoboTwin 2.0 也低于 Fast-WAM（Table 2）。「高效」主要是相对 WAM 基线成立。 |
 
 清单摘要没有提到：性能结论依赖基准（LIBERO 强，RoboTwin 2.0 作者自称「usable」）；真机只有 3 个任务且落后于 π0.5。
+
+## 结论
+
+Light-WAM 通过冻结视频骨干与单次动作专家前向降低可训练规模，但多任务泛化和视频监督的独立收益仍待验证。
+
+- 在同硬件同推理流程下测延迟，不能把跨论文引用值直接当公平加速对照。
+- 分别消融视频监督、latent 下采样与动作专家，避免把全部收益归于视频表征。
+- 对鲁棒性与复杂任务补测，并公开检查点选择协议，套件均分不能代替泛化证据。
 
 ## 局限
 

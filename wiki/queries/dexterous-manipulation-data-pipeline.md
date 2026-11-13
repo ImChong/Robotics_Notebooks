@@ -3,7 +3,7 @@ title: 灵巧操作数据管线与 RL 训练基建指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-11-10
+updated: 2026-11-13
 related:
   - ../methods/auto-labeling-pipelines.md
   - ../methods/wilor.md

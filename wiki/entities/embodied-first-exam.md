@@ -190,4 +190,4 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [Embodied First Exam — arXiv:2611.12177](https://arxiv.org/abs/2611.12177)
-- [最新任务清单与 Quick Start](https://github.com/mll-lab-nu/embodied-first-exam)
+- [官方任务清单与 Quick Start](https://github.com/mll-lab-nu/embodied-first-exam)

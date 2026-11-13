@@ -101,7 +101,7 @@ flowchart TD
 - **超参敏感度（附录 C.1，图 9）：** 多阶段任务对 λ 不敏感；Threading 对减小 λ 或放大负缓冲区（512）更敏感；Tool_Hang 上 λ = 0.9 无法持续提升，故 λ 取小。
 - 代码仓库本次未读，复现细节以论文附录与仓库 README 为准。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth《My CoRL 2026 Reading List》第 094 条，P2，分组 Rewards & Progress Models）对本文的一句话摘要（作者说由 LLM 据摘要起草）：「Training-free reward editing that calibrates foundation-model rewards by contrasting successful and failed trajectories in hindsight.」
 
@@ -110,6 +110,14 @@ flowchart TD
 - **contrasting successful and failed trajectories：成立，但对比的是帧而非完整轨迹。** 负样本只用失败回合的终止帧（仿真）或最后 16 帧（真机），正样本含专家演示与成功回合终止帧（附录 A.1、A.2、A.3）。论文明说整条失败轨迹入缓冲会误罚正常中间状态。
 - **清单摘要未提到的结果限定：** 仿真 4 个任务（RoboMimic 的 Tool_Hang，MimicGen 的 Threading、Stack_Three、Three_Piece_Assembly）加真机 2 个任务；所有主结果叠在 DICE-RL 上；真机基线只比稀疏与 RoboMeter，TOPReward 与 GCR 只在仿真比（第 5 节）。
 - **摘要里的「至少 3 倍」只有真机有明确数字：** 67% 与 73.3% 对基础 20%（第 5.3 节）；仿真里 Stack_Three 终值约 50%（基础 18.0%）。
+
+## 结论
+
+HiRE 用在线成败轨迹修正视觉势函数，减少了奖励模型训练，但仍需要可靠的成败判定与任务级调参。
+
+- 先验证成败标签与正负缓冲区构造，尤其检查重试和恢复片段如何影响密度比。
+- 比较奖励方法时固定缩放与回放配置，再评价奖励编辑的独立贡献。
+- 按任务报告真机重复次数和人工标注成本，不能把少量检查点提升外推为算法普适性。
 
 ## 局限
 

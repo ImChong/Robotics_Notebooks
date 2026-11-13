@@ -114,7 +114,7 @@ flowchart LR
 | 耗时 | 摘要与 §1 称后训练仅 12 小时（所用 GPU 数论文正文未明示，未核实） |
 | 代码状态 | 仓库 MIT；Isaac Sim 与 Isaac Lab 的具体版本、acados 依赖、`SCENE_DIR` 布局等来自此前对 HF README 的核查，本次未重读，复现前以官方 README 为准 |
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 对象是 Glen Berseth 的 CoRL 2026 阅读清单对本文的一句话摘要：「RL post-training of navigation diffusion policies with group Q-score reweighted matching, generalizing to new embodiments and behaviors.」清单的排序由作者个人兴趣模型打分，摘要为 LLM 据摘要起草，并非论文质量评价。
 
@@ -125,6 +125,14 @@ flowchart LR
 | generalizing to new embodiments | 需限定：「跨本体」指同时在 Dingo、Go2、G1 三种本体上联合训练并在同样三种本体上评测（§5.1、附录 B）；并没有测试训练中未见过的新机器人形态。作者在局限中自认：换新形态需要对应的预训练底层控制器（§6）。真机的轮式平台为 Turtlebot，与仿真的 Dingo 不同，算是一处小的本体差异，但论文未单独分析 |
 | generalizing to new behaviors | 部分属实：新行为（脱困后退、绕长障碍、选更安全路径）仅由图 3 定性轨迹展示（§5.2），我未能看到该图，也没有对应的定量「新行为」指标；表 6 间接显示反向翻转探索对 SR 影响很大 |
 | 未提数字 | 论文的主要数字：仿真 SR 61.20→84.28、SPL 58.95→77.19（表 1）；真机九格各 10 次，NavDP 平均 10%，X-NavDP 平均约 64.4%，摘要写 65%（表 2）；清单未涉及这些，也未提真机每格仅 10 次 |
+
+## 结论
+
+X-NavDP 支持对生成式导航策略进行跨本体后训练，但低层控制器、短记忆与感知缺口仍限定部署范围。
+
+- 复现时核对组内 Q 归一化、轨迹扰动和各本体控制接口。
+- 分开报告 24 场景消融与 56 场景结果，并增加真机每格十次之外的重复。
+- 针对透明障碍、窄通道和长障碍绕行另设验收，新形态仍需对应的预训练步态控制器。
 
 ## 局限
 

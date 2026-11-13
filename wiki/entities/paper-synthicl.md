@@ -107,7 +107,7 @@ flowchart LR
 - 数据规模（§4.5，Figure 5）：两种变体随数据增长而提升；数据很少时无 SP 反而更好，作者推测辅助重建目标在低数据下与动作学习竞争（作者推测）。
 - 相机消融（附录 H，Table 5d）：去腕部相机 60.3%，去侧视 64.6%。
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单（Glen Berseth，My CoRL 2026 Reading List，P2，Imitation Learning & Data Quality，作者称为 LLM 据摘要起草）对该论文的一句话：「In-context imitation policies trained entirely on RGB-only synthetic data, with subgoal prediction.」
 
@@ -120,6 +120,14 @@ flowchart LR
 | 隐含：优于已有方法 | 对 IP 仿真仅 75.0 对 72.4，12 个任务中 IP 有 6 个更高（Table 1）；真机 79.1 对 72.5，16 个任务中 IP 有 5 个更高、4 个持平（Table 2）；对 ICRT 优势大，但 ICRT 是作者在自己的合成数据上重训的（§4.1） | 方向属实，但对 IP 的优势是几个百分点，未给置信区间或多次种子 |
 
 另：清单摘要没有提到 sim-to-real 的关键因素是抓取位姿采样（Figure 4 中去掉它只有 9% 至 12%）。
+
+## 结论
+
+SynthICL 支持用合成伪示范训练上下文模仿策略，但当前依赖分割输入和短时域任务。
+
+- 部署前核对 RGB 分割、相机视角与动作接口，再提供单条测试示范。
+- 分别评估颜色纹理、精确对齐和碰撞避让，不能由几何任务成功推断富接触能力。
+- 比较仿真与真机时标明数据量、渲染器和模型差异，并扩大扰动与重复试验。
 
 ## 局限
 

@@ -85,7 +85,7 @@ flowchart LR
 - **真机硬件（5.4）：** Franka Research 3、WSG-50、GelSight Mini（只给策略右指图像）、腕部 RealSense。
 - **评测（5.4、附录 B）：** 每策略每任务 20 次，阶段式评分（对齐 60，旋转半圈 75，啮合 95，释放并固定 100，另有卡住 65 与提前释放加 5 分的规则）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单原句：「Visuo-tactile world-action model that learns control-relevant representations end-to-end, avoiding feature collapse.」
 
@@ -97,6 +97,14 @@ flowchart LR
 | 清单未提的限定 | Table 1 注明 MDF + selective E2E 与 MDF(adapted) 两行是各任务跨种子与模式的最大值而非均值（5.1、5.3 同样说明中间 lambda 用最大值）；MDF(adapted) 的 Forge 运行用了轨迹末尾补齐，与 MDF++ 不完全可比（5.1）；真机每格只有 20 次试验。清单摘要把这些都略去了。 |
 
 另：引言写 MDF++ 在仿真比冻结基线好 28%、比 naive 好 22%，与 Table 1 的 86.9 对 58.7 与 64.1 大致相符（百分点差约 28.2 与 22.8）；引言称真机比视频类 WAM 高 29%，我用 Table 9 平均得分（89.0 对 59.25）算得约 29.75 个得分点，但 UWM 用的是冻结 SDXL VAE 编码图像潜变量，称其「video-based」是论文用语（推测其指视频生成式潜空间）。
+
+## 结论
+
+MDF++ 用跨模态去噪梯度学习视觉触觉表示，为接触任务提供了有效路径，但收益和损失权重依任务而异。
+
+- 复现时检查编码器是否屏蔽自去噪梯度，并分别评估各模态的贡献。
+- 对照模型时对齐网络规模、训练步数和权重选择协议。
+- 对高频接触和螺纹任务逐项验证，阶段进度高分不等于完整装配成功。
 
 ## 局限
 

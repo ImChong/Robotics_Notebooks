@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, paper]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-13
 summary: "LLM-driven reward design that enables sim-to-real transfer for dexterous skills."
 related:
   - ../entities/awesome-physical-ai-natnew.md

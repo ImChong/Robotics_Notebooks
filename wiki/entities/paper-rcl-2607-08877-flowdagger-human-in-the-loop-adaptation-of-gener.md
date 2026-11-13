@@ -100,7 +100,7 @@ flowchart TD
 | Gr00t N1.7，LIBERO-90 task 57 | 基座 60%，FlowDAgger 约 20 episode 近 100%，DSRL 平台约 70%（单种子） | 附录 B.3，Fig. 5 |
 | 扩散策略，robomimic LIFT | 基座约 48%，FlowDAgger 约 97%，DSRL 约 80%（单种子） | 附录 B.4，Fig. 6 |
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P2 档，序号 088/101，Spotlight）对该文的一句话摘要是：“Adapts frozen flow and diffusion policies from human interventions by inverting expert actions to latent noise.” 该摘要由 LLM 据摘要起草，排序也是作者按自己研究兴趣打分，不是质量评价。
 
@@ -110,6 +110,14 @@ flowchart TD
 | 来自人类干预 | 方法设定是人类接管给纠正动作（§3、§4.3），真机用人类干预（§5.5） | 对真机成立；仿真里的干预者论文正文没说清，附录 B.1 与 B.3 明说用脚本专家（scripted-expert），MetaWorld 主实验的干预来源未核实 |
 | 把专家动作反演为潜在噪声 | 即逐步不动点反演（§4.1，式 3） | 对；“潜在噪声”指基座的初始噪声而非学到的潜表示 |
 | （清单未提）对比基线 | 超过 SFT、LoRA-DAgger、Residual-DAgger、DSRL（Table 1），但并非每个任务都赢：Door Lock 上 Residual-DAgger 更高，真机 Jenga Stacking 上 SFT 更高 | 清单省略这些例外 |
+
+## 结论
+
+FlowDAgger 以干预动作反演噪声目标实现轻量适配，但能力受到基座动作流形和纠正数据覆盖的限制。
+
+- 先检查不动点反演误差，再训练噪声策略，流形外行为需考虑权重适配。
+- 对照 SFT 或潜空间 RL 时区分人类动作监督与任务奖励的预算差异。
+- 同时测试适配任务与保留任务，不能由单项成功推断先验能力完全保留。
 
 ## 局限
 

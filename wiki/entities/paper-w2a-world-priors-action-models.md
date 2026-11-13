@@ -109,7 +109,7 @@ flowchart LR
 | 推理延迟 | 55 ms | mimic-video 约 21×（图 6 读数约 1162 ms，推测） | §5.3 |
 | 线性探针 Pos EPE（t+10） | 13.1 px | 无蒸馏 23.8 px | 附录 D.2 表 14 |
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单（Glen Berseth，CoRL 2026 阅读清单第 080 条，作者说明为 LLM 据摘要起草）一句话：「Distills video-diffusion features into an action model during training so no video is generated at test time.」
 
@@ -118,6 +118,14 @@ flowchart LR
 - **清单未提及的限定：** 效率结论（约 21×、55 ms）只对 mimic-video 一个 WAM 基线、在单卡 A100 上、用 CLIP 变体测得（§5.3）；真机实验只对比 Diffusion Policy 和 OpenVLA，没有任何 WAM 基线（表 3）；LIBERO 平均 95.9% 低于 finetuned 的 π0.5（96.9），CALVIN 平均长度 4.30 略低于 VPP 的 4.33。
 - **作者名：** 清单写作 "Zhang, Yongjin, Weng et al."，论文首页作者为 Xiaopeng Zhang, Yongjin Mu, Yueyang Weng, Chengzhi Zhao, Yanjie Li，清单是把三位作者的名 / 姓拼接写出，不影响理解。
 - **排序提示：** 清单排序是作者用自己的研究兴趣模型打分，不是论文质量评价（P2 档不代表论文弱）。
+
+## 结论
+
+W2A 用训练期视频隐变量蒸馏降低部署成本，但同时放弃显式未来想象与部分教师容量。
+
+- 核对 PCA 子空间和 Q-Former 蒸馏目标，检查压缩是否丢失任务相关动力学。
+- 在相同硬件与加速设置下比较延迟，不能把对单个 mimic-video 的倍数推广到所有 WAM。
+- 对新物体动力学和远离训练分布的布局另做验收，重规划并不能自动修复蒸馏误差。
 
 ## 局限
 

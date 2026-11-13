@@ -93,7 +93,7 @@ flowchart LR
 - **真机（§VII）：** 机载 LCM 状态估计，Go1 与 Go2 均未微调；作者列出的失败来源为延迟与状态估计漂移、接触不匹配、Go2 的观测或动作缩放不一致以及保守的安全层（§VII-B）。
 - **代码：** 论文未给出仓库链接，故 frontmatter 不写 `code:`。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，条目由 LLM 据摘要起草）对本文的一句话：*A shared critic averages incompatible value targets across quadruped morphologies; fixing this miscalibration enables zero-shot transfer.* 逐项核对如下。
 
@@ -111,6 +111,14 @@ flowchart LR
 - **摘要的倍数是对不同基线算的：** A1 的 +16.1% 对 PPO 变体 1（2.286 对 1.969），Cheetah 约 2 倍对变体 3（1.193 对 0.595，对变体 1 为约 3.7 倍），B1 约 5 倍对变体 3（0.245 对 0.049）。
 - **Table III 的「零样本 7 台」与 Table IV 的 6 台非训练机器人对不上：** 文中说 7 个目标含 2 台真机（§VI-C），口径不清。
 - **数据以单次评测报告：** 文中未见种子数、置信区间或显著性检验。
+
+## 结论
+
+MorFiC 说明形态条件 critic 可能改善部分跨四足迁移，但速度、稳定性与源机器人表现并非同步提升。
+
+- 按目标形态分别报告速度、摔倒与稳定时长，不只汇总速度优势。
+- 复现前核对 FiLM 的正文和附录公式差异，并分离价值偏差与策略改进的证据。
+- 真机部署需重新验证延迟、状态估计和缩放约定，不能从单源平地结果外推人形或极端形态。
 
 ## 局限
 

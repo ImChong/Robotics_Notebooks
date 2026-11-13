@@ -104,7 +104,7 @@ flowchart TD
 | 消融（LIBERO-Spatial） | 完整 0.815，去 KIR 0.782，去 PACE 0.710 | Table 5 |
 | 世界模型消融（512 帧 FID，Spatial） | 完整 36.687，去参考帧 73.942，单帧记忆 64.501，去加噪上下文 44.712 | Table 4 |
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 CoRL 2026 阅读清单（[Glen Berseth 博客](https://www.fracturedplane.com/blog/2026/11/10/CoRL2026-Reading-List.html)第 037 篇，P1 档，分组 World Models & World Action Models）给出的一句话摘要（作者说由 LLM 据摘要起草）：「Makes world-model RL for VLAs reliable by regulating how the policy uses imperfect imagined rollouts.」排序来自作者个人兴趣模型打分，不是质量评价。
 
@@ -115,6 +115,14 @@ CoRL 2026 阅读清单（[Glen Berseth 博客](https://www.fracturedplane.com/bl
 | 未提及的限定 | 清单摘要没有交代：定量结果主要在 LIBERO 仿真（四个 suite），真机只有两个任务各 30 次试验（Table 3）；增益对比的是作者复现的基线，GRPO(online) 与 WMPO 在同一 2500 条轨迹预算下比较（§5.2）；世界模型需要先用真实环境轨迹训练，并非零真实数据。 |
 
 此外，本页旧版（清单策展版）的流程图写过「奖励模型 ResNet 二值 / Qwen3-VL 稠密」，arXiv v1 全文中没有出现 ResNet 或 Qwen3-VL，也没有稠密奖励，只有「轻量网络」的二值奖励分类器（式 8），该说法已删除，是否出现在项目页或后续版本中未核实。
+
+## 结论
+
+WoVR 用多项 rollout 稳定化和策略分布对齐改进世界模型后训练，但没有消除幻觉。
+
+- 分别核验首帧锚定、关键帧起滚与成功后 mask，并记录有效预测深度。
+- 对照 PACE 时对齐额外真实轨迹预算，避免把数据量变化全部归于对齐机制。
+- 长时程与接触任务保留真机验证，模型内提升不能直接当作可靠性保证。
 
 ## 局限
 

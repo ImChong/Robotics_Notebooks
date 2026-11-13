@@ -89,7 +89,7 @@ flowchart TD
 - **真机（A.6）：** Xarm7 + Robotera XHand 共 18 自由度，第三视角与腕部相机，4 个任务各 60 次试验。
 - **代码：** 摘要给出匿名仓库 `anonymity35/HARP-VLA`；入库日本环境访问返回 403，未核实其内容与完整度，复现前须自行确认。
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单一句话摘要（作者称由 LLM 据摘要起草）：「Aligns human and robot visual representations using a few paired demonstrations so latent actions from human video transfer to VLAs.」逐项核对：
 
@@ -99,6 +99,14 @@ flowchart TD
 | 「a few paired demonstrations」 | 论文强调「limited paired」（第 1 节）并配合大量非配对视频，但表 A1 的配对数据为 RH20T 8.16M、Human2Robot 9.9M、自采 5.7M 帧，合计约 23.8M 帧，约为非配对帧数（57.5M）的四成；正文未给出配对示范条数，仅评估集为 93 对（A.4） | 「a few」在论文中无量化依据，且帧数并不小（我的判断：相对非配对数据是少，绝对量不小） |
 | 潜在动作从人类视频迁移到 VLA | 属实：LAM 给人类与机器人视频打标签，VLA 预训练预测潜在动作，微调时再接真实动作头（第 3.3–3.4 节） | 属实 |
 | 清单未提的限定 | 真机仅一个平台（Xarm7 + XHand）4 个任务；仿真为 CALVIN ABC→D 与 RLBench 冻结编码器评估；对比基线在 CALVIN 上 π0、π0.5、OpenVLA-OFT 为作者自行微调，OpenVLA、UniVLA 取公开数据（A.6） | 清单摘要未体现 |
+
+## 结论
+
+HARP-VLA 将配对桥接数据与非配对视频结合，是人机表征对齐的可行方案，但桥接数据成本与跨平台泛化仍待验证。
+
+- 先检查配对示范的时间对齐与覆盖度，再训练潜动作标签器。
+- 对照预训练策略时对齐视频来源、动作接口与微调预算，避免把全部增益归于对齐损失。
+- 在目标平台补做潜动作一致性和长程任务评测，CALVIN 平均长度不能代替跨本体证明。
 
 ## 局限
 

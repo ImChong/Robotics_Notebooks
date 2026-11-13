@@ -2,7 +2,7 @@
 type: entity
 tags: [blog, jepa, world-model, representation-learning, robot-learning]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 related:
   - ./paper-semantic-tube-prediction.md
   - ./paper-when-does-lejepa-learn-world-model.md

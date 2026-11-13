@@ -6,6 +6,7 @@ tags:
   - rl
   - world-model
 openreview: https://openreview.net/forum?id=XY8QpMSxvq
+venue: "CoRL 2026 Spotlight（据阅读清单；全文尚未核实）"
 status: draft
 updated: 2026-11-12
 original: ../../sources/papers/emergent-control-prior-free-energy_corl2026.md
@@ -59,7 +60,7 @@ flowchart LR
 
 未读到全文，无可靠实现细节。未找到代码或项目页。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Berseth 阅读清单，P1 / Spotlight）：「Control by minimizing deviation from priors over preferred states (free energy) instead of maximizing reward, model-based and model-free.」
 
@@ -67,6 +68,14 @@ flowchart LR
 - 「model-based and model-free」：与摘要中的两部分一致。
 - 清单未提及的摘要内容：任务涵盖连续运动、自动驾驶、欠驱动控制；稀疏奖励设定；稳态与运动学先验。
 - 无法核对：仿真还是真机、基线与数值、「无显式奖励」的严格程度（先验本身是否隐含奖励）。清单排序来自作者个人兴趣模型，非论文质量评价。
+
+## 结论
+
+当前归档只足以确认偏好先验控制的研究方向，尚不足以判断方法效果或复现条件。
+
+- 保持草稿与原文未通读状态，在获得全文前不引用未核验的实验结论。
+- 取得全文后优先核对自由能定义、先验构造和实际优化算法，不能由相关链接推断用了 PPO。
+- 补齐任务、基线与仿真或真机证据后，再比较先验设计和奖励设计的实际成本。
 
 ## 局限
 

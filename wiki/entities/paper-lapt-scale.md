@@ -89,7 +89,7 @@ flowchart LR
 - **评测设置：** 仿真 RoboTwin 2.0 Easy/Hard、RoboCasa-GR1 Tabletop（24 任务×50 次）；真机 AgiBot G1，三个原任务各 20 次，四个更难任务每任务每域 20 次（附录 D）。
 - **代码与权重：** 论文正文未给出仓库或项目页，本页因此不填 `code:`。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，据论文摘要由 LLM 起草，排序为作者个人兴趣模型打分，不是论文质量评价）对该论文的一句话摘要为：「Continuous latent action model on egocentric human video as pretraining supervision for a VLA, then embodiment alignment and post-training.」
 
@@ -104,6 +104,14 @@ flowchart LR
 - 清单摘要未含任何数字、仿真或真机的限定词，也没提评测规模。论文自己的数字：真机三任务均值 63.3% 升至 85.0% 对应 Stage-1 人视频 1K 到 5K 小时，每任务 20 次，同一机器人平台 AgiBot G1（§4.3、§5）。
 - 清单的一句话是方法描述，没有夸大；需要读者补上的限定是：效果依赖 250 小时对齐数据，且论文自己说对齐仍是必需的（§5）。
 - 清单把该论文列在「Learning from Human Video」组，与论文主题相符。作者署名在清单里只写「Xiang, Liu, Li et al.」，与论文作者列表前三位（Xiang、Liu、Li）一致。
+
+## 结论
+
+LAPT-Scale 支持人类视频潜动作预训练的规模收益，但机器人动作对齐仍不可省略。
+
+- 区分 LAM 的 23.3K 小时训练集与 VLA Stage-1 的约 5.1K 小时子集。
+- 先对齐目标机器人的可控自由度，再验收视觉潜动作的下游价值。
+- 在更多平台与数据规模上复验，三个缩放点和单平台小样本不构成普适缩放规律。
 
 ## 局限
 

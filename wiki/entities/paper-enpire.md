@@ -107,7 +107,7 @@ flowchart TD
 | 资源 | 1 到 8 agent：GPU 利用率与 token 消耗升，单机器人利用率降；MTU 在 4 agent 内近线性，8 agent 陡升 | 第 3.6、4 节，图 7 |
 | 消融（pusht-simple） | 有原生视觉的 Codex 最先成功；无视觉反而先于「函数调用式视觉」；Codex+GPT-5.5 最快，Codex 加 Opus API 最慢 | 附录 C.3、C.4 |
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单一句话摘要：「Harness for coding agents that runs real-world policy self-improvement loops: reset, execute, verify, refine.」（P2，RL Algorithms & Exploration 组；摘要由 LLM 据摘要起草。）
 
