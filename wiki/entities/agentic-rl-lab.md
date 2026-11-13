@@ -105,6 +105,14 @@ sequenceDiagram
 
 ## 关联页面
 
+### 同届课程与工程延伸
+
+- [Happy-LLM](happy-llm.md) — LLM 底层模型与训练基础。
+- [llm-algo-leetcode](llm-algo-leetcode.md) — 后训练、推理和算子优化路线。
+- [Hello-Agents](hello-agents.md) — 智能体入门、框架与 Agentic RL。
+- [Deep Agents 实战](deepagents-in-action.md) — Agent Harness 的工程组织与执行边界。
+
+
 - [Agent Lightning](./agent-lightning.md) — agent RL 训练基础设施。
 - [动手学强化学习](./hands-on-rl-book.md) — 强化学习基础教材。
 - [强化学习](../methods/reinforcement-learning.md) — 方法概览。
