@@ -6,11 +6,11 @@
 - **类型：** site（论文项目页）
 - **URL：** <https://trabot-humanoid.github.io>
 - **论文：** <https://arxiv.org/abs/2610.06153>（归档见 [trabot_arxiv_2610_06153.md](../papers/trabot_arxiv_2610_06153.md)）
-- **代码：** 截至 2026-10-12 未发布（页面标注 “Code (soon)”，无 GitHub 或数据集链接）
-- **入库日期：** 2026-10-12
+- **代码：** 截至 2026-11-13 再核查仍未发布（页面标注 “Code (soon)”，无 GitHub 或数据集链接）
+- **入库日期：** 2026-10-12；再次核查：2026-11-13
 - **一句话说明：** 展示 Unitree G1 实时对话视频、12 段仿真对话（5 种对比条件）、方法图、身体动作关键帧、用户研究与计时结果。
 
-## 核查结论（步骤 2.5）
+## 核查结论（步骤 2.5，2026-11-13）
 
 | 项 | 结论 |
 |----|------|
@@ -18,6 +18,13 @@
 | 数据 / 运动原子库 | 页面未列下载入口 |
 | 致谢的上游 | BEAT2、SoulX-FlashHead、Gemini Live、Qwen3-VL、Unitree G1 |
 | 视频 | 整体演示（G1 实机实时回答）+ 仿真对话 |
+
+## 项目页与论文交叉核实
+
+- 首页作者栏列明四人均属 **United Arab Emirates University (UAEU)**；论文 HTML v2 进一步明确 **College of Computing and Artificial Intelligence (CCAI)**。
+- 页面包含 12 条对话五条件同步对比、身体负时间偏移解释与规划器 200 条固定回复的表格；同步指标 37.5 ms / −666.6 ms / 84.72%，首选 203/240。
+- 代码入口仍显示非链接文字 “Code (soon)”；不把上游 BEAT2、Qwen3-VL 或 SoulX-FlashHead 的公开实现当成 TRABot 的源码。
+- 复核范围：官网 Title/Authors、Method、Dialogues、Results、Cite 及 Code 状态；按原站当前公开内容核查。
 
 ## 对 wiki 的映射
 
