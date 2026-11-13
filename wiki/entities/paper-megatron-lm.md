@@ -94,8 +94,8 @@ flowchart TB
     tp --> attn --> comm
     tp --> mlp --> comm
     comm --> loss --> dp --> optim
-    cfg -. "现代版本扩展" .-> modern
-    modern -. "调度与通信优化" .-> comm
+    cfg -.->|现代版本扩展| modern
+    modern -.->|调度与通信优化| comm
 ```
 
 > **图示边界：** 实线是原论文的 TP/DP 计算逻辑抽象；虚线代表后来发展到现行 Megatron Core 的 PP/CP/EP 能力，不应误读为 2019 论文已实现全部能力。
