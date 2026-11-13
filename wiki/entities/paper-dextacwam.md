@@ -133,7 +133,7 @@ sequenceDiagram
   participant Tr as "TactileDiTTrainer"
   participant Data as "prepare_dataset"
   participant Mod as "prepare_models"
-  participant Opt as "optimizer / tracker"
+  participant Setup as "optimizer / tracker"
   participant Train as "train"
   Cmd->>Tr: --config_file + runner_class_path
   Tr->>Data: 读取任务数据及触觉缓存
@@ -141,8 +141,8 @@ sequenceDiagram
   Tr->>Mod: 准备触觉编码器和 DiT
   Note over Tr,Mod: Stage 2 冻结触觉编码器；Stage 3 加载 Stage 2 checkpoint 并初始化动作专家
   Mod-->>Tr: 模型与参数
-  Tr->>Opt: prepare_trainable_parameters / prepare_optimizer
-  Tr->>Opt: prepare_for_training / prepare_trackers
+  Tr->>Setup: prepare_trainable_parameters / prepare_optimizer
+  Tr->>Setup: prepare_for_training / prepare_trackers
   Tr->>Train: train()
   Train->>Train: 批次前向、loss、梯度更新、定期保存
   Train-->>Cmd: checkpoint 与日志
