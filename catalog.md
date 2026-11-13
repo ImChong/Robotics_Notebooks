@@ -2524,6 +2524,7 @@
 - [FixAnything](wiki/entities/paper-fixanything.md) — FixAnything: 3D-Consistent Rendering Refinement via Video Generative Priors**（[arXiv:2608.23549](h `📅unknown` `[entity_page]`
 - [FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）](wiki/entities/paper-flap-fov-active-perception-3d-navigation.md) — FLAP**（*FOV-Constrained Active Perception Planning for Prior-Map-Free 3D Navigation*，arXiv:2606.17 `📅unknown` `[entity_page]`
 - [FlapSim（arXiv:2610.40902）](wiki/entities/paper-flapsim.md) — FlapSim**（*FlapSim: A Composable MuJoCo Simulation Platform and Reduced-Order Aerodynamic Model Hi `📅unknown` `[entity_page]`
+- [Flash ALOHA：学习高速精准的机器人操作（Flash ALOHA: Learning Fast and Precise Manipulation）](wiki/entities/paper-flash-aloha.md) — Flash ALOHA**（早期名 **ALOHA Lightning**，斯坦福团队、ICRA 2026）把人直接握臂示范、**关节编码器读位置**、视觉手部遮罩、ACT 动作块与推理时平滑连成 `📅unknown` `[entity_page]`
 - [FlashDexRetarget：Accelerating Dexterous Manipulation Data Generation through Multi-Motion Retargeting](wiki/entities/paper-flashdexretarget.md) — FlashDexRetarget** 将灵巧手动作重定向从“每段演示单独优化”改为“一个策略联合学习许多演示”，用物体几何与交互监督生成物理可执行的机器人轨迹。 `📅unknown` `[entity_page]`
 - [FlashDrive（arXiv:2608.12932）](wiki/entities/paper-flashdrive-vla-autonomous-driving.md) — FlashDrive**（arXiv:2608.12932）收录于 [多模空间 · 一周 VLA 研究趋势简析（2026.0 `📅unknown` `[entity_page]`
 - [FlashRFCL（CoRL 2026）](wiki/entities/paper-flashrfcl.md) — FlashRFCL**（*FlashRFCL: Demonstration-Efficient Sparse Reward RL via Reverse-Forward Curriculum Le `📅unknown` `[entity_page]`
