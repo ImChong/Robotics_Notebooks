@@ -13,7 +13,7 @@
 - **入库日期：** 2026-11-13
 - **一句话说明：** 可反驱 ARX 机械臂动觉示范采集和录制回放，ACT/Flow 训练，动作块融合与真机推理的公开工程实现。
 - **源码核对范围：** README、`scripts/run.py`、`src/config/run.py::build_plan`、`scripts/record.py`、`src/recording/record_episode_single.py` 的录制/状态读取与回放路径、`scripts/policy/imitate_episodes_train.py`、`src/policy/imitate_episodes_train.py::main_train`、`scripts/infer.py`、`src/inference/inference_direct.py`（`blend_actions`、硬件动作发送）、`src/inference/policy_chunks.py` 与 `src/contracts/standard_image_processing.py`。
-- **通读：** 已完成
+- **源码通读状态：** 已核对上述相关入口与关键函数，但未逐文件通读整个仓库；几何遮罩的完整实现尚未定位
 
 ## 代码入口（按实际 run.py 路由）
 
