@@ -5,13 +5,15 @@
 - **题目：** Talk, Render, Act: Integrating Social Gesture and Digital Face with Synchronized Speech for Conversational Humanoid Robot
 - **方法：** TRABot
 - **作者：** Jin Jiang, Kun Li, Jiancong Ma, Shengcai Liao
-- **单位：** arXiv 页面未列（周报标注阿联酋大学，未在 arXiv 页面核实）
+- **单位：** 阿联酋大学计算与人工智能学院（College of Computing and Artificial Intelligence, United Arab Emirates University）；论文 HTML v2 作者栏与官方项目页均明确列出
 - **预印本：** https://arxiv.org/abs/2610.06153
 - **HTML：** https://arxiv.org/html/2610.06153v2
 - **版本：** v1 2026-10-05，v2 2026-10-09，cs.RO
 - **项目页：** https://trabot-humanoid.github.io （归档见 [trabot-project.md](../sites/trabot-project.md)）
-- **代码：** 截至 2026-10-12 未发布（项目页标注 “Code (soon)”）
-- **入库日期：** 2026-10-12
+- **代码：** 截至 2026-11-13 再核查仍未发布（项目页标注 “Code (soon)”）
+- **入库日期：** 2026-10-12；全文复核：2026-11-13
+- **核对范围：** arXiv HTML v2 全文——Abstract、§I Introduction、§II Related Work、§III-A–D（含式 1–14、Algorithm 1、Table I）、§IV-A–C（Tables II–VI、12 对话、20 人用户研究、200 回复自动评测）、§V Conclusion、Acknowledgments、References；并对照官方项目页 Method/Results/Code 标签。
+- **通读：** 已完成（2026-11-13，针对 v2 全文）
 
 ## 论文要解决的问题
 
@@ -33,7 +35,7 @@
 
 规划与执行：
 - 动态规划求在预算内可行的最大功能前缀 L*；beam search（宽度 32）选原子，排序偏好剩余预算更小、重复更少、左右手平衡。
-- 预算 B = 3·T̂，保护间隔 0.35 s；原子之间用最小加加速度桥接（桥接速度上限文中为 11 rad/s）。
+- 预算 B = 3·T̂，保护间隔 0.35 s；代价还包括起始桥接、原子间过渡、最终回中立位；桥接采用最小加加速度五次曲线，**速度上限为 1 rad/s**（论文 §III-C.3 式 13–14 / §IV-A；旧归档误写 11 rad/s）。
 - 只执行第一个原子，再按实测状态重规划剩余功能；另有 force-first 模式。
 
 ## 论文报告的结果
@@ -48,7 +50,17 @@
 - 无代码；原子库规模、人工审核拒绝率、显示硬件均未报告。
 - 可行性检查基于固定根 MuJoCo，不含真机站立/行走扰动；身体行为多样性受原子库覆盖限制。
 - 用户研究 20 人，比较条件含 Random Motion 但无规划器分项消融；节拍对齐差距小。
-- 机构信息 arXiv 页面未列，周报标注阿联酋大学，未核实。
+- 机构已由论文 HTML v2 作者栏与官方项目页核实：College of Computing and Artificial Intelligence, UAEU。
+
+## 公式与案例复核（arXiv v2）
+
+- 式 (1) 语义动作请求：`R_m = (f_1:K, T_hat)`；式 (2) 原子由**人工确认的功能标签、关节轨迹、持续时间、左右手属性**组成。
+- 式 (11) 完整规划代价：`J = C_tr(current, first) + Σ atom_duration + Σ inter_atom_transition + C_return_to_neutral + G`；式 (12) 要求 `J ≤ B(T_hat)` 并最大化有序前缀长度。
+- 式 (13–14) `s(u)=10u³−15u⁴+6u⁵`，桥接时间满足 `T_b ≥ 1.875 max_j |q1,j-q0,j|`（速度上限 1 rad/s）。
+- Table II 例子：“What are three ways to relax?” → `enumerate → enumerate → enumerate → neutral`；“Coffee or tea—which is better?” → `contrast_compare → uncertainty → neutral`。
+- Table V 是**每个回复内五条件的 1–5 排名**，不是独立问卷量表；Full 获 203/240 首选。Table VI 的 Random Match **每个固定回复重复 50 次试验**。
+- §IV-A 说明对话使用 Gemini 3.1 Flash Live 产生流式音频，未独立描述另一个 TTS 系统；**不能猜测额外语音引擎**。
+- 研究约束：固定根、仅 14 个手臂关节；单组 20 人 × 12 回合用户研究；声学节拍 BAS 差距有限，不能推断广义真机任务成功率。
 
 ## Robotics_Notebooks 映射
 
