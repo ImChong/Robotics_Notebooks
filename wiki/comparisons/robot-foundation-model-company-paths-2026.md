@@ -131,7 +131,7 @@ flowchart TB
 | [Delta Intelligence 德塔智能](../entities/delta-0-humanoid-foundation-model.md) | ● | ● | ○ | Δ₀（潜空间 world–action brain + 69-DoF 全身控制器） |
 | [Robbyant 蚂蚁灵波](../entities/robbyant.md) | ● |  |  | LingBot-VLA 2.0、LingBot-VA、LingBot-World（另有 Vision / Depth / Map / Video 感知与预训练层） |
 | [Reward AI 励元智能](../entities/reward-ai-robotics.md) | ● | ○ |  | OM-1（仅人类穿戴示范的通才操作策略 + Control Any Body 高频控制层） |
-| [Symbiosis Robotics](../entities/paper-dpc.md) |  | ● | ○ | DPC（去掉运动 latent 接口，视觉 / 语言 / 本体直出 G1 关节 PD 目标） |
+| [共生知行（Symbiosis Robotics）](../entities/paper-dpc.md) |  | ● | ○ | DPC（去掉运动 latent 接口，视觉 / 语言 / 本体直出 G1 关节 PD 目标） |
 | [RAI Institute](../entities/rai-institute.md) |  |  | ● | [ZEST](../entities/paper-zest.md)、[Sumo](../methods/sumo.md)、[AthenaZero](../entities/paper-athenazero.md)、Robot Juggling、SMPC-to-RL、[Exploy](../entities/exploy.md) |
 | [RoboParty 萝博派对](../entities/roboparty.md) | ○ | ● | ● | [Roboto Origin](../entities/roboto-origin.md)、Party OS、hhtools、MimicLite、UFO / TeCH、INTACT |
 | [BeingBeyond 智在无界](../entities/beingbeyond.md) | ● |  | ● | [Being-H0](../entities/paper-notebook-being-h0-vision-language-action-pretraining-from.md) → [H0.5](../entities/cn-os-being-h.md) → [H0.7](../methods/being-h07.md) → H0.8、[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md)、[BumbleBee](../entities/paper-notebook-from-experts-to-a-generalist.md)、[FAST](../entities/cn-os-fast.md)、[DemoHLM](../entities/paper-loco-manip-161-136-demohlm.md) |

@@ -70,7 +70,7 @@ summary: "DPC（Symbiosis Robotics, 2026-08 博客）：去掉分层全身栈的
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 共生机器人（Symbiosis Robotics）；联系 info@symbioact.com |
+| **机构** | 共生知行（Symbiosis Robotics）；联系 info@symbioact.com |
 | **类型** | 公司研究博客（非 arXiv / 无 PDF） |
 | **平台** | Unitree G1；输出 29 维关节 PD 目标 + 手部目标 |
 | **栈** | 单模型 direct-joint；Symbiotic Attention；DriftDistill（Offline BC → 在线恢复蒸馏） |
