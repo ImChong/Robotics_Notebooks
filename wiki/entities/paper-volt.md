@@ -140,7 +140,7 @@ sequenceDiagram
   participant SEG as DefaultSegmentorV2
   participant VOLT as Volt.forward
   participant DEC as volt/decoder.py
-  participant OPT as Optimizer
+  participant OPTM as Optimizer
   Dev->>SH: sh scripts/train.sh -g 4 -d scannet -c semseg-volt-distill
   SH->>CLI: python tools/train.py --config-file ... --num-gpus 4
   CLI->>TR: launch(main_worker) / TRAINERS.build + trainer.train()
@@ -153,7 +153,7 @@ sequenceDiagram
   DEC-->>SEG: point-level features
   SEG->>SEG: segmentation logits + optional teacher hard-label loss
   SEG-->>TR: loss
-  TR->>OPT: backward / step / scheduler
+  TR->>OPTM: backward / step / scheduler
   TR-->>Dev: logs + checkpoints in exp/dataset/name
 ```
 
