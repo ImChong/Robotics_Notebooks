@@ -386,6 +386,12 @@ op: ingest
 - **通读补齐：** PR #3699 复核中逐篇通读 Swarm Sensors 2025、SPL 2401.15026v1、ARTEMIS 2512.09431v1、RoboCompiler-Humanoids 2610.14237v1 及 CoMind 2611.12295v1；前四篇集中为[一手论文全文核验记录](../sources/papers/humanoid-coordination-fulltext-review-2026-11-13.md)，协调概念页以 `original` 关联该记录与 CoMind 归档。
 - **纠错：** 区分单机内管理与队级集中控制、SPL 定性赛事与 60 min 仿真、Swarm 控球百分点与缺员/丢包口径；CoMind 图中未来帧改为独立训练目标，补充 Process Score 权重定义。
 
+## [2026-11-13] ingest | sources/blogs/atlas_humanoid_early_release.md — 收录 ATLAS System 2 / System 0 与在线残差学习架构
+
+- 已通读项目官方 Early release 技术长文及主页的机制、实验、部署与局限。
+- 创建 ATLAS 唯一项目实体、Mermaid 控制流图，链接到 Loco-Manipulation 技术地图。
+- 截至 2026-11-13，项目页未列 ATLAS 可运行源码、权重或论文 PDF；不虚构源码时序或 arXiv 身份。
+
 ## [2026-11-13] ingest | Embodied First Exam 论文协议、九套件与失败阶段深化
 
 - 复用已入库的 arXiv:2611.12177 唯一实体 `wiki/entities/embodied-first-exam.md`，不重复建立同论文第二个节点。

@@ -92,6 +92,7 @@
 - [Astra Games / Awesome GPT-6 Astra](wiki/entities/astra-games.md) — 一个社区 AI 辅助游戏与交互作品目录：GitHub 提供来源记录与部分源码，Astra Games 提供分类、搜索和体验入口，可作为机器人知识站的交互设计参考。 `📅unknown` `[entity_page]`
 - [Astranomy：GPT-6 Astra 原生机器人策略研究](wiki/entities/astranomy.md) — Astranomy** 是 NVIDIA Seattle Robotics Lab 对 GPT-6 Astra 直接控制、agentic 控制和策略监督三种用法进行系统比较的技术报告，重点揭示推理 `📅unknown` `[entity_page]`
 - [Astryx：面向人与 Agent 的可定制设计系统（Agent-Ready React Design System）](wiki/entities/astryx.md) — Astryx** 是 Meta 开源的 React 19+ UI 设计系统：通过预编译组件样式、可覆盖的设计令牌、模板与供人类及编码 Agent 共用的 CLI，减少应用界面重复开发。 `📅unknown` `[entity_page]`
+- [ATLAS：基于人类视频与 Agentic Harness 的人形全身智能（Agentic Harness for Whole-Body Intelligence from Human Video）](wiki/entities/atlas-agentic-harness.md) — ATLAS** 从**一段人类演示视频 + 一条语言指令**提取人形全身动作参考，让 System 2 Agent 编写任务规则、冻结的 System 0 全身 tracker 执行，并通过连接两 `📅unknown` `[entity_page]`
 - [Atlas OS（Windows 优化 Playbook）](wiki/entities/atlas-os.md) — Atlas OS**（Atlas-OS/Atlas，atlasos.net， `📅unknown` `[entity_page]`
 - [Atlas（World Labs omni 世界模型）](wiki/entities/atlas-world-model.md) — Atlas** 是 World Labs 在 2026-09 公开的 **下一代世界模型**：从零预训练、原生融合 **文本、图像、视频与 3D**，用  `📅unknown` `[entity_page]`
 - [Atom01 Description](wiki/entities/atom01-description.md) — atom01_description** 是 Atom01 的机器人描述仓库，主要提供 URDF、网格和模型配置，用于连接硬件实体与仿真/控制软件。 `📅unknown` `[entity_page]`
