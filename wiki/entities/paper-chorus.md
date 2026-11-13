@@ -12,7 +12,6 @@ related:
   - ../concepts/humanoid-multi-robot-coordination.md
   - ../comparisons/ctde-vs-decentralized-marl.md
   - ./paper-pi05-open-world-vla.md
-  - ./paper-be-my-eye-comind.md
   - ./paper-self-supervised-control.md
 sources:
   - ../../sources/papers/chorus_arxiv_2606_12352.md
@@ -115,7 +114,6 @@ flowchart TB
 | [CTDE vs 完全去中心化 MARL](../comparisons/ctde-vs-decentralized-marl.md) | MARL 范式强调训练期全局信号；CHORUS 是 **模仿学习式单策略微调**，非 RL CTDE |
 | [Self-Demonstrated Control](./paper-self-supervised-control.md) | 同 π₀.₅ 族，但解决 **单机体微调遗忘**，非多机同时协作 |
 | [人形多机协调](../concepts/humanoid-multi-robot-coordination.md) | 该页侧重足球/群控与通信预算；CHORUS 是 **移动操作臂 + VLA + 零通信** 的另一条协作线 |
-| [CoMind / Be My Eye](./paper-be-my-eye-comind.md) | 星尘智能以**双向传送任务相关上下文 token**应对本机不可见的信息；与 CHORUS 的推理期**零通信**是不同假设，不能混淆 |
 
 ## 结论
 
@@ -152,7 +150,6 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md)
 - [人形多机协调](../concepts/humanoid-multi-robot-coordination.md)
 - [π₀.₅](./paper-pi05-open-world-vla.md)
-- [CoMind / Be My Eye：跨机共享任务相关上下文](./paper-be-my-eye-comind.md)
 
 ## 参考来源
 
