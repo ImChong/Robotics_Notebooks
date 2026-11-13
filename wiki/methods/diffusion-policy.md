@@ -5,7 +5,7 @@ status: complete
 original:
   - ../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-11-10
+updated: 2026-11-13
 related:
   - ../entities/paper-flow-grpo.md
   - ../overview/ai-architecture-map.md

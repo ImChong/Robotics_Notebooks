@@ -26,7 +26,7 @@ sources:
   - ../../sources/blogs/wechat_pinkrobot_off_on_policy_rl_evolution_2026-09-15.md
   - ../overview/deep-rl-off-on-policy-evolution.md
 summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
-updated: 2026-11-08
+updated: 2026-11-13
 ---
 
 # Policy Optimization

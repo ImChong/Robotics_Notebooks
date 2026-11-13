@@ -82,7 +82,7 @@ flowchart LR
 - **采集 prompt：** 提示 VLM 在胶带标记的方形区域内随机操作物体，越界则输出「move the <> towards the center of the table」（附录 A）。
 - **代码：** 论文首页给出项目页 robot-playworld.github.io；本次未见公开仓库链接，故 frontmatter 不写 code。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Berseth 的 CoRL 2026 阅读清单，作者说明摘要由 LLM 据摘要起草）一句话：「Trains robot world models on autonomous play data, reducing contact hallucinations compared with demonstrations or policy rollouts.」
 
@@ -92,6 +92,14 @@ flowchart LR
 | 相比示教减少接触幻觉 | 有对照：Human Demo（6h）与 Human Play（6h）（§4.3，Table 1），失败类（漏抓、滑动、打滑、碰撞等）LPIPS/SSIM 多数更好，Fig. 5 展示基线「幻觉成功」；但对象是示教/人类 play，且 Robot Play 6h 对 Human Demo 6h 在「成功」类 LPIPS 仅 0.082 对 0.084；形变类 Robot Play 6h 的 SSIM 与 Human Play 相同（0.831）。论文自己也说幻觉「未完全消除」（§6）。 |
 | 相比策略 rollout | 论文没有以「策略 rollout 训练的世界模型」为基线；基线只有人类示教与人类 play。基准的测试片段来自 20+ 策略 rollout（Table 3），但那是评测集，不是对照训练数据。清单这一半说法在论文里找不到对应实验。 |
 | 隐含内容 | 清单未提：数据集仅限 DROID 平台受控实验室、三个小物体集；策略评估（18 个策略，Pearson 0.8766）与「最多 65%」真机提升属于该论文的主要后续结果，但清单没写。 |
+
+## 结论
+
+PlayWorld 表明机器人自玩数据有助于世界模型覆盖失败交互，但模型幻觉和采集冗余仍限制后训练。
+
+- 按相同采集小时比较机器人与人类数据，并单独核验课程中成功示范的人工贡献。
+- 同时评估漏抓、碰撞等事件保真度与下游策略表现，不能仅凭视频观感选模型。
+- 模型内 RL 应监测过拟合与真实迁移并设置早停，不能把预测器当无误差模拟器。
 
 ## 局限
 

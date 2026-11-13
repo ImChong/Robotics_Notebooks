@@ -3,7 +3,7 @@ type: entity
 title: WalkE3-Controller（人形 RL 部署与 FSM）
 tags: [humanoid, onnx, lcm, fsm, mujoco, sim2real, jackhan-sdu, walke3]
 summary: "Ubuntu 20.04 上通过 conda 脚本装配依赖；一侧运行 MuJoCo 仿真，另一侧启动控制算法，支持 ONNX RL 策略、多模式状态机与安全检查，并可用游戏手柄切换 RL_HYBRID / RL_WALK / DEVELOPMENT 等模式。"
-updated: 2026-05-16
+updated: 2026-11-13
 status: complete
 related:
   - ./jackhan-walke3-e3-ecosystem.md
@@ -56,6 +56,7 @@ flowchart TD
 
 ## 常见误区或局限
 
+- **2026-11-13 维护复核：** [官方 README（0a4ba89）](https://github.com/JackHan-Sdu/WalkE3-Controller/blob/0a4ba898d5a48205f2a800b50345339fa3d6a173/README.md) 仍要求 Ubuntu 20.04，分终端启动 `mujoco_sim/mujoco_simulator.py` 与 `scripts/run_controller.sh ./config.yaml`；DEVELOPMENT 模式连接外部算法模板。模式序列中的 `OFF` 与模式表的 `PASSIVE` 叫法不同，实际切换须以对应源码和配置验证；本次未运行仿真或硬件。
 - **强绑定发行版**：README 写明 **Ubuntu 20.04**；其他版本需自行验证 `lcm`、动态库路径与实时性。
 - **「通用框架」仍有机器人假设**：关节分组、模式切换手势与 ONNX 元数据需与具体 E3 控制栈版本对齐。
 

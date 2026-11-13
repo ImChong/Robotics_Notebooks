@@ -97,7 +97,7 @@ flowchart TD
 - **推理（§4.3）：** 单张 RTX 5090，16 步动作块 84 ms，约 9 GB 显存。代码未在论文中提供，项目页未列 GitHub（见来源归档）。
 - **复现注意：** 单步推理依赖骨干的零终端 SNR v-prediction 调度。作者在 Wan（整流流）上换目标「初始实验不稳定」（§6，G.7）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth，CoRL 2026 阅读清单，P2，World Models 与 World Action Models 组；该摘要按作者说法由 LLM 据摘要起草）一句话：「Repurposes a pretrained video diffusion transformer as a policy by treating actions as single video-patch tokens.」
 
@@ -109,6 +109,14 @@ flowchart TD
 | 仿真还是真机 | 清单未说。论文两者都有：LIBERO 学习自视频协议（仿真，§4.1）与双臂真机（§4.2）。 |
 
 注意：LIBERO 结果来自「仅 LIBERO-90 有动作标签、其余套件只有视频」的非标准协议，作者明说绝对数字与标准全监督榜单不可比（§4.1）。
+
+## 结论
+
+TAPESTRY 展示了保留视频训练先验而单步输出动作的效率路径，但结论受骨干调度与动作多模态限制。
+
+- 先核对零终端 SNR 和 v-prediction 假设，不直接移植到其他流骨干。
+- 在同数据、算力和加速条件下比较 DreamZero 等基线，再判断速度与效果。
+- 对多目标动作、精细接触和 OOD 任务补做重复验证，现有小样本优势不能当统计确定结论。
 
 ## 局限
 

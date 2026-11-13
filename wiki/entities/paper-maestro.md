@@ -83,7 +83,7 @@ flowchart TD
 - **基线实现：** Gemini Robotics Agent 是作者按 Gemini Robotics 技术报告自行实现的 CaP 基线，工具较少（IV-B、表 I）；π0 用 π0-FAST-DROID，π0.5 用 π0.5-DROID（IV-B）。
 - **未公开信息：** 论文与本次读到的内容均未给出代码仓库地址，只有项目页 maestro-robot.github.io（未读）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单一句话：*A VLM coding agent orchestrating perception, planning and control tools matches VLAs zero-shot, without new teleop data.*
 
@@ -94,6 +94,14 @@ flowchart TD
 | 没有新的遥操作数据 | 论文结论写 "Without relying on any robot training data"（V）。需注意：其工具（GraspGen、FoundationStereo、Grounded-SAM 等）与 Gemini Robotics-ER 本身都由数据训练得到，只是本文未新增机器人数据；「演化」一节用到真机试验的上下文记录（IV-E），不属于零样本 |
 | 题名 "Coding Agents" | v1 首页标题为 "…with Vision-Language Models…"；清单题名可能来自后续版本，推测，未核实 |
 | （清单未提）移动操作与「MAESTRO + π0.5」 | 移动 4 任务仅有 MAESTRO 自身结果，无基线（表 III）。正文称含 MAESTRO + π0.5 对比，但 v1 表 II 无该列，数字缺失 |
+
+## 结论
+
+MAESTRO 说明编程智能体可组合感知、几何与策略工具处理桌面任务，但高层推理并未消除低层与延迟瓶颈。
+
+- 先检查工具契约、IK 可行性与失败恢复，再比较编排策略。
+- 对照端到端 VLA 时对齐时限和重试预算，同时报告 API 延迟与运行成本。
+- 固定进度评分规则并增加重复试验，七任务中六项均分较高仍不足以证明通用优势。
 
 ## 局限
 

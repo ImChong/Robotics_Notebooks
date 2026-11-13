@@ -99,7 +99,7 @@ flowchart TD
 - **零样本分布偏移测试（IV-E）：** 替换底层运动控制器（奖励中去掉 Raibert 启发项，步态不同），不重新采集数据也不重训世界模型，Go2 仍把方块推入目标（图 7）。
 - **代码：** 论文正文未给仓库链接，本页不写 code 字段。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，据作者说由 LLM 依摘要起草）写：「First-order RL with a large world model for forward rollouts and a lightweight latent surrogate for gradients, on real robots.」逐项核对：
 
@@ -110,6 +110,14 @@ flowchart TD
 | 轻量潜空间代理求梯度 | 符合（III-E，DreamerV3 RSSM，只需单步精度）。 |
 | on real robots | 需限定：世界模型与奖励模型用真机数据训练，策略也在真机上评估（Push-T 10 次、Go2 定性与 3 回合指标），但 RL 优化本身发生在世界模型内部，并非真机在线 RL。摘要自述为「bypasses simulators entirely」，结论称「零样本迁移」，真机评估规模很小（见局限）。 |
 | 清单未提 | 论文的对比对象是 PPO（图像输入）、ACT、No Diffusion 消融，任务仅两个，指标主要是样本 / 时间效率与成功率。 |
+
+## 结论
+
+该工作把高保真前向预测与轻量梯度代理分工，是世界模型内一阶 RL 的可行路线，真机证据仍很有限。
+
+- 分别核验全局 rollout 保真度和局部代理梯度质量，单步准确不等同长程预测可靠。
+- 报告样本效率时区分世界模型内样本与真实采集数据，不能把模型内训练称为真机在线 RL。
+- 迁移到目标机器人前补做重复成功率和同任务模型方法对照，避免由两个小任务推断通用迁移能力。
 
 ## 局限
 

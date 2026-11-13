@@ -106,7 +106,7 @@ flowchart TB
 | 设计分析 | Humanoid：名义关节位与增益、足缩小，仅复制增益使回报 5.8 → 12.5；Golem：动作缩放 −12.2%、P −4.1%、D +4.4%；Go2：后腿关节轴、足几何、前髋 / 小腿速度限；无单一参数组可解释全部提升 | §4.3，附录 H，Fig 12 |
 | 部分机型 | 高个人形（如 Fourier GR1 T2）优化后变矮、变宽、更紧凑，作者推测有利稳定并更接近人形训练分布 | §4.3，Fig 2 |
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Berseth CoRL 2026 阅读清单，P0 Spotlight，第 025 篇；其摘要作者自述由 LLM 据摘要起草）一句话摘要：*Trains one multi-embodiment value function, then uses its gradients as a differentiable surrogate to optimize robot designs without new RL loops.*
 
@@ -117,6 +117,14 @@ flowchart TB
 | 「without new RL loops」 | 对设计阶段成立（搜索期不更新策略权重）；但前提是先做一次大规模多具身 RL：单机器人设置约 7–9 h，50 机模型约 2.5 天单卡（§4.1、附录 A.5）。节省的是「每个新设计」的 RL，不是总 RL。 |
 | （清单未提）仿真 / 真机 | 全部为 MJX 仿真，未评估可制造性或真机迁移（§5）。 |
 | （清单未提）相对 RL 共设计的优势 | 论文说终性能持平或略好，优势在边际成本；基线是为适配本设置而「大幅改造」的版本，作者称并非原方法的完整复现（附录 F）。 |
+
+## 结论
+
+Shape Your Body 支持固定拓扑内的快速价值梯度设计搜索，但 critic 回报不能代替可制造性与真机验证。
+
+- 把首次多具身训练和后续每设计搜索成本分开计算。
+- 用真实仿真 rollout 复核 critic 推荐，并限制搜索偏离训练覆盖范围。
+- 加入材料、执行器和制造约束后再评估工程价值，不能据此增减拓扑或宣称真机改进。
 
 ## 局限
 

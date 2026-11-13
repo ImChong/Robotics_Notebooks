@@ -113,7 +113,7 @@ flowchart LR
 3. 真机结果是 Franka 桌面机械臂验证，不能直接写成已部署人形机器人全身安全控制。
 4. 与 [FreeBar](./paper-freebar-barrier-guidance-async-vla.md) 的异步时间一致性、[Robo-ValueRL](./paper-robo-valuerl.md) 的任务价值筛选解决不同问题。
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单一句话摘要：「Model-based safe RL for VLAs inside an interactive video world model, with imagined progress rewards and a learned safety head.」
 

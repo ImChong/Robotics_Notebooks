@@ -7,6 +7,19 @@ from pathlib import Path
 import lint_wiki as lw
 
 
+def test_source_titles_do_not_hide_claims_outside_the_title() -> None:
+    assert lw._stale_claim_hit("核对《激光雷达 SLAM 算法最新综述》的说法。", set()) is None
+    assert lw._stale_claim_hit("核对《最新综述》后，本方法是 SOTA。", set()) == "SOTA"
+    assert lw._stale_claim_hit("《旧综述》之外还有最新方法。", set()) == "最新"
+    assert lw._stale_claim_hit("《未闭合的最新综述", set()) == "最新"
+
+
+def test_absence_of_a_phrase_is_not_a_performance_claim() -> None:
+    assert lw._stale_claim_hit('全文不含 "state-of-the-art" 表述。', set()) is None
+    assert lw._stale_claim_hit("论文不含额外数据的 SOTA 方法。", set()) == "SOTA"
+    assert lw._stale_claim_hit('全文不含 "SOTA" 表述。但这是最新方法。', set()) == "最新"
+
+
 def _setup_wiki(tmp_path: Path, monkeypatch) -> Path:
     monkeypatch.setattr(lw, "REPO_ROOT", tmp_path)
     wiki = tmp_path / "wiki" / "concepts"

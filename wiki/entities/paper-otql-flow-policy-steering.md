@@ -95,7 +95,7 @@ flowchart TD
 - **调参提示（附录 C）：** lambda 过大使耦合集中在少数样本，有效 batch 变小、收敛慢（图 6 中 lambda=1.5）；过小则不偏向高优势样本。作者建议 chunk=10、episode 约 100 到 200 步时 lambda 取 0.4 到 1.0。
 - **代码：** 项目页未见代码仓库链接，本页未写 `code:`。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P1，RL Fine-Tuning of VLAs 与 Generative Policies 组）对该文的一句话摘要为：「Advantage-weighted conditional optimal-transport flow matching to RL fine-tune and accelerate suboptimal flow policies.」（作者说明是 LLM 据摘要起草；排序由作者的兴趣模型打分得来，不是质量评价。）
 
@@ -109,6 +109,14 @@ flowchart TD
 | （摘要未提及） | 清单摘要没有写：需要策略是 neural-ODE 型生成模型，不能黑箱使用；真机结果只在一台 KUKA 上、每个 VLA 任务 30 次试验（§5、表 2）。 |
 
 数字核对：摘要的 36% 到 86%（单任务）与 38% 到 76%（SmolVLA）；表 2 折算为 (14+9)/60 约 38%、(24+22)/60 约 77%，与摘要一致。正文写「平均提升 37%」，按百分点算约 38，属四舍五入口径差异。
+
+## 结论
+
+OTQL 将流策略后训练与路径拉直结合，但需要可访问 neural-ODE 结构，不能作为任意策略的黑箱插件。
+
+- 在相同动作维度与噪声设置下验证 minibatch OT 质量，再减少积分步数。
+- 同时报告成功率、NFE 和完整训练周期，半离线停机更新成本不能省略。
+- 按目标模型与任务复验，SmolVLA 和少量真机任务的收益不能代表所有 VLA 或 WAM。
 
 ## 局限
 

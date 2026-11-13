@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-11-10
+updated: 2026-11-13
 related:
   - ../entities/paper-visualforce.md
   - ../entities/rhoda-dva-tactile-sensing.md

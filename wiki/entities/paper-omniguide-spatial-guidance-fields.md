@@ -94,7 +94,7 @@ flowchart TD
 - **延迟（IV-C 节，图 10）：** 单张 RTX 5090，约 0.25 s 增至约 0.53 s，控制频率 30 Hz 降到约 15 Hz；通过并行 KV cache、CLIP、VGGT 计算缓解。
 - **复现提示：** 项目页有 GitHub 链接，但本页作者未能访问仓库，不能保证代码已发布或可复现。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P1，「VLAs & Generalist Policies」，摘要由 LLM 据摘要起草，排序是作者自己的兴趣模型打分，不是质量评价）原文：「Expresses 3D, semantic and human-pose guidance as differentiable energy fields that steer VLA action sampling at test time.」
 
@@ -106,6 +106,14 @@ flowchart TD
 | 清单标题 "Universal Spatial Guidance Fields" | arXiv v1 标题为 "Universal Guidance Fields"，"A Universal Spatial Guidance Field" 是 III-C 节小标题；OpenReview 版标题可能不同（本环境未能打开） | 标题与 v1 不完全一致 |
 | 未提及的实验范围 | 仿真为 RoboCasa 加 GR00T N1.6（地面真值深度与位姿），真机为 DROID 加 π0.5；真机每配置只有 5 次试验（IV-C 节） | 一句话摘要没有体现样本量小与仿真用真值感知 |
 | 摘要头条数字（论文 I 节，非清单） | 「24.2% 到 92.4%」「7.0% 到 93.5%」在正文与图 5、9 中找不到对应汇总，口径不明 | 无法核实 |
+
+## 结论
+
+OmniGuide 以可微空间能量引导冻结 VLA，适合加入几何与语义约束，但不能保证无碰撞或弥补所有运动学失配。
+
+- 先验证点云尺度、障碍剔除与机器人运动学，再调去噪引导权重。
+- 分开测试感知误差和能量场局部极小，仿真真值观测的结果不能直接代表真机。
+- 同时计入约翻倍的延迟，并扩大真机重复次数后再评价安全率与成功率。
 
 ## 局限
 

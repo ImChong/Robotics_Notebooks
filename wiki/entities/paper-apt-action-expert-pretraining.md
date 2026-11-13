@@ -85,7 +85,7 @@ flowchart TD
 - **真机（附录 E.1）：** Agilex Cobot + Piper 臂 + 两台 ORBBEC DaBai 相机；每任务 30 条遥操作演示微调。基线 π0.5 用关节空间动作微调，APT 用相机系动作表示，两者动作表示并不一致，对比时需留意。
 - **复现提示：** 文中只给出项目页，本次未发现公开仓库；超参与数据权重已在附录给出，但预训练算力规模与耗时文中未见说明（推测需要大规模算力）。
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单第 084 条，P2，分组 VLAs & Generalist Policies；摘要为 LLM 据摘要起草）说：*Pretrains the VLA action expert as a language-agnostic vision-action prior to stop visual shortcuts and improve instruction generalization.* 逐项核对：
 
@@ -105,6 +105,14 @@ flowchart TD
 - **消融（§4.1.4）：** 两阶段在 π 式、GR00T 式动作专家上也大多有益；去掉大规模预训练或改成 Token Insertion 都下降。
 - **真机（Table 3、7、8，Figure 6）：** 抓放 90/110 对 63/110，杂乱推抓放 60/80 对 43/80；单条拼接指令下 T1+T2 为 65% 对 0%（每组 20 次）。已见语言逐条下达时二者相当。
 - **附录补充：** 原 LIBERO 平均 96.1（π0.5 为 96.9）；LIBERO-Plus 总分 71.6（X-VLA 71.4），作者自述不意在宣称优越（D.2、D.3）。
+
+## 结论
+
+APT 表明先学习视觉动作先验再引入语言值得测试，但并未证明视觉捷径已被彻底消除。
+
+- 按两阶段训练与层级融合复现，分别评估已见任务和未见指令，避免只看原 LIBERO 平均分。
+- 对照 KI 或 π0.5 时对齐数据、动作坐标系和微调预算，再判断动作专家初始化的贡献。
+- 把 LIBERO-PRO 的位置扰动低分及长程记忆缺口列入部署验收，不能用平均提升替代逐子套件检查。
 
 ## 局限
 

@@ -109,7 +109,7 @@ flowchart TD
 - **基线公平性（§5.2）：** Beam Search、MPPI 与两个消融只替换训练期的计划生成器；测试时除专门的测试期规划器外，都是「采样动作并取价值最高」，无搜索。
 - **代码（2026-11-12 更新）：** 官方 [kallol-saha/DISCO](https://github.com/kallol-saha/DISCO) 已公开训练/搜索/蒸馏及 demo 入口，另提供 [Hugging Face 权重](https://huggingface.co/kallol-saha/disco) 与 [数据](https://huggingface.co/datasets/kallol-saha/disco-data)。论文撰写时或旧页未发现代码的说法已经过时。官方 README 测试环境为 Linux、Python 3.10、CUDA 12.6、2× RTX 4090；不等同于论文中某次实验的单卡成本。
 
-## 与清单说法的核对
+## 评测证据与清单说法的核对
 
 背景：Glen Berseth 的 CoRL 2026 阅读清单（#069，P1，Planning & Compositional Generalization，Oral）对该文的一句话摘要是「Distills MCTS over continuous actions in GPU-parallel simulation into policies for long-horizon multi-object rearrangement.」（据作者说明，摘要由 LLM 据论文摘要起草，排序是作者按个人研究兴趣打分，不是质量评价。）
 

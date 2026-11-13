@@ -109,7 +109,7 @@ flowchart TB
 - **评测协议：** 方法间复现一致的初始物体摆放；每策略 20 次（Gear Bot 与 Circuit 人视频设定 10 次）；按任务评分表打归一化完成分（附录 B）。
 - **代码：** 论文未给出代码仓库，本页 frontmatter 不写 code 字段。
 
-## 与清单说法的核对
+## 评测证据与清单说法的核对
 
 对象：CoRL 2026 Berseth 阅读清单第 016 条（P0，Oral）的一句话摘要「Test-time training scales policy context to 8K timesteps without extra latency, enabling in-context imitation from human video and policy improvement.」（清单自述为 LLM 据摘要起草，排序是作者个人兴趣打分，不是论文质量评价）。
 

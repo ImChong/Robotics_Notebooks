@@ -90,7 +90,7 @@ flowchart TD
 - **算力与实现**：需要反复重训多个学习密度奖励模型，作者自承实现复杂、计算密集（§5）。
 - **代码**：论文首页给出 https://github.com/princeton-prism/action-influence-maximization 与项目页 princeton-prism.github.io/action-influence-maximization；本次未能访问，仓库内容与是否已公开未核实。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，据摘要由 LLM 起草）的一句话：「World models trained on successful trajectories ignore actions; an action-influence (empowerment) objective restores controllability.」逐项核对：
 
@@ -99,6 +99,14 @@ flowchart TD
 - **「restores controllability」偏强**：论文的证据是 Push-T 末端执行器像素召回上的提升，且只在仿真里；Tee（被推物体）召回在所有数据策略下都很低，AIM 在 Push Away 评测上 Tee 召回 0.201，低于 300K 专家的 0.282（表 1，附录 H）；BC 评测集上的「持平 300k」不能推到所有评测分布，Anti-Push-T 上只是接近 19k 专家基线（§4.2）。BC-Failure 评测上 EE 召回仅从 0.517 到 0.564（表 1）。
 - **清单漏掉的前提**：Four Rooms 中均匀随机采集反而最强，AIM 只是接近（§4.2）；AIM 的优势依赖「无法均匀采样状态」的现实设定。
 - **仿真还是真机**：清单摘要没说，论文结论自称「仿真中的概念验证」（§5）。
+
+## 结论
+
+AIM 提供了按动作影响主动采集世界模型数据的思路，现有证据支持仿真中的局部可控性改善。
+
+- 先检查世界模型是否随动作改变，而非仅凭视频观感判断数据是否足够。
+- 复现时同时保留动作信息奖励、状态覆盖与保守策略约束，避免奖励利用工作空间外的高分区域。
+- 分别报告末端执行器与被操作物体的指标；Push-T 的末端增益不能外推为真机或所有对象的可靠预测。
 
 ## 局限
 

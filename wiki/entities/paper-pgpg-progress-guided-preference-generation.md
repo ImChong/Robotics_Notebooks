@@ -91,7 +91,7 @@ flowchart LR
   - LIBERO-10 + GR00T N1.7（A.1.8，表 8）：每任务 5 条示范与 20 条 rollout，平均 50.5%（预训练）→ 64.8%（Filtered BC）→ 72.1%（PGPG），10 个任务中 7 个最优。
 - **代码：** 项目页给出 [tunglm2203/pgpg](https://github.com/tunglm2203/pgpg)；本次未能打开该仓库（代理返回 403），内容与发布状态未核对。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P2 档，序号 092/101；摘要由 LLM 据摘要起草）原文：「Unsupervised preference labels from progress relative to a few expert demos fine-tune generative policies without human annotation.」
 
@@ -103,6 +103,14 @@ flowchart LR
 | 未提及的限定词 | 清单未写「仿真」。论文全部实验在仿真：Robomimic 五任务与 LIBERO-10，**没有真机实验**。主实验策略只用低维状态而非图像（§5.1），图像只用于标签生成。 |
 | 未提及的前提 | 需要一个约 40% 成功率的预训练策略来采集 rollout（§5.1）；示范数据 mh 混合质量（除 Tool Hang 用 ph，A.2.3）；依赖预训练视觉编码器（§6 自述局限）。 |
 | 隐含的「优于基线」 | 作者称平均成功率最高（§5.2），但平均值只画在图 2，正文无表格数值。与特权基线的关系：对 Filtered BC（用 oracle 成功判据）和 CPLKL（用真值奖励）而言，稠密奖励任务上是「持平」而非超越，稀疏奖励任务上作者称优于 CPLKL。 |
+
+## 结论
+
+PGPG 支持用自动进度差生成偏好来微调生成策略，但证据目前限于仿真和特定进度假设。
+
+- 先验证视觉编码器与 ORCA 匹配质量，再生成偏好对，避免遮挡与时间错位形成错误监督。
+- 在需要回退或循环的任务上独立测试边际进度，不能默认进度单调。
+- 对照 RL 时对齐 rollout 预算，并补做视觉策略与真机实验后再判断部署价值。
 
 ## 局限
 

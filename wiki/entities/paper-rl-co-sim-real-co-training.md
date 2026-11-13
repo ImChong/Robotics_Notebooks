@@ -93,7 +93,7 @@ flowchart TD
 - **算力与时间（附录 J、表 8）：** Open Drawer 上 MimicGen 约 1.5 小时（RTX 4090），RL 约 9.43 小时（2×H100）；建仿真约 1 人日，四任务共享。π0.5 的四个 RL 运行分别用 3、4、2、3 张 H100。
 - **代码：** 论文只给了项目页，未列代码仓库，本页不填 `code:`。RL 侧训练框架用的是 RLinf，见 [RLinf-VLA](./paper-rlinf-vla.md)。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P2，条目由 LLM 据摘要起草）对该论文的一句话摘要为：「Sim-real co-training with RL in simulation plus a supervised loss on real data, instead of SFT-only co-training.」
 
@@ -106,6 +106,14 @@ flowchart TD
 | 未提及：仿真示范来源 | 仿真侧 SFT 数据由 MimicGen 从真机种子轨迹生成（附录 B），仿真并非无需真机数据 |
 
 结论：清单摘要大意准确，但漏掉了「两阶段」「Stage I 不可省」「MimicGen 数据」「证据规模较小」这几个限定。表中「作者自述」与「我的核对」分开列，上表右列为核对结果。
+
+## 结论
+
+RL-Co 支持以真机监督锚定仿真 RL 的协同训练方案，但收益依赖仿真、任务奖励与数据配比。
+
+- 依次核验 SFT 热启动、仿真 RL 和真机 SFT 锚点，避免直接跳过协同预训练。
+- 在同样数据与调参预算下比较基线，并单独计入手工奖励设计成本。
+- 区分评测会话波动与训练种子方差，四个桌面任务不能代表跨本体或非刚体迁移。
 
 ## 局限
 

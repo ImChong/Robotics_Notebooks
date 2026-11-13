@@ -3,7 +3,7 @@
 type: entity
 tags: [framework, robot-learning, vla, teleoperation, real-time, open-source, cross-embodiment, nvidia, cmu]
 status: complete
-updated: 2026-05-15
+updated: 2026-11-13
 related:
   - ../methods/vla.md
   - ../tasks/teleoperation.md
@@ -85,6 +85,7 @@ flowchart LR
 
 ## 常见误区或局限
 
+- **2026-11-13 维护复核：** [官方 README（7c60b69）](https://github.com/robot-i-o/rio/blob/7c60b69065d0c226be55cf91770e0b5c34964bc3/README.md) 仍定位为机器人、相机与遥操作 I/O 及 VLA 部署接口；安装示例测试环境为 Ubuntu 22.04、Python 3.10，另克隆 `third_party/openpi` 后以 uv 同步依赖，文档可用 `uv run mkdocs serve` 本地构建。本次核对 README，未验证各硬件驱动、外部分仓或性能数据。
 - **不是「又一个 VLA 训练框架」**：论文定位是 **I/O 与部署编排**；训练仍多为 **bring your own stack**（导出后在外部 fine-tune，再载入权重闭环）。
 - **延迟与 profiling 数字依赖具体中间件、相机路数、GPU 与策略**：项目页给出的与 **LeRobot** 的端到端延迟对比应视为**同配置下的一个数据点**，换硬件需自测。
 - **许可与维护**：以 GitHub 仓库 LICENSE 与发布说明为准；**rio** 与 **rio-hw** 分仓，部署前需同时对照文档的版本矩阵。

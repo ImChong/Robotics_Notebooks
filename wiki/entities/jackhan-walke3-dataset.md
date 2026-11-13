@@ -3,7 +3,7 @@ type: entity
 title: WalkE3-Dataset（E3 运动 CSV 与 MuJoCo 回放）
 tags: [dataset, humanoid, mujoco, csv, motion, jackhan-sdu, walke3]
 summary: "以 CSV 记录根位姿、四元数与 21 关节角；脚本将序列转为含体坐标系线角速度与关节速度的 JSON 运动文件，并在 MuJoCo 中按帧回放，附带 Matplotlib 速度曲线。"
-updated: 2026-05-16
+updated: 2026-11-13
 status: complete
 related:
   - ./jackhan-walke3-e3-ecosystem.md
@@ -49,6 +49,7 @@ flowchart LR
 
 ## 常见误区或局限
 
+- **2026-11-13 维护复核：** [官方 README（d456717）](https://github.com/JackHan-Sdu/WalkE3-Dataset/blob/d456717e5e0e34ecc33a731d608fdbd01b743d03/README.md) 仍给出 28 列 CSV、55 元/帧输出与正向/反向转换脚本；采样频率须整除，四元数为 x-y-z-w，许可仍是占位文本。本次未执行转换或验证运动可行性。
 - **README 许可占位**：仓库正文写「Specify your license here」，二次分发前需确认作者最终选择的许可证。
 - **数据不是「通用 MoCap」**：列定义绑定 E3 21-DoF 与特定根姿态约定，换机器人需重映射列语义。
 

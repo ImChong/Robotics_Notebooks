@@ -87,7 +87,7 @@ flowchart LR
   - 参数量与算力：Eq-Net 48.9 至 61.1 MB 对 U-Net 120 MB 与 DiT 74.2 MB（Table II）；全部实验约 168 GPU 天（附录 VI-C4）。
 - **复现状态：** 论文未给代码 / 项目页链接，本页不列 `code:`。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单一句话摘要（作者说由 LLM 据摘要起草）：*Shift equivariance and local receptive fields explain when diffusion planners trained by BC stitch and compose sub-trajectories.*
 
@@ -101,6 +101,14 @@ flowchart LR
 | 论文自身数字 | 正文写 Maze 引导任务「83.3% 完成率，约 7.5 倍」，Table I 为 83.8±6.4 与 13.39±5.0，比值约 6.3 倍 | 论文内部不一致（v1 写同样的 83.3 与 7.5 倍），本页采用表中数 |
 
 另外：清单标题为 v3 题名；v1/v2 题名是 *Diverse Trajectory Stitching / Composition*。
+
+## 结论
+
+该研究把局部感受野、平移等变性和推理选择连接到扩散规划的组合泛化，证据限于受控拼接环境。
+
+- 评测时同时检查新颖性和任务完整性，不能把新颖轨迹比例直接当成功泛化。
+- 把架构、数据覆盖率及引导方式分开控制，再判断 Eq-Net 的局部与等变偏置是否有帮助。
+- 迁移到多任务或多本体数据前另做验证，两个 Franka 任务不足以证明通用架构优势。
 
 ## 局限
 

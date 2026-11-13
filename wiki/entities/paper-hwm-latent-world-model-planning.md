@@ -91,7 +91,7 @@ flowchart TB
 | Franka 离线动作对齐 | V-JEPA 2-AC | 余弦 0.88 ± 0.03（macro-action）vs 0.80 ± 0.02（delta pose） | §4.3、Table 6 |
 | 真机 VLA 对照 | 见右 | Octo 0 / 0%（抽屉 43%）；π0-FAST-DROID 52 / 18%；π0.5-DROID 68 / 36% | Table 1、附录 J.1 |
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，第 040 条，P1，World Models & World Action Models 分组；摘要由 LLM 据论文摘要起草，排序是作者按自己的兴趣模型打分，不是论文质量评价）写道：「Hierarchical MPC on visual latent world models learned at multiple temporal scales for long-horizon zero-shot control.」
 
@@ -100,6 +100,14 @@ flowchart TB
 - **「long-horizon」**：有两种含义。真机是「非贪心的多阶段」任务（取放、抽屉），单次任务不长；长时程的量化证据来自仿真（Push-T 最多 75 步，迷宫最难档），不是长时程真机操作。
 - **缺失的信息**：清单没有提真机具体结果（杯 70%、盒 60%）、没有区分真机与仿真，也没有提论文把单层基线失败归因于「非贪心」而不只是「长」。论文还承认所有方法的成功率随时程下降（v2 §7）。
 - **版本提示**：库内旧版归档引用 v2（2026-06-16）；v1（2026-04-03）与 v2 在若干对照上措辞和数字不同，见来源归档的「v1 与 v2 的差异」。
+
+## 结论
+
+HWM 用多时间尺度潜空间规划缓解长程目标追踪，但精细感知、子目标质量与低层执行仍限制成功率。
+
+- 先核对子目标采样和低层 MPC 的误差，再决定是否增加层级。
+- 对照 VLA 时对齐图像或语言目标接口，并在相同计算预算下比较。
+- 保留长时程失败和逐配置真机结果，不能由少量 Franka 任务推断浮动基座或人形适用性。
 
 ## 局限
 

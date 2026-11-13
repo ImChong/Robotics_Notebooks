@@ -84,7 +84,7 @@ flowchart LR
 - **示范量：** 约 200 条不完美示范即够，降到 50 条时四任务平均降至 58.2%（Sec. VII-B，图 7）。
 - **RL 算法选择：** 同设置下 FastTD3 一致优于 PPO 变体（表 I，Sec. VII-C）；PPO 变体需大的初始 log-std（附录 A）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（My CoRL 2026 Reading List 第 064 条，作者说明摘要由 LLM 据摘要起草）的一句话：*Steers a diffusion behavior prior with RL over its initial noise in parallel simulation, producing expert data without human demos.*
 
@@ -95,6 +95,14 @@ flowchart LR
 | without human demos（无需人类示范） | 需限定：主实验的先验来自 LLM 合成脚本策略（AnyTask）与反转拆卸脚本（AutoMate），确实没用人类示范（Sec. V-A）。但摘要明说示范"可由 LLM 合成或由人类提供"，且 Sec. VII-D 额外用 6 条人类示范经 SkillMimicGen 扩到 1000 条，效果更好（Stack Banana on Can：ExpertGen 67.2% 升到 79.2%，表 XV）。更准确的读法是"不需要大量人类示范，但需要一批不完美示范作先验，来源可以是脚本"。 |
 | 清单未提 | 真机验证（点云学生 Lift Banana 75.0%、Push Pear 65.0%、Open Drawer 85.0%，RGB Lift Banana 80%，Sec. VI-D）、无奖励工程仅用稀疏成功奖励（Sec. III-A）、摘要的 AutoMate 90.5%。 |
 | 摘要"长程任务 85% overall" | 该数与表 I 八任务平均（85.3）吻合，而非仅长程任务；见局限一节的不一致说明。 |
+
+## 结论
+
+ExpertGen 用扩散先验约束噪声空间 RL，再蒸馏视觉策略，能利用不完美示范，但能力仍受先验覆盖限制。
+
+- 先检查先验是否包含目标恢复技能，稀疏奖励优化不能补出完全缺失的技能。
+- 分别验收状态专家、视觉蒸馏和真机迁移，避免把仿真专家成功率当作部署成功率。
+- 复现时保留表文数值不一致的说明，并计入脚本技能、域随机化与示范准备成本。
 
 ## 局限
 

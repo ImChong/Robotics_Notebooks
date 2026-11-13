@@ -96,7 +96,7 @@ flowchart TD
 - **噪声（§4.4）：** 训练噪声 σ=1 cm；Marker 3 cm 高斯噪声 goal 奖励 963.7，加 3 cm 常量偏移 670.9，仅本体感觉基线 338.0（附录 C）。
 - **手形态（§4.2，图 4）：** Sharpa 与 Wuji 最好，Allegro 缺第五指难深插，XHand 缺外展/内收关节、常对不齐。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（CoRL 2026 Glen Berseth 阅读清单 P2 档，作者说明为 LLM 据摘要起草）一句话：「RL for in-hand assembly of two parts in a single dexterous hand, with function-based rewards and sim-to-real.」
 
@@ -108,6 +108,14 @@ flowchart TD
 | （清单未提）三个任务、倾角、手形态 | 论文有 Bottle/Syringe/Marker 三任务、手倾角随机化实验与四种手的仿真对比；其中手形态对比只在仿真 Syringe 任务。 |
 
 另：清单作者栏写「Pei, Wu, Zhang et al.」，论文作者为 Pei、Wu（共同一作）、Zhang、Luo、Song；清单未给出 arXiv 号，本页的 arXiv:2609.10137 经首页标题与作者核对一致。
+
+## 结论
+
+该工作展示了单手双物体插接的可行性，尚不能替代包含抓取、初始化和装配的完整系统。
+
+- 奖励设计应保留目标相对位姿主项，把手指功能与人类快照作为辅助约束。
+- 真机验收单独记录人工支撑、初始姿态和遮挡跟踪失败，不能只统计策略接管后的成功。
+- 扩展到螺纹或过盈装配前重新验证接触模型与精度，三项插接任务的结果不能直接外推。
 
 ## 局限
 

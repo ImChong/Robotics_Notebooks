@@ -80,7 +80,7 @@ flowchart LR
 - **特权信息（§5 实现细节）：** 为简化数据关联，使用仿真给出的特权实例标签，而非从 RGB 推出。
 - **记录的计算量：** 论文未报告地图构建、跟踪或推理延迟，复现成本无法从文中判断。论文未给出代码仓库。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单一句话摘要：「Conditions a VLA on an online spatiotemporal neural-point map of the scene and the robot body for long-horizon mobile manipulation.」（作者说明是 LLM 据摘要起草，排序为兴趣打分而非质量评价。）
 
@@ -90,6 +90,14 @@ flowchart LR
 | online spatiotemporal neural-point map | §3：neural points，环境点按对象刚体 SE(3)、机器人点按前向运动学在线更新。但「在线」更新的只有点坐标；潜特征与解码器是执行前离线学好的先验地图（局限节） | 基本吻合，限定词需补充：依赖先验地图 |
 | of the scene and the robot body | 环境点与机器人点共享解码器与潜空间（§3） | 吻合 |
 | long-horizon mobile manipulation | 评测为 BEHAVIOR-1K 的 3 个仿真任务；清单未提「仅仿真」「依赖仿真特权实例标签」。作者在局限节明确说无真机实验、与图像基线的比较并非同等输入信号 | 清单遗漏了仿真与特权信息这两条关键限定 |
+
+## 结论
+
+SERF 展示了持久空间记忆接入 VLA 的收益，但现有结果依赖先验地图与仿真特权标签。
+
+- 比较视觉基线时明确额外地图和实例信息，避免把不对等输入当纯架构增益。
+- 分别测试地图更新、机器人本体表示与 token 切分，并按任务报告进度。
+- 真机、铰接和可变形物体需重新验证，三个仿真任务的部分得分不能当实际完成率。
 
 ## 局限
 

@@ -98,7 +98,7 @@ flowchart TB
 - **作者对结果的解释（§5.4，自述）：** HG-DAgger 在 Egg Flip、Pool Shot 等动态 / 高精度任务上差距最大，因其只做行为克隆；DSRL 受限于先验分布已覆盖的模态；HIL-SERL 在初始状态分布更大的设置下难以稳定，Pool Shot 上基础 RLPD 学不动。这些是作者的归因，论文未做对应的消融实验验证（见局限）。
 - **曲线（图 4、图 5）：** 训练成功率（含干预）随在线分钟数上升，干预率下降，回合时长缩短（附录 A.1）。本归档只按图注核对，未逐点读曲线。
 
-## 与清单说法的核对
+## 与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P0，序号 001/101）对该论文的一句话摘要（作者说由 LLM 据摘要起草）：「Stable, sample-efficient real-world RL fine-tuning of pretrained VLAs that reaches deployment-level success on hard manipulation tasks.」
 
@@ -111,6 +111,14 @@ flowchart TB
 | hard manipulation tasks | 论文选的是高精度 / 动态 / 多初始状态任务（§5.2）；其中 Cube Pick 示教只要 10 条、SFT 已 22/30，难度并不均一 |
 | 隐含：优于既有方法 | 属实但有范围：HIL-SERL 与 DSRL 只在四个任务上比（表 1），HG-DAgger 与 SFT 在八个任务上比（表 2）；RL Token、GR-RL、πRL 等相关工作在相关工作里提及，但没有作为实验基线 |
 | 清单未提 | 人工干预是核心组件之一（SpaceMouse，§4.2）；每回合之间需要人工复位（§6，作者自认局限） |
+
+## 结论
+
+EXPO-FT 在八项任务展示了人工干预结合动作块编辑与 Q 选优的真机后训练效果，尚缺组合组件的独立消融。
+
+- 同时复现 base 提案、edit 和选优流程，并记录人工介入预算。
+- 把在线交互分钟数、复位时间与梯度更新时间拆开报告，避免低估端到端训练成本。
+- 对照 SFT、HG-DAgger 或其他 RL 时对齐数据和干预条件，30/30 不能解释为未来试验必然成功。
 
 ## 局限
 

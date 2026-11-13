@@ -119,7 +119,7 @@ flowchart TB
 | 算力 | 计时在 RTX 4090 加 i9 单核上（§3） |
 | 开源 | 代码已公开（见 [代码仓库归档](../../sources/repos/transformer-transformer.md)，沿用旧归档，本次未重新核对仓库内容） |
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P2，Cross-Embodiment & Robot Design 组，按作者自己的兴趣模型排序，非质量评价；摘要为 LLM 据摘要起草）写：「Diffusion transformer over unified embodiment, state and action tokens that generates robot designs for target motions.」
 
@@ -127,6 +127,14 @@ flowchart TB
 - 清单没提的：同一模型还做跨具身控制和奖励打分；以及 Dynamics Self-Guidance（论文核心之一）。
 - 论文摘要列举 wheeled bimanual、quadrupeds、humanoids，但优化实验只有 ViperX、四足、移动双臂三个设计空间（§2.4、§3）；人形仅出现在 Menagerie 的 token 化覆盖里（§3），本页判断不应把它读成人形共设计已验证。
 - 清单标注的「Workshops」会场信息：论文 PDF 中未见会场标注，本页无法核实。
+
+## 结论
+
+Transformer Transformer 统一了运动条件设计与跨具身控制，但收益依设计空间而变，四足上并未全面优于搜索基线。
+
+- 在训练范围和固定拓扑内使用设计建议，避免外推到新连杆结构。
+- 分别比较 ViperX、移动双臂与四足的误差和搜索成本，不只汇总速度优势。
+- 真机设计还需多运动和重复试验验证，单次 ALOHA 抛布改善不能证明通用硬件优势。
 
 ## 局限
 

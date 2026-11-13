@@ -84,7 +84,7 @@ flowchart TD
 - **数据与算力（V-B、V-C，图 3）：** 采样 10 000 个状态：double sphere 可行率 58.7%、总计约 2.93 分钟，panda 可行率 17.9%、约 58.4 分钟（笔记本 CPU）。轨迹优化：10 万次运行、50 进程，分别得 13 440 与 6 867 条可行轨迹（可行率 13.4% 与 6.87%，总耗时约 19.2 h 与 34.7 h，见图 3b）。
 - **复现要点：** 正文未给出本文代码仓库（只给出所用 TD7 的官方实现链接），随文视频未看；复现需自实现约束求解与 CMA-ES 轨迹生成（我的判断）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单一句话（据摘要由 LLM 起草）：*Constrained-manifold state sampling for resets boosts exploration in goal-conditioned RL for contact-rich non-prehensile manipulation.*
 
@@ -97,6 +97,14 @@ flowchart TD
 | （清单未提）仿真还是真机 | 仅 MuJoCo 仿真，无真机实验；作者称开环轨迹「更像概念而非真实可执行」（V-D i）。 |
 | （清单未提）BC | 论文还研究了 BC 正则，结论是影响小（trajSchedBC 与 trajSched 相近，图 6）。 |
 | 标题 | arXiv v1 标题为 *Constrained Sampling to Guide Universal Manipulation RL*，与清单标题不同（推测为会议版改名）；我只核对了 arXiv v1。 |
+
+## 结论
+
+Sample-Guided RL 用可行状态采样偏置训练分布，但静态约束可行不保证动态稳定或任务可解。
+
+- 核对碰撞、接触与力约束后，还需验证目标是否能由当前策略与 MDP 稳定维持。
+- 分别测试轨迹、插值和调度方案，并计入 CPU 集群生成成本。
+- 保留 panda 域低成功率与失败案例，未有真机和视觉验证时不直接用于实际操作。
 
 ## 局限
 

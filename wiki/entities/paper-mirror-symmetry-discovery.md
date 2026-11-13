@@ -80,7 +80,7 @@ flowchart LR
 - **真机（第 6 节、附录 F）：** 7 自由度 Kinova GEN3 加 Robotiq 2F85，RealSense D435 固定相机，观测改为高度图（裁剪到桌面上 0.3 m）加 SAM 2 目标掩码；在仿真中对该模态重新做对称发现与 BC 训练，零样本部署。真机结果为 13/20、19/20、9/20、16/20（Drawer Opening / Drawer Closing / Cube Dropping / Hammer Lifting，Table 12）。
 - **代码：** 未在论文中找到仓库地址，仅有项目页。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单原话（作者说明为 LLM 据摘要起草）：「Discovers how symmetry groups act on pixel observations and actions from offline data, for symmetry-aware policy learning.」
 
@@ -93,6 +93,14 @@ flowchart LR
 | （清单未提） | 手工 ExSym 与 GAN 发现的基线在帧平均下平均成功率均低于普通 BC（第 5.3 节），说明收益依赖变换质量。 |
 
 结论：清单一句话没有错，但略去了两点关键限定，即群需预先指定，以及增益是仿真内、小幅度、3 个种子的。
+
+## 结论
+
+MIRROR 支持从离线数据学习观测动作耦合对称性，但需要已知群和充分的对称方向覆盖。
+
+- 先检查数据是否包含群变换方向的变化，防止学到恒等映射。
+- 同时核验群公理误差与下游任务成功率，单一变换指标不能代表策略收益。
+- 计入帧平均的多次前向开销，并补做真机 BC 对照，现有部署案例不能单独证明对称性增益。
 
 ## 局限
 

@@ -7,6 +7,21 @@ from pathlib import Path
 import lint_wiki as lw
 
 
+def test_exec_and_existing_rtc_mechanism_do_not_require_new_pages(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(
+            wiki,
+            f"p{i}.md",
+            "用 `exec` 执行脚本；异步 **RTC** 见动作块方法；新概念 **NewControl**。",
+        )
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    records = _run(pages)["missing_concept_pages"]
+    assert len(records) == 1
+    assert "NewControl" in records[0]
+
+
 def _setup_wiki(tmp_path: Path, monkeypatch) -> Path:
     monkeypatch.setattr(lw, "REPO_ROOT", tmp_path)
     wiki = tmp_path / "wiki" / "concepts"

@@ -194,6 +194,8 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # GroundingPI 的拒答输出、Gymnasium 的 `render_mode=None`、AW-0 服务响应字段、
     # diagram-design 动效默认值），与 null/true/false 同类字面量，非可成页概念。
     "none",
+    # exec：Python 内建执行函数、Shell 命令或 skill 的执行字段；不是单一机器人概念。
+    "exec",
     "id",
     "title",
     # code：各页正文里的 `code` 均为 frontmatter 来源键引用（「官方入口见
@@ -628,6 +630,9 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                页的 on-policy Runner 抽象，与 qpos / reset 同为代码 token 而非
 #                机制，不单建概念页
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
+    # RTC：Real-Time Chunking，已由 methods/action-chunking.md 的 RTC 谱系专段
+    # 和 entities/paper-real-time-chunking.md / paper-training-time-real-time-chunking.md 覆盖。
+    "rtc",
     "act",  # 已由 methods/action-chunking.md（机制）+ entities/paper-act.md（论文）覆盖，
     # 缩写 slug 与页面 stem 不同名；与 wbc / rl / wam 同类
     "action",
@@ -1451,6 +1456,12 @@ def _stale_claim_negated(body: str, start: int, end: int) -> bool:
     after = body[end : end + STALE_CLAIM_OVERREAD_WINDOW]
     for brk in STALE_CLAIM_SENTENCE_BREAKS:
         after = after.split(brk, 1)[0]
+    # 「全文不含 \"state-of-the-art\" 表述」在核对原文用词，不是在断言性能；
+    # 要求前后同时匹配，避免放过「不含额外数据的 SOTA 方法」这类真实断言。
+    if re.search(r"(?:正文|全文|论文)不含\s*[\"“「『]?\s*$", before) and re.match(
+        r"[\"”」』]?\s*(?:表述|措辞|字样)", after
+    ):
+        return True
     return any(cue in after for cue in STALE_CLAIM_OVERREAD_CUES)
 
 
@@ -1465,8 +1476,13 @@ def _stale_claim_span_slug(body: str, start: int, end: int) -> str:
 
 def _stale_claim_hit(body: str, page_stems: set[str]) -> str | None:
     """返回正文里第一个「真·绝对化断言」，命中全属结构性误报时返回 ``None``。"""
+    # 书名号内是被引用的资料标题，如《激光雷达 SLAM 算法最新综述》，
+    # 不代表本页把该资料或算法判定为当前最新。标题外的断言仍逐个检查。
+    title_spans = [m.span() for m in re.finditer(r"《[^》\n]{1,160}》", body)]
     for pat in STALE_CLAIM_PATTERNS:
         for m in re.finditer(pat, body, re.IGNORECASE):
+            if any(start <= m.start() and m.end() <= end for start, end in title_spans):
+                continue
             if _stale_claim_negated(body, m.start(), m.end()):
                 continue
             if _stale_claim_span_slug(body, m.start(), m.end()) in page_stems:

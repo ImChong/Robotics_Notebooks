@@ -74,7 +74,7 @@ flowchart TD
 
 **覆盖的五类基准：** LIBERO、CALVIN、SimplerEnv、RoboCasa、RoboTwin 2.0；四项诊断并不表示每个基准都有同样深度的四套完整实测。
 
-## 实验与评测
+## 实验评测与基线对比
 
 - **LIBERO probe：** 约 0.09B 的简化方案无需语言编码器，并非证明大型 VLA 无用，而是表明某些 benchmark 的非语言线索足以构成高分捷径。
 - **CALVIN 扰动：** 在训练范围内改变积木位置，也能让所有受测策略的平均任务完成数下降；考验的是策略对具体摆位的鲁棒性。
@@ -134,6 +134,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 按任务、观测、指标与部署证据选择基准并核对分数口径。
 - [Manipulation](../tasks/manipulation.md) — 任务和协议背景。
 - [VLA](../methods/vla.md) — 为什么单一 benchmark 高分不证明语言条件策略泛化。
 - [DISCO](./paper-distilled-tree-search-multi-object-rearrangement.md) — 真机每任务三次的例子，说明试次数披露的重要性。

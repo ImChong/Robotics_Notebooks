@@ -13,7 +13,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 summary: RoboTwin 2.0 是专为双臂机器人设计的自动数据生成与仿真平台，基于 SAPIEN 引擎，支持大规模高质量专家数据合成。
-updated: 2026-10-06
+updated: 2026-11-13
 project_id: robotwin
 sources:
 - ../../sources/papers/rcl_awesome_wam_2506_18088_robotwin-2-0-a-scalable-data-generator-a.md

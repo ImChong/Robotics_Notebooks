@@ -102,7 +102,7 @@ flowchart TD
 - **部署（§5.1）：** 新本体只需注册 URDF 得到形态 token，并换一个相机外参；6D 输出先 Gram–Schmidt 正交化再做逆变换。
 - **复现边界：** 论文首页给出代码仓库地址，本页未核对仓库内容与权重发布状态；各数据集阈值部分写「按数据源」，论文称记录在发布的数据清单里（§4.2 Stage 5）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 Glen Berseth 的 CoRL 2026 阅读清单（P1，Learning from Human Video 组，第 056/101 篇）对该论文的一句话摘要为：「VLA pretraining on robot data plus pseudo-labeled egocentric human video, unified through camera-space actions and morphology tokens.」（作者说明该摘要由 LLM 据摘要起草，排序是其个人兴趣打分，不是质量评价。）逐项核对：
 
@@ -115,6 +115,14 @@ Glen Berseth 的 CoRL 2026 阅读清单（P1，Learning from Human Video 组，�
 | （清单未提到）评测口径 | 消融与数据来源对照只在 RoboCasa GR1 仿真做（表 5）；真机只比 π0.5 与 GR00T-N1.7（图 5a）。 |
 
 另：标题与正文的名称是「ACE-Ego-0」，清单写作「ACE-Ego」；清单的 arXiv 编号未给，站内一篇公众号文章记为 2606.11241，与论文首页的 2606.17200 不一致（未查证 2606.11241 指向什么）。
+
+## 结论
+
+ACE-Ego-0 通过统一表示与可靠性加权利用人类伪动作，但目前有效监督主要集中在位置通道。
+
+- 分别核验相机系动作、形态 token 与时间分块，不能把低权重旋转标签当准确控制监督。
+- 在相同数据预算下消融人类辅助损失，避免把跨模型差异全部归于人类视频。
+- 对长程漂移、灵巧手和力觉任务另做验证，当前桌面结果不能直接外推。
 
 ## 局限
 

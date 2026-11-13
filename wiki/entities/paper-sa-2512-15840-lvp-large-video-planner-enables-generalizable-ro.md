@@ -119,7 +119,7 @@ flowchart TD
 | 真机，OOD 组 C（4 项，各 10 次） | 同上 | 4、2、6、1 / 0、0、1、0 / 全 0 | Fig.8 |
 | 真机，灵巧手组 B（8 项，每项 5 或 10 次） | 仅 Ours | 如 Open Door 6/10、Wipe Table 8/10、Tear off Clear Tape 2/5 | Fig.8 |
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单原句：「Robot foundation model built on internet-scale video pretraining rather than a VLM, planning in video and generalizing to new tasks.」（作者说明是 LLM 据摘要起草）。
 
@@ -130,6 +130,14 @@ flowchart TD
 | 在视频中规划 | 成立（§3.1）。 |
 | 泛化到新任务 | 有证据但需限定：视频计划层面，在 100 条第三方任务上 Level 3 为 59.3%（Table 2）；机器人层面，每项仅 5 或 10 次真机试验，成功率从 2/10 到 8/10 不等，夹爪组 A 与 OOD 组 C 多数项低于 5/10（Fig.8）。论文的措辞是「show evidence of task-level generalization」（§6）。 |
 | 未提及的限定 | 清单未提：只测了 π0 与 OpenVLA 的公开 checkpoint、无微调；灵巧手任务没有 VLA 基线；开环执行；视频生成需数分钟（§4.3、§5）。 |
+
+## 结论
+
+LVP 展示了生成视频计划经重建和重定向驱动机器人，但分钟级生成与开环执行限制了在线用途。
+
+- 分别评测视频任务完成、四维重建和机器人执行，第三方视频评分不能直接代表部署成功。
+- 对目标末端核验重定向可行性，平行夹爪与灵巧手的适配难度不同。
+- 需要实时或精细交互时增加闭环与失败恢复，并对齐基线数据和微调条件后再比较。
 
 ## 局限
 

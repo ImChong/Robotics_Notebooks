@@ -151,7 +151,7 @@ sequenceDiagram
 
   最短路径：`uv sync` → 下 Assets 与 Dataset → 选 `examples/baselines/act` 或 DP 按 README 训评。Dataset 约 747 GB，建议先下单任务子集；README 要求给上游 lerobot 的 `lerobot_dataset.py` 打补丁，Vulkan 按 ManiSkill 文档配（[数据集归档](../../sources/datasets/ig-10k.md)、[仓库归档](../../sources/repos/the-imitator-game.md)）。真机权重未上 HF，仓内无上传接口，第三方无法本地复核真机数字（归档，推测此为现状）。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，P1 / Learning from Human Video，作者称一句话摘要为 LLM 据摘要起草）写道：「Four-level benchmark testing whether robots imitate the intent of a human demonstration rather than replaying its trajectory.」逐项核对：
 
@@ -162,6 +162,14 @@ sequenceDiagram
 | rather than replaying its trajectory | 作者称问题是现有方法多在近似场景复现轨迹（§1）；L0 本身就奖励轨迹复现 | 对作者动机；但对 L0 不成立。 |
 | 没写到的限定 | 评测用仿真手工谓词与人类 Arena 判断，不直接度量「意图推断」；被评模型是适配到本游戏的现有策略而非意图模仿方法（§5） | 清单未提：这是基准论文，没有提出新策略，也没有任何模型达到意图级模仿。 |
 | 没写到的结果 | 真机 L3 下降（Table 5），但仿真级别曲线非单调（附录 C.5）；未见任务零样本仿真最高 0.13（Table 3） | 清单只给基准定义，未涉及结果；若有人读成「已能测出意图模仿」，需补这几点。 |
+
+## 结论
+
+Imitator Game 的价值是把视频模仿的场景失配分级，现有结果揭示功能替代仍困难。
+
+- 按 L0–L3 分别报告仿真与真机结果，不把摘要中的真机退化直接搬到仿真。
+- 固定替换模式与具身条件，检查模型成功是否来自示范而非场景线索。
+- 对未见任务扩大重复次数，并将 Arena 人工评分与自动进度指标分开评价。
 
 ## 局限
 

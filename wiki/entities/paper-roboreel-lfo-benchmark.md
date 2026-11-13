@@ -81,7 +81,7 @@ flowchart TD
 - **PointPolicy 是单任务单模型（图 4 图注）**，且不使用人类视频做推理输入（附录 D.4）。
 - 数据与代码：论文称在录用后发布（Sec. 1），本页写作时未见具体仓库地址，故 frontmatter 不写 `code:`。
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 清单（Glen Berseth 的 CoRL 2026 阅读清单，条目 052，据作者说明由 LLM 依摘要起草）对该论文的一句话摘要是：「RoboReel: a unified real-world benchmark for policies that learn from human videos.」
 
@@ -91,6 +91,14 @@ flowchart TD
 - **清单未提到的重点：** 基线整体仍弱，长时程与低容差任务（如 Stack Cups）接近 0（表 2–4）；且数据规模在论文内口径不一（图 1 写 7 小时 / 2,500 episodes，附录写 3000 条 / 约 9 小时）。
 
 另有论文自身的几处不一致，读结论时需留意（详见来源归档）：Q1 称视频条件 π0.5「所有任务、所有套件」最强，但 SeeDo 在 Bowl in Plate 上高于它（表 2：71.3 对 46.7 / 31.7；表 4：66.3 对 25.0 / 31.7）；Q1 称关键帧在 ED 套件「7/10」任务上更好，按表 4 实为 8 项严格更高。
+
+## 结论
+
+RoboReel 提供了真实人类视频与数字孪生配套的 LfO 评测，但策略成绩来自仿真。
+
+- 区分真实人类视频、脚本合成机器人轨迹与仿真 rollout，不能称为真机 LfO 成功率。
+- 按四套测试条件报告长时程和低容差失败，均分不能掩盖 Stack Cups 等难点。
+- 跨人、跨场景和真实机器人泛化需另测，关键点接口误差也应与范式能力分开。
 
 ## 局限
 
@@ -108,6 +116,7 @@ flowchart TD
 
 ## 关联页面
 
+- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 按任务、观测、指标与部署证据选择基准并核对分数口径。
 - [VLA 方法总览](../methods/vla.md)：视频条件 π0.5 属于 VLA 加示范上下文。
 - [模仿学习](../methods/imitation-learning.md)：基准内所有基线都以模仿为底。
 - [π0 论文页](../entities/paper-pi0.md)：π0.5 的前身，流匹配动作专家。

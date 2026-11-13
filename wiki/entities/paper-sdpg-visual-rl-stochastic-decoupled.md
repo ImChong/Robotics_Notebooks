@@ -117,7 +117,7 @@ flowchart TB
 | 代码 | [HaoxiangYou/SDPG](https://github.com/HaoxiangYou/SDPG)，Hydra + Genesis，入口 `scripts/run.py`（见 [repo 归档](../../sources/repos/sdpg-haoxiangyou.md)，非本次通读范围） |
 | 调参建议（作者） | 先用低维状态输入调搜索相关超参，再加 CNN 编码器迁移到视觉；同超参下视觉需 2–4 倍迭代（§5.1、Fig.11） |
 
-## 与清单说法的核对
+## 评测证据与清单说法的对比核对
 
 对象：Glen Berseth《My CoRL 2026 Reading List》第 007 条（P0，RL Algorithms & Exploration）。该清单由作者用自己的研究兴趣模型打分排序，摘要为 LLM 据摘要起草，排序不代表论文质量。清单原句：「On-policy visual RL that estimates policy gradients from perturbed rollouts, training visuomotor policies in hours on one GPU, with sim-to-real.」
 
@@ -129,6 +129,14 @@ flowchart TB
 | 有 sim-to-real | 成立但范围窄：只有 Unitree Go2 + RealSense 深度的地形 / 楼梯（§5.3、Fig.12、附录 Fig.14），零样本；没有真机操作任务，也没有成功率等定量指标 |
 | （清单未提）端到端 / 显存 | 论文强调：显存约 10 GB 对 PPO† 约 48–50 GB，但 PPO 数字是估计值，不是实测（Table 1 脚注） |
 | （清单未提）基线比较 | 论文只在 Visual MuJoCo 四任务上与 DrQv2、DreamerV3、蒸馏比；egocentric 套件只给 SDPG 自身曲线（附录 D.1） |
+
+## 结论
+
+SDPG 通过少渲染、多物理辅助 rollout 降低视觉训练开销，但物理仿真成本与训练稳定性仍是限制。
+
+- 分别报告 nominal 渲染环境和 auxiliary 物理环境数量，不能把少量渲染环境当总采样量。
+- 对照 PPO 时区分实测和估算显存，并同时比较回报、墙钟与样本效率。
+- 更换仿真器或上真机时补做重复成功率与失败分析，Go2 定性展示不等同定量可靠性。
 
 ## 局限
 
