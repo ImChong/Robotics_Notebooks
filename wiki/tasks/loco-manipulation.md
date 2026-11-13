@@ -603,6 +603,8 @@ flowchart TD
 
 ## 新增接口路线
 
+- [ATLAS：Agentic Harness](../entities/atlas-agentic-harness.md) — 一段人类示范视频与提示词，经 System 2 VLM 编写任务规格、冻结 ScaleBFM（System 0）跟踪，再以在线模型式 RL 修正末端接触误差并自动重试；截至 2026-11-13 框架源码尚无公开入口。
+
 - [SP-HLM：稀疏姿态驱动的人形全身控制](../entities/paper-sp-hlm.md) — 用骨盆、双腕、双踝五点目标表达任务意图，并由 motion latent 补全全身协调。
 
 ## 时空重定向与接触感知控制
