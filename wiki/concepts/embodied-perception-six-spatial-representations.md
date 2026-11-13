@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, spatial-representation, slam, semantic-mapping, point-cloud, occupancy, depth, embodied-ai]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-13
 related:
   - ./2d-to-3d-semantic-lifting-gap.md
   - ./perception-coordinate-postprocessing.md
@@ -184,6 +184,7 @@ flowchart TB
 - [Point2Pose](../entities/paper-point2pose.md) — RGB-D 多物体 6D 跟踪 + 在线 TSDF mesh
 - [三维坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md) — 像素↔相机↔世界底座
 - [视觉表征作为策略输入](./visual-representation-for-policy.md) — 另一条「表征」轴（策略特征，非空间地图）
+- [VINO：三维自监督表征学习](../entities/paper-vino.md) · [Volt：Volume Transformer](../entities/paper-volt.md) — 两个独立实体：自监督目标与 3D 骨干，用于点云语义特征学习而非 TSDF/ESDF 物理量
 - [VLN（任务）](../tasks/vision-language-navigation.md) — 语义地图的语言导航消费方
 
 ## 参考来源
