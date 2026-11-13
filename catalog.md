@@ -6037,6 +6037,7 @@
 - [Vidu S2：实时交互、可编辑与空间视频生成](wiki/entities/paper-vidu-s2.md) — Vidu S2**（Zhang et al., arXiv:2609.11638，[项目页 / Demo](https:// `📅unknown` `[entity_page]`
 - [ViLoMan（arXiv:2609.19340）](wiki/entities/paper-viloman.md) — ViLoMan**（*Learning Visual-Proprioceptive Whole-Body Loco-Manipulation Skills for Humanoid Robots `📅unknown` `[entity_page]`
 - [Vine 采样：把示范者多模态显式写进扩散策略数据（arXiv:2611.10949）](wiki/entities/paper-vine-sampling-diffusion-policy.md) — 论文：** *Explicitly capturing demonstrator multi-modality for distillation into diffusion policies*， `📅unknown` `[entity_page]`
+- [VINO：以 Volume Transformer 重新审视三维自监督表征学习](wiki/entities/paper-vino.md) — VINO（Revisiting 3D Representation Learning with Volume Transformers）** 是基于 [Volt 3D Transformer](. `📅unknown` `[entity_page]`
 - [VINS-Mono：鲁棒单目视觉惯性状态估计 / A Robust and Versatile Monocular Visual-Inertial State Estimator](wiki/entities/paper-vins-mono.md) — VINS-Mono 使用单目 Camera + IMU，先由 vision-only SfM 和 IMU alignment 恢复可观尺度/重力/零偏，再在有限滑窗中紧耦合融合惯性预积分与球面视觉误差 `📅unknown` `[entity_page]`
 - [VioLA：从人类数据学习人形通用控制](wiki/entities/paper-viola-human-data-control.md) — 一句话定义：** VioLA 不让通用策略直接输出高维关节命令，而是预测与冻结机器人控制器对齐的身体和手部动作潜变量；人类动作因此可以直接构成策略的动作标签。 `📅unknown` `[entity_page]`
 - [VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）](wiki/entities/paper-viral-humanoid-visual-sim2real.md) — VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略  `📅unknown` `[entity_page]`
@@ -6102,6 +6103,7 @@
 - [ETPNav](wiki/entities/paper-vln-09-etpnav.md) — ETPNav** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 09/10 `📅unknown` `[entity_page]`
 - [NaVid](wiki/entities/paper-vln-10-navid.md) — NaVid** 收录于 深蓝具身智能 · VLN 10 项代表性研究 **第 10/10 `📅unknown` `[entity_page]`
 - [VNT-PA：基于位姿注意力的视觉导航 Transformer](wiki/entities/paper-vnt-pa.md) — Visual Navigation Transformer with Pose Attention `📅unknown` `[entity_page]`
+- [Volt（Volume Transformer）：用于三维场景理解的标准 Transformer 骨干](wiki/entities/paper-volt.md) — Volt（Volume Transformer: Revisiting Vanilla Transformers for 3D Scene Understanding）** 将 3D 点云体素化成 `📅unknown` `[entity_page]`
 - [VoxPoser](wiki/entities/paper-voxposer.md) — VoxPoser**（arXiv:2307.05973，[代码](https://github.com/huangwl18/ `📅unknown` `[entity_page]`
 - [VQ-BeT：用潜在动作码字做行为生成](wiki/entities/paper-vq-bet-behavior-generation-latent-actions.md) — VQ-BeT**（*Behavior Generation with Latent Actions*，[arXiv:2403.03181](https://arxiv.org/abs/2403.0 `📅unknown` `[entity_page]`
 - [VREgo（arXiv:2611.07272）](wiki/entities/paper-vrego.md) — VREgo**（*VREgo: Consumer VR Headsets for Learning Robot Manipulation from Egocentric Demonstration `📅unknown` `[entity_page]`
