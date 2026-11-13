@@ -2,7 +2,7 @@
 type: concept
 tags: [recursive-self-improvement, ai-auto-research, llm-agents, governance, anthropic, scaling]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-13
 related:
   - ../../roadmap/depth-rsi.md
   - ../queries/rsi-four-tier-five-pushes.md
@@ -29,6 +29,7 @@ related:
   - ../entities/paper-harness2.md
   - ../entities/paper-duplexagent-rsi.md
   - ../entities/researchboost-agent.md
+  - ../entities/paper-toward-self-improving-robotic-agents.md
 sources:
   - ../../sources/blogs/wechat_datawhale_rsi_survey_2026-09-19.md
   - ../../sources/sites/anthropic-recursive-self-improvement.md
@@ -40,6 +41,7 @@ sources:
   - ../../sources/repos/awesome-embodied-self-improvement.md
   - ../../sources/papers/harness2_arxiv_2610_14224.md
   - ../../sources/papers/duplexagent_rsi_arxiv_2610_11299.md
+  - ../../sources/papers/toward_self_improving_robotic_agents_preprints_202610_3088.md
 original:
   - ../../sources/sites/anthropic_rsi_when_ai_builds_itself_reading_rsi7k.md
 summary: "递归自改进（RSI）指 AI 系统充分自主地设计并训练自己的后继者。Anthropic Institute（2026）用公开时程与内部工程数据论证：我们尚未到达、也非必然，但 AI 已在加速 AI 研发；完全 RSI 若出现，具身智能（机器人）被预期会跟随。判断/选题仍是人侧瓶颈。"
@@ -138,6 +140,8 @@ flowchart LR
 
 这套判据适合补充宏观 RSI 与 agent 层清单：它把具身研究中的「自进化」落到可检查的技能集合变化上，也避免把在线纠错、长期记忆、权重更新或论文自称 RSI 自动等同于能力扩张。条目按 README 的一次性策展快照理解；具体方法、真机/仿真条件、验证强度与代码开放状态仍应回到各自论文和官方仓库核验。
 
+**另一套不可混同的证据分级：** [Toward Self-Improving Robotic Agents（2026）](../entities/paper-toward-self-improving-robotic-agents.md) 从 162 项机器人操作研究的「构造→保留→测得操作增益→独立重复获取」出发，提出 **L1–L5 实证证据等级**（9/18/70/65/0）；其中 L5 额外要求迁移、旧任务保持和人力/物理 reset 成本核算。它衡量**论文已证明什么**，不是上文按**能力增量**划分的 L1–L4，请勿因编号相近而套用。
+
 ## Harness²：冻结模型的 Harness 层 RSI
 
 [Harness²](../entities/paper-harness2.md) 把模型权重保持冻结，仅让 agent 修改周围的八类 harness 文件；单任务以 Propose–Probe–Compose 比较参考与候选执行，跨任务再将有证据的经验保存到改进库。它展示的是 **harness 层的持久改进**，不等于模型权重自我训练，也不证明机器人任务迁移。论文在 WorkBuddy-Bench、JobBench 和法律 LAB 上评测；执行轨迹差异并非正确性证明，且模型驱动实验仍有调用成本与 rubric 网络泄漏风险。原始资料见[论文来源归档](../../sources/papers/harness2_arxiv_2610_14224.md)、[项目页](../../sources/sites/harness2.md)和[源码仓库](../../sources/repos/google-research-harness2.md)。
@@ -170,6 +174,8 @@ flowchart LR
 
 ## 关联页面
 
+- [Toward Self-Improving Robotic Agents（162 项研究综述）](../entities/paper-toward-self-improving-robotic-agents.md) — 执行/获取双轨、能力谱系与 L1–L5 实证证据审计（不同于能力增量等级）。
+
 - [Darwin Gödel Machine（DGM）](../entities/paper-darwin-godel-machine.md) — 冻结基础模型下，以开放式版本档案与编程基准验证 Agent 代码自改；区分 harness 级 RSI 与模型权重级 RSI。
 - [Gödel Agent（ACL 2025）](../entities/paper-godel-agent.md) — 在 Python 运行时自省、动态修改 solver 与自改逻辑的早期自指 agent；属于 harness 级实验，不等于完全模型级 RSI。
 
@@ -193,6 +199,8 @@ flowchart LR
 - [DuplexAgent-RSI（2610.11299）](../entities/paper-duplexagent-rsi.md) — 全双工语音协作的模块化 harness 改进闭环
 
 ## 参考来源
+
+- [Toward Self-Improving Robotic Agents：综述全文与计数归档](../../sources/papers/toward_self_improving_robotic_agents_preprints_202610_3088.md)
 
 - [RSI Survey 论文归档（arXiv:2607.07663）](../../sources/papers/rsi_survey_arxiv_2607_07663.md)
 - [The Last AI Built by Humans 论文归档（arXiv:2609.11873）](../../sources/papers/last_ai_built_by_humans_2609_11873.md)
