@@ -14,7 +14,7 @@ tags:
   - simulation
   - open-source
 status: complete
-updated: 2026-11-11
+updated: 2026-11-13
 related:
   - ./rle-bench.md
   - ../overview/hub-embodied-eval-benchmark.md
@@ -26,7 +26,7 @@ sources:
 summary: "Embodied First Exam 论文评测 35 套件、1156 任务、47 种机器人，论文标准核心 456 任务的最强模型成功率34%；当前仓库已扩充到36套件和1211任务，需区分论文口径。"
 ---
 
-# Embodied First Exam（具身代码代理考核）
+# Embodied First Exam（具身第一考：机器人环境中的代码智能体能力测评）
 
 **Embodied First Exam**（[项目页](https://www.embodied-first-exam.ai/)，[GitHub](https://github.com/mll-lab-nu/embodied-first-exam)，**MIT**）把机器人任务环境作为 coding agent 的考场：agent 在固定场景里编写程序、运行并查看结果，提交结果后由独立沙箱验证。项目通过 [Harbor](https://github.com/laude-institute/harbor) 运行；它衡量的是 agent 在具身任务中的程序化交互能力，不是单独比较某个机器人策略模型的成功率。
 
@@ -38,6 +38,7 @@ summary: "Embodied First Exam 论文评测 35 套件、1156 任务、47 种机�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
+| EFE | Embodied First Exam | 具身代码代理统一考核框架 |
 | Harbor | Harbor evaluation framework | Laude Institute 沙箱评测运行时，用于批量运行 agent 任务 |
 | MIT | MIT License | 代码仓许可；第三方模拟器、资产和基础镜像另有许可 |
 | GPU | Graphics Processing Unit | 部分仿真套件需要相应的 NVIDIA GPU 环境 |
@@ -63,26 +64,68 @@ summary: "Embodied First Exam 论文评测 35 套件、1156 任务、47 种机�
 - **把运行与验证隔开：** 任务结果由独立 sandbox 检查，有助于评测端复核产物和任务完成情况。
 - **容易与 RLE-Bench 混淆：** [RLE-Bench](./rle-bench.md) 明确按机器人学习工程师的多类工作流组织资格考；Embodied First Exam 的重点是汇集多套冻结任务，考核 coding agent 在这些任务中的程序执行表现。两者对象相近，但任务设计和覆盖范围并不相同。
 
-## 流程总览（论文评测协议）
+## 九个原创套件与控制方式
+
+论文将 **26 个既有套件（745 任务）**与 **9 个原创套件（411 任务）**合并为 35 套件；覆盖单臂、双臂、灵巧手、人形、四足、移动操作、空中和肌肉骨骼等机器人。原创套件并非九种训练模型，而是九组不同能力考核（§2.3、附录 A）。
+
+| 原创套件 | 主要检验什么 |
+|---|---|
+| RoboPaint | 用笔、画刷完成精细工具轨迹与绘画 |
+| RoboARC | 绳结、金属线、布料、装配等接触丰富的可变形操作 |
+| DexHandExam | 五指灵巧手翻页、拧盖、连接等任务 |
+| RoboDynamicExam | 接球、击球、动态物体交接 |
+| Embodied Olympics - Fun | 人形机器人动态运动与体育动作 |
+| Embodied Olympics - Match | 面对对手的足球、乒乓等竞技任务 |
+| iSpatialGym | 根据目标图片完成空间布局匹配 |
+| Embodied Safety Exam | 执行安全请求、拒绝有害请求并解释风险 |
+| RoboEngineer | 从公开仿真迁移到隐藏动力学，依据部署反馈修正控制器 |
+
+同一 coding agent 可以自由选用 **Direct control（直接输出动作块）**、**Code to control（生成控制器/规划器程序）**或 **Train a policy（在仿真中训练策略）**，以及混合方案；这些是可选择的解题路径，不是评测模式。参见论文 Figure 2、§2.1。
+
+## 流程总览（论文 Figure 3 协议重绘）
 
 ```mermaid
 flowchart TD
-  T["35 套件 / 1156 论文任务"] --> C["冻结任务场景与各自机器人"]
-  C --> A["Coding agent 根据准许观测编写控制程序"]
-  A --> S["Harbor 在任务环境中执行"]
-  S --> O["反馈：Standard / Realtime / Privileged 按协议区分"]
-  O --> A
-  S --> V["独立 verifier / grader"]
-  V --> R["论文核心 Standard 成功率统计"]
+  T["冻结任务、场景、目标与资源预算"] --> A["Coding agent 读取机器人接口"]
+  A --> D["Direct control：逐步输出动作"]
+  A --> C["Code to control：生成控制程序"]
+  A --> P["Train a policy：仿真训练策略"]
+  D --> K{"选择评测设置"}
+  C --> K
+  P --> K
+  K -->|Privileged| Q["全状态与无限重置，提交轨迹或控制器"]
+  Q --> R["隔离 verifier 回放验证"]
+  K -->|Standard| S["仅传感器与控制 API，推理时暂停仿真"]
+  K -->|Realtime| U["仅传感器与控制 API，世界持续运行"]
+  S --> V["服务端对在线 episode 计分"]
+  U --> V
+  R --> G["按 task-setting 统计 pass 或 fail"]
+  V --> G
 ```
 
-**Standard** 为论文主要评测设置；**Privileged** 具有更丰富状态/重置能力；**Realtime** 关注时限。不能跨模式合并统计。
+**关键隔离边界：** Privileged 中 agent 与仿真器同容器，但 verifier 在另一容器中回放；Standard / Realtime 中仿真器及 verifier 与 agent 分离。任务初始化、成功规则与时间预算配对保持一致；不同设置允许观察的状态、重置次数和时间推进方式不同（§2.1、Figure 3）。
 
-## 实验与评测
+## 实验与评测（分母与因果边界）
 
-论文报告 **35 个 suites、1,156 项任务、47 种机器人**；筛选的 **456 个核心 Standard 任务**上最强模型成功率 **34%**。这是作者报告的 agent 评测，非本库独立复现。
+论文固定快照为 **35 个 suites、1,156 个独立任务、2,288 个 task-setting tests、47 种机器人**，其中 **456 个难例核心任务共 901 个 tests**（Standard 456、Privileged 391、Realtime 54）。**456 不是 456 个三模式通用评测**；各模式的任务覆盖不完全相同（§2.3、Table 2）。
 
-官方当前 README 已增至 **36 个 benchmark、1,211 项任务（2,398 个 task dirs）**，核心为 **498 个任务**；README 注明论文/榜单的 1,156 口径不含 HumanCLAW，因此保留两个版本数字。
+| 对照口径 | 作者报告结果 | 正确解释 |
+|---|---|---|
+| 456 核心 Standard tests | GPT-6 Astra + Codex **33.6%（约 34%）** | 每 test 一次尝试，非多随机种子均值（§3.1） |
+| 同时支持 Standard / Privileged 的 391 任务 | 同一代理 **Standard 30%，Privileged 77%** | 配对模式结果，不能拿 77% 对比 456 任务的 34%（§3.2） |
+| 391 任务的受控接口消融 | Standard 基线 **28%**；仅加物体真值 **45%**；仅加无限重置 **53%**；两者均加 **68%** | 这是重新运行的干预实验，基线 **28% 不等于**上行原始 Standard 30%（Figure 11a） |
+| 有两种时序设置的 54 个任务 | 最强代理 Standard **23/54**，Realtime **17/54**；所有受测代理都未解出的任务分别为 **50% / 63%** | 对同一批动态任务配对，Realtime 的世界不会等待推理（§3.1） |
+| 同一模型不同 harness（456 Standard） | GPT-6 Astra 在 Codex **34%**，在 Claude Code **22%** | 最高相差 **12 个百分点**，不宜把成绩仅归因于模型（§3.4） |
+
+截至 2026-11-13，官方仓库 README 的**可运行仓库范围**已扩充为 **36 benchmark、1,211 任务、2,398 task directories**，默认核心配置为 **498 任务**；README 明言论文口径不含新增 HumanCLAW。**不要以仓库的新统计覆盖论文报告**。
+
+## 失败阶段分析与工程启示
+
+- **分解任务：** 作者将 427 个核心任务拆分为带前置约束的阶段图；阶段失败点由另一 coding agent 根据回放和日志标注，属于模型辅助解释，不是 verifier 的客观通过判决（§3、附录 H）。
+- **精密阶段更难：** 插接、对位、穿线等高精度接触阶段受 Standard 部分可观测限制影响更明显；在配对消融中，增加重置对恢复困难阶段的帮助大于只提供物体真值（§3.2）。
+- **错误常集中：** 多个代理容易在同一阶段受阻，最常见是首个阶段；材料变更阶段失败率 **66%**、身体运动阶段 **45%**，但这些差异还混有机器人与套件差别，不能作为单一因果结论（§3.3）。
+- **控制策略依设置变化：** 抽样的 Standard 尝试有 **61%** 每轮看反馈再输出动作块；Realtime 尝试有 **97%** 使用程序化控制。足球案例在提供 GPU 与 RL 库时才有训练策略获胜，但该任务不同版本不构成严格的单变量因果对照（§3.5）。
+- **真机演示不是排行榜：** 附录 I 的 buzz-wire 真机机械臂实验每个 agent 连续 8 次尝试，只说明接口可用于物理机器人；成绩不包含在论文仿真统计内。
 
 ## 结论
 
@@ -164,8 +207,8 @@ sequenceDiagram
 ## 局限与风险
 
 - 论文主要测量仿真环境里的 coding agent 编程与控制能力；与具身动作策略模型、真实机器人闭环和安全部署的评价对象不同。
-- 部分任务没有完整参考解，成功标准依赖各 suite verifier；单次尝试与 agent 运行预算影响统计。
-- 新增套件后仓库总数与论文口径不同，论文正文与附录 A–K 已核对；完整仓库复现与多次重复评测尚未执行。
+- 论文附录 J 指出 **392/1,156 个任务没有参考解**；每个模型-harness 组合对每个 test 只做一次尝试，无法消除随机波动。核心集还筛掉一个同系列模型先验通过的题目，可能影响同系列模型比较。
+- 2026-11-13 对照论文正文、Figure 3、§3.1–3.5 与附录 I–J 重新复核关键比较；原论文归档此前已记录正文及附录 A–K 通读。新增套件后的仓库与论文统计快照不同，完整仓库复现、多次随机重复与大规模真机验证均尚未执行。
 
 ## 关联页面
 

@@ -5,7 +5,7 @@
 - **HTML 原文：** <https://arxiv.org/html/2611.12177v1>
 - **项目：** <https://www.embodied-first-exam.ai/>
 - **源码：** <https://github.com/mll-lab-nu/embodied-first-exam>
-- **核验日期：** 2026-11-11
+- **核验日期：** 2026-11-13（复核）；此前已通读记录：2026-11-11
 - **核对范围：** arXiv:2611.12177v1 的正文 §1–5、Tables 1–2、Figures 1–18，附录 A–K（任务套件、策略与运行环境、评判、agent 设置、案例、干预、标签体系、真机演示、局限、相关研究），并对照官方仓库 2026-11-11 README；论文统计与后续 README 扩增数据分别核对。
 - **通读：** 已完成
 
@@ -38,6 +38,36 @@
 - 392 个任务没有参考解，因此并未证明它们对每个 agent 都可解。各模型仅一次尝试，harness、过滤器、重置权限、时间预算均影响结果。
 - Appendix I 的双 agent 真机 Buzz-wire 演示每个 agent 8 trials，**不计入论文仿真成绩**。
 - 2026-11-11 官方仓 README 新增 HumanCLAW，报告 36 套件、1,211 任务、核心 498；与论文 snapshot 不同，不要覆盖论文数值。
+
+## 论文正文与附录复核（2026-11-13）
+
+### 评测协议与任务覆盖（§2、Figure 3、Table 2、Appendix A–C）
+
+- 作者采用 Harbor/Terminal-Bench 容器任务格式，固定场景、任务说明、资源限制和外部 verifier；agent 可选择 direct control、code to control、train a policy 或混合，不是把这几种方式规定为不同难度的评测设置。
+- **Standard：** 仅可经机器人 API 获得本体/视觉传感信息、发送 action chunks；agent 请求间仿真暂停。**Realtime：** 在 Standard 的观测/重置限制下，仿真在 agent 推理时不暂停，重计算仿真可使用固定速率倍数。**Privileged：** 代理可读完整仿真状态、无限重置，在隔离 verifier 中重放提交的轨迹或执行控制器；所谓“上界”仅是群体近似，不是逐个任务的严格上界。
+- 论文版 35 套件 = 新设计 **9 套件/411 任务** + 适配 **26 套件/745 任务**；共 1,156 tasks / 2,288 task-setting tests / 47 robots。核心 **456 tasks / 901 tests**，对应 Standard 456、Privileged 391、Realtime 54。
+- 新增九套件按能力分组：接触丰富操作（RoboPaint、RoboARC、DexHandExam），动态任务（RoboDynamicExam、Embodied Olympics - Fun / Match），空间、安全和迁移（iSpatialGym、Embodied Safety Exam、RoboEngineer）。
+
+### 结果与消融（§3.1–3.5、Figures 7–18、Appendix D–H）
+
+- **456 核心 Standard tests：** GPT-6 Astra + Codex **33.6%**（约 34%）。同一批支持两种设置的 **391 tasks**：原始 Standard **30%**、Privileged **77%**；两者都是任务口径配对而不是所有 456 个任务。
+- **受控消融（391 tasks）：** 额外运行的 Standard 基线 **28%**，增加物体真值 **45%**，增加无限重置 **53%**，两者同加 **68%**。此处 28% 与上条原始 30% 由不同试验产生，不能混合。
+- **54 对 Standard/Realtime：** 最强 agent 完成 **23 / 17**；全部八 agent 均未解的测试占比分别 **50% / 63%**。
+- **Harness 敏感性：** GPT-6 Astra 在 Standard 核心集使用 Codex **34%**、Claude Code **22%**。更换执行壳/工具接口可改变分数，不应将榜单视为纯模型排名。
+- **阶段失效：** 427 个核心任务有阶段图，作者用另一个 agent 依据回放与日志给失败阶段标注。材料变更阶段失效率 **66%**、机器人身体运动阶段 **45%**；套件/机器人同时变化，不能据此推断阶段类型直接引发失败。
+- **控制方式：** 1,489 次抽样尝试中 Standard **61%** 以动作块直接反馈控制，Realtime **97%** 采用程序化控制。足球任务提供 GPU 与 RL 库时出现训练策略的获胜样例，但 CPU/GPU 任务版本有多项差别，不能断言 GPU 是唯一原因。
+
+### 真机证据与不足（Appendix I–J）
+
+- 真机 buzz-wire 演示只有两种 agent、同一机械臂、每个各 **8 次连续尝试**，仅用以说明接口可接真实机械臂，**完全不计入**模拟评测的成功率。
+- 392/1,156 任务无参考解；每 test 每 agent 只试一次，任务筛选先用同系列 GPT-6 Luna 过滤部分已解任务，模型家族和标签辅助模型可能引入偏差。多套件来自公开 benchmark，部分任务存在已公开方案的记忆风险。
+- 评测取决于具体模型 + harness、任务资源与准入权限；仿真评测不等于真实机器人大规模的鲁棒性或安全能力验证。
+
+### 开放材料与快照
+
+- 论文：[arXiv v1 PDF](https://arxiv.org/pdf/2611.12177) / [HTML](https://arxiv.org/html/2611.12177v1)，项目页：[embodied-first-exam.ai](https://www.embodied-first-exam.ai/)。
+- 官方 [MIT 许可代码与任务](https://github.com/mll-lab-nu/embodied-first-exam)、[数据轨迹](https://huggingface.co/datasets/MLL-Lab/embodied-exam-data)；各上游模拟器/资产有额外许可。
+- 2026-11-13 官方 README 显示 36 benchmark、1,211 tasks、2,398 task directories、核心 498 tasks。作者明确此仓库计数包含 HumanCLAW；论文及榜单 **35/1,156/2,288** 不包含该套件。新旧快照均需保存。
 
 ## 对 wiki 的映射
 
