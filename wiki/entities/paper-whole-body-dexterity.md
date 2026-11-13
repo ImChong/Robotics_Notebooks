@@ -53,8 +53,8 @@ summary: "Whole-Body Dexterity（arXiv:2610.22184v1）用全身接触抓取生�
 flowchart TD
   geom["物体网格 / G1 身体接触子区域"] --> opt["SDF 接触优化生成抓取候选"]
   opt --> filter["4 倍重力外扰 + 正常重力两阶段仿真过滤"]
-  filter --> graph["2 cm 体素化稳定抓取 / L B R 模式目标图"]
-  graph --> ppo["球体 PPO WBD-EX 专家预训练"]
+  filter --> graspMap["2 cm 体素化稳定抓取 / L B R 模式目标图"]
+  graspMap --> ppo["球体 PPO WBD-EX 专家预训练"]
   ppo --> warm["其他几何体专家热启动"]
   warm --> traj["多目标重定位轨迹采集与质量筛选"]
   traj --> distill["扩散关键点预测 + 逆动力学联合蒸馏"]
