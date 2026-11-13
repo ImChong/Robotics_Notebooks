@@ -3600,6 +3600,19 @@ button.home-wiki-heatmap-cell.is-active {
 /* 总览可横向拖动：阶段标题吸附在可视区左侧，最宽不超过可视区（不撑宽总览），长标题照旧省略号截断 */
 .roadmap-ltree-ov-scroll {
   container-type: inline-size;
+  /* 与路线目录一致：只显示细滑块，轨道透明，不显示原生滚动条底框。 */
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
+}
+.roadmap-ltree-ov-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+.roadmap-ltree-ov-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.roadmap-ltree-ov-scroll::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--text-muted) 48%, transparent);
+  border-radius: 999px;
 }
 .roadmap-ltree-ov .roadmap-ltree-ov-head {
   position: sticky;
