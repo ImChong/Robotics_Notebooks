@@ -115,7 +115,7 @@ sequenceDiagram
     participant Builder as model_provider / gpt_builders
     participant MCore as core.models.gpt.GPTModel
     participant Schedule as core.pipeline_parallel
-    participant Opt as core.optimizer
+    participant Optimizer as core.optimizer
     participant CKPT as training.checkpointing
 
     Dev->>CLI: 使用官方示例配置启动分布式训练
@@ -134,7 +134,7 @@ sequenceDiagram
         MCore-->>CLI: 模型输出
         CLI-->>Schedule: 返回 loss_func 闭包
         Schedule-->>Engine: backward 与梯度
-        Engine->>Opt: optimizer.step
+        Engine->>Optimizer: optimizer.step
     end
     opt 达到保存条件
         Engine->>CKPT: save_checkpoint
