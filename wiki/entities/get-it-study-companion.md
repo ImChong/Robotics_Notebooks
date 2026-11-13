@@ -11,7 +11,7 @@ tags:
   - threejs
   - desktop-app
 status: complete
-updated: 2026-10-15
+updated: 2026-11-13
 related:
   - ./threejs-game-skills.md
   - ./mattpocock-skills.md
