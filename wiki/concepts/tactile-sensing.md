@@ -20,6 +20,7 @@ related:
   - ../entities/paper-softvtbench.md
   - ../entities/humantouch.md
   - ../entities/awesome-touch.md
+  - ../entities/tipsim.md
   - ../entities/paper-tactilestep.md
   - ../entities/paper-anytouch.md
   - ../entities/paper-anytouch.md
@@ -140,6 +141,8 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 
 ## 关联页面
 
+- [TipSim（MuJoCo 触觉仿真）](../entities/tipsim.md) — Loong/Universa 阵列触点力读取、参数化传感器误差与 UR5e 分指受力阈值抓取演示；核心插件为闭源二进制。
+
 - [VisualForce](../entities/paper-visualforce.md) — 从柔性夹爪形变估计法向力并标注操作示范。
 
 - [eFlesh（磁性触觉皮肤）](../entities/eflesh.md) — 可调 TPU 微结构 + 磁体/磁力计，学习估计接触力与滑移。
@@ -183,6 +186,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [OpenTac 官方项目页与代码](../../sources/sites/opentac-project.md) — 可定制压阻触觉皮肤、剪切凸点与自适应采样生态
 - [AnyTouch 论文来源](../../sources/papers/anytouch_arxiv_2502_12191.md) 与 [AnyTouch 2 论文来源](../../sources/papers/anytouch2_arxiv_2602_09617.md)
 - [UVTA（arXiv:2609.34182）](../../sources/papers/uvta_arxiv_2609_34182.md) — 跨本体人类触觉示范与机器人灵巧操作联合学习
+- [TipSim 官方仓库与示例通读归档](../../sources/repos/tiplab-tipsim.md) — MuJoCo 触点阵列模拟及双指闭环示例（核心插件只提供二进制）
 - [TactileStep（arXiv:2609.28959）](../../sources/papers/tactilestep_arxiv_2609_28959.md) — 足底特征级 sim2real + 四相位接触奖励；G1 跑酷真机
 
 ## 继续阅读
