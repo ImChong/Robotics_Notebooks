@@ -21,6 +21,7 @@ related:
   - ../entities/humantouch.md
   - ../entities/awesome-touch.md
   - ../entities/tipsim.md
+  - ../entities/paper-dextacwam.md
   - ../entities/paper-tactilestep.md
   - ../entities/paper-anytouch.md
   - ../entities/paper-anytouch.md
@@ -70,7 +71,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 
 ## 核心原理
 
-以视觉类传感器为例（据 GelSight 综述 §3）：
+以视觉类传感器为例（据 GelSight 综述 `3）：
 
 - **形状**：透明弹性体加反射涂层，内置相机在多方向彩色光下成像，用光度立体求表面法线，再积分（泊松方程）得到高度图；用已知直径小球标定查找表，每个传感器须单独标定。
 - **力与扭矩**：涂层下的标记点位移场反映切向形变，法向力使点外扩、剪切力使点平移、面内扭矩使点旋转，幅度大致与载荷成正比；形状变化时比例系数改变，故用 CNN 做与形状无关的力回归。
@@ -129,6 +130,8 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 [eFlesh](../entities/eflesh.md) 将磁体嵌入可打印 TPU 微结构，以磁力计读数估计接触位置、法向/剪切力和滑移。它代表一种不同于相机式 GelSight/DIGIT 与电阻阵列的磁性软触觉路线：机械结构本身决定可调的顺应性与灵敏度。论文和项目页报告亚毫米接触定位与精细操作结果，但仍需逐个传感器标定。
 
 ## 在机器人学习中的应用
+
+- **预测式接触世界状态：** [DexTacWAM](../entities/paper-dextacwam.md) 将十指视觉触觉压缩为左右手 latent，与视觉世界模型共同预测接触演化；论文保持触觉输入与动作专家相同的消融中，四任务分数 74.7→26.6，说明触觉条件化不等于触觉世界预测。
 
 在最新的 Robot Learning 研究中，触觉反馈正在成为突破视觉遮挡（Occlusion）瓶颈的关键：
 
