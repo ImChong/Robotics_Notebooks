@@ -21,6 +21,9 @@ related:
 sources:
   - ../../sources/repos/beltromatti-get-it.md
   - ../../sources/sites/getit-noesisai.md
+original:
+  - ../../sources/repos/beltromatti-get-it.md
+  - ../../sources/sites/getit-noesisai.md
 summary: "Get It.（beltromatti/get-it）是 Apache-2.0 开源的本地优先学习桌面应用：从 PDF/Markdown 检出概念并生成可选可视化，以文档知识图谱、主动回忆、测验和 Feynman 讲解构成复习闭环；模型经用户选用的 CLI/API 访问。"
 ---
 
