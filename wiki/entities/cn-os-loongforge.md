@@ -14,6 +14,8 @@ sources:
   - ../../sources/repos/loongforge.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
 summary: "百度百舸开源 LoongForge：Megatron 栈 + torch-native 具身子系统，统一 LLM/VLM/扩散/VLA/WAM 训练与 checkpoint 转换，支持 NVIDIA GPU 与昆仑芯 XPU，相对开源基线最高约 5× 吞吐。"
+original:
+  - ../../sources/repos/loongforge.md
 institutions:
   - baidu
 ---
