@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-13
 related:
   - ../entities/robotera.md
   - ../entities/rai-institute.md
@@ -23,6 +23,7 @@ related:
   - ../entities/rhoda-ai.md
   - ../entities/motphys.md
   - ../entities/gamma-robotics.md
+  - ./autonomous-driving-embodied-intelligence-2013-2026.md
 original:
   - ../../sources/papers/gr00t_n1_reading_arxiv_2503_14734_company_paths.md
   - ../../sources/papers/pi05_reading_arxiv_2504_16054.md
@@ -64,6 +65,8 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 ## 为什么重要
 
 各家公司的发布材料用词相近（VLA、世界模型、全身控制），但训练目标、动作接口和开放范围差别很大。若不先按阅读视角拆开，容易把演示当成可复现资产，或把不同本体、任务的成功率放在一起排名。本页给出一个统一的追问框架，帮助判断「某条路线究竟公开了什么、哪一层靠什么闭环」。
+
+延伸产业视角：从 **2013–2026 智能驾驶发展史**比较算法、数据闭环、Tier 1 / 全栈分工和商业化边界，请读 [智能驾驶四时代 → 具身智能六维映射](./autonomous-driving-embodied-intelligence-2013-2026.md)。该页区分一手事实与产业预测，不把 Mobileye/Cruise 个案当成机器人赛道的确定性终局。
 
 ## 30 秒读懂
 
