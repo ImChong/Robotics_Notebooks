@@ -2,11 +2,13 @@
 type: entity
 tags: [paper, 3d-generation, multi-view, reconstruction, diffusion]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-13
 project_id: gensfm
 arxiv: "2610.35522"
 project: https://dotb1ue.github.io/GenSfm/
 code: https://github.com/dotb1ue/GenSfm
+original:
+  - ../../sources/papers/gensfm_arxiv_2610_35522.md
 related:
   - ./paper-axolotl3d.md
   - ./paper-glob3r.md
@@ -112,7 +114,7 @@ sequenceDiagram
 
 | 项 | 内容 |
 |---|---|
-| 源码开放状态（步骤 2.5） | **已开源**：官方仓库 MIT 许可，README 提供推理、训练与评估入口，权重发布于 Hugging Face。项目页本次可访问，其 `data/content.json` 列出 arXiv、代码与权重链接。GitHub 网页经代理返回 403，仓库内容依据 `raw.githubusercontent.com` 上的 README、`example_multi_image.py` 与 `trellis/pipelines/gensfm.py` 核对 |
+| 源码开放状态（步骤 2.5） | **已开源**：官方仓库采用 MIT 许可，提供推理、训练、评估入口；Hugging Face 已发布推理权重。2026-11-13 直接复核项目主页、GitHub README、`example_multi_image.py` 与 `trellis/pipelines/gensfm.py`，可公开访问 |
 | 环境 | Linux、NVIDIA GPU、CUDA 工具链（README 默认 Python 3.12、PyTorch 2.9.1、CUDA 12.8）；`from_pretrained` 首次运行需下载约 5.8 GB 权重及 DINOv2（经 Torch Hub），不含在权重包内 |
 | 输入准备 | 2–4 张同一刚体物体的前景 RGBA 图，四张覆盖不同侧面为推荐；保留完整物体、孔洞与细薄结构。RGB 照片可加 `--remove-background`（rembg），混乱背景需检查 mask |
 | 关键参数 | `--seed`（默认 1）；`--steps` 同时作用于两阶段；论文推理粗阶段 25 步 flow-Euler、CFG 强度 7.5，细阶段 25 步、CFG 3.0，均在 $t\in[0.5,1.0]$ 区间施加 |
@@ -131,6 +133,19 @@ sequenceDiagram
 **位姿（Table 4，成对相对位姿）：** 在 Toys4k 上，预测内参版本的 RRE 为 1.60°、Acc.@5° 为 0.972，VGGT 为 10.29° 与 0.597。相对位姿指标合并了 $\mathrm{diag}(\pm1,\pm1,-1)$ 的手性等价类，因此不评估前后手性歧义。
 
 **消融（Table 5，Toys4k）：** 逐步加入全交叉注意力、视觉条件、register tokens 与原生多视图细阶段解码器，PSNR 由 27.00 提升至 28.61，Acc.@5° 由 0.865 提升至 0.942。论文认为 register tokens 对位姿精度与 F@.01 贡献最大。
+
+## 引用论文与技术关系（逐篇区分）
+
+以下为 GenSfM 论文引用或对照的**六篇独立论文**；每篇具有自己的论文身份，不能当成 GenSfM 的同一详情节点。这里引用论文原文，不将尚未逐篇 ingest 的文献冒充为已建知识节点。
+
+| 论文 | 与 GenSfM 的关系 |
+|---|---|
+| [TRELLIS：Structured 3D Latents（2412.01506）](https://arxiv.org/abs/2412.01506) | SS/SLat 原生 3D 生成骨干；论文以 TRELLIS-M 作对照 |
+| [CUPID（2510.20776）](https://arxiv.org/abs/2510.20776) | 单视图 UV-volume 位姿编码；GenSfM 扩展为多视图联合去噪 |
+| [SAM 3D（2511.16624）](https://arxiv.org/abs/2511.16624) | 原生 3D 生成对照（Table 3）；不同于 SAM 3D Body |
+| [ReconViaGen（2510.23306）](https://arxiv.org/abs/2510.23306) | 前馈几何结合 3D 生成细化的级联方案，对照见 Tables 2–4 |
+| [FreeSplatter（2412.09573）](https://arxiv.org/abs/2412.09573) | 无已知相机的前馈 Gaussian Splatting 重建基线，见 Tables 2、4 |
+| [VGGT（2503.11651）](./paper-vggt-visual-geometry-grounded-transformer.md) | [原始论文](https://arxiv.org/abs/2503.11651)，相机/点图前馈基线，见 Table 4 |
 
 ## 与其他工作对比
 

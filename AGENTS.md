@@ -116,7 +116,7 @@
 ## 对 LLM / 维护者的要求
 
 在新增或修改页面时：
-- 同一项目的论文、项目页、官方源码统一在一个 wiki 实体节点；`sources/` 按资料类型分别归档。新项目实体必填稳定 `project_id` 与主论文/官方资源身份字段；建页前检索既有身份，CI 规则见 `schema/ingest-workflow.md` 与 `scripts/check_project_nodes.py`。
+- **每篇独立论文必须有独立、非重复的 `wiki/entities/paper-*.md` 详情节点**：按 arXiv ID、DOI、规范化标题查重。同篇论文的不同版本、项目页及源码统一映射回该节点；同一项目的不同论文各自建页、相互链接，不得用一页多论文清单代替详情。非论文项目仍按项目身份建唯一实体；`sources/` 按资料类型归档。新实体必填稳定 `project_id` 和论文/官方资源身份字段；CI 规则见 `schema/ingest-workflow.md` 与 `scripts/check_project_nodes.py`。
 - 优先复用现有页面与链接
 - 若知识点已存在，补充而不是重复造页
 - 若是新外部资料，先进入 `sources/`，再决定是否沉淀到 `wiki/`

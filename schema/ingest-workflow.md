@@ -83,12 +83,12 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 
 ### 步骤 3：判断是否沉淀到 `wiki/`
 
-#### 同一项目只维护一个实体节点（CI 门禁）
+#### 一篇论文一个独立详情节点，同一研究成果不重复（CI 门禁）
 
-创建页面前先检索项目名、`project_id`、论文编号、官方项目地址和源码仓库。**论文、官方网站、官方训练/推理/部署实现是同一项目的不同材料，统一编译进一个 `wiki/entities/` 主节点**，不得再建 `project-*` / `repo-*` 或策展清单占位页来分流导航。清单与路线直接引用主节点；原始材料仍分别放在 `sources/papers/`、`sources/sites/`、`sources/repos/`。
+创建页面前先检索论文标题、arXiv ID、DOI、`project_id`、官方项目地址及源码仓库。**每篇独立论文必须有自己唯一的 `wiki/entities/paper-*.md` 详情节点**；同篇论文的 PDF、HTML、不同版本、项目页和官方训练/推理/部署代码统一映射该论文节点，禁止重复创建同一论文的 `project-*`、`repo-*` 或策展占位页。一个项目包含多篇独立论文时，各篇分别建立详情节点并互相链接，不能仅以同页引用列表代替详情；非论文项目按项目身份维护唯一实体。原始材料分别保存在 `sources/papers/`、`sources/sites/`、`sources/repos/`。
 
 - 新项目实体填写稳定的 `project_id: <小写英文-slug>`，并标注主论文 `arxiv:` / `papers:`、官方 `project:` 或 `code:` 等身份材料。项目页可使用 `paper:` 引用论文编号，但也会参与重复检查。
-- 同一项目的多篇配套论文可以记入主节点的 `papers: ["ID1", "ID2"]`；arXiv 版本号不构成新节点。
+- 一篇论文只对应一个主身份（优先 arXiv ID，其次 DOI / 规范化标题），不同版本不另建节点；`papers: ["ID1", "ID2"]` 只能用于文献索引，**不能替代每篇独立论文的详情节点**。多篇论文共享源码或项目页时，使用各自稳定 `project_id`，并用真实 `code_scope` / `project_distinction` 说明差异，避免重复身份及内容。
 - 相同缩写、不同论文或独立工具不自动合并。一个源码仓库承载不同论文时，以各自主论文编号区分；确为独立单仓模块时，新节点须写明不同的 `code_scope`（模块路径）及 `project_distinction`（独立维护理由），不能用这两个字段为同项目资源拆页找理由。
 - 合并节点必须迁移内链、来源映射和公司路线 ID，并将旧详情页 ID 登记到 `schema/page-aliases.json`；保留独有方法、实验、运行流程与来源，不复制清单模板正文。
 - `python3 scripts/check_project_nodes.py --base HEAD` 是本地快速检查；`make ci-preflight` 自动执行。GitHub **Wiki Lint** 相对 PR base / push before 检查新增实体，且全库重复身份、规范化论文编号和项目 URL 均为阻塞项。正文引用和 `sources/` 多份归档不计作节点身份。
