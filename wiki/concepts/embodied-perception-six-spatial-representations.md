@@ -22,6 +22,8 @@ related:
   - ../methods/grasp-pose-estimation.md
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
   - ../tasks/vision-language-navigation.md
+original:
+  - ../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md
 sources:
   - ../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md
   - ../../sources/papers/occanyscene_arxiv_2608_08696.md
@@ -188,6 +190,8 @@ flowchart TB
 - [VLN（任务）](../tasks/vision-language-navigation.md) — 语义地图的语言导航消费方
 
 ## 参考来源
+
+> **原文核对记录（2026-11-13）：** 已阅读并核对知识框架的主要编译原文《“同样是具身感知”，这六种空间表征到底差在哪里？》完整归档；该文章是六层框架的直接文本来源，其他引用的具体算法论文和性能数字仍以各自的一手材料为准。
 
 - [Reduced 3DGS 论文归档](../../sources/papers/reduced_3dgs.md) — 高斯场压缩及评测。
 
