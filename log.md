@@ -386,6 +386,16 @@ op: ingest
 - **通读补齐：** PR #3699 复核中逐篇通读 Swarm Sensors 2025、SPL 2401.15026v1、ARTEMIS 2512.09431v1、RoboCompiler-Humanoids 2610.14237v1 及 CoMind 2611.12295v1；前四篇集中为[一手论文全文核验记录](../sources/papers/humanoid-coordination-fulltext-review-2026-11-13.md)，协调概念页以 `original` 关联该记录与 CoMind 归档。
 - **纠错：** 区分单机内管理与队级集中控制、SPL 定性赛事与 60 min 仿真、Swarm 控球百分点与缺员/丢包口径；CoMind 图中未来帧改为独立训练目标，补充 Process Score 权重定义。
 
+## [2026-11-13] ingest | TRABot 原文 v2 复核并修正规划参数
+
+- 论文：Talk, Render, Act: Integrating Social Gesture and Digital Face with Synchronized Speech for Conversational Humanoid Robot（arXiv:2610.06153v2）。
+- 查重：已有 wiki/entities/paper-trabot-talk-render-act.md 与对应来源，故原位升级，不重复创建论文节点。
+- 阅读：完成 arXiv HTML v2 摘要、I–V 全文章节、式 1–14、算法、表 I–VI、参考文献；对照官方项目页。
+- 核验：机构为阿联酋大学计算与人工智能学院；最小加加速度桥接速度 **1 rad/s**，纠正原记录误写的 **11 rad/s**。
+- 内容：补英中论文标题、机构标签、全文通读状态与 original 映射、12 组对话中的具体样例、规划代价/原子执行机制与五条件排序口径；Mermaid 主流程图按论文重新核对。
+- 开源：官方项目仍标注 Code (soon)，无 TRABot 代码入口；未编造源码运行时序。
+- 变更：wiki/entities/paper-trabot-talk-render-act.md；sources/papers/trabot_arxiv_2610_06153.md；sources/sites/trabot-project.md；log.d/2026-11-13-194700-ingest-trabot-v2-source-review.md。不触碰 catalog.md、log.md 与生成文件。
+
 ## [2026-11-13] ingest | sources/blogs/atlas_humanoid_early_release.md — 收录 ATLAS System 2 / System 0 与在线残差学习架构
 
 - 已通读项目官方 Early release 技术长文及主页的机制、实验、部署与局限。
