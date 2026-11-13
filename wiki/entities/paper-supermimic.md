@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-13
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
@@ -27,6 +27,7 @@ sources:
   - ../../sources/papers/supermimic_arxiv_2610_28480.md
   - ../../sources/sites/supermimic-project.md
   - ../../sources/sites/corl-2026-program.md
+  - ../../sources/sites/corl-2026-supermimic-award.md
   - ../../sources/repos/supermimic-hybridrobotics.md
   - ../../sources/repos/supermimic-repro-sim2real.md
   - ../../sources/repos/supermimic-unilab.md
@@ -218,6 +219,12 @@ sequenceDiagram
 - **G1 真机示范**证明存在部署可行性，但不等价于上述动作库全部在真机无失败。
 - 机制要点：MuJoCo Warp 收集状态转移训练共享可微动力学，策略更新在学到的模型内做 **32 步 BPTT**，刚体碰撞仿真器本身无需可微。官方实现可见 [HybridRobotics/supermimic](https://github.com/HybridRobotics/supermimic)，完整实验数据、权重与真机部署模块是否齐备需逐项核实。
 
+## 2026-11-13 新动态：CoRL 2026 最佳会议论文奖
+
+- **获奖报道：** 2026-11-12，智东西 / 机器人前瞻报道 SuperMimic 获得 CoRL 2026 **Best Conference Paper Award**（最佳会议论文奖）；这是会议奖项新信息，论文方法与指标沿用已有论文精读记录，**不新建重复实体**。
+- **证据边界：** 用户提供的 [Berkeley AI 公告](https://x.com/berkeley_ai/status/2121011370929909886) 本次访问返回 403，尚未直接读到公告正文；[较早的作者成果页](https://abbeel.berkeley.edu/publications.html) 仍写 Best Paper Award Finalist，其更新早于获奖新闻。因此本页以「11 月 12 日获奖报道」表述并保留 [来源核查归档](../../sources/sites/corl-2026-supermimic-award.md)，后续再核对可读的官方奖项名单。
+- **指标口径不变：** 单张 H100 3 小时超过 SONIC 已发布模型回报、GPU-hours 超过千倍差距，以及 129,514 条训练动作库上的失败数，均为作者在所设条件下的实验报告；不等于不同硬件同条件加速比较，也不代表未见动作泛化。
+
 ## 关联页面
 - [Qiayuan Liao](./qiayuan-liao.md) — 第一作者的研究与软件入口。
 - [SuperMimic Parkour](./supermimic-parkour.md) — PHP 跑酷数据上的社区实现。
@@ -231,6 +238,7 @@ sequenceDiagram
 ## 参考来源
 - [HybridRobotics/supermimic 研究团队开源代码及源码核查](../../sources/repos/supermimic-hybridrobotics.md)
 - [CoRL 2026 官方 Program 直播/议程入口](../../sources/sites/corl-2026-program.md)
+- [CoRL 2026 最佳论文获奖报道与官方公告访问记录](../../sources/sites/corl-2026-supermimic-award.md)
 - [SuperMimic-Repro-Sim2Real 社区复现](../../sources/repos/supermimic-repro-sim2real.md)
 - [senlanke 复习文章：借着 SuperMimic 复习 Model-Based、可微世界模型、BPTT](../../sources/blogs/wechat_senlanke_supermimic_model_based_bptt_review_2026-10-29.md)
 
