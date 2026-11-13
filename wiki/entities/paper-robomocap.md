@@ -11,7 +11,7 @@ tags:
   - bitrobot
   - nus
 status: complete
-updated: 2026-11-11
+updated: 2026-11-13
 arxiv: "2611.10994"
 related:
   - ../concepts/motion-retargeting-pipeline.md
@@ -19,6 +19,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../entities/dataset-ego-exo4d.md
+  - ../entities/dataset-robocap-lidar-100.md
   - ../entities/dataset-bfm-phuma.md
   - ../entities/omniretarget-dataset.md
   - ../entities/awesome-egocentric-vision.md
@@ -139,6 +140,10 @@ flowchart LR
 3. 向 G1 重定向的片段成功率最高仅 79.6%（PHC），GMR 只有 7.4%（表 4、5）。
 4. 局限：仅 7×7 m 动捕棚、14 名受试者，手部为视觉估计，没有在数据上训练策略或真机执行（第 6 节）。
 
+## 与 RoboCap LiDAR-100 的边界
+
+[BitRobot RoboCap LiDAR-100](./dataset-robocap-lidar-100.md) 是另一份**真实工作场景头戴 LiDAR + 鱼眼 RGB + IMU** 数据集，2026-11-13 仅首批 50 / 100 小时开放。与 RoboMoCap 的光学全身动捕、腕部视觉和 SMPL-X 标注不相同；不要把两者的采集时长、感知模态与真值混合计算。
+
 ## 关联页面
 
 - [运动重定向流水线](../concepts/motion-retargeting-pipeline.md)
@@ -146,6 +151,7 @@ flowchart LR
 - [全身控制](../concepts/whole-body-control.md)
 - [全身跟踪流水线](../concepts/whole-body-tracking-pipeline.md)
 - [Ego-Exo4D 数据集](../entities/dataset-ego-exo4d.md)
+- [RoboCap LiDAR-100 头戴深度数据集](./dataset-robocap-lidar-100.md)
 - [PHUMA 数据集](../entities/dataset-bfm-phuma.md)
 - [OmniRetarget 数据集](../entities/omniretarget-dataset.md)
 - [第一视角视觉资源汇总](../entities/awesome-egocentric-vision.md)

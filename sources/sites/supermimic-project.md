@@ -39,3 +39,8 @@
 
 - 发现 [HybridRobotics/supermimic](../repos/supermimic-hybridrobotics.md)，其 README 自称基于 mjlab 的 SuperTrack 实现，代码有训练、回放、两个 G1 task。此前“页面无官方代码链接”是页面本身的历史观测，**不代表现今没有公开实现**。
 - 官方 [CoRL 2026 Program](../sites/corl-2026-program.md) 作为直播/录像检索入口已入库；目前未核验到 SuperMimic 单场视频直链。
+
+
+## 2026-11-13 会议获奖动态
+
+- [11 月 12 日 CoRL 2026 最佳会议论文奖报道与核验边界](./corl-2026-supermimic-award.md)。新闻报告 SuperMimic 获 Best Conference Paper Award；Berkeley AI X 公告访问受限，项目页尚未更新奖项文字。本节是后续会议动态，不改变上述 2026-10-22 / 11-11 的项目页历史观察。
