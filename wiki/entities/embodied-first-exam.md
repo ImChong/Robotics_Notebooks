@@ -38,7 +38,8 @@ summary: "Embodied First Exam 论文评测 35 套件、1156 任务、47 种机�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| EFE | Embodied First Exam | 具身代码代理统一考核框架 |\n| Harbor | Harbor evaluation framework | Laude Institute 沙箱评测运行时，用于批量运行 agent 任务 |
+| EFE | Embodied First Exam | 具身代码代理统一考核框架 |
+| Harbor | Harbor evaluation framework | Laude Institute 沙箱评测运行时，用于批量运行 agent 任务 |
 | MIT | MIT License | 代码仓许可；第三方模拟器、资产和基础镜像另有许可 |
 | GPU | Graphics Processing Unit | 部分仿真套件需要相应的 NVIDIA GPU 环境 |
 
