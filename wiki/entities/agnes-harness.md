@@ -5,7 +5,7 @@ code: https://github.com/AgnesAI-Labs/agnes-harness
 tags: [llm-agents, agent-infrastructure, open-source, device-integration, mcp, hardware]
 status: complete
 date: 2026-10-11
-updated: 2026-10-11
+updated: 2026-11-13
 related:
   - ../concepts/model-hardware-standard.md
   - ../concepts/llm-robotics-control-interfaces.md
@@ -142,6 +142,12 @@ sequenceDiagram
 图依据：`docs/develop/source-map.md` 所列的「CLI/Web → SDK → daemon/worker → Host/Core」路径，`agnes.mjs`、`packages/cli/src/boot/local.ts`（`bootLocal` 局部）、`packages/sdk/src/submit.ts`（局部）、`packages/protocol/src/methods.ts`（局部）、`packages/daemon-rpc/src/local/methods/agnes.ts`（`submit` 与 `dispatch` 段）、`packages/daemon-rpc/src/local/follow-up-runner.ts`（`enqueueFollowUp` 段）、`packages/core/src/step/session.ts`（`run` 与 `runTurns` 局部）、`packages/core/src/execution/turn/inference.ts`（`runInference` 局部）、`packages/core/src/execution/model-execution.ts`（局部）。`packages/ai` 与 `runToolsPhase` 内部细节未读，图中仅示意调用关系。未运行代码。
 
 ## 关联页面
+
+### 同届课程与工程延伸
+
+- [《企业本体论：人人都是 FDE》配套实现](ontology-fde.md) — 用退款审批实例展示企业本体和动作契约。
+- [《前线部署工程师》](fde-guidance-book.md) — FDE 业务价值交付方法的图书总览。
+
 
 - [Model Hardware Standard（Anthropic / HHMI Janelia）](../concepts/model-hardware-standard.md) — 与 AGH 同名但彼此独立的协议概念
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — agent 的抽象层级及控制边界
