@@ -24,6 +24,8 @@ sources:
 
 # TRABot：说、演、动（Talk, Render, Act: Integrating Social Gesture and Digital Face with Synchronized Speech for Conversational Humanoid Robot）
 
+## 一句话定义
+
 **TRABot（Talk, Render, Act）**（[arXiv:2610.06153](https://arxiv.org/abs/2610.06153)，Jiang 等）是一个让 **Unitree G1 人形边说话边做语义匹配手势、同时驱动数字人脸** 的四 agent 系统：离线把 BEAT2 手势构建成可执行、带交际功能标签的 **运动原子库**，在线由 Dialogue、Motion Planning、Facial Animation 三个 agent 把流式语音、规划好的手臂动作和面部帧对齐到同一条时间线。
 
 ## 英文缩写速查
