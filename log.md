@@ -386,6 +386,14 @@ op: ingest
 - **通读补齐：** PR #3699 复核中逐篇通读 Swarm Sensors 2025、SPL 2401.15026v1、ARTEMIS 2512.09431v1、RoboCompiler-Humanoids 2610.14237v1 及 CoMind 2611.12295v1；前四篇集中为[一手论文全文核验记录](../sources/papers/humanoid-coordination-fulltext-review-2026-11-13.md)，协调概念页以 `original` 关联该记录与 CoMind 归档。
 - **纠错：** 区分单机内管理与队级集中控制、SPL 定性赛事与 60 min 仿真、Swarm 控球百分点与缺员/丢包口径；CoMind 图中未来帧改为独立训练目标，补充 Process Score 权重定义。
 
+## [2026-11-13] ingest | Embodied First Exam 论文协议、九套件与失败阶段深化
+
+- 复用已入库的 arXiv:2611.12177 唯一实体 `wiki/entities/embodied-first-exam.md`，不重复建立同论文第二个节点。
+- 根据论文 v1（正文 §1–5、附录 A–K 的既有通读记录，以及本次 Figure 3、§2–3、Appendix I–J 原文复核），补充三种控制路径、三类模式、九个原创套件与 Mermaid 对应数据流。
+- 澄清 456 核心 Standard 33.6%、391 配对任务 Standard 30% vs Privileged 77%、391 受控消融 28% → 45% / 53% / 68%，避免跨分母误读。
+- 补充阶段失败、Realtime 配对、harness 差异、真机演示边界；按 2026-11-13 官方 README 更新代码仓扩增至 36 benchmarks / 1,211 tasks 与论文 35/1,156 区分。
+- 保留原先逐文件核对的官方源码时序图；资料归档更新 `sources/papers/`、`sources/repos/` 与 `sources/sites/`。
+
 ## [2026-11-13] ingest | sources/papers/ropedia_xperience_2_arxiv_2611_17060.md — 收录 Ropedia Xperience 2 环境与行为数据基座
 
 - 通读 arXiv v1 正文及重要附录，归档官方项目、数据集、配准源码，并建立统一论文实体节点。
