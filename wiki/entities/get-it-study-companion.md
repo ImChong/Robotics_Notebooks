@@ -11,13 +11,17 @@ tags:
   - threejs
   - desktop-app
 status: complete
-updated: 2026-10-15
+updated: 2026-11-13
 related:
   - ./threejs-game-skills.md
   - ./mattpocock-skills.md
+  - ./learnharness.md
   - ./paper-wikiskill.md
   - ../concepts/agentic-coding-software-fundamentals.md
 sources:
+  - ../../sources/repos/beltromatti-get-it.md
+  - ../../sources/sites/getit-noesisai.md
+original:
   - ../../sources/repos/beltromatti-get-it.md
   - ../../sources/sites/getit-noesisai.md
 summary: "Get It.（beltromatti/get-it）是 Apache-2.0 开源的本地优先学习桌面应用：从 PDF/Markdown 检出概念并生成可选可视化，以文档知识图谱、主动回忆、测验和 Feynman 讲解构成复习闭环；模型经用户选用的 CLI/API 访问。"
@@ -45,7 +49,7 @@ summary: "Get It.（beltromatti/get-it）是 Apache-2.0 开源的本地优先学
 - **把复习信号放回同一上下文：** Chat、flashcards、quizzes 和 Feynman 讲解都与同一文档及概念图关联，使学习者可以在概念层面回看已有练习记录，而不只是积累彼此孤立的聊天和卡片。
 - **提供本地可控的模型接入：** 桌面端储存文档和学习记录，模型请求通过用户选择的 CLI/API 到供应方；它没有项目方的模型代理服务。此设计保留了用户选择供应商或本地模型的空间，但云端模型调用的内容处理仍取决于具体供应方条款。
 
-## 核心结构
+## 核心原理与结构
 
 | 组件 | 输入 | 输出与作用 |
 |------|------|------------|
@@ -90,12 +94,13 @@ flowchart TD
 - **本地存储不等于模型零数据外传：** 选择云端 CLI/API 后，模型服务按其政策处理请求；第三方模型账户条款与隐私政策仍适用。
 - **站点发布提示可能过时：** 项目官网与 README 对版本及 macOS 签名状态不一致，应按单个 release 核实，不把旧官网提示推广为所有版本的状态。
 
-## 与 Robotics_Notebooks 的关系
+## 关联页面与 Robotics_Notebooks 的关系
 
 Get It. 是通用学习应用，不是机器人研究平台。对本知识库读者的实际用途是把机器人学课程、控制推导或技术报告作为阅读材料，试用其概念可视化与主动回忆流程；模型评价器和生成内容仍需独立校验。
 
 - [Three.js Game Skills](./threejs-game-skills.md) — 浏览器 3D 技能库；同用 Three.js，但 Get It. 的目标是文档学习可视化
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 可安装编码代理技能库，作为通用 Agent Skills 参照
+- [LearnHarness](./learnharness.md) — 同为桌面 AI 学习工具；LearnHarness 优先摸底诊断、依赖规划与命题推理图，而 Get It. 优先文档概念可视化与复习评估
 - [WikiSkill（论文实体）](./paper-wikiskill.md) — 把研究文献与 agent skill/wiki 连接的研究方向
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 理解代理工作流的可验证边界与人工判断
 
