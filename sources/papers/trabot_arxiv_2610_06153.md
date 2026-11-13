@@ -13,7 +13,7 @@
 - **代码：** 截至 2026-11-13 再核查仍未发布（项目页标注 “Code (soon)”）
 - **入库日期：** 2026-10-12；全文复核：2026-11-13
 - **核对范围：** arXiv HTML v2 全文——Abstract、§I Introduction、§II Related Work、§III-A–D（含式 1–14、Algorithm 1、Table I）、§IV-A–C（Tables II–VI、12 对话、20 人用户研究、200 回复自动评测）、§V Conclusion、Acknowledgments、References；并对照官方项目页 Method/Results/Code 标签。
-- **通读：** 已完成（2026-11-13，针对 v2 全文）
+- **通读：** 已完成
 
 ## 论文要解决的问题
 
