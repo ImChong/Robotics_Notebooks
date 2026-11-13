@@ -48,7 +48,7 @@
 - [All Hands Up（RLWRLD 灵巧手档案）](wiki/entities/all-hands-up.md) — All Hands Up !** 是瑞沃世界（RLWRLD）维护的 **腕装模块化灵巧手公开档案**：在浏览器里加载各手 URDF、对照规格，并用仿真扫掠给出 **Kapandji 对掌分**；配 `📅unknown` `[entity_page]`
 - [Allegro Hand (灵巧手)](wiki/entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
 - [ALOHA 2（增强型低成本双臂遥操作硬件）](wiki/entities/aloha-2.md) — ALOHA 2** 是 Google DeepMind **ALOHA 2 Team** 在初代 ALOHA 上的硬件迭代：面向 **机队级大规模双臂演示采数**，同时 `📅unknown` `[entity_page]`
-- [ALOHA (双臂遥操作硬件)](wiki/entities/aloha.md) — ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是由 Google DeepMind (To `📅unknown` `[entity_page]`
+- [ALOHA (双臂遥操作硬件)](wiki/entities/aloha.md) — ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是 Tony Z. Zhao、Vikash  `📅unknown` `[entity_page]`
 - [Alpamayo 2 Edge：面向车端实时规划的自适应推理 VLA（NVIDIA）](wiki/entities/alpamayo2-edge.md) — 英文名称：** NVIDIA Alpamayo 2 Edge — In-Vehicle Reasoning Vision-Language-Action Model `📅unknown` `[entity_page]`
 - [STK MCP（alti3/stk-mcp）](wiki/entities/alti3-stk-mcp.md) — STK MCP（alti3/stk-mcp）是将 Ansys/AGI Systems Tool Kit 的任务工程能力暴露给 MCP 客户端，仓库含 CLI、Desktop/Engine 模式和轨道、 `📅unknown` `[entity_page]`
 - [Altium Designer](wiki/entities/altium-designer.md) — Altium Designer** 是 Altium 旗下的 **商业 PCB EDA 套件**，在单一 **Unified Design Environment** 内完成原理图 → PCB → `📅2026-07-18` `[entity_page]`
