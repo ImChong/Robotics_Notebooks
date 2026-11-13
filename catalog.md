@@ -554,6 +554,7 @@
 - [ProcTHOR-10K](wiki/entities/dataset-procthor-10k.md) — ProcTHOR-10K**：由 ProcTHOR 框架按需采样生成的 1 万个可交互虚拟房屋。 `📅unknown` `[entity_page]`
 - [RCT（Robotic Contact Tactile）](wiki/entities/dataset-rct-robotic-contact-tactile.md) — RCT**：机器人采集的触觉、视觉与语言数据集，支持按材料、类别、传感器做留出评测。 `📅unknown` `[entity_page]`
 - [ReplicaCAD](wiki/entities/dataset-replicacad.md) — ReplicaCAD**：对 Replica 中 FRL 公寓的美术重建，可在 Habitat 中进行物理交互的资产集合。 `📅unknown` `[entity_page]`
+- [RoboCap LiDAR-100：100 小时头戴 LiDAR 真实工作数据集](wiki/entities/dataset-robocap-lidar-100.md) — RoboCap LiDAR-100** 是 BitRobot 发布的真实工作场景第一视角多传感器数据集，以头戴固态 LiDAR、鱼眼 RGB 相机和 IMU 记录厨房、汽修和汽车精洗操作；**10 `📅unknown` `[entity_page]`
 - [RoboCOIN](wiki/entities/dataset-robocoin.md) — RoboCOIN**：覆盖 15 种双臂、半人形与人形本体的大规模多本体示范数据集，并配套数据处理流程。 `📅unknown` `[entity_page]`
 - [RoboVerse Data](wiki/entities/dataset-roboverse-data.md) — RoboVerse Data**：RoboVerse 平台的统一格式仿真数据，由仿真平台、合成数据集和统一基准三部分组成。 `📅unknown` `[entity_page]`
 - [ScanNet](wiki/entities/dataset-scannet.md) — ScanNet**：由自研 RGB-D 采集系统重建、众包标注的室内三维场景数据集。 `📅unknown` `[entity_page]`
