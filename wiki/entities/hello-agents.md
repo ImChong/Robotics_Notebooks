@@ -69,7 +69,7 @@ sequenceDiagram
   participant P2 as MyLLM
   participant P3 as 模型API
   P0->>P1: 执行示例并加载 .env
-  P1->>P2: P2(provider='modelscope')
+  P1->>P2: MyLLM(provider='modelscope')
   P1->>P2: think(messages)
   P2->>P3: 请求流式模型响应
   P3-->>P2: 返回分块结果
