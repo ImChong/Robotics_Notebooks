@@ -1,7 +1,8 @@
 # Kimodo-Policy: Learning Kinematic Action Models for Humanoid Loco-Manipulation
 
 - **类型：** 作者一手论文
-- **作者：** Yunheng Wang et al.
+- **作者：** Yunheng Wang、Jiaxi Zhang、Wei Lu、Yuetong Fang、Taowen Wang、Yixiao Feng、Shuning Zhang、Junzhe Xu、Yichi Wang、Zizhao Yuan、Kailun Huang、Lusong Li、Mingqian Zhou、Zecui Zeng、Renjing Xu
+- **署名说明：** Yunheng Wang、Jiaxi Zhang、Wei Lu 为共同一作；Zecui Zeng、Renjing Xu 为共同通讯作者。
 - **会议：** arXiv 2026 preprint
 - **机构：** 香港科技大学（广州）（HKUST Guangzhou）；京东探索研究院（JD Explore Academy）；北京工业大学（BJUT）；剑桥大学（Cambridge）
 - **论文：** https://arxiv.org/abs/2611.11554v1

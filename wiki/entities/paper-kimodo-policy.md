@@ -3,7 +3,7 @@ type: entity
 project_id: kimodo-policy
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-13
 arxiv: "2611.11554"
 project: https://kimodo-policy.github.io/
 code: https://github.com/kimodo-policy/kimodo-policy
@@ -45,10 +45,21 @@ summary: "冻结 Kimodo-G1 生成骨干，用视觉 ControlNet 与手部 HandNet
 |---|---|
 | 论文/会议 | [arXiv 2026 preprint](https://arxiv.org/abs/2611.11554v1) |
 | 机构 | 香港科技大学（广州）（HKUST Guangzhou）；京东探索研究院（JD Explore Academy）；北京工业大学（BJUT）；剑桥大学（Cambridge） |
-| 作者 | Yunheng Wang et al. |
+| 作者 | Yunheng Wang、Jiaxi Zhang、Wei Lu、Yuetong Fang、Taowen Wang、Yixiao Feng、Shuning Zhang、Junzhe Xu、Yichi Wang、Zizhao Yuan、Kailun Huang、Lusong Li、Mingqian Zhou、Zecui Zeng、Renjing Xu（前三位共同一作；Zecui Zeng、Renjing Xu 为共同通讯作者） |
 | 项目主页 | [作者官方入口](https://kimodo-policy.github.io/) |
 | 开源 | [官方仓库](https://github.com/kimodo-policy/kimodo-policy)（依赖和模型文件另行准备） |
 | 原文阅读状态 | **已完成主要论文全文、适用附录及原文结果复核**；源码仅核对主要运行路径 |
+
+## 官方发布资源与复现接口（2026-11-13 核对）
+
+| 层次 | 官方资源与操作 | 注意事项 |
+|---|---|---|
+| 仓库与许可 | [作者仓库](https://github.com/kimodo-policy/kimodo-policy)（代码标注 MIT）；[模型/检查点](https://huggingface.co/YunhengWang/kimodo-policy)；[数据与结果](https://huggingface.co/datasets/YunhengWang/kimodo-policy) | 仓库源码、底座模型权重、各任务 checkpoint、数据集与仿真资源需要分别准备；不能仅凭 clone 成功推断实验可运行 |
+| 训练与 Arena | `bash setup.sh --only training`；多任务脚本 `scripts/HumanoidArena_Multi_Task/humanoidarena_sonicx7_gbs128_50w_controlnet4_detach_true_mse.sh` → Accelerate → `train.py` | 主模型环境 Python 3.10；Arena 独立 Python 3.11 / Isaac Sim 5.0.0 / Isaac Lab 2.2.0；需 SONIC ONNX 与场景资源 |
+| SIMPLE | `evaluation/simple_eval_signal_task_sonic.sh` | SIMPLE 独立 Python 3.10 / MuJoCo 3.3.6 / Isaac Sim 4.5.0；Open Faucet、Push Office Chair、Move & Bend Pick 在发布评测中使用 50 帧执行前缀，其余五项为 15 帧 |
+| 真机 | `real-world/`：PICO 采集 → 数据验证 → 419h 策略预训练权重上的任务微调 → GPU 服务器推理 → 工作站 bridge + SONIC 控制 | 官方发布 G1 + 双 Dex3 的八项任务共 **236 条演示**、对应数据和任务 checkpoint；另须准备带 SHA-256 清单的运行时资源、相机与网络配置，不能把发布流程等同于现场安全验收 |
+
+> **开源范围**：官方 README 的 Roadmap 将预训练、HumanoidArena、SIMPLE 和真机采集/训练/部署列为已发布；BiGym 2.0 与 HumanoidToolBench 仍标为 Coming Soon。上述资源可下载与运行文档开放，不代表本库已运行或复现实验；真机需要在场操作者、安全支撑和急停。详见 [源码归档](../../sources/repos/kimodo-policy-official.md)。
 
 ## 流程总览
 
@@ -81,7 +92,7 @@ KAM 的预训练对象是运动学序列，而不是视觉语义；冻结的 Kim
 
 ## 实验与评测
 
-论文报告 HumanoidArena 七任务多任务平均 72.14%，但单任务聚合预训练版本 67.14% 低于直接微调 69.76%；SIMPLE 八任务 75.83%（182/240）与 Ψ₀ 的 75.42% 接近。真机八任务 60%（48/80），不加 419h 交互预训练是 45%（36/80）。三项 HOI 消融 18.33/31.67/51.67% 与七任务汇总口径不同。
+论文报告 HumanoidArena 七任务多任务平均 72.14%，但单任务聚合预训练版本 67.14% 低于直接微调 69.76%；SIMPLE 八任务 75.83%（182/240）与 Ψ₀ 的 75.42% 接近。真机八任务 60%（48/80），不加 419h 交互预训练是 45%（36/80）。三项 HOI 消融 18.33/31.67/51.67% 与七任务汇总口径不同。**SIMPLE 的对照行汇集自不同原始报告，不是同一设置下统一重评**；75.83% 与 75.42% 仅相差 240 次中的一次成功，不能仅凭差值宣称跨任务显著领先。
 
 ## 原文复核摘录（正文证据）
 - **图像到动作：** 保留冻结 Kimodo-G1 Root/Body 与 DINOv3，使用视觉 ControlNet 两路融合；训练 HandNet 的手部梯度不回传给 Motion Backbone；训练损失 root/body/hand/transition 权重 4/1/1/0.2。
@@ -108,31 +119,56 @@ KAM 的预训练对象是运动学序列，而不是视觉语义；冻结的 Kim
 
 ## 源码运行时序图
 
-依据官方 README 及已核对的代码入口，仅描述可明确确认的运行链路：
+下图由官方 `README.md`、多任务训练脚本、`train.py`、`model/kimodo_policy.py`、`model/modules/controlnet.py` 与评测脚本逐项对照得出。**训练和评测不是同一个进程的直接调用**，因此分开表达。
+
+**训练入口（HumanoidArena 多任务示例）**
 
 ```mermaid
 sequenceDiagram
   autonumber
-  participant Cfg as scripts/HumanoidArena_Multi_Task/*.yaml
-  participant Train as train.py
-  participant Data as MultiSourceG1Dataset
-  participant Policy as model/kimodo_policy.py
-  participant Ctrl as model/modules/controlnet.py
-  participant Sim as HumanoidArena + SONIC
-  Cfg->>Train: bash 训练脚本加载配置
-  Train->>Data: 读取多源 G1 示范
-  Train->>Policy: 构建 KimodoPolicy
-  Policy->>Ctrl: 视觉 ControlNet 残差
-  Data-->>Policy: 训练批次
-  Policy-->>Train: loss / 预测动作
-  Train->>Sim: 评测脚本加载 checkpoint
-  Sim->>Policy: 图像 + 指令 + 实测历史
-  Policy-->>Sim: root-body-hand 未来动作块
+  participant Launcher as scripts/HumanoidArena_Multi_Task/*.sh
+  participant Train as accelerate launch train.py
+  participant Dataset as data/datasetloader.MultiSourceG1Dataset
+  participant Policy as model/kimodo_policy.KimodoPolicy
+  participant Control as model/modules/controlnet.ControlNet
+  participant Checkpoint as log/.../checkpoint_STEP
+  Launcher->>Train: --config 指向对应 YAML
+  Train->>Dataset: build_dataset / build_dataloader
+  Train->>Policy: build_model_and_optimizer
+  Dataset-->>Train: 视觉、运动、双手监督批次
+  Train->>Policy: forward / training loss
+  Policy->>Control: ControlNet 视觉条件注入
+  Control-->>Policy: Root/Body 残差
+  Policy-->>Train: 运动和手部损失
+  Train->>Train: accelerator.backward + optimizer.step
+  Train->>Checkpoint: 定期写入训练状态和模型参数
 ```
+
+**HumanoidArena 评测入口（独立进程/环境）**
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Wrapper as evaluation/humanoidarena_eval_multi_task_sonic.sh
+  participant Runner as evaluation/humanoidarena_eval_signal_task_sonic.sh
+  participant Sim as HumanoidArena / Isaac Lab + SONIC
+  participant Server as evaluation/humanoidarena_server.py
+  participant Policy as model/kimodo_policy.KimodoPolicy
+  Wrapper->>Runner: 任务列表 + checkpoint + seeds
+  Runner->>Sim: 在独立仿真环境中启动任务
+  Sim->>Server: 通过模型服务请求未来动作块
+  Server->>Policy: predict_future / 观测条件
+  Policy-->>Server: root-body-hand 动作预测
+  Server-->>Sim: tracker 参考 + 双手命令
+  Sim->>Sim: SONIC 执行前缀，采集新观测
+  Sim-->>Runner: 逐任务成功率与日志
+```
+
+**真机执行**：官方 `real-world/deploy/deploy.sh` 调用 `deploy_cli.py`；GPU 服务器先执行 `server TASK`，工作站通过 `tunnel.sh` 建立 SSH 端口转发，启动 `sonic.sh` 后先 `check TASK`（仅检查、不发布动作），最后才 `run TASK` 发布参考命令。详见 [真机部署指南](https://github.com/kimodo-policy/kimodo-policy/blob/main/real-world/deploy/start.md)。
 
 ## 工程实践
 
-开源包括 `train.py`、`model/kimodo_policy.py`、`model/modules/controlnet.py`、Arena 和 SIMPLE 的训练/评测脚本、模型权重及数据入口。需要区分独立 Conda 环境、NVIDIA SONIC ONNX 权重和仿真资源。
+最小排查顺序：`bash setup.sh --dry-run` → 安装并检查三套隔离环境 → 下载运动骨干/DINOv3/任务 checkpoint、文本缓存及仿真与 SONIC 资源 → 用评测 wrapper 的 `--dry-run` 校验路径 → 跑少量 episode 再完整评测。训练前可使用 `utils/check_datasets.py --fail-on-errors` 审计动作数据。真机依 [workstation 验证范围](https://github.com/kimodo-policy/kimodo-policy/blob/main/real-world/docs/verification.md) 在场确认，不在无人值守环境试运行。
 
 ## 局限与风险
 
