@@ -9,7 +9,10 @@ tags:
   - decentralized-control
   - marl
 status: complete
-updated: 2026-10-26
+updated: 2026-11-13
+original:
+  - ../../sources/papers/humanoid-coordination-fulltext-review-2026-11-13.md
+  - ../../sources/papers/be-my-eye-arxiv-2611-12295.md
 related:
   - ../tasks/humanoid-soccer.md
   - ../methods/marl.md
@@ -20,10 +23,13 @@ related:
   - ../entities/paper-pingpongduo.md
   - ../entities/paper-omniinteract-dual-humanoids.md
 sources:
+  - ../../sources/papers/humanoid-coordination-fulltext-review-2026-11-13.md
   - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
   - ../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md
   - ../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md
-summary: "人形机器人群控：多机在同一动态环境中分配角色、维持编队并执行战术；主流路线包括集中式行为管理、去中心化 swarm（ACO+flocking）与极低带宽市场拍卖（SPL），通信预算与双足稳定性是核心约束。"
+  - ../../sources/papers/robocompiler_humanoids_composable_dynamics_arxiv_2610_14237.md
+  - ../../sources/papers/be-my-eye-arxiv-2611-12295.md
+summary: "人形机器人群控：多机在共享环境中分配角色、维持编队并协作行动；区分单机内行为管理、去中心化 ACO+flocking 与低通信 SPL 角色分配，并延伸到 CoMind 感知上下文共享和手部连接的组合动力学。"
 ---
 
 # 人形多机协调（Humanoid Multi-Robot Coordination）
@@ -57,12 +63,12 @@ summary: "人形机器人群控：多机在同一动态环境中分配角色、�
 | 路线 | 代表一手资料 | 决策拓扑 | 通信假设 | 验证形态 |
 |------|--------------|----------|----------|----------|
 | **单机内集中式行为管理** | [ARTEMIS arXiv:2512.09431](../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md) | 每机内部 **behavior planner** 维护赛况记忆、预测、角色与射门；DAVG+cf-MPC 避障 | 队友/对手主要靠 **立体视觉检测** | **Adult-Size 真机国际赛冠军** |
-| **Swarm ACO + flocking** | [Sensors 2025](../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md) | **全去中心化** 信息素角色 + Reynolds 编队 | **周期性 UDP** 位置/角色/健康；RLE+退避 | Webots 4v4；进球 **+25–40%** vs 集中式仿真基线 |
-| **市场拍卖 + Voronoi（SPL）** | [arXiv:2401.15026](../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md) | **DWM** 预测补全 + **UEM 拍卖**；Voronoi 修正站位 | **极低带宽事件**（非周期全状态） | **NAO 真机 RoboCup** + SimRobot |
+| **Swarm ACO + flocking** | [Sensors 2025](../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md) | **全去中心化** 信息素角色 + Reynolds 编队；门将按距自家球门最近确定 | 约 100 ms 决策/邻机广播，并有事件触发、RLE 与拥塞退避 | Webots 4v4；Table 1 场均进球 **7.33 vs 5.32**，控球 **49.7% vs 41.3%**（集中式基线） |
+| **市场拍卖 + Voronoi（SPL）** | [arXiv:2401.15026](../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md) | **DWM** 预测补全 + **UEM 本地模拟拍卖**；按角色优先级贪心分配，Voronoi 修正站位 | **低配额事件**（非周期全状态）；不另发最终角色 | NAO 真机赛事**定性**验证；SimRobot **60 min** 累计角色重叠时间对比 |
 
 ```mermaid
 flowchart LR
-  subgraph centralized ["集中式战术层 · ARTEMIS"]
+  subgraph centralized ["单机内行为管理 · ARTEMIS"]
     perc["立体视觉+CLAP"]
     beh["Behavior Planner<br/>记忆·预测·角色"]
     nav["DAVG + cf-MPC"]
@@ -96,6 +102,8 @@ flowchart LR
 4. **与低层接口：** 高层输出 **目标位姿、踢球触发、凝视方向**；底层仍是 [locomotion](../tasks/locomotion.md) / WBC / RL 行走与踢球技能。
 5. **故障与丢包：** 掉员、丢包、感知盲区时的 **fallback**（本地估计、角色重分配、保守站位）。
 
+足球之外还要区分两种接口：**CoMind** 将任务相关视觉 token 交给伙伴的 VLA，解决局部遮挡下的信息不对称；**RoboCompiler-Humanoids** 将机器人内部闭链模型与地面支撑、手部连接组合，解决物理连接团队的动力学与力分配。前者的通信预算、后者的约束力和足球的角色重叠时间，分别属于不同层次的协作指标。
+
 ## 工程实践
 
 部署时先明确 **协作任务、机器人本体、通信上限和可用观测**，再选择协调方案：足球对抗侧重角色重分配和在线避障，预编排表演侧重时钟同步与轨迹执行，移动操作协作则可能需要交换任务相关视觉信息。具体实现应记录消息频率、丢包率、角色冲突次数、避障触发次数与最终任务成功率；这些是工程验收建议，**不是上述论文共同报告的实测指标**。
@@ -107,7 +115,8 @@ flowchart LR
 - **跨平台外推有限：** Sensors 2025 的 Webots 足球仿真增益不能当作真实人形团队的成功率。
 - **任务不可混算：** ARTEMIS 的赛事结果、SPL 的任务重叠指标与 CoMind 的双机器人遮挡选择准确率衡量不同能力。
 - **网络可靠性待单独测试：** 论文中的通信约束或 token 数不等同于端到端时延、丢包鲁棒性或安全认证。
-- **文献核对状态：** 本页目前依据既有来源摘录整理；尚未逐篇重新完成原文全文核验，不将此项标为已完成。
+- **分布式一致性有前提：** SPL 方法依赖各机的 DWM 估计及分配规则足够一致；“不另发角色”不等于无通信或对任意丢包都保证一致，也不是全局最优分配证明。
+- **仿真与实时性分开：** RoboCompiler 的 0.73 mm 是固定噪声种子的 MuJoCo 环形舞蹈骨盆 RMS；模型评估约 3.46 ms，仿真控制间隔 2 ms，不能据此声称真机 500 Hz 闭环已达成。
 
 ## 常见误区
 
@@ -133,19 +142,22 @@ flowchart LR
 
 ## 原文核验补充（2026-11-13）
 
-- **Sensors 2025（§2–5）**：作者的 ACO 角色分配、角色加权 flocking、UDP 退化策略及 4v4 Webots 实验构成同一仿真框架；**25–40% 进球增益**与 **8–10% 控球增益**均为仿真相对基线，不能推广为真机指标。原文：https://doi.org/10.3390/s25113496
-- **SPL 有限通信（§1–5）**：通信配额缩减 84% 是 2019–2022 规则变化；方法结合局部世界模型外推、市场式任务分配和基于对手位置的 Voronoi 站位，报告 NAO 赛事和 SimRobot 的任务重叠改善，不应误称完全无通信。原文：https://arxiv.org/html/2401.15026
-- **ARTEMIS（§I–VII）**：论文所谓 centralized behavior manager 是机器人内部决策层，不代表全队由远端中央服务器控制；DAVG 路径规划、cf-MPC 轨迹跟踪与本体感知/踢球共同组成系统。原文：https://arxiv.org/html/2512.09431
-- **RoboCompiler-Humanoids（§I–VI）**：两级约简组合各机器人内部约束与地面/手部连接；264 状态数值一致性与 0.73 mm 骨盆 RMS 均来自模型校验或 MuJoCo 仿真，**未验证真机跟踪精度**。原文：https://arxiv.org/html/2610.14237
+- **Sensors 2025（全文 §1–5、式 1–4、Figures 1–7、Tables 1–3）**：[出版方全文](https://www.mdpi.com/1424-8220/25/11/3496)。Table 1 的控球差是 **8.4 个百分点**；Table 3 的 4v3 结果为 5.21 球、35.4% 控球，不能把严重丢包场景的“降幅 <15%”套到缺员场景。全部结果来自仿真。
+- **SPL 有限通信（v1 全文 §1–5、式 1–7、Figures 1–4）**：[原文](https://arxiv.org/html/2401.15026v1)。通信配额缩减 84% 是 2019–2022 规则变化；NAO 赛事为定性测试，60 min SimRobot 实验按角色统计两台以上机器人重复任职的累计时长，未提供全队成功率或显著性检验。
+- **ARTEMIS（v1 全文 §I–VII、式 1–14、Algorithm 1、Figures 1–12、Tables I–IV）**：[原文](https://arxiv.org/html/2512.09431v1)。centralized behavior manager 是机器人内部决策层；赛事 6 场共进 45 球是整栈证据，不是多机分配算法优于 swarm 的消融结论。
+- **RoboCompiler-Humanoids（v1 全文 §I–VI、式 1–18、Figures 1–5、Tables I–III）**：[原文](https://arxiv.org/html/2610.14237v1)。两级约简组合内部约束与支撑/手部连接；264 状态校验、0.73 mm 骨盆 RMS 和 20 次支撑切换均是数值或仿真验证。
+- **CoMind / Be My Eye（v1 全文 §1–6、式 1–31、Figures 1–5、Tables 1–5）**：[原文](https://arxiv.org/html/2611.12295v1)。双向任务 token 提供伙伴视角信息；32-token、144 KiB/方向/决策步是表征载荷口径，不是实测网络时延。
 
-以上为原文重点章节核验记录；完整通读状态应在各来源归档逐篇确认后再标记。
+上述五篇主要原文已逐篇通读；前四篇的版本、范围及纠错集中在[一手论文全文核验记录](../../sources/papers/humanoid-coordination-fulltext-review-2026-11-13.md)，CoMind 单独归档，两份记录均列入 `original`。关联页面仅提供延伸导航，不表示其引用文献也已逐篇复读。
 
 ## 参考来源
 
+- [四篇一手论文全文核验与纠错（2026-11-13）](../../sources/papers/humanoid-coordination-fulltext-review-2026-11-13.md) — 本次复核依据；下列既有摘录与本文不一致时，以该记录所列原文版本/表值为准
 - [humanoid_soccer_swarm_intelligence_sensors_2025.md](../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md)
 - [robocup_spl_limited_communication_coordination_arxiv_2401_15026.md](../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md)
 - [artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md](../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md)
 - [robocompiler_humanoids_composable_dynamics_arxiv_2610_14237.md](../../sources/papers/robocompiler_humanoids_composable_dynamics_arxiv_2610_14237.md)
+- [CoMind / Be My Eye 全文核验](../../sources/papers/be-my-eye-arxiv-2611-12295.md)
 
 ## 推荐继续阅读
 
