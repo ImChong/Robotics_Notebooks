@@ -1,10 +1,12 @@
 ---
 type: entity
 project_id: trabot-talk-render-act
-tags: [paper, humanoid, human-robot-interaction, co-speech-gesture, conversational-robot, facial-animation, motion-planning, unitree-g1, llm-agent]
+tags: [paper, uaeu, humanoid, human-robot-interaction, co-speech-gesture, conversational-robot, facial-animation, motion-planning, unitree-g1, llm-agent]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-13
 arxiv: "2610.06153"
+original:
+  - ../../sources/papers/trabot_arxiv_2610_06153.md
 project: https://trabot-humanoid.github.io
 summary: "TRABot：四 agent 对话人形——BEAT2 手势经 G1 重定向、可行性筛选并标注为 17 种交际功能的运动原子，规划器按回复语义顺序与估计时长组合，与 Gemini Live 流式语音、SoulX-FlashHead 数字脸在 G1 上同步；20 人研究 Full 偏好 84.58%，代码未发布。"
 related:
@@ -20,7 +22,9 @@ sources:
   - ../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md
 ---
 
-# TRABot：说、演、动
+# TRABot：说、演、动（Talk, Render, Act: Integrating Social Gesture and Digital Face with Synchronized Speech for Conversational Humanoid Robot）
+
+## 一句话定义
 
 **TRABot（Talk, Render, Act）**（[arXiv:2610.06153](https://arxiv.org/abs/2610.06153)，Jiang 等）是一个让 **Unitree G1 人形边说话边做语义匹配手势、同时驱动数字人脸** 的四 agent 系统：离线把 BEAT2 手势构建成可执行、带交际功能标签的 **运动原子库**，在线由 Dialogue、Motion Planning、Facial Animation 三个 agent 把流式语音、规划好的手臂动作和面部帧对齐到同一条时间线。
 
@@ -34,6 +38,17 @@ sources:
 | G1 | Unitree G1 | 29-DoF 人形，本文控制其中 14 个手臂关节 |
 | VLM | Vision-Language Model | 离线用 Qwen3-VL-8B-Instruct 给原子提议语义标签 |
 
+## 核心信息
+
+| 项 | 原文核实结果 |
+|---|---|
+| 作者 | Jin Jiang、Kun Li、Jiancong Ma、Shengcai Liao |
+| 机构 | 阿联酋大学计算与人工智能学院（College of Computing and Artificial Intelligence, United Arab Emirates University） |
+| 发表状态 | [arXiv:2610.06153v2](https://arxiv.org/html/2610.06153v2)，2026-10-09 修订；**预印本** |
+| 官方项目 | [TRABot 项目页](https://trabot-humanoid.github.io/)；2026-11-13 显示 “Code (soon)”，没有 TRABot 官方可运行源码入口 |
+| 机器人与控制 | Unitree G1 的 29-DoF 关节约定；根位姿固定、控制 14 个手臂关节；执行轨迹 30 Hz，身体渲染和面部呈现 25 FPS |
+| 对话与数字脸 | 在线 Gemini 3.1 Flash Live 输出流式回复音频、功能序列及预计时长；SoulX-FlashHead 使用同一路音频生成面部帧 |
+
 ## 为什么重要
 
 - **把「生成手势」改成「检索 + 组合可执行原子」**：原子在入库前已过关节限位、速度/加速度/加加速度和接触检查，在线阶段不再生成可能不可行的动作。
@@ -44,22 +59,24 @@ sources:
 
 ```mermaid
 flowchart TB
-  subgraph off [离线：运动原子构建]
-    beat["BEAT2 长时动作"] --> rt["重定向到 29-DoF G1\n根固定，14 个臂关节"]
-    rt --> seg["边界检测 + 分段\n0.4–4 s"]
-    seg --> feas["可行性检查与修复\n限位/速度/加速度/加加速度/接触"]
-    feas --> ann["Qwen3-VL 提议 + 人工审核\n17 种交际功能 / 8 类"]
-    ann --> lib[(运动原子库)]
+  subgraph offline["离线：构建可执行语义动作原子"]
+    beat["BEAT2 长时共语动作"] --> rt["重定向至 G1 关节空间\n固定根，控制 14 个手臂关节"]
+    rt --> seg["25 Hz 自适应分段\n执行轨迹保留 30 Hz"]
+    seg --> gate["MuJoCo 可行性验证\n失败时修复并重新检查"]
+    gate --> audit["人审动作质量\nQwen3-VL 提议 17 种语义标签，再人工确认"]
+    audit --> catalog[(已批准动作原子库)]
   end
-  subgraph on [在线：对话回合]
+  subgraph online["在线：同一回复驱动三模态"]
     user["用户语音"] --> dlg["Dialogue Agent\nGemini 3.1 Flash Live"]
-    dlg -->|"流式回复音频"| face["Facial Animation Agent\nSoulX-FlashHead 25 FPS"]
-    dlg -->|"功能序列 + 估计时长 T"| plan["Motion Planning Agent\n预算 B = 3·T"]
-    lib --> plan
-    plan -->|"原子 + 最小加加速度桥接"| g1["Unitree G1 手臂"]
-    face --> sync["统一时间线同步"]
-    g1 --> sync
-    dlg --> sync
+    dlg -->|"流式回复音频"| speech["语音播放"]
+    dlg -->|"同一音频"| face["Facial Animation Agent\nSoulX-FlashHead"]
+    dlg -->|"有序功能序列与预计时长"| planner["Motion Planning Agent\nDP 前缀 + beam=32"]
+    catalog --> planner
+    planner -->|"最小加加速度过渡\n桥接速度不超过 1 rad/s"| robot["Unitree G1 执行首个原子"]
+    robot -->|"原子结束时读取实测状态\n重规划未执行功能"| planner
+    speech --> sync["流式协同呈现"]
+    face --> sync
+    robot --> sync
   end
 ```
 
@@ -71,10 +88,12 @@ flowchart TB
 - 语义：Qwen3-VL-8B-Instruct 提议，随后人工审核；17 种交际功能分 8 类（强调、枚举、对比、指代、描绘、话轮管理、社交、立场）。原子库规模与审核拒绝率原文未报告。
 
 **语义条件组合规划器（在线）**
-- 动态规划求预算内可行的最大功能前缀 L*；beam search（宽度 32）选原子，偏好剩余预算小、重复少、左右手平衡；预算 B = 3·T̂，保护间隔 0.35 s；原子间最小加加速度桥接（速度上限文中为 11 rad/s）。
+- 动态规划求预算内可行的最大功能前缀 L*；beam search（宽度 32）选原子，偏好剩余预算小、重复少、左右手平衡；预算 B = 3·T̂，保护间隔 0.35 s。
+- 规划代价按论文式 (11) 计入**当前状态到首原子的桥接 + 原子时长 + 相邻原子过渡 + 返回中立位 + 保护间隔**，而非只累加动作片段时长；约束是按顺序最大化可完成的功能前缀。
+- 桥接使用五次多项式 `s(u)=10u³−15u⁴+6u⁵` 的最小加加速度轨迹，**速度上限为 1 rad/s**（原笔记的 11 rad/s 是误录）。论文式 (14) 给出 `T_b ≥ 1.875 × max_j |q1,j − q0,j|`（在 1 rad/s 上限下，时间单位为秒）。
 - 只执行首个原子，之后以实测状态重规划剩余功能（状态感知序列执行器）；另有 force-first 模式。
 
-**模型栈**：对话用 Gemini 3.1 Flash Live（TTS 论文未单列，推测语音来自同一模型）；面部用 SoulX-FlashHead；G1 上显示数字脸的具体硬件原文未说明。
+**模型栈**：论文 §IV-A 明确 Gemini 3.1 Flash Live 直接提供流式回复音频和语义请求；没有单列独立 TTS 模块，**不应另行猜测 TTS 系统**。面部用 SoulX-FlashHead；G1 上显示数字脸的具体硬件原文未说明。
 
 ## 源码运行时序图
 
@@ -100,9 +119,21 @@ sequenceDiagram
 
 ## 工程实践
 
-- **开源状态（2026-10-12 核查）**：项目页（[归档](../../sources/sites/trabot-project.md)）为 “Code (soon)”，无 GitHub、数据集或原子库链接；上游 BEAT2、SoulX-FlashHead、Gemini Live、Qwen3-VL 在致谢中列出。
+- **开源状态（2026-11-13 再核查）**：项目页（[归档](../../sources/sites/trabot-project.md)）为 “Code (soon)”，无 GitHub、数据集或原子库链接；上游 BEAT2、SoulX-FlashHead、Gemini Live、Qwen3-VL 在致谢中列出。
 - **可借鉴**：把可行性检查前置到离线库构建；在线只做检索式组合；用「身体先于语音」的负偏移补偿手势起手时间。
 - **硬件**：人形为 Unitree G1，仅控制 14 个臂关节、根固定；站立/行走扰动下的稳定性未验证。
+
+## 论文中的具体对话实例
+
+论文 Table II 不是训练任务清单，而是 **12 条端到端评测对话**及其有序手势要求，其中：
+
+| 用户问句（原文节选） | 对话代理规划的功能顺序 |
+|---|---|
+| “What are three ways to relax?” | `enumerate → enumerate → enumerate → neutral`（三次列举后回中立位） |
+| “Coffee or tea—which is better?” | `contrast_compare → uncertainty → neutral`（比较与不确定姿态） |
+| “Do you like swimming?” | `refer_self → deny → turn_yield → neutral`（自指、否定、交出话轮） |
+
+这说明这里的“动作规划”是**先由对话代理提出语言行为意图，再将其映射到人工审核过的原子库**；并非 VLA 直接回归关节动作。
 
 ## 实验与评测
 
@@ -118,7 +149,7 @@ sequenceDiagram
 
 提升约 0.011–0.035，且标准差较大，不宜读成显著优势。
 
-**用户研究（20 人 × 12 轮，平均排名 1–5）**
+**用户研究（20 人 × 12 轮，五条件回合内强制排序 1–5；非独立 Likert 绝对评分）**
 
 | 条件 | 自然度 | 表现力 | 一致性 | 手势–语音 | 偏好 |
 |------|------|------|------|------|------|
@@ -128,7 +159,7 @@ sequenceDiagram
 | Random Motion | 3.87 | 3.91 | 3.87 | 3.86 | 13.75% |
 | Full | 4.79 | 4.76 | 4.79 | 4.77 | 84.58%（240 次中 203 次） |
 
-**规划器自动评测（200 条固定回复）**：平均规划原子数 1.705（Full）vs 1.451（Random Match，+17.5%）；未用预算 0.993 s vs 2.376 s（−58.2%）。未报告规划器内部组件（如 beam 排序准则）的消融。
+**规划器自动评测（200 条固定回复，Random Match 每条回复平均 50 次随机试验）**：平均规划原子数 1.705（Full）vs 1.451（Random Match，+17.5%）；未用预算 0.993 s vs 2.376 s（−58.2%）。未报告规划器内部组件（如 beam 排序准则）的消融。
 
 ## 结论
 
@@ -153,8 +184,8 @@ sequenceDiagram
 ## 局限与风险
 
 - **适用边界**：行为多样性受原子库限制；可行性检查在固定根 MuJoCo 中；用户研究仅 20 人。
-- **透明度**：原子库规模、审核拒绝率、数字脸显示硬件、TTS 来源均未报告（TTS 为推测）。
-- **开源状态**：截至 2026-10-12 未发布代码，也未发布原子库。
+- **透明度**：原子库规模、审核拒绝率及数字脸显示硬件均未报告；论文明确流式回复音频来自 Gemini 3.1 Flash Live，但未单列独立 TTS 组件。
+- **开源状态**：截至 2026-11-13 官网仍显示 “Code (soon)”，未提供代码或动作原子库；上方时序图为论文算法级重绘，不是源码级验证。
 
 ## 关联页面
 
