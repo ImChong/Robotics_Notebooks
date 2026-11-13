@@ -885,6 +885,7 @@
 - [Laya-MLX（Apple Silicon MLX 运行时）](wiki/entities/laya-mlx.md) — Laya-MLX**（GitHub，[PyPI](https://pypi.org/project/laya-ml `📅unknown` `[entity_page]`
 - [Laya（System 1 决策引擎）](wiki/entities/laya.md) — Laya**（GitHub，PyPI，[HF  `📅unknown` `[entity_page]`
 - [开源机器人学学习指南（qqfly）](wiki/entities/learn-robotics-qqfly-guide.md) — learn-robotics.qqfly.net](https://learn-robotics.qqfly.net/) 是 qqfly 维护的 **CC BY 4.0 中文自学手册**，面向大陆「 `📅unknown` `[entity_page]`
+- [LearnHarness：先摸底再教学的开源 AI 学习私教](wiki/entities/learnharness.md) — LearnHarness**（amosblomqvist/learnharness）是一个面向复杂 `📅unknown` `[entity_page]`
 - [LearnPrompt](wiki/entities/learnprompt.md) — LearnPrompt** 是 LearnPrompt/LearnPrompt 组织下的 **中文 AI `📅unknown` `[entity_page]`
 - [Legbot Lab（四足 Isaac Lab RL 与 Sim2Real 部署）](wiki/entities/legbot-lab.md) — Legbot Lab**（Robot-Nav/legbot_lab，Apache-2.0）是面向自研 **Le `📅unknown` `[entity_page]`
 - [legbot-MPC-WBC（四足 Convex MPC + WBC 参考实现）](wiki/entities/legbot-mpc-wbc.md) — legbot-MPC-WBC**（Robot-Nav/legbot-MPC-WBC，MIT）是面向  `📅unknown` `[entity_page]`
