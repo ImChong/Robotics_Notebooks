@@ -7285,6 +7285,7 @@
 - [Adams vs MuJoCo vs Isaac Sim（Newton）：按三类物理问题选型](wiki/comparisons/adams-vs-mujoco-vs-isaac-sim-three-problem-types.md) — 「Isaac Sim / MuJoCo 能不能取代 Adams」问错了问题：三者回答的是三类不同的物理问题，**取代发生在控制与机器人学习层，不发生在载荷与寿命层**（Zane Hub 第 385 篇 `📅unknown` `[comparison_page]`
 - [AMP vs ADD vs SMP：运动先验变体对比](wiki/comparisons/amp-add-smp-motion-prior-variants.md) — 背景**：在人形 RL 中，显式 tracking 奖励容易带来「能完成任务但不像人」的步态。AMP 用判别器学习参考动作分布；社区在此基础 `📅unknown` `[comparison_page]`
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](wiki/comparisons/anygrasp-vs-graspnet.md) — 背景**：在「点云 / RGBD → 6-DoF 抓取候选」这条链路上，最常被同时提及的是 **GraspNet 家族**（GraspNet-1Billion / Contact-GraspNet `📅unknown` `[comparison_page]`
+- [智能驾驶四个时代（2013–2026）→具身智能六维映射](wiki/comparisons/autonomous-driving-embodied-intelligence-2013-2026.md) — 将智能驾驶从**模块化、BEV/占用网络、端到端、VLA/世界模型**的技术演变，与具身机器人的**算法、算力、数据、产业分工、商业化和安全监管**逐项对照，寻找可迁移的方法与**不能照搬的因果关系 `📅unknown` `[comparison_page]`
 - [Physical AI 策展清单：natnew vs aichr](wiki/comparisons/awesome-physical-ai-curated-lists.md) — GitHub 上有两个都叫 **awesome-physical-ai** 的独立仓库，阅读与引用时按 **org 前缀** 区分，别混成一个。 `📅unknown` `[comparison_page]`
 - [CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）](wiki/comparisons/can-vs-ethercat-joint-bus.md) — 三类总线解决的是不同问题：**CAN** 是带硬件仲裁的小帧多主总线，**EtherCAT** 是单主站、帧在从站间「飞行处理」的工业以太网，**UART / RS-485** 只规定电气或异步字节流 `📅unknown` `[comparison_page]`
 - [国内 GPU 云平台选型（机器人学习与仿真）](wiki/comparisons/china-gpu-cloud-platforms.md) — 本地工作站不足以支撑 Isaac Lab、mjlab 或多卡 [PPO](../methods/reinforcement-learning.m `📅unknown` `[comparison_page]`
