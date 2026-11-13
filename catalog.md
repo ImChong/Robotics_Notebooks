@@ -5909,6 +5909,7 @@
 - [TouchWorld：预测–反应式触觉基础模型（灵巧操作）](wiki/entities/paper-touchworld-tactile-foundation-dexterous-manipulation.md) — TouchWorld**（*A Predictive and Reactive Tactile Foundation Model for Dexterous Manipulation*，arXiv `📅unknown` `[entity_page]`
 - [迈向建筑施工人形机器人：遥操作可行性研究](wiki/entities/paper-toward-humanoid-robots-in-construction.md) — Toward Humanoid Robots in Construction: A Teleoperation Feasibility Study**（[arXiv:2610.00718](htt `📅unknown` `[entity_page]`
 - [Toward Lunar Legged Robots：LUNA 月面模拟场的部署教训](wiki/entities/paper-toward-lunar-legged-robots-luna-field.md) — Toward Lunar Legged Robots**（arXiv:2610.12276，Adrian Fuhrer、Ma `📅unknown` `[entity_page]`
+- [Toward Self-Improving Robotic Agents：迈向自我改进机器人智能体](wiki/entities/paper-toward-self-improving-robotic-agents.md) — 英文副标题：** From Interaction Experience to Reusable Manipulation Capabilities `📅unknown` `[entity_page]`
 - [Towards Agentic Robots：模型、数据、环境与编排的综述](wiki/entities/paper-towards-agentic-robots-survey.md) — 一句话定义：** 一篇综述，把基础模型驱动的机器人执行从任务专用策略扩展到"代理式"协同，并按模型、数据、环境与编排（harness）四个领域组织相关文献。 `📅unknown` `[entity_page]`
 - [TPS-A*：任意形状车辆的认证碰撞检查规划（arXiv:2611.09210）](wiki/entities/paper-tps-astar.md) — TPS-A***（*TPS-A\*: Path Planning for Any-Shape Vehicles with Certified Collision Checking in Traje `📅unknown` `[entity_page]`
 - [TRABot：说、演、动](wiki/entities/paper-trabot-talk-render-act.md) — TRABot（Talk, Render, Act）**（arXiv:2610.06153，Jiang 等）是一个让 **Un `📅unknown` `[entity_page]`
