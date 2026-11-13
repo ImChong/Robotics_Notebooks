@@ -10,6 +10,8 @@
 - **发表日期：** August 2026
 - **入库日期：** 2026-08-17
 - **抓取方式：** 官方英文页直连（HTML 交叉核对；非 PDF）
+- **核对范围：** 已通读 2026 年 8 月官方英文技术稿全文：Preliminary（三条瓶颈及公式、图 01–04）、Method（Symbiotic Attention、DriftDistill、图 05–06）、Data（异构对齐、15,010 h、图 07–08）、Performance（三项定性演示）、Our Vision、Citation 及文末参考链接；2026-11-13 复核。
+- **通读：** 已完成
 - **配套项目页：** [`sources/sites/symbiosis-robotics-dpc.md`](../sites/symbiosis-robotics-dpc.md)
 - **一句话说明：** 去掉分层全身系统的中间运动接口，让感知–控制在关节目标空间联合学习，并用 DriftDistill 扩大可执行分布。
 

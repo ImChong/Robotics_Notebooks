@@ -1,5 +1,7 @@
 ---
 type: entity
+project_id: symbiosis-dpc
+project: https://symbiosis-robotics.com/research/dpc/en/
 tags:
   - paper
   - humanoid
@@ -13,7 +15,7 @@ tags:
   - symbiotic-attention
   - symbiosis-robotics
 status: complete
-updated: 2026-08-17
+updated: 2026-11-13
 venue: "Symbiosis Robotics Blog · 2026-08"
 related:
   - ../tasks/loco-manipulation.md
@@ -28,10 +30,12 @@ related:
   - ./unitree-g1.md
   - ../concepts/whole-body-control.md
   - ./current-robotics-curr0.md
+original:
+  - ../../sources/blogs/symbiosis_dpc_direct_perception_control.md
 sources:
   - ../../sources/sites/symbiosis-robotics-dpc.md
   - ../../sources/blogs/symbiosis_dpc_direct_perception_control.md
-summary: "DPC（Symbiosis Robotics, 2026-08 博客）：去掉分层全身栈的中间运动接口 Zt，用单一模型把视觉/语言/本体直接映射到 G1 关节与手部 PD 目标；Symbiotic Attention 耦合感知–控制，DriftDistill 用冻结教师纠正闭环漂移；自报 15,010 h 统一关节语料。截至 2026-08-17 确认未开源，无公开成功率表。"
+summary: "DPC（Symbiosis Robotics, 2026-08 博客）：去掉分层全身栈的中间运动接口 Zt，用单一模型把视觉/语言/本体直接映射到 G1 关节与手部 PD 目标；Symbiotic Attention 耦合感知–控制，DriftDistill 用冻结教师纠正闭环漂移；自报 15,010 h 统一关节语料。截至 2026-11-13 官网页未列可下载代码、权重或数据，无公开成功率表。"
 ---
 
 # DPC：Direct Perception Control（直接感知控制）
@@ -71,7 +75,7 @@ summary: "DPC（Symbiosis Robotics, 2026-08 博客）：去掉分层全身栈的
 | **平台** | Unitree G1；输出 29 维关节 PD 目标 + 手部目标 |
 | **栈** | 单模型 direct-joint；Symbiotic Attention；DriftDistill（Offline BC → 在线恢复蒸馏） |
 | **数据** | 15,010 h 统一关节轨迹：Ego 6,781 / 武装机器人 4,024 / 轮式人形 3,660 / 双足人形 545 |
-| **开源** | **确认未开源**（截至 **2026-08-17** 项目页未列 GitHub / 权重 / 数据集） |
+| **开源** | 截至 **2026-11-13** 项目页未列 GitHub / 权重 / 数据集等可下载资源，尚无可复现入口 |
 
 ## 核心原理
 
@@ -143,7 +147,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用。** 截至 2026-08-17，项目页与页脚未列可运行官方仓库、权重或训练入口；无 README 步骤可对齐。代码若日后发布，应补 `sequenceDiagram`（节点对齐数据加载 → DriftDistill Stage 1/2 → G1 PD 部署）。
+**不适用。** 截至 2026-11-13，项目页与页脚未列可运行官方仓库、权重或训练入口；无 README 步骤可对齐。代码若日后发布，应补 `sequenceDiagram`（节点对齐数据加载 → DriftDistill Stage 1/2 → G1 PD 部署）。
 
 ## 工程实践
 
@@ -179,7 +183,7 @@ flowchart TB
 4. **次要代价：先验被丢掉。** Direct-joint 放大假设类，平衡与平滑必须重学；不是免费午餐。
 5. **次要代价：无定量。** 没有公开 SR / 对照 / 消融，不能据此宣称已超过 MotionWAM 或 Gemini Robotics 2。
 6. **部署读法：仍是 PD 目标。** 选型时把它放进 [VLA+低层控制器](../queries/vla-with-low-level-controller.md) 的「无冻结 System 0」一档，而不是「VLA 直接驱动力矩」。
-7. **工程读法：未开源。** 2026-08-17 只能当坐标，不能当训练配方。
+7. **工程读法：未见可运行源码。** 截至 2026-11-13 只能当技术选型坐标，不能当训练配方。
 
 ## 与其他工作对比
 
@@ -219,6 +223,8 @@ flowchart TB
 - [Unitree G1](./unitree-g1.md) — 执行与数据汇聚平台
 
 ## 参考来源
+
+**原文复核（2026-11-13）：** 已通读官方英文研究稿的 Preliminary、Method、Data、Performance、Our Vision 与 Citation，并核对图 01–08 的图注、瓶颈公式、DriftDistill 训练阶段、15,010 h 分类数据及定性演示。原文没有提供公开成功率/消融表，也未列源码、权重或数据下载入口；不把概念论证视为独立复现结果。
 
 - [symbiosis-robotics-dpc.md](../../sources/sites/symbiosis-robotics-dpc.md) — 项目页与开源核查
 - [symbiosis_dpc_direct_perception_control.md](../../sources/blogs/symbiosis_dpc_direct_perception_control.md) — 技术摘录
