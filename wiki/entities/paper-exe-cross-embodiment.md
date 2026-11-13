@@ -95,6 +95,9 @@ flowchart TB
 
 ## 关联页面
 
+- [EgoX / MXT+](./paper-egox-mxt-plus.md) — 模态共享 Transformer trunk、本体专用动作专家与未来状态 Dreaming；不同于 EXE 的潜在动作显式分解。
+
+
 - [MimicAll](./paper-mimicall.md)
 - [操作任务](../tasks/manipulation.md)
 
