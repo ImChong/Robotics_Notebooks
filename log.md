@@ -399,6 +399,14 @@ op: ingest
 - **源码边界：** 已追踪 `scripts/run.py` → 采集/训练/推理入口及 `blend_actions`；论文 FK+相机标定手部遮罩的完整函数仍未定位，不宣称源码完全复核。
 - **校验：** 当前 GitHub 连接仅允许读写线上仓库，无法在此运行 `make ci-preflight` 完整本地检查；最终以 GitHub Actions 的 Wiki Lint / Mermaid 检查为准。
 
+## [2026-11-13] ingest | Whole-Body Dexterity 全文深读与原有节点升级
+
+- 复用 2026-10 已合入的论文身份（arXiv:2610.22184），不重复建节点。
+- 核对 arXiv v1 正文及附录 A–G，补录 251 万稳定抓取、27.4 万轨迹、8.73 亿帧、PPO 专家与扩散/逆动力学蒸馏链路。
+- 补充 Unitree G1 真机 45/50、模拟 EMA 对比、RTX 5090 推理延迟与实验边界。
+- 作者项目页截至 2026-11-13 未列可运行源码/数据下载入口，源码运行时序图不适用。
+- 更新 `wiki/entities/paper-whole-body-dexterity.md` 的原文通读、图谱主流程和健康度字段。
+
 ## [2026-11-13] ingest | TRABot 原文 v2 复核并修正规划参数
 
 - 论文：Talk, Render, Act: Integrating Social Gesture and Digital Face with Synchronized Speech for Conversational Humanoid Robot（arXiv:2610.06153v2）。
