@@ -6,8 +6,7 @@ topic: [manipulation]
 status: complete
 updated: 2026-11-13
 project: https://githcs2.github.io/self-improving-robotic-agents/
-papers:
-  - https://doi.org/10.20944/preprints202610.3088.v1
+doi: https://doi.org/10.20944/preprints202610.3088.v1
 original:
   - ../../sources/papers/toward_self_improving_robotic_agents_preprints_202610_3088.md
 related:
