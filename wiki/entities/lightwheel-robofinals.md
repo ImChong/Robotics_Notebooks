@@ -97,7 +97,7 @@ institutions:
 - **闭环与自述局限：** teleop 采集 → Isaac Lab 训练 → RoboFinals 评测在 Newton 上跑通，证明「栈内一致、可复跑」；但训练与评测都在仿真内，**不证明真机一致**，真机相关性「下一步发布」。
 - **治理位置：** 光轮在 Newton TSC，负责资产标准与可变形求解器（见 [Newton Physics](./newton-physics.md)）。
 
-## 核心结构
+## 核心原理与结构
 
 ```mermaid
 flowchart TB
