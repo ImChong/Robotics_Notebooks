@@ -359,6 +359,12 @@ op: ingest
 - **开源边界：** SuperMimic 研究团队有训练/回放源码但完整实验资产未知；RoboCap LiDAR-100 是非商业许可数据集，下载须接受条件，目前 50 / 100 小时开放，没有独立可运行策略训练仓库。
 - **涉及页面：** wiki/entities/paper-supermimic.md 与 wiki/entities/dataset-robocap-lidar-100.md；另给 wiki/entities/paper-robomocap.md 添加区别说明与反向链接。
 
+## [2026-11-13] ingest | TipSim 触觉仿真平台：官方技术文档、闭环示例与许可证核实
+
+- 收录华威科 TIP 的 MuJoCo Loong/Universa 触觉仿真，补充双语实体介绍、Mermaid 接触/反馈流程、Python 示例运行时序。
+- 核对核心触觉插件只提供预编译二进制，示例与场景 MIT；双指力阈值抓取不代表真机 Sim2Real 已验证。
+- 关联 [触觉感知](../wiki/concepts/tactile-sensing.md)；保持本次 PR 仅源文件，不触碰自动生成的 catalog/log 和前端统计。
+
 ## [2026-11-13] ingest | Kimodo-Policy 官方资源与源码闭环核验
 
 - 意图：复用现有 `wiki/entities/paper-kimodo-policy.md`，避免重复项目节点；补全论文全体作者署名。

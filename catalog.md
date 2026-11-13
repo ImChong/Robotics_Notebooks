@@ -6607,6 +6607,7 @@
 - [Time-Series-Library（TSLib）](wiki/entities/time-series-library.md) — TSLib 是面向深度时间序列分析的开源实验库，可用于比较模型及开发模型，覆盖长短期预测、缺失值补全、异常检测和分类。 `📅unknown` `[entity_page]`
 - [Tinkercad](wiki/entities/tinkercad.md) — Tinkercad**（tinkercad.com）是 **Autodesk** 提供的 **免费 Web 应用**：在同一账号与课堂体 `📅unknown` `[entity_page]`
 - [Tinymovr（紧凑开源关节驱动）](wiki/entities/tinymovr.md) — Tinymovr**（现属 Motion Layer，仓 [motionlayer/Tinymovr](https://github. `📅unknown` `[entity_page]`
+- [TipSim：基于 MuJoCo 的触觉仿真与抓取反馈（Tactile Simulation for Robotic Grasping）](wiki/entities/tipsim.md) — TipSim** 是华威科 TIP 平台的 **MuJoCo 触觉仿真开放集成项目**：通过 Loong（龙鳞）和 Universa（万象）两个预编译插件，将接触响应输出为触点阵列力值，并利用标准 `📅unknown` `[entity_page]`
 - [tita_rl](wiki/entities/tita-rl.md) — tita_rl** 是 直驱科技（Direct Drive Tech） 为 **TITA 轮腿双足** 提供的官方强化学习训练仓（Gi `📅unknown` `[entity_page]`
 - [Tnkr](wiki/entities/tnkr.md) — Tnkr**（tnkr.ai）公开定位为 **「robotics 的 GitHub」**：把机器人项目里长期分散的 **机械设计、电气接线、控制软件、现场部 `📅unknown` `[entity_page]`
 - [TNT（Transformer-in-Transformer）](wiki/entities/tnt.md) — TNT** 把每个图像块进一步拆成 **pixel-level token**，用内层 Transformer 建模块内结构，外层 Transformer 建模块间关系，形成「Transforme `📅unknown` `[entity_page]`
