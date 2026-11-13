@@ -4,8 +4,8 @@ project_id: agentic-rl-lab
 code: https://github.com/datawhalechina/agentic-rl-lab
 project: https://datawhalechina.github.io/agentic-rl-lab/
 tags: [datawhale, reinforcement-learning, agentic-rl, llm-agents, education, open-source]
-status: draft
-updated: 2026-11-04
+status: complete
+updated: 2026-11-13
 related:
   - ./agent-lightning.md
   - ./hands-on-rl-book.md
@@ -13,10 +13,15 @@ related:
 sources:
   - ../../sources/repos/agentic-rl-lab.md
   - ../../sources/sites/agentic-rl-lab.md
+  - ../../sources/repos/agentic-rl-lab-grpo-reviewed.md
+original:
+  - ../../sources/repos/agentic-rl-lab-grpo-reviewed.md
 summary: "Datawhale 的 LLM 与 Agent 强化学习实验手册，配套 PyTRIO 示例代码。"
 ---
 
 # Agentic RL Lab（智能体强化学习实验室）
+
+## 一句话定义
 
 Datawhale 的公开实验手册以 PyTRIO 为基础，结合算法讲解和代码探索大语言模型与智能体强化学习。
 
@@ -28,6 +33,10 @@ Datawhale 的公开实验手册以 PyTRIO 为基础，结合算法讲解和代�
 | LLM | Large Language Model | 大语言模型 |
 | GRPO | Group Relative Policy Optimization | 通过同题采样结果的相对奖励构造优势 |
 | LoRA | Low-Rank Adaptation | 低秩参数高效微调 |
+
+## 为什么重要
+
+本课程把数据、奖励、采样与 loss 组织成可核查的实验入口；与仅给出强化学习公式不同，开发者可读到 GRPO 同步脚本如何操作 PyTRIO 的采样客户端、训练客户端及 LoRA 权重。**本节点的完成范围是课程总览与 GRPO 代表实验，不是全部课程逐篇精读。**
 
 ## 核心信息
 
@@ -82,11 +91,17 @@ sequenceDiagram
 
 脚本还可通过 SwanLab 记录指标；CISPO 走自定义 loss 分支。运行依赖 PyTRIO 服务与数据访问，实际费用和环境条件以官方说明为准。
 
+## 工程实践
+
+- **官方执行入口：** [GRPO 同步脚本](https://github.com/datawhalechina/agentic-rl-lab/blob/main/experiments/grpo/01-demo-sync.py)；官方 [start.md](https://github.com/datawhalechina/agentic-rl-lab/blob/main/experiments/grpo/start.md) 推荐 `uv sync`、登录 PyTRIO/SwanLab 后运行 `uv run python experiments/grpo/01-demo-sync.py --steps 10 --batch-size 4 --group-size 8 --max-tokens 512 --loss-fn importance_sampling --swanlab-mode online`。
+- **需要核对的日志：** reward、frac_degenerate、rollout/avg_gen_len、train_tokens、loss_mean。项目目前未提供独立 `eval.py`，不要称该实验具备独立测试集复现报告。
+- **实际资源边界：** 本地没有训练 GPU 也能调用 PyTRIO，但云端训练与采样仍可能产生费用。
+
 ## 局限与使用建议
 
 - 项目主要面向 LLM 和 agent 实验；ALFWorld 使用文本环境，不能直接视为机器人真机或 Isaac Lab 运动控制训练方案。
 - GRPO 示例使用答案匹配奖励；回答格式和答案归一化会影响评分，组内奖励完全相同则不产生相对优势信号。
-- 当前仅核对仓库 README、站点首页、GRPO 章节及同步脚本；其余章节和实验结果尚待逐篇通读，训练也未实际运行。
+- 本节点仅针对**官方 README、环境入门、GRPO 全文、启动说明与同步脚本**完成一手资料阅读；其余实验文章和作者结果尚待逐章核对，训练也未实际运行。完整核对范围写在单独的原文归档中。
 
 ## 关联页面
 
@@ -95,6 +110,8 @@ sequenceDiagram
 - [强化学习](../methods/reinforcement-learning.md) — 方法概览。
 
 ## 参考来源
+
+- [2026-11-13 官方原文与 GRPO 源码复核](../../sources/repos/agentic-rl-lab-grpo-reviewed.md) — 本节点通读范围；不代表其他实验已读完。
 
 - [仓库归档](../../sources/repos/agentic-rl-lab.md)
 - [在线手册归档](../../sources/sites/agentic-rl-lab.md)
