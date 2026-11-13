@@ -3404,6 +3404,7 @@
 - [NICE-SLAM — 论文与作者源码深读](wiki/entities/paper-nice-slam.md) — NICE-SLAM 采用 coarse/mid/fine 分层局部几何特征网格、颜色网格和预训练几何解码器，实现 RGB-D 稠密 SLAM 的大场景重建与相机跟踪。 `📅unknown` `[entity_page]`
 - [NIDAR：用伪 NIR 与内禀分解合成 LiDAR 强度](wiki/entities/paper-nidar.md) — NIDAR**（*NIR-Guided Intrinsic Decomposition for Scalable Scene-Agnostic LiDAR Intensity Reconstruc `📅unknown` `[entity_page]`
 - [NIT-TrajMamba（arXiv:2610.33916）](wiki/entities/paper-nit-trajmamba.md) — NIT-TrajMamba**（*Real-Time Human Trajectory Prediction from RGB-D for Mobile Robots Using Bi-Mamba `📅unknown` `[entity_page]`
+- [NitroFusion2：将对抗损失引入多模态扩散 Transformer 文本流](wiki/entities/paper-nitrofusion2.md) — 论文：**NitroFusion2: Bringing Adversarial Loss to the Text Stream of Multimodal Diffusion Transformers `📅unknown` `[entity_page]`
 - [No Eyes, No Problem（arXiv:2610.23438）](wiki/entities/paper-no-eyes-no-problem.md) — No Eyes, No Problem**（*No Eyes, No Problem: What Does Touch Contribute to Blind Baoding Ball Manip `📅unknown` `[entity_page]`
 - [No Free Checker（arXiv:2609.09250）](wiki/entities/paper-no-free-checker.md) — No Free Checker**（[No Free Checker: A Survey of Verifiers for Robot Policies](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [Noise-Invariant Spatial Encoding（arXiv:2610.24674）](wiki/entities/paper-noise-invariant-spatial-encoding.md) — Noise-Invariant Spatial Encoding**（*Noise-Invariant Spatial Encoding for 3D Manipulation Policies  `📅unknown` `[entity_page]`
