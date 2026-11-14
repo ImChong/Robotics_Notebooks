@@ -3574,8 +3574,9 @@ body.roadmap-ltree-map-open {
 .roadmap-ltree-map-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.56);
+  background: color-mix(in srgb, var(--bg) 56%, transparent);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 .roadmap-ltree-map-panel {
   position: relative;
