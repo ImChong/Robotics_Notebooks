@@ -8,7 +8,7 @@
 - **版本：** 官网标记 2026 Early release，入库核查快照 2026-11-13；未找到 PDF、arXiv ID 或 DOI
 - **核对范围：** 完整阅读官方技术博客 Abstract、The ATLAS Harness、§2.1 System 2、§2.2 System 0、§2.3 fast system 的在线 model-based RL（含式 1–3）、§2.4 slow system 的 agentic update、§2.5 retry in place、参考文献、BibTeX；对照官方主页 Overview、Method、Learning、Tasks、Evaluation、Setup & Scope。当前公开页面没有完整独立论文 PDF，后续发表应另行复核。
 - **通读：** 已完成
-- **代码核查：** 2026-11-13 项目官网/技术博客未列 ATLAS 官方可运行源码链接；不以 ScaleBFM 上游仓库充当 ATLAS 源码。
+- **代码核查：** 2026-11-14 复核 [网站代码仓库](https://github.com/atlas-humanoid/atlas-humanoid.github.io)，其中公开的工具服务网站演示与视频渲染；**未发现 ATLAS 算法训练或真机部署入口**，不以 ScaleBFM 或 SuperMimic 上游实现冒充 ATLAS 的代码。
 
 ## 主要机制（按原文）
 
@@ -25,6 +25,10 @@
 - **对任务专用 GR00T checkpoint：** 技术博客作者报告真实场景中 loco-manipulation 和静态 pick-and-place 成功率分别高 36.2% / 12.6%（原文用 higher success rates，未给出此处完整样本数与绝对/相对口径）；不可直接改写成百分点。
 - **Isaac Lab-Arena：** 技术博客报告 ATLAS loco-manipulation 94% vs GR00T 69%、静态 pick-and-place 98% vs 87%，是其指定任务/benchmark 下的对照。
 - **动态误差模型消融：** 官方首页给出 apple、变化偏差设置，模型式 RL 59/71=83%，RLS 偏差估计 66/114=58%，model-free 9/71=13%，无学习 16/378=4%；每个算法实际分到的回合数量不同，不能用作独立复现证据。
+
+## SuperMimic 的研究脉络与 BPTT 边界
+
+官方博客 §2.3 的快速系统与参考文献 [5] SuperMimic 均涉及**通过学习得到的可微动力学模型展开轨迹，并将梯度回传以优化策略**。ATLAS 把该思路收缩成会话内真机末端接触点的残差修正：模型为 `ĉ_(t+1)=fψ(c_t,n_t+u_t)`，actor 利用 rollout 上的接触误差更新，**不需要 critic**。SuperMimic 则针对仿真人形全身运动跟踪建立共享世界模型，训练完整 tracking policy；ATLAS 真正运行的冻结底座是 ScaleBFM。原文没有证明使用 SuperMimic 的代码、权重或相同训练配置，不能把方法关联写成直接复用。
 
 ## 局限、开放问题
 
