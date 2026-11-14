@@ -161,3 +161,5 @@ Safety Filter
 - [LLM 机器人控制接口](./llm-robotics-control-interfaces.md) — 访问级别即能力
 - [Model Hardware Standard](./model-hardware-standard.md) — 设备驱动层强制安全限（研究预览）
 - [ResSafe](../entities/paper-ressafe.md) — G1 残差 RL 作隐式安全过滤；性能与安全 decoupling（arXiv:2609.15988；代码待发布）
+- [Safe Depth（arXiv:2611.13769）](../entities/paper-safe-depth.md) — 用单目深度偏差与不确定性生成保守障碍距离，属于感知输入改善而非形式化控制屏障
+

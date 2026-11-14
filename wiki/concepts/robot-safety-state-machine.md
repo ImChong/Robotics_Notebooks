@@ -87,6 +87,7 @@ stateDiagram-v2
 - [Importance Sampling + PCA（商业 AV）](../entities/paper-importance-sampling-pca-av-failures.md) — 离线稀有失败挖掘；与运行时 FSM 降级不同层
 - [ActFovea](../entities/paper-actfovea.md) — 给出「什么时候进安全态」的触发条件：风险分 + 威胁分型 + 有界安全失败
 - [Fail-Passive Gap](../entities/paper-fail-passive-gap.md) — 认证边界：软件 FSM 切无力矩 ≠ 可评 PL 的保护停
+- [LEASH（arXiv:2611.14115）](../entities/paper-leash.md) — 对任务、候选动作和有限关键提交操作做视觉语义安全门，不能替代执行器级急停
 
 ## 参考来源
 

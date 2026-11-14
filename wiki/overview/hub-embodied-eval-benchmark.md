@@ -212,6 +212,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [OmniCompass](../entities/paper-omnicompass.md) — 视频时空 grounding 与 VL / AV 理解基准（① 层上游评测）
 - [XPolicyLab](../entities/xpolicylab.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [AST（arXiv:2611.14111）](../entities/paper-ast-task-information.md) — 以任务信息获取进展与无效重复摩擦度量运行过程，不等于单一完成率指标
 
 ## 参考来源
 

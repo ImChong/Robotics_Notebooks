@@ -801,6 +801,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [开源可复现性 9 篇技术地图](../overview/open-source-reproducibility-9-papers-technology-map.md) — 2026-09-04 九篇盘点横切面
 - [Qwen-Drive-1.0](../entities/paper-qwen-drive-1-0.md) — 驾驶域：共享 Qwen3.5-4B VLM 外接 BEV 感知头与 flow-matching 规划专家，统一 3D 感知、驾驶问答与轨迹生成（arXiv:2609.00111；推理/权重已开源）
 - [EmbodiedRSI](../entities/paper-embodiedrsi.md) — 冻结 VLA 权重，只在外层 Harness 用假设图、实验选择与代码-技能联合进化做持续学习（arXiv:2610.10498）
+- [Ego Guidance（arXiv:2611.13685）](../entities/paper-ego-guidance.md) — 训练期使用无动作标签 Ego 视频的未来表征监督，真机汇总结果不能只报优势任务
+- [SO-101 光照基准（arXiv:2611.13810）](../entities/paper-so101-lighting.md) — 自动曝光掩盖环境照度变化，应同时测量摄像头真实输入的亮度分布
 
 ## 推荐继续阅读
 

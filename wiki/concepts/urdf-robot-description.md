@@ -103,6 +103,7 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 - [APOLLO Blender](../entities/paper-apollo-blender.md) — URDF/URDD 进 Blender 出论文图，不是仿真导入
 - [轮式双臂人形 URDF 建模与工具链](../queries/wheeled-dual-arm-humanoid-urdf-workflow.md) — 从 CAD 零位到 ROS 2 和多仿真器交付的七步流程
 - [URDF 连杆惯量对照真机检查](../queries/urdf-link-inertia-real-robot-check.md) — `<inertial>` 与台秤 / $g(q)$ / 辨识回归的对照清单
+- [URDF2Ontology（arXiv:2611.13850）](../entities/paper-urdf2ontology.md) — 把 URDF 运动学图转成可推理的 OWL 语义本体，补充几何/动力学模型不直接表达的能力关系
 
 ## 推荐继续阅读
 
