@@ -637,6 +637,7 @@ flowchart TB
 - [DreamSteer（部署时 VLA steering）](../entities/paper-dreamsteer-vla-deployment-steering.md)
 - [World Action Planner（VLM + pose-image WM 规划）](../entities/paper-world-action-planner.md)
 - [λ₀ / HumanVerse-500](../entities/paper-lambda0-egocentric-human-pretraining.md) — 非 WAM 对照：用第一视角全身人类数据预训练全身人形 VLA（arXiv:2610.00438）
+- [OnlyAct（arXiv:2611.14420）](../entities/paper-onlyact.md) — 无标签视频提取动作表征，为动作条件世界模型提供解耦输入，不等于真机控制成功率
 
 ## 推荐继续阅读
 

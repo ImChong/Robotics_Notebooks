@@ -113,6 +113,7 @@ flowchart LR
 - [MemForest（agent 记忆论文节点）](../entities/paper-memforest.md)
 - [RoboCasa-Mem（长程移动操作中的环境与过程记忆基准）](../entities/paper-robocasa-mem.md)
 - [False Belief Dissemination：多 Agent 错误信念传播](../entities/paper-false-belief-mandela-effect-multi-agent.md)
+- [Memory Clock（arXiv:2611.14488）](../entities/paper-memory-clock.md) — 零事件与暂停实验揭示固定时间采样记忆将等待误判成任务进度
 
 ## 参考来源
 

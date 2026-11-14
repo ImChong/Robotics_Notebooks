@@ -153,6 +153,7 @@ flowchart TD
 - [RLDX-1](./rldx-1.md)
 - [UnifoLM-VLA](./unifolm-vla.md)
 - [Unitree G1](./unitree-g1.md)
+- [个性化情感感知与谈判机器人（arXiv:2611.14247）](./paper-affective-negotiation.md) — 对比接触意图/阻抗交互与面部情感持续学习、谈判效用调节的不同 HRI 技术路线
 
 ## 参考来源
 
