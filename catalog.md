@@ -7669,7 +7669,7 @@
 - [WAM × 人形运动控制：五种系统位置](wiki/overview/wam-motion-control-five-paths.md) — WAM 要进物理世界，运动控制不会消失，而会变成「把目标/轨迹/动作变成真机可执行全身行为」的接口层——按世界模型是否在线搜索、是否训策略、是否估隐藏状态、是否压进动作网、是否停在评测外侧，分成五 `📅unknown` `[overview_page]`
 - [WAM / VLA / 跨本体：9 篇论文的阅读坐标](wiki/overview/wam-vla-cross-embodiment-9-papers-technology-map.md) — 具身策略正在把关键接口显式化：视频当任务规格、注意力当时间记忆、相机几何当跨本体动作、语言推理当测试时计算——单项刷榜不如看接口能否在真机上闭环。 `📅unknown` `[overview_page]`
 - [智能体自我改进与评测：9.7—9.13 十篇 AI 论文阅读坐标](wiki/overview/waytoagi-top-ai-papers-2026-09-07-09-13-technology-map.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
-- [世界模型动作后果分类 01：WAM 动作后果预测](wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [世界模型动作后果分类 01：WAM 动作后果预测](wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md) — 按世界模型在控制环中的职责，区分直接生成动作、重生成基础策略动作和部署前筛选候选动作，避免把所有「带未来预测」的方法当作同一种接口。 `📅unknown` `[overview_page]`
 - [世界模型动作后果分类 02：接触状态建模](wiki/overview/wm-action-consequence-category-02-contact-modeling.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型动作后果分类 03：3D/4D 几何与环境层](wiki/overview/wm-action-consequence-category-03-geometry-4d.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [世界模型动作后果分类 04：训练与评估闭环](wiki/overview/wm-action-consequence-category-04-eval-posttrain.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
