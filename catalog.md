@@ -1646,6 +1646,7 @@
 - [Visual Affordance Detection Using an Efficient Attention Convolutional Neural...](wiki/entities/paper-aff-visual-affordance-detection-using-an-efficient-attention.md) — Visual Affordance Detection Using an Efficient Attention Convolutional Neural Network**（Neurocompu `📅unknown` `[entity_page]`
 - [Weakly Supervised Affordance Detection](wiki/entities/paper-aff-weakly-supervised-affordance-detection.md) — Weakly Supervised Affordance Detection**（CVPR 2017）收录于 [Awesome-Affordance-Learning](https://githu `📅unknown` `[entity_page]`
 - [WSMA](wiki/entities/paper-aff-weakly-supervised-multimodal-affordance-grounding-for-eg.md) — Weakly Supervised Multimodal Affordance Grounding for Egocentric Images**（AAAI 2024）收录于 [Awesome-A `📅unknown` `[entity_page]`
+- [Personalized Affective Perception via Continual Learning in Human-Agent Negotiation｜持续学习个性化情感感知的谈判机器人](wiki/entities/paper-affective-negotiation.md) — 通过 CLIFER 持续适应谈判者表情的情绪效价-唤醒表征，并用差分反馈调整机器人的谈判效用目标。 `📅unknown` `[entity_page]`
 - [AffectiveVLA（arXiv:2611.07712）](wiki/entities/paper-affectivevla.md) — AffectiveVLA**（*AffectiveVLA: Safe and Intent-Aware VLA Control for Human–Humanoid Social Interact `📅unknown` `[entity_page]`
 - [具身 AI Affordance 学习综述](wiki/entities/paper-affordance-learning-embodied-ai-survey.md) — From Passive Perception to Active Interaction: A Survey of Affordance Learning for Embodied AI**（ `📅unknown` `[entity_page]`
 - [AffordCraft（arXiv:2610.06643）](wiki/entities/paper-affordcraft-task-ready-simulation-assets.md) — AffordCraft**（*AffordCraft: Scalable Construction of Task-Ready Simulation Assets from Single Imag `📅unknown` `[entity_page]`
@@ -1858,6 +1859,7 @@
 - [单手双件装配（arXiv:2609.10137）](wiki/entities/paper-assembling-two-parts-in-one-hand.md) — 单手双件装配**（Assembling Two Parts in One Hand，HKU / HKUST(GZ) / ET `📅unknown` `[entity_page]`
 - [AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）](wiki/entities/paper-assistmimic.md) — AssistMimic** 是 CMU 与庆应等团队的 **物理仿真双人 assistive 交互 tracking** 论文（arXiv:2603.11346，项目页标注 **CVPR 2026 `📅unknown` `[entity_page]`
 - [aSSMPy：软体机器人姿态 aSSM-MPC](wiki/entities/paper-assmpy-soft-robot-orientation.md) — aSSMPy**（arXiv:2609.14376，[代码](https://github.com/karakaron/aS `📅unknown` `[entity_page]`
+- [Model-Free Runtime Measurement of Task-Relevant Information｜AST 任务相关信息在线监测](wiki/entities/paper-ast-task-information.md) — Acquisition-State Telemetry 将实时观测映射到任务需求坐标，分别度量前瞻信息进展和无效重复的信息摩擦。 `📅unknown` `[entity_page]`
 - [Astra on RoboMME（arXiv:2611.06184）](wiki/entities/paper-astra-on-robomme.md) — Astra on RoboMME**（*Can Astra Solve RoboMME without Breaking the Bank?*，[arXiv:2611.06184](https:/ `📅unknown` `[entity_page]`
 - [AstroBench（arXiv:2610.31064）](wiki/entities/paper-astrobench.md) — AstroBench**（*AstroBench: Benchmarking Free-Floating Capture and Space Robotic Manipulation*，[arXi `📅unknown` `[entity_page]`
 - [Astronex-World 1.0（arXiv:2609.20034）](wiki/entities/paper-astronex-world-1.md) — Astronex-World 1.0**（*Real-Time Interactive World Model Foundation*，Astronex Robotics / 南京信息工程大学， `📅unknown` `[entity_page]`
@@ -2378,6 +2380,7 @@
 - [Gaze2Act](wiki/entities/paper-ego-05-gaze2act.md) — Gaze2Act** 收录于 具身智能研究室 · Ego 9 篇专题 **第 05/9 `📅unknown` `[entity_page]`
 - [EgoExoMem](wiki/entities/paper-ego-08-egoexomem.md) — EgoExoMem** 收录于 具身智能研究室 · Ego 9 篇专题 **第 08/9 `📅unknown` `[entity_page]`
 - [E³C](wiki/entities/paper-ego-09-e3c.md) — E³C** 收录于 具身智能研究室 · Ego 9 篇专题 **第 09/9** 篇，归类 `📅unknown` `[entity_page]`
+- [Ego Guidance: Enhancing Robot Policy Learning with Action-Free Human Egocentric Videos｜无动作标签 Ego 视频辅助机器人策略](wiki/entities/paper-ego-guidance.md) — Ego Guidance 用 SPAR 共享动作预测和未来视觉特征预测，允许无动作标签第一视角视频改进机器人策略表征。 `📅unknown` `[entity_page]`
 - [Ego-OSCAR / Stereo-550（开源硬件第一人称立体惯性采集）](wiki/entities/paper-ego-oscar.md) — Ego-OSCAR**（*Egocentric Open source Stereo CAptuRe System*，[arXiv:2608.08285](https://arxiv.org/ab `📅unknown` `[entity_page]`
 - [From Egocentric Human Video to Robot Manipulation in the Era of Embodied Intelligence｜具身智能时代：从第一人称人类视频到机器人操作](wiki/entities/paper-ego2robot-learning-survey.md) — Ego2Robot Learning 综述**（arXiv:2611.13610v1，2026-11-10，香港理工大学 `📅unknown` `[entity_page]`
 - [Ego2Robot：第一人称人视频规模化合成机器人数据](wiki/entities/paper-ego2robot.md) — Ego2Robot**（*Scalable Robot Data Synthesis from Egocentric Human Data*；[arXiv:2608.02580](https:// `📅unknown` `[entity_page]`
@@ -3067,6 +3070,7 @@
 - [Learning to Be Different（arXiv:2610.27194）](wiki/entities/paper-learning-to-be-different.md) — Learning to Be Different**（*Learning to Be Different: Component Specialization for Compositional D `📅unknown` `[entity_page]`
 - [Learning to Compose（arXiv:2610.24464）](wiki/entities/paper-learning-to-compose.md) — Learning to Compose**（*Learning to Compose: Recursive Self-Improvement of Shared Executable Stacks `📅unknown` `[entity_page]`
 - [Learning to Jump from Pixels](wiki/entities/paper-learning-to-jump-from-pixels.md) — Margolis et al.（MIT，arXiv:2110.15344）** 学习从**像素**出发，在**间断地形**（ `📅unknown` `[entity_page]`
+- [LEASH: Stay Safe in Agentic Robotics｜分层安全门保障机器人智能体](wiki/entities/paper-leash.md) — LEASH 以任务门、动作门、提交门检查机器人计划和不可逆动作，并用 RoboRisk 测量闭环伤害风险。 `📅unknown` `[entity_page]`
 - [Legged Load Adapt（未知动态载荷四足行走）](wiki/entities/paper-legged-load-adapt-unknown-dynamic-load.md) — Legged Load Adapt**（*Beyond Robustness: Learning Unknown Dynamic Load Adaptation for Quadruped Loc `📅unknown` `[entity_page]`
 - [腿式机器人进展、挑战与机遇综述](wiki/entities/paper-legged-robots-advances-challenges.md) — Advances, challenges, and opportunities for legged robots**（Jonas Frey、Matías Mattamala、Hae-Won Pa `📅unknown` `[entity_page]`
 - [Caging Vision-Language Navigation for Legged Robots via Barrier-Certified Safety Architecture（arXiv:2611.04972）](wiki/entities/paper-legged-vln-barrier-caging.md) — 论文 arXiv:2611.04972，特拉华大学 RPNG（Kulkarni、Katragadda、Du、Huang）与丰田汽 `📅unknown` `[entity_page]`
@@ -3273,6 +3277,7 @@
 - [MemER：用经验检索扩展机器人控制记忆](wiki/entities/paper-memer.md) — MemER**（*Scaling Up Memory for Robotic Control via Experience Retrieval*）是 Stanford 团队提出的分层机器人策略：高 `📅unknown` `[entity_page]`
 - [MemForest](wiki/entities/paper-memforest.md) — MemForest**（*Efficient Agent Memory Management via EventTree Partitioning and Progressive Merging `📅unknown` `[entity_page]`
 - [MeMoREval：具身智能体该记文字、图像还是场景图？](wiki/entities/paper-memoreval-embodied-memory-modality.md) — MeMoREval**（论文 *What Should Embodied Agents Remember? Benchmarking and Evaluating Memory Modality  `📅unknown` `[entity_page]`
+- [Is Your Robot's Memory Just a Clock? Temporal Shortcuts in Memory-Augmented VLA Policies｜机器人的记忆可能只是时钟](wiki/entities/paper-memory-clock.md) — 按时间采样的 VLA 记忆可能把暂停当作任务进度；用零事件干预与事件索引暴露和缓解 temporal shortcuts。 `📅unknown` `[entity_page]`
 - [MemoryWAM（arXiv:2606.20562）](wiki/entities/paper-memorywam.md) — MemoryWAM**（*MemoryWAM: Efficient World Action Modeling with Persistent Memory*，[arXiv:2606.20562 `📅unknown` `[entity_page]`
 - [MemT-1.0：面向原生记忆演化的记忆基础模型](wiki/entities/paper-memt-1-0-memory-native-evolution.md) — MemT-1.0** 是一组将持久、动态更新的记忆纳入模型计算的语言模型；它在生成过程中读取内部记忆，并在轮次或片段结束时更新记忆状态，从而减少对原始长上下文的持续访问。 `📅unknown` `[entity_page]`
 - [MEND：带运行约束的 UAV-UGV 掩码神经符号扩散规划](wiki/entities/paper-mend.md) — MEND 把无人机（UAV）与地面车（UGV）的协同任务规划建模为条件掩码生成：模型学习联合动作序列分布，推理时用逻辑可行性指示函数把不合规动作概率置零，并优先解掩码预测熵最低的位置。 `📅unknown` `[entity_page]`
@@ -3846,6 +3851,7 @@
 - [OneWM：世界预测与动作生成的因果协同训练](wiki/entities/paper-onewm-unified-causal-training.md) — OneWM** 在共享的因果视频—动作架构中同时学习“给定动作后世界如何变化”与“根据当前观测生成动作”，用三种动作条件化方式检验两类监督能否互相促进。 `📅unknown` `[entity_page]`
 - [Online MBRL via Online Optimization（真机在线模型基强化学习）](wiki/entities/paper-online-mbrl-robot-control.md) — Efficient Model-Based Reinforcement Learning for Robot Control via Online Optimization**（[arXiv:25 `📅unknown` `[entity_page]`
 - [在线闭环 Sim2Real（arXiv:2609.28878）](wiki/entities/paper-online-sim2real-closed-loop-modeling.md) — 在线闭环 Sim2Real**（*Online Sim-to-Real Adaptation via Closed-Loop System Modeling*，[arXiv:2609.28878 `📅unknown` `[entity_page]`
+- [OnlyAct: Extracting Action Representations from Foundation Models for World Models｜从视频基础模型提取动作表征](wiki/entities/paper-onlyact.md) — OnlyAct 使用预训练 V-JEPA 2 和跨场景对比学习，把视频运动信息提取为尽量不依赖背景的潜动作表征。 `📅unknown` `[entity_page]`
 - [OnOff：可微物理笔刷打通在线轨迹与离线手写](wiki/entities/paper-onoff-handwriting.md) — OnOff**（*Bridging Online and Offline Handwriting via Differentiable Physical Rendering*；[arXiv:260 `📅unknown` `[entity_page]`
 - [OopsieRecover：从语义干预中学习可迁移的 VLA 纠错](wiki/entities/paper-oopsierecover.md) — 从少量语义纠错生成带门控条件的几何代价函数，以测试时候选动作评分引导冻结 VLA 恢复执行。 `📅unknown` `[entity_page]`
 - [Open-HumanWAM：规模化人类与机器人经验的具身基础模型开放配方 / An Open Recipe for Scaling Human and Robot Experience for Embodied Foundation Models](wiki/entities/paper-open-humanwam.md) — Open-HumanWAM**（arXiv:2611.06817，2026-11-04 首次提交）构建约 **50,000  `📅unknown` `[entity_page]`
@@ -5552,6 +5558,7 @@
 - [SABER（arXiv:2609.21572）](wiki/entities/paper-saber-semantic-affordance-legged.md) — SABER**（*SABER: Learning Attention-based Semantic Affordance for Legged Locomotion*，[arXiv:2609.21 `📅unknown` `[entity_page]`
 - [SACQ（arXiv:2610.41408）](wiki/entities/paper-sacq.md) — SACQ**（*SACQ: Structure-Aware Codebook Quantization for Ultra-Low-Bit Vision-Language-Action Model `📅unknown` `[entity_page]`
 - [Safe-Ballbot（arXiv:2611.03307）](wiki/entities/paper-safe-ballbot.md) — Safe-Ballbot**（*Safe-Ballbot: Tilt-Consistent MPC with Control Barrier Functions for Ballbot Navig `📅unknown` `[entity_page]`
+- [From Depth to Safe Depth: Uncertainty-Aware Monocular Perception for Mobile Robot Navigation｜不确定性校准单目深度导航](wiki/entities/paper-safe-depth.md) — Safe Depth 在冻结的 Depth Anything V2 上预测偏差与不确定性，将保守距离 d·exp(μ−kσ) 提供给 Nav2。 `📅unknown` `[entity_page]`
 - [二值可行性安全流匹配：通过二值可行性判定学习安全 Flow Matching 机器人策略](wiki/entities/paper-safe-flow-matching-binary-feasibility-oracles.md) — 二值可行性安全流匹配**（*Learning Safe Flow-Matching Robot Policies from Binary Feasibility Oracles*，[arXiv:2 `📅unknown` `[entity_page]`
 - [SAFE-Pruner](wiki/entities/paper-safe-pruner.md) — SAFE-Pruner: Semantic Attention-Guided Future-Aware Token Pruning for Efficient Vision-Language-Ac `📅unknown` `[entity_page]`
 - [Safe-Stop：人形机器人可学习安全停止](wiki/entities/paper-safe-stop-humanoid.md) — Safe-Stop**（*Humanoid Safe Stop via Learned Stoppability Value*，[arXiv:2609.02358](https://arxiv.o `📅unknown` `[entity_page]`
@@ -5722,6 +5729,7 @@
 - [SMR：从人体动作语义学习流式人形动作重定向](wiki/entities/paper-smr-streaming-motion-retargeting.md) — SMR**（*SMR: Learning Streaming Motion Retargeting for Humanoids from Human Semantic*，[arXiv:2610.2 `📅unknown` `[entity_page]`
 - [SNAP（arXiv:2611.03498）](wiki/entities/paper-snap.md) — SNAP**（*SNAP: Semantic Navigation Among Pedestrians*，[arXiv:2611.03498](https://arxiv.org/abs/2611 `📅unknown` `[entity_page]`
 - [SO-101 Bench（arXiv:2610.36420）](wiki/entities/paper-so-101-bench.md) — SO-101 Bench**（*SO-101 Bench: Accessible Spatial Manipulation*，[arXiv:2610.36420](https://arxiv.or `📅unknown` `[entity_page]`
+- [Camera equalisation of an 11.5x drop in environmental illuminance: four imitation-learning policies on an SO-101 arm｜自动曝光如何影响 SO-101 光照鲁棒性评测](wiki/entities/paper-so101-lighting.md) — SO-101 光照对照实验发现环境照度下降 11.5 倍时，自动曝光使模型输入图像变化远小于照度变化。 `📅unknown` `[entity_page]`
 - [SoccerBot：潜在运动先验的统一人形足球](wiki/entities/paper-soccerbot-latent-motion-priors.md) — SoccerBot**（*Playing Soccer Like Humans Do: Learning Versatile and Agile Humanoid Soccer via Laten `📅unknown` `[entity_page]`
 - [Social Humanoid：可社交响应的人–人形交互](wiki/entities/paper-social-humanoid.md) — 感知人类交互 → 共享 VQ 运动表示 → 扩散式协同响应生成 → G1 全身跟踪的双人社交交互系统；约 260 小时数据。 `📅unknown` `[entity_page]`
 - [被动变形四旋翼的任务驱动闭环设计优化（arXiv:2611.09272）](wiki/entities/paper-soft-morphing-quadrotor-gap-traversal.md) — Task-Driven Closed-Loop Design Optimization of Passively Morphing Quadrotors for Contact-Mediated N `📅unknown` `[entity_page]`
@@ -6031,6 +6039,7 @@
 - [Preparing for the unknown: learning a universal policy with online system identification](wiki/entities/paper-up-osi-universal-policy-online-sysid.md) — Preparing for the unknown: learning a universal policy with online system identification (UP-OSI `📅unknown` `[entity_page]`
 - [Uranus：面向具身 AI 的下一代模拟基础设施](wiki/entities/paper-uranus.md) — Uranus**（*Building the Next-Generation Simulation Infrastructure for Embodied AI*，[arXiv:2609.2481 `📅unknown` `[entity_page]`
 - [URDD（Beyond URDF: Universal Robot Description Directory）](wiki/entities/paper-urdd-universal-robot-description-directory.md) — URDD** 是 Klein-Seetharaman 与 Rakita 提出的 **机器人描述「派生层」**：保留 **URDF（等）原始规格** 的同时，把下游常算的 **结构化派生信息** 分 `📅unknown` `[entity_page]`
+- [Taxonomy-Agnostic Neurosymbolic Grounding of Robot Kinematics｜URDF2Ontology 机器人运动学语义接地](wiki/entities/paper-urdf2ontology.md) — URDF2Ontology 将 URDF 的运动学图通过双轨形态解析、LLM 语义推理和图清理转成 OWL 本体。 `📅unknown` `[entity_page]`
 - [US-VLA](wiki/entities/paper-us-vla-ultrasound.md) — US-VLA: An Ultrasound Vision-Language-Action Model for Embodied Abdominal Scanning**（arXiv:[2608.1 `📅unknown` `[entity_page]`
 - [UVTA：跨本体视触觉动作建模](wiki/entities/paper-uvta-human-tactile-dexterous-manipulation.md) — 一句话定义：** UVTA 用可穿戴人类触觉示范学习跨本体接触表征，并与机器人遥操作数据联合预测未来动作和触觉轨迹；部署时仅执行机器人动作。 `📅unknown` `[entity_page]`
 - [V-Simba：视觉 RL 的样本效率也可以来自网络结构](wiki/entities/paper-v-simba.md) — V-Simba**（*Unleashing the Architectural Potential of RL in Visual Continuous Control*；[arXiv:2608. `📅unknown` `[entity_page]`

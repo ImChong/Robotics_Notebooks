@@ -407,6 +407,13 @@ op: ingest
 - **开源结论：** 项目页未列正式源码/权重/数据下载，因此不生成未经核对的运行时序图。
 - **指标纠正：** Franka AirPods 92% 为端到端成功率；YAM 炒蛋 85.8% 为离线阶段评分；不混入 PNP 营销信息。
 
+# [2026-11-14] ingest | sources/blogs/embodied-research-digest-2026-11-12.md — 13 篇论文去重收录
+
+- 逐页分析用户上传的 5 页研究资讯，确定 13 篇论文的 arXiv 来源。
+- 复用主分支已有 MetaWAM、BEHAVIOR 2026、DexSeed、Elastic-WAM 四个节点。
+- 为其余九篇创建独立论文实体、来源与源码/项目归档、Mermaid 方法图，以及可由 README 对齐的概念时序图。
+- **开源与健康边界：** 后续已核对九篇原文及相关附录、追加实验约束与源码入口；知识节点健康度按规则升级，源码与机器人实测仍未独立复现。URDF2Ontology 原站 PDF 获取受限，已明确标注使用论文文字镜像。
+
 ## [2026-11-14] ingest | sources/blogs/ultralytics_yolo26_ocr_python_2026_11_12.md — 入库 YOLO26+PP-OCRv6 OCR 与 HierText 数据集
 
 - 以 Ultralytics 英文原文、官方 OCR Guide 和 `ultralytics/solutions/ocr.py` 为依据，新增逐词识别、旋转矫正、阅读顺序、PDF 工程入口及源码时序图。
