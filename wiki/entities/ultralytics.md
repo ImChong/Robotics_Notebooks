@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, tooling, computer-vision, object-detection, yolo, real-time, perception, robotics, ultralytics]
 status: complete
-updated: 2026-09-30
+updated: 2026-11-14
 code: https://github.com/ultralytics/ultralytics
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -11,6 +11,8 @@ related:
   - ./paper-yolo-unified-realtime-detection.md
   - ./paper-yolo26-unified-realtime-e2e-vision.md
   - ./rf-detr.md
+  - ./hiertext.md
+  - ../methods/yolo26-ocr-document-parsing.md
   - ./booster-robocup-demo.md
   - ../tasks/humanoid-soccer.md
   - ../methods/soccer-field-line-detection.md
@@ -22,6 +24,7 @@ sources:
   - ../../sources/papers/yolo26_arxiv_2606_03748.md
   - ../../sources/sites/huggingface-ultralytics-yolo26.md
   - ../../sources/sites/docs-ultralytics.md
+  - ../../sources/sites/ultralytics_yolo26_ocr_guide.md
   - ../../sources/repos/roboflow_sports.md
 summary: "Ultralytics（ultralytics/ultralytics）：YOLO 工程主仓；统一 CLI/Python 覆盖检测/分割/姿态/OBB/深度/跟踪与 ONNX·TensorRT 导出；当前主推 YOLO26（AGPL-3.0，商用需 Enterprise）。"
 ---
@@ -166,6 +169,11 @@ sequenceDiagram
 - **榜单 ≠ 真机：** 运动模糊、光照、小目标与域偏移常比换更大模型更致命（见 [检测选型 Query](../queries/object-detection-model-selection.md)）。
 - **NMS / e2e：** 勿假设所有 YOLO* 都已 NMS-free；以当前模型文档为准（YOLO26 宣传端到端）。
 - **云平台绑定可选：** Platform / 遥测与账号体系与本地 CLI 可分离，按需关闭。
+
+## 新增专题：YOLO26 场景与文档 OCR
+
+- [YOLO26-Text + PP-OCRv6：场景与文档 OCR](../methods/yolo26-ocr-document-parsing.md) — OBB 文本检测、逐词识别、旋转方向、行序重排、PDF 工程入口与源码时序图。
+- [HierText：分层场景文本数据集](./hiertext.md) — 词/行/段标注和评测协议；注意 Ultralytics 公开测试只用其中 80 张验证图片。
 
 ## 关联页面
 
