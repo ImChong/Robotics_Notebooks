@@ -12,6 +12,7 @@ related:
   - ../entities/paper-teleocr.md
   - ../entities/unlimited-ocr-2.md
   - ../methods/object-detection.md
+  - ../concepts/perception-coordinate-postprocessing.md
 sources:
   - ../../sources/blogs/ultralytics_yolo26_ocr_python_2026_11_12.md
   - ../../sources/sites/ultralytics_yolo26_ocr_guide.md
@@ -45,6 +46,16 @@ summary: "Ultralytics YOLO26-Text 负责旋转文本检测，PP-OCRv6 逐词识�
 - 对机器人视觉工作流，可用来读取铭牌、物料标签或指示牌；延迟与识别率必须对真实机载相机另测，不能将文档基准当作真机结果。
 
 ## 核心原理
+
+## 主要技术路线
+
+这是一条**可替换的检测 → 识别 → 排序三级路线**，不是单个端到端 OCR 模型：
+
+1. **定位（Detection）：** YOLO26-Text 在页面上检测文字框；`OCR.process()` 同时接受轴对齐框、OBB 和实例分割多边形，输出原图像素坐标中的文字区域。
+2. **识别（Recognition）：** `OCR.read_words()` 先对主方向与其反向进行小样本试读，`TextRecognizer` 再使用 PP-OCRv6 按词批量推理并以 CTC 解码；需要其他语言时替换识别器而不是只改检测器。
+3. **结构化（Ordering）：** `OCR.lines()` 按基线和词间距分行，输出文字、置信度、行编号及原图多边形；复杂版面（多栏、表格和跨页）仍需更专用的文档结构分析。
+
+检测到的多边形先经过图像平面内的方向纠正、裁切和坐标映射，与[感知后处理与坐标变换](../concepts/perception-coordinate-postprocessing.md)同属检测后几何处理；但本 OCR 流程**不涉及**将像素直接反投影到机器人三维坐标系。
 
 ### 流程总览
 
@@ -140,6 +151,7 @@ sequenceDiagram
 - [Ultralytics YOLO](../entities/ultralytics.md) — 检测器框架与许可
 - [HierText 数据集](../entities/hiertext.md) — 分层文本检测数据
 - [目标检测](./object-detection.md) — 检测模型的基础概念
+- [感知后处理与坐标变换](../concepts/perception-coordinate-postprocessing.md) — 文本框像素位置、旋转及后处理的相关知识
 - [TeleOCR](../entities/paper-teleocr.md) — 文档解析中的识别路线
 - [Unlimited OCR Works 2](../entities/unlimited-ocr-2.md) — 面向长文档的解析路线
 
