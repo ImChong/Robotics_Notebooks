@@ -6820,6 +6820,7 @@
 - [Behavior Foundation Model（行为基础模型，BFM）](wiki/concepts/behavior-foundation-model.md) — Behavior Foundation Model（BFM）**：从 **大规模、多样化行为数据**（动捕、遥操作、自博弈交互等）学习 **可复用的全身行为先验**，使人形 **whole-bod `📅unknown` `[wiki_page]`
 - [行为树 × VLA 编排](wiki/concepts/behavior-tree-vla-orchestration.md) — 行为树（Behaviour Tree, BT）与 VLA 结合**：把 **宏任务流程**（加载策略、复位姿态、移动底盘、循环 pick-and-place）交给 **可组合、可恢复** 的行为树 `📅unknown` `[wiki_page]`
 - [Behavioral Cloning Mysteries（真机风格 BC 的四条反直觉）](wiki/concepts/behavioral-cloning-mysteries.md) — Behavioral Cloning Mysteries**：在统计性质接近人类演示（窄分布、时间强相关、平滑随机）的数据上训 BC 时，会出现标准 D4RL/OGBench 看不到的四条现象—— `📅unknown` `[wiki_page]`
+- [BEV：鸟瞰统一空间表征（Bird's-Eye-View Representation）](wiki/concepts/bird-eye-view-bev.md) — BEV（Bird's-Eye View，鸟瞰表征）**是在选定的自车/机器人水平参考系中，用二维 \((x,y)\) 栅格及其多通道特征编码周边环境：**同一空间格内对齐相机的语义、激光雷达的几何 `📅unknown` `[wiki_page]`
 - [The Bitter Lesson（惨痛教训）](wiki/concepts/bitter-lesson.md) — The Bitter Lesson**：Richard Sutton 2019 年提出的 AI 方法论观察——**通用、可随算力规模扩展的方法（search 与 learning）长期压倒内置人类 `📅unknown` `[wiki_page]`
 - [Bode 图（Bode Plot）](wiki/concepts/bode-plots.md) — Bode 图**用两条曲线展示系统对不同频率正弦输入的响应：上图是幅值（通常用 dB），下图是相位（通常用度），横轴是对数频率。读它可以知道系统跟不跟得上快速变化、在哪些频率容易放大/共振，以及在 `📅unknown` `[wiki_page]`
 - [BPTT（Backpropagation Through Time）](wiki/concepts/bptt.md) — BPTT 就是普通反向传播作用在**按时间展开**的计算图上：未来累计奖励的梯度沿多个时间步的链路回传到当前动作和 Actor 参数。它只是计算跨时间梯 `📅unknown` `[wiki_page]`
