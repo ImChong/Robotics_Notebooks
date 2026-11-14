@@ -3,8 +3,8 @@
 - **类型：** paper
 - **原文：** https://arxiv.org/abs/2611.14247
 - **PDF：** https://arxiv.org/pdf/2611.14247
-- **核对范围：** 核对论文 arXiv v1 摘要、用户 2026-11-12 资讯附件、官方源码 README 与公开入口；未通读全文方法、实验与附录，未执行实验。
-- **通读：** 未完成
+- **核对范围：** arXiv HTML v1 正文 I–VII：CLIFER 持续学习、效价-唤醒差分反馈、谈判策略、66 人配对试验和统计讨论；核对官方 README 的 verify_all_results.py 与 NAOqi 运行边界；未执行真机。
+- **通读：** 已完成
 - **收录日期：** 2026-11-14
 - **代码或数据：** https://github.com/monurkeskin/Personalized-Affective-Perception-via-Continual-Learning-TAFFC-2026
 
@@ -23,6 +23,10 @@
 
 行为收益不等于准确读懂情绪；部署依赖旧式机器人软件/感知资源且存在伦理边界。
 
-## 待补
+## 原文核对摘录（2026-11-14）
 
-需通读论文图表、正文和附录并逐项校验结果；当前内容为原始摘要及资讯整理，不替代原文。
+论文 CLIFER 对面部表情的 Valence-Arousal（V,A）预测采用生成式回放，异步更新个体模型；把会话中的归一化情绪变化分解为角度旋转 `atan2(det,dot)` 与向量模长差，形成受限的差分反馈，再改变谈判 Solver 的效用函数。66 人同人配对比较静态 FaceChannel 与持续学习模型，报告代理收益与让步率提高，但参与者效用与 Nash distance 未显著改善。情绪量来自模型**估计值**而非独立标注的情绪真值，因此不能以谈判收益反推识别精度更高。源码支持 `python verify_all_results.py` 复核公开结果；实时机器人流程涉及 Python2.7/NAOqi、FaceChannel 权重及实验室资源，统计脚本不能替代真机运行。
+
+## 复现边界
+
+尚未独立运行数据、训练、评测或机器人试验；论文数字为作者报告。对 wiki 的映射：[论文详情](../../wiki/entities/paper-affective-negotiation.md)。

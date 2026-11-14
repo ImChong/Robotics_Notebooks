@@ -4,7 +4,7 @@ project_id: ast-task-information
 arxiv: "2611.14111"
 code: https://github.com/dimipan/ast-telemetry
 tags: [paper, ast-task-information, robotics]
-status: draft
+status: complete
 updated: 2026-11-14
 summary: "Acquisition-State Telemetry 将实时观测映射到任务需求坐标，分别度量前瞻信息进展和无效重复的信息摩擦。"
 related:
@@ -56,7 +56,7 @@ flowchart LR
   A3 --> A4
 ```
 
-> 方法流程根据摘要/官网整理，尚待论文原文逐图核实。
+> 根据论文方法与作者公开资料重绘，非作者原图。
 
 ## 实验与评测
 
@@ -78,19 +78,38 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用：** 未核对可运行源码。不能凭摘要编造执行调用栈。
+```mermaid
+sequenceDiagram
+  participant CLI as reproduce.sh
+  participant EXP as experiments/study*.py
+  participant MON as asttel.monitor.Monitor
+  participant OUT as AST_OUTPUT
+  participant CHECK as figures.py / check.py
+  CLI->>EXP: studies/rl/all
+  EXP->>MON: task binding、embedding、resolution scores
+  MON-->>EXP: progress / friction / gains
+  EXP->>OUT: 写 summary.json 与轨迹
+  CLI->>CHECK: 绘图并和 reference/ 对比
+  CHECK-->>CLI: 对照结果
+```
+
+按官方 README/启动入口绘制，尚未独立执行。
 
 ## 工程实践
 
 - 对齐版本、传感器、动作/观测空间和评测预算后再尝试复现。
 - 正式应用应增加跨分布扰动与任务安全边界检查；原文完整复现步骤待核对。
-- 本次通读状态：**未完成**；页面仍为 draft。
+- 已通读可获取的原文方法、实验及附录；尚未独立运行代码。
 
 ## 局限与风险
 
 任务信息坐标需人为定义，假设已获得证据持续有效；无法代替实测成功率。
 
-未对全部论文正文/附录及运行细节完成审阅，任何进一步量化外推均不成立。
+已核对论文正文与附录；源码运行和真实部署仍需独立验证。
+
+## 全文核验补记
+
+论文框架 Acquisition-State Telemetry（AST）先由领域 **task binding** 将观测投影为任务坐标的 resolution score 与单位范数 evidence embedding，再由固定 Monitor 输出 progress、friction、gains；无须拟合被监控的策略，不等于不需要任务 schema。附录的贝叶斯进度估计对各需求坐标的收益率赋 Beta(1,1) 先验，根据有收益次数更新，辅以历史证据相似度和检查点直行度评估无效重复。覆盖 SAR、MapTask、MultiWOZ、AnnoMI、MiniGrid、Crafter、MetaWorld、BOIR 及 RL 控制；MetaWorld 对动作前停滞与完成后停住的区分存在差异。**官方源码并非无可运行入口：** GitHub 的嵌套目录 `ast_telemetry_anonymous_repo/ast-telemetry/` 包含 `reproduce.sh`；`./reproduce.sh studies` 调用各 study1–3 脚本，`JOBS=16 ./reproduce.sh rl` 调用 study4 训练/评测，最终运行 figures.py 与 check.py。运行前必须设置 AST_DATA 指向独立数据集。
 
 ## 关联页面
 

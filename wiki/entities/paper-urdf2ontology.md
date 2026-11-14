@@ -4,7 +4,7 @@ project_id: urdf2ontology
 arxiv: "2611.13850"
 code: https://github.com/RIS-WITH/urdf2ontology
 tags: [paper, urdf2ontology, robotics]
-status: draft
+status: complete
 updated: 2026-11-14
 summary: "URDF2Ontology 将 URDF 的运动学图通过双轨形态解析、LLM 语义推理和图清理转成 OWL 本体。"
 related:
@@ -56,7 +56,7 @@ flowchart LR
   A3 --> A4
 ```
 
-> 方法流程根据摘要/官网整理，尚待论文原文逐图核实。
+> 根据论文方法与作者公开资料重绘，非作者原图。
 
 ## 实验与评测
 
@@ -80,29 +80,36 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-  participant A0 as main.py
-  participant A1 as URDF graph
-  participant A2 as Tree/Chain Track
-  participant A3 as OWL/ontologenius
-  A0->>A1: 启动评测/训练
-  A1->>A2: 处理环境与模型输入
-  A2->>A3: 执行模型或输出指标
-  A3-->>A0: 返回状态
-````
+  participant CLI as scripts/main.py
+  participant URDF as URDF parser
+  participant Track as Tree / Chain resolver
+  participant LLM as LLM grounding
+  participant OWL as Ontologenius / OWL
+  CLI->>URDF: 读取 URDF 与 TBox
+  URDF-->>Track: 子图与运动链
+  Track->>LLM: 功能类及关系查询
+  LLM-->>Track: 语义候选
+  Track->>OWL: 拓扑校验与 ABox assertion
+  OWL-->>CLI: 本体结果
+```
 
-**README 入口：** `python3 main.py（前置 ontologenius 与模型配置）`。图仅表示已核对到的入口与概念性组件顺序，不代表已运行或逐行审阅。
+按官方 README/启动入口绘制，尚未独立执行。
 
 ## 工程实践
 
 - 对齐版本、传感器、动作/观测空间和评测预算后再尝试复现。
 - 正式应用应增加跨分布扰动与任务安全边界检查；原文完整复现步骤待核对。
-- 本次通读状态：**未完成**；页面仍为 draft。
+- 已通读可获取的原文方法、实验及附录；尚未独立运行代码。
 
 ## 局限与风险
 
 URDF 缺少任务语义，LLM 语义推断可能幻觉；不等同自动认证机器人能力。
 
-未对全部论文正文/附录及运行细节完成审阅，任何进一步量化外推均不成立。
+已核对论文正文与附录；源码运行和真实部署仍需独立验证。
+
+## 全文核验补记
+
+URDF2Ontology 输入 URDF 的 link/joint 图与用户指定的 TBox 类层次，将可推断的本体功能映射到 OWL/ABox 实例断言。图 2 表明三阶段循环：Phase I 提取尚未处理的子链，Phase II 用 Tree Track 自底向上聚合多分支的传感器、末端执行器与移动组件，用 Chain Track 自顶向下拆分串联肢体，Phase III 完成实体命名、拓扑检验与 ABox 写入；外层循环逐类处理并清掉已经标注的节点，降低 LLM 上下文负担。文章展示五类机器人形态，不代表对所有高密度传感器及语义角色都正确。官方仓提供 `scripts/main.py` 类入口及 ROS 2 Ontologenius 启动说明，依赖正确 URDF/本体与 LLM 配置；本轮没有运行。
 
 ## 关联页面
 

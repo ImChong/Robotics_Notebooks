@@ -4,7 +4,7 @@ project_id: affective-negotiation
 arxiv: "2611.14247"
 code: https://github.com/monurkeskin/Personalized-Affective-Perception-via-Continual-Learning-TAFFC-2026
 tags: [paper, affective-negotiation, robotics]
-status: draft
+status: complete
 updated: 2026-11-14
 summary: "通过 CLIFER 持续适应谈判者表情的情绪效价-唤醒表征，并用差分反馈调整机器人的谈判效用目标。"
 related:
@@ -56,7 +56,7 @@ flowchart LR
   A3 --> A4
 ```
 
-> 方法流程根据摘要/官网整理，尚待论文原文逐图核实。
+> 根据论文方法与作者公开资料重绘，非作者原图。
 
 ## 实验与评测
 
@@ -80,29 +80,34 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-  participant A0 as verify_all_results.py
-  participant A1 as Public data
-  participant A2 as CLIFER assets
-  participant A3 as Outcome checks
-  A0->>A1: 启动评测/训练
-  A1->>A2: 处理环境与模型输入
-  A2->>A3: 执行模型或输出指标
-  A3-->>A0: 返回状态
-````
+  participant CLI as verify_all_results.py
+  participant DATA as Public FC/CL study data
+  participant STATS as Statistical tests
+  participant OUT as Report tables
+  CLI->>DATA: 读取公开的配对谈判记录
+  DATA->>STATS: 两条件效用、让步与模型情感统计
+  STATS-->>OUT: 指标与显著性
+  OUT-->>CLI: 校验结果
+  Note over CLI,OUT: 非实时 NAOqi 真机控制链路
+```
 
-**README 入口：** `python verify_all_results.py（仅公开结果校验）`。图仅表示已核对到的入口与概念性组件顺序，不代表已运行或逐行审阅。
+按官方 README/启动入口绘制，尚未独立执行。
 
 ## 工程实践
 
 - 对齐版本、传感器、动作/观测空间和评测预算后再尝试复现。
 - 正式应用应增加跨分布扰动与任务安全边界检查；原文完整复现步骤待核对。
-- 本次通读状态：**未完成**；页面仍为 draft。
+- 已通读可获取的原文方法、实验及附录；尚未独立运行代码。
 
 ## 局限与风险
 
 行为收益不等于准确读懂情绪；部署依赖旧式机器人软件/感知资源且存在伦理边界。
 
-未对全部论文正文/附录及运行细节完成审阅，任何进一步量化外推均不成立。
+已核对论文正文与附录；源码运行和真实部署仍需独立验证。
+
+## 全文核验补记
+
+论文 CLIFER 对面部表情的 Valence-Arousal（V,A）预测采用生成式回放，异步更新个体模型；把会话中的归一化情绪变化分解为角度旋转 `atan2(det,dot)` 与向量模长差，形成受限的差分反馈，再改变谈判 Solver 的效用函数。66 人同人配对比较静态 FaceChannel 与持续学习模型，报告代理收益与让步率提高，但参与者效用与 Nash distance 未显著改善。情绪量来自模型**估计值**而非独立标注的情绪真值，因此不能以谈判收益反推识别精度更高。源码支持 `python verify_all_results.py` 复核公开结果；实时机器人流程涉及 Python2.7/NAOqi、FaceChannel 权重及实验室资源，统计脚本不能替代真机运行。
 
 ## 关联页面
 
