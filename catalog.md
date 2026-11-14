@@ -728,6 +728,7 @@
 - [Genie Sim 3.0](wiki/entities/genie-sim-3.md) — Genie Sim 3.0** 是智元 AgibotTech/genie_sim 开源的 **高保真综合仿真平 `📅unknown` `[entity_page]`
 - [Genie Studio Agent](wiki/entities/genie-studio-agent.md) — Genie Studio Agent** 是智元在 2026-06 发布地图 中 `📅unknown` `[entity_page]`
 - [GenoView-InverseKinematics](wiki/entities/genoview-inverse-kinematics.md) — GenoView-InverseKinematics](https://github.com/orangeduck/GenoView-InverseKinematics) 是 Andrew McDo `📅unknown` `[entity_page]`
+- [GenRobot DAS 2.0：Ego / WristCam / Dex 人类多模态数据采集](wiki/entities/genrobot-das-2-0.md) — GenRobot DAS 2.0** 是简智机器人面向 Human Data（人类操作数据）的采集硬件组合：用 **Ego 2.0** 留住任务与全身上下文、**WristCam** 增加近场手– `📅unknown` `[entity_page]`
 - [geo-sleuth：可核验的照片地理定位 Agent Skill](wiki/entities/geo-sleuth.md) — 一句话定义：** geo-sleuth 把照片地理定位拆成“代理提出/判断假设，脚本采集线索、枚举候选、计算几何并排序”的工作流，要求结论能够回指实际运行的命令和产物，而不是凭模型印象猜地点。 `📅unknown` `[entity_page]`
 - [Get It. Study Companion](wiki/entities/get-it-study-companion.md) — Get It.** 是一个围绕 PDF/Markdown 文档的开源桌面学习 companion：它把概念识别、可选的图文/3D 可视化、概念关系图与复习交互放在同一工作流中，目标是让学习者练习解 `📅unknown` `[entity_page]`
 - [HFSS MCP Server（gfgf2023/hfss-mcp-server）](wiki/entities/gfgf2023-hfss-mcp-server.md) — HFSS MCP Server（gfgf2023/hfss-mcp-server）是面向 HFSS 天线和 PCB 仿真的 MCP 服务，涉及天线几何、边界与激励、远场方向图等任务。 `📅unknown` `[entity_page]`
