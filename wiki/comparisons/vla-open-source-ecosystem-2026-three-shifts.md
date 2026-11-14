@@ -70,7 +70,7 @@ summary: "以 2026-11-14 深蓝具身智能 15 项开源综述为切面，按跨
 | ③ 训练/评测/后训练 | [vla-evaluation-harness](../../sources/repos/vla-evaluation-harness.md) | 模型 adapter、隔离 benchmark、复现标志 | [Ai2/AllenAI 官方仓库](https://github.com/allenai/vla-evaluation-harness)；集成 ≠ 复现 |
 | ③ 训练/评测/后训练 | [verl-vla](../../sources/repos/verl-vla.md) | 人介入采集、SFT/RL 与云边角色编排 | [官方仓库](https://github.com/verl-project/verl-vla)；具体 pipeline 仍需逐一运行验证 |
 
-## 复现决策路径
+## 流程总览：复现决策路径
 
 ```mermaid
 flowchart TD
