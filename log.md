@@ -414,6 +414,12 @@ op: ingest
 - 为其余九篇创建独立论文实体、来源与源码/项目归档、Mermaid 方法图，以及可由 README 对齐的概念时序图。
 - **开源与健康边界：** 后续已核对九篇原文及相关附录、追加实验约束与源码入口；知识节点健康度按规则升级，源码与机器人实测仍未独立复现。URDF2Ontology 原站 PDF 获取受限，已明确标注使用论文文字镜像。
 
+## [2026-11-14] ingest | 完成 PR #3732（Issue #3487）涉及全部 63 个知识节点的原文与官方源码通读、Mermaid 项目流程图与源码运行时序图补齐，修正 SRU 404 仓库链接为 leggedrobotics/sru-pytorch-spatial-learning，63 页节点健康度全部升至 3/3
+
+## [2026-11-14] structural | wiki — 完成 #3487 全量 277 页候选语义核验：回填 55 页、排除 217 页、待定 5 页；保留首批 8 页并恢复原 updated，核验记录见 docs/quality/issue-3487-code-backfill.md
+
+## [2026-11-13] lint | wiki/entities — 回填第一批 8 个实体页官方 GitHub 仓库 code 字段 (#3487)
+
 ## [2026-11-14] ingest | sources/papers/science_prediction_universe_arxiv_2611_15049.md — 收录 UniPat AI Science Prediction Universe；归档论文、官方站点与仓库，新增独立论文详情节点并互链 AI Agent 评测。
 
 ## [2026-11-14] ingest | sources/blogs/ultralytics_yolo26_ocr_python_2026_11_12.md — 入库 YOLO26+PP-OCRv6 OCR 与 HierText 数据集
