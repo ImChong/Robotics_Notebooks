@@ -213,6 +213,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [XPolicyLab](../entities/xpolicylab.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
 - [AST（arXiv:2611.14111）](../entities/paper-ast-task-information.md) — 以任务信息获取进展与无效重复摩擦度量运行过程，不等于单一完成率指标
+- [LEASH / RoboRisk（arXiv:2611.14115）](../entities/paper-leash.md) — 用任务/动作/提交三级语义安全检查配合五类闭环风险评测，仍非形式化安全证明
+- [Safe Depth（arXiv:2611.13769）](../entities/paper-safe-depth.md) — 对单目深度偏差、不确定性和 Nav2 导航碰撞率进行仿真对照，真实部署还缺里程计与域迁移验证
 
 ## 参考来源
 
