@@ -4,7 +4,7 @@ project_id: memory-clock
 arxiv: "2611.14488"
 code: https://github.com/bennidict23/memory-clock
 tags: [paper, memory-clock, robotics]
-status: draft
+status: complete
 updated: 2026-11-14
 summary: "按时间采样的 VLA 记忆可能把暂停当作任务进度；用零事件干预与事件索引暴露和缓解 temporal shortcuts。"
 related:
@@ -56,7 +56,7 @@ flowchart LR
   A3 --> A4
 ```
 
-> 方法流程根据摘要/官网整理，尚待论文原文逐图核实。
+> 根据论文方法与作者源码说明重绘，非作者原图。
 
 ## 实验与评测
 
@@ -80,29 +80,36 @@ PickXtimes 两次 5 秒暂停后 FrameSamp-Modul 从 47/50 降至 16/50；不把
 
 ```mermaid
 sequenceDiagram
-  participant A0 as run_eval.sh
-  participant A1 as RoboMME
-  participant A2 as Memory sampler
-  participant A3 as VLA policy
-  A0->>A1: 启动评测/训练
-  A1->>A2: 处理环境与模型输入
-  A2->>A3: 执行模型或输出指标
-  A3-->>A0: 返回状态
-````
+  participant CLI as run_eval.sh
+  participant Sim as RoboMME
+  participant Mem as Memory sampler
+  participant Model as FrameSamp-Modul VLA
+  CLI->>Sim: 选择 PickXtimes 与 pause
+  Sim-->>Mem: 观测、时间戳和任务状态
+  Mem->>Mem: visible/hidden/event index
+  Mem-->>Model: 选定记忆槽位
+  Model-->>Sim: 预测动作
+  Sim->>Sim: 执行与注入零事件
+  Sim-->>CLI: 成功数及日志
+```
 
-**README 入口：** `bash run_eval.sh --task PickXtimes --event pause --len 100 --memory visible`。图仅表示已核对到的入口与概念性组件顺序，不代表已运行或逐行审阅。
+按官方 README/启动入口绘制，尚未独立执行。
 
 ## 工程实践
 
 - 对齐版本、传感器、动作/观测空间和评测预算后再尝试复现。
 - 正式应用应增加跨分布扰动与任务安全边界检查；原文完整复现步骤待核对。
-- 本次通读状态：**未完成**；页面仍为 draft。
+- 已通读原文方法、实验及附录；尚未独立运行代码。
 
 ## 局限与风险
 
 事件检测器依赖环境任务信号；RoboMME 仿真结果不能直接代表开放世界真机。
 
-未对全部论文正文/附录及运行细节完成审阅，任何进一步量化外推均不成立。
+已核对论文正文与附录；源码运行和真实部署仍需独立验证。
+
+## 全文核验补记
+
+论文 §4–5：RoboMME 记忆策略的 32 个时间采样槽位，可能把暂停帧放入记忆并误以为任务进度提高。在 PickXtimes 两次各 5 秒暂停的对照中，47/50（正常）→16/50（暂停帧可见）→45/50（隐藏暂停且冻结索引）。仅删除显式时间戳 NoClock 仍会留下索引层 temporal shortcut。§6 Event-index 使用任务关键接触/状态转换更新记忆，无需重训但部分依赖模拟器信号；普通 pause augmentation 未根治问题。附录 A–L 比较不同任务、事件类型、随机种子，采用成对 McNemar 检验、Wilson 区间及 Holm 校正；有效重复动作可能被误去重，真实时间约束任务仍需要时钟。
 
 ## 关联页面
 

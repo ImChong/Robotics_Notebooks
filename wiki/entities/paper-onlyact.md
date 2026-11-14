@@ -5,7 +5,7 @@ arxiv: "2611.14420"
 code: https://github.com/runjiali-rl/onlyact
 project: https://runjiali-rl.github.io/onlyact/
 tags: [paper, onlyact, robotics]
-status: draft
+status: complete
 updated: 2026-11-14
 summary: "OnlyAct 使用预训练 V-JEPA 2 和跨场景对比学习，把视频运动信息提取为尽量不依赖背景的潜动作表征。"
 related:
@@ -58,7 +58,7 @@ flowchart LR
   A3 --> A4
 ```
 
-> 方法流程根据摘要/官网整理，尚待论文原文逐图核实。
+> 根据论文方法与作者源码说明重绘，非作者原图。
 
 ## 实验与评测
 
@@ -82,29 +82,34 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-  participant A0 as reproduce_table1.sh
-  participant A1 as onlyact.extract
-  participant A2 as V-JEPA 2 encoder
-  participant A3 as Linear probe
-  A0->>A1: 启动评测/训练
-  A1->>A2: 处理环境与模型输入
-  A2->>A3: 执行模型或输出指标
-  A3-->>A0: 返回状态
-````
+  participant CLI as reproduce_table1.sh
+  participant Extract as onlyact.extract
+  participant Encoder as V-JEPA 2 LoRA encoder
+  participant Probe as Linear probe
+  CLI->>Extract: 读取数据清单与权重
+  Extract->>Encoder: 前后帧对
+  Encoder-->>Extract: 潜动作表征
+  Extract-->>Probe: 带标签的下游特征
+  Probe-->>CLI: R2 指标表
+```
 
-**README 入口：** `DATA=... bash scripts/reproduce_table1.sh`。图仅表示已核对到的入口与概念性组件顺序，不代表已运行或逐行审阅。
+按官方 README/启动入口绘制，尚未独立执行。
 
 ## 工程实践
 
 - 对齐版本、传感器、动作/观测空间和评测预算后再尝试复现。
 - 正式应用应增加跨分布扰动与任务安全边界检查；原文完整复现步骤待核对。
-- 本次通读状态：**未完成**；页面仍为 draft。
+- 已通读原文方法、实验及附录；尚未独立运行代码。
 
 ## 局限与风险
 
 场景解耦依赖样本构造；视频动作转移与动力学控制存在鸿沟。
 
-未对全部论文正文/附录及运行细节完成审阅，任何进一步量化外推均不成立。
+已核对论文正文与附录；源码运行和真实部署仍需独立验证。
+
+## 全文核验补记
+
+论文 §3：预训练 V-JEPA 2 ViT-L 上只适配 LoRA，以光流指导的同动作跨场景正例与同场景异动作难负例做对称对比学习，产生 640 维潜动作。9 个数据集 168000 组无动作标签帧对，训练参数约 7.1M，作者报告单 RTX4090 约 1.5 小时。§4 动作 probe 13 个数据集平均 R²=0.490，冻结 V-JEPA2 基线约 0.347；LIBERO 视频迁移动作方向相似度约 0.917，RLBench 约 0.686。各域 PSNR 不一定全部最好；这些是表征和视频世界模型指标，不能称作真机动作控制成功率。附录讨论数据许可、模型基座依赖及跨域外推风险。
 
 ## 关联页面
 
