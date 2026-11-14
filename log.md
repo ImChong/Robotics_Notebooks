@@ -407,6 +407,13 @@ op: ingest
 - **开源结论：** 项目页未列正式源码/权重/数据下载，因此不生成未经核对的运行时序图。
 - **指标纠正：** Franka AirPods 92% 为端到端成功率；YAM 炒蛋 85.8% 为离线阶段评分；不混入 PNP 营销信息。
 
+## [2026-11-14] ingest | 2026 BEHAVIOR Challenge 赛制、评测协议与源码核对
+
+- **意图：** 按 CoRL 2026 官方一手资料补全已有 2026 BEHAVIOR Challenge 来源归档，增加独立赛事节点，不重复建设 BEHAVIOR-1K 基准或 HiPhys-RSI 冠军论文。
+- **归档：** sources/sites/behavior-challenge.md 与 sources/repos/behavior-1k-challenge.md。
+- **wiki：** wiki/entities/behavior-challenge-2026.md；评测选型 hub 添加内部入口。
+- **开源结论：** 赛事环境与基线开放、示范数据公开；冠军方案并不包含在赛事代码库。官网要求 v3.9.3，但本次源码接口只成功读到 main，版本对齐与端到端复现待办。
+
 ## [2026-11-14] ingest | AHEADance 官方项目页复核与复现边界
 
 - 意图：用户再次提出 AHEADance 入库；按 arXiv:2611.13370 在库内查重，复用现有唯一论文实体，不重复创建节点。

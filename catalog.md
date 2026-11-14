@@ -130,6 +130,7 @@
 - [Bavaria Direct 绕组方案计算器（Bewicklungsrechner XL）](wiki/entities/bavaria-direct-winding-calculator.md) — Bavaria Direct Winding Scheme Calculator**（源码名 *Bewicklungsrechner XL*，(C) 2010 Felix Niessen，GPLv `📅unknown` `[entity_page]`
 - [Beckhoff SSC (EtherCAT Slave Stack Code)](wiki/entities/beckhoff-ssc.md) — 倍福官方 EtherCAT 从站栈源码，ETG 会员免费获取，不在公开 GitHub 仓库发布。（分类：EtherCAT 从站协议栈；语言/形态：C（官方从站栈源码）） `📅unknown` `[entity_page]`
 - [BEHAVIOR-1K](wiki/entities/behavior-1k.md) — BEHAVIOR-1K** 是斯坦福大学等机构 2023 年发布的 **千项日常活动具身 AI 基准**，在 NVIDIA Omniverse 上构建高逼真物理与视觉环境。 `📅unknown` `[entity_page]`
+- [2026 BEHAVIOR Challenge（2026 BEHAVIOR 家庭机器人挑战赛）](wiki/entities/behavior-challenge-2026.md) — 2026 BEHAVIOR Challenge** 是 Stanford Vision and Learning Lab 在 CoRL 2026 举办的第二届家庭具身智能挑战赛：让不同方法在 BE `📅unknown` `[entity_page]`
 - [BEHAVIOR Robot Suite (BRS)](wiki/entities/behavior-robot-suite.md) — BRS 是一个面向家庭长时程移动操作的开源系统套件：用 JoyLo 采集全身示范，再以 WB-VIMA 学习协调轮式底盘、躯干与双臂的视觉动作策略。 `📅unknown` `[entity_page]`
 - [智在无界（BeingBeyond）](wiki/entities/beingbeyond.md) — 智在无界（BeingBeyond，北京智在无界科技有限公司）** 是 2025 年在北京成立的具身基础模型公司，创始人是北京大学计算机学院副教授 **卢宗青**。公司主张从 **大规模第一视角人类 `📅unknown` `[entity_page]`
 - [Benjamin Katz（Ben Katz）](wiki/entities/benjamin-katz.md) — Benjamin Katz** 是 **MIT Mini Cheetah** 的主设计者与早期交付工程师：把 hobby BLDC + 定制驱动做成可背驱模块化执行器与整机平台，并以 [Robot `📅unknown` `[entity_page]`
