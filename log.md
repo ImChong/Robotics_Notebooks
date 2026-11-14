@@ -407,6 +407,14 @@ op: ingest
 - **开源结论：** 项目页未列正式源码/权重/数据下载，因此不生成未经核对的运行时序图。
 - **指标纠正：** Franka AirPods 92% 为端到端成功率；YAM 炒蛋 85.8% 为离线阶段评分；不混入 PNP 营销信息。
 
+## [2026-11-14] ingest | RTC / arXiv:2506.07339 | 对齐论文与官方仿真源码、补充流程与时序图
+
+- 资料：arXiv v2（NeurIPS 2025）、PI 官方研究说明、Physical-Intelligence/real-time-chunking-kinetix README 及核心训练/评测代码。
+- 去重：复用既有 `wiki/entities/paper-real-time-chunking.md`（论文 ID 2506.07339），不创建重复实体。
+- 澄清：PI research URL 是项目介绍页；官方可运行源码范围为 Kinetix 仿真，不等于 π₀.₅ 真机 RTC 部署仓。
+- 修改：论文页补 `project_id` 和中英全称、Mermaid 论文流程图，修订为代码可追溯的 Kinetix 运行时序图；补充论文、仿真仓来源核对记录。
+- 验证边界：使用论文 v2 HTML、官方博客和仓库源码静态核对，未本地执行完整多 GPU 复现；PR 依赖 GitHub Actions 进行完整 lint。
+
 ## [2026-11-14] ingest | sources/blogs/zane-hub-wheeled-dual-arm-urdf-workflow-2026-11-14.md — 收录轮式双臂人形 URDF 工程工具链
 
 - 来源：Zane Zhang / Zane Hub 2026-11-14 工程文章，用户上传 20 页 PDF，逐页核对。

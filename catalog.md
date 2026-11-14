@@ -4495,7 +4495,7 @@
 - [ReactiveBFM](wiki/entities/paper-reactivebfm.md) — ReactiveBFM** 是港中大与上海人工智能实验室提出的 **闭环全身运动规划–控制** 框架（arXiv:2606.30362，[项目页](https://xiao-chen.tech/r `📅unknown` `[entity_page]`
 - [ReactWorld（arXiv:2611.06120）](wiki/entities/paper-reactworld.md) — ReactWorld**（*ReactWorld: Structuring Interaction Responses for Embodied Video Generation*，[arXiv: `📅unknown` `[entity_page]`
 - [真机双臂灵巧抓取：单视角也要协作接触](wiki/entities/paper-real-bi-dex-grasp.md) — 真机双臂灵巧抓取**（*Real-World Cooperative Bimanual Dexterous Grasp of Large Objects from Single-View Obse `📅unknown` `[entity_page]`
-- [Real-Time Chunking：边执行边补下一段动作](wiki/entities/paper-real-time-chunking.md) — Real-Time Chunking（RTC）**（*Real-Time Execution of Action Chunking Flow Policies*，[arXiv:2506.07339 `📅unknown` `[entity_page]`
+- [Real-Time Execution of Action Chunking Flow Policies（动作分块流策略的实时执行）](wiki/entities/paper-real-time-chunking.md) — Real-Time Chunking（RTC）**（*Real-Time Execution of Action Chunking Flow Policies*，[arXiv:2506.07339 `📅unknown` `[entity_page]`
 - [Real-Time EXPO-FT：实时残差 RL 修正 VLA](wiki/entities/paper-real-time-expo-ft.md) — Real-Time EXPO-FT**（*Reinforcement Learning for Real-Time Vision-Language-Action Policies*，[arXiv: `📅unknown` `[entity_page]`
 - [Real2Sem2Real（arXiv:2610.28880）](wiki/entities/paper-real2sem2real.md) — Real2Sem2Real**（*Real2Sem2Real: 3D Semantic Augmentations for Robot Learning from a Single Human R `📅unknown` `[entity_page]`
 - [RealCompanion：真实纵向对话中的用户理解基准](wiki/entities/paper-realcompanion.md) — RealCompanion 是真实人-AI companion 长周期对话基准，检验模型能否理解用户、判断何时需要历史记忆，并让回答由消息证据支撑。 `📅unknown` `[entity_page]`
