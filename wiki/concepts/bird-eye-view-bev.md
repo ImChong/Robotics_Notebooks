@@ -96,7 +96,7 @@ F_m(i,j)=\operatorname{Aggregate}
 
 ### 4. 运行流程总览
 
-\`\`\`mermaid
+```mermaid
 flowchart TB
     CAM["多相机图像<br/>像素语义特征"] --> LIFT["相机特征提升<br/>深度/地面几何约束"]
     LID["LiDAR 点云<br/>位置·高度·强度"] --> REG["外参/时间同步<br/>统一到自车坐标"]
@@ -110,7 +110,7 @@ flowchart TB
     FUSE --> TRACK
     MAP --> DOWN["预测/规划/导航"]
     TRACK --> DOWN
-\`\`\`
+```
 
 ### 5. 多任务如何消费 BEV
 
