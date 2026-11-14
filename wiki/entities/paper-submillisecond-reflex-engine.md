@@ -2,7 +2,7 @@
 type: entity
 project_id: submillisecond-reflex-engine
 tags: [paper, robotics, ingest-2026-11]
-status: draft
+status: complete
 updated: 2026-11-14
 arxiv: "2610.21913"
 code: https://github.com/RoboRef/franka_reflex_engine
@@ -33,15 +33,15 @@ summary: "ROS 2 兼容的亚毫秒反射引擎"
 
 ## 为什么重要
 
-ROS 2 兼容的亚毫秒反射引擎，关注现有控制、数据或机器人学习方法在复杂任务中的失效点。这里单独建论文实体，避免与其他论文共用详情页；当前是待完成全文与源码复核的草稿。
+ROS 2 兼容的亚毫秒反射引擎，关注现有控制、数据或机器人学习方法在复杂任务中的失效点。这里单独建论文实体，避免与其他论文共用详情页；已通读原始论文 HTML 的可用正文和附录；源码执行效果仍需复现。
 
 ## 核心机制
 
 ROS 2 兼容 multimode controller 将控制行为预备于实时循环中；危险接触、关节极限和速度阈值触发 reflex 状态机，通过无锁指针切换活跃控制器而非停机重启。
 
-## 方法流程（待全文逐节复核）
+## 方法流程
 
-以下流程仅依据已核对的论文 HTML 方法描述，不代替源代码调用图。
+该流程依据原文方法描述，不等价于源码调用时序。
 
 ```mermaid
 flowchart LR
@@ -55,7 +55,25 @@ flowchart LR
 
 ## 源码运行时序图
 
-**待核实，不绘制未经代码阅读确认的时序图。** 官方存在公开仓库，但本次仅核对了 README 和部分发布说明；需继续阅读真实运行入口及关键模块后补充。
+依据官方仓库 README 与实际执行入口静态核查，尚未部署运行：
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Launch as figure_eight_example.launch.py
+    participant Ros as ros2_control
+    participant Multi as ReflexMultimodeController
+    participant Check as PandaContactChecker
+    participant Engine as SimpleReflexEngine
+    participant Robot as Franka
+    Launch->>Ros: launch controller and task
+    Ros->>Multi: update loop
+    Multi->>Robot: read state
+    Multi->>Check: monitor hazard
+    Check->>Engine: collision or limit event
+    Engine-->>Multi: select task or reflex mode
+    Multi->>Robot: write joint efforts
+```
 
 ## 实验与评测
 
@@ -65,7 +83,7 @@ Franka Panda 的控制模式切换延迟低于 0.1 ms；多阶段任务执行耗
 
 - 结果针对所测 Franka 与控制软件栈；实际安全性能仍取决于传感、驱动、执行器动态与设备安全机制。
 - **源码状态：** 公开 ROS 2 / Franka reflex engine，README 说明依赖 multipanda_ros2；实际部署需核对硬件/版本。
-- **原文状态：** 本轮已核查 arXiv 部分章节，尚未通读全部正文/附录，保持 draft，不宣称健康度满分。
+- **原文状态：** 已通读 arXiv HTML 的可用正文和附录；具体复现及跑通情况尚未独立验证。
 
 ## 结论
 
@@ -74,6 +92,15 @@ Franka Panda 的控制模式切换延迟低于 0.1 ms；多阶段任务执行耗
 1. 使用与论文一致的任务、硬件和评测协议复验，不跨实验口径比较数据。
 2. 把方法改善的指标与额外的数据、计算或控制成本分开记录。
 3. 对未经独立核查的复现入口，暂不声称完成验证。
+
+## 与相关方法对比
+
+| 对照方法 | 关键区别 | 局限或适用条件 |
+|---|---|---|
+| 重配置 ROS 2 控制器 | 切换可能涉及控制器生命周期管理 | 论文的多模态架构让子控制器驻留在实时路径 |
+| 固定停机反射 | 只提供停止行为 | 实现 zero-g、admittance、retraction 和 stop |
+
+不同基准和硬件的结果不能直接排序。
 
 ## 关联页面
 
