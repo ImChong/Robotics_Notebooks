@@ -1,13 +1,20 @@
 ---
 type: entity
 project_id: target-aware-gaussian-langmap
-tags: [paper, robotics, ingest-2026-11]
+tags: [paper, robotics, perception, 3dgs, open-vocabulary, semantic-mapping, ingest-2026-11]
 status: complete
 updated: 2026-11-14
 arxiv: "2610.21619"
 project: https://lab-of-ai-and-robotics.github.io/target-aware-langmap/
 code: https://github.com/Lab-of-AI-and-Robotics/target-aware-langmap
 related:
+  - ../concepts/embodied-semantic-cognitive-map.md
+  - ../concepts/vision-language-feature-fusion.md
+  - ../concepts/2d-to-3d-semantic-lifting-gap.md
+  - ./paper-lego-leveled-language-gaussian-splatting.md
+  - ./paper-aov-gs.md
+  - ./paper-lightsplat.md
+  - ./ovo-semantic-mapping.md
   - ./paper-emvit-online-metric-depth.md
   - ./paper-spear-selective-preference.md
 original:
@@ -89,8 +96,15 @@ flowchart LR
 
 ## 关联页面
 
-- [EM-ViT：机器人运动辅助的单目深度在线尺度适配](./paper-emvit-online-metric-depth.md)
-- [SPEAR：机器人强化学习中的选择性 VLM 偏好询问](./paper-spear-selective-preference.md)
+- [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md) — 本文在已有 3D 语言地图中修正目标语义特征，是语义地图查询层的后处理方法。
+- [视觉–语言特征融合](../concepts/vision-language-feature-fusion.md) — 对比视觉与文本嵌入对齐的基线，以及本文的目标特征注入与中心化读出。
+- [2D→3D 语义提升问题](../concepts/2d-to-3d-semantic-lifting-gap.md) — 目标掩码与跨视角 3D 语义聚合是本文依赖的建图前提。
+- [LEGO：层级语言高斯溅射](./paper-lego-leveled-language-gaussian-splatting.md) — 同属 3DGS 语言场；LEGO 学习结构层级，本文免训练细化既有地图的指定目标。
+- [AOV-GS：主动开放词汇语义建图](./paper-aov-gs.md) — AOV-GS 关注探索与地图构建，本文关注既有地图上的目标检索精度。
+- [LightSplat：轻量开放词汇 3D 理解](./paper-lightsplat.md) — 对比训练无关的语义索引/聚类与本文的目标特征修正。
+- [OVO：在线开放词汇语义建图](./ovo-semantic-mapping.md) — 对比在线实例级语义地图与本文基于高斯语言场的目标细化。
+- [EM-ViT：机器人运动辅助的单目深度在线尺度适配](./paper-emvit-online-metric-depth.md) — 同批入库论文，讨论不同的视觉前端问题。
+- [SPEAR：机器人强化学习中的选择性 VLM 偏好询问](./paper-spear-selective-preference.md) — 同批入库论文，研究 VLM 监督在策略学习中的用法。
 
 ## 参考来源
 

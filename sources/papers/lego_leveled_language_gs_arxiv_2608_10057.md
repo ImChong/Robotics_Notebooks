@@ -14,7 +14,10 @@
 - **代码：** <https://github.com/WHU-USI3DV/LEGO> — 归档见 [`sources/repos/lego.md`](../repos/lego.md)
 - **作者：** Yuning Peng<sup>1</sup>, Haiping Wang<sup>1,2</sup>, Yuan Liu<sup>2</sup>, Yipeng Lu<sup>1</sup>, Zhen Dong<sup>1</sup>, Bisheng Yang<sup>1</sup>
 - **机构：** 武汉大学（WHU）；香港科技大学（HKUST）
-- **版本：** arXiv:2608.10057（2026-08）；ECCV 2026
+- **版本：** arXiv:2608.10057v1（2026-08-10）；ECCV 2026
+- **核对范围：** 已核对 arXiv:2608.10057v1 HTML 全文（§1–5、正文方法/实验表与消融、附录 0.A 算法细节、0.B 实现/评测协议、0.C 补充结果），并对照仓库已归档的 CLI 与源码入口；本次未重新运行训练。
+- **通读：** 已完成
+- **核对日期：** 2026-11-14
 - **入库日期：** 2026-08-16
 - **一句话说明：** 把多视角 SAM 掩码按共视与 3D 尺度重分级成与视距、绝对尺寸无关的结构层级，再蒸馏到解耦的 3DGS 特征场，并用 CLIP + 层级场景图做开放词汇分割与 LLM Chain-of-Retrieval。官方仓 **已开源、可运行**（`lego run` / `eval` / `viewer`）。
 
