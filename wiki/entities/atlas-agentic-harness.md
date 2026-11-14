@@ -2,17 +2,19 @@
 type: entity
 project_id: atlas-humanoid-agentic-harness
 project: https://atlas-humanoid.github.io/
-tags: [humanoid, loco-manipulation, agentic-robotics, model-based-rl, online-learning, motion-tracking, vision-language-model, berkeley, nvidia, hku, stanford]
+tags: [humanoid, loco-manipulation, agentic-robotics, model-based-rl, online-learning, bptt, motion-tracking, vision-language-model, berkeley, nvidia, hku, stanford]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 original:
   - ../../sources/blogs/atlas_humanoid_early_release.md
 related:
   - ../tasks/loco-manipulation.md
   - ./paper-scaling-bfm-humanoid.md
+  - ./paper-supermimic.md
   - ../concepts/whole-body-control.md
 sources:
   - ../../sources/sites/atlas-humanoid.md
+  - ../../sources/repos/atlas-humanoid-website.md
   - ../../sources/blogs/atlas_humanoid_early_release.md
 summary: "ATLAS 用一次人类视频示范与指令，经 VLM 任务规格、SAM 3 + RGB-D 几何接地和冻结 ScaleBFM 跟踪，在真机在线训练末端残差并原地重试；2026-11-13 官网仅有早期技术长文，未见 ATLAS 源码或独立论文 PDF。"
 ---
@@ -31,6 +33,7 @@ summary: "ATLAS 用一次人类视频示范与指令，经 VLM 任务规格、SA
 | VLM | Vision-Language Model | System 2 理解任务并编写/改写任务规格 |
 | BFM | Behavior Foundation Model | 低层冻结的 ScaleBFM 全身运动跟踪基础策略 |
 | RL | Reinforcement Learning | 在线 model-based RL 训练末端残差 actor |
+| BPTT | Backpropagation Through Time | 经已学习动力学模型展开并沿时间反传更新 actor |
 | RGB-D | Red, Green, Blue and Depth | 头部相机提供图像、深度以定位物体 |
 | SAM 3 | Segment Anything Model 3 | 根据文本提示词分割机器人视野中的目标 |
 | VLA | Vision-Language-Action | 本项目不需要另行训练的任务动作基础策略路线 |
@@ -46,7 +49,7 @@ summary: "ATLAS 用一次人类视频示范与指令，经 VLM 任务规格、SA
 | System 2 | VLM 编写步骤、末端选择、接触 affordance、SAM 3 查找提示词、完成判据，并在会话中审查改写 |
 | System 0 | 冻结 ScaleBFM 全身动作跟踪策略，50 Hz；步行与抓取使用同一 tracker |
 | 快速系统 | 残差 actor + 在线拟合的动力学 ensemble；在每次会话从零开始学习 |
-| 代码/数据开放状态 | **未见 ATLAS 官方代码或数据下载入口**（核查日期 2026-11-13），无法给出可复现命令 |
+| 代码/数据开放状态 | **官网网站仓库已公开**（2026-11-14 核查），但仅包含网页、展示素材与渲染工具；**ATLAS 策略训练、在线学习和真机部署实现仍无公开入口**，无法给出算法复现命令 |
 
 ## 为什么重要
 
@@ -74,6 +77,19 @@ SAM 3 根据头部 RGB 图和 find phrase 提取目标 mask，深度恢复物体
 
 慢系统审查缓存的头部图像和机器人状态，发现分割漏检、错抓其它部位、错误完成判据时重新写 find phrase 或 check。更改须通过独立保存帧/尝试的成对回放过滤；新规则不应提高误检或假成功。发生失败则原地起身、重新观察、必要时重新定位再抓，错误尝试也进入动力学模型训练。
 
+### 4. 与 SuperMimic 的方法联系：可微动力学与 BPTT
+
+官方技术博客 §2.3 以及参考文献明确引用了 [SuperMimic](./paper-supermimic.md)，两者共享**先学习可微动力学，再对短时模型 rollout 进行时间反向传播以优化策略**的思路。不过，ATLAS **不是将 SuperMimic 全身动作跟踪策略直接部署到真机**：
+
+| 对比维度 | SuperMimic | ATLAS 快速系统 |
+|---|---|---|
+| 模型学习数据 | 标准刚体**仿真器**的状态转移 | 机器人**本会话的真实尝试**（包括失败） |
+| 动力学建模 | 用于全身 motion tracking 的共享世界模型 | 末端接触点的局部命令–响应模型 `fψ(c_t,n_t+u_t)`（随机先验 ensemble） |
+| 优化策略 | 全身跟踪策略，短时想象 rollout + BPTT，含 critic bootstrap | 仅修正 tracker 末端命令的残差 actor `u_t`，模型展开 + BPTT；官方明确不使用 critic |
+| 控制骨干 | SuperMimic 自身训练得到的 motion tracker | **冻结的 ScaleBFM（50 Hz）**，ATLAS 不重新训练全身 tracker |
+
+在 ATLAS 中，梯度穿过学习到的末端动力学模型与残差 actor，而**不经过 ScaleBFM 的参数更新或真实机器人**；传入 tracker 的目标为 `n_t+u_t`，用于弥合“期望接触点—实际接触点”的执行误差。博客没有披露复用 SuperMimic 训练代码，因此这里只确认**方法继承关系**，不宣称直接使用其实现或模型权重。
+
 ## 流程总览
 
 ```mermaid
@@ -87,9 +103,11 @@ flowchart TD
   Ref --> Edit["按目标调整参考动作的伸手终点"]
   Seg --> Edit
   Edit --> T["System 0：冻结 ScaleBFM 50 Hz 跟踪"]
-  F["快速系统：在线动力学模型 + 残差 actor"] -->|末端修正 u_t| T
+  Dyn["真实尝试拟合末端动力学 ensemble"] --> Imag["可微 rollout + BPTT"]
+  Imag --> Actor["更新末端残差 actor"]
+  Actor -->|末端修正 u_t| T
   T --> Robot["机器人全身执行与接触观测"]
-  Robot -->|c_t 与历史尝试| F
+  Robot -->|接触点 c_t 与历史尝试| Dyn
   Robot --> Gate{"抓取或任务完成？"}
   Gate -->|失败| Retry["原地重新观察并重试"]
   Retry --> Seg
@@ -102,7 +120,7 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用**：截至 2026-11-13，ATLAS 项目主页和官方技术博客没有公开其框架运行入口、源码仓库或权重链接。ScaleBFM 是其依赖的已有全身跟踪器，不能用 ScaleBFM 仓库推导 ATLAS 的真实调用路径。
+**不适用**：2026-11-14 核查 [atlas-humanoid.github.io 网站仓库](../../sources/repos/atlas-humanoid-website.md)，其代码用于页面展示、Remotion 学习过程示意动画和 FFmpeg 视频素材生成，**不是** ATLAS 的在线模型学习、ScaleBFM 真机控制或部署代码。网站 README 已核对，无可验证的 ATLAS 算法运行入口，不能据此绘制真实训练/部署时序图。
 
 ## 工程实践
 
@@ -113,7 +131,7 @@ flowchart TD
 | 在线学习 | 每 session 从零开始；记录每次尝试的末端命令与实际位置；模型式 RL 调整残差而非目标点 |
 | 交互判据 | 检查抬起/物体相对高度/物体是否在抓手内并比对后续帧；失败自动重试，必要时人只重置物品 |
 | 计算划分 | 机载运行 tracker 与 actor；远端 PC 运行 VLM、SAM 3、在线学习更新 |
-| 开源状态 | **无 ATLAS 官方可运行代码链接，暂无法给出部署/复现命令**；以下所有实现步骤均只描述原文机制 |
+| 开源状态 | [网页与可视化素材工具仓库](../../sources/repos/atlas-humanoid-website.md)公开，但 **ATLAS 控制/训练与部署代码未公开**；不能把 `tools/learning-loop` 的网页动画渲染入口误认作 BPTT 训练脚本 |
 
 ## 实验与评测
 
@@ -129,11 +147,12 @@ flowchart TD
 
 - **相对 VLA / WAM：** ATLAS 不训练任务专属视觉到动作/视频预测基础模型，而复用预训练 VLM 和通用 whole-body tracker；不能因此认为无需先验、无训练成本。
 - **相对纯 motion retargeting：** 它改写伸手末端目标、用在线残差补偿本体执行误差，并能判断失败后重试；关键是任务规格与反馈闭环，不是只模仿一条轨迹。
+- **相对 [SuperMimic](./paper-supermimic.md)：** 共享可微动力学与 BPTT 解析策略优化思想，但 SuperMimic 在仿真中训练全身跟踪器，ATLAS 从真机尝试学习局部末端残差；不能混淆冻结 ScaleBFM 与 SuperMimic 策略。
 - **相对 [ScaleBFM](./paper-scaling-bfm-humanoid.md)：** ScaleBFM 是低层跟踪器；ATLAS 是建立在该基座之上的 Agentic Harness 与末端适应层，两个名字不是同一项工作。
 
 ## 局限与风险
 
-- **技术资料状态：** 截至入库日，只有官方项目页与 Early release 技术长文，尚无可核验的独立 PDF、arXiv 和 ATLAS 运行源码；实验数字是作者报告。
+- **技术资料状态：** 截至 2026-11-14，有官方项目页、Early release 技术长文及**网页源代码**，但没有可核验的独立 PDF、arXiv 或 ATLAS 在线学习/真机控制实现；实验数字是作者报告。
 - **能力边界：** 目前在线残差主要修正伸手/抓取接触点；作者将持续接触与跨任务记忆列为下一步，尚不能视为已实现。
 - **环境依赖：** 系统依赖预训练 ScaleBFM、人体动作恢复/重定向和头部视觉；一些平地实验另有外部定位，不能把所有实验都笼统说成完全零外部追踪。
 - **部署风险：** VLM、SAM 3、在线 learner 更新运行于外部 PC；通信延迟、分割误差、接触安全和长程鲁棒性缺乏可复现源码与完整公开评测协议支持。
@@ -143,12 +162,14 @@ flowchart TD
 
 - [Loco-Manipulation 任务地图](../tasks/loco-manipulation.md)
 - [ScaleBFM 冻结全身 tracker 基座](./paper-scaling-bfm-humanoid.md)
+- [SuperMimic：可微世界模型与 BPTT 全身动作跟踪](./paper-supermimic.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 
 ## 参考来源
 
 - [ATLAS 官方技术长文原文阅读归档](../../sources/blogs/atlas_humanoid_early_release.md)
 - [ATLAS 项目主页来源归档](../../sources/sites/atlas-humanoid.md)
+- [ATLAS 官方网站源码仓库开放边界核查](../../sources/repos/atlas-humanoid-website.md)
 
 ## 推荐继续阅读
 
