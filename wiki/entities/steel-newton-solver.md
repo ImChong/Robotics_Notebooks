@@ -3,7 +3,7 @@ type: entity
 project_id: steel-newton
 tags: [simulation, physics, newton, nvidia, robot-learning, gpu]
 status: complete
-updated: 2026-11-10
+updated: 2026-11-14
 project: https://skild.ai/blogs/steel
 code: https://github.com/newton-physics/newton/tree/main/newton/_src/solvers/steel
 code_scope: newton/_src/solvers/steel
@@ -14,6 +14,8 @@ related:
   - ./paper-gr00t-2.md
   - ./paper-agentic-robotics-controlled-study.md
   - ./paper-tooldex.md
+  - ./newton-physics.md
+  - ./isaac-gym-isaac-lab.md
 sources:
   - ../../sources/sites/steel-skild-ai.md
   - ../../sources/repos/steel-newton.md
@@ -105,7 +107,21 @@ sequenceDiagram
 | 20 项单任务 | **3.8×** PhysX | 两引擎分别选择各自测得最佳 batch；几何平均；19/20 更快 |
 | 异构批次 | **峰值最高 13.0×** PhysX | 混合 5/10/15/20 种任务，比较各自峰值 |
 | 同批次异构 | **12.0× 吞吐，节约 62% 显存** | 20 种任务、61,440 环境的 matched batch |
+| MuJoCo Warp 对照 | **约 1.3×** MuJoCo Warp | 同一组 20 项单任务、各自最优测得 batch，作者报告的吞吐比 |
 | 硬件 | 一张 RTX PRO 6000 Blackwell | **仅仿真 throughput**，非策略训练 FPS |
+
+### 异构批次完整数据（作者测量）
+
+| 混合任务类型数 | Steel 峰值 env-steps/s | PhysX 峰值 env-steps/s | 峰值比 |
+|--------------|-----------------------|-----------------------|--------|
+| 5 | 5.83M @ 61,440 环境 | 632K @ 15,360 环境 | 9.2× |
+| 10 | 4.95M @ 122,880 环境 | 474K @ 61,440 环境 | 10.4× |
+| 15 | 3.82M @ 122,880 环境 | 306K @ 61,440 环境 | 12.5× |
+| 20 | 3.90M @ 245,760 环境 | 300K @ 61,440 环境 | 13.0× |
+
+**同批次核验：** 20 种任务、均为 61,440 环境时，Steel **3.61M**、PhysX **300K** env-steps/s（12.0×）；显存约 **11 GiB vs 29 GiB**（节省约 62%）。上表为**各引擎分别取峰值**，不得据此声称 13× 是同 batch 加速。
+
+**测量条件与限制：** 异构测试每环境步为 5 ms 的单次物理步进，CUDA Graph 开启，不包含策略、相机、domain randomization；PhysX 使用 Isaac Sim 6.1.0.0（omni.physx 110.3.2）。作者披露 Isaac Sim 6.0.0.0 对相同混合批次的 PhysX 吞吐可能最高快约 2.7×，因此 13.0× 数值依赖所选 PhysX 版本，不能当作跨版本固定优势。单任务测试计入物理 step，不计 observation / reward / reset，并在每步同步设备。
 
 ## 结论
 
@@ -119,7 +135,7 @@ sequenceDiagram
 ## 工程实践
 
 - 公共接口 `newton.solvers.SolverSteel`；具体实现由 Newton 源码提供，不是 [skild-ai/steel](https://github.com/skild-ai/steel) README 自身。
-- 官网 benchmark 使用 `reuse_kinematics=True`（Newton 1.8 opt-in），对照时需确保开关一致。
+- **单任务** benchmark 对 Steel 使用 `reuse_kinematics=True`（Newton 1.8 opt-in）；**异构混合** benchmark 因开启 joint velocity limits 并未激活该优化。两套实验不能混为同一配置。
 - [WebGPU 移植](https://github.com/skild-ai/steel-webgpu) 可在浏览器实验但不是 Newton Python/CUDA 的同一执行入口。
 - 建议评测吞吐、显存、接触稳定性、求解精度、不同任务组合下的极值与分布；本次未独立运行。
 
@@ -135,6 +151,8 @@ sequenceDiagram
 - [GR00T 2：世界与动作联合预测](paper-gr00t-2.md)
 - [Agentic Robotics 对照研究](paper-agentic-robotics-controlled-study.md)
 - [ToolDex：工具操作示范数据](paper-tooldex.md)
+- [Newton Physics：Steel 所在的物理引擎](newton-physics.md)
+- [Isaac Gym / Isaac Lab：机器人训练框架](isaac-gym-isaac-lab.md)
 
 ## 参考来源
 
