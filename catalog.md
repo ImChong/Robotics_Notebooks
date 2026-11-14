@@ -46,6 +46,7 @@
 - [AlexNet](wiki/entities/alexnet.md) — AlexNet** 是 2012 ImageNet 竞赛冠军 CNN：更大深度/宽度、ReLU、Dropout 与 GPU 训练，证明端到端深度卷积特征可碾压传统手工特征。 `📅unknown` `[entity_page]`
 - [AI Agent Handbook（阿里云企业级智能体工程白皮书）](wiki/entities/aliyun-ai-agent-handbook.md) — AI Agent Handbook** 是阿里云（Alibaba Cloud）与社区共同维护的**企业级 Agent 工程实践指南**，围绕架构、构建、运行、治理、调优五个责任域，解释如何把模型能 `📅unknown` `[entity_page]`
 - [All Hands Up（RLWRLD 灵巧手档案）](wiki/entities/all-hands-up.md) — All Hands Up !** 是瑞沃世界（RLWRLD）维护的 **腕装模块化灵巧手公开档案**：在浏览器里加载各手 URDF、对照规格，并用仿真扫掠给出 **Kapandji 对掌分**；配 `📅unknown` `[entity_page]`
+- [All-in-RAG：RAG 技术全栈指南](wiki/entities/all-in-rag.md) — All-in-RAG 将 Retrieval-Augmented Generation 的数据准备、索引、查询和生成分为连贯章节；本节点是官方课程入口的结构化阅读地图。 `📅unknown` `[entity_page]`
 - [Allegro Hand (灵巧手)](wiki/entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
 - [ALOHA 2（增强型低成本双臂遥操作硬件）](wiki/entities/aloha-2.md) — ALOHA 2** 是 Google DeepMind **ALOHA 2 Team** 在初代 ALOHA 上的硬件迭代：面向 **机队级大规模双臂演示采数**，同时 `📅unknown` `[entity_page]`
 - [ALOHA (双臂遥操作硬件)](wiki/entities/aloha.md) — ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是 Tony Z. Zhao、Vikash  `📅unknown` `[entity_page]`
@@ -482,6 +483,7 @@
 - [Cosmos Transfer（条件世界翻译）](wiki/entities/cosmos-transfer.md) — Cosmos Transfer** 是 NVIDIA Cosmos 里专门做 **world-to-world** 的一支：输入不是「从零生成世界」，而 `📅unknown` `[entity_page]`
 - [Spec-Driven Development with Coding Agents（DeepLearning.AI 短课）](wiki/entities/course-spec-driven-development-coding-agents.md) — DeepLearning.AI](https://www.deeplearning.ai/courses/spec-driven-development-with-coding-agents/) 与 `📅unknown` `[entity_page]`
 - [CozyClay — Browser-Based 3D Previsualization / 浏览器端 3D 预演与 Agent 镜头编排](wiki/entities/cozyclay.md) — CozyClay** 是 Doyun／NomaDamas 开源的 **浏览器端三维预演（Previsualization）工具**：先布置场景和角色动作、编排相机与剪辑，再导出关键帧、灰盒参考视频 `📅unknown` `[entity_page]`
+- [cpp-llm-engine：从零构建 C++ LLM 推理引擎](wiki/entities/cpp-llm-engine.md) — 这套课程从工具链与正确性开始，逐步构建 C++ LLM 推理引擎，覆盖真实模型、解码器与服务，并按 CPU 和 CUDA 条件选择实践。 `📅unknown` `[entity_page]`
 - [Craft Anything：软件证据驱动的分析与重建](wiki/entities/craft-anything.md) — Craft Anything 是一套 Rust 开源工作台：对网站、应用或游戏采集可核对的证据，驱动 coding agent 创建独立实现，再按目标检查并迭代。它**不是**机器人仿真器或通用逆向结 `📅unknown` `[entity_page]`
 - [CraftNet：Sharpa 的分层视觉-触觉-语言-动作模型](wiki/entities/craftnet.md) — CraftNet** 是 Sharpa 的端到端分层 VTLA 模型，按“System 0 触觉交互 / System 1 运动”分工，把“最后一毫米”的接触交给高频底层。 `📅unknown` `[entity_page]`
 - [Crazyflie Firmware](wiki/entities/crazyflie-firmware.md) — crazyflie-firmware**（[bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware `📅unknown` `[entity_page]`
@@ -574,6 +576,7 @@
 - [DDT_Lab](wiki/entities/ddt-lab.md) — DDT_Lab**（仓内包名 `ddt_lab`）是 直驱科技（Direct Drive Tech） 在 [Isaac Lab](ht `📅unknown` `[entity_page]`
 - [Deep Agents](wiki/entities/deep-agents.md) — Deep Agents** 是 LangChain 生态的 **开箱 agent harness**（*The batteries-included agent harness*）：在 **[La `📅unknown` `[entity_page]`
 - [Deep-Live-Cam：单图实时换脸 / Single-Image Real-Time Face Swapping](wiki/entities/deep-live-cam.md) — Deep-Live-Cam** 是 hacksider/Deep-Live-Cam 提供的本地人脸替换工 `📅unknown` `[entity_page]`
+- [Deep Agents 实战：Agent Harness 工程课程](wiki/entities/deepagents-in-action.md) — 这是一套讲解如何搭建和调试生产化 Agent Harness 的教程网站；不能与 LangChain 官方 Deep Agents 框架仓库混为同一项目。 `📅unknown` `[entity_page]`
 - [DeepInsight（XPENG Robotics 全栈评测基础设施）](wiki/entities/deepinsight.md) — DeepInsight**（2026-06，arXiv:2606.17574，XPENG Robotics）是面向 **em `📅unknown` `[entity_page]`
 - [Genie 4（Google DeepMind · 交互世界模拟）](wiki/entities/deepmind-genie-4.md) — Genie 4 是实时生成交互画面与音频的世界模型；Gemini 可观察生成画面、规划步骤并以文本引导模拟。 `📅unknown` `[entity_page]`
 - [Deep Robotics rl_training](wiki/entities/deeprobotics-rl-training.md) — rl_training** 是 云深处科技（Deep Robotics） 官方在 [Isaac Lab](https://githu `📅unknown` `[entity_page]`
@@ -614,6 +617,7 @@
 - [Dynamixel SDK](wiki/entities/dynamixel-sdk.md) — Dynamixel SDK**（`ROBOTIS-GIT/DynamixelSDK`，~595★，Ap `📅unknown` `[entity_page]`
 - [Dynibo（Rust 运动学与动力学库）](wiki/entities/dynibo.md) — Dynibo**（xiaojie-xue/dynibo）是面向控制器开发的机器人运动学与动力学库。它以 Rust  `📅unknown` `[entity_page]`
 - [Dyson CameraJet](wiki/entities/dyson-camerajet.md) — Dyson CameraJet™**（2026-09 发布，约 **$499**）是带 **100k 像素宏距口腔相机** 与 **Gap Optical Targeting™** 机器学习算法的 `📅unknown` `[entity_page]`
+- [Easy Data × AI：数据与智能体工程课程](wiki/entities/easy-data-x-ai.md) — 课程围绕 AI Agent 在真实数据场景的使用，先回答“适不适合做”，再处理数据、记忆、工具和工作流；本节点记录官方入口范围。 `📅unknown` `[entity_page]`
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](wiki/entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
 - [Easy-Vibe（Datawhale）](wiki/entities/easy-vibe.md) — Easy-Vibe**（datawhalechina/easy-vibe）是 Datawhale 维护 `📅unknown` `[entity_page]`
 - [EasyMocap（无标记人体动捕工具箱）](wiki/entities/easymocap.md) — EasyMocap**（仓库自称 *Easy Human Motion Capture Toolbox*，[zju3dv/EasyMocap](https://github.com/zju3dv/ `📅unknown` `[entity_page]`
@@ -663,6 +667,7 @@
 - [Fast DDS（eProsima）](wiki/entities/fast-dds.md) — Fast DDS**（原 Fast RTPS）是 eProsima 的开源 **OMG DDS / RTPS** C++ 实现：提供 DCPS API 与底层 RTPS 访问，经 `rmw_fas `📅unknown` `[entity_page]`
 - [FAST-LIO](wiki/entities/fast-lio.md) — FAST-LIO** 以 **紧耦合迭代卡尔曼滤波** 实现低延迟 3D LiDAR-惯性里程计。 `📅unknown` `[entity_page]`
 - [FastAccelStepper](wiki/entities/fastaccelstepper.md) — FastAccelStepper**（[https://github.com/gin66/FastAccelStepper](https://github.com/gin66/FastAccelS `📅unknown` `[entity_page]`
+- [《前线部署工程师：人工智能时代的客户价值交付秘籍》](wiki/entities/fde-guidance-book.md) — 范冰的《前线部署工程师》从业务结果出发讨论 AI 时代的前线部署工程实践，作者公开章节 Markdown 可直接在线阅读；本节点是图书结构总览。 `📅unknown` `[entity_page]`
 - [Featurize（蒜粒方块）](wiki/entities/featurize.md) — Featurize**（featurize.cn）定位 **机器学习在线实验室**：预装 PyTorch 等环境，提供 RTX 3090/4090 `📅unknown` `[entity_page]`
 - [FEMM-FOC-Simulation（FEMM 磁场定向控制教学仿真）](wiki/entities/femm-foc-simulation.md) — FEMM-FOC-Simulation**（[yoga-cycle/FEMM-FOC-Simulation](https://github.com/yoga-cycle/FEMM-FOC-Simu `📅unknown` `[entity_page]`
 - [FEMM（Finite Element Method Magnetics）](wiki/entities/femm.md) — FEMM**（femm.info，作者 David C. Meeker）是面向 **2D 与轴对称 `📅unknown` `[entity_page]`
@@ -725,6 +730,7 @@
 - [geo-sleuth：可核验的照片地理定位 Agent Skill](wiki/entities/geo-sleuth.md) — 一句话定义：** geo-sleuth 把照片地理定位拆成“代理提出/判断假设，脚本采集线索、枚举候选、计算几何并排序”的工作流，要求结论能够回指实际运行的命令和产物，而不是凭模型印象猜地点。 `📅unknown` `[entity_page]`
 - [Get It. Study Companion](wiki/entities/get-it-study-companion.md) — Get It.** 是一个围绕 PDF/Markdown 文档的开源桌面学习 companion：它把概念识别、可选的图文/3D 可视化、概念关系图与复习交互放在同一工作流中，目标是让学习者练习解 `📅unknown` `[entity_page]`
 - [HFSS MCP Server（gfgf2023/hfss-mcp-server）](wiki/entities/gfgf2023-hfss-mcp-server.md) — HFSS MCP Server（gfgf2023/hfss-mcp-server）是面向 HFSS 天线和 PCB 仿真的 MCP 服务，涉及天线几何、边界与激励、远场方向图等任务。 `📅unknown` `[entity_page]`
+- [GGUF 量化内幕：数据格式、误差与验证](wiki/entities/gguf-quant-internals.md) — 课程解释 GGUF 容器与量化张量的字节布局、误差、反量化和验证方法；强调量化值能被正确解码，与模型量化后是否好用是两种不同测试。 `📅unknown` `[entity_page]`
 - [GigaWorld-0](wiki/entities/gigaworld-0.md) — GigaWorld-0](https://giga-world-0.github.io/) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hum `📅unknown` `[entity_page]`
 - [GitDiagram（AI 辅助代码库架构图）](wiki/entities/gitdiagram.md) — GitDiagram**（官网 · [GitHub](https://github.com/ahmedkhaleel2004/gitdiagr `📅unknown` `[entity_page]`
 - [Gitingest（仓库转 LLM 上下文）](wiki/entities/gitingest.md) — Gitingest**（官网 · GitHub）把本 `📅unknown` `[entity_page]`
@@ -762,9 +768,13 @@
 - [动手学强化学习（Hands-on RL / 蘑菇书）](wiki/entities/hands-on-rl-book.md) — 《动手学强化学习》**（社区常称**蘑菇书**）由上海交通大学张伟楠、沈键、俞勇等编写，以 Jupyter Notebook + 图文形式系统讲解强化学习。官方在线阅读与代码运行入口为 [hrl. `📅unknown` `[entity_page]`
 - [HandUMI](wiki/entities/handumi.md) — HandUMI** 是一套面向 **固定基座双臂 + 平行夹爪（parallel-jaw gripper）** 的 **无机器人示教（robot-free demonstration）** 接口与 `📅unknown` `[entity_page]`
 - [汉威科技 柔性传感](wiki/entities/hanwei-flexible-sensing.md) — 汉威科技 柔性传感** 属于 Zane Hub 灵巧手行业综述 的「感知专精（触觉器件）」 `📅unknown` `[entity_page]`
+- [Happy-LLM：从零开始构建大模型](wiki/entities/happy-llm.md) — Happy-LLM 是一套沿原理、手写模型、训练与应用组织的大模型学习课程；本页编译的是官方 README 的课程地图，而不是逐篇实验结果。 `📅unknown` `[entity_page]`
 - [hdl_graph_slam](wiki/entities/hdl-graph-slam.md) — hdl_graph_slam** 以 **NDT 配准 + 位姿图优化** 构建室外 3D 激光 SLAM。 `📅unknown` `[entity_page]`
 - [Helix 02：Figure 全身自主系统](wiki/entities/helix-02.md) — Helix 02 在 Helix 的语义与动作双系统下增加 System 0：200 Hz 全身关节目标由 1 kHz 身体控制层执行，联合移动、接触与灵巧操作。 `📅unknown` `[entity_page]`
 - [Helix 2.5（Index 预训练 · 30 家庭零样本全身）](wiki/entities/helix-25.md) —  字段 | 内容  `📅unknown` `[entity_page]`
+- [Hello-Agents：从零开始构建智能体](wiki/entities/hello-agents.md) — Datawhale 的 Hello-Agents 课程把 ReAct 等经典范式、低代码平台、自研框架、记忆与协议，以及进阶训练与案例连接成一套学习路线；图片中两条课程记录不应建立两份重复实体。 `📅unknown` `[entity_page]`
+- [hello-gpu：GPU Profiling 与算子优化教程](wiki/entities/hello-gpu.md) — hello-gpu 是面向 GPU 性能分析和 kernel 实战的开源课程。课程把“先度量、再优化、最后验证”放在训练和模型部署性能学习前面。 `📅unknown` `[entity_page]`
+- [hello-rocm：ROCm 环境、部署与微调教程](wiki/entities/hello-rocm.md) — hello-rocm 是 AMD GPU/ROCm 开源学习课程，帮助学习者从驱动与软件栈环境进入模型部署、微调及算子编程。 `📅unknown` `[entity_page]`
 - [Hermes Agent（Nous Research）](wiki/entities/hermes-agent.md) — Hermes Agent** 是 Nous Research 维护的开源自主代理栈（[NousResearch/hermes-agent `📅unknown` `[entity_page]`
 - [HeyPCB（AI PCB 设计）](wiki/entities/heypcb.md) — HeyPCB** 是一项 AI 辅助 EDA 服务：根据用户描述生成原理图、PCB 布局和制造文件，并交付可编辑的 KiCad 设计文件；它还提供开放硬件板目录 Circuit World。 `📅2026-10-23` `[entity_page]`
 - [HFHPE：全角度头部姿态估计](wiki/entities/hfhpe.md) — HFHPE（High-Angle Robust Fast Head Pose Estimation）** 是 PINTO0309 开源的头部姿态估计项目：检测器先定位整头 crop，轻量网络随后一 `📅unknown` `[entity_page]`
@@ -934,6 +944,7 @@
 - [LiteReality-Agent](wiki/entities/litereality-agent.md) — LiteReality-Agent**（项目页，[论文 arXiv:2610.01863](https://arxi `📅unknown` `[entity_page]`
 - [LiveTalking（实时流式交互数字人）](wiki/entities/livetalking.md) — LiveTalking**（GitHub，项目页，[文档 `📅unknown` `[entity_page]`
 - [LLaDA2.2-flash](wiki/entities/llada2-2-flash.md) — LLaDA2.2-flash** 是 Inclusion AI（蚂蚁集团）LLaDA2 系列的 **agent-oriented `📅unknown` `[entity_page]`
+- [llm-algo-leetcode：大模型算法与系统教程](wiki/entities/llm-algo-leetcode.md) — 同一个仓库提供多个专题入口：图片列出的推理优化、后训练、模型架构与算子优化**属于一个课程实体**，不重复创建四个节点。 `📅unknown` `[entity_page]`
 - [Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）](wiki/entities/llms-from-scratch-raschka.md) — 《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt `📅unknown` `[entity_page]`
 - [ParaView MCP（llnl/paraview_mcp）](wiki/entities/llnl-paraview-mcp.md) — ParaView MCP（llnl/paraview_mcp）是LLNL 的多模态可视化 MCP：代理调用 ParaView 命令并观察渲染视口，形成“执行—观察—调整”反馈。 `📅unknown` `[entity_page]`
 - [LocoMuJoCo](wiki/entities/loco-mujoco.md) — LocoMuJoCo](https://github.com/robfiras/loco-mujoco) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXia `📅unknown` `[entity_page]`
@@ -980,6 +991,7 @@
 - [Meshroom](wiki/entities/meshroom.md) — Meshroom**（alicevision/Meshroom，MPL-2.0）是 **AliceVision `📅unknown` `[entity_page]`
 - [MetaHuman（Epic 数字人平台）](wiki/entities/metahuman.md) — MetaHuman** 是 **Epic Games** 在 **Unreal Engine** 生态内提供的 **高保真数字人（digital human）** 创作与动画平台：通过 **Met `📅unknown` `[entity_page]`
 - [MetalHead](wiki/entities/metalhead.md) — MetalHead**（<https://github.com/inspirai/MetalHead>）在 **Unitree A1** 四足上实现 **walk / run / jump / r `📅unknown` `[entity_page]`
+- [沐曦 AI4S：国产 GPU 加速科研线上实战营（Metax AI4S Science Camp）](wiki/entities/metax-ai4s-science-camp.md) — 沐曦 AI4S 科研实战营**是沐曦与 AI Infra、Datawhale 等社区联合主办的线上课程活动，围绕蛋白质设计、科研 Agent Skill 与国产 GPU 计算优化开展六场教学；这里 `📅unknown` `[entity_page]`
 - [FreeCAD Automation Skill（miaooo0000OOOO）（miaooo0000OOOO/freecad-automation-skill）](wiki/entities/miaooo0000oooo-freecad-automation-skill.md) — FreeCAD Automation Skill（miaooo0000OOOO）（miaooo0000OOOO/freecad-automation-skill）是与 Cai-aa 的同名仓库是不同实 `📅unknown` `[entity_page]`
 - [Micro1](wiki/entities/micro1.md) — Micro1** 是面向 **前沿 AI 实验室与 physical AI 团队** 的 **数据标注与评测** 服务商（非上市公司）。LeoInAI Substack（2026-09）引用 CE `📅unknown` `[entity_page]`
 - [Microban](wiki/entities/microban-humanoid.md) — Microban** 是 Rhoban 团队（法国波尔多大学 LaBRI）开发的约 30 cm 高开源人形机器人，主仓库 [Rhoban/microban](https://github.com/ `📅unknown` `[entity_page]`
@@ -1103,6 +1115,7 @@
 - [OMPL（Open Motion Planning Library）](wiki/entities/ompl.md) — OMPL（Open Motion Planning Library）**（https://github.com/ompl/ompl） `📅unknown` `[entity_page]`
 - [ONNX](wiki/entities/onnx.md) — ONNX**（**Open Neural Network Exchange**）是由社区维护、托管于 **LF AI & Data Foundation**（Linux Foundation 旗下 `📅2026-06-25` `[entity_page]`
 - [ONNX Runtime](wiki/entities/onnxruntime.md) — ONNX Runtime**（常缩写 **ORT**）是由 **Microsoft** 主导的开源 **ONNX 推理与训练加速引擎**。它提供 **Python、C++、C#、Java、Java `📅2026-06-25` `[entity_page]`
+- [《企业本体论：人人都是 FDE》作者配套实现](wiki/entities/ontology-fde.md) — 这是黄佳《企业本体论：人人都是 FDE》公开配套的**可运行退款案例工程**，而不是图书完整文本；重点是将企业业务规则变成可被 Agent 检查的对象、状态与动作契约。 `📅unknown` `[entity_page]`
 - [OOMWOO](wiki/entities/oomwoo.md) — OOMWOO** 是 **Maker's Pet** 发起的 **可自建开源家用扫地机器人**：以 **ROS 2 + 2D LiDAR + Nav2 / slam_toolbox** 做室内建图 `📅unknown` `[entity_page]`
 - [Open-BENI（BENI 轮式双足机器人训练与仿真）](wiki/entities/open-beni.md) — Open-BENI** 由摩多机器人（Mondo Robotics）发布，是一个围绕 BENI 轮式双足机器人的开源项目：用 mjlab 和 MuJoCo Warp 训练速度跟踪、跌倒恢复与跳跃策 `📅unknown` `[entity_page]`
 - [Open Code Review — 阿里巴巴 AI 代码评审工具 / Alibaba AI Code Review CLI](wiki/entities/open-code-review.md) — Open Code Review**（仓库 alibaba/open-code-review，npm  `📅unknown` `[entity_page]`
