@@ -2,7 +2,8 @@
 type: entity
 tags: [humanoid, motion-retargeting, open-source, roboparty, dataset, newton-physics, teleoperation]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-13
+code: https://github.com/Roboparty/human-humanoid-tools
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
