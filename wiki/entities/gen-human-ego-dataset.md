@@ -2,11 +2,13 @@
 type: entity
 title: Gen-HumanEgo（简智机器人 DAS-Ego 开放人类第一视角数据集）
 tags: [dataset, egocentric, human-motion, mano, depth, huggingface, genrobot, jzrobot, vla, imitation-learning, mcap, china-embodied-opensource]
-summary: "GenRobot RealOmni-Open 的人类 ego 子集：1,848h / 44,632 MCAP episodes，六相机 DAS-Ego 同步 RGB + 双手 3D/MANO/mesh + Ego-Depth + video/task/subtask 三级标注；HF ungated CC BY-SA 4.0，消费走 das-datakit 与官方 MCAP 可视化。"
+summary: "GenRobot RealOmni-Open 的人类 ego 子集：1,848h / 44,632 MCAP episodes，六相机 DAS-Ego 同步 RGB + 双手 3D/MANO/mesh + Ego-Depth + video/task/subtask 三级标注；HF 已改为申请后自动授权（CC BY-SA 4.0），消费走 das-datakit 与官方 MCAP 可视化。"
 updated: 2026-11-14
 status: complete
 institutions:
   - jzrobot
+original:
+  - ../../sources/datasets/gen-human-ego-genrobot.md
 related:
   - ./cn-os-das-datakit.md
   - ./humanplus-1000-dataset.md
@@ -30,7 +32,7 @@ sources:
 
 ## 一句话定义
 
-**约 1,848 小时、4.4 万条 MCAP episode 的多域人类第一视角语料——六路同步 RGB、双手 21 关键点/MANO/mesh、Ego-Depth 与 video→task→subtask 三级标注同包发布，HF ungated（CC BY-SA 4.0），读取与转换走 das-datakit。**
+**约 1,848 小时、4.4 万条 MCAP episode 的多域人类第一视角语料——六路同步 RGB、双手 21 关键点/MANO/mesh、Ego-Depth 与 video→task→subtask 三级标注同包发布，HF 现需登录申请（CC BY-SA 4.0，申请后自动授权），读取与转换走 das-datakit。**
 
 ## 英文缩写速查
 
@@ -50,7 +52,7 @@ sources:
 - **「采集 + 标注」一体，而非纯 ego 视频：** 相对 [RekaDaily-10k](./rekadaily-10k-dataset.md) 等 **仅 RGB + caption** 路线，本集在同 episode 内提供 **度量双手重建、Ego-Depth 与带时间边界的 task/subtask 标注**——更接近 VLA / 模仿学习的 **多模态监督** 形态。
 - **国内 DAS-Ego 硬件栈的可复现数据出口：** 与 [das-datakit](./cn-os-das-datakit.md) 同生态；MCAP topic、坐标系与 URDF（`egov4_urdf.zip`）有官方文档，降低「只有视频、自己重跑 WiLoR/HaWoR」的试错成本。
 - **规模与任务多样性：** **10,257** 唯一任务、**home / business / industry / agriculture** 四域，适合作为 **人类视频预训练** 或 **人→机 mid-training** 语料（对照 [VLA 方法页](../methods/vla.md) 中 HuRo / EgoScale / PhysBrain 等路线）。
-- **RealOmni 开放叙事的第一块落地：** 官网 **10Kh / 1M+ clips** 为全栈 RealOmni-Open；入库日可 **直接下载** 的是 **Gen-HumanEgo** 人类 ego 子集，机器人侧 clips 仍待后续批次。
+- **RealOmni 开放叙事的第一块落地：** 官网 **10Kh / 1M+ clips** 为全栈 RealOmni-Open；旧版归档以 **Gen-HumanEgo** 人类 ego 子集作为下载入口；2026-11-14 复核 HF 已增加访问申请门槛。官网现另列 RealOmni-Open 系列，数据集之间的发布规模需分别核对。
 
 ## 核心信息
 
@@ -64,7 +66,7 @@ sources:
 | HF | <https://huggingface.co/datasets/genrobot2025/Gen-HumanEgo> |
 | 门户 | <https://www.genrobot.ai/data/open-dataset> |
 | 许可 | **CC BY-SA 4.0** |
-| 访问 | **ungated** |
+| 访问 | **gated**（2026-11-14 复核：登录并填写表单，页面称提交后自动授权） |
 | 工具 | [das-datakit](https://github.com/genrobot-ai/das-datakit) · [MCAP 可视化](https://monitor.genrobot.click/#/index) |
 | 文档 | [DAS-Ego Data Introduction](https://docs.genrobot.ai/guides/das-ego-data-introduction) |
 
@@ -74,7 +76,7 @@ sources:
 |------|------|
 | **规模** | 1,848 h / 44k episodes / 10k+ 任务 |
 | **模态** | 6× RGB + hand 3D/MANO + depth + hierarchical NL |
-| **许可证** | **CC BY-SA 4.0**（ShareAlike；商用需合规审查） |
+| **许可证/访问** | **CC BY-SA 4.0**；当前为 gated 自动审批，不能匿名直接下载 |
 | **重定向就绪度** | **中高（人类侧）**：有 MANO/21 关键点与 depth；**无** 机器人关节轨迹，上 G1 等需 [重定向](../concepts/motion-retargeting.md) 或 VLA latent 对齐 |
 
 ## 流程总览
@@ -110,7 +112,7 @@ flowchart TB
 
 | 项 | 建议 |
 |----|------|
-| **下载** | `huggingface-cli download genrobot2025/Gen-HumanEgo --repo-type dataset`；按 `data/<domain>/...` 增量拉单 episode |
+| **下载** | 先在 HF 登录并提交数据集访问申请、接受条件；获授权后按 `data/<domain>/...` 增量拉取 MCAP（具体命令视 HF 当前 CLI 版本） |
 | **读取** | 优先 [das-datakit](./cn-os-das-datakit.md) 解析 MCAP；对照 [DAS-Ego 文档](https://docs.genrobot.ai/guides/das-ego-data-introduction) 核对坐标系与时间戳 |
 | **可视化** | [monitor.genrobot.click](https://monitor.genrobot.click/#/index) 浏览器检视；或 datakit 本地可视化 |
 | **传感器外参** | Hub 内 `egov4_urdf.zip` 定义 DAS-Ego link 与相机 frame |
@@ -131,6 +133,13 @@ flowchart TB
 | **[PhysBrain 1.5](./paper-sa-2512-16793-physbrain-human-egocentric-data-as-a-bridge-from.md)** | 方法 + EvalKit；本集是 **可下载原始 MCAP 语料** |
 | **[das-datakit](./cn-os-das-datakit.md)** | 本集 **推荐消费工具**；RealOmni 机器人侧 MCAP 亦走同一 kit |
 
+## 原始数据卡、技术文章与字段核对（2026-11-14）
+
+- **通读依据：** [Gen-HumanEgo 官方数据卡](https://huggingface.co/datasets/genrobot2025/Gen-HumanEgo)（全部公开栏目）、[GenRobot 官方技术博客](https://www.genrobot.ai/blog/gen-human-ego)（2026-09-23，完整技术介绍）、[DAS-Ego Data Introduction](https://docs.genrobot.ai/guides/das-ego-data-introduction)（topic、坐标、采样率与有效性）。详见 [完整核对范围与结论](../../sources/datasets/gen-human-ego-genrobot.md)；本次并未下载受控 MCAP 原始样本。
+- **官方技术路径：** 6 路同步 RGB 与时序特征 → DFM 跨视角几何融合 → HandTrack 稀疏查询重建 MANO/21 关键点/mesh，并输出 Ego-Depth 与三级语义；HandTrack、Depth 的精度是厂商在特定测试设置下的主张，**不是每一条数据都带有独立运动捕捉/测距真值**。
+- **可用数据与运行结果分开：** DFM 离线生成的手部和深度标签、`annotation_v2` 语义标签与一个正式训练好的 VLA 不是同一回事；需自行验证标注有效率、运动连续性与跨本体部署效果。
+- **访问状态变化：** 2026-09-23 原归档记为 ungated；2026-11-14 公开 HF 页面显示「Gated dataset」，需要登录、填写用途申请，且官方称提交后自动批准。数据卡可读，不表示未经授权即可下载原始 MCAP。
+
 ## DAS 2.0 的代际边界（2026-11-14 核对）
 
 本数据集的公开语料对应既有 **DAS-Ego** 采集配置（六目 1600×1300、30 fps）；[DAS Ego 2.0 / Dex 2.0 / WristCam](./genrobot-das-2-0.md) 是后续发布的硬件组合。新版产品页标注 2×5 MP + 4×2 MP、340° 水平覆盖、21 DoF 与 980 点触觉采集；**这些新版硬件规格不能反推当前 Gen-HumanEgo 公开 MCAP 必然包含新版视频或触觉字段**。如需训练接触预测，须先核验具体数据样本、采集设备版本和同步字段。
@@ -140,7 +149,7 @@ flowchart TB
 - **体量大：** Hub 标 `n>1T`；需按 domain/skill 增量下载与存储规划。
 - **ShareAlike：** CC BY-SA 4.0 对 **再分发衍生数据** 有义务，商用产品化前须法务评估。
 - **无官方训练栈：** 仅有 datakit + 可视化；复现 SOTA VLA 需自建 dataloader 与对齐策略。
-- **RealOmni 全栈未齐：** 门户 10Kh/1M clips 含机器人侧；入库日公开下载以 **Gen-HumanEgo** 为主。
+- **RealOmni 宣传与数据实际访问不同：** 官网已分别列 Gen-HumanEgo、Gen-HumanWholeBody、RealOmni-Open 等条目；不能把全套规模宣传映射成此数据集的实际可用小时。当前 Gen-HumanEgo 需要 HF 表单申请才可下载。
 - **DFM 黑盒边界：** 手重建/深度/语义为官方离线产物；质量审计需抽样 + 与自建重建对照。
 - **机器人距离：** 人类 MCAP **无** 真机关节轨迹；进 sim/real 仍需 embodiment 对齐或重定向。
 
@@ -160,13 +169,14 @@ flowchart TB
 
 - [GenRobot DAS 2.0 新产品官方核对归档](../../sources/sites/genrobot-das-2-0-official.md)（仅用于设备代际对比，不代表当前语料由新版硬件采集）
 
-- [`sources/datasets/gen-human-ego-genrobot.md`](../../sources/datasets/gen-human-ego-genrobot.md)
+- [Gen-HumanEgo 官方数据卡与技术博客通读归档](../../sources/datasets/gen-human-ego-genrobot.md)
 - [`sources/sites/genrobot-open-dataset.md`](../../sources/sites/genrobot-open-dataset.md)
 - [`sources/repos/das-datakit.md`](../../sources/repos/das-datakit.md)
 
 ## 推荐继续阅读
 
-- [Gen-HumanEgo README（HF）](https://huggingface.co/datasets/genrobot2025/Gen-HumanEgo)
+- [Gen-HumanEgo 官方数据卡（HF）](https://huggingface.co/datasets/genrobot2025/Gen-HumanEgo)
+- [Gen-HumanEgo 官方技术博客（2026-09-23）](https://www.genrobot.ai/blog/gen-human-ego)
 - [GenRobot 开放数据门户](https://www.genrobot.ai/data/open-dataset)
 - [DAS-Ego Data Introduction](https://docs.genrobot.ai/guides/das-ego-data-introduction)
 - [das-datakit（GitHub）](https://github.com/genrobot-ai/das-datakit)
