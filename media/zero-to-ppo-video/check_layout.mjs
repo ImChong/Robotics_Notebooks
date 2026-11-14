@@ -202,14 +202,15 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
         }
       }
       // 线压字：箭头、线、框边这些描边，和箭头尖、圆点这类小块填充，穿过字的墨迹（字左右各收 1px、上下照 ink 收）就报。
-      // 网格线（data-grid）不算；字描了底色（halo：stroke 是底色）而且画在线的上面，线从字后面过去也看得清，不算。
+      // 网格线（data-grid）不算，坐标轴（data-axes）算；字描了底色（halo：stroke 是底色）而且画在线的上面，线从字后面过去也看得清，不算。
       // （011 第 4 幕「从右往左读」上方的箭头压住了下面一排字，原先只查字压字，漏掉了）
       {
         const where = (sc.querySelector('.stage') && sc.querySelector('.card .title')) ? sc.querySelector('.card .title').textContent.trim() : 'hero';
         const haloed = (n) => n.style && n.style.paintOrder === 'stroke' && parseFloat(n.style.strokeWidth) > 0;
         const marks = [];
         for (const n of host.querySelectorAll('path, line, polyline, polygon, rect, circle, ellipse')) {
-          if (n.closest('defs, mask, clipPath, marker, [data-grid], [data-cursor]') || alpha(n) < 0.3) continue;   // data-cursor：代码窗口的光标，本来就在字行上
+          if (n.closest('defs, mask, clipPath, marker, [data-cursor]') || alpha(n) < 0.3) continue;   // data-cursor：代码窗口的光标，本来就在字行上
+          if (n.closest('[data-grid]') && !n.closest('[data-axes]')) continue;   // 格线不算；坐标轴（data-axes）照算（014 第 3 幕 θ̇₂ = 1 压在 x 轴上，原先漏掉了）
           if (n.tagName === 'rect' && n.nextElementSibling && n.nextElementSibling.tagName === 'foreignObject') continue;   // 机器人的透明外框
           const cs = getComputedStyle(n), sw = parseFloat(cs.strokeWidth) || 0;
           const stroked = cs.stroke && cs.stroke !== 'none' && sw > 0 && +cs.strokeOpacity > 0.1;
