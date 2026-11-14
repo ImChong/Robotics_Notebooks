@@ -6,7 +6,8 @@ tags:
   - open-source
   - rl
 status: complete
-updated: 2026-10-03
+updated: 2026-11-13
+code: https://github.com/ERC-BPGC/SpiderBot
 arxiv: "2609.26989"
 related:
   - ../tasks/locomotion.md
