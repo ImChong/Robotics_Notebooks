@@ -15,9 +15,12 @@ related:
   - ./paper-levjepa.md
   - ./paper-ad-e2e-jepa.md
   - ./paper-intact.md
+  - ./paper-lg-dkgp.md
   - ./paper-vjepa2.md
   - ../methods/generative-world-models.md
   - ../concepts/latent-imagination.md
+original:
+  - ../../sources/papers/lewm_arxiv_2603_19312.md
 sources:
   - ../../sources/papers/lewm_arxiv_2603_19312.md
   - ../../sources/repos/le-wm.md
@@ -28,7 +31,7 @@ summary: "LeWM（arXiv:2603.19312，Mila/NYU/Samsung SAIL/Brown）：像素端�
 
 # LeWorldModel / LeWM（像素端到端 JEPA WM · arXiv:2603.19312）
 
-**LeWorldModel（LeWM）**（*Stable End-to-End Joint-Embedding Predictive Architecture from Pixels*，[arXiv:2603.19312](https://arxiv.org/abs/2603.19312)；[项目页](https://le-wm.github.io/)；[代码](https://github.com/lucas-maes/le-wm)）把 [LeJEPA](./paper-lejepa.md) 的 SIGReg 接到**动作条件**隐动力学：从原始像素联合训编码器与预测器，测试时在隐空间做 CEM。
+**LeWorldModel（LeWM）**（*Stable End-to-End Joint-Embedding Predictive Architecture from Pixels*，[arXiv:2603.19312v3](https://arxiv.org/html/2603.19312v3)（2026-06-03）；[项目页](https://le-wm.github.io/)；[代码](https://github.com/lucas-maes/le-wm)）把 [LeJEPA](./paper-lejepa.md) 的 SIGReg 接到**动作条件**隐动力学：从原始像素联合训编码器与预测器，测试时在隐空间做 CEM。
 
 ## 一句话定义
 
@@ -47,7 +50,8 @@ summary: "LeWM（arXiv:2603.19312，Mila/NYU/Samsung SAIL/Brown）：像素端�
 ## 为什么重要
 
 - 腾讯文里 LpWM 的「稠密对照」就是本页，不是口头基线。
-- [INTACT](./paper-intact.md) 的官方四任务评测基座也是 LeWM 族。
+- [INTACT](./paper-intact.md) 的世界模型规划对照包含 LeWM 家族。
+- [LG-DKGP](./paper-lg-dkgp.md) 在冻结 LeWM 上另学历史动作连续性先验，增加门控动作历史、深核 GP 残差和 CEM 搜索；这是后续工作，不属于 LeWM 原论文贡献。
 - 证明：防坍塌不必冻结大视觉模型，也不必 6–7 项 VICReg 汤。
 
 ## 核心信息
@@ -66,16 +70,27 @@ summary: "LeWM（arXiv:2603.19312，Mila/NYU/Samsung SAIL/Brown）：像素端�
 z_t=\mathrm{enc}(o_t),\quad \hat z_{t+1}=\mathrm{pred}(z_t,a_t)
 \]
 
-损失 = \(\|\hat z_{t+1}-z_{t+1}\|_2^2 + \lambda\,\mathrm{SIGReg}(z)\)。无 stop-gradient / EMA / 预训练冻结。测试时编码 \(z_0,z_g\)，CEM 最小化 \(\|\hat z_T-z_g\|_2\)。
+训练损失 = \(\|\hat z_{t+1}-z_{t+1}\|_2^2 + \lambda\,\mathrm{SIGReg}(Z)\)：SIGReg 以随机一维投影的正态性检验，约束 latent 分布匹配各向同性高斯。论文默认投影数 \(M=1024\)、\(\lambda=0.1\)；当前公开训练配置 `config/train/lewm.yaml` 使用 \(\lambda=0.09\)，需区分论文和源码配置。训练时不使用 stop-gradient / EMA / 预训练冻结编码器。测试时固定世界模型，CEM 最小化预测终态与目标 latent 的**平方**距离。
 
 ```mermaid
-flowchart LR
-  O[像素 o] --> Enc[ViT-Tiny]
-  Enc --> Z[z]
-  Z --> Pred[AdaLN 预测器]
-  A[动作 a] --> Pred
-  Pred --> Zhat["zhat"]
-  Z --> SIG[SIGReg]
+flowchart TD
+  O["离线像素轨迹 o1:T"] --> Enc["ViT-Tiny + CLS 投影"]
+  Enc --> Z["隐变量 z1:T"]
+  Z --> Pred["6层 AdaLN 动作条件预测器"]
+  A["动作块 a1:T"] --> Pred
+  Pred --> Zhat["下一步隐变量预测"]
+  Z --> MSE["下一步 latent MSE"]
+  Zhat --> MSE
+  Z --> SIG["SIGReg 防坍塌"]
+  MSE --> Joint["端到端联合优化"]
+  SIG --> Joint
+  NewObs["当前观测与目标图像"] --> Cost["编码目标 + 末端 latent 距离"]
+  Joint --> Freeze["训练好的世界模型"]
+  Freeze --> Roll["给候选动作做隐空间预测"]
+  CEM["CEM 候选动作序列"] --> Roll
+  Roll --> Cost
+  Cost --> CEM
+  CEM --> Execute["执行动作并重新规划"]
 ```
 
 ## 源码运行时序图
@@ -83,30 +98,58 @@ flowchart LR
 ```mermaid
 sequenceDiagram
   autonumber
-  participant HF as quentinll/lewm HDF5
-  participant Train as train.py / jepa.py
-  participant SWM as stable-worldmodel
-  participant Plan as config/eval CEM
-  HF->>SWM: 解压到 $STABLEWM_HOME
-  Train->>Train: MSE + SIGReg 端到端
-  Train->>SWM: 写 checkpoint
-  Plan->>SWM: 相对路径加载 ckpt
-  Plan->>Plan: CEM 滚动隐状态
-```
+  actor User as 复现实验者
+  participant Train as train.py::run
+  participant Data as stable_worldmodel.data
+  participant Model as jepa.py::JEPA
+  participant SPT as stable_pretraining.Manager
+  participant Eval as eval.py::run
+  participant SWM as stable_worldmodel.World
+  participant Solver as CEM solver
+  User->>Train: python train.py data=pusht
+  Train->>Data: load_dataset + 图像和动作预处理
+  Train->>Model: instantiate 视觉编码器和动作条件预测器
+  Train->>SPT: 执行训练循环
+  loop 训练 batch
+    SPT->>Model: encode(观测和动作)
+    Model-->>SPT: emb 和 act_emb
+    SPT->>Model: predict(历史嵌入与动作)
+    Model-->>SPT: pred_emb
+    SPT->>SPT: 计算预测 MSE + SIGReg 并反向更新
+  end
+  SPT-->>User: SaveCkptCallback 保存 checkpoint
+  User->>Eval: python eval.py --config-name=pusht.yaml policy=pusht/lewm
+  Eval->>Data: HDF5Dataset 读取评测初态与目标
+  Eval->>SWM: World() + load_pretrained(policy)
+  Eval->>Solver: 构建 CEMSolver 和 WorldModelPolicy
+  Eval->>SWM: world.evaluate()
+  loop 每次需要规划时
+    SWM->>Solver: 当前图像、目标图像
+    loop CEM 候选搜索
+      Solver->>Model: get_cost 候选动作
+      Model->>Model: rollout 动作条件隐空间轨迹
+      Model-->>Solver: 最终 latent 与目标的代价
+    end
+    Solver-->>SWM: 优化动作序列并交由环境执行
+  end
+  SWM-->>Eval: 评测指标与视频
+``` 
 
-`uv pip install stable-worldmodel[train,env]` 后 `python train.py data=pusht`。
+训练：`uv venv --python=3.10`、`uv pip install stable-worldmodel[train,env]`、`python train.py data=pusht`；评测：`python eval.py --config-name=pusht.yaml policy=pusht/lewm`。训练由 `train.py::lejepa_forward` 计算两项损失，评测由 `eval.py::run` 调用 stable-worldmodel 的求解器；这是源码静态核对，不代表本地已复现。
 
 ## 实验与评测
 
-- **速度：** 编码 token 约为 DINO-WM 的 1/200，规划至 48×。
-- **PushT：** 相对 PLDM +18 pp；像素-only 超过带本体感觉的 DINO-WM。
+- **速度：** 图像用 192 维单个 [CLS] latent（约 DINO-WM 视觉 token 数的 1/200）；论文指定设置下规划用时**最高**快 48×，不能推导高频真机控制已达标。
+- **PushT：** Appendix G Table 5：LeWM **96.0±2.83%**，PLDM **78.0±5.0%**，DINO-WM **92.0±1.63%**（50 条评测轨迹、目标 25 步内可达、预算 50 步）；相对 PLDM +18 个百分点。像素-only 设置在论文指定对照中超过使用本体感觉的 DINO-WM。
 - **OGBench-Cube：** DINO-WM 略好（3D 外观更难端到端）。
 - **Two-Room：** LeWM 较差——低本征维 vs 高维高斯先验。
 - VoE：传送显著抬高 surprise，变色不显著。
 
 ## 工程实践
 
-- 单卡数小时；规划超参跟 DINO-WM：CEM 300 候选、horizon 5（frame skip 5）。
+- 论文报道 ~15M 参数可在单卡数小时训练；作者代码 `train.py` 采用 Hydra / Lightning，模型在 `jepa.py`，评测在 `eval.py`，依赖 stable-worldmodel / stable-pretraining。
+- **复现路径：** 先准备 HF HDF5 数据与 `$STABLEWM_HOME`，运行 `python train.py data=pusht`，再以 `python eval.py --config-name=pusht.yaml policy=pusht/lewm` 评测。HF `weights.pt` 须先转换为 `*_object.ckpt`，评测 `policy` 写不带后缀的相对路径。
+- **规划设定（Appendix D）：** CEM 每轮 300 候选、30 elite；PushT **最多30轮**、其余任务**最多10轮**；horizon 5 × frame-skip 5 = 25 环境动作。不要将 PushT 的迭代次数泛化到全部任务。
 - 数据必须覆盖动态，不要求专家最优。
 - 稠密码让浅预测器在 PushT 上失败——要降预测器容量请看 [LpWM](./paper-lpwm.md)。
 
@@ -130,7 +173,7 @@ sequenceDiagram
 
 ## 结论
 
-**总判：LeWM 证明像素 JEPA 可以两项损失跑稳，并把规划成本打到单卡实时附近；它交付的是稠密高斯几何，不是稀疏可解释因子。**
+**总判：LeWM 用 latent 预测 MSE + SIGReg 将像素端到端世界模型训练简化为两项损失，在四个仿真控制环境保持有竞争力的规划性能与更低计算成本；尚未证明高频真机实时部署。**
 
 1. 复现从 HF 数据 + `train.py data=pusht` 起。
 2. 比速度用规划墙钟，别只用成功率。
@@ -154,12 +197,12 @@ sequenceDiagram
 
 ## 参考来源
 
-- [LeWM 论文归档](../../sources/papers/lewm_arxiv_2603_19312.md)
+- [LeWM v3 原文通读归档（§1–6 / Appendix A–I）](../../sources/papers/lewm_arxiv_2603_19312.md)
 - [lucas-maes/le-wm](../../sources/repos/le-wm.md)
 - [项目页归档](../../sources/sites/le-wm-github-io.md)
 - [腾讯科技访谈归档](../../sources/blogs/wechat_tencent_world_model_questions_2026-09-05.md)
 
 ## 推荐继续阅读
 
-- [arXiv:2603.19312](https://arxiv.org/abs/2603.19312)
+- [arXiv:2603.19312v3（HTML 全文）](https://arxiv.org/html/2603.19312v3)
 - [项目页](https://le-wm.github.io/)
