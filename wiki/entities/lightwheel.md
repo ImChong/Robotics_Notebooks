@@ -4,7 +4,7 @@ tags: [company, lightwheel, simulation, synthetic-data, simready, simulation-eva
 title: Lightwheel（光轮智能）
 status: complete
 summary: "Lightwheel / 光轮智能（2023 年成立，谢晨创立）是 Physical AI 数据与仿真基础设施公司：SimReady 物理资产与 SimReadyGen 场景生成 → Lightwheel Platform / LW-BenchHub 仿真采数 → EgoSuite 人类第一视角数据 → RoboFinals 工业级评测；官网 18 条博文 + 5 篇新闻稿覆盖 2025-05 吉利工厂 GR00T N1 部署、2026-04 工业 AI 方案、Q1 订单约 1 亿美元（自报）与 MANUS / PICO 人类数据合作。"
-updated: 2026-11-13
+updated: 2026-11-14
 institutions: [lightwheel]
 related:
   - ./lightwheel-simready.md
@@ -22,6 +22,8 @@ related:
   - ./isaac-gr00t.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../overview/nvidia-physical-ai-toolchain-technology-map.md
+original:
+  - ../../sources/blogs/lightwheel_industrial_2026-04.md
 sources:
   - ../../sources/sites/lightwheel-blog-index.md
   - ../../sources/sites/lightwheel_robofinals_rl_env.md
@@ -257,6 +259,9 @@ GitHub 组织列表页与 org API 在本环境不可读（403），下表由各�
 - [具身数据采集五条路线](../queries/embodied-data-collection-five-routes-landscape.md)
 
 ## 参考来源
+
+**原文阅读范围（2026-11-14）：** 已复核两篇光轮 2026-04 官方工业 AI 方案长文，用于公司技术路线与产品分层；其他官方新闻稿与媒体融资信息保留各自归档和来源区分，相关自报指标不等于独立验证。
+
 
 - [RoboFinals RL-Env（2026-11 官方发布）](../../sources/sites/lightwheel_robofinals_rl_env.md)
 
