@@ -6,9 +6,9 @@
 - **类型：** paper
 - **arXiv：** <https://arxiv.org/abs/2611.13370>
 - **PDF：** <https://arxiv.org/pdf/2611.13370v1>（v1，2026-11-09，cs.RO）
-- **项目页：** <https://ihcr.github.io/AHEADance/>
+- **项目页：** <https://ihcr.github.io/AHEADance/>（[官网核查档案](../sites/aheadance_project.md)，2026-11-14）
 - **作者与机构：** Tianhu Peng、Yukun Wang（共同一作）、Lingfan Bao、Yiyang Jia、Chengxu Zhou（通讯）；伦敦大学学院（UCL）计算机系（论文首页脚注）
-- **代码：** 未开源。论文称 Code, evaluation scripts and the metric-validation protocol will be released upon acceptance；项目页（2026-11-11 静态读取）显示 “Code soon”，arXiv 链接占位 “arXiv soon”。
+- **代码：** 未找到公开的 AHEADance 研究源码与模型权重。论文称 Code, evaluation scripts and the metric-validation protocol will be released upon acceptance；项目页 2026-11-14 显示 “Code soon”，但同时已提供网页回放与云端 Live 演示，演示服务不能视作训练/推理代码开放。
 - **入库日期：** 2026-11-11
 - **一句话说明：** 面向流式音频的人形机器人舞蹈生成器：ListenAhead 用冻结音乐模型 MRT-2 的短时预测补足尚未听到的音乐，Commit Forcing 从模型自己已提交的动作块训练续写，由 SONIC 全身跟踪器在 Unitree G1 上执行。
 
@@ -16,6 +16,14 @@
 
 - **核对范围：** 读了 arXiv:2611.13370v1 PDF 全部正文（摘要、I 引言、II 相关工作、III 方法 A–E、IV 实验 A–E、V 讨论、VI 结论）与附录 A 的 a)–n) 全部小节及表 V–VIII；参考文献列表仅浏览；图 2–6 只读到文字说明与图内文字（pdftotext），未逐图目视；项目页仅静态读取首页文字与链接，未播放视频、未运行任何代码。补充视频（supplementary video）未看。
 - **通读：** 已完成
+
+## 2026-11-14 官方项目页复核
+
+- 项目页已将 arXiv 入口链接到正式论文；提供真实 Unitree G1 的多曲风演示、麦克风采集音乐演示，以及浏览器舞蹈回放与云端 Live 体验，说明见 [独立官方站点档案](../sites/aheadance_project.md)。
+- 项目页注明回放可在“生成参考动作”和“MuJoCo 全身跟踪后的动作”之间切换；**均非真实 G1 关节传感器记录**。论文 III-E、V 同样明确音乐指标取自执行前的生成参考动作。
+- PDF 图 2 已目视复核：生成器内部使用已提交参考历史与边界；测量状态反馈只进入 whole-body tracker，**不是**直接回传 AHEADance 生成器。原有 Mermaid 主流程据此补上跟踪层反馈边。
+- 项目页仍为 “Code soon”，并无可检查的官方生成器训练/推理入口；因此本文的“源码运行时序图”目前不适用。
+- 本轮依据原文复核 III-B–E、IV-B–E、V、附录的评测与复现条件；未运行官方云端模型或真机实验，本文先前记录的各定量结果仍是论文报告值。
 
 ## 核心摘录
 

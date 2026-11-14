@@ -10,7 +10,7 @@ tags:
   - diffusion
   - ucl
 status: complete
-updated: 2026-11-11
+updated: 2026-11-14
 arxiv: "2611.13370"
 related:
   - ../entities/nvidia-sonic.md
@@ -22,14 +22,15 @@ related:
   - ../methods/beyondmimic.md
 sources:
   - ../../sources/papers/aheadance_arxiv_2611_13370.md
+  - ../../sources/sites/aheadance_project.md
 original:
   - ../../sources/papers/aheadance_arxiv_2611_13370.md
 summary: "AHEADance（arXiv:2611.13370）：流式音频下的人形机器人舞蹈生成器；ListenAhead 用冻结 MRT-2 对未来约 0.5 s 音乐的预测补足未听到的部分，Commit Forcing 从自己已提交的动作块训练续写，SONIC 在 Unitree G1 上执行；节拍类指标算在生成的参考动作上，生成器尚未接收机器人状态反馈。"
 ---
 
-# AHEADance（arXiv:2611.13370）
+# AHEADance：基于流式音频的预判式人形机器人舞蹈生成 / Anticipatory Humanoid Dance from Streaming Audio
 
-**AHEADance**（*AHEADance: Anticipatory Humanoid Dance from Streaming Audio*，[arXiv:2611.13370](https://arxiv.org/abs/2611.13370)，UCL，Tianhu Peng、Yukun Wang 等，[项目页](https://ihcr.github.io/AHEADance/)）。论文称代码、评测脚本与指标验证协议“录用后发布”，项目页显示 “Code soon”，目前无可引用的代码仓库。
+**AHEADance**（*AHEADance: Anticipatory Humanoid Dance from Streaming Audio*，[arXiv:2611.13370](https://arxiv.org/abs/2611.13370)，UCL，Tianhu Peng、Yukun Wang 等，[项目页](https://ihcr.github.io/AHEADance/)）。论文称代码、评测脚本与指标验证协议“录用后发布”；截至 2026-11-14 项目页仍显示 **“Code soon”**。网页回放、云端 Live 演示与真机视频可访问，但**不代表研究源码或权重已开源**（[官方项目页核查](../../sources/sites/aheadance_project.md)）。
 
 ## 一句话定义
 
@@ -72,6 +73,7 @@ flowchart LR
   U --> H
   X --> S[SONIC 跟踪器 约 0.9 s 参考预览]
   S --> R[Unitree G1 执行]
+  R -->|测量状态反馈 仅跟踪层| S
 ```
 
 要点（均出自论文 III 节）：
@@ -82,6 +84,10 @@ flowchart LR
 - **风格条件：** 另有最近 10 s 的 MusicCoCa 风格嵌入，经尺度和偏移作用于隐藏状态（III-C）。
 - **Commit Forcing（式 7）：** 先用参考历史预热，再对 K=8 个加噪参考块依次重建、解码、提交，更新 (H, B)，梯度在历史构建处停止，用参考目标监督下一块。训练先用参考历史再整体切到重建历史，无渐进混合（附录 A-b）。
 - **静音行为：** 训练数据含站立与回站立片段，生成器无任何规则地在音乐静音时站住，音乐回来时再跳（III-A）。
+
+## 源码运行时序图
+
+**不适用（2026-11-14 核查）。** 项目页仍标注 “Code soon”，arXiv v1 承诺录用后发布研究实现、评估脚本与验证协议，暂无可核验的 AHEADance 官方训练、推理或部署入口。因此不把项目网页的云端演示或所依赖的 SONIC 跟踪器误作 AHEADance 的公开源码，也不绘制推测性的代码调用时序图；待真正发布可运行代码后补充。
 
 ## 关键结果（作者报告，带出处）
 
@@ -101,7 +107,7 @@ flowchart LR
 - **部署形态（V、附录 A-b）：** 生成器场外运行在工作站上，音乐模型与生成器分别使用不同 GPU，不在机器人板载上跑。
 - **重定向：** 六个数据集通过 OMG-Data 发布的重定向与官方划分得到 61.7 h 训练动作；基线人体动作用重新播种的 GMR 路线重定向（附录 A-a、A-g）。FIDg 在两种路线间差异大到“测的是路线”，故表 II 不报 FIDg。
 - **接口：** 联合/朝向/时序约定转换后交给 SONIC；生成器只用已提交的参考更新历史，SONIC 用测量状态做反馈控制（III-E）。
-- **复现状态：** 代码未发布，复现需自行实现 MRT-2 接入、三阶段扩散与 Commit Forcing；需要的超参数在附录 A-b（采样步数 10、种子 1234 等）。
+- **复现状态：** 研究代码未发布，复现需自行实现 MRT-2 接入、三阶段扩散与 Commit Forcing；需要的超参数在附录 A-b（采样步数 10、种子 1234 等）。项目页虽有真实 G1 视频、预生成动作的网页回放和云端 Live 音频体验，但网页回放中的生成参考动作与 MuJoCo 跟踪结果均非实机测量关节角，也无法替代模型训练或推理源码。详见 [官方站点核查](../../sources/sites/aheadance_project.md)。
 
 ## 与文章说法的核对
 
@@ -167,6 +173,7 @@ flowchart LR
 ## 参考来源
 
 - [sources/papers/aheadance_arxiv_2611_13370.md](../../sources/papers/aheadance_arxiv_2611_13370.md)
+- [sources/sites/aheadance_project.md](../../sources/sites/aheadance_project.md)
 - 论文：<https://arxiv.org/abs/2611.13370>
 - 项目页：<https://ihcr.github.io/AHEADance/>
 
