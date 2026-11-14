@@ -1,9 +1,11 @@
 ---
 type: entity
+project_id: real-time-chunking-2506-07339
+project: https://www.pi.website/research/real_time_chunking
 tags: [paper, vla, action-chunking, inference, flow-matching, physical-intelligence, berkeley]
 title: Real-Time Chunking 实时动作块
 status: complete
-updated: 2026-11-07
+updated: 2026-11-14
 arxiv: "2506.07339"
 code: https://github.com/Physical-Intelligence/real-time-chunking-kinetix
 related:
@@ -25,7 +27,7 @@ sources:
 summary: "RTC（arXiv:2506.07339）：推理期 inpainting 衔接 flow chunk；Kinetix 已开源；LeRobot 内置 RTC；社区 openpi-rtc 真机 ALOHA；训练期续篇见 T-RTC。"
 ---
 
-# Real-Time Chunking：边执行边补下一段动作
+# Real-Time Execution of Action Chunking Flow Policies（动作分块流策略的实时执行）
 
 **Real-Time Chunking（RTC）**（*Real-Time Execution of Action Chunking Flow Policies*，[arXiv:2506.07339](https://arxiv.org/abs/2506.07339)，[项目页](https://www.pi.website/research/real_time_chunking)，[仿真代码](https://github.com/Physical-Intelligence/real-time-chunking-kinetix)）由 **物理智能（Physical Intelligence）** 与 **加州大学伯克利分校（UC Berkeley）** 提出。它不重训模型，只在推理时约束新 chunk，使大 VLA 可以在机器人还在动的时候算出下一段动作。
 
@@ -41,9 +43,44 @@ summary: "RTC（arXiv:2506.07339）：推理期 inpainting 衔接 flow chunk；K
 | TE | Temporal Ensembling | ACT 的跨 chunk 平均，高延迟下会失效 |
 | VLA | Vision-Language-Action | 被套用的 flow 或 diffusion 策略 |
 
+## 核心信息
+
+| 字段 | 已核对的一手资料 |
+|------|------------------|
+| 论文 | [arXiv:2506.07339v2](https://arxiv.org/html/2506.07339v2)，NeurIPS 2025，2025-06-09 初稿 / 2025-12-05 修订 |
+| 作者 | Kevin Black、Manuel Y. Galliker、Sergey Levine |
+| 机构 | 物理智能（Physical Intelligence）、加州大学伯克利分校（UC Berkeley） |
+| 项目 | [PI 官方研究说明及真机演示](https://www.pi.website/research/real_time_chunking)（**研究页而非代码仓库**） |
+| 开源 | [Physical-Intelligence/real-time-chunking-kinetix](https://github.com/Physical-Intelligence/real-time-chunking-kinetix)，**仅对 Kinetix 仿真复现有明确入口**；没有等价的官方 π₀.₅ 真机 RTC 部署源码 |
+
 ## 为什么重要
 
 π₀、π₀-FAST、π₀.₅ 的定量评测当时采用同步执行：一段 chunk 做完，停下等推理，再启动下一段。停顿不在训练数据里，也会限制模型变大。直接把相邻 chunk 做时间平均，在延迟升高后会生成危险加速度。RTC 把问题写成扩散 / 流模型已经会做的 inpainting。
+
+## 流程总览
+
+根据原论文 §3、Fig. 3 和 Algorithm 1 整理：这张图描述**推理期 RTC 方法流**，并不是单线程串行执行。控制器和推理线程并行工作。
+
+```mermaid
+flowchart TD
+    obs["新观测 o"] --> bg["后台推理线程"]
+    old["正在执行的旧动作块"] --> controller["控制器按控制周期持续执行"]
+    old --> tail["剩余动作与时间对齐"]
+    latency["最近的推理延迟"] --> predict["保守估计 d"]
+    predict --> frozen["前 d 步已提交动作：固定约束"]
+    tail --> frozen
+    tail --> soft["其余重叠步：指数衰减软掩码"]
+    frozen --> guide["PiGDM 引导与权重截断"]
+    soft --> guide
+    bg --> flow["Flow / Diffusion 动作块采样"]
+    guide --> flow
+    flow --> fresh["新动作块剩余部分补全"]
+    fresh --> merge["按执行时刻对齐并切换动作块"]
+    merge --> controller
+    controller --> obs
+```
+
+关键边界：前 $d$ 步**已不能由新 chunk 改写**，重叠区其余步只做软约束；新生成的 chunk 仍可响应新观测。延迟预测与低层控制连续运行，不等于模型无计算延迟。
 
 ## 核心原理
 
@@ -95,23 +132,35 @@ $$
 
 ## 源码运行时序图
 
-仿真路径对齐 [real-time-chunking-kinetix](https://github.com/Physical-Intelligence/real-time-chunking-kinetix)。真机 inpainting 不在该仓。
+以下仅对应**已开源的 Kinetix 仿真评测运行路径**，通过官方 [`src/eval_flow.py`](https://github.com/Physical-Intelligence/real-time-chunking-kinetix/blob/main/src/eval_flow.py) 与 [`src/model.py`](https://github.com/Physical-Intelligence/real-time-chunking-kinetix/blob/main/src/model.py) 的实际函数调用核对。它是 JAX **模拟延迟扫描**，不能冒充论文真机的后台线程部署实现。
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Dev as 开发者
-    participant Expert as src/train_expert.py
-    participant Data as src/generate_data.py
-    participant Flow as src/train_flow.py
-    participant Eval as src/eval_flow.py
-    Dev->>Expert: 训练或加载 gs://rtc-assets/expert
-    Expert->>Data: 每关生成转移
-    Data->>Flow: uv run src/train_flow.py
-    Dev->>Eval: 扫描延迟与 execution horizon
+    actor Dev as 实验者
+    participant Eval as eval_flow.py
+    participant Policy as FlowPolicy
+    participant Kinetix as Kinetix 环境
+    participant CSV as results.csv
+    Dev->>Eval: uv run src/eval_flow.py --config.run-path ...
+    Eval->>Eval: 加载 12 个关卡与 BC checkpoint
+    Eval->>Kinetix: reset_to_level()
+    Kinetix-->>Eval: 初始观测
+    Eval->>Policy: action(obs) 获取初始 chunk
+    loop 延迟 0 至 4 与合法执行视野扫描
+        Eval->>Policy: realtime_action(obs, 旧chunk, d, 掩码配置)
+        Policy->>Policy: jax.vjp 引导与截断权重
+        Policy-->>Eval: 新动作 chunk
+        Eval->>Eval: 拼接旧 chunk 的 d 步与新 chunk 后续动作
+        Eval->>Kinetix: jax.lax.scan(env.step, 执行动作)
+        Kinetix-->>Eval: 下次观测与 solved 指标
+    end
+    Eval->>CSV: 写入各方法 / 延迟 / horizon 结果
 ```
 
-Training-time 对照：把模型配置 `simulated_delay` 设为 5，再用 `train_flow.py` 对 `gs://rtc-assets/bc/` 里的检查点微调 8 个 epoch，然后同样走 `eval_flow.py`。
+**复现数据链**：`src/train_expert.py` 训练专家 → `src/generate_data.py` 读取合格专家检查点、收集轨迹并保存 `data/*.npz` → `src/train_flow.py` 加载数据、训练 `FlowPolicy` → `src/eval_flow.py` 扫描 `naive / realtime / bid / hard_masking`。默认 12 个关卡、GPU 数须整除关卡数。官方支持从 `gs://rtc-assets/` 下载专家数据和 BC checkpoint 以跳过部分训练环节，数据量较大。
+
+代码边界：`FlowPolicy.realtime_action()` 在 `simulated_delay is None` 时采用 `jax.vjp` 的推理期引导；`simulated_delay` 非空的条件分支属于**训练期 RTC** 实验，不能归为本文无需重训的核心方法。后续 Training-Time RTC 的 `simulated_delay=5`、8 epoch 微调，请见[独立论文页](./paper-training-time-real-time-chunking.md)。
 
 ## 工程实践（生态入口）
 
@@ -126,7 +175,7 @@ Training-time 对照：把模型配置 `simulated_delay` 设为 5，再用 `trai
 
 ## 局限与风险
 
-- 部分开源。`expert/` 约 60GiB，且不包含 π₀ 真机策略。
+- 部分开源。`expert/` 约 60GiB，且不包含 π₀ / π₀.₅ 真机 RTC 部署代码；PI 项目 URL 是介绍页而非代码 URL。
 - 吞吐定义依赖作者划分的子步骤，不能换成别的任务后直接比数字。
 - 论文自述局限：需通过每个去噪步反向传播，计算开销显著高于直接采样；只适用于扩散/流策略；腿足等更动态场景只在仿真里验证，没有真机结果。
 - 冻结前缀过长时，策略对新观测的反应会变迟；延迟估计若偏了，锁定的动作就和真实执行对不上。

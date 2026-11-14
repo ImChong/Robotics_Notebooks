@@ -42,3 +42,10 @@
 - **超参（Table 4）：** n=5；H=8（仿真）/50（真机）；s_min=25（真机）；β=5；延迟缓冲 b=10。
 - **原文自述局限：** 比直接采样带来显著额外计算（需反向传播过每个去噪步）；仅适用于扩散/流策略；更动态的场景（如腿足）只在仿真基准里，未做真机；与级联控制/MPC 的关系留作未来工作。
 - **与博客/二手说法的差别：** 本归档此前“博客示例延迟约 139 ms（模型 97 ms）”与论文附录 Table 2 一致；“π0、π0-FAST、π0.5 定量结果仍是同步执行”来自博客，未在论文正文中核对。
+
+## 本次补充核对（2026-11-14）
+
+- **用户提供的代码链接纠正：** `https://pi.website/research/real_time_chunking` 为 PI 官方研究展示页，不是源码仓库。官方可获取的仿真源码是 `https://github.com/Physical-Intelligence/real-time-chunking-kinetix`，且同一仓亦用于后续训练期 RTC 论文（arXiv:2512.05964）。
+- **核对版本与范围：** 复核 arXiv v2 HTML §3、Algorithm 1、§4、§6、Appendix A.2/A.6；阅读 PI 官方研究页与 Kinetix 仓 README；检查 `src/eval_flow.py` 的 `eval()/main()`、`src/model.py` 的 `FlowPolicy.action()/realtime_action()`、`src/train_flow.py` 的数据加载和训练入口，以及 `src/generate_data.py` 数据收集入口。此前 2026-11-07 的 v2 全文通读记录仍有效；本次是补充源码核对，不声称运行实验。
+- **实验调用事实：** `eval_flow.py` 的 `RealtimeMethodConfig` 调 `FlowPolicy.realtime_action()`，在 `simulated_delay is None` 分支执行 `jax.vjp` 和 `get_prefix_weights`，再把旧块的 `inference_delay` 步与新块剩余执行步拼接，`jax.lax.scan` 驱动 Kinetix。该仓并未提供与论文真机 `InferenceLoop/GetAction` 完全相同的系统部署接口。
+- **分离训练期变体：** `simulated_delay` 非空分支采用已有动作前缀和时间条件，属于后续训练期 RTC 方向；应与本文推理期 ΠGDM 引导明确区分。
