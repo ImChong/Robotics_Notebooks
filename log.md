@@ -407,6 +407,12 @@ op: ingest
 - **开源结论：** 项目页未列正式源码/权重/数据下载，因此不生成未经核对的运行时序图。
 - **指标纠正：** Franka AirPods 92% 为端到端成功率；YAM 炒蛋 85.8% 为离线阶段评分；不混入 PNP 营销信息。
 
+## [2026-11-14] ingest | sources/blogs/zane-hub-wheeled-dual-arm-urdf-workflow-2026-11-14.md — 收录轮式双臂人形 URDF 工程工具链
+
+- 来源：Zane Zhang / Zane Hub 2026-11-14 工程文章，用户上传 20 页 PDF，逐页核对。
+- 新建：wiki/queries/wheeled-dual-arm-humanoid-urdf-workflow.md；从 wiki/concepts/urdf-robot-description.md 建立入链。
+- 内容：七阶段工作流、Mermaid 流程图、工具链和验收表；标注惯性 rpy、单位换算、mimic 与格式转换的原文边界。
+
 ## [2026-11-13] ingest | 第 86 期组队学习 21 项来源核对
 
 - 输入：用户提供课程表截图，按图片顺序逐项匹配。21 条课程对应 17 个候选项目 / 书籍身份。
