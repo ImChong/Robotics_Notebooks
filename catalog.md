@@ -1661,7 +1661,7 @@
 - [Agile Perceptive Traversal：人形稀疏 3D 结构敏捷感知穿越](wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md) — Agile Perceptive Traversal**（*Learning Agile Perceptive Traversal of Sparse 3D Structures for Huma `📅unknown` `[entity_page]`
 - [Agile-WAM（arXiv:2609.20761）](wiki/entities/paper-agile-wam.md) — Agile-WAM**（*An Agile Tactile World Action Model for Contact-Rich Robot Control*，[arXiv:2609.20761 `📅unknown` `[entity_page]`
 - [AGQ（arXiv:2610.33074）](wiki/entities/paper-agq.md) — AGQ**（*AGQ: Action-Guided Ultra-Low-Bit Quantization for Vision-Language-Action Models*，[arXiv:261 `📅unknown` `[entity_page]`
-- [AHEADance（arXiv:2611.13370）](wiki/entities/paper-aheadance.md) — AHEADance**（*AHEADance: Anticipatory Humanoid Dance from Streaming Audio*，[arXiv:2611.13370](https `📅unknown` `[entity_page]`
+- [AHEADance：基于流式音频的预判式人形机器人舞蹈生成 / Anticipatory Humanoid Dance from Streaming Audio](wiki/entities/paper-aheadance.md) — AHEADance**（*AHEADance: Anticipatory Humanoid Dance from Streaming Audio*，[arXiv:2611.13370](https `📅unknown` `[entity_page]`
 - [AHMP：接触序列发现 + SE(3) 切空间全身规划](wiki/entities/paper-ahmp.md) — AHMP**（*Agile Humanoid Motion Planning with Contact Sequence Discovery*，Humanoids 2025，[DOI](https `📅unknown` `[entity_page]`
 - [AHOY：遮挡 YouTube 视频也能重建可动画 3D 数字人](wiki/entities/paper-ahoy.md) — AHOY**（*Animatable Humans under Occlusion from YouTube Videos with Gaussian Splatting and Video Di `📅unknown` `[entity_page]`
 - [AI Scientists' Last Exam（AISLE）：以实验结果验证科学智能体](wiki/entities/paper-ai-scientists-last-exam.md) — AISLE**（AI Scientists' Last Exam，AI 科学家的最后一场考试）是一个以实验选择、反馈学习、预算约束与可验证结果为主轴的 **科学智能体评测**项目；官方公开了 Ha `📅unknown` `[entity_page]`

@@ -407,6 +407,14 @@ op: ingest
 - **开源结论：** 项目页未列正式源码/权重/数据下载，因此不生成未经核对的运行时序图。
 - **指标纠正：** Franka AirPods 92% 为端到端成功率；YAM 炒蛋 85.8% 为离线阶段评分；不混入 PNP 营销信息。
 
+## [2026-11-14] ingest | AHEADance 官方项目页复核与复现边界
+
+- 意图：用户再次提出 AHEADance 入库；按 arXiv:2611.13370 在库内查重，复用现有唯一论文实体，不重复创建节点。
+- 来源：arXiv v1 完整论文和 UCL Humanoid Robotics Lab 官方项目主页（https://ihcr.github.io/AHEADance/）。
+- 结论：ListenAhead 与 Commit Forcing 的既有论文分析可保留；补录官方网页真机视频、麦克风演示、MuJoCo 回放和云端 Live 的开放范围。
+- 开源：项目页仍为 “Code soon”，未发布可复现的 AHEADance 研究训练/推理源码或评测入口，源码运行时序图不适用。
+- 更新：`sources/sites/aheadance_project.md`、`sources/papers/aheadance_arxiv_2611_13370.md` 与 `wiki/entities/paper-aheadance.md`；流程图补全机器人测量状态仅反馈 SONIC 跟踪层。
+
 ## [2026-11-14] ingest | LG-DKGP 连续性感知世界模型规划：原文、代码、时序与指标口径
 
 - 新增论文原文归档 sources/papers/lg_dkgp_arxiv_2611_16645.md、官方开源仓库归档 sources/repos/lg-dkgp.md，以及独立论文实体 wiki/entities/paper-lg-dkgp.md。
