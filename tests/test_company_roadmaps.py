@@ -71,8 +71,8 @@ def test_home_entry_links_match_data_order() -> None:
     card = html[html.index('id="homeCompanyLinks"') : html.index('id="homeCompanyToggle"')]
     links = re.findall(r'<a [^>]*href="company\.html\?id=([^"]+)"([^>]*)>', card)
     assert [key for key, _ in links] == [c["key"] for c in DATA["companies"]]
-    # 折叠态只露出前 4 家，其余带 data-company-extra hidden
-    assert [("hidden" in attrs) for _, attrs in links] == [i >= 4 for i in range(len(links))]
+    # 折叠态只露出前 8 家，其余带 data-company-extra hidden。
+    assert [("hidden" in attrs) for _, attrs in links] == [i >= 8 for i in range(len(links))]
 
 
 def test_home_company_toggle_count_matches_data_and_syncs_on_init() -> None:

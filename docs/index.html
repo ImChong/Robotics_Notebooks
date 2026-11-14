@@ -130,7 +130,7 @@
                  → 具身模型测评（RLBench 标准化视觉操作评测套件 2019）
                  → 感知越障（2020s）→ 动作生成（MDM 2022）→ 扩散与流匹配策略（Diffusion Policy 2023）→ VLA（RT-2 确立 VLA，2023）
                  → Real2Sim（3D Gaussian Splatting 规模化重建 2023）→ WAM（World Action Models 综述形式化，2026）
-                 默认折叠：只展示里程碑最新的 4 条，其余路线标记 data-route-extra + hidden，
+                 默认折叠：只展示里程碑最新的 8 条，其余路线标记 data-route-extra + hidden，
                  由 main.js 的展开按钮（#homeRouteToggle）控制显隐 -->
             <div class="home-entry-route-links" id="homeRouteLinks">
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-pcb-design" data-route-extra hidden>PCB 设计<span class="route-en">（PCB Design）</span></a>
@@ -155,10 +155,10 @@
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-humanoid-boxing" data-route-extra hidden>人形拳击<span class="route-en">（Humanoid Boxing）</span></a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-icl" data-route-extra hidden>具身上下文学习<span class="route-en">（ICL）</span></a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-bfm" data-route-extra hidden>人形行为基础模型<span class="route-en">（BFM）</span></a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-embodied-eval" data-route-extra hidden>具身测评<span class="route-en">（Embodied Evaluation）</span></a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-perceptive-locomotion" data-route-extra hidden>感知越障<span class="route-en">（Perceptive Locomotion）</span></a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-motion-generation" data-route-extra hidden>动作生成<span class="route-en">（Motion Generation）</span></a>
-              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-robotics-diffusion-dit-flow" data-route-extra hidden>扩散与流匹配策略<span class="route-en">（Diffusion &amp; Flow Matching）</span></a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-embodied-eval">具身测评<span class="route-en">（Embodied Evaluation）</span></a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-perceptive-locomotion">感知越障<span class="route-en">（Perceptive Locomotion）</span></a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-motion-generation">动作生成<span class="route-en">（Motion Generation）</span></a>
+              <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-robotics-diffusion-dit-flow">扩散与流匹配策略<span class="route-en">（Diffusion &amp; Flow Matching）</span></a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-vla">视觉-语言-动作模型<span class="route-en">（VLA）</span></a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-real2sim">真实到仿真<span class="route-en">（Real2Sim）</span></a>
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-embodied-data">具身数据<span class="route-en">（Embodied Data）</span></a>
@@ -167,7 +167,7 @@
             <button type="button" id="homeRouteToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeRouteLinks" data-home-copy>展开全部 30 条纵深路线 ↓</button>
           </div>
           <div class="card home-entry-card home-entry-card-more" id="home-org-routes">
-            <div class="home-org-tabs" role="tablist" aria-label="公司路线与实验室路线">
+            <div class="home-org-tabs" role="tablist" aria-label="公司路线与实验室路线" data-home-copy>
               <button type="button" class="home-org-tab is-active" role="tab" id="homeOrgTabCompany" aria-selected="true" aria-controls="home-company-routes" data-org-tab="company" data-home-copy>公司路线</button>
               <button type="button" class="home-org-tab" role="tab" id="homeOrgTabLab" aria-selected="false" aria-controls="home-lab-routes" data-org-tab="lab" tabindex="-1" data-home-copy>实验室路线</button>
             </div>
@@ -175,16 +175,16 @@
             <h3 data-home-copy>按公司查看具身基础模型与人形技术演进</h3>
             <!-- 按成立年份从早到晚排序；同年顺序不代表已确认的精确先后。
                  顺序与 docs/company-roadmaps.json 一致（tests/test_company_roadmaps.py 校验）；
-                 默认露出前 4 家，其余 data-company-extra + hidden，由 main.js 的展开按钮控制 -->
+                 默认露出前 8 家，其余 data-company-extra + hidden，由 main.js 的展开按钮控制 -->
             <div class="home-entry-route-links" id="homeCompanyLinks">
               <a class="btn-secondary" href="company.html?id=nvidia">NVIDIA</a>
               <a class="btn-secondary" href="company.html?id=gdm">Google DeepMind</a>
               <a class="btn-secondary" href="company.html?id=1x">1X</a>
               <a class="btn-secondary" href="company.html?id=unitree">宇树<span class="route-en">（Unitree）</span></a>
-              <a class="btn-secondary" href="company.html?id=xpeng" data-company-extra hidden>小鹏机器人<span class="route-en">（XPENG Robotics）</span></a>
-              <a class="btn-secondary" href="company.html?id=deeprobotics" data-company-extra hidden>云深处<span class="route-en">（Deep Robotics）</span></a>
-              <a class="btn-secondary" href="company.html?id=motphys" data-company-extra hidden>谋先飞<span class="route-en">（Motphys）</span></a>
-              <a class="btn-secondary" href="company.html?id=xiaomi" data-company-extra hidden>小米机器人<span class="route-en">（Xiaomi Robotics）</span></a>
+              <a class="btn-secondary" href="company.html?id=xpeng">小鹏机器人<span class="route-en">（XPENG Robotics）</span></a>
+              <a class="btn-secondary" href="company.html?id=deeprobotics">云深处<span class="route-en">（Deep Robotics）</span></a>
+              <a class="btn-secondary" href="company.html?id=motphys">谋先飞<span class="route-en">（Motphys）</span></a>
+              <a class="btn-secondary" href="company.html?id=xiaomi">小米机器人<span class="route-en">（Xiaomi Robotics）</span></a>
               <a class="btn-secondary" href="company.html?id=westlake" data-company-extra hidden>西湖机器人<span class="route-en">（Westlake Robotics）</span></a>
               <a class="btn-secondary" href="company.html?id=limx" data-company-extra hidden>逐际动力<span class="route-en">（LimX）</span></a>
               <a class="btn-secondary" href="company.html?id=figure" data-company-extra hidden>Figure</a>
@@ -218,17 +218,17 @@
           </div>
           <div class="home-org-panel" id="home-lab-routes" role="tabpanel" aria-labelledby="homeOrgTabLab" hidden>
             <h3 data-home-copy>按实验室查看具身智能研究演进</h3>
-            <!-- 按成立年份或已注明的排序锚点排序，与 lab-roadmaps.json 同序；默认展示前 4 个。 -->
+            <!-- 按成立年份或已注明的排序锚点排序，与 lab-roadmaps.json 同序；默认展示前 8 个，不足 8 个时全部展示。 -->
             <div class="home-entry-route-links" id="homeLabLinks">
               <a class="btn-secondary" href="lab.html?id=eth-rsl" data-founded-year="2015">ETH RSL</a>
               <a class="btn-secondary" href="lab.html?id=hku-mmlab" data-founded-year="2019">香港大学<span class="route-en">（MMLab）</span></a>
               <a class="btn-secondary" href="lab.html?id=opendrivelab" data-founded-year="2021">香港大学<span class="route-en">（OpenDriveLab）</span></a>
               <a class="btn-secondary" href="lab.html?id=rai" data-founded-year="2022">RAI Institute</a>
-              <a class="btn-secondary" href="lab.html?id=lecar" data-founded-year="2023" data-lab-extra hidden>CMU LeCAR</a>
-              <a class="btn-secondary" href="lab.html?id=teleai" data-founded-year="2024" data-lab-extra hidden>中国电信人工智能研究院<span class="route-en">（TeleAI）</span></a>
-              <a class="btn-secondary" href="lab.html?id=roboparty-lab" data-founded-year="2026" data-lab-extra hidden>RoboParty Lab</a>
+              <a class="btn-secondary" href="lab.html?id=lecar" data-founded-year="2023">CMU LeCAR</a>
+              <a class="btn-secondary" href="lab.html?id=teleai" data-founded-year="2024">中国电信人工智能研究院<span class="route-en">（TeleAI）</span></a>
+              <a class="btn-secondary" href="lab.html?id=roboparty-lab" data-founded-year="2026">RoboParty Lab</a>
             </div>
-            <button type="button" id="homeLabToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeLabLinks" data-home-copy>展开全部 7 个实验室 ↓</button>
+            <button type="button" id="homeLabToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeLabLinks" hidden data-home-copy>展开全部 7 个实验室 ↓</button>
           </div>
           </div>
         </div>

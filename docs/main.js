@@ -7468,7 +7468,7 @@
       });
   }
 
-  // ── 首页「更多路线」折叠：默认只展示里程碑最新的 4 条纵深路线 ──────────────
+  // ── 首页「更多路线」折叠：默认只展示里程碑最新的 8 条纵深路线 ──────────────
   var routeToggle = document.getElementById('homeRouteToggle');
   var routeLinks = document.getElementById('homeRouteLinks');
   var mainRouteCount = document.getElementById('heroMainRouteCount');
@@ -7483,20 +7483,39 @@
   // 公司 / 实验室标签切换：同一张卡内只显示一个面板
   function showOrgTab(name) {
     if (!orgRoutesCard) return;
-    var tabs = orgRoutesCard.querySelectorAll('[data-org-tab]');
-    for (var oti = 0; oti < tabs.length; oti++) {
-      var on = tabs[oti].getAttribute('data-org-tab') === name;
-      tabs[oti].classList.toggle('is-active', on);
-      tabs[oti].setAttribute('aria-selected', on ? 'true' : 'false');
-      tabs[oti].tabIndex = on ? 0 : -1;
-      var panel = document.getElementById(tabs[oti].getAttribute('aria-controls'));
-      if (panel) panel.hidden = !on;
-    }
+    animateHomeLinksToggle(orgRoutesCard, function () {
+      var tabs = orgRoutesCard.querySelectorAll('[data-org-tab]');
+      for (var oti = 0; oti < tabs.length; oti++) {
+        var on = tabs[oti].getAttribute('data-org-tab') === name;
+        tabs[oti].classList.toggle('is-active', on);
+        tabs[oti].setAttribute('aria-selected', on ? 'true' : 'false');
+        tabs[oti].tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(tabs[oti].getAttribute('aria-controls'));
+        if (panel) {
+          panel.hidden = !on;
+          if (on) syncHomeLinksScrollbar(panel.querySelector('.home-entry-route-links'));
+        }
+      }
+    }, false, []);
   }
   if (orgRoutesCard) {
     orgRoutesCard.querySelector('.home-org-tabs').addEventListener('click', function (event) {
       var tab = event.target.closest('[data-org-tab]');
       if (tab) showOrgTab(tab.getAttribute('data-org-tab'));
+    });
+    orgRoutesCard.querySelector('.home-org-tabs').addEventListener('keydown', function (event) {
+      var tab = event.target.closest('[data-org-tab]');
+      if (!tab) return;
+      var tabs = Array.prototype.slice.call(orgRoutesCard.querySelectorAll('[data-org-tab]'));
+      var index = tabs.indexOf(tab);
+      if (event.key === 'ArrowRight') index = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') index = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === 'Home') index = 0;
+      else if (event.key === 'End') index = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      showOrgTab(tabs[index].getAttribute('data-org-tab'));
+      tabs[index].focus();
     });
   }
   var BORDER_TRACE_MS = 2400;
@@ -7515,14 +7534,19 @@
 
   // 展开态列表出现滚动条时实测其宽度写入 --links-sb（样式用负右外边距抵消），胶囊不因滚动条变窄而跳动
   function syncHomeLinksScrollbar(links) {
+    if (!links) return;
     links.style.removeProperty('--links-sb');
-    if (!links.classList.contains('is-expanded')) return;
+    if (!links.classList.contains('is-expanded')) {
+      links.scrollTop = 0;
+      return;
+    }
     links.style.setProperty('--links-sb', (links.offsetWidth - links.clientWidth) + 'px');
   }
 
   function setHomeRoutesExpanded(expanded) {
     if (!routeToggle || !routeLinks) return;
     var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
+    routeToggle.hidden = extras.length === 0;
     for (var rti = 0; rti < extras.length; rti++) {
       extras[rti].hidden = !expanded;
     }
@@ -7788,12 +7812,13 @@
     });
   }
 
-  // 首页「公司路线」卡：同样默认露出前 4 家，其余由展开按钮控制
+  // 首页「公司路线」卡：默认露出前 8 家，其余由展开按钮控制
   var companyToggle = document.getElementById('homeCompanyToggle');
   var companyLinks = document.getElementById('homeCompanyLinks');
   function setHomeCompaniesExpanded(expanded) {
     if (!companyToggle || !companyLinks) return;
     var extras = companyLinks.querySelectorAll('[data-company-extra]');
+    companyToggle.hidden = extras.length === 0;
     for (var cti = 0; cti < extras.length; cti++) {
       extras[cti].hidden = !expanded;
     }
@@ -7814,12 +7839,13 @@
     });
   }
 
-  // 实验室按成立年份从早到晚排序，折叠态优先展示最早的 4 个。
+  // 实验室按成立年份从早到晚排序，最多默认展示前 8 个；不足 8 个时全部展示。
   var labToggle = document.getElementById('homeLabToggle');
   var labLinks = document.getElementById('homeLabLinks');
   function setHomeLabsExpanded(expanded) {
     if (!labToggle || !labLinks) return;
     var extras = labLinks.querySelectorAll('[data-lab-extra]');
+    labToggle.hidden = extras.length === 0;
     for (var lti = 0; lti < extras.length; lti++) {
       extras[lti].hidden = !expanded;
     }
@@ -7838,8 +7864,8 @@
     });
     labItems.forEach(function (link, index) {
       labLinks.appendChild(link);
-      link.toggleAttribute('data-lab-extra', index >= 4);
-      link.hidden = index >= 4;
+      link.toggleAttribute('data-lab-extra', index >= 8);
+      link.hidden = index >= 8;
     });
     setHomeLabsExpanded(false);
     labToggle.addEventListener('click', function () {

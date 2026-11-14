@@ -1445,7 +1445,7 @@ button.home-wiki-heatmap-cell.is-active {
 .route-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .route-card { min-height: 100%; }
 .home-entry-grid {
-  /* 3 张入口卡（从零开始 / 项目查询 / 知识图谱）同排，「更多路线」卡通栏在下 */
+  /* 3 张入口卡同排；更多路线、公司 / 实验室路线依次独占一行。 */
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
   gap: 16px;
@@ -1455,6 +1455,7 @@ button.home-wiki-heatmap-cell.is-active {
 }
 .home-entry-card {
   display: flex;
+  min-width: 0;
   flex-direction: column;
   gap: 10px;
   color: var(--text);
@@ -1492,20 +1493,16 @@ button.home-wiki-heatmap-cell.is-active {
   grid-column: 1 / -1;
   min-height: 0;
 }
-/* 公司与实验室独立成卡，更多路线通栏展示。 */
+/* 桌面默认 8 个入口，四列两行；长列表展开后在卡内滚动。 */
 .home-entry-card-more .home-entry-route-links .btn-secondary { min-height: 55px; }
-@media (min-width: 861px) {
-  .home-entry-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  .home-entry-grid > .home-entry-card { grid-column: span 2; }
-  /* 第二行：更多路线 | 公司/实验室（标签切换） */
-  /* 各卡高度独立：一张卡展开不撑高并排的另一张 */
-  .home-entry-grid > .home-entry-card-more { grid-column: span 3; height: auto; align-self: start; }
-}
+.home-entry-grid > .home-entry-card-more { height: auto; }
 .home-org-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 .home-org-tab {
+  min-height: 44px;
   padding: 4px 12px;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -1535,13 +1532,13 @@ button.home-wiki-heatmap-cell.is-active {
   /* 高度动画只裁切外层卡片，不压缩列表；否则短列表会临时出现滚动条，
      胶囊列宽先缩小再恢复。收起时也不让 auto 外边距把已有按钮推向下方。 */
   flex-shrink: 0;
-  /* 按钮含英文副行「(English)」：170px 让 >860px 时排 4 列，最长英文名也能单行放下 */
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
   margin-top: 0;
   padding-top: 2px;
 }
 .home-entry-route-links .btn-secondary {
+  min-width: 0;
   width: 100%;
   box-sizing: border-box;
   padding: 10px 12px;
@@ -1549,7 +1546,8 @@ button.home-wiki-heatmap-cell.is-active {
   line-height: 1.25;
   border: 1px solid var(--border);
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
   /* 「中文（English）」拆两行：中文主行 + 英文小字副行，保持列宽不被英文撑开 */
   display: flex;
   flex-direction: column;
@@ -1557,6 +1555,7 @@ button.home-wiki-heatmap-cell.is-active {
   justify-content: center;
 }
 .home-entry-route-links .route-en {
+  max-width: 100%;
   margin-top: 2px;
   font-size: .72rem;
   line-height: 1.2;
@@ -1582,6 +1581,7 @@ button.home-wiki-heatmap-cell.is-active {
 .home-entry-route-links a[hidden] { display: none; }
 /* 展开/收起按钮：复用 home-entry-link 的文字样式，去掉 button 默认外观 */
 .home-route-toggle {
+  min-height: 44px;
   background: none;
   border: none;
   padding: 2px 0 0;
@@ -3040,14 +3040,6 @@ button.home-wiki-heatmap-cell.is-active {
   .card-grid, .preview-home-layout, .preview-split-grid, .detail-hero-top, .route-card-grid { grid-template-columns: 1fr; }
   .home-entry-route-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  /* 展开态且总数为奇数时，末行单独一项通栏居中，避免左列悬空。
-     必须挂在 .is-expanded 上：折叠态有 hidden 节点，:nth-child 仍计入它们，
-     会导致可见末项（如第 13 个 WAM）被误判为奇数孤行。 */
-  .home-entry-route-links.is-expanded .btn-secondary:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    max-width: 50%;
-    justify-self: center;
   }
   .hero-title { font-size: 2.15rem; }
   .hero-stat-row { gap: 10px; }
