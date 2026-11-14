@@ -7,7 +7,7 @@ tags:
   - cae
   - cfd
 status: complete
-updated: 2026-10-08
+updated: 2026-11-14
 summary: "按项目身份整理 CAE/CFD 代理技能、MCP、CLI 和可视化仓库；每个仓库各有一页，同名项目分开介绍。"
 sources:
   - ../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md
@@ -128,6 +128,8 @@ original:
 此总览包含 53 个独立公开仓库节点，来源是一篇策展文章及对应的公开仓库资料，不构成工具性能排名或工程认证。文章另提到“ANSYS-automatic-wwj”，但没有可核实的 owner/仓库链接，暂不建身份未明的项目页。同名项目需按仓库 owner/repo 辨别。文章未给出完整仓库地址的少数项目，只有在公开仓库身份能核实时才映射；映射依据在详情页标注。任何 Skill/MCP 输出都需用户检查工程假设和软件许可。
 
 ## 关联页面
+
+- [DNS / LES / RANS 湍流求解与封闭模型选型](../comparisons/dns-les-rans-turbulence-resolution-selection.md) — CFD 物理模型选型、近壁处理与求解结果校验；与此处代理编排工具互补。
 
 - [系统工程知识链](./hub-systems-engineering.md) — 工程代理的环境、接口与执行记录
 - [仿真物理保真度知识链](./hub-physics-fidelity.md) — 自动仿真结果的物理验证
