@@ -2,8 +2,9 @@
 type: concept
 tags: [perception, spatial-representation, slam, semantic-mapping, point-cloud, occupancy, depth, embodied-ai]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 related:
+  - ./bird-eye-view-bev.md
   - ./2d-to-3d-semantic-lifting-gap.md
   - ./perception-coordinate-postprocessing.md
   - ./visual-representation-for-policy.md
@@ -172,6 +173,8 @@ flowchart TB
 - **工程风险：** 语义精度绑定几何与位姿；隐式场的在线更新与碰撞提取仍是部署瓶颈。
 
 ## 关联页面
+
+- [BEV：鸟瞰统一空间表征](./bird-eye-view-bev.md) — 多相机、LiDAR 与毫米波雷达如何在共享鸟瞰栅格中融合；BEV 只是特征空间布局，不等于占据概率或距离场。
 
 - [Reduced 3DGS](../entities/paper-reduced-3dgs.md) — 通过剪枝、球谐系数分配和量化降低高斯场存储开销。
 
