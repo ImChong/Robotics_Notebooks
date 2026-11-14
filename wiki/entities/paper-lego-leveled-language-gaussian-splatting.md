@@ -26,6 +26,8 @@ related:
   - ./paper-occanyscene.md
   - ./paper-target-aware-gaussian-langmap.md
   - ./paper-legs-embodied-gaussian-splatting-vla.md
+original:
+  - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
 sources:
   - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
   - ../../sources/sites/pz0826-lego-webpage.md
@@ -72,7 +74,7 @@ summary: "LEGO（WHU/HKUST，ECCV 2026，arXiv:2608.10057）：把多视角 SAM 
 | 默认层级 | \(L=8\) 层 × \(d=8\) 维；经验上真实物体很少超过 8 级 |
 | 开源（截至 2026-08-16） | **已开源、可运行**：[`WHU-USI3DV/LEGO`](https://github.com/WHU-USI3DV/LEGO)，CC BY-NC-SA 4.0 |
 
-## 方法与核心结构
+## 核心原理与方法结构
 
 | 模块 | 作用 |
 |------|------|
@@ -227,7 +229,7 @@ sequenceDiagram
 
 ## 参考来源
 
-- [lego_leveled_language_gs_arxiv_2608_10057.md](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)
+- [LEGO 论文全文（含附录）核对归档](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md) — 已对照 arXiv v1 方法、评测与实验局限
 - [项目页归档](../../sources/sites/pz0826-lego-webpage.md)
 - [官方仓归档](../../sources/repos/lego.md)
 - Peng et al. — <https://arxiv.org/abs/2608.10057>
