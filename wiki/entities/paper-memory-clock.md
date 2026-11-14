@@ -28,7 +28,7 @@ sources:
 | 缩写 | 英文全称 | 简要说明 |
 |---|---|---|
 | VLA | Vision-Language-Action | 本研究涉及的VLA术语 |
-| RoboMME | Robot Memory Evaluation Benchmark | 本研究涉及的RoboMME术语 |
+| RoboMME | RoboMME: Benchmarking and Understanding Memory for Robotic Generalist Policies | 本研究涉及的RoboMME术语 |
 | Null event | Task-neutral event | 本研究涉及的Null event术语 |
 
 ## 为什么重要
