@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, data-generation, technology-map, wechat]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 related:
   - ../entities/paper-embodiedswe.md
   - ../entities/paper-vlaquantbench.md
@@ -68,7 +68,7 @@ flowchart TB
 | THAW-VLA | [paper-thaw-vla](../entities/paper-thaw-vla.md)（复用） | 已开源 |
 | Gaussian Is Enough | [paper-gaussian-is-enough-flow-matching-priors](../entities/paper-gaussian-is-enough-flow-matching-priors.md) | 已开源 |
 | LIBERO-VPro | [paper-libero-vpro](../entities/paper-libero-vpro.md) | 项目页未列 GitHub |
-| vla.simd | [paper-vla-simd](../entities/paper-vla-simd.md) | 项目页未列 GitHub |
+| vla.simd | [paper-vla-simd](../entities/paper-vla-simd.md) | 匿名审稿链接（实名待录用） |
 | RoboMP-DINOv2 | [paper-robomp-dinov2](../entities/paper-robomp-dinov2.md) | 已开源 |
 | Topology-VLA | [paper-topology-informed-visual-prompting-vla](../entities/paper-topology-informed-visual-prompting-vla.md) | 项目页未列 GitHub |
 
@@ -88,7 +88,7 @@ flowchart TB
 | X-Planner | [paper-x-planner-event-structured-task-planning](../entities/paper-x-planner-event-structured-task-planning.md) | 已开源 |
 | PackLab | [paper-packlab](../entities/paper-packlab.md) | 已开源 |
 | Visuomotor Pruning | [paper-visuomotor-robotic-pruning-orchards](../entities/paper-visuomotor-robotic-pruning-orchards.md) | 已开源 |
-| MIGU | [paper-migu-multimodal-instruction-grounding](../entities/paper-migu-multimodal-instruction-grounding.md) | 待发布 |
+| MIGU | [paper-migu-multimodal-instruction-grounding](../entities/paper-migu-multimodal-instruction-grounding.md) | 已部分开源 |
 
 ### 灵巧与触觉（4 篇）
 

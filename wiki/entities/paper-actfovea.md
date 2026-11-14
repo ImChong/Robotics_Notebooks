@@ -1,10 +1,13 @@
 ---
 type: entity
-tags: [paper, vla, runtime-safety, safeguarding, anomaly-detection, plug-and-play, libero, manipulation, pi0]
+tags: [paper, vla, runtime-safety, safeguarding, anomaly-detection, plug-and-play, libero, manipulation, pi0, tongji, mbzuai, shanghai-ai-lab, uestc]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 arxiv: "2607.29169"
 code: https://github.com/SunnyYWD/ActFovea
+original:
+  - ../../sources/papers/actfovea_arxiv_2607_29169.md
+  - ../../sources/repos/actfovea.md
 related:
   - ./libero-benchmark.md
   - ./paper-pi05-open-world-vla.md
@@ -52,7 +55,7 @@ summary: "ActFovea（arXiv:2607.29169）：不重训、不改权重的 VLA 运�
 
 | 项 | 内容 |
 |----|------|
-| **作者 / 机构** | Wenda Yu、Tianshi Wang、Fengling Li、Xin Li、Jingjing Li、Lei Zhu；预印本仅标上标编号 1–4，**未写出单位名称** |
+| **作者 / 机构** | Wenda Yu¹、Tianshi Wang¹、Fengling Li²、Xin Li³、Jingjing Li⁴、Lei Zhu¹（¹ 同济大学；² MBZUAI；³ 上海人工智能实验室；⁴ 电子科技大学 UESTC） |
 | **被防护策略** | 冻结 **π₀**（不重训、不改权重、无新增可学习参数） |
 | **评测** | LIBERO Spatial / Object / Goal / 10-task，共 **40 任务 × 50 episodes = 2000 episodes** / 组合 |
 | **扰动类型** | 局部视觉叠加、视觉延迟（3 帧）、动作轨迹漂移、观测冻结重放 |
@@ -127,32 +130,35 @@ flowchart TB
 sequenceDiagram
     autonumber
     actor Dev as 复现者
-    participant Env as examples/libero/main.py<br/>LIBERO 闭环 harness
-    participant Pert as 扰动注入<br/>overlay / delay / drift / replay
-    participant Srv as scripts/serve_policy.py<br/>--defense-enable :8003
-    participant Def as src/openpi/defense/<br/>检测与恢复
-    participant Pol as policies/defense_policy.py<br/>运行时包装器
-    participant Pi0 as models_pytorch<br/>冻结 π₀ checkpoint
-    participant Mat as scripts/eval_libero_task_matrix.py
-    Dev->>Srv: uv sync --frozen + OPENPI_CHECKPOINT_DIR，起基线(:8000)与防护(:8003)
-    Dev->>Mat: 启动四条件任务矩阵（40 任务 × 50 episodes）
-    Mat->>Env: 逐任务 rollout
-    Env->>Pert: 按场景注入扰动
-    Pert-->>Srv: 带时间戳观测 + 本体状态
-    Srv->>Def: 计算风险分与威胁分型
-    Def->>Pol: 构造候选观测（foveated / 时间稳定 / 空间修复）
-    loop 每个候选
-        Pol->>Pi0: 查询动作块
-        Pi0-->>Pol: action chunk
-        Pol->>Def: 动作块打分
+    participant Mat as scripts/eval_libero_task_matrix.py<br/>四条件评测调度
+    participant Env as examples/libero/main.py<br/>eval_libero + 扰动注入
+    participant Srv as scripts/serve_policy.py<br/>WebsocketPolicyServer (:8003)
+    participant Pol as KinematicDefensePolicy.infer<br/>policies/defense_policy.py
+    participant Fil as KinematicVisualFilter.apply<br/>defense/kinematic_filter.py
+    participant Rec as defense/recovery.py<br/>Threat/State/Bank/Verifier
+    participant Pi0 as self._policy.infer<br/>PyTorch pi0_libero
+    Dev->>Srv: --defense-enable + OPENPI_CHECKPOINT_DIR 起防护服务(:8003)与基线(:8000)
+    Dev->>Mat: 调度 40 任务 × 10 trials 四条件矩阵
+    Mat->>Env: 启动闭环 rollout
+    Env->>Srv: client.infer(obs) (含评测场景注入的扰动)
+    Srv->>Pol: self._policy.infer(payload)
+    Pol->>Fil: apply(obs) 计算新鲜度/运动/相关风险分
+    Fil-->>Pol: filtered_obs, filter_stats
+    Pol->>Rec: classify_threat + StaticPatchSafetyController + RuntimeStateEstimator + ObservationRecoveryBank
+    Rec-->>Pol: assessment, candidate_selection
+    alt short_circuit_infer 命中(明显冻结/hold latch)
+        Pol->>Pol: _build_guard_chunk(跳过策略推理)
+    else _select_policy_candidate 评估候选观测
+        loop 每个候选观测(raw / filtered / repaired)
+            Pol->>Pi0: policy.infer(candidate.obs)
+            Pi0-->>Pol: action chunk
+            Pol->>Rec: ActionChunkVerifier.verify(actions)
+        end
     end
-    alt 通过验证
-        Def-->>Env: 受限动作（阻尼 + 短 horizon）
-    else 重放证据持续
-        Def-->>Env: hold latch → 有界安全失败
-    end
-    Env-->>Mat: SR / 安全失败 / 无防护失败统计
-    Note over Dev,Mat: 基线端口(:8000)跑同一矩阵，得到 Table 1–3 的对照列
+    Pol->>Pol: _build_executor_plan(SHORT_HORIZON / SERVO / HOLD / SAFE_FAIL)
+    Pol-->>Srv: actions, defense_stats, defense_executor
+    Srv-->>Env: WebSocket 返回动作块与安全标志
+    Env-->>Mat: 汇总 SR / 安全失败率 / 无防护失败率
 ```
 
 - **最短复现路径：** 初始化 submodule（含 LIBERO）→ `uv sync --frozen` → 打 transformers 补丁 → 设 `OPENPI_CHECKPOINT_DIR` → 起**两个**服务端（基线 8000 / 防护 8003）→ `eval_libero_task_matrix.py`。
@@ -236,6 +242,9 @@ sequenceDiagram
 
 ## 关联页面
 
+- [VLA](../methods/vla.md) — 本文防护的基础策略范式（推理时零改权重包裹 π₀）
+- [Action Chunking](../methods/action-chunking.md) — ActFovea 进行动作块验证、短视界截断与平滑回退的控制单元
+- [Manipulation](../tasks/manipulation.md) — 闭环评测所属任务域（4 个 LIBERO 操纵套件）
 - [LIBERO 基准](./libero-benchmark.md) — 全部闭环评测所在基准
 - [π₀.₅ 开放世界 VLA](./paper-pi05-open-world-vla.md) — 同族 π 系列策略（本文防护的是 π₀）
 - [安全滤波器](../concepts/safety-filter.md) — 控制侧安全约束的对照路线

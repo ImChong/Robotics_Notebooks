@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, llm, planning, manipulation, google]
 status: complete
-updated: 2026-11-02
+updated: 2026-11-14
 arxiv: "2204.01691"
 code: https://github.com/google-research/google-research/tree/master/saycan
 related:

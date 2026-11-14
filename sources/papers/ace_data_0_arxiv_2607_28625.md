@@ -10,21 +10,23 @@
 - **数据集：** <https://huggingface.co/datasets/ACERobotics/ACE-Data-0> — 归档见 [`sources/datasets/ace-data-0.md`](../datasets/ace-data-0.md)
 - **作者：** Yukang Cao¹\*、Haozhe Xie¹\*、Beichen Wen²\*、Runmao Yao¹、Yinghao Liu²、Yue Huang²、Zhichao Liao²、Yunxiang Wang¹、Haiheng Liu¹、Xingshun Tian²、Dawei Su²、Long Zhuo²、Dacheng Tao²†、Xiaogang Wang²†、Liang Pan²‡、Ziwei Liu¹‡（\* equal；† Project Advisor；‡ Project Lead）
 - **机构：** ¹ S-Lab, 南洋理工大学（NTU）；² 大晓机器人（Ace Robotics / ACERobotics）
-- **入库日期：** 2026-08-10
-- **一句话说明：** 用 Ambient Capture Engine 把真实家居变成时空校准的录制工作室（table-scale + room-scale），发布 **150 h / 17M 帧 / 75k episodes** 的同步多模态家居活动集 ACE-Data-0，并配套「信号→场景组件→交互」三层感知诊断 benchmark。
+- **入库日期：** 2026-08-10（2026-11-14 核对 v1 全文、项目页及 HF 元数据）
+- **核对范围：** 2026-11-14 通读 arXiv:2607.28625v1 全文（摘要、目录、§1–§6、Tables 1–6、Figs 1–12、Refs [1]–[116]），并核对项目页 HTML（1,052 行）及 HF `ACERobotics/ACE-Data-0` API JSON 与 README（379 行）。
+- **通读：** 已完成
+- **一句话说明：** 用 Ambient Capture Engine 把真实家居变成时空校准的录制工作室（table-scale ~30 m² + room-scale ~200 m²），发布 **150+ h / 17M+ 帧 / 75,000+ episodes** 的同步多模态家居活动集 ACE-Data-0，并配套「信号→场景组件→交互」三层感知诊断 benchmark（10 h 测试集）。
 
 ## 开源状态（步骤 2.5）
 
-核查日：**2026-08-10**（项目页 / Hugging Face API / arXiv 首页金属链接）。
+核查日：**2026-11-14**（实测项目页 HTML / Hugging Face API + README / arXiv v1 全文）。
 
 | 产物 | 状态 |
 |------|------|
-| Hugging Face 数据集 `ACERobotics/ACE-Data-0` | **已发布（gated）** — 非商业学术研究许可；个人申请不可转让 |
-| 项目页 | **已开放** — Demo / 模态叙事 / 数据与 benchmark 说明 |
-| 训练 / 评测代码、仓库 | **未见** — 项目页未列 GitHub；HF tree 仅 LICENSE + README |
+| Hugging Face 数据集 `ACERobotics/ACE-Data-0` | **已上传且 API 实测未启用平台门控（`gated: false`）** — 仓内已上传 `~22.18 TB`（22,176,330,852,720 bytes）、`≥100,000` 个文件（`lastModified: 2026-10-14`，含 `Room-scale/` 数据目录；API listing 在 100k 条截断），许可为 `ace-data-0-research-license`（非商业学术研究）。**注意：** 其 `README.md` 正文与 YAML 仍残留 `extra_gated_*` 申请表、`Data_Files-Coming_Soon` 徽章与「Data files are not published yet」过期提示 |
+| 项目页 | **已开放** — 双尺度硬件/同步叙事、交互示例轮播、任务分类与 benchmark 说明 |
+| 训练 / 评测代码、仓库 | **未公开** — 项目页与论文未列 GitHub；HF 仓内除数据集外无统一评测/训练代码（`Room-scale/calibration/` 含标定数据与 Homie 标定脚本说明） |
 | 模型权重 | **不适用** — 本篇为数据引擎 + 数据集 + 基准，非新架构权重 |
 
-**结论：** **部分开源**——数据与标注已上线（gated 研究许可）；官方训练栈 / 统一 benchmark 跑分代码截至入库日未列。源码运行时序图写「不适用」。
+**结论：** **部分开源（数据主仓已在 HF 上线且 API 当前 `gated: false`，非商业学术研究许可；官方训练与统一评测代码未发布）**。源码运行时序图写 **不适用**。
 
 ## 摘录 1：问题设定与 ACE 双尺度范式（§1–§3）
 
@@ -39,11 +41,11 @@
 
 ## 摘录 2：ACE-Data-0 规模、协议与标注（§3–§4）
 
-- **规模：** 150 小时 · 17M 帧 · 200 任务类 · 50 参与者 · 2 环境 · 75,000 interaction episodes。
+- **规模：** 150+ 小时（1 h 原始约 1 TB）· 17M+ 帧 · 200+ 任务类 · 50+ 3D/2DGS 扫描物体 · 50 参与者（2 天录制）· 2 环境 · 75,000+ interaction episodes。
 - **协议：** **目标级指令**（goal-level）而非逐步脚本——保留路线选择、抓取策略、犹豫与恢复等自然变异；长程行为由任务完成本身涌现，而非拼接短 clip。
-- **三类活动：** Atomic HOI（1–3 个日常操作）/ Chain of HOI（连续家务例程，需中间状态跟踪）/ HSI（全身–场景：坐、导航、姿态转换、家具接触）。
-- **同步与标定：** 以 OptiTrack 时钟为参考对齐相机 / 音频 / 触觉；静态外视与可穿戴相机经 marker 桥接注册到同一世界系；触觉手套用 IMU 运动模板与 ego 头显对齐。
-- **标注：** 相机内外参与时间线；全身 / 手姿态及投影；物体 mesh、6-DoF、框与轨迹；接触标签（运动状态 + 触觉）；对齐时间线的自然语言描述——大量标注由**测量状态自动导出**，而非独立视觉估计管线。
+- **三类活动：** Atomic HOI（30k+ eps，54 h，6.2M+ 帧 = 36.5%，约 3 min）/ Chain of HOI（40k+ eps，64 h，7.3M+ 帧 = 42.9%，20–30 min）/ HSI（30 h，3.5M+ 帧 = 20.6%，约 5 min）。
+- **同步与标定（Table 2）：** 共 28 台 OptiTrack PrimeX 22（桌面 16 / 房间 12 @ 60 Hz）；8× ZED One（房间 GMSL2 + Jetson Orin，NatNet + 纳秒 QR 光时钟 <4 ms 残差）与 8× GoPro（桌面音频+QR 时钟）；`ACE-Ego-Head-V02 Lite` 4 鱼眼 1088×1280 @ 20 FPS（<2 ms 偏差）+ IMU + 5 markers（~2 px 手眼重投影）；外视以反光 ArUco 板桥接（<3 px，~1 cm 3D）；`ACE-Sense-Glove Lite` 触觉手套通过 IMU 运动模式同步；房间 Manus 手套 60 Hz，桌面手姿经 8 视角 RANSAC 2D 三角化+人工精修。
+- **标注（§4.3）：** 相机内外参、41 关节 SMPL-X、60 Hz 物体 6-DoF、手势与接触标签均直接由测量动捕/标定/触觉传感器导出；**仅自然语言描述**由 `Gemini-3.1-pro-preview` 生成并经人工校验修正。
 
 **对 wiki 的映射：** 数据集速查与流程总览进实体页；许可与门控细节见 [`sources/datasets/ace-data-0.md`](../datasets/ace-data-0.md)。
 
@@ -51,9 +53,9 @@
 
 层级设计：**信号 → 场景组件 → 交互**（诊断「感知–理解–交互」链条何处断裂）。
 
-1. **触觉 from vision（ego，Table 3）：** TouchAnything 相对最强（Temp Acc 0.71 / C-IoU 0.16），但绝对重叠仍低；PressureVision 几乎失效——**「何时接触」易、「何处加压」难**。
-2. **人体运动恢复（room-scale，Table 4，22 方法）：** 局部姿态（PA-MPJPE）可接近常规基准；**世界系轨迹（WA-MPJPE）显著更差**；scene-aware 主要帮全局定位；ego 方法因身体出画最弱。
-3. **手运动（ego Table 5 / exo Table 6）：** exo 关节精度更好（WiLoR PA-MPJPE 9.1 mm）；世界系轨迹 exo（HaPTIC 63 mm）明显优于 ego 世界系方法（~98–102 mm）——**egomotion 估计是主要误差源**；双视角互补（ego 近距细节 vs exo 全局与遮挡）。
+1. **触觉 from vision（ego，Table 3，10 h 留出测试）：** TouchAnything 相对最强（Temp Acc **0.7095** / C-IoU **0.1646** / V-IoU **0.1357** / CoP **6.5846**），但绝对重叠仍低；PressureVision 几乎失效——**「何时接触」易、「何处加压」难**。
+2. **人体运动恢复（room-scale，Table 4，5 组 22 方法）：** 局部姿态可接近常规基准（SMPLest-X PA-MPJPE **55.7 mm**；Human3R **60.1 mm**）；**世界系轨迹（WA-MPJPE）显著更差**（Human3R **75.4 mm**，多帧/scene-aware 仍常高出、EgoAllo **220.3 mm**）；ego 方法因身体出画最弱。
+3. **手运动（ego Table 5 / exo Table 6）：** exo 关节精度更好（WiLoR PA-MPJPE **9.1 mm**）；世界系轨迹 exo（HaPTIC **10.0 mm** PA-MPJPE / **63.0 mm** Traj err）明显优于 ego 世界系方法（Dyn-HaMR **98.2 mm** / HaWoR **102.1 mm**；WildHands PA-MPJPE **11.2 mm**）——**egomotion 估计是主要误差源**；双视角互补（ego 近距细节 vs exo 全局与遮挡）。
 
 **对 wiki 的映射：** 汇入实体页「实验与评测」与「结论」可操作要点。
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, tendon-driven, backdrivable, tactile-sensing, industrial-automation, mimic-robotics]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md

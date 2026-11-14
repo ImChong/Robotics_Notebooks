@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-14
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md
@@ -36,12 +36,18 @@ sources:
   - ../../sources/blogs/perceptron_isaac_05.md
   - ../../sources/sites/naturewill-natura-1.md
   - ../../sources/papers/humannet.md
+original:
+  - ../../sources/papers/egoscale_arxiv_2602_16710.md
+  - ../../sources/papers/humannet.md
+  - ../../sources/blogs/dyna_2_million_hour_wam.md
 summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模型中数据规模、模型参数量与下游任务泛化能力之间的幂律关系；含 EgoScale（~20k h）、Dyna-2（1M h 人→机跨具身）与 Perceptron Isaac 0.5（1M h 视频置换 teleop）等案例。"
 ---
 
 # Embodied Scaling Laws (具身规模法则)
 
-**具身规模法则**：在机器人学习中，随着训练数据（演示轨迹、仿真经验）、模型参数量和计算资源的增加，模型在未见任务、未见物体和未见环境上的表现呈现出可预测的性能提升趋势（通常遵循幂律分布）。
+## 一句话定义
+
+**具身规模法则（Embodied Scaling Laws）**：在机器人学习中，随着训练数据（演示轨迹、仿真经验）、模型参数量和计算资源的增加，模型在未见任务、未见物体和未见环境上的表现呈现出可预测的性能提升趋势（通常遵循幂律分布）。
 
 ## 英文缩写速查
 
@@ -51,6 +57,13 @@ summary: "具身规模法则（Embodied Scaling Laws）探讨了具身智能模�
 | VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
 | RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+
+## 为什么重要
+
+- **区分「算力/数据扩张真正带来什么」**：在遥操作采集成本高企的现实下，判断加码人类视频、无动作视频、仿真轨迹还是真机示教，需要可测量的验证损失与任务成功率换算曲线，而非盲目堆数据集大小。
+- **标定跨本体与数据金字塔配比**：直接决定基础策略预训练该把预算投向互联网 VLM、egocentric 人视频（EgoScale / HumanNet）还是真机多形态混合（Open X-Embodiment）。
+
+## 核心原理
 
 ## 核心观察
 
@@ -88,6 +101,16 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - **基础模型引导**：利用已有的 VLA 模型作为专家，在仿真中自动收集海量负样本。
 - **视频置换遥操作（开源对照）：** [Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) 在固定 80:30:30 通用:ego:UMI 混合物上报告：通用视频从 1k h 升到 1M h，达到 held-out 动作损失 2.50 所需 teleop 从约 **5.9k h → 28 h**（**210×**）。与 [Dyna-2](../entities/dyna-2.md) 的闭源 1M h ego 缩放对照：Isaac 给的是 **开源代码 + teleop 置换等高线**，不是人→机零样本 WAM 幂律。
 
+## 工程实践
+
+- **把「验证损失曲线」和「闭环真机成功率」分开看：** 如 EgoScale 在 1k–20k h 人视频验证集呈 log-linear 下降且关联灵巧后训练表现，而 teacher-forced 误差下降（如 Natura-1）不能自动等效真机成功率；工程上应在固定小规模真机探针任务上同步测闭环。
+- **固定架构与下游配方再扫数据比例：** 借鉴 HumanNet 对固定 LingBot-VLA 做受控预训练配比对比的方法，先锁定评测种子与控制周期，再测人视频对真机示教小时数的置换比。
+
+## 局限与风险
+
+- **指标域与协议不可直接拼接：** 不同团队（EgoScale、Dyna-2、Isaac 0.5、GEN-1.5）各自采用验证损失、MPJPE、teacher-forced 误差或内部归一化成功率，不能将闭源自报数字直接画在同一条幂律上。
+- **硬件多样性瓶颈未自动消失：** 跨本体预训练若不对齐相机视角、自由度拓扑与动作尺度（参见 [具身数据金字塔综述](../entities/paper-data-pyramid-embodied-manipulation.md)），堆大预训练仍会在未见构型和精细接触控制上撞墙。
+
 ## 关联页面
 - [The Bitter Lesson](./bitter-lesson.md) — 宏观方法论：可扩展 search/learning vs 人类先验
 - [具身数据金字塔综述](../entities/paper-data-pyramid-embodied-manipulation.md) — 五层数据生态 × 六维属性的类目级坐标系；数据配方的「该扩哪一层」决策入口
@@ -122,3 +145,9 @@ DeepMind 技术报告 [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md)�
 - [Isaac 0.5 博客归档](../../sources/blogs/perceptron_isaac_05.md) — 无动作视频小时置换 teleop 的开源对照
 - [Natura-1 官方项目页归档](../../sources/sites/naturewill-natura-1.md) — 百万小时人类经验与灵巧手后训练的厂商研究预览
 - [HumanNet 论文摘录（arXiv:2605.06747）](../../sources/papers/humannet.md) — 人视频 vs 真机小时的受控预训练对照
+
+## 推荐继续阅读
+
+- [具身数据金字塔综述](../entities/paper-data-pyramid-embodied-manipulation.md)
+- [EgoScale](../methods/egoscale.md)
+- [HumanNet](../entities/humannet.md)

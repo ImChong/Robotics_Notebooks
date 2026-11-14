@@ -12,8 +12,10 @@ tags:
   - fudan
   - tongji
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 arxiv: "2608.04527"
+original:
+  - ../../sources/papers/rtcf_arxiv_2608_04527.md
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
@@ -27,12 +29,14 @@ related:
   - ../overview/robot-world-models-action-consequence-technology-map.md
 sources:
   - ../../sources/papers/rtcf_arxiv_2608_04527.md
-summary: "RTCF（arXiv:2608.04527，清华深圳/同济/复旦等）：免训练测试时纠偏——PMA 按执行历史对齐成功轨迹，再只叠低频运动残差到冻结 PI-FAST；LIBERO 86.4%→88.4%，Long 61.6%→68.6%；+11 ms CPU；截至入库日无公开代码。"
+summary: "RTCF（arXiv:2608.04527，清华深圳/同济/复旦等；注意 v3 已于 2026-10-28 因实验证据暂不充分被作者撤稿）：v2 提出免训练测试时纠偏——PMA 按执行历史对齐成功轨迹，再只叠低频运动残差到冻结 PI-FAST；LIBERO 86.4%→88.4%，Long 61.6%→68.6%；+10.99 ms CPU；无公开代码。"
 ---
 
-# RTCF（Retrieve in Time, Correct in Frequency · arXiv:2608.04527）
+# RTCF（Retrieve in Time, Correct in Frequency · arXiv:2608.04527，v3 已撤稿）
 
-**RTCF**（*Retrieve in Time, Correct in Frequency*，[arXiv:2608.04527](https://arxiv.org/abs/2608.04527)）由 **清华深圳研究院 / 清华 SIGS、同济、复旦、Everwise-Tech** 等提出（范宇泽 / 曹越 / 高鹏杰 / … / 王学谦）：在 **冻结 chunk 式 VLA** 外挂一条 **免训练** 测试时纠偏链路——先用 **Progressive Memory Alignment（PMA）** 把当前执行历史对齐到成功轨迹，再只把检索动作的 **低频运动残差** 叠回策略提案；夹爪与高频细节仍跟冻结策略。
+> **重要状态提示（2026-10-28 arXiv v3 撤稿）：** 本文一作 Yuze Fan 已于 2026-10-28 提交 [arXiv:2608.04527v3](https://arxiv.org/abs/2608.04527) 撤稿声明，明确指出当前手稿属初步版本、**实验证据尚不足以完全支撑主要结论，需大量补充实验与验证以确立报告发现的可靠性与泛化性**。下文技术机制与数据均核对自 v2 全文，仅供方法脉络参考，**不宜作为已验证定论直接引用**。
+
+**RTCF**（*Retrieve in Time, Correct in Frequency*，[arXiv:2608.04527](https://arxiv.org/abs/2608.04527) v2）由 **清华深圳研究院 / 清华 SIGS、同济、复旦、Everwise-Tech** 等提出（范宇泽 / 曹越 / 高鹏杰 / … / 王学谦）：在 **冻结 chunk 式 VLA** 外挂一条 **免训练** 测试时纠偏链路——先用 **Progressive Memory Alignment（PMA）** 把当前执行历史对齐到成功轨迹，再只把检索动作的 **低频运动残差** 叠回策略提案；夹爪与高频细节仍跟冻结策略。
 
 ## 一句话定义
 
@@ -60,9 +64,10 @@ summary: "RTCF（arXiv:2608.04527，清华深圳/同济/复旦等）：免训练
 | 项 | 内容 |
 |----|------|
 | **机构** | 清华大学深圳研究院；清华深圳国际研究生院（SIGS）；同济大学；复旦大学；Everwise-Tech |
+| **论文状态** | **v3 已于 2026-10-28 被一作 Yuze Fan 撤稿**（v1: 2026-08-05，v2: 2026-08-07） |
 | **Base 策略** | 冻结 **PI-FAST**（π₀-FAST 系） |
-| **记忆库** | seed=7 成功轨迹预采集后冻结；测试全库搜索、无 oracle |
-| **开源** | **确认未开源**（截至 2026-08-07：无项目页 / GitHub / 权重） |
+| **记忆库** | seed=7 成功轨迹预采集后冻结（SigLIP-PCA 描述子 + `π_FAST` BPE 存动作）；测试全库搜索、无 oracle |
+| **开源** | **确认未开源**（v2 正文与 v3 `abs.html` 均无项目页 / GitHub / 权重） |
 
 ## 核心原理
 
@@ -101,15 +106,19 @@ flowchart LR
 
 | 项 | 内容 |
 |----|------|
-| **源码运行时序图** | **不适用** — 截至入库日无公开可运行实现 |
-| 评测协议 | 四套件 × 10 任务 × 10 初始态 × 5 seed = **2000 episodes/条件** |
-| 设备画像 | RTX 4090 跑策略；纠偏在 Xeon CPU |
-| 失败回退 | 无可用 future chunk → 保持原提案 |
+| 源码状态 | 无公开仓库且 v3 已撤稿 |
+| 评测协议 | 四套件 × 10 任务 × 10 初始态 × 5 seed（101–105）= **2,000 episodes/条件** |
+| 设备画像 | RTX 4090 跑策略；纠偏在 Xeon Platinum 8358P CPU（描述子 RAM 32–50 MiB，DP 状态 48–75 KiB） |
+| 失败回退 | 无可用 future chunk 或 BPE 解码失败 → 保持原提案 \(A^\pi_t\) |
 | 落地前提 | 需要 **同任务成功轨迹记忆库**；库外分布增益未保证 |
 
-## 实验与评测
+## 源码运行时序图
 
-Matched PI-FAST 对照（Table 1）：
+**不适用。** 经核对 `arXiv:2608.04527v2` 全文与 `2608.04527.abs.html`，作者未公开 GitHub 代码仓、项目页或模型权重，且已于 2026-10-28 提交 v3 撤稿（无官方可运行实现）。
+
+## 评测与对比
+
+Matched PI-FAST 对照（Table 1，v2 报告）：
 
 | Method | Long | Spatial | Object | Goal | All |
 |--------|------|---------|--------|------|-----|
@@ -118,23 +127,23 @@ Matched PI-FAST 对照（Table 1）：
 | Time-Domain（无频选） | **50.0** | 96.2 | 97.2 | 87.0 | 82.6 |
 | **RTCF** | **68.6** | **97.4** | **97.8** | 89.8 | **88.4** |
 
-部署：PMA p50 **6.28 ms** + FAST future readout **4.71 ms** ≈ **10.99 ms**/chunk。
+- **阶段延迟与长程任务明细（v2 Table 2 & §4.2）：** PMA 检索 p50/p95 = **6.28 / 7.52 ms**，FAST 未来片段读出 p50 = **4.71 ms**（两阶段合计 **10.99 ms**），Stage-median 动作就绪延迟估计 386.47 ms → 398.67 ms（+3.16%）；LIBERO-Long 10 个任务中 6 升 / 1 平 / 3 降（净 +35 成功）。
 
 ## 结论
 
-**RTCF 说明：对 chunk VLA，成功经验最有用的部分往往是「进度对齐后的低频运动趋势」——整段时域回放反而会毁掉策略的反应结构。**
+**RTCF 在 v2 中提出了将「时序进度对齐」与「频域低频残差修正」解耦的免训练思路，但因 v3 已于 2026-10-28 被作者以实验证据不足为由撤稿，其实际有效性尚待作者补充验证。**
 
-1. **主增益在 LIBERO-Long（+7.0 pt）** — 阶段歧义与误差累积越重，历史对齐越值钱；全域 +2.0 pt 不要误读成全面碾压。
-2. **两组件都必要** — 去掉历史对齐 Long 只到 63.6%；去掉频选掉到 **50.0%**（有害）。
-3. **与可训纠偏模块选型：** 有算力训 WM → [DynaWM](./paper-dynawm-vla-online-correction.md)；要执行前多候选 → [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)；只要 CPU 侧轻量补丁且有成功记忆 → RTCF。
-4. **复现缺口：** 方法清晰但 **无官方代码**；落地需自实现 PMA + 频域残差并备记忆库。
+1. **首要事实：v3 已撤稿，切勿直接引用其基准结论** — `2608.04527.abs.html` 明确声明当前版本的实验证据尚不足以完全支撑主要结论与泛化性。
+2. **思路仍有启发（待再验证）：历史对齐优于单帧，低频残差优于全时域覆盖** — v2 消融显示 Time-Domain 掉到 50.0%（34 rescue / 92 regression），提示直接在时域覆盖动作 chunk 会破坏反应性。
+3. **主报告增益集中于 LIBERO-Long（+7.0 pt，Task 5 贡献 +11 成功）** — 且包含 3 个任务小幅回退及 Goal 套件 89.8 < 90.0，并非单调提升。
+4. **选型替代：** 需要已验证/有训练支撑的在线修正看 [DynaWM](./paper-dynawm-vla-online-correction.md) 或 [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)；若参考 RTCF 思路须自行实现并独立验证。
 
 ## 局限与风险
 
-- 仅报告冻结 PI-FAST + LIBERO；跨模型 / 真机未给。
-- 依赖预采集成功记忆；库覆盖不足时可能误纠偏（虽有回退）。
-- Goal 套件 RTCF **89.8 < baseline 90.0**（小幅回退），说明非所有套件单调受益。
-- **无开源** 阻碍直接工程复用。
+- **v3 撤稿风险（核心约束）：** 作者于 2026-10-28 主动撤回论文，说明原有实验证据不足以支持主要结论与泛化性。
+- **单模型单基准：** v2 仅报告冻结 PI-FAST + LIBERO 仿真；跨策略家族、更大记忆库与真机均未验证。
+- **Goal 与部分 Long 任务存在回退：** Goal 套件 89.8 < baseline 90.0，Long 的 Task 4/6/8 亦有回退；对预采集成功记忆库覆盖高度敏感。
+- **无开源：** 无官方代码、无预采集记忆库或评估脚本公开。
 
 ## 与其他工作对比
 

@@ -5,8 +5,10 @@
 - **URL：** <https://bridgevla-plus.github.io/>
 - **配套论文：** [arXiv:2608.05042](https://arxiv.org/abs/2608.05042) — 归档见 [`sources/papers/bridgevla_plusplus_arxiv_2608_05042.md`](../papers/bridgevla_plusplus_arxiv_2608_05042.md)
 - **代码：** <https://github.com/BridgeVLA/BridgeVLA> — [`sources/repos/bridgevla.md`](../repos/bridgevla.md)
-- **权重：** <https://huggingface.co/datasets/LPY/BridgeVLA>
+- **权重：** <https://huggingface.co/datasets/LPY/BridgeVLA>（ModelScope 镜像 `susetiankong/bridgevla_plus`）
 - **入库日期：** 2026-08-07
+- **通读：** 已完成
+- **核对范围：** `sites/bridgevla_plus.html` 完整正文、全部作者/机构（含 Nanjing University）与导航锚点、5 大仿真基准汇总与逐任务表（RMBench / RLBench / COLOSSEUM / GemBench / MemoryBench）、Franka / Dobot 真机结果与可视化、消融表 9–11 及参数/延迟开销节
 
 ## 一句话摘要
 

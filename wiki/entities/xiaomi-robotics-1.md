@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, vla, foundation-policy, umi, scaling-laws, mobile-manipulation, cross-embodiment, flow-matching, xiaomi, xiaomi-robotics]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-14
 arxiv: "2607.15330"
+code: https://github.com/XiaomiRobotics/Xiaomi-Robotics-1
 related:
   - ../methods/vla.md
   - ../methods/diffusion-policy.md
@@ -19,7 +20,11 @@ sources:
   - ../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md
   - ../../sources/sites/xiaomi-robotics-1.md
   - ../../sources/repos/xiaomi-robotics-1.md
-summary: "Xiaomi-Robotics-1（XR-1，arXiv:2607.15330）：>100k h UMI 无本体预训练（VLM 自动状态转移标注）+ ~10k h 跨本体后训练；Qwen3-VL + DiT flow matching MoT（2.6B/5.1B/10.5B）；预训练 scaling 迁移到未见环境开箱与少样本微调；RoboCasa 四榜领先；GitHub/HF 入口已建但代码权重 Coming soon。"
+original:
+  - ../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md
+  - ../../sources/sites/xiaomi-robotics-1.md
+  - ../../sources/repos/xiaomi-robotics-1.md
+summary: "Xiaomi-Robotics-1（XR-1，arXiv:2607.15330v2）：>100k h UMI 无本体预训练（Qwen3.5-27B 自动状态转移标注）+ ~10k h 跨本体后训练；Qwen3-VL + DiT flow matching MoT（2.6B/5.1B/10.5B）；预训练 scaling 迁移到未见环境开箱与少样本微调；RoboCasa/RoboCasa365/VLABench/RoboDojo 四榜领先；2026-08-03 已以 Apache-2.0 公开 5B 基座与评测权重、xr1 后训练与双 Socket 部署栈，但 100k h UMI 预训练管线及 2.6B/10.5B 权重未公开。"
 ---
 
 # Xiaomi-Robotics-1
@@ -45,12 +50,23 @@ summary: "Xiaomi-Robotics-1（XR-1，arXiv:2607.15330）：>100k h UMI 无本体
 
 | 字段 | 内容 |
 |------|------|
-| **机构** | 小米机器人实验室（Xiaomi Robotics） |
-| **arXiv** | [2607.15330](https://arxiv.org/abs/2607.15330) |
+| 机构 | 小米机器人实验室（Xiaomi Robotics） |
+| **arXiv** | [2607.15330](https://arxiv.org/abs/2607.15330)（v1 2026-07-16 / v2 2026-07-22） |
 | **项目页** | <https://robotics.xiaomi.com/xiaomi-robotics-1.html> |
-| **规模变体** | **2.6B / 5.1B / 10.5B** |
+| **源码与权重** | [GitHub（Apache-2.0）](https://github.com/XiaomiRobotics/Xiaomi-Robotics-1) · [HF 合集](https://huggingface.co/collections/XiaomiRobotics/xiaomi-robotics-1) · [ModelScope](https://www.modelscope.cn/collections/XiaomiRobotics/Xiaomi-Robotics-1) |
+| **规模变体** | **2.6B / 5.1B / 10.5B**（开源基座权重为 **5B / 5.1B**） |
 | **预训练数据** | **>100k h** 真实世界 UMI（**>1,700** 场景） |
 | **后训练数据** | **~10k h** 跨本体（**>7.2k h** 自采真机 + imperative UMI + 开源集） |
+
+## 开源状态
+
+核查日：**2026-11-14**（实读 `XiaomiRobotics/Xiaomi-Robotics-1` 仓源码、HF/ModelScope 合集与 README 2026-08-03 更新日志）。
+
+| 产物 | 状态 | 说明 |
+|------|------|------|
+| GitHub 源码 `XiaomiRobotics/Xiaomi-Robotics-1` | **已开源（Apache-2.0，部分）** | `deploy/` 通用推理服务、`scripts/deploy.sh`、`eval_robocasa/`、`eval_robocasa365/`、`eval_vlabench/`、`xr1/` 5B 后训练与自定义异步部署栈 |
+| HF / ModelScope 模型权重 | **已公开 5B 与三基准权重** | `Xiaomi-Robotics-1-5B`、`Xiaomi-Robotics-1-{RoboCasa,RoboCasa365,VLABench}` 与 `xr1_post_train_demo`；RoboDojo 未单列权重 |
+| **2.6B / 10.5B 变体与 UMI 预训练** | **未公开** | 仓内 `xr1/` 硬编码 `Qwen/Qwen3-VL-4B-Instruct`（5B 架构）且移除文本 `labels`；>100k h UMI 数据、Qwen3.5-27B 自动标注流水线与 >7.2k h 自采真机集未发布 |
 
 ## 为什么重要
 
@@ -74,56 +90,103 @@ summary: "Xiaomi-Robotics-1（XR-1，arXiv:2607.15330）：>100k h UMI 无本体
 
 ```mermaid
 flowchart TB
-  subgraph pre [预训练：breadth]
-    UMI[>100k h UMI 轨迹\n>1700 场景]
-    Auto[VLM 自动标注\n状态转移语言]
-    MoT[Qwen3-VL + DiT\nChoice Policies + flow matching]
-    VL[VL 语料 NTP\n与 UMI 1:9 混训]
+  subgraph pre["预训练：breadth（论文，未开源）"]
+    UMI[">100k h UMI 轨迹<br/>>1,700 场景"]
+    Auto["Qwen3.5-27B 自动标注<br/>状态转移自然语言"]
+    MoT["Qwen3-VL + DiT<br/>Choice Policies + Flow Matching"]
+    VL["VL 语料 NTP<br/>与 UMI 1:9 混训"]
     UMI --> Auto --> MoT
     VL --> MoT
   end
-  subgraph post [后训练：alignment]
-    Robot[>7.2k h 真机\n移动操作 + 双臂]
-    InstUMI[>1k h imperative UMI]
-    Open[Bridge / RT-1 / DROID\n过滤 idle]
-    Align[本体对齐 + 指令对齐]
+  subgraph post["后训练：alignment（5B 栈 xr1/ 已开源）"]
+    Robot[">7.2k h 真机<br/>移动操作 + 双臂"]
+    InstUMI[">1k h imperative UMI"]
+    Open["Bridge V2 / RT-1 / DROID<br/>过滤 idle"]
+    Align["统一 60D 相对动作与 mask<br/>MSE + FFT 频域 + Choice 损失"]
     Robot --> Align
     InstUMI --> Align
     Open --> Align
   end
   MoT --> Align
-  Align --> Deploy[未见环境开箱\n+ 少样本下游微调]
+  Align --> Deploy["未见环境开箱<br/>+ Socket 异步推理 / 少样本微调"]
 ```
-
-## 关键结果（论文表 / 项目页）
-
-| 维度 | 要点 |
-|------|------|
-| **预训练 scaling** | **~20k h** UMI 子集上，数据 **12.5%→100%**、模型 **2B→10B**，验证 action **MSE** 单调下降。 |
-| **后训练开箱** | 四任务（鞋柜/书包/桌面/沙发）；**10B + 100% 20k h 预训练** 总成功率约 **79%**；**2B→10B** 后训练成功率 **61%→79%**。 |
-| **少样本微调** | 四灵巧任务；**<10 h/任务** 平均成功率 **75%** vs **π₀.₅ 40%**；**<40 h/任务** **85%** vs **53%**。 |
-| **仿真基准** | RoboCasa **74.5%**；RoboCasa365 平均 **57.4%**（摘要写 57.6%）；VLABench SR 领先；RoboDojo 平均分 **20.07** / 成功率 **13.93%**。 |
-| **长程真机** | 项目页展示 **>10 min** 房间级 **行李箱打包** 未剪辑视频。 |
-
-## 工程实践
-
-| 维度 | 要点 |
-|------|------|
-| **动作表示** | 臂：相对当前状态的 **delta EE**；移动基座速度 + 腰相对位移；异构本体统一向量并对缺失维 **mask** |
-| **后训练采样** | VL : 开源机器人 : imperative UMI : 自采真机 ≈ **0.5 : 0.5 : 0.5 : 8.5** |
-| **部署叙事** | 未见环境开箱；少样本新任务用 XR-0 同系 **异步训练 recipe** 微调 |
-| **复现入口** | 论文 + 项目页 PDF；跟踪 [GitHub 占位仓](https://github.com/XiaomiRobotics/Xiaomi-Robotics-1) 与 [HF 组织](https://huggingface.co/XiaomiRobotics) |
 
 ## 源码运行时序图
 
-**不适用。** 截至 2026-07-21 项目页虽已挂 GitHub / Hugging Face 入口，但官方仓 README 标明 **Code / Model Coming soon**，仓库仅含 README 与 PDF，**无可辨识的训练 / 推理 / 部署脚本或 XR-1 权重**；故不绘制运行时序图。开放后应以 `sources/repos/xiaomi-robotics-1.md` 与 README 入口重绘。
+官方仓 `XiaomiRobotics/Xiaomi-Robotics-1` 实际拆为两条可运行路径：**路径 A** 为基于 HF `AutoModel`/`AutoProcessor` 的标准化 Socket 推理与仿真评测栈（`deploy/` + `eval_*/`）；**路径 B** 为 `xr1/` 目录下的 5B 自定义真机后训练与 `.npz` 异步部署栈。**注意**：仓内不含 Stage 1 大规模 UMI 预训练、Qwen3.5 自动标注或 VLM NTP 联合训练实现（`XR1.forward` 直接 `pop("labels")`）。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Prep as "xr1/tools 数据与权重准备"
+  participant Train as "xr1/scripts/train.sh (BaseRunner + XR1)"
+  participant Srv as "推理服务端 (deploy/server.py 或 xr1/mibot/server)"
+  participant Cli as "评测/真机客户端 (eval_* 或 runtime/client.py)"
+
+  Note over Prep,Train: 路径 B：5B 权重转换、统计归一化与后训练（xr1/）
+  Prep->>Prep: "weight_convert.py 转换 HF Xiaomi-Robotics-1-5B 为 DeepSpeed checkpoint"
+  Prep->>Prep: "compute_normalize.py 计算 (30,60) mean/std 与 (1,60) q01/q99"
+  Prep->>Train: "torchrun 启动 tools/train.py (Hydra + Lightning)"
+  Train->>Train: "BaseRunner 包装 XR1 (Qwen3-VL-4B + 36层 DiT, async_train)"
+  Train->>Train: "Beta(1.5,1) 流匹配 + FFT 频域损失(排除[17,18,19]) + Choice 损失"
+
+  Note over Srv,Cli: 路径 A / B：多端口 Socket 服务与异步 Action Chunk 闭环
+  Train-->>Srv: "scripts/deploy.sh (tmux model_servers) 或 xr1/scripts/deploy.sh 启动服务"
+  Cli->>Srv: "发送观测图像、语言指令、归一化状态 (及 async action_prefix)"
+  Srv->>Srv: "VLM 编码 KV (对 DiT 屏蔽 action/state/score token) + 5 步 Euler DiT"
+  Srv-->>Cli: "processor.decode_action 返回 action chunk (>I pickle 或 .npz 协议)"
+  Cli->>Cli: "RoboCasa/RoboCasa365/VLABench 或真机按 replan_steps 执行并滚动"
+```
+
+## 实验与评测
+
+> **口径核对：** 主体以 arXiv:2607.15330v2 正文表与项目页为准；同步记录正文本身与开源评测 README 日志的细微差异。
+
+| 维度 | 论文 / 项目页 | 仓库 / 文本口径差异注记 |
+|------|---------------|------------------------|
+| **预训练 scaling** | **~20k h** UMI 子集（12.5%→100%）、**2B→10B**，验证 action **MSE** 单调下降（12.5%/25% 后段过拟合，50%/100% 持续下降） | 预训练数据与脚本未开源 |
+| **后训练开箱（4 任务）** | 未见环境/物体开箱：5B 随预训练从 **26%**（无预训练）→ **53%**（12.5%）→ **75%**（100%）；全量预训练 **2B 61% → 5B 75% → 10B 79%** | 鞋柜/书包/桌面/沙发四任务 |
+| **少样本微调（4 任务）** | **<10 h/任务**（共 36 h）平均 SR **75%** / 进度 **90%** vs **π₀.₅ 40% / 66%**；**<40 h/任务**（共 144 h）**85%** vs **53%** | Phone 70/80、Printer 70/60、Laundry 80/100、Box 80/100（每任务 10 trials） |
+| **RoboCasa（Table 2）** | **74.5%** 平均成功率 | `eval_robocasa/README.md` 开源评测日志记录 **74.2%**（10 步 chunk，7D `robocasa_mg`） |
+| **RoboCasa365（Table 3）** | **57.4%** 均值（Atomic **80.2%** / Comp.-Seen **57.1%** / Comp.-Unseen **32.1%** vs 2nd ABot-M0.6 46.6%） | 论文 Intro 误印为 **57.6%**；`eval_robocasa365/README.md` 参考 run 为 **57.28%（1432/2500）**（4 帧历史 `@interval 2`，16 步重规划） |
+| **VLABench（Table 4）** | **59.1% SR / 70.3 PS / 69.9 IS**（5 tracks，含 50% CoT NTP） | `eval_vlabench/main.py` 默认 `action_chunk_size=10, replan_steps=5` |
+| **RoboDojo（Table 5）** | 平均分 **20.07** / 成功率 **13.93%**（无历史帧输入，Memory 排第 2） | README 榜单未单列 RoboDojo HF 权重 |
+| **长程真机** | 项目页展示 **>10 min** 房间级 **行李箱打包** 未剪辑视频 | — |
+
+## 工程实践
+
+| 维度 | 源码实测要点 |
+|------|--------------|
+| **环境与依赖** | `docs/DEPLOYMENT.md` 钉定 `transformers==4.57.1`、`torch==2.8.0`、`flash-attn==2.8.3`；推荐将模型服务与仿真器拆为两个 conda 环境，经 TCP Socket 通信 |
+| **统一 60D 张量槽位** | `xr1/docs/data_format.md`：`action_shape=(30,60)`、`state_shape=(1,60)`——左臂 EE 位姿/轴角/夹爪（`0–2, 3–5, 6`）、右臂（`8–10, 11–13, 14`）、腰部（`16`）、底盘速度（`17–19`），缺失维 mask |
+| **后训练损失与异步** | `xr1/mibot/models/VLA/XR1.py`：`0.5*loss_mse + freq_coeff*loss_freq + 0.5*loss_l1 + 0.5*loss_score`；FFT `rfft` 频域一致性排除底盘维 `[17,18,19]`；`async_train: true` 时随机采样 `prefix_length ∈ [1..6]` mask 前缀 |
+| **双服务 Socket 协议** | `deploy/server.py` 走 `>I` 长度前缀 pickle（服务 HF 权重与 `eval_*`）；`xr1/mibot/server/runtime/` 走 `.npz` 长度前缀 Socket，使用 `q01/q99` 状态归一并支持传入 `action_prefix` |
+
+## 结论
+
+**一句话总判：Xiaomi-Robotics-1 是少见的在「超大规模无本体预训练 → 跨本体对齐 → 真机少样本微调」上同时给出完整 scaling 证据并放出 5B 后训练/评测开源栈的工作，但社区目前能直接复现与微调的仅限于 5B 下游闭环，100k h UMI 预训练本身仍属黑盒。**
+
+1. **工程选型看清「5B 后训练开源、预训练闭源」边界** — `xr1/` + HF `Xiaomi-Robotics-1-5B` 可直接用于自定义真机 5B 微调与异步控制部署，但 `2.6B/10.5B` 权重与 `>100k h` UMI 自动标注预训练管线未在仓内。
+2. **复用 `xr1/` 时注意它只训连续头+Choice、不含 VLM 文本监督** — `XR1.forward` 会丢弃 `labels`；若下游需要恢复多模态问答或 CoT 推理能力（如 VLABench 50% CoT 设定），需自行补回 `NTP` 损失。
+3. **异步 Chunk + 频域一致损失可直接迁移** — `prefix_length ∈ [1..6]` 前缀条件化搭配排除底盘速度维 `[17,18,19]` 的 `rfft` 频域加权，是真机高频平滑控制的核心工程细节。
+4. **引用四基准分数须区分表值与开源复现日志** — RoboCasa365 论文表/摘要为 **57.4%**（Intro 误写 57.6%，开源 script 参考跑分为 **57.28%**），RoboCasa 论文表 **74.5%**（repo 日志 **74.2%**）。
+
+## 与其他工作对比
+
+| 维度 | Xiaomi-Robotics-1（XR-1） | [Xiaomi-Robotics-0](./xiaomi-robotics-0.md) | [Xiaomi-Robotics-U0](./xiaomi-robotics-u0.md) | \(\pi_{0.5}\) / 通才 VLA |
+|------|---------------------------|-------------------------------------------|--------------------------------------------|--------------------------|
+| **定位** | 100k h UMI 预训练基座 VLA（2.6B/5.1B/10.5B） | ~4.7B 实时异步动作块 VLA | 38B 统一具身合成世界模型 | 跨本体真机/图文混训 VLA |
+| **核心配方** | UMI 自动状态转移预训练 → 跨本体指令对齐 | 异步 chunk + Choice + Flow Matching | 结构化场景迁移视觉增广 | 多阶段图文+真机演示混训 |
+| **开源边界** | **Apache-2.0（5B 权重 + 后训练/部署/评测）**；预训练未开 | 已开源 `xr0/` 后训练与部署 | 合成 WM 数据引擎侧 | `openpi` 等开源微调生态 |
+| **主要关系** | 共享 `Qwen3-VL + DiT + Choice` 与 `mibot` 栈 | XR-1 沿用并在 `xr1/` 扩展其异步/频域训练 | 视觉增广数据引擎 ↔ 真实接触预训练 | 同协议真机少样本直接基线 |
 
 ## 局限与风险
 
 - **误区：100k h 等于「全是真机 teleop」。** 预训练主体是 **UMI 无机器人轨迹**；**>7.2k h** 真机集中在 **后训练 alignment**，二者语言条件形式不同（**状态转移 vs imperative**）。
 - **误区：仿真 SOTA 自动等于任意硬件即插即用。** 开箱评测强调 **未见环境/物体实例**；新 embodiment 仍需后训练或微调与安全层。
-- **开源边界：** **宣称将开源**；GitHub/HF **入口已建**，但截至 2026-07-21 **无可运行代码与 XR-1 权重**（与已开源的 [Xiaomi-Robotics-0](./xiaomi-robotics-0.md) 不同）。
-- **数字口径：** 摘要 RoboCasa365 **57.6%** / RoboDojo score **20.07**；正文表 RoboCasa365 平均 **57.4%**、RoboDojo 另报成功率 **13.93%**——引用时以正文表为准并注明指标名。
+- **开源边界：** 仓内已公开 `5B` 基座/三基准权重与 `xr1/` 后训练部署栈，但 **>100k h UMI 预训练流水线、Qwen3.5-27B 自动标注、>7.2k h 真机集及 2.6B/10.5B 权重未公开**。
+- **后训练管线差异：** `xr1/` 硬编码 `Qwen/Qwen3-VL-4B-Instruct` 并在 `XR1.forward` 移除 `labels`（不含 VLM NTP 损失），且依赖特定环境版本（`transformers==4.57.1`、`torch==2.8.0`、`flash-attn==2.8.3`）。
+- **数字口径差异：** 论文 Intro 误印 RoboCasa365 为 **57.6%**（正文 Table 3/摘要/项目页均 **57.4%**，`eval_robocasa365/README.md` 参考 run **57.28%**）；RoboCasa 表 **74.5%** vs repo 日志 **74.2%**；RoboDojo 另有 **20.07 score** 与 **13.93% SR** 两种主指标（且无历史观察输入影响记忆维）。
 
 ## 关联页面
 
@@ -141,11 +204,13 @@ flowchart TB
 
 ## 参考来源
 
-- [xiaomi_robotics_1_arxiv_2607_15330.md](../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md) — arXiv:2607.15330 论文归档
+- [xiaomi_robotics_1_arxiv_2607_15330.md](../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md) — arXiv:2607.15330v2 论文归档
 - [Xiaomi-Robotics-1 项目页与技术报告归档](../../sources/sites/xiaomi-robotics-1.md)
-- [Xiaomi-Robotics-1 官方仓（占位）](../../sources/repos/xiaomi-robotics-1.md)
+- [Xiaomi-Robotics-1 官方代码仓归档](../../sources/repos/xiaomi-robotics-1.md)
 - 论文：<https://arxiv.org/abs/2607.15330>
 - 项目页：<https://robotics.xiaomi.com/xiaomi-robotics-1.html>
+- 官方代码仓：<https://github.com/XiaomiRobotics/Xiaomi-Robotics-1>（Apache-2.0）
+- 模型合集：[Hugging Face](https://huggingface.co/collections/XiaomiRobotics/xiaomi-robotics-1) · [ModelScope](https://www.modelscope.cn/collections/XiaomiRobotics/Xiaomi-Robotics-1)
 
 ## 推荐继续阅读
 
