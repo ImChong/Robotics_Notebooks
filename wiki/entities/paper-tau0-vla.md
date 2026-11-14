@@ -33,11 +33,14 @@ sources:
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-17_part1.md
   - ../../sources/sites/tau0-vla-github-io.md
   - ../../sources/repos/sii_research_tau_0_vla.md
+  - ../../sources/papers/tau0_vla_arxiv_2608_16885_full_reading.md
 original:
   - ../../sources/papers/tau0_vla_arxiv_2608_16885.md
   - ../../sources/sites/tau0-vla-github-io.md
   - ../../sources/repos/sii_research_tau_0_vla.md
+  - ../../sources/papers/tau0_vla_arxiv_2608_16885_full_reading.md
 summary: "τ₀-VLA（arXiv:2608.16885）：记忆增强高层策略在不确定时通过 Step1X-Edit 世界模型与价值模型执行子任务级 TTC beam search + 反思；低层 Qwen3.5-2B+MoT（40 维统一控制、40,115 h 数据）支撑 13–25 步长程真机（分层 Plan Once 45.00% vs 直出 27.50%）；官方已开源低层权重、LIBERO、Proposal 与 World Model LoRA，Value/Reflective/SEARCH 编排尚待发布。"
+project_id: tau0-vla
 ---
 
 # τ₀-VLA：世界模型引导测试时计算的分层机器人基础模型

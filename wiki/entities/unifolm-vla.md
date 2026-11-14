@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, vla, foundation-model, imitation-learning, humanoid]
 status: complete
-updated: 2026-07-24
+updated: 2026-11-14
 related:
   - ./unitree.md
   - ./unifolm-world-model-action.md
@@ -16,6 +16,10 @@ sources:
   - ../../sources/repos/unifolm-vla.md
   - ../../sources/repos/unitree.md
 summary: "UnifoLM-VLA-0 是宇树 UnifoLM 家族的视觉–语言–动作模型，面向通用人形操作；训练/推理/权重已开源，依赖 CUDA 12.4 与钉扎的 LeRobot commit。"
+project_id: unifolm-vla-0
+code: https://github.com/unitreerobotics/unifolm-vla
+original: 
+  - ../../sources/repos/unifolm-vla.md
 ---
 
 # UnifoLM-VLA-0（unifolm-vla）

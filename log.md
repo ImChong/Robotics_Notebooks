@@ -414,6 +414,29 @@ op: ingest
 - 为其余九篇创建独立论文实体、来源与源码/项目归档、Mermaid 方法图，以及可由 README 对齐的概念时序图。
 - **开源与健康边界：** 后续已核对九篇原文及相关附录、追加实验约束与源码入口；知识节点健康度按规则升级，源码与机器人实测仍未独立复现。URDF2Ontology 原站 PDF 获取受限，已明确标注使用论文文字镜像。
 
+# 2026-11-14 ingest：2026 VLA 15 项目开源对比
+
+- **意图：** 将用户附件《15 个开源项目，看透 2026 年 VLA 的三个关键转变》（深蓝具身智能，25 页）整理为 2026 开源生态选型对照，衔接 2025 VLA 资源索引。
+- **入库：** 二手报道来源导读 1 份；按论文/项目唯一身份升级 10 个既有 wiki 实体，并新增 5 个独立 wiki 实体（TurboVLA、Hy-Embodied-0.5-VLA、StarVLA 框架论文、vla-evaluation-harness、verl-vla）；新增 9 个一手原文阅读归档与补充官方源码导航；新增跨项目 comparison 1 页。
+- **核验：** 当前官方 `allenai` 仓库纠正评测工具归属；Qwen-VLA 只披露研究结果、尚未找到完整开放代码/权重；区分 TurboVLA 单次推理 32 Hz 与整环频率；区分 Hy-VLA 10k+ h 总数据与 2k+ h 公开数据。
+- **边界：** 未重新通读 15 篇独立原始论文/源码，未运行 15 套基准。各实体只指向对应论文或项目的一手归档；StarVLA 框架和 α 为两篇不同论文，也不更改自动生成的目录/站点导出物。
+
+# 2026-11-14 · ingest · 紧密螺旋橄榄球投掷
+
+- **意图：** 收录爱荷华州立大学 Zaid Mahboob / Bowen Weng 关于 Unitree G1 精确旋转出球的 Humanoids 2026 论文，形成跨动态操作与接触控制的知识导航。
+- **原文：** https://arxiv.org/html/2608.16642v2（已核对 §I–§V 方法、实验、局限）；作者项目页 https://www.zaidmahboob.com/projects/tight-spiral/
+- **关键结论：** 两阶段抛投/随动；MPC 采样优化求解一次约 500 ms，真机使用离线 52 维查表；最高旋转效率 93.6%、最佳球头角 0.286 rad；不能误读为在线 250 Hz MPC 求解。
+- **开放程度：** 论文和演示公开视频；未查到该论文的官方可运行控制器仓库及查表数据，故源码运行时序图明确不适用。
+- **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
+- **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
+
+## [2026-11-14] ingest | sources/blogs/wechat_guyueju_perceptive_nmpc_convex_decomposition_2026-11-14.md — 感知型 NMPC 高程图凸分解与 Go2 源码核对
+
+- **意图：** 消化用户提供的古月居技术解读 PDF，建立可溯源的感知型 NMPC / 凸踏面几何约束工程入口。
+- **开源核验：** Grandia 等原始方法见 IEEE T-RO 2023（ANYmal）；Go2 适配补丁和 ROS 2/MuJoCo 工具见 Khaledsweid1/ocs2-perceptive-mpc-go2（公开）。
+- **重要边界：** Go2 工程的落足区域约束默认关闭，指南说明尚不能完整爬完楼梯；模拟射线高程图非真机感知，附件参数来自文章与仓库文档，未独立复测。
+- **沉淀：** [Go2 感知型 NMPC 实体](../wiki/entities/ocs2-perceptive-mpc-go2.md)，并接入 [感知越障纵深路线](../roadmap/depth-perceptive-locomotion.md)。
+
 ## [2026-11-14] ingest | 完成 PR #3732（Issue #3487）涉及全部 63 个知识节点的原文与官方源码通读、Mermaid 项目流程图与源码运行时序图补齐，修正 SRU 404 仓库链接为 leggedrobotics/sru-pytorch-spatial-learning，63 页节点健康度全部升至 3/3
 
 ## [2026-11-14] structural | wiki — 完成 #3487 全量 277 页候选语义核验：回填 55 页、排除 217 页、待定 5 页；保留首批 8 页并恢复原 updated，核验记录见 docs/quality/issue-3487-code-backfill.md

@@ -26,6 +26,9 @@ sources:
   - ../../sources/sites/lingbot-vla-v2-technology-robbant.md
   - ../../sources/repos/lerobot.md
 summary: "LingBot-VLA 2.0（6B）：Qwen3-VL-4B + 稀疏 MoE action expert，约 6 万小时异构预训练（5 万 h 机器人 ×20 本体 + 1 万 h egocentric 人视频）、55 维统一全身动作空间与 Dual-Query 深度/视频蒸馏；GM-100 与长程移动操作 generalist 评测超 π₀.₅ / GR00T N1.7，开源权重与真机部署脚本。"
+project_id: lingbot-vla-v2
+original: 
+  - ../../sources/papers/lingbot_vla_v2_full_reading_2026_11_14.md
 ---
 
 # LingBot-VLA 2.0
@@ -170,6 +173,12 @@ sequenceDiagram
 | Cobot Magic-ARX X5 | 炉灶清洁 | In-domain | **84.3 / 66.7** | 79.9 / 60.0 |
 | Cobot Magic-ARX X5 | 炉灶清洁 | Out-of-domain | **67.5 / 40.0** | 62.5 / 33.3 |
 
+## 工程实践：训练与部署核验
+
+- 依据官方模型版本和 55 维动作槽位表核对本体掩码，机器人端未覆盖维度不可当作可控指令。
+- 核对已筛选 50,000 小时机器人数据 + 10,000 小时第一视角人视频，与原始收集量是不同口径；微调时记录目标任务示范和数据权重。
+- 使用官方 RoboTwin 后训练/部署脚本前先在仿真中校验相机、动作单位、推理时延及末端控制接口。
+
 ## 部署要点
 
 - **推理延迟：** `deploy.lingbot_vla_v2_policy` 在 **RTX 4090D**、**10 步去噪**、`--use_compile` 下单次约 **130 ms**——仍需与 [action chunking](../methods/action-chunking.md) / 异步缓冲组合以满足高频控制。
@@ -208,6 +217,8 @@ sequenceDiagram
 - [LingBot-Map](../methods/lingbot-map.md) — 同团队 **流式 3D 几何** 基础模型（问题域不同）
 
 ## 参考来源
+
+- [LingBot-VLA 2.0 一手论文通读归档](../../sources/papers/lingbot_vla_v2_full_reading_2026_11_14.md)
 
 - [lerobot.md](../../sources/repos/lerobot.md)：固定提交 9e5ee98 的 `docs/source/lingbot_vla_v2.mdx` 与 `src/lerobot/policies/lingbot_vla_v2/`
 - [LingBot-VLA 2.0 技术报告摘录](../../sources/papers/lingbot_vla_v2_tech_report.md)

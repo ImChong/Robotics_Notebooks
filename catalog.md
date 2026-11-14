@@ -1108,6 +1108,7 @@
 - [NVIDIA USD BRep / SMLib](wiki/entities/nvidia-usd-brep-smlib.md) — NVIDIA USD BRep** 是一套独立的 C++/Python NURBS 边界表示（B-rep）实体建模库，核心 SMLib 负责拓扑与几何操作，SM_API 提供高层调用接口，SM_A `📅2026-10-13` `[entity_page]`
 - [NVIDIA Warp（可微 GPU 计算框架）](wiki/entities/nvidia-warp.md) — NVIDIA Warp** 是面向仿真、机器人与机器学习的 **Python JIT 框架**：用 `@wp.kernel` 写普通函数，经 `wp.launch` 编译到 **CPU 或 CUD `📅unknown` `[entity_page]`
 - [OCEC（Open Closed Eyes Classification）](wiki/entities/ocec.md) — OCEC**（`PINTO0309/OCEC`）在 **极小眼部裁剪** 上做 **open vs closed** 二分 `📅unknown` `[entity_page]`
+- [OCS2 Perceptive NMPC on Unitree Go2｜四足机器人高程图凸分解感知型非线性模型预测控制](wiki/entities/ocs2-perceptive-mpc-go2.md) — 这是 Grandia 等人感知型 NMPC 方法在 Unitree Go2 + MuJoCo + ROS 2 Jazzy 上的工程适配**：用局部高程图生成凸可落足区域、摆动避障信息和基座参考，服 `📅unknown` `[entity_page]`
 - [OCS2](wiki/entities/ocs2.md) — OCS2**](https://github.com/leggedrobotics/ocs2)（**O**ptimal **C**ontrol for **S**witched **S**yst `📅unknown` `[entity_page]`
 - [Meta Quest (Oculus) 遥操作](wiki/entities/oculust-quest-teleop.md) — 在机器人模仿学习（Imitation Learning）和 VLA 模型训练中，**Meta Quest (原 Oculus Quest)** 系列 VR 头显已成为获取大规模高质量人类演示数据的核心 `📅unknown` `[entity_page]`
 - [ODRI Solo / Bolt（开源腿式平台）](wiki/entities/odri-solo-and-bolt.md) — ODRI（Open Dynamic Robot Initiative）** 提供面向研究的开源 **扭矩控制** 腿足平台：**Solo**（四足）与 **Bolt**（双足）常被引作 **低惯量 `📅unknown` `[entity_page]`
@@ -2921,6 +2922,7 @@
 - [HuRo：机器人化人类视频能否提供可扩展的 VLA 预训练监督？](wiki/entities/paper-huro.md) — HuRo**（*HuRo: Robotizing Human Videos for Scalable VLA Pretraining*，[arXiv:2609.10706](https://arx `📅unknown` `[entity_page]`
 - [HWAM：联合状态–动作生成的人形世界动作模型](wiki/entities/paper-hwam-humanoid-world-action-model.md) — HWAM**（*Humanoid World Action Model With Joint State–Action Generation*，arXiv:2610.12026，逐际动力 LimX `📅unknown` `[entity_page]`
 - [Hierarchical Planning with Latent World Models（HWM）](wiki/entities/paper-hwm-latent-world-model-planning.md) — Hierarchical Planning with Latent World Models**（[arXiv:2604.03208](https://arxiv.org/abs/2604.032 `📅unknown` `[entity_page]`
+- [Hy-Embodied-0.5-VLA：从数据采集到真机闭环的 VLA 学习栈 / From VLA Models to a Real-World Robot Learning Stack](wiki/entities/paper-hy-embodied-05-vla.md) — Hy-Embodied-0.5-VLA（HyVLA-0.5）** 是腾讯 Robotics X 与混元团队的完整机器人学习系统：以具身 MoT VLM、多帧压缩记忆与双塔 flow-matchin `📅unknown` `[entity_page]`
 - [HY-Motion 1.0](wiki/entities/paper-hy-motion-1-0.md) — HY-Motion 1.0: Scaling Flow Matching Models for Text-To-Motion Generation**（Tencent Hunyuan 3D Dig `📅unknown` `[entity_page]`
 - [Hybrid Particle-Voxel Dynamics（arXiv:2611.04492）](wiki/entities/paper-hybrid-particle-voxel-dynamics.md) — Hybrid Particle-Voxel Dynamics**（*Hybrid Particle-Voxel Dynamics for Multimodal 3D World Simulatio `📅unknown` `[entity_page]`
 - [Hydra-0：Action Flow 通才世界模型](wiki/entities/paper-hydra-0.md) — Hydra-0**（*Action Flow for Generalist World Modeling and Control*，[arXiv:2608.18077](https://arxiv `📅unknown` `[entity_page]`
@@ -3202,7 +3204,7 @@
 - [手眼自主配送](wiki/entities/paper-loco-manip-161-145-n145.md) — 手眼自主配送** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
 - [OpenHLM](wiki/entities/paper-loco-manip-161-154-openhlm.md) — OpenHLM**（*An Empirical Recipe for Whole-Body Humanoid Loco-Manipulation*，[项目页](https://openhlm-pr `📅unknown` `[entity_page]`
 - [PhysiFlow](wiki/entities/paper-loco-manip-161-155-physiflow.md) — PhysiFlow** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3 `📅unknown` `[entity_page]`
-- [Psi0](wiki/entities/paper-loco-manip-161-156-psi0.md) — Psi0** 收录于 具身智能研究室 · 人形 Loco-Manip 161 篇长文  `📅unknown` `[entity_page]`
+- [Ψ₀（Psi-Zero）：面向通用人形移动操作的开放基础模型 / An Open Foundation Model Towards Universal Humanoid Loco-Manipulation](wiki/entities/paper-loco-manip-161-156-psi0.md) — Ψ₀** 是由 **南加州大学（USC）Physical Superintelligence Lab** 主导、NVIDIA 与 WorldEngine 作者合作的人形移动操作 VLA：先从人类第 `📅unknown` `[entity_page]`
 - [REFINE-DP](wiki/entities/paper-loco-manip-161-157-refine-dp.md) — REFINE-DP**（*REinforcement learning FINE-tuning of Diffusion Policy*，[arXiv:2603.13707](https://ar `📅unknown` `[entity_page]`
 - [世界行动模型是零样本策略](wiki/entities/paper-loco-manip-161-159-n159.md) — 世界行动模型是零样本策略** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR `📅unknown` `[entity_page]`
 - [通过主动空间大脑和通用动作小脑进行人形全身操作](wiki/entities/paper-loco-manip-161-160-n160.md) — 通过主动空间大脑和通用动作小脑进行人形全身操作** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9Eh `📅unknown` `[entity_page]`
@@ -5798,6 +5800,7 @@
 - [STAR（arXiv:2609.12549）](wiki/entities/paper-star-vtla.md) — STAR**（[STAR: Sparse Tactile Representation Learning in Vision-Tactile-Language-Action Models for  `📅unknown` `[entity_page]`
 - [STAR（arXiv:2610.41009）](wiki/entities/paper-star.md) — STAR**（*STAR: Steering Action Representations with Proprioception for VLA Inference*，[arXiv:2610.4 `📅unknown` `[entity_page]`
 - [STARE（arXiv:2611.06089）](wiki/entities/paper-stare.md) — STARE**（*STARE: Scene Text-Aware multimodal Retrieval for Everyday objects*，[arXiv:2611.06089](htt `📅unknown` `[entity_page]`
+- [StarVLA：模块化 VLA 实验与部署框架 / A Lego-like Codebase for Vision-Language-Action Model Developing](wiki/entities/paper-starvla-framework.md) — StarVLA** 是把 **backbone、action head、dataset adapter、trainer、evaluation server** 拆开的开源 VLA 研究平台，使同一 `📅unknown` `[entity_page]`
 - [StarWM: Self-Supervised Trained Attention Routing for Robust World Models](wiki/entities/paper-starwm.md) — StarWM用注意力路由减少移动背景对任务相关预测的干扰。 `📅unknown` `[entity_page]`
 - [SRD：latent 世界模型的状态–读数解耦](wiki/entities/paper-state-readout-decoupling.md) — State–Readout Decoupling (SRD)**（PDF，香港大学 Ag `📅unknown` `[entity_page]`
 - [Stay Seated：G1 被动椅上的全向坐姿移动](wiki/entities/paper-stay-seated.md) — Stay Seated**（*Learning Omnidirectional Humanoid Locomotion on a Passive Mobile Chair with Casters `📅unknown` `[entity_page]`
@@ -5937,6 +5940,7 @@
 - [Thinker-WM：共享多模态表征的具身统一世界模型](wiki/entities/paper-thinker-wm-unified-world-model.md) — Thinker-WM**（*Thinker-WM: A Unified World Model with Shared Multimodal Representations for Embodie `📅unknown` `[entity_page]`
 - [Thinking in Video（视频生成器能否对真实世界做因果推理？）](wiki/entities/paper-thinking-in-video.md) — Thinking in Video**（*Can Video Generators Really Reason About the Real World?*，[arXiv:2607.17523 `📅unknown` `[entity_page]`
 - [ThinkWorld](wiki/entities/paper-thinkworld.md) — mermaid `📅unknown` `[entity_page]`
+- [人形机器人投掷紧密螺旋美式橄榄球 / Throwing a Tight Spiral American Football by a Humanoid Robot](wiki/entities/paper-throwing-tight-spiral-football.md) — Tight Spiral Throwing（紧密螺旋投掷）** 将人形机器人的高动态抛投分为**加速赋予线/角动量**与**控制指尖最后接触以稳定旋转**两阶段；在 Unitree G1 上验证了 `📅unknown` `[entity_page]`
 - [Thrust-Assisted Trotting：基于实时 QP-MPC 的仿生推力辅助空地双足小跑](wiki/entities/paper-thrust-assisted-trotting-legged-aerial-qp-mpc.md) — Thrust-Assisted Trotting**（*Bio-inspired Thrust-Assisted Trotting on a Legged-Aerial Robot via Rea `📅unknown` `[entity_page]`
 - [TianjicX：面向多任务机器人的时空弹性神经形态芯片](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md) — Neuromorphic computing chip with spatiotemporal elasticity for multi-intelligent-tasking robots**（ `📅unknown` `[entity_page]`
 - [TIDE/TIDES（arXiv:2610.16167）](wiki/entities/paper-tide-tides-4d-liquid-forecasting.md) — TIDE/TIDES**（*Interactive 4D Volumetric Liquid Forecasting under Moving-Solid Interaction*，[arXiv: `📅unknown` `[entity_page]`
@@ -5995,6 +5999,7 @@
 - [TSIL（Temporal Self-Imitation Learning）](wiki/entities/paper-tsil-temporal-self-imitation-learning.md) — TSIL**（*Temporal Self-Imitation Learning*，Jia & Chen，Duke / General Robotics Lab，arXiv:[2606.19752 `📅unknown` `[entity_page]`
 - [TTCO（Test-Time Compute for Humanoid Behavior Foundation Models）](wiki/entities/paper-ttco-test-time-compute-humanoid-bfm.md) — Test-Time Command Optimization（TTCO）** 在测试时通过闭环仿真优化冻结人形行为基础模型（BFM）的输入 motion command，缩小目标动作与实际执行之间 `📅unknown` `[entity_page]`
 - [TTT-RM（arXiv:2610.04701）](wiki/entities/paper-ttt-rm-residual-memory.md) — TTT-RM**（*Test-Time Training as Residual Memory for Robot Policies*，[arXiv:2610.04701](https://arx `📅unknown` `[entity_page]`
+- [TurboVLA：轻量双向视觉语言融合的实时动作策略 / Real-Time Vision-Language-Action Model at 32 Hz](wiki/entities/paper-turbovla.md) — TurboVLA** 将典型 VLA 的 V→LLM→A 改成 **视觉特征 + 轻量指令编码 → 双向融合 → 连续动作块**：重点验证**执行层推理**是否可以在消费级 GPU 上足够快，而不 `📅unknown` `[entity_page]`
 - [TuringViT（Making SOTA Vision Transformers Accessible to All）](wiki/entities/paper-turingvit.md) — TuringViT**（arXiv:2606.24253）由小鹏（XPeng）提出：面向 VLM/VLA 时代的 **可定制 SOTA 视 `📅unknown` `[entity_page]`
 - [Educational robotics beyond ROS：TurtleBot3 的 Webots 控制器直接迁移库](wiki/entities/paper-turtlebot3-webots-noros-library.md) — 论文：** *Educational robotics beyond ROS: a custom library for direct transfer of Webots controllers `📅unknown` `[entity_page]`
 - [TWIST](wiki/entities/paper-twist.md) — TWIST**（*Teleoperated Whole-Body Imitation System*，arXiv:2505.02833，CoRL 2025）是全身人形遥操作与模仿学习系统。 `📅unknown` `[entity_page]`
@@ -6719,6 +6724,7 @@
 - [Velxio：真实固件与 SPICE 电路协同的嵌入式仿真平台](wiki/entities/velxio.md) — Velxio**（旧误拼 Vexlio）是嵌入式固件与外围电路的可视化仿真工作台：连线组装 Arduino、ESP32、Raspberry Pi Pico 等开发板，编译生成真实固件，通过指令级  `📅unknown` `[entity_page]`
 - [启明-1 Venus-1](wiki/entities/venus-1-four-link-wheel-legged-robot.md) — 启明-1 Venus-1**（GitHub）来自 [古 `📅unknown` `[entity_page]`
 - [agent-browser（Vercel Labs Skill）](wiki/entities/vercel-agent-browser-skill.md) — agent-browser**（vercel-labs/agent-browser）是面向 codi `📅unknown` `[entity_page]`
+- [verl-vla：连接人介入、仿真与训练集群的 VLA 后训练系统 / Unified VLA Post-Training Framework](wiki/entities/verl-vla.md) — verl-vla** 是部署于不同机器的 VLA 数据收集、策略训练、rollout、评测与人工纠错流程的**分布式后训练框架**，在 verl 基础上将 workflow、trainer、Tra `📅unknown` `[entity_page]`
 - [VESC（开源大电流电机驱动）](wiki/entities/vesc.md) — VESC**（vesc-project.com）是 Benjamin Vedder 发起的开源电机控制器生态：固件仓 [vedderb/b `📅unknown` `[entity_page]`
 - [VGGNet](wiki/entities/vggnet.md) — VGGNet** 证明仅用小尺寸 3×3 卷积反复堆叠即可加深网络并提升 ImageNet 精度，以结构简单换取可迁移的通用特征。 `📅unknown` `[entity_page]`
 - [Video Prediction Policy 2（VPP2）](wiki/entities/video-prediction-policy-2.md) — Video Prediction Policy 2（VPP2）**（论文 arXiv:2610.10270，[官方代码](h `📅unknown` `[entity_page]`
@@ -6731,6 +6737,7 @@
 - [vision-demos（视频运动分析示例）](wiki/entities/vision-demos.md) — vision-demos** 是 Jeremy Park 的开源计算机视觉示例集，从运动视频提取姿态或物体分割结果，再计算健身、跑步、舞蹈和攀岩指标。 `📅unknown` `[entity_page]`
 - [Vision Mamba（Vim）](wiki/entities/vision-mamba-vim.md) — Vim 将双向 Mamba 扫描引入视觉骨干，以近线性复杂度做图像分类与密集预测，探索无注意力的通用视觉主干。 `📅unknown` `[entity_page]`
 - [VIStream：给流式几何基础模型接上惯性运动](wiki/entities/vistream.md) — 一句话定义：** VIStream 是一种免训练的视觉-惯性运动积分方法：保持 LingBot-Map 等流式视觉几何模型不动，把标定后的视觉- `📅unknown` `[entity_page]`
+- [vla-evaluation-harness：可复现的 VLA 统一评测框架 / Uniform VLA Evaluation Harness](wiki/entities/vla-evaluation-harness.md) — vla-evaluation-harness** 是 Ai2（Allen Institute for AI）开源的**机器人策略评测基础设施**，将模型服务和 benchmark 环境封装成独立适 `📅unknown` `[entity_page]`
 - [VLA SOTA Leaderboard（EvoMind / MINT-SJTU）](wiki/entities/vla-sota-leaderboard.md) — VLA SOTA Leaderboard**（线上站 sota.evomind-tech.com，源码 [MINT-SJTU/E `📅unknown` `[entity_page]`
 - [VLNVerse](wiki/entities/vlnverse.md) — VLNVerse**（VLNVerse：VLN 场景数据源（LightNav 数据引擎））在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样 `📅unknown` `[entity_page]`
 - [VLX-Flow：面向实时多模态交互的连续视频理解](wiki/entities/vlx-flow.md) — VLX-Flow 是 Om AI Lab 提出的流式视觉语言模型：按时间处理视频片段，维护视觉与语义状态，以支持随时提问和连续描述。 `📅unknown` `[entity_page]`
@@ -7397,6 +7404,7 @@
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles：四条 WBT 方法谱系对比](wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — 背景**：当一段参考动作（MoCap、视频估计、生成模型）落到一台真实人形机器人上时，[Whole-Body Tracking Pipeline](../concepts/whole-body-t `📅unknown` `[comparison_page]`
 - [Spark vs Aholo Viewer：Web 大场景 3DGS 渲染选型](wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md) — 两者都解决 **consumer 设备 上交互式浏览千万级 splat** 的问题，但 **生态绑定、格式与混渲能力** 不同。机器人研究若只需 **训练用光真实感观测**，应优先 [GS-Playg `📅unknown` `[comparison_page]`
 - [轨迹优化 vs 强化学习（Trajectory Optimization vs Reinforcement Learning）](wiki/comparisons/trajectory-opt-vs-rl.md) — 在足式机器人运动控制领域，**轨迹优化 (Trajectory Optimization, TO)** 和 **强化学习 (Reinforcement Learning, RL)** 是两种截然不同但 `📅unknown` `[comparison_page]`
+- [2026 年 VLA 开源生态三转变：15 个项目的复现与选型对照 / Three Shifts in the 2026 Open VLA Ecosystem](wiki/comparisons/vla-open-source-ecosystem-2026-three-shifts.md) — 2026 年的 VLA 开源价值不仅在**动作模型能否下载**，也在于能否把异构数据接入目标本体、能否按物理节奏执行，以及能否用公共工具实现**可核验的训练—评测—后训练闭环**；本文按这三种工程问题 `📅unknown` `[comparison_page]`
 - [五大具身模型分类：VLM、VLN、VLA、VLX 与世界模型](wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — 五大具身模型** 是 2025–2026 年产业报告与论文中高频出现的 **功能分层缩写**：共享 **Transformer + 多模态编码** 底座，按 **跨模态理解 → 空间导航 → 动作 `📅unknown` `[comparison_page]`
 - [WAM-TTT × RoboTTT × StellaVLA × Zero-WAM：具身 ICL 四路线对比](wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md) — 截至 2026-08 学术侧最接近产业「演示当提示」叙事的四条可核对路线**：两条 **快权重 TTT**（感知侧技能记忆 vs 动作侧工作记忆）与两条 **零梯度上下文**（结构化语言示范 vs `📅unknown` `[comparison_page]`
 - [Weights & Biases vs TensorBoard（训练实验监控选型）](wiki/comparisons/wandb-vs-tensorboard.md) — 在机器人强化学习工程里，**TensorBoard** 与 **Weights & Biases（W&B）** 都回答「训练进行得怎样」，但默认假设不同：前者是 **本机 event 文件 + 浏览器 `📅unknown` `[comparison_page]`

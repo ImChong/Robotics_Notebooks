@@ -34,9 +34,11 @@ related:
 sources:
 - ../../sources/papers/internvla_a15_arxiv_2607_04988.md
 - ../../sources/repos/internvla-a1.md
+- ../../sources/papers/internvla_a15_arxiv_2607_04988_full_reading.md
 original:
 - ../../sources/papers/internvla_a15_arxiv_2607_04988.md
 - ../../sources/repos/internvla-a1.md
+- ../../sources/papers/internvla_a15_arxiv_2607_04988_full_reading.md
 summary: InternVLA-A1.5（上海 AI Lab，arXiv:2607.04988）：Qwen3.5-2B MoT VLM + 460M unified expert；Stage1 持续 VQA/子任务/FAST 共训保语义，Stage2 用 50 foresight token 查询冻结 WAN2.2-5B 潜式未来 + flow matching 连续动作；代码（InternRobotics/InternVLA-A1 main 分支）与 HF 权重已按 CC BY-NC-SA 4.0 开源；推理丢弃 WAN（~0.1s/步），六套仿真与真机组合泛化领先。
 ---
 

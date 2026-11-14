@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, qwen, open-source, flow-matching, generalist, cross-embodiment, navigation, manipulation]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -24,6 +24,11 @@ sources:
   - ../../sources/blogs/qwen_robot_suite.md
   - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
 summary: "Qwen-VLA 是通义团队开源的统一 VLA 通才：Qwen3.5-4B 视觉–语言骨干 + 1.15B DiT flow-matching 动作解码器，以 embodiment-aware 文本 prompt 在同一权重下覆盖操作、导航与轨迹预测，渐进训练含动作预训练、多模态 CPT、SFT 与 RL。"
+project_id: qwen-vla
+arxiv: "2605.30280"
+project: https://github.com/QwenLM/Qwen-VLA
+original: 
+  - ../../sources/papers/qwenvla_arxiv_2605_30280_full_reading.md
 ---
 
 # Qwen-VLA
@@ -103,6 +108,15 @@ flowchart TB
 
 **真机 ALOHA：** 与 **按任务独立微调** 的 GR00T N1.6、π₀.5 对比时，README 给出 **Qwen-VLA-aloha（w/ pretrain）** 域内平均 **83.6%**、OOD 平均 **76.9%** 成功率叙事；并强调 **大规模预训练** 对 OOD 的必要性（w/o pretrain 明显更低）。
 
+## 工程实践
+
+- 以官方 QwenLM/Qwen-VLA README 和原文为基础，先对齐目标平台的相机、语言 prompt、状态定义、动作维度和流匹配动作输出单位；文中通用模型的性能不等于任何新硬件零样本即插即用。
+- **开放状态（2026-11-14）**：官方仓库提供论文、实验表和 Demo，但未提供可核验的完整训练/推理源码及对应可下载的完整 checkpoint，当前只能做论文设计与实验协议的比较，不能承诺本地复现。
+
+## 源码运行时序图
+
+**不适用（主策略完整可运行训练/推理工程与权重尚未在官方仓库开放）**。论文框图已在“流程总览”呈现；不能伪造没有实际入口的源码时序。
+
 ## 常见误区或局限
 
 - **误区：通才权重可直接零样本上任意真机。** README 的真机表针对 **ALOHA** 与特定任务分布；新硬件仍需标定、安全层与可能的 **平台 prompt / 少量适配**。
@@ -111,6 +125,7 @@ flowchart TB
 
 ## 参考来源
 
+- [Qwen-VLA 一手论文通读归档](../../sources/papers/qwenvla_arxiv_2605_30280_full_reading.md)
 - [Qwen-VLA 仓库与论文归档](../../sources/repos/qwen-vla.md)
 - [qwenvla_arxiv_2605_30280.md](../../sources/papers/qwenvla_arxiv_2605_30280.md)
 - Wang et al., *Qwen-VLA: Unifying Vision-Language-Action Modeling across Tasks, Environments, and Robot Embodiments*, [arXiv:2605.30280](https://arxiv.org/abs/2605.30280)

@@ -38,3 +38,7 @@
 - [x] 仓库目录功能
 - [x] 核心设计模式
 - [ ] 后续：复现该项目的环境搭建步骤
+
+## 2026-11-14 一手身份核验
+
+StarVLA 框架论文为 **arXiv:2604.05014**，另有独立 **StarVLA-α（2604.11757）**。官方仓库 `starVLA_dev` README 同时列出两篇，不能混用编号。见 [StarVLA 框架唯一论文详情](../../wiki/entities/paper-starvla-framework.md)；α 的历史方法页 [StarVLA](../../wiki/methods/star-vla.md)。

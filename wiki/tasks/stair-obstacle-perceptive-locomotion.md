@@ -42,6 +42,7 @@ related:
   - ../entities/paper-perceptive-bfm.md
   - ../entities/paper-walk-these-ways-quadruped-mob.md
   - ../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md
+  - ../entities/ocs2-perceptive-mpc-go2.md
   - ../entities/paper-mgdp-generalized-depth-perception.md
   - ../entities/paper-p3.md
   - ../entities/paper-wm-loco.md
@@ -173,6 +174,7 @@ flowchart TB
 | **有**（学习映射+不确定性 + AME-2） | **parkour + 稀疏/未见组合** | [AME-2](../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) | Teacher–Student；ANYmal **~2 m/s** 跑酷；TRON1 0.48/0.88 m 攀台；Probabilistic WTA 融合 |
 | **有**（足底 4×4 ToF，无相机/LiDAR） | 踏石 / 沟 / 平衡木 / 楼梯 | [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) | ETH RSL ANYmal-D；接触前局部几何 + LSTM-PPO；60 cm 沟、错落踏石 |
 | **有**（单前向 D435，无高程图） | **楼梯/路缘/踏石/沟 · ego 记忆** | [Vision Locomotion（CoRL 2022）](../entities/paper-vision-locomotion-egocentric.md) | scandots PPO → 深度 DAgger；A1 **24 cm 楼梯 / 26 cm 路缘**；踏石 **94%**；Best Systems；**官方代码未发布** |
+| **有**（MuJoCo 合成高程图→可落足凸区域） | **Go2 感知型模型控制 · 台阶** | [OCS2 Perceptive NMPC on Go2](../entities/ocs2-perceptive-mpc-go2.md) | OCS2 NMPC+WBC 控制适配与凸分解可视化；**落足区域约束默认关闭，尚不能完整爬楼**，与原论文 ANYmal 真机结果分开解读 |
 | **有**（D435 深度 + 2D LiDAR） | **野外长程 · 楼梯/高台/垫脚石/沟** | [APT-RL（Science Robotics 2026）](../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md) | TO+TVAE 力矩先验 + PPO；HOUND **1.1 km** 校园 / **0.34 km** 森林；**6 m/s** 峰值；trot↔bound 按地形与速度切换 |
 | **弱 / 试参** | 楼梯等 OOD | [Walk These Ways](../entities/paper-walk-these-ways-quadruped-mob.md) | 人类调节行为参数 \(b\) 在楼梯、滑地等场景快速试错 |
 | **仿真演示** | 楼梯模式 | [JackHan MuJoCo WalkE3](../entities/jackhan-mujoco-walke3-simulation.md) | 预训练策略含楼梯与扰动模式（仿真边界见页内说明） |

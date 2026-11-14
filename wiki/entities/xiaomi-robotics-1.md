@@ -20,11 +20,14 @@ sources:
   - ../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md
   - ../../sources/sites/xiaomi-robotics-1.md
   - ../../sources/repos/xiaomi-robotics-1.md
+  - ../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330_full_reading.md
 original:
   - ../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md
   - ../../sources/sites/xiaomi-robotics-1.md
   - ../../sources/repos/xiaomi-robotics-1.md
+  - ../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330_full_reading.md
 summary: "Xiaomi-Robotics-1（XR-1，arXiv:2607.15330v2）：>100k h UMI 无本体预训练（Qwen3.5-27B 自动状态转移标注）+ ~10k h 跨本体后训练；Qwen3-VL + DiT flow matching MoT（2.6B/5.1B/10.5B）；预训练 scaling 迁移到未见环境开箱与少样本微调；RoboCasa/RoboCasa365/VLABench/RoboDojo 四榜领先；2026-08-03 已以 Apache-2.0 公开 5B 基座与评测权重、xr1 后训练与双 Socket 部署栈，但 100k h UMI 预训练管线及 2.6B/10.5B 权重未公开。"
+project_id: xiaomi-robotics-1
 ---
 
 # Xiaomi-Robotics-1
