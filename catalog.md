@@ -5605,6 +5605,7 @@
 - [Scheduled Inpainting：交互式生成式运动编辑（GME）](wiki/entities/paper-scheduled-inpainting-gme.md) — Scheduled inpainting**（*Interactive Generative Motion Editing via Scheduled Inpainting*，[arXiv:260 `📅unknown` `[entity_page]`
 - [ScheduleGen（arXiv:2610.39429）](wiki/entities/paper-schedulegen.md) — ScheduleGen**（*ScheduleGen: Demonstration Generation via Skill Scheduling for Multi-Arm Imitation  `📅unknown` `[entity_page]`
 - [Learning deployable locomotion control via differentiable simulation](wiki/entities/paper-schwarke-differentiable-simulation-locomotion-corl.md) — Learning deployable locomotion control via differentiable simulation**（[arXiv:2404.02887](https:// `📅unknown` `[entity_page]`
+- [Science Prediction Universe（SPU）：科学预测宇宙 / 隐藏湿实验结果预测](wiki/entities/paper-science-prediction-universe.md) — SPU** 是一个面向 AI 科研智能体的真实实验结果预测基准：给出实验方案、候选条件与测量终点，隐藏真实测量值，让智能体预测候选的**相对排序**，再由隔离评分器验收。 `📅unknown` `[entity_page]`
 - [ScientistTwo（arXiv:2609.19644）](wiki/entities/paper-scientisttwo.md) — ScientistTwo**（*Pioneering the Human Knowledge Frontier with Autonomous AI*，Google Cloud AI Resear `📅unknown` `[entity_page]`
 - [SCOPE（arXiv:2610.31518）](wiki/entities/paper-scope.md) — SCOPE**（*SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Pl `📅unknown` `[entity_page]`
 - [SCQ（arXiv:2609.12749）](wiki/entities/paper-scq-rl.md) — SCQ**（[SCQ: Stabilizing Conservative Q-Learning with Sigmoid-Bounded Entropy](https://arxiv.org/ab `📅unknown` `[entity_page]`

@@ -414,6 +414,8 @@ op: ingest
 - 为其余九篇创建独立论文实体、来源与源码/项目归档、Mermaid 方法图，以及可由 README 对齐的概念时序图。
 - **开源与健康边界：** 后续已核对九篇原文及相关附录、追加实验约束与源码入口；知识节点健康度按规则升级，源码与机器人实测仍未独立复现。URDF2Ontology 原站 PDF 获取受限，已明确标注使用论文文字镜像。
 
+## [2026-11-14] ingest | sources/papers/science_prediction_universe_arxiv_2611_15049.md — 收录 UniPat AI Science Prediction Universe；归档论文、官方站点与仓库，新增独立论文详情节点并互链 AI Agent 评测。
+
 ## [2026-11-14] ingest | sources/blogs/ultralytics_yolo26_ocr_python_2026_11_12.md — 入库 YOLO26+PP-OCRv6 OCR 与 HierText 数据集
 
 - 以 Ultralytics 英文原文、官方 OCR Guide 和 `ultralytics/solutions/ocr.py` 为依据，新增逐词识别、旋转矫正、阅读顺序、PDF 工程入口及源码时序图。
