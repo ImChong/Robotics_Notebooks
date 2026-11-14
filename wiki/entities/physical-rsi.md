@@ -3,6 +3,7 @@ type: entity
 tags: [harness, rsi, agent, physical-ai, robodojo, vla, hku, kinetix-ai, ai-mmlab, manipulation, open-world]
 status: complete
 updated: 2026-11-07
+code: https://github.com/PhysicalRSI/PhysicalRSI
 related:
   - ./physical-rsi-research-map.md
   - ./robodojo.md

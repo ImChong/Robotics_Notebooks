@@ -7,6 +7,7 @@ status: complete
 updated: 2026-11-02
 arxiv: "2610.38027"
 project_id: metatron-promptable-whole-body-execution
+code: https://github.com/NVlabs/ProtoMotions
 related:
   - ../overview/senlanke-weekly-2026-10-26-30-humanoid-quadruped-technology-map.md
   - ../tasks/humanoid-locomotion.md

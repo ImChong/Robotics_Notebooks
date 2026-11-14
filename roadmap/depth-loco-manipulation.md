@@ -183,7 +183,8 @@ flowchart LR
 ### 推荐读什么
 - [VLA 与世界模型（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
 - [MotionWAM](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 与 [ABot-M0.5](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)
-- [ω-0](../wiki/entities/paper-omega-0.md) — 潜空间未来观测 embedding 驱动的人形并发 loco-manipulation Joint WAM，G1 上 11 任务 Omni 成功率 81.8%，大幅超同族基线（ψ-0 44.5%、DiT4DiT 43.6%、Fast-WAM 37.1%）；代码/数据 WIP
+- [ω-0](../wiki/entities/paper-omega-0.md) — 潜空间未来观测 embedding 驱动的人形并发 loco-manipulation Joint WAM，G1 上 11 任务 Omni 成功率 81.8%；代码、数据与预训练检查点入口已公开，运行仍依赖外部模型资产（[官方 README](https://github.com/gentlefress/Omega-0/tree/2ca35a3ff9363c54c9c206ca101cdf58028824cb)）
+- [Kimodo-Policy](../wiki/entities/paper-kimodo-policy.md) — 运动学生成骨干接视觉条件与实测历史，再由 SONIC 执行的 VLA 路线；与 WAM 对比时先检查是否显式预测世界后果，参见 [动作生成 Stage 4](depth-motion-generation.md)
 - [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [VLA](../wiki/methods/vla.md)
 - [人形 Loco-Manip 161 篇技术地图](../wiki/overview/humanoid-loco-manip-161-papers-technology-map.md) — 十类能力形成顺序全景
 - [RoboReact](../wiki/entities/paper-roboreact.md) — 单帧 egocentric RGB-D + 语言生成人类交互视频并编译成物体中心关键帧技能，测试时去掉 VLM 靠再接地 + HOMIE 执行；G1 长程双臂操作四任务均值 SR 81.3%

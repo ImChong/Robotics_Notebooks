@@ -6,6 +6,7 @@ tags:
   - benchmark
 status: complete
 updated: 2026-08-12
+code: https://github.com/google-research-datasets/wit
 summary: "Wikipedia-based Image Text：维基图文对的超大规模多语言图文数据集，服务 CLIP 类对比学习与检索。"
 related:
   - ../entities/transformer-cv-curriculum.md

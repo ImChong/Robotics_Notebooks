@@ -6,6 +6,7 @@ tags:
   - benchmark
 status: complete
 updated: 2026-08-12
+code: https://github.com/BryanPlummer/flickr30k_entities
 summary: "Flickr30K 的短语级图文对齐扩展：把描述中的实体短语与图像区域框关联，服务定位/接地评测。"
 related:
   - ../entities/transformer-cv-curriculum.md

@@ -3,6 +3,7 @@ type: method
 tags: [benchmark, evaluation, generalist-policy, distributed]
 status: complete
 updated: 2026-09-15
+code: https://github.com/robo-arena/roboarena
 related:
   - ./octo-model.md
   - ../entities/paper-oscar.md

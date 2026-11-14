@@ -13,6 +13,7 @@ status: complete
 updated: 2026-10-26
 arxiv: "2410.24090"
 venue: "CoRL 2024"
+code: https://github.com/facebookresearch/sparsh
 summary: "Sparsh（CoRL 2024，Meta FAIR/UW/CMU）：460k+ 无标 VBTS 图像上 MAE/DINO/IJEPA/VJEPA SSL；TacBench 六任务 frozen probe 较 E2E 平均 +95.1%；facebookresearch/sparsh 已归档开源 + HF 权重。"
 related:
   - ../concepts/tactile-sensing.md

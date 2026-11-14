@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-15
 doi: "10.1145/3811345"
 venue: SIGGRAPH 2026
+code: https://github.com/newton-physics/newton
 related:
   - ./newton-physics.md
   - ./paper-dat-divide-and-truncate.md

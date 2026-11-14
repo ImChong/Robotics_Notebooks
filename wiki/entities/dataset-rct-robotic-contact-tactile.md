@@ -8,6 +8,7 @@ tags:
   - evaluation
 status: draft
 updated: 2026-10-20
+code: https://github.com/faerber-lab/RCT
 summary: "机器人用三个 DIGIT 传感器按压 122 种工业材料：29,279 帧触觉图像、1,832 段接触序列。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md

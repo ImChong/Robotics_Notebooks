@@ -9,6 +9,7 @@ tags:
   - foundation-model
 status: complete
 updated: 2026-09-15
+code: https://github.com/hzlsaber/SIDA
 summary: "SIDA（arXiv:2412.04292，CVPR 2025）：基于多模态大模型的社交媒体图像伪造检测、篡改定位与文字解释框架，扩展 DET/SEG 特殊词元输出真伪判断与掩码。"
 related:
   - ../concepts/multimodality-basics.md

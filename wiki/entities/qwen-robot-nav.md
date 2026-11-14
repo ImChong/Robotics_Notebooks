@@ -3,6 +3,7 @@ type: entity
 tags: [navigation, vln, qwen, agentic, mobile-robot, autonomous-driving]
 status: complete
 updated: 2026-09-15
+code: https://github.com/QwenLM/Qwen-RobotNav
 related:
   - ./qwen-robot-suite.md
   - ../tasks/vision-language-navigation.md

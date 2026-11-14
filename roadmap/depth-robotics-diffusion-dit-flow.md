@@ -31,6 +31,7 @@ flowchart TB
 - **推荐度（用户策展）**：①②④⑤⑥⑧为 ★★★★★；③⑦为 ★★★★☆；③适合理解 **十亿级 Robotics Diffusion Transformer**，⑦与②的 IL 配方互补、偏 **OXE 通才 VLA**。
 - 每篇先抓 **action chunk** 与 **推理时 horizon**（receding horizon / 异步执行），再抓 **条件注入**（CNN/U-Net、adaLN、cross-attn VLM、flow 速度场）。
 - [模仿学习纵深](depth-imitation-learning.md) Stage 3 已覆盖 DP 概念时可 **跳过重复**，从 Stage ② 进入。
+- 图中箭头表示建议对比顺序，不表示后作直接继承前作；**扩散/流匹配是训练与采样机制，DiT 是骨干结构**，两条轴可组合。FM 仍需积分，少步/单步效果须由具体模型与实验确认。
 
 **命名消歧**
 
@@ -103,7 +104,7 @@ flowchart TB
 
 ### 核心问题
 
-- **VLM + Action Expert + Flow Matching + action chunk** 如何取代多步 DDPM？
+- **VLM + Action Expert + Flow Matching + action chunk** 如何改变训练目标与采样器？为什么 FM 本身不保证一步生成或低延迟？
 - 与 Octo / OpenVLA 动作头的差异？
 
 ### 推荐读什么
@@ -157,7 +158,7 @@ flowchart TB
 ### 核心问题
 
 - 为何不再用 **小 diffusion action head**，而用 **大型 multimodal DiT** 对整个 **action chunk** denoise？
-- 与 Octo MLP 头、OpenVLA 离散 token 的对比？
+- 与 Octo 的小 MLP **扩散去噪头**、OpenVLA 的离散动作 token 对比，条件注入和输出分布各有什么差异？
 
 ### 推荐读什么
 
@@ -217,3 +218,8 @@ flowchart LR
 - DP 在 IL 路线中的位置：[模仿学习纵深](depth-imitation-learning.md) Stage 3
 - 人形整机栈：[BFM 纵深](depth-bfm.md) Stage 4（高层 VLA + 低层 WBC）
 - 骨干族谱：[模型架构纵深](depth-model-architecture.md)
+
+## 参考来源
+
+- 各 Stage 的原始论文与官方项目入口；[Octo 官方说明](https://github.com/octo-models/octo)明确其为 Transformer-based diffusion policy，不能将小 MLP 去噪头误读成普通单次回归头。
+- [Flow Matching 原文 §4](https://arxiv.org/html/2210.02747v2) — 扩散路径与条件 OT 路径均可用于 FM，条件直线路径不保证边缘场为最优传输解。

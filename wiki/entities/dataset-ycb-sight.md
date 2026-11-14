@@ -7,6 +7,7 @@ tags:
   - reconstruction
 status: draft
 updated: 2026-10-20
+code: https://github.com/Robo-Touch/YCB-Sight
 summary: "GelSight 与 Azure Kinect 在 YCB 物体上的仿真与真实视觉触觉数据，用于增量三维重建。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md

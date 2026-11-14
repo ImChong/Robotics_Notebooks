@@ -4,6 +4,7 @@ tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: complete
 updated: 2026-11-06
 arxiv: "2308.06493"
+code: https://github.com/eth-siplab/EgoPoser
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
   - ../overview/humanoid-paper-notebooks-index.md

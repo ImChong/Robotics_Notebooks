@@ -4,6 +4,7 @@ type: entity
 tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers, pku]
 status: complete
 updated: 2026-05-26
+code: https://github.com/sihengz02/UH-1
 summary: "大规模人形动作数据入口，贴近 BFM goal-conditioned scaling。"
 related:
   - ../concepts/behavior-foundation-model.md

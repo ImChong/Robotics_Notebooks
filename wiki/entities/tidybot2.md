@@ -3,6 +3,7 @@ type: entity
 tags: [mobile-manipulation, home-robot, open-source, tidybot, princeton]
 status: complete
 updated: 2026-05-18
+code: https://github.com/jimmyyhwu/tidybot2
 related:
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md

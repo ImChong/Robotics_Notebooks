@@ -16,6 +16,7 @@ status: complete
 updated: 2026-09-15
 doi: "10.1126/scirobotics.abm5954"
 venue: "Science Robotics 2022"
+code: https://github.com/ZJU-FAST-Lab/ego-planner-v2
 related:
   - ./ego-planner-swarm.md
   - ./crazyswarm2.md

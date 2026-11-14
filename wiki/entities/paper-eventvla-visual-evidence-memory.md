@@ -5,6 +5,7 @@ status: complete
 updated: 2026-10-20
 arxiv: "2606.20092"
 venue: "arXiv 2026"
+code: https://github.com/InternRobotics/EventVLA
 related:
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md

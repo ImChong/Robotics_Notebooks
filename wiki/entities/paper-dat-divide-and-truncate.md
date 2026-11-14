@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-15
 arxiv: "2604.15513"
 venue: SIGGRAPH 2026
+code: https://github.com/newton-physics/newton
 related:
   - ./newton-physics.md
   - ./paper-mixed-mpm-stiff-elastoplasticity.md

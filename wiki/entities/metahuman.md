@@ -3,6 +3,7 @@ type: entity
 tags: [software, digital-human, character-animation, unreal-engine, mocap, dcc-pipeline, epic-games]
 status: complete
 updated: 2026-09-24
+code: https://github.com/EpicGames/OpenRigLogic
 related:
   - ./unreal-engine-5.md
   - ./mixamo.md

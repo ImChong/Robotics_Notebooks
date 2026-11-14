@@ -4,6 +4,7 @@ type: entity
 tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers, pku]
 status: complete
 updated: 2026-05-26
+code: https://github.com/IDEA-Research/Motion-X
 summary: "扩展 Motion-X 覆盖面。"
 related:
   - ../concepts/behavior-foundation-model.md

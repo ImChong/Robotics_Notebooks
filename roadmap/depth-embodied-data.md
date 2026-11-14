@@ -38,10 +38,10 @@ flowchart LR
 
 ## Stage 0 数据口径与金字塔分层：先钉死什么算"具身数据"
 
-**第一课不是采数，而是先分清"录到了"和"能训练"——大量采集止步于一堆带时间戳的视频，缺本体状态、缺动作语义、缺成败标签，进不了任何策略。**
+**第一课先分清数据能监督哪一层：带时间戳的视频可用于视觉表征或潜动作预训练，但缺本体状态、动作语义和对齐标签时，不能直接当成有动作标注的 BC 轨迹。**
 
 ### 前置知识
-- 知道一条训练样本至少要有观测（图像 / 本体状态）、动作、时间轴三件套
+- 知道有动作监督的策略样本需要观测、动作语义与时间对齐；视频预训练等其他目标所需字段另行定义
 - 了解 [模仿学习](../wiki/methods/imitation-learning.md) 与 [行为克隆](../wiki/methods/behavior-cloning.md) 对数据分布的基本要求
 
 ### 核心问题
@@ -90,9 +90,9 @@ flowchart LR
 - [Query：人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md) — 六条范式，提到的项目/论文各有一页；本阶段的全景页
 - [操作任务演示数据收集指南](../wiki/queries/demo-data-collection-guide.md) · [灵巧操作数据采集指南](../wiki/queries/dexterous-data-collection-guide.md) — 硬件选型、质量保障与常见陷阱
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 灵巧采集的选型对照
+- [GenRobot DAS 2.0](../wiki/entities/genrobot-das-2-0.md) — 按任务选择头戴视觉、腕部近景和手部触觉；先核对设备代际与实际输出字段，不把新硬件规格套到旧版 [Gen-HumanEgo](../wiki/entities/gen-human-ego-dataset.md) 公开 MCAP 数据
 - [HandUMI](../wiki/entities/handumi.md) · [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) — 无机器人示教接口的夹爪侧与人形全身侧两种形态
 - [ACE-Data-0](../wiki/entities/paper-ace-data-0.md) — 把真实家居做成时空校准录制工作室（150 h / 17M 帧 / 75k episodes）的场景化采集样本
-- [ARSTAG](../wiki/entities/paper-arstag.md) — 协调场景重建、专家生成与数据扩增，把单张图像和任务指令转成仿真训练示范。
 - [EgoScale](../wiki/methods/egoscale.md) · [EgoMimic](../wiki/entities/paper-ego-03-egomimic.md) — 第一视角人视频作为可缩放监督源
 
 ### 学完输出什么
@@ -110,7 +110,7 @@ flowchart LR
 - 会写基本的时序重采样与插值，了解关节限位/速度限幅等物理校验
 
 ### 核心问题
-- **时序对齐**：遥操作时控制信号与图像帧存在 **10–100 ms 的非恒定延迟**，需用 NTP 或硬件触发对齐后重采样到固定控制频率（如 50 Hz），否则动作与视觉状态错配（见 [具身数据清洗](../wiki/concepts/embodied-data-cleaning.md)）
+- **时序对齐**：分别记录传感器采样、命令发送与实际执行时间，实测时钟偏差及链路延迟，再重采样到目标控制频率；NTP/PTP 或硬件触发只解决相应时钟/采样同步，不能自动消除传输与执行延迟（见 [具身数据清洗](../wiki/concepts/embodied-data-cleaning.md)）
 - **异常轨迹过滤三件套**：物理校验（关节限位 / 角速度 / 瞬时接触力）、任务成败判定、平滑度检查（二阶导突变）
 - **重定向误差修复**：人手与灵巧手拓扑不同，映射后需小型 IK 微调消除"隔空移物"；[HumanNet](../wiki/entities/humannet.md) 给出的 robot-ready 判据是**重定向误差 < 15 mm、有效帧覆盖率 > 60%**
 - **分段与剪辑**：剔除首尾静止期，只留对任务有实质贡献的交互片段，提高信息密度
@@ -157,6 +157,7 @@ flowchart LR
 ### 推荐读什么
 - [Open X-Embodiment](../wiki/concepts/open-x-embodiment.md) 与 [OXE / RT-X 详情页](../wiki/entities/paper-open-x-embodiment.md) — 跨具身聚合的边界与正迁移证据链
 - [LeRobot（Hugging Face）](../wiki/entities/lerobot.md) — 采集–训练–评测–部署同框的数据抽象
+- [机器人操作数据集与基准选型](../wiki/comparisons/robot-manipulation-data-benchmark-selection.md) — 分开比较训练数据与评测套件，并核对观测、动作接口和许可，补足下列人体参考动作数据的另一类用途
 - [人形参考运动与操作数据集选型](../wiki/comparisons/humanoid-reference-motion-datasets.md) — AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday 的对照
 - [HiPHI](../wiki/entities/paper-hiphi.md) — Frame–LU 设计采集覆盖；617.5 h 发布量含镜像增强；研究同步 HOI 与数据扩展时关注原始时长、单位、split 和许可
 - [OpenLET LET-HumanMotion-Roban2](../wiki/entities/openlet-humanmotion-roban2.md) — 乐聚 Roban 2.2 小脑全身动作集：五类动作重定向到鲁班、120 fps 重采样，申请制；用于运控模仿训练
@@ -190,6 +191,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Generative Data Augmentation](../wiki/methods/generative-data-augmentation.md) — 长尾与罕见物理交互的低成本合成
+- [ARSTAG](../wiki/entities/paper-arstag.md) — 单图与任务指令经场景重建、专家生成和扩增产出仿真示范，归合成数据支路，不当作实机采集装置
 - [Perceptron Isaac 0.5](../wiki/entities/perceptron-isaac-05.md) — 通用视频置换 teleop 的开源等高线，本阶段最可操作的量化锚点
 - [EgoScale](../wiki/methods/egoscale.md) — 人视频预训练 + 小规模视点对齐 mid-training 的两段式配方
 - [Real2Sim 纵深](depth-real2sim.md) 与 [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 仿真侧资产供给的姊妹路线

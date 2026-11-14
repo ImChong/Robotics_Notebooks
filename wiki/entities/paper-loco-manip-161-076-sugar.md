@@ -5,6 +5,7 @@ status: complete
 updated: 2026-10-06
 arxiv: "2605.20373"
 venue: "arXiv 2026"
+code: https://github.com/tianshuwu/SUGAR
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-03-visuomotor.md

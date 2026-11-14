@@ -14,6 +14,7 @@ status: complete
 updated: 2026-09-15
 arxiv: "2506.05997"
 doi: "10.1177/02783649251401926"
+code: https://github.com/ManifoldTechLtd/sru-pytorch-spatial-learning
 related:
   - ../concepts/sim2real.md
   - ../tasks/vision-language-navigation.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [mpc, optimal-control, qp, embedded, locomotion]
 status: complete
-updated: 2026-11-13
+updated: 2026-09-19
 code: https://github.com/acados/acados
 related:
   - ../methods/model-predictive-control.md

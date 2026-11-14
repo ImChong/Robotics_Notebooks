@@ -5,6 +5,7 @@ status: complete
 updated: 2026-10-06
 project_id: form-hoi
 project: https://huggingface.co/datasets/nvidia/form-hoi
+code: https://github.com/nvidia-isaac/video_to_data
 summary: "FORM-HOI：NVIDIA 四相机人–物交互数据集；清洗发布集含 4,135 段、约 29.144 小时、61 个对象和 22 位参与者，CC BY 4.0。"
 related:
   - ./paper-cari4d.md

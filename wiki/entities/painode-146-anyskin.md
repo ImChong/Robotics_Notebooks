@@ -14,6 +14,7 @@ status: complete
 updated: 2026-09-23
 arxiv: "2409.08276"
 venue: "ICRA 2025"
+code: https://github.com/raunaqbhirangi/anyskin
 summary: "AnySkin（ICRA 2025，arXiv:2409.08276，NYU/CMU/Columbia/Meta）：ReSkin 磁触觉解耦可更换表皮；12 s 换肤、LSTM 滑移 92%；跨实例 BC 换肤后性能降幅约 13%（ReSkin ~43%）；raunaqbhirangi/anyskin 已开源。"
 related:
   - ../concepts/tactile-sensing.md

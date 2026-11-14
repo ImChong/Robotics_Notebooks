@@ -3,6 +3,7 @@ type: entity
 tags: [vla, manipulation, qwen, cross-embodiment, flow-matching, foundation-model]
 status: complete
 updated: 2026-09-15
+code: https://github.com/QwenLM/Qwen-RobotManip
 related:
   - ./qwen-robot-suite.md
   - ./qwen-vla.md

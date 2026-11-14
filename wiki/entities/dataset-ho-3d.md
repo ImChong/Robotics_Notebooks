@@ -7,6 +7,7 @@ tags:
   - real-world
 status: draft
 updated: 2026-10-20
+code: https://github.com/shreyashampali/ho3d
 summary: "真实场景手与物体联合三维位姿数据：77,558 帧、68 段序列，由自动标注方法 HOnnotate 生成真值。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md

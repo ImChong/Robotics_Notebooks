@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-15
 arxiv: "2602.11758"
 venue: "RSS 2026"
+code: https://github.com/ldt29/HAIC
 related:
   - ../overview/wam-motion-control-five-paths.md
   - ../methods/haic.md

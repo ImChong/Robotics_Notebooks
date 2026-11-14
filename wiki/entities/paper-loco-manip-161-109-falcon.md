@@ -5,6 +5,7 @@ status: complete
 updated: 2026-10-06
 arxiv: "2505.06776"
 venue: "L4DC 2026 Oral"
+code: https://github.com/LeCAR-Lab/FALCON
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-05-mocap-human-video.md

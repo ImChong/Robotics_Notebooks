@@ -4,6 +4,7 @@ tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
 updated: 2026-09-15
 arxiv: "2504.10414"
+code: https://github.com/Jiaxin-Lu/humoto
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
   - ../overview/humanoid-paper-notebooks-index.md

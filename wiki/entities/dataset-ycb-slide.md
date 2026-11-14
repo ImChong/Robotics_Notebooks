@@ -7,6 +7,7 @@ tags:
   - localization
 status: draft
 updated: 2026-10-20
+code: https://github.com/rpl-cmu/YCB-Slide
 summary: "DIGIT 传感器在 YCB 物体上的真实与仿真滑动数据，支持触觉定位与建图。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md

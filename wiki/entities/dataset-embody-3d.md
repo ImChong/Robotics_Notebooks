@@ -7,6 +7,7 @@ tags:
   - social
 status: draft
 updated: 2026-10-20
+code: https://github.com/facebookresearch/embody-3d
 summary: "多相机舞台采集的三维人体动作数据：439 名参与者、500 小时、追踪超 5,400 万帧。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md

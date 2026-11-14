@@ -4,6 +4,7 @@ tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: stub
 updated: 2026-09-15
 venue: curated
+code: https://github.com/zeroth-robotics/zeroth-bot
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md
   - ../overview/humanoid-paper-notebooks-index.md

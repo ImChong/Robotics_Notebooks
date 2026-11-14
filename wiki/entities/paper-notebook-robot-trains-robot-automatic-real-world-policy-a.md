@@ -4,6 +4,7 @@ tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
 updated: 2026-09-15
 arxiv: "2508.12252"
+code: https://github.com/hukz18/Robot-Trains-Robot
 related:
   - ../overview/paper-notebook-category-10-sim-to-real.md
   - ../overview/humanoid-paper-notebooks-index.md

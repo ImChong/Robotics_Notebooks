@@ -4,6 +4,7 @@ tags: [motion-forecasting, world-models, vlm, ai2, manipulation, video-generatio
 status: complete
 arxiv: "2606.18558"
 updated: 2026-06-18
+code: https://github.com/allenai/molmo-motion
 related:
   - ../methods/generative-world-models.md
   - ../tasks/manipulation.md

@@ -3,7 +3,7 @@
 type: entity
 tags: [perception, computer-vision, calibration, fiducial, c, software, mit]
 status: complete
-updated: 2026-11-13
+updated: 2026-09-15
 code: https://github.com/AprilRobotics/apriltag
 related:
   - ../queries/robot-perception-stack-selection-loop.md

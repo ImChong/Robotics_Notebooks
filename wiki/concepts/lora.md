@@ -3,6 +3,7 @@ type: concept
 tags: [fine-tuning, parameter-efficient, adaptation, peft]
 status: complete
 updated: 2026-10-16
+code: https://github.com/microsoft/LoRA
 related:
   - ../methods/vla.md
   - ../methods/mimic-video.md

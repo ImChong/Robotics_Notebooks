@@ -3,6 +3,7 @@ type: entity
 tags: [connectomics, dataset, drosophila, flywire, princeton, neuroscience, community]
 status: complete
 updated: 2026-09-10
+code: https://github.com/flyconnectome/flywire_annotations
 related:
   - ../concepts/fly-connectomics-stack.md
   - ./male-cns-connectome.md

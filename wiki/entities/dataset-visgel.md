@@ -7,6 +7,7 @@ tags:
   - gelsight
 status: draft
 updated: 2026-10-20
+code: https://github.com/YunzhuLi/VisGel
 summary: "GelSight 与视觉的跨模态配对数据：300 万组视觉-触觉图像，支持两个方向的预测。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md

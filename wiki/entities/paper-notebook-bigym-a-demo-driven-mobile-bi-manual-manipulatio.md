@@ -4,6 +4,7 @@ tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: complete
 updated: 2026-11-11
 arxiv: "2407.07788"
+code: https://github.com/chernyadev/bigym
 related:
   - ../overview/paper-notebook-category-11-simulation-benchmark.md
   - ../overview/humanoid-paper-notebooks-index.md

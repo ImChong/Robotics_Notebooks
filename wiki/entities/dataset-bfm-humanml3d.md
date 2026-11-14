@@ -4,6 +4,7 @@ type: entity
 tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers, pku]
 status: complete
 updated: 2026-05-26
+code: https://github.com/EricGuo5513/HumanML3D
 summary: "文本到人体动作生成常用基准。"
 related:
   - ../concepts/behavior-foundation-model.md

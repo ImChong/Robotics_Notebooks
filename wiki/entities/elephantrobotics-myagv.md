@@ -3,6 +3,7 @@ type: entity
 tags: [mobile-robot, slam, open-source, elephant-robotics, ros, education]
 status: complete
 updated: 2026-05-18
+code: https://github.com/elephantrobotics/myAGV
 related:
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue02-curator.md

@@ -6,6 +6,7 @@ status: complete
 updated: 2026-10-25
 arxiv: "2603.25725"
 venue: "ICRA 2026"
+code: https://github.com/NVlabs/SoftMimicGen
 related:
   - ../methods/imitation-learning.md
   - ../tasks/loco-manipulation.md

@@ -4,6 +4,7 @@ tags: [rl, world-model, teacher-student, imitation-learning, sim2real, paper, hu
 status: complete
 updated: 2026-10-06
 venue: curated
+code: https://github.com/ldt29/HAIC
 related:
   - ../entities/paper-haic.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md

@@ -3,6 +3,7 @@ type: concept
 tags: [mamba, ssm, sequence-modeling, architecture]
 status: complete
 updated: 2026-09-21
+code: https://github.com/state-spaces/mamba
 summary: "Mamba 是带输入依赖选择性的状态空间模型：训练用并行扫描，推理逐步常状态更新，给长历史一条近线性替代注意力的路线。"
 related:
   - ./state-space-model-ssm.md

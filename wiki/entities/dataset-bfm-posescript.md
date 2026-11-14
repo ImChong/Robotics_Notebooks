@@ -4,6 +4,7 @@ type: entity
 tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers, inria]
 status: complete
 updated: 2026-05-26
+code: https://github.com/naver/posescript
 summary: "语言描述与姿态桥接。"
 related:
   - ../concepts/behavior-foundation-model.md

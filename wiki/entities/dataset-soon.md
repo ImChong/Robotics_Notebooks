@@ -7,6 +7,7 @@ tags:
   - vln
 status: draft
 updated: 2026-10-20
+code: https://github.com/ZhuFengdaaa/SOON
 summary: "场景描述驱动的目标导航数据（FAO）：3,848 组指令，允许从任意起点找到目标。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md

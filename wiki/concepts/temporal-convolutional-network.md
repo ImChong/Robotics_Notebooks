@@ -3,6 +3,7 @@ type: concept
 tags: [tcn, convolution, sequence-modeling, architecture]
 status: complete
 updated: 2026-09-21
+code: https://github.com/locuslab/TCN
 summary: "时间卷积网络用因果膨胀卷积在序列上做可并行的固定感受野建模，是 RNN 的卷积替代而非 Transformer 的替代；适合窗口化 IMU/触觉历史。"
 related:
   - ./convolutional-neural-network.md

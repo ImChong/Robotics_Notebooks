@@ -4,6 +4,7 @@ tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
 updated: 2026-09-15
 arxiv: "2507.06747"
+code: https://github.com/DaojiePENG/LOVON
 related:
   - ../overview/paper-notebook-category-08-navigation.md
   - ../overview/humanoid-paper-notebooks-index.md

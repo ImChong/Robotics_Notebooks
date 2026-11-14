@@ -4,6 +4,7 @@ type: entity
 tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers, sfu]
 status: complete
 updated: 2026-05-26
+code: https://github.com/ubisoft/ubisoft-laforge-animation-dataset
 summary: "motion imitation 常用动作源。"
 related:
   - ../concepts/behavior-foundation-model.md
