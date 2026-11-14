@@ -15,6 +15,7 @@ related:
   - ./paper-levjepa.md
   - ./paper-ad-e2e-jepa.md
   - ./paper-intact.md
+  - ./paper-lg-dkgp.md
   - ./paper-vjepa2.md
   - ../methods/generative-world-models.md
   - ../concepts/latent-imagination.md
@@ -47,7 +48,8 @@ summary: "LeWM（arXiv:2603.19312，Mila/NYU/Samsung SAIL/Brown）：像素端�
 ## 为什么重要
 
 - 腾讯文里 LpWM 的「稠密对照」就是本页，不是口头基线。
-- [INTACT](./paper-intact.md) 的官方四任务评测基座也是 LeWM 族。
+- [INTACT](./paper-intact.md)
+- [LG-DKGP](./paper-lg-dkgp.md) — 在冻结 LeWM 之上学习历史动作连续性先验（局部/全局门控 + 深核 GP 残差），由 CEM 搜索目标导向的动作片段；注意原文含局部目标评测口径。 的官方四任务评测基座也是 LeWM 族。
 - 证明：防坍塌不必冻结大视觉模型，也不必 6–7 项 VICReg 汤。
 
 ## 核心信息
