@@ -399,6 +399,14 @@ op: ingest
 - **源码边界：** 已追踪 `scripts/run.py` → 采集/训练/推理入口及 `blend_actions`；论文 FK+相机标定手部遮罩的完整函数仍未定位，不宣称源码完全复核。
 - **校验：** 当前 GitHub 连接仅允许读写线上仓库，无法在此运行 `make ci-preflight` 完整本地检查；最终以 GitHub Actions 的 Wiki Lint / Mermaid 检查为准。
 
+# [2026-11-13] ingest | FlowDPG CoRL 2026
+
+- **意图：** 把 Skild AI/CMU/UPenn FlowDPG 的长期双臂策略优化路线收录为唯一论文节点。
+- **原文核验：** arXiv:2606.22303v2 正文与 Appendix A–D，官网 PDF、任务/扰动评测。
+- **交叉链接：** 双臂协调操作任务；正文增加基于论文 Algorithm 1 的 Mermaid 主干流程图。
+- **开源结论：** 项目页未列正式源码/权重/数据下载，因此不生成未经核对的运行时序图。
+- **指标纠正：** Franka AirPods 92% 为端到端成功率；YAM 炒蛋 85.8% 为离线阶段评分；不混入 PNP 营销信息。
+
 ## [2026-11-13] ingest | Whole-Body Dexterity 全文深读与原有节点升级
 
 - 复用 2026-10 已合入的论文身份（arXiv:2610.22184），不重复建节点。
