@@ -928,6 +928,7 @@
 - [Lightbot 0](wiki/entities/lightbot-0.md) — Lightbot 0**（Lightbot 0：亮源新创自研人形平台）在 [Light Origins · LightParkour：通过 Real2Sim2Real 拓展人形机器人的跑酷技能 `📅unknown` `[entity_page]`
 - [LightNav-ER](wiki/entities/lightnav-er.md) — LightNav-ER**（LightNav-ER：具身推理中期训练模型）在 [Light Origins · LightNav-0：以规模化 Real2Sim2Real 实现零样本通用导航](h `📅unknown` `[entity_page]`
 - [Lightwheel EgoSuite](wiki/entities/lightwheel-egosuite.md) — EgoSuite** 是 光轮智能（Lightwheel） 于 **2025-12-04** 以官方博客「Lightwheel Introduces EgoS `📅2025-12-04` `[entity_page]`
+- [RoboFinals RL Environments（光轮智能强化学习仿真训练环境）](wiki/entities/lightwheel-robofinals-rl-env.md) — RoboFinals RL-Env** 是 光轮智能（Lightwheel） 2026 年 11 月发布的 **真实任务驱动、实测物理标定、Newton-na `📅unknown` `[entity_page]`
 - [Lightwheel RoboFinals](wiki/entities/lightwheel-robofinals.md) — Lightwheel RoboFinals** 是光轮智能（Lightwheel）发布的 **工业级仿真评测平台**，面向已超越学术 benchmark 的 **VLA / 通才机器人基础模型 `📅unknown` `[entity_page]`
 - [Lightwheel SimReady（光轮 SimReady 资产体系）](wiki/entities/lightwheel-simready.md) — Lightwheel SimReady** 是 光轮智能（Lightwheel）的 **物理准确 OpenUSD 仿真资产体系**：对外是 **SimRead `📅unknown` `[entity_page]`
 - [Lightwheel SimReadyGen](wiki/entities/lightwheel-simreadygen.md) — SimReadyGen**（"Agentic Simulation Generation for Physical AI"）是 光轮智能 于 **2026-0 `📅unknown` `[entity_page]`
@@ -7258,7 +7259,7 @@
 - [Contact Complementarity（接触互补约束）](wiki/formalizations/contact-complementarity.md) — 接触互补约束（Contact Complementarity Conditions）** 是描述刚体与环境接触物理行为的数学框架：**接触力与接触间隙必须互补为零**——要么接触面有力（接触中）， `📅unknown` `[formalization_page]`
 - [接触力旋量锥 (Contact Wrench Cone)](wiki/formalizations/contact-wrench-cone.md) — 接触力旋量锥 (Contact Wrench Cone, CWC)** 把 摩擦锥 (Friction Cone) 从“单点三维力”推广到“面接触的六维 `📅unknown` `[formalization_page]`
 - [控制环路延迟建模 (Control Loop Latency Modeling)](wiki/formalizations/control-loop-latency-modeling.md) — 控制环路延迟建模** 把一次「读传感 → 算策略 → 写力矩」的闭环拆解成若干段独立的延迟分量，用随机变量与卷积刻画端到端时延及抖动，从而把"机器人为什么在真机上抽搐"这种工程现象变成一个可定量分 `📅unknown` `[formalization_page]`
-- [Control Lyapunov Function（控制李雅普诺夫函数）](wiki/formalizations/control-lyapunov-function.md) — Control Lyapunov Function（CLF）**：一种用于设计使系统渐近稳定的控制律的数学工具。通过找到一个正定标量函数 $V(x)$，使得在某个控制输入下 $\dot{V}(x `📅unknown` `[formalization_page]`
+- [Control Lyapunov Function（CLF，控制李雅普诺夫函数）](wiki/formalizations/control-lyapunov-function.md) — Control Lyapunov Function（CLF）**：一种用于设计使系统渐近稳定的控制律的数学工具。通过找到一个正定标量函数 $V(x)$，使得在某个控制输入下 $\dot{V}(x `📅unknown` `[formalization_page]`
 - [Convex Functions（凸函数）](wiki/formalizations/convex-functions.md) — 凸函数**：定义域为凸集、且函数图像在任意两点连线之上的函数；凸优化问题的局部最优即全局最优，是 WBC QP、凸 MPC、摩擦锥线性化等工程问题的理论基石。 `📅unknown` `[formalization_page]`
 - [Cross-modal Attention (跨模态注意力)](wiki/formalizations/cross-modal-attention.md) — 跨模态注意力（Cross-modal Attention）** 让一种模态的 token（如动作、图像块）作为 Query，去读取另一种模态的 token（如语言、视觉特征）作为 Key/Valu `📅unknown` `[formalization_page]`
 - [阻尼系统（Damped Systems）](wiki/formalizations/damped-systems.md) — 阻尼系统**描述能量耗散如何塑造动态响应：一阶系统用**时间常数** $\tau$ 刻画指数衰减；二阶质量–弹簧–阻尼系统用**自然频率** $\omega_n$ 与**阻尼比** $\zeta$ `📅unknown` `[formalization_page]`
