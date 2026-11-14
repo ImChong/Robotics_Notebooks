@@ -1,38 +1,42 @@
-# DiffWBC / OneSteer 项目主页归档
+# OneSteer / DiffWBC 官方项目主页归档
 
-> 来源归档（site）
+> 来源归档（site）；同一篇 arXiv:2610.41354，v1 名称 DiffWBC，v3 正式名称 OneSteer。
 
-- **标题（论文正式名称）：** DiffWBC: Unlocking Steerable General Humanoid Motion Tracking via One-Step Diffusion Whole-Body Control
-- **项目页当前展示名称：** OneSteer（匿名项目页，名称与 arXiv v1 不一致）
+- **英文标题：** OneSteer: Unlocking Steerable General Humanoid Motion Tracking via One-Step Diffusion Whole-Body Control
+- **中文标题：** OneSteer：通过单步扩散全身控制实现可引导的通用人形运动跟踪
 - **类型：** site / project / humanoid-motion-tracking
-- **项目页：** https://diffwbc.github.io/
-- **论文：** https://arxiv.org/abs/2610.41354
-- **入库日期：** 2026-11-10
-- **一句话说明：** Unitree G1 通用全身 motion tracking 的单步生成式低层控制器；支持冻结权重的 cost steering、body-group masks、failure scoring。
-- **核对范围：** 读取项目页介绍、method、demo、general tracking 对比表、steering 与 failure self-assessment 模块、footer 资源入口；与 arXiv v1 对照名称和 benchmark 口径。
+- **项目页：** https://onesteer.github.io/
+- **论文：** https://arxiv.org/html/2610.41354v3
+- **预印本：** 2026-10-30 v1（DiffWBC）；2026-11-11 v3（OneSteer）
+- **首次归档：** 2026-11-10；**最新核查：** 2026-11-14
+- **一句话说明：** 在 Unitree G1 上将单步状态/动作计划、参考分组遮蔽、可微代价 steering 与失效片段筛查纳入一个闭环控制器。
+- **核对范围：** 官方首页 Abstract、Real robot、Steering、Terrain、Method、Results、Self-assessment、Paper / Code 入口及页尾；与 arXiv:2610.41354v3 及旧版 v1 核对标题与实验结果。
 - **通读：** 已完成
 
-## 开源状态
+## 开放状态（2026-11-14）
 
-- **未开源（截至 2026-11-10）：** 项目页资源条目显示 “Code (after review)”，无可点击的官方训练/推理/部署源码链接；论文全文开放，但尚不等于可复现源码开放。
-- **论文链接展示问题：** 项目页为 “Paper (coming soon)”；正式论文已在 arXiv 发布，真实入口见上文。
-- **命名不一致：** 项目页目前写 OneSteer（匿名），arXiv:2610.41354v1 写 DiffWBC；统一按论文标识建立一个实体节点。
-- **数值不一致：** 项目页 BONES from-scratch local error 为 22.6 mm，arXiv v1 Table 2 为 20.1 mm，详情页仅采用 v1 评测数值并标注差异。
+- **论文：已公开**（最新 v3，网页 Paper 链接可直达 arXiv）。
+- **训练 / 推理 / 部署代码：未开放。** 项目页显示「Code (coming soon)」，未给出可运行官方 GitHub、权重或部署脚本；不可把公开视频当作源码开放，源码运行时序图不适用。
+- **数据：** 论文说明训练使用 BONES-SEED、AMASS 与 LAFAN，但项目页未给出该项目自己的整理数据下载链接。
+- **论文身份：** v1 的 DiffWBC 与 v3 的 OneSteer 同一 arXiv ID、同一研究成果，仓库保留一个论文 wiki 节点 [paper-diffwbc](../../wiki/entities/paper-diffwbc.md)。
 
-## 技术与演示核对
+## 演示与评测核对（官网 / v3）
 
-- **常规推理：** 50 Hz 时每 tick 一次 generator forward（3.8 ms，RTX 4090）。
-- **测试时引导：** 对输入噪声作成本梯度下降；典型两次生成和两次下降，项目页计 20.3 ms；12 步达到 55.1 ms。
-- **真机边界：** 演示 Unitree G1 普通 motion tracking；steering 案例（低顶棚、跨栏、手部到达、故障关节、托盘）均标注为 MuJoCo / mjlab 仿真闭环 rollouts。
-- **附加地形演示：** 网站还显示地形 token + RL 微调实验，但论文 arXiv v1 未将此列入主要评测；不可把其仿真成果写作论文 v1 已验证的真机成果。
+1. **普通跟踪：** 50 Hz 预测闭环 G1 控制，ONNX 模型使用 Orin NX，9 条动作 × 3 次真机普通跟踪全部未摔倒。单次生成器 RTX 4090 耗时 3.8 ms。
+2. **真机 steering：** 使用机载 LiDAR 构建的、实验前固定 SDF 地图，冻结同一个策略权重；1.1 m 低杆 4/5 通过，12 cm 跨栏 3/3 未摔倒。**这些 steering 实验用系留 RTX 4090 计算**，不代表已在 Orin NX 端到端运行。
+3. **仿真 steering：** 79 条未见演员 walking 窗口、1.25 m 低杆 clean pass 从 0.02 提升至 0.90（只优化第 2 次生成器调用的输入、两次梯度下降）；闭环编辑原参考最高 0.11。
+4. **地形扩展：** 从零模型在 21×21 地形扫描→36 个 tokens 基础上 RL 微调；6 类地形上的整体成功率 0.43→0.90，**目前只有仿真**。
+5. **失效筛查：** K=8 个生成噪声计算预测计划离散度，top 2% 子窗口评分 precision 0.91；用 329 个困难片段微调修复 48±4% 失败。
+6. **版本口径：** v1 150 条 BONES 窗口、20.1 mm，不同于 v3 **512 条、22.6 mm**；v1 页面旧结论「真机没有 steer」已被 v3 真机实验更新。引用必须携带版本号。
 
 ## 对 wiki 的映射
 
-- [DiffWBC 实体](../../wiki/entities/paper-diffwbc.md)
-- [论文通读归档](../papers/diffwbc_arxiv_2610_41354_reading.md)
-- [补充原文通读归档](../papers/diffwbc_arxiv_2610_41354.md)
+- [唯一论文实体：OneSteer（旧名 DiffWBC）](../../wiki/entities/paper-diffwbc.md)
+- [OneSteer v3 论文通读归档](../papers/onesteer_arxiv_2610_41354_v3.md)
+- [DiffWBC v1 历史通读归档](../papers/diffwbc_arxiv_2610_41354_reading.md)
 
 ## 参考来源
 
-- https://diffwbc.github.io/
-- https://arxiv.org/abs/2610.41354
+- https://onesteer.github.io/
+- https://arxiv.org/html/2610.41354v3
+- https://arxiv.org/html/2610.41354v1

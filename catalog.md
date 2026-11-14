@@ -2261,7 +2261,7 @@
 - [Diffusion-VLA](wiki/entities/paper-diffusion-vla.md) — Diffusion-VLA**（arXiv:2412.03293）收录于 Lumina [Embodied-AI-Guide `📅unknown` `[entity_page]`
 - [DiffusionDrive（DiffusionDrive: Truncated Diffusion Model for End-to-End Autonomous Driving · arXiv:2411.15139）](wiki/entities/paper-diffusiondrive.md) — DiffusionDrive**（*DiffusionDrive: Truncated Diffusion Model for End-to-End Autonomous Driving*，[24 `📅unknown` `[entity_page]`
 - [DiffWAM: A Fast and Efficient Navigation World Action Model（快速高效的导航世界–动作模型）](wiki/entities/paper-diffwam.md) — 从视频模型的早期未来表示直接预测相机运动，省掉在线未来视频渲染和多帧重建，再由规划与飞控将候选轨迹变成可执行飞行。** 本页以 arXiv:2609.39763v1 的具体方法章节和表格为准，项目 `📅2026-09-30` `[entity_page]`
-- [DiffWBC：单步生成式全身控制与测试时运动引导 / Steerable General Humanoid Motion Tracking](wiki/entities/paper-diffwbc.md) — DiffWBC**（*Unlocking Steerable General Humanoid Motion Tracking via One-Step Diffusion Whole-Body  `📅unknown` `[entity_page]`
+- [OneSteer：单步扩散全身控制与可引导的通用人形运动跟踪 / Unlocking Steerable General Humanoid Motion Tracking via One-Step Diffusion Whole-Body Control](wiki/entities/paper-diffwbc.md) — OneSteer（旧名 DiffWBC）** 是条件于未来动作参考和本体反馈的 **50 Hz 单步生成式全身控制器**：它预测未来状态—动作计划，用实时反馈执行当前一步，并在测试时通过可微成本更 `📅unknown` `[entity_page]`
 - [Real-World Humanoid Locomotion with Reinforcement Learning（Digit）](wiki/entities/paper-digit-humanoid-locomotion-rl.md) — 一句话定义**：在 Agility Digit 全尺寸人形上，用 **大规模并行仿真 + 域随机化** 训练 **因果 Transformer**，从本体感觉与动作历史自回归预测下一步关节指令，经 `📅unknown` `[entity_page]`
 - [DigitCode：按解剖单元做手部动作符号化](wiki/entities/paper-digitcode.md) — DigitCode**（*Symbolic Tokenization of Hand Motion by Anatomical Units*；[arXiv:2608.03127](https:// `📅unknown` `[entity_page]`
 - [DIMOS：室内 3D 场景中的多样人体运动合成](wiki/entities/paper-dimos-human-scene-motion-synthesis.md) — DIMOS**（*Synthesizing Diverse Human Motions in 3D Indoor Scenes*，arXiv:2305.12411，ICCV 2023，[项目页 `📅unknown` `[entity_page]`
@@ -5605,6 +5605,7 @@
 - [Scheduled Inpainting：交互式生成式运动编辑（GME）](wiki/entities/paper-scheduled-inpainting-gme.md) — Scheduled inpainting**（*Interactive Generative Motion Editing via Scheduled Inpainting*，[arXiv:260 `📅unknown` `[entity_page]`
 - [ScheduleGen（arXiv:2610.39429）](wiki/entities/paper-schedulegen.md) — ScheduleGen**（*ScheduleGen: Demonstration Generation via Skill Scheduling for Multi-Arm Imitation  `📅unknown` `[entity_page]`
 - [Learning deployable locomotion control via differentiable simulation](wiki/entities/paper-schwarke-differentiable-simulation-locomotion-corl.md) — Learning deployable locomotion control via differentiable simulation**（[arXiv:2404.02887](https:// `📅unknown` `[entity_page]`
+- [Science Prediction Universe（SPU）：科学预测宇宙 / 隐藏湿实验结果预测](wiki/entities/paper-science-prediction-universe.md) — SPU** 是一个面向 AI 科研智能体的真实实验结果预测基准：给出实验方案、候选条件与测量终点，隐藏真实测量值，让智能体预测候选的**相对排序**，再由隔离评分器验收。 `📅unknown` `[entity_page]`
 - [ScientistTwo（arXiv:2609.19644）](wiki/entities/paper-scientisttwo.md) — ScientistTwo**（*Pioneering the Human Knowledge Frontier with Autonomous AI*，Google Cloud AI Resear `📅unknown` `[entity_page]`
 - [SCOPE（arXiv:2610.31518）](wiki/entities/paper-scope.md) — SCOPE**（*SCOPE: Scene-graph Construction Optimized by Plan Error-correction for Robot Long-term Pl `📅unknown` `[entity_page]`
 - [SCQ（arXiv:2609.12749）](wiki/entities/paper-scq-rl.md) — SCQ**（[SCQ: Stabilizing Conservative Q-Learning with Sigmoid-Bounded Entropy](https://arxiv.org/ab `📅unknown` `[entity_page]`

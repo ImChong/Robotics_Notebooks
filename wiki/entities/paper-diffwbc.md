@@ -3,9 +3,9 @@ type: entity
 project_id: diffwbc
 tags: [paper, humanoid, motion-tracking, whole-body-control, diffusion-policy, rl, sim2real, generative-control, unitree-g1, seu, sustech, polyu]
 status: complete
-updated: 2026-11-10
+updated: 2026-11-14
 arxiv: "2610.41354"
-project: https://diffwbc.github.io/
+project: https://onesteer.github.io/
 related:
   - ../methods/sonic-motion-tracking.md
   - ../methods/beyondmimic.md
@@ -15,165 +15,156 @@ related:
   - ../concepts/whole-body-control.md
   - ../methods/diffusion-policy.md
 original:
+  - ../../sources/papers/onesteer_arxiv_2610_41354_v3.md
   - ../../sources/papers/diffwbc_arxiv_2610_41354_reading.md
 sources:
+  - ../../sources/papers/onesteer_arxiv_2610_41354_v3.md
   - ../../sources/papers/diffwbc_arxiv_2610_41354_reading.md
   - ../../sources/papers/diffwbc_arxiv_2610_41354.md
   - ../../sources/sites/diffwbc-project.md
-summary: "DiffWBC（arXiv:2610.41354v1，2026-10-30）：将 50 Hz 人形全身运动跟踪器建模为单步扩散式未来状态/动作预测器；单次前向 3.8 ms，冻结权重后可用梯度引导和身体分组遮蔽完成零样本 steering，并用噪声计划离散度挖掘失败；G1 真机仅验证普通跟踪，代码截至 2026-11-10 尚未公开。"
+summary: "OneSteer（旧名 DiffWBC，arXiv:2610.41354v3）：50 Hz 单步扩散状态—动作计划与反馈执行头，在冻结权重下对生成器输入作可微代价引导并遮蔽指定身体参考；G1 真机演示普通跟踪及 LiDAR SDF 避障，terrain 模块目前仅仿真，官方源码待发布。"
 ---
 
-# DiffWBC：单步生成式全身控制与测试时运动引导 / Steerable General Humanoid Motion Tracking
+# OneSteer：单步扩散全身控制与可引导的通用人形运动跟踪 / Unlocking Steerable General Humanoid Motion Tracking via One-Step Diffusion Whole-Body Control
 
 ## 一句话定义
 
-**DiffWBC**（*Unlocking Steerable General Humanoid Motion Tracking via One-Step Diffusion Whole-Body Control*，arXiv:2610.41354v1）把 **50 Hz 人形运动跟踪控制器本身**变为生成未来状态与关节动作的单步模型：常规跟踪一次前向执行；遇到新约束时直接用可微代价优化输入噪声，并通过分组遮蔽把部分肢体的控制权让给新目标，而不必改动策略权重。
+**OneSteer（旧名 DiffWBC）** 是条件于未来动作参考和本体反馈的 **50 Hz 单步生成式全身控制器**：它预测未来状态—动作计划，用实时反馈执行当前一步，并在测试时通过可微成本更新生成器**输入噪声**、通过身体分组掩码选择性放松参考目标，从而不重新训练权重就调整动作（arXiv:2610.41354v3）。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |---|---|---|
-| DiffWBC | Diffusion Whole-Body Control | 本文将一步生成、全身跟踪和测试时引导集成在低层控制器 |
-| WBC | Whole-Body Control | 人形多关节的全身协调与执行 |
-| RL | Reinforcement Learning | 教师 tracker 的来源，或从零训练生成式跟踪器的优化方法 |
-| DAgger | Dataset Aggregation | 学生在访问状态上向冻结的 RL 教师请求动作监督 |
-| FSQ | Finite Scalar Quantization | 对身体分组的参考时序特征量化为有限 token |
-| SDF | Signed Distance Field | 测试时可微的障碍碰撞距离代价 |
-| ONNX | Open Neural Network Exchange | 论文报告导出用于统一评测与真机部署的策略模型 |
-| GPU | Graphics Processing Unit | 论文训练与推理的计算资源口径 |
+| WBC | Whole-Body Control | 多关节全身控制 |
+| SDF | Signed Distance Field | 用于测试时碰撞距离成本；真机由 LiDAR 建图 |
+| RL | Reinforcement Learning | 教师策略来源或从零训练路线 |
+| DAgger | Dataset Aggregation | 访问状态由教师标注并逐步转移控制 |
+| FSQ | Finite Scalar Quantization | 将参考时序编码为离散特征 token |
+| ONNX | Open Neural Network Exchange | 导出控制模型供 G1 机载端推理 |
+| LiDAR | Light Detection and Ranging | 真机障碍物几何地图的传感器 |
 
 ## 为什么重要
 
-- **普通运动跟踪器是固定映射：** 遇到低顶棚、跨栏、手臂目标或电机限矩时，通常需改参考轨迹、重新训练，或外挂规划器；后者的运动学结果不一定能被低层动力学跟上。
-- **DiffWBC 将规划分布纳入控制器内部：** 从真实本体状态每 20 ms 重规划一次近 1 s 的可执行状态/动作轨迹，避免「外部参考编辑通过了几何检查，实际跟踪却撞上障碍」。
-- **一套网络兼顾可靠跟踪、测试时操控与失效诊断：** 生成噪声产生的计划分歧可以筛出跟踪困难片段，减少全量仿真扫描开销。
+- 传统确定性跟踪策略接受参考姿态后输出动作；外部优化出的避障参考不一定能被低层跟踪器实现。
+- OneSteer 用同一生成器预测短期可执行状态和动作，借助 inverse-dynamics / plan-conditioned action head 将计划与真实反馈闭环结合，使 steer 发生在控制器内部。
+- 把同一模型用于**常规跟踪、冻结权重后的任务引导、无仿真失败候选排序**，并在 v3 从「仅普通跟踪真机」扩展到 **G1 真机 LiDAR SDF 避障**。
 
 ## 核心信息
 
-| 项目 | 论文 v1 核对结果 |
+| 项目 | 论文 v3（2026-11-11） |
 |---|---|
-| 论文 | [DiffWBC，arXiv:2610.41354v1](https://arxiv.org/abs/2610.41354)，2026-10-30 |
-| 作者 | Yifei Huang、Yazhao Yang、Weijia Li、Zhiheng Ma、Dian Shen |
-| 机构 | 东南大学（Southeast University）；南方科技大学（Southern University of Science and Technology）；香港理工大学（The Hong Kong Polytechnic University）；深圳理工大学（Shenzhen University of Advanced Technology） |
-| 机器人 | Unitree G1，29 个驱动关节，50 Hz 控制 |
-| 训练 | 蒸馏路径：4 × RTX 4090 × 8 h = **32 GPU-hours**；从零 model-based RL：约 **20 GPU-hours** |
-| 推理 | 单张 RTX 4090 测普通跟踪 **3.8 ms**；测试时 steering **20.3–55.1 ms** |
-| 项目主页 | https://diffwbc.github.io/（目前沿用匿名展示名 OneSteer） |
-| 代码 | **暂未公开**：截至 2026-11-10 项目页显示 “Code (after review)” |
+| 主论文 | [OneSteer，arXiv:2610.41354v3](https://arxiv.org/html/2610.41354v3)；v1 于 2026-10-30 题名 DiffWBC |
+| 作者 | Yifei Huang、Yazhao Yang、Li Weijia、Tianle Shi、Ji Jin、Zhihui Cai、Zihao Liu、Jianzhuang Zhao、Songlin Dong、Xinyuan Chang、Yihong Gong、Dian Shen、Zhiheng Ma |
+| 机构 | 东南大学；南方科技大学；香港理工大学；深圳大学；深圳理工大学（Shenzhen University of Advanced Technology）；西北工业大学；Primotion；西安交通大学 |
+| 平台 | Unitree G1，29 个驱动关节；MuJoCo / mjlab；50 Hz |
+| 跟踪延迟 | RTX 4090 单生成器调用 3.8 ms；真机双调用普通跟踪 5.3 ms |
+| 实时 steering 延迟 | RTX 4090 10.6–13.7 ms；Orin NX 测得 14.4 ms（**离线计时**） |
+| 官方项目 | https://onesteer.github.io/ |
+| 代码开放 | 截至 2026-11-14，官网写 **Code (coming soon)**；无可核验的训练/推理源码及官方可运行入口 |
 
 ## 核心原理
 
-### 1. 参考输入和身体分组
+### 1. 参考条件和未来计划
 
-- **参考窗口：** 未来 10 帧、每 0.1 s 一帧，单帧 38 维：root 9 + legs 12 + upper body 17，含全身 29 维关节角。
-- **分组编码：** 三组各自 MLP 对未来参考编码，特征求和后通过 FSQ 得到 2 × 32 维参考 token；另输入当前本体 proprioception。
-- **掩码训练：** 单组独立遮蔽概率 0.3，整段参考遮蔽概率 0.1；因此测试时既可跟踪全身轨迹，也可仅锁定某些身体部分并让其他部分执行目标。
+- **输入：** 当前 proprioception、未来 10 帧参考（0.1 s 间隔，每帧 38 维：root 9 / legs 12 / upper body 17）。身体分组经 MLP、FSQ 构成参考 token，可通过 `m_ref` 选择可见组。
+- **生成器：** 4 层、宽 512、8 heads、约 22.8M 参数的 Transformer；从高斯噪声与参考条件 **一次前向**预测 24 个计划 token（73 维状态 + 29 维动作目标），覆盖 **0.96 s**。
+- **反馈执行：** action head `g_φ(o_k, ŝ_1:4, r_k; m_act)` 使用最新本体状态、前四个计划状态与可见参考计算本 tick 的关节指令；下一 tick 重新规划。**不是直接把预测动作 token 开环逐个下发**。
+- **学习目标：** 对真实计划加噪输入做清洁计划 MSE 重建；MimicLite Huge + DAgger 的蒸馏路线，或经 learned world model imagined rollouts 的从零 model-based RL 路线，得到的是不同控制器实例，指标不能混用。
 
-### 2. 单步生成器和逆动力学执行头
+### 2. 测试时梯度引导与三类掩码
 
-- **Transformer：** 4 层、hidden 512、8 heads、22.8M 参数。输入为本体 token、2 个参考 token 和 24 个轨迹预测 token。
-- **输出：** 每个预测 token 包含 73 维机器人物理状态（含 root 状态及 29 个 q / dq）与 29 个目标关节角；前 16 个控制 tick 稠密覆盖，后 8 个间隔 4 tick，预测视野为 **0.96 s**。
-- **学习目标：** 噪声插值 \(x_t=(1-t)x_0+t\epsilon\)，以 \(\mathcal{L}_{gen}=\mathbb{E}\|f_\theta(x_t,c)-x_0\|^2\) 回归清洁轨迹。常规推理直接把初始高斯噪声映射为预测未来，无多步去噪循环。
-- **控制动作：** action head \(g_\phi\) 使用当前本体状态与最先的 4 个预测状态转成关节执行命令，底层关节目标/力矩经执行接口作用于 G1；每个 50 Hz tick 都从真实反馈重新生成，**不是整段开环回放**。
+- **可微任务成本：** 对障碍 SDF、到达目标、弱电机力矩、托盘姿态、根部速度等计算 `C(X)`；反传到生成器输入 `z`，沿归一化成本梯度下降。模型参数冻结。
+- **两次生成 / 稀噪重混合：** 第一次从纯噪声产生草稿；第二次将草稿与新噪声混合，在第二次输入施加两步梯度更新，然后生成最终计划。该 50 Hz 实时设置下 **1.25 m 低杆仿真 clean pass 为 0.90**。两次调用各引导两步、6 步 + line search 等是独立的更高计算预算消融，不是默认实时配置。
+- **掩码不能混淆：** `m_ref` 控制输入参考组的可见性；`m_act` 防止执行头把已释放的身体组重新拉回旧参考；`M_guide` 只选择允许修改的生成输入通道。保留的身体组仍应跟踪参考，但不构成硬安全保证。
 
-### 3. 两种训练方式
+### 3. 无仿真失效发现
 
-1. **冻结教师 + 在线 DAgger：** MimicLite Huge 产生动作标签；4096 并行环境采集学生访问状态与未来真实状态，使用 BONES-SEED、AMASS、LAFAN 共 78,842 条序列（约 170 h）。4 张 RTX 4090 共 8 h，合计 32 GPU-hours。
-2. **无教师 model-based RL：** 4096 环境在线收集转移，三层 MLP world model 回归动力学，用 32 步 imagined rollouts 对跟踪与存活奖励反向传播，终端 critic 稳定训练；60k iter，约 20 GPU-hours。**从零版跟踪误差更低，不等于可引导性也更好。**
-
-### 4. 冻结权重的测试时 steering
-
-定义未来计划的可微代价 \(C\)（如全身 SDF 避障、手部目标点、足滑/速度目标、退化电机限矩、托盘角度），通过 \(\nabla_x C(f_\theta(x,c))\) **仅更新输入噪声**；权重 \(\theta\) 保持冻结。body-group mask 决定哪些关节自由度可接受新目标，未放开的部分仍要跟踪参考。
-
-- 默认 **2 次生成 × 每次 2 次梯度下降**；难 reaching 可用 12 步搜索。普通跟踪只需 1 次前向。
-- 成本引导主要先改关节位置，未必同步改速度；论文提供 **可选神经 world-model 投影**，让引导计划更符合动力学，再交给闭环 action head 执行。
+对同一个参考与 proprioception 取 **K=8** 组噪声生成计划，统计预测关节位置的跨样本标准差，按时间取 95 分位数作为困难度分数。此过程不需要对每条候选做物理 rollout；最终失败标签与微调有效性仍通过仿真验证。该指标是经验性风险排序，低分并不保证成功。
 
 ## 流程总览
 
 ```mermaid
 flowchart TD
-    ref["未来参考窗口<br/>10 帧 × 38 维"] --> groups["root / legs / upper body<br/>分组 MLP 与可选 MASK"]
-    groups --> fsq["FSQ 量化<br/>2 × 32 维参考 token"]
-    obs["G1 本体反馈 proprioception"] --> encoder["本体状态 token"]
-    fsq --> gen["一步 Transformer 生成器<br/>H=24，0.96 s 状态/动作计划"]
-    encoder --> gen
-    noise["高斯噪声输入"] --> gen
-    gen --> plans["未来物理状态 + 关节目标"]
-    plans --> head["逆动力学 action head<br/>当前状态 + 前 4 个预测状态"]
+    ref["未来 10 帧参考<br/>root / legs / upper body"] --> refmask["m_ref 分组遮蔽<br/>MLP + FSQ 编码"]
+    obs["本体反馈 proprioception"] --> cond["条件编码"]
+    refmask --> cond
+    noise["首轮高斯噪声"] --> gen1["单步生成器 第 1 次调用"]
+    cond --> gen1
+    gen1 --> draft["未来状态—动作草稿计划"]
+    draft --> remixed["草稿 + 新噪声重混合"]
+    cost["测试时可微成本<br/>SDF / reaching / 限矩 / 速度"] --> refine["第二次调用输入梯度优化<br/>M_guide 选择更新通道"]
+    remixed --> refine
+    cond --> gen2["单步生成器 第 2 次调用"]
+    refine --> gen2
+    gen2 --> plan["优化后的未来计划"]
+    plan -.-> refine
+    plan --> head["反馈条件执行头<br/>前 4 状态 + m_act 参考遮蔽"]
     obs --> head
-    head --> pd["关节控制接口 / PD 执行"]
-    pd --> robot["Unitree G1 / MuJoCo"]
+    head --> cmd["当前关节控制命令"]
+    cmd --> robot["Unitree G1 / MuJoCo"]
     robot --> obs
-    cost["测试时可微目标<br/>避障 / 到达 / 限矩 / 平衡"] --> grad["代价梯度 + body-group mask<br/>冻结网络权重"]
-    plans --> grad
-    grad --> noise
-    teacher["训练 A：MimicLite 教师<br/>在线 DAgger"] -.-> gen
-    mbrl["训练 B：learned world model<br/>32 步想象 rollout 的 RL"] -.-> gen
+    teacher["训练 A：MimicLite 教师 + DAgger"] -.-> gen1
+    mbrl["训练 B：world model + model-based RL"] -.-> gen1
 ```
 
-此图是 **论文方法层的数据与控制流**，不是未公开的源码架构或可运行调用链。图中普通跟踪走单次生成；引导路径需额外计算梯度并重复生成。
+图示两次生成的测试时引导路径；**普通跟踪可只调用一次生成器**，其计划直接传给执行头。虚线代表训练方式，不表示运行时依赖教师。计划回传成本梯度在同一控制 tick 内计算，执行头仅下发当前动作。
 
 ## 源码运行时序图
 
-**不适用（尚无可核验的官方可运行代码）**：截至 2026-11-10 项目页只提供论文相关介绍和视频，代码栏标记 “Code (after review)”。当前无法读取真实训练、推理、ONNX 导出或真机执行入口，不能凭论文示意图杜撰源码时序。后续发布仓库后应补充训练入口、模块调用与 G1 部署时序图。
+**不适用（官方尚未公开可运行代码）**。2026-11-14 检查项目页只有 Paper / Video，代码入口仍是「Code (coming soon)」；尽管论文说明 ONNX、Jetson Orin NX 和系留 GPU 真机实验，未核验真实 CLI、函数入口或部署调用链，故不能凭方法示意伪造源码时序图。
 
 ## 实验与评测
 
-论文统一 MuJoCo sim-to-sim harness，采用官方控制配置与 checkpoint；Table 2 的 AMASS / BONES 各 **150 条 held-out 窗口**。成功标准含骨盆高度偏离参考超过 0.25 m 即失败。
+v3 在统一 MuJoCo sim-to-sim harness 评测 **AMASS 150 个 held-out 窗口、BONES 512 个未见演员窗口**；BONES 的 18 条依赖复杂地形片段在平地 harness 中均无法完成。局部误差为**各方法成功片段上的误差**，不应跨不同成功集合直接当成逐片配对误差。
 
-| 项目（论文 v1） | 结果 | 评测边界 |
+| 项目（v3） | 核对结果 | 验收边界 |
 |---|---|---|
-| 从零 DiffWBC，AMASS 局部误差 | **26.5 mm** | 优于表中对照；不代表全部维度最优 |
-| 从零 DiffWBC，BONES 局部误差 | **20.1 mm**；success **97.3%** | 统一 150 窗口 sim2sim |
-| 蒸馏 DiffWBC，BONES 局部误差 | **24.7 mm** | 与教师 24.4 mm 接近 |
-| 1.25 m 低顶棚 clean pass | **0.84**（in-generator）vs **0.10**（闭环参考编辑） | 测试时引导，仿真 |
-| 跨栏 feasible pass | **0.68** vs 闭环编辑 **0.57** | 仿真 79 条 walking sequence |
-| 空间 reaching hit | **0.75** vs 闭环编辑 **0.60** | 难例引导可达 55.1 ms |
-| 左膝 15% 限矩存活 | **0.71 → 0.79** | 冻结权重，仿真 |
-| 托盘滚珠丢失率 | **0.17 → 0.08** | 冻结权重，仿真 |
-| 噪声 spread 失效诊断 | top 2% precision **0.91**、AUC **0.83** | 7,884 clip 扫描，537 失败 |
-| 329 条难例微调 | 修复基础失败 **50%**、已掌握片段退化 **1.9%** | 指定 fine-tune 配方，单种子实验 |
-
-**真机：** 在 Unitree G1 上对 9 条复杂运动各试 3 次，作者报告 27/27 次普通跟踪不摔倒；头顶绳仅作不承重安全保护。**论文没有给出上述 steering 任务的真机结果**。
-
-**推理与频率：** 普通跟踪 3.8 ms 适用于 50 Hz；默认引导 20.3 ms 已接近并略高于严格的 20 ms 控制时隙，12 步引导 55.1 ms 应减频或异步规划，不能以 3.8 ms 作为所有场景的延迟。
+| 从零训练，AMASS / BONES local error | **26.5 / 22.6 mm** | AMASS 成功率 96.7%，BONES 96.5%；BONES 优于统一表中各基线的局部误差 |
+| 蒸馏版本 BONES | **27.3 mm，成功率 94.9%** | 不与从零模型的更优 tracking 数值混写 |
+| 1.25 m 低杆 clean pass | **0.02 → 0.90**（第二次调用引导 2 步） | 仿真 79 条 walking 窗口，闭环参考编辑最高 0.11 |
+| 跨栏 feasible / reaching hit | **0.68 / 0.57** | 仿真实时设置；加大引导预算可改善部分任务但增加时延 |
+| 左膝弱电机存活 / 托盘球丢失 | **0.71 → 0.79 / 0.16 → 0.08** | 仿真、冻结权重多目标实验 |
+| G1 真机普通跟踪 | **27/27** 次不跌倒 | 9 组动作各 3 次，使用松弛安全绳 |
+| G1 真机 SDF 引导 | **1.1 m 低杆 4/5**；**12 cm 跨栏 3/3** 不跌倒 | LiDAR 预建并固定地图，**系留 RTX 4090** 执行 steering |
+| Orin NX steering 耗时 | 第二次调用引导 **14.4 ms**；双调用均引导 18.2 ms | **离线测得**，不能解释为这两组真机 steering 已在机载端实时运行 |
+| 地形扩展：全地形成功率 | **0.43 → 0.90** | 21×21 height scan→36 tokens + RL 微调，88 条跨地形片段 × 6 类地形 × 10 难度，**仅仿真** |
+| 噪声计划离散度 failure ranking | top 2% precision **0.91**，全局 AUC **0.83** | 7,884 clips / 537 failures；评测用物理仿真提供真实失败标签 |
+| 329 条困难片段定向微调 | 解决 **48±4%** 既有失败；已成功片段退化 **1.8±0.2%** | 3 训练种子；筛查成本较每片 5 次模拟低 11–28 倍 |
 
 ## 结论
 
-**DiffWBC 的价值在于把“可微规划”和“物理闭环执行”合并进同一个通用跟踪器；常规跟踪快，但测试时强引导仍受计算与动力学一致性约束。**
+**OneSteer v3 的关键证据从「仿真中的可引导跟踪」推进到了 G1 真机的低杆/跨栏任务，但代码开放与完整机载部署仍待验证。**
 
-1. 先以 **普通单步跟踪（3.8 ms）** 建立 50 Hz G1 baseline，再考虑额外 steering 预算，不能把引导延迟与跟踪延迟混淆。
-2. 需要在线避障、到达、退化关节限矩或托盘平衡时，可设计可微 task cost，利用冻结权重的输入噪声梯度；无需为每个目标专门再训练策略。
-3. **body-group mask 是任务接口**：让腿或手臂部分释放参考约束，减少新目标与原参考间的冲突。
-4. **从零 RL 版 tracking 更准，但 steering 更弱**：Appendix A 显示 1.25 m ceiling 成功率从零版 0.00、蒸馏版 0.84，选择模型须按目标评估。
-5. 用 **生成噪声计划离散度** 排序失败难例可免去全量物理 rollout；91% top 2% precision 是特定数据集的筛查质量，并非泛化保证。
-6. 目前开源复现不可用；论文的 G1 实机成功仅支撑 **基本跟踪能力**，不能外推到测试时避障/故障补偿的真机安全性。
+1. **选控制器看两条路径：** 从零 model-based RL 版本在统一跟踪基准上局部误差领先；测试时 steering 主要采用教师蒸馏版，不应把两者最好数值视为同一个 checkpoint。
+2. **参考不可行时优先考虑控制器内引导：** 仿真 1.25 m 低杆由 0.02 提至 0.90，闭环参考编辑至多 0.11；比较的是同一评测设置而非普适避障保证。
+3. **真实避障已有证据但场景有限：** 真机 1.1 m 低杆 4/5、12 cm 跨栏 3/3；地图在每次实验前固定、引导由系留 RTX 4090 计算。
+4. **核对三类 mask 与端到端时延：** 仅给生成器遮蔽参考不足以让执行头释放身体目标，且 Orin NX 数据是离线 timing。
+5. **无仿真筛选是数据选择工具：** top 2% precision 0.91，定向微调解决 48±4% 既有失败；不能视为形式化安全验证。
+6. **场景适应与任务迁移分开考核：** 地形 token 版需 RL 微调且仅做仿真；给冻结基础模型添加可微成本属于 test-time steering。
 
 ## 与其他工作对比
 
-| 方法 | 策略形态 | 主要差异 |
+| 方法 | 控制架构 | 与 OneSteer 的差别 |
 |---|---|---|
-| [SONIC](../methods/sonic-motion-tracking.md) | 确定性通用 motion tracker | 注重规模化跟踪与多模态指令接口；在 DiffWBC 论文中作为跟踪基线，不具内生 cost-steering |
-| [YAHMP](./paper-yahmp.md) | 可复现的消融型 RL 跟踪器 | 强在命令、历史、PD、残差动作的受控比较；DiffWBC 关注冻结权重测试时调制 |
-| [BeyondMimic](../methods/beyondmimic.md) | Guided diffusion 运动策略 | 扩散引导与控制相关，但研究的任务/参考接口不同；不可将 benchmark 结果直接跨论文比较 |
-| [Extreme-RGMT](./paper-extreme-rgmt.md) | 持续学习高动态跟踪 | 主要通过有针对性训练修复难动作；DiffWBC 用计划 spread 先筛失败难例 |
+| [SONIC](../methods/sonic-motion-tracking.md) | 确定性通用 tracker | 统一基准的跟踪对照，未在其 tracker 内使用同类测试时噪声梯度成本 |
+| [YAHMP](./paper-yahmp.md) | RL 运动跟踪设计消融 | 偏向命令、历史、PD 与残差动作对比，非冻结生成器的计划 steer |
+| [BeyondMimic](../methods/beyondmimic.md) | 扩散相关全身控制 | 任务和参考接口不同，不能跨数据集直接比较成功率 |
+| [Extreme-RGMT](./paper-extreme-rgmt.md) | 高动态困难动作持续学习 | 采用仿真筛失败；OneSteer 提供基于噪声计划离散度的预筛方式 |
 
 ## 工程实践
 
-- **接口对齐：** 单步预测的 24 token 包含位置、速度与执行动作，action head 只用前 4 个预测状态，务必核对关节命令/PD 增益与 G1 的 29 驱动关节配置。
-- **选型评估：** 分开统计 nominal tracking（存活率、local/global error、扭矩/足滑）与 steering（collision-free pass、任务 hit、完整闭环延迟）。
-- **监督与泛化：** DAgger 路径使用 MimicLite 教师与大规模动作库；无教师 RL 路径要准备可微 learned world model 与稳定 critic，两者不是可互换的训练成本口径。
-- **真机安全：** 新 cost / mask 必须先在 MuJoCo 验证并限制执行关节/力矩；引导步骤可能破坏速度一致性，必要时启用论文提出的 world-model 投影，不能把视觉仿真演示视作安全证明。
-- **复现状态：** 论文可读、视频可看，官方训练/推理源码待开放；运行入口、配置和权重尚不可核实。
+- **观测 / 执行接口：** 参考输入含 root/legs/upper body，动作头仅使用前四个计划状态和实时本体反馈；29 个 G1 驱动关节的控制模式、PD 参数需在部署前逐项对齐。
+- **闭环验证：** 将 nominal tracking（局部误差、存活、足滑）与 steering（避障净通过率、任务命中、执行头真实动作、端到端延迟）分别验收。
+- **地图与硬件：** 本文真机 steering 使用**预建的固定 LiDAR SDF** 和**系留 RTX 4090**；把它迁移到机载 Orin NX、动态障碍与在线地图更新不是论文已经完成的证明。
+- **开源状态：** 官方项目代码仍未发布。没有可审核的源码运行入口、训练配置或公开权重，当前只能依据论文和演示理解方法。
 
 ## 局限与风险
 
-- **跟踪与操控能力存在 trade-off：** scratch 版 local tracking 领先，但 Appendix A 的 steering 弱；不同训练路径不能只看一个误差值。
-- **时序预算紧：** 默认 steering 约 20.3 ms，重 cost-gradient 会超过 50 Hz 周期。
-- **动力学一致性不天然成立：** 梯度操作先改变关节角，未保证状态速度与接触力一致；可选投影增加计算和实现复杂度，且对改根部轨迹的顶棚任务效果有限。
-- **高接触力任务仍未闭环解决：** 论文指出持续接触与不连续接触需要显式 wrench 建模。
-- **静态姿态有全局漂移，且教师蒸馏可继承教师误差**。
-- **实验边界：** 主要 steer 结果是仿真；没有多平台实机与长期安全评测。官方项目页旧名 OneSteer 的 BONES 数字为 22.6 mm，**与论文 v1 的 20.1 mm 不一致**，本文采用论文 v1 数值。
+- **策略引导依赖可微成本：** 目标不一定能表达全部动力学与安全要求；参考保留组也不是硬约束。
+- **计划与实际执行存在差距：** 执行头不是严格的逆动力学求解器，受实际关节限矩、接触与反馈限制。
+- **接触任务短板：** 持续接触力、推拉、开门等需要显式 wrench / tactile 表示，论文把它们列为未来工作。
+- **真机覆盖有限：** 已验证普通跟踪与静态地图的低杆/跨栏；弱电机故障、托盘、地形模型及广泛的安全场景主要仍在仿真。
+- **版本不可混用：** 2026-10-30 的 v1 题名 **DiffWBC**，BONES 150 窗口、local error 20.1 mm、低杆 clean pass 0.84；2026-11-11 的 v3 正式改名 **OneSteer**，BONES 512 窗口、22.6 mm、实时第二次调用引导 0.90。两版实验口径不同，不能当成同一设置下的性能增减。
 
 ## 关联页面
 
@@ -186,15 +177,16 @@ flowchart TD
 
 ## 参考来源
 
-- [论文全文通读归档](../../sources/papers/diffwbc_arxiv_2610_41354_reading.md) — arXiv v1 §1–§5、Tables 1–6、Appendix A–C 核对与版本差异
-- [项目主页归档](../../sources/sites/diffwbc-project.md) — 匿名旧名、开源状态与额外 demo 的边界
-- [PR #3590 补充论文通读归档](../../sources/papers/diffwbc_arxiv_2610_41354.md) — 保留独立核对的论文机制与实验口径
-- [原论文：DiffWBC，arXiv:2610.41354v1](https://arxiv.org/abs/2610.41354)（2026-10-30）
-- [官方项目演示：diffwbc.github.io](https://diffwbc.github.io/)（网站当前标题 OneSteer）
+- [OneSteer v3 原文通读归档](../../sources/papers/onesteer_arxiv_2610_41354_v3.md) — v3 正文、附录、评测与真机核对
+- [官方项目页归档](../../sources/sites/diffwbc-project.md) — 真机/仿真边界、代码状态
+- [DiffWBC v1 历史通读](../../sources/papers/diffwbc_arxiv_2610_41354_reading.md) — 同篇论文旧版本，仅用于版本差异
+- [DiffWBC v1 机制补充](../../sources/papers/diffwbc_arxiv_2610_41354.md) — v1 原始评测资料
+- [OneSteer 论文 HTML v3](https://arxiv.org/html/2610.41354v3)
+- [OneSteer 官方项目主页](https://onesteer.github.io/)
 
 ## 推荐继续阅读
 
-- [DiffWBC arXiv HTML 全文（方法、实验和附录）](https://arxiv.org/html/2610.41354)
-- [DiffWBC 官方视频与交互示例](https://diffwbc.github.io/)
-- [SONIC 的统一运动跟踪对照](../methods/sonic-motion-tracking.md)
-- [从跟踪到扩散引导：BeyondMimic](../methods/beyondmimic.md)
+- [OneSteer 最新 arXiv 版本历史](https://arxiv.org/abs/2610.41354)
+- [OneSteer：实机视频、地形与自评实验](https://onesteer.github.io/)
+- [SONIC 跟踪基线](../methods/sonic-motion-tracking.md)
+- [扩散控制相关：BeyondMimic](../methods/beyondmimic.md)
