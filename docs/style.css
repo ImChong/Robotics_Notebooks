@@ -3570,7 +3570,7 @@ body.roadmap-ltree-map-open {
   z-index: 9500;
   display: grid;
   place-items: center;
-  padding: clamp(8px, 2vw, 24px);
+  padding: 0;
 }
 .roadmap-ltree-map-backdrop {
   position: fixed;
@@ -3582,12 +3582,12 @@ body.roadmap-ltree-map-open {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: min(1440px, 100%);
-  height: min(92vh, 100%);
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.34);
+  border: 0;
+  border-radius: 0;
   overflow: hidden;
 }
 .roadmap-ltree-map-bar {
