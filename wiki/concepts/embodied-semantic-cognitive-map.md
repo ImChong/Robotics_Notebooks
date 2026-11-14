@@ -16,8 +16,11 @@ related:
   - ../overview/quadruped-vln-embodied-workshop.md
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../queries/robot-perception-stack-selection-loop.md
+original:
+  - ../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md
 sources:
   - ../../sources/courses/quadruped_vln_embodied_workshop_2day.md
+  - ../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md
 summary: "具身语义认知地图：在可度量几何地图上叠开放词汇实体与语言可查询语义，使机器人能从像素提升到可导航、可问答的实体级世界模型。"
 ---
 
@@ -66,6 +69,12 @@ flowchart TB
   COG --> QA["空间问答 / 规划"]
 ```
 
+## 论文实例：OVO 在线开放词汇语义地图
+
+[OVO](../entities/ovo-semantic-mapping.md)（[论文 arXiv:2411.15043v3](https://arxiv.org/html/2411.15043)）用带位姿的 RGB-D 关键帧，在三维点上关联来自二维分割的实例；为每个实例聚合多视角视觉语言描述子，并提供文本相似度查询。论文将该语义层接到 ORB-SLAM2 / Gaussian-SLAM，回环校正后还需合并重复实例。其 ScanNetv2 HVS 对照中，使用 GT 相机位姿的 OVO-mapping 的 ScanNet20 mIoU 为 38.1%，而接 Gaussian-SLAM 时为 29.3%：**语义地图表现依赖底层几何与位姿质量**，不可把仅语义建图的数字视为完整在线系统的性能。
+
+这一实例对应「视觉语义 → 3D 关联 → 开放词汇实例记忆 → 查询」；论文未解决完整任务规划或安全导航，不能把语义地图直接等同于任务级世界模型。
+
 ## 工程实践
 
 | 项 | 建议 |
@@ -93,7 +102,9 @@ flowchart TB
 
 ## 参考来源
 
-- [四足×VLN 实战营课程大纲](../../sources/courses/quadruped_vln_embodied_workshop_2day.md)
+- [OVO 论文全文核对记录](../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md) — 在线 RGB-D 语义建图与回环的具体实证
+- [OVO 原始论文（arXiv v3）](https://arxiv.org/html/2411.15043) — 论文的对象级语义接口实例
+- [四足×VLN 实战营课程大纲](../../sources/courses/quadruped_vln_embodied_workshop_2day.md) — 课程主题线索，非方法结论的一手证据
 
 ## 推荐继续阅读
 
