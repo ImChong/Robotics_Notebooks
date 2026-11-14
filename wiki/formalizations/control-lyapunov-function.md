@@ -2,6 +2,7 @@
 type: formalization
 tags: [control, lyapunov, clf, stability, qp, optimization, safety]
 status: complete
+updated: 2026-11-14
 summary: "Control Lyapunov Function（控制李雅普诺夫函数）通过构造满足 V̇(x)≤-αV(x) 的标量函数，为控制系统提供可证明的渐近稳定性保证，是 CLF-CBF-QP 框架的稳定性核心。"
 sources:
   - ../../sources/papers/optimal_control_theory.md
@@ -13,7 +14,7 @@ related:
   - ../concepts/whole-body-control.md
 ---
 
-# Control Lyapunov Function（控制李雅普诺夫函数）
+# Control Lyapunov Function（CLF，控制李雅普诺夫函数）
 
 **Control Lyapunov Function（CLF）**：一种用于设计使系统渐近稳定的控制律的数学工具。通过找到一个正定标量函数 $V(x)$，使得在某个控制输入下 $\dot{V}(x)$ 严格为负，从而保证系统状态最终收敛到目标状态。
 

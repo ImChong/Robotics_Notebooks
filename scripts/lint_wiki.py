@@ -832,6 +832,12 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 操作的进度对齐上下文、Extreme-RGMT 的 acquisition/consolidation 训练环），
     # 各有 entities/paper-pace-*.md 承载；不是单一可成页概念，不建 concepts/pace.md。
     "pace",
+    # atlas：大小写归并后混合了 Boston Dynamics 人形机器人、World Labs 世界模型、
+    # ATLAS Agentic Harness 和 Human-Level Actuation 的 DoF Atlas（人体自由度图谱）。
+    # 各义分别由 entities/boston-dynamics.md、atlas-world-model.md、
+    # atlas-agentic-harness.md、paper-notebook-human-level-actuation-for-humanoids.md
+    # 承载；不是单一缺页概念，与 pace 同类同名异义，不再建议 concepts/atlas.md。
+    "atlas",
     # policy：命中处全是代码 token 与网络分支标签，不是待建的机制页——Inspect
     # Robots 的 `Model` = `Policy` + `Embodiment` 概念映射表、Isaac Lab 的观测组键
     # `observations.policy`（LW-BenchHub 改组成 `policy` + `camera_obs`）、ORCS 保持

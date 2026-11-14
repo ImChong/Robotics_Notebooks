@@ -3,7 +3,7 @@ type: entity
 project_id: flash-aloha
 tags: [paper, stanford, manipulation, bimanual, imitation-learning, kinesthetic-teaching, demonstration, action-chunking, act, real-world-robotics]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 original:
   - ../../sources/papers/flash_aloha_icra2026.md
 project: https://johnyao93.github.io/flash-aloha/
@@ -153,6 +153,16 @@ sequenceDiagram
 **关键消融**：装电池的遮罩消融为无遮罩 75%、扩散修复 65%、几何遮罩 85%（Table I）；平滑消融为无平滑 75%、Temporal Ensembling 55%、本文平滑 85%（Table II）。拆杯对应平滑成功率 65% / 35% / 90%。简单将慢示范翻倍播放，装电池成功率由主从原始 55% 降至 15%；跳步播放为 30%（Table III）。这说明速度与轨迹连续性、数据分布同时相关。
 
 **数据采集人因实验（Fig. 7）**：7 名新手对照动觉示教和主从臂操作，经过短练习与任务示范各完成多次装电池试验；作者报告动觉示教可使示范采集用时接近三倍提速。这里与机器人**独立部署**成功率不可混同。
+
+## 与其他工作对比
+
+以下比较依据[官方论文全文归档](../../sources/papers/flash_aloha_icra2026.md)的 §IV–V 与 Tables I–III：
+
+| 对照 | Flash ALOHA 的区别 | 选型与归因边界 |
+|---|---|---|
+| [ALOHA 2 主从遥操作](./aloha-2.md) | 直接握持可反驱机械臂采集高速关节轨迹，配合几何视觉遮罩与动作块平滑 | 装电池为 85%、5.70 s，对照为 55%、17.87 s；示范与系统设置均不同，不能视作单一算法模块的增益 |
+| [ACT](./paper-act.md) 的 Temporal Ensembling | 使用无 CVAE encoder 的 ACT 变体，在相邻动作块的重叠窗口按 Sigmoid 混合；不在每一步重新推理并集成多个块 | 本文装电池平滑消融中，Temporal Ensembling 为 55%、10.18 s，本文平滑为 85%、5.70 s；该结论限于本文设置，不代表所有 ACT 任务 |
+| 扩散修复手部遮罩对照 | 依据运动学和相机标定将操作者手部区域置零，不生成补全图像 | Table I 装电池为几何遮罩 85%、扩散修复 65%、无遮罩 75%；收餐具三组均 100%，不能把差距外推到全部任务 |
 
 ## 结论
 

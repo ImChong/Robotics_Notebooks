@@ -3,7 +3,7 @@ type: entity
 project_id: volt
 tags: [paper, transformer, 3d-perception, point-cloud, semantic-segmentation, instance-segmentation, volume-transformer]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 arxiv: "2604.19609"
 venue: "ECCV 2026 Long Oral"
 project: https://yilmazkadir.github.io/Volt/
@@ -11,6 +11,7 @@ code: https://github.com/YilmazKadir/Volt
 original:
   - ../../sources/papers/volt_arxiv_2604_19609.md
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-vino.md
   - ./paper-dinov2.md
   - ../concepts/embodied-perception-six-spatial-representations.md
@@ -169,6 +170,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 按语义/实例分割需求选择 3D 骨干，并核对地图接口与部署延迟。
 - [VINO：三维自监督表征学习](./paper-vino.md)
 - [DINOv2：2D 自监督表征](./paper-dinov2.md)
 - [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md)

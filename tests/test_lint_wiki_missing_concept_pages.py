@@ -240,6 +240,23 @@ def test_case_insensitive_merge(tmp_path, monkeypatch) -> None:
     assert len(hits) == 1
 
 
+def test_atlas_entity_homonyms_do_not_mask_missing_mechanism(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    meanings = [
+        "Boston Dynamics 的 **Atlas** 人形机器人。",
+        "World Labs 的 **Atlas** 世界模型。",
+        "**ATLAS** Agentic Harness。",
+        "人体自由度图谱的 **Atlas**。",
+    ]
+    pages = [
+        _page(wiki, f"p{i}.md", meanings[i % len(meanings)] + "新机制 **NewControl**。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    records = _run(pages)["missing_concept_pages"]
+    assert len(records) == 1
+    assert "NewControl" in records[0]
+
+
 def test_missing_concept_pages_is_info_only(tmp_path, monkeypatch) -> None:
     results = lw._empty_results()
     results["missing_concept_pages"].append("GRPO（被 6 个页面引用...）")
