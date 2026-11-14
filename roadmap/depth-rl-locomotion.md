@@ -3,7 +3,7 @@
 **首屏导读**：
 
 - **为谁**：想用强化学习快速上手人形 locomotion 的人。
-- **路径**：Stage 0–5 · RL 基础 → locomotion 概念 → RL + Locomotion 方法 → MPC / WBC + RL → Sim2Real → 进阶方向。
+- **路径**：Stage 0–5 · RL 基础 → locomotion 概念 → RL + Locomotion 方法 → Sim2Real → 进阶；MPC / WBC + RL 为可选分支。
 - **纵深路线**：[运动控制主路线](motion-control.md)的一条分支。
 
 ## 路线一览
@@ -17,7 +17,9 @@ flowchart LR
   S4["<b>Stage 4</b><br/>Sim2Real 迁移<br/><em>DR / 延迟处理</em>"]
   S5["<b>Stage 5</b><br/>进阶方向<br/><em>跑酷 / 视觉 / 多平台</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4 --> S5
+  S0 --> S1 --> S2 --> S4 --> S5
+  S2 -. "可选：混合控制" .-> S3
+  S3 --> S4
 
   classDef stage fill:#142a3a,stroke:#00d4ff,stroke-width:2px,color:#fff
   class S0,S1,S2,S3,S4,S5 stage
@@ -28,6 +30,7 @@ flowchart LR
 - 目标读者是有编程基础、想快速把 RL 和人形 locomotion 串起来的人
 - 不需要从头学完所有控制理论，但 RL 基础和 locomotion 概念必须有
 - 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
+- 最短部署路径是 **Stage 0 → 1 → 2 → 4**；Stage 3 供需要显式规划/约束的混合控制方案选读，运动模仿则接 Stage 5 方向 B。
 
 **和主路线的关系：**
 - 本路径是主路线的"快速分支版本"
@@ -82,7 +85,7 @@ flowchart LR
 
 ### 推荐做什么
 - 读 2-3 篇 recent humanoid RL 论文的 related work / introduction（不用全懂，大概知道大家在解决什么问题）
-- 在 IsaacGym 或 Mujoco 里跑通一个人形环境
+- 在 Isaac Lab 或 MuJoCo 里跑通一个人形环境；Isaac Gym / legged_gym 主要用于复现依赖旧版本的工作
 
 ### 推荐读什么
 - [Locomotion](../wiki/tasks/locomotion.md)
@@ -107,7 +110,7 @@ flowchart LR
 - 训练不稳定的原因是什么（sparse reward、early termination、exploration）
 
 ### 推荐做什么
-- 自己设计一个简单人形 RL reward，在 IsaacGym 或 Mujoco Humanoid 里训练
+- 自己设计一个简单人形 RL reward，在 Isaac Lab 或 MuJoCo Humanoid 里训练
 - 对比不同 action space（position / velocity / torque）的训练效果
 - 调一调 reward weight 看看对步态的影响
 
@@ -131,7 +134,7 @@ flowchart LR
 
 ## Stage 3 MPC / WBC + RL 组合框架
 
-**纯 RL 很难直接用到高精度控制场景，需要和传统控制框架结合。**
+**本阶段是可选分支：需要显式规划、约束或可预测响应时，比较混合控制与直接策略；并非所有 RL 部署都需要 MPC/WBC。**
 
 ### 前置知识
 - Stage 2 内容
@@ -139,15 +142,17 @@ flowchart LR
 
 ### 核心问题
 - RL 策略和 MPC / WBC 怎么组合
-- 常见框架：RL 训练低层策略 + MPC 做高层规划；RL 提供 prior 给优化器
+- 常见框架：MPC 给低层 RL 下发命令、RL 调 MPC 参数、或在名义控制器上学习残差；先画清谁输出什么
 - 什么时候该用 RL，什么时候该用 MPC
 
 ### 推荐做什么
-- 读 1-2 篇 RL + WBC / MPC 结合的论文（推荐：AMP、DeepMimic、MimicKit）
-- 理解"RL 提供动作 prior，QP/WBC 负责实时跟踪"这个模式
+- 对照两种组合：RL 调 MPC 权重（rl-mpc-locomotion）与 MPC 指挥冻结 RL 策略（ReCo），标出训练期/部署期模块及控制量
+- 在已有仿真基线上比较直接策略与混合控制的误差、约束违反和整链路延迟；不把四足结果直接外推为人形验证
 
 ### 推荐读什么
-- "AMP: Adversarial Motion Priors" (Peng et al., 2021) — 配合 [AMP Reward](../wiki/methods/amp-reward.md)、[DeepMimic](../wiki/methods/deepmimic.md)
+- [rl-mpc-locomotion](../wiki/entities/rl-mpc-locomotion.md) — 高层 RL 调低层 MPC 权重的四足开源实例；仓库不含真机迁移代码
+- [ReCo](../wiki/entities/paper-reco.md) — 策略响应整形与辨识后，由 MPC 联合规划底盘命令和机械臂速度；Go2+机械臂实例
+- [Residual Policy Learning](../wiki/methods/residual-policy-learning.md) — 名义控制器 + 学习残差的另一种接口
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md)
 - [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)
 - [Query：什么时候用 WBC、什么时候用 RL](../wiki/queries/when-to-use-wbc-vs-rl.md)
@@ -163,7 +168,7 @@ flowchart LR
 **仿真里能跑是真机部署的前提，但不是全部。**
 
 ### 前置知识
-- Stage 3 内容
+- Stage 2 内容；仅混合控制方案需要先完成 Stage 3
 - 理解 Domain Randomization 的原理
 
 ### 核心问题
@@ -188,7 +193,7 @@ flowchart LR
 - [Query：腿式/人形 RL 的 PD 增益设置](../wiki/queries/legged-humanoid-rl-pd-gain-setting.md)
 
 ### 学完输出什么
-- 一次 sim2real 实验记录（哪怕只是仿真内不同地形的迁移）
+- 一份标明验证层级的实验记录：跨地形属仿真泛化，跨仿真器属 sim2sim；只有真实机器人试验才记为 sim2real
 - 对 DR 参数设置的直觉
 
 ---
@@ -253,4 +258,5 @@ flowchart LR
 - [Sim2Real](../wiki/concepts/sim2real.md)
 - [四足机器人开源项目技术地图（36 个 GitHub 项目）](../wiki/overview/quadruped-open-source-projects-technology-map.md) — 可复现的四足/轮足 RL 与 MPC 起步项目：[rl-mpc-locomotion](../wiki/entities/rl-mpc-locomotion.md) · [Wheel-Legged-Gym](../wiki/entities/wheel-legged-gym.md)
 - [ABS（Agile But Safe）](../wiki/entities/abs-agile-but-safe.md) · [SuperMimic Parkour](../wiki/entities/supermimic-parkour.md) — 安全敏捷与跑酷跟踪的 RL locomotion 实例
-- "AMP: Adversarial Motion Priors" (Peng et al., 2021)
+- [AMP 官方项目](https://xbpeng.github.io/projects/AMP/) 与 [DeepMimic 官方项目](https://xbpeng.github.io/projects/DeepMimic/) — 运动模仿/风格奖励，归 Stage 5 方向 B，不作为 MPC/WBC 组合的证据
+- [rl-mpc-locomotion 官方 README](https://github.com/silvery107/rl-mpc-locomotion) — 高层权重策略与低层 MPC 的实际接口

@@ -3,7 +3,7 @@
 **首屏导读**：
 
 - **为谁**：想搭一套实时操控人形机器人、并顺带采集示范数据的人。
-- **路径**：Stage 0–5 · 全景与定位 → 输入接口与硬件 → 映射与延迟 → 人形全身遥操作 → 手指与灵巧手遥操作 → 下游闭环与进阶。
+- **路径**：Stage 0–5 · 全景与定位 → 输入接口与硬件 → 映射与延迟 → 分支选读（全身 / 手指与灵巧手）→ 下游闭环与进阶。
 - **纵深路线**：[运动控制主路线](motion-control.md)的一条分支；上接[动作重定向纵深](depth-motion-retargeting.md)，下供[模仿学习](depth-imitation-learning.md)与 [BFM](depth-bfm.md) 纵深的训练数据。
 
 ## 路线一览
@@ -17,7 +17,9 @@ flowchart LR
   S4["<b>Stage 4</b><br/>手指/灵巧手遥操作<br/><em>手姿估计 → 手部重定向 → 触觉</em>"]
   S5["<b>Stage 5</b><br/>下游闭环与进阶<br/><em>IL / 无机器人采集 / 极端场景</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4 --> S5
+  S0 --> S1 --> S2
+  S2 --> S3 --> S5
+  S2 --> S4 --> S5
 
   classDef stage fill:#0f2f30,stroke:#00cec9,stroke-width:2px,color:#fff
   class S0,S1,S2,S3,S4,S5 stage
@@ -31,7 +33,7 @@ flowchart LR
 - 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
 
 **和主路线的关系：**
-- 本路线横跨主路线 L2（运动学：臂部 IK 与全身重定向是 Stage 2/3 的直接前置）与 L5（RL 与模仿学习：全身跟踪策略与下游 IL）
+- 本路线横跨主路线 [L1（运动学）](motion-control.md#l1-机器人学骨架)（臂部 IK 是 Stage 2/3 的直接前置）与 L5（RL 与模仿学习：全身跟踪策略与下游 IL）
 - [动作重定向纵深](depth-motion-retargeting.md) 把"离线把人体动作变参考轨迹"展开成完整谱系；本路线关心的是**实时、在环、带延迟预算**的那一版重定向，并额外覆盖硬件接口与手指子链
 - 如果目标偏"边走边动手"的任务面，走 [Loco-Manipulation 纵深](depth-loco-manipulation.md)；本路线聚焦"人怎么把动作灌进机器人"这一侧
 
@@ -109,7 +111,7 @@ flowchart LR
 
 ### 前置知识
 - Stage 1 内容
-- 正/逆运动学（FK/IK）概念（参考主路线 L2 与 [动作重定向纵深](depth-motion-retargeting.md) Stage 1）
+- 正/逆运动学（FK/IK）概念（参考主路线 [L1](motion-control.md#l1-机器人学骨架) 与 [动作重定向纵深](depth-motion-retargeting.md) Stage 1）
 - 线性代数与最小二乘
 
 ### 核心问题
@@ -217,7 +219,7 @@ flowchart LR
 **遥操作不是终点：产物要经得起模仿学习训练、大规模采集与真机部署的检验。**
 
 ### 前置知识
-- Stage 3 与 Stage 4 内容
+- Stage 3 或 Stage 4 内容，按全身/手部采集任务选择；双链集成时再合读
 
 ### 核心问题
 - 遥操作示范进入模仿学习的完整链路：`(obs, action)` 序列 → BC / ACT / Diffusion Policy → 部署

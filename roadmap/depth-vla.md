@@ -90,7 +90,7 @@ flowchart LR
 - [Action Chunking](../wiki/methods/action-chunking.md) 与 [BC with Transformer](../wiki/methods/bc-with-transformer.md)
 - [Diffusion Policy](../wiki/methods/diffusion-policy.md) 与 [Diffusion Model](../wiki/concepts/diffusion-model.md)
 - [Imitation Learning](../wiki/methods/imitation-learning.md)
-- 若目标是把 **DP → Robotic DiT → Flow → GR00T** 七篇读串：见专题 [扩散与流匹配策略纵深](depth-robotics-diffusion-dit-flow.md)
+- 若目标是把 **DP → Robotic DiT → Flow → GR00T** 与 PredActor 八篇代表作读串：见专题 [扩散与流匹配策略纵深](depth-robotics-diffusion-dit-flow.md)
 
 ### 学完输出什么
 - 一个能在仿真里跑通的视觉-动作模仿策略
@@ -203,7 +203,7 @@ flowchart LR
 - [EventVLA](../wiki/entities/paper-eventvla-visual-evidence-memory.md) — 稀疏视觉证据记忆端到端 VLA，用基础锚点 + 前瞻式关键帧预测解决长程操作的记忆瓶颈，是行为树编排之外的模型内记忆路线
 - [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md) — 在 VLA 层内嵌测试时训练，将 visuomotor 上下文压缩进固定大小 fast weights，扩到约 8K 步且支持部署后在线自纠偏
 - [ActFovea](../wiki/entities/paper-actfovea.md) — 不重训、不改权重的 VLA 运行时防护层，用动作条件中央凹 + 时空视觉–动作一致性检测扰动；LIBERO 40 任务上把视觉叠加攻击下的成功率从 49.3% 拉回 90.3%，2000 次重放试验 100% 及时安全失败
-- [RoboHarness](../wiki/entities/paper-robo-harness.md) — 把 VLA / RL / TAMP 等异构策略封装为 agentic skills，用理解/记忆/自进化辅助技能做能力边界路由，Memory Bridge 稳定交接；LIBERO-LoHo 上 95.2% 成功，远超 π₀.₅ 的 6.4%；官方仓暂为项目页镜像
+- [RoboHarness](../wiki/entities/paper-robo-harness.md) — 把 VLA / RL / TAMP 等异构策略封装为 agentic skills，用理解/记忆/自进化辅助技能做能力边界路由，Memory Bridge 稳定交接；LIBERO-LoHo 成绩与协议见 v3 实体记录；官方仓暂为项目页镜像
 - [RTCF](../wiki/entities/paper-rtcf.md) — 免训练测试时纠偏：Progressive Memory Alignment 按执行历史对齐成功轨迹，只把低频运动残差转移给冻结的 PI-FAST；LIBERO 86.4%→88.4%，LIBERO-Long 61.6%→68.6%，CPU 侧约 11 ms/chunk 额外开销；截至入库日无公开代码
 - [Neural Introspection Gating](../wiki/entities/paper-neural-introspection-gating.md)（IROS 2026）— 训练无关、可插拔的 VLA 推理调度层：用上一步动作 token logit margin 当免费不确定性信号，门控 VLA-Cache 静态 patch 复用，在保留约 80% 算力节省（1.54 vs 1.43 TFLOPs）的同时收回盲缓存在 LIBERO-Long 上的掉点；适配已部署的 OpenVLA/OpenVLA-OFT；确认未开源
 - [VLAQuantBench](../wiki/entities/paper-vlaquantbench.md) — 统一量化格式与作用范围，在闭环任务上比较 VLA 的训练后量化（独立层组与联合量化），把成功率、校准条件与真实算子延迟一并检查。
