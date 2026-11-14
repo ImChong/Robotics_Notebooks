@@ -3,7 +3,7 @@ type: entity
 project_id: dextacwam
 tags: [paper, dexterous-manipulation, tactile-sensing, world-model, world-action-model, uiuc, berkeley, northwestern]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 arxiv: "2609.24976"
 project: https://dextacwam.github.io/
 code: https://github.com/dextacwam/DexTacWAM
@@ -111,6 +111,17 @@ flowchart LR
 - **消融（Table 2）：** 保持相同触觉编码器、数据与动作专家，只移除触觉世界预测、让策略直接使用触觉输入，四任务平均 **74.7→26.6**。移除模态 K/V RMSNorm 后模型不收敛，未进行闭环评测。
 - **压缩与速度（Table 3，`4.2）：** 十指→两手后，接触 recall 保留 **89.4%**（**不是操作成功率**）；视图 token 3168→864。RTX 4090 上训练迭代 3.87→1.71 s（**2.26×**），每动作块推理 363.0→281.6 ms（**1.29×**），对应动作块执行时间 1.8 s。
 - **预测品质（Tables 4–5）：** 触觉 latent cosine 0.967，contact F1 0.737，预测误差相对复制最后一帧为 0.561×；仅在 Handover/Wipe 配对对照中，视觉 PSNR 变化为 +0.06/−0.07 dB，不可泛化到所有机器人任务。
+
+## 与其他工作对比
+
+以下比较依据[论文原文归档](../../sources/papers/dextacwam_arxiv_2609_24976.md)中的 Table 1–2 与附录 A.1，区分方法路线和受控消融：
+
+| 对照 | 与 DexTacWAM 的关键差异 | 评测读法 |
+|---|---|---|
+| [Reactive Diffusion Policy（RDP）](./paper-sa-2503-02881-reactive-diffusion-policy-slow-fast-visual-tacti.md) | 视触觉反应式策略，与显式预测未来接触演化的世界—动作模型对照 | Table 1 六任务平均分为 38.0 对 70.6；各方法保留原始动作参数化，不能将差值全部归因于世界预测 |
+| 同触觉编码器、无触觉世界预测的消融 | 保持数据、触觉编码器和动作专家相同，仅让策略直接使用触觉输入 | Table 2 四任务平均分为 26.6 对 74.7；这是分离「触觉输入」与「触觉预测」贡献的更直接证据 |
+
+这些分数遵循各任务评分协议，不是可与其他数据集或平台直接横比的统一成功率；方法族关系见[世界—动作模型](../concepts/world-action-models.md)。
 
 ## 结论
 

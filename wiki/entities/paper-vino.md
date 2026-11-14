@@ -3,13 +3,14 @@ type: entity
 project_id: vino
 tags: [paper, self-supervised-learning, 3d-representation, point-cloud, semantic-segmentation, teacher-student, volume-transformer]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 arxiv: "2611.07176"
 project: https://adriankruse.github.io/VINO/
 code: https://github.com/AdrianKruse/VINO
 original:
   - ../../sources/papers/vino_arxiv_2611_07176.md
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./paper-volt.md
   - ./paper-dinov2.md
   - ../concepts/embodied-perception-six-spatial-representations.md
@@ -146,6 +147,7 @@ ScanNet200 消融（线性探测）：Sonata/PTv3 **28.3** → Sonata/Volt **29.
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 将 3D 自监督表征放回感知栈，区分分割特征、地图几何和策略输入。
 - [Volt：3D Volume Transformer](./paper-volt.md)
 - [DINOv2：图像自蒸馏表征](./paper-dinov2.md)
 - [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md)

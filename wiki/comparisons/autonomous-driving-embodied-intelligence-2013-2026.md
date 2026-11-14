@@ -2,13 +2,14 @@
 type: comparison
 tags: [autonomous-driving, embodied-ai, robotaxi, vla, world-models, data-flywheel, commercialization, robotics-safety]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 summary: "2013–2026 智驾四阶段、Robotaxi 兴衰与具身智能六维映射：分离一手事实、技术类比和未经证实的商业预测。"
 original:
   - ../../sources/blogs/autonomous-driving-embodied-intelligence-evidence-2026-11-13.md
 sources:
   - ../../sources/blogs/autonomous-driving-embodied-intelligence-evidence-2026-11-13.md
 related:
+  - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/autonomous-driving-core-algorithms-series.md
   - ../overview/e2e-autonomous-driving-top10-algorithms.md
   - ./robot-foundation-model-company-paths-2026.md
@@ -199,6 +200,7 @@ flowchart LR
 
 ## 关联页面
 
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 先区分 VLM、VLA 与世界模型的输入输出和部署层级，再讨论智驾经验的迁移。
 - [自动驾驶核心算法盘点](../overview/autonomous-driving-core-algorithms-series.md)
 - [端到端自动驾驶十大算法](../overview/e2e-autonomous-driving-top10-algorithms.md)
 - [机器人基础模型公司技术路线对照](./robot-foundation-model-company-paths-2026.md)

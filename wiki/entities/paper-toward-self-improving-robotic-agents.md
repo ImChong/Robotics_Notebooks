@@ -4,9 +4,10 @@ project_id: toward-self-improving-robotic-agents
 tags: [paper, survey, embodied-ai, robotic-manipulation, self-improvement, continual-learning]
 topic: [manipulation]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 project: https://githcs2.github.io/self-improving-robotic-agents/
 doi: https://doi.org/10.20944/preprints202610.3088.v1
+venue: "Preprints.org（预印本，未经同行评审）"
 original:
   - ../../sources/papers/toward_self_improving_robotic_agents_preprints_202610_3088.md
 related:

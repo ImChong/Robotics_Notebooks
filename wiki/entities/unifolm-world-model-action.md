@@ -14,6 +14,7 @@ related:
   - ../methods/imitation-learning.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/papers/ropedia_w0_arxiv_2610_26855.md
   - ../../sources/repos/unifolm-world-model-action.md
   - ../../sources/sites/unifolm-world-model-action-github-io.md
   - ../../sources/repos/unitree.md
@@ -138,6 +139,12 @@ cd external/dlimp && pip install -e .
 
 项目页：<https://unigen-x.github.io/unifolm-world-model-action.github.io>。
 
+## 与 Ropedia W0 的接口对照
+
+[Ropedia W0](./paper-ropedia-w0.md) 以相机轨迹和投影骨架为条件输出第一视角视频；论文的动作策略实验是用 W0 初始化 FastWAM 视频骨干，**不是 W0 直接输出关节动作**。本页 UnifoLM-WMA-0 的决策模式则把世界模型与动作头结合，经 server–client 部署输出动作块，不能只按「世界模型」名称互换接口。
+
+[2026-11-13 来源复核](../../sources/papers/ropedia_w0_arxiv_2610_26855.md)已确认 W0 的 5B 推理代码、pretrained/midtrained 权重和 Xp-Teleop 数据发布；A14B、评测及后训练代码仍待发布。这一开放边界只适用于 W0，不改变本页 UnifoLM 的资源清单。
+
 ## 局限与风险
 
 - **环境钉扎**：pinocchio / ffmpeg / 子模块 `dlimp`；部署侧另需 `unitree_sdk2_python` 与真机网络拓扑（与 [`xr_teleoperate`](./xr-teleoperate.md) 图像服务流程耦合）。
@@ -159,6 +166,7 @@ cd external/dlimp && pip install -e .
 
 ## 参考来源
 
+- [Ropedia W0 原文与开放状态复核](../../sources/papers/ropedia_w0_arxiv_2610_26855.md)
 - [sources/repos/unifolm-world-model-action.md](../../sources/repos/unifolm-world-model-action.md)
 - [sources/sites/unifolm-world-model-action-github-io.md](../../sources/sites/unifolm-world-model-action-github-io.md)
 - 上游：<https://github.com/unitreerobotics/unifolm-world-model-action>

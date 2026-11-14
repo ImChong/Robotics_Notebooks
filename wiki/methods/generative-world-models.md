@@ -97,6 +97,7 @@ related:
   - ../entities/paper-levjepa.md
   - ../entities/paper-worldline-action-driven-visual-simulation.md
 sources:
+  - ../../sources/papers/ropedia_w0_arxiv_2610_26855.md
   - ../../sources/papers/wm_robot_survey_arxiv_2605_00080.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/exoactor.md
@@ -324,7 +325,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 跨本体运动–操作 WM + 人类第一视角预训练（示例：Ropedia W0）
 
-[Ropedia W0](../entities/paper-ropedia-w0.md)（arXiv:2610.26855，2026-10-19）把人类第一视角数据与机器人数据放入共享运动学表示：相机位姿编码移动、投影骨架编码操作。论文报告数据规模为约 10,000 小时人类数据与 3,000 小时机器人数据；官方仓库已公开推理代码，更多 checkpoint、Xp-Teleop 数据与后训练代码仍在待发布列表中（以源档案核查为准）。
+[Ropedia W0](../entities/paper-ropedia-w0.md)（arXiv:2610.26855，2026-10-19）把人类第一视角数据与机器人数据放入共享运动学表示：相机位姿编码移动、投影骨架编码操作。论文报告数据规模为约 10,000 小时人类数据与 3,000 小时机器人数据；[2026-11-13 来源复核](../../sources/papers/ropedia_w0_arxiv_2610_26855.md)确认 **5B 推理代码、pretrained/midtrained 权重及 Xp-Teleop 数据已发布**，A14B、benchmark fine-tuned 权重、评测与后训练代码仍待发布。源码、5B 权重和 Xp-Teleop 数据分别采用 Apache-2.0、CC BY-NC 4.0 和 CC BY 4.0，须分开核对。模型本身输出视频；WAM 实验是初始化 FastWAM 视频骨干，不是直接生成关节动作。
 
 ### 中间表示条件可控推演（示例：RoboInter-World）
 
@@ -641,6 +642,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ## 参考来源
 
+- [Ropedia W0 原文、动作接口与开放状态复核](../../sources/papers/ropedia_w0_arxiv_2610_26855.md)
 - [机器人论文阅读笔记：Generative World Modelling for Humanoids](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report.html)
 - Hu, A., et al. (2023). *GAIA-1: A Generative AI for Embodied AI*.
 - Yang, S., et al. (2023). *Learning Interactive Real-World Simulators (UniSim)*.
