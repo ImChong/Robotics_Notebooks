@@ -414,6 +414,13 @@ op: ingest
 - 为其余九篇创建独立论文实体、来源与源码/项目归档、Mermaid 方法图，以及可由 README 对齐的概念时序图。
 - **开源与健康边界：** 后续已核对九篇原文及相关附录、追加实验约束与源码入口；知识节点健康度按规则升级，源码与机器人实测仍未独立复现。URDF2Ontology 原站 PDF 获取受限，已明确标注使用论文文字镜像。
 
+## [2026-11-14] ingest | sources/blogs/wechat_guyueju_perceptive_nmpc_convex_decomposition_2026-11-14.md — 感知型 NMPC 高程图凸分解与 Go2 源码核对
+
+- **意图：** 消化用户提供的古月居技术解读 PDF，建立可溯源的感知型 NMPC / 凸踏面几何约束工程入口。
+- **开源核验：** Grandia 等原始方法见 IEEE T-RO 2023（ANYmal）；Go2 适配补丁和 ROS 2/MuJoCo 工具见 Khaledsweid1/ocs2-perceptive-mpc-go2（公开）。
+- **重要边界：** Go2 工程的落足区域约束默认关闭，指南说明尚不能完整爬完楼梯；模拟射线高程图非真机感知，附件参数来自文章与仓库文档，未独立复测。
+- **沉淀：** [Go2 感知型 NMPC 实体](../wiki/entities/ocs2-perceptive-mpc-go2.md)，并接入 [感知越障纵深路线](../roadmap/depth-perceptive-locomotion.md)。
+
 ## [2026-11-14] ingest | 完成 PR #3732（Issue #3487）涉及全部 63 个知识节点的原文与官方源码通读、Mermaid 项目流程图与源码运行时序图补齐，修正 SRU 404 仓库链接为 leggedrobotics/sru-pytorch-spatial-learning，63 页节点健康度全部升至 3/3
 
 ## [2026-11-14] structural | wiki — 完成 #3487 全量 277 页候选语义核验：回填 55 页、排除 217 页、待定 5 页；保留首批 8 页并恢复原 updated，核验记录见 docs/quality/issue-3487-code-backfill.md

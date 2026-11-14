@@ -1108,6 +1108,7 @@
 - [NVIDIA USD BRep / SMLib](wiki/entities/nvidia-usd-brep-smlib.md) — NVIDIA USD BRep** 是一套独立的 C++/Python NURBS 边界表示（B-rep）实体建模库，核心 SMLib 负责拓扑与几何操作，SM_API 提供高层调用接口，SM_A `📅2026-10-13` `[entity_page]`
 - [NVIDIA Warp（可微 GPU 计算框架）](wiki/entities/nvidia-warp.md) — NVIDIA Warp** 是面向仿真、机器人与机器学习的 **Python JIT 框架**：用 `@wp.kernel` 写普通函数，经 `wp.launch` 编译到 **CPU 或 CUD `📅unknown` `[entity_page]`
 - [OCEC（Open Closed Eyes Classification）](wiki/entities/ocec.md) — OCEC**（`PINTO0309/OCEC`）在 **极小眼部裁剪** 上做 **open vs closed** 二分 `📅unknown` `[entity_page]`
+- [OCS2 Perceptive NMPC on Unitree Go2｜四足机器人高程图凸分解感知型非线性模型预测控制](wiki/entities/ocs2-perceptive-mpc-go2.md) — 这是 Grandia 等人感知型 NMPC 方法在 Unitree Go2 + MuJoCo + ROS 2 Jazzy 上的工程适配**：用局部高程图生成凸可落足区域、摆动避障信息和基座参考，服 `📅unknown` `[entity_page]`
 - [OCS2](wiki/entities/ocs2.md) — OCS2**](https://github.com/leggedrobotics/ocs2)（**O**ptimal **C**ontrol for **S**witched **S**yst `📅unknown` `[entity_page]`
 - [Meta Quest (Oculus) 遥操作](wiki/entities/oculust-quest-teleop.md) — 在机器人模仿学习（Imitation Learning）和 VLA 模型训练中，**Meta Quest (原 Oculus Quest)** 系列 VR 头显已成为获取大规模高质量人类演示数据的核心 `📅unknown` `[entity_page]`
 - [ODRI Solo / Bolt（开源腿式平台）](wiki/entities/odri-solo-and-bolt.md) — ODRI（Open Dynamic Robot Initiative）** 提供面向研究的开源 **扭矩控制** 腿足平台：**Solo**（四足）与 **Bolt**（双足）常被引作 **低惯量 `📅unknown` `[entity_page]`
