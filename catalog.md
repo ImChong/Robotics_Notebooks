@@ -4359,7 +4359,7 @@
 - [DynamicWAM](wiki/entities/paper-rcl-2608-00793-dynamicwam-dual-path-motion-conditioning-for-wor.md) — DynamicWAM: Dual-Path Motion Conditioning for World-Action Models in Dynamic Manipulation** 收录于 [A `📅unknown` `[entity_page]`
 - [EndoWAM](wiki/entities/paper-rcl-2608-01221-endowam-a-grounded-world-action-model-for-genera.md) — EndoWAM: A Grounded World-Action Model for Generalizable Endoscopic Navigation** 收录于 [Awesome Worl `📅unknown` `[entity_page]`
 - [SG-WAM](wiki/entities/paper-rcl-2608-01397-sg-wam-self-guided-world-modeling-in-geometry-aw.md) — SG-WAM: Self-Guided World Modeling in Geometry-Aware Policy Space** 收录于 [Awesome World-Action Mode `📅unknown` `[entity_page]`
-- [Faster-WAM](wiki/entities/paper-rcl-2608-02365-faster-wam-do-world-action-models-need-deep-acti.md) — Faster-WAM: Do World Action Models Need Deep Action Modules?** 收录于 [Awesome World-Action Models (R `📅unknown` `[entity_page]`
+- [Faster-WAM｜世界模型为中心的轻量动作模块](wiki/entities/paper-rcl-2608-02365-faster-wam-do-world-action-models-need-deep-acti.md) — English: Faster-WAM: Do World Action Models Need Deep Action Modules?](https://arxiv.org/abs/2608.0 `📅unknown` `[entity_page]`
 - [CoWAM](wiki/entities/paper-rcl-2608-02578-cowam-coordination-contracts-for-selective-polic.md) — CoWAM: Coordination Contracts for Selective Policy Intervention with WAMs** 收录于 [Awesome World-Act `📅unknown` `[entity_page]`
 - [UniNav](wiki/entities/paper-rcl-2608-03244-uninav-a-unified-world-action-diffusion-model-fo.md) — UniNav: A Unified World-Action Diffusion Model for Visual Navigation** 收录于 [Awesome World-Action M `📅unknown` `[entity_page]`
 - [PhyAI](wiki/entities/paper-rcl-2608-03682-phyai-real-time-physical-ai-at-the-edge-scalable.md) — PhyAI: Real-Time Physical AI at the Edge, Scalable Rollouts in the Cloud** 收录于 [Awesome World-Acti `📅unknown` `[entity_page]`
@@ -5610,6 +5610,7 @@
 - [Segment Anything（SAM）](wiki/entities/paper-segment-anything.md) — SAM**（*Segment Anything Model*；论文 *Segment Anything*，[arXiv:2304.02643](https://arxiv.org/abs/2304 `📅unknown` `[entity_page]`
 - [Self-Adaptive VLA（部署期硬件漂移自适应）](wiki/entities/paper-self-adaptive-vla.md) — Self-Adaptive VLA**（*Self-Adaptive VLA for Robust Robot Deployment*，[arXiv:2609.30092](https://arx `📅unknown` `[entity_page]`
 - [Self-Constructed Navigation Space（arXiv:2610.31762）](wiki/entities/paper-self-constructed-navigation-space.md) — Self-Constructed Navigation Space**（*See What I Need, Dream What I Want: A Navigation Foundation M `📅unknown` `[entity_page]`
+- [Self-CriTeach｜自教与自我批判的机器人符号规划](wiki/entities/paper-self-criteach.md) — 论文英文标题：LLM Self-Teaching and Self-Critiquing for Improving Robotic Planning via Automated Domain Ge `📅unknown` `[entity_page]`
 - [Self-Directed Dynamics Gap Closing（arXiv:2611.02691）](wiki/entities/paper-self-directed-dynamics-gap-closing.md) — Self-Directed Dynamics Gap Closing**（*Closing the Dynamics Gap through Self-Directed Robotic Inter `📅unknown` `[entity_page]`
 - [Self-Distilling WAM：面向世界动作模型的未来视频表示自蒸馏](wiki/entities/paper-self-distilling-future-video-representations-wam.md) — Self-Distilling WAM**（*Self-Distilling Future Video Representations for World Action Models*，[arXi `📅unknown` `[entity_page]`
 - [Self-Evolving Harness：从视觉语言规划器到机器人智能体：面向历史依赖操作的自演化执行框架](wiki/entities/paper-self-evolving-harness-history-dependent-manipulation.md) — Self-Evolving Harness**（*From VLM Planners to Robotic Agents: Self-Evolving Harnesses for History- `📅unknown` `[entity_page]`
@@ -5771,6 +5772,7 @@
 - [SSR：开放世界人形安全对称穿越](wiki/entities/paper-ssr-humanoid-open-world-traversal.md) — SSR**（*Scaling Surefooted and Symmetric Humanoid Traversal to the Open World*，浙江大学，arXiv:2605.3077 `📅unknown` `[entity_page]`
 - [Stabilizing Reinforcement Learning with LLMs：稳定大语言模型的强化学习](wiki/entities/paper-stabilizing-rl-with-llms.md) — Stabilizing Reinforcement Learning with LLMs: Formulation and Practices**（*稳定大语言模型的强化学习：形式化分析与实践*； `📅unknown` `[entity_page]`
 - [StableMimic：人形动作跟踪与跌倒恢复](wiki/entities/paper-stablemimic.md) — StableMimic 以跟踪专家、恢复专家和本体感觉门控统一处理人形动作跟踪、跌倒后恢复及当前命令重获。 `📅unknown` `[entity_page]`
+- [StageGuard｜通过 Agentic Distillation 学习长时程机器人阶段切换](wiki/entities/paper-stageguard.md) — English: Learning Stage Transitions for Long-Horizon Robot Tasks via Agentic Distillation](https:// `📅unknown` `[entity_page]`
 - [STAIR：用目录做寻址的生成式检索](wiki/entities/paper-stair-toc-generative-retrieval.md) — STAIR**（*STructure Aware Information Retriever*，[arXiv:2609.03874](https://arxiv.org/abs/2609.0387 `📅unknown` `[entity_page]`
 - [StairMaster（四足机器人攀爬镂空楼梯）](wiki/entities/paper-stairmaster.md) — StairMaster 用三阶段 RL 训练四足机器人攀爬镂空楼梯：在噪声稀疏的深度输入下避免腿被卡住，并通过落脚点相关奖励改善踩点。 `📅unknown` `[entity_page]`
 - [StairVLA（arXiv:2610.07756）](wiki/entities/paper-stairvla-stage-aware-hierarchical-action.md) — StairVLA**（*StairVLA: Stage-Aware Hierarchical Action Generation for Vision-Language-Action Models `📅unknown` `[entity_page]`
