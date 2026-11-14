@@ -12,7 +12,7 @@ tags:
   - nvidia
   - simulation-evaluation
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 related:
   - ./lightwheel.md
   - ./lightwheel-robofinals-rl-env.md
@@ -27,6 +27,8 @@ related:
   - ./mujoco.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/hub-embodied-eval-benchmark.md
+original:
+  - ../../sources/blogs/lightwheel_robofinals_posts.md
 sources:
   - ../../sources/blogs/lightwheel_robofinals_posts.md
   - ../../sources/sites/lightwheel_robofinals_rl_env.md
@@ -204,6 +206,9 @@ flowchart TB
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 
 ## 参考来源
+
+**原文阅读范围（2026-11-14）：** 官网完整通读 2025-12-04 发布页、2026-03-16 Industrial Benchmark、2026-08-18 Newton-native 全栈原文；源码未纳入「原文已读完」的归档范围，平台本身依旧属于商业服务。
+
 
 - [RoboFinals RL-Env 官方公告与开放状态归档](../../sources/sites/lightwheel_robofinals_rl_env.md)（产品独立技术页待补核）
 
