@@ -4,7 +4,7 @@
 - **发布时间：** 2026-11-12（具身智能小站）
 - **原始文章：** https://mp.weixin.qq.com/s/T9PfeaQinzIm4grHEmt-Fg
 - **来源：** 用户提供的 5 页 PDF 网页打印件
-- **核对范围：** 已完整阅读五页附件、核对 13 个 arXiv ID/标题，复用主分支已有实体；新增 9 篇仅核对摘要/部分项目仓库，非全文精读。
+- **核对范围：** 已完整阅读五页附件、核对 13 个 arXiv ID/标题，复用主分支已有实体；新增 9 篇已继续核对可访问的原论文正文、方法、评测和附录，并单独记录代码/复现边界。
 - **通读：** 已完成
 
 ## 已复用的独立论文实体（4 篇）
@@ -26,4 +26,4 @@
 - [Taxonomy-Agnostic Neurosymbolic Grounding of Robot Kinematics](../../wiki/entities/paper-urdf2ontology.md) — [arXiv:2611.13850](https://arxiv.org/abs/2611.13850)
 - [Personalized Affective Perception via Continual Learning in Human-Agent Negotiation](../../wiki/entities/paper-affective-negotiation.md) — [arXiv:2611.14247](https://arxiv.org/abs/2611.14247)
 
-**注意：** 这篇资讯本身可视为已通读，但不能替代每一篇论文的全文/附录；新增论文资料均标记未通读。
+**注意：** 二手资讯与独立论文分别归档；新增论文原文核验已补写到对应 source，不代表训练、策略评测或真实机器人性能已经独立复现。URDF2Ontology 的官方 arXiv 文件读取失败，本次依据可访问的论文完整文字镜像核对，图像细节仍需后续复查。
