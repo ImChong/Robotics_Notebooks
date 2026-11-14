@@ -5,6 +5,8 @@
 - **类型：** blog × 2（官网 Blogs 栏目）
 - **作者 / 组织：** Lightwheel（光轮智能）
 - **入库日期：** 2026-10-10
+- **核对范围：** 2026-11-14 逐段复核两篇 Lightwheel 官方工业 AI 原文全文：《Lightwheel Industrial AI Solution》（https://lightwheel.ai/media/hannover-industrial-ai-solution）和《From Specialist to Generalist-Specialist Robot》（https://lightwheel.ai/media/lightwheel-nvidia-industrial-ai）；覆盖 SimReady 物理测量/标定、EgoSuite 与 AutoDataGen 数据、RoboFinals 评测及部署闭环。融资金额与客户采用规模仍按原有归档标注为媒体/厂商口径，不视为经独立验证。
+- **通读：** 已完成
 - **抓取方式：** curl 读取官网 HTML（Next.js 服务端渲染正文）后去标签核对；日期取 <https://lightwheel.ai/blogs> 列表页（正文页未印日期）
 - **覆盖 wiki：** [Lightwheel 公司页](../../wiki/entities/lightwheel.md)「工业 AI 方案」小节
 
