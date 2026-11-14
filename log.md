@@ -430,6 +430,8 @@ op: ingest
 - **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
 - **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
 
+## [2026-11-14] ingest | roadmap/depth-vla.md — 补齐 VLA 纵深路线全部 80 个 Stage wiki 节点原文证据与满分健康度
+
 ## [2026-11-14] ingest | sources/blogs/wechat_guyueju_perceptive_nmpc_convex_decomposition_2026-11-14.md — 感知型 NMPC 高程图凸分解与 Go2 源码核对
 
 - **意图：** 消化用户提供的古月居技术解读 PDF，建立可溯源的感知型 NMPC / 凸踏面几何约束工程入口。
