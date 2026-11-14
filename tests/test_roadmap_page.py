@@ -123,6 +123,7 @@ class RoadmapPageTests(unittest.TestCase):
         self.assertIn(".roadmap-ltree-map-viewport {", css)
         self.assertIn("touch-action: pan-x pan-y;", css)
         self.assertIn(".roadmap-ltree-map-hint--touch {", css)
+        self.assertIn(".roadmap-ltree-ov > .roadmap-ltree-edges {", css)
 
     def test_roadmap_knowledge_map_uses_learning_route_layout(self):
         content = MAIN_JS.read_text(encoding="utf-8")

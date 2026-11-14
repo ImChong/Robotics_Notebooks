@@ -3750,11 +3750,15 @@ body.roadmap-ltree-map-open {
 /* 全局总览：各阶段的小树装在框里，按阅读顺序自上而下排开；相邻阶段互链画成虚线（SVG 垫在框下），悬停或触屏点按时点亮 */
 .roadmap-ltree-ov {
   position: relative;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   gap: 14px;
   width: max-content;
   min-width: 100%;
+}
+.roadmap-ltree-ov > .roadmap-ltree-edges {
+  z-index: 1;
 }
 .roadmap-ltree-ov-stage {
   position: relative;
@@ -3764,6 +3768,8 @@ body.roadmap-ltree-map-open {
   background: var(--surface);
 }
 .roadmap-ltree-ov-head {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -3841,6 +3847,7 @@ body.roadmap-ltree-map-open {
   padding: 10px 0 4px;
 }
 .roadmap-ltree-ov .roadmap-ltree-node {
+  z-index: 2;
   min-height: 30px;
   padding: 4px 3px;
   border-width: 1px;
@@ -3868,9 +3875,11 @@ body.roadmap-ltree-map-open {
   opacity: 0.25;
 }
 .roadmap-ltree-ov.is-tracing .roadmap-ltree-node:not(.is-path) {
+  z-index: 0;
   opacity: 0.3;
 }
 .roadmap-ltree-ov.is-tracing .roadmap-ltree-node.is-path {
+  z-index: 2;
   border-color: var(--accent);
 }
 .roadmap-ltree-ov.is-tracing .roadmap-ltree-edge:not(.is-path) {
