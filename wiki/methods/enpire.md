@@ -3,7 +3,7 @@
 type: method
 tags: [coding-agents, dexterous-manipulation, real-world-rl, nvidia-gear, auto-reset, policy-improvement, autoresearch, behavior-cloning, reinforcement-learning, nvidia]
 status: complete
-updated: 2026-10-18
+updated: 2026-11-14
 date: 2026-06-18
 summary: "ENPIRE 把真机策略自改进封装成 coding agent 可编排的 EN–PI–R–E 闭环：自动 reset/verify 环境、多范式策略改进、并行 rollout 与跨假设演化，在 Push-T、插针、GPU 插拔、扎/剪扎带等灵巧任务上报告约 99% pass@8，并给出 AutoEnvBench 与 MRU/MTU 机队 scaling 指标。"
 related:
@@ -16,6 +16,7 @@ related:
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/data-flywheel.md
   - ../concepts/agentic-coding-software-fundamentals.md
+  - ../concepts/safe-real-world-rl-fine-tuning.md
   - ../tasks/manipulation.md
   - ./egoscale.md
   - ../entities/gr00t-wholebodycontrol.md
@@ -23,7 +24,10 @@ related:
   - ../entities/kimi-k3.md
 sources:
   - ../../sources/papers/enpire_nvidia_gear_2026.md
+  - ../../sources/papers/enpire_arxiv_2606_19980.md
   - ../../sources/sites/nvidia-research-enpire.md
+original:
+  - ../../sources/papers/enpire_arxiv_2606_19980.md
 ---
 
 # ENPIRE
@@ -113,30 +117,37 @@ flowchart TB
 - **Behavior Cloning**（含正则、loss 权重等 ablation）
 - **Offline / Online RL**（页面时间线示例：online RL mix demo、batch size、controller 补偿等逐步 +pp）
 
-### 主结果与基准（公开页面量级）
+### 主结果与基准（公开页面与论文核对）
 
-- **任务：** Push-T、Pin Insertion、GPU Insertion、Tie Ziptie、Cut Ziptie 等 **高灵巧桌面操作**。
-- **成功率：** 展示策略达 **约 99% pass@8**（8 次独立 rollout 中至少一次成功的通过率表述，以项目页为准）。
+- **任务与真机集群：** Push-T、Pin Insertion、GPU Insertion、Tie Ziptie、Cut Ziptie 等高灵巧桌面操作；论文在 **8 座真机工作站**（每站含 **2 台 I2RT YAM 双臂 + 1 张 RTX 5090**）上自动化执行试验与演化。
+- **成功率（pass@8 语义）：** 展示策略达 **约 99% pass@8**；原文将 `pass@8` 定义为每个 rollout **最多 8 次重试内至少成功 1 次**，不同于单次（zero-retry / pass@1）成功率，读数时须注明该口径。
 - **AutoEnvBench：** 比较 **Codex（GPT-5.5）**、**Claude Code（Opus 4.7）**、**Kimi Code（K2.6）** 在 Push-T（启发式学习）与 Pin Insertion（梯度学习）上的 **墙钟研究进展曲线**；产品线旗舰 **[Kimi K3](../entities/kimi-k3.md)**（**2026-07-27** 已开放 MXFP4 权重）为同族 coding backend，选型时需关注 **thinking history 回传** 等 harness 兼容性。
 - **Fleet scaling：** **1 / 4 / 8 agent** 团队；更大并行可更快抬高成功率，但 **token-to-success 与协调开销** 上升。
 
-### 仿真侧补充（RoboCasa）
+### 仿真侧补充（RoboCasa / RoboCasa365）
 
-在 **RoboCasa** 厨房操作任务（如 Coffee Setup Mug、开柜/开抽屉等）上补充评测，用于在 **受控 reset** 下做更密 ablation，并与真机吞吐瓶颈分离讨论。
+在 **RoboCasa365** 厨房操作任务（如 Coffee Setup Mug、开柜/开抽屉等，含 **40 个随机种子** 受控评测）上补充评测，用于在 **受控 reset** 下做更密 ablation，并与真机吞吐瓶颈分离讨论。
 
-## 常见误区或局限
+## 工程实践
+
+- **先把任务做成 `env.py` 自复位与自判分：** 先实现硬件级随机初始态复位脚本与多相机二值成功检测（如扎带任务用检测+分割交叉验证），再接入 coding agent；否则人工复位会吞掉多 agent 并行红利。
+- **分离单次通过与重试指标：** 部署阶段务必分别统计 `pass@1`、重试次数及复位耗时，避免把 `pass@8` 直接等价成工业产线单次良率。
+- **调度机队带宽：** 在 agent 读日志与等 LLM 响应时段交叉排程另一条假设分支的真机 rollout，提高 **MRU** 并控制 **token-to-success** 膨胀。
+
+## 局限与风险
 
 - **误区：「有 coding agent 就能跳过环境工程」。** ENPIRE 的核心贡献之一是 **reset/verify 接口**；没有可自动判分与复位的任务，agent 只能低频人工试验。通用软件侧同一判断见 [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md)。
-- **误区：「成功率数字可脱离 harness 泛化」。** 报告的高成功率建立在 **特定自动评测器、复位策略与 trial 预算** 上；换传感器布局或安全约束需重新标定 verification。
+- **误区：「成功率数字可脱离 harness 泛化」。** 报告的高成功率建立在 **特定自动评测器、复位策略与 pass@8 重试预算** 上；换传感器布局或安全约束需重新标定 verification。
 - **局限：资源利用率权衡（页面自述）：** agent 读日志、写代码、等 LLM 时 **机器人 MRU 下降**；机队变大后 **GPU 利用率升、token 消耗增**，需把 **物理 scaling** 与 **token scaling** 分开优化。
-- **局限：公开复现材料：** 截至入库日 **无 arXiv 正式条目、无公开代码仓**；工程细节应以后续官方发布为准。
+- **局限：代码开放边界：** 论文已发布于 **arXiv:2606.19980**（详见 [enpire_arxiv_2606_19980.md](../../sources/papers/enpire_arxiv_2606_19980.md)），项目页列出代码链接 `https://github.com/NVlabs/ENPIRE`，但在 2026-10-18 入库核查时该仓库返回 **HTTP 403**（未公开可访问）；实操复现状态须以官网实时发布为准。
 
-## 与其他页面的关系
+## 关联页面
 
 - 与 [Manipulation](../tasks/manipulation.md)：ENPIRE 是 **灵巧操作** 方向上「**agent 驱动 recipe 搜索 + 真机闭环**」的系统样本，可与 IL/RL/VLA 数据路线并列阅读。
+- 与 [真机安全 RL 微调](../concepts/safe-real-world-rl-fine-tuning.md)：真机在线微调依赖安全复位边界，ENPIRE 把 reset/verify 明确工程化进环境层。
 - 与 [Imitation Learning](./imitation-learning.md) / [Behavior Cloning](./behavior-cloning.md)：BC 是 ENPIRE 支持的 **PI regime 之一**，页面展示 BC 正则等 ablation 对成功率的具体 +pp 贡献。
 - 与 [Reinforcement Learning](./reinforcement-learning.md)：online/offline RL 同样在 harness 内与启发式、BC **公平对比**，选型由真机反馈驱动。
-- 与 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)：RoboCasa 评测用于 **密集 agent 行为 ablation**；真机环仍是 **最终判据**，二者分工而非互替。
+- 与 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)：RoboCasa365 评测用于 **密集 agent 行为 ablation**；真机环仍是 **最终判据**，二者分工而非互替。
 - 与 [具身规模法则](../concepts/embodied-scaling-laws.md)：MRU/MTU 与多机队曲线可视为 **物理 autoresearch 的 scaling 维度**，与数据/模型缩放律互补。
 - 与 [EgoScale](./egoscale.md)：同属 NVIDIA GEAR **灵巧操作** 叙事，但 EgoScale 强调 **人视频规模预训练 VLA**；ENPIRE 强调 **agent 编排的真机策略搜索闭环**。
 - 与 [ASPIRE](./aspire.md)：同属 GEAR **coding-agent 机器人研发自动化** 谱系；ENPIRE 优化 **策略训练配方（BC/RL 等）**，ASPIRE 优化 **控制程序 + 技能库复利**（逐原语 trace 调试与进化搜索）。
@@ -146,12 +157,14 @@ flowchart TB
 
 - [真机策略 autoresearch 闭环搭建指南](../queries/real-robot-policy-autoresearch-harness.md) — 把 EN–PI–R–E 落到环境前提、范式选型与机队 scaling 的实操页
 - ENPIRE 官方项目页：<https://research.nvidia.com/labs/gear/enpire/>
+- ENPIRE arXiv 原文：<https://arxiv.org/abs/2606.19980>
 - [ASPIRE](./aspire.md) — GEAR 姊妹工作：持续学习技能库 + code-as-policy（arXiv:2607.00272，官方代码已开源）
 - RoboCasa 论文（仿真日常操作基准）：<https://arxiv.org/abs/2406.02545>
 - Karpathy LLM Wiki 模式（本库维护哲学）：[llm-wiki-karpathy](../references/llm-wiki-karpathy.md)
 
 ## 参考来源
 
+- [sources/papers/enpire_arxiv_2606_19980.md](../../sources/papers/enpire_arxiv_2606_19980.md) — arXiv:2606.19980v1 原文精读归档（pass@8 定义、8×I2RT YAM 真机平台、RoboCasa365 40 种子与开源状态核查）
 - [sources/papers/enpire_nvidia_gear_2026.md](../../sources/papers/enpire_nvidia_gear_2026.md)
 - [sources/sites/nvidia-research-enpire.md](../../sources/sites/nvidia-research-enpire.md)
 - NVIDIA GEAR, *ENPIRE: Agentic Robot Policy Self-Improvement in the Real World*, 项目页, 2026. <https://research.nvidia.com/labs/gear/enpire/>

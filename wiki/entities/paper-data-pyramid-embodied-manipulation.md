@@ -24,9 +24,13 @@ tags:
   - nju
   - sjtu
 status: complete
-updated: 2026-11-07
+updated: 2026-11-14
 arxiv: "2607.24744"
 code: https://github.com/worldbench/awesome-embodied-data-pyramid
+original:
+  - ../../sources/papers/data_pyramid_embodied_manipulation_arxiv_2607_24744.md
+  - ../../sources/sites/embodied-data-pyramid.md
+  - ../../sources/repos/awesome-embodied-data-pyramid.md
 related:
   - ../concepts/open-x-embodiment.md
   - ../concepts/embodied-scaling-laws.md
@@ -59,7 +63,7 @@ summary: "Data Pyramid for Embodied Manipulation（arXiv:2607.24744，PKU 牵头
 
 # Data Pyramid for Embodied Manipulation（具身数据金字塔综述）
 
-**Data Pyramid for Embodied Manipulation**（[arXiv:2607.24744](https://arxiv.org/abs/2607.24744)，2026-07-27）是 **北京大学（PKU）牵头、11 家机构** 合作的 **数据中心（data-centric）具身操作综述**。它回答的核心问题是：**具身基础模型没有「整个互联网」可吃——到底该用什么数据训练？** 论文把具身数据生态组织为 **五层金字塔**，再以 **数据配方（data recipe）** 视角分析具身脑模型、VLA、WAM 如何选择、对齐与混合各层数据，最后给出六大开放挑战。
+**Data Pyramid for Embodied Manipulation**（[arXiv:2607.24744](https://arxiv.org/abs/2607.24744)，v1 2026-07-27 / v2 2026-08-08）是 **北京大学（PKU）牵头、11 家机构** 合作的 **数据中心（data-centric）具身操作综述**。它回答的核心问题是：**具身基础模型没有「整个互联网」可吃——到底该用什么数据训练？** 论文把具身数据生态组织为 **五层金字塔**，再以 **数据配方（data recipe）** 视角分析具身脑模型、VLA、WAM 如何选择、对齐与混合各层数据，最后给出六大开放挑战。
 
 ## 一句话定义
 
@@ -95,21 +99,21 @@ summary: "Data Pyramid for Embodied Manipulation（arXiv:2607.24744，PKU 牵头
 |----|------|
 | **机构** | 北京大学（PKU，牵头，通讯 Shanghang Zhang）、南洋理工大学（NTU）、香港科技大学（HKUST）、新加坡国立大学（NUS）、香港中文大学（CUHK）、香港大学（HKU）、杜克大学（Duke）、加州大学伯克利分校（UC Berkeley）、大湾区大学（GBU）、南京大学（NJU）、上海交通大学（SJTU） |
 | **类型** | Survey（数据中心视角；非架构综述） |
-| **arXiv** | <https://arxiv.org/abs/2607.24744>（v1 2026-07-27） |
+| **arXiv** | <https://arxiv.org/abs/2607.24744>（v1 2026-07-27，v2 2026-08-08） |
 | **项目页** | <https://jasper-aaa.github.io/embodied-data-pyramid/>（五层数据集检索表） |
-| **开源** | **资源型开源**：Awesome 策展清单（见下） |
+| **开源** | **资源型开源（Apache-2.0）**：Awesome 策展清单（见下） |
 
 ## 开源状态
 
-核查日：**2026-07-29**（项目页 / GitHub 实测）。
+核查日：**2026-11-14**（项目页 HTML / `worldbench/awesome-embodied-data-pyramid` 仓库 / arXiv v2 实测）。
 
 | 产物 | 状态 |
 |------|------|
-| Awesome 策展清单 [`worldbench/awesome-embodied-data-pyramid`](https://github.com/worldbench/awesome-embodied-data-pyramid) | **已开源**（五层数据集/管线持续维护清单；归档见 [sources/repos/awesome-embodied-data-pyramid.md](../../sources/repos/awesome-embodied-data-pyramid.md)） |
-| 项目页数据集表格（类别 × 任务检索，含规模/许可） | **已开放**（归档见 [sources/sites/embodied-data-pyramid.md](../../sources/sites/embodied-data-pyramid.md)） |
-| 训练/推理代码、模型权重 | **不适用**（综述无模型实现） |
+| Awesome 策展清单 [`worldbench/awesome-embodied-data-pyramid`](https://github.com/worldbench/awesome-embodied-data-pyramid) | **已开源（Apache-2.0）**：`README.md` 按五层与 VLA/WAM 配方持续更新至 2026-10（项目页另链 `Jasper-aaa/Awesome-Embodied-Data-Pyramid`）；`index.html` 仅为静态跳转页；归档见 [sources/repos/awesome-embodied-data-pyramid.md](../../sources/repos/awesome-embodied-data-pyramid.md) |
+| 项目页数据集表格（类别 × 任务检索，含规模/许可） | **已开放**（2026-08-07 增补 RekaCS2-10k / RekaDaily-10k 等条目；归档见 [sources/sites/embodied-data-pyramid.md](../../sources/sites/embodied-data-pyramid.md)） |
+| 训练/推理代码、模型权重 | **不适用**（综述仓库仅含 Markdown 策展表与跳转页，无可运行实现） |
 
-## 核心结构
+## 核心原理
 
 ### 组织原则：两主轴 + 四辅维
 
@@ -154,7 +158,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**——本论文为综述，官方产物为 Awesome 策展清单与项目页数据表（资源导航），**无可运行的训练/推理/部署入口**。数据层选型入口见 [工程实践](#工程实践) 与 [sources/repos/awesome-embodied-data-pyramid.md](../../sources/repos/awesome-embodied-data-pyramid.md)。
+**不适用。** 本工作为综述论文（`arXiv:2607.24744v2`），经逐文件核对官方仓库 `worldbench/awesome-embodied-data-pyramid`，仓内仅包含 `README.md`（持续更新至 2026-10 的五层数据集与 VLA/WAM 配方索引表）、`index.html`（静态跳转页）、`assets/` 与 `LICENSE`（Apache-2.0），不存在可运行的训练、推理或评测脚本入口。数据层选型入口见 [工程实践](#工程实践) 与 [sources/repos/awesome-embodied-data-pyramid.md](../../sources/repos/awesome-embodied-data-pyramid.md)。
 
 ## 工程实践
 
@@ -173,7 +177,7 @@ flowchart TB
 
 ### 三大配方趋势
 
-1. **异构混合化：** 配方从单一真机演示走向多源共训——π 系列逐代加层（π₀ 真机 → π₀.₅ +通用 → π₀.₇ +egocentric）；LingbotVA 2.0 覆盖全部五层。但 **最优配方未确立**：纯机器人数据训练的 LingbotVLA、DreamZero 仍能很强，「更多源」不是天然更优。
+1. **异构混合化：** 配方从单一真机演示走向多源共训——π 系列逐代加层（π₀ 真机 → π₀.₅ +通用 → π₀.₇ +egocentric）；LingbotVLA 2.0 覆盖全部五层。但 **最优配方未确立**：纯机器人数据训练的 LingbotVLA、DreamZero 仍能很强，「更多源」不是天然更优。
 2. **规模陡增：** Qwen-RobotManip 约 3.81 万小时多源语料（含 1,933 小时 ego 视频合成的 2.48 万小时机器人兼容轨迹）；[Xiaomi-Robotics-1](xiaomi-robotics-1.md) >10 万小时 UMI 预训练 + 约 1 万小时跨本体后训练。注意各家的模态/过滤/阶段不同，**小时数不可直接横比**。
 3. **Ego 数据升为主料：** [EgoScale](../methods/egoscale.md) 把带动作标签 ego 预训练扩到 20,854 小时并报告 1k–20k 小时一致增益；HumanScale 受控 5,000 小时；另有对 **低质量轨迹容忍度上升** 的初步证据（π₀.₇：低质量轨迹 + 清晰 prompt 仍可提供监督）。
 
@@ -205,7 +209,7 @@ flowchart TB
 
 - **综述本身无实验：** 层级排序与配方分析是 **综合归纳**，论文自承「排序非任一单维严格单调」；不要把五层顺序当成某维度的绝对强弱裁决。
 - **数据规模数字口径混杂：** 小时数/条数跨模态、跨过滤标准、跨训练阶段，直接横比会得出错误结论（论文明确提醒）。
-- **覆盖截至 2026-07：** 数据生态月级演进，Awesome 清单比论文表格更适合跟踪滚动新增的条目；引用时以清单为准。
+- **覆盖截至 2026-07（仓内表持续更新至 2026-10）：** 论文正文图表截止 2026-07；Awesome 清单（`README.md`）与项目页（2026-08-07 更新）持续增补新数据集与 VLA/WAM 配方，跟踪最新条目应以清单为准。
 - **操作域限定：** 金字塔面向 manipulation；locomotion / 导航 / 自动驾驶的数据生态只部分适用同一坐标系。
 
 ## 与其他工作对比

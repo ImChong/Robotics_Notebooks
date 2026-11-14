@@ -14,7 +14,7 @@ tags:
 - sun254667-wm
 status: complete
 venue: curated
-updated: 2026-11-12
+updated: 2026-11-14
 related:
 - ../concepts/world-action-models.md
 - ../methods/imitation-learning.md

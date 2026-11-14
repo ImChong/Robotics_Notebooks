@@ -9,7 +9,9 @@
 - **论文：** <https://arxiv.org/abs/2607.29169>（Submitted 2026-07-31）
 - **许可：** Apache-2.0（含 Gemma 许可条款，随 π₀ / PaliGemma 主干传递）
 - **入库日期：** 2026-08-04
-- **一句话说明：** 在 **openpi** 基础上加一层运行时防护：把冻结的 π₀ 策略包一层 `DefensePolicy`，在推理时做威胁检测（观测新鲜度 / 几何一致性 / 视觉相关性）与恢复，并在观测不可信时执行安全 hold 或受控失败。
+- **通读：** 已完成
+- **核对范围：** `README.md` (L1–310)、`scripts/serve_policy.py`、`src/openpi/serving/websocket_policy_server.py`、`src/openpi/policies/defense_policy.py` (`KinematicDefensePolicy`)、`src/openpi/defense/{kinematic_filter,recovery,static_patch_recovery}.py`、`examples/libero/main.py`、`scripts/eval_libero_task_matrix.py`
+- **一句话说明：** 在 **openpi** 基础上加一层运行时防护：通过 `scripts/serve_policy.py --defense-enable` 用 `KinematicDefensePolicy` 包裹冻结的 PyTorch `pi0_libero` 策略，在推理时做威胁检测（观测新鲜度 / 几何一致性 / 视觉相关性）与恢复，并在观测不可信时执行安全 hold 或受控失败。
 - **沉淀到 wiki：** [`wiki/entities/paper-actfovea.md`](../../wiki/entities/paper-actfovea.md)
 
 ---

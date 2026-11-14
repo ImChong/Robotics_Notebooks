@@ -2,24 +2,29 @@
 type: entity
 tags: [education, llm, transformer, gpt, pytorch, tokenization, instruction-tuning, lora, sebastian-raschka]
 status: complete
-updated: 2026-09-16
+updated: 2026-11-14
 related:
   - ../concepts/transformer.md
   - ../concepts/deep-learning-foundations.md
   - ../formalizations/vla-tokenization.md
   - ../methods/vla.md
+  - ../methods/behavior-cloning.md
   - ./andrej-karpathy.md
   - ./pytorch.md
   - ../../roadmap/depth-vla.md
 sources:
   - ../../sources/repos/rasbt_llms_from_scratch.md
   - ../../sources/courses/rasbt_llms_from_scratch_youtube.md
+original:
+  - ../../sources/repos/rasbt_llms_from_scratch.md
 summary: "《Build a Large Language Model (From Scratch)》：Sebastian Raschka 的书+仓库+YouTube 三角教程，用纯 PyTorch 从零实现 GPT 类 LLM 的 tokenizer→注意力→预训练→分类/指令微调全链路；机器人读者用作 VLA/动作分词前的序列建模前置课。"
 ---
 
 # Build a Large Language Model (From Scratch)（Raschka / LLMs-from-scratch）
 
-**《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材，官方代码在 [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)（社区 ~105k stars，2026-09-16 复核 **已开源**），配套免费 [YouTube 七章播放列表](https://www.youtube.com/playlist?list=PLTKMiZHVd_2IIEsoJrWACkIxLRdfMlw11) 与可选 Manning 17h+ 长视频课。对本知识库而言，它是 **LLM 序列建模与微调阶段的结构化入门底座**，适合接 [`roadmap/depth-vla.md`](../../roadmap/depth-vla.md) Stage 0 的 Transformer/LLM 前置，再进入 VLA 论文与工程栈。
+## 一句话定义
+
+**《Build a Large Language Model (From Scratch)》** 是 Sebastian Raschka 的 Manning 2024 教材与官方开源代码仓 [rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)（Apache-2.0，2026-11-14 源码核查 HEAD `0311973e`，**已开源**），以纯 PyTorch（不依赖高层 LLM 框架）从零实现 BPE 分词、因果多头注意力、`GPTModel`、无标注预训练、分类头微调与指令 SFT 全链路，并配套免费 [YouTube 七章播放列表](https://www.youtube.com/playlist?list=PLTKMiZHVd_2IIEsoJrWACkIxLRdfMlw11) 与可选 Manning 17h+ 视频课；对本库而言，它是 [`roadmap/depth-vla.md`](../../roadmap/depth-vla.md) Stage 0 的序列建模前置底座。
 
 ## 英文缩写速查
 
@@ -39,7 +44,7 @@ summary: "《Build a Large Language Model (From Scratch)》：Sebastian Raschka 
 2. **全链路而非单点 demo**：预训练（Ch 5）→ 任务微调（Ch 6）→ 指令对齐（Ch 7） mirrors 工业基础模型管线，也对应 VLA 侧 **预训练 VLM + 机器人数据微调** 的常见阶段划分。
 3. **三种学习形态互补**：书（系统阅读）+ Jupyter notebook（改代码）+ YouTube（跟讲节奏）；与 [Andrej Karpathy](./andrej-karpathy.md) *Zero to Hero*（micrograd / makemore / nanoGPT）形成 **结构化教材 vs 视频短课** 双轨，可按习惯二选一或交叉。
 
-## 学习路径总览
+## 流程总览（学习路径与章节地图）
 
 ```mermaid
 flowchart LR
@@ -72,27 +77,30 @@ flowchart LR
 
 ## 源码运行时序图
 
-主线复现路径（Ch 5 预训练 → Ch 7 指令微调；节点对齐仓库 `ch05/` / `ch07/` README 入口）：
+主线可运行脚本流（经实读 `ch04/01_main-chapter-code/gpt.py`、`ch05/01_main-chapter-code/gpt_train.py` / `gpt_generate.py`、`ch06/01_main-chapter-code/gpt_class_finetune.py` 与 `ch07/01_main-chapter-code/gpt_instruction_finetuning.py` / `ollama_evaluate.py` 核对）：
 
 ```mermaid
 sequenceDiagram
     autonumber
-    participant DS as 文本语料 / 指令 JSON
-    participant DL as dataloader (ch02)
-    participant GPT as GPT 模块 (ch04 gpt.py)
-    participant TR as gpt_train.py (ch05)
-    participant FT as gpt_instruction_finetuning.py (ch07)
-    participant OUT as 生成 / 评估
+    participant DS as 语料 / 数据集
+    participant DL as GPTDatasetV1 / 批整理
+    participant GPT as GPTModel (ch04 gpt.py)
+    participant TR as ch05 gpt_train.py / gpt_generate.py
+    participant FT as ch06 分类 / ch07 指令 SFT
+    participant EV as ollama_evaluate.py
 
-    DS->>DL: BPE 分词 + batch 序列
-    DL->>GPT: token ids + 因果 mask
-    GPT->>TR: 语言建模损失
-    TR->>GPT: 预训练权重 checkpoint
-    GPT->>FT: 加载权重 + 指令格式
-    FT->>OUT: SFT 后采样 / ollama_evaluate
+    DS->>DL: tiktoken gpt2 编码与滑窗切片
+    DL->>GPT: input_idx + 因果 mask (triu)
+    GPT->>TR: AdamW + cross_entropy 预训练 (the-verdict.txt -> model.pth)
+    TR->>FT: 或由 download_and_load_gpt2 加载 OpenAI GPT-2 124M/355M 权重
+    FT->>FT: ch06 仅微调末层+2类头 / ch07 custom_collate_fn mask=-100 做指令 SFT
+    FT->>EV: 输出 instruction-data-with-response-standalone.json 并由 Ollama llama3 0-100 打分
 ```
 
-**关键复现路径：** 先跑 `ch05/01_main-chapter-code/gpt_train.py` 得到小 GPT checkpoint，再在 `ch07/01_main-chapter-code/gpt_instruction_finetuning.py` 上做指令 SFT；bonus 中的 DPO / Llama·Qwen from-scratch 为同骨架扩展，非主线必读。
+**关键复现细节（源码核对）：**
+- **预训练与大模型权重解耦：** `ch05/01_main-chapter-code/gpt_train.py` 在 `the-verdict.txt` 上从零训练缩减上下文的 `GPTModel`（`context_length=256`，保存 `model.pth`）；而 `ch05/01_main-chapter-code/gpt_generate.py`、`ch06/01_main-chapter-code/gpt_class_finetune.py`（默认 124M）与 `ch07/01_main-chapter-code/gpt_instruction_finetuning.py`（默认 355M）实际上通过 `download_and_load_gpt2` 拉取 OpenAI GPT-2 TensorFlow 权重映射到 `GPTModel` 再微调（加 `--test_mode` 可切换为 1 层小测试模型）。
+- **分类 vs 指令 SFT 损失边界：** `gpt_class_finetune.py` 冻结主体参数，仅开放 `trf_blocks[-1]`、`final_norm` 与 2 类 `out_head`，且只对末 token logits 算分类损失；`gpt_instruction_finetuning.py` 则用 `custom_collate_fn` 把首个 `<|endoftext|>` 之后的 padding target 设为 `ignore_index=-100`。
+- **PyPI 包与扩展入口：** `pkg/llms_from_scratch/` 提供 `pip install llms-from-scratch` 复用各章类及 `kv_cache` / `llama3` / `qwen3` 等变体。
 
 ## 三种学习形态
 
@@ -124,11 +132,20 @@ sequenceDiagram
 - Bonus 中的 Llama/Qwen/Gemma from-scratch 用于 **架构直觉**，不等价于能在真机上部署 VLA。
 - 续作 [*Build A Reasoning Model (From Scratch)*](https://github.com/rasbt/reasoning-from-scratch) 覆盖推理 scaling / GRPO，与本仓 bonus 交叉引用，但 **不替代** 本库具身/VLA 主线。
 
-## 推荐使用方式
+## 工程实践
 
 1. **VLA 路线 Stage 0 前置**：读完 Ch 3–4 再打开 [Transformer](../concepts/transformer.md) 与 [VLM/VLA 分类学](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)。
-2. **动作分词补课**：Ch 2 文本 token 与 [动作分词](../formalizations/vla-tokenization.md) 对照阅读，理解「连续量 → 离散符号序列」接口。
+2. **动作分词补课**：Ch 2 文本 token（`GPTDatasetV1` 滑窗）与 [动作分词](../formalizations/vla-tokenization.md) 对照阅读，理解「连续量 → 离散符号序列」接口；Ch 6–7 的末 token 分类头与 `-100` padding mask 写法也直接对应机器人策略微调的常见工程习惯。
 3. **与蘑菇书对称**：RL 用 [动手学强化学习](./hands-on-rl-book.md)，LLM 骨干用本书 —— 再进入人形/操作学习纵深。
+4. **本地快速验证技巧**：`ch06/01_main-chapter-code/gpt_class_finetune.py` 与 `ch07/01_main-chapter-code/gpt_instruction_finetuning.py` 均支持 `--test_mode` 跳过数百兆 GPT-2 权重下载、用 1 层微型 `GPTModel` 跑通数据管线与训练循环。
+
+## 结论
+
+`LLMs-from-scratch` 是当前从零手写 Transformer 解码器与训练/微调全链路最透明、代码测试最完整的纯 PyTorch 教学仓库之一，最适合作为机器人研究者的 LLM 机制底座而非真机策略代码模板。
+
+- **定位清晰**：主线只依赖 PyTorch 与 `tiktoken` 实现 Tokenizer→MHA→GPT 预训练→分类/指令 SFT，极适合建立源码级直觉。
+- **注意代码实际入口**：Ch 6/7 默认脚本直接通过 `gpt_download.py` 拉取 OpenAI GPT-2 权重进行微调，而非衔接 Ch 5 `the-verdict.txt` 的小语料 checkpoint；快速试跑应使用 `--test_mode`。
+- **工程化复用**：需要复用模块或对照现代架构时，优先看 `pkg/llms_from_scratch/`、`ch04/03_kv-cache`–`10_kv-sharing` 及 `ch05/11_qwen3` 等 bonus，再衔接 [LeRobot](./lerobot.md) 与 [VLA](../methods/vla.md)。
 
 ## 关联页面
 
@@ -142,8 +159,8 @@ sequenceDiagram
 
 ## 参考来源
 
-- [rasbt/LLMs-from-scratch 仓库归档](../../sources/repos/rasbt_llms_from_scratch.md)
-- [YouTube 配套课归档](../../sources/courses/rasbt_llms_from_scratch_youtube.md)
+- [rasbt/LLMs-from-scratch 仓库归档](../../sources/repos/rasbt_llms_from_scratch.md)（主要原文：克隆源码实读核对）
+- [YouTube 配套课归档](../../sources/courses/rasbt_llms_from_scratch_youtube.md)（补充视频课目录）
 
 ## 推荐继续阅读
 

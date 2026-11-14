@@ -10,7 +10,7 @@ tags:
   - moving-object
   - tsinghua
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 arxiv: "2607.02604"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -143,7 +143,7 @@ flowchart LR
 | **[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)** | **多样本想象 + 价值排序**；DynaWM **单路径确定性重生成** |
 | **DynamicVLA / PUMA / AHEAD** | 同类动态操纵；DynaWM 强调 **跨 VLA 架构的 base-chunk 条件** |
 | **Streaming Flow / RTC** | 侧重 **chunk 时序衔接**；DynaWM 侧重 **运动趋势估计** |
-| **[RTCF](./paper-rtcf.md)** | **免训练** 记忆检索 + 低频残差；DynaWM **要训** 流匹配重写、面向移动目标 |
+| **[RTCF](./paper-rtcf.md)** | **免训练** 记忆检索 + 低频残差（v3 已撤稿，仅存 v2 对照）；DynaWM **要训** 流匹配重写、面向移动目标 |
 | **π₀.7 + world subgoals** | VLA 内部集成世界信号；DynaWM **模块外置、零 VLA 改动** |
 
 ## 常见误区或局限

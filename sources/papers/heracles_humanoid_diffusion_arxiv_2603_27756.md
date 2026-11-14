@@ -10,6 +10,8 @@
 - **项目页：** <https://heracles-humanoid-control.github.io/>
 - **团队：** X-Humanoid Heracles Project Team（项目页列 Qiang Zhang 等；代码 Coming Soon）
 - **入库日期：** 2026-05-25
+- **通读：** 已完成
+- **核对范围：** `2603.27756v2` 全文 §1–§6 及参考文献（含 Table 1–6、Fig. 1–7、Unitree G1 硬件部署与消融实验）
 - **一句话说明：** **状态条件扩散中间件**插在高层参考运动与底层物理跟踪策略之间：状态贴近参考时近似恒等映射保零样本跟踪精度，大偏差时生成类人恢复关键帧轨迹，经闭环重规划喂给通用 tracker，无需显式 tracking/recovery 模式机。
 
 ## 摘要级要点
@@ -17,13 +19,19 @@
 - **痛点：** 通用控制器多把运动控制写成**刚性参考跟踪**；名义条件下有效，但大扰动 / OOD 时盲目最小化即时 kinematic 误差 → 僵硬、非类人、难恢复跌倒。
 - **对立面：** 纯生成式 BFM / URL 更自然但难保**时空精确跟踪**；需桥接「精确跟踪」与「生成式恢复」。
 - **Heracles 定位：** **中间层**（middleware），非端到端单体策略，也非显式 FSM 切换；以机器人**实时本体状态**条件化扩散过程，**隐式**在 identity map 与 generative synthesizer 间过渡。
-- **系统两层：**
-  1. **生成中间件：** 低频规划，输入 $(\mathbf{p}_t, \mathbf{m}_t)$，输出短视界关键帧轨迹 $\bm{\tau}_t\in\mathbb{R}^{K\times D}$；
-  2. **通用物理跟踪策略 $\pi$：** 高频 MDP，观测含 $\mathbf{p}_t$、由 $\bm{\tau}_t$ 密化后的 $\mathbf{m}'_t$、离散运动嵌入 $\mathbf{z}_d$。
-- **残差参数化：** 基线 $\bm{\beta}_{t,k}=\mathbf{p}_t$ 固定，只预测残差 $\mathbf{r}_t$，$\bm{\tau}_t=\bm{\beta}_t+\mathbf{r}_t$；近参考时残差≈0 → 近似透传命令。
-- **训练：** **Conditional Flow Matching**（线性插值路径 + 速度场 MSE）；AdaLN-Transformer 速度网络；首 token inpainting 锚定当前状态；推理用 **directional warm start**（向 $\mathbf{m}_t$ 线性插值初值 + 部分噪声，SDEdit 风格）减少 ODE 步数。
-- **部署：** 每 $N_{\mathrm{exec}}$ 步重规划；关键帧经三次样条（关节）+ slerp（根朝向）密化为 tracker 频率；形成 **closed-loop tracking–generation**。
-- **Tracker 增强：** 论文同时改进底层跟踪器与整体框架（FSQ 量化 motion token、重建与动作预测头等，见正文 §3.3）；真机实验报告极端扰动下**涌现式类人恢复**与运动泛化。
+- **系统两层与控制频率（29-DoF Unitree G1，1.32 m / 35 kg）：**
+  1. **生成中间件（25 Hz 重规划，$N_{\mathrm{exec}}=2$ 步 / $0.04\text{ s}$）：** 6 层 4 头 512 维 **AdaLN-Transformer（22.9M 参数）** 输入 $(\mathbf{p}_t, \mathbf{m}_t)$，通过条件 flow matching（$\Delta t=0.2\text{ s}$ 窗口内预测 $K=8$ 个关键帧残差 $\mathbf{r}_t$，$\bm{\tau}_t=\bm{\beta}_t+\mathbf{r}_t$，其中静态基线 $\bm{\beta}_{t,k}=\mathbf{p}_t$）生成短视界关键帧。
+  2. **通用物理跟踪策略 $\pi$（50 Hz 推理 → 200 Hz PD/物理仿真）：** 接收 10 帧本体历史与经三次样条（关节）+ slerp（根朝向）密化的参考窗口（10 帧未来），用 **iFSQ（$f(x)=2.0\sigma(1.6x)-1$，$L=2K+1$ 奇数级含精确零状态）** 编码为离散运动 token $\mathbf{z}_d$，在非对称 PPO（单张 A100 80GB 上 16,384 并行环境）+ 核平滑自适应时间分箱采样下联合优化动作头与重建头。
+- **关键训练与推理技巧：**
+  - **首 token inpainting：** 固定 $x_t[0]$ 锚定当前状态，保障轨迹运动学连续。
+  - **Directional Warm Start（SDEdit 风格）：** 从向目标线性插值的初值在 $t_{\mathrm{start}}=0.9$ 加噪后仅做 **5 步 Euler ODE 积分**即可推理。
+  - **非对称噪声增强 & 雅可比加权：** 仅对起始本体状态 $\tilde{\mathbf{p}}_t=\mathbf{p}_t+\epsilon$ 加噪而保持参考 $\mathbf{m}_t$ 干净；用近似 $J^\top J$ 对角线权重按杠杆臂缩放损失，避免远端关节误差失配。
+  - **双状态配置：** **38D**（29 关节 + 3D 根位置 + 6D 根朝向）与 **35D**（去全局根位置、仅靠本体/IMU 在线部署）。
+- **核心量化结果（MuJoCo 101 条未见序列 + 真机 G1）：**
+  - **通用跟踪（Table 4）：** 完成率 CR 达 **`90.6%`**，优于 VQ-VAE (`86.0%`)、MLP (`84.8%`)、SONIC (`79.3%`) 与无中间件独立 iFSQ (`87.2%`)；对比 iFSQ 根朝向误差降 `24.5%`（`0.3614 -> 0.2728 rad`）、高度误差降 `20.0%`（`0.0955 -> 0.0764 m`）。
+  - **跌倒恢复子集（Table 5）：** CR 达 **`90.0%`**，大幅领先 VQ-VAE (`69.8%`)、iFSQ+H (`52.7%`)、iFSQ (`48.2%`)、MLP (`44.0%`) 与 SONIC (`42.8%`)，关节误差低至 `1.4114 rad`。
+  - **关键消融（Table 6）：** 去掉非对称噪声增强 CR 跌至 **`78.6%`**（`-13.2%`，高度误差 `+91.5%`）；去掉雅可比权重 CR 跌至 **`82.1%`**（`-9.4%`）；去掉 directional warm start CR 跌至 **`87.2%`**（`-3.8%`）。
+  - **真机 G1 验证（Fig. 4 & Fig. 7）：** 实现走/跑/踢腿/360° 踢/HOI 与仰卧/侧卧/俯卧**全向起身恢复**。
 
 ## 核心摘录（面向 wiki 编译）
 

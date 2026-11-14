@@ -2,8 +2,11 @@
 
 - **类型**：个人站点 / 履历、教学、博客与项目索引（原始资料归档）
 - **收录日期**：2026-06-06
+- **复核日期**：2026-11-14
 - **主链接**：<https://karpathy.ai/>
-- **抓取说明**：以 **2026-06-06** 对首页公开 HTML 为准；站点自述为纯 HTML+CSS 静态页，无前端框架。
+- **抓取说明**：以 **2026-06-06** 归档的首页公开 HTML（`karpathy.html`）与课程子页 `zero-to-hero.html`（`karpathy_zero.html`）全文核对；站点自述为纯 HTML+CSS 静态页，无前端框架。
+- **核对范围：** `karpathy.html` 全文（简介、2005–2024+ 履历时间线、featured talks、teaching、featured writing、pet projects、publications、misc unsorted 及全部外链）与 `karpathy_zero.html` 全文（8 讲标题、时长与概述）
+- **通读：** 已完成
 
 ## 一句话
 
@@ -41,8 +44,8 @@ AI 研究者与教育者：OpenAI 创始成员、Tesla AI 总监（Autopilot 视
 
 ### 教学
 
-- **YouTube — Neural Networks: Zero to Hero**（[播放列表](../courses/karpathy_zero_to_hero_youtube.md)：micrograd → makemore → GPT → GPT-2；配套 [nn-zero-to-hero](../repos/nn-zero-to-hero.md)）
-- **YouTube — LLM 大众科普（成对）**：[Intro to LLMs（~1 h）](../courses/karpathy_intro_llms_youtube.md)、[Deep Dive into LLMs（~3.5 h）](../courses/karpathy_deep_dive_llms_youtube.md)
+- **YouTube — Neural Networks: Zero to Hero**（`zero-to-hero.html` 列 8 讲与时长：micrograd 2h25m → makemore 1h57m / 1h15m / 1h55m / 1h55m / 56m → GPT 1h56m → GPT Tokenizer 2h13m；配套 [播放列表](../courses/karpathy_zero_to_hero_youtube.md) 与 [nn-zero-to-hero](../repos/nn-zero-to-hero.md)）
+- **YouTube — LLM 大众科普**：[Intro to LLMs（~1 h）](../courses/karpathy_intro_llms_youtube.md)、[Deep Dive into LLMs（~3.5 h）](../courses/karpathy_deep_dive_llms_youtube.md)，另有 *How I use LLMs*
 - **Stanford CS231n**（2016 录像、syllabus、notes；r/cs231n）
 
 ### 代表写作（主页 *featured writing* 摘录）

@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 related:
   - ../entities/paper-behavior-spatial.md
   - ../entities/paper-recova.md
@@ -242,7 +242,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
   - 代表：UnifoLM, π₀, [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（五阶段课程 + 统一多本体动作 + Green 人形上身部署，arXiv:2602.00919）
   - **LLM 监督预训练 VLA：** [Embody](../entities/anthropic-embody.md) 让通用聊天模型接受/修改 MolmoAct 提案，成功率远高于直接 7 维控制，但通常仍 **低于 VLA 单独跑**；见 [LLM 控制接口](../concepts/llm-robotics-control-interfaces.md)
   - **跨本体相机几何：** [UCAG-P](../entities/paper-ucag-p.md)（arXiv:2608.26058）— 共享腕/抓取锚点 + 翻译器；单 checkpoint LIBERO **98.3%** / RoboTwin **88.7%/89.2%** / GR-1 **62.0%**；**代码待发布**
-  - **动态低延迟：** [ReflexVLA](../entities/paper-reflexvla.md)（arXiv:2608.14379）— ReflexBench 延迟感知六任务 + 1B 预测/时序/CUDA Graph；均值 **50.4%**、LIBERO **97.2%**、延迟 **65.0 ms**；**代码待开放**
+  - **动态低延迟：** [ReflexVLA](../entities/paper-reflexvla.md)（arXiv:2608.14379）— ReflexBench 延迟感知六任务 + 1B 预测/时序/CUDA Graph；均值 **50.4%**、LIBERO **97.2%**、延迟 **65.0 ms**；**ReflexBench 基准与数据已开源，策略代码待录用后发布**
   - **人手→灵巧手统一动作：** [AdvDex](../entities/paper-advdex.md)（arXiv:2608.14028）— OmniShare + JAAS + 域对抗；Paxini DexH13 少样本/零样本人→机；**确认未开源**
   - **Copilot 嵌套采数：** [NestDex](../entities/paper-nestdex.md)（arXiv:2608.13362）— 人控臂 + 1-DoF clutch，内层手技能只服务示范；外层 visuomotor 部署卸 copilot；**确认未开源**
   - **过程评测：** [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md)（arXiv:2608.14284）— 冻结 PRM 进度曲线 + OPD；工具仓 **已开源**
@@ -255,7 +255,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 
 #### 分层 VLA 与 agent 编排
 
-- **分层 VLA + 子任务级 TTC：** [τ₀-VLA](../entities/paper-tau0-vla.md)（arXiv:2608.16885）— **记忆增强高层** + **世界模型引导 beam search** 比较候选子任务想象后果；**Qwen3.5+MoT** 低层 **40 维** generalist（**40,115 h**）；四类 **13–25 步** 长程真机分层 **45.0%** vs 整任务 **27.5%**；低层权重与后训练 **已开源**，高层 TTC **逐步发布**
+- **分层 VLA + 子任务级 TTC：** [τ₀-VLA](../entities/paper-tau0-vla.md)（arXiv:2608.16885）— **记忆增强高层** + **世界模型引导 beam search** 比较候选子任务想象后果；**Qwen3.5+MoT** 低层 **40 维** generalist（**40,115 h**）；四类 **13–25 步** 长程真机分层 **45.0%** vs 整任务 **27.5%**；低层权重、LIBERO、Proposal 与 World Model LoRA **已开源**，Value/Reflective/SEARCH 编排 **尚待发布**
 - **EmbodiedSkills**（[实体页](../entities/paper-embodiedskills.md)，arXiv:2609.01281）：**guarded AgentLoop** + 可执行 skill contract；Qwen3-VL 高层 + OpenPI/π₀.₅ 低层；RoboTwin **86.20%**、LIBERO **97.40%**；[GitHub 已开源](https://github.com/DCDmllm/EmbodiedSkills)
 
 #### 世界模型与视频–动作模型（WAM / VAM）
@@ -279,7 +279,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - **EgoWAM**：在 **双臂真机** 上实证 **朴素 BC 人–机共训** 可因具身差距 **负迁移**，而 **WAM 可替换世界目标**（DINO / 3D flow）使性能随 **[EgoVerse](../entities/paper-egoverse.md) 野外人数据** 扩展；入口见 [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)
 - **EgoVerse**：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身共训研究——共训可涨分，但缩放需 **域对齐锚定**，场景多样性主导有限预算泛化；入口见 [EgoVerse](../entities/paper-egoverse.md)
 - **[EgoExplorer](../entities/paper-egoexplorer-vision-motion-touch-dataset.md)**（arXiv:2610.18872）：5 个 inside-out tracker + 头戴相机采集人类移动操作；C³ 从稀疏锚点重建全身动作，手指动作与可选 WUJI 区域触觉同步；2,715 段 / 100 h，触觉仅覆盖 WUJI 子集。
-- **RoboEdit**（[实体页](../entities/paper-roboedit.md)，arXiv:2608.18948）：**人类操作 RGB 视频 → robot video + 3D hand states**（RoboEdit-14M）；下游 Franka 真机 YCB；无官方代码 URL
+- **RoboEdit**（[实体页](../entities/paper-roboedit.md)，arXiv:2608.18948）：**人类操作 RGB 视频 → robot video + 3D hand states**（RoboEdit-14M）；下游 Franka 真机 YCB；arXiv v4 附 `roboedit.github.io`，代码与数据集暂未公布
 
 #### 触觉与力反馈
 
@@ -342,7 +342,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 
 ### VLA 架构、后训练与评测
 
-- [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench（arXiv:2608.14379；代码待开放）
+- [ReflexVLA](../entities/paper-reflexvla.md) — 延迟感知动态操纵 1B VLA + ReflexBench（arXiv:2608.14379；ReflexBench 与数据已开源，策略待录用后发布）
 - [ARLI](../entities/paper-arli.md) — 异步 VLA 延迟感知 RL 后训练；真机双臂 UR5e 约 40%→近 100%（arXiv:2608.23831；确认未开源）
 - [SmoothRL](../entities/paper-smoothrl.md) — 异步 chunk 环内 value-gradient 在线 RL；S1 投掷/笔帽/开箱 250 ep 后 94%/83%/90%（arXiv:2608.29768；项目页已上线、仍未开源）
 - [LAWA](../entities/paper-lawa.md) — 潜动作作测试时未来意图；RoboCasa few-shot 65.6% / full 80.8%（arXiv:2608.24882；代码待发布）
@@ -357,7 +357,7 @@ Manipulation 不是单个「抓取策略」，而是感知 → 抓取 → 接触
 - [EventVLA](../entities/paper-eventvla-visual-evidence-memory.md) — 稀疏视觉证据记忆 + RoboTwin-MeM（arXiv:2606.20092）
 - [Chronos](../entities/paper-chronos.md) — 全历史 SSM + IMLE + 二阶加速度桥；RMBench 73.6%、真机 78%（arXiv:2606.30318）
 - [BridgeVLA++](../entities/paper-bridgevla-plusplus.md) — 3D heatmap VLA + 时空记忆；RMBench 96.0%、RLBench 93.7%（arXiv:2608.05042）
-- [RTCF](../entities/paper-rtcf.md) — 免训练记忆检索 + 低频纠偏；LIBERO Long 61.6→68.6（arXiv:2608.04527）
+- [RTCF](../entities/paper-rtcf.md) — 免训练记忆检索 + 低频纠偏；LIBERO Long 61.6→68.6（arXiv:2608.04527；v3 已于 2026-10-28 撤稿，仅作方法脉络参考）
 - [G0.5](../entities/paper-galaxea-g05.md) — 星海图 AR VLA；真机 76.7%、RoboTwin 93.3%（arXiv:2608.11739；已开源）
 - [Seeker](../entities/paper-seeker.md) — 动作监督 ROI；MimicGen 62.6%、xArm 域内 76.7%（arXiv:2608.13422；已开源）
 - [BooST](../entities/paper-boost-skill-transfer.md) — 语义+运动技能码；LIBERO-90 10 demo 0.70（arXiv:2608.10600；训练仓未开）

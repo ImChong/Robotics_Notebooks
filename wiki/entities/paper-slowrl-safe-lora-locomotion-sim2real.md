@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, sim2real, lora, ppo, safe-rl, unitree-go2, isaac-lab, mujoco]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 arxiv: "2603.17092"
 code: https://github.com/unitreerobotics/unitree_rl_lab
 related:

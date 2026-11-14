@@ -9,7 +9,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 arxiv: "2607.02865"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -137,7 +137,7 @@ flowchart TB
 | **Cosmos / DreamGen（pixel WM）** | 视觉丰富但 **在线 steering 太贵** |
 | **DINO-WM / VT-WM** | 同类 **latent WM**；DreamSteer 强调 **多候选 VLA steering** |
 | **DSWAM / DynaWM** | **训练期集成 WAM**；DreamSteer **不改 VLA、外挂 WM** |
-| **[RTCF](./paper-rtcf.md)** | **免训练** 记忆低频纠偏、单候选；DreamSteer **多候选 WM 想象 + 价值排序** |
+| **[RTCF](./paper-rtcf.md)** | **免训练** 记忆低频纠偏、单候选（v3 已撤稿，仅存 v2 对照）；DreamSteer **多候选 WM 想象 + 价值排序** |
 
 ## 常见误区或局限
 

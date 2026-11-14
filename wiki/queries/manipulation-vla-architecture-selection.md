@@ -3,7 +3,15 @@ title: 操作 VLA 与视频-动作架构选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-09-15
+updated: 2026-11-14
+original:
+  - ../../sources/papers/act_arxiv_2304_13705.md
+  - ../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md
+  - ../../sources/papers/openvla_reading_arxiv_2406_09246.md
+  - ../../sources/papers/pi0_arxiv_2410_24164.md
+  - ../../sources/papers/fast_action_tokenization_arxiv_2501_09747.md
+  - ../../sources/papers/defi_arxiv_2604_16391.md
+  - ../../sources/papers/mimic_video_reading_arxiv_2512_15692_mv3.md
 summary: "操作任务的 VLA / 视频-动作 / 世界模型架构选型指南：按「有无机器人动作标签数据、是否需要长程潜计划或显式物理想象、是否涉及接触与触觉」给出 VLA、DeFI、mimic-video、DWM、CLAW、T-Rex 的推荐路线与代价对比。"
 related:
   - ../entities/paper-galaxea-g05.md
@@ -95,10 +103,15 @@ related:
 
 ## 参考来源
 
+- [ACT 原文归档（arXiv:2304.13705）](../../sources/papers/act_arxiv_2304_13705.md) — Action Chunking 与 CVAE 双臂基座
+- [Diffusion Policy 原文归档（arXiv:2303.04137）](../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md) — 多峰动作分布生成式扩散头
+- [OpenVLA 原文归档（arXiv:2406.09246）](../../sources/papers/openvla_reading_arxiv_2406_09246.md) — 离散动作 token 开源 7B VLA
+- [π0 原文归档（arXiv:2410.24164）](../../sources/papers/pi0_arxiv_2410_24164.md) — 连续流匹配动作专家架构
+- [FAST 原文归档（arXiv:2501.09747）](../../sources/papers/fast_action_tokenization_arxiv_2501_09747.md) — 频域压缩高频率动作分词
+- [DeFI 原文归档（arXiv:2604.16391）](../../sources/papers/defi_arxiv_2604_16391.md) — 无动作标签人视频的前/逆动力学解耦预训练
+- [mimic-video 原文归档（arXiv:2512.15692）](../../sources/papers/mimic_video_reading_arxiv_2512_15692_mv3.md) — 视频潜计划 + 轻量动作解码
 - [深蓝具身智能：VLA GitHub 复现推荐](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md) — 开源仓库入口与复现目标分组
 - [RL 基础模型综述（RT / π / Octo）](../../sources/papers/rl_foundation_models.md)
-- [DeFI 论文入库](../../sources/papers/defi_arxiv_2604_16391.md)
-- [mimic-video 论文摘录](../../sources/papers/mimic_video_arxiv_2512_15692.md)
 
 ## 关联页面
 

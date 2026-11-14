@@ -12,16 +12,19 @@
 - **Stars / Forks（入库快照）：** 35 / 11
 - **创建：** 2026-05-29 · **默认分支：** `main`
 - **钉版本叙事：** Python 3.12 · LeRobot 0.5.2 · ROS Noetic
-- **入库日期：** 2026-08-17
-- **一句话说明：** 乐聚官方 **模仿学习 / VLA 胶水仓**：rosbag → LeRobot Dataset v3 → 训练 → 仿真/真机评测；对接 Kuavo 4 Pro / 5 / 5W。
+- **入库日期：** 2026-08-17 · **复核日期：** 2026-11-14（仓内 commit `8647bc58`）
+- **核对范围：** 仓内 `README.md`、`docs/updates/v2_0.md`、`docs/updates/v2_1.md`、`kuavo_data/CvtRosbag2Lerobot.py`、`kuavo_model/train.py`、`kuavo_deploy/eval.py`、`kuavo_deploy/src/scripts/script.py`、`kuavo_deploy/src/eval/real_single_test.py`、`kuavo_deploy/kuavo_service/client.py`、`kuavo_server/serve.py`、`kuavo_server/runtime.py`、`kuavo_server/adapters/lingbot_vla_v2.py`、`configs/deploy/deploy.yaml`
+- **通读：** 已完成
+- **一句话说明：** 乐聚官方 **模仿学习 / VLA 胶水仓**：rosbag → LeRobot Dataset v3 → 训练 → ZeroMQ 推理服务/真机评测；对接 Kuavo 4 Pro / 5 / 5W 与 Roban 2。
 
 ## 开源状态（步骤 2.5）
 
-- **已开源、可运行：** `setup_env.sh`、`kuavo_data/CvtRosbag2Lerobot.py`、`kuavo_model/train.py`、`kuavo_deploy/eval.py`、外部模型目录与 AGX Orin 说明均在仓内。
-- **边界：**
-  - 依赖 CUDA GPU 训练、Docker/NVIDIA Container Toolkit（仿真或容器化 ROS）、以及真机侧 Kuavo SDK/ROS。
-  - 上游 LeRobot 经 `third_party/` + `lerobot_patches/` **钉版本打补丁**，勿盲目升级。
-  - 外部模型（OpenPI / GR00T N1.7 / Lingbot-VLA / v2）走 `kuavo_server` adapter：**先起模型服务，再 `policy_type: client`**。
+- **已开源、可运行（v2.1）：** `setup_env.sh`、`kuavo_data/CvtRosbag2Lerobot.py`（分块流式 rosbag→LeRobot v3，含 H.265/SG100 兼容）、`kuavo_model/train.py`（合并 `total/` 与 simple YAML 后拉起 `lerobot` 训练，支持 `--launcher python|accelerate`、`--dry-run`）、`kuavo_server/serve.py` / `launch.py`、`kuavo_deploy/eval.py` 均在仓内可查。
+- **边界与实码核验发现：**
+  - `kuavo_model/train.py` 的 `POLICY_CHOICES` 目前注册 10 种 LeRobot 内置策略（`act`/`diffusion`/`pi0`/`pi0_fast`/`pi05`/`gr00t`/`smolvla`/`xvla`/`wall_x`/`multi_task_dit`），**并不包含** `kuavo_vla` 或 `lingbot_vla_v2` 作为内置 CLI 选项。
+  - **KUAVO-VLA-1.0 / LingBot-VLA-v2 的训练与服务链路**依托 `kuavo_model/external_models/lingbot-vla-v2/` 子树和 `kuavo_server/adapters/lingbot_vla_v2.py`（`LingBotVlaV2Adapter`，调用 `deploy.lingbot_vla_v2_policy.LingbotVLAv2Server`），通过 `kuavo_server/serve.py --adapter lingbot_vla_v2 --checkpoint ...`（或 `launch.py lingbotvla2`）以 **ZeroMQ REP**（`TorchSerializer`，端点 `ping`/`metadata`/`reset`/`select_action`/`select_action_chunk`/`select_action_chunk_rtc`）向外服务；机器人端在 `configs/deploy/deploy.yaml` 设置 `inference.policy_type: client`，由 `real_single_test.py` 通过 `PolicyClient` 连接。
+  - v2.0（2026-09-20）与 v2.1（2026-11-12）新增 Xiaomi-Robotics-0/1、Galaxea G0.5、Wall-X-0.5 adapter、SG100 灵巧手全链路、Kuavo 5W 全身/底盘模式、Roban wholebody CycloneDDS+HEFT 案例、Quest3 DAgger 人工接管录制，以及 OpenPI / GR00T N1.7 / LingBot-VLA-v2 的 **guided / trained RTC** 异步推理。
+  - 依赖 CUDA GPU 训练、Docker/NVIDIA Container Toolkit、ROS Noetic 与真机侧 Kuavo SDK；上游 LeRobot 经 `third_party/` + `lerobot_patches/custom_patches.py` 钉版本打补丁。
   - 无正式 SLA；企业支持走 `lejurobot@lejurobot.com`。
 
 ## README 能力表（归纳）

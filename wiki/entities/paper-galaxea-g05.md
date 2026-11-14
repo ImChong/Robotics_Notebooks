@@ -15,7 +15,9 @@ tags:
   - china-embodied-opensource
 status: complete
 updated: 2026-11-14
+project_id: galaxea-g05
 arxiv: "2608.11739"
+project: "https://opengalaxea.github.io/G05/"
 code: https://github.com/OpenGalaxea/GalaxeaVLA
 related:
   - ../methods/vla.md
@@ -33,6 +35,9 @@ related:
   - ../concepts/world-action-models.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
+original:
+  - ../../sources/papers/galaxea_g05_arxiv_2608_11739.md
+  - ../../sources/repos/galaxea-vla.md
 sources:
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part2.md
@@ -43,7 +48,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/galaxeavla.md
   - ../../sources/repos/lerobot.md
-summary: "G0.5（星海图，arXiv:2608.11739）：Qwen3.5-2B 单一解码器在同一自回归流里发 CoT 与动作 token；跨本体 RVQ ActionCodec + 视觉记忆。真机 76.7%、LIBERO 98.9%、RoboTwin 93.3%。GitHub + HF 权重已开源（Community License）。"
+summary: "G0.5（星海图，arXiv:2608.11739）：Qwen3.5-2B 单一解码器在同一自回归流里发 CoT 与动作 token；跨本体 RVQ ActionCodec + 视觉记忆。真机 76.7%、LIBERO 98.9%、RoboTwin 93.3%。GitHub + HF 权重已开源（Community License，HF 设 gated: auto）。"
 ---
 
 # G0.5：推理与动作同一自回归流
@@ -58,12 +63,12 @@ summary: "G0.5（星海图，arXiv:2608.11739）：Qwen3.5-2B 单一解码器在
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| G0.5 / G05 | Galaxea 0.5 VLA | 本文统一自回归视觉–语言–动作模型 |
-| VLM-as-Actor | Vision-Language Model as Actor | VLM 自己发动作 token，而不是只条件化外部 expert |
-| ActionCodec | Cross-embodiment action tokenizer | 分组 RVQ：左/右臂、夹爪、下身 → 共享离散码 |
-| CoT | Chain-of-Thought | 本页指 Subtask / BBox / Trace / ActionHint 与动作同流 |
-| RVQ | Residual Vector Quantization | 残差量化动作块；每激活组 8 码 × \(R\) 轮 |
-| GRPO | Group Relative Policy Optimization | 用 AR token logp 做低数据 RL 微调 |
+| VLA | Vision-Language-Action | 视觉–语言–动作控制模型（本页为 Qwen3.5-2B 单一自回归流） |
+| CoT | Chain-of-Thought | 本页指 `Subtask` / `BBox` / `Trace` / `ActionHint` 与动作同流生成 |
+| RVQ | Residual Vector Quantization | 残差向量量化；`ActionCodecV2` 按激活组发 8 码 × \(R\) 轮 |
+| MRoPE | Multimodal Rotary Position Embedding | 多模态旋转位置编码；用于对齐文本、视觉与历史帧位置 |
+| GRPO | Group Relative Policy Optimization | 利用自回归动作 token 的 log-probability 进行低样本 RL 微调 |
+| BDDL | Behavior Domain Definition Language | BEHAVIOR-1K 与仿真长程任务使用的领域定义语言 |
 
 ## 为什么重要
 
@@ -84,65 +89,65 @@ summary: "G0.5（星海图，arXiv:2608.11739）：Qwen3.5-2B 单一解码器在
 | 预训练 | 14 本体机器人 + Web/具身 VQA（动作:VQA 4:1）；DROID 不进基础混合 |
 | 开源（截至 2026-08-14） | **已开源**：[`OpenGalaxea/GalaxeaVLA`](https://github.com/OpenGalaxea/GalaxeaVLA) + HF `OpenGalaxea/G05` |
 
-## 方法与核心结构
+## 核心原理
 
 | 模块 | 作用 |
 |------|------|
-| **条件段** | 多视角 RGB、embodiment id、指令、连续本体嵌入（与视觉帧对齐） |
-| **生成段** | 可选 CoT + `<part_r>` 组标记 + 8 个动作码 × 残差轮 |
-| **ActionCodec** | 分组 pad → 时间对比 → RVQ；只序列化激活部分 |
-| **视觉记忆** | ViT 每 4 层分解时空注意；末层丢历史；训练随机 drop 历史帧（约 6 帧 / 5 s） |
-| **可选 FM 头** | 条件 AR 隐状态，作加速/对照；主表默认纯 AR |
+| **条件段** | 多视角 RGB、embodiment id、指令、`proprio_embedder` MLP 连续本体嵌入（与视觉帧对齐后接 `<EOC>`） |
+| **生成段** | 可选 CoT（8 种加权模板采样）+ `<part_r>` 组标记 + 8 个动作码 × 残差轮 `<EOV>...<eos>` |
+| **ActionCodec** | `ActionCodecV2Wrapper`：分组 pad（27 维）→ Block-DCT（`block_size=8`）→ 时间一致性损失 + 4 码本 RVQ（`codebook_size=4096`）；只序列化激活组 |
+| **视觉记忆** | ViT 每 4 层分解时空注意；末层丢历史帧；预训练约 6 帧 / 5 s 并以 30% 概率随机丢弃历史帧；`serve_policy_mem.py` 维护每相机 `deque` 缓存 |
+| **可选 FM 头** | `FMHelper` / `action_expert`（`g05_mem.yaml` 含混合线性/全注意力层）作加速/对照；主表默认纯自回归 `ARHelper` |
 
-训练只有一条 CE：CoT 和动作「都是 token」。8 种 CoT 模板加权采样，子任务文本权重最高；评测默认 no-CoT，需要时再打开。
+训练使用单一 next-token 交叉熵损失（CoT 与动作码统一入词表；预训练动作与 VQA 比例为 `4:1`，DROID 不进入预训练混合）；评测默认关闭 CoT，仅在长程或按需推理时启用。
 
-## 流程总览
+### 流程总览
 
 ```mermaid
 flowchart TB
-  obs["多视角 RGB + 本体 + 指令 + embodiment"]
-  vlm["Qwen3.5-2B 解码器"]
-  cot["可选 CoT\nSubtask / BBox / Trace / ActionHint"]
-  codes["激活组动作码\nRVQ 8 x R"]
-  codec["ActionCodec 解码\n27 维连续命令"]
-  robot["R1-Lite / R1-Pro / Franka / SO-100"]
+  obs["多视角 RGB + proprio_embedder 本体嵌入 + 指令 + embodiment"]
+  vlm["Qwen3.5-2B 解码器（GatedDeltaNet + Full Attention）"]
+  cot["可选 CoT（Subtask / BBox / Trace / ActionHint）"]
+  codes["激活组动作码（Block-DCT + 4 码本 RVQ 8 x R）"]
+  codec["ActionCodecV2Wrapper 解码（27 维连续动作）"]
+  robot["R1-Lite / R1-Pro / DROID Franka / SO-100 / LIBERO / RoboTwin"]
   obs --> vlm --> cot --> codes --> codec --> robot
 ```
 
-闭环每步用新观测重写条件段，推理可以改计划而不是一次性开环。
+闭环每步用新观测重写条件段，推理可以在执行中动态修订后续计划，而不是一次性开环生成整段轨迹。
 
 ## 源码运行时序图
 
-官方仓 [OpenGalaxea/GalaxeaVLA](https://github.com/OpenGalaxea/GalaxeaVLA) 与 HF 权重布局见 [sources/repos/galaxea-vla.md](../../sources/repos/galaxea-vla.md)：
+官方仓 [`OpenGalaxea/GalaxeaVLA`](https://github.com/OpenGalaxea/GalaxeaVLA) 与 HF 权重布局见 [`sources/repos/galaxea-vla.md`](../../sources/repos/galaxea-vla.md)：
 
 ```mermaid
 sequenceDiagram
     autonumber
     actor Dev as 开发者
-    participant HF as Hugging Face<br/>OpenGalaxea/G05
-    participant UV as uv sync
-    participant FT as scripts/run/finetune.sh
-    participant G05 as src/g05<br/>g05_policy_qwen35
-    participant Codec as action_tokenizer.pt
-    participant Srv as scripts/serve_policy.py
-    participant Client as experiments/r1lite<br/>或 libero eval
-    Dev->>HF: download 到 checkpoints/
-    Dev->>UV: Python 3.10 + cu128
-    alt 微调
-      Dev->>FT: task=r1lite 或 libero
-      FT->>G05: 从 g05-base 全参 CE
-      G05->>Codec: 激活组 RVQ 编解码
-    else 推理
-      Dev->>Srv: ckpt + eval_embodiment
-      Srv->>G05: 观测 msgpack → AR 生成
-      G05->>Codec: 动作码 → 连续命令
-      Srv->>Client: 反归一化动作块
+    participant HF as Hugging Face OpenGalaxea/G05
+    participant FT as scripts/run/finetune.sh + finetune.py
+    participant Pol as G05PolicyQwen35 + G05ModelQwen35
+    participant Codec as ActionCodecV2Wrapper
+    participant Srv as scripts/serve_policy.py + serve_policy_mem.py
+    participant Cli as experiments/r1lite, r1pro, libero, robotwin
+    Dev->>HF: 登录后接受 G0.5 Community License 并下载权重
+    alt 全参微调（torchrun DDP）
+      Dev->>FT: 指定 GPU 与任务配置
+      FT->>Pol: 加载 g05-base 并以 proprio_embedder 注入连续状态
+      Pol->>Codec: ActionCodecV2Wrapper 对 27 维动作做 Block-DCT + RVQ 编码
+      Pol-->>FT: ARHelper 单一交叉熵反向传播（可选 FMHelper）
+    else 策略推理与真机/仿真部署
+      Dev->>Srv: 启动 WebSocket 服务（多帧任务用 serve_policy_mem.py 维护 deque）
+      Cli->>Srv: 发送 msgpack 图像与本体观测
+      Srv->>Pol: PolicyInferencer 前向解码 CoT 与离散动作码
+      Pol->>Codec: 解码还原 27 维连续动作块并反归一化
+      Srv-->>Cli: 返回控制动作块执行闭环
     end
 ```
 
-- **最短路径：** `uv sync` → 拉 `g05-base` → `serve_policy.py` 对 R1-Lite 零样本，或 `experiments/libero` 用 `g05-libero`。
-- **微调：** `finetune.sh` 默认 DDP 每卡一份整模，**不能**当成模型并行省显存；全参 >70 GB。
-- **许可证：** 先读 `LICENSE-G0.5`；内部 PoC 评估与生产部署不是同一档。
+- **最短路径：** `uv sync`（Python 3.10.x + CUDA 12.8）→ HF 登录后拉取 `OpenGalaxea/G05` → `serve_policy.py`（或长程记忆版 `serve_policy_mem.py`）连接 `experiments/r1lite` / `eval_libero_parallel.py` / `run_robotwin_manager.py`。
+- **微调：** `scripts/run/finetune.sh` 用 `torchrun` 启动 `scripts/finetune.py` 进行 DDP 全参微调（每卡保存完整模型副本），单卡需 >70 GB 显存。
+- **门禁与许可：** `manifest.json` 显示 `OpenGalaxea/G05` 为 `"gated": "auto"`；仓库根目录自 commit `dc0a1ef` 起采用 `LICENSE-G0.5` 非商用社区协议。
 
 ## LeRobot 源码运行时序图
 

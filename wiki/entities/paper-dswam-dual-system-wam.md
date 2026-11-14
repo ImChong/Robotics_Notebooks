@@ -9,7 +9,7 @@ tags:
   - dual-system
   - midea
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 arxiv: "2607.04927"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md

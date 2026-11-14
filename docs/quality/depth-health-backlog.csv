@@ -5,6 +5,9 @@ roadmap/depth-wam.md,Stage 0 边界与族谱：什么是 / 不是 WAM,wiki/queri
 roadmap/depth-wam.md,Stage 0 边界与族谱：什么是 / 不是 WAM,wiki/entities/paper-rcl-wam-robot-learning-control-survey.md,3,complete,—
 roadmap/depth-wam.md,Stage 1 世界模型与动力学基座,wiki/methods/generative-world-models.md,3,complete,—
 roadmap/depth-wam.md,Stage 1 世界模型与动力学基座,wiki/methods/model-based-rl.md,3,complete,—
+roadmap/depth-wam.md,Stage 1 世界模型与动力学基座,wiki/entities/paper-lewm.md,3,complete,—
+roadmap/depth-wam.md,Stage 1 世界模型与动力学基座,wiki/entities/paper-lg-dkgp.md,3,complete,—
+roadmap/depth-wam.md,Stage 1 世界模型与动力学基座,wiki/entities/paper-slim-05b.md,3,complete,—
 roadmap/depth-wam.md,Stage 1 世界模型与动力学基座,wiki/overview/robot-world-models-training-loop-taxonomy.md,3,complete,—
 roadmap/depth-wam.md,Stage 1 世界模型与动力学基座,wiki/entities/tau0-world-model.md,3,complete,—
 roadmap/depth-wam.md,Stage 1 世界模型与动力学基座,wiki/entities/paper-physisforcing.md,3,complete,—
@@ -26,7 +29,6 @@ roadmap/depth-wam.md,Stage 1 世界模型与动力学基座,wiki/entities/edenli
 roadmap/depth-wam.md,Stage 2 Cascaded WAM：先计划未来，再解码动作,wiki/methods/defi-decoupled-dynamics-vla.md,3,complete,—
 roadmap/depth-wam.md,Stage 2 Cascaded WAM：先计划未来，再解码动作,wiki/concepts/world-action-models.md,3,complete,—
 roadmap/depth-wam.md,Stage 2 Cascaded WAM：先计划未来，再解码动作,wiki/entities/paper-being-m07-humanoid-latent-wam.md,3,complete,—
-roadmap/depth-wam.md,Stage 2 Cascaded WAM：先计划未来，再解码动作,wiki/entities/paper-slim-05b.md,3,complete,—
 roadmap/depth-wam.md,Stage 2 Cascaded WAM：先计划未来，再解码动作,wiki/entities/paper-tract.md,3,complete,—
 roadmap/depth-wam.md,Stage 2 Cascaded WAM：先计划未来，再解码动作,wiki/overview/robot-world-models-action-consequence-technology-map.md,3,complete,—
 roadmap/depth-wam.md,Stage 3 Joint WAM：共享骨干下联合预测未来与动作,wiki/entities/paper-dit4dit-video-action-model.md,3,complete,—
@@ -67,7 +69,7 @@ roadmap/depth-wam.md,Stage 5 数据、评测与进阶方向,wiki/entities/paper-
 roadmap/depth-embodied-data.md,"Stage 0 数据口径与金字塔分层：先钉死什么算""具身数据""",wiki/methods/imitation-learning.md,3,complete,—
 roadmap/depth-embodied-data.md,"Stage 0 数据口径与金字塔分层：先钉死什么算""具身数据""",wiki/methods/behavior-cloning.md,3,complete,—
 roadmap/depth-embodied-data.md,"Stage 0 数据口径与金字塔分层：先钉死什么算""具身数据""",wiki/queries/humanoid-robot-data-collection-landscape.md,2,complete,缺 original 归档
-roadmap/depth-embodied-data.md,"Stage 0 数据口径与金字塔分层：先钉死什么算""具身数据""",wiki/entities/paper-data-pyramid-embodied-manipulation.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-embodied-data.md,"Stage 0 数据口径与金字塔分层：先钉死什么算""具身数据""",wiki/entities/paper-data-pyramid-embodied-manipulation.md,3,complete,—
 roadmap/depth-embodied-data.md,"Stage 0 数据口径与金字塔分层：先钉死什么算""具身数据""",wiki/overview/hub-data-pipeline.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-embodied-data.md,"Stage 0 数据口径与金字塔分层：先钉死什么算""具身数据""",wiki/concepts/motion-data-quality.md,3,complete,—
 roadmap/depth-embodied-data.md,"Stage 0 数据口径与金字塔分层：先钉死什么算""具身数据""",wiki/overview/embodied-data-collection-to-flywheel-album.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -81,24 +83,26 @@ roadmap/depth-embodied-data.md,Stage 1 采集范式与装置选型：谁来产�
 roadmap/depth-embodied-data.md,Stage 1 采集范式与装置选型：谁来产生这些物理量,wiki/entities/paper-ego-03-egomimic.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-embodied-data.md,Stage 1 采集范式与装置选型：谁来产生这些物理量,wiki/queries/demo-data-collection-guide.md,2,complete,缺 original 归档
 roadmap/depth-embodied-data.md,Stage 1 采集范式与装置选型：谁来产生这些物理量,wiki/queries/dexterous-data-collection-guide.md,2,complete,缺 original 归档
-roadmap/depth-embodied-data.md,Stage 1 采集范式与装置选型：谁来产生这些物理量,wiki/entities/paper-ace-data-0.md,2,complete,缺 original 归档
-roadmap/depth-embodied-data.md,Stage 1 采集范式与装置选型：谁来产生这些物理量,wiki/entities/paper-arstag.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-embodied-data.md,Stage 1 采集范式与装置选型：谁来产生这些物理量,wiki/entities/genrobot-das-2-0.md,3,complete,—
+roadmap/depth-embodied-data.md,Stage 1 采集范式与装置选型：谁来产生这些物理量,wiki/entities/gen-human-ego-dataset.md,3,complete,—
+roadmap/depth-embodied-data.md,Stage 1 采集范式与装置选型：谁来产生这些物理量,wiki/entities/paper-ace-data-0.md,3,complete,—
 roadmap/depth-embodied-data.md,Stage 1 采集范式与装置选型：谁来产生这些物理量,wiki/methods/egoscale.md,3,complete,—
 roadmap/depth-embodied-data.md,Stage 2 清洗、质量与标注：把脏数据变成专家轨迹,wiki/concepts/embodied-data-cleaning.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-embodied-data.md,Stage 2 清洗、质量与标注：把脏数据变成专家轨迹,wiki/entities/humannet.md,3,complete,—
 roadmap/depth-embodied-data.md,Stage 2 清洗、质量与标注：把脏数据变成专家轨迹,wiki/methods/auto-labeling-pipelines.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-embodied-data.md,Stage 2 清洗、质量与标注：把脏数据变成专家轨迹,wiki/entities/paper-data-pyramid-embodied-manipulation.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-embodied-data.md,Stage 2 清洗、质量与标注：把脏数据变成专家轨迹,wiki/entities/paper-data-pyramid-embodied-manipulation.md,3,complete,—
 roadmap/depth-embodied-data.md,Stage 2 清洗、质量与标注：把脏数据变成专家轨迹,wiki/queries/dexterous-manipulation-data-pipeline.md,2,complete,缺 original 归档
 roadmap/depth-embodied-data.md,Stage 2 清洗、质量与标注：把脏数据变成专家轨迹,wiki/concepts/motion-data-quality.md,3,complete,—
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/concepts/open-x-embodiment.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/paper-open-x-embodiment.md,3,complete,—
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/lerobot.md,3,unknown,—
-roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/kuavo-vla-1.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/kuavo-vla-1.md,3,complete,—
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/comparisons/humanoid-reference-motion-datasets.md,3,complete,—
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/nvidia-physical-ai-datasets.md,2,complete,original 归档未全部标记通读完成
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/amass.md,3,complete,—
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/agibot-world-2026.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/humanoid-everyday-dataset.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/comparisons/robot-manipulation-data-benchmark-selection.md,2,draft,original 归档未全部标记通读完成；status 限分
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/paper-hiphi.md,2,complete,缺 original 归档
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/openlet-humanmotion-roban2.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-embodied-data.md,Stage 3 格式、数据集与跨具身聚合：让数据能被别人（和明天的自己）读懂,wiki/entities/cn-os-das-datakit.md,2,draft,缺 original 归档；status 限分
@@ -109,10 +113,11 @@ roadmap/depth-embodied-data.md,Stage 4 扩增与合成：用便宜的数据换�
 roadmap/depth-embodied-data.md,Stage 4 扩增与合成：用便宜的数据换贵的数据,wiki/entities/paper-simfoundry-real2sim-scene-generation.md,3,complete,—
 roadmap/depth-embodied-data.md,Stage 4 扩增与合成：用便宜的数据换贵的数据,wiki/methods/generative-data-augmentation.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-embodied-data.md,Stage 4 扩增与合成：用便宜的数据换贵的数据,wiki/entities/perceptron-isaac-05.md,2,complete,缺 original 归档
+roadmap/depth-embodied-data.md,Stage 4 扩增与合成：用便宜的数据换贵的数据,wiki/entities/paper-arstag.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-embodied-data.md,Stage 4 扩增与合成：用便宜的数据换贵的数据,wiki/methods/egoscale.md,3,complete,—
-roadmap/depth-embodied-data.md,Stage 4 扩增与合成：用便宜的数据换贵的数据,wiki/entities/paper-softmimicgen.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-embodied-data.md,"Stage 5 配比、缩放律与数据飞轮：从""攒数据""到""数据会自己长""",wiki/concepts/embodied-scaling-laws.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-embodied-data.md,"Stage 5 配比、缩放律与数据飞轮：从""攒数据""到""数据会自己长""",wiki/entities/paper-data-pyramid-embodied-manipulation.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-embodied-data.md,Stage 4 扩增与合成：用便宜的数据换贵的数据,wiki/entities/paper-softmimicgen.md,3,complete,—
+roadmap/depth-embodied-data.md,"Stage 5 配比、缩放律与数据飞轮：从""攒数据""到""数据会自己长""",wiki/concepts/embodied-scaling-laws.md,3,complete,—
+roadmap/depth-embodied-data.md,"Stage 5 配比、缩放律与数据飞轮：从""攒数据""到""数据会自己长""",wiki/entities/paper-data-pyramid-embodied-manipulation.md,3,complete,—
 roadmap/depth-embodied-data.md,"Stage 5 配比、缩放律与数据飞轮：从""攒数据""到""数据会自己长""",wiki/methods/egoscale.md,3,complete,—
 roadmap/depth-embodied-data.md,"Stage 5 配比、缩放律与数据飞轮：从""攒数据""到""数据会自己长""",wiki/entities/dyna-2.md,3,complete,—
 roadmap/depth-embodied-data.md,"Stage 5 配比、缩放律与数据飞轮：从""攒数据""到""数据会自己长""",wiki/entities/generalist-gen15-one-shot.md,2,complete,缺 original 归档
@@ -146,7 +151,7 @@ roadmap/depth-real2sim.md,"Stage 2 物性、接触与关节化补全：从""看�
 roadmap/depth-real2sim.md,"Stage 2 物性、接触与关节化补全：从""看得见""到""能碰撞""",wiki/entities/articraft.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-real2sim.md,"Stage 2 物性、接触与关节化补全：从""看得见""到""能碰撞""",wiki/methods/reinforcement-learning.md,3,complete,—
 roadmap/depth-real2sim.md,"Stage 2 物性、接触与关节化补全：从""看得见""到""能碰撞""",wiki/entities/lightwheel-simready.md,2,complete,缺 original 归档
-roadmap/depth-real2sim.md,Stage 3 场景 / episode 孪生与数字表亲：从单物体到可回放交互,wiki/methods/vla.md,3,complete,—
+roadmap/depth-real2sim.md,Stage 3 场景 / episode 孪生与数字表亲：从单物体到可回放交互,wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md,3,complete,—
 roadmap/depth-real2sim.md,Stage 3 场景 / episode 孪生与数字表亲：从单物体到可回放交互,wiki/entities/paper-simfoundry-real2sim-scene-generation.md,3,complete,—
 roadmap/depth-real2sim.md,Stage 3 场景 / episode 孪生与数字表亲：从单物体到可回放交互,wiki/entities/paper-agentic-real2sim.md,2,complete,缺 original 归档
 roadmap/depth-real2sim.md,Stage 3 场景 / episode 孪生与数字表亲：从单物体到可回放交互,wiki/entities/paper-distscene.md,2,complete,缺 original 归档
@@ -176,82 +181,82 @@ roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/concepts/tra
 roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/entities/lerobot.md,3,unknown,—
 roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md,3,complete,—
 roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/concepts/foundation-policy.md,3,unknown,—
-roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/overview/hub-embodied-foundation-model.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/overview/hub-embodied-foundation-model.md,3,complete,—
 roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/queries/embodied-fm-taxonomy-loop.md,3,complete,—
-roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/entities/llms-from-scratch-raschka.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/entities/andrej-karpathy.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/entities/llms-from-scratch-raschka.md,3,complete,—
+roadmap/depth-vla.md,Stage 0 具身基础模型全景与前置,wiki/entities/andrej-karpathy.md,3,complete,—
 roadmap/depth-vla.md,Stage 1 模仿学习策略基座,wiki/methods/behavior-cloning.md,3,complete,—
 roadmap/depth-vla.md,Stage 1 模仿学习策略基座,wiki/methods/action-chunking.md,3,complete,—
-roadmap/depth-vla.md,Stage 1 模仿学习策略基座,wiki/methods/bc-with-transformer.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-vla.md,Stage 1 模仿学习策略基座,wiki/methods/bc-with-transformer.md,3,complete,—
 roadmap/depth-vla.md,Stage 1 模仿学习策略基座,wiki/methods/diffusion-policy.md,3,complete,—
 roadmap/depth-vla.md,Stage 1 模仿学习策略基座,wiki/concepts/diffusion-model.md,3,complete,—
 roadmap/depth-vla.md,Stage 1 模仿学习策略基座,wiki/methods/imitation-learning.md,3,complete,—
 roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/methods/vla.md,3,complete,—
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/overview/hub-vla.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/methods/robotics-transformer-rt-series.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-rt-1.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-rt-2.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/overview/hub-vla.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/methods/robotics-transformer-rt-series.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-rt-1.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-rt-2.md,3,complete,—
 roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-openvla.md,3,complete,—
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-octo.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-octo.md,3,complete,—
 roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-pi0.md,3,complete,—
 roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/methods/pi07-policy.md,3,complete,—
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/methods/saycan.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/methods/dial-instruction-augmentation.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-internvla-a15-unified-vla.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/lingbot-vla.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/kuavo-vla-1.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/methods/saycan.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/methods/dial-instruction-augmentation.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-internvla-a15-unified-vla.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/lingbot-vla.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/kuavo-vla-1.md,3,complete,—
 roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/robbyant.md,3,complete,—
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-bridgevla-plusplus.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-galaxea-g05.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-gsr-paravla.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-indi.md,2,complete,缺 original 归档
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-bridgevla-plusplus.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-galaxea-g05.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-gsr-paravla.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-indi.md,3,complete,—
 roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-gazevla.md,3,complete,—
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-topology-informed-visual-prompting-vla.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-robomp-dinov2.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-x-planner-event-structured-task-planning.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-migu-multimodal-instruction-grounding.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-tempo-dynamic-manipulation.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/overview/vla-open-source-repro-landscape-2025.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/paper-data-pyramid-embodied-manipulation.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-topology-informed-visual-prompting-vla.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-robomp-dinov2.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-x-planner-event-structured-task-planning.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-migu-multimodal-instruction-grounding.md,3,complete,—
+roadmap/depth-vla.md,Stage 2 VLA 主线：从 RT 系列到 π0,wiki/entities/paper-tempo-dynamic-manipulation.md,3,complete,—
+roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/overview/vla-open-source-repro-landscape-2025.md,3,complete,—
+roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/paper-data-pyramid-embodied-manipulation.md,3,complete,—
 roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/methods/egoscale.md,3,complete,—
 roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/humannet.md,3,complete,—
 roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/methods/mimic-video.md,3,complete,—
 roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/concepts/world-action-models.md,3,complete,—
 roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/methods/pelican-unified-1.md,3,complete,—
 roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/methods/defi-decoupled-dynamics-vla.md,3,complete,—
-roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/concepts/embodied-scaling-laws.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/xiaomi-robotics-1.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/paper-joyai-ra-05.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/paper-ace-data-0.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/paper-roboedit.md,2,complete,缺 original 归档
+roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/concepts/embodied-scaling-laws.md,3,complete,—
+roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/xiaomi-robotics-1.md,3,complete,—
+roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/paper-joyai-ra-05.md,3,complete,—
+roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/paper-ace-data-0.md,3,complete,—
+roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/paper-roboedit.md,3,complete,—
 roadmap/depth-vla.md,Stage 3 数据与 Scaling,wiki/entities/paper-ego2robot.md,3,complete,—
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/xiaomi-robotics-0.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/concepts/embodied-fm-latency-generalization-tradeoff.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-evo1-lightweight-vla.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/concepts/behavior-tree-vla-orchestration.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-eventvla-visual-evidence-memory.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/xiaomi-robotics-0.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/concepts/embodied-fm-latency-generalization-tradeoff.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-evo1-lightweight-vla.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/concepts/behavior-tree-vla-orchestration.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-eventvla-visual-evidence-memory.md,3,complete,—
 roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-robottt-test-time-training-vla-context.md,3,complete,—
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-actfovea.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-robo-harness.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-rtcf.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-neural-introspection-gating.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-vlaquantbench.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-vla-simd.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-reflexvla.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-flashvla.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/queries/manipulation-vla-architecture-selection.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 5 进阶方向,wiki/methods/enpire.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 5 进阶方向,wiki/concepts/safe-real-world-rl-fine-tuning.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-steam-advantage-modeling.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-wcm-world-critic-model.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-tempo.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-autointervene.md,2,complete,缺 original 归档
-roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-prism-grpo.md,2,complete,缺 original 归档
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-actfovea.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-robo-harness.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-rtcf.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-neural-introspection-gating.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-vlaquantbench.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-vla-simd.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-reflexvla.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/entities/paper-flashvla.md,3,complete,—
+roadmap/depth-vla.md,Stage 4 部署与系统整合,wiki/queries/manipulation-vla-architecture-selection.md,3,complete,—
+roadmap/depth-vla.md,Stage 5 进阶方向,wiki/methods/enpire.md,3,complete,—
+roadmap/depth-vla.md,Stage 5 进阶方向,wiki/concepts/safe-real-world-rl-fine-tuning.md,3,complete,—
+roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-steam-advantage-modeling.md,3,complete,—
+roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-wcm-world-critic-model.md,3,complete,—
+roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-tempo.md,3,complete,—
+roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-autointervene.md,3,complete,—
+roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-prism-grpo.md,3,complete,—
 roadmap/depth-vla.md,Stage 5 进阶方向,wiki/methods/generative-world-models.md,3,complete,—
 roadmap/depth-vla.md,Stage 5 进阶方向,wiki/concepts/world-action-models.md,3,complete,—
-roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-tau0-vla.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-vla.md,Stage 5 进阶方向,wiki/overview/loco-manip-161-category-09-vla-world-models.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-vla.md,Stage 5 进阶方向,wiki/entities/paper-tau0-vla.md,3,complete,—
+roadmap/depth-vla.md,Stage 5 进阶方向,wiki/overview/loco-manip-161-category-09-vla-world-models.md,3,complete,—
 roadmap/depth-vla.md,Stage 5 进阶方向,wiki/tasks/vision-language-navigation.md,3,complete,—
 roadmap/depth-robotics-diffusion-dit-flow.md,Stage 1 · Diffusion Policy（① ★★★★★ · 先看）,wiki/entities/paper-diffusion-policy.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-robotics-diffusion-dit-flow.md,Stage 1 · Diffusion Policy（① ★★★★★ · 先看）,wiki/methods/diffusion-policy.md,3,complete,—
@@ -268,11 +273,11 @@ roadmap/depth-motion-generation.md,Stage 0 生成模型基础与动作生成全�
 roadmap/depth-motion-generation.md,Stage 0 生成模型基础与动作生成全景,wiki/formalizations/probability-flow.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 0 生成模型基础与动作生成全景,wiki/methods/diffusion-motion-generation.md,3,complete,—
 roadmap/depth-motion-generation.md,Stage 0 生成模型基础与动作生成全景,wiki/entities/awesome-text-to-motion-zilize.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-motion-generation.md,Stage 1 动作表示与数据集,wiki/entities/dataset-bfm-humanml3d.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-motion-generation.md,Stage 1 动作表示与数据集,wiki/entities/dataset-bfm-humanml3d.md,3,complete,—
 roadmap/depth-motion-generation.md,Stage 1 动作表示与数据集,wiki/entities/dataset-bfm-kit-ml.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 1 动作表示与数据集,wiki/entities/dataset-bfm-babel.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-motion-generation.md,Stage 1 动作表示与数据集,wiki/entities/dataset-bfm-motion-x.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-motion-generation.md,Stage 1 动作表示与数据集,wiki/entities/dataset-bfm-posescript.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-motion-generation.md,Stage 1 动作表示与数据集,wiki/entities/dataset-bfm-motion-x.md,3,complete,—
+roadmap/depth-motion-generation.md,Stage 1 动作表示与数据集,wiki/entities/dataset-bfm-posescript.md,3,complete,—
 roadmap/depth-motion-generation.md,Stage 1 动作表示与数据集,wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 1 动作表示与数据集,wiki/overview/paper-notebook-category-14-human-motion.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 2 生成骨干主线：从 MDM 到规模化三线,wiki/entities/ardy.md,2,complete,缺 original 归档
@@ -298,6 +303,8 @@ roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据�
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/entities/paper-omg-omni-modal-humanoid-control.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/methods/motionbricks.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/entities/paper-gpc-generative-pretrained-controllers.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/entities/paper-kimodo-policy.md,3,complete,—
+roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/comparisons/generative-motion-to-humanoid-closed-loop.md,3,complete,—
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/methods/mimic-video.md,3,complete,—
@@ -305,6 +312,7 @@ roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/entities/paper-note
 roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/entities/paper-gpc-generative-pretrained-controllers.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/methods/hy-motion-1.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/entities/kimodo.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/entities/paper-kimodo-policy.md,3,complete,—
 roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/entities/paper-dimos-human-scene-motion-synthesis.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/tasks/loco-manipulation.md,3,complete,—
 roadmap/depth-perceptive-locomotion.md,Stage 0 盲走基线（本体感知 locomotion）,wiki/entities/legged-gym.md,3,complete,—
@@ -371,12 +379,14 @@ roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标�
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/rlbench.md,2,draft,缺 original 归档；status 限分
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-barkour-quadruped-agility-benchmark.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/robodojo.md,3,complete,—
+roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/behavior-challenge-2026.md,3,complete,—
+roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-manipulation-benchmark-audit.md,3,complete,—
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-prm-as-a-judge.md,2,complete,缺 original 归档
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-imitator-game.md,3,complete,—
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-softvtbench.md,2,complete,缺 original 归档
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-libero-vpro.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-packlab.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-reflexvla.md,2,complete,缺 original 归档
+roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-reflexvla.md,3,complete,—
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/dexbench.md,3,complete,—
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md,1,stub,阅读骨架不完整；缺 original 归档；status 限分
 roadmap/depth-embodied-eval.md,Stage 3 ③ 策略成功率评测：结果指标、过程指标与成功判据,wiki/entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md,1,stub,阅读骨架不完整；缺 original 归档；status 限分
@@ -419,7 +429,7 @@ roadmap/depth-bfm.md,Stage 1 训练基座：RL locomotion 与动捕数据,wiki/c
 roadmap/depth-bfm.md,Stage 1 训练基座：RL locomotion 与动捕数据,wiki/concepts/motion-retargeting-pipeline.md,3,complete,—
 roadmap/depth-bfm.md,Stage 1 训练基座：RL locomotion 与动捕数据,wiki/entities/amass.md,3,complete,—
 roadmap/depth-bfm.md,Stage 1 训练基座：RL locomotion 与动捕数据,wiki/comparisons/humanoid-reference-motion-datasets.md,3,complete,—
-roadmap/depth-bfm.md,Stage 1 训练基座：RL locomotion 与动捕数据,wiki/entities/dataset-bfm-humanoid-x.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-bfm.md,Stage 1 训练基座：RL locomotion 与动捕数据,wiki/entities/dataset-bfm-humanoid-x.md,3,complete,—
 roadmap/depth-bfm.md,Stage 1 训练基座：RL locomotion 与动捕数据,wiki/concepts/reward-design.md,3,complete,—
 roadmap/depth-bfm.md,Stage 2 跟踪主线：从 DeepMimic 到 HOVER,wiki/methods/deepmimic.md,3,complete,—
 roadmap/depth-bfm.md,Stage 2 跟踪主线：从 DeepMimic 到 HOVER,wiki/methods/ase.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -455,8 +465,8 @@ roadmap/depth-bfm.md,Stage 4 适应与整合：微调、层次化与双栈,wiki/
 roadmap/depth-bfm.md,Stage 4 适应与整合：微调、层次化与双栈,wiki/entities/paper-reactivebfm.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-bfm.md,Stage 5 进阶方向,wiki/entities/paper-perceptive-bfm.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-bfm.md,Stage 5 进阶方向,wiki/entities/paper-p-bfm.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-bfm.md,Stage 5 进阶方向,wiki/methods/enpire.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-bfm.md,Stage 5 进阶方向,wiki/concepts/safe-real-world-rl-fine-tuning.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-bfm.md,Stage 5 进阶方向,wiki/methods/enpire.md,3,complete,—
+roadmap/depth-bfm.md,Stage 5 进阶方向,wiki/concepts/safe-real-world-rl-fine-tuning.md,3,complete,—
 roadmap/depth-bfm.md,Stage 5 进阶方向,wiki/tasks/loco-manipulation.md,3,complete,—
 roadmap/depth-bfm.md,Stage 5 进阶方向,wiki/queries/humanoid-motion-tracking-method-selection.md,2,complete,缺 original 归档
 roadmap/depth-bfm.md,Stage 5 进阶方向,wiki/entities/agibot-bfm-2.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -470,7 +480,7 @@ roadmap/depth-icl.md,Stage 1 上下文里装什么：示范表征与动作 token
 roadmap/depth-icl.md,Stage 1 上下文里装什么：示范表征与动作 token,wiki/entities/paper-behavior-prompting-policy.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-icl.md,Stage 1 上下文里装什么：示范表征与动作 token,wiki/queries/contact-wrench-closed-loop.md,3,complete,—
 roadmap/depth-icl.md,Stage 2 遥操作示范线：同坐标系的 one-shot 归纳,wiki/methods/imitation-learning.md,3,complete,—
-roadmap/depth-icl.md,Stage 2 遥操作示范线：同坐标系的 one-shot 归纳,wiki/entities/qwen-robot-manip.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-icl.md,Stage 2 遥操作示范线：同坐标系的 one-shot 归纳,wiki/entities/qwen-robot-manip.md,3,complete,—
 roadmap/depth-icl.md,Stage 2 遥操作示范线：同坐标系的 one-shot 归纳,wiki/concepts/foundation-policy.md,3,unknown,—
 roadmap/depth-icl.md,Stage 2 遥操作示范线：同坐标系的 one-shot 归纳,wiki/overview/realab-14-papers-technology-map-2026.md,2,complete,缺 original 归档
 roadmap/depth-icl.md,Stage 3 人类视频线：跨具身、无动作标签,wiki/entities/paper-host-one-shot-human-video.md,2,complete,缺 original 归档
@@ -483,12 +493,12 @@ roadmap/depth-icl.md,Stage 4 机制选型与推理预算：零梯度上下文 vs
 roadmap/depth-icl.md,Stage 4 机制选型与推理预算：零梯度上下文 vs 快权重 TTT vs 记忆增强,wiki/entities/paper-wam-ttt-human-video-test-time-steering.md,3,complete,—
 roadmap/depth-icl.md,Stage 4 机制选型与推理预算：零梯度上下文 vs 快权重 TTT vs 记忆增强,wiki/methods/vla.md,3,complete,—
 roadmap/depth-icl.md,Stage 4 机制选型与推理预算：零梯度上下文 vs 快权重 TTT vs 记忆增强,wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-icl.md,Stage 4 机制选型与推理预算：零梯度上下文 vs 快权重 TTT vs 记忆增强,wiki/entities/paper-eventvla-visual-evidence-memory.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-icl.md,Stage 4 机制选型与推理预算：零梯度上下文 vs 快权重 TTT vs 记忆增强,wiki/entities/paper-eventvla-visual-evidence-memory.md,3,complete,—
 roadmap/depth-icl.md,Stage 4 机制选型与推理预算：零梯度上下文 vs 快权重 TTT vs 记忆增强,wiki/entities/paper-gated-memory-policy.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-icl.md,Stage 5 规模涌现、评测与产业对照,wiki/entities/generalist-gen15-one-shot.md,2,complete,缺 original 归档
 roadmap/depth-icl.md,Stage 5 规模涌现、评测与产业对照,wiki/entities/skild-s1.md,2,complete,缺 original 归档
 roadmap/depth-icl.md,Stage 5 规模涌现、评测与产业对照,wiki/entities/paper-sa-2509-22353-icl-emergence-context-and-diversity-matter-the-e.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-icl.md,Stage 5 规模涌现、评测与产业对照,wiki/concepts/embodied-scaling-laws.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-icl.md,Stage 5 规模涌现、评测与产业对照,wiki/concepts/embodied-scaling-laws.md,3,complete,—
 roadmap/depth-icl.md,Stage 5 规模涌现、评测与产业对照,wiki/concepts/data-flywheel.md,3,unknown,—
 roadmap/depth-humanoid-boxing.md,Stage 0 全景与前置：对抗全身任务与两条产品路线,wiki/entities/paper-notebook-robostriker.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-humanoid-boxing.md,Stage 0 全景与前置：对抗全身任务与两条产品路线,wiki/entities/rek.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -541,7 +551,7 @@ roadmap/depth-sim2real.md,Stage 2 训练期鲁棒化：DR · 课程 · 特权蒸
 roadmap/depth-sim2real.md,Stage 2 训练期鲁棒化：DR · 课程 · 特权蒸馏 · 在线适应,wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md,2,complete,缺 original 归档
 roadmap/depth-sim2real.md,Stage 3 感知与视觉 Sim2Real,wiki/entities/gr00t-visual-sim2real.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-sim2real.md,Stage 3 感知与视觉 Sim2Real,wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-sim2real.md,Stage 3 感知与视觉 Sim2Real,wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-sim2real.md,Stage 3 感知与视觉 Sim2Real,wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md,3,complete,—
 roadmap/depth-sim2real.md,Stage 3 感知与视觉 Sim2Real,wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-sim2real.md,Stage 3 感知与视觉 Sim2Real,wiki/entities/paper-loco-manip-04-oasis.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-sim2real.md,Stage 3 感知与视觉 Sim2Real,wiki/entities/robo-render.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -555,7 +565,7 @@ roadmap/depth-sim2real.md,Stage 4 部署工程闭环：sim2sim 回归 → 处理
 roadmap/depth-sim2real.md,Stage 4 部署工程闭环：sim2sim 回归 → 处理器在环 → 渐进 SOP,wiki/entities/open-duck-mini.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-sim2real.md,Stage 4 部署工程闭环：sim2sim 回归 → 处理器在环 → 渐进 SOP,wiki/entities/nvidia-isaac-lab-spot-locomotion-sim2real.md,2,complete,缺 original 归档
 roadmap/depth-sim2real.md,Stage 4 部署工程闭环：sim2sim 回归 → 处理器在环 → 渐进 SOP,wiki/entities/nvidia-isaac-lab-ur10e-industrial-assembly-sim2real.md,2,complete,缺 original 归档
-roadmap/depth-sim2real.md,Stage 5 真机适应、Real2Sim 与评测,wiki/concepts/safe-real-world-rl-fine-tuning.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-sim2real.md,Stage 5 真机适应、Real2Sim 与评测,wiki/concepts/safe-real-world-rl-fine-tuning.md,3,complete,—
 roadmap/depth-sim2real.md,Stage 5 真机适应、Real2Sim 与评测,wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-sim2real.md,Stage 5 真机适应、Real2Sim 与评测,wiki/entities/paper-fada-humanoid.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-sim2real.md,Stage 5 真机适应、Real2Sim 与评测,wiki/entities/lift-humanoid.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -575,7 +585,7 @@ roadmap/depth-cross-embodiment.md,Stage 0 本体差异画像：先说清差在�
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/paper-open-x-embodiment.md,3,complete,—
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/paper-xhugwbc-cross-humanoid.md,2,complete,缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/paper-greenwam.md,2,complete,缺 original 归档
-roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/qwen-robot-manip.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/qwen-robot-manip.md,3,complete,—
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/paper-ucag-p.md,2,complete,缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/paper-easg-vlm-native-action-model.md,2,complete,缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/methods/uhas-unified-hand-action-space.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -583,7 +593,7 @@ roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间�
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/paper-latent-actions-matter.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/paper-lac-wm-cross-embodiment-latent-action-world-model.md,2,complete,缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/paper-urdd-universal-robot-description-directory.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-octo.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-octo.md,3,complete,—
 roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-hrl-stack-34-gr00t_n1.md,3,complete,—
 roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-x-wbc.md,2,complete,缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-xhugwbc-cross-humanoid.md,2,complete,缺 original 归档
@@ -598,8 +608,8 @@ roadmap/depth-cross-embodiment.md,Stage 3 多本体混训：什么时候正迁�
 roadmap/depth-cross-embodiment.md,Stage 3 多本体混训：什么时候正迁移,wiki/concepts/open-x-embodiment.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 3 多本体混训：什么时候正迁移,wiki/entities/paper-emergent-transfer-cross-config.md,2,complete,缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 3 多本体混训：什么时候正迁移,wiki/entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-cross-embodiment.md,Stage 3 多本体混训：什么时候正迁移,wiki/entities/xiaomi-robotics-1.md,2,complete,缺 original 归档
-roadmap/depth-cross-embodiment.md,Stage 3 多本体混训：什么时候正迁移,wiki/concepts/embodied-scaling-laws.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-cross-embodiment.md,Stage 3 多本体混训：什么时候正迁移,wiki/entities/xiaomi-robotics-1.md,3,complete,—
+roadmap/depth-cross-embodiment.md,Stage 3 多本体混训：什么时候正迁移,wiki/concepts/embodied-scaling-laws.md,3,complete,—
 roadmap/depth-cross-embodiment.md,Stage 4 人→机迁移：最大跨度的跨本体,wiki/entities/paper-xmorph.md,2,complete,缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 4 人→机迁移：最大跨度的跨本体,wiki/entities/paper-human-demos-object-retargeting.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 4 人→机迁移：最大跨度的跨本体,wiki/entities/paper-egojepa-egocentric-latent-action.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -625,6 +635,7 @@ roadmap/depth-humanoid-swarm-performance.md,Stage 1 单机动作基座：重定�
 roadmap/depth-humanoid-swarm-performance.md,Stage 1 单机动作基座：重定向、跟踪 RL 与音乐驱动生成,wiki/methods/sonic-motion-tracking.md,3,complete,—
 roadmap/depth-humanoid-swarm-performance.md,Stage 1 单机动作基座：重定向、跟踪 RL 与音乐驱动生成,wiki/methods/genmo.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-humanoid-swarm-performance.md,Stage 1 单机动作基座：重定向、跟踪 RL 与音乐驱动生成,wiki/methods/hy-motion-1.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-humanoid-swarm-performance.md,Stage 1 单机动作基座：重定向、跟踪 RL 与音乐驱动生成,wiki/entities/paper-aheadance.md,3,complete,—
 roadmap/depth-humanoid-swarm-performance.md,Stage 1 单机动作基座：重定向、跟踪 RL 与音乐驱动生成,wiki/comparisons/humanoid-reference-motion-datasets.md,3,complete,—
 roadmap/depth-humanoid-swarm-performance.md,Stage 1 单机动作基座：重定向、跟踪 RL 与音乐驱动生成,wiki/methods/disney-olaf-character-robot.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-humanoid-swarm-performance.md,Stage 2 群舞同步：时间轴编排、时钟同步与失步容错,wiki/concepts/clock-synchronization-algorithms.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -633,7 +644,7 @@ roadmap/depth-humanoid-swarm-performance.md,Stage 2 群舞同步：时间轴编�
 roadmap/depth-humanoid-swarm-performance.md,Stage 2 群舞同步：时间轴编排、时钟同步与失步容错,wiki/tasks/balance-recovery.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-humanoid-swarm-performance.md,Stage 3 编队走位：队形变换、互避碰与场地定位,wiki/entities/crazyswarm2.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-humanoid-swarm-performance.md,Stage 3 编队走位：队形变换、互避碰与场地定位,wiki/entities/ego-planner-swarm.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-humanoid-swarm-performance.md,Stage 3 编队走位：队形变换、互避碰与场地定位,wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md,2,complete,缺 original 归档
+roadmap/depth-humanoid-swarm-performance.md,Stage 3 编队走位：队形变换、互避碰与场地定位,wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md,3,complete,—
 roadmap/depth-humanoid-swarm-performance.md,Stage 3 编队走位：队形变换、互避碰与场地定位,wiki/concepts/humanoid-multi-robot-coordination.md,3,complete,—
 roadmap/depth-humanoid-swarm-performance.md,Stage 3 编队走位：队形变换、互避碰与场地定位,wiki/comparisons/lidar-slam-lio-vio-selection.md,3,complete,—
 roadmap/depth-humanoid-swarm-performance.md,Stage 4 群体特技：高动态技能 × 多机协同 × 安全边界,wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -703,7 +714,7 @@ roadmap/depth-motion-retargeting.md,Stage 4 工程工具链与轨迹编辑器,wi
 roadmap/depth-motion-retargeting.md,Stage 4 工程工具链与轨迹编辑器,wiki/entities/human2humanoid.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-retargeting.md,Stage 4 工程工具链与轨迹编辑器,wiki/entities/soma-retargeter.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-retargeting.md,Stage 4 工程工具链与轨迹编辑器,wiki/entities/robot-retargeter.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-motion-retargeting.md,Stage 4 工程工具链与轨迹编辑器,wiki/entities/human-humanoid-tools.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-motion-retargeting.md,Stage 4 工程工具链与轨迹编辑器,wiki/entities/human-humanoid-tools.md,3,complete,—
 roadmap/depth-motion-retargeting.md,Stage 4 工程工具链与轨迹编辑器,wiki/entities/mimickit.md,3,complete,—
 roadmap/depth-motion-retargeting.md,Stage 4 工程工具链与轨迹编辑器,wiki/entities/robot-motion-keyframe-editors.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-retargeting.md,Stage 4 工程工具链与轨迹编辑器,wiki/entities/fairmotion.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -733,7 +744,7 @@ roadmap/depth-motion-retargeting.md,Stage 6 进阶方向,wiki/methods/toporetarg
 roadmap/depth-motion-retargeting.md,Stage 6 进阶方向,wiki/methods/spider-physics-informed-dexterous-retargeting.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-retargeting.md,Stage 6 进阶方向,wiki/comparisons/dynaretarget-vs-toporetarget-retargeting.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-retargeting.md,Stage 6 进阶方向,wiki/entities/gen2humanoid.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-motion-retargeting.md,Stage 6 进阶方向,wiki/entities/omniretarget-dataset.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-motion-retargeting.md,Stage 6 进阶方向,wiki/entities/omniretarget-dataset.md,3,complete,—
 roadmap/depth-motion-retargeting.md,Stage 6 进阶方向,wiki/queries/humanoid-training-data-pipeline.md,3,complete,—
 roadmap/depth-humanoid-soccer.md,Stage 0 全景与前置：RoboCup 与感知–决策–运动耦合,wiki/methods/reinforcement-learning.md,3,complete,—
 roadmap/depth-humanoid-soccer.md,Stage 0 全景与前置：RoboCup 与感知–决策–运动耦合,wiki/methods/imitation-learning.md,3,complete,—
@@ -776,7 +787,7 @@ roadmap/depth-loco-manipulation.md,Stage 0 全景与前置：行走 × 操作的
 roadmap/depth-loco-manipulation.md,Stage 0 全景与前置：行走 × 操作的耦合问题,wiki/tasks/humanoid-locomotion.md,3,complete,—
 roadmap/depth-loco-manipulation.md,Stage 0 全景与前置：行走 × 操作的耦合问题,wiki/tasks/ultra-survey.md,1,unknown,阅读骨架不完整；缺 original 归档
 roadmap/depth-loco-manipulation.md,Stage 1 全身控制基座：WBC 与上下身解耦分层,wiki/entities/paper-loco-manip-161-040-homie.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-loco-manipulation.md,Stage 1 全身控制基座：WBC 与上下身解耦分层,wiki/entities/paper-loco-manip-161-109-falcon.md,2,complete,缺 original 归档
+roadmap/depth-loco-manipulation.md,Stage 1 全身控制基座：WBC 与上下身解耦分层,wiki/entities/paper-loco-manip-161-109-falcon.md,3,complete,—
 roadmap/depth-loco-manipulation.md,Stage 1 全身控制基座：WBC 与上下身解耦分层,wiki/entities/paper-pilot-perceptive-loco-manipulation.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-loco-manipulation.md,Stage 1 全身控制基座：WBC 与上下身解耦分层,wiki/entities/paper-agile-humanoid-loco-manipulation.md,2,complete,缺 original 归档
 roadmap/depth-loco-manipulation.md,Stage 1 全身控制基座：WBC 与上下身解耦分层,wiki/overview/loco-manip-161-category-01-motion-base-wbt.md,3,complete,—
@@ -801,10 +812,11 @@ roadmap/depth-loco-manipulation.md,Stage 3 全身技能学习：跟踪 + 残差�
 roadmap/depth-loco-manipulation.md,Stage 3 全身技能学习：跟踪 + 残差与视觉分层,wiki/entities/paper-resgac-precise-se3-end-effector-tracking.md,3,complete,—
 roadmap/depth-loco-manipulation.md,Stage 3 全身技能学习：跟踪 + 残差与视觉分层,wiki/entities/paper-roboduet-loco-manipulation.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-loco-manipulation.md,Stage 3 全身技能学习：跟踪 + 残差与视觉分层,wiki/entities/paper-wholebodymem.md,1,draft,阅读骨架不完整；缺 original 归档；status 限分
-roadmap/depth-loco-manipulation.md,Stage 4 统一模型：生成式、VLA 与 WAM,wiki/overview/loco-manip-161-category-09-vla-world-models.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-loco-manipulation.md,Stage 4 统一模型：生成式、VLA 与 WAM,wiki/overview/loco-manip-161-category-09-vla-world-models.md,3,complete,—
 roadmap/depth-loco-manipulation.md,Stage 4 统一模型：生成式、VLA 与 WAM,wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md,3,complete,—
 roadmap/depth-loco-manipulation.md,Stage 4 统一模型：生成式、VLA 与 WAM,wiki/entities/paper-abot-m05-mobile-manipulation-wam.md,3,complete,—
 roadmap/depth-loco-manipulation.md,Stage 4 统一模型：生成式、VLA 与 WAM,wiki/entities/paper-omega-0.md,3,complete,—
+roadmap/depth-loco-manipulation.md,Stage 4 统一模型：生成式、VLA 与 WAM,wiki/entities/paper-kimodo-policy.md,3,complete,—
 roadmap/depth-loco-manipulation.md,Stage 4 统一模型：生成式、VLA 与 WAM,wiki/concepts/world-action-models.md,3,complete,—
 roadmap/depth-loco-manipulation.md,Stage 4 统一模型：生成式、VLA 与 WAM,wiki/methods/vla.md,3,complete,—
 roadmap/depth-loco-manipulation.md,Stage 4 统一模型：生成式、VLA 与 WAM,wiki/overview/humanoid-loco-manip-161-papers-technology-map.md,3,complete,—
@@ -835,8 +847,9 @@ roadmap/depth-rl-locomotion.md,Stage 2 RL + Locomotion 核心方法,wiki/entitie
 roadmap/depth-rl-locomotion.md,Stage 2 RL + Locomotion 核心方法,wiki/entities/paper-sgs-2610-12465.md,3,complete,—
 roadmap/depth-rl-locomotion.md,Stage 2 RL + Locomotion 核心方法,wiki/entities/paper-humble-human-motion-driven-behavior.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-rl-locomotion.md,Stage 2 RL + Locomotion 核心方法,wiki/entities/paper-push-the-limit-humanoid-sprinting.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-rl-locomotion.md,Stage 3 MPC / WBC + RL 组合框架,wiki/methods/amp-reward.md,3,complete,—
-roadmap/depth-rl-locomotion.md,Stage 3 MPC / WBC + RL 组合框架,wiki/methods/deepmimic.md,3,complete,—
+roadmap/depth-rl-locomotion.md,Stage 3 MPC / WBC + RL 组合框架,wiki/entities/rl-mpc-locomotion.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-rl-locomotion.md,Stage 3 MPC / WBC + RL 组合框架,wiki/entities/paper-reco.md,3,complete,—
+roadmap/depth-rl-locomotion.md,Stage 3 MPC / WBC + RL 组合框架,wiki/methods/residual-policy-learning.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-rl-locomotion.md,Stage 3 MPC / WBC + RL 组合框架,wiki/concepts/whole-body-control.md,3,complete,—
 roadmap/depth-rl-locomotion.md,Stage 3 MPC / WBC + RL 组合框架,wiki/methods/model-predictive-control.md,3,complete,—
 roadmap/depth-rl-locomotion.md,Stage 3 MPC / WBC + RL 组合框架,wiki/queries/when-to-use-wbc-vs-rl.md,2,unknown,缺 original 归档
@@ -870,7 +883,7 @@ roadmap/depth-imitation-learning.md,Stage 2 Motion Retargeting（动作迁移）
 roadmap/depth-imitation-learning.md,Stage 2 Motion Retargeting（动作迁移）,wiki/comparisons/humanoid-reference-motion-datasets.md,3,complete,—
 roadmap/depth-imitation-learning.md,Stage 3 Diffusion Policy 与生成式动作,wiki/methods/diffusion-policy.md,3,complete,—
 roadmap/depth-imitation-learning.md,Stage 3 Diffusion Policy 与生成式动作,wiki/methods/action-chunking.md,3,complete,—
-roadmap/depth-imitation-learning.md,Stage 3 Diffusion Policy 与生成式动作,wiki/methods/bc-with-transformer.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-imitation-learning.md,Stage 3 Diffusion Policy 与生成式动作,wiki/methods/bc-with-transformer.md,3,complete,—
 roadmap/depth-imitation-learning.md,Stage 3 Diffusion Policy 与生成式动作,wiki/entities/paper-why-action-chunking-improves-bc.md,2,complete,缺 original 归档
 roadmap/depth-imitation-learning.md,Stage 3 Diffusion Policy 与生成式动作,wiki/entities/paper-seeker.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-imitation-learning.md,Stage 3 Diffusion Policy 与生成式动作,wiki/entities/paper-revisiting-open-loop-action-chunking.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -922,7 +935,7 @@ roadmap/depth-model-architecture.md,Stage 2 感知编码：视觉骨干与表征
 roadmap/depth-model-architecture.md,Stage 2 感知编码：视觉骨干与表征接口,wiki/overview/hub-vision-backbone.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-model-architecture.md,Stage 2 感知编码：视觉骨干与表征接口,wiki/entities/paper-visionhope.md,2,complete,缺 original 归档
 roadmap/depth-model-architecture.md,Stage 3 动作头：从单步回归到动作块与生成式策略,wiki/methods/behavior-cloning.md,3,complete,—
-roadmap/depth-model-architecture.md,Stage 3 动作头：从单步回归到动作块与生成式策略,wiki/methods/bc-with-transformer.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-model-architecture.md,Stage 3 动作头：从单步回归到动作块与生成式策略,wiki/methods/bc-with-transformer.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 3 动作头：从单步回归到动作块与生成式策略,wiki/methods/action-chunking.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 3 动作头：从单步回归到动作块与生成式策略,wiki/concepts/receding-horizon-policy-execution.md,2,complete,缺 original 归档
 roadmap/depth-model-architecture.md,Stage 3 动作头：从单步回归到动作块与生成式策略,wiki/concepts/diffusion-model.md,3,complete,—
@@ -932,7 +945,7 @@ roadmap/depth-model-architecture.md,Stage 3 动作头：从单步回归到动作
 roadmap/depth-model-architecture.md,Stage 3 动作头：从单步回归到动作块与生成式策略,wiki/methods/amp-reward.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 3 动作头：从单步回归到动作块与生成式策略,wiki/concepts/humanoid-policy-network-architecture.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/vla.md,3,complete,—
-roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/robotics-transformer-rt-series.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/robotics-transformer-rt-series.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/unified-multimodal-tokens.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/octo-model.md,2,complete,缺 original 归档
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/π0-policy.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -943,11 +956,11 @@ roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结�
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/concepts/world-action-models.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/concepts/latent-imagination.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md,3,complete,—
-roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/overview/hub-embodied-foundation-model.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-model-architecture.md,Stage 5 规模、效率与部署：让结构活在时延预算里,wiki/concepts/embodied-scaling-laws.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-model-architecture.md,Stage 5 规模、效率与部署：让结构活在时延预算里,wiki/concepts/embodied-fm-latency-generalization-tradeoff.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/overview/hub-embodied-foundation-model.md,3,complete,—
+roadmap/depth-model-architecture.md,Stage 5 规模、效率与部署：让结构活在时延预算里,wiki/concepts/embodied-scaling-laws.md,3,complete,—
+roadmap/depth-model-architecture.md,Stage 5 规模、效率与部署：让结构活在时延预算里,wiki/concepts/embodied-fm-latency-generalization-tradeoff.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 5 规模、效率与部署：让结构活在时延预算里,wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md,3,complete,—
-roadmap/depth-model-architecture.md,Stage 5 规模、效率与部署：让结构活在时延预算里,wiki/concepts/lora.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-model-architecture.md,Stage 5 规模、效率与部署：让结构活在时延预算里,wiki/concepts/lora.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 5 规模、效率与部署：让结构活在时延预算里,wiki/methods/actuator-network.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 5 规模、效率与部署：让结构活在时延预算里,wiki/concepts/embodied-foundation-model-hardware-codesign.md,2,complete,缺 original 归档
 roadmap/depth-model-architecture.md,Stage 5 规模、效率与部署：让结构活在时延预算里,wiki/concepts/edge-cloud-robotics.md,2,complete,缺 original 归档
@@ -981,7 +994,7 @@ roadmap/depth-navigation.md,Stage 3 学习型导航,wiki/entities/paper-notebook
 roadmap/depth-navigation.md,Stage 3 学习型导航,wiki/entities/paper-notebook-lookout.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-navigation.md,Stage 3 学习型导航,wiki/entities/paper-notebook-focusnav.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-navigation.md,Stage 3 学习型导航,wiki/entities/paper-raven-rl-adaptive-visibility-graph-mpc.md,2,complete,缺 original 归档
-roadmap/depth-navigation.md,Stage 3 学习型导航,wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-navigation.md,Stage 3 学习型导航,wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md,3,complete,—
 roadmap/depth-navigation.md,Stage 3 学习型导航,wiki/entities/paper-icrowdnav.md,2,complete,缺 original 归档
 roadmap/depth-navigation.md,Stage 3 学习型导航,wiki/entities/paper-splc.md,2,complete,缺 original 归档
 roadmap/depth-navigation.md,Stage 3 学习型导航,wiki/entities/paper-commnav.md,2,complete,缺 original 归档
@@ -996,7 +1009,7 @@ roadmap/depth-navigation.md,Stage 4 VLN 主线：从 R2R 到导航 VLA,wiki/over
 roadmap/depth-navigation.md,Stage 4 VLN 主线：从 R2R 到导航 VLA,wiki/entities/matterport3d-simulator.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-navigation.md,Stage 4 VLN 主线：从 R2R 到导航 VLA,wiki/entities/habitat-sim.md,2,complete,缺 original 归档
 roadmap/depth-navigation.md,Stage 4 VLN 主线：从 R2R 到导航 VLA,wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-navigation.md,Stage 4 VLN 主线：从 R2R 到导航 VLA,wiki/entities/qwen-robot-nav.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-navigation.md,Stage 4 VLN 主线：从 R2R 到导航 VLA,wiki/entities/qwen-robot-nav.md,3,complete,—
 roadmap/depth-navigation.md,Stage 4 VLN 主线：从 R2R 到导航 VLA,wiki/entities/paper-humanoidvln.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-navigation.md,Stage 4 VLN 主线：从 R2R 到导航 VLA,wiki/entities/paper-navverse.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-navigation.md,Stage 4 VLN 主线：从 R2R 到导航 VLA,wiki/entities/paper-vtinstructor.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -1068,9 +1081,9 @@ roadmap/depth-rsi.md,Stage 1 持久改进：让改进留下来（记忆与技能
 roadmap/depth-rsi.md,Stage 2 权重级有界闭环：自生成数据与真机自进化,wiki/entities/paper-motus2.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-rsi.md,Stage 2 权重级有界闭环：自生成数据与真机自进化,wiki/methods/lwd.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-rsi.md,Stage 2 权重级有界闭环：自生成数据与真机自进化,wiki/queries/rsi-four-tier-five-pushes.md,2,complete,缺 original 归档
-roadmap/depth-rsi.md,Stage 2 权重级有界闭环：自生成数据与真机自进化,wiki/concepts/embodied-scaling-laws.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-rsi.md,Stage 2 权重级有界闭环：自生成数据与真机自进化,wiki/concepts/embodied-scaling-laws.md,3,complete,—
 roadmap/depth-rsi.md,Stage 2 权重级有界闭环：自生成数据与真机自进化,wiki/concepts/bitter-lesson.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-rsi.md,"Stage 3 打分器与验证锚：谁来判""这次改进算数""",wiki/methods/enpire.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-rsi.md,"Stage 3 打分器与验证锚：谁来判""这次改进算数""",wiki/methods/enpire.md,3,complete,—
 roadmap/depth-rsi.md,"Stage 3 打分器与验证锚：谁来判""这次改进算数""",wiki/queries/real-robot-policy-autoresearch-harness.md,2,complete,缺 original 归档
 roadmap/depth-rsi.md,"Stage 3 打分器与验证锚：谁来判""这次改进算数""",wiki/queries/rsi-four-tier-five-pushes.md,2,complete,缺 original 归档
 roadmap/depth-rsi.md,"Stage 3 打分器与验证锚：谁来判""这次改进算数""",wiki/entities/paper-rsi-survey-2607-07663.md,2,complete,缺 original 归档
@@ -1094,7 +1107,7 @@ roadmap/depth-safe-control.md,Stage 2 CLF+CBF 在 WBC/MPC 中的应用,wiki/conc
 roadmap/depth-safe-control.md,Stage 2 CLF+CBF 在 WBC/MPC 中的应用,wiki/queries/clf-cbf-in-wbc.md,2,complete,缺 original 归档
 roadmap/depth-safe-control.md,Stage 3 Safe RL,wiki/methods/safe-rl.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-safe-control.md,Stage 3 Safe RL,wiki/formalizations/cmdp.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-safe-control.md,Stage 3 Safe RL,wiki/concepts/safe-real-world-rl-fine-tuning.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-safe-control.md,Stage 3 Safe RL,wiki/concepts/safe-real-world-rl-fine-tuning.md,3,complete,—
 roadmap/depth-safe-control.md,Stage 3 Safe RL,wiki/methods/reinforcement-learning.md,3,complete,—
 roadmap/depth-safe-control.md,Stage 4 真机安全部署：分层安全壳,wiki/concepts/sim2real.md,3,complete,—
 roadmap/depth-safe-control.md,Stage 4 真机安全部署：分层安全壳,wiki/queries/sim2real-closed-loop-engineering.md,2,complete,缺 original 归档
@@ -1129,7 +1142,7 @@ roadmap/depth-humanoid-hardware-design.md,Stage 1 构型与机械布局：把指
 roadmap/depth-humanoid-hardware-design.md,Stage 1 构型与机械布局：把指标翻译成骨架,wiki/concepts/lip-zmp.md,3,complete,—
 roadmap/depth-humanoid-hardware-design.md,Stage 1 构型与机械布局：把指标翻译成骨架,wiki/concepts/capture-point-dcm.md,3,complete,—
 roadmap/depth-humanoid-hardware-design.md,Stage 1 构型与机械布局：把指标翻译成骨架,wiki/concepts/robot-link-and-rotor-inertia.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-humanoid-hardware-design.md,Stage 1 构型与机械布局：把指标翻译成骨架,wiki/concepts/urdf-robot-description.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-humanoid-hardware-design.md,Stage 1 构型与机械布局：把指标翻译成骨架,wiki/concepts/urdf-robot-description.md,3,complete,—
 roadmap/depth-humanoid-hardware-design.md,Stage 1 构型与机械布局：把指标翻译成骨架,wiki/concepts/text-to-cad.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-humanoid-hardware-design.md,Stage 2 结构详设与验证：强度、刚度、公差,wiki/overview/humanoid-hardware-101-chassis-materials.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-humanoid-hardware-design.md,Stage 2 结构详设与验证：强度、刚度、公差,wiki/overview/humanoid-hardware-101-linear-transmission-bearings.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -1303,7 +1316,7 @@ roadmap/depth-rocket-landing.md,Stage 5 导航、机载求解与实时验证,wik
 roadmap/depth-rocket-landing.md,Stage 5 导航、机载求解与实时验证,wiki/concepts/imu-principles-algorithms-camera-sync.md,2,complete,缺 original 归档
 roadmap/depth-rocket-landing.md,Stage 5 导航、机载求解与实时验证,wiki/queries/mpc-solver-selection.md,3,complete,—
 roadmap/depth-rocket-landing.md,Stage 5 导航、机载求解与实时验证,wiki/entities/osqp.md,2,draft,缺 original 归档；status 限分
-roadmap/depth-rocket-landing.md,Stage 5 导航、机载求解与实时验证,wiki/entities/acados.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-rocket-landing.md,Stage 5 导航、机载求解与实时验证,wiki/entities/acados.md,3,complete,—
 roadmap/depth-rocket-landing.md,Stage 5 导航、机载求解与实时验证,wiki/concepts/processor-in-the-loop-sim2real.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-rocket-landing.md,Stage 6 全剖面回收与学习型方法,wiki/methods/ppo.md,3,complete,—
 roadmap/depth-rocket-landing.md,Stage 6 全剖面回收与学习型方法,wiki/concepts/domain-randomization.md,3,unknown,—
@@ -1367,7 +1380,7 @@ roadmap/depth-teleoperation.md,Stage 4 手指与灵巧手遥操作,wiki/entities
 roadmap/depth-teleoperation.md,Stage 4 手指与灵巧手遥操作,wiki/entities/shadow-hand.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-teleoperation.md,Stage 4 手指与灵巧手遥操作,wiki/entities/allegro-hand.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-teleoperation.md,Stage 4 手指与灵巧手遥操作,wiki/entities/ruka-v2-hand.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-teleoperation.md,Stage 4 手指与灵巧手遥操作,wiki/entities/orca-hand.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-teleoperation.md,Stage 4 手指与灵巧手遥操作,wiki/entities/orca-hand.md,3,complete,—
 roadmap/depth-teleoperation.md,Stage 4 手指与灵巧手遥操作,wiki/entities/mimic-hand-m1.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-teleoperation.md,Stage 4 手指与灵巧手遥操作,wiki/entities/midas-hand.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-teleoperation.md,Stage 4 手指与灵巧手遥操作,wiki/entities/handroid.md,2,complete,缺 original 归档
@@ -1377,7 +1390,7 @@ roadmap/depth-teleoperation.md,Stage 5 下游闭环与进阶方向,wiki/methods/
 roadmap/depth-teleoperation.md,Stage 5 下游闭环与进阶方向,wiki/entities/paper-bifrost-umi.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-teleoperation.md,Stage 5 下游闭环与进阶方向,wiki/entities/paper-halomi-humanoid-loco-manipulation.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-teleoperation.md,Stage 5 下游闭环与进阶方向,wiki/entities/paper-rove-humanoid-vla-intervention.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-teleoperation.md,Stage 5 下游闭环与进阶方向,wiki/entities/paper-autointervene.md,2,complete,缺 original 归档
+roadmap/depth-teleoperation.md,Stage 5 下游闭环与进阶方向,wiki/entities/paper-autointervene.md,3,complete,—
 roadmap/depth-teleoperation.md,Stage 5 下游闭环与进阶方向,wiki/entities/paper-nestdex.md,2,complete,缺 original 归档
 roadmap/depth-teleoperation.md,Stage 5 下游闭环与进阶方向,wiki/entities/hiw-500-dataset.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-teleoperation.md,Stage 5 下游闭环与进阶方向,wiki/entities/paper-notebook-teleopbench-a-simulator-centric-benchmark-for-du.md,1,complete,阅读骨架不完整；缺 original 归档

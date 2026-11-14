@@ -12,11 +12,13 @@
 - **项目页：** <https://opengalaxea.github.io/G05/> — [`sources/sites/opengalaxea-g05.md`](../sites/opengalaxea-g05.md)
 - **代码：** <https://github.com/OpenGalaxea/GalaxeaVLA> — [`sources/repos/galaxea-vla.md`](../repos/galaxea-vla.md)
 - **权重 / 数据：** <https://huggingface.co/OpenGalaxea/G05>；Open-World Dataset <https://huggingface.co/datasets/OpenGalaxea/Galaxea-Open-World-Dataset>
-- **作者：** Galaxea Team
+- **作者：** Galaxea Team（Yicheng Liu 等 27 位作者，PI Hang Zhao）
 - **机构：** 星海图（Galaxea / Xinghaitu (Beijing) AI Technology）
-- **版本：** arXiv:2608.11739（2026-08-12 上 arXiv；项目页介绍 2026-05-31）
+- **版本：** arXiv:2608.11739v1（2026-08-12 上 arXiv；项目页介绍 2026-05-31）
 - **入库日期：** 2026-08-14
-- **一句话说明：** 单一 Transformer 解码器在 **同一自回归流** 里发推理 token 与动作 token（VLM-as-Actor）；跨本体 **ActionCodec** + 原生 CoT + 视觉记忆。七套评测超 \(\pi_{0.5}\) / GR00T-N1.7。官方仓 + HF 权重 **已开源**（G0.5 Community License，非商用为主）。
+- **通读：** 已完成
+- **核对范围：** `2608.11739.txt` 第 1–2898 行全文（Abstract、§§1–7、61 篇 References、Appendix Tables 6–7）及 `manifest.json` HF `OpenGalaxea/G05` 元数据（注：`galaxea_g05.html` 为 458 B Vite SPA 空壳，项目页未计入通读完成）。
+- **一句话说明：** 单一 Transformer 解码器（Qwen3.5-2B）在 **同一自回归流** 里发推理 token 与动作 token（VLM-as-Actor）；跨本体 RVQ **ActionCodec**（27 维）+ 原生 CoT + 视觉记忆。七套评测超 \(\pi_{0.5}\) / GR00T-N1.7。官方仓 + HF 权重 **已开源**（LICENSE-G0.5 Community License，非商用为主；HF `OpenGalaxea/G05` 设为 `gated: auto`）。
 
 ## 核心摘录
 
@@ -48,11 +50,11 @@
 - **CoT 探针：** 单阶段 PP Bench 几乎不动（+1.5）；五阶段零样本家务（Air Fryer / Cook Bacon）AR+CoT 从 1/5→3/5、0/5→2/5；同一 CoT 下 AR 比 FM expert 更跟指令。
 - **GRPO：** 每任务 1 条演示后 AR 比 SDE 化的 FM 头收敛更快、终值更高、方差更低（原生 token logp）。
 
-### 4) 开源核查（步骤 2.5）
-- **项目页：** Paper / GitHub / Hugging Face / 视频齐全。
-- **GitHub `OpenGalaxea/GalaxeaVLA`（2026-08-14）：** 可运行入口齐全——`scripts/run/finetune.sh`、`scripts/serve_policy.py`、`experiments/{r1lite,r1pro,droid,libero,robotwin,so100}`、`src/g05/`。许可证 **LICENSE-G0.5**（Community License：学术/个人/教育/评估；商用受限）。
-- **HF `OpenGalaxea/G05`：** `g05-base` / `g05-droid` / `g05-libero` / `g05-robotwin20` / `g05-so101` + `action_tokenizer.pt`；全套约 55 GB。另有 Open-World Dataset（500+ h，单一本体，RLDS/LeRobot）。
-- **结论：** **已开源**（推理、微调、评测、权重）。预训练全量数据不全公开；许可证非 OSI 商用宽松许可。
+### 4) 开源核查（步骤 2.5 & 源码复核）
+- **项目页：** Paper / GitHub / Hugging Face / 视频齐全（离线抓取的 `galaxea_g05.html` 为 458 字节 Vite/React SPA 入口 `index-BD14GwCb.js`，无服务端正文，故 `sources/sites/opengalaxea-g05.md` 不标记通读完成）。
+- **GitHub `OpenGalaxea/GalaxeaVLA`（2026-08-14 核查，源码已实读）：** 可运行入口齐全——`scripts/run/finetune.sh` / `scripts/finetune.py`、`scripts/serve_policy.py` / `scripts/serve_policy_mem.py`、`experiments/{r1lite,r1pro,droid,libero,robotwin,so100}`、`src/g05/`。许可证 **LICENSE-G0.5**（commit `dc0a1ef` 起生效，学术/个人/教育/评估，商用受限）。
+- **HF `OpenGalaxea/G05`：** `g05-base` / `g05-droid` / `g05-libero` / `g05-robotwin20` / `g05-so101` + `action_tokenizer.pt`；全套约 55 GB。`manifest.json` 核查显示 `models:OpenGalaxea/G05` 为 `"gated": "auto"`、`readme_status: 401`（需登录后同意协议方能拉取）。另有 Open-World Dataset（500+ h，单一本体，RLDS/LeRobot）。
+- **结论：** **已开源**（推理、微调、评测、权重）；预训练全量数据（含 14 本体）不全公开，权重下载带 `gated: auto` 非商用协议门禁。
 
 ## 对 wiki 的映射
 

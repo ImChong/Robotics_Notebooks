@@ -5,23 +5,25 @@
 - **标题：** Data Pyramid for Embodied Manipulation
 - **缩写 / 框架：** **Embodied Data Pyramid**（具身数据金字塔）
 - **类型：** paper / survey / data-centric / embodied-manipulation
-- **arXiv：** <https://arxiv.org/abs/2607.24744>（v1 2026-07-27；PDF：<https://arxiv.org/pdf/2607.24744>）
+- **arXiv：** <https://arxiv.org/abs/2607.24744>（v1 2026-07-27，v2 2026-08-08；PDF：<https://arxiv.org/pdf/2607.24744>）
 - **项目页：** <https://jasper-aaa.github.io/embodied-data-pyramid/> — 归档见 [`sources/sites/embodied-data-pyramid.md`](../sites/embodied-data-pyramid.md)
-- **代码 / 策展清单：** <https://github.com/worldbench/awesome-embodied-data-pyramid> — 归档见 [`sources/repos/awesome-embodied-data-pyramid.md`](../repos/awesome-embodied-data-pyramid.md)
+- **代码 / 策展清单：** <https://github.com/worldbench/awesome-embodied-data-pyramid>（项目页另链 `Jasper-aaa/Awesome-Embodied-Data-Pyramid`）— 归档见 [`sources/repos/awesome-embodied-data-pyramid.md`](../repos/awesome-embodied-data-pyramid.md)
 - **作者：** Yifan Ye*、Yankai Fu*、Yaoxu Lv*、Bohan Hou*、Jun Cen*†（Project Leader）、Lingdong Kong* 等 29 人；通讯 Shanghang Zhang‡（PKU）
 - **机构（11 家）：** 北京大学（PKU）、南洋理工大学（NTU）、香港科技大学（HKUST）、新加坡国立大学（NUS）、香港中文大学（CUHK）、香港大学（HKU）、杜克大学（Duke）、加州大学伯克利分校（UC Berkeley）、大湾区大学（GBU）、南京大学（NJU）、上海交通大学（SJTU）
-- **入库日期：** 2026-07-29
+- **入库日期：** 2026-07-29（2026-11-14 核对 v2 全文）
+- **核对范围：** 2026-11-14 通读 arXiv:2607.24744v2 全文（摘要、§1–§9、Tables 1–7、References [1]–[453]），并对照项目页 HTML（2026-08-07 更新日志）及 `worldbench/awesome-embodied-data-pyramid` 仓库（`README.md`、`index.html`、`LICENSE`）。
+- **通读：** 已完成
 - **一句话说明：** 数据中心视角的具身操作综述：以 **可扩展性 × 机器人对齐** 两轴（外加质量/多样性/可复用性/物理保真四维）把具身数据生态组织成 **五层金字塔**——真机数据、UMI 式数据、第一/第三人称人类数据、仿真数据、通用视觉语言数据；再从数据配方（data recipe）视角分析具身脑模型、VLA、WAM 三类基础模型如何选择/对齐/混合各层数据，并提出六大开放挑战。
 
 ## 开源状态（步骤 2.5）
 
-核查日：**2026-07-29**（项目页 / GitHub / arXiv 首页金属链接）。
+核查日：**2026-11-14**（项目页 / 镜像仓库 `worldbench/awesome-embodied-data-pyramid` / arXiv v2）。
 
 | 产物 | 状态 |
 |------|------|
-| Awesome 策展清单 `worldbench/awesome-embodied-data-pyramid` | **已开源**（数据集/管线按五层分类的持续维护清单；入库时约 70 stars） |
-| 项目页数据集表格（按类别 × 任务检索） | **已开放**（jasper-aaa.github.io/embodied-data-pyramid） |
-| 训练 / 推理代码、模型权重 | **不适用**——综述论文，无可运行实现 |
+| Awesome 策展清单 `worldbench/awesome-embodied-data-pyramid` | **已开源（Apache-2.0，仅策展清单）**；`README.md` 持续更新至 2026-10，`index.html` 仅为静态跳转页 |
+| 项目页数据集表格（按类别 × 任务检索） | **已开放**（jasper-aaa.github.io/embodied-data-pyramid，2026-08-07 增补 RekaCS2-10k/RekaDaily-10k） |
+| 训练 / 推理代码、模型权重 | **不适用**——综述论文，仓库内无可运行模型/训练/评测实现 |
 
 **结论：** **资源型开源**（策展清单 + 数据表），非代码型开源；论文承诺 "release and maintain an open-source repository that curates representative datasets"，已兑现为 Awesome 清单。致谢 UMI-Data-Community 与 IRMVLab/awesome-robot-learning-from-human-videos。
 

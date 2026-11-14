@@ -5,7 +5,7 @@ project: https://www-ye.github.io/ego2robot_blog/
 code: https://github.com/www-Ye/ego2robot_blog
 tags: [paper, robot-data, egocentric, vla, synthesis, ruc, alibaba, shanghaitech, bigai, buaa]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-14
 arxiv: "2608.02580"
 related:
   - ../methods/vla.md
