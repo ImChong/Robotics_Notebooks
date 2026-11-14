@@ -2,7 +2,7 @@
 type: concept
 tags: [concept, semantic-mapping, embodied-ai, cognition, open-vocabulary, navigation, habitat, vln]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-14
 related:
   - ./vision-language-feature-fusion.md
   - ./2d-to-3d-semantic-lifting-gap.md
@@ -10,6 +10,7 @@ related:
   - ../tasks/zero-shot-object-navigation.md
   - ../entities/habitat-sim.md
   - ../entities/ovo-semantic-mapping.md
+  - ../entities/paper-target-aware-gaussian-langmap.md
   - ../entities/dualmap.md
   - ../entities/paper-travexplorer.md
   - ../overview/quadruped-vln-embodied-workshop.md
@@ -88,6 +89,7 @@ flowchart TB
 - [TravExplorer](../entities/paper-travexplorer.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
 - [CoSMO](../entities/paper-cosmo.md) — 把 VLM 语义标签经 conformal 校准为带覆盖保证的标签集合，再按类别膨胀障碍物，语义地图直接服务安全避障
+- [目标感知 3D Gaussian 语言地图细化](../entities/paper-target-aware-gaussian-langmap.md) — 对既有地图目标特征做闭式文本注入及中心化读出，属于语义检索细化而非导航规划
 
 ## 参考来源
 
