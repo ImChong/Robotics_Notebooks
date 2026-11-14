@@ -780,6 +780,7 @@
 - [HeyPCB（AI PCB 设计）](wiki/entities/heypcb.md) — HeyPCB** 是一项 AI 辅助 EDA 服务：根据用户描述生成原理图、PCB 布局和制造文件，并交付可编辑的 KiCad 设计文件；它还提供开放硬件板目录 Circuit World。 `📅2026-10-23` `[entity_page]`
 - [HFHPE：全角度头部姿态估计](wiki/entities/hfhpe.md) — HFHPE（High-Angle Robust Fast Head Pose Estimation）** 是 PINTO0309 开源的头部姿态估计项目：检测器先定位整头 crop，轻量网络随后一 `📅unknown` `[entity_page]`
 - [Hi3D v1.0](wiki/entities/hi3d-v1-0.md) — Hi3D v1.0** 是基于 Sparc3D 架构的高分辨率 3D 几何细化模型：给定同一物体的参考图像和粗网格，模型逐级补充几何细节，输出更高分辨率的网格。核心仓库公开推理代码和权重；它不是单 `📅unknown` `[entity_page]`
+- [HierText：分层文本检测与版面分析数据集](wiki/entities/hiertext.md) — HierText** 是面向场景文本检测和版面分析的开放数据集，覆盖自然场景与文档，提供**词、行、段落**三级几何与文本标注。 `📅unknown` `[entity_page]`
 - [高擎机电（HighTorque Robotics）](wiki/entities/hightorque-robotics.md) — 高擎机电（HighTorque Robotics）** 是广州高擎机电科技有限公司旗下品牌，定位「具身智能时代的 PC」：用自研高功率密度关节模组，把 **65 cm 级小型人形（Mini Pi  `📅unknown` `[entity_page]`
 - [Hindsight](wiki/entities/hindsight.md) — Hindsight**（vectorize-io/hindsight，文档 [hindsight.vect `📅unknown` `[entity_page]`
 - [HIW-500（野外人形遥操作数据集）](wiki/entities/hiw-500-dataset.md) — HIW-500**（Humanoids In-the-Wild Dataset，<https://bitrobot-foundation.github.io/humanoids-in-the-wi `📅unknown` `[entity_page]`
@@ -7229,6 +7230,7 @@
 - [Visual Servoing（视觉伺服控制）](wiki/methods/visual-servoing.md) — 视觉伺服 (Visual Servoing)** 是一门将计算机视觉（Computer Vision）与经典控制理论（Control Theory）深度融合的技术。它不依赖于将图像构建为复杂的 3 `📅unknown` `[method_page]`
 - [VLA（Vision-Language-Action）](wiki/methods/vla.md) — VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。 `📅unknown` `[method_page]`
 - [WiLoR（野外 3D 手部定位与重建）](wiki/methods/wilor.md) — WiLoR**（CVPR 2025）面向 **单目 RGB** 场景下的 **双手** 检测与 **MANO 类 3D 重建**：先用轻量全卷积结构在高分辨率特征上定位手部，再用 Transfor `📅unknown` `[method_page]`
+- [YOLO26-Text + PP-OCRv6：场景与文档 OCR](wiki/methods/yolo26-ocr-document-parsing.md) — 用 YOLO26-Text 定位旋转文本区域、PP-OCRv6 读取单词，再恢复整页方向与行序**的模块化 OCR 工程管线，适用于图片、扫描页与逐页渲染的 PDF。 `📅unknown` `[method_page]`
 - [ZEST (Zero-shot Embodied Skill Transfer)](wiki/methods/zest.md) — ZEST** 是 RAI Institute 与 Boston Dynamics 的统一具身技能迁移配方：用强化学习把 MoCap、单目视频（ViCap）和关键帧动画变成高动态、多接触全身技能，并 `📅unknown` `[method_page]`
 - [π₀ (Pi-zero) 策略模型](wiki/methods/π0-policy.md) — π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的奠基性工作，由 Physical Intelligence 团队于 2024 年提出（其后继版本见 [π₀.7](./pi07-pol `📅unknown` `[method_page]`
 
