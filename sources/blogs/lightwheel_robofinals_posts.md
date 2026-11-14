@@ -7,6 +7,8 @@
 - **来源：** 光轮智能（Lightwheel）
 - **博客列表：** https://lightwheel.ai/blogs（日期以列表页为准）
 - **入库日期：** 2026-10-10（正文与开源状态均于 2026-10-10 重新抓取核对）
+- **核对范围：** 2026-11-14 逐段复核光轮官方原文全文：2025-12-04《Lightwheel Unveils RoboFinals》（https://lightwheel.ai/robofinals），2026-03-16《RoboFinals Industrial Benchmark》（https://lightwheel.ai/media/robofinals-industrial-benchmark），2026-08-18《The First Newton-Native Benchmark》（https://lightwheel.ai/media/lightwheel-launches-robofinals-full-stack-robot-evaluation-benchmark-newton）；覆盖任务结构、训练/评测栈、22 任务、代码开放边界及官方声明的 Sim–Real 局限；本项不声称已读内部商用代码。
+- **通读：** 已完成
 - **一句话说明：** RoboFinals 从「100 任务工业评测平台发布」→「AutoDataGen + Arena + OSMO 评测栈与早期采用方」→「首个 Newton-native 全栈 benchmark（首发 22 任务）」的三步演进；数字均为 **光轮自报**。
 - **既有单篇归档：** [发布页](../sites/lightwheel_robofinals.md)、[Industrial Benchmark](../sites/lightwheel_robofinals_industrial_benchmark.md)、[Newton-native](../sites/lightwheel_robofinals_newton_native_benchmark.md)
 - **沉淀到 wiki：** [`wiki/entities/lightwheel-robofinals.md`](../../wiki/entities/lightwheel-robofinals.md)
