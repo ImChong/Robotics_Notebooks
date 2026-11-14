@@ -6,12 +6,13 @@ tags:
   - navigation
   - planning
 status: complete
-updated: 2026-10-29
+updated: 2026-11-14
 arxiv: "2610.29374"
 code: https://github.com/OptimusFaber/AOV-GS
 related:
   - ../tasks/locomotion.md
   - ../tasks/vision-language-navigation.md
+  - ./paper-target-aware-gaussian-langmap.md
   - ../concepts/sim2real.md
   - ../overview/embodied-station-2026-10-29-58-papers-technology-map.md
 sources:
@@ -120,6 +121,7 @@ sequenceDiagram
 
 - [locomotion](../tasks/locomotion.md)
 - [vision-language-navigation](../tasks/vision-language-navigation.md)
+- [目标感知 3D Gaussian 语言地图细化](./paper-target-aware-gaussian-langmap.md) — 建图/主动探索与既有语言地图的目标语义细化互为上下游研究问题
 - [sim2real](../concepts/sim2real.md)
 - [embodied-station-2026-10-29-58-papers-technology-map](../overview/embodied-station-2026-10-29-58-papers-technology-map.md)
 
