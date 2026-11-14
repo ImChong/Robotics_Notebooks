@@ -16,7 +16,6 @@
 
   E.hero = function (K) {
     var s = K.sceneSvg('片头主图：第十三集讲过，每个关节的转速乘上雅可比，就是手的速度；写成运动旋量，每一列就是关节轴此刻的螺旋轴。这一集回答一个问题：同一个速度，站在底座上看、和站在手上看，写出来的雅可比为什么不一样？怎么互相换？答案是一个六乘六的矩阵，叫做伴随变换：它用到的，只有手此刻的位置和朝向，乘上它，就从一种换成另一种');
-    var recall = E.recall(s, [['r13hero', 0.55, 5.55], ['r13cols', 5.85, 10.65]]);   // 回顾：第十三集讲过：转速乘雅可比（013 片头）；每一列是螺旋轴（013 第 6 幕）
 
     var pn = E.panel14(s, { ox: 268, oy: 292 }), P = pn.P, u = pn.u, top = pn.top, O = P(0, 0);
     pn.pose(E.P90[0], E.P90[1]);
@@ -60,7 +59,6 @@
     return {
       el: s,
       draw: function (t) {
-      recall(t);
         var f = E.fade, b = E.bump, fr = function (a) { return f(t, a, 0.3); };
         pn.pose(E.P90[0], E.P90[1]); pn.view.clearTint();
         E.op(jS, fr(0.2)); E.op(jE, fr(0.2)); E.op(hand, fr(0.2));

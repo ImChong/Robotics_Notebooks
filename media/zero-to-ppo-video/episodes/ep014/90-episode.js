@@ -32,7 +32,6 @@
   window.EpisodeVideo = {
     ep: '014',                      // 用于文件名和封面顶栏正中的集数（「No.014」）；正片画面里不出现集数
     badge: '第二季',
-    recall: E.RECALL,               // 回顾画面取自哪一集、哪一幕、什么时刻（recall.mjs 照这个截图）
     robots: ['ur5'],                // robot3d.js 预先加载的 URDF（robots.json；先跑 python3 fetch_robots.py）
     title: '两种雅可比',
     name: 'Space ↔ Body：伴随变换',

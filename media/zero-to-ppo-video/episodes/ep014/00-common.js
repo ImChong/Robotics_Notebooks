@@ -1001,68 +1001,6 @@
     return { tag: t.g, row: RK.line(g, x + t.w + 8, y, parts, size) };
   };
 
-  /* ── 回顾（2026-11-11 用户要求「讲以前集讲过的内容时，也要显示当时的画面」，见发布清单「每集一个主题」）：
-     分镜框里叠一层：上面一条「回顾 第 N 集 · 第 M 幕」，下面是那一集当时的分镜画面。画面是 recall.mjs 照那一集的源码截的
-     （out/recall/<id>.png，不入库；渲染前先跑 node recall.mjs ep014），取自哪一集、哪一幕、分镜时间几秒写在 E.RECALL（90-episode.js 交给 EpisodeVideo.recall）。
-     E.recall(svg, [[id, t0, t1], …]) → draw(st)：分镜时间 [t0, t1] 叠上（前后各淡入淡出 0.35 s）；svg 挂到分镜框（.stage / 片头的 .hero）以后才建 ── */
-  E.RECALL = {
-    r13hero: { ep: 'ep013', scene: 'intro', t: 23.8 },   // 雅可比 × 转速 = 手的速度
-    r13cols: { ep: 'ep013', scene: 5, t: 30 },          // 雅可比的每一列 = 关节轴此刻的螺旋轴
-    r13grid: { ep: 'ep013', scene: 0, t: 5 },           // 第 9 集的网格：肩在原点，肘 (1, 2)
-    r03rot: { ep: 'ep003', scene: 2, t: 45 },           // 转 90° 的矩阵：两列 (0, 1)、(−1, 0)
-    r13base: { ep: 'ep013', scene: 5, t: 104 },         // 这样写的运动旋量，是站在不动的底座上看的
-    r13s1: { ep: 'ep013', scene: 5, t: 38 },            // 零位：两列 = 第 11 集的两根螺旋轴，S₁ = (0, 0, 1, 0, 0, 0)
-    r13zero: { ep: 'ep013', scene: 5, t: 47 },          // × 转速 (1, −1) = (0, 0, 0, −2, 1, 0)
-    r09v: { ep: 'ep009', scene: 2, t: 108 },            // v 不是肩关节的速度，是透明板上此刻在原点那一点的速度
-    r11hand: { ep: 'ep011', scene: 0, t: 35 },          // 手的坐标系：放在小臂上的 (3, 2)，x 轴朝右
-    r09elbow: { ep: 'ep009', scene: 2, t: 34 },         // 肘 → 原点 = 原点 − 肘
-    r13turn: { ep: 'ep013', scene: 5, t: 85 },          // 肩先转 90°：(2, −1) 转 90° = (1, 2)，这一列变成 (0, 0, 1, 1, 2, 0)
-    r09check: { ep: 'ep009', scene: 2, t: 103 },        // 验算肘：(−4, 2) + (4, −2) = (0, 0)
-    r07pose: { ep: 'ep007', scene: 2, t: 44 },          // 位姿：旋转矩阵 R、位置 p，最下面一排 0、0、1
-    r13col: { ep: 'ep013', scene: 2, t: 92.5 },         // 雅可比第几列 = 只让第几个关节每秒转 1 弧度时手的速度
-    r09board: { ep: 'ep009', scene: 2, t: 24 }          // 小臂想成很大的透明板
-  };
-  E.recallSrc = function (id) { return 'out/recall/' + id + '.png'; };
-  E.recallLabel = function (r) { return '第 ' + (+r.ep.slice(2)) + ' 集 · ' + (r.scene === 'intro' ? '片头' : '第 ' + (r.scene + 1) + ' 幕'); };
-  // 先在页面里放一份（不显示）：图片加载完页面才算 load，render.mjs / check_layout.mjs 等 load 以后才截帧；缺图时报错提醒先跑 recall.mjs
-  (function () {
-    var hold = document.createElement('div'); hold.style.display = 'none';
-    Object.keys(E.RECALL).forEach(function (id) {
-      var im = document.createElement('img'); im.src = E.recallSrc(id);
-      im.onerror = function () { console.error('回顾画面缺 ' + E.recallSrc(id) + '：先跑 node recall.mjs ep014'); };
-      hold.appendChild(im);
-    });
-    (document.body || document.documentElement).appendChild(hold);
-  })();
-  E.recall = function (svg, list) {
-    var layers = null;
-    function build(box) {
-      return list.map(function (it) {
-        var r = E.RECALL[it[0]];
-        var d = document.createElement('div');
-        d.style.cssText = 'position:absolute;left:0;top:0;right:0;bottom:0;z-index:5;background:var(--demo-surface);display:none';
-        var head = document.createElement('div');
-        head.style.cssText = "position:absolute;left:0;right:0;top:9px;height:38px;display:flex;align-items:center;justify-content:center;gap:14px;font-family:'Noto Sans SC',sans-serif;font-weight:900;font-size:24px;color:var(--text)";
-        var pill = document.createElement('span');
-        pill.textContent = '回顾';
-        pill.style.cssText = 'background:var(--hi);color:#1e1e1e;border-radius:19px;padding:2px 16px';
-        var lab = document.createElement('span'); lab.textContent = E.recallLabel(r);
-        head.appendChild(pill); head.appendChild(lab);
-        var im = document.createElement('img'); im.src = E.recallSrc(it[0]); im.decoding = 'sync';
-        im.style.cssText = 'position:absolute;left:0;right:0;top:54px;bottom:8px;margin:auto;max-width:96%;height:calc(100% - 62px);object-fit:contain;border-radius:18px;outline:3px solid var(--hi);outline-offset:-1px';
-        d.appendChild(head); d.appendChild(im); box.appendChild(d);
-        return { d: d, t0: it[1], t1: it[2] };
-      });
-    }
-    return function (st) {
-      if (!layers) { if (!svg.parentNode) return; layers = build(svg.parentNode); }
-      layers.forEach(function (L) {
-        var a = E.win(st, L.t0, L.t1, 0.35);
-        L.d.style.display = a > 0.001 ? 'block' : 'none'; L.d.style.opacity = a.toFixed(3);
-      });
-    };
-  };
-
   /* ── 手上的透明板（第 5 幕，2026-11-11 用户要求「对比两种雅可比的数怎么变时，引入透明板」）：第 9 集把小臂想成一张很大的透明板；
      这里在手上贴一张，画着手的两根轴方向的格子（一格 = 网格的一格），跟着手一起动：站在手上看的数字，都照这张板来算。
      E.handBoard(parent, P, rect)：rect = [x0, x1, y0, y1] 是板在手的坐标里的范围；set(hx, hy, a)：手在网格 (hx, hy)、手的 x 轴方向角 a；
