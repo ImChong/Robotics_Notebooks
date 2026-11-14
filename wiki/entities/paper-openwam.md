@@ -16,7 +16,7 @@ tags:
   - cuhk
   - sjtu
 status: complete
-updated: 2026-11-13
+updated: 2026-11-14
 arxiv: "2609.07398"
 code: https://github.com/OpenWAM-Official/OpenWAM
 related:
@@ -37,6 +37,7 @@ sources:
   - ../../sources/repos/openwam.md
   - ../../sources/sites/openwam-official.md
 summary: "OpenWAM（arXiv:2609.07398）：模块化 Infra + 六项对照 Study 提炼 WAM 预训练三原则；OpenWAM-α 在 6,400 h ego+robot 数据上预训练，LIBERO 99.3%、RoboTwin2.0-Full 93.60%、RoboDojo 真机 37.6/24.4% SR；全栈已开源（GitHub + HF 46 检查点）。"
+project_id: openwam
 ---
 
 # OpenWAM：系统化世界–动作预训练的开源模块化栈

@@ -8,7 +8,7 @@ tags:
   - ai2
   - open-source
 status: complete
-updated: 2026-11-12
+updated: 2026-11-14
 arxiv: "2605.02881"
 code: https://github.com/allenai/molmoact2
 related:
@@ -34,6 +34,7 @@ sources:
   - ../../sources/blogs/x_starlitmatcha_vla_history_rt1_to_molmoact2_2026-11-01.md
   - ../../sources/repos/lerobot.md
 summary: "MolmoAct2（arXiv:2605.02881，Ai2）：Molmo2-ER 具身推理骨干 + flow-matching 连续动作专家；开源 base/finetuned 权重、ER 数据集与 LeRobot 真机部署栈。"
+project_id: molmoact2
 ---
 
 # MolmoAct2：面向真机部署的 Action Reasoning Models

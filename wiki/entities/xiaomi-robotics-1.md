@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, foundation-policy, umi, scaling-laws, mobile-manipulation, cross-embodiment, flow-matching, xiaomi, xiaomi-robotics]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-14
 arxiv: "2607.15330"
 related:
   - ../methods/vla.md
@@ -20,6 +20,9 @@ sources:
   - ../../sources/sites/xiaomi-robotics-1.md
   - ../../sources/repos/xiaomi-robotics-1.md
 summary: "Xiaomi-Robotics-1（XR-1，arXiv:2607.15330）：>100k h UMI 无本体预训练（VLM 自动状态转移标注）+ ~10k h 跨本体后训练；Qwen3-VL + DiT flow matching MoT（2.6B/5.1B/10.5B）；预训练 scaling 迁移到未见环境开箱与少样本微调；RoboCasa 四榜领先；GitHub/HF 入口已建但代码权重 Coming soon。"
+project_id: xiaomi-robotics-1
+original: 
+  - ../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330_full_reading.md
 ---
 
 # Xiaomi-Robotics-1
@@ -140,6 +143,8 @@ flowchart TB
 - [XPolicyLab](./xpolicylab.md) — 仓内已有 `Xiaomi_Robotics_1` 适配目录；官方上榜开源口
 
 ## 参考来源
+
+- [Xiaomi-Robotics-1 一手论文原文归档](../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330_full_reading.md)
 
 - [xiaomi_robotics_1_arxiv_2607_15330.md](../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330.md) — arXiv:2607.15330 论文归档
 - [Xiaomi-Robotics-1 项目页与技术报告归档](../../sources/sites/xiaomi-robotics-1.md)
