@@ -2,7 +2,8 @@
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
 status: draft
-updated: 2026-10-12
+updated: 2026-11-13
+code: https://github.com/BeingBeyond/Being-H
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
