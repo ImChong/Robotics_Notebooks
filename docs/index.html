@@ -130,7 +130,8 @@
                  → 具身模型测评（RLBench 标准化视觉操作评测套件 2019）
                  → 感知越障（2020s）→ 动作生成（MDM 2022）→ 扩散与流匹配策略（Diffusion Policy 2023）→ VLA（RT-2 确立 VLA，2023）
                  → Real2Sim（3D Gaussian Splatting 规模化重建 2023）→ WAM（World Action Models 综述形式化，2026）
-                 默认折叠：只展示里程碑最新的 8 条，其余路线标记 data-route-extra + hidden，
+                 默认折叠：桌面展示里程碑最新的 8 条，窄屏展示最新 4 条，
+                 其余路线标记 data-route-extra + hidden，
                  由 main.js 的展开按钮（#homeRouteToggle）控制显隐 -->
             <div class="home-entry-route-links" id="homeRouteLinks">
               <a class="btn-secondary" href="roadmap.html?id=roadmap-depth-pcb-design" data-route-extra hidden>PCB 设计<span class="route-en">（PCB Design）</span></a>
@@ -175,7 +176,7 @@
             <h3 data-home-copy>按公司查看具身基础模型与人形技术演进</h3>
             <!-- 按成立年份从早到晚排序；同年顺序不代表已确认的精确先后。
                  顺序与 docs/company-roadmaps.json 一致（tests/test_company_roadmaps.py 校验）；
-                 默认露出前 8 家，其余 data-company-extra + hidden，由 main.js 的展开按钮控制 -->
+                 默认桌面露出前 8 家、窄屏前 4 家，其余 data-company-extra + hidden，由 main.js 控制 -->
             <div class="home-entry-route-links" id="homeCompanyLinks">
               <a class="btn-secondary" href="company.html?id=nvidia">NVIDIA</a>
               <a class="btn-secondary" href="company.html?id=gdm">Google DeepMind</a>
@@ -218,7 +219,7 @@
           </div>
           <div class="home-org-panel" id="home-lab-routes" role="tabpanel" aria-labelledby="homeOrgTabLab" hidden>
             <h3 data-home-copy>按实验室查看具身智能研究演进</h3>
-            <!-- 按成立年份或已注明的排序锚点排序，与 lab-roadmaps.json 同序；默认展示前 8 个，不足 8 个时全部展示。 -->
+            <!-- 按成立年份或排序锚点排序，与 lab-roadmaps.json 同序；桌面预览前 8 个、窄屏前 4 个，不足时全部展示。 -->
             <div class="home-entry-route-links" id="homeLabLinks">
               <a class="btn-secondary" href="lab.html?id=eth-rsl" data-founded-year="2015">ETH RSL</a>
               <a class="btn-secondary" href="lab.html?id=hku-mmlab" data-founded-year="2019">香港大学<span class="route-en">（MMLab）</span></a>

@@ -6,15 +6,25 @@ const { JSDOM } = require('jsdom');
 
 const read = path => readFileSync(resolve(__dirname, '..', path), 'utf8');
 const source = read('docs/main.js');
-const start = source.indexOf('  // ── 首页「更多路线」折叠');
+const start = source.indexOf('  // ── 首页路线预览');
 const end = source.indexOf('  // ── 首页入口卡指针光斑', start);
 assert.ok(start >= 0 && end > start);
 
-function home(extraLabs = 0) {
+function home(extraLabs = 0, width = 1280) {
   const dom = new JSDOM(read('docs/index.html'), {
     url: 'https://example.test/', runScripts: 'outside-only',
   });
   const w = dom.window;
+  const listeners = [];
+  const previewMedia = {
+    matches: width <= 860,
+    addEventListener(type, listener) { if (type === 'change') listeners.push(listener); },
+  };
+  w.matchMedia = query => query === '(max-width: 860px)' ? previewMedia : { matches: false };
+  dom.resizePreview = nextWidth => {
+    previewMedia.matches = nextWidth <= 860;
+    listeners.forEach(listener => listener(previewMedia));
+  };
   const labs = w.document.getElementById('homeLabLinks');
   for (let i = 0; i < extraLabs; i++) {
     const link = w.document.createElement('a');
@@ -30,16 +40,17 @@ function home(extraLabs = 0) {
 
 const visible = links => [...links.children].filter(link => !link.hidden);
 
-test('route and company previews show eight, expand in place and restore their order and scroll', () => {
-  const dom = home();
+for (const width of [1280, 860, 390, 320]) test(`route and company previews respect ${width}px and restore their order and scroll`, () => {
+  const dom = home(0, width);
+  const count = width <= 860 ? 4 : 8;
   for (const kind of ['Route', 'Company']) {
     const d = dom.window.document;
     const links = d.getElementById('home' + kind + 'Links');
     const toggle = d.getElementById('home' + kind + 'Toggle');
     const all = [...links.children];
     const preview = visible(links);
-    assert.equal(preview.length, 8);
-    assert.deepEqual(preview, kind === 'Route' ? all.slice(-8) : all.slice(0, 8));
+    assert.equal(preview.length, count);
+    assert.deepEqual(preview, kind === 'Route' ? all.slice(-count) : all.slice(0, count));
     assert.equal(toggle.hidden, false);
     toggle.click();
     assert.equal(visible(links).length, all.length);
@@ -52,6 +63,62 @@ test('route and company previews show eight, expand in place and restore their o
     assert.equal(links.scrollTop, 0);
     assert.equal(toggle.getAttribute('aria-expanded'), 'false');
   }
+  dom.window.close();
+});
+
+test('mobile labs preview four and can expand and collapse in English', async () => {
+  const dom = home(0, 390);
+  const d = dom.window.document;
+  const labs = d.getElementById('homeLabLinks');
+  const toggle = d.getElementById('homeLabToggle');
+  assert.equal(visible(labs).length, 4);
+  assert.equal(toggle.hidden, false);
+  dom.window.eval(read('docs/home-i18n.js'));
+  d.getElementById('homeOrgTabLab').click();
+  d.getElementById('homeLanguageToggle').click();
+  assert.equal(toggle.textContent, 'Show all 7 labs ↓');
+  toggle.click();
+  await new Promise(setImmediate);
+  assert.equal(visible(labs).length, 7);
+  assert.equal(toggle.textContent, 'Collapse labs ↑');
+  toggle.click();
+  await new Promise(setImmediate);
+  assert.equal(visible(labs).length, 4);
+  assert.equal(toggle.textContent, 'Show all 7 labs ↓');
+  dom.window.close();
+});
+
+test('crossing the mobile breakpoint updates previews while preserving expanded lists', () => {
+  const dom = home();
+  const d = dom.window.document;
+  const routes = d.getElementById('homeRouteLinks');
+  const companies = d.getElementById('homeCompanyLinks');
+  const labs = d.getElementById('homeLabLinks');
+  const labToggle = d.getElementById('homeLabToggle');
+  const routePreview = visible(routes);
+  const companyPreview = visible(companies);
+  dom.resizePreview(860);
+  assert.deepEqual(visible(routes), routePreview.slice(-4));
+  assert.deepEqual(visible(companies), companyPreview.slice(0, 4));
+  assert.equal(visible(labs).length, 4);
+  assert.equal(labToggle.hidden, false);
+  for (const kind of ['Route', 'Company', 'Lab']) d.getElementById('home' + kind + 'Toggle').click();
+  for (const width of [861, 390]) {
+    dom.resizePreview(width);
+    for (const links of [routes, companies, labs]) {
+      assert.equal(visible(links).length, links.children.length);
+    }
+    assert.equal(labToggle.hidden, width > 860);
+  }
+  for (const kind of ['Route', 'Company', 'Lab']) d.getElementById('home' + kind + 'Toggle').click();
+  assert.equal(visible(routes).length, 4);
+  assert.equal(visible(companies).length, 4);
+  assert.equal(visible(labs).length, 4);
+  dom.resizePreview(861);
+  assert.deepEqual(visible(routes), routePreview);
+  assert.deepEqual(visible(companies), companyPreview);
+  assert.equal(visible(labs).length, 7);
+  assert.equal(labToggle.hidden, true);
   dom.window.close();
 });
 

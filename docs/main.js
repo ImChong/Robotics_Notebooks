@@ -7468,7 +7468,11 @@
       });
   }
 
-  // ── 首页「更多路线」折叠：默认只展示里程碑最新的 8 条纵深路线 ──────────────
+  // ── 首页路线预览：桌面 8 个、窄屏 4 个，纵深路线优先展示最新里程碑 ──────
+  var homePreviewMedia = null;
+  try {
+    homePreviewMedia = window.matchMedia('(max-width: 860px)');
+  } catch { /* 无 matchMedia 时沿用桌面预览，窄屏样式仍提供首屏兜底 */ }
   var routeToggle = document.getElementById('homeRouteToggle');
   var routeLinks = document.getElementById('homeRouteLinks');
   var mainRouteCount = document.getElementById('heroMainRouteCount');
@@ -7543,13 +7547,21 @@
     links.style.setProperty('--links-sb', (links.offsetWidth - links.clientWidth) + 'px');
   }
 
+  function syncHomePreviewItems(links, attribute, expanded, latest) {
+    var items = links.querySelectorAll('a');
+    var count = homePreviewMedia && homePreviewMedia.matches ? 4 : 8;
+    for (var pi = 0; pi < items.length; pi++) {
+      var extra = latest ? pi < items.length - count : pi >= count;
+      items[pi].toggleAttribute(attribute, extra);
+      items[pi].hidden = extra && !expanded;
+    }
+    return links.querySelectorAll('[' + attribute + ']');
+  }
+
   function setHomeRoutesExpanded(expanded) {
     if (!routeToggle || !routeLinks) return;
-    var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
+    var extras = syncHomePreviewItems(routeLinks, 'data-route-extra', expanded, true);
     routeToggle.hidden = extras.length === 0;
-    for (var rti = 0; rti < extras.length; rti++) {
-      extras[rti].hidden = !expanded;
-    }
     routeToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 ' + routeLinks.querySelectorAll('a').length + ' 条纵深路线 ↓';
     if (routeLinks) {
@@ -7812,16 +7824,13 @@
     });
   }
 
-  // 首页「公司路线」卡：默认露出前 8 家，其余由展开按钮控制
+  // 首页「公司路线」卡：桌面露出前 8 家，窄屏前 4 家
   var companyToggle = document.getElementById('homeCompanyToggle');
   var companyLinks = document.getElementById('homeCompanyLinks');
   function setHomeCompaniesExpanded(expanded) {
     if (!companyToggle || !companyLinks) return;
-    var extras = companyLinks.querySelectorAll('[data-company-extra]');
+    var extras = syncHomePreviewItems(companyLinks, 'data-company-extra', expanded, false);
     companyToggle.hidden = extras.length === 0;
-    for (var cti = 0; cti < extras.length; cti++) {
-      extras[cti].hidden = !expanded;
-    }
     companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     companyLinks.classList.toggle('is-expanded', expanded);
     syncHomeLinksScrollbar(companyLinks);
@@ -7839,16 +7848,13 @@
     });
   }
 
-  // 实验室按成立年份从早到晚排序，最多默认展示前 8 个；不足 8 个时全部展示。
+  // 实验室按成立年份排序，预览阈值同为桌面 8 个、窄屏 4 个。
   var labToggle = document.getElementById('homeLabToggle');
   var labLinks = document.getElementById('homeLabLinks');
   function setHomeLabsExpanded(expanded) {
     if (!labToggle || !labLinks) return;
-    var extras = labLinks.querySelectorAll('[data-lab-extra]');
+    var extras = syncHomePreviewItems(labLinks, 'data-lab-extra', expanded, false);
     labToggle.hidden = extras.length === 0;
-    for (var lti = 0; lti < extras.length; lti++) {
-      extras[lti].hidden = !expanded;
-    }
     labToggle.setAttribute('aria-expanded', String(expanded));
     labLinks.classList.toggle('is-expanded', expanded);
     syncHomeLinksScrollbar(labLinks);
@@ -7862,10 +7868,8 @@
       return (Number(a.getAttribute('data-founded-year')) || Infinity)
         - (Number(b.getAttribute('data-founded-year')) || Infinity);
     });
-    labItems.forEach(function (link, index) {
+    labItems.forEach(function (link) {
       labLinks.appendChild(link);
-      link.toggleAttribute('data-lab-extra', index >= 8);
-      link.hidden = index >= 8;
     });
     setHomeLabsExpanded(false);
     labToggle.addEventListener('click', function () {
@@ -7874,6 +7878,19 @@
         setHomeLabsExpanded(expanded);
       }, expanded, labLinks.querySelectorAll('[data-lab-extra]'));
     });
+  }
+
+  function refreshHomeRoutePreviews() {
+    if (routeToggle) setHomeRoutesExpanded(routeToggle.getAttribute('aria-expanded') === 'true');
+    if (companyToggle) setHomeCompaniesExpanded(companyToggle.getAttribute('aria-expanded') === 'true');
+    if (labToggle) setHomeLabsExpanded(labToggle.getAttribute('aria-expanded') === 'true');
+  }
+  if (homePreviewMedia && (routeLinks || companyLinks || labLinks)) {
+    if (typeof homePreviewMedia.addEventListener === 'function') {
+      homePreviewMedia.addEventListener('change', refreshHomeRoutePreviews);
+    } else if (typeof homePreviewMedia.addListener === 'function') {
+      homePreviewMedia.addListener(refreshHomeRoutePreviews);
+    }
   }
 
   // ── 首页入口卡指针光斑：把指针相对卡片的坐标写入 --spot-x / --spot-y（样式见 style.css） ──

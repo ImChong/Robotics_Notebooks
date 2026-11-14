@@ -1498,11 +1498,9 @@ button.home-wiki-heatmap-cell.is-active {
 .home-entry-grid > .home-entry-card-more { height: auto; }
 .home-org-tabs {
   display: flex;
-  flex-wrap: wrap;
   gap: 8px;
 }
 .home-org-tab {
-  min-height: 44px;
   padding: 4px 12px;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -3040,6 +3038,12 @@ button.home-wiki-heatmap-cell.is-active {
   .card-grid, .preview-home-layout, .preview-split-grid, .detail-hero-top, .route-card-grid { grid-template-columns: 1fr; }
   .home-entry-route-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* 首屏及无脚本兜底也只露出 4 个；脚本按同一断点同步 hidden 和展开状态。 */
+  #homeRouteLinks:not(.is-expanded) > a:nth-last-child(n + 5),
+  #homeCompanyLinks:not(.is-expanded) > a:nth-child(n + 5),
+  #homeLabLinks:not(.is-expanded) > a:nth-child(n + 5) {
+    display: none;
   }
   .hero-title { font-size: 2.15rem; }
   .hero-stat-row { gap: 10px; }

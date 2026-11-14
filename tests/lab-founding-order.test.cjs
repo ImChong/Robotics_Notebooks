@@ -19,11 +19,8 @@ test('homepage sorts shuffled labs before choosing up to eight visible entries',
     links.appendChild(link);
   });
   const source = read('docs/main.js');
-  const start = source.indexOf("  var labToggle = document.getElementById('homeLabToggle');");
+  const start = source.indexOf('  // ── 首页路线预览');
   const end = source.indexOf('  // ── 首页入口卡指针光斑', start);
-  w.syncHomeLinksScrollbar = () => {};
-  w.animateHomeLinksToggle = (_card, update) => update();
-  w.labRoutesCard = w.document.getElementById('home-lab-routes');
   w.eval(source.slice(start, end));
   const keys = () => [...links.children].map(link => link.getAttribute('href').split('=')[1]);
   const visible = () => [...links.children].filter(link => !link.hidden);
