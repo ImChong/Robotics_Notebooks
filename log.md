@@ -421,6 +421,15 @@ op: ingest
 - **核验：** 当前官方 `allenai` 仓库纠正评测工具归属；Qwen-VLA 只披露研究结果、尚未找到完整开放代码/权重；区分 TurboVLA 单次推理 32 Hz 与整环频率；区分 Hy-VLA 10k+ h 总数据与 2k+ h 公开数据。
 - **边界：** 未重新通读 15 篇独立原始论文/源码，未运行 15 套基准。各实体只指向对应论文或项目的一手归档；StarVLA 框架和 α 为两篇不同论文，也不更改自动生成的目录/站点导出物。
 
+# 2026-11-14 · ingest · 紧密螺旋橄榄球投掷
+
+- **意图：** 收录爱荷华州立大学 Zaid Mahboob / Bowen Weng 关于 Unitree G1 精确旋转出球的 Humanoids 2026 论文，形成跨动态操作与接触控制的知识导航。
+- **原文：** https://arxiv.org/html/2608.16642v2（已核对 §I–§V 方法、实验、局限）；作者项目页 https://www.zaidmahboob.com/projects/tight-spiral/
+- **关键结论：** 两阶段抛投/随动；MPC 采样优化求解一次约 500 ms，真机使用离线 52 维查表；最高旋转效率 93.6%、最佳球头角 0.286 rad；不能误读为在线 250 Hz MPC 求解。
+- **开放程度：** 论文和演示公开视频；未查到该论文的官方可运行控制器仓库及查表数据，故源码运行时序图明确不适用。
+- **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
+- **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
+
 ## [2026-11-14] ingest | sources/blogs/wechat_guyueju_perceptive_nmpc_convex_decomposition_2026-11-14.md — 感知型 NMPC 高程图凸分解与 Go2 源码核对
 
 - **意图：** 消化用户提供的古月居技术解读 PDF，建立可溯源的感知型 NMPC / 凸踏面几何约束工程入口。
