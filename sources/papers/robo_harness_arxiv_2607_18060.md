@@ -6,13 +6,14 @@
 - **类型：** paper
 - **来源：** arXiv abs / PDF；项目页与 GitHub 交叉核对
 - **原始链接：**
-  - <https://arxiv.org/abs/2607.18060>（v2，2026-07-28 更新；2026-07-20 首发）
+  - <https://arxiv.org/abs/2607.18060>（最新 v3，2026-09-29；旧版 v2 为 2026-07-28）
   - PDF：<https://arxiv.org/pdf/2607.18060>
   - 项目页：<https://www.robo-harness.com/>（CNAME / 静态站；apex `robo-harness.com` 部分环境可能失败）
   - 代码仓：<https://github.com/markli1hoshipu/RoboHarness>
 - **作者：** Jinbang Huang, Yuanzhao Hu\*, Zhiyuan Li\*, Ran Qi\*, Yixin Xiao, Zhanguang Zhang, Mark Coates, Tongtong Cao, Yingxue Zhang（\*实习期间于华为诺亚方舟实验室完成）
 - **机构：** 华为诺亚方舟实验室（Huawei Noah’s Ark Lab）、英属哥伦比亚大学（UBC）、多伦多大学（University of Toronto）、麦吉尔大学（McGill）、二零一二实验室基础模型部（Department of Foundation Model, 2012 Labs）
 - **入库日期：** 2026-08-03
+- **历史版本说明：** 以下早期摘要的 LIBERO-Plus 93.2% 与 LIBERO-LoHo 95.2% 为此前 v2 记载；v3 口径在下方增补，不能混作同一次评测。
 - **一句话说明：** 将 **独立开发的异构机器人策略**（VLA / RL / TAMP 等）封装为可调用 agentic skills，用 **理解 / 记忆 / 自进化** 三类辅助技能做能力边界感知的任务分解与路由，并以 **Memory Bridge** 在策略交接处把机器人引导到下一策略的 in-distribution 状态区——无需联合重训；LIBERO-LoHo 平均成功率 **95.2%**（单策略 π₀.₅ 仅 **6.4%**），LIBERO-Plus 平均 **93.2%**，另含 500 定制任务消融与 135 次真机试验。
 
 ## 开源状态（项目页核查 2026-08-03）
@@ -24,9 +25,14 @@
 - **核对范围：** arXiv HTML v3 §1–9 与附录（任务/记忆桥接/策略配置），并与先前 v2 归档及官方项目页交叉核对。
 - **通读：** 已完成
 
-## 最新版增补（v3，2026-09-29）
+## 最新版增补（v3，2026-09-29，全文 HTML）
 
-- arXiv v3 纳入 VLA、WAM、RL 和 TAMP 异构策略；摘要写明五个公开 benchmark、500 项自定义任务与 135 次真机试验。上文 v2 历史数值仅在对应版本口径下阅读。
+- **原文：** <https://arxiv.org/html/2607.18060>；§3–4 讨论能力适用域、任务分解、Memory Bridge 的样本支持域与 pairwise SVM 进度模型；§5–7 给出评测范围和失败模式；附录 A–D 给出任务模板、Memory Bridge 阈值与基准策略配置。
+- **主结果：** LIBERO Original **98.7%**；LIBERO-Plus **91.9%**（Table 1）；LIBERO-LoHo 进度 **98.2%**、成功 **96.0%**（附录 D.4 Table 6）。对应先前 v2 记录为 **93.2%** 与 **97.5% / 95.2%**，须按 arXiv 版本解释差异。
+- **增补基准：** RMBench 记忆 M(1) **77.0%**、M(n) **77.5%**，整体 **139/180=77.2%**（Table 2、附录 D.2）；BEHAVIOR-1K **仅 6 项指定任务**，SR **0.433**、PS **0.658**（Table 2、附录 D.3），不是完整 1000 任务的成绩。
+- **策略配置：** LIBERO、LIBERO-Plus、RMBench、BEHAVIOR-1K 使用 π₀.₅ + TAMP；LIBERO-LoHo / 消融才加入 Faster-WAM 和 RLinf-OpenVLA（附录 D.1 Table 3）。
+- **真机开销：** 135 次 UR5e 实验中 agent 规划单次 API 平均 **4.6 秒**，每次试验累计附加 **67.4 秒**（§7）；长程成功率不能与实时控制时延混同。
+- **机制边界：** Memory Bridge 使用下一策略的成功轨迹检索 + pairwise ranking SVM，候选目标需满足记忆支持域、进度阈值与可达性约束，不是直接回归成功概率（§4.2.2、附录 C.2）。
 
 ## 核心论文摘录（MVP）
 

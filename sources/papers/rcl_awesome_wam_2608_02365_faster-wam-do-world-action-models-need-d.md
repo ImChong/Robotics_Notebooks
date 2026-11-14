@@ -33,7 +33,7 @@
 - **通读：** 已完成
 - **官方代码：** <https://github.com/TeamFasterwam/FasterWAM> 已开放完整训练/基准评测入口，LICENSE 为 PolyForm Noncommercial 1.0.0；主页权重 Coming soon。
 - **关键机制：** DoT / Lite KV-Fusion 融合视频多层 KV，world-model-only conditioning，retracted 1D-RoPE；单层 action expert。
-- **论文实验：** LIBERO-Plus 78.3%（Fast-WAM 51.5%）；Franka 4 任务平均成功 81.3%（Fast-WAM 80.0%），本地部署 chunk 推理 129 vs 502 ms；RoboTwin 2.0 平均 90.5%。
+- **论文实验：** v2 §3 Table 1–4；LIBERO 平均 **98.3 ± 0.1%**；RoboTwin clean / randomized **90.4 / 90.6%**，匹配 32-action chunk 和 10 denoising steps 时，LIBERO 每 chunk **52.0ms**（Fast-WAM **196.0ms**）；LIBERO-Plus 78.3%（Fast-WAM 51.5%）；Franka 4 任务平均成功 81.3%（Fast-WAM 80.0%），本地部署 chunk 推理 129 vs 502 ms；RoboTwin 2.0 平均 90.5%。
 - **对 wiki 的映射：** [升级后的 Faster-WAM 实体](../../wiki/entities/paper-rcl-2608-02365-faster-wam-do-world-action-models-need-deep-acti.md)；原索引归档保留以便回溯。
 
 ## 对 wiki 的映射

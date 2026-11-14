@@ -64,6 +64,7 @@ flowchart TB
 ## 工程实践
 
 - **输入：** 当前图像、任务目标、任务序列、最近执行历史；输出下一阶段决策及 history。
+- **数据：** 仅使用 LIBERO-Logic 与 BEHAVIOR-1K，后者限定 6 个选定任务；每任务 10 条训练轨迹，剩余用于评测。不能外推到 BEHAVIOR-1K 全任务。
 - **训练：** teacher Qwen3.5-397B-A17B、student Qwen3.5-0.8B，教师筛选每样本 3 条学生候选解释；评测方案在原文 §VI。
 - **系统集成：** PDDL 上层规划生成子任务，pick-and-place 用 motion planning，其余由任务微调 π₀.₅ 执行；监视器作为阶段终止与切换信号。
 - **部署风险：** 1.03/1.74 Hz 为各基准的监测吞吐，并非低层控制频率；不能直接等同于 VLA 控制周期。
@@ -73,10 +74,10 @@ flowchart TB
 | 原文指标 | 数值 | 口径 |
 |---|---:|---|
 | LIBERO 阶段切换完成率 | 96.23% | 表 I，允许 ±3 秒匹配真值 |
-| BEHAVIOR-1K 阶段切换完成率 | 90.18% | 表 II，同指标 |
+| BEHAVIOR-1K 阶段切换完成率 | 90.18% | 表 II，对照 Decision-only 37.72% |
 | LIBERO / BEHAVIOR-1K 推理吞吐 | 1.03 / 1.74 Hz | 表 I–II，测试环境不同 |
 | BEHAVIOR-1K 端到端 / StageGuard / GT transition 成功率 | 0.30 / 0.53 / 0.63 | 表 III，闭环集成 |
-| UR5e / Piper 真机闭环成功 | 18/20 / 16/20 | §VIII，两套不同任务 |
+| UR5e / Piper 真机闭环成功 | 18/20 / 16/20 | §VIII，各 20 次；真机监测约 2.2 Hz |
 
 ## 结论
 

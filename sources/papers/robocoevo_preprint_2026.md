@@ -6,7 +6,7 @@
 - **作者：** Ran Qi, Yixin Xiao, Dawei Wang, Zhiyuan Li, Jinbang Huang, Xuan Zhao, Yintao Ma, Yangzheng Wu, Tongtong Cao, Yingxue Zhang
 - **类型：** paper（尚无可核验论文全文）
 - **官方来源：** <https://behavior1k-champion.com/> 的 References / Citation 区域
-- **公开状态：** 官方明确写为“preprint coming soon”；未提供论文 PDF、arXiv ID、正式项目页或运行代码。
+- **公开状态：** 2026-11-14 再查团队官方 References/BibTeX，仅有题名和作者、“preprint coming soon”；公开网络检索未发现可核验论文 PDF、arXiv ID、正式项目页或运行代码。**HiPhys-RSI 官方技术报告虽然提到 structure–data co-evolution，但不能替代 RoboCoEvo 独立原文**。
 - **入库日期：** 2026-11-14
 - **核对范围：** 团队官方页面所列题目、作者与预印本状态；没有公开的正文可通读。
 - **通读：** 未完成

@@ -98,14 +98,14 @@ sequenceDiagram
 
 | 原文 v2 设定 | Faster-WAM | 对照 |
 |---|---:|---|
-| LIBERO 平均成功率 | 98.3% | 同表内 WAM / VLA |
-| RoboTwin 2.0 clean / randomized | 90.4% / 90.6% | Fast-WAM 91.9% / 91.8% |
+| LIBERO 平均成功率 | **98.3 ± 0.1%** | 四个套件、三次评估（Table 1） |
+| RoboTwin 2.0 clean / randomized | 90.4% / 90.6% | Fast-WAM 91.9% / 91.8%；三次评估均值 |
 | LIBERO-Plus 整体成功率 | **78.3%** | Fast-WAM 51.5%，提升 26.8 pp |
-| RoboTwin 单 chunk 延迟 | **53.2 ms** | Fast-WAM 196.8 ms（受测量口径约束） |
+| RoboTwin 单 chunk 延迟 | **53.2 ms** | Fast-WAM 196.8 ms（受测量口径约束）；LIBERO 为 52.0 vs 196.0 ms |
 | Franka 四任务平均成功率 | **81.3%** | Fast-WAM 80.0% |
 | Franka 部署 workstation 单 chunk 延迟 | **129 ms** | Fast-WAM 502 ms |
 
-论文对比表的非同硬件、非同配置延迟不要直接并列为一个 speedup；完成任务的真实总时间还包括机器人运动和等待。
+原文 v2 Table 1–4：相同 chunk 为 **32 个动作、10 步去噪**；LIBERO-Plus 是同一个 LIBERO checkpoint 在七类扰动上的测试。真实机器人为 Franka Panda，四任务各 100 条示范并评估各 20 次。论文对比表的非同硬件、非同配置延迟不要直接并列为一个 speedup；完整任务耗时还包括机器人运动和等待。
 
 ## 结论
 
