@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, action-conditioning, multi-embodiment, video-generation, policy-evaluation, cosmos, isaac-lab, nvidia, brown, columbia]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2608.18077"
 related:
   - ../methods/generative-world-models.md
@@ -14,6 +14,8 @@ related:
   - ../overview/world-models-route-03-virtual-sandbox.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./robolab.md
+original:
+  - ../../sources/papers/hydra_0_arxiv_2608_18077.md
 sources:
   - ../../sources/papers/hydra_0_arxiv_2608_18077.md
   - ../../sources/sites/hydra-0-nvidia-isaac.md
@@ -38,7 +40,7 @@ summary: "Hydra-0（arXiv:2608.18077，NVIDIA 等）：action flow（图像平�
 | IWS | Interactive World Simulator | 六任务 data-efficiency 评测集 |
 | PSNR | Peak Signal-to-Noise Ratio | 视频重建质量 |
 | FVD | Fréchet Video Distance | 生成分布距离 |
-| DI T | Diffusion Transformer | Wan/Cosmos 视频骨干族 |
+| DiT | Diffusion Transformer | Wan/Cosmos 视频骨干族 |
 | RL | Reinforcement Learning | 本文不训 RL 策略；作评估沙盒 |
 | RGB | Red-Green-Blue | 条件观测帧 |
 
@@ -58,7 +60,7 @@ summary: "Hydra-0（arXiv:2608.18077，NVIDIA 等）：action flow（图像平�
 | **骨干** | Cosmos 2.5；Wan2.2 I2V-A14B / TI2V-5B；LightX2V 四步蒸馏 |
 | **训练数据** | 过滤 **2,202 h** 多具身交互视频 |
 | **部署** | Isaac Lab controller+physics rollout → 几何投影 action flow |
-| **开源** | **确认未开源**（2026-08-20 项目页无代码/权重） |
+| **开源** | **尚未发布代码入口**（2026-11-13 项目页 Code — coming soon） |
 
 ## 核心原理
 
@@ -100,9 +102,14 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 **2026-08-20**）：无公开训练/推理仓库。发布后应补：video-only flow 构造 → mid-training → IWS/RoboLab 微调 → Isaac Lab 投影推理 → 可选逆向 readout 真机环。
+**不适用**（截至 **2026-11-13**，项目页 Code — coming soon）：无公开训练/推理仓库。发布后应补：video-only flow 构造 → mid-training → IWS/RoboLab 微调 → Isaac Lab 投影推理 → 可选逆向 readout 真机环。
 
 ## 工程实践
+
+- 表 3 的 **61.98 FPS / 16×** 为 H100 上纯生成吞吐，关掉 guidance 且排除 VAE 解码；逆向 WAM 使用 50 步 AR teacher，不能把四步 student 数字当作真机控制频率。
+- 训练小时数按相机流切窗统计；最佳配置相对 Cosmos 原始动作条件的 EPE 降幅同时包含骨干差异，条件接口的控制实验应看同 Cosmos 骨干两行。
+- 逆向控制不需要任务专属专家示范，但 readout 仍要配对的真实机器人动作数据；目前是柔性管弯折单任务 POC。
+
 
 | 项 | 建议 |
 |----|------|
@@ -133,7 +140,7 @@ flowchart TB
 
 ## 实验与评测
 
-五 held-out 集（XVLA-Soft-Fold、Deform360、DROID、MolmoAct2、ABC-130k）：action flow 在 PSNR/SSIM/EPE/FID/FVD 全面优于 native Cosmos 2.5 action。RoboLab：**aggregate 26.3% sim vs 26.7% ref**；五策略排序一致；per-episode 一致率 **93%**（κ=0.82）。IWS 六任务：0% 数据 mid-trained 优于 pretrained on LPIPS/EPE/FVD。
+五 held-out 集（XVLA-Soft-Fold、Deform360、DROID、MolmoAct2、ABC-130k）：action flow 在 PSNR/SSIM/EPE/FID/FVD 全面优于 native Cosmos 2.5 action。RoboLab（项目页补充）：**aggregate 26.3% sim vs 26.7% ref**；五策略排序一致；per-episode 一致率 **93%**（κ=0.82）。IWS 六任务：0% 数据 mid-trained 优于 pretrained on LPIPS/EPE/FVD。
 
 ## 结论
 

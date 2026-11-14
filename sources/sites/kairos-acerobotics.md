@@ -40,3 +40,8 @@
 - [`wiki/entities/paper-kairos-native-world-model-stack.md`](../../wiki/entities/paper-kairos-native-world-model-stack.md)
 - [`sources/papers/kairos_arxiv_2606_16533.md`](../papers/kairos_arxiv_2606_16533.md)
 - [`sources/repos/kairos.md`](../repos/kairos.md)
+
+## 当前可访问性复核（2026-11-13）
+
+- 读取官方平台页遇代理隧道403；随后直接浏览器重试仍为ERR_TUNNEL_CONNECTION_FAILED，未取得正文。不把本次失败解释为官网全球下线。
+- 本次开源结论依据已读官方论文与GitHub固定源码；不新增平台正文通读标记，也不以旧SPA壳代表全文。平台页面内容与交互保持未核实。

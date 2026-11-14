@@ -11,7 +11,7 @@ tags:
   - vision-language-action
   - reinforcement-learning
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2605.15964"
 code: https://github.com/EmbodiedCity/WorldVLN.code
 related:
@@ -23,12 +23,13 @@ related:
   - ../overview/vln-open-source-repro-paradigms.md
   - ./paper-uni-lavira.md
   - ./paper-fsd-vln.md
+original:
+  - ../../sources/papers/worldvln_arxiv_2605_15964.md
 sources:
   - ../../sources/papers/worldvln_arxiv_2605_15964.md
   - ../../sources/sites/worldvln-embodiedcity.md
   - ../../sources/repos/worldvln_embodiedcity.md
-summary: "WorldVLN（arXiv:2605.15964）：首个面向空中 VLN 的自回归 World Action Model——潜视频骨干预测短视界世界转移并解码为航点，执行后观测回写闭环；SFT 接地 + Action-aware GRPO；室内外 UAV 基准相对 VLA 成功率约 +12%，报告真机零样本部署。"
-tags: [paper, vln, aerial-navigation, uav, world-action-models, autoregressive, vision-language-action, reinforcement-learning, zju, bit, sdu, tsinghua]
+summary: "WorldVLN（arXiv:2605.15964）：首个面向空中 VLN 的自回归 World Action Model——潜视频骨干预测短视界世界转移并解码为航点，执行后观测回写闭环；SFT 接地 + Action-aware GRPO；室内外 UAV 基准相对 VLA 成功率提高超过12个百分点，报告真机零样本部署。"
 
 ---
 
@@ -63,7 +64,7 @@ tags: [paper, vln, aerial-navigation, uav, world-action-models, autoregressive, 
 |------|------|
 | **潜自回归视频骨干** | 继承大规模 **视频时序先验**；按因果上下文预测 **下一小段潜世界状态**（非整 clip 双向生成） |
 | **动作解码器** | 将潜世界转移 **直接映射为 waypoint 动作段** |
-| **闭环编码** | 执行动作段后，将 **新 egocentric 观测** 写回自回归上下文，支撑长程指令 |
+| **闭环编码** | 执行动作段后，将 **新 egocentric 观测** 写回自回归上下文，形成短程闭环；长程尚待验证 |
 | **Stage 1 SFT** | 指令–视频对 **接地导航动力学**；视频–轨迹对 **监督动作解码** |
 | **Stage 2 Action-aware GRPO** | 多 rollout、**轨迹/任务/参考策略** 段级奖励 + **时间衰减**（强调早期动作对下游观测与成功率的影响） |
 
@@ -91,11 +92,50 @@ flowchart LR
 | **imagine-and-rank** | 多候选想象再排序；间接 |
 | **地面室内 VLN 四范式** | 见 [VLN 开源复现路径](../overview/vln-open-source-repro-paradigms.md)；WorldVLN 聚焦 **UAV + WAM**，与 Habitat/R2R 离散栈互补 |
 
+## 工程实践
+
+- 以 arXiv v1 为论文依据：InfinityStar-8B，每个样本 49 帧（1+3×16），每段16帧对应四个latent位置。部署用真实反馈替换预测上下文。
+- 真机高层推理运行在服务器；Orin NX处理采集、通信和飞控接口，不能称8B模型已完整机载部署。
+- 官方当前已公开训练/推理入口和HF权重链接。`infer/run_server.sh` 用两个 checkpoint 启动；在线请求应设 `allow_future_segments=1`，首帧条件才会立即预测下一段动作。
+- API 返回16条6D cm/deg增量，论文导航抽象为4D；执行前核对单位、角度顺序和坐标系。默认49帧服务窗口不是已验证的任意长程记忆。
+
+## 源码运行时序图
+
+依据[固定提交的源码核查](../../sources/repos/worldvln_embodiedcity.md)，图示默认 latent-to-action 路径；未运行。
+
+```mermaid
+sequenceDiagram
+  participant Client as 客户端
+  participant Entry as infer/run_server.sh
+  participant API as infer/server.py
+  participant World as InfinityStar gen_one_example
+  participant Head as VAE adapter 与 TimesFormer
+  Entry->>API: Uvicorn server:app，加载配置和权重
+  Client->>API: session_id、真实首帧、指令、allow_future_segments
+  API->>API: 创建会话并编码已观测 prefix
+  API->>World: _infer_summed_codes_for_step
+  World-->>API: summed latent codes
+  API->>Head: _stage2_predict_16_actions_for_segment_cm_deg
+  Head-->>API: 滑窗、平均、反归一化的16条动作
+  API-->>Client: 6D 增量 cm/deg
+  Client->>Client: 执行动作并采集实测帧
+  Client->>API: 同一会话追加真实帧
+  API->>API: 清除预测缓存并更新真实历史
+```
+
 ## 实验要点
 
-- **基准：** 项目页展示 **室外（UAV-Flow）** 与 **室内（IndoorUAV）** 仿真，以及 **室内外真机** 部署视频；论文摘要报告相对 **Vision-Language-Action 基线** **成功率提升 12%+**，困难样本优势更大（具体表格以 PDF 为准）。
+- **基准：** 项目页展示 **室外（UAV-Flow）** 与 **室内（IndoorUAV）** 仿真，以及 **室内外真机** 部署视频；论文摘要报告相对 **Vision-Language-Action 基线** **成功率提高超过12个百分点**，困难样本优势更大（具体表格以 PDF 为准）。
 - **分析轴（项目页 Training Analysis）：** WAM 是否比 VLA **更易学**、**自回归** 是否必要、**Action-aware GRPO** 相对纯 SFT 的增益（含定性「更直接改善动作执行」表述）。
 - **迁移：** 摘要强调 **真实无人机零样本** 部署可行性（细节见附录 Real-World Deployment）。
+
+| 基准 | WorldVLN SR | 解释 |
+|---|---|---|
+| UAV-Flow Fixed / Open | 79.12% / 78.02% | 比该设置最强基线高13.51/12.24个百分点，并非逐类别都胜 |
+| IndoorUAV full | 41.76% | π0为27.16%；+14.60个百分点 |
+| 真机 | 室内外部署案例 | 未给完整成功率表，不把仿真SR搬到真机 |
+
+OpenVLA与WorldVLN采用不同原生学习率和训练预算；训练步数对比不是相同算力成本证明。论文承认缺广泛多种子实验，长程、恶劣天气与动态障碍未充分验证。
 
 ## 结论
 
@@ -112,7 +152,7 @@ flowchart LR
 
 - **误区：** 把 WorldVLN 等同于「任意视频生成模型 + 导航头」；其核心是 **短视界、因果、可解码的潜转移**，而非追求整段视觉逼真。
 - **误区：** 认为空中 VLN SOTA 可直接替代 [地面 VLN](../tasks/vision-language-navigation.md) 的 Matterport/R2R 生态；动作空间、动力学与安全约束不同，需分任务评估。
-- **局限：** 航点/低层飞控接口、风扰与感知失效恢复、法规与安全层未在单篇论文中穷尽；代码仓 ingest 时为新建状态，复现以论文与项目页为准。
+- **局限：** 航点/低层飞控接口、风扰与感知失效恢复、法规与安全层未在单篇论文中穷尽；当前代码仓已包含模型服务和训练入口，本次完成相关静态源码核对；尚未复现。
 
 ## 关联页面
 

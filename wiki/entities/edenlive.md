@@ -5,12 +5,15 @@ project: https://vast-eden.ai/?p=edenlive
 code: https://github.com/VAST-AI-Research/EdenLive
 tags: [generative-rendering, real-time-rendering, video-generation, world-models, simulation, embodied-ai]
 status: complete
-updated: 2026-11-02
+updated: 2026-11-13
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ./paper-agentgarten.md
+original:
+  - ../../sources/papers/edenlive_technical_report.md
 sources:
+  - ../../sources/papers/edenlive_technical_report.md
   - ../../sources/sites/edenlive-vast-eden-ai.md
   - ../../sources/repos/edenlive-vast-ai-research.md
 summary: "EdenLive 将上游引擎的状态推进与生成式画面渲染分开：根据参考视频、目标首帧和文本提示生成实时视觉流；官方开放实时推理代码及 5B / 14B 权重，也将机器人视角数据增强列为用途。"
@@ -19,6 +22,10 @@ summary: "EdenLive 将上游引擎的状态推进与生成式画面渲染分开�
 # EdenLive: Real-Time Generative Rendering from Any Visual Reference / 基于任意视觉参考的实时生成渲染
 
 **EdenLive** 是一个生成式渲染器：上游游戏引擎、coding agent 或其他程序维护世界状态、规则和动作，并提供参考视频；EdenLive 根据参考视频、目标首帧和文本提示输出更高细节的视频流。它把“状态如何演化”留给上游，把“状态看起来怎样”交给视频生成模型。
+
+## 一句话定义
+
+引擎维护可执行世界状态，参考视频驱动神经渲染器持续生成可控外观。
 
 ## 英文缩写速查
 
@@ -77,33 +84,46 @@ flowchart TD
 
 ## 源码运行时序图
 
+对应[固定版本0b78d211](../../sources/repos/edenlive-vast-ai-research.md)的实时模型会话；服务由realtime/run.py进入FlashDreams v2 CLI，图展示已核读的模型边界。
+
 ```mermaid
 sequenceDiagram
-    participant U as 用户
-    participant CLI as edenlive.scripts.infer
-    participant Offline as inference.offline
-    participant Data as 数据加载器
-    participant Engine as InferenceEngine
-    participant Strategy as 推理策略与模型
-    participant IO as 结果保存
-    U->>CLI: 指定配置与覆盖参数
-    CLI->>Offline: 加载配置并调用 run_offline_inference
-    Offline->>Offline: 构建模型与运行时插件并加载组件
-    Offline->>Data: 构建加载器并读取批次
-    Data-->>Offline: 参考视频 首帧与文本条件
-    Offline->>Engine: 构建 GenerationRequest 并调用 generate
-    Engine->>Strategy: 按策略分发并生成
-    Strategy-->>Offline: 生成结果
-    Offline->>IO: 保存结果与配置
+  participant R as 实时会话调用者
+  participant S as EdenModelSessionCore
+  participant P as Game5BInferencePipeline
+  participant E as Game5BCtrlEncoder
+  participant O as VideoOutputStream
+  R->>S: reset(prompt,first_frames)
+  S->>P: initialize_cache
+  loop 每个proxy特征块
+    R->>S: step(预编码proxy-DINO)
+    S->>P: generate(AR index,cache,input)
+    P->>E: 首块cover像素与control
+    E-->>P: 首帧stamp、控制特征payload
+    P-->>S: 生成并解码的视频块
+    S->>P: finalize更新缓存/指标
+    S->>O: process输出块
+    S->>S: 验证帧数、推进index
+  end
 ```
 
-对应官方离线入口 [`edenlive/scripts/infer.py`](https://github.com/VAST-AI-Research/EdenLive/blob/main/edenlive/scripts/infer.py)、[`inference/offline.py`](https://github.com/VAST-AI-Research/EdenLive/blob/main/edenlive/inference/offline.py) 和 [`inference/engine.py`](https://github.com/VAST-AI-Research/EdenLive/blob/main/edenlive/inference/engine.py)；该图描述离线入口，实时 WebRTC 服务另有独立入口。
+5B的后续块跳过首帧VAE编码；prompt变化只替换cross-attention KV，保留自注意力历史。本次静态核读，未执行GPU推理。
 
 ### 报告实验与局限
 
 报告表 2 在预热后的单张 H100 上，5B 模型 832×480 达到 73.52 FPS、1280×704 达到 29.80 FPS；计时包括条件编码、生成、解码和传回 CPU，不包括代理场景渲染或网络传输。长视频评估使用约 30 秒片段；不同方法采用各自支持的条件接口，EdenLive 使用动态提示而部分基线使用静态提示，比较时应注意此差异。编码器消融中粗输入的 DreamSim 从 0.5134 降至 0.3675，但细输入重建距离从 0.1049 增至 0.3344，体现外观抑制的取舍。
 
 报告指出对象身份映射仍是隐式的；有界缓存没有专门保存长期外观细节，长时间遮挡或重访场景可能受影响；当前编码器也无法显式调节保留参考细节的层级。
+
+## 结论
+
+EdenLive把规则执行和生成外观接起来，适合已有可运行状态源的交互渲染。
+
+- 用引擎真值检验像素事件，避免把视觉连贯当物理正确。
+- 分开报告模型吞吐、暖首帧和输入到显示延迟；720p H100暖首帧约1.162秒。
+- 为动态prompt优势和自身编码器指标补独立对照。
+- 对遮挡重访与身份对应单独测试，分钟演示不替代量化。
+- 机器人视觉增广需重新核查动作标签与下游控制收益。
 
 ## 工程实践与开源状态
 
@@ -134,6 +154,8 @@ EdenLive 仓库主代码和实时服务采用 Apache-2.0。官方 README 另指�
 - [AgentGarten](./paper-agentgarten.md) — 比较显式引擎状态、共享神经渲染和智能体交互闭环
 
 ## 参考来源
+
+- [技术报告全文复核](../../sources/papers/edenlive_technical_report.md)
 
 - [EdenLive 官方项目页与报告入口](../../sources/sites/edenlive-vast-eden-ai.md)
 - [EdenLive 官方仓库](../../sources/repos/edenlive-vast-ai-research.md)

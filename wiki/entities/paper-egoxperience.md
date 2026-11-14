@@ -3,7 +3,7 @@ type: entity
 project_id: egoxperience
 tags: [paper, spatial-intelligence, perception]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-14
 arxiv: "2610.26625"
 project: "https://ropedia.github.io/EgoXperience/"
 code: "https://github.com/Ropedia/EgoXperience"

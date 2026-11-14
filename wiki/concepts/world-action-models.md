@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-14
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型；含 DreamWAM、FACT、Flex-π、LAWA、Dyna-2 与 Riemann-1.0（全因果动作优先）等实例。"
 related:
   - ../entities/paper-self-evolving-wam-futuring.md
@@ -335,7 +335,7 @@ flowchart TB
 
 **文献实例（分层触觉候选预报 · 接触丰富操作）**：[HiTac-WAM](../entities/paper-hitac-wam.md) 对每个候选 action chunk 预报 **contact→deformation→slip** 层次触觉未来，**排序选优 + 执行期预报验证重规划**；三任务真机 **31.1%→72.2%**（arXiv:2608.19574，中科院自动化所 / ImprintX；**未开源**）。与 [VT-WAM](../entities/paper-vt-wam-visuotactile-contact-rich.md) 联合出动作路线对照。
 
-**文献实例（多流算力柔性 · RGB/DINO/pointmap）**：[Flex-π](../entities/paper-flex-pi.md) 以冻结 Wan VAE **共享编码 RGB 与 3D pointmap**（重建 PSNR 31.1 dB），并联合 DINOv3 语义流；MoT + 流 dropout / cross-modality forcing 使 **单 checkpoint** 覆盖 **56** 种流组合（action-only ~60 ms → full joint ~193 ms）。真机双臂 YAM 相对最强基线最高约 **2–7×**；LIBERO-Plus 80.9% 仍落后强 VLM 骨干；**代码待发布**（arXiv:2608.10860，UW / AI2）。
+**文献实例（多流算力柔性 · RGB/DINO/pointmap）**：[Flex-π](../entities/paper-flex-pi.md) 以冻结 Wan VAE **共享编码 RGB 与 3D pointmap**（重建 PSNR 31.1 dB），并联合 DINOv3 语义流；MoT + 流 dropout / cross-modality forcing 使 **单 checkpoint** 覆盖 **56** 种流组合（分别报告编译 action-only ~60 ms 与 TensorRT joint ~193 ms，配置不同，非同一端到端对照）。真机双臂 YAM 相对最强基线最高约 **2–7×**；v3 修正 prompt 后 LIBERO-Plus 两模式均为 88.6%，与未重跑文献值须分开；代码、权重与数据已公开（arXiv:2608.10860，UW / AI2）。
 
 ### 推理期还滚不滚未来：延迟与部署成本
 
@@ -397,7 +397,7 @@ flowchart TB
 
 **文献实例（72-D 身–手 partial label · PICO mid-training · 人形 WAM）**：[WB-WAM](../entities/paper-wb-wam.md)（arXiv:2609.34199，清华 IIIS / MARS Lab 等）在 **生成式 video 预训练** 中注入 **body/root/Wuji 72-D 物理动作**，从 **1880.2 h** 九源 **部分通道标注** 联合训练 video–action expert，再经 **任务对齐 PICO 22 h** 与 **SONIC 真机 3.37 h** 适配；[HumanoidArena](../entities/paper-humanoidarena.md) **81.9%**、真机五任务 **84.0%**（相对 OpenWAM **80.0%**）；对齐 mid-training 可用 **30 ep/任务** 机端数据超 **100 ep** 直接适配（**73.8% vs 65.0%**）；**代码待发布**（2026-09-30）。
 
-**文献实例（潜空间 foresight · 人形并发家务 loco-manip）**：[ω-0](../entities/paper-omega-0.md) 用 **紧凑未来观测 embedding**（非像素视频重建）耦合 **扩散全身动作 latent**，经 **SONIC** 在 G1 上执行擦桌/拖地/洗衣等 **manipulate-while-moving**；配套 **ω-HOME**（40h+）；11 任务 Omni **SR 81.8% / Progress 90.3%**，显著高于 ψ-0 / DiT4DiT / Fast-WAM 等同协议基线（arXiv:2608.06375，NTU / PKU / BAAI / HKUST-GZ；代码与数据 WIP）。
+**文献实例（潜空间 foresight · 人形并发家务 loco-manip）**：[ω-0](../entities/paper-omega-0.md) 用 **紧凑未来观测 embedding**（非像素视频重建）耦合 **扩散全身动作 latent**，经 **SONIC** 在 G1 上执行擦桌/拖地/洗衣等 **manipulate-while-moving**；配套 **ω-HOME**（40h+）；11 任务 Omni **SR 81.8% / Progress 90.3%**，显著高于 ψ-0 / DiT4DiT / Fast-WAM 等同协议基线（arXiv:2608.06375，NTU / PKU / BAAI / HKUST-GZ；代码、数据与预训练检查点入口已公开）。
 
 **文献实例（移动操作三层对齐 · latent action + Dream Forcing）**：[ABot-M0.5](../entities/paper-abot-m05-mobile-manipulation-wam.md) 以 **Wan2.2** 视频骨干建立 **Video → 帧级 latent action → 可执行动作** 级联，用 **双层 D-MoT** 解耦 **移动/操作** 子空间，并以 **Dream Forcing** 在 **自生成视频 latent** 上训练逆动力学以对齐自回归 rollout；在 **RoboCasa365**（+Condensed Memory **46.6%**）、**RoboTwin 2.0**（**94.1%**）、**LIBERO-Plus 零样本 WAM 对照**（**83.4%**）与真机长程任务上报告领先表现（arXiv:2607.00678，AMAP CV Lab / 阿里巴巴）。
 
@@ -419,7 +419,7 @@ flowchart TB
 
 **平台实例（全模态单栈 · NVIDIA）**：[Cosmos 3](../entities/cosmos-3.md) 在 **MoT** 内用 **Generator** 同时暴露 **policy、forward dynamics、inverse dynamics**，用 **Reasoner** 做具身 CoT 与 2D 轨迹规划，并支持 **Reasoning + Generation**（先文本轨迹再视频再生）；与 Cascaded「先完整视频计划再解码动作」相比，更强调 **同一 checkpoint 多任务 I/O 配置** 与 **开源 serving 栈**（arXiv:2606.02800）。代际与和 [Newton](../entities/newton-physics.md) 的分工见 [NVIDIA Cosmos](../entities/nvidia-cosmos.md)。
 
-**文献实例（语义/像素分层记忆 · 多模态可控接口）**：[WorldScape Policy 2.0](../entities/paper-worldscape-policy-2.md) 把「历史」拆成两条互不混用的通路——**VLM 分支** 维护 **长短期事件记忆**（global-history / local-active / event-boundary 三视图 + 紧凑全历史 bank，按 \(1-\cos\) 语义变化自动选边界，无需在线标注），检索后经**逐 token 门控**融合进 4 个隐式规划 token；**causal DiT 分支** 只留近 **4 个 chunk** 干净 VAE latent 作视觉 prefill，目标图/演示视频则作 **rollout 全程持久前缀**。训练用 **semantic forcing**（T5 事件字幕做 stop-grad 语义靶，\(\lambda_s=0.001\)）把 `fine` 模式的显式语义搬进 `auto` 模式隐通路。配套 **ManipEvent-5M**（4.89M 事件段 / 744K episode / 512M 帧）做事件级预训练。RoboTwin 2.0 标准榜 **94.3%**（已饱和，对同档仅 +0.2~+0.7），但 **C2R OOD 协议 47.9%**（Fast-WAM 39.1）与真机视觉提示任务（叠积木目标图/演示视频 **60%/70%** vs \(\pi_{0.5}\) 10%/20%）差距显著；消融显示记忆三件套的增益主要落在 randomized（**+8.81**）而非 clean（+5.14）。代码与权重截至 2026-08 未发布（arXiv:2607.18840，Manifold AI / 清华 / 上交）。
+**文献实例（语义/像素分层记忆 · 多模态可控接口）**：[WorldScape Policy 2.0](../entities/paper-worldscape-policy-2.md) 把「历史」拆成两条互不混用的通路——**VLM 分支** 维护 **长短期事件记忆**（global-history / local-active / event-boundary 三视图 + 紧凑全历史 bank，按 \(1-\cos\) 语义变化自动选边界，无需在线标注），检索后经**逐 token 门控**融合进 4 个隐式规划 token；**causal DiT 分支** 只留近 **4 个 chunk** 干净 VAE latent 作视觉 prefill，目标图/演示视频则作 **rollout 全程持久前缀**。训练用 **semantic forcing**（T5 事件字幕做 stop-grad 语义靶，\(\lambda_s=0.001\)）把 `fine` 模式的显式语义搬进 `auto` 模式隐通路。配套 **ManipEvent-5M**（4.89M 事件段 / 744K episode / 512M 帧）做事件级预训练。RoboTwin 2.0 标准榜 **94.3%**（已饱和，对同档仅 +0.2~+0.7），但 **v3 C2R 63.3%**（clean-only 训练，clean/randomized 均值；Fast-WAM 39.9%，本文 randomized 单项 41.58%）与真机视觉提示任务（叠积木目标图/演示视频 **60%/70%** vs \(\pi_{0.5}\) 10%/20%）差距显著；消融显示记忆三件套的增益主要落在 randomized（**+11.84**）多于 clean（+6.18）。代码与预训/后训检查点已公开（2026-11-13 核对；arXiv:2607.18840，Manifold AI / 清华 / 上交）。
 
 **文献实例（生数产品线 · L2 实时交互）**：[Vidu S2](../entities/paper-vidu-s2.md)（arXiv:2609.11638）分 **S2-Avatar**（720p、Self-Replay Forcing）与 **S2-Editing**（流式四参考图编辑）；[Demo](https://vidu.com/vidu-stream) + API + [GitHub 文档仓](https://github.com/shengshu-ai/Vidu-S) 可用，**权重/本地推理未开源**——属 [GWM L2](../entities/paper-gwm-first-principles.md) 交互世界，非 WAM 动作输出。
 
@@ -590,7 +590,7 @@ flowchart TB
 - [Dyna-2](../entities/dyna-2.md) — 百万小时人视频 Joint WAM 跨具身缩放（闭源）
 - [Riemann-1.0](../entities/paper-riemann-1.md) — 全因果动作优先 AR WAM；RoboCasa365 62.6%、真机 85% SR（闭源）
 - [GE-Act 2.0（CoAE+SVP+IDM · KASO · 30k h 缩放）](../entities/paper-ge-act-2.md) — AgiBot 零样本 OOD G1-OP 44.1% / G2-90D 31.1%；104 ms 部署；代码待发布（arXiv:2609.05588）
-- [OpenWAM](../entities/paper-openwam.md) — 模块化 Infra + Study 提炼预训练三原则；OpenWAM-α LIBERO 99.3% / RoboTwin2.0-Full 89.0%；全栈已开源（arXiv:2609.07398）
+- [OpenWAM](../entities/paper-openwam.md) — 模块化 Infra + Study 提炼预训练三原则；OpenWAM-α LIBERO 99.3% / RoboTwin2.0-Full 93.60%；全栈已开源（arXiv:2609.07398）
 - [Being-H0.7](../methods/being-h07.md)
 - [Being-M0.7（人形潜空间 WAM）](../entities/paper-being-m07-humanoid-latent-wam.md)
 - [EgoWAM（野外 egocentric 人数据 · WAM 协同训练）](../entities/paper-egowam-egocentric-human-wam-co-training.md)

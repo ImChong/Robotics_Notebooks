@@ -2,7 +2,7 @@
 type: entity
 tags: [course, nvidia, sim2real, vla, groot, lerobot, isaac-lab, manipulation, so101, cosmos, domain-randomization]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 related:
   - ./nvidia-physical-ai-learning.md
   - ./nvidia-getting-started-isaac-lab.md

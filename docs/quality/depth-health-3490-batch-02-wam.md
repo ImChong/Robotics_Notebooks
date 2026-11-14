@@ -2,6 +2,8 @@
 
 > 优先级按 `roadmap/README.md` 的**研究方向历史起点**倒序，不按文件创建/修改日期。本批从最新主题 `roadmap/depth-wam.md` 开始。
 
+> **后续验收（2026-11-14）：** 本页保留 Batch 02 的历史记录；WAM 的 62 个知识节点现已全部核验为 3/3，完整前后分数、Stage 与原文证据见[本轮验收报告](wam-depth-health.md)。
+
 ## 范围与基线
 
 - **路线**：`roadmap/depth-wam.md`，**Stage 0–5**。

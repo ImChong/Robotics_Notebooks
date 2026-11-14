@@ -30,3 +30,14 @@
 - 升格 [Motubrain 论文实体](../../wiki/entities/paper-motubrain.md)
 - 部署实证 [WAM 实时异步](../../wiki/entities/paper-wam-realtime-async.md)
 - 前作索引 [Motus](../../wiki/entities/paper-sa-2512-13030-motus-a-unified-latent-action-world-model.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2604.27792v5 PDF（2026-07-15），§1–§5 全文（方法、加速与异步执行、仿真、世界模型、真机、局限和贡献者）；图表按文字层核对，参考文献浏览；官方 README 与资源树；未观看演示或运行模型。
+- **通读：** 已完成
+- §2：text stream 无输出头，H-bridge 仅中间 50% 层联合注意力。Stage 1 只更新视频；Stage 2 冻结视频、只更新动作支，但保留 video/action 两项 loss。每臂相对 EEF 为 3位置+6旋转+1夹爪=10D，仅夹爪归一化。
+- Non-AR 与 AR 后训练分别训练；V2A 掩码是 video 不读 action，action 读 video/text。推理先短 joint prefix，再冻结视频并缓存 K/V，仅更新 action；不能笼统称完全不执行视频支。
+- 表 2：Non-AR 基准 4.90s→噪声采样 2.90→compile 0.98→FP8 0.88→cache 0.20→V2A 0.09，累计 54.4×。不能把 5Hz 缓存阶段当作完整联合推理的固定速度。
+- 表 3–4：Clean 95.80、Rand 96.08；训练 2,500 clean+25,000 randomized，5Hz 视频/10Hz 动作。表 5 EWMScore 63.77，README 导语 64.87 与其表不一致。
+- §3.3：关东煮 5 次、7 动作、98.54；调酒 7 次、15 动作、97.34；插花 10 次、10 动作、83.30。数值是按重试次数折扣的步骤评分，不是完整任务二值成功率。
+- `shengshu-ai/Motubrain` 固定提交 `a845f4b93f430c578398bc65b1614b79f17088cd` 只有文档/PDF/图片等，无可运行训练推理脚本；前作 Motus 代码不能充作此模型实现。

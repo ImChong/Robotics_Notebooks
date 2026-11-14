@@ -11,7 +11,7 @@
 - **项目页：** <https://dstate.github.io/odeworld_website/>
 - **许可：** 截至 **2026-08-16** GitHub **未挂 LICENSE**（`license: null`）
 - **入库日期：** 2026-08-16
-- **一句话说明：** PT-Flow 连续时间 latent 世界模型的官方推理仓：`demo_infer.py` 用 `torchdiffeq.odeint`（RK4）在 LIBERO / AgiBot 示例上做 ODE rollout、RAE 解码视频与 PCA 速度场可视化；五套 HF 预训练权重。**训练脚本未随仓发布。**
+- **一句话说明：** PT-Flow 连续时间 latent 世界模型的官方推理仓：`demo_infer.py` 用 `torchdiffeq.odeint`（RK4）在 LIBERO / AgiBot 示例上做 ODE rollout、RAE 解码视频与 PCA 速度场可视化；五套 HF 预训练权重。截至 2026-11-13 已含 RAE、PT-Flow 与 Goal-Predictor 训练入口，旧结论见历史日期。
 
 ## 入口速查（对齐 README / `demo_infer.py`）
 
@@ -24,9 +24,9 @@
 | `--case-ids case_00` | 只跑单个 case；输出 `outputs/<dataset>/<case_id>/` |
 | `models/DINOv2PTFlow.py` | PT-Flow：`latent_encode` / `delta_decouple` / `forward_vmodel` / `rollout_ode` |
 | `models/DINOv2RAE.py` | DINO 特征 ↔ 图像解码 |
-| `models/DINOv2GoalPred.py` | 语言 → 目标图像（仅 LIBERO 权重） |
+| `models/DINOv2GoalPred.py` | 语言 → 目标 DINO 特征（仅 LIBERO 权重；图像由 RAE 解码） |
 | `models/DINOv2Latent.py` | 动力学 encoder/decoder 组件 |
-| `assets/libero` / `assets/agibot` + `manifest.json` | demo PNG 与指令 |
+| `assets/examples/libero` / `assets/examples/agibot` + `manifest.json` | demo PNG 与指令 |
 
 ## 与本仓库知识的关系
 
@@ -42,3 +42,12 @@
 - 论文摘录：[`sources/papers/odeworld_arxiv_2607_27924.md`](../papers/odeworld_arxiv_2607_27924.md)
 - 项目页：[`sources/sites/odeworld-website.md`](../sites/odeworld-website.md)
 - 沉淀 **[`wiki/entities/paper-odeworld.md`](../../wiki/entities/paper-odeworld.md)**
+
+## 2026-11-13 静态源码复核
+
+- **版本：** `fc1a7278d873d28726e26d8b3f71c89ac99ea80a`。
+- **核对范围：** README 全文；`demo_infer.py`；`DINOv2PTFlow.py` 的 Imgoal forward/rollout 路径；`DINOv2Latent.py`、`DINOv2GoalPred.py`；`train_dinov2ptflow.py` 与 LIBERO shell 入口。未执行训练、下载权重或做 GPU 性能复现。
+- Demo 从 `assets/examples/<dataset>/manifest.json` 读图，加载 PT-Flow/RAE，LIBERO 另加载 goal predictor；后者返回目标特征，并非 RGB。`rollout_ode` 用 RK4，速度乘 `max_time_length`，先解码回 DINO，再 RAE 分块出帧。
+- 当前 README 有数据 schema（LIBERO 7D action / 9D proprio、AgiBot 16D）及三个训练阶段。`scripts/train_dinov2ptflow_libero.sh` 由 torchrun 启动八进程，`max_time_length=50`，显式 `--disable_encoder_detach`；这与类默认 detach 不同，须保留配置边界。
+- 训练入口构建 `ImgVelEngine.build_vel_dataloader` 和 `Dinov2PTflowImgoal`，包装 DDP，前向返回重建/JVP 速度损失，反传、裁剪、AdamW、分组 LR schedule，保存模型和优化器。未把它称作已公开完整 X-VLA 控制实现。
+- 仓树未找到独立 LICENSE；模型类 Hub metadata 标注 apache-2.0，适用范围仍需核对，不默认整仓许可。

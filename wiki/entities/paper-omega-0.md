@@ -14,7 +14,7 @@ tags:
   - baai
   - hkust-gz
 status: complete
-updated: 2026-10-12
+updated: 2026-11-14
 github: "https://github.com/gentlefress/Omega-0"
 dataset: "https://huggingface.co/datasets/keycharon/omega-HOME"
 arxiv: "2608.06375"
@@ -31,13 +31,15 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ../methods/vla.md
   - ./unitree-g1.md
+original:
+  - ../../sources/papers/omega0_arxiv_2608_06375.md
 sources:
   - ../../sources/papers/omega0_arxiv_2608_06375.md
   - ../../sources/sites/omega0-github-io.md
   - ../../sources/repos/omega-0.md
   - ../../sources/datasets/omega-home.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
-summary: "ω-0（arXiv:2608.06375，NTU/PKU/BAAI/HKUST-GZ）：潜空间未来观测 embedding + 扩散全身动作 latent 的并发人形 loco-manipulation WAM；ω-HOME 40h+；G1 上 11 任务 Omni 成功率 81.8%；代码与数据页面已公开；预训练权重仍待发布。"
+summary: "ω-0（arXiv:2608.06375，NTU/PKU/BAAI/HKUST-GZ）：潜空间未来观测 embedding + 扩散全身动作 latent 的并发人形 loco-manipulation WAM；ω-HOME 40h+；G1 上 11 任务 Omni 成功率 81.8%；代码与数据页面已公开；当前README已链接预训练检查点。"
 ---
 
 # ω-0：潜空间预测式人形并发 Loco-Manipulation WAM
@@ -53,8 +55,8 @@ summary: "ω-0（arXiv:2608.06375，NTU/PKU/BAAI/HKUST-GZ）：潜空间未来�
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | WAM | World Action Model | 世界动力学与动作联合建模的策略范式 |
-| ω-HOME | ω Household Omnimodal Multimodal Evidence | 本文 40.3 h 家务人形多模态数据集 |
-| SONIC | Scalable Online Neural whole-body Integrated Control | 低层全身 motion latent 解码 / 遥操作接口 |
+| ω-HOME | ω-HOME（官方数据集名，无展开） | 本文 40.3 h 家务人形多模态数据集 |
+| SONIC | SONIC（官方控制器名） | 低层全身 motion latent 解码 / 遥操作接口 |
 | VLA | Vision-Language-Action | π-0.5 / GR00T 等对照基线范式 |
 | DiT | Diffusion Transformer | 动作 latent 去噪骨干（\(x_0\)-prediction） |
 | RTC | Real-Time Chunking | 训练/部署用干净动作前缀对齐 receding-horizon |
@@ -78,7 +80,7 @@ summary: "ω-0（arXiv:2608.06375，NTU/PKU/BAAI/HKUST-GZ）：潜空间未来�
 | **骨干** | Qwen3-VL-2B（动作 VLM）+ V-JEPA（当前帧）+ Wan（未来 latent 监督）+ T5（语言）+ action DiT |
 | **数据** | ω-HOME：40.3 h、4827 episodes、24 任务；评测 11 任务 × 10 trials 单多任务策略 |
 | **训练** | 三阶段；8×H100；公共运动经 SONIC 仿真回放接地 |
-| **开源** | **代码与数据已公开**：GitHub 含训练、推理、采集和 G1 部署代码；ω-HOME 已有 Hugging Face 数据集页。**预训练权重仍待发布**（官方仓库 README TODO）。 |
+| **开源** | **代码与数据已公开**：GitHub 含训练、推理、采集和 G1 部署代码；ω-HOME 已有 Hugging Face 数据集页，当前 README 已链接预训练检查点。 |
 
 ## 核心原理
 
@@ -116,7 +118,30 @@ flowchart TB
 
 ## 源码运行时序图
 
-官方仓库现已公开：[gentlefress/OMEGA-0](https://github.com/gentlefress/Omega-0)（[源码归档](../../sources/repos/omega-0.md)）。README 提供动作 token 预训练、WAM 微调、G1 数据采集与部署流程；预训练权重仍待发布，且训练依赖外部模型资产。
+对应[2ca35a3f源码核读](../../sources/repos/omega-0.md)。入口为python -m omega.inference.run；真实客户端另走omega_real与SONIC，本次未启动硬件。
+
+```mermaid
+sequenceDiagram
+  participant C as 机器人客户端
+  participant S as Service /act
+  participant I as WAMInference.predict
+  participant M as WAM.sample
+  participant P as predictor
+  C->>S: session、观测、RTC上下文
+  S->>S: 校验请求、锁定当前session
+  S->>I: predict
+  I->>I: 视角/图像/语言/state预处理
+  I->>I: 采样噪声、按请求填上一预测未执行前缀
+  I->>M: sample(init_action)
+  M->>P: VLM、T5、VJEPA条件与动作噪声
+  P-->>M: 动作采样结果
+  M-->>I: pred_actions
+  I-->>S: 反归一化float32动作chunk
+  S->>S: 检查session未失效
+  S-->>C: ActionChunk
+```
+
+当前finetune默认30步、无state、normalization none，论文附录25步、47Dstate与混合归一化不能直接套用；以导出metadata和实际检查点为准。
 
 ## 工程实践
 
@@ -128,9 +153,12 @@ flowchart TB
 | 评测读法 | 同时看 SR / 子任务 Score / Task Progress；长程任务 Progress 更能反映中途失败 |
 | 数据接地 | 公共运动必须经控制器回放过滤不可执行轨迹，再进动作扩散 |
 | RTC | 训练暴露干净前缀；部署缓存上一 chunk 前几帧作时间锚 |
-| 复现现状 | 代码与数据集页面已公开，可检查流程并按自有资产运行；预训练权重仍待发布，不能视为开箱复现。 |
+| 复现现状 | 代码与数据集页面已公开，可检查流程并按自有资产运行；当前README已链接预训练检查点，不能视为开箱复现。 |
 
 ## 实验与评测
+
+**口径：** Omni在5类移动重任务使用外视，不是全部ego条件下的提升；下游11任务仍用约2220示范后训。Score最大41为全任务子项总和，非每任务41分。附录模型前向约.14秒，H25仅执行前8动作再重规划；30Hz为低层动作节拍，不是模型查询频率。
+
 
 ### 主表（11 任务均值）
 
@@ -162,7 +190,7 @@ flowchart TB
 3. **真影响：数据接地管线** — SONIC 回放把人/公共运动变成可训监督。
 4. **次要代价：依赖低层** — 能力与复现都绑 SONIC / 灵巧手栈。
 5. **部署读法：Omni > Ego；V-JEPA 作当前帧** — 有外视就用；当前帧编码器别跟未来监督编码器盲目统一。
-6. **工程读法：代码已公开、权重待发** — 可读训练/部署实现；完整复现仍需获取或训练依赖模型与检查点。
+6. **工程读法：代码与检查点已公开** — 可读训练/部署实现；完整复现仍需获取或训练依赖模型与检查点。
 
 ## 与其他工作对比
 
@@ -172,9 +200,12 @@ flowchart TB
 | 结构 | Joint query + action DiT | Joint 双 DiT | **Cascaded** prior → action expert | 臂心或非统一全身 |
 | 动作空间 | SONIC 全身 latent | SONIC 统一 token | 64D SONIC token + 2D 手部开合 chunk | 多偏操作或部分全身 |
 | 任务焦点 | 家务并发 loco-manip（11 项） | 九项全身 loco-manip 实时 | 新版三项真机 + 六项 SIMPLE | 操作榜或 G1 部分全身 |
-| 开源 | WIP | 未开源 | 项目页/PDF | DiT4DiT 已开源 |
+| 开源 | 代码/权重/数据入口已公开 | 未开源 | 项目页/PDF | DiT4DiT 已开源 |
 
 ## 局限与风险
+
+- **配置差异：** 当前训练recipe的无state/30步与论文Full有差别；未实测该发布重现主表的程度。
+- **统计范围：** 每任务10trial、无多训练seed置信区间；human-data transfer仍需微调/接地，非任意人类视频零样本控制。
 
 - **发布完整度有限：** 训练和部署代码已公开；README 仍将预训练检查点列为待发布，训练需配置多个外部模型资产。
 - **平台绑定：** 主结果在 G1 + Inspire + SONIC；跨机需重新接地。

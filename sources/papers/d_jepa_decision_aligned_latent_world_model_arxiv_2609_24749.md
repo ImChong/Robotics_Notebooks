@@ -26,3 +26,14 @@
 
 - [paper-d-jepa-decision-aligned-latent-world-model](../../wiki/entities/paper-d-jepa-decision-aligned-latent-world-model.md)
 - [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../../wiki/overview/embodied-station-2026-10-18-26-papers-technology-map.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2609.24749v1（2026-09-21）正文§1–§7全文及必要附录A/B（协议、目标、任务接口），图表文字层、参考文献浏览；另读项目页、根README及固定版本模块与cached replay源码。未运行仿真/模型。
+- **通读：** 已完成
+- 训练以同初态候选的执行结果监督，部署只用预测特征/序数、无outcome标签；这是有监督决策对齐，不是无标签JEPA预测自动变好。拟合/校准/测试按start身份隔离。
+- ±.2修正保证跨base gap>.4的顺序不翻转，仅是score信赖范围，不是任务安全保证。Exact ordinal realization将排序写入terminal半径，100%恢复rank是代数接口一致性，不是100%任务成功、重新学习物理或单骨干蒸馏。
+- PushT225/256=87.89为校准组合，ordinal realization223/256=87.11与relational一致，不能把最高组合分放到ordinal模式。confirmation按预先规则筛出非平凡决策边界，不是随机全部PushT状态。
+- Granular CD .358不优于DINO .341，严格阈值成功率更高不代表全部指标优。Driving七个困难场景、三source logs、平均PDMS95.34不是全NAVSIM成功率；真机两任务100配对trial为81对64。
+- 形状是未见几何，七视觉条件家族已参与task-local fitting、仅start新；不能称视觉扰动种类零样本。Reacher transport只作校准表示诊断，物理成功来自relational选择。
+- 当前轻量包能CPU cached-feature replay；实际sim/robot执行是另一流程，robot设备controller/calibration需使用者提供，未在本次运行。

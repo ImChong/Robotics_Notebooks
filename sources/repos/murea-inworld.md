@@ -30,3 +30,13 @@
 
 - [Murea-InWorld 实体页](../../wiki/entities/paper-murea-inworld.md)
 - [生成式世界模型](../../wiki/methods/generative-world-models.md)
+
+## 固定版本源码核读（2026-11-13）
+
+- **版本：** [82a247184ad757d399215d41eb46e4d19c462acb](https://github.com/Murea-Labs/InWorld/tree/82a247184ad757d399215d41eb46e4d19c462acb)
+- **核对范围：** 根与agent README、agent.py全文；loop.turn/TurnLoop.run、perceive/plan/render/commit，providers/video/murea的backend/generate/Fast提交轮询下载路径、critic.adjudicate完整函数。
+- **通读：** 已完成
+
+MureaMind.play→loop.turn→TurnLoop依次perceive/plan/check/stage_assets/write_prompt/render/commit；reflect是单独API，Python调用不会在play内自动运行。视频provider先查/v1/models，再POST/v1/videos、轮询GET、取/content。公开Fast续写上传前17帧且不同时带参考图，返回后裁掉重复前缀；完整Murea的latent continuation+references为另一路未发布后端。
+
+critic对生成帧与计划做结构化判读，修改选项/目标和部分物品；HTTP调用的commit回调检查快照是否仍有效，Python直接调用默认保存。代码Apache2.0，Fast派生权重遵循LTX-2.x Community License。未运行服务、第三方API或GPU。

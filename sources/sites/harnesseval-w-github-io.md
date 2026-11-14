@@ -43,3 +43,9 @@
 - [`wiki/entities/paper-harnesseval-w.md`](../../wiki/entities/paper-harnesseval-w.md) — 论文实体与选型读法
 - [`sources/papers/harnesseval_w_arxiv_2608_16859.md`](../papers/harnesseval_w_arxiv_2608_16859.md) — 论文摘录
 - [`sources/repos/harnesseval-w.md`](../repos/harnesseval-w.md) — 仓库入口
+
+## 官方页复核（2026-11-13）
+
+- **核对范围：** 静态正文、覆盖数字、方法、人对齐口径与资源入口；动态leaderboard/gallery未在此抓取中加载，不据空表断言无榜单。
+- **通读：** 已完成
+- 页面有2026-09-01 Public Set与V1切换入口，README明确100例公共集已发；330/5940为论文快照。论文相关.93与71.7%准确率是不同统计层次。

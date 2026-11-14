@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, world-action-models, category-hub, survey]
 status: complete
-updated: 2026-10-18
+updated: 2026-11-13
 summary: "世界模型动作后果专题 · 01 — WAM 直接执行、修正基础 VLA 还是部署前筛选？并链 DreamWAM / FACT / Flex-π / RTCF 邻近坐标。"
 related:
   - ./robot-world-models-action-consequence-technology-map.md
@@ -17,6 +17,10 @@ related:
   - ../entities/paper-rift-wam.md
   - ../entities/paper-wam-realtime-async.md
   - ../entities/paper-lawa.md
+original:
+  - ../../sources/papers/dswam_arxiv_2607_04927.md
+  - ../../sources/papers/dynawm_arxiv_2607_02604.md
+  - ../../sources/papers/dreamsteer_arxiv_2607_02865.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/papers/fact_arxiv_2608_10232.md
@@ -32,6 +36,10 @@ sources:
 
 > **分类页**：对应 [具身智能研究室 · 世界模型动作后果专题](https://mp.weixin.qq.com/s/a5ZDDv70CLDfY98mfviWuA) 的 **01 WAM 动作后果预测** 段；总地图见 [动作后果技术地图](./robot-world-models-action-consequence-technology-map.md)。
 
+## 一句话定义
+
+按世界模型在控制环中的职责，区分直接生成动作、重生成基础策略动作和部署前筛选候选动作，避免把所有「带未来预测」的方法当作同一种接口。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -40,6 +48,20 @@ sources:
 | VLA | Vision-Language-Action | 常被修正、筛选或后训练的上层策略 |
 | WM | World Model | 预测动作后果的潜变量或视频模型 |
 | MoE | Mixture of Experts | 异构动作模态的专家混合架构 |
+
+## 为什么重要
+
+同为世界模型增强策略，三类方法对基础 VLA 权重、训练数据和在线候选数量的要求不同。先定接口，再比成功率，才能估计迁移成本与延迟。
+
+## 核心原理：执行、修正与筛选
+
+| 职责 | 训练与部署接口 | 一手证据 |
+|---|---|---|
+| 直接执行 | 视频/动作共训；部署观测→动作块，规划器可选 | DSWAM §3，折叠对照关闭 System 2 |
+| 在线重生成 | 各 base VLA 分别缓存动作并训练 DynaWM；部署 base chunk + 历史→新 chunk | DynaWM §3.5；不共享一套跨 VLA 修正器权重 |
+| 部署筛选 | 组件冻结，VLA 样本+原语→WM→VLAC 排序 | DreamSteer §3–4；13 候选串行约 13 秒 |
+
+邻近工作的表格用于导航，具体版本、指标与开放资源以各独立论文节点为准。
 
 ## 本组工作
 
@@ -60,6 +82,16 @@ sources:
 | Rift（邻近） | [../entities/paper-rift-wam](../entities/paper-rift-wam.md) | 免视频 rollout：一次 anticipation prefill 写未来 K/V；LIBERO 98.8% / 247.9 ms |
 | LAWA（邻近） | [../entities/paper-lawa](../entities/paper-lawa.md) | 潜动作作测试时未来意图；RoboCasa 65.6/80.8%；相对 Joint −42.9% 延迟 |
 
+## 工程实践
+
+1. 先写当前观测、动作/状态单位与采样率；分清输出是候选动作、未来观测还是价值分数。
+2. 分列训练成本与部署关键路径。DSWAM 的视频监督留在训练；DynaWM 每个基础策略需适配权重；DreamSteer 需支付候选数乘 rollout/打分成本。
+3. 同协议记录任务成功率、动作忠实度及端到端延迟；模型内单模块时间不能直接当控制频率。对接触/几何，还要区分传感输入、训练 teacher 和推理输出。
+
+## 局限与风险
+
+这三类是职责坐标而非互斥架构。DynaWM 的原文主要是 Isaac Sim 动态拦截，DSWAM 是真机折叠与双臂仿真，DreamSteer 是单臂 OOD 筛选；成功率不可跨协议排名。候选覆盖、视觉误排与观测到执行延迟分别构成不同瓶颈。
+
 ## 关联页面
 
 - [World Action Models](../concepts/world-action-models.md)
@@ -75,4 +107,16 @@ sources:
 
 ## 参考来源
 
+- [一手全文核对：dreamsteer_arxiv_2607_02865](../../sources/papers/dreamsteer_arxiv_2607_02865.md)
+
+- [一手全文核对：dynawm_arxiv_2607_02604](../../sources/papers/dynawm_arxiv_2607_02604.md)
+
+- [一手全文核对：dswam_arxiv_2607_04927](../../sources/papers/dswam_arxiv_2607_04927.md)
+
 - [wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
+
+## 推荐继续阅读
+
+- [DSWAM 原文](https://arxiv.org/abs/2607.04927)
+- [DynaWM 原文](https://arxiv.org/abs/2607.02604)
+- [DreamSteer 原文](https://arxiv.org/abs/2607.02865)

@@ -53,3 +53,13 @@
 | [paper-worldscape-moe-heterogeneous-action](../../wiki/entities/paper-worldscape-moe-heterogeneous-action.md) | 同 Manifold AI；上游异构动作可控视频 WM |
 | [robotwin](../../wiki/entities/robotwin.md) | 主评测基准（50 任务 / C2R 协议） |
 | [agibot-world-2026](../../wiki/entities/agibot-world-2026.md) | ManipEvent-5M 最大公开真机来源（285.56M 帧） |
+
+## 固定版本复核（2026-11-13）
+
+- **版本：** [148ebfb2a84184eeac2c9ccf36d5b4f9f90e6aa8](https://github.com/manifoldai-research/WorldScape-Policy/tree/148ebfb2a84184eeac2c9ccf36d5b4f9f90e6aa8)
+- **核对范围：** 根README、cli/evaluate.py、rollout/runner.py与session.py、evals/agilex/server.py全文；WorldScapePolicy.condition/sample、AutoConditioner.forward/promote_pending完整函数；checkpoint transform检查入口。
+- **通读：** 已完成
+- 代码/预训和RoboTwin后训检查点、训练recipes/评测/真机工具已发布，旧占位结论不再适用。完整ManipEvent自采数据未见一并开放。
+- CLI加载native checkpoint与transform，模式匹配。PolicyRuntime.predict暂存动作及两类记忆，执行成功commit后才推进；异常discard不推进记忆。Policy.sample路由Auto/T5、视觉prefill后交WAM插件采样。Auto先VLM特征与规划token，再历史检索门控。
+- README RoboTwin当前评测使用14D绝对关节动作、24/48 horizon、9帧历史，与论文双臂20D EEF原理描述分属不同本体adapter，不能无条件套同一动作归一化。HDF5 replay与manifold实时执行分开，未调用物理硬件。
+- 代码Apache2.0，模型/数据依赖按独立许可；静态核读未训练或复现论文成绩。

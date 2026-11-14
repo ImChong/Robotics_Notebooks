@@ -184,3 +184,14 @@
 - 在 **[`wiki/concepts/world-action-models.md`](../../wiki/concepts/world-action-models.md)** 的 Joint WAM 族补一条文献实例。
 - 在 **[`wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md`](../../wiki/overview/wm-action-consequence-category-01-wam-action-prediction.md)** 本组工作表补一行。
 - 在 **[`wiki/entities/paper-worldscape-moe-heterogeneous-action.md`](../../wiki/entities/paper-worldscape-moe-heterogeneous-action.md)** 补同团队上下游关系（上游可控视频 WM ↔ 下游 WAM 策略）。
+
+## 全文复核（2026-11-13）
+
+- **核对范围：** arXiv:2607.18840v3（2026-10-20）正文§1–§5全文、图表；无研究附录。另读官方项目页、README与固定版本推理/记忆事务源码。
+- **通读：** 已完成
+- v3更新C2R为63.3（clean85.04/random41.58），不是旧稿47.9；C2R分数是clean与random均值，并非纯random成功率。标准94.3用full clean+random训练，不与clean-only消融绝对值比较。
+- LSTM在本文指long short-term memory组织，不是特指经典门控循环LSTM单元。事件记忆检索发生在VLM推理token生成后，不把检索结果说成先作为VLM自回归上下文输入；边界变化是启发式，不是GT事件检测保证。
+- Auto用高层指令+VLM，Interactive用T5细指令，两者选一路；语义forcing仅训练时将T5 caption作冻结目标，无推理时GT子任务泄漏。Action flow在raw动作空间，不在adapter embedding中。
+- v3 SF带来62.43→63.31（+.88pp），Stage1 51.72→59.62；STM/LTM/LSR的贡献按新表5记录，LTM clean84.92→84.74略降，不宣称所有指标单调变好。
+- 真机五任务/六提示配置、各20次，原子指令reset与完整清桌序列分开；π0.5在历史依赖任务做了输入扩展。单臂/双臂和不同任务的ICL不等于任意新本体零样本控制。
+- 没有完整控制频率/时延表；4.89M是事件段而非4.89M独立轨迹，约744kepisode，自采PiPER训练占45%、EgoDex段最多但仅3%采样。

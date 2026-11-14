@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, world-action-models, latent-world-model, manipulation, humanoid, bimanual, astribot, foundation-model, flow-matching]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-13
 arxiv: "2607.11270"
 related:
   - ../concepts/world-action-models.md
@@ -16,6 +16,8 @@ related:
   - ./paper-being-m07-humanoid-latent-wam.md
   - ./paper-physmani-dynamic-manipulation-world-model.md
   - ../methods/generative-world-models.md
+original:
+  - ../../sources/papers/lumo2_arxiv_2607_11270.md
 sources:
   - ../../sources/papers/lumo2_arxiv_2607_11270.md
   - ../../sources/sites/astribot-lumo2-project-page.md
@@ -145,11 +147,25 @@ flowchart TB
 
 完整 URL 清单见 [sources 归档](../../sources/sites/astribot-lumo2-project-page.md)。
 
+## 结论
+
+Lumo-2 的证据重点是渐进动作语义对齐、紧凑动力学预测和历史动作记忆的组合，而非部署时生成完整像素视频。
+
+1. 按数据区分 VLW、VLA 与 VLWA 监督，不能给无动作人视频添加伪造的真值动作。
+2. 93.53ms 属单 RTX 5090 的端到端推理延迟，控制周期还要包含采集、传输与执行。
+3. 真机表按子任务进度评分；星号任务从域内子任务起点分段测试，不能等同整项长程成功率。
+4. 未来帧编码的潜变量探测是离线诊断，部署上下文只能来自已观测历史和预测。
+5. 对齐改善存在例外：表 6 躯干 XYZ 与夹爪误差均上升，应按控制通道验证。
+
+## 源码运行时序图
+
+**不适用。** 已获取的官方论文未提供模型训练/推理仓库入口；项目演示与视频 URL 不能代替可运行实现。本次没有执行模型或真机验证，项目页开放状态另见来源核查。
+
 ## 局限与风险
 
-- **权重与代码：** 截至 2026-07 技术报告 **未声明公开权重/训练代码**；复现依赖后续发布与 Astribot 生态接入。
+- **权重与代码：** 截至 2026-11-13 论文及浏览器可读项目页未提供已确认的专属权重/训练代码入口；复现依赖后续发布与 Astribot 生态接入。
 - **评测绑定平台：** 22 项任务与 BAR 延迟均在 **Astribot S1 + 特定相机/预处理** 上报告；跨平台迁移需重新验证动作空间与视觉分布。
-- **重建–控制张力未消失：** Stage2 夹爪通道重建误差略升；极端精密夹持仍可能受 tokenizer 几何限制。
+- **重建–控制张力未消失：** Stage2 躯干 XYZ（0.00038→0.00043m）与夹爪通道重建误差上升；极端精密夹持仍可能受 tokenizer 几何限制。
 - **与像素 WAM 的权衡：** \(\phi\) 轻量但 **不可直接可视化** 未来帧；调试需依赖 probe 任务与 PCA 可视化（论文 Fig. 9–10）。
 
 ## 关联页面

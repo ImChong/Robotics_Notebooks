@@ -68,3 +68,13 @@
 - 目前只做世界预测，统一 world-action 模型是后续方向。
 
 **对 wiki 的映射：** [paper-causalwm](../../wiki/entities/paper-causalwm.md) 局限与风险节
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2609.23184v2（2026-09-22）正文§1–§7及Limitations、附录A/B全文与图表文字层，参考文献浏览；另读官方项目页、根README及inference.py/sampler.py关键完整函数，未运行GPU/下载gated权重。
+- **通读：** 已完成
+- 31,230.8h源视频→19,916.2h保留，同轨迹多视角只计一次；不是31K全用于训练。16B与LTX-2.3-22B去音频的精确计量未披露。
+- 固定flow→pointmap→RGB是生成顺序约束，不是发现未知因果图；报告未提供同骨干去CoT对照，不能隔离榜单增益归因。现模型不输出可执行动作。
+- 66.04是2026-09-11的36模型快照，领先dream4act65.66为.38分；89.9对89.7为本地评测且CWM改写prompt。附录geometry/action/order等细项低于Cosmos，不能称全面胜出。
+- 1/1/1为每stage一步、全链三步，14.81s不是实时控制。当前inference.validate_arguments明确每stage至少2步（LTX2Scheduler限制）；sampler仅要求两个sigma端点，两层约束不可混淆。当前发布模型只覆盖单视角语言TI2V，不能直接复现TriWorldBench动作三视角。
+- 当前源码生成pointmap连首帧都从噪声预测，不额外提供P0；flow首帧是零流哨兵，RGB0 latent固定且解码后恢复lossless首帧。pointmap以首帧中位深度归一，是相对camera_t坐标非米，无有效性mask，不当传感真值。

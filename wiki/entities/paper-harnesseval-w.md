@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, benchmark, world-models, evaluation, agentic, harness, video-generation, open-source, mirros]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-13
 arxiv: "2608.16859"
 code: https://github.com/mirros-lab/harnesseval-w
 related:
@@ -17,12 +17,14 @@ related:
   - ./cosmos-3.md
   - ./minimax-h3.md
   - ./paper-gigaworld-1-policy-evaluation.md
+original:
+  - ../../sources/papers/harnesseval_w_arxiv_2608_16859.md
 sources:
   - ../../sources/papers/harnesseval_w_arxiv_2608_16859.md
   - ../../sources/sites/harnesseval-w-github-io.md
   - ../../sources/repos/harnesseval-w.md
   - ../../sources/blogs/mirros_harnesseval.md
-summary: "HarnessEval-W（arXiv:2608.16859，MirroS）：把 LLM harness 接到交互式世界模型评测——按案例路由技能、子代理取证、父代理校验，产出可审计证据树；330 例 × 18 模型，Intentional 与人类 BT 排序 ρ=0.93；评测代码已开源，HF 全量案例待发。"
+summary: "HarnessEval-W（arXiv:2608.16859，MirroS）：把 LLM harness 接到交互式世界模型评测——按案例路由技能、子代理取证、父代理校验，产出可审计证据树；330 例 × 18 模型，Intentional 与人类 BT 排序 ρ=0.93；评测代码已开源，HF已发100例公共子集，全量330不应默认可下载。"
 ---
 
 # HarnessEval-W（Agentifying the Evaluation of Visual Worlds）
@@ -37,20 +39,20 @@ summary: "HarnessEval-W（arXiv:2608.16859，MirroS）：把 LLM harness 接到�
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| HarnessEval-W | HarnessEval for Worlds | 本文面向交互式世界模型的 agentic 评测基准 |
+| HarnessEval-W | HarnessEval-W（官方框架名） | 本文面向交互式世界模型的 agentic 评测基准 |
 | I2V | Image-to-Video | 图生视频接口族；主榜 Prompt I2V 分组 |
 | VLM | Vision-Language Model | 子代理共用的视觉–语言后端（论文实验钉 GPT-5.5） |
 | BT | Bradley–Terry | 由 5000 对 A/B 聚合成模型强度的人类参考序 |
 | WBench | Interactive Video World Model Benchmark | 对照协议：Event Edit / Causal Fidelity |
 | CLI | Command-Line Interface | 官方入口 `harnesseval eval/plan/generate/verify` |
-| HF | Hugging Face | 全量案例托管仍在 README TODO |
+| HF | Hugging Face | 已发布100例公共子集，区别论文330例 |
 
 ## 为什么重要
 
 - **固定视频量纲测不出「干预是否被执行」。** VBench 类质量分、[WorldScore](./paper-worldscore.md) 的相机/布局协议、[EWMBench](./ewmbench.md) 的操纵三轴，都预先规定测什么；交互世界每个案例的动作、时序与可见状态不同，统一提问会问错或漏问。
 - **分数要能被审计。** 证据树记录测了哪条技能、哪件工具提供视觉 grounding、哪条子问题失败——这才对排故和后续训数据有用。
 - **评测器本身被评过。** Intentional ρ=0.93、Physical 成对准确率相对最近 WBench 协议从 31.9% 提到 71.7%，三次重复包络窄 4.9×，说明「拆成可 grounding 的子问题」同时提高人对齐与稳定性。
-- **工程可跑、案例未完全托管。** CLI + 固定 plans + 捆绑 demo 已开源；330 例上 HF 与托管提交服务截至入库日仍待发布。
+- **工程可跑、案例未完全托管。** CLI + 固定 plans + 捆绑 demo 已开源；100例公共子集与贡献页已发；论文330全量与托管代评另核。
 
 ## 核心信息
 
@@ -60,19 +62,19 @@ summary: "HarnessEval-W（arXiv:2608.16859，MirroS）：把 LLM harness 接到�
 | **Venue** | arXiv 预印本（2026-08-17） |
 | **规模** | 330 例；18 模型；项目页称 5,940 条带完整推理迹的 scored rollouts |
 | **接口族** | Prompt I2V / Native action / Camera pose（案例意图翻译成各模型原生输入） |
-| **开源** | **已开源评测管线**；全量 HF 案例 **待发布**（见下） |
+| **开源** | **已开源评测管线**；已发100例公共子集（区别论文330例） |
 
 ## 开源状态
 
-核查日：**2026-08-18**（[项目页](https://mirros-lab.github.io/HarnessEval-W)、[GitHub](https://github.com/mirros-lab/harnesseval-w) README / `src/harnesseval/`）。
+核查日：**2026-11-13**（[项目页](https://mirros-lab.github.io/HarnessEval-W)、[GitHub](https://github.com/mirros-lab/harnesseval-w) README / `src/harnesseval/`）。
 
 | 产物 | 状态 |
 |------|------|
 | 评测代码、11 个 skill、planner/runner、metric backends | **已开源** |
 | `benchmark/plans`、捆绑 demo `runs/example/results_example` | **已开源** |
-| Hugging Face 全量 / 子集案例 | **待发布** |
+| Hugging Face案例 | **100例公共子集已发布**；与论文330例分开 |
 | 托管提交评测服务 | **待发布** |
-| 项目页 Leaderboard 2026-08-18 V1 | **Coming Soon** |
+| 项目页 Leaderboard | 已有Public Set与V1入口；当前静态抓取不含动态表 |
 | 许可 | README 宣称 Apache-2.0；GitHub License 字段未识别 |
 
 ## 流程总览
@@ -134,40 +136,36 @@ Probe family 只有 Transition+Persistence 六类；Observation 不是单独 fam
 
 ## 源码运行时序图
 
-官方仓 [MirroS-Lab/HarnessEval-W](https://github.com/mirros-lab/harnesseval-w) 提供 **评测运行时**（不是训练世界模型）。归档见 [`sources/repos/harnesseval-w.md`](../../sources/repos/harnesseval-w.md)：
+对齐[ed4ccc64固定源码](../../sources/repos/harnesseval-w.md)的README评测入口；静态阅读，未调用VLM或GPU。
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Dev as 开发者
-    participant Env as 三 conda 环境<br/>main / metrics / pavrm
-    participant CLI as harnesseval.cli
-    participant Man as benchmark/manifest_selected_330.json
-    participant Plan as benchmark/plans<br/>pipeline/planner.py
-    participant Gen as 模型生成视频<br/>runs/.../generation
-    participant Inv as eval inventory
-    participant Run as pipeline/runner.py<br/>skills/*
-    participant MB as metric_backends + VLM
-    participant Score as score.py + report.py
-    participant Out as evaluation/summary.json
-    Dev->>Env: conda env create -f docs/installation/*.yml
-    Dev->>CLI: 配置 harnesseval.env
-    Dev->>CLI: harnesseval eval --results generation ...
-    CLI->>Man: 读案例清单
-    CLI->>Plan: 使用固定 plan-root（或 harnesseval plan）
-    CLI->>Gen: 扫描已生成 rollout
-    CLI->>Inv: eval inventory --execute
-    Inv-->>Run: inventory_root
-    Run->>MB: 按 skill 调 VLM / 物理 / CLIP 等
-    MB-->>Run: 子问题分 + 诊断
-    Run->>Score: metric_cache
-    Score->>Out: summary / leaderboard / LEADERBOARD.md
-    Dev->>CLI: harnesseval verify run
+  participant C as harnesseval.cli
+  participant P as run_model_eval_pool
+  participant R as pipeline.runner
+  participant S as skill_intentional_change_vlm
+  participant V as VLM backend
+  participant F as score / report
+  C->>P: eval委托shell/pool main
+  P->>P: prepare清单inventory与INPUT_AUDIT
+  P->>R: run-skills 按固定case计划展开
+  R->>S: evaluate 视频与case
+  alt Analyze缓存未命中
+    S->>V: 初始图/动作推断expected_spec
+    V-->>S: 案例级分析
+  end
+  S->>V: Verify视频，统一回答8个子问题
+  V-->>S: judgment与证据
+  S-->>R: 分数、诊断、缓存指纹
+  R-->>P: metric bundle与audit
+  P->>F: eval score --execute
+  F->>F: core/observation各50%，生成summary/leaderboard
+  C->>C: 独立verify run检查完整性
 ```
 
-- **最短复现：** 装三环境 → 配 `harnesseval.env` → 对 `runs/example/results_example` 跑 `harnesseval eval` 再 `verify run`。
-- **全量 330：** 需自备各模型生成视频；清单默认 `benchmark/manifest_selected_330.json`。HF 全量案例待发，不要假设 `download.py` 式一键拉数。
-- **源码运行时序图适用范围：** 已发布 **评测栈 + demo**；官方代评服务与 HF 数据集 **不适用**。
+固定计划只依赖案例；当前Intentional的8个问题由一次Verify响应给出，并非8个独立并行调用。正常路径仅缓存完整后计分，diagnostic不直接进final_score；源码另有evidence cap辅助函数但不是当前score入口。
+
+最短路径是在仓根使用README显式清单与`--plan-root benchmark/plans`，装main/metrics/pavrm环境并配置VLM。100例公共子集、论文330例与demo各有清单，不能混报。
 
 ## 工程实践
 
@@ -213,14 +211,14 @@ sequenceDiagram
 
 ## 结论
 
-**一句话总判：HarnessEval-W 的真贡献是「可审计的案例级评测工作流」和「人对齐的干预理解」；Overall 冠军只是 I2V 先验的副作用，读分项与证据树比读总分更有用。**
+**一句话总判：HarnessEval-W 的真贡献是「可审计的案例级评测工作流」和「人对齐的干预理解」；Overall冠军与接口、数据和采样设置有关，读分项与证据树比读总分更有用。**
 
 1. **先选轴** — 要交互干预/长程持久用本页；要多场景运镜用 [WorldScore](./paper-worldscore.md)；要操纵末端/场景守恒用 [EWMBench](./ewmbench.md)。
 2. **Overall 偏 I2V** — Seedance / Wan 2.7 领先，主要因为 Intentional/Physical 需要语义后果预测；相机/原生动作族可能在 Revisit/Offscreen 反而更好。
 3. **好看与物理几乎不相关** — 不要用 Obs-Q 代理 Obs-P 或 Trans-P。
-4. **微调会换能力而不是单调变强** — 动作微调常抬探索/回访、打掉指令式物理干预。
+4. **微调会换能力而不是单调变强** — 发布系统对比呈现探索/回访提升与干预退化，但不是受控训练因果消融。
 5. **复现成本在 VLM 后端** — demo 可本地跑通流程；对齐论文数字需要同一 VLM 配置与全量生成视频。
-6. **活案例库尚未托管** — 代码齐、HF 与官方提交服务未齐；引用「330 例可下载」前再核 README TODO。
+6. **发布范围分别记录** — 代码与100例公共集已发，官方代评仍待发；330例论文结果不能当作公共子集成绩。
 
 ## 与其他工作对比
 
@@ -234,10 +232,13 @@ sequenceDiagram
 
 ## 局限与风险
 
+- **聚合契约：** 当前实现final=0.5×core均值+0.5×observation均值，非所有技能简单平均；缺失必需证据不可随意填零或高分。总榜再对case平均，案例构成会影响排序。
+- **版本差异：** 图10匹配2秒/动作的数值与正文差值不完全一致，引用须标来源；不同模型分辨率/帧率/接口也不同。未来自扩技能与递归自改进属于路线，不能视为已验证功能。
+
 - **不是机器人策略 / 操纵基准** — 无成功率、无 EEF、无 sim↔real；勿与 RoboDojo 混读。
-- **评测器依赖专有 VLM** — 换后端可能改变绝对分；论文稳健性实验仍在 GPT 族内重复。
+- **评测器依赖专有 VLM** — 换后端可能改变绝对分；稳健性仅同GPT-5.5温度0三次；人对齐只覆盖9模型两维。
 - **案例合成管线引入分布** — 图像生成 + LLM 校验的世界不是真机日志；物理干预再强也仍是「生成世界里的物理」。
-- **HF 与活榜未齐** — 论文表是快照；项目页 V1 Coming Soon。
+- **公共集与论文快照不同** — 已发100例，论文330例；动态榜单要注明版本。
 - **技能库会变** — 自称 living benchmark；跨版本比较必须钉 `benchmark/plans` 与 skill 版本。
 
 ## 关联页面
@@ -264,7 +265,7 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [HarnessEval-W 项目页](https://mirros-lab.github.io/HarnessEval-W) — 覆盖数字与（待上线）榜
+- [HarnessEval-W 项目页](https://mirros-lab.github.io/HarnessEval-W) — 覆盖数字与公共集/论文快照榜
 - [MirroS-Lab/HarnessEval-W](https://github.com/mirros-lab/harnesseval-w) — 安装、demo eval、贡献新 case/skill
 - [HarnessEval 博客](https://mirros.ai/blog/harnesseval) — harness 概念与自我进化评测叙事
 - Ying et al., *WBench*, [arXiv:2605.25874](https://arxiv.org/abs/2605.25874) — 论文对照协议

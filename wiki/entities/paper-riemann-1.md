@@ -18,7 +18,7 @@ tags:
 - survey-curated
 - embodied-wm-six-routes
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 venue: Riemann Dynamics Technical Report 2026
 related:
 - ../concepts/world-action-models.md
@@ -38,6 +38,8 @@ related:
 - ../tasks/locomotion.md
 - ../overview/embodied-wm-six-routes-technology-map.md
 - ../overview/embodied-wm-route-action.md
+original:
+- ../../sources/papers/riemann_1_0.md
 sources:
 - ../../sources/papers/riemann_1_0.md
 - ../../sources/sites/riemann-1-0-website.md
@@ -47,7 +49,7 @@ sources:
 - ../../sources/papers/rcl_awesome_wam_catalog.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
 - ../../sources/blogs/wechat_embodied_ai_lab_wm_six_routes_survey_2026-08-25.md
-summary: Riemann-1.0（黎曼动力，2026-07 技术报告）：全因果自回归 WAM，先出动作再条件化未来视觉 latent，同一模型兼任策略与世界仿真；232K+ h 人/UMI/机三阶段预训练。RoboCasa365 62.6%、RoboTwin 94.3%、LIBERO 99.0%；天机 Marvin 真机均 85.0% SR。确认未开源。
+summary: Riemann-1.0（黎曼动力，2026-07 技术报告）：全因果自回归 WAM，先出动作再条件化未来视觉 latent，同一模型兼任策略与世界仿真；232K+ h 人/UMI/机三阶段预训练。RoboCasa365 62.6%、RoboTwin 94.3%、LIBERO 99.0%；天机 Marvin 真机均 85.0% SR。尚未找到专属实现/权重入口。
 project_id: riemann-1
 arxiv: '2608.27033'
 ---
@@ -58,10 +60,10 @@ arxiv: '2608.27033'
 
 | 机构 | 黎曼动力（Riemann Dynamics）；母公司昆仑万维（Kunlun Wanwei） |
 |------|--------------------------------------------------------------|
-| 类型 | 公司技术报告（**无 arXiv**） |
+| 类型 | 公司技术报告 / **arXiv:2608.27033v1（2026-08-27）** |
 | 真机平台 | **天机 Marvin** 双臂 |
 | 预训练数据 | **232K+ h**（人视频约 86% / UMI·外骨骼约 5% / 机轨迹约 9%） |
-| 开源 | **确认未开源**（2026-08-29） |
+| 开源 | 截至2026-11-13未找到专属可运行实现或权重入口 |
 
 ## 一句话定义
 
@@ -77,7 +79,6 @@ arxiv: '2608.27033'
 | PSR | Progress Success Rate | 按中间里程碑计的过程成功率 |
 | UMI | Universal Manipulation Interface | 手持夹爪示教，桥接人–机动作空间 |
 | VAE | Variational Autoencoder | Wan 视觉压缩；LAM 也是帧对 VAE |
-
 | VLA | Vision-Language-Action | 视觉–语言–动作策略 |
 | IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
 | WM | World Model | 环境前向预测模型 |
@@ -114,7 +115,7 @@ flowchart TB
   end
 ```
 
-## 核心方法
+## 核心原理与方法
 
 ### 全因果分解（式 1）
 
@@ -192,6 +193,11 @@ Held-out（每任务 10 trial）：组合泛化 **65%**，OOD（魔方入盒 / �
 
 ## 工程实践
 
+- 本页方法与评测以已通读arXiv v1为准；232K+是项目页原始数据小时，不等于过滤后可获取语料。
+- 结构化因果限制跨时间信息访问，局部生成block仍可双向。state来自实测/回放；仿真视频不能替代状态转移模型和动力学验证。
+- 主真机表未完整给出评测次数，held-out各10次另列；本次为原文与资源静态核查，未复现指标。
+
+
 | 项 | 读法 |
 |----|------|
 | 选型 | 若目标是 **「一个 ckpt 既出动作又能滚动作条件视频」**，本页是闭源参照；要复现栈转 [DreamWAM](./paper-dreamwam.md) / [DiT4DiT](./paper-dit4dit-video-action-model.md) |
@@ -202,11 +208,11 @@ Held-out（每任务 10 trial）：组合泛化 **65%**，OOD（魔方入盒 / �
 
 ## 源码运行时序图
 
-**不适用** — 截至 2026-08-29，项目页仅 Paper PDF；GitHub 组织只有官网静态站与无关的 Matrix-Game 3.5，无可辨识训练 / 推理入口。
+**不适用** — 截至2026-11-13，项目页提供arXiv和演示；已核查的GitHub静态站仓库无可辨识训练/推理入口，不能用网站源码代替模型调用图。
 
 ## 局限与风险
 
-- **确认未开源 / 无 arXiv：** 定量全部来自公司 PDF 与项目页；语料、清洗与评测协议不可审计。
+- **开放证据不足：** 已有arXiv v1，但未核实到模型源码、权重或处理后语料；完整训练和评测仍不能从公开资源复现。
 - **无消融表：** 人视频小时数、λ 课程、因果顺序 vs 联合去噪，均无定量拆解。新闻里「加人视频 48.2→62.6」**未出现在 PDF**，勿当论文结果引用。
 - **真机 n 小：** held-out 每任务 10 trial；厨房 90% 相对 G0.5 35% 的落差很大，但缺第三方复现。
 - **饱和榜易误读：** LIBERO / RoboTwin 的 0.1–0.2 pp 不足以支撑「全面 SOTA」叙事。
@@ -221,7 +227,7 @@ Held-out（每任务 10 trial）：组合泛化 **65%**，OOD（魔方入盒 / �
 2. **动作优先** 是它和 LingBot-VA / DreamZero 的分界；复述时先画式 1，再谈 DiT。
 3. **人视频在这里是对齐原料**（LAM + 3D 手），不是 Dyna-2 那种「零机器人预训练缩放律」。
 4. 工程上按 **闭源参照** 读：可指导数据课程与双接口产品形态，不能当基线复现。
-5. 下一步观察：是否上 arXiv、是否放出评测协议/子集、消融是否补上。
+5. 下一步观察：是否放出评测协议/子集和实现、消融是否补上。
 
 ## 关联页面
 

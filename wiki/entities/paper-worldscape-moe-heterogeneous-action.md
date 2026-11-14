@@ -9,7 +9,7 @@ tags:
   - tsinghua
   - manifold
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 arxiv: "2607.03964"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md

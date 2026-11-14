@@ -13,7 +13,7 @@ tags:
   - tsinghua
   - sjtu
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2607.18840"
 related:
   - ./manifold-worldscape-r2si.md
@@ -29,11 +29,13 @@ related:
   - ./agibot-world-2026.md
   - ../methods/generative-world-models.md
   - ../methods/vla.md
+original:
+  - ../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md
 sources:
   - ../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md
   - ../../sources/repos/worldscape-policy.md
   - ../../sources/sites/manifoldai-research-worldscape-policy.md
-summary: "WorldScape Policy 2.0（arXiv:2607.18840，Manifold AI + 清华 + 上交）：VLM 分支管事件记忆（global-history / local-active / event-boundary 三视图检索 + 门控）、DiT 分支管短期视觉记忆，semantic forcing 把事件字幕语义蒸馏进隐式子目标；ManipEvent-5M 4.89M 事件段；RoboTwin 2.0 94.3%、C2R 47.9%、真机 shell game 75%；代码与权重截至入库日未发布。"
+summary: "WorldScape Policy 2.0（arXiv:2607.18840，Manifold AI + 清华 + 上交）：VLM 分支管事件记忆（global-history / local-active / event-boundary 三视图检索 + 门控）、DiT 分支管短期视觉记忆，semantic forcing 把事件字幕语义蒸馏进隐式子目标；ManipEvent-5M 4.89M 事件段；RoboTwin 2.0 94.3%、C2R 63.3%、真机 shell game 75%；代码与预训/后训检查点已公开。"
 ---
 
 # WorldScape Policy 2.0（Reasoning-Augmented Memory WAM · arXiv:2607.18840）
@@ -60,12 +62,12 @@ summary: "WorldScape Policy 2.0（arXiv:2607.18840，Manifold AI + 清华 + 上�
 
 ## 为什么重要
 
-- **给「WAM 的记忆该长什么样」一个可证伪的分工假设：** 此前路线是静态观测（无记忆）、滑窗（短期视觉）、全历史视觉检索（如 MemoryWAM）。本文主张**语义与像素分层**，并用消融支持：三件套齐备时 randomized 成功率 **17.22% → 26.03%**，增益的大头在 OOD 而非干净场景。
+- **给「WAM 的记忆该长什么样」一个可证伪的分工假设：** 此前路线是静态观测（无记忆）、滑窗（短期视觉）、全历史视觉检索（如 MemoryWAM）。本文主张**语义与像素分层**，并用消融支持：三件套齐备时 randomized 成功率 **29.74% → 41.58%**，增益的大头在 OOD 而非干净场景。
 - **把「可控接口」从纯文本扩到多模态并在数据侧兑现：** 目标图（first-view / third-view）与演示视频（human→robot / robot→robot）不是推理时的临时拼接，而是在 **ManipEvent-5M** 里成对标注、Stage 1 就作为可互换控制条件预训练——这是真机上跨本体迁移从 **10–20%** 抬到 **60–70%** 的直接来源。
 - **事件级监督替代 episode 级指令：** 同一 episode 内所有片段共享一条指令是具身数据的普遍弱点；本文用「先定边界、再定语义」的两段式标注把 4.89M 段绑到各自的原子动作上，Stage-1 消融显示这是三阶段中增益最大的一环。
 - **同团队上下游拼图：** 与 [Worldscape-MoE](./paper-worldscape-moe-heterogeneous-action.md)（上游异构动作可控视频 WM，不直出策略）构成「可控生成 → 可控策略」的两级，可对照看 Manifold AI 的技术路线。
 
-## 核心结构与方法
+## 核心原理与方法
 
 建模对象：\(p_\theta\big(A^{(e)}_t,\ z_{t+1:t+H}\ \big|\ o_t,\ a_{<t},\ \mathcal{P}^\mu_t,\ \mathcal{M}_t\big)\)，其中 \(\mathcal{M}_t=(\mathcal{Q}_t,\mathcal{Z}^{vis}_t)\) 为 **事件记忆队列 + 近期视觉 latent buffer**。
 
@@ -78,7 +80,7 @@ summary: "WorldScape Policy 2.0（arXiv:2607.18840，Manifold AI + 清华 + 上�
 | **持久视觉上下文** | 目标图 / 演示视频 latent 作 **rollout 全程不滑动** 的前缀，可随时 ON/OFF |
 | **长短期事件记忆（LTM）** | 历史 chunk 感知 token 压成 gist、规划 token 全留 → 紧凑 bank \(H_t\)；再造三视图（下表）；默认留 **8 个历史 chunk** |
 | **检索与门控** | \(B_t=\mathrm{cat}(m^{gh},m^{la},m^{eb},H_t)\)，\(q_t\) 作 Query 做 cross-attention 得 \(\tilde m_t\)；逐 token 门控 \(\hat q_t=q_t+\alpha\,\sigma(W_g[q_t;\tilde m_t]+b_g)\odot\tilde m_t\) |
-| **Semantic Forcing（SF）** | \(\mathcal{L}_{sem}=1-\tilde s_t^\top\tilde q_t\)，T5 靶 **stop-gradient**（防塌缩），只训投影器 \(\phi_q\)；\(\lambda_s=0.001\) |
+| **Semantic Forcing（SF）** | \(\mathcal{L}_{sem}=1-\tilde s_t^\top\tilde q_t\)，T5 靶 **stop-gradient**（防塌缩），以固定T5目标监督推理/记忆分支与投影器；\(\lambda_s=0.001\) |
 | **总损失** | \(\mathcal{L}=\mathcal{L}_{act}+\lambda_w\mathcal{L}_{world}+\lambda_s\mathcal{L}_{sem}\)（两个流匹配 + 语义对齐），端到端，无需额外提示/记忆标签 |
 
 ### 事件记忆三视图
@@ -164,29 +166,37 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用（截至 2026-08-03）。** 论文与项目页给出的 [GitHub 仓库](https://github.com/manifoldai-research/WorldScape-Policy) 只有 `README.md` 与 `.gitignore`（*"Code is coming soon"*），[HF 模型卡](https://huggingface.co/manifoldai-research/WorldScape-Policy-2) 也无权重文件（*"Model is coming soon"*，声明 Apache-2.0），**无任何可辨识的训练 / 推理 / 部署入口**，无法按 [schema 步骤 5](../../schema/ingest-workflow.md) 要求对齐 `sources/repos/` 中的目录或脚本名。核查明细见 [`sources/repos/worldscape-policy.md`](../../sources/repos/worldscape-policy.md)；代码发布后应补本节并与实际入口逐一核对。
-
-下图仅按**论文正文描述**还原自主规划模式的闭环时序，节点为论文中的模块名而非仓库路径，**不可当作复现入口**：
+[固定版本148ebfb2](../../sources/repos/worldscape-policy.md)已有可运行实现与检查点。评测入口cli/evaluate.py构造PolicyRuntime；以下展示RolloutRunner与模型的实际事务边界，未运行GPU。
 
 ```mermaid
 sequenceDiagram
-  autonumber
-  participant Env as 真机/仿真环境
-  participant VLM as VLM 推理分支
-  participant Mem as 事件记忆队列
-  participant DiT as 共享 video-action DiT
-  participant Act as 本体动作解码器
-  Env->>VLM: head-view 观测 o_t + 高层指令 y
-  VLM->>VLM: 单次 prefill 得感知 token，再自回归 4 个规划 token
-  VLM->>Mem: 写入本 chunk 的 reasoning latent q_t
-  Mem->>VLM: 回传 global-history / local-active / event-boundary + 全历史 bank
-  VLM->>DiT: 门控融合后的 q_hat_t 作 cross-attention 条件
-  Env->>DiT: 近 4 chunk 干净 VAE latent（短期视觉记忆）+ 可选持久视觉提示
-  DiT->>DiT: 联合流匹配去噪出未来视频 latent 与动作 chunk
-  DiT->>Act: 动作隐状态 → 原始动作空间速度场积分
-  Act->>Env: 执行 H 步动作 chunk
-  Env-->>Mem: 新观测更新视觉 buffer 与事件队列，进入下一轮
+  participant R as RolloutRunner.run
+  participant E as ObservationSource / ActionExecutor
+  participant T as PolicyRuntime
+  participant P as WorldScapePolicy.sample
+  participant C as ConditionRouter / AutoConditioner
+  participant W as WAM插件
+  R->>T: reset(mode)
+  loop 每个动作chunk
+    R->>E: read观测与prompts
+    R->>T: predict
+    T->>P: 当前观测与两类历史记忆
+    P->>C: Auto VLM检索门控或Interactive T5
+    C-->>P: cross-attention条件、暂存事件记忆
+    P->>W: 视觉prefill、state、条件，sample
+    W-->>T: 动作与next_memory/next_visual_memory
+    T-->>R: pending output
+    R->>E: execute动作
+    R->>T: 成功后commit；失败discard
+  end
 ```
+
+## 工程实践
+
+- 检查checkpoint的mode、transform_bundle、动作语义和adapter。论文双臂20D EEF不能直接套到README RoboTwin14D绝对关节控制。
+- Auto和Interactive的条件路由不同；推理时不传GT事件字幕给Auto，semantic forcing仅作训练监督。
+- 记录读取、预测、执行和commit各段延迟；先用HDF5 replay验证数据布局，再按目标平台评测。
+- ManipEvent自采数据未见完整发布；源码/权重公开不等于全部训练数据可复现。
 
 ## 评测要点
 
@@ -203,7 +213,7 @@ sequenceDiagram
 | WAM | WorldScape Policy **1.0** | 93.2% | 91.7% | 92.5% |
 | WAM | **WorldScape Policy 2.0** | **94.3%** | **94.2%** | **94.3%** |
 
-**C2R（只用 clean 演示训练，在 clean+randomized 两种评测上取平均）：** \(\pi_0\) **31.4** / \(\pi_{0.5}\) **37.5** / Fast-WAM **39.1** / **本文 47.9**（+16.5 / +10.4 / **+8.8**）。
+**C2R（v3，clean-only训练，clean与randomized评测均值）：** π0 **31.4** / π0.5 **58.4** / Fast-WAM **39.9** / **本文63.3**。本文randomized单项为41.58%，不可称63.3%纯OOD成功率。
 
 **真机（AgileX 双臂 PiPER，5 任务，各 20 trial）：**
 
@@ -220,25 +230,23 @@ sequenceDiagram
 
 | 变体 | Clean | Randomized | Average |
 |------|------:|-----------:|--------:|
-| 无记忆 | 64.60% | 17.22% | 40.91% |
-| +STM | 66.92% | 22.42% | 44.67% |
-| +STM+LTM | 68.49% | 24.01% | 46.25% |
-| +STM+LTM+LSR | **69.74%** | **26.03%** | **47.89%** |
-| 从零训（无 Stage-1/2/SF） | 65.67% | 20.71% | 43.19% |
-| 仅 Stage-1 | 67.90% | 25.36% | 46.63% |
-| Stage-1+2 无 SF | 68.95% | 25.64% | 47.30% |
+| 无记忆 | 78.86% | 29.74% | 54.30% |
+| +STM | 84.92% | 38.50% | 61.71% |
+| +STM+LTM | 84.74% | 40.02% | 62.38% |
+| +STM+LTM+LSR | 85.04% | 41.58% | 63.31% |
+| 无Stage1/2/SF | 75.38% | 28.06% | 51.72% |
+| 仅Stage1 | 81.90% | 37.34% | 59.62% |
+| Stage1+2无SF | 84.30% | 40.56% | 62.43% |
 
 ## 结论
 
-**这篇论文真正证明的不是「WAM 又涨了 0.2 个点」，而是「把历史按语义/像素分层组织，能把 OOD 与视觉提示两条最脆弱的路显著加固」——头条榜单已饱和，选型价值全在 C2R 与真机视觉上下文任务上。**
+v3支持事件监督、视觉历史与语义记忆对可控长程操作的互补收益，证据限于给定任务与平台。
 
-- **不要看 RoboTwin 2.0 标准榜的头名。** 94.3% 对 Abot-M0.5 的 94.1%、LingBot-VA 2.0 的 93.6%，差距在 **+0.2 ~ +0.7**，落在评测噪声量级；这条榜对当代 WAM 已无区分度。
-- **要看 C2R。** 只用 clean 演示训练时 **47.9% vs Fast-WAM 39.1%（+8.8）**，同一协议下的消融显示记忆三件套在 randomized 上贡献 **+8.81**（17.22→26.03）而 clean 上只有 **+5.14**——记忆买的是**分布外鲁棒性**，不是干净场景上限。若你的场景本身受控且数据充足，本文架构的边际收益会小很多。
-- **增益的次序是 Stage-1 ≫ Stage-2 ≈ SF。** 事件级预训练单独就带来 **43.19 → 46.63**，而记忆 mid-training 与 semantic forcing 各自只再加 **+0.67 / +0.59**。想低成本借鉴，先做**事件级细粒度标注**，再考虑上双记忆。
-- **真机上最值得复制的是视觉提示接口。** 叠积木由目标图 / 演示视频驱动时 **60% / 70%**，而 \(\pi_{0.5}\) 只有 **10% / 20%**——这是本文差距最大的一格，来源是 ManipEvent-5M 里成对标注的 human→robot / robot→robot 视频与 first/third-view 目标图，而非推理时的临时拼接。
-- **OOD 物体上的指令跟随差距同样实在：** held-out 类别均值 **60.0% vs 43.3%（\(\pi_{0.5}\)）/ 30.0%（DreamZero）**，支持「事件级预训练改善原子指令接地与组合泛化」的主张。
-- **部署前必须自行测延迟。** 每个 action chunk 要跑一次 Qwen3-VL-4B prefill + 4 token 解码，再走 Wan2.2-5B 级 DiT 流匹配；论文**全文没有任何控制频率或吞吐数字**，只提到为省显存把 head-view 压到 320×160。这是把本文当候选方案时最大的未知数。
-- **当前无法复现。** 代码与权重均为占位（见下节），ManipEvent-5M 的自采部分未见发布计划——把它当**架构参考**读，别当可用基线。
+- 比较clean-only的63.31与标准full-data94.3时分别列出协议。
+- 先验证事件级标注收益，再用消融决定是否增加记忆和VLM成本。
+- 将原子指令成功率与完整序列成功率分开，保留每任务20次试验的规模限制。
+- 复现时使用已发布代码与对应mode检查点，单独评估未公开自采数据带来的缺口。
+- 对目标硬件测全链路延迟，论文未给出统一控制频率。
 
 ## 与其他工作对比
 
@@ -255,9 +263,9 @@ sequenceDiagram
 ## 常见误区或局限
 
 - **误区：** 把 94.3% 当作「新 SOTA、可直接选型」。标准榜已饱和，同档方法密集分布在 93.6–94.3；真正的证据在 C2R 与真机视觉上下文任务。
-- **误区：** 把消融表的 47.89% 与主表的 94.3% 并列比较。消融走的是 **clean-only（C2R）协议**，论文已明确二者不可直接比。
+- **误区：** 把消融表的 63.31% 与主表的 94.3% 并列比较。消融走的是 **clean-only（C2R）协议**，论文已明确二者不可直接比。
 - **误区：** 以为「长期记忆」= 全历史无损保留。默认只留 **8 个历史 chunk**，且历史感知 token 已被压成 gist，只有 local-active 与 event-boundary 保全 token。
-- **局限（复现）：** **代码与权重截至 2026-08-03 均未发布**，ManipEvent-5M 自采部分（PiPER / UMI）无发布计划，公开来源需各自单独获取。
+- **局限（复现）：** **代码与权重现已发布，但完整自采数据未见开放**，ManipEvent-5M 自采部分（PiPER / UMI）无发布计划，公开来源需各自单独获取。
 - **局限（本页推断，论文无 Limitations 章节）：**
   - **无任何延迟 / 控制频率数据**，而每 chunk 都含一次 VLM prefill + 自回归解码 + 视频扩散去噪。
   - **真机规模有限**：单一 AgileX 双臂 PiPER 平台、5 个任务、每任务 20 trial；跨本体只在**数据侧**验证，未在第三方本体上闭环。
@@ -265,7 +273,7 @@ sequenceDiagram
   - **基线可比性部分自述**：\(\pi_{0.5}\) 的历史输入由作者扩展，基线后训练配置未展开。
   - **记忆规模的扩展曲线未给**：更长 horizon 下 gist 压缩与 8-chunk 上限如何退化，无数据支撑。
 
-## 与其他页面的关系
+## 关联页面
 
 - [World Action Models](../concepts/world-action-models.md) — Joint WAM 族定位与相邻概念分界
 - [wm-action-consequence-category-01-wam-action-prediction](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — 动作预测类 WAM 的组内索引
@@ -289,5 +297,5 @@ sequenceDiagram
 ## 参考来源
 
 - [WorldScape Policy 2.0 论文摘录](../../sources/papers/worldscape_policy_2_arxiv_2607_18840.md)
-- [WorldScape-Policy 仓库归档（占位核查）](../../sources/repos/worldscape-policy.md)
+- [WorldScape-Policy 仓库归档（固定版本源码核读）](../../sources/repos/worldscape-policy.md)
 - [WorldScape Policy 2.0 项目页归档](../../sources/sites/manifoldai-research-worldscape-policy.md)

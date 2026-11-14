@@ -2,7 +2,7 @@
 type: method
 tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-14
 related:
   - ../entities/paper-lejepa.md
   - ../entities/paper-lewm.md
@@ -280,7 +280,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 统一具身合成世界基础模型（示例：Xiaomi-Robotics-U0）
 
-[Xiaomi-Robotics-U0](../entities/xiaomi-robotics-u0.md)（arXiv:2607.11643，小米）在 **38B** **自回归离散 token** 框架内 **继续共训** foundation **T2I/X2I** 与 **多视角具身场景生成、五维结构化迁移、多 FPS 操纵视频**，避免「只后训机器人轨迹」导致的 foundation 遗忘。初始化 **EMU3.5（Qwen3-32B + IBQ）**；**FlashAR+** + **vLLM** 将 1024² 单图延迟压到秒级。**WorldArena #1** 与对 **GPT-Image-2** 的多视角人类评测领先；真机侧用 **零样本 transfer 增广** 将 **π₀.₅** OOD 完成度 **36.9%→63.2%**。与 [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md) **VLA** 形成 **「WM 合成数据 → 策略后训练」** 闭环；与 τ₀-WM 的 **Joint 5B WAM** 对照，U0 **不内置动作头**，侧重 **可扩展观测合成与 agentic 轨迹引擎**。
+[Xiaomi-Robotics-U0](../entities/xiaomi-robotics-u0.md)（arXiv:2607.11643，小米）在 **38B** **自回归离散 token** 框架内 **继续共训** foundation **T2I/X2I** 与 **多视角具身场景生成、五维结构化迁移、多 FPS 操纵视频**，避免「只后训机器人轨迹」导致的 foundation 遗忘。初始化 **EMU3.5（Qwen3-32B + IBQ）**；**FlashAR+** + **vLLM** 将 1024² 单图延迟压到秒级。**2026-07-13 WorldArena #1** 与对 **GPT-Image-2** 的多视角人类评测领先；真机侧用 **零样本 transfer 增广** 将 **π₀.₅** OOD 完成度 **36.9%→63.2%**。与 [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md) **VLA** 形成 **「WM 合成数据 → 策略后训练」** 闭环；与 τ₀-WM 的 **Joint 5B WAM** 对照，U0 **不内置动作头**，侧重 **可扩展观测合成与 agentic 轨迹引擎**。
 
 ### Dreamer 4 开源交互式游戏 WM（示例：Open Dreamer）
 
@@ -336,7 +336,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 [LiMA](../entities/paper-lima-async-dual-system-wam.md)（arXiv:2609.28431，CoRL 2026，PKU×BAAI）是 **异步双系统 WAM**：慢 Dreamer 刷新长 horizon intent，快 Refiner 做接触级修正，**Latent Schrödinger Bridge** 对齐稀疏/稠密；六双臂任务 **SR 70.8%**，H100 **325 ms**（较 Cosmos-Policy **−45.8%**）。
 
-[TrAct](../entities/paper-tract.md)（arXiv:2608.24101，UMich / Stanford）把 **2D 视觉轨迹** 作为 **控制与世界模型之间的中间接口**：**VLAT** 在 [π₀.₅](../entities/paper-pi05-open-world-vla.md) 上联合预测动作–轨迹对，**TWM**（SVD + ControlNet）以轨迹渲染条件滚未来视频，**VLAC** 对想象 rollout 打分选优。相对动作条件 **AWM**，TWM 在仿真 agent 视角 **PSNR 15.1→24.5**、**FVD 129→38**；闭环使 **LIBERO-INTEGRAL** 平均成功率 **27%→55%**、真机 Franka **49%→76%**。与 [Ctrl-World](../entities/paper-ctrl-world.md) 的笛卡尔动作条件 SVD 对照，TrAct 强调 **轨迹比动作更适合条件化像素未来**；**代码待发布**。
+[TrAct](../entities/paper-tract.md)（arXiv:2608.24101，UMich / Stanford）把 **2D 视觉轨迹** 作为 **控制与世界模型之间的中间接口**：**VLAT** 在 [π₀.₅](../entities/paper-pi05-open-world-vla.md) 上联合预测动作–轨迹对，**TWM**（SVD + ControlNet）以轨迹渲染条件滚未来视频，**VLAC** 对想象 rollout 打分选优。相对动作条件 **AWM**，TWM 在仿真 agent 视角 **PSNR 15.1→24.5**、**FVD 129→38**；闭环使 **LIBERO-INTEGRAL** 平均成功率 **27%→55%**、真机 Franka **49%→76%**。与 [Ctrl-World](../entities/paper-ctrl-world.md) 的笛卡尔动作条件 SVD 对照，TrAct 强调 **轨迹比动作更适合条件化像素未来**；代码已公开，项目检查点及部分数据仍缺。
 
 ### 范数保持相机几何 PE（示例：MeRoPE）
 
@@ -380,7 +380,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 共享视频 VAE 吃 3D pointmap（示例：Flex-π）
 
-[Flex-π](../entities/paper-flex-pi.md)（arXiv:2608.10860，UW / AI2）把同一冻结 **Wan-2.2 VAE** 直接用于 **3D pointmap**：论文报 RGB 训练的 VAE 对点图近无损重建（PSNR **31.1 dB**），再与 DINOv3 语义流在 MoT 里联合去噪动作。相对「另训几何编码器」，这是 **借用视频先验吃 3D**；相对 DreamWAM 的训练多视图、部署关分支，Flex-π 把流组合留到 **推理掩码**（action-only ~60 ms ↔ full joint）。**代码待发布**。
+[Flex-π](../entities/paper-flex-pi.md)（arXiv:2608.10860，UW / AI2）把同一冻结 **Wan-2.2 VAE** 直接用于 **3D pointmap**：论文报 RGB 训练的 VAE 对点图近无损重建（PSNR **31.1 dB**），再与 DINOv3 语义流在 MoT 里联合去噪动作。相对「另训几何编码器」，这是 **借用视频先验吃 3D**；相对 DreamWAM 的训练多视图、部署关分支，Flex-π 把流组合留到 **推理掩码**（编译 action-only ~60 ms 与 TensorRT joint ~193 ms 为不同配置，非统一端到端延迟）。代码、权重与数据已公开。
 
 ## 评测沙盒与虚实校准
 
@@ -570,7 +570,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作模型，测试时不滚未来像素。
 - [mimic-video（Video-Action Model）](./mimic-video.md) — 互联网视频骨干潜计划 + 流匹配动作解码器的操作策略。
 - [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) — Agibot **5B 统一视频–动作世界模型**：异构掩码预训练 + 测试时 propose–evaluate–revise（技术报告 2026-05-31）。
-- [Flex-π](../entities/paper-flex-pi.md) — **冻结 Wan VAE 共享编码 RGB+pointmap** 的多流 Joint WAM；部署算力柔性（arXiv:2608.10860；代码待发布）。
+- [Flex-π](../entities/paper-flex-pi.md) — **冻结 Wan VAE 共享编码 RGB+pointmap** 的多流 Joint WAM；部署算力柔性（arXiv:2608.10860；代码、权重与数据已公开）。
 - [GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md) — 人形 **行为世界模型（BWM）** 低层全身控制 + 地形/跌倒 OOD filter（arXiv:2608.18234v2；截至 2026-09-07 代码 coming soon）。
 - [ExoActor](./exoactor.md) — 视频生成驱动的交互式人形控制。
 - [GaussianDream++](../entities/paper-gaussiandream-plusplus.md) — 训练期高斯世界、部署 20 令牌

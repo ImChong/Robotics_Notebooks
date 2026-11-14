@@ -41,3 +41,9 @@
 - 代码：[官方仓库归档](../repos/omega-0.md)
 - 数据集：[ω-HOME 归档](../datasets/omega-home.md)
 - 论文节点：[`wiki/entities/paper-omega-0.md`](../../wiki/entities/paper-omega-0.md)
+
+## 官方页复核（2026-11-13）
+
+- **核对范围：** 项目页全文、结果、数据统计及Code/Dataset链接；未观看视频。
+- **通读：** 已完成
+- 页面摘要81.8对应Omni主表；40.3h、4827episode与24task是数据规模，不是24个测试任务。当前仓库已给出权重入口，完整依赖与模型许可按各自资源核实。

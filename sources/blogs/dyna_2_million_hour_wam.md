@@ -93,3 +93,14 @@
 - 概念交叉：[World Action Models](../../wiki/concepts/world-action-models.md)、[Embodied Scaling Laws](../../wiki/concepts/embodied-scaling-laws.md)
 - 方法对照：[EgoScale](../../wiki/methods/egoscale.md)（~20k h 人视频 VLA + 对齐 mid-training）、[VLA](../../wiki/methods/vla.md)
 - 项目页归档：[sources/sites/dyna-co-dyna-2.md](../sites/dyna-co-dyna-2.md)、公司站 [sources/sites/dyna-co.md](../sites/dyna-co.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** 官方研究页2026-08版本，截至2026-11-13抓取的正文§1–§6、全部图表的文字/数据及§4一步蒸馏公式，参考文献浏览；同页桌面/移动重复正文只计一次；未观看嵌入视频，未运行模型。
+- **通读：** 已完成
+- 缩放梯子为嵌套1k/10k/100k/1M，固定源比例、100h人held-out；研究中不做对齐不代表生产模型无后训练。39任务零样本是离线动作预测；真机14任务每任务10次（语言12），必须先用每任务≤10h机数据后训练。
+- 20/28/45/53%为14任务各自最大值归一化后的平均，不是统一二值成功率；1M最佳为9/14，Food Scooping、Rope Tie等有下降，不能写每个任务单调。
+- 视频共训在给定消融中是唯一持续缩放配方，不能推广为全部WAM/机器人学习的必要条件。固定action数据加video改善robot但人held-out略差；总语料不等于全部有可靠伪动作。
+- 语言跟随36次总评测，正确尝试未完成给0.5分，0.96不是96%严格完整任务成功。客户现场87/46是质量/吞吐/可靠性验收，不是与离线zero-shot同口径；站点泛化前已做任务后训练。
+- 一步蒸馏110ms是单H100生成3秒三视角视频latent的sampler耗时，非机器人控制或含解码端到端延迟。学生FVD121逊于100-NFE教师80、motion75%逊于94%；target读出控制律未给完整可复现实装。
+- 资源区无模型代码/权重/百万小时数据下载入口，源码运行时序不适用；报告的「首次」及通用性仍为作者自报。

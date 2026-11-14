@@ -28,6 +28,8 @@ related:
   - ./macrodata-egocentric-hand-action.md
   - ../entities/paper-ego2robot.md
   - ../entities/paper-spd.md
+original:
+  - ../../sources/papers/egoscale_arxiv_2602_16710.md
 sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
@@ -97,6 +99,13 @@ flowchart LR
   post --> pol
 ```
 
+## 工程实践
+
+- 先验证腕部相对位姿、相机坐标与机器人末端控制的约定，再重定向手指；腕与指的误差分别统计，避免把 SLAM 漂移归因于策略。
+- Stage II 要固定人–机机位/内参并同步 Vive、Manus 与视频；复现时保留人预训练、mid-training、后训练的独立消融，不把 one-shot 写成零机端示范。
+- 依据已有全文核对归档：缩放拟合仅来自 1k/2k/4k/10k/20k h 五点及 2,000 留出人轨；不能外推百万小时。摘要「54%」未明确绝对/相对，正文用平均完成度而非统一二值成功率。
+- 本次接入仓库既有 2026-11-12 通读归档，不新增训练或真机实测结论；[官方项目页](https://research.nvidia.com/labs/gear/egoscale/)仍以发布链接为复现依据。
+
 ## 常见误区或局限
 
 - **误区：「只靠 YouTube 级人视频就能零样本上机」。** 论文明确需要 **对齐 mid-training** 与 **任务后训练**；人数据主要提供 **可扩展的先验**，不是单独闭环。
@@ -105,7 +114,7 @@ flowchart LR
 - **对照：[EgoSteer](../entities/paper-egosteer.md)（PKU/PsiBot，arXiv:2607.09701）。** 同属 egocentric 腕–指预训练 VLA，但用 **EgoSmith 策展吞吐 + 统一 HITL DAgger 栈 + 训练-only DINOv3 世界专家** 换 mid-training 叙事，且 **代码/权重已开源**（全量处理后数据待发）。
 - **对照：[Psi-R2.5](../entities/psibot-r25.md)（PsiBot 商业栈，2026-09 博客）。** 不走 mid-training 叙事，而用 **[强 pair data](../concepts/strong-pair-data.md)** + **Psi-W0 转换器** 把人手 dynamic 对齐到机端；**10 万小时质量复盘** + ICL，**未开源**。
 
-## 与其他页面的关系
+## 关联页面
 
 - 与 [VLA](./vla.md)：属于 **同一 VLA 家族接口**（图像 + 语言 → 动作），但强调 **人侧小时数** 与 **腕–手显式监督** 的预训练位置，以及 **mid-training** 在跨本体中的角色。
 - 与 [EgoSteer](../entities/paper-egosteer.md)：同族人视频 → 灵巧 VLA；对照 **mid-training 对齐** vs **策展全栈 + DAgger**。

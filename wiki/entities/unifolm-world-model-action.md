@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, world-model, foundation-model, imitation-learning, wam]
 status: complete
-updated: 2026-09-10
+updated: 2026-11-14
 related:
   - ./unitree.md
   - ./unifolm-vla.md

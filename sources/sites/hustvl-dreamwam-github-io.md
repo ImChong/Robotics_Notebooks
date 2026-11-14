@@ -31,3 +31,7 @@
 - 论文归档：[`sources/papers/dreamwam_arxiv_2608_04996.md`](../papers/dreamwam_arxiv_2608_04996.md)
 - 代码归档：[`sources/repos/dreamwam.md`](../repos/dreamwam.md)
 - Wiki 实体：[wiki/entities/paper-dreamwam.md](../../wiki/entities/paper-dreamwam.md)
+
+## 2026-11-13 项目页复核
+
+已读官方页面全文及资源区，仍指向hustvl/DreamWAM和joint/uncond权重；主表与PDF一致。项目页「部署关闭beyond-RGB」属于方法叙述，固定版本sample_action仍启用内部门控残差，不能用宣传替代源码。真机扰动表均为同一草莓挑选任务；未观看演示视频。

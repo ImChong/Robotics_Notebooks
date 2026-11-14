@@ -9,7 +9,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-09-15
+updated: 2026-11-13
 arxiv: "2607.02865"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -21,7 +21,10 @@ related:
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-harness-vla.md
   - ../entities/paper-rtcf.md
+original:
+  - ../../sources/papers/dreamsteer_arxiv_2607_02865.md
 sources:
+  - ../../sources/papers/dreamsteer_arxiv_2607_02865.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "DreamSteer（arXiv:2607.02865）：部署时冻结 VLA 采样多候选 + 运动原语，潜变量 WM 预演未来、语言价值模型排序；四组真机 OOD 成功率 23.75%→66.25%、指令遵循 38.75%→56.25%。"
 ---
@@ -50,10 +53,10 @@ summary: "DreamSteer（arXiv:2607.02865）：部署时冻结 VLA 采样多候选
 
 - **第三类 WAM 职责——部署前筛选：** 与 [DSWAM](./paper-dswam-dual-system-wam.md)（直接执行）、[DynaWM](./paper-dynawm-vla-online-correction.md)（在线修正）并列；机器人 **真正执行前** 比较多条可能未来（策展文核心论点）。
 - **测试时 scaling 的 VLA 类比：** 类似 LLM 的 **采样 + rerank**；扩散/自回归 VLA 本身 **随机采样 action chunk**，DreamSteer 用 WM 提供 **执行前 look-ahead**。
-- **潜空间 rollout 的工程可行性：** 同 RTX 4090，$H{=}10$、3 帧 $320{\times}192$：**视频扩散 23.12s vs 潜变量 WM 0.59s**——使 **多候选评估** 在部署环内可行。
+- **潜空间 rollout 的工程可行性：** 同 RTX 4090，$H{=}10$、3 帧 $320{\times}192$：**视频扩散 23.12s vs 潜变量 WM 0.59s**——降低 **单候选评估** 成本；完整 13 候选筛选约 **13 s**，尚非高频控制。
 - **与 [TACO](./paper-taco-tactile-wm-vla-posttrain.md) 形成后训练 vs 推理对照：** TACO 把失败转为 **纠错训练数据**；DreamSteer **零参数改动、纯推理 steering**。
 
-## 核心结构与方法
+## 核心原理与方法
 
 | 模块 | 方法要点 |
 |------|----------|
@@ -94,6 +97,16 @@ flowchart TB
 | FOREWARN / GPC | ✓ | 任务微调 latent/pixel | ✗ | ✗ |
 | **DreamSteer** | ✓ | **广义 latent WM** | **✓** | **✓** |
 
+## 工程实践
+
+- §4.3：默认 5 个 VLA 样本 + 8 个原语，H=10，每 5 控制步筛选一次。完整 13 候选串行 steering 约 **13 秒**；4090 上 0.59 秒仅为单候选 WM rollout，另有 0.08 秒策略和 0.37 秒价值评估。
+- 补充 §8–9：π₀ 关节轨迹先经 FK 转为末端 Cartesian delta，再与原语同接口输入 WM；VLAC 累加相邻解码帧的进度，不要求绝对奖励校准。
+- IF 指标只要求与指定物体持续接触或尝试抓取；不是完成整条 pick-and-place。表 2 的 66.25% 包含原语扩展，仅多策略采样排序为 42.50%。
+
+## 源码运行时序图
+
+**不适用**：2026-11-13 官方项目页 Code 标为 Coming soon，未列实现仓库；不以 Nerfies 网页模板仓库冒充算法代码。
+
 ## 实验要点
 
 | 轴 | 报告口径（以论文为准） |
@@ -132,7 +145,7 @@ flowchart TB
 - **误区：** 把潜空间 rollout 等同于 **物理精确仿真**；价值模型仍可能被 **视觉上合理但接触错误** 的轨迹误导。
 - **局限：** 多候选 + WM rollout 仍增 **推理延迟与算力**；WM 对 **长时序误差累积** 敏感；未建模 **不确定性** 时可能过度自信（策展文开放问题）。
 
-## 与其他页面的关系
+## 关联页面
 
 - [wm-action-consequence-category-01-wam-action-prediction](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — 部署筛选类 WAM
 - [wm-action-consequence-category-04-eval-posttrain](../overview/wm-action-consequence-category-04-eval-posttrain.md) — 与 GigaWorld 评估链路相邻
@@ -151,6 +164,8 @@ flowchart TB
 - [RTCF 论文实体](./paper-rtcf.md) — 免训练测试时纠偏
 
 ## 参考来源
+
+- [DREAMSTEER: Latent World Models can steer VLA Policies during deployment without any finetuning：全文通读归档](../../sources/papers/dreamsteer_arxiv_2607_02865.md)
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [DreamSteer 论文（arXiv:2607.02865）](https://arxiv.org/abs/2607.02865)

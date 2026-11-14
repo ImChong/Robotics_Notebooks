@@ -26,6 +26,18 @@
   - RoboTwin 2.0 + Fast-WAM 平均成功率：**72.8%**（+4.6% vs Fast-WAM）
 - **机构：** Peking University · NVIDIA
 
+- **核对日期：** 2026-11-13
+- **核对范围：** arXiv:2606.28128v1 PDF 全文 §1–§5、附录 A–F（实现、评测、详细表、定性图文字说明、影响、局限）；参考文献浏览。图表按文字层核对，未观看视频，未运行训练。
+- **通读：** 已完成
+
+## 全文复核补充
+
+- 附录 A：冻结 V-JEPA2 ViT-L/16（64 帧 / 256px）、CoTracker3 offline（25×25 初始网格）、Depth Anything V2 ViT-L；两项 loss 对同一 DiT 中间层监督，语义比的是关系矩阵，不是绝对特征。正文自适应均值阈值，附录/实现写 active tracks 选取，复现应按源码固定版本。
+- 表 2：6 个 RoboTwin 任务、各 200 次、单一多任务策略；68.2%→72.8% 是 +4.6pp，shake_bottle 97.5→94.5、stack_bowls_two 69.5→63.0 反而下降，不能写逐任务普涨。
+- 表 3 WorldArena 16→24% 是与共享 IDM 组合的仿真闭环，不是视频模型直接输出动作或真机成绩。
+- 附录 F 局限是继承基础模型的世界知识/长程推理上限；原页「形变物体是作者列出的未来方向」未在该节找到，不再作为作者原话。
+- 项目页实际 Code 链接到 DAGroup-PKU/PhysisForcing，README 发布推理/训练/teacher 权重；PF_Wan 源码复核见 [仓库归档](../repos/physisforcing.md)。
+
 ## 核心论文摘录（MVP）
 
 ### 1) 分层 + 区域聚焦的物理监督范式

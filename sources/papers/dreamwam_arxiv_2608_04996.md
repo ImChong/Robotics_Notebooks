@@ -41,7 +41,7 @@
   - LIBERO joint video-action：Fast-WAM-Joint **98.00% → DreamWAM 98.90%**
   - LIBERO-Plus（未见扰动、无 Plus 训练）：**69.16% → 75.47%**
   - 真机视觉扰动平均：**55.6% → 74.40%**；标准任务 **90.8% → 96.7%**
-- **局限：** 依赖离线预计算 RAFT / DA3 / DINO 目标与 Wan2.2 VAE 管线；评测主轴为桌面操纵 LIBERO 族 + 单臂真机，非全身 loco-manip。
+- **局限：** 依赖离线预计算 RAFT / DA3 / DINO 目标与 Wan2.2 VAE 管线；评测主轴为桌面操纵 LIBERO 族 + 双臂真机，非全身 loco-manip。
 
 ## 核心摘录（面向 wiki 编译）
 
@@ -71,3 +71,13 @@ python scripts/eval_libero_plus.py --config configs/dreamwam_joint.yaml
 
 - 新建实体页：[wiki/entities/paper-dreamwam.md](../../wiki/entities/paper-dreamwam.md)
 - 交叉：[World Action Models](../../wiki/concepts/world-action-models.md)、[VLA](../../wiki/methods/vla.md)、[生成式世界模型](../../wiki/methods/generative-world-models.md)、[DynaWM](../../wiki/entities/paper-dynawm-vla-online-correction.md)、[DreamSteer](../../wiki/entities/paper-dreamsteer-vla-deployment-steering.md)、[动作后果技术地图](../../wiki/overview/robot-world-models-action-consequence-technology-map.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2608.04996v1（2026-08-05）正文全部章节、附录 A–B（目标构造、训练/推理及真机协议），图表文字层；参考文献浏览。另读官方项目页全文、根 README 与下述固定版本源码；未运行训练或真机实验。
+- **通读：** 已完成
+- Flow 是 RAFT 光流伪彩视频再经同一 Wan VAE；不是直接输入度量三维运动。DA3 log-depth 与 DINO patch 特征分别用仅训练集拟合的 PCA-8；九帧压到首帧、中四帧平均、末四帧平均。
+- 论文部署叙述为关闭几何/语义残差及教师、flow 通道置零；RGB-only 指传感输入，仍有本体状态和语言，不意味着 Joint 分支不生成未来。当前代码保留 residual injection，与论文叙述有差异，见仓库复核。
+- Joint 对照 LIBERO 98.00→98.90、Plus 69.16→75.47（后者七扰动维度不加权平均），两 seed；Goal 98.8→98.6，不能称所有子任务均提升。Uncond 是另一设置，不能混用两者基线。
+- 真机为双臂 AgileX PiPER；四标准任务各30次，三扰动仅 Strawberry Selection 各30次，共每模型210次。90.8→96.7与55.6→74.4的单位是成功率百分比，增益为5.9/18.8个百分点；三扰动不是三种新技能。
+- 路由消融直接去噪全部视图97.85略低RGB98.0，混合D/R/R98.9；目标种类更多不自动更好。未验证接触力、度量3D或全身运动的物理一致性。

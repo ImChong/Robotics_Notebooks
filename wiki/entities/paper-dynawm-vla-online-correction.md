@@ -10,7 +10,7 @@ tags:
   - moving-object
   - tsinghua
 status: complete
-updated: 2026-09-15
+updated: 2026-11-13
 arxiv: "2607.02604"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -22,7 +22,10 @@ related:
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
   - ../entities/paper-rtcf.md
   - ../entities/paper-dreamwam.md
+original:
+  - ../../sources/papers/dynawm_arxiv_2607_02604.md
 sources:
+  - ../../sources/papers/dynawm_arxiv_2607_02604.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "DynaWM（arXiv:2607.02604）：冻结基础 VLA，以 base action chunk + 多视角历史 + 本体为条件，Mamba-3 动作编码 + V-JEPA 2.1 + 流匹配 DiT 重生成动作；DynaGrasp-32 上八组 checkpoint 平均 +25.79pp。"
 ---
@@ -54,12 +57,12 @@ summary: "DynaWM（arXiv:2607.02604）：冻结基础 VLA，以 base action chun
 - **代表 WAM 第二类职责——修正已有动作：** 与 [DSWAM](./paper-dswam-dual-system-wam.md)（直接执行）、[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)（部署筛选）形成 **执行 / 修正 / 筛选** 三角。
 - **贡献可复现 benchmark：** [DynaGrasp-32](../tasks/manipulation.md) + DynaGrasp-1600（1600 条遥操作、~1.53M 三视角图像）把 **速度变化、碰撞改道、多物体序贯** 等动态难度源 **可控隔离**。
 
-## 核心结构与方法
+## 核心原理与方法
 
 | 模块 | 方法要点 |
 |------|----------|
 | **冻结 base VLA $\pi_b$** | $A_t^b = \pi_b(o_t, \ell_t, s_t) \in \mathbb{R}^{H \times D_a}$（$H{=}10$, $D_a{=}7$）；训练与评测 **均不更新** |
-| **Mamba-3 动作编码器** | 将 base chunk 编码为 **动作条件表征**，保留序列结构；消融：去掉则成功率跌至 **29%**（远低于 base **72.56%**） |
+| **Mamba-3 动作编码器** | 将 base chunk 编码为 **动作条件表征**，保留序列结构；消融：去编码器并改用 base chunk 初始化 flow 后为 **29%**；非单变量消融 |
 | **V-JEPA 2.1 视觉编码器** | 从 **多视角观测历史** 提取运动特征；**不 rollout 未来像素**；300M 版较 80M 平均 **+12.44pp** |
 | **本体编码器** | 机械臂 proprioceptive state 条件化 |
 | **流匹配 DiT $g_\theta$** | 三条件联合生成 motion-aware chunk $A_t$；**不读取 VLA 语言/视觉 token** |
@@ -101,6 +104,16 @@ flowchart LR
 | Multi-object sequencing | 多物体 + 语言绑定序贯 |
 | Velocity variation | 目标速度变化 |
 
+## 工程实践
+
+- 先用冻结的 base VLA 在演示集离线缓存动作块，再训练 DynaWM；各 base VLA 分别拟合修正器权重。部署时 base chunk 只作条件，执行的是重生成 chunk。
+- 三视角各 5 帧、9D 状态、10×7 动作块要时间对齐；DynaWM 的 V-JEPA 可训练。输出从高斯噪声经 10 步 Euler 得到，不是 base chunk 加残差。
+- 仿真为 30 Hz Franka Panda、RTX PRO 6000 96 GB；论文未报告 Franka 真机实验。表 5(b) 同时改掉编码器和 flow 初始分布，不能据此单独归因给动作条件。
+
+## 源码运行时序图
+
+**不适用**：本次通读的 v1 全文未提供官方可运行源码入口；不把论文图 1–2 画成已验证代码调用。
+
 ## 实验要点
 
 | 轴 | 报告口径（以论文为准） |
@@ -109,16 +122,16 @@ flowchart LR
 | **Fine-tuned checkpoints** | 平均 **59.06% → 75.39%**（+16.33pp）；X-VLA **+45.31pp** 最大 |
 | **Coarse-tuned checkpoints** | 平均 **41.66% → 76.91%**（+35.25pp）；四组均 **≥31/32 任务提升** |
 | **单模型峰值** | X-VLA fine-tuned：**36.56% → 81.88%** |
-| **消融** | 去视觉历史：**−27.50%** 量级；去 action conditioning：**−45.44%** |
+| **消融** | 去视觉历史：**−27.50%** 量级；改用无编码器的 base-action flow 初始化：**29%**（相对完整方案 −45.44pp） |
 | **数据** | DynaGrasp-1600：1600 traj / ~510K steps / 1.53M images |
 
 ## 结论
 
 **DynaWM 把世界模型放到冻结 VLA 的下游做「动作重写」，用外挂模块换来跨异构 VLA 的可复用性——代价是修正只能是局部的，改不动 base 策略本身的语义决策。**
 
-- 真正起作用的是 **两个条件输入**而非未来像素预测：去视觉历史约 **−27.50%**、去 action conditioning **−45.44%**（成功率跌到 **29%**，低于 base 的 72.56%）；V-JEPA 只提运动特征，**不 rollout 未来帧**。
+- 真正起作用的是 **两个条件输入**而非未来像素预测：Qwen 参照加入 V-JEPA 300M 后 **+27.50pp**、去编码器并改变 flow 初始化后 **−45.44pp**（成功率跌到 **29%**，低于 base 的 72.56%）；V-JEPA 只提运动特征，**不 rollout 未来帧**。
 - 收益结构强依赖 base checkpoint 质量：coarse-tuned 平均 **+35.25pp**，fine-tuned **+16.33pp**，而已经很强的 fine-tuned $\pi_0$（72.56%）只 **+1.88pp**——base 越强，外挂修正的边际越薄。
-- 主要失败模式是 **局部改写扰动已有序贯绑定**：多物体 Amount 任务出现 **14 个任务退步**。
+- 主要失败模式是 **局部改写扰动已有序贯绑定**：fine-tuned π₀ 在全套 32 任务中有 **14 个任务退步**，Amount 类最明显（该类共 6 任务）。
 - 适用边界：面向 **移动目标拦截**（观测–执行延迟下的位置外推），以仿真 benchmark + 单臂 Franka 为主，未覆盖全身 loco-manip。
 - 与 [DSWAM](./paper-dswam-dual-system-wam.md)（端到端执行）、[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)（多样本想象 + 价值排序）构成 **执行 / 修正 / 筛选** 三角；DynaWM 是其中的 **单路径确定性重生成**。
 
@@ -137,9 +150,9 @@ flowchart LR
 
 - **误区：** 认为 DynaWM 替换 VLA；实际是 **VLA 出初稿 + WM 改写**，两者 checkpoint 独立。
 - **误区：** 把增益等同于「VLA 变强」；八组实验 **base VLA 冻结**，增益来自 **外挂模块**。
-- **局限：** 已很强的 fine-tuned $\pi_0$（72.56%）仅 **+1.88pp**，多物体 Amount 任务甚至 **14 任务退步**——局部修正可能 **扰动已有序贯绑定**；仍限于 **仿真 benchmark + 单臂 Franka** 为主；未覆盖全身 loco-manip。
+- **局限：** 已很强的 fine-tuned $\pi_0$（72.56%）仅 **+1.88pp**，fine-tuned π₀ 全套 32 任务中有 **14 任务退步**，Amount 类最明显——局部修正可能 **扰动已有序贯绑定**；仍限于 **Isaac Sim 中的 Franka Panda benchmark**；未覆盖全身 loco-manip。
 
-## 与其他页面的关系
+## 关联页面
 
 - [wm-action-consequence-category-01-wam-action-prediction](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — WAM 修正类代表
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 纵深总览
@@ -156,6 +169,8 @@ flowchart LR
 - [Generative World Models](../methods/generative-world-models.md) — V-JEPA / 流匹配 WAM 脉络
 
 ## 参考来源
+
+- [DynaWM: A Base-VLA-Guided World Foundation Model for Moving-Object Manipulation：全文通读归档](../../sources/papers/dynawm_arxiv_2607_02604.md)
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [DynaWM 论文（arXiv:2607.02604）](https://arxiv.org/abs/2607.02604)

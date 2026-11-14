@@ -52,3 +52,12 @@
 - Li et al., *Xiaomi-Robotics-U0: Unified Embodied Synthesis with World Foundation Model*, arXiv:2607.11643
 - [XiaomiRobotics/Xiaomi-Robotics-U0（GitHub）](https://github.com/XiaomiRobotics/Xiaomi-Robotics-U0)
 - [Robotics @ Xiaomi 说明页](https://robotics.xiaomi.com/xiaomi-robotics-u0.html)
+
+## 固定版本复核（2026-11-13）
+
+- **版本：** [e722003980958f242203af265718ee980b834deb](https://github.com/XiaomiRobotics/Xiaomi-Robotics-U0/tree/e722003980958f242203af265718ee980b834deb)
+- **核对范围：** 根与inference README、scripts/inference.py全文；inference_ar.run_eager、sequence_runtime.run_sequence_cases、sequence_generation.generate_sequence完整函数；旧xr_u0_ar/cli.py全文。静态核读，未运行模型。
+- **通读：** 已完成
+- 现已提供FSDP训练目录、AR/FlashAR推理和4B/34B Sequence检查点，不再仅早期占位。当前README明确AR34B、FlashAR38B；论文/官网笼统38B，不把该数字套给所有权重。
+- Sequence仅AR eager；主CLI组合配置并检查深度设置，再转run_eager→build_unis_ar→run_sequence_cases。后者IBQ编码输入、预算上下文、generate_sequence以格式状态机和KV缓存生成，再解码JSON/图像/MP4，带stop_reason和format_valid。
+- 图像任务支持独立的vLLM0.11.0补丁环境；Sequence不能借FlashAR图像82.9×推断速度，保存MP4的1FPS也不是实际生成FPS。RGB Transfer当前可选DA3预处理，与论文VDA标注方案分开。

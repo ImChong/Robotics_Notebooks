@@ -11,7 +11,7 @@ tags:
   - mobile-robot
   - goal-conditioned
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2606.13494"
 related:
   - ../concepts/world-action-models.md
@@ -27,9 +27,12 @@ related:
   - ./paper-icrowdnav.md
   - ./paper-roamflow.md
   - ./paper-green-for-go-vla-nav-grounding.md
-sources:
+original:
   - ../../sources/papers/navwam_arxiv_2606_13494.md
-summary: "NavWAM（arXiv:2606.13494）：目标条件视觉导航的 Navigation World Action Model——在 Cosmos Predict 2（2B）九帧共享 latent 序列上联合去噪未来 egocentric 观测、goal-progress value 与 action chunk；policy 模式单次扩散前向直接闭环控制，无需 CEM；go stanford 与 Diablo 真机 24 episode 上优于 NWM+CEM 与 OmniVLA。"
+sources:
+  - ../../sources/sites/navwam.md
+  - ../../sources/papers/navwam_arxiv_2606_13494.md
+summary: "NavWAM（arXiv:2606.13494）：目标条件视觉导航的 Navigation World Action Model——在 Cosmos Predict 2（2B）九帧共享 latent 序列上联合去噪未来 egocentric 观测、goal-progress value 与 action chunk；policy 模式单条扩散去噪链直接闭环控制，无需 CEM；go stanford 与 Diablo 真机 24 episode 上优于 NWM+CEM 与 OmniVLA。"
 ---
 
 # NavWAM（目标条件视觉导航 · Navigation World Action Model）
@@ -80,12 +83,12 @@ flowchart TB
   end
   subgraph pred [顶层预测帧 latent]
     A[action chunk]
-    ST2["state_{t+1}"]
+    ST2["state_{t+H}"]
     O1[future obs 1]
     O2[future obs 2]
     V[goal-progress value]
   end
-  cond --> DIT[Cosmos Predict 2\nDiffusion-Transformer\n单次 policy 去噪]
+  cond --> DIT[Cosmos Predict 2\nDiffusion-Transformer\npolicy 去噪链]
   DIT --> pred
   A --> EXEC[机器人执行\nreceding-horizon]
   EXEC --> O
@@ -100,6 +103,17 @@ flowchart TB
 | **OmniVLA 等导航 VLA** | **观测→动作** 直接策略；NavWAM 显式联合 **未来观测与 value** |
 | **语言条件 VLN** | 见 [视觉–语言导航](../tasks/vision-language-navigation.md)；本文为 **image-goal**（目标图像而非自然语言） |
 | **[WorldVLN](./paper-worldvln-aerial-vln-wam.md)** | 同为 WAM 导航实例，但面向 **UAV VLN** 与 **自回归潜转移** |
+
+## 工程实践
+
+- 九帧 latent canvas 对应 33 帧 VAE 输入；动作按数据集 waypoint spacing 归一化，不能直接把 latent 读出值作为速度指令。
+- 主结果 H=4，仿真预训练 H=16；默认执行完整 chunk 后再查询。一次查询包含多步去噪，并非一次 DiT 前向。
+- 附录 205.7ms 在 RTX PRO 6000 96GB 测得，按执行 action 归一化；不能归到机器人携带的 Jetson Orin。
+- 进度 value 不是校准的成功概率，附录标签公式使用当前位置到轨迹终点距离；时间下标与 dmax 精确值仍待源码核对。
+
+## 源码运行时序图
+
+**不适用。** 截至 2026-11-13 官方项目页标注 Code coming soon，无可核实的专属可运行入口；已有图依据论文 v1，未复现。
 
 ## 实验要点
 
@@ -126,11 +140,13 @@ flowchart TB
 
 **导航世界模型要直接变成可部署控制，就得把未来观测、goal-progress value 与 action chunk 绑进同一次扩散去噪，而不是预测后再挂 CEM。**
 
-1. **默认走 policy 模式、丢掉 CEM** — 九帧 latent canvas 上单次扩散前向得 action chunk，receding-horizon 闭环；相对 NWM+CEM 离线 ATE/RPE 更低（0.324/0.099 vs 0.453/0.107，无 FT）。
+1. **默认走 policy 模式、丢掉 CEM** — 九帧 latent canvas 上单条扩散去噪链得 action chunk，receding-horizon 闭环；相对 NWM+CEM 离线 ATE/RPE 更低（0.324/0.099 vs 0.453/0.107，无 FT）。
 2. **联合监督是关键，不是「多一个头」** — 仅未来图像 + CEM 弱；图像+动作+状态大幅提升；再加 value 最佳；去掉未来图像仍降精度。
 3. **真机轻量优势可读** — Diablo 24 episode image-goal：79.2%（19/24）优于 OmniVLA 58.3% 与 NWM 16.7%；2B 视频骨干相对 7B VLA 更轻。
 4. **任务边界要守** — 本文是地面 image-goal，不是语言 VLN、也不是人形全身；代码尚未开源，真机规模仅四环境 24 episode。
 5. **与 Cosmos Policy / MotionWAM 同族不同任务** — 复用 latent-frame 原则，选型时按「导航闭环」而非「任意视频 WM + 导航头」来接。
+
+真机 NavWAM 的 95% Wilson 区间为 [59.5%,90.8%]，与 OmniVLA 区间重叠；样本支持本组观测成功率更高，不足以宣称普遍或显著优势。评测仅静态室内短中程，动态行人、多房间与跨平台均未验证。
 
 ## 常见误区或局限
 
@@ -142,7 +158,7 @@ flowchart TB
 
 见上文 **核心结构**、**流程总览** 与 **三模式训练**；骨干为 **Cosmos Predict 2（2B）** diffusion-transformer，非视觉量按 **Cosmos Policy latent-frame** 编码；部署为 **policy 模式 receding-horizon** 闭环，无 CEM。
 
-## 与其他页面的关系
+## 关联页面
 
 - [World Action Models（WAM）](../concepts/world-action-models.md) — Joint 族 **导航** 实例坐标
 - [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md) — latent-frame 联合建模先例
@@ -157,6 +173,8 @@ flowchart TB
 - [Green for Go](./paper-green-for-go-vla-nav-grounding.md) — 同一 OmniVLA 上语言目标吃绿/红 overlay、图像目标几乎不吃
 
 ## 参考来源
+
+- [项目页与开放状态核查](../../sources/sites/navwam.md)
 
 - [NavWAM 论文摘录（arXiv:2606.13494）](../../sources/papers/navwam_arxiv_2606_13494.md)
 

@@ -30,6 +30,8 @@ related:
   - ./paper-dswam-dual-system-wam.md
   - ./paper-kairos-native-world-model-stack.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/dreamwam_arxiv_2608_04996.md
 sources:
   - ../../sources/papers/dreamwam_arxiv_2608_04996.md
   - ../../sources/repos/dreamwam.md
@@ -63,7 +65,7 @@ summary: "DreamWAM（arXiv:2608.04996，HUST/地瓜/武大/地平线）：Joint 
 - **把 WAM 问题从「怎么滚未来」拧到「未来该长什么样」：** 相对只堆更强视频骨干，DreamWAM 主张 RGB 目标会把任务状态与 nuisance 绑死，应显式监督 **motion / geometry / semantics**。
 - **训练多视图、部署零额外传感器：** beyond-RGB 全是离线教师信号；推理与 Fast-WAM 同为 RGB-only，工程可落地。
 - **增益集中在扰动与真机 OOD：** 域内 LIBERO 已近饱和（98→98.9），**LIBERO-Plus +6.3 pt**、真机扰动 **+18.8 pt** 才是选型读点。
-- **开源完整：** 代码 + joint/uncond 权重 + 预处理脚本，可直接挂 FastWAM 数据协议复现。
+- **提供实现：** 代码 + joint/uncond 权重 + 预处理脚本，沿用 FastWAM 数据协议；本次未运行复现。
 
 ## 核心信息
 
@@ -90,7 +92,7 @@ summary: "DreamWAM（arXiv:2608.04996，HUST/地瓜/武大/地平线）：Joint 
 ### 训练–部署不对称
 
 - **训练：** RGB+Flow 联合去噪 + Depth/DINO 残差；ActionDiT 经 **shared attention** 吸收未来状态监督。
-- **推理 / 真机：** **关闭全部 beyond-RGB 分支**，仅 RGB 观测条件化动作（可 no-rollout 或 joint video-action）。
+- **论文推理设定：** flow 通道置零，关闭几何/语义残差与教师；视觉输入仍为 RGB，另用语言、本体状态（可 no-rollout 或 joint video-action）。**当前源码有差异：** `sample_action` 仍启用门控残差，只关闭目标预测 heads；见下图及源码归档。
 
 ### 流程总览
 
@@ -114,28 +116,35 @@ flowchart TB
 
 ## 源码运行时序图
 
-官方入口对齐 [`sources/repos/dreamwam.md`](../../sources/repos/dreamwam.md)：预处理 → 训练 → LIBERO / LIBERO-Plus 评测。
+核对固定版本 `7c35d7d` 的实际 LIBERO 评测路径（[源码归档](../../sources/repos/dreamwam.md)）；未运行 GPU 推理。
 
 ```mermaid
 sequenceDiagram
-  autonumber
-  participant U as User
-  participant HF as Hugging Face<br/>Wan / DreamWAM / LIBERO-fastwam
-  participant Prep as scripts/precompute_cache.py
-  participant Train as scripts/train.py
-  participant Eval as eval_libero*.py
-  participant Sim as LIBERO / LIBERO-Plus
-  U->>HF: 下载 Wan2.2、RAFT/DINO/DA3、checkpoint、数据
-  U->>Prep: 构建 cache/libero_2cam224
-  Prep-->>Train: RGB+flow latent + Depth/DINO 目标
-  U->>Train: accelerate launch … dreamwam_joint.yaml
-  Train-->>U: outputs/joint/final.pt
-  U->>Eval: eval_libero / eval_libero_plus
-  Eval->>Sim: 策略闭环
-  Sim-->>U: suite / 扰动维度 JSON
+  participant E as scripts/eval_libero.py
+  participant P as DreamWAMPolicy
+  participant R as runtime.build_model/load_model_checkpoint
+  participant L as evaluation/rollout.py
+  participant M as model.sample_action
+  participant S as LIBERO environment
+  E->>P: build_policy(config)
+  P->>R: 构造 Joint/Uncond，严格加载权重
+  P->>P: 加载 Wan VAE/文本编码器与统计
+  E->>L: evaluate_libero → evaluate_benchmark
+  loop 每个 episode / 动作块
+    L->>S: reset / set_init_state / 取观测
+    L->>P: predict_action(双RGB, state, instruction)
+    P->>P: 裁图拼接、VAE编码、文本/状态归一化
+    P->>M: 首帧latent、上下文、状态
+    M->>M: flow置零；Joint联合去噪或Uncond视频KV缓存
+    Note over M: 当前实现保留门控残差，关闭目标预测heads
+    M-->>P: action chunk
+    P-->>L: 反归一化与夹爪变换
+    L->>S: 执行前 replan_steps 条动作
+  end
+  L-->>E: successes / episodes / success_rate
 ```
 
-关键复现路径：先 `prepare_action_dit.py` 从 Wan VideoDiT 派 ActionDiT，再 `precompute_cache.py`，最后 `train.py` / `eval_*.py`。
+训练入口 `scripts/train.py` 使用缓存目标、Accelerate与AdamW，调用`training_loss`并保存`checkpoint.pt`；需先准备Wan/ActionDiT及教师缓存。固定版本与论文的部署残差差异尚待作者澄清，不能据此声称部署计算图完全一致。
 
 ## 工程实践
 
@@ -156,6 +165,8 @@ sequenceDiagram
 | 真机标准任务 avg | 90.8% | **96.7%** |
 | 真机视觉扰动 avg | 55.6% | **74.40%** |
 
+四标准任务各30次，三扰动仅草莓挑选任务各30次；每模型共210次。LIBERO/Plus均为两seed，Plus是七扰动维度不加权平均；Goal子套件98.8→98.6，并非每项提升。
+
 摘要另报 no-rollout：**97.30% → 98.40%**（LIBERO）、**51.36% → 63.44%**（LIBERO-Plus）。
 
 ## 结论
@@ -164,12 +175,13 @@ sequenceDiagram
 
 1. **读 LIBERO-Plus / 真机扰动表，不要只看 LIBERO 98.x** — 域内已饱和，主贡献在 camera/background/layout 等轴。
 2. **Flow 进主去噪、Depth/DINO 进门控残差** — 运动与外观共享 VAE 网格；几何语义是轻量校正而非第二套生成器。
-3. **复现成本在教师管线** — RAFT + DA3 + DINO + Wan VAE 预处理是训练前置，推理不带它们。
+3. **复现成本在教师管线** — RAFT + DA3 + DINO + Wan VAE 预处理是训练前置，推理不带外部教师；当前代码仍保留内部残差。
 4. **选型坐标：** 要 Joint WAM 且关心视觉 nuisance → DreamWAM；要冻结 VLA 在线改写 → [DynaWM](./paper-dynawm-vla-online-correction.md)；要部署多候选筛选 → [DreamSteer](./paper-dreamsteer-vla-deployment-steering.md)。
 
 ## 局限与风险
 
-- 桌面操纵 + 单臂真机为主，未覆盖全身 loco-manip。
+- 桌面操纵 + 双臂 PiPER 真机为主，未覆盖全身 loco-manip；三种视觉扰动仅检验同一 Strawberry Selection 任务。
+- 论文部署与当前代码的门控残差开关不同；RGB-only 不能解读为所有辅助参数均已删除。
 - 几何/语义目标经 PCA 压缩，信息上界受教师与 PCA 拟合域限制。
 - 依赖 FastWAM / Wan2.2 栈；许可证以仓库与 HF 卡为准（HF MIT，GitHub 根目录未声明 SPDX）。
 

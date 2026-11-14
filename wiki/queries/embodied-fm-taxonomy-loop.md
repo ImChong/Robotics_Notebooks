@@ -2,8 +2,13 @@
 type: query
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy, foundation-model]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-13
 summary: "具身大模型分类学选型闭环知识链：把 VLM 感知理解 → VLN 空间导航 → VLA 动作执行 → VLX 一体化扩展 → WM 世界模型推演 五层，从分散的家族概念页沉淀为一条端到端选型决策链，逐层说明 I/O 边界、数据需求、泛化能力、实时性/控制带宽与闭环稳定性的取舍及典型失败模式。"
+original:
+  - ../../sources/papers/paligemma_arxiv_2407_07726.md
+  - ../../sources/papers/gr00t_n1_arxiv_2503_14734.md
+  - ../../sources/papers/cosmos_wfm_arxiv_2501_03575.md
+  - ../../sources/papers/mint_rss_2026.md
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
@@ -34,7 +39,7 @@ related:
 
 ## TL;DR：五层选型闭环一句话定位
 
-具身大模型不是「一个端到端 VLA 就搞定一切」，它是一条**自感知向执行递进、再由世界模型回环校验的选型链**。五类模型**共享 Transformer + 多模态编码底座**（详见[五大分类对比页](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)），差异在于**任务头、时序跨度、分支配置与运行方式**。任意一层选型偏离其 I/O 边界，上层都补不回来：
+具身大模型不是「一个端到端 VLA 就搞定一切」，它是一条**自感知向执行递进、再由世界模型回环校验的选型链**。本页所列代表模型通常使用 **Transformer + 多模态编码底座**（详见[五大分类对比页](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)），差异在于**任务头、时序跨度、分支配置与运行方式**。任意一层选型偏离其 I/O 边界，上层都补不回来：
 
 | 层 | 家族 | 解决什么 | 核心 I/O | 数据需求 | 这一层选错会怎样 |
 |----|------|---------|---------|---------|----------------|
@@ -80,7 +85,7 @@ flowchart TD
 
 整条闭环的入口是**把像素与指令翻译成可被下游消化的语义**（详见[五大分类对比页](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)「VLM 能力边界」）：
 
-- **I/O 边界**：输入图像/视频 + 语言，输出语义、物体关系、指令解析——**没有动作、没有轨迹**，是纯认知层。若输入扩展到 **同步音频**，还需额外考核跨模态时序对齐（见 [Daily-Omni](../entities/paper-daily-omni.md)）。
+- **I/O 边界**：输入图像/视频 + 语言，输出语义、物体关系、指令解析——**不自带可执行控制接口**；即使输出坐标或文本计划，也要另行对接控制层。若输入扩展到 **同步音频**，还需额外考核跨模态时序对齐（见 [Daily-Omni](../entities/paper-daily-omni.md)）。
 - **数据需求**：主要吃图文对与海量互联网弱标注，是五层里**采集最便宜、泛化最广**的一层。
 - **选型陷阱**：把 VLM 的语义直接当「动作接口」用是最常见错误——语义理解 ≠ 可执行控制量，中间必须由 VLN/VLA 头补上从语义到动作的映射。工程上常**冻结 VLM 骨干**只训下游头，以省算力并保留泛化。
 
@@ -90,7 +95,7 @@ VLN 在 VLM 之上加**空间移动分支**，回答「往哪走、怎么避障�
 
 - **I/O 边界**：VLM 输入 + 深度/拓扑 → 路径、避障、目标坐标；**仅底盘移动，无力控/操作分支**（见[VLN 任务页](../tasks/vision-language-navigation.md)）。
 - **数据需求**：轨迹-指令对，环境覆盖天然有限，复现门槛集中在数据管线与环境适配（见 [VLN 复现四范式](../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md)）。
-- **与 VLA 的包含关系**：`VLN ⊂ VLA`——VLA 完整搭载 VLN 导航能力并扩展操作/力控分支。选型时若任务只需移动，单独训 VLN 头比上整套 VLA 更省、更可解释、更好调。
+- **与 VLA 的关系**：VLN 是导航任务定义，VLA 是模型输入输出范式，二者不存在普遍的集合包含关系；面向桌面操作的 VLA 未必具备导航能力。选型时若任务只需移动，单独训 VLN 头比上整套 VLA 更省、更可解释、更好调。
 
 ## 3. ③ VLA 动作执行层：泛化 ↔ 实时的核心取舍
 
@@ -113,9 +118,9 @@ VLX（Vision-Language-X，X = 可扩展任务）把感知/导航/执行收进**�
 
 ## 5. ⑤ WM 世界模型推演层：闭环的「虚拟校验器」
 
-世界模型不直接驱动硬件，而是**在虚拟空间对候选动作逐帧推演**，为上层选型兜底：
+独立世界模型通常**预测候选动作后果**；WAM 则可把未来建模与动作生成耦合进策略，为上层选型兜底：
 
-- **I/O 边界**：观测 + 候选动作 → 未来多帧状态/物理反馈；**长时序推演，不即时执行**（见[生成式世界模型](../methods/generative-world-models.md)、[世界模型开源地图](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)）。
+- **I/O 边界**：观测 + 候选动作 → 未来多帧状态/物理反馈；预测时域与执行方式取决于实现，不能由 WM 名称推定（见[生成式世界模型](../methods/generative-world-models.md)、[世界模型开源地图](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)）。
 - **两种耦合范式**：**级联**（VLA 出候选 → WM 推演择优 → 真机执行，与[五大分类对比页](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)一致）vs **联合建模**（[World Action Models](../concepts/world-action-models.md) 把前向预测与动作生成耦合进同一策略，联合分布 `p(o',a|o,l)`）。选型要看清「事后串联 vs 联合训练」。
 - **数据与误差**：WM 吃时序动态数据，**推演步长越长累积误差越大**；WM 也可独立服务 Real2Sim 数据生成与策略评估（如 [SimFoundry](../../sources/papers/simfoundry_arxiv_2606_28276.md) 的模块化场景生成），与 [Sim2Real](../concepts/sim2real.md) 闭环互补，而非替代物理引擎。
 
@@ -156,6 +161,16 @@ VLX（Vision-Language-X，X = 可扩展任务）把感知/导航/执行收进**�
 | WM | World Model | 环境时序动态建模与虚拟推演，不直接驱动执行 |
 | WAM | World Action Model | 前向预测与动作生成联合建模的具身策略 |
 | WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+
+## 一手资料复核与适用边界
+
+本次将已经通读的一手归档接入 `original`，不把转载改标成原文：
+
+- [PaliGemma](../../sources/papers/paligemma_arxiv_2407_07726.md)：核对图像/语言输入、生成文本/位置 token 的边界；论文不含机器人控制验证。
+- [GR00T N1](../../sources/papers/gr00t_n1_arxiv_2503_14734.md)与 [MINT](../../sources/papers/mint_rss_2026.md)：动作生成是专门训练的接口，不等于任意 VLM 已能控制机器人。
+- [Cosmos 第一代报告](../../sources/papers/cosmos_wfm_arxiv_2501_03575.md)：区分策略初始化、规划、评估和数据生成，世界模型不必逐帧进入部署关键路径。
+
+五层是本页的**选型视角**，不是论文公认的严格层级、能力包含关系或全行业统一 VLX 定义；具体导航/力控/实时能力要按 checkpoint、训练数据与控制接口核验。
 
 ## 参考来源
 

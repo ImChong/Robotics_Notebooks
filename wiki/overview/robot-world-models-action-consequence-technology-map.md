@@ -13,6 +13,12 @@ related:
   - ../methods/generative-world-models.md
   - ../methods/vla.md
   - ../entities/agent-reach.md
+original:
+  - ../../sources/papers/dswam_arxiv_2607_04927.md
+  - ../../sources/papers/dynawm_arxiv_2607_02604.md
+  - ../../sources/papers/dreamsteer_arxiv_2607_02865.md
+  - ../../sources/papers/vt_wam_arxiv_2607_02503.md
+  - ../../sources/papers/meco_wam_arxiv_2607_05468.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "依据具身智能研究室 2026-07 世界模型专题，把近期工作整理为动作后果预测、接触建模、3D/4D 几何、训练评估闭环四线；核心判断：机器人正从理解画面走向动作执行前的物理后果预测。"
@@ -22,7 +28,7 @@ summary: "依据具身智能研究室 2026-07 世界模型专题，把近期工�
 
 > **本页定位**：为 [具身智能研究室 · 世界模型动作后果专题](https://mp.weixin.qq.com/s/a5ZDDv70CLDfY98mfviWuA) 提供 **父节点阅读坐标**；不复述逐篇细节，只保留 **问题重框、四线分工、与训练闭环 taxonomy 的挂接**。
 
-## 一句话观点
+## 一句话定义
 
 世界模型近期工作的共同转向是：**动作发出去之前，模型能否提前知道世界会怎么变**——从看懂当前帧，走向预测倾倒、形变、接触与推偏等 **物理后果**，并进入执行、修正、筛选或后训练闭环。
 
@@ -36,7 +42,7 @@ summary: "依据具身智能研究室 2026-07 世界模型专题，把近期工�
 | MoE | Mixture of Experts | Worldscape-MoE 等异构动作接口扩展架构 |
 | RGB-DF | RGB, Depth, Flow | RynnWorld-4D 同步预测的外观-几何-运动表征 |
 
-## 为什么单独做这张地图
+## 为什么重要
 
 - [机器人世界模型训练闭环 taxonomy](./robot-world-models-training-loop-taxonomy.md) 按综述 **策略内预测 / 学习型模拟器 / 可控视频** 三线组织；本页聚焦 **2026-07 策展文** 的横切面：**动作后果如何在 WAM、接触、几何与评估四条线落地**。
 - **节点独立、避免重复：** 文中 **12 篇** 工作均在 `wiki/entities/paper-*` 有 **独立节点**；与既有 WAM 页（MotionWAM、ABot-M0.5 等）**不重复建页**，仅在关联节互链。
@@ -82,6 +88,16 @@ flowchart TB
 
 动作忠实度、长时序误差、不确定性表达、跨本体动作接口；世界模型最终是 **独立模块** 还是 **被吸收进统一策略** 尚无定论。
 
+## 工程实践
+
+1. 先写当前观测、动作/状态单位与采样率；分清输出是候选动作、未来观测还是价值分数。
+2. 分列训练成本与部署关键路径。DSWAM 的视频监督留在训练；DynaWM 每个基础策略需适配权重；DreamSteer 需支付候选数乘 rollout/打分成本。
+3. 同协议记录任务成功率、动作忠实度及端到端延迟；模型内单模块时间不能直接当控制频率。对接触/几何，还要区分传感输入、训练 teacher 和推理输出。
+
+## 局限与风险
+
+四线是策展视角，不能推出所有工作都已闭环上机、已开源或能做真实物理反事实。DynaWM 主要验证仿真，VT-WAM 表面任务有部分信用，MECo-WAM 堆块成功率与基线持平；地图上的相邻节点仍须按各自一手材料评估。
+
 ## 关联页面
 
 - [World Action Models](../concepts/world-action-models.md)
@@ -95,9 +111,23 @@ flowchart TB
 
 ## 参考来源
 
+- [一手全文核对：meco_wam_arxiv_2607_05468](../../sources/papers/meco_wam_arxiv_2607_05468.md)
+
+- [一手全文核对：vt_wam_arxiv_2607_02503](../../sources/papers/vt_wam_arxiv_2607_02503.md)
+
+- [一手全文核对：dreamsteer_arxiv_2607_02865](../../sources/papers/dreamsteer_arxiv_2607_02865.md)
+
+- [一手全文核对：dynawm_arxiv_2607_02604](../../sources/papers/dynawm_arxiv_2607_02604.md)
+
+- [一手全文核对：dswam_arxiv_2607_04927](../../sources/papers/dswam_arxiv_2607_04927.md)
+
 - [wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 
 ## 推荐继续阅读
+
+- [DSWAM 原文](https://arxiv.org/abs/2607.04927) — 训练/部署分工
+- [VT-WAM 原文](https://arxiv.org/abs/2607.02503) — 接触动态
+- [MECo-WAM 原文](https://arxiv.org/abs/2607.05468) — 训练期几何
 
 - [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时人形 WAM 对照
 - [GigaWorld-1](../entities/paper-gigaworld-1-policy-evaluation.md) — 策略评估专用世界模型

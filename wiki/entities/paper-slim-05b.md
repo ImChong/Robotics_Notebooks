@@ -15,7 +15,7 @@ tags:
   - tsinghua
   - ruc
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2608.09771"
 related:
   - ../concepts/world-action-models.md
@@ -26,12 +26,14 @@ related:
   - ./calvin-benchmark.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/slim_05b_arxiv_2608_09771.md
 sources:
   - ../../sources/papers/slim_05b_arxiv_2608_09771.md
   - ../../sources/sites/kzz1031-slim-project-page.md
   - ../../sources/repos/slim.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
-summary: "SLIM-0.5B（arXiv:2608.09771，Fudan×BAAI×THU×RUC）：0.47B MoT 策略；Stage-1 掩码轨迹 IDM+FDM 学动作接地预测 latent，Stage-2 flow-matching 部署；LIBERO 97.5% / LIBERO-Plus 77.45% / CALVIN 4.556；真机 77.3ms·2.01GiB；已开源+HF 权重。"
+summary: "SLIM-0.5B（arXiv:2608.09771，Fudan×BAAI×THU×RUC）：0.47B MoT 策略；Stage-1 掩码轨迹 IDM+FDM 学动作接地预测 latent，Stage-2 flow-matching 部署；LIBERO 97.5% / LIBERO-Plus 77.45% / CALVIN 4.556；受控H100模型推理60.6ms·增量峰值4.26GiB（网页另报部署口径）；已开源+HF 权重。"
 ---
 
 # SLIM-0.5B（动作接地预测隐变量策略 · arXiv:2608.09771）
@@ -57,7 +59,7 @@ summary: "SLIM-0.5B（arXiv:2608.09771，Fudan×BAAI×THU×RUC）：0.47B MoT �
 
 - **对准操纵真正需要的计算：** 开域语义可由小语言条件承担；控制更需要观测–动作交互。
 - **保留 WAM「动作有后果」动机，去掉像素 rollout 成本：** 未来预测只作训练信号，不进控制环。
-- **部署账本清楚：** 参数 ~0.47B、真机端到端约 **77 ms**、policy-server 显存约 **2 GiB**。
+- **部署账本清楚：** 0.47B指可训练策略参数（排除冻结T5/EMA）；PDF受控H100模型推理60.6ms、增量峰值4.26GiB，网页另报部署口径77.3ms/2.01GiB。
 - **与 DeFI / VLA-JEPA 形成对照：** 正逆动力学同骨干、同观测 latent，而非外挂大 VLM 或独立动力学模块。
 
 ## 核心信息
@@ -111,35 +113,34 @@ flowchart TB
 
 ## 源码运行时序图
 
-对齐官方 README：`slim.training.stage1/2`、`slim.serving.server`、`slim.evaluation.libero.evaluate`：
+核读版本`00426cc8`的推理路径（[源码归档](../../sources/repos/slim.md)），未运行GPU实验。
 
 ```mermaid
 sequenceDiagram
-  autonumber
-  actor U as 用户
-  participant HF as Hugging Face / 本地数据
-  participant S1 as slim.training.stage1
-  participant S2 as slim.training.stage2
-  participant PS as slim.serving.server
-  participant Ev as slim.evaluation.libero/calvin
-
-  U->>HF: 准备 LeRobot LIBERO + DINOv2/T5 资产
-  alt 从头训练
-    U->>S1: torchrun -m slim.training.stage1 --config ...stage1...
-    S1-->>U: epoch_3 checkpoint
-    U->>S2: stage2 --init-checkpoint <stage1>
-    S2-->>U: epoch_40 policy ckpt + action_stats
-  else 发布权重
-    U->>HF: hf download kzzwang/SLIM-LIBERO
+  participant E as slim.evaluation.libero.evaluate
+  participant C as environment.ModelClient
+  participant W as WebsocketPolicyServer
+  participant M as SLIMModel
+  participant T as SLIMTransformer
+  participant S as LIBERO environment
+  Note over W,M: slim.serving.server载checkpoint、设备/精度后启动
+  loop 每个动作块
+    E->>C: 双RGB、语言、state
+    C->>W: MessagePack examples请求
+    W->>M: predict_action
+    M->>M: 编码语言/视觉、提取state
+    M->>T: predict_action(当前观测和条件)
+    T->>T: 缓存观测上下文；flow迭代更新动作
+    T-->>M: normalized action chunk
+    M-->>W: normalized_actions
+    W-->>C: 响应
+    C->>C: q01/q99反归一化前六维、缓存chunk
+    C-->>E: 逐步动作
+    E->>S: 夹爪二值化、env.step
   end
-  U->>PS: python -m slim.serving.server --checkpoint ... --bf16
-  loop eval episodes
-    Ev->>PS: obs / proprio / language
-    PS-->>Ev: action chunk
-    Ev->>Ev: 仿真 step / 记录成功率
-  end
-  Note over U,Ev: 一键协议：scripts/evaluate_all_8gpu.sh 先 standard LIBERO 再 LIBERO-Plus；CALVIN 需独立 3.8 客户端环境
 ```
+
+模型不读取真实未来图像，EMA不在Stage2推理路径。标准LIBERO用H8，CALVIN用H12，均四步flow采样；默认LIBERO状态接口为7D。
 
 ## 工程实践
 
@@ -148,7 +149,7 @@ sequenceDiagram
 | 环境 | 训练 Python 3.12 + CUDA 12.4；LIBERO / LIBERO-Plus / CALVIN 分环境（包名冲突） |
 | 全局 batch | 128（8 GPU 默认脚本可改 `NPROC_PER_NODE`） |
 | 权重目录 | 保持 HF release 根目录完整（`config.yaml`、`action_stats.json`） |
-| 真机读数 | latency **77.3 ms**；GPU mem **~2.01 GiB**（policy server） |
+| 时延口径 | PDF表4：H100模型60.6ms/增量峰值4.26GiB，排除RPC/仿真；网页部署：77.3ms/2.01GiB，不混作同一受控测量 |
 | 复现入口 | 见 [仓库归档](../../sources/repos/slim.md) |
 
 ## 实验与评测
@@ -161,21 +162,23 @@ sequenceDiagram
 | 真机五任务 | avg progress **67.8**（nominal + distractor/lighting/background） |
 | 消融 | 无 Stage-1 / 无 EMA / 错 loss 比 → OOD 与长程下降 |
 
+真机67.8是里程碑progress分数：完整1、部分0.5、失败0；每任务每条件10次。背景条件49低于π0.5的54。无EMA时latent MSE更低但有效秩下降、策略分数更低，需同时检查坍缩。
+
 ## 结论
 
 **在操纵控制环里，把「动作接地的 latent 动力学」当作表示学习目标，往往比堆更大 VLM 或推理时滚视频更划算。**
 
 1. **先看参数–延迟–显存三角** — 本文主叙事是逼近/超过更大基线的同时显著更轻。
-2. **Stage-1 不是可选项** — 消融表明它对 LIBERO-Plus 与 CALVIN 都关键。
+2. **Stage-1 有实测收益** — 消融表明它对 LIBERO-Plus 与 CALVIN 都关键。
 3. **IDM:FDM 比例要调** — 默认 0.125:1；别默认 1:1。
 4. **与像素 WAM 选型：** 若部署延迟敏感、且不需要可解释视频想象，优先 latent 训练信号路线。
 5. **与 DeFI 对照：** DeFI 分模块学正逆动力学；SLIM 同 MoT 内双向掩码——迁移时注意骨干是否共享。
-6. **开源可复现** — HF 权重 + server/client 分离，适合作为轻量基线接入评测栈。
+6. **提供复现入口** — HF 权重 + server/client 分离，适合作为轻量基线接入评测栈。
 
 ## 局限与风险
 
 - **语言侧故意变小：** 极端开域语义/长指令可能弱于大 VLA。
-- **依赖 DINOv2/T5 初始化资产路径** — 环境变量配错会静默用错缓存。
+- **依赖 DINOv2/T5 初始化资产路径** — 需与数据归一化及release config共同核对，本次未验证错误配置行为。
 - **多环境评测运维重：** LIBERO vs LIBERO-Plus 包冲突需隔离。
 - **真机五任务仍属实验室桌面** — 不自动外推移动操作/全身人形。
 - **误区：** 把 SLIM 当成推理时世界模型；或当成「无语言」策略。

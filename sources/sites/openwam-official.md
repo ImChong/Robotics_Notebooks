@@ -35,3 +35,10 @@
 - 主沉淀：[OpenWAM](../../wiki/entities/paper-openwam.md)
 - 原始论文档：[openwam_arxiv_2609_07398.md](../papers/openwam_arxiv_2609_07398.md)
 - 代码入口：[openwam.md](../repos/openwam.md)
+
+## 官方页复核（2026-11-13）
+
+- **核对范围：** 官方页正文、架构、累计配方、评测数值、发布入口与视频图注；视频本身未逐帧观看。
+- **通读：** 已完成
+- 代码/HF权重入口公开，网页标46个模型是该页面快照数。图13数值与论文表一致：Full93.60、Plus69.2、C2R69.0、EBench49.4、GR1 60.5、RoboCasa36538.2。
+- 真机三类实验不是严格三个机器人型号：RoboDojo另含ARX/Piper/PiperX。灵巧手“预训练未见”与随后微调并存，不是无需演示直接迁移。

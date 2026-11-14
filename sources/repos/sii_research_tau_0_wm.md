@@ -32,3 +32,12 @@
 ## 对 wiki 的映射
 
 - 沉淀 **[`wiki/entities/tau0-world-model.md`](../../wiki/entities/tau0-world-model.md)**；技术报告摘录见 [`sources/papers/tau0_wm_tech_report.md`](../papers/tau0_wm_tech_report.md)。
+
+## 2026-11-13 实现与开放状态复核
+
+- **固定提交：** `e03902a4a8e0cf89b681e89920784ae8ca7b4b3c`；README已发布VAM/Simulator后训练、推理、TTC入口及HF权重链接，早期“待发布”记录已过时。
+- **核对范围：** README全文；`scripts/run_posttrain_infer_ttc.sh`；`web_infer_utils/posttrain_taco_play_withTTC/server.py` 和 `TauPolicyTTC.py`；`models/wan_2_2_models/pipeline/textimage2video_ttc.py` 的 infer/RCS路径。未读全部训练实现、未下载权重或执行。
+- TTC launcher→WebSocket `TauPolicyServer._handler`→`TauPolicy.play`。模型先采样N个动作，视频特征一次构建缓存，RCS对再加噪动作计算负MSE。默认N=1、sim_refine=false，不能把普通部署默认称完整TTC。
+- **论文与代码差异：** 当前 `play` 在N>1且sim_refine=true时直接调用simulator，`sim_refine_ths`参数没有参与比较；仅当最佳模拟reward<0时再次条件化VAM，否则保留RCS选中的候选并按模拟进度裁段。这不同于论文按RCS阈值触发LAR的Alg.1；源码图须按实际路径画。
+- policy与simulator动作统计分别读取、反归一化后换用sim统计；whole_body配置另补头/腰/底盘默认量。部署动作格式依yaml而异，taco_play例子不是通用双臂EEF配置。
+- 仓内README声明Apache2.0；预训练骨干、外部数据和HF模型许可需各自核对。完整27.3kh语料未随仓打包，后训练示例使用LeRobot taco_play。

@@ -11,7 +11,7 @@ tags:
   - unitree-g1
   - beingbeyond
 status: complete
-updated: 2026-11-08
+updated: 2026-11-13
 date: 2026-10-08
 project_id: being-m07
 project: https://research.beingbeyond.com/being-m07
@@ -32,6 +32,8 @@ related:
   - ./paper-omega-0.md
   - ./unitree-g1.md
   - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
+original:
+  - ../../sources/papers/being_m07.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/papers/being_m07.md
@@ -74,7 +76,7 @@ summary: "Being-M0.7：混合人数据预训练、机器人中训练、冻结先
 | 论文 | arXiv:2610.11283；沿用已有实体 ID，未新建重复节点 |
 | 预训练数据 | 过滤和切片前超过 10,000 小时；配对视频–运动、仅视频、仅运动三流 |
 | 真机 | Unitree G1、Linker Hand O6、头部 RealSense D435i；外部 RTX 4090 策略工作站 |
-| 开放状态 | 论文和演示公开；截至 2026-10-12 未在项目页找到 M0.7 专属代码、权重或处理后训练集入口 |
+| 开放状态 | 论文和演示公开；截至 2026-11-13 未在项目页找到 M0.7 专属代码、权重或处理后训练集入口 |
 
 ## 核心原理：三阶段与梯度边界
 
@@ -115,7 +117,7 @@ flowchart TB
 | Action expert | 30 层、宽度 1024、32 个注意力头；每三层连接一次 prior（3、6、…、30） |
 | 归一化 | 本体和动作按机器人训练集逐通道标准化，执行前还原控制单位 |
 
-22D motion 用头为根连接人和机器人，而不要求二者有相同关节角。机器人中训练读取预处理 motion；部署设 `use_robot_motion=false`，运动 slot 仍可能经过共享前向计算，但输出被丢弃，不能理解成已裁掉全部运动分支算力。
+22D motion 用头为根连接人和机器人，而不要求二者有相同关节角。平移增量在降采样到 5 Hz 前先累积；人 motion 与机器人中训练 motion 的标准化规则不同，不能共用一份预处理配置。机器人中训练读取预处理 motion；部署设 `use_robot_motion=false`，运动 slot 仍可能经过共享前向计算，但输出被丢弃，不能理解成已裁掉全部运动分支算力。
 
 ### 部署频率与 action chunk
 
@@ -224,7 +226,7 @@ SIMPLE 为六任务 × 三个随机化难度 × 每配置十次；多任务模�
 
 ## 开源状态与许可核查
 
-截至 **2026-10-12**，核对[项目页](https://research.beingbeyond.com/being-m07)、[组织仓库列表](https://github.com/orgs/BeingBeyond/repositories)及项目名检索：论文/演示公开，未找到 M0.7 专属训练代码、推理代码、权重或处理后语料入口。该结论是“未发现可获取入口”，不推断作者一定不发布。arXiv 论文许可不等于代码或训练数据许可，原始数据集需各自核对。
+截至 **2026-11-13**，核对[项目页](https://research.beingbeyond.com/being-m07)、[组织仓库列表](https://github.com/orgs/BeingBeyond/repositories)及项目名检索：论文/演示公开，未找到 M0.7 专属训练代码、推理代码、权重或处理后语料入口。该结论是“未发现可获取入口”，不推断作者一定不发布。arXiv 论文许可不等于代码或训练数据许可，原始数据集需各自核对。
 
 ## 关联页面
 

@@ -9,7 +9,7 @@ tags:
   - dual-system
   - midea
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2607.04927"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -21,7 +21,10 @@ related:
   - ../entities/paper-dreamsteer-vla-deployment-steering.md
   - ../entities/paper-meco-wam-4d-geometry-cotraining.md
   - ../entities/paper-rift-wam.md
+original:
+  - ../../sources/papers/dswam_arxiv_2607_04927.md
 sources:
+  - ../../sources/papers/dswam_arxiv_2607_04927.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
 summary: "DSWAM（arXiv:2607.04927）：双系统 WAM——System 1 执行器视频协同训练、推理直出动作块；可选 System 2 VLM 拆分子任务；DeMaVLA 匹配协议下真机折叠 96.3%、RoboTwin 2.0 92.38%。"
 ---
@@ -53,7 +56,7 @@ summary: "DSWAM（arXiv:2607.04927）：双系统 WAM——System 1 执行器视
 - **首个匹配协议下的 WAM–VLA 真机对照：** 在 [DeMaVLA 设定](https://arxiv.org/abs/2607.04927) 下对齐 **同一机器人、预训练/后训练数据、任务协议与成功判据**，折叠 benchmark **禁用 System 2**，使增益可归因于 **执行器建模** 而非数据或平台差异。
 - **与 [DynaWM](./paper-dynawm-vla-online-correction.md)、[DreamSteer](./paper-dreamsteer-vla-deployment-steering.md) 构成 WAM 职责三角**：直接执行 / 在线修正 / 部署筛选；DSWAM 代表 **第一类「接管动作后果预测并直出控制」** 的 foundation 路线。
 
-## 核心结构与方法
+## 核心原理与方法
 
 | 模块 | 方法要点 |
 |------|----------|
@@ -90,6 +93,16 @@ flowchart TB
 | **推理输出** | 部分方法仍 imagine-then-execute | **默认直出 action chunk** |
 | **对照设定** | 平台/数据常不一致 | **DeMaVLA 匹配 VLA 协议** |
 | **主验证任务** | 通用桌面操纵 | **可变形折叠 + RoboTwin 2.0** |
+
+## 工程实践
+
+- 原文 §3.2：System 2 每 2 秒接收近 5 帧并返回当前应执行的子任务；原子任务绕过规划器。应分别评测 WAM-only 和规划开启模式。
+- §3.3.2：RTC 仅推理启用；TensorRT 拆为 visual-context cache 与 action-denoising 两个 engine，预处理、VAE、文本编码和归一化仍在外部。
+- §4.5：RTX 5090 热启动 batch 1 下 198.2→73.8 ms（2.69×），这不是训练吞吐或跨硬件保证；异步 RTC 表只含容易衣物，不能与完整折叠表混比。
+
+## 源码运行时序图
+
+**不适用**：2026-11-13 实际项目页仅 Paper / Project 自链，未列可运行官方代码或权重入口；上图是论文模块流程，不能当作源码调用关系。
 
 ## 实验要点
 
@@ -128,7 +141,7 @@ flowchart TB
 - **误区：** 认为 RoboTwin 高分说明无需真机；**可变形折叠** 才是论文强调的 **公平 VLA 对照** 主战场。
 - **局限：** System 2 增益依赖 **指令粒度与子任务标注质量**；跨本体/跨平台仍受 [Worldscape-MoE](./paper-worldscape-moe-heterogeneous-action.md) 所讨论的 **动作接口碎片化** 约束；长程误差与动作忠实度仍是开放问题（见策展导读）。
 
-## 与其他页面的关系
+## 关联页面
 
 - [wm-action-consequence-category-01-wam-action-prediction](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — WAM 直接执行/修正/筛选分类 hub
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md) — 本纵深总览
@@ -146,6 +159,8 @@ flowchart TB
 - [MECo-WAM 论文实体](./paper-meco-wam-4d-geometry-cotraining.md) — 同团队几何增强 WAM
 
 ## 参考来源
+
+- [DSWAM: A Dual-System World Action Foundation Model for Fine-Grained Robot Manipulation：全文通读归档](../../sources/papers/dswam_arxiv_2607_04927.md)
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [DSWAM 论文（arXiv:2607.04927）](https://arxiv.org/abs/2607.04927)

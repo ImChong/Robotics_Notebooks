@@ -23,3 +23,7 @@
 
 - 论文归档：[sources/papers/dr_wm_arxiv_2610_17630.md](../papers/dr_wm_arxiv_2610_17630.md)
 - 沉淀：[wiki/entities/paper-dr-wm.md](../../wiki/entities/paper-dr-wm.md)
+
+## 2026-11-13 浏览器复核
+
+初始静态抓取仅得到页面壳，改用浏览器打开官方地址后HTTP200、正文可读。Paper为arXiv:2610.17630；Supplementary、Code、Dataset仍coming soon，未给专属模型权重入口。已读方法与资源区，未观看视频；不把组织通用开源链接当本项目实现。

@@ -27,3 +27,9 @@
 
 - [DiT4DiT 论文实体](../../wiki/entities/paper-dit4dit-video-action-model.md)
 - 技术细节以 [sources/papers/dit4dit_arxiv_2603_10448.md](../papers/dit4dit_arxiv_2603_10448.md) 为准
+
+## 官方页复核（2026-11-13）
+
+- **核对范围：** 项目页全文、数值表及Code/Models/部署链接；未观看视频。
+- **通读：** 已完成
+- 项目页公布MIT代码及检查点、G1桌面/全身部署入口；当前56.7% RoboCasa与8桌面+3全身任务属于更新后的发布口径，与论文v2的50.8%、7真机任务分开。

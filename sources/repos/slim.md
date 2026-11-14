@@ -51,3 +51,9 @@ python -m slim.evaluation.libero.evaluate --checkpoint <ckpt.pt> \
 
 - 实体：[SLIM-0.5B](../../wiki/entities/paper-slim-05b.md)
 - 交叉：[LIBERO](../../wiki/entities/libero-benchmark.md)、[CALVIN](../../wiki/entities/calvin-benchmark.md)、[World Action Models](../../wiki/concepts/world-action-models.md)
+
+## 固定版本源码复核（2026-11-13）
+
+- 版本：[00426cc82a44ca9397d293fcad226e12dc574d2c](https://github.com/kzz1031/SLIM/tree/00426cc82a44ca9397d293fcad226e12dc574d2c)。已读根README、serving/server.py、websocket_server.py、evaluation/libero/environment.py全文；libero/evaluate.py完整eval_libero；slim_model.py构造/forward/predict_action及state提取；slim_transformer.py IDM/FDM分派与predict_action完整函数。
+- server载checkpoint并转设备/精度，WebSocket解包调用SLIMModel.predict_action，DINO/T5条件送SLIMTransformer，缓存观测上下文、flow迭代仅更新动作，返回normalized_actions。客户端ModelClient按chunk缓存，q01/q99反归一化前六维，夹爪由仿真入口二值化。
+- 环境须按LIBERO/Plus包冲突分开；release的config和action_stats不可丢。README给训练及LIBERO/CALVIN权重链接，未下载/运行。继承的checkpoint加载与训练loop不在本次完整源码核读范围。

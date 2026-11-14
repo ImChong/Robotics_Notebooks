@@ -12,7 +12,7 @@ tags:
   - shengshu
   - tsinghua
 status: complete
-updated: 2026-11-10
+updated: 2026-11-14
 arxiv: "2608.01880"
 related:
   - ./paper-gwm-first-principles.md

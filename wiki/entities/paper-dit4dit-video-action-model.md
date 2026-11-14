@@ -16,7 +16,7 @@ tags:
   - miaodong
   - mondo-robotics
 status: complete
-updated: 2026-11-08
+updated: 2026-11-13
 arxiv: "2603.10448"
 code: https://github.com/Mondo-Robotics/DiT4DiT
 related:
@@ -32,6 +32,8 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
+original:
+  - ../../sources/papers/dit4dit_arxiv_2603_10448.md
 sources:
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/repos/mondo_robotics_dit4dit.md
@@ -90,8 +92,34 @@ flowchart TB
     NOISE["噪声动作 a_t^{τ_a}"] --> AD
     AD --> AT["动作轨迹 a_t"]
   end
-  OT --> AT
 ```
+
+## 源码运行时序图
+
+核读固定版本`66a6f3a1`，对应[代码记录](../../sources/repos/mondo_robotics_dit4dit.md)；以下是LIBERO动作推理路径。
+
+```mermaid
+sequenceDiagram
+  participant E as LIBERO客户端 ModelClient.step
+  participant W as WebsocketPolicyServer
+  participant P as DiT4DiT.predict_action
+  participant V as Cosmos25.forward / extractor
+  participant A as FlowmatchingActionHead.predict_action
+  E->>E: 拼接视角、sin/cos state、构造examples
+  E->>W: predict_action请求
+  W->>P: 调用加载的BaseFramework模型
+  P->>V: 当前观测、语言
+  V->>V: 默认首步Video DiT、hook隐状态
+  V-->>P: hidden_states
+  P->>A: hidden、state
+  loop 配置的动作去噪步数
+    A->>A: Action DiT与Euler更新
+  end
+  A-->>E: normalized_actions经服务端返回
+  E->>E: chunk缓存、反归一化、逐步执行
+```
+
+动作模式无需解码整段未来视频；动作头仍迭代采样，不能将Video DiT的一次前向说成整个策略一次前向。
 
 ## 工程实践：双 DiT 训练与推理边界
 
@@ -100,6 +128,9 @@ flowchart TB
 - 本页沿用原论文与源码归档中的模块描述；本批未运行训练、未提供新的实时性实测结果。
 
 ## 实验要点
+
+**版本口径：** 本次通读arXiv v2正文与附录A。论文真机为7任务、1400示范、每任务20次测试；当前项目页的8桌面+3全身属于后续扩展。RoboCasa论文50.8%对GR00T-N1.6 **40.8%**，项目页56.7%对**47.8%**，不可交叉比较。LIBERO论文子套件98.4/99.6/98.6/97.6，README98.6/100/99.2/96.6，平均同为98.6但非同一结果表。
+
 
 | 轴 | 报告口径 |
 |----|----------|
@@ -115,12 +146,17 @@ flowchart TB
 
 1. **联合 dual flow-matching** — 非冻结视频骨干只训动作头（mimic-video）；三时间步 $\tau_v/\tau_f/\tau_a$ 稳住特征与控制相位。
 2. **条件来自隐状态而非像素未来帧** — hook $h_t^{\tau_f}$ 经 cross-attn 进 Action DiT。
-3. **基准可读** — LIBERO 平均 **98.6%**；RoboCasa-GR1 约 **50.8%**（项目页 **56.7%**）超 GR00T-N1.6 **47.8%**。
+3. **基准可读** — LIBERO 平均 **98.6%**；RoboCasa-GR1 论文 **50.8% 对 40.8%**；项目页更新为 **56.7% 对 47.8%**。
 4. **真机与泛化** — G1 八项桌面 + 三项 loco-manip 超 GR00T-N1.5/Qwen3DiT；未见类别如 Arrange Flower **70%** vs **0%**。
 5. **效率权衡** — **2.2B** 可训参数，A100 **6 Hz**（慢于 GR00T 13 Hz，快于 Cosmos Policy **0.7 Hz**）；论文主张闭环动作质量优先。
 6. **谱系** — 同团队 MotionWAM 继承双 DiT+flow 接口，推向实时全身 loco-manip。
 
 ## 常见误区或局限
+
+- **预训练与效率：** LIBERO from scratch指未使用额外机器人动作数据，仍用预训练Cosmos。§3的10×数据/7×收敛来自受控proxy实验，不是所有任务的普适倍率。
+- **配置一致性：** 正文称固定τf，Algorithm1却随机采样τf，复现必须固定版本并记录实际采样设置。当前非生成推理默认首步hook。
+- **测时：** 论文表3的6Hz用A100，附录真机工作站为RTX4090，未给出可直接合并的同口径全链路计时。2.2B为可训参数，不是完整常驻模型参数。
+- **观测与迁移：** 单目自视角受遮挡限制；GR1预训练后用G1示范适配，不能据此推出任意跨本体零样本迁移。
 
 - **误区：** 把 DiT4DiT 等同于「任意视频生成 + 动作头」；关键是 **联合 flow matching** 与 **固定 $\tau_f$ 的稳定隐特征提取**，而非两阶段拼接。
 - **误区：** 认为 6 Hz 慢于 GR00T（13 Hz）即不可用；论文主张 **动作质量** 在闭环中更关键，且同接口可演进至 [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 的 **单次前向实时** 设定。

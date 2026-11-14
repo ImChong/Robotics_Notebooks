@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-14
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
@@ -337,11 +337,11 @@ flowchart TD
 - **Pelican-Unified 1.0**：在 Qwen3-VL 上叠 **推理末态潜变量 \(z\)** 与 **Wan 系 UFG**，用 **同一扩散去噪** 联合生成未来视频与动作块，语言 / 视频 / 动作损失回传共享表示；定位为 **统一具身智能（UEI）** 闭环而非 VLA+世界模型流水线拼接（见 [Pelican-Unified 1.0](./pelican-unified-1.md)）
 - **mimic-video（Video-Action Model, VAM）**：用 **互联网规模视频扩散骨干**（如 Cosmos-Predict2）在 **潜空间** 形成与语言一致的 **视觉动力学计划**，再以 **流匹配动作解码器** 作 **逆动力学** 输出动作块；论文叙事强调相对传统 VLA 的 **样本效率** 与把瓶颈转移到 **视频表征质量**（见 [mimic-video](./mimic-video.md)）
 - **DeFI**：将 **GFDM（SVD 系前向动力学）** 与 **GIDM（DINO+VQ 自监督逆动力学）** 在混合/无标签视频上 **分开预训练**，下游再 **冻结前向 + 扩散适配器** 耦合微调，缓解 2D 预测与 3D 动作的目标纠缠并放大无动作标签人视频（见 [DeFI](./defi-decoupled-dynamics-vla.md)）
-- **TrAct（UMich / Stanford，arXiv:2608.24101）**：在 π₀.₅ 上扩展 **VLAT** 联合预测动作与 2D 轨迹，**轨迹条件 SVD 世界模型 + VLAC** 闭环选优；LIBERO-INTEGRAL **27%→55%**、真机 **49%→76%**；**代码待发布**（见 [TrAct](../entities/paper-tract.md)）
+- **TrAct（UMich / Stanford，arXiv:2608.24101）**：在 π₀.₅ 上扩展 **VLAT** 联合预测动作与 2D 轨迹，**轨迹条件 SVD 世界模型 + VLAC** 闭环选优；LIBERO-INTEGRAL **27%→55%**、真机 **49%→76%**；代码已公开，检查点及部分数据仍缺（见 [TrAct](../entities/paper-tract.md)）
 - **MotionWAM vs VLA（Mondo / HKUST，arXiv:2606.09215）**：在 **同 Stage 3 演示 + 同 SONIC 低层** 设定下，**视频世界模型隐状态条件** 的 WAM（76.1%）大幅超过 **GR00T-N1.7**（43.9%）等 VLA 微调基线——说明人形 loco-manip 闭环更依赖 **动力学先验** 而非单独加强 **VLM 语义先验**（见 [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)）
 - **Being-H0.7**：用 egocentric 人视频 + 机器人演示，在**潜空间**用未来观测分支监督 **latent world–action** 先验；测试时不滚未来像素，直接输出动作，并常与 **action chunking**、异步缓冲（UAC）组合部署
 - **GlanceWAM（arXiv:2608.23927）**：视频 WAM 把想象移出控制关键路径，动作头潜空间 **48 ms**；RoboCasa **72.2%**、LIBERO **99.0%**；**MIT + HF 已开源**（见 [GlanceWAM](../entities/paper-glancewam.md)）
-- **OpenWAM-α（arXiv:2609.07398）**：六项对照 Study 后的 **Wan2.2-5B + ActionDiT** 预训练 WAM；LIBERO **99.3%**、RoboTwin2.0-Full **89.0%**、RoboDojo 真机 **37.6/24.4% SR**；**GitHub + HF 46 检查点已开源**（见 [OpenWAM](../entities/paper-openwam.md)）
+- **OpenWAM-α（arXiv:2609.07398）**：六项对照 Study 后的 **Wan2.2-5B + ActionDiT** 预训练 WAM；LIBERO **99.3%**、RoboTwin2.0-Full **93.60%**、RoboDojo 真机 **37.6 分/24.4% SR**；**GitHub + HF 46 检查点已开源**（见 [OpenWAM](../entities/paper-openwam.md)）
 - **LaST-HD**：在 **reasoning-before-acting MoT VLA** 上，用 **动作条件世界模型** 把 **非配对人手与机器人轨迹** 对齐到 **共享前向动力学潜空间**，以潜式 **物理推理** 监督动作专家；配套 **OOL Glove** 采集与 **mixed-to-human**（混合共训 + 人手在线纠偏）配方，在 **6 项真机 / 3 本体** 上报告 **仅用人类数据泛化** 与 **约 20 分钟纠偏适应**（见 [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)，arXiv:2606.23685）
 - **Code-as-World-VL（arXiv:2608.27549）**：**可执行代码** 表示物理世界 + agentic discovery，以 verified worlds 监督 VLM 做 **QuantiPhy 定量物理推理** SOTA；与 LaST-HD 的 latent 动力学对齐不同，强调 **simulator-executable 机制本体**（见 [Code-as-World](../entities/paper-code-as-world.md)）
 - **InfoNCE Geometry（ICML 2026）**：解释 CLIP 式 **modality gap** 的 population geometry——单靠 pairwise alignment 不足以匹配 cross-modal marginal；设计 VLA 上游对比预训练时可对照 [InfoNCE Geometry](../entities/paper-infonce-geometry.md)
@@ -751,7 +751,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [RTCF（免训练检索纠偏）](../entities/paper-rtcf.md) — PMA + 低频残差；LIBERO Long 61.6→68.6（arXiv:2608.04527；无公开代码）
 - [DreamWAM（beyond-RGB Joint WAM）](../entities/paper-dreamwam.md) — 训练多视图未来、部署 RGB-only；LIBERO-Plus 75.47%（arXiv:2608.04996）
 - [FACT（失败感知因果 WAM）](../entities/paper-fact.md) — 失败轨迹教后果；RoboTwin 87.5%、真机 +scoring 92%（arXiv:2608.10232；已开源）
-- [Flex-π（多流算力柔性 WAM）](../entities/paper-flex-pi.md) — RGB/DINO/pointmap 联合；单 ckpt 56 组合 action-only↔full joint；真机 YAM ID 83.0%（arXiv:2608.10860；代码待发布）
+- [Flex-π（多流算力柔性 WAM）](../entities/paper-flex-pi.md) — RGB/DINO/pointmap 联合；单 ckpt 56 组合 action-only↔full joint；真机 YAM ID 完成度 83.0%（arXiv:2608.10860；代码、权重与数据已公开）
 - [Neural Introspection Gating](../entities/paper-neural-introspection-gating.md) — logit-margin 门控 VLA KV 缓存；LIBERO-Long 收回盲缓存掉点（arXiv:2608.10824；IROS 2026）
 - [RoboInter1.5（中间表示套件）](../entities/paper-robointer-1-5.md) — Data/VQA/VLM/VLA + IR 条件 World；部分开源（arXiv:2607.18709）
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — π₀.₅ + AWR/RECAP 异步 RL 与真机 DAgger；仿真 1st / 真机 2nd；全链路开源（arXiv:2606.27163）

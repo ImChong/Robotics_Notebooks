@@ -48,3 +48,13 @@
 - **权重**：HF [`OpenWAM`](https://huggingface.co/OpenWAM)（**46** 模型）；Foundation 入口 [`OpenWAM-Alpha-Pretrain-Foundation-Model`](https://huggingface.co/OpenWAM/OpenWAM-Alpha-Pretrain-Foundation-Model)；下游微调 ckpt 均从此 Foundation 出发。
 - **外部依赖**：RoboDojo 真机评测经 [XPolicyLab](https://github.com/XPolicyLab/XPolicyLab)；部分基准需单独拉环境。
 - **计划中**：SimplerEnv、Calvin 等标注为 Planned。
+
+## 固定版本源码核读（2026-11-13）
+
+- **版本：** [1dcaeea76501f2431286b511284a671778645996](https://github.com/OpenWAM-Official/OpenWAM/tree/1dcaeea76501f2431286b511284a671778645996)
+- **核对范围：** 根README全文；deploy.server的main/build_server_from_config/PolicyServer完整请求路径，WAMPolicy、SyncInferenceExecutor全文，JointInferenceEngine.generate完整函数。未核读所有架构内核或异步worker。
+- **通读：** 已完成
+- checkpoint先恢复训练架构及表示契约，再合部署参数；PolicyServer服务端预处理多视图，WAMPolicy委托同步缓冲器。空缓冲才调用engine.generate→architecture.generate；返回动作块保留执行horizon，每次WebSocket响应是一条物理单位动作，不是整块。
+- 归一化state发生在engine，binary command最终在policy边界投影±1；reset清episode缓冲。语义/维数不匹配应先检查checkpoint与客户端协议。
+- 当前训练、部署、模型下载与四源清洗机器人数据已开放；四源mixture不含论文第五源人视频，不应称完整原始预训练语料全公开。数据路径需覆盖本机路径。
+- 11月RBA 2.54–2.77倍训练吞吐在4 H200暖机测得，且优化组关闭checkpointing、旧组全层重算；不能视为相同显存/当前默认的纯内核收益。静态阅读，未做GPU复现。
