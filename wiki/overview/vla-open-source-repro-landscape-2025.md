@@ -46,6 +46,8 @@ VLA 的「智能」可以写在论文里，但**跑不通的训练脚本与权�
 
 **2026 补充入口（不入上表）：** [FluxVLA Engine](../entities/fluxvla-engine.md) 适合 **多 backbone 统一配置** 的 train/eval/RTC 推理/真机闭环（`FluxVLA/FluxVLA` + HF `FluxVLAEngine`；arXiv:2609.17210；非新模型而是工程平台）。[Dexmal DM0.5（OpenDM）](../entities/dexmal-dm05.md) 适合 **Gemma3-4B + flow-matching chunk VLA** 全栈复现（`dexmal/opendm` + HF `DM05` 及 LIBERO/RobotWin/Table30 下游权重；`script/dm05_launcher.sh` 统一 train/inference）。[RoboInter1.5](../entities/paper-robointer-1-5.md) 提供 **中间表示数据 + VLM +（待齐）VLA/World**——适合先复现 IR-VQA/Planner，再跟进 VLA 权重。[FabriVLA](../entities/paper-fabrivla.md) 适合 **Meta-World 轻量 flow-VLA** 对照（gated SA + shallow fusion，代码+93k 权重）；多基准相对位次见 [VLA SOTA Leaderboard](../entities/vla-sota-leaderboard.md)。[EgoSteer](../entities/paper-egosteer.md) 适合 **双灵巧手 + egocentric 预训练全栈**（EgoSmith / Robot Stack / WM-VLA；代码+权重已开源，全量处理后数据待发）。[G0.5](../entities/paper-galaxea-g05.md) 适合 **VLM-as-Actor 自回归** 复现（`OpenGalaxea/GalaxeaVLA` + HF `G05`；R1/LIBERO/RoboTwin/DROID 入口；Community License）。[ROS2SmolVLA](../entities/paper-ros2smolvla.md) 适合 **工业 UR10e + ROS 2 本地 SmolVLA**（Docker 入口 + HF 权重；arXiv:2608.23320）。[Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md) 适合跟 **36B 稀疏通才 + LeRobot `perceptron_isaac`**（视频–teleop scaling；代码已开源、Hub 权重入库日 COMING SOON；**勿与 NVIDIA Isaac GR00T 混淆**）。
 
+**2026 年后续对照：** [15 个项目看 2026 VLA 开源的三次转向](../comparisons/vla-open-source-ecosystem-2026-three-shifts.md)，聚焦跨本体训练、实时/长程策略和训练评测基础设施；这是独立新策展，不合并到 2025 年的历史清单。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
