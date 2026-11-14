@@ -3,6 +3,7 @@ type: entity
 project_id: ocs2-perceptive-mpc-go2
 tags: [quadruped, locomotion, terrain, perception, nmpc, ocs2, wbc, ros2, mujoco, repo]
 status: complete
+institutions: [independent-maintainer]
 updated: 2026-11-14
 code: https://github.com/Khaledsweid1/ocs2-perceptive-mpc-go2
 original:
@@ -138,6 +139,7 @@ sequenceDiagram
 
 - **主要落足区域约束默认未启用**：`perceptive_mujoco.launch.py` 的 `fp` 缺省为 `0`；官方指南记载启用 FootPlacement 会使 Go2 过约束。项目已演示站立、小跑与部分粗糙地形通过，但**尚不能爬完完整楼梯**。不可把“凸区域图有输出”写成“四足已通过全部地形几何约束的真机验证”。
 - **合成高程图不是真机感知**：`terrain_elevation_pub.py` 从 MuJoCo 几何体射线采样，并对未命中/机器人自身结构写入 0.0，尚非融合真实深度噪声与空洞的 elevation_mapping；边界采样错误可翻转坡度方向，直接扰乱基座俯仰。
+- **维护归属**：本节点按独立维护者公开的 Go2 适配仓库归类为 `independent-maintainer`（仓库中的中性维护者类别）；这**不代表**原始 NMPC 方法作者所属机构，原论文与其 ETH Zürich 研究团队另见论文引用。
 - **来源分层**：附件是 2026-11-14 的二次技术解读（部分公式/表格在导出 PDF 中缺失），原始算法论文是 ANYmal 上的 2023 工作；本仓是 Go2 ROS 2 的实现补丁，作者指南中的数据与附件数字**均未经本次独立复测**。附件未直接提供 Go2 仓库 URL；以公开 README 与启动代码相符作为关联线索，不能断言二者作者关系。
 - **实时与可行性**：低频地图可能滞后于快速接触变化；非凸 NMPC 有初值与失败恢复问题。提高摆腿高度不能替代落足区域约束，反之亦然。
 
@@ -146,6 +148,7 @@ sequenceDiagram
 - [OCS2：切换系统最优控制](./ocs2.md) — 求解器与模型层的独立工具箱
 - [Nonlinear Model Predictive Control](../methods/nonlinear-model-predictive-control.md) — 非线性约束与滚动优化基础
 - [质心 NMPC + WBC 控制栈](../methods/centroidal-nmpc-wbc-stack.md) — 规划器与关节层解耦
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 对照真实传感/高程建图与本项目 MuJoCo 合成高程图的差异
 - [Footstep Planning](../concepts/footstep-planning.md) — 名义落足点与局部可行集
 - [楼梯与障碍感知行走](../tasks/stair-obstacle-perceptive-locomotion.md) — 感知越障技术路线
 - [感知越障纵深路线](../../roadmap/depth-perceptive-locomotion.md) — Stage 1 地形表征与 Stage 3 模型控制替代路径
