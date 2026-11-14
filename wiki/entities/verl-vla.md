@@ -3,7 +3,7 @@ type: entity
 project_id: verl-vla
 project: https://verl-vla.readthedocs.io/en/latest/
 code: https://github.com/verl-project/verl-vla
-tags: [repo, vla, reinforcement-learning, post-training, teleoperation, distributed-training, human-in-the-loop]
+tags: [repo, vla, reinforcement-learning, post-training, teleoperation, distributed-training, human-in-the-loop, bytedance]
 status: complete
 updated: 2026-11-14
 related:
