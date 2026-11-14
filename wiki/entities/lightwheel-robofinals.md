@@ -148,7 +148,7 @@ flowchart TB
 
 ## 2026-11 · 新增独立训练产品 RoboFinals RL-Env
 
-光轮在 CoRL 2026 期间发布了 [**RoboFinals RL Environments**](./lightwheel-robofinals-rl-env.md)，这是与本页**评测平台**相区分的 **Newton-native 强化学习仿真训练环境**：由 EgoSuite 捕获真实作业（首个公开任务为汽车维修），agent 辅助生成环境、专家审核，面向长程多阶段与可变形富接触任务；官方称两个产品**共享任务定义**。**目前是 early access**，尚未核实可下载环境包、RL 基线或产品源码。详见 [独立节点](./lightwheel-robofinals-rl-env.md) 与 [官方发布归档](../../sources/sites/lightwheel_robofinals_rl_env.md)。
+光轮在 CoRL 2026 期间发布了 [**RoboFinals RL Environments**](./lightwheel-robofinals-rl-env.md)，这是与本页**评测平台**独立的 **Newton-native RL 训练环境**。官方 [技术产品页](https://lightwheel.ai/robofinals-rl-env) 已于 2026-11-14 全文核实：EgoSuite 采集真实作业（首发汽车维修）→ Agent 解析子目标、物体和操作顺序 → SimReady OpenUSD 重建部件、工具和灵巧手 → 实测摩擦/刚度/阻尼并以 CAE 校验可变形体 → Newton 单时间步耦合刚体/柔性/颗粒接触 → 策略训练与 RoboFinals 评测**共享任务、场景和物理定义**。每个建设阶段经光轮专家审核；完整排行榜仍计划之后开放。产品目前仅提供 [Early Access 表单](https://lightwheel.ai/robofinals-rl-env/early-access)，**没有**公开可运行的 RL-Env 专属环境包/SDK、基线或独立 Sim2Real 数据。详见 [独立实体](./lightwheel-robofinals-rl-env.md) 与 [全文核验归档](../../sources/sites/lightwheel_robofinals_rl_env.md)。
 
 ## 开源与访问（步骤 2.5）
 
@@ -210,7 +210,7 @@ flowchart TB
 **原文阅读范围（2026-11-14）：** 官网完整通读 2025-12-04 发布页、2026-03-16 Industrial Benchmark、2026-08-18 Newton-native 全栈原文；源码未纳入「原文已读完」的归档范围，平台本身依旧属于商业服务。
 
 
-- [RoboFinals RL-Env 官方公告与开放状态归档](../../sources/sites/lightwheel_robofinals_rl_env.md)（产品独立技术页待补核）
+- [RoboFinals RL-Env 官方公告与开放状态归档](../../sources/sites/lightwheel_robofinals_rl_env.md)（官网独立技术页已于 2026-11-14 全文核实）
 
 - [RoboFinals 官方博文合集（2025-12-04 / 2026-03-16 / 2026-08-18）](../../sources/blogs/lightwheel_robofinals_posts.md)
 - [BenchHub × Arena 官方博文合集](../../sources/blogs/lightwheel_benchhub_arena_posts.md)
