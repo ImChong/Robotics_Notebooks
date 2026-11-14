@@ -21,6 +21,13 @@
 - **底层策略权重另开源：** 仿真实验使用的 π₀.₅（[`Physical-Intelligence/openpi`](https://github.com/Physical-Intelligence/openpi)）与 OpenVLA-OFT GRPO checkpoint（Hugging Face `RLinf/RLinf-OpenVLAOFT-GRPO-LIBERO-90`）可公开获取；**编排 harness 本身尚无可运行实现**。
 - **互指：** [`sources/sites/robo-harness-com.md`](../sites/robo-harness-com.md) · [`sources/repos/robo-harness.md`](../repos/robo-harness.md)
 
+- **核对范围：** arXiv HTML v3 §1–9 与附录（任务/记忆桥接/策略配置），并与先前 v2 归档及官方项目页交叉核对。
+- **通读：** 已完成
+
+## 最新版增补（v3，2026-09-29）
+
+- arXiv v3 纳入 VLA、WAM、RL 和 TAMP 异构策略；摘要写明五个公开 benchmark、500 项自定义任务与 135 次真机试验。上文 v2 历史数值仅在对应版本口径下阅读。
+
 ## 核心论文摘录（MVP）
 
 ### 1) 问题：异构策略编排 ≠ 同质技能规划

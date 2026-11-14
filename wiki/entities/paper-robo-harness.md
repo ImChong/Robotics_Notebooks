@@ -16,8 +16,11 @@ tags:
   - mcgill
   - 2012-labs
 status: complete
-updated: 2026-10-06
+updated: 2026-11-14
 arxiv: "2607.18060"
+project_id: roboharness-heterogeneous-policies
+original:
+  - ../../sources/papers/robo_harness_arxiv_2607_18060.md
 code: https://github.com/markli1hoshipu/RoboHarness
 related:
   - ../methods/vla.md
@@ -60,7 +63,7 @@ summary: "RoboHarness（arXiv:2607.18060，华为诺亚 / UBC / 多伦多大学 
 | 字段 | 内容 |
 |------|------|
 | **机构** | 华为（Huawei Noah’s Ark Lab）；英属哥伦比亚大学（UBC）；多伦多大学（University of Toronto）；麦吉尔大学（McGill）；二零一二实验室（2012 Labs） |
-| **arXiv** | [2607.18060](https://arxiv.org/abs/2607.18060)（v2，2026-07-28） |
+| **arXiv** | [2607.18060](https://arxiv.org/abs/2607.18060)（最新核对 v3，2026-09-29；旧页面部分实验数值来自 v2） |
 | **开源** | **部分开源（占位仓）** — [`markli1hoshipu/RoboHarness`](https://github.com/markli1hoshipu/RoboHarness) 为项目页镜像；harness **无可运行训练/推理入口**；底层 π₀.₅ / OpenVLA-OFT 权重另开源 |
 | **规划器** | Coding agent：Codex + GPT-5.5（论文实现） |
 | **仿真策略库** | π₀.₅（openpi `pi05_libero`）+ OpenVLA-OFT（RLinf GRPO）+ PDDLStream/FF TAMP |
@@ -115,6 +118,10 @@ flowchart TB
 1. 用下一子任务 \(g_{t+1}\) 与当前观测检索 top-K 锚点轨迹；
 2. 沿锚点前后扩展机器人状态，拟合局部进度 \(f_{\mathrm{score}}\) 与支持域 \(\mathcal{R}_{\mathrm{conf}}\)；
 3. 在可行运动集合内最大化 \(f_{\mathrm{score}}-\lambda C_{\mathrm{motion}}\)（且 \(f_{\mathrm{score}}\ge 0\)）选目标态，调用现成运动规划生成桥接轨迹后再调用下一策略。
+
+## 版本补充（2026-11-14）
+
+arXiv v3（2026-09-29）在摘要中写明五个公开基准及 500 个定制任务，早期 v2 页面按旧口径仅列较少基准。保留已有 v2 数字用于历史对照，不将旧结果误写为 v3 的全部测评。
 
 ## 源码运行时序图
 
@@ -186,8 +193,12 @@ flowchart TB
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — 复现入口与边界
 - [Manipulation](../tasks/manipulation.md) — LIBERO / 长时程操作任务背景
 - [ScheduleStream](./schedulestream.md) — TAMP/调度层另一工程锚点
+- [StageGuard](./paper-stageguard.md) — 解决执行阶段何时切换，补全异构策略编排监测层
+- [Self-CriTeach](./paper-self-criteach.md) — 将符号规划域用于上层 LLM 训练与约束
 
 ## 参考来源
+
+- [arXiv HTML v3（2026-09-29）](https://arxiv.org/html/2607.18060) — 与旧 v2 核对：论文扩展到五个公共基准，原有历史指标仍须按版本核对
 
 - [RoboHarness 论文摘录](../../sources/papers/robo_harness_arxiv_2607_18060.md)
 - [项目页归档](../../sources/sites/robo-harness-com.md)

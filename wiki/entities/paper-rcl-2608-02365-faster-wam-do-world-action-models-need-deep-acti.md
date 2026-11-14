@@ -1,120 +1,148 @@
 ---
 type: entity
-tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
+project_id: faster-wam-deep-action-modules
+tags: [paper, wam, world-model, manipulation, huawei, mcgill, utoronto]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-14
 arxiv: "2608.02365"
-summary: "To address this limitation, we introduce Dock of Transformer (DoT), a video-centric design principle that treats a pretrained video Transformer as a representation hub and connects lightweight output-heads through dockin"
-related:
-  - paper-rcl-wam-robot-learning-control-survey.md
-  - ../overview/rcl-awesome-wam-technology-map.md
-  - ../methods/generative-world-models.md
-  - ../methods/vla.md
-  - ../tasks/manipulation.md
-  - ../tasks/locomotion.md
+project: https://teamfasterwam.github.io/Faster-WAM/
+code: https://github.com/TeamFasterwam/FasterWAM
+original:
+  - ../../sources/papers/rcl_awesome_wam_2608_02365_faster-wam-do-world-action-models-need-d.md
 sources:
   - ../../sources/papers/rcl_awesome_wam_2608_02365_faster-wam-do-world-action-models-need-d.md
   - ../../sources/papers/rcl_awesome_wam_catalog.md
-  - ../../sources/repos/awesome-world-action-models-rcl.md
+  - ../../sources/sites/faster-wam.md
+  - ../../sources/repos/fasterwam-team.md
+related:
+  - ./paper-fast-wam.md
+  - ./paper-rcl-2608-04404-faster-wam-efficient-inference-time-future-condi.md
+  - ../concepts/world-action-models.md
+summary: "Faster-WAM（arXiv:2608.02365 v2）：以预训练视频世界模型为中心，Lite KV-Fusion 让单层动作 expert 读取各层 KV，结合 world-model-only conditioning 与 retracted 1D RoPE，LIBERO-Plus 78.3%，真机 129ms/chunk；代码已开放。"
 ---
 
-# Faster-WAM
+# Faster-WAM｜世界模型为中心的轻量动作模块
 
-**Faster-WAM: Do World Action Models Need Deep Action Modules?** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 351/564** 篇，分组 **WAMs**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
+[English: Faster-WAM: Do World Action Models Need Deep Action Modules?](https://arxiv.org/abs/2608.02365) · [项目页](https://teamfasterwam.github.io/Faster-WAM/) · [官方源码](https://github.com/TeamFasterwam/FasterWAM)
 
 ## 一句话定义
 
-To address this limitation, we introduce Dock of Transformer (DoT), a video-centric design principle that treats a pretrained video Transformer as a representation hub and connects lightweight output-heads through docking interfaces. Without additional embodied pretraining, Faster-WAM achieves competitive performanc...
+Faster-WAM 不依赖深层动作网络，而用**单层动作 DiT + 跨视频层 Lite KV-Fusion**复用预训练 Wan2.2 视频世界模型的多层表征，以更低推理延迟生成动作块。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WAM | World Action Model | 世界预测与动作生成耦合 |
-| VLA | Vision-Language-Action | 视觉–语言–动作策略 |
-| IDM | Inverse Dynamics Model | 先预测未来再反推动作 |
-| WM | World Model | 环境前向预测模型 |
+|---|---|---|
+| WAM | World Action Model | 从视频世界模型衍生动作控制 |
+| DoT | Dock of Transformers | 视频主干向轻量动作输出头开放多层特征的接口 |
+| KV | Key–Value | Transformer 各视频层可复用的注意力缓存 |
+| RoPE | Rotary Position Embedding | 视频/动作 token 使用的位置信息 |
+| OOD | Out-of-Distribution | LIBERO-Plus 等分布偏移测试 |
 
 ## 为什么重要
 
-- To address this limitation, we introduce Dock of Transformer (DoT), a video-centric design principle that treats a pretrained video Transformer as a representation hub and connects lightweight output-heads through docking interfaces. Without additional embodied pretraining, Faster-WAM achieves competitive performanc...
-- 想横向对照同一分组的其他工作，可以从 [RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md) 逐条展开。
-- 顺着列表实体 [Awesome World-Action Models](paper-rcl-wam-robot-learning-control-survey.md) 与站内 WAM / VLA 方法页，可以接回对应的学习主线。
+此前 Fast-WAM 的动作侧保留深模块，即使不再生成未来视频，动作去噪仍占用延迟。本文验证**主干世界表征深，动作读出不一定也要深**，把算力移向视频模型而不是重复计算动作网络。
 
-## 流程总览
+## 核心原理与流程总览
 
 ```mermaid
-flowchart LR
-  IN["相机观测 + 语言指令 + 本体状态"] --> VB["预训练 Wan2.2-5B 视频 DiT<br/>语言与本体仅条件化视频主干"]
-  VB --> KV["各视频层缓存 KV<br/>（观测帧 t=0）"]
-  KV --> LKF["Lite KV-Fusion<br/>每个动作层、每个 head 学习<br/>对所有视频层 KV 的 softmax 加权融合"]
-  LKF --> RR["Retracted 1D-RoPE<br/>去除视频 3D 旋转并按动作 1D 时间轴重编码融合 key"]
-  AQ["带噪动作 token"] --> ACT["单层动作 DiT<br/>与融合后的视频 KV 联合注意力<br/>无语言 / 本体旁路 cross-attention"]
-  RR --> ACT
-  ACT --> OUT["动作 chunk"]
+flowchart TB
+  O["当前相机帧 + 语言 + 本体状态"] --> V["Wan2.2-5B 视频 Transformer"]
+  V --> KV["缓存全部视频层 K / V"]
+  KV --> F["Lite KV-Fusion：每 head 学习各层权重"]
+  F --> R["Retracted 1D RoPE：视频 K 与动作轴对齐"]
+  A["带噪动作 token"] --> E["单层动作 expert + 联合注意力"]
+  R --> E
+  E --> P["去噪输出 action chunk"]
+  P --> ROB["执行后获取新观测"]
 ```
 
-图依据：论文 §2.1–2.4 / Fig.2
+- **DoT：** 每个动作层、attention head 对视频层的原生 KV 做 softmax 加权，避免手动挑某一特征层（原文 §2.1）。
+- **World-model-only conditioning：** 文本和本体状态只进入视频主干；动作头不额外接收同一条件的 cross-attention（§2.2）。
+- **Retracted 1D-RoPE：** 已带 3D 视频位置旋转的 key 去旋后映射回动作 1D 时间轴，防止空间/时间位置基不一致（§2.3）。
+- **训练 / 推理：** 当前观测预填视频 KV；跨多个动作去噪步骤重复使用融合后固定上下文（§2.4）。
 
-## 核心信息
+## 源码运行时序图
 
-| 字段 | 内容 |
-|------|------|
-| 编号 | 351/564 |
-| 分组 | WAMs |
-| 出处 | 见清单 / 原文 |
-| 论文 | <https://arxiv.org/abs/2608.02365> |
-| 子类 / 象限 | 高效推理与实时控制 · 四象限外 |
+```mermaid
+sequenceDiagram
+  autonumber
+  participant User as "运行者"
+  participant Script as "scripts/train.sh"
+  participant Train as "scripts/train.py"
+  participant Runtime as "fasterwam.runtime"
+  participant Eval as "scripts/eval.sh"
+  participant Libero as "experiments.libero.run_libero_manager_v2"
+  User->>Script: train.sh libero 8 (Hydra overrides)
+  Script->>Train: accelerate launch + data=libero_2cam
+  Train->>Runtime: run_training(cfg)
+  Runtime-->>User: checkpoint + dataset_stats.json
+  User->>Eval: eval.sh libero ckpt=... + stats
+  Eval->>Libero: python -m experiments.libero.run_libero_manager_v2
+  Libero-->>User: 逐任务 rollout / 评估结果
+```
 
-## 核心机制（归纳）
+图依据仓库 README、`scripts/train.sh`、`scripts/train.py` 与 `scripts/eval.sh` 的实际入口；RoboTwin 则映射至 `experiments.robotwin.run_robotwin_manager`。
 
-### 策展导读要点
+## 工程实践
 
-To address this limitation, we introduce Dock of Transformer (DoT), a video-centric design principle that treats a pretrained video Transformer as a representation hub and connects lightweight output-heads through docking interfaces. Without additional embodied pretraining, Faster-WAM achieves competitive performanc...
+| 模块 | 实际信息 |
+|---|---|
+| 代码 | [TeamFasterwam/FasterWAM](https://github.com/TeamFasterwam/FasterWAM)，含 LIBERO / LIBERO-Plus / RoboTwin 2.0 训练评估 |
+| 运行环境 | Linux + CUDA 12.8，PyTorch 2.7.1，BF16；官方 8 GPU 完整训练配方 |
+| checkpoint | 训练输出 `checkpoints/weights/step_NNNNNN.pt`，评估须配同一次的 `dataset_stats.json` |
+| 模型资产 | Wan2.2 视频主干依赖数十 GB；官网发布自训练权重仍标记 Coming soon |
+| 许可证 | PolyForm Noncommercial 1.0.0，**非通用商业使用许可** |
 
-本页不复述论文公式与完整实验表；若需工程落地，请回到原文并对照站内 [World Action Models（WAM）](../concepts/world-action-models.md) 等概念页。
+## 实验与评测
 
-## 评测与指标
+| 原文 v2 设定 | Faster-WAM | 对照 |
+|---|---:|---|
+| LIBERO 平均成功率 | 98.3% | 同表内 WAM / VLA |
+| RoboTwin 2.0 clean / randomized | 90.4% / 90.6% | Fast-WAM 91.9% / 91.8% |
+| LIBERO-Plus 整体成功率 | **78.3%** | Fast-WAM 51.5%，提升 26.8 pp |
+| RoboTwin 单 chunk 延迟 | **53.2 ms** | Fast-WAM 196.8 ms（受测量口径约束） |
+| Franka 四任务平均成功率 | **81.3%** | Fast-WAM 80.0% |
+| Franka 部署 workstation 单 chunk 延迟 | **129 ms** | Fast-WAM 502 ms |
 
-- 本页 **没有搬运** 原文的量化 benchmark 与实机指标。
-- 评测口径与具体数值以 [原文 / 项目页](https://arxiv.org/abs/2608.02365) 为准。
-- 横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 同分组条目。
-
-## 与其他工作对比
-
-- 本页 **不做** 与具体基线的逐项数值对比；同分组的横向对照请回到 [技术地图](../overview/rcl-awesome-wam-technology-map.md) 的 **WAMs** 分组逐条展开。
-- 如果站内已经有这篇的深读页（含机构、实验表与源码运行时序图），请以那一页为准；本页只保留清单要点。
-- 与清单内相邻条目孰优孰劣，本页不下结论：清单 Contribution 可能滞后于论文最新版本，差异应以各自原文的问题设定与评测口径为准。
+论文对比表的非同硬件、非同配置延迟不要直接并列为一个 speedup；完成任务的真实总时间还包括机器人运动和等待。
 
 ## 结论
 
-**这一页能给你的是「Faster-WAM」在策展清单里的坐标与要点：够你判断要不要去读原文，但不能替代原文。**
+**单层动作 expert 访问多层视频特征，可以在维持竞争性成功率的同时显著减少 action-side 计算；不代表一层在所有机器人上都最优。**
 
-- 可确证的只有清单坐标：分组 **WAMs**，以及 Contribution 点出的问题设定；本页不自行推导新结论。
-- 适用边界：本页不能替代原文 PDF；开源状态以项目页实际链接为准（清单可能滞后）。
-- 要深读这篇，建议直接从原文入手，再回到下方关联的方法 / 任务页对照。
+1. 优先对齐相同硬件、chunk 长度和去噪步数再比较延迟。
+2. 检查视频层 KV 融合权重与注意力缓存复用是否正确，避免减少深度却丢失多尺度信息。
+3. 实时部署关注单 chunk 时延与总任务节拍，不要混为一谈。
+4. LIBERO-Plus 的泛化提升是无额外具身预训练条件下的结果，不能默认泛化到新本体。
+5. 完整 benchmark 复现需要多 GPU、模型数据及 checkpoint，且受非商用许可证约束。
 
-## 常见误区
+## 与其他工作对比
 
-1. 不要把 Awesome 条目的 Contribution 当成完整方法证明——它只是策展导读。
-2. 若站内已有这篇的深读页，以那一页为准——本页只是清单入口，不含实验数据。
+- [Fast-WAM](./paper-fast-wam.md)：减少未来视频生成，动作头仍较深；Faster-WAM 进一步简化 action expert。
+- [另一篇同名 Faster-WAM（2608.04404）](./paper-rcl-2608-04404-faster-wam-efficient-inference-time-future-condi.md)：强调稀疏视频–动作交互与未来条件融合，不是本篇的一层动作头设计。
+- [World Action Models](../concepts/world-action-models.md)：理解 WAM 与 VLA 的结构差异。
+
+## 局限与风险
+
+- 只验证 Wan2.2 和 LTX-Video 等有限主干；没有穷尽 action depth 的最优搜索。
+- 真机为一平台、四任务；未证明跨本体、接触复杂任务均适用。
+- **代码已开放，权重仍标记待发布**；大体量依赖与非商用协议均影响复现与转产。
 
 ## 关联页面
 
-- 列表实体：[Awesome World-Action Models（RCL）](paper-rcl-wam-robot-learning-control-survey.md)
-- 技术地图：[RCL Awesome WAM 技术地图](../overview/rcl-awesome-wam-technology-map.md)
-- 方法/任务：[generative-world-models.md](../methods/generative-world-models.md)、[manipulation.md](../tasks/manipulation.md)
+- [Fast-WAM](./paper-fast-wam.md)
+- [另一篇 Faster-WAM](./paper-rcl-2608-04404-faster-wam-efficient-inference-time-future-condi.md)
+- [WAM 概念](../concepts/world-action-models.md)
+- [VLA 方法](../methods/vla.md)
 
 ## 参考来源
 
-- [`sources/papers/rcl_awesome_wam_2608_02365_faster-wam-do-world-action-models-need-d.md`](../../sources/papers/rcl_awesome_wam_2608_02365_faster-wam-do-world-action-models-need-d.md) — 本条目策展摘录
-- [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — 列表总表
-- [`sources/repos/awesome-world-action-models-rcl.md`](../../sources/repos/awesome-world-action-models-rcl.md)
-- [`docs/PAPERS.md`](https://github.com/RCL-Robotics/Awesome-World-Action-Models/blob/main/docs/PAPERS.md) — 上游论文目录
-- 论文：<https://arxiv.org/abs/2608.02365>
-- [arXiv PDF](https://arxiv.org/pdf/2608.02365)：已通读方法部分（实验与附录以略读为准）：2 Method（Dock of Transformers、World-Model-Only Conditioning、RoPE Axis-Frequency Alignment、Training and Inference）
+- [论文摘录（含 v2 通读核对）](../../sources/papers/rcl_awesome_wam_2608_02365_faster-wam-do-world-action-models-need-d.md)
+- [项目主页归档](../../sources/sites/faster-wam.md)
+- [源码与入口核查](../../sources/repos/fasterwam-team.md)
 
 ## 推荐继续阅读
 
-- [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
-- [原文](https://arxiv.org/abs/2608.02365)
+- [arXiv HTML v2](https://arxiv.org/html/2608.02365)
+- [官方训练与评估 README](https://github.com/TeamFasterwam/FasterWAM)
