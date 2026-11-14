@@ -2,9 +2,10 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-14
 related:
   - ../entities/cartwheel-control.md
+  - ../entities/paper-throwing-tight-spiral-football.md
   - ../entities/paper-dkwbc.md
   - ../entities/paper-humanoid-touch-dream.md
   - ../entities/embodied-interview-qa.md
@@ -154,6 +155,10 @@ print("joint acceleration command:", qdd_star)
 - 现代实现把"零空间严格优先"替换为 QP/HQP（含不等式），思想一致（本页上文"核心框架"）。
 
 ## 工程实践
+
+### 动态抛投与手指短时接触：Tight Spiral
+
+[人形机器人紧密螺旋橄榄球投掷（arXiv:2608.16642）](../entities/paper-throwing-tight-spiral-football.md) 是 WBC 与灵巧手接触控制的交叉实例：G1 腿部用 GR00T Whole-Body controller 稳定，腰臂跟踪离线优化抛投轨迹，出手时腕/指采用基于离线 MPC 的状态查表处理短暂球指接触。它说明「稳定站立、手臂加速、手指最终脱离」不能都简化为一次瞬时释放；但该方法没有公开完整可运行控制源码。
 
 - 上层 MPC/planner 给质心与接触计划，下层 WBC 每个控制周期求解力矩；接触集合来自接触估计。
 - 论文自述的实际难点同样存在：接触与近身障碍难定位，需在各层保留阻抗/柔顺（见"方法局限性"）。
