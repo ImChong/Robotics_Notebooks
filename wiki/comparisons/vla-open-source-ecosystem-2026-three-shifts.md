@@ -3,6 +3,8 @@ type: comparison
 tags: [vla, open-source, embodied-ai, robot-foundation-model, cross-embodiment, real-time-inference, robotics-infrastructure, reproducibility]
 status: complete
 updated: 2026-11-14
+original:
+  - ../../sources/blogs/wechat_shenlan_15_vla_open_source_2026-11-14.md
 related:
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ../methods/vla.md
@@ -50,7 +52,7 @@ summary: "以 2026-11-14 深蓝具身智能 15 项开源综述为切面，按跨
 
 ## 15 个项目的三层地图
 
-下表顺序沿用附件归类；已存在的仓库节点**复用既有 wiki 链接**，不另造同项目实体。仅新发现的仓库补充 `sources/repos/` 导航；**没有创建未经通读的论文详情页**。
+下表沿用附件的 15 项分组，**每一项均指向独立且不重复的 wiki 详情节点**。对既有论文节点直接升级，对此前缺失的论文/框架建立独立节点；StarVLA 的框架论文（2604.05014）与独立 StarVLA-α 论文（2604.11757）分别归档。
 
 | 方向 | 项目（详情/源码导航） | 对比时先看什么 | 资料与开放边界 |
 |---|---|---|---|
@@ -62,13 +64,13 @@ summary: "以 2026-11-14 深蓝具身智能 15 项开源综述为切面，按跨
 | ① 多本体/全身 | [Xiaomi-Robotics-1](../entities/xiaomi-robotics-1.md) | 大规模动作预训练到目标机器人后训练 | [官方代码](https://github.com/XiaomiRobotics/Xiaomi-Robotics-1) |
 | ① 多本体/全身 | [UnifoLM-VLA-0](../entities/unifolm-vla.md) | 单策略在人形操作任务中的真机接口 | [官方代码](https://github.com/unitreerobotics/unifolm-vla) |
 | ① 多本体/全身 | [InternVLA-A1.5](../entities/paper-internvla-a15-unified-vla.md) | 训练期未来潜空间监督，推理期去除视频分支 | [官方 A-series](https://github.com/InternRobotics/InternVLA-A-series) |
-| ① 多本体/全身 | [Hy-Embodied-0.5-VLA](../../sources/repos/hy-embodied-05-vla.md) | UMI 数据、flow 动作专家与数据到部署链路 | [官方代码/模型/部分数据](https://github.com/Tencent-Hunyuan/Hy-Embodied-0.5-VLA)；10k+ h 训练不等于公开 10k+ h |
+| ① 多本体/全身 | [Hy-Embodied-0.5-VLA](../entities/paper-hy-embodied-05-vla.md) | UMI 数据、flow 动作专家与数据到部署链路 | [官方代码/模型/部分数据](https://github.com/Tencent-Hunyuan/Hy-Embodied-0.5-VLA)；10k+ h 训练不等于公开 10k+ h |
 | ② 世界/实时/长程 | [OpenWAM](../entities/paper-openwam.md) | 组合式世界–动作模型与预训练消融 | [官方代码](https://github.com/OpenWAM-Official/OpenWAM)，注意 WAM 不等于必然在线生成视频 |
-| ② 世界/实时/长程 | [TurboVLA](../../sources/repos/turbovla.md) | 直接视觉+文本→动作，单次推理时延 | [官方代码与权重](https://github.com/H-EmbodVis/TurboVLA)；4090 约 32 Hz **仅策略推理** |
+| ② 世界/实时/长程 | [TurboVLA](../entities/paper-turbovla.md) | 直接视觉+文本→动作，单次推理时延 | [官方代码与权重](https://github.com/H-EmbodVis/TurboVLA)；4090 约 32 Hz **仅策略推理** |
 | ② 世界/实时/长程 | [τ₀-VLA](../entities/paper-tau0-vla.md) | 高层计划/世界模型候选评估、低层连续动作 | [官方仓库](https://github.com/sii-research/tau-0-vla)；组件开放情况按版本核对 |
-| ③ 训练/评测/后训练 | [StarVLA](../methods/star-vla.md) | 可替换骨干、动作头、数据与基准接口 | [官方框架](https://github.com/starVLA/starVLA)，定位是实验工作台 |
-| ③ 训练/评测/后训练 | [vla-evaluation-harness](../../sources/repos/vla-evaluation-harness.md) | 模型 adapter、隔离 benchmark、复现标志 | [Ai2/AllenAI 官方仓库](https://github.com/allenai/vla-evaluation-harness)；集成 ≠ 复现 |
-| ③ 训练/评测/后训练 | [verl-vla](../../sources/repos/verl-vla.md) | 人介入采集、SFT/RL 与云边角色编排 | [官方仓库](https://github.com/verl-project/verl-vla)；具体 pipeline 仍需逐一运行验证 |
+| ③ 训练/评测/后训练 | [StarVLA](../entities/paper-starvla-framework.md) | 可替换骨干、动作头、数据与基准接口 | [官方框架](https://github.com/starVLA/starVLA)，定位是实验工作台 |
+| ③ 训练/评测/后训练 | [vla-evaluation-harness](../entities/vla-evaluation-harness.md) | 模型 adapter、隔离 benchmark、复现标志 | [Ai2/AllenAI 官方仓库](https://github.com/allenai/vla-evaluation-harness)；集成 ≠ 复现 |
+| ③ 训练/评测/后训练 | [verl-vla](../entities/verl-vla.md) | 人介入采集、SFT/RL 与云边角色编排 | [官方仓库](https://github.com/verl-project/verl-vla)；具体 pipeline 仍需逐一运行验证 |
 
 ## 流程总览：复现决策路径
 
@@ -112,11 +114,11 @@ flowchart TD
 
 ## 局限与风险
 
-- **材料属性：** 附件是 2026-11-14 的二手选题综述，不等于 15 项工作的原始论文。此页主要复用站内已有一手资料归档；四个未找到独立详情的项目先补官方仓库导航，不宣称完成论文级通读与源码时序审计。
+- **材料属性：** 附件为二手策展综述。本次 15 项均对应独立详情页；新论文页附原文核对归档，项目型评测/后训练工具则以官方完整 README 与可追溯入口为主要原始材料。**尚未在本环境运行全部 15 套模型或仿真/真机实验**，通读/静态分析与实测复现不是一回事。
 - **纠错：** 来源将 vla-evaluation-harness 一处标为 MAUM.AI，但后文也写 Ai2；官方代码仓库位于 `allenai`，本页统一归为 Ai2。
 - **时效性：** 原文 Star 截止 2026-11-11；开放状态、权重、许可证可能继续变化，具体操作前看最新官方 README。
 - **没有横排性能榜：** RoboTwin、LIBERO、真机移动操作和 1,000+ 任务分布差异巨大，不应以最高 success rate 跨论文判胜负。
-- **未执行复现：** 本次是资料编目与工程选型，未下载模型权重、运行全部 benchmark，也未进行真实机器人实验。
+- **未执行复现：** 本次是资料编目、原文/源码静态核对及工程选型，未下载所有模型权重、运行全部 benchmark，也未进行真实机器人实验。
 
 ## 关联页面
 
@@ -129,6 +131,16 @@ flowchart TD
 - [GR00T N1.7](../entities/paper-gr00t-n1-7.md) — 多本体通才
 
 ## 参考来源
+
+- [Ψ₀ 一手论文与代码](../../sources/papers/psi0_arxiv_2603_12263_full_reading.md)
+- [LingBot-VLA 2.0 一手论文](../../sources/papers/lingbot_vla_v2_full_reading_2026_11_14.md)
+- [Qwen-VLA 一手论文](../../sources/papers/qwenvla_arxiv_2605_30280_full_reading.md)
+- [Xiaomi-Robotics-1 一手论文](../../sources/papers/xiaomi_robotics_1_arxiv_2607_15330_full_reading.md)
+- [InternVLA-A1.5 一手论文与代码](../../sources/papers/internvla_a15_arxiv_2607_04988_full_reading.md)
+- [τ₀-VLA 一手论文](../../sources/papers/tau0_vla_arxiv_2608_16885_full_reading.md)
+- [TurboVLA 论文与实现](../../sources/papers/turbovla_arxiv_2607_27205_full_reading.md)
+- [Hy-Embodied-0.5-VLA 论文与实现](../../sources/papers/hy_embodied_05_vla_arxiv_2606_14409_full_reading.md)
+- [StarVLA 官方框架论文](../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md)
 
 - [深蓝具身智能 2026-11-14 15 项目原文导读归档](../../sources/blogs/wechat_shenlan_15_vla_open_source_2026-11-14.md)（附件 PDF 全文核对；二手资料）
 - [TurboVLA 官方仓库导航](../../sources/repos/turbovla.md)

@@ -24,7 +24,7 @@
 - **Qwen-VLA：** 截至本次官方 README 核对仍以论文、博客、结果与 Demo 为主；未找到训练/推理主代码与模型权重发布入口。它是研究成果公开，不等于权重可复现。
 - **TurboVLA：** 官方 README 已公开训练/评测代码及权重；在 RTX 4090 上报告约 31.2 ms 单次策略推理、0.9 GiB 推理显存，**32 Hz 不等于真机控制整环频率**。官方 2026-09-27 更新 RoboTwin 2.0 结果 88.06%，不能与早期 LIBERO 97.6% 混为同一协议。
 - **Hy-VLA：** 官方写完整 UMI 预训练使用 10,000+ 小时，**开放数据集为 2,000+ 小时**；不可把全文 10k h 理解为全部数据已下载。
-- **源论文与完整可运行仓库：** 来源采用不同验证层级；本次针对**综述**入库，并未重新通读 15 个项目的全部论文及代码，未开展 15 套复现实验。
+- **源论文与完整可运行仓库：** 来源采用不同验证层级；本次为综述及 15 项独立详情页入库：新建/升级一手原文与官方 README 阅读归档、核对源码可识别入口；**尚未运行 15 套 GPU/仿真/真机复现实验**。
 - **Star 截面：** 原文统计截至 2026-11-11，本文不固化任何 Star 排名作选型证据。
 
 ## 对 wiki 的映射
@@ -38,3 +38,23 @@
 - [Hy-Embodied-0.5-VLA](../repos/hy-embodied-05-vla.md)
 - [vla-evaluation-harness](../repos/vla-evaluation-harness.md)
 - [verl-vla](../repos/verl-vla.md)
+
+## 15 个独立详情页面（去重后的唯一入口）
+
+| 项目 | 唯一详情页 |
+|---|---|
+| GR00T N1.7 | [GR00T N1.7](../../wiki/entities/paper-gr00t-n1-7.md) |
+| Ψ₀ | [Psi0](../../wiki/entities/paper-loco-manip-161-156-psi0.md) |
+| LingBot-VLA 2.0 | [LingBot-VLA 2.0](../../wiki/entities/lingbot-vla-v2.md) |
+| MolmoAct2 | [MolmoAct2](../../wiki/entities/paper-molmoact2.md) |
+| Qwen-VLA | [Qwen-VLA](../../wiki/entities/qwen-vla.md) |
+| Xiaomi-Robotics-1 | [Xiaomi-Robotics-1](../../wiki/entities/xiaomi-robotics-1.md) |
+| UnifoLM-VLA-0 | [UnifoLM-VLA-0](../../wiki/entities/unifolm-vla.md) |
+| InternVLA-A1.5 | [InternVLA-A1.5](../../wiki/entities/paper-internvla-a15-unified-vla.md) |
+| Hy-Embodied-0.5-VLA | [HyVLA](../../wiki/entities/paper-hy-embodied-05-vla.md) |
+| OpenWAM | [OpenWAM](../../wiki/entities/paper-openwam.md) |
+| TurboVLA | [TurboVLA](../../wiki/entities/paper-turbovla.md) |
+| τ₀-VLA | [Tau0-VLA](../../wiki/entities/paper-tau0-vla.md) |
+| StarVLA（框架） | [StarVLA Framework](../../wiki/entities/paper-starvla-framework.md) |
+| vla-evaluation-harness | [Evaluation Harness](../../wiki/entities/vla-evaluation-harness.md) |
+| verl-vla | [verl-vla](../../wiki/entities/verl-vla.md) |
