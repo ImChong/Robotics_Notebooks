@@ -407,6 +407,13 @@ op: ingest
 - **开源结论：** 项目页未列正式源码/权重/数据下载，因此不生成未经核对的运行时序图。
 - **指标纠正：** Franka AirPods 92% 为端到端成功率；YAM 炒蛋 85.8% 为离线阶段评分；不混入 PNP 营销信息。
 
+## [2026-11-14] ingest | LG-DKGP 连续性感知世界模型规划：原文、代码、时序与指标口径
+
+- 新增论文原文归档 sources/papers/lg_dkgp_arxiv_2611_16645.md、官方开源仓库归档 sources/repos/lg-dkgp.md，以及独立论文实体 wiki/entities/paper-lg-dkgp.md。
+- 核对 arXiv:2611.16645v1 全文、附录及官方 CLI/训练/规划/评测源码：门控历史注意力 → 神经均值 + GP 残差 → 专家动作增量探索尺度 → 冻结 LeWM + CEM。
+- 主文 Macro 成功率 87.07%；明确区分 PushT/Cube 原生成功与 LIBERO/RoboTwin 局部目标口径，附上流程图和真实代码运行时序图。
+- 开源状态：源码与评测配方已发布；模型权重、大型训练数据、原生仿真 fixtures 分别获取。当前环境未实际训练或复现模拟器成绩。
+
 ## [2026-11-14] ingest | sources/sites/steel-skild-ai.md — 复核 Steel 的完整异构基准与复现实验边界
 
 - 2026-11-09 Skild AI × NVIDIA 官方发布的 Steel 已于先前 ingest 建立唯一实体；本次复用原页，不重复建节点。

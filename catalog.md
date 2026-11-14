@@ -3073,6 +3073,7 @@
 - [LeWAM：用同一个潜在模型执行与规划](wiki/entities/paper-lewam.md) — LeWAM**（*End-to-End World and Action Modeling with JEPAs*，[arXiv:2610.12818](https://arxiv.org/abs `📅unknown` `[entity_page]`
 - [LeWorldModel / LeWM（像素端到端 JEPA WM · arXiv:2603.19312）](wiki/entities/paper-lewm.md) — LeWorldModel（LeWM）**（*Stable End-to-End Joint-Embedding Predictive Architecture from Pixels*，[arXi `📅unknown` `[entity_page]`
 - [Learning What to Say to Your VLA（LFP，arXiv:2606.12299）](wiki/entities/paper-lfp-vla-language-steering.md) — Learning What to Say to Your VLA: Mostly Harmless Vision Language Action Model Steering*（Jeong, Swa `📅unknown` `[entity_page]`
+- [LG-DKGP：面向世界模型规划的连续性感知动作先验 / Rethinking Actions: Continuity-Aware Priors for World-Model Planning](wiki/entities/paper-lg-dkgp.md) — 论文：** arXiv:2611.16645v1（2026-11-12） `📅unknown` `[entity_page]`
 - [LHNav：面向 Unitree G1 的长时程分层人形导航](wiki/entities/paper-lhnav.md) — LHNav: Long-Horizon Humanoid Navigation `📅unknown` `[entity_page]`
 - [LIBERO-Dynamic（arXiv:2610.24579）](wiki/entities/paper-libero-dynamic.md) — LIBERO-Dynamic**（*LIBERO-Dynamic: Benchmarking Robotic Manipulation in Dynamic Environments*，[arXi `📅unknown` `[entity_page]`
 - [LIBERO-PeRM：个性化机器人操作基准](wiki/entities/paper-libero-perm-personalized-manipulation.md) — LIBERO-PeRM 将用户偏好作为任务执行条件，在受控的 LIBERO 场景中评测策略是否既完成任务、又按用户要求的方式完成。 `📅unknown` `[entity_page]`
