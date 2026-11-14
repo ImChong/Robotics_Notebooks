@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, video-generation, vla, open-source]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-14
 related:
   - ./cosmos-3.md
   - ./alpamayo2-edge.md

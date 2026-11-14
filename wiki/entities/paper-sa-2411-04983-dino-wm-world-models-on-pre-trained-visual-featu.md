@@ -3,7 +3,7 @@ type: entity
 project_id: dino-wm-dinov2
 tags: [paper, curated-index, awesome-world-models, sun254667-wm]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-14
 arxiv: "2411.04983"
 code: https://github.com/gaoyuezhou/dino_wm
 venue: "arXiv 2024"

@@ -2,7 +2,7 @@
 type: entity
 tags: [world-models, wam, video-action-model, dexmal, manipulation, diffusion, mixture-of-transformers, robotwin, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-13
 related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
@@ -16,6 +16,9 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
+code: https://github.com/dexmal/opendw
+original:
+  - ../../sources/repos/dexmal_opendw.md
 sources:
   - ../../sources/repos/dexmal_opendw.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
@@ -98,6 +101,34 @@ flowchart TB
   AE --> O3
   VE --> O3
 ```
+
+## 源码运行时序图
+
+固定 [官方源码归档](../../sources/repos/dexmal_opendw.md) 中的 `e33befa`，描述现有单图 experiment 路径；未运行权重。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as playground/example_dw_exp.py
+  participant EXP as DWExp / BaseDWExp
+  participant CFG as DW05ModelConfig
+  participant MOD as DW05Core
+  participant OUT as MP4 + action JSON
+  CLI->>EXP: --task inference 与 dotlist overrides
+  EXP->>CFG: build_model(for_inference=True)
+  CFG-->>EXP: DW05 模型
+  EXP->>MOD: load_checkpoint() / eval()
+  EXP->>MOD: infer(prompt, input_image, horizon, steps)
+  MOD->>MOD: infer_joint()，初始化 video/action latent
+  loop 两路 flow schedule
+    MOD->>MOD: _predict_joint_noise() 与 scheduler.step()
+    MOD->>MOD: 固定首帧 latent
+  end
+  MOD-->>EXP: 解码 video 与 action
+  EXP->>OUT: save_mp4() / action.tolist()
+```
+
+README 所列 `script/dw/infer_aloha_joint.py` 在该版 tree 中缺失，复现先选上图已存在的 experiment。Value Expert 仍未发布，不能把上图解读为价值筛选闭环。
 
 ## 工程实践：部署与评测要点
 

@@ -35,7 +35,7 @@ README 写明：Cosmos 3 cookbooks 的 Framework 后端需要本仓访问（部�
 
 - 系统依赖：`curl ffmpeg git-lfs libx11-dev tree wget`
 - `uv sync --all-extras --group=cu130-train`（推荐 CUDA 13.0）；或 `cu128-train`
-- 要求 `uv >= 0.11.3`
+- 当前固定版要求 `uv==0.11.29`
 - 推荐 NGC 基座：`nvcr.io/nvidia/pytorch:26.06-py3`
 - 随仓 SFT recipe 按 **8× H100 80 GB** 验证；可改 `NPROC_PER_NODE` 与并行度
 
@@ -61,3 +61,13 @@ SFT 启动示例：`bash examples/launch_sft_vision_nano.sh`。
 - 平台总览：[`wiki/entities/nvidia-cosmos.md`](../../wiki/entities/nvidia-cosmos.md)
 - Cosmos 3 部署 / 微调：[`wiki/entities/cosmos-3.md`](../../wiki/entities/cosmos-3.md)
 - 平台仓：[`sources/repos/nvidia_cosmos.md`](./nvidia_cosmos.md)
+
+## 固定版本源码核读（2026-11-13）
+
+- **版本：** [1f1737931214166d5e7b253def319c562cf7a1eb](https://github.com/NVIDIA/cosmos-framework/tree/1f1737931214166d5e7b253def319c562cf7a1eb)
+- **核对范围：** 根README与docs/action_policy_droid_server.md全文；action_policy_server_robolab.py的main/serve/Service构造、_build_transform/_build_sample/_generate/_format_outputs/infer完整函数；inference/action.py全文。未逐读全部MoT内核或分布式worker实现。
+- **通读：** 已完成
+- 官方文档入口python -m cosmos_framework.scripts.action_policy_server_robolab；默认单进程，CFG并行需恰好两个rank，仅rank0持有socket。Service通过OmniInference.create恢复模型/训练数据配置，锁定请求顺序。
+- _build_sample拼图像canvas和可选state/history，按joint_pos（8D）或midtrain（10D）选择表示；_transform使用checkpoint数据配置。model.generate_samples_from_batch联合采样，_format_outputs去history并翻转gripper约定，midtrain另积分相对EEF，decode_video可关但latent视频仍采样。
+- 参数与mode契约必须一致：inference/action.py当前unified Bimanual导出要求schema-5 sidecar且只支持记录动作forward dynamics；不能将它当通用WAM policy。LIBERO/RoboCasa部分原生宽度按dataset决定。
+- 当前训练、DPO/GRPO/PPO等为可用框架/recipe矩阵，不代表任意模型/算法组合已验证。基础权重、gated Guardrail、第三方依赖条款分别核对。静态阅读，未下载模型/申请访问或运行机器人。

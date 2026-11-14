@@ -56,3 +56,13 @@
 
 - Zhu et al., “AD-E2E-JEPA: A Joint-Embedding Predictive Architecture for End-to-End Autonomous Driving,” arXiv:2609.34085, 2026. <https://arxiv.org/abs/2609.34085>
 - 官方仓库：<https://github.com/HaoranZhuExplorer/AD-E2E-JEPA>
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2609.34085v1（2026-09-28）正文§1–§5、附录A.1–A.5全文及图表文字层，参考文献浏览；另读官方README、规划指南和固定版本相关源码。未运行NAVSIM或GPU模型。
+- **通读：** 已完成
+- 冻结DINOv3并不冻结projector；其目标端stop-gradient，SIGReg按每时刻每patch跨batch约束，17knots/1024directions。两层stride2卷积使patch数1/16、通道1024→256，不能混成单一64倍实测速率。
+- rollout训练保持四帧窗口，TBPTT截断更早预测梯度；第一步由teacher-forcing监督，额外rollout loss从第二步开始。
+- 256候选0.8s与8192候选18.2s是不同工作点。100场景比较不含EC；全12146场景有相邻scene才计EC。EPDMS†剔除乘法安全项，不能当安全成功率。
+- Hit@k额外把GT轨迹插入候选集；最终规划仍仅在anchor候选选择，不将GT混作可执行预测。目标为真实未来图像，这是oracle目标条件评测，非实车安全闭环。
+- 截至本次核查，旧「无可运行源码」已失效：官方已给训练/规划实现和HF权重入口；Slurm/Singularity脚本的本地路径仍需替换。

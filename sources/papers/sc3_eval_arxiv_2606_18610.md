@@ -65,3 +65,14 @@
 - 项目页：[`sources/sites/weichengtseng-sc3-eval.md`](../sites/weichengtseng-sc3-eval.md)
 - 策展索引源（升格前）：[`sources/papers/sun_awesome_wm_2606_18610_sc3-eval-evaluating-robot-foundation-mod.md`](./sun_awesome_wm_2606_18610_sc3-eval-evaluating-robot-foundation-mod.md)
 - 互链：[Ctrl-World](../../wiki/entities/paper-ctrl-world.md)、[IRASim](../../wiki/entities/paper-irasim.md)、[GigaWorld-1](../../wiki/entities/paper-gigaworld-1-policy-evaluation.md)、[Generative World Models](../../wiki/methods/generative-world-models.md)、[world-models-route-03-virtual-sandbox](../../wiki/overview/world-models-route-03-virtual-sandbox.md)、[评测选型闭环](../../wiki/queries/embodied-eval-benchmark-selection-loop.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2606.18610v3（2026-06-26）正文 §1–§6、附录 A–C（数据、标注、训练/推理和完整消融）；图表按文字层核对，参考文献浏览；项目页全文及资源链接；未运行模型或观看视频。
+- **通读：** 已完成
+- Cosmos3-Nano共享参数，FD/CVI/ID每样本随机采一模式，.8/.1/.1是采样频率，不是每条样本同时三次损失。逆动力学由帧恢复动作，是隐式约束，不是训练时真实物理可行性的证明。
+- 七个均为π0.5架构checkpoint，非七种独立policy家族；四InD三OOD，每个36–37匹配初态，三成功准则按物体汇总→21个checkpoint/criterion点。reverse任务只交换目的地，未验证新视觉场景/本体。
+- policy预测25action@10Hz，WM接24并只保留前16；训练multiFPS 10/20Hz是增强，模型位置编码不显式接收fps，不称任意时间尺度条件化。
+- early termination τ=.02由30条held-out选定，终止4.88%；不是校准概率。更严.01改善OOD但损害InD，不能说单调更可靠；主结果人工盲评，VLM注释为补充实验。
+- 总体闭环r=.929/MMRV=.119；OOD online r=.870略低Cosmos2.5 .871，不能说四设置各指标全胜。Pearson只量线性关联，不保证绝对校准或误差界限。
+- 单GB200每24帧chunk2.3s，32GB200训2.2天，私有381h单场景约20秒任务；未给可运行代码/权重/数据入口，静态项目页不当模型实现。

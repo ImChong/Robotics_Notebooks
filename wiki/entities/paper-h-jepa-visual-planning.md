@@ -12,7 +12,7 @@ tags:
   - inria
   - brown
 status: complete
-updated: 2026-10-10
+updated: 2026-11-13
 arxiv: "2610.06805"
 project_id: hjepa-visual-planning-arxiv-2610-06805
 project: https://h-jepa.com/
@@ -22,6 +22,8 @@ related:
   - ./paper-hwm-latent-world-model-planning.md
   - ./paper-lewm.md
   - ../concepts/world-action-models.md
+original:
+  - ../../sources/papers/hjepa_arxiv_2610_06805.md
 sources:
   - ../../sources/papers/hjepa_arxiv_2610_06805.md
   - ../../sources/repos/h-jepa.md
@@ -47,13 +49,13 @@ summary: "H-JEPA 为不同时间尺度学习独立潜空间的 action-conditione
 | HWM | Hierarchical World Model | 与 H-JEPA 对比的分层规划方法；不同层共享潜空间 |
 | DROID | DROID dataset | 多场景、多物体的真实机器人遥操作轨迹数据集 |
 
-## 为什么要做层级世界模型
+## 为什么重要
 
 单层世界模型要在一个表示空间里同时完成细粒度控制和长时程目标规划。长预测会累积模型误差，动作搜索也更昂贵；而对“到达目标位置”而言，逐关节姿态或背景细节可能不是有用的距离度量。
 
 H-JEPA 的思路是让低层保留快速变化、与即时动作相关的信息，让高层学习更慢、更抽象的状态表示。高层目标代价可以忽略对任务无关的快速细节，同时时间分解把长计划拆成多个较短的子目标。
 
-## 方法结构
+## 核心原理
 
 每个层级都包含观测编码器、动作编码器和潜状态预测器。低层处理高频观测与原始动作；高层对低层的状态/动作表示做时间聚合，在更长的时间跨度上预测。各层使用预测损失与 SIGReg 联合训练，不依赖像素重建或任务奖励；在多场景 DROID 实验中额外加入 IDM，避免只编码稳定背景而忽略运动中的机器人。
 
@@ -86,17 +88,51 @@ flowchart TD
 
 ## 结论
 
+分层表示与时间分解在论文任务中改善规划效率，但真实机器人证据限于离线路径保真度。
+
 - **层级表示 + 层级规划能显著改善长时程视觉导航：**在论文的 Visual AntMaze 规划设置下，三层 H-JEPA（73.3% ± 3.5%）明显优于单层 LeWM（18.0% ± 3.5%），并给出更好的成功率–规划计算量折中。
 - **层数不是越多越好：**操作任务（Push-T、OGBench Cube）并不随层数单调受益，短 episode 限制了高层可用的长片段训练数据。
 - **真实数据目前只验证到离线路径保真度：**DROID 结果说明加入 IDM 后多场景表示可用于规划评估，但尚不构成实体机器人闭环成功率证据。
 
-## 适用范围与限制
+## 局限与适用范围
 
 - 适合研究从视觉潜空间预测长时程目标、以层级子目标减少规划难度和计算的 model-based planning。
 - AntMaze 的 73.3% 与 18.0% 是论文协议下、跨三组训练/规划随机种子的结果，不是通用成功率承诺。
 - 高层抽象依赖数据中不同因素存在时间尺度差异；论文指出操作数据集未必表现出同样强的选择性抽象。
 - DROID 评测属于离线路径保真度，论文没有据此证明物理机器人上的闭环部署性能。
 - 本页所指 H-JEPA 唯一标识为 arXiv:2610.06805，避免与 2609.33497 混淆。
+
+## 源码运行时序图
+
+基于`97054eca`仿真入口（[源码归档](../../sources/repos/h-jepa.md)）；本次未运行实验。
+
+```mermaid
+sequenceDiagram
+  participant E as eval.py
+  participant P as planning_eval.py
+  participant W as WorldModelPolicy / World
+  participant H as HierarchicalSolver
+  participant L as 每层GradientSolver/LevelCostModel
+  E->>P: run_planning_eval(config)
+  P->>P: 载checkpoint/normalizer、build_solver
+  P->>W: 设置策略、固定任务评测
+  W->>H: solve(obs,goal,budget)
+  H->>H: 编码各层当前/目标latent
+  loop 从最高活动层到第一级
+    H->>L: 配置horizon与上层subgoals
+    L->>L: rollout→投影至goal潜空间→criterion→梯度优化
+    L-->>H: actions及predicted_embed_0
+  end
+  H-->>W: 第一级primitive actions
+  W->>W: 执行动作前缀，再观测/规划
+```
+
+## 工程实践
+
+- 区分stride与window：论文window=1，高层状态逐点编码；动作聚合stride段。下层预测须经上层encoder后再与subgoal比距离。
+- 73.3/18.0来自50固定任务、三组配对seed，compute sweep另用任务集；FLOPs包含反传，不是GPU墙钟延迟。
+- SIGReg高秩不保证保留动作因素；DROID还需IDM。无prediction-target detach不等于高层IDM target可不detach。
+- 当前README与PDF的DROID语料大小、episode数及seed描述有差异，复现固定release和配置；源码/权重入口已公开，未在本次运行。
 
 ## 关联页面
 
@@ -114,3 +150,9 @@ flowchart TD
 - [论文 HTML 全文](https://arxiv.org/html/2610.06805)
 - [项目主页](https://h-jepa.com/)
 - [代码仓库](https://github.com/kevinghst/H-JEPA)
+
+## 推荐继续阅读
+
+- 论文§2及附录E：跨层代价、horizon与动作前缀执行。
+- 论文附录J/K：Fréchet指标边界与高秩仍可能只编码背景。
+- [官方复现README](https://github.com/kevinghst/H-JEPA)：数据、固定任务、模型权重与配置。

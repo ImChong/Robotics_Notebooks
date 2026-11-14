@@ -33,3 +33,13 @@ H-JEPA 在每个层级分别学习观测编码器、动作编码器和潜状态�
 - [H-JEPA 论文与项目详情](../../wiki/entities/paper-h-jepa-visual-planning.md)
 - [Model-Based RL](../../wiki/methods/model-based-rl.md)
 - [HWM：Hierarchical Planning with Latent World Models](../../wiki/entities/paper-hwm-latent-world-model-planning.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2610.06805v2（2026-11-01）正文§1–§6全文、必要附录E（规划）、J（DROID/指标）、K（防坍缩）全文，C.1训练设置；其余附录未逐项深读，图表核对文字层。另读项目页、根README与固定版本规划源码；未运行仿真/GPU。
+- **通读：** 已完成
+- stride与window独立，实验window=1，高层state encoder逐点而非必然多帧池化；高层action聚合stride段。下层预测必须升到上层潜空间才与subgoal比较，不能直接比较不同维潜状态。
+- 73.3±3.5对18.0±3.5来自50固定新任务、3配对seed；compute sweep另任务集，包含forward/backward FLOPs。Push-T深层可用训练clip骤减，不能称越深越好。
+- DROID16片段、5fps、108原录帧约7.2s窗口，open-loop只比累计xyz路径；Fréchet fidelity可负，0是零动作基线，100是专家路径，不是成功率。冻结基线按原生1fps且仅15片段，为参考点非严格同协议排名。
+- SIGReg保有效秩但不保证保机器人动态；DROID需IDM。headline不用prediction-target detachment，但高层IDM的macro-action target要detach，两种开关不同。
+- PDF re-encode统计127.6GB/74530 episodes，当前README训练包91GB/74896 episodes，且planner seeds描述不同；复现应固定release/config，不将两个版本无条件合并。

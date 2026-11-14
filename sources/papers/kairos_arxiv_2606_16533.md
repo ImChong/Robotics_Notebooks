@@ -87,3 +87,14 @@
 - 代码归档：[`sources/repos/kairos.md`](../repos/kairos.md)（旧索引 [`kairos_sensenova.md`](../repos/kairos_sensenova.md) 保留重定向说明）
 - 平台页：[`sources/sites/kairos-acerobotics.md`](../sites/kairos-acerobotics.md)
 - 互链：[Generative World Models](../../wiki/methods/generative-world-models.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[Video-as-Simulation](../../wiki/concepts/video-as-simulation.md)、[HomeWorld（品牌区分）](../../wiki/entities/paper-homeworld-whole-home-scene-generation.md)
+
+## 全文复核（2026-11-13）
+
+- **核对范围：** arXiv:2606.16533v3（2026-07-03）正文§1–§8.2全文（89页）；理论采用正文假设与定理陈述，附录B证明未逐式复证。根README、LIBERO-Plus说明与固定版本动作服务路径另核。
+- **通读：** 已完成
+- Regret是压缩状态相对完整历史的最优规划成本差，现有指标不直接估计它；CID为概念目标/未来数据筛选，当前不计算完整CID。Prompt self-alignment是生成级优化，不是机器人策略自主改进。
+- §2默认action不读取future video，§6另测joint可读future使Plus89.0→90.8；不能把两模式的注意力/时延合并。仅训ActionDiT65.8与联合89.0是训练消融，不是两种推理模式。
+- Theorem2依赖Bayes四分解、Lipschitz与全局更新收缩等假设，不意味着任意训练得到的GLA都已证明物理正确/无误差累积。15秒PAI结果不证明分钟/小时记忆。
+- 效率表4为480P5秒四步蒸馏：A800 11.7/3秒、5090 11.4/5.7秒；表5为720P5秒TI2V：A800约43/9秒。图3的28–85倍是单步DiT比较，均不是动作模型端到端闭环延迟。
+- DreamGen61.8是视频综合分、WMBench-Robot9.30是评测器分；PAI-Robot82.57、全域80.8、15秒79.9分开。人评部分对手胜率低于50%，不写全面超越。
+- 数据/完整三阶段/偏好训练和控制CID采样未作为完整复现包确认；已开生成训练入口不能推出完整原生预训练recipe全部发布。

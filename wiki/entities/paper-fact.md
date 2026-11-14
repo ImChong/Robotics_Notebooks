@@ -10,7 +10,7 @@ tags:
   - robotwin
   - ucsd
 status: complete
-updated: 2026-11-12
+updated: 2026-11-14
 arxiv: "2608.10232"
 code: "https://github.com/Bariona/FACT"
 project_id: fact-failure-aware-causal-training

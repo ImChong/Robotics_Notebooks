@@ -11,7 +11,7 @@ tags:
   - uw
   - ai2
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2608.10860"
 code: "https://github.com/geyan21/flex-pi"
 related:
@@ -28,16 +28,18 @@ related:
   - ./paper-rift-wam.md
   - ./libero-benchmark.md
   - ./paper-pointdit.md
+original:
+  - ../../sources/papers/flex_pi_arxiv_2608_10860.md
 sources:
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
   - ../../sources/repos/flex-pi.md
   - ../../sources/sites/flex-pi-github-io.md
-summary: "Flex-π（arXiv:2608.10860，UW/AI2）：6B 多流 Joint WAM，共享冻结 Wan VAE 编码 RGB+pointmap 并联合 DINOv3；流 dropout + CMF 使单 checkpoint 覆盖 56 种流组合；真机双臂 YAM 最高约 2–7× 基线；代码待发布。"
+summary: "Flex-π（arXiv:2608.10860，UW/AI2）：6B 多流 Joint WAM，共享冻结 Wan VAE 编码 RGB+pointmap 并联合 DINOv3；流 dropout + CMF 使单 checkpoint 覆盖 56 种流组合；真机双臂 YAM 最高约 2–7× 基线；代码/权重/数据已公开。"
 ---
 
 # Flex-π（Multi-Stream WAM · Compute Flexibility · arXiv:2608.10860）
 
-**Flex-π**（*Flex-π: A Multi-Stream World-Action Model with Compute Flexibility*，[arXiv:2608.10860](https://arxiv.org/abs/2608.10860)）由 **华盛顿大学（UW）** 与 **艾伦人工智能研究所（AI2）** 提出（Yan\* / Liu\* / Fan\* / Cai / Liao / Zhang† / Fox†）：在共享 latent 里联合去噪 **RGB · 3D pointmap · DINO 语义 · 动作**，并用流 dropout + cross-modality forcing 让 **一个 checkpoint** 覆盖 action-only 到 full joint 的算力档位。[项目页](https://flex-pi.github.io/) · [代码占位](https://github.com/geyan21/flex-pi)。
+**Flex-π**（*Flex-π: A Multi-Stream World-Action Model with Compute Flexibility*，[arXiv:2608.10860](https://arxiv.org/abs/2608.10860)）由 **华盛顿大学（UW）** 与 **艾伦人工智能研究所（AI2）** 提出（Yan\* / Liu\* / Fan\* / Cai / Liao / Zhang† / Fox†）：在共享 latent 里联合去噪 **RGB · 3D pointmap · DINO 语义 · 动作**，并用流 dropout + cross-modality forcing 让 **一个 checkpoint** 覆盖 action-only 到 full joint 的算力档位。[项目页](https://flex-pi.github.io/) · [代码](https://github.com/geyan21/flex-pi)。
 
 ## 一句话定义
 
@@ -69,8 +71,8 @@ summary: "Flex-π（arXiv:2608.10860，UW/AI2）：6B 多流 Joint WAM，共享�
 | **规模** | ~6B（5B 视觉 MoT trunk + ~1B action expert） |
 | **预训练** | Wan-2.2-5B 初始化；AGIBOT World-Beta ~**500 h** / 100 任务 |
 | **本体** | 真机双臂 **YAM**（2×6-DoF + 夹爪；头 ZED 2i + 双腕 ZED Mini） |
-| **开源** | **代码待发布**（GitHub 仅 README；截至 2026-08-13 复核仍无训练入口） |
-| **源码运行时序图** | **不适用**（无可运行实现） |
+| **开源** | **代码、训练/评测/服务与权重、数据已公开**，本次固定84d9c5bf核读 |
+| **源码运行时序图** | 见下方已核实YAM服务路径 |
 
 ## 核心原理
 
@@ -109,7 +111,32 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用。** 截至 2026-08-13 复核，[geyan21/flex-pi](https://github.com/geyan21/flex-pi) 仓内仅 `README.md`（The code is ready soon），无训练 / 推理脚本或权重。
+对应[固定版本84d9c5bf](../../sources/repos/flex-pi.md)的YAM部署入口，静态核读未执行机器人。
+
+```mermaid
+sequenceDiagram
+  participant S as scripts/serve_yam_flexpi.py
+  participant A as YamFlexPiServerPolicy.infer
+  participant P as YamFlexPiPolicy.infer_action_chunk
+  participant M as model.infer_action / dispatch
+  participant C as WebSocket客户端
+  S->>P: 读取checkpoint/config/stats并预热
+  C->>A: flat观测、prompt与流掩码
+  A->>P: nested RGB/depth/K/state、runtime flags
+  P->>P: 拼画布、归一化state、缓存文本
+  P->>M: action inference
+  alt 不生成视觉未来
+    M->>M: KV缓存动作路径
+  else 开启joint
+    M->>M: 联合生成选中未来流
+  end
+  M-->>P: 归一化相对动作
+  P->>P: 反归一化并以当前state转绝对目标
+  P-->>A: action_abs
+  A-->>C: actions、raw_actions、timing
+```
+
+录制预测会强制full joint；可选平滑/速度适配属于服务后处理，应与原始动作和时延分开记录。present_pointmap开启时该YAM入口要求深度/K，action-only仅指输出流。
 
 ## 工程实践
 
@@ -124,15 +151,18 @@ flowchart TB
 
 ## 实验与评测
 
+**分数边界：** 真机83.0/76.4是部分得分完成度，binary success约63/50另算；每任务20次（Sort10次），FastWAM未测两项难任务。99.2为无dropout的Flexπ*，柔性checkpoint为98.5。Plus v3修正prompt，旧78.3/80.9不再作为当前结论。
+
+
 | 设定 | Flex-π 读点 |
 |------|-------------|
-| 真机 ID avg（full / action-only） | **83.0% / 76.4%**（ManiFlow 58.0，π0.5 52.1，Fast-WAM 31.7） |
-| 真机 OOD avg | **76.1% / 70.8%**（ManiFlow 31.5，π0.5 43.2） |
-| Self-Repair / Soft-Bag | full joint **76.0 / 70.0** vs ManiFlow **33.3 / 31.9**；拧螺丝阶段 55% vs ManiFlow 5% |
+| 真机 ID平均完成度（full / action-only） | **83.0% / 76.4%**（ManiFlow 58.0，π0.5 52.1，Fast-WAM 31.7） |
+| 真机 OOD平均完成度 | **76.1% / 70.8%**（ManiFlow 31.5，π0.5 43.2） |
+| Self-Repair / Soft-Bag | full joint **76.0 / 70.0** vs ManiFlow **33.3 / 31.9**；自修复完整八阶段成功55% vs ManiFlow5% |
 | 50% 数据 Put Plate | full joint **95%** 仍高于全数据基线 |
 | RoboTwin 50 任务 | 两模式均为 **94.6%**；有限演示约 **1.9–4.5×** 最强对照 |
 | LIBERO | 柔性 ckpt full joint **98.5%**；固定模式 Flex-π* **99.2%**（与 Qwen-RobotManip 持平） |
-| LIBERO-Plus Total | full joint **80.9%** / action-only **78.3%**（π0.5 **84.7**，Qwen **91.4**，Fast-WAM **65.3**） |
+| LIBERO-Plus Total | v3修正prompt后两模式均 **88.6%**（π0.5 **85.7**，Fast-WAM **70.8**同管线；Qwen **89.0/91.4**为未重跑文献值） |
 
 RoboTwin 五任务消融（50 demo）：RGB-only 加 DINO **+6.8 pt**，再加点图 **+20 pt**；同一 ckpt、RGB 输入下 action-only **40.2% @ 60 ms** → 加视频 **60.4%** → 全流 **63.8% @ 193 ms**。
 
@@ -143,12 +173,15 @@ RoboTwin 五任务消融（50 demo）：RGB-only 加 DINO **+6.8 pt**，再加�
 1. **先看 action-only 是否已超过 π0.5** — 真机五任务均已赢，再决定是否加 joint（平均再 +13% 相对成功率、约 3× 延迟）。
 2. **几何/语义是训练税，不是传感器税** — pointmap 走共享 VAE；DINO 冻结；DA3 只在标注期。
 3. **CMF 不要当可选项砍掉** — 它强迫共享表征互预测，而不只是缺模态鲁棒。
-4. **LIBERO 已饱和，主表读真机精密任务与 OOD** — 99.2% 是拟合上限；LIBERO-Plus 仍落后强 VLM 骨干的 π0.5 / Qwen。
+4. **LIBERO 已饱和，主表读真机精密任务与 OOD** — 99.2% 是拟合上限；修正后的LIBERO-Plus高于同管线π0.5，仍低于所引Qwen文献值。
 5. **选型坐标：** 要算力柔性多流 → Flex-π；要失败后果 → [FACT](./paper-fact.md)；要 beyond-RGB 但部署 RGB-only 固定配方 → [DreamWAM](./paper-dreamwam.md)；要训练期 4D、推理零几何 → [MECo-WAM](./paper-meco-wam-4d-geometry-cotraining.md)。
 
 ## 局限与风险
 
-- **代码与权重待发布**（2026-08-13 复核仓 size=1、仅 README）；数字以论文/项目页为准，暂不可本地复现。
+- **计时范围：** 60ms是编译动作路径、193ms是TRT joint最佳路径，缓存文本与不回传视觉latent；不同优化程度不支持纯架构公平加速倍率。真机32步后同步重规划，边界会等待。
+- **几何与传感器：** 原真机主实验用立体深度；关闭depth的95→91.7是单任务完成度差，非所有任务无损。点图重建图像误差不等于接触几何精度。
+
+- **发布版本：** 已有训练/部署及检查点；10月preview4600h/760h、34D混合本体与论文500h/32D不同，不能混报成绩。
 - 仍需大量演示；joint 与最低延迟不可同得。
 - 多流 + CMF 拉长微调；LIBERO-Plus 显示强语义骨干与更大数据仍是短板。
 - 评测主轴为桌面双臂操纵，未覆盖全身 loco-manip。
@@ -162,7 +195,7 @@ RoboTwin 五任务消融（50 demo）：RGB-only 加 DINO **+6.8 pt**，再加�
 | [FACT](./paper-fact.md) | 改失败数据用法与因果序；Flex-π 改监督模态与部署算力接口 |
 | [Kairos](./paper-kairos-native-world-model-stack.md) | 同属 MoT Joint WAM；Kairos 强调 CEDC / regret 与已开源 4B 栈 |
 | Fast-WAM / DreamZero / LingBot-VA | RGB latent WAM 基线；Flex-π 加 3D/DINO 与柔性掩码 |
-| π0.5 | 强 VLA 对照；Flex-π action-only 更快且真机更高，LIBERO-Plus 仍落后 |
+| π0.5 | 强 VLA 对照；Flex-π action-only 更快且真机更高，Plus修正后高于同管线π0.5 |
 | ManiFlow | 显式 3D 输入基线；OOD 掉点更大（约 −26.7 vs Flex-π −4.7） |
 | [PointDiT](./paper-pointdit.md) | 同吃 3D pointmap：PointDiT 在像素空间扩散估几何（无 VAE）；Flex-π 借用冻结 Wan VAE 把点图当训练流 |
 
@@ -190,4 +223,4 @@ RoboTwin 五任务消融（50 demo）：RGB-only 加 DINO **+6.8 pt**，再加�
 
 - 项目页真机表、56 流组合与速度–精度前沿：<https://flex-pi.github.io/>
 - 论文 HTML（方法、附录架构与完整表）：<https://arxiv.org/html/2608.10860>
-- 占位仓（watch 代码发布）：<https://github.com/geyan21/flex-pi>
+- 官方实现与发布说明：<https://github.com/geyan21/flex-pi>

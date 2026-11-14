@@ -10,7 +10,7 @@ tags:
   - cosmos
   - skeleton-conditioning
 status: complete
-updated: 2026-10-06
+updated: 2026-11-14
 arxiv: "2606.04463"
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md

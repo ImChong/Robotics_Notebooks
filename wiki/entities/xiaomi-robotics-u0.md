@@ -3,7 +3,7 @@ type: entity
 tags: [world-models, generative-ai, autoregressive, multi-view, embodied-synthesis, open-source, xiaomi, manipulation, data-augmentation, curated-index, awesome-world-models, sun254667-wm]
 status: complete
 arxiv: "2607.11643"
-updated: 2026-10-06
+updated: 2026-11-13
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
@@ -21,7 +21,10 @@ related:
   - ../../sources/papers/sun_awesome_wm_2607_11643_xiaomi-robotics-u0-unified-embodied-synt.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
+original:
+  - ../../sources/papers/xiaomi_robotics_u0_arxiv_2607_11643.md
 sources:
+  - ../../sources/sites/xiaomi-robotics-u0.md
   - ../../sources/repos/xiaomi-robotics-u0.md
   - ../../sources/papers/xiaomi_robotics_u0_arxiv_2607_11643.md
   - ../../sources/papers/sun_awesome_wm_2607_11643_xiaomi-robotics-u0-unified-embodied-synt.md
@@ -107,12 +110,59 @@ flowchart TB
   A --> P --> R
 ```
 
+## 源码运行时序图
+
+对应[固定版本e7220039](../../sources/repos/xiaomi-robotics-u0.md)的AR eager Sequence路径，静态核读，未运行权重。
+
+```mermaid
+sequenceDiagram
+  participant C as scripts/inference.py
+  participant R as inference_ar.run_eager
+  participant S as sequence_runtime.run_sequence_cases
+  participant G as sequence_generation.generate_sequence
+  participant M as AR模型与IBQ tokenizer
+  C->>C: 组合配置、验证输入
+  C->>R: ar / eager / interleave_video或subtask
+  R->>M: build_unis_ar加载权重与tokenizer
+  R->>S: 配置、模型与tokenizer
+  S->>M: 编码参考图、序列化前缀
+  S->>G: 输入token、上下文预算与CFG
+  loop 文本/图像格式状态机
+    G->>M: KV缓存前向、采样下一token
+    M-->>G: logits与更新缓存
+  end
+  G-->>S: tokens、stop_reason、format_valid
+  S->>S: 解码并保存JSON/图片/MP4
+```
+
+## 工程实践
+
+- 当前发布区分**34B AR、38B FlashAR与4B AR**；Sequence检查点仅AR eager。论文/官网38B总称不应替代实际检查点配置。
+- 图像FlashAR/vLLM与AR使用各自补丁环境；先用dry-run核查路径/任务。RGB Transfer的DA3属于当前实现选项，非论文所有实验统一预处理。
+- 记录完整生成耗时、批大小、分辨率、停止原因与格式有效性；视频保存1FPS不代表生成1FPS。
+
+## 实验与评测
+
+正文§3.3以**有序里程碑完成进度ℓ/K**计分，三任务每策略各18试验（2组×3布局×3次）；干扰组36.9%→63.2%是平均进度，摘要称success rate不够精确。每任务约40h真实+40h迁移数据，运行时只有π0.5，无U0在线闭环；ID装箱66.7%→64.4%存在代价。
+
+H20的82.9×来自1024² T2I、AR450.77s/img到FlashAR+vLLM5.44s/img，后者max_num_seq=28；包含并行批调度效应，不能当单请求视频或控制加速。GenEval由.74降至.71，非无损。WorldArena第一为2026-07-13快照，部分轨迹/深度指标仍落后。
+
+## 结论
+
+U0提供统一观测合成与离线视觉增广，真机证据支持特定干扰条件下的进度改善。
+
+- 将34B AR、38B FlashAR及Sequence权重分别固定配置。
+- 以任务进度和完全成功率分别报告增广收益。
+- 比较ID/OOD并保留每任务退化，避免只报平均改善。
+- 测量同批大小端到端生成时间，再选择离线增广规模。
+- 对深度伪影、跨视角误差和长序列漂移单独验收。
+
 ## 常见误区或局限
 
 - **误区：WorldArena 第一等于真机策略即插即用。** U0 真机实验是 **视觉域增广 + 固定 π₀.₅ 后训练**；新任务、新本体、新动作空间仍需自有示教与标定。
 - **误区：38B AR 已实时。** **FlashAR+** 大幅降延迟，但 **全序列视频 rollout** 仍远重于物理引擎；适合 **离线/近线数据合成**，而非 1kHz 控制回路。
 - **误区：与 τ₀-WM 同类。** [τ₀-WM](./tau0-world-model.md) 是 **5B Joint WAM（视频扩散 + action chunk + 测试时 revise）**；U0 是 **更大规模的统一生成基础模型**，**不内置策略头**，侧重 **观测合成与数据引擎**。
-- **局限：** GitHub 仓在 ingest 时仍为 **早期公开**（权重/推理细节以官方更新为准）；**GPT-Image-2** 等基线随版本迭代，数字需回查论文版本。
+- **局限：** 当前已有推理/训练代码与多规格权重，但MiBot原始数据未公开，本文未执行训练或GPU复现；**GPT-Image-2** 等基线随版本迭代，数字需回查论文版本。
 
 ## 关联页面
 
@@ -124,6 +174,8 @@ flowchart TB
 - [EWMBench](./ewmbench.md) — 具身视频 WM 评测框架；WorldArena 同生态榜单
 
 ## 参考来源
+
+- [官方项目页核读](../../sources/sites/xiaomi-robotics-u0.md)
 
 - [Xiaomi-Robotics-U0 仓库与论文归档](../../sources/repos/xiaomi-robotics-u0.md)
 - [arXiv:2607.11643 论文摘录](../../sources/papers/xiaomi_robotics_u0_arxiv_2607_11643.md)

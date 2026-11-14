@@ -8,7 +8,7 @@ tags:
   - flow-matching
   - manipulation
 status: complete
-updated: 2026-11-08
+updated: 2026-11-13
 arxiv: "2607.02503"
 related:
   - ../overview/wm-action-consequence-category-02-contact-modeling.md
@@ -24,7 +24,10 @@ related:
   - ../entities/paper-physcore.md
   - ../entities/neoteai.md
   - ./paper-fact-egoforce-human-dexterity.md
+original:
+  - ../../sources/papers/vt_wam_arxiv_2607_02503.md
 sources:
+  - ../../sources/papers/vt_wam_arxiv_2607_02503.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
 summary: "VT-WAM（arXiv:2607.02503）：统一流匹配联合预测未来视觉、触觉形变与动作；非对称 MoT + 接触门控 AVTAG；六类真机接触任务平均 71.67%（+26.67pp vs Fast-WAM、+35.84pp vs OmniVTLA）。"
@@ -57,7 +60,7 @@ summary: "VT-WAM（arXiv:2607.02503）：统一流匹配联合预测未来视觉
 - **与 [TACO](./paper-taco-tactile-wm-vla-posttrain.md)、[Current as Touch](./paper-current-as-touch-proprioceptive-contact.md) 构成接触三角**：VT-WAM **闭环策略**；TACO **失败→纠错数据**；Current as Touch **本体电流替代外置触觉**。
 - **Visual-cache 推理模式：** 非对称注意力允许 **首帧视觉锚 + 全触觉序列**，部署时可 **缓存视觉** 而不丢接触动力学（见论文 inference 设定）。
 
-## 核心结构与方法
+## 核心原理与方法
 
 | 模块 | 方法要点 |
 |------|----------|
@@ -91,16 +94,31 @@ flowchart TB
   VE --> MOT
   TE --> MOT
   AE --> MOT
-  MOT --> AVTAG --> OUT
+  MOT --> OUT
+  MOT -.->|仅训练的注意力损失| AVTAG
 ```
 
-### 六类真机任务成功率（论文 Table，清单索引）
+### 六类真机任务（表 I）
 
-| 任务类型 | Fast-WAM | OmniVTLA | VT-WAM |
-|----------|----------|----------|--------|
-| 表面交互类 | 20–70% 区间 | 25–40% | **55–90%** |
-| 约束插入类 | 偏低 | 偏低 | **显著提升** |
-| **六任务平均** | **45.00%** | **35.83%** | **71.67%** |
+| 任务 | Fast-WAM | OmniVTLA | VT-WAM |
+|---|---:|---:|---:|
+| 擦白板 | 70% | 45% | 90% |
+| 擦花瓶 | 55% | 30% | 85% |
+| 削黄瓜 | 45% | 25% | 70% |
+| 插插头 | 20% | 40% | 60% |
+| 刷卡 | 55% | 35% | 70% |
+| 插管 | 25% | 40% | 55% |
+| 六任务平均（含表面任务部分信用） | 45.00% | 35.83% | 71.67% |
+
+## 工程实践
+
+- 硬件为 xArm7、Robotiq 2F-85、双 Xense 35×20 的 3D 形变场及 128×128 腕相机；全模态同步重采样到 30 Hz，不能把形变场直接等同于标定后的六维力/力矩。
+- 每任务 100 条示范、各方法分别单任务训练、每任务 20 次评测。表面任务以 0/0.5/1 给部分信用，插入任务为二值；71.67% 是这套混合评分口径的均值。
+- 真机 visual-cache 模式去掉未来视觉，但仍联合去噪未来触觉和动作（A100、10 步）；只有 AVTAG 辅助 loss 在推理完全移除。多任务训练尚未验证。
+
+## 源码运行时序图
+
+**不适用**：2026-11-13 官方项目页 Code 为 Coming Soon，链接仍是占位 `#`，未找到可运行官方入口。
 
 ## 实验要点
 
@@ -139,7 +157,7 @@ flowchart TB
 - **误区：** AVTAG 会改变推理图；实际为 **训练期辅助损失**，部署 **零额外模块**。
 - **局限：** 依赖 **特定触觉硬件与形变表示**；长程任务 **误差累积** 未充分验证；跨物体泛化仍受数据规模约束。
 
-## 与其他页面的关系
+## 关联页面
 
 - [wm-action-consequence-category-02-contact-modeling](../overview/wm-action-consequence-category-02-contact-modeling.md) — 接触状态建模 hub
 - [世界模型物理保真度输出轴](../overview/world-model-physics-fidelity-outputs.md) — 「触觉」输出族
@@ -160,6 +178,8 @@ flowchart TB
 - [Current as Touch 论文实体](./paper-current-as-touch-proprioceptive-contact.md)
 
 ## 参考来源
+
+- [VT-WAM: Visual-Tactile World Action Model for Contact-Rich Manipulation：全文通读归档](../../sources/papers/vt_wam_arxiv_2607_02503.md)
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [具身智能研究室 · 世界模型物理保真度导读（2026-07-27）](../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)

@@ -8,14 +8,17 @@ tags:
   - video-generation
   - audio-generation
   - interactive-agents
-status: draft
-updated: 2026-10-18
+status: complete
+updated: 2026-11-13
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ../concepts/latent-imagination.md
   - ./cosmos-3.md
+original:
+  - ../../sources/papers/murea_inworld_technical_report.md
 sources:
+  - ../../sources/papers/murea_inworld_technical_report.md
   - ../../sources/sites/murea-inworld.md
   - ../../sources/repos/murea-inworld.md
 summary: "Murea-InWorld 将显式世界状态 Agent（Murea-Mind）与视听生成器 Murea-Fast 组合成互动故事闭环；Mind 与 Fast 推理代码已开源，Fast 权重已发布，报告中的 Murea-Pro 开放状态未确认。"
@@ -24,6 +27,10 @@ summary: "Murea-InWorld 将显式世界状态 Agent（Murea-Mind）与视听生�
 # Murea-InWorld（互动视听世界模型）
 
 **Murea-InWorld** 是 Murea Labs 提出的互动视听世界模型：Agent 维护角色、物体、地点与故事进度，把用户动作转成生成条件，再依据生成片段更新后续计划。
+
+## 一句话定义
+
+显式状态代理编排参考条件视听生成，并以生成帧校正部分世界状态的互动系统。
 
 ## 英文缩写速查
 
@@ -69,7 +76,7 @@ flowchart LR
 
 ## 实验与评测
 
-以下数字摘自官方技术报告 §5（作者自报，未独立复核）：
+以下数字已对照官方技术报告§5全文及协议核读；未进行独立生成评测：
 
 | 基准 | 被测模型 | 主要结果 | 读法 |
 |------|----------|----------|------|
@@ -99,26 +106,36 @@ flowchart LR
 
 ## 源码运行时序图
 
+对应[82a24718源码核读](../../sources/repos/murea-inworld.md)的公开Fast路径；Python接口需显式调用reflect。
+
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Player as 用户
-    participant Mind as agent（Murea-Mind）
-    participant API as inference（HTTP API）
-    participant Fast as Murea-Fast 服务
-    Player->>Mind: 输入动作
-    Mind->>Mind: 解释上下文并规划事件
-    Mind->>API: 提示词、参考图像、生成请求
-    API->>Fast: 执行视听生成
-    Fast-->>API: 视频片段与声音
-    API-->>Mind: 返回生成结果
-    Mind->>Mind: critic 检查并更新选定状态
-    Mind-->>Player: 展示片段与后续选择
+  participant U as 调用者 / Web层
+  participant M as MureaMind.play
+  participant L as TurnLoop.run
+  participant V as providers.video.murea
+  participant F as Murea-Fast HTTP服务
+  participant C as critic.adjudicate
+  U->>M: 世界与文字动作
+  M->>L: loop.turn
+  L->>L: perceive、plan、check、stage_assets、write_prompt
+  L->>V: render：prompt、references或续写前缀
+  V->>F: 查模型、POST /v1/videos
+  V->>F: 轮询状态、下载/content
+  F-->>L: 视频与元数据
+  L->>L: commit保存节点及快照
+  L-->>U: Node
+  U->>C: reflect(world,node)
+  C->>C: 观察生成帧、修正选项及部分状态
 ```
 
-该时序图依据仓库 README 对组件边界与闭环的概述；部署入口及 API 文档位于仓库的 `inference/` 与 `agent/` 目录。
+公开Fast续写使用前17帧上传并裁除返回前缀，不能同时附图像参考；完整Murea的latent continuation与voice条件是另一未发布后端接口。状态先写入的计划字段与生成后确认的事实需区分。
 
 ## 局限与风险
+
+- **基准不是完整代理验收：** WBench测Pro50步的逐轮视觉生成，未测Mind资产/分支/多人闭环；最快蒸馏Pro的3.6秒结果也不是同一50步配置。
+- **提示词优势：** Fast使用扩展gt_caption，对照部分仅官方prompt；OS2V-Pro的VTF/Bind清单由扩展prompt生成，聚合分带输入优势。其音频项只评轨道完整，不评音质/事件对齐。
+- **长时监督边界：** 降质GT历史仍与真实自回归误差不同；生成前部分计划状态直接写入，不是所有记忆均由画面验证。
 
 - **开放范围不等于整篇报告模型均开放：** README 声明仓库提供 Murea-Mind 和 Murea-Fast 服务，且发布 Murea-Fast 权重；报告评测 Murea-Pro，但当前开源说明没有确认 Pro 权重或训练代码已发布。
 - **算力要求较高：** README 给出的速度依赖 4 张 H20 与 sequence parallelism，不宜外推到单卡或机器人实时控制。
@@ -133,6 +150,8 @@ sequenceDiagram
 - [Cosmos 3](./cosmos-3.md) — WBench 对比基线所属的 Physical AI 世界模型家族
 
 ## 参考来源
+
+- [技术报告全文核读与协议边界](../../sources/papers/murea_inworld_technical_report.md)
 
 - [Murea-InWorld 官方项目页归档](../../sources/sites/murea-inworld.md)
 - [Murea-InWorld 官方仓库归档](../../sources/repos/murea-inworld.md)

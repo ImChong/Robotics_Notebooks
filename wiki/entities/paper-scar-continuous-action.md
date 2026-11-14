@@ -11,7 +11,7 @@ tags:
   - kth
   - aether-ai
 status: complete
-updated: 2026-10-10
+updated: 2026-11-13
 project_id: scar-continuous-action
 arxiv: "2605.16412"
 related:
@@ -28,6 +28,8 @@ related:
   - ../concepts/world-action-models.md
   - ../methods/generative-world-models.md
   - ../overview/hub-cross-embodiment.md
+original:
+  - ../../sources/papers/scar_arxiv_2605_16412.md
 sources:
   - ../../sources/blogs/aether_scar.md
   - ../../sources/papers/scar_arxiv_2605_16412.md
@@ -111,6 +113,9 @@ flowchart LR
 训练时 z 来自 IDM 的后验；部署时用 A2L 从原始命令 + 视觉上下文预测潜动作序列，接到同一个 FDM 上。
 
 ## 工程实践
+
+全文附录 E–H 复核：49 帧窗口是 17 帧历史 + 32 帧未来，经 stride-4 VAE 变成 13 latent 步（5 步历史）；推理固定干净历史，只生成未来。泄漏评测必须剔除复制的 target context，否则会虚高本体保持率。表 1 后验潜动作与表 3 原始命令 A2L 的推理可用信息不同，不能混成一个控制基准。
+
 
 | 项 | 要点 |
 |----|------|

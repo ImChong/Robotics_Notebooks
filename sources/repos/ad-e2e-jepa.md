@@ -33,3 +33,10 @@
 
 - 论文：[AD-E2E-JEPA arXiv 摘录](../papers/ad_e2e_jepa_arxiv_2609_34085.md)
 - 结构化知识页：[AD-E2E-JEPA 实体页](../../wiki/entities/paper-ad-e2e-jepa.md)
+
+## 2026-11-13 固定版本源码复核
+
+- 版本：[dc122f69e1ad1bd5553d4ffbc74da20a047089ee](https://github.com/HaoranZhuExplorer/AD-E2E-JEPA/tree/dc122f69e1ad1bd5553d4ffbc74da20a047089ee)。已读根README、`docs/GCZSP_EVAL.md`、v3规划sbatch全文、`jepa_wm_projector.py`全文，`jepa_wm_model.py`构造/encode/predict/advance_rollout_context完整函数、agent构造与接口，v3 GCZSP脚本入口、场景/词表加载、完整BatchedWMUnroll/GCZSPEvalObjective及候选评分路径。
+- README标注10/19代码、10/23权重已发布，11/19重构待办。当前含可运行实现，HF链接HaoranZhu/AD-E2E-JEPA；未下载权重或执行实验。
+- sbatch→v3 GCZSP脚本→Hydra构造JEPA_WMAgent/JEPA_WMModel→载checkpoint→SceneLoader/metric cache→固定8192词表下采样→四帧图像编码与共享projector→8步predict/advance_rollout_context→终点MSE取argmin→PDM统计。
+- 当前序列脚本同时选0.5/1/2/4s轨迹，EPDMS取4s，计时排除场景加载和后续评测、含预处理至选轨迹；默认五次warmup不计统计。sbatch依赖Singularity overlay、地图、cache绝对路径，不能直接复制为通用单机命令。

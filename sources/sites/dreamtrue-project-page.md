@@ -12,3 +12,7 @@ DreamTrue 通过图像空间动作轨迹及离线几何校准对齐动作条件�
 - [论文摘录](../papers/dreamtrue_arxiv_2610_12468.md)
 - [仓库归档](../repos/brave-eai-dreamtrue.md)
 - [Wiki 实体](../../wiki/entities/paper-dreamtrue-action-faithful-world-model.md)
+
+## 2026-11-13 浏览器核查
+
+静态抓取为空后用浏览器打开 <https://brave-eai.github.io/DreamTrue/>，HTTP200且正文可读。页面有calibration/wmvideo/reward源码及ModelScope权重、condition mini、reward mini入口；已核对正文和链接，未观看视频。完整数据/训练开放范围以各模块README为准，不能由“release contents”推断全流程已公开。

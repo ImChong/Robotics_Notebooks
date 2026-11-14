@@ -11,7 +11,7 @@ tags:
 - awesome-sim2real
 - longchao-sim2real
 status: draft
-updated: 2026-10-06
+updated: 2026-11-14
 summary: CALVIN：把语言指令、视觉观测和连续控制组织成长时序任务链，评测策略在无需每步重置时连续完成多个目标的能力；其数据与协议重点暴露错误累积和子任务切换，而非单步抓取成功率。
 related:
 - ../concepts/sim2real.md

@@ -60,3 +60,12 @@
 
 - 沉淀实体页：[`wiki/entities/paper-dit4dit-video-action-model.md`](../../wiki/entities/paper-dit4dit-video-action-model.md)
 - 互链参考：[MotionWAM](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)、[mimic-video](../../wiki/methods/mimic-video.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[VLA](../../wiki/methods/vla.md)
+
+## 全文复核（2026-11-13）
+
+- **核对范围：** arXiv:2603.10448v2（2026-03-22）正文§1–§6、附录A.1–A.4全文与图表文字层；官方项目页、README与固定版本推理入口/主模块；未跑GPU。
+- **通读：** 已完成
+- §3的>10×样本效率、约7×收敛是受控proxy预训练/冻结骨干实验，不等于最终联合模型在任意任务都省10×数据。Cosmos已预训练，LIBERO的from scratch只指不使用额外机器人动作预训练数据。
+- v2真机为7任务、每任务200条示范与20次测试；项目页后续扩展8桌面+3全身，不混作同一论文协议。v2 RoboCasa50.8对GR00T-N1.6 40.8，当前项目56.7对47.8是另一发布结果；LIBERO平均都98.6，子套件数值也不同。
+- 正文描述固定τf，Algorithm1却采样离散均匀τf；记录该不一致。实际代码默认capture_step_index=0，非生成模式只取首次Video DiT隐状态，Action DiT仍按配置多步Euler，不是整个策略一次前向。
+- 表3的6Hz标A100；附录真机工作站RTX4090，不能把两者合成同一测时。2.2B是可训练参数，排除冻结VAE/文本模块；也慢于13Hz GR00T和9Hz Qwen3DiT。

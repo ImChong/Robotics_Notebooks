@@ -4,7 +4,7 @@ type: method
 tags: [pelican-unified, uei, vla, world-models, diffusion, joint-wam, embodied-ai, qwen3-vl, x-humanoid]
 status: complete
 date: 2026-05-16
-updated: 2026-11-08
+updated: 2026-11-13
 summary: "Pelican-Unified 1.0 将 Qwen3-VL 作为统一理解与推理模块，把末态稠密潜变量 z 送入 Wan 系 Unified Future Generator，在同一扩散去噪中联合生成未来视频与动作块，使语言、视频与动作损失共同塑造共享表示。"
 related:
   - ../concepts/world-action-models.md
@@ -16,6 +16,8 @@ related:
   - ./star-vla.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ../entities/x-humanoid.md
+original:
+  - ../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md
 sources:
   - ../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md
   - ../../sources/papers/world_action_models_survey_2605.md
@@ -29,11 +31,11 @@ Pelican-Unified 1.0 将 Qwen3-VL 的语义理解与链式推理末态 \(z\)，�
 
 **Pelican-Unified 1.0** 是 X-Humanoid 团队围绕 **统一具身智能（Unified Embodied Intelligence, UEI）** 提出的具身基础模型：用单一 VLM 同时承担 **场景–指令–历史** 的语义整合与 **可监督链式推理**，再把推理压缩为稠密潜变量 **\(z\)**，由 **Unified Future Generator（UFG）** 在 **同一扩散过程** 中联合解码 **未来视频** 与 **下一动作块**，从而让「理解—推理—想象—执行」在 **梯度层面** 互相约束，而不是四个独立专家的输出拼接。
 
-> 论文题录为 *Pelican-Unified*；部分材料写作 *Pelican-Unify*，本页以 arXiv 标题为准。
+> 以已通读的 arXiv:2605.15153v2（2026-05-21）为准，标题为 *Pelican-Unify1.0*；保留既有节点与路径。
 
 ## 一句话定义
 
-把具身智能建模成 **单训练对象** 的闭环：**共享语义空间里的理解与语言推理** → **稠密循环状态 \(z\)** → **条件扩散同时roll未来像素与动作**，并用 **action-refine** 让动作读出前回看已想象的视觉 token。
+把具身智能建模成 **单训练对象** 的闭环：**共享语义空间里的理解与语言推理** → **稠密循环状态 \(z\)** → **条件扩散同时roll未来像素与动作**；共享注意力交换视频与动作信息，再由各自输出头读出。
 
 ## 英文缩写速查
 
@@ -42,19 +44,19 @@ Pelican-Unified 1.0 将 Qwen3-VL 的语义理解与链式推理末态 \(z\)，�
 | VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
 | WAM | World Action Model | 联合世界模型与动作预测的架构 |
-| CoT | Cost of Transport | 单位重量·距离能耗的无量纲移动效率指标 |
+| CoT | Chain of Thought | 在 VLM 中生成的语言推理链 |
 | AI | Artificial Intelligence | 人工智能 |
 
 ## 为什么重要
 
 - 为「**统一**」给出可操作的三分解：**统一理解**、**统一推理**、**统一生成**（见下），便于和纯 VLA、仅联合视频–动作而无显式推理链的 WAM 变体对照。
 - 在公开叙述中，同一 checkpoint 同时参与 **VLM 基准**、**WorldArena（世界建模）** 与 **RoboTwin（操作）** 等异构评测，支撑「不牺牲专才强度」的经验主张（具体数字以论文表格为准）。
-- 工程上把 **Qwen3-VL-4B** 与 **Wan2.2-5B** 级视频扩散骨干 **端到端耦合**，是观察 **多模态损失如何共塑 \(z\)** 的参考实现之一。
+- 工程上把 **Qwen3-VL-4B** 与 **Wan2.2-5B** 级视频扩散骨干 **端到端耦合**，是观察 **多模态损失如何共塑 \(z\)** 的架构样例之一。
 
 ## 主要技术路线
 
 - **统一理解 + 统一推理（VLM）**：以 [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md) 语境下的多模态骨干为容器，把观测、语言与动作史压入共享语义空间，并以可监督 CoT 收口为稠密 **\(z\)**（与 [Cross-modal Attention](../formalizations/cross-modal-attention.md) 中的「视–语对齐」读法相容，但本模型额外强调 **\(z\) 对生成的硬条件化**）。
-- **统一生成（UFG）**：在 **\(z\)** 条件下用扩散同时去噪 **未来视频 token** 与 **动作 chunk token**，并在读出前做 **action-refine**；训练上对齐 [Generative World Models](./generative-world-models.md) 的「像素动力学」工具箱，但把控制与想象锁在同一反传图里。
+- **统一生成（UFG）**：在 **\(z\)** 条件下用扩散同时去噪 **未来视频 token** 与 **动作 chunk token**，共享注意力后由两路输出头读出；训练上对齐 [Generative World Models](./generative-world-models.md) 的「像素动力学」工具箱，但把控制与想象锁在同一反传图里。
 - **与 WAM 分类的接点**：整体落在 [World Action Models（WAM）](../concepts/world-action-models.md) 的 **Joint** 族一侧——联合未来与动作——并显式插入 **语言推理状态** 作为枢纽变量。
 
 ## 核心原理：VLM 推理与联合视频–动作潜状态
@@ -63,7 +65,7 @@ Pelican-Unified 1.0 将 Qwen3-VL 的语义理解与链式推理末态 \(z\)，�
 
 1. **统一理解**：观测、自然语言指令、视觉上下文与动作历史进入 **同一语义空间**，减少感知–语言–控制分编码带来的语义断裂。
 2. **统一推理**：链式思考不是脱离物理后果的独白，而是 **可监督、与任务与动作选择对齐** 的过程；**末隐状态投影为 \(z\)**，直接规定「应想象何种未来、应执行何种动作」。
-3. **统一生成**：**未来视频与低层动作** 来自 **同一 denoising 轨迹**、同一 **\(z\)** 条件；动作在最终读出前通过 **action-refine** 对想象视觉 token 再做注意力汇聚，使执行与像素级想象对齐。
+3. **统一生成**：**未来视频与低层动作** 来自 **同一 denoising 轨迹**、同一 **\(z\)** 条件；视频和动作经共享注意力后分别读出；v2 未展开独立 action-refine 模块的实现，不额外推断其调用。
 
 ### 流程总览
 
@@ -74,7 +76,7 @@ flowchart LR
   z["稠密潜变量 z"]
   ufg["UFG：Wan2.2 系扩散\n联合去噪"]
   vid["未来视频 token"]
-  act["动作 chunk token\n（action-refine ← 视觉）"]
+  act["动作 chunk token"]
 
   obs --> vlm --> z --> ufg
   ufg --> vid
@@ -95,6 +97,21 @@ flowchart LR
 - 将 VLM 推理、潜变量更新与视频–动作联合扩散的耗时拆开测量；只在满足目标机器人控制周期的条件下把视频生成纳入在线决策，必要时比较仅动作采样与分层异步方案。
 - 核对 Qwen3-VL / Wan2.2 初始化版本、冻结/更新参数和数据许可；不能由公开技术报告推断完整训练权重与代码已经可复现。
 - 这是读者向工程核验清单，并非已完成的复现实验或作者报告的实测延迟。
+
+## 实验与评测
+
+| 项目 | v2 结果 | 解释边界 |
+|---|---|---|
+| VLM 八项均值 | 64.7 | 部分基线不支持项按零计，覆盖能力不同 |
+| RoboTwin | clean 93.6%、randomized 93.3%、平均 93.5% | 该表次于 Motubrain 95.9%，不能写全榜最优 |
+| WorldArena | EWM 66.03；人工四轴均分 1.76 | 后者为 0/1/2 评分，不是任务成功率 |
+| UR5e / 天工 | 组合及无对应动作示范的迁移案例 | 未给完整真机 rollout 次数和成功率表 |
+
+天工三个未见任务各有 50 条视频，因而“零样本”限定为无对应机器人动作监督，不能解释为未接触任务数据。语言交叉熵、未来位置视频 MSE 与有效维动作 Smooth L1 联合训练；正文未明确损失权重数值。
+
+## 源码运行时序图
+
+**不适用。** 截至 2026-11-13，已核查的官方组织与 TienKung_Docs 为硬件/项目资料，未提供可确认的 Pelican-Unify1.0 训练推理实现；不以硬件仓库充当模型代码。本次完成论文通读与静态资源核验，未复现。
 
 ## 局限与阅读注意
 

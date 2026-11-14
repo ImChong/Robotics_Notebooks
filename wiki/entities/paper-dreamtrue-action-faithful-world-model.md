@@ -3,7 +3,7 @@ type: entity
 project_id: dreamtrue-action-faithful-robot-world-model
 tags: [paper, world-model, video-prediction, counterfactual-learning, reward-model, manipulation]
 status: complete
-updated: 2026-10-11
+updated: 2026-11-13
 arxiv: "2610.12468"
 project: https://brave-eai.github.io/DreamTrue/
 code: https://github.com/brave-eai/DreamTrue
@@ -13,6 +13,8 @@ related:
   - ../methods/model-based-rl.md
   - ../tasks/manipulation.md
   - ../entities/paper-dreamwam.md
+original:
+  - ../../sources/papers/dreamtrue_arxiv_2610_12468.md
 sources:
   - ../../sources/papers/dreamtrue_arxiv_2610_12468.md
   - ../../sources/sites/dreamtrue-project-page.md
@@ -21,6 +23,8 @@ summary: "DreamTrue 以离线几何校准对齐图像空间动作条件，通过
 ---
 
 # DreamTrue：动作保真的机器人世界模型
+
+## 一句话定义
 
 **DreamTrue** 是面向机器人交互视频预测的世界模型框架：校准动作条件与视频运动的一致性，以反事实后训练扩展少见交互，再用具身视频奖励模型引导生成结果趋向物理合理。
 
@@ -31,6 +35,10 @@ summary: "DreamTrue 以离线几何校准对齐图像空间动作条件，通过
 | WM | World Model | 根据观测和条件动作预测环境未来的模型 |
 | RL | Reinforcement Learning | 用奖励信号优化模型的后训练过程 |
 | SOTA | State of the Art | 论文针对特定 benchmark 的比较结论 |
+
+## 为什么重要
+
+动作跟随和物体交互是两种检验：夹爪沿轨迹移动，不代表物体在失抓时也预测正确。本文先修复动作渲染的几何错位，再用缺陷反馈扩展失败接触覆盖，可用于理解世界模型为何会过度乐观。
 
 ## 方法栈
 
@@ -50,6 +58,8 @@ flowchart LR
   rl --> wm
 ```
 
+本页以已通读的 **arXiv v2（2026-11-09）** 为准：Wan2.1-VACE14B三视角101帧，StageII冻结base/geometry/reward，只更新双LoRA。录制动作额外使用PSNR，反事实动作没有配对真值未来。
+
 ## 评测
 
 | 指标 | 论文报告 | 说明 |
@@ -57,6 +67,10 @@ flowchart LR
 | AgiBot action following | 对比 SOTA | 限论文 benchmark 设置 |
 | 人评交互缺陷率 | 48.12% → 6.25% | 人工评估指标，需结合标注与采样协议 |
 | AgiBot World Challenge 2026 | 第 1 名 | 作者报告名次，不替代独立复现 |
+
+AgiBot recorded评测800 episodes；反事实160条件、每模型三位盲评者多数票。48.12→6.25%是StageI/II的交互缺陷率，非机器人成功率；综合EWMScore-P为72.84→72.51，并非全部指标提高。
+
+策略结果评估使用240条固定动作回放、24组合，SR MAE12.92→7.08个百分点、Spearman .937；真值来自仿真，不是生成观测下重新查询策略的闭环测试。遮挡下视觉合理仍可能物理错误。
 
 ## 与其他工作对比
 
@@ -70,22 +84,29 @@ DreamTrue 是世界模型训练系统，不应等同于可直接部署的闭环 
 
 ## 源码运行时序图
 
+依据[固定提交的公开推理代码](../../sources/repos/brave-eai-dreamtrue.md)。完整StageII训练未发布，故不画虚构的RL训练调用。
+
 ```mermaid
 sequenceDiagram
-  participant C as calibration
-  participant W as wmvideo
-  participant R as reward
-  participant T as RL post-training
-  C->>W: 对齐动作与视频坐标
-  W->>T: 生成条件未来视频
-  T->>R: 评估交互缺陷
-  R-->>T: 返回视频奖励
-  T->>W: 更新世界模型
+  participant SH as 三视角inference shell
+  participant Demo as inference_demo_v2v_vace.py
+  participant Data as dataset config与condition HDF5
+  participant Model as WanV2VVaceInferenceModule
+  participant Pipe as WanVideoPipeline
+  SH->>Demo: Accelerate launch与本地模型路径
+  Demo->>Data: 读取RGB首帧、动作渲染和相机参数
+  Demo->>Model: 初始化base、enable_plucker、加载双LoRA
+  Demo->>Model: generate三视角reference与条件
+  Model->>Pipe: 多视角条件视频预测
+  Pipe-->>Demo: 各视角未来帧
+  Demo->>Demo: 裁padding、保存MP4与JSON记录
 ```
 
-此图按仓库 README 的 calibration、wmvideo、reward 组件概括训练关系；具体执行命令以模块 README 为准。
-
 ## 工程实践
+
+- 对齐 `use_plucker` 与检查点geometry键；输入视角顺序、padding与相机参数必须匹配训练契约。
+- 公开生成summary的success_rate仅指运行/文件生成成功，不能当任务SR。StageII训练代码与完整校准流程尚未提供，本次未复现。
+
 
 - 先验证相机参数、动作坐标系和时间戳，避免动作条件错位。
 - 按任务和接触类型检查反事实样本与真实数据差异。
@@ -123,3 +144,8 @@ sequenceDiagram
 - [项目页归档](../../sources/sites/dreamtrue-project-page.md)
 - [官方仓库归档](../../sources/repos/brave-eai-dreamtrue.md)
 - [arXiv](https://arxiv.org/abs/2610.12468)
+
+## 推荐继续阅读
+
+- [arXiv v2全文](https://arxiv.org/html/2610.12468v2)：附录A–C给出模型、标注和固定动作回放协议。
+- [官方wmvideo README](https://github.com/brave-eai/DreamTrue/tree/main/wmvideo)：推理所需资产与开放边界。

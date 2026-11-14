@@ -48,3 +48,9 @@
 - 论文摘录：[`sources/papers/cosmos3_arxiv_2606_02800.md`](../papers/cosmos3_arxiv_2606_02800.md)
 - 代码入口：[`sources/repos/nvidia_cosmos.md`](../repos/nvidia_cosmos.md)
 - 实体页：**`wiki/entities/cosmos-3.md`**
+
+## 官方页复核（2026-11-13）
+
+- **核对范围：** 官方正文、能力分栏、示例文字、榜单主张与资源链接；未逐帧观看视频，不把可视化轨迹示例当机器人可执行控制命令。
+- **通读：** 已完成
+- 有报告、HF、GitHub公开入口；榜单需按论文时间和具体专用checkpoint解读。Reasoning+Generation先产生2D轨迹再生成视频，不证明其直接转为3D关节控制。

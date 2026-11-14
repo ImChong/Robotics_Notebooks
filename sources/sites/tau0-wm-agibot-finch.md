@@ -24,3 +24,9 @@
 - [τ₀-World Model（τ0-WM）](../../wiki/entities/tau0-world-model.md) — 方法级归纳
 - [sources/papers/tau0_wm_tech_report.md](../papers/tau0_wm_tech_report.md) — 技术报告 PDF
 - [sources/repos/sii_research_tau_0_wm.md](../repos/sii_research_tau_0_wm.md) — 代码与部署说明
+
+## 2026-11-13 入口复核
+
+- Finch研究页抓取及浏览器重试受当前连接限制；其静态PDF可读。README给出的新入口 <https://tau0-wm.github.io/> 可读，已核正文和链接：arXiv:2606.01027、官方GitHub、HF。
+- 页面部分UMI/Ego列表重复“最可靠动作监督”文案，与同页后续说明及PDF矛盾；以PDF为准，Ego无机器人动作标签。
+- 源码/权重现已部分发布，详见[固定版本仓库核查](../repos/sii_research_tau_0_wm.md)；未把公开示例等同完整预训练数据开放。

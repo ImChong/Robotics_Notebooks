@@ -14,7 +14,7 @@ tags:
   - manipulation
   - aether-ai
 status: complete
-updated: 2026-10-10
+updated: 2026-11-13
 project_id: causalwm
 arxiv: "2609.23184"
 code: https://github.com/AetherLabsAI/CausalWM
@@ -37,10 +37,13 @@ related:
   - ./paper-causalvae-world-models.md
   - ../tasks/manipulation.md
   - ../tasks/bimanual-manipulation.md
+original:
+  - ../../sources/papers/causalwm_arxiv_2609_23184.md
 sources:
+  - ../../sources/repos/causalwm.md
   - ../../sources/papers/causalwm_arxiv_2609_23184.md
   - ../../sources/sites/aether-causalwm.md
-summary: "CausalWM（以太智能 Aether AI，arXiv:2609.23184，v1 2026-09-19）：自称 16B 的具身世界模型，在 LTX-2.3-22B 视频 DiT 上按「光流 → XYZ 点图 → 未来 RGB」做显式因果思维链（跨流因果掩码 + 逐变量去噪），31K 小时数据三阶段训练（预训练 / CoT 中训 / DiffusionNFT 多目标 RL）。自报 TriWorldBench TWB-Score 66.04 位列 36 模型第 1（2026-09-11 快照）、PAI-Bench-G 机器人域 89.9（本地评测，Cosmos3-Super 89.7）。已发布 TI2V 推理代码与 gated 权重（LTX-2 Community License），训练代码、数据与 TriWorldBench 用的动作条件模型未发布。"
+summary: "CausalWM（以太智能 Aether AI，arXiv:2609.23184，v2 2026-09-22，2026-11-13核读）：自称 16B 的具身世界模型，在 LTX-2.3-22B 视频 DiT 上按「光流 → XYZ 点图 → 未来 RGB」做显式因果思维链（跨流因果掩码 + 逐变量去噪），31K 小时数据三阶段训练（预训练 / CoT 中训 / DiffusionNFT 多目标 RL）。自报 TriWorldBench TWB-Score 66.04 位列 36 模型第 1（2026-09-11 快照）、PAI-Bench-G 机器人域 89.9（本地评测，Cosmos3-Super 89.7）。已发布 TI2V 推理代码与 gated 权重（LTX-2 Community License），训练代码、数据与 TriWorldBench 用的动作条件模型未发布。"
 institutions:
   - aether-ai
 ---
@@ -93,7 +96,7 @@ institutions:
 | **数据** | 20 个来源族，采集 31,230.8 h，处理后 19,916.2 h；人类第一视角、真机演示、仿真三类 |
 | **训练算力** | 预训练 128×H100 60k 步；动作条件 / 多视角变体各 32×H200（30k / 120k 步）；CoT 中训 64×H200 50k 步；RL 阶段未披露 |
 | **默认推理** | 121 帧、640×480、16 FPS，每阶段 4 步，无 CFG；单张 H200 测试 |
-| **开源（2026-10-10）** | **已发布**：TI2V CoT 推理代码 + `CausalWMv1.safetensors`（HF gated，LTX-2 Community License）。**未发布**：训练 / RL 代码、数据、动作条件与多视角 checkpoint |
+| **开源（2026-11-13核查）** | **已发布**：TI2V CoT 推理代码 + `CausalWMv1.safetensors`（HF gated，LTX-2 Community License）。**未发布**：训练 / RL 代码、数据、动作条件与多视角 checkpoint |
 
 ## 核心原理（方法）
 
@@ -153,6 +156,8 @@ flowchart LR
 
 ## 源码运行时序图
 
+已核读固定版本`a6523ad6`，入口及完整生成/采样函数见[源码归档](../../sources/repos/causalwm.md)；本次未运行GPU。
+
 官方仓库 [AetherLabsAI/CausalWM](https://github.com/AetherLabsAI/CausalWM)（`causalwm` 0.1.0）只提供 TI2V CoT 推理。以下按 `inference.py` 的 `generate()` 流程整理。
 
 ```mermaid
@@ -169,7 +174,7 @@ sequenceDiagram
     Dev->>HF: 同意 gated 条款后下载三份权重
     Dev->>CLI: --image 首帧 --prompt 指令 --checkpoint / --base-ckpt / --text-encoder-dir
     CLI->>CLI: 校验 checkpoint 元数据与参数形状，组件先放 CPU
-    CLI->>TE: 编码指令（截断到 128 token），完成后移回 CPU
+    CLI->>TE: 编码指令、使用 padding mask，完成后移回 CPU
     CLI->>Enc: 编码缩放后的 RGB0 与零运动光流哨兵帧
     CLI->>S: 按 LTX2Scheduler 生成 flow / pointmap / video 三段步数表
     S->>S: 光流去噪 → 固定为上下文 → 点图去噪 → 固定 → RGB 去噪
@@ -294,6 +299,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [CausalWM 固定版本源码归档](../../sources/repos/causalwm.md)
 - [CausalWM 论文归档（arXiv:2609.23184）](../../sources/papers/causalwm_arxiv_2609_23184.md)
 - [CausalWM 官方博客 / 项目页 / 代码与权重核查](../../sources/sites/aether-causalwm.md)
 - *CausalWM: Causal Chain-of-Thought Reasoning for Embodied World Model*, [arXiv:2609.23184](https://arxiv.org/abs/2609.23184)

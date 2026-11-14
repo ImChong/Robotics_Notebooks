@@ -35,3 +35,9 @@
 - [代码仓库](https://github.com/VAST-AI-Research/EdenLive)
 - [Hugging Face 权重](https://huggingface.co/VAST-AI/EdenLive)
 - [站内实体页](../../wiki/entities/edenlive.md)
+
+## 官方页直接复核（2026-11-13）
+
+- **核对范围：** 浏览器重试成功后读取页面正文全文、Code/Paper/Weights与Reactor链接；未观看演示。
+- **通读：** 已完成
+- 项目页为renderer定位，单卡720p声明只适用5B。分钟级演示不等于长期状态/外观的定量保证；资源已开放，不再以抓取错误判断项目不可访问。

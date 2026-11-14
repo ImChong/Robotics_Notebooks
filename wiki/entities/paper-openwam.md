@@ -16,7 +16,7 @@ tags:
   - cuhk
   - sjtu
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2609.07398"
 code: https://github.com/OpenWAM-Official/OpenWAM
 related:
@@ -30,11 +30,13 @@ related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-wb-wam.md
   - ../overview/open-source-reproducibility-9-papers-technology-map.md
+original:
+  - ../../sources/papers/openwam_arxiv_2609_07398.md
 sources:
   - ../../sources/papers/openwam_arxiv_2609_07398.md
   - ../../sources/repos/openwam.md
   - ../../sources/sites/openwam-official.md
-summary: "OpenWAM（arXiv:2609.07398）：模块化 Infra + 六项对照 Study 提炼 WAM 预训练三原则；OpenWAM-α 在 6,400 h ego+robot 数据上预训练，LIBERO 99.3%、RoboTwin2.0-Full 89.0%、RoboDojo 真机 37.6/24.4% SR；全栈已开源（GitHub + HF 46 检查点）。"
+summary: "OpenWAM（arXiv:2609.07398）：模块化 Infra + 六项对照 Study 提炼 WAM 预训练三原则；OpenWAM-α 在 6,400 h ego+robot 数据上预训练，LIBERO 99.3%、RoboTwin2.0-Full 93.60%、RoboDojo 真机 37.6/24.4% SR；全栈已开源（GitHub + HF 46 检查点）。"
 ---
 
 # OpenWAM：系统化世界–动作预训练的开源模块化栈
@@ -60,7 +62,7 @@ summary: "OpenWAM（arXiv:2609.07398）：模块化 Infra + 六项对照 Study �
 
 - **把设计空间从「论文附录」拉回「可实验变量」**：骨干、表征、架构、掩码、数据配方、去噪策略均可插拔，避免每项工作重搭单体栈。
 - **给出可操作的预训练读法**：强生成骨干 + 紧凑潜空间、专用动作通路 + mutual 信息流 + 同步联合去噪、一阶段 ego+robot 共训——不是口号，而是 Q1–Q6 累积默认。
-- **仿真到真机的一致头部**：8 个仿真基准与 3 个真机平台（含预训练未见的灵巧手 OOD）均报告领先或并列；RoboDojo 双臂 **37.6 / 24.4% SR** 相对次佳 π₀.₅ **22.9 / 12.8%** 拉开差距。
+- **仿真到真机的一致头部**：8 个仿真基准与 3 个真机平台（含预训练未见的灵巧手 OOD）覆盖广泛且部分基准居前，但Plus与部分OOD仍有明显差距；RoboDojo 双臂 **37.6 / 24.4% SR** 相对次佳 π₀.₅ **22.9 / 12.8%** 拉开差距。
 - **开源完整度罕见**：训练、WebSocket 部署、多基准客户端、Foundation 与 Study 检查点一并发布，并接入 [XPolicyLab](https://github.com/XPolicyLab/XPolicyLab)。
 
 ## 核心信息
@@ -114,35 +116,36 @@ flowchart TB
 
 ## 源码运行时序图
 
-节点对齐 [`sources/repos/openwam.md`](../../sources/repos/openwam.md) 与 README Quick Start。
+对应[固定版本1dcaeea7](../../sources/repos/openwam.md)同步服务请求路径；静态核读，未加载GPU。README入口为`bash scripts/deploy.sh <ckpt_dir>`。
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Dev as 开发者
-    participant DL as scripts/download_assets/
-    participant Train as scripts/train.sh<br/>OpenWAMTrainer
-    participant Ckpt as assets/openwam_ckpt/
-    participant Deploy as scripts/deploy.sh<br/>policy server :8848
-    participant Client as benchmarks/libero/<br/>WebSocket client
-    participant Sim as LIBERO / RoboTwin / …
-    Dev->>DL: 下载骨干 / 基准数据 / OpenWAM-α Foundation
-    alt 从零或微调
-        Dev->>Train: Hydra dataloader+model 覆盖
-        Train-->>Ckpt: outputs/openwam_checkpoints/…
-    else 直接部署 Foundation
-        Dev->>Ckpt: download_openwam_checkpoints.py
-    end
-    Dev->>Deploy: bash deploy.sh <ckpt_dir>
-    Dev->>Client: 按基准 README 起评测客户端
-    Client->>Deploy: obs/state → action chunk
-    Deploy-->>Client: 同步去噪动作
-    Client->>Sim: 闭环 rollout
-    Sim-->>Dev: 成功率 / 分数表
+  participant S as deploy.server / PolicyServer
+  participant P as WAMPolicy
+  participant X as SyncInferenceExecutor
+  participant E as JointInferenceEngine
+  participant M as architecture.generate
+  participant C as WebSocket客户端
+  S->>S: build_server_from_config恢复checkpoint架构/契约
+  C->>S: obs多视图、prompt、可选state
+  S->>S: ObsPreprocessor.preprocess
+  S->>P: predict_action
+  P->>X: 图像/语言/state条件
+  alt 动作缓冲为空
+    X->>E: generate
+    E->>E: make_schedule、归一化proprio
+    E->>M: 按checkpoint架构联合生成
+    M-->>X: 物理单位动作块
+    X->>X: 仅保留inference_horizon
+  end
+  X-->>P: pop一条动作
+  P->>P: binary维投影到合法指令
+  P-->>C: 经服务端返回action/step/latency
+  C->>S: reset
+  S->>X: 清本episode缓冲
 ```
 
-- **最短复现路径**：下载 OpenWAM-α Foundation → `bash scripts/deploy.sh <ckpt>` → 按 `benchmarks/libero/README.md` 起客户端（无需重训 6,400 h）。
-- **微调路径**：`training.finetune_ckpt_path=<foundation>` + `dataloader=libero`（或 RoboTwin 等）；注意 `num_frames=33` / `video_stride=4` 对齐 32-step action horizon。
+服务端一次响应是一条动作；同步缓冲补充会阻塞。框架另有async执行器，与视频/动作异步去噪是独立维度；论文所有成绩采用同步执行与同步去噪。
 
 ## 工程实践
 
@@ -156,27 +159,31 @@ sequenceDiagram
 
 ## 实验与评测
 
-| 设定 | 数字（项目页 / 论文） |
-|------|----------------------|
-| LIBERO 平均 SR | **99.3%**（最佳 WAM −0.1；最佳 VLA +0.1） |
-| RoboTwin2.0-Full | **89.0%** |
-| LIBERO-plus | **77.1%** |
-| EBench | **60.5%** |
-| RoboCasa-GR1 | **38.2%** |
-| RoboDojo 真机双臂 | **37.6 分 / 24.4% SR**（π₀.₅ 次佳 22.9 / 12.8%） |
-| 灵巧手 OOD | 预训练未见该本体；仍报告背景 / 布局 / 光照 / 物体变体 |
-| 覆盖 | **8** 仿真基准 × **5** 本体类；**3** 真机平台 |
+以v1图13与表6–8/13–20为准，修正旧版摘录的坐标错位。
+
+| 设定 | OpenWAM-α结果及口径 |
+|------|---------------------|
+| LIBERO / Plus | 99.3% / 69.2% SR；Plus明显低于π0.5 84.4与所引Qwen89.0 |
+| RoboTwin2.0-Full | 93.60% SR；训练含clean与random |
+| RoboTwin Clean2Random | clean89.4 / random48.7，均值69.0；只clean微调 |
+| EBench | 49.4% SR / 64.7分 |
+| RoboCasa365 / GR1 | 38.2% / 60.5% SR，两个不同基准 |
+| RoboDojo仿真 / 真机 | 仿真11.92% SR/17.18分；真机24.4% SR/37.6分 |
+| 单臂真机 | 6任务各100演示微调、各20测试，99/120=82.5% |
+| 灵巧手 | 未见本体经微调再测ID/OOD，完成得分与最终SR分开 |
+
+从零与预训练比较，OOD14.50→26.62是600小时消融配方，不能当作完整6369小时模型结果。不同视频骨干同时改变架构与预训练数据，曲线不是单独参数规模因果实验。
 
 ## 结论
 
-**OpenWAM 把 WAM 预训练从「单体工程运气」变成「可拆模块 + 可累积对照」——真影响指标是跨基准一致头部与 OOD 真机泛化，而不是单点刷榜。**
+OpenWAM提供可控制WAM设计变量的开放基座，Alpha在多项操作基准表现强，但Plus和部分OOD差距限制了普遍泛化结论。
 
-1. **模块化是方法论，不是仓库洁癖** — Infra 让 Q1–Q6 可累积；没有统一 train/deploy/eval，Study 结论不可移植。
-2. **继承看骨干 × 潜空间，不单看 VAE 重建** — Wan2.2-5B + 紧凑 latent 是默认；表征编码器压缩路线同样可用。
-3. **协同需要动作专用容量 + mutual 信息流 + 同步去噪** — 级联「先视频完再动作」或阻断梯度不是 Study 最优解。
-4. **数据配方的一阶段 ego+robot 共训** — 机器人保接地，人视频扩世界覆盖；预训练规模上 mutual visibility 稳定更优。
-5. **仿真强不等于真机凑合** — RoboDojo 与灵巧手 OOD 与 LIBERO 99.3% 同属叙事；选型要看目标平台契约。
-6. **复现优先走 Foundation 微调 + 官方 benchmark 客户端** — 46 个 HF 检查点已对齐 deploy 路径，不必从零预训练 6,400 h。
+1. 比较先固定Infra配置与数据配方，再改架构/表征，避免把多变量变动归因到单个模块。
+2. 动作读取世界特征很关键；从零one-way与mutual接近，预训练后mutual略优，不能无条件泛化。
+3. 压缩DINO/V-JEPA也具竞争力，像素重建不是唯一选择；视觉扰动是Alpha明确短板。
+4. 使用Foundation先下游微调；新的灵巧手本体结果不是零样本迁移。
+5. 170ms是5090动作块推理，论文同步执行；异步部署收益另需相同协议实测。
+6. 当前四源机器人数据发布与完整五源论文预训练配方分开记录；RBA吞吐也须标注checkpointing差异。
 
 ## 与其他工作对比
 
@@ -186,10 +193,13 @@ sequenceDiagram
 | [Flex-π](./paper-flex-pi.md) | 多流 Joint WAM + 推理时流掩码算力柔性；OpenWAM 默认 dual_system + 同步对角去噪 |
 | [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) | 人形 loco-manip 实时 WAM；OpenWAM 聚焦 **操作多基准 + 统一 80-D 动作空间** |
 | [WB-WAM](./paper-wb-wam.md) | 清华系 **72-D 身–手 video 预训练 + HumanoidArena**；真机五任务 WB-WAM **84.0%** vs OpenWAM **80.0%**（作者对照，非同训练栈） |
-| π₀ / π₀.₅ / Fast-WAM / Being-H0.7 | 项目页同轴对比；OpenWAM-α 在 LIBERO-plus、RoboTwin-Full、RoboDojo 等多项领先或并列 |
+| π₀ / π₀.₅ / Fast-WAM / Being-H0.7 | 项目页同轴对比；OpenWAM-α在Full等ID任务强，Plus和RoboDojo仿真OOD仍弱于部分VLA |
 | [Awesome-WAM 综述](../concepts/world-action-models.md) | 文献 taxonomy；OpenWAM 补 **工程化预训练对照与开源基座** |
 
 ## 局限与风险
+
+- **完整预训练成本：** 附录128 H200约7天；8×80GB是README小规模训练建议，不能混为原始预训练成本。
+- **数据及指标：** Plus相机/噪声扰动退化；跨论文模型配方不同，不能由排行榜断言WAM普遍优于VLA。Score与SR不能互换。
 
 - **算力门槛**：Wan2.2-5B 级训练推荐 8×80GB；小团队应走 Foundation 微调而非全量预训练。
 - **统一动作空间抽象成本**：80-D 槽位语义跨本体对齐需要读数据配方与 dataloader 契约，误配会静默掉点。

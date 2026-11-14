@@ -79,3 +79,14 @@
 - 沉淀实体页：[`wiki/entities/paper-riemann-1.md`](../../wiki/entities/paper-riemann-1.md)
 - 项目页：[`sources/sites/riemann-1-0-website.md`](../sites/riemann-1-0-website.md)
 - 官网仓：[`sources/repos/riemann-1-0-website.md`](../repos/riemann-1-0-website.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2608.27033v1 PDF（2026-08-27），正文 §1–§7、全部表格与方法/训练/评测/结语，无另列附录；图表按文字层核对，参考文献浏览；官方项目页与静态站仓库README/资源树；未运行模型或观看视频。
+- **通读：** 已完成
+- 数据总量正文写230K+，三个分项200K+/12K+/20K+相加约232K+；项目页为232K+ raw source hours，不能当过滤后可下载训练集。StageI frozen 32D LAM后验均值为伪动作，非机器人可执行命令。
+- 动作先于对应视觉：state不生成，只由实测/回放提供；policy动作执行后用实测视觉，simulator才反馈生成视觉。局部block内可双向，跨block防未来clean泄漏，不等于每个token都严格下三角。
+- 变维本体用category专属projection/head、validity mask；padding连加噪都保持零。λ .1/.5/.9，后训练.95；动作统计保留本体语义，不是归一化就把不同坐标系变成同一种物理量。
+- 正文§4.2每任务3h，§5.1.1每任务15demo，保留不一致；主真机表未明确每方法完整评测次数。85%SR与94.43%PSR是不同指标；叠衣/桌面SR与G0.5并列，不是各项独胜。
+- Table2四个held-out任务各10次，总体75%；RoboCasa为300任务预训练后Target50微调。94.3 RoboTwin、99.0 LIBERO与基线极接近，无独立消融和充分统计支持机制单因果归因。
+- 项目页有arXiv与演示，静态站仓库不是模型实现；截至核查未找到可运行训练/推理、权重或处理后数据入口。原文已上arXiv，旧“无arXiv”说法作废。

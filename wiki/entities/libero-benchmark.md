@@ -15,7 +15,7 @@ tags:
 - dataset
 - simulation
 status: complete
-updated: 2026-11-10
+updated: 2026-11-14
 summary: LIBERO：用一百三十个机械臂任务控制对象、布局、目标和语言变化，专门评估终身学习与迁移中的分布偏移；固定任务套件和数据接口便于比较策略是记住训练场景还是获得可迁移能力。
 related:
 - ../concepts/sim2real.md

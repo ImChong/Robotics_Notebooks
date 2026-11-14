@@ -14,7 +14,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-10-08
+updated: 2026-11-14
 arxiv: "2608.11739"
 code: https://github.com/OpenGalaxea/GalaxeaVLA
 related:

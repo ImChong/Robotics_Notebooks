@@ -9,7 +9,7 @@ tags:
   - inference-efficient
   - midea
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2607.05468"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md
@@ -22,7 +22,10 @@ related:
   - ../entities/paper-dswam-dual-system-wam.md
   - ../entities/paper-flex-pi.md
   - ./paper-4d-wam.md
+original:
+  - ../../sources/papers/meco_wam_arxiv_2607_05468.md
 sources:
+  - ../../sources/papers/meco_wam_arxiv_2607_05468.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md
   - ../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md
   - ../../sources/papers/flex_pi_arxiv_2608_10860.md
@@ -57,7 +60,7 @@ summary: "MECo-WAM（arXiv:2607.05468）：训练期 video/action/4D 三专家 +
 - **与 [DSWAM](./paper-dswam-dual-system-wam.md) 同 Midea WAM 生态：** DSWAM 解耦 **规划–执行**；MECo 解耦 **训练几何–部署算力**；作者重叠（Jian Zhu、Chong Ma、Yi Xu 等）。
 - **LIBERO 98.2% + RoboTwin 92.6%：** 在 **不增加 action-chunk 推理延迟** 下提升操纵（论文 Fig.1 latency–SR 权衡）。
 
-## 核心结构与方法
+## 核心原理与方法
 
 | 机制 | 方法要点 |
 |------|----------|
@@ -107,13 +110,23 @@ flowchart TB
 | **因果性** | 易 future leak | **read-mask + asymmetric visibility** |
 | **算力** | 高 | **与 base WAM 同延迟** |
 
+## 工程实践
+
+- H=32、9 视频帧、4×动作/视频采样比；当前几何 g₀ 的可读概率在前半训练由 1 降到 0，未来几何始终只作辅助目标，避免训练偷看未来。
+- 64×H20 96 GB 训练，RTX 5090 32 GB、10 步推理；Fig.1 的 chunk 延迟 198.73 ms 对照 Fast-WAM 198.65 ms，是实测近似持平，不能保证所有部署零代价。
+- 真机 Stack Cubes 的 SR **60%→60%**，改善在修正次数/时间；Sort Cubes by Size 才是 **60%→70%**。不能概括为每个真机任务成功率都提高。
+
+## 源码运行时序图
+
+**不适用（开放状态待核实）**：论文给出的项目页本次返回 HTTP 404，v1 未列其他可运行官方仓库；目前只有论文级流程证据，不能编造源码入口。
+
 ## 实验要点
 
 | 轴 | 报告口径（以论文为准） |
 |----|------------------------|
 | **LIBERO** | 平均 **98.2%** |
 | **RoboTwin 2.0** | 平均 **92.6%** |
-| **真机 challenging tasks** | 相对 base WAM **一致提升**（见论文） |
+| **真机 challenging tasks** | 堆块 SR **60%→60%**，尺寸排序 **60%→70%**；修正次数和耗时改善 |
 | **Latency** | action-chunk 推理 **不增**（vs 加部署 4D 的 baseline） |
 | **消融** | 去 read-mask / 去 distillation / 去 4D expert 均 **降点** |
 | **机构** | Midea AI Research、同济大学；[meco-wam.github.io](https://meco-wam.github.io/) |
@@ -146,7 +159,7 @@ flowchart TB
 - **误区：** read-mask 等于 **永远不看几何**；是 **衰减 schedule**，非从零屏蔽。
 - **局限：** 几何 teacher **冻结 VGGT**，错误会 **蒸馏进 policy**；真机 **极接触丰富** 任务增益待更多验证；与 **触觉 WM**（VT-WAM/TACO） **未融合**。
 
-## 与其他页面的关系
+## 关联页面
 
 - [wm-action-consequence-category-03-geometry-4d](../overview/wm-action-consequence-category-03-geometry-4d.md) — 训练期 4D 几何代表
 - [世界模型物理保真度输出轴](../overview/world-model-physics-fidelity-outputs.md) — 「几何/运动信号」族（训练期 4D 端）
@@ -165,6 +178,8 @@ flowchart TB
 - [RynnWorld-4D 论文实体](./paper-rynnworld-4d-rgb-depth-flow.md)
 
 ## 参考来源
+
+- [Learning 4D Geometric Priors for Inference-Efficient World Action Models：全文通读归档](../../sources/papers/meco_wam_arxiv_2607_05468.md)
 
 - [具身智能研究室 · 世界模型动作后果专题导读（2026-07）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_models_action_consequence_2026.md)
 - [具身智能研究室 · 世界模型物理保真度导读（2026-07-27）](../../sources/blogs/wechat_embodied_ai_lab_world_model_physics_fidelity.md)

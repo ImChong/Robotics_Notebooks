@@ -133,7 +133,7 @@ flowchart LR
 - [World Action Models](../wiki/concepts/world-action-models.md) 中 Cascaded 小节
 - [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md) — Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，三阶段训练与门控视觉预测上下文；新版 SIMPLE 合计最高，G1 真机与 GR00T-N1.6 并列
 - [SLIM-0.5B](../wiki/entities/paper-slim-05b.md) — Stage-1 IDM+FDM 掩码轨迹解耦预训练 + Stage-2 MoT flow 联合微调，与 DeFI 同源"正逆动力学同骨干"思路但把未来预测收窄为纯训练信号（不进控制环）；LIBERO 97.5% / LIBERO-Plus 77.45% / CALVIN 4.556，真机端到端 77.3 ms · 2.01 GiB；已开源（GitHub + HF 权重）
-- [TrAct（视觉轨迹桥接控制与预测）](../wiki/entities/paper-tract.md) — VLAT 在 π₀.₅ 上联合采样动作–轨迹对，TWM 轨迹条件世界模型滚未来视频，VLAC 选最高分 rollout 执行；2D 轨迹作具身无关中间接口，LIBERO-INTEGRAL 27%→55%、真机 49%→76%；代码待发布
+- [TrAct（视觉轨迹桥接控制与预测）](../wiki/entities/paper-tract.md) — VLAT 在 π₀.₅ 上联合采样动作–轨迹对，TWM 轨迹条件世界模型滚未来视频，VLAC 选最高分 rollout 执行；2D 轨迹作具身无关中间接口，LIBERO-INTEGRAL 27%→55%、真机 49%→76%；代码已公开，检查点及部分数据仍缺
 - [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md) — 与 Joint / 部署横切对照
 
 ### 学完输出什么
@@ -168,16 +168,16 @@ flowchart LR
 - [Pelican-Unified 1.0](../wiki/methods/pelican-unified-1.md)、[Kairos](../wiki/entities/paper-kairos-native-world-model-stack.md)
 - [Cosmos 3](../wiki/entities/cosmos-3.md) — 平台级 Joint / 多任务 I/O 对照
 - [LingBot-VA / Robbyant](../wiki/entities/robbyant.md) — MoT 交错视频–动作建模 + 闭环 rollout + 异步推理；同公司 World（世界模拟）与 VLA（前馈策略）可并排对照三种输出形态
-- [WorldScape Policy 2.0](../wiki/entities/paper-worldscape-policy-2.md) — 事件级 VLM 记忆（三视图检索 + 门控）与视觉短期记忆双通路分工，semantic forcing 对齐；RoboTwin 2.0 94.3%，clean-only 训练下 C2R 47.9% 大幅超 Fast-WAM 39.1%，真机跨本体迁移 10–20%→60–70%；代码/权重截至入库日未发布
-- [ω-0](../wiki/entities/paper-omega-0.md) — 潜空间未来观测 embedding + SONIC 全身动作 latent 扩散的人形并发 loco-manip Joint WAM；ω-HOME 40h+/4827 episodes，G1 上 11 任务 Omni 成功率 81.8% 大幅超 ψ-0（44.5%）/DiT4DiT（43.6%）/Fast-WAM（37.1%）；代码/数据 WIP
+- [WorldScape Policy 2.0](../wiki/entities/paper-worldscape-policy-2.md) — 事件级 VLM 记忆（三视图检索 + 门控）与视觉短期记忆双通路分工，semantic forcing 对齐；RoboTwin 2.0 94.3%，v3 clean-only 训练下 C2R 63.3%（clean/randomized 均值，Fast-WAM 39.9%），真机跨本体迁移 10–20%→60–70%；代码与预训/后训检查点已公开
+- [ω-0](../wiki/entities/paper-omega-0.md) — Wan 未来视觉 latent 监督 + SONIC 全身动作 latent 扩散的人形并发 loco-manip Joint WAM；ω-HOME 40h+/4827 episodes，G1 上 11 任务 Omni 成功率 81.8%，对照 ψ-0 为 44.5%；代码、数据与预训练检查点入口已公开
 - [DreamWAM](../wiki/entities/paper-dreamwam.md) — 训练期用 RGB+Flow 联合去噪与 Depth/DINO 门控残差监督 beyond-RGB 未来（外观+运动+几何+语义），推理仍 RGB-only；LIBERO-Plus 69.16%→75.47%、真机视觉扰动 55.6%→74.4%；代码/权重已开源
 - [Dyna-2](../wiki/entities/dyna-2.md) — Dyna Robotics 闭源旗舰 WAM：≥1M h egocentric 人视频预训练（零机器人数据），报告人 held-out 与人→机零样本幂律；消融主张 video co-training 是跨具身缩放必要条件；后训练少量机端数据上双臂/灵巧手/半人形；未开源
 - [Riemann-1.0](../wiki/entities/paper-riemann-1.md) — 黎曼动力闭源全因果 AR WAM：动作优先再条件化未来视觉；232K+ h 人/UMI/机三阶段课程；RoboCasa365 62.6%（+8.4 vs ABot-M0.5）、天机 Marvin 真机均 85.0% SR；无 arXiv / 未开源
 - [FACT](../wiki/entities/paper-fact.md) — 用失败演示的后果监督打破 Joint WAM 的 success bias（只在成功轨迹上训未来，测试时错误动作仍配上"成功未来"）；进度头可选做部署前打分，真机消融显示无失败共训时打分能力显著下降（79%），证明价值头确实吃后果监督；RoboTwin 管线 + HF checkpoint 已开源
 - [Motubrain](../wiki/entities/paper-motubrain.md) — UniDiffuser 式 Joint WAM，三流 MoT + H-bridge，50–100 条同本体轨迹即可适配；RoboTwin 2.0 95.8/96.1；官方仓仅 PDF，训练/推理待发布
-- [Flex-π](../wiki/entities/paper-flex-pi.md) — 6B 多流 Joint WAM，共享冻结 Wan VAE 联合编码 RGB+pointmap+DINOv3，流 dropout + CMF 让单 checkpoint 覆盖 56 种流组合；真机双臂 YAM 最高约 2–7× 基线；代码待发布
+- [Flex-π](../wiki/entities/paper-flex-pi.md) — 6B 多流 Joint WAM，共享冻结 Wan VAE 编码 RGB+pointmap，并联合 DINOv3 特征；流 dropout + CMF 让单 checkpoint 覆盖 56 种流组合；v3 LIBERO-Plus 两模式均 88.6%，真机完成度与全成功率分开；代码、权重与数据已公开
 - [GlanceWAM](../wiki/entities/paper-glancewam.md) — 单视频 DiT 内异步稀疏前瞻，想象离关键路径、动作头潜空间 48 ms 解码；RoboCasa 72.2%、LIBERO 99.0%；代码与权重已开源
-- [OpenWAM](../wiki/entities/paper-openwam.md) — 模块化 Infra + Study 六项对照提炼预训练三原则；OpenWAM-α Wan2.2-5B + ActionDiT mutual mask；518.5M 帧一阶段 ego+robot 共训；LIBERO 99.3%、RoboTwin2.0-Full 89.0%、RoboDojo 真机 37.6/24.4% SR；GitHub + HF 46 检查点已开源
+- [OpenWAM](../wiki/entities/paper-openwam.md) — 模块化 Infra + Study 六项对照提炼预训练三原则；OpenWAM-α Wan2.2-5B + ActionDiT mutual mask；518.5M 帧一阶段 ego+robot 共训；LIBERO 99.3%、RoboTwin2.0-Full 93.60%、RoboDojo 真机 37.6 分/24.4% SR；GitHub + HF 46 检查点已开源
 
 ### 学完输出什么
 - 能比较至少两种 Joint 实现（扩散双塔 vs 潜自回归闭环）的延迟与闭环形态

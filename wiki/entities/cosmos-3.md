@@ -35,6 +35,8 @@ related:
   - ./cosmos-cookbook.md
   - ./paper-cosmos-transfer1.md
   - ./nvidia-physical-ai-datasets.md
+original:
+  - ../../sources/papers/cosmos3_arxiv_2606_02800.md
 sources:
   - ../../sources/papers/cosmos3_arxiv_2606_02800.md
   - ../../sources/sites/cosmos3-project.md
@@ -76,11 +78,13 @@ summary: "Cosmos 3 是 NVIDIA 第三代全模态 Physical AI 世界模型：MoT 
 - **生态承接：** 前序 **Cosmos-Predict2** 已是 [mimic-video](../methods/mimic-video.md) VAM 骨干与 [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md) 微调基底；Cosmos 3 把「视频先验 + 动作头」路线升级为 **原生五模态单栈**，并进入 [NVIDIA SO-101 Sim2Real](./nvidia-so101-sim2real-lab-workflow.md) 等课程的 **合成演示增广** 语境。
 - **物理对齐后训练：** [PhysisForcing](./paper-physisforcing.md)（arXiv:2606.28128）在 **Cosmos3-Nano LoRA** 上叠加 **区域聚焦分层物理损失**（**PF-Cosmos**），R-Bench 整体 **63.8** 领先同期 Wan/商业基线——可作为 **平台权重之上的操纵向物理正则配方**，推理不增开销。
 
-## 核心结构
+## 核心原理与结构
+
+**v4全文核对：** AR仅对AR因果注意力，DM对AR+DM双向读；Reasoner不从带噪未来反向取信息。先训练Reasoner，再复制初始化Generator并冻结理解塔；统一架构不等于所有能力由同一专用checkpoint零样本完成。理解ViT与生成VAE分开，MRoPE按物理时间对齐视频、25token/s音频与动作。
 
 | 模块 | 作用 |
 |------|------|
-| **MoT 骨干** | **自回归 Transformer（Reasoner）** + **扩散 Transformer（Generator）** 共享层与多模态注意力 |
+| **MoT 骨干** | **自回归 Transformer（Reasoner）** + **扩散 Transformer（Generator）** 同层结构、独立参数，在共享attention算子交互 |
 | **3D mRoPE** | 统一编码图像/视频/音频/动作的 **时空结构** |
 | **Reasoner 面** | 文本+视觉 → 文本：caption、时序定位、2D grounding、具身 CoT、物理合理性 |
 | **Generator 面** | 文本+视觉+声音+动作 → 视觉+声音+动作：T2I/T2V/I2V/V2V、带声视频、policy rollout |
@@ -148,7 +152,7 @@ flowchart TB
 3. **闭环 WM：** Generator **policy**（视觉+语言→动作+rollout）或 **forward / inverse dynamics**（动作↔未来视频）。
 4. **先想再做：** Reasoner 输出轨迹与 CoT → Generator 再生 **物理交互视频**（项目页 *Reasoning + Generation* demo）。
 
-## 部署与集成（工程入口）
+## 工程实践：部署与集成
 
 | 路径 | 适用 | 备注 |
 |------|------|------|
@@ -165,36 +169,56 @@ flowchart TB
 
 官方 [Cosmos3 collection](https://huggingface.co/collections/nvidia/cosmos3)（2026-09-05 核查 **4** 项）收录 **Cosmos3-Super / Nano / Edge** 三档主权重与 **Cosmos3-Action-Viewer** 交互 Space。README 另列的 Policy-DROID、Super-T2I/I2V、4Step 蒸馏学生等 **不在该 collection 内**，需从 [NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) 模型表跳转独立 HF 仓。合成训练数据索引见 [NVIDIA Physical AI 数据集](./nvidia-physical-ai-datasets.md)。
 
-### 源码运行时序图
+## 源码运行时序图
 
-官方可跑入口：[NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) cookbook + [cosmos-framework](https://github.com/NVIDIA/cosmos-framework)。
+对齐[cosmos-framework 1f173793](../../sources/repos/nvidia_cosmos_framework.md)的DROID/RoboLab官方服务入口；静态核读未执行模型。
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    actor Dev as 开发者
-    participant UV as uv sync<br/>cu130-train
-    participant HF as Hugging Face<br/>Cosmos3-*
-    participant FW as cosmos_framework.scripts
-    participant R as Reasoner AR
-    participant G as Generator DM
-    participant API as vLLM-Omni / SGLang / NIM
-    Dev->>UV: 装 framework 或 cookbook
-    Dev->>HF: 拉取 Nano/Super/Edge
-    alt 研究推理
-      Dev->>FW: inference -i omni/t2v.json
-      FW->>G: 扩散去噪
-      G-->>Dev: 视频 / 动作
-    else 生产 serving
-      Dev->>API: OpenAI 兼容请求
-      API->>R: 视觉理解
-      API->>G: 生成或 policy
-      API-->>Dev: 文本或媒体
-    else 后训练
-      Dev->>FW: train --sft-toml
-      FW-->>Dev: DCP → export_model → Diffusers
-    end
+  participant C as RoboLab / DROID客户端
+  participant S as action_policy_server_robolab
+  participant P as RobolabPolicyService
+  participant I as OmniInference
+  participant M as model.generate_samples_from_batch
+  S->>P: main / serve初始化
+  P->>I: create恢复checkpoint与训练配置
+  C->>P: WebSocket观测、prompt、state/history
+  P->>P: infer锁内_build_sample与checkpoint transform
+  P->>M: _generate guidance/steps/shift
+  M-->>P: 联合video latent与action
+  P->>P: 去history，转换gripper与所需坐标
+  opt decode_video开启
+    P->>P: 解码视频用于检查
+  end
+  P-->>C: action chunk（可选video）
 ```
+
+仅rank0持公开socket；CFG并行文档要求两个rank。跳过视频解码仍需联合latent去噪。midtrain伪动作10D EEF与DROID专用8D绝对关节模式不同，应绑定对应checkpoint/config/stats。
+
+## 实验与评测（六月v4）
+
+| 项目 | 结果与边界 |
+|------|------------|
+| DROID policy→RoboLab | specific39.7%、default36.8%、vague20.6%；120任务各10rollout |
+| 新本体LIBERO-10 | 经2000步后训练MT-init97.4% vs PT-init95.2%，非零样本 |
+| RoboArena / MolmoSpaces | 2026-05-30 pairwise榜第一 / 06-20 oracle SR39.0%，非统一成功率 |
+| Robotics FD | Nano25.52 / Super26.04dB，短程重建PSNR不证明可靠策略排序 |
+| Physics-IQ | Super directI2V43.8/V2V59.7；BoN后48.9/63.4，额外采样分开 |
+| 合成数据消融 | SDG-All总体+.10，Human−.47；并非各域无损改善 |
+| 视频/音频 | HUE Super89.3/89.6；SoundBench7.31仍低于部分闭源 |
+
+六月DROID配置四步、CFG3、shift5、32动作15Hz，两RTX Pro6000部署；15Hz是控制器执行频率。当前Edge/仿真例为后续发布，不混入原论文成绩。表19 DreamZero23.9与正文25.2不一致，此处采用表值。
+
+## 结论
+
+Cosmos 3以统一多模态接口提供广泛可迁移的先验，控制能力的证据仍依赖具体后训练模型与评测协议。
+
+1. 区分Reasoner、基础Generator与DROID专用策略，不能由架构统一推导任意本体即插即用。
+2. AR不读未来DM，冻结Reasoner后训练Generator；两塔独立参数而非全程同权重更新。
+3. 61.3k小时动作数据中机器人约5.36k，其余含ego/AV/camera；DROID8D表示需专用适配。
+4. 官方policy服务可核实，但每chunk去噪与15Hz动作执行是不同时间尺度。
+5. AA T2I榜含GPT5.5重写/Gemini critic与多次生成；不要当单模型单次能力。
+6. 合成数据、BoN、不同提示器/评审器均改变协议；榜位是时间快照，重建PSNR不替代闭环可靠性。
 
 ## LeRobot 实现
 
@@ -202,7 +226,7 @@ LeRobot 固定提交 `9e5ee98` 的 `src/lerobot/policies/cosmos3/` 把 Cosmos 3 
 
 - **身份核对**：LeRobot 文档 `cosmos3.mdx` 引用技术报告 [arXiv:2606.02800](https://arxiv.org/abs/2606.02800)；arXiv 标题 *Cosmos 3: Omnimodal World Models for Physical AI*，提交 2026-06-01（API 核对），与本页一致。
 - **机制**（文档）：每个解码层有理解与生成两条通路，仅在共享自注意力处相遇；生成通路读 Wan2.2 VAE 视频 latent 与动作 token，双向注意力、流匹配训练。相机视图拼成一张视频画布（1 路原样、2 路并排、3 路首路在上）；训练时对当前帧加 `chunk_size` 个未来帧的 latent 与动作 chunk 加噪并联合去噪，损失为视频损失与动作损失的加权和；推理时条件帧保持干净，用 UniPC 联合采样未来视频与动作，只返回动作 chunk。
-- **两个规模**（文档，参数量为 LeRobot 文档所列）：Nano 16.5B（默认训练 7.0B），MoT 由 Qwen3-VL 初始化，36 层，hidden 4096；Edge 4.6B（默认训练 1.4B），含稠密 2B transformer，28 层，hidden 2048。**与本页上文差异**：上文“模型族”表按 NVIDIA README 记 Nano 16B / Edge 4B，LeRobot 文档给出更精确的 16.5B / 4.6B，应以后者（含全部组件的计数）为准，口径差异未核实。
+- **两个规模**（文档，参数量为 LeRobot 文档所列）：Nano 16.5B（默认训练 7.0B），MoT 由 Qwen3-VL 初始化，36 层，hidden 4096；Edge 4.6B（默认训练 1.4B），含稠密 2B transformer，28 层，hidden 2048。**与本页上文差异**：上文“模型族”表按 NVIDIA README 记 Nano 16B / Edge 4B，LeRobot 文档给出更精确的 16.5B / 4.6B，两者为不同实现/组件计数口径，不据此覆盖NVIDIA官方家族标称。
 - **默认训练范围**：`train_gen_stream_only=true`、`freeze_vision_encoder=true`，只训生成通路及其周边层与动作模块。
 - **权重**：基座 `lerobot/Cosmos3-Nano`、`lerobot/Cosmos3-Edge`；LIBERO 微调 `lerobot/Cosmos3-{Nano,Edge}-Policy-LIBERO` 与 `...-LIBERO_10`；数据 `lerobot/LIBERO-Cosmos3`（4 套件 1693 episode）、`lerobot/LIBERO_10-Cosmos3`（379 episode）。基座里动作模块（`action2llm`、`llm2action`、`action_modality_embed`）尚未针对机器人训练，微调需 `--policy.load_action_modules=false`。
 - **LIBERO 配方**（文档）：动作 chunk 16、`domain_id=5`、10 维动作 `[delta position (3), rot6d (6), gripper]`、分位数归一化、UniPC 30 步、推理无 CFG；DROID 配方为 `domain_id=8`、chunk 32、15 FPS、8 维关节位置动作，原生训练用 256 GPU。
@@ -256,6 +280,9 @@ sequenceDiagram
 - **误区 4：Cosmos 3 替代 Newton。** [Newton](./newton-physics.md) 是解析 GPU 物理引擎；本栈是学习式世界模型。官方产品页把 Omniverse/Newton 仿真视频交给 Transfer / Generator，而不是删掉接触求解器。
 
 ## 局限与风险
+
+- **证据口径：** 六月表/文有GPU数量、RobotSim样本量、HUE问题上限等内部差异，引用应钉位置；HUE的独立Bernoulli置信区间未处理同prompt/seed相关，小差距不作显著性结论。
+- **发布与权限：** 基础、后训练、蒸馏与十月仿真例需分别核版本；可读源码不等于已取得全部训练数据或HF gated资产授权。
 
 README 自列：长分辨率或复杂物理输出可出现时序不一致、相机/物体运动不稳、声画错位、动作–状态不一致、物体 morphing、3D 结构不准与不合理动力学。安全关键控制必须另加验证。Edge 不支持 V2V transfer。HF 仓多为门控。
 

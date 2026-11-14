@@ -15,7 +15,7 @@ tags:
   - tsinghua
   - uiuc
 status: complete
-updated: 2026-10-18
+updated: 2026-11-13
 arxiv: "2610.17630"
 project: "https://developer.deeprobotics.cn/research/articles/dr-wm/index.html"
 related:
@@ -26,6 +26,8 @@ related:
   - ../methods/vla.md
   - ./paper-dswam-dual-system-wam.md
   - ./paper-gigaworld-1-policy-evaluation.md
+original:
+  - ../../sources/papers/dr_wm_arxiv_2610_17630.md
 sources:
   - ../../sources/papers/dr_wm_arxiv_2610_17630.md
   - ../../sources/sites/dr-wm-deeprobotics.md
@@ -50,7 +52,11 @@ summary: "DR-WM（arXiv:2610.17630；云深处科技等）：以真实机器人�
 | ATE | Absolute Trajectory Error | 衡量预测与记录轨迹偏差的指标 |
 | RMSE | Root Mean Squared Error | 衡量位移、姿态或速度预测误差的指标 |
 
-## 核心思路
+## 为什么重要
+
+地形几何相似不代表相同命令会产生相同运动。DR-WM将场景物理先验经行为数据标定，再让模拟运动约束视觉预测；因此应同时检查运动误差与视频保真，不能只凭画面流畅评价动作后果。
+
+## 核心原理
 
 视觉世界模型可生成连贯视频，但画面合理本身不能保证运动符合真实动作与接触物理。DR-WM 将问题拆成三部分：
 
@@ -64,15 +70,24 @@ summary: "DR-WM（arXiv:2610.17630；云深处科技等）：以真实机器人�
 flowchart LR
   OBS["初始图像、机器人状态与地形"]
   PHY["PhyMap：几何对齐的空间物理先验"]
-  CAL["真实动作—响应校准"]
+  CAL["训练期真实动作—响应标定"]
+  MAP["测试固定的先验到接触参数映射"]
   SIM["Genesis：预测机器人与相机运动"]
   VID["几何控制的视频模型生成未来观测"]
   UPD["用生成帧更新后续地形表示"]
   VLM["VLM 比较候选 rollout 并选择路线"]
-  OBS --> PHY --> CAL --> SIM --> VID --> UPD
-  UPD --> SIM
-  SIM --> VLM
+  OBS --> PHY --> MAP --> SIM --> VID --> UPD
+  CAL --> MAP
+  UPD --> PHY
+  VID --> VLM
 ```
+
+## 工程实践
+
+- 三个物理通道为语义/LLM提供的无量纲先验，标定为有效仿真参数；行为拟合不唯一识别材料摩擦/刚度。roughness在该消融中不改变碰撞高度图。
+- 以已通读v1为准：附录G使用观测相机轨迹且不运行Genesis；附录H才测试严格生成观测驱动的Genesis闭环，不能合并成一种协议。
+- H使用50场景×3seed、四段2.4s，保存状态与控制器记忆；只允许初始真实RGB和初始状态，后续不读取真实位姿/LiDAR。Full ATE@9.6s为1.242m，Uniform为1.267m，空间变化附加收益有限。
+- VLM只比较给定动作分支，rollout沿录制命令，不自主重规划。本次仅核查论文与资源，未复现仿真或真机。
 
 ## 评测要点
 
@@ -89,16 +104,20 @@ flowchart LR
 1. **评价物理先验时看运动误差** — 22 个留出场景中，保留空间变化的 Full PhyMap 在四个运动指标都优于几何-only 和均匀物理参数基线。
 2. **视频指标来自不同评测** — 50 个场景的自动视频评价、100 人盲评和 22 场景物理消融不可混成同一 benchmark 分数。
 3. **动作选择结果是闭环 rollout 辅助** — 世界模型接收候选动作进行 rollout；外部 Qwen3-VL 比较候选分支。系统并非世界模型自行规划或控制机器人。
-4. **训练数据规模大，但资源尚未发布** — 论文介绍 258 万张 Physcene–Image 图像和 10 万余段 Physcene–Robot 片段；项目页截至 2026-10-18 将代码和数据标为 coming soon。
+4. **训练数据规模大，但资源尚未发布** — 论文介绍 258 万张 Physcene–Image 图像和 10 万余段 Physcene–Robot 片段；项目页截至 2026-11-13 将代码和数据标为 coming soon。
 5. **复现边界明确** — 目前项目页只发布论文和演示；没有可运行公开实现、权重或数据下载，复现与工程评估需等待后续发布。
 
 ## 开源状态与复现边界
 
-**截至 2026-10-18：代码、权重、补充材料与数据集均未通过官方项目页开放。** 项目页的 Code 与 Dataset 按钮均标注 “Coming soon”，因此目前没有可写入的源码运行时序图。论文描述 Genesis、PhyMap 和视频生成模型的研究流程，不能据此假设仓库与运行脚本已经公开。
+**截至 2026-11-13：代码、权重、补充材料与数据集均未通过官方项目页开放。** 项目页的 Code 与 Dataset 按钮均标注 “Coming soon”，因此目前没有可写入的源码运行时序图。论文描述 Genesis、PhyMap 和视频生成模型的研究流程，不能据此假设仓库与运行脚本已经公开。
 
 ## 源码运行时序图
 
-**不适用（截至 2026-10-18，官方项目页未开放代码、权重或数据；没有可核验的可运行入口）。**
+**不适用（截至 2026-11-13，官方项目页未开放代码、权重或数据；没有可核验的可运行入口）。**
+
+## 局限与阅读边界
+
+生成帧改善几何覆盖不保证同幅度改善控制：附录F的behavior error仅1.274→1.269；物理先验单通道贡献尚未拆解。预测视觉反过来更新地图仍会传播误差，当前代码/数据尚不能复核整套流程。
 
 ## 与其他工作对比
 

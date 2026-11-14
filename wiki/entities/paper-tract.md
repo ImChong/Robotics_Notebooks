@@ -11,7 +11,7 @@ tags:
   - stanford
   - umich
 status: complete
-updated: 2026-09-15
+updated: 2026-11-13
 arxiv: "2608.24101"
 venue: "arXiv 2026"
 related:
@@ -26,9 +26,15 @@ related:
   - ./paper-physisforcing.md
   - ./paper-motion-as-prompt.md
   - ./paper-wan-video.md
-sources:
+project: https://lol-png.github.io/tract/
+code: https://github.com/ExcitedButter/tract
+original:
   - ../../sources/papers/tract_arxiv_2608_24101.md
-summary: "TrAct（arXiv:2608.24101，UMich/Stanford）：2D 视觉轨迹作控制–预测中间接口；VLAT 联合预测动作–轨迹，TWM 轨迹条件 SVD 滚未来视频，VLAC 选优执行；LIBERO-INTEGRAL 27%→55%，真机 49%→76%；代码待发布。"
+sources:
+  - ../../sources/sites/tract.md
+  - ../../sources/repos/tract.md
+  - ../../sources/papers/tract_arxiv_2608_24101.md
+summary: "TrAct（arXiv:2608.24101，UMich/Stanford）：2D 视觉轨迹作控制–预测中间接口；VLAT 联合预测动作–轨迹，TWM 轨迹条件 SVD 滚未来视频，VLAC 选优执行；LIBERO-INTEGRAL 27%→55%，真机 49%→76%；代码已公开，项目检查点及部分数据仍缺。"
 ---
 
 # TrAct：用视觉轨迹桥接机器人控制与视觉预测
@@ -70,9 +76,9 @@ summary: "TrAct（arXiv:2608.24101，UMich/Stanford）：2D 视觉轨迹作控�
 | 骨干 | VLAT 基于 flow-matching [π₀.₅](./paper-pi05-open-world-vla.md)；TWM 基于 SVD + ControlNet |
 | 预训练 | VLAT：76K DROID + 150K EgoDex（1:2），30K 步；TWM/AWM：76K DROID，30K 步 |
 | 轨迹监督 | 7 夹爪 mesh 点 + 腕部 5×5 背景网格；背景轨迹 CoTracker；EgoDex 仅训轨迹头 |
-| 开源（截至 2026-09-13） | 论文写 *Code, data, and trajectories will be released*；**无项目页/仓库/HF** → **待发布** |
+| 开源（截至 2026-09-13） | 论文写 *Code, data, and trajectories will be released*；此为历史状态；2026-11-13已核实项目页与代码，checkpoint/部分数据仍缺 |
 
-## 方法与核心结构
+## 核心原理与方法
 
 ### 三阶段推理
 
@@ -118,7 +124,30 @@ flowchart LR
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-09-13** 论文承诺发布代码、数据与轨迹，但尚无官方 GitHub / Hugging Face 或可运行 README；待仓库开放后按 `sources/repos/` 与 README 入口补 mermaid `sequenceDiagram`。
+依据[固定提交静态核查](../../sources/repos/tract.md)，当前源码默认执行5步，论文评测执行16步。
+
+```mermaid
+sequenceDiagram
+  participant Eval as evaluate_full_track.py
+  participant Sel as LiberoActionSelector
+  participant Policy as OpenPIPolicy
+  participant WM as TrackDualViewWM
+  participant Critic as VLACDualViewCritic
+  participant Env as LIBERO环境
+  Eval->>Sel: load各模型与检查点
+  Env-->>Eval: RGB、状态、指令
+  Eval->>Sel: select_best_candidate
+  Sel->>Policy: generate_candidates，禁用未来track监督输入
+  Policy-->>Sel: 动作与track候选
+  Sel->>WM: batch_generate_video，track heatmaps
+  WM-->>Sel: agent与wrist想象视频
+  Sel->>Critic: score_dualview_batch
+  Critic-->>Sel: 视角加权分数
+  Sel-->>Eval: argmax候选及分数
+  Eval->>Env: 执行replan_steps前缀并重新观测
+```
+
+当前配置候选全评分失败时回退候选0；复现须检查日志，不能把回退运行计作成功启用世界模型选优。本次未执行模型。
 
 ## 评测与指标
 
@@ -165,14 +194,18 @@ TrAct 在 Object / Camera / RobotInit / Cross-Embodiment 四类上均为最佳�
 | VLAT+AWM | 66% |
 | **TrAct** | **76%** |
 
-换背景时 VLAT+AWM 跌至 **40%**，TrAct 仍 **70%**——轨迹锚定图像空间运动，对视觉域移更稳。
+换背景时 VLAT+AWM 跌至 **56%**，TrAct 仍 **70%**——轨迹锚定图像空间运动，对视觉域移更稳。
 
 ## 工程实践
+
+- 论文v4表5为K16并行、L40S上每次规划2431ms，含VLAT52、TWM1810、VLAC569ms；52ms不是全栈延迟。
+- 当前仓默认执行5步前缀、不同TSR参数，README还提示关键中间数据/loader缺失。论文和源码版本须分别记录，不能把当前默认命令当成表内配置。
+
 
 | 环节 | 要点 |
 |------|------|
 | 微调数据 | LIBERO 2K episodes；真机 400 条 @ 15 Hz（4 训练任务） |
-| VLAT 微调 | 5K 步（LIBERO）；50K 步（真机）；联合 16 步 action+track chunk |
+| VLAT 微调 | 5K 步（LIBERO）；5K 步（真机）；联合 16 步 action+track chunk |
 | WM 微调 | TWM/AWM 各 25K 步，batch 16 |
 | VLAC | 同数据上 5K（仿真）/ 4K（真机）步，用预测 rollout + 任务完成奖励 |
 | 推理候选 | 仿真 K=20、真机 K=16；TSR noise scale=2，k=3（仿真）/4（真机） |
@@ -182,7 +215,7 @@ TrAct 在 Object / Camera / RobotInit / Cross-Embodiment 四类上均为最佳�
 
 - **延迟与算力：** 每步需 K 次 WM rollout + VLAC 评分；K=5 已恢复大部分选优收益，但仍远高于开环 π₀.₅。
 - **轨迹质量依赖：** 训练/推理假设 CoTracker 与夹爪投影可靠；遮挡或标定误差会传导到 TWM。
-- **开源未齐：** 代码、LIBERO-INTEGRAL 轨迹与真机数据 **待发布**，暂无法复现完整闭环。
+- **开源未齐：** 代码已公开，但项目检查点、关键中间轨迹数据及部分loader未齐；当前源码配置与论文不同，尚未完整复现。
 - **与 [Ctrl-World](./paper-ctrl-world.md) 接口不同：** 后者用笛卡尔动作帧级条件 SVD；TrAct 强调 **轨迹比动作更适合条件化像素未来**，二者可并列阅读而非简单替换。
 
 ## 结论
@@ -218,6 +251,9 @@ TrAct 在 Object / Camera / RobotInit / Cross-Embodiment 四类上均为最佳�
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — TWM/AWM 视频指标属其 ② 世界模型预测保真度层，LIBERO-INTEGRAL 与真机 SR 属 ③ 策略任务成功率层
 
 ## 参考来源
+
+- [项目页核查](../../sources/sites/tract.md)
+- [已公开代码与复现边界](../../sources/repos/tract.md)
 
 - [TrAct 论文归档](../../sources/papers/tract_arxiv_2608_24101.md)
 - 论文：<https://arxiv.org/abs/2608.24101>

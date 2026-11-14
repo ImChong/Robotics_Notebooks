@@ -10,7 +10,7 @@ tags:
   - ucsd
   - aether-ai
 status: complete
-updated: 2026-10-10
+updated: 2026-11-13
 project_id: tc-wm
 arxiv: "2605.25620"
 code: https://github.com/MinghaoFu/TC-WM
@@ -31,7 +31,11 @@ related:
   - ../concepts/visual-representation-for-policy.md
   - ../concepts/functional-taxonomy-world-models.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/tc_wm_arxiv_2605_25620.md
 sources:
+  - ../../sources/repos/tc-wm.md
+  - ../../sources/sites/tc-wm.md
   - ../../sources/blogs/aether_task_centric_world_models.md
   - ../../sources/papers/tc_wm_arxiv_2605_25620.md
 summary: "TC-WM（arXiv:2605.25620，UCSD Fu/Feng/Hansen/Huang；Aether AI 博客 2026-07-09 解读）：冻结 DINOv2 嵌入经单个线性投影压成紧凑潜变量，一段用 InfoNCE 对齐本体感觉、线性解码器重建嵌入防塌缩，在该空间学动力学并用 CEM/LDP 规划；9 个离线视觉控制任务上自报潜空间 rollout 误差几乎全部最低，且是唯一在每个 Robomimic 操作任务上都超过 DINO-WM 的方法；代码 MIT 已开源，checkpoint 待发布。"
@@ -118,33 +122,35 @@ flowchart LR
 
 \[\mathcal L=\mathcal L^{z}_{dyn}+\mathcal L^{s}_{dyn}+\lambda_{align}\mathcal L_{align}+\lambda_{rec}\mathcal L_{rec}\]
 
+**实现细节：** 论文以带L1的稀疏线性映射自动选择任务相关方向，而非必须硬切latent前若干维。
+
 **可辨识性主张：** 在模型假设下，线性投影把任务中心子空间辨识到仿射变换为止（项目页写「部分对齐下」）。作者据此说 \(z^s\) 不只是好用的特征，而是状态里可控部分的结构化把手。
 
 ## 源码运行时序图
 
+核读[固定版本5207220b](../../sources/repos/tc-wm.md)的CEM/MPC路径；README虽列LDP，公开树未见对应实现/配置，不能把LDP画成已核实运行模块。
+
 ```mermaid
 sequenceDiagram
-  autonumber
-  participant U as 用户
-  participant Cfg as conf/（Hydra 配置）
-  participant DS as datasets/（离线轨迹）
-  participant WM as models/VWorldModel
-  participant Tr as train.py
-  participant Pl as plan.py + planning/
-  participant Env as env/（Maze/Wall/Push-T/Robomimic/DMC）
-  U->>Tr: python train.py --config-name=train_tcwm env=wall
-  Tr->>Cfg: 读 env / encoder / projected_dim / alignment_dim
-  Tr->>DS: 加载图像、动作、本体感觉（TCWM_DATA_ROOT）
-  Tr->>WM: encoder（冻结）→ projector → predictor → decoder
-  WM-->>Tr: 动力学 + 对齐 + 重建损失
-  Tr-->>U: checkpoint（如 wall_proj256）
-  U->>Pl: python plan.py --config-name=plan_wall ckpt_base_path=... n_evals=50
-  Pl->>WM: 在潜空间展开候选动作序列
-  Pl->>Env: 执行 CEM / LDP 选出的动作
-  Env-->>Pl: 成功 / 失败，保存 plan{batch}_{trial}_*.mp4
+  participant U as plan.py / Hydra
+  participant W as PlanWorkspace
+  participant C as CEMPlanner.plan
+  participant M as VWorldModel.rollout
+  participant E as PlanEvaluator / env
+  U->>U: 加载hydra.yaml、数据、checkpoint和环境
+  U->>W: 初始化目标、归一化与planner
+  W->>C: 当前观测、目标观测
+  C->>M: encode目标、采样候选动作并rollout
+  M-->>C: projected/visual/proprio潜轨迹
+  C->>C: objective排序、topk更新分布
+  C-->>W: 规划动作
+  W->>E: 评估动作、保存指标与视频
+  opt 使用MPCPlanner
+    E-->>C: 执行前缀后的新观测，继续规划
+  end
 ```
 
-复现路径：先按 README 建 conda 环境并装 MuJoCo 210，再用 `train.py` 训单任务（或 `scripts/run_tcwm.sh` 批量），最后 `plan.py` 评测；`rollout.py` 可导出原图 / 重建 / 开环预测三组 GIF 做定性检查。预训练 checkpoint 尚未公开，需要自己训练。
+配置`debug_dset_init`会以真值动作初始化；应关闭或单独标注。CEM可用模拟evaluator提前停止；复现实验需记录该开关。本次只做静态核读，未训练模型。
 
 ## 工程实践
 
@@ -160,7 +166,7 @@ sequenceDiagram
 
 ## 实验与评测
 
-博客和项目页只用图表报结果，没有给逐任务数值表；以下是文字结论（均为自报）：
+本次读取论文v1完整实验与附录A后，可从图8读取：Lift/Can/Square成功率60/62/40%，对应DINO-WM32/30/24%；Wall94%低于DINO-WM96%，并非每项领先。以下保留项目页结论与版本边界：
 
 - **世界模型预测：** TC-WM 的潜空间 rollout 误差在几乎所有任务上最低，图像重建与其他方法相当。作者说「紧凑潜变量不只是更小，而是更可预测」。
 - **规划：** 已饱和的目标到达任务上与最强基线持平；**在每个 Robomimic 操作任务（Lift、Can、Square）上都超过 DINO-WM**，是对比方法里唯一做到的。作者的解释：操作任务里可控物体只占画面一小块且在移动，外观主导的潜变量浪费的容量最多。
@@ -195,12 +201,12 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **没有逐任务数值。** 博客和项目页只给图，无法直接引用具体成功率或误差幅度。
-- **口径不一致。** 运动任务的控制器：博客写 SAC，项目页与 README 写 CEM；预测器：博客写 Transformer，README 写 ViT。
+- **指标可比性。** 去重建后latent预测MSE更低但规划/SSIM塌缩，跨模型潜空间尺度的MSE不能单独说明动力学更准。
+- **协议不一致。** 论文正文连续控制写SAC交互训练，图8/表A1标CEM；不能声称九任务全部统一离线零交互。ViT是Transformer的一种，不构成架构冲突。
 - **评测以仿真为主。** 真实数据只有 DROID 上 TC-Cosmos3 的定性开环视频，没有真机闭环。
 - **可辨识性依赖假设。** 「辨识到仿射变换」是在模型假设下的结论，实际训练能否满足需另行验证。
 - **依赖本体感觉。** 对齐信号来自机器人本体读数，人类视频或无本体传感的数据无法直接使用。
-- **checkpoint 未发布**（截至 2026-10-10），复现需从头训练。
+- **发布边界：** 2026-11-13固定README仍写checkpoint待发布，公开树缺LDP文件，不能称全部实验已可完整复现。
 
 ## 关联页面
 
@@ -218,6 +224,9 @@ sequenceDiagram
 - [操作任务](../tasks/manipulation.md)
 
 ## 参考来源
+
+- [固定版本源码核读](../../sources/repos/tc-wm.md)
+- [官方项目页与新增定性材料](../../sources/sites/tc-wm.md)
 
 - [Aether AI 博客：Back to Parsimonious Latents（2026-07-09）](../../sources/blogs/aether_task_centric_world_models.md)
 - [TC-WM 论文归档（arXiv:2605.25620）](../../sources/papers/tc_wm_arxiv_2605_25620.md)

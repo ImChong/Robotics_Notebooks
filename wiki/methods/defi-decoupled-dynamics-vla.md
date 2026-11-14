@@ -2,7 +2,7 @@
 type: method
 tags: [defi, vla, forward-dynamics, inverse-dynamics, video-generation, self-supervised, manipulation, calvin, simplerenv]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-13
 date: 2026-05-20
 summary: "DeFI 将机器人策略学习解耦为 GFDM（混合视频上的指令条件前向动力学预训练）与 GIDM（无动作标签视频上的自监督逆动力学预训练），再在下游用扩散适配器端到端耦合，从而同时吃尽人/Web 视频与机器人演示。"
 related:
@@ -15,6 +15,8 @@ related:
   - ../concepts/video-as-simulation.md
   - ../tasks/manipulation.md
   - ./octo-model.md
+original:
+  - ../../sources/papers/defi_arxiv_2604_16391.md
 sources:
   - ../../sources/papers/defi_arxiv_2604_16391.md
   - ../../sources/repos/defi-logos-robotics.md
@@ -92,6 +94,36 @@ flowchart TB
   stage1 --> stage2
 ```
 
+## 源码运行时序图
+
+核读版本`3f8666c4`的CALVIN评测路径（[源码归档](../../sources/repos/defi-logos-robotics.md)），未运行推理。
+
+```mermaid
+sequenceDiagram
+  participant S as scripts/rollout_calvin.sh
+  participant E as calvin_evaluate.py
+  participant P as VPP_Policy
+  participant V as 冻结SVD特征提取
+  participant I as GIDM及对齐
+  participant A as diffusion action adapter
+  participant C as HulcWrapper/CALVIN
+  S->>E: Accelerate启动、模型/数据路径
+  E->>P: Hydra构建与载权重
+  E->>C: reset初态
+  loop 每个子任务
+    E->>P: reset、step(obs,goal)
+    opt 到达replan间隔
+      P->>V: eval_forward 双视角未来特征
+      V-->>I: 预测特征及当前观测
+      I-->>P: latent motion条件
+      P->>A: denoise_actions
+      A-->>P: 动作块缓存
+    end
+    P-->>E: 当前动作
+    E->>C: env.step，task_oracle判成功
+  end
+```
+
 ## 工程实践：分模块训练与验证清单
 
 1. **分别验证前向与逆向**：前向 GFDM 检查条件视频变化，逆向 GIDM 检查跨帧变化是否保留可行动作信息，不应只比较端到端成功率。
@@ -99,14 +131,24 @@ flowchart TB
 3. **复现实验按相同任务协议对照**：CALVIN 连续任务长度、SimplerEnv 视觉匹配和 Franka 真机成功率应分开报告，并标注骨干冻结与下游微调边界。
 4. **部署前评估**：测量潜特征提取、逆向解码和扩散适配器累计时延；以下是依据论文结构整理的核验步骤，未在本批实际训练或上机。
 
-## 论文报告结果（摘要级）
+## 论文报告结果（全文核读）
 
-> 数字以 [arXiv:2604.16391](https://arxiv.org/abs/2604.16391) 为准；复现请对照官方 [DeFi 仓库](https://github.com/LogosRoboticsGroup/DeFi)。
+> 数字以 [arXiv:2604.16391](https://arxiv.org/abs/2604.16391) 为准；复现请对照官方 [DeFi 仓库](https://github.com/LogosIntelligenceLab/DeFi)。
 
 - **CALVIN ABC-D（多视角）**：连续 5 任务 **Avg. Len. 4.51**；相对 VPP、Seer、π₀.5、GR00T N1 等提升 **长程** 任务完成度。
 - **SimplerEnv-Fractal**：Google Robot 多任务 **Visual Matching ~51.2%** 平均成功率；部分任务受 **真机预训练 GFDM 与仿真域差** 影响（论文 §4.3 讨论）。
-- **Franka 真机（8 任务）**：平均成功率 **81.3%**。
+- **Franka 真机（8 任务）**：平均成功率 **81.3%**，每trial允许最多20次连续尝试，不是单次抓取率。
+- **分项延迟：** RTX4090五次均值GFDM86.1ms、GIDM42.9ms、adapter24.3ms；单步指GFDM，adapter仍10采样步。
 - **消融**：去掉解耦预训练或弱化 GIDM 会显著掉点，支持「**准确逆动力学与准确前向同样重要**」的论点。
+
+## 结论
+
+DeFI的证据支持分别预训练forward/inverse再耦合的收益，不能据此推断全部模块微调或视频预测已解决接触控制。
+
+- 下游冻结GFDM、训练GIDM+adapter；All Train4.40低于4.51。
+- 分清CALVIN链长、Simpler两协议与真机多次尝试成功率。
+- 200个失败中62%forward/38%inverse，需分别诊断，不能把全失败归给视频模型。
+- CALVIN开源实现可核对，更多benchmark/机器人部署仍须另验；本次未执行GPU实验。
 
 ## 常见误区或局限
 
@@ -124,7 +166,7 @@ flowchart TB
 ## 推荐继续阅读
 
 - 论文：<https://arxiv.org/abs/2604.16391>
-- 代码：<https://github.com/LogosRoboticsGroup/DeFi>
+- 代码：<https://github.com/LogosIntelligenceLab/DeFi>
 - 权重：<https://huggingface.co/zbzzbz/DeFI>
 
 ## 参考来源
