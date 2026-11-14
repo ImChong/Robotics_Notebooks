@@ -29,9 +29,9 @@ flowchart LR
 - 每个阶段有前置知识、核心问题、推荐做什么、学完输出什么
 
 **和主路线的关系：**
-- 安全控制可以作为 WBC / MPC 的安全约束层，也可以作为 RL 的奖励整形层
+- 安全控制可以作为 WBC / MPC 的约束或 safety filter；RL 中需区分奖励惩罚、CMDP 约束与运行时过滤器，奖励惩罚本身不给出安全保证
 - 如果你做主路线 L4 时希望加上安全保证，看本路线
-- 如果你做 RL 时希望策略可证明地不越界，看本路线 Stage 3
+- 如果你做 RL，先在 Stage 3 明确保证是期望累计代价、概率界还是逐时刻约束；需要不越界时结合 Stage 1–2 的安全层及其适用假设
 - 如果你要把策略搬上真机、担心摔机 / 失控 / 故障伤人，看本路线 Stage 4（也可先读，作为上机前的安全底线）
 
 ---
@@ -45,7 +45,7 @@ flowchart LR
 
 ### 核心问题
 - Lyapunov 稳定性是什么意思
-- 为什么 Lyapunov 函数能证明系统收敛
+- Lyapunov 条件何时只保证稳定，何时能推出渐近收敛；负半定导数为何还需不变集等条件
 
 ### 推荐读什么
 - [Lyapunov 稳定性形式化](../wiki/formalizations/lyapunov.md)
@@ -121,14 +121,14 @@ flowchart LR
 
 ### 学完输出什么
 - 能解释 CMDP 的形式化定义
-- 能对比 model-based 安全保证 vs. model-free 安全奖励塑形的优劣
+- 能区分 CMDP 的期望累计代价约束、奖励惩罚与逐时刻安全约束，说明各自需要的模型、可行性及部署假设
 
 ---
 
 ## Stage 4 真机安全部署：分层安全壳
 
 ### 前置知识
-- Stage 2 的 safety filter 与 Stage 3 的 Safe RL（知道算法层能管什么）
+- Stage 2 的 safety filter；采用学习策略时再补 Stage 3，传统 WBC/MPC 部署不以学完 Safe RL 为前提
 - 有一台可上机的策略（RL / WBC 均可），读过 [Sim2Real](../wiki/concepts/sim2real.md) 基本概念
 
 ### 核心问题

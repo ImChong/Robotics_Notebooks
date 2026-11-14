@@ -41,7 +41,7 @@ flowchart LR
 **先建立问题意识：为什么足球被当作衡量人形自主能力的综合基准，难点分布在哪几层。**
 
 ### 前置知识
-- 主路线 L3（RL 基础）水平；[RL 纵深](depth-rl-locomotion.md) Stage 0–2 能在仿真里训练 locomotion 策略
+- 主路线 [L5.1（RL 基础）](motion-control.md#l5-1-rl-basics)水平；[RL 纵深](depth-rl-locomotion.md) Stage 0–2 能在仿真里训练 locomotion 策略
 - 对 [强化学习](../wiki/methods/reinforcement-learning.md) 与 [模仿学习](../wiki/methods/imitation-learning.md) 的范式差异有使用级直觉
 
 ### 核心问题

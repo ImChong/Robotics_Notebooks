@@ -3,7 +3,7 @@
 **首屏导读**：
 
 - **为谁**：想让策略在出动作前显式预知世界会怎么变的人。
-- **路径**：Stage 0–5 · 边界与族谱 → 世界模型基座 → Cascaded WAM → Joint WAM → 部署职责三分 → 数据与评测。
+- **路径**：Stage 0–5 · 边界与族谱 → 世界模型基座 → Cascaded / Joint 分支 → 部署职责三分 → 数据与评测。
 - **纵深路线**：[运动控制主路线](motion-control.md)的一条分支；与 [VLA 纵深](depth-vla.md)构成"反应式语义策略 / 前向耦合策略"的姊妹路线。
 
 ## 路线一览
@@ -17,7 +17,10 @@ flowchart LR
   S4["<b>Stage 4</b><br/>部署职责三分<br/><em>执行 · 修正 · 筛选 + 接触/几何</em>"]
   S5["<b>Stage 5</b><br/>数据评测与进阶<br/><em>人机共训 · 导航 · 安全一致</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4 --> S5
+  S0 --> S1
+  S1 --> S2 --> S4
+  S1 --> S3 --> S4
+  S4 --> S5
 
   classDef stage fill:#142a3a,stroke:#e67e22,stroke-width:2px,color:#fff
   class S0,S1,S2,S3,S4,S5 stage
@@ -28,6 +31,7 @@ flowchart LR
 - 目标读者是已理解 VLA / 模仿学习动作头、想进入 **世界预测与动作联合建模** 的人——主战场是操作、移动操作、导航与接触丰富任务
 - WAM 解决 **前向后果耦合**：动作生成必须依托对未来世界的显式（或等价）前向预测；它不替代语言语义接地，那是 [VLA 纵深](depth-vla.md) 的主题，也不替代全身运动先验，那是 [BFM 纵深](depth-bfm.md) 的主题
 - 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
+- Stage 2 与 Stage 3 是两种建模路线，可选一支进入 Stage 4；对比阅读不意味着 Joint 必须在 Cascaded 之后实现。独立世界模型 + 搜索、仅训练期未来监督也作为边界对照，不能仅凭出现 future loss 就归为 WAM。
 
 **和主路线的关系：**
 - 本路线是主路线 L5（RL 与模仿学习）之后偏"世界模型 × 策略"的进阶方向；Stage 0–1 与 [VLA 纵深](depth-vla.md) Stage 0 / Stage 5 方向 B、以及 [Generative World Models](../wiki/methods/generative-world-models.md) 高度重叠
@@ -87,6 +91,8 @@ flowchart LR
 ### 推荐读什么
 - [Generative World Models](../wiki/methods/generative-world-models.md)
 - [Model-Based RL](../wiki/methods/model-based-rl.md)
+- [LeWM](../wiki/entities/paper-lewm.md) 与 [LG-DKGP](../wiki/entities/paper-lg-dkgp.md) — 动作条件潜空间世界模型 + CEM 规划的对照支路；后者学习连续动作提议先验，不能因使用世界模型便自动归为 Cascaded/Joint WAM
+- [SLIM-0.5B](../wiki/entities/paper-slim-05b.md) — 边界对照：Stage-1 IDM/FDM 塑形预测槽，Stage-2 与推理不显式预测未来观测；按本文 Stage 0 的判据，不作为 `future plan → action` 的直接示例。受控 H100 模型推理为 60.6 ms / 增量峰值 4.26 GiB，不能与网页端到端部署数字混用
 - [机器人世界模型训练闭环 taxonomy](../wiki/overview/robot-world-models-training-loop-taxonomy.md)
 - [τ₀-World Model（τ0-WM）](../wiki/entities/tau0-world-model.md) — 联合预测 + 测试时修订的对照实例
 - [PhysisForcing](../wiki/entities/paper-physisforcing.md) — 训练期分层物理对齐（像素级轨迹 + 语义级 token 关系），推理零额外开销："视频保真 ≠ 物理可信"的正面解法
@@ -132,7 +138,6 @@ flowchart LR
 - [DeFI（解耦动力学 VLA）](../wiki/methods/defi-decoupled-dynamics-vla.md)
 - [World Action Models](../wiki/concepts/world-action-models.md) 中 Cascaded 小节
 - [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md) — Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，三阶段训练与门控视觉预测上下文；新版 SIMPLE 合计最高，G1 真机与 GR00T-N1.6 并列
-- [SLIM-0.5B](../wiki/entities/paper-slim-05b.md) — Stage-1 IDM+FDM 掩码轨迹解耦预训练 + Stage-2 MoT flow 联合微调，与 DeFI 同源"正逆动力学同骨干"思路但把未来预测收窄为纯训练信号（不进控制环）；LIBERO 97.5% / LIBERO-Plus 77.45% / CALVIN 4.556，真机端到端 77.3 ms · 2.01 GiB；已开源（GitHub + HF 权重）
 - [TrAct（视觉轨迹桥接控制与预测）](../wiki/entities/paper-tract.md) — VLAT 在 π₀.₅ 上联合采样动作–轨迹对，TWM 轨迹条件世界模型滚未来视频，VLAC 选最高分 rollout 执行；2D 轨迹作具身无关中间接口，LIBERO-INTEGRAL 27%→55%、真机 49%→76%；代码已公开，检查点及部分数据仍缺
 - [动作后果技术地图](../wiki/overview/robot-world-models-action-consequence-technology-map.md) — 与 Joint / 部署横切对照
 
@@ -147,7 +152,7 @@ flowchart LR
 **耦合更紧、一致性目标更直接；主张力是推理延迟、训练目标设计与多模态扩展。**
 
 ### 前置知识
-- Stage 2 内容
+- Stage 1 内容；Stage 2 用于对比模块边界，非本阶段必修
 - 了解双 DiT / MoT / 流匹配联合去噪的基本结构（可用 DiT4DiT 作模板）
 
 ### 核心问题
@@ -190,7 +195,7 @@ flowchart LR
 **把"动作发出去以前，世界会怎样变"落到可插拔接口：直接执行、在线修正基础 VLA、或部署前筛选。**
 
 ### 前置知识
-- Stage 3 内容
+- Stage 2 或 Stage 3 内容，按所选建模路线进入
 - 对真机部署延迟、异步 action chunk 有直觉（[VLA 纵深](depth-vla.md) Stage 4 水平更佳）
 
 ### 核心问题
@@ -266,3 +271,4 @@ flowchart LR
 - [机器人世界模型训练闭环 taxonomy](../wiki/overview/robot-world-models-training-loop-taxonomy.md)
 - [GlanceWAM / VLA Crew 10 篇技术地图（2026-08-30 策展）](../wiki/overview/glancewam-vla-crew-10-papers-technology-map.md)
 - OpenMOSS [Awesome-WAM](https://github.com/OpenMOSS/Awesome-WAM)
+- [SLIM 原文 §3.3 / §4.4 / 附录 A.5](https://arxiv.org/html/2608.09771v1) — 训练期预测槽、推理接口与 H100 计时范围

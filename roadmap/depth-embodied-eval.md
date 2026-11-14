@@ -3,7 +3,7 @@
 **首屏导读**：
 
 - **为谁**：训完具身模型，想知道怎么"测 / 证明它"的人。
-- **路径**：Stage 0–6 · 评测目的与边界 → 认知评测 → 世界模型保真度 → 策略成功率 → 运控指标 → sim↔real 校准 → 工程化与榜单治理。
+- **路径**：Stage 0–6 · 评测目的与边界 → 按对象选支路（认知 / 世界模型 / 任务策略 / 运控）→ 按需 sim↔real 校准 → 工程化与榜单治理。
 - **纵深路线**：[运动控制主路线](motion-control.md)的一条分支；[BFM](depth-bfm.md) / [VLA](depth-vla.md) / [WAM](depth-wam.md) 三条建模路线的共用验收环节。
 
 ## 路线一览
@@ -18,7 +18,15 @@ flowchart LR
   S5["<b>Stage 5</b><br/>④ sim↔real 校准<br/><em>排名相关性 · 统计置信</em>"]
   S6["<b>Stage 6</b><br/>评测工程化与治理<br/><em>基建 · 榜单 · 飞轮</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4 --> S5 --> S6
+  S0 --> S1
+  S0 --> S2
+  S0 --> S3 --> S5
+  S0 --> S4 --> S5
+  S1 --> S6
+  S2 --> S6
+  S3 --> S6
+  S4 --> S6
+  S5 --> S6
 
   classDef stage fill:#142a3a,stroke:#e67e22,stroke-width:2px,color:#fff
   class S0,S1,S2,S3,S4,S5,S6 stage
@@ -30,6 +38,7 @@ flowchart LR
 - 被测对象既包括**任务侧的操作/VLA 策略**（Stage 1–3），也包括**运控侧的 locomotion / whole-body tracking / MPC-WBC 控制器**（Stage 4）——两者指标体系不同，不要互相套用
 - 这条路线解决的是 **"分数到底测的是能力本身，还是能力的易测代理"**：它不教你怎么把模型训好（那是 [BFM](depth-bfm.md) / [VLA](depth-vla.md) / [WAM](depth-wam.md) / [模仿学习](depth-imitation-learning.md) 的主题），只教你怎么证明/证伪它真的好
 - 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
+- **按被测对象选支路**：Stage 1–4 分别服务认知、世界模型、任务策略、运控控制器，并非串行必修；需要外推真机时增加 Stage 5，所有分支都可直接进入 Stage 6 的协议与工程化检查。
 
 **和主路线的关系：**
 - 本路线是主路线 L5（RL 与模仿学习）之后、L6（sim2real 部署）与 L7（出口）之间的**验收层**：训练路线负责"做出来"，本路线负责"证明它成立"
@@ -93,7 +102,7 @@ flowchart LR
 
 ### 学完输出什么
 - 一份认知维度分解报告：哪一维是瓶颈、哪一维已饱和
-- 能说清为什么认知评分只是下游成功率的**必要不充分条件**
+- 能说明认知评分与下游成功率的关系需要在指定模型、任务和协议下验证，不能把 QA 分数当作所有策略的必要条件
 
 ---
 
@@ -102,7 +111,7 @@ flowchart LR
 **只有当团队真的用世界模型做前瞻或当评估器时才必须走这一层；用不忠实的 WM 去评策略会双重放大误差。**
 
 ### 前置知识
-- Stage 1 内容
+- Stage 0 内容；Stage 1 仅在同时评测高层认知时选读
 - [WAM 纵深](depth-wam.md) Stage 0–1 水平（知道世界模型在策略栈里扮演什么角色）
 
 ### 核心问题
@@ -151,6 +160,8 @@ flowchart LR
 
 ### 推荐读什么
 - [RoboDojo](../wiki/entities/robodojo.md) — 统一 sim-and-real 评测：42 仿真五维任务 + 18 真机任务，Isaac 异构并行 + RealEval 云真机；verified 上榜须开源训推与权重
+- [2026 BEHAVIOR Challenge](../wiki/entities/behavior-challenge-2026.md) — 100 项长程家务任务的赛事协议：主排名 Q-score 是末状态 BDDL 谓词部分完成度，不等于 full-task success；同时核对 RGB-D+proprio 观测限制与公开/隐藏实例划分
+- [机器人操作基准审计](../wiki/entities/paper-manipulation-benchmark-audit.md) — 检查语言捷径、统计显著性、测试条件过拟合与训练数据来源，作为解释 LIBERO/CALVIN 等高分的对照读物
 - [PRM-as-a-Judge](../wiki/entities/paper-prm-as-a-judge.md) — 把 rollout 视频打成进度曲线做过程评测（OPD / FNS / DRR / SQS），在 RoboDojo 上**打乱了 SR 排名**
 - [Imitator Game](../wiki/entities/paper-imitator-game.md) — L0–L3 意图级模仿基准：成功判据改为**目标等价而非轨迹相似**，L3 功能替代崩溃、未见任务零样本 <13%
 - [SoftVTBench](../wiki/entities/paper-softvtbench.md) — 可变形视触觉任务同时报 Goal Success 与 Safety Success，只看 Goal 会掩盖过压
@@ -242,7 +253,7 @@ flowchart LR
 ## Stage 6 评测工程化、榜单治理与进阶方向
 
 ### 前置知识
-- Stage 5 内容
+- 完成 Stage 1–4 中与被测对象对应的分支；结论涉及真机时再完成 Stage 5
 
 **方向 A：评测基建与集成成本**
 - N 个策略 × M 个环境的集成爆炸怎么收敛成 O(N+M)；统一策略–环境契约与依赖隔离 serving 长什么样
@@ -301,4 +312,5 @@ flowchart LR
 - [HumanTracker: Towards Comprehensive and Human-Aligned Motion Tracking Benchmark](https://arxiv.org/abs/2608.13555) — HumanTracker，arXiv:2608.13555（Stage 4 跟踪评测协议与 HumanScore）
 - [HumanoidBench](https://github.com/carlosferrazza/humanoid-bench) · [TrackerLab](https://github.com/Renforce-Dynamics/trackerLab) — Stage 4 运控评测套件与统一跟踪实验接口
 - [Locomotion](../wiki/tasks/locomotion.md) 的「评价指标」与「工程落地检查」小节
+- [BEHAVIOR 2026 官方评测规则](https://behavior.stanford.edu/challenge/evaluation.html) — 部分完成度主分、机载观测约束与固定实例协议
 - [有了Isaac Lab和MuJoCo，为什么还会出现 mjlab、Newton、UniLab、Genesis？](https://mp.weixin.qq.com/s/Z9pgVa48wQKLYVRD3psnhw) — 机器人训练栈分层

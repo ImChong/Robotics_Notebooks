@@ -75,7 +75,7 @@ flowchart LR
 
 ### 核心问题
 - 舞蹈动作的来源管线：动捕 / 视频估计 → 重定向 → 物理可行化，与 [动作重定向](../wiki/concepts/motion-retargeting.md) 通用管线的差异在于**节拍对齐**与**风格保持**
-- 跟踪 RL 怎么选：[DeepMimic](../wiki/methods/deepmimic.md) 谱系单段跟踪、[BeyondMimic](../wiki/methods/beyondmimic.md) 通用跟踪、[SONIC](../wiki/methods/sonic-motion-tracking.md) 规模化预训练（其 token 接口原生支持**音乐条件**）各适合什么规模的曲目库
+- 跟踪 RL 怎么选：[DeepMimic](../wiki/methods/deepmimic.md) 谱系单段跟踪、[BeyondMimic](../wiki/methods/beyondmimic.md) 通用跟踪、[SONIC](../wiki/methods/sonic-motion-tracking.md) 规模化预训练各适合什么规模的曲目库；音乐条件先生成运动参考，再接跟踪器，不把 SONIC 的运动 token 接口等同于音频输入
 - 音乐/文本驱动的编舞素材生产：[GENMO](../wiki/methods/genmo.md)、[HY-Motion](../wiki/methods/hy-motion-1.md) 类生成模型怎么接进"生成 → 重定向 → 跟踪"管线
 - 展演动作的特殊约束：动作要"好看"而不只是"不摔"——风格奖励、动作幅度与安全裕度的平衡
 
@@ -85,7 +85,8 @@ flowchart LR
 
 ### 推荐读什么
 - [DeepMimic](../wiki/methods/deepmimic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 动作跟踪两代代表
-- [SONIC](../wiki/methods/sonic-motion-tracking.md) — 规模化跟踪预训练，音乐 token 条件接口
+- [SONIC](../wiki/methods/sonic-motion-tracking.md) — 规模化运动跟踪后端
+- [AHEADance](../wiki/entities/paper-aheadance.md) — 流式音乐先生成 G1 参考，再由 SONIC 执行；生成器未接收机器人状态反馈，单机演示也不等于多机同步方案；2026-11-14 官方仍标 Code soon
 - [GENMO](../wiki/methods/genmo.md) 与 [HY-Motion 1.0](../wiki/methods/hy-motion-1.md) — 音乐/文本驱动动作生成
 - [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md) — 曲目库选型
 - [Disney Olaf 角色机器人](../wiki/methods/disney-olaf-character-robot.md) — "好看优先"的展演型控制范例
@@ -243,3 +244,4 @@ flowchart LR
 - [KungFuAthleteBot](https://kungfuathletebot.github.io/)（arXiv:2602.13656）— 高动态武术跟踪与抗扰恢复
 - [Swarm in the Wild](../wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md)（Science Robotics 2022）与 [Crazyswarm2](../wiki/entities/crazyswarm2.md) — 无人机 swarm 编队/避碰工具箱的迁移参照
 - [TeamHOI](../wiki/entities/paper-amp-survey-17-teamhoi.md)（arXiv:2603.07988）— 多机物理协作的去中心化策略前沿
+- [AHEADance 官方项目](https://ihcr.github.io/AHEADance/) 与 [原论文 III-E / V](https://arxiv.org/html/2611.13370v1) — 流式音乐生成与下游全身跟踪的职责边界

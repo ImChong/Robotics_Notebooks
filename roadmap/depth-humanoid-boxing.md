@@ -41,7 +41,7 @@ flowchart LR
 **先钉死问题结构：拳击同时叠加了类人动作、实时对抗与全接触三重约束，且存在自主与遥操作两条完全不同的技术路线。**
 
 ### 前置知识
-- 主路线 L3（RL 基础）与 L5.3（模仿学习）水平
+- 主路线 [L5.1（RL 基础）](motion-control.md#l5-1-rl-basics)与 [L5.3（模仿学习）](motion-control.md#l5-3-imitation-learning)水平
 - [模仿学习纵深](depth-imitation-learning.md) Stage 0–2：知道参考动作怎么变成可跟踪的策略
 
 ### 核心问题

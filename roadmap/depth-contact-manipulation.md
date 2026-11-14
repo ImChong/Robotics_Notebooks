@@ -86,7 +86,7 @@ flowchart LR
 ## Stage 2 模仿学习用于操作
 
 ### 核心问题
-- 为什么 contact-rich 任务适合 IL 而不是 RL
+- 有示范、可安全探索或可用仿真时，如何选择 IL、RL 与 IL 初始化后的残差/后训练组合
 - ACT 和 Diffusion Policy 各适合什么场景
 
 ### 推荐读什么
@@ -104,7 +104,7 @@ flowchart LR
 
 ### 推荐做什么
 - 用 ACT 框架收集遥操作数据并训练一个抓取策略
-- 对比 chunk size 对 contact-rich 任务成功率的影响
+- 分别改变预测 chunk 与实际开环执行前缀，记录成功率、峰值接触力与响应延迟
 
 ### 学完输出什么
 - 能解释 ACT 的 action chunking 机制和 Diffusion Policy 的多模态优势

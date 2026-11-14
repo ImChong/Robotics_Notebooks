@@ -1198,18 +1198,16 @@ flowchart TD
 | T–S | Teacher–Student | 全观测 teacher 蒸馏受限观测 student。 |
 | Loco | Locomotion | 移动 / 步行类运动技能。 |
 
-**前置知识：** L5.1 + L4.3/4.4
+**前置知识：** L5.1 + L1–L3 的观测、动力学与关节控制基础；选择 MPC/WBC 混合控制时再补 L4.3/4.4
 
-**核心问题：** RL 怎么和 MPC / WBC 结合，sim2real 怎么做到
+**核心问题：** 如何把观测、动作、奖励与并行训练组成 locomotion 闭环；何时需要 MPC/WBC，如何验证迁移
 
 **推荐做什么：**
-- 用 IsaacGym / IsaacLab 训练一个人形行走策略
-- 尝试 RL + WBC 的组合框架
+- 用 Isaac Lab 或 MuJoCo 训练一个人形行走策略；复现历史工作时再使用对应 Isaac Gym 版本
+- 可选：对照 [rl-mpc-locomotion](../wiki/entities/rl-mpc-locomotion.md) 的 RL 调 MPC 权重与 [ReCo](../wiki/entities/paper-reco.md) 的 MPC 指挥低层 RL，标清两者的接口与四足实证边界
 
 **推荐读什么：**
-- "DeepMimic" (Peng et al.)
-- "AMP: Adversarial Motion Priors"
-- legged_gym / IsaacGymEnvs
+- [DeepMimic](../wiki/methods/deepmimic.md) 与 [AMP Reward](../wiki/methods/amp-reward.md) — 运动模仿/风格奖励分支（L5.3），不是 MPC/WBC 混合架构本身
 - [legged_gym](../wiki/entities/legged-gym.md)
 - [Isaac Gym / Isaac Lab](../wiki/entities/isaac-gym-isaac-lab.md)
 - [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md)
@@ -1811,10 +1809,10 @@ flowchart TB
 
 ### Diffusion → Flow Matching → DiT：为什么适合机器人
 
-- **Flow Matching**：不再模拟"加噪—去噪"的随机过程，而是直接学一个速度场，把噪声沿接近直线的 ODE 积分成动作。**对机器人的意义不在数学，而在工程**：保留扩散的多模态表达能力，但积分步数少（π0 论文用 10 步）→ 延迟低，更容易赶上控制频率；训练目标是简单的回归，便于和 VLM 骨干一起训。
+- **Flow Matching**：回归所选概率路径的速度场，推理时沿 ODE 从噪声积分到动作；既可使用扩散路径，也可使用条件直线路径。条件路径直不保证学到的边缘轨迹也直，更不保证单步生成或一定快于扩散。π0 用 10 步是具体配方，延迟还取决于骨干、采样器、精度与硬件。
 - **DiT**：把去噪网络从 U-Net 换成 Transformer。在机器人里，token 变成 action chunk 的各个时间步，观测条件通过 cross-attention / AdaLN 注入 → 可以直接接上 L8 的 VLM token。
 - **Action Expert**：π0 的叫法——在 VLM 之外单独一套较小的 Transformer 权重，专门处理状态与带噪动作 token，用 flow matching 生成 action chunk；GR00T N1 的 DiT 动作头扮演同一角色（见 L10）。
-- **Action Chunk 的代价**：chunk 内是开环执行，对突发扰动反应慢，需要 temporal ensembling 或 [Real-Time Chunking](../wiki/entities/paper-real-time-chunking.md) 这类衔接策略。
+- **Action Chunk 的代价**：预测长度不等于开环执行长度；通常只执行前缀再重规划。响应速度取决于执行前缀、观测时延与异步衔接，见 [滚动预测执行](../wiki/concepts/receding-horizon-policy-execution.md) 与 [Real-Time Chunking](../wiki/entities/paper-real-time-chunking.md)。
 
 ### 推荐读什么
 
@@ -1833,15 +1831,15 @@ flowchart TB
 
 ### 自测题（学完应能答出）
 - action chunk 带来了哪两个好处和一个代价？
-- 同样的多模态表达能力，为什么 flow matching 比 DDPM 式扩散更适合高频机器人控制？
+- 比较 flow matching 与 DDPM 式策略的部署延迟时，除了采样步数还必须对齐哪些条件？
 - DiT 动作头里，观测 / 语言条件可以通过哪些方式注入？
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
 
 <ol>
-<li><strong>action chunk：</strong> 好处是 ① 整段动作时序一致、减少逐步抖动和 BC 的 compounding error；② 推理可以比控制慢，低层在等待下一次推理时继续执行已有 chunk。代价是 chunk 内开环，对突发扰动反应变慢，需要 temporal ensembling / 实时 chunk 衔接。</li>
-<li><strong>flow matching 更快：</strong> 它学的是接近直线的确定性 ODE 速度场，少量积分步即可得到高质量样本；DDPM 式扩散通常需要更多去噪步。步数少 → 每次推理延迟低 → 更容易满足控制频率。</li>
+<li><strong>action chunk：</strong> 一次建模多步动作并缓冲执行，可让网络推理频率低于动作下发频率；但不保证消除 BC 的分布偏移。预测 H 步不代表全部开环执行，通常执行较短前缀再重规划；响应速度取决于前缀长度、观测时延与 chunk 衔接。</li>
+<li><strong>flow matching 的延迟：</strong> 学速度场不等于单步生成，也不自动保证更快。应在相同硬件、精度和观测条件下，对齐骨干、采样器、网络求值次数、预测/执行 horizon 与成功率，再比较端到端延迟；条件直线路径也不保证边缘采样轨迹为直线。</li>
 <li><strong>条件注入：</strong> 常见三种：cross-attention（动作 token 作为 Q 查询观测 / VLM token）、AdaLN（用条件向量调制 LayerNorm 的尺度和偏移，DiT 原论文做法）、直接把条件 token 拼进序列做 self-attention。</li>
 </ol>
 </details>
