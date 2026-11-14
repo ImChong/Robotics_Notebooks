@@ -57,7 +57,7 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 
 四足课程 Ch2 从 **17 个 link 的运动学树** 出发：不懂 URDF，就无法理解为何四足浮动基有 **$n_q=19$（含四元数姿态）而 $n_v=18$（角速度 3 维）**，也无法正确调用 ABA/RNEA。
 
-## 核心结构
+## 核心原理与结构
 
 | 元素 | 含义 |
 |------|------|
@@ -70,7 +70,7 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 
 课程 Ch3 强调：一条四足 URDF 可有 **~200+ 标量参数**（几何、惯量、关节限位、摩擦等），其中大量 **不可辨识或弱可观**，SysID 需筛选。
 
-## 工程工作流
+## 工程实践：从描述到部署
 
 1. 厂商提供 URDF（如 Unitree / Zsibot）
 2. 导入 [Pinocchio](../entities/pinocchio.md) / [Dynibo](../entities/dynibo.md) / MuJoCo / MATRiX（Dynibo 仅树状 revolute/continuous/prismatic/fixed）
@@ -82,7 +82,7 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 
 **轮式双臂人形的从零建模**：按 CAD 零位冻结、单树拓扑、xacro、惯量、mesh、校验和控制/跨仿真器转换七步推进，见[轮式双臂人形 URDF 建模与工具链](../queries/wheeled-dual-arm-humanoid-urdf-workflow.md)。特别注意惯性坐标系支持 rpy、CAD 惯量单位换算和 ROS 2 mimic 接口的发行版差异。
 
-## 常见误区
+## 局限与常见误区
 
 - **误区：「URDF 够准就能 Sim2Zero」。** 执行器动力学、间隙、柔性不在 URDF 标准字段里。
 - **误区：「四元数姿态占 4 维所以 $n_q=n_v$」。** 姿态用四元数存储但速度在切空间，维数不同。
