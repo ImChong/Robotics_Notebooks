@@ -3,7 +3,7 @@ type: entity
 title: Gen-HumanEgo（简智机器人 DAS-Ego 开放人类第一视角数据集）
 tags: [dataset, egocentric, human-motion, mano, depth, huggingface, genrobot, jzrobot, vla, imitation-learning, mcap, china-embodied-opensource]
 summary: "GenRobot RealOmni-Open 的人类 ego 子集：1,848h / 44,632 MCAP episodes，六相机 DAS-Ego 同步 RGB + 双手 3D/MANO/mesh + Ego-Depth + video/task/subtask 三级标注；HF ungated CC BY-SA 4.0，消费走 das-datakit 与官方 MCAP 可视化。"
-updated: 2026-09-23
+updated: 2026-11-14
 status: complete
 institutions:
   - jzrobot
@@ -12,6 +12,7 @@ related:
   - ./humanplus-1000-dataset.md
   - ./rekadaily-10k-dataset.md
   - ../overview/ego-category-01-data-collection.md
+  - ./genrobot-das-2-0.md
   - ../methods/vla.md
   - ../methods/macrodata-egocentric-hand-action.md
   - ../tasks/teleoperation.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/datasets/gen-human-ego-genrobot.md
   - ../../sources/sites/genrobot-open-dataset.md
   - ../../sources/repos/das-datakit.md
+  - ../../sources/sites/genrobot-das-2-0-official.md
 ---
 
 # Gen-HumanEgo（DAS-Ego 开放人类第一视角数据集）
@@ -129,6 +131,10 @@ flowchart TB
 | **[PhysBrain 1.5](./paper-sa-2512-16793-physbrain-human-egocentric-data-as-a-bridge-from.md)** | 方法 + EvalKit；本集是 **可下载原始 MCAP 语料** |
 | **[das-datakit](./cn-os-das-datakit.md)** | 本集 **推荐消费工具**；RealOmni 机器人侧 MCAP 亦走同一 kit |
 
+## DAS 2.0 的代际边界（2026-11-14 核对）
+
+本数据集的公开语料对应既有 **DAS-Ego** 采集配置（六目 1600×1300、30 fps）；[DAS Ego 2.0 / Dex 2.0 / WristCam](./genrobot-das-2-0.md) 是后续发布的硬件组合。新版产品页标注 2×5 MP + 4×2 MP、340° 水平覆盖、21 DoF 与 980 点触觉采集；**这些新版硬件规格不能反推当前 Gen-HumanEgo 公开 MCAP 必然包含新版视频或触觉字段**。如需训练接触预测，须先核验具体数据样本、采集设备版本和同步字段。
+
 ## 局限与风险
 
 - **体量大：** Hub 标 `n>1T`；需按 domain/skill 增量下载与存储规划。
@@ -151,6 +157,8 @@ flowchart TB
 - [Macrodata Egocentric Hand-Action](../methods/macrodata-egocentric-hand-action.md)
 
 ## 参考来源
+
+- [GenRobot DAS 2.0 新产品官方核对归档](../../sources/sites/genrobot-das-2-0-official.md)（仅用于设备代际对比，不代表当前语料由新版硬件采集）
 
 - [`sources/datasets/gen-human-ego-genrobot.md`](../../sources/datasets/gen-human-ego-genrobot.md)
 - [`sources/sites/genrobot-open-dataset.md`](../../sources/sites/genrobot-open-dataset.md)
