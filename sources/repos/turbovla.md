@@ -19,6 +19,7 @@
 
 ## 对 wiki 的映射
 
+- [TurboVLA 独立论文详情](../../wiki/entities/paper-turbovla.md)
 - [2026 VLA 开源生态对比](../../wiki/comparisons/vla-open-source-ecosystem-2026-three-shifts.md)
 - [VLA 方法](../../wiki/methods/vla.md)
 

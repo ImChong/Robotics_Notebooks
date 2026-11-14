@@ -1,6 +1,8 @@
 # verl-vla 官方源码导航（2026-11-14）
 
 - **资料类型：** repo / 云边协同 VLA 后训练框架
+- **核对范围：** 2026-11-14 阅读 verl-project/verl-vla 官方 README 全文（框架分层、TrainCluster、遥操作与介入、支持矩阵、维护配方、Quick Start、FAQ/许可），并核对 pyproject.toml 中的 `vvla-teleop`、`vvla-train-sft`、`vvla-train-sac` CLI 入口。
+- **通读：** 已完成
 - **名称：** verl-vla: a unified VLA post-training framework
 - **代码：** https://github.com/verl-project/verl-vla
 - **文档：** https://verl-vla.readthedocs.io/en/latest/
@@ -23,6 +25,7 @@ vvla-teleop cluster.env.env_worker.simulator.libero.task_suite_name=libero_spati
 
 ## 对 wiki 的映射
 
+- [独立项目详情：verl-vla](../../wiki/entities/verl-vla.md)
 - [2026 VLA 开源生态对比](../../wiki/comparisons/vla-open-source-ecosystem-2026-three-shifts.md)
 - [VLA 方法](../../wiki/methods/vla.md)
 

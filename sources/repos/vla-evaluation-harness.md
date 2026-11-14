@@ -1,6 +1,8 @@
 # vla-evaluation-harness 官方源码导航（2026-11-14）
 
 - **资料类型：** repo / 开源评测基础设施
+- **核对范围：** 2026-11-14 阅读 allenai/vla-evaluation-harness 官方 README 全文（News、Motivation、Installation、Quick Start、Python API、batch/sharding、Docker/Charliecloud、SQLite/Tracking、源码与复现标识）；核对 pyproject.toml `[project.scripts]` 的 `vla-eval = vla_eval.cli.main:main`。
+- **通读：** 已完成
 - **英文名：** vla-evaluation-harness
 - **中文：** 面向视觉语言动作模型的统一评测框架
 - **代码：** https://github.com/allenai/vla-evaluation-harness
@@ -22,6 +24,7 @@
 
 ## 对 wiki 的映射
 
+- [独立项目详情：vla-evaluation-harness](../../wiki/entities/vla-evaluation-harness.md)
 - [2026 VLA 开源生态对比](../../wiki/comparisons/vla-open-source-ecosystem-2026-three-shifts.md)
 - [2025 VLA 开源复现景观](../../wiki/overview/vla-open-source-repro-landscape-2025.md)
 

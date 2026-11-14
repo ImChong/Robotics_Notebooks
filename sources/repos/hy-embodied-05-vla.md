@@ -20,6 +20,7 @@
 
 ## 对 wiki 的映射
 
+- [Hy-Embodied-0.5-VLA 独立论文详情](../../wiki/entities/paper-hy-embodied-05-vla.md)
 - [2026 VLA 开源生态对比](../../wiki/comparisons/vla-open-source-ecosystem-2026-three-shifts.md)
 - [HY-Embodied 家族现有入口](../../wiki/entities/cn-os-hy-embodied.md)
 - [已收录公开数据集](../../wiki/entities/dataset-hy-embodied-0-5-vla-data.md)
