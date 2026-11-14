@@ -14,7 +14,7 @@ tags:
   - shanghai-innovation-institute
   - cuhk
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 arxiv: "2608.16885"
 code: https://github.com/sii-research/tau-0-vla
 related:
@@ -34,6 +34,9 @@ sources:
   - ../../sources/sites/tau0-vla-github-io.md
   - ../../sources/repos/sii_research_tau_0_vla.md
 summary: "τ₀-VLA（arXiv:2608.16885）：记忆增强高层子任务策略 + 世界模型引导 TTC beam search；Qwen3.5+MoT 低层 generalist VLA（40 维、40,115 h）；长程真机分层 45.0% vs 直出 27.5%；低层权重与后训练已开源，高层组件逐步发布。"
+project_id: tau0-vla
+original: 
+  - ../../sources/papers/tau0_vla_arxiv_2608_16885_full_reading.md
 ---
 
 # τ₀-VLA：世界模型引导测试时计算的分层机器人基础模型
@@ -110,6 +113,22 @@ flowchart TB
   OBS --> HT
 ```
 
+## 流程总览
+
+```mermaid
+flowchart TD
+    obs["任务指令 + 视觉历史 + 执行记忆"] --> high["高层子任务提案 / 进度追踪"]
+    high --> route{"是否需要测试时追加计算？"}
+    route -->|"是"| imagine["世界模型预测候选子任务终态"]
+    imagine --> evaluate["价值评估与 beam search"]
+    evaluate --> select["选择下一子任务"]
+    route -->|"否"| select
+    select --> low["40D 通用低层 flow VLA"]
+    low --> chunk["连续动作 chunk"]
+    chunk --> robot["机器人或仿真"]
+    robot --> obs
+```
+
 ## 源码运行时序图
 
 官方仓库 [sii-research/tau-0-vla](https://github.com/sii-research/tau-0-vla) 当前公开 **低层后训练与 joint-control serving**（高层 TTC 待发布；归档见 [sources/repos/sii_research_tau_0_vla.md](../../sources/repos/sii_research_tau_0_vla.md)）：
@@ -164,6 +183,12 @@ sequenceDiagram
 - **选型：** 长程 **household / 移动操作** 且子步可语言化时优先评估分层 + TTC；短程单技能或子任务难视觉判别时 TTC 收益可能有限。
 - **开源：** **部分**——先以 HF 权重与 LeRobot 管线验证低层；高层 TTC 落地前勿假设仓库已含完整 SEARCH 栈。
 
+## 工程实践
+
+- **分层部署**：先运行官方已公开的低层模型 checkpoint、LeRobot 后训练和 serving 入口，再单独检查高层子任务/世界模型/TTC 模块的版本和实际开放状态。
+- **控制契约**：40 维状态与动作槽位要与机器人 EEF/关节/夹爪/底盘含义一致；控制频率要区分高层子任务边界搜索和低层 chunk 推理。
+- **评测**：长任务需要累计错误率、恢复成功率、子任务完成率和整个 episode 耗时；不能用低层单步动作精度代替高层决策质量。
+
 ## 局限与风险
 
 - **高层未全量开源：** 截至 2026-08-19，**TTC / 四模型高层** 仍 **逐步发布**；复现论文闭环需跟踪 upstream News。
@@ -191,6 +216,8 @@ sequenceDiagram
 - [GE-Sim 2.0](./ge-sim-2.md) — 独立闭环模拟 + Judge 栈
 
 ## 参考来源
+
+- [τ₀-VLA 一手论文全文核对](../../sources/papers/tau0_vla_arxiv_2608_16885_full_reading.md)
 
 - [τ₀-VLA 论文摘录](../../sources/papers/tau0_vla_arxiv_2608_16885.md)
 - [τ₀-VLA 项目页](../../sources/sites/tau0-vla-github-io.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, shanghai-ai-lab, flow-matching, mot, compositional-generalization, manipulation, qwen, world-models, latent-foresight]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-14
 arxiv: "2607.04988"
 related:
   - ../methods/vla.md
@@ -19,6 +19,10 @@ related:
 sources:
   - ../../sources/papers/internvla_a15_arxiv_2607_04988.md
 summary: "InternVLA-A1.5（上海 AI Lab）：Qwen3.5-2B MoT VLM + 460M unified expert；Stage1 持续 VQA/子任务/FAST 共训保语义，Stage2 用 50 foresight token 查询冻结 WAN2.2 潜式未来 + flow matching 连续动作；1.2M 机器人 + 3M 多模态预训练；六套仿真全榜领先，真机组合指令 OOD 与长程 MOF 显著超 π₀.₅/Motus；部署不滚像素，~0.1s/步。"
+project_id: internvla-a1-5
+code: https://github.com/InternRobotics/InternVLA-A-series
+original: 
+  - ../../sources/papers/internvla_a15_arxiv_2607_04988_full_reading.md
 ---
 
 # InternVLA-A1.5：理解、潜式前瞻与动作的统一 VLA
@@ -134,6 +138,35 @@ flowchart TB
 
 **消融（Table 8）：** 去掉 video loss 或 foresight tokens → LIBERO-Plus / DOMINO 跌幅最大，说明 **潜式前瞻** 主要服务 **分布偏移与动态交互**。
 
+## 源码运行时序图
+
+依据官方 `InternRobotics/InternVLA-A-series`（默认 `master`）实际入口 `launch/internvla_a15_pretrain.sh`、`launch/internvla_a15_finetune.sh`、`src/lerobot/scripts/lerobot_train.py` 及 `tests/openloop_internvla_a1_5.py`。脚本在本次 ingest 中做了静态核对，未执行 GPU 训练。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 用户
+    participant SH as internvla_a15_finetune.sh
+    participant PT as lerobot_train.py
+    participant DATA as LeRobot 数据集
+    participant POLICY as internvla_a1_5 policy
+    participant TEST as openloop_internvla_a1_5.py
+    U->>SH: 输入 repo_id、abs/delta、统计文件参数
+    SH->>PT: 分布式启动 policy.type=internvla_a1_5
+    PT->>DATA: 加载示范及归一化统计量
+    PT->>POLICY: 加载预训练模型并训练动作专家
+    POLICY-->>PT: loss 与 checkpoint
+    U->>TEST: ckpt-path + dataset-root
+    TEST->>POLICY: 加载 checkpoint 推理动作块
+    POLICY-->>TEST: 预测 action / 轨迹可视化
+```
+
+## 工程实践
+
+- 官方已经开放多个 A1.5 权重、预训练与微调入口。**训练期**读取冻结 WAN 视频模型提供未来监督，**推理期**默认丢弃视频分支；不要混淆开销。
+- 按 README 的 LeRobot 数据版本、动作统计、`policy.type=internvla_a1_5` 和 `InternVLA-A1.5-base` 检查点对齐训练与评测。
+- 先使用 `tests/openloop_internvla_a1_5.py` 核对真实样本的动作空间和反归一化，再上仿真/真机；发布代码不等于安全部署保证。
+
 ## 结论
 
 **A1.5 的核心取舍是把世界模型放在训练侧当「潜式教师」、推理侧整段丢弃：用一次性的动力学蒸馏换实时闭环，同时靠持续语言共训避免动作目标侵蚀语义。**
@@ -141,7 +174,7 @@ flowchart TB
 - 起作用的是两个可消融的开关：**50 个 foresight token 查询冻结 WAN2.2 的 video loss**，以及 Stage 1–2 的 **持续 VQA/子任务共训**（机器人:多模态 0.15:0.85）。Table 8 显示去掉 video loss 或 foresight token 时 LIBERO-Plus / DOMINO 跌幅最大——潜式前瞻主要服务 **分布偏移与动态交互**，语义共训则对应 **组合指令 OOD 绑定**。
 - 部署形态是它与同族 WAM 的真正分水岭：推理不滚像素、**~0.1s/步**，真机 MOF **76.4%** vs π₀.₅ 29.3%、Motus 0%——差距更多来自「不付像素想象的延迟税」，而非单纯模型规模。
 - 适用边界明确：foresight 视界 **≤ 一个 action chunk**，没有长程显式规划或在线 world-model roll；长程能力来自子任务分解，不要指望它做远期推演。
-- 上界受教师约束：WAN 冻结且通用，embodied 场景覆盖受其预训练分布限制；代码/权重截至 ingest 尚未公开。
+- 上界受教师约束：WAN 冻结且通用，embodied 场景覆盖受其预训练分布限制；训练与评测代码、预训练/任务权重已在官方仓库开放（2026-11-14 核验）。
 - 最容易误读的两点：它不是测试期仍滚 WAN 的 WAM；持续 VQA 也不是可选正则，而是论文当作组合 grounding 的核心设计。
 
 ## 常见误区或局限
@@ -149,7 +182,7 @@ flowchart TB
 - **误区：** 把 A1.5 当成测试期仍滚 WAN 的 WAM——**视频 生成器仅训练期监督 foresight token，推理接口是纯 VLA + flow head**。
 - **误区：** 认为持续 VQA 只是正则——论文把 **chat 模板 + 单一 CE** 视为 **语义保持与组合 grounding** 的核心设计，而非可选 trick。
 - **局限：** foresight 视界 **≤ 一个 action chunk**；尚无长程显式规划或在线 world-model roll。
-- **局限：** WAN 冻结且通用，**embodied 场景覆盖** 上界受教师预训练分布约束；代码/权重截至 ingest **尚未公开**。
+- **局限：** WAN 冻结且通用，**embodied 场景覆盖** 上界受教师预训练分布约束；代码及模型权重**现已开放**：官方 `master` README 已列训练/评测脚本和多个 HF checkpoint（2026-11-14 核验）。
 
 ## 与其他工作对比
 
@@ -187,5 +220,8 @@ flowchart TB
 - WAN 视频生成：[Wan2.2](https://arxiv.org/abs/2503.20314) — foresight 冻结教师来源
 
 ## 参考来源
+
+- [InternVLA-A1.5 完整论文与官方源码核对](../../sources/papers/internvla_a15_arxiv_2607_04988_full_reading.md)
+- [官方代码与模型权重](https://github.com/InternRobotics/InternVLA-A-series)
 
 - [InternVLA-A1.5 论文摘录](../../sources/papers/internvla_a15_arxiv_2607_04988.md)
