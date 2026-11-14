@@ -1,116 +1,166 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
-status: stub
-updated: 2026-09-15
+tags: [paper, humanoid-paper-notebooks, dataset, benchmark, human-motion, motion-capture, ut-austin, adobe]
+status: complete
+updated: 2026-11-14
 arxiv: "2504.10414"
 code: https://github.com/Jiaxin-Lu/humoto
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
   - ../overview/humanoid-paper-notebooks-index.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
+  - ../concepts/motion-retargeting.md
+  - ../concepts/motion-retargeting-pipeline.md
+  - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/papers/humanoid_pnb_humoto.md
-summary: "人-物交互（HOI）数据「录得真、标得准」一直很难：真实交互里手/物频繁遮挡、物体几何难精确、动捕清洗成本高，导致已有数据集要么规模小、要么脚滑穿模。HUMOTO 用三步把质量做上去——(1) 让 LLM 按场景「编剧」 出有逻辑、有目的的完整任务序列（如做饭、野餐），保证动作是「为完成任务」而非随机摆拍；(2) 动捕 + 多相机 专门设计以应对遮挡；(3) 专业人工清洗与校验，最大限度消除脚滑与物体穿透。最终得到 735 段、约 7875 秒（30fps） 的高保真序列，含 63 件精确建模物体 与 72 个铰接人体部件（Mixamo 兼容绑定），可直接喂给动作生成、姿态估计和机器人/具身 AI 研究。"
+  - ../../sources/papers/humoto_reading.md
+  - ../../sources/repos/jiaxin_lu_humoto.md
+original:
+  - ../../sources/papers/humoto_reading.md
+  - ../../sources/repos/jiaxin_lu_humoto.md
+summary: "人-物交互（HOI）数据长期面临手物严重遮挡、动作缺乏任务逻辑以及脚滑穿模等问题。HUMOTO 结合 LLM 场景编剧、Rokoko 惯性动捕服与 EMF 手套（30 fps）、双 Kinect + FoundationPose + SAM2 抗遮挡跟踪以及两阶段专业美术清洗，构建了 735 段（Fig. 11 统计 736 段）、约 7,875 秒、包含 63 件精确几何物体（72 个可动部件）与 Mixamo 65 骨骼人体网格的高保真 4D HOI 数据集（ICCV 2025）。"
 ---
 
 # HUMOTO
 
-**HUMOTO: A 4D Dataset of Mocap Human Object Interactions** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion），深读笔记已完成。本页是 **笔记摘要**：要点编译自深读笔记，细节以笔记原文与论文 PDF 为准。
+**HUMOTO: A 4D Dataset of Mocap Human Object Interactions** 收录于 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html)（分类：14_Human_Motion）。本页已对照 arXiv 原文（arXiv:2504.10414 v2，ICCV 2025）与官方代码仓库 `Jiaxin-Lu/humoto` 通读核对并编译。
 
 ## 一句话定义
 
-人-物交互（HOI）数据「录得真、标得准」一直很难：真实交互里手/物频繁遮挡、物体几何难精确、动捕清洗成本高，导致已有数据集要么规模小、要么脚滑穿模。HUMOTO 用三步把质量做上去——(1) 让 LLM 按场景「编剧」 出有逻辑、有目的的完整任务序列（如做饭、野餐），保证动作是「为完成任务」而非随机摆拍；(2) 动捕 + 多相机 专门设计以应对遮挡；(3) 专业人工清洗与校验，最大限度消除脚滑与物体穿透。最终得到 735 段、约 7875 秒（30fps） 的高保真序列，含 63 件精确建模物体 与 72 个铰接人体部件（Mixamo 兼容绑定），可直接喂给动作生成、姿态估计和机器人/具身 AI 研究。
+HUMOTO 是一个兼具任务逻辑连贯性与高物理一致性的人-物交互（HOI）4D 动捕数据集，涵盖 735 段（Fig. 11 统计 736 段）、约 7,875 秒 30 fps 的高精度全身/手部动作、63 件含铰接部件物体轨迹及三级文本脚本。
 
 ## 英文缩写速查
 
-| 缩写 | 含义 |
-|---|---|
-| HOI | Human-Object Interaction，人-物交互 |
-| Mocap | Motion Capture，动作捕捉 |
-| 4D | 3D 几何 + 时间维度（随时间演化的人体姿态与物体网格） |
-| Articulated Parts | 铰接部件（72 个可动人体关节部位） |
-| Rigging | 骨骼绑定（此处 Mixamo 兼容，便于复用现成动作） |
+| 缩写 | 英文全称 | 简要说明 |
+|---|---|---|
+| HOI | Human-Object Interaction | 人-物交互，关注人体/灵巧手与三维物体接触与联合运动 |
+| Mocap | Motion Capture | 动作捕捉，本文采用 Rokoko 惯性动捕服与 EMF 电磁手套方案 |
+| 4D | Four-Dimensional (3D + Time) | 随时间演化的三维人体骨架/网格与物体 6-DoF 运动序列 |
+| MSNR | Motion Signal-to-Noise Ratio | 运动信噪比（dB），用于衡量清洗后序列的轨迹平滑性 |
+| CoACD | Approximate Convex Decomposition for 3D Meshes | 近似凸分解算法，论文附录 A 用于 PyBullet 物理接触与碰撞校验 |
+| LLM | Large Language Model | 大语言模型，本文用于按房间物体组合生成有任务目的的表演脚本 |
 
 ## 为什么重要
 
-- **人-物交互数据稀缺**是人形「loco-manipulation」落地的关键瓶颈，HUMOTO 提供了带物体网格与接触细节的成对人-物运动，可作**重定向 / 模仿学习**的高质量素材；
-- **物理一致性（去脚滑/穿透）**对下游「人动作→机器人动作」迁移尤为重要，减少违反接触约束的坏样本；
-- **LLM 编剧的「目的性任务序列」**思路与人形「语言指令→长时程操作」高度契合，可为任务级数据合成提供范式；
-- 与本仓库 [WHOLE](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos.html)、[Efficient and Scalable Monocular HOI](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction/Efficient_and_Scalable_Monocular_Human-Object_Interaction_Motion_Reconstruction.html) 的「人-物交互重建」形成数据侧互补。
+- **填补「有目的长交互 + 高接触精度」空白**：以往数据集多为孤立抓取或单步摆拍，HUMOTO 通过 LLM 按房型编排连贯日常任务，提供贴近人类意图的全身-手-物长时程协同先验。
+- **物理一致性优于纯视觉重建**：双 Kinect 视觉辅助 + FoundationPose 动态重置 + 两阶段美术人工精修将脚滑压到 0.958 cm、穿透压到 0.0068 cm，减少向人形全身操纵（loco-manipulation）策略迁移时的不良动力学样本。
+- **Mixamo 绑定与可微 FK 工具链就绪**：数据采用 65 骨 Mixamo 标准骨架并开源 `HumanModelDifferentiable` 与 Blender 导出脚本，便于经由骨架重定向（retargeting）管线进一步映射至 SMPL-X 或人形机器人 URDF。
 
-## 流程总览
+## 核心原理
+
+### 数据集规模、模态与采集管线
+
+- **规模与统计口径**：论文摘要与正文记为 **735 段序列、7,875 秒（30 fps，约 2.2 小时）**、**63 件专业建模日常物体**（其中多个铰接物体分解为 **72 个可动/功能部件**，单场景最多包含 15 件物体），均由 1 名穿戴动捕设备的表演者完成；另注论文 Fig. 11 直方图统计显示为 **736 段、7,874.4 秒（131.2 min）**，单段时长分布在 3.0–32.0 秒。
+- **模态构成**：包含 65 骨骼（`human_model/bone_names.py`）Mixamo 铰接人体 4D 运动、高精手部手指姿态、物体及铰接部件 6-DoF 轨迹、PyBullet 接触图信号，以及 3 个粒度的文本描述（动作标题、短脚本、长脚本）。
+- **抗遮挡混合动捕架构（§3.1–§3.2）**：
+  1. **场景驱动 LLM 编剧**：给定物体清单构建虚拟房间概念，由 LLM 生成逻辑连贯的交互剧本。
+  2. **混合传感器捕捉**：Rokoko Smartsuit Pro II 惯性动捕服 + 抗电磁干扰 EMF 手套以 30 fps 记录全身与手部姿态（规避纯光学标记在近身遮挡下的丢点），同时用两台 Azure Kinect 以 UDP 触发同步录制 RGB-D 视角。
+  3. **物体 6-DoF 跟踪与时空对齐**：利用 SAM2 与人工掩码结合 FoundationPose 估计物体位姿，基于掩码像素差异触发动态重置抑制遮挡漂移；通过标定板与起始标定站姿建立共同世界坐标系。
+  4. **两阶段 QA 美术精修（§3.3）**：第一阶段专业美术师逐帧修补手物穿透、脚滑与惯性漂移；第二阶段独立审核团队按抖动与穿透规则核验打回直至达标。
 
 ```mermaid
 flowchart TD
-    S["Scene-Driven LLM Scripting<br/>按物体构成概念性房间，LLM 生成场景内连贯的交互脚本 §3.1"]
-    O["63 件日常物体、72 个功能部件<br/>由专业美术建模 (含可动部件与可抓取表面) §3.2"]
-    O --> S
-    S --> CAP["动作捕捉 §3.2<br/>Rokoko 动捕服与手套 30 fps，表演者按脚本执行<br/>转换到 Mixamo 骨架"]
-    CAP --> OBJ["物体跟踪: 双 Kinect + FoundationPose 估计 6DoF 位姿<br/>基于掩码像素差的动态重置 + SAM2 配合人工标注掩码"]
-    OBJ --> ALIGN["时间同步 (UDP 指令) + 空间对齐<br/>标定板建立共同坐标系，起始标定站姿"]
-    ALIGN --> QA["两阶段质量保证 §3.3<br/>美术师修复漂移与跟踪误差 ⇄ 独立团队核验 (抖动、脚滑)<br/>迭代至达标"]
-    QA --> ANN["文本标注: 标题 + 短脚本 + 长脚本"]
-    ANN --> DATA["HUMOTO: 人体动作 + 物体轨迹 + 手部姿态 + 接触图 + 多级文本"]
+    OBJ["63 件精细物体网格与 72 个可动部件建模"] --> LLM["Scene-Driven LLM 编剧 生成有目的任务脚本"]
+    LLM --> MOCAP["Rokoko 动捕服 + EMF 手套 30 fps 采集人体与手势"]
+    LLM --> RGBD["双 Azure Kinect UDP 同步录制多视 RGB-D"]
+    RGBD --> FP["SAM2 掩码 + FoundationPose 动态重置估计 6-DoF 物体位姿"]
+    MOCAP --> ALIGN["标定板空间对齐与 Mixamo 65 骨绑定"]
+    FP --> ALIGN
+    ALIGN --> QA["两阶段美术清洗与独立 QA 校验 (消除脚滑与穿透)"]
+    QA --> ANN["三级文本标注 (标题 / 短脚本 / 长脚本) 与接触图导出"]
 ```
 
-图依据：论文 §3 数据采集（Fig.2、Fig.4、Fig.5 所示流程）；本页为数据集，图描述其论文自述的构建流程而非算法。
+图依据：论文 §3.1–§3.3（Fig. 2、Fig. 4–5）以及 `human_model/bone_names.py`、`scripts/extract_pk_data.py` 源码。
 
-## 解决什么问题
+## 实验与对比评测
 
-现有人-物交互数据集普遍存在三类痛点：
+论文从物理指标、主观评估与下游模型任务三方面评测数据质量与实用性（Table 1–2 与附录 A）：
 
-- **交互质量差**：真实抓取/操作中手与物体互相遮挡，重建常出现脚滑、物体穿透； - **缺乏「目的性」**：很多序列是零散摆拍，没有「为完成某个任务」的逻辑连贯动作； - **物体几何粗糙**：物体网格不精确，难以支撑接触/物理层面的下游研究。
+**1. 物理一致性与运动质量（Table 1，与同类 HOI 数据集指标体系对照）**：
 
-## 核心机制
+| 指标 | HUMOTO 实测表现 | 物理含义 |
+|---|---|---|
+| Foot Sliding（脚滑） | **0.958 cm** | 支撑脚掌在接触期间的残余水平漂移 |
+| Penetration（手物穿透） | **0.0068 cm** | 手部/身体网格侵入刚体或铰接物体的深度误差 |
+| Jerk / Object Jerk | **1.87 / 1.13** | 人体与物体加速度时间导数，反映平滑度 |
+| MSNR（运动信噪比） | **9.42 dB** | 高频抖动抑制程度 |
+| Coherence / Diversity | **0.653 / 0.956** | 语义一致度与场景内动作丰富度 |
+| Contact Entropy / State Consistency | **1.4587 / 0.5061** | 接触状态分布熵与物体铰接/位姿前后自洽性 |
 
-1. **高保真 4D HOI 数据集**：735 段、63 精确物体、72 铰接人体部件，兼顾几何精度与时间连贯；
-2. **场景驱动 LLM 编剧管线**：自动生成有逻辑、有目的的完整任务序列；
-3. **抗遮挡采集 + 专业清洗**：显著减少脚滑与物体穿透，保证物理一致性；
-4. **多任务基准**：面向动作生成、姿态估计、机器人仿真、2D 图像编辑等给出评测与对比。
+**2. 主观研究与下游可迁移性验证（§5–§6、附录 A）**：
 
-方法拆解（深读笔记小节）：场景驱动的 LLM 编剧管线；抗遮挡的动捕 + 相机录制；专业清洗与校验；数据规模与基准；🧭 数据构建与下游用途（mermaid）。
-
-## 核心信息
-
-| 字段 | 内容 |
-|------|------|
-| 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions.html> |
-| arXiv | <https://arxiv.org/abs/2504.10414> |
-| 机构 | 德州大学奥斯汀分校（UT Austin） · Adobe Research |
-| 作者 | Jiaxin Lu, Chun-Hao Paul Huang, Uttaran Bhattacharya, Qixing Huang, Yi Zhou |
-| 发表 | 2025 年 4 月（arXiv v1：2025-04-14；v2：2025-10-15）· ICCV 2025 |
-| 项目主页 | [jiaxin-lu.github.io/humoto](https://jiaxin-lu.github.io/humoto/) · [数据访问 adobe-research.github.io/humoto](https://adobe-research.github.io/humoto/) |
-| 源码 | 🌟 [github.com/Jiaxin-Lu/humoto](https://github.com/Jiaxin-Lu/humoto) |
-| 笔记阅读日期 | 2026-07-09 |
-
-## 实验与评测
-
-- 本页是深读笔记的摘要，没有搬运原文的量化结果；量化 benchmark、消融与实机指标以 **深读笔记与论文 PDF** 为准（链接见 [参考来源](#参考来源)）。
+- **26 人用户研究（User Study）**：在物理真实感、接触准确性与语言对齐度评价中相比对照基线数据集获得显著偏好。
+- **物理引擎与生成/重建基准检验**：通过 PyBullet 结合 CoACD 凸分解验证物体接触支撑稳定性；并作为测试/微调基座评测了 MotionGPT（文本驱动人体动作生成）、4D Humans 与 TRAM（单目 4D 重建）以及 Affordance Diffusion 等前沿模型。
 
 ## 结论
 
-**HUMOTO 的取舍是「宁精勿脏」：用 LLM 编剧 + 抗遮挡采集 + 专业人工清洗把人-物交互数据的物理一致性做到可直接下游使用，而不是去追最大规模。**
+**HUMOTO 是一套典型的「质量优先于绝对规模」的 4D HOI 数据资产：它通过混合动捕硬件选型与昂贵但严格的两阶段专业美术清洗，把脚滑（0.958 cm）与穿模（0.0068 cm）压到可直接喂给物理接触敏感型下游任务的可用水平。**
 
-- 真正解决痛点的是管线的后两步——抗遮挡的动捕 + 多相机设计与人工清洗校验，直接针对脚滑与物体穿透这两类坏样本。
-- LLM 编剧解决的是另一类问题：让动作是「为完成任务」（做饭、野餐）而非随机摆拍，从而具备任务级的逻辑连贯性。
-- 规模要看清边界：735 段、约 7875 秒（30fps）、63 件精确建模物体、72 个铰接人体部件，Mixamo 兼容绑定便于复用现成动作，但这仍是中等体量数据集。
-- 对人形的价值在数据侧而非方法侧：物理一致的接触数据适合作重定向与模仿学习素材，本身不提供任何策略或控制器。
-- 工程落地状态较完整：ICCV 2025，有项目主页、独立数据访问页与开源仓库，可直接取用。
-- 与 WHOLE、Efficient and Scalable Monocular HOI 的「从视频重建交互」路线互补——那边解决恢复精度，这边用动捕从源头保证质量。
+1. **抗遮挡 + 人工清洗才是核心壁垒**：LLM 编剧赋予序列任务连贯性，但真正拉开物理可用性差距的是 EMF 手套防近距干扰、FoundationPose 像素差重置以及独立团队打回重修的 QA 闭环。
+2. **机器人向重定向需跨两道骨链差异**：原生数据集采用 65 骨 Mixamo 人体格式而非机器人常用的 SMPL-X 拓扑；用于人形机器人在环训练或模仿学习前，需先通过骨架重定向将 Mixamo 映射至目标机器人运动学链，并叠加物理稳定性滤波。
+3. **代码工具链已可用于数据读取与可视化**：官方仓库提供 `load_one_humoto_sequence`、`HumanModelDifferentiable` 与 PyTorch3D 渲染脚本；数据本体分「公开子集（`adobe-research/humoto`）」与「完整版申请」两层分发。
+4. **体量与采集者单一性构成扩展上限**：仅约 2.2 小时总长与 1 名表演者决定了它更适合做高质量精调集或评测基准，而非独立支撑大规模预训练底座。
 
-## 与其他页面的关系
+## 源码运行时序图
+
+以下时序依据 `README.md`、`scripts/extract_pk_data.py`、`utils/load_humoto.py`、`human_model/human_model.py`、`human_model/bone_names.py` 与 `render_humoto_pytorch3d.py` 实读源码绘制：
+
+```mermaid
+sequenceDiagram
+    participant Blender as "Blender 管线 (bpy 4.0.0)"
+    participant Extract as "导出脚本 (extract_pk_data.py)"
+    participant Loader as "序列读取 (utils/load_humoto.py)"
+    participant FK as "可微人体模型 (HumanModelDifferentiable)"
+    participant Render as "可视化入口 (render_humoto_pytorch3d.py)"
+
+    Blender->>Extract: "经尺度清理与骨架迁移导出清理后的 .blend 场景"
+    Extract-->>Loader: "打包人体姿态、63 物体位姿与多级文本为 .pkl"
+    Render->>Loader: "调用 load_one_humoto_sequence 读取单条序列字典"
+    Loader-->>Render: "返回 Mixamo 65 骨局部旋转、根轨迹与物体 Mesh 序列"
+    Render->>FK: "初始化 HumanModelDifferentiable(bone_names)"
+    loop "逐帧前向运动学与渲染"
+        Render->>FK: "传入当帧关节旋转与根位姿求解 FK 顶点与关节"
+        FK-->>Render: "输出 3D 人体蒙皮网格并与物体网格合成渲染图"
+    end
+```
+
+## 工程实践
+
+| 工程维度 | 论文与官方仓库核对细节 |
+|---|---|
+| 数据集规模与分辨率 | 735 段（Fig. 11 为 736 段）、约 7,875 s、30 fps；63 件刚/铰接物体（72 部件） |
+| 人体骨架与可微模块 | 65 骨 Mixamo 拓扑（`human_model/bone_names.py`），非 SMPL-X；PyTorch 可微类 `HumanModelDifferentiable` |
+| 核心依赖与脚本入口 | `bpy==4.0.0`（数据清洗导出）、PyTorch + PyTorch3D；验证入口 `render_humoto_pytorch3d.py` |
+| 许可证与获取路径 | 代码仓库无根目录 `LICENSE` 文件；数据受官方门户 `adobe-research.github.io/humoto` 条款约束，区分公开子集与完整版申请 |
+| 重定向与人形接入 | 数据为运动学精修几何网格（非真机控制轨迹），接入人形模仿学习前需运行 GMR 等骨架重定向器并做地面/足底接触校正 |
+
+## 常见误区与局限
+
+- **单一表演者与体量有限**：全库动作仅由 1 名动捕演员采集，身高、臂展与操作习惯多样性受限，总时长 2.2 小时难以独立覆盖开放世界泛化需求。
+- **人工清洗成本高昂、难以自动化复刻**：两阶段美术修复虽保证了 0.0068 cm 低穿透，但使该数据管线难以低成本扩充至万条规模。
+- **无动力学力矩与触觉真值**：数据集记录运动学姿态、物体位姿及 PyBullet 推理接触，不含真机抓取力/力矩传感器读数，面向力控或紧致插装任务时需额外引入物理仿真或力交互建模。
+- **许可与代码文件完整度注意**：`Jiaxin-Lu/humoto` 根目录缺少独立 `LICENSE` 文件，商用或二次分发前必须核对 `adobe-research/humoto` 数据发布协议；另论文摘要（735 段）与 Fig. 11（736 段）存在 1 条样本数统计差异。
+
+## 关联页面
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- 评测选型：[具身评测与基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
+- 重定向技术栈：[运动重定向概念](../concepts/motion-retargeting.md) · [重定向管线](../concepts/motion-retargeting-pipeline.md) · [三类重定向路线](../queries/motion-retargeting-three-routes-landscape.md)
+- 参数化人体与全身操纵：[SMPL-X 概念页](../concepts/smpl-x.md) · [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 
 ## 参考来源
 
-- [humanoid_pnb_humoto.md](../../sources/papers/humanoid_pnb_humoto.md)
-- 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions.html>
-- 论文：<https://arxiv.org/abs/2504.10414>
-- [arXiv PDF](https://arxiv.org/pdf/2504.10414)：已通读方法部分（实验与附录以略读为准）：§3 数据采集与标注流程；§4 数据集分析略读，附录未读
+- [humoto_reading.md](../../sources/papers/humoto_reading.md)（arXiv:2504.10414 v2 与深读笔记归档）
+- [humanoid_pnb_humoto.md](../../sources/papers/humanoid_pnb_humoto.md)（Robot Learning Paper Notebooks 原条索引归档）
+- [jiaxin_lu_humoto.md](../../sources/repos/jiaxin_lu_humoto.md)（GitHub 官方仓库源码核对归档）
+- 论文：<https://arxiv.org/abs/2504.10414>（ICCV 2025）
+- 项目与数据获取：<https://jiaxin-lu.github.io/humoto/> · <https://adobe-research.github.io/humoto/>
+- 源码仓库：<https://github.com/Jiaxin-Lu/humoto>
 
 ## 推荐继续阅读
 
+- [HUMOTO 论文 PDF（arXiv:2504.10414）](https://arxiv.org/pdf/2504.10414)：精读 §3 抗遮挡动捕同步细节与附录 A PyBullet CoACD 检验
+- [HUMOTO 官方开源工具链（Jiaxin-Lu/humoto）](https://github.com/Jiaxin-Lu/humoto)：参考 `render_humoto_pytorch3d.py` 与 `utils/load_humoto.py`
 - [机器人论文阅读笔记：HUMOTO](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions/HUMOTO__A_4D_Dataset_of_Mocap_Human_Object_Interactions.html)

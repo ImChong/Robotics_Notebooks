@@ -1,146 +1,170 @@
 ---
+title: "Swarm of Micro Flying Robots in the Wild（Science Robotics 2022 / EGO-Planner-v2）"
 type: entity
-tags:
-  - paper
-  - uav-swarm
-  - micro-uav
-  - trajectory-planning
-  - spatiotemporal-optimization
-  - minco
-  - onboard-sensing
-  - decentralized-planning
-  - science-robotics
-  - zju
-  - zju-fast-lab
 status: complete
-updated: 2026-09-15
-doi: "10.1126/scirobotics.abm5954"
-venue: "Science Robotics 2022"
+updated: 2026-11-14
+project_id: ego-planner-v2-swarm
+paper: https://www.science.org/doi/10.1126/scirobotics.abm5954
 code: https://github.com/ZJU-FAST-Lab/ego-planner-v2
+tags:
+  - aerial-swarm
+  - trajectory-optimization
+  - minco
+  - l-bfgs
+  - uav
+  - zju
+summary: "浙江大学 FAST-Lab 发表在 Science Robotics 2022 的全自主微型无人机集群系统（EGO-Planner-v2）：基于 MINCO 线性复杂度时空联合优化与 L-BFGS 约束转录，使 114 mm、< 300 g 掌上无人机仅靠机载双目深度与 UWB 测距即可在无 GPS 野生竹林实现 10 机高速集群穿飞与密集互避。"
+sources:
+  - ../../sources/papers/swarm_micro_flying_robots_scirobotics_2022.md
+  - ../../sources/repos/ego_planner_v2.md
+  - ../../sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md
+original:
+  - ../../sources/papers/swarm_micro_flying_robots_scirobotics_2022.md
+  - ../../sources/repos/ego_planner_v2.md
 related:
+  - ../methods/trajectory-optimization.md
+  - ../methods/l-bfgs.md
+  - ../tasks/autonomous-exploration.md
+  - ../concepts/collision-distance-optimization.md
+  - ../concepts/kinematic-vs-dynamic-feasibility.md
   - ./ego-planner-swarm.md
   - ./crazyswarm2.md
   - ./quad-swarm-rl.md
-  - ../overview/multirotor-simulation-planning-control-stack.md
-sources:
-  - ../../sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md
-  - ../../sources/papers/swarm_micro_flying_robots_scirobotics_2022.md
-summary: "Science Robotics 2022 封面：ZJU FAST-Lab 提出掌心级微型 UAV + MINCO 时空联合轨迹优化，在竹林中实现 10 机无 GPS/外部设施的自主蜂群飞行，毫秒级在线重规划，完整代码以 EGO-Planner-v2 开源。"
 ---
 
-# 野外微型飞行机器人蜂群（Swarm of Micro Flying Robots in the Wild）
-
-**Swarm of micro flying robots in the wild**（Xin Zhou、Xiangyong Wen、Zhepei Wang 等，ZJU FAST-Lab，Chao Xu* & Fei Gao*，**Science Robotics 2022 封面**，[DOI:10.1126/scirobotics.abm5954](https://doi.org/10.1126/scirobotics.abm5954)）提出 **掌心级微型四旋翼蜂群** + **时空联合轨迹优化（MINCO）**，在无 GPS、无动捕、无外部通讯基础设施的 **竹林** 中演示 **10 机协同自主飞行**，实现毫秒级在线重规划、去中心化互避碰与任务可扩展性。
+# Swarm of Micro Flying Robots in the Wild（Science Robotics 2022 / EGO-Planner-v2）
 
 ## 一句话定义
 
-**以 MINCO 时空联合优化同步求解轨迹形状与时间分配，使掌心级微型蜂群在杂乱野外环境中完全依赖机载感知实现去中心化、毫秒级安全重规划。**
+**Swarm of Micro Flying Robots in the Wild**（[Science Robotics 2022](https://www.science.org/doi/10.1126/scirobotics.abm5954)，开源代号 **EGO-Planner-v2**，浙江大学高飞/许超团队 FAST-Lab）是一套面向无 GPS、无动捕野外强杂波环境的分布式全自主微型空中集群系统：借助基于微分平坦性的 **MINCO** 分段五次多项式时空联合表示与无 ESDF 约束转录 **L-BFGS** 求解器，让轴距 114 mm、全重不足 300 g 的掌上无人机在毫秒级实时重规划空间形状与每段飞行时间，成功实现 10 机野生密集竹林穿飞、编队自适应变形、遮挡目标跟随及无锚点密集互避。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MINCO | Minimum-Jerk Continuity Optimization | 本文轨迹表示：分段多项式支持轨迹形状与时间分配联合优化 |
-| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，机载位姿估计 |
-| UAV | Unmanned Aerial Vehicle | 无人飞行器；本文指掌心级约 30–40 g 四旋翼 |
-| ESDF | Euclidean Signed Distance Field | 欧氏符号距离场，障碍距离梯度来源 |
-| STP | Spatiotemporal Planning | 时空联合规划，形状与时间同步优化的核心思想 |
-| NLP | Nonlinear Programming | 非线性规划，统一代价函数优化求解器 |
-| ROS | Robot Operating System | 机载计算框架 |
+| --- | --- | --- |
+| MINCO | Minimum Control | 面向微分平坦系统的分段多项式轨迹表达，可用 $O(M)$ 带状 PLU 分解联立优化路点 $q$ 与时长 $T$ |
+| TEEM | Trajectory optimality, Extensibility, Economical computing, Miniature size | 论文提出的野外集群四维耦合系统设计指标 |
+| VIO | Visual-Inertial Odometry | 视觉惯性里程计（本系统基于 VINS + UWB 相对测距去中心化消除漂移） |
+| ESDF | Euclidean Signed Distance Field | 欧氏有向距离场，本规划器通过单平面推斥距离替代全局 ESDF 建图 |
+| L-BFGS | Limited-memory Broyden-Fletcher-Goldfarb-Shanno | 有限内存拟牛顿无约束优化器，实时求解约束转录后的时空代价函数 |
 
 ## 为什么重要
 
-- **户外蜂群里程碑：** 10 机竹林无基础设施飞行是 2022 年前规模最大的野外微型 UAV 群实证，证明小型化硬件 + 纯机载计算可支撑真实森林级复杂度。
-- **时空联合优化范式：** 在规划界区分了「先定形状后优化时间」与「形状和时间同时优化」两条路——后者使后行无人机可通过 **时间膨胀** 完成空间规避，避免绕路等待，轨迹更光滑、更安全、能耗更低。
-- **完整开源栈：** [EGO-Planner-v2](https://github.com/ZJU-FAST-Lab/ego-planner-v2)（GPL v3）提供可直接运行的 swarm/formation/tracking 三个仿真 workspace，降低社区复现门槛，700+ stars（截至 2026-07）。
-- **对 [EGO-Planner Swarm](./ego-planner-swarm.md) 的升格：** EGO-Planner Swarm 基于 ESDF + B-spline 但时间分配固定；本文 MINCO 将时间纳入联合优化，在最拥挤场景下优势最显著。
+在强杂波未知森林中同时满足轨迹最优性、任务可扩展性、嵌入式算力经济性与微小体积（**TEEM** 矛盾）长期是空中集群的瓶颈：依赖 GNSS 与集中式调度的编队无法进入遮挡林区；基于人工势场或反应式避障的轻量化方案缺少时间协同与平滑性，狭窄缝隙易产生剧烈急刹甚至卡死；而 MADER（MINVO）与早期 EGO-Swarm（固定时间分配 B 样条）未能在毫秒内同时联合优化轨迹几何形状与每段持续时间 $T$，导致多机争道窄门时后续机被迫大迂回绕路。该论文打通了 **MINCO 时空一体化解耦算法 + 300 g 级机载视觉硬件 + 分布式 UWB 漂移抑制** 全栈开源工程，成为无人机集群野外自主飞行的里程碑工作。
 
-## 流程总览
+## 核心原理
 
 ```mermaid
-flowchart TB
-  subgraph onboard [机载感知与定位]
-    depth["深度相机\n障碍检测"]
-    vio["VIO\n位置+速度估计"]
-  end
-  subgraph planning [MINCO 时空联合规划]
-    init["初始轨迹生成\n(路径搜索 + 时间分配初值)"]
-    cost["统一代价函数\n效率 + 障碍避碰 + 机间避碰\n+ 动力学 + 协调"]
-    opt["梯度下降 NLP\n形状 & 时间联合求解\n(毫秒级)"]
-    init --> cost --> opt
-  end
-  subgraph broadcast [去中心化机间协调]
-    tx["广播本机计划轨迹\n(未来时间窗口)"]
-    rx["接收邻机轨迹\n→ 预测碰撞代价"]
-  end
-  onboard --> planning
-  broadcast --> planning
-  opt --> tx
+flowchart TD
+    Sensor["RealSense D430 深度/灰度 + IMU + Nooploop UWB"] -->|"VINS + Eq.24 Ceres 漂移修正"| State["无外部定位 6-DOF 状态"]
+    Sensor -->|"机载他机点云剔除"| Map["局部概率栅格地图 GridMap"]
+    Peers["邻机广播 MINCO 系数与时间偏移"] -->|"planning/broadcast_traj_recv"| FSM["EGOReplanFSM (100 Hz 状态机 + 20 Hz 安全巡检)"]
+    State --> FSM
+    Map --> FSM
+    FSM -->|"VirtualT + 约束转录惩罚项"| Opt["PolyTrajOptimizer (MINCO + L-BFGS)"]
+    Opt -->|"PolyTraj 经 100 Hz 伺服"| FCU["traj_server -> PX4 STM32 飞控"]
+    Opt -->|"MINCOTraj UDP 广播"| Peers
 ```
 
-## 核心机制（提炼）
+### 1. 掌上全自主硬件平台（114 mm / < 300 g）
 
-| 模块 | 作用 | 与前序工作的区别 |
-|------|------|-----------------|
-| **MINCO 轨迹表示** | 分段多项式 + 映射矩阵，保证 C^n 连续；时间分配为可微变量 | MADER/EGO-Swarm 只优化形状；本文时间与形状 **同时求导** |
-| **统一 NLP** | 效率 + 静态障碍 + 机间碰撞 + 动力学 + 协调代价全部可微 | 避免多阶段解耦带来的次优性 |
-| **时间弹性（Temporal Flexibility）** | 后行机可拉伸时间轴让前行机先过，无需空间绕路 | 关键于密集走廊场景 |
-| **去中心化广播** | 各机 broadcast 自身计划轨迹，邻机用于预测碰撞 | 无全局指挥；异步触发 |
-| **任务可扩展** | swarm、formation、tracking 三任务只需修改代价项 | 通用框架，非单任务特化 |
+- **机体构型**：轴距仅 **114 mm**，含 100 g 电池（双节 3000 mAh 7.4 V LiPo 串联）总重 **< 300 g**；4 颗 1404 6000 kV 无刷电机配 3 寸三叶桨倒置下吹布置（防旋翼下洗流吹拂机盖，推重比 **2.4**，悬停功耗约 **120 W**，单次续航 **11 min**）。
+- **传感器与算力分配**：机载传感器精简至 Intel RealSense **D430**（输出深度图建图 + 双目灰度定位）、PX4 纳米飞控（STM32 H7 + BMI088 IMU，移除气压计/磁力计/GPS）、**Nooploop LTPS UWB**（DW1000 芯片）及 **NVIDIA Xavier NX**（6 核 CPU / 384 核 GPU / 8 GB RAM）；普通飞行场景 CPU 与 GPU 负载均 **< 40%**，给 YOLOv5 等额外感知留出充裕算力。
 
-## 实验与评测
+### 2. MINCO 时空联合优化与约束转录（Eq. 1–24）
 
-- **仿真对比：** 在不同速度与障碍密度下对比 **MADER** 与 **EGO-Swarm**，评测四项指标（轨迹质量、算力、碰撞率、任务完成）。MINCO 时空联合优化在拥挤场景下优势显著——后行机无需绕路。
-- **实机验证（竹林）：** 10 架掌心级四旋翼，**无 GPS**、**无动捕**、**无地面站实时控制**；通过机载深度相机检测竹竿；演示自由飞行、编队与穿越窄道。
-- **三个扩展任务（EGO-Planner-v2 仓库）：** swarm formation（队形重构）、interlaced flights（交错穿越）、multi-goal tracking（目标跟踪），验证框架通用性。
+- **线性复杂度参数化**：利用多旋翼 3 阶积分器微分平坦性（$s=3$），MINCO 将分段五次多项式轨迹 $p(t) = \mathcal{M}_{q, T}(t)$ 压缩为自由路点 $q \in \mathbb{R}^{3 \times (M-1)}$ 与各段时长 $T \in \mathbb{R}^M$；通过带状矩阵方程 $M(T)c = b(q)$ 的 PLU 分解，把系数的空间-时间梯度的求解与回传降为 **$O(M)$ 线性复杂度**（单段转化仅耗时约 **1 μs**）。
+- **无 ESDF 约束转录与通用惩罚项（GPPs）**：将总飞行时间 $J_t$、平滑度（加加速度平方积分 $J_s$）、动力学极值 $J_d$（$v_m, a_m, j_m$）、单切平面障碍距离 $J_o$（$d_o = (p-s)^T v$，平面构造 ~0.1 ms）、$z$ 轴降权椭球形机间避碰 $J_w$（降低上下穿行下洗流干扰）以及扩展编队 $J_f$ / 视角锁定跟踪 $J_v$ 统一转化为三次方/二次方连续时间采样积分惩罚，配合对数/平方根虚实时间映射（`RealT2VirtualT`）送入无约束 **L-BFGS** 求解器。
+
+### 3. 去中心化漂移校正与异步安全兜底
+
+- **UWB + VIO 去中心化定位（Eq. 24）**：各机通过彼此轨迹参数计算他机位置并融合 UWB 测距误差 $r_{u,k}$，由 Ceres Solver 加正则锚项联合最小化全局漂移；此外用他机轨迹包围盒在自身深度图中**剔除邻机像素**（Drone Removal），防止队友点云污染局部占据地图。
+- **异步分级安全保护**：优化后执行二次精细碰撞检验（最多重触发 20 次 rebound）；后台 **20 Hz** 巡检持续核验局部栅格与邻机轨迹最小间距，若重规划失败且即将撞击，立即切入 `EMERGENCY_STOP` 制动悬停并 10 ms 后尝试恢复。
+
+## 实验与对比评测
+
+基于论文野外实飞与仿真对比实验结果：
+
+| 实验场景 / 基准对比 | 实验配置 | 关键实测表现 / 对比优势 |
+| --- | --- | --- |
+| **野生竹林集群穿飞** | 10 架掌上机，目标距起点 65 m，无 GPS/MoCap | 自动调节速度时间剖面排队穿行 **< 30 cm** 窄缝，成功克服倾斜竹干、灌木与落叶遮挡 |
+| **野外林间编队飞行** | 保持指定局部坐标系刚体队形穿越林木障碍 | 遇树绕行时个体主动降速并引发队形自适应平滑收放，绕过后自动加速复原队形 |
+| **抗遮挡多机目标追踪** | 4 机挂载 CSI RGB + YOLOv5(TensorRT) + KF | 实时共享目标检测消除树干遮挡丢失，人机交互中主动避让林木与邻机 |
+| **3 m 半径随机换位密集互避** | 10 机（7 cm 安全球模型），3 min 连续运行 | 中途人工新增柱状障碍、手动扰动单机并**关停所有地面定位锚点**，全程零碰撞完成目标送达 |
+| **仿真基准对比（vs MADER / EGO-Swarm）** | 1–3 m/s 期望速度、1–2 m 障碍间距（i7-10700K 多线程） | 因直接联合优化时间分布避免让行大迂回，控制力积分（jerk $S_m$）最低且耗时显著低于 MINVO/B-Spline 方案 |
+| **Swarm Playground 交互规模** | 单机 CPU 多线程 ROS1 仿真 | 支持 **40 机**无碰自由集群、7 机六边形队形及多 Xbox 手柄实时充当动态障碍物避让 |
+
+### 与其他工作对比
+
+- **对比经典分散式规划器（[EGO-Swarm](./ego-planner-swarm.md) 与 MADER）**：[EGO-Swarm](./ego-planner-swarm.md) 基于固定时间分配 B 样条且依赖顺序重规划约束，MADER 基于 MINVO 多面体求解时常出现多机窄道让行大迂回与较高计算延迟；本作以 MINCO 时空联合优化同步开放自由路点 $q$ 与段时长 $T$，单段求解降至微秒级且以线性复杂度 $O(M)$ 实现自发让行加速穿行。
+- **对比室内集中式编队与纯端到端集群学习（[Crazyswarm2](./crazyswarm2.md) / [QuadSwarmRL](./quad-swarm-rl.md)）**：[Crazyswarm2](./crazyswarm2.md) 强依赖外部动捕与离线集中轨迹调度，而 [QuadSwarmRL](./quad-swarm-rl.md) 专注强化学习密集反应式策略；本作在完全无外部定位基站下完成机载 VIO + UWB + 无 ESDF 梯度优化的户外林区长程实飞闭环。
 
 ## 结论
 
-**这篇 Science Robotics 封面真正推进的是规划范式——把时间分配从「先定形状、再配时间」中解放出来，与轨迹形状联合优化；竹林 10 机实证只是证明这套范式能全靠机载算力跑通。**
+1. **一句话总判**：该工作将 MINCO 线性复杂度时空联合参数化、无 ESDF 梯度优化与轻量 UWB+VIO 协同融于不足 300 g 的掌上集群，首次系统验证了脱离外部定位的野外密集林间全自主多机飞行。
+2. **时间维度自由度是集群破局关键**：相比只变形路径形状的上一代 [EGO-Swarm](./ego-planner-swarm.md)，开放时长 $T$ 的无约束梯度优化能以微秒级每段代价让多机自发实现“快慢让行排队过窄门”，避免冗余大绕飞。
+3. **软约束必须配强制 post-check 与独立安全线程**：约束转录把安全边际转进惩罚函数，无法单次确保零违约；代码中以 100 Hz 状态机 + 20 Hz 独立碰撞巡检 + 心跳超时制动组成硬安全网是实飞不炸机的工程核心。
+4. **跨项目延伸参考**：当任务需更高密度动态异构协调或集中式全局任务分派时，可将其作为底层局部协同层接入上层分配系统（对比室内高精度集中脚本体系 [Crazyswarm2](./crazyswarm2.md) 与学习型方案 [QuadSwarmRL](./quad-swarm-rl.md)）。
 
-- 起作用的机制是 **MINCO 时空联合优化**：时间成为可微变量后，后行机可用 **时间膨胀** 让路而不必空间绕路，因此在最拥挤的走廊场景相对 MADER / EGO-Swarm 优势最大；这也正是它相对 [EGO-Planner Swarm](./ego-planner-swarm.md)（ESDF + B-spline、时间固定）的升格所在。
-- 系统侧的关键是 **去中心化广播**：各机播发自身计划轨迹供邻机预测碰撞，无全局指挥、异步触发，配合毫秒级 NLP 求解才构成可在野外闭环的规划器。
-- 通用性来自 **统一可微代价函数**：swarm、formation、tracking 三类任务只改代价项而不重写规划器，这也是它能作为社区 baseline 复用的原因。
-- 适用边界需要看清：演示为 **10 机、静态障碍假设、纯运动规划**；动态行人与风中摆动的树枝是主要 OOD 场景，50+ 规模的实时性与通讯干扰下的互避碰鲁棒性均未经实机验证。
-- 开源是「半栈」：[EGO-Planner-v2](https://github.com/ZJU-FAST-Lab/ego-planner-v2)（GPL v3）给出完整规划代码与三个仿真 workspace，但 **掌心级自研硬件平台未随代码开源**，实机复现须自行适配飞控。
+## 源码运行时序图
 
-## 与其他工作对比
+以下时序严格对齐 `ZJU-FAST-Lab/ego-planner-v2` 仓库 `swarm-playground/main_ws` 中 `ego_planner_node.cpp`、`ego_replan_fsm.cpp`、`planner_manager.cpp`、`poly_traj_optimizer.cpp` 与 `traj_server.cpp`：
 
-- **vs MADER / EGO-Swarm：** 这些方法只优化轨迹形状、时间分配固定；本文用 **MINCO** 将时间纳入与形状的联合优化，在最拥挤走廊场景优势最显著——后行机通过 **时间膨胀** 避让而非空间绕路，轨迹更光滑、更安全、能耗更低。
-- **vs EGO-Planner Swarm：** 是对 [EGO-Planner Swarm](./ego-planner-swarm.md)（ESDF + B-spline、时间固定）的升格，时空联合优化在密集场景收益最大。
-- **vs 室内动捕蜂群：** 相较 [Crazyswarm2](./crazyswarm2.md) 等依赖外部动捕 / 地面站的室内平台，本文强调 **无 GPS / 无动捕 / 纯机载计算** 的野外（竹林）蜂群。
+```mermaid
+sequenceDiagram
+    participant Node as "主节点 (ego_planner_node)"
+    participant FSM as "状态机 (EGOReplanFSM)"
+    participant Mgr as "规划管理 (EGOPlannerManager)"
+    participant PolyOpt as "优化器 (PolyTrajOptimizer)"
+    participant Servo as "轨迹伺服 (traj_server)"
 
-## 局限与风险
-
-- **代码与硬件解耦：** EGO-Planner-v2 提供完整规划代码和仿真 playground，但 **自研掌心级硬件平台（机体、电调、主控板）设计未随代码开源**，实机复现需自行适配飞控。
-- **通讯依赖：** 去中心化互避碰依赖邻机 **广播计划轨迹**；实机用低功耗 WiFi；在更密集或通讯干扰环境下鲁棒性待验证。
-- **规模上限：** 论文演示 10 机；随机数增加，广播解析与 NLP 规模线性增长，极大规模（50+）下的实时性未经实机验证。
-- **静态地图假设：** 规划器处理 **动态障碍** 能力有限；动态行人或大风下树枝摆动为主要 OOD 场景。
-- **仅平移运动：** 微型四旋翼不携带机械臂，演示为纯运动规划；抓取、感知-操作融合为后续工作。
+    Node->>FSM: init(nh) 注册 100Hz exec_timer_ 与 20Hz safety_timer_
+    loop 20 Hz 安全监测 (checkCollisionCallback)
+        FSM->>FSM: 检查深度超时与邻机 broadcast_traj_recv 间距
+        FSM->>FSM: 触发 REPLAN_TRAJ 或紧急切入 EMERGENCY_STOP
+    end
+    loop 100 Hz 状态机调度 (execFSMCallback)
+        FSM->>Mgr: reboundReplan 规划局部目标轨迹
+        Mgr->>PolyOpt: optimizeTrajectory (RealT2VirtualT 映射时间变量)
+        PolyOpt->>PolyOpt: lbfgs_optimize (mem=16, max_iter=200) 求解平滑/避障/互避代价
+        PolyOpt-->>Mgr: 返回最优 MINCO 路点与时段 (支持最多 20 次 rebound)
+        Mgr-->>FSM: 封装为 PolyTraj 与 MINCOTraj
+        FSM->>Servo: 发布 planning/trajectory 与心跳 heartbeat
+        FSM-->>FSM: 通过 swarm_bridge UDP 广播 planning/broadcast_traj_send
+    end
+    Servo->>Servo: 100 Hz cmdCallback 求导计算 p,v,a,j 及偏航并输出 PositionCommand
+```
 
 ## 工程实践
 
-- **可借鉴管线：** MINCO 框架已用于 ZJU FAST-Lab 后续多个工作（如 FASTER、Swarm-LIO）；需要多机协同规划的团队可直接 **fork EGO-Planner-v2** 作为仿真 baseline。
-- **从仿真到实机：** 仓库提供三个 `*_ws/` 目录，每个含完整 ROS launch + PDF 教程 + 演示视频，可先在仿真中验证扩展，再适配硬件。
-- **MINCO 原始实现：** 若需更底层的时空联合优化基础，参见 [ZJU-FAST-Lab/GCOPTER](https://github.com/ZJU-FAST-Lab/GCOPTER)（含 MINCO 的原始论文代码）。
+1. **多拓扑路径搜索与 L-BFGS 参数调优**：在 `planner_manager.cpp` 中，规划器可同时生成多组绕障方向（`distinctiveTrajs`）并行优化再择优切入执行；工程上应重点平衡时间权重 $\lambda_t$ 与平滑/动力学权重，避免单机极限激进机动拉穿局部栅格安全边际。
+2. **他机视觉遮挡污染防护**：集群近距相向飞行时深度相机会把队友机身写入局部占用栅格触发虚警急刹；必须确保 `swarm_bridge` 广播端口通畅与时间同步准确，以便节点利用广播轨迹外推 3D 包围盒过滤队友点云。
+3. **仿真与实飞通信拓扑切换**：在多机数量扩大（>10 架）后，单接入点 WiFi 星型拓扑会遇到广播丢包与带宽拥塞；论文对比表明大型集群应切换为对等 Ad-hoc 无线自组网，且 `traj_server` 内置 `> 0.5 s` 心跳失联保护，实机务必保留。
+
+## 常见误区与局限
+
+- **误区 1：误以为 MINCO 优化等价于全局最优且单次即绝对安全**：MINCO + L-BFGS 仍是局部无约束拟牛顿求解，遇到极端狭长死路（如长管道）或惩罚权重失配时仍需多拓扑探索、post-check 重试或退回急停状态。
+- **误区 2：误把“无 ESDF”理解成不需要建图**：系统虽省去了计算昂贵的全局 ESDF 更新，但仍强依赖局部概率占据栅格 `GridMap` 来提取碰撞排斥超平面与进行 20 Hz 后验安全性检查。
+- **系统边界**：多机协同假定无线轨迹广播可达；在完全静默或强无线干扰环境下缺乏纯视觉被动预测协调，且 D430 前向视场限制了高速倒飞与盲区强侧飞表现。
 
 ## 关联页面
 
-- [EGO-Planner Swarm（单/多机局部规划器）](./ego-planner-swarm.md)
-- [Crazyswarm2（Crazyflie 群体平台）](./crazyswarm2.md)
-- [Quad Swarm RL（强化学习群控）](./quad-swarm-rl.md)
-- [多旋翼仿真规划控制栈概览](../overview/multirotor-simulation-planning-control-stack.md)
+- [轨迹优化（Trajectory Optimization）](../methods/trajectory-optimization.md) — 微分平坦性与连续/离散时空参数化方法体系
+- [L-BFGS 优化器](../methods/l-bfgs.md) — 本规划器用于无约束时空惩罚求解的核心拟牛顿算法
+- [自主探索（Autonomous Exploration）](../tasks/autonomous-exploration.md) — 无先验未知复杂环境中局部感知与在线重规划主线
+- [碰撞距离优化（Collision Distance Optimization）](../concepts/collision-distance-optimization.md) — 无 ESDF 单平面排斥与椭球机间互避约束模型
+- [运动学可行性与动力学可行性](../concepts/kinematic-vs-dynamic-feasibility.md) — 速度、加速度与加加速度边界在平坦空间的约束转录
+- [EGO-Swarm（前代分布式集群规划器）](./ego-planner-swarm.md) — 本代 EGO-Planner-v2 引入 MINCO 时间优化前的 B 样条基础版本
+- [Crazyswarm2（ROS 2 集中式微小型无人机集群栈）](./crazyswarm2.md) — 对比室外部署高精集中调度 vs 机载分布式自主飞行
+- [QuadSwarmRL（空中集群多智能体强化学习）](./quad-swarm-rl.md) — 对比端到端 RL 集群策略与本工作数值轨迹优化范式
 
 ## 参考来源
 
-- [深蓝AI：近五年 Science Robotics 中国顶尖高校盘点](../../sources/blogs/wechat_shenlan_scirobotics_china_top3_2026-07-02.md)
-- [Swarm 论文归档（Science Robotics 2022）](../../sources/papers/swarm_micro_flying_robots_scirobotics_2022.md)
-- Zhou et al., *Swarm of micro flying robots in the wild*, [Science Robotics 2022](https://doi.org/10.1126/scirobotics.abm5954)
-- [EGO-Planner-v2 GitHub 仓库](https://github.com/ZJU-FAST-Lab/ego-planner-v2)
-- [论文配套数据集（Zenodo）](https://doi.org/10.5281/zenodo.5804079)
+- 论文通读归档：[Swarm of Micro Flying Robots in the Wild 论文通读归档](../../sources/papers/swarm_micro_flying_robots_scirobotics_2022.md)（Science Robotics 2022 全文核对）
+- 仓库源码归档：[ZJU-FAST-Lab/ego-planner-v2 源码核查](../../sources/repos/ego_planner_v2.md)
+- 原始来源：https://www.science.org/doi/10.1126/scirobotics.abm5954 | https://github.com/ZJU-FAST-Lab/ego-planner-v2
 
 ## 推荐继续阅读
 
-- [EGO-Planner-v2（完整代码库）](https://github.com/ZJU-FAST-Lab/ego-planner-v2)
-- [GCOPTER / MINCO 原始仓库](https://github.com/ZJU-FAST-Lab/GCOPTER)
-- [Science Robotics 论文页](https://doi.org/10.1126/scirobotics.abm5954)
+- [EGO-Swarm（前代分布式集群规划器）](./ego-planner-swarm.md) — 对照 B 样条纯空间变形与 MINCO 时空联合优化的演进差异。
+- [L-BFGS 优化器](../methods/l-bfgs.md) — 深入理解 `poly_traj_optimizer.cpp` 中历史梯度窗口（`mem_size=16`）与线搜索对规划实时性的影响。

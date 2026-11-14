@@ -24,14 +24,14 @@
 | 相对 main 新增 ⭐️ | 56 页（本轮 55 + Orca Hand 1） |
 | 原本已有 ⭐️、仅补 code | 7 页 |
 
-**纠正首批统计：** SpiderBot 在当前 main 已链接 `sources/repos/spiderbot.md`，已有 ⭐️；首批实际只有 Orca Hand 新增 ⭐️。原 PR 将其写成两页新增，已据实更正。原 PR 同时将 8 页 `updated` 改为 2026-11-13，本轮按 issue 要求恢复 main 中的原日期。63 页相对 main 的差异均只能是新增一行 code，正文、status、updated 保持原样。
+**纠正首批统计：** SpiderBot 在当前 main 已链接 `sources/repos/spiderbot.md`，已有 ⭐️；首批实际只有 Orca Hand 新增 ⭐️。原 PR 将其写成两页新增，已据实更正。原 PR 同时将 8 页 `updated` 改为 2026-11-13，首批元数据回填按 issue 要求保持原样；随后于 2026-11-14 的 PR #3732 跟进提交中，再将本轮涉及的全部 63 页完成原文/官方源码通读、Mermaid 流程图与源码运行时序图补齐，以及 `3/3` 满分健康度升级（同时将 `paper-sru-spatially-enhanced-recurrent-memory.md` 中返回 404 的 `ManifoldTechLtd/sru-pytorch-spatial-learning` 修正为 ETH Zurich RSL 官方仓库 `leggedrobotics/sru-pytorch-spatial-learning`）。
 
 **判定边界：**
 
 - 按页面主题核对，不以 entities 目录或仓库名相似代替归属证据。LoRA、Mamba、TCN、ViT、HAIC、Lion、RoboArena 是单项方法/基准，允许回填；多项目概念、对比、地图、课程、人物/公司/实验室页排除。
 - 共享发行仓可以承载项目本身的可用实现，如 Newton 内的 DAT / Mixed MPM、ProtoMotions 的 Metatron、Video to Data 的 FORM-HOI。仅引用通用框架的 GPC/CEL 等不能因此算开源。
 - 数据集自己的官方数据/处理仓、项目自己的可用公开子集可以回填；不声称全部训练、硬件、服务端或权重均已发布。上游依赖、基线、社区复现、awesome、issue/PR/discussion、静态展示站和纯手册仓不回填。
-- 不改 has_repo 算法、不增建 sources/repos、不覆盖 code 指向项目主页的既有字段；本轮不做内容 ingest，也不以元数据回填声称原文已通读或节点健康度已补齐。
+- 不改 has_repo 算法，也不覆盖 code 指向项目主页的既有字段；第一阶段仅完成元数据回填而不以 `code:` 充当通读证明，第二阶段（2026-11-14 PR #3732 补齐）按 `schema/ingest-workflow.md` 逐页通读原文与官方仓库源码并补全结构/时序图/来源归档。
 - 待定是依 issue「拿不准的标为待定，先不回填」完成的审核结论，所需证据列在下面；不是遗漏待筛查页。
 
 ## 复现候选扫描
@@ -138,7 +138,7 @@ PYSCAN
 | [wiki/entities/paper-notebook-zeroth-bot-https-github-com-zeroth-robotics-zero.md](../../wiki/entities/paper-notebook-zeroth-bot-https-github-com-zeroth-robotics-zero.md) | [zeroth-robotics/zeroth-bot](https://github.com/zeroth-robotics/zeroth-bot) | L17：Zeroth Bot 已列入 Robot Learning Paper Notebooks 的 PROGRESS.md 待深读 清单（分类：12_Hardware_Design）。本页 还没有深读笔记：只给出这篇论文的分类位置与原文入口，方法细节与数据请直接看原文。 | 原页以仓库为 Zeroth Bot 原文入口；本次官方 README 自述开源硬件/SDK/仿真与 KOS-ZBot、RL 训练组件，确认不是仅名字相似。 |
 | [wiki/entities/paper-softmimicgen.md](../../wiki/entities/paper-softmimicgen.md) | [NVlabs/SoftMimicGen](https://github.com/NVlabs/SoftMimicGen) | L92：开源代码：https://github.com/NVlabs/SoftMimicGen | SoftMimicGen 单一数据生成项目，参考来源明确「开源代码」，无未发布声明。 |
 | [wiki/entities/paper-sparsh.md](../../wiki/entities/paper-sparsh.md) | [facebookresearch/sparsh](https://github.com/facebookresearch/sparsh) | L61：开源（2026-09-23） ｜ 已开源（ARCHIVED） — facebookresearch/sparsh；权重 HF facebook/sparsh ｜ | Sparsh 官方已归档仓仍有 train.py/demo_forcefield.py 与 HF 权重；归档不等于未发布。 |
-| [wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md](../../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) | [ManifoldTechLtd/sru-pytorch-spatial-learning](https://github.com/ManifoldTechLtd/sru-pytorch-spatial-learning) | L55：简单可插拔： SRU 是对现有 LSTM/GRU 的 最小修改（独立模块 sru-pytorch-spatial-learning 可 pip install），相对堆叠历史帧（GTRL）或显式建图（EMHP）更易嵌入既有 RL 栈。 | SRU 方法自身可 pip install 的独立单元；选择核心模块仓，导航仿真与 SRU-Odin 为配套/移植。 其他命中：[ManifoldTechLtd/SRU-Odin](https://github.com/ManifoldTechLtd/SRU-Odin)<br>[ManifoldTechLtd/sru-navigation-sim](https://github.com/ManifoldTechLtd/sru-navigation-sim)；仅为索引、配套或上游，不写入 code。 |
+| [wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md](../../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) | [leggedrobotics/sru-pytorch-spatial-learning](https://github.com/leggedrobotics/sru-pytorch-spatial-learning) | L55：简单可插拔： SRU 是对现有 LSTM/GRU 的 最小修改（独立模块 sru-pytorch-spatial-learning 可 pip install），相对堆叠历史帧（GTRL）或显式建图（EMHP）更易嵌入既有 RL 栈。 | SRU 论文作者团队（ETH Zurich RSL）官方仓库为 `leggedrobotics/sru-pytorch-spatial-learning`（首批快照中的 `ManifoldTechLtd/sru-pytorch-spatial-learning` 实测返回 HTTP 404，已于跟进提交改回官方仓库）；`leggedrobotics/sru-navigation-sim` 与 `ManifoldTechLtd/SRU-Odin` 为导航仿真/移植配套，不写入 code。 |
 | [wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md](../../wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md) | [ZJU-FAST-Lab/ego-planner-v2](https://github.com/ZJU-FAST-Lab/ego-planner-v2) | L104：开源是「半栈」：EGO-Planner-v2（GPL v3）给出完整规划代码与三个仿真 workspace，但 掌心级自研硬件平台未随代码开源，实机复现须自行适配飞控。 | EGO-Planner-v2 为论文规划代码和仿真 workspace；硬件未开放不否定规划代码，GCOPTER 为 MINCO 上游。 其他命中：[ZJU-FAST-Lab/GCOPTER](https://github.com/ZJU-FAST-Lab/GCOPTER)；仅为索引、配套或上游，不写入 code。 |
 | [wiki/entities/physical-rsi.md](../../wiki/entities/physical-rsi.md) | [PhysicalRSI/PhysicalRSI](https://github.com/PhysicalRSI/PhysicalRSI) | L35：开源（2026-11-07 复核） ｜ 核心框架 PhysicalRSI/PhysicalRSI（Apache-2.0，physicalrsi 0.3.0，README 标 *Core release*）；评测接入 XPolicyLab policy/PhysicalRSI；项目页仍未列 arXiv / 权重 ｜ | Physical RSI 1.0 官方核心框架已 Core release；XPolicyLab 是评测接入，不能替代主仓。 其他命中：[XPolicyLab/XPolicyLab](https://github.com/XPolicyLab/XPolicyLab)；仅为索引、配套或上游，不写入 code。 |
 | [wiki/entities/qwen-robot-manip.md](../../wiki/entities/qwen-robot-manip.md) | [QwenLM/Qwen-RobotManip](https://github.com/QwenLM/Qwen-RobotManip) | L22：Qwen-RobotManip（GitHub ｜ 深度博客）论证：机器人 manipulation foundation 需要 alignment 与 scale 同时成立——无 跨本体统一表示 则加数据 冲突；无 数据多样性（含 H2R 合成） 则对齐 无法泛化。 | Qwen-RobotManip 模型与 Qwen 官方组织专属代码对应，正文另链官方博客，无本项目未发布声明。 |
@@ -405,10 +405,8 @@ PYSCAN
 - `GITHUB_ACTIONS=true make ci-preflight`：**通过**。身份检查、导出、图谱、wiki lint、搜索回归、首页统计与镜像同步全部完成；导出一致性 **15/15**，**0 孤儿**，来源覆盖 **7,772/7,772**。保留 NavWAM 缺对比节、HierText 缺评测枢纽回链这两条 main 已有信息项。
 - Mermaid 12.3.0 全量检查：**7,650 张图 / 7,847 个 Markdown 文件，0 错误**。
 - 补全 git 历史后重新生成图谱，`wiki-activity.json.source == "git"`，图谱数据同步门禁通过。
-- 验证全部 **63 页**相对 main 删除唯一新增 code 行后与原文件**字节级一致**；代码 URL 均为单行 GitHub owner/repo，无 ImChong，无日期/状态/正文改写。全部 217 排除页和 5 待定页仍不带 has_repo。
-- 导出与图谱逐项比较：增加的 has_repo 路径集合**精确等于本轮 55 页**，没有额外路径、减少或页面增删。
-- 报告内的候选扫描脚本已在独立旧 head worktree 实跑，输出 **277 页 / 358 对**，与逐页记录完全一致。
-- `report_health.py` 覆盖全部 63 页，完整健康度表贴入 PR 正文并以脚本校验；本次未把历史阅读/通读状态改成 complete。
+- **阶段一验证快照：** 以上 `df797a2` 阶段的字节级校验仅对应最初 `code:` 元数据回填快照，共覆盖全部 63 页并保留 217 排除页 / 5 待定页不带 has_repo。
+- **阶段二（2026-11-14）跟进验证：** 在 `fix/issue-3487-code-frontmatter-batch1` 分支中对 PR #3732 涉及的全部 63 个 wiki 节点完成原文全文/官方源码核对、阅读骨架与 Mermaid 项目流程图/源码运行时序图补齐，修正 `paper-sru-spatially-enhanced-recurrent-memory.md` 的 404 仓库链接（改为 ETH Zurich RSL 官方仓 `leggedrobotics/sru-pytorch-spatial-learning`）及 `dataset-bfm-humanoid-x.md` 误填的 arXiv 编号（改为 UH-1/Humanoid-X 官方编号 `2412.14172`）；最终通过 `report_health.py --changed`（**63/63 全部为 `3/3`**）、Mermaid 12.3.0 全量检查（**7,714 张图 / 7,847 个 Markdown 文件，0 错误**）、`GITHUB_ACTIONS=true make ci-preflight`、前端测试（130/130）、Python 单元测试与 `pr_derived_guard.py check --base origin/main` 验证，完整健康度表同步写入 PR #3732 正文。
 - `git diff --check` 与派生路径净检查通过；派生 JSON、站点统计、catalog/log 不随 PR 提交。
 
 | 口径 | 节点/页数 | 本轮前（已含首批）⭐️ | 本轮后 ⭐️ | 本轮净增 |
@@ -421,9 +419,9 @@ PYSCAN
 
 **普通本地预检的边界：** 首次普通 preflight 在全库逐文件 git 状态/来源日期扫描阶段中止，未宣称普通口径全绿。随后在完整历史上按仓库 Actions 现有规则完整重跑并通过；该规则只在 Actions 跳过来源日期提示。[main 的路线审计](roadmap-audit-2026-11-14.md) 已记录 16 条存量来源日期待核，本轮没有通过批量 bump updated 消除它们，也没有声称完成这些内容复核。
 
-### 浏览器抽查
+### 浏览器抽查（阶段一快照）
 
-使用本地 `docs/` 与本轮实际导出，通过 Chromium/Puppeteer 检查 DOM 并截屏；不注入 has_repo 或替换产品渲染。七项检查全部通过，页面 JavaScript 错误 **0**：
+以下浏览器抽查针对阶段一（`df797a2` 元数据回填快照）与本地 `docs/` 导出执行（早于阶段二的 `2026-11-14` 全量通读升级，因此阶段一快照中各页面仍保留原始 `updated` 日期）。使用 Chromium/Puppeteer 检查 DOM 并截屏；不注入 has_repo 或替换产品渲染。七项检查全部通过，页面 JavaScript 错误 **0**：
 
 | 表面 | 页面 | 结果 |
 |---|---|---|
