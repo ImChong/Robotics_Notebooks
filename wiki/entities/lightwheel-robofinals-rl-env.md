@@ -4,8 +4,8 @@ title: "RoboFinals RL Environments（光轮智能强化学习仿真训练环境�
 tags: [entity, lightwheel, reinforcement-learning, simulation, newton, manipulation, sim2real, industrial, robot-learning]
 project_id: lightwheel-robofinals-rl-env
 project: https://lightwheel.ai/robofinals-rl-env
-status: draft
-updated: 2026-11-13
+status: complete
+updated: 2026-11-14
 institutions: [lightwheel]
 related:
   - ./lightwheel.md
@@ -19,14 +19,14 @@ sources:
   - ../../sources/sites/lightwheel_robofinals_rl_env.md
 original:
   - ../../sources/sites/lightwheel_robofinals_rl_env.md
-summary: "RoboFinals RL Environments（RoboFinals RL-Env）是光轮智能在 CoRL 2026 期间介绍的真实任务驱动、Newton-native 强化学习仿真训练环境。EgoSuite 采集真实作业，agent 辅助构建、专家审核，支持长程多阶段与富接触任务，并与 RoboFinals 评测共享任务定义。已公开官方发布帖全文；专属产品技术页读取受限，早期访问申请中，暂无可核实的产品源码及量化结果。"
+summary: "RoboFinals RL Environments（RoboFinals RL-Env）是光轮智能在 CoRL 2026 期间介绍的真实任务驱动、Newton-native 强化学习仿真训练环境。EgoSuite 采集真实作业，agent 辅助构建、专家审核，支持长程多阶段与富接触任务，并与 RoboFinals 评测共享任务定义。官方发布公告的完整可见正文已核对；专属产品技术页读取受限，早期访问申请中，暂无可核实的产品源码及量化结果。"
 ---
 
 # RoboFinals RL Environments（光轮智能强化学习仿真训练环境）
 
 ## 一句话定义
 
-**RoboFinals RL-Env** 是 [光轮智能 Lightwheel](./lightwheel.md) 于 **CoRL 2026 期间**介绍的机器人 **强化学习仿真训练环境**：将 [EgoSuite](./lightwheel-egosuite.md) 捕获的真实工作转成 Newton-native 可交互环境，面向长程、多阶段、可变形及富接触操作训练，并与 [RoboFinals 评测平台](./lightwheel-robofinals.md) **共享任务定义**。首个公开示例是**汽车维修**。产品目前提供早期访问申请；官方独立技术页面尚未成功全文核对，因此本页保持 **draft**。
+**RoboFinals RL-Env** 是 [光轮智能 Lightwheel](./lightwheel.md) 于 **CoRL 2026 期间**介绍的机器人 **强化学习仿真训练环境**：将 [EgoSuite](./lightwheel-egosuite.md) 捕获的真实工作转成 Newton-native 可交互环境，面向长程、多阶段、可变形及富接触操作训练，并与 [RoboFinals 评测平台](./lightwheel-robofinals.md) **共享任务定义**。首个公开示例是**汽车维修**。产品目前提供早期访问申请。**本页完成状态仅指已公布的官方发布公告整理完整，不代表公开产品技术规格、SDK 或性能已全部核实。**
 
 ## 英文缩写速查
 
@@ -94,7 +94,7 @@ flowchart LR
 
 ## 局限与风险
 
-1. **产品页抓取受阻：** 官方 LinkedIn 发布帖已通读，但官网独立产品页在当前工具中无法获取；产品技术规格和完整机制均需补核，故状态为 **draft**。
+1. **产品页抓取受阻：** 官方 LinkedIn 发布帖已通读，且与官方 X 发布文案交叉核对；官网独立产品页在当前工具中仍无法获取。产品技术规格与完整机制均需补核；**complete 只对应本节点官方公告的已知公开内容，PR 在补核前仍为草稿**。
 2. **公开证据不足：** 官方尚未公布可独立验证的 RL 训练曲线、成功率、物理标定误差或 Sim2Real 关联数据。
 3. **代码与许可未明：** 只见早期访问申请，未找到该产品单独的可运行仓库；不等于断言公司没有内部代码。
 4. **概念不能混同：** 既有 RoboFinals（评测）、RoboFinals RL-Env（训练）和 LW-BenchHub（独立开源工程）不是同一产品。
@@ -111,6 +111,9 @@ flowchart LR
 - [Isaac Lab-Arena](./isaac-lab-arena.md)
 
 ## 参考来源
+
+**原文阅读范围：** 光轮官方 LinkedIn 发布公告（全文，2026-11-14 重核）；已追踪到对应官方 X 账号 2026-11-11 发布记录。**未读范围：** 当前仍无法直接打开的专属产品页及未公开实现细节；不将第三方总结当作技术原文。
+
 
 - [官方公告与开放状态核对归档](../../sources/sites/lightwheel_robofinals_rl_env.md)（已读官方发布帖全文；产品页正文未能读取）
 - [Lightwheel 官方 LinkedIn 动态](https://cn.linkedin.com/company/lightwheel2026)（RoboFinals RL Environments 公告）
