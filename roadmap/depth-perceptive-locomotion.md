@@ -139,6 +139,7 @@ flowchart LR
 - [ANYmal Parkour 深读笔记](../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)
 - [Humanoid Parkour Learning 深读笔记](../wiki/entities/paper-notebook-humanoid-parkour-learning.md)
 - [Footstep Planning](../wiki/concepts/footstep-planning.md) — 与 model-based 落脚点方法对照
+- [Go2 感知型 OCS2 NMPC：高程图凸分解与落足几何约束](../wiki/entities/ocs2-perceptive-mpc-go2.md) — **模型控制对照路线**：高程图→凸踏面/SDF→NMPC→WBC；注意该 Go2 实现默认关闭足端区域约束，不能据 RViz 绿色区域认定完整楼梯可行
 - [Light-Loco-Parkour](../wiki/entities/paper-light-loco-parkour.md) — 稀疏人体动作种子 Real2Sim2Real 扩成地形族 + 多专家 DAgger/转移 RL/深度 GRU 蒸馏成单一无技能标签深度策略；Lightbot 0 攀爬至 0.83H、踏石 99.9%，Orin Nano 边缘算力 50 Hz；代码未开源
 - [ParkourFormer](../wiki/entities/paper-parkourformer.md) — Transformer 用当前状态查询历史，监督未来两步 AMP 状态并条件化动作；G1 九类地形单策略平均穿越 93.85%；去 MSE 下楼塌到 9.50%；代码未开源
 - [TRAMP](../wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md)（SJTU，IEEE RA-L 2026）— 单阶段视觉辅助 RL：层次特征提取 + MoE actor + 地形相关 AMP，机载低成本深度；真机验证坡/楼梯/高台/宽沟与户外杂乱场景；代码未开源
