@@ -2,7 +2,8 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, open-source, biomimetic]
 status: complete
-updated: 2026-08-15
+updated: 2026-11-13
+code: https://github.com/orcahand/orca_core
 related:
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
