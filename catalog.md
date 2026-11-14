@@ -7318,6 +7318,7 @@
 - [CTDE vs 完全去中心化 MARL](wiki/comparisons/ctde-vs-decentralized-marl.md) — 在 多智能体强化学习（MARL） 里，多个机器人在同一空间协作或竞争（多臂流水线、机器人足球、集群导航）。两个核心难点是 **非平稳性**（别人的策略在变， `📅unknown` `[comparison_page]`
 - [数据手套 vs 视觉遥操作 (灵巧数据采集选型)](wiki/comparisons/data-gloves-vs-vision-teleop.md) — 在训练灵巧手（Dexterous Hand）执行复杂任务时，获取高质量的人类演示数据是第一步。目前，**穿戴式数据手套 (Data Gloves)** 和 **基于视觉的遥操作 (Vision-bas `📅unknown` `[comparison_page]`
 - [Deep Learning Optimizers：选型对比](wiki/comparisons/deep-learning-optimizers.md) — 背景**：反向传播 算出梯度后，需用 **优化器** 决定如何更新参数。从经典 [SGD](../methods/sgd.md `📅unknown` `[comparison_page]`
+- [DNS、LES 与 RANS/URANS：湍流求解及封闭模型选型（Choosing Turbulence Resolution and Closure Models）](wiki/comparisons/dns-les-rans-turbulence-resolution-selection.md) — 先根据工程目标决定直接求“瞬时全部尺度、统计平均场、随时间变化的平均场，还是空间过滤后的大尺度运动”，再为未解析尺度选择封闭关系，才是 DNS、RANS/URANS、LES 与 DES 家族的正确 `📅unknown` `[comparison_page]`
 - [DynaRetarget vs TopoRetarget：接触保真重定向两条路线对比](wiki/comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 背景**：把人–物体演示喂给机器人时，「像不像」往往不在关节角而在 **接触**——脚是否真踩实、指尖是否真贴物。2026 年两篇代表性工作分别从两端攻这道闸：[DynaRetarget](../ `📅unknown` `[comparison_page]`
 - [EtherCAT vs EtherNet/IP（工业总线选型对比）](wiki/comparisons/ethercat-vs-ethernet-ip.md) — 在人形机器人、工业机械臂、移动操作平台落地时，"主控板 ↔ 关节驱动器"的连接几乎都跑在工业以太网上。**EtherCAT** 和 **EtherNet/IP** 是当前装机量最大的两种以太网现场总线 `📅unknown` `[comparison_page]`
 - [FB / BFM-Zero / INTACT / Mimic / VLA：任务空间表征对比](wiki/comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — 背景**：围绕 RoboParty Lab 近期 MimicLite、[UFO](. `📅unknown` `[comparison_page]`
