@@ -121,7 +121,7 @@ sequenceDiagram
   autonumber
   actor User as 使用者
   participant Runner as run/run_all_stages.sh
-  participant Opt as run/optimize.py
+  participant Reconstructor as run/optimize.py
   participant Geo as depth/flow/track/segmentor
   participant Scene as scene_reconstruction_optim
   participant Prior as MotionPrior / modiff
@@ -129,24 +129,24 @@ sequenceDiagram
   participant Disk as outputs 缓存与结果
   User->>Runner: bash run/run_all_stages.sh
   loop stage1, stage2, stage3, stage4
-    Runner->>Opt: python run/optimize.py config/stageN.yaml
-    Opt->>Geo: prepare_batch + compute_flows/depths/tracks/segmentation
-    Geo-->>Opt: 缓存的视觉先验 + masks
-    Opt->>Disk: stage > 1 时 load_results(stage - 1)
+    Runner->>Reconstructor: python run/optimize.py config/stageN.yaml
+    Reconstructor->>Geo: prepare_batch + compute_flows/depths/tracks/segmentation
+    Geo-->>Reconstructor: 缓存的视觉先验 + masks
+    Reconstructor->>Disk: stage > 1 时 load_results(stage - 1)
     alt stage1：场景初始化
-      Opt->>Scene: 只优化相机位姿，flow/track，1000 iter
-      Scene-->>Opt: aria_traj_T + log_depth_scales
+      Reconstructor->>Scene: 只优化相机位姿，flow/track，1000 iter
+      Scene-->>Reconstructor: aria_traj_T + log_depth_scales
     else stage2：人体动作初始恢复
-      Opt->>Prior: sample_motion_2(aria_traj_T)
-      Prior-->>Opt: smpl_params + 对齐后的头部轨迹
+      Reconstructor->>Prior: sample_motion_2(aria_traj_T)
+      Prior-->>Reconstructor: smpl_params + 对齐后的头部轨迹
     else stage3：场景再优化
-      Opt->>Scene: 相机 + 深度尺度 + floor loss，1000 iter
-      Scene-->>Opt: 更新轨迹 + 尺度
+      Reconstructor->>Scene: 相机 + 深度尺度 + floor loss，1000 iter
+      Scene-->>Reconstructor: 更新轨迹 + 尺度
     else stage4：人体动作引导恢复
-      Opt->>Prior: canonicalize_aria_traj_T_v1 + sample_motion_with_guide
-      Prior-->>Opt: SMPL-X 参数 + 轨迹
+      Reconstructor->>Prior: canonicalize_aria_traj_T_v1 + sample_motion_with_guide
+      Prior-->>Reconstructor: SMPL-X 参数 + 轨迹
     end
-    Opt->>Disk: save_results(stageN)
+    Reconstructor->>Disk: save_results(stageN)
   end
   User->>Vis: python run/visualize.py config/stage4.yaml
   Vis->>Disk: 读取最终重建结果
