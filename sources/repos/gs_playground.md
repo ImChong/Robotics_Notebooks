@@ -7,6 +7,7 @@
 - **来源：** discoverse-dev（GitHub 组织）
 - **链接：** https://github.com/discoverse-dev/gs_playground
 - **入库日期：** 2026-04-29
+- **通读：** 已完成
 - **一句话说明：** 将并行物理仿真与批量 3D Gaussian Splatting (3DGS) 渲染耦合，实现最高 10^4 FPS 光真实感视觉观测，用于视觉强化学习，已被 RSS 2026 收录。
 - **沉淀到 wiki：** 是 → [`wiki/entities/gs-playground.md`](../../wiki/entities/gs-playground.md)
 

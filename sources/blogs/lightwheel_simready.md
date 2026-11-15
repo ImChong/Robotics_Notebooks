@@ -8,6 +8,7 @@
 - **博客列表：** https://lightwheel.ai/blogs（日期以列表页为准；SimReady 主文正文页无日期，列表页标 Mar 16, 2026）
 - **产品页：** https://lightwheel.ai/asset-library（SimReady Library）；资产商城 https://simready.com/
 - **入库日期：** 2026-10-10（正文、产品页与开源状态均于 2026-10-10 抓取核对；正文为服务端渲染 HTML，simready.com 为前端渲染，用 Playwright 抓取）
+- **通读：** 已完成
 - **一句话说明：** 光轮 SimReady 从「OpenUSD 资产库 + Newton 颗粒地形资产 + USD Search 检索」（2025-09）到「Measure → Solve → Generate 物理数据基础设施 + 加入 Newton TSC」（2026-03）的演进；资产数、性能数字均为 **光轮自报**。
 - **沉淀到 wiki：** [`wiki/entities/lightwheel-simready.md`](../../wiki/entities/lightwheel-simready.md)；开源子集见 [`wiki/entities/cn-os-lightwheel-simready-asset.md`](../../wiki/entities/cn-os-lightwheel-simready-asset.md)
 - **后续产品：** SimReadyGen（2026-07-20）见 [`lightwheel_simreadygen.md`](./lightwheel_simreadygen.md)

@@ -14,6 +14,7 @@ tags:
 project_id: lightwheel-simready
 project: https://lightwheel.ai/asset-library
 status: complete
+original: ../../sources/blogs/lightwheel_simready.md
 updated: 2026-10-24
 related:
   - ./lightwheel.md

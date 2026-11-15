@@ -3,7 +3,8 @@
 type: entity
 tags: [repo, 3dgs, gaussian-splatting, web, threejs, webgl2, streaming, lod, open-source, linux-foundation]
 status: complete
-updated: 2026-09-20
+original: ../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md
+updated: 2026-11-15
 related:
   - ./world-labs.md
   - ./marble-world-model.md
@@ -64,6 +65,15 @@ flowchart LR
 | **实现** | LoD 遍历：**Rust → Wasm**，跑在 Web Worker，不阻塞主线程 |
 
 **Foveated rendering**：通过 `coneFov*` / `behindFoveate` 把 splat 预算偏向视锥中心，在固定 budget 下提高主观清晰度。
+
+## 核心原理
+
+- **LoD Splat 树与 `.RAD` 流式格式**：将大规模 3DGS 组织为层级细节树，按视锥与屏幕空间误差流式加载与混合渲染。
+- **THREE.js 原生集成**：以标准 WebGL/THREE.js 渲染管线承载百万级高斯点，实现浏览器端实时交互。
+
+## 工程实践
+
+- **大场景流式交付**：超大规模场景应离线转换为 `.RAD` 分块格式，避免单次全量下载 `.ply`/`.splat` 导致浏览器内存溢出。
 
 ## 常见误区或局限
 

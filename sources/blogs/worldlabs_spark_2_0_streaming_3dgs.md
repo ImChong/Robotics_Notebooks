@@ -8,6 +8,7 @@
 - **作者/机构：** World Labs
 - **日期：** 2026-04-14（文内标注）
 - **入库日期：** 2026-05-28
+- **通读：** 已完成
 - **一句话说明：** Spark 2.0 技术深稿：**连续 LoD splat 树**、**.RAD 渐进流式**、**GPU 虚拟 splat 分页**；全局 splat 生成→排序→渲染三阶段；Rust→Wasm 在 Web Worker 做 LoD 遍历；与 THREE.js / WebGL2 对齐。
 
 ## Spark 1.x 系统回顾（博客归纳）

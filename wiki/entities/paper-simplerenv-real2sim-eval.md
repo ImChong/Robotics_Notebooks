@@ -14,7 +14,8 @@ tags:
 - awesome-physical-ai
 - eval
 status: complete
-updated: 2026-10-06
+original: ../../sources/papers/simplerenv_arxiv_2405_05941.md
+updated: 2026-11-15
 arxiv: '2405.05941'
 venue: arXiv 2024
 code: https://github.com/simpler-env/SimplerEnv

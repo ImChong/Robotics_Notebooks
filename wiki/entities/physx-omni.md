@@ -10,7 +10,8 @@ tags:
   - articulated-objects
   - deformable-objects
 status: complete
-updated: 2026-09-15
+original: ../../sources/papers/physx_omni_arxiv_2605_21572.md
+updated: 2026-11-15
 arxiv: "2605.21572"
 related:
   - ./paper-physforge-physics-grounded-3d-assets.md
@@ -78,6 +79,15 @@ flowchart LR
   PV["PhysXVerse 等训练数据"] -.-> G
   PB["PhysX-Bench\n六维 VLM 评测"] -.-> EXP
 ```
+
+## 核心原理
+
+- **多模态物理属性推理**：结合几何结构与视觉语义，为 3D 资产预测部件级物理参数（质量、摩擦、弹性、关节限位）。
+- **仿真就绪输出**：将推理结果写回统一物理描述格式，使生成资产可直接接入 Isaac Sim / MuJoCo 等物理引擎。
+
+## 工程实践
+
+- **资产管线衔接**：在 Real2Sim 资产入库前执行物理参数校验（如质量正定性、关节轴向与限位范围），避免仿真发散。
 
 ## 常见误区或局限
 

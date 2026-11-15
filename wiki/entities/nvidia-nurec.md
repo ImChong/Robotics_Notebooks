@@ -2,6 +2,7 @@
 type: entity
 tags: [nvidia, nurec, 3dgs, gaussian-splatting, real2sim, sim2real, isaac-sim, isaac-lab, omniverse, autonomous-driving, neural-reconstruction]
 status: complete
+original: ../../sources/sites/nvidia-nurec-docs.md
 updated: 2026-11-15
 related:
   - ./paper-instant-nurec.md
@@ -27,6 +28,10 @@ summary: "NVIDIA Omniverse NuRec（文档 26.04）把真实相机/LiDAR 重建�
 # NVIDIA Omniverse NuRec
 
 **NVIDIA Omniverse NuRec** 是面向 Physical AI 的 **神经重建与渲染栈**：把真实相机 / LiDAR 吃成可在仿真里重放、改视角的 3D 环境，主交付是带高斯 checkpoint 与轨迹元数据的 **USDZ**，而不是一张孤立 splat 图。
+
+## 一句话定义
+
+NVIDIA Omniverse NuRec 将真实相机/LiDAR 日志重建为带高斯 checkpoint 与轨迹元数据的可仿真 USDZ 体积，供 Isaac Sim 等应用渲染与闭环评测。
 
 ## 英文缩写速查
 
