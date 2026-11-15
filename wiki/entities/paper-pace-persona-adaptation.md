@@ -22,6 +22,8 @@ summary: "PACE（arXiv:2607.15579v5，Humanoids 2026）：用自适应问答合�
 
 # PACE：通过对话引导实现人机交互中的人格适配
 
+## 一句话定义
+
 **PACE**（*Persona Adaptation through Conversational Elicitation in Human-Robot Interaction*，arXiv:2607.15579v5）由麦考瑞大学与英伟达新加坡团队提出：**让 Ameca 人形机器人用短时、多轮问答生成结构化人格 `PersonaSpec`，再将其编译成可用于对话和表情表达的动态人格配置**，区别于固定 system prompt。
 
 ## 英文缩写速查
