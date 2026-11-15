@@ -145,6 +145,19 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
   - `make ci-preflight`、`make ci-test` 和 GitHub **Tests / Validate all published Mermaid diagrams** 均执行此门禁；单页调试可用 `node scripts/check_mermaid.cjs wiki/entities/<page>.md`。此检查验证围栏与语法；图表布局与可读性仍须在目标渲染器中验证。
 - 必要时更新 `index.md`
 
+### 步骤 5.5：核对并挂载至已有纵深路线（必查）
+
+每次新 ingest（新建或主要更新 `wiki/` 页面后），须确认本次内容是否符合**已有纵深路线**（[`roadmap/README.md`](../roadmap/README.md) 中列出的 `roadmap/depth-*.md`，以及相关的 `wiki/roadmaps/*.md`）：
+
+- **符合已有纵深路线时**：
+  - 打开对应的 `roadmap/depth-*.md`（或 `wiki/roadmaps/*.md`），定位最契合的 Stage（通常在「### 推荐读什么」或对应小节），以标准相对路径 `[页面标题](../wiki/...)` 挂载该页链接，并附一句简明定位说明（点明它在该 Stage 解决的问题或与前后节点的分工），保持该路线原有格式与风格。
+  - 若与多条纵深路线直接相关，可分别挂载到对应路线最相关的 Stage；若仅为泛泛提及而非该路线主线学习/工程所需，不必硬塞。
+  - 建议在对应 `wiki/` 页面的 `## 关联页面` 中反向链回该纵深路线（如 `[VLA 纵深路线](../../roadmap/depth-vla.md)`），方便双向导航。
+- **没有匹配的已有纵深路线时**：
+  - 确认无匹配即可，**不要**为了单次 ingest 强行新建纵深路线，也不要勉强挂入不相关的路线，直接进入下一步。
+
+> **为什么需要这一步**：避免新入库的论文与方法只停留在 `wiki/` 孤岛中，确保已有纵深路线随新资料持续演进、读者顺着路线即可读到最新节点。
+
 > **为什么要在 wiki 页面内标注来源**：git 记录文件变更时间线，`log.md` 可选记录操作意图，但页面本身也应能追溯知识来源，
 > 这样读者不依赖 git / log.md 就能知道这个 wiki 页的知识是从哪里编译来的。
 
@@ -377,5 +390,6 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面�
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
 - **有项目页必先查源码是否开放**（步骤 2.5），再写 wiki 开源表述与 `sources/repos/` 归档
+- **每次新 ingest 须核对已有纵深路线**（步骤 5.5）：对照 [`roadmap/README.md`](../roadmap/README.md) 确认是否符合 `roadmap/depth-*.md` 内容，符合则挂载到对应 Stage，无匹配则略过
 - 每次 ingest 用 `make log` 写一条 `log.d/` 碎片，不要遗漏；**不要**在 PR 里改 `catalog.md` / `log.md`
 - 提交前务必 `make ci-preflight` 做本地检查（派生 JSON 不入库）
