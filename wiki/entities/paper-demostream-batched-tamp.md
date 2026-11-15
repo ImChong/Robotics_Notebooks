@@ -1,14 +1,17 @@
 ---
 type: entity
 project_id: demostream-batched-tamp
-tags: [paper, robotics, ingest-2026-11]
+tags: [paper, robotics, imitation-learning, data-generation, tamp, ingest-2026-11]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
+topic: [imitation-learning, teleop-data]
 arxiv: "2610.22020"
 project: https://demostream.github.io/
 related:
+  - ../methods/imitation-learning.md
+  - ../../roadmap/depth-imitation-learning.md
+  - ../tasks/manipulation.md
   - ./paper-coda-coevolving-data-policy.md
-  - ./paper-submillisecond-reflex-engine.md
 original:
   - ../../sources/papers/demostream-batched-tamp_arxiv_2610_22020.md
 sources:
@@ -85,8 +88,10 @@ flowchart LR
 
 ## 关联页面
 
-- [CoDA：失败驱动的数据引擎与动作策略协同进化](./paper-coda-coevolving-data-policy.md)
-- [亚毫秒反射：连续人机物理交互的无锁控制切换](./paper-submillisecond-reflex-engine.md)
+- [Imitation Learning（模仿学习）](../methods/imitation-learning.md)：批量规划产生示范，再通过行为克隆学习视觉运动策略。
+- [模仿学习纵深路线](../../roadmap/depth-imitation-learning.md)：将规划式示范生成接入行为克隆学习流程。
+- [Manipulation（机器人操作）](../tasks/manipulation.md)：论文面向操作任务的规划、示范与策略执行。
+- [CoDA（数据与策略协同进化）](./paper-coda-coevolving-data-policy.md)：对照批量规划示范和失败驱动数据引擎。
 
 ## 参考来源
 

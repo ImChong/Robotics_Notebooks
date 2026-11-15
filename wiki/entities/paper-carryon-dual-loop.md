@@ -1,15 +1,19 @@
 ---
 type: entity
 project_id: carryon-dual-loop
-tags: [paper, robotics, ingest-2026-11]
+tags: [paper, robotics, vla, safety, long-horizon, ingest-2026-11]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
+topic: [vla, systems]
 arxiv: "2610.21453"
 project: https://vincent2311.github.io/Projects/CarryOn/
 code: https://github.com/JIA-Lab-research/CarryOn
 related:
+  - ../methods/vla.md
+  - ./paper-robo-harness.md
+  - ../concepts/safety-filter.md
   - ./paper-hdh-action-verifier.md
-  - ./paper-submillisecond-reflex-engine.md
+  - ./paper-err-replan-error-recovery.md
 original:
   - ../../sources/papers/carryon-dual-loop_arxiv_2610_21453.md
 sources:
@@ -110,8 +114,11 @@ sequenceDiagram
 
 ## 关联页面
 
-- [HDH：冻结 VLA 的低延迟动作验证](./paper-hdh-action-verifier.md)
-- [亚毫秒反射：连续人机物理交互的无锁控制切换](./paper-submillisecond-reflex-engine.md)
+- [VLA（视觉语言动作模型）](../methods/vla.md)：冻结 VLA 之外叠加规划记忆、安全屏蔽和恢复。
+- [RoboHarness（异构策略编排）](./paper-robo-harness.md)：都将长时规划编排置于基础策略外，但记忆与恢复机制不同。
+- [Safety Filter（安全过滤器）](../concepts/safety-filter.md)：理解 CarryOn 执行环中接触风险屏蔽的作用和边界。
+- [HDH（动作验证器）](./paper-hdh-action-verifier.md)：都不更新 VLA 主策略，但分别解决执行恢复与动作选择。
+- [ERR（错误恢复与重规划）](./paper-err-replan-error-recovery.md)：关联执行失败检测、恢复与重规划机制。
 
 ## 参考来源
 

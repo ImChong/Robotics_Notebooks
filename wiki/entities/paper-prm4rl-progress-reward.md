@@ -1,12 +1,16 @@
 ---
 type: entity
 project_id: prm4rl-progress-reward
-tags: [paper, robotics, ingest-2026-11]
+tags: [paper, robotics, rl, reward-shaping, ingest-2026-11]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
+topic: reinforcement-learning
 arxiv: "2610.22056"
 code: https://github.com/deng-ai-lab/PRM4RL
 related:
+  - ../concepts/reward-design.md
+  - ../methods/reinforcement-learning.md
+  - ./paper-mpbrs-humanoid-reward-shaping.md
   - ./paper-coda-coevolving-data-policy.md
   - ./paper-spear-selective-preference.md
 original:
@@ -110,8 +114,11 @@ sequenceDiagram
 
 ## 关联页面
 
-- [CoDA：失败驱动的数据引擎与动作策略协同进化](./paper-coda-coevolving-data-policy.md)
-- [SPEAR：机器人强化学习中的选择性 VLM 偏好询问](./paper-spear-selective-preference.md)
+- [Reward Design（奖励设计）](../concepts/reward-design.md)：进度势函数属于势函数奖励塑形，可对照一般奖励设计原则。
+- [Reinforcement Learning（强化学习）](../methods/reinforcement-learning.md)：论文通过 RL 策略优化验证进度信号。
+- [MPBRS（奖励塑形）](./paper-mpbrs-humanoid-reward-shaping.md)：同属 potential-based shaping，但任务和奖励构造不同。
+- [CoDA（数据与策略协同进化）](./paper-coda-coevolving-data-policy.md)：两者都使用进度势函数，CoDA 还将失败诊断反馈给场景生成。
+- [SPEAR（偏好奖励学习）](./paper-spear-selective-preference.md)：比较程序化进度奖励与偏好比较学习奖励。
 
 ## 参考来源
 
