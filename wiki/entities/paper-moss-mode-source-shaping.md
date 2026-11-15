@@ -1,14 +1,16 @@
 ---
 type: entity
 project_id: moss-mode-source-shaping
-tags: [paper, robotics, ingest-2026-11]
+tags: [paper, robotics, flow-matching, diffusion-policy, ingest-2026-11]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
+topic: imitation-learning
 arxiv: "2610.22193"
 project: https://mmmmazr.github.io/moss/
 related:
-  - ./paper-hdh-action-verifier.md
-  - ./paper-trace-conversational-humanoid-motion.md
+  - ../concepts/flow-matching-embodied-policy.md
+  - ../methods/diffusion-policy.md
+  - ./paper-gaussian-is-enough-flow-matching-priors.md
 original:
   - ../../sources/papers/moss-mode-source-shaping_arxiv_2610_22193.md
 sources:
@@ -86,8 +88,9 @@ flowchart LR
 
 ## 关联页面
 
-- [HDH：冻结 VLA 的低延迟动作验证](./paper-hdh-action-verifier.md)
-- [TRACE：具有参考保持约束的对话式人形动作编辑](./paper-trace-conversational-humanoid-motion.md)
+- [Flow Matching 与具身策略](../concepts/flow-matching-embodied-policy.md)：MOSS 通过源分布塑形控制动作模式。
+- [Diffusion Policy](../methods/diffusion-policy.md)：比较多模态动作生成中随机源分布和采样行为。
+- [Gaussian Is Enough（Flow Matching 先验）](./paper-gaussian-is-enough-flow-matching-priors.md)：两者均关注源分布设计，可对照模式可控性与生成质量。
 
 ## 参考来源
 

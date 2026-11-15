@@ -1,14 +1,17 @@
 ---
 type: entity
 project_id: submillisecond-reflex-engine
-tags: [paper, robotics, ingest-2026-11]
+tags: [paper, robotics, real-time, ros2, control, ingest-2026-11]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
+topic: [systems, model-based-control]
 arxiv: "2610.21913"
 code: https://github.com/RoboRef/franka_reflex_engine
 related:
-  - ./paper-carryon-dual-loop.md
-  - ./paper-trace-conversational-humanoid-motion.md
+  - ./ros2-control.md
+  - ../concepts/safety-filter.md
+  - ../concepts/control-inference-frequency-decoupling.md
+  - ../../roadmap/depth-safe-control.md
 original:
   - ../../sources/papers/submillisecond-reflex-engine_arxiv_2610_21913.md
 sources:
@@ -104,8 +107,10 @@ Franka Panda 的控制模式切换延迟低于 0.1 ms；多阶段任务执行耗
 
 ## 关联页面
 
-- [CarryOn：具备记忆、安全与失败恢复的双循环机器人 Harness](./paper-carryon-dual-loop.md)
-- [TRACE：具有参考保持约束的对话式人形动作编辑](./paper-trace-conversational-humanoid-motion.md)
+- [ros2_control](./ros2-control.md)：多控制器执行与模式切换依托 ROS 2 控制软件栈。
+- [Safety Filter（安全过滤器）](../concepts/safety-filter.md)：区分动作安全修正与控制器级快速反射切换。
+- [控制与推理频率解耦](../concepts/control-inference-frequency-decoupling.md)：对应实时控制路径与响应延迟的系统问题。
+- [安全控制纵深路线](../../roadmap/depth-safe-control.md)：补充接触安全、反射和控制约束背景。
 
 ## 参考来源
 
