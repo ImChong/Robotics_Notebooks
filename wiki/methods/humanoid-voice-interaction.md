@@ -2,11 +2,12 @@
 type: method
 tags: [speech, hri, humanoid, asr, tts, llm, vln, interaction]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-16
 related:
   - ../overview/large-model-empowered-humanoids.md
   - ../tasks/vision-language-navigation.md
   - ../entities/paper-qwen-audio-agent.md
+  - ../entities/paper-pace-persona-adaptation.md
   - ../entities/paper-moshi-speech-text-realtime-dialogue.md
   - ../entities/paper-moss-transcribe-diarize.md
   - ../entities/paper-xiaomi-cocktailasr-1.md
@@ -20,8 +21,10 @@ related:
   - ../entities/voicestudio.md
 original:
   - ../../sources/papers/moshi-arxiv-2410-00037.md
+  - ../../sources/papers/pace_persona_arxiv_2607_15579.md
 sources:
   - ../../sources/papers/moshi-arxiv-2410-00037.md
+  - ../../sources/papers/pace_persona_arxiv_2607_15579.md
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/papers/vibevoice_asr_arxiv_2601_18184.md
 summary: "人形智能语音交互：ASR→NLU/LLM→技能或导航→TTS 可打断闭环；课程 8.2，与 VLN/NaVid 组合完成语音导航实践。"
@@ -81,6 +84,10 @@ flowchart LR
 [Moshi（arXiv:2410.00037v2）](../entities/paper-moshi-speech-text-realtime-dialogue.md) 的论文 §3.3–3.4 与 §5 显示：Mimi 将音频压缩成流式离散 token，Temporal/Depth Transformer 同时建模用户音频与模型自身语音输出，并生成与自身语音对齐的文本 token。论文报告 **160 ms 理论延迟**、约 **200 ms 实际延迟**；这只描述语音模型的交互链路，**不包含**机器人意图验证、导航规划、执行器和传感反馈。
 
 在机器人系统里，可用该语音前台提供「持续听说、插话、口头确认」，而机器人动作仍通过**受限技能调用、实时控制器与物理急停**单独闭环。该接法属于工程集成建议，不是 Moshi 论文中的真机评测结论；详见 [Moshi 原文归档](../../sources/papers/moshi-arxiv-2410-00037.md)。
+
+### 社交人格适配：PACE 的增量
+
+[PACE（arXiv:2607.15579v5）](../entities/paper-pace-persona-adaptation.md) 把**5 个锚点问题 + 动态追问 → PersonaSpec → persona prompt 编译 → Ameca 语音/面部表情同步**接在社交交互链路上。它增强了机器人“怎样与用户交流”的个性化表达，不等于改进技能规划、导航、运动控制或急停。25 人真机实验报告信任评分从 3.52 升至 4.18，但官方 GitHub 目前只有展示与占位启动命令，尚不能按公开代码复现；核读细节见 [PACE 论文归档](../../sources/papers/pace_persona_arxiv_2607_15579.md)。
 
 ### 关键设计点
 
@@ -148,14 +155,16 @@ flowchart LR
 - [OpenLess](../entities/openless.md) — 桌面端 ASR→润色→光标注入（研究写作/Prompt 口述；**非**机载语音助手）
 - [Moshi：全双工语音对话模型](../entities/paper-moshi-speech-text-realtime-dialogue.md) — 连续双流语音与对齐文本生成；不直接控制机器人动作。
 - [Qwen-Audio-Agent](../entities/paper-qwen-audio-agent.md) — 开源全双工语音 harness：前台对话与后台 Agent 异步任务编排
+- [PACE：对话引导人格适配](../entities/paper-pace-persona-adaptation.md) — 在社交机器人语音链路上增加 PersonaSpec 编译与表情同步
 
 ## 参考来源
 
 - [深蓝学院人形系统课程大纲](../../sources/courses/shenlan_humanoid_system_theory_practice.md)
 - [Moshi 论文 v2 原文归档（已通读）](../../sources/papers/moshi-arxiv-2410-00037.md) — 本页新增的实时双流语音方案的第一手依据
+- [PACE arXiv v5 原文核读归档](../../sources/papers/pace_persona_arxiv_2607_15579.md) — 社交人格适配、语音与表情联动的依据
 - [VibeVoice-ASR 技术报告归档](../../sources/papers/vibevoice_asr_arxiv_2601_18184.md) — 长音频联合转写 / 说话人 / 时间戳的 ASR 选项
 
-> **原文通读范围说明：** `original` 对应已核对的 Moshi 论文 v2，用于新增全双工技术路线。深蓝学院材料目前是课程章节大纲，不能替代完整付费课程；VibeVoice-ASR 在本页作为可选组件引用，不据此声称对其完整训练与评测已重新通读。
+> **原文通读范围说明：** `original` 对应已核对的 Moshi 论文 v2（全双工技术路线）与 PACE arXiv v5（社交人格适配）。深蓝学院材料目前是课程章节大纲，不能替代完整付费课程；VibeVoice-ASR 在本页作为可选组件引用，不据此声称对其完整训练与评测已重新通读。
 
 ## 推荐继续阅读
 
