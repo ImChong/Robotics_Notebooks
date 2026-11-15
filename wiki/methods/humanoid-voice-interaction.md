@@ -2,7 +2,7 @@
 type: method
 tags: [speech, hri, humanoid, asr, tts, llm, vln, interaction]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-15
 related:
   - ../overview/large-model-empowered-humanoids.md
   - ../tasks/vision-language-navigation.md
@@ -18,7 +18,10 @@ related:
   - ../entities/humanoid-system-curriculum.md
   - ../queries/humanoid-voice-interaction-pipeline.md
   - ../entities/voicestudio.md
+original:
+  - ../../sources/papers/moshi-arxiv-2410-00037.md
 sources:
+  - ../../sources/papers/moshi-arxiv-2410-00037.md
   - ../../sources/courses/shenlan_humanoid_system_theory_practice.md
   - ../../sources/papers/vibevoice_asr_arxiv_2601_18184.md
 summary: "人形智能语音交互：ASR→NLU/LLM→技能或导航→TTS 可打断闭环；课程 8.2，与 VLN/NaVid 组合完成语音导航实践。"
@@ -55,6 +58,7 @@ summary: "人形智能语音交互：ASR→NLU/LLM→技能或导航→TTS 可�
 | 技能表 + 规则 NLU | 意图/槽位模板 | 预注册 API | 课程入门、可控 |
 | LLM Tool-Calling | 多轮规划 | 白名单工具 | 复杂指令 |
 | 语音 → VLN | 语言指令 | Nav2 / [NaVid](../entities/paper-vln-10-navid.md) | Ch8 实践 |
+| 全双工语音原生对话（开源模型） | 音频双流 + 同步文本 token | [Moshi](../entities/paper-moshi-speech-text-realtime-dialogue.md) | 实时听说与打断；不包含机器人动作执行 |
 | 全双工 + 后台 Agent（开源 runtime） | Realtime 前台 + 委派任务 | [Qwen-Audio-Agent](../entities/paper-qwen-audio-agent.md) Gateway | 座舱 / 桌面；真机需接技能白名单 |
 | 端到端语音策略（研究） | 音频条件策略 | 需强安全层 | 非课程默认 |
 
@@ -71,6 +75,12 @@ flowchart LR
   TTS --> SPK["扬声器"]
   SKILL -->|状态| NLU
 ```
+
+### 原生全双工语音与机器人技能层的边界
+
+[Moshi（arXiv:2410.00037v2）](../entities/paper-moshi-speech-text-realtime-dialogue.md) 的论文 §3.3–3.4 与 §5 显示：Mimi 将音频压缩成流式离散 token，Temporal/Depth Transformer 同时建模用户音频与模型自身语音输出，并生成与自身语音对齐的文本 token。论文报告 **160 ms 理论延迟**、约 **200 ms 实际延迟**；这只描述语音模型的交互链路，**不包含**机器人意图验证、导航规划、执行器和传感反馈。
+
+在机器人系统里，可用该语音前台提供「持续听说、插话、口头确认」，而机器人动作仍通过**受限技能调用、实时控制器与物理急停**单独闭环。该接法属于工程集成建议，不是 Moshi 论文中的真机评测结论；详见 [Moshi 原文归档](../../sources/papers/moshi-arxiv-2410-00037.md)。
 
 ### 关键设计点
 
@@ -142,7 +152,10 @@ flowchart LR
 ## 参考来源
 
 - [深蓝学院人形系统课程大纲](../../sources/courses/shenlan_humanoid_system_theory_practice.md)
+- [Moshi 论文 v2 原文归档（已通读）](../../sources/papers/moshi-arxiv-2410-00037.md) — 本页新增的实时双流语音方案的第一手依据
 - [VibeVoice-ASR 技术报告归档](../../sources/papers/vibevoice_asr_arxiv_2601_18184.md) — 长音频联合转写 / 说话人 / 时间戳的 ASR 选项
+
+> **原文通读范围说明：** `original` 对应已核对的 Moshi 论文 v2，用于新增全双工技术路线。深蓝学院材料目前是课程章节大纲，不能替代完整付费课程；VibeVoice-ASR 在本页作为可选组件引用，不据此声称对其完整训练与评测已重新通读。
 
 ## 推荐继续阅读
 
