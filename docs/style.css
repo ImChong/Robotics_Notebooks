@@ -4947,8 +4947,8 @@ html.is-theme-switching *::after {
 .dot-glow-host.is-dot-glow::after {
   opacity: .9;
 }
-/* 深色主题下 Hero 背后就是 body 底纹，由 .dot-glow 透过 Hero 半透明背景统一点亮，避免两层叠加 */
-:root:not([data-theme="light"]) .hero-backdrop::after {
+/* Hero 背后就是 body，由 .dot-glow 透过 Hero 半透明背景统一点亮，避免两层叠加或在 Hero 底边被截断 */
+.hero-backdrop::after {
   display: none;
 }
 .dot-glow {
@@ -4968,10 +4968,6 @@ html.is-theme-switching *::after {
 }
 .dot-glow.is-active {
   opacity: .9;
-}
-/* 浅色主题 body 无底纹点阵（--grid-dot: transparent），不点亮 */
-[data-theme="light"] .dot-glow {
-  display: none;
 }
 /* 按压反馈：按下时轻微缩小、松开回弹（减动时见下方取消） */
 .theme-toggle,
