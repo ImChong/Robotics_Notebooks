@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, reinforcement-learning, bilevel-optimization, humanoid, quadruped, imitation-learning, paper, humanoid-paper-notebooks]
 status: complete
 date: 2026-05-13
-updated: 2026-11-07
+updated: 2026-11-15
 arxiv: "2605.06593"
 related:
   - ../overview/paper-notebook-category-02-motion-retargeting.md
@@ -19,12 +19,17 @@ sources:
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
   - ../../sources/papers/humanoid_pnb_reactor.md
   - ../../sources/sites/disney-research-la.md
+original: ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
 summary: "ReActor 将跨具身运动重定向建成物理仿真中的双层问题：上层优化少量语义刚体对应下的参数化参考轨迹，下层用 RL 跟踪该参考；用问题结构导出可计算的上层近似梯度，并与残差根力、相位式启动等工程细节结合，在强异构人形与四足上生成少伪影的可跟踪参考。"
 ---
 
 # ReActor（物理感知 RL 运动重定向）
 
 **ReActor**（*Reinforcement Learning for Physics-Aware Motion Retargeting*，David Müller 等，Disney Research；ACM Trans. Graph. 45(4) Article 97 / SIGGRAPH 2026，arXiv:2605.06593）把「人体运动学参考 → 目标机器人可执行参考」写成**物理仿真内**的联合求解：不是先离线做纯几何重定向再把结果交给下游，而是让**可学习的重定向参数**与**跟踪策略**在同一个双层目标下协同更新，使接触、自碰与脚滑等约束由仿真与奖励**内生化**。
+
+## 一句话定义
+
+> 将跨具身运动重定向建成物理仿真内的双层优化问题，上层优化参数化参考轨迹、下层用 RL 跟踪，使接触与动力学约束内生化。
 
 ## 英文缩写速查
 
@@ -104,6 +109,11 @@ flowchart LR
 - **成本：** 单 GPU 训练 + 重定向全 AMASS 约 6.5 h（PPO，Isaac Sim 4096 环境），OmniRetarget 约 7 h、GMR 约 5 h（均为 CPU）。
 - **伪影：** 穿透 / 脚滑 / 悬空指标整体最好，但脚滑与悬空**不为零**，因为不严格强制接触匹配。
 - **用例：** 用 ReActor 重定向数据训练的跟踪策略部署到 Lima 实机；交互式动画中重定向策略以 88.3 Hz 运行。
+
+## 工程实践
+
+- **结构化梯度与稳定训练**：利用问题结构导出可计算的上层近似梯度，并配合残差根力（residual root forces）与相位式启动等工程技巧，保证强异构人形与四足上的双层收敛。
+- **低对应成本**：仅需少量语义刚体对应即可生成少脚滑、少穿透的可跟踪参考，适合缺乏精细骨架标定的新形态机器人。
 
 ## 局限与阅读时注意点
 

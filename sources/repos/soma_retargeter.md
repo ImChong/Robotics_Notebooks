@@ -16,3 +16,5 @@
 - 输出：机器人可播放 **CSV 关节轨迹**；提供交互 viewer 与 headless 批处理。
 - 关联：[SOMA-X](https://github.com/NVlabs/SOMA-X)（wiki [`soma-x.md`](../../wiki/entities/soma-x.md)）、[GEM-X](https://github.com/NVlabs/GEM-X)、[Kimodo](https://github.com/nv-tlabs/kimodo)、[ProtoMotions](https://github.com/NVlabs/ProtoMotions)、[GMR](https://github.com/YanjieZe/GMR)。
 - 状态：活跃开发中，API 可能变更。
+
+- **通读：** 已完成

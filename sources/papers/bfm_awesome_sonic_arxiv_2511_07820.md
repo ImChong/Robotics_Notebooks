@@ -28,3 +28,7 @@
 - 论文：<https://arxiv.org/abs/2511.07820>
 - 策展列表：<https://github.com/friedrichyuan/awesome-bfm-papers>
 - 微信公众号编译：[wechat_embodied_ai_lab_bfm_41_papers_survey.md](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
+
+- **通读：** 已完成
+
+- **通读：已完成**

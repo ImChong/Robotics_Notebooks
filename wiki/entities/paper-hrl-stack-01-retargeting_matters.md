@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, stanford]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 venue: curated
 summary: "GMR 的核心命题很直接：**retargeting matters**。论文指出，humanoid motion tracking policies 依赖人类动作重定向，但人和机器人之间存在 **embodiment gap**。重定向阶段留下的脚滑、不可行姿态、起始姿态不合理等问题，会直接影响后面的 **RL 控制器**。"
 related:
@@ -18,6 +18,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+original: ../../sources/papers/humanoid_rl_stack_01_retargeting_matters_general_motion_retargeting_f.md
 ---
 
 # Retargeting Matters
@@ -92,7 +93,15 @@ GMR 的核心命题很直接：**retargeting matters**。论文指出，humanoid
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
-## 与其他页面的关系
+## 工程实践
+
+- 在训练 RL motion tracking 策略前，应先对重定向输出做脚滑、关节限位与初始姿态可行性检查；方法实现见 [motion-retargeting-gmr](../methods/motion-retargeting-gmr.md)。
+
+## 局限
+
+- 本页为策展编译，量化 benchmark 与消融细节需以原文与项目页为准。
+
+## 关联页面
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)

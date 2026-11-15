@@ -47,3 +47,5 @@
 - 用户手册：<https://docs.blender.org/manual/en/latest/index.html>
 - 开发者文档：<https://developer.blender.org/docs/>
 - 社区：<https://www.blender.org/community/>
+
+- **通读：** 已完成

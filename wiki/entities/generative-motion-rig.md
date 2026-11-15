@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, generative-animation, motion-authoring, blender, dcc, disney, eth, siggraph, keyframing]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 venue: SIGGRAPH Talks 2026
 doi: "10.1145/3799818.3812088"
 related:
@@ -14,6 +14,7 @@ related:
   - ../methods/diffusion-motion-generation.md
   - ./ardy.md
   - ../methods/motion-retargeting-gmr.md
+original: ../../sources/papers/generative_motion_rig_siggraph_talks_2026.md
 sources:
   - ../../sources/papers/generative_motion_rig_siggraph_talks_2026.md
   - ../../sources/sites/disney-generative-motion-rig.md
@@ -23,6 +24,10 @@ summary: "Disney Research 的 Generative Motion Rig（SIGGRAPH Talks 2026）是�
 # Generative Motion Rig（Disney）：艺术家驱动的生成式运动绑定
 
 **Generative Motion Rig（GMR）**（*A Generative Motion Rig for Artist-Driven Motion Authoring*，SIGGRAPH Talks 2026，DisneyResearch\|Studios / ETH Zürich）把 **通用生成式运动模型** 嵌进动画软件（展示为 **Blender 插件**）：艺术家用稀疏姿态、**Neural Motion Curves (NMC)**、生成窗口与噪声采样做 **generative keyframing**，并可编辑/延长 MoCap、与传统 FK 层混合。
+
+## 一句话定义
+
+**Generative Motion Rig** 是 Disney Research 在 SIGGRAPH Talks 2026 提出的 Blender 插件，将稀疏关键帧、神经运动控制器（NMC）、时间窗与噪声注入结合为「生成式关键帧（generative keyframing）」工作流，支持与传统 FK 层混合编辑 MoCap。
 
 ## 英文缩写速查
 

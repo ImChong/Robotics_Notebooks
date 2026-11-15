@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, point-cloud, contact, mujoco, beyondmimic, sonic, unitree-g1, hkust-gz, noitom, hanyang, hkust, hku]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2609.02134"
 related:
   - ../concepts/motion-retargeting.md
@@ -22,6 +22,7 @@ sources:
   - ../../sources/repos/umr.md
   - ../../sources/repos/unified-motion-retargeting-unofficial.md
 summary: "UMR（arXiv:2609.02134，HKUST-GZ / Noitom / 汉阳 / HKUST / HKU）：规范 T-pose 稠密点云对应 + 约束表面匹配，不手写人–机关键点；LAFAN1 上相对 GMR 降全局体段误差、接触任务相对 OmniRetarget 关节误差约 −40–56%；G1 真机旋踢/捡球/爬楼；官方 GitHub + UMR Studio 已开源。"
+original: ../../sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md
 ---
 
 # UMR：学习点云对应的统一人形重定向

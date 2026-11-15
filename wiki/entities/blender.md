@@ -3,7 +3,7 @@
 type: entity
 tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization, blender-foundation]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-15
 related:
   - ./freecad.md
   - ./nvidia-omniverse.md
@@ -26,6 +26,7 @@ related:
   - ../concepts/character-animation-vs-robotics.md
   - ./manim.md
   - ./paper-apollo-blender.md
+original: ../../sources/sites/blender-org.md
 sources:
   - ../../sources/sites/blender-org.md
   - ../../sources/repos/blender.md
@@ -41,6 +42,10 @@ summary: "Blender 是 GPL 开源的全流程 3D 创作套件：在机器人栈�
 
 **Blender** 是由 **Blender Foundation** 维护的 **免费开源 3D 创作套件**，覆盖建模、雕刻、UV、绑定、动画、物理模拟、路径追踪渲染、合成、运动跟踪与视频编辑。在机器人研究与工程中，它 rarely 充当 RL 闭环仿真器，却频繁出现在 **资产创作、动捕后处理、场景可视化与 DCC→仿真格式交换** 链路上——与 [MuJoCo](./mujoco.md) / [Isaac Lab](./isaac-gym-isaac-lab.md) 等「训练后端」形成互补。
 
+## 一句话定义
+
+**Blender** 是 GPL 开源的全流程 3D 创作套件，在机器人栈中常作为 DCC 资产枢纽，承担网格/USD 场景组装、骨骼绑定与 BVH 导出、Python 批处理以及仿真插件宿主任务。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -52,7 +57,7 @@ summary: "Blender 是 GPL 开源的全流程 3D 创作套件：在机器人栈�
 | MoCap | Motion Capture | 动作捕捉；Blender 常作轨迹检视与曲线编辑 |
 | VFX | Visual Effects | 视觉特效；含相机/物体跟踪与实拍合成 |
 
-## 为什么对机器人栈重要
+## 为什么重要
 
 1. **资产与场景 authoring**：机器人仿真需要 mesh、材质、灯光、相机与布局；Blender 是 **零许可成本** 的全功能 DCC，可导出 FBX/OBJ/glTF/USD 等供 [NVIDIA Omniverse](./nvidia-omniverse.md)、自定义渲染或 **NeRF/3DGS** 数据合成使用。室内场景生成（如 [HomeWorld](./paper-homeworld-whole-home-scene-generation.md)）中亦常见 **Blender unfurnished shell** 作显式 3D 约束。
 2. **动画与重定向上游**：[Motion Retargeting](../concepts/motion-retargeting.md) 链路里，人体/角色动作常在 DCC 中 **检视、剪辑、绑定与曲线平滑** 后再导出；[SAM3DBody-cpp](./sam3dbody-cpp.md) 等提供 **BVH + Blender/MakeHuman 插件**，把单目姿态估计接入 DCC。
@@ -97,6 +102,15 @@ flowchart LR
 - **与专用机器人编辑器对照**：[机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) 绑定 **URDF/MJCF/CSV/NPZ**；Blender 绑定 **通用网格与骨骼**——二者常在 pipeline 中 **串联** 而非互斥。
 - **与生成式动画绑定对照**：[Disney Generative Motion Rig](./generative-motion-rig.md) 以 Blender 插件形态把 **generative keyframing** 接进 DCC（闭源）；[RigMo](./rigmo.md) 则从 mesh 序列发现可动画 bones，产出可进入 DCC/资产链的结构，而非 Blender UI 插件。
 - **与机械 CAD 对照**：[FreeCAD](./freecad.md) 强调 **参数化 B-rep 与 STEP 导出**；Blender 强调 **网格与动画**——硬件零件设计常走前者，场景与动捕后处理常走后者。
+
+## 核心机制
+
+Blender 通过统一的数据块（Mesh/Armature/Action/Scene）与内置 Python API（`bpy`）连接上游动捕与下游仿真：在骨骼绑定与动作编辑后，可将轨迹导出为 BVH/FBX/USD 供 Isaac/MuJoCo 等仿真器消费。
+
+## 工程实践
+
+- **无头批处理**：使用 `blender --background --python script.py` 批量转换网格、重命名骨骼或导出 USD/BVH，避免人工 GUI 重复操作。
+- **坐标系与单位对齐**：导出前统一 Z-up 与米制单位，防止导入机器人仿真器后出现缩放或朝向错误。
 
 ## 常见误区或局限
 

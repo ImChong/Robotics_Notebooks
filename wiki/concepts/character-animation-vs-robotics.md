@@ -3,7 +3,8 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-10-18
+updated: 2026-11-15
+original: ../../sources/papers/disney_olaf_character_robot.md
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -51,6 +52,10 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 
 **一句话定义：** 当一个人形平台的目标函数里同时出现「表演可信度（character believability）」与「物理可控性（physical controllability）」时，工程取舍不再是纯粹的功能优化，而是**风格先验 × 机电包络 × 安全约束** 的三方博弈——这是「角色化人形（Character Humanoid）」与「研究/工业型人形」最容易混淆又最值得分清的一类边界问题。
 
+## 一句话定义
+
+**Character Animation vs Robotics** 讨论角色动画（追求表演意图、风格化与视觉可信度）与实体机器人控制（受限于质量分布、关节力矩、接触摩擦与实时安全边界）在目标函数、管线设计与评估标准上的根本张力。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -75,7 +80,7 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 | CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
 | GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考（≠ Disney Generative Motion Rig） |
 
-## 为什么单独立一页
+## 为什么重要
 
 [Motion Retargeting](./motion-retargeting.md) 与 [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) 已经讲清楚「人怎么动 → 机器人怎么动」的几何与物理一致化链路；但仓库内仍混着多组**目标函数不同的人形平台**：
 
@@ -206,7 +211,17 @@ flowchart LR
   POL --> HW
 ```
 
-## 与其他页面的关系
+## 工程实践
+
+- **先定目标域再选管线**：若目标是实体机器人部署，应尽早引入物理仿真闭环与关节力矩/速度约束，避免在纯运动学 DCC 阶段过度雕琢不可达姿态。
+- **风格先验与物理兜底解耦**：可用 AMP/DeepMimic 等风格先验保留表演感，但由底层 RL/WBC 控制器负责平衡与接触稳定。
+
+## 局限
+
+- **跨形态语义鸿沟**：角色动画中的夸大比例、非物理质心与穿模容忍度无法直接映射到实体硬件。
+- **调试工具链割裂**：DCC 工具（Blender/MotionCanvas）与机器人仿真器（Isaac/MuJoCo）在坐标系、时间步长与资产格式上仍需显式转换层。
+
+## 关联页面
 
 - 上游链路与方法谱系：[Motion Retargeting](./motion-retargeting.md)、[Motion Retargeting Pipeline](./motion-retargeting-pipeline.md)、[GMR vs NMR vs ReActor](../comparisons/gmr-vs-nmr-vs-reactor.md)。
 - 安全与奖励配比：[Reward Design](./reward-design.md)、[Control Barrier Function](./control-barrier-function.md)。
@@ -233,3 +248,14 @@ flowchart LR
 - [sources/papers/deeprl_locomotion_action_space_sca2017.md](../../sources/papers/deeprl_locomotion_action_space_sca2017.md) — SCA 2017 四种动作空间对照
 - [sources/sites/disney-research-la.md](../../sources/sites/disney-research-la.md) — Disney Research LA 研究门户
 - [sources/sites/disney-research-la-holotile.md](../../sources/sites/disney-research-la-holotile.md) — Holotile 项目页归档
+
+## 参考来源
+
+- [Disney Olaf Character Robot](../../sources/papers/disney_olaf_character_robot.md)
+- [DeepMimic](../../sources/papers/deepmimic.md)
+- [AMP](../../sources/papers/amp.md)
+
+## 继续阅读
+
+- [Motion Retargeting](./motion-retargeting.md)
+- [Disney Olaf Character Robot](../methods/disney-olaf-character-robot.md)

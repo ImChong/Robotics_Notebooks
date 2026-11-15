@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, motion-retargeting, humanoid, nvidia, unitree-g1, gpu]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 summary: "NVIDIA soma-retargeter：SOMA BVH → G1 关节 CSV 的 GPU IK 重定向库，隶属 SOMA-X / SEED 人形运动数据生态。"
 related:
   - ../concepts/motion-retargeting.md
@@ -17,9 +17,12 @@ sources:
   - ../../sources/repos/soma_retargeter.md
   - ../../sources/repos/nvlabs-soma-x.md
   - ../../sources/papers/genmo.md
+original: ../../sources/repos/soma_retargeter.md
 ---
 
 # SOMA Retargeter
+
+## 一句话定义
 
 **SOMA Retargeter**（<https://github.com/NVIDIA/soma-retargeter>，Apache-2.0）将 **[SOMA-X](./soma-x.md)** 统一比例骨架上的 **BVH 人体运动** 转为 **人形机器人关节 CSV**，使用 [Newton](./newton-physics.md) + NVIDIA Warp 做 GPU 加速多目标 IK，并内置人体–机器人比例缩放、足部稳定与逐 DoF 限位钳制。
 
@@ -51,11 +54,16 @@ flowchart LR
   csv --> down["ProtoMotions / 自研 WBT"]
 ```
 
-## 工程要点
+## 工程实践
 
 - **输入约束**：期望 SOMA 统一比例骨架；非 SOMA BVH 需先对齐骨架定义。
 - **输出**：机器人可播放 CSV；可接 ONNX / 仿真训练管线。
 - **状态**：活跃开发，API 可能变更；额外机型在 roadmap。
+
+## 局限
+
+- 强依赖 SOMA 统一骨架约定，非 SOMA 动捕数据需额外骨架映射预处理。
+- 当前官方主推输出机型为 Unitree G1，多机型扩展仍在演进中。
 
 ## 关联页面
 

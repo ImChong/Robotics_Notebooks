@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, l-bfgs, quasi-newton, trajectory-optimization, numerical-methods]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-15
 summary: "L-BFGS 只存最近 m 对梯度差分向量，用 two-loop recursion 计算搜索方向，是高维 TrajOpt 与 cuRobo 类运动生成的工业默认。"
 related:
   - ./bfgs.md
@@ -15,6 +15,7 @@ related:
 sources:
   - ../../sources/papers/second_order_optimizers.md
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
+original: ../../sources/papers/second_order_optimizers.md
 ---
 
 # L-BFGS（Limited-memory BFGS）
@@ -35,7 +36,14 @@ sources:
 | NLP | Nonlinear Programming | 打靶后的非线性规划 |
 | m | History Size | 存储对数，典型 5–20 |
 
-## 主要技术路线
+## 为什么重要
+
+- **高维可扩展**：将内存与每步计算复杂度从 $O(n^2)$ 降至 $O(mn)$，使上万维的轨迹优化与运动生成成为可能。
+- **GPU 批量友好**：two-loop recursion 仅涉及向量内积与线性组合，非常适合 cuRobo 等并行多初值求解。
+
+## 核心原理
+
+### 主要技术路线
 
 ### 1. Two-loop recursion
 
@@ -68,7 +76,7 @@ sources:
 | 与 GPU 批量天然兼容 | 约束需外层 ALM/SQP |
 | 工业 TrajOpt 成熟默认 | 不如结构化 iLQR 利用动力学 |
 
-## 在机器人中的典型应用
+## 工程实践：在机器人中的典型应用
 
 - **[cuRobo](../entities/curobo.md)**：并行 L-BFGS 运动生成
 - **全身 TrajOpt**、操作空间路径优化

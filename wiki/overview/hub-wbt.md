@@ -2,7 +2,8 @@
 type: overview
 tags: [hub, hub-wbt, whole-body-tracking, motion-tracking, humanoid]
 status: complete
-updated: 2026-10-07
+updated: 2026-11-15
+original: ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
 summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向→跟踪训练→跨具身→真机部署的端到端流水线，对比 SONIC/BeyondMimic/SD-AMP/Heracles 等路线。"
 ---
 
@@ -48,6 +49,20 @@ summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向�
 - **[IL/RL](./hub-learning.md)**：跟踪策略主流用 RL + 模仿奖励。
 - **[训练数据](./hub-data-pipeline.md)**：WBT 的参考动作由训练数据管线产出（来源→质量→重定向）。
 
+## 核心原理
+
+WBT 以重定向后的全身参考轨迹为目标，通过强化学习（如 PPO 结合跟踪奖励与 AMP 风格先验）或引导扩散控制训练闭环全身策略，使人形机器人在保持平衡与接触约束的同时复现参考动作的时序与风格。
+
+## 工程实践
+
+- **端到端流水线**：典型链路为「参考采集 → 动作重定向与数据策展（如 GQS） → 仿真大规模并行跟踪训练 → 域随机化 Sim2Real 部署」。
+- **统一策略与恢复能力**：现代 WBT 趋向将走、跑、跌倒恢复与全身动作整合进单一策略，减少模式切换开销。
+
+## 局限
+
+- **对参考数据质量敏感**：未经过滤或物理精炼的参考动作会导致策略学出抖动、脚滑或高频补偿。
+- **真机 Sim2Real 鸿沟**：高动态动作在真机上受限于执行器带宽、延迟与碰撞安全边界。
+
 ## 关联页面
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
@@ -60,3 +75,8 @@ summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向�
 - 本库归纳自 [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 及 WBT 方法/对比页
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`wbt` 命中规则）
 - 上游原始资料（本链概念页共同的 ingest 来源）：[Sonic：大规模自然人形全身运动跟踪](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md)、[BeyondMimic：从运动跟踪到引导扩散通用控制](../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md)、[SDAMP：走 / 跑 / 恢复统一控制（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)
+
+## 推荐继续阅读
+
+- [行为基础模型与 WBT 路线图](../../roadmap/depth-bfm.md)
+- [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
