@@ -127,6 +127,7 @@ flowchart LR
 - [HiPHI](../wiki/entities/paper-hiphi.md) — 90 Hz / 55 关节 BVH 与同步物体 CSV/OBJ；先统一厘米/米、Y-up 与时间，再做人体–物体联合重定向；数据门控，Viewer 已开放
 - [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md) — 选型主入口
 - [GVHMR](../wiki/entities/gvhmr.md)、[SAM 3D Body](../wiki/entities/sam-3d-body.md)、[FreeMoCap](../wiki/entities/freemocap.md) — 视频/低成本采集
+- [EgoMo3R](../wiki/entities/paper-egomo3r.md) — 第一视角视频→统一场景与 SMPL-X 全身运动，可作为重定向前的参考动作数据源；本身不执行机器人重定向
 - [FMPose3D](../wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md) — 条件 Flow Matching 单目 2D→3D 姿态提升，3 步 ODE 多假设 + RPEA 聚合，可作视频→稀疏 3D 骨架的轻量上游
 - [PEAR](../wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) 与 [ViDiHand](../wiki/entities/paper-vidihand.md) — 表达级数据源前沿：单图 SMPL-X 身/脸/手 >100 FPS 实时恢复（SIGGRAPH 2026）与 egocentric 双手 4D 视频扩散估计
 - [Motion Data Quality](../wiki/concepts/motion-data-quality.md) 与 [LiMMT / GQS 动作数据整编](../wiki/methods/limmt-gqs-motion-curation.md) — 质量量化
