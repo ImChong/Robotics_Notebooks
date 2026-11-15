@@ -3972,6 +3972,7 @@
 - [PCTac（arXiv:2611.12383）](wiki/entities/paper-pctac.md) — PCTac**（*PCTac: Mechanochromic Photonic-Crystal Tactile Sensor for Dexterous Manipulation*，[arXiv: `📅unknown` `[entity_page]`
 - [PDRVLA：具有物理动力学表示的视觉语言动作模型](wiki/entities/paper-pdrvla-physical-dynamics-representations.md) — PDRVLA**（*PDRVLA: A Vision-Language-Action Model with Physical Dynamics Representations*，[arXiv:26 `📅unknown` `[entity_page]`
 - [PEAR：像素对齐的表意人体网格恢复](wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) — PEAR**（*Pixel-aligned Expressive humAn mesh Recovery*，arXiv:2601.22693，SIGGRAPH 2026，[IDEA](https: `📅unknown` `[entity_page]`
+- [PEAR：在仿真中训练推理模型原生使用真实机器人（Robot-Use RL）](wiki/entities/paper-pear-robot-use-rl.md) — 英文论文：** *Training Reasoning Models in Simulation to Natively Use Real Robots*。MIT HAN Lab 等团队的 **P `📅unknown` `[entity_page]`
 - [PEARS（arXiv:2610.08784）](wiki/entities/paper-pears-tactile-failure-reasoning-diffusion-steering.md) — PEARS**（*PEARS: Physical-Prior-Guided Efficient Adaptation via Failure Reasoning and Diffusion Ste `📅unknown` `[entity_page]`
 - [Pedicel Strawberry Harvesting（arXiv:2610.22765）](wiki/entities/paper-pedicel-strawberry-harvesting.md) — Pedicel Strawberry Harvesting**（*Pedicel-Targeted Strawberry Harvesting via Imitation Learning on  `📅unknown` `[entity_page]`
 - [PEEL：长程拆解要同时解决顺序、尺度和逃逸路径](wiki/entities/paper-peel-disassembly.md) — PEEL**（*Parallel Extraction for Long-Horizon Disassembly Planning via Scale-Invariant Sampling*；[a `📅unknown` `[entity_page]`
