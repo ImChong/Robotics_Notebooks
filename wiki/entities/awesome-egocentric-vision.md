@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, egocentric, ego-vision, vla, world-models, hand-object-interaction, wearable]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-15
 related:
   - ../overview/sun-awesome-ego-technology-map.md
   - ../overview/ego-9-papers-technology-map.md
@@ -13,6 +13,7 @@ related:
   - ./paper-ego4d.md
   - ../methods/egoscale.md
   - ./paper-egophi.md
+  - ./paper-egomo3r.md
   - ../methods/vla.md
   - ./awesome-world-models.md
   - ./awesome-touch.md
@@ -87,6 +88,7 @@ summary: "sun254667 维护的 Awesome Egocentric Vision：第一人称视觉与�
 - [Ego4D](./paper-ego4d.md) — 大规模第一人称数据集锚点
 - [EgoScale](../methods/egoscale.md) — 大规模 ego manipulation 标注与迁移
 - [EgoPHI](./paper-egophi.md) — ego 视觉 mesh 级接触+力估计（ECCV 2026，arXiv:2608.13014）
+- [EgoMo3R](./paper-egomo3r.md) — 第一人称单目视频联合恢复三维场景、相机轨迹与 SMPL-X 全身运动
 - [VLA](../methods/vla.md)
 - [Awesome World Models](./awesome-world-models.md) / [Awesome Touch](./awesome-touch.md)
 
