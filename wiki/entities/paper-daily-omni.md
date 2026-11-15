@@ -25,6 +25,8 @@ related:
   - ../methods/unified-multimodal-tokens.md
   - ./paper-xbot-omni.md
   - ./agibot-lingxi-x1.md
+original:
+  - ../../sources/papers/daily_omni_arxiv_2505_17862.md
 sources:
   - ../../sources/papers/daily_omni_arxiv_2505_17862.md
   - ../../sources/sites/daily-omni-github-io.md
