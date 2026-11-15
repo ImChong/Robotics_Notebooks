@@ -38,7 +38,7 @@ summary: "xpad 是 Linux 上 Xbox 系列 USB 手柄的内核驱动社区维护�
 - **比用户态 hack 更稳**：相对仅用户态解析 USB 报文，内核驱动直接接入 **input 子系统**，与 pygame / SDL / ROS `joy_node` 生态对齐。
 - **社区补丁领先主线**：第三方 Xbox 360 兼容垫初始化、Guitar Hero Live 等特殊设备在 paroj 分支往往 **早于** 某发行版内核落地，适合研究机快速验证。
 
-## 核心结构 / 机制
+## 核心原理（结构 / 机制）
 
 ### 连接路径对照
 
@@ -67,6 +67,11 @@ flowchart LR
   ROB[机器人速度指令<br/>或遥操作映射]
   PAD -->|USB| XPAD --> IN --> USR --> ROB
 ```
+
+## 工程实践
+- **先查主线内核**：多数发行版已内置 `xpad`，仅在设备不识别或需新设备 ID 时才安装 paroj DKMS 版。
+- **用户态读取**：经 `/dev/input/js*`、`/dev/input/event*` 以 pygame / ROS joy / RIO Node 读入，再映射为机器人速度命令或遥操作输入。
+- **部署前实测**：力反馈、模拟按键仍有 TODO；对目标手柄实测并配合标定脚本。
 
 ## 常见误区或局限
 

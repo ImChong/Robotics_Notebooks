@@ -22,7 +22,7 @@ tags:
 - privileged-training
 - dagger
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: '2604.13015'
 venue: IROS 2026
 code: https://github.com/chrisyrniu/humanoid-touch-dream

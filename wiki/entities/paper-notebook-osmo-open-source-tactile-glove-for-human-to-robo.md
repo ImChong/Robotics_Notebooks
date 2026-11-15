@@ -12,8 +12,9 @@ tags:
   - umich
   - upenn
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2512.08920"
+original: ../../sources/papers/humanoid_pnb_osmo-open-source-tactile-glove-for-human-to-robo.md
 code: https://github.com/jessicayin/osmo_tactile_glove
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md
@@ -161,7 +162,7 @@ sequenceDiagram
 - 评测仅 12 rollouts，方差较大，且训练/部署场景和相机位置相同。
 - 官方数据下载脚本仍是 TODO，仓库未给顶层许可文本。
 
-## 与其他页面的关系
+## 与其他页面的关联
 
 - 采集接口对比：[数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md)
 - 人侧全掌压阻对照：[HumanTouch](./humantouch.md) — 稠密压阻 + 多站点质控，非人机同构硬件

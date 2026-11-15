@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, humanoid, teleoperation, manipulation, bimanual, loco-manipulation, imitation-learning, exoskeleton, haptic, compliant-control, torque-feedback, motion-retargeting, act, umi, data-collection, ant-group, stanford]
 status: complete
-updated: 2026-09-15
+original: ../../sources/papers/ume_exo_arxiv_2606_14218.md
+updated: 2026-11-15
 arxiv: "2606.14218"
 venue: "arXiv 2026"
 related:
@@ -21,6 +22,10 @@ summary: "UME（Universal Manipulation Exoskeleton，arXiv:2606.14218）是 Ant 
 ---
 
 # UME-EXO（Universal Manipulation Exoskeleton）
+
+## 一句话定义
+
+UME（Universal Manipulation Exoskeleton，arXiv:2606.14218）是 Ant Group / Stanford 提出的低成本上肢外骨骼遥操作平台：实时透明触觉力矩反馈、全身臂形与关节力矩同步记录、IMU 驱动移动底座与通用 3-1-3 子链重定向；ACT 融合力矩模态学习主动柔顺双臂全身策略，在力主导与极窄空间任务上显著优于无力矩与 UMI 式末端示教。
 
 **UME**（Universal Manipulation Exoskeleton）是 Ant Group 与 Stanford 团队提出的 **上肢外骨骼遥操作与数据采集** 系统（arXiv:2606.14218，[项目页](https://ume-exo.github.io/)）：操作者穿戴约 **$1900** 的便携外骨骼，**实时感受从臂接触阻力**，同时记录 **全身关节位置与力矩**；经 **通用子链重定向** 可驱动 OpenArm、Franka、X-ARM 等不同 DoF 机械臂，并用板载 **IMU** 同步遥操作移动底座。采集数据训练 **ACT** 策略（力矩与位置同权嵌入）后，在 **力主导、视觉遮挡、极窄空间、长时程移动操作** 四类任务上成功率显著高于 **无力矩** 与 **UMI 式仅末端位姿** 基线。
 
@@ -41,8 +46,8 @@ summary: "UME（Universal Manipulation Exoskeleton，arXiv:2606.14218）是 Ant 
 
 - **补齐「力矩模态」采集缺口**：相对 [ALOHA](https://arxiv.org/abs/2304.13705) / [GELLO](https://arxiv.org/abs/2307.04796) 等 leader–follower，UME **同步记录并回传关节力矩**，使操作者与策略都能利用接触信息——对 **非抓取、环境借力**（靠墙翻箱、推物至视觉不可见尽头）至关重要。
 - **全身臂形 vs 仅末端**：相对 [UMI](https://umi-gripper.github.io/) 的 6D 末端示教，UME 记录 **整条臂配置**，在 **~5 mm 间隙 GPU 取放** 等任务中避免「微弯即碰障」；Table 1 中 UMI 在 GPU picking 与 box flipping 上成功率为 **0**。
-- **便携移动操作**：嵌入式 IMU（约 $9）将上身姿态映射为全向底座速度，无需昂贵 VR 全身追踪即可采集 **冰箱开门 + 双臂递接** 等长时程 loco-manip 示范（157 条 demo）。
-- **工程可负担**：外骨骼 **$1900**、自研移动双臂平台约 **$9533**（OpenArm 1.0 双臂 + Hexfellow PCW-25 等），与工业级数据手套 / 高成本 MoCap 形成对照；用户研究中力反馈使 box flipping 采集吞吐达无力矩版的 **3.3×**。
+- **便携移动操作**：嵌入式 IMU（约 $9）将上身姿态映射为全向底座速度，以低成本 IMU 代替（论文称约 $300 的 VR 头显可作为 drop-in 替代）即可采集 **冰箱开门 + 双臂递接** 等长时程 loco-manip 示范（157 条 demo）。
+- **工程可负担**：外骨骼 **$1900**、自研移动双臂平台约 **$9533**（成本拆解在附录 E.4，正文无数字，本页数字据项目页/归档，未对照附录核验），与工业级数据手套 / 高成本 MoCap 形成对照；力反馈使 box flipping 采集吞吐（DPM，含 reset 时间，多用户平均）达无力矩版的 **3.3×**，约为人手直接示范速度的 **71%**。
 
 ## 流程总览
 
@@ -91,7 +96,7 @@ UME 与从臂运动链均分解为三个子操纵器：**虚拟肩球关节（3D
 |------|------|
 | 位置前馈 | 各子链 FK 得 \(SO(3)\) 姿态 → 从臂子链 IK 得目标关节角；肘角 **直接镜像** |
 | 速度前馈 | 子链 Jacobian 将 \(\dot{q}_{exo}\) 映为虚拟角速度 \(\omega\)，再从臂 \(J^\dagger \omega\) 得 \(\dot{q}_{robot}\) |
-| 触觉反馈 | 从臂测得 \(\tau_{robot}\) → 空间力矩 \(F = \bar{J}^T \tau\) → 外骨骼 \(\tau_{exo} = J_{exo}^T F\)；肘力矩一对一映射 |
+| 触觉反馈 | 从臂测得 \(\tau_{robot}\) → 空间力矩 \(F = \bar{J}^T \tau\) → 外骨骼 \(\tau_{exo} = J_{exo}^T F\)；肘力矩一对一映射；外骨骼指令力矩另叠加科氏/离心/重力/摩擦补偿；J̄ = A⁻¹Jᵀ(JA⁻¹Jᵀ)⁻¹ 为动力学一致逆（A 为从臂关节惯量阵），3DoF 非冗余时退化为 J⁻¹ |
 
 子链 **隔离计算** 减轻 6D 末端控制在约束空间附近的奇异与耦合，提升窄空间遥操作可预测性。
 
@@ -128,6 +133,13 @@ UME 与从臂运动链均分解为三个子操纵器：**虚拟肩球关节（3D
 - 采集侧收益同样被实测：力反馈让 box flipping 的采集吞吐达无力矩版的 **3.3×**，约 $9 的板载 IMU 替代昂贵 VR 全身追踪来驱动移动底座，外骨骼整机约 $1900。
 - 适用边界：这是需要从臂在线的 **具身 leader–follower**，与 [BifrostUMI](./paper-bifrost-umi.md) 的「无目标机器人采集」互补而非替代；PLA 连杆偏重、载荷有限且长度不可调。
 - 开放问题与开源状态：策略范式固定在 [ACT](../methods/action-chunking.md)，未系统对比 Diffusion Policy / VLA；代码在项目页仍标注 Coming Soon，复现需等官方仓库与 BOM。
+
+## 工程实践
+
+- **复现边界：** 正文未含附录（控制细节 App. C、ACT 参数 App. D、成本/RoM App. E）；本页相关数字未据附录核验。Franka 仅仿真，X-ARM 为真机。
+- **硬件：** 便携上肢外骨骼，成本约 \$1900，记录整条臂配置而非仅末端 6D 位姿。
+- **策略：** 数据训练 [ACT](../methods/action-chunking.md)，每任务 20 次评测。
+- **开源：** 项目页标注 Coming Soon，代码与 BOM 未发布，复现需等待官方仓库。
 
 ## 常见误区或局限
 

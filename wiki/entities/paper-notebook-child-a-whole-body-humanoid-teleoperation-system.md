@@ -11,7 +11,7 @@ tags:
   - uiuc
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2508.00162"
 code: https://github.com/uiuckimlab/CHILD
 related:
@@ -21,6 +21,8 @@ related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ./paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md
   - ../../roadmap/depth-teleoperation.md
+original:
+  - ../../sources/papers/humanoid_pnb_child.md
 sources:
   - ../../sources/papers/humanoid_pnb_child.md
   - ../../sources/sites/child-teleoperation.md
@@ -163,7 +165,7 @@ sequenceDiagram
 - 力反馈主要反映构型/跟踪误差，不提供环境接触方向和真实力矩。
 - 直接腿关节控制有跌倒与夹伤风险；必须使用支撑、限位、急停和经过验证的机器人状态机。
 
-## 与其他页面的关系
+## 关联页面（与其他页面的关系）
 
 - 路线定位：[遥操作纵深 Stage 3](../../roadmap/depth-teleoperation.md) 的全身关节级接口。
 - 主任务：[Teleoperation](../tasks/teleoperation.md)。

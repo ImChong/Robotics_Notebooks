@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, dexterous-manipulation, reinforcement-learning, ppo, motion-prior, residual-learning, latent-space, whole-body, unitree-g1, wuji-robotics, isaac-lab, berkeley]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2606.23680"
 venue: "arXiv 2026"
 related:
@@ -19,10 +19,13 @@ related:
   - ./wuji-robotics.md
 sources:
   - ../../sources/papers/coordex_arxiv_2606_23680.md
+original: ../../sources/papers/coordex_arxiv_2606_23680.md
 summary: "CoorDex（arXiv:2606.23680，UNC/Berkeley）用分离的 body/hand 潜运动先验与协调潜残差 PPO，在 G1+20-DoF WUJI 上实现连续 dexterous loco-manipulation（边走边抓瓶、后退开门、转身持物）；WalkGrab 消融表明关节空间 PPO 与单体式潜残差在同奖励下均失败。"
 ---
 
 # CoorDex（Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation）
+
+## 一句话定义
 
 **CoorDex**（arXiv:[2606.23680](https://arxiv.org/abs/2606.23680)，[项目页](https://skevinci.github.io/coordex/)，UNC Chapel Hill / UC Berkeley）提出面向 **连续高 DoF 灵巧人形 loco-manipulation** 的学习管线：不把行走与操作拆成停走两阶段，而是将 **29-DoF 全身** 与 **20-DoF 五指手** 分别蒸馏为 **冻结的 proprio 条件潜先验**（16-D body / 12-D hand），再用 **共享任务上下文 + 分体 body/hand 潜残差头** 的 PPO 在 Isaac Lab 中联合适配步态、腕位与指级接触。仿真在 **Unitree G1 + WUJI 手** 上完成 WalkGrab、OpenFridge、WalkPickTurn 三项技能；真机视频为 **G1+Dex3-1** 轨迹回放定性验证。
 
@@ -146,8 +149,8 @@ flowchart TB
 
 ## 真机与局限
 
-- **仿真主结果：** G1 + **20-DoF WUJI**；训练与报告成功率均基于此配置。
-- **真机视频：** 可用硬件为 G1 + **Dex3-1（7-DoF）**；展示为 **回放仿真关节轨迹** 的定性兼容性与 **换 hand teacher 重蒸馏** 的可扩展性，**不应与 WUJI 仿真成功率直接对比**。
+- **仿真主结果：** G1 + **20-DoF WUJI**（右手）；报告成功率均基于此配置；附录另训了 Dex3-1 手 teacher 与先验。
+- **真机视频：** 可用硬件为 G1 + **Dex3-1**（附录 C，因设施限制 OpenFridge 用简化模型而非完整冰箱门）；展示为 **回放仿真关节轨迹** 的定性兼容性与 **换 hand teacher 重蒸馏** 的可扩展性，**不应与 WUJI 仿真成功率直接对比**。
 - **观测：** 当前使用 **特权物体位姿与接触**；论文明确 **未做视觉 sim2real**。
 - **课程：** WalkPickTurn 依赖任务特定 **NoDemoRSI**；更长时程与更多物体/hand 形态待扩展。
 
@@ -171,6 +174,39 @@ flowchart TB
 - [BeyondMimic](../methods/beyondmimic.md) — body tracking teacher 设计来源
 - [Unitree G1](./unitree-g1.md)
 - [舞肌 Wuji Hand](./wuji-robotics.md)
+
+## 工程实践
+
+以下均来自论文附录 A/B（arXiv v1 全文）；官方代码是否开放论文正文未说明，本页未复现。
+
+**仿真与控制栈**
+- Isaac Lab，物理步长 1/240 s、decimation 4 → **60 Hz** 控制；G1 手指固定（WUJI），**训练时仅 29 个身体关节驱动**；PD 跟踪关节位置目标。
+- 下游 PPO：**4096 并行环境**；评测另用 10,000 环境 / 50,000 episodes。
+- 动作 = **28-D 潜残差**（16 body + 12 hand）；残差缩放 1.0；初始动作噪声 σ=0.22；手目标 EMA 0.4。
+
+**先验训练**
+- Body teacher（BeyondMimic 式）：10 s episode；actor 5 帧历史；critic 非对称，额外看特权参考位姿/速度误差；奖励为指数跟踪项 + 动作抖动/关节限位/非期望接触惩罚；域随机化含摩擦、关节默认偏置、躯干质心扰动、随机推力。部署版去掉锚点平移与基座线速度，每帧 90 维 [ω_base, q, q̇, a_{t-1}]（5 帧 = 450 维）。
+- Hand teacher：floating-hand，ManipTrans 式 MANO 标注，120 Hz 降到 60 Hz；腕位姿/速度由数据集运动学写入，策略只控 20 个指关节；奖励偏重指尖关键点。手 prior 输入 66 维。
+- teacher PPO：24 步/rollout、5 epoch、4 minibatch、γ=0.99、λ=0.95、lr 1e-3（自适应，KL 目标 0.01）、熵 0.005、梯度裁剪 1.0、MLP [1024,512,256]、ELU。
+- VAE 蒸馏：encoder/prior/decoder 均为 MLP [512,256,128]，最多 30000 次迭代；body lr 2e-4、平滑系数 0.005、KL 系数 1e-3→1e-4（15k–20k 次更新退火）；hand lr 5e-4、KL 1e-2→1e-3（15k–25k 退火）。
+
+**下游残差策略**
+- 共享 PPO 设置（三任务相同）：24 步×4096 环境 = 98304 batch、clip 0.2、价值损失系数 1.0；actor/critic [1024,512,256]；协调 trunk [512,256]；body/hand 头 [256,128]。
+- 观测维度：WalkGrab 618、WalkPickTurn 620、OpenFridge 629（含 450 维 body proprio 历史、66 维手 proprio、28 维上步潜动作、15 维指尖力）；actor 加观测噪声，critic 无噪声。
+- Episode：WalkGrab 15 s（900 步）、OpenFridge 7 s（420 步）、WalkPickTurn 10 s（600 步）。
+- 奖励：WalkGrab/OpenFridge 为单阶段，用 grasped / 接触谓词门控（grasped = 指尖–瓶平均距离 <0.10 m 且 ≥2 个指尖力 >1 N 含拇指）；成功奖励 500（WalkGrab）/ 1000（OpenFridge、WalkPickTurn）。
+- 成功条件：WalkGrab 根前进 >2.0 m、瓶抬起 >0.02 m 且抓取；OpenFridge 门角 ≥60° 且保持开启计数 ≥30 步（门角 ≥35° 且有指尖接触才累计）。
+
+**NoDemoRSI（仅 WalkPickTurn）**
+- 三阶段（接近/抓抬/转身，单调推进）；每个非初始阶段一个 **512 条** FIFO 快照缓冲，快照须满足未摔倒（根高 ≥0.5 m）、最小停留步数、速度已稳定。
+- 阶段解锁：缓冲 ≥128 条且前一阶段成功率 >0.70；解锁后采样份额从 0.05 在 1000 次尝试内爬升；各阶段成功率 ≥0.80 进入巩固模式（85% 重置到阶段 0），<0.75 退出。
+
+**踩坑 / 论文指出的失败模式**
+- 全关节空间 PPO：为避免摔倒把身体扭成怪姿，从不抓取（stop 86%）。
+- Body prior + 手关节空间：到位后减速/停下当静态抓取处理，grasp 仅 1%。
+- 单体式潜残差：能接近目标但躯干抖动（action rate 0.40 vs 0.22）、抓取失败。
+- 长时程任务从默认姿态纯奖励优化不可靠，需 NoDemoRSI；该课程与先验均按任务选择，非通用。
+- 真机：仅 G1+Dex3-1 回放关节轨迹，验证运动学兼容；无闭环真机策略、无视觉。
 
 ## 参考来源
 

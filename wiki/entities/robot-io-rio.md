@@ -13,6 +13,8 @@ related:
   - ../methods/action-chunking.md
 sources:
   - ../../sources/repos/robot-io-rio.md
+original:
+  - ../../sources/repos/robot-io-rio.md
 summary: "RIO（Robot I/O）是 CMU 等团队开源的跨形态实时机器人 I/O 框架：统一 Node 与可切换中间件，把遥操作、传感、控制、RLDS 风格数据与异步 VLA 推理接到同一套 station 配置上。"
 ---
 
@@ -82,6 +84,12 @@ flowchart LR
   REC --> EXP
   PW --> MW
 ```
+
+## 工程实践
+- **按 station 配置落地**：用单一 dataclass 描述设备、相机与臂/夹爪组合，业务代码只面向 proxy API；换硬件优先改配置而非主循环。
+- **中间件按阶段切换**：调试用 Thread，本机闭环用 Shared Memory，多机再用 Zenoh / ZeroRpc / Portal。
+- **VLA 部署**：训练在外部栈完成，导出后用异步推理节点拉观测、提交动作 chunk，保持主循环非阻塞。
+- **环境**：README 示例环境为 Ubuntu 22.04、Python 3.10，另需克隆 `third_party/openpi` 并用 uv 同步依赖；硬件驱动与延迟需自测。
 
 ## 常见误区或局限
 

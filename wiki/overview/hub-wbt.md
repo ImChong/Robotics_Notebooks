@@ -50,18 +50,24 @@ summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向�
 - **[训练数据](./hub-data-pipeline.md)**：WBT 的参考动作由训练数据管线产出（来源→质量→重定向）。
 
 ## 核心原理
-
-WBT 以重定向后的全身参考轨迹为目标，通过强化学习（如 PPO 结合跟踪奖励与 AMP 风格先验）或引导扩散控制训练闭环全身策略，使人形机器人在保持平衡与接触约束的同时复现参考动作的时序与风格。
+WBT 流水线可概括为：参考动作采集 → [重定向](../concepts/motion-retargeting.md) 到机器人形态 → 以 RL + 模仿奖励（DeepMimic / AMP 类）训练跟踪策略 → 跨具身迁移 → 真机部署。质量上限由参考与迁移共同决定；详见 [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)。
 
 ## 工程实践
-
-- **端到端流水线**：典型链路为「参考采集 → 动作重定向与数据策展（如 GQS） → 仿真大规模并行跟踪训练 → 域随机化 Sim2Real 部署」。
-- **统一策略与恢复能力**：现代 WBT 趋向将走、跑、跌倒恢复与全身动作整合进单一策略，减少模式切换开销。
+- **数据策展与部署**：参考动作需先清洗并重定向，跟踪训练后还需经域随机化及 Sim2Real 验证。
+- **统一策略与恢复**：可进一步考察将走、跑、跌倒恢复与全身跟踪合并训练，以降低模式切换成本。
+- 先在 [方法选型 Query](../queries/humanoid-motion-tracking-method-selection.md) 与 [路线对比](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) 中选路线，再进具体方法页。
+- 参考动作的来源与清洗见 [训练数据](./hub-data-pipeline.md)；上游重定向见 [动作重定向](./hub-motion-retargeting.md)。
 
 ## 局限
+- **参考质量与物理一致性**：低质量参考会带来脚滑、抖动和高频补偿；高动态动作还受电机带宽、延迟及碰撞安全约束。
+- 本页是入口汇总，不替代各方法页的实验细节；各路线数字不可跨论文直接比较。
+- 跟踪策略擅长复现参考，不等于具备任务泛化；Sim2Real 仍需单独处理。
 
-- **对参考数据质量敏感**：未经过滤或物理精炼的参考动作会导致策略学出抖动、脚滑或高频补偿。
-- **真机 Sim2Real 鸿沟**：高动态动作在真机上受限于执行器带宽、延迟与碰撞安全边界。
+## 继续阅读
+- [行为基础模型与 WBT 路线图](../../roadmap/depth-bfm.md)
+- [SONIC Motion Tracking](../methods/sonic-motion-tracking.md)
+- [BeyondMimic](../methods/beyondmimic.md)
+- [Humanoid RL Motion Control Body System Stack](./humanoid-rl-motion-control-body-system-stack.md)
 
 ## 关联页面
 
@@ -75,8 +81,3 @@ WBT 以重定向后的全身参考轨迹为目标，通过强化学习（如 PPO
 - 本库归纳自 [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 及 WBT 方法/对比页
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`wbt` 命中规则）
 - 上游原始资料（本链概念页共同的 ingest 来源）：[Sonic：大规模自然人形全身运动跟踪](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md)、[BeyondMimic：从运动跟踪到引导扩散通用控制](../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md)、[SDAMP：走 / 跑 / 恢复统一控制（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)
-
-## 推荐继续阅读
-
-- [行为基础模型与 WBT 路线图](../../roadmap/depth-bfm.md)
-- [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)

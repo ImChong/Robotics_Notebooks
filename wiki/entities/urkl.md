@@ -133,7 +133,7 @@ flowchart LR
 - **安全与合规：** T800 产品页明确 **民用、禁止危险改装**；高冲击赛事对观众距离、应急停机与机体维修成本有现实约束。
 - **第三方导读边界：** [urkl.org](../../sources/sites/urkl-org.md) 为 **Independent fan guide**，适合证据索引与时间线核对，**不是** EngineAI 官网镜像。
 
-## 与其他页面的关系
+## 与其他页面的关系（关联）
 
 - [REK](./rek.md) — 西方 VR 遥操作格斗联赛对照样本
 - [RoboStriker](./paper-notebook-robostriker.md) — 自主人形拳击学术研究锚点

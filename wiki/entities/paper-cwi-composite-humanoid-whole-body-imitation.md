@@ -15,7 +15,7 @@ tags:
   - hku
   - hkust
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2606.27676"
 venue: "IEEE RAL"
 related:
@@ -31,6 +31,8 @@ related:
   - ./paper-resmimic.md
   - ./paper-faststair-humanoid-stair-ascent.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
+original:
+  - ../../sources/papers/cwi_arxiv_2606_27676.md
 sources:
   - ../../sources/papers/cwi_arxiv_2606_27676.md
   - ../../sources/sites/cwi-project.md
@@ -167,6 +169,12 @@ Teacher 看到特权状态与完整上身参考 $m_u$；Student 只能看到部�
 | 训练后端 | 论文报告 IsaacLab；实现细节未开源 |
 | 硬件 | LimX Oli 31-DoF，全尺寸人形 |
 | 遥操作 | Meta Quest VR 双手 + 速度/身高命令 |
+| 实验设置（论文 §IV-A） | LimX Oli 31-DoF，1.65 m / 50 kg；IsaacLab 训练；命令范围 vx∈[−0.5,1.0] m/s、ωyaw∈[−1.2,1.2] rad/s、h∈[0.17,0.9] m；AMASS 上身全库 85%/15% 划分训练/评测，上身参考表示在机器人基座系 |
+| Sim2Real | 标准域随机化（质量、摩擦、传感器噪声、延迟）；策略输出 31 维动作 |
+| 基线公平性 | HOVER*/FALCON*/HOMIE* 均在 Oli 上按各自框架重实现，观测、奖励权重、PD 增益统一 |
+| 部署接口取舍 | 学生只吃双手 9D keypoint + 速度/身高命令，避免在线 IK 在奇异点附近不连续；代价是相对关节命令设定有小幅开环精度损失 |
+| 真机现象 | 箱子举升中腰俯仰随手前伸自动增大、站直后回落，无显式躯干命令（来自 AMASS 上身耦合） |
+| 局限（论文自述） | 不支持关节级/接触级命令（如用脚踩垃圾桶踏板、肘部主接触）；行为覆盖受动作库与命令接口限制 |
 | 可复现边界 | 可复核论文与视频；不可直接复现实验训练栈 |
 
 ## 结论

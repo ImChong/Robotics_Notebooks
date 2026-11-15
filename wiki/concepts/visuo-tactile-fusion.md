@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./tactile-sensing.md

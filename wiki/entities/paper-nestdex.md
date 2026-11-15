@@ -12,7 +12,7 @@ tags:
   - pair-lab
   - vanderbilt
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2608.13362"
 related:
   - ../tasks/teleoperation.md
@@ -23,6 +23,8 @@ related:
   - ./paper-teledexter.md
   - ../tasks/bimanual-manipulation.md
   - ../../roadmap/depth-teleoperation.md
+original:
+  - ../../sources/papers/nestdex_arxiv_2608_13362.md
 sources:
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
   - ../../sources/sites/aus-bot-nestdex.md

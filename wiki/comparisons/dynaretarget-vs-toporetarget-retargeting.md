@@ -4,7 +4,6 @@ type: comparison
 tags: [motion-retargeting, humanoid, dexterous-manipulation, loco-manipulation, sampling-based-optimization, reinforcement-learning, contact-rich-manipulation, comparison, engineering-selection, horizon-robotics]
 status: complete
 updated: 2026-06-18
-original: ../../sources/papers/dynaretarget_arxiv_2602_06827.md
 sources:
   - ../../sources/papers/dynaretarget_arxiv_2602_06827.md
   - ../../sources/papers/toporetarget_arxiv_2606_16272.md
@@ -17,6 +16,7 @@ related:
   - ../entities/paper-hrl-stack-03-omniretarget.md
   - ../tasks/loco-manipulation.md
   - ../tasks/manipulation.md
+original: ../../sources/papers/dynaretarget_arxiv_2602_06827.md
 summary: "DynaRetarget 与 TopoRetarget 两条 2026 接触保真重定向路线对比：前者用增量时域 SBTO 把 IK 参考精炼为人形 loco-manipulation 的动力学可行轨迹，后者用共享拓扑 interaction mesh + Laplacian 在运动学层保留灵巧手–物体交互；从尺度（全身 vs 灵巧手）、修补层（动力学 vs 运动学）、求解成本与适用任务给出选型坐标。"
 ---
 
@@ -49,14 +49,9 @@ summary: "DynaRetarget 与 TopoRetarget 两条 2026 接触保真重定向路线�
 
 ## 为什么重要
 
-单纯基于运动学逆解（IK）的重定向往往破坏接触约束与动力学可行性，导致全身浮空滑移或灵巧手穿模掉物。对比 DynaRetarget 与 TopoRetarget 有助于在「全身动力学修补」与「灵巧手拓扑保真」两条接触保真路线之间做出准确选型。
+重定向的「像不像」取决于接触而非关节角。两条路线把接触保真放在不同层（动力学 vs 运动学），选错会在算力、实时性或物理可行性上付出代价；本页帮助按任务尺度与资源做取舍。
 
-## 核心机制
-
-- **DynaRetarget**：以增量时域采样型轨迹优化（SBTO）为核心，在 IK 参考轨迹基础上引入接触与动力学约束，输出物理可行的全身 loco-manipulation 轨迹。
-- **TopoRetarget**：以共享拓扑交互网格（interaction mesh）与拉普拉斯能量优化为核心，在运动学层保持手部与物体间的相对拓扑结构，避免指尖穿透或脱离。
-
-## 核心维度对比
+## 核心原理（核心维度对比）
 
 | 维度 | **DynaRetarget**（动力学层精炼） | **TopoRetarget**（运动学层交互保留） |
 |------|----------------------------------|--------------------------------------|
@@ -118,7 +113,15 @@ flowchart TD
 
 > **避坑**：对「应接触未接触」的虚拟接触需预处理；极端力控任务因缺动力学一致化仍需单独验证。
 
-## 常见误判
+## 工程实践
+
+- **全身 loco-manipulation**：涉及步行搬运、重心转移或地面反作用力时优先用 DynaRetarget 的动力学轨迹精炼。
+- **灵巧手精细操作**：关注多指接触拓扑、物体几何与实时响应时优先用 TopoRetarget；动力学约束仍交给下游控制器。
+- 管线串联：GMR / IK 出初值 → DynaRetarget 或 TopoRetarget 做接触修补 → 下游 RL 跟踪。
+- 算力紧时 DynaRetarget 优先用 SBTO_skip（前缀缓存），TopoRetarget 约 4.7 ms/帧可用于实时场景。
+- 两法结果多为仿真口径，上真机仍需 DR / SysID / 下游 WBC。
+
+## 局限与常见误判
 
 1. **「二者二选一」**：错。一个面向 **全身 loco-manipulation**、一个面向 **灵巧手 in-hand**，任务域不同；真实系统可在不同肢段分别采用。
 2. **「TopoRetarget 不做动力学 = 更弱」**：维度不同。它以 **实时 + 接触保真** 换取轻量，把动力学交给下游；DynaRetarget 以 **算力** 换取重定向阶段的动力学可行。
@@ -151,16 +154,6 @@ flowchart TD
 - DynaRetarget：[arXiv:2602.06827](https://arxiv.org/abs/2602.06827)；项目页 <https://atarilab.github.io/dynaretarget.io/>；代码 <https://github.com/Atarilab/sbto>。
 - TopoRetarget：[arXiv:2606.16272](https://arxiv.org/abs/2606.16272)；项目页 <https://tsinghua-mars-lab.github.io/toporetarget-web/>。
 
-## 工程实践
-
-- **全身 loco-manipulation 优先选 DynaRetarget**：当任务涉及步行搬运、重心转移或地面反作用力约束时，需在动力学层精炼轨迹。
-- **灵巧手精细操作优先选 TopoRetarget**：当任务聚焦多指抓取与手内操作、且物体几何与手部接触拓扑需严格保持时，运动学拓扑约束更轻量且直接。
-
-## 局限
-
-- **DynaRetarget**：SBTO 采样优化计算开销较高，难以直接用于高频在线实时遥操作。
-- **TopoRetarget**：仅在运动学层保真，不显式建模动力学摩擦锥与力矩极限，仍需下游控制器兜底。
-
 ## 关联页面
 
 - [Motion Retargeting（动作重定向）](../concepts/motion-retargeting.md) — 「运动学 vs 动力学」分层定义。
@@ -173,7 +166,8 @@ flowchart TD
 - [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md) — DynaRetarget 任务域。
 - [Manipulation（操作）](../tasks/manipulation.md) — TopoRetarget 任务域。
 
-## 继续阅读
+## 推荐继续阅读
 
-- [DynaRetarget](../methods/dynaretarget-sbto-motion-retargeting.md)
+- [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)
 - [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md)
+- [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)

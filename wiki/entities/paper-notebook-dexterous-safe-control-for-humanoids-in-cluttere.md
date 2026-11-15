@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, humanoid, manipulation, safety, safe-control, collision-avoidance, quadratic-programming, cmu, unitree]
 status: complete
-updated: 2026-09-28
+updated: 2026-11-15
 arxiv: "2502.02858"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
@@ -125,7 +125,7 @@ flowchart TD
 - **一阶动力学模型**：安全指数按一阶（速度级）动力学设计。
 - **开源边界**：未见代码；源码运行时序图 **不适用**。
 
-## 与其他页面的关系
+## 关联页面（与其他页面的关系）
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)

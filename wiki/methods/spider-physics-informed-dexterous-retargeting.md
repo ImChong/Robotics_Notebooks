@@ -29,17 +29,16 @@ sources:
   - ../../sources/sites/jc-bao-spider-project-github-io.md
   - ../../sources/papers/humanoid_pnb_spider.md
   - ../../sources/papers/flashdexretarget_arxiv_2610_01849.md
-original: ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
+original:
+  - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
 summary: "SPIDER 用并行物理仿真中的采样式轨迹优化，把人体+物体的运动学参考 refinement 成动力学可行、接触意图保留的机器人轨迹；课程式虚拟接触力降低接触歧义，面向灵巧手与人形的规模化演示数据生成。"
 ---
 
 # SPIDER（物理感知采样式灵巧重定向）
 
-**SPIDER**（*Scalable Physics-Informed DExterous Retargeting*，Pan 等，arXiv:2511.09484）把跨具身迁移写成：**人体演示只提供运动学层面的任务结构与目标**，再用**大规模并行物理仿真 + 采样优化**生成可在目标机器人上执行的**动力学可行轨迹**，并显式处理**接触丰富**任务中的歧义。
-
 ## 一句话定义
 
-> 在大规模并行物理仿真中用采样式轨迹优化对人体+物体运动学参考做动力学精修，并通过课程式虚拟接触力消解接触歧义，规模化生成灵巧手与人形可执行轨迹。
+**SPIDER**（*Scalable Physics-Informed DExterous Retargeting*，Pan 等，arXiv:2511.09484）把跨具身迁移写成：**人体演示只提供运动学层面的任务结构与目标**，再用**大规模并行物理仿真 + 采样优化**生成可在目标机器人上执行的**动力学可行轨迹**，并显式处理**接触丰富**任务中的歧义。
 
 ## 英文缩写速查
 
@@ -78,7 +77,7 @@ summary: "SPIDER 用并行物理仿真中的采样式轨迹优化，把人体+�
 | **虚拟接触引导** | 期望接触位形、课程进度 | 早期施加**虚拟粘附力**稳定接触序列，再逐步放松，降低多解歧义 |
 | **鲁棒化与增强（可选）** | 域随机化、场景/物体参数 | 缓解仿真—实物失配；支持单演示在多物体/地形/力条件下的数据扩增 |
 
-## 流程总览（Mermaid）
+## 核心原理：管线总览（Mermaid）
 
 ```mermaid
 flowchart LR
@@ -111,6 +110,12 @@ flowchart LR
   R --> D
 ```
 
+## 工程实践
+- **作为数据生成外壳**：先用运动学前端（如 GMR 类）得到参考，再在并行仿真里做采样优化，产出可 rollout 的机器人轨迹。
+- **接触课程**：早期启用虚拟粘附力稳定接触序列，随迭代放松；无引导采样对照下论文报告成功率约 +18%（以原文表格为准）。
+- **落地到实机**：配合域随机化与校准；网格质量、接触参数与并行吞吐决定可用规模。
+- **运行入口**见下文源码运行时序图与 [sources/papers/humanoid_pnb_spider.md](../../sources/papers/humanoid_pnb_spider.md)。
+
 ## 与常见路线的关系
 
 - **接触力目标：** [CARD](../entities/paper-card-contact-anchored-retargeting.md) 在重定向中显式保留接触力目标，并使用触觉反馈跟踪；其重定向框架无需仿真器和物体模型。
@@ -122,11 +127,6 @@ flowchart LR
 - **相对 DynaRetarget / SBTO**：同为采样物理 refinement；SPIDER 用 **SBMPC 短 horizon**，DynaRetarget 用 **incremental full-horizon SBTO**，论文在 OmniRetarget 285 motions 上报告 SBTO 成功率约 **2×** SPIDER（Table III）。
 - **相对 CHORD：** [CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) 在 RL 奖励里用 **接触力旋量 support function** 比较演示与执行，并作为 DexMachina/SPIDER **位置引导** 的对照基线之一；SPIDER 侧重 **轨迹级采样重定向 + 虚拟接触课程**，CHORD 侧重 **策略学习 + CWS 奖励**。
 - **相对 TopoRetarget：** 后者用 **运动学 interaction mesh Laplacian** 保留 hand–object 接触结构并实时求解（~5 ms/帧），不做仿真动力学 refinement；SPIDER 侧重 **轨迹级动力学可行** 与虚拟接触课程，二者可串联（运动学参考 → 物理采样修补）。
-
-## 工程实践
-
-- **并行仿真采样优化**：依托 GPU 并行物理仿真对含接触的演示轨迹做采样式轨迹优化（SBTO），在灵巧手与人形上批量生成动力学可行数据。
-- **开源实现**：代码托管于 [facebookresearch/spider](https://github.com/facebookresearch/spider)，可直接作为下游模仿学习或 RL 的高质量演示生成器。
 
 ## 局限与阅读时注意点
 

@@ -14,8 +14,9 @@ tags:
   - isaac-lab
   - teleoperation
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2601.17440"
+original: ../../sources/papers/pilot_arxiv_2601_17440.md
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/loco-manipulation.md
@@ -61,7 +62,7 @@ summary: "PILOT（arXiv:2601.17440，上海交大）用单阶段 PPO 统一 LiDA
 - **工程接口清晰：** 命令 $c_t$ 含 **基座速度/高度/躯干 RPY** 与 **上肢目标关节** $q^{\mathrm{upper}^*}$；上肢动作为 **残差修正**，便于 VR 遥操作与上层 RL **只调目标**。
 - **可作 WholebodyVLA 等的上游：** [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) 将本文列为相关全身 loco-manipulation 工作，定位上接近 **稳健 LLC API** 而非端到端 VLA。
 
-## 方法
+## 核心原理（方法）
 
 | 模块 | 作用 |
 |------|------|
@@ -124,12 +125,14 @@ flowchart TB
 | 设置 | 要点 |
 |------|------|
 | 平台 | Unitree G1，29 DoF；Isaac Lab 训练，RTX 4090 |
-| 基线（简单地形） | HOMIE、FALCON、AMO、PILOT w/o vision；PILOT 跟踪误差更低（Table IIa） |
-| 全地形 | 无感知基线 **无法穿越**；消融：去视觉 / 去注意力 / 去 MoE 均升高 stumble 误差 |
+| 基线（简单地形） | 论文以 **盲版 PILOT（视觉输入被屏蔽）** 对 HOMIE、FALCON、AMO（均为盲基线）；Table IIa 中盲版 PILOT 总体跟踪误差最低（Ev 0.145、Eω 0.099、Eh 0.010、Earm 0.206 与最佳基线持平）；HOMIE 的 yaw 误差更低（0.020），论文称是僵硬 PD 的假象，HOMIE/FALCON 无躯干 pitch/roll |
+| 全地形 | 无感知基线 **无法穿越**（未参评）；消融 Estumble：完整 0.006、去 MoE 0.017、去注意力（换 MLP）0.066、去视觉 0.087；去 MoE 主要损害速度与躯干姿态跟踪；MoE 门控热图显示 Expert 2 偏感知/上下台阶（约 0.16→0.23），Expert 1/4 偏蹲/弯腰（弯腰时 Expert 1 达 0.306） |
+| 工作空间 | 基座高度 0.3–0.76 m；躯干 roll ±0.4、pitch −0.3–1.5、yaw ±1.5 rad |
+| 部署 | 零样本迁移；策略 50 Hz、PD 500 Hz；Fast-LIO + GPU 高程建图，地形 10 Hz；楼梯搬运（约 1 kg 袋子，深蹲取放）5/5 成功；高台 0.3 m 高、0.5 m 宽搬纸巾盒（定性） |
 | 实机 | 楼梯、高台等非结构化场景；**VR 遥操作** + **自主分层 RL** |
 | 代码 | 入库时 **无官方公开仓库**（见 [参考来源](#参考来源)） |
 
-## 开源状态（项目页核查，2026-07-20）
+## 工程实践与开源状态（项目页核查，2026-07-20）
 
 | 资源 | 状态 |
 |------|------|
@@ -141,7 +144,7 @@ flowchart TB
 
 **PILOT 的主贡献是「感知 + 全身 loco-manipulation 低层统一策略」；楼梯只是非结构化场景之一，不是专精爬梯论文。**
 
-1. **无感知基线过不了全地形** — 简单地形上跟踪误差低于 HOMIE/FALCON/AMO 与 w/o vision；全地形下无感知基线无法穿越。
+1. **无感知基线过不了全地形** — 论文是以盲版 PILOT 在简单地形对比 HOMIE/FALCON/AMO（总体误差最低，但 HOMIE yaw 更低）；全地形下无感知基线无法穿越，故未参评。
 2. **消融指向三项必备件** — 去视觉 / 去注意力 / 去 MoE 均升高 stumble 误差；跨模态编码与 MoE 不是装饰。
 3. **命令接口是速度+高度+躯干+上肢关节** — MoE 用 \(I_t\) 在「协调行走」与「上肢跟踪」间切换；上肢以残差加在参考上。
 4. **感知范围是局部 11×11×0.1 m 高程** — 优势在与操作联合端到端，不是大范围几何专精（对照 FastStair / Explicit Stair）。
@@ -153,7 +156,7 @@ flowchart TB
 - **误区：「PILOT = 又一个楼梯 locomotion 论文」。** 主任务是 **loco-manipulation LLC**（同时跟踪行走与上肢命令）；楼梯只是非结构化场景之一，与 [Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md) 的 **几何 token 专精爬梯** 不同。
 - **误区：「统一策略一定优于分层」。** 训练难度高；论文用 **MoE + 课程 + 残差上肢** 缓解；高层仍可用 **分层 RL**，PILOT 定位 **低层**。
 - **误区：「11×11 图 = 任意感知」。** 与 [FastStair](./paper-faststair-humanoid-stair-ascent.md) 更大范围高程图或点云 BEV 相比，感知 **范围较局部**；优势在 **与全身操作联合端到端**。
-- **局限：** 暂无公开代码；与 [VIRAL](./paper-viral-humanoid-visual-sim2real.md) 等 **视觉高层** 正交，需自行对接命令接口；跨平台需重训感知与动力学。
+- **局限：** 自主 Lift-Box 演示的高层策略为仿真 RL 零样本迁移，实机状态估计依赖 **骨盆与箱子上的 mocap 标记**（论文称后续要做视觉高层以摆脱遥操作/外部动捕）；楼梯实验仅 5 次试验，高台为定性展示；暂无公开代码；与 [VIRAL](./paper-viral-humanoid-visual-sim2real.md) 等 **视觉高层** 正交，需自行对接命令接口；跨平台需重训感知与动力学。
 
 ## 与其他工作对比
 

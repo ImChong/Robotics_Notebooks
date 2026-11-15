@@ -4,10 +4,12 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, meta, cmu]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-15
 arxiv: "2511.04131"
 venue: "2025 · arXiv"
 code: https://github.com/LeCAR-Lab/BFM-Zero
+original:
+  - ../../sources/papers/bfm_awesome_bfm_zero_arxiv_2511_04131.md
 summary: "BFM-Zero：latent prompt 统一目标姿态、奖励优化、恢复与少样本适配；在 RL 身体系统栈属参考跟踪层，在 BFM 谱系属 Forward-backward 表征。"
 related:
   - ./egalahad-sim2real.md
@@ -137,7 +139,7 @@ sequenceDiagram
 - **同一模型多推理头**：训练一次，推理脚本按任务接口切换，而不是为每个下游重训整网。
 - **ONNX 为部署边界**：Python 训练与导出后的仿真/真机栈解耦。
 
-## 常见误区
+## 常见误区与局限
 
 1. Motion tracking 论文的泛化常指 **参考分布内**；换数据源或接触条件仍可能崩塌。
 
@@ -156,7 +158,7 @@ sequenceDiagram
 4. **选型坐标** — 在 42 篇栈属参考跟踪·通用控制（#19），在 BFM 41 篇属 Forward-backward 表征（#01）；与「每技能一策略」的 mimic/tracking 路线对照读。
 5. **量化读原文** — 本页评测节未抄表；benchmark / 消融 / 真机数字以 PDF 与项目页为准，勿把参考分布内泛化外推到任意接触条件。
 
-## 与其他页面的关系
+## 关联页面
 
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
@@ -169,6 +171,19 @@ sequenceDiagram
 - 本体多项式条件插件：[PRISM](./paper-prism.md) — 对 `history_actor` 做因式分解多项式交互，降低跟踪 EMD（arXiv:2607.23473）
 - 任务空间坐标对照：[FB / BFM-Zero / INTACT / Mimic / VLA](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — 拟人子流形 + 防坍缩 + off-policy \(Z\) 采样的统一读法
 - [P-BFM](./paper-p-bfm.md) — 同属 FB + 无监督 RL 路线，扩展到深度感知地形适应与全局根运动指令（ERI）
+
+## 工程实践
+
+以下数字均出自论文 ICLR 2026 版（arXiv:2511.04131v2）正文与附录 Table 1；官方代码未在本页复现。
+
+- **仿真与数据：** IsaacLab 中的 Unitree G1，仿真 200 Hz、控制 50 Hz；行为数据为重定向到 G1 的 LAFAN1（40 段、数分钟长，切成 10 秒片段），按 EMD 跟踪误差做指数优先级采样；回合初始状态混合随机跌倒姿态（概率 0.3）与动捕状态。AMASS 仅作分布外测试，另在 Booster T1 上验证通用性。
+- **训练规模（Table 1）：** 1024 个并行环境、batch 1024、UTD 16、300 万次梯度步、约 1.92 亿环境步、回放池约 500 万 transition、折扣 0.98、历史长度 H=4、回合长 500；潜变量维度 256（32/64/128 明显变差，≥256 相近）。
+- **学习率与正则：** F、actor、Q_D、Q_R 为 3e-4，B 与判别器为 1e-5；判别器系数 0.05、奖励正则系数 0.02、梯度惩罚 10、正交性损失系数 100。
+- **网络：** actor 与 F/Q_D 用带 LayerNorm、Mish 的残差块，Q_R 用普通 MLP，critic 用 2 网络集成；B 与判别器为 ReLU MLP；训练配方借鉴 FastTD3 的大规模并行 off-policy。附录报告 MLP 放大后部分种子发散。
+- **sim2real 要点：** 非对称训练（actor 看本体观测历史，critic 看特权状态）、域随机化（连杆质量、摩擦、关节偏置、躯干质心、扰动与传感器噪声）、辅助惩罚奖励（关节限位、动作变化率、足部朝向等）。
+- **部署推理：** 真机跟踪的前瞻帧数为 3；奖励推理用约 40 万样本；少样本适配用 CEM 在潜空间搜索（如躯干加 4 kg 的单姿态适配）。
+- **踩坑：** 去掉辅助奖励后仿真指标几乎不变甚至略升，真机却严重不稳（控制量过大、落脚不准），因此不能只看仿真指标。
+- **局限（作者自述）：** 能力受训练动作集限制，尚无 scaling law；历史+DR 仍需更强在线适应才能可靠表达复杂动作。
 
 ## 参考来源
 

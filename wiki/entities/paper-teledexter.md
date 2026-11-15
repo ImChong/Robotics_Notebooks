@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-teleoperation, hand-object-co-tracking, sim2real, reinforcement-learning, imitation-learning, in-hand-manipulation, tool-use, bigai, tsinghua, pku]
 status: complete
-updated: 2026-09-19
+updated: 2026-11-15
 arxiv: "2607.11481"
 venue: "arXiv 2026"
 summary: "TeleDexter（arXiv:2607.11481，清华/BIGAI/北大）用 hand–object co-tracking 低层控制器把操作员的同步指尖与物体位姿意图映射为接触丰富执行；Isaac Gym 单阶段 RL（连续子目标 + hybrid reward + random action masking）零样本部署到 SharpaWave/LeapHand，七任务平均 75.2% SR；示范可训 Diffusion Policy。项目页另展示 Pen Spinning 与 LeapHand 连续随机子目标；截至 2026-09-19 官方未开源。"
@@ -23,6 +23,7 @@ related:
   - ./paper-spd.md
   - ./franka-research-3.md
   - ../../roadmap/depth-teleoperation.md
+original: ../../sources/papers/teledexter_arxiv_2607_11481.md
 sources:
   - ../../sources/papers/teledexter_arxiv_2607_11481.md
   - ../../sources/sites/teledexter-project.md
@@ -44,7 +45,7 @@ sources:
 | TeleDexter | Towards Human-level Dexterous Teleoperation | 本文 hand–object co-tracking 遥操作框架简称 |
 | HOI | Hand–Object Interaction | 人手–物体交互参考运动来源 |
 | RL | Reinforcement Learning | 单阶段训练 co-tracking 策略的范式 |
-| SAPG | Soft Actor with Policy Gradient（文中优化器） | Isaac Gym 并行训练所用优化器；消融对照 PPO |
+| SAPG | Split and Aggregate Policy Gradients | 多 block 探索并聚合梯度的 on-policy 优化器；消融对照 PPO |
 | MoCap | Motion Capture | NOKOV 光学动捕，采集参考与实时遥操作输入 |
 | SR / TP | Success Rate / Task Progress | 全阶段成功比例 vs 平均阶段完成比例 |
 | BC / DP | Behavior Cloning / Diffusion Policy | 用遥操作示范训自主策略的下游 |
@@ -96,7 +97,7 @@ flowchart TB
 
 ### 3）课程与 random action masking
 
-三维课程：重力退火、容差收紧、子目标间距增大；跨轨迹 reset。域随机之外，**random action masking** 随机冻结部分关节维并保持旧指令，防止过拟合仿真同步驱动；真机消融显示去掉后 ScrewdriverUse SR 从 73.3% 掉到 0%。
+课程：正文三维（重力退火、容差收紧、子目标间距增大），附录实为四个旋钮（另含 action-mask 冻结时长 1→10 帧、dense 物体奖励随进度渐入；子目标间隔上界 40→80 帧）；10% 概率跨轨迹切换 reset。域随机之外，**random action masking**（附录：每步 15% 概率触发、随机 3 个 DoF、冻结 1–dmax 帧）随机冻结部分关节维并保持旧指令，防止过拟合仿真同步驱动；真机消融显示去掉后 ScrewdriverUse SR 从 73.3% 掉到 0%。
 
 ### 4）几何感知参考构造
 
@@ -104,7 +105,7 @@ flowchart TB
 
 ### 5）部署切换
 
-接触初始化用运动学重定向；稳定接触后切到 co-tracking。与 [HDMI](./paper-hrl-stack-06-hdmi.md) 的 robot–object co-tracking 同属「物体进闭环」，但 HDMI 面向人形全身 loco-manip，TeleDexter 面向高 DoF 灵巧手遥操作与采数。
+接触初始化用运动学重定向（预抓取与首次接触）；稳定接触后由操作员切到 co-tracking（策略只在手内 HOI 参考上训练，不覆盖 pregrasp 接近）。观测不含关节速度与接触力；动作为带 deadzone 的残差关节目标；每物体录 150 条×20 s 非脚本 MoCap 参考（约 50 min），训练约 1 天。与 [HDMI](./paper-hrl-stack-06-hdmi.md) 的 robot–object co-tracking 同属「物体进闭环」，但 HDMI 面向人形全身 loco-manip，TeleDexter 面向高 DoF 灵巧手遥操作与采数。
 
 ## 评测与结果
 
@@ -132,6 +133,9 @@ flowchart TB
 | BrushForward | 40.0% | 细柄抓取（RGB 难解） |
 
 ### 关键消融
+
+- **附录补充：** SAPG 换成 PPO、或去掉课程，奖励与连续子目标数均变差（Hammer 训练曲线）；LeapHand any-to-any 随机目标测试：Cylinder 平均连续到达 41.1 个目标（单目标 97.6%），Cuboid 12.1（92.3%）。
+- **自主策略细节：** Conv-UNet DP，第三视角 + 腕部 RGB，各用冻结 DINOv2 ViT-S/14；阶段成功：BulbInstall 13/15→12/13→8/12→7/8，HammerDriver 15/15→15/15→11/15，BrushForward 7/15→7/7→6/7。
 
 - **连续子目标 vs dense tracking（仿真）：** 稀疏子目标在 EpLen 与连续 Goals 上数量级领先。
 - **Action masking（真机）：** Hammer 66.7→33.3；Screwdriver 73.3→0；Cuboid 80.0→26.7（SR）。
@@ -177,6 +181,7 @@ flowchart TB
 - **重型 MoCap：** 部署依赖光学动捕；视觉无标记追踪仍是未来方向。
 - **失败模式（附录）：** 工具–环境冲击导致握姿 OOD；接触切换卡滞弹出；无触觉时 regrasp tracking stall。
 - **代码未开放：** 无法直接复现训练与部署栈；读者只能对照方法与公开基线工具。
+- **SimToolReal / DexGen 基线说明：** DexGen 无官方实现，作者自行复现（以 co-tracking 控制器替代其 AnyGrasp-to-AnyGrasp 策略生成 rollout），对比结果需据此保守解读。
 - **物体缠胶带增摩擦：** 评测协议含表面处理，迁移到光滑物体时需重估。
 
 ## 关联页面

@@ -6,6 +6,8 @@
 - **类型：** paper
 - **来源：** arXiv:2604.13015v2 / PDF / GitHub project page
 - **入库日期：** 2026-04-29
+- **核对范围：** 2026-11-15 通读 arXiv:2604.13015 v3 HTML 正文（摘要、§I–§II、§III 系统/LBC/遥操作/HTD 结构/训练范式、§IV 实验 IV-A…IV-D、§V 结论）；附录 A–B（LBC 指令范围与奖励细节）与参考文献未读。未运行官方代码；注意归档入口写的是 v2，本次读的是 v3。
+- **通读：** 已完成
 - **最后更新：** 2026-09-03
 - **一句话说明：** 提出 Humanoid Transformer with Touch Dreaming (HTD)，把触觉作为人形机器人接触丰富型移动操作策略的核心模态，并用未来手部力与触觉 latent 预测作为行为克隆的辅助目标。IROS 2026。
 - **代码：** [IsaacLab-Decoupled-WBC](https://github.com/chrisyrniu/IsaacLab-Decoupled-WBC)（解耦 WBC **已开源**）；论文仓 [humanoid-touch-dream](https://github.com/chrisyrniu/humanoid-touch-dream) 为入口，遥操作与 HTD 策略截至 2026-08-26 仍 on-going

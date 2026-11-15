@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, tactile-sensing, visuo-tactile, imitation-learning, behavior-cloning, loco-manipulation, transformer]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 related:
   - ../entities/paper-humanoid-touch-dream.md
   - ../entities/paper-humanoid-touch-dream.md
@@ -19,6 +19,8 @@ sources:
   - ../../sources/repos/isaaclab_decoupled_wbc.md
   - ../../sources/repos/humanoid_touch_dream.md
   - ../../sources/sites/humanoid-touch-dream.md
+original:
+  - ../../sources/papers/humanoid_touch_dream.md
 summary: "Humanoid Transformer with Touch Dreaming (HTD) 是一种面向人形机器人接触丰富型移动操作的多模态模仿学习策略，通过未来手部力和触觉 latent 预测，让 Transformer 在行为克隆中学到接触感知表征。"
 ---
 
@@ -68,7 +70,7 @@ HTD 的路线不是“更大的端到端网络”，而是把稳定执行、遥�
 2. **示范数据必须包含接触。** VR teleoperation 同步采集视觉、本体、手部力和触觉，保证接触阶段不是事后补标签。
 3. **触觉通过预测目标进入表示。** 训练时预测未来 hand force 与 tactile latent，让 Transformer trunk 对接触变化敏感；推理时只保留动作输出，避免增加部署链路复杂度。
 
-## Touch Dreaming 机制
+## 核心原理：Touch Dreaming 机制
 
 Touch Dreaming 是训练期辅助目标，部署时不参与控制。
 
@@ -79,6 +81,12 @@ Touch Dreaming 是训练期辅助目标，部署时不参与控制。
 | Tactile latent dream expert | 未来触觉 latent | EMA tactile tokenizer + cosine / magnitude loss | 学习空间接触结构，降低 raw tactile 噪声影响 |
 
 EMA tactile tokenizer 的作用类似慢速 teacher：它不反传梯度，只提供稳定 latent target，避免 student tokenizer 和 tactile detokenizer 共同塌缩到无信息表示。
+
+## 工程实践
+- **部署只保留动作头**：Dream heads 仅在训练中提供辅助 loss，推理链路不增加复杂度。
+- **先稳住下肢**：LBC 经 Isaac Lab RL teacher → BC/DAgger student 蒸馏，只依赖真机可观测本体信息；官方实现见 [HTD 解耦 WBC](../entities/paper-humanoid-touch-dream.md)。
+- **数据采集**：VR 遥操作同步记录 RGB、本体、手部力与双手触觉；遥操作采数与 HTD 策略代码截至 2026-09-03 仍待发布。
+- **触觉目标用 latent**：高维稀疏触觉阵列直接预测原始值易追噪声。
 
 ## 实验结论
 
@@ -91,7 +99,7 @@ EMA tactile tokenizer 的作用类似慢速 teacher：它不反传梯度，只�
 - 相比 raw tactile prediction，latent tactile dreaming 在成功率上有约 30% relative gain。
 - 简单加入触觉输入并不保证收益；显式预测未来接触信号才让策略形成接触感知表征。
 
-## 常见误区
+## 常见误区与局限
 
 - **误区 1：HTD 是一个在线触觉世界模型。**  
   不是。Dream heads 只在训练中提供辅助 loss，部署时只用 action experts。

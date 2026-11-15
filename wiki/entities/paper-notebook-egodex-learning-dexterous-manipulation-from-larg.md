@@ -10,8 +10,9 @@ tags:
   - humanoid-paper-notebooks
   - apple
 status: complete
-updated: 2026-11-10
+updated: 2026-11-15
 arxiv: "2505.11709"
+original: ../../sources/papers/humanoid_pnb_egodex.md
 code: https://github.com/apple/ml-egodex
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
@@ -161,7 +162,7 @@ sequenceDiagram
 - 人手到异构机械手存在运动学、动力学和接触差距；论文没有实机机器人成功率。
 - 数据 CC BY-NC-ND 对商业使用与衍生数据发布限制较强。
 
-## 与其他页面的关系
+## 与其他页面的关联
 
 - 数据消费者：[Imitation Learning](../methods/imitation-learning.md)、[Diffusion Policy](../methods/diffusion-policy.md)
 - 人手到机器人映射：[Dexterous Kinematics](../concepts/dexterous-kinematics.md)

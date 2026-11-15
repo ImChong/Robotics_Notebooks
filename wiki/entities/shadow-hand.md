@@ -17,6 +17,8 @@ summary: "Shadow Hand 是一款仿生程度极高的五指灵巧手，拥有 20 
 
 # Shadow Hand (灵巧手)
 
+## 一句话定义
+
 **Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度），常被用于具身智能、远程手术操作和极限灵巧性的研究。
 
 ## 英文缩写速查
@@ -25,8 +27,9 @@ summary: "Shadow Hand 是一款仿生程度极高的五指灵巧手，拥有 20 
 |------|----------|----------|
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 | Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| DoF | Degrees of Freedom | 自由度；本页指手的运动自由度数量 |
 
-## 硬件特性
+## 核心原理：硬件特性
 
 1. **拟人化设计**：完全遵循人类手的比例与关节分布，甚至包含指间关节的耦合关系。
 2. **高自由度**：20 个主动关节，使得它能完成扣纽扣、玩魔方、打字等人类级别的复杂动作。
@@ -35,15 +38,28 @@ summary: "Shadow Hand 是一款仿生程度极高的五指灵巧手，拥有 20 
    - **电动版**：采用电机加绳索传动（Tendons），响应更精确。
 4. **全集成传感器**：每个关节都有高精度编码器，指尖可集成高度敏感的力/触觉传感器。
 
-## 为什么在科研中重要
+## 为什么重要（科研价值）
 
 - **极致测试**：如果一个算法能在 Shadow Hand 上跑通，通常能证明该算法在高维动作空间中的可扩展性。
 - **强化学习标杆**：OpenAI 著名的“单手解魔方”项目即是基于 Shadow Hand 完成，证明了 [域随机化](../concepts/sim2real.md) 对极高维度硬件的有效性。
+
+## 工程实践
+- **驱动版本选择**：气动人工肌肉版天然柔顺；电动腱驱动版响应更精确，按实验对柔顺性或精度的需求选择。
+- **作为 RL 基准平台**：20 个主动关节的高维动作空间常用来验证手内重定向等算法（见 [手内重定向](../methods/in-hand-reorientation.md)），并依赖 [域随机化](../concepts/sim2real.md) 迁移到真机。
+- **传感**：关节编码器为标配，指尖力/触觉传感器为可选集成，部署前需确认所购型号配置。
+
+## 局限
+- 本页硬件描述来自厂商与行业综述，具体价格、负载、耐久等规格未在此核实，选型以官方资料为准。
+- 高自由度带来调试、维护与标定成本，且价格显著高于 [Allegro Hand](./allegro-hand.md) 等科研手。
 
 ## 关联页面
 - [Allegro Hand 实体](./allegro-hand.md) — 更轻量化的 4 指备选方案
 - [Manipulation 任务](../tasks/manipulation.md)
 - [手内重定向 (In-hand Reorientation)](../methods/in-hand-reorientation.md)
+
+## 继续阅读
+- [灵巧手行业核心玩家](../concepts/dexterous-hand-industry-core-players.md)
+- [Allegro Hand](./allegro-hand.md)
 
 ## 参考来源
 - Shadow Robot Company Official Website.

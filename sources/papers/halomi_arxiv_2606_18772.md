@@ -5,6 +5,8 @@
 - **标题：** HALOMI: Learning Humanoid Loco-Manipulation with Active Perception from Human Demonstrations
 - **类型：** paper
 - **来源：** arXiv abs / HTML；项目页交叉核对
+- **通读：** 已完成
+- **核对范围：** 已通读 arXiv:2606.18772v1 PDF 全文（摘要至结论，含 Table I、消融与泛化实验；参考文献仅扫读未逐篇核对）；未读项目页之外的源码（论文未提供）
 - **原始链接：**
   - <https://arxiv.org/abs/2606.18772>
   - <https://arxiv.org/html/2606.18772v1>

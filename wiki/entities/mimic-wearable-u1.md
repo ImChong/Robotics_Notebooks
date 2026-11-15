@@ -2,7 +2,7 @@
 type: entity
 tags: [teleoperation, data-collection, dexterous-hand, wearable, exoskeleton, manipulation, mimic-robotics]
 status: complete
-updated: 2026-11-15
+updated: 2026-09-07
 related:
   - ./mimic-hand-m1.md
   - ../tasks/teleoperation.md
@@ -77,6 +77,12 @@ flowchart LR
   D --> M1[mimic hand M1<br/>顶层真机微调/部署]
   V[底层人视频预训练] --> M1
 ```
+
+## 工程实践
+
+- 用被动外骨骼的刚性连杆机械强制 1:1 映射 M1，采集时无需真机与软件重定向；传感（触觉、编码器、腕相机）与 M1 对齐。
+- 适合工厂共址采集：技工在产线佩戴，数据回流后在同一工厂部署机械臂（见页内 LeoInAI 描述）。
+- 需限定手寸范围并按应用定制手套；与纯视觉方案的取舍见 [数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md)。
 
 ## 局限与风险
 
