@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, embodied-ai, qwen, benchmark]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-15
 related:
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ./vla.md
@@ -13,6 +13,8 @@ related:
   - ./diffusion-policy.md
   - ../entities/paper-objdream.md
 summary: "StarVLA 是模块化 VLA 基准框架，以强 VLM 配合轻量动作头作为对照；具体控制表现须按模型版本、训练数据和评测协议比较。"
+sources:
+  - ../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md
 ---
 
 # StarVLA
@@ -84,6 +86,8 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 
 ## 参考来源
 
+- [StarVLA 框架论文 原文与边界复核](../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md)
+
 -   [深蓝具身智能：VLA GitHub 复现推荐](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md) — 文内将 StarVLA 列为模块化 VLM→VLA 工程框架入口
 -   Ye et al., *StarVLA-α: Reducing Complexity in Vision-Language-Action Systems* (2026) — 原论文
 -   [sources/papers/star_vla.md](../../sources/papers/star_vla.md) — 论文 ingest 档案
@@ -92,6 +96,7 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 
 ## 关联页面
 
+- [StarVLA 框架论文](../entities/paper-starvla-framework.md) — arXiv:2604.05014 的通用模块化训练/评测基础设施，与本页 StarVLA-α（2604.11757）是不同论文；共用代码仓不等于同一论文身份，框架 README 的 RL adaptation 仍列为待办。（[来源复核归档](../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md)）
 -   [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md) — 含 starVLA/starVLA 仓库与单卡训练语境
 -   [VLA (Vision-Language-Action)](./vla.md) — 具身大模型全景
 -   [RLDX-1](../entities/rldx-1.md) — 同 Qwen3-VL 底座下的多流扩散动作头与物理传感路线对照

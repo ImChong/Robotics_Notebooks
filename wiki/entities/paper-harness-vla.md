@@ -19,7 +19,7 @@ tags:
   - hkust
   - zgca
 status: complete
-updated: 2026-10-28
+updated: 2026-11-15
 arxiv: "2607.08448"
 code: https://github.com/RLinf/RPent
 related:
@@ -39,6 +39,7 @@ related:
   - ./paper-robodawn.md
   - ./deepseek-harness.md
 sources:
+  - ../../sources/papers/robo_harness_arxiv_2607_18060.md
   - ../../sources/papers/harness_vla_arxiv_2607_08448.md
   - ../../sources/sites/harnessvla-github-io.md
   - ../../sources/repos/rpent.md
@@ -212,7 +213,7 @@ sequenceDiagram
 
 - **误区：** 把 Harness VLA 当成「又训了一个更强 VLA」——增益来自 **harness + 记忆**，权重冻结。
 - **误区：** 与 [ASPIRE](../methods/aspire.md) 混同——ASPIRE **扩张**可验证技能库；本文 **固定**原语词汇。
-- **误区：** 与 [RoboHarness](./paper-robo-harness.md)（arXiv:2607.18060）混名——后者编排 **异构策略族**（VLA+RL+TAMP）并用 Memory Bridge 交接；本文是 **冻结单族 VLA** 的原语 harness。
+- [RoboHarness](./paper-robo-harness.md) — 编排 VLA/RL/TAMP 等异构策略并用 Memory Bridge 交接，区别于本页冻结 VLA 的原语 harness；其 v3 LIBERO-Plus 91.9% 与 LIBERO-LoHo 96.0% 必须按版本及任务协议解读，不能混用早期 v2 数值。（[来源复核归档](../../sources/papers/robo_harness_arxiv_2607_18060.md)）
 - **局限：** 规划器与低层 VLA 仍是 **开环反馈**（论文 §5）；缺环境奖励 / 人类偏好的联合微调（指向 GRPO 等样本高效 RL）；稠密长程场景缺细粒度 caption 约束结构推理。
 - **工程风险：** 依赖商业 LLM API 与仿真/权重栈；Feature Matrix 未勾选项（RoboCasa / 真机等）勿当已发布复现路径；仓接口可能快速演进。
 
@@ -240,6 +241,8 @@ sequenceDiagram
 - [RPent 英文文档](https://rpent.readthedocs.io/en/latest/) / [中文文档](https://rpent.readthedocs.io/zh-cn/latest/)
 
 ## 参考来源
+
+- [RoboHarness 原文与边界复核](../../sources/papers/robo_harness_arxiv_2607_18060.md)
 
 - [Harness VLA 论文摘录](../../sources/papers/harness_vla_arxiv_2607_08448.md)
 - [项目页归档](../../sources/sites/harnessvla-github-io.md)

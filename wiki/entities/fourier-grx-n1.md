@@ -2,13 +2,14 @@
 type: entity
 tags: [humanoid, hardware, open-source, fourier, fftai]
 status: complete
-updated: 2026-05-18
+updated: 2026-11-15
 related:
   - ./humanoid-robot.md
   - ./open-source-humanoid-hardware.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ../queries/humanoid-hardware-selection.md
 sources:
+  - ../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
 summary: "傅利叶智能开源人形线 GRX N1：以 fftai.github.io 文档站与 FFTAI 组织 GitHub 为主入口；BOM/STEP 等物料常以网盘分发，需与官方渠道交叉校验。"
 ---
@@ -43,6 +44,10 @@ summary: "傅利叶智能开源人形线 GRX N1：以 fftai.github.io 文档站�
 
 > 网盘物料（BOM、STEP、加工图、装机 SOP）在转载清单中常见；提取码与路径以 [微信原文](https://mp.weixin.qq.com/s/3mF9a5Iuk7-WMg4-jCfBtA) 为准，并以 **官方发布** 校验。
 
+## 文档与 SDK 源码的边界
+
+[2026-11-15 官方 README 复核](../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md)确认，`FFTAI/fourier-grx-N1` 主要维护 GitHub Pages/Jekyll 的 **SDK 文档**，并非 SDK 源码发行仓。README 将示例指向外部 `Wiki-GRx-Deploy` 的 `FourierN1` 分支；文档、示例、固件与硬件 BOM 应分别核对，不能由文档站可访问推断整套软硬件已完整发布。
+
 ## 关联页面
 
 - [人形机器人](./humanoid-robot.md)
@@ -55,5 +60,7 @@ summary: "傅利叶智能开源人形线 GRX N1：以 fftai.github.io 文档站�
 - [傅利叶 GR-1 平台速览](./humanoid-robot.md#主流平台速览)（商业侧对照）
 
 ## 参考来源
+
+- [官方硬件文档与入口复核](../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md)
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)

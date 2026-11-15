@@ -11,7 +11,7 @@ tags:
   - berkeley
   - cmu
 status: complete
-updated: 2026-11-06
+updated: 2026-11-15
 arxiv: "2607.05369"
 code: https://github.com/graph-robots/graph-as-policy
 project: https://graph-robots.github.io/gap/
@@ -27,6 +27,7 @@ related:
   - ./paper-robo-harness.md
   - ./ken-goldberg-agentic-robotics-goosebumps.md
 sources:
+  - ../../sources/papers/robo_harness_arxiv_2607_18060.md
   - ../../sources/papers/gap_arxiv_2607_05369.md
   - ../../sources/sites/gap-graph-robots-project.md
   - ../../sources/repos/graph_robots_graph_as_policy.md
@@ -206,7 +207,7 @@ flowchart TB
 - [VABAR](./paper-vabar-variational-automation-benchmark.md) — VA 仿真基准；GaP 作基线，自动生成图系统性低于人工图
 - [ASPIRE](../methods/aspire.md) — GEAR 姊妹 **code-as-policy** 路线（技能库 vs 计算图）
 - [VLA](../methods/vla.md) — GR 方向基线；GaP staging 的互补角色
-- [RoboHarness](./paper-robo-harness.md) — 异构策略编排 + Memory Bridge（相对 GaP 的图 staging）
+- [RoboHarness](./paper-robo-harness.md) — 通过成功轨迹检索与 pairwise ranking SVM 选择下一策略支持域内的交接状态，区别于 GaP 的计算图 staging；论文上层 agent 单次 API 平均 4.6 秒，不能读成底层实时控制周期。（[来源复核归档](../../sources/papers/robo_harness_arxiv_2607_18060.md)）
 - [Manipulation](../tasks/manipulation.md) — 操作任务栈中的 agentic / 工业分支
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md) — 署名与 agentic 研究网络
 - [Ken Goldberg：Agentic Robotics 范式位移](./ken-goldberg-agentic-robotics-goosebumps.md) — ICRA plenary / X 长文对 AR 总框架与产线部署叙事
@@ -223,6 +224,8 @@ flowchart TB
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
 
 ## 参考来源
+
+- [RoboHarness 原文与边界复核](../../sources/papers/robo_harness_arxiv_2607_18060.md)
 
 - [GaP 论文归档](../../sources/papers/gap_arxiv_2607_05369.md)
 - [GaP 项目页归档](../../sources/sites/gap-graph-robots-project.md)

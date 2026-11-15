@@ -5,8 +5,9 @@ project: https://allenai.github.io/vla-evaluation-harness/
 code: https://github.com/allenai/vla-evaluation-harness
 tags: [repo, evaluation, vla, benchmark, reproducibility, container, ai2]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./paper-starvla-framework.md
   - ./paper-molmoact2.md
   - ../methods/vla.md
@@ -108,6 +109,7 @@ README 的真实快速测试配置使用 `configs/model_servers/db_cogact/libero
 
 ## 关联页面
 
+- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 选择 benchmark/model-server 组合时核对任务分布、指标与复现证据。
 - [StarVLA 框架](./paper-starvla-framework.md)
 - [VLA](../methods/vla.md)
 - [MolmoAct2](./paper-molmoact2.md)

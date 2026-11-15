@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-15
 related:
   - ../entities/paper-discodemo.md
   - ../entities/paper-opentac-open-3d-tactile-sensing-ecosystem.md
@@ -13,6 +13,7 @@ original:
   - ../../sources/blogs/wechat_embodied_station_58_papers_reading_es58a.md
   - ../../sources/papers/discodemo_reading_arxiv_2610_32093_es58a.md
 sources:
+  - ../../sources/papers/aov_gs_arxiv_2610_29374.md
   - ../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md
 summary: "具身智能小站 2026-10-29 盘点：DiscoDemo 用强化学习生成多样成功示范（深读）、OpenTac 触觉工具链与 Watch Your Step 落脚感知（跟进），以及世界模型、VLA 后训练、评测安全、人形控制与导航等 58 篇；58/58 独立节点（新建 35 / 复用 23）。"
 ---
@@ -176,10 +177,13 @@ flowchart TB
 
 ## 关联页面
 
+- [AOV-GS](../entities/paper-aov-gs.md) — 冻结 SAM/CLIP 用于候选视角的语义评分，语言场随后离线拟合；论文采用真值相机位姿，不把语义地图收益外推为真机 SLAM 漂移鲁棒性。（[来源复核归档](../../sources/papers/aov_gs_arxiv_2610_29374.md)）
 - [VLA](../methods/vla.md)
 - [World Action Models](../concepts/world-action-models.md)
 
 ## 参考来源
+
+- [AOV-GS 原文与边界复核](../../sources/papers/aov_gs_arxiv_2610_29374.md)
 
 - [wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md](../../sources/blogs/wechat_embodied_station_58_papers_diverse_demonstrations_2026-10-29.md)
 

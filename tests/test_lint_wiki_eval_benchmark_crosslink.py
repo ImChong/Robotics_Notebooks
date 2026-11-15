@@ -122,6 +122,26 @@ def test_hub_pages_exempt_from_self_check(tmp_path: Path, monkeypatch) -> None:
     assert results["eval_benchmark_crosslink"] == []
 
 
+def test_science_benchmark_stays_in_its_domain_but_robotics_still_requires_hub(
+    tmp_path: Path, monkeypatch
+) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    science = wiki / "entities" / "wet-lab-prediction.md"
+    science.write_text(
+        "---\ntype: entity\ntags: [benchmark, ai-for-science, wet-lab, ai-agent-evaluation]\n"
+        "---\n[AI Agent 评测](../concepts/ai-agent-evaluation.md)\n",
+        encoding="utf-8",
+    )
+    robotics = wiki / "entities" / "robotic-lab.md"
+    robotics.write_text(
+        "---\ntype: entity\ntags:\n  - benchmark\n  - ai-for-science\n"
+        "  - robotic-lab\n---\n实验室机器人任务评测，尚缺具身枢纽。\n",
+        encoding="utf-8",
+    )
+    results = _run([science, robotics])
+    assert results["eval_benchmark_crosslink"] == ["wiki/entities/robotic-lab.md"]
+
+
 def test_info_only_does_not_count_toward_failing_total() -> None:
     results = lw._empty_results()
     results["eval_benchmark_crosslink"].append("wiki/entities/ewmbench.md")

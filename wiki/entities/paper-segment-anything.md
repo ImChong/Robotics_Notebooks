@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, computer-vision, meta, promptable-segmentation]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-15
 arxiv: "2304.02643"
 code: https://github.com/facebookresearch/segment-anything
 related:
@@ -19,6 +19,7 @@ related:
   - ./paper-lego-leveled-language-gaussian-splatting.md
   - ./paper-lightsplat.md
 sources:
+  - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
   - ../../sources/papers/segment_anything_arxiv_2304_02643.md
   - ../../sources/repos/segment-anything.md
   - ../../sources/sites/segment-anything-com.md
@@ -177,11 +178,13 @@ sequenceDiagram
 - [SAM-V](./paper-sam-v.md) — 将 SAM 提示分割能力与 VGGT 多视角几何结合
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md) — 四足 2D→3D 选型
 - [OVO](./ovo-semantic-mapping.md) / [DualMap](./dualmap.md) / [OV-SAM3D](./ov-sam3d.md) — 语义建图消费方
-- [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) — 离线 3DGS：重分级 SAM 粒度后做开放词汇层级理解
+- [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) — SAM 的 whole/part/subpart 是二维相对粒度；LEGO 还需共视与三维尺度重分级，才形成结构层级，不能将 SAM 三档输出直接解释为稳定的三维语义层。（[来源复核归档](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)）
 - [LightSplat](./paper-lightsplat.md) — 离线 3DGS：SAM 掩码索引 + 簇级开放词汇语义
 - [CMU MSCV Semantic 3D Mapping](./cmu-mscv-semantic-3d-mapping.md) — DETR+SAM 投影示例
 
 ## 参考来源
+
+- [LEGO 原文与边界复核](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)
 
 - [segment_anything_arxiv_2304_02643.md](../../sources/papers/segment_anything_arxiv_2304_02643.md) — 论文摘录与开源核查
 - [segment-anything.md](../../sources/repos/segment-anything.md) — GitHub 仓库归档

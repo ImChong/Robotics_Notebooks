@@ -2,13 +2,14 @@
 type: entity
 tags: [manipulator, cobot, open-source, elephant-robotics, education, ros]
 status: complete
-updated: 2026-05-18
+updated: 2026-11-15
 related:
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
   - ./elephantrobotics-myagv.md
   - ../concepts/ros2-basics.md
 sources:
+  - ../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
 summary: "大象机器人 myCobot 320：桌面级六轴开源协作臂，支持 Python/ROS；中文产品页 + myCobot320-docs 文档仓 + 官方支持中心。"
 ---
@@ -40,6 +41,10 @@ summary: "大象机器人 myCobot 320：桌面级六轴开源协作臂，支持 
 | 文档仓库 | [elephantrobotics/myCobot320-docs](https://github.com/elephantrobotics/myCobot320-docs) |
 | 支持中心 | [elephantrobotics.com/support](https://www.elephantrobotics.com/support/) |
 
+## 控制器与文档版本
+
+按[官方 README 复核](../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md)，myCobot 320 文档分别组织 **M5 与 Pi** 控制器路径，Python、ROS1 与 ROS2 章节须按实际控制器和软件版本选择；六轴本体一致不代表固件、连接或安装步骤可以混用。
+
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)
@@ -52,5 +57,7 @@ summary: "大象机器人 myCobot 320：桌面级六轴开源协作臂，支持 
 - myCobot320-docs 仓库内 **API / ROS** 章节（版本以默认分支为准）
 
 ## 参考来源
+
+- [官方硬件文档与入口复核](../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md)
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)

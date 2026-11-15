@@ -2,7 +2,7 @@
 type: query
 tags: [perception, computer-vision, object-detection, segmentation, semantic-mapping, 2d-to-3d, robotics, selection-loop]
 status: complete
-updated: 2026-09-30
+updated: 2026-11-15
 summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费 四层感知栈，从分散的检测/分割/语义建图实体页沉淀为一条端到端选型决策链，逐层说明每层选什么、精度 vs 时延/算力如何取舍、闭集准 vs 开放词汇泛、2D 框够用 vs 必须 3D 语义几何、感知频率 ≠ 控制闭环带宽。"
 original:
   - ../../sources/papers/yolo_v1_perception_stack_reading_1506_02640_reading_psl.md
@@ -133,7 +133,7 @@ flowchart TD
 
 到这一层才正面回答**「2D 框/掩码够不够用，还是必须提升到 3D 语义几何」**——一旦下游是导航/操作，就要把 2D 结果融合进 3D 空间：
 
-- **选什么/建什么**：2D 框/掩码够用（图像空间视觉伺服、平面抓取）就停在图像空间，靠坐标后处理直供策略；需要 3D 语义地图时，把 2D 检测/分割结果用深度融合提升成点云语义——路线分**对象级/子地图开放词汇建图**（[FindAnything](../entities/findanything.md) 强调机载实时、对象级体素子地图；[OV-SAM3D](../entities/ov-sam3d.md) 开放词汇 3D 分割）、**稠密语义建图**（[CMU MSCV Semantic 3D Mapping](../entities/cmu-mscv-semantic-3d-mapping.md)、[GO2 三维语义建图 SAM 流水线](./go2-3d-semantic-mapping-sam-pipeline.md)），以及**离线多粒度辐射场**（[LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) 把多视角 SAM 重分级成结构层级再接 CLIP / 场景图，按场景优化、非机载；[LightSplat](../entities/paper-lightsplat.md) 在已有 3DGS 上用 2-byte 索引 + 簇级 CLIP，training-free、FD 约秒级、非机载）。这一层的信息损失与歧义根因见专页 [2D→3D 语义提升 Gap](../concepts/2d-to-3d-semantic-lifting-gap.md)。
+- [LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) — 属于第三层的离线多粒度 3DGS 路线；原文逐场景训练约 20–60 分钟，树与 CLIP 另约 5–10 分钟，不能作为机载在线语义 SLAM 的时延证据。（[来源复核归档](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)）
 - **取舍主线**：**2D 框够用 vs 必须 3D 语义几何**——图像空间够就别过度建图；**稠密信息全 vs 内存/时延**——稠密语义地图信息最全但吃内存/算力，对象级子地图省资源但只保留感兴趣对象；**在线实时 vs 离线完整**——机载在线建图要控延迟、边走边建，离线可重建更完整但不能实时消费。
 - **典型误判**：① 把「2D 检测很准」当「提升到 3D 也准」——尺度不确定、遮挡、时序不一致会让 2D→3D 提升系统性偏（见 [Gap 专页](../concepts/2d-to-3d-semantic-lifting-gap.md)）；② 无脑上稠密语义建图——机载内存/时延撑不住，对象级子地图往往才是实时正解。
 

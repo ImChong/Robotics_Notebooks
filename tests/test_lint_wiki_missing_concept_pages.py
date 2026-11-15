@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 import lint_wiki as lw
+import pytest
 
 
 def test_exec_and_existing_rtc_mechanism_do_not_require_new_pages(tmp_path, monkeypatch) -> None:
@@ -250,6 +251,47 @@ def test_atlas_entity_homonyms_do_not_mask_missing_mechanism(tmp_path, monkeypat
     ]
     pages = [
         _page(wiki, f"p{i}.md", meanings[i % len(meanings)] + "新机制 **NewControl**。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    records = _run(pages)["missing_concept_pages"]
+    assert len(records) == 1
+    assert "NewControl" in records[0]
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        "从 **AMASS** 获取人体动作。",
+        "选择 **OSQP** 求解后端。",
+        "经 **ZeroMQ** 传输观测。",
+        "通过 **DYNAMIXEL** SDK 控制舵机。",
+        "保持 **IsaacGym** 的观测顺序。",
+        "用 **LSTM** 递推历史状态。",
+        "由 **qpOASES** 热启动求解 QP。",
+        "在 **RoboCasa365** 上评测。",
+        "动作输出采用 **SMPL-H** 表征。",
+        "调用 **FoundationPose** 跟踪位姿。",
+        "读取 `Config` 对象。",
+        "指定硬件 `target`。",
+        "选择 `full` 安装档位。",
+        "切换到 `real` 设备模式。",
+        "许可证字段为 `other`。",
+        "运行 `serve` 子命令。",
+        "使用 `torchrun` 启动训练。",
+        "核对 `v2` 资料版本。",
+        "安装 `numpy` 包。",
+        "编译 `flash-attn` 依赖。",
+        "选择 **Ground** 数据子集。",
+        "加载 `Motion` 数据结构。",
+        "启用 `simulation` 预览后端。",
+    ],
+)
+def test_existing_names_and_runtime_tokens_preserve_new_concept_signal(
+    tmp_path, monkeypatch, body
+) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", body + "待编译的机制 **NewControl**。")
         for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
     ]
     records = _run(pages)["missing_concept_pages"]

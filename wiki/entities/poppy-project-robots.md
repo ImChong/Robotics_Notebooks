@@ -2,13 +2,14 @@
 type: entity
 tags: [humanoid, education, open-source, poppy, inria, 3d-printing]
 status: complete
-updated: 2026-05-18
+updated: 2026-11-15
 related:
   - ./humanoid-robot.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
   - ../methods/imitation-learning.md
   - ../overview/robot-open-source-wechat-githubstore-18-projects.md
 sources:
+  - ../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
   - ../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md
 summary: "Poppy：法国 Inria 背景的开源 3D 打印机器人平台（Humanoid、Torso、Ergo Jr 等），软硬件全开源，主打教育、艺术与科研。"
@@ -25,6 +26,8 @@ summary: "Poppy：法国 Inria 背景的开源 3D 打印机器人平台（Humano
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | STL | Stereolithography (3D model file) | 3D 打印常用的三角网格模型文件格式 |
+| BOM | Bill of Materials | 装配所需物料清单 |
+| LFS | Large File Storage | 官方 CAD 仓库使用的大文件版本存储 |
 
 ## 为什么重要
 
@@ -39,6 +42,10 @@ summary: "Poppy：法国 Inria 背景的开源 3D 打印机器人平台（Humano
 | 文档 | [docs.poppy-project.org](https://docs.poppy-project.org/en/) |
 | GitHub 组织 | [github.com/poppy-project](https://github.com/poppy-project) |
 
+## 许可与 CAD 获取
+
+[Poppy Humanoid 官方 README 复核](../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md)区分 **硬件 CC BY-SA 4.0** 与 **软件 GPLv3**，不能合写为单一许可。SolidWorks 等 CAD 使用 Git LFS，应取 Release 文件或正确拉取 LFS 对象，普通网页下载可能只得到指针；安装示例不等于已验证所有 Python、板卡与舵机组合。
+
 ## 关联页面
 
 - [人形机器人](./humanoid-robot.md)
@@ -50,6 +57,8 @@ summary: "Poppy：法国 Inria 背景的开源 3D 打印机器人平台（Humano
 - Poppy 文档中 **Getting started / Assembly**（以当前站点版本为准）
 
 ## 参考来源
+
+- [官方硬件文档与入口复核](../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md)
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)
 - [wechat_githubstore_18_open_source_robot_projects.md](../../sources/blogs/wechat_githubstore_18_open_source_robot_projects.md)（GitHubStore 18 个开源项目清单收录；索引见 [机器人开源项目 18 例](../overview/robot-open-source-wechat-githubstore-18-projects.md)）
