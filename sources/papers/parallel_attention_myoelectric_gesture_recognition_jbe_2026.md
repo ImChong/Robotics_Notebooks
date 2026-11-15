@@ -6,6 +6,9 @@
 - **中文标题：** 基于并行注意力的肌电手势识别网络：面向仿生假手日常操作
 - **类型：** paper / sEMG / bionic prosthetic hands / gesture recognition
 - **作者：** Boao Li、Ziming Chen、Shixian Wang、Fuchun Sun、Bin Fang、Du Jiang、Bo Tao、Gongfa Li
+- **研究机构：** 武汉科技大学（Wuhan University of Science and Technology）；北京邮电大学（Beijing University of Posts and Telecommunications）；清华大学（Tsinghua University）；广东省智能科学与技术研究院（Guangdong Institute of Intelligence Science and Technology）。对应 Springer Authors and Affiliations，非由研究方向推测。
+- **共同第一作者：** Boao Li、Ziming Chen（Springer 标注 equal contribution）
+- **通讯作者：** Bin Fang、Du Jiang、Bo Tao（见出版商 Corresponding authors）
 - **期刊：** Journal of Bionic Engineering（2026）
 - **发表日期：** 2026-10-20（Springer 官方标注的在线发表日）
 - **DOI：** 10.1007/s42235-026-01012-7
@@ -13,6 +16,8 @@
 - **DOI 入口：** <https://doi.org/10.1007/s42235-026-01012-7>
 - **出版商 PDF 入口：** <https://link.springer.com/content/pdf/10.1007/s42235-026-01012-7.pdf>（当前无法公开获取全文，非免费全文链接）
 - **入库日期：** 2026-11-11
+- **增量核对：** 2026-11-15；补核 Springer 官方作者单位、论文版本记录、研究伦理、补充材料条目，**未取得全文、未完成通读**。
+- **版本记录：** 收稿 2025-10-10；修回 2026-10-01；录用 2026-10-03；版本正式发表 2026-10-20。
 - **通读：** 未完成
 - **核对范围：** 已核对 Springer 官方摘要、作者名单、在线发表日期、数据与材料可用性声明。论文正文方法、消融、实验协议、完整图表及附录受订阅访问限制，未获取和通读；因此暂不绘制声称来自全文的 Mermaid 主流程图。
 - **一句话说明：** 针对日常操作时手臂姿态改变使肌电手势识别精度下降的问题，论文提出并行双分支注意力 DCNN-GRU 模型，并在 8 位健全参与者与 2 位截肢参与者的数据上进行评估。
@@ -36,6 +41,9 @@
 | 模型权重 | 未核实有公开发布 |
 | 数据与材料 | Springer 声明：可向通讯作者提出合理请求，**并非公开下载** |
 | Mermaid 方法流程 | **待补**：未完成全文通读，不能据摘要填补未知模块边界 |
+| Springer 官方图像 | 论文页展示 Fig. 1–16 的原始图像入口；图像不能代替正文方法、实验、消融和附录的通读 |
+| 补充材料 | Springer 论文页列有两项 MP4 补充文件（Supplementary file 1 / 2）；本次未核实其视频内容、可下载权限或演示结论 |
+| 研究伦理 | 出版商声明伦理审批编号 BUPT-A-2025022，所有参与者已知情同意；仅记录合规信息，不据此推断数据公开 |
 | 源码运行时序图 | **不适用（现阶段）**：尚无已核实的官方可运行代码及入口 |
 
 ## 完成全文 ingest 前待核项目
@@ -54,3 +62,4 @@
 
 - [Springer Nature 原始论文记录（摘要、元数据、数据声明）](https://link.springer.com/article/10.1007/s42235-026-01012-7)
 - [DOI](https://doi.org/10.1007/s42235-026-01012-7)
+- [Nature Index：广东省智能科学与技术研究院中英名称核对](https://www.nature.com/nature-index/institution-outputs/china/guangdong-institute-of-intelligence-science-and-technology/622aebecdf22516aec40587b)
