@@ -45,13 +45,13 @@
     E.txt(bA, CX, 48, '第 13 集：转速 × 雅可比 = 手的速度', 18, E.INK, 'middle', 900);
     var bA2 = E.txt(bA, CX, 90, '每一列 = 关节轴此刻的螺旋轴', 19, E.WARN, 'middle', 900);
     var bQ = E.el('g', {}, R);
-    E.txt(bQ, CX, 152, '这一集：同一个速度', 20, E.INK2, 'middle', 700);
-    var MY = 256;
-    var Js = E.matN(bQ, RX + 70, MY, [[0, 0], [0, 0], [1, 1], [0, 1], [0, 2], [0, 0]], { size: 16, dx: 28, dy: 20, color: function (i, j) { return j === 0 ? E.J1 : E.J2; } });
-    var Jb = E.matN(bQ, RX + 262, MY, [[0, 0], [0, 0], [1, 1], [-2, 0], [3, 2], [0, 0]], { size: 16, dx: 30, dy: 20, color: function (i, j) { return j === 0 ? E.J1 : E.J2; } });
-    var jsT = E.viewTag(bQ, RX + 70, 160, 'base').g, jbT = E.viewTag(bQ, RX + 262, 160, 'hand').g;   // 两个雅可比正上方各挂视角标签
+    E.txt(bQ, CX, 142, '这一集：同一个速度', 20, E.INK2, 'middle', 700);
+    var MY = 244;
+    var Js = E.matN(bQ, RX + 70, MY, [[0, 0], [0, 0], [1, 1], [0, 1], [0, 2], [0, 0]], { size: 16, dx: 28, dy: 18, color: function (i, j) { return j === 0 ? E.J1 : E.J2; } });
+    var Jb = E.matN(bQ, RX + 262, MY, [[0, 0], [0, 0], [1, 1], [-2, 0], [3, 2], [0, 0]], { size: 16, dx: 30, dy: 18, color: function (i, j) { return j === 0 ? E.J1 : E.J2; } });
+    var jsT = E.viewTag(bQ, RX + 70, 150, 'base').g, jbT = E.viewTag(bQ, RX + 262, 150, 'hand').g;   // 两个雅可比正上方各挂视角标签
     var qm = E.txt(bQ, RX + 166, MY + 6, '≠ ?', 28, E.ERR, 'middle', 900);
-    var q1 = E.txt(bQ, CX, 342, '为什么不一样？怎么互相换？', 21, E.HI, 'middle', 900);
+    var q1 = E.txt(bQ, CX, 350, '为什么不一样？怎么互相换？', 21, E.HI, 'middle', 900);
     var gAns = E.el('g', {}, R);
     var fA = E.tex(gAns, RX + 20, 392, '\\textcolor{' + H.violet + '}{J_b}=\\textcolor{' + H.hi + '}{[\\mathrm{Ad}_{T_{bs}}]}\\,J_s', 26, E.INK, 'start', { w: 220, h: 46 });
     var fL = E.txt(gAns, RX + 236, 398, '6 × 6', 21, E.HI, 'start', 900);
