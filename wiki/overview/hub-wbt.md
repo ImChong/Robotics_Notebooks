@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-wbt, whole-body-tracking, motion-tracking, humanoid]
 status: complete
-updated: 2026-10-07
+updated: 2026-11-15
 summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向→跟踪训练→跨具身→真机部署的端到端流水线，对比 SONIC/BeyondMimic/SD-AMP/Heracles 等路线。"
 ---
 
@@ -47,6 +47,22 @@ summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向�
 - **[跨具身](./hub-cross-embodiment.md)**：Any2Any 等跨形态跟踪。
 - **[IL/RL](./hub-learning.md)**：跟踪策略主流用 RL + 模仿奖励。
 - **[训练数据](./hub-data-pipeline.md)**：WBT 的参考动作由训练数据管线产出（来源→质量→重定向）。
+
+## 核心原理
+WBT 流水线可概括为：参考动作采集 → [重定向](../concepts/motion-retargeting.md) 到机器人形态 → 以 RL + 模仿奖励（DeepMimic / AMP 类）训练跟踪策略 → 跨具身迁移 → 真机部署。质量上限由参考与迁移共同决定；详见 [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)。
+
+## 工程实践
+- 先在 [方法选型 Query](../queries/humanoid-motion-tracking-method-selection.md) 与 [路线对比](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) 中选路线，再进具体方法页。
+- 参考动作的来源与清洗见 [训练数据](./hub-data-pipeline.md)；上游重定向见 [动作重定向](./hub-motion-retargeting.md)。
+
+## 局限
+- 本页是入口汇总，不替代各方法页的实验细节；各路线数字不可跨论文直接比较。
+- 跟踪策略擅长复现参考，不等于具备任务泛化；Sim2Real 仍需单独处理。
+
+## 继续阅读
+- [SONIC Motion Tracking](../methods/sonic-motion-tracking.md)
+- [BeyondMimic](../methods/beyondmimic.md)
+- [Humanoid RL Motion Control Body System Stack](./humanoid-rl-motion-control-body-system-stack.md)
 
 ## 关联页面
 

@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, dexterity, manipulation, robot-hand, research, wonik-robotics]
 status: complete
-updated: 2026-08-22
+updated: 2026-11-15
 related:
   - ../tasks/manipulation.md
   - ../concepts/tactile-sensing.md
@@ -25,6 +25,10 @@ summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 �
 
 **Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视为研究灵巧操作、手内重定向和多指触觉反馈的标准硬件平台。
 
+## 一句话定义
+
+Allegro Hand 是 Wonik Robotics 的 16 自由度四指灵巧手，因结构规整、API 友好、仿真生态成熟，成为 RL / IL 灵巧操作研究的常用科研平台。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -37,7 +41,11 @@ summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 �
 | URDF | Unified Robot Description Format | 统一机器人描述格式 |
 | Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
-## 硬件规格
+## 为什么重要
+
+它是灵巧操作论文中最常见的"标准硬件"之一：同一套 URDF 与环境可在多个实验室复现，使算法结果可比；同时是手内重定向、触觉抓取等方向的默认载体。
+
+## 核心原理（硬件规格）
 
 - **手指数量**：4 指（3 个主要手指 + 1 个对向拇指）。
 - **自由度 (DOFs)**：16 个（每根手指 4 个主动驱动关节）。
@@ -59,6 +67,18 @@ summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 �
 - **In-hand Reorientation**：展示如何通过协调 16 个关节，让手中的魔方或笔在不掉落的前提下实现 360 度翻转。
 - **ADEPT（NVIDIA/UMich）**：[ADEPT](./paper-adept-dexterity.md) 在 Kuka iiwa7 + Allegro（23 DoF）上 zero-shot 部署 FMB peg insertion（star **5/10**）与 dish placement（**6/10**），pre-train 16 primitive reposing 覆盖 reach/grasp/lift/reorient（arXiv:2608.19182）。
 
+## 工程实践
+
+- 通过 CAN 总线 + 官方 ROS / ROS2 驱动或 Python API 控制，仿真侧常用 MuJoCo、Isaac Gym 的社区 URDF 模型。
+- 指尖 / 指节预留空间，可加装 GelSight、Xela 等触觉传感器（见 [Tactile Sensing](../concepts/tactile-sensing.md)）。
+- 数据采集常配合视觉遥操作与重定向，选型见 [数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md)。
+
+## 局限与风险
+
+- 仅 4 指（无无名指、小指），无法覆盖需要五指的人手类任务，仿生度低于 [Shadow Hand](./shadow-hand.md)。
+- 本页规格（如负载、控制频率）来自厂商文档摘要，具体版本（V4 / V5 Plus 等）参数可能不同，使用前需核对官方手册。
+- 本身不带触觉，需第三方加装并自行标定。
+
 ## 关联页面
 - [Shadow Hand (灵巧手)](./shadow-hand.md) — 仿生程度更高的五指方案
 - [Yale OpenHand](./yale-openhand.md) — 低执行器数欠驱动开源手族对照
@@ -77,3 +97,9 @@ summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 �
 - Wonik Robotics Official Documentation.
 - [sources/papers/humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)
 - [All Hands Up 站点归档](../../sources/sites/allhandsup-org.md)
+
+## 推荐继续阅读
+
+- [手内重定向](../methods/in-hand-reorientation.md)
+- [Dexterous Kinematics](../concepts/dexterous-kinematics.md)
+- [ADEPT](./paper-adept-dexterity.md)

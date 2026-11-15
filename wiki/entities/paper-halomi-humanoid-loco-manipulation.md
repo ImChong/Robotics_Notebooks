@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, imitation-learning, active-perception, umi, robot-free, vla, whole-body-control, unitree-g1, bfm-zero, dagger, teleoperation, shanghai-jiao-tong]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2606.18772"
+original: ../../sources/papers/halomi_arxiv_2606_18772.md
 venue: "arXiv 2026"
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -28,6 +29,8 @@ summary: "HALOMI（arXiv:2606.18772，上交/萨塞克斯/华理）从 UMI 式�
 ---
 
 # HALOMI（Learning Humanoid Loco-Manipulation with Active Perception from Human Demonstrations）
+
+## 一句话定义
 
 **HALOMI**（*Humanoid Active-Perception Loco-Manipulation Interface*，arXiv:2606.18772，[项目页](https://halomi-humanoid.github.io)）提出从 **人类无机器人示范** 学习 **人形全身 loco-manipulation + 主动感知** 的可扩展框架：在 **Universal Manipulation Interface（UMI）** 双夹爪采集之上叠加 **可穿戴 egocentric 头手追踪**，用 **BFM-Zero 行为流形上的 RL 全身控制器** 执行稀疏世界系头手目标，并以 **ego-view 对齐** 与 **控制器感知参考轨迹适配** 缓解观测与执行两侧的人–机鸿沟；高层 **π₀.₅ VLA** 在 **Unitree G1 + 3-DoF 主动颈** 上验证五项真机任务。
 
@@ -171,6 +174,19 @@ flowchart TB
 - [VLA](../methods/vla.md)
 - [Unitree G1](./unitree-g1.md)
 - [paper-halo-perceptive-humanoid-motion-sim](paper-halo-perceptive-humanoid-motion-sim.md) — HALO: Perceptive Humanoid Motion from Simulation（Apple，arXiv 2611.06908，不同论文）
+
+## 工程实践
+
+以下均取自论文全文（arXiv:2606.18772v1）；论文未给出的细节（RL 超参、VLA 微调步数/学习率、延迟、算力）**未披露**，本页不补写。
+
+- **采集硬件**：两只 Agilex Pika Sense 手持夹爪（含鱼眼腕部相机与夹爪开度编码器）+ 头盔（RealSense D435i + HTC VIVE Tracker 3.0），外部 Lighthouse 基站追踪头与双手 6-DoF（毫米级）；三路 RGB 与动作流统一 30 Hz 同步。
+- **机器人**：Unitree G1 + 机载 Pika 夹爪（几何/布局/相机位置与手持端相近，缩小腕部视角差）+ 自研伺服 3-DoF 主动颈（三轴近似过相机光心，连杆偏移可忽略，按纯旋转机构做解析 IK）。G1 本身无独立颈，故颈与全身策略解耦，避免小幅转头牵动躯干。
+- **控制器训练数据与流程**：>6000 条 loco-manipulation 运动序列；teacher 用 RL，观测含特权信息与未来参考（δ∈{5,10,…,50}），输出 128 维潜指令，投影到 BFM-Zero 球面潜空间后由冻结的 BFM-Zero 解码为关节指令；student 观测 10 帧本体历史 + 头手跟踪误差，用 DAgger（对 teacher 潜指令做 L2 回归）蒸馏。奖励为头手位姿跟踪项加平滑正则（具体权重未给出）。
+- **参考轨迹适配**：仿真从固定起点回放，B-spline 残差（全局粗到细 + 分块局部）作 CEM 初值，再用并行仿真环境做 CEM（代价=跟踪误差+平滑正则，取精英集均值更新）；仅当整段回放优于原始参考才采纳。三任务跟踪误差降 6.06–7.92%（均值约 6.7%）。
+- **VLA 数据规模**：Bag Transfer 102、Pick Bread 95、Towel 96 条人类示范，各设置 20 次真机 rollout；Squat-and-Grasp、Tossing 只做定性。
+- **部署**：π₀.₅ 微调；异步线程维护 30 Hz 图像缓冲，VLA 取最新同步帧 + 语言指令，输出左右手/头相对位姿块（FastUMI 式）+ 夹爪值，锚定当前绝对位姿转世界系目标，流式送 50 Hz 全身控制器。
+- **踩坑与局限**：①去掉 ego-view 对齐，机器人常在固定偏移处停下（Bag Transfer 90%→10%）；②关主动颈后目标移出视野丢失定位（Bag 30%），或放置阶段找不到篮子（Towel 80%→10%）；即便静态视角够用的 Pick Bread 也 85%→20%；③面包-盘子相对布局改变时 0/10，因所需手轨迹不在示范覆盖内；整体平移仍 6/10；④未见柜子位置、新毛巾外观均 60%。
+- **复现状态**：论文正文未给出代码/数据发布说明，项目页开放状态见 [项目页归档](../../sources/sites/halomi-humanoid-project.md)。
 
 ## 参考来源
 

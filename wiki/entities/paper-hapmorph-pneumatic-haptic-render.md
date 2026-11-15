@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, haptic, wearable, pneumatic, soft-robotics, vr, teleoperation, human-robot-interaction, sssa]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2509.05433"
+original: ../../sources/papers/hapmorph_arxiv_2509_05433.md
 related:
   - ../tasks/teleoperation.md
   - ../overview/hub-tactile.md
@@ -132,6 +133,29 @@ flowchart LR
 | 尺寸+刚度 | 是 | 形状+刚度 | 通常耦合 | **解耦**（实验验证） |
 | 响应 | 电机限制 | 较慢 | 中等 | ~2 s 阶跃 |
 | 制造 | 复杂机械 | 腔体+颗粒 | 织物热封 | 织物热封+缝纫 AFPA |
+
+## 工程实践
+
+以下均取自论文全文（arXiv v1，Materials and Methods 与 Discussion）；本页未复现，论文未声明开源代码。
+
+**硬件与制造**
+- 材料：TPU 涂层织物（Adventure Expert），橙色部件用 40D ripstop 尼龙、蓝色部件用 70D；由改装自商用 3D 打印机（Anycubic Mega）的 CNC 热封机制作 pouch motor，气管用氰基丙烯酸酯胶固定。
+- 装配：70D 织物激光切割出两条拉力带并交叉；三个 pouch 单侧缝合成一个单元，两单元反向布置成拮抗结构，再热封到交叉拉力带上；最后缝在弹性织物上，用魔术贴固定到手上。
+- 气动：空压机 FIAC F6000/50（最高 800 kPa）、SMC ITV0010 比例阀、ESP32 基于集成压力传感器做实时压力闭环。P1 为调制腔、P2 为形态腔。
+
+**表征实验参数**
+- 尺寸：执行器置于固定底座与 19 g 滑块间，SICK OD2000 激光位移计测高，16 Hz 同步记录；P2 在 100→0→100 kPa 间扫描。
+- 动态：P2 阶跃 0→90 kPa 与 P1 10→90 kPa（P2=10 kPa）下 H2 由约 75 mm 降到 50 mm，均约 2 s。
+- 刚度：Actuonix T16 线性驱动器 + Futek LSB205 力传感器，1.5 mm/s 准静态压缩；P1=0、P2 取多个定值，压缩 15 mm。
+
+**感知实验流程**
+- 10 名健康被试（6 男 4 女，29.2±4.18 岁），蒙眼 + 降噪耳机，右手；先熟悉 5–10 分钟，每次最多探索 30 s 后口头报告；9 状态随机，共 90 trial，单次实验完成。性别、手长对准确率与响应时间无显著影响。
+
+**坑与局限（论文自述）**
+- 刚度依赖高度：H2 较大时刚度趋近 0.1 N/mm（接触面积有限），需更大执行器或更高 P2 改善；4.7 N/mm 是 H2=15 mm 的值。
+- 存在滞回，精确控制可能需补偿算法；响应约 2 s 受供气限制；依赖外部气源，尚不能便携（需微型泵/阀）；寿命测试未做；纹理、温度未覆盖。
+- 6.7 s 响应含约 2 s 形态过渡与记录，感知耗时估计 2–4 s；随 trial 推进准确率从近 1.0 降到约 0.8，作者归因于状态多样与无反馈带来的疲劳。
+- 扩展架构（单 pouch 调制器、3 条约束线形变、双调制腔多自由度）只做了表征，尚无系统用户研究。
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 venue: curated
 summary: "HOMIE 主要解决数据闭环：用本体状态与关节序列、遥操作/外骨骼数据、仿真交互数据采集人类操作和机器人状态，再通过PPO/RL 策略训练、全身控制器/WBC/MPC转成可训练、可复用的全身轨迹/动作序列、低层控制器目标、地形/场景表征。关键点是把PPO/RL 策略训练、全身控制器/WBC/MPC放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。"
 related:
@@ -11,6 +11,8 @@ related:
   - ../overview/loco-manip-161-category-07-data-teleop.md
   - ../tasks/loco-manipulation.md
   - ./paper-roboreact.md
+original:
+  - ../../sources/papers/homie_arxiv_2502_13013.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_040_homie.md
   - ../../sources/papers/loco_manip_161_survey_129_homie.md
@@ -70,12 +72,17 @@ HOMIE 主要解决数据闭环：用本体状态与关节序列、遥操作/外�
 - 起作用的机制是链路合并：PPO/RL 策略训练与全身控制器/WBC/MPC 放在同一训练/部署链路，减少高层目标到低层动作之间的断点，产出含全身轨迹、低层控制器目标与地形/场景表征。
 - 本页为 161 篇清单索引条目，量化 benchmark 与实机指标以 [原文 / 项目页](https://homietele.github.io/) 为准；座舱式接口也不自动解决底层 WBC 鲁棒性，须与运控/接触控制对照。
 
-## 常见误区
+## 工程实践
+
+- 复现或选型时直接回到[原文 / 项目页](https://homietele.github.io/)核对外骨骼座舱硬件、数据格式与低层全身控制器接口；本页仅为 161 篇清单索引，未通读原文。
+- 作为低层全身跟踪器被下游复用时（见下方关联），需自行验证 WBC 在目标平台上的鲁棒性。
+
+## 局限与常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。
 2. Loco-manip 单篇工作不自动解决 **底层 WBC 鲁棒性**；须与运控/接触控制对照。
 
-## 与其他页面的关系
+## 关联页面（与其他页面的关系）
 
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 分类 hub：[loco-manip-161-category-02-upper-body-interface.md](../overview/loco-manip-161-category-02-upper-body-interface.md)、[loco-manip-161-category-07-data-teleop.md](../overview/loco-manip-161-category-07-data-teleop.md)
@@ -84,6 +91,7 @@ HOMIE 主要解决数据闭环：用本体状态与关节序列、遥操作/外�
 
 ## 参考来源
 
+- [homie_arxiv_2502_13013.md](../../sources/papers/homie_arxiv_2502_13013.md) — arXiv 原文归档
 - [loco_manip_161_survey_040_homie.md](../../sources/papers/loco_manip_161_survey_040_homie.md) — 161 篇策展摘录（#040）
 - [loco_manip_161_survey_129_homie.md](../../sources/papers/loco_manip_161_survey_129_homie.md) — 161 篇策展摘录（#129）
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)

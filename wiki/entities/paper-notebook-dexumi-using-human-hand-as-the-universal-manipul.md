@@ -15,8 +15,9 @@ tags:
   - nvidia
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-20
+updated: 2026-11-15
 arxiv: "2505.21864"
+original: ../../sources/papers/humanoid_pnb_dexumi-using-human-hand-as-the-universal-manipul.md
 code: https://github.com/real-stanford/DexUMI
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
@@ -176,7 +177,7 @@ sequenceDiagram
 - FSR 零漂明显；触觉输入可能降低而非提升策略性能。
 - 腕下视角和遮挡合成假设限制相机布局，不一定直接迁移到外部相机或双手任务。
 
-## 与其他页面的关系
+## 与其他页面的关联
 
 - 路线定位：[遥操作纵深 Stage 4–5](../../roadmap/depth-teleoperation.md) 的“无机器人采集→策略”分支。
 - 主任务：[Teleoperation](../tasks/teleoperation.md)。

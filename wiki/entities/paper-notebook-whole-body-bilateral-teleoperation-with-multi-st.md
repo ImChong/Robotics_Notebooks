@@ -11,7 +11,7 @@ tags:
   - humanoid-paper-notebooks
   - uiuc
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2508.09846"
 related:
   - ../overview/paper-notebook-category-07-teleoperation.md
@@ -19,7 +19,9 @@ related:
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../concepts/motion-retargeting.md
+original: ../../sources/papers/whole_body_bilateral_teleop_arxiv_2508_09846.md
 sources:
+  - ../../sources/papers/whole_body_bilateral_teleop_arxiv_2508_09846.md
   - ../../sources/papers/humanoid_pnb_whole-body-bilateral-teleoperation-with-multi-st.md
 summary: "Whole-Body Bilateral Teleoperation（arXiv:2508.09846）：视觉尺寸 + VLM 先验 + DH-CEM 并行仿真在线估计负载惯性，驱动 SATYRR 平衡点和操作补偿；3.3 kg 重载验证，未见官方代码。"
 ---
@@ -30,7 +32,7 @@ summary: "Whole-Body Bilateral Teleoperation（arXiv:2508.09846）：视觉尺�
 
 ## 一句话定义
 
-**该框架先用 RGB-D 与 VLM 缩小未知物体质量/质心/惯量搜索空间，再以 DH-CEM 在高保真并行仿真中用真机本体轨迹在线修正参数，使轮式人形能柔顺搬运约自重三分之一的负载。**
+（版本：arXiv v2，IEEE T-RO 投稿格式，2026-08；已通读正文含附录。）**该框架先用 RGB-D 与 VLM 缩小未知物体质量/质心/惯量搜索空间，再以 DH-CEM 在高保真并行仿真中用真机本体轨迹在线修正参数，使轮式人形能柔顺搬运约自重三分之一的负载。**
 
 ## 英文缩写速查
 
@@ -59,7 +61,7 @@ summary: "Whole-Body Bilateral Teleoperation（arXiv:2508.09846）：视觉尺�
 | 估计 | CenterSnap 尺寸 → VLM 先验 → DH-CEM + Isaac Gym |
 | 控制 | DCM 动态同步、平衡点更新、低增益 PD + 逆动力学前馈、robust CBF |
 | 负载 | 3.3 kg 水瓶，约机器人自重 1/3 |
-| 实时性 | 估计触发后硬件约 0.8–1.0 s；仿真动态测试约 0.5 s |
+| 实时性 | DH-CEM 每次更新约 0.3–0.5 s；视觉先验 + VLM（2–3 s）到稳定估计整条链约 3 s；仿真动态变参测试约 0.5 s（论文 v2，2026-08） |
 | 开放状态 | **未开源**：arXiv/论文未列官方项目页、仓库或数据 |
 
 ## 流程总览
@@ -88,7 +90,7 @@ CenterSnap 从单帧 RGB-D 估计 cuboid 尺寸，约束 CoM 位于物体内部�
 
 ### 2）以仿真复现真机轨迹
 
-采样对象注入经 system identification 对齐的 Isaac Gym 模型，对比同一自然举升输入下的关节位置/速度历史。最匹配真机轨迹的仿真对象参数被回写；离线 SysID 先校准摩擦、延迟和控制增益，避免把机器人模型误差归到负载。
+采样对象注入经 system identification 对齐的 Isaac Gym 模型，对比同一自然举升输入下的关节位置/速度历史。最匹配真机轨迹的仿真对象参数被回写；离线 SysID（粒子群优化）辨识 9 个参数（4 关节摩擦、1 时延、4 控制增益），，避免把机器人模型误差归到负载。
 
 ### 3）物体感知的双边全身控制
 
@@ -107,7 +109,7 @@ CenterSnap 从单帧 RGB-D 估计 cuboid 尺寸，约束 CoM 位于物体内部�
 | 项 | 建议 / 状态 |
 |----|-------------|
 | 线程 | 主控制、估计仿真、HMI、尺寸/VLM、夹爪分计算单元，以 UDP 通信 |
-| 频率 | SATYRR 主控约 833 Hz；尺寸约 100 Hz；估计更新约 30 Hz |
+| 频率 | 遥操作与主控约 400 Hz（HMI 控制器 1 kHz）；估计线程 100 Hz；尺寸估计约 100 Hz；DH-CEM 配置 500 样本/迭代、50 elite、3 次迭代，质量/惯量采样 std 为当前均值 10%、CoM std 固定 0.01 |
 | 触发 | 仅在静转动检测或机械 trigger 时估计，避免恒定物体重复计算 |
 | 先验 | VLM 延迟约 2–3 s，应在接触前运行；不能当安全关键真值 |
 | Sim2Real | 先对齐摩擦、时延和增益，再做负载估计，否则参数不可辨识 |
@@ -126,7 +128,12 @@ CenterSnap 从单帧 RGB-D 估计 cuboid 尺寸，约束 CoM 位于物体内部�
 ## 实验与评测
 
 - **硬件估计集：** 10 个对象 × 3 条自然举升轨迹，共 30 样本；完整 DH-CEM 在质量、CoM、惯量总体误差上优于消融与优化基线。
-- **实时性：** 硬件在线 refinement 约 **0.8–1.0 s**；Isaac Gym → MuJoCo 动态变化测试约 **0.5 s**。
+- **实时性：** DH-CEM 单次 refinement 约 **0.3–0.5 s**（同初值下 Grid Sweep ≈4 s、贝叶斯优化 ≈13 s、L-BFGS-B ≈3 s）；Isaac Gym → MuJoCo 变参测试（每 4 s 换物体、摇臂触发）约 **0.5 s**。
+- **Table II（VLM → 加 Stage 3）：** 质量改善明显（圆柱 93.0%、full steel 87.7%），但 CoM 可能变差（stock water −43.5%、corner −70.7%、empty −85.7%）。
+- **立方体假设：** 仿真按 cuboidness index（CI）评估，CI > 0.65 较可靠；杠铃、L 形等强非立方体的 CoM/惯量误差大，质量相对稳定。
+- **激励敏感性：** LS Prior-Tikhonov 惯量误差与激励质量（FIM log-det）相关 ρ≈0.80，DH-CEM 约 −0.03；近静止或单轴退化动作仍不足以可靠估计。
+- **机器人模型偏差：** 注入连杆质量/CoM/摩擦偏差后误差渐增但有界，物体质量最敏感（会吸收未建模机器人动力学）。
+- **DCM 跟踪 MAE（3.3 kg 搬运）：** 无补偿 0.054；补偿无触觉 0.023；补偿 + 触觉 0.019。无补偿多数试验失败，仅一次成功用于分析。
 - **手臂跟踪：** 5 个物体平均 MSE，补偿后肩 pitch/roll/yaw、肘 pitch 分别改善 **49.5%/24.2%/76.4%/78.4%**。
 - **全身重载：** 搬运 **3.3 kg** 水瓶；无补偿多数尝试失败，补偿使举升—后退—返回—释放与含下蹲序列可完成。
 - **安全扩展：** 仅 CBF 而无物体估计仍碰撞；估计 + robust CBF 在仿真中满足安全约束，但未做硬件验证。
@@ -143,6 +150,9 @@ CenterSnap 从单帧 RGB-D 估计 cuboid 尺寸，约束 CoM 位于物体内部�
 
 ## 局限与风险
 
+- 论文自述局限：立方体几何假设、VLM 数秒延迟、仍需人在回路、CBF 未上硬件。
+- 估计只在静止→动态转换或机械 trigger 时触发；若 VLM 初始化完成前就开始举升，控制器先用不准参数，靠反馈稳住，估计更新后才改善。
+
 - VLM 对物体内容、密度和填充状态的判断无保证；表中部分 CoM/质量 refinement 反而变差。
 - 假设物体刚性固定在夹爪，弱化了滑移、柔性物体和复杂接触的不可建模误差。
 - 需要 Isaac Gym 并行仿真、离线 SysID 和多计算单元，工程栈较重。
@@ -150,7 +160,7 @@ CenterSnap 从单帧 RGB-D 估计 cuboid 尺寸，约束 CoM 位于物体内部�
 - CBF 安全结果仅在仿真，尚不能视为真机安全保证。
 - 无官方代码/项目页/数据，独立复现与参数核对困难。
 
-## 与其他页面的关系
+## 关联页面
 
 - 任务入口：[Teleoperation](../tasks/teleoperation.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 - 控制基础：[Whole-Body Control](../concepts/whole-body-control.md)

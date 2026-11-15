@@ -2,9 +2,10 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, teleoperation, imitation-learning, diffusion-policy, motion-retargeting, whole-body-control, umi, robot-free, data-collection, unitree-g1, vr-tracking, visuomotor, baai-aether]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2605.03452"
-venue: "RSS 2024"
+venue: "arXiv 预印本（2026）"
+original: ../../sources/papers/bifrost_umi_arxiv_2605_03452.md
 related:
   - ../tasks/teleoperation.md
   - ../tasks/loco-manipulation.md
@@ -24,6 +25,8 @@ summary: "BifrostUMI（arXiv:2605.03452，BAAI Aether）将 UMI 式无机器人�
 ---
 
 # BifrostUMI（Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation）
+
+## 一句话定义
 
 **BifrostUMI** 是 BAAI Aether 团队提出的人形 **全身 visuomotor** 数据采集与部署框架（arXiv:2605.03452，[项目页](https://baai-aether.github.io/BifrostUMI/)）：在 **Universal Manipulation Interface（UMI）** 的「无目标机器人、便携示教」思想之上，用 **VR 追踪 +  instrumented gripper** 同步记录 **稀疏关键点轨迹** 与 **双腕视觉**，训练 **扩散高层策略**，再通过 **Spatial Keypoint Retargeting（SKR）** 与 **全身控制器** 将行为迁移到 **Unitree G1**。
 
@@ -150,6 +153,21 @@ flowchart TB
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
+## 工程实践
+
+以下均据论文全文（[arXiv:2605.03452](https://arxiv.org/abs/2605.03452)）核对；**mink 作为 IK 求解器仅见于项目页，论文正文未提及**，论文只写「两阶段带权约束 IK」。
+
+- **采集硬件**：PICO 头显 + 手柄 + 3 个下半身追踪器（腰 1、脚 2），经 XRobotoolkit 串流，6-DoF 身体姿态来自 SMPL 格式；自研齿条齿轮夹爪，各带鱼眼相机，夹爪宽度由电机磁编码器读出，手柄插槽固定 PICO 手柄。
+- **采集时在线 SKR**：采集中即运行 SKR，记录下半身 DoF 位置 q_low 作为策略本体输入，操作者还可实时看到重定向后的机器人动作以判断是否自然、可行；下半身强相关任务额外提取左右膝（7 关键点）。
+- **策略设置**：Diffusion Policy 全身扩展，H=48；观测为左右腕各一帧 224×224 RGB（DINOv2 编码）+ 3 帧 15-D 下半身本体（12 腿 + 3 腰，不含上肢）；动作 47-D（5×9+2），7 关键点为 65-D。动作相对查询时刻位姿（式 1）表示、统一在骨盆系；平移与夹爪宽度 min–max 归一到 [−1,1]，6D 旋转不缩放。
+- **SKR 参数**：仅对腿相关关键点（脚、膝）的骨盆系竖直位移乘 λ_leg=0.75；IK 以上一帧解初始化，带关节限位与平滑项；第一阶段优先脚支撑与朝向，第二阶段细化骨盆与 TCP。
+- **低层控制**：MJLab 中训练的学习式运动跟踪控制器，50 Hz，输入本体 + 重采样参考窗口（根位置 3、根朝向 4、关节 29），输出 29-D 残差关节位置，q_des=q0+s⊙clip(a,−a_max,a_max)，关节空间 PD。
+- **部署**：真机 Unitree G1，本体经 Unitree SDK 读取，当前关键点由 FK 得到；预测经式 2 解码后交给 SKR。
+- **时延匹配**：沿用 UMI 流程标定相机、夹爪状态、策略推理与机器人控制的相对延迟；动态投球任务去掉后成功率下降。
+- **评测规模**：每任务 20 次真机试验；任务含杂乱桌面取放、双臂蔬菜收集、动态投球、桌下扔垃圾、行走送咖啡；消融：SKR 换成 GMR、去时延匹配、7 关键点对 5 关键点（成功率仅见柱状图，本页不引具体数值）。
+- **采集效率（10 分钟有效轨迹数，BifrostUMI/TWIST2）**：新手 双臂 55/25、扔垃圾 43/17、行走送咖啡 61/1；熟手 55/30、53/23、62/5。
+- **坑与局限**：缺膝关键点时下半身欠约束、执行不可靠；无 SKR 的全局缩放靠视觉闭环偶可补偿但脆弱；论文未给出训练轮数、学习率、示范总条数等超参数，也未给代码链接，本页不臆测。
 
 ## 参考来源
 

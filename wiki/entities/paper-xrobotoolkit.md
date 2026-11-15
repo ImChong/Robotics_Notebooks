@@ -14,7 +14,9 @@ tags:
   - georgia-tech
   - george-mason
 status: complete
-updated: 2026-09-15
+original:
+  - ../../sources/papers/xrobotoolkit_arxiv_2508_00097.md
+updated: 2026-11-15
 arxiv: "2508.00097"
 venue: "SII 2026 (Best Paper)"
 code: https://github.com/XR-Robotics
@@ -36,6 +38,10 @@ sources:
 ---
 
 # XRoboToolkit
+
+## 一句话定义
+
+XRoboToolkit（arXiv:2508.00097，ByteDance PICO / Georgia Tech / GMU）：基于 OpenXR 的跨平台 XR 遥操作套件——低延迟立体视觉、QP-IK、头/手柄/手/tracker 多模态追踪；全栈开源，并用采数 LoRA 微调 π₀ 验证数据质量。
 
 **XRoboToolkit**（*A Cross-Platform Framework for Robot Teleoperation*，字节跳动 PICO / 佐治亚理工 / 乔治梅森，arXiv:2508.00097，[项目页](https://xr-robotics.github.io/)，SII 2026 Best Paper）是一套基于 **OpenXR** 的 **XR 机器人遥操作与示范采集** 软件套件：头显侧 Unity Client 统一输出头 / 手柄 / 手 / 全身 / 辅助 tracker 姿态流，PC 侧 C++ Service + Python/C++ 控制模块完成 **立体视觉回传**、**QP 逆解** 与 **灵巧手重定向**，覆盖精密机械臂、移动操作平台与仿真灵巧手。
 
@@ -145,7 +151,9 @@ sequenceDiagram
 
 - 源：PICO 4 Ultra 机载，或 ZED Mini（经 PC / Orin）。
 - 自定义 shader 调瞳距，焦点约 **3.3 ft**（约 1 m）以利桌面操作深度。
-- Table II：Open-TeleVision 121.5 ms vs XRoboToolkit（同 ZED→Quest）94.5 ms；ZED→PICO 最低均值 82 ms；PICO→PICO 抖动最小（STD 3.12 ms）。
+- Table II：Open-TeleVision 121.5 ms vs XRoboToolkit（同 ZED→Quest）94.5 ms；ZED→PICO 最低均值 82 ms（外接笔记本算力更强所致，论文推测）；PICO→PICO（无 PC）均值 100.5 ms，但抖动最小（STD 3.12 ms）。测试条件 1280×720 @60 FPS、1 Mbps（对齐 Open-TeleVision 默认），每条件仅采样 10 帧。
+- 手部数据随 JSON 以 90 Hz 发送，但受相机限制实际 60 Hz 更新；PICO 4 Ultra 视场约 76.35°×61.05°，ZED Mini 为 82°×52°，论文主观认为 PICO 画质更好。
+- 精密插入实验中主动头为 2-DoF（偏航+俯仰），刻意去掉 roll 以避免视觉-前庭冲突引起晕动；立体流 2160×810 @60 Hz，插入公差单边仅 0.5 mm。
 
 ### 4）示范 → VLA
 
@@ -178,7 +186,7 @@ sequenceDiagram
 
 - 它把「框架好不好用」换算成两个可验证量：同硬件视频流延迟相对 Open-TeleVision 约 −22%（121.5→94.5 ms，ZED→PICO 最低均值 82 ms），以及 100 条折毯示范 LoRA 微调 π₀ 后连续 30 min 自主成功率 100% 并出现自主 regrasping。
 - 分层设计是可复用的部分：头显侧 Unity Client 出 90 Hz OpenXR JSON，PC 侧 C++ Service + Pybind，机器人侧 PlaCo QP-IK 与 `dex_retargeting`；换臂或换头显只动末端模块。手柄采相对运动（grip 瞬间锁存参考）以降低奇异与初始对齐负担。
-- 适用边界：公开支持 PICO 4 Ultra 与 Meta Quest 3，仿真主推 MuJoCo；24 关节全身流跟随 PICO 约定，论文明确 **未做全身→人形重定向验证**，跨品牌骨骼不能假定兼容。
+- 适用边界：公开支持 PICO 4 Ultra 与 Meta Quest 3，仿真目前仅 MuJoCo；24 关节全身流跟随 PICO 约定，论文明确 **未做全身→人形重定向验证**，跨品牌骨骼不能假定兼容。
 - 主要失败模式在手部：重定向假设各关节独立可控，对 INSPIRE 等欠驱动耦合手不准确。
 - 开源状态要分层看：代码全栈开源（[XR-Robotics](https://github.com/XR-Robotics)），但 VLA 实验用的 100 条数据与 π₀ 权重未单独发布，想复现「论文同款策略」仍需自采。
 - 定位对照：与绑定 Isaac Lab/Sim 生态的 [Isaac Teleop](./isaac-teleop.md) 不同，本套件是跨臂、跨仿真的通用 XR 入口，[TWIST2](./paper-twist2.md)、[HumanoidUMI](./paper-humanoidumi.md) 已把它当上游流依赖——这也是它值得单独建实体的理由。
@@ -196,7 +204,7 @@ sequenceDiagram
 
 - **全身模型未标准化：** 24-joint 全身跟随 PICO；跨品牌骨骼可能不兼容；论文明确 **未做全身→人形重定向验证**。
 - **欠驱动灵巧手：** retargeting 假设各关节独立可控，对 INSPIRE 等耦合手不准确。
-- **仿真覆盖面：** 论文主推 MuJoCo；多仿真器扩展列入未来工作（如 RoboVerse）。
+- **仿真覆盖面：** 论文结论称目前仅支持 MuJoCo（另用 MeshCat 做可视化）；多仿真器扩展列入未来工作（如 RoboVerse）。
 - **数据资产边界：** 代码 **已开源**，但 VLA 实验用的 100 条折毯集 / 权重 **未**在项目页单独发布——复现「论文同款 π₀」仍需自采。
 - **勿与 Isaac Teleop 混淆：** [Isaac Teleop](./isaac-teleop.md) 绑定 NVIDIA Isaac Lab/Sim 与 retargeting 图；XRoboToolkit 是头显厂商生态友好的 **跨臂/跨仿真通用 XR 中间层**。
 

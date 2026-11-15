@@ -5,7 +5,7 @@ tags: [robotics, motion-retargeting, dexterous-manipulation, humanoid, physics-s
 status: complete
 code: https://github.com/facebookresearch/spider
 date: 2026-05-17
-updated: 2026-11-13
+updated: 2026-11-15
 venue: "2025.11"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
@@ -29,10 +29,14 @@ sources:
   - ../../sources/sites/jc-bao-spider-project-github-io.md
   - ../../sources/papers/humanoid_pnb_spider.md
   - ../../sources/papers/flashdexretarget_arxiv_2610_01849.md
+original:
+  - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
 summary: "SPIDER 用并行物理仿真中的采样式轨迹优化，把人体+物体的运动学参考 refinement 成动力学可行、接触意图保留的机器人轨迹；课程式虚拟接触力降低接触歧义，面向灵巧手与人形的规模化演示数据生成。"
 ---
 
 # SPIDER（物理感知采样式灵巧重定向）
+
+## 一句话定义
 
 **SPIDER**（*Scalable Physics-Informed DExterous Retargeting*，Pan 等，arXiv:2511.09484）把跨具身迁移写成：**人体演示只提供运动学层面的任务结构与目标**，再用**大规模并行物理仿真 + 采样优化**生成可在目标机器人上执行的**动力学可行轨迹**，并显式处理**接触丰富**任务中的歧义。
 
@@ -73,7 +77,7 @@ summary: "SPIDER 用并行物理仿真中的采样式轨迹优化，把人体+�
 | **虚拟接触引导** | 期望接触位形、课程进度 | 早期施加**虚拟粘附力**稳定接触序列，再逐步放松，降低多解歧义 |
 | **鲁棒化与增强（可选）** | 域随机化、场景/物体参数 | 缓解仿真—实物失配；支持单演示在多物体/地形/力条件下的数据扩增 |
 
-## 管线总览（Mermaid）
+## 核心原理：管线总览（Mermaid）
 
 ```mermaid
 flowchart LR
@@ -105,6 +109,12 @@ flowchart LR
   T --> R
   R --> D
 ```
+
+## 工程实践
+- **作为数据生成外壳**：先用运动学前端（如 GMR 类）得到参考，再在并行仿真里做采样优化，产出可 rollout 的机器人轨迹。
+- **接触课程**：早期启用虚拟粘附力稳定接触序列，随迭代放松；无引导采样对照下论文报告成功率约 +18%（以原文表格为准）。
+- **落地到实机**：配合域随机化与校准；网格质量、接触参数与并行吞吐决定可用规模。
+- **运行入口**见下文源码运行时序图与 [sources/papers/humanoid_pnb_spider.md](../../sources/papers/humanoid_pnb_spider.md)。
 
 ## 与常见路线的关系
 

@@ -12,8 +12,9 @@ tags:
   - cuhk
   - hkust-gz
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2505.12748"
+original: ../../sources/papers/humanoid_pnb_teleopbench.md
 code: https://github.com/cyjdlhy/TeleOpBench
 related:
   - ../overview/paper-notebook-category-07-teleoperation.md
@@ -165,7 +166,7 @@ README 给出的最小入口是配置相机/VR 采集端后，在 `teleop/` 运�
 - 论文未报告明确相关系数、显著性或跨平台分层统计，“强相关”证据粒度有限。
 - 开源仓库缺少完整任务运行/评测说明，复现论文全表仍需作者补充。
 
-## 与其他页面的关系
+## 与其他页面的关联
 
 - 任务入口：[Teleoperation](../tasks/teleoperation.md)
 - 基准纵深：[具身大模型评测基准](../overview/hub-embodied-eval-benchmark.md)

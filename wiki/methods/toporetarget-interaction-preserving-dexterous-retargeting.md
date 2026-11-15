@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, dexterous-manipulation, reinforcement-learning, contact-rich-manipulation, sim2real]
 status: complete
 date: 2026-06-17
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -18,10 +18,14 @@ sources:
   - ../../sources/papers/toporetarget_arxiv_2606_16272.md
   - ../../sources/sites/toporetarget-github-io.md
   - ../../sources/repos/toporetarget.md
+original:
+  - ../../sources/papers/toporetarget_arxiv_2606_16272.md
 summary: "TopoRetarget 用共享拓扑的 hand–object interaction mesh 与距离加权 Laplacian 优化，把人手演示转为灵巧手可学的接触保真参考；配套轻量 PPO 残差跟踪与 DR，在 Pen-Spin 等任务上显著优于 OmniRetarget 等基线，并零样本部署到 Wuji Hand。"
 ---
 
 # TopoRetarget（交互保留灵巧重定向）
+
+## 一句话定义
 
 **TopoRetarget**（Wu 等，arXiv:2606.16272，清华大学 IIIS / MARS Lab）把灵巧手 **hand–object 演示** 转成机器人可跟踪的参考轨迹时，不追求逐点复制人手姿态，而是显式保留 **局部 hand–object 交互拓扑**——哪些关键点接触物体、相对位置与方向如何演化——并在同一组固定参数下适配不同物体、尺度与灵巧手 embodiment。
 

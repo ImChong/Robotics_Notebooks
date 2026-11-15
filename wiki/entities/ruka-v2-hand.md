@@ -3,7 +3,7 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, open-source, tendon-driven, teleoperation, imitation-learning, nyu]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
@@ -18,6 +18,8 @@ sources:
   - ../../sources/papers/ruka_v2_arxiv_2603_26660.md
   - ../../sources/repos/ruka-v2.md
   - ../../sources/sites/ruka-hand-v2-github-io.md
+original:
+  - ../../sources/papers/ruka_v2_arxiv_2603_26660.md
 summary: "RUKA-v2（NYU）：全栈开源腱驱动仿人灵巧手，16 主动指 DoF + 2-DoF 平行腕 + 指根外展/内收，材料约 1.5K USD；AnyTeleop 重定向 + OpenTeach VR 遥操作 + BAKU 模仿学习已验证。"
 ---
 
@@ -62,7 +64,7 @@ summary: "RUKA-v2（NYU）：全栈开源腱驱动仿人灵巧手，16 主动指
 
 **静态载荷（摘要，15–20 s 保持）：** 非拇指 DIP–PIP **1200 g**；MCP **780 g**；外展 **150 g**；拇指 **835 g**；腕 supination/pronation **1215 g**。
 
-## 软件与学习管线
+## 核心原理：软件与学习管线
 
 ```mermaid
 flowchart LR
@@ -80,6 +82,12 @@ flowchart LR
 - **模仿学习：** **BAKU**；观测 **23D proprio**（7 臂 + 16 手）+ 固定相机 **RGB**；收集时对关节加噪声以包含 **恢复行为**。
 - **安装：** `git clone --recurse-submodules` → Conda `ruka_hand` → `pip install -e .`（详见 [sources/repos/ruka-v2.md](../../sources/repos/ruka-v2.md)）。
 
+## 工程实践
+- **复刻路径**：仓库为 `ruka-hand-v2`（与 v1 独立）；`git clone --recurse-submodules`，Conda 环境 `ruka_hand`，`pip install -e .`，另需 3D 打印与腱张紧经验。
+- **遥操作采集**：OpenTeach + Oculus VR 驱动 Franka 臂，手部走 AnyTeleop 向量重定向 + 线性 motor 映射；每任务约 100 条示范，采集时对关节加噪声以包含恢复行为。
+- **校准**：用自动 per-motor 校准；可选 AS5600 磁编码器套件作 ground truth，降低对动捕手套的依赖。
+- **安装方式**：侧装腕法兰便于桌面 7-DoF 臂；连续运行 >5 h 无热限（论文数据）。
+
 ## 与相近平台对照（论文 Table 1 归纳）
 
 | 平台 | 开源 | 成本量级 | 主动 DoF | 腕 DoF | 驱动 |
@@ -92,7 +100,7 @@ flowchart LR
 | Wuji Hand | ✗ | 约 5.5K USD | 20 | 0 | 直驱 |
 | Sharpa Wave | ✗ | 约 50K USD | 22 | 0 | 直驱 |
 
-## 常见误区
+## 常见误区与局限
 
 - **「v2 只是 v1 小改」** — v2 新增 **整腕模块 + 四指外展腱路**，DoF、腱路由与控制栈均变；仓库与 BOM **独立**（`ruka-hand-v2` vs `ruka-hand`）。
 - **「必须买动捕手套才能用」** — v1 偏数据驱动 tendon 标定；v2 **默认 AnyTeleop 视觉重定向 + 线性 motor 映射**，并开源 **磁编码器** 做校准与评测。

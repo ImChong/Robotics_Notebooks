@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, teleoperation, manipulation, surgical-robotics, healthcare, humanoid, nature, ucsd]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 doi: "10.1038/s41586-026-10796-x"
 venue: "Nature 2026"
 related:
@@ -122,14 +122,14 @@ flowchart TB
 - 主要缺口明确：术中需 **多次重新标定**、时长明显长于成熟专用系统、远程手术还卡在 latency。
 - 定位仍是 **preclinical feasibility**：作者所称的「精度可比」限于遥操作精度，不含吞吐量、无菌流程与器械生态；代码目前仅项目页占位。
 
-## 常见误区
+## 常见误区与局限
 
 1. **in vivo 猪模型 = 临床已可用：** 本文为 **preclinical feasibility**；监管、长期安全性、大规模 RCT 均未覆盖。
 2. **精度相当 = 全面替代 da Vinci：** 作者强调的是 **teleoperated precision** 可比，而非 **吞吐量、标定负担、无菌流程、器械生态** 已等价。
 3. **人形优势在「更巧的手」：** 核心叙事是 **部署弹性 + 全身任务扩展**（移动、递器械、清理 OR），而非单指灵巧度已超专用手术臂。
 4. **LapSurgie 与本文重复：** [LapSurgie](../entities/paper-notebook-lapsurgie-humanoid-robots-performing-surgery-via.md) 是框架与用户研究前序；**Nature 2026** 是同一技术线的 **活体系统评估升格**。
 
-## 与其他页面的关系
+## 关联页面
 
 - **前序框架：** [LapSurgie（Paper Notebooks 待深读）](../entities/paper-notebook-lapsurgie-humanoid-robots-performing-surgery-via.md) — inverse-mapping + RCM 手持腹腔镜（arXiv:2510.03529）
 - **医院通用人形：** [Humanoids in Hospitals（计划实体）](../entities/paper-notebook-humanoids-in-hospitals-a-technical-study-of-huma.md) — 同一 UCSD 线医院场景替代体研究
@@ -145,6 +145,10 @@ flowchart TB
 | 术式 | 腹腔镜胆囊切除术（活体猪） |
 | 发表 | Nature，2026-07-08 在线 |
 | 代码 | 项目页 Code 暂占位；预印本线曾有 Zenodo 腹腔镜人形代码记录，待官方 GitHub 放出后补链 |
+
+## 工程实践
+
+本页为论文策展归纳：工程落地请按本页「流程总览」「核心机制」与「参考来源」中的项目页/论文原文核对设置；官方代码是否开放以项目页为准，本页未独立复现。
 
 ## 参考来源
 

@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, dataset, umi, teleoperation, bimanual, manipulation, vla, wam, robot-free, simple-ai, imitation-learning]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2607.25895"
+original: ../../sources/papers/hifi_umi_arxiv_2607_25895.md
 related:
   - ./handumi.md
   - ./paper-bifrost-umi.md
@@ -118,6 +119,15 @@ flowchart LR
 | 质控读法 | 重建/回放约 **98%**；丢帧 **<2/h**；夹爪角误差 **<0.1°**；仍按任务过滤 episode |
 | 后训练对照 | 与「同场景真机 teleop 后训练」比 SR；VLA 协议约 **3200** UMI vs **300** teleop 轨迹/任务（管线对比，非等样本效率） |
 | 预训练 | 论文用同语料 **4000 h** 子集做 scaling（大于公开 2k 发布） |
+| 位姿重建 | 头戴立体+IMU 离线 stereo-inertial SLAM；双手各带 marker 立方体，由头相机观测→头/手相对位姿复合得全局轨迹；**不做全局回环**（操作改变场景，违反静态假设），改用动态滑窗局部一致性约束，全局漂移约厘米级、局部毫米级；SLAM 偶发失败的轨迹自动重算 |
+| 采集端质控 | 设备端检测欠曝、运动模糊、操作过快、手出头相机视野，实时语音提醒；在线切片标记任务/子任务边界；Wi-Fi 实时上传云端 |
+| 六阶段处理流水线 | 采集上传 → 轨迹重建+自动清洗（约 98% 通过）→ 目标机器人 WBC 仿真重放校验（约 98%）→ AI 辅助标注（带置信度）→ 低置信度人工复核 → 统计分析与版本化导出；两道门串联可用率约 96% |
+| 训练前 episode 过滤 | 剔除 SLAM 失败、缺帧、时间戳不连续、手位姿离群、动作尖峰、任务未完成、夹爪状态不一致；长 episode 切段并去掉首尾空闲；**先过滤再划分 train/val**，防止近重复窗口跨集 |
+| 动作表示 | 以 chunk 起点当前末端位姿为锚的相对位姿（平移增量 + Rotation6D），夹爪绝对值；每臂 10 维共 20 维；StarVLA-QwenPI 嵌入 32 维、LingBot-VA 嵌入 30 维动作张量；位置/旋转/夹爪分别归一化，左右臂各自统计 |
+| StarVLA-QwenPI 配方 | Qwen3-VL-4B + π 式 flow-matching DiT 头，H=20、执行前 10 步，8 步 Euler，图像 224×224；预训练 4000 h（一遍 18 万步，全局 batch 2048，3000 步 warm-up） |
+| 部署栈 | 双臂 Tianji Marvin M6 力控臂，装同款夹爪与 4 路腕相机（头相机仅用于离线重建、不上机）；位姿目标插值到 125 Hz，IK 125 Hz，EtherCAT 1 kHz 发关节指令；VLA 沿用 UMI 的延迟匹配 t_obs=t_now−max τ 的时间戳滚动时域控制 |
+| 评测协议 | 评测前冻结任务/物体/指令/检查点/初值库/超时；策略操作员与场景操作员分离，策略顺序随机；每任务-策略 40 次 rollout，成功需稳定 ≥2 s 且无安全干预 |
+| 数据量与成本 | 每任务 3200 条 UMI（约 10–20 h，多操作员多场地并行、无需机器人）vs 约 300 条遥操作（约 3–7 h，同评测场景，需遥操员+助手）；Remote Insertion 上 UMI 数据 400→800→1600→3200 条成功率 37.5→65→70→85%，3200 后饱和 |
 | 复现边界 | 骨干（StarVLA / OpenPI / LingBot）与真机栈需自备 |
 
 ## 实验与评测

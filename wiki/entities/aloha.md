@@ -3,13 +3,19 @@
 type: entity
 title: ALOHA (双臂遥操作硬件)
 tags: [hardware, teleoperation, dual-arm, dataset-collection, deepmind, stanford, google]
+original:
+  - ../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md
 summary: "ALOHA 是 Tony Z. Zhao 等研究者提出的低成本、开源双臂遥操作硬件系统，与 ACT 配套；原始项目与后续 ALOHA 2 应区分。"
-updated: 2026-11-13
+updated: 2026-11-15
 ---
 
 # ALOHA (双臂遥操作硬件)
 
 **ALOHA** (A Low-cost Open-source Hardware System for Bimanual Teleoperation) 是 Tony Z. Zhao、Vikash Kumar、Sergey Levine、Chelsea Finn 提出的低成本、开源双臂遥操作硬件系统，原始论文作者单位涉及 Stanford / UC Berkeley / Meta，不能与 Google DeepMind 后续的 ALOHA 2 混同。它常用于双臂精细操作（Fine Manipulation）的演示采集；作者与硬件范围见 [ALOHA / ACT 原文归档](../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md)。
+
+## 一句话定义
+
+ALOHA 是 Zhao 等提出的低成本开源双臂遥操作硬件（主从臂 + 多相机），是 ACT 示范采集的原生硬件底座。
 
 ## 英文缩写速查
 
@@ -27,7 +33,7 @@ updated: 2026-11-13
 - **开源生态**：提供了从机械设计图纸到控制代码的全套开源方案。
 - **高频交互**：配合 [action-chunking](../methods/action-chunking.md) (ACT) 算法，ALOHA 证明了即使是低成本硬件也能完成拉拉链、炒菜等极高难度的动作。
 
-## 核心组成
+## 核心原理（核心组成）
 
 - **Master 机械臂**：操作员手持的小型机械臂，用于输入指令。
 - **Follower 机械臂**：实际执行任务的机器人手臂（通常是 ViperX 300 6DOF）。
@@ -45,6 +51,18 @@ updated: 2026-11-13
 - **模态：** 多视角 RGB（约 4 路相机）+ 双臂关节位置/动作（ACT 本体接口），无深度/力矩通道。
 - **重定向就绪度：** 数据绑定 ALOHA / ViperX 双臂形态；迁移到其他机器人需重定向或按目标本体重新采集。
 
+## 工程实践
+
+- 用 Master 臂直接关节映射驱动 Follower 臂（无需逆运动学求解），同步记录多路 RGB 与双臂关节位置作为示范。
+- 示范数据直接对接 [action-chunking](../methods/action-chunking.md)（ACT）训练；迁移到其他本体需重定向或重新采集。
+- 要仿真数据增强可使用 [robotwin](robotwin.md) 提供的 ALOHA 仿真版本。
+
+## 局限与风险
+
+- 硬件参数与成本以 [原文通读归档](../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md) 为准；ALOHA 2 与 Mobile ALOHA 未纳入该次通读。
+- 数据无深度 / 力矩通道，数据绑定 ViperX 双臂形态。
+- 原始 ALOHA 与 Google DeepMind 的 [ALOHA 2](./aloha-2.md) 作者与硬件均不同，引用时需区分。
+
 ## 关联页面
 
 - [双臂操作](../tasks/bimanual-manipulation.md) — ALOHA / ACT 任务语境
@@ -60,3 +78,9 @@ updated: 2026-11-13
 - [Transformer Transformer 论文摘录](../../sources/papers/transformer_transformer_arxiv_2607_25798.md) — ALOHA cloth flinging 共设计结果及旧页面名称纠正
 - [ALOHA / ACT 原文归档](../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md) — 原始作者、硬件与示范采集接口
 - [χ₀ / kai0 论文摘录](../../sources/papers/chi0_kai0_arxiv_2602_09021.md) — 双臂协同服装操作硬件布局
+
+## 推荐继续阅读
+
+- [ALOHA 2](./aloha-2.md)
+- [Action Chunking](../methods/action-chunking.md)
+- [遥操作](../tasks/teleoperation.md)

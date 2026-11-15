@@ -11,6 +11,8 @@
   - <https://skevinci.github.io/coordex/>
 - **作者：** Sikai Li, Shuning Li, Zhenyu Wei, Yunchao Yao, Chenran Li, Mingyu Ding
 - **机构：** 北卡罗来纳大学教堂山分校（UNC Chapel Hill）、加州大学伯克利分校（UC Berkeley）
+- **通读：** 已完成
+- **核对范围：** 读完 arXiv:2606.23680v1 PDF 全文（正文 §1–5 与附录 A 先验实现、B 训练细节/奖励/超参/NoDemoRSI、C 真机回放；跳过参考文献）；未读项目页与源码。
 - **入库日期：** 2026-06-25
 - **一句话说明：** 将高维 **全身 + 灵巧手** 控制分解为 **冻结的 proprio 条件潜空间先验**（body 16-D / hand 12-D）与 **协调潜残差 PPO**：特权 tracking teacher → VAE 蒸馏（PULSE 同族）→ **共享任务上下文 + 分体 body/hand 残差头** 在 Isaac Lab 上学会 **边走边抓/开门/转身持物**；G1+20-DoF WUJI 仿真三项任务，WalkGrab 消融显示关节空间 PPO、单体式潜残差均失败。
 

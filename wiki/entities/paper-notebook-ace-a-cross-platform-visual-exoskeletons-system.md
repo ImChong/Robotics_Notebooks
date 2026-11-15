@@ -11,7 +11,7 @@ tags:
   - ucsd
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2408.11805"
 code: https://github.com/ACETeleop/ACETeleop
 related:
@@ -21,6 +21,8 @@ related:
   - ./paper-notebook-bunny-visionpro-real-time-bimanual-dexterous-tel.md
   - ./paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md
   - ../../roadmap/depth-teleoperation.md
+original:
+  - ../../sources/papers/humanoid_pnb_ace.md
 sources:
   - ../../sources/papers/humanoid_pnb_ace.md
   - ../../sources/sites/ace-teleop.md
@@ -159,7 +161,7 @@ sequenceDiagram
 - 真机滤波、PID、限位与奇异规避由具体平台负责，仓库示例不能替代安全控制层。
 - 跨平台实验丰富，但任务和操作者规模仍有限，未证明长时间人体工学与大规模数据产能。
 
-## 与其他页面的关系
+## 关联页面（与其他页面的关系）
 
 - 路线定位：[遥操作纵深 Stage 1](../../roadmap/depth-teleoperation.md) 的低成本外骨骼接口。
 - 主任务：[Teleoperation](../tasks/teleoperation.md)。

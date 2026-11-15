@@ -2,7 +2,7 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, open-source, direct-drive, tactile-sensing, teleoperation, ucla]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
@@ -13,6 +13,8 @@ related:
   - ./allegro-hand.md
   - ./mediapipe.md
   - ./all-hands-up.md
+original:
+  - ../../sources/papers/midas_hand_arxiv_2607_14487.md
 sources:
   - ../../sources/papers/midas_hand_arxiv_2607_14487.md
   - ../../sources/repos/midas-hand-org.md
@@ -44,7 +46,7 @@ summary: "MIDAS Hand（UCLA）：开源直驱低阻抗仿人触觉灵巧手，16
 - **模块化可维护：** 食/中/无名指为 **相同可拆模块**；整手 **<3 h** 装配、单指更换 **<15 min**，适合长期实验与零件替换。
 - **学习数据采集栈已发布：** Python 控制/触觉 API、MuJoCo、dex-retargeting 封装与 **MediaPipe 摄像头遥操作** 分仓开源；支持 **MANUS 手套** 与可选触觉力反馈，便于 human-to-robot 示范收集。
 
-## 硬件要点
+## 核心原理（硬件要点）
 
 | 维度 | 规格（论文/项目页） |
 |------|---------------------|
@@ -90,6 +92,12 @@ flowchart LR
 
 - **已开源：** 控制/仿真/重定向/遥操作 **四个 Python 仓库**、通信板 PCB 文档、静态站源码；CAD/BOM/装配文档与下载在 **midas-hand.com**。
 - **边界：** 完整可编辑 CAD 在 **Onshape**（非 Git monorepo）；触觉模组与 Dynamixel 为 **商业现货**；论文明确触觉 **尚未用于闭环控制**，当前为传感与演示级集成。
+
+## 工程实践
+
+- 软件按四仓分工：`midas_hand_api`（真机）、`midas_hand_mujoco`（仿真）、`midas_hand_retargeter`（人到机关节）、`midas_hand_teleop`（摄像头遥操作）。
+- 数据采集可用 MediaPipe 视觉或 MANUS 手套，并同步 proprioception 与触觉流；CAD / BOM / 装配见 midas-hand.com。
+- 整手 <3 h 装配、单指更换 <15 min，便于长期实验维护。
 
 ## 局限与风险
 

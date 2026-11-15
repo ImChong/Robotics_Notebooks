@@ -10,6 +10,8 @@
 - **代码/项目：** <https://github.com/LeCAR-Lab/BFM-Zero>
 - **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
 - **入库日期：** 2026-05-26
+- **通读：** 已完成
+- **核对范围：** 已读 arXiv:2511.04131v2 全文 PDF 文本（正文、附录算法与 Table 1 超参、消融；跳过参考文献）；未读官方源码。
 - **一句话说明：** latent prompt 统一目标姿态、奖励优化、恢复与少样本适配；技能切换≈搜索身体潜空间，接近产业「运控基座」。
 
 ## 核心摘录（策展，非全文）

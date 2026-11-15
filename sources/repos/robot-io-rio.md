@@ -11,6 +11,8 @@
 - **文档站（MkDocs）：** https://robotio-docs.netlify.app/
 - **论文：** https://arxiv.org/abs/2605.11564（RSS 2026 接收，项目页与 arXiv 摘要一致）
 - **入库日期：** 2026-05-15
+- **核对范围：** 2026-11-15 仅就其中的论文部分：通读 arXiv:2605.11564 v1 HTML 正文（摘要、§I–§II、§III RIO 设计/Node 与中间件/Robot Station/遥操作与数据/策略推理、§IV 评测与表 III–IV、§V 结论与局限）；附录 V-A…V-C 与参考文献未读。仓库源码与文档站本次未通读。
+- **通读：** 已完成
 - **一句话说明：** 面向跨形态机器人学习的开源 Python **实时 I/O** 框架：以统一 **Node + 可插拔中间件** 抽象连接遥操作、传感、本体控制、RLDS 风格数据记录与 **异步策略推理**，换硬件组合以 **station 配置** 为主而非重写主循环；论文在单臂 / 双臂 / 人形与多种 VLA、DP、PPO 管线上给出系统验证。
 - **沉淀到 wiki：** [RIO（Robot I/O）](../../wiki/entities/robot-io-rio.md)
 

@@ -12,7 +12,7 @@ tags:
   - rss-2026
   - ustc
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2602.09628"
 venue: "RSS 2026 · arXiv"
 related:
@@ -24,6 +24,8 @@ related:
   - ./paper-twist.md
   - ../methods/sonic-motion-tracking.md
   - ./paper-pilot-perceptive-loco-manipulation.md
+original:
+  - ../../sources/papers/telegate_arxiv_2602_09628.md
 sources:
   - ../../sources/sites/telegate-project.md
   - ../../sources/papers/telegate_arxiv_2602_09628.md
@@ -31,6 +33,10 @@ summary: "TeleGate（RSS 2026）：门控 Top-1 选择冻结多域专家 + VAE �
 ---
 
 # TeleGate
+
+## 一句话定义
+
+TeleGate（RSS 2026）：门控 Top-1 选择冻结多域专家 + VAE 历史→未来运动先验，在 2.5 h 惯性动捕数据上实现 G1 高动态全身实时遥操作，避免蒸馏统一策略的性能损失。
 
 **TeleGate**（*Whole-Body Humanoid Teleoperation via Gated Expert Selection with Motion Prior*，USTC 等，arXiv:2602.09628，**RSS 2026**）提出 **实时全身人形遥操作** 统一框架：按动态相似性训练 **4 组冻结专家策略**，用 **轻量门控网络 Top-1 路由** 替代把多专家 **蒸馏进单网络**；并用 **VAE 从历史参考轨迹推断隐式未来运动意图**，补偿遥操作场景 **拿不到未来参考** 的信息缺口。在 **Unitree G1** 上仅用 **2.5 小时** 与部署一致的 **惯性动捕** 数据，即可跟踪跑跳、跌倒恢复、踢球等高动态动作。
 
@@ -59,7 +65,7 @@ summary: "TeleGate（RSS 2026）：门控 Top-1 选择冻结多域专家 + VAE �
 
 ## 为什么重要
 
-- **遥操作低层的「多技能不蒸馏」路线：** 相对 TWIST 类 **统一 tracking 策略** 与 Any2track 类 **DAgger 蒸馏专家**，TeleGate 用 **冻结专家 + 门控选择** 保留各域决策边界，仿真 SR **97.3%**（Table II），显著高于 TWIST（68.9%）与蒸馏基线（91.2%）。
+- **遥操作低层的「多技能不蒸馏」路线：** 相对 TWIST 类 **统一 tracking 策略** 与 Any2track 类 **DAgger 蒸馏专家**，TeleGate 用 **冻结专家 + 门控选择** 保留各域决策边界（TWIST 为 teacher-student 蒸馏的统一策略，论文称其真机难支持跑跳与跌倒恢复），仿真 SR **97.3%**（Table II），显著高于 TWIST（68.9%）与蒸馏基线（91.2%）。
 - **数据效率对照 SONIC：** 相对 **700 h** 规模化 tracking（SONIC），仅用 **2.5 h** 且采集设备与部署一致，靠 **专家划分 + 课程采样** 实现高动态泛化——适合 **便携惯性动捕** 部署场景。
 - **实时遥操作的预判模块：** 跳跃、趴地起身等动作在 **无未来参考** 时难跟踪；**非对称 VAE**（encoder 读 $M_t^-$，decoder 重建 $M_t^+$）与专家 **联合训练**，使 $z_t$ 语义对齐控制需求（+VAE 将 SR 从 96.7% 提到 97.3%）。
 - **与 PILOT MoE 正交：** [PILOT](./paper-pilot-perceptive-loco-manipulation.md) 的 MoE 服务 **感知 loco-manipulation LLC**；TeleGate 的门控解决 **多类动态运动跟踪/遥操作**，不替代上层 VR 接口或 VLA。
@@ -140,20 +146,29 @@ flowchart TB
 |------|------|
 | 仿真对比 | vs TWIST、Any2track、GMT（Table II）；TeleGate 全面领先 |
 | 门控消融 | Top-1 优于蒸馏、Top-2 融合、随机划分（Table III） |
-| VAE 消融 | +VAE 全面提升 SR 与关节误差（Table IV） |
-| 切换平滑 | 专家切换时目标关节变化 3.49°/frame，仍可接受 |
-| 真机 | 抓放、立定跳、趴地起身、踢球、侧滑、单脚跳等（项目页视频） |
+| VAE 消融 | +VAE 对需预判的跳跃、跌倒恢复收益最大（Jump $E_{mpjpe}$ 22.27→19.40 mm，-13%；Fall Recovery 28.23→25.94 mm，-8%；两类 SR 提升 1.5–2.5 pp），走跑、舞武仅边际变化；整体 SR 96.7→97.3%、$E_{mpjpe}$ 18.03→17.22 mm（Table IV） |
+| 切换平滑 | 目标关节平均变化：无切换 1.38°/frame，有切换 3.49°/frame，仍可接受（上一步目标位置入观测 + 动作正则） |
+| 真机 | 抓放、立定跳、趴地起身、踢球（Fig. 1），坐、走、跑、趴、侧滑、单脚跳（Fig. 6） |
+| 真机量化 | 随机 36 段（每类 6 段、20 s）：整体 SR **97.2%**、$E_{mpjpe}$ 18.57 mm（仿真同类为 100% / 17.14 mm）；仅跌倒恢复 83.3%，其余类 100%，归因于落地/地面接触动力学的 sim-to-real 差距 |
+| 失败判定 / 阈值扫描 | 任一关节局部位置误差 >0.5 m 或肩高误差 >0.3 m 判失败；Fig. 3 扫误差阈值，TeleGate 全阈值最优 |
+| 训练规模（附录） | MuJoCo + mjlab，32768 并行环境；每专家约 1.5B 步 / 30 h，门控约 150M 步 / 1.5 h；VAE λ_recon=0.5、λ_KL=0.0005、d=32；课程采样 γ=0.6、β=19 |
 
 ## 结论
 
 **TeleGate 的核心判断是「多技能不必蒸馏」：专家独立训满后冻结、门控只做离散 Top-1 路由，把蒸馏与联合训练的性能损失换成推理期的路由开销。**
 
 - 决定性对照是同 2.5 h 数据下的 SR：Top-1 路由 **97.3%**，高于单策略 94.7%、GMT 联合 MoE 92.0%、DAgger 蒸馏 91.2%——差距来自避免梯度冲突，而不是更多数据。
-- Top-2 加权融合反而更差，说明门控的价值在 **保留各专家的决策边界**，不在集成；代价是专家切换处存在 3.49°/frame 的目标关节跳变。
+- Top-2 加权融合反而更差，说明门控的价值在 **保留各专家的决策边界**，不在集成；代价是专家切换处目标关节变化增大（3.49°/frame vs 无切换 1.38°/frame，论文认为可接受）。
 - VAE 运动先验补的是遥操作特有的信息缺口（拿不到未来参考），且必须与专家 **同一 PPO 目标联合优化** 才让 $z_t$ 语义对齐；SR 增量（96.7→97.3%）不大，但对跳跃、趴地起身是必需项。
 - 数据效率（2.5 h vs SONIC 700 h）建立在 **采集设备与部署一致的惯性动捕** 上；换光学 AMASS 或 VR 稀疏 keypoint 分布偏移明显，需重训。
 - 适用边界是 **低层全身跟踪 LLC**，不解决上层遥操作接口；与 [PILOT](./paper-pilot-perceptive-loco-manipulation.md) 的感知 loco-manipulation MoE 正交。
 - 落地状态：入库时无公开代码，数据集需签 permission form 邮件审批，RSS 2026 接收状态以官方为准。
+
+## 工程实践
+
+- **数据：** 仅 2.5 h 与部署一致的惯性动捕数据；4 组冻结专家按动态相似性划分，门控 Top-1 路由，运行时只激活一个专家。
+- **部署：** Unitree G1 实时全身遥操作；VAE 仅用历史参考轨迹推断未来意图，因此不依赖未来参考。
+- **复现：** 以论文与参考来源中的项目资料为准，未核实的开源状态不在此断言。
 
 ## 常见误区或局限
 
@@ -162,7 +177,7 @@ flowchart TB
 - **误区：「TeleGate 已解决上层遥操作接口」。** 本文聚焦 **低层全身跟踪 LLC**；VR/外骨骼/无机器人采集等仍见 [Teleoperation](../tasks/teleoperation.md) 其他系统。
 - **局限：** 入库时 **无公开代码**；数据集需邮件审批；**RSS 2026** 接收状态以官方为准；未来工作提及用遥操作数据训 **自主策略**。
 
-## 与其他页面的关系
+## 关联页面
 
 - 便携采集 + tracking：[TWIST2](./paper-twist2.md)、[TWIST](./paper-twist.md)
 - 大规模 tracking：[SONIC 方法页](../methods/sonic-motion-tracking.md)
@@ -174,7 +189,7 @@ flowchart TB
 ## 参考来源
 
 - [telegate-project.md](../../sources/sites/telegate-project.md) — 官方项目页与数据集申请
-- [telegate_arxiv_2602_09628.md](../../sources/papers/telegate_arxiv_2602_09628.md) — arXiv 方法与实验摘录
+- [telegate_arxiv_2602_09628.md](../../sources/papers/telegate_arxiv_2602_09628.md) — arXiv 方法与实验摘录（原文通读归档）
 - 论文：<https://arxiv.org/abs/2602.09628>
 
 ## 推荐继续阅读

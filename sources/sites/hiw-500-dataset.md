@@ -5,10 +5,12 @@
 - **链接:** <https://huggingface.co/datasets/BitRobot/HIW-500>
 - **项目页:** <https://bitrobot-foundation.github.io/humanoids-in-the-wild-500-hours/>
 - **收录日期:** 2026-06-25
+- **核对范围：** 2026-11 重读项目页全文与 HF 数据卡（BitRobot/HIW-500 README）全文：概览、采集硬件、模态、统计图说明、数据入口、许可、引用、路线图。未下载数据本体、未查看 Rerun 在线预览，也未核对 HF 文件列表。
+- **通读：** 已完成
 
 ## 一句话摘要
 
-BitRobot 与 Unitree、Hugging Face 联合发布的 **最大规模开源人形机器人远程操作数据集之一**：在东南亚 **12 个真实家庭** 中采集 **Unitree G1** 全身遥操作示范，**500+ 小时 / 23K+ 集 / ~10 TB**，覆盖 **10+ 家务任务** 与 **148K+ 细粒度子任务语言标注**；提供原始 ROS bag / MCAP 与（计划中的）LeRobot 格式。
+BitRobot 与 Unitree、Hugging Face 联合发布的 **最大规模开源人形机器人远程操作数据集之一**：在东南亚 **12 个真实家庭** 中采集 **Unitree G1** 全身遥操作示范，**500+ 小时 / 23K+ 集 / ~10 TB**，覆盖 **10+ 家务任务** 与 **148K+ 细粒度子任务语言标注**；提供原始 ROS bag / MCAP 与 LeRobot 格式（数据卡 2026-11 核对）。
 
 ## 规模与覆盖
 
@@ -49,9 +51,9 @@ BitRobot 与 Unitree、Hugging Face 联合发布的 **最大规模开源人形�
 | 格式 | 状态 | 入口 |
 |------|------|------|
 | 原始 ROS bag / MCAP | **已发布** | <https://huggingface.co/datasets/BitRobot/HIW-500> |
-| LeRobot 格式 | Coming Soon | 项目页路线图 |
+| LeRobot 格式 | 数据卡已列出（2026-11 核对；项目页旧版曾写 Coming Soon） | <https://huggingface.co/datasets/BitRobot/HIW-500-LeRobot> |
 
-- **许可：** Humanoid Data for Training & Evaluation（项目页）；商用或定制采集需联系 BitRobot。
+- **许可：** CC BY 4.0（HF 数据卡与项目页 2026-11 核对；早期归档曾记 Humanoid Data for Training & Evaluation）；其他 / 定制数据集需联系 BitRobot。
 - **路线图：** V1（2026-06）发布 500+ 小时；V2 计划扩展任务与环境。
 
 ## 引用

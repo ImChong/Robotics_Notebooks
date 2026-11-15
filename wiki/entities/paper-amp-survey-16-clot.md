@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, teleoperation, whole-body-control, motion-tracking, transformer, sim2real, pndbotics-adam-pro, shanghai-ai-lab, sjtu]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2602.15060"
 venue: "arXiv"
 code: https://github.com/zhutengjie/CLOT
@@ -19,6 +19,8 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ./paper-twist2.md
   - ./paper-twist.md
+original:
+  - ../../sources/papers/clot_arxiv_2602_15060.md
 sources:
   - ../../sources/papers/clot_arxiv_2602_15060.md
   - ../../sources/papers/humanoid_amp_survey_16_clot_closed_loop_global_motion_tracking_for_whol.md
@@ -35,6 +37,10 @@ sources:
 **CLOT**（*Closed-Loop Global Motion Tracking for Whole-Body Humanoid Teleoperation*，arXiv:2602.15060）是上交与上海 AI Lab 提出的 **实时全身人形遥操作系统**：用 **高频全局定位反馈** 闭环同步操作员与机器人位姿，配合 **Observation Pre-shift**、**Transformer** 策略与 **AMP** 运动先验，在 **PNDbotics Adam Pro**（31 DoF）上实现 **长时程无漂移** 全身 mimicry 与 loco-manipulation。
 
 > **官方入口：** 项目页 <https://zhutengjie.github.io/CLOT.github.io/>（论文写作 `CLOT.github.io`）；裸域 clot.github.io **非官方**。
+
+## 一句话定义
+
+CLOT 用高频全局定位反馈闭环同步操作员与机器人位姿，配合 Observation Pre-shift、Transformer 与 AMP，在 Adam Pro 上实现长时程无漂移全身人形遥操作。
 
 ## 英文缩写速查
 
@@ -104,13 +110,19 @@ flowchart TB
 - **复合奖励** $r=\lambda_{\text{style}} r_{\text{amp}}+\lambda_{\text{task}} r_{\text{task}}$：任务跟踪 + 对抗运动先验抑制不自然行为。
 - 训练约 **1300 GPU 小时**；自采 **20 h** 人体数据（严格排除踮脚、过大 CoM 偏移等不稳定模式）。
 
+## 工程实践
+
+- 部署依赖光学动捕（OptiTrack）全局定位，需动捕室级环境；主真机为 PNDbotics Adam Pro（31 DoF）。
+- 训练约 1300 GPU 小时，自采 20 h 人体数据并排除踮脚、过大 CoM 偏移等不稳定模式。
+- Pre-shift 仅训练启用、部署关闭；官方入口以项目页为准，勿与 clot.github.io 混淆。
+
 ## 常见误区或局限
 
 - **不是纯软件方案**：依赖 **光学动捕全局定位** 与动捕室级部署，便携性不及 PICO 类 [TWIST2](./paper-twist2.md)。
 - **平台特定**：主真机为 **Adam Pro**；G1 仿真对比有报告，跨形态迁移需重训。
 - **clot.github.io 易混淆**：官方页为 [zhutengjie.github.io/CLOT.github.io](https://zhutengjie.github.io/CLOT.github.io/)。
 
-## 与其他页面的关系
+## 关联页面
 
 - 局部帧便携对照：[paper-twist2.md](./paper-twist2.md)（论文仿真基线）
 - 前序跟踪范式：[paper-twist.md](./paper-twist.md)

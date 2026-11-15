@@ -3,8 +3,9 @@
 type: entity
 tags: [paper, humanoid, vla, reinforcement-learning, post-training, human-in-the-loop, teleoperation, dexterous-manipulation, advantage-conditioning, offline-rl, experience-learning, xpeng-robotics, contact-rich-manipulation, xpeng]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2606.17011"
+original: ../../sources/papers/rove_arxiv_2606_17011.md
 venue: "arXiv 2026"
 related:
   - ../methods/vla.md
@@ -24,6 +25,10 @@ summary: "ROVE（arXiv:2606.17011，XPENG Robotics 等）为人形 VLA 部署后
 ---
 
 # ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）
+
+## 一句话定义
+
+ROVE（arXiv:2606.17011，XPENG Robotics 等）为人形 VLA 部署后训练提出人机闭环 RL：全身 MoCap 干预采集将轨迹分为 rollout/adaptation/recovery，以 OVE 状态价值 critic 与跨 embodiment 人类视频从混合质量经验中提取 advantage-conditioned 策略，真机接触丰富与精细操作任务上优于 SFT 与 HG-DAgger/Filtered BC/RECAP，并随三轮 rollout–intervention 迭代持续提升。
 
 **ROVE** 是 XPENG Robotics 与复旦、港中文、上交等团队提出的 **人形 VLA 后训练 RL 框架**（arXiv:2606.17011，[项目页](https://xpeng-robotics.github.io/rove/)）：在 **IRON-R01-1.11** 全身灵巧手人形上，让预训练 VLA 自主 rollout，近失败时由 **MoCap 全身遥操作** 接管；针对人形干预轨迹 **非专家、含适应噪声** 的特点，用 **阶段感知价值标注 + Optimistic Value Estimation（OVE）+ advantage conditioning**，从演示、自主 rollout、干预与人类视频中提取更强策略，而非把干预动作一律当专家示范。
 
@@ -108,9 +113,22 @@ flowchart TB
 - **基线：** 演示 SFT、HG-DAgger、Filtered BC、RECAP（VLA 经验学习代表）；同族 **[STEAM](../entities/paper-steam-advantage-modeling.md)**（arXiv:2606.29834）在臂部桌面任务上用 **自监督时序 ensemble advantage + CFGRL** 进一步超越 RECAP（见该页真机四任务表）。
 - **主要结论：**
   - 仅演示数据上 ROVE 已优于 SFT——说明 **人形遥操作示范本身次优**，value-guided 提取优于均匀模仿。
-  - 经验学习平均成功率 **ROVE 最佳**；HG-DAgger 策略犹豫、一任务低于演示策略。
+  - 经验学习平均成功率 **ROVE 最佳**；HG-DAgger 策略犹豫、**两个任务上均低于**演示策略。
   - 相对 RECAP 的差距体现 **阶段感知 advantage 标注 + critic 质量**；相对 Filtered BC 体现 **RL 式负样本利用**。
   - **三轮迭代** 形成闭环：更好策略 → 更丰富经验 → 更清晰 advantage。
+
+## 论文细节补充（通读 v2 正文核对）
+
+- **奖励常数：** 微调 $C_{\mathrm{fail}}=-500$；预训练取各任务平均 episode 长度的负值；$\gamma=1$。
+- **OVE 超参：** expectile $\tau=0.7$；动作 chunk / TD / advantage 的运行视野 $H=16$（训练 chunk 为 50）；EMA 目标 critic；TD 目标归一化到 $[-1,0]$。critic 预训练数据含 EgoDex 类大规模机器人 + 第一视角人类演示。
+- **价值标注敏感性（附录 B，仅擦白板）：** 默认（$H=16$，$t_r$ 在 adaptation 之后）80%；$H=50$ 降至 65%；$t_r$ 放在接管起点（$H=50$）降至 50%。早边界会把 adaptation 噪声放大成过乐观标签。
+- **与 IQL 对比（附录 C）：** OVE 在 D4RL-AntMaze medium/large 上与 IQL-CFGRL 相当，是 Q 式 expectile 的可行替代。
+- **策略提取（附录 F）：** advantage 阈值取 70 分位做二值标签，以文本条件追加到指令；推理用 CFG 式解码 $v_{cfg}=v_{neg}+\beta(v_{pos}-v_{neg})$。
+- **模型：** critic 以 VLAC 检查点为 VLM 骨干（取第 23 层特征 + 轻量 transformer 价值头）；策略基于 Qwen3-VL-4B-Instruct + flow-matching DiT 动作头；均冻结 VLM，只训价值头/动作头。critic 与 actor 各 8000 步、8 GPU；首轮 lr 1e-4，后续 1e-5。
+- **状态正则：** 动作头整状态 dropout 概率 0.3、高斯扰动概率 0.4（σ=0.01）。
+- **数据规模（表 2）：** 擦白板演示 225 集，三轮新增 82/71/79 集，干预时间占比 25.5%；面包入吐司机演示 220 集，新增 97/69/104 集，占比 4.53%（干预多发生在重复插入 3–5 次仍未对准之后）；另每任务采集 180 条第一视角人类视频（成败各半）。
+- **评测协议：** 擦白板 20 个均匀分布笔迹各 1 次共 20 trial；面包 30 次独立 trial。基线 RECAP 与 ROVE 用同一数据与标签管线，区别在 critic 目标与把 adaptation 之后干预段一律视为正 advantage；Filtered BC 用同一 critic 做阈值过滤 + BC；HG-DAgger 把全部干预动作当正样本。
+- **价值分析：** 加入人类视频后 critic 对「仅擦掉一半」的中间态不再过估计；OVE 相对 MC 在擦除失败段给出更低价值与负 advantage 区，重新擦除后价值回升。
 
 ## 结论
 
@@ -122,6 +140,12 @@ flowchart TB
 4. **真机闭环可迭代** — 擦白板、面包入吐司机三轮 rollout–intervention 分别约 45%→80%、56.7%→86.7%，并出现重试插入、补擦等恢复行为。
 5. **仅演示数据上已优于 SFT** — 说明人形遥操作示范本身次优，value-guided 提取是默认更好起点。
 6. **工程边界** — 人类视频当前只训 critic；缺腕部相机/触觉；未覆盖 loco-manip；平台绑定 IRON-R01。
+
+## 工程实践
+
+- **硬件：** IRON-R01-1.11 人形 + 灵巧手；全身 MoCap 干预采集，VR 对齐后由操作者接管 VLA。
+- **管线：** VLA 暂停 → VR 对齐 → 全身遥操作接管 → 后处理去暂停；轨迹分 rollout / adaptation / recovery 三阶段，再以 OVE 价值 critic 做迭代离线 RL。
+- **边界：** 人类视频当前仅训 critic；缺腕部相机/触觉；平台绑定 IRON-R01；复现前先核对 [项目页](https://xpeng-robotics.github.io/rove/) 的开放状态。
 
 ## 常见误区或局限
 

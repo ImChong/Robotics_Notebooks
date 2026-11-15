@@ -10,6 +10,8 @@
   - <https://arxiv.org/pdf/2606.14218>
   - <https://ume-exo.github.io/>
 - **作者：** Litian Liang*, Jingxi Xu*, Xinda Qi, Yujun Cai, Houzhu Ding, Luqi Wang, Zhixin Sun, Jyh-Herng Chow, Ming Yang, Mark Cutkosky（Ant Group、Stanford University；*Equal contribution）
+- **通读：** 已完成
+- **核对范围：** 通读 arXiv:2606.14218v1 正文（摘要至致谢，去参考文献，约 520 行）；附录 A–F（控制细节、ACT 参数、成本/RoM、吞吐实验设置）不在所读正文内，相关数字未据附录核验。
 - **入库日期：** 2026-06-18
 - **一句话说明：** 低成本（约 $1900）上肢外骨骼 UME：实时透明触觉力矩反馈 + 全身臂形配置与关节力矩同步记录；通用 3-1-3 子链重定向可遥操作 OpenArm / Franka / X-ARM；嵌入式 IMU 驱动移动底座；ACT 融合力矩模态学习主动柔顺双臂全身策略，在力主导、视觉遮挡、极窄空间与长时程移动操作任务上显著优于无力矩与 UMI 式末端示教基线。
 
