@@ -121,6 +121,8 @@ flowchart TB
 
 ## 相关研究
 
+- [OptiMer：持续预训练的最优分布向量合并](./paper-optimer-optimal-distribution-vector-merging.md) — 同属 checkpoint 差分向量范式，但 OptiMer 在文本 LLM 上针对多分布 CPT 做后验权重搜索，**尚无 VLA 验证**。
+
 - [Weight-Space Programming](weight-space-programming.md) 研究由 LLM 直接分析和编辑权重，可与依赖微调差分的能力向量方法对照。
 
 ## 参考来源
