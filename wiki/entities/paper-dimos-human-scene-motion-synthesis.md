@@ -3,7 +3,8 @@
 type: entity
 tags: [paper, human-scene-interaction, character-animation, reinforcement-learning, motion-synthesis, iccv2023, eth, google]
 status: complete
-updated: 2026-09-15
+original: ../../sources/papers/dimos_arxiv_2305_12411.md
+updated: 2026-11-15
 arxiv: "2305.12411"
 venue: "2023 · ICCV"
 code: https://github.com/zkf1997/DIMOS
@@ -25,6 +26,10 @@ summary: "DIMOS（ICCV 2023）：RL 在 CVAE 运动基元潜空间上学习场�
 # DIMOS：室内 3D 场景中的多样人体运动合成
 
 **DIMOS**（*Synthesizing Diverse Human Motions in 3D Indoor Scenes*，arXiv:2305.12411，ICCV 2023，[项目页](https://zkf1997.github.io/DIMOS/)，[代码](https://github.com/zkf1997/DIMOS)）提出 **强化学习驱动的 human-scene interaction 合成框架**：虚拟人体在复杂室内环境中 **自主导航、与家具交互（坐/躺/站起）并串联多段活动**，而**不依赖**昂贵且难覆盖的「人体运动–3D 场景」配对采集数据。
+
+## 一句话定义
+
+DIMOS 提出面向 3D 场景的交互式人体运动合成框架，将高层场景语义与物理接触约束结合，生成自然且无穿模的全身交互动作。
 
 ## 英文缩写速查
 
@@ -109,7 +114,11 @@ flowchart TB
 - 「不需要任何场景数据」不成立 — interaction 策略训练仍用 **PROX 静态交互 retarget 到 ShapeNet**，marker 目标来自 [COINS](./paper-coins-compositional-human-scene-interaction.md)。
 - 与 [PhysHSI](./paper-amp-survey-15-physhsi.md) 任务重叠但 **平台与物理层级不同**；输出是 SMPL-X marker 轨迹，上机器人需重定向与接触/平衡约束，与 [CRISP](../methods/crisp-real2sim.md) 构成互补的上下游而非竞争。
 
-## 常见误区
+## 工程实践
+
+- **分层规划与接触约束**：先规划场景导航与交互关键帧，再通过物理/几何约束优化局部肢体接触，降低长时程合成中的脚滑与穿模。
+
+## 常见误区与局限
 
 1. **DIMOS = 物理仿真角色：** 方法是 **运动学** 的，项目页承认仍有人–场景穿透；不等于 Isaac/MuJoCo 里的动力学人形控制。
 2. **不需要任何场景相关数据：** 虽不需配对轨迹，但 interaction 策略训练用 **PROX 静态交互 retarget 到 ShapeNet**；完全零场景先验不成立。
@@ -122,7 +131,7 @@ flowchart TB
 - **Interaction：** 坐/躺 OOD 测试（不同椅形、朝向、初始姿态）优于 SAMP；可展示 Replica/PROX 重建场景、户外点云长椅、Shap-E 生成椅子。
 - **局限：** 躺姿数据不足；运动学穿透；量化指标与消融见 [论文 PDF](https://arxiv.org/abs/2305.12411)。
 
-## 与其他页面的关系
+## 关联页面
 
 - **图形学 RL 谱系：** [角色动画 vs 机器人控制](../concepts/character-animation-vs-robotics.md) — DeepMimic/AMP 从仿真角色到真机的迁移语境；DIMOS 停留在 **场景填充 / 数据合成** 一侧。
 - **生成式运动：** [扩散运动生成](../methods/diffusion-motion-generation.md) — 文本/地形条件扩散 vs DIMOS 的 **RL+CVAE 潜空间控制**。

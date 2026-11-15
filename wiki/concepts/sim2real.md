@@ -2,7 +2,7 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 related:
   - ../entities/paper-gamma-art-smart.md
   - ../entities/egalahad-sim2real.md

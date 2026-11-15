@@ -11,7 +11,8 @@ tags:
   - mapping
   - scene-reconstruction
 status: complete
-updated: 2026-09-15
+original: ../../sources/papers/i3dgs_arxiv_2607_14481.md
+updated: 2026-11-15
 arxiv: "2607.14481"
 venue: "SIGGRAPH Conference Papers 2026"
 code: https://github.com/graphdeco-inria/i3dgs
@@ -33,6 +34,10 @@ summary: "i3dGS（arXiv:2607.14481，Inria GraphDeco，SIGGRAPH 2026）：首个
 # i3dGS（Immediate 3D Gaussian Splat Reconstruction of Unordered Input with Global Consistency）
 
 **i3dGS**（Meuleman et al., arXiv:2607.14481，[项目页](https://repo-sam.inria.fr/nerphys/i3dgs/)，[代码](https://github.com/graphdeco-inria/i3dgs)）由 **Inria GraphDeco** 提出，SIGGRAPH Conference Papers 2026 收录。系统面向 **乱序 RGB 捕获**（连续视频 + 补拍混采）给出 **即时 3D Gaussian Splatting 反馈**，并通过 **共视性图上的聚类回环** 与 **渐进式高斯层级** 保持 **全局一致**，可扩展至 **数千张图像** 的大场景；算法亦为 GraphDeco 衍生 **[OnTheFly](https://onthefly3d.com)** 的核心技术。
+
+## 一句话定义
+
+i3DGS 在无需预知相机位姿的无序图像输入下，直接前向推理生成可渲染的 3D Gaussian Splatting 场景，实现即时 3D 重建。
 
 ## 英文缩写速查
 
@@ -194,6 +199,12 @@ sequenceDiagram
 - [GS-Playground（实体）](./gs-playground.md) — 3DGS 光真实感 **仿真训练** 下游
 - [Spark（实体）](./spark-3dgs-renderer.md) — Web 大场景 splat 浏览
 - [导航·SLAM 栈总览](../overview/navigation-slam-autonomy-stack.md) — 辐射场 SLAM 支路索引
+
+## 关联
+
+- [Instant NuRec](./paper-instant-nurec.md)：同样面向前向秒级 3DGS 重建，但 Instant NuRec 侧重标定多相机驾驶日志。
+- [Skyfall-GS](./paper-skyfall-gs.md)：大尺度城市级 3DGS 重建，依赖多视角几何与语义精修。
+- [GS-Playground](./gs-playground.md)：可将重建出的 3DGS 资产接入仿真渲染与策略评测。
 
 ## 参考来源
 

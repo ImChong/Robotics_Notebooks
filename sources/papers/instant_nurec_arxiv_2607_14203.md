@@ -8,6 +8,7 @@
 - **代码：** <https://github.com/NVIDIA/instant-nurec> — 归档见 [sources/repos/nvidia-instant-nurec.md](../repos/nvidia-instant-nurec.md)
 - **机构：** 英伟达（NVIDIA）Spatial Intelligence Lab（SIL）
 - **入库日期：** 2026-09-05
+- **通读：** 已完成
 - **一句话说明：** 把标定多相机驾驶片段在 **单次前向** 里变成可仿真的分层 **3DGS** 世界（静态 / 动态 / 天空 + 每相机 ISP）；10–20 s 片段约 **1.5 s** 重建，Waymo PSNR 比最强对照高 **2.01 dB**，并接入 [NuRec](https://docs.nvidia.com/nurec/) 与 AlpaSim 闭环评测。
 
 ## 核心论文摘录（MVP）

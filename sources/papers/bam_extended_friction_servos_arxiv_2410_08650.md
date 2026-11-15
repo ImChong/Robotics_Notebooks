@@ -13,6 +13,7 @@
 - **演示视频：** <https://youtu.be/P5-Ked8EoWk>（论文配套）；README 另链 <https://youtu.be/5XPEEKDnQEM>
 - **数据：** <https://drive.google.com/drive/folders/1SwVCcpJko7ZBsmSTuu3G_ZipVQFGZ11N?usp=drive_link>（MX-64 / MX-106 / eRob80:50 / eRob80:100 摆锤日志）
 - **入库日期：** 2026-05-28
+- **通读：** 已完成
 - **一句话说明：** 为舵机/伺服执行器提出 M1–M6 扩展摩擦上界模型（Stribeck、负载相关、方向性与二次项），在摆锤台架用 CMA-ES 辨识参数，并在 MuJoCo 2R 臂上相对经典 Coulomb–Viscous 将轨迹 MAE 降低约 50% 以上，面向 RL 低增益控制下的 sim2real 执行器建模。
 
 ## 核心论文摘录（MVP）

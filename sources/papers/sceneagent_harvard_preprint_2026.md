@@ -7,6 +7,7 @@
 - **来源：** [Harvard Computational Robotics 项目页](https://computationalrobotics.seas.harvard.edu/SceneAgent/)（2026）；**截至入库日未挂 arXiv**
 - **代码：** <https://github.com/ComputationalRobotics/SceneAgent> — 静态站；管线 **待发布** — 见 [sources/repos/computationalrobotics-sceneagent.md](../repos/computationalrobotics-sceneagent.md)
 - **入库日期：** 2026-09-27
+- **通读：** 已完成
 - **一句话说明：** Harvard Computational Robotics 的 **agentic Real2Sim**：多源 3D 捕获 → 语义/预测物理/关节化/**digital sisters** → USDZ 仿真环境 + **脚本演示工厂 + VLA LoRA** sim-only 微调闭环。
 
 ## 核心论文摘录（MVP）
