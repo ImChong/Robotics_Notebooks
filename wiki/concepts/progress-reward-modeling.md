@@ -10,7 +10,7 @@ tags:
   - northwestern
   - cmu
 status: complete
-updated: 2026-11-13
+updated: 2026-11-15
 related:
   - ../entities/paper-progress-reward-modeling-survey.md
   - ../entities/paper-topreward.md
@@ -18,6 +18,7 @@ related:
   - ../entities/paper-roboreward.md
   - ../entities/paper-freeform-preference-learning.md
   - ../entities/paper-prm-as-a-judge.md
+  - ../entities/paper-nimcritic.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
   - ../methods/vla.md
@@ -110,6 +111,7 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 - [RoboReward](../entities/paper-roboreward.md) — 反事实负例、near-miss 与通用奖励模型
 - [Freeform Preference Learning](../entities/paper-freeform-preference-learning.md) — 以自然语言定义多维奖励轴
 - [PRM-as-a-Judge](../entities/paper-prm-as-a-judge.md) — 冻结 PRM 打进度曲线，用 OPD 评 VLA/WAM 过程（非训练奖励）
+- [NimCritic](../entities/paper-nimcritic.md) — 动作感知权重 + 可撤销 credit + 视频进度联合学习，长程操作可回退进度曲线及独立完成判断
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 稠密奖励与信用分配
 - [Imitation Learning](../methods/imitation-learning.md) — 演示时间序作弱进度
 - [VLA](../methods/vla.md) — 指令微调进度模型常挂 VLM 生态
@@ -125,6 +127,7 @@ summary: "过程奖励/进度模型：在终局成功之外估计任务是否在
 - [TOPReward 论文归档](../../sources/papers/topreward_arxiv_2602_19313.md)
 - [RoboValue 论文归档](../../sources/papers/robo_value_benchmark_arxiv_2610_26663.md)
 - [PRM-as-a-Judge 论文归档](../../sources/papers/prm_as_a_judge_arxiv_2608_14284.md)
+- [NimCritic 论文归档](../../sources/papers/nimcritic_arxiv_2610_32776.md)
 
 ## 推荐继续阅读
 
