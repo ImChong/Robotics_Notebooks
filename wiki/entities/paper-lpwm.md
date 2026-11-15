@@ -2,6 +2,8 @@
 type: entity
 tags: [paper, jepa, world-models, sparse-representation, planning, nyu, duke, mila, brown, ami-labs]
 status: complete
+original:
+  - ../../sources/papers/lpwm_arxiv_2608_22764_full_reading_2026_11_15.md
 updated: 2026-11-15
 arxiv: "2608.22764"
 venue: "arXiv 2026"
@@ -14,8 +16,9 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/latent-imagination.md
 sources:
-  - ../../sources/papers/lewm_arxiv_2603_19312.md
   - ../../sources/papers/lpwm_arxiv_2608_22764.md
+  - ../../sources/papers/lewm_arxiv_2603_19312.md
+  - ../../sources/papers/lpwm_arxiv_2608_22764_full_reading_2026_11_15.md
   - ../../sources/repos/lpworldmodel.md
   - ../../sources/blogs/wechat_tencent_world_model_questions_2026-09-05.md
 summary: "LpWM（arXiv:2608.22764，NYU/Duke/Mila/Brown/AMI）：RDMReg 学非负稀疏 JEPA 码；PushT 中等容量预测器规划成功率相对稠密 LeWM 最高 +57 pp。MIT。"
@@ -87,6 +90,8 @@ sequenceDiagram
 
 ## 实验与评测
 
+**协议：** §3 的稠密控制组也使用 2-Wasserstein 分布匹配，不能直接等同原版 LeWM 的 SIGReg 配方；训练一个 seed、CEM 评测三个 seed。CEM 为每轮 300 候选 × 30 轮、保留 30；H=5、frameskip=5 对应 25 原始步目标。开环单次计划与每5步重规划的闭环分开比较。§4 的 Piecewise/Cube 另用 `lpwm_swm/` 的架构与环境。依据[全文与附录复核](../../sources/papers/lpwm_arxiv_2608_22764_full_reading_2026_11_15.md)。
+
 - **Wall：** LTI(1) 闭环已近 100%，疏密无差别。
 - **PushT：** 两端饱和（线性全挂、Deep-AdaLN 打平）；中间容量稀疏大胜。相对 VICReg 稠密变体，连 Deep-AdaLN 也更好。
 - **Piecewise：** 随机目标 84.7% vs LeWM 65.3%；support 解码分区 94–99%。
@@ -99,6 +104,8 @@ sequenceDiagram
 - 接触任务若要可读 support，显式加 Temporal Jaccard。
 
 ## 局限与风险
+
+- One-hot 线性化结论有紧致性和 Lipschitz 假设，且需要随状态维数指数增长的码；它不证明已学到的有限维稀疏码严格线性，也不保证可以直接使用 LQR。
 
 - 主结果在 2D 仿真；没有真机。
 - 稀疏本身不保证 support 对齐「语义事件」。
@@ -120,10 +127,12 @@ sequenceDiagram
 
 1. 选型时先标预测器档位，再比疏密。
 2. Wall 不能当区分实验。
-3. 接触任务默认加时间先验。
+3. 若目标是让 support 解释接触，单独审计时间先验；TJ 是可选解释性实验，不是所有控制任务的默认必要项。
 4. 与功能分类正交：本页改的是 Simulator 内部码，不是输出模态。
 
 ## 关联页面
+
+- [WAM 纵深路线](../../roadmap/depth-wam.md)
 
 - [LeWM](./paper-lewm.md) — v3 使用下一 latent MSE + SIGReg，主训练无 EMA 或 stop-gradient；PushT 的 96.0±2.83% 对应其固定数据与规划预算，不能与 LpWM 不同容量/预算下的稀疏表示增益直接相减。（[来源复核归档](../../sources/papers/lewm_arxiv_2603_19312.md)）
 - [LeJEPA](./paper-lejepa.md)
@@ -138,7 +147,7 @@ sequenceDiagram
 
 - [LeWM 原文与边界复核](../../sources/papers/lewm_arxiv_2603_19312.md)
 
-- [LpWM 论文归档](../../sources/papers/lpwm_arxiv_2608_22764.md)
+- [LpWM 论文归档](../../sources/papers/lpwm_arxiv_2608_22764_full_reading_2026_11_15.md)
 - [YilunKuang/lpworldmodel](../../sources/repos/lpworldmodel.md)
 - [腾讯科技访谈归档](../../sources/blogs/wechat_tencent_world_model_questions_2026-09-05.md)
 

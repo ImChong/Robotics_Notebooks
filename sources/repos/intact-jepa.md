@@ -49,5 +49,11 @@
 ## 对 wiki 的映射
 
 - [INTACT 论文实体](../../wiki/entities/paper-intact.md)
-- [论文归档](../papers/intact_arxiv_2607_26056.md)
+- [论文归档](../papers/intact_arxiv_2607_26056_full_reading_2026_11_15.md)
 - [RoboParty 镜像归档](roboparty-intact-jepa.md)
+
+## 2026-11-15 当前实现复核
+
+通读当前 README、项目页与 `scripts/train.sh` / `scripts/eval.sh`，核对 `evaluation.py:run` 的模型、solver、标准化器和因果历史包装接入。Direct / Guarded 评测现使用起点之前的连续历史 `rows[t-5:t]` 与后续实际执行动作；2026-09-14 修复了旧 actor-backed 评测中前一步动作重复。当前报告 95.61 / 96.58% 宏 SR、共享 E5 Direct 91.22%、规划 3.9–4.8 ms，与旧论文快照分别保存，详见[原文复核](../papers/intact_arxiv_2607_26056_full_reading_2026_11_15.md)。未运行本地训练或 GPU 评测。
+
+`eval.sh` 的公开模式为 `direct / pure_cem / guarded_a`，显式固定官方协议与 inference mode。论文冻结权重 `paper-e5-goal-v1` 走配套 `paper_runtime/`；当前 CLEAR v0.8 入口不等于论文附录的 v0.5.1 Moderate 协议。

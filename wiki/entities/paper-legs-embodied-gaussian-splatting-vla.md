@@ -2,8 +2,12 @@
 type: entity
 tags: [paper, humanoid, vla, loco-manipulation, 3dgs, gaussian-splatting, sim2real, teleoperation-free, unitree-g1, stanford, sam3d, mujoco]
 status: complete
+original:
+  - ../../sources/papers/legs_arxiv_2606_01458_full_reading_2026_11_15.md
 updated: 2026-11-15
 arxiv: "2606.01458"
+code: https://github.com/hojjunekim/LEGS
+project: https://hojjunekim.github.io/legs/
 related:
   - ../tasks/loco-manipulation.md
   - ../methods/vla.md
@@ -19,16 +23,21 @@ related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-lego-leveled-language-gaussian-splatting.md
 sources:
-  - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
   - ../../sources/papers/legs_arxiv_2606_01458.md
+  - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
+  - ../../sources/papers/legs_arxiv_2606_01458_full_reading_2026_11_15.md
   - ../../sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md
   - ../../sources/sites/legsvla-github-io.md
-summary: "LEGS（arXiv:2606.01458）用 3DGS 背景 + SAM3D mesh 前景 + MuJoCo/Sonic 合成无遥操作人形 loco-manip 演示，motion 与外观解耦可 GPU 重渲染；G1 上 1,110 次真机试验、9/9 (backbone×task) 匹配或超越 teleop，光真实感相对 mesh-only 约 1.6×–3.25×，新外观适应约 15× 低于重采 teleop。"
+summary: "LEGS（arXiv:2606.01458）用 3DGS 背景 + SAM3D mesh 前景 + MuJoCo/Sonic 合成无遥操作人形 loco-manip 演示，motion 与外观解耦可 GPU 重渲染；G1 上 1,230 次真机试验、9/9 (backbone×task) 匹配或超越 teleop，主表 LEGS(200) 60/90、mesh-only 30/90，新外观适应约 15× 低于重采 teleop。"
 ---
 
 # LEGS（Loco-manipulation via Embodied Gaussian Splatting）
 
-**LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026-05）：在 **无真人遥操作、无种子演示、无人视频** 的前提下，用 **程序化仿真** 生成带标签演示，并通过 **3D Gaussian Splatting（3DGS）背景 + mesh 前景合成 + 两阶段颜色校准**，使合成图像接近 **Unitree G1 头载 RealSense** 的真机分布。论文与 [项目页](https://legsvla.github.io/) 在三个递难 pick-place 与 **ψ0、π0.5、GR00T N1.6** 上报告：**1,110 次真机试验**、**9/9 (backbone×task)** 上 LEGS(200) **匹配或超过** 50-demo teleop；**LEGS(50)** 在同预算下仍 ≥ teleop；全面优于 **SAM3D mesh-only** 消融，且 **LEGS-aug** 在最难外观偏移下可达 **100% / 80% / 40%**（Task 1–3）。
+**LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026）：在 **无真人遥操作、无种子演示、无人视频** 的前提下，用 **程序化仿真** 生成带标签演示，并通过 **3D Gaussian Splatting（3DGS）背景 + mesh 前景合成 + 两阶段颜色校准**，使合成图像接近 **Unitree G1 头载 RealSense** 的真机分布。论文与 [项目页](https://hojjunekim.github.io/legs/) 在三个递难 pick-place 与 **ψ0、π0.5、GR00T N1.6** 上报告：**1,230 次主实验与额外 240 次相机匹配试验**、**9/9 (backbone×task)** 上 LEGS(200) **匹配或超过** 50-demo teleop；**LEGS(50)** 在同预算下仍 ≥ teleop；全面优于 **SAM3D mesh-only** 消融，且 **LEGS-aug** 在最难外观偏移下可达 **100% / 80% / 40%**（Task 1–3）。
+
+## 一句话定义
+
+LEGS 将程序化的全身运动记录与外观渲染分离，以经颜色校准的 3DGS/mesh 合成数据微调人形 VLA；无需逐条遥操作，但仍需要任务规划、扫描和配置工程。
 
 ## 英文缩写速查
 
@@ -52,7 +61,7 @@ summary: "LEGS（arXiv:2606.01458）用 3DGS 背景 + SAM3D mesh 前景 + MuJoCo
 - **对准 VLA 数据瓶颈：** 人形 loco-manip 需要同时覆盖 **行走与操作**；teleop 绑定操作员与机时，换场景/物体/语言提示往往要 **重采整条轨迹**。
 - **双通道可信：** 仅物理对不够（mesh 渲染域差）；仅视觉像不够（动作不可执行）。LEGS 把 **MuJoCo 接触物理** 与 **3DGS 光真实感** 放在同一条可扩展管线里。
 - **motion–appearance 解耦：** 18-D 命令流与渲染输入分离 → **同一段 motion 可 GPU 重渲染** 到新桌面/物体/提示词（论文 Table 1 / 项目页：**~15×** 更便宜——新条件 teleop **>1.5 operator-hr** vs LEGS **~0.1 GPU-hr**）。
-- **光真实感是主增益之一：** 固定管线下，3DGS+校准相对 mesh-only 将端到端成功率提升约 **1.6×–3.25×**（跨三 VLA backbone）；不是单纯堆数据规模。
+- **校准前端的整体作用：** 九格主表汇总 LEGS(200) 为 **60/90**、mesh-only 为 **30/90**；背景表示、颜色校准与部署相机模式共同变化，独立归因见附录 I 的相机匹配实验。
 - **与姊妹路线对照：** [VIRAL](./paper-viral-humanoid-visual-sim2real.md) / [DoorMan](./paper-doorman-opening-sim2real-door.md) 走 **特权 RL + 视觉蒸馏**；LEGS 走 **预训练 VLA 微调 + 合成模仿数据**，互补阅读 [Loco-Manipulation](../tasks/loco-manipulation.md) 数据面。
 
 ## 流程总览
@@ -110,30 +119,58 @@ flowchart TB
 | 3 | 走–拿–转身–到低桌 **蹲放**（长时程 loco-manip） |
 
 - **对比数据：** Teleop(50)、SAM3D(200)（无 3DGS/校准）、LEGS(200)、LEGS(50)。
-- **报告指标：** 合计 **1,110** 次真机试验；每 (backbone, task) **10 次** 端到端成功率；**9/9** 格子上 LEGS(200) best or tied；Task 3 上 teleop **全线 0/10** 而 LEGS(200) 为 **5 / 2 / 6**（ψ0 / π0.5 / GR00T N1.6）。
-- **LEGS-aug（外观随机化）：** default-only LEGS(200) 在偏移下可跌至 **0–10%**；**LEGS-aug(50)** 在 objects+scene 最难 shift 上达 **100% / 80% / 40%**（T1–T3），优于同规模 **SAM3D-aug(200)**（60% / 50% / 20%）。
+- **报告指标：** 合计 **1,230** 次真机试验；每 (backbone, task) **10 次** 端到端成功率；**9/9** 格子上 LEGS(200) best or tied；Task 3 上 teleop **全线 0/10** 而 LEGS(200) 为 **5 / 2 / 6**（ψ0 / π0.5 / GR00T N1.6）。
+- **LEGS-aug（外观随机化）：** default-only LEGS(200) 在偏移下可跌至 **0–10%**；**LEGS-aug(200)** 在 objects+scene 最难 shift 上达 **100% / 80% / 40%**（T1–T3），优于同规模 **SAM3D-aug(200)**（60% / 50% / 20%）。
 - **OOD 位姿：** Task 3 上将训练分布外的物体左右摆放仍可做探测性成功（项目页视频叙事；正式协议见论文附录）。
 
 ## 常见误区或局限
+
+- **归因边界：** 校准3DGS前端相对未调优mesh的提升同时涉及背景、颜色校准与相机模式。附录 I 做相机匹配后仍有增益，但不能独立宣称3DGS一项贡献了全部差距。
+- **成本口径：** 0.1 小时为已有扫描和框架后的重渲染成本，不含一次性框架开发及逐任务规划、参数配置；不同计费与操作成本不能仅凭小时比换算。
+- **泛化与统计：** LEGS-aug训练含目标外观与提示词，属于目标适配。主表每格10次、单一训练seed；附录I的Task3每格20次，不能把两种试验数拼成同一单元的成功率。
 
 - **不是「消灭 teleop」：** teleop 在短程 Task 1 仍可比；LEGS 优势在 **长时程 + 外观增广 + 规模化合成**。
 - **不是纯 NeRF/纯 mesh：** 去掉 **3DGS+校准** 的 SAM3D 基线平均成功率约 **减半**（论文 ~33% vs ~67%）。
 - **依赖栈：** 需要已有 **SONIC**、手持场景扫描、**静态背景**；对透明/反光/动态场景与跨人形硬件 **未充分验证**（§5）。
 
-## 开源状态（项目页核查，2026-07-20）
+## 工程实践
 
-| 资源 | 状态 |
-|------|------|
-| 项目页 | <https://legsvla.github.io/> |
-| 代码 | **未发布**（页面按钮 *Code (Coming Soon)*，无 GitHub 链） |
-| 源码运行时序图 | **不适用**（无官方可运行仓）；低层 WBC 依赖已开源的 [SONIC](../methods/sonic-motion-tracking.md) |
+截至 2026-11-15，作者[项目页](https://hojjunekim.github.io/legs/)已链到[官方代码](https://github.com/hojjunekim/LEGS)。先取子模块与 core/paper 资产，运行场景 XML 生成，再分别启动 MuJoCo/SONIC 后端和前端。`run_collection.sh` 将成功轨迹记录、CSV 快照、离线渲染与 LeRobot v2.1 导出串联；换外观主要走已有轨迹重渲染，场景变更则须重建 XML 并重启后端。
+
+公开代码含离线与仿真评测；README 明确**真 G1 的策略 client 不在本次发布内**。LEGS 代码 Apache-2.0，SAM 资产、Unitree 模型与子模块分别按自身许可处理。本次未运行仿真、训练或真机。
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  participant User as 操作者
+  participant Run as run_collection.sh
+  participant Back as 外部 MuJoCo 与 SONIC
+  participant Front as simulate_object.py
+  participant Data as JSON 轨迹与 CSV
+  participant Render as offline_renderer_mp.py
+  participant Export as wigs2universal.sh
+  User->>Run: 选择 N、数据集名和场景
+  Run->>Run: scene_config.py 生成 XML
+  User->>Back: 在独立终端启动后端
+  Run->>Front: 启动前端并指定录制目录
+  User->>Front: Auto Record
+  Front->>Data: 保存成功 episode 和 scenario
+  Run->>Data: 快照后端 CSV
+  Run->>Render: 重渲染已有轨迹
+  Render->>Data: final_renders 图像
+  Run->>Export: 数据目录与 CSV 快照
+  Export-->>User: LeRobot v2.1 数据集
+```
+
+入口与模块核对见[论文及源码通读记录](../../sources/papers/legs_arxiv_2606_01458_full_reading_2026_11_15.md)。这张图描述采集/导出入口，不把尚未发布的真机 client 当作已验证路径。
 
 ## 关联页面
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务定义与路线谱系
 - [VLA](../methods/vla.md) — 微调对象抽象
 - [SONIC](../methods/sonic-motion-tracking.md) — 低层全身控制器
-- [π0.7 Policy](../methods/pi07-policy.md) — 论文骨干之一
+- [π0.7 Policy](../methods/pi07-policy.md) — 相邻策略背景（本文骨干为 ψ0、π0.5、GR00T N1.6）
 - [Unitree G1](./unitree-g1.md) — 评测平台
 - [GS-Playground](./gs-playground.md) — 另一条 3DGS×仿真视觉 RL 路线
 - [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) — WHU/HKUST 的离线层级语言 3DGS，与本页 LEGS 演示合成是不同项目；LEGO 需逐场景训练，代码采用 CC BY-NC-SA 4.0，不能把其开放词汇分割结果计为 LEGS 的策略收益。（[来源复核归档](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)）
@@ -145,18 +182,18 @@ flowchart TB
 ## 实验与评测
 
 - 主表：**9 组 (backbone × task)** 端到端成功率 + **外观随机化**（default / 蓝桌 / 苹果+盒子 / 联合偏移）；阶段累积成功率见论文 Appendix B。
-- 本页为 **知识库编译摘要**；完整消融与 1110 trials 协议见 [参考来源](#参考来源)。
+- 本页为 **知识库编译摘要**；完整消融与 1,230 次主实验与 240 次 matched-camera 额外试验 协议见 [参考来源](#参考来源)。
 
 ## 结论
 
 **LEGS 的胜负手是「3DGS + 颜色校准」合成的可规模化、可外观增广演示，而不是消灭 teleop；长时程 loco-manip 与外观偏移上增益最大。**
 
-1. **主表读法** — **1,110** 次真机；**9/9**（backbone×task）上 LEGS(200) best or tied；Task 3 上 teleop **全线 0/10**，LEGS(200) 为 **5 / 2 / 6**（ψ0 / π0.5 / GR00T N1.6）。
+1. **主表读法** — **1,230** 次真机；**9/9**（backbone×task）上 LEGS(200) best or tied；Task 3 上 teleop **全线 0/10**，LEGS(200) 为 **5 / 2 / 6**（ψ0 / π0.5 / GR00T N1.6）。
 2. **去掉 3DGS+校准代价巨大** — SAM3D（无 3DGS/校准）平均成功率约减半（约 **33%** vs **67%**）；close-range 差距 largely 归因于校准管线。
-3. **外观增广是 OOD 必需** — default-only LEGS(200) 偏移下可跌至 **0–10%**；**LEGS-aug(50)** 在最难 objects+scene shift 上 **100% / 80% / 40%**（T1–T3），优于同规模 SAM3D-aug(200)。
+3. **外观增广是 OOD 必需** — default-only LEGS(200) 偏移下可跌至 **0–10%**；**LEGS-aug(200)** 在最难 objects+scene shift 上 **100% / 80% / 40%**（T1–T3），优于同规模 SAM3D-aug(200)。
 4. **teleop 仍有短程价值** — Task 1 可比；LEGS 优势在长时程、外观增广与规模化合成，不是全面替代示教。
 5. **渲染与物理解耦可复用 motion** — MuJoCo 解碰撞，SONIC 出 **18-D** 命令；同 motion 可只换渲染做 LEGS-aug。
-6. **栈依赖明确** — 需 SONIC、手持扫描、静态背景；透明/反光/动态与跨人形未充分验证；代码仍 *Coming Soon*。
+6. **栈依赖明确** — 需 SONIC、手持扫描、静态背景；透明/反光/动态与跨人形未充分验证；公开离线/仿真代码，真机策略 client 未随仓发布。
 
 ## 与其他工作对比
 
@@ -171,7 +208,7 @@ flowchart TB
 
 - [LEGO 原文与边界复核](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)
 
-- [legs_arxiv_2606_01458.md](../../sources/papers/legs_arxiv_2606_01458.md) — arXiv 摘录与 Table 1 摘要
+- [legs_arxiv_2606_01458.md](../../sources/papers/legs_arxiv_2606_01458_full_reading_2026_11_15.md) — arXiv 摘录与 Table 1 摘要
 - [wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md](../../sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md) — 具身智能研究室微信公众号策展导读
 - [legsvla-github-io.md](../../sources/sites/legsvla-github-io.md) — 项目页归档
 - Kim, Chen, Sun, Osterberg, Chen, Wang, Schwager, *LEGS: Fine-Tuning Teleop-Free VLAs for Humanoid Loco-manipulation in an Embodied Gaussian Splatting World*, arXiv:2606.01458, 2026. <https://arxiv.org/abs/2606.01458>

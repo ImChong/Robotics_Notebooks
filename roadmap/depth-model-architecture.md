@@ -125,6 +125,8 @@ flowchart LR
 ### 推荐读什么
 - [视觉骨干](../wiki/concepts/vision-backbones.md) · [Vision Transformer](../wiki/concepts/vision-transformer.md) · [CNN vs ViT 骨干选型](../wiki/comparisons/cnn-vs-vit-backbones.md)
 - [策略的视觉表征](../wiki/concepts/visual-representation-for-policy.md) — 端到端 / 冻结骨干 / 机器人专用表征三条路径的取舍
+- [Segment Anything](../wiki/entities/paper-segment-anything.md) — 用可提示掩码理解视觉基础模型的输出接口，区分缓存图像编码后的提示延迟与整条感知链。
+- [OV-SAM3D](../wiki/entities/ov-sam3d.md) · [OVO](../wiki/entities/ovo-semantic-mapping.md) · [2D→3D 语义提升 Gap](../wiki/concepts/2d-to-3d-semantic-lifting-gap.md) — 对照离线多视角提升与在线语义地图，检查位姿、身份关联和异步更新如何改变策略输入。
 - [地形潜表征](../wiki/concepts/terrain-latent-representation.md) — 编码器输出不必可读，只需支撑正确落脚
 - [生成式视觉预训练](../wiki/concepts/generative-vision-pretraining.md) · [视觉基础模型趋势](../wiki/concepts/visual-foundation-model-trends.md)
 - [多模态基础](../wiki/concepts/multimodality-basics.md) · [视觉–语言特征融合](../wiki/concepts/vision-language-feature-fusion.md) · [视触融合](../wiki/concepts/visuo-tactile-fusion.md)
@@ -160,6 +162,7 @@ flowchart LR
 ### 推荐读什么
 - [行为克隆](../wiki/methods/behavior-cloning.md) · [Transformer 行为克隆](../wiki/methods/bc-with-transformer.md) — 从 MLP 头到序列骨干的第一跳
 - [Action Chunking](../wiki/methods/action-chunking.md) — 一次输出多步的机制拆解：延迟观测条件化与隐式集成
+- [StarVLA-α](../wiki/entities/paper-starvla-alpha.md) — 固定骨干、数据与训练预算后比较 MLP、离散自回归与连续生成头，判断额外动作头结构的收益。
 - [滚动执行](../wiki/concepts/receding-horizon-policy-execution.md) — receding horizon 与 temporal ensemble 的区别
 - [扩散模型](../wiki/concepts/diffusion-model.md) · [Diffusion Policy](../wiki/methods/diffusion-policy.md) — 多步去噪生成动作序列的表达力与代价
 - [特权训练](../wiki/concepts/privileged-training.md) · [Teacher–Student 与 DAgger 训练](../wiki/methods/teacher-student-dagger-training.md) — 双网结构与蒸馏
@@ -197,7 +200,7 @@ flowchart LR
 - [统一多模态 Token](../wiki/methods/unified-multimodal-tokens.md) — 把视觉 / 语言 / 动作编进同一空间的架构趋势
 - [Octo](../wiki/methods/octo-model.md) — 块状注意力 Transformer + 独立读出头，少样本适配新相机与动作空间
 - [π₀](../wiki/methods/π0-policy.md) · [π₀.₇](../wiki/methods/pi07-policy.md) — 流匹配动作头与多模态提示对齐异质数据
-- [StarVLA](../wiki/methods/star-vla.md) — 强 VLM 底座 + 简单 MLP 动作头的极简基准，用来校准"复杂头是否必要"
+- [StarVLA 方法入口](../wiki/methods/star-vla.md) · [框架论文](../wiki/entities/paper-starvla-framework.md) — 将骨干、动作头、数据适配与评测服务解耦，和 Stage 3 的 α 受控基线分开阅读。
 - [Foundation Policy](../wiki/concepts/foundation-policy.md) · [行为基础模型（BFM）](../wiki/concepts/behavior-foundation-model.md) — 操作向与全身控制向两类基座
 - [World Action Models](../wiki/concepts/world-action-models.md) · [潜空间想象](../wiki/concepts/latent-imagination.md) — 未来预测进骨干后的结构变化
 - [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) · [具身大模型选型闭环枢纽](../wiki/overview/hub-embodied-foundation-model.md)

@@ -2,6 +2,8 @@
 type: entity
 tags: [manipulator, cobot, open-source, elephant-robotics, education, ros]
 status: complete
+original:
+  - ../../sources/repos/mycobot320-core-docs-reading-2026-11-15.md
 updated: 2026-11-15
 related:
   - ../tasks/manipulation.md
@@ -9,6 +11,7 @@ related:
   - ./elephantrobotics-myagv.md
   - ../concepts/ros2-basics.md
 sources:
+  - ../../sources/repos/mycobot320-core-docs-reading-2026-11-15.md
   - ../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
 summary: "大象机器人 myCobot 320：桌面级六轴开源协作臂，支持 Python/ROS；中文产品页 + myCobot320-docs 文档仓 + 官方支持中心。"
@@ -45,6 +48,49 @@ summary: "大象机器人 myCobot 320：桌面级六轴开源协作臂，支持 
 
 按[官方 README 复核](../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md)，myCobot 320 文档分别组织 **M5 与 Pi** 控制器路径，Python、ROS1 与 ROS2 章节须按实际控制器和软件版本选择；六轴本体一致不代表固件、连接或安装步骤可以混用。
 
+## 核心原理
+
+M5 控制路径是 **Python 调用 → 协议编码 → 串口/透传固件 → 六轴执行器 → 状态回读**。`send_angles` 的六维角度与 `send_coords` 的毫米/角度位姿是两种接口；ROS 消息的米与弧度需在适配层转换。
+
+```mermaid
+flowchart LR
+  app["Python 任务与目标"] --> api["pymycobot 参数校验与编码"]
+  api --> serial["匹配端口和波特率的串口"]
+  serial --> fw["M5 透传固件"]
+  fw --> arm["机械臂执行与反馈"]
+  arm --> api
+```
+
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  participant App as 官方 Python 示例
+  participant API as DataGenerator
+  participant Driver as MyCobot320
+  participant Arm as 串口与机械臂固件
+  App->>Driver: MyCobot320(port, 115200)
+  Driver->>Arm: serial.Serial.open()
+  App->>API: send_angles(angles, speed)
+  API->>API: 参数校验与角度编码
+  API->>Driver: _mesg(SEND_ANGLES)
+  Driver->>Arm: _res() 写命令并读返回帧
+  Arm-->>Driver: 协议反馈或超时
+  App->>API: get_angles() / is_in_position()
+  API->>Driver: 查询状态
+  Driver-->>App: 解码结果或失败标记
+```
+
+## 工程实践
+
+先记录 M5/Pi、固件版本、SDK 版本、串口与波特率。M5 安装文档要求 Basic 透传配置，所读运动示例用 `pymycobot.mycobot320`；先检查连接和状态回读，再以低速验证已知姿态。把超时、返回 -1 和到位判据分别记录，不能用固定 sleep 当作闭环控制完成证明。
+
+## 局限与风险
+
+- 读到的文档有历史 import 与其他型号示例；本页只核对 M5 串口路径，不宣称相同代码适用于全部 Pi/ROS 发行版。
+- 角度/速度范围检查不能证明路径无自碰、工具负载合法或基座固定可靠。
+- 本次没有实机测试，教材中的演示姿态不是任意工位可直接执行的轨迹。
+
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)
@@ -57,6 +103,8 @@ summary: "大象机器人 myCobot 320：桌面级六轴开源协作臂，支持 
 - myCobot320-docs 仓库内 **API / ROS** 章节（版本以默认分支为准）
 
 ## 参考来源
+
+- [官方技术文档与运行入口通读](../../sources/repos/mycobot320-core-docs-reading-2026-11-15.md)。
 
 - [官方硬件文档与入口复核](../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md)
 

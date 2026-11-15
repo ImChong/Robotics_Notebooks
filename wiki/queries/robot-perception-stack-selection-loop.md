@@ -7,9 +7,10 @@ summary: "机器人视觉感知栈选型闭环知识链：把 传感与标定 �
 original:
   - ../../sources/papers/yolo_v1_perception_stack_reading_1506_02640_reading_psl.md
 sources:
+  - ../../sources/papers/segment_anything_arxiv_2304_02643.md
   - ../../sources/papers/yolo_arxiv_1506_02640.md
   - ../../sources/papers/rf_detr_arxiv_2511_09554.md
-  - ../../sources/papers/segment_anything_arxiv_2304_02643.md
+  - ../../sources/papers/segment_anything_arxiv_2304_02643_full_reading_2026_11_15.md
   - ../../sources/papers/sam2_arxiv_2408_00714.md
   - ../../sources/repos/ultralytics.md
   - ../../sources/repos/tennis-vision.md
@@ -192,7 +193,7 @@ flowchart TD
 
 - [yolo_arxiv_1506_02640.md](../../sources/papers/yolo_arxiv_1506_02640.md) — ②层单阶段实时检测奠基论文
 - [rf_detr_arxiv_2511_09554.md](../../sources/papers/rf_detr_arxiv_2511_09554.md) — ②层端到端实时 DETR
-- [segment_anything_arxiv_2304_02643.md](../../sources/papers/segment_anything_arxiv_2304_02643.md) — ②层可提示分割基础模型
+- [segment_anything_arxiv_2304_02643.md](../../sources/papers/segment_anything_arxiv_2304_02643_full_reading_2026_11_15.md) — ②层可提示分割基础模型
 - [sam2_arxiv_2408_00714.md](../../sources/papers/sam2_arxiv_2408_00714.md) — ②层图像+视频可提示分割
 - [ultralytics.md](../../sources/repos/ultralytics.md) — ②层单阶段实时检测工程化生态一手仓
 - [ov-sam3d.md](../../sources/repos/ov-sam3d.md) — ③层开放词汇 3D 分割一手资料
