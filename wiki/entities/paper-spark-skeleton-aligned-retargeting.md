@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, kinodynamic, trajectory-optimization, urdf, beyondmimic, unitree-g1, uw-madison, berkeley, shanghai-innovation-institute, locomotion]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2603.11480"
 venue: "2026 · arXiv / IROS preprint"
 project: https://www.leggedai.com/publication/2026_spark/
@@ -21,6 +21,7 @@ related:
 sources:
   - ../../sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md
   - ../../sources/sites/spark-leggedai.md
+original: ../../sources/papers/spark_skeleton_aligned_retargeting_arxiv_2603_11480.md
 ---
 
 # SPARK（Skeleton-Parameter Aligned Retargeting）

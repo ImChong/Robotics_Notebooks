@@ -16,7 +16,7 @@ tags:
 - kimodo
 - unitree-g1
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 doi: 10.1109/Humanoids65713.2025.11203055
 venue: Humanoids 2025
 code: https://github.com/tmjeong1103/CoRe
@@ -41,6 +41,7 @@ sources:
 - ../../sources/sites/rmr-page.md
 summary: CoRe（Humanoids 2025，高丽大学/KIST/UIUC）：接触感知优化精炼 + 接触奖励 RL，先修脚滑/浮空再跟踪；软件 v0.1.0 已开源重定向与精炼，T2M 与 RL 训练未随仓发布。勿与 PhysCoRe 混淆。
 project_id: core
+original: ../../sources/papers/core_humanoids_2025.md
 ---
 
 # CoRe（接触感知优化与学习的人形运动）

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, repo, pose-estimation, 3d-vision, flow-matching, human-motion, cvpr-2026, epfl]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2602.05755"
 venue: CVPR 2026
 code: https://github.com/AdaptiveMotorControlLab/FMPose3D
@@ -15,10 +15,13 @@ sources:
   - ../../sources/papers/fmpose3d_arxiv_2602_05755.md
   - ../../sources/sites/fmpose3d-xiu-cs-github-io.md
   - ../../sources/repos/fmpose3d.md
+original: ../../sources/papers/fmpose3d_arxiv_2602_05755.md
 summary: "FMPose3D（CVPR 2026 · EPFL）：用条件 Flow Matching 将 2D 关键点提升为 3D 关节分布，少步 ODE 积分生成多假设，RPEA 重投影聚合得单预测；Human3.6M 47.3 mm、动物 Animal3D/CtrlAni3D SOTA，推理显著快于 DiffPose；已开源并集成 DeepLabCut。"
 ---
 
 # FMPose3D：Flow Matching 单目 3D 姿态估计
+
+## 一句话定义
 
 **FMPose3D**（*monocular 3D pose estimation via flow matching*，arXiv:2602.05755，**CVPR 2026**，[项目页](https://xiu-cs.github.io/FMPose3D/)，[代码](https://github.com/AdaptiveMotorControlLab/FMPose3D)）由 **EPFL Adaptive Motor Control Lab** 提出：在经典 **2D→3D lifting** 范式下，把单目深度歧义建模为 **条件生成问题**——用 **Conditional Flow Matching（CFM）** 学习 ODE 速度场，从 Gaussian 噪声 **少步传输** 到 plausible 3D 关节分布；再以 **RPEA**（Reprojection-based Posterior Expectation Aggregation）把多假设融合为 **Bayes 近似最优** 单预测。方法同时覆盖 **人与动物** 3D 关键点基准，并在 RTX 4090 上相对扩散 lifter **DiffPose** 实现 **一个数量级级** 推理加速。
 
@@ -115,6 +118,18 @@ flowchart TB
 | 相对 HMR | 不估计 mesh/形状 | 不估计 mesh | 不估计 mesh |
 
 与 [HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md)（SMPL **后处理精炼**）、[GENMO](../methods/genmo.md)（**生成式 SMPL 序列**）不同，FMPose3D 定位在 **轻量 2D→3D 关键点 lifter**，更适合已有关键点检测器或 DeepLabCut 管线的场景。
+
+## 局限
+
+- 依赖外部 2D 关键点检测器（人域 CPN、动物 SuperAnimal），非端到端图像直出。
+- 输出为稀疏 3D 关键点而非 SMPL 网格，接入人形重定向时需额外骨架映射。
+- 预训练权重为非商用许可。
+
+## 关联页面
+
+- [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
+- [GENMO](../methods/genmo.md)
+- [HTD-Refine](./paper-htd-refine-monocular-hmr.md)
 
 ## 工程实践与开源状态
 

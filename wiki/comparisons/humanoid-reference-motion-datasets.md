@@ -3,7 +3,7 @@ type: comparison
 title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / BONES-SEED 等）
 tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1, martial-arts]
 summary: "常用人形数据源的表示、任务域、是否预重定向与典型下游对照；含 HiPHI 高精度 HOI、KungFuAthlete 高动态与 EgoHTR 人–场景扩展。"
-updated: 2026-10-23
+updated: 2026-11-15
 status: complete
 related:
   - ../concepts/motion-retargeting.md

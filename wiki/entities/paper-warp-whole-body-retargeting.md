@@ -29,6 +29,7 @@ related:
 sources:
   - ../../sources/papers/warp_arxiv_2606_29940.md
   - ../../sources/sites/warp-retargeting-github-io.md
+original: ../../sources/papers/warp_arxiv_2606_29940.md
 ---
 
 # WARP（Whole-body-Aware Retargeting from human Pose）
@@ -59,7 +60,7 @@ WARP 把「人类数据便宜、机器人数据贵」的瓶颈落在 **离线重
 - **下游 decisive：** DexMimicGen 上 replay 相近时，WARP 数据训练策略平均成功率 **71% vs MINK 59%**；真机转箱任务同等 replay 下 **65% vs 40%**——运动质量比 replay 完成率更决定 BC 上限。
 - **全身语义：** 冰箱关合等任务依赖 **肘–躯干** 协调，EEF-only 重定向无法表达；WARP 保留全身结构意图。
 
-## 方法
+## 核心机制
 
 | 模块 | 作用 |
 |------|------|
@@ -171,7 +172,7 @@ Replay 相近；WARP 监督对 BC **+12%** 平均策略成功率。
 | 出处 | arXiv preprint（2026） |
 | 链接 | [项目页](https://warp-retargeting.github.io/) · [arXiv](https://arxiv.org/abs/2606.29940) |
 
-## 与其他页面的关系
+## 关联页面
 
 - **Retargeting 质量命题：** [Retargeting Matters / GMR](./paper-hrl-stack-01-retargeting_matters.md) — 重定向质量上限早于 RL/BC
 - **交互场景硬约束：** [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) — interaction mesh + SOCP；侧重场景/物体交互增广

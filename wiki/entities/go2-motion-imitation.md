@@ -9,6 +9,7 @@ related:
   - ./legged-gym.md
   - ../tasks/locomotion.md
   - ./genesis-world-10.md
+original: ../../sources/repos/go2_motion_imitation.md
 sources:
   - ../../sources/repos/go2_motion_imitation.md
 ---
@@ -16,6 +17,10 @@ sources:
 # Go2 Motion Imitation
 
 **Go2 Motion Imitation**（<https://github.com/TSUITUENYUE/motion-imitation>）是针对 **Unitree Go2** 的 **运动模仿** 开源项目（个人/课程向维护，非 Unitree 官方仓）：在 **[Genesis](./genesis-world-10.md)** 仿真器中，把动物/论文 MoCap 经 **`retarget_motion`** 转为 Go2 格式，再以 **关节速度匹配** 奖励训练 RL 策略，支持周期性步态的高质量跟踪。
+
+## 一句话定义
+
+**Go2 Motion Imitation**（`TSUITUENYUE/motion-imitation`）是面向 Unitree Go2 四足机器人的开源模仿学习管线，打通了 MoCap 动作重定向到 Genesis 仿真器与基于关节速度匹配的强化学习策略训练。
 
 ## 英文缩写速查
 
@@ -31,7 +36,7 @@ sources:
 - **Go2 专用重定向脚本**：`retarget_motion/retarget_motion.py` 明确承担「源格式 → Go2 机器人状态」映射，是四足机型定制管线的可复现样本。
 - **Genesis 生态补充**：与 Isaac Gym + legged_gym 主流不同，展示新仿真器上的模仿学习闭环。
 
-## 管线阶段
+## 流程总览（管线阶段）
 
 ```mermaid
 flowchart LR
@@ -46,6 +51,16 @@ flowchart LR
 ```bash
 python retarget_motion/retarget_motion.py --input_file=source_motion.txt --output_file=retargeted_motion.txt
 ```
+
+## 工程实践
+
+- **Genesis 并行仿真**：利用 Genesis GPU 并行环境加速四足步态模仿的 PPO 采样与策略收敛。
+- **关节速度匹配**：在奖励函数中显式引入参考关节角速度追踪，提升动态步态的相位同步性。
+
+## 局限
+
+- **面向特定机型**：资产与重定向配置针对 Unitree Go2 定制，迁移到其他四足或人形平台需重新标定骨骼映射与物理参数。
+- **Sim2Real 验证有限**：仓库聚焦仿真内模仿训练，真机部署需额外补充域随机化与状态估计器对齐。
 
 ## 关联页面
 

@@ -37,3 +37,5 @@ README 强调 **完全本地运行**：解析与编辑在浏览器完成，无�
 - **`wiki/entities/robot-motion-keyframe-editors.md`**：与 MuJoCo keyframe kit、Project Instinct npz 编辑器并列的 **示教后处理 / 关键帧** 工具选型入口。
 - **`wiki/concepts/motion-retargeting-pipeline.md`**：重定向或跟踪产线之后的 **手工轨迹修整** 场景。
 - **`wiki/entities/unitree.md`** / **`wiki/tasks/locomotion.md`**：Unitree CSV 互操作与足式日志编辑的工程参照。
+
+- **通读：** 已完成

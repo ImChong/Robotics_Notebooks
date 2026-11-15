@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, motion-retargeting, imitation-learning, reinforcement-learning, sim2real, unitree-g1]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 arxiv: "2603.22201"
 code: https://github.com/3DV-HumanoidGroup/MakeTrackingEasy
 related:
@@ -16,12 +16,17 @@ related:
 sources:
   - ../../sources/papers/neural_motion_retargeting_nmr.md
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
+original: ../../sources/papers/neural_motion_retargeting_nmr.md
 summary: "NMR 将人形运动重定向表述为从人体运动分布到机器人可行流形的学习映射；通过 CEPR 管线（筛选→GMR→聚类 RL 专家→仿真 rollout）构造物理一致的人机配对数据，训练 CNN–Transformer 非自回归网络，缓解传统优化重定向的非凸与噪声传播问题。"
 ---
 
 # NMR（神经运动重定向与人形全身控制）
 
 **NMR（Neural Motion Retargeting）** 面向「人体 SMPL（或同类）序列 → 人形机器人可执行全身轨迹」：不把重定向当成孤立的逐帧几何优化，而是用**可扩展的监督数据 + 时序网络**直接学习跨具身的运动映射，使下游 **whole-body tracking / 控制**更容易收敛。
+
+## 一句话定义
+
+> 用可扩展的物理一致配对数据 + 非自回归时序网络直接学习人体到人形机器人的可行运动流形映射，替代脆弱的逐帧非凸优化重定向。
 
 ## 英文缩写速查
 
@@ -120,6 +125,11 @@ sequenceDiagram
 
 - **不是简单替代 GMR**：CEPR 仍以 GMR 产出作为**中间监督与覆盖度来源**，再用 RL+仿真做**物理修补**；NMR 最终目标是**快速推断**、全局时序一致与对输入噪声更稳的映射。
 - **与「跳过重定向、直接 tracking」路线的对比**：类似 [ExoActor](./exoactor.md) 中「人体轨迹 → SONIC」强调下游通用跟踪器；NMR 则显式学习 **SMPL→机器人** 的时序映射，并用物理 rollout 定义「何为好的配对」。两条路线可放在同一决策空间里对比：**数据从哪来、误差从哪修、部署算力预算是多少**。
+
+## 工程实践
+
+- **CEPR 数据管线**：先筛选人体动作并做 GMR 初值重定向，再通过聚类 RL 专家在仿真中 rollout 生成物理一致的人机配对轨迹，用于训练非自回归 CNN–Transformer 网络。
+- **下游集成**：开源实现（[MakeTrackingEasy](https://github.com/3DV-HumanoidGroup/MakeTrackingEasy)）可直接输出 Unitree G1 可跟踪参考轨迹，接入全身控制与 Sim2Real 部署。
 
 ## 常见局限与阅读时注意点
 

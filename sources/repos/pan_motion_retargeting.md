@@ -10,3 +10,5 @@
 - **入库日期：** 2026-06-08
 - **一句话说明：** 学习式按身体部位注意力重定向，支持双足↔四足骨架互转（LaFAN1 dog set / Mixamo），偏动画与跨形态研究。
 - **沉淀到 wiki：** 是 → [`wiki/entities/pan-motion-retargeting.md`](../../wiki/entities/pan-motion-retargeting.md)
+
+- **通读：** 已完成

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, human-mesh-recovery, hmr, smplx, flame, single-image, real-time, expressive, siggraph-2026, idea, motion-capture, teleoperation]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2601.22693"
 venue: SIGGRAPH 2026
 related:
@@ -18,10 +18,13 @@ sources:
   - ../../sources/papers/pear_arxiv_2601_22693.md
   - ../../sources/sites/pear-wujh2001-github-io.md
   - ../../sources/repos/pear.md
+original: ../../sources/papers/pear_arxiv_2601_22693.md
 summary: "PEAR（SIGGRAPH 2026，IDEA）用统一 ViT-B 从单图无裁剪回归 EHM-s（SMPL-X + 缩放 FLAME 头），两阶段训练叠加 GUAVA 像素监督，>100 FPS 同时恢复身/脸/手，面向实时动捕与虚拟人驱动等下游。"
 ---
 
 # PEAR：像素对齐的表意人体网格恢复
+
+## 一句话定义
 
 **PEAR**（*Pixel-aligned Expressive humAn mesh Recovery*，arXiv:2601.22693，SIGGRAPH 2026，[IDEA](https://idea.edu.cn/)）从 **单张野外 RGB** 恢复 **全身 + 双手 + 面部表情** 的 **EHM-s** 参数化网格，在 **无脸/手/人体裁剪** 前提下达到 **>100 FPS**（4090/L40S 级，FP32）。相对 OSX、Multi-HMR、SMPLest-X 等 **Type-3 SMPL-X** 方法，论文强调 **像素级对齐** 与 **实时部署**；项目页对比 [SAM 3D Body](./sam-3d-body.md) 约 **100×** 推理加速。
 
@@ -101,7 +104,7 @@ flowchart LR
 
 Part1（3M+ 图）+ Part2（Ego-Exo4D、Harmony4D 等，总 6M+）支撑 **头/上半身/全身** 多样裁剪泛化。
 
-## 实验与工程要点
+## 工程实践与实验要点
 
 | 维度 | PEAR | 对照（论文） |
 |------|------|----------------|

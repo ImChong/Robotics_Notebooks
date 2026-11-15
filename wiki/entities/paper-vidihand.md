@@ -3,7 +3,7 @@ type: entity
 tags: [paper, hand-pose, egocentric, video-diffusion, perception, manipulation, embodied-ai, ntu, sjtu]
 status: complete
 summary: "ViDiHand（arXiv:2606.30308，NTU/SJTU）：hand-overlay 微调 Wan2.1-VACE，双分支解码 egocentric 双手 4D MANO——无 detector/infiller/TTO；ARCTIC/HOT3D/HOI4D SOTA；项目页有 Code 链但仓库仍待发布。"
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2606.30308"
 code: "https://github.com/NTUYWANG103/ViDiHand"
 venue: "arXiv 2026"
@@ -22,11 +22,14 @@ sources:
   - ../../sources/sites/vidihand-github-io.md
   - ../../sources/repos/vidihand.md
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
+original: ../../sources/papers/vidihand_arxiv_2606_30308.md
 ---
 
 # ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction
 
-**一句话定义**：**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验——经 **hand-overlay rendering** 轻量适配后，**双分支 decoder** 从单层中间激活读出 **metric-scale 双手 MANO 轨迹**，**无需手部检测器、运动 infiller 或 test-time optimization**。
+## 一句话定义
+
+**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验——经 **hand-overlay rendering** 轻量适配后，**双分支 decoder** 从单层中间激活读出 **metric-scale 双手 MANO 轨迹**，**无需手部检测器、运动 infiller 或 test-time optimization**。
 
 ## 英文缩写速查
 

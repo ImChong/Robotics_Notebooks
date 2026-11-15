@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-11-14
+updated: 2026-11-15
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/loopermuscle_arxiv_2608_00820.md
@@ -29,6 +29,7 @@ sources:
   - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
   - ../../sources/papers/gigabrain_wbc_0_5_arxiv_2608_18234.md
   - ../../sources/papers/unitracker_arxiv_2507_07356.md
+original: ../../sources/papers/deepmimic.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形运动跟踪与风格先验方法这么多，工程上怎么选、怎么组合？」
