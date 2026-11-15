@@ -6089,8 +6089,8 @@
         tooltipEl.classList.remove('tt-pinned');
         tooltipEl.style.right = '';
         tooltipEl.style.bottom = '';
-        moveTooltip(ev);
         tooltipEl.classList.remove('hidden');
+        moveTooltip(ev);
       }
     }
 
@@ -6533,8 +6533,154 @@
     }, document.body);
   }
 
-  // 正文 / 路线页本库内链悬停浮窗：复用图谱 hover 卡片，详情页同时点亮迷你图同一节点
+  function ensureInlineLinkTooltipEl() {
+    var tooltipEl = document.getElementById('detail-inline-link-tooltip');
+    if (!tooltipEl && document.body) {
+      tooltipEl = document.createElement('div');
+      tooltipEl.id = 'detail-inline-link-tooltip';
+      tooltipEl.className = 'graph-hover-tooltip hidden';
+      tooltipEl.setAttribute('role', 'tooltip');
+      tooltipEl.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(tooltipEl);
+    }
+    return tooltipEl;
+  }
+
+  function suppressNativeTitle(el) {
+    if (!el) return;
+    var nativeTitle = el.getAttribute('title');
+    if (!nativeTitle) return;
+    if (!el.dataset.nativeTitle) el.dataset.nativeTitle = nativeTitle;
+    el.removeAttribute('title');
+  }
+
+  function extractNodeLinkId(anchor) {
+    if (!anchor || !anchor.getAttribute) return '';
+    if (anchor.closest && anchor.closest('.graph-hover-tooltip, #graph-tooltip')) return '';
+    var href = anchor.getAttribute('href') || '';
+    var matched = /^(?:\.\/)?(?:detail|roadmap)\.html\?id=([^&#]+)/.exec(href);
+    if (!matched) return '';
+    try {
+      return decodeURIComponent(matched[1]);
+    } catch (unusedErr) {
+      void unusedErr;
+      return '';
+    }
+  }
+
+  function resolveInlineLinkPage(pid, detailPagesOpt, catalogOpt) {
+    if (!pid) return null;
+    if (detailPagesOpt) {
+      var direct = resolveDetailPage(pid, detailPagesOpt);
+      if (direct) return { id: direct.id || pid, page: direct };
+    }
+    var catalog = catalogOpt || loadedPageCatalog;
+    if (!catalog || !catalog.pages) return null;
+    var pages = catalog.pages;
+    var aliases = pages.page_aliases || {};
+    var resolvedId = Object.prototype.hasOwnProperty.call(aliases, pid) ? aliases[pid] : pid;
+    var detailPages = pages.detail_pages || {};
+    var page = resolveDetailPage(resolvedId, detailPages);
+    if (!page && pages.roadmap_pages && Object.prototype.hasOwnProperty.call(pages.roadmap_pages, resolvedId)) {
+      page = pages.roadmap_pages[resolvedId];
+    }
+    if (!page) return null;
+    return { id: page.id || resolvedId, page: page };
+  }
+
+  var globalNodeLinkPreviewState = {
+    bound: false,
+    hoverTip: null,
+    lastPointerType: '',
+    detailPages: null,
+    activeLink: null,
+    lastMouseEvent: null
+  };
+
+  function showNodeLinkTooltip(state, link, pageId, page, ev) {
+    if (!state || !state.hoverTip || !link || !page) return;
+    link.classList.add('detail-inline-link');
+    link.dataset.wikiId = pageId;
+    if (page.path) link.dataset.wikiPath = page.path;
+    state.hoverTip.show(ev, null, buildDetailInlineLinkTooltipHtml(pageId, page));
+    detailBridgeHighlightMini(page.path || '');
+  }
+
+  // 全站本库节点超链接悬停浮窗（主页、详情页各区块、更新记录、榜单、路线页等通用）
+  function ensureGlobalNodeLinkPreview(detailPagesOpt) {
+    var state = globalNodeLinkPreviewState;
+    if (detailPagesOpt) state.detailPages = detailPagesOpt;
+    if (state.bound) return state;
+    var tooltipEl = ensureInlineLinkTooltipEl();
+    if (!tooltipEl) return state;
+    state.bound = true;
+    state.hoverTip = setupGraphHoverTooltip(tooltipEl);
+
+    document.addEventListener('pointerdown', function (ev) {
+      state.lastPointerType = ev.pointerType || '';
+    }, true);
+    document.addEventListener('pointermove', function (ev) {
+      if (ev.pointerType && ev.pointerType !== 'touch') state.lastPointerType = ev.pointerType;
+    }, true);
+    document.addEventListener('rn-hide-inline-tooltip', function () {
+      state.activeLink = null;
+      state.hoverTip.clearPin();
+      state.hoverTip.hide();
+    });
+
+    if (state.hoverTip.isMobile) return state;
+
+    document.addEventListener('mouseover', function (ev) {
+      if (state.lastPointerType === 'touch') return;
+      var link = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      var pid = extractNodeLinkId(link);
+      if (!pid) return;
+      var currentPageId = currentPageIdFromLocation();
+      if (currentPageId && pid === currentPageId) return;
+      suppressNativeTitle(link);
+      state.activeLink = link;
+      state.lastMouseEvent = { clientX: ev.clientX, clientY: ev.clientY };
+
+      var resolved = resolveInlineLinkPage(pid, state.detailPages, loadedPageCatalog);
+      if (resolved) {
+        showNodeLinkTooltip(state, link, resolved.id, resolved.page, state.lastMouseEvent);
+        return;
+      }
+      ensureSiteCatalog(false).then(function (catalog) {
+        if (state.activeLink !== link) return;
+        var lazyResolved = resolveInlineLinkPage(pid, state.detailPages, catalog);
+        if (!lazyResolved) return;
+        showNodeLinkTooltip(state, link, lazyResolved.id, lazyResolved.page, state.lastMouseEvent);
+      }).catch(function (unusedErr) {
+        void unusedErr;
+      });
+    });
+
+    document.addEventListener('mousemove', function (ev) {
+      if (state.lastPointerType === 'touch' || !state.activeLink) return;
+      var link = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      if (link === state.activeLink) {
+        state.lastMouseEvent = { clientX: ev.clientX, clientY: ev.clientY };
+        state.hoverTip.move(ev);
+      }
+    });
+
+    document.addEventListener('mouseout', function (ev) {
+      if (!state.activeLink) return;
+      var link = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      if (link !== state.activeLink) return;
+      if (ev.relatedTarget && link.contains(ev.relatedTarget)) return;
+      state.activeLink = null;
+      state.hoverTip.hide();
+      detailBridgeHighlightMini('');
+    });
+
+    return state;
+  }
+
+  // 正文 / 路线页本库内链标记与双向联动：悬停浮窗本身已由全站事件委托接管
   function setupDetailInlineLinkPreview(contentEl, detailPages) {
+    var state = ensureGlobalNodeLinkPreview(detailPages);
     var roots = collectInlineLinkPreviewRoots(contentEl);
     if (!roots.length) return;
     var currentPageId = currentPageIdFromLocation();
@@ -6543,15 +6689,15 @@
       var anchors = roots[r].querySelectorAll('a[href^="detail.html?id="], a[href^="roadmap.html?id="]');
       for (var i = 0; i < anchors.length; i++) {
         var anchor = anchors[i];
-        var matched = /^(?:detail|roadmap)\.html\?id=([^&#]+)/.exec(anchor.getAttribute('href') || '');
-        if (!matched) continue;
-        var pid = decodeURIComponent(matched[1]);
+        var pid = extractNodeLinkId(anchor);
+        if (!pid) continue;
         if (currentPageId && pid === currentPageId) continue;
-        var page = detailPages[pid];
-        if (!page || !page.path) continue;
+        var resolved = resolveInlineLinkPage(pid, detailPages, loadedPageCatalog);
+        if (!resolved || !resolved.page.path) continue;
         anchor.classList.add('detail-inline-link');
-        anchor.dataset.wikiId = pid;
-        anchor.dataset.wikiPath = page.path;
+        anchor.dataset.wikiId = resolved.id;
+        anchor.dataset.wikiPath = resolved.page.path;
+        if (state.hoverTip && !state.hoverTip.isMobile) suppressNativeTitle(anchor);
         marked.push(anchor);
       }
     }
@@ -6563,66 +6709,16 @@
       }
     };
 
-    var tooltipEl = document.getElementById('detail-inline-link-tooltip');
-    if (!tooltipEl) return;
-    var hoverTip = setupGraphHoverTooltip(tooltipEl);
-    var lastPointerType = '';
-    document.addEventListener('pointerdown', function (ev) {
-      lastPointerType = ev.pointerType || '';
-    }, true);
-    document.addEventListener('pointermove', function (ev) {
-      if (ev.pointerType && ev.pointerType !== 'touch') lastPointerType = ev.pointerType;
-    }, true);
-    document.addEventListener('rn-hide-inline-tooltip', function () {
-      hoverTip.clearPin();
-      hoverTip.hide();
-    });
-
-    // 触屏 / 混合屏触摸：正文内链点击直接跳转；路线页知识地图节点第一次点按只弹出浮窗，点浮窗里的链接再跳转
-    bindKnowledgeMapTapPreview(hoverTip, detailPages, function () { return lastPointerType; });
-    if (hoverTip.isMobile) return;
-
-    function suppressNativeTitle(el) {
-      var nativeTitle = el.getAttribute('title');
-      if (!nativeTitle) return;
-      if (!el.dataset.nativeTitle) el.dataset.nativeTitle = nativeTitle;
-      el.removeAttribute('title');
+    if (state.hoverTip) {
+      // 触屏 / 混合屏触摸：正文内链点击直接跳转；路线页知识地图节点第一次点按只弹出浮窗，点浮窗里的链接再跳转
+      bindKnowledgeMapTapPreview(state.hoverTip, detailPages, function () { return state.lastPointerType; });
     }
+  }
 
-    for (var t = 0; t < marked.length; t++) {
-      suppressNativeTitle(marked[t]);
-    }
-
-    function inlineLinkOf(ev) {
-      return ev.target && ev.target.closest ? ev.target.closest('a.detail-inline-link') : null;
-    }
-
-    function bindRootHover(root) {
-      if (!root || root.getAttribute('data-inline-link-preview') === '1') return;
-      root.setAttribute('data-inline-link-preview', '1');
-      root.addEventListener('mouseover', function (ev) {
-        if (lastPointerType === 'touch') return;
-        var link = inlineLinkOf(ev);
-        if (!link) return;
-        hoverTip.show(ev, null, buildDetailInlineLinkTooltipHtml(link.dataset.wikiId, detailPages[link.dataset.wikiId] || {}));
-        detailBridgeHighlightMini(link.dataset.wikiPath);
-      });
-      root.addEventListener('mousemove', function (ev) {
-        if (lastPointerType === 'touch') return;
-        if (inlineLinkOf(ev)) hoverTip.move(ev);
-      });
-      root.addEventListener('mouseout', function (ev) {
-        var link = inlineLinkOf(ev);
-        if (!link) return;
-        if (ev.relatedTarget && link.contains(ev.relatedTarget)) return;
-        hoverTip.hide();
-        detailBridgeHighlightMini('');
-      });
-    }
-
-    for (var b = 0; b < roots.length; b++) {
-      bindRootHover(roots[b]);
-    }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { ensureGlobalNodeLinkPreview(); });
+  } else {
+    ensureGlobalNodeLinkPreview();
   }
 
   function renderDetailMiniMap(detailPage, detailPages) {
@@ -7686,14 +7782,21 @@
     return resolveDetailPage(id, pages.detail_pages);
   }
 
-  function loadSitePageData(kind, requestedId, refreshed) {
+  function ensureSiteCatalog(refreshed) {
     if (refreshed) pageDataRequests.delete(PAGE_CATALOG_URL);
+    if (!refreshed && loadedPageCatalog) return Promise.resolve(loadedPageCatalog);
     return requestPageJson(PAGE_CATALOG_URL, function (data) {
       return data && data.version === 'v1' && data.content_mode === 'per-page-v1' &&
         data.pages && data.pages.detail_pages && data.pages.roadmap_pages && data.pages.page_aliases;
     }).then(function (catalog) {
       hydrateCatalogIds(catalog);
       loadedPageCatalog = catalog;
+      return catalog;
+    });
+  }
+
+  function loadSitePageData(kind, requestedId, refreshed) {
+    return ensureSiteCatalog(refreshed).then(function (catalog) {
       var page = requestedContentPage(catalog, kind, requestedId);
       if (!page || (kind === 'detail' && page.type === 'roadmap_page')) return catalog;
       // Only exporter-owned content paths are accepted, never arbitrary URL parameters.
