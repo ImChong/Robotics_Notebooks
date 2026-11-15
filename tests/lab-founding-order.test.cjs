@@ -9,7 +9,7 @@ const read = path => readFileSync(resolve(root, path), 'utf8');
 const data = JSON.parse(read('docs/lab-roadmaps.json'));
 const sorted = [...data.labs].sort((a, b) => a.founded_year - b.founded_year);
 
-test('homepage sorts shuffled labs before choosing the four visible entries', () => {
+test('homepage sorts shuffled labs before choosing up to eight visible entries', () => {
   const dom = new JSDOM(read('docs/index.html'), { runScripts: 'outside-only' });
   const w = dom.window;
   const links = w.document.getElementById('homeLabLinks');
@@ -19,20 +19,21 @@ test('homepage sorts shuffled labs before choosing the four visible entries', ()
     links.appendChild(link);
   });
   const source = read('docs/main.js');
-  const start = source.indexOf("  var labToggle = document.getElementById('homeLabToggle');");
+  const start = source.indexOf('  // ── 首页路线预览');
   const end = source.indexOf('  // ── 首页入口卡指针光斑', start);
-  w.syncHomeLinksScrollbar = () => {};
-  w.animateHomeLinksToggle = (_card, update) => update();
-  w.labRoutesCard = w.document.getElementById('home-lab-routes');
   w.eval(source.slice(start, end));
   const keys = () => [...links.children].map(link => link.getAttribute('href').split('=')[1]);
   const visible = () => [...links.children].filter(link => !link.hidden);
   assert.deepEqual(keys(), sorted.map(lab => lab.key));
-  assert.deepEqual(visible().map(link => link.getAttribute('href').split('=')[1]), sorted.slice(0, 4).map(lab => lab.key));
-  w.document.getElementById('homeLabToggle').click();
-  assert.equal(visible().length, sorted.length);
-  w.document.getElementById('homeLabToggle').click();
-  assert.equal(visible().length, 4);
+  assert.deepEqual(visible().map(link => link.getAttribute('href').split('=')[1]), sorted.slice(0, 8).map(lab => lab.key));
+  const toggle = w.document.getElementById('homeLabToggle');
+  assert.equal(toggle.hidden, sorted.length <= 8);
+  if (!toggle.hidden) {
+    toggle.click();
+    assert.equal(visible().length, sorted.length);
+    toggle.click();
+    assert.equal(visible().length, 8);
+  }
   assert.deepEqual(keys(), sorted.map(lab => lab.key));
   dom.window.close();
 });

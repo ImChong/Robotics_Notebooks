@@ -22,6 +22,7 @@
     '定位到更多路线入口卡': 'Jump to more roadmaps',
     '定位到公司路线入口卡': 'Jump to company roadmaps',
     '定位到实验室路线入口卡': 'Jump to lab roadmaps',
+    '公司路线与实验室路线': 'Company and lab roadmaps',
     '切换公司 / 实验室路线': 'Switch between company and lab roadmaps',
     '入口': 'Starting points', '从零开始': 'Getting started',
     '建立运动控制全局认识': 'Build an overview of motion control',
@@ -35,6 +36,7 @@
     '按公司查看具身基础模型与人形技术演进': 'Explore embodied AI by company',
     '按实验室查看具身智能研究演进': 'Explore embodied AI research by lab',
     '收起纵深路线 ↑': 'Collapse roadmaps ↑', '收起公司列表 ↑': 'Collapse companies ↑',
+    '收起实验室列表 ↑': 'Collapse labs ↑',
     '搜索知识库': 'Search the knowledge base',
     '搜索概念、方法或任务：MPC、PPO、Diffusion Policy…': 'Search concepts, methods or tasks: MPC, PPO, Diffusion Policy…',
     '搜索知识页面': 'Search knowledge pages', '按社区过滤': 'Filter by community',
@@ -90,7 +92,7 @@
   // This allowlist excludes route links, company links, hot-topic labels, titles, summaries and graph nodes.
   var selector = [
     '[data-home-copy]', '#homeNavToggle', '#homeNavMenu', '#backToTop',
-    '#homeRouteToggle', '#homeCompanyToggle', '#wikiCommunityFilter option[value=""]',
+    '#homeRouteToggle', '#homeCompanyToggle', '#homeLabToggle', '#wikiCommunityFilter option[value=""]',
     '#homeLatestWikiModule > .data-meta', '#homeLatestWikiModule .home-latest-more a',
     '#homeLatestWikiModule .updates-badge', '.home-latest-row-type',
     '#homeHubPanelAll > .data-meta', '#homeHubPanelPaper > .data-meta', '#homeHubPanelCommunity > .data-meta',
@@ -108,6 +110,7 @@
   var patterns = [
     [/^展开全部 (\d+) 条纵深路线 ↓$/, 'Show all $1 roadmaps ↓'],
     [/^展开全部 (\d+) 家公司 ↓$/, 'Show all $1 companies ↓'],
+    [/^展开全部 (\d+) 个实验室 ↓$/, 'Show all $1 labs ↓'],
     [/^互链 (\d+)$/, 'Connections $1'], [/^· (\d+) 项$/, '· $1 results'],
     [/^预览：全站连接度 Top-(\d+) 枢纽节点$/, 'Preview: top $1 nodes by connections'],
     [/^别名命中: /, 'Alias match: '], [/^核心标签命中: /, 'Tag match: '],
@@ -174,7 +177,7 @@
     roots.forEach(function (root) { if (root) apply(root); });
   });
   function observeMounts() {
-    ['homeRouteToggle', 'homeCompanyToggle', 'wikiCommunityFilter', 'wikiSearchResults',
+    ['homeRouteToggle', 'homeCompanyToggle', 'homeLabToggle', 'wikiCommunityFilter', 'wikiSearchResults',
       'homeLatestWikiModule', 'homeHubPanelAll', 'homeHubPanelPaper', 'homeHubPanelCommunity',
       'mini-graph-stats', 'mini-graph-tooltip', 'mini-graph-3d', 'sponsorDialog'
     ].forEach(function (id) {

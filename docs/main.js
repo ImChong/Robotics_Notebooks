@@ -7886,7 +7886,11 @@
       });
   }
 
-  // ── 首页「更多路线」折叠：默认只展示里程碑最新的 4 条纵深路线 ──────────────
+  // ── 首页路线预览：桌面 8 个、窄屏 4 个，纵深路线优先展示最新里程碑 ──────
+  var homePreviewMedia = null;
+  try {
+    homePreviewMedia = window.matchMedia('(max-width: 860px)');
+  } catch { /* 无 matchMedia 时沿用桌面预览，窄屏样式仍提供首屏兜底 */ }
   var routeToggle = document.getElementById('homeRouteToggle');
   var routeLinks = document.getElementById('homeRouteLinks');
   var mainRouteCount = document.getElementById('heroMainRouteCount');
@@ -7901,20 +7905,39 @@
   // 公司 / 实验室标签切换：同一张卡内只显示一个面板
   function showOrgTab(name) {
     if (!orgRoutesCard) return;
-    var tabs = orgRoutesCard.querySelectorAll('[data-org-tab]');
-    for (var oti = 0; oti < tabs.length; oti++) {
-      var on = tabs[oti].getAttribute('data-org-tab') === name;
-      tabs[oti].classList.toggle('is-active', on);
-      tabs[oti].setAttribute('aria-selected', on ? 'true' : 'false');
-      tabs[oti].tabIndex = on ? 0 : -1;
-      var panel = document.getElementById(tabs[oti].getAttribute('aria-controls'));
-      if (panel) panel.hidden = !on;
-    }
+    animateHomeLinksToggle(orgRoutesCard, function () {
+      var tabs = orgRoutesCard.querySelectorAll('[data-org-tab]');
+      for (var oti = 0; oti < tabs.length; oti++) {
+        var on = tabs[oti].getAttribute('data-org-tab') === name;
+        tabs[oti].classList.toggle('is-active', on);
+        tabs[oti].setAttribute('aria-selected', on ? 'true' : 'false');
+        tabs[oti].tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(tabs[oti].getAttribute('aria-controls'));
+        if (panel) {
+          panel.hidden = !on;
+          if (on) syncHomeLinksScrollbar(panel.querySelector('.home-entry-route-links'));
+        }
+      }
+    }, false, []);
   }
   if (orgRoutesCard) {
     orgRoutesCard.querySelector('.home-org-tabs').addEventListener('click', function (event) {
       var tab = event.target.closest('[data-org-tab]');
       if (tab) showOrgTab(tab.getAttribute('data-org-tab'));
+    });
+    orgRoutesCard.querySelector('.home-org-tabs').addEventListener('keydown', function (event) {
+      var tab = event.target.closest('[data-org-tab]');
+      if (!tab) return;
+      var tabs = Array.prototype.slice.call(orgRoutesCard.querySelectorAll('[data-org-tab]'));
+      var index = tabs.indexOf(tab);
+      if (event.key === 'ArrowRight') index = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') index = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === 'Home') index = 0;
+      else if (event.key === 'End') index = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      showOrgTab(tabs[index].getAttribute('data-org-tab'));
+      tabs[index].focus();
     });
   }
   var BORDER_TRACE_MS = 2400;
@@ -7933,17 +7956,30 @@
 
   // 展开态列表出现滚动条时实测其宽度写入 --links-sb（样式用负右外边距抵消），胶囊不因滚动条变窄而跳动
   function syncHomeLinksScrollbar(links) {
+    if (!links) return;
     links.style.removeProperty('--links-sb');
-    if (!links.classList.contains('is-expanded')) return;
+    if (!links.classList.contains('is-expanded')) {
+      links.scrollTop = 0;
+      return;
+    }
     links.style.setProperty('--links-sb', (links.offsetWidth - links.clientWidth) + 'px');
+  }
+
+  function syncHomePreviewItems(links, attribute, expanded, latest) {
+    var items = links.querySelectorAll('a');
+    var count = homePreviewMedia && homePreviewMedia.matches ? 4 : 8;
+    for (var pi = 0; pi < items.length; pi++) {
+      var extra = latest ? pi < items.length - count : pi >= count;
+      items[pi].toggleAttribute(attribute, extra);
+      items[pi].hidden = extra && !expanded;
+    }
+    return links.querySelectorAll('[' + attribute + ']');
   }
 
   function setHomeRoutesExpanded(expanded) {
     if (!routeToggle || !routeLinks) return;
-    var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
-    for (var rti = 0; rti < extras.length; rti++) {
-      extras[rti].hidden = !expanded;
-    }
+    var extras = syncHomePreviewItems(routeLinks, 'data-route-extra', expanded, true);
+    routeToggle.hidden = extras.length === 0;
     routeToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 ' + routeLinks.querySelectorAll('a').length + ' 条纵深路线 ↓';
     if (routeLinks) {
@@ -8206,15 +8242,13 @@
     });
   }
 
-  // 首页「公司路线」卡：同样默认露出前 4 家，其余由展开按钮控制
+  // 首页「公司路线」卡：桌面露出前 8 家，窄屏前 4 家
   var companyToggle = document.getElementById('homeCompanyToggle');
   var companyLinks = document.getElementById('homeCompanyLinks');
   function setHomeCompaniesExpanded(expanded) {
     if (!companyToggle || !companyLinks) return;
-    var extras = companyLinks.querySelectorAll('[data-company-extra]');
-    for (var cti = 0; cti < extras.length; cti++) {
-      extras[cti].hidden = !expanded;
-    }
+    var extras = syncHomePreviewItems(companyLinks, 'data-company-extra', expanded, false);
+    companyToggle.hidden = extras.length === 0;
     companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     companyLinks.classList.toggle('is-expanded', expanded);
     syncHomeLinksScrollbar(companyLinks);
@@ -8232,15 +8266,13 @@
     });
   }
 
-  // 实验室按成立年份从早到晚排序，折叠态优先展示最早的 4 个。
+  // 实验室按成立年份排序，预览阈值同为桌面 8 个、窄屏 4 个。
   var labToggle = document.getElementById('homeLabToggle');
   var labLinks = document.getElementById('homeLabLinks');
   function setHomeLabsExpanded(expanded) {
     if (!labToggle || !labLinks) return;
-    var extras = labLinks.querySelectorAll('[data-lab-extra]');
-    for (var lti = 0; lti < extras.length; lti++) {
-      extras[lti].hidden = !expanded;
-    }
+    var extras = syncHomePreviewItems(labLinks, 'data-lab-extra', expanded, false);
+    labToggle.hidden = extras.length === 0;
     labToggle.setAttribute('aria-expanded', String(expanded));
     labLinks.classList.toggle('is-expanded', expanded);
     syncHomeLinksScrollbar(labLinks);
@@ -8254,10 +8286,8 @@
       return (Number(a.getAttribute('data-founded-year')) || Infinity)
         - (Number(b.getAttribute('data-founded-year')) || Infinity);
     });
-    labItems.forEach(function (link, index) {
+    labItems.forEach(function (link) {
       labLinks.appendChild(link);
-      link.toggleAttribute('data-lab-extra', index >= 4);
-      link.hidden = index >= 4;
     });
     setHomeLabsExpanded(false);
     labToggle.addEventListener('click', function () {
@@ -8266,6 +8296,19 @@
         setHomeLabsExpanded(expanded);
       }, expanded, labLinks.querySelectorAll('[data-lab-extra]'));
     });
+  }
+
+  function refreshHomeRoutePreviews() {
+    if (routeToggle) setHomeRoutesExpanded(routeToggle.getAttribute('aria-expanded') === 'true');
+    if (companyToggle) setHomeCompaniesExpanded(companyToggle.getAttribute('aria-expanded') === 'true');
+    if (labToggle) setHomeLabsExpanded(labToggle.getAttribute('aria-expanded') === 'true');
+  }
+  if (homePreviewMedia && (routeLinks || companyLinks || labLinks)) {
+    if (typeof homePreviewMedia.addEventListener === 'function') {
+      homePreviewMedia.addEventListener('change', refreshHomeRoutePreviews);
+    } else if (typeof homePreviewMedia.addListener === 'function') {
+      homePreviewMedia.addListener(refreshHomeRoutePreviews);
+    }
   }
 
   // ── 首页入口卡指针光斑：把指针相对卡片的坐标写入 --spot-x / --spot-y（样式见 style.css） ──
