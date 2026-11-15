@@ -19,7 +19,8 @@ tags:
   - fau
   - style3d
 status: complete
-updated: 2026-11-06
+original: ../../sources/papers/agentic_real2sim_arxiv_2607_19190.md
+updated: 2026-11-15
 arxiv: "2607.19190"
 related:
   - ../concepts/sim2real.md

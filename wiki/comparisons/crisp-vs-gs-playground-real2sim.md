@@ -2,6 +2,7 @@
 type: comparison
 tags: [real2sim, sim2real, 3dgs, monocular-video, contact, humanoid, visual-rl, selection]
 status: complete
+original: ../../sources/papers/crisp_real2sim_iclr2026.md
 updated: 2026-06-02
 related:
   - ../methods/crisp-real2sim.md
@@ -19,6 +20,10 @@ summary: "CRISP 与 GS-Playground 是两条互补的 Real2Sim 路线：前者从
 
 两者都把**真实世界**变成**能在仿真里训练策略**的资产，但优化的「真实」是不同维度：[CRISP](../methods/crisp-real2sim.md) 追求**接触动力学可信**（脚–地、臀–椅不穿透、可 rollout），[GS-Playground](../entities/gs-playground.md) 追求**外观光真实感**（缩小 visual domain gap）。它们不是竞品，而是 Real2Sim 资产链上常被**串联**的两段。
 
+## 一句话定义
+
+对比 CRISP（面向物理交互与策略迁移的 Real2Sim 资产重建）与 GS-Playground（面向 3DGS 渲染与轻量仿真评测的平台），明确两者的技术边界与互补关系。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -27,6 +32,15 @@ summary: "CRISP 与 GS-Playground 是两条互补的 Real2Sim 路线：前者从
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
 | API | Application Programming Interface | 应用程序编程接口 |
+
+## 为什么重要
+
+- Real2Sim 管线同时面临「几何/物理可交互」与「高保真视觉渲染」两类需求，选型混淆会导致资产无法接入物理引擎或渲染吞吐不足。
+
+## 核心原理与方法栈
+
+- **CRISP**：聚焦从真实观测恢复带碰撞体、关节与物理属性的仿真资产。
+- **GS-Playground**：聚焦将 3DGS 场景与物理步进结合，提供面向视觉策略的实时渲染与评测环境。
 
 ## 对比表
 
@@ -62,6 +76,10 @@ summary: "CRISP 与 GS-Playground 是两条互补的 Real2Sim 路线：前者从
 - **CRISP 管几何与接触，GS-Playground 管外观**：用 CRISP 得到接触可信的场景原语与参考运动，再叠加 3DGS 外观做光真实感视觉观测，既「跑得动」又「看得真」。
 - 都服务 [Sim2Real](../concepts/sim2real.md) 上游：先把真实世界变成**动力学/外观双重一致**的仿真，再在同一物理里训练策略。
 - 项目页常把 CRISP 与 VideoMimic 并排做交互对比，把 GS-Playground 与 [Spark](../entities/spark-3dgs-renderer.md) / [Aholo Viewer](../entities/aholo-viewer.md) 等 Web 3DGS 栈对照——评估口径不同，数字只能在各自设定内解读。
+
+## 工程实践
+
+- **组合使用**：先用 CRISP 类管线提取可交互物体网格与物理参数，再嵌入 GS-Playground 的 3DGS 背景中实现视觉-物理联合仿真。
 
 ## 共同局限
 

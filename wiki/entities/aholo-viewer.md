@@ -3,6 +3,7 @@
 type: entity
 tags: [repo, 3dgs, gaussian-splatting, web, mesh, streaming, lod, typescript, linux-foundation]
 status: complete
+original: ../../sources/repos/aholo-viewer.md
 updated: 2026-05-28
 related:
   - ./spark-3dgs-renderer.md
@@ -66,6 +67,11 @@ flowchart TB
 ```
 
 （具体 chunk 划分与 LoD 策略以官方 `docs/architecture.md` 为准；本页仅保留公开 README 级归纳。）
+
+## 工程实践
+
+- **子模块与构建前置**：克隆须带 `--recurse-submodules` 拉取 `external/egs-core`，开发环境要求 `Node >= 22.22.1` 与 `pnpm`。
+- **离线分块预览**：大场景先经 `splat-transform-native` 的 `auto_chunk_lod` 生成 `lod-meta.json`，再用 `splat-dev-server` 本地流式联调。
 
 ## 常见误区或局限
 

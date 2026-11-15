@@ -2,8 +2,9 @@
 type: entity
 tags: [generative-ai, simulation, articulated-bodies, dataset, llm-agents, 3d-assets]
 status: complete
+original: ../../sources/sites/articraft3d-github-io.md
 date: 2026-05-16
-updated: 2026-10-14
+updated: 2026-11-15
 related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
@@ -75,6 +76,11 @@ flowchart TB
   F --> C
   E -->|是| G["仿真就绪可关节资产\n(+ PBR 等)"]
 ```
+
+## 工程实践
+
+- **受限工作区防漂移**：仅开放 `model.py` 可写与只读 SDK 文档，配合 `--max-cost-usd` 预算上限控制 LLM 迭代成本。
+- **验证闭环前置**：将关节限位、碰撞体与导出格式检查写入 harness 验证测试，避免仅凭渲染外观判定「仿真就绪」。
 
 ## 常见误区或局限
 

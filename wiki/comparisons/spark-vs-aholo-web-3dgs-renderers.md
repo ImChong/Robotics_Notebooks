@@ -2,6 +2,7 @@
 type: comparison
 tags: [3dgs, web, rendering, tooling, selection]
 status: complete
+original: ../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md
 updated: 2026-05-28
 related:
   - ../entities/spark-3dgs-renderer.md
@@ -18,6 +19,10 @@ summary: "Spark（World Labs）与 Aholo Viewer（manycoretech）均为浏览器
 
 两者都解决 **consumer 设备 上交互式浏览千万级 splat** 的问题，但 **生态绑定、格式与混渲能力** 不同。机器人研究若只需 **训练用光真实感观测**，应优先 [GS-Playground](../entities/gs-playground.md) 等仿真向方案，而非本对比。
 
+## 一句话定义
+
+对比 World Labs Spark 与 manycoretech Aholo Viewer 两款面向浏览器的大场景 3DGS 流式渲染器，梳理其生态定位、LoD 架构与许可差异。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -26,6 +31,15 @@ summary: "Spark（World Labs）与 Aholo Viewer（manycoretech）均为浏览器
 | API | Application Programming Interface | 应用程序编程接口 |
 | CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
+## 为什么重要
+
+- 浏览器端 3DGS 渲染是 Real2Sim 数字孪生预览与远程标注的关键基础设施，不同渲染器在 THREE.js 兼容性、Mesh 混渲与工具链许可上差异显著。
+
+## 核心原理与方法栈
+
+- **Spark**：基于 LoD splat 树与 `.RAD` 流式格式，深度集成 THREE.js 生态。
+- **Aholo Viewer**：采用 Chunked Streaming LoD 与 pnpm monorepo 架构，原生支持 3DGS 与三角网格同屏混渲。
 
 ## 对比表
 
@@ -52,6 +66,10 @@ summary: "Spark（World Labs）与 Aholo Viewer（manycoretech）均为浏览器
 - 需要 **同一视口内 splat 与 Mesh**（例如网格碰撞体、CAD 与 photogrammetry 叠显）。
 - 偏好 **TypeScript monorepo + TypeDoc API + 内容校验脚本** 的二次开发流程。
 - 可接受 **专有 splat-transform** 工具链的许可边界。
+
+## 工程实践
+
+- **选型建议**：已有 THREE.js 前端栈且需纯 splat 流式加载时优先 Spark；需 CAD/碰撞体 Mesh 与 3DGS 同屏审阅时优先 Aholo Viewer，并注意其专有工具链边界。
 
 ## 共同局限
 

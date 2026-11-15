@@ -2,6 +2,7 @@
 type: entity
 tags: [humanoid, sim2real, real2sim, reinforcement-learning, navigation, 3dgs, gaussian-splatting, rgb, flexion, niantic-spatial, nvidia, isaac-lab]
 status: complete
+original: ../../sources/blogs/flexion_niantic_nvidia_sim2real_rgb_2026-07-20.md
 updated: 2026-09-05
 related:
   - ../concepts/sim2real.md
@@ -30,6 +31,10 @@ summary: "Flexion × Niantic Spatial × NVIDIA（2026-07）端到端管线：360
 | **演示任务** | 人形 **局部 RGB 导航**（机载相机 + 本体感知 + 机体系目标 → 速度指令 → 预训练 locomotion 闭环） |
 
 **一句话定义：** 用 **一次 360° walkthrough** 把真实部署现场变成 **Isaac Lab 可训练的数字孪生**，在其中 **纯 RGB、大规模并行 RL** 学局部导航，并 **零样本** 回到同一真机环境——把「深度-only、无纹理合成场景」上的 sim2real 惯例推进到 **场地专用、语义可见的 RGB 策略**。
+
+## 一句话定义
+
+通过 360° 扫描现场生成带碰撞 mesh 的 NuRec USDZ 数字孪生，在 Isaac Lab 中大规模并行训练纯 RGB 局部导航策略并零样本部署真机。
 
 ## 英文缩写速查
 

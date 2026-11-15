@@ -2,7 +2,8 @@
 type: entity
 tags: [simulation, physics-engine, rendering, compiler, foundation-model, evaluation, genesis-ai]
 status: complete
-updated: 2026-09-15
+original: ../../sources/blogs/genesis_ai_simulation_world_10_blog.md
+updated: 2026-11-15
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./genesis-sim.md
@@ -22,6 +23,10 @@ summary: "Genesis World 1.0 是 Genesis AI 公司的全栈仿真基础设施（N
 # Genesis World 1.0（Genesis AI 仿真基础设施）
 
 **Genesis World 1.0** 是 **Genesis AI**（机器人全栈公司，博客域名 genesis.ai）对外阐述的**仿真基础设施**版本：在初版开源 **Genesis** 仿真之上，过去一年做全栈重构，目标是在**不依赖仿真预训练数据**的前提下，让 **real-to-sim 闭环评测**与真机 rollout 强相关，并把模型开发瓶颈从墙钟转为算力。
+
+## 一句话定义
+
+Genesis World 1.0 是 Genesis AI 发布的统一物理仿真与可微世界模型平台，面向大规模 GPU 并行策略训练、Real2Sim 资产重建与系统化评测。
 
 ## 英文缩写速查
 
@@ -95,7 +100,11 @@ flowchart LR
 2. **Hybrid simulator：** 经典可解释仿真 + 学习型世界模型，用多模态真机数据融合。
 3. **Self-evolving physical AI：** 仿真内 agent 自演化环境/课程/奖励；真机边缘案例回灌校准仿真。
 
-## 常见误区
+## 工程实践
+
+- **可信度闭环**：将场景物理参数辨识、接触模型校准与系统化评测纳入同一仿真工作流，避免仅靠单次视觉渲染评估策略泛化性。
+
+## 常见误区与局限
 
 - 将 **World 1.0** 等同于开源 **Genesis-Embodied-AI** 仓库的当前 main，或假设 arXiv:2412.12919 中的全部基准数字自动适用于公司栈。
 - 在尚未验证数字孪生的任务上，直接采用其 **Pearson/MMRV** 自报数字替代真机验收。

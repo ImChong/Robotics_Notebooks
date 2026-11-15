@@ -2,7 +2,7 @@
 type: comparison
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ../entities/paper-vgi-white-paper.md
   - ./robot-learning-five-paradigms-taxonomy.md

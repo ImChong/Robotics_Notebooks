@@ -12,6 +12,7 @@
 - **预训练权重：** <https://huggingface.co/PhysX-Omni/PhysX-Omni>
 - **作者：** Ziang Cao, Yinghao Liu, Haitian Li, Runmao Yao, Fangzhou Hong, Zhaoxi Chen, Liang Pan, Ziwei Liu（S-Lab NTU、ACE Robotics；通讯 Ziwei Liu）
 - **入库日期：** 2026-05-30
+- **通读：** 已完成
 - **一句话说明：** 统一 **刚体 / 可变形 / 关节体** 的 **仿真就绪（sim-ready）物理 3D 生成**：基于 **Qwen2.5-VL-7B** 的粗到细 VLM 推理 + **模板化 2D RLE** 高分辨率几何表征 + **TRELLIS** 体素解码；配套 **PhysXVerse**（8.7K+ 资产、2.9K+ 类）与 **PhysX-Bench**（六维物理属性评测）。
 
 ## 摘要级要点

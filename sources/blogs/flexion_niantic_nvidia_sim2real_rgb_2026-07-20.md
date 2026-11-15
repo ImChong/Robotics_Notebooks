@@ -8,6 +8,7 @@
 - **原始链接：** https://flexion.ai/news/niantic-spatial-flexion-and-nvidia-closing-the-sim2real-gap-for-humanoids
 - **发表日期：** 2026-07-20
 - **入库日期：** 2026-07-20
+- **通读：** 已完成
 - **抓取方式：** 官方新闻页直接抓取（WebFetch）
 - **合作方：** Niantic Spatial（Real2Sim 重建）、NVIDIA Isaac Sim / Isaac Lab（仿真与训练基础设施）、Flexion（Sim2Real RGB 导航策略与部署）
 - **一句话说明：** 三方联合展示 **端到端 Real2Sim→Sim2Real 管线**：用 **360° 相机单次 walkthrough** 扫描部署现场 → **Niantic Spatial** 重建 **照片级 3DGS + 对齐碰撞 mesh** 并导出 **NuRec USDZ** → 在 **Isaac Lab** 中大规模并行 RL 训练 **纯 RGB 局部导航策略** → **零样本** 迁移到真机办公室；仿真评测中 **3DGS 重建场景训练的 RGB 策略** 是唯一达到或超过 **深度基线** 的 RGB 方案（Flexion 办公室 **97.8% vs 93.8%**；Niantic 办公室 **75.0% vs 70.9%**，各 1024 rollouts）。

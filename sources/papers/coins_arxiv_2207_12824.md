@@ -10,6 +10,7 @@
 - **代码：** <https://github.com/zkf1997/COINS> — 归档见 [`sources/repos/coins.md`](../repos/coins.md)
 - **机构：** ETH Zürich；Google（Thabo Beeler）
 - **入库日期：** 2026-06-09
+- **通读：** 已完成
 - **一句话说明：** 给定 3D 场景与 **动作–物体实例** 语义规格（如「sit on the chair」），用 **Transformer cVAE** 分阶段生成 **SMPL-X 人体** 与场景的自然交互；仅用 **原子交互** 训练即可 **组合** 出未见过的复合交互（如「sit on sofa + touch table」），并发布 **PROX-S** 数据集扩展。
 
 ## 相关资料（策展）
