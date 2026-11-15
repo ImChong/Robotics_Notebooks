@@ -4029,6 +4029,19 @@ body.roadmap-ltree-map-open {
 .roadmap-ltree-pan {
   overflow-x: auto;
   overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
+}
+.roadmap-ltree-pan::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.roadmap-ltree-pan::-webkit-scrollbar-track {
+  background: transparent;
+}
+.roadmap-ltree-pan::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--text-muted) 48%, transparent);
+  border-radius: 999px;
 }
 .is-pannable > .roadmap-ltree-pan {
   cursor: grab;
