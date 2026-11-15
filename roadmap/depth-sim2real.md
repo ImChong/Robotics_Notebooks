@@ -120,6 +120,7 @@ flowchart LR
 ### 推荐读什么
 - [Domain Randomization](../wiki/concepts/domain-randomization.md) · [Curriculum Learning](../wiki/concepts/curriculum-learning.md)
 - [Privileged Training](../wiki/concepts/privileged-training.md)
+- [PEAR / Robot-Use RL](../wiki/entities/paper-pear-robot-use-rl.md) — 纯仿真二值奖励训练多轮推理策略并迁移至真实 YAM；关注机器人坐标接口、IK 与推理延迟的落地限制。
 - [RMA（Rapid Motor Adaptation）](../wiki/entities/paper-rma-rapid-motor-adaptation.md) — 在线适应代表作
 - [MUJICA](../wiki/entities/paper-mujica-wheel-legged-multi-skill.md) — 电机包络约束进 P3O 的零样本实例
 - [执行器约束 RL 高速四足](../wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md)（arXiv:2312.17507）— MOR 约束 + 减速器映射；HOUND 6.5 m/s 与高速 sim2real 消融
