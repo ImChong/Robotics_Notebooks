@@ -2,8 +2,9 @@
 type: entity
 project_id: goodfire-neurons-as-an-interpretable-basis
 project: https://www.goodfire.com/research/neurons-as-an-interpretable-basis
+venue: Goodfire Research（官方技术文章，非会议或期刊论文）
 tags: [mechanistic-interpretability, neural-networks, llm, goodfire]
-status: draft
+status: complete
 updated: 2026-11-15
 summary: "Goodfire 在 Qwen3.6-35B-A3B 中结合强激活稀疏消融、上下游子电路与 Agent 实验，验证神经元作为原生可解释计算基底的潜力。"
 related:
@@ -17,6 +18,8 @@ original:
 ---
 
 # Neurons as an Interpretable Basis｜神经元作为可解释的计算基底
+
+## 一句话定义
 
 > **一句话定义**：Goodfire 研究原生 MLP 神经元的有效稀疏性、上下游子电路与可检验的语言描述，主张神经元本身可以作为理解神经网络计算的有用基底，而不必总是先学习替代特征字典。
 
@@ -114,7 +117,7 @@ flowchart TD
 - 作者实验集中于一个 MoE LLM；弱激活、特殊 SwiGLU 象限、不同模型架构和任务的表现仍待验证。
 - 对神经元的局部功能解释，不等于理解注意力与多神经元协作，也不能直接推出模型安全、鲁棒性或可控性。
 - 作者尚未建立训练过程中神经元角色如何形成的完整机制理论；随机基线与测量阈值也影响解释。
-- 当前归档尚未完成官方全文附录与所有图表的逐项核对，页面保持 `draft`，详见[来源记录](../../sources/papers/goodfire_neurons_as_interpretable_basis_2026.md)。
+- 已通读官方研究全文与方法附录；图表交互与实验数字尚未独立复现。阅读和证据范围详见[来源记录](../../sources/papers/goodfire_neurons_as_interpretable_basis_2026.md)。
 
 ## 关联页面
 
