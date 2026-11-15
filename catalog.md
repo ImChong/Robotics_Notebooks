@@ -3445,6 +3445,7 @@
 - [Neural Introspection Gating（Gated VLA-Cache · arXiv:2608.10824）](wiki/entities/paper-neural-introspection-gating.md) — Neural Introspection Gating**（*Neural Introspection Gating for Adaptive KV-Cache Reuse in Vision-L `📅unknown` `[entity_page]`
 - [NeuralActuator（Neural Actuation Modeling · arXiv:2607.11734）](wiki/entities/paper-neuralactuator-neural-actuation-modeling.md) — NeuralActuator**（*Neural Actuation Modeling for Robot Dynamics and External Force Perception*，[arX `📅unknown` `[entity_page]`
 - [NeuroGPR：脑启发多模态混合神经网络机器人场所识别](wiki/entities/paper-neurogpr-brain-inspired-place-recognition.md) — Brain-inspired multimodal hybrid neural network for robot place recognition**（Shi Luping（施路平）等，清华大 `📅unknown` `[entity_page]`
+- [Neurons as an Interpretable Basis｜神经元作为可解释的计算基底](wiki/entities/paper-neurons-as-interpretable-basis.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[entity_page]`
 - [NeuroVLA：脑启发流体反射具身控制](wiki/entities/paper-neurovla.md) — NeuroVLA**（*A Brain-inspired Embodied Intelligence for Fluid and Fast Reflexive Robotics Control*， `📅unknown` `[entity_page]`
 - [NEXUS：面向地形适配遥操作的感知式全身控制](wiki/entities/paper-nexus-terrain-adaptive-teleoperation.md) — NEXUS**（*Perceptive Whole-Body Control for Terrain-Adaptive Teleoperation*，[arXiv:2609.39000](http `📅unknown` `[entity_page]`
 - [NICE-SLAM — 论文与作者源码深读](wiki/entities/paper-nice-slam.md) — NICE-SLAM 采用 coarse/mid/fine 分层局部几何特征网格、颜色网格和预训练几何解码器，实现 RGB-D 稠密 SLAM 的大场景重建与相机跟踪。 `📅unknown` `[entity_page]`
