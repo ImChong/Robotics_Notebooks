@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, open-robotics, ros2, realtime]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 original:
   - ../../sources/repos/ros2-control.md
 related:
@@ -17,6 +17,7 @@ related:
   - ../queries/real-time-control-middleware-guide.md
   - ./fiveages-sim-robot-descriptions.md
   - ../overview/cpp-motion-control-open-source-libraries-map.md
+  - ./paper-submillisecond-reflex-engine.md
 sources:
   - ../../sources/repos/ros2-control.md
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -145,6 +146,7 @@ flowchart LR
 - [CAN 总线](../concepts/can-bus-protocol.md) — 关节驱动器常见底层总线
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md) — 高实时主干总线
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
+- [亚毫秒反射引擎](./paper-submillisecond-reflex-engine.md) — 基于 ROS 2 控制器接口实现快速反射模式切换，软件切换耗时不等于完整机械安全响应时间
 - [Isaac Lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
