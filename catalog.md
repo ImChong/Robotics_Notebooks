@@ -3451,6 +3451,7 @@
 - [NEXUS：面向地形适配遥操作的感知式全身控制](wiki/entities/paper-nexus-terrain-adaptive-teleoperation.md) — NEXUS**（*Perceptive Whole-Body Control for Terrain-Adaptive Teleoperation*，[arXiv:2609.39000](http `📅unknown` `[entity_page]`
 - [NICE-SLAM — 论文与作者源码深读](wiki/entities/paper-nice-slam.md) — NICE-SLAM 采用 coarse/mid/fine 分层局部几何特征网格、颜色网格和预训练几何解码器，实现 RGB-D 稠密 SLAM 的大场景重建与相机跟踪。 `📅unknown` `[entity_page]`
 - [NIDAR：用伪 NIR 与内禀分解合成 LiDAR 强度](wiki/entities/paper-nidar.md) — NIDAR**（*NIR-Guided Intrinsic Decomposition for Scalable Scene-Agnostic LiDAR Intensity Reconstruc `📅unknown` `[entity_page]`
+- [NimCritic：基于动作感知量化的长时程进度预测（Predictive Long-Horizon Progress Modeling with Action-Aware Quantification）](wiki/entities/paper-nimcritic.md) — NimCritic**（arXiv:2610.32776v1，2026-10-23）是面向机器人长时程操作的视频过程评测模型 `📅unknown` `[entity_page]`
 - [NIT-TrajMamba（arXiv:2610.33916）](wiki/entities/paper-nit-trajmamba.md) — NIT-TrajMamba**（*Real-Time Human Trajectory Prediction from RGB-D for Mobile Robots Using Bi-Mamba `📅unknown` `[entity_page]`
 - [NitroFusion2：将对抗损失引入多模态扩散 Transformer 文本流](wiki/entities/paper-nitrofusion2.md) — 论文：**NitroFusion2: Bringing Adversarial Loss to the Text Stream of Multimodal Diffusion Transformers `📅unknown` `[entity_page]`
 - [No Eyes, No Problem（arXiv:2610.23438）](wiki/entities/paper-no-eyes-no-problem.md) — No Eyes, No Problem**（*No Eyes, No Problem: What Does Touch Contribute to Blind Baoding Ball Manip `📅unknown` `[entity_page]`
