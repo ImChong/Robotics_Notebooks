@@ -10,8 +10,8 @@
 - **全文 Markdown：** <https://www.goodfire.com/research/neurons-as-an-interpretable-basis/article.md>
 - **交互神经元地图：** <https://www.goodfire.com/research/public_neuron_atlas>（需要 JavaScript）
 - **前置研究随笔：** <https://already-clean.goodfire.com/>
-- **核对范围：** 官方全文的 Abstract、Introduction、SwiGLU neuron structure、Neuron Sparsity and Effective Range、Understanding Neuron Computations、Subcircuits/Modes、random-direction baselines、Evaluating Neuron Descriptions、Conclusion/Future Work；附录中的细节及全部图表尚未逐项核完。
-- **通读：** 未完成
+- **核对范围：** 已阅读官方 HTML/Markdown 全文及附录：摘要、定义与 SwiGLU 四象限、激活稀疏性和推理修复、subcircuits/modes、上下文 gate 与 reader、random-direction 对照、Neuron Scientist 的 detection/classification/simulation/input synthesis、结论、追加实验、Colorado/Tornado 模式实例、Appendix 的子电路聚类方法、评测数据拆分和未来问题；交互图表与实验证据未独立复现。
+- **通读：** 已完成
 - **入库日期：** 2026-11-15
 
 ## 研究对象与方法
@@ -31,6 +31,13 @@
 | 激活检测 | 依据描述区分激活文本与随机对照，约 95% 准确率 | 针对作者设定的**成对辨别**，并非跨场景解释成功率 |
 | 模拟因果效应 | 在强激活范围内恢复约 73% 的**可恢复消融 KL 损害上限** | 是相对 perfect-reader ceiling 的比例，非“73% 的神经元全部理解” |
 | 输入合成 | 128 个 neuron poles 中 120 个超过 100 亿 token 自然语料的最大激活 | 带激活反馈的迭代合成实验，不能直接等同于零样本控制能力 |
+
+## 附录方法与工程验证补充
+
+- **稀疏消融后的能力恢复：** 官方附录说明，在保持 top-320 掩码训练的条件下，先进行约 9,100 万 token 的监督蒸馏，再以约 900 万 token 的强化学习修正稀疏模型的推理反复检查/不肯停止问题；这不应被误写成“原模型删去神经元后零训练保持所有推理能力”。
+- **实验数据覆盖：** 以约 100 亿 token 的混合预训练与后训练文本采样，构造 neuron pole 的分位激活与上下游子电路样本，进一步用 held-out 文档做解释评测。
+- **评测限制：** 95% 指强激活与随机文本的成对辨别；若对照换成同 expert 路由文本，报告为 89%。对重复上下文做了排除分析，但这些结果仍不构成跨模型泛化或独立复现。
+- **案例边界：** Colorado/Tornado 是双模式重叠的个案，模型可在上下文中分离两种读法，但仍出现少数错误；该现象的普遍性需要后续研究。
 
 ## 方法边界与复现状态
 
