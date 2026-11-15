@@ -164,6 +164,7 @@ flowchart LR
 - [机器人操作基准审计](../wiki/entities/paper-manipulation-benchmark-audit.md) — 检查语言捷径、统计显著性、测试条件过拟合与训练数据来源，作为解释 LIBERO/CALVIN 等高分的对照读物
 - [Harness VLA](../wiki/entities/paper-harness-vla.md) · [StarVLA-α](../wiki/entities/paper-starvla-alpha.md) — 分别核对记忆条件、任务覆盖与聚合权重，以及单基准/联合训练、成功率/进度分的区别。
 - [PRM-as-a-Judge](../wiki/entities/paper-prm-as-a-judge.md) — 把 rollout 视频打成进度曲线做过程评测（OPD / FNS / DRR / SQS），在 RoboDojo 上**打乱了 SR 排名**
+- [NimCritic：动作感知长程进度建模](../wiki/entities/paper-nimcritic.md) — 对操作中的有效推进/失败尝试/破坏回撤显式记账；结合 VLM 物体分段和视频-进度联合 critic 产生曲线与完成判断，适合 Stage 3 的过程评分与 rollout 筛选
 - [Imitator Game](../wiki/entities/paper-imitator-game.md) — L0–L3 意图级模仿基准：成功判据改为**目标等价而非轨迹相似**，L3 功能替代崩溃、未见任务零样本 <13%
 - [SoftVTBench](../wiki/entities/paper-softvtbench.md) — 可变形视触觉任务同时报 Goal Success 与 Safety Success，只看 Goal 会掩盖过压
 - [LIBERO-VPro](../wiki/entities/paper-libero-vpro.md) — 在执行时扰动视觉证据（缺失、延迟、多视角矛盾、场景变化），做 LIBERO 上的闭环视觉鲁棒性基准。
