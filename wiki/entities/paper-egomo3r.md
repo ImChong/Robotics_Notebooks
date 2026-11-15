@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: egomo3r
-tags: [paper, egocentric, human-motion, 3d-reconstruction, monocular-video, motion-diffusion, motion-capture, neurips-2026]
+tags: [paper, egocentric, human-motion, 3d-reconstruction, monocular-video, motion-diffusion, motion-capture, neurips-2026, stanford]
 status: complete
 updated: 2026-11-15
 arxiv: "2611.01627"
@@ -125,7 +125,8 @@ sequenceDiagram
   participant Geo as depth/flow/track/segmentor
   participant Scene as scene_reconstruction_optim
   participant Prior as MotionPrior / modiff
-  participant Disk as outputs/<dataset>/<sample>
+  participant Vis as run/visualize.py
+  participant Disk as outputs 缓存与结果
   User->>Runner: bash run/run_all_stages.sh
   loop stage1, stage2, stage3, stage4
     Runner->>Opt: python run/optimize.py config/stageN.yaml
@@ -147,8 +148,10 @@ sequenceDiagram
     end
     Opt->>Disk: save_results(stageN)
   end
-  User->>Opt: python run/visualize.py config/stage4.yaml
-  Opt->>Disk: 读取最终重建并展示 3D 可视化
+  User->>Vis: python run/visualize.py config/stage4.yaml
+  Vis->>Disk: 读取最终重建结果
+  Disk-->>Vis: 相机轨迹 / 深度尺度 / SMPL-X 参数
+  Vis-->>User: 展示交互式 3D 结果
 ```
 
 **源码入口边界：** 主仓四阶段脚本是 **离线重建/推理**，非运动先验训练脚本。要重训先验需进入独立仓库 `motion_diffusion`； stage2 使用 `sample_motion_2`，stage4 使用含 trajectory/sliding guidance 的 `sample_motion_with_guide`。参见 [源码归档](../../sources/repos/egomo3r_chaitanya100100.md)。
