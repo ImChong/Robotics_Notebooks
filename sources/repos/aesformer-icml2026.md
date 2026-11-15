@@ -7,7 +7,7 @@
 - **作者 / 机构：** Tianxiang Du、Hulingxiao He、Yuxin Peng；北京大学王选计算机研究所
 - **源码：** <https://github.com/PKU-ICST-MIPL/AesFormer_ICML2026>
 - **论文：** <https://arxiv.org/abs/2605.22126>；[论文归档](../papers/aesformer_arxiv_2605_22126.md)
-- **模型：** 仓库 README 公告 [Hugging Face 权重与数据资源](https://huggingface.co/PKU-ICST-MIPL)；具体版本以作者仓库链接为准
+- **模型：** 仓库 README 公告 [Hugging Face 权重与数据资源](https://huggingface.co/popo28/AesFormer)；具体版本以作者仓库链接为准
 - **开源状态：** **公开了训练、两阶段推理及评测脚本**；AesRecon 数据文件需单独签协议申请，不是开放直下；外部依赖仓库和基础模型须另行安装。
 - **沉淀到 wiki：** [AesFormer](../../wiki/entities/paper-aesformer.md)
 
