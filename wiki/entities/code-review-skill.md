@@ -10,7 +10,7 @@ tags:
   - software-engineering
   - code-review
 status: complete
-updated: 2026-11-11
+updated: 2026-11-16
 related:
   - ./mattpocock-skills.md
   - ./superpowers-obra.md
@@ -138,6 +138,9 @@ python scripts/pr-analyzer.py --diff-file changes.diff --stats
 - **阅读和运行边界：** 已通读 `SKILL.md` 并阅读 CLI 主实现；语言专用参考文档未逐篇全读，且未在本环境执行上游单测。
 
 ## 关联页面
+
+- [Modern Web Guidance](modern-web-guidance.md) — Web 前端专项浏览器 API、Baseline 和降级策略，与代码评审质量门配合
+
 
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 需求与反馈环
 - [Superpowers（obra）](superpowers-obra.md) — 结构化编码交付流程
