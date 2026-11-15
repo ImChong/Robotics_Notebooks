@@ -430,6 +430,13 @@ op: ingest
 - **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
 - **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
 
+## [2026-11-16] ingest | PACE 人机交互人格适配原论文与项目资料
+
+- 来源：arXiv:2607.15579v5（Humanoids 2026）；麦考瑞大学、英伟达新加坡。
+- 知识：互动问答 → PersonaSpec → 动态 prompt 编译 → Ameca 语音/面部表情同步；对比静态人格并保留实验统计非显著结果。
+- 资源核验：lipzh5/PACE GitHub 有公开项目资料，README 所列 Python 启动脚本不在仓库，暂不具备公开源码级复现入口。
+- 关键页面：wiki/entities/paper-pace-persona-adaptation.md；wiki/methods/humanoid-voice-interaction.md。
+
 ## [2026-11-15] ingest | AesFormer（ICML 2026）：七维美学规划与结构化照片编辑
 
 - 意图：核对 arXiv:2605.22126 的 APR 任务、VCMP/AesRecon、SFT+GRPO-A、动作条件编辑器及评测，并归档到独立论文实体。

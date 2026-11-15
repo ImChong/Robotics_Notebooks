@@ -3907,6 +3907,7 @@
 - [PA-SaR：感知感知的多机器人搜救学习、控制与协调（arXiv:2611.11648）](wiki/entities/paper-pa-sar.md) — PA-SaR**（*Perception-Aware Learning, Control, and Coordination for Multi-Robot Search and Rescue*， `📅unknown` `[entity_page]`
 - [PAC-MAN](wiki/entities/paper-pac-man-perceptive-cbf-rl.md) — PAC-MAN**（*Perception-Aware CBF-RL for Whole-Body Safety in Humanoid Dodgeball*，[arXiv:2607.28623 `📅unknown` `[entity_page]`
 - [PACE：让触觉承担三种时间角色](wiki/entities/paper-pace-insertion.md) — PACE（Phase-Aware Contact-Event Conditioning）把触觉流拆成状态条件、事件纠正和后果预测三条互补路径：状态稳定动作块生成，事件修正动作块，预测目标则在训练中 `📅unknown` `[entity_page]`
+- [PACE：通过对话引导实现人机交互中的人格适配](wiki/entities/paper-pace-persona-adaptation.md) — PACE**（*Persona Adaptation through Conversational Elicitation in Human-Robot Interaction*，arXiv:26 `📅unknown` `[entity_page]`
 - [PACE（VLA 长程信用）（arXiv:2608.15026）](wiki/entities/paper-pace-phase-progress-vla.md) — PACE（VLA 长程信用）**（*PACE: Phase-Progress-Aware Credit for Long-Horizon Embodied Manipulation*，[arXiv `📅unknown` `[entity_page]`
 - [PACE](wiki/entities/paper-pace-progress-aligned-context.md) — PACE**（*Progress-Aligned Context for Execution*，arXiv:2610.07917，浙江大学）针对示范条件长程操作中的**阶段混淆**：相似观测出现在 `📅unknown` `[entity_page]`
 - [PACE（足式系统化 Sim2Real）](wiki/entities/paper-pace-sim2real-legged-robots.md) — PACE**（**P**recise **A**daptation through **C**ontinuous **E**volution）是 ETH Zurich Robotic System `📅unknown` `[entity_page]`
