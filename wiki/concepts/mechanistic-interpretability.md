@@ -12,9 +12,14 @@ related:
 sources:
   - ../../sources/blogs/goodfire_neural_networks_are_already_clean_2026-10-15.md
   - ../../sources/papers/goodfire_neurons_as_interpretable_basis_2026.md
+original:
+  - ../../sources/blogs/goodfire_neural_networks_are_already_clean_2026-10-15.md
+  - ../../sources/papers/goodfire_neurons_as_interpretable_basis_2026.md
 ---
 
 # 机制可解释性（Mechanistic Interpretability）
+
+## 一句话定义
 
 > **一句话定义**：机制可解释性通过观察和干预网络内部神经元、注意力头及其电路，建立模型内部计算与外部行为之间可检验的解释。
 
