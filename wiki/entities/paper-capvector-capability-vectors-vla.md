@@ -120,23 +120,21 @@ sequenceDiagram
 
 - **实际复现入口：** [`capvector-pi05/README.md`](https://github.com/OpenHelix-Team/CapVector/blob/main/capvector-pi05/README.md)；主要逻辑与限制参见[源码归档](../../sources/repos/openhelix_team_capvector.md)。
 - **不能误读：** 官方 `simple_client/main.py` 使用随机生成的输入测 WebSocket API，真实机器人必须另行接入相机、状态和动作执行链。
-## 局限与风险
+## 工程实践
 
-- **误区：** 把 \(\gamma\) 当成 **与任务无关的万能插件** 而不做 **下游正交正则**；论文在 **长步数训练** 上展示 **无正则时能力被冲掉** 的现象。
-- **局限：** **\(\Delta_{\text{ft}}\approx\delta_{\text{ao}}\)** 是 **工作假设**，抽取集设计、学习率与权重衰减等 **任一不一致** 都会污染 \(\gamma\)；论文 §3 讨论 **何种下游更易抽到高质量向量**。
-- **工程：** 需 **存两份全参或 LoRA checkpoint** 与 **合并系数调参**；超大模型上 **存储与版本管理** 仍是成本。
-- **适用限制：** 原文附录 §11 只研究 SFT 环境下的能力向量，RL 抽取尚未验证。
+| 阶段 | 实际操作要点 |
+|---|---|
+| 原始权重 | 用相同的抽取数据与设置取得标准 SFT、辅助目标 SFT 两份同架构 checkpoint；Pi0.5 README 也链接了现成模型资源 |
+| 能力向量 | `uv run capvector/compute_param_diff.py` 加载两份 `model.safetensors`，输出 `diff.pth`；`--only-vlm` 用于限制在视觉语言部分 |
+| 合并权重 | `uv run capvector/apply_param_diff.py` 执行 `base + scale * diff`；确认 key/shape 匹配，且分清论文消融最优 α=1.1 与 README 示例 `--scale 1.0` |
+| 下游训练 | `uv run scripts/compute_norm_stats.py` 生成归一化统计，再运行 `scripts/train_regular_loss_pytorch.py`；将正则向量路径、系数在训练 config 中明确指定 |
+| 训练监控 | 同时观察 `action_loss`、`regularization_loss`、总 loss、成功率和更长训练下的能力保留，不只看初始收敛 |
+| 推理验证 | `scripts/serve_policy.py` 加载 checkpoint 并起 WebSocket server；`examples/simple_client/main.py` 为**模拟观测接口测试**，真实部署需实现机器人 IO |
 
-## 关联页面
-
-- [VLA（Vision-Language-Action）](../methods/vla.md) — CapVector 作用的 **模型族与微调语境**。
-- [StarVLA](../methods/star-vla.md) — 论文 **多骨干** 实验之一（与 LaRA-VLA 组合）。
-- [RoboTwin 2.0](./robotwin.md) — **跨域迁移** 与 **能力抽取任务** 涉及的仿真基准之一。
-- [Manipulation（任务总览）](../tasks/manipulation.md) — LIBERO / 桌面操作 **评测语义** 背景。
-
+**复现前提：** 仓库包含 `capvector-oft/` 与 `capvector-pi05/` 两套代码入口；本次只静态核查后者，未下载权重、运行 GPU 任务或部署实机。
 ## 方法栈
 
-见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。
+具体计算由同数据集标准 SFT 与辅助目标 SFT 的 checkpoint 差分、向量加权合并、下游标准 SFT 与正则损失组成；前置参数差分与训练期梯度计算见上方**核心结构**与**源码运行时序图**。
 
 ## 实验与评测
 
@@ -164,18 +162,6 @@ sequenceDiagram
 - 成本从在线搬到了离线：需存 **两份全参或 LoRA checkpoint** 并调合并系数 \(\alpha\)，超大模型上存储与版本管理仍是真实开销。
 - 与 **task vector / model editing** 的差别在目标：不是合并已完成的 specialist，而是为 **任意下游继续微调** 提供 generalist 友好初始化 + 防遗忘正则；量化对比见原文。
 
-## 工程实践
-
-| 阶段 | 实际操作要点 |
-|---|---|
-| 原始权重 | 用相同的抽取数据与设置取得标准 SFT、辅助目标 SFT 两份同架构 checkpoint；Pi0.5 README 也链接了现成模型资源 |
-| 能力向量 | `uv run capvector/compute_param_diff.py` 加载两份 `model.safetensors`，输出 `diff.pth`；`--only-vlm` 用于限制在视觉语言部分 |
-| 合并权重 | `uv run capvector/apply_param_diff.py` 执行 `base + scale * diff`；确认 key/shape 匹配，且分清论文消融最优 α=1.1 与 README 示例 `--scale 1.0` |
-| 下游训练 | `uv run scripts/compute_norm_stats.py` 生成归一化统计，再运行 `scripts/train_regular_loss_pytorch.py`；将正则向量路径、系数在训练 config 中明确指定 |
-| 训练监控 | 同时观察 `action_loss`、`regularization_loss`、总 loss、成功率和更长训练下的能力保留，不只看初始收敛 |
-| 推理验证 | `scripts/serve_policy.py` 加载 checkpoint 并起 WebSocket server；`examples/simple_client/main.py` 为**模拟观测接口测试**，真实部署需实现机器人 IO |
-
-**复现前提：** 仓库包含 `capvector-oft/` 与 `capvector-pi05/` 两套代码入口；本次只静态核查后者，未下载权重、运行 GPU 任务或部署实机。
 ## 与其他工作对比
 
 | 方法 | 主要目标与代价 |
@@ -186,6 +172,20 @@ sequenceDiagram
 | [OptiMer](./paper-optimer-optimal-distribution-vector-merging.md) | 在文本语言模型的多个分布 CPT checkpoint 上做后验向量权重搜索；**不是 CapVector 的 VLA 实验基线** |
 
 研究动机相似在于利用参数差分，区别在训练阶段、能力来源和下游目标。
+
+## 局限与风险
+
+- **误区：** 把 \(\gamma\) 当成 **与任务无关的万能插件** 而不做 **下游正交正则**；论文在 **长步数训练** 上展示 **无正则时能力被冲掉** 的现象。
+- **局限：** **\(\Delta_{\text{ft}}\approx\delta_{\text{ao}}\)** 是 **工作假设**，抽取集设计、学习率与权重衰减等 **任一不一致** 都会污染 \(\gamma\)；论文 §3 讨论 **何种下游更易抽到高质量向量**。
+- **工程：** 需 **存两份全参或 LoRA checkpoint** 与 **合并系数调参**；超大模型上 **存储与版本管理** 仍是成本。
+- **适用限制：** 原文附录 §11 只研究 SFT 环境下的能力向量，RL 抽取尚未验证。
+
+## 关联页面
+
+- [VLA（Vision-Language-Action）](../methods/vla.md) — CapVector 作用的 **模型族与微调语境**。
+- [StarVLA](../methods/star-vla.md) — 论文 **多骨干** 实验之一（与 LaRA-VLA 组合）。
+- [RoboTwin 2.0](./robotwin.md) — **跨域迁移** 与 **能力抽取任务** 涉及的仿真基准之一。
+- [Manipulation（任务总览）](../tasks/manipulation.md) — LIBERO / 桌面操作 **评测语义** 背景。
 
 ## 相关研究
 
