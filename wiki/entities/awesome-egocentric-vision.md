@@ -14,6 +14,7 @@ related:
   - ../methods/egoscale.md
   - ./paper-egophi.md
   - ./paper-egomo3r.md
+  - ./macrohands.md
   - ../methods/vla.md
   - ./awesome-world-models.md
   - ./awesome-touch.md
@@ -89,6 +90,7 @@ summary: "sun254667 维护的 Awesome Egocentric Vision：第一人称视觉与�
 - [EgoScale](../methods/egoscale.md) — 大规模 ego manipulation 标注与迁移
 - [EgoPHI](./paper-egophi.md) — ego 视觉 mesh 级接触+力估计（ECCV 2026，arXiv:2608.13014）
 - [EgoMo3R](./paper-egomo3r.md) — 第一人称单目视频联合恢复三维场景、相机轨迹与 SMPL-X 全身运动
+- [MacroHands](./macrohands.md) — 第一人称单/双目恢复佩戴者 3D 手部和相机位姿，重点核对动作误差、遮挡与深度；目前未公开模型代码
 - [VLA](../methods/vla.md)
 - [Awesome World Models](./awesome-world-models.md) / [Awesome Touch](./awesome-touch.md)
 
