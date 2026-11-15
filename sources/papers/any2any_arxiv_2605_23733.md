@@ -45,3 +45,5 @@
 
 - 沉淀实体页：[Any2Any（arXiv:2605.23733）](../../wiki/entities/paper-any2any-cross-embodiment-wbt.md)
 - 交叉补强：[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[人形运动跟踪方法选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[Whole-Body Control](../../wiki/concepts/whole-body-control.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[BFM 人形基础模型](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)
+
+- **通读：** 已完成

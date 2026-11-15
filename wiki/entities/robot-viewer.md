@@ -3,7 +3,11 @@ type: entity
 title: Robot Viewer
 tags: [utility, simulation, mujoco, xacro]
 summary: "Robot Viewer 是支持多格式（URDF/MJCF/USD/Xacro）的 Web 机器人模型查看器，集成 MuJoCo WASM 支持浏览器内物理仿真。"
-updated: 2026-09-15
+updated: 2026-11-15
+status: complete
+sources:
+  - ../../sources/repos/robot-viewer.md
+original: ../../sources/repos/robot-viewer.md
 related:
   - ./mujoco-wasm.md
   - ./mujoco.md
@@ -15,7 +19,9 @@ related:
 
 # Robot Viewer
 
-**Robot Viewer** 是由开发者 `fan-ziqi` 开发的一个全功能 Web 机器人模型查看与仿真平台。它最大的特点是支持多种主流机器人描述格式，并能直接在浏览器中运行物理仿真。
+## 一句话定义
+
+**Robot Viewer** 是由开发者 `fan-ziqi` 开发的一个全功能 Web 机器人模型查看与仿真平台，支持 URDF/MJCF/USD/Xacro 多格式并在浏览器中运行 MuJoCo WASM 物理仿真。
 
 ## 英文缩写速查
 
@@ -25,7 +31,12 @@ related:
 | MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
 | MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
 
-## 核心功能
+## 为什么重要
+
+- **零本地环境门槛**：无需安装 ROS、C++ 编译链或 Python 依赖，打开浏览器即可预览 URDF/Xacro/MJCF/USD 模型并运行动力学仿真。
+- **调试效率高**：集成实时代码编辑与测距工具，适合快速排查连杆尺寸、碰撞体定义与惯性参数问题。
+
+## 核心机制：核心功能
 
 - **多格式支持**：
     - **URDF**: 标准机器人描述。
@@ -41,10 +52,15 @@ related:
 - **轻量级 Xacro 处理**：它是目前少数几个能够在 Web 端独立完成 Xacro 逻辑（宏、条件判断、数学运算）解析的工具。
 - **调试利器**：非常适合算法工程师快速检查模型结构、碰撞体定义以及惯性参数是否正确。
 
-## 技术架构
+## 工程实践：技术架构
 
 - **核心引擎**：Three.js (渲染), MuJoCo WASM (物理)。
 - **工具链**：Vite, JavaScript, `xacro-parser`。
+
+## 局限
+
+- 受限于浏览器 WASM 内存与单线程性能，不适合大规模并行仿真或高复杂度多机接触场景。
+- 偏重模型检视与单机交互调试，不提供完整的强化学习训练管线。
 
 ## 关联页面
 
@@ -61,3 +77,9 @@ related:
 ## 参考来源
 - [Robot Viewer 原始资料](../../sources/repos/robot-viewer.md)
 - [Robot Viewer GitHub](https://github.com/fan-ziqi/robot_viewer)
+
+## 推荐继续阅读
+
+- [Robot Viewer GitHub 仓库](https://github.com/fan-ziqi/robot_viewer)
+- [MuJoCo WASM](./mujoco-wasm.md)
+- [robot_descriptions.py](./robot-descriptions-py.md)

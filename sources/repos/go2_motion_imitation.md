@@ -15,3 +15,5 @@
 ```bash
 python retarget_motion/retarget_motion.py --input_file=source_motion.txt --output_file=retargeted_motion.txt
 ```
+
+- **通读：** 已完成

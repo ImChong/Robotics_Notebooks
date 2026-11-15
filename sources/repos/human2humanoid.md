@@ -14,3 +14,5 @@
 
 - [OmniH2O](https://omni.human2humanoid.com/)
 - [ASAP](https://agile.human2humanoid.com/)
+
+- **通读：** 已完成

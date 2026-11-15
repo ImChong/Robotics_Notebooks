@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-tracking, cross-embodiment, lora, peft, sonic, limx, unitree-g1, isaac-lab]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2605.23733"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -20,10 +20,13 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
+original: ../../sources/papers/any2any_arxiv_2605_23733.md
 summary: "Any2Any（arXiv:2605.23733）把单源人形 WBT 专家经运动学对齐与动力学敏感模块上的 LoRA 后训练迁到新机体，约 1% 全量训练成本将 Gear-SONIC 等骨干迁到 LimX Oli/Luna 等平台并真机验证。"
 ---
 
 # Any2Any：跨具身高效全身跟踪迁移
+
+## 一句话定义
 
 **Any2Any**（arXiv:2605.23733，LimX Dynamics）研究 **已有 whole-body tracking（WBT）专家如何迁到新的人形**：不从头重训亿级 MoCap 策略，而是把差距拆成 **运动学接口对齐** 与 **动力学残差适配**。在 **Gear-SONIC / Oli-WBT** 等源骨干上，用约 **1%** 全量预训练的算力与数据，将跟踪能力迁到 **LimX Oli、LimX Luna、Unitree G1/H1** 等目标机，并报告多组真机下游表现。
 
@@ -94,6 +97,15 @@ flowchart LR
 - **平台：** Oli（31-DoF）、Luna（27-DoF）、G1、H1；**5 组** source→target 迁移对。
 - **源骨干：** 自研 **Oli-WBT**（Transformer / MLP，500+ h 运动数据）与 **Gear-SONIC**（G1 预训练大模型）；展示 **Sonic → Oli/Luna** 等跨厂商迁移。
 - **骨干结构：** 统一 proprio + reference 观测；含 MLP、因果 Transformer Decoder、Sonic 的 Robot Motion Encoder + FSQ + dynamics decoder 等实例。
+
+## 工程实践
+
+- **对齐优先于微调**：先构造 Level-1 观测重排与 Level-2 $\Phi_r$ 关节语义映射（含髋轴解耦与闭链 Jacobian），再冻结骨干仅在动力学敏感层插入 LoRA。
+- **训练管线**：在 Isaac Lab 中沿用源策略一致的 PPO、奖励与 DR 配置进行低成本后训练。
+
+## 局限
+
+- 仍依赖目标机少量跟踪数据与准确的人工关节映射，无法实现完全零样本跨具身迁移；且不替代上游 MoCap 几何重定向。
 
 ## 常见误区
 

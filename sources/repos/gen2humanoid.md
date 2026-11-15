@@ -35,3 +35,5 @@
 - README 中 `convert_smpl.py` 负责 HY 输出到 **SMPL-X** 的格式桥接；进入 GMR 前须确认坐标系与关节定义与 GMR 子模块期望一致。
 - **商用前**须分别复核 HY-Motion-1.0 与 GMR 许可；本仓 MIT 不覆盖子模块限制。
 - 仓库约 **140+ stars**（2026-01 最后提交）；无独立论文页，以 GitHub README 与 Demo 表为一手真值。
+
+- **通读：** 已完成

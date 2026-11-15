@@ -14,6 +14,7 @@ sources:
   - ../../sources/blogs/orangeduck_inverse_kinematics_foot_locking.md
   - ../../sources/sites/theorangeduck-ik-foot-locking.md
 summary: "theorangeduck 博文《Inverse Kinematics and Foot Locking》的 MIT raylib 示例：GenoView 骨架查看器 + 两骨 IK、惯性化足锁、接触标注与离线脚滑移除。"
+original: ../../sources/blogs/orangeduck_inverse_kinematics_foot_locking.md
 ---
 
 # GenoView-InverseKinematics

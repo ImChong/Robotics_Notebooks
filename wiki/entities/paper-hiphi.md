@@ -19,8 +19,7 @@ sources:
   - ../../sources/papers/hiphi_arxiv_2608_16222.md
   - ../../sources/sites/hiphi.md
   - ../../sources/repos/hiphi.md
-original:
-  - ../../sources/papers/hiphi_arxiv_2608_16222.md
+original: ../../sources/papers/hiphi_arxiv_2608_16222.md
 ---
 
 # HiPHI（高精度人体运动与人–物交互基准）

@@ -4,7 +4,7 @@
 type: entity
 tags: [repo, paper, human-pose, hmr, monocular-video, smpl, world-grounded, motion-retargeting, upstream, siggraph-asia-2024, tsinghua, zju]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-15
 arxiv: "2409.06662"
 code: https://github.com/zju3dv/GVHMR
 venue: SIGGRAPH Asia 2024
@@ -28,6 +28,7 @@ related:
   - ./paper-4danyone.md
   - ./motion2mixamorig.md
   - ./paper-luna-universal-3d-human-animation.md
+original: ../../sources/papers/gvhmr_arxiv_2409_06662.md
 sources:
   - ../../sources/papers/gvhmr_arxiv_2409_06662.md
   - ../../sources/sites/gvhmr-zju3dv-github-io.md
@@ -39,6 +40,10 @@ sources:
 # GVHMR
 
 **GVHMR**（*World-Grounded Human Motion Recovery via Gravity-View Coordinates*，ZJU 3DV，SIGGRAPH Asia 2024；[项目页](https://zju3dv.github.io/gvhmr/)，[代码](https://github.com/zju3dv/GVHMR)）从 **单目 RGB 视频** 恢复 **重力对齐的世界坐标系 SMPL 人体运动**。其核心是把 **image→pose** 映射放到 **Gravity-View（GV）坐标系** 中 **逐帧** 学习，再借助 **相机相对旋转** 合成全局轨迹，从而相对 **自回归帧间运动** 方法减轻长序列 **误差累积**。
+
+## 一句话定义
+
+**GVHMR**（Gravity-View Human Mesh Recovery）是一种单目视频人体网格恢复方法，在重力对齐的 Gravity-View 坐标系中逐帧估计人体姿态并恢复世界坐标系下的全局 SMPL 轨迹，常作人形「视频→重定向」链路的上游 HMR 模块。
 
 ## 英文缩写速查
 
@@ -136,6 +141,11 @@ flowchart LR
 
 > 精度数值以论文 / 项目页为准；[HTD-Refine](./paper-htd-refine-monocular-hmr.md) 实验表明 GVHMR 初始化 **+ 动力学后处理** 可进一步改善 jitter 与 WA/W-MPJPE。
 
+## 工程实践
+
+- **单目视频预处理**：输入视频建议保持人物全身入镜、背景纹理充足，以辅助相机运动估计与全局根轨迹恢复。
+- **下游重定向对接**：输出的 world-grounded SMPL 参数可直接喂给 GMR、PHC 或 OmniH2O 等人形重定向管线。
+
 ## 局限
 
 - **单目深度与接触歧义** 仍会导致脚滑、尺度漂移；不宜直接把原始输出当真机指令。
@@ -195,3 +205,13 @@ sequenceDiagram
 - 论文：<https://arxiv.org/abs/2409.06662>
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
 - [HTD-Refine：单目 HMR 动力学后处理](./paper-htd-refine-monocular-hmr.md)
+
+## 参考来源
+
+- [GVHMR (arXiv:2409.06662)](../../sources/papers/gvhmr_arxiv_2409_06662.md)
+- [GVHMR GitHub](../../sources/repos/gvhmr.md)
+
+## 继续阅读
+
+- [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
+- [GMR](../methods/motion-retargeting-gmr.md)

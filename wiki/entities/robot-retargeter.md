@@ -15,9 +15,12 @@ related:
   - ./mujoco.md
 sources:
   - ../../sources/repos/robot_retargeter.md
+original: ../../sources/repos/robot_retargeter.md
 ---
 
 # robot_retargeter
+
+## 一句话定义
 
 **robot_retargeter**（<https://github.com/ccrpRepo/robot_retargeter>）是一条面向研究与工程的 **人形动作重定向工具链**：把 **[SMPL-X](https://smpl-x.is.tue.mpg.de/)** 人体序列或 **源机器人 LAFAN1 风格 CSV** 映射到 **多台目标人形**（如 G1、H2、T800、R1），用 **[mink](https://github.com/kevinzakka/mink) + [MuJoCo](./mujoco.md)** 解多目标 IK，并内置连杆比例缩放、膝部几何重建、接触检测与地面自适应，最后可并排可视化对比。
 
@@ -90,11 +93,16 @@ flowchart LR
 - **接触**：手脚以 **低速度 ∧ 低高度** 判定支撑；对支撑足在 IK 中加入 **固定 FrameTask**（`contact_pos_fixed_factor`）抑制 foot sliding。
 - **斜胯机型**：类似众擎 T800 建议在髋部增加额外映射点，稳定骨盆倾斜表达（README 配图说明）。
 
-### 数据与许可注意
+## 工程实践：数据与许可注意
 
 - **SMPL-X 权重** 需自行在官网注册下载，不入库。
 - **BONES-SEED** 原始 G1 CSV 为欧拉角/厘米/角度制，须先跑 `convert_bones_to_lafan1.py` 再进 `retarget_from_robot.sh`。
 - 重定向产物为 **运动学关节轨迹**；上真机或训 WBT 前仍建议接 [Motion Retargeting](../concepts/motion-retargeting.md) 所述动力学一致化层。
+
+## 局限
+
+- 纯运动学 IK 重定向不保证动力学可行性（如质心零力矩点约束、关节力矩限幅），直接真机回放可能失稳。
+- 依赖目标机型的 YAML 骨架映射配置与 SMPL-X 外部权重，新机型接入需手工校准映射点。
 
 ## 与相近工具对比（选型直觉）
 

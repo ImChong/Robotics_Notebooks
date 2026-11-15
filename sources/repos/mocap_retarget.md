@@ -21,3 +21,5 @@
 | [Motion Retargeting](../../wiki/concepts/motion-retargeting.md) | 任务定义 |
 | [GMR](../../wiki/methods/motion-retargeting-gmr.md) | 更成熟的多机型几何重定向前端 |
 | [retarget-tools](../../references/repos/retarget-tools.md) | 外链导航 |
+
+- **通读：** 已完成

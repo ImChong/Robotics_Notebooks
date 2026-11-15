@@ -80,3 +80,5 @@ a_{t}\sim\pi_{\phi}(a_{t}\mid o_{t},\tilde{s}^{r}_{t:t+H}).
 
 - 新建实体页：[wiki/entities/paper-xmorph.md](../../wiki/entities/paper-xmorph.md)
 - 交叉：[hub-motion-retargeting](../../wiki/overview/hub-motion-retargeting.md)、[hub-cross-embodiment](../../wiki/overview/hub-cross-embodiment.md)、[GMR](../../wiki/methods/motion-retargeting-gmr.md)、[ReActor](../../wiki/methods/reactor-physics-aware-motion-retargeting.md)、[ZEST](../../wiki/methods/zest.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[Unitree](../../wiki/entities/unitree.md)
+
+- **通读：** 已完成

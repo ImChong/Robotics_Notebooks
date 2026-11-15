@@ -241,6 +241,8 @@ sequenceDiagram
 - [RLDX-1](./rldx-1.md) — RoboCasa365 冻结后端
 - [EventVLA](./paper-eventvla-visual-evidence-memory.md) — 策略内记忆 vs harness 外置记忆
 
+- [PEAR / Robot-Use RL](./paper-pear-robot-use-rl.md) — 仿真 RL 直接训练推理模型发出末端位姿命令；与本页冻结 VLA、依靠外部记忆和原语编排的 harness 路线形成对照。
+
 ## 推荐继续阅读
 
 - [论文 PDF v3（arXiv:2607.08448v3）](https://arxiv.org/pdf/2607.08448v3)

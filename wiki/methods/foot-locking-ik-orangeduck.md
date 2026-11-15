@@ -15,12 +15,15 @@ sources:
   - ../../sources/blogs/orangeduck_inverse_kinematics_foot_locking.md
   - ../../sources/repos/genoview-inverse-kinematics.md
   - ../../sources/sites/theorangeduck-ik-foot-locking.md
+original: ../../sources/blogs/orangeduck_inverse_kinematics_foot_locking.md
 summary: "Andrew McDonald（The Orange Duck）的动画足锁管线：两骨 IK 腿链修正趾目标 → 惯性化运行时锁定 → 趾速启发式标接触 → 可选离线 PBD 式全局约束；核心是速度误差而非摩擦模型。"
 ---
 
 # 足锁 IK（Orange Duck 配方）
 
-**一句话：** 把「脚滑」当作 **趾在世界空间的速度与源动画不一致**；用 **最小旋转的两骨 IK** 把趾钉到（锁定或离线修正后的）目标，再用 **三次惯性化** 在跟动画与跟地板之间平滑切换——锁趾不锁跟，IK 修正输入 pose 而非整链重算。
+## 一句话定义
+
+把「脚滑」当作 **趾在世界空间的速度与源动画不一致**；用 **最小旋转的两骨 IK** 把趾钉到（锁定或离线修正后的）目标，再用 **三次惯性化** 在跟动画与跟地板之间平滑切换——锁趾不锁跟，IK 修正输入 pose 而非整链重算。
 
 ## 英文缩写速查
 

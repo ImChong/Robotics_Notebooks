@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, motion-tracking, data-curation, amass, rl, unitree-g1, imitation-learning]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
@@ -20,6 +20,7 @@ sources:
   - ../../sources/sites/limmt-giraffeguan-github-io.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+original: ../../sources/papers/limmt_arxiv_2606_06953.md
 summary: "LIMMT（ICML 2026）：以 GQS 三阶段管线从大规模 MoCap 中策展物理可行、行为多样且动态丰富的子集；在 Any2Track / TWIST2 上 3% AMASS 即可优于全量训练，并 plug-and-play 迁移至 PHUMA 与 G1 真机。"
 ---
 
@@ -103,6 +104,11 @@ flowchart LR
 - **消融 @ 3%**：去物理过滤 SR 降至 **0.911**；全三维协同达 **0.956**。
 - **PHUMA → AMASS 零样本**：**10% GQS** 子集 SR **92.8%** vs 全量 **91.0%**。
 - **真机**：**10% GQS** 策略在 **Unitree G1** 上 **无微调** 部署多类舞蹈/竞技/表现力动作。
+
+## 工程实践
+
+- **即插即用策展**：GQS 产出的 ≈3% AMASS 子集可直接替换全量数据集接入 Any2Track、TWIST2 等现有 WBT 训练管线，无需修改策略网络或奖励函数。
+- **跨数据集与真机迁移**：策展逻辑可迁移至 PHUMA 等其他 MoCap 数据集，并在 Unitree G1 真机上验证了零样本部署效果。
 
 ## 常见误区或局限
 

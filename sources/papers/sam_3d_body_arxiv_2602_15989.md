@@ -52,3 +52,5 @@
 - [x] README / 项目页级架构、MHR、基准表与 Hugging Face 发布信息已摘录
 - [x] 与 `sources/repos/sam-3d-body.md`、`sources/repos/sam3dbody-cpp.md` 分工明确
 - [x] wiki 映射：`wiki/entities/sam-3d-body.md`、`wiki/entities/sam3dbody-cpp.md`
+
+- **通读：** 已完成
