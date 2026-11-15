@@ -39,3 +39,7 @@ RoboCasa：`bash scripts/setup_robocasa.sh` → `bash scripts/run_robocasa.sh <t
 - [Harness VLA（论文实体）](../../wiki/entities/paper-harness-vla.md)
 - [VLA 开源复现景观](../../wiki/overview/vla-open-source-repro-landscape-2025.md)
 - [RLinf 训练系统归档](rlinf.md) — 底层 runtime / 权重生态，≠ 本 agent 仓
+
+## 2026-11-15 发布与入口复核
+
+已读取当日README全文与 `rpent/cli/main.py` 的初始化及 `planner.solve` 路径（仓树f2e6b1dc）。推荐按环境选extra并显式传 `--robot`，不再沿用上文2026-08的默认 `.[full]` 示例。RoboCasa/RoboTwin及Franka/DualFranka已在矩阵列支持；HF记忆、模型与底层运行环境各自版本要固定。论文v3成绩与当前Leaderboard的新模型/记忆配置分别保留；本次未运行这些后端。

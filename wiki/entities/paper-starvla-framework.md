@@ -50,7 +50,7 @@ StarVLA 的核心价值不是“又一个 VLA 成功率最高”，而是能够�
 - **组合架构：** 支持 Qwen3-VL 等 VLM 与 Cosmos 等世界模型相关骨干；动作头覆盖 StarVLA-FAST、OFT、PI/flow 和 GR00T 双系统。以相同输入输出接口替换组件。
 - **训练：** 共享 SFT、多模态协同训练和跨本体数据混合策略，数据加载器返回模型无关原始字典，具体框架负责预处理与 `forward/predict_action`。
 - **评测：** 服务端加载策略，客户端接入 LIBERO/RoboTwin/SimplerEnv/RoboCasa 等基准；同一框架下的任务/数据/参数仍须固定以确保可比。
-- **独立论文身份：** 此页对应 StarVLA **框架论文 2604.05014**；[StarVLA-α 方法页](../methods/star-vla.md) 对应 **2604.11757**，侧重极简动作头控制变量实验，不能混作同一论文。
+- **独立论文身份：** 此页对应 StarVLA **框架论文 2604.05014**；[StarVLA-α 论文详情](./paper-starvla-alpha.md) 对应 **2604.11757**，侧重极简动作头控制变量实验，不能混作同一论文。
 
 ## 流程总览
 
@@ -110,7 +110,7 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-- [StarVLA-α 方法详解](../methods/star-vla.md)：框架研究 vs 受控极简基线研究的不同论文。
+- [StarVLA-α 论文详情](./paper-starvla-alpha.md)：框架研究 vs 受控极简基线研究的不同论文。
 - [OpenWAM](./paper-openwam.md)：后者深挖世界–动作联合生成预训练变量；StarVLA 定位更广的 VLA 实验组合。
 - [2026 VLA 三条路线](../comparisons/vla-open-source-ecosystem-2026-three-shifts.md)：属于工程基础设施。
 
@@ -124,8 +124,11 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md)
+
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 统一训练框架后仍须对齐任务、输入条件、成功判据和评测协议。
-- [StarVLA-α](../methods/star-vla.md)
+- [StarVLA-α](./paper-starvla-alpha.md)
+- [StarVLA 方法入口](../methods/star-vla.md)
 - [VLA](../methods/vla.md)
 - [2026 VLA 项目对比](../comparisons/vla-open-source-ecosystem-2026-three-shifts.md)
 

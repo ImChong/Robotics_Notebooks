@@ -19,6 +19,8 @@ tags:
   - hkust
   - zgca
 status: complete
+original:
+  - ../../sources/papers/harness_vla_arxiv_2607_08448_full_reading_2026_11_15.md
 updated: 2026-11-15
 arxiv: "2607.08448"
 code: https://github.com/RLinf/RPent
@@ -39,8 +41,9 @@ related:
   - ./paper-robodawn.md
   - ./deepseek-harness.md
 sources:
-  - ../../sources/papers/robo_harness_arxiv_2607_18060.md
   - ../../sources/papers/harness_vla_arxiv_2607_08448.md
+  - ../../sources/papers/robo_harness_arxiv_2607_18060.md
+  - ../../sources/papers/harness_vla_arxiv_2607_08448_full_reading_2026_11_15.md
   - ../../sources/sites/harnessvla-github-io.md
   - ../../sources/repos/rpent.md
 summary: "Harness VLA（arXiv:2607.08448v3，清华等）：冻结 VLA 作可重试接触原语 vla_act，与固定解析原语由记忆增强 agentic planner 编排；参考种子蒸馏 Task/Global Memory 后对扰动场景重绑定。LIBERO-Pro 82.4%（+38.6 pp）、RoboCasa365 55.4%（+25.4 pp）、RoboTwin C2R 58.4%；代码 RLinf/RPent。"
@@ -124,7 +127,7 @@ flowchart TB
   GMEM --> RET
 ```
 
-### 源码运行时序图
+## 源码运行时序图
 
 对齐 [`RLinf/RPent`](https://github.com/RLinf/RPent) README：`rpent` CLI → planner → 原语工具 → 仿真 / 冻结 VLA。
 
@@ -134,12 +137,12 @@ sequenceDiagram
   actor U as 用户 / 评测脚本
   participant CLI as rpent.cli.main
   participant PL as Planner<br/>claude_code / codex / api
-  participant TOOL as rpent.tools
-  participant MEM as resources/*/memory
+  participant TOOL as 对应 robot 的 toolkit
+  participant MEM as 任务记忆与 Global Memory
   participant ENV as LIBERO-Pro / RoboCasa
   participant VLA as 冻结 VLA<br/>openpi π₀.₅ 等
-  U->>CLI: rpent --suite ... --planner ...
-  CLI->>MEM: 加载 Task/Global Memory（若有）
+  U->>CLI: rpent --robot libero --suite ... --planner ...
+  CLI->>MEM: prepare_run_memory 准备任务与全局上下文
   CLI->>PL: 观测 + 任务 + 记忆上下文
   loop 回合直至成功或预算耗尽
     PL->>TOOL: JSON 原语调用
@@ -159,19 +162,21 @@ sequenceDiagram
   CLI-->>U: 成功率 / dashboard 流
 ```
 
-复现路径：`pip install -e ".[full]"` → 配置 API key 与 `PI05_CHECKPOINT_PATH` → `rpent --suite libero_object_swap ...`；RoboCasa 见 `scripts/run_robocasa.sh`。
+复现路径（2026-11-15）：按环境安装 `pip install -e ".[libero-pro]"`，获取仿真资产、π0.5和SAM3权重后，使用 `rpent --robot libero --suite libero_object_swap ...`。当前CLI通过 `robot_spec.init_runtime` 与 `get_toolkit` 接入环境，再调用 `planner.solve`；论文附录A的文件REPL是论文协议，不能将当前工具后端逐文件当成同一版本。
 
 ## 工程实践
 
 | 项 | 要点 |
 |----|------|
-| **安装** | `git clone` + `pip install -e ".[full]"`（rlinf + openpi + libero-pro） |
+| **安装** | 按环境选 `.[libero-pro]` / `.[robocasa]` / `.[robotwin]` / `.[franka]` |
 | **权重** | HF `RLinf/rlinf-pi05-libero-130-fullshot-sft` 等 |
 | **规划器** | Anthropic / OpenAI 兼容端点；`--dashboard` 可开实时监视 |
-| **记忆资产** | 仓内 `resources/libero/memory/` 含任务级 md / 结果 json |
-| **开源边界** | Pi0.5+LIBERO-PRO 为默认完整路径；RLDX-1 / RoboCasa / 真机 / WAM 条目以 README Feature Matrix 为准（2026-08-10 仍未全部打勾） |
+| **记忆资产** | 当前README指向HF的RPent-memory及任务/Global两层；复现须固定记忆版本 |
+| **开源边界** | 2026-11-15 README已列Pi0.5/RLDX-1/LingBot、三类仿真与Franka/DualFranka支持；WAM与其他硬件逐项检查 |
 
 ## 实验要点
+
+**覆盖与聚合：** Pro的RATS43.8%来自六个非Long单元，Harness82.4%来自八个；+38.6pp是论文headline口径，不能当作完全同覆盖消融。同冻结后端的八单元50.0%→82.4%更适合判断harness贡献。RoboCasa55.4%按18/16/16个任务加权，不能直接按180/80/80个rollout重算。C2R的zero-shot仍使用clean场景记忆，区别于无TSM/GM的Goal zero-shot。依据[完整原文与附录核对](../../sources/papers/harness_vla_arxiv_2607_08448_full_reading_2026_11_15.md)。
 
 > 数字以 [arXiv:2607.08448v3](https://arxiv.org/pdf/2607.08448v3) / [项目页](https://harnessvla.github.io/) 为准。
 
@@ -215,9 +220,12 @@ sequenceDiagram
 - **误区：** 与 [ASPIRE](../methods/aspire.md) 混同——ASPIRE **扩张**可验证技能库；本文 **固定**原语词汇。
 - [RoboHarness](./paper-robo-harness.md) — 编排 VLA/RL/TAMP 等异构策略并用 Memory Bridge 交接，区别于本页冻结 VLA 的原语 harness；其 v3 LIBERO-Plus 91.9% 与 LIBERO-LoHo 96.0% 必须按版本及任务协议解读，不能混用早期 v2 数值。（[来源复核归档](../../sources/papers/robo_harness_arxiv_2607_18060.md)）
 - **局限：** 规划器与低层 VLA 仍是 **开环反馈**（论文 §5）；缺环境奖励 / 人类偏好的联合微调（指向 GRPO 等样本高效 RL）；稠密长程场景缺细粒度 caption 约束结构推理。
-- **工程风险：** 依赖商业 LLM API 与仿真/权重栈；Feature Matrix 未勾选项（RoboCasa / 真机等）勿当已发布复现路径；仓接口可能快速演进。
+- **工程风险：** 依赖LLM端点、仿真资产与权重；2026-11-15已列出的RoboCasa/Franka支持与论文v3是不同发布时点。README的后续Astra/记忆批次成绩不能替换论文82.4%后仍声称同一协议。
 
 ## 关联页面
+
+- [VLA 纵深路线](../../roadmap/depth-vla.md)
+- [具身测评纵深路线](../../roadmap/depth-embodied-eval.md)
 
 - [VLA](../methods/vla.md) — 冻结策略作为接触原语的部署语境
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 确定性编排 vs agentic JSON 原语
@@ -244,6 +252,6 @@ sequenceDiagram
 
 - [RoboHarness 原文与边界复核](../../sources/papers/robo_harness_arxiv_2607_18060.md)
 
-- [Harness VLA 论文摘录](../../sources/papers/harness_vla_arxiv_2607_08448.md)
+- [Harness VLA 论文摘录](../../sources/papers/harness_vla_arxiv_2607_08448_full_reading_2026_11_15.md)
 - [项目页归档](../../sources/sites/harnessvla-github-io.md)
 - [RPent 仓库归档](../../sources/repos/rpent.md)

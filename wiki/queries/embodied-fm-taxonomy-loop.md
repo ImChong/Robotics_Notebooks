@@ -2,7 +2,7 @@
 type: query
 tags: [vlm, vln, vla, vlx, world-model, embodied-ai, multimodal, taxonomy, foundation-model]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-15
 summary: "具身大模型分类学选型闭环知识链：把 VLM 感知理解 → VLN 空间导航 → VLA 动作执行 → VLX 一体化扩展 → WM 世界模型推演 五层，从分散的家族概念页沉淀为一条端到端选型决策链，逐层说明 I/O 边界、数据需求、泛化能力、实时性/控制带宽与闭环稳定性的取舍及典型失败模式。"
 original:
   - ../../sources/papers/paligemma_arxiv_2407_07726.md
@@ -85,7 +85,7 @@ flowchart TD
 
 整条闭环的入口是**把像素与指令翻译成可被下游消化的语义**（详见[五大分类对比页](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)「VLM 能力边界」）：
 
-- **I/O 边界**：输入图像/视频 + 语言，输出语义、物体关系、指令解析——**不自带可执行控制接口**；即使输出坐标或文本计划，也要另行对接控制层。若输入扩展到 **同步音频**，还需额外考核跨模态时序对齐（见 [Daily-Omni](../entities/paper-daily-omni.md)）。
+- **I/O 边界**：输入图像/视频 + 语言，输出语义、物体关系、指令解析——**不自带可执行控制接口**；即使输出坐标或文本计划，也要另行对接控制层。若输入扩展到 **同步音频**，还需额外考核跨模态时序对齐（见 [Daily-Omni](../entities/paper-daily-omni.md)）。2026-11-15 复核的[来源归档](../../sources/papers/daily_omni_arxiv_2505_17862.md)仍为音视频问答协议；在该榜上的新成绩不直接验证导航或机器人动作接口。
 - **数据需求**：主要吃图文对与海量互联网弱标注，是五层里**采集最便宜、泛化最广**的一层。
 - **选型陷阱**：把 VLM 的语义直接当「动作接口」用是最常见错误——语义理解 ≠ 可执行控制量，中间必须由 VLN/VLA 头补上从语义到动作的映射。工程上常**冻结 VLM 骨干**只训下游头，以省算力并保留泛化。
 

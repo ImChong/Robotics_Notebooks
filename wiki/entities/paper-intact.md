@@ -2,6 +2,8 @@
 type: entity
 tags: [paper, world-models, jepa, latent-dynamics, model-based-planning, cem, search-free, zju, tsinghua, roboparty]
 status: complete
+original:
+  - ../../sources/papers/intact_arxiv_2607_26056_full_reading_2026_11_15.md
 updated: 2026-11-15
 arxiv: "2607.26056"
 code: https://github.com/zju3dv/INTACT-JEPA
@@ -20,8 +22,9 @@ related:
   - ../concepts/embodied-fm-latency-generalization-tradeoff.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
-  - ../../sources/papers/lewm_arxiv_2603_19312.md
   - ../../sources/papers/intact_arxiv_2607_26056.md
+  - ../../sources/papers/lewm_arxiv_2603_19312.md
+  - ../../sources/papers/intact_arxiv_2607_26056_full_reading_2026_11_15.md
   - ../../sources/sites/intact-jepa-github-io.md
   - ../../sources/repos/intact-jepa.md
   - ../../sources/repos/roboparty-intact-jepa.md
@@ -32,7 +35,7 @@ summary: "INTACT（arXiv:2607.26056，ZJU/清华AIR/RoboParty Lab）：同构四
 
 # INTACT（Search-Free Intent-to-Action World Model）
 
-**INTACT**（*Isomorphic Intent-to-Action Learning for Search-Free World Models*，[arXiv:2607.26056](https://arxiv.org/abs/2607.26056)，[项目页](https://zju3dv.github.io/INTACT-JEPA/)，[规范仓](https://github.com/zju3dv/INTACT-JEPA)，[RoboParty 镜像](https://github.com/Roboparty/INTACT-JEPA)）由 **浙江大学（ZJU）** CAD&CG、**清华大学（Tsinghua）AIR**、InSpatio 与 **[机器人派对（RoboParty）](./roboparty.md) Lab**（[lab.roboparty.com](https://lab.roboparty.com/)）提出：把前向 latent 世界模型从「预测 + 测试时搜索反解动作」改成端到端 **意图→动作律** 接口。共享预测器在物理意图与部署意图上同构调用；**条件均值** 即零搜索策略，Direct 推理 **2.9–5.5 ms**（相对宽搜索 CEM 约 **300×**）。
+**INTACT**（*Isomorphic Intent-to-Action Learning for Search-Free World Models*，[arXiv:2607.26056](https://arxiv.org/abs/2607.26056)，[项目页](https://zju3dv.github.io/INTACT-JEPA/)，[规范仓](https://github.com/zju3dv/INTACT-JEPA)，[RoboParty 镜像](https://github.com/Roboparty/INTACT-JEPA)）由 **浙江大学（ZJU）** CAD&CG、**清华大学（Tsinghua）AIR**、InSpatio 与 **[机器人派对（RoboParty）](./roboparty.md) Lab**（[lab.roboparty.com](https://lab.roboparty.com/)）提出：把前向 latent 世界模型从「预测 + 测试时搜索反解动作」改成端到端 **意图→动作律** 接口。共享预测器在物理意图与部署意图上同构调用；**条件均值** 即零搜索策略，论文快照的 Direct 规划 **2.9–5.5 ms**（相对宽搜索 CEM 约 **300×**）；当前实现修订数据见评测版本表。
 
 ## 一句话定义
 
@@ -64,9 +67,9 @@ summary: "INTACT（arXiv:2607.26056，ZJU/清华AIR/RoboParty Lab）：同构四
 |----|------|
 | **机构** | 浙江大学（ZJU）；清华大学（Tsinghua）AIR；InSpatio；机器人派对（RoboParty）Lab |
 | **评测** | 官方 LeWM 四任务 |
-| **Direct 宏 SR** | 约 **95.33%**（一 epoch，零搜索） |
-| **推理延迟** | **2.9–5.5 ms**（Direct；相对宽搜 CEM 约 **300×**） |
-| **开源** | 2026-10-06：规范仓训练、评测与权重入口已公开；RoboParty fork 仍是研究预览；数据复用 LeWM，须单独获取 |
+| **论文快照 Direct 宏 SR** | 约 **95.33%**（一 epoch，零搜索） |
+| **论文快照规划延迟** | **2.9–5.5 ms**（Direct；相对宽搜 CEM 约 **300×**） |
+| **开源** | 2026-11-15：规范仓训练、评测与权重入口已公开；RoboParty fork 仍是研究预览；数据复用 LeWM，须单独获取 |
 
 ## 核心原理
 
@@ -118,7 +121,7 @@ sequenceDiagram
   Train->>Model: 批次观测、动作、未来目标
   Model-->>Train: 前向 JEPA 与双意图似然损失
   Train->>Checkpoint: 保存模型与运行配置
-  User->>Eval: 选择任务、权重及 direct / cem / guarded_a
+  User->>Eval: 选择任务、权重及 direct / pure_cem / guarded_a
   Checkpoint->>Eval: 加载匹配版本的模型
   loop 闭环评测
     Env->>Eval: 当前观测与实际执行历史
@@ -132,7 +135,7 @@ sequenceDiagram
   end
 ```
 
-复现入口对齐[规范仓归档](../../sources/repos/intact-jepa.md)：先检查安装与数据，再跑 smoke；论文 checkpoint 使用 `paper_runtime/` 兼容路径。图中为 Direct / Guarded 主路径；`cem` 则关闭动作头，用前向模型搜索，不能混同零搜索推理。
+复现入口对齐[规范仓归档](../../sources/repos/intact-jepa.md)：先检查安装与数据，再跑 smoke；论文 checkpoint 使用 `paper_runtime/` 兼容路径。图中为 Direct / Guarded 主路径；`pure_cem` 则关闭动作头，用前向模型搜索，不能混同零搜索推理。
 
 ## 工程实践
 
@@ -140,20 +143,30 @@ sequenceDiagram
 |----|----------------|
 | 单任务协议 | 一 epoch，bs 256，AdamW \(5\times10^{-4}\)；三 seed |
 | 损失权重 | forward 1.0 / inverse 0.1 / goal 0.05（文中单任务表） |
-| Direct | 默认部署：取条件均值，**零候选** |
-| Guarded | 384 序列局部 CEM（相对 9000 约 **23.44×** 少） |
+| Direct | 取条件均值，零采样候选、零终点代价；仍用前向模型生成 H=5 动作块，执行首块后重规划 |
+| Guarded | 128×3=384 个采样候选，相对 CEM 9000 约少 23.44×；保留 Direct/全局最优及可选均值重评分，不是所有模型调用仅 384 次 |
 | 诊断 | predicted–expert action-family kNN 应与 Direct SR 同向（\(r\sim0.95\)） |
 | 复现现状 | 2026-10-06：上游已提供训练/评测/权重入口；固定源码与 manifest revision，RoboParty fork 仅作 Lab 导航 |
 
 ## 实验与评测
 
-下列数值保留原论文与 2026-07 归档口径。2026-10-06 上游 README 已有后续实现与评测记录；应按具体 checkpoint、源码和协议核对，不把不同版本成绩直接拼接或视作本次实测。
+以下历史数字来自本次通读的 arXiv HTML；当前 README / 项目页另有修订。两者分别列出，均为作者报告，本次没有重跑实验。
+
+| 评测版本 | 单任务 Direct 宏 SR | Guarded A 宏 SR | 共享 E5 Direct | Direct 规划时延 |
+|----------|---------------------|----------------|----------------|-----------------|
+| 论文 HTML 快照 | 95.33±0.58% | 96.86±0.38% | 89.39±0.77% | 2.9–5.5 ms |
+| 当前仓库因果历史修复后 | 95.61±0.59% | 96.58±0.44% | 91.22±0.51% | 3.9–4.8 ms |
+
+2026-09-14 的修订消除了 actor-backed 评测中的前一步动作重复。当前评测在起点 t 使用 `rows[t-5:t]`，只在 episode 起点之前补 raw zero，此后移入实际执行动作，不能读取当前数据行或目标动作。history-free 94.25±0.08% 是另一项消融。论文 checkpoint 走冻结的 `paper_runtime/`；复现必须固定源码、权重、历史模式与 evaluator 版本。
+
 
 - **单任务 Direct：** 四任务 **85.78% / 100% / 97.67% / 97.89%**；宏约 **95.33%**。
 - **Guarded：** 宏 **96.86%**，并相对纯 CEM **+16.00 pp**（采样更少）。
 - **匹配审计（Cube）：** INTACT Direct **98.7%** vs LeWM CEM **67.0%**（**+31.7 pp**）。
 - **共享编码器：** E5 Direct 宏 **89.39%**，逐任务优于联合训练 LeWM。
 - **延迟：** Direct **2.9–5.5 ms** vs CEM \(300\times30\) 约 **1.48 s**（约 **300×**；项目叙事）。
+
+论文单任务是 3 个训练 seed × 3 个评测 seed（0/1/42），各 100 episodes；共享编码器训练 5 epochs，但保留任务专属动作头与已知任务身份。论文 CLEAR-LeWM v0.5.1 Moderate 下 Direct / Guarded 为 **83.33 / 84.83%**，与官方口径不能合并；Reacher 的角度判据修订使 Direct 由 97.67% 变成 49.56%。当前代码另有 CLEAR v0.8 适配，不等于论文附录协议。（[原文、修订与实现核对](../../sources/papers/intact_arxiv_2607_26056_full_reading_2026_11_15.md)）
 
 ## 结论
 
@@ -178,13 +191,17 @@ sequenceDiagram
 
 ## 局限与风险
 
-- **仓库分工（核查于 2026-10-27）：** `Roboparty/INTACT-JEPA` 的最近提交仍是 2026-07-30，树内只有 `docs/`、`assets/`、`tools/`（站点与发布检查脚本），无训练/评测入口，README 的 Code / Models 徽章仍为 Coming Soon，`docs/RELEASE.md` 仍停在 Stage 0；可运行入口以规范仓 `zju3dv/INTACT-JEPA` 为准（来源归档记录其已公开训练、评测与权重，本次未重新核对规范仓）。RP1 总览 README 将 INTACT-JEPA 列为 “RP1 support coming soon”，说明尚无 RP1 适配。数字以论文/RESULTS 审计为准。
+- **仓库分工（核查于 2026-10-27）：** `Roboparty/INTACT-JEPA` 的最近提交仍是 2026-07-30，树内只有 `docs/`、`assets/`、`tools/`（站点与发布检查脚本），无训练/评测入口，README 的 Code / Models 徽章仍为 Coming Soon，`docs/RELEASE.md` 仍停在 Stage 0；可运行入口以规范仓 `zju3dv/INTACT-JEPA` 为准（2026-11-15 已重新核对规范仓 README、项目页、训练/评测脚本与评测主流程）。RP1 总览 README 将 INTACT-JEPA 列为 “RP1 support coming soon”，说明尚无 RP1 适配。数字以论文/RESULTS 审计为准。
 - **多模态动作：** Direct 高斯均值可能抹平多峰动作律。
 - **gauge / 流形：** 意图等价依赖任务流形与容差。
-- **三 seed：** 扩展方差估计粗糙。
+- **三训练 seed：** 扩展方差估计粗糙；kNN/CKA 与成功率的相关性不等于任意反事实目标保证。
+- **时延范围：** 毫秒数字只计规划器，不包含完整传感、通信与机器人执行周期。
+- **目标条件监督：** 目标分支仍依赖示范动作，不能把它解读为完全脱离行为克隆；共享动作律也不要求全局 latent 线性。
 - **评测域：** 官方 LeWM 四任务；迁到真机双臂/人形需另证。
 
 ## 关联页面
+
+- [WAM 纵深路线](../../roadmap/depth-wam.md)
 
 - [LeJEPA](./paper-lejepa.md) / [LeWM](./paper-lewm.md) / [LpWM](./paper-lpwm.md) — 官方四任务评测基座与同一作者族的表征先验
 - [DWM Separating World Effects](./paper-dwm-separating-world-effects.md) — LeWM 族训练期分解对照
@@ -202,7 +219,7 @@ sequenceDiagram
 
 - [LeWM 原文与边界复核](../../sources/papers/lewm_arxiv_2603_19312.md)
 
-- [INTACT 论文摘录（arXiv:2607.26056）](../../sources/papers/intact_arxiv_2607_26056.md)
+- [INTACT 论文摘录（arXiv:2607.26056）](../../sources/papers/intact_arxiv_2607_26056_full_reading_2026_11_15.md)
 - [项目页归档](../../sources/sites/intact-jepa-github-io.md)
 - [规范仓归档](../../sources/repos/intact-jepa.md)
 - [RoboParty 镜像归档](../../sources/repos/roboparty-intact-jepa.md)

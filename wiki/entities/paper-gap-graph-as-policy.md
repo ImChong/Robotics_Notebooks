@@ -11,6 +11,8 @@ tags:
   - berkeley
   - cmu
 status: complete
+original:
+  - ../../sources/papers/gap_arxiv_2607_05369_full_reading_2026_11_15.md
 updated: 2026-11-15
 arxiv: "2607.05369"
 code: https://github.com/graph-robots/graph-as-policy
@@ -27,8 +29,9 @@ related:
   - ./paper-robo-harness.md
   - ./ken-goldberg-agentic-robotics-goosebumps.md
 sources:
-  - ../../sources/papers/robo_harness_arxiv_2607_18060.md
   - ../../sources/papers/gap_arxiv_2607_05369.md
+  - ../../sources/papers/robo_harness_arxiv_2607_18060.md
+  - ../../sources/papers/gap_arxiv_2607_05369_full_reading_2026_11_15.md
   - ../../sources/sites/gap-graph-robots-project.md
   - ../../sources/repos/graph_robots_graph_as_policy.md
   - ../../sources/blogs/ken_goldberg_agentic_robotics_goosebumps_2026-09-18.md
@@ -65,7 +68,7 @@ summary: "GaP（arXiv:2607.05369，NVIDIA / UC Berkeley 等）：多 agent harne
 | NVIDIA 署名 | Linxi "Jim" Fan、Yuke Zhu、Guanzhi Wang 等（与 [GEAR Lab](./nvidia-gear-lab.md) 网络重叠） |
 | Berkeley PI | Ken Goldberg、S. Shankar Sastry |
 | 仿真 | NVIDIA Isaac / Isaac Lab |
-| 硬件 | Franka（LIBERO 衍生，任务 I–III）、UR5+力反馈（VA-IV）、双臂 Franka 洗箱（VA-V） |
+| 硬件 | Franka（LIBERO 衍生，任务 I–III）、UR5+力反馈（VA-IV）、双臂 Franka 洗箱仿真（VA-V） |
 | 开源 | [graph-as-policy](https://github.com/graph-robots/graph-as-policy)（Beta，Apache-2.0）+ [open-robot-skills](https://github.com/graph-robots/open-robot-skills)；[项目页](https://graph-robots.github.io/gap/) |
 
 ## 为什么重要
@@ -74,7 +77,7 @@ summary: "GaP（arXiv:2607.05369，NVIDIA / UC Berkeley 等）：多 agent harne
 - **结构化 agentic robotics：** 相对单 agent **自由 Python [CaP](../methods/aspire.md)**，GaP 用 **图节点 + 静态验证** 抑制幻觉与「作弊指标」；消融显示 **去图或合并 agent → 0% 成功率**。
 - **桥接 model-based 与 model-free：** MORSL 同时含 **ROS 过程** 与 **GraspGen** 等学习原语；**π₀.₅ w/ GaP** 用图式 staging 把 VLA 成功率 **>2×**——不是取代 VLA，而是 **用可解释图把 VLA 送进分布**。
 - **仿真排练闭环：** 并行 task instance + 节点级状态/接触反馈 → **定位失败节点** → 自主改拓扑/参数；Make Popcorn **33% → 94%（sim）/ 90%（real）** 展示 **图级 self-learning** 可落地。
-- **接近手工工程：** 双臂洗箱 GaP **0.953** vs 手工图 **0.987**；真机 grocery fulfillment **25/25** vs TipTop **8/25**。
+- **接近手工工程：** 双臂洗箱仿真 GaP **0.953** vs 手工图 **0.987**；真机 grocery fulfillment **25/25** vs TipTop **8/25**。
 
 ## 流程总览
 
@@ -144,6 +147,34 @@ flowchart TB
 
 **Make Popcorn 案例：** 初图只会开关炉钮、抓锅失败 → 10 轮排练后抓取、搬运、放置三阶段改进 → sim **94%**、real **18/20**。
 
+## 源码运行时序图
+
+```mermaid
+sequenceDiagram
+  participant User as 用户 CLI
+  participant CLI as gap/cli/run.py
+  participant Conn as 仿真或真机 connector
+  participant Runtime as gap.runtime.execute
+  participant Exec as WorkflowExecutor
+  participant Tool as tool 或 script 节点
+  User->>CLI: gap run graph --sim suite/task
+  CLI->>Conn: 创建 connector
+  CLI->>Runtime: execute(graph, connector, skills, trace_dir)
+  Runtime->>Exec: 解释工作流
+  Exec->>Exec: validate_workflow 与初始化 trace
+  loop 图节点与条件路由
+    Exec->>Tool: resolve_inputs 后分派节点
+    Tool-->>Exec: 输出或异常
+    Exec->>Exec: 记录结果与错误 trace
+  end
+  Runtime-->>CLI: 运行结果
+  CLI->>Conn: 保存视频和成功指标后 close
+```
+
+## 工程实践
+
+固定主仓、`open-robot-skills` 和仿真子模块版本，先执行 `gap run <graph> --validate-only`，再按官方 Quickstart 运行 LIBERO。正常执行会写工作流副本、`dag_trace.json` 与节点数据；失败时先看实际节点输入和错误，再决定修改图。`--checkpoints` 的 off/warn/raise 含义不同，单次运行的 SUCCESS 也不等于统计成功率。所读 CLI 与执行器见[实现核对](../../sources/papers/gap_arxiv_2607_05369_full_reading_2026_11_15.md)，本次未启动 GPU 或硬件。
+
 ## 实验要点
 
 ### 主对比（仿真 I–II，5500+ trials）
@@ -166,9 +197,9 @@ flowchart TB
 ### 真机与工业向结果
 
 - Grocery fulfillment：**25/25**（GaP）vs **8/25**（TipTop）
-- USB-C 插线（UR5 + 力）：单图处理升/降序与奇偶口位，**50×** 回放
-- 工业洗箱：GaP **0.953** vs 专家手工图 **0.987**
-- **周期时间：** 仍低于 ~**7 s/instance** 工业标准；需减 VLM 调用、加速 IK/规划
+- USB-C 插线（UR5 + 力）：单图处理升/降序与奇偶口位，**121/130** 次插入成功；整段序列成功另计
+- 工业洗箱仿真：GaP **0.953** vs 专家手工图 **0.987**
+- **周期时间：** 杂货真机平均约 **67 s/instance**，尚未达到约 **7 s/instance** 的工业目标；需减 VLM 调用、加速 IK/规划
 
 ### 后续：在 VABAR 基准中作基线（arXiv:2611.06881）
 
@@ -186,7 +217,7 @@ flowchart TB
 - 消融说明 **结构本身是必要条件**，不是 prompt 技巧：去掉图或把多 agent 合并成单 LLM，成功率均为 **0%**。
 - 把可用性推上去的是 **仿真自学习排练**：节点前后状态 + 接触反馈定位失败节点再改拓扑/参数，Make Popcorn 从 **33% → sim 94% / real 90%**。
 - 与 VLA 是互补而非替代：图式 staging 让 π₀.₅ 在 Pack varied 上 **0.17 → 0.67**、MolmoAct2 在 mixed_all 上 **0.20 → 0.66**，角色是「用可解释图把 VLA 送进分布」。
-- 差距与边界仍明确：benchmark 以 **准静态 pick-and-place** 为主、力控与可变形体覆盖少；工业洗箱 **0.953** 仍略低于专家手工图 **0.987**；周期时间尚未达 **~7 s/instance** 的工业标准；Beta 代码的 API/schema 短期可能变动。
+- 差距与边界仍明确：benchmark 以 **准静态 pick-and-place** 为主、力控与可变形体覆盖少；洗箱仿真 **0.953** 仍略低于专家手工图 **0.987**；周期时间尚未达 **~7 s/instance** 的工业标准；Beta 代码的 API/schema 短期可能变动。
 - 选型对照：**CaP** 是自由 Python、[ASPIRE](../methods/aspire.md) 优化程序 + 技能库进化、GaP 是 ROS 式图 + 仿真排练 — 判断依据是任务是否落在 [变体自动化](../concepts/variational-automation.md) 的 VA 假设内。
 
 ## 常见误区
@@ -197,11 +228,15 @@ flowchart TB
 
 ## 局限
 
+- **先验与消融口径：** 原文 §5.2 说明 CaP-X 与 GaP 的工位先验不同，0% 消融结果仅适用于被测配置。杂货初始图未做自学习，不能把全部杂货增益归给排练；洗箱是仿真评测，不是真机产线验证。
+
 - Benchmark 以 **准静态 pick-and-place** 为主；除线缆插入外少用力控/可变形体
 - Harness 与 MORSL 规模增长后，需更强 **组合验证与维护** 工具
 - Beta 代码已发布（2026-07-01）；API / workflow schema 在 2026-08-01 前可能变动
 
 ## 关联页面
+
+- [VLA 纵深路线](../../roadmap/depth-vla.md)
 
 - [变体自动化（VA）](../concepts/variational-automation.md) — FA/VA/GR 任务谱与形式化
 - [VABAR](./paper-vabar-variational-automation-benchmark.md) — VA 仿真基准；GaP 作基线，自动生成图系统性低于人工图
@@ -227,7 +262,7 @@ flowchart TB
 
 - [RoboHarness 原文与边界复核](../../sources/papers/robo_harness_arxiv_2607_18060.md)
 
-- [GaP 论文归档](../../sources/papers/gap_arxiv_2607_05369.md)
+- [GaP 论文归档](../../sources/papers/gap_arxiv_2607_05369_full_reading_2026_11_15.md)
 - [GaP 项目页归档](../../sources/sites/gap-graph-robots-project.md)
 - [graph-as-policy 代码索引](../../sources/repos/graph_robots_graph_as_policy.md)
 - [VABAR 论文归档](../../sources/papers/vabar_arxiv_2611_06881.md) — GaP 作基线的后续基准

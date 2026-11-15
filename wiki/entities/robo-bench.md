@@ -2,7 +2,13 @@
 type: entity
 tags: [benchmark, embodied-ai, mllm, vla, manipulation, evaluation, pku, baai, huggingface, open-source]
 status: complete
-updated: 2026-11-06
+project_id: robo-bench
+arxiv: "2510.17801"
+project: https://robo-bench.github.io/
+code: https://github.com/yulin-luo/RoboBench
+original:
+  - ../../sources/papers/robo_bench_arxiv_2510_17801_full_reading_2026_11_15.md
+updated: 2026-11-15
 related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
@@ -14,9 +20,10 @@ related:
   - ../queries/manipulation-vla-architecture-selection.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
+  - ../../sources/papers/robo_bench_arxiv_2510_17801_full_reading_2026_11_15.md
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/repos/robo-bench.md
-summary: "RoboBench（arXiv:2510.17801，ECCV 2026）系统评测 MLLM 作为操纵流水线 embodied brain：五维 14 能力 25 任务 6092 QA；规划维用 MLLM-as-world-simulator 检验 embodied 可行性；分数与 CALVIN/LIBERO-10 下游 VLA 显著相关。"
+summary: "RoboBench（arXiv:2510.17801，ECCV 2026）系统评测 MLLM 作为操纵流水线 embodied brain：五维 14 能力 25 任务 6092 QA；规划维用 MLLM-as-world-simulator 检验 embodied 可行性；CALVIN 感知相关显著，LIBERO-10 affordance 仅呈非显著正趋势。"
 ---
 
 # RoboBench（MLLM 具身大脑综合评测）
@@ -46,7 +53,7 @@ summary: "RoboBench（arXiv:2510.17801，ECCV 2026）系统评测 MLLM 作为操
 - **与下游 VLA 有统计信号**：将开源 VLM backbone 最小微调为 VLA 后，RoboBench **object-centric 感知** 与 **CALVIN** 长程表现 **r=0.884**；**LIBERO-10** 更依赖 **静态+dynamic affordance**（r=0.677）——说明不同控制基准依赖不同认知技能，RoboBench 可作 **VLM 选型诊断**。
 - **工程可复现**：代码、HF 数据集与 leaderboard 结果均已发布；ECCV 2026 版覆盖 **18** 个闭源/开源/具身 MLLM（含 GPT-5.4、Claude-Opus-4.7、Gemini-3.1-Pro、Qwen3-VL、RoboBrain-2.5、MiMo-Embodied 等）。**MiMo-V2.6** 为通用 Agent 基座，具身 MLLM 评测仍见 [MiMo-Embodied](https://github.com/XiaomiMiMo/MiMo-Embodied) 与 [MiMo-V2.6](./mimo-v2-6.md) 消歧说明。
 
-## 核心结构
+## 核心原理与评测结构
 
 ### 五维 taxonomy（14 能力 · 25 任务 · 6092 QA）
 
@@ -113,7 +120,44 @@ flowchart TB
   end
 ```
 
-## 主要发现（ECCV 2026 leaderboard 摘要）
+## 源码运行时序图
+
+依据已读 CLI、pipeline 节点与规划评测器；此图只描述公开评测代码，不含真实机器人执行。
+
+```mermaid
+sequenceDiagram
+  participant User as 用户
+  participant CLI as robobench.cli.cmd_pipeline
+  participant Exec as PipelineExecutor
+  participant Data as RoboBenchDataset / PromptBuilder
+  participant Model as AsyncModelClient
+  participant Eval as EvaluateNode / PlanningEvaluator
+  participant Out as raw.json / evaluated.json
+  User->>CLI: --config config.yaml pipeline --repeats N
+  CLI->>Exec: 注册 load / build / inference / evaluate 节点
+  loop 每次运行、模型与子任务
+    Exec->>Data: 读 questions.json 与 system_prompt.json
+    Data-->>Exec: 问题、图片路径与 messages
+    Exec->>Model: run_batch 调被测模型
+    Model-->>Out: 原始回答与 request_id
+    Exec->>Eval: 读取回答，按题型选 evaluator
+    opt Planning Q1 / Q2 / Q3
+      Eval->>Model: 独立 judge、图像和参考约束
+      Model-->>Eval: 节点/完成度、下一步或 yes/no 评判
+    end
+    Eval-->>Out: 分数、覆盖与解析状态
+  end
+```
+
+## 工程实践
+
+先准备数据与独立的被测模型/judge 配置，运行 `robobench --config config.yaml inspect-data --metadata-only` 检查记录；完整图片下载后去掉 `--metadata-only`。`pipeline --dry-run` 只列节点，不是数据或 API 连通性验证。先选择一个维度、子任务与少量样本，再运行完整评测；本次未调用模型 API。
+
+论文的 25 任务在发布时拆成 32 个 manifest，仍为 **6,092 QA**：MCQ 1,895、Planning 4,197。Affordance 通过候选点、轨迹、底座位置的**选择题**测试，不是直接执行运动。Q1 组合分为 `(NodeCorrectness + TaskCompletion) / 20`，当前实现乘 100；不能解释为机器人闭环成功率。固定 judge、提示词、图像预处理、题型与分组方式，并保留每题原始输出和解析失败数。
+
+当前 Q1/Q2 均值排除解析失败项，Q3 空响应按错计，需同时审计覆盖率。多轮聚合器只读取数字或顶层 `accuracy`，CLI 还使用目录名作聚合键；应逐任务核对，不能将默认聚合当作论文全部总表。`report` 子命令仍为 TODO。详见[原文与实现复核](../../sources/papers/robo_bench_arxiv_2510_17801_full_reading_2026_11_15.md)。
+
+## 实验与评测（ECCV 2026 作者报告）
 
 - **能力鸿沟大但前沿在进步**：Gemini-3.1-Pro 在感知（67.32）、affordance（85.70）、失败分析（52.95）最均衡；多数 MLLM 各维极不均衡。
 - **闭源领先开源约 20 分**；同族内随规模/代际稳定提升。
@@ -123,6 +167,18 @@ flowchart TB
 - **视觉不可或缺**：GPT-5.4 text-only 在感知（27.12）与 affordance（25.61）接近随机，远低于最佳视觉 MLLM。
 - **执行失败诊断极难**：最佳约 **43.71**，远低于规划失败诊断（最高 **80.74**）——需要细粒度空间与物理理解。
 
+### 下游相关性的统计边界
+
+迁移实验仅含 **8 个骨干**，全参数微调、单视角 RGB、无本体状态。CALVIN ABC-D 测 1,000 条五子任务序列，指标是平均完成子任务数；LIBERO-Long 测 10 任务各 50 次，指标是成功率。CALVIN 的 object-centric / scene-centric 相关为 **r=0.884, p=0.0035 / r=0.833, p=0.0103**；LIBERO 的 static+dynamic affordance 为 **r=0.677, p=0.0652**，未达到常用 0.05 阈值。相关性不证明因果或必要条件，也不能外推所有 VLM 与控制器。
+
+## 结论
+
+**RoboBench 是高层操纵认知与计划评审的诊断工具；它与真机控制的联系须按骨干、微调协议和统计证据分别验证。**
+
+1. 分开记录 MCQ、Q1 结构化 judge、Q2 下一步与 Q3 状态判断，避免混成一种成功率。
+2. 认知分用于筛选假设，控制能力仍须闭环评测；LIBERO 的正趋势不等于显著证据。
+3. 冻结 judge 和提示版本，保留解析覆盖率与逐题结果，再核对聚合口径。
+
 ## 常见误区或局限
 
 - **不是低层控制或 VLA 端到端基准**：RoboBench 评 **高层 MLLM 认知**；真机成功率仍需 CALVIN、LIBERO、SimplerEnv 等对照。
@@ -131,6 +187,8 @@ flowchart TB
 - **数据与许可证**：HF 数据集与结果卡需单独核对使用条款；复现前以 GitHub README 环境为准。
 
 ## 关联页面
+
+- [具身测评纵深路线](../../roadmap/depth-embodied-eval.md) — Stage 1 的认知评测与下游能力外推。
 
 - [VLA（Vision-Language-Action）](../methods/vla.md) — 双系统架构与 RoboBench 所评 System 2 骨干
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 任务域与 CALVIN / LIBERO 等下游评测背景
@@ -143,6 +201,8 @@ flowchart TB
 - [RoboDojo](./robodojo.md) — 策略闭环成功率（sim+real）对照；勿与本页 MLLM 认知分混比
 
 ## 参考来源
+
+- [完整原文、附录与当前 CLI 复核](../../sources/papers/robo_bench_arxiv_2510_17801_full_reading_2026_11_15.md)
 
 - [RoboBench 论文摘录](../../sources/papers/robo_bench_arxiv_2510_17801.md)
 - [RoboBench 仓库与数据归档](../../sources/repos/robo-bench.md)

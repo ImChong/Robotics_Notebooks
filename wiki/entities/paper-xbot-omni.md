@@ -177,6 +177,8 @@ $
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 对照视觉定位、深度与坐标变换到身体坐标目标的接口，分开检查感知输出和机器人执行。
+
 - [Daily-Omni](./paper-daily-omni.md) — 同属 omni-modal；上游感知/声画推理基准
 - [统一多模态 token](../methods/unified-multimodal-tokens.md) — 原生表征与模态融合的技术背景
 - [多模态基础](../concepts/multimodality-basics.md) — 音频、视频、视觉等感知模态背景

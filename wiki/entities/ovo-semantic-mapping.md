@@ -2,6 +2,8 @@
 type: entity
 tags: [repo, semantic-mapping, open-vocabulary, sam, slam, clip, rgb-d, unizar]
 status: complete
+original:
+  - ../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md
 updated: 2026-11-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
@@ -132,6 +134,8 @@ sequenceDiagram
 在 ScanNetv2 五个 HVS 场景，真值位姿下 OVO-mapping 的 ScanNet20 mIoU 为 38.1%，接 Gaussian-SLAM 时为 29.3%；两种位姿假设不能合并。语义地图与 CLIP 提取异步排队，相机跟踪的视频率不代表语义映射逐帧同步完成。依据[来源复核归档](../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md)。
 
 ## 关联页面
+
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md)
 
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
 - [SAM 2](./paper-sam2.md) / [SAM](./paper-segment-anything.md) — 2D mask 前端基础模型

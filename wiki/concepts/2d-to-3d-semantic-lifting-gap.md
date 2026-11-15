@@ -2,6 +2,9 @@
 type: concept
 tags: [perception, computer-vision, segmentation, semantic-mapping, 2d-to-3d, robotics, sim2real]
 status: complete
+original:
+  - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
+  - ../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md
 updated: 2026-11-15
 related:
   - ../entities/paper-abot-recon.md
@@ -24,6 +27,7 @@ related:
   - ../entities/paper-luna-universal-3d-human-animation.md
 sources:
   - ../../sources/papers/segment_anything_arxiv_2304_02643.md
+  - ../../sources/papers/segment_anything_arxiv_2304_02643_full_reading_2026_11_15.md
   - ../../sources/papers/sam2_arxiv_2408_00714.md
   - ../../sources/repos/ov-sam3d.md
   - ../../sources/papers/occanyscene_arxiv_2608_08696.md
@@ -52,7 +56,7 @@ summary: "「2D 检测/分割结果」↔「可供策略消费的 3D 语义几�
 | RGB-D | RGB-Depth | 带深度的彩色相机，提升的常用输入 |
 | ICP | Iterative Closest Point | 多视角点云配准，缓解时序不一致 |
 
-## 信息损失与歧义
+## 核心原理：信息损失与歧义
 
 把 2D 结果提升到 3D 语义几何时，Gap 主要来自下列方向，任意一个被忽略都会让提升出的 3D 语义系统性偏：
 
@@ -78,7 +82,7 @@ summary: "「2D 检测/分割结果」↔「可供策略消费的 3D 语义几�
 | 类别语义可得 | 有检测器/文本提示补上类别 | 只有几何没有类别，策略不知道那是什么 |
 | 下游容差 ≥ 提升误差 | 任务对 3D 精度要求不苛刻 | 精细抓取/穿越窄缝时误差被放大成失败 |
 
-## 为什么它是感知栈的核心根因
+## 为什么重要：感知栈的核心根因
 
 2D→3D 语义提升 Gap 是感知输出「能不能被策略忠实消费」最常见、也最隐蔽的一层。感知栈若停在 2D（图像空间视觉伺服），等于**默认了不需要提升**；一旦下游是导航/操作要在 3D 里决策，同一套准的 2D 结果提升到 3D 后就可能尺度偏、缺面、语义闪烁，策略随即抓偏或撞上。这正是[感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)里③层的具体开关：
 
@@ -97,7 +101,7 @@ flowchart LR
 
 先量化**这些损失在当前下游任务里的占比**，再决定是否值得往上建更贵的稠密语义地图——损失占比小就别过度建图（对象级子地图够用），占比大才投入多视角/联合建图成本。
 
-## 收窄提升 Gap 的三条工程路线
+## 工程实践：收窄提升 Gap 的三条路线
 
 Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 
@@ -121,6 +125,15 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 
 三条路线常组合使用：**先深度融合补尺度（①），再多视角一致性去抖（②），最后语义-几何联合建图对齐类别与占据（③）**。选哪条取决于损失占比、下游任务容差与机载预算——详见[感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)第③层的决策树。
 
+### 原文对照与验证步骤
+
+1. 固定同一组 RGB-D、内外参与位姿，先观察可见表面投影误差，再引入语义；掩码边界准并不代表三维标定准确。
+2. 用同一对象的近远视角检查粒度与身份。LEGO 原文将共视和尺度用于重新组织层级，不能把单帧 SAM 的多 mask 输出直接当作三维部件树。
+3. 区分真值位姿和实际 SLAM。OVO 在相同 ScanNet HVS 评测下的 ScanNet20 mIoU 从真值位姿的 38.1% 变为 Gaussian-SLAM 的 29.3%，说明下游提升误差不能仅归因于二维分割；这组数值不表示所有地图都会下降相同幅度。
+4. 分开记录相机跟踪、语义更新与查询延迟。OVO 的语义与描述子异步更新，旧语义不能按相机帧率当成新观测消费。
+
+以上是结合 [LEGO 原文](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)与 [OVO 原文](../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md)形成的工程检查顺序，未在本次任务中做硬件测量。
+
 ## 常见误判速查
 
 | 误判 | 真相 | 第一优先排查 |
@@ -132,13 +145,15 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 | 逐帧提升就能建稳定地图 | 时序不一致致对象分裂/漂移 | 加跨帧配准与对象关联 |
 | 稠密语义地图总是更好 | 机载内存/时延撑不住 | 按下游需求换对象级子地图 |
 
-## 常见误区
+## 局限与常见误区
 
 1. **≠「2D 分割做好就等于有 3D 语义」** — 2D 只在图像平面，提升到 3D 要额外补深度、几何与跨帧一致性。
 2. **≠「上了语义建图就没 Gap」** — 联合建图只是把 Gap 从「未处理」变成「分布内已处理、遮挡/远距/新类别仍偏」，不消灭 Gap。
 3. **Gap 不是恒定的** — 同一套 2D 结果在不同距离/遮挡/任务容差下 Gap 量级差很多，评估要覆盖部署工况，而非单帧单场景。
 
 ## 关联页面
+
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md)
 
 - [具身感知六种空间表征](./embodied-perception-six-spatial-representations.md) — 2D/深度/点云/占据/语义/隐式的层级边界；本页聚焦其中「2D→可消费 3D 语义几何」的信息损失
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 本页是其③「2D→3D 提升与语义建图」层「2D 框够用还是必须 3D 语义几何」的物理根因专页
@@ -158,7 +173,9 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 
 ## 参考来源
 
-- [Segment Anything（可提示分割）](../../sources/papers/segment_anything_arxiv_2304_02643.md) — 语义-几何分离一端（掩码无类别）的一手资料
+- [OVO 原文通读归档](../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md) — 位姿误差、实例关联与异步语义更新的实证。
+
+- [Segment Anything（可提示分割）](../../sources/papers/segment_anything_arxiv_2304_02643_full_reading_2026_11_15.md) — 语义-几何分离一端（掩码无类别）的一手资料
 - [SAM2（图像+视频可提示分割）](../../sources/papers/sam2_arxiv_2408_00714.md) — 路线②多视角/视频一致性的一手资料
 - [OV-SAM3D（开放词汇 3D 分割）](../../sources/repos/ov-sam3d.md) — 路线③语义-几何联合建图一手资料
 - [OccAnyScene 论文摘录](../../sources/papers/occanyscene_arxiv_2608_08696.md) — 跨相机/跨尺度 image-to-3D lifting 的视锥高斯路线
@@ -166,3 +183,8 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 - [LightSplat 论文摘录](../../sources/papers/lightsplat_cvpr_2026_arxiv_2603_24146.md) — 索引注入 + 3D 聚类：秒级开放词汇 FD
 - [PointDiT 论文摘录](../../sources/papers/pointdit_arxiv_2607_02515.md) — 路线① RGB-only 仿射点图（像素空间扩散）
 - [LUNA 论文摘录](../../sources/papers/luna_arxiv_2606_31981.md) — 2D→3D 形变无 LBS 蒸馏会深度塌缩
+
+## 推荐继续阅读
+
+- [LEGO 原文与附录](https://arxiv.org/html/2608.10057v1) — 二维粒度到三维结构层级。
+- [OVO 原文与附录](https://arxiv.org/html/2411.15043) — 在线实例关联、位姿条件及更新频率。

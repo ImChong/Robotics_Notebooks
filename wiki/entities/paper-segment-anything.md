@@ -2,6 +2,8 @@
 type: entity
 tags: [paper, foundation-model, segmentation, sam, computer-vision, meta, promptable-segmentation]
 status: complete
+original:
+  - ../../sources/papers/segment_anything_arxiv_2304_02643_full_reading_2026_11_15.md
 updated: 2026-11-15
 arxiv: "2304.02643"
 code: https://github.com/facebookresearch/segment-anything
@@ -19,8 +21,9 @@ related:
   - ./paper-lego-leveled-language-gaussian-splatting.md
   - ./paper-lightsplat.md
 sources:
-  - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
   - ../../sources/papers/segment_anything_arxiv_2304_02643.md
+  - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
+  - ../../sources/papers/segment_anything_arxiv_2304_02643_full_reading_2026_11_15.md
   - ../../sources/repos/segment-anything.md
   - ../../sources/sites/segment-anything-com.md
 summary: "Segment Anything（SAM，arXiv:2304.02643）：Meta FAIR 可提示图像分割基础模型；ViT 编码 + 轻量提示解码；SA-1B（11M/1.1B）；Apache-2.0 推理仓。"
@@ -165,6 +168,9 @@ sequenceDiagram
 
 ## 局限与风险
 
+- **文本接口与延迟边界：** 原文 §7.5 的 text-to-mask 是另行训练的探索设置，公开 `SamPredictor.predict` 接收点、框与 mask 提示；约 50 ms 仅指预先缓存图像特征后的提示路径。评估实时性时要另计图像编码、自动网格采样和后处理。
+- **评测选择边界：** 23 数据集单点实验中，默认置信度选择与按真值选择三候选最佳 mask 的 oracle 是两种协议；不能以 oracle 成绩承诺部署效果。依据[主论文全文复核](../../sources/papers/segment_anything_arxiv_2304_02643_full_reading_2026_11_15.md)。
+
 - **无内建语义标签：** 「分割万物」≠「命名万物」；需外接分类/VLM。
 - **静态图像：** 跨帧一致性靠外部 tracker 或改用 SAM 2。
 - **重图像编码：** 实时多相机要算力或蒸馏小模型。
@@ -172,6 +178,8 @@ sequenceDiagram
 - **仓库定位：** 官方主仓偏推理；训练复现需另寻社区实现或迁到 SAM 2 `training/`。
 
 ## 关联页面
+
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md)
 
 - [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本页属**第②层 2D 检测/分割选型**（可提示分割，掩码强但缺类别语义）
 - [SAM 2](./paper-sam2.md) — 图像+视频统一继任
@@ -186,7 +194,7 @@ sequenceDiagram
 
 - [LEGO 原文与边界复核](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)
 
-- [segment_anything_arxiv_2304_02643.md](../../sources/papers/segment_anything_arxiv_2304_02643.md) — 论文摘录与开源核查
+- [segment_anything_arxiv_2304_02643.md](../../sources/papers/segment_anything_arxiv_2304_02643_full_reading_2026_11_15.md) — 论文摘录与开源核查
 - [segment-anything.md](../../sources/repos/segment-anything.md) — GitHub 仓库归档
 - [segment-anything-com.md](../../sources/sites/segment-anything-com.md) — 项目页归档
 - [arXiv:2304.02643](https://arxiv.org/abs/2304.02643) — 原文

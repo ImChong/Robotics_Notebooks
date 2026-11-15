@@ -5,7 +5,7 @@
 - **项目页：** https://starvla.github.io/
 - **代码：** https://github.com/starVLA/starVLA （默认分支 `starVLA_dev`）
 - **机构：** StarVLA Community、香港科技大学冯诺依曼研究院（Von Neumann Institute, HKUST）
-- **身份边界：** 与 **StarVLA-α: Reducing Complexity in Vision-Language-Action Systems**（arXiv:2604.11757）是两篇不同论文；本页只对应 **框架论文 2604.05014**，后者在现有 `wiki/methods/star-vla.md` 和 `sources/papers/star_vla.md` 介绍。
+- **身份边界：** 与 **StarVLA-α: Reducing Complexity in Vision-Language-Action Systems**（arXiv:2604.11757）是两篇不同论文；本页只对应 **框架论文 2604.05014**，后者在 `wiki/entities/paper-starvla-alpha.md` 与 `sources/papers/star_vla.md` 介绍，方法页保留综合入口。
 - **核对范围：** 2026-11-14 核对 arXiv HTML v1 §1–8、作者与基准附表（统一模型与数据接口、训练/评测/部署、LIBERO、SimplerEnv、RoboCasa、RoboTwin、双模态共训、多基准与训练效率）；官方 `starVLA_dev` README 全部章节与 `docs/starVLA_guideline.md` 的安装、数据、训练与 server/client 流程。
 - **通读：** 已完成
 
@@ -21,4 +21,5 @@
 ## 对 wiki 的映射
 
 - [StarVLA 框架唯一论文详情](../../wiki/entities/paper-starvla-framework.md)
-- [独立 StarVLA-α 方法页](../../wiki/methods/star-vla.md)
+- [独立 StarVLA-α 论文详情](../../wiki/entities/paper-starvla-alpha.md)
+- [StarVLA 方法入口](../../wiki/methods/star-vla.md)
