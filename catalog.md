@@ -2398,6 +2398,7 @@
 - [EgoJEPA：超越重定向的第一视角视频灵巧操作学习](wiki/entities/paper-egojepa-egocentric-latent-action.md) — EgoJEPA 绕开手工设计的人手到机器人重定向：先从人类视频学习效果相关的潜在动作，再用轻量适配器接到不同机器人。 `📅unknown` `[entity_page]`
 - [EgoLAP：用语言动作推理从第一视角人类数据学机器人](wiki/entities/paper-egolap-egocentric-language-action-reasoning.md) — EgoLAP**（arXiv:2610.08726，项目页）认为 `📅unknown` `[entity_page]`
 - [EgoMatrix：从第一视角人类视频生成物理可信的灵巧机器人示范](wiki/entities/paper-egomatrix.md) — EgoMatrix 是一个数据引擎：把单目第一视角人类视频重建为手物交互，再用关键点重定向与强化学习在仿真中复现任务，最后渲染机器人手与物体并合成到真实或替换背景，得到成对的双手灵巧轨迹与机器人观 `📅unknown` `[entity_page]`
+- [EgoMo3R：第一人称人体运动与三维场景联合重建（Joint Egocentric Motion and Scene Reconstruction）](wiki/entities/paper-egomo3r.md) — EgoMo3R**（NeurIPS 2026；arXiv:2611.01627）是由**斯坦福大学（Stanford Uni `📅unknown` `[entity_page]`
 - [EgoPHI：从 ego 视觉估计 3D 手–物接触与力](wiki/entities/paper-egophi.md) — EgoPHI**（*Estimating 3D Hand-Object Contact and Force from Egocentric Vision*，[arXiv:2608.13014](h `📅unknown` `[entity_page]`
 - [EgoSteer：从 Egocentric 视频到可操控双灵巧手全栈](wiki/entities/paper-egosteer.md) — EgoSteer**（*A Full-Stack System Towards Steerable Dexterous Manipulation from Egocentric Videos*， `📅unknown` `[entity_page]`
 - [EgoThumb（arXiv:2610.37582）](wiki/entities/paper-egothumb.md) — EgoThumb**（*EgoThumb: A Vision-Driven Supernumerary Robotic Thumb for Autonomous Grasp and Holding `📅unknown` `[entity_page]`
