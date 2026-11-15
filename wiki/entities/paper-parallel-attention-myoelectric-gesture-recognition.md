@@ -1,9 +1,9 @@
 ---
 type: entity
 project_id: parallel-attention-myoelectric-gesture-recognition-2026
-tags: [paper, semg, myoelectric-control, gesture-recognition, prosthetic-hand, attention, gru, bionic-hand]
+tags: [paper, semg, myoelectric-control, gesture-recognition, prosthetic-hand, attention, gru, bionic-hand, wust, bupt, tsinghua]
 status: draft
-updated: 2026-11-11
+updated: 2026-11-15
 venue: "Journal of Bionic Engineering (2026-10-20)"
 doi: "10.1007/s42235-026-01012-7"
 project: https://link.springer.com/article/10.1007/s42235-026-01012-7
@@ -44,11 +44,14 @@ summary: "JBE 2026 的 DCNN-GRU 并行注意力肌电手势识别：同一窗口
 | 论文 | [Parallel-Attention Based Myoelectric Gesture Recognition Network for Daily Manipulation of Bionic Prosthetic Hands](https://link.springer.com/article/10.1007/s42235-026-01012-7) |
 | 发表 | *Journal of Bionic Engineering*，2026-10-20 |
 | DOI | [10.1007/s42235-026-01012-7](https://doi.org/10.1007/s42235-026-01012-7) |
-| 作者 | Boao Li、Ziming Chen、Shixian Wang、Fuchun Sun、Bin Fang、Du Jiang、Bo Tao、Gongfa Li |
+| 作者 | Boao Li、Ziming Chen（共同第一作者）、Shixian Wang、Fuchun Sun、Bin Fang、Du Jiang、Bo Tao、Gongfa Li；通讯作者为 Bin Fang、Du Jiang、Bo Tao |
+| 机构 | 武汉科技大学（Wuhan University of Science and Technology）、北京邮电大学（Beijing University of Posts and Telecommunications）、广东省智能科学与技术研究院（Guangdong Institute of Intelligence Science and Technology）、清华大学（Tsinghua University）；按 Springer Authors and Affiliations 核对 |
+| 版本 | 2025-10-10 收稿；2026-10-01 修回；2026-10-03 录用；2026-10-20 正式发表 |
+| 伦理审批 | 北京邮电大学生物医学研究伦理委员会，BUPT-A-2025022；出版商声明参与者均知情同意 |
 | 研究对象 | 表面肌电手势分类；动态手臂动作中的仿生假手日常使用 |
 | 受试者 | 8 位健全参与者、2 位截肢参与者 |
 | 可获取性 | 摘要公开；全文需订阅；数据与材料可向通讯作者合理申请 |
-| 核对范围 | Springer 官方摘要、出版元数据与数据声明；**尚未阅读受限全文** |
+| 核对范围 | Springer 官方摘要、作者单位、版本日期、伦理与补充材料列表、数据声明（2026-11-15 补核）；**尚未阅读受限全文** |
 
 ## 核心原理（摘要已明确部分）
 
@@ -69,6 +72,7 @@ summary: "JBE 2026 的 DCNN-GRU 并行注意力肌电手势识别：同一窗口
 | 注意力机制 / GRU 参数 / 分类头 | 摘要仅给模块级描述，代码或方法节缺失 |
 | 训练 / 推理实现 | 尚未找到可确认的官方源码与运行入口 |
 | 复现实验 | 需要取得全文与数据协议；Springer 称数据可向通讯作者合理请求 |
+| 官方附属材料 | 出版商论文页展示 Fig. 1–16 和两项 MP4 补充文件条目；**仅核实存在，未核对视频内容、全图细节与可下载性** |
 
 ### 源码运行时序图
 
@@ -101,7 +105,7 @@ summary: "JBE 2026 的 DCNN-GRU 并行注意力肌电手势识别：同一窗口
 
 ## 局限与风险
 
-- **无法完成原文通读。** 当前可访问的 Springer 内容是摘要与基础记录，完整方法、消融、误差分析及附录待获取；本页保持 **draft**。
+- **无法完成原文通读。** 当前可访问的 Springer 内容含摘要、出版元数据、作者机构、伦理信息与图像/补充视频条目，仍缺完整方法、消融、误差分析及附录；本页保持 **draft**。
 - **泛化边界不明。** ALL 包含六个训练条件，但摘要未说明跨条件拆分；不得宣称跨手臂姿态或新受试者零样本泛化。
 - **小样本限制。** 仅 2 位截肢参与者；不能把整体窗口准确率直接当成截肢用户的平均表现。
 - **系统指标欠缺。** 摘要没有给出各类设备的推理时延、参数量与实用假手闭环任务成功率。
@@ -115,7 +119,7 @@ summary: "JBE 2026 的 DCNN-GRU 并行注意力肌电手势识别：同一窗口
 
 ## 参考来源
 
-- [论文 Springer 官方记录](https://link.springer.com/article/10.1007/s42235-026-01012-7) — 2026-10-20 发表；摘要、作者、数据声明
+- [论文 Springer 官方记录](https://link.springer.com/article/10.1007/s42235-026-01012-7) — 2026-10-20 发表；摘要、作者与机构、版本、伦理、图与补充资料目录、数据声明（2026-11-15 核验）
 - [本库论文原文归档（待全文精读）](../../sources/papers/parallel_attention_myoelectric_gesture_recognition_jbe_2026.md) — 明确通读状态和摘要核对范围
 
 ## 推荐继续阅读
