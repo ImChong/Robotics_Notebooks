@@ -3879,6 +3879,7 @@
 - [OSF / Operational Space Formulation（HMI P001）](wiki/entities/paper-operational-space-formulation.md) — OSF / Operational Space Formulation**（*A Unified Approach for Motion and Force Control of Robot Ma `📅unknown` `[entity_page]`
 - [Opt2VLA（arXiv:2609.23968）](wiki/entities/paper-opt2vla-force-aware-humanoid.md) — Opt2VLA**（*Opt2VLA: Force-Aware Vision-Language-Action for Contact-Rich Humanoid Whole-Body Manipu `📅unknown` `[entity_page]`
 - [OptiGeo：光学挑战场景的高效单目几何感知](wiki/entities/paper-optigeo.md) — OptiGeo**（*Efficient Monocular Geometry for Embodied Perception in Optically Challenging Scenes*， `📅unknown` `[entity_page]`
+- [OptiMer：最优分布向量合并优于持续预训练数据混合 / Optimal Distribution Vector Merging Is Better than Data Mixing for Continual Pre-Training](wiki/entities/paper-optimer-optimal-distribution-vector-merging.md) — OptiMer** 将大语言模型多领域持续预训练中「先猜数据混合比例再训练」改为「各数据源独立持续预训练一次，抽取参数差分向量，之后按评测目标优化合并权重」，以便重复利用 checkpoint、降 `📅unknown` `[entity_page]`
 - [OptiSight：语义推理与几何控制结合的具身导航](wiki/entities/paper-optisight-embodied-navigation.md) — OptiSight**（arXiv:2608.23354；IRI 技术报告 **IRI-TR-26-02**）是 CSIC- `📅unknown` `[entity_page]`
 - [OracleZoom（Reference-Constrained Recursive Image Super-Resolution）](wiki/entities/paper-oraclezoom.md) — OracleZoom**（*On-Policy Self-Distillation Inspired Reference-Constrained Recursive Image Super Res `📅unknown` `[entity_page]`
 - [Orchestra：让「心」构想、让「手」执行的长程多模态指令操作](wiki/entities/paper-orchestra.md) — Orchestra 是一个 agent harness：任务智能体把多模态指令拆成有序子任务并落地对象，改造后的 π0.5 只负责当前子任务的动作生成，单独训练的进度评估器决定何时切换；配套 RM `📅unknown` `[entity_page]`
