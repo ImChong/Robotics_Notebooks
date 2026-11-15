@@ -3078,7 +3078,7 @@
 - [Caging Vision-Language Navigation for Legged Robots via Barrier-Certified Safety Architecture（arXiv:2611.04972）](wiki/entities/paper-legged-vln-barrier-caging.md) — 论文 arXiv:2611.04972，特拉华大学 RPNG（Kulkarni、Katragadda、Du、Huang）与丰田汽 `📅unknown` `[entity_page]`
 - [LegNav / CALF：从感知人腿学习社交机器人导航](wiki/entities/paper-legnav-calf.md) — LegNav + CALF**（*Learning Robot Social Navigation By Sensing Human Legs*，[arXiv:2607.27922](https: `📅unknown` `[entity_page]`
 - [LEGO：层级语言高斯溅射](wiki/entities/paper-lego-leveled-language-gaussian-splatting.md) — LEGO**（*LEveled Gaussian splatting for Open-vocabulary understanding*；论文 *LEGO: Leveled Language G `📅unknown` `[entity_page]`
-- [LEGS（Loco-manipulation via Embodied Gaussian Splatting）](wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) — LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026-05）：在 **无真人遥操作、无种子演示、无人视频 `📅unknown` `[entity_page]`
+- [LEGS（Loco-manipulation via Embodied Gaussian Splatting）](wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) — LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026）：在 **无真人遥操作、无种子演示、无人视频**  `📅unknown` `[entity_page]`
 - [From Legs to Wheels：面向轮式人形的形态感知人体动作重定向](wiki/entities/paper-legs-to-wheels-mobile-base-humanoid-retargeting.md) — From Legs to Wheels**（arXiv:2610.08381）针对「没有腿」的移动底座人形（全向轮底盘 +  `📅unknown` `[entity_page]`
 - [Learning to Fold（LeHome Challenge 2026 · arXiv:2606.27163）](wiki/entities/paper-lehome-learning-to-fold.md) — Learning to Fold**（arXiv:2606.27163，[项目博客](https://ilialarchen `📅unknown` `[entity_page]`
 - [LeJEPA（无启发式 JEPA · arXiv:2511.08544）](wiki/entities/paper-lejepa.md) — LeJEPA**（*LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics*，[arXiv:25 `📅unknown` `[entity_page]`
@@ -5800,6 +5800,7 @@
 - [STAR（arXiv:2609.12549）](wiki/entities/paper-star-vtla.md) — STAR**（[STAR: Sparse Tactile Representation Learning in Vision-Tactile-Language-Action Models for  `📅unknown` `[entity_page]`
 - [STAR（arXiv:2610.41009）](wiki/entities/paper-star.md) — STAR**（*STAR: Steering Action Representations with Proprioception for VLA Inference*，[arXiv:2610.4 `📅unknown` `[entity_page]`
 - [STARE（arXiv:2611.06089）](wiki/entities/paper-stare.md) — STARE**（*STARE: Scene Text-Aware multimodal Retrieval for Everyday objects*，[arXiv:2611.06089](htt `📅unknown` `[entity_page]`
+- [StarVLA-α：简化 VLA 系统的受控基线](wiki/entities/paper-starvla-alpha.md) — StarVLA-α 以强 VLM、轻量连续动作回归和统一数据流程构成基线，固定其他变量后比较动作头、机器人预训练和接口工程；独立于提供基础设施的 [StarVLA 框架论文](./paper-star `📅unknown` `[entity_page]`
 - [StarVLA：模块化 VLA 实验与部署框架 / A Lego-like Codebase for Vision-Language-Action Model Developing](wiki/entities/paper-starvla-framework.md) — StarVLA** 是把 **backbone、action head、dataset adapter、trainer、evaluation server** 拆开的开源 VLA 研究平台，使同一 `📅unknown` `[entity_page]`
 - [StarWM: Self-Supervised Trained Attention Routing for Robust World Models](wiki/entities/paper-starwm.md) — StarWM用注意力路由减少移动背景对任务相关预测的干扰。 `📅unknown` `[entity_page]`
 - [SRD：latent 世界模型的状态–读数解耦](wiki/entities/paper-state-readout-decoupling.md) — State–Readout Decoupling (SRD)**（PDF，香港大学 Ag `📅unknown` `[entity_page]`
@@ -7239,7 +7240,7 @@
 - [SONIC（规模化运动跟踪人形控制）](wiki/methods/sonic-motion-tracking.md) — SONIC 将规模化运动跟踪作为人形低层控制的统一预训练目标；论文主张网络容量、MoCap 数据与算力三轴 scaling，并以统一 token 接口接入 VR、视频、VLA 等上游。 `📅2026-05-14` `[method_page]`
 - [SPIDER（物理感知采样式灵巧重定向）](wiki/methods/spider-physics-informed-dexterous-retargeting.md) — SPIDER**（*Scalable Physics-Informed DExterous Retargeting*，Pan 等，arXiv:2511.09484）把跨具身迁移写成：**人体演示只 `📅2026-05-17` `[method_page]`
 - [SSRM — Steady-State Response Method（稳态响应法）](wiki/methods/ssrm-steady-state-response-method.md) — SSRM（稳态响应法）**：给电机/关节施加 **可重复的规定输入**，等响应 **进入稳态**（$\dot\omega$、$\ddot\omega$ 近似常数或为零），测量稳态下的力矩与速度，再 `📅unknown` `[method_page]`
-- [StarVLA](wiki/methods/star-vla.md) — StarVLA**（尤其是其首个技术报告版本 **StarVLA-$\alpha$**）是一个旨在降低 Vision-Language-Action (VLA) 系统复杂性的开源基准模型与框架。 `📅unknown` `[method_page]`
+- [StarVLA 方法入口：受控基线与模块化实验](wiki/methods/star-vla.md) — StarVLA 方法路线是先用统一数据/动作接口建立VLM到动作的简单基线，再控制骨干、动作头和训练配方进行比较；α论文给受 `📅unknown` `[method_page]`
 - [立体匹配基础模型与基准生态](wiki/methods/stereo-matching-foundation-models.md) — 本页汇总 **双目立体匹配（stereo matching）** 在 **基础模型时代** 的主线方法与评测基准，以 [NBS](../entities/paper-nbs-no-bias-stere `📅unknown` `[method_page]`
 - [序列凸化（Successive Convexification, SCvx）](wiki/methods/successive-convexification.md) — 序列凸化**：一种序列凸规划（SCP）算法。每轮在上一条轨迹附近把非线性动力学和非凸约束线性化，解一个凸子问题，再用新轨迹做下一轮的线性化点。 `📅unknown` `[method_page]`
 - [Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)](wiki/methods/sumo.md) — Sumo** 是一种由 RAI Institute 提出的层级化机器人控制框架，专门用于解决**动态全身移动操作 (Whole-Body Loco-Manipulation)** 问题。它打破了传 `📅unknown` `[method_page]`
@@ -7255,7 +7256,7 @@
 - [Truncated Newton（截断牛顿 / Newton-CG）](wiki/methods/truncated-newton.md) — 截断牛顿（Truncated Newton）**：每步不求解精确 Newton 方程 $Hp = -g$，而用 [共轭梯度（CG）](./conjugate-gradient-method.md `📅unknown` `[method_page]`
 - [UHAS（Unified Hand Action Space，统一手部动作空间）](wiki/methods/uhas-unified-hand-action-space.md) — UHAS**（Casas 等，arXiv:2607.03570，UT Dallas IRVL / ASU IRIS，RSS 2026 灵巧操作研讨会）提出一种 **球面几何统一动作空间**：策略不 `📅2026-07-11` `[method_page]`
 - [U-Net](wiki/methods/unet.md) — U-Net 以对称编码器–解码器与跳跃连接融合多尺度特征，在医学分割上极成功，并广泛迁移到机器人与工业缺陷分割。 `📅unknown` `[method_page]`
-- [Unified Multimodal Tokens (统一多模态 Token)](wiki/methods/unified-multimodal-tokens.md) — 统一多模态 Token** 是一种先进的具身智能架构设计。它摒弃了为每种感官模态设计专用神经网络分支的传统做法，转而将所有输入（图像、语言、状态、动作）全部转换为格式一致的 Token 序列，并在 `📅unknown` `[method_page]`
+- [统一多模态 Token（Unified Multimodal Tokens）](wiki/methods/unified-multimodal-tokens.md) — 将图像、语言、状态等表示映射为可在序列模型中交互的 token 接口；不同模态仍可保留各自的编码器、时间轴与输出头，动作也可采用连续回归或生成式解码。 `📅unknown` `[method_page]`
 - [Unsupervised Clustering Fault Compensation（无监督聚类故障补偿）](wiki/methods/unsupervised-clustering-fault-compensation.md) — 聚类故障补偿：对运行数据无监督聚类识别工况/磨损模式，切换预存补偿参数，实现被动自适应。 `📅unknown` `[method_page]`
 - [Value-based Reinforcement Learning（基于值函数的强化学习）](wiki/methods/value-based-reinforcement-learning.md) — 值函数 RL：估计状态-动作价值 $Q(s,a)$ 或 $V(s)$，通过贪心或 $\epsilon$-贪心选动作，适合离散控制。 `📅unknown` `[method_page]`
 - [线特征视觉定位的 EKF 融合](wiki/methods/visual-line-ekf-fusion.md) — 线特征 EKF 融合**在 扩展卡尔曼滤波 下，以行走/里程计运动模型预测场地平面位姿，以 [线匹配](./visual-line-matc `📅unknown` `[method_page]`
