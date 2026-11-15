@@ -771,6 +771,7 @@
 - [HandUMI](wiki/entities/handumi.md) — HandUMI** 是一套面向 **固定基座双臂 + 平行夹爪（parallel-jaw gripper）** 的 **无机器人示教（robot-free demonstration）** 接口与 `📅unknown` `[entity_page]`
 - [汉威科技 柔性传感](wiki/entities/hanwei-flexible-sensing.md) — 汉威科技 柔性传感** 属于 Zane Hub 灵巧手行业综述 的「感知专精（触觉器件）」 `📅unknown` `[entity_page]`
 - [Happy-LLM：从零开始构建大模型](wiki/entities/happy-llm.md) — Happy-LLM 是一套沿原理、手写模型、训练与应用组织的大模型学习课程；本页编译的是官方 README 的课程地图，而不是逐篇实验结果。 `📅unknown` `[entity_page]`
+- [哈佛 CS2680：现代 AI 系统——智能体与系统优化 / Modern AI Systems: Agents and System Optimizations](wiki/entities/harvard-cs2680-modern-ai-systems.md) — CS2680** 是哈佛大学 2026 年秋季的现代 AI 系统课程，围绕**同一个 Agent 系统**从使用现成 Coding Agent 逐步深入到自行设计 Agent Loop、改进 Ha `📅unknown` `[entity_page]`
 - [hdl_graph_slam](wiki/entities/hdl-graph-slam.md) — hdl_graph_slam** 以 **NDT 配准 + 位姿图优化** 构建室外 3D 激光 SLAM。 `📅unknown` `[entity_page]`
 - [Helix 02：Figure 全身自主系统](wiki/entities/helix-02.md) — Helix 02 在 Helix 的语义与动作双系统下增加 System 0：200 Hz 全身关节目标由 1 kHz 身体控制层执行，联合移动、接触与灵巧操作。 `📅unknown` `[entity_page]`
 - [Helix 2.5（Index 预训练 · 30 家庭零样本全身）](wiki/entities/helix-25.md) —  字段 | 内容  `📅unknown` `[entity_page]`
