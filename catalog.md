@@ -42,6 +42,7 @@
 - [AI Engineering from Scratch（AI 工程开源课程）](wiki/entities/ai-engineering-from-scratch.md) — AI Engineering from Scratch** 是一门以可运行代码为主线的 AI 工程课程，从数学和机器学习基础逐步覆盖深度学习、强化学习、LLM、Agent、工具协议和生产系统。 `📅unknown` `[entity_page]`
 - [智星云（AI Galaxy）](wiki/entities/ai-galaxy.md) — 智星云**（ai-galaxy.cn）是上海亘聪信息科技有限公司（安诺其集团子公司）运营的 **GPU 算力服务平台**，产品线从按小时云主机延伸 `📅unknown` `[entity_page]`
 - [AI2-THOR](wiki/entities/ai2-thor.md) — AI2-THOR**（An Interactive 3D Environment for Visual AI）是艾伦人工智能研究所（AI2）于 2017 年推出的早期代表性 **交互式 3D 室内 `📅unknown` `[entity_page]`
+- [AIInfraGuide（AI 基础设施全栈学习指南 / AI Infrastructure Guide）](wiki/entities/aiinfraguide.md) — AIInfraGuide** 是 caomaolufei/AIInfraGuide 提供的开源教程站， `📅unknown` `[entity_page]`
 - [AirSim](wiki/entities/airsim.md) — AirSim**（microsoft/AirSim）是微软开源的 **高保真视觉仿真平台**，基于 **[Unreal `📅unknown` `[entity_page]`
 - [AlexNet](wiki/entities/alexnet.md) — AlexNet** 是 2012 ImageNet 竞赛冠军 CNN：更大深度/宽度、ReLU、Dropout 与 GPU 训练，证明端到端深度卷积特征可碾压传统手工特征。 `📅unknown` `[entity_page]`
 - [AI Agent Handbook（阿里云企业级智能体工程白皮书）](wiki/entities/aliyun-ai-agent-handbook.md) — AI Agent Handbook** 是阿里云（Alibaba Cloud）与社区共同维护的**企业级 Agent 工程实践指南**，围绕架构、构建、运行、治理、调优五个责任域，解释如何把模型能 `📅unknown` `[entity_page]`
