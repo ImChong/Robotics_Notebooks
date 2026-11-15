@@ -77,6 +77,8 @@ flowchart LR
 
 ## 关联页面
 
+- [AesFormer：七维美学编辑规划](../entities/paper-aesformer.md) — GRPO-A 在照片编辑计划上用格式、参考意图对齐与创造性奖励做组内优化；这里的 action 是照片编辑指令，并非机器人控制量。
+
 - [policy-optimization](./policy-optimization.md)
 - [LightNav-0](../entities/paper-lightnav-0.md)
 - [Prism-GRPO](../entities/paper-prism-grpo.md)
