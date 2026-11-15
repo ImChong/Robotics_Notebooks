@@ -5815,7 +5815,7 @@
 - [StereoPatch（arXiv:2609.15509）](wiki/entities/paper-stereopatch.md) — StereoPatch**（*StereoPatch: Patch-Aligned RGB-Depth Fusion for Spatial Perception in Robot Manipul `📅unknown` `[entity_page]`
 - [Stochastic Challenges / KALLAX 基准（arXiv:2611.12804）](wiki/entities/paper-stochastic-challenges-kallax.md) — Benchmarking Real-World Robotic Manipulation through Stochastic Challenges*（[arXiv:2611.12804](http `📅unknown` `[entity_page]`
 - [随机动作标记化全身控制：基于随机动作标记化的人形全身控制](wiki/entities/paper-stochastic-motion-tokenization-humanoid-wbc.md) — 随机动作标记化全身控制**（*Whole-Body Humanoid Control via Stochastic Motion Tokenization*，[arXiv:2610.36452 `📅unknown` `[entity_page]`
-- [STR：面向人形移动操作的时空偏好动作重定向](wiki/entities/paper-str-spatiotemporal-retargeting.md) — 一句话定义：** STR 把重定向优化重点放在任务关键帧、关键身体部位与物体接触上，再将重定向结果用于人形控制。 `📅unknown` `[entity_page]`
+- [STR：面向人形移动操作的时空偏好动作重定向](wiki/entities/paper-str-spatiotemporal-retargeting.md) — STR 把重定向优化重点放在任务关键帧、关键身体部位与物体接触上，再将重定向结果用于人形控制。 `📅unknown` `[entity_page]`
 - [StreamEval：交互式流式视频生成评测基准](wiki/entities/paper-streameval.md) — StreamEval** 评测模型在持续生成视频时响应逐步到达的请求、维持内容与状态一致性的能力（arXiv:2610.28402）。 `📅unknown` `[entity_page]`
 - [Streaming Failure Forecasting（arXiv:2611.11688）](wiki/entities/paper-streaming-failure-forecasting.md) — SFF**（*Streaming Failure Forecasting: VLA Failure Monitors That Keep Learning After Deployment*，[a `📅unknown` `[entity_page]`
 - [Streaming Interventions：Ego-MC-Bench 与 Ego-CoMist](wiki/entities/paper-streaming-interventions.md) — Streaming Interventions**（*Can Video Large Language Models Correct Mistakes as They Occur?*，[arXiv `📅unknown` `[entity_page]`
@@ -6088,7 +6088,7 @@
 - [视频世界模型综述：Reading, Writing, Sharing, and Interacting](wiki/entities/paper-video-world-model-survey.md) — mermaid `📅unknown` `[entity_page]`
 - [Video2DoorTraversal](wiki/entities/paper-video2door-traversal.md) — Video2DoorTraversal**（*Push Door Traversal via Simulated Door Twins*，[arXiv:2608.20251](https://ar `📅unknown` `[entity_page]`
 - [Video2World（arXiv:2610.04432）](wiki/entities/paper-video2world-coding-agents-benchmark.md) — Video2World**（*Video2World: Benchmarking Coding Agents for Interactive World Modeling from Embodie `📅unknown` `[entity_page]`
-- [ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction](wiki/entities/paper-vidihand.md) — 一句话定义**：**ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验— `📅unknown` `[entity_page]`
+- [ViDiHand — Video Diffusion for 4D Hand Motion Reconstruction](wiki/entities/paper-vidihand.md) — ViDiHand** 将 **预训练 video diffusion（Wan2.1-VACE）** 的内部表征当作 **egocentric 双手 4D 重建** 的通用先验——经 **hand- `📅unknown` `[entity_page]`
 - [Vidu S2：实时交互、可编辑与空间视频生成](wiki/entities/paper-vidu-s2.md) — Vidu S2**（Zhang et al., arXiv:2609.11638，[项目页 / Demo](https:// `📅unknown` `[entity_page]`
 - [ViLoMan（arXiv:2609.19340）](wiki/entities/paper-viloman.md) — ViLoMan**（*Learning Visual-Proprioceptive Whole-Body Loco-Manipulation Skills for Humanoid Robots `📅unknown` `[entity_page]`
 - [Vine 采样：把示范者多模态显式写进扩散策略数据（arXiv:2611.10949）](wiki/entities/paper-vine-sampling-diffusion-policy.md) — 论文：** *Explicitly capturing demonstrator multi-modality for distillation into diffusion policies*， `📅unknown` `[entity_page]`
@@ -6504,7 +6504,7 @@
 - [机器人关键帧与运动编辑工具（选型入口）](wiki/entities/robot-motion-keyframe-editors.md) — 本页把三条 **公开仓库** 上的运动编辑工具放在一起对照：它们都解决「已有轨迹 / 姿态序列 → 人工修正 → 再导出」的问题，但 **绑定仿真栈、文件格式与是否纯前端** 差异很大，选型时应先确定 `📅unknown` `[entity_page]`
 - [Robot Native Engine（RNE）](wiki/entities/robot-native-engine.md) — Robot Native Engine（RNE）** 是一个以 Rust 编写的机器人原生仿真引擎，将机器人、传感器、执行器、Agent 和 episode 纳入同一仿真世界，并支持固定步进、he `📅unknown` `[entity_page]`
 - [robot_retargeter](wiki/entities/robot-retargeter.md) — robot_retargeter**（<https://github.com/ccrpRepo/robot_retargeter>）是一条面向研究与工程的 **人形动作重定向工具链**：把  `📅unknown` `[entity_page]`
-- [Robot Viewer](wiki/entities/robot-viewer.md) — Robot Viewer** 是由开发者 `fan-ziqi` 开发的一个全功能 Web 机器人模型查看与仿真平台。它最大的特点是支持多种主流机器人描述格式，并能直接在浏览器中运行物理仿真。 `📅unknown` `[entity_page]`
+- [Robot Viewer](wiki/entities/robot-viewer.md) — Robot Viewer** 是由开发者 `fan-ziqi` 开发的一个全功能 Web 机器人模型查看与仿真平台，支持 URDF/MJCF/USD/Xacro 多格式并在浏览器中运行 MuJoC `📅unknown` `[entity_page]`
 - [星动纪元（ROBOTERA）：数据、大脑与人形整机路线](wiki/entities/robotera.md) — 星动纪元以数据、大脑、运控、灵巧手、人形整机组成软硬件全栈；研究入口能分别观察“预测未来怎样帮助动作”和“策略怎样部署到机器人”。 `📅unknown` `[entity_page]`
 - [Robotic World Model（ETH RSL：RWM / RWM-U）](wiki/entities/robotic-world-model-eth-rsl.md) — Robotic World Model（RWM）** 与 **Uncertainty-Aware RWM（RWM-U）** 是 ETH Zurich（RSL / LAS 等）开源的 **模型基强化 `📅unknown` `[entity_page]`
 - [Robotics Bench（交互式机器人硬件学习演示）](wiki/entities/robotics-bench.md) — Robotics Bench 是以 Colorfigures 制作的浏览器交互式机器人硬件教学演示，通过等距插画和步骤控件讲解电路板装配、元件放置、焊点与供电等场景。 `📅unknown` `[entity_page]`
@@ -7130,7 +7130,7 @@
 - [FCN 全卷积网络](wiki/methods/fcn-semantic-segmentation.md) — FCN 将分类网全连接改为卷积，实现任意尺寸输入的端到端像素级语义分割，是深度语义分割的起点。 `📅unknown` `[method_page]`
 - [Feedback Linearization Control（反馈线性化控制）](wiki/methods/feedback-linearization-control.md) — 反馈线性化：通过状态反馈与坐标变换消去系统非线性，化为可控线性形式后复用 LQR/PID。 `📅unknown` `[method_page]`
 - [FlashSAC](wiki/methods/flashsac.md) — FlashSAC**（arXiv:2604.04539，[项目页](https://holiday-robot.github `📅unknown` `[method_page]`
-- [足锁 IK（Orange Duck 配方）](wiki/methods/foot-locking-ik-orangeduck.md) — 一句话：** 把「脚滑」当作 **趾在世界空间的速度与源动画不一致**；用 **最小旋转的两骨 IK** 把趾钉到（锁定或离线修正后的）目标，再用 **三次惯性化** 在跟动画与跟地板之间平滑切换 `📅unknown` `[method_page]`
+- [足锁 IK（Orange Duck 配方）](wiki/methods/foot-locking-ik-orangeduck.md) — 把「脚滑」当作 **趾在世界空间的速度与源动画不一致**；用 **最小旋转的两骨 IK** 把趾钉到（锁定或离线修正后的）目标，再用 **三次惯性化** 在跟动画与跟地板之间平滑切换——锁趾不锁跟，I `📅unknown` `[method_page]`
 - [Fuzzy Logic Control（模糊逻辑控制）](wiki/methods/fuzzy-logic-control.md) — 模糊逻辑控制：将操作经验编码为 If-Then 模糊规则，经模糊推理与去模糊得到控制量，无需精确动力学方程。 `📅unknown` `[method_page]`
 - [Generalized Advantage Estimation (GAE)](wiki/methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
 - [Gauss-Newton（高斯-牛顿法）](wiki/methods/gauss-newton.md) — Gauss-Newton（GN）**：最小化 $\|r(x)\|^2$ 时，用残差 Jacobian $J(x) = \partial r / \partial x$ 构造 Hessian 近似  `📅unknown` `[method_page]`
