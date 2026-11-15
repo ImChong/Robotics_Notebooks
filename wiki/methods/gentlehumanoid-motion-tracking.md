@@ -4,11 +4,10 @@ type: method
 tags: [humanoid, motion-tracking, impedance-control, compliance, contact-rich, ppo, teacher-student, sim2real, unitree-g1, mjlab, human-robot-interaction, paper, rl, motion-control, body-system-stack, stanford]
 status: complete
 code: https://github.com/Axellwppr/gentle-humanoid
-updated: 2026-11-15
+updated: 2026-10-06
 venue: curated
 related:
   - ../entities/paper-gentlehumanoid.md
-  - ../entities/paper-ila-interface-level-adapter.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-09-compliance-contact.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -217,8 +216,6 @@ sequenceDiagram
 - **柔顺项在奖励与部署阻抗参数两边都要对齐**，只拷权重不够。
 
 ## 关联页面
-
-- [ILA：接口级可迁移柔顺适配器](../entities/paper-ila-interface-level-adapter.md) — 不重训原 tracking 策略，而从交互历史修正参考动作；论文 Table I 对比了 ILA 与 GentleHumanoid 的引导误差和恢复/保持指标。
 
 - [Whole-Body Control](../concepts/whole-body-control.md) — 全身协调控制背景
 - [Contact Dynamics](../concepts/contact-dynamics.md) — 多 link 接触与力分布
