@@ -430,6 +430,13 @@ op: ingest
 - **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
 - **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
 
+## [2026-11-15] ingest | AesFormer（ICML 2026）：七维美学规划与结构化照片编辑
+
+- 意图：核对 arXiv:2605.22126 的 APR 任务、VCMP/AesRecon、SFT+GRPO-A、动作条件编辑器及评测，并归档到独立论文实体。
+- 开源：AesFormer 训练/推理/评测代码公开，权重由官方仓库链接；AesRecon 图片需签协议邮件申请，基础模型与依赖须自行配置。
+- 知识节点：wiki/entities/paper-aesformer.md；交叉引用：wiki/methods/grpo.md。
+- 校验范围：arXiv v1 全文；官方 README；Stage 1 规划与 Stage 2 编辑脚本；未在本机运行模型训练/推理。
+
 ## [2026-11-15] ingest | 补齐本次 lint PR 涉及节点的原文通读、结构与工程实践；新增 StarVLA-α 独立论文实体，复核硬件官方运行入口及论文评测边界，使 41 个 wiki 节点健康度全部达到 3/3，并挂载 4 条健康度 3/3 的既有纵深路线。
 
 ## [2026-11-15] lint | 全量健康检查与预警修复
