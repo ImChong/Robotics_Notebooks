@@ -8,6 +8,8 @@
 - **原始链接：** https://mp.weixin.qq.com/s/BzDv1uDIfGlKPw90F_e3Cw
 - **入库日期：** 2026-10-01
 - **抓取方式：** WebFetch 直拉 `mp.weixin.qq.com` 正文（Camoufox 快照缺失，`wechat-article-for-ai` 三次失败）
+- **核对范围：** 已完整阅读原始抓取归档 `sources/raw/wechat_llm_inference_vram_estimation_2026-10-01.md`（包括正文公式、两组演算、局限和附录伪代码）；公众号网页是否完整一致、计算器工具和 GPU 实测未核验。核对发现文中「LLaMA-3 8B」示例参数回算约 6.20B，与型号命名不符，已在 wiki 提示。
+- **通读：** 已完成
 - **原始抓取落盘：** [`sources/raw/wechat_llm_inference_vram_estimation_2026-10-01.md`](../raw/wechat_llm_inference_vram_estimation_2026-10-01.md)
 - **一句话说明：** 把 LLM 自回归推理 VRAM 拆成权重、KV cache、激活、CUDA 固定开销与框架因子五块；给出 GQA/MQA、MLA、MoE、SwiGLU、张量并行与 vLLM 碎片系数的逐层公式，并以 LLaMA-3 8B 与 DeepSeek-V3 671B 手算对照；声称估算误差约 ±15–20%，生产建议再留 10–15% 余量并用 `nvidia-smi` 实测。
 - **步骤 2.5（开源核查）：** 科普 + 在线计算器叙述，**无**单一官方 GitHub/项目页可核；文中「计算器」为作者配套工具，入库日未在正文提取到可点击 URL。

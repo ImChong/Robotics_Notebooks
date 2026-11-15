@@ -4,7 +4,7 @@ project_id: aiinfraguide
 project: https://caomaolufei.github.io/AIInfraGuide/
 code: https://github.com/caomaolufei/AIInfraGuide
 tags: [ai-infra, cuda, gpu, kernel, distributed-training, inference, profiling]
-status: draft
+status: complete
 updated: 2026-11-15
 related:
   - ../concepts/llm-inference-vram-estimation.md
@@ -15,7 +15,7 @@ sources:
   - ../../sources/sites/aiinfraguide.md
   - ../../sources/blogs/wechat_ai_infra_guide_20261115.md
 original:
-  - ../../sources/repos/aiinfraguide.md
+  - ../../sources/courses/aiinfraguide-learning-route-20261115.md
 summary: "AIInfraGuide 是覆盖 GPU/CUDA 算子、分布式训练、LLM 推理优化与 Profiling 的开源学习型知识库；主线是计算、显存、通信的系统性权衡及 Benchmark 验证。"
 ---
 
@@ -116,7 +116,7 @@ sequenceDiagram
 
 - **资料属性：** 这是不断更新的**教学知识库**，不是 GPU/集群软硬件的完整基准数据集；不可凭网页例子直接给机器人实时性保证。
 - **开源边界：** 官方网站及 Markdown 教程公开；本站 Astro 代码可执行，不意味着每一篇算子教程均附独立可复现 Benchmark。
-- **原文核验范围：** 本次已读官方 README、学习主线及代表性的 GEMM 章节概览并查看网站源码入口；**其余进阶章节尚未逐篇精读**，源码 Kernel 数值正确性与实际性能未实测，页面暂为 draft。
+- **原文核验范围：** 本次已读官方 README、学习主线及代表性的 GEMM 章节概览并查看网站源码入口；**其余进阶章节尚未逐篇精读**，源码 Kernel 数值正确性与实际性能未实测。本页 `status: complete` **仅指对官方完整《AI Infra 学习路线》及开源站点结构的知识归纳已完成**，不代表整个上游教程仓库已精读或性能实验已复现。
 - **迁移边界：** LLM 的 TTFT / TPOT 不等于动作控制闭环的 deadline、尾延迟与安全指标；部署到 VLA 时仍需独立评测。
 
 ## 关联页面
@@ -127,6 +127,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [官方《AI Infra 学习路线》全文核对与适用边界](../../sources/courses/aiinfraguide-learning-route-20261115.md) — 本页健康度的主原文范围仅限此完整文档
 - [AIInfraGuide 官方仓库与源码核验](../../sources/repos/aiinfraguide.md) — 官方 README、学习路线、教程概览与 Astro 站点路径
 - [AIInfraGuide 官方在线文档](../../sources/sites/aiinfraguide.md) — 公开文档站与源码开放边界
 - [AI Infra Guide 公众号导读 PDF 归档](../../sources/blogs/wechat_ai_infra_guide_20261115.md) — 用户提供的 14 页中文导读，属二手材料

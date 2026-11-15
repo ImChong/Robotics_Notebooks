@@ -2,7 +2,7 @@
 type: concept
 tags: [llm, inference, vram, deployment, vla, infrastructure]
 status: complete
-updated: 2026-10-01
+updated: 2026-11-15
 related:
   - ../queries/vla-deployment-guide.md
   - ../comparisons/china-gpu-cloud-platforms.md
@@ -12,6 +12,8 @@ related:
   - ../entities/agent-lightning.md
   - ../queries/embodied-fm-taxonomy-loop.md
 sources:
+  - ../../sources/blogs/wechat_llm_inference_vram_estimation_2026-10-01.md
+original:
   - ../../sources/blogs/wechat_llm_inference_vram_estimation_2026-10-01.md
 summary: "LLM 自回归推理显存可拆成权重、KV cache、激活、CUDA 固定开销与框架因子；参数量 alone 不够，GQA/MLA/MoE、batch×上下文与 TP 决定能否上 24 GB 卡或必须多卡。"
 ---
@@ -57,7 +59,7 @@ flowchart TD
   T -->|集群总占用| Q["all_gpu = scalable + cuda_fixed × tp"]
 ```
 
-## 核心公式（decoder，标准路径）
+## 核心原理：显存账本公式（decoder，标准路径）
 
 ### 1. 模型权重（每层）
 
@@ -95,6 +97,13 @@ flowchart TD
 | TP 把一切都除以卡数 | **每卡 CUDA 固定开销** 仍全额叠加 |
 | Encoder（BERT）与 Decoder 同一套 | Encoder **无** 自回归 KV cache |
 | 估算即实测 | 作者经验 **±15–20%**；生产建议 ×1.1–1.15 并用 `nvidia-smi` 验证 |
+
+## 工程实践
+
+1. 从模型原始配置核实 `hidden_size`、`head_dim`、KV 头数、embedding 是否共享及 MoE 专家数，不凭模型商品名推导显存。
+2. 固定 GPU、CUDA/推理框架版本、batch、上下文与生成长度，分别记录加载权重后的基线、Prefill 峰值和 Decode 峰值显存。
+3. 对照上述估算与实际 `nvidia-smi` / 运行时指标，给峰值并发和量化方案留余量，异常时逐项核对 KV 缓存与碎片。
+4. **原文数据核对警示：** 附件原始算例把 LLaMA-3 标成 8B，但其公式回算所得仅约 6.20B 参数；这是**原文内部的数值不一致**。以下 14.5 GB 等结果只作为原文算例记录，不能作为真实 LLaMA-3 8B 在指定设备上的独立实测容量。
 
 ## 参考演算（文中数值，FP16 量级）
 
