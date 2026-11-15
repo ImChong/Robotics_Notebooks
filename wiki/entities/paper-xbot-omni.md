@@ -104,9 +104,9 @@ flowchart TB
 
 论文 §4.4 采用“视觉定位 + 深度 + 相机内参 + 外参”的几何链，把物体位置变到 Actor 的身体坐标系：
 
-```math
+$
 \hat{\mathbf{p}}^{\mathrm{body}}=R_{\mathrm{cam}}^{\mathrm{body}}\mathcal{P}(\hat{g},\hat{D},K)+\mathbf{t}_{\mathrm{cam}}^{\mathrm{body}}
-```
+$
 
 这个位置是**动作语义条件**，说到指称短语的时刻是**时间条件**。身体动作生成之后，还需依 Q1 / X2 的关节结构、指向轴校准和执行约束进行运动学适配；不能把生成的人体运动表征视作可直接下发的电机命令。
 
