@@ -2,7 +2,7 @@
 type: method
 tags: [sim2real, domain-adaptation, vision, manipulation]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ../concepts/sim2real.md
   - ./qt-opt.md

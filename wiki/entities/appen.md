@@ -2,7 +2,7 @@
 type: entity
 tags: [data-labeling, egocentric, public-company, appen]
 status: complete
-updated: 2026-09-07
+updated: 2026-11-15
 summary: "Appen（ASX: APX）：全球 AI 训练数据商；管理层称 egocentric 采集商品化加速，差异化在人类质检与指令–图像一致性筛选。"
 related:
   - ./innodata.md

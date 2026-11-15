@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, humanoid, leju, roban, motion-control, imitation-learning, openlet]
 status: complete
-updated: 2026-10-11
+updated: 2026-11-15
 project_id: let-humanmotion-roban2
 project: https://www.lejubfm.lejurobot.com/docs/datasets/openlet
 code: https://atomgit.com/OpenLET/LET-HumanMotion-Roban2.git
@@ -20,6 +20,8 @@ sources:
   - ../../sources/sites/letools-roban-wholebody-vla.md
   - ../../sources/repos/lejulab-arm.md
 summary: "OpenLET LET-HumanMotion-Roban2 是面向乐聚 Roban 2.2 的小脑全身动作集：五类动作重定向到鲁班并按 120 fps 重采样，申请制；可用于运控模仿训练与动作跟踪评测，精确条数及文件模态须以获批数据包核验。"
+original:
+  - ../../sources/datasets/openlet-humanmotion-roban2.md
 ---
 
 # OpenLET LET-HumanMotion-Roban2
@@ -39,6 +41,14 @@ summary: "OpenLET LET-HumanMotion-Roban2 是面向乐聚 Roban 2.2 的小脑全�
 | IL | Imitation Learning | 从参考动作或演示轨迹学习机器人策略 |
 | HEFT | — | 教程中用于 Roban 真机控制的控制器 |
 | fps | frames per second | 官方说明重采样到每秒 120 帧 |
+
+## 为什么重要
+
+- **面向特定人形本体的 120 fps 预重定向参考库**：直接提供面向乐聚 Roban 2.2 的五类全身动作轨迹，省去从人体 MoCap 从零适配骨骼与关节限位的工程成本，适合小脑运控模仿学习起步。
+
+## 核心原理
+
+- **人体动作 → Roban 2.2 重定向**：将原始人体动作经骨骼映射与 120 fps 重采样后对齐到 Roban 2.2 自由度空间，保证参考轨迹在关节限位与时间分辨率上可直接用于全身跟踪或模仿训练。
 
 ## 数据集概况
 
@@ -73,7 +83,7 @@ flowchart LR
 
 关键工程门槛不是单纯把动作帧送入策略，而是核验获批数据的状态/动作字段、相机或语言观测、切分协议与 Roban 控制配置是否一致。
 
-## 工程实践与限制
+## 工程实践与局限
 
 1. 先从平台申请数据，阅读审批返回的许可和使用条款；不要从代码仓可见性推断数据权限。
 2. 审核包内文件清单、标注、时间戳、采样频率和训练/测试划分。公开网页只明确 120 fps 与机型重定向，没有公布字段级 schema 或精确样本量。

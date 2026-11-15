@@ -2,7 +2,7 @@
 type: method
 tags: [rl, manipulation, vision, continuous-actions, off-policy, google-robotics]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ./reinforcement-learning.md
   - ./mt-opt.md

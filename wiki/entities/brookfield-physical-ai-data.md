@@ -2,7 +2,7 @@
 type: entity
 tags: [real-estate, data-collection, physical-ai, brookfield]
 status: complete
-updated: 2026-09-07
+updated: 2026-11-15
 summary: "Brookfield 等地产运营商：跨大型物业组合采集机器人训练数据的合作叙事；与 Paxini 自建工厂形成「地产即数据车间」对照轴。"
 related:
   - ./paxini.md

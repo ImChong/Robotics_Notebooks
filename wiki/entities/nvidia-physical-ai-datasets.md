@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, nvidia, physical-ai, huggingface, robotics, autonomous-driving, nurec, gr00t, sim2real, open-source]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ./isaac-gr00t.md
   - ./nvidia-nurec.md

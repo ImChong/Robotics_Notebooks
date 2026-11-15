@@ -1,3 +1,5 @@
+- **通读：** 已完成
+
 # Robot-Powered Data Flywheels（arXiv:2511.19647）
 
 > 来源归档（ingest）

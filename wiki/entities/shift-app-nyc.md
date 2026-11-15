@@ -2,7 +2,7 @@
 type: entity
 tags: [data-collection, egocentric, service, microagi, new-york]
 status: complete
-updated: 2026-09-07
+updated: 2026-11-15
 summary: "Shift（shiftapp.nyc）：MicroAGI 旗下纽约免费家政，换取保洁员第一人称清洁录像；匿名化后授权给机器人/AI 实验室。"
 related:
   - ./micro1.md

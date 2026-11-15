@@ -2,7 +2,7 @@
 type: overview
 tags: [data-collection, data-pyramid, data-flywheel, supervision, album, embodied-data]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-15
 related:
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../entities/paper-data-pyramid-embodied-manipulation.md
@@ -17,6 +17,8 @@ sources:
   - ../../sources/blogs/wechat_jushen_qianyan_data_flywheel_idle_spin_2026-09-12.md
   - ../../sources/blogs/wechat_jushen_qianyan_robot_data_supervision_types_2026-09-14.md
 summary: "具身智能前沿四篇连载：四层采集术语 → 五层数据金字塔 → 飞轮最小闭环 → 示范/失败/接管监督分流，从采数黑话到可转动的数据飞轮。"
+original:
+  - ../../sources/blogs/wechat_jushen_qianyan_embodied_data_album_collection_to_flywheel.md
 ---
 
 # 具身数据从采集到飞轮（系列地图）
@@ -70,6 +72,16 @@ flowchart TB
 
 - [depth-embodied-data](../../roadmap/depth-embodied-data.md) Stage 0–5 把本系列 #1–#2 展开为可交付管线；#3–#4 对应 Stage 5 飞轮与配比。
 - 广义 [Data Flywheel](../concepts/data-flywheel.md) 覆盖产业案例与 RL/ICL 读法；#3 聚焦 **最短信息链** 判据。
+
+## 工程实践
+
+- **按纵深路线分阶段落地**：将四篇连载对应到 [具身数据纵深路线](../../roadmap/depth-embodied-data.md) 的 Stage 0–5（口径分层 → 采集 → 清洗 → 聚合 → 扩增 → 飞轮），避免跳过清洗与格式规范直接堆数据量。
+- **先建最小闭环再扩规模**：优先用小规模真机 + 自动标注跑通「采集–清洗–训练–评测」闭环，再决定是否引入大规模人视频或仿真合成。
+
+## 局限
+
+- **专题地图定位**：本页为系列连载的导航枢纽，具体算法细节、超参配方与定量消融需跳转各对应实体页与概念页查看。
+- **技术演进快**：部分数据配方与开源工具链（如 LeRobot 版本、各家采集硬件）迭代迅速，工程选型前须核对最新仓库状态。
 
 ## 关联页面
 

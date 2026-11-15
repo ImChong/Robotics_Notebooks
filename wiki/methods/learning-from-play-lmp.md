@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, unsupervised, latent-plan, manipulation, google-robotics]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ./imitation-learning.md
   - ./behavior-cloning.md

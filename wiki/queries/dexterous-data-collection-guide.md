@@ -2,7 +2,7 @@
 type: query
 tags: [dexterity, data-collection, teleoperation, simulation, robot-hand]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-15
 related:
   - ../entities/allegro-hand.md
   - ../entities/ruka-v2-hand.md
@@ -33,6 +33,8 @@ sources:
   - ../../sources/sites/x2robot-twindex.md
   - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
 summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、Allegro Hand 或低成本遥操作装置采集高质量、多模态的灵巧抓取与操作演示数据。"
+original:
+  - ../../sources/papers/imitation_learning.md
 ---
 
 # 灵巧操作数据采集指南

@@ -6,7 +6,7 @@ arxiv: "2310.08864"
 code: https://github.com/google-deepmind/open_x_embodiment
 tags: ["paper", "dataset", "cross-embodiment", "vla", "rt-x", "hmi-papers", "google-deepmind", "stanford"]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-15
 venue: "ICRA 2024 · arXiv v9（2025-05-14）· HMI P055"
 summary: "Open X-Embodiment 整合 60 个数据集、22 种机器人本体与 100 万+ 轨迹；RT-1-X / RT-2-X 用 9 种机械臂的训练混合数据验证跨本体正迁移，但不等于解决跨机器人动作/动力学对齐。"
 original:

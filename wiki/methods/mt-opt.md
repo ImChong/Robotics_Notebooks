@@ -2,7 +2,7 @@
 type: method
 tags: [rl, multi-task, manipulation, google-robotics, off-policy]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ./qt-opt.md
   - ./reinforcement-learning.md

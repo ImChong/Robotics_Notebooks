@@ -8,7 +8,7 @@ tags:
   - cross-embodiment
   - skild-ai
 status: complete
-updated: 2026-10-07
+updated: 2026-11-15
 arxiv: "2509.23745"
 related:
   - ./skild-ai.md

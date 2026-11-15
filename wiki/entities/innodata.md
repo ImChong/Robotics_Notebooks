@@ -2,7 +2,7 @@
 type: entity
 tags: [data-labeling, physical-ai, public-company, innodata]
 status: complete
-updated: 2026-09-07
+updated: 2026-11-15
 summary: "Innodata（INOD）：AI 训练/对齐数据供应商；2026 财报电话会披露动捕实验室与企业级物理 AI 多模态项目；市值约 19 亿美元量级（入库日口径）。"
 related:
   - ./appen.md

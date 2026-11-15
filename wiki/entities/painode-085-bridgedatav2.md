@@ -8,7 +8,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 code: https://github.com/rail-berkeley/bridge_data_v2
 summary: Diverse manipulation behaviours designed to support broad generalisation.
 related:

@@ -8,7 +8,7 @@ tags:
   - agentic
   - manipulation
 status: complete
-updated: 2026-10-18
+updated: 2026-11-15
 arxiv: "2609.24563"
 project: https://boweili666.github.io/ARSTAG/
 code: https://github.com/boweili666/ARSTAG
@@ -23,6 +23,8 @@ sources:
   - ../../sources/sites/arstag.md
   - ../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md
 summary: "ARSTAG（arXiv:2609.24563）：协调场景重建、专家生成与数据扩增，把单张图像和任务指令转成仿真训练示范。"
+original:
+  - ../../sources/papers/arstag_arxiv_2609_24563.md
 ---
 
 # ARSTAG（arXiv:2609.24563）
@@ -91,6 +93,16 @@ sequenceDiagram
 1. 开源边界：**已开源** — 项目页链接的仓库可达（git ls-remote）。
 2. 核心机制：单张图像 + 指令 → 场景重建 → 专家示范生成 → 数据扩增，由智能体协调。
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
+
+## 工程实践
+
+- **定位为合成数据支路**：ARSTAG 从单图与任务指令经场景重建、专家生成和扩增产出仿真示范，工程上应归入合成数据管线而非真机采集装置。
+- **重建误差过滤**：专家轨迹生成前需校验重建场景的碰撞几何与尺度一致性，避免把单图重建误差带入下游策略训练集。
+
+## 局限
+
+- **依赖单图重建质量**：遮挡严重或材质反射强烈的物体会导致几何重建失真，进而影响专家轨迹可行性。
+- **Sim2Real 差距**：纯仿真合成示范仍需配合真机微调或域随机化，不能单独替代真机多模态数据。
 
 ## 关联页面
 

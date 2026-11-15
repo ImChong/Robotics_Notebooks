@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, georgia-tech, stanford]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2410.24221"
 code: https://egomimic.github.io/
 summary: "Aria 第一视角 + 3D 手部轨迹与机器人遥操数据共训 IL；人类数据缩放效率高于等量机器人数据。"
@@ -16,6 +16,8 @@ sources:
   - ../../sources/papers/ego_survey_03_egomimic.md
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
   - ../../sources/papers/ego_9_papers_catalog.md
+original:
+  - ../../sources/papers/ego_survey_03_egomimic.md
 ---
 
 # EgoMimic
@@ -99,7 +101,12 @@ EgoMimic 的判断很大胆：人类戴着 Project Aria 眼镜采到的第一视
 - 代价全在跨具身 gap：人手与机器人的运动差异、外观差异、数据分布差异都要显式处理，**Ego 视频不天然等于策略数据**，须经重建、对齐、重定向与物理过滤。
 - 本页为 Ego 9 篇专题的 **清单索引** 条目（归 [02 人→机器人](../overview/ego-category-02-human-to-robot.md)），量化 benchmark、消融与实机指标以原文 PDF / 项目页为准。
 
-## 常见误区
+## 工程实践
+
+- **人–机共训配方**：将第一视角人手视频与少量机器人遥操作轨迹混合训练，通过统一腕部/手部表征空间让策略同时吸收人类数据的场景多样性与机器人数据的动作精度。
+- **视点与手–爪对齐**：采集人视频时尽量固定头戴相机视点并记录手部 3D 关键点，降低下游映射到双臂夹爪时的几何歧义。
+
+## 常见误区与局限
 
 1. Ego 视频不会天然等于机器人策略数据；须经过重建、对齐、重定向与物理过滤。
 
@@ -108,7 +115,7 @@ EgoMimic 的判断很大胆：人类戴着 Project Aria 眼镜采到的第一视
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
-## 与其他页面的关系
+## 关联页面
 
 - 技术地图：[ego-9-papers-technology-map.md](../overview/ego-9-papers-technology-map.md)
 - 分类 hub：[ego-category-02-human-to-robot.md](../overview/ego-category-02-human-to-robot.md)

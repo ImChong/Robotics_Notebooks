@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
+status: complete
 updated: 2026-09-06
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
@@ -13,6 +13,8 @@ sources:
 summary: "松灵机器人 开源项目 DataEval（数据集/Benchmark）：评测基准与工具…"
 institutions:
   - agilex
+original:
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
 ---
 
 # DataEval

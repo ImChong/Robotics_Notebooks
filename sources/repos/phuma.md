@@ -1,3 +1,5 @@
+- **通读：** 已完成
+
 # PHUMA（Physically Reliable Humanoid Locomotion Dataset）
 
 - **标题**: PHUMA

@@ -1,3 +1,5 @@
+- **通读：** 已完成
+
 # AMASS（Archive of Motion Capture as Surface Shapes）
 
 - **标题**: AMASS

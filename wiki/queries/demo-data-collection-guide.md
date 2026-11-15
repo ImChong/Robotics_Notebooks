@@ -14,6 +14,8 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/behavior-cloning.md
   - ../tasks/bimanual-manipulation.md
+original:
+  - ../../sources/papers/imitation_learning.md
 ---
 
 # 操作任务演示数据收集指南

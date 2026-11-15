@@ -2,7 +2,7 @@
 type: entity
 tags: [consumer-electronics, camera, data-collection, dyson]
 status: complete
-updated: 2026-09-07
+updated: 2026-11-15
 summary: "Dyson CameraJet（2026-09）：带 100k 像素口腔相机与 Gap Optical Targeting AI 的电动牙刷；官方称图像不存云；机器人圈解读为潜在臂部运动数据采集形态。"
 related:
   - ../queries/humanoid-robot-data-collection-landscape.md

@@ -2,7 +2,7 @@
 type: method
 tags: [vla, transformer, manipulation, foundation-policy, google-robotics]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 related:
   - ../entities/paper-rt-1.md
   - ../entities/paper-rt-2.md
