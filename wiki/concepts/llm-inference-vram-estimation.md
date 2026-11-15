@@ -115,6 +115,7 @@ flowchart TD
 
 ## 关联页面
 
+- [AIInfraGuide：AI Infra 全栈学习指南](../entities/aiinfraguide.md) — 补充 KV Cache / TP 上下游的 CUDA 算子、分布式通信和 serving 性能分析路径
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md)
 - [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md)
 - [VLA](../methods/vla.md)
