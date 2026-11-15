@@ -6760,7 +6760,7 @@
 - [wbc_fsm (G1 全身控制 FSM 部署框架)](wiki/entities/wbc-fsm.md) — wbc_fsm** 是 **ccrpRepo / ZSTU Robotics** 针对 **Unitree G1** 人形机器人开发的 C++ 部署框架，以**有限状态机（FSM）**组织多种控制 `📅unknown` `[entity_page]`
 - [Webots](wiki/entities/webots.md) — Webots](https://github.com/cyberbotics/webots) 收录于具身智能研究室 [开源项目主表](https://github.com/RealXiaoze/hu `📅unknown` `[entity_page]`
 - [OpenFOAM MCP Server（webworn/openfoam-mcp-server）](wiki/entities/webworn-openfoam-mcp-server.md) — OpenFOAM MCP Server（webworn/openfoam-mcp-server）是OpenFOAM 执行层 MCP 服务，突出苏格拉底式教学问答：带用户逐步搭建算例并解释边界条件选择， `📅unknown` `[entity_page]`
-- [Sparks of Weight-Space Programming / 权重空间编程的初步探索](wiki/entities/weight-space-programming.md) — 通用大模型依据任务描述推理神经网络的计算，直接读取、编写或修改权重，而不通过梯度训练；是否允许前向反馈取决于实验设置。 `📅unknown` `[entity_page]`
+- [Sparks of Weight-Space Programming / 权重空间编程的初步探索](wiki/entities/weight-space-programming.md) — 权重空间编程（Weight-Space Programming）指把神经网络权重视为可读、可写的程序，由通用大模型根据任务目标推理并修改其计算；本博客实验刻意禁止梯度训练，但这一**概念本身不排斥梯度 `📅unknown` `[entity_page]`
 - [Weights & Biases（W&B）](wiki/entities/weights-and-biases.md) — Weights & Biases**（wandb.ai）是面向 AI 研发团队的 **实验追踪与协作平台**。在机器人学习工程里，它最常承担「 `📅unknown` `[entity_page]`
 - [傲天U1（西湖机器人四足）](wiki/entities/westlake-aotian-u1.md) — 傲天U1** 是 西湖机器人 的四足机器狗产品（官网口号「智形合一 进化无界」），面向校园 / 园区的多楼层导航递送、巡检与社区养老服务；是公司 `📅unknown` `[entity_page]`
 - [西湖机器人（Westlake Robotics）](wiki/entities/westlake-robotics.md) — 西湖机器人**（西湖机器人科技（杭州）有限公司，官网 wlrobo.com）是西湖大学王东林团队（机器智能实验室 MiLAB）的产业化公司，自称「机器人大脑公司」：用 **「大脑」多模态运动操作模 `📅unknown` `[entity_page]`
