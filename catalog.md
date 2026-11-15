@@ -4703,7 +4703,7 @@
 - [DAgger 原论文（Ross et al., 2011）](wiki/entities/paper-ross-dagger.md) — A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning**（[PMLR v `📅unknown` `[entity_page]`
 - [Route-Guided CBF-QP Repair（arXiv:2611.01713）](wiki/entities/paper-route-guided-cbf-qp-repair.md) — Route-Guided CBF-QP Repair**（*Route-Guided CBF-QP Repair for Safe Vision-Language-Action Models*， `📅unknown` `[entity_page]`
 - [RouteRLT（arXiv:2609.26467）](wiki/entities/paper-routelt.md) — RouteRLT**（*Learning When and Which RL Specialist Should Control a Vision-Language-Action Policy*， `📅unknown` `[entity_page]`
-- [ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）](wiki/entities/paper-rove-humanoid-vla-intervention.md) — ROVE** 是 XPENG Robotics 与复旦、港中文、上交等团队提出的 **人形 VLA 后训练 RL 框架**（arXiv:2606.17011，[项目页](https://xpeng `📅unknown` `[entity_page]`
+- [ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）](wiki/entities/paper-rove-humanoid-vla-intervention.md) — ROVE（arXiv:2606.17011，XPENG Robotics 等）为人形 VLA 部署后训练提出人机闭环 RL：全身 MoCap 干预采集将轨迹分为 rollout/adaptation/ `📅unknown` `[entity_page]`
 - [分层多通道倾覆预测（arXiv:2611.12261）](wiki/entities/paper-rover-tipover-multichannel.md) — Hierarchical Multi-Channel Tip-Over Prediction via Isolated Temporal Models for Planetary Rover Saf `📅unknown` `[entity_page]`
 - [RPL：复杂地形上的鲁棒人形多向感知行走](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — RPL**（*Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains*，Yuanhang Zhang 等，Am `📅unknown` `[entity_page]`
 - [RPV-SemNav（arXiv:2607.25448）](wiki/entities/paper-rpv-semnav.md) — RPV-SemNav**（*Room-Mediated Co-occurrence for Zero-Shot Object-Centric Semantic Navigation via Fro `📅unknown` `[entity_page]`
@@ -5924,9 +5924,9 @@
 - [Teaching a Tree to Recover（arXiv:2610.39775）](wiki/entities/paper-teaching-a-tree-to-recover.md) — Teaching a Tree to Recover**（*Teaching a Tree to Recover: Online Distillation of an LLM Supervisor `📅unknown` `[entity_page]`
 - [TeCH：基于对比表征学习的时间距离建模，用于人形机器人全身控制](wiki/entities/paper-tech-humanoid-control.md) — TeCH**（*Temporal Distance modeling via Contrastive representation learning for Humanoid whole-body `📅unknown` `[entity_page]`
 - [TeleDexter：接近人类水平的灵巧遥操作](wiki/entities/paper-teledexter.md) — TeleDexter**（*Towards Human-level Dexterous Teleoperation*，[arXiv:2607.11481](https://arxiv.org/ab `📅unknown` `[entity_page]`
-- [TeleGate](wiki/entities/paper-telegate.md) — TeleGate**（*Whole-Body Humanoid Teleoperation via Gated Expert Selection with Motion Prior*，USTC 等 `📅unknown` `[entity_page]`
+- [TeleGate](wiki/entities/paper-telegate.md) — TeleGate（RSS 2026）：门控 Top-1 选择冻结多域专家 + VAE 历史→未来运动先验，在 2.5 h 惯性动捕数据上实现 G1 高动态全身实时遥操作，避免蒸馏统一策略的性能损失。 `📅unknown` `[entity_page]`
 - [TeleOCR（arXiv:2608.12898）](wiki/entities/paper-teleocr.md) — TeleOCR**（*Navigating Document Parsing Across Digital and Camera-Captured Documents*，[arXiv:2608.1 `📅unknown` `[entity_page]`
-- [Teleopit](wiki/entities/paper-teleopit.md) — Teleopit**（*A Full-Embodiment Humanoid Teleoperation System*，西湖大学 / 上海创智学院，arXiv:2608.01834）用 **PI `📅unknown` `[entity_page]`
+- [Teleopit](wiki/entities/paper-teleopit.md) — Teleopit：PICO VR 统一驱动全身跟踪 + 跨形态灵巧手优化重定向 + 主动视觉；History Encoder 与 failure-aware rewind 提升 live VR 跟踪； `📅unknown` `[entity_page]`
 - [TEMPO: Learning Temporal Context for Dynamic Robot Manipulation](wiki/entities/paper-tempo-dynamic-manipulation.md) — 一句话定义：** TEMPO 给预训练 VLA 增加“目标正在怎么动”和“机器人刚才做了什么”两种时间线索，让机械臂能更稳地跟踪移动目标，也能判断当前处于任务哪个阶段。 `📅unknown` `[entity_page]`
 - [TEMPO: Semantic-Action Decoupled RL Post-Training for VLAs](wiki/entities/paper-tempo.md) — TEMPO**（arXiv:2608.07314 v2）是一种面向视觉-语言-动作策略（VLA）的语义-动作双时间尺度[强化学习后训练](../metho `📅unknown` `[entity_page]`
 - [TempoLoco（arXiv:2610.14753）](wiki/entities/paper-tempoloco-motion-adaptive-temporal-receptive-fields.md) — TempoLoco**（*Beyond Fixed Visual History: Learning Motion-Adaptive Temporal Receptive Fields for C `📅unknown` `[entity_page]`
@@ -6022,7 +6022,7 @@
 - [Ultra-Fusion（韧性多传感器融合 SLAM）](wiki/entities/paper-ultra-fusion-multi-sensor-slam.md) — Ultra-Fusion**（Tian et al., arXiv:2606.21223，项目页， `📅unknown` `[entity_page]`
 - [UltraText Bench：图像生成中的双语视觉文本评测](wiki/entities/paper-ultratext-bench.md) — UltraText Bench 测试模型能否在整张图中准确呈现中英文密集文本，而不是只生成漂亮但内容错误的标题。 `📅unknown` `[entity_page]`
 - [UMA（多级表面对齐超精细人体 Avatar）](wiki/entities/paper-uma.md) — UMA**（*Ultra-detailed Human Avatars via Multi-level Surface Alignment*，[arXiv:2506.01802](https:// `📅unknown` `[entity_page]`
-- [UME-EXO（Universal Manipulation Exoskeleton）](wiki/entities/paper-ume-exo.md) — UME**（Universal Manipulation Exoskeleton）是 Ant Group 与 Stanford 团队提出的 **上肢外骨骼遥操作与数据采集** 系统（arXiv:2 `📅unknown` `[entity_page]`
+- [UME-EXO（Universal Manipulation Exoskeleton）](wiki/entities/paper-ume-exo.md) — UME（Universal Manipulation Exoskeleton，arXiv:2606.14218）是 Ant Group / Stanford 提出的低成本上肢外骨骼遥操作平台：实时透明 `📅unknown` `[entity_page]`
 - [In-the-Wild Compliant Manipulation with UMI-FT（arXiv:2601.09988）](wiki/entities/paper-umi-ft.md) — In-the-Wild Compliant Manipulation with UMI-FT**（Hojung Choi, Yifan Hou, Chuer Pan, Seongheon Hong `📅unknown` `[entity_page]`
 - [UMI-Live（arXiv:2610.39385）](wiki/entities/paper-umi-live.md) — UMI-Live**（*UMI-Live for In-The-Wild Bimanual Robotics Data Collection*，[arXiv:2610.39385](https:/ `📅unknown` `[entity_page]`
 - [UMI-WM（arXiv:2610.23913）](wiki/entities/paper-umi-wm.md) — UMI-WM**（*UMI-WM: Interactive World Modeling for Bimanual Manipulation from Wrist Cameras*，[arXiv: `📅unknown` `[entity_page]`
@@ -6280,7 +6280,7 @@
 - [X-Morph：跨形态人体运动先验](wiki/entities/paper-xmorph.md) — X-Morph**（*Human Motion Priors for Scalable Robot Learning Across Morphologies*，[arXiv:2606.30290 `📅unknown` `[entity_page]`
 - [XPACE（Joint World and Action Modeling · arXiv:2609.17372）](wiki/entities/paper-xpace.md) — XPACE**（*XPACE: Joint World and Action Modeling from Heterogeneous Experience*，[arXiv:2609.17372 `📅unknown` `[entity_page]`
 - [XR-2：1500 小时双臂家务到在线修正](wiki/entities/paper-xr2-bimanual-household.md) — Scaling Bimanual Household Manipulation from 1,500 hours of Demonstrations to On-Policy Correction `📅unknown` `[entity_page]`
-- [XRoboToolkit](wiki/entities/paper-xrobotoolkit.md) — XRoboToolkit**（*A Cross-Platform Framework for Robot Teleoperation*，字节跳动 PICO / 佐治亚理工 / 乔治梅森，arXiv `📅unknown` `[entity_page]`
+- [XRoboToolkit](wiki/entities/paper-xrobotoolkit.md) — XRoboToolkit（arXiv:2508.00097，ByteDance PICO / Georgia Tech / GMU）：基于 OpenXR 的跨平台 XR 遥操作套件——低延迟立体视觉、 `📅unknown` `[entity_page]`
 - [YAHMP：人形通用运动跟踪里什么真的重要？](wiki/entities/paper-yahmp.md) — YAHMP**（*Yet Another Humanoid Motion tracking Policy*；论文 *What Matters in Humanoid General Motion  `📅unknown` `[entity_page]`
 - [YOCO（一次校准的动捕手部标定）](wiki/entities/paper-yoco.md) — YOCO 用少量成对的原始与目标手部姿态，经 HyperNet 一次前馈预测对冻结 MANO 估计器的 LoRA 式修正，使每个用户的动捕标定不再需要逐人微调。 `📅unknown` `[entity_page]`
 - [YOLO v1（You Only Look Once）](wiki/entities/paper-yolo-unified-realtime-detection.md) — YOLO**（You Only Look Once）是 Joseph Redmon 等提出的 **统一实时目标检测** 方法（arXiv:1506.02640，CVPR 2016）。它将检测从「区 `📅unknown` `[entity_page]`
