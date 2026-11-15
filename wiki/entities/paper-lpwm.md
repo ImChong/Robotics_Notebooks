@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, jepa, world-models, sparse-representation, planning, nyu, duke, mila, brown, ami-labs]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2608.22764"
 venue: "arXiv 2026"
 code: https://github.com/YilunKuang/lpworldmodel
@@ -14,6 +14,7 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/latent-imagination.md
 sources:
+  - ../../sources/papers/lewm_arxiv_2603_19312.md
   - ../../sources/papers/lpwm_arxiv_2608_22764.md
   - ../../sources/repos/lpworldmodel.md
   - ../../sources/blogs/wechat_tencent_world_model_questions_2026-09-05.md
@@ -124,7 +125,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [LeWM](./paper-lewm.md)
+- [LeWM](./paper-lewm.md) — v3 使用下一 latent MSE + SIGReg，主训练无 EMA 或 stop-gradient；PushT 的 96.0±2.83% 对应其固定数据与规划预算，不能与 LpWM 不同容量/预算下的稀疏表示增益直接相减。（[来源复核归档](../../sources/papers/lewm_arxiv_2603_19312.md)）
 - [LeJEPA](./paper-lejepa.md)
 - [LeVJEPA](./paper-levjepa.md)
 - [Rectified LpJEPA](./paper-rectified-lpjepa.md) — 稀疏非负表示的分布匹配前序
@@ -134,6 +135,8 @@ sequenceDiagram
 - [潜空间想象](../concepts/latent-imagination.md)
 
 ## 参考来源
+
+- [LeWM 原文与边界复核](../../sources/papers/lewm_arxiv_2603_19312.md)
 
 - [LpWM 论文归档](../../sources/papers/lpwm_arxiv_2608_22764.md)
 - [YilunKuang/lpworldmodel](../../sources/repos/lpworldmodel.md)

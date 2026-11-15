@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, computer-vision, segmentation, semantic-mapping, 2d-to-3d, robotics, sim2real]
 status: complete
-updated: 2026-09-29
+updated: 2026-11-15
 related:
   - ../entities/paper-abot-recon.md
   - ./embodied-perception-six-spatial-representations.md
@@ -109,7 +109,7 @@ Gap 被定位后，收窄它有三条互补路线，成本与保真度递增：
 
 ### 路线②：多视角一致性（去时序抖动）
 
-- **做什么**：跨帧用配准（ICP / 特征匹配）与对象关联把同一对象稳定绑定，抑制逐帧掩码边界与 ID 跳变，[SAM2](../entities/paper-sam2.md) 的视频级掩码传播即属此类。离线多视角辐射场上，[LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) 进一步用共视 + 3D 尺度把 SAM 粒度 **重分级** 成结构层级，避免把 2D 粒度或绝对尺寸当成 3D 语义级；[LightSplat](../entities/paper-lightsplat.md) 则用 3D 掩码过滤 + 单步聚类把 SAM/CLIP **索引到高斯簇**，training-free、FD 约秒级。
+- [LEGO](../entities/paper-lego-leveled-language-gaussian-splatting.md) — 通过共视与三维尺度重分级得到结构层级；单词/短语查询使用前三层 CLIP，复合查询才使用场景图 CoR，二者的输入与评测口径应分开。（[来源复核归档](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)）
 - **取舍**：显著缓解语义闪烁与对象分裂；但要维护跨帧关联状态，机载有内存/算力开销。LEGO 是按场景优化（约 20–60 min），不是机载在线；LightSplat 更快但语义在 **对象簇** 上，零件层级弱于 LEGO。
 - **关键坑**：只做单帧提升就写进地图，同一对象在地图里分裂成多个或来回漂移；或用全局物理尺度切层级，类内尺寸差会拆错家族。
 

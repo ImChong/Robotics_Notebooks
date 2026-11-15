@@ -3,7 +3,7 @@
 type: overview
 tags: [open-source, hardware, humanoid, quadruped, manipulator, mobile-robot, wechat-curator, stanford]
 status: complete
-updated: 2026-05-18
+updated: 2026-11-15
 related:
   - ./robot-open-source-wechat-issue01-curator.md
   - ../entities/open-source-humanoid-hardware.md
@@ -22,6 +22,7 @@ related:
   - ../entities/parol6-source-robotics.md
   - ../queries/humanoid-hardware-selection.md
 sources:
+  - ../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
 summary: "微信公众号「机械Robot」第02期《10个全开源网址》：Reachy2、Poppy、InMoov、Stanford Doggo/Pupper、myCobot 320、myAGV、TidyBot2、Kinova Gen3、Franka Research 3、PAROL6 的实体索引与官方入口。"
 ---
@@ -53,9 +54,13 @@ summary: "微信公众号「机械Robot」第02期《10个全开源网址》：R
 | 15 | [大象 myCobot 320](../entities/elephantrobotics-mycobot-320.md) | 桌面六轴协作臂；官方文档仓与中文支持 |
 | 16 | [大象 myAGV](../entities/elephantrobotics-myagv.md) | 麦克纳姆轮移动平台；ROS/ROS2 与 SLAM 示例 |
 | 17 | [TidyBot2](../entities/tidybot2.md) | 家庭物品整理移动操作；论文 + 硬件文档站 |
-| 18 | [Kinova Gen3](../entities/kinova-gen3.md) | 轻型六轴协作臂；医疗/科研向 SDK |
+| 18 | [Kinova Gen3](../entities/kinova-gen3.md) | 轻型协作臂系列；区分本体、自由度、夹爪与 ROS 发行版 |
 | 19 | [Franka Research 3](../entities/franka-research-3.md) | 七轴力控科研臂；官方 docs + frankarobotics 组织 |
 | 20 | [PAROL6](../entities/parol6-source-robotics.md) | Source Robotics 桌面六轴；PAROL-docs + 作者 GitHub |
+
+## 本期入口的维护复核
+
+[2026-11-15 官方文档复核](../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md)更新本期 myCobot 320、Kinova Gen3 与 Poppy 条目：分别核对 M5/Pi 文档路径、Gen3/Gen3 lite 与 ROS 分支、软硬件许可和 CAD LFS 下载方式。原清单保留为发现线索，项目文档、驱动示例与硬件发布物须按各自入口选择；本次没有把转载清单视作所有型号都已实机复现的证据。
 
 ## 与第01期的关系
 
@@ -73,5 +78,7 @@ summary: "微信公众号「机械Robot」第02期《10个全开源网址》：R
 - [原文第02期（微信）](https://mp.weixin.qq.com/s/wl_WvXn78WHxIRCrZb5xfA)
 
 ## 参考来源
+
+- [官方硬件文档与入口复核](../../sources/repos/open-robot-hardware-entry-review-2026-11-15.md)
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)

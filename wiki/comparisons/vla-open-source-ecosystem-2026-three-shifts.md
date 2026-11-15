@@ -2,10 +2,11 @@
 type: comparison
 tags: [vla, open-source, embodied-ai, robot-foundation-model, cross-embodiment, real-time-inference, robotics-infrastructure, reproducibility]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 original:
   - ../../sources/blogs/wechat_shenlan_15_vla_open_source_2026-11-14.md
 related:
+  - ../queries/embodied-fm-taxonomy-loop.md
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -122,6 +123,7 @@ flowchart TD
 
 ## 关联页面
 
+- [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — 先区分 VLA、世界模型与训练评测基础设施，再按开放程度和控制接口选型。
 - [2025 VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — 2025 资源起步视角
 - [VLA 方法](../methods/vla.md) — 输入/输出/控制接口
 - [StarVLA](../methods/star-vla.md) — 模块化实验台

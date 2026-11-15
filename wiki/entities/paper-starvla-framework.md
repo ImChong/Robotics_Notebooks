@@ -8,8 +8,9 @@ code_scope: "starVLA_dev 主仓的通用架构/数据加载/训练/评测基础�
 project_distinction: "独立 framework 论文 arXiv:2604.05014；不同于既有 StarVLA-alpha arXiv:2604.11757 的简化策略对照研究"
 tags: [paper, vla, framework, modular-training, benchmarks, reproducibility, hkust]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/star-vla.md
   - ../methods/vla.md
   - ../comparisons/vla-open-source-ecosystem-2026-three-shifts.md
@@ -123,6 +124,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 统一训练框架后仍须对齐任务、输入条件、成功判据和评测协议。
 - [StarVLA-α](../methods/star-vla.md)
 - [VLA](../methods/vla.md)
 - [2026 VLA 项目对比](../comparisons/vla-open-source-ecosystem-2026-three-shifts.md)

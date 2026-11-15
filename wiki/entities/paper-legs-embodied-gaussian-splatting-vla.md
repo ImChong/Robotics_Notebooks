@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, loco-manipulation, 3dgs, gaussian-splatting, sim2real, teleoperation-free, unitree-g1, stanford, sam3d, mujoco]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2606.01458"
 related:
   - ../tasks/loco-manipulation.md
@@ -19,6 +19,7 @@ related:
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-lego-leveled-language-gaussian-splatting.md
 sources:
+  - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
   - ../../sources/papers/legs_arxiv_2606_01458.md
   - ../../sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md
   - ../../sources/sites/legsvla-github-io.md
@@ -135,7 +136,7 @@ flowchart TB
 - [π0.7 Policy](../methods/pi07-policy.md) — 论文骨干之一
 - [Unitree G1](./unitree-g1.md) — 评测平台
 - [GS-Playground](./gs-playground.md) — 另一条 3DGS×仿真视觉 RL 路线
-- [LEGO（层级语言高斯溅射）](./paper-lego-leveled-language-gaussian-splatting.md) — 易混名：WHU/HKUST 的开放词汇 3DGS 场景理解，不是本页 VLA 数据工厂
+- [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) — WHU/HKUST 的离线层级语言 3DGS，与本页 LEGS 演示合成是不同项目；LEGO 需逐场景训练，代码采用 CC BY-NC-SA 4.0，不能把其开放词汇分割结果计为 LEGS 的策略收益。（[来源复核归档](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)）
 - [VIRAL](./paper-viral-humanoid-visual-sim2real.md) — 视觉 sim 数据 + loco-manip（RL 蒸馏而非 VLA 合成 IL）
 - [OASIS](./paper-loco-manip-04-oasis.md) — 仿真 teleop + 离线渲染域随机化 + Flow Matching（arXiv:2606.08548）
 - [Teleoperation](../tasks/teleoperation.md) — 数据成本对照
@@ -167,6 +168,8 @@ flowchart TB
 | Task 3（长时程） | LEGS(200) 2–6/10 | **0/10**（三 backbone） | 低于 LEGS | 不同任务设定（行走–放置循环） |
 
 ## 参考来源
+
+- [LEGO 原文与边界复核](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)
 
 - [legs_arxiv_2606_01458.md](../../sources/papers/legs_arxiv_2606_01458.md) — arXiv 摘录与 Table 1 摘要
 - [wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md](../../sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md) — 具身智能研究室微信公众号策展导读

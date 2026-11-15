@@ -4,10 +4,11 @@ project_id: hiertext
 code: https://github.com/google-research-datasets/hiertext
 tags: [dataset, ocr, scene-text, layout-analysis, computer-vision, benchmark]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 original:
   - ../../sources/datasets/hiertext.md
 related:
+  - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/yolo26-ocr-document-parsing.md
   - ../entities/ultralytics.md
   - ../entities/paper-teleocr.md
@@ -79,6 +80,7 @@ flowchart TD
 
 ## 关联页面
 
+- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 将 OCR/版面分析放在感知数据层评测，区分文本指标与机器人闭环任务指标。
 - [YOLO26-Text + PP-OCRv6](../methods/yolo26-ocr-document-parsing.md)
 - [Ultralytics](./ultralytics.md)
 - [TeleOCR](./paper-teleocr.md)

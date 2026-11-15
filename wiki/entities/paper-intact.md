@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, jepa, latent-dynamics, model-based-planning, cem, search-free, zju, tsinghua, roboparty]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-15
 arxiv: "2607.26056"
 code: https://github.com/zju3dv/INTACT-JEPA
 related:
@@ -20,6 +20,7 @@ related:
   - ../concepts/embodied-fm-latency-generalization-tradeoff.md
   - ../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md
 sources:
+  - ../../sources/papers/lewm_arxiv_2603_19312.md
   - ../../sources/papers/intact_arxiv_2607_26056.md
   - ../../sources/sites/intact-jepa-github-io.md
   - ../../sources/repos/intact-jepa.md
@@ -51,7 +52,7 @@ summary: "INTACT（arXiv:2607.26056，ZJU/清华AIR/RoboParty Lab）：同构四
 
 ## 为什么重要
 
-- **补上前向 WM 的另一半：** [LeWM](./paper-lewm.md) 类模型学会预测「动作会产生什么效果」；INTACT 进一步学「为了实现意图应执行什么动作」，闭合表征–控制不对称。
+- [LeWM](./paper-lewm.md) — 动作条件前向预测结合 CEM，区别于 INTACT 的无搜索意图到动作路径；原文相对 DINO-WM 的最高 48 倍规划提速受任务和预算限制，不是 INTACT Direct 时延的同协议基线。（[来源复核归档](../../sources/papers/lewm_arxiv_2603_19312.md)）
 - **延迟可读：** Direct **毫秒级**（约 **2.9–5.5 ms**），相对上千候选 CEM（约秒级，叙事约 **300×**）更贴 [实时性边界](../concepts/embodied-fm-latency-generalization-tradeoff.md)。
 - **与分解式 WM 互补：** [DWM Separating](./paper-dwm-separating-world-effects.md) 改训练期世界/动作效应；INTACT 改 **逆问题接口**（意图读出）。
 - **多任务共享编码器：** 一四任务编码器仍提升每域，说明意图坐标可跨任务复用。
@@ -198,6 +199,8 @@ sequenceDiagram
 - [FB / BFM-Zero / INTACT / Mimic / VLA 任务空间表征对比](../comparisons/fb-bfm-zero-intact-mimic-vla-task-space.md) — Goal-Reach 子空间相对 FB 球与 Mimic 曲线的对照
 
 ## 参考来源
+
+- [LeWM 原文与边界复核](../../sources/papers/lewm_arxiv_2603_19312.md)
 
 - [INTACT 论文摘录（arXiv:2607.26056）](../../sources/papers/intact_arxiv_2607_26056.md)
 - [项目页归档](../../sources/sites/intact-jepa-github-io.md)

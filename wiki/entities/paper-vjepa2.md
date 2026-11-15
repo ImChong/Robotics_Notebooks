@@ -10,7 +10,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-11-13
+updated: 2026-11-15
 arxiv: "2506.09985"
 code: https://github.com/facebookresearch/vjepa2
 related:
@@ -27,6 +27,7 @@ related:
   - ./paper-rise-adaptive-imagination-wam.md
   - ./paper-levjepa.md
 sources:
+  - ../../sources/papers/odeworld_arxiv_2607_27924.md
   - ../../sources/papers/vjepa2_arxiv_2506_09985.md
   - ../../sources/repos/vjepa2.md
   - ../../sources/sites/meta-vjepa2-blog.md
@@ -210,12 +211,14 @@ sequenceDiagram
 - [Generative World Models](../methods/generative-world-models.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 - [Manipulation](../tasks/manipulation.md)
-- [ODEWorld](./paper-odeworld.md) — 连续时间 JVP 速度监督对照（论文视频基线之一）
+- [ODEWorld](./paper-odeworld.md) — 用物理时间上的潜空间 ODE 与 JVP 速度监督做连续预测；归档版本没有动作条件，子目标辅助策略不等于 V-JEPA 2-AC 的动作条件反事实规划接口。（[来源复核归档](../../sources/papers/odeworld_arxiv_2607_27924.md)）
 - [RISE（酷哇 · 驾驶 WAM）](./paper-rise-adaptive-imagination-wam.md) — 冻结 V-JEPA 2 编码器 + 自适应 latent rollout
 - [LeVJEPA](./paper-levjepa.md) — LeJEPA+SIGReg 视频预训练：不要 EMA/predictor，同数据重训省 5.6–20.8× FLOP；无 AC/规划
 - [DeWorldSG](./paper-deworldsg.md) — 冻结 V-JEPA 2 作 3D SSG 关系 probe（非 latent 规划）
 
 ## 参考来源
+
+- [ODEWorld 原文与边界复核](../../sources/papers/odeworld_arxiv_2607_27924.md)
 
 - [V-JEPA 2 论文归档（arXiv:2506.09985）](../../sources/papers/vjepa2_arxiv_2506_09985.md)
 - [facebookresearch/vjepa2 代码索引](../../sources/repos/vjepa2.md)

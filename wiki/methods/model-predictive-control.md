@@ -2,7 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-15
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
@@ -13,6 +13,7 @@ related:
 original:
   - ../../sources/papers/force_moment_mpc_biped_reading_arxiv_2104_00065.md
 sources:
+  - ../../sources/papers/lg_dkgp_arxiv_2611_16645.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
 summary: "MPC（模型预测控制）通过在线滚动优化未来轨迹，在约束控制与人形/腿足运动规划中广泛使用。"
@@ -262,6 +263,8 @@ print("apply control:", u.ravel())
 
 ## 参考来源
 
+- [LG-DKGP 原文与边界复核](../../sources/papers/lg_dkgp_arxiv_2611_16645.md)
+
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：MPC 代表算法
 - [wechat_shenlan_ai_ad_planning_control.md](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md) — 车载轨迹跟踪 MPC 与 PID/LQR 分工
 - Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control*（IROS 2018，[DOI 10.1109/IROS.2018.8594448](https://doi.org/10.1109/IROS.2018.8594448)）— 凸 MPC 代表论文（四足）
@@ -274,6 +277,7 @@ print("apply control:", u.ravel())
 
 ## 关联页面
 
+- [LG-DKGP](../entities/paper-lg-dkgp.md) — 冻结 LeWM，并用已执行动作历史构造连续性先验来初始化 CEM；主设置每次规划为 300 候选 × 30 轮、执行 25 步后重规划，属于采样式滚动规划实例，不是硬实时伺服的验证。（[来源复核归档](../../sources/papers/lg_dkgp_arxiv_2611_16645.md)）
 - [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 MPC 在规控组合中的位置
 - [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
 - [滚动优化与 ILC（体系⑥）](../overview/robot-control-paradigm-receding-horizon-ilc.md)
