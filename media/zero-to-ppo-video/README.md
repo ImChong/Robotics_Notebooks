@@ -32,6 +32,7 @@
 | `fetch_robots.py` | 按 `robots.json` 把 URDF 与可视网格下载到 `assets/robots/<id>/`（不入库），路径解析同画廊；上游只发布 xacro 的（Create 2、Jackal）连同它 include 的文件一起下载（照画廊的规则：`$(optenv)` 取默认值、`xacro_stubs` 里的包不下载），舞台加载时用 xacro-parser 展开 |
 | `robot3d.js` | 舞台里的 URDF 渲染（three.js + urdf-loader，ES module）：全页共用一个离屏 WebGL 画布、正交相机，世界坐标线性映射到分镜坐标，叠加标注按正运动学定位；加载后用 meshoptimizer 减面到约 15%。另有和手画版同接口的封装：侧视 / 正面 G1、UR5、Go2、小人形图标、扫地机 / 汽车 / 轮式底盘，分镜里改样式的部件变成给连杆上色 |
 | `serve.mjs` | 本目录的极简静态 http 服务：ES module 和 fetch 在 `file://` 下不能用，`render.mjs` / `check_layout.mjs` 都经它打开舞台 |
+| `workbench.mjs` | 生成 `out/<ep>/workbench/`（[video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) 兼容的 `src/workbench.ts`、`SourceReview.tsx`、`timeline.json` 与 `public/` 资源软链），支持 `--open` 自动启动 Workbench 交互式审核时间轴、字幕与成片导出（014 起标准流程） |
 
 ## 用法
 
@@ -44,10 +45,13 @@ node render.mjs ep001 scene 3 0,5,12   # 做分镜时：不配音，单看第 3 
 python3 build.py ep001                 # 旁白 TTS -> out/ep001/timeline.json + narration.wav
 node render.mjs ep001 stills 5,40,90   # 先抽几帧看排版
 node check_layout.mjs ep001            # 输出 no overlap 才算过
+node workbench.mjs ep014 --open        # 014 起：生成 out/ep014/workbench/ 并打开 video-shotcraft Workbench 审核（支持 --shotcraft <dir> --port <port>）
 node render.mjs ep001 video 30         # -> out/ep001/ep001_video.mp4（默认 3 段并行，第 4 个参数可改段数，1 = 一口气渲染）
 node render.mjs ep001 cover            # -> out/ep001/cover.png
 node check_layout.mjs ep001 cover
 ```
+
+> `workbench.mjs` 默认按 `--shotcraft` 参 -> `SHOTCRAFT_DIR` 环境变量 -> `~/.codex/skills/video-shotcraft` -> `~/.claude/skills/video-shotcraft` -> `~/.agents/skills/video-shotcraft` -> `/tmp/video-shotcraft` 顺序查找 `video-shotcraft` 安装目录。
 
 - Chromium：设置 `CHROME=/path/to/chrome`，否则用 playwright-core 默认路径。
 - 走 TLS 代理时设置 `SSL_CERT_FILE`，`build.py` 会让 edge-tts 用这份 CA。
