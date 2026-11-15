@@ -13,6 +13,7 @@ related:
   - ./paper-prm-as-a-judge.md
   - ./paper-topreward.md
   - ./robodojo.md
+  - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
   - ../../sources/papers/nimcritic_arxiv_2610_32776.md
   - ../../sources/sites/nimcritic_rimbot_project.md
@@ -179,6 +180,7 @@ flowchart TD
 - [TOPReward](./paper-topreward.md)
 - [RoboDojo](./robodojo.md)
 - [具身评测纵深路线 Stage 3](../../roadmap/depth-embodied-eval.md)
+- [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 
 ## 参考来源
 
