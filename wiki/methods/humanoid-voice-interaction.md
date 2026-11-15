@@ -7,6 +7,7 @@ related:
   - ../overview/large-model-empowered-humanoids.md
   - ../tasks/vision-language-navigation.md
   - ../entities/paper-qwen-audio-agent.md
+  - ../entities/paper-moshi-speech-text-realtime-dialogue.md
   - ../entities/paper-moss-transcribe-diarize.md
   - ../entities/paper-xiaomi-cocktailasr-1.md
   - ../entities/microsoft-vibevoice.md
@@ -135,6 +136,7 @@ flowchart LR
 - [MOSS Transcribe Diarize](../entities/paper-moss-transcribe-diarize.md) — 长时多说话人 SATS 开源栈（ASR+diarization 上游）
 - [Xiaomi-CocktailASR-1](../entities/paper-xiaomi-cocktailasr-1.md) — 参考声纹 TS-ASR（混合场只听目标说话人 + 拒识）
 - [OpenLess](../entities/openless.md) — 桌面端 ASR→润色→光标注入（研究写作/Prompt 口述；**非**机载语音助手）
+- [Moshi：全双工语音对话模型](../entities/paper-moshi-speech-text-realtime-dialogue.md) — 连续双流语音与对齐文本生成；不直接控制机器人动作。
 - [Qwen-Audio-Agent](../entities/paper-qwen-audio-agent.md) — 开源全双工语音 harness：前台对话与后台 Agent 异步任务编排
 
 ## 参考来源
