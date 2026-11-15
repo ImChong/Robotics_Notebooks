@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, imitation-learning, dagger, online-learning, covariate-shift, cmu]
 status: complete
-updated: 2026-11-09
+updated: 2026-11-15
 venue: "AISTATS 2011"
 related:
   - ../methods/dagger.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, teleoperation, imitation-learning, diffusion-policy, motion-retargeting, whole-body-control, umi, robot-free, data-collection, unitree-g1, vr-tracking, visuomotor, baai-aether]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2605.03452"
 venue: "RSS 2024"
 related:
@@ -21,9 +21,13 @@ sources:
   - ../../sources/papers/bifrost_umi_arxiv_2605_03452.md
   - ../../sources/sites/bifrost-umi-project.md
 summary: "BifrostUMI（arXiv:2605.03452，BAAI Aether）将 UMI 式无机器人示范扩展到人形全身操作：Pico 追踪 + 双腕鱼眼夹爪采集关键点与视觉，扩散高层策略预测 47-D 稀疏关键点动作块，经 SKR 保留度量空间结构并重定向到 G1，再由 mink IK 与全身控制器闭环执行。"
+original:
+  - ../../sources/papers/bifrost_umi_arxiv_2605_03452.md
 ---
 
 # BifrostUMI（Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation）
+
+## 一句话定义
 
 **BifrostUMI** 是 BAAI Aether 团队提出的人形 **全身 visuomotor** 数据采集与部署框架（arXiv:2605.03452，[项目页](https://baai-aether.github.io/BifrostUMI/)）：在 **Universal Manipulation Interface（UMI）** 的「无目标机器人、便携示教」思想之上，用 **VR 追踪 +  instrumented gripper** 同步记录 **稀疏关键点轨迹** 与 **双腕视觉**，训练 **扩散高层策略**，再通过 **Spatial Keypoint Retargeting（SKR）** 与 **全身控制器** 将行为迁移到 **Unitree G1**。
 
@@ -112,6 +116,11 @@ flowchart TB
 ### 4）低层全身控制
 
 重定向参考由 **全身控制器** 跟踪，利用本体反馈维持动态稳定；论文展示 **杂乱桌面 pick-place** 与 **桌下全身扔垃圾**——后者需要 **屈膝、躯干前倾、迈步**，超出纯臂工作空间。
+
+## 工程实践
+
+- **采集–执行解耦**：采集端仅需 Pico 追踪脚/腰关键点 + 双腕鱼眼夹爪，无需占用真机 G1；部署端再由 `SKR → mink IK（36-D）→ WBC` 闭环执行，适合在多场景低成本扩充全身操作示范。
+- **SKR 标定重点**：SKR 仅缩放骨盆–脚高度而保留其余关键点相对几何，部署前需精确标定操作者与目标 G1 的骨盆–脚比例及夹爪开度映射。
 
 ## 常见误区或局限
 

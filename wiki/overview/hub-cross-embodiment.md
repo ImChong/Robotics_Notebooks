@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, hub-cross-embodiment, transfer, any2any, retargeting]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-15
 related:
   - ../concepts/embodied-foundation-model-hardware-codesign.md
   - ../queries/cross-embodiment-transfer-strategy.md

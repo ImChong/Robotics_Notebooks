@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, language-conditioned, zero-shot, google-robotics, manipulation]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ./imitation-learning.md
   - ./dial-instruction-augmentation.md

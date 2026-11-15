@@ -1,3 +1,6 @@
+- **通读：** 已完成
+
+
 # RynnBrain 1.1: Towards More Capable and Generalizable Embodied Foundation Model（arXiv:2607.17977）
 
 > 来源归档（ingest）

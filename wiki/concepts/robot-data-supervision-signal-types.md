@@ -2,7 +2,7 @@
 type: concept
 tags: [data-collection, supervision, behavior-cloning, rollout, intervention, ego, reward-learning]
 status: complete
-updated: 2026-10-13
+updated: 2026-11-15
 related:
   - ./embodied-data-flywheel-minimal-closed-loop.md
   - ./embodied-data-collection-four-layers-taxonomy.md

@@ -1,3 +1,5 @@
+- **通读：** 已完成
+
 # BifrostUMI: Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation
 
 > 来源归档（ingest）

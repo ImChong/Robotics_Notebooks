@@ -1,3 +1,6 @@
+- **通读：** 已完成
+
+
 # GEN-1.5: Embodied Foundation Models are One-Shot Learners（Generalist AI）
 
 > 来源归档（blog / Generalist AI 官方）

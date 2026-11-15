@@ -3,7 +3,7 @@ type: entity
 tags: [perceptron, vla, foundation-policy, open-source, moe, flow-matching, scaling-laws, umi, teleoperation, lerobot, qwen]
 title: Perceptron Isaac 0.5
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 code: https://github.com/perceptron-ai-inc/isaac
 related:
   - ../methods/vla.md
@@ -26,6 +26,8 @@ sources:
   - ../../sources/repos/perceptron-isaac.md
   - ../../sources/sites/perceptron-inc.md
 summary: "Perceptron Isaac 0.5（2026-08）是 36B-A2.5B 稀疏具身基础模型：Qwen-family 骨干 + null-expert 路由，FAST 离散与 Flow/DiT 连续双动作接口；用专有未来 percept 自监督把 1M h 无动作视频与 teleop 共训，报告 210× 遥操作置换律。代码 Apache 2.0 已开源；Hub 权重截至入库日 COMING SOON。"
+original:
+  - ../../sources/blogs/perceptron_isaac_05.md
 ---
 
 # Perceptron Isaac 0.5

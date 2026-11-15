@@ -2,7 +2,7 @@
 type: comparison
 tags: [dexterity, data-collection, teleoperation, hardware, sensors]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-15
 related:
   - ../queries/dexterous-data-collection-guide.md
   - ../entities/paper-nestdex.md
@@ -20,9 +20,13 @@ sources:
   - ../../sources/sites/humantouch-xsparkai.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
 summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基于视觉的遥操作方案，涵盖了精度、成本、遮挡鲁棒性及力反馈等关键维度。"
+original:
+  - ../../sources/papers/imitation_learning.md
 ---
 
 # 数据手套 vs 视觉遥操作 (灵巧数据采集选型)
+
+## 一句话定义
 
 在训练灵巧手（Dexterous Hand）执行复杂任务时，获取高质量的人类演示数据是第一步。目前，**穿戴式数据手套 (Data Gloves)** 和 **基于视觉的遥操作 (Vision-based Teleop)** 是两条最主流的技术路线。
 
@@ -36,7 +40,11 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
 
-## 核心对比
+## 为什么重要
+
+灵巧手自由度高、手指间遮挡频繁，采集装置的精度、遮挡鲁棒性与成本结构直接决定大规模示教管线的上限。
+
+## 核心原理与对比
 
 | 维度 | 穿戴式数据手套 | 基于视觉的遥操作 (如 Meta Quest/Leap) |
 |------|--------------|---------------------------------|
@@ -67,6 +75,16 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 
 第三条通道是 **copilot / 共享自治采数**：操作员不再直接编全部手指关节。[NestDex](../entities/paper-nestdex.md) 用 1-DoF clutch 调节学到的内层手技能，人只管臂与进度；完整示范再训独立外层策略。它不替代手套或视觉重定向（内层技能仍靠多视重定向冷启动），但把「整任务手指协调」从操作员认知负荷里卸掉。
 
+## 工程实践
+
+- **按任务接触需求选型**：精细插拔、强遮挡或需要力反馈的任务优先数据手套；桌面通用抓取与低成本众包采集优先视觉遥操作。
+- **校准与延迟实测**：上线前实测关节角/关键点映射延迟与漂移，避免人手–灵巧手拓扑差异导致“隔空抓握”。
+
+## 局限
+
+- **手套方案**：单套成本高、穿戴繁琐、不同手型需反复标定，且难以规模化众包。
+- **视觉方案**：重度遮挡时关键点易抖动或丢失，且缺乏原生力/触觉反馈。
+
 ## 关联页面
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md)
 - [Allegro Hand 实体](../entities/allegro-hand.md)
@@ -86,3 +104,8 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 - [SPD 论文归档](../../sources/papers/spd_corl_2026.md) — 仿真头显手跟踪 vs 真机 Manus
 - [humantouch-xsparkai.md](../../sources/sites/humantouch-xsparkai.md) — HumanTouch 项目页
 - Qin, B., et al. (2023). *AnyTeleop Framework*.
+
+## 推荐继续阅读
+
+- [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md)
+- [具身数据纵深路线](../../roadmap/depth-embodied-data.md)

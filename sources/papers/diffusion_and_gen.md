@@ -1,3 +1,5 @@
+- **通读：** 已完成
+
 # diffusion_and_gen
 
 > 来源归档（ingest）

@@ -1,3 +1,6 @@
+- **通读：** 已完成
+
+
 # HiPHI: A Large-Scale Benchmark for High-Precision Human Motion and Object-Interaction
 
 > 来源归档（ingest）；以论文 v2、官方项目页与发布文档为准。

@@ -3,7 +3,7 @@
 type: entity
 tags: [hardware, humanoid, industry, vla, figure-ai]
 status: complete
-updated: 2026-10-05
+updated: 2026-11-15
 related:
   - ./helix-25.md
   - ./humanoid-robot.md

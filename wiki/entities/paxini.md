@@ -2,7 +2,7 @@
 type: entity
 tags: [data-collection, tactile, wearable, humanoid, china, paxini]
 status: complete
-updated: 2026-11-03
+updated: 2026-11-15
 summary: "帕西尼 Paxini：触觉传感器–灵巧手–人形矩阵 + 万㎡级全模态实景采集工厂（津/汉等）；PXCap 手套采集视触关节数据；与京东云等共建数据商城。"
 related:
   - ./mimic-wearable-u1.md

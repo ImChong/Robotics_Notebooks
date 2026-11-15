@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-index, physical-ai, awesome-physical-ai, dataset]
 status: complete
-updated: 2026-10-02
+updated: 2026-11-15
 summary: "Robot manipulation dataset with paired human demonstrations for one-shot learning research."
 related:
   - ../entities/awesome-physical-ai-natnew.md

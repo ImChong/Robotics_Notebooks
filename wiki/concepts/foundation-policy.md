@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
-updated: 2026-11-11
+updated: 2026-11-15
 related:
   - ./universal-post-training-robotics.md
   - ./embodied-foundation-model-hardware-codesign.md

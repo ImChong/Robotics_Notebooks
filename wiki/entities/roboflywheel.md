@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, data-flywheel, lerobot, benchmark, simulation, open-source, alibaba, sjtu, tsinghua]
 status: complete
-updated: 2026-09-24
+updated: 2026-11-15
 related:
   - ../concepts/data-flywheel.md
   - ../concepts/embodied-data-flywheel-minimal-closed-loop.md
@@ -15,6 +15,8 @@ sources:
   - ../../sources/sites/roboflywheel-com.md
   - ../../sources/repos/roboflywheel-com.md
 summary: "RoboFlywheel 是阿里巴巴联合上海交大、清华等推出的具身数据开放基础设施：LeRobot 统一数据集目录、Episode 级 Recipe 配方、跨 Isaac/MuJoCo/Genesis 仿真与 Evo-Studio 等统一评测榜单，构成「采集—治理—仿真—评测—回流」飞轮入口。"
+original:
+  - ../../sources/sites/roboflywheel-com.md
 ---
 
 # RoboFlywheel

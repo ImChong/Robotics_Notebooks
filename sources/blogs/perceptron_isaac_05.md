@@ -1,3 +1,6 @@
+- **通读：** 已完成
+
+
 # perceptron_isaac_05
 
 > 来源归档（blog）

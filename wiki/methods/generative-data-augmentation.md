@@ -15,9 +15,13 @@ sources:
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/repos/comfyui.md
 summary: "生成式数据增强（Generative Data Augmentation）利用扩散模型或视频编辑技术，针对性地合成长尾失败场景或罕见物理交互数据，以低成本扩充具身智能的专家演示库。"
+original:
+  - ../../sources/papers/diffusion_and_gen.md
 ---
 
 # Generative Data Augmentation (生成式数据增强)
+
+## 一句话定义
 
 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖动”或“光影极端暗淡”等失败或罕见场景的数据却极难获取。
 
@@ -42,7 +46,9 @@ summary: "生成式数据增强（Generative Data Augmentation）利用扩散模
 4. **文字密集图像生成**：
    [MOSS-Image](../entities/moss-image.md) 可用自然语言或 JSON 布局提示生成包含文字与指定空间构图的图像，适合信息图等视觉素材。它是 2D 文生图模型，不负责编辑机器人轨迹，也不保证图像满足物理约束；用于机器人合成数据前需独立验证场景真实性和物理语义。
 
-## 为什么对具身智能重要
+## 为什么重要
+
+在具身智能训练中，长尾失败场景（滑脱、遮挡、极端光照）真机采集成本极高；生成式增强能以低成本合成语义与视觉多样化样本，补齐长尾分布。
 
 - **打破 10x 数据瓶颈**：获取真实机器人演示的成本是每小时数百美金。生成式增强允许我们以计算成本（每小时数美金）将 100 条真实轨迹扩增为 10,000 条高质量的多样化样本。
 - **提升边缘案例安全性**：通过大量合成“接近失败”的数据，模型可以学会更稳健的闭环纠错（Recovery）策略，而不是一旦发生微小偏移就陷入崩溃。
@@ -56,6 +62,11 @@ summary: "生成式数据增强（Generative Data Augmentation）利用扩散模
 - **控制扩散 (ControlNet)**：通过机器人位姿骨架（Skeleton）约束扩散模型的生成过程，确保视频动作与物理指令对齐。工程上常用 [ComfyUI](../entities/comfyui.md) 把 ControlNet / inpaint / 背景替换编成 **可版本化节点图**（工作流 JSON），而不是一次性 Web UI；它只保证像素管线可复现，**不保证**接触动力学。
 - **潜空间插值**：在世界模型的潜空间内进行特征混合，生成介于两个已知样本之间的中间状态。
 
+## 工程实践
+
+- **节点图固化工作流**：使用 [ComfyUI](../entities/comfyui.md) 将 ControlNet / Inpaint / 背景替换编排为可版本化的 workflow JSON，保证像素级增强管线可复现。
+- **叠加物理清洗**：生成样本入库前必须经过与真机数据相同的几何/动作对齐校验，防止视觉合理但动作不可行的样本污染策略。
+
 ## 关联页面
 - [具身数据清洗 (Data Cleaning)](../concepts/embodied-data-cleaning.md)
 - [Generative World Models](../methods/generative-world-models.md)
@@ -67,3 +78,8 @@ summary: "生成式数据增强（Generative Data Augmentation）利用扩散模
 ## 参考来源
 - Yu, T., et al. (2023). *Scaling Robot Learning with Semantically Imagined Experience*.
 - [Google DeepMind ROSS 项目摘要](../../sources/papers/diffusion_and_gen.md)。
+
+## 推荐继续阅读
+
+- [具身数据清洗](../concepts/embodied-data-cleaning.md) — 合成样本入库前的质量把关
+- [具身数据纵深路线](../../roadmap/depth-embodied-data.md) — Stage 4 扩增与合成在全管线中的位置

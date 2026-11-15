@@ -2,7 +2,7 @@
 type: entity
 tags: [teleoperation, data-collection, dexterous-hand, wearable, exoskeleton, manipulation, mimic-robotics]
 status: complete
-updated: 2026-09-07
+updated: 2026-11-15
 related:
   - ./mimic-hand-m1.md
   - ../tasks/teleoperation.md

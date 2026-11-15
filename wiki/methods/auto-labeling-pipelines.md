@@ -2,7 +2,7 @@
 type: method
 tags: [data-engine, vlm, labeling, data-collection, machine-learning]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 related:
   - ../concepts/embodied-scaling-laws.md
   - ../methods/vla.md
@@ -16,9 +16,13 @@ sources:
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
   - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
 summary: "自动化标注流水线（Auto-labeling Pipelines）利用大视觉语言模型（VLM）自动为海量机器人原始轨迹生成文本描述和成功率标签，极大地降低了具身基础模型的数据准备成本。"
+original:
+  - ../../sources/papers/perception.md
 ---
 
 # Auto-labeling Pipelines (自动化标注流水线)
+
+## 一句话定义
 
 **自动化标注流水线** 是构建具身基础模型（Foundation Models）的关键基础设施。它解决了具身智能中最昂贵的环节：**让数据具备语义（Semantic Grounding）**。
 
@@ -32,6 +36,12 @@ summary: "自动化标注流水线（Auto-labeling Pipelines）利用大视觉�
 | API | Application Programming Interface | 应用程序编程接口 |
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
 | AI | Artificial Intelligence | 人工智能 |
+
+## 为什么重要
+
+随着遥操作与第一视角视频规模从千小时迈向百万小时，纯人工回放打标在成本与吞吐上均不可持续；自动标注是让清洗与语义对齐可缩放的关键。
+
+## 核心原理与主要任务
 
 ## 核心任务
 
@@ -65,6 +75,15 @@ summary: "自动化标注流水线（Auto-labeling Pipelines）利用大视觉�
 - **极低的标注成本**：相比于昂贵的人工标注，API 调用的成本几乎可以忽略不计。
 - **数据多样性**：模型可以自动描述轨迹中的环境细节（如“在昏暗的光线下推开木门”），丰富了预训练分布。
 
+## 工程实践
+
+- **抽样人工复核**：对 VLM 自动生成的任务描述与成败标签定期抽检（如每批 50–100 条），量化假阳性率后再决定是否直接入库。
+- **结合任务结构信号**：将末端夹爪开合、接触力突变或阶段转换事件与 VLM 帧级打标结合，提高长程任务分段边界精度。
+
+## 局限
+
+- **VLM 幻觉与细粒度盲区**：对遮挡下的微米级装配成败或力控滑移，纯视觉 VLM 仍易误判，关键节点需保留人工质检。
+
 ## 关联页面
 - [具身规模法则 (Scaling Laws)](../concepts/embodied-scaling-laws.md)
 - [VLA (Vision-Language-Action Models)](./vla.md)
@@ -82,3 +101,8 @@ summary: "自动化标注流水线（Auto-labeling Pipelines）利用大视觉�
 - [perceptron_egocentric_api.md](../../sources/blogs/perceptron_egocentric_api.md) — WGO-Bench 子任务自动标注 SOTA 与成本对照（2026-07）
 - [macrodata_egocentric_video_3d_hand_actions.md](../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md) — egocentric → 度量手轨迹开源配方与 Action MPJPE（2026-08）
 - [hand_visibility_detector_arxiv_2608_11574.md](../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md) — 可见性加权多视三角化（几何标注门控）
+
+## 推荐继续阅读
+
+- [Embodied Data Cleaning](../concepts/embodied-data-cleaning.md)
+- [具身数据纵深路线](../../roadmap/depth-embodied-data.md)
