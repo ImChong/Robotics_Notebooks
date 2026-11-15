@@ -12,7 +12,7 @@ tags:
   - fudan
   - agibot
 status: complete
-updated: 2026-10-30
+updated: 2026-11-15
 arxiv: "2505.17862"
 code: https://github.com/Lliar-liar/Daily-Omni
 related:
@@ -23,6 +23,7 @@ related:
   - ./ewmbench.md
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../methods/unified-multimodal-tokens.md
+  - ./paper-xbot-omni.md
   - ./agibot-lingxi-x1.md
 sources:
   - ../../sources/papers/daily_omni_arxiv_2505_17862.md
@@ -222,6 +223,7 @@ sequenceDiagram
 - [EWMBench](./ewmbench.md) — 具身世界模型生成评测
 - [五大具身模型分类对比](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) — VLM 能力边界
 - [统一多模态 token](../methods/unified-multimodal-tokens.md) — omni 融合表征接口
+- [XBot-Omni](./paper-xbot-omni.md) — 在音视频理解之外扩展 Thinker–Talker–Actor，增加语义手势、视觉指向与表情；其 Daily-Omni 论文口径为 86.30%，与此页既有榜单不同版本/模型勿混淆
 - [智元灵犀 X1](./agibot-lingxi-x1.md) — 榜首 WITA-Omni 所属产业栈入口
 - [MOSS Transcribe Diarize](./paper-moss-transcribe-diarize.md) — 同生态音频 MLLM，偏转写分离而非 AV 对齐评测
 
