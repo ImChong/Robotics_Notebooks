@@ -12,6 +12,7 @@ related:
   - ./sim2real.md
   - ./behavior-foundation-model.md
   - ../methods/sonic-motion-tracking.md
+  - ../entities/paper-ila-interface-level-adapter.md
   - ../methods/beyondmimic.md
   - ../methods/any2track.md
   - ../methods/deepmimic.md
@@ -326,6 +327,8 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 - [humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md](../../sources/papers/humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md) — Heracles 在 42 篇栈中的策展条目
 
 ## 关联页面
+
+- [ILA：可迁移接口级柔顺适配器](../entities/paper-ila-interface-level-adapter.md) — 在冻结的 MT、MimicLite 与 Sonic 全身跟踪器前修改上肢参考；属于 WBT 部署侧的人机交互接口，而非新的动作重定向器。
 
 - [运控模型评测指标](./motion-control-policy-evaluation-metrics.md) — 本流水线产出的 tracker 用哪些指标验收（Succ 与 MPJPE 联报、终止准则对齐、难度分层）
 
