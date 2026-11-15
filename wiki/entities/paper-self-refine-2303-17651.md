@@ -3,7 +3,7 @@ type: entity
 project_id: self-refine
 tags: [paper, llm-agents, iterative-refinement, self-evaluation, prompt-engineering, cmu, nvidia]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-15
 arxiv: "2303.17651"
 project: https://selfrefine.info/
 code: https://github.com/madaan/self-refine
@@ -158,7 +158,7 @@ sequenceDiagram
 | 权重更新 | 不需要 | 通常不需要 | 可能发生 |
 | 核心局限 | 模型自检错误与非单调性 | 验证覆盖度 | 开放目标、安全与控制 |
 
-与 [RSI Survey](./paper-rsi-survey-2607-07663.md) 对照，Self-Refine 属于有界的 deployment-time output refinement，不能等同 [AI Auto-Research](../concepts/ai-auto-research.md) 的实验执行与研究目标选择。
+与 [RSI Survey](./paper-rsi-survey-2607-07663.md) 对照，Self-Refine 属于有界的 deployment-time output refinement，不能等同 [AI Auto-Research](../concepts/ai-auto-research.md) 的实验执行与研究目标选择。对照 [Self-Rewarding Language Models（ICML 2024）](./paper-self-rewarding-language-models.md)：后者把同模型自评分转成偏好对，再执行 **Iterative DPO 更新模型参数**，不是单次推理期自反馈改写。
 
 ## 工程实践
 
