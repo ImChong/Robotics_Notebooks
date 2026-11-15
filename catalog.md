@@ -962,6 +962,7 @@
 - [LW BENCHHUB TOUR](wiki/entities/lw-benchhub-tour.md) — LW BENCHHUB TOUR**（[GimpelZhang/lw_benchhub_tour](https://github.com/GimpelZhang/lw_benchhub_tour `📅unknown` `[entity_page]`
 - [LZ4](wiki/entities/lz4.md) — LZ4** 是 Yann Collet 维护的 **无损压缩库**（lz4/lz4，**BSD 2-Clause**），设计目标是  `📅unknown` `[entity_page]`
 - [Machenta 即时机器人学习（Instant Robot Learning）](wiki/entities/machenta-instant-robot-learning.md) — Machenta 的 **即时机器人学习**将单次示范作为任务条件，结合实时图像生成动作；公司称模型仅在仿真中训练，新任务部署时不再进行任务专属训练。 `📅unknown` `[entity_page]`
+- [MacroHands：从第一人称视频恢复三维手部与相机轨迹（3D Hands and Camera Pose from Egocentric Video）](wiki/entities/macrohands.md) — MacroHands** 是 **Macrodata Labs** 于 **2026 年 11 月 10 日**通过[官方技术博客](https://macrodata.co/blog/macro `📅unknown` `[entity_page]`
 - [Male CNS Connectome](wiki/entities/male-cns-connectome.md) — Male CNS Connectome** 是 HHMI Janelia **FlyEM Project Team** 发布的 **雄性果蝇中枢神经系统** 全连接组（**v1.0**，2026- `📅unknown` `[entity_page]`
 - [MambaIR](wiki/entities/mambair.md) — MambaIR 把 Mamba/SSM 用于图像恢复（去噪、超分等），利用长程建模改善伪影与全局一致性。 `📅unknown` `[entity_page]`
 - [Manda Robotics — 开源通用策略横评（State of Robot Policies 2026）](wiki/entities/manda-robotics-open-policy-evaluation.md) — Understanding the Limits of Open-Source General Robotics Policies**（[Manda Robotics](https://manda `📅unknown` `[entity_page]`
