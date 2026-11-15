@@ -7902,9 +7902,22 @@
   var companyRoutesCard = orgRoutesCard;
   var labCount = document.getElementById('heroLabCount');
   var labRoutesCard = orgRoutesCard;
+  var routeSearch = document.getElementById('homeRouteSearch');
+  var routeSearchEmpty = document.getElementById('homeRouteSearchEmpty');
+  var orgSearch = document.getElementById('homeOrgSearch');
+  var companySearchEmpty = document.getElementById('homeCompanySearchEmpty');
+  var labSearchEmpty = document.getElementById('homeLabSearchEmpty');
+  function syncOrgSearchPlaceholder(tabName) {
+    if (!orgSearch) return;
+    var isEn = document.documentElement.lang === 'en';
+    orgSearch.placeholder = tabName === 'lab'
+      ? (isEn ? 'Search lab roadmaps…' : '搜索实验室路线…')
+      : (isEn ? 'Search company roadmaps…' : '搜索公司路线…');
+  }
   // 公司 / 实验室标签切换：同一张卡内只显示一个面板
   function showOrgTab(name) {
     if (!orgRoutesCard) return;
+    syncOrgSearchPlaceholder(name);
     animateHomeLinksToggle(orgRoutesCard, function () {
       var tabs = orgRoutesCard.querySelectorAll('[data-org-tab]');
       for (var oti = 0; oti < tabs.length; oti++) {
@@ -7915,7 +7928,14 @@
         var panel = document.getElementById(tabs[oti].getAttribute('aria-controls'));
         if (panel) {
           panel.hidden = !on;
-          if (on) syncHomeLinksScrollbar(panel.querySelector('.home-entry-route-links'));
+          if (on) {
+            if (name === 'lab' && typeof setHomeLabsExpanded === 'function') {
+              setHomeLabsExpanded(labToggle ? labToggle.getAttribute('aria-expanded') === 'true' : false);
+            } else if (name === 'company' && typeof setHomeCompaniesExpanded === 'function') {
+              setHomeCompaniesExpanded(companyToggle ? companyToggle.getAttribute('aria-expanded') === 'true' : false);
+            }
+            syncHomeLinksScrollbar(panel.querySelector('.home-entry-route-links'));
+          }
         }
       }
     }, false, []);
@@ -7958,11 +7978,37 @@
   function syncHomeLinksScrollbar(links) {
     if (!links) return;
     links.style.removeProperty('--links-sb');
-    if (!links.classList.contains('is-expanded')) {
+    if (!links.classList.contains('is-expanded') && !links.classList.contains('is-filtering')) {
       links.scrollTop = 0;
       return;
     }
     links.style.setProperty('--links-sb', (links.offsetWidth - links.clientWidth) + 'px');
+  }
+
+  function applyHomeLinksFilter(links, toggle, emptyEl, query) {
+    if (!links) return false;
+    var q = String(query || '').trim().toLowerCase();
+    if (!q) {
+      links.classList.remove('is-filtering');
+      links.hidden = false;
+      if (emptyEl) emptyEl.hidden = true;
+      return false;
+    }
+    links.classList.add('is-filtering');
+    links.classList.remove('is-expanded');
+    var items = links.querySelectorAll('a');
+    var matched = 0;
+    for (var fi = 0; fi < items.length; fi++) {
+      var haystack = (items[fi].textContent + ' ' + (items[fi].getAttribute('href') || '')).toLowerCase();
+      var hit = haystack.indexOf(q) !== -1;
+      items[fi].hidden = !hit;
+      if (hit) matched++;
+    }
+    links.hidden = matched === 0;
+    if (toggle) toggle.hidden = true;
+    if (emptyEl) emptyEl.hidden = matched > 0;
+    syncHomeLinksScrollbar(links);
+    return true;
   }
 
   function syncHomePreviewItems(links, attribute, expanded, latest) {
@@ -7978,6 +8024,7 @@
 
   function setHomeRoutesExpanded(expanded) {
     if (!routeToggle || !routeLinks) return;
+    if (applyHomeLinksFilter(routeLinks, routeToggle, routeSearchEmpty, routeSearch && routeSearch.value)) return;
     var extras = syncHomePreviewItems(routeLinks, 'data-route-extra', expanded, true);
     routeToggle.hidden = extras.length === 0;
     routeToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
@@ -8247,6 +8294,7 @@
   var companyLinks = document.getElementById('homeCompanyLinks');
   function setHomeCompaniesExpanded(expanded) {
     if (!companyToggle || !companyLinks) return;
+    if (applyHomeLinksFilter(companyLinks, companyToggle, companySearchEmpty, orgSearch && orgSearch.value)) return;
     var extras = syncHomePreviewItems(companyLinks, 'data-company-extra', expanded, false);
     companyToggle.hidden = extras.length === 0;
     companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
@@ -8271,6 +8319,7 @@
   var labLinks = document.getElementById('homeLabLinks');
   function setHomeLabsExpanded(expanded) {
     if (!labToggle || !labLinks) return;
+    if (applyHomeLinksFilter(labLinks, labToggle, labSearchEmpty, orgSearch && orgSearch.value)) return;
     var extras = syncHomePreviewItems(labLinks, 'data-lab-extra', expanded, false);
     labToggle.hidden = extras.length === 0;
     labToggle.setAttribute('aria-expanded', String(expanded));
@@ -8295,6 +8344,23 @@
       animateHomeLinksToggle(labRoutesCard, function () {
         setHomeLabsExpanded(expanded);
       }, expanded, labLinks.querySelectorAll('[data-lab-extra]'));
+    });
+  }
+
+  if (routeSearch && routeToggle) {
+    routeSearch.addEventListener('input', function () {
+      setHomeRoutesExpanded(routeToggle.getAttribute('aria-expanded') === 'true');
+    });
+  }
+  if (orgSearch && orgRoutesCard) {
+    orgSearch.addEventListener('input', function () {
+      var activeTab = orgRoutesCard.querySelector('.home-org-tab.is-active');
+      var tabName = activeTab ? activeTab.getAttribute('data-org-tab') : 'company';
+      if (tabName === 'lab') {
+        setHomeLabsExpanded(labToggle ? labToggle.getAttribute('aria-expanded') === 'true' : false);
+      } else {
+        setHomeCompaniesExpanded(companyToggle ? companyToggle.getAttribute('aria-expanded') === 'true' : false);
+      }
     });
   }
 
