@@ -184,6 +184,7 @@ flowchart LR
 - [LangWBC](../wiki/entities/paper-bfm-37-langwbc.md) 与 [LeVERB](../wiki/entities/paper-bfm-36-leverb.md)
 - [GR00T-WholeBodyControl](../wiki/entities/gr00t-wholebodycontrol.md) 与 [Humanoid-VLA](../wiki/entities/paper-loco-manip-161-121-humanoid-vla.md)
 - [ReactiveBFM](../wiki/entities/paper-reactivebfm.md)
+- [ILA：接口级柔顺适配器](../wiki/entities/paper-ila-interface-level-adapter.md) — 在已有冻结 WBT 策略前修正上肢参考运动；与微调/内部特征适配形成接口层对照（MT、MimicLite、Sonic 三种 tracker 验证）。
 
 ### 学完输出什么
 - 能为"人形 + 语言任务"设计一套分层方案，并说清接口选型的取舍
