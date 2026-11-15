@@ -7452,7 +7452,7 @@
 - [灵巧手、世界模型与人形控制：14 篇论文阅读坐标](wiki/overview/dexterous-wm-humanoid-14-papers-technology-map.md) — 本期主线横跨「接口层 VLM/VLA 加速」「世界模型与记忆规划」「灵巧手数据与操作」「人形感知退化与物理接地评测」。 `📅unknown` `[overview_page]`
 - [端到端自动驾驶：十大前沿算法技术地图](wiki/overview/e2e-autonomous-driving-top10-algorithms.md) — 端到端自动驾驶正从「规划导向的可解释联合优化」分化为 **向量化/稀疏化算力路线、VLM 常识路线、生成式世界模型路线、帧间一致性量产路线、并行 Transformer 与截断扩散规划路线**；选型时 `📅unknown` `[overview_page]`
 - [Ego 技术地图：9 篇论文的四类问题视角](wiki/overview/ego-9-papers-technology-map.md) — Ego 的价值不在「视频很多」，而在它同时记录视线、手、身体、遮挡、接触与临场决策——更接近人类真实执行过程，也更贴近机器人从自身传感器看世界；但第一视角素材必须经过采集系统、人→机对齐与世界模型 `📅unknown` `[overview_page]`
-- [Ego 分类 01：数据采集](wiki/overview/ego-category-01-data-collection.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
+- [Ego 分类 01：数据采集](wiki/overview/ego-category-01-data-collection.md) — 本页归纳第一视角（Egocentric）人视频与多模态采集在具身智能中的核心问题与代表工作。 `📅unknown` `[overview_page]`
 - [Ego 分类 02：人→机器人](wiki/overview/ego-category-02-human-to-robot.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Ego 分类 03：世界模型](wiki/overview/ego-category-03-world-models.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
 - [Ego 分类 04：Ego+Exo 融合](wiki/overview/ego-category-04-ego-exo-fusion.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
