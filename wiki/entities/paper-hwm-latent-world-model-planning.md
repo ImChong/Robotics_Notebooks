@@ -3,7 +3,7 @@ type: entity
 project_id: hwm-latent-world-model-planning
 tags: [paper, world-model, jepa, hierarchical-planning, mpc, robot-manipulation, meta, nyu, mila, brown]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-15
 arxiv: "2604.03208"
 venue: "arXiv 2026"
 code: https://github.com/kevinghst/HWM_PLDM
@@ -22,6 +22,7 @@ related:
   - ../methods/hierarchical-reinforcement-learning.md
   - ../tasks/manipulation.md
 sources:
+  - ../../sources/papers/hjepa_arxiv_2610_06805.md
   - ../../sources/papers/hierarchical_planning_latent_world_models_arxiv_2604_03208.md
 summary: "HWM 在共享潜空间训练不同时间尺度的 world model，高层 macro-action 产生子目标、低层 MPC 追踪子目标；Franka 真机 pick-and-place 从单张目标图 70%（杯）/60%（盒），对比单层 V-JEPA 2-AC 的 0%；Push-T d=75 为 17%→61%。"
 ---
@@ -132,7 +133,7 @@ HWM 用多时间尺度潜空间规划缓解长程目标追踪，但精细感知�
 - [DINO-WM](./paper-sa-2411-04983-dino-wm-world-models-on-pre-trained-visual-featu.md) — Push-T 的低层世界模型
 - [Puppeteer：层级世界模型作视觉全身控制](./paper-sa-2405-18418-puppeteer-hierarchical-world-models-as-visual-wh.md) — 论文对比表中的层级 model-based RL
 - [LeWorldModel](./paper-lewm.md) — 同一 latent 动力学路线的相邻工作
-- [H-JEPA（arXiv:2610.06805）](./paper-h-jepa-visual-planning.md) — 对照共享潜空间的 HWM 与逐层学习独立潜表示的层级规划
+- [H-JEPA](./paper-h-jepa-visual-planning.md) — 不同层学习独立潜表示，区别于 HWM 的共享潜空间；其 DROID 结果是离线末端路径 Fréchet fidelity，不能当作实体机器人闭环成功率。（[来源复核归档](../../sources/papers/hjepa_arxiv_2610_06805.md)）
 - [V-JEPA 2.1](./paper-sa-2603-14482-v-jepa-2-1-unlocking-dense-features-in-video-sel.md) — 视频特征 backbone 相关工作（不是本文使用的版本）
 - [VideoDB JEPA 长文](./article-videodb-jepa-world-models.md) — 对 JEPA、动作后果预测与 HWM 的观点型综述
 - [Model-based RL](../methods/model-based-rl.md)
@@ -141,6 +142,8 @@ HWM 用多时间尺度潜空间规划缓解长程目标追踪，但精细感知�
 - [Manipulation](../tasks/manipulation.md)
 
 ## 参考来源
+
+- [H-JEPA 原文与边界复核](../../sources/papers/hjepa_arxiv_2610_06805.md)
 
 - [论文来源归档（通读核对）](../../sources/papers/hierarchical_planning_latent_world_models_arxiv_2604_03208.md)
 - [arXiv:2604.03208](https://arxiv.org/abs/2604.03208)

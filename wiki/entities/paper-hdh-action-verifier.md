@@ -1,15 +1,18 @@
 ---
 type: entity
 project_id: hdh-action-verifier
-tags: [paper, robotics, ingest-2026-11]
+tags: [paper, robotics, vla, action-chunking, action-verification, ingest-2026-11]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
+topic: [vla, imitation-learning]
 arxiv: "2611.14834"
 project: https://wen-hanhsieh.github.io/hdh/
 code: https://github.com/Wen-HanHsieh/hdh_real
 related:
+  - ../methods/vla.md
+  - ../methods/action-chunking.md
+  - ../concepts/flow-matching-embodied-policy.md
   - ./paper-carryon-dual-loop.md
-  - ./paper-moss-mode-source-shaping.md
 original:
   - ../../sources/papers/hdh-action-verifier_arxiv_2611_14834.md
 sources:
@@ -104,8 +107,10 @@ sequenceDiagram
 
 ## 关联页面
 
-- [CarryOn：具备记忆、安全与失败恢复的双循环机器人 Harness](./paper-carryon-dual-loop.md)
-- [MOSS：从初始噪声选定 Flow Matching 动作模式](./paper-moss-mode-source-shaping.md)
+- [VLA（视觉语言动作模型）](../methods/vla.md)：HDH 对冻结 VLA 的候选动作额外评分。
+- [Action Chunking（动作块输出）](../methods/action-chunking.md)：比较动作块后执行被选中的前几步。
+- [Flow Matching 与具身策略](../concepts/flow-matching-embodied-policy.md)：冻结 π0.5 生成动作块，HDH 在生成之后验证候选。
+- [CarryOn（双循环执行框架）](./paper-carryon-dual-loop.md)：都对冻结 VLA 添加可靠性机制，但位置与目标不同。
 
 ## 参考来源
 

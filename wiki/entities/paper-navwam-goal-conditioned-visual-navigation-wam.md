@@ -11,7 +11,7 @@ tags:
   - mobile-robot
   - goal-conditioned
 status: complete
-updated: 2026-11-13
+updated: 2026-11-15
 arxiv: "2606.13494"
 related:
   - ../concepts/world-action-models.md
@@ -94,7 +94,7 @@ flowchart TB
   EXEC --> O
 ```
 
-### 与相邻范式的边界
+## 与其他工作对比
 
 | 范式 | 与 NavWAM 的分界 |
 |------|------------------|

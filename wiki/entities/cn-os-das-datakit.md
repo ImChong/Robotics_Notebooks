@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
+status: complete
 updated: 2026-09-23
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
@@ -15,6 +15,8 @@ sources:
 summary: "简智机器人 开源项目 das-datakit（数据集/Benchmark）：读取MCAP中的相机、深度、触觉和设备状态数据，提供解析、可视化及MCAP到H5转换入口，把RealOmni等采集数据接到后续清洗和训练管线。…"
 institutions:
   - jzrobot
+original:
+  - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
 ---
 
 # das-datakit

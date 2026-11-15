@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, data-collection, dataset]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-15
 summary: "Ego 9 篇专题 · 01 数据采集（2 篇）— 机器人数据贵，Ego 让人类成为分布式采集者；核心是把「日常第一视角」做成可过滤、可规模化的训练素材。旁路对照：Ego4D、Ego-OSCAR/Stereo-550、EgoVerse、EgoWorld-100W、RekaDaily-10k、RekaCS2-10k、Unidata Pico 4 Ultra 量产采集与 Macrodata 度量手轨迹配方。"
 related:
   - ./ego-9-papers-technology-map.md
@@ -39,17 +39,31 @@ sources:
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/blogs/unidata_pico_4_ultra_egocentric_data_collection.md
+original:
+  - ../../sources/sites/maxinsights-official.md
 ---
 
 # Ego 分类 01：数据采集
 
+## 一句话定义
+
 > **分类页**：对应 [具身智能研究室 · Ego 9 篇专题](https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA) 的 **01 数据采集** 分组；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
+
+本页归纳第一视角（Egocentric）人视频与多模态采集在具身智能中的核心问题与代表工作。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | Ego | Egocentric Vision | 第一人称视角感知与控制 |
+
+## 为什么重要
+
+第一视角人视频能把人类日常活动转化为低成本、高多样性的分布式采集源，是突破真机遥操作吞吐瓶颈的重要路径。
+
+## 核心原理
+
+- **视点与手部表征对齐**：通过头戴/胸挂相机与手部 3D 关键点追踪，将人类日常操作视频转化为可与机器人腕部视角及末端动作对齐的监督信号。
 
 ## 核心问题
 
@@ -61,6 +75,14 @@ sources:
 |---|------|-----------|--------|
 | 01 | AoE | [paper-ego-01-aoe.md](../entities/paper-ego-01-aoe.md) | [source](../../sources/papers/ego_survey_01_aoe.md) |
 | 02 | EgoLive | [paper-ego-02-egolive.md](../entities/paper-ego-02-egolive.md) | [source](../../sources/papers/ego_survey_02_egolive.md) |
+
+## 工程实践
+
+- **优先记录视点与手部尺度元数据**：采集第一视角人视频时同步保留相机内参、头戴高度与手部关键点置信度，便于下游做视点对齐与手–爪映射。
+
+## 局限
+
+- **手–爪形态差异与无动作真值**：人手自由度远高于二指夹爪，且纯视频缺乏关节力矩与本体状态，通常需配合少量真机遥操作做 mid-training 对齐。
 
 ## 关联页面
 

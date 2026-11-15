@@ -2,7 +2,7 @@
 type: entity
 tags: [data-collection, motion-capture, mocap, humanoid, rokoko]
 status: complete
-updated: 2026-09-07
+updated: 2026-11-15
 summary: "Rokoko：原 3D 动画动捕硬件商，转向为人形/机器人提供人体运动数据采集与管线能力。"
 related:
   - ../concepts/motion-retargeting.md

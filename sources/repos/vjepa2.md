@@ -45,6 +45,17 @@
 
 ## 对 wiki 的映射
 
-- 论文：[`sources/papers/vjepa2_arxiv_2506_09985.md`](../papers/vjepa2_arxiv_2506_09985.md)
+- 论文：[`sources/papers/vjepa2_arxiv_2506_09985.md`](../papers/vjepa2_arxiv_2506_09985_full_reading_2026_11_15.md)
 - 博客：[`sources/sites/meta-vjepa2-blog.md`](../sites/meta-vjepa2-blog.md)
 - 沉淀 **[`wiki/entities/paper-vjepa2.md`](../../wiki/entities/paper-vjepa2.md)**
+
+## 2026-11-15 原版与当前入口复核
+
+通读当前 README、`app/main.py` / `scaffold.py`、Droid YAML、能量景观 notebook 与 `notebooks/utils/world_model_wrapper.py` / `mpc_utils.py`，核对 `app/vjepa_droid/train.py` 的模型构建和 `train_step`。当前树 SHA 为 `204698b45b3712590f06245fbfba32d3be539812`；源码阅读未运行 GPU 或真机。
+
+- YAML 的 `app: vjepa_droid` 经 scaffold 动态分派到训练模块，权重和 Droid CSV 需替换本地路径。逐帧目标编码在 `no_grad` 中执行，预测器优化 teacher-forcing 与两步自回归 L1。
+- 公开配置 `dataset_fpcs: [8]` 与论文叙述的 16 帧输入分别记录。notebook 的 CPU 搜索用 25 samples × 2 轮、H=2，论文真机用 800×10、H=1，不能等同计时或质量。
+- `WorldModel.infer_next_action` 调 `cem` 并通过 predictor 闭包滚出 latent；输出动作不代表已实现真机驱动。当前 xyz 是按轴裁剪、旋转维度固定为零，不是严格 L1-ball 投影。
+- 2.1 配方与原版是不同论文和权重系列。本节点只核对原版 arXiv:2506.09985；主体 MIT，README 指定的少量增强/worker 文件为 Apache 2.0。
+
+全部论文结果、子目标条件、相机与时延边界见[主论文通读记录](../papers/vjepa2_arxiv_2506_09985_full_reading_2026_11_15.md)。

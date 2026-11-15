@@ -1492,10 +1492,46 @@ button.home-wiki-heatmap-cell.is-active {
 .home-entry-card-more {
   grid-column: 1 / -1;
   min-height: 0;
+  padding-bottom: 16px;
 }
 /* 桌面默认 8 个入口，四列两行；长列表展开后在卡内滚动。 */
 .home-entry-card-more .home-entry-route-links .btn-secondary { min-height: 55px; }
 .home-entry-grid > .home-entry-card-more { height: auto; }
+.home-entry-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.home-card-search {
+  width: 240px;
+  max-width: 100%;
+  min-height: 30px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-alt);
+  color: var(--text);
+  font: inherit;
+  font-size: .82rem;
+  line-height: 1.3;
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+.home-card-search::placeholder {
+  color: var(--text-muted);
+}
+.home-card-search:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.home-card-search-empty {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: .86rem;
+}
+.home-card-search-empty[hidden] { display: none; }
 .home-org-tabs {
   display: flex;
   gap: 8px;
@@ -1565,7 +1601,8 @@ button.home-wiki-heatmap-cell.is-active {
    --links-sb 是 main.js 实测的滚动条宽度（overlay 滚动条为 0）。
    行高固定取内容高：卡片高度动画期间列表被压成定高，auto 行会退到按钮 min-height（55px），
    动画结束恢复内容高（约 55.02px），各行逐行下移造成跳动 */
-.home-entry-route-links.is-expanded {
+.home-entry-route-links.is-expanded,
+.home-entry-route-links.is-filtering {
   grid-auto-rows: max-content;
   max-height: 360px;
   overflow-y: auto;
@@ -1577,12 +1614,14 @@ button.home-wiki-heatmap-cell.is-active {
 }
 /* 折叠态的路线按钮必须真正隐藏（btn-secondary 的 display 会覆盖 UA 的 [hidden] 样式） */
 .home-entry-route-links a[hidden] { display: none; }
-/* 展开/收起按钮：复用 home-entry-link 的文字样式，去掉 button 默认外观 */
+/* 展开/收起按钮：复用 home-entry-link 的文字样式，去掉 button 默认外观并保持底部紧凑 */
 .home-route-toggle {
-  min-height: 44px;
+  align-self: flex-start;
+  min-height: 0;
+  margin-top: 0;
   background: none;
   border: none;
-  padding: 2px 0 0;
+  padding: 2px 0;
   font-family: inherit;
   cursor: pointer;
   text-align: left;
@@ -3039,10 +3078,13 @@ button.home-wiki-heatmap-cell.is-active {
   .home-entry-route-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .home-card-search {
+    width: 100%;
+  }
   /* 首屏及无脚本兜底也只露出 4 个；脚本按同一断点同步 hidden 和展开状态。 */
-  #homeRouteLinks:not(.is-expanded) > a:nth-last-child(n + 5),
-  #homeCompanyLinks:not(.is-expanded) > a:nth-child(n + 5),
-  #homeLabLinks:not(.is-expanded) > a:nth-child(n + 5) {
+  #homeRouteLinks:not(.is-expanded):not(.is-filtering) > a:nth-last-child(n + 5),
+  #homeCompanyLinks:not(.is-expanded):not(.is-filtering) > a:nth-child(n + 5),
+  #homeLabLinks:not(.is-expanded):not(.is-filtering) > a:nth-child(n + 5) {
     display: none;
   }
   .hero-title { font-size: 2.15rem; }
@@ -3987,6 +4029,19 @@ body.roadmap-ltree-map-open {
 .roadmap-ltree-pan {
   overflow-x: auto;
   overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
+}
+.roadmap-ltree-pan::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.roadmap-ltree-pan::-webkit-scrollbar-track {
+  background: transparent;
+}
+.roadmap-ltree-pan::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--text-muted) 48%, transparent);
+  border-radius: 999px;
 }
 .is-pannable > .roadmap-ltree-pan {
   cursor: grab;
@@ -4905,8 +4960,8 @@ html.is-theme-switching *::after {
 .dot-glow-host.is-dot-glow::after {
   opacity: .9;
 }
-/* 深色主题下 Hero 背后就是 body 底纹，由 .dot-glow 透过 Hero 半透明背景统一点亮，避免两层叠加 */
-:root:not([data-theme="light"]) .hero-backdrop::after {
+/* Hero 背后就是 body，由 .dot-glow 透过 Hero 半透明背景统一点亮，避免两层叠加或在 Hero 底边被截断 */
+.hero-backdrop::after {
   display: none;
 }
 .dot-glow {
@@ -4926,10 +4981,6 @@ html.is-theme-switching *::after {
 }
 .dot-glow.is-active {
   opacity: .9;
-}
-/* 浅色主题 body 无底纹点阵（--grid-dot: transparent），不点亮 */
-[data-theme="light"] .dot-glow {
-  display: none;
 }
 /* 按压反馈：按下时轻微缩小、松开回弹（减动时见下方取消） */
 .theme-toggle,

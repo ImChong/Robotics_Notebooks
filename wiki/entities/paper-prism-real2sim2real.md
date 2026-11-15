@@ -13,7 +13,7 @@ tags:
   - stanford
   - cmu
 status: complete
-updated: 2026-11-12
+updated: 2026-11-15
 arxiv: "2609.38172"
 venue: "CoRL 2026"
 related:

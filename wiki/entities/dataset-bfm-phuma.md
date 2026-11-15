@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, bfm, behavior-foundation-model, human-motion, humanoid-locomotion, unitree-g1, physisink, awesome-bfm-papers]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 summary: "DAVIAN/KAIST 物理可信人形 locomotion 集：PhySINK 重定向后的 G1/H1-2 轨迹约 73 h；Hugging Face 一键下载，ProtoMotions 原生支持，真机 G1 tracking 优于 AMASS 同管线。"
 related:
   - ../concepts/behavior-foundation-model.md
@@ -20,9 +20,13 @@ sources:
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/papers/sonic_transfer_frozen_wbc_codec_lora.md
+original:
+  - ../../sources/repos/phuma.md
 ---
 
 # PHUMA（Physically Reliable Humanoid Locomotion Dataset）
+
+## 一句话定义
 
 **PHUMA**（Lee et al., arXiv:[2510.26236](https://arxiv.org/abs/2510.26236)，2025）是 DAVIAN Robotics / KAIST AI 发布的 **物理可信人形 locomotion 数据集**：经 **physics-aware curation** 与 **PhySINK 物理约束重定向**，将 Motion-X / Humanoid-X 等大规模人体动作清洗并映射到 **Unitree G1** 与 **Unitree H1-2**，公开约 **76k clips · 73 h** 的 **机器人关节轨迹**，可直接用于 motion tracking 训练。
 
@@ -67,6 +71,11 @@ flowchart LR
   real[Unitree G1 真机]
   src --> cur --> phys --> out --> rl --> real
 ```
+
+## 工程实践
+
+- **一键拉取与 ProtoMotions 接入**：通过官方 `download_phuma.sh` 获取 G1/H1-2 的 `dof_pos` 轨迹，在 [ProtoMotions](./protomotions.md) 中可直接作为 motion tracking 参考库加载，省去自建 SMPL→G1 重定向管线。
+- **接触阈值调优**：默认 curation 为保留跳跃等动态动作，可能残留轻微漂浮或穿透；若仅训练严格平地行走，可调高 `foot_contact_threshold` 过滤。
 
 ## 常见误区或局限
 

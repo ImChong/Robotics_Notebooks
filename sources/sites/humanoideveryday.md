@@ -1,3 +1,5 @@
+- **通读：** 已完成
+
 # Humanoid Everyday
 
 - **标题**: Humanoid Everyday: A Comprehensive Robotic Dataset for Open-World Humanoid Manipulation

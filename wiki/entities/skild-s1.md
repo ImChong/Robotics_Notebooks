@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, in-context-learning, one-shot, foundation-policy, manipulation, scaling, skild-ai, nvidia]
 title: S1 机器人上下文学习（Skild）
 status: complete
-updated: 2026-10-07
+updated: 2026-11-15
 related:
   - ./skild-ai.md
   - ./skild-physical-self-play.md
@@ -24,6 +24,8 @@ sources:
   - ../../sources/blogs/skild_physical_self_play_2026-09-23.md
   - ../../sources/sites/skild-ai.md
 summary: "Skild S1（2026-08-18 博客（列表显示日期））：从预训练起用视频示范指定任务的操作基础模型；宣称单条视频、无后训练即可执行最长约 10 分钟的未见任务；内部对照 100k 小时档未见任务 ICL 66% vs 语言 VLA 9%。截至 2026-10-07 未见官方资产下载入口。"
+original:
+  - ../../sources/sites/skild-ai-timeline-audit-2026-10-07.md
 ---
 
 # S1：机器人 In-Context Learning（Skild）

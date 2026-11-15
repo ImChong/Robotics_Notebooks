@@ -35,6 +35,7 @@ related:
   - ../entities/paper-advdex.md
   - ../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md
   - ./humanoid-motion-tracking-method-selection.md
+original: ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「同一段人形运动控制能力要搬到一台新机器人，单具身重训、Any2Any 高效后训练、多具身联合训练这三条路怎么选、各踩什么坑？」

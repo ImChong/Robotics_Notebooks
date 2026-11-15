@@ -8,7 +8,7 @@ code: "https://github.com/ESI-Bench/ESI-Bench"
 original:
   - ../../sources/papers/esi_bench_arxiv_2605_18746.md
 arxiv: "2605.18746"
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../concepts/3d-spatial-vqa.md
@@ -221,6 +221,8 @@ sequenceDiagram
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ① 具身大脑 / MLLM 认知评测层的代表基准，双向回链
 
 ## 参考来源
+
+2026-11-15 核对 [Daily-Omni 更新归档](../../sources/papers/daily_omni_arxiv_2505_17862.md)：其被动音视频 MCQA 与本页主动感知–行动协议分别评价；基准上的新模型成绩不构成 ESI-Bench 的探索成绩。
 
 - [ESI-Bench 论文摘录](../../sources/papers/esi_bench_arxiv_2605_18746.md)
 - [ESI-Bench 项目页归档](../../sources/sites/esi-bench-project.md)

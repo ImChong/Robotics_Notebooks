@@ -1,3 +1,5 @@
+- **通读：** 已完成
+
 # EgoMimic: Scaling Imitation Learning via Egocentric Video
 
 > 来源归档（ingest · Ego 9 篇专题 第 03/9）

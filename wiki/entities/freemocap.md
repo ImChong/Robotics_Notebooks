@@ -13,6 +13,7 @@ related:
   - ./mimickit.md
   - ../methods/imitation-learning.md
   - ../tasks/locomotion.md
+original: ../../sources/repos/freemocap.md
 sources:
   - ../../sources/repos/freemocap.md
 summary: "FreeMoCap：面向科研与教学的开源多相机运动捕捉平台，强调低成本硬件、GUI 驱动采集与可复现处理管线；AGPL 授权需在集成进商业产品前单独评估合规路径。"
@@ -21,6 +22,10 @@ summary: "FreeMoCap：面向科研与教学的开源多相机运动捕捉平台�
 # FreeMoCap（开源多相机动捕平台）
 
 **FreeMoCap**（仓库名 `freemocap`）是一套 **免费开源** 的运动捕捉 **软件与流程**：在 README 中自描述为 *hardware-and-software-agnostic, minimal-cost, research-grade*，目标是在教育与分散化科研场景下用较低成本完成多相机 3D 运动重建。
+
+## 一句话定义
+
+**FreeMoCap** 是面向科研与教学的开源多相机无标记运动捕捉平台，提供低成本硬件标定、GUI 驱动录制与可复现的三维姿态重建管线。
 
 ## 英文缩写速查
 
@@ -61,6 +66,16 @@ flowchart TD
 | 几何重定向 | 人体骨架轨迹需经 [Motion Retargeting](../concepts/motion-retargeting.md) 才能对齐到机器人关节与腿长比例 |
 | 仿真 RL | 处理后的参考运动可作为 tracking 奖励、BC 数据集或风格判别器输入；GPU 并行框架示例见 [mjlab](./mjlab.md)、任务示例见 [mjlab_playground](./mjlab-playground.md) |
 | 模仿学习范式 | 与 [模仿学习](../methods/imitation-learning.md) 中「演示 → 策略」主线一致 |
+
+## 工程实践
+
+- **多相机标定与同步**：使用棋盘格或 ChArUco 板完成内/外参标定，尽量保证多路 USB/网络相机的曝光与时间戳对齐。
+- **下游导出**：将重建的三维关键点或骨骼序列导出为 BVH/CSV 后，再接入机器人重定向器进行关节映射。
+
+## 局限
+
+- **AGPL 授权约束**：AGPL-3.0 协议要求在集成进商业闭源产品或网络服务前单独评估合规路径。
+- **精度受限于无标记视觉**：在强遮挡、快速运动或复杂光照下，关键点抖动明显高于光学红外动捕。
 
 ## 关联页面
 

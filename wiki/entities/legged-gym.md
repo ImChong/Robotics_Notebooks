@@ -3,7 +3,7 @@
 type: entity
 summary: "legged_gym 是 ETH RSL 基于 Isaac Gym 的足式机器人 RL 训练框架：配置驱动的 env/config/runner 结构、非零奖励尺度自动求和、摩擦与推力随机化、地形与指令课程，默认搭配 rsl_rl 的 PPO；已于 2024 年迁往 Isaac Lab，仓库仅有限维护。"
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ../entities/extreme-parkour.md
   - ../entities/humanoid-gym.md

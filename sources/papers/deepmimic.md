@@ -3,3 +3,5 @@
 - **Authors**: Xue Bin Peng, Pieter Abbeel, Sergey Levine, Michiel van de Panne
 - **Venue**: SIGGRAPH 2018
 - **Link**: https://xbpeng.com/projects/DeepMimic/index.html
+
+- **通读：** 已完成

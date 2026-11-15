@@ -430,6 +430,25 @@ op: ingest
 - **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
 - **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
 
+## [2026-11-15] ingest | AesFormer（ICML 2026）：七维美学规划与结构化照片编辑
+
+- 意图：核对 arXiv:2605.22126 的 APR 任务、VCMP/AesRecon、SFT+GRPO-A、动作条件编辑器及评测，并归档到独立论文实体。
+- 开源：AesFormer 训练/推理/评测代码公开，权重由官方仓库链接；AesRecon 图片需签协议邮件申请，基础模型与依赖须自行配置。
+- 知识节点：wiki/entities/paper-aesformer.md；交叉引用：wiki/methods/grpo.md。
+- 校验范围：arXiv v1 全文；官方 README；Stage 1 规划与 Stage 2 编辑脚本；未在本机运行模型训练/推理。
+
+## [2026-11-15] ingest | 补齐本次 lint PR 涉及节点的原文通读、结构与工程实践；新增 StarVLA-α 独立论文实体，复核硬件官方运行入口及论文评测边界，使 41 个 wiki 节点健康度全部达到 3/3，并挂载 4 条健康度 3/3 的既有纵深路线。
+
+## [2026-11-15] lint | 全量健康检查与预警修复
+
+- 基线：`main` 的 `3f90b97e0f9b57ad197287d9cb0167367689a4e6`，包含本日首页路线预览与星标统计更新。
+- 基线报告：17 处来源时效问题、29 条信息型预警。缺页候选在报告中只展示前 15 项，本次展开并逐项核对全部 23 项。
+- 来源复核：为 H-JEPA/HWM、LEGO/LEGS 与感知链、LeWM/LpWM/INTACT、LG-DKGP/MPC、ODEWorld/V-JEPA 2、OVO、Faster-WAM、RoboHarness、SPU 和 StarVLA 等关联补齐版本、协议与接口边界。
+- 历史入口：复核超过 180 天的 5 页，归档 myCobot、Fourier、Kinova、Poppy 的官方说明；区分文档与 SDK 源码、本体与 ROS 配置、软硬件许可及 CAD LFS 获取方式。
+- 结构与措辞：将 NavWAM 已有对照表升为正式对比章节，补充 7 处主题枢纽回链；将 4 处“最新”表述绑定到发布配置或明确版本。
+- 检查器：登记已有实体/缩写及命令字段的语义归属；科学湿实验预测基准留在 AI Agent 评测链，带机器人标签的跨域基准继续要求具身枢纽；增加正反回归用例。
+- 验证：完整 Python 测试 596 项与 843 项子测试通过，覆盖率 63.16%；同步上游后，前端 138 项和受影响的 13 项 Python 测试通过。完整门禁及逐页健康度见 PR 验证记录。
+
 ## [2026-11-14] ingest | roadmap/depth-vla.md — 补齐 VLA 纵深路线全部 80 个 Stage wiki 节点原文证据与满分健康度
 
 ## [2026-11-14] ingest | sources/blogs/wechat_guyueju_perceptive_nmpc_convex_decomposition_2026-11-14.md — 感知型 NMPC 高程图凸分解与 Go2 源码核对

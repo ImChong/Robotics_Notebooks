@@ -12,9 +12,12 @@ related:
   - ../concepts/character-animation-vs-robotics.md
 sources:
   - ../../sources/repos/pan_motion_retargeting.md
+original: ../../sources/repos/pan_motion_retargeting.md
 ---
 
 # PAN Motion Retargeting
+
+## 一句话定义
 
 **pan-motion-retargeting**（<https://github.com/hlcdyy/pan-motion-retargeting>）是 TVCG 2023 论文 [*Pose-aware Attention Network for Flexible Motion Retargeting by Body Part*](https://arxiv.org/abs/2306.08006) 的官方实现，用 **按身体部位的注意力网络** 做 **灵活骨架重定向**，支持 **双足↔四足**（LaFAN1 dog set）与 **Mixamo 跨结构** 演示。
 
@@ -32,11 +35,20 @@ sources:
 - **跨形态重定向研究基线**：显式处理人–狗等不同拓扑，比纯 IK 更偏 **学习式分布映射**。
 - **与机器人栈的关系**：输出多为动画骨架 BVH，进机器人前仍需物理筛选；可与 [NMR](../methods/neural-motion-retargeting-nmr.md) 等「学习式 + 物理修补」路线对照。
 
-## 演示入口
+## 核心机制
+
+- **按部位注意力（Pose-aware Attention）**：将不同拓扑骨架拆分为身体部位，通过 `SkeletonEncoder` 提取骨架表征并在 `MotionAE` 隐空间完成跨形态编码与解码。
+- **循环一致性与后处理**：结合前向运动学（FK）重建与循环重建损失约束，并在导出 BVH 后执行脚部去滑动处理。
+
+## 工程实践
 
 - 人→狗：`python demo_hum2dog.py`（需 LaFAN1 dog BVH 与预训练权重）
 - 狗→人：`python demo_dog2hum.py`
 - Mixamo 互转：见 `pretrained_mixamo/demo`
+
+## 局限
+
+- 输出为纯运动学 BVH 动画骨架，未包含动力学约束与碰撞/力矩可行性检验，直接用于真机控制前仍需物理修补或 RL 跟踪。
 
 ## 源码运行时序图
 

@@ -2,7 +2,8 @@
 type: overview
 tags: [hub, hub-motion-retargeting, motion-retargeting, mocap, humanoid]
 status: complete
-updated: 2026-10-02
+updated: 2026-11-15
+original: ../../sources/papers/neural_motion_retargeting_nmr.md
 summary: "动作重定向知识链汇总：把人体/动物参考动作映射到人形与异构机器人骨架，衔接 MoCap、IK/优化重定向、动力学精炼（SBTO/DSMS/KDMR/SPARK）、AMP 先验与 WBT 训练数据的全链路导读；含人体→非人形腿式（X-Morph）扩展。"
 ---
 
@@ -54,6 +55,20 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 - **[IL/RL](./hub-learning.md)**：重定向数据常作为 BC 示范或 AMP 风格约束。
 - **[训练数据](./hub-data-pipeline.md)**：重定向是训练数据管线的第③段，承接质量评估、产出策略输入。
 
+## 核心原理
+
+动作重定向通常包含两个层次：运动学映射（通过关键点对应、IK 或学习网络将源骨架姿态映射到目标机器人关节空间）与动力学/接触精炼（在物理仿真或轨迹优化中消除脚滑、穿透与质心失衡，输出可被下游 WBT 策略跟踪的可行参考）。
+
+## 工程实践
+
+- **先几何初值、后物理精炼**：工程上常以 GMR/IK 快速生成初值，再经 SBTO、KDMR 或 RL 双层优化消除物理伪影。
+- **面向下游跟踪设计**：重定向质量最终由下游 WBT 跟踪成功率与真机稳定性检验，而非仅看运动学贴合度。
+
+## 局限
+
+- **接触歧义与形态失配**：人体与机器人在肢体比例、自由度及地面反作用力能力上的差异，容易导致接触时序失真。
+- **计算与数据权衡**：纯优化精炼耗时较高，而神经网络重定向依赖大规模高质量配对数据。
+
 ## 关联页面
 
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
@@ -71,3 +86,8 @@ summary: "动作重定向知识链汇总：把人体/动物参考动作映射到
 - 本库归纳自 [Motion Retargeting](../concepts/motion-retargeting.md)、[Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`motion-retargeting` 命中规则）
 - 上游原始资料（本链概念页共同的 ingest 来源）：[Make Tracking Easy：神经运动重定向](../../sources/papers/neural_motion_retargeting_nmr.md)、[ReActor：物理感知运动重定向](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md)、[AMP（2021）](../../sources/papers/amp.md)
+
+## 推荐继续阅读
+
+- [动作重定向路线图](../../roadmap/depth-motion-retargeting.md)
+- [Motion Retargeting 概念页](../concepts/motion-retargeting.md)

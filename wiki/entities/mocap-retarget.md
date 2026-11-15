@@ -10,9 +10,12 @@ related:
   - ./legged-gym.md
 sources:
   - ../../sources/repos/mocap_retarget.md
+original: ../../sources/repos/mocap_retarget.md
 ---
 
 # mocap_retarget
+
+## 一句话定义
 
 **mocap_retarget**（<https://github.com/ccrpRepo/mocap_retarget>）是社区维护的 **动捕数据重定向到机器人** 的工程向示例仓库，侧重脚本化地把光学/文件格式 MoCap 映射到目标 URDF/MJCF 关节空间，而非提供完整 RL 训练栈。
 
@@ -32,6 +35,16 @@ sources:
 - **管线衔接**：动捕系统先得到人体或目标物体的运动状态，再进入重定向环节；例如 [Low Cost Mocap](./low-cost-mocap.md) 展示了低成本多相机跟踪与位置估计这一上游环节。
 
 > **一手性说明：** 非论文官方实现，而是 `ccrpRepo` 个人维护的工程示例；与 [GMR](../methods/motion-retargeting-gmr.md) 等论文作者仓相比，更适合作脚本参考而非方法复现基线。
+
+## 核心机制
+
+- **输入解析与 tf 广播**：`3Dviewer.py` 解析 ASF/AMC 动捕文件并发布关节状态与 ROS `tf` 变换树。
+- **逆运动学求解**：`g1_retarget.py` 读取人体关键帧位姿，经肢长缩放后调用 `RobotIK`（基于 Pinocchio 与 CasADi/IPOPT）求解目标机器人关节角并做平滑滤波。
+
+## 工程实践
+
+- **启动入口**：通过 `roslaunch mocap g1_retarget.launch` 同时拉起可视化与重定向节点；需配置 ROS 环境、Pinocchio 与 CasADi。
+- **数据导出**：设置 `OutputData=True` 可将重定向后的时间戳与关节角序列导出为 `data/output.csv`，供下游模仿学习或回放使用。
 
 ## 定位与局限
 

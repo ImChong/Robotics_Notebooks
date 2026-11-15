@@ -2,7 +2,9 @@
 type: entity
 tags: [repo, semantic-mapping, open-vocabulary, sam, point-cloud, offline, zju, tencent]
 status: complete
-updated: 2026-09-15
+original:
+  - ../../sources/papers/ov_sam3d_arxiv_2405_15580_full_reading.md
+updated: 2026-11-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -12,8 +14,10 @@ related:
   - ./point-lio-unilidar.md
   - ./paper-lego-leveled-language-gaussian-splatting.md
 sources:
-  - ../../sources/repos/ov-sam3d.md
   - ../../sources/papers/segment_anything_arxiv_2304_02643.md
+  - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
+  - ../../sources/repos/ov-sam3d.md
+  - ../../sources/papers/segment_anything_arxiv_2304_02643_full_reading_2026_11_15.md
 summary: "OV-SAM3D 是训练无关的开放词汇 3D 场景理解框架：超点粗 mask 经多视角 SAM 反投影修正，再结合 RAM 开放标签与重叠分数合并实例；偏离线点云理解。"
 ---
 
@@ -49,12 +53,29 @@ summary: "OV-SAM3D 是训练无关的开放词汇 3D 场景理解框架：超点
 | 代码 | <https://github.com/HanchenTai/OV-SAM3D> |
 | 开源 | **已开源** |
 | 论文 | arXiv:2405.15580 |
+
+## 流程总览
+
+```mermaid
+flowchart LR
+  input["点云与带位姿 RGB-D"] --> sp["超点与高质量 3D 提示"]
+  sp --> sam["多视角 SAM 分割"]
+  sam --> score["反投影与重叠得分表"]
+  score --> merge["更新式粗 mask 合并"]
+  input --> tags["RAM 标签与 ChatGPT 过滤"]
+  sam --> clip["CLIP 图像裁剪特征"]
+  tags --> match["文本特征匹配"]
+  clip --> match
+  merge --> match
+  match --> out["带开放标签的 3D 实例"]
+```
+
 ## 核心原理
 
 | 阶段 | 脚本/机制（对齐上游 README） |
 |------|------------------------------|
 | 粗 mask | `generate_coarse_masks.py`：superpoints + SAM |
-| 细化 | `refine_masks.py`：开放标签 + 重叠分数 |
+| 细化 | `ovsam3d/tools/refine_masks.py`：按重叠得分合并并保存实例组成，语义标签匹配由后续步骤完成 |
 | 评测 | 对齐 OpenMask3D 风格评测脚本 |
 
 ## 工程实践
@@ -62,6 +83,10 @@ summary: "OV-SAM3D 是训练无关的开放词汇 3D 场景理解框架：超点
 1. 准备 ScanNet 类扫描数据路径与 SAM checkpoint。
 2. 先跑粗 mask，再 refine；确认输出 mask / feature 目录。
 3. 用于 GO2：先用 Point-LIO 录包导出同步 PCD + 图像 + 位姿，再离线跑本流水线验证投影质量。
+
+## 实验与评测
+
+论文 ScanNet200 的 AP/AP50/AP25 是 **9.0/13.6/19.4**，使用受监督 Mask3D 提案网络的 OpenMask3D 对应 **15.4/19.9/23.1**；不能把 training-free 优势写成全部室内指标领先。nuScenes 的 **8.9/16.0/29.1** 使用附录的网格重建和框标注实例转换协议。单 GPU 的 ScanNet 单场景需 **4–6 分钟**、nuScenes **30–60 秒**，适合离线处理；具体硬件和输入规模需另测。依据[主论文通读归档](../../sources/papers/ov_sam3d_arxiv_2405_15580_full_reading.md)。
 
 ## 局限与风险
 
@@ -111,13 +136,19 @@ sequenceDiagram
 
 ## 关联页面
 
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md)
+
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
 - [DualMap](./dualmap.md)
 - [OVO](./ovo-semantic-mapping.md)
 - [point_lio_unilidar](./point-lio-unilidar.md)
-- [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) — 按场景优化的 3DGS 层级开放词汇；本页是训练无关点云路线
+- [LEGO](./paper-lego-leveled-language-gaussian-splatting.md) — 通过逐场景优化 3DGS 特征场与层级语言场景图支持复合检索；本页则是训练无关的点云理解路线，不能混用训练成本、表示层级与在线性结论。（[来源复核归档](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)）
 
 ## 参考来源
+
+- [OV-SAM3D 主论文通读与实现核对](../../sources/papers/ov_sam3d_arxiv_2405_15580_full_reading.md)。
+
+- [LEGO 原文与边界复核](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)
 
 - [sources/repos/ov-sam3d.md](../../sources/repos/ov-sam3d.md)
 - 项目页：<https://hithqd.github.io/projects/OV-SAM3D/>

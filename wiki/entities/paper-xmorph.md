@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, cross-morphology, motion-retargeting, motion-prior, legged, quadruped, hexapod, loco-manipulation, rl, teleoperation, nus, unitree-g1, unitree-go2]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2606.30290"
 venue: "2026 · arXiv"
 related:
@@ -19,6 +19,7 @@ sources:
   - ../../sources/papers/xmorph_arxiv_2606_30290.md
   - ../../sources/sites/maker-rat-morph-github-io.md
 summary: "X-Morph（arXiv:2606.30290，NUS）：人体运动→G1→跨形态重定向+物理校正+特权跟踪蒸馏，为 Go2/Yuna/B2-Z1 提供可部署 locomotion 与 loco-manipulation 行为先验；接视频遥操作与文本条件技能；截至入库日项目页 Code 未开放。"
+original: ../../sources/papers/xmorph_arxiv_2606_30290.md
 ---
 
 # X-Morph：跨形态人体运动先验

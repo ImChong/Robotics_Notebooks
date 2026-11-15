@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, 3d-reconstruction, 3d-scene-generation, compositional-3d, sparse-voxel, synthetic-data, simulation, hkust, teleai]
 status: complete
-updated: 2026-10-24
+original: ../../sources/papers/distscene.md
+updated: 2026-11-15
 project_id: distscene
 arxiv: "2610.06960"
 project: https://coolbeam.github.io/DistScene/

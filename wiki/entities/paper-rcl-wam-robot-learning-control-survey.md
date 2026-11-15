@@ -14,7 +14,7 @@ tags:
 - rcl
 - curated-list
 status: complete
-updated: 2026-11-08
+updated: 2026-11-15
 arxiv: '2609.16074'
 code: https://github.com/RCL-Robotics/Awesome-World-Action-Models
 related:
@@ -33,6 +33,7 @@ related:
 original:
 - ../../sources/papers/rcl_wam_survey_reading_arxiv_2609_16074.md
 sources:
+- ../../sources/papers/rcl_awesome_wam_2608_02365_faster-wam-do-world-action-models-need-d.md
 - ../../sources/papers/rcl_wam_robot_learning_survey.md
 - ../../sources/sites/awesome-world-action-models-rcl.md
 - ../../sources/repos/awesome-world-action-models-rcl.md
@@ -247,6 +248,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Faster-WAM](./paper-rcl-2608-02365-faster-wam-do-world-action-models-need-deep-acti.md) — v2 补充核对确认 DoT / Lite KV-Fusion 与单层 action expert；官方训练和基准评测代码采用 PolyForm Noncommercial 1.0.0，主页权重仍标 Coming soon，不能把开源入口视作完整权重已发布。（[来源复核归档](../../sources/papers/rcl_awesome_wam_2608_02365_faster-wam-do-world-action-models-need-d.md)）
 - [World Action Models（WAM）](../concepts/world-action-models.md)
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [VLA](../methods/vla.md)
@@ -262,6 +264,8 @@ flowchart TB
 - [DINOv3](./paper-rcl-2508-10104-dinov3.md) — 同一 RCL Awesome WAM 清单「Components of WAMs」收录的视觉骨干
 
 ## 参考来源
+
+- [Faster-WAM 原文与边界复核](../../sources/papers/rcl_awesome_wam_2608_02365_faster-wam-do-world-action-models-need-d.md)
 
 - [RCL WAM 综述摘录（arXiv:2609.16074）](../../sources/papers/rcl_wam_robot_learning_survey.md)
 - [Awesome 项目页归档](../../sources/sites/awesome-world-action-models-rcl.md)

@@ -3,6 +3,7 @@ type: overview
 tags: [hub, hub-wbt, whole-body-tracking, motion-tracking, humanoid]
 status: complete
 updated: 2026-11-15
+original: ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
 summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向→跟踪训练→跨具身→真机部署的端到端流水线，对比 SONIC/BeyondMimic/SD-AMP/Heracles 等路线。"
 ---
 
@@ -52,14 +53,18 @@ summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向�
 WBT 流水线可概括为：参考动作采集 → [重定向](../concepts/motion-retargeting.md) 到机器人形态 → 以 RL + 模仿奖励（DeepMimic / AMP 类）训练跟踪策略 → 跨具身迁移 → 真机部署。质量上限由参考与迁移共同决定；详见 [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)。
 
 ## 工程实践
+- **数据策展与部署**：参考动作需先清洗并重定向，跟踪训练后还需经域随机化及 Sim2Real 验证。
+- **统一策略与恢复**：可进一步考察将走、跑、跌倒恢复与全身跟踪合并训练，以降低模式切换成本。
 - 先在 [方法选型 Query](../queries/humanoid-motion-tracking-method-selection.md) 与 [路线对比](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) 中选路线，再进具体方法页。
 - 参考动作的来源与清洗见 [训练数据](./hub-data-pipeline.md)；上游重定向见 [动作重定向](./hub-motion-retargeting.md)。
 
 ## 局限
+- **参考质量与物理一致性**：低质量参考会带来脚滑、抖动和高频补偿；高动态动作还受电机带宽、延迟及碰撞安全约束。
 - 本页是入口汇总，不替代各方法页的实验细节；各路线数字不可跨论文直接比较。
 - 跟踪策略擅长复现参考，不等于具备任务泛化；Sim2Real 仍需单独处理。
 
 ## 继续阅读
+- [行为基础模型与 WBT 路线图](../../roadmap/depth-bfm.md)
 - [SONIC Motion Tracking](../methods/sonic-motion-tracking.md)
 - [BeyondMimic](../methods/beyondmimic.md)
 - [Humanoid RL Motion Control Body System Stack](./humanoid-rl-motion-control-body-system-stack.md)

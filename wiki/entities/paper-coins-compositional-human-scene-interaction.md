@@ -3,7 +3,8 @@
 type: entity
 tags: [paper, human-scene-interaction, generative-model, smpl-x, transformer, vae, synthetic-data, prox, eccv2022, computer-graphics, stanford, eth]
 status: complete
-updated: 2026-09-15
+original: ../../sources/papers/coins_arxiv_2207_12824.md
+updated: 2026-11-15
 arxiv: "2207.12824"
 venue: "2022 · ECCV"
 code: https://github.com/zkf1997/COINS
@@ -22,6 +23,10 @@ summary: "COINS（ECCV 2022）用 Transformer cVAE 按 action–物体实例语�
 # COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）
 
 **COINS**（*Compositional Human-Scene Interaction Synthesis with Semantic Control*，Zhao et al.，ECCV 2022，arXiv:[2207.12824](https://arxiv.org/abs/2207.12824)，[项目页](https://zkf1997.github.io/COINS/index.html)）研究如何在给定 **3D 室内场景** 与 **高层语义规格**（动作类别 + **具体物体实例**，如「sit on **the chair**」）下，生成 **自然、物理合理** 的 **SMPL-X 虚拟人体** 与场景交互。核心是把交互语义建模为 **可组合的原子 (action, object) 对**，用 **Transformer 条件 VAE** 分阶段生成骨盆与身体，并能在 **仅原子交互训练数据** 上合成 **复合交互**（如「坐沙发 + 摸桌子」）。
+
+## 一句话定义
+
+COINS 通过两阶段组合式生成，依据自然语言交互语义在真实 3D 场景中合成物理合理的人体姿态与物体交互。
 
 ## 英文缩写速查
 
@@ -135,6 +140,11 @@ flowchart TB
 - 主要失败模式是几何上难以同时自然接触的复合 action–object（如同时 touch 墙与地板），论文承认组合身体会略微牺牲语义接触分。
 - 数据侧贡献 **PROX-S**（实例分割 + 逐帧 action–object 语义）可能比方法本身更耐用；但部署依赖 SMPL-X / POSA `mesh_ds` / PROX 场景 SDF 等图形学栈。
 - 与 [TokenHSI](./paper-bfm-38-tokenhsi.md)、[PhysHSI](./paper-amp-survey-15-physhsi.md) 的人形 **控制** 路线不在同一层：COINS 的合理用法是 **合成数据 / 场景先验**，接下游还需经 [Sim2Real](../concepts/sim2real.md) 或跟踪控制器。
+
+## 工程实践
+
+- **两阶段解耦**：先确定物体接触锚点与朝向，再优化 SMPL-X 人体网格与场景碰撞约束，避免端到端采样穿模。
+- **物理后处理**：合成姿态需经场景 SDF 碰撞惩罚与接触对齐，方可用于下游仿真或动作生成。
 
 ## 常见误区或局限
 

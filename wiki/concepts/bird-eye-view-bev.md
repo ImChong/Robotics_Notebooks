@@ -2,8 +2,9 @@
 type: concept
 tags: [bev, bird-eye-view, spatial-representation, perception, sensor-fusion, autonomous-driving, camera, lidar, radar, occupancy]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ./embodied-perception-six-spatial-representations.md
   - ./perception-coordinate-postprocessing.md
   - ./sensor-fusion.md
@@ -148,6 +149,7 @@ flowchart TB
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 按传感器、空间表征与下游任务选择 BEV 融合位置和感知头。
 - [具身感知六种空间表征](./embodied-perception-six-spatial-representations.md) — 区分 BEV 特征地图、占据/距离场、语义地图与隐式地图。
 - [感知后处理与坐标变换](./perception-coordinate-postprocessing.md) — 像素到射线、深度与外参链。
 - [传感器融合](./sensor-fusion.md) — 状态估计融合与感知任务特征融合不能混为一谈。

@@ -95,7 +95,7 @@ flowchart LR
 - 拿一组 QA 失败样本做归因：是感知没看见、是规划不可行、还是能说对但下发不出可执行动作
 
 ### 推荐读什么
-- [RoboBench](../wiki/entities/robo-bench.md) — 五维 14 能力 25 任务 6092 QA；规划维用 MLLM-as-world-simulator 检验物理/视觉可行性，并专门验证了认知分与 CALVIN/LIBERO-10 下游 VLA 显著相关
+- [RoboBench](../wiki/entities/robo-bench.md) — 五维 14 能力 25 任务 6092 QA；规划维用 MLLM-as-world-simulator 检验物理/视觉可行性，用8骨干迁移实验审计认知与下游控制的关系：CALVIN感知相关显著，LIBERO-Long affordance 仅呈非显著正趋势
 - [ESI-Bench](../wiki/entities/esi-bench.md) — OmniGibson 上 10 类 29 子类 3081 题，要求主动闭合感知–行动环，暴露 MLLM 的行动盲与元认知缺口
 - [Daily-Omni](../wiki/entities/paper-daily-omni.md) — 日常音视频跨模态时序对齐（684 视频 / 1197 MCQA），补"环境声与画面是否对齐理解"这一维
 - [MMHU](../wiki/entities/paper-mmhu.md) — 驾驶场景人本 Behavior VQA，相邻域对照
@@ -162,6 +162,7 @@ flowchart LR
 - [RoboDojo](../wiki/entities/robodojo.md) — 统一 sim-and-real 评测：42 仿真五维任务 + 18 真机任务，Isaac 异构并行 + RealEval 云真机；verified 上榜须开源训推与权重
 - [2026 BEHAVIOR Challenge](../wiki/entities/behavior-challenge-2026.md) — 100 项长程家务任务的赛事协议：主排名 Q-score 是末状态 BDDL 谓词部分完成度，不等于 full-task success；同时核对 RGB-D+proprio 观测限制与公开/隐藏实例划分
 - [机器人操作基准审计](../wiki/entities/paper-manipulation-benchmark-audit.md) — 检查语言捷径、统计显著性、测试条件过拟合与训练数据来源，作为解释 LIBERO/CALVIN 等高分的对照读物
+- [Harness VLA](../wiki/entities/paper-harness-vla.md) · [StarVLA-α](../wiki/entities/paper-starvla-alpha.md) — 分别核对记忆条件、任务覆盖与聚合权重，以及单基准/联合训练、成功率/进度分的区别。
 - [PRM-as-a-Judge](../wiki/entities/paper-prm-as-a-judge.md) — 把 rollout 视频打成进度曲线做过程评测（OPD / FNS / DRR / SQS），在 RoboDojo 上**打乱了 SR 排名**
 - [Imitator Game](../wiki/entities/paper-imitator-game.md) — L0–L3 意图级模仿基准：成功判据改为**目标等价而非轨迹相似**，L3 功能替代崩溃、未见任务零样本 <13%
 - [SoftVTBench](../wiki/entities/paper-softvtbench.md) — 可变形视触觉任务同时报 Goal Success 与 Safety Success，只看 Goal 会掩盖过压

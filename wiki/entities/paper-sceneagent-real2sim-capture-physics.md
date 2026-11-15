@@ -19,9 +19,10 @@ tags:
   - droid
   - vla
 status: complete
+original: ../../sources/papers/sceneagent_harvard_preprint_2026.md
 venue: "Harvard Computational Robotics project page (preprint, 2026)"
 code: https://github.com/ComputationalRobotics/SceneAgent
-updated: 2026-09-27
+updated: 2026-11-15
 related:
   - ../concepts/sim2real.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -207,6 +208,12 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md) — 操作场景与 DROID/Franka 设定
 - [VLA](../methods/vla.md) · [Imitation Learning](../methods/imitation-learning.md) — LoRA 微调与演示格式
 - [Real2Sim 纵深](../../roadmap/depth-real2sim.md) — Stage 2–3 物性/孪生/表亲知识链
+
+## 关联
+
+- [Agentic Real2Sim](./paper-agentic-real2sim.md)：同属代理化 Real2Sim 场景构建路线，侧重 DROID 交互视频到 MuJoCo episode twin。
+- [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md)：面向大规模可仿真场景生成的互补路线。
+- [Sim2Real](../concepts/sim2real.md)：真实场景物理数字孪生最终服务的策略迁移主线。
 
 ## 参考来源
 

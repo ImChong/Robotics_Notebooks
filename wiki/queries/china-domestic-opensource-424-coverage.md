@@ -3,7 +3,7 @@ title: 国内具身开源全景 424 项 · 阅读导航
 type: query
 status: complete
 created: 2026-09-06
-updated: 2026-10-12
+updated: 2026-11-15
 summary: "具身智能研究室「76 家机构 · 424 个开源项目」全景清单的站内阅读导航：每个项目对应站内哪一页、按机构与方向怎么找。"
 original:
   - ../../sources/repos/hmi_readme_reading_424_coverage_reading_a1.md

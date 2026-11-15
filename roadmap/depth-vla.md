@@ -121,6 +121,7 @@ flowchart LR
 - [VLA / 世界模型 14 篇阅读路线](../wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md) — CLIP→RT→OpenVLA→π₀ + 四篇 WM，每篇独立 `paper-*`
 - [Robotics Transformer（RT 系列）](../wiki/methods/robotics-transformer-rt-series.md)、[RT-1](../wiki/entities/paper-rt-1.md)、[RT-2](../wiki/entities/paper-rt-2.md)、[OpenVLA](../wiki/entities/paper-openvla.md)、[Octo](../wiki/entities/paper-octo.md)
 - [π0](../wiki/entities/paper-pi0.md) 与 [π0.7](../wiki/methods/pi07-policy.md)
+- [StarVLA-α](../wiki/entities/paper-starvla-alpha.md) — 强 VLM 加轻量动作头的受控基线，区分 specialist、generalist 与不同本体的评测协议。
 - [SayCan](../wiki/methods/saycan.md) 与 [DIAL 指令增强](../wiki/methods/dial-instruction-augmentation.md)
 - [InternVLA-A1.5](../wiki/entities/paper-internvla-a15-unified-vla.md) — 2026 主线前沿对照：统一理解 + 潜式前瞻 + flow matching 动作的单一 MoT 框架，组合泛化与长程执行显著超 π₀.₅；`InternRobotics/InternVLA-A1` `main` 分支与 HF `InternRobotics/internvla-a15` 已开源（CC BY-NC-SA 4.0）
 - [LingBot-VLA](../wiki/entities/lingbot-vla.md) — Qwen2.5-VL-3B + flow 动作头，2 万小时双臂真机预训练；开源 4B 权重与 LeRobot v3.0 后训练栈，RoboTwin 仿真领先 π₀.₅
@@ -200,6 +201,7 @@ flowchart LR
 - [具身模型延迟–泛化权衡](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md)
 - [Evo-1](../wiki/entities/paper-evo1-lightweight-vla.md) — 0.77B 轻量 VLA：两阶段训练保持 VLM 语义对齐，消费级 GPU 2.3 GB / 16.4 Hz，边缘侧选型的代表样本
 - [行为树 VLA 编排](../wiki/concepts/behavior-tree-vla-orchestration.md)
+- [Harness VLA](../wiki/entities/paper-harness-vla.md) · [GaP](../wiki/entities/paper-gap-graph-as-policy.md) — 对照固定原语和记忆驱动的冻结 VLA 编排、计算图与仿真排练，分别检查工具接口和复现入口。
 - [EventVLA](../wiki/entities/paper-eventvla-visual-evidence-memory.md) — 稀疏视觉证据记忆端到端 VLA，用基础锚点 + 前瞻式关键帧预测解决长程操作的记忆瓶颈，是行为树编排之外的模型内记忆路线
 - [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md) — 在 VLA 层内嵌测试时训练，将 visuomotor 上下文压缩进固定大小 fast weights，扩到约 8K 步且支持部署后在线自纠偏
 - [ActFovea](../wiki/entities/paper-actfovea.md) — 不重训、不改权重的 VLA 运行时防护层，用动作条件中央凹 + 时空视觉–动作一致性检测扰动；LIBERO 40 任务上把视觉叠加攻击下的成功率从 49.3% 拉回 90.3%，2000 次重放试验 100% 及时安全失败
@@ -225,6 +227,7 @@ flowchart LR
 
 **方向 A：RL 微调与自改进**
 - 用 RL / 真机数据闭环继续改进预训练策略
+- [PEAR / Robot-Use RL](../wiki/entities/paper-pear-robot-use-rl.md) — 无机器人示范、在仿真中强化学习多轮视觉推理及末端位姿操作；对照传统动作块 VLA 的训练信号与执行延迟。
 - 关键词：[ENPIRE](../wiki/methods/enpire.md)、[安全真机 RL 微调](../wiki/concepts/safe-real-world-rl-fine-tuning.md)、[STEAM](../wiki/entities/paper-steam-advantage-modeling.md)（自监督时序 advantage 离线提纯 π₀，已集成于官方 `RLinf`）、[WCM](../wiki/entities/paper-wcm-world-critic-model.md)（世界模型 critic 修正 VLA RL 单帧价值估计错配，4 基准 149 任务提升显著；`sylvestf/WCM` 已 MIT 开源 critic，RL 策略代码待发）、[TEMPO](../wiki/entities/paper-tempo.md)（语义 projection 低频 / action expert 高频双 TD3；CALVIN SR5 81.7%，匿名页 404 且未开源）、[AutoIntervene](../wiki/entities/paper-autointervene.md)（chunk 策略视觉–动作支持校准接管，选择性 DAgger；算法未开源，同名仓为静态页镜像）、[Prism-GRPO](../wiki/entities/paper-prism-grpo.md)（success+quality 打破 Binary GRPO 同结果组退化，RoboTwin rollout 最多 −56%；独立补丁未开源）
 
 **方向 B：世界模型融合**

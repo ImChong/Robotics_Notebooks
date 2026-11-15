@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, in-context-learning, foundation-policy, manipulation, skild-ai, cmu]
 title: Skild AI
 status: complete
-updated: 2026-10-07
+updated: 2026-11-15
 related:
   - ./skild-s1.md
   - ./skild-physical-self-play.md

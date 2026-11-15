@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, manipulation, imitation-learning, in-context-learning, one-shot, foundation-policy, scaling, generalist-ai]
 status: complete
 title: GEN-1.5 一次示范学习（Physical Prompting）
-updated: 2026-09-15
+updated: 2026-11-15
 related:
   - ./generalist-ai-robotics.md
   - ./generalist-gen1-thousand-hands.md
@@ -20,6 +20,8 @@ sources:
   - ../../sources/blogs/wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md
   - ../../sources/blogs/skild_s1_in_context_learning.md
 summary: "Generalist GEN-1.5 博客（2026-08）：8+ 月持续预训练后涌现 physical prompting——3–12 秒单次示范无梯度达约 59% 成功率，10 步微调约 83%；并报告组合示范、仿真提示零样本真机、人→机示范与即兴工具使用。"
+original:
+  - ../../sources/blogs/generalist_gen15_one_shot.md
 ---
 
 # GEN-1.5 一次示范学习（Physical Prompting）

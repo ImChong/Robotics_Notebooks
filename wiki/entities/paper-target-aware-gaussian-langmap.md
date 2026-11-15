@@ -3,11 +3,12 @@ type: entity
 project_id: target-aware-gaussian-langmap
 tags: [paper, robotics, perception, 3dgs, open-vocabulary, semantic-mapping, ingest-2026-11]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 arxiv: "2610.21619"
 project: https://lab-of-ai-and-robotics.github.io/target-aware-langmap/
 code: https://github.com/Lab-of-AI-and-Robotics/target-aware-langmap
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../concepts/embodied-semantic-cognitive-map.md
   - ../concepts/vision-language-feature-fusion.md
   - ../concepts/2d-to-3d-semantic-lifting-gap.md
@@ -96,6 +97,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 本文位于既有语义地图的目标检索后处理层，不替代深度、定位或建图前端。
 - [具身语义认知地图](../concepts/embodied-semantic-cognitive-map.md) — 本文在已有 3D 语言地图中修正目标语义特征，是语义地图查询层的后处理方法。
 - [视觉–语言特征融合](../concepts/vision-language-feature-fusion.md) — 对比视觉与文本嵌入对齐的基线，以及本文的目标特征注入与中心化读出。
 - [2D→3D 语义提升问题](../concepts/2d-to-3d-semantic-lifting-gap.md) — 目标掩码与跨视角 3D 语义聚合是本文依赖的建图前提。

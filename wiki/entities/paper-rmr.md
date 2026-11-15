@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, rig-unification, korea-university, uiuc, naver-labs, rainbow-robotics]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 doi: "10.1109/IROS60139.2025.11246607"
 venue: "IROS 2025"
 code: https://github.com/tmjeong1103/CoRe
@@ -19,6 +19,7 @@ sources:
   - ../../sources/sites/rmr-page.md
   - ../../sources/repos/core_retarget.md
 summary: "RMR（IROS 2025）：优化式 canonical rig 统一异构人体骨架（含噪声视频估计），再方向向量+IK 映射多人形；仿真 12 机、真机 AMBIDEX/THORMANG/JF2。无独立仓，算法并入 CoRe DMR。"
+original: ../../sources/papers/rmr_iros_2025.md
 ---
 
 # RMR（优化式 Rig 统一的人形重定向）

@@ -5,9 +5,10 @@ project: https://themodernsoftware.dev/
 code: https://github.com/mihail911/modern-software-dev-assignments
 tags: [stanford, developer-tools, ai-agent, software-engineering]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-15
 summary: "斯坦福 CS146S（2026 秋）通过智能体请求追踪、OAuth MCP 工具、Agent Skills、仓库配置与 readiness 评估训练可验证的 AI 原生软件开发工作流。"
 related:
+  - ./harvard-cs2680-modern-ai-systems.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../concepts/specification-driven-development.md
 sources:
@@ -111,6 +112,8 @@ flowchart TD
 - **效果边界：** Week 5 是三仓库对比作业，不等于课程或工具在真实生产环境中的普遍效果统计。
 
 ## 关联页面
+
+- [哈佛 CS2680：现代 AI 系统与 Agent 优化](harvard-cs2680-modern-ai-systems.md) — 补充 Agent Loop / Harness、LLM Serving 及端到端评测系统的课程主线
 
 - [Agentic Coding 软件基础](../concepts/agentic-coding-software-fundamentals.md) — 智能体研发的上下文、测试和工程约束
 - [规范驱动开发](../concepts/specification-driven-development.md) — 把需求转为可验证的任务描述

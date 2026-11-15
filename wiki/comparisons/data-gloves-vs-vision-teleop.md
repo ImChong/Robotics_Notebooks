@@ -19,6 +19,8 @@ sources:
   - ../../sources/sites/x2robot-twindex.md
   - ../../sources/sites/humantouch-xsparkai.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
+original:
+  - ../../sources/papers/imitation_learning.md
 summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基于视觉的遥操作方案，涵盖了精度、成本、遮挡鲁棒性及力反馈等关键维度。"
 ---
 
@@ -110,6 +112,7 @@ summary: "灵巧操作数据采集选型：对比了穿戴式数据手套与基�
 
 ## 推荐继续阅读
 
+- [具身数据纵深路线](../../roadmap/depth-embodied-data.md)
 - [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md)
 - [Meta Quest 遥操作](../entities/oculust-quest-teleop.md)
 - [NestDex](../entities/paper-nestdex.md)

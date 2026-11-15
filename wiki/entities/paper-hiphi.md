@@ -5,7 +5,7 @@ tags: [dataset, mocap, humanoid, motion-tracking, motion-retargeting, human-obje
 status: complete
 arxiv: "2608.16222"
 code: "https://github.com/noitom-robotics/hiphi"
-updated: 2026-10-02
+updated: 2026-11-15
 summary: "FrameNet 引导的光学动捕与同步物体交互数据集；617.5 h 含镜像增强，90 Hz / 55 关节 BVH；数据门控发布，Viewer 已开放，训练部署代码尚未核实发布。"
 related:
   - ../comparisons/humanoid-reference-motion-datasets.md
@@ -19,6 +19,7 @@ sources:
   - ../../sources/papers/hiphi_arxiv_2608_16222.md
   - ../../sources/sites/hiphi.md
   - ../../sources/repos/hiphi.md
+original: ../../sources/papers/hiphi_arxiv_2608_16222.md
 ---
 
 # HiPHI（高精度人体运动与人–物交互基准）

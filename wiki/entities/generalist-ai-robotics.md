@@ -4,7 +4,7 @@ tags: [company, embodied-foundation-model, dataset, scaling, generalist-ai, foun
 title: Generalist AI（机器人）
 status: complete
 summary: "Generalist AI（2024 年成立）是以超大规模真实交互数据预训练具身基础模型的商业团队；官网 10 篇博文覆盖 2025-06 Research Preview、乐高 one-shot 拼装评测、GEN-0 → GEN-1 → GEN-1.5、物理常识、千手与 2026-06 融资公告，引用应以官网博客为准且注意闭源边界。"
-updated: 2026-10-09
+updated: 2026-11-15
 related:
   - ./generalist-gen0.md
   - ./generalist-gen1.md

@@ -56,3 +56,7 @@
 - 升格 [`wiki/methods/foot-locking-ik-orangeduck.md`](../../wiki/methods/foot-locking-ik-orangeduck.md)
 - 实体 [`wiki/entities/genoview-inverse-kinematics.md`](../../wiki/entities/genoview-inverse-kinematics.md)
 - 交叉：[`wiki/formalizations/inverse-kinematics.md`](../../wiki/formalizations/inverse-kinematics.md)、[`wiki/concepts/motion-retargeting.md`](../../wiki/concepts/motion-retargeting.md)、[`wiki/methods/motion-retargeting-gmr.md`](../../wiki/methods/motion-retargeting-gmr.md)
+
+- **通读：** 已完成
+
+> 通读：已完成

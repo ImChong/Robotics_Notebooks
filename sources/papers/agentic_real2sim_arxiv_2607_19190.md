@@ -10,6 +10,7 @@
 - **作者：** Guanxiong Chen、Qianjun Xia、Jiawei Peng、Heng Zhang、Bole Ma、Justin Qian、Ziyi Jiao、Bingyang Zhou、Luoxin Ye、Kaifeng Zhang、Kunyi Wang、Weijia Zeng、Yunuo Chen、Pengzhi Yang、Ziqiu Zeng、Huamin Wang、Chao Liu、Alan Yuille、Fan Shi、Changxi Zheng、Yunzhu Li、Chenfanfu Jiang、Peter Yichen Chen 等
 - **机构：** 英属哥伦比亚大学（UBC）、约翰霍普金斯大学（Johns Hopkins）、埃尔朗根-纽伦堡大学 / NHR@FAU（FAU）、哥伦比亚大学（Columbia）、加州大学洛杉矶分校（UCLA）、新加坡国立大学（NUS）、凌迪科技（Style3D）
 - **入库日期：** 2026-07-23
+- **通读：** 已完成
 - **一句话说明：** 用 **VLM agent 编排**把真机交互录像（主攻 DROID）转成 **可回放的 MuJoCo episode twin**：视觉处理 → 物理先验 → 场景装配 → simulator-in-the-loop 抓取优化；同一 episode 合约可扩展到 **PhysTwin 可变形** 与 **BFM-Zero 人形运动**；开源 31B VLM 后端在 DROID-100 上与前沿闭源模型相近的回放成功率，成本约 GPT-5.4 的 **3%**。
 
 ## 开源状态（项目页核查，2026-07-23）

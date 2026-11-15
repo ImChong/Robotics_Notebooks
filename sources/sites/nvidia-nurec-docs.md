@@ -10,6 +10,7 @@
 - **配套论文 / 仓：** Instant NuRec arXiv:2607.14203；<https://github.com/NVIDIA/instant-nurec>
 - **项目页：** <https://research.nvidia.com/labs/sil/projects/instant-nurec/>
 - **入库日期：** 2026-09-05
+- **通读：** 已完成
 - **一句话说明：** 把真实相机 / LiDAR 吃成可仿真 3D 环境的 **模型 + 服务**：重建写 **USDZ**，渲染走 **gRPC / Omniverse Kit**（`OmniNuRecVolumeAPI`），可选 Harmonizer 调和时序与外观；机器人走 Isaac Sim，自动驾驶走 NCore + 可选 Instant 初始化。
 
 ## 文档要点

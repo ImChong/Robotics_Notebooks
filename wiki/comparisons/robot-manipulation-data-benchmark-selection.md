@@ -2,7 +2,7 @@
 type: comparison
 title: "机器人操作数据集与基准选型 / Robot Manipulation Dataset and Benchmark Selection"
 tags: [dataset, benchmark, robot-manipulation, imitation-learning, vla]
-status: draft
+status: complete
 updated: 2026-11-07
 summary: "对照 LIBERO、RoboTwin 2.0、CALVIN、OXE、DROID、BridgeData V2、RoboSet、RH20T、AgiBot World 和 LeRobot，先分清仿真评测、真机数据、跨本体集合与工具链。"
 original:

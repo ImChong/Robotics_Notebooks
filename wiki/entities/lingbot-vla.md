@@ -10,7 +10,7 @@ tags:
 - depth-distillation
 - robbyant
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 arxiv: '2601.18692'
 code: https://github.com/robbyant/lingbot-vla
 project: https://technology.robbyant.com/lingbot-vla
@@ -170,7 +170,7 @@ sequenceDiagram
 2. **绝不跳过 `robot_config` 与 `norm_stats` 直接零样本上新本体：** 虽然预训练覆盖 9 类双臂与人形机器人，但在 GM-100 与 RoboTwin 中所有强结果均来自匹配 `norm_type` 与 80–130 条后训练微调。
 3. **代际选型分水岭：** 做纯桌面双臂操纵或受控基线复现选 **1.0（4B）**；若需要 55 维全身移动操作、灵巧手或 6 万小时含人手视频先验，则切至 **[LingBot-VLA 2.0](./lingbot-vla-v2.md)（6B MoE）**。
 4. **数据效率收益显著：** 在 2 万小时预训练底座上微调 **80 条演示** 即可反超使用 130 条演示微调的 π₀.₅，可直接缩短下游真机采集周期。
-5. **留意 LeRobot v3.0 版本边界：** 确认所下载权重与最新 `config.json` / `lingbotvla_cli.yaml` 结构匹配，避免 2026-05-01 前旧格式字段冲突。
+5. **留意 LeRobot v3.0 版本边界：** 确认所下载权重与随该权重版本发布的 `config.json` / `lingbotvla_cli.yaml` 结构匹配，避免 2026-05-01 前旧格式字段冲突。
 
 ## 局限与风险
 

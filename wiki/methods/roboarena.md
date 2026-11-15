@@ -2,7 +2,7 @@
 title: "RoboArena：通用机器人策略分布式真机众包评测方法"
 type: method
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 project_id: roboarena
 paper: https://arxiv.org/abs/2506.18123
 code: https://github.com/robo-arena/roboarena

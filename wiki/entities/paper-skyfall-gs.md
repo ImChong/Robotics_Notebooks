@@ -12,7 +12,8 @@ tags:
   - uiuc
   - zaragoza
 status: complete
-updated: 2026-09-20
+original: ../../sources/papers/skyfall_gs_arxiv_2510_15869.md
+updated: 2026-11-15
 arxiv: "2510.15869"
 venue: "ECCV 2026"
 project: https://skyfall-gs.jayinnn.dev/
@@ -34,6 +35,10 @@ summary: "Skyfall-GS（arXiv:2510.15869，ECCV 2026）：仅用卫星影像合�
 # Skyfall-GS：从卫星影像合成沉浸式 3D 城市场景
 
 **Skyfall-GS**（Lee et al., arXiv:2510.15869，[项目页](https://skyfall-gs.jayinnn.dev/)，[代码](https://github.com/jayin92/Skyfall-GS)）由 **国立阳明交通大学（NYCU）**、**UIUC**、**萨拉戈萨大学**、**UC Merced** 提出，**ECCV 2026** 收录。系统 **无需大规模 3D 扫描标注**，仅用 **多视角卫星影像** 合成 **城市街区尺度、可实时自由飞行探索** 的 **3D Gaussian Splatting** 场景：Stage 1 用 **伪相机深度监督** 与 **多日期外观建模** 重建粗几何；Stage 2 以 **课程式 Iterative Dataset Update（IDU）** 结合 **T2I 扩散 + prompt-to-prompt（FlowEdit）** 迭代精炼纹理与几何。
+
+## 一句话定义
+
+Skyfall-GS 将卫星多视角重建与 3DGS 几何、语义精修结合，生成可自由漫游的大尺度城市级 3D 高斯场景。
 
 ## 英文缩写速查
 

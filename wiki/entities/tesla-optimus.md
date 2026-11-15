@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, humanoid, industry, tesla, data-collection, teleoperation]
 status: complete
-updated: 2026-11-03
+updated: 2026-11-15
 summary: "Tesla Optimus：特斯拉人形机器人项目；曾大规模招聘 VR/外骨骼遥操作员采集示范；车队相机附带行人行为数据用于驾驶与感知。"
 related:
   - ./humanoid-robot.md

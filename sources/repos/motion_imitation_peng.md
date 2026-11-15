@@ -14,3 +14,5 @@
 
 - `paper` 分支含论文原始代码；`motion_imitation/data/motions/` 内置多种动物参考片段。
 - 训练：`python motion_imitation/run.py --mode train --motion_file ...`
+
+- **通读：** 已完成

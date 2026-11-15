@@ -16,6 +16,7 @@ related:
   - ../entities/paper-hrl-stack-03-omniretarget.md
   - ../tasks/loco-manipulation.md
   - ../tasks/manipulation.md
+original: ../../sources/papers/dynaretarget_arxiv_2602_06827.md
 summary: "DynaRetarget 与 TopoRetarget 两条 2026 接触保真重定向路线对比：前者用增量时域 SBTO 把 IK 参考精炼为人形 loco-manipulation 的动力学可行轨迹，后者用共享拓扑 interaction mesh + Laplacian 在运动学层保留灵巧手–物体交互；从尺度（全身 vs 灵巧手）、修补层（动力学 vs 运动学）、求解成本与适用任务给出选型坐标。"
 ---
 
@@ -114,6 +115,8 @@ flowchart TD
 
 ## 工程实践
 
+- **全身 loco-manipulation**：涉及步行搬运、重心转移或地面反作用力时优先用 DynaRetarget 的动力学轨迹精炼。
+- **灵巧手精细操作**：关注多指接触拓扑、物体几何与实时响应时优先用 TopoRetarget；动力学约束仍交给下游控制器。
 - 管线串联：GMR / IK 出初值 → DynaRetarget 或 TopoRetarget 做接触修补 → 下游 RL 跟踪。
 - 算力紧时 DynaRetarget 优先用 SBTO_skip（前缀缓存），TopoRetarget 约 4.7 ms/帧可用于实时场景。
 - 两法结果多为仿真口径，上真机仍需 DR / SysID / 下游 WBC。

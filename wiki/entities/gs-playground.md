@@ -3,7 +3,8 @@
 type: entity
 tags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026, nvidia]
 status: complete
-updated: 2026-10-22
+original: ../../sources/repos/gs_playground.md
+updated: 2026-11-15
 related:
   - ./genesis-sim.md
   - ./isaac-gym-isaac-lab.md
@@ -27,6 +28,10 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 
 **GS-Playground** 是由 discoverse-dev 开发的高吞吐视觉机器人学习仿真框架，核心创新是将 **并行物理仿真** 与 **批量 3D Gaussian Splatting (3DGS) 渲染** 耦合，在保持极高帧率的同时提供光真实感的视觉观测。已被 **RSS 2026** 收录。
 
+## 一句话定义
+
+GS-Playground 是将 3D Gaussian Splatting 实时渲染与物理仿真引擎结合的开源 Real2Sim 评测与训练游乐场。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -48,6 +53,10 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 
 1. **吞吐量 vs 真实感**：传统渲染（OpenGL 光栅化）速度可接受，但外观失真严重；光线追踪真实感高但速度极慢。3DGS 渲染打破了这个 trade-off。
 2. **Sim-to-Real 外观 gap**：用 3DGS 从真实场景重建的仿真环境，天然缩小 visual domain gap，减少 domain randomization 的负担。
+
+## 核心原理
+
+- **3DGS + 物理引擎耦合**：以 3DGS 承担高保真视觉观测渲染，同时以底层物理引擎（如 MuJoCo/Genesis）处理刚体碰撞与动力学步进。
 
 ## 核心技术
 
@@ -166,6 +175,14 @@ sequenceDiagram
 
 图依据：discoverse-dev/gs_playground@33127ca，实际读过 `demo/navigation/robot_locomotion.py`、`demo/navigation/nav_collect_common.py`、`demo/navigation/utils/{policy,robot,controller}.py`、`demo/live_demo/replay.py`、`README.md`、`pyproject.toml`；物理步进与渲染循环细节位于外部包 motrixsim / gaussian_renderer 中，未读其源码，未运行代码。
 
+## 工程实践
+
+- **坐标与尺度对齐**：导入外部 3DGS 场景时需先完成相机尺度标定与碰撞网格对齐，确保视觉渲染与物理接触位置一致。
+
+## 局限
+
+- **早期预览阶段**：对动态可变形物体与复杂关节资产的支持仍在演进，生产级大规模并行训练需关注渲染显存开销。
+
 ## 关联页面
 
 - [Genesis 仿真器](./genesis-sim.md) — 同为新一代高吞吐仿真，侧重多物理场
@@ -190,3 +207,8 @@ sequenceDiagram
 - [sources/repos/gs_playground.md](../../sources/repos/gs_playground.md)
 - [discoverse-dev/gs_playground GitHub Repo](https://github.com/discoverse-dev/gs_playground)
 - 源码核对（2026-11-02）：discoverse-dev/gs_playground@33127ca，读过 README.md、pyproject.toml、demo/navigation/robot_locomotion.py、demo/navigation/nav_collect_common.py、demo/navigation/utils/policy.py、demo/navigation/utils/robot.py、demo/navigation/utils/controller.py、demo/live_demo/replay.py；时序图依据以上文件，未运行代码。
+
+## 推荐继续阅读
+
+- [CRISP vs GS-Playground](../comparisons/crisp-vs-gs-playground-real2sim.md)
+- [NVIDIA Omniverse NuRec](./nvidia-nurec.md)

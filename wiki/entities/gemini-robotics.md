@@ -7,7 +7,7 @@ project_id: gemini-robotics
 project: https://deepmind.google/models/gemini-robotics/
 arxiv: "2503.20020"
 summary: "Gemini Robotics 模型族持续迭代：Gemini Robotics 2.5（2026-11）在官方报告的 200 多种任务、奔驰 Apollo 2 零件分拣试点与安全引导中改进灵巧性和可靠性；VLA 仍面向合作伙伴，ER 2 与 Argon 分别承担具身编排与研发辅助。"
-updated: 2026-11-11
+updated: 2026-11-15
 related:
   - ./paper-roborefer.md
   - ./robospatial.md

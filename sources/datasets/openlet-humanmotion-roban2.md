@@ -1,3 +1,5 @@
+- **通读：** 已完成
+
 # OpenLET LET-HumanMotion-Roban2（真机小脑动作数据）
 
 > 来源归档（官方文档与数据申请入口）

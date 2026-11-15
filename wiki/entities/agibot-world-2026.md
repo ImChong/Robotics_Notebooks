@@ -2,7 +2,7 @@
 type: entity
 tags: [agibot, dataset, imitation-learning, teleoperation, open-source]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 related:
   - ../overview/agibot-june-2026-release-technology-map.md
   - ../overview/agibot-release-category-01-data-entry.md
@@ -14,6 +14,8 @@ sources:
   - ../../sources/repos/agibot-world.md
   - ../../sources/repos/agibot_world_2026.md
 summary: "AGIBOT WORLD 2026 是智元 2026-06 开源的真实世界机器人操作数据集：基于精灵 G2 在商业/家居/工业等场景采集多模态示范，首期主题聚焦模仿学习与自由采集范式。"
+original:
+  - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
 ---
 
 # AGIBOT WORLD 2026
@@ -47,7 +49,17 @@ summary: "AGIBOT WORLD 2026 是智元 2026-06 开源的真实世界机器人操�
 | [Agibot-World 站点](../../sources/sites/agibot-world.md) | 品牌与生态入口 |
 | [EWMBench](./ewmbench.md) | 基于 Agibot-World 数据的 **世界模型生成评测**；与本数据集 **互补**（评测 vs 新一轮 IL 入口） |
 
-## 常见误区
+## 核心原理
+
+- **跨本体大规模真机采集**：以智元双臂/轮式人形平台为核心，覆盖家居、商超、工业分拣等真实场景的长程操作轨迹，并同步记录多视角 RGB、本体关节状态与任务语言指令。
+- **数据集与评测基准联动**：与 Agibot-World 早期版本及 EWMBench 评测套件协同，形成「大规模真机训练集 + 标准化世界模型/策略评测」的数据闭环。
+
+## 工程实践
+
+- **按任务域切分微调**：直接拉取对应场景子集做 VLA 或世界模型微调时，需先核对相机视角（头戴/腕部）与动作空间（末端位姿 vs 关节角）是否与目标本体一致。
+- **许可与子集核查**：部分商业或特定场景子集可能存在下载或商用限制，接入训练管线前须先核对仓库与数据集卡片的许可声明。
+
+## 常见误区与局限
 
 1. **与 EWMBench 混为同一数据集** — EWMBench 是 **评测基准**；AGIBOT WORLD 2026 是 **2026 轮 IL 数据发布**。
 2. **「数据越多越好」** — 文内强调须反映真实部署的 **物理过程与失败修正**。

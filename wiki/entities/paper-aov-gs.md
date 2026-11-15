@@ -10,10 +10,11 @@ tags:
   - semantic-mapping
   - planning
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 arxiv: "2610.29374"
 code: https://github.com/OptimusFaber/AOV-GS
 related:
+  - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/locomotion.md
   - ../tasks/vision-language-navigation.md
   - ./paper-target-aware-gaussian-langmap.md
@@ -170,6 +171,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 将主动开放词汇建图接入定位、语义地图和导航闭环，分别核对各层误差。
 - [locomotion](../tasks/locomotion.md)
 - [vision-language-navigation](../tasks/vision-language-navigation.md)
 - [目标感知 3D Gaussian 语言地图细化](./paper-target-aware-gaussian-langmap.md) — 建图/主动探索与既有语言地图的目标语义细化互为上下游研究问题

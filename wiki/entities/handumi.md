@@ -22,6 +22,8 @@ sources:
   - ../../sources/repos/handumi-hw.md
   - ../../sources/repos/handumi-quest-app.md
   - ../../sources/sites/handumi-sw.md
+original:
+  - ../../sources/repos/handumi-sw.md
 summary: "HandUMI 是面向平行夹爪双臂的无机器人示教接口与软件栈：一次采集 LeRobot 兼容数据，经校准与 QA 后重定向/回放到 PiPER、OpenArm、TRLC-DK1、YAM 等固定基座双臂，无需为每台臂重新遥操作。"
 ---
 

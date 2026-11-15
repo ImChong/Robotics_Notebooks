@@ -19,6 +19,7 @@
 - **机构：** 国立阳明交通大学（NYCU）· UIUC · 萨拉戈萨大学 · UC Merced
 - **版本：** arXiv:2510.15869；**ECCV 2026**（README 标注）
 - **入库日期：** 2026-09-20
+- **通读：** 已完成
 - **一句话说明：** 仅用多视角卫星影像合成 **城市街区尺度、可自由飞行漫游** 的 3DGS 城市场景：Stage 1 伪相机深度监督 + 多日期外观建模重建粗几何；Stage 2 **课程式 Iterative Dataset Update（IDU）** 用 T2I 扩散（FlowEdit / prompt-to-prompt）迭代精炼纹理与几何；官方代码、数据与融合 PLY **已开源**（Apache 2.0）。
 
 ## 核心摘录

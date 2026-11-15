@@ -61,3 +61,5 @@
 - [x] 摘要 + URDF 校准 + KTO/ID/KDTO + Table I + side flip
 - [x] 项目页核查与站点归档
 - [x] wiki 实体页与交叉引用
+
+- **通读：** 已完成

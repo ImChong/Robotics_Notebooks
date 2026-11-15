@@ -180,6 +180,28 @@ CURATED_TAXONOMY_LABEL_RE = re.compile(
 MISSING_CONCEPT_PAGE_MAX_CANDIDATES = 15
 # 明显非概念的高频 token（frontmatter 键 / 布尔值等），不计入候选。
 MISSING_CONCEPT_STOPWORDS: set[str] = {
+    # 配置字段、命令和数据档位，不是独立机制：Config/config 是配置对象/JSON 键，
+    # target 是任务目标/硬件目标字段，full/real/other 是安装、数据或许可证枚举，
+    # serve/torchrun 是服务与分布式启动入口，v2 是资料/软件版本号。
+    "config",
+    "target",
+    "full",
+    "real",
+    "other",
+    "serve",
+    "torchrun",
+    "v2",
+    # NumPy 和 flash-attn 在复现页中是 Python 依赖包名；不是数组计算或注意力
+    # 机制的缺页信号，后者已有 concepts/transformer.md。
+    "numpy",
+    "flash-attn",
+    # Ground 混合数据子集名、grounding 动词与地面模式；Motion 混合数据结构、
+    # 源码目录和系统层标签。相关机制分别归接地/重定向/轨迹优化，不合建同名概念页。
+    "ground",
+    "motion",
+    # simulation 是仿真后端/目录/系统层标签；仿真机制与层次已有
+    # concepts/robot-simulation-three-layers.md，和 sim 枚举同类。
+    "simulation",
     "type",
     "tags",
     "related",
@@ -630,6 +652,27 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                页的 on-policy Runner 抽象，与 qpos / reset 同为代码 token 而非
 #                机制，不单建概念页
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
+    # 已建实体/已定义缩写，避免为相同资料再造 concepts 页：
+    # AMASS → entities/amass.md；OSQP → entities/osqp.md；
+    # ZeroMQ → concepts/zeromq-messaging.md + entities/zeromq.md；
+    # DYNAMIXEL → entities/dynamixel-sdk.md + painode-149-dynamixel.md；
+    # IsaacGym → entities/isaac-gym.md；LSTM → concepts/recurrent-neural-network.md；
+    # qpOASES → formalizations/quadratic-programming.md 的 active-set 求解器；
+    # RoboCasa365 → entities/paper-notebook-robocasa365-a-large-scale-simulation-framework-f.md。
+    "amass",
+    "osqp",
+    "zeromq",
+    "dynamixel",
+    "isaacgym",
+    "lstm",
+    "qpoases",
+    "robocasa365",
+    # SMPL-H 是人体模型族的命名变体，AMASS / HumanML3D 数据管线已解释其使用，
+    # 共同参数化表征归 concepts/smpl-x.md；不是新的通用机制。
+    "smpl-h",
+    # FoundationPose 是 6-DoF 位姿系统名，在 entities/paper-egoxperience.md 等
+    # 实现链中作为跟踪器出现；与 VGG-T / SmolVLA 同类具体模型，不建同名概念页。
+    "foundationpose",
     # RTC：Real-Time Chunking，已由 methods/action-chunking.md 的 RTC 谱系专段
     # 和 entities/paper-real-time-chunking.md / paper-training-time-real-time-chunking.md 覆盖。
     "rtc",
@@ -2404,6 +2447,14 @@ def _check_eval_benchmark_crosslink(pages: list[Path], results: dict[str, Any]) 
         if inline:
             tags |= {t.strip().lower() for t in inline.group(1).split(",")}
         if not _tag_keyword_match(tags, EVAL_BENCHMARK_TAG_KEYWORDS):
+            continue
+
+        # SPU 等 ai-for-science 基准评估湿实验结果预测，不是具身闭环任务。
+        # 已归 AI Agent 评测链的科学基准无需强连具身枢纽；同时带机器人/具身
+        # 领域标签的跨域基准仍检查，避免漏掉实验室机器人等真实用例。
+        if "ai-for-science" in tags and not _tag_keyword_match(
+            tags, ("robot", "embodied", "vla", "navigation", "manipulation", "locomotion")
+        ):
             continue
 
         if not any(hub in content for hub in EVAL_BENCHMARK_HUBS):

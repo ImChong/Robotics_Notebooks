@@ -177,6 +177,7 @@ python3 scripts/fetch_feishu_doc.py "https://<tenant>.feishu.cn/wiki/<token>" --
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
 - **有项目页的 ingest 必须先打开项目页核查源码/数据是否开放**（已开源 / 部分 / 待发布 / 未开源），并写入 `sources/sites/`、`sources/repos/` 与 wiki 局限或工程实践；详见 [schema/ingest-workflow.md § 步骤 2.5](schema/ingest-workflow.md)
+- **纵深路线挂载核查（每次新 ingest 必查）**：对照 [roadmap/README.md](roadmap/README.md) 确认新 ingest 内容是否符合已有纵深路线（`roadmap/depth-*.md` 等），符合则挂载到对应 Stage，无匹配则略过；详见 [schema/ingest-workflow.md § 步骤 5.5](schema/ingest-workflow.md)
 - 每次 ingest **建议**记一条日志（叙事：意图 / 开源结论 / 关键页；**不必**列出全部 wiki 路径）：用 `make log OP=ingest DESC="..."` 写入 **`log.d/` 碎片**，**不要直接改 `log.md`**（合入 main 后自动并入）
 - 每次 query 有好结果都要写回 wiki
 - **每个 wiki 页面必须包含 `## 参考来源` 区块**，标注该页知识编译自哪些原始资料

@@ -8,7 +8,7 @@ tags:
   - biomimetic
   - eth
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 project: https://srl.ethz.ch/orcahand
 code: https://github.com/orcahand/orca_core
 related:
@@ -71,7 +71,7 @@ summary: "ORCA Hand（ETH Zurich SRL）：总重 1.2 kg、BOM 低于 2,000 CHF�
 ### 自动标定与 `orca_core` 闭环架构
 
 - **无外置关节编码器的开环自标定（Algorithm 1）**：因肌腱经由各关节 **旋转中心（CoR）** 路由，相邻关节耦合极弱，电机位置与关节角度可用线性关系近似。`calibration_routine.py` 按配置的 `calibration_sequence` 依次以电流控制将各关节推抵机械屈曲极限与伸展极限直至堵转，测出电机行程 `Δm_j = m_j^max - m_j^min`，结合 CAD 限位行程 `Δθ_j = θ_j^max - θ_j^min` 自动解算单关节传动比 `ρ_j = Δm_j / Δθ_j` 并持久化为 `calibration.yaml`。
-- **v0.13.0+ 工程扩展**：最新 `orca_core` 在原有纯开环 `OrcaHand` 基础上，通过 `hand_factory.py` 无缝按硬件能力扩展出 **`OrcaHandTouch`**（指尖传感帧解析）、**`OrcaHandJointFeedback`**（基于关节绝对编码器消除纯绳驱长时漂移）与全功能 **`OrcaHandFull`**，并在标定阶段核对实测行程与 `joint_motor_travel` 基线，一旦因肌腱过紧导致提前虚假堵转即自动升流复测。
+- **v0.13.0+ 工程扩展**：本页核对的 `orca_core` 在原有纯开环 `OrcaHand` 基础上，通过 `hand_factory.py` 无缝按硬件能力扩展出 **`OrcaHandTouch`**（指尖传感帧解析）、**`OrcaHandJointFeedback`**（基于关节绝对编码器消除纯绳驱长时漂移）与全功能 **`OrcaHandFull`**，并在标定阶段核对实测行程与 `joint_motor_travel` 基线，一旦因肌腱过紧导致提前虚假堵转即自动升流复测。
 
 ### 流程总览
 

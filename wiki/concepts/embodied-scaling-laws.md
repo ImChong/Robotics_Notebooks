@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 related:
   - ./bitter-lesson.md
   - ./open-x-embodiment.md

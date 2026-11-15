@@ -93,3 +93,5 @@
 
 - 项目页：[`sources/sites/shooting-for-contact-github-io.md`](../sites/shooting-for-contact-github-io.md)
 - 代码：[`sources/repos/shooting-for-contact.md`](../repos/shooting-for-contact.md)
+
+- **通读：** 已完成

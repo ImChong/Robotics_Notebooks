@@ -8,7 +8,7 @@ tags:
   - residual-policy
   - human-demonstration
 status: complete
-updated: 2026-10-18
+updated: 2026-11-15
 arxiv: "2609.24093"
 code: https://github.com/DexGEM-Lab/real2sim2real
 related:
@@ -20,6 +20,7 @@ sources:
   - ../../sources/papers/contact_anchored_retargeting_residual_dexterous_arxiv_2609_24093.md
   - ../../sources/repos/contact_anchored_retargeting_residual_dexterous.md
   - ../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md
+original: ../../sources/papers/contact_anchored_retargeting_residual_dexterous_arxiv_2609_24093.md
 summary: "Contact-Anchored Retargeting（arXiv:2609.24093）：先用物理残差学习补全人类示范接触，再按接触位置和顺序重定向到机器人手，最后修复动力学可行性。"
 ---
 
@@ -72,6 +73,14 @@ sequenceDiagram
   M-->>E: 动作 / 预测
   R-->>U: 指标与日志
 ```
+
+## 工程实践
+
+- **开源代码**：已开源（`DexGEM-Lab/real2sim2real`），可按仓库 README 配置仿真环境、准备人类示范数据并训练残差策略与接触锚定重定向管线。
+
+## 局限
+
+- 训练与动力学可行性修复仍重度依赖物理仿真环境；跨不同灵巧手形态时需准确标定接触点与物体几何。
 
 ## 实验与评测
 

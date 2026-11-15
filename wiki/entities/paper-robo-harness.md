@@ -16,7 +16,7 @@ tags:
   - mcgill
   - 2012-labs
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 arxiv: "2607.18060"
 project_id: roboharness-heterogeneous-policies
 original:
@@ -63,7 +63,7 @@ summary: "RoboHarness（arXiv:2607.18060，华为诺亚 / UBC / 多伦多大学 
 | 字段 | 内容 |
 |------|------|
 | **机构** | 华为（Huawei Noah’s Ark Lab）；英属哥伦比亚大学（UBC）；多伦多大学（University of Toronto）；麦吉尔大学（McGill）；二零一二实验室（2012 Labs） |
-| **arXiv** | [2607.18060](https://arxiv.org/abs/2607.18060)（最新核对 v3，2026-09-29；旧页面部分实验数值来自 v2） |
+| **arXiv** | [2607.18060](https://arxiv.org/abs/2607.18060)（本页核对 v3，2026-09-29；旧页面部分实验数值来自 v2） |
 | **开源** | **部分开源（占位仓）** — [`markli1hoshipu/RoboHarness`](https://github.com/markli1hoshipu/RoboHarness) 为项目页镜像；harness **无可运行训练/推理入口**；底层 π₀.₅ / OpenVLA-OFT 权重另开源 |
 | **规划器** | Coding agent：Codex + GPT-5.5（论文实现） |
 | **仿真策略库** | π₀.₅（openpi `pi05_libero`）+ OpenVLA-OFT（RLinf GRPO）+ PDDLStream/FF TAMP |

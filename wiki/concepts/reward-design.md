@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, reward, locomotion, humanoid, policy-optimization]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-15
 related:
   - ../formalizations/mdp.md
   - ../methods/reinforcement-learning.md

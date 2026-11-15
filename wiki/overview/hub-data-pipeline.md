@@ -4,6 +4,12 @@ tags: [hub, hub-data-pipeline, dataset, motion-retargeting, training-data]
 status: complete
 updated: 2026-08-03
 summary: "训练数据管线知识链汇总：从原始动作捕捉 / 人体视频 → 质量评估 → 重定向 → RL/IL 策略训练输入的端到端选型链路，统一收纳人形参考运动数据集、动作数据质量与重定向相关页面。"
+sources:
+  - ../../sources/sites/amass-dataset.md
+  - ../../sources/repos/phuma.md
+  - ../../sources/sites/humanoideveryday.md
+original:
+  - ../../sources/sites/amass-dataset.md
 ---
 
 # 训练数据管线（知识链汇总）
@@ -45,6 +51,19 @@ summary: "训练数据管线知识链汇总：从原始动作捕捉 / 人体视�
 - **[WBT](./hub-wbt.md)**：训练数据管线产出的参考动作直接喂给全身跟踪训练。
 - **[IL/RL](./hub-learning.md)**：训练范式层决定数据输入形态与质量门槛。
 
+## 核心原理
+
+- **端到端数据转换链路**：原始人体 MoCap / 第一视角视频 → 物理质量评估（可行性、接触一致性、形态差距）→ 骨骼/动力学重定向 → 对齐到目标机器人 RL/IL 策略输入格式。
+
+## 工程实践
+
+- **先定目标范式再选数据源**：全身跟踪（WBT）优先选用已重定向好的机器人轨迹（如 [PHUMA](../entities/dataset-bfm-phuma.md)），端到端操作则优先考虑真机多模态集（如 [Humanoid Everyday](../entities/humanoid-everyday-dataset.md)）。
+- **质量阈值前置**：在重定向前后分别做关节限位、足端滑移与接触力校验，避免把采集端噪声带入策略训练。
+
+## 局限
+
+- **知识链枢纽定位**：本页侧重链路串联与选型导航，具体重定向算法参数与数据集许可细节需跳转各子页面核对。
+
 ## 关联页面
 
 - [AMASS](../entities/amass.md)
@@ -59,3 +78,8 @@ summary: "训练数据管线知识链汇总：从原始动作捕捉 / 人体视�
 - 本库归纳自 [Humanoid Training Data Pipeline](../queries/humanoid-training-data-pipeline.md)、[Motion Data Quality](../concepts/motion-data-quality.md)
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`data-pipeline` 命中规则）
 - 上游原始资料（本链概念页共同的 ingest 来源）：[AMASS 动捕数据集](../../sources/sites/amass-dataset.md)、[PHUMA：物理可靠人形运动数据集](../../sources/repos/phuma.md)、[Humanoid Everyday](../../sources/sites/humanoideveryday.md)
+
+## 推荐继续阅读
+
+- [具身数据纵深路线（Embodied Data）](../../roadmap/depth-embodied-data.md) — Stage 0–5 工程化展开
+- [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md) — 决策树与选型对照

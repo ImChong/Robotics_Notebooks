@@ -3,7 +3,7 @@ title: HMI 开源项目主表 · 阅读导航
 type: query
 status: complete
 created: 2026-07-30
-updated: 2026-09-10
+updated: 2026-11-15
 summary: 具身智能研究室开源项目主表的站内阅读导航：表中项目对应站内哪一页、该从哪读起。下表是 2026-07 的 166 项快照，上游 2026-09-10 已扩到 586 项，本页不镜像全表。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md

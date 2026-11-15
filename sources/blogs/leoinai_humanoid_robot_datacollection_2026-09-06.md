@@ -1,3 +1,6 @@
+- **通读：** 已完成
+
+
 # Humanoid Robot Data: Collection Methods and Investment Opportunities（LeoInAI Substack）
 
 > 来源归档（ingest 评论 / 产业地图）

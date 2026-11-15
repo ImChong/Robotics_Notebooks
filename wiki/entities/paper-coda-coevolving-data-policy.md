@@ -1,14 +1,18 @@
 ---
 type: entity
 project_id: coda-coevolving-data-policy
-tags: [paper, robotics, ingest-2026-11]
+tags: [paper, robotics, data-flywheel, rl, ingest-2026-11]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
+topic: [teleop-data, reinforcement-learning]
 arxiv: "2610.22362"
 project: https://plan-lab.github.io/projects/coda/
 related:
-  - ./paper-demostream-batched-tamp.md
+  - ../concepts/embodied-data-flywheel-minimal-closed-loop.md
+  - ../concepts/data-flywheel.md
+  - ../../roadmap/depth-embodied-data.md
   - ./paper-prm4rl-progress-reward.md
+  - ./paper-demostream-batched-tamp.md
 original:
   - ../../sources/papers/coda-coevolving-data-policy_arxiv_2610_22362.md
 sources:
@@ -87,8 +91,11 @@ flowchart LR
 
 ## 关联页面
 
-- [DemoStream：批量 TAMP 优化自动示范数据](./paper-demostream-batched-tamp.md)
-- [PRM4RL：大语言模型生成的任务进度奖励](./paper-prm4rl-progress-reward.md)
+- [具身数据飞轮最小闭环](../concepts/embodied-data-flywheel-minimal-closed-loop.md)：策略失败进入下一轮数据生成与训练是 CoDA 的核心闭环。
+- [Data Flywheel（具身数据飞轮）](../concepts/data-flywheel.md)：对应数据生成、策略更新、评估反馈的循环。
+- [具身数据纵深路线](../../roadmap/depth-embodied-data.md)：理解失败驱动仿真生成在数据技术路线中的位置。
+- [PRM4RL（进度奖励）](./paper-prm4rl-progress-reward.md)：都使用势函数信号，但 CoDA 还针对失败模式改变训练场景。
+- [DemoStream（规划示范生成）](./paper-demostream-batched-tamp.md)：比较失败驱动场景生成与批量规划示范两种数据来源。
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: method
 tags: [language-conditioned, vlm, behavior-cloning, data-augmentation, google-robotics]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
 related:
   - ./robotics-transformer-rt-series.md
   - ./bc-z.md

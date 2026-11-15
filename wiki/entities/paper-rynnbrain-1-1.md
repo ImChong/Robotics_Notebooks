@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, alibaba, embodied-foundation-model, vla, qwen, spatial-grounding, 3d-grounding, contact-point, flow-matching, unitree, astribot, wuji-robotics, scaling, foundation-policy, open-source, china-embodied-opensource]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2607.17977"
 related:
   - ../methods/vla.md
@@ -25,6 +25,8 @@ sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/cn_os_rynnbrain.md
 summary: "RynnBrain 1.1（阿里达摩院，arXiv:2607.17977）：Qwen3.5 系 2B/9B/122B-A10B 具身基础模型；新增接触点预测与（2B/9B）原生 3D grounding；RynnBrain-VLA 用 81 维统一动作空间+mask+flow matching，在 G1/Astribot/Tianji-Wuji 上优于同配方 Qwen-VLA 与 π₀.₅/GR00T；权重与基础模型推理已开源，VLA 训练栈未公开。"
+original:
+  - ../../sources/papers/rynnbrain_1_1_arxiv_2607_17977.md
 ---
 
 # RynnBrain 1.1：更强、更可泛化的具身基础模型
