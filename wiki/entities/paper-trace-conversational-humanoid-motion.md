@@ -1,14 +1,16 @@
 ---
 type: entity
 project_id: trace-conversational-humanoid-motion
-tags: [paper, robotics, ingest-2026-11]
+tags: [paper, robotics, motion-generation, human-motion, ingest-2026-11]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-15
+topic: motion-imitation
 arxiv: "2610.21515"
 code: https://github.com/Multimodal-Perception-Action/TRACE
 related:
-  - ./paper-submillisecond-reflex-engine.md
-  - ./paper-moss-mode-source-shaping.md
+  - ../methods/diffusion-motion-generation.md
+  - ../../roadmap/depth-motion-generation.md
+  - ../overview/paper-notebook-category-14-human-motion.md
 original:
   - ../../sources/papers/trace-conversational-humanoid-motion_arxiv_2610_21515.md
 sources:
@@ -105,8 +107,9 @@ sequenceDiagram
 
 ## 关联页面
 
-- [亚毫秒反射：连续人机物理交互的无锁控制切换](./paper-submillisecond-reflex-engine.md)
-- [MOSS：从初始噪声选定 Flow Matching 动作模式](./paper-moss-mode-source-shaping.md)
+- [Diffusion Motion Generation（扩散动作生成）](../methods/diffusion-motion-generation.md)：TRACE 利用扩散模型并施加时空编辑约束。
+- [动作生成纵深路线](../../roadmap/depth-motion-generation.md)：定位语言驱动参考动作局部编辑的技术路线。
+- [人体动作论文专题](../overview/paper-notebook-category-14-human-motion.md)：衔接人体与人形动作生成及编辑文献。
 
 ## 参考来源
 
