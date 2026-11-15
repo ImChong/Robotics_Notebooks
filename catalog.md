@@ -6260,6 +6260,7 @@
 - [X-World（Controllable Ego-Centric Multi-Camera World Models）](wiki/entities/paper-x-world.md) — X-World**（arXiv:2603.19979）由小鹏（XPeng） GWM 团队提出：面向端到端智驾评测与数据扩增的 **动作条件 `📅unknown` `[entity_page]`
 - [X2Real: an eXtensive simulation benchmark for real-world generalist policies](wiki/entities/paper-x2real.md) — 论文类型：** arXiv 预印本（v1，2026-09-23） `📅unknown` `[entity_page]`
 - [X2Streaming-TTS：令牌级因果流式语音合成](wiki/entities/paper-x2streaming-tts.md) — X2Streaming-TTS**（*Causal Token-Level Text-to-Speech from Streaming Text with Speech-State Inherit `📅unknown` `[entity_page]`
+- [XBot-Omni：面向具身理解与交互的全模态模型（An Omni-Modal Model for Embodied Understanding and Interaction）](wiki/entities/paper-xbot-omni.md) — XBot-Omni**（arXiv:2611.17160v1，2026-11-12；智元机器人 X-Lab / AGIBOT `📅unknown` `[entity_page]`
 - [XCoT-VLA（arXiv:2608.10976）](wiki/entities/paper-xcot-vla-driving.md) — XCoT-VLA**（*XCoT-VLA: Executable Chain-of-Thought for Vision-Language-Action Driving*，[arXiv:2608. `📅unknown` `[entity_page]`
 - [XHugWBC（HMI P037）](wiki/entities/paper-xhugwbc-cross-humanoid.md) — XHugWBC**（*Scalable and General Whole-Body Control for Cross-Humanoid Locomotion*，2026，[arXiv:2602 `📅unknown` `[entity_page]`
 - [Xiaomi-CocktailASR-1（目标说话人 LLM-ASR）](wiki/entities/paper-xiaomi-cocktailasr-1.md) — Xiaomi-CocktailASR-1**（*Xiaomi-CocktailASR-1 Technical Report*，[arXiv:2609.11274](https://arxiv.or `📅unknown` `[entity_page]`
