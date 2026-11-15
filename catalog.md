@@ -3352,6 +3352,7 @@
 - [Morphology-Aware Retargeting（arXiv:2609.11357）](wiki/entities/paper-morphology-aware-retargeting-wheeled-humanoid.md) — Morphology-Aware Retargeting**（*Morphology-Aware Human Motion Retargeting for Wheeled-Humanoid Loc `📅unknown` `[entity_page]`
 - [QWM：形态条件世界模型的跨构型四足运动（arXiv:2604.08780）](wiki/entities/paper-morphology-conditioned-world-model-quadruped.md) — 论文：** *Morphology-Conditioned World Model for Cross-Embodiment Quadrupedal Locomotion*（[arXiv:2604 `📅unknown` `[entity_page]`
 - [Morphometric Imitation（人类 HOI → 零样本真机 visuomotor）](wiki/entities/paper-morphometric-imitation.md) — Morphometric Imitation**（*From Morphology and Contact Aware Hand Retargeting to Sim-to-Real Visuom `📅unknown` `[entity_page]`
+- [Moshi：面向实时对话的语音—文本基础模型 / Moshi: a speech-text foundation model for real-time dialogue](wiki/entities/paper-moshi-speech-text-realtime-dialogue.md) — Moshi** 是将用户语音与系统输出语音联合建模的 **全双工流式 speech-to-speech 基础模型**：它不必等用户结束一轮说话，便能持续监听、插话、回应并生成带语调的音频。 `📅unknown` `[entity_page]`
 - [MOSS：从初始噪声选定 Flow Matching 动作模式](wiki/entities/paper-moss-mode-source-shaping.md) — 将多模态机器人行为对应到可区分的高斯起点分布，在推理时通过选择初始源分量控制目标动作模式。 `📅unknown` `[entity_page]`
 - [MOSS Transcribe Diarize（长时多说话人 SATS）](wiki/entities/paper-moss-transcribe-diarize.md) — MOSS Transcribe Diarize**（*MOSS Transcribe Diarize Technical Report*，[arXiv:2601.01554](https://ar `📅unknown` `[entity_page]`
 - [MOST（arXiv:2611.00734）](wiki/entities/paper-most.md) — MOST**（*MOST: Memory of Object States and Task Progress for Long-Horizon Mobile Manipulation*，[arX `📅unknown` `[entity_page]`
