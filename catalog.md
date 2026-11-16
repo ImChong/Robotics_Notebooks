@@ -6793,6 +6793,7 @@
 - [VLOA（RoboScience · Visics 通用具身栈）](wiki/entities/roboscience-vloa.md) — VLOA（Vision-Language-Object-Action）是 RoboScience（北京机科未来科技有限公司，2024-12 成立）对外披露的 端到端通用具身大模型：Embodied W `📅2026-07-19` `[entity_page]`
 - [RoboSet：真实世界多任务操作数据集 / RoboSet Dataset](wiki/entities/roboset-dataset.md) — RoboSet 是面向真实世界厨房多任务机器人操作的数据集，结合远程遥操作与动作示教回放轨迹，提供四路相机观测与按试次组织的 HDF5 数据。其官方主页报告 28,500 条轨迹。 `📅2026-11-15` `[entity_page]`
 - [RoboSimStudio（机器人操作 Real2Sim 工具包）](wiki/entities/robosimstudio.md) — RoboSimStudio 是面向机器人操作任务的开放交互式仿真工具包，让人或编码 Agent 根据真实场景观察构建、检查和调整物理仿真；当前仓库也提供 CPU 路径。 `📅2026-10-28` `[entity_page]`
+- [RoboSkills：机器人 Agent 工作流（RoboSkills: Agent Workflows for Robotics）](wiki/entities/roboskills.md) — RoboSkills 是 OpenRoboKit 的独立开源项目，以轻量 Agent 工作流与工具适配器组合机器人仿真、动作决策、场景重建和运动生成，不是 RoboKit 的另一套物理求解器。 `📅2026-11-16` `[entity_page]`
 - [RoboSpatial](wiki/entities/robospatial.md) — RoboSpatial（arXiv:2411.16537，项目页，CVPR 2025 Oral）教 2D/3D VLM 机器人 空间理解：从 3D scan 自动生成 grounding、空间上下文、 `📅2026-09-23` `[entity_page]`
 - [robosuite](wiki/entities/robosuite.md) — robosuite 是一个以 MuJoCo 为后端的机器人学习仿真框架。它把机器人模型、操作场景、物体、控制器和传感器组合成可配置的任务环境，并为策略训练、评测和遥操作提供接口。 `📅2026-10-06` `[entity_page]`
 - [robot_descriptions.py](wiki/entities/robot-descriptions-py.md) — robot_descriptions.py 是把分散在各 git 仓的 URDF / MJCF 收成 Python 模块 的加载层。HMI 开源项目主表把它放在「工程与实机部署」：解决的是实验脚本里 `📅2026-09-15` `[entity_page]`
@@ -7922,7 +7923,7 @@
 - [开源可复现性：9 篇论文的阅读坐标](wiki/overview/open-source-reproducibility-9-papers-technology-map.md) — 这一批开源论文的价值不在又一个模型名，而在把表征、数据、评测与硬件同时变成可复现资产。 `📅2026-09-05` `[overview_page]`
 - [开源系统闭环：7 篇论文的阅读坐标](wiki/overview/open-source-system-loop-7-papers-technology-map.md) — 具身智能正进入「开源入口 + 系统闭环」阶段：语言生成技能档案、VLM 统一导航、记忆与世界模型自进化、推理期纠错、多智能体编排与光学几何感知一并推进可复现部署。 `📅2026-09-01` `[overview_page]`
 - [开源系统可靠性：8 篇论文的阅读坐标](wiki/overview/open-source-system-reliability-8-papers-technology-map.md) — 具身智能的竞争点正从单一模型能力扩展到系统级可靠性：意图保持、3D 世界模型、接触安全评测、急停可恢复性、灵巧迁移、多视角几何、部署期自改进与证据可计数融合。 `📅2026-09-04` `[overview_page]`
-- [OpenRoboKit：优化、遥操作与抓取工具集](wiki/overview/openrobokit-toolkit.md) — OpenRoboKit 是围绕机器人可微优化、动作重定向和抓取学习形成的三个独立 GitHub 开源项目集合；不是一个将所有算法封装在同一仓库的单体框架。 `📅2026-11-07` `[overview_page]`
+- [OpenRoboKit：优化、重定向、抓取与 Agent 工作流](wiki/overview/openrobokit-toolkit.md) — OpenRoboKit 是 UC San Diego 相关团队组织维护的四个独立机器人开源工具的集合；其中 RoboKit 论文获 CoRL 2026 Spotlight，而 RetargetingK `📅2026-11-16` `[overview_page]`
 - [海外具身智能实验室地图（2026）](wiki/overview/overseas-embodied-ai-labs-landscape-2026.md) — 海外具身智能与机器人实验室呈现 「顶尖高校研究所 + PI 衍生 AI/机器人公司」 格局：美国以斯坦福 / MIT / CMU / Berkeley 为方法策源，欧洲以牛津–帝国理工–ETH/EPF `📅2026-08-26` `[overview_page]`
 - [Paper Notebooks · Foundational RL](wiki/overview/paper-notebook-category-01-foundational-rl.md) — Foundational RL（01_Foundational_RL）是 Robot Learning Paper Notebooks 主页面的第 01 类。Foundational RL theor `📅2026-09-15` `[overview_page]`
 - [Paper Notebooks · Motion Retargeting](wiki/overview/paper-notebook-category-02-motion-retargeting.md) — Motion Retargeting（02_Motion_Retargeting）是 Robot Learning Paper Notebooks 主页面的第 02 类。Bridging human `📅2026-09-15` `[overview_page]`
