@@ -224,6 +224,8 @@ flowchart LR
 - 对自己的人类数据做一次可执行性筛查：多少比例在目标本体上物理可行——这个比例决定人类数据的真实"折算率"
 
 ### 推荐读什么
+- [EgoX](../wiki/entities/paper-egox-mxt-plus.md) — 统一第一人称模态、共享干路和本体专属动作头，训练期未来潜变量 Dreaming
+- [SALA](../wiki/entities/paper-sala-latent-actions.md) — 无配对人类视频借助动作语义软邻域与机器人控制潜变量对齐
 - [X-Morph](../wiki/entities/paper-xmorph.md) — 人体→非人形腿式：重定向 + 物理校正 + 特权跟踪蒸馏
 - [重定向物体而非人手](../wiki/entities/paper-human-demos-object-retargeting.md) — 对每个 URDF 做仿真可执行性判定；约 31% 通过
 - [EgoJEPA](../wiki/entities/paper-egojepa-egocentric-latent-action.md) — 第一视角人类视频 → 本体无关潜在动作
