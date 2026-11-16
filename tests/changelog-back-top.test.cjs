@@ -6,7 +6,7 @@ const { JSDOM } = require('jsdom');
 
 const source = readFileSync(resolve(__dirname, '../docs/main.js'), 'utf8');
 const start = source.indexOf('  // ── 首页知识节点活跃度热力图');
-const end = source.indexOf('  function moduleHref(', start);
+const end = source.indexOf('  function roadmapHref(', start);
 assert.ok(start >= 0 && end > start, 'timeline slice markers missing');
 
 for (const reduced of [false, true]) {

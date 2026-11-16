@@ -45,10 +45,20 @@ class ChangeScopeTests(unittest.TestCase):
             "docs/main.js",
             ".github/workflows/tests.yml",
             "wiki/image.png",
+            "media/site-demo.gif",
             "README.md",
         ):
             with self.subTest(path=path):
                 self.assertEqual(scope.classify([("M", (path,))])["mode"], "full")
+
+    def test_media_video_only_uses_media_mode(self) -> None:
+        result = scope.classify(
+            [
+                ("M", ("media/zero-to-ppo-video/episodes/ep001/01.js",)),
+                ("A", ("media/roadmap-motion-control-video/script.md",)),
+            ]
+        )
+        self.assertEqual(result["mode"], "media")
 
     def test_rename_has_both_paths_and_removed_old_path(self) -> None:
         result = scope.classify([("R100", ("wiki/entities/old.md", "wiki/entities/new.md"))])

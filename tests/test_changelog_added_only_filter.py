@@ -46,7 +46,7 @@ const fs = require('fs');
 const code = fs.readFileSync(process.argv[1], 'utf8');
 const groups = JSON.parse(process.argv[2]);
 const start = code.indexOf('function renderLatestWikiNode');
-const end = code.indexOf('function moduleHref');
+const end = code.indexOf('function roadmapHref');
 const slice = code.slice(start, end);
 // 抽出 renderLatestWikiNode 内部的过滤辅助函数，挂到 sandbox
 const helpers = slice.match(

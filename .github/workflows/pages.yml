@@ -3,6 +3,9 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'media/zero-to-ppo-video/**'
+      - 'media/roadmap-motion-control-video/**'
   workflow_dispatch:
 
 permissions:
@@ -36,7 +39,7 @@ jobs:
       - name: Install lightweight dependencies
         run: pip install -r requirements-ci-lite.txt
 
-      # 站点大 JSON（search-index / index-v1 / site-data-v1 / link-graph /
+      # 站点 JSON（search-index / site-catalog-v1 / page-content / link-graph /
       # hub-rankings）与 sitemap 不入库，部署时现场生成（等价 make export graph，约 40s）
       - name: Generate site data
         run: |

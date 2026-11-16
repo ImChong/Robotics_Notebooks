@@ -100,9 +100,34 @@ class TestComputeScore(unittest.TestCase):
     def test_canonical_topic_boost(self):
         self.assertEqual(
             _canonical_topic_boost("wiki/concepts/whole-body-control.md", ["wbc", "全身控制"]),
-            1.7,
+            2.2,
         )
         self.assertEqual(_canonical_topic_boost("wiki/entities/wbc-fsm.md", ["wbc"]), 1.0)
+
+    def test_real_idf_prefers_rarer_token(self):
+        common = compute_score(
+            {"vla": 1, "foundation": 1},
+            ["vla", "foundation"],
+            avgdl=10.0,
+            idf_map={"vla": 1.1, "foundation": 3.5},
+            default_idf=4.0,
+        )
+        rare_only = compute_score(
+            {"foundation": 1},
+            ["vla", "foundation"],
+            avgdl=10.0,
+            idf_map={"vla": 1.1, "foundation": 3.5},
+            default_idf=4.0,
+        )
+        common_only = compute_score(
+            {"vla": 1},
+            ["vla", "foundation"],
+            avgdl=10.0,
+            idf_map={"vla": 1.1, "foundation": 3.5},
+            default_idf=4.0,
+        )
+        self.assertGreater(rare_only, common_only)
+        self.assertGreater(common, rare_only)
 
     def test_canonical_path_raises_score(self):
         tc = {"wbc": 2, "全身控制": 1}

@@ -37,6 +37,8 @@ jobs:
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             python3 scripts/ci_change_scope.py --base "origin/${{ github.base_ref }}" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            python3 scripts/ci_change_scope.py --push-before "${{ github.event.before }}" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
           else
             python3 scripts/ci_change_scope.py --full --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
           fi
@@ -45,8 +47,8 @@ jobs:
         run: pip install -r requirements-dev.txt
 
       - name: Ruff check
-        if: steps.scope.outputs.mode == 'full'
-        run: ruff check scripts/ tests/
+        if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.mode == 'media'
+        run: ruff check scripts/ tests/ media/
 
       - name: Ruff format (check)
         if: steps.scope.outputs.mode == 'full'
@@ -63,19 +65,27 @@ jobs:
         run: python3 -m pip_audit -r requirements-dev.txt
 
       - name: Set up Node
-        if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.has_wiki == 'true'
+        if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.mode == 'media' || steps.scope.outputs.has_wiki == 'true'
         uses: actions/setup-node@v5
         with:
           node-version: "22"
           cache: npm
 
       - name: npm ci (ESLint)
-        if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.has_wiki == 'true'
+        if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.mode == 'media' || steps.scope.outputs.has_wiki == 'true'
         run: npm ci
 
       - name: ESLint docs/main.js
-        if: steps.scope.outputs.mode == 'full'
+        if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.mode == 'media'
         run: npm run lint:js
+
+      - name: Validate media scripts syntax (media-only)
+        if: steps.scope.outputs.mode == 'media'
+        shell: bash
+        run: |
+          shopt -s globstar nullglob
+          python3 -m py_compile media/**/*.py
+          for f in media/**/*.{js,mjs,cjs}; do node --check "$f"; done
 
       - name: Validate all published Mermaid diagrams
         if: steps.scope.outputs.mode == 'full'
@@ -98,7 +108,7 @@ jobs:
         run: npm run test:frontend
 
       # 快照测试（test_community_naming / test_wiki_roadmaps_export）读取
-      # exports/link-graph.json 与 exports/site-data-v1.json，二者不再入库，先生成
+      # exports/link-graph.json 与 exports/site-catalog-v1.json，二者不再入库，先生成
       - name: Generate export snapshots for tests
         if: steps.scope.outputs.mode == 'full'
         run: |

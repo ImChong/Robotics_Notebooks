@@ -10,7 +10,6 @@ from export_minimal import write_json, write_page_exports
 def publish(tmp_path, payload):
     source, mirror = tmp_path / "source", tmp_path / "mirror"
     for directory in (source, mirror):
-        write_json(directory / "site-data-v1.json", payload)
         write_page_exports(payload, directory)
     return source, mirror
 
@@ -51,7 +50,7 @@ def payload():
 def test_split_round_trip_preserves_unicode_empty_body_routes_and_aliases(tmp_path, payload):
     before = copy.deepcopy(payload)
     source, mirror = publish(tmp_path, payload)
-    assert validate_page_exports(source, mirror) == 2
+    assert validate_page_exports(source, mirror, expected_site_data=before) == 2
     assert payload == before
     catalog = json.loads((source / "site-catalog-v1.json").read_text())
     assert "content_markdown" not in json.dumps(catalog)

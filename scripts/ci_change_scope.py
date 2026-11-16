@@ -41,16 +41,23 @@ def classify(entries: list[tuple[str, tuple[str, ...]]]) -> dict:
     content_only = bool(changed) and all(
         path.endswith(".md") and path.startswith(CONTENT_ROOTS) for path in changed
     )
+    media_only = bool(changed) and all(
+        path.startswith("media/") and path != "media/site-demo.gif" for path in changed
+    )
     # Deletions and renames need special handling by incremental lint; no silent omission.
     removed = sorted({paths[0] for status, paths in entries if status.startswith(("D", "R"))})
-    mode = "ingest" if content_only else "full"
+    if content_only:
+        mode = "ingest"
+        reason = "Only wiki/sources/log.d Markdown changed"
+    elif media_only:
+        mode = "media"
+        reason = "Only media/ video files changed"
+    else:
+        mode = "full"
+        reason = "Code, configuration, non-Markdown or empty changes: full CI"
     return {
         "mode": mode,
-        "reason": (
-            "Only wiki/sources/log.d Markdown changed"
-            if content_only
-            else "Code, configuration, non-Markdown or empty changes: full CI"
-        ),
+        "reason": reason,
         "paths": changed,
         "changed_wiki": [p for p in changed if p.startswith("wiki/")],
         "changed_sources": [p for p in changed if p.startswith("sources/")],
@@ -59,20 +66,45 @@ def classify(entries: list[tuple[str, tuple[str, ...]]]) -> dict:
     }
 
 
+def _diff_name_status(diff_spec: str) -> tuple[list[tuple[str, tuple[str, ...]]], str]:
+    result = subprocess.run(
+        ["git", "diff", "--name-status", "-z", "--find-renames", diff_spec],
+        cwd=ROOT,
+        capture_output=True,
+        check=True,
+    )
+    return parse_name_status(result.stdout), diff_spec
+
+
 def detect(base: str) -> dict:
     try:
-        result = subprocess.run(
-            ["git", "diff", "--name-status", "-z", "--find-renames", f"{base}...HEAD"],
-            cwd=ROOT,
-            capture_output=True,
-            check=True,
-        )
-        scope = classify(parse_name_status(result.stdout))
+        entries, _ = _diff_name_status(f"{base}...HEAD")
+        scope = classify(entries)
         scope["base"] = base
         return scope
     except (subprocess.CalledProcessError, ValueError) as exc:
         print(f"Change detection failed; using full CI: {exc}", file=sys.stderr)
         return full_scope("Cannot safely classify git changes")
+
+
+def detect_push(before: str) -> dict:
+    cleaned = (before or "").strip()
+    if not cleaned or set(cleaned) == {"0"}:
+        return full_scope("Initial push or missing before SHA")
+    try:
+        subprocess.run(
+            ["git", "cat-file", "-e", f"{cleaned}^{{commit}}"],
+            cwd=ROOT,
+            capture_output=True,
+            check=True,
+        )
+        entries, _ = _diff_name_status(f"{cleaned}..HEAD")
+        scope = classify(entries)
+        scope["base"] = cleaned
+        return scope
+    except (subprocess.CalledProcessError, ValueError) as exc:
+        print(f"Push change detection failed; using full CI: {exc}", file=sys.stderr)
+        return full_scope("Cannot safely classify git push changes")
 
 
 def full_scope(reason: str = "Push to main or manual dispatch") -> dict:
@@ -104,6 +136,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--base", help="PR base ref, e.g. origin/main")
+    mode.add_argument("--push-before", help="Push event previous SHA for two-dot diff")
     mode.add_argument("--full", action="store_true", help="Require full CI")
     mode.add_argument("--validate-mermaid-from", type=Path, metavar="SCOPE_JSON")
     parser.add_argument("--output-file", type=Path)
@@ -112,7 +145,12 @@ def main() -> None:
     if args.validate_mermaid_from:
         validate_mermaid(json.loads(args.validate_mermaid_from.read_text(encoding="utf-8")))
         return
-    scope = detect(args.base) if args.base else full_scope()
+    if args.base:
+        scope = detect(args.base)
+    elif args.push_before:
+        scope = detect_push(args.push_before)
+    else:
+        scope = full_scope()
     if args.output_file:
         args.output_file.parent.mkdir(parents=True, exist_ok=True)
         args.output_file.write_text(json.dumps(scope, ensure_ascii=False), encoding="utf-8")

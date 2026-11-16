@@ -171,7 +171,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 
 ```bash
 make export  # 等价于 python3 scripts/export_minimal.py
-# 同时更新 exports/index-v1.json、exports/site-data-v1.json、docs/sitemap.xml
+# 同时更新 exports/site-catalog-v1.json、docs/exports/page-content/、docs/search-index*.json、docs/sitemap.xml
 ```
 
 ### 步骤 7.5：批量 bump 交叉引用 wiki 的 `updated`（推荐）
