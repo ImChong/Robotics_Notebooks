@@ -2,7 +2,7 @@
 type: concept
 tags: [agents, agent-memory, context-engineering, dreaming, sleep-time-compute, claude]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-16
 original:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
 related:
@@ -13,6 +13,7 @@ related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../entities/paper-life-learning-to-live.md
   - ../entities/paper-memforest.md
+  - ../entities/paper-cortex-parametric-memory.md
   - ../entities/paper-robocasa-mem.md
   - ../entities/paper-false-belief-mandela-effect-multi-agent.md
 sources:
@@ -102,7 +103,13 @@ flowchart LR
 
 - [LIFE / Learning to Live（arXiv:2611.00180v2）](../entities/paper-life-learning-to-live.md)：RoboBeats 事件门控选择视觉证据、Plastic Memory 保留原始影像与可更新索引，EDM 将经验转成可复用能力；与本页的语言 agent 笔记及 dreaming 不同，公开代码当前重点是视觉门控与 SSS-Bench 评测，尚不能视为完整长期自主控制栈。
 
+## 权重级记忆巩固的对照
+
+[Cortex（arXiv:2610.20399）](../entities/paper-cortex-parametric-memory.md) 研究把上下文指定的能力蒸馏成 FFN 参数更新，部署时可以不再注入原上下文；与本页 Claude/dreaming 的**外部文件型持久记忆**不同。Cortex 的实验是文本型知识、行为与 agent 经验巩固，不是对真实机器人运动控制的证明（[论文核读](../../sources/papers/cortex_arxiv_2610_20399.md)）。
+
 ## 关联页面
+
+- [Cortex：上下文到参数记忆](../entities/paper-cortex-parametric-memory.md) — 对比外部持久笔记与权重级巩固
 
 - [Claude Cookbook：用动态工作流做 dreaming](../entities/claude-cookbook-dreaming-dynamic-workflow.md)
 - [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md) — 本库自身的 wiki 模式，与「wiki 作为记忆表示」同构
