@@ -2,8 +2,8 @@
 
 最后更新：2026-07-13（v28 全数完成后新建：聚焦「具身大模型评测基准选型闭环」知识链——把近周密集 ingest 的一批评测基准资料，从分散的实体页沉淀为一条贯通的「具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准」选型链，补评测层间矛盾检测规则与专题视图）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
-上一版清单：[`tech-stack-next-phase-checklist-v28.md`](archive/tech-stack-next-phase-checklist-v28.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
+上一版清单：[`tech-stack-next-phase-checklist-v28.md`](tech-stack-next-phase-checklist-v28.md)
+方法论参考：[Karpathy LLM Wiki](../../../wiki/references/llm-wiki-karpathy.md)
 
 ---
 

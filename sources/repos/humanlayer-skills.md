@@ -11,7 +11,7 @@
 - **入库日期：** 2026-09-11；本次补充更新：2026-10-09
 - **一句话说明：** HumanLayer 公开的 Claude Code 技能插件集：用 `<important if>` 提升 harness 指令遵从、React 类型收窄、可视化讲解，以及把「传感器–控制器–执行器」控制论隐喻落成可本地运行 + GitHub Actions 调度的迭代代理环。
 - **为什么值得保留：** 与本站 [Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md) + [schema/ingest](../../schema/ingest-workflow.md) 同属「把维护流程写成可版本化文件」；`design-control-loop` 把控制论语言显式映射到 **agentic maintenance**，对机器人读者有直觉迁移价值；`build-iterated-agentic-loop` 是 `narrow-react-prop-types` 的通用脚手架，与本仓库 Cloud Agent / `make ci-preflight` 文化同构。
-- **沉淀到 wiki：** 是 → [`wiki/entities/humanlayer-skills.md`](../wiki/entities/humanlayer-skills.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/humanlayer-skills.md`](../../wiki/entities/humanlayer-skills.md)
 
 ## README 要点（归纳）
 

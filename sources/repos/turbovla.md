@@ -9,7 +9,8 @@
 - **权重：** https://huggingface.co/H-EmbodVis/TurboVLA
 - **机构：** 华中科技大学、华为技术有限公司
 - **核对范围：** 官方项目页与仓库 README 的摘要、版本动态、Architecture、Performance、Installation、Dataset/Model Preparation、Training and Evaluation 章节。
-- **通读：** 未完成（已核对 README 关键章节，未通读论文全文和全部训练脚本）。
+- **通读：** 未完成
+- **通读说明：** 已核对 README 关键章节，未通读论文全文和全部训练脚本。
 
 ## 机制与开放边界
 

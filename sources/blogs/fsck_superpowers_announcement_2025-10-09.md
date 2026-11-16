@@ -8,7 +8,7 @@
 - **链接：** https://blog.fsck.com/2025/10/09/superpowers/
 - **入库日期：** 2026-05-17
 - **一句话说明：** 阐述 Superpowers 的由来：将个人使用编码代理的流程产品化为 **skills + 启动 hook**；默认 **brainstorm → plan → implement**；git **worktree** 隔离并行任务；**子代理**实现与评审；强调 **skills 是可组合、可检索、可测试的规约资产**。
-- **沉淀到 wiki：** 间接支撑 [`wiki/entities/superpowers-obra.md`](../wiki/entities/superpowers-obra.md) 中与「技能即能力边界」相关的归纳。
+- **沉淀到 wiki：** 间接支撑 [`wiki/entities/superpowers-obra.md`](../../wiki/entities/superpowers-obra.md) 中与「技能即能力边界」相关的归纳。
 
 ## 文中要点（归纳，非全文）
 

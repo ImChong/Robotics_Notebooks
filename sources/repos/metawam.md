@@ -4,7 +4,8 @@
 - **论文：** https://arxiv.org/abs/2611.14365
 - **权重：** [RoboCasa](https://huggingface.co/Ethanliang99/MetaWAM-RoboCasa-Predict2-2B)、[LIBERO](https://huggingface.co/Ethanliang99/MetaWAM-LIBERO-Predict2-2B)、[RealWorld](https://huggingface.co/Ethanliang99/MetaWAM-RealWorld-Predict2-2B)
 - **核对范围：** README、ROBOCASA.md、训练/评测 shell 与 run_robocasa_eval.py、policy_text2world_model.py、policy_video2world_model.py、minimal_v1_lvg_dit.py、cosmos_utils.py 的元帧编码/掩码/动作读取相关路径；非相关文件与完整训练测试尚未通读。
-- **通读：** 未完成（全仓源码；与论文直接相关的核心实现路径已逐段核验）
+- **通读：** 未完成
+- **通读说明：** 全仓源码未通读；与论文直接相关的核心实现路径已逐段核验。
 
 ## 真实代码入口
 

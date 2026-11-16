@@ -104,7 +104,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [Cosmos 3](./cosmos-3.md) — 作为视频 / 动作生成骨干的相关平台实体
-- [World Action Models](../concepts/world-action-models.md) — 视频预测与动作控制的联合建模
-- [Manipulation](../tasks/manipulation.md) — 论文真机任务背景
-- [Sim2Real](../concepts/sim2real.md) — 从模型输出到真实机器人闭环的验证边界
+- [Cosmos 3](../../wiki/entities/cosmos-3.md) — 作为视频 / 动作生成骨干的相关平台实体
+- [World Action Models](../../wiki/concepts/world-action-models.md) — 视频预测与动作控制的联合建模
+- [Manipulation](../../wiki/tasks/manipulation.md) — 论文真机任务背景
+- [Sim2Real](../../wiki/concepts/sim2real.md) — 从模型输出到真实机器人闭环的验证边界

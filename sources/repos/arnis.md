@@ -67,7 +67,7 @@
 ## 与机器人研究的邻接读法
 
 - **不是** RL 仿真器或物理引擎——无关节动力学、无传感器 API。
-- 价值在 **真实世界 GIS → 可探索 3D 体素环境**：教育/灾害演练（如 Floodcraft 论文引用）、开放世界 agent 的 **地理锚定关卡**、与 [Terrain Diffusion](../papers/infinite_diffusion_terrain.md) 等 **Minecraft 程序化地形** 互补（本工具偏 **测绘数据忠实复刻**，扩散 mod 偏 **学习式无限延展**）。
+- 价值在 **真实世界 GIS → 可探索 3D 体素环境**：教育/灾害演练（如 Floodcraft 论文引用）、开放世界 agent 的 **地理锚定关卡**、与 [Terrain Diffusion](../papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md) 等 **Minecraft 程序化地形** 互补（本工具偏 **测绘数据忠实复刻**，扩散 mod 偏 **学习式无限延展**）。
 - 若用于腿式/导航研究，仍需 **碰撞体对齐、摩擦 DR、课程调度**——方块世界 ≠ sim-ready 接触模型。
 
 ---

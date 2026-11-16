@@ -7,7 +7,8 @@
 - **论文：** <https://arxiv.org/html/2606.22142v1>
 - **项目：** <https://robolineage.github.io/>
 - **核对范围：** README、AGENTS.md、run.sh、src/robolineage_app/__main__.py、src/robolineage_app/runtime.py 的 UnifiedRuntime/委托结构、src/robolineage_session/dispatcher.py、src/robolineage_post_rollout/worker.py 与 formal_review.py、src/robolineage_dataset/lock_writer.py、src/robolineage_train/lifecycle.py、src/robolineage_eval/agents.py；以及 docs/、configs/、examples/、scripts/ 的仓库目录与 README 说明。
-- **通读：** 已完成（上述核心入口与本节点关注的执行路径；不代表逐行审计整个约 185k 字符的 runtime.py）。
+- **通读：** 已完成
+- **通读说明：** 上述核心入口与本节点关注的执行路径；不代表逐行审计整个约 185k 字符的 runtime.py。
 - **公开范围：** Python 研究运行时 + ROS2 robot profile 和采集适配 + 在线 VSA + 异步 review / data governance + schema + dataset lock + 训练适配 + policy eval + FastAPI / Vue 前端 + tests。
 - **尚未完成：** README checklist 的无实体硬件 mock replay、打包 benchmark scoring、更多 adapter/机器人 profile/本地模型路由。**未**独立在 ROS2 workstation 或真机运行。
 

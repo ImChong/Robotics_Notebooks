@@ -10,7 +10,7 @@
 - **代码：** **已开源**（仓库许可见 `LICENSE.txt`；技能正文即规约，无权重）
 - **一句话说明：** 把 **反模板化 UI** 的设计原则（字体、布局、动效、文案、自我 critique）编译进 `SKILL.md`，要求先出 token 级设计计划、对照 brief 查「AI 默认审美 tell」，再写代码。
 - **为什么值得保留：** 本站 `docs/` 静态站与 [frontend-optimization 清单](../../docs/checklists/frontend-optimization-v1.md) 迭代时，代理易产出 cream/terracotta、SaaS 卡片 kit 等 **生成页指纹**；本技能与 [claude-api 实体页](../../wiki/entities/anthropic-claude-api-skill.md) 同属 Anthropic 官方 skills 包，但域为 **视觉与 UX 交付**。
-- **沉淀到 wiki：** 是 → [`wiki/entities/anthropic-frontend-design-skill.md`](../wiki/entities/anthropic-frontend-design-skill.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/anthropic-frontend-design-skill.md`](../../wiki/entities/anthropic-frontend-design-skill.md)
 
 ## SKILL 要点（归纳）
 

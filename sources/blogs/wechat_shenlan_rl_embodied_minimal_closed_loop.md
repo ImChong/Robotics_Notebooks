@@ -58,14 +58,14 @@
 1. **四足/人形 loco** — PPO；IMU + 关节 + 深度为状态，腿关节力矩/目标为动作。
 2. **工业机械臂操作** — SAC；无序分拣、随机位姿抓取。
 3. **移动机器人导航** — 激光/视觉状态，轮速动作，碰撞惩罚。
-4. **仿生灵巧手** — SAC + [HER](../wiki/methods/her.md) 缓解稀疏奖励。
+4. **仿生灵巧手** — SAC + [HER](../../wiki/methods/her.md) 缓解稀疏奖励。
 5. **虚拟预训练** — Isaac Sim / Habitat 训策略再蒸馏上真机。
 
 ### 前沿三趋势（文末）
 
 - **LLM + RL**：语义层 LLM，执行层 RL。
 - **多任务统一策略**：单模型覆盖行走/抓取/避障。
-- **无奖励自驱动**：内在好奇心类内在奖励（见 [Intrinsic reward 预训练](../wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md)）。
+- **无奖励自驱动**：内在好奇心类内在奖励（见 [Intrinsic reward 预训练](../../wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md)）。
 
 ## 对 wiki 的映射
 

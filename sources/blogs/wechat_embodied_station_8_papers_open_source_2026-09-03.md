@@ -45,7 +45,7 @@
 - **8/8 独立详情节点**：每篇对应唯一 `wiki/entities/paper-*.md`；静态站 `detail.html?id=entity-paper-…` 均可直达。
 - **本 ingest 新建 7** 个实体；**DemoMimic** 先前 ingest 已有 complete 页 → **只回链博客与 arXiv，不重复造页**。
 - 阅读坐标：[开源系统可靠性 8 篇技术地图](../../wiki/overview/open-source-system-reliability-8-papers-technology-map.md)（**非**论文详情替代，仅作横切面索引）。
-- 交叉：[VLA](../../wiki/methods/vla.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[Manipulation](../../wiki/tasks/manipulation.md)、[Humanoid](../../wiki/tasks/humanoid.md)。
+- 交叉：[VLA](../../wiki/methods/vla.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[Manipulation](../../wiki/tasks/manipulation.md)、[Humanoid](../../wiki/tasks/humanoid-locomotion.md)。
 
 ## 当前提炼状态
 

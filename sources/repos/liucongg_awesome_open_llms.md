@@ -101,5 +101,5 @@ sequenceDiagram
 
 ## 关联页面
 
-- [开源 LLM 与基础模型](../concepts/open-source-llms.md) — 可作为模型档案的技术分类背景
-- [机器学习模型评测](../concepts/robot-learning-evaluation.md) — 区分信息目录与标准化评测
+- [开源 LLM 与基础模型](../../wiki/concepts/llm-robotics-control-interfaces.md) — 可作为模型档案的技术分类背景
+- [机器学习模型评测](../../wiki/concepts/ai-agent-evaluation.md) — 区分信息目录与标准化评测

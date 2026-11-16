@@ -10,7 +10,7 @@
 - **许可：** MIT
 - **入库日期：** 2026-06-30
 - **一句话说明：** 基于 **DeepMind 官方 MuJoCo WASM 绑定** 的浏览器端 MuJoCo 演示套件（Three.js 渲染 + `examples/`）；项目早期曾自行编译 WASM，现转为官方 `@mujoco/mujoco` 之上的轻量示例与教学入口。
-- **沉淀到 wiki：** 是 → [`wiki/entities/mujoco-wasm.md`](../wiki/entities/mujoco-wasm.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/mujoco-wasm.md`](../../wiki/entities/mujoco-wasm.md)
 
 ## 项目定位演变
 

@@ -5,7 +5,8 @@
 - **主页：** https://dextacwam.github.io/
 - **权重/数据：** https://huggingface.co/collections/JensenYuan/dextacwam-6aba3aa25d3362d882cdefbc
 - **核对范围：** 2026-11-13 阅读 README 中安装、数据、三阶段训练、离线评测、部署及许可；核对 main.py 训练/推理分发，runner/visual_vae_adapter_trainer.py 的 VisualVAEAdapterTrainer 和 main()、runner/tactile_dit_trainer.py 的 TactileDiTTrainer.prepare_dataset/prepare_models/train、runner/tactile_inferencer.py 的 TactileInferencer.infer，以及 deploy 分支 web_infer_scripts/run_server_tactile_relative.sh 的任务服务检查；未逐行审核全仓/运行 GPU 或真机。
-- **通读：** 已完成所列官方核心入口与运行文档；不声称逐行审阅全部源码
+- **通读：** 已完成
+- **通读说明：** 已完成所列官方核心入口与运行文档；不声称逐行审阅全部源码
 
 ## 真实代码入口
 

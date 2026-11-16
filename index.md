@@ -1,6 +1,6 @@
 # Robotics Notebooks Index
 
-本项目以运动控制为切入口，通通向机器人全栈工程能力。
+本项目以运动控制为切入口，通向机器人全栈工程能力。
 
 这是知识入口总索引。**如果你第一次来，从 [README](README.md) 开始**，那里有完整的使用说明。
 
@@ -225,8 +225,6 @@ SORT type ASC
 - [`ImChong.github.io`](https://github.com/ImChong/ImChong.github.io)：个人简历
 
 > 论文项目负责点，技术栈项目负责线和面，个人主页负责展示。
-
----
 
 ---
 

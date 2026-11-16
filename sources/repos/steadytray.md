@@ -49,5 +49,5 @@
 | 关联 | 说明 |
 |------|------|
 | [ResMimic](./resmimic.md) | 同为 **冻结/预训练基座 + 残差** 的人形 loco-manipulation 范式 |
-| [unitree_rl_lab](../entities/unitree-rl-lab.md) | README 致谢的训练框架基座 |
+| [unitree_rl_lab](../../wiki/entities/unitree-rl-lab.md) | README 致谢的训练框架基座 |
 | [Unitree G1](../../wiki/entities/unitree-g1.md) | 论文与仿真目标平台 |

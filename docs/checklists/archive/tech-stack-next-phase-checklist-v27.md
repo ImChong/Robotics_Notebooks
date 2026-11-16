@@ -2,8 +2,8 @@
 
 最后更新：2026-06-29（v26 全数完成后新建：聚焦「接触力旋量闭环」知识链——把分散的接触感知/估计、力旋量表示、阻抗/混合力位控制、接触丰富操作策略沉淀为贯通 query/concept，并补矛盾检测规则与交互层专题）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
-上一版清单：[`tech-stack-next-phase-checklist-v26.md`](archive/tech-stack-next-phase-checklist-v26.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
+上一版清单：[`tech-stack-next-phase-checklist-v26.md`](tech-stack-next-phase-checklist-v26.md)
+方法论参考：[Karpathy LLM Wiki](../../../wiki/references/llm-wiki-karpathy.md)
 
 ---
 

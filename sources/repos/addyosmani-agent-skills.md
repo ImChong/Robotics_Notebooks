@@ -12,7 +12,7 @@
 - **协议：** MIT
 - **一句话说明：** 面向编码代理的 **25 项生产级工程技能** + **9 个生命周期 slash 命令**：把 spec、TDD、五轴 code review、安全/性能/可观测性、CI/CD 与 ship 检查清单写成带 **anti-rationalization** 与 **evidence 出口** 的结构化 `SKILL.md` 工作流；嵌入 Google 工程文化实践。
 - **为什么值得保留：** 与 [obra/superpowers](../../wiki/entities/superpowers-obra.md)、[mattpocock/skills](../../wiki/entities/mattpocock-skills.md) 构成 **重流程 / 轻组合 / 全 SDLC 技能包** 三角对照；对本站 Cloud Agent 维护（ingest、`make ci-preflight`、PR 评审）有直接借鉴价值。
-- **沉淀到 wiki：** 是 → [`wiki/entities/agent-skills-addyosmani.md`](../wiki/entities/agent-skills-addyosmani.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/agent-skills-addyosmani.md`](../../wiki/entities/agent-skills-addyosmani.md)
 
 ## README 要点（归纳）
 

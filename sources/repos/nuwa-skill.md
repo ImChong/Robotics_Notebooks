@@ -10,7 +10,7 @@
 - **入库日期：** 2026-07-07
 - **一句话说明：** 从公开信息蒸馏任意人物的 **认知操作系统**（心智模型、决策启发式、表达 DNA、反模式、诚实边界）为可运行的 Agent Skill；非角色扮演，而是用名人框架分析新问题。
 - **为什么值得保留：** GitHub 高星（27k+）的 **人物 skill 蒸馏** 标杆；与 [colleague-skill](https://github.com/titanwings/colleague-skill)（蒸馏同事）形成「何必是同事」升级叙事；内置保真度评分卡与 [darwin-skill](darwin-skill.md) 评估体系咬合；对本站维护者理解 **如何把专家认知编译进 SKILL.md** 有参照价值。
-- **沉淀到 wiki：** 是 → [`wiki/entities/nuwa-skill.md`](../wiki/entities/nuwa-skill.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/nuwa-skill.md`](../../wiki/entities/nuwa-skill.md)
 
 ## README 要点（归纳）
 

@@ -13,7 +13,7 @@
 - **Stars（入库日）：** ~15.8k（GitHub，以克隆时为准）
 - **一句话说明：** Cloudflare 开源的 **六阶段安全审计 Agent Skill**：侦察 → 覆盖率驱动狩猎 → 候选对抗验证 → 结构化 `findings.json` → 独立记录复核 → 目标中立报告；产出机器可读且可增量叠加的多轮审计工件。
 - **为什么值得保留：** 与本知识库 [Codex Security](../../wiki/entities/codex-security.md)、[Open Code Review](../../wiki/entities/open-code-review.md) 及 [软件安全基础](../../wiki/concepts/software-security-basics.md) 同属 **Agent 驱动 AppSec** 工具位；对遥操作网关、OTA、训练 farm API 等机器人云边代码面的 **可审计漏洞发现管线** 有直接对照价值。
-- **沉淀到 wiki：** 是 → [`wiki/entities/cloudflare-security-audit-skill.md`](../wiki/entities/cloudflare-security-audit-skill.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/cloudflare-security-audit-skill.md`](../../wiki/entities/cloudflare-security-audit-skill.md)
 
 ## 开源状态
 

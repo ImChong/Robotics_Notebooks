@@ -13,7 +13,7 @@
 - **一句话说明：** 本地优先的代码智能工具：用 Tree-sitter 和静态解析构建代码符号、调用与依赖图，存入本地 SQLite，并通过 MCP / CLI 向多个 coding agent 提供代码上下文、调用路径与变更影响分析；文件变化后自动增量同步。
 - **为什么值得保留：** CodeGraph 代表 coding agent 的一种代码库理解基础设施：先把仓库结构预索引为显式关系图，再让 agent 按问题检索代码和路径。它与本库已有的 [Graphify](../../wiki/entities/graphify.md) 和 [Understand Anything](../../wiki/entities/understand-anything.md) 同属代码知识图谱工具，但主路径更集中于 AST/静态关系、MCP 查询和自动同步。
 - **开源状态：** 已开源，仓库以 MIT 许可发布；项目页链接至官方仓库。
-- **沉淀到 wiki：** 是 → [`wiki/entities/codegraph.md`](../wiki/entities/codegraph.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/codegraph.md`](../../wiki/entities/codegraph.md)
 
 ## README 要点（归纳）
 
@@ -28,4 +28,4 @@
 
 ## 对 wiki 的映射
 
-- 沉淀为 [`wiki/entities/codegraph.md`](../wiki/entities/codegraph.md)，并与 [Graphify](../../wiki/entities/graphify.md)、[Understand Anything](../../wiki/entities/understand-anything.md) 对照。
+- 沉淀为 [`wiki/entities/codegraph.md`](../../wiki/entities/codegraph.md)，并与 [Graphify](../../wiki/entities/graphify.md)、[Understand Anything](../../wiki/entities/understand-anything.md) 对照。

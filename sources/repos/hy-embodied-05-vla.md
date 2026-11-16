@@ -10,7 +10,8 @@
 - **权重：** https://huggingface.co/tencent/Hy-Embodied-0.5-VLA-UMI
 - **公开数据：** https://huggingface.co/datasets/tencent/Hy-Embodied-0.5-VLA-Data
 - **核对范围：** 官方 README 的更新日志、模型结构、数据/权重资源、Quick Start 和训练脚本目录。
-- **通读：** 未完成（已核对 README 与开放入口，未通读论文全文及全部代码）。
+- **通读：** 未完成
+- **通读说明：** 已核对 README 与开放入口，未通读论文全文及全部代码。
 
 ## 机制与开放边界
 

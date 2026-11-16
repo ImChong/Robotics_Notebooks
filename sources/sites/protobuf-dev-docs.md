@@ -19,7 +19,7 @@
 ## 为什么值得保留
 
 - 机器人栈中 **gRPC 服务 API、边云推理接口、部分驱动/采集桥** 默认 Protobuf；需要 **一手** 理解 IDL、兼容性与 wire 行为，而非博客转述。
-- 与 [JSON](https://www.json.org/)、[ONC XDR](../sites/rfc-5531-onc-rpc.md)、[LCM `.lcm` 类型](../concepts/lcm-basics.md) 对照时，Protobuf 的 **字段号 + 未知字段跳过** 是工程演进关键。
+- 与 [JSON](https://www.json.org/)、[ONC XDR](../sites/rfc-5531-onc-rpc.md)、[LCM `.lcm` 类型](../../wiki/concepts/lcm-basics.md) 对照时，Protobuf 的 **字段号 + 未知字段跳过** 是工程演进关键。
 - ONNX 等格式底层亦依赖 protobuf；读 [ONNX Runtime](../repos/onnxruntime-v1.28.0.md) 版本说明时需知 protobuf 版本钉扎含义。
 
 ## 开源核查（2026-09-17）

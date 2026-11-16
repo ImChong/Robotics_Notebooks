@@ -77,7 +77,7 @@
 ## 对 wiki 的映射
 
 - 沉淀实体页：[GigaBrain-WBC-0.5](../../wiki/entities/paper-gigabrain-wbc-0-5.md)
-- 交叉补强：[SONIC 方法](../methods/sonic-motion-tracking.md)、[paper-twist2](../../wiki/entities/paper-twist2.md)、[SceneBot](../../wiki/entities/paper-scenebot.md)、[CMP](../../wiki/entities/paper-cmp.md)、[BFM-Zero](../../wiki/entities/paper-bfm-zero.md)、[Humanoid-GPT](../../wiki/entities/paper-humanoid-gpt.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[运动跟踪选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)
+- 交叉补强：[SONIC 方法](../../wiki/methods/sonic-motion-tracking.md)、[paper-twist2](../../wiki/entities/paper-twist2.md)、[SceneBot](../../wiki/entities/paper-scenebot.md)、[CMP](../../wiki/entities/paper-cmp.md)、[BFM-Zero](../../wiki/entities/paper-bfm-zero.md)、[Humanoid-GPT](../../wiki/entities/paper-humanoid-gpt.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[运动跟踪选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)
 
 ## 当前提炼状态
 

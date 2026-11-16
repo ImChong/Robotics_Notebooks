@@ -10,7 +10,7 @@
 - **入库日期：** 2026-10-01
 - **抓取方式：** Agent Reach v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；专辑页同会话 `data-link` 跳转（直连 CAPTCHA）
 - **专栏专辑：** [Modern Robotics 原理精读](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2ODgxOTA1Mw==&action=getalbum&album_id=4521219024549937157)（第 4 篇 / 10）
-- **原始抓取落盘：** [`sources/raw/wechat_modern_robotics_album_4521219024549937157/04_mid2247483879/04_mid2247483879.md`](../sources/raw/wechat_modern_robotics_album_4521219024549937157/04_mid2247483879/04_mid2247483879.md)
+- **原始抓取落盘：** [`sources/raw/wechat_modern_robotics_album_4521219024549937157/04_mid2247483879/04_mid2247483879.md`](../raw/wechat_modern_robotics_album_4521219024549937157/04_mid2247483879/04_mid2247483879.md)
 - **一句话说明：** 用 $4\times4$ 齐次变换把 SE(3) 上的复合刚体运动统一成矩阵乘法。
 
 ## 核心摘录（归纳，非全文）

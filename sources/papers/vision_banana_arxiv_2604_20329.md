@@ -51,7 +51,7 @@
   - 跨任务迁移：未在自由文本 query 上专门训练，仍能理解「墙上图案」「新月形可颂」等细粒度指代。
 - **对 wiki 的映射：**
   - [Vision Banana](../../wiki/entities/vision-banana.md) — 2D 任务表与 MLLM 协作模式。
-  - [目标检测](../methods/object-detection.md) / [视觉骨干](../../wiki/concepts/vision-backbones.md) — 机器人感知上游对照。
+  - [目标检测](../../wiki/methods/object-detection.md) / [视觉骨干](../../wiki/concepts/vision-backbones.md) — 机器人感知上游对照。
 
 ### 4) 3D 理解：单目 metric depth 与 surface normal
 
