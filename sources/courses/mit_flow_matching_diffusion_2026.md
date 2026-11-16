@@ -14,6 +14,7 @@
 - **版本：** 课程站 2026 版（IAP 2026）；官方讲义 PDF 2026-03-18 生成（84 页，作者 Holderrieth、Erives；arXiv:2506.02070 同名）
 - **核对范围：** 2026-11-07 抓取课程主页（讲次、实验、讲师、先修要求）与官方讲义 PDF（diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf，84 页）；讲义 §1 生成建模即采样、§2 流模型与扩散模型（ODE/SDE、欧拉与 Euler–Maruyama）、§3 Flow Matching（概率路径、边缘化技巧、CFM 损失与 Theorem 12）、§4 分数与 SDE 采样（Proposition 1、Theorem 17、Fokker–Planck）、§5 引导与 CFG、§6 架构/潜空间/案例（DiT 块、VAE、SD3 与 Movie Gen）、§7 离散扩散与 CTMC 的正文和各 Theorem/Summary 框逐段阅读；证明（附录 B Fokker–Planck 证明、附录 C CTMC 存在唯一性）、附录 A 概率复习、附录 D VAE 补充视角、附录 E 文献指南只浏览；六段讲课录像、幻灯片 PDF 未观看；Lab notebook 未运行，仅核对站点上的实验标题与 Lab 仓库 README 的 changelog。
 - **通读：** 已完成
+- **实验源码补充核对（2026-11-16）：** 查看官方 `2026` 分支三份 Lab 的关键讲解、类定义和训练/采样入口；核对 `solutions/lab_three_complete.ipynb` 中 `LatentCFGTrainer.get_train_loss` 的潜变量编码、标签丢弃、速度场回归，以及 `visualize_samples` 的 CFG ODE 采样和 VAE 解码。**本次未实际运行 notebook 或训练**。
 - **一句话说明：** MIT CSAIL **IAP 2026** 生成式 AI 课：从 **ODE/SDE、Fokker–Planck** 到 **flow matching、score matching、CFG、latent diffusion、离散扩散**；三份 Lab 从零搭建 **latent diffusion model**，配套 Colab 与 GitHub 解法。
 
 ---
@@ -38,11 +39,15 @@
 
 | Lab | 内容 | 入口 |
 |-----|------|------|
-| Lab 1 | ODE & SDE 数值实验 | 站点 Lab 1 链接 → GitHub `.ipynb` |
-| Lab 2 | Flow matching & score matching 玩具生成模型 | Colab + [lab_two 说明](https://diffusion.csail.mit.edu/2026/labs/lab_two.html) |
-| Lab 3 | Diffusion Transformer + VAE；从零 latent diffusion | 站点 Lab 3 |
+| Lab 1 | ODE/SDE；Euler 与 Euler–Maruyama；Brownian / OU | [练习 notebook](https://github.com/eje24/iap-diffusion-labs/blob/2026/labs/lab_one.ipynb) · [参考解答](https://github.com/eje24/iap-diffusion-labs/blob/2026/solutions/lab_one_complete.ipynb) |
+| Lab 2 | 条件概率路径、CFM/score matching、ODE/SDE 采样 | [练习 notebook](https://github.com/eje24/iap-diffusion-labs/blob/2026/labs/lab_two.ipynb) · [参考解答](https://github.com/eje24/iap-diffusion-labs/blob/2026/solutions/lab_two_complete.ipynb) |
+| Lab 3 | MNIST CFG、DiT、VAE 与 latent flow matching | [练习 notebook](https://github.com/eje24/iap-diffusion-labs/blob/2026/labs/lab_three.ipynb) · [参考解答](https://github.com/eje24/iap-diffusion-labs/blob/2026/solutions/lab_three_complete.ipynb) |
 
-**解法：** [iap-diffusion-labs `2026` 分支 solutions](https://github.com/eje24/iap-diffusion-labs/tree/2026)
+**代码状态：** `labs/` 为含 `NotImplementedError` 的练习骨架，不可不补题就直接得到模型；官方 `solutions/` 提供对应完成版。课程练习在 Jupyter/Colab 内按单元格运行，并非独立 `train.py` 入口。
+
+**Lab 3 参考解答的运行路径：** `MNISTSampler` 提供带标签图像 → `MNISTVAETrainer` 训练 `VAE` → `LatentCFGTrainer.get_train_loss` 用已训练 VAE 的 `encode` 获得潜变量，随机置空标签、取条件概率路径样本并对 `DiffusionTransformerFlowModel` 做向量场回归 → `CFGVectorFieldODE` + `EulerSimulator` 在潜空间采样 → `VAE.decode` 重建图像。这是官方 notebook 的**教学执行顺序**，不是声称本次已复现实验。
+
+**解法：** [iap-diffusion-labs `2026` 分支 solutions](https://github.com/eje24/iap-diffusion-labs/tree/2026/solutions)
 
 ## 引用（站点推荐）
 
