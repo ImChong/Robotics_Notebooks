@@ -11,9 +11,9 @@
 - **日期：** arXiv 首投 2026-10-14（v1）；本次核查 2026-11-16
 - **配套文献仓：** [chonghanqin/Awesome-Agentic-Robots](https://github.com/chonghanqin/Awesome-Agentic-Robots)，本库归档：[sources/repos/awesome-agentic-robots-survey-index.md](../repos/awesome-agentic-robots-survey-index.md)
 - **身份与开放范围：** 论文是综述，不提供本文专属训练、推理或部署算法的可运行实现；配套仓库公开了文献索引与生成/校验脚本，**不是机器人控制代码**。
-- **核对范围：** arXiv v1 HTML 第 1–9 节的定义、分类、四功能域、展望与结论；PDF 首页 Figure 1、正文 Figure 2 / Figure 7 图注及第 10 页 Table 1 排版和 17 项定义；作者配套仓库 README / 目录。
-- **通读：** 未完成
-- **核对限制：** TeX e-print 链接已保存但当前环境无法解包读取，故未独立复核 TeX 公式源码与原始图注；文献综述的全部逐项引文及 79 页 PDF 中的每条引用尚未一一复核。本记录只对已实际核对的论文主框架和 Table 1 给出结论。
+- **核对范围：** 2026-11-16 对照 arXiv:2610.20442v1 HTML 正文逐节阅读 §1–§9：§1 研究动机；§2 传统策略 / VLA / WM-WAM / agentic 四条演化脉络；§3 定义、Figure 3 与 4 域 17 类；§4 Training、Perception、Planning、Robot Control、Adaptation；§5 Collection、Annotation、Refinement；§6 Reconstruction、Task Generation、Benchmarking；§7 Orchestration、Memory、Monitoring and Recovery、Skills、Infrastructure、Layered Systems；§8 四项展望；§9 结论。逐节对照 HTML 的表 1–18 及图注中的类别、接口、实验对照口径；先前另已核对 v1 PDF Figure 1 / Figure 2 / Figure 7 及第 10 页 Table 1 的排版；配套文献仓 README 与目录单独核对。References 列表只抽样检查高关联条目，不逐篇复核所有被引研究。
+- **通读：** 已完成
+- **核对限制：** 「通读：已完成」仅指 arXiv v1 HTML 正文 §1–§9、主要表格与图注，**不是** TeX 源代码审计、79 页 PDF 逐字比对或所有参考文献逐篇核查。TeX e-print URL 已保存，但未成功解包核验公式源码；官方 Awesome 仓库持续更新，不可逆向归入论文 v1。本论文是综述，没有可复现的统一模型训练或真机实验。
 - **入库日期：** 2026-10-15；本次深化 2026-11-16
 - **对 wiki 的映射：** [唯一论文实体：paper-towards-agentic-robots-survey](../../wiki/entities/paper-towards-agentic-robots-survey.md)
 
@@ -63,6 +63,18 @@
 - **四项前瞻：** Fair Benchmarking；Real-robot Agentic Robotics；Efficient Robot Use；Cross-Embodiment Generalization。
 - **可比性：** 只给成功率无法隔离智能体作用；还需报告底层执行器、工具、额外观测、重试预算、执行时间、计算资源及人类协助。
 - **证据级别：** 这是跨研究文献综述，**不是单一可复现实验**；表格中各工作的指标来自不同设定，不能据此宣称统一 SOTA 或证明四域组合必定优于单策略。
+
+## 全文复核补充：Harness 的接口与时序边界（§7.1–7.6）
+
+- **Orchestration（§7.1）**：调用规划器、VLA、可执行技能和工具需要统一输入/输出协议、状态连接与正确的交接时机；上一步完成信号与环境状态确认不可省。
+- **Memory（§7.2）**：写入、更新、检索是不同职责；历史记忆可保存阶段进度，但过时的目标位姿应重新感知和校验。
+- **Monitoring and Recovery（§7.3）**：将执行前/中/后的监测与重试、改计划、替换执行器、场景复位分开；失败后未必应回到初始状态，重试也必须有预算。
+- **Skills（§7.4）**：从代码策略、技能库到迭代改进，只有执行与验证后的行为才能作为可信的复用单元；「生成了代码」不等于「获得了新能力」。
+- **Infrastructure（§7.5）**：工具服务、VLA 推理、版本门控与实时安全检查都属于 harness 的实际约束，不能只用 agent 的文本决策替代。
+- **Layered Systems（§7.6）**：System 2 做任务/子目标推理，System 1 为学习式 VLA 等执行器，System 0 为 IK / MPC / WBC 等解析控制；不同更新频率的例子包括 GR00T N1 约 10 Hz 高层模块与 120 Hz 动作模块（论文报告的配置），不是统一的硬件控制频率要求。
+- **评测与展望（§8）**：如要归因 agent 应固定执行器、额外观察和重试预算，并同时报告端到端时间、推理成本、执行失败及恢复；跨本体泛化应区分重用高层任务策略与重新适配具体驱动/控制接口。
+
+以上是综述**作者对既有系统的归类与讨论**，不是本文新提出并实测的集成实现；详见 [arXiv:2610.20442v1 正文](https://arxiv.org/html/2610.20442v1)。
 
 ## 来源版本规则
 
