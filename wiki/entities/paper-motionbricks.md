@@ -93,7 +93,7 @@ sequenceDiagram
 
 工程入口见 [GR00T-WholeBodyControl/motionbricks](https://github.com/NVlabs/GR00T-WholeBodyControl/tree/main/motionbricks)；无 Python 场景见 [motion-bricks.cpp](./motion-bricks-cpp.md)。
 
-## 评测与结论
+## 评测结果
 
 | 维度 | 要点 |
 |------|------|

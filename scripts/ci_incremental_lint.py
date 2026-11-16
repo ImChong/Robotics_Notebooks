@@ -159,6 +159,7 @@ def lint_changed(scope: dict) -> dict:
         wiki._check_query_format(selected, results)
         wiki._check_formalizations(selected, results)
         wiki._check_methods_entities(selected, results)
+        wiki._check_entities_outgoing(selected, results)
         wiki._check_paper_entity_metadata(selected, results)
         wiki._check_dataset_entity_metadata(selected, results)
         wiki._check_tool_institutions(selected, results)

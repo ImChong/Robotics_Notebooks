@@ -1,6 +1,7 @@
 ---
 
 type: entity
+status: complete
 title: ALOHA (双臂遥操作硬件)
 tags: [hardware, teleoperation, dual-arm, dataset-collection, deepmind, stanford, google]
 original:

@@ -1,5 +1,6 @@
 ---
 type: entity
+status: complete
 title: RoboTwin 2.0
 tags:
 - simulation

@@ -137,7 +137,7 @@ flowchart TB
 | 开源状态 | **宣称将开源**；入库日无训练代码 URL |
 | 视频资产 | [zhuolifeng/FA-RDP releases/v1.0](https://github.com/zhuolifeng/FA-RDP/releases) |
 
-## 评测与结论要点
+## 评测要点
 
 | 方法 | Box | Button | Switch | Avg |
 |------|-----|--------|--------|-----|

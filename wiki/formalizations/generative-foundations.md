@@ -1,5 +1,6 @@
 ---
 type: formalization
+status: complete
 summary: "生成式模型基础描述通过学习数据分布生成新样本的概率建模框架，是 Diffusion Policy、世界模型和轨迹生成方法的数学底座。"
 description: 通过学习数据的底层分布来生成新样本的一类概率模型，包括 GANs, VAEs, Normalizing Flows 和 Diffusion Models。
 updated: 2026-09-21

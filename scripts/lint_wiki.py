@@ -50,10 +50,20 @@ from typing import Any
 from check_project_nodes import check as check_project_nodes
 from markdown_it import MarkdownIt
 from original_reading import original_entries, reading_status
+from utils.markdown import (
+    extract_internal_links as _extract_md_links,
+)
+from utils.markdown import (
+    parse_frontmatter as parse_raw_frontmatter,
+)
+from utils.markdown import (
+    strip_code_blocks,
+)
 
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 CANONICAL_FACTS_FILE = REPO_ROOT / "schema" / "canonical-facts.json"
+LEGACY_BASELINE_REL = Path("schema") / "lint-legacy-baseline.json"
 WIKI_FILENAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 
 # methods/ 页面入链数超过该阈值即视为"高频引用"，需有对应 queries/comparisons 操作落地
@@ -998,6 +1008,7 @@ INFO_ONLY_KEYS: set[str] = {
     "missing_pages",
     "missing_concept_pages",
     "missing_abbrev_glossary",
+    "entity_missing_outgoing_legacy",
     "methods_without_practitioner_query",
     "paper_missing_source_meta",
     "paper_missing_three_sections",
@@ -1074,15 +1085,6 @@ def invalid_status(fm_block: str) -> str | None:
     return None
 
 
-# 移除代码块（``` ... ``` 和 ` ... `），避免提取代码示例中的假链接
-def strip_code_blocks(content: str) -> str:
-    # 移除围栏代码块
-    content = re.sub(r"```.*?```", "", content, flags=re.DOTALL)
-    # 移除行内代码
-    content = re.sub(r"`[^`]+`", "", content)
-    return content
-
-
 def find_mermaid_placeholder_lines(content: str) -> list[int]:
     """找出未转换的 Mermaid 围栏占位符，忽略真正代码块中的示例。"""
     candidates = [
@@ -1101,20 +1103,11 @@ def find_mermaid_placeholder_lines(content: str) -> list[int]:
 
 # 从文件中提取所有内部链接目标（相对路径 .md 文件）
 def extract_internal_links(content: str, source_path: Path) -> list[Path]:
-    targets = []
-    content = strip_code_blocks(content)
-    # 匹配 markdown 链接 [text](path)，只取 .md 文件且不是 http
-    for match in re.finditer(r"\[([^\]]*)\]\(([^)]+)\)", content):
-        href = match.group(2).strip()
-        if href.startswith("http") or href.startswith("#"):
-            continue
-        # 去掉锚点
-        href = href.split("#")[0]
-        if not href.endswith(".md"):
-            continue
-        resolved = (source_path.parent / href).resolve()
-        targets.append(resolved)
-    return targets
+    return [
+        (source_path.parent / href).resolve()
+        for href in _extract_md_links(content)
+        if href.endswith(".md")
+    ]
 
 
 def has_section(content: str, patterns: list[str]) -> bool:
@@ -1197,6 +1190,7 @@ def _empty_results() -> dict[str, Any]:
         "missing_related": [],
         "missing_sources": [],
         "missing_abbrev_glossary": [],
+        "missing_abbrev_glossary_new": [],
         "abbrev_glossary_wrong_order": [],
         "broken_links": [],
         "invalid_filenames": [],
@@ -1221,6 +1215,7 @@ def _empty_results() -> dict[str, Any]:
         "method_missing_link": [],
         "method_missing_sections": [],
         "entity_missing_outgoing": [],
+        "entity_missing_outgoing_legacy": [],
         "tool_missing_institution": [],
         "invalid_topic": [],
         "wikilink_syntax": [],
@@ -1245,14 +1240,33 @@ def _empty_results() -> dict[str, Any]:
     }
 
 
+def _legacy_baseline_path() -> Path:
+    return REPO_ROOT / LEGACY_BASELINE_REL
+
+
+def _load_legacy_baseline() -> dict[str, set[str]] | None:
+    path = _legacy_baseline_path()
+    if not path.is_file():
+        return None
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return {
+        "missing_abbrev_glossary": set(data.get("missing_abbrev_glossary", [])),
+        "entity_missing_outgoing": set(data.get("entity_missing_outgoing", [])),
+    }
+
+
 def _check_per_page(
     pages: list[Path],
     inbound: dict[Path, list[Path]],
     broken: dict[Path, list[str]],
     results: dict[str, Any],
+    baseline: dict[str, set[str]] | None = None,
 ) -> None:
     """逐页检查：孤儿、关联区块、参考来源、断链、空壳、wikilink 语法、source 引用。"""
     from wiki_abbrev_section import is_abbrev_glossary_well_placed
+
+    if baseline is None:
+        baseline = _load_legacy_baseline()
 
     for page in pages:
         resolved = page.resolve()
@@ -1285,7 +1299,10 @@ def _check_per_page(
                 content, ["英文缩写速查", "abbreviation glossary", "abbreviations"]
             )
             if not has_abbrev:
-                results["missing_abbrev_glossary"].append(str(rel))
+                rel_norm = str(rel).replace("\\", "/")
+                results["missing_abbrev_glossary"].append(rel_norm)
+                if baseline is not None and rel_norm not in baseline["missing_abbrev_glossary"]:
+                    results["missing_abbrev_glossary_new"].append(rel_norm)
             elif not is_abbrev_glossary_well_placed(content):
                 results["abbrev_glossary_wrong_order"].append(str(rel))
 
@@ -1546,8 +1563,7 @@ def _frontmatter_updated_date(path: Path) -> date | None:
 
 def _frontmatter_block(content: str) -> str:
     """提取 frontmatter（--- 与 --- 之间的 YAML 文本），无则返回空串。"""
-    m = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-    return m.group(1) if m else ""
+    return parse_raw_frontmatter(content)[0]
 
 
 def _frontmatter_tags(fm_block: str) -> set[str]:
@@ -1779,20 +1795,27 @@ def _check_original_reading(pages: list[Path], results: dict[str, Any]) -> None:
             results["invalid_original"].append(f"{rel}：original {entry} {problem}")
 
 
-def _check_frontmatter(pages: list[Path], results: dict[str, Any]) -> None:
-    """Frontmatter 检查：type 字段、updated 过期、summary 字段。"""
+def _check_frontmatter(
+    pages: list[Path],
+    results: dict[str, Any],
+    *,
+    require_status: bool | None = None,
+) -> None:
+    """Frontmatter 检查：type 字段、status 取值、updated 过期、summary 字段。"""
     fm_exempt_dirs = {"tech-map", "overview", "schema", "queries"}
     today_for_stale = date.today()
+    enforce_status = _legacy_baseline_path().is_file() if require_status is None else require_status
 
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
         content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-
-        if page.name.lower() not in ("readme.md", "index.md") and not any(
+        is_exempt = page.name.lower() in ("readme.md", "index.md") or any(
             d in parts for d in fm_exempt_dirs
-        ):
+        )
+
+        if not is_exempt:
             if fm_match:
                 if not re.search(r"^type\s*:", fm_match.group(1), re.MULTILINE):
                     results["missing_type"].append(str(rel))
@@ -1803,6 +1826,12 @@ def _check_frontmatter(pages: list[Path], results: dict[str, Any]) -> None:
             bad_status = invalid_status(fm_match.group(1))
             if bad_status:
                 results["invalid_status"].append(f"{rel}（status: {bad_status}）")
+            elif (
+                enforce_status
+                and not is_exempt
+                and not re.search(r"^status\s*:", fm_match.group(1), re.MULTILINE)
+            ):
+                results["invalid_status"].append(f"{rel}（缺少 status 字段）")
             upd_m = re.search(r"^updated:\s*(\d{4}-\d{2}-\d{2})", fm_match.group(1), re.MULTILINE)
             if upd_m:
                 try:
@@ -2673,6 +2702,36 @@ def _check_frontmatter_topic(pages: list[Path], results: dict[str, Any]) -> None
             results["invalid_topic"].append(f"{page.relative_to(REPO_ROOT)} （topic: {topics}）")
 
 
+def _check_entities_outgoing(
+    pages: list[Path],
+    results: dict[str, Any],
+    grandfathered: set[str] | None = None,
+) -> None:
+    """校验 entities/ 出边（methods/tasks ≥ 2）；基线内历史页记信息型，新增页阻塞 CI。"""
+    if grandfathered is None:
+        baseline = _load_legacy_baseline()
+        if baseline is None:
+            return
+        grandfathered = baseline["entity_missing_outgoing"]
+    for page in pages:
+        if page.name.lower() in ("readme.md", "index.md"):
+            continue
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "entities":
+            continue
+        content = _read_page_text(page)
+        tmp: dict[str, Any] = {"entity_missing_outgoing": []}
+        _check_entity_page(page, rel, content, tmp)
+        if not tmp["entity_missing_outgoing"]:
+            continue
+        rel_norm = str(rel).replace("\\", "/")
+        if rel_norm in grandfathered:
+            results["entity_missing_outgoing_legacy"].extend(tmp["entity_missing_outgoing"])
+        else:
+            results["entity_missing_outgoing"].extend(tmp["entity_missing_outgoing"])
+
+
 def _check_methods_entities(pages: list[Path], results: dict[str, Any]) -> None:
     """methods/ 页面结构检查。"""
     for page in pages:
@@ -2726,13 +2785,14 @@ def lint() -> dict[str, Any]:
     results = _empty_results()
 
     with _page_read_cache():
+        baseline = _load_legacy_baseline()
         inbound, broken_links = _build_link_index(pages, page_set)
-        _check_per_page(pages, inbound, broken_links, results)
+        _check_per_page(pages, inbound, broken_links, results, baseline=baseline)
         _check_missing_concepts(pages, results)
         _check_missing_concept_pages(pages, results)
         _check_sources_health(results)
         _check_contradictions(pages, results)
-        _check_frontmatter(pages, results)
+        _check_frontmatter(pages, results, require_status=baseline is not None)
         _check_original_reading(pages, results)
         _check_log_activity(results)
         _check_query_format(pages, results)
@@ -2740,6 +2800,8 @@ def lint() -> dict[str, Any]:
         _check_readme_badges(results)
         _check_graph_orphans(results)
         _check_methods_entities(pages, results)
+        if baseline is not None:
+            _check_entities_outgoing(pages, results, baseline["entity_missing_outgoing"])
         _check_methods_without_practitioner_query(pages, inbound, results)
         _check_paper_entity_metadata(pages, results)
         _check_duplicate_arxiv(pages, results)
@@ -2774,7 +2836,7 @@ def _info_total(results: dict[str, Any]) -> int:
     total = 0
     for k in INFO_ONLY_KEYS:
         items = results.get(k, [])
-        if k == "paper_missing_conclusions":
+        if k in ("paper_missing_conclusions", "entity_missing_outgoing_legacy"):
             total += 1 if items else 0
         else:
             total += len(items)
@@ -2795,8 +2857,13 @@ def format_report(results: dict[str, Any]) -> str:
         ("missing_related", "缺少关联页面区块", "⚠️"),
         ("missing_sources", "缺少参考来源区块", "⚠️"),
         (
+            "missing_abbrev_glossary_new",
+            "新增页面缺少「英文缩写速查」区块（非历史基线页面阻塞 CI）",
+            "❌",
+        ),
+        (
             "missing_abbrev_glossary",
-            "缺少英文缩写速查区块（新建/大幅改写页须补齐；全库 backlog 信息型）",
+            "缺少「英文缩写速查」区块（历史信息型 backlog；非基线新增页见上）",
             "💡",
         ),
         (
@@ -2847,7 +2914,16 @@ def format_report(results: dict[str, Any]) -> str:
         ("orphan_count", "图谱孤儿节点预警（graph-stats.json）", "⚠️"),
         ("method_missing_link", "Methods 页面缺少 Formalization/Concept 链接", "⚠️"),
         ("method_missing_sections", "Methods 页面缺少主要路线区块", "⚠️"),
-        ("entity_missing_outgoing", "Entities 页面缺少 Methods/Tasks 关联出边", "⚠️"),
+        (
+            "entity_missing_outgoing",
+            "新增 Entities 页面缺少 Methods/Tasks 关联出边（≥2，阻塞 CI）",
+            "❌",
+        ),
+        (
+            "entity_missing_outgoing_legacy",
+            "Entities 历史页面缺少 Methods/Tasks 关联出边（信息型基线）",
+            "💡",
+        ),
         ("tool_missing_institution", "工具实体缺少可派生的所属机构", "❌"),
         ("invalid_topic", "frontmatter topic 非法（不在 schema/topics.json 或超过 2 个）", "❌"),
         (
@@ -2919,16 +2995,21 @@ def format_report(results: dict[str, Any]) -> str:
             # 历史 paper-* 缺「结论」可能数百条：报告只展示前 15 条，避免刷屏
             display = items
             extra = 0
-            if key == "paper_missing_conclusions" and len(items) > 15:
+            if (
+                key in ("paper_missing_conclusions", "entity_missing_outgoing_legacy")
+                and len(items) > 15
+            ):
                 display = items[:15]
                 extra = len(items) - 15
             for item in display:
                 lines.append(f"- {item}")
             if extra:
-                lines.append(
-                    f"- … 另有 {extra} 个（历史 backlog；"
-                    "新建 / 大幅改写的 paper-* 必须含 `## 结论`）"
+                msg = (
+                    "历史 backlog；新建 / 大幅改写的 paper-* 必须含 `## 结论`"
+                    if key == "paper_missing_conclusions"
+                    else "历史基线；新增 entities/* 须至少含 2 个指向 methods/tasks 的出边"
                 )
+                lines.append(f"- … 另有 {extra} 个（{msg}）")
         else:
             lines.append("- 无")
         lines.append("")

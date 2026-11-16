@@ -1,5 +1,6 @@
 ---
 type: entity
+status: complete
 title: MNN
 date: 2026-06-25
 tags: [framework, deployment, mnn, edge-inference, mobile, alibaba, quantization]
