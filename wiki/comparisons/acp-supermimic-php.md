@@ -7,7 +7,7 @@ summary: "比较 ACP 的接触规划、SuperMimic 的世界模型训练、PHP �
 related:
   - ../entities/paper-acp-humanoid-mobility.md
   - ../entities/paper-supermimic.md
-  - ../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ../entities/supermimic-parkour.md
 ---
 
@@ -29,7 +29,7 @@ related:
 |---|---|---|---|
 | [ACP](../entities/paper-acp-humanoid-mobility.md) | 接触引导的人形移动 | 接触规划器和全身控制器使用地形、本体感知与目标；部署不输入参考动作 | 论文与项目页展示复杂地形移动 |
 | [SuperMimic](../entities/paper-supermimic.md) | 高效训练通用动作跟踪器 | 用仿真转移拟合可微世界模型，通过想象轨迹优化策略 | 项目页展示仿真与 G1 实机动作跟踪 |
-| [PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | 深度感知和跑酷技能链 | 离线动作匹配生成参考，训练专家并向深度学生蒸馏 | 项目页展示 G1 实机跑酷 |
+| [PHP](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) | 深度感知和跑酷技能链 | 离线动作匹配生成参考，训练专家并向深度学生蒸馏 | 项目页展示 G1 实机跑酷 |
 | [SuperMimic Parkour](../entities/supermimic-parkour.md) | 世界模型训练跑酷跟踪 | 社区实现使用 PHP 动作和地形数据；策略通过世界模型训练 | 仓库报告仿真结果，尚未据此确认真机效果 |
 
 已核实的直接关联是 **SuperMimic Parkour 使用 PHP 动作数据，并受 SuperMimic 启发**。ACP 与其余工作可作为不同方法对照；现有资料不足以证明某个 ACP 与 SuperMimic 的组合实现。

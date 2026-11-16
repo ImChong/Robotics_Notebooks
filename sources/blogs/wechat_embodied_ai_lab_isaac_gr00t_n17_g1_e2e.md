@@ -60,6 +60,6 @@
 ## 对 wiki 的映射
 
 - [Isaac GR00T（开发平台）](../../wiki/entities/isaac-gr00t.md) — 增补 G1 仿真教程链路与中文策展来源
-- [GR00T N1（论文）](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)
+- [GR00T N1（论文）](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md)
 - [LeRobot](../../wiki/entities/lerobot.md) — LeRobot 格式与 HF `groot` 集成
 - [GR00T-WholeBodyControl](../../wiki/entities/gr00t-wholebodycontrol.md) — AGILE WBC / SONIC 低层

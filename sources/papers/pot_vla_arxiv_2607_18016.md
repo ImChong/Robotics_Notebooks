@@ -47,7 +47,7 @@
   - 训练沿用基座 action-chunk 损失；演示配对同一 schema 的 object-token sidecar；**无**额外对象记忆或谓词损失。
 - **对 wiki 的映射：**
   - [POT-VLA](../../wiki/entities/paper-pot-vla.md)
-  - [Isaac GR00T](../../wiki/entities/isaac-gr00t.md) / [GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)
+  - [Isaac GR00T](../../wiki/entities/isaac-gr00t.md) / [GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md)
   - [Unitree G1](../../wiki/entities/unitree-g1.md)
 
 ### 3) 闭环：几何谓词监督与恢复

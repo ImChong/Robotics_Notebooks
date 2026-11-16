@@ -12,7 +12,7 @@ status: complete
 updated: 2026-11-07
 code: https://github.com/NVIDIA/Isaac-GR00T
 related:
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./isaac-gr00t.md
   - ./paper-pi0.md
   - ./paper-dita-scaling-diffusion-transformer-vla.md
@@ -31,7 +31,7 @@ summary: "GR00T N1.5（NVIDIA GEAR 2025-06）：冻结 Eagle VLM + DiT flow-matc
 
 # GR00T N1.5：通用人形 VLA 的改进版
 
-**GR00T N1.5**（*An Improved Open Foundation Model for Generalist Humanoid Robots*，[NVIDIA GEAR 项目页](https://research.nvidia.com/labs/gear/gr00t-n1_5/)，[Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T)，[HF GR00T-N1.5-3B](https://huggingface.co/nvidia/GR00T-N1.5-3B)）是 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) 的升级版。**截至 2026-09-28 无独立 arXiv 编号**；机制与评测以 GEAR 网页与 Isaac-GR00T 仓库为准。
+**GR00T N1.5**（*An Improved Open Foundation Model for Generalist Humanoid Robots*，[NVIDIA GEAR 项目页](https://research.nvidia.com/labs/gear/gr00t-n1_5/)，[Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T)，[HF GR00T-N1.5-3B](https://huggingface.co/nvidia/GR00T-N1.5-3B)）是 [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) 的升级版。**截至 2026-09-28 无独立 arXiv 编号**；机制与评测以 GEAR 网页与 Isaac-GR00T 仓库为准。
 
 ## 一句话定义
 
@@ -50,7 +50,7 @@ summary: "GR00T N1.5（NVIDIA GEAR 2025-06）：冻结 Eagle VLM + DiT flow-matc
 
 ## 为什么重要
 
-- **阅读链终点之一：** [扩散 → DiT → Flow → GR00T 纵深路线](../../roadmap/depth-robotics-diffusion-dit-flow.md) 在 [π₀](./paper-pi0.md) 与 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) 之后，N1.5 展示 **工业级人形 VLA 迭代**：cross-attention DiT + FM + 数据/损失扩展。
+- **阅读链终点之一：** [扩散 → DiT → Flow → GR00T 纵深路线](../../roadmap/depth-robotics-diffusion-dit-flow.md) 在 [π₀](./paper-pi0.md) 与 [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) 之后，N1.5 展示 **工业级人形 VLA 迭代**：cross-attention DiT + FM + 数据/损失扩展。
 - **工程主线：** 平台实现与微调见 [Isaac GR00T](./isaac-gr00t.md)（仓库后续 GA 以 N1.7 为主，N1.5 权重仍作对照基线）。
 
 ## 核心信息
@@ -123,7 +123,7 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-| 维度 | GR00T N1.5 | [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) | [π₀](./paper-pi0.md) |
+| 维度 | GR00T N1.5 | [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) | [π₀](./paper-pi0.md) |
 |------|------------|---------------------------------------------|----------------------|
 | 动作头 | DiT + **flow matching** | 同族 DiT + FM | **Action Expert** + FM |
 | VLM | Eagle 2.5 系 **全程冻结** + FLARE | Eagle-2：论文中语言部分冻结、其余可训（中间第 12 层特征） | PaliGemma 类 VLM |
@@ -167,7 +167,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [paper-hrl-stack-34-gr00t_n1](./paper-hrl-stack-34-gr00t_n1.md)
+- [paper-hrl-stack-34-gr00t_n1](./paper-hrl-stack-34-gr00t-n1.md)
 - [isaac-gr00t](./isaac-gr00t.md)
 - [depth-robotics-diffusion-dit-flow](../../roadmap/depth-robotics-diffusion-dit-flow.md)
 

@@ -10,7 +10,7 @@ related:
   - ../methods/vla.md
   - ../methods/pi07-policy.md
   - ../methods/action-chunking.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ./robot-motion-keyframe-editors.md
   - ./paper-eventvla-visual-evidence-memory.md
   - ./paper-fm-vla.md
@@ -144,7 +144,7 @@ SCR 聚合：**76.4%** vs π₀.₅ **42.3%**（**+34.1 pt**）。Drawer 任务�
 ## 与其他页面的关系
 
 - 任务语境：[Manipulation](../tasks/manipulation.md) — 双臂桌面长程操作与记忆依赖子任务。
-- 骨干对照：[π₀.₇ Policy](../methods/pi07-policy.md)、[π₀ Policy](../methods/π0-policy.md)、[VLA](../methods/vla.md) — π 系 flow-matching VLA 与记忆增强路线谱系。
+- 骨干对照：[π₀.₇ Policy](../methods/pi07-policy.md)、[π₀ Policy](../methods/pi0-policy.md)、[VLA](../methods/vla.md) — π 系 flow-matching VLA 与记忆增强路线谱系。
 - 关键帧工具对照：[机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) — 离线示教关键帧 vs 在线事件检测。
 - 动作接口：[Action Chunking](../methods/action-chunking.md) — $H=50$ 块预测与长时程执行。
 - 相邻稀疏记忆路线：[EventVLA](./paper-eventvla-visual-evidence-memory.md) — **学习式前瞻 KEM + 原始图像拼接**（QwenOFT）与 **RoboTwin-MeM** 基准；本文侧重 **运动学启发式选帧 + π₀.₅ 门控融合**。

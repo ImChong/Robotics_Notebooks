@@ -9,7 +9,7 @@ venue: "NVIDIA GEAR technical whitepaper, 2026"
 related:
   - ./paper-gr00t-n1-7.md
   - ./paper-gr00t-n1-5.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./isaac-gr00t.md
   - ./gr00t-wholebodycontrol.md
   - ./nvidia-sonic.md
@@ -196,7 +196,7 @@ flowchart TD
 
 - [GR00T N1.7：VLM + flow-matching action head](./paper-gr00t-n1-7.md)
 - [GR00T N1.5](./paper-gr00t-n1-5.md)
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md)
 - [Isaac-GR00T 工程平台（现有版本）](./isaac-gr00t.md)
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)
 - [SONIC 运动跟踪](./nvidia-sonic.md)

@@ -20,7 +20,7 @@
 
 ## 对 wiki 的映射
 
-  - [RGMT 实体页](../../wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)
+  - [RGMT 实体页](../../wiki/entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md)
   - 后续扩展：[Extreme-RGMT](../../wiki/entities/paper-extreme-rgmt.md)（arXiv:2607.20110）
   - 方法页：[Any2Track & RGMT](../../wiki/methods/any2track.md)
 

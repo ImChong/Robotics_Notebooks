@@ -23,7 +23,7 @@ related:
   - ./birdview.md
   - ./mattpocock-skills.md
   - ../concepts/agentic-coding-software-fundamentals.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/archify.md
@@ -160,7 +160,7 @@ sequenceDiagram
 - [HyperFrames](./hyperframes.md) — **HTML→MP4** 动效视频；沟通层另一工件
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用工程技能对照
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 架构取舍仍要人转向；本工具只把已决定的边界画清楚
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译进 wiki；Archify 编译的是沟通工件
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译进 wiki；Archify 编译的是沟通工件
 - [ingest 工作流](../../schema/ingest-workflow.md) — 本站资料入库规范
 
 ## 参考来源

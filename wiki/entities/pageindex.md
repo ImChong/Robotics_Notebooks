@@ -11,7 +11,7 @@ status: complete
 updated: 2026-10-25
 related:
   - ./deeptutor.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/pageindex.md
   - ../../sources/sites/pageindex-ai.md
@@ -60,7 +60,7 @@ PageIndex 属于文档检索基础设施，可作为机器人研究者处理论�
 ## 与其他知识页的关系
 
 - [DeepTutor](deeptutor.md) 的 Knowledge Center 将 PageIndex 列为可选 RAG 引擎；PageIndex 本身则聚焦文档树索引与检索。
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) 强调把多来源知识编译成可维护页面；PageIndex 解决的是对原始长文档按需检索的问题。两者处于不同的知识处理阶段。
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) 强调把多来源知识编译成可维护页面；PageIndex 解决的是对原始长文档按需检索的问题。两者处于不同的知识处理阶段。
 
 ## 源码运行时序图
 
@@ -111,7 +111,7 @@ sequenceDiagram
 ## 关联页面
 
 - [DeepTutor](./deeptutor.md)
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md)
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md)
 
 ## 推荐继续阅读
 

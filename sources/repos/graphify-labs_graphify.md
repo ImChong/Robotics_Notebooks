@@ -66,7 +66,7 @@ README 将 graphify 定位为 Karpathy 式 **`/raw` 资料夹** 的「结构化�
 
 | 主题 | 关系 |
 |------|------|
-| [LLM Wiki（Karpathy 模式）](../../wiki/references/llm-wiki-karpathy.md) | **对照轴**：wiki = 人工策展的持久编译知识；graphify = 自动构图 + 图查询，可覆盖「探索陌生代码库/资料堆」阶段 |
+| [LLM Wiki（Karpathy 模式）](../../wiki/concepts/llm-wiki-karpathy.md) | **对照轴**：wiki = 人工策展的持久编译知识；graphify = 自动构图 + 图查询，可覆盖「探索陌生代码库/资料堆」阶段 |
 | [Superpowers（obra）](../../wiki/entities/superpowers-obra.md) | 同属 **可安装 Agent Skill** 谱系；Superpowers 管交付流程，graphify 管 **代码/资料结构理解** |
 | [Agent Reach](../../wiki/entities/agent-reach.md) | 互补：Agent Reach 接 **外网读搜**；graphify 接 **本地/仓库内** 多模态语料图 |
 | [Caveman](../../wiki/entities/caveman.md) | 互补：Caveman 压 **输出措辞**；graphify 压 **理解语料时的输入 token**（查询图而非重读文件） |

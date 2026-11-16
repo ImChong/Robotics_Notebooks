@@ -7,7 +7,7 @@ updated: 2026-10-03
 related:
   - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ./paper-pi-human-to-robot.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../tasks/manipulation.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
@@ -85,7 +85,7 @@ flowchart TD
 
 - [π\*₀.₆ / RECAP](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)
 - [人视频迁移](./paper-pi-human-to-robot.md)
-- [π₀](../methods/π0-policy.md)
+- [π₀](../methods/pi0-policy.md)
 - [操作任务](../tasks/manipulation.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — Robot Olympics 式任务挑战在评测选型中的位置
 

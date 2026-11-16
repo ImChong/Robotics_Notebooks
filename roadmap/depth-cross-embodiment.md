@@ -151,7 +151,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Octo](../wiki/entities/paper-octo.md) — 读出头是迁移主接口：新相机、新动作空间不必重训整网
-- [GR00T N1](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) — per-embodiment 状态/动作 MLP 投影到共享 DiT 隐空间
+- [GR00T N1](../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) — per-embodiment 状态/动作 MLP 投影到共享 DiT 隐空间
 - [X-WBC](../wiki/entities/paper-x-wbc.md) — "运动语义可共享、物理执行不可共享"的切分；9 仿真人形联合训练、4 台真机同一接口
 - [XHugWBC](../wiki/entities/paper-xhugwbc-cross-humanoid.md) · [RecMorph](../wiki/entities/paper-recmorph.md) · [Hodge 形态先验](../wiki/entities/paper-hodge-morphology-priors-quadruped-degradation.md) — 形态作为输入的三种编码
 - [CrossBFM](../wiki/entities/paper-crossbfm-shared-latent-behavior.md) — 共享潜在行为空间 + 各本体专用跟踪器

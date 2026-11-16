@@ -9,7 +9,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../../roadmap/depth-cross-embodiment.md
   - ../../roadmap/depth-loco-manipulation.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 sources:
   - ../../sources/papers/polymorphwbc-quadruped_arxiv_2611_15117.md
 original:
@@ -95,7 +95,7 @@ flowchart TD
 - [whole body control](../concepts/whole-body-control.md)
 - [cross embodiment](../../roadmap/depth-cross-embodiment.md)
 - [loco manipulation](../../roadmap/depth-loco-manipulation.md)
-- [11.09–11.13 29 篇总览](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

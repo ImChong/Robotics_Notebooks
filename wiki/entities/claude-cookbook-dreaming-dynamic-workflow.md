@@ -10,7 +10,7 @@ original:
   - ../../sources/sites/claude_cookbook_dreaming_dynamic_workflow_2026-11-02.md
 related:
   - ../concepts/agent-memory-and-dreaming.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md
 sources:
@@ -40,7 +40,7 @@ summary: "Claude Cookbook「Dreaming with a dynamic workflow」：用 Managed Ag
 
 - 与 Anthropic 博客《The components of agent memory》配套：把「dreaming 能纠错、建 wiki、塑形记忆」落成可运行的流水线，概念背景见 [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md)。
 - 给出一份可对照的工程配方：转写导出格式、分析 / 整理智能体的提示词、并发写同一目录时的约束、成本数字、对不可信转写的防护、每晚运行的取舍。
-- wiki 式记忆（小文件 + frontmatter + `[[slug]]` 链接 + 索引）与本库自身的 [LLM Wiki 模式](../references/llm-wiki-karpathy.md) 同构，可作为对照实现（对应关系是本页的判断）。
+- wiki 式记忆（小文件 + frontmatter + `[[slug]]` 链接 + 索引）与本库自身的 [LLM Wiki 模式](../concepts/llm-wiki-karpathy.md) 同构，可作为对照实现（对应关系是本页的判断）。
 
 ## 流程总览
 
@@ -122,7 +122,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md)
-- [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md)
+- [LLM Wiki（Karpathy）](../concepts/llm-wiki-karpathy.md)
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md)
 - [Agentic Coding 软件基础](../concepts/agentic-coding-software-fundamentals.md)
 

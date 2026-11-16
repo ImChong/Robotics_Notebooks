@@ -18,7 +18,7 @@ related:
   - ./video-shotcraft.md
   - ./agent-reach.md
   - ./superpowers-obra.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/sensenova-skills.md
@@ -45,7 +45,7 @@ summary: "SenseNova-Skills 是 OpenSenseNova 发布的 Agent Skills 办公技能
 ## 为什么重要（对本知识库读者）
 
 - **与 Hermes / 编码技能库互补：** [Hermes Agent](hermes-agent.md) 提供 **常驻运行时与 `~/.hermes/skills/` 安装位**；[mattpocock/skills](mattpocock-skills.md) 面向 **工程交付习惯**；SenseNova-Skills 面向 **办公产出**（报告、图表、Deck）。维护本 wiki 时的 **文献综述、对比表、路演材料** 可借鉴其深度研究与 PPT 管线，而不必从零写 prompt。
-- **与 LLM Wiki 维护同构、不同对象：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 编译 **机器人知识**；本库编译 **办公任务程序**（`SKILL.md` + 产物契约如 `task_pack.json`、`plan.json`、`report.md`）。二者都强调 **人类策展 + 代理执行**，但产物分别是 **wiki 页** 与 **可交付办公文件**。
+- **与 LLM Wiki 维护同构、不同对象：** [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 编译 **机器人知识**；本库编译 **办公任务程序**（`SKILL.md` + 产物契约如 `task_pack.json`、`plan.json`、`report.md`）。二者都强调 **人类策展 + 代理执行**，但产物分别是 **wiki 页** 与 **可交付办公文件**。
 - **机器人/具身侧触点：** 仓库示例 [`examples/embodied-ai-deep-research`](https://github.com/OpenSenseNova/SenseNova-Skills/tree/main/examples/embodied-ai-deep-research) 展示 **行业维度规划 → 分源取证 → 合成报告** 的标准化写法，与 ingest 前的 **外部资料消化** 流程相近；不替代仿真/控制栈，但可降低 **调研型 ingest** 的重复劳动。
 - **与 Agent Reach 的分工：** [Agent Reach](agent-reach.md) 解决 **渠道化读搜安装**；SenseNova 内置 **学术/代码/社交搜索子技能** 并嵌入 **sn-deep-research** 编排，更适合 **已选定主题后的结构化报告**，而非单次 URL 抓取。
 
@@ -98,7 +98,7 @@ flowchart LR
 - [video-shotcraft](video-shotcraft.md) — **Remotion 产品宣传片** 垂直 Agent Skill（与办公 PPT/信息图互补的成片层）
 - [Agent Reach](agent-reach.md) — 外网读搜渠道脚手架
 - [Superpowers（obra）](superpowers-obra.md) — **重流程编码交付** 技能方法论
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久知识编译范式
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 持久知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
 
 ## 参考来源

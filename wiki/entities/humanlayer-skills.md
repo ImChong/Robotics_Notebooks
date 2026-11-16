@@ -17,7 +17,7 @@ related:
   - ./cad-skills.md
   - ./agent-reach.md
   - ./paper-wikiskill.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
@@ -46,7 +46,7 @@ summary: "humanlayer/skills 是 HumanLayer 公开的 Claude Code 技能插件集
 
 ## 为什么重要（对本知识库读者）
 
-- **与 LLM Wiki 维护同构：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 把知识编译进 `wiki/`；HumanLayer 把 **维护环** 编译进 `SKILL.md` + workflow + `agent-memory`。本仓库的 [ingest/query/lint](../../schema/ingest-workflow.md) 与 `make ci-preflight` 正是可被 `design-control-loop` 建模的 **set point + sensor + actuator** 实例。
+- **与 LLM Wiki 维护同构：** [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 把知识编译进 `wiki/`；HumanLayer 把 **维护环** 编译进 `SKILL.md` + workflow + `agent-memory`。本仓库的 [ingest/query/lint](../../schema/ingest-workflow.md) 与 `make ci-preflight` 正是可被 `design-control-loop` 建模的 **set point + sensor + actuator** 实例。
 - **控制论隐喻对机器人读者友好：** `design-control-loop` 显式借用 **set point / sensor / controller / actuator / disturbances / dampener** 语言——与 locomotion、WBC、Sim2Real 中的闭环思维一致，但对象换成 **代码库性质**（覆盖率、lint 违规、类型宽度、迁移进度等）。
 - **与 Superpowers / mattpocock 的分工：** [Superpowers](superpowers-obra.md) 强调 **单次交付管线**（brainstorm → worktree → TDD → 评审）；[mattpocock/skills](mattpocock-skills.md) 强调 **日常对齐与反馈环**；HumanLayer 更聚焦 **把重复维护任务托管给定时 agent**，并用 PR 标签 **限流未审 PR**（默认每 loop 最多 1 个 open PR）。
 - **对本仓库 harness 的直接价值：** [AGENTS.md](../../AGENTS.md) 与 Claude Code 的 `CLAUDE.md` 同构；`improve-claude-md` 的 `<important if>` 模式可降低「长规约被模型整体忽略」的风险——对 ingest、派生文件同步、截图验证等 **条件触发** 段落尤其有用。
@@ -109,7 +109,7 @@ HumanLayer 的 [配套文章](../../sources/blogs/humanlayer-show-me-skill.md) �
 - [WikiSkill（论文实体）](paper-wikiskill.md) — LLM Wiki 嵌入 agent skill 进化环
 - [Agent Reach](agent-reach.md) — 外网读搜工具链脚手架
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 有 agent 仍要懂取舍
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
 
 ## 参考来源

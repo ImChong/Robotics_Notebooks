@@ -92,7 +92,7 @@ $$\min_{q_t} \sum_i \|L(p_{t,i}^{\text{source}}) - L(p_{t,i}^{\text{target}}(q_t
 - 深化实体页：[`wiki/entities/paper-hrl-stack-03-omniretarget.md`](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)
 - 代码实体：[`wiki/entities/holosoma.md`](../../wiki/entities/holosoma.md)
 - 数据集实体：[`wiki/entities/omniretarget-dataset.md`](../../wiki/entities/omniretarget-dataset.md)
-- 交叉：[`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[`wiki/concepts/motion-retargeting.md`](../../wiki/concepts/motion-retargeting.md)、[`wiki/tasks/loco-manipulation.md`](../../wiki/tasks/loco-manipulation.md)
+- 交叉：[`wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md`](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)、[`wiki/concepts/motion-retargeting.md`](../../wiki/concepts/motion-retargeting.md)、[`wiki/tasks/loco-manipulation.md`](../../wiki/tasks/loco-manipulation.md)
 
 ## 关联原始资料
 

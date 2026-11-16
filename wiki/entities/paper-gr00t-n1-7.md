@@ -17,7 +17,7 @@ updated: 2026-11-14
 code: https://github.com/NVIDIA/Isaac-GR00T
 related:
   - ../entities/isaac-gr00t.md
-  - ../entities/paper-hrl-stack-34-gr00t_n1.md
+  - ../entities/paper-hrl-stack-34-gr00t-n1.md
   - ../entities/paper-gr00t-n1-5.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/lerobot.md
@@ -38,7 +38,7 @@ original:
 
 **GR00T N1.7** 是 NVIDIA Isaac GR00T 系列当前的开放权重版本（[`nvidia/GR00T-N1.7-3B`](https://huggingface.co/nvidia/GR00T-N1.7-3B)，[Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T)）。**重要：未找到 N1.7 专属的论文或技术报告**（2026-11-05 查模型卡、Isaac-GR00T README、LeRobot 文档并做 web 搜索）；官方模型卡明确写「N1.X 架构的详细描述见 GR00T N1 白皮书 arXiv:2503.14734」。因此：
 
-- 本库 arXiv:2503.14734 的 canonical 节点是 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)，本页**不带 arxiv 字段**，是 N1.7 版本/实现节点（与 [GR00T N1.5](./paper-gr00t-n1-5.md) 同为「无独立 arXiv」的版本页）。
+- 本库 arXiv:2503.14734 的 canonical 节点是 [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md)，本页**不带 arxiv 字段**，是 N1.7 版本/实现节点（与 [GR00T N1.5](./paper-gr00t-n1-5.md) 同为「无独立 arXiv」的版本页）。
 - 平台与工作流见 [Isaac-GR00T](./isaac-gr00t.md)，本页聚焦模型本体与 LeRobot 的 `groot` 实现。
 - 凡是 N1.7 相对 N1 的变化，只能引用模型卡/README/LeRobot 源码，不能当作论文结论。
 
@@ -179,7 +179,7 @@ N1.7 无独立论文，以下数字只来自 Isaac-GR00T 主分支 `examples/` �
 ## 与其他工作对比
 
 - **相对 N1.6（官方 README「Key Changes from N1.6」）**：VLM 骨干由 Eagle（`nvidia/Eagle-Block2A-2B-v2`）换成 Cosmos-Reason2-2B（Qwen3-VL 架构）；状态/动作维 29→132，`action_horizon` 16→40；DiT 层数 32→16；采用跨人与机器人共享的相对末端执行器动作空间，并在预训练中加入 2 万小时 EgoScale 人类视频（参见 [EgoScale](./paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md)）。README 自述「与 N1.6 性能相当，泛化与语言跟随更好」，但仓库内同表对比只有上表 SimplerEnv 两项，未见语言跟随的量化对照。
-- **相对 N1 / N1.5**：模型卡称 N1.X 架构以 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) 白皮书为准，仍是「VLM + flow-matching DiT 动作头」；[GR00T N1.5](./paper-gr00t-n1-5.md) 已从 LeRobot 移除（`docs/source/groot.mdx`），官方未给 N1.7 与 N1.5 的同条件评测。
+- **相对 N1 / N1.5**：模型卡称 N1.X 架构以 [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) 白皮书为准，仍是「VLM + flow-matching DiT 动作头」；[GR00T N1.5](./paper-gr00t-n1-5.md) 已从 LeRobot 移除（`docs/source/groot.mdx`），官方未给 N1.7 与 N1.5 的同条件评测。
 - **相对 π0**：与 [π0](./paper-pi0.md) 同属「预训练 VLM + 流匹配动作专家」；N1.7 的状态编码、动作编码与解码按本体 ID 取参数（`CategorySpecificMLP`，LeRobot 源码），动作 token 以交叉注意力读取 VLM 特征。两者无官方同条件对比，LIBERO 等数字来自不同后训练配方，不能直接横比。
 - **第三方基线结果**：[AIRoA-0](./paper-airoa-0.md)（arXiv:2611.03815 §2.1、表 1）把 N1.7 作为基线，用手持夹爪示范后训练并逐任务搜索设置，在双臂 Franka 十项任务上平均 16%（含部分得分，每项 15 次）；该结果反映的是跨数据形态的后训练口径，不代表 N1.7 在官方基准上的表现。
 
@@ -201,7 +201,7 @@ N1.7 无独立论文，以下数字只来自 Isaac-GR00T 主分支 `examples/` �
 ## 关联页面
 
 - [Isaac-GR00T](./isaac-gr00t.md)
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md)
 - [GR00T N1.5](./paper-gr00t-n1-5.md)
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)
 - [lerobot](./lerobot.md)

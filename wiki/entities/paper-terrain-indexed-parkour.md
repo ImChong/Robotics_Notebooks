@@ -19,7 +19,7 @@ related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-hil-hybrid-imitation-learning.md
   - ../entities/paper-deep-whole-body-parkour.md
-  - ../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ../entities/paper-now-you-see-that-humanoid-vision-locomotion.md
   - ../entities/paper-light-loco-parkour.md
   - ../entities/cn-os-noetix-e1-lab.md
@@ -53,7 +53,7 @@ summary: "Terrain-Indexed Motion Priors and Geometric Support（arXiv:2611.08056
 
 - 作者指出的痛点（Sec. I）：人类示范的动作与手 / 膝接触位置不一定适合机器人的身材、驱动与实际支撑面；同时映射动作可能违反机器人物理、可执行参考未必适合当前地形。
 - 作者的设计原则是「把模仿当脚手架」：先习得技能，再放松先验、加强几何支撑（Sec. I）。
-- 对本 wiki 读者：它把 [AMP](../methods/amp-reward.md) 的「多判别器 / 地形条件」路线与手 / 膝全身接触奖励结合，可与 [HIL](../entities/paper-hil-hybrid-imitation-learning.md)、[Perceptive Humanoid Parkour](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) 对照阅读。
+- 对本 wiki 读者：它把 [AMP](../methods/amp-reward.md) 的「多判别器 / 地形条件」路线与手 / 膝全身接触奖励结合，可与 [HIL](../entities/paper-hil-hybrid-imitation-learning.md)、[Perceptive Humanoid Parkour](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)、[Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) 对照阅读。
 
 ## 核心原理与方法栈
 
@@ -125,7 +125,7 @@ flowchart LR
 |------|------|------|------|
 | Velocity Tracking | 无动作先验的速度跟踪 | 0 / 0 | 只能过 Low |
 | Single AMP | 单判别器 AMP，不按地形路由 | 0 / 44.29 | 地形索引多头判别器的必要性（但不能单独证明主干共享） |
-| Multi-Skill Distillation | 作者基于 [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 的本地实现：多技能专家蒸馏为单一深度策略 | 79.65 / 65.33 | 单障碍接近，混合与 OOD 落后；不代表 PHP 原文性能 |
+| Multi-Skill Distillation | 作者基于 [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) 的本地实现：多技能专家蒸馏为单一深度策略 | 79.65 / 65.33 | 单障碍接近，混合与 OOD 落后；不代表 PHP 原文性能 |
 | **Ours** | 特权模仿 → 地形索引 AMP → 降先验 + 手 / 膝几何支撑 | 96.34 / 93.46 | — |
 
 本页关联的 [HIL](./paper-hil-hybrid-imitation-learning.md)、[Deep Whole-Body Parkour](./paper-deep-whole-body-parkour.md)、[Now You See That](./paper-now-you-see-that-humanoid-vision-locomotion.md)、[Light-Loco-Parkour](./paper-light-loco-parkour.md) 同属人形感知跑酷方向，但论文未与之做实验对比，平台与评测口径不同，不能横比成功率。
@@ -156,7 +156,7 @@ flowchart LR
 - [楼梯 / 障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [HIL：视频跑酷的混合模仿](../entities/paper-hil-hybrid-imitation-learning.md)
 - [Deep Whole-Body Parkour](../entities/paper-deep-whole-body-parkour.md)
-- [Perceptive Humanoid Parkour](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- [Perceptive Humanoid Parkour](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)
 - [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md)
 - [Light-Loco-Parkour](../entities/paper-light-loco-parkour.md)
 - [Noetix E1 实验室仓库](../entities/cn-os-noetix-e1-lab.md)
@@ -171,4 +171,4 @@ flowchart LR
 
 - [arXiv PDF](https://arxiv.org/pdf/2611.08056v1)
 - [AMP 奖励方法页](../methods/amp-reward.md)
-- [Perceptive Humanoid Parkour](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- [Perceptive Humanoid Parkour](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)

@@ -17,4 +17,4 @@
 ## 对 wiki 的映射
 
 - 与 [sources/papers/eth-g1-diffusion.md](../papers/eth-g1-diffusion.md) 配对
-- 实体页：[wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md](../../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)
+- 实体页：[wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md](../../wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md)

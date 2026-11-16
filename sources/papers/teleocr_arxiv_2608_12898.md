@@ -55,7 +55,7 @@
 ## 对 wiki 的映射
 
 - 新建：[paper-teleocr](../../wiki/entities/paper-teleocr.md)
-- 交叉：[auto-labeling-pipelines](../../wiki/methods/auto-labeling-pipelines.md)（手册/SOP 结构化上游）、[llm-wiki-karpathy](../../wiki/references/llm-wiki-karpathy.md)（PDF 资料 ingest 辅助）
+- 交叉：[auto-labeling-pipelines](../../wiki/methods/auto-labeling-pipelines.md)（手册/SOP 结构化上游）、[llm-wiki-karpathy](../../wiki/concepts/llm-wiki-karpathy.md)（PDF 资料 ingest 辅助）
 
 ## 当前提炼状态
 

@@ -16,7 +16,7 @@ related:
   - ./parkour-mjlab.md
   - ./isaac-lab.md
   - ./rsl-rl.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-deep-whole-body-parkour.md
   - ../concepts/terrain-adaptation.md
   - ../concepts/curriculum-learning.md
@@ -43,7 +43,7 @@ summary: "robolab 的 Parkour 任务：RPO-Parkour 在 8 m 地形块（Perlin �
 ## 为什么重要
 
 - 它是 RP1 总览里唯一的感知式（视觉）Demo；其他两项（AMP、BeyondMimic）都是盲策略。
-- 工程上有几处与常见 legged-gym 式 parkour 不同的取舍：把腿部**体积点**与地形的穿透作为带课程的惩罚、用“多组奖励管理器”按环境调权重、把相机编码器与 actor 拆成独立 ONNX 以便部署——可与 [MJLab 版 Parkour](./parkour-mjlab.md) 及 [人形感知跑酷论文](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 对照。
+- 工程上有几处与常见 legged-gym 式 parkour 不同的取舍：把腿部**体积点**与地形的穿透作为带课程的惩罚、用“多组奖励管理器”按环境调权重、把相机编码器与 actor 拆成独立 ONNX 以便部署——可与 [MJLab 版 Parkour](./parkour-mjlab.md) 及 [人形感知跑酷论文](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) 对照。
 
 ## 流程总览
 
@@ -125,7 +125,7 @@ python scripts/rsl_rl/play.py  --task RPO-Parkour-Play
 - [robolab · BeyondMimic](./roboparty-robolab-beyondmimic.md)
 - [Roboto Origin（RPO）](./roboto-origin.md)
 - [Parkour-MJLab](./parkour-mjlab.md)
-- [人形感知跑酷（论文实体）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- [人形感知跑酷（论文实体）](./paper-hrl-stack-22-perceptive-humanoid-parkour.md)
 - [Deep Whole-Body Parkour](./paper-deep-whole-body-parkour.md)
 - [地形适应](../concepts/terrain-adaptation.md)
 - [课程学习](../concepts/curriculum-learning.md)

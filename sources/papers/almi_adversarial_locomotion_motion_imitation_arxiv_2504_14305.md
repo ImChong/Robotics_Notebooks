@@ -33,7 +33,7 @@
 
 ## 对 wiki 的映射
 
-- 沉淀实体页（AMP 专题 #07 深读）：[paper-amp-survey-07-adversarial_locomotion_and_motion_im.md](../../wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)
+- 沉淀实体页（AMP 专题 #07 深读）：[paper-amp-survey-07-adversarial-locomotion-and-motion-im.md](../../wiki/entities/paper-amp-survey-07-adversarial-locomotion-and-motion-im.md)
 - 交叉补强：[Locomotion](../../wiki/tasks/locomotion.md)、[MoRE #08](../../wiki/entities/paper-amp-survey-08-more.md)、[humanoid-amp-motion-prior-survey](../../wiki/overview/humanoid-amp-motion-prior-survey.md)
 - 策展索引：[humanoid_amp_survey_07_adversarial_locomotion_and_motion_imitation_for.md](humanoid_amp_survey_07_adversarial_locomotion_and_motion_imitation_for.md)
 

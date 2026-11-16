@@ -14,7 +14,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ./paper-amp-survey-15-physhsi.md
   - ./paper-amp-survey-08-more.md
-  - ./paper-amp-survey-13-humanoid_goalkeeper.md
+  - ./paper-amp-survey-13-humanoid-goalkeeper.md
 sources:
   - ../../sources/papers/teamhoi_arxiv_2603_07988.md
   - ../../sources/papers/humanoid_amp_survey_17_teamhoi_learning_a_unified_policy_for_cooperativ.md
@@ -44,7 +44,7 @@ sources:
 ## 为什么重要
 
 - **可扩展协作：** 相对 CooHOI 每队形一策略 / 无显式队友状态，TeamHOI **单策略任意 N**（训练见 2–8 人，测试 OOD 队形）。
-- **masked AMP 范式：** 协作 MoCap 稀缺时，**遮蔽交互部位** 再靠任务奖学搬抬——与 [Goalkeeper #13](./paper-amp-survey-13-humanoid_goalkeeper.md) 区域判别、[MoRE #08](./paper-amp-survey-08-more.md) gait 判别同属 **条件化/分部位先验**。
+- **masked AMP 范式：** 协作 MoCap 稀缺时，**遮蔽交互部位** 再靠任务奖学搬抬——与 [Goalkeeper #13](./paper-amp-survey-13-humanoid-goalkeeper.md) 区域判别、[MoRE #08](./paper-amp-survey-08-more.md) gait 判别同属 **条件化/分部位先验**。
 - **Formation 奖励可迁移：** 角向均匀 + 主轴覆盖对 **桌形与人数 agnostic**——工程上可复用的协作几何先验。
 - **与 PhysHSI 分工：** [PhysHSI #15](./paper-amp-survey-15-physhsi.md) 真机单人 HSI；TeamHOI 主攻 **仿真多智能体协作扩展律**。
 
@@ -124,7 +124,7 @@ flowchart TB
 
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#17/19）
 - 单人 HSI：[PhysHSI #15](./paper-amp-survey-15-physhsi.md)
-- 多判别器家族：[MoRE #08](./paper-amp-survey-08-more.md)、[Goalkeeper #13](./paper-amp-survey-13-humanoid_goalkeeper.md)
+- 多判别器家族：[MoRE #08](./paper-amp-survey-08-more.md)、[Goalkeeper #13](./paper-amp-survey-13-humanoid-goalkeeper.md)
 - 方法：[amp-reward.md](../methods/amp-reward.md)
 
 ## 参考来源

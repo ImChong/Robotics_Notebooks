@@ -18,7 +18,7 @@ related:
   - ./agent-reach.md
   - ./paper-harnessbank.md
   - ../concepts/model-context-protocol.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/hkuds_deeptutor.md
   - ../../sources/sites/deeptutor-info.md
@@ -49,7 +49,7 @@ summary: "DeepTutor（HKUDS）是 agent-native 终身个性化辅导工作区：
 
 ## 为什么重要（对本知识库读者）
 
-- **技术栈自学载体：** 机器人研究者可把本库 `wiki/`、论文 PDF、课程讲义导入 **Knowledge Center**，用 Quiz、Mastery Path、Book 做 **RL/控制/Sim2Real** 等主题的 structured learning——与 [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md)「知识编译进页面」形成 **读者侧** 互补（wiki 维护 vs 个人辅导消费）。
+- **技术栈自学载体：** 机器人研究者可把本库 `wiki/`、论文 PDF、课程讲义导入 **Knowledge Center**，用 Quiz、Mastery Path、Book 做 **RL/控制/Sim2Real** 等主题的 structured learning——与 [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md)「知识编译进页面」形成 **读者侧** 互补（wiki 维护 vs 个人辅导消费）。
 - **HKUDS 代理生态一环：** 与 [CLI-Anything](cli-anything.md)（生成专业软件 CLI）、[Hermes Agent](hermes-agent.md) / [OpenClaw](openclaw.md)（常驻 agent OS / SKILL 宿主）同属 HKUDS 线；DeepTutor **My Agents** 可 **live consult** 这些宿主，而非替代它们。
 - **RAG 与工具面选型参考：** 同时支持 LlamaIndex、PageIndex、GraphRAG、LightRAG、Obsidian 等引擎，并内置 MCP store、CLI Apps、web/paper search——适合对照「教学场景要多引擎还是要单一管线」。 其中 [PageIndex](pageindex.md) 是无向量、基于树索引与 LLM 推理检索的独立引擎。
 - **可审计个性化：** Memory Graph 把 L3 主张溯源到 L1 证据，比黑盒「越聊越懂你」更适合 **高可信学习记录**（考试备考、实验室 onboarding）。
@@ -168,7 +168,7 @@ sequenceDiagram
 - [Agent Reach](agent-reach.md) — 外网读搜 CLI 聚合（与 DeepTutor 内置 search 互补）
 - [HarnessBank](paper-harnessbank.md) — 宿主 harness 自进化（问题域不同）
 - [Model Context Protocol](../concepts/model-context-protocol.md) — MCP 工具协议层
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译维护范式对照
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译维护范式对照
 
 ## 参考来源
 

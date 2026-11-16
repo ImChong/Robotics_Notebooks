@@ -182,7 +182,7 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-| 维度 | P³ | [DreamWaQ](../methods/dreamwaq.md) / [PIE](../methods/pie-perceptive-locomotion.md) | [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) / [LightLP](./paper-light-loco-parkour.md) |
+| 维度 | P³ | [DreamWaQ](../methods/dreamwaq.md) / [PIE](../methods/pie-perceptive-locomotion.md) | [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) / [LightLP](./paper-light-loco-parkour.md) |
 |------|----|------------------------------|-------------------------------|
 | 主贡献 | **优化：** 边缘策略似然 | **表征：** 隐式地形 / 显式+隐式估计 | **技能：** 跑酷参考合成与蒸馏 |
 | 感知 | 沿用简易 VAE+CNN 高程 | CENet / 多头估计器 | 深度 + 技能库 / 多专家 |

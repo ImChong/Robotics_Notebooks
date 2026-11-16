@@ -11,7 +11,7 @@
 
 ## 为什么值得保留
 
-- **本库历史入口**：`sources/train.md` 与 legacy 资源地图已列 AWS。
+- **本库历史入口**：`sources/notes/train.md` 与 legacy 资源地图已列 AWS。
 - **企业默认**：数据在 S3、IAM 合规、多区域时，算力应同区部署避免 egress。
 - **多节点**：p4d/p5 支持 EFA 高速网络；Capacity Blocks 可预订 H100 集群窗口。
 

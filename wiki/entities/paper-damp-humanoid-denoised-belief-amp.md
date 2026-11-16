@@ -16,7 +16,7 @@ related:
   - ../concepts/sim2real.md
   - ../methods/ppo.md
   - ../concepts/recurrent-neural-network.md
-  - ./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md
+  - ./paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md
   - ./cn-os-noetix-n2-gym.md
   - ../overview/humanoid-amp-motion-prior-survey.md
 sources:
@@ -129,7 +129,7 @@ IsaacGym，单阶段 PPO，7000 iteration ≈ 5 h（RTX 4090）。地形课程�
 
 ## 与其他工作对比
 
-- [自然人形运动 AMP 综述条目](./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md)：同样用 AMP 获得自然步态，DAMP 的差异在于叠加去噪信念，并明确约束“无外部感知”。
+- [自然人形运动 AMP 综述条目](./paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md)：同样用 AMP 获得自然步态，DAMP 的差异在于叠加去噪信念，并明确约束“无外部感知”。
 - [AMP 动作先验综述](../overview/humanoid-amp-motion-prior-survey.md)：给出 AMP 家族整体谱系，DAMP 属于“AMP + 隐式状态估计”分支。
 - [Noetix N2 训练栈](./cn-os-noetix-n2-gym.md)：N2 的社区开源训练环境，可作复现 DAMP 平台的起点（与本文无官方关系）。
 

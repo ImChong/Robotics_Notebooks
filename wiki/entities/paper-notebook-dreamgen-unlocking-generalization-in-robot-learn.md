@@ -11,7 +11,7 @@ related:
   - ./paper-gr00t-dreams-synthetic-trajectories.md
   - ../methods/generative-world-models.md
   - ../methods/generative-data-augmentation.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md
 sources:
   - ../../sources/papers/humanoid_pnb_dreamgen.md
@@ -137,7 +137,7 @@ sequenceDiagram
 - GR00T-Dreams blueprint 页：[paper-gr00t-dreams-synthetic-trajectories](./paper-gr00t-dreams-synthetic-trajectories.md)
 - 生成式世界模型：[generative-world-models](../methods/generative-world-models.md)
 - 生成式数据增强：[generative-data-augmentation](../methods/generative-data-augmentation.md)
-- 下游策略 GR00T N1：[paper-hrl-stack-34-gr00t_n1](./paper-hrl-stack-34-gr00t_n1.md)
+- 下游策略 GR00T N1：[paper-hrl-stack-34-gr00t_n1](./paper-hrl-stack-34-gr00t-n1.md)
 - 仿真评测 RoboCasa：[paper-notebook-robocasa-large-scale-simulation-of-everyday-task](./paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md)
 
 ## 参考来源

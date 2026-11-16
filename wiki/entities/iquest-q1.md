@@ -10,7 +10,7 @@ related:
   - ./paper-freetoken.md
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ../concepts/agentic-coding-software-fundamentals.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/iquest-q1.md
   - ../../sources/sites/iquest-q1-project.md
@@ -186,7 +186,7 @@ sequenceDiagram
 - [OpenClaw](./openclaw.md) — 另一类 coding agent 栈
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — coding backend 选型语境
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 有 agent 仍须工程化约束
-- [Karpathy LLM Wiki 参考](../references/llm-wiki-karpathy.md) — 本库维护范式
+- [Karpathy LLM Wiki 参考](../concepts/llm-wiki-karpathy.md) — 本库维护范式
 
 ## 推荐继续阅读
 

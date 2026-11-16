@@ -11,7 +11,7 @@
 
 ## 为什么值得保留
 
-- **机器人学习常见算力入口**：本库旧版资源地图与 `sources/train.md` 已列出 AutoDL；Isaac Lab / 大规模 PPO 训练常需 **24GB+ 显存 × 多卡**，个人工作站不足时云实例是现实选项。
+- **机器人学习常见算力入口**：本库旧版资源地图与 `sources/notes/train.md` 已列出 AutoDL；Isaac Lab / 大规模 PPO 训练常需 **24GB+ 显存 × 多卡**，个人工作站不足时云实例是现实选项。
 - **文档体系成熟**：官方帮助文档覆盖快速开始、GPU 选型、计费、数据上传、VSCode/PyCharm 远程、守护进程与实例保留策略，适合作为「如何租卡跑训练」的操作参考。
 - 统一选型：[china-gpu-cloud-platforms.md](../../wiki/comparisons/china-gpu-cloud-platforms.md)
 

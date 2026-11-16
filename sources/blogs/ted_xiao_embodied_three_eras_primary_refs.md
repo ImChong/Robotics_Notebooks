@@ -152,7 +152,7 @@
 | [wiki/methods/dial-instruction-augmentation.md](../../wiki/methods/dial-instruction-augmentation.md) | DIAL |
 | [wiki/concepts/open-x-embodiment.md](../../wiki/concepts/open-x-embodiment.md) | Open X-Embodiment |
 | [wiki/entities/paper-octo.md](../../wiki/entities/paper-octo.md) | Octo |
-| [wiki/methods/π0-policy.md](../../wiki/methods/π0-policy.md) | π₀ |
+| [wiki/methods/pi0-policy.md](../../wiki/methods/pi0-policy.md) | π₀ |
 | [wiki/entities/aloha.md](../../wiki/entities/aloha.md) | ALOHA |
 | [wiki/entities/gemini-robotics.md](../../wiki/entities/gemini-robotics.md) | Gemini Robotics |
 | [wiki/methods/roboarena.md](../../wiki/methods/roboarena.md) | RoboArena |

@@ -93,7 +93,7 @@ flowchart TD
 - [全身控制](../concepts/whole-body-control.md)
 - [PPO](../methods/ppo.md)
 - [模仿学习纵深路线](../../roadmap/depth-imitation-learning.md)
-- [11.09–11.13 人形／四足 29 篇周报](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 人形／四足 29 篇周报](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

@@ -73,7 +73,7 @@
 ## 对 wiki 的映射
 
 - 沉淀实体页：[Agile Perceptive Traversal](../../wiki/entities/paper-agile-perceptive-traversal-sparse-3d.md)
-- 交叉补强：[AME-2](../../wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md)、[LadderMan](../../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)、[PHP](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[ANYmal Parkour](../../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)、[stair-obstacle perceptive locomotion](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
+- 交叉补强：[AME-2](../../wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md)、[LadderMan](../../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)、[PHP](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)、[ANYmal Parkour](../../wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)、[stair-obstacle perceptive locomotion](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
 
 ## 当前提炼状态
 

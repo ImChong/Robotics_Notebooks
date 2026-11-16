@@ -16,7 +16,7 @@ related:
   - ./paper-daily-omni.md
   - ./ewmbench.md
   - ./paper-vesta-generalist-embodied-reasoning.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ../queries/manipulation-vla-architecture-selection.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
@@ -47,7 +47,7 @@ summary: "RoboBench（arXiv:2510.17801，ECCV 2026）系统评测 MLLM 作为操
 
 ## 为什么重要
 
-- **补齐「只评执行成功率」的盲区**：许多机器人基准报告 task success，却难以分离 **高层推理失败** 与 **低层控制失败**；RoboBench 明确评 **System 2**，与 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)、[Vesta](./paper-vesta-generalist-embodied-reasoning.md) 等 **VLM + action head** 双系统路线直接对话。
+- **补齐「只评执行成功率」的盲区**：许多机器人基准报告 task success，却难以分离 **高层推理失败** 与 **低层控制失败**；RoboBench 明确评 **System 2**，与 [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md)、[Vesta](./paper-vesta-generalist-embodied-reasoning.md) 等 **VLM + action head** 双系统路线直接对话。
 - **覆盖完整操纵认知链**：不像单一 VQA 或规划题集，五维 taxonomy 把 **隐式指令、跨本体/物体/视角泛化、affordance、执行 vs 规划失败诊断** 放在同一坐标系，便于定位模型短板。
 - **规划评测超越文本匹配**：**MLLM-as-world-simulator** 在 DAG 上 rollout 原子动作，检查 **NodeCorrectness** 与 **TaskCompletion**，减少「听起来合理但不可执行」的假阳性计划。
 - **与下游 VLA 有统计信号**：将开源 VLM backbone 最小微调为 VLA 后，RoboBench **object-centric 感知** 与 **CALVIN** 长程表现 **r=0.884**；**LIBERO-10** 更依赖 **静态+dynamic affordance**（r=0.677）——说明不同控制基准依赖不同认知技能，RoboBench 可作 **VLM 选型诊断**。

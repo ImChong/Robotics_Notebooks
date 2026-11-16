@@ -21,7 +21,7 @@ related:
   - ../entities/omnisim.md
   - ../entities/unreal-engine-5.md
   - ../entities/unity-engine.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/sites/anthropic-model-context-protocol.md
   - ../../sources/sites/modelcontextprotocol-io.md
@@ -159,7 +159,7 @@ flowchart TB
 - [Unreal MCP](../entities/unreal-mcp.md) — UE 编辑器内嵌官方 MCP server
 - [OmniSim](../entities/omnisim.md) — 仿真器一等 MCP + HTTP 机器人桥
 - [Unreal Engine 5](../entities/unreal-engine-5.md) · [Unity Engine](../entities/unity-engine.md) — 引擎侧 MCP/AI 方向
-- [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md) — 本库维护模式；检索侧亦可挂 MCP
+- [LLM Wiki（Karpathy）](../concepts/llm-wiki-karpathy.md) — 本库维护模式；检索侧亦可挂 MCP
 
 ## 参考来源
 

@@ -12,7 +12,7 @@ related:
   - ../methods/diffusion-motion-generation.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
-  - ../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md
+  - ../entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ../concepts/safe-real-world-rl-fine-tuning.md
   - ../tasks/balance-recovery.md
@@ -144,7 +144,7 @@ flowchart TB
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [SONIC](./nvidia-sonic.md)、[BeyondMimic](../methods/beyondmimic.md)、[扩散运动生成](../methods/diffusion-motion-generation.md)
 - [BFM 人形基础模型](./paper-behavior-foundation-model-humanoid.md)、[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)
-- [ETH G1 扩散全身 locomotion](./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — 同为「生成参考 + RL 跟踪」分层，侧重 **地形感知 loco** 而非 recovery 中间件
+- [ETH G1 扩散全身 locomotion](./paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) — 同为「生成参考 + RL 跟踪」分层，侧重 **地形感知 loco** 而非 recovery 中间件
 - [Balance Recovery](../tasks/balance-recovery.md)
 - [真机安全 RL 微调](../concepts/safe-real-world-rl-fine-tuning.md) — 生成式兜底作为真机微调三路径之一
 - [X-Humanoid（北京人形机器人创新中心）](./x-humanoid.md) — 机构与开源入口 hub

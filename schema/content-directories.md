@@ -12,8 +12,7 @@
 | [`sources/`](../sources/) | **原始资料输入**：论文摘录、仓库导航、博客笔记等；ingest 第一站，不替代 wiki 正文。 |
 | [`references/`](../references/) | **按主题索引的深挖入口**（论文列表、repo 清单、benchmark）；在已懂概念后继续扩展阅读。 |
 | [`resources/`](../resources/) | **资源沉淀层**：课程笔记、训练计划、长笔记等，不追求与全站 wiki 同粒度互链。 |
-| [`roadmap/`](../roadmap/) | **主学习路径**与条件分支路线；首页与读者默认入口。 |
-| [`wiki/roadmaps/`](../wiki/roadmaps/) | 与 wiki 主题**强绑定**的纵深路线（见 ingest 步骤 4 后的说明）。 |
+| [`roadmap/`](../roadmap/) | **主学习路径**与工程/纵深分支路线；首页与读者默认入口。 |
 | [`tech-map/`](../tech-map/) | **技术地图**模块依赖与栈全景，与路线页互补。 |
 | [`exports/`](../exports/) | **脚本生成**的 JSON 等；勿手改。站点可读副本见 `docs/exports/`（见 [contributing-ci.md](../docs/contributing-ci.md)）。 |
 
@@ -25,7 +24,7 @@
 2. **是否已是可交叉引用的知识页**（有定义、机制、误区、参考来源）→ 是则进 **`wiki/`** 下对应子目录（概念 / 方法 / 任务 / …）。
 3. **是否「已知概念、只要按主题找论文或 repo」**→ **`references/`**。
 4. **是否长材料、课程、个人训练笔记、暂不进 wiki 的沉淀**→ **`resources/`**。
-5. **是否读者要跟着走的路线**→ 默认 **`roadmap/`**；仅当与某一 wiki 子树强耦合且不必占根级主入口时考虑 **`wiki/roadmaps/`**。
+5. **是否读者要跟着走的路线**→ 统一放 **`roadmap/`**（含主路线、纵深路线与工程入门路线）。
 
 ---
 

@@ -22,7 +22,7 @@ related:
   - ./ai-auto-research.md
   - ./data-flywheel.md
   - ../methods/enpire.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../entities/huawei-harmonyos-developer-doc-center.md
   - ../entities/learnprompt.md
   - ../entities/easy-vibe.md
@@ -197,7 +197,7 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 - [ENPIRE](../methods/enpire.md) — coding agent 真机策略自改进；核心贡献是环境接口不是模型
 - [AI Auto-Research](./ai-auto-research.md) — 研究全生命周期自动化；SWE 能力与科研能力不等价
 - [Data Flywheel](./data-flywheel.md) — 数据生命周期与回流；对应本页「Managing data」
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 把判断编译进持久 wiki，而不是每次让 agent 从零 vibe
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 把判断编译进持久 wiki，而不是每次让 agent 从零 vibe
 
 ## 多 Agent 管理与认知把关
 

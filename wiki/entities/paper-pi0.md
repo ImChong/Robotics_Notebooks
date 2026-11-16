@@ -14,7 +14,7 @@ updated: 2026-11-10
 arxiv: '2410.24164'
 code: https://github.com/Physical-Intelligence/openpi
 related:
-- ../methods/π0-policy.md
+- ../methods/pi0-policy.md
 - ../methods/pi07-policy.md
 - ./paper-diffusion-policy.md
 - ./paper-openvla.md
@@ -75,7 +75,7 @@ venue: RSS 2025
 ## 为什么重要
 
 - 纳入 [VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md) 的动作头进阶。
-- 方法页 [π₀-policy](../methods/π0-policy.md) 讲模型族；**本页是 π₀ 论文 canonical 节点**。
+- 方法页 [π₀-policy](../methods/pi0-policy.md) 讲模型族；**本页是 π₀ 论文 canonical 节点**。
 - 后续 [π₀.7](../methods/pi07-policy.md) 仍用流匹配动作头。
 - **已开源** 入口是 **openpi**；公众号写的 `physical-intelligence/pi0` **仓库不存在**。
 
@@ -271,7 +271,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [π₀ 方法页](../methods/π0-policy.md)
+- [π₀ 方法页](../methods/pi0-policy.md)
 - [π₀.7](../methods/pi07-policy.md)
 - [Robbyant（蚂蚁灵波）](./robbyant.md) — LingBot-VLA 同属 VLM + flow 动作专家族，可作跨公司对照
 - [Diffusion Policy](./paper-diffusion-policy.md)

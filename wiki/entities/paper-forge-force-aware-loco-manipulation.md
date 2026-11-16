@@ -11,7 +11,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../methods/residual-policy-learning.md
   - ../../roadmap/depth-loco-manipulation.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 sources:
   - ../../sources/papers/forge-force-aware-loco-manipulation_arxiv_2611_17142.md
 original:
@@ -116,7 +116,7 @@ sequenceDiagram
 - [whole body control](../concepts/whole-body-control.md)
 - [residual policy learning](../methods/residual-policy-learning.md)
 - [loco manipulation](../../roadmap/depth-loco-manipulation.md)
-- [11.09–11.13 29 篇总览](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

@@ -49,7 +49,7 @@
 
 - 升格实体页：[paper-motion-cerebellum-t-gmp](../../wiki/entities/paper-motion-cerebellum-t-gmp.md)
 - 运动小脑策展索引：[motion_cerebellum_survey_02_t_gmp.md](motion_cerebellum_survey_02_t_gmp.md)
-- 交叉：[AMP 方法页](../../wiki/methods/amp-reward.md)、[GMP #06](../../wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md)、[TRAMP](../../wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md)、[MoRE #08](../../wiki/entities/paper-amp-survey-08-more.md)、[乐聚机器人](../../wiki/entities/leju-robotics.md)
+- 交叉：[AMP 方法页](../../wiki/methods/amp-reward.md)、[GMP #06](../../wiki/entities/paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md)、[TRAMP](../../wiki/entities/paper-tramp-vision-assisted-bipedal-locomotion.md)、[MoRE #08](../../wiki/entities/paper-amp-survey-08-more.md)、[乐聚机器人](../../wiki/entities/leju-robotics.md)
 
 ## 参考来源（原始）
 

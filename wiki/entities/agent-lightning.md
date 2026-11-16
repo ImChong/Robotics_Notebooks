@@ -18,7 +18,7 @@ related:
   - ./karpathy-autoresearch.md
   - ../concepts/ai-auto-research.md
   - ../methods/reinforcement-learning.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/agent_lightning.md
   - ../../sources/sites/agent-lightning-microsoft-research.md

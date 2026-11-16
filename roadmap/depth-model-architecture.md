@@ -200,7 +200,7 @@ flowchart LR
 - [VLA](../wiki/methods/vla.md) · [Robotics Transformer（RT 系列）](../wiki/methods/robotics-transformer-rt-series.md) — 语言条件序列预测到 VLM 接入的基线谱系
 - [统一多模态 Token](../wiki/methods/unified-multimodal-tokens.md) — 把视觉 / 语言 / 动作编进同一空间的架构趋势
 - [Octo](../wiki/entities/paper-octo.md) — 块状注意力 Transformer + 独立读出头，少样本适配新相机与动作空间
-- [π₀](../wiki/methods/π0-policy.md) · [π₀.₇](../wiki/methods/pi07-policy.md) — 流匹配动作头与多模态提示对齐异质数据
+- [π₀](../wiki/methods/pi0-policy.md) · [π₀.₇](../wiki/methods/pi07-policy.md) — 流匹配动作头与多模态提示对齐异质数据
 - [StarVLA 方法入口](../wiki/methods/star-vla.md) · [框架论文](../wiki/entities/paper-starvla-framework.md) — 将骨干、动作头、数据适配与评测服务解耦，和 Stage 3 的 α 受控基线分开阅读。
 - [Foundation Policy](../wiki/concepts/foundation-policy.md) · [行为基础模型（BFM）](../wiki/concepts/behavior-foundation-model.md) — 操作向与全身控制向两类基座
 - [World Action Models](../wiki/concepts/world-action-models.md) · [潜空间想象](../wiki/concepts/latent-imagination.md) — 未来预测进骨干后的结构变化

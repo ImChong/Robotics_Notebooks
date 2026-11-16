@@ -17,7 +17,7 @@ related:
   - ../concepts/diffusion-model.md
   - ../comparisons/online-vs-offline-rl.md
   - ../methods/lwd.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../formalizations/probability-flow.md
 sources:
   - ../../sources/courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md
@@ -47,7 +47,7 @@ summary: "Sergey Levine（UC Berkeley）在 Simons Institute 2026 扩散生成�
 
 - **把「生成式动作头」从单一论文名提升为跨范式默认**：不只读 [Diffusion Policy](../methods/diffusion-policy.md)，而是看到同一表示如何同时服务 IL 与 offline RL。
 - **解释为何 chunk 变长成为趋势**：表达力不够时，长序列动作分布会塌缩或不可采样；扩散 / flow 是「敢输出大 chunk」的工程前提之一（对照 [Action Chunking](../methods/action-chunking.md)）。
-- **对接通才策略叙事**：flow matching VLA（如 [π₀](../methods/π0-policy.md)）与车队级 [LWD](../methods/lwd.md) 可视为「大规模模型建于这些原则」的下游实例。
+- **对接通才策略叙事**：flow matching VLA（如 [π₀](../methods/pi0-policy.md)）与车队级 [LWD](../methods/lwd.md) 可视为「大规模模型建于这些原则」的下游实例。
 
 ## 核心主张（按官方 abstract）
 
@@ -89,7 +89,7 @@ flowchart TB
 
 | 报告节点 | 本库入口 | 读法 |
 |----------|----------|------|
-| 扩散 / flow 动作头 | [Diffusion Model](../concepts/diffusion-model.md)、[Probability Flow](../formalizations/probability-flow.md)、[Diffusion Policy](../methods/diffusion-policy.md)、[π₀](../methods/π0-policy.md) | 生成式连续动作的方法与形式化 |
+| 扩散 / flow 动作头 | [Diffusion Model](../concepts/diffusion-model.md)、[Probability Flow](../formalizations/probability-flow.md)、[Diffusion Policy](../methods/diffusion-policy.md)、[π₀](../methods/pi0-policy.md) | 生成式连续动作的方法与形式化 |
 | Action chunks | [Action Chunking](../methods/action-chunking.md) | 训练目标 vs 部署协议可解耦；勿把「能表长序列」等同于「必须整段播放」 |
 | IL 收益 | [Imitation Learning](../methods/imitation-learning.md) | visuomotor / 操作模仿的主线入口 |
 | Offline / O2O | [Online vs Offline RL](../comparisons/online-vs-offline-rl.md)、[LWD](../methods/lwd.md)、[ReFORM](../entities/paper-reform-iclr-2026.md) | 固定数据与部署闭环如何吃同一类动作头；ReFORM 例：flow + support 约束 |
@@ -108,7 +108,7 @@ flowchart TB
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Online RL vs Offline RL](../comparisons/online-vs-offline-rl.md)
 - [LWD（Learning while Deploying）](../methods/lwd.md)
-- [π₀（Pi-zero）](../methods/π0-policy.md)
+- [π₀（Pi-zero）](../methods/pi0-policy.md)
 - [扩散模型（概念）](../concepts/diffusion-model.md)
 
 ## 参考来源

@@ -16,7 +16,7 @@ related:
   - ./gsap-skills.md
   - ./manim.md
   - ./anthropic-claude-api-skill.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/remotion.md
 summary: "Remotion 是以 React 组件为源真值的可编程视频框架：支持 agent/交互/代码三条创作路径，Node/Lambda 等批量渲染，以及 Player/Editor 嵌入；许可需按公司规模查阅 Remotion License。"
@@ -88,7 +88,7 @@ flowchart LR
 - [Wise Motion](wise-motion.md) — 动效参考匹配与源码导出技能。
 
 - [video-shotcraft](video-shotcraft.md) — Agent Skill 级 Remotion 镜头库  
-- [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) — 知识编译与多媒体导出并列  
+- [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) — 知识编译与多媒体导出并列  
 
 ## 推荐继续阅读
 

@@ -60,10 +60,10 @@
 
 ## 对 wiki 的映射
 
-- 沉淀实体页：[Learning Whole-Body Humanoid Locomotion（42 篇栈 #27）](../../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)
+- 沉淀实体页：[Learning Whole-Body Humanoid Locomotion（42 篇栈 #27）](../../wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md)
 - 项目页归档：[sources/sites/wholebody-locomotion.md](../sites/wholebody-locomotion.md)
 - 42 篇栈策展摘录：[humanoid_rl_stack_27_learning_whole_body_humanoid_locomotion_via_moti.md](./humanoid_rl_stack_27_learning_whole_body_humanoid_locomotion_via_moti.md)
-- 交叉补强：[扩散运动生成](../../wiki/methods/diffusion-motion-generation.md)、[Humanoid Locomotion](../../wiki/tasks/humanoid-locomotion.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[Heracles](../../wiki/entities/paper-heracles-humanoid-diffusion.md)、[PHP 感知跑酷](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- 交叉补强：[扩散运动生成](../../wiki/methods/diffusion-motion-generation.md)、[Humanoid Locomotion](../../wiki/tasks/humanoid-locomotion.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[Heracles](../../wiki/entities/paper-heracles-humanoid-diffusion.md)、[PHP 感知跑酷](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)
 
 ## 参考来源（原始）
 

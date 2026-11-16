@@ -24,4 +24,4 @@
 ## 对 wiki 的映射
 
 - [paper-real-time-chunking](../../wiki/entities/paper-real-time-chunking.md)
-- [π0-policy](../../wiki/methods/π0-policy.md)
+- [π0-policy](../../wiki/methods/pi0-policy.md)

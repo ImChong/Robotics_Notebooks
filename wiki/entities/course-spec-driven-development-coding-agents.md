@@ -10,7 +10,7 @@ related:
   - ../entities/agent-skills-addyosmani.md
   - ../queries/real-robot-policy-autoresearch-harness.md
   - ../methods/enpire.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/courses/deeplearning_ai_spec_driven_development_coding_agents.md
   - ../../sources/sites/deeplearning-ai-spec-driven-development-course.md
@@ -40,7 +40,7 @@ summary: "DeepLearning.AI×JetBrains 短课：constitution + feature spec 驱动
 
 - **补本库「agent 流程」的软件课：** [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 讲 **取舍语言**；[mattpocock/skills](../entities/mattpocock-skills.md)、[Superpowers](../entities/superpowers-obra.md) 讲 **技能与 TDD 管线**；本课给出 **constitution + 三文件 feature spec** 的可跟做模板。
 - **与机器人 harness 同构：** [ENPIRE](../methods/enpire.md) 与 [真机 autoresearch](../queries/real-robot-policy-autoresearch-harness.md) 都假设 **written task + automatic verify**；SDD 是通用软件侧的同类纪律。
-- **跨 session 上下文：** spec 落盘减轻 **cognitive debt**，对齐 [LLM Wiki](../references/llm-wiki-karpathy.md)「编译进持久知识」而非 chat-only vibe。
+- **跨 session 上下文：** spec 落盘减轻 **cognitive debt**，对齐 [LLM Wiki](../concepts/llm-wiki-karpathy.md)「编译进持久知识」而非 chat-only vibe。
 - **Legacy 现实：** 不仅 greenfield；课内演示用现有文档 **反推 spec** 再改老代码——对本库大量 **脚本 + 维护工具** 仓库同样适用。
 
 ## 核心原理
@@ -112,7 +112,7 @@ flowchart LR
 - [Agent Skills（Addy Osmani）](../entities/agent-skills-addyosmani.md)
 - [真机 autoresearch harness](../queries/real-robot-policy-autoresearch-harness.md)
 - [ENPIRE](../methods/enpire.md)
-- [LLM Wiki 模式](../references/llm-wiki-karpathy.md)
+- [LLM Wiki 模式](../concepts/llm-wiki-karpathy.md)
 
 ## 参考来源
 

@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- Wiki 实体：`wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md`
+- Wiki 实体：`wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md`
 - [ego-9-papers-technology-map](../../wiki/overview/ego-9-papers-technology-map.md)
 - [ego-category-03-world-models](../../wiki/overview/ego-category-03-world-models.md)
 

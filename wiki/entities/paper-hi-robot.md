@@ -10,7 +10,7 @@ arxiv: "2502.19417"
 original:
   - ../../sources/papers/hirobot_arxiv_2502_19417.md
 related:
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../methods/pi07-policy.md
   - ../methods/vla.md
   - ./paper-tacitvla.md
@@ -116,7 +116,7 @@ flowchart TD
 
 ## 关联页面
 
-- [π₀ 策略](../methods/π0-policy.md)
+- [π₀ 策略](../methods/pi0-policy.md)
 - [π₀.₇](../methods/pi07-policy.md)
 - [VLA](../methods/vla.md)
 - [TacitVLA](./paper-tacitvla.md) — 推理监督与动作等待解耦

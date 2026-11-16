@@ -16,14 +16,14 @@
 
 | 主体 | 要点 | wiki |
 |------|------|------|
-| Retargeting Matters / GMR | 差异化局部缩放、实时多机种、Retargeting Matters 命题 | [Retargeting Matters](../../wiki/entities/paper-hrl-stack-01-retargeting_matters.md) · [GMR 方法页](../../wiki/methods/motion-retargeting-gmr.md) |
+| Retargeting Matters / GMR | 差异化局部缩放、实时多机种、Retargeting Matters 命题 | [Retargeting Matters](../../wiki/entities/paper-hrl-stack-01-retargeting-matters.md) · [GMR 方法页](../../wiki/methods/motion-retargeting-gmr.md) |
 | PHC | SMPL 姿态拟合 + 梯度下降；形态差大时偏差大，多作基准 | [PHC](../../wiki/entities/phc.md) |
 
 ### 路线 2：深度学习数据驱动
 
 | 主体 | 要点 | wiki |
 |------|------|------|
-| Human2Humanoid | 骨架感知 GCN + 末端/限位约束；训练与遥操作 | [human2humanoid](../../wiki/entities/human2humanoid.md) · [Learning Human-to-Humanoid](../../wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) |
+| Human2Humanoid | 骨架感知 GCN + 末端/限位约束；训练与遥操作 | [human2humanoid](../../wiki/entities/human2humanoid.md) · [Learning Human-to-Humanoid](../../wiki/entities/paper-hrl-stack-07-learning-human-to-humanoid-real-time.md) |
 | MoReFlow | VQ-VAE token + 流匹配无配对跨角色对齐 | [MoReFlow](../../wiki/entities/paper-moreflow-motion-retargeting-flow.md) |
 | AdaMorph | 统一 Transformer 大模型；意图 latent + AdaLN 形态调制 | [AdaMorph](../../wiki/entities/paper-adamorph-unified-motion-retargeting.md) |
 

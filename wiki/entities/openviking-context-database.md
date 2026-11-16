@@ -122,7 +122,7 @@ sequenceDiagram
 - [Hermes Agent](./hermes-agent.md) — 常驻 Agent 运行时，也包含持久记忆机制；可比较运行时内建记忆与独立上下文数据库。
 - [Agent Reach](./agent-reach.md) — 提供外部资料读取和检索渠道，可与 OpenViking 的长期上下文组织互补。
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 研发 Agent 的工程环境与上下文管理实践。
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 面向人类策展的持久知识编译方式。
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 面向人类策展的持久知识编译方式。
 
 ## 参考来源
 

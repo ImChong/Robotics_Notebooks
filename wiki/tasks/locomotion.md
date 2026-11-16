@@ -72,7 +72,7 @@ related:
   - ../entities/paper-tan-quadruped-agile-locomotion-sim2real.md
   - ../entities/paper-barkour-quadruped-agility-benchmark.md
   - ../entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md
-  - ../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ../entities/paper-variable-impedance-contact-rl.md
   - ../entities/jackhan-walke3-e3-ecosystem.md
   - ../methods/disney-olaf-character-robot.md
@@ -387,7 +387,7 @@ flowchart TD
 - [FLEXOR（Science Advances 2026 动态脊-腿协同）](../entities/paper-flexor-dynamic-spine-leg-synergy.md) — 北理工微小型四足；双关节耦合脊柱 + 相位协同；相对同规格单关节脊柱速度 +31.6%、CoT −32.2%（确认未开源）
 - [APT-RL（Science Robotics 2026 封面）](../entities/paper-apt-rl-agile-perceptive-quadruped-locomotion.md) — TO+TVAE 力矩先验 + 深度/LiDAR 蒸馏；HOUND 野外长程与 trot/bound 感知切换
 - [执行器约束 RL 高速四足（arXiv:2312.17507）](../entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md) — MOR 扭矩–转速包络进训练；HOUND **6.5 m/s** 跑步机纪录；无 MOR 策略 **5 m/s 实机摔倒**
-- [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
+- [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
 - [Echo in the Steps](../entities/paper-echo-in-the-steps.md) — arXiv:2609.28960（清华 CoRL 2026；显著性+门控深度记忆+交替损失；G1 稀疏踏点跑酷；代码待发布）
 - [CHOREO](../entities/paper-choreo.md) — arXiv:2609.22274（异源 SkillMotion 轨迹库 + LLM 规划 + seam/bridge **免训练** 长程组合；MuJoCo G1 + 冻结 GMT）
 - [DPL（单深度感知人形行走）](../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — arXiv:2510.07152（IEEE RA-L；深度合成 + 交叉注意力高程重建 + 盲骨干多教师；TienKung Ultra；代码未开源）

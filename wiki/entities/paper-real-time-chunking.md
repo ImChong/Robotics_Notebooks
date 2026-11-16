@@ -10,7 +10,7 @@ arxiv: "2506.07339"
 code: https://github.com/Physical-Intelligence/real-time-chunking-kinetix
 related:
   - ../methods/action-chunking.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ./paper-training-time-real-time-chunking.md
   - ./paper-remac.md
   - ./paper-futurertc.md
@@ -183,7 +183,7 @@ sequenceDiagram
 ## 关联页面
 
 - [Action Chunking](../methods/action-chunking.md)
-- [π₀](../methods/π0-policy.md)
+- [π₀](../methods/pi0-policy.md)
 - [Training-Time RTC](./paper-training-time-real-time-chunking.md)
 - [REMAC](./paper-remac.md)
 - [FutureRTC](./paper-futurertc.md)

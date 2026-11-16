@@ -13,7 +13,7 @@ arxiv: "2610.14117"
 project: https://kykgeek.github.io/Pi05_CALL_Astra/
 related:
   - ../methods/vla.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../overview/embodied-station-2026-10-14-41-papers-technology-map.md
 sources:
   - ../../sources/papers/pi05_learn_to_call_astra_arxiv_2610_14117.md
@@ -100,7 +100,7 @@ flowchart TD
 ## 关联页面
 
 - [vla](../methods/vla.md)
-- [π0-policy](../methods/π0-policy.md)
+- [π0-policy](../methods/pi0-policy.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)
 
 ## 参考来源

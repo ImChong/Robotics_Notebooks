@@ -337,7 +337,7 @@ sources:
 | 231 | [EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data](../entities/paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md) |
 | 232 | [EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon Vision-Language-Action Poli](../entities/paper-eventvla-visual-evidence-memory.md) |
 | 233 | [Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success](../entities/paper-rcl-2502-19645-fine-tuning-vision-language-action-models-optimi.md) |
-| 234 | [GR00T N1: An Open Foundation Model for Generalist Humanoid Robots](../entities/paper-hrl-stack-34-gr00t_n1.md) |
+| 234 | [GR00T N1: An Open Foundation Model for Generalist Humanoid Robots](../entities/paper-hrl-stack-34-gr00t-n1.md) |
 | 235 | [Geometry Guided Self-Consistency for Physical AI](../entities/paper-rcl-2605-08638-geometry-guided-self-consistency-for-physical-ai.md) |
 | 236 | [GigaBrain-0: A World Model-Powered Vision-Language-Action Model](../entities/paper-sa-2510-19430-gigabrain-0-a-world-model-powered-vision-languag.md) |
 | 237 | [Ground Slow, Move Fast: A Dual-System Foundation Model for Generalizable Vision-and-Langua](../entities/paper-rcl-2512-08186-ground-slow-move-fast-a-dual-system-foundation-m.md) |
@@ -447,7 +447,7 @@ sources:
 | 336 | [EWAM: An Enhanced World Action Model for Closed-Loop Online Adaptation in Embodied Intelli](../entities/paper-rcl-2606-12690-ewam-an-enhanced-world-action-model-for-closed-l.md) |
 | 337 | [Efficient Sim-to-Real Transfer of World-Action Models from Synthetic Priors](../entities/paper-sa-2606-31101-efficient-sim-to-real-transfer-of-world-action-m.md) |
 | 338 | [Efficient-WAM: A 1B-Parameter World-Action Model with Low-Cost Future Imagination](../entities/paper-rcl-2606-10040-efficient-wam-a-1b-parameter-world-action-model.md) |
-| 339 | [Ego-Vision World Model for Humanoid Contact Planning](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
+| 339 | [Ego-Vision World Model for Humanoid Contact Planning](../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) |
 | 340 | [EgoWAM: World Action Models Beyond Pixels with In-the-Wild Egocentric Human Data](../entities/paper-egowam-egocentric-human-wam-co-training.md) |
 | 341 | [EndoWAM: A Grounded World-Action Model for Generalizable Endoscopic Navigation](../entities/paper-rcl-2608-01221-endowam-a-grounded-world-action-model-for-genera.md) |
 | 342 | [EnerVerse: Envisioning Embodied Future Space for Robotics Manipulation](../entities/paper-sa-2501-01895-enerverse-envisioning-embodied-future-space-for.md) |

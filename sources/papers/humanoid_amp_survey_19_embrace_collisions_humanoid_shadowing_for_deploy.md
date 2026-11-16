@@ -23,7 +23,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-amp-survey-19-embrace_collisions](../../wiki/entities/paper-amp-survey-19-embrace_collisions.md) — 主实体页
+- [paper-amp-survey-19-embrace_collisions](../../wiki/entities/paper-amp-survey-19-embrace-collisions.md) — 主实体页
 - [project-instinct](../../wiki/entities/project-instinct.md)
 - [paper-deep-whole-body-parkour](../../wiki/entities/paper-deep-whole-body-parkour.md) — Instinct 感知跑酷姊妹
 - [whole-body-control](../../wiki/concepts/whole-body-control.md)、[sim2real](../../wiki/concepts/sim2real.md)

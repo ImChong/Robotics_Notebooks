@@ -23,7 +23,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-amp-survey-13-humanoid_goalkeeper](../../wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md) — 主实体页（深读归纳）
+- [paper-amp-survey-13-humanoid_goalkeeper](../../wiki/entities/paper-amp-survey-13-humanoid-goalkeeper.md) — 主实体页（深读归纳）
 - [amp-reward](../../wiki/methods/amp-reward.md)、[unitree-g1](../../wiki/entities/unitree-g1.md)
 - [MoRE #08](../../wiki/entities/paper-amp-survey-08-more.md) — 多判别器条件化先验对照
 - [PhysHSI #15](../../wiki/entities/paper-amp-survey-15-physhsi.md)、[HUSKY #14](../../wiki/entities/paper-amp-survey-14-husky.md) — 同段交互姊妹篇

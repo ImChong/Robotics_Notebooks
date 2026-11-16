@@ -15,7 +15,7 @@ related:
   - ./karpathy-autoresearch.md
   - ./superpowers-obra.md
   - ./mattpocock-skills.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/cangjie-skill.md
@@ -41,7 +41,7 @@ summary: "Cangjie Skill（kangarooking/cangjie-skill）用 RIA-TV++ 流水线把
 
 ## 为什么重要（对本知识库读者）
 
-- **与 LLM Wiki 同构的另一条轴：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 把论文/博客 **编译进 `wiki/`**；Cangjie 把书/长视频 **编译进 `skills/`**。二者都拒绝「只检索不积累」，但交付形态分别是 **持久知识页** 与 **可触发技能模块**。
+- **与 LLM Wiki 同构的另一条轴：** [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 把论文/博客 **编译进 `wiki/`**；Cangjie 把书/长视频 **编译进 `skills/`**。二者都拒绝「只检索不积累」，但交付形态分别是 **持久知识页** 与 **可触发技能模块**。
 - **生态位 — 人 / 书 / 进化：** [Nuwa Skill](nuwa-skill.md) 蒸馏 **人怎么想**；**Cangjie** 蒸馏 **书/长内容里的方法论**；[Darwin Skill](darwin-skill.md) 让任意 skill **持续进化**。维护 Robotics_Notebooks 时可对照：ingest 进 `sources/` + 升格 `wiki/` ≈ Cangjie 的「原文→结构化页」，而 Cangjie 额外强调 **触发场景与 test-prompts**。
 - **对本站 ingest 的直接启发：** 三重验证（跨域、预测力、独特性）与 wiki 页「一句话定义 + 交叉引用 + 参考来源」质量门类似；RIA++ 的 **E（可执行步骤）/ B（边界）** 可对照 `schema/ingest-workflow.md` 的最低质量标准。
 
@@ -136,7 +136,7 @@ sequenceDiagram
 - [autoresearch（karpathy）](karpathy-autoresearch.md) — 实验自动化灵感源（Darwin 侧映射）
 - [Superpowers（obra）](superpowers-obra.md) — **编码交付流程** skill 库
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — **日常工程** 轻量技能
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 本仓库知识编译范式
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 本仓库知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — ingest / query / lint 规范
 
 ## 参考来源

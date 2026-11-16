@@ -9,7 +9,7 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../concepts/whole-body-control.md
   - ../../roadmap/depth-classical-control.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 sources:
   - ../../sources/papers/capturability-footstep-mpc_arxiv_2611_10169.md
 original:
@@ -94,7 +94,7 @@ IV-A 比较多种障碍布局的 MPC 可行性和运行开销；IV-B 使用 Digi
 - [humanoid locomotion](../tasks/humanoid-locomotion.md)
 - [whole body control](../concepts/whole-body-control.md)
 - [classical control](../../roadmap/depth-classical-control.md)
-- [11.09–11.13 29 篇总览](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

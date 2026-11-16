@@ -16,7 +16,7 @@
 | 主题 | 关系 |
 |------|------|
 | [Agent Reach](../../wiki/entities/agent-reach.md) | 实体页：脚手架定位、典型数据流、与 Superpowers 等方法论文具栈的边界 |
-| [LLM Wiki（Karpathy 模式）](../../wiki/references/llm-wiki-karpathy.md) | 同属「把代理能稳定执行的工作流外置为文件/工具契约」谱系；本仓偏互联网信息接入而非 wiki 本体 |
+| [LLM Wiki（Karpathy 模式）](../../wiki/concepts/llm-wiki-karpathy.md) | 同属「把代理能稳定执行的工作流外置为文件/工具契约」谱系；本仓偏互联网信息接入而非 wiki 本体 |
 
 ## 对 wiki 的映射
 

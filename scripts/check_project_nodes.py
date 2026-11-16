@@ -76,10 +76,50 @@ def resource_url(value: str, *, repository: bool = False) -> str:
     return host + port + path + ("?" + query if query else "") + fragment
 
 
+def _renamed_entity_targets(root: Path, base: str, before: set[str]) -> set[str]:
+    """Return destination paths for existing wiki/entities/ files renamed vs base."""
+    diff = subprocess.run(
+        [
+            "git",
+            "diff",
+            "-M50%",
+            "--diff-filter=R",
+            "--name-status",
+            "-z",
+            base,
+            "--",
+            "wiki/entities",
+        ],
+        cwd=root,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    tokens = [tok for tok in diff.stdout.split("\0") if tok]
+    targets: set[str] = set()
+    i = 0
+    while i + 2 < len(tokens):
+        status, old_path, new_path = tokens[i], tokens[i + 1], tokens[i + 2]
+        i += 3
+        if status.startswith("R") and old_path in before:
+            targets.add(new_path)
+    return targets
+
+
 def added_entities(root: Path, base: str) -> set[str]:
-    """Compare the actual filesystem to the base tree, including untracked pages."""
+    """Compare the actual filesystem to the base tree, excluding pure renames."""
     result = subprocess.run(
-        ["git", "ls-tree", "-r", "--name-only", base, "--", "wiki/entities"],
+        [
+            "git",
+            "-c",
+            "core.quotepath=false",
+            "ls-tree",
+            "-r",
+            "--name-only",
+            base,
+            "--",
+            "wiki/entities",
+        ],
         cwd=root,
         capture_output=True,
         text=True,
@@ -87,7 +127,8 @@ def added_entities(root: Path, base: str) -> set[str]:
     )
     before = set(result.stdout.splitlines())
     now = {p.relative_to(root).as_posix() for p in (root / "wiki/entities").glob("*.md")}
-    return now - before
+    renamed_targets = _renamed_entity_targets(root, base, before)
+    return now - before - renamed_targets
 
 
 def check(root: Path, *, new_pages: set[str] | None = None) -> list[str]:

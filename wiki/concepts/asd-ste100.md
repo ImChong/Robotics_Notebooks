@@ -6,7 +6,7 @@ updated: 2026-10-03
 related:
   - ../overview/karpathy-asd-ste100-llm-outputs.md
   - ../entities/asd-ste100-skill.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/sites/asd-ste100.md
   - ../../sources/blogs/karpathy-asd-ste100-clear-llm-outputs-2026-10-03.md
@@ -83,7 +83,7 @@ flowchart TD
 
 - [ASD-STE100 与 LLM 输出的文章导读](../overview/karpathy-asd-ste100-llm-outputs.md)
 - [ASD-STE100 Skill](../entities/asd-ste100-skill.md)
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md)
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md)
 
 ## 参考来源
 

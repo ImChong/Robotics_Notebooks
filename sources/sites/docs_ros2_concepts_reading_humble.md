@@ -23,7 +23,7 @@
 
 ## 对 wiki 的映射
 
-- [`wiki/concepts/ros2-basics.md`](../wiki/concepts/ros2-basics.md)
+- [`wiki/concepts/ros2-basics.md`](../../wiki/concepts/ros2-basics.md)
 
 ## 参考来源
 

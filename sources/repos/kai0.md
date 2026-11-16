@@ -39,5 +39,5 @@
 
 - [χ₀ / kai0](../../wiki/entities/paper-kai0.md)
 - [openpi](./openpi.md) — 底座仓
-- [π₀ Policy](../../wiki/methods/π0-policy.md)
+- [π₀ Policy](../../wiki/methods/pi0-policy.md)
 - [DAgger](../../wiki/methods/dagger.md)

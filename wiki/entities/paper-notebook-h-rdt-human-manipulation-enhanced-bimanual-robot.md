@@ -12,7 +12,7 @@ related:
   - ./paper-rdt-1b.md
   - ./paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md
   - ./robotwin.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
 sources:
   - ../../sources/papers/humanoid_pnb_h-rdt.md
 summary: "机器人操作模仿学习面临大规模高质量机器人演示稀缺的根本难题。近期机器人基础模型常在跨本体机器人数据上预训练以扩规模，但不同本体的形态与动作空间差异大，统一训练难。H-RDT（Human to Robotics Diffusion Transformer）用人类操作数据增强机器人操作：核心洞察是带配对 3D 手姿标注的大规模第一视角人类操作视频蕴含丰富行为先验，能惠及机器人策略学习。采用两阶段：① 在大规模第一视角人类操作数据上预训练；② 用模块化动作编/解码器在机器人专属数据上做跨本体微调。模型是 2B 参数的扩散 Transformer，用流匹配建模复杂动作分布。仿真/真机较从零训练分别 +13.9% / +40.5%，超过 Pi0 与 RDT 基线。"
@@ -114,7 +114,7 @@ sequenceDiagram
 | 工作 | 预训练数据 | 与 H-RDT 的差异 |
 |------|------|------|
 | [RDT-1B](./paper-rdt-1b.md) | 跨具身机器人数据 | 同为扩散 Transformer；H-RDT 把预训练源换成人手视频，并加模块化动作编 / 解码器 |
-| [π₀](../methods/π0-policy.md) | 大规模机器人数据 + VLM | 少样本 113 任务上 31.2% vs 41.6% |
+| [π₀](../methods/pi0-policy.md) | 大规模机器人数据 + VLM | 少样本 113 任务上 31.2% vs 41.6% |
 | [Humanoid Policy ~ Human Policy](./paper-notebook-humanoid-policy-human-policy.md) | 与任务对齐的 PH2D 人类数据 | 单阶段协同训练；H-RDT 是「人类预训练 → 机器人微调」两阶段 |
 | [Being-H0](./paper-notebook-being-h0-vision-language-action-pretraining-from.md) | 人手视频 + 手部动作 token | 走 VLA 路线并量化手部动作；H-RDT 用流匹配直接回归连续动作 |
 
@@ -145,7 +145,7 @@ sequenceDiagram
 - 基座 RDT（跨机器人数据预训练）：[paper-rdt-1b](./paper-rdt-1b.md)
 - 预训练数据 EgoDex：[paper-notebook-egodex-learning-dexterous-manipulation-from-larg](./paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md)
 - 仿真评测基准 RoboTwin 2.0：[robotwin](./robotwin.md)
-- 对比基线 π₀：[π0-policy](../methods/π0-policy.md)
+- 对比基线 π₀：[π0-policy](../methods/pi0-policy.md)
 
 ## 参考来源
 

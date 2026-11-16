@@ -6,7 +6,7 @@ updated: 2026-09-15
 venue: "HMI curated · 2025"
 summary: "GR00T-Dreams（HMI P068）：NVIDIA 合成轨迹 blueprint：少真实遥操 post-train Cosmos → 语言生成视频 dreams → 筛选 → IDM 标动作 → 与真数据共训 VLA。"
 related:
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./paper-notebook-dreamgen-unlocking-generalization-in-robot-learn.md
   - ./paper-hrl-stack-35-dreamdojo.md
   - ../concepts/world-action-models.md
@@ -102,7 +102,7 @@ flowchart LR
 
 ## 与其他工作对比
 
-| 维度 | 本工作（GR00T-Dreams） | [DreamGen](paper-notebook-dreamgen-unlocking-generalization-in-robot-learn.md) | [GR00T N1](paper-hrl-stack-34-gr00t_n1.md) | [DreamDojo](paper-hrl-stack-35-dreamdojo.md) |
+| 维度 | 本工作（GR00T-Dreams） | [DreamGen](paper-notebook-dreamgen-unlocking-generalization-in-robot-learn.md) | [GR00T N1](paper-hrl-stack-34-gr00t-n1.md) | [DreamDojo](paper-hrl-stack-35-dreamdojo.md) |
 |------|------------------------|-------------------------------------------------------------------------------|--------------------------------------------|----------------------------------------------|
 | 定位 | 合成轨迹数据生成 blueprint | 合成轨迹数据生成流水线 | 被训练的人形通才 VLA 策略 | robot world model（预测下一观测） |
 | 世界模型用法 | post-train Cosmos 生成视频 dreams | 图像到视频生成模型产 neural trajectories | 数据消费方，不产数据 | 给定观测+动作预测未来 |
@@ -113,7 +113,7 @@ flowchart LR
 
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
-- [paper-hrl-stack-34-gr00t_n1](./paper-hrl-stack-34-gr00t_n1.md)
+- [paper-hrl-stack-34-gr00t_n1](./paper-hrl-stack-34-gr00t-n1.md)
 - [paper-notebook-dreamgen-unlocking-generalization-in-robot-learn](./paper-notebook-dreamgen-unlocking-generalization-in-robot-learn.md)
 - [paper-hrl-stack-35-dreamdojo](./paper-hrl-stack-35-dreamdojo.md)
 - [world-action-models](../concepts/world-action-models.md)

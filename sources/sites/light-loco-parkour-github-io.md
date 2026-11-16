@@ -33,7 +33,7 @@ Light Origins 人形跑酷项目页：用 **Real2Sim2Real** 把稀疏人类动�
 
 ## 为何值得保留
 
-- 与 [PHP](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) 同属人形感知跑酷，但强调 **无 one-hot 技能指令 / 无运行时 motion generator**，并给出对 PHP / MGMT 的直接对照表。
+- 与 [PHP](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) 同属人形感知跑酷，但强调 **无 one-hot 技能指令 / 无运行时 motion generator**，并给出对 PHP / MGMT 的直接对照表。
 - Real2Sim2Real 种子扩张（单种子 → 地形族）是可操作的数据工程配方，值得对照 OmniRetarget / HIL。
 
 ## 关联资料

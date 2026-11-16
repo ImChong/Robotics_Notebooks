@@ -46,7 +46,7 @@ summary: "Paper Notebooks 分类 03：高影响力精选（26 篇深读笔记索
 
 - [ASAP](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html)
 - [Behavior Foundation Model for Humanoid Robots](../entities/paper-behavior-foundation-model-humanoid.md) — 见 wiki 实体页
-- [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) — 见 wiki 实体页
+- [GR00T N1](../entities/paper-hrl-stack-34-gr00t-n1.md) — 见 wiki 实体页
 - [Learning Agile and Dynamic Motor Skills for Legged Robots](../entities/paper-notebook-learning-agile-and-dynamic-motor-skills-for-legg.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots.html)
 
 ### 仿真平台与工具

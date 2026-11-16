@@ -25,7 +25,7 @@ related:
   - ../concepts/sim2real.md
   - ./paper-notebook-learning-soccer-skills-for-humanoid-robots.md
   - ./paper-robonaldo-humanoid-soccer-shooting.md
-  - ./paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
+  - ./paper-hrl-stack-26-learning-vision-driven-reactive-socc.md
   - ../queries/humanoid-soccer-skill-learning-method-selection.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-agile-striker-skills-for-humanoid-socce.md
@@ -173,7 +173,7 @@ sequenceDiagram
 
 - 任务：[Humanoid Soccer](../tasks/humanoid-soccer.md)
 - 选型：[技能学习方法选型](../queries/humanoid-soccer-skill-learning-method-selection.md)
-- 对照：[PAiD](./paper-notebook-learning-soccer-skills-for-humanoid-robots.md)、[Vision-Driven Reactive Soccer](./paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)
+- 对照：[PAiD](./paper-notebook-learning-soccer-skills-for-humanoid-robots.md)、[Vision-Driven Reactive Soccer](./paper-hrl-stack-26-learning-vision-driven-reactive-socc.md)
 - 分类父节点：[paper-notebook-category-04](../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 
 ## 参考来源

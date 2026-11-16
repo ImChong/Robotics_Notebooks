@@ -121,7 +121,7 @@ flowchart TB
 | 04 | MARCH | A | [paper-motion-cerebellum-march](../entities/paper-motion-cerebellum-march.md) |
 | 05 | AMS | A | [ams](../methods/ams.md) |
 | 06 | OmniXtreme | A | [paper-hrl-stack-16](../entities/paper-hrl-stack-16-omnixtreme.md) |
-| 07 | PHP | A | [paper-hrl-stack-22](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
+| 07 | PHP | A | [paper-hrl-stack-22](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) |
 | 08 | Deep Whole-body Parkour | A | [paper-deep-whole-body-parkour](../entities/paper-deep-whole-body-parkour.md) |
 | 09 | TAGA | A | [paper-motion-cerebellum-taga](../entities/paper-motion-cerebellum-taga.md) |
 | 10 | SSR | A | [paper-ssr](../entities/paper-ssr-humanoid-open-world-traversal.md) |

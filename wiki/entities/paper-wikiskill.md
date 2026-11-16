@@ -13,7 +13,7 @@ status: complete
 updated: 2026-09-15
 arxiv: "2608.27454"
 related:
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./superpowers-obra.md
   - ./darwin-skill.md
   - ./hermes-agent.md
@@ -27,7 +27,7 @@ summary: "WikiSkill（arXiv:2608.27454，Google Research×Virginia Tech）：用
 
 # WikiSkill（持久 Wiki 驱动的 Agent Skill 进化）
 
-**WikiSkill**（*Compiling Agent Experience into Persistent Knowledge for Skill Evolution*，[arXiv:2608.27454](https://arxiv.org/abs/2608.27454)，2026；Google Research + Virginia Tech）提出：在自动 skill 进化中，除 **不可变轨迹** 与 **可执行 skill 文件** 外，增加 **持久 Wiki 层**，把跨轮失败模式、成功策略、proposal 审计轨迹编译为结构化知识，供后续 Skill Proposer 系统复用——直接回应 [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md)「经验应复利积累而非散落在优化日志里」的论点。
+**WikiSkill**（*Compiling Agent Experience into Persistent Knowledge for Skill Evolution*，[arXiv:2608.27454](https://arxiv.org/abs/2608.27454)，2026；Google Research + Virginia Tech）提出：在自动 skill 进化中，除 **不可变轨迹** 与 **可执行 skill 文件** 外，增加 **持久 Wiki 层**，把跨轮失败模式、成功策略、proposal 审计轨迹编译为结构化知识，供后续 Skill Proposer 系统复用——直接回应 [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md)「经验应复利积累而非散落在优化日志里」的论点。
 
 ## 一句话定义
 
@@ -151,7 +151,7 @@ flowchart TD
 
 ## 关联页面
 
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 论文 §1 显式援引的「编译经验为持久知识」范式；与本页 **Wiki Layer** 同构
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 论文 §1 显式援引的「编译经验为持久知识」范式；与本页 **Wiki Layer** 同构
 - [Superpowers（obra）](./superpowers-obra.md) — 可执行 **skill 文件 + 交付流程** 生态对照
 - [Darwin Skill](./darwin-skill.md) — 单 skill 的 validation-gated 自主优化（SkillOpt 对齐）
 - [Hermes Agent](./hermes-agent.md) — 社区 WikiSkill 实现常用后端；与本页 **官方未开源** 对照

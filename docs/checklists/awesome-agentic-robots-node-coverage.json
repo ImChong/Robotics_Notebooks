@@ -1049,14 +1049,14 @@
       ],
       "arxiv": "2503.14734",
       "candidate_nodes": [
-        "wiki/entities/paper-hrl-stack-34-gr00t_n1.md"
+        "wiki/entities/paper-hrl-stack-34-gr00t-n1.md"
       ],
       "status": "existing-reused",
       "paper_url": "https://arxiv.org/abs/2503.14734",
       "project_page_url": "https://developer.nvidia.com/isaac/gr00t",
       "project_page_kind": "website",
       "project_page_evidence": "arxiv-abstract-or-comments",
-      "node_path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
+      "node_path": "wiki/entities/paper-hrl-stack-34-gr00t-n1.md",
       "link_status": "project-entry-recorded",
       "reading_status": "not-reviewed-in-this-task"
     },

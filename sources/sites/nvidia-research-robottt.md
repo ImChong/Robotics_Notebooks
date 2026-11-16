@@ -22,4 +22,4 @@
 
 - [paper-robottt-test-time-training-vla-context](../../wiki/entities/paper-robottt-test-time-training-vla-context.md) — 面向读者的机制摘要、流程图与和 TTT-Parkour / 短上下文 VLA 的对照
 - [VLA](../../wiki/methods/vla.md) — 长程 visuomotor 上下文与部署后持续学习叙事
-- [GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) — RoboTTT 所基于的 VLA 底座
+- [GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) — RoboTTT 所基于的 VLA 底座

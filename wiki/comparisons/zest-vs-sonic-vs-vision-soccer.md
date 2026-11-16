@@ -20,7 +20,7 @@ related:
   - ../entities/paper-zest.md
   - ../methods/zest.md
   - ../entities/nvidia-sonic.md
-  - ../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
+  - ../entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md
   - ./sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md
   - ./hil-vs-mtrg-vs-zest-parkour-imitation.md
   - ../queries/humanoid-motion-tracking-method-selection.md
@@ -44,7 +44,7 @@ summary: "Science Robotics 11(117) 同期三篇不是互相竞争的通用 track
 
 # ZEST vs SONIC vs 视觉足球：人形学习控制三层对比
 
-*Science Robotics* 11(117) 同期发表 [ZEST](../entities/paper-zest.md)、[SONIC](../entities/nvidia-sonic.md) 与 [视觉驱动反应式足球](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)。具身智能研究室把它们读成**同一条身体栈上的三个层级**，而不是「谁是更好的全身跟踪器」。本页只保留这条选型坐标；方法细节与数字以各实体/方法页为准。
+*Science Robotics* 11(117) 同期发表 [ZEST](../entities/paper-zest.md)、[SONIC](../entities/nvidia-sonic.md) 与 [视觉驱动反应式足球](../entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md)。具身智能研究室把它们读成**同一条身体栈上的三个层级**，而不是「谁是更好的全身跟踪器」。本页只保留这条选型坐标；方法细节与数字以各实体/方法页为准。
 
 ## 一句话定义
 
@@ -71,7 +71,7 @@ summary: "Science Robotics 11(117) 同期三篇不是互相竞争的通用 track
 
 ### 三层对照
 
-| 维度 | [ZEST](../methods/zest.md) | [SONIC](../entities/nvidia-sonic.md) | [视觉足球](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) |
+| 维度 | [ZEST](../methods/zest.md) | [SONIC](../entities/nvidia-sonic.md) | [视觉足球](../entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md) |
 |------|---------------------------|---------------------------------------------|--------------------------------------------------------|
 | **主要问题** | 参考如何高效变成真机技能 | 跟踪是否随数据/模型/算力持续变好，并形成统一接口 | 视觉噪声、延迟、漏检下如何连续搜球–踢球 |
 | **策略条件** | 下一步参考姿态 + 本体 | 机器人/人体/混合动作命令 → 共享 token | 结构化视觉观测 + 本体 + 历史 |
@@ -104,7 +104,7 @@ flowchart TB
 
 - **ZEST 层**：快速把一条参考编成可部署策略；自适应采样 + 辅助外力解决难片段，执行器建模解决 Sim2Real。
 - **SONIC 层**：把大量技能压进共享运动空间；上层只预测 token / 关键帧，不直接出几十维关节。
-- **任务层**：参考不再是输入；策略必须处理过时检测、主动转头、短暂丢球。与 [Project Instinct](../entities/paper-amp-survey-19-embrace_collisions.md) 的地形几何感知互补——一个盯地面能不能踩，一个盯球/门等动态目标。
+- **任务层**：参考不再是输入；策略必须处理过时检测、主动转头、短暂丢球。与 [Project Instinct](../entities/paper-amp-survey-19-embrace-collisions.md) 的地形几何感知互补——一个盯地面能不能踩，一个盯球/门等动态目标。
 
 ## 工程实践
 
@@ -144,7 +144,7 @@ flowchart TB
 
 - [ZEST 论文实体](../entities/paper-zest.md) / [ZEST 方法](../methods/zest.md) — 技能编译器层
 - [SONIC](../entities/nvidia-sonic.md) — 运动基础模型层
-- [Vision-Driven Reactive Soccer](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) — 感知任务层
+- [Vision-Driven Reactive Soccer](../entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md) — 感知任务层
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles](./sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — WBT 方法族
 - [HIL vs MTRG vs ZEST](./hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿对照
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)

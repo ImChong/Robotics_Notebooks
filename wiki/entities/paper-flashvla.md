@@ -20,7 +20,7 @@ related:
   - ./paper-pi05-open-world-vla.md
   - ../methods/vla.md
   - ../methods/action-chunking.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ./lingbot-vla.md
   - ./paper-foretime-vla.md
   - ../tasks/manipulation.md
@@ -217,7 +217,7 @@ sequenceDiagram
 - [\(\pi_{0.5}\)](./paper-pi05-open-world-vla.md) — 主干流匹配 VLA 基座
 - [VLA](../methods/vla.md) — 视觉–语言–动作模型与流匹配动作头
 - [Action Chunking](../methods/action-chunking.md) — 动作分块执行、停顿与异步重叠机制
-- [\(\pi_0\) Policy](../methods/π0-policy.md) — 流匹配连续动作策略脉络
+- [\(\pi_0\) Policy](../methods/pi0-policy.md) — 流匹配连续动作策略脉络
 - [LingBot-VLA](./lingbot-vla.md) — 4B 基座跨架构泛化验证对象
 - [ForeTime-VLA](./paper-foretime-vla.md) — 同基座上的未来表征蒸馏对比工作
 - [Manipulation](../tasks/manipulation.md) — 桌面操作仿真与真机任务语境

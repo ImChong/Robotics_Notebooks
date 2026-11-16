@@ -93,7 +93,7 @@ H1-2 站立推扰试验每控制器 15 次：采样式 MuJoCo-MPC（MJPC）15/15
 - [全身控制](../concepts/whole-body-control.md)
 - [安全控制纵深路线](../../roadmap/depth-safe-control.md)
 - [Sim2Real](../concepts/sim2real.md)
-- [11.09–11.13 人形／四足 29 篇周报](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 人形／四足 29 篇周报](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

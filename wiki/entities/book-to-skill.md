@@ -10,7 +10,7 @@ tags:
 status: complete
 updated: 2026-10-19
 related:
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./get-it-study-companion.md
   - ./paper-wikiskill.md
 sources:
@@ -37,7 +37,7 @@ summary: "book-to-skill 将技术书籍、文档目录或研究资料转换为�
 
 - **把长期参考资料变成可调用上下文：** 机器人控制、强化学习、运动规划或仿真文档可按章节和主题拆分，减少代理反复重新定位资料的工作。
 - **输出结构化技能，而非单份摘要：** 核心指引之外还生成章节文件、术语表、模式与速查表，使知识可按问题粒度加载。
-- **与 LLM Wiki 分工清楚：** [LLM Wiki](../references/llm-wiki-karpathy.md) 编译跨来源、持续交叉引用的知识；book-to-skill 将一组指定资料编译成方便代理使用的独立 skill。前者偏知识库维护，后者偏资料集封装。
+- **与 LLM Wiki 分工清楚：** [LLM Wiki](../concepts/llm-wiki-karpathy.md) 编译跨来源、持续交叉引用的知识；book-to-skill 将一组指定资料编译成方便代理使用的独立 skill。前者偏知识库维护，后者偏资料集封装。
 
 ## 输入与输出
 
@@ -109,7 +109,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久编译和维护跨来源知识。
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 持久编译和维护跨来源知识。
 - [Get It. Study Companion](./get-it-study-companion.md) — 面向 PDF/Markdown 学习材料的交互式学习应用。
 - [WikiSkill](./paper-wikiskill.md) — 将持久知识页嵌入 skill 进化流程的研究框架。
 

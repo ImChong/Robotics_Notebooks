@@ -314,7 +314,7 @@ sources:
 | 177 | [Denoising World Model Learning for Humanoid Locomotion](../entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md) | natnew |
 | 178 | [Dex-UMI: A Benchmark for Generalizable Dexterous Manipulation](../entities/paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md) | natnew |
 | 179 | [Expressive Whole-Body Control for Humanoid Robots](../entities/paper-exbody-expressive-humanoid.md) | natnew |
-| 180 | [H2O: Human-to-Humanoid Real-Time Whole-Body Teleoperation](../entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) | natnew |
+| 180 | [H2O: Human-to-Humanoid Real-Time Whole-Body Teleoperation](../entities/paper-hrl-stack-07-learning-human-to-humanoid-real-time.md) | natnew |
 | 181 | [HOVER: Versatile Neural Whole-Body Controller](../entities/paper-bfm-14-hover.md) | natnew |
 | 182 | [HugWBC: Unified Humanoid Whole-Body Controller](../entities/paper-pai-2502-03206-hugwbcunifiedhumanoidwholebodyc.md) | natnew |
 | 183 | [UMI: An Open-Source Underactuated Manipulator for Dexterous Grasping](../entities/paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md) | natnew |

@@ -26,6 +26,6 @@
 
 ## 对 wiki 的映射
 
-- [`wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md`](../../wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md)
+- [`wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md`](../../wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md)
 - [`sources/papers/ego_vcp_arxiv_2510_11682.md`](../papers/ego_vcp_arxiv_2510_11682.md)
 - [`sources/sites/ego-vcp-github-io.md`](../sites/ego-vcp-github-io.md)

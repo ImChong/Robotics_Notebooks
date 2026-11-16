@@ -66,4 +66,4 @@ OMG **不重新分发** HoloMotion 权重；tracker 层复用 [HorizonRobotics/H
 
 - 项目页：[sources/sites/omg-tsinghua-mars-lab-github-io.md](../sites/omg-tsinghua-mars-lab-github-io.md)
 - 实体页：[wiki/entities/paper-omg-omni-modal-humanoid-control.md](../../wiki/entities/paper-omg-omni-modal-humanoid-control.md)
-- 方法交叉：[扩散运动生成](../../wiki/methods/diffusion-motion-generation.md)、[ETH G1 扩散全身 locomotion](../../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)、[Heracles](../../wiki/entities/paper-heracles-humanoid-diffusion.md)
+- 方法交叉：[扩散运动生成](../../wiki/methods/diffusion-motion-generation.md)、[ETH G1 扩散全身 locomotion](../../wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md)、[Heracles](../../wiki/entities/paper-heracles-humanoid-diffusion.md)

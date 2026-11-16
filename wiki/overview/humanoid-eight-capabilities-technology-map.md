@@ -112,7 +112,7 @@ VLA / 规划：子目标、顺序、动作意图
 | 2 | **抓取** | 如何稳定接触和操作 | 贴准、抓稳、会纠错 | [抓取 hub](./hub-grasp.md)、[接触力控 hub](./hub-contact-force-control.md)、[Manipulation](../tasks/manipulation.md) |
 | 3 | **全身控制** | 手、腰、腿如何协同 | 伸手时整个人都在动 | [WBC](../concepts/whole-body-control.md)、[WBC hub](./hub-wbc.md)、[身体系统栈](./humanoid-rl-motion-control-body-system-stack.md) |
 | 4 | **平衡** | 扰动和负载下如何不摔 | 每一步实时找回稳定 | [Balance recovery](../tasks/balance-recovery.md)、[Humanoid locomotion](../tasks/humanoid-locomotion.md) |
-| 5 | **VLA** | 视觉和语言如何变成动作 | 听懂「收拾桌面」并开干 | [VLA](../methods/vla.md)、[Open X-Embodiment](../concepts/open-x-embodiment.md)、[π0](../methods/π0-policy.md)、[VLA+WM 14 篇路线](./vla-wm-reading-roadmap-14-papers-technology-map.md) |
+| 5 | **VLA** | 视觉和语言如何变成动作 | 听懂「收拾桌面」并开干 | [VLA](../methods/vla.md)、[Open X-Embodiment](../concepts/open-x-embodiment.md)、[π0](../methods/pi0-policy.md)、[VLA+WM 14 篇路线](./vla-wm-reading-roadmap-14-papers-technology-map.md) |
 | 6 | **世界模型** | 动作会带来什么后果 | 先判断会不会撞、会不会洒 | [生成式 WM](../methods/generative-world-models.md)、[WAM](../concepts/world-action-models.md)、[动作后果地图](./robot-world-models-action-consequence-technology-map.md) |
 | 7 | **数据** | 如何积累真实经验 | 经历过什么，决定会什么 | [Teleoperation](../tasks/teleoperation.md)、[Action chunking](../methods/action-chunking.md)、[Data flywheel](../concepts/data-flywheel.md) |
 | 8 | **仿真** | 如何低成本训练与验错 | 数字世界里先试更多次 | [Sim2Real](../concepts/sim2real.md)、[训练栈分层](./robot-training-stack-layers-technology-map.md)、[Isaac Lab](../entities/isaac-lab.md) |
@@ -125,7 +125,7 @@ VLA / 规划：子目标、顺序、动作意图
 
 ### 2. 抓取
 
-完整链：接近 → 对齐 → 接触 → 力觉 → 滑移检测 → 修正。透明杯、软包装、易碎物等长尾靠 **触觉/力觉** 补视觉盲区。文内对照 [RT-2](../methods/robotics-transformer-rt-series.md)（离散动作 token + 语义泛化）与 [π0](../methods/π0-policy.md)（连续 flow matching）— 说明「看懂」≠「抓稳」。
+完整链：接近 → 对齐 → 接触 → 力觉 → 滑移检测 → 修正。透明杯、软包装、易碎物等长尾靠 **触觉/力觉** 补视觉盲区。文内对照 [RT-2](../methods/robotics-transformer-rt-series.md)（离散动作 token + 语义泛化）与 [π0](../methods/pi0-policy.md)（连续 flow matching）— 说明「看懂」≠「抓稳」。
 
 ### 3. 全身控制
 

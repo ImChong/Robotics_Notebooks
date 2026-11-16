@@ -13,7 +13,7 @@ related:
   - ./ponytail.md
   - ./superpowers-obra.md
   - ./agent-skills-addyosmani.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/i-have-adhd.md
@@ -43,7 +43,7 @@ summary: "i-have-adhd（ayghri/i-have-adhd）是编码代理输出结构技能�
   - [Ponytail](ponytail.md) — **更少代码**（LOC）
   - **i-have-adhd** — **更清晰的行动结构**（顺序与步骤）
   - [Superpowers（obra）](superpowers-obra.md) — **更对的交付流程**
-- **维护本 wiki 的长会话：** ingest + `make ci-preflight` 常是多步；该技能降低 **在解释中丢失关键命令** 的概率，与 [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md)「结论写进文件」可并用（文件写全、聊天说短）。
+- **维护本 wiki 的长会话：** ingest + `make ci-preflight` 常是多步；该技能降低 **在解释中丢失关键命令** 的概率，与 [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md)「结论写进文件」可并用（文件写全、聊天说短）。
 
 ## 流程总览
 

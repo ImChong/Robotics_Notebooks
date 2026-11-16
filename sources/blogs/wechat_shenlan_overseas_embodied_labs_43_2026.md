@@ -60,7 +60,7 @@
 
 ### 阅读用法（编译）
 
-- **跟方法**：斯坦福 REAL / IRIS、Berkeley RAIL、UT Austin RPL 对应 [Diffusion Policy](../../wiki/methods/diffusion-policy.md)、[ALOHA](../../wiki/entities/aloha.md)、[π₀](../../wiki/methods/π0-policy.md)、[VLA](../../wiki/methods/vla.md) 主线。
+- **跟方法**：斯坦福 REAL / IRIS、Berkeley RAIL、UT Austin RPL 对应 [Diffusion Policy](../../wiki/methods/diffusion-policy.md)、[ALOHA](../../wiki/entities/aloha.md)、[π₀](../../wiki/methods/pi0-policy.md)、[VLA](../../wiki/methods/vla.md) 主线。
 - **跟平台**：ETH RSL → [ANYmal](../../wiki/entities/anymal.md)；CMU RI / Skild、MIT Improbable 等对照 [商业平台纵览](../../wiki/overview/notable-commercial-robot-platforms.md)。
 - **跟国内篇对照**：海外篇文末回链国内 50 所；转化叙事更多是「PI 联合创办 AI 公司」，国内篇更强调「组即公司前身 + 校企联合实验室」。
 
@@ -70,7 +70,7 @@
 |------|------|
 | [海外具身智能实验室地图](../../wiki/overview/overseas-embodied-ai-labs-landscape-2026.md) | **主沉淀页**：国家分区 + 本库交叉索引 |
 | [国内具身智能实验室三层地图](../../wiki/overview/china-embodied-ai-labs-landscape-2026.md) | 姊妹篇 |
-| [Diffusion Policy](../../wiki/methods/diffusion-policy.md)、[ALOHA](../../wiki/entities/aloha.md)、[π₀ Policy](../../wiki/methods/π0-policy.md)、[VLA 开源复现谱系](../../wiki/overview/vla-open-source-repro-landscape-2025.md) | 斯坦福 / Berkeley / π 系方法入口 |
+| [Diffusion Policy](../../wiki/methods/diffusion-policy.md)、[ALOHA](../../wiki/entities/aloha.md)、[π₀ Policy](../../wiki/methods/pi0-policy.md)、[VLA 开源复现谱系](../../wiki/overview/vla-open-source-repro-landscape-2025.md) | 斯坦福 / Berkeley / π 系方法入口 |
 | [ANYmal](../../wiki/entities/anymal.md)、[市面知名机器人平台纵览](../../wiki/overview/notable-commercial-robot-platforms.md) | 实验室衍生商业平台 |
 
 ## 当前提炼状态

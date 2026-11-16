@@ -7,7 +7,7 @@ related:
   - ../formalizations/probability-flow.md
   - ../methods/diffusion-policy.md
   - ../concepts/diffusion-model.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../overview/sergey-levine-diffusion-expressive-policies.md
   - ../methods/generative-world-models.md
   - ../concepts/flow-matching-embodied-policy.md
@@ -43,7 +43,7 @@ summary: "MIT CSAIL IAP 2026 课程 6.S184：从 ODE/SDE 与 Fokker–Planck 到
 
 ## 为什么重要
 
-- **补齐数学底座：** 机器人 wiki 里 [Diffusion Policy](../methods/diffusion-policy.md)、[π₀](../methods/π0-policy.md) 多从应用切入；本课反向提供 **SDE → score → FM → latent DiT** 的完整推导链。
+- **补齐数学底座：** 机器人 wiki 里 [Diffusion Policy](../methods/diffusion-policy.md)、[π₀](../methods/pi0-policy.md) 多从应用切入；本课反向提供 **SDE → score → FM → latent DiT** 的完整推导链。
 - **可动手复现：** 三份 Lab 在 Colab/GitHub 上 **从零实现** 玩具 FM、score matching 与 latent diffusion，比只看论文 PDF 更利于建立采样/训练直觉。
 - **与 Levine Simons 报告对读：** [表达力更强的连续动作策略](./sergey-levine-diffusion-expressive-policies.md) 讲 **控制侧为何需要扩散/flow 动作头**；本课讲 **生成侧数学与实现**。
 
@@ -83,7 +83,7 @@ flowchart LR
 | 模块 | 站点主题 | 本库对接 |
 |------|----------|----------|
 | 随机分析 | Fokker–Planck、SDE 采样 | [Probability Flow](../formalizations/probability-flow.md) |
-| Flow | 条件/边际路径、向量场、FM 损失 | [π₀ flow VLA](../methods/π0-policy.md) |
+| Flow | 条件/边际路径、向量场、FM 损失 | [π₀ flow VLA](../methods/pi0-policy.md) |
 | Score | Denoising score matching | [Diffusion Policy](../methods/diffusion-policy.md) |
 | 潜空间 | VAE + DiT 架构 | [Generative World Models](../methods/generative-world-models.md) |
 | 离散 | CTMC 离散扩散 | 文本/离散 token 扩散（概念延伸） |

@@ -10,7 +10,7 @@ related:
   - ./extreme-parkour.md
   - ./paper-notebook-anymal-parkour-robust-perceptive-locomotion.md
   - ./paper-now-you-see-that-humanoid-vision-locomotion.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-parkourformer.md
   - ../methods/dagger.md
   - ../concepts/privileged-training.md
@@ -109,7 +109,7 @@ Student 用 CNN 替换 scandots encoder，并继承 oracle 的 GRU/MLP 权重。
 | Humanoid Parkour | H1 | 单一视觉全身策略 | 无 | fractal gait + 多 GPU DAgger |
 | [ANYmal Parkour](./paper-notebook-anymal-parkour-robust-perceptive-locomotion.md) | ANYmal D | 高层选五个低层策略 | 无 | 多传感器 3D 重建与显式选技 |
 | [Extreme Parkour](./extreme-parkour.md) | Go1 | 单一视觉策略 | 无 | clearance + heading 双蒸馏，代码公开 |
-| [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) | G1 | motion matching 轨迹 → 单一深度策略 | 有人类技能库 | 长程人形技能链 |
+| [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) | G1 | motion matching 轨迹 → 单一深度策略 | 有人类技能库 | 长程人形技能链 |
 
 ## 实验与评测
 
@@ -142,7 +142,7 @@ Student 用 CNN 替换 scandots encoder，并继承 oracle 的 GRU/MLP 权重。
 - 四足对照：[Extreme Parkour](./extreme-parkour.md)、[ANYmal Parkour](./paper-notebook-anymal-parkour-robust-perceptive-locomotion.md)
 - 后续鲁棒深度对照：[Now You See That](./paper-now-you-see-that-humanoid-vision-locomotion.md)
 - 单阶段 raw-depth 对照（以本文为 X2 重实现基线）：[CReF](./paper-cref.md)
-- 动作先验长程路线：[PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- 动作先验长程路线：[PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md)
 - 端到端未来监督（无 scandots 教师）：[ParkourFormer](./paper-parkourformer.md)
 
 ## 参考来源

@@ -148,7 +148,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/queries/embodied-eval-benchmark-selection-loop.md": (
         "具身评测基准选型闭环（Embodied Eval Benchmark Selection Loop）"
     ),
-    "wiki/references/llm-wiki-karpathy.md": "大语言模型维基（LLM Wiki）",
+    "wiki/concepts/llm-wiki-karpathy.md": "大语言模型维基（LLM Wiki）",
     "wiki/concepts/world-action-models.md": "世界动作模型（World Action Models, WAM）",
     "wiki/overview/robot-world-models-training-loop-taxonomy.md": (
         "机器人世界模型训练闭环（Robot World Models Training-Loop Taxonomy）"

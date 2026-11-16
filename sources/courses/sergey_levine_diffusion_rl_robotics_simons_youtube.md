@@ -18,7 +18,7 @@
 ## 为什么值得保留
 
 - **一手议程坐标**：官方 abstract 明确把「表达力更强的动作分布 → action chunks → IL / offline RL」串成一条叙事，适合作为本库 [Diffusion Policy](../../wiki/methods/diffusion-policy.md)、[Action Chunking](../../wiki/methods/action-chunking.md)、[Online vs Offline RL](../../wiki/comparisons/online-vs-offline-rl.md) 的**当代讲者读法**。
-- **跨范式桥接**：同一套生成式动作头既服务模仿学习，也被讲成 offline RL 与 offline-to-online 的近期进展载体——与 [LWD](../../wiki/methods/lwd.md)、flow matching VLA（如 [π₀](../../wiki/methods/π0-policy.md)）可对读。
+- **跨范式桥接**：同一套生成式动作头既服务模仿学习，也被讲成 offline RL 与 offline-to-online 的近期进展载体——与 [LWD](../../wiki/methods/lwd.md)、flow matching VLA（如 [π₀](../../wiki/methods/pi0-policy.md)）可对读。
 - **工作坊语境**：该场次隶属扩散生成建模理论/实践预览会（Fall '27 学期预告），机器人侧听众可借此把控制应用挂回更广的 diffusion 数学议程。
 
 ## 抓取与字幕说明（入库日）
@@ -62,7 +62,7 @@
 - [`wiki/methods/imitation-learning.md`](../../wiki/methods/imitation-learning.md) — IL 主线
 - [`wiki/comparisons/online-vs-offline-rl.md`](../../wiki/comparisons/online-vs-offline-rl.md) — offline / offline-to-online 对照
 - [`wiki/methods/lwd.md`](../../wiki/methods/lwd.md) — 车队级 offline-to-online 实例（flow 动作头）
-- [`wiki/methods/π0-policy.md`](../../wiki/methods/π0-policy.md) — flow matching 通才策略对照
+- [`wiki/methods/pi0-policy.md`](../../wiki/methods/pi0-policy.md) — flow matching 通才策略对照
 - [`sources/sites/simons_sergey_levine_diffusion_rl_robotics_2026.md`](../sites/simons_sergey_levine_diffusion_rl_robotics_2026.md) — 官方 talk 页归档
 
 ## 推荐继续阅读（外部）

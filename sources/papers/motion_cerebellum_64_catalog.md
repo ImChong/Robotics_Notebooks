@@ -18,7 +18,7 @@
 | 04 | MARCH | 底座：模型辅助稀疏落脚控制 | [MARCH](../../wiki/entities/paper-motion-cerebellum-march.md) |
 | 05 | AMS | 底座：敏捷性和稳定性的多数据融合 | [AMS](../../wiki/methods/ams.md) |
 | 06 | OmniXtreme | 底座：高动态技能把稳定边界往外推 | [OmniXtreme](../../wiki/entities/paper-hrl-stack-16-omnixtreme.md) |
-| 07 | PHP | 底座：跑酷技能链和运动匹配 | [PHP](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
+| 07 | PHP | 底座：跑酷技能链和运动匹配 | [PHP](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) |
 | 08 | Deep Whole-body Parkour | 底座：手脚躯干一起参与跑酷 | [Deep Whole-body Parkour](../../wiki/entities/paper-deep-whole-body-parkour.md) |
 | 09 | TAGA | 底座：主动凝视进入敏捷运动闭环 | [TAGA](../../wiki/entities/paper-motion-cerebellum-taga.md) |
 | 10 | SSR | 底座：第一视角视觉驱动开放世界穿越 | [SSR](../../wiki/entities/paper-ssr-humanoid-open-world-traversal.md) |
@@ -39,13 +39,13 @@
 |---|------|------|-----------|
 | 16 | GVHMR | 数据入口：视频动作恢复到重力对齐世界坐标 | [GVHMR](../../wiki/entities/gvhmr.md) |
 | 17 | TRAM | 数据入口：野外视频到全局人体轨迹 | [TRAM](../../wiki/entities/paper-tram-global-human-motion.md) |
-| 18 | GMR | 重定向：人类动作变成可跟踪机器人参考 | [GMR](../../wiki/entities/paper-hrl-stack-01-retargeting_matters.md) |
-| 19 | NMR | 重定向：神经重定向与物理修正数据 | [NMR](../../wiki/entities/paper-hrl-stack-02-make_tracking_easy.md) |
+| 18 | GMR | 重定向：人类动作变成可跟踪机器人参考 | [GMR](../../wiki/entities/paper-hrl-stack-01-retargeting-matters.md) |
+| 19 | NMR | 重定向：神经重定向与物理修正数据 | [NMR](../../wiki/entities/paper-hrl-stack-02-make-tracking-easy.md) |
 | 20 | OmniRetarget | 重定向：交互关系保持的数据生成 | [OmniRetarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md) |
 | 21 | HumanX | 数据入口：从人类视频学敏捷交互技能 | [HumanX](../../wiki/entities/paper-hrl-stack-05-humanx.md) |
 | 22 | HDMI | 数据入口：人类视频到交互式全身控制 | [HDMI](../../wiki/entities/paper-hrl-stack-06-hdmi.md) |
 | 23 | SUGAR | 数据入口：视频驱动的泛化移动操作数据 | [SUGAR](../../wiki/entities/paper-loco-manip-161-076-sugar.md) |
-| 24 | GenMimic | 数据入口：生成视频到物理可执行轨迹 | [GenMimic](../../wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) |
+| 24 | GenMimic | 数据入口：生成视频到物理可执行轨迹 | [GenMimic](../../wiki/entities/paper-hrl-stack-04-from-generated-human-videos-to-physi.md) |
 
 ## D. 全身跟踪基座（13）
 
@@ -58,7 +58,7 @@
 | 29 | HumanoidGPT | 跟踪策略：海量动作帧和 Transformer 化 | [HumanoidGPT](../../wiki/entities/paper-humanoid-gpt.md) |
 | 30 | LIMMT | 跟踪策略：数据质量筛选比盲目堆量更重要 | [LIMMT](../../wiki/methods/limmt-gqs-motion-curation.md) |
 | 31 | M3imic | 跟踪策略：多模态动作条件下的统一模仿 | [M3imic](../../wiki/entities/paper-loco-manip-06-m3imic.md) |
-| 32 | RGMT | 鲁棒性：泛化和扰动下的动作跟踪 | [RGMT](../../wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) |
+| 32 | RGMT | 鲁棒性：泛化和扰动下的动作跟踪 | [RGMT](../../wiki/entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md) |
 | 33 | Any2Track | 鲁棒性：任意动作、任意扰动继续跟踪 | [Any2Track](../../wiki/methods/any2track.md) |
 | 34 | Stubborn | 恢复：把跟踪和跌倒恢复放进统一 RL | [Stubborn](../../wiki/entities/paper-motion-cerebellum-stubborn.md) |
 | 35 | ConstrainedMimic | 安全：给 motion tracking 加实时约束层 | [ConstrainedMimic](../../wiki/entities/paper-motion-cerebellum-constrainedmimic.md) |
@@ -101,7 +101,7 @@
 | 52 | DoorMan | 任务：开门把视觉、接触、移动和平衡全照出来 | [DoorMan](../../wiki/entities/paper-doorman-opening-sim2real-door.md) |
 | 53 | HOIST | 任务：悬挂负载操作考验后果建模 | [HOIST](../../wiki/entities/paper-motion-cerebellum-hoist.md) |
 | 54 | SplitAdapter | 任务：负载变化下的分解式适配 | [SplitAdapter](../../wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md) |
-| 55 | HALO | 任务：重载技能里的可微仿真和物理对齐 | [HALO](../../wiki/entities/paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md) |
+| 55 | HALO | 任务：重载技能里的可微仿真和物理对齐 | [HALO](../../wiki/entities/paper-hrl-stack-39-closing-sim-to-real-gap-for-heavy-lo.md) |
 | 56 | HumanoidMimicGen | 任务数据：全身规划驱动移动操作数据生成 | [HumanoidMimicGen](../../wiki/entities/paper-humanoidmimicgen.md) |
 | 57 | GRAIL | 任务数据：3D 资产和视频先验生成 Loco-Manip 数据 | [GRAIL](../../wiki/entities/paper-grail.md) |
 | 58 | OASIS | 任务数据：仿真数据驱动真实 Loco-Manip 部署 | [OASIS](../../wiki/entities/paper-loco-manip-04-oasis.md) |

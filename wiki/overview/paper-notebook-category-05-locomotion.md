@@ -88,7 +88,7 @@ original:
 - [MASH](../entities/paper-notebook-mash-cooperative-heterogeneous-multi-agent-rl-fo.md) — 待深读
 - [Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuation](../entities/paper-notebook-mechanical-intelligence-aware-curriculum-rl-for.md) — 待深读
 - [MoRE](../entities/paper-amp-survey-08-more.md) — 见 wiki 实体页
-- [Natural Humanoid Robot Locomotion with Generative Motion Prior](../entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) — 见 wiki 实体页
+- [Natural Humanoid Robot Locomotion with Generative Motion Prior](../entities/paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md) — 见 wiki 实体页
 - [No More Marching](../entities/paper-notebook-no-more-marching-learning-humanoid-locomotion-fo.md) — 待深读
 - [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — 见 wiki 实体页
 - [Omni-Perception](../entities/paper-notebook-omni-perception-omnidirectional-collision-avoida.md) — 待深读

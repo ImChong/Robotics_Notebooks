@@ -13,7 +13,7 @@ related:
   - ./gsap-skills.md
   - ./manim.md
   - ./openmaic.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/hyperframes.md

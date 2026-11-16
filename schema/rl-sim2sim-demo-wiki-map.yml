@@ -7,7 +7,7 @@ overrides:
     - wiki/entities/amp-mjlab.md
     - wiki/entities/unitree-g1.md
   g1-parkour:
-    - wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+    - wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md
   g1-tracking-latest:
     - wiki/entities/paper-gentlehumanoid.md
     - wiki/entities/axellwppr-motion-tracking.md

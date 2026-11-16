@@ -48,7 +48,7 @@
 
 ## 对 wiki 的映射
 
-- 沉淀实体页：[Humanoid Goalkeeper（AMP #13）](../../wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md)
+- 沉淀实体页：[Humanoid Goalkeeper（AMP #13）](../../wiki/entities/paper-amp-survey-13-humanoid-goalkeeper.md)
 - 交叉：[amp-reward](../../wiki/methods/amp-reward.md)、[unitree-g1](../../wiki/entities/unitree-g1.md)、[humanoid-amp-motion-prior-survey](../../wiki/overview/humanoid-amp-motion-prior-survey.md)、[PhysHSI #15](../../wiki/entities/paper-amp-survey-15-physhsi.md)、[MoRE #08](../../wiki/entities/paper-amp-survey-08-more.md)
 
 ## 参考来源（原始）

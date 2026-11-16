@@ -33,7 +33,7 @@
 | 2 | 抓取 | 接近→接触→力觉→滑移修正；触觉是第二套眼 | [抓取知识链 hub](../../wiki/overview/hub-grasp.md)、[接触力控 hub](../../wiki/overview/hub-contact-force-control.md) |
 | 3 | 全身控制 | 手-躯干-腿协同；MPC/WBC 仍是底座 | [WBC](../../wiki/concepts/whole-body-control.md)、[WBC hub](../../wiki/overview/hub-wbc.md)、[身体系统栈](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md) |
 | 4 | 平衡 | IMU/足底力矩；负载改变质心 | [Balance recovery](../../wiki/tasks/balance-recovery.md)、[Humanoid locomotion](../../wiki/tasks/humanoid-locomotion.md) |
-| 5 | VLA | RT-2 token → 连续 flow/chunk；OXE/Octo/OpenVLA | [VLA](../../wiki/methods/vla.md)、[Open X-Embodiment](../../wiki/concepts/open-x-embodiment.md)、[π0](../../wiki/methods/π0-policy.md) |
+| 5 | VLA | RT-2 token → 连续 flow/chunk；OXE/Octo/OpenVLA | [VLA](../../wiki/methods/vla.md)、[Open X-Embodiment](../../wiki/concepts/open-x-embodiment.md)、[π0](../../wiki/methods/pi0-policy.md) |
 | 6 | 世界模型 | 动作后果预测；规划/恢复/安全筛查 | [生成式 WM](../../wiki/methods/generative-world-models.md)、[WAM](../../wiki/concepts/world-action-models.md)、[动作后果地图](../../wiki/overview/robot-world-models-action-consequence-technology-map.md) |
 | 7 | 数据 | 长尾+失败恢复；质量>数量 | [Teleoperation](../../wiki/tasks/teleoperation.md)、[Action chunking](../../wiki/methods/action-chunking.md)、[Data flywheel](../../wiki/concepts/data-flywheel.md) |
 | 8 | 仿真 | Isaac/RoboCasa/Habitat；真机↔仿真闭环 | [Sim2Real](../../wiki/concepts/sim2real.md)、[训练栈分层地图](../../wiki/overview/robot-training-stack-layers-technology-map.md) |

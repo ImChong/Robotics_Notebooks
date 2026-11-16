@@ -66,7 +66,7 @@ flowchart LR
 
 1. **Expert training：** $\pi_{\text{expert},i}$ 在 terrain $i$ 上 RL 至可用成功率；感知可为 **elevation map、height scan、特权物理**。
 2. **Distillation：** 混合地形并行 env；学生 $\pi_{\text{student}}(o_{\text{student}})$ 执行动作，记录 $(o_{\text{student}}, \pi_{\text{expert},i}(o_{\text{expert}}))$；监督损失常為 **MSE / BC**；迭代多 epoch（Algorithm 1 风格）。
-3. **Optional RLFT / transition：** 纯蒸馏在多模态上 **平均专家** 导致单地形性能下降（PITW Table 4：踏石 73%→98.8%）；加 **任务奖励 RL**、**transition group**（[LightLP](../entities/paper-light-loco-parkour.md)）或 **DAgger+PPO 混合**（[PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)）。
+3. **Optional RLFT / transition：** 纯蒸馏在多模态上 **平均专家** 导致单地形性能下降（PITW Table 4：踏石 73%→98.8%）；加 **任务奖励 RL**、**transition group**（[LightLP](../entities/paper-light-loco-parkour.md)）或 **DAgger+PPO 混合**（[PHP](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)、[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)）。
 
 ### 学生必须学的两件事
 

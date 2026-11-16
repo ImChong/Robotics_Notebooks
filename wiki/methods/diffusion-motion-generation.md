@@ -105,7 +105,7 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 
 ## 真机全身感知 locomotion（ETH G1，arXiv:2604.17335）
 
-[Learning Whole-Body Humanoid Locomotion](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) 将 MDM 式扩散生成器与 DeepMimic 式 RL 跟踪器 **三阶段** 耦合（数据增广 → 离线预训练 → **冻结生成器的闭环微调**），在 Unitree G1 上实现 onboard LiDAR 地形感知下的箱攀、跨栏、楼梯与混合地形穿越；部署用 TensorRT 2 步去噪（~20 ms）+ 0.25 s receding-horizon 参考更新。量化上，**在线生成** 相对固定参考跟踪显著提升 OOD 障碍高度/偏航泛化，**闭环微调** 进一步提升耦合系统成功率。
+[Learning Whole-Body Humanoid Locomotion](../entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) 将 MDM 式扩散生成器与 DeepMimic 式 RL 跟踪器 **三阶段** 耦合（数据增广 → 离线预训练 → **冻结生成器的闭环微调**），在 Unitree G1 上实现 onboard LiDAR 地形感知下的箱攀、跨栏、楼梯与混合地形穿越；部署用 TensorRT 2 步去噪（~20 ms）+ 0.25 s receding-horizon 参考更新。量化上，**在线生成** 相对固定参考跟踪显著提升 OOD 障碍高度/偏航泛化，**闭环微调** 进一步提升耦合系统成功率。
 
 ## RL + 生成式运动基元潜空间（DIMOS，ICCV 2023）
 
@@ -185,12 +185,12 @@ summary: "利用扩散模型生成机器人全身运动序列，通过闭环微�
 ## 继续阅读
 
 - 通用机制：[扩散模型（概念）](../concepts/diffusion-model.md)、[Probability Flow](../formalizations/probability-flow.md)
-- 生成+跟踪的真机范例：[ETH G1](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[PhyGile](../entities/paper-phygile.md)
+- 生成+跟踪的真机范例：[ETH G1](../entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md)、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[PhyGile](../entities/paper-phygile.md)
 - 操作域对照：[Diffusion Policy](./diffusion-policy.md)
 
 ## 关联页面
 - [扩散模型（概念）](../concepts/diffusion-model.md) — 通用扩散机制、调度/采样器与机器人迁移要点
-- [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — 地形条件扩散规划 + RL 全身跟踪，真机验证
+- [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) — 地形条件扩散规划 + RL 全身跟踪，真机验证
 - [OMG](../entities/paper-omg-omni-modal-humanoid-control.md) — omni-modal 生成器 + HoloMotion tracker，G1 真机多模态切换
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md) — 控制环内生成式中间件（flow matching + tracking）
 - [Generate, Track, Improve（GTI）](../entities/paper-generate-track-improve.md) — 双深度 flow matching 全身 plan + CLF-RL 跟踪；AWR 微调生成器（Caltech G1 真机；代码待发布）

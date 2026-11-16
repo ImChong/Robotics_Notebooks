@@ -10,7 +10,7 @@
 - **入库日期：** 2026-08-20
 - **抓取工具：** Agent Reach + wechat-article-for-ai（Camoufox；`--no-images`）
 - **一句话说明：** 从机械/执行器/测试/制造四类工程切口出发，按不同行业背景给出岗位关键词、12 个月分阶段学习顺序、作品集判据与三条现实策略（相邻迁移、供应链先行、可交付能力换入场），强调人形机器人是跨学科产品系统而非单一算法岗。
-- **沉淀到 wiki：** [`wiki/roadmaps/humanoid-practitioner-entry-roadmap.md`](../../wiki/roadmaps/humanoid-practitioner-entry-roadmap.md)
+- **沉淀到 wiki：** [`roadmap/humanoid-practitioner-entry-roadmap.md`](../humanoid-practitioner-entry-roadmap.md)
 - **姊妹文：** [`wechat_zanehub_humanoid_mass_production_experience.md`](wechat_zanehub_humanoid_mass_production_experience.md)（量产经验）、[`wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md`](wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)（膝侧谐波选型）、[`wechat_zanehub_embodied_fm_why_self_develop_robot_body.md`](wechat_zanehub_embodied_fm_why_self_develop_robot_body.md)（具身大模型为何自研本体）
 
 ## 核心摘录（归纳，非全文）
@@ -97,7 +97,7 @@
 
 ## 对 wiki 的映射
 
-- [humanoid-practitioner-entry-roadmap](../../wiki/roadmaps/humanoid-practitioner-entry-roadmap.md)（本次升格主页面）
+- [humanoid-practitioner-entry-roadmap](../humanoid-practitioner-entry-roadmap.md)（本次升格主页面）
 - [运动控制主路线](../../roadmap/motion-control.md)（算法/运控向互补路线）
 - [humanoid-mass-production-engineering](../../wiki/concepts/humanoid-mass-production-engineering.md)（制造/量产姊妹页）
 - [depth-humanoid-hardware-design](../../roadmap/depth-humanoid-hardware-design.md)（整机硬件纵深）

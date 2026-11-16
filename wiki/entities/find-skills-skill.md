@@ -21,7 +21,7 @@ related:
   - ./ibelick-ui-skills.md
   - ./agent-skills-addyosmani.md
   - ./hermes-agent.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/vercel-labs-skills.md
@@ -48,7 +48,7 @@ summary: "find-skills 是 vercel-labs/skills CLI 内置的元技能：当用户�
 ## 为什么重要（对本知识库读者）
 
 - **技能生态入口：** 本站索引的 [Emil Kowalski Skills](emil-kowalski-skills.md)（设计工程与动效）、[mattpocock/skills](mattpocock-skills.md)、[Anthropic frontend-design](anthropic-frontend-design-skill.md)、[Addy Osmani Agent Skills](agent-skills-addyosmani.md) 等均经 **同一 CLI** 安装；find-skills 是官方教代理 **如何选型** 的文档。对于聚焦设计工程、同时提供 CLI 与 MCP 目录的项目，可参见 [UI Skills（ibelick）](ibelick-ui-skills.md)。
-- **与 Karpathy Wiki 对照：** [LLM Wiki](../references/llm-wiki-karpathy.md) 解决 **知识编译进 wiki**；skills 解决 **工程习惯编译进 SKILL.md** — find-skills 解决 **第三层：如何发现他人已编译的技能**。
+- **与 Karpathy Wiki 对照：** [LLM Wiki](../concepts/llm-wiki-karpathy.md) 解决 **知识编译进 wiki**；skills 解决 **工程习惯编译进 SKILL.md** — find-skills 解决 **第三层：如何发现他人已编译的技能**。
 - **维护本库时：** ingest 新工具、前端清单、浏览器验证（[agent-browser](vercel-agent-browser-skill.md)）前，可先 `npx skills find <query>` 避免重复造 skill。
 
 ## 核心结构

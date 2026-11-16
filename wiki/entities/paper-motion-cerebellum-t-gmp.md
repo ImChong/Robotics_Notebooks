@@ -14,7 +14,7 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../tasks/locomotion.md
   - ../concepts/terrain-adaptation.md
-  - ./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md
+  - ./paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md
   - ./paper-amp-survey-08-more.md
   - ./paper-tramp-vision-assisted-bipedal-locomotion.md
   - ./leju-robotics.md
@@ -51,7 +51,7 @@ summary: "T-GMP（arXiv:2606.06944，HIT×乐聚）：地形条件 CVAE 学习�
 
 ## 为什么重要
 
-- **生成先验 × 地形感知：** 相对 [GMP](./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) 的**冻结平地走跑 CVAE**，T-GMP 把条件变量扩展到 **局部高程图**，并与 **AMP 共训**而非仅稠密轨迹奖励；相对 [TRAMP](./paper-tramp-vision-assisted-bipedal-locomotion.md) 的**双地形判别式 AMP**，走 **CVAE 流形 + 在线合成专家转移** 路线。
+- **生成先验 × 地形感知：** 相对 [GMP](./paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md) 的**冻结平地走跑 CVAE**，T-GMP 把条件变量扩展到 **局部高程图**，并与 **AMP 共训**而非仅稠密轨迹奖励；相对 [TRAMP](./paper-tramp-vision-assisted-bipedal-locomotion.md) 的**双地形判别式 AMP**，走 **CVAE 流形 + 在线合成专家转移** 路线。
 - **全身协调而非下肢专精：** 论文强调人形应调动手臂与躯干——平地摆臂、楼梯/坡降 CoM、沟/窄梁伸臂平衡；与「只盯落脚 scheduling」的感知足式文献形成对照。
 - **数据效率锚点：** 仅 **~29.6 min（88.8k 帧）** 专家数据覆盖 **8 地形** 流形，说明 **地形条件生成先验** 可缓解多地形示范收集成本。
 - **工程平台：** 在乐聚 **Kuavo** 全尺寸真机（LiDAR 高程图 + 双机计算架构）闭环，为 [乐聚机器人](./leju-robotics.md) 运动控制研究线提供可引用基准。
@@ -208,7 +208,7 @@ flowchart TB
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-01-locomotion-base.md](../overview/motion-cerebellum-category-01-locomotion-base.md)
 - AMP 谱系：[amp-reward.md](../methods/amp-reward.md)、[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
-- 对照实体：[GMP #06](./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md)、[MoRE #08](./paper-amp-survey-08-more.md)、[TRAMP](./paper-tramp-vision-assisted-bipedal-locomotion.md)
+- 对照实体：[GMP #06](./paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md)、[MoRE #08](./paper-amp-survey-08-more.md)、[TRAMP](./paper-tramp-vision-assisted-bipedal-locomotion.md)
 - 机构/平台：[乐聚机器人](./leju-robotics.md)
 
 ## 参考来源
@@ -222,5 +222,5 @@ flowchart TB
 
 - [arXiv 摘要与 PDF](https://arxiv.org/abs/2606.06944)
 - [项目页](https://t-gmp.github.io)（若恢复可补视频）
-- [GMP — Natural Humanoid Locomotion with Generative Motion Prior](./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) — 生成先验平地对照
+- [GMP — Natural Humanoid Locomotion with Generative Motion Prior](./paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md) — 生成先验平地对照
 - [TRAMP — 地形相关 AMP 单阶段视觉双足](./paper-tramp-vision-assisted-bipedal-locomotion.md) — 判别式双示范对照

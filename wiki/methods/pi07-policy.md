@@ -4,7 +4,7 @@ tags: [vla, foundation-policy, physical-intelligence, flow-matching, manipulatio
 status: complete
 updated: 2026-11-14
 related:
-  - ./π0-policy.md
+  - ./pi0-policy.md
   - ./vla.md
   - ../entities/paper-dpc.md
   - ./lwd.md
@@ -134,7 +134,7 @@ flowchart LR
 
 ## 与 π₀、MEM 与 LWD 的关系
 
-- **[π₀（Pi-zero）](./π0-policy.md)**：π₀.₇ 继承 π 系 **VLM + flow matching 连续动作** 的基本范式，但把研究重心移到**提示工程化的多模态条件**与**跨源数据对齐**。
+- **[π₀（Pi-zero）](./pi0-policy.md)**：π₀.₇ 继承 π 系 **VLM + flow matching 连续动作** 的基本范式，但把研究重心移到**提示工程化的多模态条件**与**跨源数据对齐**。
 - **MEM 历史视觉**：π₀.₇ 明确建立在 **π₀.₆-MEM** 一脉的历史帧编码之上，并加入子目标图像与新的本体状态 tokenization。
 - **[LWD](./lwd.md)**：同属「部署/评测产生的经验如何回到通才模型」语境；LWD 用 **offline-to-online RL** 显式优化价值，而 π₀.₇ 此文侧重用**条件模仿 + 蒸馏**吸收大量自主与次优轨迹——二者可并列阅读以理解工业界两条「闭环数据」路线。
 
@@ -154,7 +154,7 @@ flowchart LR
 
 ## 关联页面
 
-- [π₀ (Pi-zero) 策略模型](./π0-policy.md) — π 系前代 flow-matching VLA 基线
+- [π₀ (Pi-zero) 策略模型](./pi0-policy.md) — π 系前代 flow-matching VLA 基线
 - [VLA（Vision-Language-Action）](./vla.md) — 通才策略模型族谱与工程瓶颈
 - [DPC](../entities/paper-dpc.md) — 异构数据先对齐到 G1 关节空间，对照本页的多模态提示混合（Symbiosis 2026-08）
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — π0.5 为 LEGS 实验骨干之一（arXiv:2606.01458）

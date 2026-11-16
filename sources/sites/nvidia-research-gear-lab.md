@@ -43,7 +43,7 @@
 | `/gear/enpire/` | [nvidia-research-enpire.md](./nvidia-research-enpire.md) | [enpire.md](../../wiki/methods/enpire.md) |
 | GEAR-SONIC 项目页 | [sonic-humanoid-motion-tracking.md](../repos/sonic-humanoid-motion-tracking.md) | [sonic-motion-tracking.md](../../wiki/entities/nvidia-sonic.md) |
 | GR00T WBC 仓库 | [gr00t_wholebodycontrol.md](../repos/gr00t_wholebodycontrol.md) | [gr00t-wholebodycontrol.md](../../wiki/entities/gr00t-wholebodycontrol.md) |
-| GR00T N1 论文 | [humanoid_rl_stack_34_gr00t_n1…](../papers/humanoid_rl_stack_34_gr00t_n1_an_open_foundation_model_for_generalist.md) | [paper-hrl-stack-34-gr00t_n1.md](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) |
+| GR00T N1 论文 | [humanoid_rl_stack_34_gr00t_n1…](../papers/humanoid_rl_stack_34_gr00t_n1_an_open_foundation_model_for_generalist.md) | [paper-hrl-stack-34-gr00t-n1.md](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) |
 
 > **注：** 主页 Featured 列表 **动态更新**；未出现在首页的项目（如 ENPIRE、DreamDojo、Vesta 等）仍可能挂在 GEAR 子路径或合作发布——以各论文/项目页为准，勿把首页六项目当作完整目录。
 

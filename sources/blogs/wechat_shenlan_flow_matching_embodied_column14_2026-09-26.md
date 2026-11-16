@@ -17,8 +17,8 @@
 
 | 引用 | 说明 | wiki（不新建重复 arXiv 节点） |
 |------|------|--------------------------------|
-| π₀ / π₀.5 | Physical Intelligence 流匹配动作专家 | [π₀ 方法页](../../wiki/methods/π0-policy.md)、[π₀.7 方法页](../../wiki/methods/pi07-policy.md)、[paper-pi0](../../wiki/entities/paper-pi0.md) |
-| GR00T N1 | NVIDIA 论文写明 flow matching 动作生成 | [paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) |
+| π₀ / π₀.5 | Physical Intelligence 流匹配动作专家 | [π₀ 方法页](../../wiki/methods/pi0-policy.md)、[π₀.7 方法页](../../wiki/methods/pi07-policy.md)、[paper-pi0](../../wiki/entities/paper-pi0.md) |
+| GR00T N1 | NVIDIA 论文写明 flow matching 动作生成 | [paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) |
 | SmolVLA | HF 0.45B，动作专家用流匹配 | 底座 [arXiv:2506.01844](https://arxiv.org/abs/2506.01844)；部署实例 [paper-ros2smolvla](../../wiki/entities/paper-ros2smolvla.md) |
 
 ## 对 wiki 的映射

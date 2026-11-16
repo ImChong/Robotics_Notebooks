@@ -35,7 +35,7 @@
 | 蒸馏内容方法论 | [`wiki/entities/cangjie-skill.md`](../../wiki/entities/cangjie-skill.md) |
 | skill 进化 | [`wiki/entities/darwin-skill.md`](../../wiki/entities/darwin-skill.md) |
 | Karpathy 人物 skill | 上游 [karpathy-skill](https://github.com/alchaincyf/karpathy-skill)（与本站 [andrej-karpathy](../../wiki/entities/andrej-karpathy.md) 实体页不同层） |
-| LLM Wiki 范式 | [`wiki/references/llm-wiki-karpathy.md`](../../wiki/references/llm-wiki-karpathy.md) |
+| LLM Wiki 范式 | [`wiki/concepts/llm-wiki-karpathy.md`](../../wiki/concepts/llm-wiki-karpathy.md) |
 
 ## 与本站 sources 的其它锚点
 

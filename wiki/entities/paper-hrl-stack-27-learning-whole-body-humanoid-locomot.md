@@ -13,7 +13,7 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-heracles-humanoid-diffusion.md
   - ./unitree-g1.md
 sources:
@@ -151,7 +151,7 @@ flowchart TB
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)（#27/42）
 - 方法族：[扩散运动生成](../methods/diffusion-motion-generation.md)、[PPO](../methods/policy-optimization.md)
-- 对照：[PHP 感知跑酷](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)（DAgger 蒸馏 + motion matching）、[Heracles](./paper-heracles-humanoid-diffusion.md)（flow 中间件 + recovery）
+- 对照：[PHP 感知跑酷](./paper-hrl-stack-22-perceptive-humanoid-parkour.md)（DAgger 蒸馏 + motion matching）、[Heracles](./paper-heracles-humanoid-diffusion.md)（flow 中间件 + recovery）
 - 任务：[Humanoid Locomotion](../tasks/humanoid-locomotion.md)、[楼梯与障碍感知移动](../tasks/stair-obstacle-perceptive-locomotion.md)
 - 平台：[Unitree G1](./unitree-g1.md)
 

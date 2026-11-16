@@ -7,7 +7,7 @@ related:
   - ../concepts/asd-ste100.md
   - ../entities/asd-ste100-skill.md
   - ../entities/manim.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/blogs/karpathy-asd-ste100-clear-llm-outputs-2026-10-03.md
 summary: "文章独立导读：用受控语言减少歧义，并让 LLM 按任务生成图示、交互页面或视频等更易理解的表达形式。"
@@ -85,7 +85,7 @@ flowchart TD
 - [ASD-STE100 概念页](../concepts/asd-ste100.md) — 受控语言标准与适用边界
 - [ASD-STE100 Skill](../entities/asd-ste100-skill.md) — 将规则用于代理输出的开源实现
 - [Manim](../entities/manim.md) — 程序化讲解动画工具，仓库已有详情节点
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 本仓库持续归纳来源并建立知识链接的方法
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 本仓库持续归纳来源并建立知识链接的方法
 
 ## 参考来源
 

@@ -49,7 +49,7 @@ original:
 - [A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot](../entities/paper-notebook-a-whole-body-motion-imitation-framework-from-hum.md) — 待深读
 - [AMO](../entities/paper-loco-manip-161-135-amo.md) — 见 wiki 实体页
 - [AdaMimic](../entities/paper-adamimic.md) — ICRA 2026 Oral；单 clip 自适应全身跟踪
-- [Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) — 见 wiki 实体页
+- [Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning](../entities/paper-amp-survey-07-adversarial-locomotion-and-motion-im.md) — 见 wiki 实体页
 - [Agility Meets Stability](../entities/agibot-bfm-2.md) — 见 wiki 实体页
 - [Athena-WBC](../entities/paper-athena-wbc-humanoid-longtail.md) — 见 wiki 实体页
 - [Being-0](../entities/paper-loco-manip-161-057-being-0.md) — 见 wiki 实体页
@@ -66,7 +66,7 @@ original:
 - [EGM](../methods/egm-efficient-general-mimic.md) — 见 wiki 实体页
 - [EMOTION](../entities/paper-loco-manip-161-094-emotion.md) — 见 wiki 实体页
 - [EMP](../entities/paper-notebook-emp.md) — 待深读
-- [Ego-Vision World Model for Humanoid Contact Planning](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) — 见 wiki 实体页
+- [Ego-Vision World Model for Humanoid Contact Planning](../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) — 见 wiki 实体页
 - [EgoHumanoid](../overview/ego-category-02-human-to-robot.md) — 见 wiki 实体页
 - [Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery](../entities/paper-notebook-embedding-classical-balance-control-principles-i.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery/Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery.html)
 - [Embodied Chain of Action Reasoning with Multi-Modal Foundation Model for Humanoid Loco-manipulation](../entities/paper-notebook-website-embodied-chain-of-action-reasoning-with.md) — 待深读
@@ -101,7 +101,7 @@ original:
 - [HuBE](../entities/paper-notebook-hube.md) — 待深读
 - [Human-Humanoid Robots Cross-Embodiment Behavior-Skill Transfer Using Decomposed Adversarial Learning from Demonstration](../entities/paper-notebook-human-humanoid-robots-cross-embodiment-behavior.md) — 待深读
 - [HumanX](../entities/paper-hrl-stack-05-humanx.md) — 见 wiki 实体页
-- [Humanoid Goalkeeper](../entities/paper-amp-survey-13-humanoid_goalkeeper.md) — 见 wiki 实体页
+- [Humanoid Goalkeeper](../entities/paper-amp-survey-13-humanoid-goalkeeper.md) — 见 wiki 实体页
 - [Humanoid Hanoi](../entities/paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Hanoi__Investigating_Shared_Whole-Body_Control_for_Skill-Based_Box_Rearrangement/Humanoid_Hanoi__Investigating_Shared_Whole-Body_Control_for_Skill-Based_Box_Rearrangement.html)
 - [Humanoid Manipulation Interface](../entities/paper-notebook-humanoid-manipulation-interface.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre.html)
 - [Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning](../entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning/Humanoid_Whole-Body_Badminton_via_Multi-Stage_Reinforcement_Learning.html)
@@ -119,12 +119,12 @@ original:
 - [Learning Getting-Up Policies for Real-World Humanoid Robots](../entities/paper-humanup-getting-up.md) — 待深读
 - [Learning Human-Humanoid Coordination for Collaborative Object Carrying](../entities/paper-notebook-learning-human-humanoid-coordination-for-collabo.md) — 待深读
 - [Learning Human-Like Badminton Skills for Humanoid Robots](../entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots.html)
-- [Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation](../entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) — 见 wiki 实体页
+- [Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation](../entities/paper-hrl-stack-07-learning-human-to-humanoid-real-time.md) — 见 wiki 实体页
 - [Learning Humanoid Standing-up Control across Diverse Postures](../entities/paper-host-humanoid-standingup.md) — 见 wiki 实体页
 - [Learning Motion Skills with Adaptive Assistive Curriculum Force in Humanoid Robots](../entities/paper-notebook-learning-motion-skills-with-adaptive-assistive-c.md) — 待深读
 - [Learning Multi-Modal Whole-Body Control for Real-World Humanoid Robots](../entities/paper-notebook-learning-multi-modal-whole-body-control-for-real.md) — 待深读
 - [Learning Soccer Skills for Humanoid Robots](../entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr/Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr.html)
-- [Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) — 见 wiki 实体页
+- [Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots](../entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md) — 见 wiki 实体页
 - [Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations](../entities/paper-notebook-learning-whole-body-human-humanoid-interaction-f.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations/Learning_Whole-Body_Human-Humanoid_Interaction_from_Human-Human_Demonstrations.html)
 - [LessMimic](../entities/paper-notebook-lessmimic-long-horizon-humanoid-interaction-with.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/LessMimic_Long-Horizon_Humanoid_Interaction_with_Unified_Distance_Field_Representations/LessMimic_Long-Horizon_Humanoid_Interaction_with_Unified_Distance_Field_Representations.html)
 - [MOSAIC](../concepts/sim2real.md) — 见 wiki 实体页
@@ -145,7 +145,7 @@ original:
 - [RoboStriker](../entities/paper-notebook-robostriker.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing.html)
 - [Robot Crash Course](../entities/paper-notebook-robot-crash-course.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling/Robot_Crash_Course__Learning_Soft_and_Stylized_Falling.html)
 - [Robot Motion Diffusion Model](../entities/paper-loco-manip-161-102-robot-motion-diffusion-model.md) — 见 wiki 实体页
-- [Robust and Generalized Humanoid Motion Tracking](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) — 见 wiki 实体页
+- [Robust and Generalized Humanoid Motion Tracking](../entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md) — 见 wiki 实体页
 - [SEEC](../entities/paper-notebook-seec.md) — 待深读
 - [SLAC](../entities/paper-notebook-slac.md) — 待深读
 - [SMAP](../entities/paper-notebook-smap.md) — 待深读

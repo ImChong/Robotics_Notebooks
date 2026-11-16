@@ -73,7 +73,7 @@ sources:
 | 087 | 具有选择策略的协调人形操作 | [paper-loco-manip-161-087-n087](../entities/paper-loco-manip-161-087-n087.md) |
 | 088 | 基于基础模型的自主人形抓取快速部署管道 | [paper-loco-manip-161-088-n088](../entities/paper-loco-manip-161-088-n088.md) |
 | 089 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-089-n089](../entities/paper-doorman-opening-sim2real-door.md) |
-| 090 | 通过带有多模态基础模型的具体行动链推理的人形智能体用于零样本移动操作 | [paper-loco-manip-161-090-n090](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
+| 090 | 通过带有多模态基础模型的具体行动链推理的人形智能体用于零样本移动操作 | [paper-loco-manip-161-090-n090](../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) |
 | 091 | 通过真实部署就绪的技能空间释放人形机器人的潜力 | [paper-loco-manip-161-091-n091](../entities/paper-loco-manip-161-091-n091.md) |
 | 092 | 通过触摸梦学习多样化人形操作 | [paper-loco-manip-161-092-n092](../entities/paper-loco-manip-161-092-n092.md) |
 

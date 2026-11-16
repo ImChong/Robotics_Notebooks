@@ -40,7 +40,7 @@ sources:
 | 110 | HDMI | [paper-hrl-stack-06-hdmi](../entities/paper-hrl-stack-06-hdmi.md) |
 | 111 | HITTER | [paper-loco-manip-161-111-hitter](../entities/paper-loco-manip-161-111-hitter.md) |
 | 112 | HumanX | [paper-loco-manip-161-112-humanx](../entities/paper-hrl-stack-05-humanx.md) |
-| 113 | Humanoid | [paper-loco-manip-161-113-humanoid](../entities/paper-amp-survey-13-humanoid_goalkeeper.md) |
+| 113 | Humanoid | [paper-loco-manip-161-113-humanoid](../entities/paper-amp-survey-13-humanoid-goalkeeper.md) |
 | 114 | OmniRetarget | [paper-loco-manip-161-114-omniretarget](../entities/paper-hrl-stack-03-omniretarget.md) |
 | 115 | ResMimic | [paper-loco-manip-161-115-resmimic](../entities/paper-resmimic.md) |
 | 116 | WoCoCo | [paper-loco-manip-161-116-wococo](../entities/paper-loco-manip-161-116-wococo.md) |

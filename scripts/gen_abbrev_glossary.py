@@ -86,11 +86,8 @@ def main() -> int:
     changed = 0
     zero_hits: list[str] = []
     for page in pages:
-        rel_str = str(page.relative_to(ROOT))
-        # 与 lint_wiki.py 一致：豁免 README/index 及 references/、roadmaps/ 下的元页面
-        if page.name.lower() in ("readme.md", "index.md") or any(
-            seg in rel_str for seg in ("references/", "roadmaps/")
-        ):
+        # 与 lint_wiki.py 一致：豁免 README/index
+        if page.name.lower() in ("readme.md", "index.md"):
             continue
         content = page.read_text(encoding="utf-8")
         if SECTION_RE.search(content):

@@ -14,7 +14,7 @@ Nous Research 出品的 **自改进型自主代理** 官方说明：安装向导
 ## 为什么值得保留
 
 - 与 [Hermes Agent 仓库源归档](../repos/nousresearch_hermes_agent.md) 配对，区分 **营销叙事 / 用户路径** 与 **代码树结构**。
-- 文档明确 **closed learning loop**、**平台无关的 AIAgent 核心**、**Profile 隔离**（`hermes -p` 独立 `HERMES_HOME`）等设计原则，便于与本站 [LLM Wiki](../../wiki/references/llm-wiki-karpathy.md) 的「持久知识编译」对照。
+- 文档明确 **closed learning loop**、**平台无关的 AIAgent 核心**、**Profile 隔离**（`hermes -p` 独立 `HERMES_HOME`）等设计原则，便于与本站 [LLM Wiki](../../wiki/concepts/llm-wiki-karpathy.md) 的「持久知识编译」对照。
 - 提供 **LLM 维护者入口**（`llms.txt` / `llms-full.txt`），适合作为后续增量 ingest 的索引而非一次性粘贴 1.8MB 正文。
 
 ## 公开要点（归纳）

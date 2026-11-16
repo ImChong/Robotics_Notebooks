@@ -211,6 +211,6 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - Physical Intelligence FAST tokenizer（博客外链 [arXiv:2601.15370](https://arxiv.org/abs/2601.15370)）— 离散动作接口的上游工作
-- [π₀ Policy](../methods/π0-policy.md) — FAST + flow 双接口的 π 系开源栈
+- [π₀ Policy](../methods/pi0-policy.md) — FAST + flow 双接口的 π 系开源栈
 - TensorStream 工程博客：https://www.perceptron.inc/blog/tensorstream
 - [Xiaomi-Robotics-1](./xiaomi-robotics-1.md) — 另一条 **100k h** 级 UMI 预训练、权重 Coming soon 的对照

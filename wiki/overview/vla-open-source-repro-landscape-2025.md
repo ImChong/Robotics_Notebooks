@@ -11,7 +11,7 @@ original:
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../methods/pi07-policy.md
   - ../methods/defi-decoupled-dynamics-vla.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
@@ -106,7 +106,7 @@ flowchart TB
 
 | 项目 | 核心贡献（归纳） | 一手仓库 | 本站相关页 |
 |------|------------------|----------|------------|
-| **OpenPI** | Physical Intelligence 的 π0 / π0-FAST / π0.5；VLM 语义 + flow matching 动作；多真机平台微调 | [openpi](https://github.com/Physical-Intelligence/openpi) | [π0 Policy](../methods/π0-policy.md)、[π0.7](../methods/pi07-policy.md)、[VLA](../methods/vla.md) |
+| **OpenPI** | Physical Intelligence 的 π0 / π0-FAST / π0.5；VLM 语义 + flow matching 动作；多真机平台微调 | [openpi](https://github.com/Physical-Intelligence/openpi) | [π0 Policy](../methods/pi0-policy.md)、[π0.7](../methods/pi07-policy.md)、[VLA](../methods/vla.md) |
 | **VLA-Adapter** | ~0.5B 轻量 VLA；Bridge Attention 注入 VL；强调低机器人预训练数据 | [VLA-Adapter](https://github.com/OpenHelix-Team/VLA-Adapter) | [VLA](../methods/vla.md)、[选型 Query](../queries/manipulation-vla-architecture-selection.md) |
 | **RLinf** | 大规模 RL **系统**（流水线、通信、调度）；内置 **STEAM/RECAP** 离线 advantage + CFG 管线；**RLinf-USER** 真机在线 HAL/异步/buffer；对接 OpenPI | [RLinf](https://github.com/RLinf/RLinf) | [STEAM](../entities/paper-steam-advantage-modeling.md)、[RLinf-USER](../entities/paper-rlinf-user.md)、[VLA](../methods/vla.md)、[强化学习](../methods/reinforcement-learning.md) |
 | **RLark** | RLinf 生态 **跨集群云原生平台**（kcp 控制面、Domain/Job/Task、云 GPU↔边缘 Pod 直连）；2026-09 开源 | [RLark](https://github.com/RLinf/RLark) | [RLark](../entities/rlark.md)、[RLinf 归档](../../sources/repos/rlinf.md) |
