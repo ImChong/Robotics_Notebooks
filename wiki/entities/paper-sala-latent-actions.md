@@ -12,7 +12,7 @@ sources:
   - ../../sources/papers/sala-arxiv-2611-17110.md
   - ../../sources/sites/sala-project-20261116.md
 related:
-  - ./paper-egox-embodiment-dreaming.md
+  - ./paper-egox-mxt-plus.md
   - ./paper-stvla-spatial-temporal-memory.md
 summary: "以机器人动作重建提供控制锚点，用原子动作的语言相似度把无配对人类视频潜在动作对齐到机器人潜在动作，再将无动作标签的人类视频用于 VLA 预训练与任务后训练。"
 ---
@@ -81,7 +81,7 @@ flowchart TD
 | 工作 | 关键接口与训练阶段 | 边界与取舍 |
 |---|---|---|
 | 本文 | 以机器人动作重建提供控制锚点，用原子动作的语言相似度把无配对人类视频潜在动作对齐到机器人潜在动作，再将无动作标签的人类视频用于 VLA 预训练与任务后训练。 | Tokenizer 训练依赖原子动作文字描述；Scaling 分析每种设置一次训练且最高 2,678 小时，规模外推及成功率关系尚未确立；官网标注 Code soon。 |
-| [EgoX](./paper-egox-embodiment-dreaming.md) | 同领域相关研究，侧重不同的学习或动作接口 | 不能把不同基准、度量或硬件结果直接横比 |
+| [EgoX](./paper-egox-mxt-plus.md) | 同领域相关研究，侧重不同的学习或动作接口 | 不能把不同基准、度量或硬件结果直接横比 |
 | [STVLA](./paper-stvla-spatial-temporal-memory.md) | 从另一维度处理学习、记忆或控制问题 | 验收须按论文各自协议建立独立基线 |
 
 ## 结论
@@ -115,7 +115,7 @@ Tokenizer 训练依赖原子动作文字描述；Scaling 分析每种设置一�
 
 ## 关联页面
 
-- [EgoX](./paper-egox-embodiment-dreaming.md)
+- [EgoX](./paper-egox-mxt-plus.md)
 - [STVLA](./paper-stvla-spatial-temporal-memory.md)
 - [VLA 学习纵深路线](../../roadmap/depth-vla.md)
 - [跨本体迁移纵深路线](../../roadmap/depth-cross-embodiment.md)

@@ -6,10 +6,12 @@ project: https://egox-dream.github.io/
 code: https://github.com/egox-dream/egox
 tags: [paper, robotics, robot-learning, manipulation, imitation-learning, cross-embodiment, humanoid, egocentric, cmu, nvidia]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-16
 summary: "EgoX/MXT+ 跨本体共享 Transformer 与专用观测/动作接口，辅以训练期未来潜变量 Dreaming；37 页论文已通读：进度 0.63→0.80、OOD 0.53→0.77，成功率 0.35→0.56。"
 related:
   - ./paper-exe-cross-embodiment.md
+  - ./paper-sala-latent-actions.md
+  - ./paper-stvla-spatial-temporal-memory.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
 original:
@@ -165,6 +167,8 @@ sequenceDiagram
 | 工作 | 对比定位 |
 |---|---|
 | [EXE](./paper-exe-cross-embodiment.md) | EXE 将潜在动作拆成共享/本体特有因子；EgoX 保持本体专用模态与动作接口、共用 trunk 并辅以 Dreaming |
+| [SALA](./paper-sala-latent-actions.md) | SALA 用动作语义软邻域对齐无配对的人机视频；EgoX 从模态与本体专属动作接口入手，叠加未来潜变量目标 |
+| [STVLA](./paper-stvla-spatial-temporal-memory.md) | STVLA 检索历史几何状态辅助单次任务执行；EgoX 借跨本体数据与训练期 Dreaming 改善策略迁移 |
 | [操作学习](../tasks/manipulation.md) | EgoX 聚焦用异构操作示范预训练，再针对目标机器人任务微调 |
 | [移动操作](../tasks/loco-manipulation.md) | Kitchen-Cleanup 含速度命令，粒度过粗的动作专家容易丢失关键控制通道 |
 
@@ -178,6 +182,9 @@ sequenceDiagram
 - **无实跑结论：** 本次没有运行 GPU 训练、Isaac Sim 或真机部署，仅核查静态源码入口与控制流。
 
 ## 关联页面
+
+- [SALA：语义对齐潜在动作](./paper-sala-latent-actions.md)
+- [STVLA：时序几何记忆 VLA](./paper-stvla-spatial-temporal-memory.md)
 
 - [EXE：第一视角跨本体潜在动作预训练](./paper-exe-cross-embodiment.md)
 - [机器人操作任务](../tasks/manipulation.md)

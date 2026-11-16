@@ -13,7 +13,7 @@ sources:
   - ../../sources/sites/stvla-project-20261116.md
 related:
   - ./paper-sala-latent-actions.md
-  - ./paper-egox-embodiment-dreaming.md
+  - ./paper-egox-mxt-plus.md
 summary: "将预训练视觉几何基础模型的空间特征与视觉 token 一起写入有界时序记忆，按相关性和互补性选取历史证据来条件化 VLA 动作。"
 ---
 
@@ -80,7 +80,7 @@ flowchart TD
 |---|---|---|
 | 本文 | 将预训练视觉几何基础模型的空间特征与视觉 token 一起写入有界时序记忆，按相关性和互补性选取历史证据来条件化 VLA 动作。 | 几何模型及记忆检索会引入附加计算与存储，结果主要在论文指定基准和 G2 双臂上验证；项目页未发现官方可运行训练/评测代码。 |
 | [SALA](./paper-sala-latent-actions.md) | 同领域相关研究，侧重不同的学习或动作接口 | 不能把不同基准、度量或硬件结果直接横比 |
-| [EgoX](./paper-egox-embodiment-dreaming.md) | 从另一维度处理学习、记忆或控制问题 | 验收须按论文各自协议建立独立基线 |
+| [EgoX](./paper-egox-mxt-plus.md) | 从另一维度处理学习、记忆或控制问题 | 验收须按论文各自协议建立独立基线 |
 
 ## 结论
 
@@ -114,7 +114,7 @@ flowchart TD
 ## 关联页面
 
 - [SALA](./paper-sala-latent-actions.md)
-- [EgoX](./paper-egox-embodiment-dreaming.md)
+- [EgoX](./paper-egox-mxt-plus.md)
 - [VLA 学习纵深路线](../../roadmap/depth-vla.md)
 - [跨本体迁移纵深路线](../../roadmap/depth-cross-embodiment.md)
 
