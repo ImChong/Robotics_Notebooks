@@ -75,6 +75,17 @@ GMR 的核心命题很直接：**retargeting matters**。论文指出，humanoid
 
 如果参考轨迹本身物理上很糟，策略会陷入两难：严格跟踪会摔，保持稳定又会偏离参考。最后得到的控制器可能既不像人，也不够稳。
 
+## 对比
+
+| 路线 | 处理方式 | 主要取舍 |
+|---|---|---|
+| 直接复用人体动作 | 将人体运动映射为机器人参考 | 人机骨长、关节约束与接触差异可能导致脚滑和不可行姿态 |
+| General Motion Retargeting（GMR） | 先解决本体差异，再向运动跟踪策略提供机器人可行参考 | 强调数据预处理质量对后续 RL 跟踪性能的上限影响 |
+| 下游 RL 追踪器 | 学习稳定执行给定参考 | 能补偿部分动力学误差，但不能自动修复所有重定向标签缺陷 |
+
+这是重定向层与控制层的功能比较，不是对未列明基线的量化优劣宣称；见 [原项目](https://jaraujo98.github.io/retargeting_matters/) 和 [归档](../../sources/papers/humanoid_rl_stack_01_retargeting_matters_general_motion_retargeting_f.md)。
+
+
 ## 结论
 
 **这篇的主张是把 retargeting 从「训练前处理一下数据」升格为独立研究对象：参考轨迹的物理可行性，往往在 RL 开始之前就决定了 motion tracking 策略的上限。**
