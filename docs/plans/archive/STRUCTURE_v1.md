@@ -1,5 +1,7 @@
 # 机器人技术栈项目目录结构 v1
 
+> **历史归档（已停用）**：本文档为 2026-04-08 早期目录结构草案（其中的 `wiki/math/`、`wiki/control/` 等多级目录并未采用）。当前仓库实际分层与维护规范请以 [AGENTS.md](../../../AGENTS.md) 与 [schema/content-directories.md](../../../schema/content-directories.md) 为准。
+
 > 版本：v1.0
 > 日期：2026-04-08
 > 定位：面向机器人全栈成长路径的技术栈导航项目

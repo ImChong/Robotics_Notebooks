@@ -406,7 +406,7 @@
       var ENTRANCE_MS = 900;
       var ENTRANCE_STAGGER_MS = 380;
       var reduceMotion = false;
-      try { reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { /* ignore */ }
+      try { reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (_e) { /* ignore */ }
       if (reduceMotion || typeof IntersectionObserver === 'undefined') {
         renderPositions();
         return;

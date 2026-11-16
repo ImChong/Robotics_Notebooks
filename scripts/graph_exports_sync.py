@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Copy graph-related JSON from exports/ to docs/exports/ for GitHub Pages.
 
-Single place for filenames and copy logic: used by ``make graph``,
-``sync_all_stats.py``, and ``sync_wiki.sh`` to avoid drift.
+Single place for filenames and copy logic: used by ``make graph``
+and ``sync_all_stats.py`` to avoid drift.
 """
 
 from __future__ import annotations
@@ -36,7 +36,7 @@ def activity_source(root: Path) -> str | None:
     """``exports/wiki-activity.json`` 里 generate_link_graph 记的 recency 来源。
 
     文件缺失或不可解析时返回 ``None``：此时本轮没有新生成图谱产物
-    （``sync_wiki.sh`` 式的分步流程），无从判断降级与否，交由调用方。
+    （例如分步手工调用），无从判断降级与否，交由调用方。
     """
     src = root / "exports" / ACTIVITY_FILE
     if not src.exists():
