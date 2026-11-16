@@ -5,15 +5,17 @@ Usage: python3 fetch_robots.py            # 全部
 
 路径照 Robot Description Gallery Online 的 download.js 解析：package://<pkg>/... 按 packages 映射到仓库内目录，
 相对路径按 URDF 所在目录；文件按仓库内路径原样存在 assets/robots/<id>/ 下，舞台用同一套 packages / workingPath 读取。
-Collada 文件里引用的贴图也一并下载。走 TLS 代理时设置 SSL_CERT_FILE。
+Collada 文件里引用的贴图也一并下载。走 TLS 代理时设置 SSL_CERT_FILE（兼容 TTS_CA_BUNDLE）。
 上游只发布 xacro 的（create2、jackal）：xacro:include 引到的文件递归下载（$(find pkg) 按 packages 映射），
 网格从所有这些文件里找（网格可能作为宏参数写在 <visual> 外面）；展开在舞台加载时做（robot3d.js）。
 照画廊的 build_registry.py：$(optenv NAME 默认值) 取默认值；xacro_stubs 里的包（仓库里没有的 ROS 包，比如 Jackal 的雷达驱动）
 不下载，展开时当空文件；<xacro:if> / <xacro:unless> 里的 include 和 xacro 里的网格找不到就跳过（默认配置用不到的附件）。
 """
 import json
+import os
 import posixpath
 import re
+import ssl
 import sys
 import urllib.error
 import urllib.request
@@ -22,10 +24,12 @@ from pathlib import Path
 HERE = Path(__file__).parent
 MANIFEST = json.loads((HERE / "robots.json").read_text(encoding="utf-8"))["robots"]
 OUT = HERE / "assets" / "robots"
+_CA_BUNDLE = os.environ.get("SSL_CERT_FILE") or os.environ.get("TTS_CA_BUNDLE")
+_SSL_CTX = ssl.create_default_context(cafile=_CA_BUNDLE) if _CA_BUNDLE else None
 
 
 def get(url):
-    with urllib.request.urlopen(url, timeout=60) as r:
+    with urllib.request.urlopen(url, timeout=60, context=_SSL_CTX) as r:
         return r.read()
 
 

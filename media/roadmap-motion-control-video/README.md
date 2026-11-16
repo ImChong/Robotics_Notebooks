@@ -42,10 +42,10 @@
 cd media/roadmap-motion-control-video
 npm install
 pip install edge-tts imageio-ffmpeg numpy jieba    # jieba 可选：字幕按词断行
-CHROME_PATH=/path/to/chrome python3 build.py all   # 产物在 out/
+CHROME=/path/to/chrome python3 build.py all   # 产物在 out/（也兼容 CHROME_PATH）
 ```
 
-- 配音用 [edge-tts](https://github.com/rany2/edge-tts)（微软在线 TTS，需联网），默认 `VOICE=zh-CN-YunxiNeural`、`RATE=+6%`；经 TLS 代理访问时设 `TTS_CA_BUNDLE=<证书链路径>`。
+- 配音用 [edge-tts](https://github.com/rany2/edge-tts)（微软在线 TTS，需联网），默认 `VOICE=zh-CN-YunxiNeural`、`RATE=+6%`；经 TLS 代理访问时设 `SSL_CERT_FILE=<证书链路径>`（兼容 `TTS_CA_BUNDLE`）。
 - 配音与帧按内容哈希缓存在 `cache/`，改稿后只重做变动部分；`python3 build.py all c08` 只出某一章。
 - 改稿后先出片段给人看：`python3 build.py clip c08-042,c08-044:1+2 clip-c08` 只出这几张幻灯片（`:1+2` 表示只要该页第 1、2 句旁白），每张一个章节标记。
 - 路线原文更新后，改对应的 `chapters/*.txt` 再重跑即可。

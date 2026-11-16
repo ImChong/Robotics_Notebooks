@@ -25,9 +25,10 @@ import edge_tts
 import edge_tts.communicate
 import imageio_ffmpeg
 
-# edge-tts pins certifi's bundle; behind a TLS-intercepting proxy point it at SSL_CERT_FILE instead.
-if os.environ.get("SSL_CERT_FILE"):
-    edge_tts.communicate._SSL_CTX = ssl.create_default_context(cafile=os.environ["SSL_CERT_FILE"])
+# edge-tts pins certifi's bundle; behind a TLS-intercepting proxy point it at SSL_CERT_FILE (or TTS_CA_BUNDLE) instead.
+_CA_BUNDLE = os.environ.get("SSL_CERT_FILE") or os.environ.get("TTS_CA_BUNDLE")
+if _CA_BUNDLE:
+    edge_tts.communicate._SSL_CTX = ssl.create_default_context(cafile=_CA_BUNDLE)
 
 HERE = Path(__file__).parent
 NAME = sys.argv[1] if len(sys.argv) > 1 else "ep001"
