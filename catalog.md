@@ -3880,7 +3880,7 @@
 - [OpenEAI-VLA（arXiv:2606.03392）](wiki/entities/paper-openeai-vla.md) — OpenEAI-VLA**（*OpenEAI-Platform: An Open-source Embodied Artificial Intelligence Hardware-Software `📅unknown` `[entity_page]`
 - [OpenFlyV2（arXiv:2610.39287）](wiki/entities/paper-openflyv2.md) — OpenFlyV2**（*OpenFlyV2: An onboard vision-language-action model for aerial perception and navigati `📅unknown` `[entity_page]`
 - [OpenJaws（arXiv:2610.36598）](wiki/entities/paper-openjaws.md) — OpenJaws**（*OpenJaws: An Open Hardware UMI Framework with Stereo Localization for Generalist Manip `📅unknown` `[entity_page]`
-- [OpenNWM（arXiv:2611.01844）](wiki/entities/paper-opennwm.md) — OpenNWM**（*OpenNWM: A Generalist Navigation World Model with Latent Action Pretraining*，[arXiv:261 `📅unknown` `[entity_page]`
+- [OpenNWM：基于潜动作预训练的通用导航世界模型 / A Generalist Navigation World Model with Latent Action Pretraining](wiki/entities/paper-opennwm.md) — 论文：** Dujun Nie、Ruiqi Song 等，arXiv:2611.01844**v1**（2026-11-01）。[原文 v1](https://arxiv.org/html/261 `📅unknown` `[entity_page]`
 - [OpenTac：可定制、可扩展、可迁移的三维触觉感知开放生态](wiki/entities/paper-opentac-open-3d-tactile-sensing-ecosystem.md) — OpenTac**（*OpenTac: An Open Ecosystem for Customizable, Scalable, and Transferable 3D Tactile Sens `📅unknown` `[entity_page]`
 - [Track Any Motions under Any Disturbances](wiki/entities/paper-opentrack.md) — Track Any Motions under Any Disturbances**（OpenTrack / Any2Track，arXiv:2509.13833）要求人形 motion trac `📅unknown` `[entity_page]`
 - [OpenVIO（arXiv:2610.41671）](wiki/entities/paper-openvio.md) — OpenVIO**（*OpenVIO: A Versatile Open-Source Visual-Inertial Odometry System*，[arXiv:2610.41671](ht `📅unknown` `[entity_page]`
