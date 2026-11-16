@@ -26,3 +26,7 @@
 
 - [307 条固定快照分批台账](../../docs/checklists/awesome-agentic-robots-node-coverage.md)：记录候选与验收状态，详情链接统一回各自的论文实体。
 - [PAFF 独立详情](../../wiki/entities/paper-paff-2212-07398.md)：第一批完成原文与相关源码入口核查。
+
+## Stub 优先阶段补充
+
+按用户要求先保留独立节点与地址。固定快照同时读取主清单 307 条和 additional_papers.yaml 23 条，共 330 条。[全量入口](../../wiki/overview/awesome-agentic-robots-node-index.md)及[逐条台账](../../docs/checklists/awesome-agentic-robots-node-coverage.json)记录来源地址、复用节点与缺失地址。arXiv 摘要/Comments 及部分 HTML 仅用于提取入口，**不代表通读原文**。新节点不生成未经核实的方法或源码图。

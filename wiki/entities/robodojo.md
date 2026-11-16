@@ -279,3 +279,9 @@ sequenceDiagram
 
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [原文](https://arxiv.org/abs/2607.04434)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2607.04434](https://arxiv.org/abs/2607.04434)。
+- **项目或官方发布入口：** [项目页](http://robodojo-benchmark.com/)。
+- **清单记录：** `survey_ax_2607_04434`；本次仅补充身份与链接，未重新通读或核验已有结论。

@@ -1,4 +1,5 @@
 ---
+arxiv: "2311.01455"
 
 type: entity
 tags: [entity, simulator, data-generation, llm, embodied-ai, procedural, stanford]
@@ -68,3 +69,9 @@ summary: "LLM 驱动的机器人任务与场景自动生成框架：程序化扩
 
 - [RoboGen 项目页](https://robogen-ai.github.io/)
 - [机器人训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2311.01455](https://arxiv.org/abs/2311.01455)。
+- **项目或官方发布入口：** [官方代码或发布入口](https://github.com/Genesis-Embodied-AI/RoboGen)。
+- **清单记录：** `survey_ax_2311_01455`；本次仅补充身份与链接，未重新通读或核验已有结论。

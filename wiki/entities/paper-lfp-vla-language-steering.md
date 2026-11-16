@@ -151,3 +151,9 @@ LFP 展示了冻结 VLA 后通过闭环改写语言改善执行的路径，但�
 - [VLA 方法页](../methods/vla.md)
 - [arXiv PDF](https://arxiv.org/pdf/2606.12299v1)
 - 论文相关工作：Wu 等 *Do What You Say*（arXiv:2510.16281，LIBERO-OOD 来源）、Jain 等 *A smooth sea never made a skilled sailor*（arXiv:2506.05294，学习搜索）
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2606.12299](https://arxiv.org/abs/2606.12299)。
+- **项目或官方发布入口：** [项目页](https://hyunjoe.xyz/LanguagePolicy)。
+- **清单记录：** `survey_ax_2606_12299`；本次仅补充身份与链接，未重新通读或核验已有结论。

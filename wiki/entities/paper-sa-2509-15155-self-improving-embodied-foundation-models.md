@@ -133,3 +133,9 @@ Self-improving embodied foundation models.
 
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
 - [原文](https://arxiv.org/abs/2509.15155)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2509.15155](https://arxiv.org/abs/2509.15155)。
+- **项目或官方发布入口：** [项目页](https://self-improving-efms.github.io)。
+- **清单记录：** `survey_ax_2509_15155`；本次仅补充身份与链接，未重新通读或核验已有结论。

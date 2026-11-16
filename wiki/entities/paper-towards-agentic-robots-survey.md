@@ -155,6 +155,10 @@ flowchart LR
 - **版本：** 本页锁定论文 v1；[配套文献索引](../../sources/repos/awesome-agentic-robots-survey-index.md) 是动态材料。
 - **核读边界：** [来源归档](../../sources/papers/towards_agentic_robots_arxiv_2610_20442.md) 已记录 v1 HTML 正文 §1–§9 的通读范围；TeX 原包未能解包，所有被引研究未逐篇独立审计。`complete` 表示本综述节点内容与正文核对完成，不代表作者引用的每个项目均经复现实验。
 
+## 全量独立节点入口
+
+[Awesome Agentic Robots 全量节点导航](../overview/awesome-agentic-robots-node-index.md)：330 条记录均已有独立节点；允许 stub，未核实的地址与未完成深读分别记录。
+
 ## 分批补全的独立详情节点
 
 - [PAFF](paper-paff-2212-07398.md)：基础模型反馈重标注与策略适应；对应 Model / Adaptation。

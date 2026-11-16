@@ -141,3 +141,9 @@ Robotic agent operating layer for scene-conditioned planning, skill execution, v
 - [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
 - [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)
 - [原文 / 官方入口](https://arxiv.org/abs/2607.10350)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2607.10350](https://arxiv.org/abs/2607.10350)。
+- **项目或官方发布入口：** [项目页](https://amap-cvlab.github.io/ABot-AgentOS)。
+- **清单记录：** `survey_ax_2607_10350`；本次仅补充身份与链接，未重新通读或核验已有结论。
