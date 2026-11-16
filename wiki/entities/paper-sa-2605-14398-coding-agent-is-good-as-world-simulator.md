@@ -130,3 +130,9 @@ Builds physics‑based world models through executable simulation code, with a f
 
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
 - [原文](https://arxiv.org/abs/2605.14398)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2605.14398](https://arxiv.org/abs/2605.14398)。
+- **项目或官方发布入口：** [项目页](https://uwsbel.github.io/chrono-agentic-website/)。
+- **清单记录：** `survey_ax_2605_14398`；本次仅补充身份与链接，未重新通读或核验已有结论。

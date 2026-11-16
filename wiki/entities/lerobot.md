@@ -1,4 +1,5 @@
 ---
+arxiv: "2602.22818"
 
 type: entity
 title: LeRobot (Hugging Face)

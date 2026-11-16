@@ -208,3 +208,9 @@ sequenceDiagram
 
 - [NaVILA 深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/08_Navigation/NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigation/NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigation.html)
 - [RSS 2025 论文页](https://www.roboticsproceedings.org/rss21/p018.html)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2412.04453](https://arxiv.org/abs/2412.04453)。
+- **项目或官方发布入口：** [项目页](https://navila-bot.github.io/)。
+- **清单记录：** `survey_ax_2412_04453`；本次仅补充身份与链接，未重新通读或核验已有结论。

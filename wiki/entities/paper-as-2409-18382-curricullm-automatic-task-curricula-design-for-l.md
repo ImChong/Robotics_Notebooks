@@ -117,3 +117,9 @@ LongchaoDa AwesomeSim2Real 收录；分组 Reward / LLM-Based Reward Design。 �
 
 - [AwesomeSim2Real 仓库](https://github.com/LongchaoDa/AwesomeSim2Real)
 - [原文](https://arxiv.org/abs/2409.18382)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2409.18382](https://arxiv.org/abs/2409.18382)。
+- **项目或官方发布入口：** [项目页](https://iconlab.negarmehr.com/CurricuLLM/)。
+- **清单记录：** `survey_ax_2409_18382`；本次仅补充身份与链接，未重新通读或核验已有结论。

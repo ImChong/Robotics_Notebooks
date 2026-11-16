@@ -185,3 +185,9 @@ sequenceDiagram
 
 - [VLAW / arXiv:2602.12063v2](https://arxiv.org/pdf/2602.12063v2) · [ICML 2026 PMLR 正式版](https://proceedings.mlr.press/v306/guo26i.html)
 - [VLAW 项目主页](https://sites.google.com/view/vlaw-arxiv) · [官方共享 Ctrl-World 代码](https://github.com/Robert-gyj/Ctrl-World)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2602.12063](https://arxiv.org/abs/2602.12063)。
+- **项目入口：** [VLAW 官方项目页](https://sites.google.com/view/vlaw-arxiv)。
+- **清单记录：** `survey_ax_2602_12063`；本次导航沿用主分支核读后的项目地址。

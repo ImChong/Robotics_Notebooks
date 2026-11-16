@@ -105,3 +105,9 @@ flowchart TD
 - [arXiv:2307.06135](https://arxiv.org/abs/2307.06135)
 
 - 核对（2026-11-02）：原 arXiv 编号 2307.01871 对应的是另一篇论文，已按 arXiv 官方记录（API 标题、作者、提交日期）更正为 2307.06135。
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2307.06135](https://arxiv.org/abs/2307.06135)。
+- **项目或官方发布入口：** [项目页](https://sayplan.github.io)。
+- **清单记录：** `survey_ax_2307_06135`；本次仅补充身份与链接，未重新通读或核验已有结论。

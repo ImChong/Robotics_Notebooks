@@ -142,3 +142,9 @@ LWD 展示了机队价值学习驱动 VLA 后训练的系统能力，但均分�
 - 项目页：<https://finch.agibot.com/research/lwd>
 - 论文引用的前序工作：QAM（arXiv:2601.14234）、SOP 在线后训练系统（arXiv:2601.03044）、π0.6*（arXiv:2511.14759）
 - [强化学习方法页](../methods/reinforcement-learning.md)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2605.00416](https://arxiv.org/abs/2605.00416)。
+- **项目或官方发布入口：** [项目页](https://learning-while-deploying.github.io/)。
+- **清单记录：** `survey_ax_2605_00416`；本次仅补充身份与链接，未重新通读或核验已有结论。
