@@ -7,7 +7,10 @@
 - **项目 / 补充页：** [ResGAC](https://resgac.github.io/ResGAC-website/)；[实验详情](https://resgac.github.io/ResGAC-website/details.html)
 - **作者 / 机构：** Joohwan Seo、Xiaofeng Guo、Jinkun Cao、Roberto Horowitz、Rocky Duan、Guanya Shi、Koushil Sreenath；UC Berkeley、Amazon Frontier AI & Robotics、CMU
 - **平台：** Unitree G1（29 DoF：14 个手臂关节 + 15 个腿/腰关节）
-- **代码状态（2026-10-10）：** 未发现公开代码仓库；项目页说明匿名评审期间框架名称与仓库暂不公开。
+- **代码状态（2026-11-10）：** 官方展示站点只公开静态网页，首页标注 `Code (released on acceptance)`；未提供可运行的训练、推理或控制器代码。
+- **原文核对日期：** 2026-11-10
+- **核对范围：** 通读 arXiv 官方 HTML v1 的摘要、I 引言、II-A/B 李群与问题定义（式 1–7）、III-A/B/C/D 几何导纳/残差强化学习/操作参考坐标系/训练（式 8–30、Tables I–II）、IV-A/B/C/D/E 五类实验小节（Tables III–IV、Peg-in-Hole、Mime-man）、V 结论与参考文献；另外核查项目页面首页与补充实现页的开放状态。
+- **通读：** 已完成
 - **一句话说明：** ResGAC 以几何导纳控制提供可解释的末端位姿跟踪底座，再用残差强化学习补偿动态误差并协调腿/腰，使 G1 在站立、移动基座和行走扰动下保持精确双手跟踪。
 
 ## 核心摘录
@@ -26,9 +29,21 @@ ResGAC 将两者放进同一关节位置目标接口：GAC 产生名义手臂目
 - **移动基座世界坐标跟踪：** ResGAC 8.8 mm / 2.69°，E2E RL 30 mm / 13.75°。
 - **行走静态手保持：** H0 将 roll 传递比从 0.958 降到 0.790、z MAE 从 22.5 mm 降到 12.6 mm；pitch 传递没有改善（0.954 对 0.964）。
 
-## 原文摘要
+## 全文核验笔记（§III–V）
 
-> Precise Cartesian end-effector tracking is essential for humanoid robots performing contact-rich tasks while walking or under whole-body disturbances. This work proposes ResGAC, a hybrid framework combining geometric admittance control (GAC) with residual reinforcement learning (RL). GAC provides a structured nominal action for end-effector tracking, while residual RL compensates for dynamic effects and coordinates whole-body motion. The method achieves accurate SE(3) tracking on a Unitree G1 humanoid across standing, moving-base, and walking scenarios, including real-world peg-in-hole insertion.
+- **控制定义（§III-A2，式 13–18）：** GAC 利用 SE(3) 左不变几何误差、相对 body Jacobian、阻尼伪逆与零空间项计算双臂关节位置目标；作者明确说明此处 GAC **不使用实测外部 wrench**，不能将其描述成已验证的力传感器闭环接触控制。
+- **联合动作（§III-B，式 19–22）：** 手臂动作 = GAC 名义目标 + 经缩放/裁剪的 RL 残差（s_r=0.75，c_r=1.0）；其余 15 个腿/腰关节位置由 RL 直接输出。actor 观测含关节/IMU、GAC 名义目标、任务误差、相对 twist、前两帧动作及步态相位；critic 在仿真训练期可额外看 pelvis 线速度。
+- **参考系（§III-C，式 23–25）：** H0 只保留 pelvis 世界平面位置与偏航，移除 roll/pitch/heave 对末端命令参考的传播；实际足端冲击与全身动力学耦合仍存在。
+- **训练（§III-D，Tables I–II）：** 25 项末端/步态/正则奖励，位置采用 L2²+L1 复合项、姿态采用 SO(3) trace 误差；课程 A–F 从站立固定目标递进到步行轨迹，逐步收紧跟踪误差；左右镜像 replay 增广及对称正则（式 30）。
+- **部署（§IV-A）：** Isaac Sim / Holosoma / FastSAC，4096 环境，一张 L40S 完整六阶段约 16 小时；GAC 和策略均为 50 Hz，真机 Pinocchio 计算运动学，低层 PD 跟踪关节位置。
+- **评测口径（§IV-B，Table III）：** 四种站立轨迹均留出；SONIC-Teleop-v1.1 用其公开模型的 heading 参考系，其余支持的基线使用 pelvis 参考系；setpoint 场景表格仅统计稳态样本。
+- **坐标系消融（§IV-C，Table IV）：** H0 的 roll 传递比从 0.958 降至 0.790、z MAE 从 22.50 mm 降至 12.56 mm；pitch 传递比 0.964 对 0.954 基本不变。
+- **操作实验（§IV-D）：** 站立插孔（直径 25 mm 销、35 mm 孔）ResGAC 18/20、SONIC-Teleop-v1.1 10/20；使用 OptiTrack 标记估计目标孔位，失败受到配准误差与标记遮挡影响。
+- **世界系测试（§IV-E）：** 运动外环依赖 OptiTrack 对 pelvis 的定位；ResGAC 为 8.8 mm / 2.69°，E2E RL 为 30.0 mm / 13.75°，属于作者特定硬件/评测条件下报告值。
+
+## 摘要标注修正
+
+历史版本中“原文摘要”的英文块引用实为总结性改写，不是逐字原文。本次移除伪引文；如需原文措辞请直接查阅[官方 HTML v1](https://arxiv.org/html/2610.09479v1)。
 
 ## Wiki 映射
 

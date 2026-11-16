@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, vla, world-model, humanoid, collaboration, technology-map]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-08
 related:
   - ../entities/paper-pixverse-r2.md
   - ../entities/paper-industrialvla-bench.md

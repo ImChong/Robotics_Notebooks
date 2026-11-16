@@ -3,7 +3,7 @@
 type: entity
 tags: [tooling, motion-editing, keyframes, urdf, mujoco, imitation-learning, data-pipeline, nvidia, stanford]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 related:
   - ./blender.md
   - ./mujoco.md
@@ -18,6 +18,7 @@ sources:
   - ../../sources/repos/cyoahs-robot-motion-editor.md
   - ../../sources/repos/stanford-tml-robot-keyframe-kit.md
   - ../../sources/repos/project-instinct-robot-motion-editor.md
+original: ../../sources/repos/cyoahs-robot-motion-editor.md
 summary: "三条互补的「机器人参考运动 / 关键帧」编辑链路：浏览器内 URDF+CSV（cyoahs）、MuJoCo MJCF+物理+Viser（Stanford robot_keyframe_kit）、Flask+URDF+NPZ（Project Instinct），分别服务日志后处理、仿真内关键帧编排与学习数据曲线修整。"
 ---
 
@@ -46,7 +47,7 @@ summary: "三条互补的「机器人参考运动 / 关键帧」编辑链路：�
 - **模仿学习与行为克隆** 常见路径是「遥操作 / 跟踪 / 重定向 → 离线修整 → 训练」；没有趁手编辑器时，团队往往用自写脚本改 NPZ/CSV，**可重复性与协作成本高**。
 - **三类工具覆盖不同栈**：纯静态站适合不外发数据；MuJoCo 集成路径适合要与 **接触 / IK / 物理步进** 对齐的编排；Flask+NPZ 路径贴近 **Project Instinct** 一类研究代码产出的数组约定。
 
-## 三条工具对照
+## 核心机制：三条工具对照
 
 | 维度 | [cyoahs/robot_motion_editor](https://github.com/cyoahs/robot_motion_editor) | [Stanford-TML/robot_keyframe_kit](https://github.com/Stanford-TML/robot_keyframe_kit) | [project-instinct/robot-motion-editor](https://github.com/project-instinct/robot-motion-editor) |
 |------|----------------|---------------------|------------------------|
@@ -77,11 +78,16 @@ flowchart LR
   U2 --> N
 ```
 
-## 选型提示
+## 工程实践与选型提示
 
 - **已有 Unitree 风格日志或 Seed CSV**：优先考虑 **cyoahs** 的双视口与 CSV 互转；注意其强调 **无上传** 的隐私模型。
 - **工作流已锚在 MuJoCo / Menagerie**：**robot_keyframe_kit** 提供 **镜像关节、机构检测、地面注入与 timed keyframe 序列**，并给出论文引用格式（见源文件）。
 - **仓库内策略导出已是 NPZ 且需拖拽曲线**：**Project Instinct** 编辑器与 [Project Instinct](./project-instinct.md) 研究栈同源，适合作为 **NPZ 曲线编辑** 的默认参照实现。
+
+## 局限与边界
+
+- 三条工具链均面向 **运动学/关键帧后处理**，不替代动力学一致性精炼或真机部署前的安全校验。
+- 格式与仿真栈强绑定（CSV / joblib+LZ4 / NPZ），跨栈复用仍需编写转换脚本。
 
 ## 关联页面
 

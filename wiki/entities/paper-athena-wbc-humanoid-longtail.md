@@ -6,7 +6,7 @@ updated: 2026-09-22
 arxiv: "2607.04837"
 summary: "Athena-WBC（arXiv:2607.04837，小鹏机器人）针对大规模人形 tracking 的训练集长尾残余失败，用能力对齐的 dynamic/balance privileged expert（改奖励与重力课程）+ 按动作路由 DAgger 蒸馏 + RL 微调，在 80 kg 自研人形上相对 SONIC-Base 配方改善长尾恢复与 held-out 跟踪，并提出 STC/TIS/MPJPE-W 评测。"
 related:
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/whole-body-control.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ./paper-humanoid-gpt.md
@@ -45,7 +45,7 @@ sources:
 - **能力瓶颈 vs 数据分配：** 实验证明去掉 effort/temporal **奖励惩罚**（No-smoothness）可显著提升跟踪，但 **Action Rate 暴涨** 不可部署——说明保守奖励是 **真实 capability 限制**，而非「再多采样就能解决」。
 - **专家按能力对齐而非按动作聚类：** dynamic 与 balance expert **看同一残余集**、用 **不同 acquisition recipe**；最终 **按 rollout SR 路由**，避免手工标注动作类型。
 - **蒸馏与 RL 分工清晰：** **multi-teacher 蒸馏** 主要负责 **训练集长尾恢复**；**RL 微调** 主要负责 **held-out TIS/MPJPE 与部署平滑度**（微调后 balance 子集 SR 可能略降）。
-- **评测工具可复用：** STC/TIS/MPJPE-W 针对「策略已很强、单阈值 SR 难区分」的高覆盖率 regime，可与 [SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](./paper-humanoid-gpt.md) 等 scaling 路线对照使用。
+- **评测工具可复用：** STC/TIS/MPJPE-W 针对「策略已很强、单阈值 SR 难区分」的高覆盖率 regime，可与 [SONIC](./nvidia-sonic.md)、[Humanoid-GPT](./paper-humanoid-gpt.md) 等 scaling 路线对照使用。
 - **产业样本：** 与 [DeepInsight](./deepinsight.md)、[ROVE](./paper-rove-humanoid-vla-intervention.md) 同属小鹏机器人栈；本文聚焦 **System 0 WBC 长尾**，尚无公开项目页与系统真机定量。
 
 ## 流程总览
@@ -139,7 +139,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
-- **Scaling 对照：** [SONIC](../methods/sonic-motion-tracking.md)（亿级帧 + 统一 token）、[Humanoid-GPT](./paper-humanoid-gpt.md)（2B 帧 + Transformer 专家蒸馏）、[EGM](../methods/egm-efficient-general-mimic.md)（bin 课程 + CDMoE，偏数据效率）
+- **Scaling 对照：** [SONIC](./nvidia-sonic.md)（亿级帧 + 统一 token）、[Humanoid-GPT](./paper-humanoid-gpt.md)（2B 帧 + Transformer 专家蒸馏）、[EGM](../methods/egm-efficient-general-mimic.md)（bin 课程 + CDMoE，偏数据效率）
 - **专家蒸馏先例：** BumbleBee（语义/运动聚类专家）、[Parkour in the Wild](./paper-parkour-in-the-wild.md)（地形专家 → DAgger → RLFT）
 - **小鹏栈：** [DeepInsight](./deepinsight.md)（全栈评测）、[ROVE](./paper-rove-humanoid-vla-intervention.md)（VLA 后训练）
 - **概念：** [Whole-Body Control](../concepts/whole-body-control.md)、[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)

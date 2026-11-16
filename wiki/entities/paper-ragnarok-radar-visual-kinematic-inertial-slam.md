@@ -3,7 +3,7 @@ type: entity
 project_id: ragnarok-radar-visual-kinematic-inertial-slam
 tags: [paper, quadruped, slam, state-estimation, radar, legged-robot, visual-inertial, spot, snu, tum, eth]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-09
 arxiv: "2610.11531"
 code: https://github.com/hanjun815/RAGNAROK
 project: https://ragnarok-rvki-slam.github.io/RAGNAROK/
@@ -13,6 +13,7 @@ related:
   - ../concepts/state-estimation.md
   - ../entities/quadruped-robot.md
   - ../methods/lidar-odometry-fusion.md
+  - ./paper-dsert-roll.md
   - ../comparisons/kalman-filter-vs-optimization-based-estimation.md
 sources:
   - ../../sources/papers/ragnarok_arxiv_2610_11531.md
@@ -182,6 +183,7 @@ sequenceDiagram
 | [卡尔曼 vs 优化式估计](../comparisons/kalman-filter-vs-optimization-based-estimation.md) | RAGNAROK 属于优化式（B 样条 + 因子图），可在窗口内重线性化，但计算更重 |
 | x-RIO / DRIFT / Holistic Fusion | 论文室外平均 APEt 分别为 6.915 / 5.909 / 9.800 m，对比 RAGNAROK-SLAM 的 0.387 m |
 | GaRLILEO / Co-RaL | 同属雷达 + 腿运动学本体路线；RAGNAROK-RKI 在两套公开数据上更低 |
+| [DSERT-RoLL](./paper-dsert-roll.md)（CVPR 2026） | 同样关注雷达/视觉等异构传感器在退化环境中的互补；但 DSERT-RoLL 是**自动驾驶 3D 目标检测**（AP），RAGNAROK 是**腿式机器人 SLAM**（APE），指标与算法目标不可互换 |
 
 ## 局限与风险
 
@@ -197,6 +199,7 @@ sequenceDiagram
 - [运动控制任务页](../tasks/locomotion.md)
 - [四足机器人](../entities/quadruped-robot.md)
 - [激光里程计融合](../methods/lidar-odometry-fusion.md)
+- [DSERT-RoLL（多模态驾驶 3D 检测）](./paper-dsert-roll.md) — 对照跨模态感知检测与机器人雷达视觉定位的不同目标。
 
 ## 参考来源
 

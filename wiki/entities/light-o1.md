@@ -21,7 +21,6 @@ related:
   - ./paper-lightnav-0.md
   - ./light-react.md
   - ./paper-nymeria.md
-  - ./paper-nymeria.md
   - ./paper-scaling-laws-neural-language-models.md
   - ./hiw-500-dataset.md
   - ../tasks/humanoid-locomotion.md

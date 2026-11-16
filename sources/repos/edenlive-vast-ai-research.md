@@ -32,3 +32,13 @@ EdenLive 将**世界状态 / 规则**和**外观生成**分离：上游 coding a
 - 项目页：<https://vast-eden.ai/?p=edenlive>
 - 技术报告：<https://assets.vast-eden.ai/assets/edenlive/EdenLive-tech-report.pdf>
 - 权重：<https://huggingface.co/VAST-AI/EdenLive>
+
+## 固定版本源码复核（2026-11-13）
+
+- **版本：** [0b78d211bfa87b6d9b6281e9e36e55b974fe7bec](https://github.com/VAST-AI-Research/EdenLive/tree/0b78d211bfa87b6d9b6281e9e36e55b974fe7bec)
+- **核对范围：** 根README、realtime/run.py、impl/model_session.py、game5b/encoder.py全文；game5b/pipeline.py构造、initialize_cache、generate、encode_text与replace_text_embeddings完整函数；离线infer.py入口。
+- **通读：** 已完成
+
+实时run.py进入FlashDreams v2 CLI；模型会话reset建缓存，step调用pipeline.generate→finalize→VideoOutputStream.process，校验帧数后推进AR index。5B generate接收预编码proxy-DINO，首块传cover像素，后续跳过无效VAE编码；条件payload将cover stamp与control分开。更换prompt只替换cross-attention KV，保持自注意力历史。
+
+现公开5B/14B双向与四步权重、实时服务、EdenGolem及前端；未据此声称数据/训练recipe全部公开。LightX2V的RTX5090 24.7FPS是另行优化部署，不与H100论文测量合并。组件许可分开，DINOv3与FLUX非统一Apache2.0。未加载权重或运行GPU。

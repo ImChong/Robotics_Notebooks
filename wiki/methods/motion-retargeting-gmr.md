@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-10-26
+updated: 2026-11-15
 arxiv: "2510.02252"
 related:
   - ../concepts/motion-retargeting.md
@@ -14,14 +14,13 @@ related:
   - ../entities/paper-umr-unified-motion-retargeting.md
   - ./beyondmimic.md
   - ../entities/paper-synthetic-video-humanoid-tasks.md
-  - ./sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../entities/paper-htd-refine-monocular-hmr.md
   - ../entities/gen2humanoid.md
   - ../entities/yanjie-ze.md
   - ../entities/paper-egohtr.md
   - ../entities/generative-motion-rig.md
   - ../entities/paper-humantracker.md
-  - ../entities/paper-core.md
   - ../entities/paper-core.md
   - ../entities/paper-rmr.md
   - ../entities/paper-hoi-retarget.md
@@ -204,7 +203,7 @@ GMR 只管姿态“像不像”，不管“能不能站稳”。
 几何最优不代表导数最优。
 
 ### 4. 何时怀疑「重定向在帮倒忙」
-若上游是人体 **估计/生成** 轨迹（全局漂移、脚滑、时序不连贯），几何重定向可能在「对齐人机比例」的同时 **放大** 空间误差；此时应做消融对比「重定向 → 跟踪」与「跳过中间层 → 跟踪」，参见下文 ExoActor 反例与 [SONIC](./sonic-motion-tracking.md) 讨论。
+若上游是人体 **估计/生成** 轨迹（全局漂移、脚滑、时序不连贯），几何重定向可能在「对齐人机比例」的同时 **放大** 空间误差；此时应做消融对比「重定向 → 跟踪」与「跳过中间层 → 跟踪」，参见下文 ExoActor 反例与 [SONIC](../entities/nvidia-sonic.md) 讨论。
 
 ## 工业界最佳实践
 
@@ -265,7 +264,7 @@ $$
 - [UMR](../entities/paper-umr-unified-motion-retargeting.md) — 学表面点对，不手写 GMR 式关键点；LAFAN1/BeyondMimic 上难动作成功率与体段误差优于 GMR（arXiv:2609.02134）
 - [GMR vs NMR vs Reactor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种路线的并排选型对照。
 - [DART（DartControl）](./dart-control.md) — SMPL-X 运动学输出经 GMR 等人形执行接口的常见上游之一。
-- [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 与「跳过重定向、直接 tracking」路线对照阅读。
+- [SONIC（规模化运动跟踪）](../entities/nvidia-sonic.md) — 与「跳过重定向、直接 tracking」路线对照阅读。
 - [ViT-H：带运动跟踪反馈的视频到人形控制](../entities/paper-vit-h-video-to-humanoid.md) — 直接从单目视频生成机器人参考动作，并用 tracker 执行反馈后训练生成器。
 - [Gen2Humanoid](../entities/gen2humanoid.md) — HY-Motion 生成轨迹经 GMR 到多机型的端到端胶水管线。
 - [EgoHTR](../entities/paper-egohtr.md) — rough-terrain 场景对齐人演示的 Human2Robot 上游之一。

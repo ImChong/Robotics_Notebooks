@@ -8,7 +8,7 @@ related:
   - ./smplolympics.md
   - ./jim-fan.md
   - ./tairan-he.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../tasks/teleoperation.md
   - ../concepts/motion-retargeting.md
   - ../concepts/sim2real.md
@@ -55,7 +55,7 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 
 - [Jim Fan（范林熹）](./jim-fan.md)
 - [Tairan He（何泰然）](./tairan-he.md)
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md)
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md)
 - [Teleoperation](../tasks/teleoperation.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)

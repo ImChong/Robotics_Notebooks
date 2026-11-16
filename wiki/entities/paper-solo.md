@@ -18,7 +18,7 @@ tags:
   - tsinghua
   - cuhk
 status: complete
-updated: 2026-09-22
+updated: 2026-11-12
 arxiv: "2608.26583"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -30,8 +30,11 @@ related:
   - ./x-humanoid.md
   - ../concepts/privileged-training.md
   - ../concepts/terrain-adaptation.md
+  - ./paper-notebook-meshmimic.md
   - ../tasks/locomotion.md
   - ../tasks/humanoid-locomotion.md
+original:
+  - ../../sources/papers/solo_arxiv_2608_26583.md
 sources:
   - ../../sources/papers/solo_arxiv_2608_26583.md
   - ../../sources/sites/solo-github-io.md
@@ -162,6 +165,8 @@ flowchart TB
 - **后盲区** — 前向胸相机；后退换向风险高于 SSR / RPL 等多向感知。
 
 ## 关联页面
+
+- [MeshMimic](./paper-notebook-meshmimic.md) — 借视频场景重建生成运动-地形参考，区别于 SOLO 的在线深度感知行走控制。
 
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md) — 感知楼梯 / 踏石索引
 - [DPL](./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — 同团队单深度重建前作

@@ -13,7 +13,7 @@ related:
   - ../concepts/curriculum-learning.md
   - ../concepts/domain-randomization.md
   - ../concepts/sim2real.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-behavior-foundation-model-humanoid.md
   - ./paper-reactivebfm.md
   - ./unitree-g1.md
@@ -43,7 +43,7 @@ summary: "ScaleBFM（arXiv:2607.15163）系统给出人形 BFM 规模化配方�
 
 ## 为什么重要
 
-- **首次系统拆解 BFM scaling 三轴**：相较 [SONIC](../methods/sonic-motion-tracking.md) 对 MoCap/算力/容量的初步 scaling，本文把 **PPO on-policy 数据量（GPU 并行 × rollout horizon）** 与 **参考运动行为覆盖（多源 102M 帧）** 分开度量，并给出 **同质 vs 异质** 数据扩展的两类 regime——对后续人形 foundation 数据策展有直接指导意义。
+- **首次系统拆解 BFM scaling 三轴**：相较 [SONIC](./nvidia-sonic.md) 对 MoCap/算力/容量的初步 scaling，本文把 **PPO on-policy 数据量（GPU 并行 × rollout horizon）** 与 **参考运动行为覆盖（多源 102M 帧）** 分开度量，并给出 **同质 vs 异质** 数据扩展的两类 regime——对后续人形 foundation 数据策展有直接指导意义。
 - **全局整体跟踪范式有明确 ablation**：相对 BeyondMimic 式 reward（**BFM-Bym** 消融）与去掉根平移/根–姿态解耦的惯例，**integrated global whole-body tracking** 在 BONES / Ours 双测试集上 consistently 降低 **G-MPKPE**，说明「行为语义」与「全身协调」需要同一奖励里一起学。
 - **Humanoid Transformer 证明架构 matters**：**3M 参数 M 档 Transformer** 已优于显著更大的 MLP；潜空间在 **RMSNorm 超球面** 上无辅助 loss 即呈现 locality、跨行为分区与噪声鲁棒性，且大模型下 **八控制模式潜表示收敛**——解释 mode 间 scaling 饱和现象。
 - **真机栈可复用**：[Unitree G1](./unitree-g1.md) 上 BFM 50 Hz（TensorRT）+ PD 200 Hz（LCM/SDK2），global 模式用 **VIVE Ultimate Tracker** 根定位，local 模式相对根重锚定；与 [ReactiveBFM](./paper-reactivebfm.md) 共享团队与部署文化。
@@ -139,12 +139,12 @@ flowchart TB
 - 架构确实 matters，但不是单调「越大越好」：3M 参数的 Humanoid Transformer 已优于显著更大的 MLP，继续放大则出现 **跨控制模式的 trade-off**，与共享 RMSNorm 超球面潜空间的模式收敛直接相关。
 - 适用边界在部署侧：**Global 模式依赖外部根定位**（VIVE Ultimate Tracker），换到无全局定位的 Local 模式后 whole-body Succ 掉到 0.73；读表必须把指标绑定「模式 + G-/L-MPKPE 口径」，否则容易得出相反结论。
 - 工程与开源：训练在 IsaacLab、评测走 MuJoCo sim-to-sim，真机为 [Unitree G1](./unitree-g1.md) 50 Hz BFM + 200 Hz PD；截至 2026-07-18 **代码待发布**，属部分开源，勿假设可即刻复现。
-- 定位上它与 [BFM（CVAE）](./paper-behavior-foundation-model-humanoid.md) 是互补路线而非 v2，相对 [SONIC](../methods/sonic-motion-tracking.md) 的增量在于把 scaling 拆成可分别度量的三轴，而 [ReactiveBFM](./paper-reactivebfm.md) 在这层基座上叠高层闭环规划。
+- 定位上它与 [BFM（CVAE）](./paper-behavior-foundation-model-humanoid.md) 是互补路线而非 v2，相对 [SONIC](./nvidia-sonic.md) 的增量在于把 scaling 拆成可分别度量的三轴，而 [ReactiveBFM](./paper-reactivebfm.md) 在这层基座上叠高层闭环规划。
 
 ## 与其他工作的关系
 
 - **[BFM（CVAE，arXiv:2509.13780）](./paper-behavior-foundation-model-humanoid.md)**：同作者团队、同「掩码多接口」哲学，但 ScaleBFM 走 **PPO + Transformer + 全局 tracking scaling 实证**，BFM 走 **CVAE 在线蒸馏**；二者是 **互补技术路线** 而非同一模型的 v2。
-- **[SONIC](../methods/sonic-motion-tracking.md)**：同为 motion-tracking BFM 预训练；SONIC 强调 **离散行为表征 + 多命令对齐 + NVIDIA 规模**；ScaleBFM 强调 **三轴 scaling 定律式分解 + Humanoid Transformer + 八模式稀疏接口**。
+- **[SONIC](./nvidia-sonic.md)**：同为 motion-tracking BFM 预训练；SONIC 强调 **离散行为表征 + 多命令对齐 + NVIDIA 规模**；ScaleBFM 强调 **三轴 scaling 定律式分解 + Humanoid Transformer + 八模式稀疏接口**。
 - **[ReactiveBFM](./paper-reactivebfm.md)**：共享 Zeng / Niu / Pang / Wang 等作者；ScaleBFM 提供 **低层可扩展 tracker 基座**，ReactiveBFM 在其上叠 **闭环 AR-MDM 规划**。
 - **[Perceptive BFM](./paper-perceptive-bfm.md)**：补 **地形感知** 与 operator–environment mismatch；ScaleBFM 假设参考在全局/局部重锚定后可跟踪，未显式建模楼梯/块级几何。
 
@@ -166,7 +166,7 @@ flowchart TB
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Humanoid Policy Network Architecture](../concepts/humanoid-policy-network-architecture.md)
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md)
 - [BFM（CVAE 多接口）](./paper-behavior-foundation-model-humanoid.md)
 - [ReactiveBFM（闭环规划–控制）](./paper-reactivebfm.md)
 - [Unitree G1](./unitree-g1.md)

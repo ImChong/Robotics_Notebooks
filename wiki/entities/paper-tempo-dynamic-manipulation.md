@@ -6,21 +6,27 @@ project: https://tempo-robot.github.io/
 code: https://github.com/tempo-robot/TEMPO
 tags: [paper, vla, dynamic-manipulation, temporal-context, action-chunking, uci]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-14
 related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
   - ../tasks/manipulation.md
   - ../concepts/temporal-convolutional-network.md
   - ./paper-tempo.md
+original:
+  - ../../sources/papers/tempo_arxiv_2609_16864.md
+  - ../../sources/sites/tempo-dynamic-manipulation.md
+  - ../../sources/repos/tempo-robot-tempo.md
 sources:
   - ../../sources/papers/tempo_arxiv_2609_16864.md
   - ../../sources/sites/tempo-dynamic-manipulation.md
   - ../../sources/repos/tempo-robot-tempo.md
-summary: "TEMPO 为单帧 VLA 补充视觉运动摘要与机器人动作历史，分别缓解动态目标的运动歧义和多阶段任务中的状态混淆；在双臂动态操作上验证，并发布 5 万余帧 TEMPO-Bench。"
+summary: "TEMPO（CoRL 2026 Oral）为单帧 VLA 补充视觉运动摘要与机器人动作历史，分别缓解动态目标的运动歧义和多阶段任务中的状态混淆；在双臂动态操作上验证，并已通过 tempo-robot/TempoBench 开源 257 条 LeRobot v2.1 基准片段。"
 ---
 
 # TEMPO: Learning Temporal Context for Dynamic Robot Manipulation
+
+## 一句话定义
 
 **一句话定义：** TEMPO 给预训练 VLA 增加“目标正在怎么动”和“机器人刚才做了什么”两种时间线索，让机械臂能更稳地跟踪移动目标，也能判断当前处于任务哪个阶段。
 
@@ -62,9 +68,9 @@ flowchart LR
 
 ### 两条时间支路
 
-- **TEMPO-MOT（视觉运动）：** 使用每帧视频特征的滚动缓存，当前帧特征作 query，历史特征作 key/value，通过交叉注意力形成运动摘要。论文默认用冻结的 SAM 2.1-Tiny；也比较 Reducio、VidTwin、VideoLaVIT，说明编码器并非只能选 SAM 2。
-- **TEMPO-ACT（动作历史）：** 将近期命令划成固定数量的时间桶，每桶取均值。论文设置为 10 个桶、每桶 30 条命令；填充标志用于表示 episode 开始前的空历史。官方代码以形状为 `(10, A)` 的 `action_history` 输入。
-- **接入预训练策略：** 两种时间 token 加到 VLM 前缀；动作历史还通过 AdaRMS 残差调制 action expert。初始化为零的条件路径尽量保留原策略行为，原有 flow-matching 动作训练目标不变。论文称增加约 2M 参数（约 0.08%），不改预训练骨干。
+- **TEMPO-MOT（视觉运动）：** 使用每帧视频特征的滚动缓存，当前帧特征作 query，历史特征作 key/value，通过交叉注意力形成运动摘要。论文默认用冻结的 SAM 2.1-Tiny；在 `src/openpi/models_pytorch/pi0_pytorch.py` 中由 `SAM2CrossAttnFusion` 将当前主视角 SigLIP `vis_tokens` 与池化后的 `(64, 256)` post-memory-attention token 融合（`tanh(gate) * out_proj`，并可选 ViT `temporal_attn_period`）。论文也对比 Reducio、VidTwin、VideoLaVIT，说明编码器并非只能选 SAM 2。
+- **TEMPO-ACT（动作历史）：** 将近期命令划成固定数量的时间桶，每桶取均值。论文设置为 10 个桶、每桶 30 条命令；填充标志用于表示 episode 开始前的空历史。官方代码通过 `ActionHistoryTokens` 与 `ActionHistoryCondMLP` 以形状 `(10, A)` 的 `action_history` 输入。
+- **接入预训练策略：** 两种时间 token 加到 VLM 前缀；动作历史还通过 AdaRMS 残差调制 action expert（并可选配合 `UtActionDecoder` 输出头）。初始化为零的条件路径尽量保留原策略行为，原有 flow-matching 动作训练目标不变。论文称增加约 2M 参数（约 0.08%），不改预训练骨干。
 - **与异步执行互补：** 异步推理解决 action chunk 基于过期观测执行的问题；TEMPO补的是观测内容缺少运动和阶段信息。较新的图像仍只是快照，两类问题不能仅靠缩短推理延迟消除。
 
 ## 源码运行时序图
@@ -78,15 +84,15 @@ sequenceDiagram
   participant T as train_pytorch.py
   participant C as openpi-client
   participant S as serve_policy.py
-  participant M as TEMPO 与 VLA
+  participant M as pi0_pytorch.py
 
-  D->>P: 读取视频帧，生成 SAM 2 特征缓存
-  P-->>D: 保存视觉 token、state 与 action
+  D->>P: 读取视频帧，生成 SAM 2.1-Tiny post-memory-attention 缓存
+  P-->>D: 保存池化后视觉 token (64, 256)、state 与 action
   D->>T: 读取任务配置与归一化统计
-  T->>M: 从 π0.5 PyTorch 权重微调
-  C->>S: 发送图像、state、语言与历史 token
-  S->>M: 运行 VLA 推理
-  M-->>S: 输出动作块或配置指定的 u_t
+  T->>M: 从 pi05_base 微调 (SAM2CrossAttnFusion + ActionHistoryCondMLP)
+  C->>S: 发送图像、state、prompt 与 action_history
+  S->>M: 运行 VLA 前向 (可选 UtActionDecoder 输出 u_t)
+  M-->>S: 输出动作块或 u_t
   S-->>C: 返回 actions
 ```
 
@@ -95,12 +101,12 @@ sequenceDiagram
 | 环节 | 可复现入口 / 论文设置 | 实施要点 |
 |------|----------------------|----------|
 | 数据格式 | LeRobot v2.1 / v3.0；head 相机必需，wrist 相机可选 | 视频帧数、Parquet 行数与 episode 元数据长度必须一致；fps 要与历史汇总配置匹配 |
-| 预处理 | `tools/precompute_sam2_tokens.py`、`scripts/compute_norm_stats.py` | 视频特征可按数据集预计算；预测 `u_t` 的设置还需训练 MVAE、编码窗口和训练解码器 |
-| 微调 | `scripts/train_pytorch.py`，配置在 `src/openpi/training/config.py` | 配置名区分基线、TEMPO-MOT、TEMPO 两路输入和动作输出头 |
-| 部署 | `scripts/serve_policy.py` + `packages/openpi-client` | 推理请求需提供 state、图像、prompt，以及相应配置要求的视觉 token 与 action history |
+| 预处理 | `tools/sam2_encoder.py`、`tools/precompute_sam2_tokens.py`、`scripts/compute_norm_stats.py` | 预计算 SAM 2 特征；预测 `u_t` 的设置还需借助 `tools/ut/*` 训练 MVAE、编码窗口和解码器 |
+| 微调 | `scripts/train_pytorch.py`，配置在 `src/openpi/training/config.py` | 配置名区分基线、TEMPO-MOT、TEMPO 两路输入与输出头；需自备 `pi05_base` 权重 |
+| 部署 | `scripts/serve_policy.py` + `packages/openpi-client` | 推理请求需提供 state、图像、prompt，以及相应配置要求的视觉 token 与 `(10, A)` `action_history` |
 | 在线时序 | 论文：相机约 30 Hz、策略约 30 Hz；视觉编码并行 | 运动编码器在独立线程消费相机帧并更新 token，控制推理读取最新结果 |
 
-**已开放程度（截至 2026-10-10）：** 官方 GitHub 仓库公开，含 Apache-2.0 实现、安装说明、训练与服务脚本；README 的 TODO 仍将训练数据、训练权重和 I2RT YAM 部署列为待发布。论文称 TEMPO-Bench 包含 5 万余帧带逐帧物体速度标注的数据和运动方向/幅度选择题，但当前 README 未给出数据集下载入口，因此不能把数据下载状态视为已核实。Gemma 组件另受仓库附带许可约束。
+**已开放程度（2026-11-14 核实，CoRL 2026 Oral top 1%）：** 官方模型仓库 <https://github.com/tempo-robot/TEMPO> 已公开 Apache-2.0 实现、安装说明、SAM 2 预计算、训练与服务脚本；配套基准仓库 <https://github.com/tempo-robot/TempoBench> 也已公开发布 **TEMPO-Bench** 数据集（LeRobot v2.1 格式，Git LFS 约 750 MB，共 257 episodes、182 条已标注、97,265 总帧 ≈ 54 分钟 @ 30fps、55,482 定位帧，覆盖 `ball_drop`、`dynamic_pour`、`dynamic_handover`、`spartan`、`catch_ball`，附 `observation.state`、`action`、`object.{position,area,visible,velocity}`、`tempobench` 加载器与 `scripts/render_mujoco.py`、`visualize_object_motion.py`，`LICENSE` 仍为占位文本）。但 `TEMPO` 仓库 README 仍将**真机微调训练数据、训练后 VLA 检查点与 I2RT YAM 部署脚本**列在 TODO。Gemma 组件另受仓库附带许可约束。
 
 ## 实验与评测
 
@@ -124,7 +130,7 @@ TEMPO 的意义在于把“看懂运动”和“知道自己做到哪一步”�
 2. **两路信息互补。** — Bottle Handover 的双路结果高于任一单路；不能把提升全归因于视频特征。
 3. **把完整任务结果与 trimmed 结果分开引用。** — 论文为基线比较裁剪了 Flick Catch 和 Wine Pour 的状态混淆阶段；完整任务数另列。
 4. **时延比较要注明硬件。** — 35.3 ms 是 RTX PRO 6000 上的策略前向值，不等于目标机器人控制器上的端到端延迟。
-5. **复现前核对数据和权重。** — 代码已公开，但 README 仍把训练数据、检查点和 YAM 部署作为 TODO；TEMPO-Bench 的可下载入口未由 README 确认。
+5. **复现前区分“基准已开”与“权重未开”。** — `tempo-robot/TempoBench` 已公开 257 episodes 的基准数据集及读取脚本，但 `tempo-robot/TEMPO` 仍需自备 `pi05_base` 权重并微调，真机训练示范、训练后检查点与 YAM 部署仍在 TODO 中。
 6. **先在桌面双臂动态操作验证。** — 论文结果来自 YAM Ultra 工作站；人形移动操作、遮挡、域外速度和不同机械臂仍需独立测试。
 
 ## 局限与风险
@@ -132,7 +138,7 @@ TEMPO 的意义在于把“看懂运动”和“知道自己做到哪一步”�
 - 实验覆盖四项双臂桌面操作任务，不能据此推断对所有移动操作、灵巧手或人形机器人均有效。
 - MOT 要依赖历史帧缓存和视频特征提取；部署应实测相机频率、缓存同步、线程负载和丢帧影响。
 - 论文中策略/相机运行频率约 30 Hz；公布的 35.3 ms 前向时间来自 RTX PRO 6000，不能直接映射到 Jetson 或机载控制硬件。
-- 论文发布的 TEMPO-Bench 规模与标注形式明确，但官方仓 README 中数据下载和检查点仍是待发布项，复现者需要自行确认后续 release。
+- 虽然配套基准 `tempo-robot/TempoBench` 已发布数据（注意其 `LICENSE` 尚为占位文本），但策略微调真机示范数据、训练后检查点与 I2RT YAM 硬件部署脚本仍未在 `tempo-robot/TEMPO` 发布，复现者需要自采数据或等待后续 release。
 - 同名旧论文节点 [TEMPO（VLA 双频 RL 后训练）](./paper-tempo.md) 是浙江工商大学与 KTH 的另一篇工作（arXiv:2608.07314），与本项目不是同一个 TEMPO。
 
 ## 与异步 VLA 的对比
@@ -163,3 +169,4 @@ TEMPO 的意义在于把“看懂运动”和“知道自己做到哪一步”�
 - [arXiv:2609.16864](https://arxiv.org/abs/2609.16864)
 - [TEMPO 官方项目页](https://tempo-robot.github.io/)
 - [TEMPO 官方实现](https://github.com/tempo-robot/TEMPO)
+- [TempoBench 基准数据集与可视化仓库](https://github.com/tempo-robot/TempoBench)

@@ -13,7 +13,7 @@ tags:
   - lerobot
   - open-source
 status: complete
-updated: 2026-11-05
+updated: 2026-11-14
 code: https://github.com/NVIDIA/Isaac-GR00T
 related:
   - ../entities/isaac-gr00t.md
@@ -30,6 +30,8 @@ sources:
   - ../../sources/repos/lerobot.md
   - ../../sources/papers/gr00t_n1_arxiv_2503_14734.md
 summary: "GR00T N1.7（NVIDIA，3B）：Cosmos-Reason2-2B/Qwen3-VL 骨干 + 多本体 flow-matching DiT 动作头；无独立论文，架构参考 GR00T N1 白皮书（arXiv:2503.14734）；LeRobot 以 policy.type=groot 提供微调与推理。"
+original: 
+  - ../../sources/repos/isaac_gr00t.md
 ---
 
 # GR00T N1.7：多本体 flow-matching 人形 VLA
@@ -214,3 +216,19 @@ N1.7 无独立论文，以下数字只来自 Isaac-GR00T 主分支 `examples/` �
 - [lerobot 仓库归档](../../sources/repos/lerobot.md)：固定提交 `9e5ee98…` 的 `policies/groot/` 与 `docs/source/groot.mdx`
 - [gr00t_n1_arxiv_2503_14734.md](../../sources/papers/gr00t_n1_arxiv_2503_14734.md)
 - [HF 模型卡](https://huggingface.co/nvidia/GR00T-N1.7-3B)
+
+## 工程实践
+
+- **权重与适配**：基于官方 Isaac-GR00T N1.7 模型卡与 LeRobot `groot` 策略接口核对训练时的 `embodiment_tag`、动作维度、归一化与 40 步 horizon；跨本体只替换模型类型并不保证语义相同。
+- **推理测量**：分别记录模型单次推理、观测获取、通信及实际动作更新周期；现有模型卡提供的是策略与特定 benchmark 结果，不应视为所有整机部署证明。
+- **实验约束**：优先离线和仿真验证，再用保护/急停的真机配置测试，遵守官方许可证与硬件要求。
+
+## 局限与风险
+
+- N1.7 是带模型卡与权重的工程版本，**无独立 N1.7 论文**；与 N1/N1.5 区分时引用具体版本和 checkpoint。
+- 统一动作表征仍需机器人标定、控制器接口和归一化匹配；论文及模型卡结果不构成上机安全保证。
+
+## 推荐继续阅读
+
+- [GR00T N1.7 官方模型卡](https://huggingface.co/nvidia/GR00T-N1.7-3B)
+- [Isaac-GR00T 官方代码](https://github.com/NVIDIA/Isaac-GR00T)

@@ -27,6 +27,17 @@ def test_company_keys_unique_and_lenses_known() -> None:
         assert set(company["lenses"]) <= set(DATA["lenses"]), company["key"]
 
 
+def test_nvidia_name_matches_institution_registry_and_homepage() -> None:
+    registry = json.loads((REPO_ROOT / "schema" / "institutions.json").read_text(encoding="utf-8"))
+    expected = registry["registry"]["nvidia"]["label"]
+    nvidia = next(c for c in DATA["companies"] if c["key"] == "nvidia")
+    html = (REPO_ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    assert nvidia["name"] == expected
+    chinese, english = expected.split("（", maxsplit=1)
+    link = f'href="company.html?id=nvidia">{chinese}<span class="route-en">（{english}</span></a>'
+    assert link in html
+
+
 def test_every_node_links_site_page_and_original() -> None:
     site_ids = _site_ids()
     assert DATA["comparison_id"] in site_ids
@@ -71,8 +82,8 @@ def test_home_entry_links_match_data_order() -> None:
     card = html[html.index('id="homeCompanyLinks"') : html.index('id="homeCompanyToggle"')]
     links = re.findall(r'<a [^>]*href="company\.html\?id=([^"]+)"([^>]*)>', card)
     assert [key for key, _ in links] == [c["key"] for c in DATA["companies"]]
-    # 折叠态只露出前 4 家，其余带 data-company-extra hidden
-    assert [("hidden" in attrs) for _, attrs in links] == [i >= 4 for i in range(len(links))]
+    # 折叠态只露出前 8 家，其余带 data-company-extra hidden。
+    assert [("hidden" in attrs) for _, attrs in links] == [i >= 8 for i in range(len(links))]
 
 
 def test_home_company_toggle_count_matches_data_and_syncs_on_init() -> None:

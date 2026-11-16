@@ -16,7 +16,7 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../tasks/loco-manipulation.md
-  - ../tasks/imitation-learning.md
+  - ../methods/imitation-learning.md
   - ./paper-hrl-stack-03-omniretarget.md
   - ./paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
   - ./unitree-g1.md

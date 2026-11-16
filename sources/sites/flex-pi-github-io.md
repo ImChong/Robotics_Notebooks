@@ -29,3 +29,9 @@ UW / AI2 官方站点：多流 WAM（RGB · DINO · pointmap）与算力柔性�
 - 论文：[`sources/papers/flex_pi_arxiv_2608_10860.md`](../papers/flex_pi_arxiv_2608_10860.md)
 - 代码：[`sources/repos/flex-pi.md`](../repos/flex-pi.md)
 - Wiki：[wiki/entities/paper-flex-pi.md](../../wiki/entities/paper-flex-pi.md)
+
+## 官方页复核（2026-11-13）
+
+- **核对范围：** 项目正文、结果表、重建图注、Code/Paper链接；未观看视频或运行交互组件。
+- **通读：** 已完成
+- Code/模型数据已公开。网页83/76.4是完成度、63/50约为全成功；部分表只覆盖实际评测基线。31.1dB与4.9cm是点图重建示例，不解释为精确接触几何；视频演示不代替统计。

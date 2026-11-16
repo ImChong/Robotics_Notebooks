@@ -7,7 +7,7 @@ summary: "Diffusion Transformer 用 patch 化 Transformer 替换 U-Net 做扩散
 related:
   - ./diffusion-model.md
   - ./transformer.md
-  - ./unet.md
+  - ../methods/unet.md
   - ../methods/diffusion-policy.md
   - ../methods/vla.md
   - ../overview/ai-architecture-map.md
@@ -24,7 +24,7 @@ sources:
 
 # DiT（Diffusion Transformer）
 
-**DiT**：在隐扩散框架里，把带噪潜张量切成 patch token，用 **Transformer 块 + 条件调制**（时间步、类别、文本）预测噪声，从而用可扩展的注意力骨干替代经典 [U-Net](./unet.md)。
+**DiT**：在隐扩散框架里，把带噪潜张量切成 patch token，用 **Transformer 块 + 条件调制**（时间步、类别、文本）预测噪声，从而用可扩展的注意力骨干替代经典 [U-Net](../methods/unet.md)。
 
 ## 一句话定义
 

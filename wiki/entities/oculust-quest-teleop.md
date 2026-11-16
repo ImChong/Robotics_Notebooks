@@ -18,6 +18,10 @@ summary: "Meta Quest (Oculus) 遥操作方案是目前具身智能研究中成�
 
 在机器人模仿学习（Imitation Learning）和 VLA 模型训练中，**Meta Quest (原 Oculus Quest)** 系列 VR 头显已成为获取大规模高质量人类演示数据的核心工具。它通过极低成本的硬件实现了高精度的 6D 位姿追踪和手部动作重定向。
 
+## 一句话定义
+
+Meta Quest 遥操作是用 VR 头显的 inside-out 手部 / 手柄追踪采集人类动作，经重定向映射到机械臂或灵巧手的低成本示教方案。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -26,7 +30,11 @@ summary: "Meta Quest (Oculus) 遥操作方案是目前具身智能研究中成�
 | Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
 | Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
-## 核心工作原理
+## 为什么重要
+
+它把遥操作采集硬件成本降到几百美元量级，并提供沉浸式第一视角反馈，让 IL / VLA 数据采集对普通实验室可负担。
+
+## 核心原理
 
 1. **手部/手柄追踪 (Inside-out Tracking)**：
    Quest 利用其自带的摄像头阵列，实时计算头显及手持控制器（或裸手）在空间中的 3D 坐标与旋转。
@@ -47,7 +55,13 @@ summary: "Meta Quest (Oculus) 遥操作方案是目前具身智能研究中成�
 - **AnyTeleop**：由 UCSD 团队开发，支持使用 Quest 进行双臂与灵巧手的通用遥操作。
 - **DexCap**：斯坦福团队提出的将 Quest 与移动捕捉设备结合，实现野外具身数据采集。
 
-## 局限性
+## 工程实践
+
+- 头显与机器人控制端放在同一高质量局域网（Wi-Fi 6 或有线 Link），降低视觉-动作延迟与晕动。
+- 手部位姿经重定向（Retargeting）后下发末端目标；灵巧手场景见 [灵巧操作数据采集指南](../queries/dexterous-data-collection-guide.md)。
+- 与手套的取舍见 [数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md)。
+
+## 局限性与风险
 
 - **缺乏力反馈 (Haptic Feedback)**：操作者无法通过 Quest 手柄感受到物体的真实阻力，容易造成过度用力（Over-torquing）。
 - **网络延迟依赖**：需要极高质量的局域网（通常使用 Wi-Fi 6 或 Link 线），否则操作者会因视觉与动作延迟不匹配产生晕动症。

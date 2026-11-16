@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-egocentric-vision.md
 ---
 
-# Position
+# Position: Life-Logging Video Privacy-Utility Trade-off（arXiv:2605.10404）
 
 **Position: Life‑Logging Video Streams Make the Privacy‑Utility Trade‑off Inevitable** 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/awesome-egocentric-vision) **第 004/249** 篇，分组 **2101 Privacy Risk Assessment & Benchmarking**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

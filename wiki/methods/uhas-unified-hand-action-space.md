@@ -3,7 +3,7 @@ type: method
 tags: [dexterity, manipulation, robot-hand, reinforcement-learning, cross-embodiment, action-representation, sim2real]
 status: complete
 date: 2026-07-11
-updated: 2026-09-15
+updated: 2026-11-15
 related:
   - ./in-hand-reorientation.md
   - ../concepts/motion-retargeting.md
@@ -18,10 +18,14 @@ related:
 sources:
   - ../../sources/papers/uhas_arxiv_2607_03570.md
   - ../../sources/sites/uhas-project-irvlutd.md
+original:
+  - ../../sources/papers/uhas_arxiv_2607_03570.md
 summary: "UHAS 把灵巧手动作表示为规范单位球上的几何形变（驱动平面控制 Δθ、驱动向量控制 Δr），经级联逆运动学 CIK 映射到 Allegro、LEAP、Shadow、MANO 等不同关节结构，使单一 PPO 策略可在手内立方体重定向上联合训练、零样本迁移与快速微调，并在真机 LEAP 上完成 sim2real。"
 ---
 
 # UHAS（Unified Hand Action Space，统一手部动作空间）
+
+## 一句话定义
 
 **UHAS**（Casas 等，arXiv:2607.03570，UT Dallas IRVL / ASU IRIS，RSS 2026 灵巧操作研讨会）提出一种 **球面几何统一动作空间**：策略不直接输出各手的关节角，而是输出 **规范球面的形变参数**，再由 **Cascade Inverse Kinematics（CIK，级联逆运动学）** 转成可执行的 embodiment 专用关节配置。项目演示中，**同一策略可同时控制四只运动学与指数量不同的手**（Allegro、LEAP、Shadow、MANO）。
 

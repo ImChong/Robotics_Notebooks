@@ -92,3 +92,13 @@
 
 - [x] 方法、主表、LIBERO-INTEGRAL 基准、开源结论
 - [x] wiki 实体与交叉引用
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2608.24101v4（2026-10-13）正文 §1–§6、附录 A–G（伪码、掩码/slot、延迟、真机、逐任务/多种子/候选数、TrAct+）；图表按文字层核对，参考文献浏览；新项目页及README/关键选优和世界模型源码；未运行模型或观看视频。
+- **通读：** 已完成
+- VLAT track tokens先于action且action可读track，反向不可；EgoDex只监督track，无机器人action loss。TWM用agent7点/wrist32点，未要求policy预测agent全部环境运动。
+- v4主模型VLAT预训76K DROID+150K EgoDex，1:2；TWM/AWM仅76K DROID。Bridge+完整EgoDex为附录TrAct+，不能写成所有主结果的数据配方。
+- 仿真每任务10回合，标准LIBERO均98.3；INTEGRAL20任务.55，三评估种子.547±.003(SE)，非重训三种子。真机五任务×两背景各10回合，均.76；AWM换背景.56不是.40，真机VLAT微调5K不是50K。
+- 表5 K16并行L40S每规划2431ms=52+1810+569，输出16-stepchunk；不能把VLAT52ms报为整个TrAct延迟。K5/10/20仿真SR .52/.54/.55。
+- 现代码已公开但不带项目数据/checkpoint/结果，关键中间gripper数据和LIBERO WM loader仍缺。当前默认replan5、TSR与critic评分口径不同于论文，见repo核查，未声称完整可复现。

@@ -12,7 +12,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/mamba_smolvla_expert_arxiv_2608_21407.md
+  - ../../sources/papers/mamba-smolvla-expert_arxiv_2608_21407.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "用 Mamba 选择性状态空间替代 SmolVLA action expert 中的因果自注意力；逐步规划成功率接近 Transformer 且参数更少，连续多步执行时任务成功率保留更好，适合实时部署。"
 ---

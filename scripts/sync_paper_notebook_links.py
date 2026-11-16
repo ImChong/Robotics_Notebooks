@@ -131,6 +131,7 @@ def wiki_source_paths(wiki_path: Path, frontmatter: str) -> list[str]:
 
 
 def collect_wiki_index() -> dict[str, dict[str, set[str]]]:
+    arxiv_exact_to_wiki: dict[str, set[str]] = defaultdict(set)
     arxiv_to_wiki: dict[str, set[str]] = defaultdict(set)
     title_to_wiki: dict[str, set[str]] = defaultdict(set)
     h1_entity_to_wiki: dict[str, set[str]] = defaultdict(set)
@@ -146,10 +147,15 @@ def collect_wiki_index() -> dict[str, dict[str, set[str]]]:
         if rel.startswith("wiki/methods/"):
             method_slug_to_wiki[wiki_path.stem.lower()].add(rel)
 
-        arxivs: set[str] = set()
-        fm_arxiv = re.search(r'^arxiv:\s*"?([0-9]+\.[0-9]+)"?\s*$', frontmatter, re.M)
-        if fm_arxiv:
-            arxivs.add(fm_arxiv.group(1))
+        fm_arxivs: set[str] = set()
+        for line in frontmatter.splitlines():
+            fm_arxiv = re.match(r'^\s*(?:arxiv|papers?)\s*:\s*"?([0-9]+\.[0-9]+)"?\s*$', line)
+            if fm_arxiv:
+                fm_arxivs.add(fm_arxiv.group(1))
+        for arxiv in fm_arxivs:
+            arxiv_exact_to_wiki[arxiv].add(rel)
+
+        arxivs: set[str] = set(fm_arxivs)
         for src_rel in wiki_source_paths(wiki_path, frontmatter):
             src_text = (ROOT / src_rel).read_text(encoding="utf-8", errors="replace")
             arxivs.update(re.findall(r"arxiv\.org/abs/([0-9]+\.[0-9]+)", src_text))
@@ -160,6 +166,7 @@ def collect_wiki_index() -> dict[str, dict[str, set[str]]]:
             arxiv_to_wiki[arxiv].add(rel)
 
     return {
+        "arxiv_exact": arxiv_exact_to_wiki,
         "arxiv": arxiv_to_wiki,
         "title": title_to_wiki,
         "h1_entity": h1_entity_to_wiki,
@@ -171,8 +178,12 @@ def _entity_pick_score(rel: str) -> tuple[int, int, str]:
     score = 0
     if "paper-notebook-" in rel:
         score -= 100
-    if rel.startswith("wiki/entities/") and "paper-" not in Path(rel).name:
-        score += 30
+    if rel.startswith("wiki/entities/"):
+        name = Path(rel).name
+        if name.startswith("paper-") and not name.startswith("paper-notebook-"):
+            score += 35
+        elif "paper-" not in name:
+            score += 30
     if "paper-bfm-" in rel or "paper-hrl-stack-" in rel or "paper-amp-survey-" in rel:
         score -= 40
     if rel.startswith("wiki/methods/"):
@@ -206,6 +217,11 @@ def pick_entity_or_single(candidates: set[str]) -> list[str]:
 
 def auto_match(paper: dict, wiki_index: dict) -> list[str]:
     if paper.get("arxiv"):
+        exact = wiki_index.get("arxiv_exact", {}).get(paper["arxiv"], set())
+        if exact:
+            picked = pick_entity_or_single(exact)
+            if picked:
+                return picked
         picked = pick_entity_or_single(wiki_index["arxiv"].get(paper["arxiv"], set()))
         if picked:
             return picked

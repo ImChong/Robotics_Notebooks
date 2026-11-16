@@ -36,7 +36,7 @@
 
 ### 相关资料
 
-- **源 WBT 公开叙事：** [GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/) / [SONIC 方法页](../../wiki/methods/sonic-motion-tracking.md)
+- **源 WBT 公开叙事：** [GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/) / [SONIC 方法页](../../wiki/entities/nvidia-sonic.md)
 - **LimX 平台上下文：** [FastStair（arXiv:2601.10365）](faststair_arxiv_2601_10365.md) 同机构 Oli 工程线；[Unitree G1](../../wiki/entities/unitree-g1.md)
 - **PEFT：** LoRA (2021)、Adapter、Prefix-Tuning（论文 Related Work）
 - **组织：** [LimX Dynamics GitHub](https://github.com/limxdynamics)（tron1-rl-isaaclab 等，截至 ingest 未见 Any2Any 独立代码仓）
@@ -44,4 +44,6 @@
 ## 对 wiki 的映射
 
 - 沉淀实体页：[Any2Any（arXiv:2605.23733）](../../wiki/entities/paper-any2any-cross-embodiment-wbt.md)
-- 交叉补强：[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[人形运动跟踪方法选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[Whole-Body Control](../../wiki/concepts/whole-body-control.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[BFM 人形基础模型](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)
+- 交叉补强：[SONIC](../../wiki/entities/nvidia-sonic.md)、[人形运动跟踪方法选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[Whole-Body Control](../../wiki/concepts/whole-body-control.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[BFM 人形基础模型](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)
+
+- **通读：** 已完成

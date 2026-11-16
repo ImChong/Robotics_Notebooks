@@ -12,7 +12,6 @@ related:
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
 summary: "物理引擎选型对比：MuJoCo 以极致的接触精度和控制理论背景称王；而 Isaac Sim / Gym 凭借 GPU 千万级并行霸占现代 RL 训练管线。"
-updated: 2026-07-21
 ---
 
 # MuJoCo vs Isaac Sim (物理引擎选型)

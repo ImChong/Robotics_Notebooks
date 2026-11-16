@@ -2,7 +2,7 @@
 type: concept
 tags: [data, machine-learning, manipulation, teleoperation, simulation]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-15
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../tasks/manipulation.md
@@ -14,9 +14,13 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/humannet.md
 summary: "具身数据清洗（Embodied Data Cleaning）是指对采集到的原始机器人操作演示数据进行质量过滤、时序对齐和误差补偿的过程，是保证模仿学习策略不学偏的关键步骤。"
+original:
+  - ../../sources/papers/imitation_learning.md
 ---
 
 # Embodied Data Cleaning (具身数据清洗)
+
+## 一句话定义
 
 **具身数据清洗**：在具身智能（Embodied AI）中，将人类示教或自动采集的原始“脏数据”转化为高质量、可用于训练的专家演示轨迹（Expert Trajectories）的过程。
 
@@ -34,7 +38,7 @@ summary: "具身数据清洗（Embodied Data Cleaning）是指对采集到的原
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
 | Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
-## 为什么需要数据清洗？
+## 为什么重要（为什么需要数据清洗）
 
 具身数据与传统视觉数据集（如 ImageNet）不同，它包含了高频的时序信息和物理反馈。原始数据中常见的缺陷包括：
 1. **网络延迟波动**：遥操作时，控制信号与图像帧之间可能存在 10-100ms 的非恒定延迟，导致动作与视觉状态不匹配（Misalignment）。
@@ -42,7 +46,7 @@ summary: "具身数据清洗（Embodied Data Cleaning）是指对采集到的原
 3. **传感器噪声与漂移**：低成本动捕设备产生的指尖位置漂移会导致“虚空抓取”现象。
 4. **重定向误差**：人类手部结构与机器人灵巧手之间的拓扑差异，在映射（Retargeting）过程中会产生物理不可达的动作。
 
-## 核心清洗流程
+## 核心原理与清洗流程
 
 ### 1. 时序对齐 (Temporal Alignment)
 利用 NTP 同步或硬件触发信号，确保 RGB 图像、深度图、关节编码器、触觉信号在同一时间轴上。对于变延迟信号，常使用线性插值（Linear Interpolation）将其重新采样到固定的控制频率（如 50Hz）。长期存储的遥测副本可另用 [Swinging Door Trending](./swinging-door-trending-compression.md) 做有损压缩；这属于归档压缩而非数据清洗，压缩前仍应完成时间对齐与语义校验，并为训练、故障分析和接触事件保留足够原始数据。
@@ -64,7 +68,16 @@ summary: "具身数据清洗（Embodied Data Cleaning）是指对采集到的原
 
 ### HumanNet 的大规模管线对照
 
-[HumanNet（arXiv:2605.06747）](../entities/humannet.md) 虽非机器人示教数据，其 **采集 → 处理 → 标注** 三阶段管线与本页概念层高度同构：**去重归一化、内容/质量过滤、场景切分、clip 化** 对应时序对齐与异常过滤；**3D 手体姿态 + SLAM + 运动重定向**（论文给出 robot-ready 子集：重定向误差 <15 mm、有效帧覆盖率 >60%）对应重定向误差修复；**LLM 辅助字幕/运动描述** 对应任务成败与语义质量判定。HumanNet 证明 **人中心互联网视频** 在固定 VLA 设定下可与小规模真机数据竞争——前提是清洗管线把异构网页视频变成 **可审计、可预训练** 的资产，而非 raw dump。
+[HumanNet（arXiv:2605.06747）](../entities/humannet.md) 虽非机器人示教数据，其 **采集 → 处理 → 标注** 三阶段管线与本页概念层高度同构：**去重归一化、内容/质量过滤、场景切分、clip 化** 对应时序对齐与异常过滤；**3D 手体姿态 + SLAM + 运动重定向**（论文给出 robot-ready 子集：重定向误差 <15 mm、有效帧覆盖率 >60%）对应重定向误差修复；**LLM 辅助字幕/运动描述** 对应任务成败与语义质量判定。清洗的保留率也可量化：[Open-HumanWAM](../entities/paper-open-humanwam.md) 表 1 记录其所用 HumanNet 子集策展前 90,275.25 h、策展后 40,743.58 h（约 45%）。HumanNet 论文报告 **人中心互联网视频** 在固定 VLA 设定下（验证损失）可与小规模真机数据竞争——前提是清洗管线把异构网页视频变成 **可审计、可预训练** 的资产，而非 raw dump。
+
+## 工程实践
+
+- **分步淘汰率审计**：对原始 episode 依次跑「时序对齐 → 物理校验 → 成败判定 → 分段剪辑」，记录每步淘汰率以定位采集端瓶颈。
+- **保留失败轨迹**：不要一刀切丢弃失败样本，而是打上成败标签供恢复策略或负样本对比使用。
+
+## 局限
+
+- **阈值依赖任务域**：关节速度、加速度与接触力阈值随机器人本体和任务类型变化，跨本体复用时需重新标定。
 
 ## 关联页面
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 接触丰富操作示范的数据清洗质量，直接影响力控/触觉标签可用性
@@ -77,3 +90,8 @@ summary: "具身数据清洗（Embodied Data Cleaning）是指对采集到的原
 - Padalkar, A., et al. (2023). *Open X-Embodiment: Robotic Learning at Scale*.
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)
 - [sources/papers/humannet.md](../../sources/papers/humannet.md) — HumanNet 百万小时清洗管线对照
+
+## 推荐继续阅读
+
+- [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md)
+- [具身数据纵深路线](../../roadmap/depth-embodied-data.md)

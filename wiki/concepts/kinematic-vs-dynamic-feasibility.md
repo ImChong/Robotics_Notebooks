@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, retargeting, feasibility, dynamics, kinematics]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 summary: "运动学可行（姿态/轨迹几何可达）不等于动力学可行（力矩、摩擦、接触与稳定可执行）；人形重定向与跟踪失败常源于混淆二者。"
 related:
   - ./humanoid-vs-other-robots.md
@@ -72,6 +72,8 @@ original:
 - **证据范围有限**：GMR 的实验只用 LAFAN1 与 Unitree G1；DynaRetarget 只在 G1 与箱子交互的数据上评测。
 
 ## 关联页面
+
+- [AgenticGenPlan：代码代理泛化 TAMP](../entities/paper-agenticgenplan-generalized-tamp-coding-agents.md) — 在同时含运动学和动力学约束的仿真任务中，代码代理合成可跨实例复用的程序；并非任意跨引擎迁移
 
 - [Motion Retargeting](./motion-retargeting.md)
 - [人形 vs 其他机器人](./humanoid-vs-other-robots.md)

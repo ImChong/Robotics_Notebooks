@@ -8,7 +8,22 @@
 - **课程：** Getting Started With Isaac Sim（NVIDIA Physical AI Learning）
 - **门户：** <https://docs.nvidia.com/learning/physical-ai/>
 - **入库日期：** 2026-09-05
+- **全文复核日期：** 2026-11-12
+- **核对范围：** NVIDIA 官方 SIL 章节全文：Overview、Why Is Simulation Important?（physical testing challenges、AI training and testing、benefits、SIL vs HIL）、SIL in Isaac（ROS 2、OmniGraph、Python API）、Review 和全部 4 道 Quiz；并交叉阅读官方 HIL Fundamentals 全文核对两者边界。
+- **通读：** 已完成
 - **一句话说明：** 官方入门课模块：在 **仿真虚拟机器人 + 虚拟环境** 中验证软件（**Software-in-the-Loop**），用 **Isaac Sim + ROS 2 bridge** 测分割、驾驶等场景，再谈与 **HIL** 的分工。
+
+## 官方章节逐节核对（2026-11-12 全文复核）
+
+| 原文章节 | 一手信息与知识边界 |
+|---|---|
+| Overview | SIL 在虚拟机器人与虚拟环境中验证机器人软件；开发早期无需实体硬件。举例包括 ROS 驱动机器人、仿真内测分割模型。 |
+| Why Is Simulation Important? | 难以在物理环境逐一复现背景、光照、物体摆放与机器人动作组合；仿真允许构造受控或极端场景，降低试错成本和风险。原文提及 AI 的内插 / 外推困难，但未声称 SIL 能消除泛化差距。 |
+| Looking Ahead: SIL vs. HIL | SIL 关注纯仿真中软件测试；HIL 纳入真实计算硬件检查软硬件交互，两者不等价。 |
+| SIL in Isaac | 官方明列 ROS 2 bridge（连接 ROS 包）、OmniGraph（可视化编排）与 Python API（脚本定制）三种支撑能力；不是三种相互排斥的部署模式。 |
+| Review / Quiz（四题） | 核心目的为仿真中验证软件；主要收益是节省成本时间、受控环境中的安全性；不替代全部硬件测试，HIL 测实际硬件集成。 |
+
+**事实边界：** 本课是概念与能力介绍，未给出可复现的定量验收阈值、标准 ROS 话题命名、控制频率或通用 Sim2Real 成功率；这些参数应由具体项目测试计划确定，不能包装成 NVIDIA 官方推荐值。
 
 ## 模块要点（2026-09-05 抓取）
 
@@ -49,6 +64,11 @@
 ## 命名消歧
 
 本模块 **SIL = Software-in-the-Loop**，与 NVIDIA Research **[Spatial Intelligence Lab](../../wiki/entities/nvidia-spatial-intelligence-lab.md)** 缩写无关。
+
+## 相关官方交叉核对
+
+- [Hardware-in-the-Loop (HIL) Fundamentals](https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-sim/latest/leveraging-ros-2-and-hil-in-isaac-sim/01-hardware-in-the-loop-hil-fundamentals.html)：全文的 Overview、HIL vs. SIL、Benefits and Applications、Designing Effective HIL Configurations、Review、Quiz 对照确认：HIL 引入真实硬件，可发现 SIL 难以发现的目标板内存 / 算力等约束。
+- SIL 原文页面的后续章节还列出 OmniGraph、Python scripting、ROS 2 和 segmentation 的独立专题；本归档的「通读已完成」专指上方 SIL 章节，而非冒称整门课程全部课时均已读完。
 
 ## 对 wiki 的映射
 

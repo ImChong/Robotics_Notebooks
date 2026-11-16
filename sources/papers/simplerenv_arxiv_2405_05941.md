@@ -9,6 +9,7 @@
 - **代码：** <https://github.com/simpler-env/SimplerEnv> — 归档见 [`sources/repos/simplerenv.md`](../repos/simplerenv.md)
 - **机构：** 加州大学圣地亚哥分校（UCSD）；斯坦福大学（Stanford）；加州大学伯克利分校（UC Berkeley）；Google DeepMind
 - **入库日期：** 2026-09-27
+- **通读：** 已完成
 - **一句话说明：** 提出 **SIMPLER** 仿真评测套件：不做全保真 digital twin，通过对齐控制与视觉 gap，使 RT-1-X / Octo 等在 **Google Robot** 与 **Bridge V2 / WidowX** 设定上的 sim 分数与真机 **强相关**，并反映分布偏移敏感性。
 
 ## 开源状态（步骤 2.5）

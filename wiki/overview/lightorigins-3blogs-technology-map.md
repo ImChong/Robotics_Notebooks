@@ -131,7 +131,7 @@ summary: "亮源新创三篇官方 Tech Blog（LightNav-0 / LightParkour / Light
 | Qwen3-VL | 2026-09 | [qwen3-vl](../entities/qwen3-vl.md) |
 | Lightbot 0 | 2026-08 | [lightbot-0](../entities/lightbot-0.md) |
 | BeyondMimic | 2026-09 | [methods/beyondmimic.md](../methods/beyondmimic.md) |
-| SONIC | 2026-09 | [methods/sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) |
+| SONIC | 2026-09 | [methods/sonic-motion-tracking.md](../entities/nvidia-sonic.md) |
 | HoST | 2026-09 | [entities/paper-host-humanoid-standingup.md](../entities/paper-host-humanoid-standingup.md) |
 | PPO | 2026-09 | [methods/ppo.md](../methods/ppo.md) |
 | AMP | 2026-09 | [methods/amp-reward.md](../methods/amp-reward.md) |

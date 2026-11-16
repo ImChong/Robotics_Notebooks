@@ -36,7 +36,13 @@ def test_pick_entity_or_single_prefers_non_paper_entity() -> None:
 
 
 def test_auto_match_maps_mujoco_playground_to_repo_entity(tmp_path, monkeypatch) -> None:
-    # Use live wiki index from repo; only assert mapping exists.
+    import sync_paper_notebook_links as spnl
+
+    entity = tmp_path / "wiki" / "entities" / "mujoco-playground.md"
+    entity.parent.mkdir(parents=True)
+    entity.write_text("# MuJoCo Playground\n", encoding="utf-8")
+    monkeypatch.setattr(spnl, "ROOT", tmp_path)
+
     wiki_index = collect_wiki_index()
     paper = {"title": "[MuJoCo Playground](https://playground.mujoco.org/)", "arxiv": None}
     picked = auto_match(paper, wiki_index)

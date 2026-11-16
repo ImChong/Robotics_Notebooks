@@ -9,7 +9,7 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../concepts/behavior-tree-vla-orchestration.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./fluxvla-engine.md
   - ./paper-faststair-humanoid-stair-ascent.md
   - ./paper-cwi-composite-humanoid-whole-body-imitation.md
@@ -99,7 +99,7 @@ flowchart TB
 | MPJPE | 13.75 mm | **12.85 mm** | 全身位置误差 |
 | 平滑度（两项） | 基线 | **约 −11% / −20%** | 越低越好（官方材料） |
 
-> 指标来自 2026-07 发布材料；学术复现应以后续论文与开源权重为准。SONIC 背景见 [SONIC 运动跟踪](../methods/sonic-motion-tracking.md)；LimX 跨机体 WBT 迁移见 [Any2Any](./paper-any2any-cross-embodiment-wbt.md)。
+> 指标来自 2026-07 发布材料；学术复现应以后续论文与开源权重为准。SONIC 背景见 [SONIC 运动跟踪](./nvidia-sonic.md)；LimX 跨机体 WBT 迁移见 [Any2Any](./paper-any2any-cross-embodiment-wbt.md)。
 
 ## 常见误区或局限
 

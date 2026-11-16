@@ -87,6 +87,17 @@ sequenceDiagram
 
 原论文 arXiv:2312.10070v2 Table2 TUM-RGBD 八个序列 train-view RGB 渲染 PSNR 平均 **42.08 dB**、SSIM **0.996**、LPIPS **0.018**。**这是训练视角的 PSNR，不是未知相机视角的新视图指标**；与 SplaTAM/MonoGS 的其它 split 不应直接同列。作者 README 声称随机种子 0/1/2 三次结果取平均，Gaussian rasterizer 仍可能非确定性。
 
+## 与其他工作对比
+
+Gaussian-SLAM 与同期 3DGS RGB-D SLAM 的主要差别在**地图组织方式（分块子地图）**，下表只做设计层面对照；各论文指标的数据划分不同，不并列数值。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| [SplaTAM](./paper-splatam.md) | 两者都是 RGB-D 帧到模型追踪 + 高斯增密；SplaTAM 用 silhouette 掩码决定追踪像素与新增区域，维护单一全局高斯地图；Gaussian-SLAM 用透明度/深度误差 seeding mask，且地图切成独立 submaps，只优化活跃子图 | 本论文 Table2 的 42.08 dB 是 TUM-RGBD **训练视角** PSNR；SplaTAM 的 24.41 dB 是 ScanNet++ **新视角** PSNR，二者 split 不同，不可直接比 |
+| [MonoGS](./paper-monogs.md) | MonoGS 后端长期持有一个全局高斯集合，前后端异步，并支持单目；Gaussian-SLAM 仅 RGB-D，用子地图控制规模与显存 | MonoGS 原论文 §5 同样未做全局回环；两者都不能把局部优化当全局一致性校正 |
+| [GS-SLAM（Yan）](./paper-gs-slam-yan.md) | GS-SLAM 用低 opacity/深度残差增删高斯并做 coarse-to-fine 追踪，未公开完整系统代码；Gaussian-SLAM 作者开源了完整 `run_slam.py` 管线 | 可复现层级不同：Gaussian-SLAM 可按 README 跑完整系统，GS-SLAM 只能复用其 rasterizer |
+| [NICE-SLAM](./paper-nice-slam.md) | NICE-SLAM 用分层 feature grid + 固定解码 MLP 做隐式体渲染；Gaussian-SLAM 用显式高斯光栅化，新区域直接按深度反投影添加 | 两者都靠"局部更新"扩展到大场景：NICE-SLAM 是视锥内局部网格，Gaussian-SLAM 是活跃子图 |
+
 ## 结论
 
 **Gaussian-SLAM 用分块 3D Gaussians 子地图对 RGB-D 视频做帧到地图相机追踪与局部渲染优化，实现可扩展且逼真的稠密 SLAM。**

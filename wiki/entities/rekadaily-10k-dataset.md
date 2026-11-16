@@ -3,7 +3,7 @@ type: entity
 title: RekaDaily-10k（家务第一人称视频数据集）
 tags: [dataset, egocentric, egocentric-video, household, manipulation, vla, world-model, huggingface, claru, reka, reka-ai]
 summary: "Reka / Claru 发布的 Apache 2.0 无剧本第一人称家务视频：目标 10,312 小时；raw 档增量上线 HF（入库日约 886h），另有 processed+captioned 档。服务世界模型与 VLA 的家庭视觉先验，非机器人遥操作轨迹。"
-updated: 2026-09-15
+updated: 2026-11-14
 status: complete
 related:
   - ../overview/ego-category-01-data-collection.md
@@ -107,7 +107,7 @@ flowchart TB
 | **[EgoWorld-100W](./egoworld-100w.md)** | 百万级、**申请制**商业语料；本集规模叙事相近量级小时数但 **公开 ungated 下载** |
 | **[RekaCS2-10k](./rekacs2-10k-dataset.md)** | 同机构、同量级小时数；CS2 **游戏控制稠密对齐**（CC BY-NC），本集为 **真实家务**（Apache 2.0） |
 | **[EgoScale](../methods/egoscale.md)** | 方法侧强调腕手标签缩放；本集是 **无原生手姿** 的开放视频语料 |
-| **[ACE-Data-0](./paper-ace-data-0.md)** | 同属家居人类活动；ACE 提供 **度量运动+触觉+多外视**（gated 研究许可），本集强调 **小时规模 + Apache 2.0 ungated** |
+| **[ACE-Data-0](./paper-ace-data-0.md)** | 同属家居人类活动；ACE 提供 **度量运动+触觉+多外视**（非商业研究许可；HF API 当前 ungated），本集强调 **小时规模 + Apache 2.0 ungated** |
 | **[HIW-500](./hiw-500-dataset.md)** | **机器人** G1 家庭遥操作；本集是 **人类** ego 视频，任务重叠（家务）但监督形态不同 |
 
 ## 局限与风险

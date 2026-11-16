@@ -4,7 +4,7 @@ project_id: mengto-skills
 code: https://github.com/MengTo/Skills
 tags: [agent-skills, llm-agents, coding-agents, software-engineering, 3d, threejs, web-design, open-source]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-12
 original:
   - ../../sources/repos/mengto-skills.md
 related:
@@ -12,6 +12,7 @@ related:
   - ./agent-skills-addyosmani.md
   - ./cad-skills.md
   - ./mattpocock-skills.md
+  - ./hallmark.md
 sources:
   - ../../sources/repos/mengto-skills.md
 summary: "MengTo/Skills 以可移植 SKILL.md 为单元，版本化封装网页/3D/游戏/交互与验证工作流；所核对 README 快照包含 176 个技能，偏 agent 操作规约而非统一推理程序。"
@@ -101,6 +102,8 @@ README 的 skill 数量是快照；并非每一份技能都有可运行示例，
 - [Agent Skills（Addy Osmani）](./agent-skills-addyosmani.md) — 编码代理工程规范的另一组技能。
 - [CAD Skills](./cad-skills.md) — 硬件/URDF/STEP 垂直 Agent Skills。
 - [Skills For Real Engineers](./mattpocock-skills.md) — 通用软件工程技能。
+
+- [Hallmark](./hallmark.md) — 以主题轮换、硬性设计底线和可运行 `sloplint` 改善 Agent 网页设计的专项 Skill。
 
 ## 参考来源
 

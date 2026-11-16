@@ -2,7 +2,9 @@
 
 - **类型：** 官方站点索引（研究 / 技术博文列表）
 - **链接：** https://robotics.xiaomi.com/
-- **核查日期：** 2026-10-09
+- **核查日期：** 2026-10-09（2026-11-14 二次核对项目单页与跳转页 HTML 快照）
+- **通读：** 已完成
+- **核对范围：** 官网单页快照 `sites/xiaomi_r0.html`（含 `February 12, 2026` 发布信息、`Update (Apr 27, 2026)` 后训练更新与 `#pack-earbuds`、Results / Data / Pre-training / Post-training / Highlights / BibTeX）、重定向页 `sites/xiaomi_r0_gh.html`（确认 `<meta http-equiv="refresh">` 与 JS 跳转至 `robotics.xiaomi.com/xiaomi-robotics-0.html`）以及官网 Research 列表（2026-10-09 核查）
 - **访问说明：** 本次环境中该站 HTTPS 证书与域名不匹配，经 HTTP 读取首页与 XR-0 项目页；内容以官网为准。
 - **用途：** 核对公司路线「小米机器人」是否遗漏官方技术博文。
 

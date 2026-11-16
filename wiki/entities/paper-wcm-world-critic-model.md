@@ -1,10 +1,31 @@
 ---
 type: entity
-tags: [paper, vla, rl, post-training, critic, world-model, jepa, manipulation, tongji, shanghai-innovation-institute, fudan]
+tags:
+  - paper
+  - vla
+  - rl
+  - post-training
+  - critic
+  - world-model
+  - jepa
+  - manipulation
+  - tongji
+  - shanghai-innovation-institute
+  - fudan
 status: complete
-updated: 2026-10-06
+updated: 2026-11-14
 arxiv: "2607.29613"
+venue: arXiv 2026
+project: https://sylvestf.github.io/wcm-homepage/
 code: https://github.com/sylvestf/WCM
+original:
+  - ../../sources/papers/wcm_world_critic_arxiv_2607_29613.md
+  - ../../sources/repos/wcm-world-critic-model.md
+  - ../../sources/sites/sylvestf-wcm-homepage.md
+sources:
+  - ../../sources/papers/wcm_world_critic_arxiv_2607_29613.md
+  - ../../sources/repos/wcm-world-critic-model.md
+  - ../../sources/sites/sylvestf-wcm-homepage.md
 related:
   - ../methods/model-based-rl.md
   - ../methods/vla.md
@@ -16,216 +37,181 @@ related:
   - ./paper-temporal-grpo.md
   - ./paper-lejepa.md
   - ./paper-levjepa.md
-sources:
-  - ../../sources/papers/wcm_world_critic_arxiv_2607_29613.md
-  - ../../sources/repos/wcm-world-critic-model.md
-  - ../../sources/sites/sylvestf-wcm-homepage.md
-summary: "WCM（arXiv:2607.29613）：同济/上海创智/复旦提出的世界模型 Critic——用轻量 LeJEPA 让 critic 同时预测未来隐状态与估计价值，修掉 VLA RL 里「单帧 critic vs 部分可观测控制」的错配；4 基准 149 任务上对 π₀/π₀.₅/OpenVLA-OFT 均大幅提升，OOD 增益尤为明显；代码 MIT，权重部分开源。"
+summary: "WCM（arXiv:2607.29613，同济/上海创智/复旦）：将 VLA 后训练 Critic 重构为因果历史记忆 + 结构化动作隔离价值头 + FiLM 门控隐动力学（LeJEPA+SIGReg），解决单帧 Critic 与部分可观测控制错配及稀疏回报坍缩；4 仿真基准（ManiSkill IND/OOD、LIBERO-Plus 1-shot、MetaWorld、CALVIN）及 7 项 WidowX-250S 真机任务均大幅超越 SFT/RECAP/AWR；Critic 训练评测代码 MIT 已开源，下游 RL 策略管线逐步发布。"
 ---
 
-# WCM：给 VLA 强化学习换一个会预测世界的 Critic
-
-**WCM**（*World Critic Model*；论文 *WCM: A World Critic Model for Vision-Language-Action Reinforcement Learning*，[arXiv:2607.29613](https://arxiv.org/abs/2607.29613)，[代码](https://github.com/sylvestf/WCM)）由**同济大学 / 上海创智学院 / 复旦大学**提出：在 [VLA](../methods/vla.md) 的 RL 后训练中，把只看单帧的 critic 换成一个**同时做未来隐状态预测与价值估计**的轻量 LeJEPA 模型。
+# World Critic Model (WCM)
 
 ## 一句话定义
 
-**让 critic 的表征被「预测下一步会发生什么」这件事显式训练，而不是只被标量回报回归推着走——因为标量监督不足以让它学出机器人控制所需的时间结构。**
+**WCM**（World Critic Model，arXiv:2607.29613）是一种面向[视觉-语言-动作策略（VLA）](../methods/vla.md)后训练的[世界模型](../methods/generative-world-models.md) Critic 架构：通过因果历史 Transformer、**计算图先于动作消费**的价值分支与动作条件 FiLM 潜空间预测头（辅以 `SIGReg` 各向同性高斯正则化），解决单帧 Critic 在部分可观测控制（POMDP）下的进度混淆与稀疏回报下的表征坍缩。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WCM | World Critic Model | 本文方法：世界建模 + 价值估计的联合 critic |
-| VLA | Vision-Language-Action | 被后训练的策略族（π₀ / π₀.₅ / OpenVLA-OFT） |
-| JEPA | Joint-Embedding Predictive Architecture | 隐空间预测式自监督架构；LeJEPA 为其轻量变体 |
-| POMDP | Partially Observable Markov Decision Process | 机器人控制的实际设定，单帧不足以定状态 |
-| GAE | Generalized Advantage Estimation | 由价值输出得到优势的标准做法 |
-| AWR | Advantage-Weighted Regression | off-policy 侧的自回归主干训练算法 |
-| IND / OOD | In-Distribution / Out-of-Distribution | 分布内 / 分布外评测划分 |
+| :--- | :--- | :--- |
+| **WCM** | World Critic Model | 本文提出的联合价值估计与潜动力学预测 Critic 模型（约 107.2M 可学参数） |
+| **LeJEPA / SIGReg** | Latent Joint Embedding Predictive Architecture / Sketch Isotropic Gaussian Regularizer | 无像素重建的潜空间未来状态预测范式及用于防止潜特征坍缩的多维高斯正则项 |
+| **POMDP** | Partially Observable Markov Decision Process | 部分可观测马尔可夫决策过程；静态单帧观测不足以唯一确定任务真实阶段 |
+| **VLA** | Vision-Language-Action Model | 视觉-语言-动作联合策略底座（本文涵盖 OpenVLA-OFT、$\pi_0$ 与 $\pi_{0.5}$） |
+| **IND / OOD** | In-Distribution / Out-of-Distribution | 分布内（已见任务/环境）与分布外（视觉、语义或执行扰动）泛化评测设定 |
 
 ## 为什么重要
 
-- **指出的是一个结构性错配，不是一个调参问题。** critic-based 的 VLA RL 普遍把价值建在单帧观测或单帧 VLM latent 上，而机器人控制是 POMDP——单帧根本定不了状态。
-- **它证明了「补历史」本身不够。** 消融里 ViT critic + 观测历史但去掉预测目标（\(\lambda=0\)）**仍然不行**；起作用的是**世界建模目标**，不是更大的 critic 或更长的输入。
-- **坏 critic 比没 critic 更糟。** 论文的零价值消融（对所有观测令 \(V=0\)）在 OOD 上**优于** Flow-SDE 基线——这条对「要不要上 critic-based 方法」的选型判断很有杀伤力。
-- **OOD 才是收益大头。** 各主干上 OOD 增益均在 33–60 个百分点量级，正好命中「RL 后训练到底带来了泛化还是过拟合」的争议。
+在 VLA 强化学习后训练（如 PPO、FlowSDE、RECAP、AWR）中，人们往往花大量精力改进策略更新器，却忽略了上游 Critic 的两类结构短板：
 
-## 核心信息
+1. **单帧 Critic 无法建模 POMDP 时序语境：** 当机械臂在真机或长程任务中出现短暂停顿、遮挡或抓取回退时，仅靠当前帧图像 $o_t$ 无法区分“正要抓取”与“抓取失败后撤”，导致优势估计噪声极高。
+2. **纯标量回报拟合引发特征坍缩与 OOD 崩溃：** 在每步 $-1$、失败 $-C_{\text{fail}}$ 的稀疏长程奖励下，若没有自监督动力学预测正则，Critic 会退化为仅记忆背景和轨迹步数的快捷映射；在未见过物体、光线或桌面布局下预测失真。
+3. **跨异构策略可插拔复用：** WCM 以 107.2M 参数独立训练，既能替换 PPO/Flow-SDE/Flow-Noise 的在线价值网络，也可离线驱动 AWR/RECAP 加权微调，在每任务仅 1 条演示（One-SFT）下把策略推升到超越 50 条演示 Full-SFT 的水平。
 
-| 项 | 内容 |
-|----|------|
-| **机构** | 同济大学（Tongji）、上海创智学院（Shanghai Innovation Institute）、复旦大学（Fudan） |
-| **适配主干** | π₀、π₀.₅（flow matching）、OpenVLA-OFT（自回归） |
-| **RL 管线** | on-policy：Flow-SDE / PPO；off-policy：RECAP / AWR |
-| **评测规模** | 4 基准 **149 任务**：ManiSkill(25 pick-and-place) / MetaWorld / CALVIN / LIBERO-Plus |
-| **真机** | WidowX-250S（第三人称 + 腕部相机），**7 个任务**，每任务约 100 条遥操作轨迹，8 轮 RL × 50 rollouts |
-| **开源** | **部分开源**：代码 MIT（[sylvestf/WCM](https://github.com/sylvestf/WCM)）；权重/数据部分上 [HF collection](https://huggingface.co/collections/Sylvest/wcm)，其余论文写明「逐步开源」 |
+## 核心原理与方法架构
 
-## 核心原理
-
-### 诊断：state approximation problem
-
-论文把根因命名为**状态近似问题**：没有显式的世界建模目标，critic 的表征就抓不到价值估计所需的时间结构。三层推论：
-
-1. 单帧观测 / 单帧 VLM latent 与部分可观测控制**本质错配**；
-2. 朴素地把观测历史塞进 critic，在高维视觉空间里**复杂度爆炸**；
-3. 更关键的是，**纯标量回报回归的监督信号太稀薄**，学不出跨时间的动力学——所以补了历史也没用。
-
-### 架构（LeJEPA）
-
-| 组件 | 作用 |
-|------|------|
-| 观测编码器 | 逐帧独立编码为 latent（ViT 或 VLM backbone） |
-| 语言条件 | CLIP 编码指令，经 adapter 映射到 latent 空间 |
-| 因果 Transformer 主干（world predictor） | 对交叉注意力融合后的视觉历史做因果建模 |
-| 价值头 | 输出 \(\hat V_t\) |
-| 世界头 | 用 gated FiLM 的**动作条件残差更新**预测 \(\hat z_{t+1}\) |
-
-联合目标：
-
-\[
-\mathcal L=\mathcal L_{value}+\lambda\cdot\mathcal L_{pred}+\eta\cdot\mathcal L_{SIGReg}
-\]
-
-- \(\mathcal L_{pred}\)：teacher forcing 下预测隐状态与真值隐状态的 L2
-- \(\mathcal L_{SIGReg}\)：把 latent 往各向同性高斯拉，**防表征坍塌**（隐空间预测式方法的必备正则）
-- \(\mathcal L_{value}\)：预测价值与折扣回报的 L2
-
-> **读法提醒：** 这里的「世界模型」是**critic 的辅助监督**，不是拿来做规划 rollout 的动力学模型——与 [model-based RL](../methods/model-based-rl.md) 的常规用法不同。
-
-### 接进 RL 管线
+WCM 将 Critic 构建为「多视角视觉编码 + 语言交叉融合 + 无动作因果上下文 + 双分支（结构化隔离价值头 & 门控动作条件动力学）」统一模型（Eq. 1–10）：
 
 ```mermaid
-flowchart LR
-  subgraph critic["WCM Critic"]
-    enc["逐帧编码器<br/>ViT / VLM"] --> trunk["因果 Transformer<br/>world predictor"]
-    lang["CLIP 指令<br/>+ adapter"] --> trunk
-    trunk --> vh["价值头 → V̂ₜ"]
-    trunk --> wh["世界头 → ẑₜ₊₁<br/>gated FiLM 动作条件"]
-  end
-  buf["统一 buffer<br/>SFT 数据 + rollout"] --> enc
-  vh --> gae["GAE 优势"]
-  gae --> onp["on-policy：Flow-SDE / PPO"]
-  gae --> offp["off-policy：RECAP / AWR"]
-  onp --> pol["VLA 主干<br/>π₀ / π₀.₅ / OpenVLA-OFT"]
-  offp --> pol
-  pol --> roll["环境 rollout"]
-  roll --> buf
+flowchart TD
+    Obs["历史多视角图像 o_{t-K+1:t}"] --> ViT["VisionEncoder (ViT + camera_embedding + view_attention 池化)"]
+    Instr["文本指令 l"] --> CLIP["冻结 CLIP 文本编码器 + StateLanguageFusion 交叉注意力"]
+    ViT --> Zt["状态隐向量 z_{t-K+1:t}"]
+    Zt --> Trunk["ActionFreeContextTrunk (因果 Transformer, 尚未接入动作)"]
+    CLIP --> Trunk
+    Trunk --> Ht["上下文表征 h_t"]
+    Ht --> ValHead["ValueHead MLP (在消费 a_t 前直接输出 V^_t)"]
+    Ht --> Dyn["ActionConditionedDynamics (GatedDynamicsBlock FiLM 调制 a_t)"]
+    Zt --> Dyn
+    Act["动作 a_t"] --> Dyn
+    Dyn --> Znext["预测下一帧隐状态 z^_{t+1} = z_t + delta(h_t, a_t)"]
+    Znext --> PredLoss["MSE 潜动力学损失 L_pred vs sg(z_{t+1}) + 全局 SIGReg 正则"]
 ```
 
-## 源码运行时序图
+### 1. 历史上下文融合与结构级动作隔离（Eq. 1–4 & `model.py`）
 
-官方实现 [sylvestf/WCM](https://github.com/sylvestf/WCM)（MIT）用四个编号 shell 脚本串起复现路径（归档见 [sources/repos/wcm-world-critic-model.md](../../sources/repos/wcm-world-critic-model.md)）：
+- **编码与多视角融合：** 可训练 ViT 对过去 $K$ 帧多视角图像编码，加入可学习 `camera_embedding` 后通过 `view_attention` 查询池化得到单步隐表征 $z_t$；指令文本由冻结 `CLIP` 编码后经两层跨模态交叉注意力融入每步状态 token。
+- **无动作因果骨干与严格先后顺序：** 序列 $[z_{t-K+1}, \dots, z_t]$ 经带因果掩码的 6 层 Transformer（`ActionFreeContextTrunk`）输出上下文 $h_t$。在 `WorldCriticModel.forward` 代码实现中，**`value = self.value_head(context)` 在张量 `actions` 进入计算图之前即完成前向计算**，从拓扑上杜绝 Critic 偷看当前动作捷径估分的风险。
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Dev as 复现者
-    participant Data as 轨迹数据<br/>SFT + rollout
-    participant Ret as 1_add_returns.sh
-    participant Cfg as configs/*.yaml
-    participant Train as 2_run_train.sh<br/>1 或 8 GPU
-    participant WC as world_critic/<br/>LeJEPA 主干 + 双头
-    participant CKPT as checkpoint
-    participant Eval as 3_run_eval.sh
-    participant Vid as 4_gen_video.sh<br/>episode_value_video/
-    participant RL as VLA RL 管线<br/>Flow-SDE / PPO / AWR / RECAP
-    Dev->>Ret: 预处理，给轨迹打折扣回报标签
-    Ret-->>Data: 带 return 的数据集
-    Dev->>Train: 指定 configs/ 中的训练配置
-    Train->>WC: 联合优化 L_value + λ·L_pred + η·L_SIGReg
-    WC->>CKPT: 写出 critic checkpoint
-    Dev->>Eval: 对 checkpoint 评测价值估计质量
-    Dev->>Vid: 生成成功/失败 episode 的价值曲线视频
-    Note over Dev,RL: 主干与 RL 算法需自备；WCM 替换原 MLP / 单帧 critic
-    RL->>CKPT: 载入 critic，产出 GAE 优势
-    RL-->>Data: 新 rollout 回灌统一 buffer
-```
+### 2. 动作条件 FiLM 门控潜动力学与 SIGReg 正则（Eq. 5–7 & Eq. 10）
 
-- **最短复现路径：** `1_add_returns.sh` → `2_run_train.sh` → `3_run_eval.sh`；诊断时加 `4_gen_video.sh` 看价值曲线能否分开成功与失败轨迹。
-- **边界：** 仓库只交付 critic 侧；π₀ / π₀.₅ / OpenVLA-OFT 主干与其 RL 训练栈要自己接，HF 上也只有部分 checkpoint。
+- **残差隐状态推演：** 仅在价值分支输出后，将当前动作 $a_t$ 编码为动作特征，经过 3 层 `GatedDynamicsBlock`（含 LayerNorm、FiLM `scale/shift` 调制及偏置初始化为 `-2.0` 的 `sigmoid` 门控残差）预测一步未来潜向量 $\hat{z}_{t+1} = z_t + \Delta(h_t, a_t)$，以 stop-gradient 的真实下一帧隐表征 $\operatorname{sg}(z_{t+1})$ 作为监督目标（$\mathcal{L}_{\text{pred}}$）。
+- **防止特征坍缩与实用折中：** 引入来自 LeJEPA 的各向同性高斯正则 $\mathcal{L}_{\text{SIGReg}}$（`17` 个积分节点、`1024` 随机投影方向，全局 DDP `all_gather` 统计），联合目标为 $\mathcal{L} = \mathcal{L}_{\text{value}} + \lambda \mathcal{L}_{\text{pred}} + \eta \mathcal{L}_{\text{SIGReg}}$。作者同时在 Appendix D.1 指出，当直接复用高维 VLM 隐状态执行在线 RL 联合迭代时，`SIGReg` 在大规模张量上的计算/通信开销较大，因而实操中离线预训练阶段启用，在线策略微调阶段关闭该项。
 
-## 工程实践
+### 3. 稀疏回报标准化与策略耦合（Eq. 8–9）
 
-| 项 | 建议 |
-|----|------|
-| 历史长度 K | 默认 **3**（平均最优，论文假设覆盖到二阶动力学 / 加速度）；再长收益递减 |
-| 损失权重 \(\lambda\) | 取 **[0.3, 0.5]**；若目标是 OOD 泛化，宁可偏大（\(\lambda=0.9\) 的 OOD 优于 0.1）；**OOD 对 \(\lambda\) 的敏感度远高于 IND**（10.6 vs 2.7 个百分点） |
-| 别做的替代方案 | MLP + frame-stacking 不行；ViT critic 但 \(\lambda=0\) 也不行——**不要只是把 critic 做大** |
-| off-policy 稳定性 | 把 SFT 数据与 rollout 放**统一 buffer**，否则价值估计不稳 |
-| 诊断手段 | 用价值曲线可视化看成功 / 失败轨迹是否可分；若不可分，先怀疑 critic 而非策略 |
-| 何时不必上 | 若你的 critic-based 基线在 OOD 上出现「峰值后掉」，先做**零价值消融**对照——本文里它就赢过 Flow-SDE，说明当前 critic 在帮倒忙 |
-| 吞吐 | WCM critic 的 rollouts/hour 优于 Gemma 270M VLM critic 基线（附录 D.3） |
+遵循统一稠密+惩罚回报定义：成功终止帧奖励 $0$，失败终止帧施加 $-C_{\text{fail}}$（真机设为 $300$），其余时间步固定 $-1$；将整个数据集的 Monte Carlo 回报做全局 `global_minmax` 映射到 $[-1, 1]$，由 MSE 损失训练价值头 $V_\theta$，用于计算 PPO/GAE 优势、FlowSDE/FlowNoise 引导或离线 AWR/RECAP 样本重加权。
 
-## 实验与评测
+## 实验评测与方法对比
 
-**ManiSkill（相对同主干 SFT 基线）：**
+### 1. ManiSkill 25 项 Pick-and-Place：IND 与三维 OOD 对比（Table 1）
 
-| 主干 | SFT | +WCM（IND） | ΔIND | +WCM（OOD） | ΔOOD |
-|------|-----|------------|------|------------|------|
-| π₀ | 38.4% | 84.4% | +46.0 | 51.5% | +33.4 |
-| π₀.₅ | 47.0% | 91.9% | +44.9 | 64.4% | +38.0 |
-| OpenVLA-OFT | 28.1% | **99.0%** | **+70.9** | **77.9%** | **+59.6** |
+跨三种 VLA 底座及零样本底座（均从同一 SFT 起步或直接 RL 起步），替换 Critic 为 WCM 后在分布内及视觉/语义/执行三维 OOD 均取得全线提升：
 
-**LIBERO-Plus（one-shot SFT → RL）：** π₀ 39.1%→72.8%（+33.7）；π₀.₅ 38.0%→73.7%（+35.7）；OpenVLA-OFT 29.3%→74.0%（+44.7）。**MetaWorld / CALVIN** 相对 Flow-SDE 与 π-StepNFT 一致改善。
+| VLA 底座 | 后训练方法 | IND (%) | OOD Vision (%) | OOD Semantic (%) | OOD Execution (%) | OOD Avg (%) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **$\pi_0$** | SFT 基线 | 38.4 | 32.6 | 8.4 | 13.2 | 18.1 |
+| **$\pi_0$** | + FlowSDE / FlowNoise | 78.8 / 77.8 | 61.1 / 63.4 | 25.4 / 23.1 | 31.5 / 24.2 | 39.3 / 36.9 |
+| **$\pi_0$** | + $\pi$-stepNFT | 79.2 | 69.1 | 49.1 | 33.1 | 50.4 |
+| **$\pi_0$** | **+ WCM (Ours)** | **84.4 ± 1.2** | **69.1 ± 0.7** | **49.8 ± 2.2** | **35.6 ± 1.3** | **51.5 ± 1.5** |
+| **$\pi_{0.5}$** | SFT 基线 | 47.0 | 40.2 | 16.6 | 22.4 | 26.4 |
+| **$\pi_{0.5}$** | + FlowSDE / FlowNoise | 90.9 / 89.7 | 68.0 / 69.9 | 34.5 / 35.5 | 45.4 / 54.9 | 49.3 / 53.4 |
+| **$\pi_{0.5}$** | + $\pi$-stepNFT | 85.4 | 76.9 | 56.6 | 45.1 | 59.5 |
+| **$\pi_{0.5}$** | **+ WCM (Ours)** | **91.9 ± 0.4** | **78.1 ± 1.6** | **58.5 ± 1.0** | **56.5 ± 1.5** | **64.4 ± 1.4** |
+| **OpenVLA-OFT** | SFT → GRPO → PPO | 28.1 → 94.1 → 97.7 | 27.7 → 84.7 → 92.1 | 13.0 → 45.5 → 64.8 | 11.7 → 44.7 → 73.6 | 18.3 → 60.6 → 77.1 |
+| **OpenVLA-OFT** | **+ WCM (Ours)** | **99.0 ± 0.4** | **92.4 ± 0.5** | **65.9 ± 1.0** | **75.5 ± 0.7** | **77.9 ± 0.8** |
+| **OpenVLA-OFT** | **Zero-Shot (0.8%) + WCM** | **98.7 ± 0.3** | **88.0 ± 1.2** | **62.4 ± 2.9** | **70.1 ± 0.3** | **73.5 ± 1.8** |
 
-**真机（WidowX-250S，7 任务）：** 传送带寿司动态抓取、布料折叠、毛巾折叠、灶台清理（长程）、胡萝卜 / 辣椒 / 香蕉 pick-and-place。OpenVLA-OFT+WCM 在全部 7 任务上超过 AWR + Gemma critic 基线（如传送带 22/50 vs 17/50）；π₀.₅+WCM 超过 RECAP 基线（如布料折叠 38/50 vs 37/50）。
+### 2. LIBERO-Plus 极低演示样本评测（1-Demo SFT + WCM，Table 2）
 
-**其他发现：** OpenVLA-OFT 零暴露起步 0.78% → RL 后 98.7%；仿真 SFT 直接上真机**全部失败**，RL 同时改善仿真与真机；Flow-SDE 存在 OOD「峰值后掉」的过拟合现象，WCM 前 500 步未出现。
+在每任务仅有 **1 条演示**（One-SFT）的情况下经过 WCM 在线强化学习，全部三种骨干的总成功率均反超 **50 条演示全量监督**（Full-SFT）：
+
+| 底座模型 | Full-SFT (50 demos) | One-SFT (1 demo) | **One-SFT + WCM** | 总提升 ($\Delta$) |
+| :--- | :---: | :---: | :---: | :---: |
+| **$\pi_0$** | 71.2 ± 1.5 | 39.1 ± 2.1 | **72.8 ± 1.9** | +33.7 |
+| **$\pi_{0.5}$** | 72.9 ± 1.8 | 38.0 ± 1.6 | **73.7 ± 1.4** | +35.7 |
+| **OpenVLA-OFT** | 71.7 ± 1.3 | 29.3 ± 1.5 | **74.0 ± 1.8** | +44.7 |
+
+### 3. WidowX-250S 真机七项任务对比（Table 3，前 50 次测试轨迹）
+
+在 10 Hz、chunk=5（0.5 s）真机平台上从每任务 100 条演示起步，经过 8 轮每轮 50 条纠偏采样（总计 25 万 transitions），WCM 在离线加权场景下大幅领先 AWR 与 RECAP：
+
+| 底座与方法 | 萝卜抓取 | 香蕉抓取 | 青椒抓取 | 叠布 | 叠毛巾 | 擦拭灶台 | 传送带夹寿司 |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **OpenVLA-OFT SFT** | 24/50 | 11/50 | 19/50 | 15/50 | 16/50 | 1/50 | 9/50 |
+| **OpenVLA-OFT + AWR** | 29/50 | 23/50 | 24/50 | 29/50 | 35/50 | 10/50 | 17/50 |
+| **OpenVLA-OFT + WCM** | **32/50** | **26/50** | **26/50** | **38/50** | **40/50** | **15/50** | **22/50** |
+| **$\pi_{0.5}$ SFT** | 25/50 | 31/50 | 34/50 | 21/50 | 24/50 | 4/50 | 13/50 |
+| **$\pi_{0.5}$ + RECAP** | 33/50 | 37/50 | 40/50 | 32/50 | 33/50 | 27/50 | 18/50 |
+| **$\pi_{0.5}$ + WCM** | **44/50** | **38/50** | **43/50** | **38/50** | **35/50** | **33/50** | **24/50** |
+
+### 4. MetaWorld、CALVIN 与 Sim-to-Real 迁移（Fig. 4 & Table 4）
+
+- **MetaWorld（50 任务）与 CALVIN（ABC→D）：** 结合 Fig. 4 评测结果，接入 WCM Critic 在两类长程/多任务基准上对比单帧 PPO/FlowSDE 均保持优势。
+- **Sim-to-Real（Table 4）：** Sim SFT 在真机抓取上为 `0/25`，经过纯仿真 WCM RL 后零样本升至 `7/25, 7/25, 6/25`；若用 Real SFT（`13/25, 2/25, 4/25`）再叠加以仿真为环境的 WCM RL，Sim-IND 从 `6.9%` 提至 `73.5%`，真机三物抓取升至 `11/25, 8/25, 9/25`。
 
 ## 结论
 
-**VLA 的 RL 后训练里，critic 的表征质量是被长期低估的瓶颈；补历史不够，要给它一个显式的预测目标。**
+**WCM 用约 107.2M 参数的轻量「历史记忆 + 动作隔离价值头 + 潜动力学预测」联合 Critic 替代无记忆单帧 Critic，在不改造底层 VLA 策略网络结构的前提下，将 ManiSkill OOD、1-shot LIBERO-Plus 与七项 WidowX 真机任务成功率推升至显著高于 RECAP/AWR 与无模型 RL 基线的水平。**
 
-1. **诊断先于方法**：单帧 critic 与 POMDP 控制错配，根因是状态近似问题，不是 critic 容量不足。
-2. **有效成分是世界建模目标本身** — 消融里 \(\lambda=0\) 的 ViT critic 仍不行，说明「换更大 critic / 塞更多帧」这类直觉改法无效。
-3. **OOD 是主战场**：三种主干上 OOD 增益 33–60 pp，且对 \(\lambda\) 的敏感度远高于 IND；调参时优先按 OOD 选。
-4. **K=3 就够** — 刚好覆盖二阶动力学，更长的历史收益递减。
-5. **警惕坏 critic**：零价值消融在 OOD 上赢过 Flow-SDE——如果你的 critic-based 基线出现峰值后掉，它可能不如没有。
-6. **跨主干与跨管线通用**：flow matching 与自回归、on-policy 与 off-policy 四种组合都能接。
-7. **真机差距要按绝对次数读**：多数任务的优势在 1–5 次成功的量级（如 38/50 vs 37/50），别把仿真上的几十个百分点直接外推到真机。
+- **架构铁律：** 价值头必须严格在动作张量介入前提取特征，否则 Critic 会退化为记忆常见示范动作的快捷估计器而失去 OOD 鉴别力。
+- **表征正则：** 为稀疏惩罚奖励增加 `SIGReg` 与下一帧隐态 MSE 约束（`next_state_weight`），能在样本不足或背景扰动时稳住隐藏特征流形。
+- **极致样本效率：** 在 LIBERO-Plus 上仅靠 1 条演示做冷启动 SFT 再交由 WCM RL 探索，总成功率反超 50 条演示全量 SFT，证明好 Critic 可大幅替代繁重初期示教。
+- **使用范围核查：** 若目前希望直接复用公开权重或训练脚本，官方 MIT 仓库已完整交付 Critic 训练、曲线评测和渲染工具，但完整的下游 VLA 策略强化学习耦合代码与全部权重仍在分批发布中。
 
-## 与其他工作对比
+## 工程实践
 
-| 对照 | 差异读法 |
-|------|----------|
-| [基于模型的强化学习](../methods/model-based-rl.md) | 常规 MBRL 用世界模型做**规划 / 想象 rollout**；WCM 的世界头只做 **critic 表征的辅助监督**，不参与决策展开 |
-| [生成式世界模型](../methods/generative-world-models.md) | 生成式路线预测像素/视频；WCM 在**隐空间**预测（JEPA 路线），并靠 SIGReg 防坍塌，代价更低但不可视化为视频 |
-| [在线 vs 离线 RL](../comparisons/online-vs-offline-rl.md) | WCM 同时接 on-policy（Flow-SDE / PPO）与 off-policy（RECAP / AWR），说明瓶颈在 critic 表征而非算法族 |
-| [ActFovea](./paper-actfovea.md) | 都在处理「单帧不够」；WCM 用时序做**训练期价值估计**，ActFovea 用时序做**推理期健康检查** |
-| [LeVJEPA](./paper-levjepa.md) | 同一套 LeJEPA / SIGReg，但落在**视频表征预训练**（无价值头、无机器人 RL）；WCM 是 critic 侧的轻量变体 |
+- **开源完整度：部分开源（Critic 完整 MIT 开源；下游 RL 策略与全量 ckpt Coming Soon）。**
+  - **GitHub 仓库（<https://github.com/sylvestf/WCM>）：** 已完整发布 LeRobot v3.0 回报标记管线、8 卡 DDP Critic 训练、分布评测、逐帧曲线导出及视频覆盖工具，仓库 README 明确标注完整策略 RL 代码和论文中所有数据点权重将逐步开放。
+  - **Hugging Face 集合（<https://huggingface.co/collections/Sylvest/wcm>）：** 目前已发布 `Sylvest/pick-place-wcm`、`Sylvest/pick-place-wcm-ckpt` 与 `Sylvest/libero_plus_lerobot`。
+- **仓库默认配置与硬件建议（`configs/train_8gpu.yaml`）：**
+  - **模型骨架：** 可训练 `google/vit-base-patch16-224-in21k` + 冻结 `openai/clip-vit-base-patch32`，`latent_dim=384`，`history_size=3`，`trunk_depth=6`，`dynamics_depth=3`，`max_views=16`。
+  - **损失与优化：** `value_weight=1.0`, `next_state_weight=1.0`, `sigreg_weight=0.01`（`knots=17`, `projections=1024`），`lr=5e-5`，`per_device_batch_size=32`，`precision=bf16`；单步 `gradient_accumulation_steps` 强制设为 `1`（确保全局 DDP `SIGReg` 精确语义）。
+  - **算力参考：** 论文实验训练采用 8×H100，真机 10 Hz 推理可部署在单张 RTX 5090 上。
+
+## 源码运行时序图
+
+以下时序图严格对应官方开源仓库 [`sylvestf/WCM`](https://github.com/sylvestf/WCM) 的实际四步脚本入口与核心 Python 模块（下游策略在线 RL 脚本暂未并入当前发布分支）：
+
+```mermaid
+sequenceDiagram
+    participant Prep as "1_add_returns.sh / add_returns_to_lerobot.py"
+    participant TrainCLI as "2_run_train.sh / world_critic.train"
+    participant WCM as "WorldCriticModel (world_critic/model.py)"
+    participant Loss as "training.py (compute_losses / SIGReg)"
+    participant EvalCLI as "3_run_eval.sh / world_critic.evaluate"
+    participant VideoCLI as "4_gen_video.sh / episode_value_video"
+
+    Note over Prep,Loss: 阶段 1–2：LeRobot v3.0 数据与 WCM Critic 分布式训练
+    Prep->>Prep: "conversion_plan 迁移至 v3.0，结合 success_labels 计算 global_minmax 回报"
+    TrainCLI->>TrainCLI: "读取 configs/train_8gpu.yaml，切分 episode_split.json"
+    TrainCLI->>WCM: "forward(images, actions, instruction_ids)"
+    WCM-->>WCM: "VisionEncoder + view_attention -> StateLanguageFusion -> ActionFreeContextTrunk"
+    WCM-->>WCM: "value_head(context) 先于动作计算 V^_t，再进入 ActionConditionedDynamics"
+    WCM->>Loss: "返回 value, next_state_pred, context_latent"
+    Loss-->>TrainCLI: "ddp_global_mean_loss(L_value, L_pred) + dist_nn.all_gather SIGReg"
+
+    Note over EvalCLI,VideoCLI: 阶段 3–4：分布评估与价值轨迹可视化（下游策略 RL 管线 Coming Soon）
+    EvalCLI->>WCM: "evaluate_loader() 评估 token_* 与窗口末帧在线 value_*/next_state_mse"
+    EvalCLI-->>VideoCLI: "写出 episode_curves.json / CSV / PNG"
+    VideoCLI-->>VideoCLI: "python -m episode_value_video render 叠加双曲线输出调试视频"
+```
 
 ## 局限与风险
 
-- **最优历史长度 K=3 是平均结论**，依任务而异，换任务族需重扫。
-- **LeJEPA 的计算开销未与基线定量对比**（只给了 rollouts/hour 的相对优势）。
-- **真机只在 WidowX-250S 单臂平台**验证，无人形 / 双臂 / 移动底盘结果。
-- **\(\lambda\) 需按 IND / OOD 取舍调参**，没有一个通吃设定。
-- **权重仅部分开源**，完整复现表 1–3 仍需自备 VLA 主干与四种 RL 算法实现。
-- **论文未单列 limitations 节**，上述多为从实验设置与消融反推，引用时注意区分。
+1. **下游全量 RL 耦合代码未随初版释出：** 当前开源代码聚焦独立训练与可视化 Critic，若要接入 OpenVLA-OFT PPO 或 $\pi_0/\pi_{0.5}$ FlowSDE 闭环，工程团队需自行对接对应策略代码。
+2. **高维在线联合 `SIGReg` 开销：** 若直接把 VLM 大模型隐表征（而非轻量 ViT 384 维特征）接入联合在线微调，`dist_nn.all_gather` 计算 `SIGReg` 会显著拖慢步频（作者在 Appendix D.1 中在在线 RL 停用了 VLM 端正则）。
+3. **回报分布对失败惩罚 $C_{\text{fail}}$ 敏感：** 不同任务回合长度差异较大时，`-1` 步惩罚与 `-300` 终止失败惩罚的全局 `global_minmax` 缩放会改变相对斜率，跨域混训需按任务校准回报尺度。
 
 ## 关联页面
 
-- [VLA 方法页](../methods/vla.md) — 被后训练的策略族
-- [基于模型的强化学习](../methods/model-based-rl.md) — 世界模型的常规用法对照
-- [生成式世界模型](../methods/generative-world-models.md) — 像素级预测路线对照
-- [OpenVLA](paper-openvla.md) — 自回归主干（论文用 OpenVLA-OFT）
-- [π₀.₅ 开放世界 VLA](./paper-pi05-open-world-vla.md) — flow matching 主干
-- [在线 vs 离线 RL](../comparisons/online-vs-offline-rl.md) — WCM 两侧都接
-- [ActFovea](./paper-actfovea.md) — 时序信息用于推理期防护的对照
-- [Temporal GRPO](./paper-temporal-grpo.md) — 对照：无 critic，只改阶段组相对写回（arXiv:2608.13026；未开源）
-- [LeJEPA](./paper-lejepa.md) — SIGReg 图像配方（arXiv:2511.08544）；WCM 的轻量 critic 主干从此分叉
-- [LeVJEPA](./paper-levjepa.md) — LeJEPA+SIGReg 的视频预训练配方（arXiv:2608.27395；已开源）
+- 方法与核心范式：[基于模型的强化学习](../methods/model-based-rl.md) · [生成式世界模型](../methods/generative-world-models.md) · [VLA 综述](../methods/vla.md)
+- 路线对比：[在线 RL vs 离线 RL](../comparisons/online-vs-offline-rl.md)
+- 相关前置与衍生论文：[LeJEPA](./paper-lejepa.md) · [LeVJEPA](./paper-levjepa.md) · [OpenVLA](./paper-openvla.md) · [$\pi_{0.5}$](./paper-pi05-open-world-vla.md) · [Temporal-GRPO](./paper-temporal-grpo.md) · [ActFovea](./paper-actfovea.md)
 
 ## 参考来源
 
-- [wcm_world_critic_arxiv_2607_29613.md](../../sources/papers/wcm_world_critic_arxiv_2607_29613.md) — 论文摘录与开源核查
-- [wcm-world-critic-model.md](../../sources/repos/wcm-world-critic-model.md) — GitHub 仓库归档
-- [sylvestf-wcm-homepage.md](../../sources/sites/sylvestf-wcm-homepage.md) — 项目页归档
-- [arXiv:2607.29613](https://arxiv.org/abs/2607.29613) — 原文（Submitted 2026-07-31）
+- **论文精读归档：** [arXiv:2607.29613 World Critic Model 论文归档](../../sources/papers/wcm_world_critic_arxiv_2607_29613.md)
+- **开源仓库核对：** [sylvestf/WCM 代码结构与开源核查档案](../../sources/repos/wcm-world-critic-model.md)
+- **官方项目主页：** [sylvestf.github.io/wcm-homepage 站点归档](../../sources/sites/sylvestf-wcm-homepage.md)
 
 ## 推荐继续阅读
 
-- [WCM 项目页](https://sylvestf.github.io/wcm-homepage/) — 案例视频与价值曲线
-- [WCM GitHub](https://github.com/sylvestf/WCM) — 训练 / 评测 / 可视化四步脚本
-- [WCM Hugging Face collection](https://huggingface.co/collections/Sylvest/wcm) — 已发布权重与数据
+- 想对比不需要拟合值函数、直接预测帧对相对时间步差分布的路线，请阅读：[STEAM 自监督时间集成优势建模](./paper-steam-advantage-modeling.md)。
+- 想深入理解支撑 WCM 潜动力学防坍缩正则的理论源头，请阅读：[LeJEPA](./paper-lejepa.md) 与 [LeVJEPA](./paper-levjepa.md)。

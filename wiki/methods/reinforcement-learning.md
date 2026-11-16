@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-15
 related:
   - ../entities/paper-kamino.md
   - ../entities/paper-monorace-champion-level-drone-racing.md
@@ -27,7 +27,6 @@ related:
   - ./mt-opt.md
   - ./intentional-updates-streaming-rl.md
   - ./imitation-learning.md
-  - ./inverse-reinforcement-learning.md
   - ./inverse-reinforcement-learning.md
   - ../concepts/sim2real.md
   - ../concepts/whole-body-control.md
@@ -314,6 +313,7 @@ flowchart LR
 - [Fault-Tolerant Locomotion（论文实体）](../entities/paper-fault-tolerant-locomotion.md) — 非对称 actor–critic + latent-alignment 应对执行器功率损失（arXiv:2608.07328）
 - [TEMPO（论文实体）](../entities/paper-tempo.md) — VLA 语义/动作双 TD3 环与双频后训练（arXiv:2608.07314）
 - [Temporal GRPO（论文实体）](../entities/paper-temporal-grpo.md) — VLA 结果 GRPO 的阶段信用写回（arXiv:2608.13026；未开源）
+- [Flow-GRPO（论文实体）](../entities/paper-flow-grpo.md) — 把流匹配 ODE 采样转为 SDE 后做在线 GRPO（NeurIPS 2025；实验仅限文本生图，非机器人策略）
 - [MiniMind](../entities/minimind.md) — 小 LLM 教程仓内 **PyTorch 原生 GRPO/CISPO** 与 Agentic RL（非 VLA）
 - [Q-Planning（论文实体）](../entities/paper-qplanning.md) — 冻结 BC + 离策略 Q 吸收失败 rollout 自改进（arXiv:2608.21204；已开源）
 - [SRL-MPC（论文实体）](../entities/paper-srl-mpc.md) — RL 调 MPC 参数而非端到端策略（arXiv:2608.21175）
@@ -362,6 +362,7 @@ flowchart LR
 
 - [FineEnvs](../entities/fineenvs.md) — 面向 LLM agent 的环境设计、训练与部署配方
 - [AI Engineering from Scratch](../entities/ai-engineering-from-scratch.md) — PPO 等 RL 基础与 Agent 工程的可运行课程入口
+- [EmbodiedRSI](../entities/paper-embodiedrsi.md) — PPO 用在 Harness 的记忆管理上，而不是在线重训机器人策略权重；仿真演化后零样本迁移 SO-101 真机
 
 ## 继续深挖入口
 

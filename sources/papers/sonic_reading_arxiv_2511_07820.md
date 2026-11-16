@@ -1,6 +1,6 @@
 # SONIC 论文通读（规模化运动跟踪 · 原文视角）
 
-> 来源归档（原文通读 · 支撑 `wiki/methods/sonic-motion-tracking.md`）
+> 来源归档（原文通读 · 支撑 `wiki/entities/nvidia-sonic.md`）
 
 - **标题：** SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control
 - **作者：** Zhengyi Luo, Ye Yuan, Tingwu Wang 等（NVIDIA GEAR Lab 等）
@@ -32,7 +32,7 @@
 
 ## 对 wiki 的映射
 
-- [`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md)
+- [`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md)
 
 ## 参考来源（原始）
 

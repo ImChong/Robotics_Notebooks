@@ -111,6 +111,18 @@ sequenceDiagram
 | 校园 5.62km、1h34min | image 25Hz、IMU 200Hz，i7-4790 测得特征跟踪 25Hz、窗口优化 10Hz（Table I） |
 | 机载八字轨迹 61.97m | loop disabled、OptiTrack GT，报告终点位置漂移约 0.18m、100Hz 高频传播给控制器 |
 
+## 与其他工作对比
+
+VINS-Mono 是优化式单目 VIO 的代表，以下与本仓库已有的视觉-惯性系统做设计层面对照；论文中直接对比的只有 OKVIS。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| OKVIS（论文内基线） | 同为基于关键帧的紧耦合优化式 VIO；VINS-Mono 额外提供视觉-惯性自初始化、DBoW2 回环重定位和 4DoF 位姿图 | 论文在 EuRoC MH03/MH05 与 OKVIS mono/stereo 比较，原文只定性说明带回环版本误差较低，未给统一分数 |
+| [VINS-Fusion](./vins-fusion.md) | 同团队后续系统，扩展到双目+IMU 并可选 GPS 全局融合；VINS-Mono 只用单目+IMU | 单目尺度依赖 IMU 激励，双目可直接三角化获得尺度 |
+| [OpenVINS](./open-vins.md) | MSCKF 类滤波框架；VINS-Mono 是滑窗非线性优化 + 边缘化先验 | 滤波计算更轻，优化式可多次重线性化；具体精度需在同一数据集与配置下对比 |
+| [ORB-SLAM3](./orb-slam3.md) | 基于 ORB 描述子的特征匹配与多地图管理，支持单目/双目/RGB-D + IMU；VINS-Mono 前端用 KLT 光流，回环另提 BRIEF 描述子 | 本仓库无两者同条件对比数字 |
+| [LVI-SAM](./paper-lvi-sam.md) | 在视觉-惯性子系统之外耦合激光-惯性子系统，用于视觉退化场景；VINS-Mono 无激光 | 纹理匮乏、强光变化时单目 VIO 易失跟，这正是激光融合的动机 |
+
 ## 结论
 
 **VINS-Mono 的工程价值在于让最小 camera+IMU 传感器方案完成从尺度初始化到闭环重定位的完整闭环。** 但弱激励/时间对不齐/外参不准和视觉失跟是主要风险；仅凭初始化成功不等于长期 ATE 零漂移。

@@ -8,7 +8,7 @@ tags:
   - physical-intelligence
   - berkeley
 status: complete
-updated: 2026-11-07
+updated: 2026-11-14
 arxiv: "2512.05964"
 related:
   - ../methods/action-chunking.md
@@ -86,6 +86,8 @@ summary: "Training-Time RTC（arXiv:2512.05964，PI/Berkeley）：训练时随�
 ## 源码运行时序图
 
 仿真微调对齐 [real-time-chunking-kinetix](https://github.com/Physical-Intelligence/real-time-chunking-kinetix)：
+
+据 [2026-11-14 源码补充核对](../../sources/papers/real_time_chunking_arxiv_2506_07339.md)，同仓 `src/eval_flow.py` 调用 `FlowPolicy.realtime_action()`：`simulated_delay` 非空时走训练期前缀与时间条件分支；为空时才走推理期 `jax.vjp` 与软掩码引导。两种方法共享仿真评测入口，不代表公开仓库已提供论文真机的完整部署接口。
 
 ```mermaid
 sequenceDiagram

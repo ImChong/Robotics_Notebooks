@@ -10,7 +10,7 @@ tags:
 - awesome-sim2real
 - longchao-sim2real
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 related:
 - ../overview/sim-platforms-decade-technology-map.md
 - ./paper-draft-parametric-robot-design.md

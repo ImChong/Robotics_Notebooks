@@ -56,7 +56,7 @@
 ## 对 wiki 的映射
 
 - 复用并更新：[paper-predactor](../../wiki/entities/paper-predactor.md)
-- 交叉：[diffusion-policy](../../wiki/methods/diffusion-policy.md)、[sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)、[whole-body-control](../../wiki/concepts/whole-body-control.md)、[locomotion](../../wiki/tasks/locomotion.md)
+- 交叉：[diffusion-policy](../../wiki/methods/diffusion-policy.md)、[sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md)、[whole-body-control](../../wiki/concepts/whole-body-control.md)、[locomotion](../../wiki/tasks/locomotion.md)
 
 ## 2026-11-07 部署相关核对（当前版 PDF）
 

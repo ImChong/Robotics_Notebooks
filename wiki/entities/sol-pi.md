@@ -15,7 +15,6 @@ related:
   - ./karpathy-autoresearch.md
   - ./paper-harnessbank.md
   - ./paper-metarsi-v1.md
-  - ./paper-metarsi-v1.md
   - ./deepseek-harness.md
   - ./openclaw.md
   - ./hermes-agent.md

@@ -83,6 +83,16 @@ sequenceDiagram
 
 arXiv v4 Table2 KITTI Eigen，640×192、仅单目视频 M：AbsRel 0.115、δ1 0.877；baseline（无三项改进）AbsRel 0.140、δ1 0.852。训练 20 epochs / ResNet18。单目评测按图 median scaling，非直接公制深度。反射、颜色饱和和边界模糊有论文 Fig8 明确失败示例。
 
+## 与其他工作对比
+
+Monodepth2 沿用 SfMLearner 的「深度 + 位姿 + 可微重投影」自监督框架，改动集中在损失如何处理遮挡、静止像素和多尺度伪影；下表数字均为各论文自报，设置不同处已注明。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| [SfMLearner](./paper-sfmlearner-zhou.md)（Zhou 2017） | SfMLearner 把各来源帧的重投影误差累加并学 explainability mask 降权遮挡/动态像素；Monodepth2 改为逐像素取**最小**重投影误差、用无需学习的 auto-mask 剔除静止像素，并在原图分辨率计算多尺度损失；光度项从 L1 加上 SSIM | SfMLearner 论文 Table1：KITTI-only AbsRel 0.208（416×128 输入）；Monodepth2 论文 Table2：仅单目 M AbsRel 0.115（640×192）。两者分辨率与骨干不同，差值不能全部归因于三项损失改动 |
+| 本文 baseline（去掉三项改进） | 同骨干、同分辨率，只去掉 min reprojection、auto-mask、full-res multi-scale | 论文 Table2：AbsRel 0.140 → 0.115、δ1 0.852 → 0.877，这是同条件下三项改动的合计贡献 |
+| [FeatDepth](./paper-featdepth.md) | 以 Monodepth2 为常用基线，在其光度重投影之外增加特征空间几何监督 | 见 FeatDepth 页的对比表；Monodepth2 在那里作为被比较的基线出现 |
+
 ## 结论
 
 **Monodepth2 的价值在于明确的数据流与约束设计，而不是无条件提高所有场景的性能。**
@@ -104,6 +114,7 @@ arXiv v4 Table2 KITTI Eigen，640×192、仅单目视频 M：AbsRel 0.115、δ1 
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — ①传感与标定层：只有单目 RGB 时用自监督深度补出相对深度（尺度需另行对齐），再供 ③层 2D→3D 提升
 - [SfMLearner（自监督单目深度与位姿的早期工作）](./paper-sfmlearner-zhou.md)
 
 - [OpenPCDet](./openpcdet.md)

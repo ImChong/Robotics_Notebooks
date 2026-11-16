@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-10-15
+updated: 2026-11-15
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -18,9 +18,8 @@ related:
   - ../entities/paper-kdmr.md
   - ../entities/paper-spark-skeleton-aligned-retargeting.md
   - ../entities/paper-core.md
-  - ../entities/paper-core.md
   - ../entities/paper-rmr.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../entities/sam-3d-body.md
   - ../entities/sam3dbody-cpp.md
   - ../entities/paper-htd-refine-monocular-hmr.md
@@ -193,7 +192,7 @@ flowchart TD
 | **增量 SBTO 全轨迹精炼** | OmniRetarget 等 kinematic 参考 | 是（IK 前端） | CEM + 增量 horizon MuJoCo rollout | [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md) |
 | **GRF 锚定多接触 TO** | 测力同步生物力学 MoCap | 是（IK 初值） | CasADi+Pinocchio 动力学 NLP | [KDMR](../entities/paper-kdmr.md) |
 | **URDF 校准 + 渐进 KDTO** | 任务空间人体 / AMASS | 是（校准后 IK） | KTO→ID→KDTO（可选 \(\tau\) 奖励） | [SPARK](../entities/paper-spark-skeleton-aligned-retargeting.md) |
-| **跳过中间重定向** | 视频生成噪声源 | 否（直送 tracking） | 下游通用跟踪器 | [SONIC](../methods/sonic-motion-tracking.md) / [ExoActor](../methods/exoactor.md) 反例 |
+| **跳过中间重定向** | 视频生成噪声源 | 否（直送 tracking） | 下游通用跟踪器 | [SONIC](../entities/nvidia-sonic.md) / [ExoActor](../methods/exoactor.md) 反例 |
 
 > 选型直觉：**源数据越干净，重定向收益越高**；**源数据已是上游估计/生成结果**时，中间几何重定向可能放大全局漂移与脚滑，需要做"跳过重定向"的消融。
 
@@ -206,7 +205,7 @@ flowchart TD
 | 关节震荡 | IK / 平滑 | 单关节高频抖动 | jerk 罚项 + Savitzky-Golay |
 | 自碰穿模 | 缩放 / IK | 手穿过躯干 | 胶囊自碰罚项 + 关节限位收紧 |
 | 力矩超限 | 物理筛选 | 仿真 PD 跟不上 | 角速度上限 + 仿真 RL tracking 反馈 |
-| 重定向"修正"反放大噪声 | 视频估计源 | 全局位置误差比原始更大 | 做"跳过重定向"消融；切到 [SONIC](../methods/sonic-motion-tracking.md) 风格 tracking |
+| 重定向"修正"反放大噪声 | 视频估计源 | 全局位置误差比原始更大 | 做"跳过重定向"消融；切到 [SONIC](../entities/nvidia-sonic.md) 风格 tracking |
 
 ## 接口形态（与下游的契约）
 
@@ -278,7 +277,7 @@ flowchart TD
 - [SPARK（骨架对齐重定向）](../entities/paper-spark-skeleton-aligned-retargeting.md) — URDF 校准 + KTO/ID/KDTO
 - [CoRe v0.1.0](../entities/paper-core.md) — SOMA → 11 机 DMR + 接触精炼；论文 [CoRe](../entities/paper-core.md) / [RMR](../entities/paper-rmr.md)
 - [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三条主流路线如何在同一条流水线上占据不同位置的选型视角
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — "跳过中间重定向"流水线的下游通用 tracker
+- [SONIC（规模化运动跟踪）](../entities/nvidia-sonic.md) — "跳过中间重定向"流水线的下游通用 tracker
 - [Whole-Body Control](./whole-body-control.md) — 下游消费参考的控制器接口
 - [Imitation Learning](../methods/imitation-learning.md) — 离线产物的主要下游消费方
 - [Teleoperation](../tasks/teleoperation.md) — 在线产物的实时消费场景

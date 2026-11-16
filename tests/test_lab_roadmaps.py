@@ -75,15 +75,16 @@ def test_home_entry_links_match_data_order() -> None:
     card = html[start : html.index("</div>", start)]
     keys = re.findall(r'<a [^>]*href="lab\.html\?id=([^"]+)"', card)
     assert keys == [lab["key"] for lab in DATA["labs"]]
-    # 独立卡片默认展示四个，后续入口可展开，避免新增路线撑长首页。
+    # 默认展示最多 8 个，后续入口可展开；不足 8 个时不提供展开按钮。
     tags = re.findall(r'<a [^>]*href="lab\.html\?id=[^"]+"[^>]*>', card)
     years = [int(re.search(r'data-founded-year="(\d+)"', tag).group(1)) for tag in tags]
     assert years == [lab["founded_year"] for lab in DATA["labs"]]
-    assert len(tags) > 4
-    assert all("hidden" not in tag for tag in tags[:4])
-    assert all("data-lab-extra hidden" in tag for tag in tags[4:])
+    assert all("hidden" not in tag for tag in tags[:8])
+    assert all("data-lab-extra hidden" in tag for tag in tags[8:])
     toggle = re.search(r'id="homeLabToggle"[^>]*>展开全部 (\d+) 个实验室', html)
     assert toggle and int(toggle.group(1)) == len(keys)
+    toggle_tag = re.search(r'<button [^>]*id="homeLabToggle"[^>]*>', html).group(0)
+    assert ("hidden" in toggle_tag) == (len(tags) <= 8)
     # 公司 / 实验室合并为一张带标签页的卡：默认显示公司面板，实验室面板隐藏待切换。
     assert 'id="homeOrgTabLab"' in html
     assert re.search(r'id="home-lab-routes"[^>]*\shidden', html)

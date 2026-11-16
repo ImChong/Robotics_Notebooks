@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-retargeting, point-cloud, contact, mujoco, beyondmimic, sonic, unitree-g1, hkust-gz, noitom, hanyang, hkust, hku]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2609.02134"
 related:
   - ../concepts/motion-retargeting.md
@@ -11,7 +11,7 @@ related:
   - ./paper-hrl-stack-03-omniretarget.md
   - ./paper-omnicontact-humanoid-loco-manipulation.md
   - ../methods/beyondmimic.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-adapt.md
   - ./paper-grail.md
   - ./unitree-g1.md
@@ -22,6 +22,7 @@ sources:
   - ../../sources/repos/umr.md
   - ../../sources/repos/unified-motion-retargeting-unofficial.md
 summary: "UMR（arXiv:2609.02134，HKUST-GZ / Noitom / 汉阳 / HKUST / HKU）：规范 T-pose 稠密点云对应 + 约束表面匹配，不手写人–机关键点；LAFAN1 上相对 GMR 降全局体段误差、接触任务相对 OmniRetarget 关节误差约 −40–56%；G1 真机旋踢/捡球/爬楼；官方 GitHub + UMR Studio 已开源。"
+original: ../../sources/papers/umr_unified_motion_retargeting_arxiv_2609_02134.md
 ---
 
 # UMR：学习点云对应的统一人形重定向
@@ -141,7 +142,7 @@ sequenceDiagram
 
 相对 Unitree 官方 LAFAN1 参考：成功率与 mpbpe 接近，**关节角均值误差 UMR 更低**。
 
-[SONIC](../methods/sonic-motion-tracking.md) 在 BONES-SEED 上：关掉 SMPL encoder 时，UMR 参考相对官方 GMR 参考约 **+10%**；打开 encoder 后两边接近——人侧潜空间对齐会掩盖参考差距。
+[SONIC](./nvidia-sonic.md) 在 BONES-SEED 上：关掉 SMPL encoder 时，UMR 参考相对官方 GMR 参考约 **+10%**；打开 encoder 后两边接近——人侧潜空间对齐会掩盖参考差距。
 
 接触策略只换参考（Table IV，UMR / OmniRetarget）：Carry / Kick 成功与物体误差全面更好，三任务关节误差约 **−40–56%**；Stair **43.53% vs 11.01%**；Chair 上 OmniRetarget 略好（75.24 / 79.67）。
 
@@ -186,7 +187,7 @@ sequenceDiagram
 - [动作重定向枢纽](../overview/hub-motion-retargeting.md)
 - [GMR](../methods/motion-retargeting-gmr.md) / [GMR vs NMR vs ReActor](../comparisons/gmr-vs-nmr-vs-reactor.md)
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) / [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) / [GRAIL](./paper-grail.md)
-- [BeyondMimic](../methods/beyondmimic.md) / [SONIC](../methods/sonic-motion-tracking.md)
+- [BeyondMimic](../methods/beyondmimic.md) / [SONIC](./nvidia-sonic.md)
 - [AdaPT](./paper-adapt.md) — MoCap / racket 支路用 UMR
 - [Unitree G1](./unitree-g1.md)
 

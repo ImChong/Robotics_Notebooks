@@ -106,6 +106,7 @@ sequenceDiagram
 - [Infinigen V2](./infinigen.md) — 程序化 3D 场景生成。
 - [3D Gen Studio](./3dgenstudio.md) — 网格生产编排而非建筑平面图解析。
 - [Sim2Real](../concepts/sim2real.md) — 感知与物理资产进入机器人仿真的校验。
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 平面图结构 / 房间分割属其 ② 2D 分割层，拉伸成 OBJ 是离线的 ③ 2D→3D 提升；输入是建筑图纸而非机器人传感器，不经过 ① 传感与标定层
 
 ## 参考来源
 

@@ -1,5 +1,7 @@
 ---
 type: entity
+project_id: symbiosis-dpc
+project: https://symbiosis-robotics.com/research/dpc/en/
 tags:
   - paper
   - humanoid
@@ -13,11 +15,11 @@ tags:
   - symbiotic-attention
   - symbiosis-robotics
 status: complete
-updated: 2026-08-17
+updated: 2026-11-13
 venue: "Symbiosis Robotics Blog · 2026-08"
 related:
   - ../tasks/loco-manipulation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../queries/vla-with-low-level-controller.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-omega-0.md
@@ -28,15 +30,17 @@ related:
   - ./unitree-g1.md
   - ../concepts/whole-body-control.md
   - ./current-robotics-curr0.md
+original:
+  - ../../sources/blogs/symbiosis_dpc_direct_perception_control.md
 sources:
   - ../../sources/sites/symbiosis-robotics-dpc.md
   - ../../sources/blogs/symbiosis_dpc_direct_perception_control.md
-summary: "DPC（Symbiosis Robotics, 2026-08 博客）：去掉分层全身栈的中间运动接口 Zt，用单一模型把视觉/语言/本体直接映射到 G1 关节与手部 PD 目标；Symbiotic Attention 耦合感知–控制，DriftDistill 用冻结教师纠正闭环漂移；自报 15,010 h 统一关节语料。截至 2026-08-17 确认未开源，无公开成功率表。"
+summary: "DPC（Symbiosis Robotics, 2026-08 博客）：去掉分层全身栈的中间运动接口 Zt，用单一模型把视觉/语言/本体直接映射到 G1 关节与手部 PD 目标；Symbiotic Attention 耦合感知–控制，DriftDistill 用冻结教师纠正闭环漂移；自报 15,010 h 统一关节语料。截至 2026-11-13 官网页未列可下载代码、权重或数据，无公开成功率表。"
 ---
 
 # DPC：Direct Perception Control（直接感知控制）
 
-**DPC**（*Direct Perception Control Model*，[项目页](https://symbiosis-robotics.com/research/dpc/en/)，[规范引用](https://symbiosis-robotics.com/research/dpc)）是 **Symbiosis Robotics** 在 2026-08 发布的公司研究报告：主张把智能模型的边界从「生成待跟踪的运动学目标」推到「依赖当前身体状态、可直接执行的物理动作」。它把 [Helix](https://www.figure.ai/news/helix)、[Gemini Robotics 2](./gemini-robotics.md)、[ω-0](./paper-omega-0.md)、[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 等分层全身系统写成 **System 1 Latent Policy → \(Z_t\) → 冻结 System 0 Whole-Body Tracker**，并以冻结 [SONIC](../methods/sonic-motion-tracking.md) 解码器为具体靶，给出三条可证伪的信息瓶颈。
+**DPC**（*Direct Perception Control Model*，[项目页](https://symbiosis-robotics.com/research/dpc/en/)，[规范引用](https://symbiosis-robotics.com/research/dpc)）是 **Symbiosis Robotics** 在 2026-08 发布的公司研究报告：主张把智能模型的边界从「生成待跟踪的运动学目标」推到「依赖当前身体状态、可直接执行的物理动作」。它把 [Helix](https://www.figure.ai/news/helix)、[Gemini Robotics 2](./gemini-robotics.md)、[ω-0](./paper-omega-0.md)、[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 等分层全身系统写成 **System 1 Latent Policy → \(Z_t\) → 冻结 System 0 Whole-Body Tracker**，并以冻结 [SONIC](./nvidia-sonic.md) 解码器为具体靶，给出三条可证伪的信息瓶颈。
 
 ## 一句话定义
 
@@ -57,7 +61,7 @@ summary: "DPC（Symbiosis Robotics, 2026-08 博客）：去掉分层全身栈的
 
 ## 为什么重要
 
-- **把「VLA/WAM + 冻结 GMT」写成能力上限，而不是默认底座。** 2026 年大量人形 loco-manipulation 把 [SONIC](../methods/sonic-motion-tracking.md) token 当统一动作空间（[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)、[ω-0](./paper-omega-0.md)、[LEGS](./paper-legs-embodied-gaussian-splatting-vla.md)）。DPC 的论点是：缩放的是目标生成器，接触/平衡/上下身协调仍发生在冻结解码器之后。
+- **把「VLA/WAM + 冻结 GMT」写成能力上限，而不是默认底座。** 2026 年大量人形 loco-manipulation 把 [SONIC](./nvidia-sonic.md) token 当统一动作空间（[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)、[ω-0](./paper-omega-0.md)、[LEGS](./paper-legs-embodied-gaussian-splatting-vla.md)）。DPC 的论点是：缩放的是目标生成器，接触/平衡/上下身协调仍发生在冻结解码器之后。
 - **瓶颈不在维度而在监督几何。** 页内明确：问题不是「64 维太小」，而是 token 损失走 \(I_{64}\)、动作损失走 \(\mathrm{rank}\le 29\) 的 \(J_h^\top J_h\)，二者全局不等价。
 - **数据主张可对照产业叙事。** 15,010 h 统一到 G1 关节空间，介于 [Curr-0](./current-robotics-curr0.md) 的 human-task-hour 与 π 系异构多本体之间：先对齐执行空间，再谈混合。
 - **工程读法必须保守：** 无代码、无消融表、无对照成功率；适合当选型坐标，不适合当复现基线。
@@ -66,12 +70,12 @@ summary: "DPC（Symbiosis Robotics, 2026-08 博客）：去掉分层全身栈的
 
 | 项 | 内容 |
 |----|------|
-| **机构** | 共生机器人（Symbiosis Robotics）；联系 info@symbioact.com |
+| **机构** | 共生知行（Symbiosis Robotics）；联系 info@symbioact.com |
 | **类型** | 公司研究博客（非 arXiv / 无 PDF） |
 | **平台** | Unitree G1；输出 29 维关节 PD 目标 + 手部目标 |
 | **栈** | 单模型 direct-joint；Symbiotic Attention；DriftDistill（Offline BC → 在线恢复蒸馏） |
 | **数据** | 15,010 h 统一关节轨迹：Ego 6,781 / 武装机器人 4,024 / 轮式人形 3,660 / 双足人形 545 |
-| **开源** | **确认未开源**（截至 **2026-08-17** 项目页未列 GitHub / 权重 / 数据集） |
+| **开源** | 截至 **2026-11-13** 项目页未列 GitHub / 权重 / 数据集等可下载资源，尚无可复现入口 |
 
 ## 核心原理
 
@@ -143,7 +147,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用。** 截至 2026-08-17，项目页与页脚未列可运行官方仓库、权重或训练入口；无 README 步骤可对齐。代码若日后发布，应补 `sequenceDiagram`（节点对齐数据加载 → DriftDistill Stage 1/2 → G1 PD 部署）。
+**不适用。** 截至 2026-11-13，项目页与页脚未列可运行官方仓库、权重或训练入口；无 README 步骤可对齐。代码若日后发布，应补 `sequenceDiagram`（节点对齐数据加载 → DriftDistill Stage 1/2 → G1 PD 部署）。
 
 ## 工程实践
 
@@ -179,7 +183,7 @@ flowchart TB
 4. **次要代价：先验被丢掉。** Direct-joint 放大假设类，平衡与平滑必须重学；不是免费午餐。
 5. **次要代价：无定量。** 没有公开 SR / 对照 / 消融，不能据此宣称已超过 MotionWAM 或 Gemini Robotics 2。
 6. **部署读法：仍是 PD 目标。** 选型时把它放进 [VLA+低层控制器](../queries/vla-with-low-level-controller.md) 的「无冻结 System 0」一档，而不是「VLA 直接驱动力矩」。
-7. **工程读法：未开源。** 2026-08-17 只能当坐标，不能当训练配方。
+7. **工程读法：未见可运行源码。** 截至 2026-11-13 只能当技术选型坐标，不能当训练配方。
 
 ## 与其他工作对比
 
@@ -206,7 +210,7 @@ flowchart TB
 ## 关联页面
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务坐标与「去掉运动接口」路线
-- [SONIC](../methods/sonic-motion-tracking.md) — 被本页当作冻结 System 0 的具体接口
+- [SONIC](./nvidia-sonic.md) — 被本页当作冻结 System 0 的具体接口
 - [Query：VLA 与低级控制器融合](../queries/vla-with-low-level-controller.md) — 把 DPC 读成无冻结 tracker 的 direct-joint 档
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 页内引用的实时 WAM + SONIC token 对照
 - [ω-0](./paper-omega-0.md) — 页内引用的潜空间 foresight + SONIC latent 对照
@@ -219,6 +223,8 @@ flowchart TB
 - [Unitree G1](./unitree-g1.md) — 执行与数据汇聚平台
 
 ## 参考来源
+
+**原文复核（2026-11-13）：** 已通读官方英文研究稿的 Preliminary、Method、Data、Performance、Our Vision 与 Citation，并核对图 01–08 的图注、瓶颈公式、DriftDistill 训练阶段、15,010 h 分类数据及定性演示。原文没有提供公开成功率/消融表，也未列源码、权重或数据下载入口；不把概念论证视为独立复现结果。
 
 - [symbiosis-robotics-dpc.md](../../sources/sites/symbiosis-robotics-dpc.md) — 项目页与开源核查
 - [symbiosis_dpc_direct_perception_control.md](../../sources/blogs/symbiosis_dpc_direct_perception_control.md) — 技术摘录

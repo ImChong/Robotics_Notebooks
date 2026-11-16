@@ -63,3 +63,14 @@
 
 - 实体页：[wiki/entities/paper-flex-pi.md](../../wiki/entities/paper-flex-pi.md)
 - 交叉：[World Action Models](../../wiki/concepts/world-action-models.md)、[DreamWAM](../../wiki/entities/paper-dreamwam.md)、[FACT](../../wiki/entities/paper-fact.md)、[MECo-WAM](../../wiki/entities/paper-meco-wam-4d-geometry-cotraining.md)、[生成式世界模型](../../wiki/methods/generative-world-models.md)、[VLA](../../wiki/methods/vla.md)、[操纵](../../wiki/tasks/manipulation.md)
+
+## 全文复核（2026-11-13）
+
+- **核对范围：** arXiv:2608.10860v3（2026-08-29）正文§1–§5、必要附录A–G/I/J全文；H逐任务表浏览。另读官方页/README及固定版本YAM服务与模型分发路径。
+- **通读：** 已完成
+- mout是注意力分组而非loss mask：训练每头都去噪；同组未被动作读的未来仍可互看。推理才跳过不需要的future。DINO不经Wan VAE，而以线性adapter入共享trunk；DINO x-pred再转velocity用于同FM损失。
+- 99.2%来自不带stream dropout的Flexπ*，非同一柔性checkpoint98.5%；Plus v3修正非语言类别prompt提取后两模式均88.6，π0.5 85.7/FastWAM70.8为同管线实测，其余文献未重跑不能保证完全同口径。
+- 五任务83.0/76.4为部分得分完成度，binary success约63/50另列；SelfRepair76分不等于76%全成功，全成功11/20。FastWAM未测两项难任务，平均不能把缺失记0。
+- 60ms为5090编译动作路径，193ms为TRT分割缓存完整joint路径，batch1暖机且不含缓存文本、视频回传；工程优化水平/动作chunk长度不同。真实全32步30Hz后同步重规划，约1.07s再加边界等待，不是60ms闭环。
+- 训练几何可RGB→DA3，论文真机主实验仍用三路立体深度；可关pointmap输入，单任务完成度95→91.7不能称严格零损失。相机坐标点图不需外参，但仍需内参/尺度与深度质量。
+- Fig3论文示例PSNR38/MSE.0001与当前项目31.1dB/MSE.0031、z-RMSE4.9cm不同样本口径；不把归一化图像误差当物理无损或毫米几何。

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, foundation-policy, cvae, generative-policy, masked-control, dagger, privileged-training, ppo, unitree-g1, isaac-gym, amass, shanghai-ai-lab, pku, motion-tracking, teleoperation, locomotion]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 arxiv: "2509.13780"
 venue: "TPAMI 2025"
 related:
@@ -16,7 +16,7 @@ related:
   - ../concepts/sim2real.md
   - ../methods/dagger.md
   - ../methods/imitation-learning.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/egm-efficient-general-mimic.md
   - ../tasks/teleoperation.md
   - ../tasks/locomotion.md
@@ -197,7 +197,7 @@ $$
 
 - **BFM-Zero**（[lecar-lab.github.io/BFM-Zero](https://lecar-lab.github.io/BFM-Zero/)，arXiv:2511.04131）：同名族，但用 **无监督 RL + Forward-Backward 表示** 学 dynamics-aware 潜空间，零样本支持目标到达、轨迹跟踪与奖励优化。与本论文的 **CVAE + 特权蒸馏** 路线形成方法谱系的两端。
 - **BFM 综述与 taxonomy**（Yuan et al., arXiv:2506.20487，IEEE TPAMI 2025；配套 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)）：把 BFM 作为 **next-generation WBC** 系统化梳理；本库归纳见 [Behavior Foundation Model 概念页](../concepts/behavior-foundation-model.md)。本论文列在综述 **goal-conditioned** 线的 **真机部署代表**（CVAE + 掩码控制接口）。
-- 与 [SONIC](../methods/sonic-motion-tracking.md) 对照：SONIC 强调 **规模化 motion tracking** 单一目标下的数据/网络/算力 scaling；BFM 强调 **条件生成结构与多接口统一**。两者可作为「人形 WBC 基础模型」叙事的不同子分支。
+- 与 [SONIC](./nvidia-sonic.md) 对照：SONIC 强调 **规模化 motion tracking** 单一目标下的数据/网络/算力 scaling；BFM 强调 **条件生成结构与多接口统一**。两者可作为「人形 WBC 基础模型」叙事的不同子分支。
 - 与 [EGM](../methods/egm-efficient-general-mimic.md) 对照：EGM 走 **小高质量数据 + bin 级课程 + CDMoE** 的「精炼 tracking 单任务」路线；BFM 是「多接口生成器」。
 - 与 [HOVER](https://hover-versatile-humanoid.github.io/) 对照：同为多模式 WBC，HOVER 强调 **multi-mode multi-task RL**；BFM 用 **生成式 + DAgger 蒸馏**，并显式支持 **潜空间运算**。
 - 与 [Perceptive BFM](./paper-perceptive-bfm.md) 对照：同为 **开放 raw 参考 + 单策略多行为** 接口，但 Perceptive BFM 用 **TCRS 离线监督 + identity-gated 感知残差** 闭合 **操作者–环境失配**（楼梯/块/户外），弥补本文与 SONIC 类路线对 **地形兼容参考** 的隐含假设。
@@ -228,7 +228,7 @@ $$
 - [DAgger](../methods/dagger.md)
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [Curriculum Learning](../concepts/curriculum-learning.md)
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md)
 - [EGM（数据高效通用模仿）](../methods/egm-efficient-general-mimic.md)
 - [AMASS](./amass.md)
 - [Unitree G1](./unitree-g1.md)

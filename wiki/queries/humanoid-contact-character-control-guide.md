@@ -10,7 +10,7 @@ sources:
 ---
 
 > **Query 产物**：本页由以下问题触发：「做人形接触交互或角色化表演控制，该用哪条方法线？」
-> 综合来源：[GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md)、[Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)、[Teleoperation](../tasks/teleoperation.md)
+> 综合来源：[GentleHumanoid](../entities/paper-gentlehumanoid.md)、[Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)、[Teleoperation](../tasks/teleoperation.md)
 
 # 人形接触与角色化控制实践指南
 
@@ -18,7 +18,7 @@ sources:
 
 | 目标 | 优先方法 | 备注 |
 |------|----------|------|
-| 跟踪参考且力控柔顺 | [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) | 与通用 tracker 互补 |
+| 跟踪参考且力控柔顺 | [GentleHumanoid](../entities/paper-gentlehumanoid.md) | 与通用 tracker 互补 |
 | 触觉遥操作 → 接触策略 | [HTTD](../methods/humanoid-transformer-touch-dreaming.md) | 需触觉演示数据 |
 | 全身协调 + 语言/接触 | [CLAW](../methods/claw.md) | 见 [操作 VLA 架构选型](./manipulation-vla-architecture-selection.md) |
 | 角色化/娱乐硬件路线 | [Being-H07](../methods/being-h07.md)、[Disney OLAF](../methods/disney-olaf-character-robot.md) | 偏平台与表演 |
@@ -30,7 +30,7 @@ sources:
 
 ### 1. 柔顺运动跟踪
 
-[GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) 把力/柔顺目标写进跟踪层，适合**推、扶、携带**等需要限制接触力的任务。通常在上游已有参考（MoCap / 遥操作）的前提下使用，而不是单独解决「无参考探索」。
+[GentleHumanoid](../entities/paper-gentlehumanoid.md) 把力/柔顺目标写进跟踪层，适合**推、扶、携带**等需要限制接触力的任务。通常在上游已有参考（MoCap / 遥操作）的前提下使用，而不是单独解决「无参考探索」。
 
 ### 2. 触觉条件策略学习
 
@@ -93,7 +93,7 @@ sources:
 
 ## 关联页面
 
-- [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md)
+- [GentleHumanoid](../entities/paper-gentlehumanoid.md)
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md)
 - [Being-H07](../methods/being-h07.md)、[Disney OLAF](../methods/disney-olaf-character-robot.md)

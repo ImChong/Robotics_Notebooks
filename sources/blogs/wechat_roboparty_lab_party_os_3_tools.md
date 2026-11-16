@@ -67,7 +67,7 @@
   - [mimiclite](../../wiki/entities/mimiclite.md)
   - [roboparty-ufo](../../wiki/entities/roboparty-ufo.md)
   - [human-humanoid-tools](../../wiki/entities/human-humanoid-tools.md)
-- 交叉更新：[roboto-origin](../../wiki/entities/roboto-origin.md)、[motion-retargeting](../../wiki/concepts/motion-retargeting.md)、[sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)、[mjlab](../../wiki/entities/mjlab.md)、[paper-bfm-zero](../../wiki/entities/paper-bfm-zero.md)
+- 交叉更新：[roboto-origin](../../wiki/entities/roboto-origin.md)、[motion-retargeting](../../wiki/concepts/motion-retargeting.md)、[sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md)、[mjlab](../../wiki/entities/mjlab.md)、[paper-bfm-zero](../../wiki/entities/paper-bfm-zero.md)
 
 ## 可信度与使用边界
 

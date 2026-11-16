@@ -15,6 +15,8 @@
 - **机构：** 悉尼大学计算机学院 + Australian Centre for Robotics（PAIR Lab，aus.bot）；范德堡大学 College of Connected Computing
 - **入库日期：** 2026-08-17
 - **一句话说明：** 嵌套策略：可复用本体感觉内层手技能 + 单自由度 clutch copilot 采完整任务示范，再训**部署时不再依赖内层**的外层 visuomotor；H-VAE 压缩 20-DoF 手指令。六任务真机相对 AnyTeleop 采数成功率与外层策略成功率均更高。
+- **通读：** 已完成
+- **核对范围：** arXiv:2608.13362 官方 HTML 全文（方法、实验与局限）；核对 wiki 页数值与结论。未运行代码（官方未开源）。
 
 ## 核心论文摘录（MVP）
 

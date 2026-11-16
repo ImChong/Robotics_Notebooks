@@ -3,7 +3,7 @@ type: entity
 tags: [company, dexterous-hand, tactile-sensing, data-flywheel, humanoid, sharpa-robotics]
 title: 夏帕机器人（Sharpa Robotics）
 status: complete
-updated: 2026-10-16
+updated: 2026-11-13
 related:
   - ./paper-sata.md
   - ./paper-tacmap.md

@@ -11,6 +11,8 @@
 - **代码：** <https://github.com/Lliar-liar/Daily-Omni>（**GPL-3.0**）
 - **数据集：** <https://huggingface.co/datasets/liarliar/Daily-Omni>（**CC BY-NC-SA 4.0**；含 `Videos.tar` ≈ 3.9 GB + `qa.json`）
 - **入库日期：** 2026-07-30
+- **原文复核：** 2026-11-15；核对 arXiv HTML v2（2026-03-10）摘要、§1–5、Table 1–2、Figure 1–7 说明与 §4.3–4.4 消融/稳定性；当前来源归档原有实验结果与 v2 主文一致，动态榜单数值属于独立网页快照
+- **通读：** 已完成
 - **一句话说明：** 684 段日常视频、1197 道四选一 AVQA，覆盖 6 类跨模态时序推理任务；半自动标注管线 + 24 模型 / 37 模态设定评测；诊断基线 Daily-Omni Agent；榜首含智元 X-Lab WITA-Omni Preview。
 
 ## 开源状态（核查，2026-07-30）

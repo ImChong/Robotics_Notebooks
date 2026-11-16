@@ -2,9 +2,10 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-16
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
+  - ../entities/paper-vla-delta.md
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
   - ../entities/paper-viola-human-data-control.md
   - ../overview/ai-architecture-map.md
@@ -30,10 +31,10 @@ related:
   - ../overview/vln-open-source-repro-paradigms.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/foundation-policy.md
-  - ./saycan.md
+  - ../entities/paper-saycan.md
   - ./robotics-transformer-rt-series.md
   - ./dial-instruction-augmentation.md
-  - ./octo-model.md
+  - ../entities/paper-octo.md
   - ./behavior-cloning.md
   - ./action-chunking.md
   - ./diffusion-policy.md
@@ -94,11 +95,10 @@ related:
   - ../entities/robot-io-rio.md
   - ../entities/xiaomi-robotics-0.md
   - ../entities/xiaomi-robotics-1.md
-  - ../entities/paper-ucag-p.md
   - ../entities/rldx-1.md
   - ../entities/humannet.md
   - ../entities/paper-capvector-capability-vectors-vla.md
-  - ./sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../entities/paper-legs-embodied-gaussian-splatting-vla.md
   - ../entities/paper-rove-humanoid-vla-intervention.md
   - ../entities/paper-greenvla-staged-vla-humanoid.md
@@ -144,8 +144,6 @@ related:
   - ../entities/paper-code-as-world.md
   - ../entities/paper-infonce-geometry.md
   - ../entities/paper-clip.md
-  - ../entities/paper-clip.md
-  - ../entities/paper-llava.md
   - ../entities/paper-llava.md
   - ../entities/kinetiq-ascend.md
   - ../entities/cyclo-intelligence.md
@@ -157,7 +155,6 @@ related:
   - ../entities/paper-data-pyramid-embodied-manipulation.md
   - ../entities/gemini-robotics.md
   - ../entities/paper-gsr-paravla.md
-  - ../entities/paper-reflexvla.md
   - ../entities/paper-advdex.md
   - ../entities/paper-prm-as-a-judge.md
   - ../entities/paper-ego2robot.md
@@ -170,6 +167,7 @@ related:
   - ../entities/paper-discrete-forcing.md
   - ../entities/paper-geomvla-2609-13812.md
   - ../entities/paper-simvla-zero-shot-mobile-manipulation.md
+  - ../entities/paper-tacitvla.md
 original:
   - ../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md
   - ../../sources/papers/openvla_reading_arxiv_2406_09246.md
@@ -336,11 +334,11 @@ flowchart TD
 - **Pelican-Unified 1.0**：在 Qwen3-VL 上叠 **推理末态潜变量 \(z\)** 与 **Wan 系 UFG**，用 **同一扩散去噪** 联合生成未来视频与动作块，语言 / 视频 / 动作损失回传共享表示；定位为 **统一具身智能（UEI）** 闭环而非 VLA+世界模型流水线拼接（见 [Pelican-Unified 1.0](./pelican-unified-1.md)）
 - **mimic-video（Video-Action Model, VAM）**：用 **互联网规模视频扩散骨干**（如 Cosmos-Predict2）在 **潜空间** 形成与语言一致的 **视觉动力学计划**，再以 **流匹配动作解码器** 作 **逆动力学** 输出动作块；论文叙事强调相对传统 VLA 的 **样本效率** 与把瓶颈转移到 **视频表征质量**（见 [mimic-video](./mimic-video.md)）
 - **DeFI**：将 **GFDM（SVD 系前向动力学）** 与 **GIDM（DINO+VQ 自监督逆动力学）** 在混合/无标签视频上 **分开预训练**，下游再 **冻结前向 + 扩散适配器** 耦合微调，缓解 2D 预测与 3D 动作的目标纠缠并放大无动作标签人视频（见 [DeFI](./defi-decoupled-dynamics-vla.md)）
-- **TrAct（UMich / Stanford，arXiv:2608.24101）**：在 π₀.₅ 上扩展 **VLAT** 联合预测动作与 2D 轨迹，**轨迹条件 SVD 世界模型 + VLAC** 闭环选优；LIBERO-INTEGRAL **27%→55%**、真机 **49%→76%**；**代码待发布**（见 [TrAct](../entities/paper-tract.md)）
+- **TrAct（UMich / Stanford，arXiv:2608.24101）**：在 π₀.₅ 上扩展 **VLAT** 联合预测动作与 2D 轨迹，**轨迹条件 SVD 世界模型 + VLAC** 闭环选优；LIBERO-INTEGRAL **27%→55%**、真机 **49%→76%**；代码已公开，检查点及部分数据仍缺（见 [TrAct](../entities/paper-tract.md)）
 - **MotionWAM vs VLA（Mondo / HKUST，arXiv:2606.09215）**：在 **同 Stage 3 演示 + 同 SONIC 低层** 设定下，**视频世界模型隐状态条件** 的 WAM（76.1%）大幅超过 **GR00T-N1.7**（43.9%）等 VLA 微调基线——说明人形 loco-manip 闭环更依赖 **动力学先验** 而非单独加强 **VLM 语义先验**（见 [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)）
 - **Being-H0.7**：用 egocentric 人视频 + 机器人演示，在**潜空间**用未来观测分支监督 **latent world–action** 先验；测试时不滚未来像素，直接输出动作，并常与 **action chunking**、异步缓冲（UAC）组合部署
 - **GlanceWAM（arXiv:2608.23927）**：视频 WAM 把想象移出控制关键路径，动作头潜空间 **48 ms**；RoboCasa **72.2%**、LIBERO **99.0%**；**MIT + HF 已开源**（见 [GlanceWAM](../entities/paper-glancewam.md)）
-- **OpenWAM-α（arXiv:2609.07398）**：六项对照 Study 后的 **Wan2.2-5B + ActionDiT** 预训练 WAM；LIBERO **99.3%**、RoboTwin2.0-Full **89.0%**、RoboDojo 真机 **37.6/24.4% SR**；**GitHub + HF 46 检查点已开源**（见 [OpenWAM](../entities/paper-openwam.md)）
+- **OpenWAM-α（arXiv:2609.07398）**：六项对照 Study 后的 **Wan2.2-5B + ActionDiT** 预训练 WAM；LIBERO **99.3%**、RoboTwin2.0-Full **93.60%**、RoboDojo 真机 **37.6 分/24.4% SR**；**GitHub + HF 46 检查点已开源**（见 [OpenWAM](../entities/paper-openwam.md)）
 - **LaST-HD**：在 **reasoning-before-acting MoT VLA** 上，用 **动作条件世界模型** 把 **非配对人手与机器人轨迹** 对齐到 **共享前向动力学潜空间**，以潜式 **物理推理** 监督动作专家；配套 **OOL Glove** 采集与 **mixed-to-human**（混合共训 + 人手在线纠偏）配方，在 **6 项真机 / 3 本体** 上报告 **仅用人类数据泛化** 与 **约 20 分钟纠偏适应**（见 [LaST-HD](../entities/paper-last-hd-latent-physical-reasoning.md)，arXiv:2606.23685）
 - **Code-as-World-VL（arXiv:2608.27549）**：**可执行代码** 表示物理世界 + agentic discovery，以 verified worlds 监督 VLM 做 **QuantiPhy 定量物理推理** SOTA；与 LaST-HD 的 latent 动力学对齐不同，强调 **simulator-executable 机制本体**（见 [Code-as-World](../entities/paper-code-as-world.md)）
 - **InfoNCE Geometry（ICML 2026）**：解释 CLIP 式 **modality gap** 的 population geometry——单靠 pairwise alignment 不足以匹配 cross-modal marginal；设计 VLA 上游对比预训练时可对照 [InfoNCE Geometry](../entities/paper-infonce-geometry.md)
@@ -359,6 +357,7 @@ flowchart TD
 - **HuRo（RLWRLD / 延世大学，CoRL 2026，arXiv:2609.10706）**：**10 阶段机器人化流水线** 把五源 egocentric 人视频变成 **联合 robot-aligned 观测+重定向动作**（630K episode / 142M 帧）；ALLEX 上 VLA 预训练 scaling 使 Overall **51.5→80.3%**、**OOD 34.9→72.2%**；**流水线 Apache-2.0 已开源**，预构建 HuRo 语料与 VLA 权重待发布（见 [HuRo](../entities/paper-huro.md)）
 - **EgoScale**：在 **>20k h** 带 **腕 + 重定向高 DoF 手** 标签的 egocentric 人视频上预训练 **流式 VLA**，给出 **人数据规模 ↔ 验证损失（log-linear）↔ 真机灵巧后训练表现** 的实证链条，并以 **小规模视点对齐的人–机 mid-training** 承接 embodiment gap（见 [EgoScale](./egoscale.md)）
 - **EgoSteer**：用 **EgoSmith** 策展 **9.6K h** 全标注 egocentric 语料 + **统一 Robot Stack HITL DAgger** + **训练-only DINOv3 世界专家** 的 flow-VLA；**40+** 自由语言双灵巧任务约 **75%** SR，双具身长程 few-shot **75+%**；**代码与权重已开源**（全量处理后数据待发）（见 [EgoSteer](../entities/paper-egosteer.md)，arXiv:2607.09701）
+- **EgoWild2Dex（港大 / Kinetix AI，arXiv:2609.23755）**：**538.9 h** 野外 egocentric 数据预训练 + **GeoFormer** 二维单应把 ego 视角对齐机器人相机 + 三阶段人–机渐进训练（共享 H=50 flow-matching 动作块）；双臂灵巧手三项长程真机共 **29/30**，每任务 robot 示范 <1 h 但另需任务专用人类 ego 与手套数据；data/models/code 待发布（见 [EgoWild2Dex](../entities/paper-egowild2dex.md)）
 - **Psi-R2.5**（PsiBot，2026-09 博客）：**[强 pair data](../concepts/strong-pair-data.md)** + Psi-W0 蒸馏转换器；QwenVL3.5-4B 规划 + Wan2.2-IT2V-5B 轨迹；ICL 与 HIL 后训练；**未开源**（见 [Psi-R2.5](../entities/psibot-r25.md)）
 - **T-Rex**：在 EgoScale 同族 **人视频预训练** 之上，用 **100 h 触觉同步 play mid-training** 与 **变频率 MoT + 异步触觉 flow matching** 实现 **毫秒级触觉反应**；**12 项双手灵巧真机任务** 宏平均 **65%**，且 **朴素拼接触觉会损害 π₀.₅**（见 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)，arXiv:2606.17055）
 - **UCAG-P（小米具身智能 × 澳门大学，arXiv:2608.26058）**：共享 **相机系腕/抓取锚点几何**，翻译器再出 80 维稀疏命令；人手当独立 embodiment 直接监督；单 checkpoint LIBERO **98.3%** / RoboTwin **88.7%/89.2%** / GR-1 **62.0%** / LIBERO-Plus 零样本 **82.0%**；**代码 coming soon**（见 [UCAG-P](../entities/paper-ucag-p.md)）
@@ -400,7 +399,7 @@ flowchart TD
 - **Eka VFA（2026，非 VLA 扩展）**：[Eka Robotics](../entities/eka-robotics-vfa.md) 公开 **Vision-Force-Action** 路线：力与视觉同为闭环一等信号，训练以 **仿真 RL** 为主并宣称 sim-to-real 产品级吞吐；**无论文/无官方代码**（见 [官网归档](../../sources/sites/eka_robotics_com.md)），与 π 系 VLA 对照阅读即可，勿混为同一 API 栈。
 - **TANGO（北大 / Berkeley / Princeton 等，CoRL 2026，arXiv:2609.09158）**：首个 **全身 VLA** 语言导航——仿真合成路径→全身运动→障碍编辑→RL tracking 监督 **29-DoF** 关节；G1 零样本 cluttered 真机；**截至 2026-09-10 未开源**（见 [TANGO](../entities/paper-tango-vla.md)）
 - **Green-VLA**：**L0→L1→R0→R1→R2** 五阶段课程 + **DataQA** + **64 维语义统一动作** + flow-matching 专家；**R2** 用 **IQL 轨迹优化** 与 **源噪声分布 actor** 突破 BC 饱和而不直接 RL 穿 flow；主平台 **Green 人形 32 DoF 上身**（见 [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)，arXiv:2602.00919）
-- **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](./sonic-motion-tracking.md) 与 [GR00T N1.5 实体](../entities/paper-gr00t-n1-5.md) / GEAR 项目页为准）
+- **SONIC × GR00T N1.5（NVIDIA 公开演示）**：高层 VLA 与低层 **规模化 motion tracking** 策略经 **统一控制接口** 串联，由同一套 tracking policy 承担快速全身反应；可作为「慢 VLA + 快执行器」分层形态的案例（细节以 [SONIC](../entities/nvidia-sonic.md) 与 [GR00T N1.5 实体](../entities/paper-gr00t-n1-5.md) / GEAR 项目页为准）
 - **LLM 监督 VLA（Anthropic Embody，2026-07）：** 通用聊天模型不直接出关节，而是对 **MolmoAct** 的 7 维提案做接受/修改/替换。这把操作成功率从直接控制的个位数抬到可用，但 **所有测试模型仍弱于 VLA 单独跑**；过改会伤分，VLA 不会的新场景上最强模型才有净增益。接口抽象见 [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)，评测床见 [Embody](../entities/anthropic-embody.md)。
 - **Vesta（planner VLM，非 VLA）**：在 **Qwen3-VL-8B** 上 **SFT 统一** 定位 / VLN / 具身推理 / **带 memory 的子任务规划**，作 **System-2 planner** 向 **Gr00t-N1.6** 等 actor 输出文本子任务；四轴 benchmark 平均超最强单基线 **>20 pt**，R2R-CE SR **55.5%** 逼近 navigation specialist（见 [Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md)，arXiv:2606.20905）
 - **GaP staging（非纯 VLA，但直接消费 VLA）**：[GaP](../entities/paper-gap-graph-as-policy.md) 在 [变体自动化](../concepts/variational-automation.md) benchmark 上用 **计算图** 做感知/相机位姿等 **结构化 staging**，再 handoff **π₀.₅ / MolmoAct2**；大位姿变化列裸 VLA **~0.20**，**π₀.₅ w/ GaP** 可达 **0.66+**（Pack varied）——说明 **可靠性 gap** 有时靠 **图式工程壳** 而非单点放大 VLA 数据
@@ -535,6 +534,10 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
   [RoboBench](../entities/robo-bench.md) 显示 SOTA MLLM 在 **隐式指令、robot-view 感知、执行失败诊断** 等轴仍远低于人类；且 RoboBench 分与 **CALVIN/LIBERO** 下游 VLA 相关——选型 VLM 骨干时宜同时看 **操纵流水线认知诊断** 与 **控制基准**。
 - **误区 6：VLM/VLA「会看」⇒ 能通过身体闭环行动。**
   [HumanCLAW](../entities/paper-humanclaw.md) 在 1,218 条 HSSD egocentric find–navigate–interact 回合上测 **冻结 VLM 的 action intelligence**；九款 SOTA VLM 最高 InteractSR 仅 **16.8%**，FindSR 与 NavSR/InteractSR 断崖暴露 **embodied self-awareness** 缺口——勿用静态 VQA 或桌面 VLA 分数外推全身决策能力。
+
+## TacitVLA：训练推理监督与部署动作延迟解耦（2026）
+
+[TacitVLA（arXiv:2610.17540）](../entities/paper-tacitvla.md) 通过掩蔽动作专家对当次推理文本的注意力，让推理目标继续训练 VLA 骨干表征，部署时却不必等待这段文本自回归生成；在需要记住历史子任务的 RoboMME / RMBench 中，仍在动作执行期间异步生成下一条账本。论文在 LIBERO 的动作就绪延迟从显式推理 495 ms 降至 147 ms（单 H100，成功率 73.5% vs 72.9%）；不同硬件部署须重新计时。详见[完整机制、Mermaid 流程与基准边界](../entities/paper-tacitvla.md)。
 
 ## 工程实践
 
@@ -745,7 +748,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [RTCF（免训练检索纠偏）](../entities/paper-rtcf.md) — PMA + 低频残差；LIBERO Long 61.6→68.6（arXiv:2608.04527；无公开代码）
 - [DreamWAM（beyond-RGB Joint WAM）](../entities/paper-dreamwam.md) — 训练多视图未来、部署 RGB-only；LIBERO-Plus 75.47%（arXiv:2608.04996）
 - [FACT（失败感知因果 WAM）](../entities/paper-fact.md) — 失败轨迹教后果；RoboTwin 87.5%、真机 +scoring 92%（arXiv:2608.10232；已开源）
-- [Flex-π（多流算力柔性 WAM）](../entities/paper-flex-pi.md) — RGB/DINO/pointmap 联合；单 ckpt 56 组合 action-only↔full joint；真机 YAM ID 83.0%（arXiv:2608.10860；代码待发布）
+- [Flex-π（多流算力柔性 WAM）](../entities/paper-flex-pi.md) — RGB/DINO/pointmap 联合；单 ckpt 56 组合 action-only↔full joint；真机 YAM ID 完成度 83.0%（arXiv:2608.10860；代码、权重与数据已公开）
 - [Neural Introspection Gating](../entities/paper-neural-introspection-gating.md) — logit-margin 门控 VLA KV 缓存；LIBERO-Long 收回盲缓存掉点（arXiv:2608.10824；IROS 2026）
 - [RoboInter1.5（中间表示套件）](../entities/paper-robointer-1-5.md) — Data/VQA/VLM/VLA + IR 条件 World；部分开源（arXiv:2607.18709）
 - [Learning to Fold（LeHome 2026）](../entities/paper-lehome-learning-to-fold.md) — π₀.₅ + AWR/RECAP 异步 RL 与真机 DAgger；仿真 1st / 真机 2nd；全链路开源（arXiv:2606.27163）
@@ -794,6 +797,9 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [XR-2](../entities/paper-xr2-bimanual-household.md) — 1500 小时双臂家务 + DAgger 修正（arXiv:2609.03591；数据已开）
 - [开源可复现性 9 篇技术地图](../overview/open-source-reproducibility-9-papers-technology-map.md) — 2026-09-04 九篇盘点横切面
 - [Qwen-Drive-1.0](../entities/paper-qwen-drive-1-0.md) — 驾驶域：共享 Qwen3.5-4B VLM 外接 BEV 感知头与 flow-matching 规划专家，统一 3D 感知、驾驶问答与轨迹生成（arXiv:2609.00111；推理/权重已开源）
+- [EmbodiedRSI](../entities/paper-embodiedrsi.md) — 冻结 VLA 权重，只在外层 Harness 用假设图、实验选择与代码-技能联合进化做持续学习（arXiv:2610.10498）
+- [Ego Guidance（arXiv:2611.13685）](../entities/paper-ego-guidance.md) — 训练期使用无动作标签 Ego 视频的未来表征监督，真机汇总结果不能只报优势任务
+- [SO-101 光照基准（arXiv:2611.13810）](../entities/paper-so101-lighting.md) — 自动曝光掩盖环境照度变化，应同时测量摄像头真实输入的亮度分布
 
 ## 推荐继续阅读
 
@@ -808,6 +814,10 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Query：如何在真机上部署 VLA 策略？](../queries/vla-deployment-guide.md)
 - [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)
 
+
+## 物理状态转移监督：VLA-Δ
+
+- [VLA-Δ](../entities/paper-vla-delta.md)（arXiv:2610.21306）用未来状态差异文本、九类结构化槽与稠密光流监督 Query 表征；下游仅动作损失、推理不解码辅助目标。LIBERO 98.4%、RoboTwin Clean/Random 90.06%/89.74%；开源训练、仿真评测和权重，484h 物理标注全集开放范围待核实。
 
 ## 近期轻量化实例：FastOPD
 
@@ -840,3 +850,8 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 - [VLA-Tug](../entities/paper-vla-tug.md)：从骨干特征预测故障起点与模式；分开评估 early detection、校准和干预能力。
 - [Latent RL Priors](../entities/paper-latent-rl-priors.md)：把特权 RL 经验蒸馏为冻结动作先验，以动作监督适配视觉接口；仿真中的示范效率提升不代表总计算效率或真机验证。
+
+
+## BEHAVIOR 2026：单 VLA 覆盖 100 项家务任务
+
+- [One Policy for 100 Household Tasks](../entities/paper-behavior-2026-one-policy-100-tasks.md)（arXiv:2611.14432）使用共享约 2.9B VLA checkpoint 覆盖 100 项 OmniGibson 家务任务；纯 VLA 本地 Q-score 为 0.392，公开榜 0.446 则包含额外 14 项任务的 LLM Agent，不能直接视作同一纯策略性能。

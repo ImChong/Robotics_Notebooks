@@ -124,6 +124,7 @@ flowchart LR
 ### 推荐读什么
 - [Motus2](../wiki/entities/paper-motus2.md) — 真机权重级有界闭环的代表；五任务宏平均 84%，MBRL+Planning 75%；截至入库日未开源
 - [LWD](../wiki/methods/lwd.md) — 车队级 offline-to-online：异构部署经验 → 单一通用策略持续改进
+- [Cortex：把上下文巩固进参数](../wiki/entities/paper-cortex-parametric-memory.md) — FFN 参数记忆、前瞻查询与 CR/RR 测评的对照材料；论文主要研究文本 LLM，**不是**机器人真机自改进或完整 RSI 闭环
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) 第二次推进— STaR / SPIN 与"目标分布仍人类"的边界
 - [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) · [Bitter Lesson](../wiki/concepts/bitter-lesson.md) — 规模与结构之争的背景读法
 
@@ -154,6 +155,7 @@ flowchart LR
 - 真机侧：挑一个任务把 reset 与 verify 完全自动化，统计一次 eval 的墙钟与人工介入次数
 
 ### 推荐读什么
+- [Self-Rewarding Language Models（自奖励语言模型）](../wiki/entities/paper-self-rewarding-language-models.md) — ICML 2024，M1→M3 用自身评分构造偏好对并迭代 DPO；用于辨别“自评也变强”的证据与缺乏独立验证锚的风险
 - [ENPIRE](../wiki/methods/enpire.md) — EN–PI–R–E 闭环：自动 reset/verify、多范式策略改进、并行 rollout；灵巧任务报告约 99% pass@8
 - [真机策略 autoresearch harness 指南](../wiki/queries/real-robot-policy-autoresearch-harness.md) — 环境侧、范式选型、rollout 预算与机队 scaling 的实操选型
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md)「四道门」小节— 验证器锚、分布外、递归增益、能力–控制同步
@@ -188,6 +190,8 @@ flowchart LR
 - 机器人侧：把"改控制程序"当 harness 搜索做一遍，对照 ASPIRE 的进化搜索设定
 
 ### 推荐读什么
+- [Darwin Gödel Machine（DGM）](../wiki/entities/paper-darwin-godel-machine.md) — 冻结基础模型外层的自修改编码 Agent；开放式档案保留过渡分支，区分 50 题和全量 Polyglot 成绩
+- [Hyperagents（DGM-H）](../wiki/entities/paper-hyperagents.md) — 将任务 Agent 与元级改进者放入同一可编辑程序；Genesis Go2 奖励设计属于仿真实验，不等于真机策略自修改
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
 - [RSI-Harness](../wiki/entities/paper-metarsi-v1.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
 - [HarnessBank](../wiki/entities/paper-harnessbank.md) — 冻结模型下的语义归档与门控式 harness 自进化

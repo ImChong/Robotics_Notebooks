@@ -15,6 +15,8 @@
 - **硬件：** Unitree G1（29 DoF）；多款商业灵巧手；OpenNeck 2-DoF 主动颈
 - **仿真栈：** **mjlab**（GPU MuJoCo）；PPO；策略 50 Hz / PD 200 Hz
 - **入库日期：** 2026-08-05
+- **通读：** 已完成
+- **核对范围：** 已通读论文正文全文（/tmp 提取的 arXiv v1 正文，约 1736 行，已去除参考文献列表；图为文字抽取，未逐图目视）：方法、Table 1–13、评测协议、附录式指标定义；参考文献未核对；项目页与仓库细节依据既有 sources/sites、sources/repos 归档，本次未重读。
 - **一句话说明：** 用 **PICO VR** 统一提供身体 / 手 / 头意图，组合 **History Encoder + failure-aware rewind** 的全身跟踪、**归一化指向量 + 指尖距离/拇指帧** 的跨手优化重定向，以及主动视觉与异步录制；96 条演示上 ACT/GR00T 达 90%/95% SR。
 
 ## 相关资料（策展）
@@ -92,7 +94,7 @@
 - 沉淀实体页：[Teleopit（论文实体）](../../wiki/entities/paper-teleopit.md)
 - 项目页：[teleopit-project.md](../sites/teleopit-project.md)
 - 代码：[teleopit.md](../repos/teleopit.md)、[somehand.md](../repos/somehand.md)
-- 交叉补强：[Teleoperation](../../wiki/tasks/teleoperation.md)、[TWIST2](../../wiki/entities/paper-twist2.md)、[HEFT](../../wiki/entities/paper-heft.md)、[OASIS](../../wiki/entities/paper-loco-manip-04-oasis.md)、[MimicLite](../../wiki/entities/mimiclite.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
+- 交叉补强：[Teleoperation](../../wiki/tasks/teleoperation.md)、[TWIST2](../../wiki/entities/paper-twist2.md)、[HEFT](../../wiki/entities/paper-heft.md)、[OASIS](../../wiki/entities/paper-loco-manip-04-oasis.md)、[MimicLite](../../wiki/entities/mimiclite.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
 
 ## 当前提炼状态
 

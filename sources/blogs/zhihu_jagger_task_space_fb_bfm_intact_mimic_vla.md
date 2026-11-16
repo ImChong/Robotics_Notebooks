@@ -73,7 +73,7 @@
 - [paper-intact](../../wiki/entities/paper-intact.md)
 - [mimiclite](../../wiki/entities/mimiclite.md)
 - [roboparty-ufo](../../wiki/entities/roboparty-ufo.md)
-- [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)
+- [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md)
 - [vla](../../wiki/methods/vla.md)
 - [behavior-foundation-model](../../wiki/concepts/behavior-foundation-model.md)
 - [roboparty-lab-party-os-technology-map](../../wiki/overview/roboparty-lab-party-os-technology-map.md)

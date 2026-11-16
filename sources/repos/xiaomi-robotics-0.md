@@ -8,10 +8,23 @@
 - **代码：** https://github.com/XiaomiRobotics/Xiaomi-Robotics-0
 - **项目页（论文摘要外链）：** https://xiaomi-robotics-0.github.io/
 - **品牌站说明页：** https://robotics.xiaomi.com/xiaomi-robotics-0.html
-- **论文：** https://arxiv.org/abs/2602.12684
+- **论文：** <https://arxiv.org/abs/2602.12684>（归档见 [xiaomi_robotics_0_arxiv_2602_12684.md](../papers/xiaomi_robotics_0_arxiv_2602_12684.md)）
 - **入库日期：** 2026-05-15
-- **一句话说明：** 约 **4.7B** 参数的 **VLA**：**Qwen3-VL-4B-Instruct** 作多模态骨干，**DiT** 以 **flow matching** 生成动作 chunk；大规模跨本体机器人数据与 **~80M** VL 样本共训以防灾难性遗忘；后训练针对 **异步 chunk 执行**（推理与执行重叠）引入 **动作前缀 + Λ 形注意力掩码、前缀随机遮蔽、在线误差自适应损失重加权** 等，报告在 LIBERO / SimplerEnv / CALVIN 仿真与双臂真机（Lego 拆解、毛巾折叠等）上的结果与 **RTX 4090 上 ~80ms** 级延迟叙事，并开源权重与推理代码。
+- **通读：** 已完成
+- **核对范围：** `README.md`、`_tree.txt`（133 文件）、`deploy/{server,client}.py`、`scripts/{deploy,launch_libero}.sh`、`eval_libero/` / `eval_calvin/` / `eval_simplerenv/`（含 `main.py` 与 `eval_logs/` 实测结果）、`xr0/{README.md,configs/model/XR0.yaml,scripts/{train,deploy}.sh,tools/{train,weight_convert}.py,mibot/models/VLA/XR0.py,mibot/models/runner/base_runner.py,mibot/server/{deploy,runtime/server,runtime/client}.py}`
+- **一句话说明：** 约 **4.7B** 参数的 **VLA**：**Qwen3-VL-4B-Instruct** 作多模态骨干，**16 层 DiT** 以 **flow matching** 生成动作 chunk；大规模跨本体机器人数据（~200M 步）与 **>80M** VL 样本共训以防灾难性遗忘；后训练针对 **异步 chunk 执行**（推理与执行重叠）引入 **动作前缀 + 局部因果窗口（local_window=4）/ Λ 形掩码、前缀随机遮蔽（keep_last_k=2, prefix_mask_prob=0.5）、RoPE +10 偏移、在线 L1 误差重加权与可选 FFT 频域损失**，开源含 Pretrain/LIBERO/CALVIN/SimplerEnv HuggingFace 权重、评估服务端/客户端及完整 `xr0/` 后训练代码。
 - **沉淀到 wiki：** [Xiaomi-Robotics-0](../../wiki/entities/xiaomi-robotics-0.md)
+
+---
+
+## 仓库核查与实测日志对照（2026-11-14）
+
+- **开源完整度：已完整开源**（模型权重托管于 HuggingFace `XiaomiRobotics/Xiaomi-Robotics-0-{Pretrain,LIBERO,CALVIN,SimplerEnv}`；推理与仿真评测入口在 `deploy/` 与 `eval_*/`；2026-04-27 起 `xr0/` 目录补齐后训练框架、数据转换与真机部署服务器）。
+- **仿真评测日志一致：** 仓库 `eval_libero/eval_logs/*/merged_results.json`（Spatial 98.8% / Object 100.0% / Goal 98.8% / Long 97.2%）、`eval_calvin/eval_logs/{calvin_abc,calvin_abcd}/results.json`（1–5 步连续成功率 `1.000..0.881` 与 `0.997..0.918`）与 `eval_simplerenv/eval_logs/{bridge,fractal}/all_results.csv` 均与论文 Table 1/2/4/5 一致。
+- **`xr0/` 源码核查要点：**
+  - 训练入口：`xr0/scripts/train.sh` 启动 `torchrun tools/train.py`（Hydra `configs/config.yaml` + DeepSpeed），构建 `BaseRunner(LightningModule)`（先调用 `tools/weight_convert.py` 将 HF 权重转为带 `model.` 前缀的 `.pt`）。
+  - 模型核心（`xr0/mibot/models/VLA/XR0.py`）：冻结 `Qwen3VLForConditionalGeneration` 的 input embeddings 并开启视觉梯度检查点；16 层 `DiT(hidden_size=1024, kv_heads=8, layer_num=16)` 挂载 VLM 后 16 层 KV Cache；默认 `state_shape=(1, 32)`、`action_shape=(30, 32)`、`num_steps=5`、`local_window=4`、`flow_sampling="beta"`（`Beta(1.5, 1.0)`）；`XR0.yaml` 默认 `enable_freq: true`、`prefix_mask_prob: 0.5`，但注意该样例配置 `async_train: false`（需显式覆盖开启异步前缀训练）。
+  - 真机服务：`xr0/scripts/deploy.sh` 拉起 `python3 mibot/server/deploy.py --model <dir> --port <port>`，加载 `config.py` 与 DeepSpeed `mp_rank_00_model_states.pt`，经 length-prefixed `pickle` TCP socket 调用 `model.generate(batch)` 并反归一化 `(30, 32)` 动作块返回 `runtime/client.py`。
 
 ---
 

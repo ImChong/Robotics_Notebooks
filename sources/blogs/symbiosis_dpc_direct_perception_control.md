@@ -10,6 +10,8 @@
 - **发表日期：** August 2026
 - **入库日期：** 2026-08-17
 - **抓取方式：** 官方英文页直连（HTML 交叉核对；非 PDF）
+- **核对范围：** 已通读 2026 年 8 月官方英文技术稿全文：Preliminary（三条瓶颈及公式、图 01–04）、Method（Symbiotic Attention、DriftDistill、图 05–06）、Data（异构对齐、15,010 h、图 07–08）、Performance（三项定性演示）、Our Vision、Citation 及文末参考链接；2026-11-13 复核。
+- **通读：** 已完成
 - **配套项目页：** [`sources/sites/symbiosis-robotics-dpc.md`](../sites/symbiosis-robotics-dpc.md)
 - **一句话说明：** 去掉分层全身系统的中间运动接口，让感知–控制在关节目标空间联合学习，并用 DriftDistill 扩大可执行分布。
 
@@ -69,7 +71,7 @@
 
 - [paper-dpc](../../wiki/entities/paper-dpc.md) — 本篇主升格实体页
 - [loco-manipulation](../../wiki/tasks/loco-manipulation.md) — 新增「去掉运动接口」技术路线
-- [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md) — 被本页当作冻结 System 0 的具体靶
+- [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md) — 被本页当作冻结 System 0 的具体靶
 - [vla-with-low-level-controller](../../wiki/queries/vla-with-low-level-controller.md) — 相对 VLA+WBC 异步的第四条架构读法
 - [paper-motionwam-humanoid-loco-manipulation-wam](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 页内引用的分层 WAM 例
 - [paper-omega-0](../../wiki/entities/paper-omega-0.md) — 页内引用的 SONIC latent WAM 例

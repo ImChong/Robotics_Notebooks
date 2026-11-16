@@ -9,7 +9,7 @@
 - **许可：** **Remotion License**（非 SPDX 单一 OSI 许可；公司与大规模使用见 [remotion.dev/license](https://www.remotion.dev/license)）
 - **入库日期：** 2026-09-30
 - **一句话说明：** 用 **React 组件作视频源真值** 的可编程视频框架：代理时代强调 agent 生成/编辑视频、交互式时间轴、批量渲染（Node/Lambda/Vercel/客户端）与 Player/Editor 嵌入。
-- **为什么值得保留：** 与本站 [video-shotcraft](../../wiki/entities/video-shotcraft.md)、[motion-control 路线 Remotion 成片](../../media/roadmap-motion-control-video/README.md) 及 agent 内容生产栈直接相关。
+- **为什么值得保留：** 与本站 [video-shotcraft](../../wiki/entities/video-shotcraft.md)、[motion-control 路线长视频成片（Playwright + FFmpeg 管线，与 Remotion 同属代码驱动视频路线对照）](../../media/roadmap-motion-control-video/README.md) 及 agent 内容生产栈直接相关。
 - **沉淀到 wiki：** 是 → [`wiki/entities/remotion.md`](../../wiki/entities/remotion.md)
 - **代码：** **已开源**（GitHub monorepo；商业许可条款见官网）
 

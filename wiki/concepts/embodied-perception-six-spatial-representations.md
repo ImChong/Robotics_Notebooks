@@ -2,8 +2,9 @@
 type: concept
 tags: [perception, spatial-representation, slam, semantic-mapping, point-cloud, occupancy, depth, embodied-ai]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-14
 related:
+  - ./bird-eye-view-bev.md
   - ./2d-to-3d-semantic-lifting-gap.md
   - ./perception-coordinate-postprocessing.md
   - ./visual-representation-for-policy.md
@@ -22,6 +23,8 @@ related:
   - ../methods/grasp-pose-estimation.md
   - ../formalizations/3d-coordinate-transforms-vision-robotics.md
   - ../tasks/vision-language-navigation.md
+original:
+  - ../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md
 sources:
   - ../../sources/blogs/wechat_shenlan_six_spatial_representations_embodied_perception.md
   - ../../sources/papers/occanyscene_arxiv_2608_08696.md
@@ -171,6 +174,8 @@ flowchart TB
 
 ## 关联页面
 
+- [BEV：鸟瞰统一空间表征](./bird-eye-view-bev.md) — 多相机、LiDAR 与毫米波雷达如何在共享鸟瞰栅格中融合；BEV 只是特征空间布局，不等于占据概率或距离场。
+
 - [Reduced 3DGS](../entities/paper-reduced-3dgs.md) — 通过剪枝、球谐系数分配和量化降低高斯场存储开销。
 
 - [2D→3D 语义提升 Gap](./2d-to-3d-semantic-lifting-gap.md) — 2D/深度提升到可消费 3D 语义几何的信息损失
@@ -184,9 +189,12 @@ flowchart TB
 - [Point2Pose](../entities/paper-point2pose.md) — RGB-D 多物体 6D 跟踪 + 在线 TSDF mesh
 - [三维坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md) — 像素↔相机↔世界底座
 - [视觉表征作为策略输入](./visual-representation-for-policy.md) — 另一条「表征」轴（策略特征，非空间地图）
+- [VINO：三维自监督表征学习](../entities/paper-vino.md) · [Volt：Volume Transformer](../entities/paper-volt.md) — 两个独立实体：自监督目标与 3D 骨干，用于点云语义特征学习而非 TSDF/ESDF 物理量
 - [VLN（任务）](../tasks/vision-language-navigation.md) — 语义地图的语言导航消费方
 
 ## 参考来源
+
+> **原文核对记录（2026-11-13）：** 已阅读并核对知识框架的主要编译原文《“同样是具身感知”，这六种空间表征到底差在哪里？》完整归档；该文章是六层框架的直接文本来源，其他引用的具体算法论文和性能数字仍以各自的一手材料为准。
 
 - [Reduced 3DGS 论文归档](../../sources/papers/reduced_3dgs.md) — 高斯场压缩及评测。
 

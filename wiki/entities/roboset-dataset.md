@@ -5,7 +5,7 @@ project_id: roboset-dataset
 project: https://robopen.github.io/roboset/
 tags: [dataset, robot-manipulation, imitation-learning, real-world]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 summary: "RoboSet 将厨房多任务的遥操作与动作示教回放轨迹组织成多视角 HDF5 数据集，官方声明 28,500 条轨迹、四路相机视角。"
 original:
   - ../../sources/sites/roboset-dataset.md

@@ -2,7 +2,7 @@
 type: method
 tags: [residual-learning, reinforcement-learning, control, locomotion, manipulation, motion-tracking, sim2real, shared-autonomy]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-08
 related:
   - ./reinforcement-learning.md
   - ./imitation-learning.md
@@ -134,6 +134,7 @@ $$a_t = a_t^{\text{base}} + \Delta a_t,\qquad \Delta a_t \sim \pi_\theta(\cdot \
 - [Safe Real-World RL Fine-Tuning](../concepts/safe-real-world-rl-fine-tuning.md)
 - [MPC vs RL](../comparisons/mpc-vs-rl.md)
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — 直接微调 DP + 联合低层，对照冻结 DP + Residual RL
+- [物体中心残差 RL](../entities/paper-object-centric-residual-rl-vla.md) — 在冻结 GR00T-N1.5 上叠加以物体 6-DoF 位姿为观测的 TD3 残差，仿真训练后零样本迁移 FR3 真机
 
 ## 参考来源
 

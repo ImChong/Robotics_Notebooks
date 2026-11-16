@@ -7,6 +7,7 @@
 - **来源：** mujocolab（GitHub 组织）
 - **链接：** https://github.com/mujocolab/mjlab_playground
 - **入库日期：** 2026-05-12
+- **复核日期：** 2026-11-09（README 任务表、`uv run train` / `uv run play` 命令与 5090 收敛描述均与入库时一致，仍为 Go1 / T1 两个 getup 任务）
 - **许可证：** Apache-2.0
 - **一句话说明：** 基于 [mjlab](mjlab.md) 的任务集合，首批从 [MuJoCo Playground](https://playground.mujoco.org/) 移植，提供可脚本化训练与回放（`uv run train` / `uv run play`）的足式机器人技能示例。
 - **沉淀到 wiki：** 是 → [`wiki/entities/mjlab-playground.md`](../../wiki/entities/mjlab-playground.md)

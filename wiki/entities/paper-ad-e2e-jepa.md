@@ -3,7 +3,7 @@ type: entity
 project_id: ad-e2e-jepa
 tags: [paper, autonomous-driving, end-to-end-driving, jepa, world-models, latent-dynamics, planning, nyu, ami-labs]
 status: complete
-updated: 2026-10-11
+updated: 2026-11-13
 arxiv: "2609.34085"
 venue: "arXiv 2026"
 project: https://github.com/HaoranZhuExplorer/AD-E2E-JEPA
@@ -12,10 +12,12 @@ related:
   - ./paper-lewm.md
   - ./paper-sa-2411-04983-dino-wm-world-models-on-pre-trained-visual-featu.md
   - ../concepts/functional-taxonomy-world-models.md
+original:
+  - ../../sources/papers/ad_e2e_jepa_arxiv_2609_34085.md
 sources:
   - ../../sources/papers/ad_e2e_jepa_arxiv_2609_34085.md
   - ../../sources/repos/ad-e2e-jepa.md
-summary: "面向端到端自动驾驶的动作条件 JEPA 世界模型：冻结 DINOv3 ViT-L，以带 SIGReg 的可学习投影器压缩 patch 表征，在 NAVSIMv2 上做无策略训练的目标条件零样本规划；官方仓库暂未发布可运行源码。"
+summary: "面向端到端自动驾驶的动作条件 JEPA 世界模型：冻结 DINOv3 ViT-L，以带 SIGReg 的可学习投影器压缩 patch 表征，在 NAVSIMv2 上做无策略训练的目标条件零样本规划；官方已发布实现与权重入口，需按本地集群环境适配。"
 ---
 
 # AD-E2E-JEPA：端到端自动驾驶的联合嵌入预测架构
@@ -53,7 +55,7 @@ summary: "面向端到端自动驾驶的动作条件 JEPA 世界模型：冻结 
 | 视觉编码 | 冻结 DINOv3 ViT-L |
 | 预测器 | AdaLN 风格 Transformer，使用 RoPE |
 | 规划 | 对候选轨迹做潜状态 rollout，按终点潜状态与目标图像嵌入的距离选择 |
-| 官方代码 | 仓库存在，但截至 2026-10-11 仍未公开可运行实现；状态见[仓库核查](../../sources/repos/ad-e2e-jepa.md) |
+| 官方代码 | 截至2026-11-13已发布训练/规划源码与HF权重链接；状态见[仓库核查](../../sources/repos/ad-e2e-jepa.md) |
 
 ## 核心原理
 
@@ -103,12 +105,40 @@ flowchart LR
 2. 把 EPDMS 与 EPDMS† 一起读；后者移除了乘法安全项，不代表安全能力。
 3. 单独跟踪 rollout loss 对 FDE 和 hit rate 的作用，不要只看汇总分。
 4. 区分 100 场景对照与 12,146 场景全量测试，避免跨子集排名。
-5. 当前仓库没有可运行训练、规划或部署入口；源码发布后再核验数据管线、依赖、权重与报告数字。
+5. 当前已有训练/规划入口；复现前替换Slurm/Singularity脚本路径并准备地图、metric cache、DINO依赖及权重，本次未跑指标。
 6. 真实部署还需显式安全过滤、闭环道路测试和传感器变化验证。
 
 ## 源码运行时序图
 
-**不适用（截至 2026-10-11）。** 官方仓库只有 README 和 overview 图片，README 表示源码仍在准备、预计 2026-10-19 前发布。当前没有可核对的训练、推理、数据加载或部署入口，因此不绘制猜测性的代码时序图；详见[官方源码归档](../../sources/repos/ad-e2e-jepa.md)。
+基于版本`dc122f69`核读的序列评测入口，详见[源码归档](../../sources/repos/ad-e2e-jepa.md)。
+
+```mermaid
+sequenceDiagram
+  participant S as v3 GCZSP sbatch
+  participant E as evaluate_jepa_wm_v3_latent_prediction_seq_gczsp.py
+  participant A as JEPA_WMAgent/JEPA_WMModel
+  participant D as SceneLoader/metric cache/8192.npy
+  participant U as BatchedWMUnroll
+  participant O as GCZSPEvalObjective
+  S->>E: checkpoint、navtest、256候选
+  E->>A: Hydra构造、载权重、eval
+  E->>D: 加载场景、未来目标和词表
+  E->>A: DINO编码 + visual_projector
+  loop 候选分块
+    E->>U: 初始四帧latent与候选轨迹
+    loop 八步rollout
+      U->>A: predict(上下文，相对位姿动作)
+      A-->>U: 下一帧latent
+      U->>A: advance_rollout_context，滑动窗口
+    end
+    U-->>O: 预测latent与目标latent
+    O-->>E: MSE代价
+  end
+  E->>E: argmin选轨迹；4s结果计EPDMS
+  E->>D: PDM评分与CSV输出
+```
+
+目标图像来自数据集未来观测；这张图描述离线规划评测，未表达实车执行。Hit@k诊断另加入GT候选，实际规划选择仍只用词表anchors。
 
 ## 工程实践
 
@@ -116,7 +146,7 @@ flowchart LR
 - **监控压缩：** 分别记录投影前后 token 数、通道维、显存与单位候选 rollout 延迟；16 倍 patch 减少与 4 倍通道压缩是两种不同维度。
 - **区分损失功能：** MSE 训练预测，SIGReg 约束表征分布，rollout loss 改善多步一致性；它们不是碰撞风险损失。
 - **分开评测工作点：** 提高候选数改善搜索粒度但延长时延；报告分数时必须附候选数和场景规模。
-- **源码开放边界：** 论文 PDF 声明代码可用，但官方 README 仍标注准备公开；以仓库可访问实现为准。
+- **源码开放边界：** README标注代码与权重已发布，当前有可核对实现；脚本含集群占位设置，需适配，本次未执行GPU复现。
 
 ## 局限与风险
 
@@ -125,7 +155,7 @@ flowchart LR
 - **离线伪仿真：** NAVSIMv2 结果不能替代真实车辆闭环、法规验证或故障安全测试。
 - **观测范围：** 方法设定为前视相机与平面自车位姿，不能自动推广到多相机、激光雷达或其他接口。
 - **吞吐依赖候选规模：** 从 256 到 8192 候选，分数提升但时延由约 0.8 秒升至 18.2 秒。
-- **源码状态矛盾：** arXiv PDF 称 source code available，仓库 README 截至入库日称源码准备中；本文依当前仓库现况记录为尚不可复现。
+- **复现环境：** 当前实现依赖NAVSIM数据、地图、metric cache与集群路径；提供源码和权重入口不等于已独立复现论文分数。
 
 ## 与相关路线对比
 

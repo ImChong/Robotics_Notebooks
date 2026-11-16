@@ -43,7 +43,7 @@ sources:
 | 100 | MotionWAM | [paper-loco-manip-161-100-motionwam](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) |
 | 101 | OMG | [paper-loco-manip-161-101-omg](../entities/paper-omg-omni-modal-humanoid-control.md) |
 | 102 | Robot Motion Diffusion Model | [paper-loco-manip-161-102-robot-motion-diffusion-model](../entities/paper-loco-manip-161-102-robot-motion-diffusion-model.md) |
-| 103 | SONIC | [sonic-motion-tracking](../methods/sonic-motion-tracking.md) |
+| 103 | SONIC | [sonic-motion-tracking](../entities/nvidia-sonic.md) |
 | 104 | SafeFlow | [paper-loco-manip-161-104-safeflow](../entities/paper-loco-manip-161-104-safeflow.md) |
 | 105 | TextOp | [paper-loco-manip-161-022-textop](../entities/paper-loco-manip-161-022-textop.md) |
 | 106 | 从语言到运动 | [paper-loco-manip-161-106-n106](../entities/paper-loco-manip-161-106-n106.md) |

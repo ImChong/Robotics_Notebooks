@@ -14,7 +14,7 @@
 ## 摘要级要点
 
 - **定位：** Cosmos 3 面向 **Physical AI**（机器人、自动驾驶、智慧基础设施等），主张 **一个可扩展的通用骨干** 同时承担 **理解、生成、仿真与动作**。
-- **架构：** **MoT** = 自回归（AR）Transformer（Reasoner 路径，因果自注意力，下一 token 预测）+ 扩散 Transformer（Generator 路径，全注意力去噪图像/视频/音频/动作 token）；共享 Transformer 层、多模态注意力与统一 **3D mRoPE** 时空位置编码。
+- **架构：** **MoT** = 自回归（AR）Transformer（Reasoner 路径，因果自注意力，下一 token 预测）+ 扩散 Transformer（Generator 路径，全注意力去噪图像/视频/音频/动作 token）；相同Transformer层结构、两塔独立投影/归一化/MLP参数，多模态注意力与统一 **3D mRoPE** 时空位置编码。
 - **双运行时面：**
   - **Reasoner：** 文本 + 视觉 → 文本（感知、 grounding、物理推理、任务规划、动作预测、具身推理）。
   - **Generator：** 文本 + 视觉 + 声音 + 动作 → 视觉 + 声音 + 动作（世界生成、仿真、未来预测、合成数据、策略学习）。
@@ -64,3 +64,15 @@
 - 仓库归档：[`sources/repos/nvidia_cosmos.md`](../repos/nvidia_cosmos.md)
 - 训练框架：[`sources/repos/nvidia_cosmos_framework.md`](../repos/nvidia_cosmos_framework.md)
 - 互链：[Generative World Models](../../wiki/methods/generative-world-models.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[Video-as-Simulation](../../wiki/concepts/video-as-simulation.md)、[Sim2Real](../../wiki/concepts/sim2real.md)
+
+## 全文复核（2026-11-13）
+
+- **核对范围：** arXiv:2606.02800v4（2026-06-23，封面06-24）正文§1–§8全文；必要附录A、C、D、E、F全文，B.4/B.5动作与transfer提示、B.7 agentic T2I全文；其余提示模板未逐项核读。另读官方页、两仓README与固定DROID服务链。
+- **通读：** 已完成
+- MoT为两塔独立参数、相同层结构，在attention相遇；AR不读DM，DM读AR+DM。先训Reasoner、复制初始化Generator后冻结Reasoner，非全程双塔互相联合更新。视觉理解用ViT、生成用Wan VAE；音频25token/s，与video/action通过物理时间轴MRoPE对齐。
+- 动作mid-training8.4M episode/61.3k小时，其中机器人仅5.36k，ego41.3k；用相对位姿伪动作和domain-aware投影，不是所有本体共用低层控制器。DROID后训练重新初始化动作模块，改8D绝对关节目标+gripper，32步15Hz，不能直接复用midtrain10D EEF表示。
+- RoboLab39.7是specific指令，default36.8/vague20.6；表19 DreamZero23.9与正文25.2不同，引用表值。RoboArena第一是2026-05-30时点的pairwise排名，MolmoSpaces39.0是oracle SR，不是任意真机任务39%成功。
+- DROID四步/CFG3/shift5、两RTX Pro6000并行、跳过视频解码；仍去噪future video+action，不是跳过未来视频计算。15Hz是执行频率，不是每秒15次大模型查询。
+- PhysicsIQ directI2V43.8/V2V59.7与BoN48.9/63.4分开；T2I AA排名包含GPT5.5改写/Gemini3.1Pro critic最多2次迭代，非单模型单次结果。SoundBench AVQ7.31/7.34仍低于部分闭源，不宣称所有模态全面领先。
+- SDG并非每域都改善：表26各合成源均降低Human，All总分+.10。部分表存在内部口径差（训练GPU数、RobotSim208k表与386k文字、HUE每视频16/20问题），保留而不自行拼成统一数字。HUE把Unclear计No，独立Bernoulli置信区间也未处理同prompt相关。
+- 六月文中Edge待发，当前README七月已发；十月交互仿真为另报告/后训练例，不能写成六月基础checkpoint已有所有低延迟闭环能力。

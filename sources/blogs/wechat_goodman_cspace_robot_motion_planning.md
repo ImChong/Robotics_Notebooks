@@ -10,7 +10,7 @@
 - **入库日期：** 2026-10-01
 - **抓取方式：** Agent Reach v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；专辑页同会话 `data-link` 跳转（直连 CAPTCHA）
 - **专栏专辑：** [Modern Robotics 原理精读](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2ODgxOTA1Mw==&action=getalbum&album_id=4521219024549937157)（第 1 篇 / 10）
-- **原始抓取落盘：** [`sources/raw/wechat_modern_robotics_album_4521219024549937157/01_mid2247483809/01_mid2247483809.md`](../sources/raw/wechat_modern_robotics_album_4521219024549937157/01_mid2247483809/01_mid2247483809.md)
+- **原始抓取落盘：** [`sources/raw/wechat_modern_robotics_album_4521219024549937157/01_mid2247483809/01_mid2247483809.md`](../raw/wechat_modern_robotics_album_4521219024549937157/01_mid2247483809/01_mid2247483809.md)
 - **一句话说明：** 从位形、自由度、Grübler 公式到完整/非完整约束，把运动规划的第一张地图画在 C-space 上。
 
 ## 核心摘录（归纳，非全文）
@@ -23,7 +23,7 @@
 
 ## 对 wiki 的映射
 
-- [configuration-space](../../wiki/formalizations/configuration-space.md)
+- [configuration-space](../../wiki/concepts/configuration-space.md)
 - [modern-robotics-wechat-principles-series](../../wiki/overview/modern-robotics-wechat-principles-series.md)
 
 ## 可信度与使用边界

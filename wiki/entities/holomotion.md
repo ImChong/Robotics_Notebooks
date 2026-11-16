@@ -8,7 +8,7 @@ related:
   - ./egalahad-sim2real.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
   - ../concepts/foundation-policy.md
@@ -51,7 +51,7 @@ summary: "HoloMotion 是地平线的人形全身控制开源栈：v1 为大规�
 ## 为什么重要
 
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **D 全身跟踪基座**（28/64）：跟踪策略：视频动作也进入运动基座训练。
-- **数据 scaling 轴与 SONIC / BFM 并列阅读**：与强调 **MoCap 帧规模** 的 [SONIC](../methods/sonic-motion-tracking.md) 或 **生成式多接口 WBC** 的 [BFM](./paper-behavior-foundation-model-humanoid.md) 不同，HoloMotion-1 明确把 **野外视频重建运动** 作为 **多样性主来源**，用 **精选 MoCap + 自采** 补 **保真度与部署覆盖**——这是「**异质监督下的运动基础模型**」一条独立工程叙事。
+- **数据 scaling 轴与 SONIC / BFM 并列阅读**：与强调 **MoCap 帧规模** 的 [SONIC](./nvidia-sonic.md) 或 **生成式多接口 WBC** 的 [BFM](./paper-behavior-foundation-model-humanoid.md) 不同，HoloMotion-1 明确把 **野外视频重建运动** 作为 **多样性主来源**，用 **精选 MoCap + 自采** 补 **保真度与部署覆盖**——这是「**异质监督下的运动基础模型**」一条独立工程叙事。
 - **实时人形闭环的系统约束**：高容量 **Transformer** 常见瓶颈是 **训练贵 + 推理延迟**；工作采用 **稀疏 MoE**、**KV-cache** 与 **序列级优化** 显式对准 **控制频率与算力预算**（细节与数字以论文为准）。
 - **开源交付完整**：代码、文档站、权重与容器降低 **复现与集成** 成本，便于与仿真栈、数据管线对照实验。
 - **v2.0 是预览版本：** Pelvis-1 / Keypoint-5 共用策略并有 G1 上初步 PICO VR 遥操作演示；外部文本/音乐动作生成 adapter 尚未包含，pelvis-only 步态与跟踪仍在调优，验证覆盖因模式而异。
@@ -185,7 +185,7 @@ sequenceDiagram
 ## 关联页面
 
 - [HoloBoxing 论文与竞赛策略](./holoboxing.md)
-- [SONIC（规模化运动跟踪人形控制）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪人形控制）](./nvidia-sonic.md)
 - [BFM（人形行为基础模型论文实体）](./paper-behavior-foundation-model-humanoid.md)
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)

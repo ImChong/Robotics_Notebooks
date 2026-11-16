@@ -48,7 +48,7 @@
 项目执行清单与阶段性维护看板。
 
 包括：
-- 当前技术栈执行清单：[`docs/checklists/tech-stack-next-phase-checklist-v26.md`](docs/checklists/tech-stack-next-phase-checklist-v26.md)
+- 当前技术栈执行清单：[`docs/checklists/tech-stack-next-phase-checklist-v31.md`](docs/checklists/tech-stack-next-phase-checklist-v31.md)
 - 前端体验优化清单：[`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
 - 历史执行清单索引：[`docs/checklists/README.md`](docs/checklists/README.md)
 
@@ -88,14 +88,10 @@
 - 与其他页面的关系
 - 推荐继续阅读
 
-## 第一阶段目标
+## 演进阶段说明
 
-第一阶段只做：
-- 建立新目录结构
-- 建立 schema 文件
-- 建立 index/log
-- 建立一批 MVP wiki 页面
-- 不大动旧网页渲染
+- **第一阶段（已完成）**：目录骨架（`sources/` / `wiki/` / `schema/`）、基础索引与 MVP 页面均已建成。
+- **当前持续维护**：按 `schema/ingest-workflow.md`、实体唯一性校验（`scripts/check_project_nodes.py`）、`make ci-preflight` 与 PR 门禁演进，静态站点基于 `docs/exports/site-catalog-v1.json` + `page-content/` 按需渲染。
 
 ## 禁止事项
 
@@ -116,7 +112,7 @@
 ## 对 LLM / 维护者的要求
 
 在新增或修改页面时：
-- 同一项目的论文、项目页、官方源码统一在一个 wiki 实体节点；`sources/` 按资料类型分别归档。新项目实体必填稳定 `project_id` 与主论文/官方资源身份字段；建页前检索既有身份，CI 规则见 `schema/ingest-workflow.md` 与 `scripts/check_project_nodes.py`。
+- **每篇独立论文必须有独立、非重复的 `wiki/entities/paper-*.md` 详情节点**：按 arXiv ID、DOI、规范化标题查重。同篇论文的不同版本、项目页及源码统一映射回该节点；同一项目的不同论文各自建页、相互链接，不得用一页多论文清单代替详情。非论文项目仍按项目身份建唯一实体；`sources/` 按资料类型归档。新实体必填稳定 `project_id` 和论文/官方资源身份字段；CI 规则见 `schema/ingest-workflow.md` 与 `scripts/check_project_nodes.py`。
 - 优先复用现有页面与链接
 - 若知识点已存在，补充而不是重复造页
 - 若是新外部资料，先进入 `sources/`，再决定是否沉淀到 `wiki/`
@@ -178,6 +174,7 @@ python3 scripts/fetch_feishu_doc.py "https://<tenant>.feishu.cn/wiki/<token>" --
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
 - **有项目页的 ingest 必须先打开项目页核查源码/数据是否开放**（已开源 / 部分 / 待发布 / 未开源），并写入 `sources/sites/`、`sources/repos/` 与 wiki 局限或工程实践；详见 [schema/ingest-workflow.md § 步骤 2.5](schema/ingest-workflow.md)
+- **纵深路线挂载核查（每次新 ingest 必查）**：对照 [roadmap/README.md](roadmap/README.md) 确认新 ingest 内容是否符合已有纵深路线（`roadmap/depth-*.md` 等），符合则挂载到对应 Stage，无匹配则略过；详见 [schema/ingest-workflow.md § 步骤 5.5](schema/ingest-workflow.md)
 - 每次 ingest **建议**记一条日志（叙事：意图 / 开源结论 / 关键页；**不必**列出全部 wiki 路径）：用 `make log OP=ingest DESC="..."` 写入 **`log.d/` 碎片**，**不要直接改 `log.md`**（合入 main 后自动并入）
 - 每次 query 有好结果都要写回 wiki
 - **每个 wiki 页面必须包含 `## 参考来源` 区块**，标注该页知识编译自哪些原始资料
@@ -200,7 +197,7 @@ python3 scripts/fetch_feishu_doc.py "https://<tenant>.feishu.cn/wiki/<token>" --
 - 只 stage 本次任务相关文件，避免带入无关工作区变化。
 - 改动 `scripts/` 或 `tests/` 下的 Python 文件时，**提交前**先运行 `python3 -m ruff format scripts tests && python3 -m ruff check scripts tests`，都通过再 commit。用 `python3 -m ruff`（`pip install -r requirements-dev.txt` 装的版本，与 CI 一致），不要用 PATH 上可能过旧的 `ruff`：不同版本格式化结果不同。CI 的 `ruff format --check` 只做兜底。
 - 按本节格式创建中文 commit，commit 消息参考近期历史提交风格。
-- 将当前分支推送到 GitHub 远端（通常是 `origin main` 或当前工作分支）。
+- 将当前分支推送到 GitHub 远端（默认推送当前工作分支以发起或更新 PR；仅在用户明确指示直推时推送 `origin main`）。
 
 1. **知识入库提交 (Ingest)**：
    格式：`[YYYY-MM-DD] ingest | <源文件路径> — <中文描述内容>`
@@ -226,7 +223,7 @@ This is a **pure content + tooling** repo — no backend services, databases, or
 ### Gotchas
 
 - `pip-audit` (used in `make ci-test`) requires `python3-venv` to be installed at the system level (`apt install python3.12-venv`). The update script handles `pip install` but system packages must be pre-installed.
-- `make test` / `make ci-test` 依赖 gitignore 的站点 JSON（`exports/site-data-v1.json` 等）。全新环境若未先生成，`test_community_naming` 与 `test_wiki_roadmaps_export` 会因 `FileNotFoundError` 失败。**跑测试前先执行一次 `make export graph`**（约 30s）生成派生数据，之后 `make test`/`make ci-test` 即可全绿。
+- `make test` / `make ci-test` 依赖 gitignore 的站点 JSON（`exports/site-catalog-v1.json`、`exports/link-graph.json` 等）。全新环境若未先生成，`test_community_naming` 与 `test_wiki_roadmaps_export` 会因 `FileNotFoundError` 失败。**跑测试前先执行一次 `make export graph`**（约 30s）生成派生数据，之后 `make test`/`make ci-test` 即可全绿。
 - Python tools (`ruff`, `mypy`, `pytest`, `pip-audit`, etc.) install to `~/.local/bin`. Ensure `PATH` includes `$HOME/.local/bin` before running Make targets.
 - `PYTHONPATH=scripts` is required for `mypy` and `pytest` (already set in the Makefile targets).
 

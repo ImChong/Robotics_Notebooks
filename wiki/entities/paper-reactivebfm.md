@@ -11,7 +11,7 @@ related:
   - ../concepts/curriculum-learning.md
   - ../concepts/domain-randomization.md
   - ../concepts/sim2real.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-behavior-foundation-model-humanoid.md
   - ./paper-scaling-bfm-humanoid.md
   - ./unitree-g1.md
@@ -23,7 +23,7 @@ summary: "ReactiveBFM（arXiv:2606.30362）把 BFM 类 universal tracker 与自�
 
 # ReactiveBFM
 
-**ReactiveBFM** 是港中大与上海人工智能实验室提出的 **闭环全身运动规划–控制** 框架（arXiv:2606.30362，[项目页](https://xiao-chen.tech/reactivebfm)）：在 [BFM](./paper-behavior-foundation-model-humanoid.md) / [SONIC](../methods/sonic-motion-tracking.md) 类 **通用跟踪控制器** 之上，接入 **根据本体感知持续重规划** 的 **自回归运动扩散规划器（AR-MDM）**，使行为基础模型从「开环执行预定义参考」升级为 **对环境偏移与跟踪误差具有恢复能力的 reactive WBC**。
+**ReactiveBFM** 是港中大与上海人工智能实验室提出的 **闭环全身运动规划–控制** 框架（arXiv:2606.30362，[项目页](https://xiao-chen.tech/reactivebfm)）：在 [BFM](./paper-behavior-foundation-model-humanoid.md) / [SONIC](./nvidia-sonic.md) 类 **通用跟踪控制器** 之上，接入 **根据本体感知持续重规划** 的 **自回归运动扩散规划器（AR-MDM）**，使行为基础模型从「开环执行预定义参考」升级为 **对环境偏移与跟踪误差具有恢复能力的 reactive WBC**。
 
 ## 英文缩写速查
 
@@ -97,7 +97,7 @@ flowchart TB
 
 ### 3）BFM Universal Tracking Controller
 
-- 与 [SONIC](../methods/sonic-motion-tracking.md)、[BFM](./paper-behavior-foundation-model-humanoid.md) 同族的 **预训练跟踪策略**：>1.02 亿帧、50 FPS 重定向数据、PPO + 强全局跟踪 reward + 域随机化。
+- 与 [SONIC](./nvidia-sonic.md)、[BFM](./paper-behavior-foundation-model-humanoid.md) 同族的 **预训练跟踪策略**：>1.02 亿帧、50 FPS 重定向数据、PPO + 强全局跟踪 reward + 域随机化。
 - 角色是 **高频执行引擎**，闭环鲁棒性 **不仅来自 tracker**，更来自规划层持续用真实状态 **闭合误差环**。
 
 ## 主要量化结果
@@ -134,7 +134,7 @@ flowchart TB
 ## 与其他工作的关系
 
 - **相对 [BFM](./paper-behavior-foundation-model-humanoid.md)**：BFM 解决 **多控制接口的统一低层生成**；ReactiveBFM 解决 **「谁在线产生参考」**——把 BFM 从开环跟踪器升格为 **闭环栈的执行层**。
-- **相对 [SONIC](../methods/sonic-motion-tracking.md)**：SONIC 强调 **规模化 tracking 预训练**；ReactiveBFM 直接采用同族 tracker，贡献在 **上层闭环 AR 规划 + 训练/部署工程**。
+- **相对 [SONIC](./nvidia-sonic.md)**：SONIC 强调 **规模化 tracking 预训练**；ReactiveBFM 直接采用同族 tracker，贡献在 **上层闭环 AR 规划 + 训练/部署工程**。
 - **相对 [ScaleBFM](./paper-scaling-bfm-humanoid.md)**：同 Shanghai AI Lab 栈与 G1 真机文化；ScaleBFM 专注 **低层 BFM scaling 与 Humanoid Transformer**，ReactiveBFM 在其 tracker 类能力之上叠 **闭环运动规划**。
 - **相对 TextOp / DART / Kimodo + SONIC 开环级联**：同类「文本/运动生成 + tracker」，但 ReactiveBFM **闭合 proprioceptive 反馈环**，扰动下成功率差距显著。
 - **相对 CLoSD、DartControl**：同为闭环递归规划，但 ReactiveBFM 强调 **真机部署、异步时延、exposure bias 课程** 三件套同时成立。
@@ -151,7 +151,7 @@ flowchart TB
 - [BFM（Behavior Foundation Model for Humanoid Robots）](./paper-behavior-foundation-model-humanoid.md)
 - [ScaleBFM（BFM scaling 配方）](./paper-scaling-bfm-humanoid.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md)
 - [Curriculum Learning](../concepts/curriculum-learning.md)
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [Unitree G1](./unitree-g1.md)
@@ -166,6 +166,6 @@ flowchart TB
 ## 推荐继续阅读
 
 - [BFM 项目页](https://bfm4humanoid.github.io/) — 低层 CVAE-BFM 对照
-- [SONIC 方法页](../methods/sonic-motion-tracking.md) — universal tracking 预训练背景
+- [SONIC 方法页](./nvidia-sonic.md) — universal tracking 预训练背景
 - [Behavior Foundation Model 概念页](../concepts/behavior-foundation-model.md) — BFM 层次化控制 taxonomy
 - [A Survey of Behavior Foundation Model（arXiv:2506.20487）](https://arxiv.org/abs/2506.20487) — BFM 综述全文

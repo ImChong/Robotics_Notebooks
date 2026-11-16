@@ -9,7 +9,7 @@ related:
   - ../concepts/capture-point-dcm.md
   - ../tasks/balance-recovery.md
   - ../methods/ams.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/reward-design.md
   - ./unitree-g1.md
   - ./paper-notebook-hub.md
@@ -44,7 +44,7 @@ summary: "FDDC（arXiv:2608.00500，PKU）：支撑足相对动态 CoM/xCoM 观�
 
 ## 为什么重要
 
-- **能力缺口可测：** 八个已发布通用全身策略（含 [SONIC](../methods/sonic-motion-tracking.md)、GMT、TWIST、OmniXtreme 等）在同一基准上 Perfect = **0/90**——多数靠 hop/触地维持 Marginal，说明「跟踪强」≠「能干净单腿站住」。
+- **能力缺口可测：** 八个已发布通用全身策略（含 [SONIC](./nvidia-sonic.md)、GMT、TWIST、OmniXtreme 等）在同一基准上 Perfect = **0/90**——多数靠 hop/触地维持 Marginal，说明「跟踪强」≠「能干净单腿站住」。
 - **打通部署死结：** 经典 capture point 需要基座线速度 \(v_b\)，机载没有 → 以往只进奖励/特权 critic，上真机靠蒸馏（文中对照 [HuB](./paper-notebook-hub.md)、[AMS](../methods/ams.md)）。相对支撑足后 \(v_b\) **相消**，actor 可直接部署。
 - **消融主因清晰：** 去掉动态 CoM 观测独掉 **40 pt** Perfect；TTB 再掉 24 pt——观测 > 奖励中的时间边 > 其余项。
 
@@ -156,7 +156,7 @@ flowchart TB
 - [Capture Point / DCM](../concepts/capture-point-dcm.md) — 本文把 xCoM 从「规划/特权量」推进到可部署观测
 - [Balance Recovery](../tasks/balance-recovery.md) — 对照：恢复（迈步救回）vs 本文的预防（站住不逃逸）
 - [AMS](../methods/ams.md) — 分层单腿 motion 的数据来源；敏捷+稳定对照
-- [SONIC](../methods/sonic-motion-tracking.md) — 最强通用基线仍 0 Perfect 的读法
+- [SONIC](./nvidia-sonic.md) — 最强通用基线仍 0 Perfect 的读法
 - [Reward Design](../concepts/reward-design.md) — MoS/TTB/远端优先 rate 的人体科学翻译案例
 - [Unitree G1](./unitree-g1.md) — 训练与真机平台
 - [HuB](./paper-notebook-hub.md) — 极限平衡专项对照（占位）

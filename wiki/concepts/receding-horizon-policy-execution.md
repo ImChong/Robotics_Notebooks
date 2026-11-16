@@ -2,7 +2,7 @@
 type: concept
 tags: [imitation-learning, action-chunking, deployment, receding-horizon, diffusion-policy, act, control]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-10
 summary: "IL 策略的滚动执行：预测一段 action sequence，只执行前缀，再用新观测重规划；Diffusion Policy 是经典 receding horizon，ACT 的 temporal ensemble 是重叠融合，二者不可混称。"
 sources:
   - ../../sources/papers/receding_horizon_il_primary_refs.md

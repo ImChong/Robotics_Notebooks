@@ -8,9 +8,8 @@ related:
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../methods/motionbricks.md
   - ../methods/diffusion-motion-generation.md
-  - ../methods/motionbricks.md
   - ../methods/genmo.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./soma-x.md
   - ../entities/protomotions.md
   - ../entities/gr00t-wholebodycontrol.md
@@ -52,7 +51,7 @@ summary: "Kimodo 是 NVIDIA 开源的运动学扩散模型：在约 700 小时 R
 ## 为什么重要？
 
 - **规模 + 可控**：公开 mocap 偏小长期限制文生运动的质量与约束精度；Kimodo 用大规模工作室数据支撑 **scaling 实验**，并把「导演式」关键帧编辑与扩散采样结合。
-- **机器人演示数据上游**：G1 变体可 **快于遥操作** 生成人形参考轨迹，经 NPZ/CSV 导入 [ProtoMotions](./protomotions.md) 训练物理策略，或在 [GEAR-SONIC Demo](https://nvlabs.github.io/GEAR-SONIC/demo.html) 中与 [SONIC](../methods/sonic-motion-tracking.md) 跟踪策略闭环演示。
+- **机器人演示数据上游**：G1 变体可 **快于遥操作** 生成人形参考轨迹，经 NPZ/CSV 导入 [ProtoMotions](./protomotions.md) 训练物理策略，或在 [GEAR-SONIC Demo](https://nvlabs.github.io/GEAR-SONIC/demo.html) 中与 [SONIC](./nvidia-sonic.md) 跟踪策略闭环演示。
 - **可复现评测**：[Kimodo Motion Generation Benchmark](https://huggingface.co/datasets/nvidia/Kimodo-Motion-Gen-Benchmark) 覆盖文本与多类约束测试用例；SEED 训练变体便于与仅使用 [BONES-SEED](https://huggingface.co/datasets/bones-studio/seed) 的其他方法公平对比。
 
 ## Survey 坐标（策展索引）
@@ -132,7 +131,7 @@ flowchart LR
 - [MotionBricks](../methods/motionbricks.md) — 同生态实时潜空间生成式运动
 - [GENMO / GEM](../methods/genmo.md) — 视频/多模态人体运动估计与生成
 - [ProtoMotions](./protomotions.md) — 生成轨迹 → GPU 仿真 + RL
-- [SONIC](../methods/sonic-motion-tracking.md) — GEAR-SONIC 规模化运动跟踪
+- [SONIC](./nvidia-sonic.md) — GEAR-SONIC 规模化运动跟踪
 - [GR00T WholeBodyControl](./gr00t-wholebodycontrol.md) — SONIC 训练与推理代码仓
 - [Unitree G1](./unitree-g1.md) — Kimodo-G1 目标平台
 - [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比

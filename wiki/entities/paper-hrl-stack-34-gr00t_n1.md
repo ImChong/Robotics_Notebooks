@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manipulation, loco-manip-161-survey, nvidia, vla]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-14
 arxiv: "2503.14734"
 venue: "2025 · arXiv"
 code: https://github.com/NVIDIA/Isaac-GR00T
@@ -218,7 +218,7 @@ sequenceDiagram
 ```
 
 - **N1 论文机制 vs N1.5+ 工程**：本时序对应当前 Isaac-GR00T 发布栈；版本号以模型卡为准。
-- **全身低层**常再接 [SONIC / GR00T-WholeBodyControl](../methods/sonic-motion-tracking.md)。
+- **全身低层**常再接 [SONIC / GR00T-WholeBodyControl](./nvidia-sonic.md)。
 
 ## 结论
 
@@ -283,3 +283,9 @@ sequenceDiagram
 - [161 篇 Loco-Manip（微信公众号）](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A)
 - [GR00T-WholeBodyControl 仓库实体](./gr00t-wholebodycontrol.md)
 - [πR²](./paper-pi-r2.md) — 在 GR00T-N1.7 上做反应式实时 flow 闭环部署（约 25 Hz；代码已开）
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2503.14734](https://arxiv.org/abs/2503.14734)。
+- **项目或官方发布入口：** [项目页](https://developer.nvidia.com/isaac/gr00t)。
+- **清单记录：** `survey_ax_2503_14734`；本次仅补充身份与链接，未重新通读或核验已有结论。

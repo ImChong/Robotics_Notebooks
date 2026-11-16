@@ -48,7 +48,7 @@ flowchart LR
 - **Real2Sim vs Sim2Real 的分工**：Sim2Real 迁移**策略**、Real2Sim 构造**资产**；二者正交互补，Real2Sim 缩小的恰恰是 Sim2Real 残差适配要在真机上吸收的量
 - **"simulation-ready" 的判据**：可碰撞、不自穿透、有质量/摩擦、关节可动、能被策略 rollout——评价口径应含**跟踪失败率 / 仿真吞吐 / real-to-sim 相关性**，而非只比渲染逼真度
 - **三种产物粒度**：物体/资产孪生 → 场景孪生 → **episode 孪生**（含执行器、轨迹、接触与任务语义）；粒度越大越贴近"回放 / 评测 / 学策略"叙事
-- **gap 的物理根因分层**：几何/URDF → 刚体动力学 → 接触/摩擦 → 执行器四层，Real2Sim 主要修前三层（几何、接触、物性），执行器层仍归 Sim2Real
+- **gap 的物理根因分层**：几何/URDF → 刚体动力学 → 接触/摩擦 → 执行器四层；资产重建通常聚焦前三层，但 episode 孪生也可辨识执行器与控制响应。与 [Sim2Real Stage 1](depth-sim2real.md) 共享标定结果，不能把执行器按目录排除在 Real2Sim 之外
 
 ### 推荐做什么
 - 拿一份自己重建的稠密 mesh / 点云丢进物理引擎跑 10 秒，逐条记录穿透、抖动、悬空等"看着对、仿真里废"的失效，形成"可仿真判据 checklist"
@@ -138,7 +138,7 @@ flowchart LR
 
 ### 前置知识
 - Stage 2 内容
-- 了解 [VLM](../wiki/methods/vla.md) 在场景理解/物性标注/任务提议中的角色
+- 了解 [VLM 与 VLA 的区别](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)，以及 VLM 在场景理解/物性标注/任务提议中的角色
 
 ### 核心问题
 - **场景孪生 vs episode 孪生**：[SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) 从单段视频重建 **sim-ready 场景**；[Agentic Real2Sim](../wiki/entities/paper-agentic-real2sim.md) 把真机交互录像复现成 **MuJoCo episode 孪生**（含执行器/轨迹/接触/任务）
@@ -152,6 +152,7 @@ flowchart LR
 - 用 object/scene/task cousins 对一个基础场景做一次可控扩增，验证 held-out 物体/布局上的泛化
 
 ### 推荐读什么
+- [RoboSkills：机器人 Agent / Real2Sim 工作流](../wiki/entities/roboskills.md) — 官方视频重建→物理仿真工具链，按工具阶段核查 SAM/MoGe/HaWoR/CoACD/MuJoCo；与单篇 Real2Sim 算法论文分工不同。
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](../wiki/entities/paper-agentic-real2sim.md) — episode 孪生 + 可换 VLM 后端 + 确定性工具解耦
 - [SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) — 场景孪生 + 三类数字表亲的完整增扩管线
 - [SceneAgent](../wiki/entities/paper-sceneagent-real2sim-capture-physics.md) — 3DGS/摄影测量/LiDAR → 预测物理 USD + **digital sisters** + demonstration factory（Harvard；代码待发布）
@@ -209,7 +210,7 @@ flowchart LR
 - gap 在仿真侧还是真机侧消化：[Real2Sim 真机回放 vs 残差适配 vs 直接微调](../wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md)
 
 **方向 C：成熟度与开源边界**
-- 许多工作仍 **code coming soon**（如 Agentic Real2Sim）。[SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) 已 **部分开源**（[NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry)：A/B 重建与 cousins 可跑，论文级训练/评测未随仓）。[CRISP](../wiki/methods/crisp-real2sim.md) / [Articraft](../wiki/entities/articraft.md) / [PhysX-Omni](../wiki/entities/physx-omni.md) 有公开代码或数据——选型前务必先核查开源状态与可复现边界
+- **Agentic Real2Sim 已开源转换管线**（[官方源码](https://github.com/agentic-real2sim/agentic_real2sim)），但仍依赖独立权重、GPU 与多个环境；[SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) 已 **部分开源**（[NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry)：A/B 重建与 cousins 可跑，论文级训练/评测未随仓）。[CRISP](../wiki/methods/crisp-real2sim.md) / [Articraft](../wiki/entities/articraft.md) / [PhysX-Omni](../wiki/entities/physx-omni.md) 有公开代码或数据——选型前务必先核查开源状态与可复现边界
 
 **方向 D：与整机栈汇合**
 - Real2Sim 资产/评测在 [VLA 纵深](depth-vla.md)、[BFM 纵深](depth-bfm.md)、[WAM 纵深](depth-wam.md) 与 [Sim2Real 纵深](depth-sim2real.md) 中的位置；重建的可训练环境是整机栈数据与评测层的一块拼图

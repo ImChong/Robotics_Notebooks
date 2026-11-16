@@ -1,3 +1,5 @@
+- **通读：** 已完成
+
 # HandUMI Software（robonet-ai/handumi-sw）
 
 > 来源归档

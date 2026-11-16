@@ -182,3 +182,9 @@ flowchart TB
 - [EmbodiedGen V2 论文（arXiv:2607.07459）](https://arxiv.org/abs/2607.07459)
 - [EmbodiedGen V2 源码归档](../../sources/repos/cn_os_embodiedgen_v2.md)（<https://github.com/HorizonRobotics/EmbodiedGen>）
 - [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2607.07459](https://arxiv.org/abs/2607.07459)。
+- **项目或官方发布入口：** [项目页](http://horizonrobotics.github.io/EmbodiedGen)。
+- **清单记录：** `survey_ax_2607_07459`；本次仅补充身份与链接，未重新通读或核验已有结论。

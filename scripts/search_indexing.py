@@ -19,7 +19,6 @@ WIKI_DIR = REPO_ROOT / "wiki"
 # instead of `path.relative_to(REPO_ROOT)` to avoid expensive Path instantiation and string validation in hot loops.
 REPO_PARTS_LEN = len(REPO_ROOT.parts)
 
-ASCII_TOKEN_RE = re.compile(r"[a-z0-9_+\-.]+")
 MIXED_TOKEN_RE = re.compile(r"[A-Za-z0-9_+\-.]+|[\u4e00-\u9fff]+")
 
 TOKEN_SYNONYMS = {
@@ -98,7 +97,8 @@ def extract_title(body: str, fallback: str = "") -> str:
 
 def extract_summary(body: str, fm: dict | None = None) -> str:
     fm = fm or {}
-    summary = (fm.get("summary") or fm.get("description") or "").strip()
+    raw_summary = fm.get("summary") or fm.get("description") or ""
+    summary = raw_summary.strip() if isinstance(raw_summary, str) else ""
     if summary:
         return summary
     lines = [line.strip() for line in body.splitlines()]
@@ -113,20 +113,7 @@ def normalize_token(token: str) -> str:
     return token.strip().lower()
 
 
-def _expand_cjk_segment(segment: str) -> List[str]:
-    out: List[str] = []
-    normalized = normalize_token(segment)
-    if not normalized:
-        return out
-    out.append(normalized)
-    if len(normalized) > 1:
-        out.extend(list(normalized))
-    if len(normalized) > 2:
-        out.extend(normalized[i : i + 2] for i in range(len(normalized) - 1))
-    return out
-
-
-def tokenize_text(text: str) -> List[str]:
+def tokenize_text(text: str, *, keep_long_cjk: bool = False) -> List[str]:
     # ⚡ Bolt: Inline normalization and expansion for performance
     # Avoid re.fullmatch by checking the first character range since MIXED_TOKEN_RE extracts CJK sequences alone
     # ⚡ Bolt: Avoid redundant loop allocations by expanding synonyms in-place
@@ -136,11 +123,15 @@ def tokenize_text(text: str) -> List[str]:
         if not raw:
             continue
         normalized = raw.lower()
-        tokens.append(normalized)
+        is_cjk = "\u4e00" <= raw[0] <= "\u9fff"
+        # 超长连续中文整句（>4 字）在 BM25 中几乎只匹配当前段落，直接入词表会占满全库 df 词典；
+        # 仅保留 <=4 字短词、人工别名（keep_long_cjk）与已知同义词全称，长短语由单字 + bigram 覆盖。
+        if keep_long_cjk or not is_cjk or len(normalized) <= 4 or normalized in synonyms:
+            tokens.append(normalized)
         if normalized in synonyms:
             tokens.extend(synonyms[normalized])
 
-        if "\u4e00" <= raw[0] <= "\u9fff":
+        if is_cjk:
             length = len(normalized)
             if length > 1:
                 for char in normalized:
@@ -283,8 +274,8 @@ def iter_wiki_documents() -> List[Dict]:
     return docs
 
 
-def token_counts(text: str) -> Counter:
-    return Counter(tokenize_text(text))
+def token_counts(text: str, *, keep_long_cjk: bool = False) -> Counter:
+    return Counter(tokenize_text(text, keep_long_cjk=keep_long_cjk))
 
 
 def bm25_idf(doc_freq: int, total_docs: int) -> float:

@@ -3,7 +3,7 @@
 **首屏导读**：
 
 - **为谁**：要在满足安全约束的前提下控制机器人的人。
-- **路径**：Stage 0–4 · 数学基础 → CLF / CBF → CLF + CBF 进 WBC / MPC → Safe RL → 真机分层安全壳。
+- **路径**：Stage 0–4 · 数学基础 → CLF / CBF → CLF + CBF 进 WBC / MPC → 真机分层安全壳；Safe RL 为学习策略的选读分支。
 - **纵深路线**：[运动控制主路线](motion-control.md)的一条分支。
 
 ## 路线一览
@@ -16,7 +16,9 @@ flowchart LR
   S3["<b>Stage 3</b><br/>Safe RL<br/><em>CMDP / Lagrangian</em>"]
   S4["<b>Stage 4</b><br/>真机安全部署<br/><em>分层安全壳 / 安全 FSM</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4
+  S0 --> S1 --> S2 --> S4
+  S2 -. "选读：安全策略训练" .-> S3
+  S3 --> S4
 
   classDef stage fill:#142a3a,stroke:#e67e22,stroke-width:2px,color:#fff
   class S0,S1,S2,S3,S4 stage
@@ -29,9 +31,9 @@ flowchart LR
 - 每个阶段有前置知识、核心问题、推荐做什么、学完输出什么
 
 **和主路线的关系：**
-- 安全控制可以作为 WBC / MPC 的安全约束层，也可以作为 RL 的奖励整形层
+- 安全控制可以作为 WBC / MPC 的约束或 safety filter；RL 中需区分奖励惩罚、CMDP 约束与运行时过滤器，奖励惩罚本身不给出安全保证
 - 如果你做主路线 L4 时希望加上安全保证，看本路线
-- 如果你做 RL 时希望策略可证明地不越界，看本路线 Stage 3
+- 如果你做 RL，先在 Stage 3 明确保证是期望累计代价、概率界还是逐时刻约束；需要不越界时结合 Stage 1–2 的安全层及其适用假设
 - 如果你要把策略搬上真机、担心摔机 / 失控 / 故障伤人，看本路线 Stage 4（也可先读，作为上机前的安全底线）
 
 ---
@@ -45,7 +47,7 @@ flowchart LR
 
 ### 核心问题
 - Lyapunov 稳定性是什么意思
-- 为什么 Lyapunov 函数能证明系统收敛
+- Lyapunov 条件何时只保证稳定，何时能推出渐近收敛；负半定导数为何还需不变集等条件
 
 ### 推荐读什么
 - [Lyapunov 稳定性形式化](../wiki/formalizations/lyapunov.md)
@@ -89,6 +91,7 @@ flowchart LR
 - Safety filter 和 MPC safety constraint 有什么区别
 
 ### 推荐读什么
+- [Can I Join You?：群体 MPC + CBF 过滤](../wiki/entities/paper-social-force-mpc-cbf-group.md) — 局部碰撞规避与社交队形的受限人形群体实验。
 - [Safety Filter](../wiki/concepts/safety-filter.md)
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md)
 - [Query：CLF+CBF 在 WBC/MPC 中联合使用](../wiki/queries/clf-cbf-in-wbc.md)
@@ -121,14 +124,14 @@ flowchart LR
 
 ### 学完输出什么
 - 能解释 CMDP 的形式化定义
-- 能对比 model-based 安全保证 vs. model-free 安全奖励塑形的优劣
+- 能区分 CMDP 的期望累计代价约束、奖励惩罚与逐时刻安全约束，说明各自需要的模型、可行性及部署假设
 
 ---
 
 ## Stage 4 真机安全部署：分层安全壳
 
 ### 前置知识
-- Stage 2 的 safety filter 与 Stage 3 的 Safe RL（知道算法层能管什么）
+- Stage 2 的 safety filter；采用学习策略时再补 Stage 3，传统 WBC/MPC 部署不以学完 Safe RL 为前提
 - 有一台可上机的策略（RL / WBC 均可），读过 [Sim2Real](../wiki/concepts/sim2real.md) 基本概念
 
 ### 核心问题

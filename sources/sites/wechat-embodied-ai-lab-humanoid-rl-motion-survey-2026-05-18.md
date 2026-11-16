@@ -43,7 +43,7 @@
 
 ## 对 wiki 的映射
 
-- **新建 overview**：[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md) — 提炼作者的八层身体系统栈与六个判断，并把已有 wiki 实体页（如 [DeepMimic](../../wiki/methods/deepmimic.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md)、[Any2Track](../../wiki/methods/any2track.md)、[AMS](../../wiki/methods/ams.md)、[GMR](../../wiki/methods/motion-retargeting-gmr.md)、[NMR](../../wiki/methods/neural-motion-retargeting-nmr.md)、[DoorMan 论文](../../wiki/entities/paper-doorman-opening-sim2real-door.md)、[VIRAL 论文](../../wiki/entities/paper-viral-humanoid-visual-sim2real.md)、[BFM 论文](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)、[GR00T-WholeBodyControl](../../wiki/entities/gr00t-wholebodycontrol.md)、[ULTRA Survey](../../wiki/tasks/ultra-survey.md)）按层挂接。
+- **新建 overview**：[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md) — 提炼作者的八层身体系统栈与六个判断，并把已有 wiki 实体页（如 [DeepMimic](../../wiki/methods/deepmimic.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md)、[Any2Track](../../wiki/methods/any2track.md)、[AMS](../../wiki/methods/ams.md)、[GMR](../../wiki/methods/motion-retargeting-gmr.md)、[NMR](../../wiki/methods/neural-motion-retargeting-nmr.md)、[DoorMan 论文](../../wiki/entities/paper-doorman-opening-sim2real-door.md)、[VIRAL 论文](../../wiki/entities/paper-viral-humanoid-visual-sim2real.md)、[BFM 论文](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)、[GR00T-WholeBodyControl](../../wiki/entities/gr00t-wholebodycontrol.md)、[ULTRA Survey](../../wiki/tasks/ultra-survey.md)）按层挂接。
 
 ## 备注（维护者）
 

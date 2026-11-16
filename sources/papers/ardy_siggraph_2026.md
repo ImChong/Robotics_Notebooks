@@ -51,7 +51,7 @@
 
 - [ARDY 实体页](../../wiki/entities/ardy.md)
 - [Kimodo](../../wiki/entities/kimodo.md) — 离线姊妹
-- [SONIC](../../wiki/methods/sonic-motion-tracking.md) — 跟踪下游
+- [SONIC](../../wiki/entities/nvidia-sonic.md) — 跟踪下游
 
 ## 引用（BibTeX）
 

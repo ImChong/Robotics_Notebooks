@@ -12,6 +12,7 @@ from typing import Any, cast
 
 from search_indexing import (
     REPO_ROOT,
+    bm25_idf,
     hash_embed_text,
     tokenize_text,
     truncate_for_embedding,
@@ -21,6 +22,7 @@ from search_indexing import (
 )
 
 _WIKI_DOCS_CACHE = None
+_WIKI_IDF_CACHE: tuple[int, int, dict[str, float], float] | None = None
 
 
 def iter_wiki_documents():
@@ -115,6 +117,7 @@ DEBUG_INTENT_MARKERS = frozenset({"调试", "playbook", "排查", "失效", "摔
 SIM2REAL_CHECKLIST_PAGE = "wiki/queries/sim2real-checklist.md"
 SIM2REAL_GAP_PAGE = "wiki/queries/sim2real-gap-reduction.md"
 SIM2REAL_DEBUG_PAGE = "wiki/queries/robot-policy-debug-playbook.md"
+SIM2REAL_DR_GUIDE_PAGE = "wiki/queries/domain-randomization-guide.md"
 
 
 def _query_has_comparison_intent(query_joined: str) -> bool:
@@ -164,6 +167,12 @@ def _sim2real_intent_boost(doc_path_l: str, query_joined: str) -> float:
         boost *= 2.0
     elif rel == SIM2REAL_DEBUG_PAGE and has_debug and has_deploy:
         boost *= 1.45
+    elif (
+        rel == SIM2REAL_DR_GUIDE_PAGE
+        and ("domain randomization" in joined or "域随机化" in joined)
+        and any(m in joined for m in ("参数", "分布", "范围", "parameter", "distribution"))
+    ):
+        boost *= 1.8
 
     return boost
 
@@ -176,7 +185,7 @@ def _canonical_topic_boost(doc_path_l: str, query_joined: str) -> float:
         if rel != canon:
             continue
         if key in qjoin:
-            return 1.7
+            return 2.2
     return 1.0
 
 
@@ -263,6 +272,8 @@ def compute_score(
     summary_l: str = "",
     query_joined: str = "",
     status_boost: float = 1.0,
+    idf_map: dict[str, float] | None = None,
+    default_idf: float = 0.693,
 ) -> float:
     if not query_tokens:
         return 0.0
@@ -277,14 +288,19 @@ def compute_score(
     # ⚡ Bolt Optimization: Hoist invariant math calculations outside the hot `query_tokens` loop
     # Expected impact: Eliminates redundant floating-point multiplications per query token.
     k1_len_norm = k1 * len_norm
-    idf_numerator_factor = 0.693 * k1_plus_1
+    fallback_idf_factor = default_idf * k1_plus_1
 
     for token in query_tokens:
         tf = token_counts.get(token, 0)
         if tf == 0:
             continue
         denominator = tf + k1_len_norm
-        term_score = tf * idf_numerator_factor / denominator
+        idf_factor = (
+            idf_map.get(token, default_idf) * k1_plus_1
+            if idf_map is not None
+            else fallback_idf_factor
+        )
+        term_score = tf * idf_factor / denominator
         if token in title_l:
             term_score *= 5.0
         elif summary_l and token in summary_l:
@@ -494,13 +510,28 @@ def search(
     del (
         case_sensitive
     )  # tokenizer is normalized; keep CLI flag for output highlighting compatibility
+    global _WIKI_IDF_CACHE
     docs = iter_wiki_documents()
 
     # ⚡ Bolt Optimization: Cache token counts and lowercased fields to avoid redundant allocations
     # Tokenizing and lowercasing per-document properties on every query is expensive. We cache them here.
+    prepared_any = False
     for doc in docs:
         if "token_counts" not in doc:
-            counts = Counter(tokenize_text(doc["body"]))
+            prepared_any = True
+            main_text = "\n".join(
+                [
+                    doc.get("title") or "",
+                    doc.get("summary") or "",
+                    doc.get("path") or "",
+                    " ".join(doc.get("tags", [])),
+                    doc["body"],
+                ]
+            )
+            counts = Counter(tokenize_text(main_text))
+            aliases = doc.get("search_aliases", [])
+            if aliases:
+                counts.update(tokenize_text(" ".join(aliases), keep_long_cjk=True))
             doc["token_counts"] = counts
             doc["dl"] = max(sum(counts.values()), 1)
             doc["title_l"] = (doc.get("title") or "").lower()
@@ -519,6 +550,23 @@ def search(
             doc["lines"] = doc["body"].splitlines()
             doc["lines_lower"] = [line.lower() for line in doc["lines"]]
 
+    total_docs = len(docs)
+    if (
+        prepared_any
+        or _WIKI_IDF_CACHE is None
+        or _WIKI_IDF_CACHE[0] != id(docs)
+        or _WIKI_IDF_CACHE[1] != total_docs
+    ):
+        df_counter: Counter[str] = Counter()
+        for doc in docs:
+            for token in doc["token_counts"]:
+                df_counter[token] += 1
+        idf_map = {token: bm25_idf(freq, total_docs) for token, freq in df_counter.items()}
+        default_idf = bm25_idf(0, total_docs) if total_docs else 0.693
+        _WIKI_IDF_CACHE = (id(docs), total_docs, idf_map, default_idf)
+    else:
+        _, _, idf_map, default_idf = _WIKI_IDF_CACHE
+
     avgdl = compute_avgdl(docs)
 
     vector_matrix = None
@@ -533,7 +581,7 @@ def search(
         semantic_notice = alias_notice
 
     query_text = " ".join(effective_query_words).strip()
-    query_tokens = tokenize_text(query_text)
+    query_tokens = tokenize_text(query_text, keep_long_cjk=True)
 
     if semantic:
         vector_matrix, vector_meta = load_vector_resources()
@@ -572,6 +620,8 @@ def search(
             summary_l=doc["summary_l"],
             query_joined=query_joined,
             status_boost=doc.get("status_boost", 1.0),
+            idf_map=idf_map,
+            default_idf=default_idf,
         )
         if query_tokens and not semantic and score <= 0:
             continue
@@ -617,7 +667,12 @@ def search(
 
 
 def _cache_key(
-    query_words: list[str], type_filter: str | None, tag_filters: list[str], semantic: bool
+    query_words: list[str],
+    type_filter: str | None,
+    tag_filters: list[str],
+    semantic: bool,
+    context_lines: int = 1,
+    show_related: bool = False,
 ) -> str:
     return json.dumps(
         {
@@ -625,6 +680,8 @@ def _cache_key(
             "t": type_filter or "",
             "tags": sorted(tag_filters),
             "semantic": semantic,
+            "context": context_lines,
+            "related": show_related,
         },
         sort_keys=True,
         ensure_ascii=False,
@@ -640,21 +697,41 @@ def load_cache() -> dict[str, Any]:
     return {"entries": []}
 
 
-def save_cache(cache: dict[str, Any], key: str, results: list[dict]) -> None:
+def save_cache(
+    cache: dict[str, Any],
+    key: str,
+    results: list[dict],
+    semantic_notice: str | None = None,
+) -> None:
     serializable = []
     for r in results[:10]:
         serializable.append(
             {
                 "path": str(r["path"]),
+                "fm": r.get("fm", {}),
+                "matches": [
+                    [lineno, ctx_lines, match_offset]
+                    for lineno, ctx_lines, match_offset in r.get("matches", [])
+                ],
+                "related": [str(rel) for rel in r.get("related", [])],
                 "score": round(r.get("score", 0.0), 6),
+                "bm25_score": round(r.get("bm25_score", r.get("score", 0.0)), 6),
                 "title": r.get("title", ""),
+                "summary": r.get("summary", ""),
+                "page_type": r.get("page_type", ""),
                 "type": r["fm"].get("type", r.get("page_type", "")),
                 "tags": r["fm"].get("tags", []),
                 "vector_score": round(r.get("vector_score", 0.0), 6),
                 "hybrid_score": round(r.get("hybrid_score", r.get("score", 0.0)), 6),
             }
         )
-    entry = {"key": key, "ts": datetime.now().isoformat()[:19], "results": serializable}
+    entry: dict[str, Any] = {
+        "key": key,
+        "ts": datetime.now().isoformat()[:19],
+        "results": serializable,
+    }
+    if semantic_notice:
+        entry["semantic_notice"] = semantic_notice
     entries = [e for e in cache.get("entries", []) if e.get("key") != key]
     entries.insert(0, entry)
     cache["entries"] = entries[:CACHE_MAX]

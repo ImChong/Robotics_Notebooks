@@ -2,9 +2,9 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, humanoid, vla, teleoperation, whole-body-control, tsinghua, shanghai-pil, spirit-ai, unitree-g1]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-11
 arxiv: "2606.22174"
-venue: "2026 · arXiv"
+venue: "CoRL 2026 · Spotlight；arXiv:2606.22174v2"
 code: https://github.com/OpenHLM-project/OpenHLM
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
@@ -26,7 +26,8 @@ sources:
   - ../../sources/papers/loco_manip_161_survey_154_openhlm.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
-summary: "OpenHLM（清华/期智/千寻，arXiv:2606.22174）：全身原生人形 VLA 经验配方——关节级全身遥操作采集、π₀.₅ 系 VLA 适配消融、HuMI/stationary 异构共训；长程果盘 87.5% progress（1.14 h demo）优于 GR00T N1.6/Ψ₀；开源代码、数据与 checkpoint。"
+original: ../../sources/papers/openhlm_arxiv_2606_22174.md
+summary: "OpenHLM（CoRL 2026 Spotlight，arXiv:2606.22174v2）：32-D 全身关节动作+双夹爪的 34-D VLA、π₀.₅ 预训练与 HuMI/stationary 异构共训；Tasks 9–11 语义泛化与 Task 12 新动作分开评估；长程水果任务 87.5% task progress（1.14h 示范），公开代码、数据和 checkpoint。"
 ---
 
 # OpenHLM
@@ -53,7 +54,7 @@ summary: "OpenHLM（清华/期智/千寻，arXiv:2606.22174）：全身原生人
 
 - **把「全身原生」做成可证伪配方：** 不是又一个黑盒 checkpoint，而是三阶段 **one-variable-at-a-time** 结论——接口、预训练、共训各自贡献清晰。
 - **接口决定任务可达集：** 解耦 / VR 三点 **构造上** 无法表达踩踏板、蹲身穿架；**32-D 关节全身遥操作** 是后续一切的数据前提。
-- **异构共训降本：** HuMI / stationary 把 held-out 任务从 ~36% 抬到 ~84–89%，接近全全身遥操作 oracle，而无需对每个新物体再采全身遥操作。
+- **异构共训降本：** HuMI / stationary 把 held-out 任务从 ~36% 抬到 ~84–89%，接近全全身遥操作 oracle，而无需对每个新物体再采全身遥操作；但 **HuMI 对新动作（Task 12 Pouring）并未达到同等效果**。
 - **开源闭环完整：** 代码（Apache-2.0）+ HF 数据/权重 + 基于 [GR00T-WBC](./gr00t-wholebodycontrol.md) 的采集部署栈，可对照复现。
 
 ## 核心信息
@@ -61,10 +62,10 @@ summary: "OpenHLM（清华/期智/千寻，arXiv:2606.22174）：全身原生人
 | 字段 | 内容 |
 |------|------|
 | 机构 | 清华大学、上海期智研究院、千寻智能（Spirit.AI） |
-| 出处 | 2026-06-20 · arXiv:2606.22174 |
+| 出处 | 2026-06-20 首版；2026-11-02 arXiv:2606.22174v2；CoRL 2026 Spotlight |
 | 项目 / 代码 | <https://openhlm-project.github.io/> · <https://github.com/OpenHLM-project/OpenHLM> |
 | 数据 / 权重 | HF `OpenHLM/OpenHLM-data` · `OpenHLM/OpenHLM-ckpts` |
-| 机体 | Unitree G1（腕夹爪 + 腕/头相机 + PICO4U） |
+| 机体 | Unitree G1（32-D 身体参考 + 2 个夹爪 = VLA 34-D；腕/头相机 + PICO4U） |
 | 161 地图 | #154 · 09 人形 VLA、世界模型与通用操作 |
 
 ## 流程总览
@@ -72,7 +73,7 @@ summary: "OpenHLM（清华/期智/千寻，arXiv:2606.22174）：全身原生人
 ```mermaid
 flowchart TB
   subgraph phase1 [Phase 1：采集接口]
-    tele["关节级全身遥操作 32-D\n（对比：解耦 21-D / VR 三点 24-D）"]
+    tele["关节级全身遥操作\n32-D 身体 + 2-D 夹爪\n（对比：解耦 21-D / VR 三点 24-D）"]
     llc["低层控制器跟踪参考"]
     tele --> llc
   end
@@ -110,28 +111,38 @@ flowchart TB
 
 ### 3）VLA 设计消融（4 任务子集）
 
+- **动作表示要分清：** 32-D 身体参考（root roll / pitch / yaw rate + 29 关节）再加 2 个夹爪宽度，形成 **34-D VLA 状态和动作**；π₀.₅ 的 32-D 输入/输出动作投影通过 **weight surgery** 扩为 34-D，保留旧 32 维权重。
+- **例外不可忽略：** 单独更改相对动作或去本体影响较小，但论文指出**两者同时更改会造成 OOD 漂移并严重失败**，不能将单变量消融结论当成自由组合保证。
+
 - **接口适配**（随机投影、人形排序、相对动作、去本体）单点翻转仅轻微掉点——**不是主瓶颈**。
 - **预训练：** π₀.₅ ≈ **91.3%** ≫ PaliGemma **59.6%** ≫ random **41.7%** —— 跨具身机器人预训练远强于纯 VLM / 随机。
 - **推理：** 多步 flow 优于 one-step / drifting（约 **+20** task-progress；尽管后者验证 MSE 可能更低）。
 
-### 4）异构共训（held-out Tasks 9–11）
+### 4）异构共训：三任务与四任务口径必须区分
 
-| 设定 | Task Progress |
-|------|---------------|
+**Tasks 9–11（新物体/语言，但复用既有运动）：** 对应官网可视化与论文 Appendix E.3/E.4。
+
+| 设定 | Tasks 9–11 平均 Task Progress |
+|------|-------------------------------|
 | 仅 Tasks 1–8 全身遥操作 | 36% |
 | + HuMI | **84%** |
 | + Stationary teleop | **89%** |
-| 11 任务全全身遥操作 oracle | 96% |
+| 11 任务全身遥操作 oracle | 96% |
+
+**Tasks 9–12（四个全部 held-out，包含新动作 Pouring）：** 仅 8-task baseline **33%** → 加 4 项 stationary teleop **87%**，12-task 全身遥操作 oracle **94%**（论文 §1、§3.3）；HuMI 对 **Task 12 新的倾倒/旋转动作表现失败**，不能把上表 84% 的三任务成绩称为「四任务平均」。
+
+- **实际采集成本（每个 held-out 任务 40 条）：** 全身遥操作约 21min、stationary 约 13min、HuMI 约 7min；其中 full-teleop 额外重置/过热成本尚未算入。
+- **迁移边界：** HuMI 的相机视角/夹爪差和 IK 关节动作分布差，使其现阶段更擅长迁移语义而非全新动作。
 
 ## 实验与评测
 
 | 轴 | 口径（项目页） |
 |----|----------------|
-| 长程果盘（低/中/高架、双手分拣、20 果对） | OpenHLM **87.5%** @ **1.14 h** vs GR00T N1.6 **57.5%** / Ψ₀ **48.8%** @ **2.70 h** |
-| 12 任务四类 | Pick&Place / Workspace / Body-as-Tool / Constraints；平均 progress **>90%** |
-| 户外 | 约 **20** 条户外 demo 混入实验室数据 → 校园清扫类自主行为（页面叙事） |
+| 长程果盘（20 种有序果对，**选 10 组实机评估**） | OpenHLM **87.5%** @ **1.14 h** vs GR00T N1.6 **57.5%** / Ψ₀ **48.8%** @ **2.70 h**（均为 task progress，非 success rate） |
+| 12 任务四类 | Pick&Place / Workspace / Body-as-Tool / Constraints；官网称平均 progress **>90%**；论文内部 8 个训练任务平均 **89%**，分组与协议不同 |
+| 户外 | 约 **20** 条户外 demo 混入实验室数据 → 校园清扫类自主行为（官方演示，非定量对照 benchmark） |
 
-## 开源状态（2026-07-22）
+## 开源状态（项目页及代码仓，2026-11-11 核查）
 
 | 产物 | 状态 |
 |------|------|
@@ -171,7 +182,7 @@ sequenceDiagram
     end
 ```
 
-关键复现路径：先通 GR00T-WBC 部署/遥操作文档 → 用示例示范跑 LeRobot 转换与 `openhlm_example` 训练 → `serve_policy` + `deploy_stream` 真机闭环。
+关键复现路径：先通 GR00T-WBC 部署/遥操作文档 → 用示例示范跑 LeRobot 转换与 `openhlm_example` 训练 → `serve_policy` + `deploy_stream` 真机闭环。已核对官方 README 与仓内 `train_pytorch.py` / `serve_policy.py` / `deploy_stream.sh` 入口；**本次未实际运行训练或真机闭环**。
 
 ## 工程实践
 
@@ -181,6 +192,9 @@ sequenceDiagram
 | 训练入口 | `src/openpi4OpenHLM/scripts/train_pytorch.py` |
 | 部署入口 | `serve_policy.py` + `GR00T-…/scripts/deploy_stream.sh` |
 | 检查点示例 | `12tasks_*` / `20fruit-arrangement_*`（含 full-teleop / HuMI / stationary 变体） |
+| 论文 v2 训练口径 | AdamW，30k steps，global batch 128，50-step action horizon，224×224；4×A800 约 24h（作者报告） |
+| 推理节奏 | 30Hz 控制下输出 50-step chunk，最多执行 25 步后重推；flow sampler 10 steps，不等于策略每 30Hz 重推 |
+| 真机安全 | 官方 README 提醒先仿真遥操作再上机、低增益启动；本文未执行硬件实验 |
 
 ## 结论
 
@@ -188,9 +202,9 @@ sequenceDiagram
 
 1. **接口是前提** — 解耦 21-D / VR 三点 24-D 构造上无法覆盖踩踏板、蹲身穿架；只有 32-D 关节全身完成对照三任务全集。
 2. **预训练远强于适配技巧** — π₀.₅ 约 91.3% ≫ PaliGemma 59.6% ≫ random 41.7%；随机投影等人形适配单点翻转不是主瓶颈。
-3. **推理选多步 flow** — 优于 one-step / drifting（约 +20 task-progress），即使后者验证 MSE 可能更低。
-4. **异构共训降本** — held-out 从仅全身遥操作 36% 抬到 +HuMI 84% / +stationary 89%，接近全全身 oracle 96%。
-5. **系统级读数** — 长程果盘 87.5% @ 1.14 h demo，优于 GR00T N1.6 57.5% 与 Ψ₀ 48.8% @ 2.70 h；12 任务平均 progress >90%。
+3. **推理选多步 flow** — 十步 91.3% 对照单步 flow 72.9% / drifting 70.8%，虽单步延迟由约 90ms 降至 60ms（作者 RTX 5080），但验证 MSE 低不等于真机更稳。
+4. **异构共训有边界** — Tasks 9–11 的 36% → HuMI 84% / stationary 89% / oracle 96% 仅适用于运动复用；包含 Pouring 的 Tasks 9–12，baseline 33% → stationary 87% / oracle 94%，HuMI 未学会新增倾倒动作。
+5. **系统级读数** — 20 种水果有序组合中抽测 10 组，OpenHLM 87.5% @ 1.14h 示范，对照 GR00T N1.6 57.5% 与 Ψ₀ 48.8% @ 2.70h；均为 task progress，不能替换为成功率。
 6. **工程代价** — 开源码/数据/权重，但真机依赖 GR00T-WBC / TensorRT / VR 标定；户外结果偏定性，勿与 161 策展旧摘要等同。
 
 ## 局限与风险
@@ -198,6 +212,8 @@ sequenceDiagram
 - **配方依赖全身遥操作质量**；解耦接口无法「事后补自由度」。
 - **真机栈重**：依赖 GR00T-WBC / TensorRT / VR 标定，工程门槛高于「只下权重」。
 - **户外结果偏定性**；系统级数字以室内长程果盘与 12 任务为主。
+- **真实世界样本与泛化边界：** HLM-12 每个任务/策略仅 5 次 rollout；论文只在 G1 验证，跨机体泛化未经证明。长程系统比较虽有相同演示预算对照，但 GR00T 和 Ψ₀ 为适配同一硬件/控制接口的版本，不能外推为原生模型通用排名。
+- **必须区分指标：** 论文表中是按 rubric 计算的 task progress（含中间步骤得分），不等于二值任务完成率；验证 action MSE 不能替代真机评估。
 - **勿与 161 策展旧摘要等同：** 公众号条目为地图坐标；消融与开源以本页与官方仓为准。
 
 ## 与其他工作对比
@@ -223,7 +239,7 @@ sequenceDiagram
 ## 参考来源
 
 - [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
-- [OpenHLM 论文摘录（arXiv:2606.22174）](../../sources/papers/openhlm_arxiv_2606_22174.md)
+- [OpenHLM v2 正文 + Appendix A–E 通读记录（arXiv:2606.22174v2）](../../sources/papers/openhlm_arxiv_2606_22174.md)
 - [OpenHLM 项目页归档](../../sources/sites/openhlm-project-github-io.md)
 - [OpenHLM 代码归档](../../sources/repos/openhlm.md)
 - [161 策展摘录 #154](../../sources/papers/loco_manip_161_survey_154_openhlm.md)
@@ -231,5 +247,5 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [OpenHLM 项目页](https://openhlm-project.github.io/) — 视频、12 任务与消融数字
-- [arXiv:2606.22174](https://arxiv.org/abs/2606.22174)
+- [arXiv:2606.22174v2 全文 HTML](https://arxiv.org/html/2606.22174) — 正文 §1–6 与附录 A–E
 - [GR00T-WholeBodyControl 文档](https://nvlabs.github.io/GR00T-WholeBodyControl/) — 低层栈安装对照

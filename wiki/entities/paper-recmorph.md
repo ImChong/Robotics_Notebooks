@@ -18,7 +18,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ./paper-any2any-cross-embodiment-wbt.md
   - ./paper-sa-2505-07096-x-sim-cross-embodiment-learning-via-real-to-sim.md
-  - ../entities/unitree-go2.md
+  - ./go-2.md
   - ../overview/perception-action-transfer-9-papers-technology-map.md
 sources:
   - ../../sources/papers/recmorph_arxiv_2609_18359.md

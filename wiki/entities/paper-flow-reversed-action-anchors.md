@@ -13,7 +13,6 @@ related:
   - ../methods/vla.md
   - ../methods/imitation-learning.md
   - ../methods/reinforcement-learning.md
-  - ../methods/reinforcement-learning.md
   - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/flow_reversed_action_anchors_arxiv_2610_22852.md

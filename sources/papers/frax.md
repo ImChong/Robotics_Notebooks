@@ -3,7 +3,9 @@
 - **论文：** https://arxiv.org/abs/2604.04310v2
 - **作者：** Daniel Morton、Marco Pavone
 - **机构：** 斯坦福大学
-- **版本：** arXiv v2，2026-05-15；已阅读全文、实验与附录。
+- **版本：** arXiv v2，2026-05-15。
+- **核对范围：** 通读论文 6 页：摘要、I–VI 节（运动学与动力学、向量化 RNEA/CRBA、性能实验、对比与局限）、参考文献及附录（符号表、硬件和 JAX 测试设置）；复核 Table II 与图 2、图 3。
+- **通读：** 已完成
 - **代码：** https://github.com/StanfordASL/frax
 - **项目文档：** https://stanfordasl.github.io/frax/
 - **对 wiki 的映射：** [frax](../../wiki/entities/frax.md)

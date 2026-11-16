@@ -224,7 +224,12 @@ flowchart LR
 - 对自己的人类数据做一次可执行性筛查：多少比例在目标本体上物理可行——这个比例决定人类数据的真实"折算率"
 
 ### 推荐读什么
+- [PolyMorphWBC：机械臂形态条件化四足控制](../wiki/entities/paper-polymorphwbc-quadruped.md) — URDF 几何条件与末端统一接口。
+- [MotionSkill：视频公共动作参考与机体特定残差](../wiki/entities/paper-motionskill-cross-embodiment.md) — 非共享策略的跨机体迁移边界。
+- [EgoX](../wiki/entities/paper-egox-mxt-plus.md) — 统一第一人称模态、共享干路和本体专属动作头，训练期未来潜变量 Dreaming
+- [SALA](../wiki/entities/paper-sala-latent-actions.md) — 无配对人类视频借助动作语义软邻域与机器人控制潜变量对齐
 - [X-Morph](../wiki/entities/paper-xmorph.md) — 人体→非人形腿式：重定向 + 物理校正 + 特权跟踪蒸馏
+- [统一惯性编码器 / Unified Inertial Encoder](../wiki/entities/paper-unified-inertial-encoder.md) — 通过重定向和 12 部位共享 IMU 接口做**传感/状态估计层**的人→G1 迁移；不是控制策略迁移，真机权重训练与 checkpoint 选模的边界见详情
 - [重定向物体而非人手](../wiki/entities/paper-human-demos-object-retargeting.md) — 对每个 URDF 做仿真可执行性判定；约 31% 通过
 - [EgoJEPA](../wiki/entities/paper-egojepa-egocentric-latent-action.md) — 第一视角人类视频 → 本体无关潜在动作
 - [LaST-HD](../wiki/entities/paper-last-hd-latent-physical-reasoning.md) — 非配对人手与机器人轨迹对齐到共享潜式物理推理空间

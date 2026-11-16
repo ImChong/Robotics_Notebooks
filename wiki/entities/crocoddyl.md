@@ -10,6 +10,7 @@ sources:
   - ../../sources/blogs/wechat_qt_adventure_cpp_motion_control_libs_2026-11-02.md
 summary: "Crocoddyl 是 LAAS-CNRS / Edinburgh 等开发的接触序列最优控制库：Pinocchio 解析稀疏导数 + 李群状态 + FDDP 求解器，用于足式 / 人形的多接触轨迹优化与 NMPC。"
 updated: 2026-11-07
+code: https://github.com/loco-3d/crocoddyl
 tags: [inria, optimal-control, trajectory-optimization, ddp, legged]
 
 related:

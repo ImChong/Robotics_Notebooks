@@ -3,7 +3,7 @@ title: 国内具身开源全景 424 项 · 阅读导航
 type: query
 status: complete
 created: 2026-09-06
-updated: 2026-10-12
+updated: 2026-11-15
 summary: "具身智能研究室「76 家机构 · 424 个开源项目」全景清单的站内阅读导航：每个项目对应站内哪一页、按机构与方向怎么找。"
 original:
   - ../../sources/repos/hmi_readme_reading_424_coverage_reading_a1.md
@@ -187,7 +187,7 @@ sources:
 
 | 项目 | 类别 | 站内详情页 |
 | --- | --- | --- |
-| DIAL | VLA/操作模型 | [DIAL](../entities/cn-os-dial.md) |
+| DIAL | VLA/操作模型 | [DIAL](../entities/paper-dial-latent-world-vla.md) |
 | UniT | VLA/操作模型 | [UniT](../entities/paper-unit-unified-physical-language.md) |
 
 #### 星动纪元（8）
@@ -652,7 +652,7 @@ sources:
 | RoboOrchardLab | 运动RL/技能训练 | [RoboOrchardLab](../entities/robo-orchard-lab.md) |
 | RoboOrchardSim | 仿真环境 | [RoboOrchardSim](../entities/cn-os-roboorchardsim.md) |
 | RoboOrchardHardware | 本体模型资产 | [RoboOrchardHardware](../entities/cn-os-roboorchardhardware.md) |
-| RoboTransfer | 世界模型 | [RoboTransfer](../entities/cn-os-robotransfer.md) |
+| RoboTransfer | 世界模型 | [RoboTransfer](../entities/paper-rcl-2505-23171-robotransfer-controllable-geometry-consistent-vi.md) |
 | RoboSplatter | 仿真环境 | [RoboSplatter](../entities/cn-os-robosplatter.md) |
 | GeoFlowSlam | 感知/导航 | [GeoFlowSlam](../entities/cn-os-geoflowslam.md) |
 

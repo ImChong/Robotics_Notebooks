@@ -41,7 +41,7 @@
 
 - 详情页：[HumanoidTTT 实体页](../../wiki/entities/paper-humanoidttt.md)
 - 对照阅读：[TWIST2](../../wiki/entities/paper-twist2.md)、[YAHMP](../../wiki/entities/paper-yahmp.md)
-- 相关方法：[SONIC 全身运动跟踪](../../wiki/methods/sonic-motion-tracking.md)
+- 相关方法：[SONIC 全身运动跟踪](../../wiki/entities/nvidia-sonic.md)
 
 ## 一手来源
 

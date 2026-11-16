@@ -13,7 +13,6 @@ related:
   - ./paper-human-as-humanoid.md
   - ./paper-ego4d.md
   - ./paper-nymeria.md
-  - ./paper-nymeria.md
 sources:
   - ../../sources/papers/egoexomocap_arxiv_2607_15868.md
   - ../../sources/sites/egoexomocap-siplab.md

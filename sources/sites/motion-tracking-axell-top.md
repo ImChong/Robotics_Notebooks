@@ -17,4 +17,4 @@
 ## 对 wiki 的映射
 
 - [axellwppr_motion_tracking 仓库](../repos/axellwppr_motion_tracking.md)
-- [GentleHumanoid（方法页）](../../wiki/methods/gentlehumanoid-motion-tracking.md)
+- [GentleHumanoid（方法页）](../../wiki/entities/paper-gentlehumanoid.md)

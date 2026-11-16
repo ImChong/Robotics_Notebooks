@@ -18,7 +18,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../methods/behavior-cloning.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./unitree-g1.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-adapt-text-driven-humanoid.md

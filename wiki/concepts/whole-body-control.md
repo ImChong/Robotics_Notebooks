@@ -2,8 +2,11 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-14
 related:
+  - ../entities/cartwheel-control.md
+  - ../entities/paper-throwing-tight-spiral-football.md
+  - ../entities/paper-dkwbc.md
   - ../entities/paper-humanoid-touch-dream.md
   - ../entities/embodied-interview-qa.md
   - ../tasks/locomotion.md
@@ -137,6 +140,10 @@ print("joint acceleration command:", qdd_star)
 - 摩擦锥、力矩限位、任务优先级
 - 从 `qdd` 到 `tau` 的映射
 
+### 新增论文：解析跟踪与学习平衡的解耦
+
+- [DKWBC（arXiv:2611.09605）](../entities/paper-dkwbc.md) 在 G1 上结合浮基逆动力学前馈、关节 PD 反馈与 RL 直接力矩残差。其核心是把**运动跟踪**交给名义动力学、把**接触/载荷下的平衡**交给学习残差；与 [ForPC](../entities/paper-forpc-cart-pushing.md) 的推车任务残差、[STEP](../entities/paper-step-spatiotemporal-humanoid-locomotion.md) 的深度感知运动互补，评测不可直接横比。
+
 ## 核心原理
 
 经典 WBC（Sentis & Khatib, ICRA 2006，已通读）的骨架：
@@ -148,6 +155,10 @@ print("joint acceleration command:", qdd_star)
 - 现代实现把"零空间严格优先"替换为 QP/HQP（含不等式），思想一致（本页上文"核心框架"）。
 
 ## 工程实践
+
+### 动态抛投与手指短时接触：Tight Spiral
+
+[人形机器人紧密螺旋橄榄球投掷（arXiv:2608.16642）](../entities/paper-throwing-tight-spiral-football.md) 是 WBC 与灵巧手接触控制的交叉实例：G1 腿部用 GR00T Whole-Body controller 稳定，腰臂跟踪离线优化抛投轨迹，出手时腕/指采用基于离线 MPC 的状态查表处理短暂球指接触。它说明「稳定站立、手臂加速、手指最终脱离」不能都简化为一次瞬时释放；但该方法没有公开完整可运行控制源码。
 
 - 上层 MPC/planner 给质心与接触计划，下层 WBC 每个控制周期求解力矩；接触集合来自接触估计。
 - 论文自述的实际难点同样存在：接触与近身障碍难定位，需在各层保留阻抗/柔顺（见"方法局限性"）。
@@ -182,7 +193,13 @@ print("joint acceleration command:", qdd_star)
 
 四足 **MPC→WBC** 开源参考：[legbot-MPC-WBC](../entities/legbot-mpc-wbc.md)。总览见 [hub-wbc](../overview/hub-wbc.md)。
 
+## 学习式动作跟踪案例：Cartwheel Control
+
+[Cartwheel Control](../entities/cartwheel-control.md) 公开 RP1、Asimov-1、G1 三款机器人专属跟踪权重，以 50 Hz 输出 PD 位置目标，在 200 Hz MuJoCo Warp 仿真中回放。它属于**学习式参考运动跟踪**，与上文 QP/HQP WBC 是不同技术路线；目前公开推理/仿真代码及权重，训练实现与实机验证仍缺乏公开证据。
+
 ## 参考来源
+
+- [DKWBC（arXiv:2611.09605）全文归档](../../sources/papers/dkwbc_arxiv_2611_09605.md) — 浮基逆动力学跟踪与 RL 平衡残差。
 
 - [khatib_sentis_ijhr_2004_whole_body_dynamic_behavior.md](../../sources/papers/khatib_sentis_ijhr_2004_whole_body_dynamic_behavior.md) — WBC 系统化起点（IJHR 2004）
 - [sentis_khatib_icra_2006_whole_body_control_framework.md](../../sources/papers/sentis_khatib_icra_2006_whole_body_control_framework.md) — 人形环境 WBC 框架（ICRA 2006）
@@ -219,7 +236,7 @@ print("joint acceleration command:", qdd_star)
 - [SWAP：测试时可控的人形全身避障](../entities/paper-swap-humanoid-collision-avoidance.md) — 感知条件扩散动作提案 + 低层 RL 稳定控制的分层示例；代码待开放
 - [李群、李代数与刚体旋转](../formalizations/lie-group-rigid-body-motions.md) — 任务空间 twist 与 se(3) 增量
 - [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础
-- [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — [SONIC](../methods/sonic-motion-tracking.md) 作低层 WBC 合成 loco-manip VLA 数据（arXiv:2606.01458）
+- [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — [SONIC](../entities/nvidia-sonic.md) 作低层 WBC 合成 loco-manip VLA 数据（arXiv:2606.01458）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — WAM 在 **SONIC 统一 motion token** 空间预测全身行为，替代上下身分层命令接口（arXiv:2606.09215）
 - [G1 Confined-Space WBP](../entities/paper-g1-confined-space-wbp.md) — 狭窄空间三阶段全身规划 + 残差跟踪（arXiv:2608.10220；UT Austin）
 - [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
@@ -228,7 +245,7 @@ print("joint acceleration command:", qdd_star)
 - [Behavior Foundation Model（BFM 概念）](./behavior-foundation-model.md) — 人形 WBC 行为基础模型 taxonomy
 - [BFM（Behavior Foundation Model 论文实体）](../entities/paper-behavior-foundation-model-humanoid.md) — 把 WBC 多接口重表述为 CVAE 生成 + 位级掩码的人形基础模型
 - [ReactiveBFM（论文实体）](../entities/paper-reactivebfm.md) — BFM 类 tracker + 闭环 AR-MDM 规划，缓解开环级联 exposure bias（arXiv:2606.30362）
-- [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md) — 在 motion tracking 中集成阻抗参考动力学与可调力阈值
+- [GentleHumanoid（上半身柔顺运动跟踪）](../entities/paper-gentlehumanoid.md) — 在 motion tracking 中集成阻抗参考动力学与可调力阈值
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — 学习型 **单阶段 MoE 全身 LLC**：LiDAR 高程图 + 跨模态编码，作 loco-manipulation 上层 API（arXiv:2601.17440）
 - [PADP（论文实体）](../entities/paper-padp-projection-legged-loco-manipulation.md) — 四足+臂：**策略动作→全身动力学投影**（RA-L 2026，Go2/LYNX M20 + Z1；DOI:10.1109/lra.2026.3734869）
 - [KungfuBot 2 / VMS](../entities/paper-notebook-kungfubot-2.md) — OMoE 单策略多技能低层全身控制器，可作 text-to-motion 执行层（[PBHC](../../sources/repos/pbhc.md)）
@@ -242,6 +259,7 @@ print("joint acceleration command:", qdd_star)
 - [PredActor](../entities/paper-predactor.md) — joint state–action 扩散直接输出 G1 全身动作，CG/CFG 可 steer，Orin NX 机载 50 Hz（arXiv:2609.24840；公开 MuJoCo 评测代码与 checkpoint，训练/真机部署未开放）
 - [TRACE（人形跨形态迁移）](../entities/paper-trace-humanoid-transfer.md) — 预训练全身控制器（SONIC）跨本体迁移的低成本路线：G1→H2，PHUMA 运动成功率 96.08%（作者报告）
 - [COWBOY](../entities/paper-cowboy-contextual-whole-body-manipulation.md) — 环境感知 WBC 负责无碰接近、局部 RL 专家负责接触抓取，再蒸馏为协调底座/手臂/灵巧手/主动视觉的单一移动操作策略
+- [OpenHLM](../entities/paper-loco-manip-161-154-openhlm.md) — 全身原生人形 VLA 配方：高层 ~10 Hz 输出 32-D 身体参考（根姿态 3 + G1 29 关节）+ 2 夹爪，SONIC 类跟踪器 ~50 Hz 出关节目标；关节空间优于 81-D SMPL（四任务进度 88% vs 75%；arXiv:2606.22174）
 
 ## 继续深挖入口
 

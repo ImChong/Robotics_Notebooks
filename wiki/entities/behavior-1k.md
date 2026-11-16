@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, benchmark, embodied-ai, omniverse, everyday-activities, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-13
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./nvidia-omniverse.md

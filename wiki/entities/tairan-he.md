@@ -15,7 +15,7 @@ related:
   - ../concepts/sim2real.md
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/privileged-training.md
 sources:
   - ../../sources/sites/tairan-he.md
@@ -82,7 +82,7 @@ flowchart LR
 - [Sim2Real](../concepts/sim2real.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Teleoperation](../tasks/teleoperation.md)
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md)
 - [Jim Fan（范林熹）](./jim-fan.md)
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md)
 - [Zhengyi Luo（罗正宜）](./zhengyi-luo.md)

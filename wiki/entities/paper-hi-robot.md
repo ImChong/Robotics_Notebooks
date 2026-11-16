@@ -3,7 +3,7 @@ type: entity
 tags: [paper, vla, hierarchical, instruction-following, manipulation, physical-intelligence, stanford, berkeley]
 title: "Hi Robot: Hierarchical VLA / 分层交互式指令遵循"
 status: complete
-updated: 2026-11-07
+updated: 2026-11-11
 project_id: hi-robot
 project: https://www.pi.website/research/hirobot
 arxiv: "2502.19417"
@@ -13,6 +13,7 @@ related:
   - ../methods/π0-policy.md
   - ../methods/pi07-policy.md
   - ../methods/vla.md
+  - ./paper-tacitvla.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/hirobot_arxiv_2502_19417.md
@@ -100,6 +101,7 @@ flowchart TD
 | GPT-4o 作高层 | 两级结构相同，高层换成未经机器人数据适配的 API VLM；三任务均低于 Hi Robot；官方 Average 行 IA 为 30% 对 76% |
 | [π₀.₅](./paper-pi05-open-world-vla.md) | 同一模型内先出语义子任务、再高频出动作块，两层共享表示；Hi Robot 的高层单独推理，并专门处理用户插话与纠正 |
 | [π₀.₇](../methods/pi07-policy.md) | 多模态提示写进同一个通才；Hi Robot 在线生成下一步语言 |
+| [TacitVLA](./paper-tacitvla.md) | 同样解耦推理和动作等待，但 TacitVLA 在单个共享主干 + 动作专家中屏蔽当前推理 token；仅长程记忆任务异步写 ledger |
 
 ## 源码运行时序图
 
@@ -117,6 +119,7 @@ flowchart TD
 - [π₀ 策略](../methods/π0-policy.md)
 - [π₀.₇](../methods/pi07-policy.md)
 - [VLA](../methods/vla.md)
+- [TacitVLA](./paper-tacitvla.md) — 推理监督与动作等待解耦
 - [操作任务](../tasks/manipulation.md)
 
 ## 参考来源

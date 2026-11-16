@@ -29,6 +29,7 @@ related:
 sources:
   - ../../sources/papers/warp_arxiv_2606_29940.md
   - ../../sources/sites/warp-retargeting-github-io.md
+original: ../../sources/papers/warp_arxiv_2606_29940.md
 ---
 
 # WARP（Whole-body-Aware Retargeting from human Pose）
@@ -59,7 +60,7 @@ WARP 把「人类数据便宜、机器人数据贵」的瓶颈落在 **离线重
 - **下游 decisive：** DexMimicGen 上 replay 相近时，WARP 数据训练策略平均成功率 **71% vs MINK 59%**；真机转箱任务同等 replay 下 **65% vs 40%**——运动质量比 replay 完成率更决定 BC 上限。
 - **全身语义：** 冰箱关合等任务依赖 **肘–躯干** 协调，EEF-only 重定向无法表达；WARP 保留全身结构意图。
 
-## 方法
+## 核心机制
 
 | 模块 | 作用 |
 |------|------|
@@ -145,6 +146,17 @@ Replay 相近；WARP 监督对 BC **+12%** 平均策略成功率。
 - **任务：** 洗衣（双手腕）、推车（base–arm 接触）、转箱（torso–arm 扭转）、关冰箱（**肘关合**）。
 - **WARP** 四任务全胜；冰箱 replay **90%**；转箱同等 replay 下策略 **65% vs MINK 40%**。
 
+## 对比
+
+| 方法 | 离线重定向机制 | 论文报告的下游差异 |
+|---|---|---|
+| MINK 加权 IK | 在末端位置与全身姿态目标间权衡 | DexMimicGen 平均策略成功率 59% |
+| WARP c-SEW + lazy base | palm 硬约束、闭式 SEW 分支及底座/躯干解耦 | 同设定平均策略成功率 **71%**；replay 成功率两者接近（约 80%） |
+| 仅看 replay 指标 | 只验证重定向轨迹能否回放 | 无法充分预测 BC 可学性；真机转箱任务策略成功率 WARP 65% vs MINK 40% |
+
+数值来自论文指定任务，不代表所有场景的普遍优势；见 [原文](https://arxiv.org/abs/2606.29940) 与 [全文归档](../../sources/papers/warp_arxiv_2606_29940.md)。
+
+
 ## 结论
 
 **离线全身移动操作的关键不是「有没有人类数据」，而是重定向能否同时做到精确、一致、可开环回放——WARP 用闭式 c-SEW 把这一层从加权 IK 的模糊 trade-off 里拉出来。**
@@ -171,7 +183,7 @@ Replay 相近；WARP 监督对 BC **+12%** 平均策略成功率。
 | 出处 | arXiv preprint（2026） |
 | 链接 | [项目页](https://warp-retargeting.github.io/) · [arXiv](https://arxiv.org/abs/2606.29940) |
 
-## 与其他页面的关系
+## 关联页面
 
 - **Retargeting 质量命题：** [Retargeting Matters / GMR](./paper-hrl-stack-01-retargeting_matters.md) — 重定向质量上限早于 RL/BC
 - **交互场景硬约束：** [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) — interaction mesh + SOCP；侧重场景/物体交互增广

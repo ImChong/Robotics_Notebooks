@@ -7,7 +7,7 @@ tags:
   - cae
   - cfd
 status: complete
-updated: 2026-10-08
+updated: 2026-11-16
 summary: "按项目身份整理 CAE/CFD 代理技能、MCP、CLI 和可视化仓库；每个仓库各有一页，同名项目分开介绍。"
 sources:
   - ../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md
@@ -63,6 +63,10 @@ original:
 ## 工程实践
 
 先识别仓库的实际角色，再检查默认分支 README、许可证、安装依赖和可运行示例。对仿真工作流，应以网格、边界、守恒和物理结果作为验证证据；对 MCP 执行接口，确认调用权限和任意代码执行边界；对商业软件确认本机安装与有效授权。Skill 文件可以规划和检查流程，但其本身不提供求解器能力。
+
+## 厂商产品内置智能体（区别于社区公开仓库）
+
+[Ansys 2026 R1 智能体工程（Agentic Engineering）](../entities/ansys-2026-r1-agentic-engineering.md) 是商业 Ansys 软件自身发布的功能：Mechanical **Mesh Agent** 辅助处理网格划分故障（探索性使用），Discovery **Validation Agent** 主动识别仿真设置问题（早期客户评估）。两者与下方 53 个独立社区仓库不是同一类项目，故**不计入仓库清单数量**；官方截至归档日未提供两款智能体的可运行源码入口。详情与来源见专页。
 
 ## 项目详情节点
 
@@ -129,6 +133,8 @@ original:
 
 ## 关联页面
 
+- [DNS / LES / RANS 湍流求解与封闭模型选型](../comparisons/dns-les-rans-turbulence-resolution-selection.md) — CFD 物理模型选型、近壁处理与求解结果校验；与此处代理编排工具互补。
+
 - [系统工程知识链](./hub-systems-engineering.md) — 工程代理的环境、接口与执行记录
 - [仿真物理保真度知识链](./hub-physics-fidelity.md) — 自动仿真结果的物理验证
 - [前沿模型 × 3D / CAD / 机器人综述](./frontier-models-3d-cad-robotics-survey.md) — CAD 代理能力与工程验收边界
@@ -139,6 +145,8 @@ original:
 - [CAE Agent Hub](../entities/cai-aa-cae-agent-hub.md) — 多软件资源与执行层拆分
 
 ## 参考来源
+
+- [Synopsys / Ansys 2026 R1 官方智能体公告归档](../../sources/sites/ansys-2026-r1-agentic-engineering-official.md)
 
 - [微信公众号原文归档](../../sources/blogs/wechat_cae_cfd_agent_skills_2026-10-07.md)
 - [完整仓库资料与源码开放状态](../../sources/repos/kimimgo-awesome-ai-cae.md)

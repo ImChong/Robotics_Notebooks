@@ -1346,8 +1346,8 @@
     "org_url": "https://github.com/xpeng-robotics",
     "name": "DIAL",
     "category": "VLA/操作模型",
-    "slug": "cn-os-dial",
-    "new": true
+    "slug": "paper-dial-latent-world-vla",
+    "new": false
   },
   {
     "layer": "第一层",
@@ -3191,8 +3191,8 @@
     "org_url": "https://github.com/HorizonRobotics",
     "name": "RoboTransfer",
     "category": "世界模型",
-    "slug": "cn-os-robotransfer",
-    "new": true
+    "slug": "paper-rcl-2505-23171-robotransfer-controllable-geometry-consistent-vi",
+    "new": false
   },
   {
     "layer": "第四层",

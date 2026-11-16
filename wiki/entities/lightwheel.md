@@ -4,12 +4,13 @@ tags: [company, lightwheel, simulation, synthetic-data, simready, simulation-eva
 title: Lightwheel（光轮智能）
 status: complete
 summary: "Lightwheel / 光轮智能（2023 年成立，谢晨创立）是 Physical AI 数据与仿真基础设施公司：SimReady 物理资产与 SimReadyGen 场景生成 → Lightwheel Platform / LW-BenchHub 仿真采数 → EgoSuite 人类第一视角数据 → RoboFinals 工业级评测；官网 18 条博文 + 5 篇新闻稿覆盖 2025-05 吉利工厂 GR00T N1 部署、2026-04 工业 AI 方案、Q1 订单约 1 亿美元（自报）与 MANUS / PICO 人类数据合作。"
-updated: 2026-10-10
+updated: 2026-11-14
 institutions: [lightwheel]
 related:
   - ./lightwheel-simready.md
   - ./lightwheel-simreadygen.md
   - ./lightwheel-robofinals.md
+  - ./lightwheel-robofinals-rl-env.md
   - ./cn-os-lw-benchhub.md
   - ./lightwheel-egosuite.md
   - ./egosuite-open100k.md
@@ -21,8 +22,11 @@ related:
   - ./isaac-gr00t.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../overview/nvidia-physical-ai-toolchain-technology-map.md
+original:
+  - ../../sources/blogs/lightwheel_industrial_2026-04.md
 sources:
   - ../../sources/sites/lightwheel-blog-index.md
+  - ../../sources/sites/lightwheel_robofinals_rl_env.md
   - ../../sources/blogs/lightwheel_industrial_2026-04.md
   - ../../sources/blogs/lightwheel_gr00t_automotive_2025-05.md
   - ../../sources/blogs/lightwheel_press_releases.md
@@ -98,7 +102,10 @@ sources:
 | **AutoDataGen** | Behavior：合成扩增 | Isaac Lab 上 LLM 任务分解 → 原子技能 → cuRobo 运动规划 / 导航执行 → 轨迹数据 | 开源（Apache-2.0） | 本页开源表 |
 | **EgoSuite** / HDCP | Behavior：人类数据 | 第一视角人类示范数据方案；2026-04 称覆盖 7 国 500+ 工业环境（自报）；2026-08 开放 Open100K | 数据商业 + Open100K 开放 | [EgoSuite](./lightwheel-egosuite.md)、[EgoSuite-Open100K](./egosuite-open100k.md) |
 | **RoboFinals** | Evaluation | 工业级仿真评测；基于 Isaac Lab-Arena + BenchHub，并有 Newton-native benchmark | 商业（Coming soon）；底座开源 | [RoboFinals](./lightwheel-robofinals.md) |
+| **RoboFinals RL Environments**（2026-11） | RL Training：真实任务强化学习训练 | EgoSuite 采集 → Agent 解析 → SimReady OpenUSD 重建 → 实测物理/CAE → Newton 训练；与 RoboFinals 共用任务定义 | 官网技术页已核实；Early Access，专属源码/任务包尚未开放 | [RoboFinals RL-Env](./lightwheel-robofinals-rl-env.md) |
 | **LeIsaac** | 社区入口 | Isaac Lab 中用 SO-101 Leader 遥操作、采数、转 LeRobot 格式 | 开源（Apache-2.0） | [LeIsaac](./cn-os-leisaac.md) |
+
+**2026-11 产品增补：** [RoboFinals RL-Env](./lightwheel-robofinals-rl-env.md) 是新发布的**训练环境**，与更早的 [RoboFinals](./lightwheel-robofinals.md) **评测平台**分开记录。首个公开任务为汽车维修；官方独立[技术产品页](https://lightwheel.ai/robofinals-rl-env)已于 2026-11-14 全文核实，明确了 Agent 逐阶段审核、实测/CAE 标定与 Newton 混合接触耦合；完整产品代码和公开训练基线仍未披露。详见 [全文核验归档](../../sources/sites/lightwheel_robofinals_rl_env.md)。
 
 **命名注意：** 2025-05 GR00T 博文里的「Lightwheel Simulation Platform / Lightwheel Hybrid Sim」与 2026-07 PICO 新闻稿里的自研全栈仿真平台「SimFoundry」都是内部平台名，未单独开放；后者与 NVIDIA NVlabs 的 [SimFoundry 论文](./paper-simfoundry-real2sim-scene-generation.md) **同名但不是同一事物**（推测仅为撞名）。
 
@@ -252,6 +259,11 @@ GitHub 组织列表页与 org API 在本环境不可读（403），下表由各�
 - [具身数据采集五条路线](../queries/embodied-data-collection-five-routes-landscape.md)
 
 ## 参考来源
+
+**原文阅读范围（2026-11-14）：** 已复核两篇光轮 2026-04 官方工业 AI 方案长文，用于公司技术路线与产品分层；其他官方新闻稿与媒体融资信息保留各自归档和来源区分，相关自报指标不等于独立验证。
+
+
+- [RoboFinals RL-Env（2026-11 官方发布）](../../sources/sites/lightwheel_robofinals_rl_env.md)
 
 - [Lightwheel 官网 Blogs / Press Releases 列表核查（2026-10-10，18 + 5 条）](../../sources/sites/lightwheel-blog-index.md)
 - [工业 AI 两篇博文（2026-04，来源归档）](../../sources/blogs/lightwheel_industrial_2026-04.md)

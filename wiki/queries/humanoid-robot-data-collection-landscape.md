@@ -2,7 +2,7 @@
 type: query
 tags: [data-collection, humanoid, teleoperation, investment, physical-ai]
 status: complete
-updated: 2026-10-15
+updated: 2026-11-15
 summary: "Query：综合 LeoInAI Substack（2026-09-06）与 Scanford 论文，梳理人形/机器人训练数据采集六条范式；提到的项目/论文各有一页。"
 related:
   - ../entities/paper-scanford-robot-powered-data-flywheel.md
@@ -18,6 +18,8 @@ sources:
   - ../../sources/sites/eidon-ai.md
   - ../../sources/datasets/eidon-tracker-pov.md
   - ../../sources/papers/egoexplorer_arxiv_2610_18872.md
+original:
+  - ../../sources/blogs/leoinai_humanoid_robot_datacollection_2026-09-06.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形机器人训练数据怎么采？Substack 里提到的项目/论文各自是什么？」

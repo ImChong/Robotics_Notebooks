@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, physics-engine, gpu, warp, mujoco-warp, openusd, differentiable, linux-foundation, nvidia]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-14
 related:
   - ./paper-dat-divide-and-truncate.md
   - ./paper-mixed-mpm-stiff-elastoplasticity.md
@@ -26,6 +26,7 @@ related:
   - ./omnisim.md
   - ./nvidia-gtc.md
   - ./robosimstudio.md
+  - ./steel-newton-solver.md
 original:
   - ../../sources/sites/newton-physics-docs-overview_reading_np1.md
 sources:
@@ -44,6 +45,8 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/sites/lightwheel_robofinals_newton_native_benchmark.md
   - ../../sources/repos/omnisim.md
+  - ../../sources/sites/steel-skild-ai.md
+  - ../../sources/repos/steel-newton.md
 summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微物理引擎：基于 NVIDIA Warp，以 MuJoCo Warp 为主要后端，支持 URDF/MJCF/USD 与 XPBD/VBD/MuJoCo/Featherstone/SemiImplicit/Kamino/ImplicitMPM/Style3D；Lightwheel RoboFinals 发布首个 Newton-native 全栈评测 benchmark（22 任务）。"
 ---
 
@@ -85,7 +88,7 @@ Newton 是 Linux Foundation 托管、基于 NVIDIA Warp 与 MuJoCo Warp 的 GPU 
 | **可微** | Warp 核可微；`diffsim_*` 示例走 **非 MJWarp** 求解器。 [MuJoCo Warp](./mujoco-warp.md) 步进的 AD **尚未接通**（issue #500） |
 | **可扩展** | 模块化求解器与组件；可插拔自定义求解器，支持多物理扩展 |
 | **资产** | `ModelBuilder` 导入 **URDF、MJCF、USD**；OpenUSD 聚合机器人与环境 |
-| **求解器** | 见下表「求解器谱系」；公开 API 八类 + 内部 `coupled` 多求解器耦合 |
+| **求解器** | 见下表「求解器谱系」；公开求解器包括 Steel 等多种后端 + 内部 `coupled` 多求解器耦合 |
 | **接触** | `CollisionPipeline.collide` 填充 `Contacts`（2026-09 文档；不再写 `Model.collide`）；多物理 **无穿透** 耦合见 SIGGRAPH 2026 [DAT](./paper-dat-divide-and-truncate.md)（Divide and Truncate / Planar-DAT） |
 | **传感器** | 基于 `State` / `Contacts` 与 extended attributes 的观测管线 |
 
@@ -105,6 +108,7 @@ Newton 通过 PEP 562 懒加载导出 `SolverBase` 及下列后端；源码目�
 | `style3d/` | `SolverStyle3D` | 布料、服装仿真 | Style3D 管线 |
 | `implicit_mpm/` | `SolverImplicitMPM` | 颗粒、雪、流体、刚–颗粒耦合、**刚性弹塑性** | MPM 连续介质；SIGGRAPH 2026 [Mixed MPM](./paper-mixed-mpm-stiff-elastoplasticity.md) 为 Newton 一等模块 |
 | `kamino/` | `SolverKamino` | **闭链/任意拓扑** 约束多体 | PADMM；**BETA 1** — 见 [Kamino 论文](./paper-kamino.md) |
+| `steel/` | `SolverSteel` | 异构机器人/任务批次、接触密集刚体仿真 | Skild AI × NVIDIA；[Steel 详解](./steel-newton-solver.md)，含异构评测口径 |
 | `coupled/` | （内部 API） | 多求解器同场景耦合 | `solver_coupled.py`；非 `__all__` 公开导出 |
 
 **选型口诀：** 纯开链 → `SolverMuJoCo`；布料 → Style3D/VBD；颗粒 → ImplicitMPM；四连杆/并联环 → Kamino（无闭环勿用）；位置基实验 → XPBD。
@@ -181,6 +185,7 @@ flowchart LR
 - [Particles4All](./particles4all.md) — 浏览器 WebGPU 统一粒子 PBD 对照（非 Newton 组件）
 - [Lightwheel RoboFinals](./lightwheel-robofinals.md) — Newton-native 全栈工业评测 benchmark
 - [Kamino（闭链 GPU 求解器论文）](./paper-kamino.md) — `SolverKamino` 算法与 RL 实证
+- [Steel：异构机器人刚体求解器](./steel-newton-solver.md) — Skild AI/NVIDIA 联合项目，单任务与混合任务的仿真吞吐比较
 
 - [NVIDIA Warp](./nvidia-warp.md) — JIT 计算层；本引擎站在其上
 - [MuJoCo Warp](./mujoco-warp.md) — 主要刚体后端
@@ -214,6 +219,8 @@ flowchart LR
 - [OmniSim 仓库归档](../../sources/repos/omnisim.md) — Newton 作为唯一后端的仿真器案例
 - [human five · Humanoid Skills（ROBOTIS K1 Newton 案例）](../../sources/blogs/wechat_human_five_robotis_humanoid_skills_nvidia_stack_2026-09-28.md)
 - [RoboSimStudio 仓库归档](../../sources/repos/robosimstudio.md)
+- [Steel 官方报告归档](../../sources/sites/steel-skild-ai.md)
+- [Steel 在 Newton 中的源码归档](../../sources/repos/steel-newton.md)
 
 ## 推荐继续阅读
 

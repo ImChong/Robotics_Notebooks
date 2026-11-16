@@ -19,6 +19,8 @@ summary: "ssik 是 UW Personal Robotics Lab 开源的 6R/7R 解析逆运动学�
 
 # ssik（解析逆运动学）
 
+## 一句话定义
+
 **ssik**（[personalrobotics/ssik](https://github.com/personalrobotics/ssik)）面向 **6R 与 7R 全转动关节机械臂**，提供 **解析逆运动学**：对每个目标位姿返回 **全部代数 IK 分支**（而非数值法常见的单解收敛），默认 **FK 闭合误差** 已低于典型工业机器人 **重复定位精度**（约 0.1 mm 量级），并可收紧到机器精度。设计借鉴 IKFast 的 **构建期 codegen、部署期纯数值** 思路，但把覆盖范围扩展到 **非 Pieper 6R**（如 Kinova JACO2、xArm6、AgileX PiPER）与 **非 SRS 7R**（如 Franka Panda、Flexiv Rizon）——这正是 [EAIK](https://github.com/OstermD/EAIK) 等库常直接拒绝的几何族。
 
 ## 英文缩写速查

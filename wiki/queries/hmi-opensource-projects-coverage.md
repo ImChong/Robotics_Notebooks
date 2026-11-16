@@ -3,7 +3,7 @@ title: HMI 开源项目主表 · 阅读导航
 type: query
 status: complete
 created: 2026-07-30
-updated: 2026-09-10
+updated: 2026-11-15
 summary: 具身智能研究室开源项目主表的站内阅读导航：表中项目对应站内哪一页、该从哪读起。下表是 2026-07 的 166 项快照，上游 2026-09-10 已扩到 586 项，本页不镜像全表。
 sources:
   - ../../sources/repos/humanoid-motion-intelligence.md
@@ -180,7 +180,7 @@ original:
 | [GO-2](https://www.agibot.com/article/231/detail/56.html) | [GO-2（智元执行基座）](../entities/go-2.md) |
 | [HoloAgent](https://github.com/HorizonRobotics/HoloAgent) | [HoloAgent](../entities/holoagent.md) |
 | [Isaac-GR00T / GR00T N1.7](https://github.com/NVIDIA/Isaac-GR00T) | [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) |
-| [Octo](https://github.com/octo-models/octo) | [Octo（开源 Generalist Policy）](../methods/octo-model.md) |
+| [Octo](https://github.com/octo-models/octo) | [Octo（开源 Generalist Policy）](../entities/paper-octo.md) |
 | [openpi](https://github.com/Physical-Intelligence/openpi) | [π₀ (Pi-zero) 策略模型](../methods/π0-policy.md) |
 | [OpenVLA](https://github.com/openvla/openvla) | [OpenVLA](../entities/paper-openvla.md) |
 | [WholeBodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) | [WholeBodyVLA](../entities/paper-hrl-stack-30-wholebodyvla.md) |

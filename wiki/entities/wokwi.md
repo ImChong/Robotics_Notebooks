@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, embedded, firmware, iot, arduino, esp32, education, wokwi]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-12
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./simplefoc.md
@@ -10,11 +10,14 @@ related:
   - ./betaflight.md
   - ./inmoov-humanoid.md
   - ./tinkercad.md
+  - ./robotics-lab-movez.md
   - ../concepts/uart-serial-communication.md
   - ../concepts/processor-in-the-loop-sim2real.md
   - ../concepts/mqtt-protocol.md
   - ./mosquitto.md
 sources:
+  - ../../sources/sites/wokwi-com.md
+original:
   - ../../sources/sites/wokwi-com.md
 summary: "Wokwi：浏览器端嵌入式电路仿真器，覆盖 Arduino/ESP32/STM32/Pico 与传感器外设；支持 Wi-Fi/MQTT、逻辑分析仪、GDB、VS Code/CLion 与 wokwi-cli CI——用于机器人固件 bring-up 与教学，而非刚体物理 RL 训练。"
 ---
@@ -102,6 +105,8 @@ flowchart LR
 
 ## 关联页面
 
+- [Velxio](./velxio.md) — 开源核心、真实固件与 ngspice-WASM 数模协同的嵌入式仿真平台；官网商业版与开源自部署能力须区分。
+
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [SimpleFOC](./simplefoc.md)
 - [PlatformIO Core](./platformio-core.md) — 配置驱动的嵌入式构建、包管理与 CLI 测试工具
@@ -110,6 +115,7 @@ flowchart LR
 - [UART 串行通信](../concepts/uart-serial-communication.md)
 - [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md)
 - [Tinkercad](./tinkercad.md) — Autodesk 浏览器端 3D + Arduino/micro:bit 入门仿真
+- [Robotics Lab（Movez）](./robotics-lab-movez.md) — 侧重浏览器 3D 元件装配和交互教学，电气模型精度未获验证；不同于可运行固件的 Wokwi。
 
 ## 推荐继续阅读
 

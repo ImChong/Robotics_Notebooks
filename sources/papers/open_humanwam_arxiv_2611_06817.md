@@ -9,9 +9,9 @@
 - **全文（含附录）：** <https://arxiv.org/html/2611.06817>
 - **PDF：** <https://arxiv.org/pdf/2611.06817>
 - **项目页：** <https://dagroup-pku.github.io/open-humanwam/>
-- **代码：** <https://github.com/DAGroup-PKU/HumanNet/tree/open-humanscale>
+- **代码：** <https://github.com/DAGroup-PKU/HumanNet/tree/Open-HumanWAM>
 - **机构：** 北京大学、新加坡国立大学、麻省理工学院、加州大学圣巴巴拉分校、NVIDIA
-- **入库日期：** 2026-11-06；2026-11-08 补充原文通读
+- **入库日期：** 2026-11-06；2026-11-08 补充原文通读；2026-11-09 核对官方数据卡与代码分支
 - **核对范围：** arXiv v2 HTML 全文：引言、数据与统一动作、Vanilla/Goal 方法、缩放与消融、RoboTwin/RoboDojo、真机实验、限制讨论、附录评测口径及实现细节；另比对官方仓库总 README 与两条模型 README
 - **通读：** 已完成
 - **一句话说明：** 50K 小时人类第一人称动作语料支持纯人类预训练与人机联合目标条件预训练两条路径；应严格区分缩放、零样本与最终后训练的实验。
@@ -35,6 +35,12 @@
 | 70.80%→74.36% | Goal 受控人类数据增量后训练的 RoboTwin Random | 不是最终 Goal 的 84.60% |
 | 92.70%/84.60% | Goal 最终 Clean/Random | 属于后训练评测，非零样本成功率 |
 | 50 vs 100 | 当前 Vanilla README 脚本用每任务每条件 50 episodes；论文结果用 100 | 公开 checkpoint 本地回归与论文表格不能无标注等同比对 |
+
+## 50K 数据集当前发布口径（2026-11-09）
+
+- **数据卡：** <https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K>；LeRobot v3，31,396,799 实体 episodes（不同于论文统计的 35.9M 选中 clips）。
+- **2026-11-09 14:53 UTC+8 快照：** 上传并验证 22.43/26.67 TB，84.09%；完整 payload 仍在上传。HF 访问需接受条款。七档训练 subset 索引已可见，数据 payload 需另行取得。
+- **复现注意：** 数据来源分属不同授权条款；不能由顶层代码 Apache-2.0 推导视频数据许可。
 
 ## 开源状态
 

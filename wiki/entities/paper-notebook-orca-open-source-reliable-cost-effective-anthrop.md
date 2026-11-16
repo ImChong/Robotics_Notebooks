@@ -12,7 +12,7 @@ sources:
 summary: "ORCA：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后补成完整摘要。"
 ---
 
-# ORCA
+# ORCA: Open-Source Anthropomorphic Robotic Hand（arXiv:2504.04259）
 
 **ORCA: Open-Source, Reliable, Cost-Effective, Anthropomorphic Robotic Hand for Uninterrupted Dexterous Task Learning** 已列入 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页 **还没有深读笔记**：除分类位置与原文入口外，仅给出依据论文自标定算法的「流程总览」图（不含硬件机械设计），其余细节与数据请直接看原文。
 

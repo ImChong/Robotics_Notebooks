@@ -12,7 +12,7 @@ tags:
   - open-source
   - ros
 status: complete
-updated: 2026-10-11
+updated: 2026-11-15
 related:
   - ./leju-robotics.md
   - ./openlet.md

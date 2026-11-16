@@ -10,7 +10,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-06
+updated: 2026-11-10
 arxiv: '2410.24164'
 code: https://github.com/Physical-Intelligence/openpi
 related:

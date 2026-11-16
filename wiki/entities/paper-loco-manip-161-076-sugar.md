@@ -1,10 +1,11 @@
 ---
 type: entity
-tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, contact-data, human-video, imitation-learning, reinforcement-learning, isaaclab, humanoid, pku, beihang]
+tags: [paper, loco-manipulation, loco-manip-161-survey, loco-manip-contact-survey, contact-data, human-video, imitation-learning, reinforcement-learning, isaaclab, humanoid, unitree-g1, pku, beihang]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-14
 arxiv: "2605.20373"
 venue: "arXiv 2026"
+code: https://github.com/tianshuwu/SUGAR
 related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-03-visuomotor.md
@@ -12,144 +13,150 @@ related:
   - ../tasks/loco-manipulation.md
   - ../methods/imitation-learning.md
   - ../methods/amp-reward.md
+  - ../concepts/privileged-training.md
+original:
+  - ../../sources/papers/sugar_arxiv_2605_20373_reading.md
+  - ../../sources/repos/tianshuwu_sugar.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_076_sugar.md
+  - ../../sources/papers/sugar_arxiv_2605_20373_reading.md
+  - ../../sources/repos/tianshuwu_sugar.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md
-summary: "SUGAR（arXiv:2605.20373）把第三人称人类 HOI 视频转成可部署人形 loco-manip 策略：自动抽取运动/交互先验，经 privileged RL 技能精修，再蒸馏成无参考条件的层级自主策略；官方 MIT 代码含 IsaacLab 训练、六任务数据、checkpoint、train.sh/inference.sh。"
+summary: "SUGAR（arXiv:2605.20373）由北大与北航提出，通过「视频抽取粗略交互先验（SAMBody/FoundationPose/VLM）→ 特权 RL Refiner 物理清洗（含 Progressive State Pool）→ BC+RL Tracker 蒸馏与 12 层 DiT Command Generator 分层闭环策略」将第三人称人类视频转化为参考轨迹无关的 Unitree G1 真机交互策略（六任务实机 6/10–9/10）；MIT 代码已开源训练与演示权重。"
 ---
 
 # SUGAR
 
-**SUGAR**（*A Scalable Human-Video-Driven Generalizable Humanoid Loco-Manipulation Learning Framework*）是一条从 **第三人称人类视频** 到 **真机人形移动操作策略** 的数据闭环：先从非结构化 HOI 视频抽取运动与接触先验，再用特权 RL 将先验修正为物理可行技能，最后训练无需参考动作输入的层级自主策略。
+**SUGAR**（*A Scalable Human-Video-Driven Generalizable Humanoid Loco-Manipulation Learning Framework*，`arXiv:2605.20373v1`）由北京大学 CFCS 与北京航空航天大学提出，解决「人类交互视频丰富但物理不可行，遥操作精确却昂贵难扩展」的核心矛盾：先把无标注人类 HOI 视频抽取为粗略运动与接触先验，再通过特权强化学习将噪声轨迹清洗成物理可行的示范，最终蒸馏出无需在线参考轨迹的「Diffusion 命令生成器 + 底层全身跟踪器」分层闭环策略。
 
 ## 一句话定义
 
-SUGAR 用人类视频规模化生成人形 loco-manip 技能先验，并通过 RL 精修与策略蒸馏把不完美视频轨迹转成可部署的闭环机器人控制器。
+SUGAR 用「自动化视频先验抽取 → 特权 RL Refiner 物理清洗（PSPI 状态池）→ BC+RL Command Tracker 与 DiT Command Generator 分层蒸馏」三阶段管线，把充满遮挡与穿模的第三人称人类视频转化为可零样本部署到 Unitree G1 的参考无关自主移动操作策略。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| SUGAR | Scalable human-video-driven Generalizable humanoid loco-manipulation framework | 本文框架名，强调视频先验、技能精修与自主策略 |
-| HOI | Human-Object Interaction | 人-物交互，SUGAR 的原始数据来源 |
-| RL | Reinforcement Learning | privileged policy 用于把视频先验修正成物理可行技能 |
-| IL | Imitation Learning | 最终层级自主策略从精修示范中学习 |
-| RGB-D | Red-Green-Blue + Depth | 待发布数据处理链路涉及的人类视频输入形态 |
-| IsaacLab | Isaac Lab | 官方训练实现所基于的 manager-based 仿真框架 |
+| SUGAR | Scalable human-video-driven Generalizable humanoid loco-manipulation framework | 本文面向视频驱动人形移动操作的三阶段学习框架 |
+| HOI | Human-Object Interaction | 人-物接触交互视频与演示数据 |
+| PSPI | Progressive State Pool for Initialization | 用已物理验证的中间成功状态动态扩充 RL 初始化池 |
+| DiT | Diffusion Transformer | 12 层扩散模型充当高层 Command Generator（10 Hz） |
+| BCPPO | Behavior Cloning + Proximal Policy Optimization | `sugar_rl` 中结合教师 BC 蒸馏与 RL 微调的策略优化器 |
+| VLM | Vision-Language Model | 辅助从视频帧自动判别直接物理接触标签 \(\hat{l}_t\) |
 
 ## 为什么重要
 
-- **补齐接触数据入口**：人形 HOI 真机遥操作成本高，SUGAR 直接面向人类视频，适合覆盖 carry、kick、push、sit、stand、pick 等接触多样任务。
-- **不把视频轨迹直接当真值**：项目页明确指出人类视频先验有遮挡、接触伪影、重定向误差；SUGAR 用 privileged RL 先修正，再让部署策略学习。
-- **部署时不依赖参考运动**：最终策略不是每步追踪视频参考，而是从观测闭环生成动作，适合长期执行、扰动恢复和同类物体零样本泛化。
-- **工程开放度较高**：官方仓库已发布 inference demo、checkpoint、六任务处理数据、完整训练管线；仍未发布 RGB-D 视频到训练数据的处理管线与 sim-to-sim 管线。
+- **承认人类视频不能直接当真值**：第三人称单目/RGB-D 视频重建伴随严重遮挡、手物穿模与重定向比例失配；SUGAR 把视频定位为「包含粗略任务逻辑的先验」并用物理仿真 Refiner 清洗，避免把伪影直接喂给部署策略。
+- **以分层闭环取代刚性轨迹回放**：推理时完全不依赖离线参考运动序列或每步手写任务奖励，高层 `10 Hz` DiT 生成运动意图命令、底层 `50 Hz` Tracker 稳健执行，在物体移位或被推挤后能自主纠偏重续。
+- **验证人类视频数据规模的 Scaling 规律**：每任务视频从 `20 → 50 → 100` 条时，未见测试集成功率持续单调攀升，且只需一套统一模仿+交互奖励即可跨搬箱、踢箱、推箱、取瓶、扶正水瓶、坐椅子 6 类任务复用。
 
 ## 流程总览
 
 ```mermaid
 flowchart TB
-  video["第三人称人类 HOI 视频"] --> prior["自动抽取运动/交互先验"]
-  prior --> refiner["Privileged RL refiner\n物理可行技能"]
-  refiner --> demos["精修示范数据\n六类 loco-manip 任务"]
-  demos --> policy["层级自主策略\n无参考动作条件"]
-  policy --> deploy["真机闭环执行\nCarry/Kick/Push/Sit/Stand/Pick"]
-  deploy --> recover["扰动后恢复 + 同类物体零样本泛化"]
+  vid["第三人称人类 HOI 视频"] --> ext["Stage 1: SAMBody / FoundationPose / VLM 接触标注"]
+  ext --> pri["噪声运动与接触先验 P"]
+  pri --> ref["Stage 2: 特权 RL Refiner + Progressive State Pool"]
+  ref --> rset["物理可行示范与命令数据集 R"]
+  rset --> trk["Stage 3a: BCPPO 蒸馏可部署 Command Tracker (50 Hz)"]
+  trk --> rol["Tracker 闭环实际执行轨迹 D"]
+  rol --> gen["Stage 3b: 12 层 DiT Command Generator (10 Hz)"]
+  gen --> trk
+  trk --> g1["Unitree G1 真机闭环执行与扰动恢复"]
 ```
 
-## 核心原理（详细）
+## 核心原理
 
-### 1. 视频先验不是最终控制目标
+### 1. Stage 1：自动化运动与接触先验提取（§3.2）
+管线首先从人类视频无人工标注地提取结构化先验 \(\mathcal{P} = \{\hat{\tau}_i\}\)（每帧含人体/机器人先验位姿 \(\hat{p}_t^R\)、物体 6D 位姿 \(\hat{p}_t^O\) 与接触标签 \(\hat{l}_t\)）：
+- 利用 `SAMBody` 结合深度点云 ICP 对齐重建人体运动，用 `SAMObj` 与点云对齐物理尺度后由 `FoundationPose` 跟踪物体 6D 姿态；
+- 利用 VLM（Qwen3-VL）按预设部位与物体模板逐帧判别直接物理接触，并在强遮挡快速交互（如踢箱子）时结合物体速度阈值补足标签，最后经时序滤波得初始数据集 \(\mathcal{P}\)。
 
-SUGAR 的第一阶段只把视频变成 **kinematic interaction priors**。这些先验有两个价值：给出人类如何接近、接触和移动物体；给出可扩展的数据来源。但它们也有明显缺陷：单目/多视角视频中的接触点不精确，遮挡会造成手物穿模，人体到人形的比例差异会使脚底支撑和物体轨迹失配。
+### 2. Stage 2：特权 RL Refiner 与 Progressive State Pool（§3.3）
+直接对噪声先验做标准 RSI 往往在起始帧就出现穿模或悬空失败。Refiner \(\pi_r\) 在特权观测下以统一奖励 \(r = r_{track} + r_{int} + r_{reg}\) 优化：
+- **根相对跟踪 + 接触一致性**：人体关节追踪采用根坐标系相对位姿防止全局重建漂移污染动作，并加入物体-部位相对位置/朝向惩罚与接触开关一致性奖励 \(r_{int}\)（强制区分「仅弯腰」与「真正抓起」）；
+- **Progressive State Pool (PSPI)**：训练中持续将 \(\pi_r\) 实际跑出的物理合法中间状态注入状态池 \(\mathcal{B}\) 作为后续环境复位起点；
+- **交互鲁棒性增强（IRE）**：在物体质量 `[0.5, 2.0]×`、摩擦随机化与机器人/物体外力脉冲（仅在有效接触时施加物体脉冲）下收集精修数据集 \(\mathcal{R}\)，同步记录实际高层命令 \(c_t = [q_t^{cmd}, v_t^{cmd}, \omega_t^{cmd}, l_t]\)。
 
-### 2. Privileged RL 技能精修
+### 3. Stage 3：Command Tracker 与 DiT Command Generator 闭环学习（§3.4 & §A）
+- **底层 Command Tracker（\(\pi_t\)，`50 Hz`）**：使用 `BCPPO` 从 \(\pi_r\) 蒸馏（前 `500` 步纯 BC 模仿，至 `1000` 步预热 Critic，至 `2000` 步过渡到完整强化学习微调），部署端仅接收 5 帧本体历史、相对物体 6D 位姿与命令 \(c_t\)。
+- **高层 Command Generator（\(\pi_g\)，`10 Hz`）**：用冻结的 \(\pi_t\) 在仿真中按真实命令流做闭环 rollout，记录**实际被执行出来的物体状态** \(\tilde{o}_t^O\) 构成数据集 \(\mathcal{D}\)，训练 `12` 层 DiT 扩散策略预测未来 `H=8` 步命令块（执行前 `A_a=4` 步并线性插值到 `50 Hz`）。训练于真实执行分布使高层生成器具备主动纠偏与失败重拾能力。
 
-第二阶段用仿真中特权信息修正先验。其作用类似「物理清洗器」：在知道完整状态、接触和物体信息时，把原始重定向轨迹推向机器人可执行的技能分布。这样避免最终策略直接继承视频伪影，也减少为每个任务手写奖励的需求。
+## 实验与评测
 
-### 3. 层级自主策略
+基于 `arXiv:2605.20373v1` 报告的 Unitree G1 仿真与真机实验（每任务 `100` 条训练人类视频 / `30` 条测试视频）：
 
-第三阶段训练部署策略。项目页强调推理时 **without task-specific reward engineering or reference-motion conditioning**，因此最终策略更接近可执行 skill policy，而不是离线轨迹播放器。对于长时程任务，这一点比单帧跟踪误差更关键：失败后策略还能重新进入任务状态。
+| 实验阶段 / 方法 | Kick Box SR / Err | Push Box SR / Err | Carry Box SR / Err | Sit Chair SR | Pick Bottle SR | Stand Bottle SR |
+|----------------|-------------------|-------------------|--------------------|--------------|----------------|-----------------|
+| **Sim Test · Resmimic** | `18.5%` / `0.963 m` | `10.6%` / `1.160 m` | `0.0%` / `—` | `20.6%` | `0.0%` | `0.0%` |
+| **Sim Test · HDMI** | `17.3%` / `0.938 m` | `54.6%` / `0.377 m` | `0.0%` / `—` | `8.2%` | `0.0%` | `0.0%` |
+| **Sim Test · w/o Refiner** | `46.3%` / `0.414 m` | `41.7%` / `0.554 m` | `62.0%` / `0.424 m` | `98.0%` | `94.9%` | `84.3%` |
+| **Sim Test · w/o IR (缺交互奖励)** | `72.0%` / `0.298 m` | `47.2%` / `0.421 m` | `57.5%` / `0.436 m` | `98.9%` | `0.0%` | `63.4%` |
+| **Sim Test · SUGAR (Ours)** | **`76.0%`** / **`0.265 m`** | **`70.0%`** / **`0.325 m`** | **`69.6%`** / **`0.326 m`** | **`99.6%`** | **`99.2%`** | **`86.3%`** |
+| **Real World (10 trials/task)** | **`7/10`** | **`6/10`** | **`7/10`** | **`9/10`** | **`9/10`** | **`8/10`** |
 
-### 4. 任务覆盖与泛化
+- **数据规模缩放（Table 2）：** 将每任务人类视频从 `20 → 50 → 100` 条时，Test 集成功率持续提升（`Kick Box: 32.7% → 63.1% → 76.0%`，`Push Box: 35.0% → 52.3% → 70.0%`，`Carry Box: 33.5% → 61.0% → 69.6%`），证明方法能直接吸收更多低成本视频。
+- **消融验证（Table 1 & §4.4）：** 去掉 `Refiner` 使全任务大幅塌陷；去掉交互奖励 `IR` 会导致接触密集任务 `Pick Bottle` 降为 `0.0%`；以固定起点（SSI）或纯原始轨迹（RSI）替代 `PSPI` 均导致成功率与定位误差退化；去掉 `IRE` 扰动增强则会过拟合理想物理。
+- **真机鲁棒性（§4.5）：** 通过 MoCap 获取真机物体位姿，六类任务取得 `60%–90%`（`6/10` 到 `9/10`）成功表现，并在物体被人为踢开/拖离与外部推挤下自主恢复任务执行，同时展现跨外形尺寸物体的零样本迁移能力。
 
-项目页展示六类真实任务：Carry Box、Kick Box、Pick Bottle、Sit Chair、Stand Bottle、Push Box；并展示 significant external perturbations 后恢复、unexpected failures 后继续，以及 Carry Box、Sit Chair、Kick Box 的同类未见物体泛化。
+## 与其他工作对比
 
-## 评测与结果
+| 维度 | SUGAR | 参考轨迹回放（Resmimic / HDMI） | HumanX | HumanoidMimicGen |
+|------|-------|----------------------------------|--------|------------------|
+| **数据来源与清洗** | **人类视频 + 特权 RL Refiner 清洗（PSPI）** | 人类视频/动捕直接重定向回放 | XGen 物理交互合成（锚点驱动） | 少量 VR 遥操作示范 |
+| **推理时对参考依赖** | **无参考动作输入（仅需当前状态与可选目标）** | 必须持续输入演示参考序列 | 联合模仿策略条件控制 | VLA / Diffusion 策略输入视觉 |
+| **接触一致机制** | VLM 接触标签 + `r_int` 接触一致性奖励 | 主要依赖部位位置跟踪 | 接触锚点与力约束 | 规划保证 IK 接触可行 |
+| **代码开源覆盖** | 训练（Refiner/Tracker/Generator）、权重与 6 任务处理数据全开放；视频提取待发 | 部分脚本或无统一闭环 | 项目页代码链接尚不稳定 | 基准与数据管线 |
 
-SUGAR 的评测以项目页真机演示为主，覆盖六类接触多样的 loco-manip 任务：Carry Box、Kick Box、Pick Bottle、Sit Chair、Stand Bottle、Push Box。核心评测维度是**任务可完成性**与**闭环鲁棒性**，而非单帧跟踪误差：
+## 结论
 
-- **任务完成**：六类任务均展示真机成功执行，说明「视频先验 → 特权 RL 精修 → 层级自主策略」这条链路能把非结构化人类视频转成可部署技能。
-- **抗扰恢复**：项目页展示 significant external perturbations 后策略仍能稳定并继续任务，unexpected failures 后能重新进入任务状态，印证部署策略是闭环 skill policy 而非离线轨迹回放。
-- **零样本泛化**：Carry Box、Sit Chair、Kick Box 在同类未见物体上展示零样本泛化能力。
+**SUGAR 验证了「先用特权 RL 在仿真里清洗人类视频伪影，再在真实底层执行分布上训练扩散命令生成器」的三段解耦路线，能够不靠遥操作写出可泛化、能抗扰恢复的人形 loco-manipulation 策略。**
 
-> 指标说明：截至归档核查（2026-07-22），公开材料以定性真机演示与任务覆盖为主，未给出跨任务统一的量化成功率/误差表；本页对成功率、跟踪精度等指标只做**清单式**记录，具体数字以论文与项目页为准，不在此处臆造。
+- **物理 Refiner 是视频可用化的前提**：Table 1 显示直接模仿视频先验（`w/o Refiner`）在新配置上成功率掉到 `41.7%–46.3%`，必须经过物理交互奖励与 PSPI 状态池重构才能产出高质量示范。
+- **在执行分布上训练 Generator 至关重要**：用冻结 Tracker 实际跑出的物体轨迹 \(\tilde{o}_t^O\) 而不是理想精修轨迹去训练 DiT，才让高层学会在跟踪滞后与外扰后主动纠偏。
+- **缩放潜力与单卡算力边界清楚**：数据从 20 增至 100 条带来显著跃升，但单任务训练完整三阶段在单卡 RTX 5090 仍需约 `45 GPU hours`（Refiner `20h` + Tracker `20h` + Generator `5h`）。
+- **开源实现可直接复现训练推理，但上游未完全闭合**：`tianshuwu/SUGAR`（MIT）完整开源了 `train.sh`、`inference.sh` 与六任务处理数据，但 RGB-D 视频提取与 Sim2Sim 验证管线尚未释出。
 
 ## 源码运行时序图
 
-官方代码仓库 [tianshuwu/SUGAR](https://github.com/tianshuwu/SUGAR) 为 MIT 许可，根目录含 `train.sh`、`inference.sh`、`source/sugar_rl`、`source/sugar_il`、六任务数据下载和 checkpoint。一次典型复现实验如下：
+基于官方仓库 `tianshuwu/SUGAR` 中的 `train.sh`、`inference.sh`、`scripts/sugar_rl/train.py`、`scripts/sugar_rl/play.py`、`rsl_rl_bcppo.py` 与 `scripts/sugar_il/train.py` 核对：
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor U as 用户
-    participant Repo as tianshuwu/SUGAR
-    participant Isaac as IsaacSim 5.1 + IsaacLab 2.3
-    participant Data as data/descriptions/demo_ckpts
-    participant Train as train.sh
-    participant Infer as inference.sh
-    participant Sim as 仿真/部署任务
-    U->>Repo: git clone + pip install -e source/sugar_rl/source/sugar_il
-    U->>Isaac: 安装 isaacsim 与 IsaacLab rsl_rl
-    U->>Data: gdown 下载六任务数据与 demo_ckpts
-    U->>Train: bash train.sh CarryBox
-    Train->>Isaac: 并行训练 refiner/tracker/generator
-    Isaac-->>Train: checkpoint
-    U->>Infer: bash inference.sh CarryBox
-    Infer->>Sim: 加载 tracker/generator checkpoint
-    Sim-->>U: CarryBox 等闭环 rollout
+    actor U as "研究者"
+    participant TrainRL as "scripts/sugar_rl/train.py"
+    participant PlayRL as "scripts/sugar_rl/play.py"
+    participant Proc as "process_refiner / tracker_rollout.py"
+    participant TrainIL as "scripts/sugar_il/train.py"
+    participant Gen as "sugar_il.policy.Generator (DiT)"
+    U->>TrainRL: "Stage 2: --task Sugar-G129dof-Task-Refiner (30001 iter)"
+    TrainRL-->>U: "产出特权教师模型 refiner.pt"
+    U->>PlayRL: "运行 Refiner-Rollout 并经 process_refiner_rollout 转换"
+    PlayRL->>Proc: "生成 rl_dataset"
+    U->>TrainRL: "Stage 3a: --task Task-Tracker --teacher_ckpt refiner.pt (BCPPO)"
+    TrainRL-->>U: "前 500 步 BC 后转 PPO，产出可部署 tracker.pt"
+    U->>PlayRL: "运行 Tracker-Rollout 收集闭环真实物体状态"
+    PlayRL->>Proc: "process_tracker_rollout 生成 il_dataset"
+    U->>TrainIL: "Stage 3b: train_generator_workspace.yaml (1001 epochs)"
+    TrainIL->>Gen: "训练 12 层 DDIM DiT 生成器产出 generator.ckpt"
+    U->>PlayRL: "运行 inference.sh 加载 tracker.pt + generator.ckpt"
+    PlayRL-->>U: "DiT 10Hz 规划 8 步切 4 步，插值驱动 50Hz Tracker 闭环执行"
 ```
 
-## 工程实践（含开源状态）
+## 工程实践
 
-| 项 | 结论 |
-|----|------|
-| 官方项目页 | <https://tianshuwu.github.io/sugar-humanoid/> |
-| 官方代码 | <https://github.com/tianshuwu/SUGAR>，MIT，非空仓库 |
-| 可运行入口 | `bash inference.sh TASK_NAME`、`bash train.sh TASK_NAME`；任务含 CarryBox、KickBox、PushBox、SitChair、StandBottle、PickBottle |
-| 依赖 | Python 3.11、IsaacSim 5.1.0、IsaacLab v2.3.0、`source/sugar_rl`、`source/sugar_il` |
-| 已开放 | inference demo、checkpoint、六任务处理数据、完整训练管线 |
-| 待开放 | RGB-D human videos 到训练数据的数据处理管线、sim-to-sim 管线 |
+- **依赖栈与安装入口**：要求 Python 3.11、IsaacSim 5.1.0、IsaacLab `v2.3.0`，需依次可编辑安装 `source/sugar_rl` 与 `source/sugar_il`，并按 README 指引通过 `gdown` 拉取六任务预处理数据（`400 MB`）、描述文件（`50 MB`）与演示权重（`250 MB`）。
+- **任务名与条件配置区分**：`train.sh` 根据任务自动切换高层目标条件 `use_target`——`CarryBox`、`PickBox`、`PushBox` 设 `use_target=True`（需要目标位置 `g`），而 `PickBottle`、`StandBottle`、`SitChair` 设 `use_target=False`。
+- **BCPPO 混合蒸馏节拍**：`source/sugar_rl/sugar_rl/utils/rsl_rl_bcppo.py` 中硬编码了 `bc_only_steps=500`、`critic_warmup_steps=1000` 与 `full_ppo_warmup_steps=2000`，确保学生先对齐教师可行域再释放 Critic 与 RL 探索。
+- **高层 DiT 生成器频率与块步**：`train_generator_workspace.yaml` 配置 `n_layer=12`、`n_head=8`、`DDIMScheduler`（训练 `50` 步、采样 `16` 步）、预测窗 `H=8`、每次执行 `4` 步，经线性插值从 `10 Hz` 同步到底层 Tracker 的 `50 Hz`。
 
-## 结论
+## 常见误区与局限
 
-**SUGAR 的关键判断是「人类视频只能当先验、不能当真值」：整条链路的价值集中在中间那层 privileged RL 物理清洗，以及最终交付一个不依赖参考动作的自主策略。**
-
-- 真正起作用的是 **三段职责分离**：视频提供可扩展的运动/交互先验，特权 RL 把接触穿模与重定向误差推回机器人可执行的技能分布，蒸馏出的层级策略从观测闭环生成动作。
-- 交付形态决定鲁棒性：部署时 **无参考动作条件、无任务专用奖励工程**，因此外扰后能稳定继续、失败后能重新进入任务状态——这比单帧跟踪误差更贴近长时程可用性。
-- 评测口径要看清：公开材料以 **六类真机任务的定性演示 + 同类未见物体零样本泛化** 为主，尚无跨任务统一的量化成功率表，不宜当作可比 benchmark 结论引用。
-- 开源边界是本页最实用的信息：MIT 仓库已给 `train.sh` / `inference.sh`、checkpoint 与六任务处理数据，但最难的 **「RGB-D 人类视频 → 训练数据」上游管线与 sim-to-sim 管线仍未发布**，复现者能训练推理却难复刻数据生产。
-- 风险集中在两端：上游视频伪影不保证都能被特权 RL 物理化，下游任务仍限于 carry/kick/push/sit/stand/pick 六类，且钉定 IsaacSim/IsaacLab 重型栈抬高了复现成本。
-
-## 与其他工作对比
-
-SUGAR 在「以人类视频/示范规模化生成人形 loco-manip 技能」这条线上，与同库的 [HumanX](./paper-hrl-stack-05-humanx.md)、[HumanoidMimicGen](./paper-humanoidmimicgen.md) 定位相邻但取舍不同。下表为定性对照，不含跨论文可比的统一指标。
-
-| 维度 | SUGAR | HumanX | HumanoidMimicGen |
-|------|-------|--------|------------------|
-| 数据来源 | 第三人称人类 HOI 视频 | 人类运动视频 | 少量 VR 遥操作示范（单 demo/任务） |
-| 核心机制 | 视频抽取先验 → 特权 RL 精修 → 策略蒸馏 | XGen 合成物理合理交互数据 + XMimic 统一 imitation | 全身 IK/cuRobo + 技能 DAG 规则化合成 + Homie RL 下肢 |
-| 对「不完美来源」的处理 | privileged RL 修正接触穿模/重定向误差 | XGen 恢复并增强物理合理数据（mesh/尺寸/轨迹） | 不以视频为源，用规划保证物理可行 |
-| 部署接口 | 无参考动作条件的层级自主策略 | 统一交互策略，10 技能 zero-shot 迁移 G1 | GR00T N1.6 VLA / Flow / Diffusion |
-| 任务侧重 | 通用移动操作（carry/kick/push/sit/stand/pick） | 敏捷交互（篮球/足球/羽毛球/搬货/反应格斗） | 桌面/搬运九任务 loco-manip 基准 |
-| 开源边界 | MIT，训练/推理/checkpoint/六任务数据已开放，视频处理管线待发布 | 项目页 Code 链接失效，未确认可运行实现 | 论文+基准，强调规划驱动数据生成 |
-
-## 局限与风险
-
-- **上游视频处理未完全开源**：真正最难的「RGB-D 人类视频 → 训练数据」仍待发布，复现者可训练/推理但难完整复刻数据生产。
-- **任务类别仍有限**：六个展示任务覆盖典型接触，但离厨房、仓储等长程开放场景仍有距离。
-- **人类视频伪影仍可能残留**：privileged RL 可缓解接触穿模和重定向误差，但无法保证所有生成先验都可物理化。
-- **依赖重型仿真栈**：IsaacSim/IsaacLab 版本钉定，工程复现成本高于纯 MuJoCo sim2sim。
+- **误区：把 SUGAR 当成直接输入原始 RGB 图像的端到端视觉策略**：最终部署的高层 `Generator` 与底层 `Tracker` 都是基于状态与物体 6D 位姿的策略（真机实验使用 MoCap 获取物体 6D 状态），视觉大模型（SAMBody/FoundationPose/VLM）只运行在离线 Stage 1 数据生产期。
+- **误区：认为开源仓库已经能一键跑通自带人类视频**：截至本地仓库版本，`README.md` TODO 明确标注「RGB-D 人类视频到训练数据的处理管线」与「Sim2Sim 管线」仍未开源，当前开箱可复现的是基于已处理 6 任务数据的 Stage 2 + Stage 3 训练与推理。
+- **论文自述局限（Appendix C）**：上游提取的运动先验仍偏粗粒度，难以覆盖双手精细操作；训练对单任务视频规模与 GPU 小时要求较高，且尚未整合直接从机载视觉/语言指令端到端运行的 VLA 感知前端。
 
 ## 关联页面
 
@@ -157,22 +164,21 @@ SUGAR 在「以人类视频/示范规模化生成人形 loco-manip 技能」这�
 - [Loco-Manip 接触分类 01：接触数据](../overview/loco-manip-contact-category-01-contact-data.md)
 - [161 篇 · 03 视觉感知驱动](../overview/loco-manip-161-category-03-visuomotor.md)
 - [Imitation Learning](../methods/imitation-learning.md)
+- [Privileged Training（特权信息训练）](../concepts/privileged-training.md)
 - [AMP Reward](../methods/amp-reward.md)
 - [HumanX](./paper-hrl-stack-05-humanx.md)
 - [HumanoidMimicGen](./paper-humanoidmimicgen.md)
 
 ## 参考来源
 
-- [loco_manip_161_survey_076_sugar.md](../../sources/papers/loco_manip_161_survey_076_sugar.md)
-- [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
+- [loco_manip_161_survey_076_sugar.md](../../sources/papers/loco_manip_161_survey_076_sugar.md) — `arXiv:2605.20373v1` 全文通读与 161 篇映射归档
+- [tianshuwu_sugar.md](../../sources/repos/tianshuwu_sugar.md) — 官方代码 `tianshuwu/SUGAR` 源码与脚本核查归档
 - [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
-- [loco-manip-contact-category-01-contact-data](../overview/loco-manip-contact-category-01-contact-data.md)
 - [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
-- Wu et al., *SUGAR: A Scalable Human-Video-Driven Generalizable Humanoid Loco-Manipulation Learning Framework*, arXiv:2605.20373, 2026. <https://arxiv.org/abs/2605.20373>
-- 官方代码：<https://github.com/tianshuwu/SUGAR>
 
 ## 推荐继续阅读
 
-- [SUGAR 项目页](https://tianshuwu.github.io/sugar-humanoid/)
-- [SUGAR GitHub](https://github.com/tianshuwu/SUGAR)
+- [SUGAR 论文 arXiv:2605.20373](https://arxiv.org/abs/2605.20373)
+- [SUGAR 官方项目页](https://tianshuwu.github.io/sugar-humanoid/)
+- [SUGAR GitHub 仓库 (`tianshuwu/SUGAR`)](https://github.com/tianshuwu/SUGAR)
 - [机器人论文阅读笔记：SUGAR](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/SUGAR__A_Scalable_Human-Video-Driven_Generalizable_Humanoid_Loco-Manipulation_Learning_Framework/SUGAR__A_Scalable_Human-Video-Driven_Generalizable_Humanoid_Loco-Manipulation_Learning_Framework.html)

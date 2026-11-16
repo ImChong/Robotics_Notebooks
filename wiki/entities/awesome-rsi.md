@@ -8,7 +8,6 @@ related:
   - ../concepts/recursive-self-improvement.md
   - ../concepts/ai-auto-research.md
   - ./paper-metarsi-v1.md
-  - ./paper-metarsi-v1.md
   - ./paper-harnessbank.md
   - ./paper-rsi-survey-2607-07663.md
   - ./karpathy-autoresearch.md

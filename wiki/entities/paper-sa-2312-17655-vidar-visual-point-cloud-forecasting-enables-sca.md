@@ -20,7 +20,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# ViDAR
+# ViDAR: Visual Point Cloud Forecasting（arXiv:2312.17655）
 
 **ViDAR: Visual Point Cloud Forecasting enables Scalable Autonomous Driving** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 493/571** 篇，分组 **82 Autonomous Driving**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

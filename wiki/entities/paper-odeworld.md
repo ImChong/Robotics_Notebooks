@@ -12,7 +12,7 @@ tags:
   - tsinghua
   - berkeley
 status: complete
-updated: 2026-09-15
+updated: 2026-11-13
 arxiv: "2607.27924"
 code: https://github.com/Dstate/ODEWorld
 related:
@@ -27,11 +27,13 @@ related:
   - ../tasks/manipulation.md
   - ./paper-ctrl-world.md
   - ./paper-planet-latent-dynamics.md
+original:
+  - ../../sources/papers/odeworld_arxiv_2607_27924.md
 sources:
   - ../../sources/papers/odeworld_arxiv_2607_27924.md
   - ../../sources/repos/odeworld.md
   - ../../sources/sites/odeworld-website.md
-summary: "ODEWorld（清华 AIR × Berkeley BAIR，arXiv:2607.27924）：PT-Flow 在物理时间上学 latent ODE 速度场，JVP 一阶监督 + 动力学解耦缓解 JEPA 坍塌。LIBERO 长程视频 PSNR 19.46 / 0.072 s；LIBERO-LONG 序列子目标 83.6%；AgileX+X-VLA 55%→80%。推理与权重已开源，训练脚本与 LICENSE 未随仓。"
+summary: "ODEWorld（清华 AIR × Berkeley BAIR，arXiv:2607.27924）：PT-Flow 在物理时间上学 latent ODE 速度场，JVP 一阶监督 + 动力学解耦缓解 JEPA 坍塌。LIBERO 长程视频 PSNR 19.46 / 0.072 s；LIBERO-LONG 序列子目标 83.6%；AgileX+X-VLA 55%→80%。推理、世界模型训练入口与权重已公开，策略栈与整仓许可仍需区分。"
 ---
 
 # ODEWorld（物理时间流连续预测架构）
@@ -73,7 +75,7 @@ summary: "ODEWorld（清华 AIR × Berkeley BAIR，arXiv:2607.27924）：PT-Flow
 | **速度网** | 3 层 MLP + FiLM(\(t\))；条件 \(z_0,c\)（目标图 / 语言） |
 | **训练数据** | LIBERO 全量（130 任务 / 6,500 demo，重渲染 256×256）；AgiBotWorldChallenge-2025 ≈30K 轨迹 |
 | **训练算力** | 8×A100 |
-| **开源（截至 2026-08-16）** | **已开源、可运行推理**：[`Dstate/ODEWorld`](https://github.com/Dstate/ODEWorld) + HF [`ldxxx/odeworld`](https://huggingface.co/collections/ldxxx/odeworld)。**无 LICENSE**；**无训练脚本** |
+| **开放状态（2026-11-13）** | **已开源、可运行推理**：[`Dstate/ODEWorld`](https://github.com/Dstate/ODEWorld) + HF [`ldxxx/odeworld`](https://huggingface.co/collections/ldxxx/odeworld)。有 RAE/PT-Flow/目标预测训练入口；仓树无独立 LICENSE |
 
 ## 核心原理（方法）
 
@@ -125,7 +127,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-节点对齐 [`sources/repos/odeworld.md`](../../sources/repos/odeworld.md)。官方仓目前只有 **推理 demo**。
+节点对齐 [`sources/repos/odeworld.md`](../../sources/repos/odeworld.md)。图为已核对的推理路径；当前仓另有世界模型训练入口，未核实完整机器人策略实现。
 
 ```mermaid
 sequenceDiagram
@@ -150,7 +152,7 @@ sequenceDiagram
         RAE-->>U: gt_goal_rollout.mp4 + pca_field.mp4
     else 语言目标（仅 LIBERO）
         DI->>GP: predict(start, instruction)
-        GP-->>DI: 预测目标图
+        GP-->>DI: 预测目标 DINO 特征
         DI->>PT: rollout_ode_lang
         PT->>ODE: 同上
         ODE-->>DI: latent
@@ -160,9 +162,13 @@ sequenceDiagram
 ```
 
 - **最短复现：** 五套 HF 权重进 `assets/pretrained/` → `python demo_infer.py --dataset libero --case-ids case_00`。
-- **训练 / 策略头：** README 未提供；论文 LIBERO-LONG 与 AgileX+X-VLA 实验 **不能从本仓一键复现**。
+- **训练 / 策略头：** README 已提供 RAE、PT-Flow、Goal-Predictor 训练与 HDF5 schema；LIBERO shell 使用 `--disable_encoder_detach`。论文 LIBERO-LONG 与 AgileX+X-VLA 策略实验仍未确认可一键复现。
 
 ## 工程实践
+
+- 本页以已通读的 **arXiv v3（2026-08-14）** 为准。表中 0.030/0.072s 与项目页 FPS 互为近似倒数，指不同预测视界下的计时口径，不按 16/64 再乘算吞吐。
+- 附录反向演示每步重新设置初始条件再积分负速度；可逆预测不保证接触/耗散系统在物理上可逆。有效秩与消融是经验检验，并非形式化无坍塌证明。
+
 
 | 项 | 实践要点 |
 |----|----------|
@@ -193,7 +199,7 @@ sequenceDiagram
 2. **一阶监督比一致性损失更稳** — 去掉 JVP 目标后优化直接失败；解耦主要换的是平滑与 FPS，不是短程 PSNR。
 3. **规划读 latent，不要只看 PSNR** — 序列子目标在 LIBERO-LONG 最高（83.6%）；真机增益来自给 X-VLA 喂 \(\hat z_{\tau_i}\)，不是把 WM 当成可交互像素沙盒。
 4. **当前版本无动作条件** — 作者自己把这一点写成局限；不能拿它当 Ctrl-World / DriftWorld 的动作条件评估器替代品。
-5. **复现边界** — demo + 权重能复现视频 rollout；策略数字与训练配方不在公开仓。
+5. **复现边界** — 已有 demo、权重与世界模型训练入口；本次只做静态源码核查，策略数字仍需独立复现。
 6. **许可未声明** — 商用或再分发前先向作者确认，不要默认 MIT。
 
 ## 局限与风险
@@ -201,7 +207,7 @@ sequenceDiagram
 - **规模小：** 只吃两个机器人数据集；相对大规模视频 WM，覆盖与开放域泛化不足（App. E）。
 - **冻结 DINO：** 单帧编码器时序不一致；靠 SG 滤波补，作者建议换时序编码器或解冻微调。
 - **无动作条件：** 主叙事是目标/语言条件视频与子目标，不是 \(W(o_{t+1}\mid o_t,a_t)\)。
-- **开源不完整：** 无训练入口、无 LICENSE；LIBERO-LONG / 真机策略头不可从 GitHub 复现。
+- **开放范围：** 已有世界模型训练入口，尚未核实完整 LIBERO-LONG / 真机策略头；仓树无独立 LICENSE，模型类许可元数据另需区分适用范围。
 - **「物理」是归纳：** 连续 + 反向看起来像物理，但没有显式力学约束；接触/力仍靠视觉统计。
 
 ## 与其他工作对比
@@ -212,7 +218,7 @@ sequenceDiagram
 | **监督** | JVP 速度 + 解耦重建 | JEPA 表征 L1 | 扩散去噪 | ELBO + overshooting |
 | **动作** | **无**（子目标条件策略） | AC 后训练 + latent MPC | 帧级动作条件闭环 | CEM 在 latent 搜动作 |
 | **解码** | RAE 可选出像素 | 规划可不渲染 | 必须出多视角视频 | 像素重建辅助 |
-| **开源** | 推理+权重；无训练/许可 | MIT 完整 | MIT 完整 | Apache 完整 |
+| **开源** | 推理+世界模型训练+权重；策略/许可范围待核 | MIT 完整 | MIT 完整 | Apache 完整 |
 
 ## 关联页面
 

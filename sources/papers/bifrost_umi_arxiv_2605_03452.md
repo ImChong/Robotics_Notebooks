@@ -10,6 +10,8 @@
   - <https://arxiv.org/pdf/2605.03452>
   - <https://baai-aether.github.io/BifrostUMI/>
 - **作者：** Chenhao Yu, Hongwu Wang, Youhao Hu, Jiachen Zhang, Yuanyuan Li, Shaqi Luo（BAAI Aether 项目页）
+- **通读：** 已完成
+- **核对范围：** arXiv PDF（pdftotext）正文 Abstract–Conclusion 全部通读（含方法、实验、Table I、图注），参考文献列表未逐条核对；项目页内容未重新抓取
 - **入库日期：** 2026-05-23
 - **一句话说明：** 受 UMI 启发的 **无机器人** 人形全身操作数据采集：Pico 4 追踪 + 双腕鱼眼夹爪同步记录关键点、腕部视觉与夹爪开度；**扩散高层策略**（DINOv2 + 47-D 稀疏关键点动作）经 **SKR（Spatial Keypoint Retargeting）** 映射到 G1 的 36-D 运动表示，再由 **全身控制器 + mink IK** 闭环执行；真机验证杂乱桌面 pick-place 与桌下全身处置。
 

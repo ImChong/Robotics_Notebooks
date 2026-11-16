@@ -9,7 +9,7 @@ tags:
   - stanford
   - toyota-research
 status: complete
-updated: 2026-11-06
+updated: 2026-11-15
 arxiv: "2511.19647"
 summary: "RPDF（arXiv:2511.19647）：野外部署机器人边执行任务边为 VLM 自动产标注数据；Scanford 两周扫 2103 书架，书识别 32%→71.8%、困难 OCR 显著提升；节省 18.7 h；截至入库日未开源。"
 related:
@@ -21,6 +21,8 @@ related:
 sources:
   - ../../sources/papers/scanford_robot_powered_data_flywheel_arxiv_2511_19647.md
   - ../../sources/sites/scanford.md
+original:
+  - ../../sources/papers/scanford_robot_powered_data_flywheel_arxiv_2511_19647.md
 ---
 
 # Robot-Powered Data Flywheel（RPDF）
@@ -128,6 +130,11 @@ flowchart LR
 ## 源码运行时序图
 
 **不适用**：截至 **2026-09-07** 无官方可运行仓库；无法对齐 README 绘制复现时序。硬件栈可参考 TidyBot++ 与 Franka 公开文档，但不是本文官方入口。
+
+## 工程实践
+
+- **任务结构驱动的自动标注**：利用机器人执行长程任务时的阶段转换与成败信号自动切分与打标，避免野外采集后全靠人工回放标注的瓶颈。
+- **飞轮闭环部署节奏**：先在受控场景跑通「采集 → 自动标注 → 微调 → 再部署」最小闭环，再逐步放开野外环境分布，防止错误标注在迭代中自我放大。
 
 ## 局限与风险
 

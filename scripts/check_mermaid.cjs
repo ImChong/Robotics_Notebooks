@@ -10,9 +10,9 @@ const ROOT = resolve(__dirname, '..');
 const markdown = new MarkdownIt({ html: false });
 let parserPromise;
 
-function extractDiagrams(source) {
+function extractDiagrams(source, tokens = markdown.parse(source, {})) {
   const lines = source.split('\n');
-  return markdown.parse(source, {}).filter(token =>
+  return tokens.filter(token =>
     token.type === 'fence' && token.info.trim().split(/\s+/)[0].toLowerCase() === 'mermaid'
   ).map(token => {
     const lastLine = lines[token.map[1] - 1] || '';
@@ -37,10 +37,11 @@ async function getParser() {
 }
 
 async function validateMarkdown(source) {
-  const diagrams = extractDiagrams(source);
+  const tokens = markdown.parse(source, {});
+  const diagrams = extractDiagrams(source, tokens);
   const errors = [];
   const codeLines = new Set();
-  for (const token of markdown.parse(source, {})) {
+  for (const token of tokens) {
     if (token.type !== 'fence' && token.type !== 'code_block') continue;
     for (let line = token.map[0]; line < token.map[1]; line++) codeLines.add(line);
   }

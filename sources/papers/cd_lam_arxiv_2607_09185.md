@@ -48,3 +48,14 @@
 - 评测数据：潜动作 rollout 在 EgoDex 上评，机器人动作 rollout 在留出的 AgiBot 片段上评。
 
 **对 wiki 的映射：** [paper-cd-lam](../../wiki/entities/paper-cd-lam.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2607.09185v2（2026-09-26）正文§1–§6全文，必要附录B/C/D/F/G（训练、指标、原语、迁移协议）全文，图表文字层，参考文献浏览；另读官方项目页、根README与固定版本CLI/损失源码，未跑GPU。
+- **通读：** 已完成
+- 去偏仍用SAM3与粗动词标注；12类原语中仅36.6%pairs有标签，无标签样本继续重建/校准，不是完全无额外监督。zero-transition压相对norm到margin .05，不要求每条严格为0。
+- 式7无额外全局λcal，Lcal内部βKL与λzero分别调权。对比式9正负pair各自归一；公开objectives.py通用helper取全部selected pair平均，不可据helper默认参数声称完全等同论文训练。
+- 消融w/o Lcal的FDCE16.10反而低于Full17.23，校准/画质与动作跟随有折中；不能说三项目标各自提升所有指标。
+- Stage3节省>12×是对50k参考的adaptation updates，排除先前1k+2k且非端到端墙钟；3.2%是LTX与DreamDojo样本暴露比，不是归一化GPU算力（骨干/硬件不同）。
+- FDCE为2D像素前景位移Chamfer，非3D误差或成功率；遮挡/追踪影响有效样本，600arm-pairs中596有效。X-VLA Plus主指标为10030rollout加权成功率，非七类macro；RoboTwin只12预选任务、单训练seed，+5pp的bootstrap区间仅量rollout变异。
+- 固定版本提供2B模型与pipeline入口；真实训练转外部锁定ACWM/集成runtime，14B只配置，不能称全模型完整独立复现。

@@ -37,6 +37,9 @@ class LatestWikiNodesWindowTest(unittest.TestCase):
         if len(self.existing_paths) < 2:
             self.skipTest("仓库中可用 wiki 节点不足以执行测试")
         self.nodes = [_node(rel) for rel in self.existing_paths]
+        self._git_patcher = mock.patch.object(glg, "wiki_git_added_dates", return_value={})
+        self._git_patcher.start()
+        self.addCleanup(self._git_patcher.stop)
         self._tmpdir = tempfile.TemporaryDirectory()
         self.addCleanup(self._tmpdir.cleanup)
         self._fake_log_path = Path(self._tmpdir.name) / "log.md"
@@ -159,7 +162,11 @@ class PaperHubStatsTest(unittest.TestCase):
         self.assertIsNotNone(bfm)
         self.assertTrue(bfm.get("_is_paper"))
         # 升格为深度拆解页的论文（type=method + paper 标签）也是论文节点
-        sonic = by_id.get("wiki/methods/sonic-motion-tracking.md")
+        beyond = by_id.get("wiki/methods/beyondmimic.md")
+        self.assertIsNotNone(beyond)
+        self.assertTrue(beyond.get("_is_paper"))
+        # 合并后的 SONIC 论文/项目实体节点也是论文节点
+        sonic = by_id.get("wiki/entities/nvidia-sonic.md")
         self.assertIsNotNone(sonic)
         self.assertTrue(sonic.get("_is_paper"))
         # 概念页不是论文节点

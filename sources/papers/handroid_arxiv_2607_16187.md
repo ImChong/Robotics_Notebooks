@@ -12,6 +12,8 @@
   - CAD：<https://cad.onshape.com/documents/d3de21915f3c9cacc1887cf3/w/dc7c7b68235fdbb205f27505/e/8673167885a4e16e9b6c2791>
   - BOM：<https://docs.google.com/spreadsheets/d/1ml2pJ9iSiDhcNiEPnRkoHqwzarEjfeZ8KSDNHGFpFh4/edit?usp=sharing>
 - **入库日期：** 2026-07-20
+- **核对范围：** 2026-11 通过 arXiv PDF v1（2026-07-17）获取全文，通读摘要、引言、相关工作、设计（结构、电气、控制）、灵巧手遥操作/抓取/手内重定向、人形 RL 跟踪与速度控制、关键帧编辑器、实验（表 1、长时程双形态任务）、结论与局限、附录（电磁法兰、执行器选型、各策略细节）；参考文献仅浏览。未阅读项目页与代码仓库。
+- **通读：** 已完成
 - **一句话说明：** UNC × Stanford 提出 **桌面级双形态机器人 Handroid**：**27-DoF** 机电一体机体可在 **20-DoF 仿人灵巧手** 与 **含 12-DoF 下肢的桌面人形** 间滑轨重配置；统一控制与学习栈覆盖 **Vision Pro 遥操作**、**Diffusion Policy 抓取**、**RL 掌内重定向**、**ZMP 步态 + RL 跟踪/速度控制** 与 **跨形态长时程 loco-manipulation**；机械 **CAD + BOM 已公开**，控制代码截至入库日 **尚未链出**。
 
 ## 核心论文摘录（MVP）

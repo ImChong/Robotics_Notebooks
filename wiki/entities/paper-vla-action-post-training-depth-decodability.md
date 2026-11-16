@@ -13,7 +13,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/vla_action_post_training_depth_decodability_arxiv_2608_08904.md
+  - ../../sources/papers/vla-action-post-training-depth-decodability_arxiv_2608_08904.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "诊断 VLM→VLA 动作后训练如何削弱深度可解码性：逐层发现全层退化且后层 MLP 写入深度信息受干扰；移除相关写入可恢复大部分末端损失（EMR@ECCV 2026）。"
 ---

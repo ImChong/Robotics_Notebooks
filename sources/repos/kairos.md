@@ -63,3 +63,14 @@
 - 平台页：[`sources/sites/kairos-acerobotics.md`](../sites/kairos-acerobotics.md)
 - 旧仓索引（重定向说明）：[`sources/repos/kairos_sensenova.md`](./kairos_sensenova.md)
 - 沉淀 **[`wiki/entities/paper-kairos-native-world-model-stack.md`](../../wiki/entities/paper-kairos-native-world-model-stack.md)**
+
+## 固定版本源码核读（2026-11-13）
+
+- **当前仓：** 原kairos-agi/kairos重定向至[DAXIAORobotics/kairos](https://github.com/DAXIAORobotics/kairos)。
+- **版本：** [39812f7aa787dc2882a775474bc4afcd35a2ce93](https://github.com/DAXIAORobotics/kairos/tree/39812f7aa787dc2882a775474bc4afcd35a2ce93)
+- **核对范围：** 根README、benchmarks/libero_plus/README全文；common/wam_service/server.py与wam_infer_engine.py全文；KairosEmbodiedWAMPipeline.__call__/infer_action与state编码完整函数。未核所有MoT内核、joint/video训练实现。
+- **通读：** 已完成
+- 已有生成推理、仿真WAM权重/入口与本地JSONL视频Flow-Matching训练，默认只训dit.video_dit、无EMA；不等于完整三阶段CEDC与regret偏好训练全公开。
+- 单worker FastAPI /infer接pickle dict，lazy WamInferEngine加载配置；engine有锁串行pipeline调用。__call__预处理语言/首帧/state，动作模式先跑history VideoDiT一次取KV，ActionDiT多步读取缓存，不去噪未来视频。返回tensor转float32 CPU，由基准adapter负责其余协议。
+- LIBERO-Plus双环境、专用checkpoint、stats与EGL，示例占位路径要替换；官方run.sh按category编排服务和评测。HTTP pickle仅限可信本地payload，不能直接当开放互联网API。
+- README仍留旧git clone/镜像名和相邻版本示例；3.1通用480P生成权重不等于旧distilled权重。静态核读，未运行GPU/仿真或真机。

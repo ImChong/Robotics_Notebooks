@@ -71,3 +71,13 @@
 - 代码归档：[`sources/repos/odeworld.md`](../repos/odeworld.md)
 - 项目页：[`sources/sites/odeworld-website.md`](../sites/odeworld-website.md)
 - 互链：[Generative World Models](../../wiki/methods/generative-world-models.md)、[Latent Imagination](../../wiki/concepts/latent-imagination.md)、[V-JEPA 2](../../wiki/entities/paper-vjepa2.md)、[LIBERO](../../wiki/entities/libero-benchmark.md)、[物理保真输出轴](../../wiki/overview/world-model-physics-fidelity-outputs.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2607.27924v3 PDF 正文 §1–§6、附录 A–E（设置、消融、有效秩、额外结果、局限）；图表按文字层核对，参考文献浏览；官方项目页、README、demo 与 PT-Flow/目标预测核心源码及训练入口；未运行模型。
+- **通读：** 已完成
+- 物理时间归一化不同于噪声路径 flow matching；SG 五帧估导数经 JVP 投影，默认 target detach 可配置，附录不 detach 亦有效，不能把 stop-gradient 说成唯一防坍塌机制。
+- 表 1 为 16/64 帧预测视界下的 latency 0.030/0.072s；项目页 FPS 33.67/13.83 近似其倒数，勿按整个视频帧数再乘算吞吐。单 A100、训练八 A100。
+- 反向演示附录 D.2 每步重设初始条件，再积分负速度；这不是不可逆接触物理的普遍证明。无动作条件为附录 E 明确局限，子目标引导控制不等于动作条件反事实模拟器。
+- LIBERO-LONG 三种子目标条件合计 82.3/82.6/83.6，三随机种子；真机双臂 AgileX 四任务 X-VLA 55→80%，正文未明确完整 rollout 样本数，不据此认定显著性。
+- 代码复核已更新旧“无训练入口”结论：固定提交 fc1a7278d873d28726e26d8b3f71c89ac99ea80a 有 RAE/PT-Flow/Goal-Predictor 训练及 HDF5 格式说明；策略头与真机完整栈仍未核实开放。仓树无独立 LICENSE；源码 HF metadata 的 apache-2.0 不能代替整仓许可文件。

@@ -25,3 +25,5 @@
 
 - [paper-contact-anchored-retargeting-residual-dexterous](../../wiki/entities/paper-contact-anchored-retargeting-residual-dexterous.md)
 - [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../../wiki/overview/embodied-station-2026-10-18-26-papers-technology-map.md)
+
+- **通读：** 已完成

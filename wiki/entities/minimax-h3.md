@@ -2,8 +2,12 @@
 type: entity
 tags: [world-models, video-generation, multimodal, open-source, audio-video, comfyui, synthetic-data]
 status: complete
-updated: 2026-10-26
+updated: 2026-11-13
+project: https://www.minimax.io/blog/minimax-h3
 code: https://github.com/MiniMax-AI/MiniMax-H3
+original:
+  - ../../sources/sites/minimax-h3-blog.md
+  - ../../sources/repos/minimax-h3.md
 related:
   - ./comfyui.md
   - ./paper-harnesseval-w.md
@@ -16,6 +20,7 @@ related:
   - ./paper-wan-video.md
   - ./minimax-h3-orb360-cardspin.md
   - ./minimax-h3-360-orbit-lora.md
+  - ./minimax-h3-image.md
 sources:
   - ../../sources/sites/minimax-h3-blog.md
   - ../../sources/repos/minimax-h3.md
@@ -63,6 +68,21 @@ summary: "MiniMax H3 是通用全模态音视频生成系统：统一 T2VA/FL2VA
 - **任务泛化：** Ref2VA 支持多图/多 clip 参考（如运镜 + 人物 + 音频），与 **V2V 动作迁移、品牌字渲染** 等同栈，减少为每个子任务维护独立模型。
 - **开源可本地：** 官方仓 + HF 权重 + RunningHub **INT8 ConvRot** 包，可在 **24GB** 级 GPU 上通过 Comfy 节点跑 T2VA/FL2VA/Ref2VA（见插件 README）。
 - **开放边界要读清：** 官方 2K 与复杂 prompt **强依赖 Context-IR**；仅克隆 GitHub **不等于** 复现官网 2K 成片。
+
+## 核心原理
+
+按 [MiniMax-H3 官方原始模型卡](https://huggingface.co/MiniMaxAI/MiniMax-H3) 的模块定义，H3-Base 将文本、图像、视频和音频按模态编码并打包为统一序列，使用多模态三维 RoPE（时间、高度、宽度）标识位置，再由单流 **H3-Omni Transformer** 联合预测视频与音频 latent。主要模块及计算边界为：
+
+| 组件 | 官方结构与作用 |
+|---|---|
+| H3-Encoder | 复用 Qwen3-VL-32B 完整预训练参数，取第 50 层隐藏状态；模型所需特殊 tokenizer 与配置随 H3 权重提供 |
+| H3-VisualVAE | 时序因果视觉 VAE，空间压缩 16 倍、时间压缩 4 倍、24 latent channels（f16t4d24）；进一步采用 `1×2×2` patch |
+| H3-AudioVAE | 左右声道共享编解码器但独立处理；每声道将 32kHz 音频编码为 40Hz 的 latent token |
+| H3-Omni Transformer | **33B 参数**稠密单流 Transformer；模态专属部分主要在输入输出层及 AdaLN；视频/音频 latent 联合预测 |
+| H3-Context-IR | 托管多模态理解与指令结构化服务，不包含在本地开权重发布内 |
+| H3-Regenerate-2K | 通过原始上下文和 768p 输出重新生成 2K；并非传统的单独超分模块，目前依赖官方服务 |
+
+**可复现边界：** 官方 README 的 H3-Base 公开两个任务特定权重（FL2VA、Ref2VA）及 768p 本地推理参考；完整 2K 工作流需要官方 Context-IR 与 Regenerate API。仓库首发推理仅含 full attention，原生 sparse attention 实现不随首发提供。以上为模型卡和 README 的架构核对，并非本次运行性能实测。
 
 ## 系统结构
 
@@ -131,6 +151,7 @@ MiniMax-H3 生态中已有两种独立的第三方环绕适配器，条件路径
 
 ## 关联页面
 
+- [MiniMax H3-Image](./minimax-h3-image.md) — 同源单流 DiT 设计的静态图像生成与编辑分支，使用不同检查点及许可证
 - [ComfyUI](./comfyui.md) — 节点图运行时；H3 为 Partner 卡片之一
 - [HarnessEval-W](./paper-harnesseval-w.md) — 330 例 Prompt I2V 主榜
 - [Cosmos 3](./cosmos-3.md) — Physical AI 全模态 WM 对照

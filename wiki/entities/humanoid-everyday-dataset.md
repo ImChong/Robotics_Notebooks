@@ -3,7 +3,7 @@ type: entity
 title: Humanoid Everyday（开放世界人形操作数据集）
 tags: [dataset, humanoid, manipulation, loco-manipulation, teleoperation, multimodal, usc, tri]
 summary: "USC/TRI 大规模人形真机操作集：260 任务、10.3k 轨迹、300 万+ 帧多模态（RGB/深度/LiDAR/触觉+语言），含 loco-manipulation 与人–机交互，附云端标准化评测平台。"
-updated: 2026-09-15
+updated: 2026-11-15
 status: complete
 related:
   - ../tasks/loco-manipulation.md
@@ -12,9 +12,13 @@ related:
   - ../concepts/embodied-data-cleaning.md
 sources:
   - ../../sources/sites/humanoideveryday.md
+original:
+  - ../../sources/sites/humanoideveryday.md
 ---
 
 # Humanoid Everyday
+
+## 一句话定义
 
 **Humanoid Everyday**（Zhao et al., arXiv:[2510.08807](https://arxiv.org/abs/2510.08807)，2025）是 USC 与 Toyota Research Institute 发布的 **大规模人形机器人开放世界操作数据集**：通过高效 **人监督遥操** 采集真机多模态轨迹，覆盖从灵巧操作到 **下肢 loco-manipulation** 与 **人–机交互**，并提供 **云端评测平台** 供策略标准化部署与反馈。
 
@@ -57,6 +61,11 @@ flowchart LR
   tele --> data --> train
   train --> cloud
 ```
+
+## 工程实践
+
+- **多模态对齐使用**：数据集以 30 Hz 同步记录 RGB、深度、LiDAR、触觉与语言指令，训练端到端 VLA 或 loco-manipulation 策略时可直接按任务子集（260 任务 / 7 大类）切分。
+- **云端标准化评测**：复现或对比策略时优先接入官方 cloud evaluation 平台，避免各实验室硬件与场景差异导致的不可比问题。
 
 ## 常见误区或局限
 

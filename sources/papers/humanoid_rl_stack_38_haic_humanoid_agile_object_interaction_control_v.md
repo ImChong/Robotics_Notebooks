@@ -21,7 +21,7 @@
 ## 对 wiki 的映射
 
 - [paper-haic](../../wiki/entities/paper-haic.md)
-- [haic](../../wiki/methods/haic.md)
+- [haic](../../wiki/entities/paper-haic.md)
 - [loco-manip-contact-category-05-vla-world-models](../../wiki/overview/loco-manip-contact-category-05-vla-world-models.md)
 
 ## 参考来源（原始）
@@ -34,4 +34,4 @@
 - **论文/项目：** RSS 2026 / arXiv:2602.11758；项目页 <https://haic-humanoid.github.io/>。
 - **代码：** <https://github.com/ldt29/HAIC>；已发布 asset、环境/任务配置、dynamics-aware world model、训练、评估/play 脚本；Sim2Sim 见 <https://github.com/Cybercal/HOIC-baseline>。
 - **关键数字：** 箱子 0.5-1.3 kg、长度 30-40 cm；地形旋转 0/30/45°；拉车负载 0-20 kg，推车负载 0-70 kg。
-- **wiki 深化：** [paper-haic](../../wiki/entities/paper-haic.md)；方法页见 [haic](../../wiki/methods/haic.md)。
+- **wiki 深化：** [paper-haic](../../wiki/entities/paper-haic.md)；方法页见 [haic](../../wiki/entities/paper-haic.md)。

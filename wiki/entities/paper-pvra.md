@@ -7,7 +7,6 @@ arxiv: "2608.19968"
 code: https://github.com/KulunuOS/PVRA
 related:
   - ../tasks/manipulation.md
-  - ../tasks/manipulation.md
   - ../concepts/contact-rich-manipulation.md
   - ../overview/video-contact-control-10-papers-technology-map.md
 sources:

@@ -58,7 +58,7 @@
 
 - 新建实体页：[`wiki/entities/paper-tech-humanoid-control.md`](../../wiki/entities/paper-tech-humanoid-control.md)
 - 交叉更新：[`wiki/entities/roboparty-ufo.md`](../../wiki/entities/roboparty-ufo.md)、[`wiki/overview/roboparty-lab-party-os-technology-map.md`](../../wiki/overview/roboparty-lab-party-os-technology-map.md)
-- 谱系对照：[`wiki/entities/paper-bfm-zero.md`](../../wiki/entities/paper-bfm-zero.md)、[`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md)、[`wiki/concepts/behavior-foundation-model.md`](../../wiki/concepts/behavior-foundation-model.md)
+- 谱系对照：[`wiki/entities/paper-bfm-zero.md`](../../wiki/entities/paper-bfm-zero.md)、[`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md)、[`wiki/concepts/behavior-foundation-model.md`](../../wiki/concepts/behavior-foundation-model.md)
 
 ## 参考来源（原始）
 

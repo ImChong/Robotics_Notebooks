@@ -2,7 +2,7 @@
 type: entity
 tags: [manipulation, dexterous-hand, hardware, tendon-driven, backdrivable, tactile-sensing, industrial-automation, mimic-robotics]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 related:
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
@@ -52,7 +52,7 @@ summary: "mimic hand M1（2026-07）：瑞士自研 AI-first 腱驱动灵巧手�
 - **可观测性即传感器：** 反驱 **<0.05 Nm**、关节背隙 **<0.3°**、指尖 **±0.18 mm** 闭环精度，配合触觉切向力，把手定位为 **「inform intelligence」的力觉前端**，而非纯执行器。
 - **工业可维护性：** 线性腱路（轴承/滑轮，非 Bowden）、**45°** 过伸裕度、主动气冷（**0.7 m³/min**），面向 **重复碰撞与多年班次** 而非实验室单次 demo。
 
-## 硬件要点
+## 核心原理（硬件要点）
 
 | 维度 | 规格（官方博客，2026-07-16） |
 |------|------------------------------|
@@ -88,6 +88,12 @@ flowchart TB
 - **mimic-ipc：** 零拷贝硬实时 IPC（相对 ROS2 FastDDS 作者自报数量级加速）。
 - **重定向：** [Smooth Operator（SBR）](https://mimicrobotics.github.io/smooth-operator/) 采样式低抖动重定向；代码 [mimicrobotics/mimic_retargeter_lab](https://github.com/mimicrobotics/mimic_retargeter_lab)。
 - **AI：** 延续 [mimic-video](../methods/mimic-video.md) **Video-Action Model** 路线。
+
+## 工程实践
+
+- 数据侧与 U1 外骨骼配合（人视频 → U1 → M1 真机的数据金字塔），模型侧用 mimic-video 的 VAM 路线。
+- 重定向可参考 Smooth Operator（SBR）与 `mimic_retargeter_lab`；中间件为自研 mimic-ipc（闭源，性能为厂商自报）。
+- 官方博客是主要公开资料，复现需商业合作。
 
 ## 局限与风险
 

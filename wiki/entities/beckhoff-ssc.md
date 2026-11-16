@@ -7,7 +7,6 @@ updated: 2026-10-14
 related:
   - ./soes.md
   - ../concepts/ethercat-protocol.md
-  - ../concepts/ethercat-protocol.md
   - ../overview/ethercat-opensource-libs-wechat.md
 sources:
   - ../../sources/blogs/wechat_ethercat_opensource_libs_qt_adventure.md

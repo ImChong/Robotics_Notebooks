@@ -38,8 +38,8 @@
 - [x] [cari4d_arxiv_2512_11988.md](papers/cari4d_arxiv_2512_11988.md) | CARI4D CVPR 2026 论文摘录（arXiv:2512.11988）
 
 | 文件 | 内容 |
-| [x] [perchrl_arxiv_2606_03441_v3.md](papers/perchrl_arxiv_2606_03441_v3.md) | PerchRL：间歇视觉丢失下移动倾斜平台四旋翼敏捷栖停（arXiv:2606.03441v3；Omnidrones/PPO；真机 7/10 Hard 场景）论文摘录与 wiki 映射 |
 |------|------|
+| [x] [perchrl_arxiv_2606_03441_v3.md](papers/perchrl_arxiv_2606_03441_v3.md) | PerchRL：间歇视觉丢失下移动倾斜平台四旋翼敏捷栖停（arXiv:2606.03441v3；Omnidrones/PPO；真机 7/10 Hard 场景）论文摘录与 wiki 映射 |
 | [x] [i_bfm_arxiv_2610_06129.md](papers/i_bfm_arxiv_2610_06129.md) | I-BFM：物体/接触感知 FB 行为基础模型 + LOGO 局部–目标条件化（arXiv:2610.06129；G1 仿真/真机定性演示） |
 | [x] [prism_real2sim2real_arxiv_2609_38172.md](papers/prism_real2sim2real_arxiv_2609_38172.md) | PRISM：V2V counterfactual + 接触锚定 Real2Sim2Real 人形 loco-manip（arXiv:2609.38172，Amazon FAR 等；Code 链待公开）摘录与 wiki 映射 |
 | [x] [qplanning_arxiv_2608_21204.md](papers/qplanning_arxiv_2608_21204.md) | Q-Planning：冻结 BC/VLA + 离策略 Q 加权规划与 Q-only 自改进（arXiv:2608.21204，Georgia Tech；已开源）摘录与 wiki 映射 |
@@ -84,7 +84,7 @@
 | [x] [humannet_table1_benchmark_corpora.md](papers/humannet_table1_benchmark_corpora.md) | HumanNet 论文 Table1：代表性人视频/行为语料官方入口与规模转录 |
 | [x] [imitation_learning.md](papers/imitation_learning.md) | IL ingest 摘要（DAgger/ACT/Diffusion） |
 | [x] [whole_body_control.md](papers/whole_body_control.md) | WBC ingest 摘要（TSID/HQP/Crocoddyl） |
-| [x] [gentlehumanoid_upper_body_compliance.md](papers/gentlehumanoid_upper_body_compliance.md) | GentleHumanoid（arXiv:2511.04679）原始资料归档；已沉淀 `wiki/methods/gentlehumanoid-motion-tracking.md` |
+| [x] [gentlehumanoid_upper_body_compliance.md](papers/gentlehumanoid_upper_body_compliance.md) | GentleHumanoid（arXiv:2511.04679）原始资料归档；已沉淀 `wiki/entities/paper-gentlehumanoid.md` |
 | [x] [gvhmr_arxiv_2409_06662.md](papers/gvhmr_arxiv_2409_06662.md) | GVHMR：Gravity-View 单目 world-grounded HMR（arXiv:2409.06662，SIGGRAPH Asia 2024）摘录与 wiki 映射 |
 | [-] [humanoid_hardware.md](papers/humanoid_hardware.md) | 人形机器人硬件论文归档（当前暂缓） |
 | [x] [modern_robotics_textbook.md](papers/modern_robotics_textbook.md) | Lynch & Park《Modern Robotics》教材：李群/螺旋理论统一描述运动学/动力学/控制（13 章） |

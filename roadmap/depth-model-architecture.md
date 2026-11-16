@@ -81,7 +81,7 @@ flowchart LR
 
 ### 核心问题
 - 归纳偏置换算力：CNN 的局部性与权值共享在小数据 / 边缘部署上仍占优，注意力弱偏置要靠数据量换回来
-- 长程依赖的四种做法：RNN 递推、CNN 深堆叠、注意力 $O(1)$ 路径、选择性 SSM 的状态压缩；对应的推理复杂度分别是 $O(n)$、近线性、$O(n^2)$、近线性
+- 长程依赖的四种做法：RNN 递推、CNN 深堆叠、注意力直接交互、选择性 SSM 状态压缩；固定宽度下，RNN/SSM 扫描整段序列通常随长度 $n$ 近线性，密集全序列注意力随 $n^2$ 增长。部署还须区分整段重算与缓存增量推理，不能把整段复杂度直接当单控制步耗时
 - 历史观测该怎么进网络：帧堆叠、GRU/LSTM 隐状态，还是上下文窗口？这直接决定部署时的状态管理复杂度
 - 为什么 benchmark 赢不等于机载赢——算子成熟度、显存带宽与量化友好度是真实约束
 
@@ -92,6 +92,7 @@ flowchart LR
 ### 推荐读什么
 - [RNN vs CNN vs Transformer vs Mamba](../wiki/comparisons/rnn-cnn-transformer-mamba.md) — 四类骨干在长程 / 并行 / 复杂度 / 归纳偏置上的对照
 - [Transformer](../wiki/concepts/transformer.md) · [多头注意力](../wiki/concepts/multi-head-attention.md) — 现代骨干的通用底座与核心交互算子
+- [位置编码：绝对、RoPE、NoPE 与相对偏置](../wiki/concepts/positional-encoding.md) — 对照 GPT-2、正弦编码、RoPE 旋转与现代混合层，理解长序列顺序建模、实现细节及外推边界
 - [卷积神经网络](../wiki/concepts/convolutional-neural-network.md) · [通道与空间注意力](../wiki/methods/channel-spatial-attention.md) — 卷积路线与 Transformer 之前的注意力增强
 - [状态空间模型（SSM）](../wiki/concepts/state-space-model-ssm.md) — 选择性 SSM 如何在近线性复杂度下拿到长程能力
 - [U-Net](../wiki/methods/unet.md) — 编码器–解码器 + 跳跃连接，后来成为扩散策略的常用去噪骨干
@@ -125,6 +126,8 @@ flowchart LR
 ### 推荐读什么
 - [视觉骨干](../wiki/concepts/vision-backbones.md) · [Vision Transformer](../wiki/concepts/vision-transformer.md) · [CNN vs ViT 骨干选型](../wiki/comparisons/cnn-vs-vit-backbones.md)
 - [策略的视觉表征](../wiki/concepts/visual-representation-for-policy.md) — 端到端 / 冻结骨干 / 机器人专用表征三条路径的取舍
+- [Segment Anything](../wiki/entities/paper-segment-anything.md) — 用可提示掩码理解视觉基础模型的输出接口，区分缓存图像编码后的提示延迟与整条感知链。
+- [OV-SAM3D](../wiki/entities/ov-sam3d.md) · [OVO](../wiki/entities/ovo-semantic-mapping.md) · [2D→3D 语义提升 Gap](../wiki/concepts/2d-to-3d-semantic-lifting-gap.md) — 对照离线多视角提升与在线语义地图，检查位姿、身份关联和异步更新如何改变策略输入。
 - [地形潜表征](../wiki/concepts/terrain-latent-representation.md) — 编码器输出不必可读，只需支撑正确落脚
 - [生成式视觉预训练](../wiki/concepts/generative-vision-pretraining.md) · [视觉基础模型趋势](../wiki/concepts/visual-foundation-model-trends.md)
 - [多模态基础](../wiki/concepts/multimodality-basics.md) · [视觉–语言特征融合](../wiki/concepts/vision-language-feature-fusion.md) · [视触融合](../wiki/concepts/visuo-tactile-fusion.md)
@@ -160,6 +163,7 @@ flowchart LR
 ### 推荐读什么
 - [行为克隆](../wiki/methods/behavior-cloning.md) · [Transformer 行为克隆](../wiki/methods/bc-with-transformer.md) — 从 MLP 头到序列骨干的第一跳
 - [Action Chunking](../wiki/methods/action-chunking.md) — 一次输出多步的机制拆解：延迟观测条件化与隐式集成
+- [StarVLA-α](../wiki/entities/paper-starvla-alpha.md) — 固定骨干、数据与训练预算后比较 MLP、离散自回归与连续生成头，判断额外动作头结构的收益。
 - [滚动执行](../wiki/concepts/receding-horizon-policy-execution.md) — receding horizon 与 temporal ensemble 的区别
 - [扩散模型](../wiki/concepts/diffusion-model.md) · [Diffusion Policy](../wiki/methods/diffusion-policy.md) — 多步去噪生成动作序列的表达力与代价
 - [特权训练](../wiki/concepts/privileged-training.md) · [Teacher–Student 与 DAgger 训练](../wiki/methods/teacher-student-dagger-training.md) — 双网结构与蒸馏
@@ -195,9 +199,9 @@ flowchart LR
 ### 推荐读什么
 - [VLA](../wiki/methods/vla.md) · [Robotics Transformer（RT 系列）](../wiki/methods/robotics-transformer-rt-series.md) — 语言条件序列预测到 VLM 接入的基线谱系
 - [统一多模态 Token](../wiki/methods/unified-multimodal-tokens.md) — 把视觉 / 语言 / 动作编进同一空间的架构趋势
-- [Octo](../wiki/methods/octo-model.md) — 块状注意力 Transformer + 独立读出头，少样本适配新相机与动作空间
+- [Octo](../wiki/entities/paper-octo.md) — 块状注意力 Transformer + 独立读出头，少样本适配新相机与动作空间
 - [π₀](../wiki/methods/π0-policy.md) · [π₀.₇](../wiki/methods/pi07-policy.md) — 流匹配动作头与多模态提示对齐异质数据
-- [StarVLA](../wiki/methods/star-vla.md) — 强 VLM 底座 + 简单 MLP 动作头的极简基准，用来校准"复杂头是否必要"
+- [StarVLA 方法入口](../wiki/methods/star-vla.md) · [框架论文](../wiki/entities/paper-starvla-framework.md) — 将骨干、动作头、数据适配与评测服务解耦，和 Stage 3 的 α 受控基线分开阅读。
 - [Foundation Policy](../wiki/concepts/foundation-policy.md) · [行为基础模型（BFM）](../wiki/concepts/behavior-foundation-model.md) — 操作向与全身控制向两类基座
 - [World Action Models](../wiki/concepts/world-action-models.md) · [潜空间想象](../wiki/concepts/latent-imagination.md) — 未来预测进骨干后的结构变化
 - [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) · [具身大模型选型闭环枢纽](../wiki/overview/hub-embodied-foundation-model.md)
@@ -230,6 +234,8 @@ flowchart LR
 - 选一条压缩路径（蒸馏或量化）做一次 A/B：记录成功率、动作平滑度与最坏时延三项，而不是只看平均时延
 
 ### 推荐读什么
+- [MACaQ：模型无关的 MXFP4 W4A4 校准量化](../wiki/entities/paper-macaq.md) — 逐线性层缩放、旋转、指数筛选与 Flip-Refinement；用于研究低比特模型部署，但需另测机器人闭环质量与实际时延。
+- [AIInfraGuide：AI Infra 全栈学习指南](../wiki/entities/aiinfraguide.md) — 单卡 Kernel、显存与多卡通信到推理调度的分层 Profiling 路线，用于给架构选型补性能证据
 - [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) — 数据 / 参数 / 泛化的幂律关系与边界
 - [实时性与泛化取舍](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) — 规模与推演步长如何压住控制带宽
 - [ONNX Runtime vs MNN vs TensorRT](../wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — 机载推理栈选型

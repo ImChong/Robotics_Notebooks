@@ -52,3 +52,33 @@ def test_write_catalog_creates_standalone_file(tmp_path: Path, monkeypatch) -> N
     assert output == tmp_path / "catalog.md"
     assert output.exists()
     assert "[Demo Roadmap](roadmap/demo.md)" in output.read_text(encoding="utf-8")
+
+
+def test_catalog_reads_updated_skips_readme_includes_queries_and_strips_long_links(
+    tmp_path: Path, monkeypatch
+) -> None:
+    _patch_roots(tmp_path, monkeypatch)
+    (tmp_path / "wiki" / "queries").mkdir(parents=True)
+    (tmp_path / "wiki" / "queries" / "README.md").write_text("# Queries\n", encoding="utf-8")
+    prefix = "甲" * 92
+    query_page = tmp_path / "wiki" / "queries" / "sample-query.md"
+    query_page.write_text(
+        f"""---
+type: query
+updated: 2026-11-16
+---
+
+# Sample Query
+
+{prefix}[完整目标名](../concepts/long-target.md) 补充说明
+""",
+        encoding="utf-8",
+    )
+
+    rendered = catalog.render_catalog()
+
+    assert "README.md" not in rendered
+    assert "[Sample Query](wiki/queries/sample-query.md)" in rendered
+    assert "`📅2026-11-16` `[query_page]`" in rendered
+    assert "完整目标" in rendered
+    assert "../concepts/long-target.md" not in rendered

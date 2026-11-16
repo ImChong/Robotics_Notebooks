@@ -11,7 +11,10 @@
   - Tech report PDF：<https://nvidia-isaac.github.io/video_to_data/chord/chord.pdf>
   - V2D 文档：<https://nvidia-isaac.github.io/video_to_data/>
   - 代码：<https://github.com/nvidia-isaac/video_to_data>
+- **arXiv：** <https://arxiv.org/abs/2607.00033>（v1，2026-06-22，cs.RO；PDF 24 页：正文 11 页 + 参考文献 + 附录 A–G）
 - **入库日期：** 2026-06-29
+- **核对范围：** 2026-11-12 通读 arXiv:2607.00033v1 PDF 全文（pdftotext 逐段）：摘要、§1 引言、§2 相关工作、§3.1–3.3 方法与 benchmark、§4.1–4.7 实验（含 Table 1–3、Fig.5–7 的正文与图注）、§5 结论、§6 局限，以及附录 A–G（噪声消融、RL 实现细节、视频重建、benchmark 细节、全身扩展、硬件、基线复现）。图（Fig.1–13）仅读图注与正文引用的数值，未逐图目视核对柱状图（如 Fig.5 左右两幅的逐数据集成功率）；90.77% 只见于摘要/结论正文，未在表格中找到逐任务分解。未读项目页交互内容与补充视频，未读代码。
+- **通读：** 已完成
 - **一句话说明：** 用 **物体中心接触力旋量空间（CWS）奖励** 把人类双手演示迁移到灵巧手 RL 策略——比较接触对物体产生的力学效应而非仅匹配接触位置；联合 imitation + task tracking + VOC 课程，在 **4,739** 项双手 benchmark 上训练，**1,831** 项评测平均成功率 **82.12%**，并扩展到全身 G1+Dex3（**90.77%**）与真机 Sharpa 双手开环/闭环部署。
 
 ## 相关资料（策展）

@@ -1,9 +1,11 @@
 ---
 type: entity
-tags: [paper, humanoid, loco-manipulation, imitation-learning, diffusion-policy, whole-body-control, umi, robot-free, teleoperation, visuomotor, unitree-g1, motion-retargeting, tsinghua, shanghai-pil, spirit-ai, sjtu]
+project_id: humanoid-manipulation-interface
+tags: [paper, humanoid, loco-manipulation, loco-manip-161-survey, imitation-learning, diffusion-policy, whole-body-control, umi, robot-free, teleoperation, visuomotor, unitree-g1, motion-retargeting, tsinghua, shanghai-pil, spirit-ai, sjtu]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-16
 arxiv: "2602.06643"
+project: https://humanoid-manipulation-interface.github.io
 venue: "arXiv 2026"
 related:
   - ../tasks/loco-manipulation.md
@@ -18,18 +20,25 @@ related:
   - ./paper-twist2.md
   - ./unitree-g1.md
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
+  - ../overview/humanoid-loco-manip-161-papers-technology-map.md
+  - ../overview/loco-manip-161-category-01-motion-base-wbt.md
+  - ../overview/loco-manip-161-category-03-visuomotor.md
 sources:
   - ../../sources/papers/humi_arxiv_2602_06643.md
   - ../../sources/sites/humanoid-manipulation-interface-project.md
   - ../../sources/papers/humanoid_pnb_humanoid-manipulation-interface.md
-summary: "HuMI（arXiv:2602.06643，清华/期智/Spirit.AI/上交）首个无机器人人形全身操作框架：UMI 夹爪 + Vive Ultimate 五追踪器采集骨盆/手脚/夹爪轨迹与腕部视觉，人机闭环 IK 预览保证不缩放轨迹下的 G1 可行性，5 Hz 扩散高层 + 50 Hz 操作中心全身 RL 低层（自适应末端奖励、变速增强、目标位姿/相对关键点接口）在五项真机任务验证，采集吞吐约为 TWIST2 遥操作 3×，未见环境泛化 70%。"
+  - ../../sources/papers/loco_manip_161_survey_025_n025.md
+  - ../../sources/papers/loco_manip_161_survey_084_n084.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
+  - ../../sources/papers/humanoid_loco_manip_161_catalog.md
+summary: "HuMI（arXiv:2602.06643，清华/期智/Spirit.AI/上交）首个无机器人人形全身操作框架：UMI 夹爪 + Vive Ultimate 五追踪器采集骨盆/手脚/夹爪轨迹与腕部视觉，人机闭环 IK 预览保证不缩放轨迹下的 G1 可行性，5 Hz 扩散高层 + 50 Hz 操作中心全身 RL 低层在五项真机任务验证，采集吞吐约为 TWIST2 遥操作 3×，未见环境泛化 70%。"
 ---
 
 # HuMI（Humanoid Manipulation Interface）
 
 **HuMI**（*Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations*，arXiv:2602.06643，[项目页](https://humanoid-manipulation-interface.github.io)）提出首个面向人形 **全身操作** 的 **无机器人示范** 框架：在 [UMI](https://umi-gripper.github.io/) 手持夹爪之上叠加 **HTC Vive Ultimate** 全身独立追踪，同步记录 **骨盆、双手、双脚** 与腕部视觉；通过 **在线 IK 预览** 让人类示教者在 **不缩放轨迹** 的前提下调整至 **Unitree G1** 运动学可行域，再由 **分层 visuomotor 管线**（扩散高层 + 操作中心全身 RL 低层）迁移到真机。论文在求婚跪地、拔剑、投掷、行走清扫、深蹲拾瓶等任务上验证，相对 [TWIST2](./paper-twist2.md) 遥操作实现约 **3×** 采集吞吐，未见环境/物体泛化成功率 **70%**。
 
-> 本页同时服务 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 分类 **04_Loco-Manipulation_and_WBC** 的策展索引；方法细节以 arXiv 与项目页为准。
+> 本页同时服务 [Robot Learning Paper Notebooks](https://imchong.github.io/Robot_Learning_Paper_Notebooks/index.html) 分类 **04_Loco-Manipulation_and_WBC**，并合并收录 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) 的双槽位坐标（**#025/161** 运控基座与通用全身跟踪 & **#084/161** 视觉感知驱动的人形移动操作）；方法细节以 arXiv 与项目页为准。
 
 ## 英文缩写速查
 
@@ -133,6 +142,10 @@ flowchart TB
 - 落地风险：依赖 Vive Ultimate ×5 这类专用追踪硬件（受环境纹理与光照影响），不是纯视觉方案；截至 **2026-07-19** 未见代码与权重开源，复现需自建 UMI + Vive + IK 栈。
 - 谱系定位：与 [BifrostUMI](./paper-bifrost-umi.md) 的 SKR 缩放、[HALOMI](./paper-halomi-humanoid-loco-manipulation.md) 的「只录头手、下身交给 BFM-Zero 流形控制器」相比，HuMI 选择 **显式记录骨盆与双脚且拒绝缩放**——三者构成「下身参考写多细」的连续谱，而 [TWIST2](./paper-twist2.md) 代表另一端的真机遥操作。
 
+## 源码运行时序图
+
+**不适用**（截至 2026-07-19，项目页与论文未列出可执行训练或部署源码仓库）。
+
 ## 常见误区或局限
 
 - **不是「缩放式重定向」**：与 [BifrostUMI](./paper-bifrost-umi.md) SKR 或舞蹈类 retargeting 不同，HuMI **刻意不缩放** 人体轨迹；可行性靠 **示教阶段 IK 预览** 而非离线几何变换。
@@ -168,6 +181,7 @@ flowchart TB
 | 项目页 | <https://humanoid-manipulation-interface.github.io> |
 | 平台 | Unitree G1 |
 | Paper Notebooks 分类 | 04_Loco-Manipulation_and_WBC |
+| 161 篇 Survey 双槽位 | **#025/161**（[01 运控基座与通用全身跟踪](../overview/loco-manip-161-category-01-motion-base-wbt.md)）与 **#084/161**（[03 视觉感知驱动的人形移动操作](../overview/loco-manip-161-category-03-visuomotor.md)） |
 | 深读笔记 | <https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre.html> |
 
 ## 关联页面
@@ -181,6 +195,7 @@ flowchart TB
 - [HALOMI](./paper-halomi-humanoid-loco-manipulation.md) — 稀疏头手 + 主动感知对照
 - [TWIST2](./paper-twist2.md) — 采集效率 baseline
 - [Unitree G1](./unitree-g1.md) — 实验平台
+- [Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 
 ## 实验与评测
 
@@ -191,6 +206,10 @@ flowchart TB
 - [humi_arxiv_2602_06643.md](../../sources/papers/humi_arxiv_2602_06643.md)
 - [humanoid-manipulation-interface-project.md](../../sources/sites/humanoid-manipulation-interface-project.md)
 - [humanoid_pnb_humanoid-manipulation-interface.md](../../sources/papers/humanoid_pnb_humanoid-manipulation-interface.md)
+- [loco_manip_161_survey_025_n025.md](../../sources/papers/loco_manip_161_survey_025_n025.md) — 161 篇 #025/161 策展摘录
+- [loco_manip_161_survey_084_n084.md](../../sources/papers/loco_manip_161_survey_084_n084.md) — 161 篇 #084/161 策展摘录
+- [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
+- [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
 - Nai et al., *Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations*, arXiv:2602.06643, 2026. <https://arxiv.org/abs/2602.06643>
 
 ## 推荐继续阅读

@@ -8,6 +8,7 @@
 - **链接：** https://github.com/manycoretech/aholo-viewer
 - **官网：** https://aholojs.dev/
 - **入库日期：** 2026-05-28
+- **通读：** 已完成
 - **一句话说明：** 面向 Web 的高性能 **3DGS + Mesh** 渲染 monorepo；以 **Chunked Streaming LoD** 承载超大 splat 场景，TypeScript 渲染包 + Astro 文档站，依赖 `external/egs-core` 子模块与专有 `splat-transform` 工作区包。
 - **沉淀到 wiki：** 是 → [`wiki/entities/aholo-viewer.md`](../../wiki/entities/aholo-viewer.md)
 

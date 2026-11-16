@@ -2,7 +2,12 @@
 type: overview
 tags: [vla, open-source, reproduction, survey, github, embodied-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
+original:
+  - ../../sources/repos/lerobot_reading_readme_c7.md
+  - ../../sources/papers/openvla_reading_arxiv_2406_09246.md
+  - ../../sources/papers/pi0_arxiv_2410_24164.md
+  - ../../sources/papers/smolvla_arxiv_2506_01844.md
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -40,7 +45,7 @@ summary: "2025 年高可见 VLA 开源栈策展：从通用策略（OpenPI）、
 
 > **本页定位：** 将深蓝具身智能微信公众号对 GitHub 高 star VLA 项目的「复现向」综述，整理为可按目标检索的地图；**不**替代各仓库 README，也**不**固化 star 快照。
 
-## 一句话总结
+## 一句话定义
 
 VLA 的「智能」可以写在论文里，但**跑不通的训练脚本与权重**会直接暴露工程差距；2025 年开源生态同时在 **模型、RL 训练系统、跨本体与 VLA+世界模型** 四条线上铺开，复现时应先选对「你要验证的层」再选仓库。**2026 起** 可另见通义 [Qwen-VLA](../entities/qwen-vla.md)（**操作 + VLN 统一通才**、Qwen3.5-4B + DiT flow），本页 11 项表仍锁定 2025-12 策展快照。
 
@@ -58,13 +63,13 @@ VLA 的「智能」可以写在论文里，但**跑不通的训练脚本与权�
 | URDF | Unified Robot Description Format | 统一机器人描述格式 |
 | WM | World Model | 学习环境动态以供想象/规划的世界模型 |
 
-## 为什么用「复现目标」而不是「榜单排名」
+## 为什么重要
 
 - 筛选口径（原文）：代码可获取、活跃度、star>400（截至 2025-12-22）——**遗漏仍多**，未上榜项目同样有参考价值。
 - 同一 star 段的项目可能服务完全不同环节：**策略权重** vs **RL 集群** vs **VLM→VLA 脚手架** vs **自动驾驶栈**。
 - 与本站 [VLA 方法页](../methods/vla.md)、[操作 VLA 选型 Query](../queries/manipulation-vla-architecture-selection.md) 互补：本页偏 **开源入口与复现路径**，彼处偏 **架构族与数据假设**。
 
-## 景观总览
+## 流程总览
 
 ```mermaid
 flowchart TB
@@ -146,7 +151,13 @@ flowchart TB
 - [《具身智能基础》专栏](../overview/shenlan-embodied-ai-fundamentals-series.md)（几何 01–05 + 运动学 08–10）补 **姿态、标定、FK/IK/雅可比**；VLA 部署时仍要面对 SE(3) 动作空间（见 [SE(3) 表示](../formalizations/se3-representation.md)）。
 - 姊妹篇「12 个 VLA 开源项目」偏影响力盘点；**本篇偏「刷完 repo 后优先复现哪几个」**，索引重叠但叙事不同。
 
-## 常见误区
+## 工程实践
+
+- **先核依赖栈再拉仓：** PI/LeRobot/OpenVLA 分别绑定 JAX/Flax、PyTorch+LeRobot、Prismatic-PyTorch+FSDP/LoRA；RLinf 与 SimpleVLA-RL 额外绑定特定版本的 veRL、Ray 与仿真渲染器。
+- **把评测基准与数据格式对齐写成预检查：** 复现前先确认 URDF、相机内参/视角命名、动作归一化统计（如 OpenPI `norm_stats`）与控制器频率，不要直接套用跨本体默认权重。
+- **区分「模型权重仓」与「训练/推理基础设施仓」：** `OpenVLA`、`OpenPI`、`SmolVLA`（LeRobot）用于复现策略本身；`RLinf`、`StarVLA`、`APXInf` 分别承担集群 RL 调度、VLM→VLA 脚手架与端侧部署。
+
+## 局限与风险
 
 - **star 高 ≠ 与你的机器人栈直接可用**：OpenPI 与 OpenDriveVLA 共享「VLA」缩写，数据与评测几乎不互通。
 - **把 RLinf 当策略仓库**：它是训练系统；策略权重仍在各算法仓库。
@@ -167,6 +178,10 @@ flowchart TB
 ## 参考来源
 
 - [深蓝具身智能：刷完 Github VLA 项目后的复现推荐（微信公众号归档）](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md)
+- [LeRobot README 细读归档](../../sources/repos/lerobot_reading_readme_c7.md)
+- [OpenVLA 原文精读归档（arXiv:2406.09246）](../../sources/papers/openvla_reading_arxiv_2406_09246.md)
+- [π₀ 原文精读归档（arXiv:2410.24164）](../../sources/papers/pi0_arxiv_2410_24164.md)
+- [SmolVLA 原文精读归档（arXiv:2506.01844）](../../sources/papers/smolvla_arxiv_2506_01844.md)
 
 ## 推荐继续阅读
 

@@ -6,7 +6,7 @@ updated: 2026-09-15
 arxiv: "2609.08511"
 related:
   - ../concepts/whole-body-tracking-pipeline.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/pie-perceptive-locomotion.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/locomotion.md
@@ -105,7 +105,7 @@ flowchart TB
 | 地形无关 GMT（平地通用跟踪） | PGMT 的增益集中在「参考仍多样但地形使参考物理不可行」的场景，而非平地舞蹈跟踪精度。 |
 | [WM-LOCO](./paper-wm-loco.md) | 同为 G1 复杂地形线，但改的是 **世界模型特征 + 踏石** 表征；PGMT 改的是 tracking 策略内的感知融合。 |
 | [P³](./paper-p3.md) | 同为 G1 复杂地形线，走 **VAE-PPO 边缘似然** 的训练目标改造；PGMT 不动 PPO 目标，只加 motion-conditioned glimpses 与 relaxation。 |
-| [SONIC](../methods/sonic-motion-tracking.md) / BeyondMimic 类 | 偏 **规模化参考跟踪**（参考库与跟踪保真度）；PGMT 补的是 **地形感知偏离** 这一维，两者可叠。 |
+| [SONIC](./nvidia-sonic.md) / BeyondMimic 类 | 偏 **规模化参考跟踪**（参考库与跟踪保真度）；PGMT 补的是 **地形感知偏离** 这一维，两者可叠。 |
 | 单纯放大 tracking 容差 | 只放松约束会同时丢上肢意图；PGMT 的 relaxation 是 **下肢可偏、意图仍受约束** 的分部处理。 |
 | 另起一套 locomotion 控制器 | 常见做法是 tracking 与感知行走分两套策略切换；PGMT 保持 **单一策略** 同时覆盖 GMT、复杂地形、遥操作与 recovery。 |
 
@@ -131,7 +131,7 @@ flowchart TB
 ## 关联页面
 
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](./nvidia-sonic.md)
 - [Unitree G1](./unitree-g1.md)
 - [WM-LOCO](./paper-wm-loco.md)
 

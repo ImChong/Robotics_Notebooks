@@ -3,7 +3,7 @@
 type: entity
 tags: [deep-learning, education, tesla, openai, llm, methodology, computer-vision, reinforcement-learning, stanford]
 status: complete
-updated: 2026-07-12
+updated: 2026-11-14
 related:
   - ../references/llm-wiki-karpathy.md
   - ./karpathy-autoresearch.md
@@ -18,12 +18,18 @@ related:
   - ../../roadmap/depth-vla.md
 sources:
   - ../../sources/sites/karpathy-ai.md
+  - ../../sources/blogs/karpathy_llm_wiki_gist_reading_full.md
   - ../../sources/blogs/karpathy_llm_wiki_gist.md
   - ../../sources/repos/karpathy-autoresearch.md
   - ../../sources/courses/karpathy_zero_to_hero_youtube.md
   - ../../sources/repos/nn-zero-to-hero.md
   - ../../sources/courses/karpathy_intro_llms_youtube.md
   - ../../sources/courses/karpathy_deep_dive_llms_youtube.md
+original:
+  - ../../sources/sites/karpathy-ai.md
+  - ../../sources/repos/nn-zero-to-hero.md
+  - ../../sources/repos/karpathy-autoresearch.md
+  - ../../sources/blogs/karpathy_llm_wiki_gist_reading_full.md
 summary: "Andrej Karpathy：OpenAI 创始成员、前 Tesla AI 总监（Autopilot 视觉全栈）、Stanford CS231n 创始讲师；现以 Zero to Hero 等教育内容为主，其 LLM Wiki Gist 是本知识库维护范式的思想来源。"
 ---
 
@@ -73,8 +79,8 @@ summary: "Andrej Karpathy：OpenAI 创始成员、前 Tesla AI 总监（Autopilo
 ### 5. 2024–：教育与 LLM 知识工程
 
 - YouTube 三条并行轨：
-  - **技术轨 — [Neural Networks: Zero to Hero](../../sources/courses/karpathy_zero_to_hero_youtube.md)**（10 集 ~19 h）：micrograd → makemore → GPT → Tokenizer → GPT-2 124M；配套 [`nn-zero-to-hero`](../../sources/repos/nn-zero-to-hero.md) notebook 与 micrograd / makemore / nanoGPT 仓库。
-  - **大众轨 — LLM 科普（成对）**：[Intro to LLMs（~1 h，2023）](../../sources/courses/karpathy_intro_llms_youtube.md) 建立两文件模型、预训练/微调、Scaling Laws、工具与多模态、**LLM OS** 与安全攻击面；[Deep Dive into LLMs（~3.5 h，2025）](../../sources/courses/karpathy_deep_dive_llms_youtube.md) 系统拆解预训练（tokenization / Transformer / GPT-2 / Llama 3.1 base）→ 后训练（SFT、幻觉与上下文、RL / DeepSeek-R1 / RLHF）。
+  - **技术轨 — [Neural Networks: Zero to Hero](../../sources/courses/karpathy_zero_to_hero_youtube.md)**（`karpathy.ai/zero-to-hero.html` 列 8 讲主课：micrograd 2h25m → makemore 5 讲 → GPT 1h56m → GPT Tokenizer 2h13m；播放列表含 State of GPT / GPT-2 124M 共 10 集 ~19 h；配套 [`nn-zero-to-hero`](../../sources/repos/nn-zero-to-hero.md) 仓 `lectures/` 入库第 1–6 讲 7 份 notebook，GPT 与 Tokenizer 分别外链至视频描述/nanoGPT 与 [minBPE](https://github.com/karpathy/minbpe)）。
+  - **大众轨 — LLM 科普（成对）**：[Intro to LLMs（~1 h，2023）](../../sources/courses/karpathy_intro_llms_youtube.md) 建立两文件模型、预训练/微调、Scaling Laws、工具与多模态、**LLM OS** 与安全攻击面；[Deep Dive into LLMs（~3.5 h，2025）](../../sources/courses/karpathy_deep_dive_llms_youtube.md) 系统拆解预训练（tokenization / Transformer / GPT-2 / Llama 3.1 base）→ 后训练（SFT、幻觉与上下文、RL / DeepSeek-R1 / RLHF）；主页另列 *How I use LLMs*。
   - **方法论轨 — LLM Wiki Gist**：持久 markdown wiki + ingest/query/lint —— 见 [LLM Wiki 方法论页](../references/llm-wiki-karpathy.md)。
 - 走 [VLA 纵深](../../roadmap/depth-vla.md) 者建议 **Intro → Deep Dive**（直觉）或 **Zero to Hero**（动手），再接 [Raschka 书/课](./llms-from-scratch-raschka.md)。
 - **autoresearch（2026）**：[karpathy/autoresearch](./karpathy-autoresearch.md) — 在 nanochat 单 GPU 栈上让编码代理通宵改 `train.py`、以 **val_bpb** 与固定 5 分钟预算循环实验；人类迭代 `program.md` 作为「研究组织技能」。与 [AI Auto-Research](../concepts/ai-auto-research.md) S3 阶段直接同构。
@@ -124,14 +130,28 @@ sequenceDiagram
     end
     T->>O: 按训练进度调整 lr、muon momentum、weight decay
     T->>O: optimizer.step()，zero_grad
-    Note over T: loss 为 NaN 或大于 100 时打印 FAIL（后续分支未细读）
+    Note over T: loss 为 NaN 或大于 100 时打印 FAIL 并 exit(1) 终止
   end
   T->>P: evaluate_bpb(model, tokenizer, DEVICE_BATCH_SIZE)
   T-->>G: 打印 --- 摘要（val_bpb、training_seconds、peak_vram_mb 等）
   G->>G: 依据 val_bpb 保留或丢弃本次改动，然后重复
 ```
 
-图依据：karpathy/autoresearch@228791f，读过 `README.md`、`program.md`（前 60 行）、`train.py`（配置、模型构建、训练循环与摘要输出段）、`prepare.py`（常量、`__main__` 与函数列表）。未运行代码（需单张 NVIDIA GPU 与下载的训练数据）。
+图依据：`karpathy/autoresearch@228791f`，已通读 `README.md`（1–92）、`program.md`（1–114）、`train.py`（1–630，含 RoPE + FA3 + ResFormer `value_embeds` + logit `softcap=15` + Polar-Express/NorMuon `MuonAdamW`）与 `prepare.py`（1–389，含 `rustbpe`、`climbmix-400b-shuffle`、BOS-aligned best-fit `make_dataloader` 与 `evaluate_bpb`）。未运行代码（依赖单张 NVIDIA GPU 与下载分片数据）。
+
+## 工程实践
+
+- **Zero to Hero 本地上手路径**：直接克隆 `karpathy/nn-zero-to-hero` 可跑第 1–6 讲（`lectures/micrograd` 与 `lectures/makemore/makemore_part1..5.ipynb`）；第 7 讲 GPT 与第 8 讲 BPE Tokenizer 需按 `README.md` 跳转到视频描述链接 / `karpathy/minbpe` 与 Colab。
+- **`autoresearch` 单 GPU 契约与小算力适配**：`prepare.py` 固定拉取 `karpathy/climbmix-400b-shuffle` 分片与训练 `VOCAB_SIZE=8192` 的 `rustbpe` 分词器；`train.py` 强制调用 `torch.device("cuda")` 与 `kernels` FlashAttention-3，不直接兼容 CPU/MPS。在更小硬件或笔记本上复现实验环时，README 建议选用 Mac/AMD/Windows 社区 fork，或调小 `vocab_size`、`MAX_SEQ_LEN`、`DEPTH` 并把 `WINDOW_PATTERN` 改为 `"L"`。
+- **VLA 前置分工**：先按 Zero to Hero 或 *Intro/Deep Dive* 建立反向传播与 Transformer 直觉，再对照 [Raschka《LLMs-from-scratch》](./llms-from-scratch-raschka.md) 补齐预训练/SFT 工程脚本，最后进入 [VLA 纵深路线](../../roadmap/depth-vla.md)。
+
+## 结论
+
+Andrej Karpathy 的公开教学与开源工具链构成了机器人/VLA 读者理解现代神经网络训练栈、自主实验代理与持久化知识工程的最小自包含起点。
+
+- **教育栈边界清晰**：`nn-zero-to-hero` 本地聚焦 micrograd 与 makemore 前六讲手写梯度与结构直觉，GPT 与 Tokenizer 需结合 `nanoGPT`/`minBPE`。
+- **`autoresearch` 是自主研究最小闭环**：用只读 `prepare.py`（固定 `val_bpb` + 300s 预算）约束代理只改单文件 `train.py`，人类通过修改 `program.md` 编排研究策略。
+- **机器人引用需分清领域**：早期 UBC 仿真四足与 Tesla Autopilot 视觉闭环具有直接启发，但 Optimus 与当代人形策略并不归因于其个人主页细节，应以具体论文为准。
 
 ## 关联页面
 
@@ -149,14 +169,14 @@ sequenceDiagram
 
 ## 参考来源
 
-- [Karpathy 个人站点原始资料](../../sources/sites/karpathy-ai.md)
+- [Karpathy 个人站点原始资料](../../sources/sites/karpathy-ai.md)（主要原文：`karpathy.ai` 首页与 `zero-to-hero.html` 全文核对）
+- [nn-zero-to-hero 配套仓库](../../sources/repos/nn-zero-to-hero.md)（主要原文：克隆仓 README 与 7 个 notebook 核对）
+- [autoresearch 仓库原始资料](../../sources/repos/karpathy-autoresearch.md)（主要原文：克隆仓 `README.md`、`program.md`、`prepare.py`、`train.py` 全文核对）
+- [LLM Wiki Gist 精读归档](../../sources/blogs/karpathy_llm_wiki_gist_reading_full.md)（主要原文：`通读：已完成`）
 - [Zero to Hero 播放列表（YouTube）](../../sources/courses/karpathy_zero_to_hero_youtube.md)
-- [nn-zero-to-hero 配套仓库](../../sources/repos/nn-zero-to-hero.md)
 - [Intro to LLMs（YouTube，2023）](../../sources/courses/karpathy_intro_llms_youtube.md)
 - [Deep Dive into LLMs（YouTube，2025）](../../sources/courses/karpathy_deep_dive_llms_youtube.md)
 - [LLM Wiki Gist 原始资料](../../sources/blogs/karpathy_llm_wiki_gist.md)
-- [autoresearch 仓库原始资料](../../sources/repos/karpathy-autoresearch.md)
-- 源码核对（2026-11-02）：karpathy/autoresearch@228791f，读过 `README.md`、`program.md`、`train.py`、`prepare.py`；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
 
@@ -168,4 +188,4 @@ sequenceDiagram
 - [Intro to LLMs（YouTube，~1 h）](https://www.youtube.com/watch?v=zjkBMFhNj_g) — LLM 全景、LLM OS 与安全
 - [Deep Dive into LLMs（YouTube，~3.5 h）](https://www.youtube.com/watch?v=7xTGNNLPyMI) — 完整训练栈深潜
 - [LLMs-from-scratch（Raschka）](./llms-from-scratch-raschka.md) — 结构化书+notebook 路线，与 Zero to Hero 互补
-- [Software 2.0（2017 博文）](https://karpathy.github.io/2018/09/06/software2/) — 学习即编程与端到端栈讨论
+- [Software 2.0（2017 博文）](https://karpathy.medium.com/software-2-0-a64152b37c35) — 学习即编程与端到端栈讨论

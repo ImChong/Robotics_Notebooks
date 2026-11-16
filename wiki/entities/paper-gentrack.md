@@ -18,7 +18,7 @@ updated: 2026-09-15
 arxiv: "2608.01410"
 venue: "AAAI 2027"
 related:
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./protomotions.md
   - ../methods/hy-motion-1.md
   - ./paper-phygile.md
@@ -63,7 +63,7 @@ summary: "GenTrack（AAAI 2027，arXiv:2608.01410，浙大/北大/腾讯/之江�
 ## 为什么重要
 
 - **两个瓶颈是耦合的。** 通才 tracker 要覆盖未见动作，靠的是具身参考规模；文本→运动能扩量，但人体/重定向分布只是可执行分布的代理。单向管线冻结一边，另一边很快过时。
-- **后训练，不是从头训。** 接公开 [ProtoMotions](./protomotions.md) 与 [SONIC](../methods/sonic-motion-tracking.md) checkpoint，预算对齐「只续训参考 / 离线 replay / 单向更新」。问的是：互训有没有超出「再跑同等步数」。
+- **后训练，不是从头训。** 接公开 [ProtoMotions](./protomotions.md) 与 [SONIC](./nvidia-sonic.md) checkpoint，预算对齐「只续训参考 / 离线 replay / 单向更新」。问的是：互训有没有超出「再跑同等步数」。
 - **生成器要对齐物理，但不能塌成好跟的慢动作。** KL 锚 + 原文对 rehearsal 把 TMR/FID 保住；单向 Filtered SFT 会把成功刷高、语义刷低。
 - **读 HY-Motion 的机器人落点。** 附录把 \(G_0\) 标成 HYMotion：人体流匹配骨干换 38D G1 头，再被执行反馈对齐——对照 [Gen2Humanoid](./gen2humanoid.md) 的「生成 + 重定向胶水、不含 tracking」。
 
@@ -137,7 +137,7 @@ flowchart TB
 | 项 | 建议 / 论文设定 |
 |----|----------------|
 | **何时用这篇** | 已有 G1 通才 tracker 与 robot-native T2M，不想再采具身数据，怀疑静态生成池已经过时 |
-| **何时不用** | 今天就要跑通 → 继续 [SONIC](../methods/sonic-motion-tracking.md) / [Humanoid-GPT](./paper-humanoid-gpt.md) 公开栈；只要文本→关节初稿 → [Gen2Humanoid](./gen2humanoid.md)；要真机高动态 T2M → 先看 [PhyGile](./paper-phygile.md)（有项目页视频） |
+| **何时不用** | 今天就要跑通 → 继续 [SONIC](./nvidia-sonic.md) / [Humanoid-GPT](./paper-humanoid-gpt.md) 公开栈；只要文本→关节初稿 → [Gen2Humanoid](./gen2humanoid.md)；要真机高动态 T2M → 先看 [PhyGile](./paper-phygile.md)（有项目页视频） |
 | **裁判必须滞后** | 当前 trainee 当唯一裁判，跨 split SR 掉到 74.8/79.6/46.4 |
 | **不要用成功门过滤进 tracker** | 生成参考只做结构检查；用当前难度门控会让课程跟着 tracker 偏见走 |
 | **一半公开、一半生成** | 池子变大也不改来源混合，减轻遗忘 |
@@ -200,7 +200,7 @@ SONIC 支相对冻结 \(G_0\) replay：三 split 全升，MPJPE −9.2 mm、\(E_
 
 ## 关联页面
 
-- [SONIC](../methods/sonic-motion-tracking.md) — 主骨干与冻结执行器
+- [SONIC](./nvidia-sonic.md) — 主骨干与冻结执行器
 - [ProtoMotions](./protomotions.md) — 第二条 AMP/PPO 骨干
 - [HY-Motion 1.0](../methods/hy-motion-1.md) — \(G_0\) 人体流匹配来源
 - [PhyGile](./paper-phygile.md) — 另一条 robot-native 生成–跟踪闭环（真机敏捷）

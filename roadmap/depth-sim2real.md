@@ -3,7 +3,7 @@
 **首屏导读**：
 
 - **为谁**：想把仿真里训好的策略稳定搬上真机的人。
-- **路径**：Stage 0–5 · 域差画像 → 资产与执行器对齐 → 训练期鲁棒化 → 感知 Sim2Real → 部署工程闭环 → 真机适应与评测。
+- **路径**：Stage 0–5 · 域差画像 → 资产与执行器对齐 → 训练期鲁棒化 → 部署工程闭环 → 真机适应与评测；感知 Sim2Real 按策略输入选读。
 - **纵深路线**：[运动控制主路线](motion-control.md) L6 综合实战的展开版，横切所有"仿真训练 → 真机部署"的纵深方向。
 
 ## 路线一览
@@ -17,7 +17,9 @@ flowchart LR
   S4["<b>Stage 4</b><br/>部署工程闭环<br/><em>sim2sim · 处理器在环 · SOP</em>"]
   S5["<b>Stage 5</b><br/>真机适应与评测<br/><em>安全微调 · Real2Sim · 评测设施</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4 --> S5
+  S0 --> S1 --> S2 --> S4 --> S5
+  S2 -. "选读：外感知输入" .-> S3
+  S3 --> S4
 
   classDef stage fill:#142a3a,stroke:#e67e22,stroke-width:2px,color:#fff
   class S0,S1,S2,S3,S4,S5 stage
@@ -120,6 +122,7 @@ flowchart LR
 ### 推荐读什么
 - [Domain Randomization](../wiki/concepts/domain-randomization.md) · [Curriculum Learning](../wiki/concepts/curriculum-learning.md)
 - [Privileged Training](../wiki/concepts/privileged-training.md)
+- [PEAR / Robot-Use RL](../wiki/entities/paper-pear-robot-use-rl.md) — 纯仿真二值奖励训练多轮推理策略并迁移至真实 YAM；关注机器人坐标接口、IK 与推理延迟的落地限制。
 - [RMA（Rapid Motor Adaptation）](../wiki/entities/paper-rma-rapid-motor-adaptation.md) — 在线适应代表作
 - [MUJICA](../wiki/entities/paper-mujica-wheel-legged-multi-skill.md) — 电机包络约束进 P3O 的零样本实例
 - [执行器约束 RL 高速四足](../wiki/entities/paper-actuator-constrained-rl-high-speed-quadruped-locomotion.md)（arXiv:2312.17507）— MOR 约束 + 减速器映射；HOUND 6.5 m/s 与高速 sim2real 消融

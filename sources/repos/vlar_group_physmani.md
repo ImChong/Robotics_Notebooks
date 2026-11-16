@@ -38,3 +38,10 @@
 
 - 技术报告摘录：[`sources/papers/physmani_arxiv_2607_01938.md`](../papers/physmani_arxiv_2607_01938.md)
 - 沉淀 **[`wiki/entities/paper-physmani-dynamic-manipulation-world-model.md`](../../wiki/entities/paper-physmani-dynamic-manipulation-world-model.md)**
+
+## 固定版本源码复核（2026-11-13）
+
+- 版本：[b9eb1ef8a40dbb80b1b0383b287a689983c83918](https://github.com/vLAR-group/PhysMani/tree/b9eb1ef8a40dbb80b1b0383b287a689983c83918)。已读根README、policy/world server启动sh全文；WorldModelServer.infer/_handle_update/_handle_predict、WorldModel.update/predict/predict_velmappc、PolicyServer.infer、Actioner.predict，ForesightDiffuserActorV6的encode_inputs/推理forward与VelocityFeatureModuleV2.forward完整路径。
+- v1.0已重构为physmani_bench/policy/wm三个本仓包，3DFA基线也已发布；旧「landing page」「重构未提供」失效。3DDA/ManiGaussian/π0.5基线仍TODO；CC BY-NC-SA4.0及第三方许可分别核对。
+- WM服务分init/update/predict；update依次train_network_one_step、train_gaussian_one_step、transform_gaussian_to；velocity模式返回velmappc_list。policy.infer把velmap_pc透传模型；encode_inputs归一化位置，邻域VelocityFeatureModuleV2用cdist/topk、距离mask及注意力与视觉特征融合，再走继承的轨迹生成。
+- 当前默认单任务gpu0.sh为checkpoint99999；8-GPU全套16任务640episode，CPU/NUMA绑定依硬件，不能照旧写100episode/任务。未安装Docker依赖、下载数据权重或实测。

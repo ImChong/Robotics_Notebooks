@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, imitation-learning, behavior-cloning, post-training, graph-search, human-in-the-loop, teleai, zju, scut, ustc, shanghaitech, tsinghua]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-12
 project_id: gr-bc
 arxiv: "2610.20504"
 project: https://gr-bc.github.io/
@@ -19,6 +19,7 @@ original:
   - ../../sources/papers/gr_bc_arxiv_2610_20504.md
 sources:
   - ../../sources/papers/gr_bc_arxiv_2610_20504.md
+  - ../../sources/repos/gr-bc-official-code.md
   - ../../sources/sites/gamma-robotics.md
   - ../../sources/raw/wechat_embodied_station_robot_31_papers_2026-10-15.md
 summary: "GR-BC（arXiv:2610.20504，CoRL 2026）：用任务条件目标可达图的反向搜索估计剩余步数，按动作块对进展的实际贡献给 VLA 行为克隆加权，复用失败与人工接管片段；无奖励模型；代码已开源（Apache-2.0），数据与策略权重未发布。"
@@ -79,6 +80,23 @@ flowchart TB
   data --> build --> search --> weight --> sft --> roll
   roll -.-> build
 ```
+
+### 失败轨迹如何反哺精细操作：从回合标签到动作块信用分配
+
+这项方法**不把失败 rollout 直接改标为成功**：整个回合的成功/失败标签仍用于构造图的成功汇点，而训练阶段只给**实际执行过的动作块**分配进展权重。失败回合上的状态若能通过多视角一致、夹爪同态的跨轨迹相似边连回成功路线，就可能找到到目标的有限剩余代价；真正决定“该不该模仿”的仍是该动作块自身的前后果（论文 §4.1–4.3）。
+
+| 数据片段（概念性判定，不是额外实验数据） | 图搜索与动作块判断 | 训练结果 |
+|---|---|---|
+| 失败回合中的有效对位/重新接触 | 能连回成功轨迹，净进展 `Δ_t > δ_min` 且窗口回退 `d_t ≤ η` | `w_t > 0`，模仿该恢复动作 |
+| 失败回合中不断试错、越调越偏 | 净进展不足，或动作中途出现过大回退 | `w_t = 0`，不让它贡献 SFT 梯度 |
+| 成功回合里的明显过冲或犹豫 | 即使最终成功，该局部块的进展仍不达标 | `w_t = 0`，成功回合也会被局部“去噪” |
+| 与任何成功终点都不连通的片段 | `R_rec = ∞`，没有由已观测数据支持的回到成功路径 | `w_t = 0`，不能把未知路径冒充正监督 |
+
+**重要区分：** `w_t = 0` 只屏蔽这个起点动作块的训练梯度，**不删掉对应图节点**；后续轨迹仍可能借助该节点或跨轨迹边接入可恢复路径。人工接管时间戳用于记录数据来源和诊断，不是“接管后全算好动作”的硬编码规则。图内相似边用于**估计势能**，不表示控制器能够瞬移或沿相似边执行动作（附录 A.3）。
+
+官方代码 `weights.py` 将每帧判定细分为 `chunk_reject_reason`：`accepted_residual_gain`（有效进展）、`delta_not_above_min_delta_progress`（进展不足）、`window_dip_below_start`（中途回退超限）。这些字段与 `chunk_delta_progress`、`chunk_progress_dip`、`graph_transition_weight` 一起输出到 `transition_weights.parquet`，可用来验证被过滤的是真正的错误动作还是必要的接触修正（详见[源码归档](../../sources/repos/gr-bc-official-code.md)）。
+
+**工程边界：** `n_action_step` 是用于判断动作后果的步数，`chunk` 是训练动作块长度；源码要求 `n_action_step ≤ chunk`，尾部不足时截断视窗。部署评估应额外观察接触力、碰撞及闭环恢复，因为论文的图代价不编码这些风险。
 
 ## 源码运行时序图
 
@@ -151,6 +169,20 @@ sequenceDiagram
 | 进展模型（SARM、Robo-Dopamine、RoboMeter、ReWiND） | 需要学习的进展函数、标签或 VLM 判断；GR-BC 用图搜索代替，论文在 Table 1 比较了这些接口 |
 | [行为克隆](../methods/behavior-cloning.md) | GR-BC 保持原始监督损失，只改变样本权重，与 VLA 结构无关 |
 
+## 与清单说法的核对
+
+Glen Berseth 的 CoRL 2026 阅读清单（P2，Imitation Learning & Data Quality 组，由 LLM 据摘要起草）对本文的一句话是：「按动作块在目标可达图上减少多少剩余步数来加权，用于精确 VLA 后训练」。逐项对照论文：
+
+| 清单说法 | 论文核对 | 结论 |
+|----------|----------|------|
+| 按动作块加权 | §4.3：对每个动作块（N = 30 帧）算净进展 Δ_t 与回退深度 d_t，给加权 SFT 的样本权重 w_t；不满足条件的块权重为 0 | 吻合 |
+| 减少多少剩余步数 | §4.2：权重基于 p(s) = 1 − R̂_rec/R_max 的差分，R_rec 是反向 Dijkstra 得到的到成功汇点的最小代价（帧数） | 吻合，但权重是归一化进展差并经 tanh 与阈值处理，不是剩余步数的原始值 |
+| 目标可达图 | §4.1：任务条件图，节点是子采样状态加终止状态，含时序边与夹爪一致的跨轨迹相似边 | 吻合 |
+| 用于 VLA 后训练 | §5：主实验为 X-VLA 的多轮离线后训练，π0.5 与 SmolVLA 只在 Graphics Card 单任务上做兼容性研究（附录 C.2） | 吻合 |
+| 精确（precise）操作 | 题目与 §5 的四项真机精细操作（装配、显卡插槽、螺丝、内存条） | 吻合，且均为真机，不是仿真 |
+
+清单没有提到、但读论文时有用的限定：（1）输入是混合质量数据，含失败 rollout 与人工接管片段，即题目中 Human Interventions 的含义；（2）不训练奖励模型或价值网络；（3）表 1 的进展估计对比是图内诊断，不是留出泛化（附录 B.1）；（4）摘要的 91% 推测为图 6 四任务末轮均值，论文未明说。清单摘要本身没有出现论文里查不到的结果。
+
 ## 局限与风险
 
 - **依赖图的可达性质量：** 视觉邻居错误会产生捷径，过严的边过滤又会漏掉有效的恢复桥接；门控与多视角检查只能减少而不能证明物理可达。
@@ -173,6 +205,7 @@ sequenceDiagram
 
 - [gr_bc_arxiv_2610_20504.md](../../sources/papers/gr_bc_arxiv_2610_20504.md) — 论文全文核对（v1 正文与附录 A–E）与开源复核（2026-11-06）
 - [gamma-robotics.md](../../sources/sites/gamma-robotics.md) — Gamma-Robot GitHub 组织与 GR-BC 仓库核查
+- [gr-bc-official-code.md](../../sources/repos/gr-bc-official-code.md) — 2026-11-12 对实际 CLI / 进展加权 / 训练损失实现与验证边界的复核
 - [wechat_embodied_station_robot_31_papers_2026-10-15.md](../../sources/raw/wechat_embodied_station_robot_31_papers_2026-10-15.md) — 文章摘要中的一句话说明与链接
 - [arXiv:2610.20504](https://arxiv.org/abs/2610.20504) — 原文（v1，提交日期 2026-10-14）
 - [Gamma-Robot/GR-BC](https://github.com/Gamma-Robot/GR-BC) — 官方代码（2026-10-16 发布，Apache-2.0）

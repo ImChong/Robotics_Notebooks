@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, lightweight-vla, flow-matching, behavior-cloning, manipulation, lerobot, internvl, sjtu, cvpr-2026]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-14
 arxiv: "2511.04555"
 venue: CVPR 2026
 code: https://github.com/MINT-SJTU/Evo-1
@@ -20,7 +20,10 @@ sources:
   - ../../sources/papers/evo1_arxiv_2511_04555.md
   - ../../sources/repos/mint_sjtu_evo1.md
   - ../../sources/repos/lerobot.md
-summary: "Evo-1（CVPR 2026）：0.77B 轻量 VLA，InternVL3-1B + cross-modulated DiT flow-matching；两阶段训练保持 VLM 语义对齐；无机器人预训练即在 Meta-World 80.6%、LIBERO 94.8%、RoboTwin 37.8% 与 xArm6 真机 78%；RTX 4090d 上 2.3 GB / 16.4 Hz；官方 LeRobot 集成（SO100/SO101）。"
+original:
+  - ../../sources/papers/evo1_arxiv_2511_04555.md
+  - ../../sources/repos/mint_sjtu_evo1.md
+summary: "Evo-1（CVPR 2026）：0.77B 轻量 VLA，InternVL3-1B（截断至前 14 层语言层）+ 8 层纯 cross-attention DiT flow-matching；两阶段训练保持 VLM 语义对齐；无机器人预训练即在 Meta-World 80.6%、LIBERO 94.8%、RoboTwin 37.8% 与 xArm6 真机 78%；RTX 4090d 上 2.3 GB / 16.4 Hz；官方已发布 RoboTwin 50 任务插件、LIBERO-plus 评测、LeRobot 内置策略及 RLinf SFT/GRPO 支持。"
 ---
 
 # Evo-1：轻量 VLA 与语义对齐保持
@@ -50,44 +53,44 @@ summary: "Evo-1（CVPR 2026）：0.77B 轻量 VLA，InternVL3-1B + cross-modulat
 - **语义保持训练可复现：** 两阶段范式 + 注意力可视化表明 **InternVL 语义聚焦不被机器人微调破坏**；相对 OpenVLA/Prismatic 的语义漂移，给出 **轻量 VLA 泛化** 的具体训练配方。
 - **LeRobot 生态落地：** 数据 **LeRobot v2.1**、训练脚本与 **2026-07 并入官方 LeRobot 主仓**，降低「论文模型 → SO100/SO101 真机」摩擦。
 
-## 方法栈（核心结构）
+## 核心原理
 
-| 模块 | 角色 |
+| 模块 | 论文设计与官方源码实现（`MINT-SJTU/Evo-1`） |
 |------|------|
-| **InternVL3-1B 骨干** | InternViT-300M + Qwen2.5-0.5B；448×448 + pixel-unshuffle；**保留语言分支前 14 层** 服务 visuomotor |
-| **Cross-modulated DiT 动作专家** | **纯 cross-attention** DiT；**flow matching** 预测连续 **H 步 action chunk** |
-| **集成模块（Module A）** | VLM 第 14 层 **zt** 与本体 **st 拼接** → DiT key-value；噪声动作作 query |
-| **Stage 1** | **冻结 VLM**；只训集成模块 + 动作专家（`--finetune_action_head`） |
-| **Stage 2** | **解冻 VLM** 全量微调（`--finetune_vlm`）；保持语义同时深化任务适配 |
+| **InternVL3-1B 骨干** | `InternVL3Embedder` 加载原生多模态模型（InternViT-300M + Qwen2.5-0.5B）；输入 `448×448` + pixel-unshuffle（4× 压缩视觉 token）；代码显式截取 `language_model` **前 14 层**（`layers[:14]`），提取跨模态对齐最强的中间语义 `z_t` |
+| **Cross-modulated DiT 动作专家** | `FlowmatchingActionHead`（默认 8 层纯 cross-attention `BasicTransformerBlock`，无自注意力交替）；将噪声动作序列嵌入作为 Query，以融合 Context 作 Key/Value；时间步 `t ~ Beta(2, 2).clamp(0.02, 0.98)` 经 1000 档正弦编码注入；噪声均匀采样自 `[-1, 1)`；输出 `H=50` 步、`24 维 padded` 连续动作块（通过 `CategorySpecificMLP`/`MultiEmbodimentActionEncoder` 支持多本体） |
+| **集成模块（Module A）** | 将第 14 层 VLM 表征 `z_t` 与 `state_encoder` 编码后的本体 `s_t` 直接 **序列拼接** 为 `context_tokens` 作 KV，优于共享投影、层间交错自注意力（Module B）、逐层配对（Module C）与联合 KV 拼接（Module D） |
+| **Stage 1（动作头对齐）** | `--finetune_action_head`（`finetune_vlm=False`）：**冻结 VLM**，仅训练集成模块与 DiT 动作头（Meta-World 10k 步 / LIBERO 20k 步，lr `1e-5`），避免随机初始化噪声梯度破坏 VLM 语义空间 |
+| **Stage 2（全量微调）** | `--finetune_vlm --finetune_action_head`：从 Stage 1 接续解冻 VLM 全量联合优化（Meta-World 65k 步 / LIBERO 80k 步），在保留图像–语言注意力聚焦的同时深化操作适配 |
 
 ## 流程总览
 
 ```mermaid
 flowchart TB
-  subgraph inputs [观测与指令]
+  subgraph inputs ["观测与指令"]
     img["多视角 RGB 448×448"]
     lang["自然语言指令 L_t"]
-    prop["机器人本体状态 s_t"]
+    prop["机器人本体状态 s_t (24 维 padded)"]
   end
-  subgraph vlm ["InternVL3-1B（Stage1 冻结）"]
-    enc["视觉编码 + 语言解码前 14 层"]
+  subgraph vlm ["InternVL3-1B（InternVL3Embedder）"]
+    enc["视觉编码 + 语言解码前 14 层 (layers[:14])"]
     zt["融合表征 z_t"]
     img --> enc
     lang --> enc --> zt
   end
-  subgraph integrate [集成模块 Module A]
-    cat["concat(z_t, s_t) → KV"]
+  subgraph integrate ["集成模块 Module A"]
+    cat["concat(z_t, state_emb) → KV Context"]
     zt --> cat
     prop --> cat
   end
-  subgraph act [Cross-modulated DiT]
-    noise["噪声动作块 A^τ_t"]
-    fm["flow matching 速度场 v_θ"]
-    chunk["H 步连续动作输出"]
+  subgraph act ["Cross-modulated DiT (8层纯Cross-Attn)"]
+    noise["噪声动作块 A^τ_t ([-1,1), Beta(2,2))"]
+    fm["FlowmatchingActionHead 速度场 v_θ"]
+    chunk["H=50 步连续动作输出"]
     cat --> fm
     noise --> fm --> chunk
   end
-  subgraph train [两阶段训练]
+  subgraph train ["两阶段训练 (train.py + DeepSpeed)"]
     s1["Stage 1：冻 VLM，训集成 + DiT"]
     s2["Stage 2：解冻 VLM 联合微调"]
     s1 --> s2
@@ -96,82 +99,77 @@ flowchart TB
   train -.-> act
 ```
 
-## 实验要点（摘要级）
+## 评测与对比
 
-> 数字以 [arXiv:2511.04555](https://arxiv.org/abs/2511.04555) 与 [官方 README](https://github.com/MINT-SJTU/Evo-1) 为准。
+> 数字核对自 [arXiv:2511.04555v2](https://arxiv.org/abs/2511.04555) Table 1–3 与 [官方仓库](https://github.com/MINT-SJTU/Evo-1)。
 
-| 设定 | 要点 |
-|------|------|
-| **Meta-World** | 50 演示/任务；四难度平均 **80.6%**（前 SOTA SmolVLA 68.2%） |
-| **LIBERO** | 40 任务四子集平均 **94.8%**；long **92.3%** |
-| **RoboTwin** | 双臂 Aloha-AgileX 四任务；平均 **37.8%**（超 π₀ 30.9%） |
-| **真机 xArm6** | 四任务各 100 演示训练、20 次评测；平均 **78%** |
-| **泛化扰动** | 未见物体/背景/位姿/高度变化下显著优于 SmolVLA（基线 95% vs 75%） |
-| **规模与预训练** | **0.77B**；**无 OXE/DROID 类机器人预训练** |
+| 基准 / 维度 | Evo-1（0.77B，无 Robo-Pretrain） | 关键对照基线 |
+|------|----------------------------------|----------|
+| **Meta-World（Table 1）** | **80.6%**（Easy 89.2 / Med 76.8 / Hard 77.2 / Very Hard 79.2） | 超 SmolVLA 2.25B（68.2%）、π₀ 3.5B（47.9%）、TinyVLA-H 1.3B（31.6%） |
+| **LIBERO（Table 1）** | **94.8%**（Spatial 92.7 / Object 97.7 / Goal 96.3 / Long 92.3） | 超 π₀（94.2%）、GR00T N1（93.9%）、SmolVLA（88.8%）、OpenVLA（76.5%） |
+| **RoboTwin 2.0 四任务均值（Table 1）** | **37.8%**（Click Alarmclock 77.0/58.0、Dump Bin 74.0/37.0 等） | 超 π₀（30.9%）、RDT 1.2B（25.8%）、DP（18.4%） |
+| **真机 xArm6（Fig. 4 & Table 2）** | 四任务均值 **78.0%**（Pick&Place/Pour/Handover/Stack 各 20 trials） | 超 π₀（73.0%）、OpenVLA（55.0%）、SmolVLA（50.0%） |
+| **真机泛化扰动（Table 3，Pick-and-Place Can）** | Base **95%**；未见物体 **80%**；黄桌布 **75%**；10/20/30mm 后移 **95/85/80%**；高度 **100/90/70%** | SmolVLA 同条件分别仅 75% / 65% / 60% / 75-60% / 75-60% |
+| **RTX 4090d 推理效率（Table 2）** | **2.3 GB 显存 / 16.4 Hz** | SmolVLA 2.0 GB / 12.7 Hz；OpenVLA 15.1 GB / 7.9 Hz；π₀ 17.9 GB / 11.5 Hz |
 
-## 部署与 LeRobot 集成
+*(注：第三方 LeRobot 检查点 `zuoxingdong/evo1_libero` 在 LeRobot 文档报告 96.65% 属独立训练配方，不可与论文 Table 1 的 94.8% 混比。)*
 
-- **仿真：** `Evo1_server.py` WebSocket 服务 + Meta-World / LIBERO 客户端脚本。
-- **自定义本体：** 构造 `image` / `image_mask` / `state` / `action_mask` / `prompt` 观测字典（图像需 448×448），参考 `Evo1_client_xarm6.py`。
-- **LeRobot SO100/SO101：** 官方主仓已内置；`lerobot-record --robot.type=so100_follower --policy.path=<checkpoint> ...`；权重 `MINT-SJTU/Evo1_SO100`。
-- **训练：** 数据转 **LeRobot v2.1** → DeepSpeed `accelerate launch` 两阶段 `train.py`；FlashAttention 安装对稳定性影响大。
+## 工程实践
+
+1. **原仓库训练与归一化流水线（`Evo_1/`）：** 数据统一转 **LeRobot v2.1**（状态与动作补齐至 24 维，图像 `448×448`），先跑 `python -m dataset.compute_normstats`（大数据集改用 `compute_normstats_streaming.py`）生成 `norm_stats.json`；再经 `accelerate launch --deepspeed_config_file ds_config.json scripts/train.py` 分两阶段训练：Stage 1 传 `--finetune_action_head`，Stage 2 加 `--finetune_vlm --resume --resume_pretrain`。
+2. **WebSocket 服务与跨平台客户端：** `Evo_1/scripts/Evo1_server.py`（默认端口 `9000`）加载 `config.json`、`norm_stats.json` 与 `mp_rank_00_model_states.pt`，强制设置 `num_inference_timesteps = 50` 步欧拉积分；`Evo1_client_xarm6.py`、`LIBERO_evaluation/libero_client_4tasks.py` 与 `RoboTwin_evaluation/policy/Evo1/deploy_policy.py`（含 per-task `dataset_key` 覆盖与 `kernel_size=9` 高斯时序平滑）发送 `[base, wrist, dummy]` 3 路图像与 `image_mask`/`action_mask`。
+3. **官方生态集成（LeRobot + RLinf + Jetson）：**
+   - **LeRobot 主仓（2026-07-05 并入）：** `pip install -e ".[training,evo1]"`，`--policy.type=evo1 --policy.training_stage=stage1|stage2`；SO100/SO101 可直接用 `lerobot-record --policy.path=MINT-SJTU/Evo1_SO100` 闭环，可选 `--inference.type=rtc`（仅 `predict_action_chunk` 路径）。
+   - **RLinf（2026-08-05）：** 已支持基于 LIBERO 仿真的 Evo-1 全参 SFT 与 GRPO 强化后训练。
+   - **关键陷阱：** 原仓库 README 反复强调 **`flash-attn` 必须编译安装**，缺省回退注意力会显著降低成功率并导致真机抖动；另注意客户端须根据任务动作空间决定是否把服务端输出累加为绝对位姿。
 
 ## 源码运行时序图
 
-LeRobot 固定提交 `9e5ee98` 的 `policy.type=evo1`（`src/lerobot/policies/evo1/`：`modeling_evo1.py` 的 `Evo1Policy`、`evo1_model.py` 的 `Evo1Model`、`internvl3_embedder.py`、`flow_matching.py` 的 `FlowmatchingActionHead`）。以下节点读自该目录；论文已核对：0.77B、保留语言分支前 14 层、Meta-World 80.6、LIBERO 94.8、RoboTwin 37.8、xArm6 真机 78%、2.3 GB / 16.4 Hz 均与 arXiv:2511.04555 正文一致。
+以下时序图直接对齐官方仓库 **`MINT-SJTU/Evo-1`** 核心源码入口（上游 LeRobot 主仓的 `Evo1Policy` 封装已验证采用相同的 `layers[:14]`、`Beta(2,2).clamp(0.02,0.98)`、1000 档时间编码与 `[-1,1)` 均匀噪声设计）：
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    participant Tr as lerobot_train.train / lerobot_rollout
-    participant Fa as policies.factory.make_policy / make_pre_post_processors
-    participant Pre as make_evo1_pre_post_processors
-    participant Pol as Evo1Policy
-    participant Em as InternVL3Embedder
-    participant H as FlowmatchingActionHead
+  autonumber
+  participant Tr as "Evo_1/scripts/train.py"
+  participant M as "EVO1 (Evo_1/scripts/Evo1.py)"
+  participant VLM as "InternVL3Embedder"
+  participant Head as "FlowmatchingActionHead"
+  participant Srv as "Evo_1/scripts/Evo1_server.py"
+  participant Cli as "LIBERO / RoboTwin / xArm6 Client"
 
-    Tr->>Fa: --policy.type=evo1 --policy.training_stage=stage1|stage2
-    Fa->>Pol: Evo1Policy.__init__ → Evo1Model（set_finetune_flags：stage1 冻 VLM，stage2 放开 VLM 分支）
-    Fa->>Pre: Rename → AddBatchDim → Evo1PadStateProcessorStep(24) → Evo1PadActionProcessorStep(24) → Normalizer → Device
-    Tr->>Pol: policy(batch) = forward
-    Pol->>Em: _compute_fused_tokens → get_fused_image_text_embedding_batched（InternVL3-1B-hf，仅保留前 vlm_num_layers=14 层语言分支）
-    Em-->>Pol: fused_tokens + context_mask
-    Pol->>H: forward(actions_gt)：Beta(2,2) 采样 t，uniform 噪声，make_flow_matching_inputs → 纯 cross-attention Transformer 块（context=VLM token+状态）
-    H-->>Pol: pred_velocity（池化后 mlp_head）
-    Pol-->>Tr: 掩码 MSE(pred_velocity, actions_gt − noise)（fp32）
-    Tr->>Pol: 推理 select_action；队列空时 predict_action_chunk
-    Pol->>Em: 同上得到 fused_tokens
-    Pol->>H: get_action：euler_integrate(num_inference_timesteps 步；可选 RTC)
-    H-->>Pol: 动作 chunk (B, 50, max_action_dim)
-    Pol-->>Tr: Evo1ActionProcessorStep 裁回真实动作维度（可 binarize_gripper）→ unnormalize
+  Note over Tr,Head: 1. 两阶段训练流程 (Accelerate + DeepSpeed)
+  Tr->>M: "构建 EVO1，set_finetune_flags() (Stage1 冻 VLM / Stage2 解冻)"
+  Tr->>M: "get_vl_embeddings(images, image_mask, prompts)"
+  M->>VLM: "InternVL3-1B (截断至前14层 layers[:14]) 输出 fused_tokens"
+  VLM-->>M: "fused_tokens"
+  Tr->>M: "model(fused_tokens, state, actions_gt, action_mask)"
+  M->>Head: "FlowmatchingActionHead.forward(): Beta(2,2) 采样 t, uniform[-1,1) 噪声"
+  Head-->>Tr: "8层纯Cross-Attn输出 pred_velocity，train.py 计算掩码MSE并按action_mask缩放"
+
+  Note over Cli,Srv: 2. WebSocket 推理服务流程 (num_inference_timesteps=50)
+  Cli->>Srv: "ws.send(JSON): 3路 448x448 图像、image_mask、state、action_mask、prompt (+可选arm/dataset_key)"
+  Srv->>Srv: "Normalizer.normalize_state() 补齐24维"
+  Srv->>M: "model.run_inference() -> predict_action()"
+  M->>Head: "get_action(): 50步欧拉积分预测 (H=50, 24) 动作块"
+  Head-->>Srv: "归一化动作块"
+  Srv-->>Cli: "denormalize_action() 返回 JSON；客户端按需累积或高斯平滑后执行"
 ```
-
-## LeRobot 实现
-
-- **安装与权重：** `pip install -e ".[training,evo1]"`（LIBERO 另加 `libero`）；`policy.vlm_model_name` 必须是原生转换的 InternVL3（如 `OpenGVLab/InternVL3-1B-hf`，注意 `-hf` 后缀）；`flash_attn` 不可用时回退普通注意力。
-- **两阶段在 LeRobot 中的对应：** `policy.training_stage=stage1`（冻结 VLM、训练动作头，示例 5000 步）与 `stage2`（从 stage1 检查点加载但重置优化器，示例 80000 步）；默认会按阶段重置 `finetune_*` 标志（`apply_training_stage_defaults=true`）。
-- **默认值：** `chunk_size=n_action_steps=50`、`max_state_dim=max_action_dim=24`、`vlm_num_layers=14`、`dtype=bfloat16`。
-- **LeRobot 文档里的 LIBERO 结果与论文不是同一回事：** 文档给出第三方检查点 `zuoxingdong/evo1_libero`（stage-2，step 70,000，seed 1000，单次运行）的 LIBERO 总体 96.65%（Spatial 97.0 / Object 99.2 / Goal 96.6 / LIBERO-10 93.8）。本页上文的 94.8% 是论文表格数；两者检查点、训练配方不同，不能直接比较。
-- **与论文差异（读源码所见）：** LeRobot 动作头的噪声取 uniform[-1,1)，时间 t 取 Beta(2,2) 并截在 [0.02,0.98]，时间嵌入离散成 1000 档；论文是否同样设置本次未逐项核对。
-- **推理：** `lerobot-rollout --inference.type=rtc` 可选；RTC 仅在 `predict_action_chunk` 路径，`select_action` 内断言不支持 RTC。
-- **官方原仓库：** MINT-SJTU/Evo-1 的 `Evo1_server.py` WebSocket 服务与 xArm6 客户端见上文「部署与 LeRobot 集成」；本次未逐文件阅读原仓库源码，因此不另绘其时序图。
 
 ## 结论
 
-**Evo-1 的核心赌注是「别把 VLM 训坏」：用两阶段训练保住视觉–语言语义空间，从而在 0.77B、无机器人预训练的条件下，换来消费级 GPU 上可实时部署的策略。**
+**Evo-1 的核心贡献是证明「先冻后解的两阶段训练 + 截断中间层原生 VLM + 纯 cross-attention DiT」即可在 0.77B 参数、无机器人预训练的前提下兼得低显存（2.3 GB）、高控制频率（16.4 Hz）与跨基准泛化。**
 
-- 真正起作用的是 **训练顺序** 而非模型规模：Stage 1 冻结 InternVL3-1B 只训集成模块与 cross-modulated DiT flow-matching 动作头，Stage 2 再解冻联合微调；论文用注意力图对比证明这与 **语义保持和泛化** 直接相关，不只是工程技巧。
-- 指标兑现在 **效率–性能平衡点**：Meta-World **80.6%**、LIBERO **94.8%**（long 92.3%）、RoboTwin **37.8%**、xArm6 真机 **78%**，同时 **2.3 GB / 16.4 Hz**（对照 OpenVLA 7B 的 15.1 GB / 7.9 Hz）。
-- 适用边界：公开叙事以 **单臂/双臂桌面操作** 为主，向人形全身 loco-manip 扩展需独立验证；RoboTwin 50 任务全量结果与评测脚本仍待官方发布。
-- 工程落地是这条路线的实际护城河：数据走 **LeRobot v2.1**、策略已并入官方 [LeRobot](./lerobot.md) 主仓，SO100/SO101 一条命令部署。
-- 与 [FabriVLA](./paper-fabrivla.md) 对照：同为轻量 InternVL+FM，后者单阶段、MT50 更高但报告面更窄；与 π₀ / OpenVLA 对照，Evo-1 用 **小模型 + 语义保持微调** 替代大规模机器人预训练。
+- **语义保持取决于训练次序：** Stage 1 冻结 `InternVL3-1B` 对齐集成模块与 `FlowmatchingActionHead`，Stage 2 再联合微调，可有效避免单阶段端到端训坏 VLM 注意力聚焦。
+- **架构做减法换取吞吐与稳定：** 保留 `InternVL3` 前 14 层语言层、取消 DiT 中的自注意力交替块改用纯 cross-attention、拼接而非投影状态特征（Module A），结构简单但消融证明连续性最好。
+- **工程生态已补齐闭环：** 官方已先后补发 RoboTwin 50 任务插件、`libero-plus-eval`、Jetson Orin Docker，并并入官方 [LeRobot](./lerobot.md) 与 **RLinf**（SFT + GRPO）。
+- **真机可复现但有强前提：** `flash-attn` 缺失会破坏运动稳定性；同时客户端必须与 `norm_stats.json` 中的 `arm_key`/`dataset_key` 及相对/绝对动作空间约定严格一致。
 
-## 常见误区或局限
+## 局限与风险
 
-- **误区：** 把「轻量」等同于「牺牲 LIBERO 长程」——Evo-1 在 **long 子集 92.3%** 仍具竞争力。
-- **误区：** 认为两阶段只是工程技巧——论文用 **注意力图对比** 证明其直接关联 **语义保持与泛化**。
-- **局限：** 当前公开叙事以 **单臂/双臂桌面操作** 为主；向 **人形全身 loco-manip** 扩展需独立验证。
-- **局限：** RoboTwin **50 任务全量结果** 与评测脚本仍待官方发布（README To-Do）。
+- **基准以单/双臂桌面操作为主：** Meta-World、LIBERO、RoboTwin、xArm6 与 SO100/ALOHA 均聚焦固定基座机械臂桌面任务，向移动操作或全身人形 loco-manip 迁移仍需独立验证（此外论文正文 RoboTwin 仅报告 4 项代表任务 37.8%，全 50 任务评估代码于 2026-07 随仓库补发）。
+- **依赖 `flash-attn` 算子兼容性：** 官方源码虽在未安装 `flash_attn` 时有标准注意力回退逻辑，但仓库 README 明确警示缺少 FlashAttention 会造成成功率显著下降与机械臂运动不稳定，受限于旧款显卡/ARM 边缘板编译环境时需提前实测。
+- **长程绝对控制需要客户端后处理：** 服务端统一输出归一化增量动作（或固定 24 维 padded 动作块），面向绝对位置控制器（如部分 xArm6/Aloha 配置）时必须在客户端做累加或高斯平滑（如 RoboTwin `kernel_size=9`），且不同下游基准的 Stage 1/2 步数（如 Meta-World 10k/65k vs LIBERO 20k/80k vs SO101 5k/50k）需要按数据量手工调整。
+- **论文 vs 开源实装微小差异常见易混淆点：** 开源 `FlowmatchingActionHead` 默认推理步数为 32 步而 `Evo1_server.py` 覆盖为 50 步；此外社区第三方 LeRobot 检查点（如 `zuoxingdong/evo1_libero` 96.65%）与论文 94.8% 并非同一检查点与超参配方。
 
 ## 与其他工作对比
 
@@ -191,14 +189,15 @@ sequenceDiagram
 - [FabriVLA](./paper-fabrivla.md) — 单阶段轻量对照；MT50 更高、评测面更窄。
 - [VLA SOTA Leaderboard](./vla-sota-leaderboard.md) — EvoMind/MINT-SJTU 社区多基准榜。
 - [Diffusion Policy](../methods/diffusion-policy.md) — 连续动作扩散/流匹配策略族。
-- [Action Chunking](../methods/action-chunking.md) — H 步动作块输出与异步部署。
-- [Manipulation](../tasks/manipulation.md) — Meta-World / LIBERO / 真机操作评测背景。
+- [Action Chunking](../methods/action-chunking.md) — H 步动作块输出与平滑部署。
+- [Behavior Cloning（行为克隆）](../methods/behavior-cloning.md) — 监督模仿学习范式。
+- [Manipulation](../tasks/manipulation.md) — Meta-World / LIBERO / RoboTwin / 真机操作评测背景。
 
 ## 参考来源
 
-- [lerobot.md](../../sources/repos/lerobot.md)：LeRobot 固定提交 9e5ee98 的 `docs/source/evo1.mdx` 与 `src/lerobot/policies/evo1/`
-- [Evo-1 论文摘录（CVPR 2026 / arXiv:2511.04555）](../../sources/papers/evo1_arxiv_2511_04555.md)
-- [MINT-SJTU/Evo-1 仓库归档](../../sources/repos/mint_sjtu_evo1.md)
+- [Evo-1 论文归档（CVPR 2026 / arXiv:2511.04555v2）](../../sources/papers/evo1_arxiv_2511_04555.md)
+- [MINT-SJTU/Evo-1 官方仓库归档](../../sources/repos/mint_sjtu_evo1.md)
+- [LeRobot 集成参考归档（lerobot.md）](../../sources/repos/lerobot.md)：LeRobot 固定提交 `9e5ee98` 中的 `policy.type=evo1` 封装参考
 
 ## 推荐继续阅读
 
@@ -206,4 +205,4 @@ sequenceDiagram
 - 项目主页：<https://mint-sjtu.github.io/Evo-1.io/>
 - 官方代码：<https://github.com/MINT-SJTU/Evo-1>
 - Hugging Face 权重：<https://huggingface.co/MINT-SJTU/Evo1_LIBERO>
-- LeRobot 官方集成公告（仓库 News）：<https://github.com/huggingface/lerobot>
+- RLinf 集成文档：<https://rlinf.readthedocs.io/en/latest/rst_source/examples/embodied/evo1.html>

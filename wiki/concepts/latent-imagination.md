@@ -2,7 +2,7 @@
 type: concept
 tags: [world-models, reinforcement-learning, machine-learning, model-based-rl]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-14
 related:
   - ../entities/paper-odeworld.md
   - ./rl-runner.md

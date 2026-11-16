@@ -4,22 +4,24 @@
 
 - **标题：** JoyAI-RA 0.5: Scaling Robot Manipulation Learning via Dual Action Alignment
 - **类型：** paper
-- **arXiv：** <https://arxiv.org/abs/2608.05674>
+- **arXiv：** <https://arxiv.org/abs/2608.05674>（v1 2026-08-06）
 - **PDF：** <https://arxiv.org/pdf/2608.05674>
 - **项目页：** <https://joyai-ra-05.github.io/> — 归档见 [`sources/sites/joyai-ra-05-github-io.md`](../sites/joyai-ra-05-github-io.md)
 - **机构：** Joy Future Academy / JoyAI-RA Team（京东 JD）；通讯 Yuzheng Zhuang、Liang Lin
 - **骨干：** VLM + Latent-Action-Conditioned World Model（LAC-WM）+ Flow-Matching Action Expert（VLWA）
-- **预训练规模：** 人视频 **53K+ h**（含自采 EgoLive **20K+ h**）+ 仿真 **11K+ h** + 真机 **8K+ h**
-- **统一动作：** **130-D** 规范状态–动作槽 + 相机系 chunk-relative 末端执行器动作
+- **预训练规模：** **72K+ h** = 人视频 **53K+ h**（含自采 **EgoLive 20K+ h**，60 FPS / ~898K episodes / 23.6M subtasks / 600+ task scenarios）+ 仿真 **11K+ h**（InternData-A1/M1、Genie Sim 3.0、BEHAVIOR-1K）+ 真机 **8K+ h**（AgiBot World Beta、Galaxea Open-World、RoboCOIN、RoboMIND 1/2、LET、Baihu）
+- **统一动作：** **130-D** 规范状态–动作槽（Table 1：Left `[0,54)`、Right `[54,108)`、Body `[108,130)`）+ 相机系 chunk-relative 末端执行器动作
 - **评测平台：** 智元 **AgiBot G1** Real-World AgiBot Benchmark（seen / unseen）
-- **入库日期：** 2026-08-07
+- **入库日期：** 2026-08-07（2026-11-14 核对 v1 全文与附录）
+- **核对范围：** 2026-11-14 通读 arXiv:2608.05674v1 全文（摘要、§1–§6、Tables 1–3、Figs 1–11、Refs [1]–[80]、Appendix A & Appendix B），并核查项目页 HTML（579 行，含顶栏 `https://robotdata.jdcloud.com/` Datasets 入口与注释隐藏的 Demos 区块）。
+- **通读：** 已完成
 - **一句话说明：** 用 **隐式 latent-action 对齐**（吃无动作标签人视频）+ **显式 130-D 规范动作对齐**（吃可靠人/机轨迹）把异构数据变成互补监督，再经 **内–外环 RL** 做任务适应与底座改进；在 AgiBot 真机上 seen **92.0** / unseen **75.5**，且人视频缩放未见饱和。
 
-## 开源核查（步骤 2.5）
+## 开源核查（步骤 2.5，2026-11-14 核实）
 
-- **项目页：** <https://joyai-ra-05.github.io/>（核查日 **2026-08-07**）
-- **代码：** **未列** GitHub / Hugging Face / 权重下载；页上仅 arXiv 与技术报告叙事
-- **结论：** **确认未开源**（截至入库日）；论文亦未给出「code will be released」URL。wiki 实体页 `## 源码运行时序图` 写 **不适用**。
+- **项目页：** <https://joyai-ra-05.github.io/>（顶栏 Datasets 按钮外链至 `https://robotdata.jdcloud.com/`，页面原 Demos 视频区块在 HTML 中处于注释隐藏状态 `temporarily hidden`）
+- **代码与权重：** **未列** GitHub / Hugging Face / 模型权重下载；论文与项目页均未给出代码仓地址
+- **结论：** **模型与训练代码未开源**（仅数据平台入口外链 `robotdata.jdcloud.com`），wiki 实体页 `## 源码运行时序图` 写 **不适用**。
 
 ## 核心摘录（面向 wiki 编译）
 
@@ -101,7 +103,7 @@
 
 ## 当前提炼状态
 
-- [x] arXiv HTML 全文已对齐摘录（2608.05674）
-- [x] 项目页开源核查：未列代码（2026-08-07）
-- [x] wiki 映射：`wiki/entities/paper-joyai-ra-05.md` 新建
+- [x] arXiv:2608.05674v1 全文、Tables 1–3 与 Appendix A/B 已逐节核对
+- [x] 项目页 HTML 开源核查：未列模型/代码仓（顶栏 Datasets 链 `robotdata.jdcloud.com`，Demos 区块注释隐藏，2026-11-14）
+- [x] wiki 映射：`wiki/entities/paper-joyai-ra-05.md` 已对齐
 - [ ] 待官方代码/权重公开后补 `sources/repos/` 与源码时序图

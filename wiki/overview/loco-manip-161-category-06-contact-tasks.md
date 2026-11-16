@@ -33,7 +33,7 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 120 | GentleHumanoid | [paper-loco-manip-161-120-gentlehumanoid](../methods/gentlehumanoid-motion-tracking.md) |
+| 120 | GentleHumanoid | [paper-loco-manip-161-120-gentlehumanoid](../entities/paper-gentlehumanoid.md) |
 | 121 | Humanoid-VLA | [paper-loco-manip-161-121-humanoid-vla](../entities/paper-loco-manip-161-121-humanoid-vla.md) |
 | 122 | LeVERB | [paper-loco-manip-161-122-leverb](../entities/paper-bfm-36-leverb.md) |
 | 123 | 从嘈杂的感官输入中学习人形足球机器人的敏捷前锋技能 | [paper-loco-manip-161-123-n123](../entities/paper-loco-manip-161-123-n123.md) |

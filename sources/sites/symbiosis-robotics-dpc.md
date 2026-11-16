@@ -10,8 +10,9 @@
 - **机构：** Symbiosis Robotics（页脚 © 2026 SYMBIOSIS；联系 [info@symbioact.com](mailto:info@symbioact.com)）
 - **发表：** August 2026 · SYMBIOSIS RESEARCH
 - **入库日期：** 2026-08-17
-- **一句话说明：** 主张去掉分层感知–控制里的中间运动接口 \(Z_t\)（以冻结 [SONIC](../../wiki/methods/sonic-motion-tracking.md) 解码器为靶），用单一模型把视觉/语言/本体/动作历史直接映射到 G1 可执行关节与手部 PD 目标；配套 Symbiotic Attention 与 DriftDistill 闭环蒸馏；自报统一语料 **15,010 小时**。
+- **一句话说明：** 主张去掉分层感知–控制里的中间运动接口 \(Z_t\)（以冻结 [SONIC](../../wiki/entities/nvidia-sonic.md) 解码器为靶），用单一模型把视觉/语言/本体/动作历史直接映射到 G1 可执行关节与手部 PD 目标；配套 Symbiotic Attention 与 DriftDistill 闭环蒸馏；自报统一语料 **15,010 小时**。
 - **公司站复核（2026-09-29）：** 站点根 <https://symbiosis-robotics.com/> 直接呈现 DPC 页，`/research/` 列表返回 403；公开研究仅 DPC 一篇，仍未列代码 / 权重 / 数据链接。
+- **项目页复核（2026-11-13）：** 重新通读官方英文技术稿，核查页头、正文、性能演示、参考链接及页脚；页面仍未列公开代码、模型权重、数据集下载或 arXiv/PDF，现有性能证据仍是定性演示。
 - **开源状态（2026-08-17 核查）：** **确认未开源。** 页头/页脚/Resources 无 GitHub、Hugging Face、Zenodo 或数据集下载；无 arXiv/PDF 链接；Citation 标注为 *Symbiosis Robotics Blog*。可复现入口仅联系邮箱。
 
 ## 页面公开信息
@@ -53,7 +54,7 @@
 ## 为何值得保留
 
 - 把 2026 年主流「VLA/WAM + 冻结 SONIC/GMT」分层栈写成可证伪的三条信息瓶颈，而不是口号式「端到端更好」。
-- 与本库已有 [MotionWAM](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)、[ω-0](../../wiki/entities/paper-omega-0.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md) 形成直接对照：后者把统一 token 当能力，本页把它当能力上限。
+- 与本库已有 [MotionWAM](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)、[ω-0](../../wiki/entities/paper-omega-0.md)、[SONIC](../../wiki/entities/nvidia-sonic.md) 形成直接对照：后者把统一 token 当能力，本页把它当能力上限。
 - 开源边界清楚：产业演示级博客，**不能**当可复现训练基线。
 
 ## 关联资料

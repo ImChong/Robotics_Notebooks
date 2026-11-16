@@ -120,3 +120,9 @@ flowchart TD
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2609.16331)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2609.16331](https://arxiv.org/abs/2609.16331)。
+- **项目或官方发布入口：** [项目页](https://patricia1019.github.io/ManiSkillFormer/)。
+- **清单记录：** `survey_ax_2609_16331`；本次仅补充身份与链接，未重新通读或核验已有结论。

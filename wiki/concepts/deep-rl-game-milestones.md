@@ -2,7 +2,7 @@
 type: concept
 tags: [deep-rl, dqn, alphago, history, discrete-actions]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-15
 summary: "DQN 与 AlphaGo 等里程碑证明了端到端深度强化学习在高维观测下的普适性，是后来「能否把同类范式搬到真实机器人」讨论的共同起点。"
 related:
   - ../methods/reinforcement-learning.md

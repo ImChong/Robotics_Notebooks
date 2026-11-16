@@ -53,3 +53,5 @@
 - **wiki/concepts/motion-retargeting.md**：工具与数据集表补充。
 - **wiki/concepts/motion-retargeting-pipeline.md**：IK 阶段工程实现参照。
 - 与 [SOMA Retargeter](../../wiki/entities/soma-retargeter.md) 共享 [BONES-SEED](https://huggingface.co/datasets/bones-studio/seed) 消费路径，但输入表示与 IK 栈不同（SMPL-X / LAFAN1 CSV vs SOMA BVH + Warp）。
+
+- **通读：** 已完成

@@ -13,6 +13,8 @@
 - **硬件：** Unitree G1（29 DoF）；**惯性动捕** 在线重定向参考轨迹
 - **仿真：** MuJoCo；策略 50 Hz，PD 500 Hz
 - **入库日期：** 2026-07-03
+- **通读：** 已完成
+- **核对范围：** arXiv:2602.09628v2（2026-05-13）正文全文（摘要至结论与致谢，含 Table I–IV、附录 A–D 的超参、网络结构、域随机化与奖励表 Table V–VII）；参考文献列表仅略读未逐条核对；图为文字提取，仅依据图注与正文描述，未逐图目检；无公开代码，未核对源码。
 - **一句话说明：** **冻结多域专家 + 轻量门控 Top-1 路由** 替代蒸馏统一策略；**VAE 非对称编解码**（历史 $M_t^-$ → 未来 $M_t^+$ 潜变量）补偿实时遥操作无未来参考；**2.5 h** 六类惯性动捕自采数据；仿真 SR **97.3%**，G1 真机跑跳/跌倒恢复/踢球等。
 
 ## 相关资料（策展）
@@ -75,7 +77,7 @@
 ## 对 wiki 的映射
 
 - 沉淀实体页：[TeleGate（论文实体）](../../wiki/entities/paper-telegate.md)
-- 交叉补强：[Teleoperation](../../wiki/tasks/teleoperation.md)、[Motion Retargeting](../../wiki/concepts/motion-retargeting.md)、[Whole-Body Control](../../wiki/concepts/whole-body-control.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[TWIST2](../../wiki/entities/paper-twist2.md)、[SONIC 方法页](../../wiki/methods/sonic-motion-tracking.md)
+- 交叉补强：[Teleoperation](../../wiki/tasks/teleoperation.md)、[Motion Retargeting](../../wiki/concepts/motion-retargeting.md)、[Whole-Body Control](../../wiki/concepts/whole-body-control.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[TWIST2](../../wiki/entities/paper-twist2.md)、[SONIC 方法页](../../wiki/entities/nvidia-sonic.md)
 
 ## 当前提炼状态
 

@@ -55,6 +55,9 @@
 
 ## 当前提炼状态
 
+- **通读：** 已完成
+- **核对范围：** 已通读 arXiv:2509.05433 全文 PDF 文本（摘要、§1–4、Materials and Methods，不含参考文献与补充材料图），逐项核对制造、气动、表征与用户研究参数。
+
 - [x] arXiv HTML §1–4 + 方法节已摘录
 - [x] wiki 映射：`wiki/entities/paper-hapmorph-pneumatic-haptic-render.md`
 - [x] 交叉更新：`wiki/tasks/teleoperation.md`、`wiki/overview/hub-tactile.md`

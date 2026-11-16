@@ -33,5 +33,5 @@
 
 ## 对 wiki 的映射
 
-- [GentleHumanoid（方法页）](../../wiki/methods/gentlehumanoid-motion-tracking.md)
+- [GentleHumanoid（方法页）](../../wiki/entities/paper-gentlehumanoid.md)
 - [论文 sources 摘录](../papers/gentlehumanoid_upper_body_compliance.md)

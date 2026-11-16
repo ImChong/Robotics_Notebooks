@@ -26,7 +26,7 @@ SCORE_CELL_RE = re.compile(r"\**\s*([0-3])\s*/\s*3\s*\**")
 PAGE_IN_CELL_RE = re.compile(r"wiki/[^\s`)\]|]+\.md")
 
 
-def changed_pages() -> list[str]:
+def changed_pages(*, include_worktree: bool = False) -> list[str]:
     out = subprocess.run(
         ["git", "diff", "--name-only", "--diff-filter=AMR", "origin/main...HEAD", "--", "wiki"],
         capture_output=True,
@@ -34,7 +34,43 @@ def changed_pages() -> list[str]:
         check=True,
         cwd=g.REPO_ROOT,
     ).stdout
-    return [p for p in out.split() if p.endswith(".md")]
+    pages = [p for p in out.split() if p.endswith(".md")]
+    if include_worktree:
+        seen = set(pages)
+        status = subprocess.run(
+            ["git", "status", "--porcelain", "-z", "-uall", "--", "wiki"],
+            capture_output=True,
+            text=True,
+            check=True,
+            cwd=g.REPO_ROOT,
+        ).stdout
+        tokens = status.split("\0")
+        i = 0
+        while i < len(tokens):
+            entry = tokens[i]
+            i += 1
+            if len(entry) < 4:
+                continue
+            code = entry[:2]
+            rel_path = entry[3:]
+            if "R" in code or "C" in code:
+                i += 1
+            if (
+                rel_path.endswith(".md")
+                and "D" not in code
+                and (g.REPO_ROOT / rel_path).is_file()
+                and rel_path not in seen
+            ):
+                seen.add(rel_path)
+                pages.append(rel_path)
+    return pages
+
+
+def _frontmatter_block(content: str) -> str:
+    if not content.startswith("---"):
+        return ""
+    end = content.find("\n---", 3)
+    return "" if end == -1 else content[3:end]
 
 
 def health_rows(pages: list[str]) -> list[HealthRow]:
@@ -48,7 +84,8 @@ def health_rows(pages: list[str]) -> list[HealthRow]:
             miss.append("阅读骨架")
         if not original_fully_read(content, path, g.SOURCES_DIR):
             miss.append("原文未通读")
-        if "status: draft" in content or "status: stub" in content:
+        fm = _frontmatter_block(content)
+        if re.search(r'^status\s*:\s*["\']?(?:draft|stub)["\']?\s*$', fm, re.MULTILINE):
             miss.append("status 未 complete")
         rows.append((p, score, miss))
     return rows
@@ -127,7 +164,7 @@ def check_pr_body_main() -> int:
 def main(argv: list[str]) -> int:
     if argv == ["--check-pr-body"]:
         return check_pr_body_main()
-    pages = changed_pages() if argv == ["--changed"] else argv
+    pages = changed_pages(include_worktree=True) if argv == ["--changed"] else argv
     if not pages:
         print("无页面")
         return 0

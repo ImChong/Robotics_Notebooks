@@ -15,7 +15,7 @@ tags:
   - nyu
   - ami-labs
 status: complete
-updated: 2026-09-15
+updated: 2026-11-11
 arxiv: "2608.27395"
 code: https://github.com/MLO-lab/LeVJEPA
 related:
@@ -202,7 +202,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [LeJEPA](./paper-lejepa.md) — 图像侧 SIGReg 配方；本文接到视频编码器
+- [LeJEPA](./paper-lejepa.md) — 图像侧 SIGReg 配方（无 stop-gradient / EMA teacher，单超参 λ；ViT-H/14 IN1K 冻结线性探针 79%，arXiv:2511.08544）；本文接到视频编码器
 - [LeWM](./paper-lewm.md) / [LpWM](./paper-lpwm.md) — 同一作者族的动作条件规划 WM
 - [V-JEPA 2](./paper-vjepa2.md) — 同数据重训的主对照；AC 规划是本文没有的下一阶段
 - [V-JEPA 2.1](./paper-sa-2603-14482-v-jepa-2-1-unlocking-dense-features-in-video-sel.md) — 用显式 dense loss 换 patch 结构；本文声称结构可涌现

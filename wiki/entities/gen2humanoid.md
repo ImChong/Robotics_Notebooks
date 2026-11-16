@@ -12,6 +12,7 @@ related:
   - ./unitree-g1.md
   - ./awesome-text-to-motion-zilize.md
   - ./paper-gentrack.md
+original: ../../sources/repos/gen2humanoid.md
 sources:
   - ../../sources/repos/gen2humanoid.md
 ---
@@ -54,7 +55,7 @@ flowchart TD
   P -.->|路线图 TODO| PP["后处理 / tracking<br/>尚未实现"]
 ```
 
-## 工程要点
+## 工程实践
 
 | 维度 | 说明 |
 |------|------|
@@ -69,6 +70,11 @@ flowchart TD
 - 相对 **[HY-Motion 1.0](../methods/hy-motion-1.md)**：本仓是 **消费方/集成方**，不替代官方训练与对齐叙事。
 - 相对 **[GMR](../methods/motion-retargeting-gmr.md)**：本仓把 GMR 固定在「**生成式人体轨迹**」上游，与 MoCap / 视频估计源并列；须牢记 GMR **非物理** 局限与 [ExoActor](../methods/exoactor.md) 类「跳过重定向」消融语境。
 - 相对 **[ProtoMotions](./protomotions.md)** 等仿真学习框架：Gen2Humanoid **止于运动学 pickle**，不包含并行仿真、RL tracking 或 Sim2Real 导出。
+
+## 局限
+
+- **无物理后处理与控制闭环**：仅输出运动学关节轨迹（pickle），不包含动力学可行性精炼或 RL tracking 策略训练，直接真机回放可能失稳。
+- **受限于上游文本生成模型**：动作多样性与语义对齐度依赖 HY-Motion-1.0 的覆盖范围。
 
 ## 关联页面
 

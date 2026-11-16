@@ -12,7 +12,7 @@ tags:
   - multi-view
   - heterogeneous-data
 status: complete
-updated: 2026-11-08
+updated: 2026-11-13
 related:
   - ../concepts/world-action-models.md
   - ../concepts/video-as-simulation.md
@@ -24,11 +24,14 @@ related:
   - ./ge-sim-2.md
   - ./ewmbench.md
   - ./paper-tau0-vla.md
+arxiv: "2606.01027"
+original:
+  - ../../sources/papers/tau0_wm_tech_report.md
 sources:
   - ../../sources/papers/tau0_wm_tech_report.md
   - ../../sources/sites/tau0-wm-agibot-finch.md
   - ../../sources/repos/sii_research_tau_0_wm.md
-summary: "τ₀-WM（5B）：在 Wan-2.2 级视频扩散骨干上联合训练多视角未来 latent 与连续 action chunk，用异构约 2.73 万小时数据与模态掩码分监督；推理时策略采样 + 动作条件仿真评估 + Re-denoising Consistency，形成 propose–evaluate–revise 测试时闭环。"
+summary: "τ₀-WM（5B视频骨干+0.5B动作支）：在 Wan-2.2 级视频扩散骨干上联合训练多视角未来 latent 与连续 action chunk，用异构约 2.73 万小时数据与模态掩码分监督；推理时策略采样 + 动作条件仿真评估 + Re-denoising Consistency，形成 propose–evaluate–revise 测试时闭环。"
 ---
 
 # τ₀-World Model（τ0-WM）
@@ -37,7 +40,7 @@ summary: "τ₀-WM（5B）：在 Wan-2.2 级视频扩散骨干上联合训练多
 
 ## 一句话定义
 
-**一个 5B Joint WAM：用同一视频扩散骨干学「世界怎么变」与「手该怎么动」，再用动作条件 rollout 与一致性分数在真机执行前筛选、修正 action chunk。**
+**一个 5.5B Video-Action Model：用同一视频扩散骨干学「世界怎么变」与「手该怎么动」，再用动作条件 rollout 与一致性分数在真机执行前筛选、修正 action chunk。**
 
 ## 英文缩写速查
 
@@ -76,7 +79,7 @@ flowchart TB
     U[UMI\n视频+动作相关]
     H[自我中心人视频\n仅未来视频]
   end
-  subgraph vam [共享 VAM 5B]
+  subgraph vam [VAM：5B 视频加 0.5B 动作]
     IN[多视角 o + 语言 l + 状态 s]
     VB[视频扩散分支\n未来 latent]
     AB[动作分支\ncross-attn → a chunk]
@@ -109,13 +112,57 @@ flowchart TB
 | **骨干耦合** | 视频与动作 **联合训练**、共享中间表征 | 常 **冻结** 互联网视频骨干 + **流匹配动作头** | **视觉专家** 为主，另加 **状态专家 / World Judge** |
 | **数据** | 机器人 + UMI + 人视频 **掩码混训** | 强调 **互联网视频先验** + 机器人逆动力学 | **千万级真机 episode** 闭环模拟 |
 | **推理** | **内置** 动作条件仿真 + 一致性分数 + 修订环 | 默认 **潜计划 + 动作解码**，论文侧重部分去噪 | **闭环 rollout** 供策略 / 评测 / 奖励 |
-| **参数规模** | **5B**（公开 VAM 权重） | 论文实现约 **2B** 级 Cosmos 系 | 公开榜强调 **2B** 视觉专家 |
+| **参数规模** | **5B 视频 + 0.5B 动作支** | 论文实现约 **2B** 级 Cosmos 系 | 公开榜强调 **2B** 视觉专家 |
 
-## 工程实践：部署与开源（截至 2026-05-31）
+## 工程实践：部署与开放状态（2026-11-13）
 
 - **已发布：** VAM **Hugging Face 权重**（Apache-2.0）、**策略推理 server**（WebSocket，借鉴 [openpi](https://github.com/Physical-Intelligence/openpi)）；需自备 **Wan2.2-TI2V-5B** 与配置文件路径。
 - **动作空间（部署）：** 双臂 **绝对 EEF** 位姿 + 夹爪；与预训练 **相对位姿 + 6D 旋转** 自动互转（见 [官方 README](https://github.com/sii-research/tau-0-wm)）。
-- **待发布：** **Simulator 权重**、完整 **测试时计算** 代码（README 口径）。
+- **已更新：** README 已发布 Simulator 权重、VAM/Simulator 后训练和 TTC 推理入口；完整预训练语料未随仓提供。
+- 论文与代码需分开核对：当前 TTC 示例仅在最佳模拟 reward<0 时重查 VAM，未用 RCS 阈值触发仿真。220/180/140ms 是标准查询和加速设置，未包含完整多候选仿真搜索。
+
+## 源码运行时序图
+
+依据[固定提交核查](../../sources/repos/sii_research_tau_0_wm.md)的 TTC 示例；图中条件按代码，不替代上方论文算法图。
+
+```mermaid
+sequenceDiagram
+  participant Client as WebSocket 客户端
+  participant Server as TTC server.py
+  participant Policy as TauPolicyTTC.play
+  participant VAM as textimage2video_ttc.infer
+  participant Sim as sim_pipeline
+  Client->>Server: 观测、状态、prompt与TTC参数
+  Server->>Policy: play
+  Policy->>VAM: 采样动作候选并计算RCS
+  VAM-->>Policy: actions与负去噪MSE
+  opt N大于1且sim_refine开启
+    Policy->>Sim: 变换动作统计，预测latent与reward
+    Sim-->>Policy: 候选future、reward轨迹
+    alt 最佳模拟reward小于0
+      Policy->>VAM: 用选定future重新生成动作
+      VAM-->>Policy: 新候选与RCS
+    else 非负reward
+      Policy->>Policy: 保留原RCS候选并按进度裁段
+    end
+  end
+  Policy-->>Server: 反归一化的action chunk
+  Server-->>Client: actions
+```
+
+## 实验与评测
+
+表I的完整数据混合使zero-shot平均.14→.55、SFT .70→.83，未独立区分UMI与Ego贡献。表II每项20次且禁止重试，无TTC/RCS/RCS+LAR平均.43/.50/.60；不能与允许纠正的主任务进度评分混用。Faucet仍困难，未建立触觉接触和任意长程可靠性。
+
+## 结论
+
+τ0-WM 将动作提案与后果评估接入同一设计框架；选择实现时要对齐论文和已发布代码版本。
+
+1. 5B是视频骨干，VAM另含0.5B动作支，TTC还需simulator模型。
+2. 人视频仅监督视觉，UMI和机器人动作可靠性不同。
+3. RCS衡量条件分布一致性，不是校准成功概率。
+4. 当前TTC示例与论文阈值触发有差异，按实际配置复核。
+5. 本次为全文和静态源码核查，未做GPU或真机复现。
 
 ## 局限与风险：常见误区
 

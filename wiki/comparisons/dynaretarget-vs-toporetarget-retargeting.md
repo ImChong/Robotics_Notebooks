@@ -16,6 +16,7 @@ related:
   - ../entities/paper-hrl-stack-03-omniretarget.md
   - ../tasks/loco-manipulation.md
   - ../tasks/manipulation.md
+original: ../../sources/papers/dynaretarget_arxiv_2602_06827.md
 summary: "DynaRetarget 与 TopoRetarget 两条 2026 接触保真重定向路线对比：前者用增量时域 SBTO 把 IK 参考精炼为人形 loco-manipulation 的动力学可行轨迹，后者用共享拓扑 interaction mesh + Laplacian 在运动学层保留灵巧手–物体交互；从尺度（全身 vs 灵巧手）、修补层（动力学 vs 运动学）、求解成本与适用任务给出选型坐标。"
 ---
 
@@ -46,7 +47,11 @@ summary: "DynaRetarget 与 TopoRetarget 两条 2026 接触保真重定向路线�
 | SDF | Signed Distance Field | TopoRetarget 穿透检测与约束 |
 | G1 | Unitree G1 Humanoid | DynaRetarget 主实验平台 |
 
-## 核心维度对比
+## 为什么重要
+
+重定向的「像不像」取决于接触而非关节角。两条路线把接触保真放在不同层（动力学 vs 运动学），选错会在算力、实时性或物理可行性上付出代价；本页帮助按任务尺度与资源做取舍。
+
+## 核心原理（核心维度对比）
 
 | 维度 | **DynaRetarget**（动力学层精炼） | **TopoRetarget**（运动学层交互保留） |
 |------|----------------------------------|--------------------------------------|
@@ -108,7 +113,15 @@ flowchart TD
 
 > **避坑**：对「应接触未接触」的虚拟接触需预处理；极端力控任务因缺动力学一致化仍需单独验证。
 
-## 常见误判
+## 工程实践
+
+- **全身 loco-manipulation**：涉及步行搬运、重心转移或地面反作用力时优先用 DynaRetarget 的动力学轨迹精炼。
+- **灵巧手精细操作**：关注多指接触拓扑、物体几何与实时响应时优先用 TopoRetarget；动力学约束仍交给下游控制器。
+- 管线串联：GMR / IK 出初值 → DynaRetarget 或 TopoRetarget 做接触修补 → 下游 RL 跟踪。
+- 算力紧时 DynaRetarget 优先用 SBTO_skip（前缀缓存），TopoRetarget 约 4.7 ms/帧可用于实时场景。
+- 两法结果多为仿真口径，上真机仍需 DR / SysID / 下游 WBC。
+
+## 局限与常见误判
 
 1. **「二者二选一」**：错。一个面向 **全身 loco-manipulation**、一个面向 **灵巧手 in-hand**，任务域不同；真实系统可在不同肢段分别采用。
 2. **「TopoRetarget 不做动力学 = 更弱」**：维度不同。它以 **实时 + 接触保真** 换取轻量，把动力学交给下游；DynaRetarget 以 **算力** 换取重定向阶段的动力学可行。
@@ -152,3 +165,9 @@ flowchart TD
 - [OmniRetarget（人形交互保留重定向）](../entities/paper-hrl-stack-03-omniretarget.md) — 共享的 kinematic 参考数据源与对比基线。
 - [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md) — DynaRetarget 任务域。
 - [Manipulation（操作）](../tasks/manipulation.md) — TopoRetarget 任务域。
+
+## 推荐继续阅读
+
+- [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)
+- [TopoRetarget](../methods/toporetarget-interaction-preserving-dexterous-retargeting.md)
+- [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)

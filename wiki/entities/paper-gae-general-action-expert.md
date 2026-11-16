@@ -95,7 +95,7 @@ flowchart TB
 
 ## 与其他工作对比
 
-- [SONIC](../methods/sonic-motion-tracking.md)：论文选择的全身跟踪基线；GAE 在高动态序列上的 SR 更高，但各分项误差并非全优。
+- [SONIC](./nvidia-sonic.md)：论文选择的全身跟踪基线；GAE 在高动态序列上的 SR 更高，但各分项误差并非全优。
 - [Teleopit](./paper-teleopit.md)：同属西湖相关的遥操作研究；Teleopit 强调 PICO VR + 灵巧手 / 视点 / 录制的系统栈，GAE 聚焦大规模全身运动先验和时延条件控制。
 - [TWIST2](./paper-twist2.md)：同为全身遥操作参考，可比较输入设备、策略目标、时延处理和代码开放程度。
 

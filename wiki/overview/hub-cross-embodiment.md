@@ -2,7 +2,8 @@
 type: overview
 tags: [hub, hub-cross-embodiment, transfer, any2any, retargeting]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-15
+original: ../../sources/papers/ucag_p_arxiv_2608_26058.md
 related:
   - ../concepts/embodied-foundation-model-hardware-codesign.md
   - ../queries/cross-embodiment-transfer-strategy.md
@@ -71,6 +72,20 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 - **[WBT](./hub-wbt.md)**：跟踪策略的跨形态扩展。
 - **[Sim2Real](./hub-sim2real.md)**：仿真-真机是跨具身特例。
 
+## 核心原理
+
+跨具身迁移的核心是在不同形态、自由度与动力学特性之间建立共享表征或对齐接口：包括任务空间/相机系锚点对齐（如 UCAG-P）、隐式物理推理与策略条件化（如 Any2Any / LAST-HD）、以及通过重定向与物理精炼将人类示范映射到目标机器人可行流形。
+
+## 工程实践
+
+- **优先复用共享接口**：在末端执行器或传感器坐标系层面统一动作目标，可显著降低跨本体微调成本。
+- **结合域随机化与残差适配**：跨配置或跨平台部署时，常需配合动力学域随机化与轻量在线/离线残差校正。
+
+## 局限
+
+- **形态差异过大时易失效**：自由度、质量分布或接触拓扑差异极大时，纯几何或表征对齐难以保证动力学可行性。
+- **评估基准分散**：不同工作在任务集、硬件平台与数据规模上差异较大，横向对比需注意实验条件。
+
 ## 关联页面
 
 - [Sim2Real](../concepts/sim2real.md)
@@ -97,3 +112,8 @@ summary: "跨具身迁移知识链汇总：不同机器人形态、仿真与真�
 - [Gemini Robotics 2 全身智能（来源归档）](../../sources/blogs/gemini_robotics_2_whole_body.md) — On-Device 跨本体适配声明
 - [OM-1: Frontier Robot Intelligence…（来源归档）](../../sources/blogs/rewardai_om1.md) — 人类示范直驱跨本体（Reward AI）
 - 知识链定义：[docs/depth-filters.js](../../docs/depth-filters.js)（`cross-embodiment` 命中规则）
+
+## 推荐继续阅读
+
+- [跨具身迁移路线图](../../roadmap/depth-cross-embodiment.md)
+- [跨具身迁移策略选型](../queries/cross-embodiment-transfer-strategy.md)

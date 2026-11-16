@@ -3,7 +3,7 @@ type: entity
 tags: [perceptron, data-annotation, vlm, egocentric, manipulation, product]
 title: Perceptron Egocentric
 summary: "Perceptron Egocentric 是基于 Mk1 具身感知模型的机器人/第一人称视频自动标注 API：输出原子操作时间分段、自洽子任务标签与双手稠密 grounding，在 WGO-Bench 上超越 Gemini Robotics ER-1.6 与 Gemini 3.5 Flash 驱动的 Macrodata 管线。"
-updated: 2026-08-27
+updated: 2026-11-15
 status: complete
 related:
   - ../methods/auto-labeling-pipelines.md

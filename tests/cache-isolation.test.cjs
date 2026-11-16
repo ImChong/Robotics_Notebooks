@@ -153,3 +153,48 @@ test('a missing shell asset fails installation instead of caching half a shell',
   await assert.rejects(completion, /style\.css/);
   assert.deepEqual(h.installed, []);
 });
+
+test('HTML shell query strings fall back to pathname cache and skip caching 140MB search-index.json', async () => {
+  const putUrls = [];
+  const cachedHtml = { status: 200, source: 'detail-shell' };
+  const handlers = {};
+  const cache = {
+    match: async (req) => (req === '/Robotics_Notebooks/detail.html' ? cachedHtml : undefined),
+    put: async (req) => { putUrls.push(typeof req === 'string' ? req : req.url); },
+    add: async () => {},
+    addAll: async () => {},
+  };
+  const context = vm.createContext({
+    URL, console,
+    self: {
+      registration: { scope: 'https://imchong.github.io/Robotics_Notebooks/' },
+      location: { origin: 'https://imchong.github.io' },
+      addEventListener: (name, fn) => { handlers[name] = fn; },
+      clients: { claim: async () => {} },
+      skipWaiting() {},
+    },
+    caches: {
+      keys: async () => [],
+      delete: async () => {},
+      open: async () => cache,
+    },
+    fetch: async () => ({ status: 200, clone() { return this; } }),
+  });
+  vm.runInContext(readFileSync(resolve(__dirname, '../docs/sw.js'), 'utf8'), context);
+
+  let detailResult;
+  handlers.fetch({
+    request: { url: 'https://imchong.github.io/Robotics_Notebooks/detail.html?id=wiki-foo', method: 'GET' },
+    respondWith: (p) => { detailResult = p; },
+  });
+  assert.equal(await detailResult, cachedHtml);
+
+  let searchResult;
+  handlers.fetch({
+    request: { url: 'https://imchong.github.io/Robotics_Notebooks/search-index.json', method: 'GET' },
+    respondWith: (p) => { searchResult = p; },
+  });
+  await searchResult;
+  await new Promise(setImmediate);
+  assert.ok(!putUrls.some((u) => u.includes('search-index.json')));
+});

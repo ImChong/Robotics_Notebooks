@@ -12,9 +12,10 @@ tags:
   - nvidia
   - simulation-evaluation
 status: complete
-updated: 2026-10-10
+updated: 2026-11-14
 related:
   - ./lightwheel.md
+  - ./lightwheel-robofinals-rl-env.md
   - ./cn-os-lw-benchhub.md
   - ./isaac-lab-arena.md
   - ./lw-benchhub-tour.md
@@ -26,8 +27,11 @@ related:
   - ./mujoco.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../overview/hub-embodied-eval-benchmark.md
+original:
+  - ../../sources/blogs/lightwheel_robofinals_posts.md
 sources:
   - ../../sources/blogs/lightwheel_robofinals_posts.md
+  - ../../sources/sites/lightwheel_robofinals_rl_env.md
   - ../../sources/blogs/lightwheel_benchhub_arena_posts.md
   - ../../sources/sites/lightwheel_robofinals.md
   - ../../sources/sites/lightwheel_robofinals_newton_native_benchmark.md
@@ -95,7 +99,7 @@ institutions:
 - **闭环与自述局限：** teleop 采集 → Isaac Lab 训练 → RoboFinals 评测在 Newton 上跑通，证明「栈内一致、可复跑」；但训练与评测都在仿真内，**不证明真机一致**，真机相关性「下一步发布」。
 - **治理位置：** 光轮在 Newton TSC，负责资产标准与可变形求解器（见 [Newton Physics](./newton-physics.md)）。
 
-## 核心结构
+## 核心原理与结构
 
 ```mermaid
 flowchart TB
@@ -142,6 +146,10 @@ flowchart TB
 | **OSMO + 云 GPU** | 数千 episode 并行（文内提及 Nebius 集群） |
 | **Real 验证轨** | 受控真机 benchmark + Sim–Real 相关性数据集（建设中） |
 
+## 2026-11 · 新增独立训练产品 RoboFinals RL-Env
+
+光轮在 CoRL 2026 期间发布了 [**RoboFinals RL Environments**](./lightwheel-robofinals-rl-env.md)，这是与本页**评测平台**独立的 **Newton-native RL 训练环境**。官方 [技术产品页](https://lightwheel.ai/robofinals-rl-env) 已于 2026-11-14 全文核实：EgoSuite 采集真实作业（首发汽车维修）→ Agent 解析子目标、物体和操作顺序 → SimReady OpenUSD 重建部件、工具和灵巧手 → 实测摩擦/刚度/阻尼并以 CAE 校验可变形体 → Newton 单时间步耦合刚体/柔性/颗粒接触 → 策略训练与 RoboFinals 评测**共享任务、场景和物理定义**。每个建设阶段经光轮专家审核；完整排行榜仍计划之后开放。产品目前仅提供 [Early Access 表单](https://lightwheel.ai/robofinals-rl-env/early-access)，**没有**公开可运行的 RL-Env 专属环境包/SDK、基线或独立 Sim2Real 数据。详见 [独立实体](./lightwheel-robofinals-rl-env.md) 与 [全文核验归档](../../sources/sites/lightwheel_robofinals_rl_env.md)。
+
 ## 开源与访问（步骤 2.5）
 
 | 项 | 状态（2026-10-10 复核） |
@@ -186,6 +194,8 @@ flowchart TB
 
 ## 关联页面
 
+- [RoboFinals RL Environments](./lightwheel-robofinals-rl-env.md) — 2026-11 新发布的独立强化学习训练环境，不等同本页评测服务
+
 - [光轮智能](./lightwheel.md) — 公司主页（SimReady / EgoSuite / RoboFinals 产品线）
 - [LW-BenchHub](./cn-os-lw-benchhub.md) — BenchHub 开源实现、Arena 迁移与 13.5× 并行评测研究
 - [Isaac Lab-Arena](./isaac-lab-arena.md) — 开源评测底座
@@ -196,6 +206,11 @@ flowchart TB
 - [具身评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md)
 
 ## 参考来源
+
+**原文阅读范围（2026-11-14）：** 官网完整通读 2025-12-04 发布页、2026-03-16 Industrial Benchmark、2026-08-18 Newton-native 全栈原文；源码未纳入「原文已读完」的归档范围，平台本身依旧属于商业服务。
+
+
+- [RoboFinals RL-Env 官方公告与开放状态归档](../../sources/sites/lightwheel_robofinals_rl_env.md)（官网独立技术页已于 2026-11-14 全文核实）
 
 - [RoboFinals 官方博文合集（2025-12-04 / 2026-03-16 / 2026-08-18）](../../sources/blogs/lightwheel_robofinals_posts.md)
 - [BenchHub × Arena 官方博文合集](../../sources/blogs/lightwheel_benchhub_arena_posts.md)

@@ -26,6 +26,13 @@
 - **部分开源**：代码和若干 checkpoint 可获取；公开页面没有提供组成预训练数据的完整数据集。openpi README 说明 π₀.₅ 的代码路径目前支持 flow-matching head。
 - Knowledge Insulation 的论文、技术说明和其在 openpi 微调实现中的边界，分别见 [项目页](https://www.pi.website/research/knowledge_insulation)、[arXiv](https://arxiv.org/abs/2505.23705) 与 [官方 issue #649](https://github.com/Physical-Intelligence/openpi/issues/649)。
 
+## 2026-11-10 官方链接与数字复核
+
+- 用户提供的 `https://pi.website/blog/pi05` 会转向 `https://www.pi.website/blog/pi05`，**属于论文发布博客／项目页，不是源码仓库**；源码官方地址为 <https://github.com/Physical-Intelligence/openpi>。
+- 博客「Training and inference」明确：同一 VLA 先生成文本语义子任务，再由 flow matching action expert 生成 **50 步（1 秒）动作块**。
+- 博客消融图的 **OOD Success Rate**（陌生类别对象的指令跟随测试）为：完整 π₀.₅ **94%**、no WD **74%**、no CE **49%**、no ME **31%**。与长时任务完整成功率**不是同一个指标**；论文 §V-C/Fig.10–11 也对此区分。
+- 截至 2026-11-10 核查官方 openpi README：π₀.₅ 有 base、LIBERO、DROID checkpoint 以及训练/推理代码入口；**当前开源实现只覆盖 flow-matching head**，不能将完整论文训练集、语义高层决策复现视作已公开。
+
 ## 关联归档
 
 - 论文来源：[sources/papers/hmi_p059_pi05-open-world-vla.md](../papers/hmi_p059_pi05-open-world-vla.md)

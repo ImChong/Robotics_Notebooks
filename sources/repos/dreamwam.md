@@ -47,3 +47,10 @@
 - 论文归档：[`sources/papers/dreamwam_arxiv_2608_04996.md`](../papers/dreamwam_arxiv_2608_04996.md)
 - 项目页：[`sources/sites/hustvl-dreamwam-github-io.md`](../sites/hustvl-dreamwam-github-io.md)
 - Wiki 实体：[wiki/entities/paper-dreamwam.md](../../wiki/entities/paper-dreamwam.md)
+
+## 固定版本源码复核（2026-11-13）
+
+- 版本：[7c35d7d094b86fc65721cd26dfbc3194addb8fd0](https://github.com/hustvl/DreamWAM/tree/7c35d7d094b86fc65721cd26dfbc3194addb8fd0)。已读根 README、`scripts/eval_libero.py`、`scripts/train.py`、`dreamwam/runtime.py`、`policy.py`、`evaluation/rollout.py` 全文；`model.py` 配置、路由、构造、forward、training_loss、sample_action 相关完整函数。
+- 评测入口加载 config→build_policy→构建模型/严格载权重、Wan VAE/文本编码器、归一化统计；rollout 取双相机RGB、本体状态和指令，predict_action→sample_action，反归一化及夹爪变换后只执行replan_steps再观测。
+- `sample_action` 两种设置均置零flow；Joint执行`apply_world_residual=True,predict_world_targets=False`；Uncond的`prefill_video_cache`也传入world_residual。路由forward实际计算门控残差，故当前代码不能写作「所有beyond-RGB分支全关」。仅预测heads/外部教师不运行，flow扩展通道仍在。
+- 训练脚本保存`checkpoint.pt`，不是旧归档写的`final.pt`。提供实现与公开权重链接不等于本次已下载全部依赖或复现论文指标；本次仅静态核读。

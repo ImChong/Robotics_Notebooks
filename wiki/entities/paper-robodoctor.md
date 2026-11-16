@@ -179,7 +179,7 @@ sequenceDiagram
 ## 与其他工作对比
 
 - **PrismWAM** 是冻结的底层动作模型，RoboDoctor 添加上层执行诊断与修正，并不重新训练 WAM。
-- **PhysicalRSI / EmbodiedRSI** 等可改 Harness 或技能，RoboDoctor 本文主要围绕既有控制器的选择、干预和物理方法复用。
+- **PhysicalRSI / [EmbodiedRSI](./paper-embodiedrsi.md)** 可改 Harness 或技能；其中 EmbodiedRSI 借助 VOI 主动选择实验并联合演化代码、技能和记忆，RoboDoctor 则侧重已有控制器的选择、干预及物理方法复用。
 - **Recova** 通过仿真恢复技能、独立恢复策略与 DAgger 后续训练；RoboDoctor 本文主要强调执行期外部状态更新，训练目标不同。
 
 ## 局限与风险

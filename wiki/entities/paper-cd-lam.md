@@ -11,7 +11,7 @@ tags:
   - aether-ai
   - ucsd
 status: complete
-updated: 2026-10-10
+updated: 2026-11-13
 project_id: cd-lam
 arxiv: "2607.09185"
 code: https://github.com/AetherLabsAI/CD-LAM
@@ -33,7 +33,11 @@ related:
   - ../concepts/world-action-models.md
   - ../concepts/inverse-dynamics-model.md
   - ../methods/generative-world-models.md
+original:
+  - ../../sources/papers/cd_lam_arxiv_2607_09185.md
 sources:
+  - ../../sources/repos/cd-lam.md
+  - ../../sources/sites/cd-lam-project.md
   - ../../sources/blogs/aether_cd_lam.md
   - ../../sources/papers/cd_lam_arxiv_2607_09185.md
 summary: "CD-LAM（arXiv:2607.09185，Aether AI/UCSD；博客 2026-07-27）：重建式潜动作模型把背景、相机漂移等视觉混杂编进潜动作，下游世界模型「逼真但不听动作」；三项去偏目标（前景加权重建、动作原语对比、零转移校准）不改骨干与接口，自报相对 DreamDojo 后训练 FDCE 降 34.8%/30.4%（2B/14B）、零动作残余运动降 53%/76.7%、约 3k 步追平基线 50k 步；v2 增加 LTX-2.3-22B 与 X-VLA 实验。代码 Apache-2.0 与 2B 权重已开源，14B 未放。"
@@ -70,7 +74,7 @@ institutions:
 - **问题出在上游，修也在上游。** 纯重建目标从不区分画面变化来自机器人、相机还是光照，于是把这些因素都编进潜动作（**视觉混杂**），之后每一阶段都继承。CD-LAM 只改 LAM，世界模型骨干、潜动作维度、动作接口都不变，能直接插进 [DreamDojo](./paper-hrl-stack-35-dreamdojo.md) 式管线。
 - **给出能测「是否听动作」的指标。** PSNR 与动作跟随误差的相关性很弱（\(R^2=0.14\)），作者提出 FDCE，并配套零动作、目标动作两个干预测试。
 - **后训练省 10 倍以上。** 去偏后，机器人动作后训练约 3k 步就追平基线 50k 步；1 小时去偏视频拿到 1,000 小时约 80% 的收益（自报）。
-- **完整开源。** 代码、2B 的 LAM / 预训练 / 后训练权重、FDCE 评测脚本都已公开。
+- **2B提供公开实现。** 代码、2B 的 LAM / 预训练 / 后训练权重、FDCE 评测脚本都已公开。
 
 ## 核心信息
 
@@ -110,11 +114,11 @@ flowchart TB
 
 ### 三项去偏目标
 
-\[\mathcal L_{CD}=\mathcal L_{emb}+\lambda_{ctr}(k)\,\mathcal L_{ctr}+\lambda_{cal}\,\mathcal L_{cal}\]
+\[\mathcal L_{CD}=\mathcal L_{emb}+\lambda_{ctr}(k)\,\mathcal L_{ctr}+\mathcal L_{cal}\]
 
 1. **具身中心重建 \(\mathcal L_{emb}\)：** 用 SAM3 前景掩码 \(M_t\) 给重建损失加权，\(W_t=\alpha_{fg}M_t+\alpha_{bg}(1-M_t)\)，\(\alpha_{fg}>\alpha_{bg}\)。潜动作优先解释机械臂和被操作物体的运动，背景仍保留小权重以维持整体一致。
 2. **动作中心对比 \(\mathcal L_{ctr}\)：** 从视频文本标注里抽动词，归并成 pick-and-place、pour、open 等动作原语；SigLIP 式成对损失 \(\mathrm{softplus}(-y_{ij}(\tau v_i^\top v_j+b))\) 拉近同原语、推远不同原语。权重 \(\lambda_{ctr}(k)\) 随训练步变化。
-3. **潜空间校准 \(\mathcal L_{cal}=\mathcal L_{KL\text{-}fb}+\mathcal L_{zero}\)：** 输入两帧相同时，「什么都没变」应对应潜空间原点；\(\mathcal L_{zero}\) 把这类潜变量的范数（用普通转移潜变量的运行 RMS 范数归一化、stop-grad）压到阈值以下。free-bits KL 控制容量、防止潜空间塌缩。
+3. **潜空间校准 \(\mathcal L_{cal}=\beta_{kl}(k)\mathcal L_{KL\text{-}fb}+\lambda_{zero}\mathcal L_{zero}\)：** 输入两帧相同时，「什么都没变」应对应潜空间原点；\(\mathcal L_{zero}\) 把这类潜变量的范数（用普通转移潜变量的运行 RMS 范数归一化、stop-grad）压到阈值以下。free-bits KL 控制容量、防止潜空间塌缩。
 
 ### 为什么叫「因果」
 
@@ -133,32 +137,28 @@ flowchart TB
 
 ## 源码运行时序图
 
+核读`55409608`的真实runtime入口（[源码归档](../../sources/repos/cd-lam.md)）；未把synthetic smoke当论文训练。
+
 ```mermaid
 sequenceDiagram
-  autonumber
   participant U as 用户
-  participant Setup as setup.sh
-  participant DL as scripts/download_datasets.py
-  participant Run as run.sh
-  participant LAM as stage1（LAM 去偏）
-  participant WM as stage2（ACWM 预训练）
-  participant BR as bridge
-  participant PT as stage3（机器人动作后训练）
-  participant Ev as score-fdce
-  U->>Setup: bash setup.sh --accept-base-license --with-models
-  Setup-->>U: .venv、GPU 校验、2B 权重（lam / pretrain / posttrain）
-  U->>DL: 下载 AgiBotWorld Alpha 样例与 EgoDex part2
-  U->>Run: run.sh prepare-agibot / runtime-doctor --stage all
-  U->>Run: run.sh pipeline（或分步 stage1 → bridge → stage2 → stage3）
-  Run->>LAM: L_emb + L_ctr + L_cal 微调，输出 32 维潜动作
-  Run->>WM: 以去偏潜动作条件化世界模型
-  Run->>BR: 训练 22 维机器人动作 → 潜动作映射
-  Run->>PT: 用真实控制命令后训练
-  U->>Ev: run.sh score-fdce --tracks evaluation/tracks/*.npz
-  Ev-->>U: evaluation/fdce.json（SAM3 掩码 + CoWTracker 轨迹）
+  participant S as run.sh → scripts/run.sh
+  participant C as cdlam_runtime.cli
+  participant R as runtime.commands_for_stage/execute
+  participant A as Stage1 adapter/外部ACWM runtime
+  U->>S: pipeline，配置runtime.json
+  S->>C: python -m cdlam_runtime
+  C->>R: doctor Stage1、构造命令
+  R->>A: subprocess：LAM去偏
+  A-->>C: trained LAM checkpoint
+  loop bridge、stage2、stage3
+    C->>R: 检查上游资产并构造命令
+    R->>A: subprocess执行对应stage
+    A-->>C: bridge/ACWM checkpoint
+  end
 ```
 
-复现路径：`setup.sh` 建环境并可直接拉 2B 权重；只想评测时可跳过训练，用发布的 posttrain 权重 + bridge 生成 rollout，再跑 `score-fdce`。14B 只有 YAML 记录的论文配置，没有权重与运行适配器。
+README明确2B资产与接口；14B权重/adapter未包含。`objectives.py`是可读参考helper，其默认前景权5/1及selected-pair统一平均与论文配置1/.02、正负各自归一不同，不能将参考helper当作完整外部训练实现。
 
 ## 工程实践
 
@@ -170,7 +170,7 @@ sequenceDiagram
 | 去偏数据量 | 2B 上 1 h 去偏视频即可拿到大部分收益（FDCE 均值 12.63 → 8.91；1000 h 为 7.97） |
 | 动作原语标签 | \(\mathcal L_{ctr}\) 依赖视频文本标注里的动词；没有文本标注的数据需要另找原语来源 |
 | 评测 | FDCE 依赖 SAM3 与 CoWTracker；可用缓存的掩码 / 轨迹 |
-| 开源状态 | 代码 + 2B 权重 + 评测已开源（2026-10-10 核查）；仓库同时存在 `AetherLabsAI/CD-LAM` 与 `yufanwei/CD-LAM` 两个地址，HEAD 相同 |
+| 开源状态 | 代码 + 2B 权重 + 评测已开源（2026-11-13 核查）；仓库同时存在 `AetherLabsAI/CD-LAM` 与 `yufanwei/CD-LAM` 两个地址，HEAD 相同 |
 
 ## 实验与评测
 
@@ -217,7 +217,7 @@ sequenceDiagram
 - **省的主要是后训练。** 去偏潜动作让后训练约 3k 步追平基线 50k 步，对机器人数据少的团队价值最大。
 - **少量去偏数据就够。** 1 h 视频拿到大部分收益，说明去偏是低成本的预处理步骤。
 - **对策略的帮助有限且不均匀。** X-VLA 上相对 DreamDojo LAM 有 0.6–5 pp 提升，但 LIBERO 上不如不用潜动作预训练；不要把它当作通用的 VLA 提分手段。
-- **可复现性分级。** 2B 可完整复现；14B 结论只能看论文。
+- **可复现性分级。** 2B有入口、权重及外部runtime依赖，本次未执行复现；14B仅论文与配置。
 
 ## 与其他工作对比
 
@@ -232,6 +232,10 @@ sequenceDiagram
 - 在 [世界动作模型](../concepts/world-action-models.md) 与 [生成式世界模型](../methods/generative-world-models.md) 的分类里，CD-LAM 属于「动作条件接口」层的改进；与 [逆动力学模型](../concepts/inverse-dynamics-model.md) 的关系是：LAM 的编码器本质上是一个自监督 IDM。
 
 ## 局限与风险
+
+- **消融存在折中：** 去Lcal后FDCE16.10低于Full17.23，但相机偏移响应和画质变差，不能声称每项正则都单调改善全部指标。
+- **训练节省口径：** >12×仅Stage3 updates，排除前置1k+2k；3.2%为样本暴露比，不是同GPU/同骨干算力比。
+- **策略协议：** Plus主指标按10030rollout加权；RoboTwin为12预选任务、单训练seed，bootstrap区间不量跨训练不确定性。
 
 - **博客与论文 v2 口径不同。** 博客（2026-07-27）写「>10×」「降 30% 以上」；v2 写「>12×」「最多降 42% / 35%」，并新增 LTX、X-VLA 实验。引用时注明版本。
 - **单样本示例。** 零动作 44.2 px vs 3.3 px 是单个 14B 样本，均值以表格为准。
@@ -259,6 +263,8 @@ sequenceDiagram
 ## 参考来源
 
 - [Aether AI 博客：CD-LAM（2026-07-27）](../../sources/blogs/aether_cd_lam.md)
+- [CD-LAM 固定版本源码归档](../../sources/repos/cd-lam.md)
+- [CD-LAM 项目页核对](../../sources/sites/cd-lam-project.md)
 - [CD-LAM 论文归档（arXiv:2607.09185 v2）](../../sources/papers/cd_lam_arxiv_2607_09185.md)
 
 ## 推荐继续阅读

@@ -11,7 +11,7 @@ tags:
   - bytedance
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2507.03227"
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md
@@ -21,6 +21,8 @@ related:
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ./paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md
   - ../../roadmap/depth-teleoperation.md
+original:
+  - ../../sources/papers/humanoid_pnb_dexterous-teleoperation-of-20-dof-bytedexter-han.md
 sources:
   - ../../sources/papers/humanoid_pnb_dexterous-teleoperation-of-20-dof-bytedexter-han.md
   - ../../sources/sites/bytedexter.md
@@ -141,7 +143,7 @@ Quest 控制器固定在手套背面，使腕部和手指共享操作员参考�
 - Manus/Quest 是商业设备；手套标定、穿戴舒适性和长期漂移未充分量化。
 - 论文没有跨不同操作者、不同 ByteDexter 个体或大样本成功率，泛化结论有限。
 
-## 与其他页面的关系
+## 关联页面（与其他页面的关系）
 
 - 路线定位：[遥操作纵深 Stage 4](../../roadmap/depth-teleoperation.md) 的高 DoF 手套→机械手分支。
 - 主任务：[Teleoperation](../tasks/teleoperation.md)。

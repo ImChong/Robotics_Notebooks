@@ -15,6 +15,8 @@
 - **真机：** Franka FR3 + SharpaWave（22 DoF）/ LeapHand（16 DoF）；NOKOV MoCap 30 Hz
 - **开源状态：** **未开源**（截至 2026-09-19：项目页仍无官方代码链；仅见非官方 [ice4133/TeleDexter](https://github.com/ice4133/TeleDexter) 第三方仓）
 - **入库日期：** 2026-07-28（2026-09-19 复核查）
+- **通读：** 已完成
+- **核对范围：** 通读 arXiv:2607.11481v1 全文（正文 1–9 页 + 附录 A–E，参考文献已剔除）；核对了方法、奖励/课程/masking 参数、Tab.1–11 与失败模式；项目页内容（Pen Spinning 等）未在本次通读范围内。
 - **一句话说明：** 提出 hand–object **co-tracking** 低层控制器：操作员给出同步指尖位姿与物体位姿目标，仿真单阶段 RL（连续子目标 + hybrid reward + random action masking）零样本部署，七项灵巧遥操作平均 **75.2% SR**，并可采数训 Diffusion Policy。
 
 ## 相关资料（策展）

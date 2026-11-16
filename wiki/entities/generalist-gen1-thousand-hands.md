@@ -3,7 +3,7 @@ type: entity
 tags: [company, embodied-foundation-model, cross-embodiment, manipulation, end-effector, foundation-policy, scaling, generalist-ai]
 status: complete
 title: GEN-1 千手（跨末端执行器泛化）
-updated: 2026-07-24
+updated: 2026-11-15
 related:
   - ./generalist-ai-robotics.md
   - ./generalist-gen15-one-shot.md
@@ -47,7 +47,7 @@ summary: "Generalist GEN-1「千手」博客（2026-07）：同一具身基础�
 - **跨具身的细粒度轴：** 多数「跨具身」讨论骨架/自由度差异；本篇把问题收窄为 **同一臂身、不同手/工具接口**——对产线 tool changer 与家用工具箱叙事更直接。
 - **可操作的诊断思想：** 用 **微调权重相对范数（task vector）** 量化新手「新颖度」，并分解到传感 / 推理 / 驱动子系统，把「该补什么数据」从直觉变成可对照的干预信号。
 - **在线条件化，而非每手一策略：** 任务中途物理换手仍用同一 checkpoint 继续 rollout，强调 **按所见末端条件化** 的混合训练先验，而非死记固定操纵套路。
-- **与开源跨具身路线对照：** [Open X-Embodiment](../concepts/open-x-embodiment.md) / [Octo](../methods/octo-model.md) 强调多机型公开数据；本篇是 **闭源、超大规模 in-house 数据** 上的商业对照样本——引用须标明来源边界。
+- **与开源跨具身路线对照：** [Open X-Embodiment](../concepts/open-x-embodiment.md) / [Octo](./paper-octo.md) 强调多机型公开数据；本篇是 **闭源、超大规模 in-house 数据** 上的商业对照样本——引用须标明来源边界。
 
 ## 流程总览
 

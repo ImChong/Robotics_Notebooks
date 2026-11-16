@@ -52,6 +52,6 @@
 | 关联 | 说明 |
 |------|------|
 | [paper-sonic-transfer](../../wiki/entities/paper-sonic-transfer.md) | 冻结 codec + LoRA 论文实体 |
-| [SONIC](../../wiki/methods/sonic-motion-tracking.md) | 源平台 GEAR-SONIC |
+| [SONIC](../../wiki/entities/nvidia-sonic.md) | 源平台 GEAR-SONIC |
 | [GR00T-WholeBodyControl](../../wiki/entities/gr00t-wholebodycontrol.md) | NVIDIA 官方训练/部署单仓（G1） |
 | [Any2Any](../../wiki/entities/paper-any2any-cross-embodiment-wbt.md) | 同骨干、不同对齐/冻结合同的跨具身对照 |

@@ -8,7 +8,10 @@
 - **链接：** https://github.com/karpathy/autoresearch
 - **父项目：** [nanochat](https://github.com/karpathy/nanochat)（本仓为单 GPU 简化训练栈）
 - **入库日期：** 2026-06-20
-- **一句话说明：** 让编码代理在固定 5 分钟墙钟预算内自主修改 `train.py`、训练 nanochat 式 GPT、以 **val_bpb** 决定去留并循环实验；人类主要迭代 `program.md`（轻量「研究组织技能」）而非直接改 Python。
+- **复核日期：** 2026-11-14（本地克隆源码实读核查，HEAD `228791fb`，2026-03-25；MIT）
+- **核对范围：** `README.md`（1–92 行）、`program.md`（1–114 行全文）、`prepare.py`（1–389 行全文：常量、分片下载、`rustbpe` 训练、BOS-aligned best-fit `make_dataloader`、`evaluate_bpb`）、`train.py`（1–630 行全文：`GPTConfig`/`GPT`/RoPE/FA3/`value_embeds`/logit softcap/`MuonAdamW`/5 分钟训练环）
+- **通读：** 已完成
+- **一句话说明：** 让编码代理在固定 5 分钟墙钟预算内自主修改 `train.py`、训练基于 nanochat 简化的单 GPU GPT（RoPE + FA3 + ResFormer 值嵌入 + `MuonAdamW`）、以 **val_bpb** 决定去留并循环实验；人类主要迭代 `program.md`（轻量「研究组织技能」）而非直接改 Python。
 - **为什么值得保留：** 把 [AI Auto-Research](../../wiki/concepts/ai-auto-research.md) 综述中 **S3 编码与实验** 落到可复现的最小闭环：单文件可编辑面、固定可比预算、单一验证指标、人机分工（`program.md` vs `train.py`）。与 [LLM Wiki（Karpathy 模式）](../../wiki/references/llm-wiki-karpathy.md)、[Superpowers](../../wiki/entities/superpowers-obra.md)（`SKILL.md` 技能契约）形成 **研究自动化 / 知识编译 / 工程技能** 三角参照。
 - **沉淀到 wiki：** 是 → [`wiki/entities/karpathy-autoresearch.md`](../../wiki/entities/karpathy-autoresearch.md)
 

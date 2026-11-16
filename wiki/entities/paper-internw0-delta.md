@@ -2,7 +2,9 @@
 type: entity
 tags: [paper, world-action-model, robot-learning, video-diffusion, flow-matching, cross-embodiment, robot-manipulation, dataset]
 status: complete
-updated: 2026-10-13
+updated: 2026-11-16
+original:
+  - ../../sources/papers/internw0_delta_arxiv_2609_31394.md
 project_id: internw0-delta
 arxiv: "2609.31394"
 project: https://internrobotics.github.io/InternW0-Delta/
@@ -11,6 +13,7 @@ related:
   - ../overview/humanoid-motion-intelligence-day5-world-models-decision.md
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
+  - ../../roadmap/depth-wam.md
   - ./paper-openwam.md
   - ./paper-long-wam-scaling-context.md
   - ./paper-4d-wam.md
@@ -22,7 +25,7 @@ sources:
 summary: "InternW0-Δ 以稀疏观测记忆、冻结VLM语义、未来监督的Causal Imprint和训练期Track4World蒸馏连接Wan2.2视频专家与80维动作专家；统一处理机器人、UMI、人类第一视角和Ego2Robot数据，再经目标平台后训练，在多项仿真基准及4种真机平台评估。"
 ---
 
-# InternW0-Δ: A World Action Model Bridging Predictive Dynamics and Actions with 20K+ Hours of Open Data
+# InternW0-Δ: A World Action Model Bridging Predictive Dynamics and Actions with 20K+ Hours of Open Data｜以两万余小时数据连接预测动力学与机器人动作
 
 **InternW0-Δ**（arXiv: [2609.31394](https://arxiv.org/abs/2609.31394)，Shanghai AI Laboratory / InternRobotics）把视频生成预训练中的时间动力学迁移到机器人动作生成。它不要求推理时先生成一段未来视频再交给规划器：视频专家从观测中提取上下文，动作专家借助 **Causal Imprint（因果印记）**读取“接下来场景可能如何变化”的训练所得表征，并直接生成机器人动作块。
 
@@ -47,7 +50,7 @@ summary: "InternW0-Δ 以稀疏观测记忆、冻结VLM语义、未来监督的C
 
 InternW0-Δ 的关键设计是让视频预测带来的时间与几何知识改善动作决策，同时把推理成本限制在动作生成路径。它用训练期未来监督学习因果表征，不把未来视频生成放进在线控制循环。
 
-## 方法总览
+## 核心原理与方法总览
 
 ### 模型结构与信息流
 
@@ -144,6 +147,27 @@ flowchart LR
 
 预训练 checkpoint 再按目标任务和机器人单独 post-train，包括 LIBERO、RoboTwin、RoboDojo、EBench 和四类真机接口。不能把实验解读成一个未适配 checkpoint 零样本控制所有机器人。
 
+## 工程实践：官方复现与部署入口
+
+[官方 README](https://github.com/InternRobotics/InternW0-Delta)、[权重指南](https://github.com/InternRobotics/InternW0-Delta/blob/main/docs/models.md)、[ROS2 部署指南](https://github.com/InternRobotics/InternW0-Delta/blob/main/deploy/README.md) 提供了 Linux、Python 3.11、CUDA GPU、FFmpeg 环境下的入口（下列命令仅作源码核对，**非本次实际复现实验**）：
+
+```bash
+# 准备 backbone、数据、模型初始化后执行预训练
+python tools/path_index.py
+python tools/pretrain_text_cache.py
+NPROC_PER_NODE=8 bash run.sh pretrain
+
+# 准备 LIBERO 数据、Base 权重、文本缓存后单独后训练
+python tools/text_cache.py task=libero
+NPROC_PER_NODE=8 bash run.sh libero
+
+# 真机先做配置检查；不加 --execute 时只观测与推理
+bash deploy/run.sh runs/rtc/my-run --mode rtc --check-config
+bash deploy/run.sh runs/rtc/my-run --mode rtc --robot-config deploy/robot.yaml --instruction 'Place the cup on the tray.'
+```
+
+**部署契约：** `configs/pretrain/projections/robot.yaml` 定义带 mask 的 80D 槽位；当前 `deploy/policy.py` 中公开双臂示例把模型预测映射为 14D 物理动作（双臂各 6 个关节 + 1 个夹爪），`deploy/run.py` 要求相机时间戳、归一化统计、动作频率和关节顺序匹配。默认不发布指令，显式 `--execute` 才调用 `robot.publish`；底层控制器必须提供关节限位、command watchdog。
+
 ## 推理与部署
 
 动作推理分两段：
@@ -153,22 +177,61 @@ flowchart LR
 
 每个动作块含 **32 步**。真机控制频率为 **30 Hz**，每执行 16 步就在后台发起一次新推理；执行中的计划作为 clean prefix 提供给新动作块，训练时随机模拟 0–16 步的 committed prefix。以 30 Hz 计，等待下一块的理论窗口为 533 ms；文章另外报告 RTX 5090 上 controller-observed round-trip latency **152.8 ms**（相对 780.5 ms 标准运行时 5.11× 加速）。这是动作块请求的往返延迟，不是每步 152.8 ms，也不意味着该模型能以 30 Hz 完成一次全量重新规划再阻塞式执行。
 
-### 推理/控制执行顺序
+## 源码运行时序图
+
+训练路径对应 [`run.sh`](https://github.com/InternRobotics/InternW0-Delta/blob/main/run.sh)、[`scripts/train_distributed.sh`](https://github.com/InternRobotics/InternW0-Delta/blob/main/scripts/train_distributed.sh)、[`scripts/train.py`](https://github.com/InternRobotics/InternW0-Delta/blob/main/scripts/train.py)：
 
 ```mermaid
 sequenceDiagram
-  participant Robot as 相机与机器人控制器
-  participant Policy as 异步策略进程
-  participant Vision as 视频专家与缓存
-  participant Action as 动作专家
-
-  Robot->>Policy: 当前观测 + 本体状态 + 指令 + 已提交动作前缀
-  Policy->>Vision: A/R/C 编码与 Δ 表征
-  Vision-->>Policy: 缓存视觉 K/V
-  Policy->>Action: 32 步动作噪声 + 条件
-  Action-->>Policy: 续接后的动作块
-  Policy-->>Robot: 控制器接收动作块并继续执行
+  participant U as 使用者
+  participant R as run.sh
+  participant L as scripts/train_distributed.sh
+  participant A as accelerate launch
+  participant T as scripts/train.py
+  participant C as wam.cache.CacheManager
+  participant RT as wam.runtime.run_training
+  U->>R: bash run.sh pretrain
+  R->>L: 转发 task 与 Hydra overrides
+  L->>A: launch scripts/train.py task=pretrain
+  A->>T: 加载 configs/train
+  T->>C: CacheManager.from_config(cfg)
+  alt 缓存生成
+    T->>C: generate()
+  else 模型训练
+    T->>RT: run_training(cfg, cache_manager)
+  end
 ```
+
+RTC 推理/控制路径对应 [`deploy/run.py`](https://github.com/InternRobotics/InternW0-Delta/blob/main/deploy/run.py)、[`deploy/policy.py`](https://github.com/InternRobotics/InternW0-Delta/blob/main/deploy/policy.py) 与 [`deploy/controller.py`](https://github.com/InternRobotics/InternW0-Delta/blob/main/deploy/controller.py)：
+
+```mermaid
+sequenceDiagram
+  participant U as 使用者
+  participant CLI as deploy/run.py
+  participant P as deploy.policy
+  participant Robot as deploy.robot / ROS2
+  participant Ctrl as deploy.controller.AsyncController
+  U->>CLI: bash deploy/run.sh RUN --mode rtc
+  CLI->>P: read_run() / load_policy()
+  CLI->>Robot: connect() / ObservationValidator
+  CLI->>Ctrl: initialize(首帧观测)
+  loop 30 Hz 控制循环
+    CLI->>Ctrl: poll() / needs_observation()
+    opt 每半个 chunk 需要重新规划
+      CLI->>Robot: 读取新观测
+      CLI->>Ctrl: submit(observation)
+      Ctrl->>P: predict(obs, instruction, step, guidance)
+      P-->>Ctrl: 32x14 执行动作与 32x80 模型计划
+    end
+    CLI->>Ctrl: action()
+    opt 显式使用 --execute
+      CLI->>Robot: publish(14D 动作)
+    end
+    CLI->>Ctrl: commit()
+  end
+```
+
+时序图基于开源源码调用路径，不表示已运行 GPU 训练或真机闭环。
 
 ## 实验结果
 
@@ -199,28 +262,37 @@ sequenceDiagram
 
 ## 结论
 
-InternW0-Δ 的贡献不只是把视频 backbone 接到动作头上，而是以 CI 将未来监督变成当前可用的动作相关表征，再用稀疏记忆、VLM 语义、4D 蒸馏和 80D mask 接口支撑异构预训练与跨平台适配。论文提供了多项仿真和四种真机平台证据；复现评估仍要区分已发布代码、尚待发布的权重，以及受许可约束的数据。
+**总判：** InternW0-Δ 通过训练期未来监督将预测性信息压入动作可读的 Causal Imprint，在执行时复用视觉缓存、只去噪动作；跨本体需要任务/硬件后训练与部署适配，不能把实验解读为零样本通用控制。
+
+1. **保持信息权限：** CI / 动作 token 在训练和推理时均不能读取真实未来帧。
+2. **优先关注 VLM 与 future-feature alignment：** 消融显示两者的贡献比 CI latent-difference 单项更显著。
+3. **4D 教师仅在训练期使用：** Track4World 离线生成描述子并蒸馏，不在真机动作推理中额外运行。
+4. **80D 是中间接口不是电机协议：** 每种机器人仍需要 mask、归一化、关节/坐标适配和底层安全限制。
+5. **区分频率与延迟：** 30 Hz 是命令发布节奏，32 步 chunk + 中点异步请求用于覆盖单次模型推理时延。
+6. **复现核对发布资产：** 代码与四款权重公开，但 20K+ h 数据的许可和可下载范围另须逐源确认。
+
 
 ## 局限与证据边界
 
 - **异构动作并未消除适配成本：** 80D 带 mask 的统一布局让预训练共享成为可能，但每类原生控制信号仍需 adapter；四种真机分别做 post-training。
-- **大量数据不等于全量开源可下载：** 项目 README 当前提供数据准备/训练/评测/部署代码和 MIT 代码许可；README 将模型 checkpoint 标为 forthcoming，处理后数据受上游许可约束。
+- **大量数据不等于全量开源可下载：** 项目 README 当前提供数据准备/训练/评测/部署代码和 MIT 代码许可；模型权重已在 Hugging Face 公开，处理后数据受上游许可约束。
 - **真机证据有任务和试验范围：** 11 项任务中，论文只对两项 AC-One 任务给出明确、每条件 20 次的预训练对照；其他任务覆盖的统计细节不应由示例视频代替。
 - **CI 的 future supervision 是训练目标而非测试时信息：** 动作路径不看未来帧，但表示收益仍需经消融和下游任务验证；CI 的直接 latent difference 目标单独增益不大，和未来特征对齐联合时增益更明显。
 - **数据来源的贡献未被穷尽分析：** 论文局限指出未系统分析不同第一视角数据、转换策略、混合比例和监督形式；agent-assisted control 的实验也仅是初步纠错场景，没有系统研究长期规划/调用策略。
 - **吞吐、控制频率和推理延迟需分开：** 30 Hz 是控制器执行频率；152.8 ms 是一次异步动作块调用的往返延迟，依靠 chunk 前缀和并行执行保持连续性。
 - **“最大开源语料”是作者对处理后数据集合的表述**；授权限制意味着公开可得性要按来源逐项确认。
 
-## 开源与复现状态（核验于 2026-10-13）
+## 开源与复现状态（核验于 2026-11-16）
 
 - **代码：已公开。** [InternRobotics/InternW0-Delta](https://github.com/InternRobotics/InternW0-Delta) 包含数据处理、预训练、4D 蒸馏、post-training、评测、真机部署、可视化和测试代码；README 提供 Linux/Python 3.11/CUDA 安装与训练入口。许可证为 **MIT**，第三方组件按 NOTICE 分别适用其许可证。
-- **权重：尚未随当前 README 提供。** 项目页和 README 将模型 checkpoint 标为 **Forthcoming / coming soon**；论文表示计划发布。
+- **权重：已发布四类。** [官方 models.md](https://github.com/InternRobotics/InternW0-Delta/blob/main/docs/models.md) 已列 [Base/pretrain.pt](https://huggingface.co/InternRobotics/InternW0-Delta-Base/tree/main)、[LIBERO/libero.pt](https://huggingface.co/InternRobotics/InternW0-Delta-Libero/tree/main)、[RoboTwin/robotwin.pt](https://huggingface.co/InternRobotics/InternW0-Delta-RoboTwin/tree/main)、[RoboDojo/robodojo.pt](https://huggingface.co/InternRobotics/InternW0-Delta-RoboDojo/tree/main)，四个 Files 页可见对应约 12.4 GB 权重；模型仓库标注 Apache-2.0，与代码 MIT 分开。项目/README 顶部 coming soon 文案已滞后。
 - **数据：部分受许可限制。** 发布范围受原始数据集许可制约，不能将论文中所有训练时长等同为一个可直接下载的数据包。
 - **论文：** arXiv v1 于 **2026-09-25** 提交，论文标注 **CC BY-NC-SA 4.0**；论文许可和代码 MIT 是不同对象。
 
 ## 关联页面
 
 - [World Action Models 概念页](../concepts/world-action-models.md) — WAM 的范围、结构路线和相关实体索引。
+- [WAM 纵深路线 Stage 3](../../roadmap/depth-wam.md) — Joint 双专家、future supervision 与 RTC 部署链路。
 - [生成式世界模型](../methods/generative-world-models.md) — 视频生成/潜变量动力学及控制接口。
 - [Day 5：世界模型与决策导读](../overview/humanoid-motion-intelligence-day5-world-models-decision.md) — 作为该综述索引中的既有条目。
 - [OpenWAM](./paper-openwam.md) — WAM 训练/评测路线对照。
@@ -235,3 +307,9 @@ InternW0-Δ 的贡献不只是把视频 backbone 接到动作头上，而是以 
 - [arXiv HTML](https://arxiv.org/html/2609.31394v1)
 - [官方项目页](https://internrobotics.github.io/InternW0-Delta/)
 - [官方仓库](https://github.com/InternRobotics/InternW0-Delta)
+
+## 推荐继续阅读
+
+- [InternW0-Δ arXiv HTML v1 原文](https://arxiv.org/html/2609.31394v1) — 方法、数据、训练、基础设施、实验及作者局限。
+- [官方权重指南](https://github.com/InternRobotics/InternW0-Delta/blob/main/docs/models.md) — 模型、backbone 与初始化条件。
+- [官方真机部署指南](https://github.com/InternRobotics/InternW0-Delta/blob/main/deploy/README.md) — ROS2 适配器、RTC 模式与安全约束。

@@ -5,10 +5,14 @@
 - **标题：** THAW-VLA: Think Like a World Model, Act Like a VLA — Distilling World-Model Representations into Compact Robot Policies
 - **类型：** paper / vla / world-model / representation-distillation / manipulation
 - **arXiv abs：** <https://arxiv.org/abs/2609.24682>
-- **PDF：** <https://arxiv.org/pdf/2609.24682>
+- **PDF：** <https://arxiv.org/pdf/2609.24682v3>
+- **HTML 全文：** <https://arxiv.org/html/2609.24682v3>
+- **核对范围：** 已通读 v3 摘要、引言、相关工作、方法（含式 1–3）、LIBERO / RoboCasa-GR1 / 真机实验、对照消融、结论及参考文献；并对照项目页与官方代码入口。
+- **通读：** 已完成
+- **复核日期：** 2026-11-12
 - **项目页：** <https://thaw-vla.trung-dt.com/> — 归档见 [`sources/sites/thaw-vla-trung-dt-com.md`](../sites/thaw-vla-trung-dt-com.md)
 - **代码：** **已开源** — <https://github.com/trungdt880/THAW-VLA>（MIT，vendored StarVLA）；归档见 [`sources/repos/thaw-vla.md`](../repos/thaw-vla.md)
-- **权重：** Hugging Face collection [`termanteus/thaw-vla`](https://huggingface.co/collections/termanteus/thaw-vla) — **已公开**（2026-09-24 复核：`THAW-VLA-Qwen3.5-0.8B-LIBERO` 等 `gated=false`）
+- **权重：** Hugging Face collection [`termanteus/thaw-vla`](https://huggingface.co/collections/termanteus/thaw-vla) — **已公开**（2026-11-12 匿名可打开模型页与 Files 列表，其中可见 `final_model.pt`；README 仍留有过时 `private` 字样，实际下载及推理未在本次核验）
 - **机构：** 威斯康星大学麦迪逊分校（University of Wisconsin–Madison）、伊利诺伊大学厄巴纳-香槟分校（University of Illinois Urbana-Champaign）— Trung Dao、Sankalp Yamsani、Jaden Park、Joohyung Kim、Yong Jae Lee
 - **入库日期：** 2026-09-23
 - **一句话说明：** 在标准 VLA 训练上加 **一条 cosine 特征对齐项**：冻结世界模型（Cosmos3-Nano）对训练帧 **预计算并缓存** teacher 特征，学生 QwenGR00T（0.8B）对齐后 **丢弃 projector**，部署图与未蒸馏 baseline **完全相同**（RTX 5090 上 32 ms / 1.86 GB）。
@@ -62,8 +66,17 @@
 | 训练 / 评测 / deployment 代码 | **已开源**（MIT） |
 | Teacher 预计算脚本 | `tools/cosmos3_precompute_targets.py` |
 | 对齐模块 | `starVLA/model/modules/distill/fastwam_repa.py` |
-| 发布 checkpoint | HF **已公开**（2026-09-24；此前 private 需申请） |
+| 发布 checkpoint | HF 模型页与文件列表可匿名访问（2026-11-12）；尚未下载运行，README 仍描述为 private |
 | Cosmos3-Nano teacher 权重 | 需自备 ~33 GB checkpoint |
+
+## v3 方法与评测核验补充
+
+- **动作监督来源：** 示范动作；teacher 只提供视觉中间特征，不提供动作 label。
+- **分视角特征：** student 对 image token mean-pool，经双层 MLP 映射后使用 `1 − cos` 对齐 teacher stop-grad 特征；总损失 `L_act + 0.5 L_align`。
+- **评测协议：** LIBERO 约 27.3 万示范步，每任务 50 episode；RoboCasa-GR1 24 环境、训练共 2.4 万轨迹和约 602 万步；主表每环境测试 20 episode，2 seeds × 2 GPU 共四轮。
+- **真机：** 三个任务分别为单臂水果、单臂鸡蛋、双臂水果交接；每个 policy/task 30 trials，对照 0.8B 83.3/46.7/40.0%，蒸馏后 93.3/60.0/46.7%。
+- **消融限制：** RoboCasa backbone/layer 消融为单次 A100，layer sweep 只训完整日程的 1/4；不能与主表混比。
+- **复现提示：** GitHub README 的 GR1 评测脚本标注每环境 50 次，与论文主表 20 次不同；比较结果要注明协议。
 
 ## 对 wiki 的映射
 
@@ -73,5 +86,5 @@
 ## 当前提炼状态
 
 - [x] arXiv + 项目页 + GitHub 核查
-- [x] 开源状态：代码已开源，checkpoint 部分（private HF）
+- [x] 开源状态：代码已开源；HF checkpoint 文件列表公开，README 私有状态描述待同步
 - [x] 源码运行时序图（对齐 README 四阶段脚本）

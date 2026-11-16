@@ -5,14 +5,16 @@ status: complete
 original:
   - ../../sources/papers/diffusion_policy_reading_arxiv_2303_04137.md
 summary: "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
-updated: 2026-11-05
+updated: 2026-11-15
 related:
+  - ../entities/paper-flow-grpo.md
   - ../overview/ai-architecture-map.md
   - ../concepts/diffusion-transformer.md
   - ../concepts/diffusion-model.md
   - ../entities/paper-scaledp-scaling-diffusion-transformer-policy.md
   - ../entities/paper-robotic-dit-ingredients-dit-block-policy.md
   - ../entities/paper-robofft.md
+  - ../entities/paper-mate-asynchronous-multirate-diffusion.md
 ---
 
 # Diffusion Policy
@@ -82,6 +84,8 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 
 原论文把 **receding-horizon control** 写进部署设计：一次去噪得到长度 \(T_p\) 的 chunk，**只执行前 \(T_e\) 步**（\(T_e < T_p\)），再用新观测 **重新预测** 下一段；未执行后缀 **丢弃**，而非与下一 chunk 融合。这与 ACT 默认的 **Temporal Ensembling**（每步重叠预测 + 加权平均） **不是同一执行协议**。机制对照见 [滚动预测执行](../concepts/receding-horizon-policy-execution.md)。
 
+**流匹配在线强化学习扩展：** [Flow-GRPO](../entities/paper-flow-grpo.md)（NeurIPS 2025）通过 ODE→SDE 的随机转移和 GRPO 的组内相对优势，为 flow matching 生成器提供在线 reward 优化接口；原论文验证的是**文本生成图像**，并非机器人 Diffusion Policy 或 VLA 的真机效果。
+
 ## 两种主要实现变体
 
 ### DDPM（基于 UNet 的扩散策略）
@@ -142,6 +146,9 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 据原论文（Chi et al.）：策略建模为以观测 $O_t$ 为条件的动作 DDPM $p(A_t\mid O_t)$，视觉特征只算一次、不进入去噪输出，使多步去噪的实时推理可行；闭环执行采用观测 $T_o$ 步、预测 $T_p$ 步、执行 $T_a$ 步后重规划的 receding horizon。去噪网络有 CNN（FiLM 条件化，开箱即用，但对高频陡变动作偏平滑）与 Transformer（高频任务更好但对超参敏感）两种，作者建议先用 CNN 版。相对 IBC，扩散学的是能量梯度，无需负采样，训练稳定。详见上文「主要技术路线」。
 
 ## 工程实践
+
+- **异步多速率策略组合**：参见 [MATE（原 LAG-Fusion）](../entities/paper-mate-asynchronous-multirate-diffusion.md)（arXiv:2607.17257v2）：将独立训练的视觉 5 Hz 与力反馈 25 Hz 扩散策略在推理时通过动作时域重叠、参考帧重映射和去噪指导融合组合；代码截至 2026-11-10 仍待发布。
+
 
 以下均来自原论文实验与附录：
 - **动作空间**：位置控制明显优于速度控制（多模态更显著、复合误差更小）；旋转用 6D 表示。

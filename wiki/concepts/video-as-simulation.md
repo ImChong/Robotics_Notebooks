@@ -2,7 +2,7 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-15
 related:
   - ../entities/paper-vgi-white-paper.md
   - ../methods/generative-world-models.md
@@ -127,7 +127,7 @@ UniSim 证明了通过将“大量无人干预的人类视频”与“少量机�
 
 ## 在人形控制上的延伸：[ExoActor](../methods/exoactor.md)
 
-UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略，而 [ExoActor (BAAI, 2026)](../methods/exoactor.md) 把同一思想推到了**真实物理人形机器人控制**层：用第三人称视频生成模型生成"想象的示教"，再通过 [GENMO](../methods/genmo.md)/[WiLoR](../methods/wilor.md) 估计 SMPL 全身 + 双手动作，并直接喂给 [SONIC](../methods/sonic-motion-tracking.md) 这种通用 motion tracking 控制器在 Unitree G1 上执行。这给"视频即仿真"提供了一个无需真实数据采集的端到端落地实例。[RoboReact](../entities/paper-roboreact.md)（arXiv:2608.03387）走另一条落地：生成视频只当任务顺序与手–物结构先验，编译成物体中心关键帧后在真机标定，测试时不再跑视频模型。
+UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略，而 [ExoActor (BAAI, 2026)](../methods/exoactor.md) 把同一思想推到了**真实物理人形机器人控制**层：用第三人称视频生成模型生成"想象的示教"，再通过 [GENMO](../methods/genmo.md)/[WiLoR](../methods/wilor.md) 估计 SMPL 全身 + 双手动作，并直接喂给 [SONIC](../entities/nvidia-sonic.md) 这种通用 motion tracking 控制器在 Unitree G1 上执行。这给"视频即仿真"提供了一个无需真实数据采集的端到端落地实例。[RoboReact](../entities/paper-roboreact.md)（arXiv:2608.03387）走另一条落地：生成视频只当任务顺序与手–物结构先验，编译成物体中心关键帧后在真机标定，测试时不再跑视频模型。
 
 在**已知静态 3D 场景**、以**第一人称手–物交互**为主线的设定下，[DWM（Dexterous World Models）](../methods/dwm.md) 把视频扩散当作「手条件驱动的场景动力学」模拟器：显式渲染静态场景作基线，再预测操纵残差；论文还演示用 rollout 视频对候选动作做**视觉层面的粗评估**，与闭环力控仿真仍是不同层级。
 

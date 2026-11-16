@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from scripts.log_md import (
+from log_md import (
     fold_log_fragments,
     prepend_log_entry,
     write_log_fragment,

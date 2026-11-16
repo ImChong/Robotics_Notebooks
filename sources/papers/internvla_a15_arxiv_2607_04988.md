@@ -3,16 +3,28 @@
 > 来源归档（ingest）
 
 - **标题：** InternVLA-A1.5: Unifying Understanding, Latent Foresight, and Action for Compositional Generalization
+- **短名：** InternVLA-A1.5
 - **类型：** paper
+- **版本：** arXiv:2607.04988v1（2026-07）
 - **arXiv：** <https://arxiv.org/abs/2607.04988>
 - **PDF：** <https://arxiv.org/pdf/2607.04988>
+- **项目页：** <https://internrobotics.github.io/internvla-a15.github.io/>
+- **代码：** <https://github.com/InternRobotics/InternVLA-A1>（`main` 分支即 InternVLA-A1.5；`pyproject.toml` 标注主页 `InternRobotics/InternVLA-A1.5`，前作 A1 迁至 `InternVLA-A1` 分支）
+- **模型权重：** HuggingFace Collection `InternRobotics/internvla-a15`（含 `InternVLA-A1.5-base`、`InternVLA-A1.5-RoboTwin`、`InternVLA-A1.5-Libero`、`InternVLA-A1.5-DOMINO`）及 ModelScope 镜像
+- **许可证：** CC BY-NC-SA 4.0（非商业研究共享协议）
 - **机构：** 上海人工智能实验室（Shanghai AI Laboratory）Physical Intelligence Team；核心贡献者含 Haoxiang Ma、Junhao Cai、Xiaoxu Xu 等；通讯 Weinan Zhang
 - **前作：** InternVLA-A1（统一未来视觉状态与动作）、InternVLA-M1（多模态共训语料）
 - **骨干：** **Qwen3.5-2B** VLM + **460M** unified expert（MoT 共享 full attention）
 - **世界模型教师：** 冻结 **WAN2.2-5B**（训练期 latent foresight 监督，推理丢弃）
 - **预训练规模：** **1.2M** 机器人 episode（**861M** 帧）+ **3M** 多模态样本（InternVLA-M1）
 - **入库日期：** 2026-07-11
-- **一句话说明：** 在原生 VLM chat 模板上 **持续 VQA/子任务共训**，用 **50 个 foresight token** 向冻结视频生成器查询 **紧凑潜式未来**，再以 **flow matching** 输出连续动作块；**训练用世界模型、部署不滚像素**，六套仿真全榜领先，真机 **组合指令 OOD 绑定** 与 **长程 MOF** 显著优于 π₀.₅ / Motus。
+- **通读：** 已完成
+- **核对范围：** 论文全文 `2607.04988.txt`（1902 行，含 §§1–6、Tables 1–8、Figures 1–10 及 Appendices A.1–A.2）与官方仓 `InternRobotics/InternVLA-A1` `main` 分支（`README.md`、`pyproject.toml`、`launch/internvla_a15_*.sh`、`configs/weight_rules_pretrain.yaml`、`src/lerobot/policies/internvla_a1_5/` 核心模块与 `evaluation/`）。
+- **一句话说明：** 在原生 VLM chat 模板上 **持续 VQA/子任务共训**，用 **50 个 foresight token** 向冻结视频生成器查询 **紧凑潜式未来**，再以 **flow matching** 输出连续动作块；**训练用世界模型、部署不滚像素**，六套仿真全榜领先，真机 **组合指令 OOD 绑定** 与 **长程 MOF** 显著优于 π₀.₅ / Motus（代码与权重已按 CC BY-NC-SA 4.0 开源）。
+
+## 开源状态（步骤 2.5，2026-11-14 复核）
+
+- **已开源（代码 + 预训练/下游微调权重，CC BY-NC-SA 4.0）：** 官方仓 `InternRobotics/InternVLA-A1` 的 `main` 分支已完整公开 InternVLA-A1.5 的预训练/微调脚本（`launch/internvla_a15_pretrain.sh`、`launch/internvla_a15_finetune*.sh`）、MoT 与 WAN 潜式前瞻实现（`modeling_internvla_a1_5.py`、`wan_model.py`）、CUDA Graph + SDPA 优化推理后端（`modeling_internvla_a1_5_optimized.py`）以及 LIBERO / LIBERO-Plus / RoboTwin / SimplerEnv / DOMINO 评测代码；HuggingFace 公开 `InternVLA-A1.5-base` 及各基准微调权重。
 
 ## 核心摘录（面向 wiki 编译）
 
@@ -92,6 +104,6 @@
 
 ## 当前提炼状态
 
-- [x] arXiv HTML 全文已对齐摘录（2607.04988）
-- [x] wiki 映射：`wiki/entities/paper-internvla-a15-unified-vla.md` 新建
-- [ ] 待官方代码/权重公开后补仓库与 LeRobot 集成链
+- [x] arXiv 全文（1902 行）与附录已核对摘录（2607.04988v1）
+- [x] 官方仓库 `InternRobotics/InternVLA-A1`（`main` 分支）与 HF 权重已交叉核查
+- [x] wiki 映射：`wiki/entities/paper-internvla-a15-unified-vla.md` 已同步代码时序图与开源状态

@@ -18,7 +18,7 @@ sources:
   - ../../sources/repos/awesome-affordance-learning.md
 ---
 
-# PALM
+# PALM: Progress-Aware Affordance Reasoning（arXiv:2601.07060）
 
 **PALM: Progress-Aware Policy Learning via Affordance Reasoning for Long-Horizon Robotic Manipulation**（CVPR 2026）收录于 [Awesome-Affordance-Learning](https://github.com/hq-King/Awesome-Affordance-Learning)，属于具身 AI affordance 学习综述的配套论文清单。本页是 **清单索引**：给出它在综述分类里的位置与原文入口，方法细节和量化结果请看原文。
 

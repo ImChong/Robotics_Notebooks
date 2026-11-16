@@ -8,6 +8,7 @@
 - **原始链接：** <https://www.genesis.ai/blog/the-role-of-simulation-in-scalable-robotics-genesis-world-10-and-the-path-forward>
 - **发布：** 2026 年 5 月（博客页 BibTeX 标注 month = May, year = 2026）
 - **入库日期：** 2026-05-28
+- **通读：** 已完成
 - **最后更新：** 2026-05-28
 - **一句话说明：** Genesis AI 阐述将仿真定位为机器人基础模型的**评测与迭代引擎**（先于仿真数据生成），并发布全栈仿真基础设施 **Genesis World 1.0**（Nyx 渲染、统一多物理、Quadrants 编译器）；报告 real-to-sim 闭环评测与真机 **Pearson ~0.90** 相关性及三条未来路线。
 

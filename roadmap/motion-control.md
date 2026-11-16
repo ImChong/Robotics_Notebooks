@@ -157,10 +157,10 @@ flowchart TB
 |------|--------------------------|--------------|
 | VLM 语义理解（System 2） | 较慢；与动作头解耦运行 | L8 / L10 |
 | 动作头出 action chunk（System 1） | 端到端网络常 10–50 Hz；GR00T N1 报告约 120 Hz 出 chunk、π0 约 50 Hz 控制 | L9 / L10 |
-| 低层 tracking policy / WBC | 平衡与力控需 200–1000 Hz | L4.4 / L5.2 |
+| 低层 tracking policy / WBC | 学习型跟踪器如 SONIC 约 50 Hz；模型式 WBC 常为数百 Hz 至 1 kHz，按平台实测 | L4.4 / L5.2 |
 | 关节 PD / 电流环 | 驱动器内更高频闭环 | L3 / L12 |
 
-> 频率数字来自站内已有页面：[控制与推理频率解耦](../wiki/concepts/control-inference-frequency-decoupling.md)、[GR00T N1](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[π0](../wiki/entities/paper-pi0.md)。**要点不是具体数字，而是"慢的大模型 + 快的低层控制器"必须分层**——这也是为什么 L3–L4 的控制基础在 VLA 时代仍然不可跳过。
+> 频率数字来自站内已有页面：[控制与推理频率解耦](../wiki/concepts/control-inference-frequency-decoupling.md)、[GR00T N1](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[π0](../wiki/entities/paper-pi0.md)、[SONIC 部署栈](../wiki/entities/nvidia-sonic.md)。**网络查询、动作下发、跟踪控制与驱动器内环是不同频率**；要分别核对，不能把某一架构的 1 kHz 当成所有学习型跟踪器的门槛。
 
 <a id="physical-ai-core-path"></a>
 
@@ -316,7 +316,7 @@ flowchart LR
 | Ch 9：Trajectory Generation | L3 / L4.3 |
 | Ch 11：Robot Control | L3 / L4.4 |
 
-> Ch 7（Force Control）、Ch 10（Motion Planning）也很有价值，但相对偏离本路线主干，作为可选。
+> Ch 7 是 **Kinematics of Closed Chains（闭链运动学）**，Ch 10 是 **Motion Planning**，可按任务选读；力控见 **Ch 11.5 Force Control / Ch 11.6 Hybrid Motion-Force Control**，与 L3 / L4.4 衔接。
 
 **官方资源**：[项目页](https://modernrobotics.northwestern.edu/) · [书 PDF 与视频（Northwestern wiki）](https://hades.mech.northwestern.edu/index.php/Modern_Robotics) · [配套代码 NxRLab/ModernRobotics](https://github.com/NxRLab/ModernRobotics)。**不要求读完整本书**——对 Physical AI 路线，重点吃透 **SE(3)、FK / IK、Jacobian、Dynamics** 四块（上表 Ch 2–6、Ch 8）即可。
 
@@ -330,7 +330,7 @@ flowchart LR
 2. 实现一个倒立摆 [LQR](../wiki/formalizations/lqr.md) 或简单 [MPC](../wiki/methods/model-predictive-control.md)。  
 3. 跑通一个最小 [Whole-Body Control](../wiki/concepts/whole-body-control.md) / [TSID](../wiki/concepts/tsid.md) 示例。  
 4. 用 PPO 训练一个基础策略，并阅读 [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md) 做方法取舍。  
-5. 完成一次最小 [Sim2Real](../wiki/concepts/sim2real.md) checklist（哪怕只在仿真内做 domain randomization 对比）。  
+5. 按最小 [Sim2Real](../wiki/concepts/sim2real.md) checklist 做部署准备；只有仿真条件时完成 DR 对比或 sim2sim 回归，具备真机条件后再记录迁移结果。
 
 > 完成这 5 件事后，再回到 L0-L6 补理论，会更快理解“为什么要学这些”。
 
@@ -571,7 +571,7 @@ flowchart TD
 ### 自测题（学完应能答出）
 - 写出固定基开链机器人动力学方程标准形式，分别解释 \(M(q)\)、\(C(q,\dot q)\dot q\)、\(g(q)\) 的物理意义。
 - 为什么浮动基系统的状态需要 \((q, \dot q, \text{base pose}, \text{base vel})\) 而不能只用 \((q, \dot q)\)？
-- 给定接触点 Jacobian \(J_c\) 和接触力 \(f_c\)，从接触力到关节力矩的映射是什么？为什么这是 WBC 的核心一步？
+- 给定接触点 Jacobian \(J_c\) 和环境对机器人的接触力 \(f_c\)，对应的广义力是什么？为什么在浮动基 WBC 中不能直接把它当作关节驱动力矩？
 - RNEA / CRBA / ABA 分别求什么、计算复杂度差异在哪？Pinocchio 里典型一个 1 kHz 控制循环你会用哪个？
 
 <details class="selftest-answers">
@@ -580,8 +580,8 @@ flowchart TD
 ```mermaid
 flowchart LR
   fc["接触力<br/>$$f_c$$"] --> Jt["$$\mathbf{J}_c^{\mathsf{T}}$$"]
-  Jt --> tau["$$\boldsymbol{\tau}$$"]
-  tau --> WBC[WBC：在动力学与接触约束下分配力矩]
+  Jt --> Qc["广义接触力<br/>$$Q_c = J_c^{\mathsf{T}} f_c$$"]
+  Qc --> WBC[WBC：联合动力学与接触约束求关节力矩]
 ```
 
 ```mermaid
@@ -595,7 +595,7 @@ flowchart TD
 <ol>
 <li><strong>固定基动力学标准形式：</strong> \(M(q)\ddot q + C(q,\dot q)\dot q + g(q) = \tau\)。\(M(q)\)：对称正定质量 / 惯量矩阵，刻画产生加速度所需的广义力（惯性）；\(C(q,\dot q)\dot q\)：科里奥利与离心项，源于惯量随构型变化及速度耦合；\(g(q)\)：重力广义力。</li>
 <li><strong>浮动基为何需 base 状态：</strong> 浮动基躯干没有固定底座，其 6 维位姿本身是自由变量。只用关节量 \((q,\dot q)\) 无法表达整机在世界中的平移 / 旋转与动量，也写不出 CoM / ZMP / 接触等平衡约束，故状态须含 base pose 与 base vel，总维度约为 \((n+6)\) 位姿 + \((n+6)\) 速度。</li>
-<li><strong>接触力到关节力矩：</strong> \(\tau = J_c^\top f_c\)（虚功原理 / Jacobian 转置）。这是 WBC 核心一步：机器人能直接控制的只有关节力矩 \(\tau\)，而平衡靠接触力 \(f_c\)；WBC 在动力学与接触约束下求 \((\ddot q, f_c, \tau)\)，\(J_c^\top\) 正是把"想要的接触力"翻译成"每个关节该出多少力矩"的桥梁。</li>
+<li><strong>接触力到广义力：</strong> 虚功给出 \(Q_c = J_c^\top f_c\)，其中 \(f_c\) 是环境对机器人的接触力。浮动基下 \(Q_c\) 含基座与关节分量，不能直接等同于关节驱动力矩 \(\tau\)；须满足 \(M\dot v+h=S^\top\tau+J_c^\top f_c\)，其中 \(v\) 为广义速度、\(S\) 选取驱动关节。WBC 联合动力学、接触运动学、摩擦与力矩限幅求 \((\dot v,f_c,\tau)\)；固定基静力学的末端施力关系不能直接替代这一步。</li>
 <li><strong>RNEA / CRBA / ABA：</strong> RNEA 求逆动力学（由 \(q,\dot q,\ddot q\) 得 \(\tau\)），\(O(n)\)；CRBA 求质量矩阵 \(M(q)\)，\(O(n^2)\)；ABA 求正动力学（由 \(\tau\) 得 \(\ddot q\)），\(O(n)\)。1 kHz WBC 循环要的是逆动力学 / 力矩前馈，用 RNEA（需要 \(M\) 喂给 QP 时再配 CRBA）；ABA 主要用于仿真器正向积分。</li>
 </ol>
 </details>
@@ -686,7 +686,7 @@ $$\tau = K_p\,(q_{des} - q) + K_d\,(\dot q_{des} - \dot q) + \tau_{ff}$$
 - 能说明 computed torque、PD、阻抗控制与后续 WBC 任务控制之间的关系
 
 ### 自测题（学完应能答出）
-- LQR 和 MPC 在什么情况下解出来的控制律完全等价？哪些条件破坏后必须用 MPC？
+- LQR 和 MPC 在什么条件下可得到相同反馈律？为什么有限时域或轨迹跟踪本身并不意味着必须用 MPC？
 - 给一个 QP 问题，怎么判断它是不是凸的？为什么 WBC 强烈倾向于凸 QP？
 - HQP（Hierarchical QP）的"优先级"是怎么从数学上实现的（提示：null-space projection）？
 - 阻抗控制和导纳控制的本质区别是什么？什么时候用前者、什么时候用后者？
@@ -696,19 +696,18 @@ $$\tau = K_p\,(q_{des} - q) + K_d\,(\dot q_{des} - \dot q) + \tau_{ff}$$
 
 ```mermaid
 flowchart TD
-  Start[线性二次最优控制] --> C1{LTI + 无约束 + 无穷时域?}
-  C1 -->|是| LQR["$$u = -Kx$$"]
-  C1 -->|否| MPC[必须用 MPC]
-  MPC --> R1[状态 / 输入约束]
-  MPC --> R2[非线性 / 有限时域 / 轨迹跟踪]
+  Start[线性二次最优控制] --> C1{"需显式在线处理约束 / 重规划?"}
+  C1 -->|是| MPC[考虑 MPC / 在线优化]
+  C1 -->|否| LQR[LQR / 时变 LQR / 轨迹跟踪]
+  LQR --> Eq["LTI 无约束 + Riccati 稳态终端代价<br/>有限时域 MPC 也可复现无限时域 LQR"]
   Imp[力控交互选型] --> I1[可测力 + 力矩驱动?]
   I1 -->|是| Imped[阻抗：运动进、力出]
   I1 -->|否 位置驱动 + 刚性环境| Adm[导纳：力进、运动出]
 ```
 
 <ol>
-<li><strong>LQR 与 MPC 何时等价：</strong> 当系统线性时不变、代价二次、无约束、且 MPC 预测时域趋于无穷时，MPC 的解就是无限时域 LQR 的反馈律 \(u=-Kx\)。一旦出现状态 / 输入约束（最常见）、非线性、有限 / 时变时域或需跟踪参考轨迹，就必须用 MPC。</li>
-<li><strong>QP 凸性判定：</strong> 目标函数 Hessian 半正定（\(\tfrac12 x^\top P x\) 中 \(P\succeq 0\)）、约束为线性等式加凸（仿射）不等式，即为凸。WBC 偏好凸 QP，因其有唯一全局最优、求解快且确定性收敛，OSQP / qpOASES 能在 1 kHz 实时求解；非凸会有局部极小、求解时间不可控，对实时安全控制不可接受。</li>
+<li><strong>LQR 与 MPC 何时等价：</strong> 对线性时不变、无约束的离散系统，若 \((A,B)\) 可镇定、\((A,Q^{1/2})\) 可检测，且 \(Q\succeq0,R\succ0\)，无限时域 LQR 的稳定 Riccati 解 \(P_\infty\) 可作为有限时域 MPC 的终端代价，使每次首步控制同为 \(u=-Kx\)；无需让预测时域趋于无穷。有限时域、时变模型与轨迹跟踪也可用时变 LQR / 线性二次跟踪；需显式在线处理约束或反复重规划时再考虑 MPC，不能把这些场景都写成“必须用 MPC”。</li>
+<li><strong>QP 凸性判定：</strong> 目标函数 Hessian 半正定（\(\tfrac12 x^\top P x\) 中 \(P\succeq0\)），约束为仿射等式/不等式，即为凸 QP。最优解存在时，局部最优也是全局最优；<strong>半正定不保证唯一</strong>，严格凸（如 \(P\succ0\)）是唯一性的充分条件。WBC 利用稀疏结构与热启动求解，但是否达到 1 kHz 仍须实测问题规模、求解容差与最坏耗时，不能由凸性直接推出。</li>
 <li><strong>HQP 优先级的数学实现：</strong> 用零空间投影（null-space projection）：先在最高优先级任务里求解，低优先级只能在不破坏高优先级的零空间内优化——\(\dot q = J_1^{+}\dot x_1 + N_1 z\)，其中 \(N_1 = I - J_1^{+}J_1\) 是任务 1 的零空间投影，逐层投影。等价地，多层 QP 把上层最优值作为下层的等式约束（lexicographic 求解）。</li>
 <li><strong>阻抗 vs 导纳：</strong> 本质是因果方向相反。阻抗控制"输入运动、输出力"：按位置 / 速度偏差经 \(F=K\Delta x + D\Delta\dot x\) 生成力（力矩驱动器，环境刚则自身柔顺）；导纳控制"输入力、输出运动"：按测得外力生成位置参考（位置驱动器）。环境软 / 未知、需高带宽柔顺与碰撞安全（人形腿）用阻抗；驱动器只能精确位置控制、面对刚性环境且要高位置精度（工业装配）用导纳。</li>
 </ol>
@@ -1198,18 +1197,16 @@ flowchart TD
 | T–S | Teacher–Student | 全观测 teacher 蒸馏受限观测 student。 |
 | Loco | Locomotion | 移动 / 步行类运动技能。 |
 
-**前置知识：** L5.1 + L4.3/4.4
+**前置知识：** L5.1 + L1–L3 的观测、动力学与关节控制基础；选择 MPC/WBC 混合控制时再补 L4.3/4.4
 
-**核心问题：** RL 怎么和 MPC / WBC 结合，sim2real 怎么做到
+**核心问题：** 如何把观测、动作、奖励与并行训练组成 locomotion 闭环；何时需要 MPC/WBC，如何验证迁移
 
 **推荐做什么：**
-- 用 IsaacGym / IsaacLab 训练一个人形行走策略
-- 尝试 RL + WBC 的组合框架
+- 用 Isaac Lab 或 MuJoCo 训练一个人形行走策略；复现历史工作时再使用对应 Isaac Gym 版本
+- 可选：对照 [rl-mpc-locomotion](../wiki/entities/rl-mpc-locomotion.md) 的 RL 调 MPC 权重与 [ReCo](../wiki/entities/paper-reco.md) 的 MPC 指挥低层 RL，标清两者的接口与四足实证边界
 
 **推荐读什么：**
-- "DeepMimic" (Peng et al.)
-- "AMP: Adversarial Motion Priors"
-- legged_gym / IsaacGymEnvs
+- [DeepMimic](../wiki/methods/deepmimic.md) 与 [AMP Reward](../wiki/methods/amp-reward.md) — 运动模仿/风格奖励分支（L5.3），不是 MPC/WBC 混合架构本身
 - [legged_gym](../wiki/entities/legged-gym.md)
 - [Isaac Gym / Isaac Lab](../wiki/entities/isaac-gym-isaac-lab.md)
 - [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md)
@@ -1811,10 +1808,10 @@ flowchart TB
 
 ### Diffusion → Flow Matching → DiT：为什么适合机器人
 
-- **Flow Matching**：不再模拟"加噪—去噪"的随机过程，而是直接学一个速度场，把噪声沿接近直线的 ODE 积分成动作。**对机器人的意义不在数学，而在工程**：保留扩散的多模态表达能力，但积分步数少（π0 论文用 10 步）→ 延迟低，更容易赶上控制频率；训练目标是简单的回归，便于和 VLM 骨干一起训。
+- **Flow Matching**：回归所选概率路径的速度场，推理时沿 ODE 从噪声积分到动作；既可使用扩散路径，也可使用条件直线路径。条件路径直不保证学到的边缘轨迹也直，更不保证单步生成或一定快于扩散。π0 用 10 步是具体配方，延迟还取决于骨干、采样器、精度与硬件。
 - **DiT**：把去噪网络从 U-Net 换成 Transformer。在机器人里，token 变成 action chunk 的各个时间步，观测条件通过 cross-attention / AdaLN 注入 → 可以直接接上 L8 的 VLM token。
 - **Action Expert**：π0 的叫法——在 VLM 之外单独一套较小的 Transformer 权重，专门处理状态与带噪动作 token，用 flow matching 生成 action chunk；GR00T N1 的 DiT 动作头扮演同一角色（见 L10）。
-- **Action Chunk 的代价**：chunk 内是开环执行，对突发扰动反应慢，需要 temporal ensembling 或 [Real-Time Chunking](../wiki/entities/paper-real-time-chunking.md) 这类衔接策略。
+- **Action Chunk 的代价**：预测长度不等于开环执行长度；通常只执行前缀再重规划。响应速度取决于执行前缀、观测时延与异步衔接，见 [滚动预测执行](../wiki/concepts/receding-horizon-policy-execution.md) 与 [Real-Time Chunking](../wiki/entities/paper-real-time-chunking.md)。
 
 ### 推荐读什么
 
@@ -1833,15 +1830,15 @@ flowchart TB
 
 ### 自测题（学完应能答出）
 - action chunk 带来了哪两个好处和一个代价？
-- 同样的多模态表达能力，为什么 flow matching 比 DDPM 式扩散更适合高频机器人控制？
+- 比较 flow matching 与 DDPM 式策略的部署延迟时，除了采样步数还必须对齐哪些条件？
 - DiT 动作头里，观测 / 语言条件可以通过哪些方式注入？
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
 
 <ol>
-<li><strong>action chunk：</strong> 好处是 ① 整段动作时序一致、减少逐步抖动和 BC 的 compounding error；② 推理可以比控制慢，低层在等待下一次推理时继续执行已有 chunk。代价是 chunk 内开环，对突发扰动反应变慢，需要 temporal ensembling / 实时 chunk 衔接。</li>
-<li><strong>flow matching 更快：</strong> 它学的是接近直线的确定性 ODE 速度场，少量积分步即可得到高质量样本；DDPM 式扩散通常需要更多去噪步。步数少 → 每次推理延迟低 → 更容易满足控制频率。</li>
+<li><strong>action chunk：</strong> 一次建模多步动作并缓冲执行，可让网络推理频率低于动作下发频率；但不保证消除 BC 的分布偏移。预测 H 步不代表全部开环执行，通常执行较短前缀再重规划；响应速度取决于前缀长度、观测时延与 chunk 衔接。</li>
+<li><strong>flow matching 的延迟：</strong> 学速度场不等于单步生成，也不自动保证更快。应在相同硬件、精度和观测条件下，对齐骨干、采样器、网络求值次数、预测/执行 horizon 与成功率，再比较端到端延迟；条件直线路径也不保证边缘采样轨迹为直线。</li>
 <li><strong>条件注入：</strong> 常见三种：cross-attention（动作 token 作为 Q 查询观测 / VLM token）、AdaLN（用条件向量调制 LayerNorm 的尺度和偏移，DiT 原论文做法）、直接把条件 token 拼进序列做 self-attention。</li>
 </ol>
 </details>
@@ -1931,7 +1928,7 @@ flowchart TB
 
 <ol>
 <li><strong>读取方式：</strong> π0 把 VLM 和 Action Expert 放在同一个 Transformer 序列里（两套权重），动作 token 通过注意力直接看 VLM token；GR00T N1 的 DiT 是独立网络，用 cross-attention 读 VLM 中间层输出的 token。两者都用 flow matching 生成 action chunk。</li>
-<li><strong>仍需低层控制：</strong> VLA 的动作频率（几十到一百多 Hz）远低于平衡与力控需要的频率，而且它输出的是关节目标 / 末端目标，不含接触力分配和力矩饱和处理；这些仍由 WBC / PD / 驱动器电流环完成（见 L3、L4.4）。</li>
+<li><strong>仍需低层控制：</strong> VLA 通常输出关节/末端目标或动作块，仍需专用执行闭环处理平衡、接触与驱动限幅。学习型跟踪器（如约 50 Hz 的 SONIC）和模型式 WBC 的运行频率不同，动作块查询频率也不等于动作执行频率；是否满足部署要求要看整条链路，不能仅凭 VLA 的 Hz 数判断（见 L3、L4.4、L12）。</li>
 <li><strong>判断新模型：</strong> 放回 π0 骨架（VLM / Action Expert / 数据 / 训练目标 / 推理方式）看它改了哪一块，再过 5 个 Signal-vs-Noise 问题；放不进骨架、也没有代码和 benchmark 的，先不深学。</li>
 </ol>
 </details>
@@ -2120,7 +2117,7 @@ flowchart TB
 | [如果目标是 RL 运动控制](depth-rl-locomotion.md) | 想用 RL 让人形走起来、不愿从头啃控制理论 | L3 → L5.2 |
 | [如果目标是 Loco-Manipulation（移动操作）](depth-loco-manipulation.md) | 想让机器人边走边动手（搬箱、开门、端托盘）| L4 + L5 之后 |
 | [如果目标是人形足球（全向行走 → 感知踢球 → 多机战术）](depth-humanoid-soccer.md) | 想让机器人追球、射门、打整场比赛 | L5 之后 |
-| [如果目标是动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) | 想搭"人体动作 → 机器人可执行参考"的数据管线 | L5.4 展开（L2 的 FK/IK 为前置） |
+| [如果目标是动作重定向（人体动作 → 机器人参考轨迹）](depth-motion-retargeting.md) | 想搭"人体动作 → 机器人可执行参考"的数据管线 | L5.4 展开（L1 的 FK/IK 为前置） |
 | [如果目标是人形群控展演（群舞同步 → 编队走位 → 群体特技）](depth-humanoid-swarm-performance.md) | 想让一群人形同台跳舞、变队形、协同炫技 | L5.3 之后 |
 | [如果目标是跨本体迁移（本体差异画像 → 统一接口 → 形态感知架构 → 多本体混训 → 人→机迁移 → 新本体适配）](depth-cross-embodiment.md) | 想让一个策略适配不同本体，换夹爪、换机型、换形态都不必从零重训 | L5.4 之后（重定向的策略层延伸；操作侧与 L10 交汇）|
 | [如果目标是 Sim2Real（域差画像 → 执行器对齐 → 鲁棒训练 → 真机部署）](depth-sim2real.md) | 想把仿真里训好的策略稳定搬上真机 | L5.2 → L6（L6 的展开版）|
@@ -2166,3 +2163,12 @@ flowchart TB
 - 贯穿全程的教材：[Modern Robotics](../wiki/entities/modern-robotics-book.md)
 - 工程踩坑补充：[人形机器人运动控制 Know-How](../wiki/overview/humanoid-motion-control-know-how.md) — 传感器噪声、电机热管理、地形适应的真机经验
 - 想换方向深挖：见上方 [可选纵深](#depth-optional-index)
+
+## 参考来源
+
+- [Modern Robotics 官方 Ch 7](https://modernrobotics.northwestern.edu/nu-gm-book-resource/kinematics-of-closed-chains/) 与 [§11.5 Force Control](https://modernrobotics.northwestern.edu/nu-gm-book-resource/11-5-force-control/) — 教材章节与运动学/力控入口。
+- [MIT Underactuated Robotics · LQR](https://underactuated.mit.edu/lqr.html) — 有限时域、时变 LQR 与轨迹跟踪；终端代价的 Riccati 递推。
+- [Boyd & Vandenberghe, Convex Optimization §4.2–4.4](https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf) — 凸优化的全局最优性、严格凸与 QP；凸性不等同于唯一解或实时性。
+- [Herzog et al., Momentum Control with Hierarchical Inverse Dynamics §2.1，式 (1)–(2)](https://arxiv.org/pdf/1410.7284v2) — 浮动基动力学、广义接触力与驱动力矩的分工。
+- [SONIC 部署源码 `control_dt_(0.02)`](https://github.com/NVlabs/GR00T-WholeBodyControl/blob/1e1ec4f5f27e6c3e03048f693bd7c60cce04afda/gear_sonic_deploy/src/g1/g1_deploy_onnx_ref/src/g1_deploy_onnx_ref.cpp#L2186) — Control 50 Hz 与独立输入/命令线程的实际分工。
+- 各层推荐阅读中的站内概念/方法页、原始论文与官方项目入口；部署判据见 [Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)。

@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-15
 related:
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../concepts/robot-data-supervision-signal-types.md
@@ -191,14 +191,14 @@ flowchart TD
 - [Any2Track](./any2track.md)：结合历史编码器与世界模型，实现对动态扰动的自适应动作模仿
 - [AMS (Adaptive Motion Synthesis)](./ams.md)：通过物理可行性过滤与混合奖励机制，生成并学习平衡动作
 - [Switch](./switch-framework.md)：引入增强技能图与缓冲节点，实现敏捷技能间的 100% 稳健切换
-- [HAIC](./haic.md)：引入世界模型的教师-学生两阶段训练，用于物体交互任务
+- [HAIC](../entities/paper-haic.md)：引入世界模型的教师-学生两阶段训练，用于物体交互任务
 - [ase](ase.md)：对抗技能嵌入
 - [CALM](../entities/paper-bfm-19-calm.md)：latent 方向控制
 
 ### 人类数据侧：大规模演示语料与标注
 
 - [CLAW](./claw.md)：宇树 G1 的模块化语言-动作数据生成管线
-- [HumanNet](../entities/humannet.md)：互联网级 **人中心** 视频语料（论文宣称约百万小时）与交互导向标注管线，可作为「人类侧大规模演示」与 VLA 持续预训练的数据基础设施参照（与真机日志互补，不等价替代物理闭环）
+- [HumanNet](../entities/humannet.md)：互联网级 **人中心** 视频语料（论文宣称约百万小时，为第一+第三人称合计，非百万小时 Ego；Open-HumanWAM 表 1 所用 HumanNet 子集策展后约 4.07 万小时）与交互导向标注管线，可作为「人类侧大规模演示」与 VLA 持续预训练的数据基础设施参照（与真机日志互补，不等价替代物理闭环）
 - [EgoScale](./egoscale.md)：在 **两万小时量级** egocentric 人视频上做 **显式腕–手动作** 预训练，并系统测量 **数据规模–离线验证–真机灵巧** 的缩放关系；用 **对齐人–机 mid-training** 把表示锚到机器人（arXiv:2602.16710）
 - [EgoVerse](../entities/paper-egoverse.md)：联盟式 **1,362 h** egocentric 人示教 + 跨实验室三具身 **BC/CFM 共训**——共训可涨分，但有效缩放依赖 **域对齐人数据锚定**，有限预算下 **场景多样性** 优先（arXiv:2604.07607）
 - [EgoWAM](../entities/paper-egowam-egocentric-human-wam-co-training.md)：在 **固定 HPT 与数据混合** 下仅换 **世界预测目标**，实证 **朴素 BC 人–机协同训练** 可因 **具身差距 / misalignment** **损害** 性能，而 **WAM 动力学分支** 使策略能随 **野外 egocentric 人数据** 扩展（Georgia Tech RL²，[项目页](https://gatech-rl2.github.io/egowam.github.io/)）
@@ -287,7 +287,7 @@ WM 无需针对特定任务进行微调，且能在不同环境配置（如不�
 - [Any2Track](./any2track.md) — 结合历史编码器与世界模型的自适应动作模仿
 - [AMP Reward (HumanX)](./amp-reward.md) — 引入接触图与判别器奖励的风格模仿
 - [AMS](./ams.md) — 物理可行性过滤与混合奖励机制
-- [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式
+- [HAIC](../entities/paper-haic.md) — 基于世界模型的教师-学生训练范式
 - [Learn Weightlessness](../../sources/papers/learn_weightlessness.md) — 针对非自稳定运动的失重模仿机制
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — HOI 模仿专家 → 变分蒸馏 → RL 微调的可泛化运动先验（arXiv:2602.06035）
 - [SkillMimic（论文实体）](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 统一 HOI 模仿 + Contact Graph 学可复用篮球技能（arXiv:2408.15270）

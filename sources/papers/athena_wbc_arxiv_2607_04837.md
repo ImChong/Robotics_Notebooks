@@ -34,7 +34,7 @@
 ## 对 wiki 的映射
 
 - 沉淀实体页：[paper-athena-wbc-humanoid-longtail.md](../../wiki/entities/paper-athena-wbc-humanoid-longtail.md)
-- 交叉：[SONIC 方法页](../../wiki/methods/sonic-motion-tracking.md)、[Whole-Body Control](../../wiki/concepts/whole-body-control.md)、[Humanoid-GPT](../../wiki/entities/paper-humanoid-gpt.md)、[DeepInsight](../../wiki/entities/deepinsight.md)、[humanoid motion tracking 选型 query](../../wiki/queries/humanoid-motion-tracking-method-selection.md)
+- 交叉：[SONIC 方法页](../../wiki/entities/nvidia-sonic.md)、[Whole-Body Control](../../wiki/concepts/whole-body-control.md)、[Humanoid-GPT](../../wiki/entities/paper-humanoid-gpt.md)、[DeepInsight](../../wiki/entities/deepinsight.md)、[humanoid motion tracking 选型 query](../../wiki/queries/humanoid-motion-tracking-method-selection.md)
 
 ## 参考来源（原始）
 

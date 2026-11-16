@@ -114,5 +114,5 @@
 | 主题 | 关系 |
 |------|------|
 | [SuperMimic](../../wiki/entities/paper-supermimic.md) | 主沉淀页：补「社区复现与扩展生态」概览 |
-| [awesome-supermimic 索引](awesome-supermimic.md) | 同类社区索引（30 项，10-26）；本文为 42 项（10-29） |
+| [awesome-supermimic 索引](../repos/awesome-supermimic.md) | 同类社区索引（30 项，10-26）；本文为 42 项（10-29） |
 | [HoloMotion](../../wiki/entities/holomotion.md) / [MorphMimic](../../wiki/entities/paper-morphmimic.md) / [muscle-supermimic](../../wiki/entities/muscle-supermimic.md) / [Project Instinct](../../wiki/entities/project-instinct.md) / [mjlab](../../wiki/entities/mjlab.md) | 清单中已有 wiki 节点的项目或框架 |

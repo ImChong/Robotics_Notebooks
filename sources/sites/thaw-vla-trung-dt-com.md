@@ -8,15 +8,18 @@
 - **论文：** [arXiv:2609.24682](../papers/thaw_vla_arxiv_2609_24682.md)
 - **机构：** University of Wisconsin–Madison、University of Illinois Urbana-Champaign
 - **入库日期：** 2026-09-23
+- **复核日期：** 2026-11-12
+- **核对范围：** 已阅读项目页方法、表格、消融、真机说明和源码 / 权重链接，并核对模型页面的公开文件列表。
+- **通读：** 已完成
 - **代码：** **已开源** — <https://github.com/trungdt880/THAW-VLA>；归档 [`sources/repos/thaw-vla.md`](../repos/thaw-vla.md)
-- **权重：** <https://huggingface.co/collections/termanteus/thaw-vla>（checkpoints **private**）
+- **权重：** <https://huggingface.co/collections/termanteus/thaw-vla>（两种 0.8B checkpoint 的文件列表可公开访问；作者 README 的 private 提示尚未更新）
 - **一句话说明：** 0.8B QwenGR00T 经 Cosmos3-Nano 特征蒸馏后在 LIBERO 97.9%、RoboCasa-GR1 50.5%、真机 66.7% 均值；部署与 undistilled 同图（32 ms / 1.86 GB RTX 5090）。
 
 ## 核查结论（步骤 2.5）
 
 - **已公开：** 方法动画、LIBERO/GR1/真机结果表、teacher/backbone/layer 消融、真机 rollout 视频、BibTeX
 - **已开源：** GitHub 含 setup / precompute / train / eval / websocket deployment；MIT license
-- **部分开源：** Hugging Face 发布权重为 **private collection**，需申请；Cosmos3-Nano teacher checkpoint 需用户自备
+- **权重公开情况：** Hugging Face 页面可匿名看到 LIBERO 和 GR1 模型的 `final_model.pt`；本次未完整下载权重，也未做推理验证。Cosmos3-Nano teacher checkpoint 需用户自备
 - **Footer / 页内链接：** arXiv、GitHub（README badge）、Hugging Face collection
 
 ## 页面要点摘录

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, world-action-model, representation, libero, casia, ucas, nus, tsinghua, fudan]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2609.04193"
 related:
   - ../methods/vla.md

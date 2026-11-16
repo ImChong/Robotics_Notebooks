@@ -12,7 +12,7 @@ related:
   - ./paper-behavior-foundation-model-humanoid.md
   - ./paper-bfm-zero.md
   - ../methods/ase.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
 sources:
   - ../../sources/papers/spectral_skills_arxiv_2609_37677.md
   - ../../sources/sites/spectral-skill-github-io.md
@@ -166,7 +166,7 @@ flowchart TD
 
 | 方法 | 主要接口 | 相比 Spectral Skills 的侧重点 |
 |---|---|---|
-| [SONIC](../methods/sonic-motion-tracking.md) | 通用运动跟踪 | 论文主要跟踪精度对照；要对齐全局误差、局部误差和成功率 |
+| [SONIC](./nvidia-sonic.md) | 通用运动跟踪 | 论文主要跟踪精度对照；要对齐全局误差、局部误差和成功率 |
 | [ASE](../methods/ase.md) | 潜在技能空间 | 都可用潜变量提示控制；Spectral Skills 特别强调未来预测与谱方向连续组合 |
 | [BFM-Zero](./paper-bfm-zero.md) | 可提示的行为基础模型 | 同属复用行为先验，但反馈／提示定义与技能谱方向构造不同 |
 | [Behavior Foundation Model for Humanoid](./paper-behavior-foundation-model-humanoid.md) | 低维行为接口 | 更侧重统一多任务调用；此文重点验证连续组合与跟踪误差 |
@@ -181,7 +181,7 @@ flowchart TD
 ## 关联页面
 
 - [ASE：Adversarial Skill Embeddings](../methods/ase.md)
-- [SONIC 全身运动跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC 全身运动跟踪](./nvidia-sonic.md)
 - [BFM-Zero](./paper-bfm-zero.md)
 - [人形行为基础模型](./paper-behavior-foundation-model-humanoid.md)
 
@@ -197,4 +197,4 @@ flowchart TD
 
 - [Spectral Skills 官方项目与交互 Demo](https://spectral-skill.github.io/)
 - [Learning Expressive and Compositional Motion Representation via Spectral Skills（完整附录）](https://arxiv.org/html/2609.37677)
-- [SONIC 全身运动跟踪对照方法](../methods/sonic-motion-tracking.md)
+- [SONIC 全身运动跟踪对照方法](./nvidia-sonic.md)

@@ -3,7 +3,7 @@ title: Motion Data Quality（动作数据质量维度）
 type: concept
 status: complete
 created: 2026-06-19
-updated: 2026-11-07
+updated: 2026-11-15
 summary: 评估人形参考运动 / 演示数据可用性的四个轴——物理可行性、接触一致性、形态差距（morphology gap）、规模与多样性，及其与重定向必要性的因果关系。
 tags: [dataset, motion-retargeting, data-quality, humanoid]
 sources:

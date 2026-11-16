@@ -2,7 +2,7 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-15
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
@@ -131,7 +131,7 @@ flowchart TD
 
 - **测什么**：意图理解 → 场景感知 → 规划与泛化 → affordance 细化 → 失败诊断的全流水线认知。[RoboBench](../entities/robo-bench.md) 沿五维 14 能力 25 任务 6092 QA 出题，并用 **MLLM-as-world-simulator** 检验规划是否能在物理/视觉约束下达成关键物体状态变化；[ESI-Bench](../entities/esi-bench.md) 进一步把空间智能从「被动看图」推进到「观察者即行动者」，要求主动感知–行动闭环。[Daily-Omni](../entities/paper-daily-omni.md) 则专测 **日常场景音视频跨模态时序对齐**（684 视频 / 1197 MCQA；模态消融常掉 10–28 个百分点），补上「环境声与画面是否对齐理解」这一维。
 - **可复现 vs 代表性**：QA 式评分**高度可复现、可自动打分**，是四层里最便宜的一层；代价是它测的是**认知代理**而非动作能力。
-- **典型误判**：把认知评分当动作能力用——RoboBench 的价值恰恰在于它证明了「认知分与 CALVIN/LIBERO-10 下游 VLA 成功率显著相关」这件事**需要专门验证**，而不是默认成立。认知评分只是**下游成功率的必要不充分条件**。同理，Daily-Omni 全模态高分只说明 **AV 时序对齐推理**，不证明操纵 affordance 或可下发动作指令。
+- **典型误判**：把认知评分当动作能力用——RoboBench 的价值恰恰在于它证明了「认知分与 CALVIN/LIBERO-10 下游 VLA 成功率显著相关」这件事**需要专门验证**，而不是默认成立。认知评分是诊断线索，不能据此推导下游成功率的逻辑必要条件。RoboBench 的8骨干迁移分析中，CALVIN感知相关显著，LIBERO-Long affordance 为 r=0.677、p=0.0652，未达常用0.05阈值；详见[原文统计核对](../../sources/papers/robo_bench_arxiv_2510_17801_full_reading_2026_11_15.md)。同理，Daily-Omni 全模态高分只说明 **AV 时序对齐推理**，不证明操纵 affordance 或可下发动作指令。
 
 ## 2. ② 世界模型预测保真度评测层：视频逼真 ≠ 策略收益
 
@@ -198,6 +198,8 @@ flowchart TD
 | sim2real | Simulation-to-Real | 仿真到真机迁移，④层校准 gap 的核心 |
 
 ## 参考来源
+
+- [RoboBench 全文与统计边界复核](../../sources/papers/robo_bench_arxiv_2510_17801_full_reading_2026_11_15.md)
 
 - [worldolympiad_arxiv_2606_11129.md](../../sources/papers/worldolympiad_arxiv_2606_11129.md) — WorldOlympiad 长视频物理、3D 与交互诊断
 - [worldarena.md](../../sources/sites/worldarena.md) — WorldArena 官网与 Track 1/2 定位

@@ -2,7 +2,13 @@
 type: overview
 tags: [hub, embodied-foundation-model, vlm, vln, vla, vlx, world-model, taxonomy]
 status: complete
-updated: 2026-08-23
+updated: 2026-11-14
+original:
+  - ../../sources/papers/paligemma_arxiv_2407_07726.md
+  - ../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md
+  - ../../sources/papers/gr00t_n1_arxiv_2503_14734.md
+  - ../../sources/papers/wam_survey_reading_arxiv_2605_12090.md
+  - ../../sources/papers/bfm_survey_reading_arxiv_2506_20487_btm41.md
 related:
   - ../concepts/embodied-foundation-model-hardware-codesign.md
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
@@ -70,6 +76,26 @@ summary: "具身大模型分类学选型闭环知识链枢纽：把 VLM 感知�
 - **[五大具身模型分类对比](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)**：本闭环的家族边界与递进关系原始对比。
 - **[具身大模型与本体协同设计](../concepts/embodied-foundation-model-hardware-codesign.md)**：模型族选型之外的硬件侧约束（数据闭环、分层频率、安全边界）。
 
+## 核心原理
+
+五层具身大模型家族并非彼此独立的并行流派，而是沿**语义理解 → 空间接地 → 连续控制**逐层压缩与解耦的同一条信息链路：
+
+1. **输入与表征共享，输出与带宽分化**：上游 VLM 将图像与语言指令投影到共享语义空间；VLN 把语义对齐到拓扑/几何路点；VLA 在语言–视觉表征之上接入动作头（离散 action token 或连续 flow/diffusion 专家）；VLX 扩展到力、触觉、音频或工具调用等异构输出头。
+2. **显式世界模型作为前瞻层**：WM/WAM 在潜空间或像素空间预演动作后果，可与 VLA 级联排序候选轨迹，也可通过联合建模蒸馏给反应式执行头，把长程因果推理与高频闭环分离。
+3. **跨层协同设计**：越靠近硬件执行，对延迟、动作维度和实体几何的约束越强，因此高泛化语义模型通常与专用低层控制器或行动基础模型（BFM）分层部署。
+
+## 工程实践
+
+- **按控制频率划分边界**：先测量任务所需的闭环频率（例如高频接触力控与全身平衡 vs 1–5 Hz 语义规划），将重参数 VLM/VLA 放在低频决策层，高频执行下沉给动作专家或 WBC。
+- **优先复用统一评测与数据基础设施**：在进入全量微调前，对照 [HumanNet Table1 人类视频语料](../comparisons/humannet-table1-human-video-corpora.md) 与 [VLM/VLN/VLA/VLX/WM 分类对比](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) 明确任务缺少的是语义先验、空间感知还是物理接触数据。
+- **增量演进栈**：工程落地通常按「预训练 VLM/策略骨架 → 领域示教微调 → 行为树/安全壳编排 → 必要时引入 WM 校验」渐进叠加，避免一步到位引入过高推理开销。
+
+## 局限与风险
+
+- **分类边界在最新工作上持续模糊**：部分模型（如统一 WAM 或多任务 VLX）同时输出未来预测与连续动作，表格分层仅作职责划分而非绝对排他分类。
+- **跨家族接口标准尚不统一**：不同家族在动作空间（关节位控 vs 末端增量）、历史窗口长度与异步 chunk 协议上差异显著，直接拼接易因坐标系与延迟失配失效。
+- **上层泛化不自动等价于真机鲁棒**：互联网图文预训练无法替补真实物理交互中的接触不确定性与长尾故障恢复能力。
+
 ## 关联页面
 
 - [宅码 Common Know-How（二手知识点汇编）](../entities/zhaima-common-know-how.md) — VLA 与机器人学习知识点的二手索引，结论需回一手论文核对
@@ -92,4 +118,15 @@ summary: "具身大模型分类学选型闭环知识链枢纽：把 VLM 感知�
 ## 参考来源
 
 - [wechat_shenlan_five_embodied_model_taxonomy.md](../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md) — 深蓝具身智能《五大具身模型详解：VLM、VLA、VLN、VLX、世界模型》
+- [PaliGemma 原文归档（arXiv:2407.07726）](../../sources/papers/paligemma_arxiv_2407_07726.md) — 开放 VLM 视觉–语言骨干基础
+- [RT-2 原文归档（arXiv:2307.15818）](../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md) — VLA 概念确立与 co-fine-tuning 配方
+- [GR00T N1 原文归档（arXiv:2503.14734）](../../sources/papers/gr00t_n1_arxiv_2503_14734.md) — 双系统推理–动作人形基础模型
+- [WAM 综述原文归档（arXiv:2605.12090）](../../sources/papers/wam_survey_reading_arxiv_2605_12090.md) — 世界动作模型推演与策略联合建模
+- [BFM 综述原文归档（arXiv:2506.20487）](../../sources/papers/bfm_survey_reading_arxiv_2506_20487_btm41.md) — 行为基础模型与身体级控制边界
 - 本页归纳自 [五大具身模型分类对比](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md) 及各家族概念/方法页
+
+## 推荐继续阅读
+
+- [具身大模型分类学选型闭环 Query](../queries/embodied-fm-taxonomy-loop.md) — 按闭环选型问题逐层定位对应家族页
+- [VLA 与基础策略知识链](./hub-vla.md) — 深入操作与开源 VLA 谱系
+- [具身模型实时性 ↔ 泛化能力取舍](../concepts/embodied-fm-latency-generalization-tradeoff.md) — 带宽与推理时延约束分析

@@ -3,15 +3,25 @@
 ## 元数据
 
 - **题目：** TAPNAV: Humanoid Navigation through Tactile Active Perception
-- **方法：** Tactile Active Perception Navigation（TAPNAV / TapNav）
+- **中文译名：** 通过触觉主动感知实现人形机器人导航（TAPNAV / TapNav）
 - **作者：** Huaze Liu, Zhenyu Wu, Jaehwi Jang, Junjie Sheng, Andrew Collins, Aaron Xie, Zhaoyuan Gu, Kaijie Zhu, Ding Jiang, Kevin Cai, Ye Zhao
 - **单位：** Georgia Institute of Technology；Harvey Mudd College；Walton High School（HTML 版署名分组，逐人映射页面未完全明示）
 - **预印本：** https://arxiv.org/abs/2610.10748
 - **HTML：** https://arxiv.org/html/2610.10748v1
 - **版本：** v1，2026-10-07，cs.RO；9 页 10 图
 - **项目页：** https://tapnav.github.io/TAPNAV-Project/（归档见 [tapnav-project.md](../sites/tapnav-project.md)）
-- **代码：** 项目页写 “Code: Coming soon”；截至 2026-10-12 未发布
+- **代码：** 项目页仍写 “Code: Coming soon”（2026-11-08 核对）；官方 GitHub 的 TapNav/TAPNAV-Project 仅为网站源码，非研究算法实现
+- **核对范围：** arXiv HTML v1 全文：Abstract、I–VII、式 (1)–(6)、Fig. 1–10 的正文/图注、Table I/II、References；逐项校对滤波、全局/局部规划、双策略全身控制、4 地图仿真结果与 G1 真机描述；同时读取官方项目站点 index.html 的 Code 入口状态
+- **通读：** 已完成
 - **入库日期：** 2026-10-12
+
+## 核验结论与定位（2026-11-08）
+
+- **出版状态：** arXiv 预印本 v1；Georgia Tech IDAR 项目目录标记为 Manuscript under review，勿写成已录用 ICRA 论文。
+- **共同一作：** Huaze Liu、Zhenyu Wu、Jaehwi Jang；机构：Georgia Tech、Harvey Mudd College、Walton High School。
+- **运行数据流：** 里程计/IMU/触觉 → 粒子滤波位姿信念 → 不确定性受限 A* 路径 → EIG 探触决策 → 全身 PPO 双策略执行 → 新接触观测回馈估计器。
+- **Table II 统计边界：** 每方法 80 次仿真，位置/航向误差按成功试验统计，成功率按全部试验统计；低成功率基线在地图 b/c 的无标准差误差值仅对应单次成功。
+- **代码边界：** https://github.com/TapNav/TAPNAV-Project 是项目网站仓库。其 `index.html` 里 Code 是 disabled span（title="Code coming soon"），没有算法源码入口。[官方源文件](https://github.com/TapNav/TAPNAV-Project/blob/main/index.html)。
 
 ## 论文要解决的问题
 

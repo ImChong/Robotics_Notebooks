@@ -61,13 +61,13 @@ sources:
 | 016 | OmniH2O | [paper-loco-manip-161-016-omnih2o](../entities/paper-hrl-stack-08-omnih2o.md) |
 | 017 | OmniRetarget | [paper-loco-manip-161-017-omniretarget](../entities/paper-hrl-stack-03-omniretarget.md) |
 | 018 | Retargeting | [paper-loco-manip-161-018-retargeting](../entities/paper-hrl-stack-01-retargeting_matters.md) |
-| 019 | SONIC | [sonic-motion-tracking](../methods/sonic-motion-tracking.md) |
+| 019 | SONIC | [sonic-motion-tracking](../entities/nvidia-sonic.md) |
 | 020 | TWIST2 | [paper-loco-manip-161-020-twist2](../entities/paper-twist2.md) |
 | 021 | TWIST | [paper-loco-manip-161-021-twist](../entities/paper-twist.md) |
 | 022 | TextOp | [paper-loco-manip-161-022-textop](../entities/paper-loco-manip-161-022-textop.md) |
 | 023 | UniAct | [paper-loco-manip-161-023-uniact](../entities/paper-loco-manip-161-023-uniact.md) |
 | 024 | UniTracker | [paper-loco-manip-161-024-unitracker](../entities/paper-loco-manip-161-024-unitracker.md) |
-| 025 | 人形操作接口 | [paper-loco-manip-161-025-n025](../entities/paper-loco-manip-161-025-n025.md) |
+| 025 | 人形操作接口 | [paper-loco-manip-161-025-n025](../entities/paper-notebook-humanoid-manipulation-interface.md) |
 | 026 | 人形机器人富有表现力的全身控制 | [paper-loco-manip-161-026-n026](../entities/paper-loco-manip-161-026-n026.md) |
 | 027 | 人形机器人行为基础模型 | [paper-loco-manip-161-027-n027](../entities/paper-loco-manip-161-027-n027.md) |
 | 028 | 从专家到通用：走向人形机器人的通用全身控制 | [paper-loco-manip-161-028-n028](../entities/paper-loco-manip-161-028-n028.md) |

@@ -19,7 +19,6 @@ related:
 sources:
   - ../../sources/papers/dexora_arxiv_2605_18722.md
   - ../../sources/repos/dexora.md
-  - ../../sources/sites/dexora.md
   - ../../sources/blogs/wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md
 summary: "Dexora（arXiv:2605.18722）：首个开源 36-DoF 双臂双手端到端 VLA：外骨骼臂 + Vision Pro 指跟踪遥操作；判别器加权 Diffusion Transformer；灵巧任务 66.7% vs 51.7%。"
 ---

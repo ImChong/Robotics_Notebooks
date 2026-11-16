@@ -8,8 +8,10 @@
 - **arXiv：** <https://arxiv.org/abs/2607.29169>（v1，Submitted 2026-07-31，cs.RO，CC BY 4.0；PDF：<https://arxiv.org/pdf/2607.29169>）
 - **代码（论文 comments 声明）：** <https://github.com/SunnyYWD/ActFovea>（Apache-2.0 + Gemma 条款）— 归档见 [`sources/repos/actfovea.md`](../repos/actfovea.md)
 - **作者：** Wenda Yu¹、Tianshi Wang¹、Fengling Li²、Xin Li³、Jingjing Li⁴、Lei Zhu¹
-- **机构：** 预印本仅标注上标编号 1–4，**未在正文/首页写出单位名称**；因此本次不写机构 tag（待后续版本或期刊版补）
+- **机构：** ¹ 同济大学（Tongji University）；² 穆罕默德·本·扎耶德人工智能大学（MBZUAI）；³ 上海人工智能实验室（Shanghai AI Lab）；⁴ 电子科技大学（UESTC）
 - **入库日期：** 2026-08-04
+- **通读：** 已完成
+- **核对范围：** 全文 §1–§6（含公式 Eq. 1–8、Tables 1–4、Figs. 1–4，对应 `2607.29169.txt` L1–1193 及 `2607.29169.abs.html` 提交元数据）
 - **一句话说明：** 不重训、不改 VLA 权重，在「观测→动作」接口上加一层运行时防护：用机器人运动学 + 本体状态 + 近期动作构造 **动作条件中央凹（foveation）** 区域，靠 **时空视觉–动作一致性** 检测扰动，可恢复的走「候选观测 → 动作块验证 → 受限执行」，不可恢复（冻结重放）的走 **有界安全失败**。
 
 ## 开源状态（步骤 2.5）

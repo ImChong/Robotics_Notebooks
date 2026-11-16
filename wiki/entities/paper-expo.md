@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, reinforcement-learning, offline-to-online-rl, diffusion-policy, value-based-rl, stanford, iclr2026]
 status: complete
-updated: 2026-10-07
+updated: 2026-11-13
 arxiv: "2507.07986"
 venue: "ICLR 2026"
 code: https://github.com/pd-perry/EXPO

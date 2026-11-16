@@ -19,7 +19,6 @@ sources:
   - ../../sources/sites/sando-project.md
   - ../../sources/repos/sando.md
 summary: "SANDO（arXiv:2604.07599 v3，MIT ACL）：以时空安全飞行走廊和硬约束 MIQP 处理动态未知环境中的四旋翼规划；定理保证依赖有界障碍运动、估计误差与跟踪误差等假设，真机实验需与形式保证分开解读。"
-
 ---
 
 # SANDO：动态未知环境中的安全轨迹规划

@@ -58,7 +58,11 @@
 
   const links = document.querySelectorAll('.page-subnav a, .main-nav a');
   const sections = Array.from(links)
-    .map(function (link) { return document.querySelector(link.getAttribute('href')); })
+    .map(function (link) {
+      var href = link.getAttribute('href');
+      if (!href || !/^#.+/.test(href)) return null;
+      return document.querySelector(href);
+    })
     .filter(Boolean);
 
   function updateActive() {
@@ -145,6 +149,7 @@
     s = s.replace(/&#x([0-9a-f]+);?/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
          .replace(/&#([0-9]+);?/g, (_, dec) => String.fromCharCode(parseInt(dec, 10)))
          .replace(/&colon;?/gi, ':');
+    if (/^\/\//.test(s)) return false;
     if (/^(?:https?|mailto|tel):/i.test(s)) return true;
     if (/:/i.test(s)) return false;
     return true;
@@ -1958,10 +1963,6 @@
     });
   }
 
-  function moduleHref(id) {
-    return 'module.html?id=' + encodeURIComponent(id);
-  }
-
   function roadmapHref(id) {
     return 'roadmap.html?id=' + encodeURIComponent(id);
   }
@@ -2636,7 +2637,7 @@
   // integrity / crossorigin 与原静态标签保持一致。
   var KATEX_CDN_BASE = 'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/';
   // Keep this exact version in sync with package.json and the Mermaid CI parser.
-  var MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@12.2.0/dist/mermaid.min.js';
+  var MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@12.3.0/dist/mermaid.min.js';
   var _externalAssetPromises = {};
 
   /** 同一 URL 只注入一次；失败清除记录，后续渲染可重试。 */
@@ -4052,10 +4053,15 @@
   /**
    * 路线页「知识地图」：学习路线图样式（参照 Robot_Learning_Paper_Notebooks 首页「推荐学习路线图」）。
    * 左侧阶段栏选一个阶段，右侧只画这一阶段的小树；树上方「前置」/ 下方「通往」列出与相邻阶段互链的节点，
-   * 点一下跳到那个阶段并闪一下该节点。「全局总览」把各阶段的小树按阅读顺序自上而下排开，
-   * 相邻阶段的互链画成虚线。
+   * 点一下跳到那个阶段并闪一下该节点。「全局总览」用浮窗显示全部阶段与相邻互链，支持鼠标与触屏缩放平移。
    */
   function renderRoadmapLearningTree(columns, treeEl, metaEl, detailPages) {
+    var prevMap = document.getElementById('roadmap-ltree-map');
+    if (prevMap) {
+      if (typeof prevMap._destroy === 'function') prevMap._destroy();
+      prevMap.remove();
+    }
+
     var marks = [];
     var offsets = []; // 第 s 阶段首个节点在全局总览里的序号
     var total = 0;
@@ -4078,7 +4084,7 @@
 
     var parts = ['<div class="roadmap-ltree">', '<div class="roadmap-ltree-side">'];
     parts.push(
-      '<button type="button" class="roadmap-ltree-overview-btn" data-stage="all">' +
+      '<button type="button" class="roadmap-ltree-overview-btn" aria-haspopup="dialog" aria-controls="roadmap-ltree-map">' +
         '<span class="roadmap-ltree-overview-title">全局总览</span>' +
         '<span class="roadmap-ltree-overview-sub">全部 ' + total + ' 个节点与阶段间互链</span></button>'
     );
@@ -4106,28 +4112,78 @@
       parts.push('<div class="roadmap-ltree-gates" data-dir="out" hidden></div>');
       parts.push('</section>');
     }
-    parts.push(
-      '<section class="roadmap-ltree-overview" hidden><div class="roadmap-ltree-ov-hint">左右拖动查看全图</div>' +
-        '<div class="roadmap-ltree-ov-scroll roadmap-ltree-pan"><div class="roadmap-ltree-ov">'
-    );
-    parts.push('<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>');
+    parts.push('</div></div>');
+    treeEl.innerHTML = parts.join('');
+    if (metaEl) metaEl.textContent = columns.length + ' 个阶段 · ' + total + ' 个知识节点';
+
+    var mapParts = [
+      '<div class="roadmap-ltree-map-backdrop" data-map-close></div>',
+      '<div class="roadmap-ltree-map-panel">',
+        '<div class="roadmap-ltree-map-bar">',
+          '<h2 id="roadmap-ltree-map-title" class="roadmap-ltree-map-title">',
+            '<span>全局总览</span>',
+            '<span class="roadmap-ltree-map-count">' + total + ' 个节点 · ' + columns.length + ' 个阶段</span>',
+          '</h2>',
+          '<div class="roadmap-ltree-map-legend">',
+            '<p>实线为阶段内互链，虚线为相邻阶段互链。悬停节点（触屏上点一下）点亮树链与相邻互链；点阶段名切到该阶段。</p>',
+            '<p class="roadmap-ltree-map-hint roadmap-ltree-map-hint--mouse">拖动或滚轮平移；Ctrl / ⌘ + 滚轮、触控板捏合或 + / − 键缩放，0 键复位。</p>',
+            '<p class="roadmap-ltree-map-hint roadmap-ltree-map-hint--touch">单指拖动平移，双指捏合缩放；点节点弹出详情浮窗，再点浮窗内链接进入。</p>',
+          '</div>',
+          '<div class="roadmap-ltree-map-controls" role="group" aria-label="缩放">',
+            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-zoom-out" aria-label="缩小" title="缩小 (-)">',
+              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M3.5 8h9"/></svg>',
+            '</button>',
+            '<output class="roadmap-ltree-map-level" aria-live="polite">100%</output>',
+            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-zoom-in" aria-label="放大" title="放大 (+)">',
+              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M8 3.5v9M3.5 8h9"/></svg>',
+            '</button>',
+            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-reset" aria-label="复位（0 键）" title="复位（0 键）">',
+              '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 6V2.5H6M10 2.5h3.5V6M13.5 10v3.5H10M6 13.5H2.5V10"/></svg>',
+            '</button>',
+            '<button type="button" class="roadmap-ltree-map-btn roadmap-ltree-map-layout">放大阅读</button>',
+          '</div>',
+          '<button type="button" class="roadmap-ltree-map-close" data-map-close aria-label="关闭" title="关闭 (Esc)">',
+            '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
+          '</button>',
+        '</div>',
+        '<div class="roadmap-ltree-map-viewport" tabindex="0" role="group" aria-label="全局总览图：方向键平移，+ / − 缩放，0 键复位">',
+          '<div class="roadmap-ltree-map-sizer">',
+            '<div class="roadmap-ltree-map-canvas">',
+              '<div class="roadmap-ltree-ov">',
+                '<svg class="roadmap-ltree-edges" aria-hidden="true"></svg>'
+    ];
     for (var o = 0; o < columns.length; o++) {
-      parts.push(
+      mapParts.push(
         '<div class="roadmap-ltree-ov-stage" role="group" aria-label="' + escapeHtml(marks[o] + ' ' + columns[o].title) + '">' +
           '<button type="button" class="roadmap-ltree-ov-head" data-stage="' + o + '">' + markHtml(o) +
           '<span class="roadmap-ltree-ov-title">' + escapeHtml(columns[o].title) + '</span></button>' +
           '<div class="roadmap-ltree-tree">' + nodesHtml(o) + '</div></div>'
       );
     }
-    parts.push('</div></div></section></div></div>');
-    treeEl.innerHTML = parts.join('');
-    if (metaEl) metaEl.textContent = columns.length + ' 个阶段 · ' + total + ' 个知识节点';
+    mapParts.push('</div></div></div></div></div>');
+
+    var mapEl = document.createElement('div');
+    mapEl.id = 'roadmap-ltree-map';
+    mapEl.className = 'roadmap-ltree-map';
+    mapEl.setAttribute('role', 'dialog');
+    mapEl.setAttribute('aria-modal', 'true');
+    mapEl.setAttribute('aria-labelledby', 'roadmap-ltree-map-title');
+    mapEl.hidden = true;
+    mapEl.innerHTML = mapParts.join('');
+    document.body.appendChild(mapEl);
 
     var root = treeEl.firstChild;
-    var overviewEl = root.querySelector('.roadmap-ltree-overview');
-    var ovScroll = overviewEl.querySelector('.roadmap-ltree-ov-scroll');
-    var ov = ovScroll.firstChild;
-    var ovPan = { centered: false };
+    var mapPanel = mapEl.querySelector('.roadmap-ltree-map-panel');
+    var mapViewport = mapEl.querySelector('.roadmap-ltree-map-viewport');
+    var mapSizer = mapEl.querySelector('.roadmap-ltree-map-sizer');
+    var mapCanvas = mapEl.querySelector('.roadmap-ltree-map-canvas');
+    var mapClose = mapEl.querySelector('.roadmap-ltree-map-close');
+    var mapZoomIn = mapEl.querySelector('.roadmap-ltree-map-zoom-in');
+    var mapZoomOut = mapEl.querySelector('.roadmap-ltree-map-zoom-out');
+    var mapReset = mapEl.querySelector('.roadmap-ltree-map-reset');
+    var mapLevel = mapEl.querySelector('.roadmap-ltree-map-level');
+    var mapLayoutBtn = mapEl.querySelector('.roadmap-ltree-map-layout');
+    var ov = mapCanvas.querySelector('.roadmap-ltree-ov');
     var ovSvg = ov.firstChild;
     var ovNodes = ov.querySelectorAll('.roadmap-ltree-node');
     var ovTrees = ov.querySelectorAll('.roadmap-ltree-tree');
@@ -4146,6 +4202,28 @@
         nodes: tree.querySelectorAll('.roadmap-ltree-node'),
         parent: []
       });
+    }
+
+    var MAP_MAX_ZOOM = 2;
+    var MAP_ZOOM_STEP = 1.25;
+    var MAP_PAN_KEYS = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
+    var mapState = {
+      reading: false,
+      width: 0,
+      height: 0,
+      wholeScale: 1,
+      readScale: 1,
+      base: 1,
+      minScale: 1,
+      scale: 1,
+      fittedWidth: 0,
+      opener: null,
+      suppressClick: false
+    };
+    var lastPointer = '';
+
+    function hideMapTooltip() {
+      document.dispatchEvent(new CustomEvent('rn-hide-inline-tooltip'));
     }
 
     function applyLayout(s, linked) {
@@ -4192,9 +4270,105 @@
       drawRoadmapLtreeEdges(st);
       syncRoadmapLtreePan(st.tree.parentNode, st);
     }
-    function showOverview() {
+
+    function mapAvailableSize() {
+      var style = getComputedStyle(mapViewport);
+      return {
+        w: mapViewport.clientWidth - (parseFloat(style.paddingLeft) || 0) - (parseFloat(style.paddingRight) || 0),
+        h: mapViewport.clientHeight - (parseFloat(style.paddingTop) || 0) - (parseFloat(style.paddingBottom) || 0)
+      };
+    }
+
+    function setMapScale(scale) {
+      mapState.scale = scale;
+      mapCanvas.style.transform = scale === 1 ? 'none' : 'scale(' + scale + ')';
+      mapSizer.style.width = Math.ceil(mapState.width * scale) + 'px';
+      mapSizer.style.height = Math.ceil(mapState.height * scale) + 'px';
+      mapLevel.textContent = Math.round(scale * 100) + '%';
+      mapZoomOut.disabled = scale <= mapState.minScale + 0.001;
+      mapZoomIn.disabled = scale >= MAP_MAX_ZOOM - 0.001;
+    }
+
+    function clampMapScale(scale) {
+      return Math.max(mapState.minScale, Math.min(MAP_MAX_ZOOM, scale));
+    }
+
+    function keepMapPoint(x, y, clientX, clientY) {
+      var frame = mapCanvas.getBoundingClientRect();
+      mapViewport.scrollLeft += frame.left + x * mapState.scale - clientX;
+      mapViewport.scrollTop += frame.top + y * mapState.scale - clientY;
+    }
+
+    function zoomMapTo(scale, clientX, clientY) {
+      scale = clampMapScale(scale);
+      if (Math.abs(scale - mapState.scale) < 0.0005) return;
+      if (clientX == null) {
+        var box = mapViewport.getBoundingClientRect();
+        clientX = box.left + box.width / 2;
+        clientY = box.top + box.height / 2;
+      }
+      var frame = mapCanvas.getBoundingClientRect();
+      var x = (clientX - frame.left) / mapState.scale;
+      var y = (clientY - frame.top) / mapState.scale;
+      hideMapTooltip();
+      setMapScale(scale);
+      keepMapPoint(x, y, clientX, clientY);
+    }
+
+    function resetMapView() {
+      hideMapTooltip();
+      setMapScale(mapState.base);
+      mapViewport.scrollTop = 0;
+      mapViewport.scrollLeft = 0;
+    }
+
+    function applyMapLayout() {
+      mapState.base = mapState.reading ? mapState.readScale : mapState.wholeScale;
+      mapLayoutBtn.hidden = mapState.wholeScale >= 0.98;
+      mapLayoutBtn.setAttribute('aria-pressed', String(mapState.reading));
+      mapLayoutBtn.textContent = mapState.reading ? '缩小看全貌' : '放大阅读';
+      mapEl.classList.toggle('is-reading', mapState.reading);
+      hideMapTooltip();
+      clearAllTraces();
+      setMapScale(mapState.base);
+      mapViewport.scrollTop = 0;
+      mapViewport.scrollLeft = 0;
+    }
+
+    function fitMap() {
+      var avail = mapAvailableSize();
+      if (avail.w <= 0 || avail.h <= 0) return;
+      mapCanvas.style.transform = 'none';
+      mapSizer.style.width = '';
+      mapSizer.style.height = '';
+      mapState.width = mapCanvas.offsetWidth;
+      mapState.height = mapCanvas.offsetHeight;
+      if (!mapState.width || !mapState.height) return;
       drawOverview();
-      syncRoadmapLtreePan(ovScroll, ovPan);
+      mapState.wholeScale = Math.min(1, avail.w / mapState.width, avail.h / mapState.height);
+      mapState.readScale = Math.min(1, avail.w / mapState.width);
+      mapState.minScale = Math.min(mapState.wholeScale, mapState.readScale, 1);
+      mapState.fittedWidth = window.innerWidth;
+      applyMapLayout();
+    }
+
+    function openMap() {
+      mapState.opener = document.activeElement;
+      mapState.reading = false;
+      mapEl.hidden = false;
+      document.body.classList.add('roadmap-ltree-map-open');
+      hideMapTooltip();
+      fitMap();
+      mapClose.focus();
+    }
+
+    function closeMap(keepFocus) {
+      if (mapEl.hidden) return;
+      mapEl.hidden = true;
+      document.body.classList.remove('roadmap-ltree-map-open');
+      hideMapTooltip();
+      clearAllTraces();
+      if (!keepFocus && mapState.opener && typeof mapState.opener.focus === 'function') mapState.opener.focus();
     }
 
     function select(stage) {
@@ -4203,9 +4377,6 @@
       }
       // 窄屏阶段栏是横向滚动的一排编号：把选中的滚到中间（宽屏不滚动，赋值无效果）
       if (tabs[stage]) rail.scrollLeft = tabs[stage].offsetLeft - (rail.clientWidth - tabs[stage].offsetWidth) / 2;
-      overviewBtn.setAttribute('aria-pressed', String(stage === 'all'));
-      overviewEl.hidden = stage !== 'all';
-      if (stage === 'all') showOverview();
       for (var i = 0; i < stages.length; i++) {
         stages[i].panel.hidden = i !== stage;
         if (i === stage) showStage(stages[i]);
@@ -4219,7 +4390,7 @@
       for (var g = 0; g < gates.length; g++) gates[g].classList.toggle('is-path', isLitGate(gates[g]));
     }
 
-    // 全局总览悬停：点亮所在阶段的树链，以及与它直接互链的相邻阶段节点
+    // 全局总览悬停 / 触屏点按：点亮所在阶段的树链，以及与它直接互链的相邻阶段节点
     function traceOverview(s, k) {
       var g = offsets[s] + k;
       var lit = {};
@@ -4241,11 +4412,15 @@
     }
 
     function clearAllTraces() {
-      var lit = root.querySelectorAll('.is-tracing, .is-path');
-      for (var i = 0; i < lit.length; i++) lit[i].classList.remove('is-tracing', 'is-path');
+      [root, ov].forEach(function (scope) {
+        var lit = scope.querySelectorAll('.is-tracing, .is-path');
+        for (var i = 0; i < lit.length; i++) lit[i].classList.remove('is-tracing', 'is-path');
+        scope.classList.remove('is-tracing');
+      });
     }
 
     function onHover(ev) {
+      if (lastPointer === 'touch') return;
       var node = ev.target.closest ? ev.target.closest('.roadmap-ltree-node') : null;
       var panel = ev.target.closest ? ev.target.closest('.roadmap-ltree-panel') : null;
       var gate = panel ? ev.target.closest('.roadmap-ltree-gate') : null;
@@ -4268,13 +4443,13 @@
 
     root.addEventListener('click', function (ev) {
       var btn = ev.target.closest
-        ? ev.target.closest('.roadmap-ltree-tab, .roadmap-ltree-overview-btn, .roadmap-ltree-ov-head, .roadmap-ltree-gate')
+        ? ev.target.closest('.roadmap-ltree-tab, .roadmap-ltree-gate')
         : null;
       if (!btn) return;
-      var stage = btn.getAttribute('data-stage');
-      select(stage === 'all' ? 'all' : Number(stage));
+      var stage = Number(btn.getAttribute('data-stage'));
+      select(stage);
       if (!btn.classList.contains('roadmap-ltree-gate')) return;
-      var target = stages[Number(stage)].nodes[Number(btn.getAttribute('data-node'))];
+      var target = stages[stage].nodes[Number(btn.getAttribute('data-node'))];
       target.classList.remove('is-flash');
       void target.offsetWidth; // 重新触发动画
       target.classList.add('is-flash');
@@ -4283,21 +4458,229 @@
     root.addEventListener('mouseover', onHover);
     root.addEventListener('focusin', onHover);
     root.addEventListener('mouseleave', clearAllTraces);
+    overviewBtn.addEventListener('click', openMap);
+
+    // 拖动平移之后松手，不当成一次点击（不打开详情、不切阶段）
+    mapEl.addEventListener('click', function (ev) {
+      if (!mapState.suppressClick) return;
+      mapState.suppressClick = false;
+      ev.preventDefault();
+      ev.stopPropagation();
+    }, true);
+    mapEl.addEventListener('click', function (ev) {
+      if (ev.target.closest && ev.target.closest('[data-map-close]')) {
+        closeMap();
+        return;
+      }
+      var ovHead = ev.target.closest ? ev.target.closest('.roadmap-ltree-ov-head') : null;
+      if (ovHead) {
+        var stage = Number(ovHead.getAttribute('data-stage'));
+        closeMap(true);
+        select(stage);
+        if (tabs[stage] && typeof tabs[stage].focus === 'function') tabs[stage].focus();
+        return;
+      }
+      var ovNode = ev.target.closest ? ev.target.closest('.roadmap-ltree-node') : null;
+      if (ovNode) {
+        if (lastPointer === 'touch') {
+          traceOverview(Number(ovNode.getAttribute('data-stage')), Number(ovNode.getAttribute('data-node')));
+        }
+        return;
+      }
+      clearAllTraces();
+      hideMapTooltip();
+    });
+    ov.addEventListener('mouseover', onHover);
+    ov.addEventListener('focusin', onHover);
+    ov.addEventListener('mouseleave', clearAllTraces);
+
+    mapZoomIn.addEventListener('click', function () { zoomMapTo(mapState.scale * MAP_ZOOM_STEP); });
+    mapZoomOut.addEventListener('click', function () { zoomMapTo(mapState.scale / MAP_ZOOM_STEP); });
+    mapReset.addEventListener('click', resetMapView);
+    mapLayoutBtn.addEventListener('click', function () {
+      mapState.reading = !mapState.reading;
+      applyMapLayout();
+    });
+    mapViewport.addEventListener('scroll', hideMapTooltip);
+
+    mapPanel.addEventListener('keydown', function (ev) {
+      if (ev.key !== 'Tab') {
+        if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+        var key = ev.key;
+        if (key === '+' || key === '=') {
+          zoomMapTo(mapState.scale * MAP_ZOOM_STEP);
+        } else if (key === '-' || key === '_') {
+          zoomMapTo(mapState.scale / MAP_ZOOM_STEP);
+        } else if (key === '0') {
+          resetMapView();
+        } else if (MAP_PAN_KEYS[key] && mapViewport.contains(ev.target)) {
+          var step = ev.shiftKey ? 240 : 60;
+          mapViewport.scrollLeft += MAP_PAN_KEYS[key][0] * step;
+          mapViewport.scrollTop += MAP_PAN_KEYS[key][1] * step;
+        } else {
+          return;
+        }
+        ev.preventDefault();
+        return;
+      }
+      var focusables = Array.prototype.filter.call(
+        mapPanel.querySelectorAll('a[href], button:not([hidden]):not([disabled]), [tabindex="0"]'),
+        function (item) { return item.offsetParent !== null; }
+      );
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (ev.shiftKey && document.activeElement === first) {
+        ev.preventDefault();
+        last.focus();
+      } else if (!ev.shiftKey && document.activeElement === last) {
+        ev.preventDefault();
+        first.focus();
+      }
+    });
+
+    // 鼠标 / 触控笔按住拖动平移；触屏单指交给原生滚动（有惯性），双指捏合在这里算缩放
+    (function bindMapPanZoom() {
+      var drag = null;
+      var pinch = null;
+      var gesture = null;
+
+      mapViewport.addEventListener('pointerdown', function (ev) {
+        if (ev.pointerType === 'touch' || ev.button !== 0) return;
+        drag = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, left: mapViewport.scrollLeft, top: mapViewport.scrollTop, moved: false };
+      });
+      mapViewport.addEventListener('pointermove', function (ev) {
+        if (!drag || ev.pointerId !== drag.id) return;
+        var dx = ev.clientX - drag.x;
+        var dy = ev.clientY - drag.y;
+        if (!drag.moved) {
+          if (Math.abs(dx) + Math.abs(dy) < 5) return;
+          drag.moved = true;
+          if (mapViewport.setPointerCapture) mapViewport.setPointerCapture(ev.pointerId);
+          mapViewport.classList.add('is-dragging');
+          hideMapTooltip();
+          clearAllTraces();
+        }
+        if (window.getSelection) window.getSelection().removeAllRanges();
+        mapViewport.scrollLeft = drag.left - dx;
+        mapViewport.scrollTop = drag.top - dy;
+      });
+      function endDrag(ev) {
+        if (!drag || ev.pointerId !== drag.id) return;
+        if (drag.moved) {
+          mapState.suppressClick = true;
+          setTimeout(function () { mapState.suppressClick = false; }, 0);
+          mapViewport.classList.remove('is-dragging');
+        }
+        drag = null;
+      }
+      mapViewport.addEventListener('pointerup', endDrag);
+      mapViewport.addEventListener('pointercancel', endDrag);
+
+      function touchCenter(touches) {
+        var a = touches[0];
+        var b = touches[1];
+        return {
+          x: (a.clientX + b.clientX) / 2,
+          y: (a.clientY + b.clientY) / 2,
+          d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)
+        };
+      }
+      mapViewport.addEventListener('touchstart', function (ev) {
+        if (ev.touches.length !== 2) return;
+        var c = touchCenter(ev.touches);
+        var frame = mapCanvas.getBoundingClientRect();
+        pinch = { d: c.d, scale: mapState.scale, x: (c.x - frame.left) / mapState.scale, y: (c.y - frame.top) / mapState.scale };
+        hideMapTooltip();
+        clearAllTraces();
+      }, { passive: true });
+      mapViewport.addEventListener('touchmove', function (ev) {
+        if (!pinch || ev.touches.length !== 2 || pinch.d < 1) return;
+        ev.preventDefault();
+        var c = touchCenter(ev.touches);
+        setMapScale(clampMapScale(pinch.scale * c.d / pinch.d));
+        keepMapPoint(pinch.x, pinch.y, c.x, c.y);
+      }, { passive: false });
+      function endPinch(ev) {
+        if (ev.touches.length < 2) pinch = null;
+      }
+      mapViewport.addEventListener('touchend', endPinch);
+      mapViewport.addEventListener('touchcancel', endPinch);
+
+      mapViewport.addEventListener('wheel', function (ev) {
+        if (!ev.ctrlKey && !ev.metaKey) return;
+        ev.preventDefault();
+        var delta = ev.deltaY;
+        if (ev.deltaMode === 1) delta *= 16;
+        else if (ev.deltaMode === 2) delta *= mapViewport.clientHeight;
+        zoomMapTo(mapState.scale * Math.exp(-delta * 0.002), ev.clientX, ev.clientY);
+      }, { passive: false });
+
+      mapEl.addEventListener('gesturestart', function (ev) {
+        ev.preventDefault();
+        gesture = pinch ? null : { scale: mapState.scale };
+      });
+      mapEl.addEventListener('gesturechange', function (ev) {
+        ev.preventDefault();
+        if (gesture && !pinch) zoomMapTo(gesture.scale * ev.scale, ev.clientX, ev.clientY);
+      });
+      mapEl.addEventListener('gestureend', function (ev) {
+        ev.preventDefault();
+        gesture = null;
+      });
+    })();
+
+    function onDocPointerDown(ev) {
+      lastPointer = ev.pointerType || '';
+      if (ev.pointerType !== 'touch') return;
+      var tooltipNode = document.getElementById('detail-inline-link-tooltip');
+      if ((tooltipNode && tooltipNode.contains(ev.target)) || (ev.target.closest && ev.target.closest('.roadmap-ltree-node'))) return;
+      clearAllTraces();
+    }
+    function onDocPointerMove(ev) {
+      if (ev.pointerType && ev.pointerType !== 'touch') lastPointer = ev.pointerType;
+    }
+    function onDocKeyDown(ev) {
+      if (ev.key === 'Escape' && !mapEl.hidden) closeMap();
+    }
+    var refitQueued = false;
+    function onWinResize() {
+      if (refitQueued || mapEl.hidden) return;
+      refitQueued = true;
+      requestAnimationFrame(function () {
+        refitQueued = false;
+        var widthChanged = window.innerWidth !== mapState.fittedWidth;
+        var untouched = mapState.scale === mapState.base && !mapViewport.scrollLeft && !mapViewport.scrollTop;
+        if (widthChanged || untouched) fitMap();
+      });
+    }
+    document.addEventListener('pointerdown', onDocPointerDown, true);
+    document.addEventListener('pointermove', onDocPointerMove, true);
+    document.addEventListener('keydown', onDocKeyDown);
+    window.addEventListener('resize', onWinResize);
+    mapEl._destroy = function () {
+      document.body.classList.remove('roadmap-ltree-map-open');
+      document.removeEventListener('pointerdown', onDocPointerDown, true);
+      document.removeEventListener('pointermove', onDocPointerMove, true);
+      document.removeEventListener('keydown', onDocKeyDown);
+      window.removeEventListener('resize', onWinResize);
+      if (resize && typeof resize.disconnect === 'function') resize.disconnect();
+    };
 
     for (var st0 = 0; st0 < stages.length; st0++) applyLayout(st0, {});
     select(0);
     var resize = new ResizeObserver(function (entries) {
       for (var i = 0; i < entries.length; i++) {
-        if (entries[i].target === ov) showOverview();
-        else showStage(stages[Number(entries[i].target.parentNode.parentNode.getAttribute('data-stage'))]);
+        var stAttr = entries[i].target.parentNode && entries[i].target.parentNode.parentNode
+          ? entries[i].target.parentNode.parentNode.getAttribute('data-stage')
+          : null;
+        if (stAttr !== null && stages[Number(stAttr)]) showStage(stages[Number(stAttr)]);
       }
     });
     for (var ro = 0; ro < stages.length; ro++) {
       resize.observe(stages[ro].tree);
       bindRoadmapLtreeMousePan(stages[ro].tree.parentNode);
     }
-    resize.observe(ov);
-    bindRoadmapLtreeMousePan(ovScroll);
 
     ensureLinkGraphData().then(function (gd) {
       var wanted = {};
@@ -4321,8 +4704,7 @@
         }
       }
       for (var v = 0; v < stages.length; v++) if (!stages[v].panel.hidden) showStage(stages[v]);
-      ovPan.centered = false;
-      if (!overviewEl.hidden) showOverview();
+      if (!mapEl.hidden) fitMap();
       if (metaEl && treeEdges) {
         metaEl.textContent += ' · ' + treeEdges + ' 条阶段内连线';
         metaEl.title = '箭头：同一阶段内两节点有站内互链，方向为路线列表里的先后；前置 / 通往：与相邻阶段互链的节点';
@@ -5168,9 +5550,12 @@
         pathToNodeType: attrIndex.pathToNodeType,
         detailIdToNodeType: attrIndex.detailIdToNodeType
       };
+      _detailCommunityIndexPromise = null;
       return _detailCommunityIndex;
     }).catch(function () {
-      _detailCommunityIndex = {
+      _detailCommunityIndex = null;
+      _detailCommunityIndexPromise = null;
+      return {
         pathToCommunity: new Map(),
         communityLabel: {},
         pathToHasRepo: new Map(),
@@ -5178,7 +5563,6 @@
         pathToNodeType: new Map(),
         detailIdToNodeType: new Map()
       };
-      return _detailCommunityIndex;
     });
     return _detailCommunityIndexPromise;
   }
@@ -5682,19 +6066,20 @@
     }
 
     function hideTooltip() {
+      pinnedNode = null;
       if (!tooltipEl) return;
       tooltipEl.classList.add('hidden');
       tooltipEl.setAttribute('aria-hidden', 'true');
     }
 
-    function showTooltip(ev, d, html) {
+    function showTooltip(ev, d, html, forcePin) {
       if (!tooltipEl) return;
       tooltipEl.innerHTML = html;
       renderDetailMath(tooltipEl);
       tooltipEl.setAttribute('aria-hidden', 'false');
       tooltipEl.style.width = '';
       tooltipEl.style.transform = '';
-      if (isMobile) {
+      if (isMobile || forcePin) {
         tooltipEl.classList.add('tt-pinned');
         tooltipEl.style.left = '';
         tooltipEl.style.top = '';
@@ -5703,11 +6088,12 @@
         pinnedNode = d;
         tooltipEl.classList.remove('hidden');
       } else {
+        pinnedNode = null;
         tooltipEl.classList.remove('tt-pinned');
         tooltipEl.style.right = '';
         tooltipEl.style.bottom = '';
-        moveTooltip(ev);
         tooltipEl.classList.remove('hidden');
+        moveTooltip(ev);
       }
     }
 
@@ -5729,7 +6115,7 @@
     function bindBlankDismiss(containerEl, nodeSelector) {
       if (window.RNGraphTooltip && window.RNGraphTooltip.bindBlankDismiss) {
         window.RNGraphTooltip.bindBlankDismiss(containerEl, {
-          isMobile: isMobile,
+          get isMobile() { return isMobile || !!pinnedNode; },
           getPinned: function () { return pinnedNode; },
           clearPin: function () { pinnedNode = null; },
           hide: hideTooltip
@@ -5740,7 +6126,7 @@
     function bindOutsideDismiss(containerEl, dismissRootEl) {
       if (window.RNGraphTooltip && window.RNGraphTooltip.bindOutsideDismiss) {
         window.RNGraphTooltip.bindOutsideDismiss(containerEl, {
-          isMobile: isMobile,
+          get isMobile() { return isMobile || !!pinnedNode; },
           getPinned: function () { return pinnedNode; },
           clearPin: function () { pinnedNode = null; },
           hide: hideTooltip
@@ -6109,27 +6495,195 @@
     }
   }
 
-  // 触屏：路线页知识地图节点点按弹出固定浮窗（再点同一节点收起），跳转交给浮窗里的 .tt-link
-  function bindKnowledgeMapTapPreview(hoverTip, detailPages) {
-    var mapEl = document.getElementById('roadmapKnowledgeMapTree');
-    if (!mapEl) return;
-    mapEl.addEventListener('click', function (ev) {
-      var link = ev.target.closest ? ev.target.closest('a.detail-inline-link') : null;
-      if (!link) return;
-      ev.preventDefault();
-      if (hoverTip.getPinned() === link) {
-        hoverTip.clearPin();
-        hoverTip.hide();
-        return;
+  // 触屏：路线页知识地图（含全局总览浮窗）节点点按弹出固定浮窗（再点同一节点收起），跳转交给浮窗里的 .tt-link
+  function bindKnowledgeMapTapPreview(hoverTip, detailPages, getLastPointerType) {
+    var mapIds = ['roadmapKnowledgeMapTree', 'roadmap-ltree-map'];
+    var tapRoots = [];
+    for (var i = 0; i < mapIds.length; i++) {
+      var el = document.getElementById(mapIds[i]);
+      if (el && tapRoots.indexOf(el) === -1) tapRoots.push(el);
+    }
+    if (!tapRoots.length) return;
+
+    function bindTapRoot(mapEl) {
+      mapEl.addEventListener('click', function (ev) {
+        if (ev.defaultPrevented) return;
+        var link = ev.target.closest ? ev.target.closest('a.detail-inline-link') : null;
+        if (!link) return;
+        var isTouchTap = hoverTip.isMobile || (typeof getLastPointerType === 'function' && getLastPointerType() === 'touch' && ev.detail !== 0);
+        if (!isTouchTap) return;
+        ev.preventDefault();
+        if (hoverTip.getPinned() === link) {
+          hoverTip.clearPin();
+          hoverTip.hide();
+          return;
+        }
+        hoverTip.show(ev, link, buildDetailInlineLinkTooltipHtml(link.dataset.wikiId, detailPages[link.dataset.wikiId] || {}), true);
+      });
+      hoverTip.bindBlankDismiss(mapEl, 'a.detail-inline-link');
+    }
+
+    for (var k = 0; k < tapRoots.length; k++) {
+      bindTapRoot(tapRoots[k]);
+    }
+    hoverTip.bindOutsideDismiss({
+      contains: function (target) {
+        for (var j = 0; j < tapRoots.length; j++) {
+          if (tapRoots[j].contains(target)) return true;
+        }
+        return false;
       }
-      hoverTip.show(ev, link, buildDetailInlineLinkTooltipHtml(link.dataset.wikiId, detailPages[link.dataset.wikiId] || {}));
-    });
-    hoverTip.bindBlankDismiss(mapEl, 'a.detail-inline-link');
-    hoverTip.bindOutsideDismiss(mapEl, document.body);
+    }, document.body);
   }
 
-  // 正文 / 路线页本库内链悬停浮窗：复用图谱 hover 卡片，详情页同时点亮迷你图同一节点
+  function ensureInlineLinkTooltipEl() {
+    var tooltipEl = document.getElementById('detail-inline-link-tooltip');
+    if (!tooltipEl && document.body) {
+      tooltipEl = document.createElement('div');
+      tooltipEl.id = 'detail-inline-link-tooltip';
+      tooltipEl.className = 'graph-hover-tooltip hidden';
+      tooltipEl.setAttribute('role', 'tooltip');
+      tooltipEl.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(tooltipEl);
+    }
+    return tooltipEl;
+  }
+
+  function suppressNativeTitle(el) {
+    if (!el) return;
+    var nativeTitle = el.getAttribute('title');
+    if (!nativeTitle) return;
+    if (!el.dataset.nativeTitle) el.dataset.nativeTitle = nativeTitle;
+    el.removeAttribute('title');
+  }
+
+  function extractNodeLinkId(anchor) {
+    if (!anchor || !anchor.getAttribute) return '';
+    if (anchor.closest && anchor.closest('.graph-hover-tooltip, #graph-tooltip')) return '';
+    var href = anchor.getAttribute('href') || '';
+    var matched = /^(?:\.\/)?(?:detail|roadmap)\.html\?id=([^&#]+)/.exec(href);
+    if (!matched) return '';
+    try {
+      return decodeURIComponent(matched[1]);
+    } catch (unusedErr) {
+      void unusedErr;
+      return '';
+    }
+  }
+
+  function resolveInlineLinkPage(pid, detailPagesOpt, catalogOpt) {
+    if (!pid) return null;
+    if (detailPagesOpt) {
+      var direct = resolveDetailPage(pid, detailPagesOpt);
+      if (direct) return { id: direct.id || pid, page: direct };
+    }
+    var catalog = catalogOpt || loadedPageCatalog;
+    if (!catalog || !catalog.pages) return null;
+    var pages = catalog.pages;
+    var aliases = pages.page_aliases || {};
+    var resolvedId = Object.prototype.hasOwnProperty.call(aliases, pid) ? aliases[pid] : pid;
+    var detailPages = pages.detail_pages || {};
+    var page = resolveDetailPage(resolvedId, detailPages);
+    if (!page && pages.roadmap_pages && Object.prototype.hasOwnProperty.call(pages.roadmap_pages, resolvedId)) {
+      page = pages.roadmap_pages[resolvedId];
+    }
+    if (!page) return null;
+    return { id: page.id || resolvedId, page: page };
+  }
+
+  var globalNodeLinkPreviewState = {
+    bound: false,
+    hoverTip: null,
+    lastPointerType: '',
+    detailPages: null,
+    activeLink: null,
+    lastMouseEvent: null
+  };
+
+  function showNodeLinkTooltip(state, link, pageId, page, ev) {
+    if (!state || !state.hoverTip || !link || !page) return;
+    link.classList.add('detail-inline-link');
+    link.dataset.wikiId = pageId;
+    if (page.path) link.dataset.wikiPath = page.path;
+    state.hoverTip.show(ev, null, buildDetailInlineLinkTooltipHtml(pageId, page));
+    detailBridgeHighlightMini(page.path || '');
+  }
+
+  // 全站本库节点超链接悬停浮窗（主页、详情页各区块、更新记录、榜单、路线页等通用）
+  function ensureGlobalNodeLinkPreview(detailPagesOpt) {
+    var state = globalNodeLinkPreviewState;
+    if (detailPagesOpt) state.detailPages = detailPagesOpt;
+    if (state.bound) return state;
+    var tooltipEl = ensureInlineLinkTooltipEl();
+    if (!tooltipEl) return state;
+    state.bound = true;
+    state.hoverTip = setupGraphHoverTooltip(tooltipEl);
+
+    document.addEventListener('pointerdown', function (ev) {
+      state.lastPointerType = ev.pointerType || '';
+    }, true);
+    document.addEventListener('pointermove', function (ev) {
+      if (ev.pointerType && ev.pointerType !== 'touch') state.lastPointerType = ev.pointerType;
+    }, true);
+    document.addEventListener('rn-hide-inline-tooltip', function () {
+      state.activeLink = null;
+      state.hoverTip.clearPin();
+      state.hoverTip.hide();
+    });
+
+    if (state.hoverTip.isMobile) return state;
+
+    document.addEventListener('mouseover', function (ev) {
+      if (state.lastPointerType === 'touch') return;
+      var link = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      var pid = extractNodeLinkId(link);
+      if (!pid) return;
+      var currentPageId = currentPageIdFromLocation();
+      if (currentPageId && pid === currentPageId) return;
+      suppressNativeTitle(link);
+      state.activeLink = link;
+      state.lastMouseEvent = { clientX: ev.clientX, clientY: ev.clientY };
+
+      var resolved = resolveInlineLinkPage(pid, state.detailPages, loadedPageCatalog);
+      if (resolved) {
+        showNodeLinkTooltip(state, link, resolved.id, resolved.page, state.lastMouseEvent);
+        return;
+      }
+      ensureSiteCatalog(false).then(function (catalog) {
+        if (state.activeLink !== link) return;
+        var lazyResolved = resolveInlineLinkPage(pid, state.detailPages, catalog);
+        if (!lazyResolved) return;
+        showNodeLinkTooltip(state, link, lazyResolved.id, lazyResolved.page, state.lastMouseEvent);
+      }).catch(function (unusedErr) {
+        void unusedErr;
+      });
+    });
+
+    document.addEventListener('mousemove', function (ev) {
+      if (state.lastPointerType === 'touch' || !state.activeLink) return;
+      var link = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      if (link === state.activeLink) {
+        state.lastMouseEvent = { clientX: ev.clientX, clientY: ev.clientY };
+        state.hoverTip.move(ev);
+      }
+    });
+
+    document.addEventListener('mouseout', function (ev) {
+      if (!state.activeLink) return;
+      var link = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      if (link !== state.activeLink) return;
+      if (ev.relatedTarget && link.contains(ev.relatedTarget)) return;
+      state.activeLink = null;
+      state.hoverTip.hide();
+      detailBridgeHighlightMini('');
+    });
+
+    return state;
+  }
+
+  // 正文 / 路线页本库内链标记与双向联动：悬停浮窗本身已由全站事件委托接管
   function setupDetailInlineLinkPreview(contentEl, detailPages) {
+    var state = ensureGlobalNodeLinkPreview(detailPages);
     var roots = collectInlineLinkPreviewRoots(contentEl);
     if (!roots.length) return;
     var currentPageId = currentPageIdFromLocation();
@@ -6138,15 +6692,15 @@
       var anchors = roots[r].querySelectorAll('a[href^="detail.html?id="], a[href^="roadmap.html?id="]');
       for (var i = 0; i < anchors.length; i++) {
         var anchor = anchors[i];
-        var matched = /^(?:detail|roadmap)\.html\?id=([^&#]+)/.exec(anchor.getAttribute('href') || '');
-        if (!matched) continue;
-        var pid = decodeURIComponent(matched[1]);
+        var pid = extractNodeLinkId(anchor);
+        if (!pid) continue;
         if (currentPageId && pid === currentPageId) continue;
-        var page = detailPages[pid];
-        if (!page || !page.path) continue;
+        var resolved = resolveInlineLinkPage(pid, detailPages, loadedPageCatalog);
+        if (!resolved || !resolved.page.path) continue;
         anchor.classList.add('detail-inline-link');
-        anchor.dataset.wikiId = pid;
-        anchor.dataset.wikiPath = page.path;
+        anchor.dataset.wikiId = resolved.id;
+        anchor.dataset.wikiPath = resolved.page.path;
+        if (state.hoverTip && !state.hoverTip.isMobile) suppressNativeTitle(anchor);
         marked.push(anchor);
       }
     }
@@ -6158,54 +6712,16 @@
       }
     };
 
-    var tooltipEl = document.getElementById('detail-inline-link-tooltip');
-    if (!tooltipEl) return;
-    var hoverTip = setupGraphHoverTooltip(tooltipEl);
-    if (hoverTip.isMobile) {
-      // 触屏无 hover：正文内链点击直接跳转；路线页知识地图节点第一次点按只弹出浮窗，点浮窗里的链接再跳转
-      bindKnowledgeMapTapPreview(hoverTip, detailPages);
-      return;
+    if (state.hoverTip) {
+      // 触屏 / 混合屏触摸：正文内链点击直接跳转；路线页知识地图节点第一次点按只弹出浮窗，点浮窗里的链接再跳转
+      bindKnowledgeMapTapPreview(state.hoverTip, detailPages, function () { return state.lastPointerType; });
     }
+  }
 
-    function suppressNativeTitle(el) {
-      var nativeTitle = el.getAttribute('title');
-      if (!nativeTitle) return;
-      if (!el.dataset.nativeTitle) el.dataset.nativeTitle = nativeTitle;
-      el.removeAttribute('title');
-    }
-
-    for (var t = 0; t < marked.length; t++) {
-      suppressNativeTitle(marked[t]);
-    }
-
-    function inlineLinkOf(ev) {
-      return ev.target && ev.target.closest ? ev.target.closest('a.detail-inline-link') : null;
-    }
-
-    function bindRootHover(root) {
-      if (!root || root.getAttribute('data-inline-link-preview') === '1') return;
-      root.setAttribute('data-inline-link-preview', '1');
-      root.addEventListener('mouseover', function (ev) {
-        var link = inlineLinkOf(ev);
-        if (!link) return;
-        hoverTip.show(ev, null, buildDetailInlineLinkTooltipHtml(link.dataset.wikiId, detailPages[link.dataset.wikiId] || {}));
-        detailBridgeHighlightMini(link.dataset.wikiPath);
-      });
-      root.addEventListener('mousemove', function (ev) {
-        if (inlineLinkOf(ev)) hoverTip.move(ev);
-      });
-      root.addEventListener('mouseout', function (ev) {
-        var link = inlineLinkOf(ev);
-        if (!link) return;
-        if (ev.relatedTarget && link.contains(ev.relatedTarget)) return;
-        hoverTip.hide();
-        detailBridgeHighlightMini('');
-      });
-    }
-
-    for (var b = 0; b < roots.length; b++) {
-      bindRootHover(roots[b]);
-    }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { ensureGlobalNodeLinkPreview(); });
+  } else {
+    ensureGlobalNodeLinkPreview();
   }
 
   function renderDetailMiniMap(detailPage, detailPages) {
@@ -6219,11 +6735,17 @@
     if (!currentPath) return;
 
     ensureLinkGraphData().then(function (gd) {
-      var palette = (window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10;
-      var communityColor = {};
+      var tooltipApi = window.RNGraphTooltip;
+      var palette = (tooltipApi && typeof tooltipApi.getCommunityColors === 'function')
+        ? tooltipApi.getCommunityColors()
+        : ((window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10);
+      var communityColor = (tooltipApi && typeof tooltipApi.buildCommunityColorMap === 'function')
+        ? tooltipApi.buildCommunityColorMap(gd.communities || [])
+        : {};
       var communityLabelMap = {};
+      var hasColorMap = Object.keys(communityColor).length > 0;
       (gd.communities || []).forEach(function (c, i) {
-        communityColor[c.id] = palette[i % palette.length];
+        if (!hasColorMap) communityColor[c.id] = palette[i % palette.length];
         communityLabelMap[c.id] = c.label || c.id;
       });
       var nodeMap = {};
@@ -6831,6 +7353,7 @@
     renderRoadmapMarkdownBody(roadmapPage, roadmapId, siteData, detailPages);
     setupDetailInlineLinkPreview([
       document.getElementById('roadmapKnowledgeMapTree'),
+      document.getElementById('roadmap-ltree-map'),
       document.getElementById('roadmapFlowMermaidRoot'),
       document.getElementById('roadmapContent')
     ], detailPages);
@@ -6903,315 +7426,6 @@
     syncRoadmapStagesMetaHref(roadmapPage);
   }
 
-  function renderPreviewPage(siteData) {
-    if (!siteData || !siteData.pages) return;
-
-    const pages = siteData.pages;
-    const homePage = pages.home_page || {};
-    const modulePages = pages.module_pages || {};
-    const roadmapPages = pages.roadmap_pages || {};
-    const techMapPage = pages.tech_map_page || {};
-    const detailPages = pages.detail_pages || {};
-
-    const summary = document.getElementById('previewSummary');
-    if (summary) {
-      const moduleCount = Object.keys(modulePages).length;
-      const roadmapCount = Object.keys(roadmapPages).length;
-      const detailCount = Object.keys(detailPages).length;
-      const nodeCount = Array.isArray(techMapPage.nodes) ? techMapPage.nodes.length : 0;
-      summary.innerHTML = [
-        '<article class="card kpi-card">',
-        '  <div class="kpi-value">' + moduleCount + '</div>',
-        '  <div class="kpi-label">模块页数量</div>',
-        '  <p class="kpi-note">当前聚合模块：' + escapeHtml(Object.keys(modulePages).join(' / ')) + '</p>',
-        '</article>',
-        '<article class="card kpi-card">',
-        '  <div class="kpi-value">' + roadmapCount + '</div>',
-        '  <div class="kpi-label">路线页数量</div>',
-        '  <p class="kpi-note">已覆盖 route 与 learning path，可直接生成路线入口。</p>',
-        '</article>',
-        '<article class="card kpi-card">',
-        '  <div class="kpi-value">' + detailCount + '</div>',
-        '  <div class="kpi-label">详情页对象数量</div>',
-        '  <p class="kpi-note">detail_pages 已可支持第一阶段通用详情页渲染。</p>',
-        '</article>',
-        '<article class="card kpi-card">',
-        '  <div class="kpi-value">' + nodeCount + '</div>',
-        '  <div class="kpi-label">tech-map 节点数量</div>',
-        '  <p class="kpi-note">说明 tech_map_page 已经不只是说明文档，而是可消费的数据页。</p>',
-        '</article>'
-      ].join('');
-      removeLoadingState(summary);
-    }
-
-    const hero = document.getElementById('homeHeroPreview');
-    if (hero) {
-      const title = homePage.hero && homePage.hero.title ? homePage.hero.title : '未提供标题';
-      const subtitle = homePage.hero && homePage.hero.subtitle ? homePage.hero.subtitle : '未提供副标题';
-      hero.innerHTML = [
-        '<h4>' + escapeHtml(title) + '</h4>',
-        '<p class="data-meta">' + escapeHtml(subtitle) + '</p>',
-        '<p class="data-submeta">当前首页 CTA、quick entries、featured chain、featured modules 都能直接从聚合导出中拿到。</p>'
-      ].join('');
-      removeLoadingState(hero);
-    }
-
-    const quickEntries = document.getElementById('quickEntriesPreview');
-    if (quickEntries) {
-      const entries = Array.isArray(homePage.quick_entries) ? homePage.quick_entries : [];
-      quickEntries.innerHTML = entries.length
-        ? entries.map(function (item) {
-            const page = roadmapPages[item] || detailPages[item] || {};
-            return '<li><a href="' + escapeHtml(roadmapHref(item)) + '"><strong>' + escapeHtml(page.title || item) + '</strong></a><br /><small>' + escapeHtml(item) + '</small></li>';
-          }).join('')
-        : '<li>暂无快速入口数据</li>';
-      removeLoadingState(quickEntries);
-    }
-
-    renderChipList(document.getElementById('featuredChainPreview'), homePage.featured_chain, {
-      renderItem: function (item) {
-        const page = detailPages[item] || {};
-        return '<a class="data-chip" href="' + escapeHtml(detailHref(item)) + '" title="' + escapeHtml(item) + '">' + escapeHtml(page.title || item) + '</a>';
-      }
-    });
-
-    renderChipList(document.getElementById('featuredModulesPreview'), homePage.featured_modules, {
-      renderItem: function (item) {
-        const page = modulePages[item] || {};
-        return '<a class="data-chip" href="' + escapeHtml(moduleHref(item)) + '" title="' + escapeHtml(item) + '">' + escapeHtml(page.title || item) + '</a>';
-      }
-    });
-
-    const moduleGrid = document.getElementById('modulePreviewGrid');
-    if (moduleGrid) {
-      // ⚡ Bolt Optimization: Replace Object.values().map().join('') with for...in and string concatenation
-      // Expected impact: Eliminates intermediate array allocations and closure overhead during page initialization, reducing memory pressure.
-      var moduleCardsHtml = '';
-      var moduleCardsCount = 0;
-      for (var moduleId in modulePages) {
-        if (!Object.prototype.hasOwnProperty.call(modulePages, moduleId)) continue;
-        var modulePage = modulePages[moduleId] || {};
-        var references = Array.isArray(modulePage.references) ? modulePage.references.length : 0;
-        var roadmaps = Array.isArray(modulePage.roadmaps) ? modulePage.roadmaps.length : 0;
-        var entries = Array.isArray(modulePage.entry_items) ? modulePage.entry_items.slice(0, 4) : [];
-        var entriesHtml = '';
-        for (var i = 0; i < entries.length; i++) {
-          entriesHtml += '    <li><a href="' + escapeHtml(detailHref(entries[i])) + '"><code>' + escapeHtml(entries[i]) + '</code></a></li>';
-        }
-        moduleCardsHtml += '<article class="card data-card">' +
-          '  <div>' +
-          '    <h3>' + escapeHtml(modulePage.title || modulePage.module_id || '未命名模块') + '</h3>' +
-          '    <p class="card-meta">tag: ' + escapeHtml(modulePage.tag || '-') + '</p>' +
-          '    <p>' + escapeHtml(modulePage.summary || '暂无模块摘要') + '</p>' +
-          '  </div>' +
-          '  <div class="chip-list">' +
-          '    <span class="data-chip">入口 ' + escapeHtml((modulePage.entry_items || []).length) + '</span>' +
-          '    <span class="data-chip">参考 ' + escapeHtml(references) + '</span>' +
-          '    <span class="data-chip">路线 ' + escapeHtml(roadmaps) + '</span>' +
-          '  </div>' +
-          '  <ul>' +
-               entriesHtml +
-          '  </ul>' +
-          '</article>';
-        moduleCardsCount++;
-      }
-      moduleGrid.innerHTML = moduleCardsCount > 0 ? moduleCardsHtml : '<article class="card"><p>暂无模块页数据</p></article>';
-      removeLoadingState(moduleGrid);
-    }
-
-    const roadmapGrid = document.getElementById('roadmapPreviewGrid');
-    if (roadmapGrid) {
-      // ⚡ Bolt Optimization: Replace Object.entries().map().join('') with for...in and string concatenation
-      // Expected impact: Eliminates intermediate array allocations and closure overhead during page initialization, reducing memory pressure.
-      var roadmapCardsHtml = '';
-      var roadmapCardsCount = 0;
-      for (var roadmapId in roadmapPages) {
-        if (!Object.prototype.hasOwnProperty.call(roadmapPages, roadmapId)) continue;
-        var roadmapPage = roadmapPages[roadmapId] || {};
-        var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
-        var related = Array.isArray(roadmapPage.related_items) ? roadmapPage.related_items.slice(0, 4) : [];
-
-        var stagesHtml = '';
-        var maxStages = Math.min(stages.length, 4);
-        for (var j = 0; j < maxStages; j++) {
-          var stage = stages[j];
-          stagesHtml += '    <li>' + escapeHtml(stage.title || stage.id || '未命名阶段') + '</li>';
-        }
-
-        var relatedHtml = '';
-        for (var k = 0; k < related.length; k++) {
-          var item = related[k];
-          relatedHtml += '<a class="data-chip" href="' + escapeHtml(detailHref(item)) + '">' + escapeHtml(item) + '</a>';
-        }
-
-        roadmapCardsHtml += '<article class="card data-card">' +
-          '  <div>' +
-          '    <h3><a href="' + escapeHtml(roadmapHref(roadmapId)) + '">' + escapeHtml(roadmapPage.title || roadmapId) + '</a></h3>' +
-          '    <p class="card-meta">' + escapeHtml(roadmapId) + '</p>' +
-          '    <p>' + escapeHtml(roadmapPage.summary || '暂无路线摘要') + '</p>' +
-          '  </div>' +
-          '  <div class="chip-list">' +
-          '    <span class="data-chip">阶段 ' + escapeHtml(stages.length) + '</span>' +
-          '    <span class="data-chip">关联项 ' + escapeHtml(related.length) + '</span>' +
-          '  </div>' +
-          '  <ul>' +
-               stagesHtml +
-          '  </ul>' +
-          '  <div class="chip-list">' +
-               relatedHtml +
-          '  </div>' +
-          '</article>';
-        roadmapCardsCount++;
-      }
-      roadmapGrid.innerHTML = roadmapCardsCount > 0 ? roadmapCardsHtml : '<article class="card"><p>暂无路线页数据</p></article>';
-      removeLoadingState(roadmapGrid);
-    }
-
-    const detailGrid = document.getElementById('detailPreviewGrid');
-    if (detailGrid) {
-      const preferredDetails = [
-        'wiki-concepts-centroidal-dynamics',
-        'wiki-methods-model-predictive-control',
-        'entity-isaac-gym-isaac-lab',
-        'tech-node-control-mpc'
-      ];
-      // ⚡ Bolt Optimization: Replace chained array methods (.map, .filter, .join) with string concatenation in a for loop
-      // Expected impact: Eliminates closure creation and intermediate array allocations during layout generation.
-      var detailCardsHtml = '';
-      for (var dk = 0; dk < preferredDetails.length; dk++) {
-        var dpId = preferredDetails[dk];
-        var detailPage = detailPages[dpId];
-        if (!detailPage) continue;
-
-        var tags = Array.isArray(detailPage.tags) ? detailPage.tags.slice(0, 5) : [];
-        var detailRelated = Array.isArray(detailPage.related) ? detailPage.related.slice(0, 4) : [];
-        var sources = Array.isArray(detailPage.source_links) ? detailPage.source_links.slice(0, 2) : [];
-
-        var tagsHtml = '';
-        if (tags.length) {
-          for (var ti = 0; ti < tags.length; ti++) {
-             tagsHtml += '<span class="data-chip">' + escapeHtml(tags[ti]) + '</span>';
-          }
-        } else {
-          tagsHtml = '<span class="data-meta">暂无标签</span>';
-        }
-
-        var detailRelatedHtml = '';
-        if (detailRelated.length) {
-          for (var ri = 0; ri < detailRelated.length; ri++) {
-            var itemStr = detailRelated[ri];
-            detailRelatedHtml += '<li><a href="' + escapeHtml(detailHref(itemStr)) + '"><code>' + escapeHtml(itemStr) + '</code></a></li>';
-          }
-        } else {
-          detailRelatedHtml = '<li>暂无关联项</li>';
-        }
-
-        var sourcesHtml = '';
-        if (sources.length) {
-           for (var si = 0; si < sources.length; si++) {
-              var entry = sources[si];
-              var itemObj = normalizeSourceLink(entry);
-              var href = sourceLinkHref(entry);
-              var label = itemObj.label || href || '参考条目';
-              if (!href) {
-                sourcesHtml += '<li>' + escapeHtml(label) + '</li>';
-              } else {
-                var external = /^https?:/i.test(href);
-                sourcesHtml += '<li><a href="' + escapeHtml(href) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escapeHtml(label) + '</a></li>';
-              }
-           }
-        } else {
-           sourcesHtml = '<li>暂无来源链接</li>';
-        }
-
-        detailCardsHtml += '<article class="card data-card">' +
-            '  <div>' +
-            '    <h3><a href="' + escapeHtml(detailHref(detailPage.id)) + '">' + escapeHtml(detailPage.title || detailPage.id) + '</a></h3>' +
-            '    <p class="card-meta">' + escapeHtml(wikiTypeLabel(detailPage.type || 'detail_page', 'node')) + '</p>' +
-            '    <p>' + escapeHtml(detailPage.summary || '暂无摘要') + '</p>' +
-            '    <p class="data-submeta"><code>' + escapeHtml(detailPage.path || detailPage.id || '') + '</code></p>' +
-            '  </div>' +
-            '  <div>' +
-            '    <h4>标签</h4>' +
-            '    <div class="chip-list">' + tagsHtml + '</div>' +
-            '  </div>' +
-            '  <div>' +
-            '    <h4>关联项</h4>' +
-            '    <ul>' + detailRelatedHtml + '</ul>' +
-            '  </div>' +
-            '  <div>' +
-            '    <h4>来源链接</h4>' +
-            '    <ul>' + sourcesHtml + '</ul>' +
-            '  </div>' +
-            '  <div class="chip-list">' +
-            '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(detailPage.id)) + '">打开详情页</a>' +
-            '  </div>' +
-            '</article>';
-      }
-      detailGrid.innerHTML = detailCardsHtml || '<article class="card"><p>暂无详情页数据</p></article>';
-      removeLoadingState(detailGrid);
-    }
-
-    const techMapSummary = document.getElementById('techMapSummary');
-    const techMapNodes = Array.isArray(techMapPage.nodes) ? techMapPage.nodes : [];
-    if (techMapSummary) {
-      const uniqueLayers = Array.from(new Set(techMapNodes.map(function (node) { return node.layer; }).filter(Boolean)));
-      techMapSummary.innerHTML = [
-        '<h4>graph_meta</h4>',
-        '<p class="data-meta">overview_id: <code>' + escapeHtml((techMapPage.graph_meta || {}).overview_id || '-') + '</code></p>',
-        '<p class="data-submeta">当前 tech-map 共 ' + escapeHtml(techMapNodes.length) + ' 个节点，覆盖 ' + escapeHtml(uniqueLayers.length) + ' 个 layer，可直接生成第一版分层节点视图。</p>'
-      ].join('');
-      removeLoadingState(techMapSummary);
-    }
-
-    const layerCounts = techMapNodes.reduce(function (acc, node) {
-      const layer = node.layer || 'unknown';
-      acc[layer] = (acc[layer] || 0) + 1;
-      return acc;
-    }, {});
-    renderChipList(document.getElementById('techMapLayers'), Object.keys(layerCounts), {
-      renderItem: function (layer) {
-        return '<span class="data-chip">' + escapeHtml(layer) + ' · ' + escapeHtml(layerCounts[layer]) + '</span>';
-      }
-    });
-
-    const techMapNodeGrid = document.getElementById('techMapNodeGrid');
-    if (techMapNodeGrid) {
-      // ⚡ Bolt Optimization: Replace chained array operations and nested .map().join('') with string concatenation in for loop
-      // Expected impact: Eliminates closure creation and array allocation during layout generation, reducing memory GC pauses.
-      var nodeCardsHtml = '';
-      var techNodesLimit = Math.min(techMapNodes.length, 6);
-      for (var tn = 0; tn < techNodesLimit; tn++) {
-        var nodeObj = techMapNodes[tn];
-        var nodeRelated = Array.isArray(nodeObj.related) ? nodeObj.related.slice(0, 3) : [];
-        var nodeRelatedHtml = '';
-        if (nodeRelated.length) {
-          for (var nri = 0; nri < nodeRelated.length; nri++) {
-            var nodeItemStr = nodeRelated[nri];
-            nodeRelatedHtml += '<li><a href="' + escapeHtml(detailHref(nodeItemStr)) + '"><code>' + escapeHtml(nodeItemStr) + '</code></a></li>';
-          }
-        } else {
-          nodeRelatedHtml = '<li>当前节点暂无 related</li>';
-        }
-
-        nodeCardsHtml += '<article class="card data-card">' +
-          '  <div>' +
-          '    <h3><a href="' + escapeHtml(detailHref(nodeObj.id)) + '">' + escapeHtml(nodeObj.title || nodeObj.id) + '</a></h3>' +
-          '    <p class="card-meta">layer: ' + escapeHtml(nodeObj.layer || '-') + ' · kind: ' + escapeHtml(nodeObj.node_kind || '-') + '</p>' +
-          '    <p>' + escapeHtml(nodeObj.summary || '暂无节点摘要') + '</p>' +
-          '  </div>' +
-          '  <div class="chip-list">' +
-          '    <span class="data-chip"><code>' + escapeHtml(nodeObj.id || '-') + '</code></span>' +
-          '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(nodeObj.id)) + '">打开详情页</a>' +
-          '  </div>' +
-          '  <ul>' + nodeRelatedHtml + '</ul>' +
-          '</article>';
-      }
-      techMapNodeGrid.innerHTML = nodeCardsHtml || '<article class="card"><p>暂无技术地图节点。</p></article>';
-      removeLoadingState(techMapNodeGrid);
-    }
-  }
-
   // Catalog and body requests share successful results; rejected requests are retryable.
   var pageDataRequests = new Map();
   var loadedPageCatalog = null;
@@ -7268,14 +7482,21 @@
     return resolveDetailPage(id, pages.detail_pages);
   }
 
-  function loadSitePageData(kind, requestedId, refreshed) {
+  function ensureSiteCatalog(refreshed) {
     if (refreshed) pageDataRequests.delete(PAGE_CATALOG_URL);
+    if (!refreshed && loadedPageCatalog) return Promise.resolve(loadedPageCatalog);
     return requestPageJson(PAGE_CATALOG_URL, function (data) {
       return data && data.version === 'v1' && data.content_mode === 'per-page-v1' &&
         data.pages && data.pages.detail_pages && data.pages.roadmap_pages && data.pages.page_aliases;
     }).then(function (catalog) {
       hydrateCatalogIds(catalog);
       loadedPageCatalog = catalog;
+      return catalog;
+    });
+  }
+
+  function loadSitePageData(kind, requestedId, refreshed) {
+    return ensureSiteCatalog(refreshed).then(function (catalog) {
       var page = requestedContentPage(catalog, kind, requestedId);
       if (!page || (kind === 'detail' && page.type === 'roadmap_page')) return catalog;
       // Only exporter-owned content paths are accepted, never arbitrary URL parameters.
@@ -7329,7 +7550,6 @@
     }
   }
 
-  const previewRoot = document.getElementById('previewSummary');
   const detailRoot = document.getElementById('detailTitle');
   const roadmapPageMount = document.getElementById('roadmapTitle');
   const homeStatsRoot =
@@ -7342,26 +7562,10 @@
     var id = new URLSearchParams(window.location.search).get('id') || '';
     return loadSitePageData(kind, id, retry)
       .then(function (siteData) {
-        if (previewRoot) renderPreviewPage(siteData);
         if (detailRoot) renderDetailPage(siteData);
         if (roadmapPageMount) renderRoadmapPage(siteData);
       })
       .catch(function (error) {
-        if (previewRoot) {
-          handlePageDataError(error, [
-            'previewSummary',
-            'homeHeroPreview',
-            'quickEntriesPreview',
-            'featuredChainPreview',
-            'featuredModulesPreview',
-            'modulePreviewGrid',
-            'roadmapPreviewGrid',
-            'detailPreviewGrid',
-            'techMapSummary',
-            'techMapLayers',
-            'techMapNodeGrid'
-          ]);
-        }
         if (detailRoot) {
           handlePageDataError(error, [
             'detailSummary',
@@ -7386,7 +7590,7 @@
       });
   }
 
-  if (previewRoot || detailRoot || roadmapPageMount) {
+  if (detailRoot || roadmapPageMount) {
     startPageDataLoad(false);
   }
 
@@ -7468,7 +7672,11 @@
       });
   }
 
-  // ── 首页「更多路线」折叠：默认只展示里程碑最新的 4 条纵深路线 ──────────────
+  // ── 首页路线预览：桌面 8 个、窄屏 4 个，纵深路线优先展示最新里程碑 ──────
+  var homePreviewMedia = null;
+  try {
+    homePreviewMedia = window.matchMedia('(max-width: 860px)');
+  } catch { /* 无 matchMedia 时沿用桌面预览，窄屏样式仍提供首屏兜底 */ }
   var routeToggle = document.getElementById('homeRouteToggle');
   var routeLinks = document.getElementById('homeRouteLinks');
   var mainRouteCount = document.getElementById('heroMainRouteCount');
@@ -7480,23 +7688,64 @@
   var companyRoutesCard = orgRoutesCard;
   var labCount = document.getElementById('heroLabCount');
   var labRoutesCard = orgRoutesCard;
+  var routeSearch = document.getElementById('homeRouteSearch');
+  var routeSearchEmpty = document.getElementById('homeRouteSearchEmpty');
+  var orgSearch = document.getElementById('homeOrgSearch');
+  var companySearchEmpty = document.getElementById('homeCompanySearchEmpty');
+  var labSearchEmpty = document.getElementById('homeLabSearchEmpty');
+  function syncOrgSearchPlaceholder(tabName) {
+    if (!orgSearch) return;
+    var sourceZh = tabName === 'lab' ? '搜索实验室路线…' : '搜索公司路线…';
+    orgSearch.setAttribute('data-home-placeholder-source', sourceZh);
+    var isEn = document.documentElement.lang === 'en';
+    orgSearch.placeholder = tabName === 'lab'
+      ? (isEn ? 'Search lab roadmaps…' : sourceZh)
+      : (isEn ? 'Search company roadmaps…' : sourceZh);
+  }
   // 公司 / 实验室标签切换：同一张卡内只显示一个面板
   function showOrgTab(name) {
     if (!orgRoutesCard) return;
-    var tabs = orgRoutesCard.querySelectorAll('[data-org-tab]');
-    for (var oti = 0; oti < tabs.length; oti++) {
-      var on = tabs[oti].getAttribute('data-org-tab') === name;
-      tabs[oti].classList.toggle('is-active', on);
-      tabs[oti].setAttribute('aria-selected', on ? 'true' : 'false');
-      tabs[oti].tabIndex = on ? 0 : -1;
-      var panel = document.getElementById(tabs[oti].getAttribute('aria-controls'));
-      if (panel) panel.hidden = !on;
-    }
+    syncOrgSearchPlaceholder(name);
+    animateHomeLinksToggle(orgRoutesCard, function () {
+      var tabs = orgRoutesCard.querySelectorAll('[data-org-tab]');
+      for (var oti = 0; oti < tabs.length; oti++) {
+        var on = tabs[oti].getAttribute('data-org-tab') === name;
+        tabs[oti].classList.toggle('is-active', on);
+        tabs[oti].setAttribute('aria-selected', on ? 'true' : 'false');
+        tabs[oti].tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(tabs[oti].getAttribute('aria-controls'));
+        if (panel) {
+          panel.hidden = !on;
+          if (on) {
+            if (name === 'lab' && typeof setHomeLabsExpanded === 'function') {
+              setHomeLabsExpanded(labToggle ? labToggle.getAttribute('aria-expanded') === 'true' : false);
+            } else if (name === 'company' && typeof setHomeCompaniesExpanded === 'function') {
+              setHomeCompaniesExpanded(companyToggle ? companyToggle.getAttribute('aria-expanded') === 'true' : false);
+            }
+            syncHomeLinksScrollbar(panel.querySelector('.home-entry-route-links'));
+          }
+        }
+      }
+    }, false, []);
   }
   if (orgRoutesCard) {
     orgRoutesCard.querySelector('.home-org-tabs').addEventListener('click', function (event) {
       var tab = event.target.closest('[data-org-tab]');
       if (tab) showOrgTab(tab.getAttribute('data-org-tab'));
+    });
+    orgRoutesCard.querySelector('.home-org-tabs').addEventListener('keydown', function (event) {
+      var tab = event.target.closest('[data-org-tab]');
+      if (!tab) return;
+      var tabs = Array.prototype.slice.call(orgRoutesCard.querySelectorAll('[data-org-tab]'));
+      var index = tabs.indexOf(tab);
+      if (event.key === 'ArrowRight') index = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') index = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === 'Home') index = 0;
+      else if (event.key === 'End') index = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      showOrgTab(tabs[index].getAttribute('data-org-tab'));
+      tabs[index].focus();
     });
   }
   var BORDER_TRACE_MS = 2400;
@@ -7515,17 +7764,57 @@
 
   // 展开态列表出现滚动条时实测其宽度写入 --links-sb（样式用负右外边距抵消），胶囊不因滚动条变窄而跳动
   function syncHomeLinksScrollbar(links) {
+    if (!links) return;
     links.style.removeProperty('--links-sb');
-    if (!links.classList.contains('is-expanded')) return;
+    if (!links.classList.contains('is-expanded') && !links.classList.contains('is-filtering')) {
+      links.scrollTop = 0;
+      return;
+    }
     links.style.setProperty('--links-sb', (links.offsetWidth - links.clientWidth) + 'px');
+  }
+
+  function applyHomeLinksFilter(links, toggle, emptyEl, query) {
+    if (!links) return false;
+    var q = String(query || '').trim().toLowerCase();
+    if (!q) {
+      links.classList.remove('is-filtering');
+      links.hidden = false;
+      if (emptyEl) emptyEl.hidden = true;
+      return false;
+    }
+    links.classList.add('is-filtering');
+    links.classList.remove('is-expanded');
+    var items = links.querySelectorAll('a');
+    var matched = 0;
+    for (var fi = 0; fi < items.length; fi++) {
+      var haystack = (items[fi].textContent + ' ' + (items[fi].getAttribute('href') || '')).toLowerCase();
+      var hit = haystack.indexOf(q) !== -1;
+      items[fi].hidden = !hit;
+      if (hit) matched++;
+    }
+    links.hidden = matched === 0;
+    if (toggle) toggle.hidden = true;
+    if (emptyEl) emptyEl.hidden = matched > 0;
+    syncHomeLinksScrollbar(links);
+    return true;
+  }
+
+  function syncHomePreviewItems(links, attribute, expanded, latest) {
+    var items = links.querySelectorAll('a');
+    var count = homePreviewMedia && homePreviewMedia.matches ? 4 : 8;
+    for (var pi = 0; pi < items.length; pi++) {
+      var extra = latest ? pi < items.length - count : pi >= count;
+      items[pi].toggleAttribute(attribute, extra);
+      items[pi].hidden = extra && !expanded;
+    }
+    return links.querySelectorAll('[' + attribute + ']');
   }
 
   function setHomeRoutesExpanded(expanded) {
     if (!routeToggle || !routeLinks) return;
-    var extras = document.querySelectorAll('#homeRouteLinks [data-route-extra]');
-    for (var rti = 0; rti < extras.length; rti++) {
-      extras[rti].hidden = !expanded;
-    }
+    if (applyHomeLinksFilter(routeLinks, routeToggle, routeSearchEmpty, routeSearch && routeSearch.value)) return;
+    var extras = syncHomePreviewItems(routeLinks, 'data-route-extra', expanded, true);
+    routeToggle.hidden = extras.length === 0;
     routeToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     routeToggle.textContent = expanded ? '收起纵深路线 ↑' : '展开全部 ' + routeLinks.querySelectorAll('a').length + ' 条纵深路线 ↓';
     if (routeLinks) {
@@ -7788,15 +8077,14 @@
     });
   }
 
-  // 首页「公司路线」卡：同样默认露出前 4 家，其余由展开按钮控制
+  // 首页「公司路线」卡：桌面露出前 8 家，窄屏前 4 家
   var companyToggle = document.getElementById('homeCompanyToggle');
   var companyLinks = document.getElementById('homeCompanyLinks');
   function setHomeCompaniesExpanded(expanded) {
     if (!companyToggle || !companyLinks) return;
-    var extras = companyLinks.querySelectorAll('[data-company-extra]');
-    for (var cti = 0; cti < extras.length; cti++) {
-      extras[cti].hidden = !expanded;
-    }
+    if (applyHomeLinksFilter(companyLinks, companyToggle, companySearchEmpty, orgSearch && orgSearch.value)) return;
+    var extras = syncHomePreviewItems(companyLinks, 'data-company-extra', expanded, false);
+    companyToggle.hidden = extras.length === 0;
     companyToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     companyLinks.classList.toggle('is-expanded', expanded);
     syncHomeLinksScrollbar(companyLinks);
@@ -7814,15 +8102,14 @@
     });
   }
 
-  // 实验室按成立年份从早到晚排序，折叠态优先展示最早的 4 个。
+  // 实验室按成立年份排序，预览阈值同为桌面 8 个、窄屏 4 个。
   var labToggle = document.getElementById('homeLabToggle');
   var labLinks = document.getElementById('homeLabLinks');
   function setHomeLabsExpanded(expanded) {
     if (!labToggle || !labLinks) return;
-    var extras = labLinks.querySelectorAll('[data-lab-extra]');
-    for (var lti = 0; lti < extras.length; lti++) {
-      extras[lti].hidden = !expanded;
-    }
+    if (applyHomeLinksFilter(labLinks, labToggle, labSearchEmpty, orgSearch && orgSearch.value)) return;
+    var extras = syncHomePreviewItems(labLinks, 'data-lab-extra', expanded, false);
+    labToggle.hidden = extras.length === 0;
     labToggle.setAttribute('aria-expanded', String(expanded));
     labLinks.classList.toggle('is-expanded', expanded);
     syncHomeLinksScrollbar(labLinks);
@@ -7836,10 +8123,8 @@
       return (Number(a.getAttribute('data-founded-year')) || Infinity)
         - (Number(b.getAttribute('data-founded-year')) || Infinity);
     });
-    labItems.forEach(function (link, index) {
+    labItems.forEach(function (link) {
       labLinks.appendChild(link);
-      link.toggleAttribute('data-lab-extra', index >= 4);
-      link.hidden = index >= 4;
     });
     setHomeLabsExpanded(false);
     labToggle.addEventListener('click', function () {
@@ -7848,6 +8133,36 @@
         setHomeLabsExpanded(expanded);
       }, expanded, labLinks.querySelectorAll('[data-lab-extra]'));
     });
+  }
+
+  if (routeSearch && routeToggle) {
+    routeSearch.addEventListener('input', function () {
+      setHomeRoutesExpanded(routeToggle.getAttribute('aria-expanded') === 'true');
+    });
+  }
+  if (orgSearch && orgRoutesCard) {
+    orgSearch.addEventListener('input', function () {
+      var activeTab = orgRoutesCard.querySelector('.home-org-tab.is-active');
+      var tabName = activeTab ? activeTab.getAttribute('data-org-tab') : 'company';
+      if (tabName === 'lab') {
+        setHomeLabsExpanded(labToggle ? labToggle.getAttribute('aria-expanded') === 'true' : false);
+      } else {
+        setHomeCompaniesExpanded(companyToggle ? companyToggle.getAttribute('aria-expanded') === 'true' : false);
+      }
+    });
+  }
+
+  function refreshHomeRoutePreviews() {
+    if (routeToggle) setHomeRoutesExpanded(routeToggle.getAttribute('aria-expanded') === 'true');
+    if (companyToggle) setHomeCompaniesExpanded(companyToggle.getAttribute('aria-expanded') === 'true');
+    if (labToggle) setHomeLabsExpanded(labToggle.getAttribute('aria-expanded') === 'true');
+  }
+  if (homePreviewMedia && (routeLinks || companyLinks || labLinks)) {
+    if (typeof homePreviewMedia.addEventListener === 'function') {
+      homePreviewMedia.addEventListener('change', refreshHomeRoutePreviews);
+    } else if (typeof homePreviewMedia.addListener === 'function') {
+      homePreviewMedia.addListener(refreshHomeRoutePreviews);
+    }
   }
 
   // ── 首页入口卡指针光斑：把指针相对卡片的坐标写入 --spot-x / --spot-y（样式见 style.css） ──

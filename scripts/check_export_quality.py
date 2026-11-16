@@ -29,17 +29,26 @@ def check(name: str, passed: bool, detail: str = "") -> bool:
     return passed
 
 
-def validate_page_exports(source_dir: Path, mirror_dir: Path) -> int:
-    """Verify the split contract against the legacy export, including exact mirrors."""
+def validate_page_exports(
+    source_dir: Path,
+    mirror_dir: Path,
+    *,
+    expected_site_data: dict | None = None,
+) -> int:
+    """Verify the split site-catalog-v1 + page-content contract and exact mirror."""
     catalog_bytes = (source_dir / "site-catalog-v1.json").read_bytes()
     if catalog_bytes != (mirror_dir / "site-catalog-v1.json").read_bytes():
         raise ValueError("目录镜像不一致")
     catalog = json.loads(catalog_bytes)
-    original = json.loads((source_dir / "site-data-v1.json").read_bytes())
     if catalog.pop("content_mode", None) != "per-page-v1":
         raise ValueError("目录版本不正确")
-    details = catalog["pages"]["detail_pages"]
-    if set(details) != set(original["pages"]["detail_pages"]):
+    pages = catalog.get("pages")
+    details = pages.get("detail_pages") if isinstance(pages, dict) else None
+    if not isinstance(details, dict):
+        raise ValueError("缺少 pages.detail_pages 目录")
+    if expected_site_data is not None and set(details) != set(
+        expected_site_data["pages"]["detail_pages"]
+    ):
         raise ValueError("页面 ID 集合不一致")
     expected_files = set()
     for page_id, page in details.items():
@@ -67,7 +76,7 @@ def validate_page_exports(source_dir: Path, mirror_dir: Path) -> int:
             if key in body:
                 page[key] = body[key]
         expected_files.add(filename)
-    if catalog != original:
+    if expected_site_data is not None and catalog != expected_site_data:
         raise ValueError("拆分后不能无损重建完整站点数据")
     for directory in (source_dir, mirror_dir):
         if {p.name for p in (directory / "page-content").glob("*.json")} != expected_files:
@@ -89,9 +98,11 @@ def main() -> None:
 
     # 1. search-index.json 存在且非空
     si = DOCS / "search-index.json"
+    si_data: dict | None = None
+    doc_count = 0
     if si.exists():
-        data = json.loads(si.read_text(encoding="utf-8"))
-        doc_count = len(data.get("docs", []))
+        si_data = json.loads(si.read_text(encoding="utf-8"))
+        doc_count = len(si_data.get("docs", []))
         results.append(check("search-index.json 存在", True, f"{doc_count} 文档"))
         results.append(check("search-index.json 非空", doc_count > 0, f"docs={doc_count}"))
     else:
@@ -111,33 +122,33 @@ def main() -> None:
     else:
         results.append(check("search-index-lite.json 存在", False, "文件缺失"))
 
-    # 2. index-v1.json 存在且文档数合理
-    iv1 = EXPORTS / "index-v1.json"
-    if iv1.exists():
-        data = json.loads(iv1.read_text(encoding="utf-8"))
-        items = data.get("items", data if isinstance(data, list) else [])
-        count = len(items)
-        results.append(check("exports/index-v1.json 存在", True, f"{count} 页面"))
-        results.append(check("index-v1.json 文档数合理（≥50）", count >= 50, f"count={count}"))
+    # 2. site-catalog-v1.json 存在且文档数合理
+    sc = EXPORTS / "site-catalog-v1.json"
+    sc_data: dict | None = None
+    sc_count = 0
+    if sc.exists():
+        sc_data = json.loads(sc.read_text(encoding="utf-8"))
+        sc_pages = sc_data.get("pages", {}).get("detail_pages", {})
+        sc_count = len(sc_pages)
+        results.append(check("exports/site-catalog-v1.json 存在", True, f"{sc_count} 页面"))
+        results.append(
+            check("site-catalog-v1.json 文档数合理（≥50）", sc_count >= 50, f"count={sc_count}")
+        )
     else:
-        results.append(check("exports/index-v1.json 存在", False, "文件缺失"))
-        results.append(check("index-v1.json 文档数合理", False, "文件缺失"))
+        results.append(check("exports/site-catalog-v1.json 存在", False, "文件缺失"))
+        results.append(check("site-catalog-v1.json 文档数合理", False, "文件缺失"))
 
-    # 3. search-index.json 与 index-v1.json 文档数量大体一致
-    if si.exists() and iv1.exists():
-        si_data = json.loads(si.read_text(encoding="utf-8"))
-        iv1_data = json.loads(iv1.read_text(encoding="utf-8"))
-        si_count = len(si_data.get("docs", []))
-        iv1_items = iv1_data.get("items", iv1_data if isinstance(iv1_data, list) else [])
-        iv1_count = len(iv1_items)
-        # 允许 ±20% 差异（search-index 只含 wiki pages，index-v1 含全部页面）
-        ratio = si_count / max(iv1_count, 1)
-        consistent = 0.3 <= ratio <= 1.05
+    # 3. search-index.json 与 site-catalog-v1.json 文档数量大体一致
+    if si_data is not None and sc_data is not None:
+        si_count = doc_count
+        # search-index 与 site-catalog-v1 的 detail_pages 数量基本一致（允许少量差）
+        ratio = si_count / max(sc_count, 1)
+        consistent = 0.8 <= ratio <= 1.05
         results.append(
             check(
-                "search-index 与 index-v1 数量合理",
+                "search-index 与 site-catalog-v1 数量合理",
                 consistent,
-                f"search={si_count} index={iv1_count} ratio={ratio:.2f}",
+                f"search={si_count} catalog={sc_count} ratio={ratio:.2f}",
             )
         )
 
@@ -171,6 +182,7 @@ def main() -> None:
 
     # 5. graph-stats.json 节点数与 wiki 页面数大体一致
     gs = EXPORTS / "graph-stats.json"
+    gs_data: dict | None = None
     wiki_pages = list((REPO_ROOT / "wiki").rglob("*.md"))
     wiki_count = len([p for p in wiki_pages if p.name != "README.md"])
     if gs.exists():
@@ -189,8 +201,7 @@ def main() -> None:
         results.append(check("graph-stats.json 存在", False, "文件缺失"))
 
     # 6. graph-stats.json 中孤儿节点应为空
-    if gs.exists():
-        gs_data = json.loads(gs.read_text(encoding="utf-8"))
+    if gs_data is not None:
         orphan_nodes = gs_data.get("orphan_nodes", [])
         orphan_free = len(orphan_nodes) == 0
         detail = "0 个孤儿节点" if orphan_free else f"⚠️ 发现 {len(orphan_nodes)} 个孤儿节点"
@@ -204,22 +215,25 @@ def main() -> None:
         check("exports/lint-report.md 存在", lr.exists(), "（首次运行 weekly action 后生成）")
     )
 
-    # 8. catalog.md 同步检查（新增 wiki 页后应 make catalog）
+    # 8. catalog.md 同步检查（由 main 上的 export.yml 自动维护，PR 勿改）
     catalog_md = REPO_ROOT / "catalog.md"
-    index_json = EXPORTS / "index-v1.json"
-    if catalog_md.exists() and index_json.exists():
+    if catalog_md.exists() and sc.exists():
         md_mtime = catalog_md.stat().st_mtime
-        json_mtime = index_json.stat().st_mtime
+        json_mtime = sc.stat().st_mtime
         # lag_days > 0: json 比 catalog.md 新；可能 catalog 未及时重新生成
         lag_days = (json_mtime - md_mtime) / 86400
-        # 允许 7 天内的偏差（硬失败阈值），超过则提示但不阻止 CI
-        in_sync = lag_days <= 7.0
-        detail = (
-            f"⚠️ index-v1.json 比 catalog.md 新了 {lag_days:.1f} 天（建议 make catalog）"
-            if not in_sync
-            else f"同步正常（差 {lag_days:.1f} 天）"
-        )
-        results.append(check("catalog.md 与 exports/index-v1.json 同步（7 天内）", in_sync, detail))
+        # 超过 7 天只打印告警，不阻塞 CI（PR 不得修改 bot-owned 的 catalog.md）
+        if lag_days > 7.0:
+            print(
+                f"⚠️  catalog.md 与 exports/site-catalog-v1.json 差 {lag_days:.1f} 天"
+                "（catalog.md 由 main 上的 export.yml 自动维护，PR 勿提交）"
+            )
+        else:
+            check(
+                "catalog.md 与 exports/site-catalog-v1.json 同步（7 天内）",
+                True,
+                f"同步正常（差 {lag_days:.1f} 天）",
+            )
 
     print("=" * 55)
     passed = sum(results)

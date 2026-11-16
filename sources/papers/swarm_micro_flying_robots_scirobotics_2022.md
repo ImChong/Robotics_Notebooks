@@ -1,76 +1,28 @@
-# Swarm of Micro Flying Robots in the Wild（Science Robotics, 2022）
+# Swarm of Micro Flying Robots in the Wild (Science Robotics 2022)
 
-> 来源归档（ingest）
+- **作者：** Xin Zhou, Xiangyong Wen, Zhepei Wang, Yuman Gao, Haojia Li, Qianhao Wang, Tiankai Yang, Haojian Lu, Yanjun Cao, Chao Xu, Fei Gao（浙江大学工业控制技术国家重点实验室 / 浙江大学湖州研究院 / HKUST）
+- **链接：** https://www.science.org/doi/10.1126/scirobotics.abm5954 ；补充开发文档：`ego-planner-v2` `swarm-playground` 文档
+- **状态：** primary_full_text_checked
+- **核对范围：** 已通读 *Science Robotics* 2022 论文全文（1–1373 行：TEEM 设计准绳、MINCO 时空联合轨迹参数化与约束转录、通用惩罚项 $J_s/J_t/J_d/J_o/J_w/J_f/J_v$、基于 UWB 的去中心化 VIO 漂移矫正与分层安全兜底、114 mm 掌上无人机硬件构型、野生竹林 10 机穿飞/编队/遮挡目标跟踪/密集互避实飞与 MADER/EGO-Swarm 基准对照）及 `ego-planner-v2` 官方 `swarm-playground` 文档
+- **通读：** 已完成
 
-- **标题：** Swarm of micro flying robots in the wild
-- **类型：** paper / micro UAV swarm / trajectory planning / spatiotemporal optimization / onboard sensing
-- **期刊：** Science Robotics, April 2022 — **封面文章**（Volume 7, Issue 66, eabm5954）
-- **DOI：** <https://doi.org/10.1126/scirobotics.abm5954>
-- **项目代码：** EGO-Planner-v2 — <https://github.com/ZJU-FAST-Lab/ego-planner-v2>（详见下文开源核查）
-- **数据集：** <https://doi.org/10.5281/zenodo.5804079>
-- **作者：** Xin Zhou†、Xiangyong Wen†、Zhepei Wang、Yuman Gao、Haojia Li、Qianhao Wang、Tiankai Yang、Haojian Lu、Yanjun Cao、Chao Xu*、Fei Gao*（† 同等一作；* 通讯作者）
-- **机构：** 浙江大学 FAST-Lab（徐超、高飞实验室）
-- **入库日期：** 2026-07-20
-- **一句话说明：** 提出掌心级微型 UAV 群 + **时空联合轨迹优化**（MINCO），在无 GPS、无外部设施的竹林中实现 **10 机自主蜂群飞行**，成为无人机群在极度复杂户外环境中的首个 Science Robotics 级实证。
+## 核心要点提取
 
-## 相关资料（策展）
+1. **掌上全自主微小型集群硬件平台（< 300 g，114 mm 轴距）**
+   - 轴距仅 **114 mm**，含 100 g 电池整备重量 **< 300 g**（两块 3000 mAh 7.4 V LiPo 串联，4 颗 1404 6000 kV 电机配 3 寸三叶桨，推重比 **2.4**，倒置下吹布置避免下洗流吹机身，悬停功耗 ~120 W，续航 **11 min**）。
+   - **机载传感与算力**：仅配 Intel RealSense **D430**（深度+双目灰度）、PX4 纳米级飞控（STM32 H7 + BMI088 IMU，省去气压计/磁力计/GPS）、**NVIDIA Xavier NX**（6 核 CPU / 384 核 GPU / 8 GB RAM，非多线程视频追踪场景 CPU/GPU 占用率均 **< 40%**）以及 Nooploop LTPS **UWB**（DW1000 芯片），机间通过单 AP WiFi 或对等 Ad-hoc 网络广播轨迹参数。
 
-| 类型 | 链接 | 说明 |
-|------|------|------|
-| 项目代码 | [EGO-Planner-v2 (GitHub)](https://github.com/ZJU-FAST-Lab/ego-planner-v2) | 本文完整代码库，GPL v3，700+ stars |
-| 数据集 | [Zenodo 5804079](https://doi.org/10.5281/zenodo.5804079) | 论文配套数据集 |
-| MINCO 基础 | [ZJU-FAST-Lab/GCOPTER](https://github.com/ZJU-FAST-Lab/GCOPTER) | MINCO 轨迹表示的原始仓库 |
-| 前序工作 | [EGO-Planner (v1/Swarm)](../../wiki/entities/ego-planner-swarm.md) | 单机/多机局部规划器，ESDF + B-spline |
-| 多旋翼规划栈 | [多旋翼仿真规划控制栈概览](../../wiki/overview/multirotor-simulation-planning-control-stack.md) | 宏观生态定位 |
+2. **MINCO 时空联合轨迹优化与约束转录（Eq. 1–24）**
+   - 基于旋翼微分平坦性（$s=3$ 加加速度链），用 **MINCO** 分段五次多项式表达平坦输出轨迹 $p(t) = \mathcal{M}_{q, T}(t)$：将传统密集多项式耦合优化压缩为相邻路点 $q \in \mathbb{R}^{3 \times (M-1)}$ 与各段时长 $T \in \mathbb{R}^M$，经带状矩阵方程 $M(T)c = b(q)$ 的带状 PLU 分解实现 **$O(M)$ 线性复杂度**前向求值与梯度回传（桌面端每段仅约 **1 μs**）。
+   - 采用二步约束转录（惩罚函数积分 + 有限等距采样求和），将总时间 $J_t$、平滑能量 $J_s = \int \|p^{(3)}(t)\|^2 dt$、动力学上限 $J_d$（$v_m, a_m, j_m$）、单平面无 ESDF 障碍距离 $J_o$（$d_o = (p-s)^T v$，平面生成仅约 **0.1 ms**）、椭圆加权机间防撞 $J_w$（$z$ 轴降权以减缓下洗流干扰）以及任务项（编队 $J_f$ / 视角对齐追踪 $J_v$）统一化为无约束目标，由 **L-BFGS** 实时求解，并结合 Ceres 优化 UWB 相对测距与 VIO 漂移修正（Eq. 24）。
 
-## 摘要级要点
+3. **TEEM 与野外/基准实验验证**
+   - 提出 **TEEM** 四维设计准则（Trajectory optimality, Extensibility, Economical computing, Miniature size），通过纯机载感知与弱耦合轨迹广播（配合深度图移除已知他机点云干扰 + 碰撞后台检查 + 紧急制动兜底）在无 GPS 与动捕环境下完成四大野外测试：
+     - **密集竹林穿飞（10 机）**：穿行窄至 **< 30 cm** 的野生竹间隙（目标距起点 65 m），借助时间维度协同自动排队避让而非机械改高度浪费能量。
+     - **森林编队、4 机抗遮挡人机跟踪（YOLOv5 TensorRT + 卡尔曼滤波）与 3 m 半径随机换位密集互避（10 机，7 cm 安全球模型，中途人工加障与关停地面定位锚点零碰撞）**。
+   - 仿真对比 **MADER** 与前代 **EGO-Swarm**（1–3 m/s 期望速度，1–2 m 障碍间距）：两基线因缺乏/受限实时时间剖面联合优化常绕大弯让行，本方案显著降低控制努力（jerk 积分 $S_m$）并缩短计算耗时；`Swarm Playground` 支持 40 机交互式仿真与手柄动态避障测试。
 
-- **问题：** 密集森林等杂乱户外环境对单机已难，对机群几乎不可能——狭窄走廊 + 未知环境 + 群体协调碰撞规避，三个约束同时压在一个毫秒级在线规划器上。
-- **平台：** 掌心级微型四旋翼（约 30–40 g），搭载 **深度相机 + VIO（视觉-惯性里程计）**，完全机载感知与计算；**无 GPS、无动捕、无外部通讯基础设施**。
-- **规划核心——时空联合优化：**
-  - **MINCO 轨迹表示**（Minimum-Jerk Continuity Optimization）：多项式分段轨迹，支持同时对轨迹 **形状** 和 **时间分配** 求导并联合优化——相比 MADER/EGO-Swarm 等只优化形状的方案，消除了后行无人机绕路等待的问题。
-  - **统一代价函数**：飞行效率 + 静态障碍避碰 + 机间碰撞规避 + 动力学可行性 + 群体协调等，全部纳入同一可微 NLP。
-  - **毫秒级求解：** 即使在最拥挤环境下，几毫秒内得到高质量轨迹。
-- **去中心化异步规划：** 各无人机独立规划，通过广播共享本机当前计划轨迹用于预测性互避碰；不要求严格同步或集中指挥。
-- **可扩展性（Extensibility）：** 在基础规划框架上演示三种任务：swarm formation、interlaced flights、multi-goal tracking——验证框架设计的通用性。
-- **仿真与实验：**
-  - 仿真：Intel Core i7-10700K，各机独立线程并行，对比 MADER 与 EGO-Swarm（轨迹质量 + 算力四项指标）
-  - 实机：竹林实地，10 机同时飞行，无外部设施
+## 局限性与边界条件
 
-## 核心摘录（面向 wiki 编译）
-
-### 1) MINCO 时空联合优化
-
-| 要素 | 传统方案 | 本文方案 |
-|------|----------|----------|
-| 时间分配 | 固定或独立后处理 | 与轨迹形状 **联合优化**（梯度同步回传） |
-| 轨迹表示 | B-spline 或 waypoint 序列 | 分段多项式 + 映射矩阵保证 C^n 连续 |
-| 与避碰的关系 | 解耦 → 后行机绕路等待 | 时间弹性 → 通过 **时间膨胀** 完成空间避碰 |
-
-### 2) 去中心化机间避碰
-
-- 每机通过局域无线广播 **本机计划轨迹**（未来一段时间内）；邻机收到后在代价函数中添加 **预测碰撞项**。
-- **异步**：各机以自有感知频率触发规划，不需全局同步时钟。
-- **对 wiki 的映射：** [`wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md`](../../wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md)
-
-### 3) 开源与复现
-
-- **完整代码**已以 **EGO-Planner-v2**（GPL v3）发布于 GitHub：包含 swarm、formation、tracking 三个 workspace，附 PDF 教程与演示视频。
-- 数据集 deposit 于 Zenodo（含飞行轨迹数据）。
-- **对 wiki 的映射：** 开源状态写入局限/工程实践节。
-
-## 源码开放核查（步骤 2.5）
-
-| 类别 | 状态 | 说明 |
-|------|------|------|
-| 完整规划代码 | **已开源** | EGO-Planner-v2，GPL v3，GitHub，700+ stars（截至 2026-07-20） |
-| 硬件平台代码 | **部分** | 代码库含仿真 playground；硬件配置（自研微型机体）不含 |
-| 数据集 | **已开源** | Zenodo 10.5281/zenodo.5804079 |
-| 模型权重 | N/A | 纯规划算法，无神经网络权重 |
-
-## 对 wiki 的映射
-
-- 主沉淀：**[`wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md`](../../wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md)**
-- 交叉：**[`wiki/entities/ego-planner-swarm.md`](../../wiki/entities/ego-planner-swarm.md)**（EGO-Planner Swarm 单机/多机规划器）
-- 谱系：**[`wiki/entities/crazyswarm2.md`](../../wiki/entities/crazyswarm2.md)**（Crazyflie 群体平台）、**[`wiki/entities/quad-swarm-rl.md`](../../wiki/entities/quad-swarm-rl.md)**（强化学习群控）
-- 体系：**[`wiki/overview/multirotor-simulation-planning-control-stack.md`](../../wiki/overview/multirotor-simulation-planning-control-stack.md)**
+- 机间协同依赖共享无线链路广播各自轨迹系数与时间戳；若无线通信完全中断，退化为依赖各自局部深度图的独立避障，高密互避协同能力受限。
+- 约束转录后的 L-BFGS 属于惩罚法软约束，必须依赖求解后二次可行性校验（post-check）及失败降级紧急制动（10 ms 重试），无法在数学上单次保证绝对零违约。

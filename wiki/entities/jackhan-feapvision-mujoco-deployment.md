@@ -3,7 +3,7 @@ type: entity
 title: FEAP Vision MuJoCo 部署（深度 + TorchScript）
 tags: [humanoid, mujoco, depth, torchscript, vision, locomotion, jackhan-sdu]
 summary: "在 MuJoCo 渲染 named 深度相机 depth_cam，经 OpenCV 侧可视化与观测构造，将本体状态与深度拼入 TorchScript（.pt）策略，经 PD 与手柄速度指令驱动 E3 21-DoF 场景；README 声明研究用途许可。"
-updated: 2026-05-16
+updated: 2026-11-13
 status: complete
 related:
   - ./jackhan-feap-mujoco-deployment.md
@@ -58,6 +58,7 @@ flowchart TD
 
 ## 常见误区或局限
 
+- **2026-11-13 维护复核：** [官方 README（30c788c）](https://github.com/JackHan-Sdu/FeapVision_Mujoco_deployment/blob/30c788c06242480bae9f2f61085a89ee4ab58f89/README.md) 仍采用本体观测 + 深度图 + TorchScript，入口为 `deploy_mujoco_vision.py`，不含训练代码；README 末尾标明仅研究与学术用途。本次只核对文档，未运行部署。
 - **README 声明**：仓库写明 **仅研究与学术用途**；与通用 OSS 许可不可混为一谈。
 - **性能**：README 建议 NVIDIA GPU 以支撑高帧率深度渲染；CPU 路径需自行压测实时性。
 

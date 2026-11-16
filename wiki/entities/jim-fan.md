@@ -9,7 +9,7 @@ related:
   - ./gr00t-wholebodycontrol.md
   - ./zhengyi-luo.md
   - ./tairan-he.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/egoscale.md
   - ../methods/enpire.md
   - ../methods/aspire.md
@@ -39,7 +39,7 @@ summary: "范林熹（Linxi Jim Fan）为 NVIDIA Senior Research Scientist、AI 
 
 ## 为什么重要
 
-- **GEAR 组的「人物锚点」**：本库多条 **人形 VLA、WBC、真机 autoresearch、人视频 scaling** 页面（如 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)、[SONIC](../methods/sonic-motion-tracking.md)、[EgoScale](../methods/egoscale.md)、[ENPIRE](../methods/enpire.md)）共享 GEAR 署名网络；理解 Fan 的公开议程有助于判断 **哪些工作是同一研究组长期主线、哪些是合作外延**。
+- **GEAR 组的「人物锚点」**：本库多条 **人形 VLA、WBC、真机 autoresearch、人视频 scaling** 页面（如 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)、[SONIC](./nvidia-sonic.md)、[EgoScale](../methods/egoscale.md)、[ENPIRE](../methods/enpire.md)）共享 GEAR 署名网络；理解 Fan 的公开议程有助于判断 **哪些工作是同一研究组长期主线、哪些是合作外延**。
 - **「通才 agent」叙事的一致提出者**：个人站与 GEAR 门户均强调 *generally capable agents in many worlds, virtual and real*——把 **Minecraft agent、LLM 奖励设计、多模态 manipulation、人形 foundation model** 视为同一问题族的不同实例，而非孤立项目。
 - **社区高引用论文集群的作者节点**：Google Scholar 上 Voyager、Open X-Embodiment、Eureka、MineDojo、GR00T N1 等条目引用量处于领域前列，是后续单篇论文 ingest 与 [Foundation Policy](../concepts/foundation-policy.md) 讨论的自然索引。
 
@@ -84,7 +84,7 @@ flowchart TB
 | **Foundation Agents（游戏/仿真）** | Voyager、MineDojo | [NVIDIA GEAR Lab](./nvidia-gear-lab.md) Featured；单篇待深读 ingest |
 | **LLM × RL / 奖励** | Eureka | [Reward Design](../concepts/reward-design.md) |
 | **多模态 manipulation** | VIMA、Open X-Embodiment | [VLA](../methods/vla.md) |
-| **人形通才基础模型** | GR00T N1、SONIC | [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)、[SONIC](../methods/sonic-motion-tracking.md) |
+| **人形通才基础模型** | GR00T N1、SONIC | [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)、[SONIC](./nvidia-sonic.md) |
 | **真机策略开发闭环** | ENPIRE、ASPIRE | [ENPIRE](../methods/enpire.md)、[ASPIRE](../methods/aspire.md) |
 | **人视频 scaling** | EgoScale | [EgoScale](../methods/egoscale.md) |
 
@@ -103,7 +103,7 @@ Fan 领导的 GEAR 与 CMU / 产业界人形研究网络高度重叠，本库已
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md)
 - [GR00T N1 论文实体](./paper-hrl-stack-34-gr00t_n1.md)
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md)
 - [EgoScale](../methods/egoscale.md)
 - [ENPIRE](../methods/enpire.md)
 - [ASPIRE](../methods/aspire.md)

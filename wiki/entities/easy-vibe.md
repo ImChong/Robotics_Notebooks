@@ -1,5 +1,8 @@
 ---
 type: entity
+project_id: easy-vibe
+project: https://datawhalechina.github.io/easy-vibe/
+code: https://github.com/datawhalechina/easy-vibe
 tags:
   - course
   - vibe-coding
@@ -11,7 +14,7 @@ tags:
   - datawhale
   - tutorial
 status: complete
-updated: 2026-10-01
+updated: 2026-11-13
 related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../concepts/retrieval-augmented-generation.md
@@ -25,6 +28,8 @@ related:
 sources:
   - ../../sources/repos/easy-vibe.md
   - ../../sources/sites/easy-vibe-datawhale.md
+original:
+  - ../../sources/repos/easy-vibe.md
 summary: "Easy-Vibe 是 Datawhale 开源的 AI 原生产品构建教程（~19.5k⭐）：3+1 阶段从 vibe coding 入门到全栈 SaaS 与 Claude Code/MCP/RAG/跨平台；10 语言、80+ 交互附录，含 llms.txt 供 Agent 导航。"
 ---
 
@@ -53,7 +58,7 @@ summary: "Easy-Vibe 是 Datawhale 开源的 AI 原生产品构建教程（~19.5k
 - **Agent 维护本库的可参照物：** 根目录 **`llms.txt`** 为 OpenClaw/Cursor/Trae 等提供 **阶段决策树** — 与本站 [LLM Wiki](../references/llm-wiki-karpathy.md) + [ingest 规范](../../schema/ingest-workflow.md) 的「给 Agent 一张地图」同构。
 - **与 LearnPrompt 分工：** [LearnPrompt](learnprompt.md) 偏 **任务卡 + Skill 工坊 + Obsidian 记忆**；Easy-Vibe 偏 **产品/全栈/跨平台课纲** + Datawhale 社区规模 — 机器人维护者做 **文档站、工具页、内部 dashboard** 时可并用。
 
-## 核心结构：3+1 阶段
+## 核心原理：3+1 阶段
 
 ```mermaid
 flowchart TB
@@ -73,6 +78,29 @@ flowchart TB
 | **Stage 2** | 初级开发 / 独立黑客 | Figma→代码、Supabase、Git、部署、Stripe、SaaS 大作业、微信小程序后端 |
 | **Stage 3** | AI-Native 开发者 | Claude Code 基础/MCP/Skills/长任务/Superpowers、RAG + LangGraph、小程序/Android/iOS/Electron 项目 |
 | **Appendix** | 所有人 | 计算机基础、前后端、数据、架构、运维、AI 原理（交互动画） |
+
+## 源码运行时序图
+
+依据官方 `package.json` 的 `scripts.dev = vitepress dev docs` 和 README 的本地预览步骤，下面仅描述**教程网站启动流程**，不是课程中的某个 SaaS 项目或 Agent 的内部运行时。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant L as 学习者
+  participant N as npm
+  participant V as VitePress
+  participant D as docs课程内容
+  participant B as 浏览器
+  L->>N: npm run dev
+  N->>V: vitepress dev docs
+  V->>D: 读取 Markdown 和站点配置
+  V-->>L: 启动本地开发服务
+  L->>B: 打开 localhost:3000
+  B->>V: 请求课程页面
+  V-->>B: 返回网页与交互资源
+```
+
+本次核对的 **README 与 package.json 已读完**；各 Stage 的所有单篇内容未逐篇核验，故本页是课程总览节点，不能代替全部课程实践记录。
 
 ## 工程实践
 
@@ -94,6 +122,20 @@ flowchart TB
 
 ## 关联页面
 
+### 同届课程与工程延伸
+
+- [Happy-LLM](happy-llm.md) — 从模型调用回到 Transformer 与模型训练基础。
+- [llm-algo-leetcode](llm-algo-leetcode.md) — 算法与推理/系统优化的可运行 Notebook 学习路线。
+- [All-in-RAG](all-in-rag.md) — RAG 的加载、检索与生成工程分层。
+- [Easy Data × AI](easy-data-x-ai.md) — 数据层、Memory、Skill 与 Agent 的工程路径。
+- [Hello-Agents](hello-agents.md) — 智能体框架入门及进阶的同一教程。
+- [Deep Agents 实战](deepagents-in-action.md) — Agent Harness、权限和上下文工程。
+- [hello-gpu](hello-gpu.md) — GPU profiling、算子与 Agent 优化。
+- [hello-rocm](hello-rocm.md) — AMD GPU/ROCm 环境与部署教程。
+- [GGUF 量化内幕](gguf-quant-internals.md) — 低比特量化格式与验证。
+- [cpp-llm-engine](cpp-llm-engine.md) — 用 C++ 实现模型推理服务主线。
+
+
 - [Astra Games / Awesome GPT-6 Astra](astra-games.md) — AI 辅助浏览器作品案例；参考交互与验证方法，源码和许可按作品核查。
 
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — vibe coding 之后必补的 SE 取舍
@@ -105,6 +147,8 @@ flowchart TB
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 
 ## 参考来源
+
+- [2026-11-13 原文复核记录（含通读范围和开发入口）](../../sources/repos/easy-vibe.md)
 
 - [Easy-Vibe 仓库归档（本站）](../../sources/repos/easy-vibe.md)
 - [Easy-Vibe 在线站归档（本站）](../../sources/sites/easy-vibe-datawhale.md)

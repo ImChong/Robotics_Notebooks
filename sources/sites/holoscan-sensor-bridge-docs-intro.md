@@ -1,44 +1,50 @@
-# Holoscan Sensor Bridge — Introduction（官方文档）
+# NVIDIA Holoscan Sensor Bridge 3.0 — 官方 Introduction / 架构 / 应用
 
-> 来源归档
+> 来源归档；版本：3.0 GA；官方文档复核日期：2026-11-12。
 
-- **标题：** Introduction | Holoscan Sensor Bridge Documentation
-- **类型：** site（NVIDIA 官方文档）
+- **标题：** Holoscan Sensor Bridge 3.0 Documentation
+- **类型：** site（NVIDIA 官方技术文档）
 - **链接：** <https://docs.nvidia.com/holoscan/sensor-bridge/getting-started/introduction>
-- **上级文档：** <https://docs.nvidia.com/holoscan/sensor-bridge/>
+- **架构：** <https://docs.nvidia.com/holoscan/sensor-bridge/applications/architecture>
+- **应用：** <https://docs.nvidia.com/holoscan/sensor-bridge/applications/applications>
+- **性能测试：** <https://docs.nvidia.com/holoscan/sensor-bridge/applications/latency>
+- **新设备驱动：** <https://docs.nvidia.com/holoscan/sensor-bridge/applications/new-sensors>
 - **代码：** <https://github.com/nvidia-holoscan/holoscan-sensor-bridge>
 - **入库日期：** 2026-09-06
-- **一句话说明：** HSB **主机侧软件模型**：FPGA 经 UDP/Ethernet 送数；ConnectX **RoCE/GPUDirect** 直写 GPU；Holoscan **operator 管线** + **sensor object** 驱动 IMX274 等示例。
-- **沉淀到 wiki：** [`wiki/entities/holoscan-sensor-bridge.md`](../../wiki/entities/holoscan-sensor-bridge.md)
+- **复核日期：** 2026-11-12
+- **核对范围：** 通读 3.0 Introduction、Architecture、Applications 中 IMX274 player 数据流与调度部分、Latency、新传感器驱动的核心段落，并与对应源码 `MIGRATION.md`、`examples/imx274_player.py`、`examples/linux_imx274_player.py` 交叉检查；不声称通读整套 API Reference。
+- **通读：** 已完成
+- **一句话说明：** Holoscan Sensor Bridge 3.0 运行在 Holoscan SDK 5.0 上，以类型化双端口、编译执行图与 RoCE/CoE/socket 模式组织实时传感器接入。
+- **沉淀到 wiki：** [Holoscan Sensor Bridge](../../wiki/entities/holoscan-sensor-bridge.md)
 
-## Overview 摘录
+## 版本及主机要求（3.0）
 
-- **数据路径：** 外设 → HSB device **FPGA** → **UDP over Ethernet** → 主机；**IGX / DGX Spark** 上 **ConnectX SmartNIC** 可将 UDP **直接写入 GPU 内存**。
-- **Holoscan 集成：** 主机软件提供 operator，把 HSB 网络数据接入 Holoscan pipeline；示例含 **Sony IMX274** 相机的视频处理与推理。
-- **支持主机：** **IGX Devkit**、**Jetson AGX Orin**、**Jetson AGX Thor**、**DGX Spark**。
-- **无 SmartNIC 主机：** 如 **Jetson AGX Orin Devkit** 走 **Linux socket** Ethernet（性能受 OS 网络栈限制）。
-- **PTP：** 支持硬件 **PTP 时间戳**（IGX 与 AGX Orin 板载网口）；用于接收时刻、管线延迟测量与传感器同步。
+- **Holoscan SDK：** 3.0 已移植到 SDK **5.0.0**；旧 4.x `Application/compose` 不兼容，运行时转为 `Graph → compile → run_async`。
+- **软件：** Ubuntu 24.04、CUDA 13、NVIDIA Driver R580+、Python 3.12+；容器外编译需要 CMake 4.0+。
+- **平台：** Jetson AGX Orin/Thor + JetPack 7.2.1、IGX Thor + IGX SW 2.0.1、DGX Spark + DGX OS 7.6.0、符合要求的 Linux GPU workstation。
+- **网络：** Orin 开发板 Linux socket；Thor 支持 socket / CoE；IGX Thor 和 DGX Spark 的 ConnectX 支持 RoCE 或 socket。
+- **不支持：** SDK 5 不支持旧 IGX Orin（IGX OS 1）或 JetPack 6；这些平台需使用 [HSB 2.7](https://github.com/nvidia-holoscan/holoscan-sensor-bridge/tree/2.7.0)。
 
-## Software 模型
+## 控制面与数据面
 
-- **Holoscan 应用：** 用 operator 列表 + `add_flow` 连接输入输出，配置 pipeline 调度。
-- **网络接收 operator：** 例 **`RoceReceiverOp`** — 从 HSB 源收 UDP 并写入 GPU 内存；相机场景下为 **CSI-2 Bayer** 内存块。
-- **现成算子：** Bayer→RGBA、ISP、**推理**、可视化、数据完整性测试 — 面向 **实时视频** 处理链。
-- **可定制：** operator 以 **源码** 提供；可 fork 适配非视频场景（如 5G 天线高速 analog）；可 upstream 回 NVIDIA。
+1. 设备 FPGA 收集 CSI-2/其他原始数据并以 UDP 发送到主机；板侧 I2C、SPI、GPIO 控制由用户态 **Sensor object** 与 `DataChannel` 处理。
+2. `Enumerator.find_channel` 根据局域网广播找到传感器接口；`DataChannel` 管理接收地址和网络配置。
+3. `NativeImx274Sensor` 配置时钟、传感器模式、寄存器；接收 operator 的 `device_start` / `device_stop` 回调负责启停视频。
+4. 有 ConnectX 时 `RoceReceiverOp` 使用 RDMA/GPU 通路；普通 Linux 网络用 `LinuxReceiverOp` 经 CPU 接收与复制；另有 Thor CoE 路径。
+5. SDK 5 中接收算子输出两个类型化端口：**`tensor`**（像素数据）和 **`metadata`**（`hololink::CaptureMetadataT`）；下游需要按采集时间对齐它们，不是 4.x 的单个 GXF Entity 和无类型 metadata dictionary。
+6. `CsiToBayerOp` → `ImageProcessorOp` → `BayerDemosaicOp` → `HolovizOp`；对接推理任务可以增加 Inference 与叠加绘制节点。
+7. Python 的 IMX274 示例用 `graph.add_flow` 接口，对显示队列使用 depth=1 的 `DROP_OLDEST`，以减少慢显示造成的历史帧积压。
 
-## Applications 与 Sensor objects
+## 端到端复现与工程边界
 
-- **HoloscanApplication：** 子类重写 `configure()` 构建 pipeline — 典型链：**采集 → 处理 → 输出 → 下发**。
-- **Sensor object：** 设备级配置/监控 API（例 **`Imx274Cam`**：初始化、曝光 `set_exposure`、健康监测）；相当于 **用户态驱动**，不含应用逻辑。
-- **应用层 operator** 可调 sensor API（如自动曝光 operator 读帧后调 `set_exposure`）。
-
-## Host requirements
-
-- 任意 **NVIDIA Holoscan 支持** 的系统均可运行；**最佳性能** 推荐 **IGX + ConnectX SmartNIC**。
-- 无 ConnectX 时（如 Jetson AGX Orin）性能受 **主机 OS 网络栈** 限制。
+- **示例启动：** 参考 [Applications](https://docs.nvidia.com/holoscan/sensor-bridge/applications/applications)；实际 `imx274_player.py` 先初始化 CUDA/网卡/传感器，再构建图、`compile`、`run_async`。数据流的具体接收端取决于是否存在 ConnectX。
+- **性能测量：** 官方 [Latency](https://docs.nvidia.com/holoscan/sensor-bridge/applications/latency) 区分 FPGA 首包时间、帧结束、主机 CPU 唤醒、下游算子起始与 GPU 显示交接；SDK 5 的 `complete` 不是窗口真正呈现时间，因此不能把它解释成 photon-to-display。
+- **已知代价：** 源码 `MIGRATION.md` 明确 HSDK5 receiver 由 RDMA buffer 到 Tensor pool **每帧有一次 cudaMemcpyAsync D2D 拷贝**；不能无条件宣称应用内全流程严格零拷贝。
+- **版本局限：** `ecam0m30tof_player.py` 在 3.0 文档中仍标记「尚不支持 SDK 5」，部分旧分布式示例已移除。
 
 ## 对 wiki 的映射
 
-- 实体：[`wiki/entities/holoscan-sensor-bridge.md`](../../wiki/entities/holoscan-sensor-bridge.md)
-- 产品页：[`sources/sites/nvidia-holoscan-sensor-bridge.md`](./nvidia-holoscan-sensor-bridge.md)
-- 代码：[`sources/repos/nvidia_holoscan_sensor_bridge.md`](../repos/nvidia_holoscan_sensor_bridge.md)
+- [Holoscan Sensor Bridge](../../wiki/entities/holoscan-sensor-bridge.md)
+- [Holoscan SDK 5.0](../../wiki/entities/nvidia-holoscan-sdk.md)
+- [产品页归档](./nvidia-holoscan-sensor-bridge.md)
+- [源码归档](../repos/nvidia_holoscan_sensor_bridge.md)

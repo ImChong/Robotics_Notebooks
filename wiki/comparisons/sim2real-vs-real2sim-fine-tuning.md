@@ -2,6 +2,7 @@
 type: comparison
 tags: [sim2real, real2sim, fine-tuning, real-world-rl, safe-rl, lora, residual-adaptation, crisp, slowrl, comparison, engineering-selection]
 status: complete
+original: ../../sources/papers/slowrl_arxiv_2603_17092.md
 updated: 2026-06-04
 sources:
   - ../../sources/papers/slowrl_arxiv_2603_17092.md
@@ -43,6 +44,26 @@ summary: "把真机适配的『最后一公里』拆成三条策略并按成本 
 | **真机直接 RL 微调** | 在真实机器人上直接跑 RL（全参或大步长），用真机样本端到端吸收 gap。 | 经典 Real-World RL / FFT 真机微调基线 |
 
 ---
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+
+## 为什么重要
+
+- 在仿真训练与真机微调之间做错误权衡，容易导致真机采样成本失控或在仿真中过拟合虚假物理特征。
+
+## 核心原理与方法栈
+
+- **Sim2Real**：在并行仿真中以域随机化与特权信息训练鲁棒策略，再零样本或少样本迁移至真机。
+- **Real2Sim 微调**：先将真机失败轨迹或现场环境重建为高保真数字孪生，再在孪生中针对性微调策略。
 
 ## 核心维度对比
 
@@ -155,7 +176,11 @@ flowchart TD
 
 ---
 
-## 常见误判
+## 工程实践
+
+- **闭环迭代**：先用 Sim2Real 获得基础策略，收集真机长尾失败样本后触发 Real2Sim 微调，形成持续改进飞轮。
+
+## 常见误判与局限
 
 1. **「Real2Sim 和 Sim2Real 是对立的两条路」**：不对。它们**正交互补**——Real2Sim 先在仿真侧把 gap 修小，Sim2Real 残差适配再在真机侧吸收**剩下**的残差。CRISP 一类 Real2Sim 减少的恰恰是 SLowRL 一类残差适配要在真机上吸收的量。
 2. **「残差适配就是普通 LoRA 微调」**：错。区别在**安全层**——SLowRL 的核心不只是低秩，而是「冻结骨干 + 低秩残差 + Recovery/Safety Filter 把探索关进安全集」三件套，缺安全层在真机上一样摔。
@@ -191,17 +216,6 @@ flowchart TD
 
 ---
 
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-
 ## 参考来源
 
 - [SLowRL（arXiv:2603.17092）](../../sources/papers/slowrl_arxiv_2603_17092.md) — 冻结策略 + rank-1 LoRA + Recovery/Safety Filter 真机残差适配
@@ -225,5 +239,12 @@ flowchart TD
 ---
 
 ## 一句话记忆
+
+Sim2Real 解决「从零到一的可扩展训练」，Real2Sim 微调解决「真机长尾失败的定向修复」。
+
+## 推荐继续阅读
+
+- [Sim2Real](../concepts/sim2real.md)
+- [CRISP：Real2Sim 闭环](../methods/crisp-real2sim.md)
 
 > **残差适配在真机抠残差（省样本、要安全层）**、**Real2Sim 把真机当修仿真的数据源（零真机风险、重资产工程）**、**直接微调真机端到端（最贵最危险、兜底用）**——三者按「gap 在真机侧 / 仿真侧 / 真机侧端到端消化」分占谱系，工程上往往串联而非三选一。

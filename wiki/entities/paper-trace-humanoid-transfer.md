@@ -14,7 +14,6 @@ related:
   - ../entities/dataset-bfm-phuma.md
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../concepts/whole-body-tracking-pipeline.md
-  - ../methods/sonic-motion-tracking.md
   - ./paper-sonic-transfer.md
   - ./paper-any2any-cross-embodiment-wbt.md
 sources:

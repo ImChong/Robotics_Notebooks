@@ -21,7 +21,7 @@
 
 大规模 **language–motion 配对** 在人形侧稀缺，但人体动捕库丰富。Harmon 用 **PhysDiff**（带物理约束的扩散 text-to-human）产出 **SMPL** 序列，再 IK 映射到仿真人形。直接 retarget 的问题：（1）动捕缺 **头/指**；（2）运动学差异导致 **语义/可读性** 偏移。
 
-**对 wiki 的映射：** 升格 [`paper-loco-manip-161-097-harmon`](../../wiki/entities/paper-loco-manip-161-097-harmon.md)；互链 [text-to-motion](../methods/diffusion-motion-generation.md)、[motion retargeting](../methods/motion-retargeting-gmr.md)。
+**对 wiki 的映射：** 升格 [`paper-loco-manip-161-097-harmon`](../../wiki/entities/paper-loco-manip-161-097-harmon.md)；互链 [text-to-motion](../../wiki/methods/diffusion-motion-generation.md)、[motion retargeting](../../wiki/methods/motion-retargeting-gmr.md)。
 
 ## 摘录 2：VLM 运动编辑
 

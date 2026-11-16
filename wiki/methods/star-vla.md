@@ -2,7 +2,10 @@
 type: method
 tags: [vla, foundation-policy, embodied-ai, qwen, benchmark]
 status: complete
-updated: 2026-10-16
+original:
+  - ../../sources/papers/star_vla_alpha_arxiv_2604_11757_full_reading_2026_11_15.md
+  - ../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md
+updated: 2026-11-15
 related:
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ./vla.md
@@ -12,86 +15,71 @@ related:
   - ../entities/nvidia-omniverse.md
   - ./diffusion-policy.md
   - ../entities/paper-objdream.md
-summary: "StarVLA 是具身智能领域的极简基准模型，证明了强 VLM 底座（如 Qwen3-VL）配合简单 MLP 动作头即可实现最先进的控制性能。"
+summary: "StarVLA 是模块化 VLA 基准框架，以强 VLM 配合轻量动作头作为对照；具体控制表现须按模型版本、训练数据和评测协议比较。"
+sources:
+  - ../../sources/papers/star_vla.md
+  - ../../sources/papers/star_vla_alpha_arxiv_2604_11757_full_reading_2026_11_15.md
+  - ../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md
 ---
 
-# StarVLA
-
-**StarVLA**（尤其是其首个技术报告版本 **StarVLA-$\alpha$**）是一个旨在降低 Vision-Language-Action (VLA) 系统复杂性的开源基准模型与框架。
+# StarVLA 方法入口：受控基线与模块化实验
 
 ## 一句话定义
 
-> StarVLA 证明了：不需要复杂的动作分词或扩散生成头，只需“强大的 VLM 底座 + 简单的 MLP 回归头”，就能在 LIBERO 和 SimplerEnv 等基准测试中打破 SOTA。
-
----
-
-## 核心设计理念：极简主义
-
-在 OpenVLA 和 RT-2 之后，具身智能社区倾向于设计越来越复杂的动作表达方式。StarVLA 逆流而上，提出了两个核心观察：
-
-1.  **VLM 能力决定上限**：随着视觉语言模型（如 Qwen3-VL）的爆炸式进化，底座模型已经具备了极强的空间推理和指令理解能力。
-2.  **动作头应保持轻量**：在强大的特征提取能力下，一个简单的 MLP（多层感知机）足以完成从隐空间到连续控制量（Action）的映射。
-
-## 技术规格
-
--   **底座模型**：Qwen3-VL (4B 为平衡点，支持 0.8B 至 9B)。
--   **动作专家 (Action Head)**：
-    -   **OFT (Default)**：基于 MLP 的连续动作回归。
-    -   **FAST**：离散 Token 预测。
-    -   **PI**：基于 Flow-matching 的生成式动作头。
--   **代码架构**：积木式（Lego-like）模块化设计，支持子模块独立烟雾测试（Smoke Test）。
-
-## 性能表现
-
-| 基准测试 | StarVLA-$\alpha$ 成功率 | 对比模型 |
-| :--- | :--- | :--- |
-| **LIBERO** | **98.8%** | 超越 OpenVLA |
-| **SimplerEnv** | **76.0%** | OpenVLA (34.3%) |
-| **真机 (ARX5)** | **比 $\pi_{0.5}$ 高 20%** | - |
-
-### 零样本泛化 (Zero-shot)
-StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背景（OOD 场景）时，表现出了极强的鲁棒性，这得益于 Qwen3-VL 强大的视觉编码能力。
-
----
-
-## 主要方法路线
-
--   **理论基础**：[基础策略 (Foundation Policy)](../concepts/foundation-policy.md) / [VLA 形式化](../formalizations/vla-tokenization.md)
--   **模型底座**：Qwen3-VL / Florence-2
--   **动作生成**：MLP Regression (OFT) / Flow-matching (PI)
--   **训练数据**：Open X-Embodiment (OXE) / 仿真数据合成
-
----
-
-## 为什么选择 StarVLA？
-
-1.  **作为科研 Baseline**：它的架构极简，非常适合作为新研究的起始对比点。
-2.  **作为工业部署**：由于动作头极轻且支持中等规模 VLM 底座，它在实时性要求高的机器人任务中具有优势。
-3.  **开发体验**：其高度模块化的代码库极大降低了具身大模型的上手门槛。
+StarVLA 方法路线是先用统一数据/动作接口建立VLM到动作的简单基线，再控制骨干、动作头和训练配方进行比较；[α论文](../entities/paper-starvla-alpha.md)给受控实验，[框架论文](../entities/paper-starvla-framework.md)给实现基础设施。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| SOTA | State of the Art | 当前最优水平 |
-| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
-| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
-| OXE | Open X-Embodiment | 跨形态机器人的大规模操作数据集 |
-| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+|---|---|---|
+| VLM | Vision-Language Model | 表征图像与指令的预训练骨干 |
+| VLA | Vision-Language-Action | 输出机器人动作的策略 |
+| MLP | Multi-Layer Perceptron | 连续动作回归的简单基线 |
+| SFT | Supervised Fine-Tuning | 以示范动作监督策略训练 |
+| OOD | Out-of-Distribution | 相对于训练分布的测试条件 |
 
-## 参考来源
+## 为什么重要
 
--   [深蓝具身智能：VLA GitHub 复现推荐](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md) — 文内将 StarVLA 列为模块化 VLM→VLA 工程框架入口
--   Ye et al., *StarVLA-α: Reducing Complexity in Vision-Language-Action Systems* (2026) — 原论文
--   [sources/papers/star_vla.md](../../sources/papers/star_vla.md) — 论文 ingest 档案
--   [sources/repos/star_vla.md](../../sources/repos/star_vla.md) — GitHub 仓库 ingest 档案
--   [sources/papers/capvector_arxiv_2605_10903.md](../../sources/papers/capvector_arxiv_2605_10903.md) — CapVector：参数空间 capability vector 解耦辅助 SFT 与任务 SFT，与 StarVLA 等 VLA 骨干在「后训练栈」轴互链
+不同VLA系统的成绩常同时改变骨干、数据、动作格式和评测环境。统一接口使比较更可解释；简单基线能帮助判断额外结构的收益是否超出训练预算或数据差异。
+
+## 核心原理
+
+原始RGB和语言经VLM编码，动作token隐藏状态交给动作头，输出动作chunk后由本体适配器执行。α的默认是Qwen3-VL-4B和轻量MLP；框架还能替换FAST、PI流匹配和GR00T双系统。动作补零只统一张量形状，不统一物理单位、关节含义或控制频率。
+
+## 主要方法路线
+
+| 动作头路线 | 接口与用途 | 比较时固定的条件 |
+|---|---|---|
+| OFT 连续回归 | MLP 预测动作 chunk，作为 α 的简单基线 | VLM、数据、有效动作维与归一化 |
+| FAST 自回归 | 将动作离散化后生成 token | tokenizer、解码长度与推理预算 |
+| PI 流匹配 | 对连续动作块建模 | 采样步数、动作时域与训练预算 |
+| GR00T 双系统 | 组合视觉语言与动作生成模块 | 骨干规模、动作头及跨模块接口 |
+
+这些路线由框架提供可替换接口；α 的受控结果集中在对应数据与训练条件下，不能把支持列表当作任意模型头已获得同样成绩。
+
+## 工程实践
+
+1. 固定骨干、数据划分、动作归一化、chunk长度与评测种子，先跑单基准。
+2. 比较动作头时保持其他因素相同，分别记录成功率、推理延迟和资源成本。
+3. 联合训练时保存数据配比与本体适配规则，明确哪些测试基准已出现在训练中。
+4. 当前官方LIBERO脚本默认QwenPI/Qwen3.5-0.8B；要复现α，必须显式匹配Qwen3-VL-4B+MLP的配置。模型服务和仿真客户端分别检查，不能从一次smoke推断全基准复现。
+
+## 实验读法
+
+α的specialist LIBERO98.8%和Google VM76.0%来自各自训练；generalist对应97.8%和74.3%。ARX5的SR为33.6%对π0.5的12.7%，差20.9个百分点；进度分是另一指标。逐表协议、训练设置和代码边界集中在[α详情页](../entities/paper-starvla-alpha.md)，避免在方法入口混用多套成绩。
+
+## 局限与风险
+
+强VLM加MLP是已测设置下的基线，不是所有动态/接触任务的最优结构。轻量头不消除VLM推理开销；框架支持列表不代表每个训练分支已完整发布，RL adaptation在已读指南中仍为待办。OOD成绩限于原文测试条件。
 
 ## 关联页面
 
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md)
+
+- [StarVLA-α 独立论文详情](../entities/paper-starvla-alpha.md)
+
+
+- [StarVLA 框架论文](../entities/paper-starvla-framework.md) — 模块化训练和评测基础设施。
 -   [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md) — 含 starVLA/starVLA 仓库与单卡训练语境
 -   [VLA (Vision-Language-Action)](./vla.md) — 具身大模型全景
 -   [RLDX-1](../entities/rldx-1.md) — 同 Qwen3-VL 底座下的多流扩散动作头与物理传感路线对照
@@ -101,3 +89,15 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 -   [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型概念
 -   [Diffusion Policy](./diffusion-policy.md) — 另一种主流的生成式动作头路线
 - [ObjDream](../entities/paper-objdream.md) — 物体中心 VLA：时空物体槽分离身份与状态，身份引导路由 VLM 注意力
+
+## 参考来源
+
+- [StarVLA-α 主论文全文与代码核对](../../sources/papers/star_vla_alpha_arxiv_2604_11757_full_reading_2026_11_15.md)
+- [StarVLA 框架论文全文与官方指南](../../sources/papers/starvla_framework_arxiv_2604_05014_full_reading.md)
+- [官方仓库索引](../../sources/repos/star_vla.md)
+
+## 推荐继续阅读
+
+- [α论文与附录](https://arxiv.org/html/2604.11757)
+- [框架论文与附录](https://arxiv.org/html/2604.05014v1)
+- [官方代码与指南](https://github.com/starVLA/starVLA)

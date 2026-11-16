@@ -11,6 +11,8 @@
 - **主要语言：** Python
 - **分类：** 基础模型（UnifoLM）
 - **入库日期：** 2026-07-24
+- **核对范围：** 2026-11-14 阅读 unitreerobotics/unifolm-vla 官方 README 全文（开源计划、权重/数据、CUDA/LeRobot 依赖、训练、LIBERO 测评、真机 server-client 部署），并核对入口 `scripts/run_scripts/run_unifolm_vla_train.sh`、`scripts/eval_scripts/run_eval_libero.sh`、`scripts/eval_scripts/run_real_eval_server.sh` 和 `unitree_deploy/robot_client.py`。
+- **通读：** 已完成
 - **一句话说明：** 官方 UnifoLM-VLA-0：人形操作视觉–语言–动作模型（训练/推理/权重已开源）。
 - **沉淀到 wiki：** 是 → [`wiki/entities/unifolm-vla.md`](../../wiki/entities/unifolm-vla.md)
 - **组织地图：** [`sources/repos/unitree.md`](unitree.md)

@@ -49,13 +49,15 @@ for (const k of keys) {
 }
 console.log(JSON.stringify({
   orderLen: DF.DEPTH_ORDER.length,
+  metaLen: Object.keys(DF.DEPTH_META).length,
   hasLoco: DF.DEPTH_ORDER.includes('loco-manipulation'),
   hasMotionGen: DF.DEPTH_ORDER.includes('motion-generation'),
 }));
 """
         )
         data = json.loads(out.strip())
-        self.assertEqual(data["orderLen"], 31)
+        self.assertGreater(data["orderLen"], 0)
+        self.assertEqual(data["orderLen"], data["metaLen"])
         self.assertTrue(data["hasLoco"])
         self.assertTrue(data["hasMotionGen"])
 
@@ -159,9 +161,10 @@ console.log(JSON.stringify({{ total: ids.length, missed }}));
         """Single-token rules must not become raw substring matches."""
         out = _run_depth_filters_node(
             """
-// 'ball' is a soccer single-token segment; must not match inside 'football' token only via substring —
-// football tokenizes to ['football'], so 'ball' exact-token miss is expected unless path has 'ball'.
+// 'ball' / 'football' are exact tokens in humanoid-soccer; a token that only
+// contains 'ball' as a substring ('ballistic') must NOT match by substring.
 const football = DF.matches({ id: 'wiki/entities/paper-humanoid-football-demo.md' }, 'humanoid-soccer');
+const ballistic = DF.matches({ id: 'wiki/entities/paper-humanoid-ballistic-jump.md' }, 'humanoid-soccer');
 const ball = DF.matches({ id: 'wiki/entities/paper-learning-to-ball.md' }, 'humanoid-soccer');
 // segmentHits API: multi vs single
 const multi = DF.segmentHits(
@@ -174,10 +177,13 @@ const singleExact = DF.segmentHits(
   DF.nodeSegments({ id: 'wiki/tasks/locomotion.md' }),
   'locomotion'
 );
-console.log(JSON.stringify({ football, ball, multi, singleExact }));
+console.log(JSON.stringify({ football, ballistic, ball, multi, singleExact }));
 """
         )
         data = json.loads(out.strip())
+        self.assertTrue(data["football"])
+        self.assertFalse(data["ballistic"])
+        self.assertTrue(data["ball"])
         self.assertTrue(data["multi"])
         self.assertTrue(data["singleExact"])
 
@@ -214,6 +220,7 @@ console.log(JSON.stringify({ keys, order: DF.DEPTH_ORDER }));
 """
         )
         data = json.loads(out.strip())
+        self.assertGreater(len(data["order"]), 0)
         self.assertEqual(data["keys"], data["order"])
 
 

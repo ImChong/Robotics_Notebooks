@@ -10,7 +10,7 @@
 - **官方文档：** https://mujoco.readthedocs.io/en/stable/mjx.html
 - **入库日期：** 2026-05-18
 - **一句话说明：** 用 JAX 重实现的 MuJoCo 物理内核：`pip install mujoco-mjx` 后以 `from mujoco import mjx` 调用，与 MuJoCo API 对齐并跟踪主版本号，功能完备度以文档为准。
-- **沉淀到 wiki：** 是 → [`wiki/entities/mujoco-mjx.md`](../wiki/entities/mujoco-mjx.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/mujoco-mjx.md`](../../wiki/entities/mujoco-mjx.md)
 
 ## 为什么值得保留
 

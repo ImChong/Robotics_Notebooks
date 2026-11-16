@@ -13,7 +13,7 @@ tags:
   - whu
   - hkust
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 arxiv: "2608.10057"
 venue: "ECCV 2026 · arXiv"
 code: https://github.com/WHU-USI3DV/LEGO
@@ -24,7 +24,10 @@ related:
   - ./ov-sam3d.md
   - ./findanything.md
   - ./paper-occanyscene.md
+  - ./paper-target-aware-gaussian-langmap.md
   - ./paper-legs-embodied-gaussian-splatting-vla.md
+original:
+  - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
 sources:
   - ../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md
   - ../../sources/sites/pz0826-lego-webpage.md
@@ -71,7 +74,7 @@ summary: "LEGO（WHU/HKUST，ECCV 2026，arXiv:2608.10057）：把多视角 SAM 
 | 默认层级 | \(L=8\) 层 × \(d=8\) 维；经验上真实物体很少超过 8 级 |
 | 开源（截至 2026-08-16） | **已开源、可运行**：[`WHU-USI3DV/LEGO`](https://github.com/WHU-USI3DV/LEGO)，CC BY-NC-SA 4.0 |
 
-## 方法与核心结构
+## 核心原理与方法结构
 
 | 模块 | 作用 |
 |------|------|
@@ -220,12 +223,13 @@ sequenceDiagram
 - [OV-SAM3D](./ov-sam3d.md) — 训练无关点云开放词汇对照
 - [FindAnything](./findanything.md) — 机载对象级开放词汇对照
 - [OccAnyScene](./paper-occanyscene.md) — 另一条 3DGS 感知（占据，不是语言层级）
+- [目标感知 3D Gaussian 语言地图细化](./paper-target-aware-gaussian-langmap.md) — 同为语言高斯地图；本文构建结构层级，对方免训练修正既有地图的目标语义
 - [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 易混名的 3DGS×VLA 数据工厂
 - [HKTex](./paper-hktex-heat-kernel-textures.md) — 同属「高斯」隐喻但做 mesh 内在纹理而非 3DGS 语义场
 
 ## 参考来源
 
-- [lego_leveled_language_gs_arxiv_2608_10057.md](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md)
+- [LEGO 论文全文（含附录）核对归档](../../sources/papers/lego_leveled_language_gs_arxiv_2608_10057.md) — 已对照 arXiv v1 方法、评测与实验局限
 - [项目页归档](../../sources/sites/pz0826-lego-webpage.md)
 - [官方仓归档](../../sources/repos/lego.md)
 - Peng et al. — <https://arxiv.org/abs/2608.10057>

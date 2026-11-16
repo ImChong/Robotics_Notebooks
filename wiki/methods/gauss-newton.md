@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, gauss-newton, least-squares, trajectory-optimization, numerical-methods]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-15
 summary: "Gauss-Newton 对残差最小二乘用 Jacobian 外积 JᵀJ 近似 Hessian，是 TrajOpt 打靶、IK 与标定的默认二阶曲率模型。"
 related:
   - ./newtons-method.md
@@ -13,6 +13,7 @@ related:
 sources:
   - ../../sources/papers/second_order_optimizers.md
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
+original: ../../sources/papers/second_order_optimizers.md
 ---
 
 # Gauss-Newton（高斯-牛顿法）
@@ -33,7 +34,14 @@ sources:
 | TrajOpt | Trajectory Optimization | 打靶后多为 GN/L-BFGS |
 | J | Jacobian Matrix | 残差对决策变量的雅可比 |
 
-## 主要技术路线
+## 为什么重要
+
+- **免显式二阶导**：在非线性最小二乘中用 $J^T J$ 近似 Hessian，避免计算昂贵的二阶残差张量，同时保留接近二阶的收敛速度。
+- **机器人核心求解器底座**：从轨迹优化打靶、逆运动学到 SLAM 束调整，GN 是工程中最常见的默认曲率近似。
+
+## 核心原理
+
+### 主要技术路线
 
 ### 1. 问题形式与近似
 
@@ -66,7 +74,7 @@ $$
 | 与 TrajOpt 打靶天然契合 | 远离解时近似差 |
 | 可稀疏化、并行计算 $J$ | 大规模需 L-BFGS 或截断 GN |
 
-## 在机器人中的典型应用
+## 工程实践：在机器人中的典型应用
 
 - **轨迹打靶 / multiple shooting**：[Trajectory Optimization](./trajectory-optimization.md)
 - **IK / 运动重定向**：关节角求逆解

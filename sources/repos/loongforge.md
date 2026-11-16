@@ -11,7 +11,9 @@
 - **Docker Hub：** https://hub.docker.com/u/loongforge
 - **许可：** Apache License 2.0
 - **Stars：** ~575+（2026-09-21）
-- **入库日期：** 2026-09-06（公众号全景初收录）；**深度复核：** 2026-09-21
+- **入库日期：** 2026-09-06（公众号全景初收录）；**深度复核：** 2026-09-21；**原文复核：** 2026-11-13
+- **核对范围：** 通读官方仓库主分支（`master`）`README.md` 的架构、具身模型、LLM/VLM/Diffusion、性能比较、快速上手、支持模型、源码目录、许可全文说明，并对照 `README_zh.md`；逐文件核对 `examples/embodied/pi05/run_pi05_ddp_finetune.sh`、`loongforge/embodied/train.py`、`loongforge/embodied/train/parser.py`、`loongforge/embodied/train/trainers/trainer_builder.py`、`loongforge/embodied/train/trainers/supervised/finetune_trainer.py`、`loongforge/embodied/distributed/parallel.py`、`loongforge/embodied/data/dataloader.py` 的入口与调用链。未进行多卡实际训练、也未逐行审计整个代码库；现有吞吐数字是项目方报告。
+- **通读：** 已完成
 - **一句话说明：** 百度百舸开源的高性能训练框架，覆盖 LLM / VLM / 扩散 / 具身（VLA & WAM）全模态；Megatron 栈 + torch-native 具身子系统，支持 NVIDIA GPU 与昆仑芯 XPU。
 - **代码：** https://github.com/baidu-baige/LoongForge（**已开源**，Apache 2.0；v0.1.0 起官方 tag）
 - **沉淀到 wiki：** [`wiki/entities/cn-os-loongforge.md`](../../wiki/entities/cn-os-loongforge.md)
@@ -63,12 +65,18 @@ LoongForge/
 └── tools/                     # checkpoint 转换、数据预处理
 ```
 
-### 典型启动（具身 Pi0.5，摘自 docs）
+### 典型启动（具身 Pi0.5，依据官方 README 与脚本）
 
 ```bash
-# 见 examples/embodied/pi05/ 与 loongforge/embodied/train.py
-python loongforge/embodied/train.py --config examples/embodied/pi05/...
+# 在官方 Docker/依赖与权重/数据齐备的环境下
+export CHECKPOINT_PATH=/workspace/data/pi05_base
+export TOKENIZER_PATH=/workspace/data/paligemma-3b-pt-224
+export DATA_PATH=/workspace/data/libero_10
+export OUTPUT_DIR=/workspace/data/outputs/pi05
+bash examples/embodied/pi05/run_pi05_ddp_finetune.sh
 ```
+
+该脚本通过 `torchrun` 调用 `loongforge/embodied/train.py`，按 `--model-name pi05`、`--trainer-type FinetuneTrainer` 及数据、分布式选项配置训练；其内部为 `parse_train_args` → `build_model_trainer` → `trainer.train`。需先按 README 下载对应模型权重与 LeRobot LIBERO 数据集；默认配置是用于检查流程的短训练，不代表完成收敛。
 
 ---
 

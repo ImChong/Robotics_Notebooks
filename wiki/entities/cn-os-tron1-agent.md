@@ -57,7 +57,7 @@ institutions:
 
 ## 源码运行时序图
 
-入口：`python main.py --config_path config/config.yaml`（[start.sh](start.sh) 以无参数方式启动，默认读取 config/config.yaml）
+入口：`python main.py --config_path config/config.yaml`（`start.sh` 以无参数方式启动，默认读取 config/config.yaml）
 
 ```mermaid
 sequenceDiagram

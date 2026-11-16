@@ -3,7 +3,7 @@
 > 来源归档（ingest）
 
 - **标题：** τ₀-World Model: A Unified Video-Action World Model for Robotic Manipulation
-- **类型：** paper（技术报告 / 项目 PDF，截至 ingest 未见 arXiv 条目）
+- **类型：** paper（技术报告 / 项目 PDF，现已由官方仓库关联 arXiv:2606.01027）
 - **原始链接：**
   - <https://finch-static.agibot.com/VAM/blog/tau_0_wm.pdf>
   - <https://finch.agibot.com/research/tau0-wm>
@@ -53,4 +53,14 @@
 
 - [x] 项目页 + GitHub README + HF 元数据已对齐摘录
 - [x] wiki 映射：`wiki/entities/tau0-world-model.md` 新建，并与 WAM / mimic-video / GE-Sim 2.0 交叉引用
-- [ ] 待 arXiv 发布后补 abs 链接并同步 frontmatter `arxiv` 字段
+- [x] 2026-11-13 官方 README 与项目页均给出 arXiv:2606.01027；沿用既有节点
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** 官方 `https://finch-static.agibot.com/VAM/blog/tau_0_wm.pdf` 正文 I–VIII、附录 A–B（训练/部署、加速）；PDF未标版本号，下载 SHA256 `e5abad225835b87d9a115a45c816f4ad7d9137d26ca8b3c9187bb581f88a18c8`；图表按文字层核对，参考文献浏览；现项目页和 README、TTC 服务与相关核心代码；未运行。
+- **通读：** 已完成
+- 正文明确 5B 视频支+0.5B action branch=5.5B VAM，不能把5B骨干当整个系统。VAM与ACVS共享架构/表示设计，但有各自模型和checkpoint，不等于同一权重一次前向同时做全部功能。
+- VAM联合FM；ACVS移除action policy支，以动作block注入timestep/AdaLN并预测reward。Ego只训视觉，UMI动作监督较弱；27.3kh=17.8krobot+6.5kUMI+3kego，不另把failure小时重复相加。
+- 论文RCS为负重去噪MSE，低于阈值再启ACVS，J=max时间reward，选rollout后重查VAM；不是直接执行最高reward动作。当前示例代码触发逻辑有差异，见repo归档，不混写。
+- 表I仅比较robot与robot+UMI+ego两组，无法单独归因UMI或ego；zero-shot平均.14→.55、SFT .70→.83。表II每任务20次单次尝试：无TTC平均.43、RCS .50、RCS+LAR .60。四任务主图未转录未提供的精确柱高。
+- 附录动作chunk30；RTX5090单查询220ms，缓存text180ms，compile140ms；主结果不启compile。不能以此报告四候选+仿真+修订的总端到端延迟。接触感知、长时程和可靠不确定性估计仍是局限。

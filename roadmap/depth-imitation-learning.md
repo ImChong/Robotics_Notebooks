@@ -3,7 +3,7 @@
 **首屏导读**：
 
 - **为谁**：想从人类演示数据让机器人学会技能的人。
-- **路径**：Stage 0–6 · 时序建模基础 → 模仿学习核心概念 → 动作重定向 → Diffusion Policy → 技能嵌入与对抗学习 → Sim2Real → 进阶方向。
+- **路径**：Stage 0–6 · 时序基础 → BC / DAgger → 分支选读（视觉操作：Diffusion Policy；人体技能：重定向 + 对抗技能学习）→ 部署与迁移 → 进阶。
 - **纵深路线**：[运动控制主路线](motion-control.md)的一条分支。
 
 ## 路线一览
@@ -18,7 +18,11 @@ flowchart LR
   S5["<b>Stage 5</b><br/>Sim2Real<br/><em>真机迁移</em>"]
   S6["<b>Stage 6</b><br/>进阶方向<br/><em>Video / 多模态 / 长时程</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4 --> S5 --> S6
+  S0 --> S1
+  S1 --> S2 --> S4
+  S1 --> S3
+  S3 --> S5
+  S4 --> S5 --> S6
 
   classDef stage fill:#142a3a,stroke:#9b59b6,stroke-width:2px,color:#fff
   class S0,S1,S2,S3,S4,S5,S6 stage
@@ -29,6 +33,7 @@ flowchart LR
 - 目标读者是有深度学习基础、想理解如何让机器人从人类演示中学习技能的人
 - 重点不是理论证明，而是：从数据到策略的完整 pipeline
 - 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
+- **按任务分支**：视觉操作先走 Stage 0 → 1 → 3；人体参考到全身技能走 Stage 0 → 1 → 2 → 4，并补 [RL 基础](depth-rl-locomotion.md)。Stage 5 按数据来源选择迁移或真机部署检查，不要求先学完另一支。
 
 **和主路线的关系：**
 - 模仿学习（IL）和强化学习（RL）在很多实际项目里是组合使用，不是非此即彼
@@ -128,14 +133,14 @@ flowchart LR
 
 ## Stage 3 Diffusion Policy 与生成式动作
 
-**Diffusion Policy 是 2023-2024 年在机器人模仿学习里最活跃的方向。**
+**Diffusion Policy 是用扩散模型拟合示范动作分布的一种行为克隆策略；动作重定向不是其通用前置。**
 
 ### 前置知识
-- Stage 2 内容
+- Stage 1 内容；若示范来自人体而非目标机器人，再补 Stage 2
 - 理解 diffusion model 的基本原理（不需要能写，但需要懂去噪过程）
 
 ### 核心问题
-- Diffusion Policy 和传统 BC 的核心区别是什么
+- Diffusion Policy 与单峰 MSE 回归式 BC 的动作分布假设有什么区别
 - 为什么 diffusion model 在高维动作空间表现更好
 - 怎么把视觉输入结合进 diffusion policy
 - diffusion 采样时间过长怎么解决
@@ -163,13 +168,13 @@ flowchart LR
 **单个技能会了，怎么让机器人同时掌握多个技能、并在新场景里组合？**
 
 ### 前置知识
-- Stage 3 内容
+- Stage 1 内容与 [RL 基础](depth-rl-locomotion.md)；使用人体动捕时补 Stage 2，Stage 3 的扩散策略按需选读
 
 ### 核心问题
 - 什么是 skill embedding，为什么需要把技能压缩到隐空间
 - 对抗式模仿学习（ASE / AMP）和普通 BC 的区别是什么；GAIL 来自 [IRL](../wiki/methods/inverse-reinforcement-learning.md) 的占用匹配，不一定恢复任务奖励
 - 怎么在一个隐空间里做技能插值和组合
-- 为什么 latent variable 能帮助解决 compounding error
+- 技能潜变量能压缩哪些行为结构，为什么仍需检验分布偏移与闭环误差
 
 ### 推荐做什么
 - 读懂 ASE 的方法 pipeline
@@ -193,8 +198,10 @@ flowchart LR
 
 **模仿学习训练的策略，迁移到真实机器人上会遇到哪些问题？**
 
+先确认数据域：仿真训练的策略需要验证 Sim2Real；直接用目标真机示范训练的策略，重点是部署接口与留出场景泛化，不必先经历一次仿真迁移。
+
 ### 前置知识
-- Stage 4 内容
+- Stage 3 或 Stage 4 内容，按操作策略/全身技能分支选择
 - 理解 sim2real gap 的基本概念
 
 ### 核心问题
@@ -204,8 +211,8 @@ flowchart LR
 - 怎么判断一个 IL 策略是"真的学会了"还是"在记忆演示"
 
 ### 推荐做什么
-- 给 Stage 2/3 训练的策略加动作空间噪声和观测噪声，观察鲁棒性
-- 设计一个简单的 domain randomization 实验
+- 给 Stage 3 或 Stage 4 训练的策略加动作空间噪声和观测噪声，观察鲁棒性；Stage 2 的重定向产物须先进入跟踪训练，不能当作策略直接部署
+- 仿真训练分支设计一个简单的 domain randomization 实验；真机示范分支则核对观测/动作接口、时延，并在留出物体或摆位上评测
 
 ### 推荐读什么
 - [Sim2Real](../wiki/concepts/sim2real.md)
@@ -213,8 +220,8 @@ flowchart LR
 - [SPD](../wiki/entities/paper-spd.md)（CoRL 2026，斯坦福/MIT/Scale AI）— 仿真 VR 遥操作采 75 h on-embodiment 演示预训练扩散 Transformer，56-DoF 双臂灵巧手每任务仅 1–2 h 真机微调，五项任务均胜过从零 BC
 
 ### 学完输出什么
-- 对 IL 策略的 sim2real 差距有第一手认识
-- 能设计针对性的 DR 实验来提升策略鲁棒性
+- 一份注明数据域的部署记录：仿真训练分支记录迁移差距，真机示范分支记录接口对齐与留出场景泛化
+- 能为仿真训练分支设计针对性的 DR 实验，并区分它与真机部署评测
 
 ---
 
@@ -237,7 +244,8 @@ flowchart LR
 
 **方向 D：Humanoid 全身动作跟踪**
 - 走路、跑步、跳跃、平衡等全身技能跟踪
-- 关键词：[Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)、[BeyondMimic](../wiki/methods/beyondmimic.md)、[Sonic](../wiki/methods/sonic-motion-tracking.md)
+- 关键词：[Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)、[BeyondMimic](../wiki/methods/beyondmimic.md)、[Sonic](../wiki/entities/nvidia-sonic.md)
+- 进阶策略编辑：[RedirectMimic：全身模仿策略的局部动作替换](../wiki/entities/paper-redirectmimic.md) — 在原始参考仍作为输入的情况下，通过编辑目标奖励与窗口重采样让 G1 策略替换指定上肢片段；仅仿真验证。
 - 选型参考：[Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
 
 ---

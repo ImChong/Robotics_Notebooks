@@ -63,3 +63,12 @@
 - [x] 项目页与 README 结构核查
 - [x] 开源边界与 Stage 1–3 要点
 - [x] wiki 实体页映射
+
+## 2026-11-13 一手资料复核
+
+- **官方资料：** <https://github.com/datawhalechina/easy-vibe/blob/main/README.md>、<https://github.com/datawhalechina/easy-vibe/blob/main/package.json>
+- **版本锚点：** README blob `5e5517645783c9b4ccd7d57fe1c1bb8c722c6b95`（核查日期 2026-11-13）。
+- **核对范围：** 已完整阅读官方 README 中的项目目标、读者分类、Stage 1–3 / Appendix 目录、工具链与本地预览说明，并核对 package.json 的脚本与版本。**这里只声称这两份官方入口文档已读完，不代表所有子课程讲义或 80+ 交互专题均已逐篇通读。**
+- **通读：** 已完成
+- **源码入口：** `npm run dev` 对应 `vitepress dev docs`，来自官方 `package.json`；课程站为 VitePress 文档运行态，非机器人控制或模型训练。
+- **来源质量提醒：** 上文 ~19.5k stars 为 2026-09 的历史快照，不代表 2026-11 实时值。

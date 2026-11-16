@@ -24,6 +24,13 @@
 
 README 提供安装 host requirements 与开发包、构建 docker/agent 镜像，以及运行 embodiedevo explore / test 的说明。执行和评测依赖单独准备的模拟器环境，源码仓本身不能证明论文结果开箱可复现。
 
+## 已核对的源码入口与真实调用关系（2026-11-10）
+- [`pyproject.toml`](https://github.com/Einsia/EmbodiedEvo/blob/main/pyproject.toml) 声明 `embodiedevo = orchestrator.__main__:main`；`explore`/`test`/`run` 进入 `orchestrator.session_runner`。
+- [`session_runner.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/orchestrator/session_runner.py) 的 `explore` 调用 `run_episode`，从 Playground 工作区仅拷贝 `skills/`、`lessons/` 到 `frozen_harness/` 并记录 hashes；`test` 为每个 seed 创建独立 scene/agent，传入冻结目录。
+- [`tasks/RoboDojo/Workspace/scripts/env.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/tasks/RoboDojo/Workspace/scripts/env.py) 将 `submission/solution.py` 与 `--include` 所选 skills 的 Python 文本经 Unix socket 送至宿主 [`orchestrator/session.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/orchestrator/session.py) 的 `Session.handle`。
+- `Session.handle` 调用 `environments.execute`；[`simulators/execution.py`](https://github.com/Einsia/EmbodiedEvo/blob/main/simulators/execution.py) 的 `CodeTask._step` 执行代码，L1 通过 [`RoboDojoLowLevelApi`](https://github.com/Einsia/EmbodiedEvo/blob/main/simulators/robodojo_api.py) 的 `step(action)` 下发至 native `control_step`。会话保留 Python 全局变量与机器人状态，不因修改下一段程序而回滚动作。
+- `Session.handle` 明确拒绝 Test 阶段的 `reset`；`create_workspace` 为 Test 拷贝冻结知识，协议在每次 Test 前后校验 harness hash。**此处是运行时源码路径核验，并非复现论文分数。**
+
 ## 开源与许可边界
 - GitHub 上可访问源码 checkout，README 包含设置和运行说明。
 - **项目级许可证尚未选择**（按 2026-10-15 README 核查）；不要默认代码可按任意开源许可证再分发。

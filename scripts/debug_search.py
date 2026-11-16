@@ -40,7 +40,7 @@ def debug_query(query_text):
         if page_type == "comparison":
             from search_wiki_core import _query_has_comparison_intent
 
-            boost = 1.3 if _query_has_comparison_intent(query_words) else 1.0
+            boost = 1.3 if _query_has_comparison_intent(" ".join(query_words).lower()) else 1.0
         elif page_type == "query":
             boost = 0.7
 

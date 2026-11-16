@@ -11,6 +11,8 @@
 - **入库日期：** 2026-11-05
 - **开源状态：** MIT 许可；源码及 LAFAN1/G1 示例公开，LAFAN1 数据集需另行下载并遵守其许可。
 - **运行入口：** `python examples/ik/lafan1/retarget.py`；可选 `--self-collision-avoidance`。
+- **核对范围：** 通读官方 README、`docs/ik.md`、`examples/ik/lafan1/retarget.py`、`lafan1_g1.py`、`frax/ik/retargeter.py`、`frax/ik/solver.py`；对齐数据加载、差分 IK 求解、CPU 多设备批处理和 NPZ 输出。未运行代码或独立复测性能。
+- **通读：** 已完成
 - **沉淀到 wiki：** [frax](../../wiki/entities/frax.md)
 
 阅读范围：README、`docs/ik.md`、`examples/ik/lafan1/retarget.py`、`lafan1_g1.py`、`frax/ik/retargeter.py`、`solver.py`；未运行或独立复测基准。详见[项目页归档](../sites/frax.md)和[论文归档](../papers/frax.md)。

@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
-# UniVLA
+# UniVLA: Task-Centric Latent Actions（arXiv:2505.06111）
 
 **UniVLA: Learning to Act Anywhere with Task-centric Latent Actions** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 257/564** 篇，分组 **VLA**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

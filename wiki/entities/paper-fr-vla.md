@@ -13,7 +13,6 @@ related:
   - ../concepts/tactile-sensing.md
   - ../concepts/contact-rich-manipulation.md
   - ../tasks/manipulation.md
-  - ../concepts/tactile-sensing.md
   - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/fr_vla_arxiv_2610_25981.md

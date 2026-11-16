@@ -2,13 +2,16 @@
 type: entity
 tags: [paper, jepa, self-supervised-learning, sigreg, brown, nyu, meta, lejepa]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-11
 arxiv: "2511.08544"
 venue: "arXiv 2025"
-code: https://github.com/rbalestr-lab/lejepa
+code: https://github.com/galilai-group/lejepa
+original:
+  - ../../sources/papers/lejepa_arxiv_2511_08544.md
 related:
   - ./paper-lewm.md
   - ./paper-levjepa.md
+  - ./paper-prh-jepas.md
   - ./paper-lpwm.md
   - ./paper-wcm-world-critic-model.md
   - ../methods/generative-world-models.md
@@ -56,7 +59,8 @@ summary: "LeJEPA（arXiv:2511.08544，Brown/NYU/Meta-FAIR）：证明各向同�
 
 1. **公理：** 能预测相关视图，且 embedding 不退化。
 2. **最优分布：** 各向同性高斯同时压低线性 / 非线性探针的偏差与方差。
-3. **SIGReg：** 抽单位球面方向，在 1D 上做 Epps–Pulley 等特征函数检验；线性复杂度。
+3. **SIGReg：** 抽单位球面方向，在 1D 上做 Epps–Pulley 等特征函数检验；固定方向与积分节点数量时，对 batch 与 embedding 维度保持线性扩展。
+4. **证明范围：** 各向同性及高斯最优性针对固定方差规模、特定下游 probe 族与正则性条件下的风险分析；不是对任意数据、任意下游任务和有限步训练过程的无条件保证。
 
 ```mermaid
 flowchart LR
@@ -92,7 +96,7 @@ sequenceDiagram
 
 ## 工程实践
 
-- 单超参 \(\lambda\)；AdamW lr \(5\times10^{-4}\)，ViT wd \(5\times10^{-2}\)。
+- 单权衡超参 \(\lambda\)，论文第 6.1 节建议 \(\lambda=0.05\)、2 global + 8 local views、batch ≥128，SIGReg 的起点为 1024 个方向、17 个积分点；这些是实验起点而非通用最优值。AdamW lr \(5\times10^{-4}\)，ViT wd \(5\times10^{-2}\)。
 - **许可证 NC**：商用需自写 SIGReg 或换许可。
 - 这是**图像 SSL**，不是规划世界模型；接到控制请看 LeWM / LpWM。
 
@@ -100,7 +104,8 @@ sequenceDiagram
 
 - 主表是冻结探针，不是机器人闭环。
 - CC BY-NC 挡住产品复用。
-- 低本征维数据上强推各向同性高斯会难受（LeWM 的 Two-Room 反例）。
+- 论文理论结论依赖固定方差规模和线性/非线性 probe 对应的平滑、样本与分布假设；有限 batch、随机投影和积分离散化只是目标的近似。
+- 低本征维数据上强推各向同性高斯可能不利于动作条件世界模型（另见 LeWM 的 Two-Room 反例），不等于本论文已经完成该任务的实证。
 
 ## 与其他工作对比
 
@@ -110,6 +115,7 @@ sequenceDiagram
 | [LeWM](./paper-lewm.md) | 同一 SIGReg，加上动作条件预测器 |
 | [LeVJEPA](./paper-levjepa.md) | 视频编码器配方 |
 | [LpWM](./paper-lpwm.md) | 把高斯目标换成整流广义高斯 → 稀疏 |
+| [PRH with JEPAs](./paper-prh-jepas.md) | 使用 LeJEPA 实验框架研究 good views 与跨模态表征对齐；理论与论文主问题不同 |
 
 ## 结论
 
@@ -124,6 +130,7 @@ sequenceDiagram
 
 - [LeWM](./paper-lewm.md)
 - [LeVJEPA](./paper-levjepa.md)
+- [PRH with JEPAs：跨模态表征对齐](./paper-prh-jepas.md)
 - [LpWM](./paper-lpwm.md)
 - [WCM](./paper-wcm-world-critic-model.md)
 - [生成式世界模型](../methods/generative-world-models.md)
@@ -136,5 +143,5 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [arXiv:2511.08544](https://arxiv.org/abs/2511.08544)
-- [GitHub](https://github.com/rbalestr-lab/lejepa)
+- [arXiv:2511.08544v3（正文与附录）](https://arxiv.org/html/2511.08544v3)
+- [官方 GitHub（现 galilai-group/lejepa）](https://github.com/galilai-group/lejepa)

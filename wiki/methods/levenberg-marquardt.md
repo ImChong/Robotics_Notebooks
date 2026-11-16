@@ -2,7 +2,7 @@
 type: method
 tags: [optimization, levenberg-marquardt, least-squares, numerical-methods, calibration]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-15
 summary: "Levenberg-Marquardt 在 Gauss-Newton 方向上加阻尼 λI，在梯度下降与 GN 之间自适应插值，是病态非线性最小二乘的事实标准。"
 related:
   - ./gauss-newton.md
@@ -13,6 +13,7 @@ related:
 sources:
   - ../../sources/papers/second_order_optimizers.md
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
+original: ../../sources/papers/second_order_optimizers.md
 ---
 
 # Levenberg-Marquardt（LM 阻尼最小二乘）
@@ -33,7 +34,13 @@ sources:
 | NLS | Nonlinear Least Squares | $\min \|r(x)\|^2$ |
 | IK | Inverse Kinematics | 冗余关节 IK 常用 LM |
 
-## 主要技术路线
+## 为什么重要
+
+在机器人运动学标定、冗余逆运动学（IK）与小规模状态估计中，雅可比矩阵 $J$ 常常接近奇异或秩亏，纯 Gauss-Newton 会直接发散；LM 通过阻尼项 $\lambda I$ 在收敛稳定性与二阶收敛速度之间自适应切换，是工程中最常用的默认非线性最小二乘求解器。
+
+## 核心原理
+
+### 主要技术路线
 
 ### 1. 阻尼 GN 更新
 
@@ -64,7 +71,7 @@ $$
 | 实现成熟、默认可用 | 高维大规模不如 L-BFGS 批量 TrajOpt |
 | 标定/IK 社区事实标准 | $\lambda$ 调度影响收敛速度 |
 
-## 在机器人中的典型应用
+## 工程实践（在机器人中的典型应用）
 
 - **相机-机器人手眼标定**（见 [hand-eye-calibration](../concepts/hand-eye-calibration.md)）、IMU 标定
 - **冗余 IK**、retargeting 初值求解

@@ -2,13 +2,15 @@
 type: entity
 tags: [paper, humanoid, soccer, active-vision, reinforcement-learning, sim2real, mit]
 status: complete
-updated: 2026-10-20
+updated: 2026-11-11
 venue: "2026 preprint"
 related:
   - ../tasks/humanoid-soccer.md
   - ./unitree-g1.md
   - ./paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
   - ./paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md
+original:
+  - ../../sources/papers/joga_learning_agile_humanoid_soccer.md
 sources:
   - ../../sources/papers/joga_learning_agile_humanoid_soccer.md
   - ../../sources/sites/joga-humanoid-soccer.md
@@ -21,6 +23,10 @@ project: https://joga.csail.mit.edu/
 # Joga：带主动视觉的人形足球技能学习
 
 **Joga（Joint Optimization of Gaze and Action，视线与动作联合优化）** 是 MIT Improbable AI Lab 的全栈人形足球系统：Unitree G1 使用机载相机和本体感知，在仿真强化学习策略中共同控制身体与主动视觉颈部，并通过少量真机数据对齐仿真误差。
+
+## 一句话定义
+
+Joga（Joint Optimization of Gaze and Action）是 MIT Improbable AI Lab 提出的 Unitree G1 人形足球系统：在仿真强化学习中联合优化主动视觉颈部与全身动作，并利用真实数据学习感知误差模型 PAM 与全身执行器残差 WB-UAN，以支持运球、传球、射门和接球技能。
 
 ## 英文缩写速查
 
@@ -106,6 +112,32 @@ WB-UAN 是全身共享的无监督执行器模型：根据全身关节位置与�
 - PAM 的配对标签依赖动捕采集；项目页没有列出具体检测器、网络结构、损失或数据划分细节。
 - WB-UAN 用真机运球数据拟合，迁移到不同 G1 版本、舵机状态或地面条件时，需重新验证误差覆盖范围。
 - 展示的足球技能由人类操作者通过摇杆实时提供球的目标方向/速度；策略负责执行相应全身动作，项目未声称整场自主比赛。
+
+## 论文全文核对补充（含附录）
+
+### 策略接口与训练配置
+
+论文附录 B、表 IV 明确：actor 以 3 步历史观测本体状态（角速度、投影重力、关节位置/速度、上次动作）、世界系目标球速度、朝向及相机系球位置/可见标志；critic 额外获得真实球状态、接触力等特权信息。四种技能分别用 PPO 在 mjlab 训练；策略以 **50 Hz** 输出 **31 个关节**（含 2-DoF 颈部）的目标位置，仿真物理步长 5 ms（200 Hz）。PPO 使用 16,384 并行环境、每环境每迭代 24 步、5 epochs / 4 mini-batches（论文第 9–11 页）。
+
+### 关键消融与证据边界
+
+| 论文实验 | 基线 | 对齐后 | 来源 |
+|---|---|---|---|
+| 真机 6 m 方形运球成功次数 | DR 3/4、Linear 1/4 | PAM 4/4 | Fig. 4b，第 5 页 |
+| 真机 135° 转弯成功次数 | DR 3/5、PAM 4/5 | PAM + WB-UAN 5/5 | Fig. 6a，第 6 页 |
+| 真机高速运球（成功轨迹平均球速） | PAM 1.35 m/s | PAM + WB-UAN 约 1.7 m/s | Fig. 6b，第 6 页 |
+| 真机运球→传球 / 射门 | 4/5、3/5 | 5/5、5/5 | Fig. 7b，第 7 页 |
+| 宽角接球漏接率（仿真） | 锁颈 60.6% | 主动颈部 31.4% | Table III，第 10 页 |
+| YOLO mAP50（真实 on-policy 标注图） | 原模型 0.6830 | 微调 0.9758 | Fig. 10c，第 11 页 |
+
+注意：真机成功次数的样本量较小；锁颈消融、YOLO 检测精度和 sim-to-sim 结果不能直接表述为真机完整足球比赛胜率。论文附录 C 明确由**人类手柄操作者**发出球速度方向和技能切换指令，机器人负责全身与颈部动作。
+
+### 复现检查点
+
+1. 按附录 D.4–E 进行相机标定与检测训练：OAK-1 W、416×416 检测输入、MoCap 与机载检测配对时间差不超过 8 ms；YOLO 在仿真 on-policy 渲染图上微调。
+2. 按附录 D.2 标定颈部两台 XC330-M288-T 舵机的刚度、阻尼、转子惯量和 10 ms 命令延迟。
+3. 按附录 B 的奖励、域随机化与课程表 IV–VIII 重建训练配置；论文提供参数表，但没有公开完整策略源码或权重。
+4. 先验证 PAM 的观测偏差/漏检建模，再比较 WB-UAN 的全身残差拟合，最后在已校准的仿真中微调运球策略并做 DSC 技能衔接。
 
 ## 关联页面
 

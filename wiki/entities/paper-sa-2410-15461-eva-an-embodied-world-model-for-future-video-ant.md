@@ -20,7 +20,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# EVA
+# EVA: Embodied World Model for Video Anticipation（arXiv:2410.15461）
 
 **EVA: An Embodied World Model for Future Video Anticipation** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 290/571** 篇，分组 **812 Manipulation**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

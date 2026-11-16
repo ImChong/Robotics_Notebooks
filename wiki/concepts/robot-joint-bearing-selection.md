@@ -136,6 +136,7 @@ P = X F_r + Y F_a + Z M
 - 柔性轴承、RV 内部轴承 **定制件多**，供应链与备件策略需单独规划。
 
 ## 关联页面
+- [机器人关节模组轻量化设计](./robot-joint-module-lightweight-design.md)
 - [螺纹基础](./screw-thread-basics.md) · [Mechtool 在线机械设计工具](../entities/mechtool.md)
 
 - [Hardware 101 · 直线传动与轴承](../overview/humanoid-hardware-101-linear-transmission-bearings.md) — 图谱分类节点（丝杠 + 轴承概览）

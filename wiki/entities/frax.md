@@ -8,7 +8,7 @@ code: https://github.com/StanfordASL/frax
 tags: [robotics, inverse-kinematics, motion-retargeting, dynamics, jax, opensource, stanford]
 status: complete
 created: 2026-11-05
-updated: 2026-11-05
+updated: 2026-11-08
 summary: "frax 是 JAX 运动学与动力学库；frax.ik 提供基于 ElastiQP 的差分 IK 和人形离线动作重定向。"
 related:
   - ../concepts/motion-retargeting.md
@@ -18,6 +18,10 @@ sources:
   - ../../sources/repos/frax.md
   - ../../sources/sites/frax.md
   - ../../sources/papers/frax.md
+original:
+  - ../../sources/papers/frax.md
+  - ../../sources/repos/frax.md
+  - ../../sources/sites/frax.md
 ---
 
 # frax：JAX 机器人运动学、动力学与动作重定向
@@ -35,6 +39,12 @@ sources:
 | JIT | Just-in-Time compilation | 即时编译 |
 | RNEA | Recursive Newton-Euler Algorithm | 逆动力学算法 |
 | CRBA | Composite Rigid Body Algorithm | 关节空间惯量矩阵算法 |
+
+## 为什么重要
+
+传统机器人动力学库在单实例 CPU 延迟、Python 控制器原型、加速器并行和自动微分之间存在取舍。frax 以 JAX/XLA 的向量化刚体动力学为核心，使相同模型可以用于快速控制器原型和批量运算；后续 `frax.ik` 将这一能力扩展到受约束差分 IK 与离线人体动作重定向。
+
+**性能指标的适用范围不同**：论文的 GPU 每秒超过一亿次是大 batch（4096）下的**动力学项评估吞吐**；官方 LAFAN1 每秒超过十万帧是多 CPU 设备的**离线动作重定向吞吐**。二者都不能代表单个在线 IK 控制回路的实测频率。
 
 ## 流程总览
 
@@ -89,6 +99,13 @@ sequenceDiagram
 | 官方后续离线重定向 | 同型号 CPU，LAFAN1 全集约 4 秒、超过 100,000 FPS；启用自碰撞避免约 7 秒。这是跨片段多设备吞吐，不能直接解读为单帧实时延迟，也不是对 GMR 的同条件基准。 |
 | 接触与约束 | 示例默认地面约束，关节限位；自碰撞默认关闭。ElastiQP 对不等式引入隐式 L1 松弛，始终可行不等于原约束始终满足，也不能保证零脚滑、零穿透或动力学可行。 |
 | 使用条件 | MIT 源码公开；数据单独下载。示例固定 CPU、双精度和特定 XLA 配置；JIT 编译、数据加载与具体计时范围应分别核对。 |
+
+## 局限与风险
+
+- **模型边界**：当前以 URDF 与树状运动链为主要输入；官方待办包括 MJCF、非球形碰撞几何和解析动力学导数，闭链与其他关节类型未列入计划。
+- **不等式约束不是绝对安全保证**：ElastiQP 的隐式 L1 松弛旨在保证优化问题可解；约束冲突时仍可能出现限位或碰撞约束违背。实机需要额外碰撞监测、限幅与安全联锁。
+- **吞吐不等于控制时延**：大批量 GPU 动力学吞吐和多核 CPU 离线 retargeting FPS，不能直接外推到在线高频控制、ROS 2 线程调度或端到端时延。
+- **数值与版本敏感**：JAX/XLA、CPU 单线程配置、双精度、JIT 预编译和硬件配置会显著影响复现结果；本知识库未对宣称指标做独立复测。
 
 ## 工程实践
 

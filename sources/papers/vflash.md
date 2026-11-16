@@ -3,8 +3,9 @@
 - **标题：** VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding
 - **论文：** <https://research.nvidia.com/labs/lpr/vflash/assets/paper/vflash.pdf?v=20261105-2>
 - **项目页：** <https://research.nvidia.com/labs/lpr/vflash/>
+- **arXiv：** <https://arxiv.org/abs/2611.08449>
 - **机构：** 英伟达；约翰斯·霍普金斯大学、香港理工大学、普渡大学、香港大学（额外机构）
-- **版本：** 20261105-2 PDF（暂无 arXiv）。
+- **版本：** 原始 NVIDIA 20261105-2 PDF；现另有 [arXiv:2611.08449v1](https://arxiv.org/abs/2611.08449)（2026-11-05）。
 - **通读：** 已完成
 - **核对范围：** 2026-11-06 下载 PDF 并用 pdftotext 通读正文（摘要、§1 引言、§2 方法、§3 实验含表 1–8 与图 3–5、§4 相关工作、§5 结论）及附录 A–F 的设置与延迟统计；图中的纯数值标注以正文和表格文字为准，未逐像素核对图。
 

@@ -2,11 +2,12 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-11
 related:
   - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-gr00t-2.md
   - ../methods/motionbricks.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./kimodo.md
   - ../concepts/foundation-policy.md
   - ../concepts/whole-body-control.md
@@ -34,7 +35,7 @@ summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管
 
 **GR00T-WholeBodyControl** 是 NVlabs 把人形全身控制（Decoupled WBC、GEAR-SONIC、MotionBricks）的训练、权重与部署栈收敛到一个 Git 单仓的官方代码库。
 
-**GR00T-WholeBodyControl** 把 NVIDIA **GR00T 全身控制（WBC）** 相关资产收敛到同一 Git 单仓：**解耦 WBC**（下肢 RL + 上肢 IK，用于 [GR00T N1.5 / N1.6](https://research.nvidia.com/labs/gear/gr00t-n1_5/) 等）、**GEAR-SONIC**（[SONIC](../methods/sonic-motion-tracking.md) 规模化运动跟踪通用策略）与 **MotionBricks**（[`motionbricks/`](https://github.com/NVlabs/GR00T-WholeBodyControl/tree/main/motionbricks) 预览代码）的训练脚本、权重托管说明与部署栈并列维护。
+**GR00T-WholeBodyControl** 把 NVIDIA **GR00T 全身控制（WBC）** 相关资产收敛到同一 Git 单仓：**解耦 WBC**（下肢 RL + 上肢 IK，用于 [GR00T N1.5 / N1.6](https://research.nvidia.com/labs/gear/gr00t-n1_5/) 等）、**GEAR-SONIC**（[SONIC](./nvidia-sonic.md) 规模化运动跟踪通用策略）与 **MotionBricks**（[`motionbricks/`](https://github.com/NVlabs/GR00T-WholeBodyControl/tree/main/motionbricks) 预览代码）的训练脚本、权重托管说明与部署栈并列维护。
 
 ## 英文缩写速查
 
@@ -75,7 +76,7 @@ summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管
 
 ## 源码运行时序图
 
-节点对齐 [`sources/repos/gr00t_wholebodycontrol.md`](../../sources/repos/gr00t_wholebodycontrol.md)。本仓三条线并存；下图以 **GEAR-SONIC** 主复现路径为主（Decoupled WBC / MotionBricks 见文档站对应章节）。更细的 FSQ token 数据流见 [SONIC 方法页](../methods/sonic-motion-tracking.md)。
+节点对齐 [`sources/repos/gr00t_wholebodycontrol.md`](../../sources/repos/gr00t_wholebodycontrol.md)。本仓三条线并存；下图以 **GEAR-SONIC** 主复现路径为主（Decoupled WBC / MotionBricks 见文档站对应章节）。更细的 FSQ token 数据流见 [SONIC 方法页](./nvidia-sonic.md)。
 
 ```mermaid
 sequenceDiagram
@@ -121,16 +122,18 @@ sequenceDiagram
 
 - [GR00T N1（论文实体）](./paper-hrl-stack-34-gr00t_n1.md) — N1 论文机制与 42 篇栈坐标；本页聚焦 N1.5+ 工程栈与 WBC 部署
 - [MotionBricks](../methods/motionbricks.md) — 生成式运动子项目与论文级方法归纳
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — GEAR-SONIC 的方法与接口总览；**读源码导航**以方法页为准
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md) — GEAR-SONIC 的方法与接口总览；**读源码导航**以方法页为准
 - [Foundation Policy](../concepts/foundation-policy.md) — GR00T 系基础策略与分层控制叙事
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 概念层与 QP / 分层控制主线
 - [Isaac GR00T](./isaac-gr00t.md) — N1.7 VLA 主仓；G1 全身路径经 `UNITREE_G1_SONIC` 调用本仓 SONIC
 - [Isaac Teleop](./isaac-teleop.md) — README 把「跟踪全身 loco-manip + GR00T-WBC (SONIC)」列为已支持用例；XR 流经 Teleop 再进本仓，不是本仓自带头显栈
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) — 同品牌视觉 Sim2Real 仓库，任务侧重不同
 - [Kimodo](./kimodo.md) — 文生人体/人形运动学轨迹的上游；GEAR-SONIC 在线 Demo 集成
-- [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 基于本仓改写的全身 VLA 采集/部署配方
+- [OpenHLM](./paper-loco-manip-161-154-openhlm.md) — 基于本仓改写的全身 VLA 采集/部署配方：机器人侧 `GR00T-WholeBodyControl4OpenHLM/scripts/deploy_stream.sh`，π₀.₅ 系 VLA 以 action chunk 输出 34-D 目标（32-D 身体 + 2 夹爪），由 SONIC 跟踪器约 50 Hz 执行（arXiv:2606.22174）
 - [HumanoidArena](./paper-humanoidarena.md) — 以 SONIC 为 GMT 后端之一的分层基准
 - [HTD 解耦 WBC](paper-humanoid-touch-dream.md) — CMU/Bosch 开源的另一条「下肢 RL + 上肢默认/外部命令」解耦栈，勿与本仓 N1.5 解耦 WBC 混权重
+- [GR00T 2：WAM 联合预测未来视频/动作、Turbo 通过 SONIC 控制 G1](./paper-gr00t-2.md)
+
 
 ## 公司路线日期口径
 

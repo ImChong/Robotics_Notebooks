@@ -2,7 +2,11 @@
 type: concept
 tags: [vla, vlm, world-model, embodied-ai, foundation-model, real-time-control, generalization, taxonomy]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
+original:
+  - ../../sources/papers/mint_rss_2026.md
+  - ../../sources/papers/fast_action_tokenization_arxiv_2501_09747.md
+  - ../../sources/papers/smolvla_arxiv_2506_01844.md
 summary: "具身大模型实时性 ↔ 泛化能力取舍概念页：明示模型规模、多模态跨度、世界模型推演步长如何共同决定推理时延与控制带宽的可达边界，以及这条边界如何反向约束分层 / 端到端的选型分界。"
 related:
   - ../queries/embodied-fm-taxonomy-loop.md
@@ -17,11 +21,15 @@ related:
 sources:
   - ../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md
   - ../../sources/papers/mint_rss_2026.md
+  - ../../sources/papers/fast_action_tokenization_arxiv_2501_09747.md
+  - ../../sources/papers/smolvla_arxiv_2506_01844.md
 ---
 
 # 概念：具身大模型实时性 ↔ 泛化能力取舍
 
-> **一句话**：具身大模型的泛化能力几乎都靠「更大参数、更宽模态、更长推演」换来，而这三者又同步推高推理时延、压缩可用控制带宽——**泛化的上限最终被真机的控制带宽卡死**。这条可达边界，就是[五层选型闭环](../queries/embodied-fm-taxonomy-loop.md)里「③ VLA 动作执行层」端到端 vs 分层分界的物理根因。
+## 一句话定义
+
+具身大模型的泛化能力几乎都靠「更大参数、更宽模态、更长推演」换来，而这三者又同步推高推理时延、压缩可用控制带宽——**泛化的上限最终被真机的控制带宽卡死**。这条可达边界，就是[五层选型闭环](../queries/embodied-fm-taxonomy-loop.md)里「③ VLA 动作执行层」端到端 vs 分层分界的物理根因。
 
 ## 英文缩写速查
 
@@ -34,11 +42,13 @@ sources:
 | FLOPs | Floating-Point Operations | 浮点运算量；随参数规模近似线性↑，推高单步推理时延 τ |
 | MINT | Mimic Intent, Not Just Trajectories | 频域意图分词方法（RSS 2026），破边界路线 ② 代表 |
 
-## 为什么单独立这一页
+## 为什么重要
 
 [具身大模型分类学选型闭环 Query](../queries/embodied-fm-taxonomy-loop.md) 在 ③ 动作执行层留了一个工程判据：「VLA 输出的动作粒度必须给底层控制留出执行窗口，模型规模↑带来的推理时延不能超过任务要求的控制带宽」。这条判据不是 VLA 独有——它贯穿 VLM 感知、WM 推演所有下发到硬件的层，是整条闭环**共享的物理约束**。本页把它从散落各层的注脚，沉淀为一条可量化归因的取舍规则。
 
-## 三个泛化旋钮，一个共同代价
+## 核心原理
+
+### 三个泛化旋钮，一个共同代价
 
 具身大模型提升泛化的手段基本收敛为三个旋钮，代价都落在同一处——单步决策的**推理时延** `τ`：
 
@@ -74,7 +84,15 @@ sources:
 
 三条路线都不改 `1/f_ctrl` 这条硬线，而是**在预算内塞进更多泛化**。
 
-## 常见误判速查
+## 工程实践
+
+- **先量端到端闭环预算再选模型参数档：** 在目标工控机/Orin 上实测相机取图、预处理、网络/IPC 通信与底层执行器滞后，用 $1/f_{\text{ctrl}} - (\tau_{\text{comm}}+\tau_{\text{actuate}})$ 反推允许的 $\tau_{\text{model}}$ 上限。
+- **优先压缩输出冗余与序列长度：** 相比硬砍主干容量，采用离散意图/频域动作分词（如 [MINT](../../sources/papers/mint_rss_2026.md) 的 SDAT 或 FAST）与轻量异步推理（如 [SmolVLA](../../sources/papers/smolvla_arxiv_2506_01844.md) 的队列式动作预测）能更直接缓解自回归/多步采样卡顿。
+- **高带宽任务严格隔离低层回路：** 力控插拔与双足/人形全身平衡务必把高速观测反馈（$\ge 200$ Hz）留在轻量 WBC，高层 VLM/WAM 只以低频（$2\text{--}20$ Hz）下发子目标或参考轨迹。
+
+## 局限与风险
+
+### 常见误判速查
 
 | 误判 | 真相 | 第一排查 |
 |------|------|---------|
@@ -99,4 +117,12 @@ sources:
 ## 参考来源
 
 - [wechat_shenlan_five_embodied_model_taxonomy.md](../../sources/blogs/wechat_shenlan_five_embodied_model_taxonomy.md) — 深蓝五大具身模型分类，实时性↔泛化取舍的家族语境
-- [mint_rss_2026.md](../../sources/papers/mint_rss_2026.md) — MINT 频域意图分词，破边界路线 ② 的代表方法
+- [mint_rss_2026.md](../../sources/papers/mint_rss_2026.md) — MINT 频域意图分词（SDAT），破边界路线 ② 的代表方法
+- [fast_action_tokenization_arxiv_2501_09747.md](../../sources/papers/fast_action_tokenization_arxiv_2501_09747.md) — FAST 基于 DCT+BPE 的高频紧凑动作分词核对
+- [smolvla_arxiv_2506_01844.md](../../sources/papers/smolvla_arxiv_2506_01844.md) — 轻量 VLA（~450M）异步推理队列实操样本
+
+## 推荐继续阅读
+
+- [Action Tokenization](../formalizations/vla-tokenization.md)
+- [VLA 部署指南](../queries/vla-deployment-guide.md)
+- [MINT 论文实体](../entities/paper-mint-vla.md)

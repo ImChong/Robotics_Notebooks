@@ -2,7 +2,7 @@
 type: method
 tags: [rl, sparse-reward, manipulation, goal-conditioned, off-policy]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ./reinforcement-learning.md
   - ./sac.md

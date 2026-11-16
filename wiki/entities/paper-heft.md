@@ -14,8 +14,9 @@ tags:
   - tsinghua
   - shanghai-pil
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2607.02332"
+original: ../../sources/papers/heft_arxiv_2607_02332.md
 venue: "arXiv"
 code: https://github.com/Axellwppr/motion_tracking
 summary: "HEFT：PMG 从嘈杂 VR 跟踪人类意图 + WPC 窗化双手负载课程，在 G1 与全尺寸 L7（175 cm/65 kg）上实现 24 kg 级重载全身遥操作与高动态跟踪；训练/检查点开源。"
@@ -30,7 +31,7 @@ related:
   - ./paper-twist.md
   - ./paper-telegate.md
   - ./paper-teleopit.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./axellwppr-motion-tracking.md
 sources:
   - ../../sources/sites/heft-project.md
@@ -39,6 +40,8 @@ sources:
 ---
 
 # HEFT
+
+## 一句话定义
 
 **HEFT**（*Heavy-Payload Full-size Humanoid Teleoperation with Privileged Motion Guidance and Windowed Payload Curriculum*，清华大学 / RobotEra / 上海期智研究院，arXiv:2607.02332）面向 **全尺寸人形重载全身遥操作**：从 **原始、嘈杂的 VR 参考流** 跟踪操作员意图，在 **Unitree G1** 与 **L7**（175 cm、65 kg 全尺寸人形）上用 **单一可部署策略** 同时覆盖 **高动态运动跟踪** 与 **双手总负载至 24 kg** 的搬运、深蹲、推物等任务。方法核心是 **PMG（Privileged Motion Guidance）**、**WPC（Windowed Payload Curriculum）** 与 **RMA 式师生适配器**；官方实现与检查点见 [Axellwppr/motion_tracking](https://github.com/Axellwppr/motion_tracking)。
 
@@ -144,6 +147,17 @@ flowchart TB
 | 重载 | 10 kg 不对称搬运、2×12 kg 负重深蹲/行走、5 kg 搬运、推物；**总负载至 24 kg** |
 | 高动态跟踪 | G1（训练含 5% OmniXtreme）与 L7（SEED 高动态子集）分别评测 |
 
+## 对比
+
+| 对照路线 | 训练或部署方式 | HEFT 的改动 |
+|---|---|---|
+| TWIST2 风格参考跟踪 | 直接跟踪输入参考 | HEFT 在训练期引入 Privileged Motion Guidance（PMG），以重建的干净运动指导对嘈杂原始 VR 参考的跟踪 |
+| 全局负载课程 | 各运动片段共享负载训练日程 | Windowed Payload Curriculum（WPC）按短时间窗的运动难度与负载调整训练分布 |
+| HEFT | PMG + WPC 联合用于重载遥操作 | 在 G1/L7 上演示高负载动态动作；不意味着其他本体无需重新训练 |
+
+两项机制应分别对照论文消融，不将 24 kg 演示误写为所有任务的统一安全负载；见 [论文](https://arxiv.org/abs/2607.02332) 与 [全文核对归档](../../sources/papers/heft_arxiv_2607_02332.md)。
+
+
 ## 结论
 
 **HEFT 的真正命题是「部署端只吃 raw VR」：把干净参考、专家窗上界与仿真特权全部关在训练期，换来单一可部署策略同时扛住 VR 噪声与双手 24 kg 负载。**
@@ -161,11 +175,11 @@ flowchart TB
 - **数据与标签仍部分闭源：** 完整训练集、WPC 窗标签与 PMG 配对大数据 **计划后续发布**；当前仅有 G1 烟测 memdataset 与 `sim2real` checkpoint。
 - **与 TeleGate 路线不同：** [TeleGate](./paper-telegate.md) 用 **门控冻结专家** 解决多动态类跟踪；HEFT 坚持 **单策略** 覆盖重载 + 高动态 + 噪声 VR，工程上更贴近「一条 LLC 跟 VR」部署。
 
-## 与其他页面的关系
+## 关联页面
 
 - VR 便携采集对照：[paper-twist2.md](./paper-twist2.md)、[paper-twist.md](./paper-twist.md)
 - 全身体+连续灵巧手对照：[paper-teleopit.md](./paper-teleopit.md)
-- 规模化无负载跟踪：[sonic-motion-tracking.md](../methods/sonic-motion-tracking.md)
+- 规模化无负载跟踪：[sonic-motion-tracking.md](./nvidia-sonic.md)
 - 惯性动捕门控专家遥操作：[paper-telegate.md](./paper-telegate.md)
 - 任务语境：[teleoperation.md](../tasks/teleoperation.md)、[loco-manipulation.md](../tasks/loco-manipulation.md)
 - 代码栈：[axellwppr-motion-tracking.md](./axellwppr-motion-tracking.md)
@@ -180,6 +194,42 @@ flowchart TB
 
 G1 对比 **SONIC**、**TWIST2** 官方 checkpoint；L7 对比重训 **TWIST2**。PMG 消融含 w/o noise、w/ noise；WPC 消融含 w/o expert、TWIST2+FC。
 
+## 工程实践
+
+以下均来自论文全文（arXiv v1）附录与实验节；本页未独立复现。
+
+**数据规模（附录 A）**
+
+| 集合 | 片段数 | 时长 |
+|------|--------|------|
+| SEED 训练库 | 61,612 | 134.35 h |
+| 100STYLE | 810 | 18.78 h |
+| LaFAN1 | 40 | 2.19 h |
+| 配对 VR 训练集 | 643 | 6.08 h |
+| 评测：DVR / Drandom / Ddynamic | 8 / 100 / 100 | 52.26 s / 21.62 min / 8.23 min |
+
+- Ddynamic 由 SEED 参考统计（根速度/加速度、高度变化、偏航、关节速度/加速度，50 Hz，百分位归一化加权）取 top-100，不依赖策略 rollout。
+- 配对 VR 片段用 RoHM（扩散式离线重建，基于 SMPL-X 输出）清洗；mocap 片段 raw = clean。另训一个 clean 参考专家，既过滤动力学不一致的 mocap 片段，也给 WPC 打标签。
+
+**训练设置（附录 D）**
+
+- 网络：teacher/student actor 均为 MLP [1024,1024,512]；critic [1024,512,512]；特权编码器 [512]→256 维 z；adapter [1024,512]→256 维。
+- PPO：8×8192 并行环境，物理步长 0.005 s / 控制 0.02 s（50 Hz），rollout 32 步，3 epoch / 8 minibatch，γ=0.99、GAE 0.95、clip 0.2、adapter loss 权重 0.2，预算 5×10^9 帧；流程为 teacher（PPO）→ adapter 蒸馏 → student 微调。
+- 奖励：形如 w·exp(−e/σ)，对 13 个关键刚体；含根位姿/速度、关键点位置/旋转/速度、关节项、存活（3.0）、参考足端滞空（5.0）及关节速度/动作变化/限位/力矩限位正则；跟踪目标用 S_clean。
+- 观测：student 用较短参考窗（含未来与历史），因未来目标需缓冲在线 VR 流、会直接增加遥操作延迟；teacher 可用更长前瞻；另有本体历史与 8 步历史动作。nq=29（G1、L7 相同）。
+- WPC 细节：5 s 无重叠窗；从 30 kg 起以 5 kg 递减 rollout，最大不终止的负载为上界（标注时关闭观测噪声与域随机化）；训练时 U(0, 上界·clip(p/0.8,0,1))，加力于左右腕滚转连杆、随机分配、方向在 12° 锥内。
+
+**硬件与部署**
+
+- L7：175 cm、65 kg、29 个驱动关节；仅部署 student + adapter，只用可部署观测，全程同一策略、不切换任务控制器。真机任务（附录 E.1）：5 kg 背包、8 kg 小桌、5 kg 篮子、10 kg 水瓶不对称搬运、2×12 kg 壶铃行走/深蹲、推轮式架（质量未测）。
+- 论文未给出 VR 设备型号、机载算力、推理频率或端到端延迟数值（未披露）。
+
+**结果参照与坑**
+
+- 仿真无负载：PMG 在 DVR 上最终水平根误差 G1 0.544 m、L7 0.560 m；Drandom MPJPE 0.021 m（SONIC 0.043、TWIST2 0.061，G1）、0.036 m（TWIST2 0.099，L7）。SONIC 因算力未迁移到 L7。
+- 负载扫描：WPC 20 kg 内成功率高，25 kg 90%、30 kg 75%；w/o expert 80%/62%；TWIST2+FC 35%/29%。Ddynamic 无负载成功率 0.73 vs w/o expert 0.64 vs TWIST2+FC 0.10。
+- 局限（论文第 6 节）：换机器人/追踪器/动作库需重跑数据准备与 WPC 标注；负载仅建模为腕部外力，不含抓取质量、物体几何、滑动、依靠等环境支撑接触；真机仅验证一个平台。VR 噪声不是独立高斯噪声，单靠重定向或通用噪声增广无法消除，需配对数据。
+
 ## 参考来源
 
 - [heft-project.md](../../sources/sites/heft-project.md) — 官方项目页一手摘录
@@ -192,6 +242,6 @@ G1 对比 **SONIC**、**TWIST2** 官方 checkpoint；L7 对比重训 **TWIST2**�
 - [HEFT 项目页](https://heft.axell.top/)
 - [motion_tracking GitHub](https://github.com/Axellwppr/motion_tracking)（`sim2real` 分支检查点）
 - [TWIST2（便携 VR 采集对照）](./paper-twist2.md)
-- [SONIC（规模化 tracking 对照）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化 tracking 对照）](./nvidia-sonic.md)
 - [TeleGate（门控专家遥操作对照）](./paper-telegate.md)
 - [Teleopit（全身体+连续灵巧手对照）](./paper-teleopit.md)

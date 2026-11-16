@@ -12,9 +12,12 @@ related:
   - ./motion-imitation-quadruped.md
 sources:
   - ../../sources/repos/stmr_quadruped_retargeting.md
+original: ../../sources/repos/stmr_quadruped_retargeting.md
 ---
 
 # STMR 四足时空重定向
+
+## 一句话定义
 
 **STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557](https://arxiv.org/abs/2404.11557)）把 **动物/视频关键点轨迹** 转为 **四足机器人全身可执行参考**，显式拆分 **空间重定向（SMR）** 与 **时间重定向（TMR）**，再接 **legged_gym** 式 RL 模仿学习与真机部署。
 
@@ -32,7 +35,7 @@ sources:
 - **四足专用重定向栈**：针对 **物理不可行参考** 与 **缺失基座运动** 分阶段处理；论文含 Go1 / Aliengo / B2 等真机视频。
 - **支持噪声源**：手持视频等来源经 STMR 后可训练 RL 跟踪策略（含跳跃、后空翻等飞行相技能）。
 
-## 一手资料入口（已验证可打开）
+## 工程实践：一手资料入口（已验证可打开）
 
 | 类型 | 链接 | 说明 |
 |------|------|------|
@@ -52,6 +55,11 @@ flowchart LR
   ref --> rl["legged_gym + RL"]
   rl --> hw["Go1 / Aliengo / B2 等真机"]
 ```
+
+## 局限
+
+- 原 README 引用的 `terry97-guel` GitHub 子仓截至 2026-06 均已 404，无法直接拉取官方代码复现。
+- 针对四足动物到四足机器人的特定映射设计，不直接适用于人形双足重定向。
 
 ## 关联页面
 

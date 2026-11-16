@@ -46,3 +46,14 @@
 
 - 沉淀实体页：[WorldVLN（空中 VLN · 自回归 WAM）](../../wiki/entities/paper-worldvln-aerial-vln-wam.md)
 - 交叉补强：[视觉–语言导航（VLN）](../../wiki/tasks/vision-language-navigation.md)、[World Action Models（WAM）](../../wiki/concepts/world-action-models.md)、[VLA](../../wiki/methods/vla.md)、[机器人世界模型训练闭环 taxonomy](../../wiki/overview/robot-world-models-training-loop-taxonomy.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2605.15964v1 正文 §1–§6、附录 A.1–A.9（架构、训练、基准、局限、真机）；图表按文字层核对，参考文献浏览；项目页、官方 README、在线服务入口/会话与动作解码相关源码；未运行模型或观看视频。
+- **通读：** 已完成
+- InfinityStar-8B + Wan VAE 多尺度离散 latent：49 raw frames=1+3×16，每段 16 帧对应四个 latent 时间位置。SFT 用真实历史 teacher forcing；部署每段动作执行后以实测视觉更新，不把预测未来一直滚成真实历史。
+- 动作 teacher 先由视频–轨迹训练，冻结视觉编码后蒸馏 latent adapter，再训练完整 action decoder；部署不要求先渲染完整 RGB 视频再做 VO，但公开调试服务默认可保存预测视频。
+- GRPO G=4，轨迹/任务/参考权重 .2/.7/.1，γ=.9，KL=.9、clip=.02，原文冻结前五 model chunks；当前仓另有全骨干训练入口，不能反写成论文实验配置。未复现 RL。
+- UAV-Flow Fixed/Open 平均 SR 79.12/78.02%，相对最强基线 +13.51/+12.24 个百分点；IndoorUAV 41.76 vs π0 27.16（+14.60pp），不写相对增长 12%。类别并非全胜，如 Pass/Rotate 等仍低于部分基线。
+- 真机为 250mm 四旋翼、C270、Orin NX16GB 通信、PX4 低层；高层在地面站服务器，室内14相机MoCap、室外GPS/TFmini-S用于低层，不输入WAM。正文只给部署案例，无完整量化真机成功率表；无广泛多种子统计。
+- 代码当前非占位，见 repo 复核；API 是 6D cm/deg 增量，论文任务抽象为4D平移+yaw，必须单独核对坐标/单位契约。

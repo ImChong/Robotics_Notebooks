@@ -15,7 +15,8 @@ tags:
   - westlake
   - shanghai-innovation-institute
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
+original: ../../sources/papers/teleopit_arxiv_2608_01834.md
 arxiv: "2608.01834"
 venue: "arXiv"
 code: https://github.com/BotRunner64/Teleopit
@@ -26,7 +27,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../concepts/motion-retargeting.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./unitree-g1.md
   - ./paper-twist2.md
   - ./paper-gae-general-action-expert.md
@@ -43,6 +44,10 @@ sources:
 ---
 
 # Teleopit
+
+## 一句话定义
+
+Teleopit：PICO VR 统一驱动全身跟踪 + 跨形态灵巧手优化重定向 + 主动视觉；History Encoder 与 failure-aware rewind 提升 live VR 跟踪；五仓开源；96 条演示上 ACT/GR00T 达 90%/95% SR。
 
 **Teleopit**（*A Full-Embodiment Humanoid Teleoperation System*，西湖大学 / 上海创智学院，arXiv:2608.01834）用 **PICO VR** 作为统一操作员意图源，在 **Unitree G1** 上同时提供 **动态可行全身跟踪、连续跨形态灵巧手控制与 2-DoF 主动视点**，并以异步 runtime 连接传感、控制、视觉反馈与录制。跟踪侧在 **mjlab** 中用 PPO 训练，配合 **History Encoder** 与 **failure-aware rewind sampling**；手侧重用 **归一化指方向 + 指尖距离 / 拇指帧** 目标做在线优化重定向。官方五仓栈见项目页；主实现 [BotRunner64/Teleopit](https://github.com/BotRunner64/Teleopit)。
 
@@ -131,10 +136,16 @@ flowchart TB
 
 共享权重、激活阈值与求解器设置；换手只需语义 link 映射。Table 8 在 Dex5、Inspire DFQ、LinkerHand L20/L6、Rohand、Sharpa Wave 等上报告方向/关键点/距离误差与求解时延。
 
+- **训练细节（原文 §3.2 / Table 5）：** 40k 次迭代；每 env 24 步；rewind 时以 **0.8** 概率保留原 clip；终止条件为锚点高度误差 >0.25 m、锚点朝向误差 >1.0 rad、踝/腕高度误差 >0.25 m；含摩擦、质心、惯量、关节偏置域随机化与每 4–6 s 的随机推力。训练数据 Table 4：BONES-SEED 子集 63,237 clips（约 128 h）、TWIST2 子集 31,071 clips（约 88 h）、LAFAN1 子集 57 clips、自采 PICO 9 段（约 31 min）。
+
 ### 3）主动视觉与异步集成
 
 - 头相对躯干的朝向 → deadzone + 指数平滑 → yaw/pitch；约 **CNY 500** 级 2-DoF 机构（OpenNeck）。
 - 传感、手优化、视点、身体策略、机器人通信、视频与录制分进程按各自频率运行，避免单流拖垮全局。
+
+### 4）自主执行接口（原文 §4.4）
+
+任务策略（ACT / GR00T N1.7）不直接输出电机目标，而是预测与遥操作相同的参考运动：**52D** 动作 = 相对 chunk 起点的根平面位移（2D）+ 绝对根高 + 根旋转 6D + 43 个身体/手/颈关节参考（观测为 RGB 640×480@30 Hz + 43 维关节状态：29 身体 + 12 手 + 2 颈）。根与身体参考进入 50 Hz tracker → 200 Hz PD，手与颈参考绕过 tracker 直发各自控制器；每执行 20 步重规划，异步 chunk 推理。保留了「高层策略 → tracker」的层级。
 
 ## 源码运行时序图
 
@@ -192,7 +203,13 @@ sequenceDiagram
 | HoloMotion | 64.6% | 97.0% | PICO 子集 SR 高但 mocap 较低 |
 | **Teleopit** | **91.7%** | **100.0%** | 两子集 SR 最高；PICO MPJPE 最低 |
 
-消融（Table 7，降配训练）：Full (reduced) 74.0% SR；去 rewind 72.9%；去 history 73.5%。真机展示静姿、跪立/坐立连续过渡与 loco-manipulation（移动拾放、开门、货架等）。
+细节：HoloMotion 的根位置误差在两子集均最低，SONIC 在 mocap 子集 MPJPE 略低；Teleopit 在 PICO 子集 MPJPE、根朝向、根速度误差最低。SR 对所有方法用 Teleopit 终止条件重算，每个 10 s 窗口单次确定性 rollout（mocap 181 窗、PICO 67 窗）。
+
+消融（Table 7，降配训练：4 GPU、16384 env、20k 迭代，仅 mocap 子集）：Full (reduced) 74.0% SR；去 rewind 72.9%；去 history 73.5%。真机展示静姿、跪立/坐立连续过渡与 loco-manipulation（移动拾放、开门、货架等）。
+
+### 手重定向实验（Table 8–10）
+
+6 款手（Dex5、Inspire DFQ、LinkerHand L20/L6、Rohand、Sharpa Wave）共用同一参数，同一段 25.8 s 右手 PICO 录制；平均求解 1.56–8.53 ms；方向误差 9.02°–43.04°，站点距离误差 9.46–21.15 mm（精度随形态而异）。在 L20 上消融：距离目标使指尖距离误差 48.46→19.82 mm（−59.1%），代价是方向误差 +2.78°、求解 +1.34 ms；拇指帧目标使帧误差 31.53°→22.33°（−29.2%）。（结论段称覆盖「十余款手」，与实验的 6 款不一致，以 Table 8 为准。）
 
 ### 时延（视频估计，Figure 12）
 
@@ -218,6 +235,9 @@ sequenceDiagram
 - **基线训练预算与数据不完全对齐：** Table 6 对比发布 tracker，论文亦注明各法训练数据/奖励/预算不同——SR 领先应结合部署参考分布（含自采 PICO）解读。
 - **手求解仍是在线优化：** 跨手免调权，但不等于零标定；语义 link 映射错误会直接坏 grasp。
 - **时延为视频估计：** Wi-Fi 路径下 ~100–150 ms 量级，高动态接触任务仍可能吃紧。
+- **跟踪消融仅在降配设定下做：** Table 7 的 SR 差距仅 0.5–1.1 个百分点，且在单次 rollout、mocap 子集上；rewind 去除后部分位置指标反而略好。
+- **自主执行证据有限：** 单任务（瓶放置）、20 trial；对未见瓶型的泛化只给了定性图（Figure 16），无定量。
+- **手精度随形态不均匀：** 免调参不等于同等精度（方向误差最高 43°）。
 - **机体主线是 G1：** 与 [HEFT](./paper-heft.md) 的全尺寸 L7 重载叙事不同；换机体需重训 tracker 与手 YAML。
 
 ## 与其他工作对比
@@ -240,7 +260,7 @@ sequenceDiagram
 - [Immersive Social VR+LLM](./paper-immersive-social-vr-llm-humanoids.md) — AVP + LLM 语音腿控（非全身 VR 跟踪）对照
 - [OASIS](./paper-loco-manip-04-oasis.md) — 以 Teleopit 为仿真 teleop 低层 WBC
 - [MimicLite](./mimiclite.md) — 跨 codebase 部署列表含 TeleopIT
-- [SONIC](../methods/sonic-motion-tracking.md) — Table 6 规模化 tracking 基线
+- [SONIC](./nvidia-sonic.md) — Table 6 规模化 tracking 基线
 - [Unitree G1](./unitree-g1.md)、[Whole-Body Control](../concepts/whole-body-control.md)、[Motion Retargeting](../concepts/motion-retargeting.md)
 
 - [GAE：General Action Expert](./paper-gae-general-action-expert.md) — 同为西湖全身遥操作，着重万小时运动数据、双阶段训练与延迟预判。

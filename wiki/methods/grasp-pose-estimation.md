@@ -2,8 +2,9 @@
 type: method
 tags: [perception, grasping, manipulation, point-cloud, rgbd, 6dof, deep-learning]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-09
 related:
+  - ../entities/paper-f2g-pose.md
   - ../queries/robot-perception-stack-selection-loop.md
   - ../tasks/manipulation.md
   - ../entities/anygrasp.md
@@ -173,6 +174,8 @@ flowchart LR
 - **平行夹爪假设**：本页谱系默认 **平行二指夹爪**；多指 / 灵巧手抓取是另一套表征（接触面分配、力闭合），见 [In-hand Reorientation](./in-hand-reorientation.md) / [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)。
 
 ## 关联页面
+
+- [F2G-Pose](../entities/paper-f2g-pose.md) — 无实例 CAD 的单帧 RGB-D 物体 6D 位姿、尺寸与补全点云，可作为抓取规划上游输入；不直接输出夹爪抓取候选。
 
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 抓取位姿估计在操作闭环中的位置
 - [TransGraspNet（论文实体）](../entities/paper-transgraspnet.md) — 透明含液器皿：边界/深度一致 + GraspNet 候选物理重打分（arXiv:2607.29567）

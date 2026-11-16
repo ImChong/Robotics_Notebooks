@@ -21,7 +21,7 @@
 ### 2) 预测噪声的均方损失
 
 - **要点：** \(\mathcal{L} = \mathbb{E}\|\epsilon-\epsilon_\theta(x_t,t)\|^2\)。同一网络覆盖高噪声（结构）与低噪声（细节）。骨干当时用 U-Net。
-- **对 wiki 的映射：** [`wiki/concepts/diffusion-model.md`](../../wiki/concepts/diffusion-model.md)、[`wiki/concepts/unet.md`](../../wiki/concepts/unet.md)
+- **对 wiki 的映射：** [`wiki/concepts/diffusion-model.md`](../../wiki/concepts/diffusion-model.md)、[`wiki/methods/unet.md`](../../wiki/methods/unet.md)
 
 ### 3) 机器人动作生成直接搬这条损失
 

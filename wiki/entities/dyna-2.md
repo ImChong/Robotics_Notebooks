@@ -16,7 +16,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-10-07
+updated: 2026-11-13
 related:
 - ./dyna-2-1.md
 - ../concepts/world-action-models.md
@@ -34,6 +34,8 @@ related:
 - ../overview/rcl-awesome-wam-technology-map.md
 - ../methods/generative-world-models.md
 - ../tasks/locomotion.md
+original:
+- ../../sources/blogs/dyna_2_million_hour_wam.md
 sources:
 - ../../sources/blogs/dyna_2_million_hour_wam.md
 - ../../sources/sites/dyna-co-dyna-2.md
@@ -55,7 +57,7 @@ venue: '2026'
 | 类型 | 公司 Research 技术报告（非 arXiv） |
 | 入口 | <https://www.dyna.co/dyna-2> |
 | 预训练数据 | **≥1M h** egocentric 人视频（嵌套 1k/10k/100k/1M） |
-| 开源 | **未开源**（2026-08-11） |
+| 开源 | **未开源**（2026-11-13） |
 
 ## 一句话定义
 
@@ -78,7 +80,7 @@ venue: '2026'
 ## 为什么重要
 
 - **把人视频缩放轴推到 1M h：** 相对 [EgoScale](../methods/egoscale.md)（~20k h、VLA + 人–机对齐 mid-training），Dyna-2 声称在 **不做对齐/共训** 的设定下，仍测到 **人→机零样本** 离线缩放——若成立，将改写「人数据必须先对齐才能服务机器人」的默认配方。
-- **钉死世界建模必要性：** 同架构消融显示 **action-only** 无法建立可靠跨具身缩放；**video co-training**（含无动作标签视频）才是缩放出现的主驱动 → 与 [WAM 概念](../concepts/world-action-models.md)「未来预测参与表示塑造」一致，且明确 **推理可保持 reactive**。
+- **隔离目标贡献：** 同架构消融显示 **action-only** 无法建立可靠跨具身缩放；**video co-training**（含无动作标签视频）在这组消融中是缩放出现的主驱动 → 与 [WAM 概念](../concepts/world-action-models.md)「未来预测参与表示塑造」一致，且明确 **推理可保持 reactive**。
 - **产业对照样本：** 与 [Sunday ACT-2](./sunday-robotics-act2.md)、[GEN-1 千手](./generalist-gen1-thousand-hands.md) 同属 **闭源人类数据预训练** 路线，但主张点落在 **WAM 目标 + 跨具身幂律**，而非家用 Solve 或末端多样性。开源侧 [Perceptron Isaac 0.5](./perceptron-isaac-05.md) 同样把视频推到 **1M h**，但测的是 **无动作视频置换 teleop 小时数**（VLA 共享骨干），不是人→机零样本 WAM。
 
 ## 流程总览
@@ -136,13 +138,18 @@ flowchart TB
 |------|--------|
 | 人 held-out 幂律 | 四指标均单调；例 MSE \(R^2\approx0.92\) |
 | 后训练 14 任务归一化均值 | **20% → 53%**（1k → 1M h 预训练） |
-| Bottle Cap / ~13 min 数据 | 随预训练升至约 **50%** SR |
+| Bottle Cap / 约10 min 数据 | 随预训练升至约 **50%** SR |
 | Lockbox Key Turning | ≤100k：**0%**；1M：**90%** |
 | 早版 WAM vs Dyna-1 VLA | 成功率约 **1.55×**；现场 pass **87% vs 46%** |
 | 语言跟随综合分 | action-only **0.35** → full video co-train **0.96** |
 | 一步视频蒸馏 | **10.2 s → 0.11 s** / 3s 三视角片段（1×H100） |
 
 ## 工程实践
+
+- **分清三种泛化：** 39任务零样本是离线动作预测；14任务真机有每任务≤10h后训练；客户现场zero-shot指未见站点，已有任务后训练。
+- 14任务每项10次、语言12次，53%是归一化混合指标均值，不是53%完整成功率。语言36次的0.96另有「正确尝试但未完成记0.5」规则。
+- 110ms仅为单H100的视频latent采样；学生FVD121/运动75%，弱于教师80/94%，不能当无质量损失或完整控制周期。
+
 
 | 项 | 读法 |
 |----|------|
@@ -152,16 +159,16 @@ flowchart TB
 | 开源边界 | **无可运行实现** → 源码运行时序图 **不适用** |
 | 复现策略 | 独立方应优先复现 **嵌套小时梯子 + 固定机端评测集** 的协议，而非追逐 headline SR |
 
-### 源码运行时序图
+## 源码运行时序图
 
-**不适用** — 截至 2026-08-11，研究页与公司站 **未发布** 训练/推理代码、权重或数据集；无可辨识 README 入口。
+**不适用** — 截至 2026-11-13，研究页与公司站 **未发布** 训练/推理代码、权重或数据集；无可辨识 README 入口。
 
 ## 局限与风险
 
 - **非 peer-reviewed / 无 arXiv：** 定量全部来自公司技术报告与客户现场；缺第三方基准。
-- **确认未开源（2026-08-11）：** 无 GitHub / HF；百万小时语料与清洗管线均不可审计。
+- **确认未开源（2026-11-13）：** 无 GitHub / HF；百万小时语料与清洗管线均不可审计。
 - **「首次」跨具身缩放律：** 需对照 EgoScale（人 loss 缩放 + 对齐后真机）、RDT2 / LAP（单点零样本跨具身）等；本页采纳作者 **「零适配、纯人预训练梯子」** 定义，但仍是 **自报**。
-- **1M 点源混合差异：** 文中注明 ~1M 臂的 diamond 点 **源混合** 与嵌套梯子不同——读曲线时勿把最右点与左侧完全同分布。
+- **有限梯子与任务数：** 正文说明嵌套子集固定源比例；仅四数据规模点不能证明超出1M仍遵循同一幂律。1M只在9/14真机任务最佳，不能称每个任务单调。
 - **生产数字与研究梯子配方不同：** §4 多用「production」检查点；勿与 §3 缩放律检查点混为一谈。
 
 ## 结论

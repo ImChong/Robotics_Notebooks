@@ -1,6 +1,6 @@
 # Robotics Notebooks Index
 
-本项目以运动控制为切入口，通通向机器人全栈工程能力。
+本项目以运动控制为切入口，通向机器人全栈工程能力。
 
 这是知识入口总索引。**如果你第一次来，从 [README](README.md) 开始**，那里有完整的使用说明。
 
@@ -85,6 +85,7 @@
 - [MINT（Mimic Intent, Not Just Trajectories）](wiki/entities/paper-mint-vla.md)（RSS 2026：频域意图分词 + 单样本迁移；arXiv:2602.08602）
 - [EgoScale](wiki/methods/egoscale.md)（2 万小时级 egocentric 人视频预训练 VLA + 对齐 mid-training；arXiv:2602.16710）
 - [EgoVerse](wiki/entities/paper-egoverse.md)（联盟式 egocentric 人示教活数据集 + 跨实验室人→机共训研究；arXiv:2604.07607）
+- [CoMind / Be My Eye](wiki/entities/paper-be-my-eye-comind.md)（星尘智能双机器人任务相关上下文共享：32-token 双向通信与接收端动作监督；arXiv:2611.12295）
 - [ENPIRE](wiki/methods/enpire.md)（coding agent 真机策略自改进闭环：EN–PI–R–E 四模块 + AutoEnvBench；NVIDIA GEAR 2026）
 - [Model Predictive Control (MPC)](wiki/methods/model-predictive-control.md)
 - [Trajectory Optimization](wiki/methods/trajectory-optimization.md)
@@ -224,8 +225,6 @@ SORT type ASC
 - [`ImChong.github.io`](https://github.com/ImChong/ImChong.github.io)：个人简历
 
 > 论文项目负责点，技术栈项目负责线和面，个人主页负责展示。
-
----
 
 ---
 

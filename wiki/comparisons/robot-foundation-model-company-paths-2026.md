@@ -2,7 +2,7 @@
 type: comparison
 tags: [embodied-ai, vla, world-action-model, humanoid, whole-body-control, sim2real]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-13
 related:
   - ../entities/robotera.md
   - ../entities/rai-institute.md
@@ -23,6 +23,7 @@ related:
   - ../entities/rhoda-ai.md
   - ../entities/motphys.md
   - ../entities/gamma-robotics.md
+  - ./autonomous-driving-embodied-intelligence-2013-2026.md
 original:
   - ../../sources/papers/gr00t_n1_reading_arxiv_2503_14734_company_paths.md
   - ../../sources/papers/pi05_reading_arxiv_2504_16054.md
@@ -64,6 +65,8 @@ summary: "按世界/动作基础模型、通用人形整机、强全身控制三
 ## 为什么重要
 
 各家公司的发布材料用词相近（VLA、世界模型、全身控制），但训练目标、动作接口和开放范围差别很大。若不先按阅读视角拆开，容易把演示当成可复现资产，或把不同本体、任务的成功率放在一起排名。本页给出一个统一的追问框架，帮助判断「某条路线究竟公开了什么、哪一层靠什么闭环」。
+
+延伸产业视角：从 **2013–2026 智能驾驶发展史**比较算法、数据闭环、Tier 1 / 全栈分工和商业化边界，请读 [智能驾驶四时代 → 具身智能六维映射](./autonomous-driving-embodied-intelligence-2013-2026.md)。该页区分一手事实与产业预测，不把 Mobileye/Cruise 个案当成机器人赛道的确定性终局。
 
 ## 30 秒读懂
 
@@ -128,7 +131,7 @@ flowchart TB
 | [Delta Intelligence 德塔智能](../entities/delta-0-humanoid-foundation-model.md) | ● | ● | ○ | Δ₀（潜空间 world–action brain + 69-DoF 全身控制器） |
 | [Robbyant 蚂蚁灵波](../entities/robbyant.md) | ● |  |  | LingBot-VLA 2.0、LingBot-VA、LingBot-World（另有 Vision / Depth / Map / Video 感知与预训练层） |
 | [Reward AI 励元智能](../entities/reward-ai-robotics.md) | ● | ○ |  | OM-1（仅人类穿戴示范的通才操作策略 + Control Any Body 高频控制层） |
-| [Symbiosis Robotics](../entities/paper-dpc.md) |  | ● | ○ | DPC（去掉运动 latent 接口，视觉 / 语言 / 本体直出 G1 关节 PD 目标） |
+| [共生知行（Symbiosis Robotics）](../entities/paper-dpc.md) |  | ● | ○ | DPC（去掉运动 latent 接口，视觉 / 语言 / 本体直出 G1 关节 PD 目标） |
 | [RAI Institute](../entities/rai-institute.md) |  |  | ● | [ZEST](../entities/paper-zest.md)、[Sumo](../methods/sumo.md)、[AthenaZero](../entities/paper-athenazero.md)、Robot Juggling、SMPC-to-RL、[Exploy](../entities/exploy.md) |
 | [RoboParty 萝博派对](../entities/roboparty.md) | ○ | ● | ● | [Roboto Origin](../entities/roboto-origin.md)、Party OS、hhtools、MimicLite、UFO / TeCH、INTACT |
 | [BeingBeyond 智在无界](../entities/beingbeyond.md) | ● |  | ● | [Being-H0](../entities/paper-notebook-being-h0-vision-language-action-pretraining-from.md) → [H0.5](../entities/cn-os-being-h.md) → [H0.7](../methods/being-h07.md) → H0.8、[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md)、[BumbleBee](../entities/paper-notebook-from-experts-to-a-generalist.md)、[FAST](../entities/cn-os-fast.md)、[DemoHLM](../entities/paper-loco-manip-161-136-demohlm.md) |

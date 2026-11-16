@@ -22,3 +22,9 @@
 
 - **wiki/entities/humannet.md**：数据集与管线实体页（归纳级，非论文转存）。
 - **wiki/methods/vla.md**、**wiki/methods/imitation-learning.md**：补充「人类视频作为 VLA/IL 预训练数据来源」的当代参照。
+
+## 2026-11-11：源码分支与数据集入口核对
+
+- [HumanNet main](https://github.com/DAGroup-PKU/HumanNet/tree/main) 是原始百万小时**人中心（含一三人称）**数据论文与仓库入口；main 的完整数据集开放项目仍未标完成。
+- [Open-HumanWAM 独立分支](https://github.com/DAGroup-PKU/HumanNet/tree/Open-HumanWAM) 有 HumanWAM-Vanilla 训练/评测入口及 HumanWAM-Goal 推理接口；源码运行时序图在 [Open-HumanWAM 独立实体](../../wiki/entities/paper-open-humanwam.md)，**不是 HumanNet 全量数据的下载代码**。
+- Open-HumanWAM 分支 README 列出 [HF 50K 语料](https://huggingface.co/datasets/DAGroup-PKU/Open-HumanWAM-50K) 与 [ModelScope 50K 镜像](https://modelscope.cn/datasets/DAGroup-PKU/EgoCorpus-50kH-LeRobot-v3)；这两处不要与[HumanNet ModelScope 原始 Ego 入口](../datasets/humannet-modelscope-ego.md)混淆。

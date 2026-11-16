@@ -30,3 +30,12 @@ README 给出 Unitree G1 + Inspire 手 + ZED Mini ego 相机配置，基于 SONI
 - [ω-0 论文节点](../../wiki/entities/paper-omega-0.md)
 - [项目主页归档](../sites/omega0-github-io.md)
 - [ω-HOME 数据集归档](../datasets/omega-home.md)
+
+## 固定版本实现复核（2026-11-13）
+
+- **版本：** [2ca35a3ff9363c54c9c206ca101cdf58028824cb](https://github.com/gentlefress/Omega-0/tree/2ca35a3ff9363c54c9c206ca101cdf58028824cb)
+- **核对范围：** 根README、inference/run.py与model.py全文；Service.reset/predict/handle，models/wam.py的_encode_inputs与sample完整函数，configs/finetune.yaml全文。
+- **通读：** 已完成
+- 当前TODO检查点已勾选并链接keycharon/Omega-zero，不再待发布。训练/部署/采集开放，但主流程依赖本地Qwen/T5/VJEPA/Wan/SONIC资产。
+- HTTP /act走Service→WAMInference.predict→preprocess→model.sample→反归一化。请求带session/observation/action spec；reset使旧响应失效。RTC从上一未执行动作区间取前缀填入初始噪声，idle或view改变重置。
+- 现成finetune recipe为30步66D、predictor-only、无state、normalization none；论文附录H25、47Dstate与混合归一化不同，不把默认脚本当Full复现。训练导出metadata决定推理预处理，必须一致。静态核读，未跑GPU或机器人。

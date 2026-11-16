@@ -2,7 +2,7 @@
 type: concept
 tags: [evaluation, benchmark, metrics, locomotion, whole-body-tracking, motion-tracking, humanoid, wbc, mpc, sim2real]
 status: complete
-updated: 2026-09-03
+updated: 2026-11-13
 related:
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
@@ -21,7 +21,7 @@ related:
   - ../entities/paper-notebook-benchmarking-humanoid-imitation-learning-with-mo.md
   - ../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md
   - ../queries/humanoid-motion-tracking-method-selection.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../formalizations/control-loop-latency-modeling.md
 original:
   - ../../sources/papers/humantracker_reading_arxiv_2608_13555_mcpe.md
@@ -82,7 +82,7 @@ summary: "运控模型（locomotion / whole-body tracking / MPC-WBC 控制器）
 
 1. **参考表示** — 参考动作统一转成同一套 `qpos`（或同一命令空间），而不是各家各自的中间格式；
 2. **rollout 记账** — 运动列表、机器人模型、参考索引、每步记录的状态量一致；
-3. **终止准则** — 什么算失败必须同源。[HumanTracker](../entities/paper-humantracker.md) 对齐 [SONIC](../methods/sonic-motion-tracking.md)：骨盆、双踝或双腕垂向误差超过 **0.25 m**，骨盆旋转超过 **1 rad**，或 `qpos`/`qvel` 非有限即判失败；
+3. **终止准则** — 什么算失败必须同源。[HumanTracker](../entities/paper-humantracker.md) 对齐 [SONIC](../entities/nvidia-sonic.md)：骨盆、双踝或双腕垂向误差超过 **0.25 m**，骨盆旋转超过 **1 rad**，或 `qpos`/`qvel` 非有限即判失败；
 4. **指标实现** — 误差在哪些关节上取、在哪些帧上取（HumanTracker 的 MPJPE 只在**已执行片段**上对 29 个主动关节取平均绝对误差）。
 
 只有策略接口保持各自原样、以上四项统一，表里比的才是 tracker 本身——这正是 [HumanTracker](../entities/paper-humantracker.md) 能把 GMT / TWIST2 / SONIC / Humanoid-GPT 放进同一张表的原因。

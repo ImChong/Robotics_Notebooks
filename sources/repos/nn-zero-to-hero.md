@@ -8,7 +8,10 @@
 - **链接：** <https://github.com/karpathy/nn-zero-to-hero>
 - **配套播放列表：** [Neural Networks: Zero to Hero](../courses/karpathy_zero_to_hero_youtube.md) — <https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ>
 - **入库日期：** 2026-07-12
-- **一句话说明：** Zero to Hero 视频课的 **notebook 归档仓**：`lectures/` 目录按讲次保存边讲边写的 Jupyter 文件，并链到 micrograd / makemore / minbpe 等独立实现仓库。
+- **复核日期：** 2026-11-14（本地克隆核查 HEAD `73c3fcc7`，2024-02-20）
+- **核对范围：** `README.md`（1–92 行全部 8 讲说明）、`LICENSE`（MIT）及 `lectures/` 下全部 7 个 `.ipynb`（`lectures/micrograd/` 2 个 + `lectures/makemore/makemore_part1..5.ipynb`）结构核查；同步核对 `karpathy.ai/zero-to-hero.html`
+- **通读：** 已完成
+- **一句话说明：** Zero to Hero 视频课的 **notebook 归档仓**：`lectures/` 目录实际仅入库第 1–6 讲（micrograd 2 份 + makemore 5 份共 7 个 Jupyter notebook），第 7 讲 GPT 与第 8 讲 GPT Tokenizer 在 README 中分别外链至视频描述/nanoGPT 与独立仓库 minBPE。
 - **为什么值得保留：** 与 [`karpathy_zero_to_hero_youtube.md`](../courses/karpathy_zero_to_hero_youtube.md) 构成 **视频 / 代码** 双入口；机器人读者跟完 #1–#7 即可衔接 [Transformer](../../wiki/concepts/transformer.md) 与 [VLA](../../wiki/methods/vla.md) 论文。
 - **沉淀到 wiki：** 交叉更新 [`wiki/entities/andrej-karpathy.md`](../../wiki/entities/andrej-karpathy.md)、[`wiki/concepts/backpropagation.md`](../../wiki/concepts/backpropagation.md)
 

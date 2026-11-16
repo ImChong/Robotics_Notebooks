@@ -20,7 +20,7 @@ code: "https://github.com/Gamma-Robot/bfm_ttc"
 related:
   - ../concepts/behavior-foundation-model.md
   - ../tasks/loco-manipulation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./dataset-bfm-humanoid-x.md
   - ../methods/mppi.md
@@ -229,7 +229,7 @@ sequenceDiagram
 
 - [Behavior Foundation Model（BFM）](../concepts/behavior-foundation-model.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
-- [SONIC motion tracking](../methods/sonic-motion-tracking.md) — 论文评估的一个 BFM
+- [SONIC motion tracking](./nvidia-sonic.md) — 论文评估的一个 BFM
 - [HEFT](./paper-heft.md) · [TWIST2](./paper-twist2.md) — 论文评估的另两个 BFM
 - [HumanoidArena](./paper-humanoidarena.md) — 仿真标签实验所用基准
 - [Humanoid-X](./dataset-bfm-humanoid-x.md) — 与全身行为数据训练相关
@@ -248,4 +248,4 @@ sequenceDiagram
 
 - [论文代码仓库](https://github.com/Gamma-Robot/bfm_ttc) — 仿真运行、采样优化器和复现实验入口
 - [AMASS](../entities/amass.md) — 理解大规模 mocap 评测集及其许可
-- [SONIC](../methods/sonic-motion-tracking.md) — 对照 TTCO 使用的行为基础模型
+- [SONIC](./nvidia-sonic.md) — 对照 TTCO 使用的行为基础模型

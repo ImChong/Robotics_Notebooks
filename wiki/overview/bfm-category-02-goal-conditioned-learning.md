@@ -13,7 +13,7 @@ related:
   - ./bfm-category-03-intrinsic-reward-pretraining.md
   - ./bfm-category-04-adaptation.md
   - ./bfm-category-05-hierarchical-control.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../entities/paper-opentrack.md
   - ../methods/ams.md
   - ../entities/paper-twist2.md
@@ -49,7 +49,7 @@ sources:
 
 | # | 工作 | Wiki 实体 | Source |
 |---|------|-----------|--------|
-| 07 | Sonic | [sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
+| 07 | Sonic | [sonic-motion-tracking.md](../entities/nvidia-sonic.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
 | 08 | Track Any Motions under Any Disturbances | [paper-opentrack.md](../entities/paper-opentrack.md) | [source](../../sources/papers/bfm_awesome_opentrack_arxiv_2509_13833.md) |
 | 09 | Agility Meets Stability | [ams.md](../methods/ams.md) | [source](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) |
 | 10 | TWIST2 | [paper-twist2.md](../entities/paper-twist2.md) | [source](../../sources/papers/bfm_awesome_twist2_arxiv_2505_02833.md) |

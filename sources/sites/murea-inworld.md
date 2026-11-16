@@ -16,7 +16,7 @@
 
 官方 GitHub README 将 Murea-Mind（故事 Agent）和 Murea-Fast（推理服务）列为仓库提供的组件，并链接到 Hugging Face 的 Murea-Fast 权重；部署说明还要求 LTX-2.5 基础组件。技术报告摘要包含 Murea-Pro 与 Murea-Fast 的评测结果，但 README 没有将 Murea-Pro 列为开源组件。**结论：Murea-Mind 与 Murea-Fast 推理代码已开源，Murea-Fast 权重已发布；Murea-Pro 开源状态未确认。**
 
-项目主页和报告链接由官方 GitHub README 列出；当前抓取渠道未能读取 murea.ai 正文，故不将项目页上未核实的内容作为依据。
+项目主页和报告链接由官方 GitHub README 列出；本次已直接读取主页摘要、状态管理/生成/推理/评测核心说明及Code/Models链接；示例图库仅作导航，不把演示视频当评测。
 
 ## 技术报告评测摘录（2026-10-18 复核）
 
@@ -40,4 +40,10 @@
 
 - [x] 官方仓库 README、LICENSE 和 Hugging Face 权重链接核查
 - [x] 技术报告正文评测部分已直接复核
-- [ ] 项目主页正文待直接复核
+- [x] 项目主页核心正文与开放资源已直接复核（2026-11-13）
+
+## 本次网页核对
+
+- **核对范围：** 2026-11-13主页概览、World agent、Generation、Inference、Results与资源链接；图库/视频不作逐帧分析。
+- **通读：** 已完成
+- README明确完整Murea未发布；不再将Pro是否开放写为无法确认，按当前发布范围记录。主页生成速度与WBench分数来自不同配置，具体协议见技术报告。

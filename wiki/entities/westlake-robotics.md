@@ -14,7 +14,7 @@ related:
   - ./unitree-g1.md
   - ../tasks/teleoperation.md
   - ../methods/vla.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/motion-retargeting.md
   - ../overview/china-embodied-ai-labs-landscape-2026.md
 sources:
@@ -182,7 +182,7 @@ flowchart LR
 | 场景 | 建议 |
 |------|------|
 | 想给 Unitree 人形做全身遥操 / 动作演绎 | 可评估 GAE 商用版：查官网下载页的 CUDA / TensorRT 组合是否匹配机载算力，确认加密狗授权方式；先在客户端「动作引擎控制模式」（键鼠）验证，再上动捕 / PICO |
-| 研究复现 GAE 方法 | 只能依据论文；无官方代码，参照 [GAE 论文页](./paper-gae-general-action-expert.md) 的「工程实践」，基线可用 [SONIC](../methods/sonic-motion-tracking.md) |
+| 研究复现 GAE 方法 | 只能依据论文；无官方代码，参照 [GAE 论文页](./paper-gae-general-action-expert.md) 的「工程实践」，基线可用 [SONIC](./nvidia-sonic.md) |
 | 需要开源遥操栈 | 同为西湖相关的 [Teleopit](./paper-teleopit.md) 已开源；或 [遥操作任务页](../tasks/teleoperation.md) 中其他方案 |
 | 写行业 / 融资综述 | 成立日期写明「工商 2021-06-08 / 运营 2023-12」；「5 亿元」写作半年累计；CEO 以投资界 / 瑞财经为准并注明官网未列 |
 | 采购本体 | TITAN O1 / 傲天U1 参数全部来自官网图片（自报），无价格；需要样机实测关节温升、续航与 GAE 延迟 |
@@ -203,7 +203,7 @@ flowchart LR
 - [GAE：General Action Expert（论文）](./paper-gae-general-action-expert.md)
 - [Teleopit](./paper-teleopit.md) — 同属西湖相关的开源遥操系统
 - [Unitree G1](./unitree-g1.md) — GAE 论文真机与商用版首批适配平台
-- [遥操作](../tasks/teleoperation.md) · [运动重定向](../concepts/motion-retargeting.md) · [SONIC 运动跟踪](../methods/sonic-motion-tracking.md)
+- [遥操作](../tasks/teleoperation.md) · [运动重定向](../concepts/motion-retargeting.md) · [SONIC 运动跟踪](./nvidia-sonic.md)
 - [VLA](../methods/vla.md) · [行为基础模型](../concepts/behavior-foundation-model.md)
 - [国内具身智能实验室图谱 2026](../overview/china-embodied-ai-labs-landscape-2026.md)
 

@@ -7,7 +7,9 @@
 - **来源：** [arXiv:2605.06747](https://arxiv.org/abs/2605.06747)；[项目页](https://dagroup-pku.github.io/HumanNet/)；[代码与发布入口](https://github.com/DAGroup-PKU/HumanNet/)
 - **机构：** 北京大学（DAGroup-PKU）
 - **入库日期：** 2026-05-14
-- **最后更新：** 2026-05-14
+- **最后更新：** 2026-11-11
+- **核对范围：** 通读 [arXiv:2605.06747v1 HTML 正文](https://arxiv.org/html/2605.06747) §1–6（引言、相关工作、数据源/管线/统计、LingBot-VLA 受控验证、下游用途、伦理局限）及正文图表。
+- **通读：** 已完成
 - **一句话说明：** 面向具身学习的 **约百万小时** 人中心互联网视频语料：一三人称并存、交互导向标注（字幕、运动描述、手/体相关信号）与可审计的采集–处理–标注管线；论文给出在固定下游 VLA 设定下，**1000 小时** 该语料中 egocentric 子集持续预训练相对 **约 100 小时** 真机机器人数据的受控对比结论。
 
 ## 核心论文摘录（MVP）
@@ -48,8 +50,16 @@
 - [VLA](../../wiki/methods/vla.md)
 - [Imitation Learning](../../wiki/methods/imitation-learning.md)
 
+## 2026-11-11：与 Open-HumanWAM 的数据边界
+
+- HumanNet 原文宣称约一百万小时第一+第三人称人中心视频，**不能理解为百万小时 Ego**。
+- Open-HumanWAM v2 表 1 对 HumanNet **所用子集**的记录是：策展前 **90,275.25 h**，策展后 **40,743.58 h**；加上另外四个来源，五源策展后为 **50,000 h**。
+- 用户提供的 ModelScope HumanNet 原始 Ego 链接未能读取到文件清单，“20 万小时”目前缺官方数据卡验证。详细记录见[数据集入口核验](../datasets/humannet-modelscope-ego.md)。
+- 开放边界：HumanNet main README 的完整 1M 语料发布任务未勾选；Open-HumanWAM 是另外一个有训练、推理入口的分支，不等于整套 HumanNet 数据已经公开。
+
 ## 当前提炼状态
 
 - [x] 摘要级动机、管线三阶段与 robot-ready 准则
 - [x] VLA 受控实验叙事（与真机小时对比的数量级）
-- [ ] 细读全文附录后补充许可分布、子集划分比例与可复现训练配置细节
+- [x] 通读论文公开 HTML 正文 §1–6，并核对 Open-HumanWAM 的 HumanNet 来源统计
+- [ ] 全量许可分布、20 万小时原始 Ego 数据目录、下载分片与训练复现配置未获公开可核实资料

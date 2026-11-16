@@ -9,7 +9,6 @@ overrides:
   - wiki/tasks/loco-manipulation.md
   BeyondMimic:
   - wiki/methods/beyondmimic.md
-  - wiki/methods/beyondmimic.md
   CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit:
   - wiki/methods/crisp-real2sim.md
   Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes:
@@ -98,9 +97,7 @@ overrides:
   SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation:
   - wiki/tasks/teleoperation.md
   SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control:
-  - wiki/methods/sonic-motion-tracking.md
-  - wiki/methods/sonic-motion-tracking.md
-  - wiki/methods/sonic-motion-tracking.md
+  - wiki/entities/nvidia-sonic.md
   STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain:
   - wiki/tasks/vision-language-navigation.md
   TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior:

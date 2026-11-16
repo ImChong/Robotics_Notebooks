@@ -11,10 +11,12 @@
 - **代码：** <https://github.com/BridgeVLA/BridgeVLA>（`main` = ++；`bridgevla` 分支 = NeurIPS 2025 原版）— [`sources/repos/bridgevla.md`](../repos/bridgevla.md)
 - **权重 / 数据：** <https://huggingface.co/datasets/LPY/BridgeVLA>（Apache-2.0）；ModelScope 镜像 `susetiankong/bridgevla_plus`
 - **前置论文：** BridgeVLA（arXiv:2506.07961，NeurIPS 2025）
-- **机构：** 中国科学院自动化研究所 NLPR / 中国科学院大学；FiveAges；作者 Hongtao Wu / Xiao Ma / Tao Kong 贡献时隶属字节跳动 Seed
+- **机构：** 中国科学院自动化研究所 NLPR（CASIA）；中国科学院大学（UCAS）；五纪元仿真（FiveAges）；南京大学（Nanjing University，Tieniu Tan 兼署）；作者 Hongtao Wu / Xiao Ma / Tao Kong 贡献时隶属字节跳动 Seed
 - **作者：** Peiyan Li\*、Yuze Zhu\*、Yixiang Chen、Qisen Ma、Yuan Xu、Jiabing Yang、He Guan、Yan Huang†、Hongtao Wu、Xiao Ma、Tao Kong、Liang Wang、Tieniu Tan（\* equal；† corresponding）
-- **发表 / 上传：** 标注为 *IEEE Transactions on Pattern Analysis and Machine Intelligence* 稿；arXiv 2608.05042（2026-08）
+- **发表 / 上传：** IEEE TPAMI 稿（arXiv:2608.05042v1，2026-08）
 - **入库日期：** 2026-08-07
+- **通读：** 已完成
+- **核对范围：** 全文 `2608.05042.txt`（1–6027 行）：Abstract、§§I–VI、References（63 篇）、Tables I–XIX 与 Appendices A–P（含 RLBench 93.7%、COLOSSEUM 65.2%、GemBench 51.1%、RMBench 96.0%、MemoryBench 99.7%、Franka 95.4%/96.9%、Dobot CR5A 93.3%/100.0%、各记忆/设计消融与开销实测）
 - **一句话说明：** 在 BridgeVLA「多视图 2D heatmap 对齐」底座上加统一时空记忆（粗阶段时间记忆 + 细阶段空间记忆），以 +9.2% 参数换 RMBench **96.0%** / MemoryBench **99.7%**，并保持 RLBench / COLOSSEUM / GemBench 数据效率与 OOD。
 
 ## 相关资料（策展）

@@ -2,7 +2,7 @@
 type: entity
 tags: [data-labeling, physical-ai, micro1]
 status: complete
-updated: 2026-09-07
+updated: 2026-11-15
 summary: "Micro1：面向前沿实验室与物理 AI 构建者的数据标注/评测服务商；CEO 强调海量采集后仍需人类判断哪些数据有用。"
 related:
   - ./appen.md

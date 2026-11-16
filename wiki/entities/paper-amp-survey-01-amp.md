@@ -12,7 +12,6 @@ related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../methods/amp-reward.md
   - ../methods/add.md
-  - ../methods/add.md
   - ../methods/smp.md
 sources:
   - ../../sources/papers/amp.md

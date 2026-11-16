@@ -128,12 +128,12 @@ flowchart TB
 - 适用边界由接口决定：控制输入是**全身运动学参考序列**而非高层任务指令——适合艺术家做空间组合、剪辑排序与风格化编辑，不适合当高层任务策略用。
 - 主要失败模式是**记忆上限**：单 MLP 对即时跟踪够用，对后空翻这类长飞行相特技需带 hidden state；未过滤动捕下极端不可行参考只能「尽量跟踪且不倒」。
 - 真机侧 LIME（20-DoF、0.84 m、16.2 kg）证明这条路径能落地物理双足，但硬件缺踝 roll 时靠脚尖触地等自适应姿态逼近参考——是风格与平衡的折中，不是精确复现。
-- 对照定位：与 [ASE](../methods/ase.md)/[AMP](../methods/amp-reward.md) 的判别器路线目标不同（参考贴合 vs 风格分布）；相对 [SONIC](../methods/sonic-motion-tracking.md) 等人形 scaling 线，VMP 强在动画接口与角色真机而非 AMASS 级工程栈。
+- 对照定位：与 [ASE](../methods/ase.md)/[AMP](../methods/amp-reward.md) 的判别器路线目标不同（参考贴合 vs 风格分布）；相对 [SONIC](./nvidia-sonic.md) 等人形 scaling 线，VMP 强在动画接口与角色真机而非 AMASS 级工程栈。
 
 ## 常见误区或局限
 
 - **不是对抗 motion prior：** VMP 走 **显式跟踪 + 预训练 kinematic latent**，与 [AMP](../methods/amp-reward.md)/[ASE](../methods/ase.md) 的判别器路线目标不同——前者偏 **参考贴合**，后者偏 **风格分布**。
-- **≠ 通用 scaling tracker：** 相对 [SONIC](../methods/sonic-motion-tracking.md)/BeyondMimic 等人形 scaling 线，VMP 更强在 **动画工作流接口 + Disney 角色真机**，而非 AMASS 级人形工程栈。
+- **≠ 通用 scaling tracker：** 相对 [SONIC](./nvidia-sonic.md)/BeyondMimic 等人形 scaling 线，VMP 更强在 **动画工作流接口 + Disney 角色真机**，而非 AMASS 级人形工程栈。
 - **单 MLP 的记忆上限：** 论文承认需 hidden state 才能覆盖长飞行相特技；当前架构对 **即时跟踪** 足够，对 **长承诺特技** 不足。
 - **数据噪声未滤：** 刻意用未过滤 CMU 证明鲁棒性，但极端不可行动作仍会失败或近似跟踪。
 

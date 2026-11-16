@@ -37,3 +37,7 @@
 - 博文摘录：[`sources/blogs/dyna_2_million_hour_wam.md`](../blogs/dyna_2_million_hour_wam.md)
 - 沉淀 **[`wiki/entities/dyna-2.md`](../../wiki/entities/dyna-2.md)**
 - 公司站：[`sources/sites/dyna-co.md`](./dyna-co.md)
+
+## 2026-11-13 资源复核
+
+已通读官方研究页全文及资源链接，正文引用与BibTeX指向公司报告，未见专属代码、权重、数据发布入口。统计动画中的初始0不作语料统计；未将视频演示或网页源码当模型实现。

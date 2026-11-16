@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-13
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 04：运动操作与全身控制（142 篇深读笔记索引）。"
@@ -81,10 +81,10 @@ original:
 - [GBC](../entities/paper-notebook-gbc.md) — 待深读
 - [GMT](../entities/paper-gmt.md) — Adaptive Sampling + Motion MoE 统一全身跟踪（正式实体）；[161 索引](../entities/paper-gmt.md)
 - [General Motion Tracking for Humanoid Whole-Body Control](../entities/paper-gmt.md) — Paper Notebooks 待深读占位
-- [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) — 见 wiki 实体页
+- [GentleHumanoid](../entities/paper-gentlehumanoid.md) — 见 wiki 实体页
 - [H2-COMPACT](../entities/paper-loco-manip-161-062-h2-compact.md) — 见 wiki 实体页
 - [HAFO](../entities/paper-notebook-hafo.md) — 待深读
-- [HAIC](../methods/haic.md) — 见 wiki 实体页
+- [HAIC](../entities/paper-haic.md) — 见 wiki 实体页
 - [HANDOFF](../entities/paper-motion-cerebellum-handoff.md) — 见 wiki 实体页
 - [HDMI](../entities/paper-hrl-stack-06-hdmi.md) — 见 wiki 实体页
 - [HERO](../entities/paper-notebook-learning-humanoid-end-effector-control-for-open.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation/Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation.html)

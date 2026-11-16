@@ -6,7 +6,7 @@ updated: 2026-09-15
 arxiv: "2606.20905"
 related:
   - ../methods/vla.md
-  - ../methods/saycan.md
+  - ./paper-saycan.md
   - ../tasks/vision-language-navigation.md
   - ../tasks/manipulation.md
   - ../concepts/3d-spatial-vqa.md
@@ -41,7 +41,7 @@ summary: "Vesta（arXiv:2606.20905）在 Qwen3-VL-8B 上以空间导向 SFT 混�
 ## 为什么重要
 
 - **挑战「一能力一 specialist」默认假设：** 导航、记忆、空间 QA、子任务规划常被拆成独立 finetune 模型；多栈部署带来 **延迟、集成与级联错误**。Vesta 用同一 8B generalist 在 **四轴 benchmark 平均 >20 pt 超最强单基线**，且 **>10 pt 超 per-category oracle 集成**（每类取最强 specialist 再拼）。
-- **Planner 而非 VLA：** 与 [Qwen-VLA](./qwen-vla.md)、[StarVLA](../methods/star-vla.md) 等 **端到端动作输出** 不同，Vesta 明确服务 **hierarchical planner + actor VLA** 栈（论文真机：**Vesta planner → Gr00t-N1.6 actor**），与 [SayCan](../methods/saycan.md) / 现代 **VLM planner + VLA actor** 工业范式同族但 **单模型覆盖多认知轴**。
+- **Planner 而非 VLA：** 与 [Qwen-VLA](./qwen-vla.md)、[StarVLA](../methods/star-vla.md) 等 **端到端动作输出** 不同，Vesta 明确服务 **hierarchical planner + actor VLA** 栈（论文真机：**Vesta planner → Gr00t-N1.6 actor**），与 [SayCan](./paper-saycan.md) / 现代 **VLM planner + VLA actor** 工业范式同族但 **单模型覆盖多认知轴**。
 - **Memory 设计可复用：** **Image+Text 混合 memory**（非 learned retriever）在 Table 5 已优于纯视觉或纯文本；transition 相 **2× 过采样** 对子任务切换准确率关键——对任何长时程 language planner 有工程参考价值。
 - **VLN 与 embodied 的正向迁移：** Nav-only specialist 在 embodied 上为 0、Embodied-only 在 R2R 上 SR=0；**统一 mix** 在 R2R **+1.4 SR**、embodied **+3.9 avg** 超各自 specialist（Table 4），支持「通才 planner 可行且可优于 patchwork」论点。
 
@@ -171,7 +171,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - [VLA](../methods/vla.md) — System-1 动作策略层；Vesta 补 **System-2 多能力统一 planner** 参照。
-- [SayCan](../methods/saycan.md) — LLM 子任务 + affordance 过滤；Vesta 用 **VLM SFT + 显式 memory** 实现类似分层。
+- [SayCan](./paper-saycan.md) — LLM 子任务 + affordance 过滤；Vesta 用 **VLM SFT + 显式 memory** 实现类似分层。
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md) — R2R-CE / VLN-CE 指标与 generalist 遗忘问题语境。
 - [Manipulation VLA 架构选型](../queries/manipulation-vla-architecture-selection.md) — planner+actor 选型树可纳入 Vesta 类 **通才 planner** 分支。
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — Vesta cognition 轴与静态空间 benchmark 互补。
@@ -190,5 +190,5 @@ flowchart TB
 
 - [VLA](../methods/vla.md)
 - [Vision-Language Navigation](../tasks/vision-language-navigation.md)
-- [SayCan](../methods/saycan.md)
+- [SayCan](./paper-saycan.md)
 - [Manipulation VLA 架构选型](../queries/manipulation-vla-architecture-selection.md)

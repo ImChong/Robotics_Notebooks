@@ -41,7 +41,7 @@ News（README，2026-08-18）：论文、主页、完整评测代码、固定 pl
 | 产物 | `evaluation/summary.json`、`leaderboard_latest.json/.csv`、`LEADERBOARD.md` |
 | 技能合同 | `src/harnesseval/protocols.py` 的 `SKILLS`（11 个 id） |
 | 高层编排 | `src/harnesseval/pipeline/planner.py`、`runner.py`；顶层 `cli.py` 的 `eval` 默认可调 `tools/run_model_eval_pool.sh` |
-| 默认清单 | `benchmark/manifest_selected_330.json`（`cli.py` 默认） |
+| 默认清单 | `runs/example/results_example/manifest.json`（当前cli默认；330全量须显式给清单） |
 | 致谢 | VBench、WBench、WorldScore、Cosmos、Lingbot World、MiniMax H3 |
 
 ### 11 个技能 id（`protocols.py`）
@@ -60,3 +60,13 @@ News（README，2026-08-18）：论文、主页、完整评测代码、固定 pl
 | [paper-worldscore](../../wiki/entities/paper-worldscore.md) | 开放域相机可控世界生成榜；固定指标 vs agentic harness |
 | [ewmbench](../../wiki/entities/ewmbench.md) | 操纵域场景守恒 / 末端 / 语义；轴线不同 |
 | [paper-abot-world-0](../../wiki/entities/paper-abot-world-0.md) | Native action 族被评模型之一（Overall 66.1） |
+
+## 固定版本源码核读（2026-11-13）
+
+- **版本：** [ed4ccc6486b8271723ee8baea60d89b32d0a7518](https://github.com/mirros-lab/harnesseval-w/tree/ed4ccc6486b8271723ee8baea60d89b32d0a7518)
+- **核对范围：** 根README全文；cli的eval/run-skills/score/verify完整路径；run_model_eval_pool.sh全文及pool.py main/prepare/finalize；runner.plan_skill_tasks/execute_skill_tasks及发布调用链；Intentional.evaluate完整函数；score_components/build_score/execute_score_tasks与aggregate.py全文。
+- **通读：** 已完成
+- CLI默认eval委托shell→GPU pool，先inventory审核、固定plans展开任务，按skill运行并记录cache/provenance，最后cache-only score/report；verify是单独命令。
+- 每case Analyze缓存由初始观测/动作/backend决定，不含模型生成视频；Verify含视频与sampling指纹。同case的分析可跨模型复用；8个子问题由一个Verify响应给出，非8次独立agent调用。
+- 当前final_score是0.5×core均值+0.5×observation均值，diagnostic另列；它不是aggregate.py可选evidence cap路径。缺core/observation则不能出完整分，观察质量不只是展示栏。
+- 公共100例与贡献页已发布；托管代评待发。README的demo相对plan-root需按仓根运行示例核对，避免从子目录直接照抄造成路径错误。静态核读，未调用付费VLM或跑GPU。

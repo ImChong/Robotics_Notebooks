@@ -5,6 +5,22 @@ from __future__ import annotations
 from pathlib import Path
 
 import lint_wiki as lw
+import pytest
+
+
+def test_exec_and_existing_rtc_mechanism_do_not_require_new_pages(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(
+            wiki,
+            f"p{i}.md",
+            "用 `exec` 执行脚本；异步 **RTC** 见动作块方法；新概念 **NewControl**。",
+        )
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    records = _run(pages)["missing_concept_pages"]
+    assert len(records) == 1
+    assert "NewControl" in records[0]
 
 
 def _setup_wiki(tmp_path: Path, monkeypatch) -> Path:
@@ -223,6 +239,64 @@ def test_case_insensitive_merge(tmp_path, monkeypatch) -> None:
     # 大小写应归并到同一术语计数，达到阈值后被标记一次
     hits = [r for r in results["missing_concept_pages"] if "vit" in r.lower()]
     assert len(hits) == 1
+
+
+def test_atlas_entity_homonyms_do_not_mask_missing_mechanism(tmp_path, monkeypatch) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    meanings = [
+        "Boston Dynamics 的 **Atlas** 人形机器人。",
+        "World Labs 的 **Atlas** 世界模型。",
+        "**ATLAS** Agentic Harness。",
+        "人体自由度图谱的 **Atlas**。",
+    ]
+    pages = [
+        _page(wiki, f"p{i}.md", meanings[i % len(meanings)] + "新机制 **NewControl**。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    records = _run(pages)["missing_concept_pages"]
+    assert len(records) == 1
+    assert "NewControl" in records[0]
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        "从 **AMASS** 获取人体动作。",
+        "选择 **OSQP** 求解后端。",
+        "经 **ZeroMQ** 传输观测。",
+        "通过 **DYNAMIXEL** SDK 控制舵机。",
+        "保持 **IsaacGym** 的观测顺序。",
+        "用 **LSTM** 递推历史状态。",
+        "由 **qpOASES** 热启动求解 QP。",
+        "在 **RoboCasa365** 上评测。",
+        "动作输出采用 **SMPL-H** 表征。",
+        "调用 **FoundationPose** 跟踪位姿。",
+        "读取 `Config` 对象。",
+        "指定硬件 `target`。",
+        "选择 `full` 安装档位。",
+        "切换到 `real` 设备模式。",
+        "许可证字段为 `other`。",
+        "运行 `serve` 子命令。",
+        "使用 `torchrun` 启动训练。",
+        "核对 `v2` 资料版本。",
+        "安装 `numpy` 包。",
+        "编译 `flash-attn` 依赖。",
+        "选择 **Ground** 数据子集。",
+        "加载 `Motion` 数据结构。",
+        "启用 `simulation` 预览后端。",
+    ],
+)
+def test_existing_names_and_runtime_tokens_preserve_new_concept_signal(
+    tmp_path, monkeypatch, body
+) -> None:
+    wiki = _setup_wiki(tmp_path, monkeypatch)
+    pages = [
+        _page(wiki, f"p{i}.md", body + "待编译的机制 **NewControl**。")
+        for i in range(lw.MISSING_CONCEPT_PAGE_MIN_PAGES)
+    ]
+    records = _run(pages)["missing_concept_pages"]
+    assert len(records) == 1
+    assert "NewControl" in records[0]
 
 
 def test_missing_concept_pages_is_info_only(tmp_path, monkeypatch) -> None:

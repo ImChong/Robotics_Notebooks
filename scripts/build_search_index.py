@@ -13,14 +13,26 @@ from __future__ import annotations
 
 import gzip
 import json
+import re
 from collections import Counter
 from pathlib import Path
 
-from search_indexing import REPO_ROOT, iter_wiki_documents, token_counts
+from search_indexing import REPO_ROOT, iter_wiki_documents, token_counts, tokenize_text
 
 OUTPUT = REPO_ROOT / "docs" / "search-index.json"
 LITE_OUTPUT = REPO_ROOT / "docs" / "search-index-lite.json"
 LITE_FIELDS = ("id", "path", "title", "summary", "page_type", "tags", "search_aliases")
+
+_CODE_FENCE_RE = re.compile(r"```[\s\S]*?```")
+_MD_LINK_TARGET_RE = re.compile(r"\]\([^)]+\)")
+_RAW_URL_RE = re.compile(r"https?://[^\s)<>\"']+")
+
+
+def _clean_body_for_index(body: str) -> str:
+    """Strip code blocks, raw URLs and Markdown link targets to curb token vocab bloat."""
+    cleaned = _CODE_FENCE_RE.sub(" ", body or "")
+    cleaned = _MD_LINK_TARGET_RE.sub("]", cleaned)
+    return _RAW_URL_RE.sub(" ", cleaned)
 
 
 def build_search_payloads(docs: list[dict]) -> tuple[dict, dict]:
@@ -37,11 +49,13 @@ def build_search_payloads(docs: list[dict]) -> tuple[dict, dict]:
                 doc["summary"],
                 doc["path"],
                 " ".join(doc.get("tags", [])),
-                " ".join(doc.get("search_aliases", [])),
-                doc["body"],
+                _clean_body_for_index(doc["body"]),
             ]
         )
         counts = token_counts(text)
+        aliases = doc.get("search_aliases", [])
+        if aliases:
+            counts.update(tokenize_text(" ".join(aliases), keep_long_cjk=True))
         dl = sum(counts.values())
         total_length += dl
         for token in counts:

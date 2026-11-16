@@ -2,7 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency, horizon-robotics]
 status: complete
-updated: 2026-11-03
+updated: 2026-11-14
 related:
   - ./mbpo.md
   - ../concepts/bptt.md

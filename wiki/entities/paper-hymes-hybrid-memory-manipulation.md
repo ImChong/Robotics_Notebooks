@@ -13,7 +13,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/hymes_hybrid_memory_manipulation_arxiv_2608_09410.md
+  - ../../sources/papers/hymes-hybrid-memory-manipulation_arxiv_2608_09410.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "Skills in Weights, Memory in Code：VLA 学低层可复用动作，coding agent 学高层记忆管理规则，结合本体与多帧 VLM 判断阶段完成并更新记忆，完成多种长期记忆依赖任务。"
 ---

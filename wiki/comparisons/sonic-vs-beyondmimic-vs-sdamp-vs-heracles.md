@@ -19,7 +19,7 @@ related:
   - ../concepts/motion-retargeting-pipeline.md
   - ../concepts/whole-body-control.md
   - ../concepts/behavior-foundation-model.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../methods/beyondmimic.md
   - ../methods/amp-reward.md
   - ../methods/deepmimic.md
@@ -258,7 +258,7 @@ flowchart TD
 - [Motion Retargeting Pipeline（动作重定向流水线）](../concepts/motion-retargeting-pipeline.md) — WBT 流水线的上游
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md) — 一帧内的全身协调（与 WBT 是两层抽象）
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md) — 与 SONIC 同构的「身体基础模型」叙事
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — 规模化 tracking 预训练
+- [SONIC（规模化运动跟踪）](../entities/nvidia-sonic.md) — 规模化 tracking 预训练
 - [BeyondMimic](../methods/beyondmimic.md) — 精准物理 + 失败率自适应采样
 - [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) — 双判别器门控 AMP
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md) — 状态条件扩散中间件

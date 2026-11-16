@@ -10,7 +10,7 @@
 - **入库日期：** 2026-10-01
 - **抓取方式：** Agent Reach v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；专辑页同会话 `data-link` 跳转（直连 CAPTCHA）
 - **专栏专辑：** [Modern Robotics 原理精读](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2ODgxOTA1Mw==&action=getalbum&album_id=4521219024549937157)（第 7 篇 / 10）
-- **原始抓取落盘：** [`sources/raw/wechat_modern_robotics_album_4521219024549937157/07_mid2247483947/07_mid2247483947.md`](../sources/raw/wechat_modern_robotics_album_4521219024549937157/07_mid2247483947/07_mid2247483947.md)
+- **原始抓取落盘：** [`sources/raw/wechat_modern_robotics_album_4521219024549937157/07_mid2247483947/07_mid2247483947.md`](../raw/wechat_modern_robotics_album_4521219024549937157/07_mid2247483947/07_mid2247483947.md)
 - **一句话说明：** 关节轴 $\hat\omega$ 与螺旋轴 $\mathcal{S}=(\hat\omega,h)$ 不必重合：平移分量来自 $q\times\hat\omega$。
 
 ## 核心摘录（归纳，非全文）

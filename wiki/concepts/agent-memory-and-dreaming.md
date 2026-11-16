@@ -2,7 +2,7 @@
 type: concept
 tags: [agents, agent-memory, context-engineering, dreaming, sleep-time-compute, claude]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-16
 original:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
 related:
@@ -11,8 +11,11 @@ related:
   - ../concepts/robot-in-context-learning.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md
+  - ../entities/paper-life-learning-to-live.md
   - ../entities/paper-memforest.md
+  - ../entities/paper-cortex-parametric-memory.md
   - ../entities/paper-robocasa-mem.md
+  - ../entities/paper-false-belief-mandela-effect-multi-agent.md
 sources:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
   - ../../sources/sites/claude_cookbook_dreaming_dynamic_workflow_2026-11-02.md
@@ -92,7 +95,21 @@ flowchart LR
 - 作者自述的开放问题：何时创建记忆（当场写会分散主任务注意力，dreaming 产物不一定立刻可用）；如何保持更新（dreaming 要算力，持续检查所有记忆不现实）；表示需要维护算力并防止累积错误或幻觉；以转写检索为基础是否足够。
 - 文章没有涉及机器人或具身场景，对机器人的含义是本页的推断。
 
+## 延伸：错误记忆如何在多 Agent 群体传播
+
+- [False Belief Dissemination（arXiv:2610.33026）](../entities/paper-false-belief-mandela-effect-multi-agent.md)：不同于本文的个体记忆维护研究，该论文在隔离的社交网络模拟中分析邻居消息、私有记忆和共享网页搜索如何共同维持虚假断言；其通道消融表明共享搜索在该设置中比单独使用记忆更易导致错误接受。涉及机器人的意义是工程延伸推论，并非论文真机实验。
+
+## 具身长时记忆对照：LIFE
+
+- [LIFE / Learning to Live（arXiv:2611.00180v2）](../entities/paper-life-learning-to-live.md)：RoboBeats 事件门控选择视觉证据、Plastic Memory 保留原始影像与可更新索引，EDM 将经验转成可复用能力；与本页的语言 agent 笔记及 dreaming 不同，公开代码当前重点是视觉门控与 SSS-Bench 评测，尚不能视为完整长期自主控制栈。
+
+## 权重级记忆巩固的对照
+
+[Cortex（arXiv:2610.20399）](../entities/paper-cortex-parametric-memory.md) 研究把上下文指定的能力蒸馏成 FFN 参数更新，部署时可以不再注入原上下文；与本页 Claude/dreaming 的**外部文件型持久记忆**不同。Cortex 的实验是文本型知识、行为与 agent 经验巩固，不是对真实机器人运动控制的证明（[论文核读](../../sources/papers/cortex_arxiv_2610_20399.md)）。
+
 ## 关联页面
+
+- [Cortex：上下文到参数记忆](../entities/paper-cortex-parametric-memory.md) — 对比外部持久笔记与权重级巩固
 
 - [Claude Cookbook：用动态工作流做 dreaming](../entities/claude-cookbook-dreaming-dynamic-workflow.md)
 - [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md) — 本库自身的 wiki 模式，与「wiki 作为记忆表示」同构
@@ -102,6 +119,8 @@ flowchart LR
 - [Agentic Coding 软件基础](./agentic-coding-software-fundamentals.md)
 - [MemForest（agent 记忆论文节点）](../entities/paper-memforest.md)
 - [RoboCasa-Mem（长程移动操作中的环境与过程记忆基准）](../entities/paper-robocasa-mem.md)
+- [False Belief Dissemination：多 Agent 错误信念传播](../entities/paper-false-belief-mandela-effect-multi-agent.md)
+- [Memory Clock（arXiv:2611.14488）](../entities/paper-memory-clock.md) — 零事件与暂停实验揭示固定时间采样记忆将等待误判成任务进度
 
 ## 参考来源
 

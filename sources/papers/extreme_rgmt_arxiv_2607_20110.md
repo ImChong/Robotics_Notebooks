@@ -24,7 +24,7 @@
 - **主张：** Extreme-RGMT = Stage I generalist 基座 → 按 tracking 统计分层 \(\mathcal{D}_m\) / \(\mathcal{D}_c\) → Stage II **PACE** + **STAR**。
 - **硬件口号：** 据称是首个能对 **惯性 MoCap 在线输入** 做高动态全身跟踪的 generalist 控制器（论文 §I / §VI-C）。
 
-**对 wiki 的映射：** 升格 [`wiki/entities/paper-extreme-rgmt.md`](../../wiki/entities/paper-extreme-rgmt.md)；与 [RGMT](../../wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track & RGMT](../../wiki/methods/any2track.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md) 互链。
+**对 wiki 的映射：** 升格 [`wiki/entities/paper-extreme-rgmt.md`](../../wiki/entities/paper-extreme-rgmt.md)；与 [RGMT](../../wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track & RGMT](../../wiki/methods/any2track.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md) 互链。
 
 ## 摘录 2：架构与两阶段训练（§III–§V）
 
@@ -57,4 +57,4 @@
 
 - 新建 **`wiki/entities/paper-extreme-rgmt.md`**（含流程总览；源码时序图标不适用）。
 - 新建 **`sources/sites/extreme-rgmt-github-io.md`**。
-- 更新 **`wiki/entities/paper-hrl-stack-14-...`**、**`wiki/methods/any2track.md`**、**`wiki/methods/sonic-motion-tracking.md`**、**`wiki/methods/beyondmimic.md`**、**`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`** 交叉引用。
+- 更新 **`wiki/entities/paper-hrl-stack-14-...`**、**`wiki/methods/any2track.md`**、**`wiki/entities/nvidia-sonic.md`**、**`wiki/methods/beyondmimic.md`**、**`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`** 交叉引用。

@@ -17,3 +17,13 @@
 
 - 实体页：[`wiki/entities/paper-varepsilon4p.md`](../../wiki/entities/paper-varepsilon4p.md)
 - 技术地图：[`wiki/overview/collab-wm-12-papers-technology-map.md`](../../wiki/overview/collab-wm-12-papers-technology-map.md)
+
+## 一手来源复核（2026-11-08）
+
+- **论文正式标题**：Imperfection for Precision: Upcycling Imperfect Data for High-Precision Robotic Manipulation。
+- **作者**：Hao Wei、Yang Liu、Chao Tang、Shengbao Li、Jiangtao Chen、Jinxuan Zhu、Jiaheng Wang、Hong Yin、Zhaofeng Cao、Tingguang Li。
+- **投稿**：2026-09-22，arXiv:2609.26672v1，9 页、5 图。
+- **方法**：目标任务低精度数据仅在高噪声区间贡献训练，异任务高精度数据仅在低噪声区间贡献训练；避免无差别混合。
+- **摘要明确报告**：相比基线最高改善 31.7 个百分点；用等量 imperfect data 替代任务专属高质量数据时平均降低 4.2 个百分点。
+- **核验范围**：以上由 [arXiv 官方摘要](https://arxiv.org/abs/2609.26672)直接支持。具体任务的 38.3%、48.3%、80.0%、78.3%、88.3% 需逐项核对论文实验表格；此处不将其标为已复核。完整实验、附录尚未通读。
+- **源码状态**：原节点记录 2026-09-23 未开源；本次未重新确认当前官方代码发布状态，故不更新该结论。

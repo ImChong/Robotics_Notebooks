@@ -14,7 +14,6 @@ related:
   - ../concepts/llm-robotics-control-interfaces.md
   - ../tasks/vision-language-navigation.md
   - ../tasks/manipulation.md
-  - ../tasks/vision-language-navigation.md
   - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/scalenav_arxiv_2610_25690.md

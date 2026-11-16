@@ -3,7 +3,7 @@ type: entity
 title: JackHan-Sdu WalkE3 / HumanoidE3 工具链生态
 tags: [humanoid, mujoco, locomotion, deployment, onnx, lcm, dataset, jackhan-sdu]
 summary: "围绕 Yobotics 系 Walker 泰山 / HumanoidE3（21-DoF）的一组开源仓：运动数据处理、MuJoCo 手柄仿真、RL 控制器与 ONNX/TorchScript 部署，以及 FEAP 论文配套与视觉深度变体。"
-updated: 2026-05-16
+updated: 2026-11-13
 status: complete
 related:
   - ./jackhan-mujoco-walke3-simulation.md
@@ -88,6 +88,7 @@ flowchart LR
 
 ## 常见误区或局限
 
+- **2026-11-13 维护复核：** 已核对六仓官方 README：数据工具、控制器、算法模板与两条 FEAP 部署线仍分别承担本页所列职责，具体固定版本见各子页的复核记录；[手柄仿真 README（5439e1e）](https://github.com/JackHan-Sdu/Mujoco-WalkerE3-Simulation/blob/5439e1ec4999d47b5c1b120181a1c2de088c079f/README.md) 仍以 `.pt` 策略和 `deploy_mujoco_gamepad.py e3.yaml` 为入口，并披露台阶首步穿透及长时间站立打滑。此处是接口与职责复核，未验证六仓组合运行。
 - **许可证与商用**：各仓许可以仓库根目录为准；本知识页不构成使用授权建议。
 - **环境假设**：控制器 README 写明 **Ubuntu 20.04**；FEAP / 视觉部署 README 强调 **Linux + Conda** 与特定 Python 版本，跨版本需自行验证依赖。
 - **「同一作者」≠「单一产品」**：WalkE3 与 FEAP 论文线在目标读者上不同，合并选型时仍以你的论文/硬件约束为准。

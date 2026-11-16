@@ -7,7 +7,7 @@ related:
   - ../entities/lumina-embodied.md
   - ../methods/vla.md
   - ../methods/diffusion-policy.md
-  - ../methods/saycan.md
+  - ../entities/paper-saycan.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../overview/vla-evolution-lineage.md
   - ../entities/paper-diffusion-policy.md

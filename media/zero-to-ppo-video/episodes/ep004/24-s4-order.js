@@ -112,9 +112,9 @@
 
           /* 网格：「拉长」时横着拉一下再回来 */
           E.op(grid, fade(st, 0.1, 0.5));
-          var sw = win(st, STRETCH[0], STRETCH[1] + 0.9, 0.5);
-          pl.warp.set(E.lerpM([2, 0, 0, 1], sw));
-          E.op(pl.warp.g, 0.55 * sw);
+          var warpW = win(st, STRETCH[0], STRETCH[1] + 0.9, 0.5);
+          pl.warp.set(E.lerpM([2, 0, 0, 1], warpW));
+          E.op(pl.warp.g, 0.55 * warpW);
           E.drawOn(pathA, fade(st, PATH_A[0], PATH_A[1] - PATH_A[0]));
           E.drawOn(pathB, fade(st, PATH_B[0], PATH_B[1] - PATH_B[0]));
           E.op(endA, fade(st, PATH_A[1] - 0.1, 0.2)); E.op(endB, fade(st, PATH_B[1] - 0.1, 0.2));

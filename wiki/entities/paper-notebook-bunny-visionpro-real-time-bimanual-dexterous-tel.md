@@ -12,7 +12,7 @@ tags:
   - ucsd
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2407.03162"
 code: https://github.com/Dingry/BunnyVisionPro
 related:
@@ -23,6 +23,8 @@ related:
   - ./paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md
   - ./paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md
   - ../../roadmap/depth-teleoperation.md
+original:
+  - ../../sources/papers/humanoid_pnb_bunny-visionpro.md
 sources:
   - ../../sources/papers/humanoid_pnb_bunny-visionpro.md
   - ../../sources/sites/bunny-visionpro.md
@@ -157,7 +159,7 @@ sequenceDiagram
 - ERM 只提供事件/强度提示，不是双边力反馈；过度振动也会增加操作者负担。
 - 评测集中于 xArm7+Ability Hand，跨不同臂手形态的真实部署证据有限。
 
-## 与其他页面的关系
+## 关联页面（与其他页面的关系）
 
 - 路线定位：[遥操作纵深 Stage 4](../../roadmap/depth-teleoperation.md) 的视觉手姿与触觉接口。
 - 主任务：[Teleoperation](../tasks/teleoperation.md)。

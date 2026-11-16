@@ -2,7 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-15
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
@@ -13,8 +13,10 @@ related:
 original:
   - ../../sources/papers/force_moment_mpc_biped_reading_arxiv_2104_00065.md
 sources:
+  - ../../sources/papers/lg_dkgp_arxiv_2611_16645.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
+  - ../../sources/blogs/wechat_shenlan_mpc_floating_base_derivation_2026-11-16.md
 summary: "MPC（模型预测控制）通过在线滚动优化未来轨迹，在约束控制与人形/腿足运动规划中广泛使用。"
 ---
 
@@ -72,6 +74,10 @@ $$\dot{x} = f(x, u)$$
 $$x_{k+1} = f(x_k, u_k)$$
 
 这个模型不需要很精确（这也是 MPC 的一个优点），但越精确效果越好。
+
+#### 预测模型从哪里来：牛顿投影 → 浮动基 → 离散优化
+
+[完整公式推导（MPC Prediction Model Derivation）](../formalizations/mpc-prediction-model-from-floating-base-dynamics.md) 整理深蓝具身智能 2026-11-16 的 27 页教学原文：单摆牛顿投影与虚功 → 材料块雅可比 `J_a` → `M(q)·v̇ + C(q,v)v + G(q) = Sᵀτ + Jcᵀfc` → 固定接触加速度约束。核心辨析：**连续时间全阶动力学是预测模型的力学起点，并非直接可运行的 MPC**。选择状态/输入、支撑模式、降阶近似、离散化和约束后才构成控制器使用的 `f_d`；文章本身没有提供四足 MPC 源码与真机验证。
 
 ### 有限时域优化
 在每个时刻 $t$：
@@ -262,6 +268,10 @@ print("apply control:", u.ravel())
 
 ## 参考来源
 
+- [深蓝具身智能《机器人控制算法 MPC 的预测模型从哪来？完整公式推导》（2026-11-16）](../../sources/blogs/wechat_shenlan_mpc_floating_base_derivation_2026-11-16.md) — 27 页原文，从单摆虚功、浮动基材料块雅可比到接触约束；[结构化推导笔记](../formalizations/mpc-prediction-model-from-floating-base-dynamics.md)。
+
+- [LG-DKGP 原文与边界复核](../../sources/papers/lg_dkgp_arxiv_2611_16645.md)
+
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：MPC 代表算法
 - [wechat_shenlan_ai_ad_planning_control.md](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md) — 车载轨迹跟踪 MPC 与 PID/LQR 分工
 - Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control*（IROS 2018，[DOI 10.1109/IROS.2018.8594448](https://doi.org/10.1109/IROS.2018.8594448)）— 凸 MPC 代表论文（四足）
@@ -274,6 +284,9 @@ print("apply control:", u.ravel())
 
 ## 关联页面
 
+- [MPC 预测模型推导](../formalizations/mpc-prediction-model-from-floating-base-dynamics.md) — 完整动力学的来源以及离散预测模型需要补齐的步骤。
+
+- [LG-DKGP](../entities/paper-lg-dkgp.md) — 冻结 LeWM，并用已执行动作历史构造连续性先验来初始化 CEM；主设置每次规划为 300 候选 × 30 轮、执行 25 步后重规划，属于采样式滚动规划实例，不是硬实时伺服的验证。（[来源复核归档](../../sources/papers/lg_dkgp_arxiv_2611_16645.md)）
 - [《自动驾驶核心算法盘点》专栏技术地图](../overview/autonomous-driving-core-algorithms-series.md) — 车载 MPC 在规控组合中的位置
 - [八大机器人控制体系分类](../comparisons/robot-control-eight-paradigms-taxonomy.md)
 - [滚动优化与 ILC（体系⑥）](../overview/robot-control-paradigm-receding-horizon-ilc.md)

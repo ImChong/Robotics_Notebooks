@@ -98,7 +98,7 @@ flowchart TB
 | 1 前馈 | MoE | [mixture-of-experts](../concepts/mixture-of-experts.md) | [Shazeer 2017](../../sources/papers/shazeer_moe_arxiv_1701_06538.md) | 容量能否与逐步算力解耦？ |
 | 2 空间 | CNN | [convolutional-neural-network](../concepts/convolutional-neural-network.md) | [LeCun 1998](../../sources/papers/lecun_gradient_based_learning_1998.md) | 栅格局部性是否该写成归纳偏置？ |
 | 2 空间 | ResNet | [paper-resnet](../entities/paper-resnet-deep-residual-learning.md) | [He 2016](../../sources/papers/resnet_arxiv_1512_03385.md) | 加深是否还能训得动？ |
-| 2 空间 | U-Net | [unet](../concepts/unet.md) | [Ronneberger 2015](../../sources/papers/unet_ronneberger_arxiv_1505_04597.md) | 密集预测如何保住边界？ |
+| 2 空间 | U-Net | [unet](../methods/unet.md) | [Ronneberger 2015](../../sources/papers/unet_ronneberger_arxiv_1505_04597.md) | 密集预测如何保住边界？ |
 | 2 空间 | ViT | [vision-transformer](../concepts/vision-transformer.md) | [Dosovitskiy 2020](../../sources/papers/vit_dosovitskiy_arxiv_2010_11929.md) | 弱偏置 + 大数据能否换架构统一？ |
 | 3 序列 | RNN/LSTM/GRU | [recurrent-neural-network](../concepts/recurrent-neural-network.md) | [LSTM 1997](../../sources/papers/hochreiter_lstm_1997.md) · [GRU 2014](../../sources/papers/cho_rnn_encoder_decoder_arxiv_1406_1078.md) | 短中程 POMDP 历史怎么压？ |
 | 3 序列 | TCN | [temporal-convolutional-network](../concepts/temporal-convolutional-network.md) | [Bai 2018](../../sources/papers/bai_tcn_arxiv_1803_01271.md) | 固定窗口能否可并行卷积？ |
@@ -119,7 +119,7 @@ flowchart TB
 
 ### 2. 图像 / 空间结构
 
-[CNN](../concepts/convolutional-neural-network.md) 把平移局部性写成权值共享；[ResNet](../entities/paper-resnet-deep-residual-learning.md) 解决「加深训不动」；[U-Net](../concepts/unet.md) 为分割与扩散降噪提供多尺度跳跃；[ViT](../concepts/vision-transformer.md) 用弱偏置换架构统一，成为 VLA 视觉塔默认。机载实时检测仍常是 CNN；开放词汇与多模态衔接才优先 ViT。对照见 [CNN vs ViT](../comparisons/cnn-vs-vit-backbones.md)。
+[CNN](../concepts/convolutional-neural-network.md) 把平移局部性写成权值共享；[ResNet](../entities/paper-resnet-deep-residual-learning.md) 解决「加深训不动」；[U-Net](../methods/unet.md) 为分割与扩散降噪提供多尺度跳跃；[ViT](../concepts/vision-transformer.md) 用弱偏置换架构统一，成为 VLA 视觉塔默认。机载实时检测仍常是 CNN；开放词汇与多模态衔接才优先 ViT。对照见 [CNN vs ViT](../comparisons/cnn-vs-vit-backbones.md)。
 
 ### 3. 序列 / 时间建模
 
@@ -153,7 +153,7 @@ flowchart TB
 |----------|----------|
 | 向量观测、要上真机走路 | [MLP](../concepts/mlp.md) → [策略架构](../concepts/humanoid-policy-network-architecture.md) |
 | 多技能但还想解释 gating | [MoE](../concepts/mixture-of-experts.md) |
-| 机载检测 / 分割 | [CNN](../concepts/convolutional-neural-network.md) → [U-Net](../concepts/unet.md) → [视觉骨干](./hub-vision-backbone.md) |
+| 机载检测 / 分割 | [CNN](../concepts/convolutional-neural-network.md) → [U-Net](../methods/unet.md) → [视觉骨干](./hub-vision-backbone.md) |
 | VLA / 开放词汇感知 | [ViT](../concepts/vision-transformer.md) → [VLA](../methods/vla.md) |
 | 短历史补偿 POMDP | [GRU](../concepts/recurrent-neural-network.md) |
 | 固定窗口时序且要并行 | [TCN](../concepts/temporal-convolutional-network.md) |

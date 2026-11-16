@@ -5,7 +5,7 @@ status: complete
 updated: 2026-09-15
 related:
   - ./paper-vibe.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/privileged-training.md
   - ../concepts/whole-body-control.md
   - ./gr00t-wholebodycontrol.md
@@ -18,7 +18,7 @@ summary: "ORCS（Oracle Robot Control Synthesis，lok-i/orcs）：在冻结 SONI
 
 # ORCS（Oracle Robot Control Synthesis）
 
-**ORCS**（*Optimize, Retarget, Control Suite*，[GitHub](https://github.com/lok-i/orcs)，[HF 权重](https://huggingface.co/lkrajan/orcs)）是 USC **Lokesh Krishna** 团队发布的 **任务后训练人形全身控制器工具包**：在 **冻结 [SONIC](../methods/sonic-motion-tracking.md)** 运动跟踪基座上挂 **零初始化 LoRA 适配器**，用 mjlab + RSL-RL PPO 训练 **特权 oracle 策略**（全仿真状态 critic + 任务条件 augmentation），并附带 **SMPL 运动学重定向** 与三类示范任务。工程上为 [ViBe](./paper-vibe.md) 研究线配套；**可部署 student 蒸馏仍在 roadmap**。
+**ORCS**（*Optimize, Retarget, Control Suite*，[GitHub](https://github.com/lok-i/orcs)，[HF 权重](https://huggingface.co/lkrajan/orcs)）是 USC **Lokesh Krishna** 团队发布的 **任务后训练人形全身控制器工具包**：在 **冻结 [SONIC](./nvidia-sonic.md)** 运动跟踪基座上挂 **零初始化 LoRA 适配器**，用 mjlab + RSL-RL PPO 训练 **特权 oracle 策略**（全仿真状态 critic + 任务条件 augmentation），并附带 **SMPL 运动学重定向** 与三类示范任务。工程上为 [ViBe](./paper-vibe.md) 研究线配套；**可部署 student 蒸馏仍在 roadmap**。
 
 ## 一句话定义
 
@@ -158,7 +158,7 @@ sequenceDiagram
 ## 关联页面
 
 - [ViBe（论文实体）](./paper-vibe.md) — 研究出处与视觉后训练叙事
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — 冻结基座
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md) — 冻结基座
 - [Privileged Training](../concepts/privileged-training.md) — 不对称 actor-critic
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md) — 官方 SONIC 训练/部署
 - [Whole-Body Control](../concepts/whole-body-control.md)

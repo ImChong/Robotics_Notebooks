@@ -2,26 +2,31 @@
 type: method
 tags: [humanoid, motion-retargeting, imitation-learning, reinforcement-learning, sim2real, unitree-g1]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 arxiv: "2603.22201"
 code: https://github.com/3DV-HumanoidGroup/MakeTrackingEasy
 related:
   - ../concepts/motion-retargeting.md
   - ./motion-retargeting-gmr.md
   - ./reactor-physics-aware-motion-retargeting.md
-  - ./sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../concepts/whole-body-control.md
   - ../entities/unitree-g1.md
   - ./imitation-learning.md
 sources:
   - ../../sources/papers/neural_motion_retargeting_nmr.md
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
+original: ../../sources/papers/neural_motion_retargeting_nmr.md
 summary: "NMR 将人形运动重定向表述为从人体运动分布到机器人可行流形的学习映射；通过 CEPR 管线（筛选→GMR→聚类 RL 专家→仿真 rollout）构造物理一致的人机配对数据，训练 CNN–Transformer 非自回归网络，缓解传统优化重定向的非凸与噪声传播问题。"
 ---
 
 # NMR（神经运动重定向与人形全身控制）
 
 **NMR（Neural Motion Retargeting）** 面向「人体 SMPL（或同类）序列 → 人形机器人可执行全身轨迹」：不把重定向当成孤立的逐帧几何优化，而是用**可扩展的监督数据 + 时序网络**直接学习跨具身的运动映射，使下游 **whole-body tracking / 控制**更容易收敛。
+
+## 一句话定义
+
+> 用可扩展的物理一致配对数据 + 非自回归时序网络直接学习人体到人形机器人的可行运动流形映射，替代脆弱的逐帧非凸优化重定向。
 
 ## 英文缩写速查
 
@@ -121,6 +126,11 @@ sequenceDiagram
 - **不是简单替代 GMR**：CEPR 仍以 GMR 产出作为**中间监督与覆盖度来源**，再用 RL+仿真做**物理修补**；NMR 最终目标是**快速推断**、全局时序一致与对输入噪声更稳的映射。
 - **与「跳过重定向、直接 tracking」路线的对比**：类似 [ExoActor](./exoactor.md) 中「人体轨迹 → SONIC」强调下游通用跟踪器；NMR 则显式学习 **SMPL→机器人** 的时序映射，并用物理 rollout 定义「何为好的配对」。两条路线可放在同一决策空间里对比：**数据从哪来、误差从哪修、部署算力预算是多少**。
 
+## 工程实践
+
+- **CEPR 数据管线**：先筛选人体动作并做 GMR 初值重定向，再通过聚类 RL 专家在仿真中 rollout 生成物理一致的人机配对轨迹，用于训练非自回归 CNN–Transformer 网络。
+- **下游集成**：开源实现（[MakeTrackingEasy](https://github.com/3DV-HumanoidGroup/MakeTrackingEasy)）可直接输出 Unitree G1 可跟踪参考轨迹，接入全身控制与 Sim2Real 部署。
+
 ## 常见局限与阅读时注意点
 
 - **仿真锚定偏差**：RL 专家与奖励定义决定「物理真值」的形状；sim-to-real 间隙仍会传导到网络输出。
@@ -152,7 +162,7 @@ sequenceDiagram
 - [GMR（通用动作重定向）](./motion-retargeting-gmr.md) — NMR 数据管线中的运动学前端。
 - [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层联合优化参考与跟踪策略的对照路线。
 - [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种主流路线在「误差修补位置 / 训练成本 / 部署预算」上的选型坐标。
-- [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 另一类「人体/参考 → 人形执行」的大规模跟踪基线视角。
+- [SONIC（规模化运动跟踪）](../entities/nvidia-sonic.md) — 另一类「人体/参考 → 人形执行」的大规模跟踪基线视角。
 - [Whole-Body Control](../concepts/whole-body-control.md) — 下游 QP / 分层控制与参考跟踪接口。
 - [Unitree G1](../entities/unitree-g1.md) — 论文实验平台。
 - [Imitation Learning](./imitation-learning.md) — 高质量参考轨迹对模仿学习与 RL 奖励设计的意义。

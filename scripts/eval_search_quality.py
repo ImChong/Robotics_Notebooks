@@ -17,6 +17,8 @@ CASES_FILE = REPO_ROOT / "schema" / "search-regression-cases.json"
 # 将 scripts/ 加入 path 以便导入 search_wiki 模块
 sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
+from utils.paths import path_to_id  # noqa: E402
+
 
 def load_cases() -> list[dict]:
     if not CASES_FILE.exists():
@@ -25,8 +27,8 @@ def load_cases() -> list[dict]:
     return json.loads(CASES_FILE.read_text(encoding="utf-8"))
 
 
-def run_bm25_search(query: str, top_k: int) -> list[str]:
-    """返回 BM25 搜索结果的 wiki 页面路径列表（最多 top_k 条）。"""
+def run_bm25_search(query: str, top_k: int, *, semantic: bool = False) -> list[str]:
+    """返回搜索结果的 wiki 页面路径列表（最多 top_k 条）。"""
     from search_wiki import search as _search
 
     results, _ = _search(
@@ -36,7 +38,7 @@ def run_bm25_search(query: str, top_k: int) -> list[str]:
         context_lines=0,
         case_sensitive=False,
         show_related=False,
-        semantic=False,
+        semantic=semantic,
     )
     return [r.get("id", r.get("path", "")) for r in results[:top_k]]
 
@@ -48,25 +50,15 @@ def check_case(case: dict) -> tuple[bool, str]:
     must_include = case.get("must_include", [])
     top_k = case.get("expected_top_k", 5)
 
-    if mode == "semantic":
-        # 语义搜索：需要向量索引，回退到 BM25
-        results = run_bm25_search(query, top_k)
-    else:
-        results = run_bm25_search(query, top_k)
+    results = run_bm25_search(query, top_k, semantic=(mode == "semantic"))
 
     hits = []
     misses = []
     for required in must_include:
         # 宽松匹配：路径格式 wiki/foo/bar.md 或 id 格式 wiki-foo-bar
-        req_id = required.replace("/", "-").replace(".md", "")
-        req_stem = Path(required).stem
-        found = any(
-            required in r
-            or r == req_id
-            or r.endswith(req_stem)
-            or (r.replace("-", "/") + ".md").endswith(required.lstrip("wiki/").lstrip("/"))
-            for r in results
-        )
+        req_id = path_to_id(REPO_ROOT / required, REPO_ROOT)
+        req_tail = required.removeprefix("wiki/").lstrip("/")
+        found = any(required in r or r == req_id or r.endswith("/" + req_tail) for r in results)
         if found:
             hits.append(required)
         else:

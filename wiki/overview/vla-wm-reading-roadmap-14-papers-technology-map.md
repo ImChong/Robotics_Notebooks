@@ -2,7 +2,12 @@
 type: overview
 tags: [overview, survey, vla, world-models, reading-roadmap, technology-map, embodied-ai]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
+original:
+  - ../../sources/papers/rt_1_arxiv_2212_06817.md
+  - ../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md
+  - ../../sources/papers/openvla_reading_arxiv_2406_09246.md
+  - ../../sources/papers/pi0_arxiv_2410_24164.md
 related:
   - ../entities/paper-clip.md
   - ../entities/paper-llava.md
@@ -35,9 +40,9 @@ summary: "依据具身智能研究室 2026-09-02 阅读路线，把 10 篇 VLA/�
 
 > **本页定位**：为 [具身智能研究室 · VLA 和世界模型阅读路线图](https://mp.weixin.qq.com/s/fNAyDttYIs5kzTQHwxc5Pw)（2026-09-02）提供 **按四段学习路径组织的阅读坐标**；不复述每篇方法细节。纵深课程序列见 [VLA 纵深](../../roadmap/depth-vla.md)；开源复现景观见 [VLA 2025 开源](./vla-open-source-repro-landscape-2025.md)。
 
-## 一句话观点
+## 一句话定义
 
-**先对齐视觉–语言，再走 RT → 开源 VLA → 流匹配动作头；世界模型四篇回答「预测如何服务策略」，而不是再堆一条纯 VLA。**
+**VLA 与世界模型 14 篇阅读路线** 按 **视觉–语言对齐基座 → RT/开源 VLA 主线 → 动作头实践 → 世界模型服务策略** 四段渐进坐标组织经典必读论文，先看清动作表征如何接上 VLM，再理解前向世界预测如何辅助长程决策。
 
 ## 英文缩写速查
 
@@ -48,7 +53,7 @@ summary: "依据具身智能研究室 2026-09-02 阅读路线，把 10 篇 VLA/�
 | OXE | Open X-Embodiment | 跨本体数据 |
 | FM | Flow Matching | π₀ 动作头 |
 
-## 为什么单独做这张地图
+## 为什么重要
 
 - 公众号把 14 篇串成 **入门路线 + 进阶路线 + WM 补充**，不是平铺榜单。
 - **14 篇各有一页**，其中 LaDi-WM / DreamDojo / RISE / PointWorld 已是完整深读页。
@@ -139,6 +144,17 @@ flowchart TB
 - [World Action Models](../concepts/world-action-models.md)
 - [统一机器人学习综述](../entities/paper-unified-robot-learning-survey.md) — 读完 14 篇后用耦合类型判断系统缺哪段
 
+## 工程实践
+
+- **按门槛分层推进**：代码复现建议先从 [ACT](../entities/paper-act.md) 与 [Diffusion Policy](../entities/paper-diffusion-policy.md) 跑通单任务开源代码，再切到 [OpenVLA](../entities/paper-openvla.md) 与 [π₀](../entities/paper-pi0.md) 对照动作头离散化 vs 流匹配差异。
+- **先读数据与动作接口再比精度**：14 篇横跨离散 256-bin（RT-1/RT-2/OpenVLA）、扩散去噪（Octo/Diffusion Policy）与流匹配 chunk（π₀），工程选型前必须核对控制频率、视觉历史窗长和开源训练资产是否完整。
+- **世界模型选型前置**：引入 LaDi-WM、DreamDojo、RISE 或 PointWorld 前，应先明确其处于「离线合成数据」「在线规划打分」还是「联合表征预训练」哪一环节。
+
+## 局限与风险
+
+- **经典基线不覆盖最新效率与 RL 后训练分支**：14 篇聚焦 VLA 与 WM 主干奠基工作，未纳入 2026 年的轻量化加速、稀疏记忆及真机 RL 微调工作（相关后续入口见 [VLA 纵深路线](../../roadmap/depth-vla.md)）。
+- **开源状态分化显著**：RT-2 官方训练未开源，而 OpenVLA、Octo、OpenPI 虽开源代码但依赖的大规模跨本体语料或预训练算力仍高。
+
 ## 关联页面
 
 - [CLIP](../entities/paper-clip.md)
@@ -151,6 +167,10 @@ flowchart TB
 
 ## 参考来源
 
+- [RT-1 原文归档（arXiv:2212.06817）](../../sources/papers/rt_1_arxiv_2212_06817.md) — 规模化真机 Transformer 策略（01）
+- [RT-2 原文归档（arXiv:2307.15818）](../../sources/papers/rt2_vla_reading_arxiv_2307_15818.md) — VLA 概念确立（02）
+- [OpenVLA 原文归档（arXiv:2406.09246）](../../sources/papers/openvla_reading_arxiv_2406_09246.md) — 7B 开源 VLA 复现路线（03）
+- [π0 原文归档（arXiv:2410.24164）](../../sources/papers/pi0_arxiv_2410_24164.md) — Flow Matching 动作专家代表（04）
 - [具身智能研究室 2026-09-02 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [原始抓取](../../sources/raw/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 

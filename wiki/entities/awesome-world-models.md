@@ -2,7 +2,7 @@
 type: entity
 tags: [curated-list, world-models, wam, vla, model-based-rl, embodied-ai, autonomous-driving]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-08
 related:
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
   - ./paper-sa-2607-07534-infinite-worlds-with-versatile-interactions-ling.md
@@ -105,6 +105,7 @@ summary: "sun254667 维护的 Awesome World Models：覆盖范式分册、WAM/VL
 - [机器人世界模型训练闭环](../overview/robot-world-models-training-loop-taxonomy.md)
 - [动作后果技术地图](../overview/robot-world-models-action-consequence-technology-map.md)
 - [Awesome Egocentric Vision](./awesome-egocentric-vision.md) / [Awesome Touch](./awesome-touch.md) / [Awesome-Real2Sim2Real](./awesome-real2sim2real.md) — 同系列姊妹清单
+- [DINO-WM](./paper-sa-2411-04983-dino-wm-world-models-on-pre-trained-visual-featu.md) — 清单收录：在预训练视觉特征上学世界模型并做零样本规划
 
 ## 参考来源
 

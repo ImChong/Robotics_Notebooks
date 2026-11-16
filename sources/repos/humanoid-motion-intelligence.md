@@ -51,7 +51,7 @@
 |------|------------------------|--------------|
 | 动作数据与重定向 | 17 篇 / 47 项 | [GMR](../../wiki/methods/motion-retargeting-gmr.md)、[Motion Retargeting](../../wiki/concepts/motion-retargeting.md) |
 | Locomotion 与运动先验 | 39 篇 / 61 项 | [Locomotion](../../wiki/tasks/locomotion.md)、[AMP 综述](../../wiki/overview/humanoid-amp-motion-prior-survey.md) |
-| 动作跟踪与全身控制 | 40 篇 / 52 项 | [SONIC](../../wiki/methods/sonic-motion-tracking.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md) |
+| 动作跟踪与全身控制 | 40 篇 / 52 项 | [SONIC](../../wiki/entities/nvidia-sonic.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md) |
 | LocoManip | 31 篇 / 37 项 | [Loco-Manipulation](../../wiki/tasks/loco-manipulation.md) |
 | 世界模型、VLA 与 Agent | 47 篇 / 103 项 | [VLA](../../wiki/methods/vla.md)、[世界模型 taxonomy](../../wiki/overview/robot-world-models-training-loop-taxonomy.md) |
 | 工程与实机部署 | 17 篇 / 286 项 | [Sim2Real](../../wiki/concepts/sim2real.md)、[运动控制主路线](../../roadmap/motion-control.md) |

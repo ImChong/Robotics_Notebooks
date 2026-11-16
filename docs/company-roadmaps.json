@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06",
+  "updated": "2026-11-16",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -9,7 +9,7 @@
   "companies": [
     {
       "key": "nvidia",
-      "name": "NVIDIA",
+      "name": "英伟达（NVIDIA）",
       "founded_year": 1993,
       "founded_source": "https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/",
       "founded_note": "1993-04-05。",
@@ -172,7 +172,7 @@
           "title": "SONIC",
           "track": "全身控制",
           "desc": "把大规模动捕运动跟踪当作预训练任务，得到通用人形全身策略，并经统一 token 接口接入 VR、视频、文本与 VLA；代码并入 GR00T-WholeBodyControl 单仓，后在 Science Robotics 发表。",
-          "id": "wiki-methods-sonic-motion-tracking",
+          "id": "entity-nvidia-sonic",
           "url": "https://nvlabs.github.io/GEAR-SONIC/",
           "date_note": "arXiv:2511.07820 v1 提交于 2025-11-11；并入 GR00T-WBC 仓（节点 GR00T-WholeBodyControl 已记 2026-02）与 Science Robotics 发表为后续事件。",
           "date_source": "https://arxiv.org/abs/2511.07820"
@@ -584,7 +584,7 @@
           "title": "DIAL",
           "track": "潜在世界模型 / VLA",
           "desc": "通过潜在世界建模把意图与动作解耦的端到端 VLA；HKU × XPENG Robotics × UNC 合作，官方仓库 xpeng-robotics/DIAL 公开（Apache-2.0）。",
-          "id": "entity-cn-os-dial",
+          "id": "entity-paper-dial-latent-world-vla",
           "url": "https://xpeng-robotics.github.io/dial/",
           "date_note": "arXiv:2603.29844 v1 提交于 2026-03-31；XPENG Robotics 官网研究列表同为 2026-03-31。库内 sources/papers/loco_manip_161_survey_147_dial.md 的“发表日期 4 月 28 日”是公众号策展日，不用。",
           "date_source": "https://arxiv.org/abs/2603.29844"
@@ -2987,7 +2987,7 @@
     },
     {
       "key": "symbiosis",
-      "name": "Symbiosis Robotics",
+      "name": "共生知行（Symbiosis Robotics）",
       "founded_year": 2026,
       "founded_source": "https://www.preqin.com/data/profile/asset/symbiosis-robotics/814933",
       "founded_note": "来源确认 2026 年成立；未确认具体月份。",
@@ -3228,8 +3228,8 @@
         "humanoid",
         "wbc"
       ],
-      "summary": "人形基础模型（HFM）路线：提出「全身智能」预训练栈（任务语义 S2 / 原生人形模型 S1 / 动作生成与行为基础模型 S0.5 / 全身跟踪控制 S0），以大规模人体全身数据预训练、少量真机数据后训练；公司 GitHub / HF 组织尚无公开仓库，署名含公司的论文代码在 OpenDriveLab 下。",
-      "official": "https://www.archon.tech/blog/whole-body-intelligence",
+      "summary": "面向全身智能（WBI）的人形基础模型研究，官网 Research 已发布四项：WBI 预训练路线、PingpongDuo 双机协同、Anchor 1 精准稳定全身控制与 Compass 1 长时视觉记忆导航；另有 RoboNaldo、EgoHumanoid-V2 联合署名研究。Compass 1 展示仓在 OpenDriveLab 下，模型权重/部署尚待计划发布，不能将研究展示视作一体化模型已开放。",
+      "official": "https://www.archon.tech/research",
       "nodes": [
         {
           "date": "2026-06",
@@ -3245,9 +3245,9 @@
           "date": "2026-07",
           "title": "Whole-Body Intelligence",
           "track": "人形基础模型",
-          "desc": "官网首篇博客：提出 S2 / S1 / S0.5 / S0 四层栈与「人类数据给规模、机器人数据给落地、失败数据教恢复」的预训练路线；只有演示视频，无论文、代码或数字。",
+          "desc": "官网技术观点：提出 S2 / S1 / S0.5 / S0 分层及人类全身数据预训练、真机后训练的全身智能路线；为研究愿景，非已开源的完整基座模型。",
           "id": "entity-archon-whole-body-intelligence",
-          "url": "https://www.archon.tech/blog/whole-body-intelligence",
+          "url": "https://www.archon.tech/research/whole-body-intelligence",
           "date_note": "官网博客 2026-07-13。"
         },
         {
@@ -3259,6 +3259,36 @@
           "url": "https://arxiv.org/abs/2609.37181",
           "date_note": "arXiv:2609.37181 v1 为 2026-09-29。",
           "date_source": "https://arxiv.org/abs/2609.37181"
+        },
+        {
+          "date": "2026-10",
+          "title": "PingpongDuo",
+          "track": "双机协调与分层控制",
+          "desc": "双台 Unitree G1 交替击球：学习风险估计筛选团队站位，结合步法/击球技能及球拍臂残差；仿真回球成功率 55.6%，公开论文与演示，暂无运行代码。",
+          "id": "entity-paper-pingpongduo",
+          "url": "https://www.archon.tech/research/pingpongduo",
+          "date_note": "官网 Research 2026-10-15；arXiv:2610.20579。",
+          "date_source": "https://www.archon.tech/research"
+        },
+        {
+          "date": "2026-10",
+          "title": "Anchor 1",
+          "track": "全身运控（System 0）",
+          "desc": "通过骨盆、双腕、双踝五点稀疏位姿指令和显式跟踪误差反馈，实现稳定且精准的全身动作；部署无需在线关节重定向。权重与部署代码计划 2026 年末发布。",
+          "id": "entity-paper-anchor-1",
+          "url": "https://www.archon.tech/research/anchor1",
+          "date_note": "官网 Research 2026-10-30；arXiv:2611.00193 同日提交。",
+          "date_source": "https://arxiv.org/abs/2611.00193"
+        },
+        {
+          "date": "2026-11",
+          "title": "Compass 1",
+          "track": "开放世界导航",
+          "desc": "单目 RGB + 稀疏关键帧/历史表示地图，结构化 VQA 与异步视频动作推理；Go2 真实 320 次导航测试成功率 79.4%，跨四种机器人本体演示。展示仓 OpenDriveLab/Compass 已公开，数据、权重和部署代码仍计划发布。",
+          "id": "entity-paper-compass-1-navigation",
+          "url": "https://www.archon.tech/research/compass1",
+          "date_note": "官网 Research 2026-11-09；arXiv:2611.12087 v1 为 2026-11-09；GitHub 展示仓公告 2026-11-10。",
+          "date_source": "https://arxiv.org/abs/2611.12087"
         }
       ]
     },

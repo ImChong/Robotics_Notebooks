@@ -84,6 +84,17 @@ sequenceDiagram
 
 论文 §5 Table3 ScanNet++ novel-view 合成视角平均 PSNR **24.41 dB**，训练视角平均 **27.98 dB**，两类渲染不应混用；引言/图1 指明 876×584 条件下可达 **400 FPS 的渲染**（不是完整 SLAM Tracking/Mapping 帧率）。论文还在 Replica/TUM RGB-D 上评价 ATE、深度重建。
 
+## 与其他工作对比
+
+SplaTAM 与 [MonoGS](./paper-monogs.md)、[Gaussian-SLAM](./paper-gaussian-slam.md)、[GS-SLAM（Yan）](./paper-gs-slam-yan.md) 是同期 3DGS SLAM；本页数值来自 SplaTAM 自己的论文，与其他论文的 split 不同不并列。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| [MonoGS](./paper-monogs.md) | MonoGS 支持单目，用高斯共视窗口管理关键帧、前后端异步；SplaTAM 仅 RGB-D，每帧顺序执行 Tracking→Densification→Map Update，用 silhouette 掩码限定追踪像素 | 两者地图都是单一全局高斯集合；MonoGS 报 TUM/Replica ATE，本页报 ScanNet++ PSNR |
+| [Gaussian-SLAM](./paper-gaussian-slam.md) | Gaussian-SLAM 把地图切成独立子地图并只优化活跃子图；SplaTAM 用重叠关键帧 + 当前帧优化全局地图 | Gaussian-SLAM 的 42.08 dB 是 TUM 训练视角 PSNR，与本页 ScanNet++ 24.41/27.98 dB 不同条件 |
+| [GS-SLAM（Yan）](./paper-gs-slam-yan.md) | GS-SLAM 用 coarse-to-fine 追踪与浮空高斯衰减，SplaTAM 用 silhouette + 深度差决定增密；GS-SLAM 完整系统未开源 | SplaTAM 有完整官方代码，可直接复现 |
+| [NICE-SLAM](./paper-nice-slam.md) | NICE-SLAM 是隐式分层 feature grid + 射线采样体渲染；SplaTAM 用显式各向同性高斯 + 光栅化 | 本论文引言/图1 的 400 FPS 是渲染速度，不是完整 SLAM 帧率 |
+
 ## 结论
 
 **SplaTAM 从未经位姿标注的 RGB-D 帧在线优化 3D Gaussian 地图与相机轨迹，用 silhouette 掩码处理可见区域、地图增密和建图。**

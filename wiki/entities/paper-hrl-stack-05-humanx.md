@@ -130,6 +130,7 @@ HumanX 在项目页和核心原理里主要与两条同样「从人类视频出�
 - [SUGAR](./paper-loco-manip-161-076-sugar.md)
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)
 - [Imitation Learning](../methods/imitation-learning.md)
+- [LIFe：原生物理交互研究演示](./life-native-interaction.md)（作者关联，但属独立项目；其论文与机器人源码截至 2026-11-09 未公开）
 
 ## 参考来源
 

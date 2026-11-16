@@ -10,7 +10,6 @@ related:
   - ../concepts/ai-auto-research.md
   - ../entities/awesome-rsi.md
   - ../entities/paper-metarsi-v1.md
-  - ../entities/paper-metarsi-v1.md
   - ../entities/karpathy-autoresearch.md
   - ../entities/paper-motus2.md
   - ../entities/paper-rsi-survey-2607-07663.md

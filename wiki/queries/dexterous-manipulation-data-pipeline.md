@@ -3,7 +3,7 @@ title: 灵巧操作数据管线与 RL 训练基建指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-10-28
+updated: 2026-11-15
 related:
   - ../methods/auto-labeling-pipelines.md
   - ../methods/wilor.md
@@ -20,6 +20,8 @@ sources:
   - ../../sources/blogs/macrodata_egocentric_video_3d_hand_actions.md
   - ../../sources/papers/hand_visibility_detector_arxiv_2608_11574.md
   - ../../sources/papers/learning_dexterous_manipulation_survey_2610_33486.md
+original:
+  - ../../sources/papers/policy_optimization.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「灵巧操作项目里，数据标注、手部感知、RL 优势估计和执行器建模分别该用哪条技术线？」

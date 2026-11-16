@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, china, open-source, embodied-ai, technology-map]
 status: complete
-updated: 2026-09-06
+updated: 2026-11-15
 related:
   - ../entities/humanoid-motion-intelligence.md
   - ../queries/china-domestic-opensource-424-coverage.md

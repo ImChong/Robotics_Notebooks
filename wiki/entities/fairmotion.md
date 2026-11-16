@@ -10,6 +10,7 @@ related:
   - ./amass.md
   - ./gvhmr.md
   - ../methods/motion-retargeting-gmr.md
+original: ../../sources/repos/fairmotion.md
 sources:
   - ../../sources/repos/fairmotion.md
 ---
@@ -19,6 +20,10 @@ sources:
 **fairmotion**（<https://github.com/facebookresearch/fairmotion>）是 Meta Research 的通用**动捕数据处理库**：统一管理运动表示、3D 变换、文件格式与可视化，支持 **BVH / ASF-AMC / AMASS / AMASS-DIP** 读写，并提供 FK、运动操作以及 motion_prediction / clustering 等示例任务。BSD-3-Clause，**2023-05 起已归档（read-only）**。
 
 > ⚠️ **定位说明**：fairmotion 是**上游动捕数据与骨架基础设施**，本身**不提供机器人重定向**。它常作为重定向管线的数据 IO 与表示层，下游再接 [GMR](../methods/motion-retargeting-gmr.md) / [PHC](./phc.md) 等做真正的人→机器人映射。收录于此是为补全「重定向工具链的数据上游」一环，与同样非重定向器的 [AMASS](./amass.md) 数据档案对照阅读。
+
+## 一句话定义
+
+**fairmotion** 是 Meta 开源（2023 年已归档）的通用动捕数据处理库，提供 BVH/AMASS 读写、3D 刚体变换、前向运动学（FK）与可视化能力，常作重定向管线的上游数据基础设施。
 
 ## 英文缩写速查
 
@@ -34,6 +39,20 @@ sources:
 - **数据层地基**：把异构动捕格式统一成可编程的 Motion / Pose 表示，省去重定向前的 IO 与坐标系样板。
 - **与 AMASS 衔接**：原生读 AMASS（SMPL-H），是 SMPL 系重定向（[PHC](./phc.md) / [GMR](../methods/motion-retargeting-gmr.md)）的常见前处理来源之一。
 - **注意取舍**：已归档、无机器人重定向；新项目若只需数据加载，也可直接用各重定向仓自带的 loader。
+
+## 核心机制
+
+fairmotion 以 `Motion` / `Pose` / `Skeleton` 为核心抽象：从 BVH 或 AMASS 解析骨骼拓扑与局部旋转序列后，通过前向运动学（FK）计算全局关节位置与速度，并提供 `ops` 模块完成坐标系转换、重采样与切片。
+
+## 工程实践
+
+- **上游数据清洗**：在送入机器人重定向器（如 PHC / GMR）前，可用 fairmotion 统一帧率、根轨迹对齐与坐标系朝向。
+- **离线可视化检查**：利用内置渲染器快速核对 BVH/AMASS 原始动作是否存在穿模或跳变。
+
+## 局限
+
+- **已归档维护**：官方仓库已于 2023 年归档，不再适配新版 PyTorch/NumPy 生态。
+- **不包含机器人重定向**：仅处理人体骨骼与动捕数据，不提供 URDF/MJCF 映射或逆运动学求解。
 
 ## 源码运行时序图
 

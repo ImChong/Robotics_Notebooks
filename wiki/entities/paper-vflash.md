@@ -2,11 +2,12 @@
 type: entity
 title: "VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding / VFlash：通过闪速图元解码实现快速精准的视觉规划"
 project_id: vflash
+arxiv: '2611.08449'
 project: https://research.nvidia.com/labs/lpr/vflash/
-venue: "NVIDIA Technical Report 2026（项目页 PDF v20261105-2；暂无 arXiv）"
+venue: "NVIDIA Technical Report 2026 / arXiv:2611.08449v1"
 tags: [paper, nvidia, visual-planning, robotics, autonomous-driving]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-09
 related:
   - ./paper-locateanything.md
   - ../concepts/world-action-models.md
@@ -40,7 +41,7 @@ VFlash 用轻量草稿模型并行生成完整轨迹或边界框，通过图元�
 |------|------|
 | 标题 | VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding |
 | 机构 | 英伟达；约翰斯·霍普金斯大学、香港理工大学、普渡大学、香港大学（额外机构） |
-| 原文版本 | [20261105-2 技术报告](https://research.nvidia.com/labs/lpr/vflash/assets/paper/vflash.pdf?v=20261105-2)，核对方法、实验与附录 |
+| 原文版本 | [20261105-2 官方技术报告](https://research.nvidia.com/labs/lpr/vflash/assets/paper/vflash.pdf?v=20261105-2)；另有 [arXiv:2611.08449v1](https://arxiv.org/abs/2611.08449) |
 
 ## 项目流程图
 
@@ -124,7 +125,8 @@ flowchart TD
 
 ## 参考来源
 
-- [技术报告归档](../../sources/papers/vflash.md)
+- [技术报告归档（新增 arXiv 索引）](../../sources/papers/vflash.md)
+- [arXiv:2611.08449v1](https://arxiv.org/abs/2611.08449)
 - [官方项目页及开放状态核查](../../sources/sites/nvidia-vflash.md)
 
 ## 关联页面

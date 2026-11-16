@@ -20,7 +20,7 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
-# EVA
+# EVA: Inverse Dynamics Rewards for Video World Models（arXiv:2603.17808）
 
 **EVA: Aligning Video World Models with Executable Robot Actions via Inverse Dynamics Rewards** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 335/564** 篇，分组 **WAMs**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

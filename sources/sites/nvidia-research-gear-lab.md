@@ -41,7 +41,7 @@
 |-------------|-------------|-----------|
 | `/gear/egoscale/` | [nvidia-research-egoscale.md](./nvidia-research-egoscale.md) | [egoscale.md](../../wiki/methods/egoscale.md) |
 | `/gear/enpire/` | [nvidia-research-enpire.md](./nvidia-research-enpire.md) | [enpire.md](../../wiki/methods/enpire.md) |
-| GEAR-SONIC 项目页 | [sonic-humanoid-motion-tracking.md](../repos/sonic-humanoid-motion-tracking.md) | [sonic-motion-tracking.md](../../wiki/methods/sonic-motion-tracking.md) |
+| GEAR-SONIC 项目页 | [sonic-humanoid-motion-tracking.md](../repos/sonic-humanoid-motion-tracking.md) | [sonic-motion-tracking.md](../../wiki/entities/nvidia-sonic.md) |
 | GR00T WBC 仓库 | [gr00t_wholebodycontrol.md](../repos/gr00t_wholebodycontrol.md) | [gr00t-wholebodycontrol.md](../../wiki/entities/gr00t-wholebodycontrol.md) |
 | GR00T N1 论文 | [humanoid_rl_stack_34_gr00t_n1…](../papers/humanoid_rl_stack_34_gr00t_n1_an_open_foundation_model_for_generalist.md) | [paper-hrl-stack-34-gr00t_n1.md](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) |
 
@@ -50,7 +50,7 @@
 ## 对 wiki 的映射
 
 - [NVIDIA GEAR Lab](../../wiki/entities/nvidia-gear-lab.md) — 研究组 hub 页（议程、项目谱系、与本库交叉索引）
-- 交叉更新：[egoscale.md](../../wiki/methods/egoscale.md)、[enpire.md](../../wiki/methods/enpire.md)、[sonic-motion-tracking.md](../../wiki/methods/sonic-motion-tracking.md)、[gr00t-wholebodycontrol.md](../../wiki/entities/gr00t-wholebodycontrol.md)、[zhengyi-luo.md](../../wiki/entities/zhengyi-luo.md)
+- 交叉更新：[egoscale.md](../../wiki/methods/egoscale.md)、[enpire.md](../../wiki/methods/enpire.md)、[sonic-motion-tracking.md](../../wiki/entities/nvidia-sonic.md)、[gr00t-wholebodycontrol.md](../../wiki/entities/gr00t-wholebodycontrol.md)、[zhengyi-luo.md](../../wiki/entities/zhengyi-luo.md)
 
 ## 当前提炼状态
 

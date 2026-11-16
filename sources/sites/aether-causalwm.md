@@ -60,3 +60,7 @@
 - 论文主节点：[`wiki/entities/paper-causalwm.md`](../../wiki/entities/paper-causalwm.md)
 - 公司页：[`wiki/entities/aether-ai.md`](../../wiki/entities/aether-ai.md)
 - 系统页：[`wiki/entities/aether-cris-0.md`](../../wiki/entities/aether-cris-0.md)
+
+## 2026-11-13 项目页与资源复核
+
+已读aetherlabsai.github.io/CausalWM全文和资源链接；榜单按2026-09-11快照，页面说明局部prompt改写、少步为独立实验、动作示例为best-of-8选例。Code连到TI2V推理实现，HF额外条款仍须由使用者核对；本次未观看视频或下载模型。

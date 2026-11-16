@@ -13,7 +13,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2604.27792"
 related:
   - ./paper-gwm-first-principles.md
@@ -30,6 +30,8 @@ related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
+original:
+  - ../../sources/papers/motubrain_arxiv_2604_27792.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_gwm_closed_loop_2026-09-10.md
   - ../../sources/papers/motubrain_arxiv_2604_27792.md
@@ -76,19 +78,19 @@ summary: "Motubrain（生数科技 / 清华，arXiv:2604.27792）：UniDiffuser 
 | 出处 | arXiv:2604.27792（2026-04，2026-07 更新） |
 | 前作 | Motus（arXiv:2512.13030） |
 | 动作 | relative EEF 统一表征 |
-| 推理 | 完整联合 ~5 Hz；IDM / Video-to-Action ~11 Hz（项目页） |
-| 开源（截至 2026-08-13） | **占位仓**：LICENSE（Modified MIT）+ `Motubrain.pdf` + README；**无脚本/权重** |
+| 推理 | v5 表 2：基准 0.20 Hz；cache 阶段 5 Hz；完整加速 V2A 11.11 Hz |
+| 开源（截至 2026-11-13） | **占位仓**：LICENSE（Modified MIT）+ `Motubrain.pdf` + README；**无脚本/权重** |
 
-## 方法与核心结构
+## 核心原理与方法栈
 
 | 模块 | 作用 |
 |------|------|
 | **三流 MoT** | Text / Video / Action 分流通，中间层 **H-bridge** 做联合注意 |
 | **多视角** | token 拼接 + view-dependent 3D RoPE offset，不绑死相机数 |
 | **noisy condition** | 50% 对条件帧加高斯噪声，抗部署视觉扰动 |
-| **预训练两段** | 先更视频支；再语言–条件视频–视频–动作全联合 |
+| **预训练两段** | 先更新视频支；第二阶段冻结视频、更新动作支，仍优化 video/action 两项 loss |
 | **后训练** | 非 AR 或 Teacher-Forcing AR + Diffusion，保动作连续 |
-| **推理捷径** | 不生成完整未来视频，只更新 action 支（IDM） |
+| **推理捷径** | 短 joint prefix 后冻结视频、缓存 video/text K/V，再仅更新 action suffix |
 
 ### 流程总览
 
@@ -108,16 +110,21 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用**（截至 2026-08-13）：[`shengshu-ai/Motubrain`](https://github.com/shengshu-ai/Motubrain) **没有** 可辨识训练/推理入口。官网称前作 Motus 已开源，**不能**用来复现 Motubrain 报告数字。代码放出后应补：数据 → 两段预训练 → AR 后训练 → IDM/RTC 推理 的 `sequenceDiagram`。
+**不适用**（截至 2026-11-13）：[`shengshu-ai/Motubrain`](https://github.com/shengshu-ai/Motubrain) **没有** 可辨识训练/推理入口。官网称前作 Motus 已开源，**不能**用来复现 Motubrain 报告数字。代码放出后应补：数据 → 两段预训练 → AR 后训练 → IDM/RTC 推理 的 `sequenceDiagram`。
 
 ## 工程实践
+
+- v5 已说明推理加速和 RTC：50→30 步、compile、FP8、DiT cache、V2A 短联合前缀/动作后缀，Non-AR 累计 4.90→0.09 秒；这仍是作者报告，未复现。
+- RTC 冻结预计延迟覆盖的旧 chunk 前缀，并对重叠区渐弱融合；真实部署需记录网络抖动和 delay queue，不能只拿单次采样频率换算控制率。
+- 真机 98.54 / 97.34 / 83.30 是按重试折扣的步骤分，不能写成二值任务成功率。报告仍需同本体 50–100 条适配轨迹。
+
 
 | 项 | 建议 / 官方叙事 |
 |----|----------------|
 | **何时跟** | 需要 Joint WAM 榜单坐标，或评估「无 VLM 规划器的长程双臂」主张 |
 | **何时不跟** | 要可跑权重：今日没有；要异步切块细节：读 [2608.01880](./paper-wam-realtime-async.md) |
 | **跨本体** | 官方口径 50–100 条同本体轨迹；动作用 relative EEF |
-| **延迟** | 项目页 ~5 Hz 全联合、~11 Hz Video-to-Action；真机丝滑另做 RTC |
+| **延迟** | v5 表 2 的 5 Hz 是 cache 阶段；V2A 后 0.09s；异步 RTC 还需估计网络/推理延迟 |
 | **许可** | Modified MIT；超大规模商用须在 UI 展示 "MotuBrain" |
 | **源码运行时序图** | **不适用**（原因见上节） |
 
@@ -131,7 +138,7 @@ flowchart TB
 | **CVPR 2026 RoboChallenge Table30v2** | 宣称第 3（2 台未测最优） | 真机限时赛，细节以赛事页为准 |
 | **适配 / 长程** | 50–100 条；>10 原子动作 | 插花、倒水+拿面包、捞丸子重试等定性 |
 
-数字以 README 表为准；完整设定见 PDF。
+数字以已通读 v5 PDF 表为准；README 导语 EWMScore 另值保留为来源不一致，不混用。
 
 ## 结论
 
@@ -157,7 +164,7 @@ flowchart TB
 
 - **代码未落地：** 无法核对立项数字或接入真机。
 - **EWMScore 两处不一致：** 导语 64.87 vs 表 63.77，引用用表。
-- **真机主张偏定性：** 插花/双臂/重试是案例，不是公开协议榜。
+- **真机协议局限：** v5 有 5/7/10 次关东煮/调酒/插花量化，但采用步骤分和重试折扣，不是公开二值任务榜。
 - **商用许可附加条款：** 超大规模产品须展示品牌。
 
 ## 关联页面

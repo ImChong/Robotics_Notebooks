@@ -2,7 +2,8 @@
 type: concept
 tags: [simulation, sim2real, physics, dynamics, contact, friction, fidelity]
 status: complete
-updated: 2026-09-15
+original: ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
+updated: 2026-11-15
 related:
   - ../queries/contact-wrench-closed-loop.md
   - ../queries/simulation-physics-fidelity.md
@@ -57,6 +58,10 @@ summary: "物理保真度 ↔ sim2real gap 的因果概念页：把仿真保真�
 
 分层让 **DR / SysID / 补偿** 各自落到该补的那一层，而不是用一个超大随机化范围掩盖一切。
 
+## 核心原理与方法栈
+
+- 将物理保真度拆解为执行器动力学、接触与摩擦、刚体/柔体参数及传感延迟四个层级，逐层对齐真机与仿真差异。
+
 ## 四层保真度分解
 
 ```
@@ -99,7 +104,11 @@ URDF 的连杆尺寸、碰撞体形状、质量、质心与惯量张量是动力
 
 经验法则：**先用保真度 + SysID 把能建的建准，再用 DR 覆盖剩下的残差**。一上来就靠超大 DR 范围掩盖一切，会同时牺牲训练效率与策略性能。
 
-## 常见误区
+## 工程实践
+
+- **先辨识后随机化**：优先通过系统辨识锁定执行器延迟、摩擦与阻尼标称值，再在其邻域内施加域随机化，避免盲目扩大随机化范围牺牲策略性能。
+
+## 常见误区与局限
 
 - **误区：「保真度越高越好」。** 接触/积分保真度越高，仿真越慢、越难可微；在吞吐受限的并行 RL 里，过高保真反而拖垮采样效率。保真度是**按层选择性投资**，不是一味拉满。
 - **误区：「DR 能替代保真度」。** DR 覆盖的是残差分布；若某层机理性偏差（如执行器力矩 gap）系统性存在，再大的随机化也只是把策略训得保守，而非消除 gap。
@@ -122,3 +131,8 @@ URDF 的连杆尺寸、碰撞体形状、质量、质心与惯量张量是动力
 - [sources/repos/sage-sim2real-actuator-gap.md](../../sources/repos/sage-sim2real-actuator-gap.md) — 执行器层 sim2real gap 与补偿
 - [sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md) — 舵机扩展摩擦模型（BAM）
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触动力学一手资料
+
+## 推荐继续阅读
+
+- [Sim2Real](./sim2real.md)
+- [SIMPLER：Real2Sim 评测](../entities/paper-simplerenv-real2sim-eval.md)

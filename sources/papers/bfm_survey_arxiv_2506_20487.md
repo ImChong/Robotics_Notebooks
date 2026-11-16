@@ -26,7 +26,7 @@
 
 - 策略显式条件于 **目标状态 / 目标嵌入**；跟踪类把 dense reference（关节角、姿态）作为逐步目标，比「整段模仿」更易泛化。
 - **代表脉络：** TeamPlay → ASE → CALM/CASE；PHC、MaskedMimic、InterMimic；真机 * 标记：HOVER、TWIST/TWIST2、AMS、Any2Track、**BFM4Humanoid**、**SONIC** 等。
-- **本库映射：** [BFM 论文实体](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[humanoid motion tracking 选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)。
+- **本库映射：** [BFM 论文实体](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[humanoid motion tracking 选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)。
 
 ### 2）Intrinsic reward-driven learning
 

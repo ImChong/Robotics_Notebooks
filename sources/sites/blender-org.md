@@ -13,7 +13,7 @@
 ## 为什么值得保留
 
 - 机器人知识库中多处出现 **Blender** 作为 **DCC（数字内容创作）**、**BVH/网格导出**、**USD 场景组装** 与 **插件宿主**（如 [ppf-contact-solver](../repos/ppf-contact-solver.md)、[SAM3DBody-cpp](../repos/sam3dbody-cpp.md)），但此前缺少独立溯源页。
-- 与 [Mixamo](./mixamo.md)（商业在线角色库）、[NVIDIA Omniverse](../wiki/entities/nvidia-omniverse.md)（USD 协作仿真底座）形成 **资产创作 → 格式交换 → 仿真/训练** 链路上的对照节点。
+- 与 [Mixamo](./mixamo.md)（商业在线角色库）、[NVIDIA Omniverse](../../wiki/entities/nvidia-omniverse.md)（USD 协作仿真底座）形成 **资产创作 → 格式交换 → 仿真/训练** 链路上的对照节点。
 - 官网明确产品能力分区：**Cycles** 渲染、**Geometry Nodes** 程序化建模、**VFX 跟踪**、**绑定与动画**、**Grease Pencil** 2D/3D 混合、**Python 可扩展界面**——与具身智能中的场景生成、动捕后处理、可视化管线直接相关。
 
 ## 公开功能要点（来自官网首页，2026-06-07）
@@ -47,3 +47,5 @@
 - 用户手册：<https://docs.blender.org/manual/en/latest/index.html>
 - 开发者文档：<https://developer.blender.org/docs/>
 - 社区：<https://www.blender.org/community/>
+
+- **通读：** 已完成

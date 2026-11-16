@@ -11,7 +11,7 @@ related:
   - ./paper-twist2.md
   - ./paper-twist.md
   - ./paper-bfm-12-clone.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/teacher-student-dagger-training.md
   - ../methods/motion-retargeting-gmr.md
 sources:
@@ -130,7 +130,7 @@ flowchart LR
 |------|----------|
 | [TWIST2](./paper-twist2.md) / [TWIST](./paper-twist.md) | 先重定向再跟踪；本文在其基线表中 SR 与延迟均落后，但 TWIST2 有开源全栈 |
 | [CLONE](./paper-bfm-12-clone.md) | 同样无需单独重定向环节（延迟 0.933 ms），但对根高度漂移 SR 为 0 |
-| [SONIC](../methods/sonic-motion-tracking.md) | 规模化跟踪基座；本文用其 bones-seed 轨迹评测，延迟 204 ms（含 180 ms 前瞻） |
+| [SONIC](./nvidia-sonic.md) | 规模化跟踪基座；本文用其 bones-seed 轨迹评测，延迟 204 ms（含 180 ms 前瞻） |
 | [GMR 重定向](../methods/motion-retargeting-gmr.md) | 显式重定向路线，本文试图绕开 |
 
 ## 局限与风险

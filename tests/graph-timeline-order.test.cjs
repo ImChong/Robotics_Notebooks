@@ -97,5 +97,5 @@ test('teardown interrupts node-circle pop-in so fill-opacity cannot snap back to
   );
   assert.match(teardown, /node\.select\('\.node-circle'\)\.interrupt\(\)/);
   assert.match(teardown, /syncGraphDomFromSimulation\(\)/);
-  assert.match(source, /function enterTimelineMode\(\) \{\n      if \(timelineAnimating\) return;/);
+  assert.match(source, /function enterTimelineMode\(\) \{\n {6}if \(timelineAnimating\) return;/);
 });

@@ -3,7 +3,7 @@
 type: entity
 tags: [framework, robot-learning, vla, teleoperation, real-time, open-source, cross-embodiment, nvidia, cmu]
 status: complete
-updated: 2026-05-15
+updated: 2026-11-13
 related:
   - ../methods/vla.md
   - ../tasks/teleoperation.md
@@ -12,6 +12,8 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/action-chunking.md
 sources:
+  - ../../sources/repos/robot-io-rio.md
+original:
   - ../../sources/repos/robot-io-rio.md
 summary: "RIO（Robot I/O）是 CMU 等团队开源的跨形态实时机器人 I/O 框架：统一 Node 与可切换中间件，把遥操作、传感、控制、RLDS 风格数据与异步 VLA 推理接到同一套 station 配置上。"
 ---
@@ -83,8 +85,15 @@ flowchart LR
   PW --> MW
 ```
 
+## 工程实践
+- **按 station 配置落地**：用单一 dataclass 描述设备、相机与臂/夹爪组合，业务代码只面向 proxy API；换硬件优先改配置而非主循环。
+- **中间件按阶段切换**：调试用 Thread，本机闭环用 Shared Memory，多机再用 Zenoh / ZeroRpc / Portal。
+- **VLA 部署**：训练在外部栈完成，导出后用异步推理节点拉观测、提交动作 chunk，保持主循环非阻塞。
+- **环境**：README 示例环境为 Ubuntu 22.04、Python 3.10，另需克隆 `third_party/openpi` 并用 uv 同步依赖；硬件驱动与延迟需自测。
+
 ## 常见误区或局限
 
+- **2026-11-13 维护复核：** [官方 README（7c60b69）](https://github.com/robot-i-o/rio/blob/7c60b69065d0c226be55cf91770e0b5c34964bc3/README.md) 仍定位为机器人、相机与遥操作 I/O 及 VLA 部署接口；安装示例测试环境为 Ubuntu 22.04、Python 3.10，另克隆 `third_party/openpi` 后以 uv 同步依赖，文档可用 `uv run mkdocs serve` 本地构建。本次核对 README，未验证各硬件驱动、外部分仓或性能数据。
 - **不是「又一个 VLA 训练框架」**：论文定位是 **I/O 与部署编排**；训练仍多为 **bring your own stack**（导出后在外部 fine-tune，再载入权重闭环）。
 - **延迟与 profiling 数字依赖具体中间件、相机路数、GPU 与策略**：项目页给出的与 **LeRobot** 的端到端延迟对比应视为**同配置下的一个数据点**，换硬件需自测。
 - **许可与维护**：以 GitHub 仓库 LICENSE 与发布说明为准；**rio** 与 **rio-hw** 分仓，部署前需同时对照文档的版本矩阵。

@@ -11,7 +11,7 @@ related:
   - ./paper-exbody-expressive-humanoid.md
   - ../methods/action-chunking.md
   - ../methods/hierarchical-reinforcement-learning.md
-  - ../methods/saycan.md
+  - ./paper-saycan.md
   - ./paper-notebook-towards-proprioception-aware-embodied-planning-f.md
 sources:
   - ../../sources/papers/humanoid_pnb_hierarchical-vision-language-planning-for-multi.md
@@ -150,7 +150,7 @@ flowchart TD
 - 底层跟踪控制器所基于的 ExBody：[paper-exbody-expressive-humanoid](./paper-exbody-expressive-humanoid.md)
 - 中层技能 HIT 所借鉴的 ACT：[action-chunking](../methods/action-chunking.md)
 - 分层控制：[hierarchical-reinforcement-learning](../methods/hierarchical-reinforcement-learning.md)
-- LLM 选技能的早期代表 SayCan：[saycan](../methods/saycan.md)
+- LLM 选技能的早期代表 SayCan：[saycan](./paper-saycan.md)
 - MLLM 双臂人形规划对照：[paper-notebook-towards-proprioception-aware-embodied-planning-f](./paper-notebook-towards-proprioception-aware-embodied-planning-f.md)
 
 ## 参考来源

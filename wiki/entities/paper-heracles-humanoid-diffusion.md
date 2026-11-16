@@ -2,12 +2,12 @@
 type: entity
 tags: [paper, humanoid, motion-tracking, diffusion, flow-matching, recovery, middleware, x-humanoid, body-system-stack]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-14
 arxiv: "2603.27756"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/beyondmimic.md
   - ../methods/diffusion-motion-generation.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
@@ -47,7 +47,7 @@ summary: "Heracles（arXiv:2603.27756）在高层参考与底层物理 tracker �
 
 ## 为什么重要
 
-- **直击 tracking 的 OOD 脆弱性：** [SONIC](../methods/sonic-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md) 等在大规模 MoCap 上极强，但严重扰动时盲目最小化即时 kinematic 误差易产生**非类人、不可恢复**的扭矩模式——Heracles 用生成先验**改写**即将执行的参考缓冲，而非仅加重 tracking 权重。
+- **直击 tracking 的 OOD 脆弱性：** [SONIC](./nvidia-sonic.md)、[BeyondMimic](../methods/beyondmimic.md) 等在大规模 MoCap 上极强，但严重扰动时盲目最小化即时 kinematic 误差易产生**非类人、不可恢复**的扭矩模式——Heracles 用生成先验**改写**即将执行的参考缓冲，而非仅加重 tracking 权重。
 - **与 BFM 路线正交：** [BFM](./paper-behavior-foundation-model-humanoid.md) 等 **无参考** 生成式 WBC 擅自然行为但难保精确时空跟踪；Heracles **保留专用 tracker**，生成层只在偏差大时介入。
 - **与 SD-AMP 对照：** [SD-AMP](./paper-unified-walk-run-recovery-sdamp.md) 在 **单策略 RL** 内用双 AMP 判别器；Heracles 是 **分层系统**（middleware + tracker），更接近「规划改参考 + 高频跟踪执行」。
 - **隐式模式切换：** 条件于 $(\mathbf{p}_t,\mathbf{m}_t)$ 的 flow 模型在名义区近似 **identity map**，OOD 区变为 **generative synthesizer**——无需手调切换阈值（与 SD-AMP 的训练期 $|g_z+1|$ 门控形成方法论对比）。
@@ -142,7 +142,7 @@ flowchart TB
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 42 篇栈总框架（本文 #40/42）
 - [AMP 运动先验专题](../overview/humanoid-amp-motion-prior-survey.md) — 姊妹篇总览
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
-- [SONIC](../methods/sonic-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md)、[扩散运动生成](../methods/diffusion-motion-generation.md)
+- [SONIC](./nvidia-sonic.md)、[BeyondMimic](../methods/beyondmimic.md)、[扩散运动生成](../methods/diffusion-motion-generation.md)
 - [BFM 人形基础模型](./paper-behavior-foundation-model-humanoid.md)、[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)
 - [ETH G1 扩散全身 locomotion](./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — 同为「生成参考 + RL 跟踪」分层，侧重 **地形感知 loco** 而非 recovery 中间件
 - [Balance Recovery](../tasks/balance-recovery.md)

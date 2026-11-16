@@ -17,7 +17,7 @@ tags:
   - ntu
   - ace-robotics
 status: complete
-updated: 2026-09-16
+updated: 2026-11-14
 arxiv: "2607.28625"
 related:
   - ./paper-data-pyramid-embodied-manipulation.md
@@ -38,7 +38,11 @@ sources:
   - ../../sources/papers/ace_data_0_arxiv_2607_28625.md
   - ../../sources/sites/ace-data-0-github-io.md
   - ../../sources/datasets/ace-data-0.md
-summary: "ACE-Data-0（NTU S-Lab × Ace Robotics，arXiv:2607.28625）：Ambient Capture Engine 把真实家居变为时空校准录制工作室（table/room 双尺度），发布 150h/17M 帧/75k episodes 同步 ego·exo·运动·物体·音频·触觉数据，并给出信号→组件→交互三层诊断 benchmark；HF gated 研究许可，训练代码未见。"
+original:
+  - ../../sources/papers/ace_data_0_arxiv_2607_28625.md
+  - ../../sources/sites/ace-data-0-github-io.md
+  - ../../sources/datasets/ace-data-0.md
+summary: "ACE-Data-0（NTU S-Lab × Ace Robotics，arXiv:2607.28625）：Ambient Capture Engine 把真实家居变为时空校准录制工作室（table/room 双尺度），发布 150+ h/17M+ 帧/75k+ episodes 同步 ego·exo·运动·物体·音频·触觉数据，并给出信号→组件→交互三层诊断 benchmark；HF 已上传约 22.18 TB 且 API 当前 gated: false（非商业研究许可），统一训练与评测代码未发布。"
 ---
 
 # ACE-Data-0：以人为中心的 Ambient Capture 具身数据引擎
@@ -78,20 +82,20 @@ summary: "ACE-Data-0（NTU S-Lab × Ace Robotics，arXiv:2607.28625）：Ambient
 | **机构** | 南洋理工大学（NTU）S-Lab；大晓机器人（Ace Robotics） |
 | **类型** | 采集系统 + 多模态数据集 + 分层感知 benchmark |
 | **arXiv** | [2607.28625](https://arxiv.org/abs/2607.28625) |
-| **规模** | **150** h · **17M** 帧 · **75,000** episodes · **200** 任务类 · **50** 人 · **2** 环境 |
-| **模态** | Ego（4 鱼眼+IMU）· Exo（≥8 RGB）· 身体/手/物体 60 Hz · 音频 · 全掌触觉 |
-| **活动类型** | Atomic HOI · Chain of HOI · HSI |
-| **开源（截至 2026-08-10）** | **部分开源**：HF 数据集 **gated** 研究许可已上线；训练/评测代码 **未见** |
+| **规模** | **150+** h · **17M+** 帧 · **75,000+** episodes · **200+** 任务类 · **50+** 3D 扫描物体 · **50** 人 · **2** 环境 |
+| **模态** | Ego（4 鱼眼 1088×1280 @ 20 FPS + IMU）· Exo（8 RGB）· 身体/手/物体 60 Hz · 音频 · 全掌触觉 |
+| **活动类型** | Atomic HOI（54 h / 36.5%）· Chain of HOI（64 h / 42.9%）· HSI（30 h / 20.6%） |
+| **开源（截至 2026-11-14）** | **部分开源**：HF 已上传约 **22.18 TB**（API `gated: false`，研究许可）；训练/评测代码 **未发布** |
 
 ## 开源状态
 
-核查日：**2026-08-10**（项目页 / Hugging Face）。
+核查日：**2026-11-14**（项目页 HTML / Hugging Face API JSON + README / arXiv 全文）。
 
 | 产物 | 状态 |
 |------|------|
-| 数据集 [`ACERobotics/ACE-Data-0`](https://huggingface.co/datasets/ACERobotics/ACE-Data-0) | **已发布（gated）** — 非商业学术研究许可；个人申请不可转让（归档见 [sources/datasets/ace-data-0.md](../../sources/datasets/ace-data-0.md)） |
+| 数据集 [`ACERobotics/ACE-Data-0`](https://huggingface.co/datasets/ACERobotics/ACE-Data-0) | **已上传（`~22.18 TB`，API `gated: false`）** — `ace-data-0-research-license`（非商业学术研究）；HF API 截至 2026-10-14 实测 `gated: false` 且 `siblings` 列出 `Room-scale/` ≥100k 文件，但 `README.md` 仍残留 `extra_gated_*`、`Data_Files-Coming_Soon` 与「尚未发布」过期文本（`Table-scale/` 因 API 100k 上限未独立枚举；归档见 [sources/datasets/ace-data-0.md](../../sources/datasets/ace-data-0.md)） |
 | 项目页 | **已开放**（归档见 [sources/sites/ace-data-0-github-io.md](../../sources/sites/ace-data-0-github-io.md)） |
-| 训练 / 统一 benchmark 代码 | **未见** — 项目页未列 GitHub |
+| 训练 / 统一 benchmark 代码 | **未见** — 项目页与论文未列 GitHub；仅 HF 仓 `Room-scale/calibration/` 说明含标定脚本 |
 | 模型权重 | **不适用** |
 
 ## 数据集速查
@@ -125,23 +129,23 @@ flowchart TB
 
 ### 双尺度采集
 
-细粒度接触与房间级运动对传感器密度的要求互相冲突。ACE **不做单套折中**，而用两套配置共享同一表示与管线：table-scale 加密近距观测；room-scale 覆盖带家具公寓。双方都记录 ego + 多外视 + 动捕 + 物体轨迹 + 音频 + 触觉，并注册到同一时空框架。
+细粒度接触与房间级运动对传感器密度的要求互相冲突。ACE **不做单套折中**，而用两套配置共享同一表示与管线（共 28 台 OptiTrack PrimeX 22，原始采集约 **1 TB/h**）：**Table-scale（~30 m²）** 部署 16 台 OptiTrack + 8× GoPro（0.3–0.5 m 近距）+ 8 视角 RANSAC 2D 三角化手姿精修；**Room-scale（~200 m² 公寓）** 部署 12 台 OptiTrack + 8× ZED One（GMSL2 + Jetson Orin）+ 60 Hz Manus 动捕手套。双方均穿戴 `ACE-Ego-Head-V02 Lite`（4 路 1088×1280 鱼眼 @ 20 FPS + IMU + 5 markers）、41 关节 SMPL-X 标记与 `ACE-Sense-Glove Lite` 全掌压力手套。
 
 ### 目标级协议与三类活动
 
-参与者收到**家居目标**而非逐步脚本，同一目标可走不同路线、物体选择与恢复策略。活动分成：
+参与者（共 50 名，2 天采集）收到**家居目标**而非逐步脚本，同一目标可走不同路线、物体选择与恢复策略。活动分成：
 
-1. **Atomic HOI** — 短链日常操作（倒水、擦拭、切菜等）；
-2. **Chain of HOI** — 连续例程（开冰箱→清洗→烹饪→收拾），强调中间状态记忆；
-3. **HSI** — 全身–场景（坐下、穿行、姿态转换、家具接触）。
+1. **Atomic HOI** — 30k+ episodes / **54 h**（6.2M+ 帧 = 36.5%，约 3 min，1–3 个日常操作）；
+2. **Chain of HOI** — 40k+ episodes / **64 h**（7.3M+ 帧 = 42.9%，约 20–30 min，连续家务例程与状态跟踪）；
+3. **HSI** — **30 h**（3.5M+ 帧 = 20.6%，约 5 min，坐下、穿行、姿态转换与家具接触）。
 
 ### 同步与标注哲学
 
-多模态价值取决于「同一物理瞬间」是否对齐。ACE 以光学动捕时钟为时间基准，并用 marker 桥接把静态外视与可穿戴相机放进同一世界系；触觉手套经 IMU 模板与头显对齐。大量几何/接触标注由测量状态**自动导出**，降低「用待评方法给自己标伪 GT」的循环风险。
+多模态价值取决于「同一物理瞬间」是否对齐。ACE 通过拍摄动捕主机上的纳秒级 QR 光时钟将相机对准 OptiTrack 60 Hz 主时钟（ZED One 残差 <4 ms，头显 4 路鱼眼 <2 ms）；利用反光 ArUco 板桥接无公共视野外视（重投影 <3 px，~1 cm 3D），手眼标定头显（~2 px）；触觉手套以 IMU 运动模板与头显对齐。全部几何/位姿/接触标签均直接由测量动捕、标定与触觉读数**导出**，仅自然语言描述由 `Gemini-3.1-pro-preview` 生成并经人工校验修正，避免「用待评视觉方法给自己标伪 GT」的循环误差。
 
 ## 源码运行时序图
 
-**不适用**——截至入库日（2026-08-10）官方仅发布 **gated 数据集与项目页**，未见可运行训练 / 评测入口或 GitHub 仓；复现入口以 [Hugging Face 申请流程](https://huggingface.co/datasets/ACERobotics/ACE-Data-0) 与论文 §5 评测协议为准。
+**不适用。** 截至 **2026-11-14**，官方仅在 Hugging Face 发布数据集 `ACERobotics/ACE-Data-0` 与项目页说明，论文与项目页均未提供可运行的模型训练或统一 benchmark 评测代码仓（`Room-scale/calibration/` 仅包含标定脚本说明，无端到端训练/推理入口）；复现入口以 [Hugging Face 仓库](https://huggingface.co/datasets/ACERobotics/ACE-Data-0)（含 `Table-scale/HOI` LeRobot 兼容 parquet 规范说明）与论文 §5 评测协议为准。
 
 ## 工程实践
 
@@ -155,14 +159,14 @@ flowchart TB
 
 ## 实验与评测（论文报告摘要）
 
-评测 **>30** 个既有方法（预训练权重直接测），暴露接触遮挡、egomotion 与长时漂移缺口。
+评测 **30+** 个既有方法（在 10 h 留出测试集上直接测预训练权重），暴露接触遮挡、egomotion 与长时漂移缺口。
 
-| 轨道 | 关键数字 / 现象（论文口径） |
-|------|---------------------------|
-| **触觉 from ego video** | TouchAnything Temp Acc **0.71**、C-IoU **0.16** 为表内最强，仍远未饱和；PressureVision 近乎失效 |
-| **人体运动（room-scale）** | 局部 PA-MPJPE 可到约 **55–60 mm** 量级；世界系 WA-MPJPE 常 **180–250+ mm**；ego 方法整体最弱 |
-| **手运动 ego** | WildHands 局部最好（PA-MPJPE **11.2 mm**）；世界系方法轨迹误差约 **98–102 mm** |
-| **手运动 exo** | WiLoR PA-MPJPE **9.1 mm**；HaPTIC 轨迹误差 **63 mm**（优于 ego 世界系） |
+| 轨道 | 关键数字 / 现象（论文 Tables 3–6） |
+|------|-----------------------------------|
+| **触觉 from ego video（Table 3）** | TouchAnything Temp Acc **0.7095**、C-IoU **0.1646**、V-IoU **0.1357**、CoP **6.5846** 为表内最强，仍远未饱和；PressureVision 近乎失效 |
+| **人体运动（room-scale，Table 4，22 方法）** | 局部 PA-MPJPE 可到约 **55.7 mm**（SMPLest-X）/ **60.1 mm**（Human3R）；世界系 WA-MPJPE：Human3R **75.4 mm**，多数时序/场景方法常更差（EgoAllo **220.3 mm**） |
+| **手运动 ego（Table 5）** | WildHands 局部最好（PA-MPJPE **11.2 mm**）；世界系轨迹误差 Dyn-HaMR **98.2 mm** / HaWoR **102.1 mm** |
+| **手运动 exo（Table 6）** | WiLoR PA-MPJPE **9.1 mm**；HaPTIC **10.0 mm** PA-MPJPE / **63.0 mm** 轨迹误差（明显优于 ego 世界系） |
 | **跨视角** | 固定外视更利全局轨迹；ego 近距细节互补；联合双视角是明确开放方向 |
 
 ## 结论
@@ -182,7 +186,7 @@ flowchart TB
 - **GT 覆盖边界** — 关节家具、流体、可变形物状态变化未标注；物体需预扫描贴标。
 - **采集装备可见** — 服/手套/头显/marker 可能成为捷径特征。
 - **非真机动作标签** — 到机器人执行仍需 retarget / 对齐；与 [Humanoid Everyday](humanoid-everyday-dataset.md) 等真机集互补而非替代。
-- **访问摩擦** — gated + 个人许可；协作环境每人都要单独申请。
+- **访问摩擦与仓状态差异** — 许可严格限非商业学术研究（不可转让、禁止商用与再识别）；虽然 HF API 截至 2026-10-14 实测 `gated: false`，但仓内 README 仍要求学术登记与合规声明，协作团队使用前须核实 `LICENSE` 条款。
 
 ## 与其他工作对比
 

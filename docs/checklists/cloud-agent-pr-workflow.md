@@ -42,9 +42,9 @@ git push -u origin <branch-name>
    - **`<detail-page-id>`** 与导出一致：可查 `docs/sitemap.xml` 中的 `detail.html?id=...`，或在 `docs/exports/site-catalog-v1.json` 的 `pages.detail_pages` 下找键名（例：`wiki-concepts-humanoid-parallel-joint-kinematics`）。  
 3. **Headless Chrome 截图**（推荐：仓库脚本，避免进程挂死）  
    ```bash
-   ./scripts/screenshot_site_detail.sh wiki-methods-sonic-motion-tracking
+   ./scripts/screenshot_site_detail.sh entity-nvidia-sonic
    # 或指定输出路径:
-   ./scripts/screenshot_site_detail.sh wiki-methods-sonic-motion-tracking /path/to/out.png
+   ./scripts/screenshot_site_detail.sh entity-nvidia-sonic /path/to/out.png
    ```  
    脚本在 `docs/` 起本地 `http.server`，用 `timeout(1)` 包住 Chrome：部分 Cloud 镜像里 Chrome 在打印 `bytes written` 后**仍不退出**（DevTools 进程常驻），仅靠 `--virtual-time-budget` 不足以结束进程；外层 `timeout` 强杀后**仍以 PNG 已生成且大于若干 KB 为成功判据**（退出码 124 可忽略）。  
 
@@ -65,7 +65,7 @@ git push -u origin <branch-name>
    若外网字体/CSS 加载较慢，可再增大 `--virtual-time-budget` 或外层 `timeout`。  
 4. **已合并且 Pages 已更新时**（可选）  
    亦可使用线上等价 URL，例如：  
-   `https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=...`  
+   `https://imchong.github.io/Robotics_Notebooks/detail.html?id=...`  
    注意：功能分支在合并前通常**不会**出现在线上，此时必须以本地 `http.server` 为准。
 
 ### 4.2 命令行门禁摘要（补充，不能替代站点页）

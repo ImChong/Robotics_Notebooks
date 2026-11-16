@@ -3,7 +3,7 @@ type: comparison
 tags: [mpc, rl, control, locomotion, comparison, engineering-selection]
 status: complete
 summary: "MPC vs RL：控制策略选型对比"
-updated: 2026-11-07
+updated: 2026-11-13
 original:
   - ../../sources/papers/mpc_rl_hybrid_papers_reading_2606_05687_2608_12063.md
   - ../../sources/papers/leveling_playing_field_rl_vs_gc_reading_arxiv_2506_17832_mrs1.md

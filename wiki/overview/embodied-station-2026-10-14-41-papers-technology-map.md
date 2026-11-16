@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, wam, vla, technology-map, wechat]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-13
 related:
   - ../entities/paper-streamingwam.md
   - ../entities/paper-freebar-barrier-guidance-async-vla.md

@@ -2,7 +2,7 @@
 type: concept
 tags: [llm-agents, control-interface, vla, locomotion, manipulation, anthropic, safety, sim2real]
 status: complete
-updated: 2026-10-15
+updated: 2026-11-10
 related:
   - ../entities/agnes-harness.md
   - ../entities/anthropic-embody.md
@@ -23,6 +23,7 @@ related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/paper-locovlm.md
   - ../entities/ora-open-robot-use-agents.md
+  - ../entities/paper-guava-harness.md
 original:
   - ../../sources/sites/anthropic-claude-plays-robotics.md
 sources:
@@ -133,6 +134,8 @@ Embody 里额外推理预算对多数 Claude 代际几乎不抬低层机器人�
 - [具身大模型分类学选型闭环](../queries/embodied-fm-taxonomy-loop.md) — VLM 当监督者 vs VLA 当执行器的分层选型
 
 - [ORA: Open Robot-Use Agents](../entities/ora-open-robot-use-agents.md) — 逐工具调用的 robot-use agent 与受监督动作闭环。
+
+- [Guava：语义操作 Harness 与 4B 蒸馏](../entities/paper-guava-harness.md) — GPT-5.4 在 MuJoCo 里采集工具调用和扰动恢复轨迹，蒸馏为本地 Guava-4B，仍依赖底层抓取与控制原语。
 
 ## 参考来源
 

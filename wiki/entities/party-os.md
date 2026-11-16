@@ -12,7 +12,7 @@ related:
   - ./human-humanoid-tools.md
   - ./roboto-origin.md
   - ../concepts/motion-retargeting.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../entities/mjlab.md
   - ../entities/paper-bfm-zero.md
 sources:
@@ -100,7 +100,7 @@ flowchart TB
   - 上游动作/数据准备优先 [hhtools](./human-humanoid-tools.md)；
   - 监督跟踪与 **外部策略统一部署** 优先 [MimicLite](./mimiclite.md)；
   - 无监督 RL / BFM-Zero 类研究优先 [UFO](./roboparty-ufo.md)。
-- **与学术栈对照：** 跟踪能力对标 [SONIC](../methods/sonic-motion-tracking.md) 生态；无监督线对标 [BFM-Zero](./paper-bfm-zero.md)；训练 backend 与 [mjlab](./mjlab.md) 同层。
+- **与学术栈对照：** 跟踪能力对标 [SONIC](./nvidia-sonic.md) 生态；无监督线对标 [BFM-Zero](./paper-bfm-zero.md)；训练 backend 与 [mjlab](./mjlab.md) 同层。
 
 ## 局限与风险
 

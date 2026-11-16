@@ -10,8 +10,9 @@ tags:
   - humanoid-paper-notebooks
   - iit
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2301.04317"
+original: ../../sources/papers/humanoid_pnb_teleoperation-of-humanoid-robots-a-survey.md
 related:
   - ../overview/paper-notebook-category-07-teleoperation.md
   - ../tasks/teleoperation.md
@@ -146,7 +147,7 @@ flowchart LR
 - 将 passivity 作为稳定充分条件仍不保证高透明度或好任务表现。
 - 人因评价建议完整，但文献本身也指出机器人论文常缺用户研究与生理/行为指标。
 
-## 与其他页面的关系
+## 与其他页面的关联
 
 - 任务主入口：[Teleoperation](../tasks/teleoperation.md)
 - 映射：[Motion Retargeting](../concepts/motion-retargeting.md)

@@ -10,7 +10,7 @@ tags:
   - pku
   - nvidia
 status: complete
-updated: 2026-11-08
+updated: 2026-11-13
 arxiv: "2606.28128"
 related:
   - ../methods/generative-world-models.md
@@ -22,7 +22,11 @@ related:
   - ../entities/ge-sim-2.md
   - ../entities/paper-kairos-native-world-model-stack.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+code: https://github.com/DAGroup-PKU/PhysisForcing
+original:
+  - ../../sources/papers/physisforcing_arxiv_2606_28128.md
 sources:
+  - ../../sources/repos/physisforcing.md
   - ../../sources/papers/physisforcing_arxiv_2606_28128.md
 summary: "PhysisForcing（arXiv:2606.28128）：训练期区域聚焦分层物理对齐——像素级 CoTracker3 轨迹 + 语义级 token 关系，叠加 DiT flow matching；PF-Cosmos R-Bench 63.8 SOTA，WorldArena IDM 16%→24%，Fast-WAM RoboTwin +4.6%；推理零额外开销。"
 ---
@@ -51,7 +55,7 @@ summary: "PhysisForcing（arXiv:2606.28128）：训练期区域聚焦分层物�
 - **对准生成式 WM 的核心短板：** [Generative World Models](../methods/generative-world-models.md) 长期受 **物理幻觉** 制约；PhysisForcing 把「物理合理」形式化为 **可微、可局部化、可分层** 的训练目标，而非仅靠后验 preference 或全帧几何约束。
 - **与 preference / 几何单点路线的分界：** 相对 DPO/GRPO 类 **稀疏后验对齐**，本文在 **训练期** 直接正则化 DiT 表征；相对纯 depth/tracking 几何方法，额外对齐 **语义级区域关系**（抓–物耦合、推–物联动）。
 - **跨家族骨干可插拔：** 在 **Wan2.2** 与 **Cosmos3-Nano** 上均报告增益，说明框架不绑定单一视频栈；**PF-Cosmos** 在 **R-Bench** 达 **63.8** 整体最佳（项目页口径）。
-- **下游闭环证据：** **WorldArena IDM** 成功率 **16.0%→24.0%**；作 **Fast-WAM** 骨干时 **RoboTwin 2.0** 平均 **+4.6%**——物理对齐不只改善开环视频指标，也强化 **可执行表征**。
+- **下游闭环证据：** **WorldArena IDM** 成功率 **16.0%→24.0%**；作 **Fast-WAM** 骨干时 **RoboTwin 2.0** 平均 **+4.6pp**——物理对齐不只改善开环视频指标，也强化 **可执行表征**。
 
 ## 核心原理与方法
 
@@ -107,6 +111,33 @@ flowchart TB
 - 逐项比较像素轨迹对齐、语义 token 关系对齐、两者同时启用的消融；最后用动作条件一致性和下游策略成功率检查，而不只看视频画质。
 - 本页是基于论文方法的**复现实验检查清单**，不是已运行实验或官方部署脚本。源码能否完整复现应另行核对发布状态。
 
+## 源码运行时序图
+
+基于 [PF_Wan 源码归档](../../sources/repos/physisforcing.md)，固定版本 `6b407f5`；只核对静态调用，未运行 GPU 训练。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant SH as tools/launch_1node.sh
+  participant MAIN as tools/main.py
+  participant ENG as DiffusionFinetuning
+  participant DATA as dataloader
+  participant DIT as backbone + feature hook
+  participant PHY as projection + frozen teachers
+  SH->>MAIN: torchrun --config-file full-ft JSONC
+  MAIN->>ENG: ENGINE_REGISTRY 构建并 run()
+  ENG->>DATA: next() / prepare_inputs()
+  ENG->>ENG: training_loop() → run_step()
+  ENG->>DIT: pred_single()，捕获指定 block 特征
+  DIT-->>ENG: 视频预测与中间特征
+  ENG->>PHY: track_loss / token mask / relational_alignment_loss
+  PHY-->>ENG: trajectory loss + relation loss
+  ENG->>ENG: 三项 loss 求和，backward()
+  ENG->>ENG: 按 accum_steps optimize()，定期 save()
+```
+
+当前 full-ft 配置默认训练 100 万步，论文 Wan 实验为 20k；复现论文需要显式对齐日程。官方已发布训练/推理及辅助权重，不能继续视作只有项目展示页。
+
 ## 实验要点
 
 | 轴 | 报告口径（以论文 / 项目页为准） |
@@ -115,7 +146,7 @@ flowchart TB
 | **PAI-Bench Domain** | PF-Cosmos **93.26**；PF-Wan14B **88.20** |
 | **EZS-Bench Domain** | PF-Cosmos **85.20**；零样本泛化基准 |
 | **WorldArena IDM** | PF-Wan5B **24.0%** avg（基线 **16.0%**；+50% 相对增益） |
-| **RoboTwin 2.0 + Fast-WAM** | 平均成功率 **72.8%**（+4.6%） |
+| **RoboTwin 2.0 + Fast-WAM** | 平均成功率 **72.8%**（+4.6pp） |
 | 机构 | 北京大学（PKU）· 英伟达（NVIDIA） |
 |------|----------------------------------|
 | arXiv | [2606.28128](https://arxiv.org/abs/2606.28128) |
@@ -126,9 +157,9 @@ flowchart TB
 **PhysisForcing 的取舍很明确：物理一致性用「训练期损失结构」买，而不是用推理期算力买——辅助 tracker 与编码器在推理时全部丢弃，零额外开销。**
 
 - 真正起作用的是 **区域聚焦 + 分层监督** 的组合：深度感知运动掩码把约束限制在操纵/接触区域，再在 DiT 中间层同时做像素级点轨迹对齐与语义级 token 关系对齐；只留一层就退回全帧几何或稀疏偏好对齐的老路。
-- 判断价值应看 **闭环侧** 而非开环视频分：WorldArena IDM 16.0%→24.0%、作 Fast-WAM 骨干时 RoboTwin 2.0 平均 +4.6%，比 R-Bench 63.8 更能说明它改善的是 **可执行表征**。
+- 判断价值应看 **闭环侧** 而非开环视频分：WorldArena IDM 16.0%→24.0%、作 Fast-WAM 骨干时 RoboTwin 2.0 平均 +4.6pp，比 R-Bench 63.8 更能说明它改善的是 **可执行表征**。
 - 可插拔性有证据但有前提：Wan2.2 与 Cosmos3-Nano 上均报告增益，说明不绑定单一视频栈；但增益依赖参考视频上 CoTracker3 轨迹与深度估计的质量。
-- 主要失败模式是 **掩码失准**：极端遮挡或高速运动下区域掩码可能漏标误标；形变物体与多体长程推理由论文自列为未来方向。
+- 主要失败模式是 **掩码失准**：极端遮挡或高速运动下区域掩码可能漏标误标；原文附录 F 强调基础骨干的世界知识与长程时序推理上限。
 - 与相邻路线是正交而非替代：相对 [Cosmos 3](./cosmos-3.md) 这类平台级全模态 WM，它是可叠加的后训练配方（PF-Cosmos）；相对 [Kairos](./paper-kairos-native-world-model-stack.md) 从数据课程注入物理，它从损失结构注入。
 
 ## 常见误区或局限
@@ -136,7 +167,7 @@ flowchart TB
 - **误区：** 把 PhysisForcing 当成新推理期物理引擎；它是 **纯训练期正则**，不改变扩散采样图。
 - **误区：** 认为开环 R-Bench 领先即等于闭环真机可靠；仍需 **WorldArena / RoboTwin** 等策略向指标交叉验证。
 - **局限：** 依赖 **参考视频** 上的 CoTracker3 与深度估计质量；对极端遮挡或高速运动，区域掩码可能漏标或误标。
-- **局限：** 论文讨论 **形变物体** 与 **多体长程推理** 仍为未来方向（§Limitations）。
+- **局限：** 附录 F 指出基础模型的世界知识与长程时序推理上限仍会限制物理保真；区域掩码失准为工程风险。
 
 ## 与其他工作对比
 
@@ -159,6 +190,8 @@ flowchart TB
 - [robot-world-models-training-loop-taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — 开环生成 vs 闭环策略评测分工
 
 ## 参考来源
+
+- [官方源码与 PF_Wan 运行入口核对](../../sources/repos/physisforcing.md)
 
 - [PhysisForcing（arXiv:2606.28128）](../../sources/papers/physisforcing_arxiv_2606_28128.md)
 - [项目页](https://dagroup-pku.github.io/PhysisForcing.github.io/)

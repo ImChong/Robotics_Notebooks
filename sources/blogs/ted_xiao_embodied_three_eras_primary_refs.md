@@ -1,3 +1,5 @@
+- **通读：** 已完成
+
 # 具身智能「三个时代」叙事：技术话题与一手文献索引
 
 > **收录类型**：`blogs` + 一手文献指针（论文 / 官方技术报告 / 机构博客）  
@@ -145,11 +147,11 @@
 | [wiki/methods/learning-from-play-lmp.md](../../wiki/methods/learning-from-play-lmp.md) | Learning from Play |
 | [wiki/methods/her.md](../../wiki/methods/her.md) | HER |
 | [wiki/methods/cyclegan-sim2real.md](../../wiki/methods/cyclegan-sim2real.md) | CycleGAN |
-| [wiki/methods/saycan.md](../../wiki/methods/saycan.md) | SayCan |
+| [wiki/entities/paper-saycan.md](../../wiki/entities/paper-saycan.md) | SayCan |
 | [wiki/methods/robotics-transformer-rt-series.md](../../wiki/methods/robotics-transformer-rt-series.md) | RT-1 / RT-2 |
 | [wiki/methods/dial-instruction-augmentation.md](../../wiki/methods/dial-instruction-augmentation.md) | DIAL |
 | [wiki/concepts/open-x-embodiment.md](../../wiki/concepts/open-x-embodiment.md) | Open X-Embodiment |
-| [wiki/methods/octo-model.md](../../wiki/methods/octo-model.md) | Octo |
+| [wiki/entities/paper-octo.md](../../wiki/entities/paper-octo.md) | Octo |
 | [wiki/methods/π0-policy.md](../../wiki/methods/π0-policy.md) | π₀ |
 | [wiki/entities/aloha.md](../../wiki/entities/aloha.md) | ALOHA |
 | [wiki/entities/gemini-robotics.md](../../wiki/entities/gemini-robotics.md) | Gemini Robotics |

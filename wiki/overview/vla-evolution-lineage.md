@@ -8,12 +8,12 @@ related:
   - ../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md
   - ../comparisons/robot-foundation-model-company-paths-2026.md
   - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
-  - ../methods/saycan.md
+  - ../entities/paper-saycan.md
   - ../methods/robotics-transformer-rt-series.md
   - ../methods/action-chunking.md
   - ../methods/diffusion-policy.md
   - ../methods/pi07-policy.md
-  - ../methods/octo-model.md
+  - ../entities/paper-octo.md
   - ../entities/paper-rt-2.md
   - ../entities/paper-pi0.md
   - ../entities/paper-openvla.md
@@ -94,11 +94,11 @@ flowchart LR
 
 | 阶段 | 代表 | 主要贡献 | 本库入口 |
 |------|------|----------|----------|
-| 技能规划 | SayCan | LLM × affordance 价值函数 | [SayCan](../methods/saycan.md) |
+| 技能规划 | SayCan | LLM × affordance 价值函数 | [SayCan](../entities/paper-saycan.md) |
 | 统一序列 | Gato、VIMA | 动作即 token；多模态 Prompt | [统一多模态 token](../methods/unified-multimodal-tokens.md) |
 | 机器人 Transformer | RT-1 | 大规模真机离散策略 | [RT 系列](../methods/robotics-transformer-rt-series.md) |
 | VLA 成形 | RT-2 | Web 语义 co-fine-tune | [paper-rt-2](../entities/paper-rt-2.md) |
-| 跨本体数据 | OXE / Octo | schema 统一 + 开源通用策略 | [Octo](../methods/octo-model.md) |
+| 跨本体数据 | OXE / Octo | schema 统一 + 开源通用策略 | [Octo](../entities/paper-octo.md) |
 | 开源 VLA | OpenVLA | 完整权重与微调路径 | [OpenVLA](../entities/paper-openvla.md) |
 | 连续 VLA | π₀ | VLM + Flow Action Expert | [π₀](../entities/paper-pi0.md) |
 | 动作 token 效率 | FAST、OFT | 频域 token / 并行 chunk | [action-chunking](../methods/action-chunking.md) |

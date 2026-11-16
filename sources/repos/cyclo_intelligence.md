@@ -7,8 +7,10 @@
 - **链接：** https://github.com/ROBOTIS-GIT/cyclo_intelligence
 - **机构：** ROBOTIS（乐百机器人）
 - **Stars：** ~15（2026-07）
-- **入库日期：** 2026-07-06
-- **一句话说明：** ROBOTIS 开源 Physical AI 全栈：数据采集、转换、训练、推理与真机执行合一；`orchestrator` 用行为树编排 VLA/GR00T 策略生命周期，对接 LeRobot 与 Isaac-GR00T 后端。
+- **入库日期：** 2026-07-06 · **复核日期：** 2026-11-14（仓内 commit `11800ba4`）
+- **核对范围：** 仓内 `README.md`、`docs/ARCHITECTURE.md`、`orchestrator/README.md`、`cyclo_brain/README.md`、`orchestrator/orchestrator/bt/bt_core.py`、`bt_node.py`、`actions/send_command.py`、`actions/arm_state_gate.py`、`trees/ffw_sg2_rev1_example.xml`、`shared/shared/robot_configs/schema.py`；并核查 `manifest.json` / `step2b_report.json`（确认关联参照文档 `docs.nav2.org/behavior_trees/index.html`、`concepts/index.html`、`nav2_specific_nodes.html` 均返回 HTTP 404 未达）
+- **通读：** 已完成
+- **一句话说明：** ROBOTIS 开源 Physical AI 全栈：数据采集、转换、训练、推理与真机执行合一；`orchestrator` 的独立 `bt_node` 用行为树编排 VLA/GR00T 策略与容器生命周期，对接 LeRobot 与 Isaac-GR00T 后端。
 - **沉淀到 wiki：** [cyclo-intelligence](../../wiki/entities/cyclo-intelligence.md)、[behavior-tree-vla-orchestration](../../wiki/concepts/behavior-tree-vla-orchestration.md)
 
 ---
@@ -36,47 +38,50 @@
 
 ---
 
-## 行为树 × VLA：工程结合点
+## 行为树 × VLA：工程结合点（11800ba4 实码核对）
 
-`orchestrator` 的 **Behaviour Tree** 子系统负责 **宏任务编排**；VLA/模仿学习策略通过 **`SendCommand` BT 动作节点** 接入 orchestrator 已有的推理管线，而非在 BT 内直接跑模型前向。
+`orchestrator` 内包含两个进程隔离的 ROS 2 节点（包边界由 `orchestrator/tests/bt/test_package_boundary.py` 强检，不共享 Python 导入）：
 
-### `SendCommand` 生命周期（`bt/actions/send_command.py`）
+1. **`orchestrator_node`（控制平面）：** 管理 `/task/status`、`/send_command` 路由及策略容器生命周期。
+2. **`bt_node`（`orchestrator_bt_node`，默认 30.0 Hz tick）：** 由 `supervisor_api` 按需拉起的行为树执行引擎，暴露 `/bt/nodes/catalog`、`/bt/load_and_run`、`/bt/set_running`、`/bt/status`、`/bt/active_nodes`；当前 `shared/shared/robot_configs/schema.py` 将 `BT_SUPPORTED_ROBOT_TYPES` 显式收敛为 **`('ffw_sg2_rev1',)`**。
 
-| BT `command` | 对应 orchestrator 语义 | 目标 `inference_phase` |
-|--------------|------------------------|------------------------|
-| `LOAD` | `START_INFERENCE` → `STOP_INFERENCE`（加载后暂停在内存） | `INFERENCING` → `PAUSED` |
-| `RESUME` | `RESUME_INFERENCE` | `INFERENCING` |
-| `STOP` | `STOP_INFERENCE` | `PAUSED` |
-| `CLEAR` | `FINISH`（卸载） | `READY` |
+### `SendCommand` 状态机（`bt/actions/send_command.py`）
 
-节点在每一 stage **轮询 `/task/inference_status`**，确保下游 BT 不会在「半加载 / 过渡中」的策略上继续 tick——这是 BT 与异步 VLA 推理对接的关键同步机制。
+`SendCommand` 实现 `_STATE_INIT → _STATE_WAITING_BACKEND → _STATE_BEGIN_STAGE → _STATE_WAIT_PHASE → _STATE_DONE` 非阻塞状态机，支持双目标：
 
-### 支持的策略后端（`model` 端口）
+| BT `target` | BT `command` | 对应控制语义 / 接口 | 目标状态与同步机制 |
+|-------------|--------------|--------------------|-------------------|
+| `INFERENCE`（默认） | `LOAD` | 确保后端 Docker 就绪后发 `START_INFERENCE` → `STOP_INFERENCE` | `INFERENCING` → `PAUSED`（预热在内存） |
+| `INFERENCE` | `RESUME` / `STOP` / `CLEAR` | `RESUME_INFERENCE` / `STOP_INFERENCE` / `FINISH` | `INFERENCING` / `PAUSED` / `READY` |
+| `DOCKER` | `START` / `STOP` / `RESTART` | 后台线程调 `supervisor_api`（port `7100`）启停容器 | 轮询后端服务与 `generation` 锁，取消时发补偿 `STOP` |
 
-- **LeRobot 系：** `lerobot:act`、`lerobot:smolvla`、`lerobot:xvla`、`lerobot:pi0`、`lerobot:pi05`、`lerobot:diffusion`
-- **GR00T 系：** `groot:n17` 等
+节点在每阶段**轮询 `/task/inference_status`**，确保下游 BT 不会在半加载或过渡相位继续执行。
 
-`task_instruction` 传入自然语言任务；`inference_hz` / `control_hz` / `chunk_align_window_s` 配置 **action chunk 异步执行**；`inference_mode` 可选 `simulation`（仅预览）或 `robot`（发布到真机话题）。
+### 支持的策略后端与加速模式（`MODEL_SERVICE_TYPES`）
 
-### 示例树 `ffw_sg2_rev1_example.xml`
+- **LeRobot 系：** `lerobot:act`、`lerobot:diffusion`、`lerobot:smolvla`、`lerobot:xvla`、`lerobot:pi0`、`lerobot:pi05`、`lerobot:molmoact2`、`lerobot:vla_jepa`、`lerobot:fastwam`
+- **GR00T 系：** `groot:n17`（`n17` / `n1.7`）
 
-典型长程任务模式：
+支持端口：`task_instruction`、`inference_hz`、`control_hz`、`chunk_align_window_s`、`action_request_mode`（`async` / `sync`）、`inference_mode`（`simulation` 仅预览 vs `robot` 发真机话题）以及 `acceleration_mode`（`pytorch` / `tensorrt_dit` / `tensorrt_full_pipeline`）。
 
-1. `LOAD` GR00T 模型 + 语言指令
-2. `JointControl` 复位头/臂/升降台
-3. `Rotate` 底盘转向
-4. `Loop`：`RESUME` 推理 N 秒 → `STOP` → 臂回初始位
-5. `CLEAR` 卸载策略
+### 内置行为树节点与示例树 `ffw_sg2_rev1_example.xml`
 
-**解读：** BT 管 **何时加载/暂停/复位/循环**；VLA 管 **语言条件下的连续操作 chunk**——与 Nav2 用 BT 编排规划器、SayCan 用 LLM 编排技能原语的「分层」叙事同构，但此处 **技能原语即已训练的 VLA checkpoint**。
+除 `SendCommand` 外，仓内内置动作与控制节点包括 `JointControl`、`Rotate`、`Wait`、`ArmStateGate`（只订阅 `/joint_states` 监测关节位置与夹爪闭合/张开序列，不发轨迹命令）与 `Sequence` / `Loop`（`max_iterations`）。示例树典型长程模式：
+
+1. `LOAD` `groot:n17` 模型 + 语言指令（加载后暂停）
+2. `JointControl` 复位头/双臂/升降台，`Rotate` 底盘转向 90°
+3. `Loop`（最多 3 次）：`RESUME` 推理 3s → `STOP` → `JointControl` 臂回初始位 5s
+4. `CLEAR` 卸载策略
 
 ---
 
-## 推理运行时拓扑（`docs/ARCHITECTURE.md`）
+## 推理运行时与导航边界（`docs/ARCHITECTURE.md` & `cyclo_brain/README.md`）
 
-- **主容器：** UI/nginx、`supervisor_api`、`orchestrator`、`cyclo_data`
-- **策略容器（按后端隔离）：** `main-runtime`（会话、ActionChunkProcessor、ControlLoop、RobotClient 发令）+ `engine-process`（PolicyLoader、Preprocessor、Predictor、观测订阅）
-- **通信：** `InferenceCommand.srv` / `EngineCommand.srv`；Zenoh ROS 2 可配置 `ROS_DOMAIN_ID` 与共享内存
+- **主容器（`cyclo_intelligence`）：** UI/nginx（Autonomy Studio）、`supervisor_api`、`orchestrator_node`、`bt_node`、`cyclo_data`。
+- **导航容器（`ai_worker`）与任务测序：** 航点级别导航（Nav2 goal per waypoint）与随后的单点 BT 触发目前由浏览器 **Autonomy Studio**（`orchestrator/ui/src/hooks/useMissionRunner.js`）协调 `supervisor_api` 与 `/bt/*` 接口驱动，尚未下沉为纯机上单一大 BT。
+- **策略容器（按 `lerobot` / `groot` 隔离）：** `main-runtime`（`ServiceHandler`、`SessionState`、`ActionChunkProcessor`、`ControlLoop`、`RobotClient`）+ `engine-process`（`PolicyLoader`、可选 TensorRT、`Preprocessor`、`Predictor`）。`EngineCommand` 回传 `seq_id`，暂停/停止/卸载或切换 `publish_to_robot` 时立即清空缓冲并返回 `None`（不重复旧帧），防止陈旧 chunk 跳变。
+- **通信：** `InferenceCommand.srv` / `EngineCommand.srv`；Zenoh ROS 2 可配置 `ROS_DOMAIN_ID` 与共享内存。
+- **外部参照文档核查状态（2026-11-14）：** 本专题涉及的 Nav2 行为树参照文档 `https://docs.nav2.org/behavior_trees/index.html`、`https://docs.nav2.org/concepts/index.html` 及 `https://docs.nav2.org/behavior_trees/overview/nav2_specific_nodes.html` 在原始抓包（`manifest.json` / `step2b_report.json`）中均返回 **HTTP 404**，未读取正文；当前百科结论严格以 `cyclo_intelligence` 源码为准。
 
 ---
 

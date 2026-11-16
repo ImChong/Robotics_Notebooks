@@ -10,6 +10,8 @@
 - **入库日期：** 2026-08-02
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；`--no-images`；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原始落盘：** [`sources/raw/wechat_shenlan_six_spatial_representations_2026-08-02/article.md`](../raw/wechat_shenlan_six_spatial_representations_2026-08-02/article.md)
+- **核对范围：** 已逐段阅读仓库保留的微信公众号原文 `sources/raw/wechat_shenlan_six_spatial_representations_2026-08-02/article.md`（标题、六类表征全部章节、体素三类物理量、语义/隐式地图区分、工程选型结语及尾注），并与本归档逐项核对。该文章为二手知识编译，不等同于原始 NeRF/3DGS/占据地图论文的全文验证。
+- **通读：** 已完成
 - **一句话说明：** 把具身感知中常被并列混谈的 **2D 视觉 / 深度 / 点云 / 占据栅格（含 TSDF·ESDF）/ 语义地图 / 隐式地图** 拆成感知栈上的不同层级：各自回答不同问题；强调「不是 2D→3D 单向升级」，语义地图（存什么）与隐式地图（怎么表示）正交。
 
 ## 核心摘录（归纳，非全文）

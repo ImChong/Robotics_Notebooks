@@ -56,3 +56,25 @@
 
 - [Recova 统一论文项目节点](../../wiki/entities/paper-recova.md)
 - [Manipulation 操作任务](../../wiki/tasks/manipulation.md)
+
+## 2026-11-08 补充核验：附录伪代码、逐项结果与可复现边界
+
+- **阅读范围：** 再次核对官方 [arXiv HTML v1](https://arxiv.org/html/2610.01178v1) 的 §1–5、Tables 1–5、Figures 1–10、Appendix A–E，交叉对照 [NVIDIA 官方项目页](https://research.nvidia.com/labs/gear/recova/)；论文 PDF 共 23 页。原文通读范围仍为已发布正文和全部附录，未独立执行训练或真机实验。
+- **真机四任务逐项结果（Table 3，单位 %，每格 20 trials）：**
+
+| 配置 | Pencil box | Stack rings | Draw tile | Discard tile | Avg. |
+|---|---:|---:|---:|---:|---:|
+| Base | 20.0 | 35.0 | 25.0 | 15.0 | 23.8 |
+| + DAgger | 70.0 | 75.0 | 85.0 | 80.0 | 77.5 |
+| + Recovery | 85.0 | 90.0 | 90.0 | 85.0 | 87.5 |
+
+- **独立统计口径（Fig. 4）：** 摸牌任务在第一轮人类接管 7/8 次，第四轮 0/7 次；任务策略自主完成从 1/8 增至 6/7。另一次 14 分钟四站同时采集的案例中，策略完成 22/31 个采集 episode，人工控制占累计站点时间 11%，两组统计不能混同。
+- **仿真与真机不能混称：** §4.1 仿真基准采用 **MolmoAct2 task policy + programmatic recoveries**；§4.2 真机采用两条分别微调的 **π0.5 task / recovery policies**，而非单一端到端策略。
+- **动作语义（C.3、Table 5）：** 14 维动作中 12 个手臂关节使用以当前状态为基准的 offset，2 个夹爪命令是 absolute；50 步 action chunk @30 Hz；图像输入 top + 两腕相机 224×224；四视角 640×480 采集给监视器。
+- **编排伪代码（Appendix A Algorithm 1）：** 任务策略每 600 步检查完成（机器人保持静止），每 300 步异步发起干预判断；已注册恢复技能单次最多 1500 步并经 restoration 检查；任务尝试上限 5400 步；连续两次干预请求完整人工任务示教。监视器四种查询：requirement、completion、intervention、restoration；判断延迟中位数分别约 5.0 s（completion）、4.5 s（intervention）、5.5 s（restoration），对应附录 B。
+- **异步状态处理（Appendix A 伪代码后说明）：** 弃用结束轮次或人工改动场景前的过期查询结果；干预结果先于在途 completion 到达时必须暂停并等待后者，完成优先；不应把慢 VLM 当作 30 Hz 的低层安全控制。
+- **训练分流（§3.4）：** `S_k` 自主成功与 `E_k` 人类任务示教更新任务策略；`R_k` 人类恢复示教与 `A_k` 核验通过的自主恢复更新恢复策略。失败前缀日志留存但不纳入监督目标。
+- **正文/附录数目差异：** §4.2 Setup 写总计 25 recovery skills，附录 D 明示 Figures 8–9 共展示 24 种。保留原文原状，不自行补齐缺失技能。
+- **源码与复现：** 论文给出 Algorithm 1 *伪代码*，官方网站可查看一些恢复技能演示/片段；这不足以认定训练与部署源代码已经完整发布。新增的知识页时序图仅对应论文伪代码，明确**不是源码时序图**。
+
+证据链接：[HTML §3–4 与 Appendix A–E](https://arxiv.org/html/2610.01178v1)、[PDF](https://arxiv.org/pdf/2610.01178)、[NVIDIA 官网](https://research.nvidia.com/labs/gear/recova/)。

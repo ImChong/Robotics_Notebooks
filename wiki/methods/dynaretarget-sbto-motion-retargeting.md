@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, humanoid, loco-manipulation, trajectory-optimization, sampling-based-optimization, imitation-learning, contact-rich-manipulation]
 status: complete
 date: 2026-06-17
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -20,10 +20,13 @@ sources:
   - ../../sources/papers/dynaretarget_arxiv_2602_06827.md
   - ../../sources/sites/dynaretarget-github-io.md
   - ../../sources/repos/sbto.md
+original: ../../sources/papers/dynaretarget_arxiv_2602_06827.md
 summary: "DynaRetarget 用增量时域 SBTO（CEM + MuJoCo rollout）把 IK 运动学参考 refinement 为长时域动力学可行的人形–物体轨迹，再训 PPO 跟踪策略零样本上真机；相对 SBMPC（SPIDER）在 OmniRetarget 285 条 motion 上成功率约翻倍。"
 ---
 
 # DynaRetarget / SBTO（增量采样式动力学重定向）
+
+## 一句话定义
 
 **DynaRetarget**（Dhédin 等，arXiv:[2602.06827](https://arxiv.org/abs/2602.06827)，[项目页](https://atarilab.github.io/dynaretarget.io/)）是一条面向 **人形 loco-manipulation** 的完整重定向管线：先用 **IK** 得到运动学参考，再用 novel **SBTO**（Sampling-Based Trajectory Optimization）把 imperfect kinematic 轨迹精炼为 **动力学可行** 状态序列，最后以 **PPO + domain randomization** 学习 tracking policy 并 **零样本** 部署真机。核心算法 **SBTO** 开源于 [Atarilab/sbto](https://github.com/Atarilab/sbto)（wiki 实体页：[sbto](../entities/sbto.md)）。
 
@@ -45,7 +48,9 @@ summary: "DynaRetarget 用增量时域 SBTO（CEM + MuJoCo rollout）把 IK 运�
 - **相对 SBMPC 的算法差异：** [SPIDER](./spider-physics-informed-dexterous-retargeting.md) 等用 **短 horizon MPC** 做 refinement，论文指出其 **短视、贪心不可回溯、轨迹抖动** 三问题；SBTO 通过 **incremental horizon + warm-start** 在保持采样优化框架的同时逼近 **full-horizon** 一致性。
 - **可规模化 synthetic 数据：** 在 OmniRetarget **285** 条 G1–box motion 上 SBTO_skip 成功率 **76.8%** vs SPIDER **37.9%**；精炼轨迹使下游 RL 成功率 **97%** vs kinematic 参考 **79%**（Table V），并支持 **物体质量/尺寸/几何** 增广而无需新人类演示。
 
-## 主要技术路线
+## 核心原理
+
+### 主要技术路线
 
 | 阶段 | 输入 / 输出 | 作用 |
 |------|-------------|------|
@@ -101,6 +106,11 @@ flowchart LR
 | OmniRetarget 285 motions | **37.9%** success | **76.8%**（SBTO_skip） |
 
 成功判据：物体平均位置误差 <10 cm 且旋转误差 <25°。论文的有效视距分析中，某案例 SBTO 的有效视距约 **3.4 s**（SPIDER 固定视距 1.2 s），主要由 $\sigma_{\min}$ 决定；直接在全时域上一次性优化（不做增量）在测试案例上系统性失败。
+
+## 工程实践
+
+- **优化器部署**：[Atarilab/sbto](https://github.com/Atarilab/sbto) 提供 Hydra 配置化的 SBTO 优化器，可直接对接 MuJoCo 模型。
+- **前缀缓存加速**：启用 `SBTO_skip` 缓存已收敛前缀，可在保持成功率的同时将仿真步数降至接近单次 MPC 量级。
 
 ## 局限与阅读时注意点
 

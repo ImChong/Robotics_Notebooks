@@ -16,7 +16,7 @@ related:
   - ../concepts/footstep-planning.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../tasks/teleoperation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/reinforcement-learning.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-bfm-zero.md
@@ -53,7 +53,7 @@ summary: "Perceptive BFM（arXiv:2606.08059，CoRL 2026）：保留原始人体�
 ## 为什么重要
 
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **A 走路底座**（3/64）：底座：让行为基座模型看见地形。
-- **补上 BFM 的地形盲区：** [SONIC](../methods/sonic-motion-tracking.md)、[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 等 goal-conditioned 路线多假设参考已与场景兼容；本文显式处理 **操作者–环境失配**——人类/动捕在平地给意图，机器人在楼梯、块体、草地上自行「落地」。
+- **补上 BFM 的地形盲区：** [SONIC](./nvidia-sonic.md)、[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 等 goal-conditioned 路线多假设参考已与场景兼容；本文显式处理 **操作者–环境失配**——人类/动捕在平地给意图，机器人在楼梯、块体、草地上自行「落地」。
 - **部署接口不变：** 与测试期喂 **地形一致参考** 的感知跟踪不同，**raw 参考始终是运行时命令**；TCRS 仅作 **离线 teacher 监督**，降低对在线重定向/规划栈的依赖。
 - **单策略广度：** 同一 **Unitree G1** 权重覆盖 locomotion、风格舞蹈、台阶后空翻等杂技、侧向/后退步态与 **mocap 遥操作**，且项目页强调 **无 per-skill 调参**——接近 BFM「一个 checkpoint 多种行为」叙事，但核心增益来自 **感知**（无视觉消融 reward **54.6 → 3.6**）。
 - **可复现工程信号：** 浏览器 **MuJoCo WASM + ONNX** demo；官方 **[PMT](https://github.com/Mondo-Robotics/PMT)** 训练/回放仓 + HF 预训练资产；训练预算与骨干消融在同任务契约下报告，便于与 [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md)、[Hiking in the Wild](./paper-hiking-in-the-wild.md) 等感知人形路线对照。
@@ -234,7 +234,7 @@ sequenceDiagram
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — WBT 六阶段与感知扩展
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md) — 感知楼梯/块体任务索引
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)、[Privileged Training](../concepts/privileged-training.md)
-- [SONIC](../methods/sonic-motion-tracking.md)、[BFM（CVAE）](./paper-behavior-foundation-model-humanoid.md)、[RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md)
+- [SONIC](./nvidia-sonic.md)、[BFM（CVAE）](./paper-behavior-foundation-model-humanoid.md)、[RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [NEXUS（Research Preview）](./nexus-humanoid.md) — SJTU 预告：感知 foundation policy + 跨域全身 teleop；**待发布**，勿与本文混读
 - [Unitree G1](./unitree-g1.md)

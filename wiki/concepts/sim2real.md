@@ -2,8 +2,9 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-15
 related:
+  - ../entities/paper-gamma-art-smart.md
   - ../entities/egalahad-sim2real.md
   - ../entities/paper-flatlab.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
@@ -62,7 +63,6 @@ related:
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
-  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-grid-general-robot-intelligence-development.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../entities/paper-rl-vs-gc.md
@@ -336,6 +336,8 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 
 ## 关联页面
 
+- [SMART / Gamma-Art：百万级铰接操作合成数据与真机零样本迁移](../entities/paper-gamma-art-smart.md) — 以 Isaac Lab 结构约束合成、域随机化和 SMART-VLA 训练覆盖多类铰接操作；含真机验证与开源边界。
+
   - [AWS Physical AI Toolchain](../entities/aws-physical-ai-toolchain.md) — 云端仿真、合成数据、训练与 HIL/Sim2Real 部署参考架构
   - [RoboRender](../entities/robo-render.md) — 将模拟视频转为保留几何与运动标签的真实感图像，用于仿真数据到真实视觉的迁移
 
@@ -418,7 +420,7 @@ Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**�
 - [cuNRTO GPU 鲁棒轨迹优化](../entities/paper-cunrto-gpu-robust-trajectory-optimization.md)
 - [统一流体-机器人多物理游泳仿真](../entities/paper-unified-fluid-robot-multiphysics-swimming.md)
 - [RealSimLoop](../entities/paper-realsimloop.md) — 3DGS 视觉反馈驱动的可微降阶软体仿真在线 Real-to-Sim 校准（SIGGRAPH Asia 2026，arXiv:2609.09828）
-
+- [DrEureka](../entities/paper-dreureka-sim-to-real.md) — LLM 写奖励 + RAPP 约束生成域随机化配置，只用目标任务仿真做零样本 sim-to-real（Go1 行走、LEAP Hand 方块旋转）
 
 ## 继续深挖入口
 

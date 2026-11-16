@@ -9,8 +9,9 @@ tags:
   - humanoid-paper-notebooks
   - nudt
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2503.10554"
+original: ../../sources/papers/humanoid_pnb_nuexo.md
 related:
   - ../overview/paper-notebook-category-07-teleoperation.md
   - ../tasks/teleoperation.md
@@ -137,7 +138,7 @@ flowchart LR
 - 外骨骼与机器人直接耦合时，通信故障、错误标定和力反馈失稳会把风险传给操作员。
 - 官方未开放机械、电气、控制和数据资产，独立验证困难。
 
-## 与其他页面的关系
+## 与其他页面的关联
 
 - 任务入口：[Teleoperation](../tasks/teleoperation.md)
 - 接口选型：[数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md)

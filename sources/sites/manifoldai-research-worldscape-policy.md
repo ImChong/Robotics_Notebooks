@@ -26,3 +26,9 @@
 - 论文摘录：[`sources/papers/worldscape_policy_2_arxiv_2607_18840.md`](../papers/worldscape_policy_2_arxiv_2607_18840.md)
 - 仓库归档：[`sources/repos/worldscape-policy.md`](../repos/worldscape-policy.md)
 - Wiki 实体：[`wiki/entities/paper-worldscape-policy-2.md`](../../wiki/entities/paper-worldscape-policy-2.md)
+
+## 官方项目页复核（2026-11-13）
+
+- **核对范围：** 页面正文全文、结果/图注与Code/Model链接；未观看视频。
+- **通读：** 已完成
+- 当前Code与HF已有资源，8月占位描述已过时。标准94.3与真实PiPER结果按v3协议；ManipEvent规模为4.89M段，网站未给出完整自采数据下载。

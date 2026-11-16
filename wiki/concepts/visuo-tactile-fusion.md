@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ./tactile-sensing.md
@@ -36,8 +36,6 @@ related:
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/paper-softvtbench.md
   - ../entities/paper-anytouch.md
-  - ../entities/paper-anytouch.md
-  - ../entities/paper-anytouch2.md
   - ../entities/paper-anytouch2.md
   - ../entities/humantouch.md
   - ../entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md

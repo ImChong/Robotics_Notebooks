@@ -9,7 +9,7 @@
 - **入库日期：** 2026-07-07
 - **一句话说明：** 把书、长视频、播客、访谈等高价值文本蒸馏成可独立调用、可组合、可压力测试的 Agent Skills 工具包；核心流水线 **RIA-TV++**（便签拆书法 + 三重验证 + 面向 agent 的可执行步骤与边界）。
 - **为什么值得保留：** 与 [nuwa-skill](nuwa-skill.md)（蒸馏人）和 [darwin-skill](darwin-skill.md)（进化 skill）构成「人 / 书 / 进化」三角生态；方法论强调 **结构化复用** 而非摘要压缩，与本站 [Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md) 的「知识编译进可维护文件」同构；对维护本仓库时把论文/课程 **编译成 wiki** 有流程对照价值。
-- **沉淀到 wiki：** 是 → [`wiki/entities/cangjie-skill.md`](../wiki/entities/cangjie-skill.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/cangjie-skill.md`](../../wiki/entities/cangjie-skill.md)
 
 ## README 要点（归纳）
 

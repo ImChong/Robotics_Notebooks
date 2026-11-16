@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, planning, footstep, contact-sequence, dcm, mpc]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-10
 summary: "Footstep Planning 负责决定腿式机器人下一步踩哪里、踩多久，是地形感知和控制执行之间的关键桥梁。"
 sources:
   - ../../sources/papers/mpc.md
@@ -10,6 +10,7 @@ sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/papers/cref_arxiv_2603_29452.md
+  - ../../sources/papers/humanoid-footstep-planning-gcs-ral-2026.md
 related:
   - ../entities/paper-se2-navigation-mesh.md
   - ../queries/contact-wrench-closed-loop.md
@@ -18,6 +19,7 @@ related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-cref.md
+  - ../entities/paper-humanoid-footstep-planning-gcs.md
 ---
 
 # Footstep Planning（步位规划）
@@ -29,6 +31,24 @@ related:
 > 步位规划回答的问题是："接下来每只脚应该踩哪里、踩多久"——它连接高层导航目标与底层接触物理约束，是腿式机器人闭环运动规划的核心枢纽。
 
 ---
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
+## 为什么重要
+
+脚位规划把上游地形可通行信息和导航目标，转换为下游质心规划与全身控制能够消费的接触序列。只考虑单步落脚位置，可能忽略下一步是否可达；只安排步序，则难以利用地形中连续可行的落脚区域。因此工程上必须区分**脚落哪里、何时落下、由哪只脚转换支撑**三个相互耦合的决策（见下节）。
 
 ## 核心问题分解
 
@@ -44,7 +64,7 @@ related:
 
 ---
 
-## 主流方法
+## 核心原理与主流方法
 
 全局导航层也可采用 **yaw-aware NavMesh**：[SE(2) Navigation Mesh](../entities/paper-se2-navigation-mesh.md) 在窄门/楼梯等场景保留「正着能过、横着不能」的 restricted 区域，再由 ASA 联合优化位置与航向——与逐步落足规划互补而非替代。
 
@@ -87,6 +107,10 @@ related:
 
 [CReF](../entities/paper-cref.md)（arXiv:2603.29452）不输出显式步位：从足端局部点云抽 **平面、近水平、非凹陷** 候选窗，触地时奖励靠近最近候选。部署仍是端到端深度策略。相对 FastStair 的 DCM 硬监督，这是 **软塑形**；相对「禁止踩」接触质量项，它给出朝向可支撑区的方向。
 
+### 8. 凸集图（GCS）联合规划离散步序与连续落脚点
+
+[Humanoid Footstep Planning using Graphs of Convex Sets](../entities/paper-humanoid-footstep-planning-gcs.md)（IEEE RA-L 2026）将地形与运动学可达性写为非凸 QCQP，以运动模式关联的可行凸区域作为图节点、可行模式转换作为边，并通过 GCS 和 SDP 凸松弛联合优化步序与脚位置。论文摘要报告在 TORO 上验证；**尚未通读全文，数值性能和源码状态待核实**。与上面的 FastStair 不同，此处是**显式在线规划**问题，不是将落脚搜索作为 RL 训练监督。
+
 ---
 
 ## 与其他模块的关系
@@ -108,28 +132,21 @@ related:
 
 ---
 
-## 工程实现要点
+## 工程实践
 
 1. **步位可达性约束**：需检查步位是否在髋关节运动学工作空间内（圆形近似 vs 精确椭圆）
 2. **地形对齐**：步位落点需对齐地形法向量（脚掌平整接触），而非直接用 xy 平面投影
-3. **在线重规划**：扰动发生时应在 10-50ms 内更新未来 1-2 步位置
+3. **在线重规划**：按控制器的执行频率和求解耗时预算安排更新，记录规划尾延迟与超时回退；不同硬件或地形不能套用统一毫秒指标
 4. **步态约束**：步位规划不能违反步态时序（如 trot 中对角脚同步约束）
 
 ---
 
-## 英文缩写速查
+## 局限与风险
 
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
-| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+- **几何可行不等于动力学可行**：地形可踩与足端可达，只能提供候选接触；实际执行还需稳定性与控制器约束校验。
+- **不同路线不能直接混用成功率或时延**：离散搜索、MPC、GCS 优化与 RL 规划监督的求解/推理职责不同；量化比较前须对齐地形、时域、平台和控制频率。
+- **原文核验边界**：本页是跨论文概念综述，引用多个既有来源，尚未完成所有原始资料逐篇通读；GCS 2026 论文目前仅核对摘要，数值结果保留待核。
+- **工程可复现性**：在线规划的可用性取决于地形分解、可达性近似、优化器截止时间与不可行时的后备策略，不能把概念流程图直接当真机控制方案。
 
 ## 参考来源
 
@@ -138,6 +155,7 @@ related:
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — ingest 档案（MICP / CITO / Tonneau 综述）
 - [sources/papers/faststair_arxiv_2601_10365.md](../../sources/papers/faststair_arxiv_2601_10365.md) — 并行 DCM 落脚点 + RL 三阶段训练上楼梯
 - [sources/papers/cref_arxiv_2603_29452.md](../../sources/papers/cref_arxiv_2603_29452.md) — CReF 足端点云可支撑落脚奖励
+- [GCS 步位规划论文归档](../../sources/papers/humanoid-footstep-planning-gcs-ral-2026.md) — QCQP／模式感知 GCS／SDP；原文待通读
 - Pratt et al., *Capture the Flag: Instantaneous Capture Point for Humanoid Push Recovery* (2006) — CP 步位规划基础
 - Bledt et al., *MIT Cheetah 3: Design and Control of a Robust, Dynamic Quadruped Robot* (2018) — 接触序列在线规划
 
@@ -153,6 +171,7 @@ related:
 - [Gait Generation](./gait-generation.md) — 步态模式是步位规划的上游输入
 - [Terrain Adaptation](./terrain-adaptation.md) — 把地形感知转成可落脚区域与在线重规划
 - [CReF](../entities/paper-cref.md) — 足端点云可支撑落脚奖励；训练塑形，部署无规划器
+- [GCS 人形步位规划（RA-L 2026）](../entities/paper-humanoid-footstep-planning-gcs.md) — 离散步序与连续脚位置联合优化
 
 ---
 

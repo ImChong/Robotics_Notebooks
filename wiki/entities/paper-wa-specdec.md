@@ -12,7 +12,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/wa_specdec_arxiv_2608_08725.md
+  - ../../sources/papers/wa-specdec_arxiv_2608_08725.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "世界感知 VLA 投机解码：按环境与接触风险调节猜测与校验标准，一次通过更多安全动作，在保持任务效果同时加速执行并减少近物体碰撞/抓偏。"
 ---

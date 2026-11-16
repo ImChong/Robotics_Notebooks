@@ -13,7 +13,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-11-08
+updated: 2026-11-13
 arxiv: "2607.00678"
 related:
   - ../concepts/world-action-models.md
@@ -29,7 +29,10 @@ related:
   - ../overview/loco-manip-161-category-04-generative-language-trajectory.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../queries/china-domestic-opensource-424-coverage.md
+original:
+  - ../../sources/papers/abot_m05_arxiv_2607_00678.md
 sources:
+  - ../../sources/sites/abot-m05-project.md
   - ../../sources/papers/abot_m05_arxiv_2607_00678.md
   - ../../sources/papers/abot_world_0_arxiv_2607_19191.md
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
@@ -103,6 +106,30 @@ flowchart TB
 | **逆动力学监督** | GT 或联合扩散噪声 | **SFT2：自 dreamed 视频条件** |
 | **主评测语境** | 桌面/通用操纵 | **RoboCasa365 移动操作 + 多榜** |
 
+## 源码运行时序图
+
+核读[7642747e发布代码](../../sources/repos/abot-manipulation.md)。该构建**只支持lat+act双流**，明确拒绝enable_m3检查点；图描述公开推理，不能当论文三流/完整训练实现。
+
+```mermaid
+sequenceDiagram
+  participant S as wam/server.py
+  participant P as WAMServerPolicy.infer
+  participant W as WAMPipeline
+  participant T as 双流MoT Transformer
+  participant C as 评测客户端
+  S->>W: WAM_CONFIGS、加载VAE/文本/Transformer
+  C->>P: reset与初始观测
+  P->>W: reset_episode / prepare_kv_cache
+  W->>T: 真实观测和state预填历史
+  C->>P: 请求动作chunk
+  P->>W: __call__
+  W->>T: video去噪阶段、末步写cache
+  W->>T: action去噪阶段、末步写cache
+  W-->>C: postprocess后的action
+  C->>P: 新真实观测与state
+  P->>W: 清预测、更新历史cache
+```
+
 ## 工程实践：移动操作闭环的评测边界
 
 - 在移动底座与操作臂联合任务中分别检查目标导航状态、未来表征和动作输出是否处于同一时间坐标系，记录相机延迟、底座里程计漂移与操作接触失败。
@@ -118,7 +145,7 @@ flowchart TB
 | **桌面组合** | LIBERO 平均 **99.4%**；LIBERO-Plus 零样本 Total **83.4%**（WAM 对照领先） |
 | **真机** | Agilex Piper 单臂；每任务 **50** demos；Peg Cylinder **70%** / 过程 **96%** |
 | **关键消融** | 三阶段 latent action **94.0%** vs 直接 video→action **87.60%**（RoboTwin Clean） |
-| **代码** | [amap-cvlab/ABot-Manipulation](https://github.com/amap-cvlab/ABot-Manipulation)（M0.5 权重 **coming soon**，2026-07-01） |
+| **代码** | [amap-cvlab/ABot-Manipulation](https://github.com/amap-cvlab/ABot-Manipulation)（2026-07-21已发布M0.5推理、权重及评测） |
 | 机构 | AMAP CV Lab（高德 CV Lab，阿里巴巴） |
 |------|--------------------------------------|
 | arXiv | [2607.00678](https://arxiv.org/abs/2607.00678) |
@@ -132,13 +159,17 @@ flowchart TB
 2. **Dream Forcing 对冲 exposure bias** — SFT2 在自 dreamed 视频条件上训逆动力学；文中 5k 步把 Target atomic-seen 从 67.55% 拉到 70.56%，同期继续 Teacher Forcing 降至 66.78%。
 3. **评测以 RoboCasa365 为主战场** — pretrain 平均 40.4%，+Condensed Memory 46.6%，Target 100% 54.2%；LIBERO 99.4% 不能替代移动操作结论。
 4. **三级级联可消融验证** — RoboTwin Clean 上三阶段 latent action 94.0% vs 直接 video→action 87.60%。
-5. **落地注意权重与平台** — M0.5 全量权重仍 coming soon；真机以 Agilex Piper 单臂为主，与人形全身 loco-manip 平台不同。
+5. **落地注意权重与平台** — M0.5已有推理与权重，完整训练及三流实现未包含在当前构建；真机以 Agilex Piper 单臂为主，与人形全身 loco-manip 平台不同。
 
 ## 常见误区或局限
 
+- **协议和部署范围：** 83.4%为所列WAM的LIBERO-Plus最好，部分VLA达91.4%；40.4/46.6/54.2分属基础pretrain、+Memory、Target后训，不可混用。
+- **Dream Forcing边界：** 自生成的是最新未来chunk，历史仍由真实观测锚定，不能推论全部曝光偏差消失。
+- **真机范围：** 论文明确Piper6DoF单臂、五任务各50示范；72%为五任务均值，PegCylinder70%是单项，过程分另算。未给出足以复核全套真机移动底座实验的协议。
+
 - **误区：** 把 ABot-M0.5 等同于「更大 Wan 视频模型」；关键是 **latent action 桥接 + D-MoT + Dream Forcing** 的结构对齐，而非骨干参数 alone。
 - **误区：** 认为 LIBERO 99.4% 说明只需桌面数据；**RoboCasa365** 与真机长程任务才是移动操作主战场，且 **预训练 vs 直接 SFT** 差距可达 **31.2%**（Target 10%）。
-- **局限：** M0.5 全量权重截至技术报告仍 **coming soon**；真机验证以 **单臂** 为主，与 **人形全身 loco-manip**（如 MotionWAM）平台不同；**Condensed Memory** 扩展仅在文中预告。
+- **局限：** M0.5现已发布推理与权重，但当前构建只有双流MoT；真机验证以 **单臂** 为主，与 **人形全身 loco-manip**（如 MotionWAM）平台不同；**Condensed Memory** 扩展仅在文中预告。
 
 ## 与其他工作对比
 
@@ -165,6 +196,8 @@ flowchart TB
 - [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口
 
 ## 参考来源
+
+- [官方项目页复核与表格差异](../../sources/sites/abot-m05-project.md)
 
 - [ABot-M0.5 论文摘录（arXiv:2607.00678）](../../sources/papers/abot_m05_arxiv_2607_00678.md)
 - [ABot-Manipulation 源码归档](../../sources/repos/abot-manipulation.md)（<https://github.com/amap-cvlab/ABot-Manipulation>）

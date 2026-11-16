@@ -7,8 +7,9 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-11-08
+updated: 2026-11-14
 related:
+  - ../entities/paper-science-prediction-universe.md
   - ../entities/anthropic-claude-api-skill.md
   - ../entities/rle-bench.md
   - ../entities/legoflow.md
@@ -17,6 +18,7 @@ related:
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../entities/agentic-design-patterns.md
+  - ../entities/aliyun-ai-agent-handbook.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/real-robot-policy-autoresearch-harness.md
 original:
@@ -55,6 +57,8 @@ Agent 因 **多轮、改状态、路径多样** 而比单轮 LLM 更难评；可
 - **Hillclimb 风险：** 在 eval 上改 prompt/skills/harness 易 **过拟合**；需 train/test 拆分、禁粘贴失败 transcript 进 prompt、答案不可被模型直接读取（[claude-api build-eval/hillclimb](../entities/anthropic-claude-api-skill.md) 工作流）。
 
 - **从评测数据到训练闭环：** [LegoFlow](../entities/legoflow.md) 将 GitHub PR 筛成可执行 SWE task，生成 coding-agent 轨迹、训练模型，再把 benchmark 结果回流到下一轮采集策略；它建设的是数据工程管线，与 RLE-Bench 的机器人学习工程资格评测目标不同。
+
+- **真实科学实验结果预测：** [SPU：Science Prediction Universe](../entities/paper-science-prediction-universe.md) 将 outcome 定义为隐藏的湿实验测量排序，隔离 grader 和科学判断同时受检；不是机器人控制或 Sim2Real 基准。
 
 ## 核心结构
 
@@ -192,11 +196,22 @@ Agent 评测的底层逻辑（出自 Anthropic 工程博文通读）：被评对
 
 ## 关联页面
 
+- [TCSExam](../entities/paper-tcsexam.md) — 理论计算机科学研究任务的可核验 agent 评测：Lean 证明、Solver 隐藏测试、构造与开放猜想；与具身基准的任务、分数不能混用。
+
+- [阿里云 AI Agent Handbook](../entities/aliyun-ai-agent-handbook.md) — 将 Trace、黄金数据集、回归评估置于 Harness、运行与治理的企业级工程生命周期中；本书是方法论白皮书，不是评测基准。
+
+- [DeliverBench](../entities/paper-deliverbench.md) — 评测连续多阶段专业项目交付与独立终态交付验收。
+- [SelfImprove-Bench](../entities/paper-selfimprove-bench.md) — 将自我改进后的收益按 G0–G4 泛化阶梯拆开测试。
+- [AmbiHTMLBench](../entities/paper-ambihtmlbench.md) — 对截图到 HTML 的客观结构和主观偏好进行双轨评测。
+
+
 - [Agent S3 / Behavior Judge](../entities/paper-agent-s3.md) — OSWorld 多轨迹择优和单轨成功率须区分；评测需保持环境隔离，防止共享外部副作用。
 
 见下文「与其他页面的关系」：[仿真评测基础设施](./simulation-evaluation-infrastructure.md)、[RLE-Bench](../entities/rle-bench.md)、[ENPIRE](../methods/enpire.md)、[anthropic-claude-api-skill](../entities/anthropic-claude-api-skill.md)。
 
 ## 参考来源
+
+- [SPU 论文与开放状态核读](../../sources/papers/science_prediction_universe_arxiv_2611_15049.md)
 
 - [算子生成 benchmark 论文归档](../../sources/papers/kernel_generation_benchmarks_2025_2026.md)
 

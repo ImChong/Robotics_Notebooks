@@ -7,7 +7,7 @@ arxiv: "2608.13555"
 venue: "ECCV 2026"
 code: https://github.com/GalaxyGeneralRobotics/HumanTracker
 related:
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-humanoid-gpt.md
   - ./paper-gmt.md
   - ./paper-twist2.md
@@ -113,7 +113,7 @@ flowchart TB
 
 对每个方法：参考先转成同一套 29-DoF `qpos`，再走共用 MuJoCo 入口。策略观测和动作解码保持原样；评测器统一运动列表、机器人模型、参考索引、rollout 记账和指标实现。每步记录广义位置/速度、策略动作、电机目标、足接触与力、足/骨盆速度、14 个关键点位姿与空间速度。同一份状态史同时喂解析诊断和 HumanScore。
 
-终止准则对齐 [SONIC](../methods/sonic-motion-tracking.md)：骨盆、双踝或双腕垂向误差超过 **0.25 m**，骨盆旋转超过 **1 rad**，或 `qpos`/`qvel` 非有限，即失败。Succ 是跑完比例；MPJPE 只在**已执行片段**上对 29 个主动关节取平均绝对误差。
+终止准则对齐 [SONIC](./nvidia-sonic.md)：骨盆、双踝或双腕垂向误差超过 **0.25 m**，骨盆旋转超过 **1 rad**，或 `qpos`/`qvel` 非有限，即失败。Succ 是跑完比例；MPJPE 只在**已执行片段**上对 29 个主动关节取平均绝对误差。
 
 ### HumanScore
 
@@ -200,7 +200,7 @@ sequenceDiagram
 |------|----------|-------------------|
 | AMASS-test ~140 条 | 小集 + 常报单一总分 | 规模与诊断粒度都不够 |
 | [PHUMA](./dataset-bfm-phuma.md) 73 h | 物理可信 locomotion 训练源 | 训练友好，但无四族诊断、无文本、无偏好指标 |
-| [SONIC](../methods/sonic-motion-tracking.md) 自报协议 | 规模化 tracker 自己的 Succ/误差 | HumanTracker **复用其终止准则**，但换成四族大测试集 |
+| [SONIC](./nvidia-sonic.md) 自报协议 | 规模化 tracker 自己的 Succ/误差 | HumanTracker **复用其终止准则**，但换成四族大测试集 |
 | [HumanoidArena](./paper-humanoidarena.md) | 分层 HOI/HSI、跨 GMT 后端 | 任务是场景交互，不是纯 tracking 感知质量 |
 | HumanTracker | 四族光学参考 + HumanScore | 评测层；不提供新的 tracking 策略 |
 
@@ -209,7 +209,7 @@ sequenceDiagram
 - [运控模型评测指标](../concepts/motion-control-policy-evaluation-metrics.md) — 本文的终止准则对齐、MPJPE 记账口径与 HumanScore 被收进的通用指标体系页
 
 - [Humanoid-GPT](./paper-humanoid-gpt.md) — 本基准上整体最强的零样本 tracker
-- [SONIC](../methods/sonic-motion-tracking.md) — Interaction Succ 与 Ground HumanScore 的对照强基线
+- [SONIC](./nvidia-sonic.md) — Interaction Succ 与 Ground HumanScore 的对照强基线
 - [GMT](./paper-gmt.md) / [TWIST2](./paper-twist2.md) — 同一协议下暴露 Ground 崩溃
 - [GMR](../methods/motion-retargeting-gmr.md) — 人体→机器人参考前端
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — 把「怎么评」补进「怎么选」

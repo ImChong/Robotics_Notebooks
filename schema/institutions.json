@@ -1,6 +1,12 @@
 {
   "_doc": "研究机构注册表（单一事实源）。generate_link_graph.py 据此从每个 wiki 节点的 frontmatter tags 派生「所属机构」，页面也可用 frontmatter `institutions: [..]` 显式覆盖。aliases 为精确匹配的 tag token（小写），不做子串匹配以避免误命中。展示 label 统一为「中文（English）」格式（见 schema/naming.md § 研究机构命名）。新增机构在此追加即可，无需改前端。",
   "registry": {
+    "velxio": {
+      "label": "开源嵌入式仿真项目（Velxio）",
+      "aliases": [
+        "velxio"
+      ]
+    },
     "robonine": {
       "label": "机器人团队（Robonine）",
       "aliases": [
@@ -402,7 +408,7 @@
       ]
     },
     "psibot": {
-      "label": "灵巧智能（PsiBot）",
+      "label": "灵初智能（PsiBot）",
       "aliases": [
         "psibot",
         "pku-psibot"
@@ -870,9 +876,10 @@
       ]
     },
     "umich": {
-      "label": "密歇根大学（UMich）",
+      "label": "密歇根大学（University of Michigan）",
       "aliases": [
-        "umich"
+        "umich",
+        "university-of-michigan"
       ]
     },
     "uw": {
@@ -1268,7 +1275,6 @@
       "label": "韩国国防科学研究所（Agency for Defense Development）",
       "aliases": [
         "agency-for-defense-development",
-        "add",
         "add-korea"
       ]
     },
@@ -1387,8 +1393,7 @@
     "robot-nav": {
       "label": "机器人导航开源社区（Robot-Nav）",
       "aliases": [
-        "robot-nav",
-        "robot nav"
+        "robot-nav"
       ]
     },
     "robotis": {
@@ -1692,7 +1697,7 @@
       ]
     },
     "symbiosis-robotics": {
-      "label": "共生机器人（Symbiosis Robotics）",
+      "label": "共生知行（Symbiosis Robotics）",
       "aliases": [
         "symbiosis-robotics",
         "symbiosis",
@@ -1739,8 +1744,7 @@
     "mimic-robotics": {
       "label": "迷可机器人（Mimic Robotics）",
       "aliases": [
-        "mimic-robotics",
-        "mimic"
+        "mimic-robotics"
       ]
     },
     "sssa": {
@@ -1843,14 +1847,16 @@
       ]
     },
     "dexmal": {
-      "label": "大晓智能（Dexmal）",
+      "label": "原力灵机（Dexmal）",
       "aliases": [
         "dexmal",
-        "dexmal-robotics"
+        "dexmal-robotics",
+        "original-intelligence",
+        "yuanli"
       ]
     },
     "dexforce": {
-      "label": "灵巧智能（DexForce）",
+      "label": "跨维智能（DexForce）",
       "aliases": [
         "dexforce"
       ]
@@ -2414,7 +2420,6 @@
       "aliases": [
         "imperial-college",
         "imperial",
-        "icl",
         "imperial-college-london"
       ]
     },
@@ -2448,13 +2453,6 @@
         "3d-gen-studio",
         "3dgenstudio",
         "visualbruno"
-      ]
-    },
-    "university-of-michigan": {
-      "label": "密歇根大学（University of Michigan）",
-      "aliases": [
-        "university-of-michigan",
-        "umich"
       ]
     },
     "iowa-state": {
@@ -2656,12 +2654,13 @@
         "hamburg",
         "university-of-hamburg",
         "uhh",
-        "uni hamburg"
+        "uni-hamburg"
       ]
     },
     "bit-bots": {
       "label": "汉堡比特机器人队（Hamburg Bit-Bots）",
       "aliases": [
+        "bit-bots",
         "bitbots",
         "hamburg-bit-bots"
       ]
@@ -3109,8 +3108,7 @@
       "label": "第一人称视觉实验室（FPV Labs）",
       "aliases": [
         "fpv-labs",
-        "fpvlabs",
-        "fpv"
+        "fpvlabs"
       ]
     },
     "rt-labs": {
@@ -3849,13 +3847,6 @@
         "aobi"
       ]
     },
-    "original-intelligence": {
-      "label": "原力灵机（Original Intelligence）",
-      "aliases": [
-        "original-intelligence",
-        "yuanli"
-      ]
-    },
     "qianjue": {
       "label": "千觉机器人（Qianjue Robotics）",
       "aliases": [
@@ -4410,8 +4401,7 @@
     "ardupilot-foundation": {
       "label": "开源自动驾驶仪基金会（ArduPilot Foundation）",
       "aliases": [
-        "ardupilot-foundation",
-        "ardupilot foundation"
+        "ardupilot-foundation"
       ]
     },
     "part-db": {
@@ -4443,7 +4433,6 @@
       "label": "机器人云推理平台团队（Dreamscale Labs）",
       "aliases": [
         "dreamscale-labs",
-        "dreamscale labs",
         "dreamscalelabs"
       ]
     }

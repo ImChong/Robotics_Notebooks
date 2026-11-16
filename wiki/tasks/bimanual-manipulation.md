@@ -2,9 +2,11 @@
 type: task
 tags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-15
 summary: "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
 sources:
+  - ../../sources/papers/flash_aloha_icra2026.md
+  - ../../sources/papers/flowdpg_arxiv_2606_22303.md
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/autointervene_arxiv_2608_07065.md
   - ../../sources/papers/nestdex_arxiv_2608_13362.md
@@ -12,6 +14,8 @@ sources:
 original:
   - ../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md
 related:
+  - ../entities/paper-flash-aloha.md
+  - ../entities/paper-flowdpg.md
   - ./manipulation.md
   - ../entities/paper-autointervene.md
   - ../entities/paper-nestdex.md
@@ -201,6 +205,14 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - **泛化能力**：对新物体、新摆放位置的适应率
 - **数据效率**：完成任务所需演示数量
 
+## Flash ALOHA：近人速动觉示教的双臂操作案例
+
+[Flash ALOHA](../entities/paper-flash-aloha.md)（斯坦福，ICRA 2026）是双臂**高速示范数据质量**的实例：直接手持可反驱机械臂采集关节编码器位置，配合训练/推理一致的几何手部遮罩和 ACT 动作块的 Sigmoid 平滑，以各任务 50 条示范在五项特定任务取得 80%–100% 成功率。遥控器装电池的作者报告耗时为 5.70 s，对照主从遥操作 17.87 s；不能将这一差距全归因于 ACT 或只归因于后处理（[论文数据归档](../../sources/papers/flash_aloha_icra2026.md)）。
+
+## FlowDPG：双臂长流程中的离线到在线强化学习
+
+[FlowDPG（CoRL 2026）](../entities/paper-flowdpg.md) 用单步 Critic 梯度蒸馏优化 Flow Matching 策略，在两台 Franka 机械臂的 AirPods 八阶段装配上使整任务成功率由 BC 64% 升至离线 88%、在线 92%；YAM 双臂炒蛋的 85.8% 是十四阶段离线 rubric，**不是整任务成功率**。SARM 进度奖励与真机在线轨迹支持失败恢复，推理仍为多步 ODE（[原文](../../sources/papers/flowdpg_arxiv_2606_22303.md)）。目前项目页未列可核实官方源码。
+
 ## 关联系统/方法
 
 - [Manipulation](./manipulation.md) — 双臂操作的理论基础
@@ -217,7 +229,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [CLIFT](../entities/paper-clift-closed-loop-iterative-finetuning.md) — G1 人形双臂交接等接触丰富任务的部署期闭环改进（53%→96%）
 - [AutoIntervene](../entities/paper-autointervene.md) — action-chunking 双臂策略的校准自动接管与针对性干预数据（arXiv:2608.07065）
 - [NestDex](../entities/paper-nestdex.md) — 双臂 Toast / Binder 用 clutch copilot 采长程灵巧示范（arXiv:2608.13362）
-- [DexRoam](../entities/paper-dexroam-mobile-bimanual-manipulation.md) — 免外置追踪器的人类全身示教，经三阶段对齐后改善移动双臂 VLA 真机表现
+- [DexRoam](../entities/paper-dexroam-mobile-bimanual-manipulation.md) — Quest 3 + 头戴 ZED Mini 采集第一视角全身示教（无需环境相机/外部标记），经具身、动作语义、任务进度三阶段对齐后与机器人示教联合训练；五项真机任务平均 SR：GR00T N1.7 29%→56%、π0.5 32%→57%（arXiv:2609.35761）
 - [M3](../entities/paper-m3-modality-masking.md) — 训练期模态遮蔽稳住查询式双臂 VLA（arXiv:2608.22419；未开源）
 - [LW BENCHHUB TOUR](../entities/lw-benchhub-tour.md) — 仿真双臂 Piper 厨房 PnP：EnvHub 闭环、cuRobo 可达性闸门与自过滤数据飞轮
 - [SAI](../entities/paper-sai-sequential-asymmetric-imitation.md) — 双移动操作臂物理耦合：单遥操作三阶段模仿课程（arXiv:2606.16490；代码待发布）

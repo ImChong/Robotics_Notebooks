@@ -11,7 +11,7 @@ tags:
   - open-source
   - china-embodied-opensource
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: "2607.06559"
 related:
   - ../overview/wm-action-consequence-category-03-geometry-4d.md

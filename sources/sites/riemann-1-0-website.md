@@ -39,3 +39,7 @@
 - 论文归档：[`sources/papers/riemann_1_0.md`](../papers/riemann_1_0.md)
 - 官网仓：[`sources/repos/riemann-1-0-website.md`](../repos/riemann-1-0-website.md)
 - 沉淀实体：[`wiki/entities/paper-riemann-1.md`](../../wiki/entities/paper-riemann-1.md)
+
+## 2026-11-13 资源复核
+
+已读 <https://riemann-dynamics.github.io/Riemann-1.0-Website/> 正文与资源链接，Paper指向arXiv:2608.27033；未提供模型代码/权重/处理后数据入口。`Riemann-Dynamics/Riemann-1.0-Website` 为静态展示仓，其README仅标题，不能当训练推理实现。演示与单篇报告数字未独立复测。

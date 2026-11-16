@@ -4,7 +4,7 @@ project_id: multimodal-information-theory-gmil
 arxiv: "2609.14421"
 tags: [paper, survey, multimodal, information-theory, x-humanoid, siat, uestc]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-09
 original:
   - ../../sources/papers/multimodal_information_theory_arxiv_2609_14421.md
 sources:
@@ -12,6 +12,7 @@ sources:
 related:
   - ../concepts/multimodality-basics.md
   - ../concepts/vision-language-feature-fusion.md
+  - ./paper-miib-multimodal-information-bottleneck.md
 summary: "以 MI、IB、PID 统一多模态依赖、压缩与交互分型；GMIL 是双模态目标坐标系，选型建议与空白方向尚需实证。"
 ---
 
@@ -118,11 +119,13 @@ flowchart TD
 
 ## 关联页面
 
+- [MIIB：多模态信息交互瓶颈](./paper-miib-multimodal-information-bottleneck.md)（arXiv:2611.07718）— 在部分相近的 PID 理论视角下，以模态专属、融合与协同 Transformer 学习目标及实证基准构成另一篇独立研究；不可把本文 GMIL 的统一目标直接视为 MIIB 实现。
 - [多模态基础概念](../concepts/multimodality-basics.md)
 - [视觉–语言特征融合](../concepts/vision-language-feature-fusion.md)
 
 ## 参考来源
 
+- [MIIB 论文核对归档（方法对照）](../../sources/papers/miib_multimodal_information_interactions_bottleneck_arxiv_2611_07718.md)
 - [v1 原文核对归档](../../sources/papers/multimodal_information_theory_arxiv_2609_14421.md)
 - [论文全文](https://arxiv.org/html/2609.14421v1)，重点对应 II–VII 节。
 

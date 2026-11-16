@@ -75,7 +75,7 @@
 - **摘录要点：** **宇树 G1** + 双 **Linker Hand O6** + 头部 **RealSense D435i**；采集：**PICO VR** 头显、手柄与踝部 tracker → **XRoboToolkit** 估计 SMPL → **SONIC** 转 **29-DoF** 全身命令（50 Hz）；同步记录 egocentric RGB、本体、motion command 与 robot motion 表示；推理在 **RTX 4090** 工作站，ZMQ 与机载低层闭环。
 - **对 wiki 的映射：**
   - [Unitree G1](../../wiki/entities/unitree-g1.md)
-  - [SONIC Motion Tracking](../../wiki/methods/sonic-motion-tracking.md)
+  - [SONIC Motion Tracking](../../wiki/entities/nvidia-sonic.md)
   - [Teleoperation](../../wiki/tasks/teleoperation.md)
 
 ### 6) 真机实验：四项全身任务 vs GR00T-N1.6 / Ψ0
@@ -89,4 +89,14 @@
 ## 对 wiki 的映射（汇总）
 
 - 沉淀实体页：[`wiki/entities/paper-being-m07-humanoid-latent-wam.md`](../../wiki/entities/paper-being-m07-humanoid-latent-wam.md)
-- 互链参考：[World Action Models](../../wiki/concepts/world-action-models.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Being-H0.7](../../wiki/methods/being-h07.md)、[MotionWAM](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[Teleoperation](../../wiki/tasks/teleoperation.md)
+- 互链参考：[World Action Models](../../wiki/concepts/world-action-models.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Being-H0.7](../../wiki/methods/being-h07.md)、[MotionWAM](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[Teleoperation](../../wiki/tasks/teleoperation.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2610.11283v1 PDF 正文 §1–§5、附录 A–D（数据、完整训练配置、SIMPLE 环境、真机采集和部署）；图表按文字层核对，参考文献浏览；官方项目页资源链接；未运行模型或观看视频。
+- **通读：** 已完成
+- 三阶段和参数冻结界限按新版全文核对。过滤前约 10,226 h 不等于可下载训练集；人 motion 标准化，机器人中训练 motion 不再标准化。头根平移先累积再降采样到 5 Hz，不能直接隔帧抽取增量。
+- 部署 `use_robot_motion=false` 关闭 motion 的流更新和监督，仍保留被屏蔽的 slot 与投影计算。未来视觉上下文排除历史位置；仅 action queries 做跨注意力，不是本体 token 也直接查询 prior。
+- 后训练 prior 用自身三步生成的未来，不以真值未来充当可部署上下文；推理 prior/expert 各十步。24 个未来位置覆盖 4.8 s，30 个 50 Hz 命令覆盖 0.6 s；1.67 Hz 是完整 chunk 对应的名义查询频率，另计计算延迟。
+- SIMPLE 128/180 是合计优势；语言上下文消融在 XMoveBendPick 反而 21/30，高于完整模型 9/30。真机仅三任务各五次、限时 30 s，13/15 与 GR00T-N1.6 并列。
+- 项目页只指向 BeingBeyond 组织，无已核实的 M0.7 专属训练/推理、权重或处理后数据入口；未把其他 Being 系仓库当成本论文实现。

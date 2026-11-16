@@ -1,78 +1,32 @@
-# EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon Vision-Language-Action Policies
+---
+type: source
+title: "EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon Vision-Language-Action Policies — 原文精读归档"
+url: "https://arxiv.org/abs/2606.20092"
+date: 2026-11-14
+status: ingested
+tags: [paper, vla, manipulation, long-horizon, memory, dual-arm, qwen, ustc, shanghai-ai-lab, sjtu, dalian-university-of-technology, huawei, hku, tsinghua, pku]
+---
 
-> 来源归档（ingest）
+# EventVLA — 原文精读归档
 
-- **标题：** EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon Vision-Language-Action Policies
-- **类型：** paper
-- **来源：** arXiv abs / HTML；项目页与 GitHub 交叉核对
-- **原始链接：**
-  - <https://arxiv.org/abs/2606.20092>
-  - <https://ganlin-yang.github.io/EventVLA.github.io/>
-  - <https://github.com/InternRobotics/EventVLA>
-- **作者：** Ganlin Yang, Zhangzheng Tu, Yuqiang Yang, Sitong Mao, Junyi Dong, Tianxing Chen, Jiaqi Peng, Jing Xiong, Jiafei Cao, Jifeng Dai, Wengang Zhou, Yao Mu, Tai Wang 等
-- **机构：** 中国科学技术大学（USTC）、上海人工智能实验室（Shanghai AI Lab）、上海交通大学（SJTU）、大连理工大学（DUT）、华为（Huawei）、香港大学（HKU）、清华大学（Tsinghua）、北京大学（PKU）
-- **入库日期：** 2026-07-15
-- **一句话说明：** 面向 **非马尔可夫长程操作**，提出 **稀疏视觉证据记忆** 端到端 VLA：**基础视觉锚点**（初始帧 + 短期滑窗）+ **前瞻式 KEM 关键帧证据记忆**（从 VLA 隐状态预测未来 chunk 内关键帧概率，以原始图像写入 FIFO 缓冲）；发布 **RoboTwin-MeM** 诊断基准（8 任务、中间关键帧数 $n\in[1,5]$）；**RMBench 67.8%**、**RoboTwin-MeM 75.2%**、真机 ARX ACONE 四项任务最高 **90%**，相对 SOTA 记忆 VLA 平均 **+40%**。
+- **论文：** *EventVLA: Event-Driven Visual Evidence Memory for Long-Horizon Vision-Language-Action Policies*
+- **arXiv：** [2606.20092](https://arxiv.org/abs/2606.20092)（v3，CoRL 2026）
+- **作者与机构：** Ganlin Yang、Zhangzheng Tu、Yuqiang Yang、Sitong Mao、Junyi Dong、Tianxing Chen、Jiaqi Peng、Jing Xiong、Jiafei Cao、Jifeng Dai、Wengang Zhou、Yao Mu、Tai Wang（中国科学技术大学 USTC、上海人工智能实验室 Shanghai AI Lab、上海交通大学 SJTU、大连理工大学 DUT、华为 Huawei、香港大学 HKU、清华大学 Tsinghua、北京大学 PKU）
+- **项目页 / 代码：** <https://ganlin-yang.github.io/EventVLA.github.io/> · <https://github.com/InternRobotics/EventVLA>
+- **核对范围：** 通读 `arXiv:2606.20092v3` 原文抽取文本（全文 2,042 行）：§1 引言、§2 相关工作、§3 方法（基础视觉锚点 $A_t$、前瞻式关键帧证据记忆 KEM、Qwen3-VL-235B 离线自动标注、平滑软标签与 teacher→student 课程、1D NMS + 冷却推理写入）、§4 RoboTwin-MeM 诊断基准（8 任务 × 50 演示，平均 430–1544 步，$n\in[1,5]$）、§5 实验（Table 1–4 跨 RMBench / RoboTwin-MeM / RoboTwin 2.0 / RoboMME / 真机与记忆基线对比）、§6 结论与局限，以及 Appendix A–D.2（Table 5–11 详细标注误差、任务分解、$H_k$ 消融与真机推理延迟/显存指标）。
+- **通读：** 已完成
 
-## 核心论文摘录（MVP）
+## 核心技术要点摘录
 
-### 1) 问题：非马尔可夫与三类记忆 VLA 局限
-
-- **链接：** <https://arxiv.org/abs/2606.20092> §1
-- **摘录要点：** 标准 VLA 假设任务相关信息持续可见；现实中遮挡、位移后需回忆早期视觉证据。现有记忆增强路线三类瓶颈：**双系统 Memory-VLA**（VLM 规划 + 低层控制）延迟高、误差传播；**循环/压缩历史** 信息瓶颈丢细节；**记忆缓冲** 盲目堆帧、冗余淹没稀疏关键证据。核心问题：**何时、存什么视觉证据** 才能在算力约束下最大化成功率。
-- **对 wiki 的映射：**
-  - [EventVLA（论文实体）](../../wiki/entities/paper-eventvla-visual-evidence-memory.md) — 问题定义与稀疏证据记忆范式。
-  - [VLA](../../wiki/methods/vla.md) — 长程记忆增强子路线。
-
-### 2) 基础视觉锚点（Foundational Visual Anchors）
-
-- **链接：** arXiv §3.1
-- **摘录要点：** 记忆缓冲 $M_t=A_t\cup E_t$。**锚点** $A_t=\{o_0\}\cup\{o_{t-K},\dots,o_{t-1}\}$：初始帧保留不变全局布局，短期滑窗提供运动与进度线索。对 RMBench 等「布局持久可见」任务，**仅锚点** 即达 **67.8%** SOTA；去掉初始帧或短期历史分别跌至 **33.7%** / **23.8%**。
-- **对 wiki 的映射：**
-  - [EventVLA](../../wiki/entities/paper-eventvla-visual-evidence-memory.md) — 锚点与 KEM 分工。
-  - [Manipulation](../../wiki/tasks/manipulation.md) — 长程桌面/双臂操作语境。
-
-### 3) KEM：前瞻式关键帧证据记忆
-
-- **链接：** arXiv §3.2–3.3
-- **摘录要点：**
-  - **预测头：** 从 VLA 最后一层隐状态 $h_t\in\mathbb{R}^{H\times d}$（动作 chunk 长度 $H$）经轻量 MLP 得 $\hat{\mathbf{p}}_t\in[0,1]^H$，每维为对应未来步成为任务关键帧的概率。
-  - **写入：** $\hat{p}_t^i\geq\tau_{\text{commit}}$ 时将 $t+i$ 原始图像写入事件缓冲 $E_t$；容量 $N_{\max}$、**FIFO** 驱逐。
-  - **输入：** $I_{\text{input}}=\text{concat}([A_t,E_{t-1},o_t])$ 送入 VLM 视觉编码器，自注意力跨稀疏历史帧提取时序关联。
-  - **训练：** **Qwen3-VL** 离线自动标注关键帧时间戳；**时序平滑软标签 + chunk-wise BCE**（$L_{\text{kem}}$）；与动作损失 $L_{\text{action}}$ 端到端联合优化；**teacher→student 课程** 从 GT 记忆构建过渡到自主预测；推理用 **1D NMS + 冷却** 抑制冗余写入。
-- **对 wiki 的映射：**
-  - [EventVLA](../../wiki/entities/paper-eventvla-visual-evidence-memory.md) — KEM 流程 Mermaid。
-  - [StarVLA](../../wiki/methods/star-vla.md) — QwenOFT 骨干与 EventVLA 实现栈。
-
-### 4) RoboTwin-MeM 诊断基准
-
-- **链接：** arXiv §4；项目页
-- **摘录要点：**
-  - 基于 **RoboTwin 2.0** / **SAPIEN**；8 项 **真正非马尔可夫** 任务，每 episode **430–1544** 步。
-  - 参数 **$n$**：须动态保留的**中间事件关键帧数**（1–5），分层难度。
-  - 代表能力：**瞬态记忆**（揭盖见色后遮挡）、**事件计数**（Press Button Keyframe）、**上下文模仿**（Reproduce Route 观察演示后复现随机路径）。
-  - 相对 RMBench，现有锚点策略在 MeM 上仅 **18.0%**，凸显中间态记忆缺口。
-- **对 wiki 的映射：**
-  - [EventVLA](../../wiki/entities/paper-eventvla-visual-evidence-memory.md) — 基准与任务表。
-  - [RoboTwin 2.0](../../wiki/entities/robotwin.md) — 底层仿真平台。
-
-### 5) 仿真与真机定量结果
-
-- **链接：** arXiv §5；Table 1–3；Fig. 4
-- **摘录要点：**
-  - **RMBench（17 任务）：** EventVLA（VA only）**67.8%** avg，超 MemoryVLA-QwenOFT **41.7%**、Mem-0 **42.0%**。
-  - **RoboTwin-MeM：** VA only **18.0%** → **VA+KEM 75.2%**；$\pi_{0.5}$ **7.8%**、MemoryVLA-QwenOFT **10.8%**。
-  - **RoboTwin 2.0 标准马尔可夫：** Easy **83.8%** / Hard **81.6%**，略优于 QwenOFT **80.0%** / **78.0%**。
-  - **消融：** 隐式潜记忆 bank **24.9%**；硬标签 **48.8%**；无 NMS **53.4%**；$N_{\max}=2$ **32.0%**；chunk=15 **13.6%**。
-  - **真机 ARX ACONE 双臂 4 任务 ×20 trials：** Find Block Easy/Hard **90%** / **60%**；Pick-X-Times **90%**；Pick in Order **75%**；$\pi_{0.5}$ **0–10%**；$\pi_{MEM}$ **30–50%**。
-- **对 wiki 的映射：**
-  - [EventVLA](../../wiki/entities/paper-eventvla-visual-evidence-memory.md) — 结果表与消融。
-  - [Bimanual Manipulation](../../wiki/tasks/bimanual-manipulation.md) — 双臂真机评测语境。
-
-### 6) 与 KEMO 等相邻工作的定位
-
-- **链接：** arXiv §2；项目页 Built on RoboTwin 2.0, RMBench, StarVLA
-- **摘录要点：** 与 [KEMO](../../wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md) 同属 **事件/关键帧稀疏记忆**，但 EventVLA 用 **学习式前瞻预测头 + 原始图像拼接** 而非运动学启发式选帧 + cross-attention 融合；与 **MemoryVLA**（稠密 token merge）、**π_MEM**（压缩历史）对比，强调 **显式保留原始关键帧** 避免信息瓶颈。局限：有界 FIFO 在 **>10 min** 高密度事件任务可能饱和。
-- **对 wiki 的映射：**
-  - [EventVLA](../../wiki/entities/paper-eventvla-visual-evidence-memory.md) — 对照与局限。
-  - [KEMO](../../wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md) — 规则/运动学事件选帧路线。
+1. **视觉记忆分解 $M_t = A_t \cup E_t$：**
+   - **基础视觉锚点（Foundational Visual Anchors, $A_t$）：** 由初始帧 $o_0$ 与短期历史滑窗 $\{o_{t-K}, \dots, o_{t-1}\}$ 组成（仿真采用 $o_0, o_{t-30}, o_{t-15}$；真机采用 $o_0, o_{t-60}, o_{t-40}, o_{t-20}$）。在布局持久可见的 RMBench 上，仅用 VA 即可达到 **67.8%**；若去除 $o_0$ 或短期历史滑窗，分别掉至 **33.7%** 与 **23.8%**。
+   - **前瞻式关键帧证据记忆（Keyframe Evidence Memory, KEM, $E_t$）：** 轻量 MLP 预测头从动作 chunk 最后一层共享隐状态 $h_t \in \mathbb{R}^{H\times d}$（$H=50, H_k=50$）直接前瞻预测未来 chunk 内各步成为事件关键帧的概率 $\hat{\mathbf{p}}_t = \sigma(\mathrm{KEM}_{\mathrm{mlp}}(h_t)) \in [0,1]^H$。当 $\hat{p}_t^i \ge \tau_{\mathrm{commit}}=0.55$ 且通过 1D NMS（半径 $w=8$）与冷却窗口（$C=10$ 步）过滤时，当机器人后续走到对应时刻 $t+i$ 即把该步 **原始 RGB 帧** 写入容量为 $N_{\max}=5$ 的 FIFO 缓冲 $E_t$，避免隐式特征压缩带来的信息丢失。
+2. **离线 VLM 自动标注与训练课程：**
+   - 用 `Qwen3-VL-235B-A22B-Instruct-FP8`（8×A800 vLLM 部署，每轨迹均匀采样 128 帧多视角 + 2–3-shot ICL JSON 提示）离线自动标定关键帧时刻 $t^*$，与仿真器真值时序偏差 **<10 步**，与人类标注偏差 **<50 步**（在 1500–2000 步长轨迹上，Table 10 证明用自动标注训练反超手工 GT：`75.2%` vs `76.3%` in sim / `78.8%` vs `77.7%` in real）。
+   - 采用升余弦软标签 $y_t^i = 0.5(1+\cos(\pi|t+i-t^*|/R))$ 计算 chunk-wise BCE 损失 $L = L_{\mathrm{action}} + \lambda L_{\mathrm{kem}}$（$\lambda=0.1$），并按课程将历史记忆中老师/预测混合比例 $\alpha$ 从 `1.0 -> 0.0` 退火，使策略学会自己“边走边挑、边用边存”。
+3. **RoboTwin-MeM 基准与全量评测数据（v3 核对）：**
+   - **RoboTwin-MeM（Table 2）：** 8 项非马尔可夫双臂任务（平均 430–1544 步，$n\in[1,5]$），$\pi_{0.5}$ `7.8%`、QwenOFT `3.8%`、MemER `10.5%`、Mem-0 `0.0%`、MemoryVLA(OpenVLA/QwenOFT) `4.9%` / `10.8%`、VA only `18.0%` → **VA+KEM 达到 `75.2%`**（分任务：Rearrange `62%`、Put Back `93%`、Pick Order `90%`、Pick Unhidden `54%`、Cover `94%`、Find Seal `63%`、Reproduce Route `98%`、Press Button `48%`）。
+   - **跨基准（Table 1, 3, 4）：** RMBench（Table 1）VA only **67.8%**（VA+KEM **66.7%**，对比 MemoryVLA-QwenOFT `41.7%`、Mem-0 `42.0%`）；RoboTwin 2.0 马尔可夫基准（Table 3）Easy **83.8%** / Hard **81.6%**（超 $\pi_{0.5}$ `82.7%` / `76.8%`）；RoboMME（Table 4）VA+KEM **32.1%**（Oracle `40.5%`）。
+   - **关键消融（Table 2, 4, 10）：** 隐式记忆库 `24.9%`、硬标签 `48.8%`、去 NMS `53.4%`、$N_{\max}=2$ `32.0%`；传统启发式写入（Random `10.1%` / Periodic `34.2%` / Visual-change `44.6%` / Reactive selector `28.9%`）均显著低于前瞻式 KEM；前瞻视野 $H_k$ 从 `0 / 1 / 15 / 30 / 50` 逐步提升，RoboTwin-MeM 分别为 **`28.9% / 28.2% / 36.8% / 45.4% / 75.2%`**，真机分别为 **`30.4% / 31.1% / 42.9% / 50.1% / 78.8%`**。
+   - **真机 ARX ACONE（Table 11, A100 bs=1）：** 4 任务各 20 trials（Find Block Easy `90%`、Pick-X-Times `90%`、Find Block Hard `60%`、Pick in Order `75%`）均值 **78.8%**（对比 $\pi_{\mathrm{MEM}}$ `37.5%`、MemER `32.3%`），单 chunk 延迟 **0.42 s**、显存约 **7 GB**（MemER `1.43 s` / ~24 GB，$\pi_{\mathrm{MEM}}$ `1.08 s` / ~24 GB）。
+4. **原文显式局限（§6）：** 有界 FIFO 容量（$N_{\max}=5$）在超过 10 分钟的高事件密度长程任务上仍可能饱和并过早驱逐早期证据；已习得记忆策略对全新未见任务、物体与强干扰物的零样本跨任务迁移尚未验证。

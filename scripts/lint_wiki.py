@@ -41,6 +41,8 @@ import os
 import re
 import subprocess
 import sys
+from collections.abc import Iterator
+from contextlib import contextmanager
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -108,6 +110,8 @@ STALE_CLAIM_NEGATION_CUES: tuple[str, ...] = (
     "不包装",  # 「诚实的 technical report：不包装成 SOTA」：同为「不 + 谓词」的辟谣
     "不提出",  # 「不提出单一 SOTA 系统，而是做结构性对照实验」：同为「不 + 谓词」的辟谣
     "未给出",  # 「未给出单一 SOTA 训练配方」：同为「未 + 谓词」的辟谣
+    "不能称",  # 「Pull Out Key 等任务未全面领先，不能称每个任务都 SOTA」：否认落在谓词上
+    "不支持",  # 「论文自称不支持 SOTA 结论」：同为「不 + 谓词」的辟谣
     "未必",
     "勿",
 )
@@ -123,9 +127,10 @@ STALE_CLAIM_OVERREAD_CUES: tuple[str, ...] = (
 # 命中词后前看的字符数（同样限制在同一句内）
 STALE_CLAIM_OVERREAD_WINDOW = 30
 # 「最新」后紧跟的运行时对象名词；中间允许夹一段英文/数字标识（如「最新 pending 帧」）。
-# 「画面 / 图像」指策略每步拿到的当前相机输入（「小模型结合最新画面高频出动作」），同属运行时量。
+# 「画面 / 图像」指策略每步拿到的当前相机输入（「小模型结合最新画面高频出动作」），同属运行时量；
+# 「深度图」同理（「RL 策略依据最新深度图与运动状态追踪 carrot」）。
 STALE_CLAIM_RUNTIME_OBJECT_RE = re.compile(
-    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数|候选|画面|图像)"
+    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数|候选|画面|图像|深度图)"
 )
 # 「SOTA / state-of-the-art + 基线」是对照组的类别名（「相对经典/SOTA 基线，证书
 # 平均收窄 51.6%」），指的是被比较的那批既有方法，不是本页对自身的时效性断言；
@@ -177,6 +182,28 @@ CURATED_TAXONOMY_LABEL_RE = re.compile(
 MISSING_CONCEPT_PAGE_MAX_CANDIDATES = 15
 # 明显非概念的高频 token（frontmatter 键 / 布尔值等），不计入候选。
 MISSING_CONCEPT_STOPWORDS: set[str] = {
+    # 配置字段、命令和数据档位，不是独立机制：Config/config 是配置对象/JSON 键，
+    # target 是任务目标/硬件目标字段，full/real/other 是安装、数据或许可证枚举，
+    # serve/torchrun 是服务与分布式启动入口，v2 是资料/软件版本号。
+    "config",
+    "target",
+    "full",
+    "real",
+    "other",
+    "serve",
+    "torchrun",
+    "v2",
+    # NumPy 和 flash-attn 在复现页中是 Python 依赖包名；不是数组计算或注意力
+    # 机制的缺页信号，后者已有 concepts/transformer.md。
+    "numpy",
+    "flash-attn",
+    # Ground 混合数据子集名、grounding 动词与地面模式；Motion 混合数据结构、
+    # 源码目录和系统层标签。相关机制分别归接地/重定向/轨迹优化，不合建同名概念页。
+    "ground",
+    "motion",
+    # simulation 是仿真后端/目录/系统层标签；仿真机制与层次已有
+    # concepts/robot-simulation-three-layers.md，和 sim 枚举同类。
+    "simulation",
     "type",
     "tags",
     "related",
@@ -191,6 +218,8 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # GroundingPI 的拒答输出、Gymnasium 的 `render_mode=None`、AW-0 服务响应字段、
     # diagram-design 动效默认值），与 null/true/false 同类字面量，非可成页概念。
     "none",
+    # exec：Python 内建执行函数、Shell 命令或 skill 的执行字段；不是单一机器人概念。
+    "exec",
     "id",
     "title",
     # code：各页正文里的 `code` 均为 frontmatter 来源键引用（「官方入口见
@@ -203,6 +232,10 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "http",
     "https",
     "main",
+    # start：命中处均为源码路径后括号里的函数 / 方法名（`robot_interface.hpp`（`Start`、
+    # `SetJointCommand`）、`daemon.py`（`start`、`_setup_backend`））或 CLI 子命令名
+    # （`start` 启动、`status` 查询），是代码 token 而非机器人概念，与 main 同类。
+    "start",
     # venue：各页正文里的 `Venue` / **Venue** 均为 paper-* 实体页「核心信息」表的
     # 发表信息行标签（`| **Venue** | ECCV 2026 |`），与 frontmatter 的 venue 来源键
     # 同义（见 _check_paper_entity_metadata 的 source_keys），是出版元数据字段名，
@@ -455,11 +488,24 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # `cli` 模块），是软件交付形态 token，非机器人概念/方法/形式化；与 conda / printf
     # 同类基础设施停用词。
     "cli",
+    # image / render / inspect：各页正文里的 `image` / `render` / `inspect` 均为代码或工具
+    # token——`image` 是观测字典 / 数据集 / Pipeline 的字段与参数名（Open X-Embodiment、
+    # Evo-1、Qwen-Image 2.1、exercises 数据集）；`render` 是 Gymnasium 的环境 API 方法、
+    # 数据集卡字段与 ArXiVisual 的 **Render** 阶段名；`inspect` 是 CAD skill / AIRoA 的
+    # CLI 子命令、Python 标准库 `inspect` 与 INSPECT 论文名。与 export / validate /
+    # reset 同类命令 / 字段名，非机器人概念/方法/形式化，不建独立页。
+    "image",
+    "render",
+    "inspect",
     # data：各页正文里的 `data` / **Data** / `DATA` 均为文件格式或代码里的键/目录名——
     # RoboSet HDF5 的 `Trial0/data` 组、MCAP 的 **Data** record 类型、embodichain /
     # valen 的 `data` 目录、X-Tokenizer 官网图表 `DATA` 标签；与 qpos / actions 同类代码
     # token，数据本体已由各数据集实体页与 overview/hub-data-pipeline.md 承载。
     "data",
+    # draft：命中处均为页面成熟度 ``status`` 的取值（「本页暂为 `draft`」「本页为
+    # **draft**」），或 CAD 代码里的拔模参数名 `draft`（multi-agent-cad）；与 type /
+    # updated 同类页面元数据 token，非机器人概念/方法/形式化，不建独立页。
+    "draft",
 }
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
@@ -498,7 +544,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                框架与环境分发机制，不单建概念页
 #   mjlab      → entities/mjlab.md（库/工具）
 #   mujoco     → entities/mujoco.md（仿真器/工具）
-#   sonic      → methods/sonic-motion-tracking.md（具体方法）
+#   sonic      → entities/nvidia-sonic.md（SONIC 项目与论文实体）
 #   locomotion → tasks/locomotion.md（+ humanoid-/hybrid-locomotion，任务域，归 tasks）
 #   loco-manipulation → tasks/loco-manipulation.md（移动操作，任务域，归 tasks）
 #   step       → entities/step2urdf.md（CAD 交换格式，已在 concepts/text-to-cad.md 引介）
@@ -608,6 +654,30 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                页的 on-policy Runner 抽象，与 qpos / reset 同为代码 token 而非
 #                机制，不单建概念页
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
+    # 已建实体/已定义缩写，避免为相同资料再造 concepts 页：
+    # AMASS → entities/amass.md；OSQP → entities/osqp.md；
+    # ZeroMQ → concepts/zeromq-messaging.md + entities/zeromq.md；
+    # DYNAMIXEL → entities/dynamixel-sdk.md + painode-149-dynamixel.md；
+    # IsaacGym → entities/isaac-gym.md；LSTM → concepts/recurrent-neural-network.md；
+    # qpOASES → formalizations/quadratic-programming.md 的 active-set 求解器；
+    # RoboCasa365 → entities/paper-notebook-robocasa365-a-large-scale-simulation-framework-f.md。
+    "amass",
+    "osqp",
+    "zeromq",
+    "dynamixel",
+    "isaacgym",
+    "lstm",
+    "qpoases",
+    "robocasa365",
+    # SMPL-H 是人体模型族的命名变体，AMASS / HumanML3D 数据管线已解释其使用，
+    # 共同参数化表征归 concepts/smpl-x.md；不是新的通用机制。
+    "smpl-h",
+    # FoundationPose 是 6-DoF 位姿系统名，在 entities/paper-egoxperience.md 等
+    # 实现链中作为跟踪器出现；与 VGG-T / SmolVLA 同类具体模型，不建同名概念页。
+    "foundationpose",
+    # RTC：Real-Time Chunking，已由 methods/action-chunking.md 的 RTC 谱系专段
+    # 和 entities/paper-real-time-chunking.md / paper-training-time-real-time-chunking.md 覆盖。
+    "rtc",
     "act",  # 已由 methods/action-chunking.md（机制）+ entities/paper-act.md（论文）覆盖，
     # 缩写 slug 与页面 stem 不同名；与 wbc / rl / wam 同类
     "action",
@@ -676,6 +746,10 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 均为「**CUDA** 加速 / CUDA 版本依赖」式的运行环境指称（cuVSLAM、cuRobo、TensorRT、
     # Genesis）。与 onnx / mcap 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
     "cuda",
+    # curobo：canonical 节点已是 entities/curobo.md（NVIDIA GPU 并行运动生成库）与
+    # entities/paper-curobov2-fast.md，各页命中处均为「**cuRobo** 做碰撞距离 / IK / 轨迹
+    # 优化」式的工具指称；与 mujoco / lerobot 同类「工具库归 entities」。
+    "curobo",
     "damping",  # MuJoCo/Isaac Lab 关节属性，已由阻抗控制 + PD 增益 / 参数辨识页覆盖
     # depth：命中处是观测/输出字段名（Isaac Lab `presets=depth`、VGG-T³ / LingBot-Depth
     # 的 `depth` 输出键、Cosmos-Transfer 的 **Depth** 控制条件行、VisualMimic 学生策略的
@@ -720,6 +794,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "g1",
     "gmr",
     "heracles",
+    # hil：同名异义缩写，两义均已有 canonical 页——Hardware-in-the-Loop 由
+    # concepts/hardware-in-the-loop.md 定义（与 concepts/software-in-the-loop.md 成对），
+    # Hybrid Imitation Learning 由 methods/hil-hybrid-imitation-learning.md 承载；
+    # 两页已互链消歧。与 pace 同类「同名异义、各有归属」，不再单建 hil 页。
+    "hil",
     # idm：Inverse Dynamics Model 的缩写，已由 concepts/inverse-dynamics-model.md 定义
     # （「当前 + 未来观测 → 动作」的级联 WAM 动作解码接口）。缩写 slug 与页面 stem
     # 不同名，与 dit / ood / wam 同类。
@@ -750,6 +829,11 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # LeRobot 的取舍由 comparisons/hdf5-mcap-lerobot-data-formats.md 定调；与 onnx /
     # lerobot 同类「已由实体页覆盖、但检查只认 concepts/methods/formalizations」。
     "mcap",
+    # manipulation：任务大类，canonical 节点是 tasks/manipulation.md（检查只认
+    # concepts/methods/formalizations）；命中处多为论文分类目录（paper-notebook-category-06-
+    # manipulation、painode-* 的「**Manipulation**」分组标签）与基准任务类别名，
+    # 子主题另有 concepts/contact-rich-manipulation.md 等页，不另建同名概念页。
+    "manipulation",
     "mit",  # 机构（schema/institutions.json），非概念，不应建 concepts/methods 页
     "mjlab",
     # model：库内 6 处引用全是代码 token，不是待建的机制页——Newton 的
@@ -782,12 +866,23 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # mjlab 同类「仿真器归 entities」。牛顿法一义已由 methods 下的
     # newtons-method.md / gauss-newton.md 覆盖。
     "newton",
+    # openpi：Physical Intelligence 的官方源码仓名，π₀ / π₀.₅ 的代码入口；已由
+    # entities/paper-pi0.md（frontmatter code 指向 Physical-Intelligence/openpi）承载，
+    # 各页命中处均为「官方开源入口是 **openpi**」「`openpi` README / 示例」式的仓库指称，
+    # 与 lerobot 同类「工具库归 entities」。
+    "openpi",
     "onpolicyrunner",  # rsl_rl 的 Runner 类名，已由 concepts/rl-runner.md 覆盖
     # pace：同名异义——四足 pace 步态（concepts/gait-generation.md 步态表行）与多篇
     # 互不相干的 PACE 论文缩写（ETH 足式 sim2real 系统辨识、精细插入、示范条件长程
     # 操作的进度对齐上下文、Extreme-RGMT 的 acquisition/consolidation 训练环），
     # 各有 entities/paper-pace-*.md 承载；不是单一可成页概念，不建 concepts/pace.md。
     "pace",
+    # atlas：大小写归并后混合了 Boston Dynamics 人形机器人、World Labs 世界模型、
+    # ATLAS Agentic Harness 和 Human-Level Actuation 的 DoF Atlas（人体自由度图谱）。
+    # 各义分别由 entities/boston-dynamics.md、atlas-world-model.md、
+    # atlas-agentic-harness.md、paper-notebook-human-level-actuation-for-humanoids.md
+    # 承载；不是单一缺页概念，与 pace 同类同名异义，不再建议 concepts/atlas.md。
+    "atlas",
     # policy：命中处全是代码 token 与网络分支标签，不是待建的机制页——Inspect
     # Robots 的 `Model` = `Policy` + `Embodiment` 概念映射表、Isaac Lab 的观测组键
     # `observations.policy`（LW-BenchHub 改组成 `policy` + `camera_obs`）、ORCS 保持
@@ -885,6 +980,16 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     # 定义；其余为各系统流水线的模块名（UniAD 的 Planner 头、FADA 的 Planner、Nav2 的
     # planner server），机制各归对应实体页，与 base / training-free 同类多义标签。
     "planner",
+    # imu：Inertial Measurement Unit 的缩写，原理（加速度计 / 陀螺仪误差模型、预积分）与
+    # 相机协同已由 concepts/imu-principles-algorithms-camera-sync.md 定义；各页正文里的
+    # **IMU** / `imu` 均为「某本体带 IMU / MJCF 的 `imu` site」的传感配置指称。缩写 slug
+    # 与页面 stem 不同名，与 urdf / wbc 同类。
+    "imu",
+    # solver：命中处多为 Newton 的 `Model` / `State` / `Solver` 引擎抽象（MuJoCo Warp /
+    # Kamino 作为可插拔 `Solver`），已由 entities/newton-physics.md 释义；其余是 HydroGym
+    # / Gödel Agent 的配置键 `solver`。与 implicitfast 同类「仿真器 / 框架配置名」，
+    # 接触求解机制本体归 concepts/contact-dynamics.md，不建 concepts/solver.md。
+    "solver",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key
@@ -897,6 +1002,8 @@ INFO_ONLY_KEYS: set[str] = {
     "paper_missing_three_sections",
     "paper_missing_conclusions",
     "dataset_missing_metadata",
+    # GitHub Actions 跳过 git mtime 陈旧比较；本地仍完整输出供 review，不阻塞无关 PR / preflight。
+    "stale_pages",
     # updated 日期超过 180 天只提示复核；历史 backlog 不应阻塞无关 PR。
     "outdated_pages",
     "stale_claims",
@@ -924,6 +1031,34 @@ def load_canonical_facts() -> dict:
 # 只扫描 wiki/ 下的 markdown 文件
 def get_wiki_pages() -> list[Path]:
     return sorted(WIKI_DIR.rglob("*.md"))
+
+
+_PAGE_READ_CACHE: dict[Path, tuple[int, int, str]] | None = None
+
+
+@contextmanager
+def _page_read_cache() -> Iterator[None]:
+    """在单次 lint / 增量 lint 期间按 (mtime_ns, size) 缓存页面文本，避免重复读盘。"""
+    global _PAGE_READ_CACHE
+    prev = _PAGE_READ_CACHE
+    _PAGE_READ_CACHE = {} if prev is None else prev
+    try:
+        yield
+    finally:
+        _PAGE_READ_CACHE = prev
+
+
+def _read_page_text(page: Path) -> str:
+    if _PAGE_READ_CACHE is None:
+        return page.read_text(encoding="utf-8")
+    stat = page.stat()
+    key = page.resolve()
+    cached = _PAGE_READ_CACHE.get(key)
+    if cached is not None and cached[0] == stat.st_mtime_ns and cached[1] == stat.st_size:
+        return cached[2]
+    text = page.read_text(encoding="utf-8")
+    _PAGE_READ_CACHE[key] = (stat.st_mtime_ns, stat.st_size, text)
+    return text
 
 
 # frontmatter status 只允许这三个取值（schema/page-types.md）；缺省允许
@@ -1040,7 +1175,7 @@ def _build_link_index(
     broken_links: dict[Path, list[str]] = {}
 
     for page in pages:
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         links = extract_internal_links(content, page)
         for target in links:
             if target in page_set:
@@ -1115,9 +1250,11 @@ def _check_per_page(
     results: dict[str, Any],
 ) -> None:
     """逐页检查：孤儿、关联区块、参考来源、断链、空壳、wikilink 语法、source 引用。"""
+    from wiki_abbrev_section import is_abbrev_glossary_well_placed
+
     for page in pages:
         resolved = page.resolve()
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         rel = page.relative_to(REPO_ROOT)
 
         for line_no in find_mermaid_placeholder_lines(content):
@@ -1146,43 +1283,39 @@ def _check_per_page(
         is_meta_abbrev = page.name.lower() in ("readme.md", "index.md") or any(
             seg in str(rel) for seg in ("references/", "roadmaps/")
         )
-        if not is_meta_abbrev and not has_section(
-            content, ["英文缩写速查", "abbreviation glossary", "abbreviations"]
-        ):
-            results["missing_abbrev_glossary"].append(str(rel))
-
         if not is_meta_abbrev:
-            from wiki_abbrev_section import is_abbrev_glossary_well_placed
-
-            if has_section(
+            has_abbrev = has_section(
                 content, ["英文缩写速查", "abbreviation glossary", "abbreviations"]
-            ) and not is_abbrev_glossary_well_placed(content):
+            )
+            if not has_abbrev:
+                results["missing_abbrev_glossary"].append(str(rel))
+            elif not is_abbrev_glossary_well_placed(content):
                 results["abbrev_glossary_wrong_order"].append(str(rel))
 
         if resolved in broken:
             for b in broken[resolved]:
                 results["broken_links"].append(f"{rel} → {b}")
 
-        if word_count(content) < 200:
-            results["stub_pages"].append(f"{rel} ({word_count(content)} 字)")
+        wc = word_count(content)
+        if wc < 200:
+            results["stub_pages"].append(f"{rel} ({wc} 字)")
 
         if not is_meta_page:
             results["_ingest_total"] += 1
             if has_source_reference(content):
                 results["_ingest_covered"] += 1
 
-        wl_stripped = strip_code_blocks(content)
-        for m in re.finditer(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", wl_stripped):
+        stripped = strip_code_blocks(content)
+        for m in re.finditer(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", stripped):
             token = m.group(1).strip()
             if re.match(r"^[\d\.\-\s,]+$", token):
                 continue
             results["wikilink_syntax"].append(f"{rel}: {m.group(0)}")
 
-        for line_no, line in enumerate(wl_stripped.splitlines(), start=1):
+        for line_no, line in enumerate(stripped.splitlines(), start=1):
             if re.search(r"<https?://[^\s>]+(?=\s*\||\s*$)", line):
                 results["unclosed_autolinks"].append(f"{rel}:{line_no}: {line.strip()}")
 
-        stripped = strip_code_blocks(content)
         for m in re.finditer(r"\[([^\]]*)\]\(([^)]+sources/[^)]+\.md)[^)]*\)", stripped):
             href = m.group(2).split("#")[0]
             resolved_src = (page.parent / href).resolve()
@@ -1204,7 +1337,7 @@ def _check_missing_concepts(pages: list[Path], results: dict[str, Any]) -> None:
         "MARL": "marl",
         "ContactNet": "contact-net",
     }
-    all_content = "".join(page.read_text(encoding="utf-8") for page in pages)
+    all_content = "".join(_read_page_text(page) for page in pages)
     term_counts: dict[str, int] = {}
     for term, slug in watch_terms.items():
         count = len(re.findall(rf"\b{re.escape(term)}\b", all_content))
@@ -1243,7 +1376,7 @@ def _check_missing_concept_pages(pages: list[Path], results: dict[str, Any]) -> 
     term_pages: dict[str, set[str]] = {}
     term_display: dict[str, str] = {}
     for page in pages:
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         body = re.sub(r"^---\n.*?\n---", "", content, flags=re.DOTALL)
         body = re.sub(r"```.*?```", "", body, flags=re.DOTALL)  # 仅去围栏块，保留行内反引号
         # 策展索引页模板里的分类学标签：粗体是清单 type 枚举与分组名，非概念
@@ -1325,6 +1458,39 @@ def _build_git_mtime_map() -> dict[Path, float]:
     return mtime_map
 
 
+def _git_dirty_paths() -> set[Path] | None:
+    """单次 ``git status --porcelain -z -uall`` 收集工作区全部未提交/未跟踪路径。"""
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(REPO_ROOT), "status", "--porcelain", "-z", "-uall"],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=10,
+        )
+        if result.returncode != 0:
+            return None
+    except (subprocess.SubprocessError, OSError):
+        return None
+    dirty: set[Path] = set()
+    tokens = result.stdout.split("\0")
+    i = 0
+    while i < len(tokens):
+        entry = tokens[i]
+        i += 1
+        if len(entry) < 4:
+            continue
+        status = entry[:2]
+        rel_path = entry[3:]
+        if rel_path:
+            dirty.add((REPO_ROOT / rel_path).resolve())
+        if "R" in status or "C" in status:
+            if i < len(tokens) and tokens[i]:
+                dirty.add((REPO_ROOT / tokens[i]).resolve())
+            i += 1
+    return dirty
+
+
 def _path_has_local_changes(path: Path) -> bool:
     """工作区相对 HEAD 是否有未提交改动（含 staged）。"""
     try:
@@ -1341,33 +1507,44 @@ def _path_has_local_changes(path: Path) -> bool:
         return False
 
 
-def _effective_mtime(path: Path, git_mtime_map: dict[Path, float]) -> float:
+def _effective_mtime(
+    path: Path,
+    git_mtime_map: dict[Path, float],
+    dirty_paths: set[Path] | None = None,
+) -> float:
     """Git commit time；未跟踪文件或本地有未提交改动时用 max(git, fs)。"""
     fs_mtime = path.stat().st_mtime
     git_mtime = git_mtime_map.get(path)
     if git_mtime is None:
         return fs_mtime
-    if _path_has_local_changes(path):
+    has_changes = (
+        path.resolve() in dirty_paths if dirty_paths is not None else _path_has_local_changes(path)
+    )
+    if has_changes:
         return max(git_mtime, fs_mtime)
     return git_mtime
 
 
-def _frontmatter_updated_date(path: Path) -> date | None:
-    """解析 wiki frontmatter 的 updated: YYYY-MM-DD（维护者显式复核日期）。"""
-    try:
-        content = path.read_text(encoding="utf-8")
-    except OSError:
+def _parse_updated_date(fm_block: str) -> date | None:
+    """从已提取的 frontmatter YAML 文本解析 updated: YYYY-MM-DD。"""
+    if not fm_block:
         return None
-    fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-    if not fm_match:
-        return None
-    upd_m = re.search(r"^updated:\s*(\d{4}-\d{2}-\d{2})", fm_match.group(1), re.MULTILINE)
+    upd_m = re.search(r'^updated:\s*["\']?(\d{4}-\d{2}-\d{2})["\']?', fm_block, re.MULTILINE)
     if not upd_m:
         return None
     try:
         return date.fromisoformat(upd_m.group(1))
     except ValueError:
         return None
+
+
+def _frontmatter_updated_date(path: Path) -> date | None:
+    """解析 wiki frontmatter 的 updated: YYYY-MM-DD（维护者显式复核日期）。"""
+    try:
+        content = _read_page_text(path)
+    except OSError:
+        return None
+    return _parse_updated_date(_frontmatter_block(content))
 
 
 def _frontmatter_block(content: str) -> str:
@@ -1402,6 +1579,12 @@ def _stale_claim_negated(body: str, start: int, end: int) -> bool:
     after = body[end : end + STALE_CLAIM_OVERREAD_WINDOW]
     for brk in STALE_CLAIM_SENTENCE_BREAKS:
         after = after.split(brk, 1)[0]
+    # 「全文不含 \"state-of-the-art\" 表述」在核对原文用词，不是在断言性能；
+    # 要求前后同时匹配，避免放过「不含额外数据的 SOTA 方法」这类真实断言。
+    if re.search(r"(?:正文|全文|论文)不含\s*[\"“「『]?\s*$", before) and re.match(
+        r"[\"”」』]?\s*(?:表述|措辞|字样)", after
+    ):
+        return True
     return any(cue in after for cue in STALE_CLAIM_OVERREAD_CUES)
 
 
@@ -1416,8 +1599,13 @@ def _stale_claim_span_slug(body: str, start: int, end: int) -> str:
 
 def _stale_claim_hit(body: str, page_stems: set[str]) -> str | None:
     """返回正文里第一个「真·绝对化断言」，命中全属结构性误报时返回 ``None``。"""
+    # 书名号内是被引用的资料标题，如《激光雷达 SLAM 算法最新综述》，
+    # 不代表本页把该资料或算法判定为当前最新。标题外的断言仍逐个检查。
+    title_spans = [m.span() for m in re.finditer(r"《[^》\n]{1,160}》", body)]
     for pat in STALE_CLAIM_PATTERNS:
         for m in re.finditer(pat, body, re.IGNORECASE):
+            if any(start <= m.start() and m.end() <= end for start, end in title_spans):
+                continue
             if _stale_claim_negated(body, m.start(), m.end()):
                 continue
             if _stale_claim_span_slug(body, m.start(), m.end()) in page_stems:
@@ -1457,19 +1645,21 @@ def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
 
     page_stems = {p.stem.lower() for p in pages}
     meta: list[tuple[Path, date | None, set[str], str]] = []
+    latest_by_tag: dict[str, tuple[date, Path]] = {}
     for page in pages:
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
+        fm_block = _frontmatter_block(content)
+        upd = _parse_updated_date(fm_block)
+        tags = _frontmatter_tags(fm_block)
         body = re.sub(r"^---\n.*?\n---", "", content, flags=re.DOTALL)
         body = extract_abbrev_section(body)[1]
         body = strip_misconception_sections(strip_code_blocks(body))
-        meta.append(
-            (
-                page,
-                _frontmatter_updated_date(page),
-                _frontmatter_tags(_frontmatter_block(content)),
-                body,
-            )
-        )
+        meta.append((page, upd, tags, body))
+        if upd is not None:
+            for tag in tags:
+                prev = latest_by_tag.get(tag)
+                if prev is None or upd > prev[0]:
+                    latest_by_tag[tag] = (upd, page)
 
     for page, upd, tags, body in meta:
         if upd is None or not tags:
@@ -1477,18 +1667,17 @@ def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
         hit = _stale_claim_hit(body, page_stems)
         if hit is None:
             continue
-        newer = next(
-            (
-                (other, o_upd)
-                for other, o_upd, o_tags, _ in meta
-                if other != page and o_upd is not None and o_upd > upd and tags & o_tags
-            ),
-            None,
-        )
-        if newer is not None:
+        best_newer: tuple[date, Path] | None = None
+        for tag in tags:
+            cand = latest_by_tag.get(tag)
+            if cand is not None and cand[0] > upd:
+                if best_newer is None or cand[0] > best_newer[0]:
+                    best_newer = cand
+        if best_newer is not None:
+            o_upd, other = best_newer
             results["stale_claims"].append(
                 f"{page.relative_to(REPO_ROOT)}（含绝对化措辞「{hit}」，updated={upd.isoformat()}；"
-                f"同主题更新页 {newer[0].relative_to(REPO_ROOT)} updated={newer[1].isoformat()}）"
+                f"同主题更新页 {other.relative_to(REPO_ROOT)} updated={o_upd.isoformat()}）"
             )
 
 
@@ -1506,8 +1695,10 @@ def _check_sources_health(results: dict[str, Any]) -> None:
     if not sources_papers_dir.exists():
         return
 
+    src_contents: dict[Path, str] = {}
     for src_file in sorted(sources_papers_dir.glob("*.md")):
         src_content = src_file.read_text(encoding="utf-8")
+        src_contents[src_file] = src_content
         for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
             href = m.group(1).split("#")[0]
             target = (src_file.parent / href).resolve()
@@ -1517,21 +1708,21 @@ def _check_sources_health(results: dict[str, Any]) -> None:
     if os.environ.get("GITHUB_ACTIONS") == "true":
         return
     git_mtime_map = _build_git_mtime_map()
+    dirty_paths = _git_dirty_paths()
     seen_stale: set[Path] = set()
-    for src_file in sorted(sources_papers_dir.glob("*.md")):
+    for src_file, src_content in src_contents.items():
         # 策展清单总表（*_catalog.md）是索引：一次链接改写会把它链到的数百页一起标陈旧，
         # 而这些页各自另有逐篇 source 承载真实的陈旧信号；死链仍由上方孤儿检查覆盖。
         if src_file.stem.endswith("_catalog"):
             continue
-        src_content = src_file.read_text(encoding="utf-8")
-        src_mtime = _effective_mtime(src_file, git_mtime_map)
+        src_mtime = _effective_mtime(src_file, git_mtime_map, dirty_paths=dirty_paths)
         for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
             href = m.group(1).split("#")[0]
             wiki_target = (src_file.parent / href).resolve()
             if wiki_target.exists() and wiki_target not in seen_stale:
                 if _wiki_reviewed_on_or_after_source(wiki_target, src_mtime):
                     continue
-                wiki_mtime = _effective_mtime(wiki_target, git_mtime_map)
+                wiki_mtime = _effective_mtime(wiki_target, git_mtime_map, dirty_paths=dirty_paths)
                 if src_mtime > wiki_mtime + 86400:
                     seen_stale.add(wiki_target)
                     rel_wiki = wiki_target.relative_to(REPO_ROOT)
@@ -1554,9 +1745,7 @@ def _check_contradictions(
         canonical_facts = {k: v for k, v in canonical_facts.items() if k in fact_ids}
         if not canonical_facts:
             return
-    all_pages_content = {
-        p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages
-    }
+    all_pages_content = {p: strip_misconception_sections(_read_page_text(p)) for p in pages}
     for fact_id, fact in canonical_facts.items():
         pos_pages, neg_pages = [], []
         for page, content in all_pages_content.items():
@@ -1580,7 +1769,7 @@ def _check_original_reading(pages: list[Path], results: dict[str, Any]) -> None:
     """frontmatter original 每条须指向 sources/ 下现有归档，且归档有唯一合法的通读字段。"""
     sources_dir = (REPO_ROOT / "sources").resolve()
     for page in pages:
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         for entry in original_entries(content):
             path = (page.parent / entry).resolve()
             if not path.is_relative_to(sources_dir) or not path.is_file():
@@ -1601,7 +1790,7 @@ def _check_frontmatter(pages: list[Path], results: dict[str, Any]) -> None:
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
 
         if page.name.lower() not in ("readme.md", "index.md") and not any(
@@ -1703,7 +1892,7 @@ def _check_query_format(pages: list[Path], results: dict[str, Any]) -> None:
             or page.name == "README.md"
         ):
             continue
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         missing_parts = []
         if "**Query 产物**" not in content:
             missing_parts.append("缺 'Query 产物' 说明")
@@ -1722,7 +1911,7 @@ def _check_formalizations(pages: list[Path], results: dict[str, Any]) -> None:
         parts = rel.parts
         if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "formalizations":
             continue
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
 
         if "$$" not in content and "$`" not in content and "`$" not in content:
             results["formalization_no_formula"].append(str(rel))
@@ -1934,7 +2123,7 @@ def _check_duplicate_arxiv(pages: list[Path], results: dict[str, Any]) -> None:
     """
     arxiv_pages: dict[str, list[str]] = {}
     for page in pages:
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         if not fm_match:
             continue
@@ -1983,7 +2172,7 @@ def _check_paper_entity_metadata(pages: list[Path], results: dict[str, Any]) -> 
         if not page.name.startswith("paper-"):
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         has_source = any(re.search(rf"^{key}\s*:", fm_block, re.MULTILINE) for key in source_keys)
@@ -2095,7 +2284,7 @@ def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -
         if len(parts) < 3 or parts[0] != "wiki" or parts[1] != "entities":
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         tags = _frontmatter_tags(fm_block)
@@ -2173,7 +2362,7 @@ def _check_physics_concept_crosslink(pages: list[Path], results: dict[str, Any])
         if page.stem in PHYSICS_FIDELITY_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- dynamics），也支持内联式 [dynamics, ...]
@@ -2223,7 +2412,7 @@ def _check_contact_control_crosslink(pages: list[Path], results: dict[str, Any])
         if page.stem in CONTACT_FORCE_CONTROL_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- contact），也支持内联式 [contact, ...]
@@ -2274,7 +2463,7 @@ def _check_embodied_fm_crosslink(pages: list[Path], results: dict[str, Any]) -> 
         if page.stem in EMBODIED_FM_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- vla），也支持内联式 [vla, ...]
@@ -2324,7 +2513,7 @@ def _check_eval_benchmark_crosslink(pages: list[Path], results: dict[str, Any]) 
         if page.stem in EVAL_BENCHMARK_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- benchmark），也支持内联式 [benchmark, ...]
@@ -2333,6 +2522,14 @@ def _check_eval_benchmark_crosslink(pages: list[Path], results: dict[str, Any]) 
         if inline:
             tags |= {t.strip().lower() for t in inline.group(1).split(",")}
         if not _tag_keyword_match(tags, EVAL_BENCHMARK_TAG_KEYWORDS):
+            continue
+
+        # SPU 等 ai-for-science 基准评估湿实验结果预测，不是具身闭环任务。
+        # 已归 AI Agent 评测链的科学基准无需强连具身枢纽；同时带机器人/具身
+        # 领域标签的跨域基准仍检查，避免漏掉实验室机器人等真实用例。
+        if "ai-for-science" in tags and not _tag_keyword_match(
+            tags, ("robot", "embodied", "vla", "navigation", "manipulation", "locomotion")
+        ):
             continue
 
         if not any(hub in content for hub in EVAL_BENCHMARK_HUBS):
@@ -2375,7 +2572,7 @@ def _check_actuator_drive_chain_crosslink(pages: list[Path], results: dict[str, 
         if page.stem in ACTUATOR_DRIVE_CHAIN_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- actuator），也支持内联式 [actuator, ...]
@@ -2428,7 +2625,7 @@ def _check_perception_stack_crosslink(pages: list[Path], results: dict[str, Any]
         if page.stem in PERCEPTION_STACK_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- object-detection），也支持内联式 [object-detection, ...]
@@ -2460,7 +2657,7 @@ def _check_tool_institutions(pages: list[Path], results: dict[str, Any]) -> None
         parts = rel.parts
         if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "entities":
             continue
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         tags = _parse_frontmatter_list(content, "tags")
         if not is_tool_entity(rel.as_posix(), tags):
             continue
@@ -2473,29 +2670,21 @@ def _check_frontmatter_topic(pages: list[Path], results: dict[str, Any]) -> None
     from generate_link_graph import MAX_NODE_TOPICS, TOPIC_BY_ID, parse_frontmatter_topics
 
     for page in pages:
-        topics = parse_frontmatter_topics(page.read_text(encoding="utf-8"))
+        topics = parse_frontmatter_topics(_read_page_text(page))
         unknown = [tid for tid in topics if tid not in TOPIC_BY_ID]
         if unknown or len(topics) > MAX_NODE_TOPICS:
             results["invalid_topic"].append(f"{page.relative_to(REPO_ROOT)} （topic: {topics}）")
 
 
 def _check_methods_entities(pages: list[Path], results: dict[str, Any]) -> None:
-    """methods/ 页面结构检查 + entities/ 出边检查。
-
-    注意：原始实现中 entities/ 检查写在 methods/ 循环内部，
-    因 ``continue`` 门控导致 entities/ 页面实际不会被扫描。
-    此处保持相同行为——仅在 methods/ 页面上执行两项检查。
-    """
+    """methods/ 页面结构检查。"""
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
         if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "methods":
             continue
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         _check_method_page(page, rel, content, results)
-
-        if parts[1] == "entities":
-            _check_entity_page(page, rel, content, results)
 
 
 # ---------------------------------------------------------------------------
@@ -2507,6 +2696,25 @@ def coverage_stats(results: dict[str, Any]) -> dict[str, int]:
     """从 lint 结果提取 Sources 覆盖率，供 home-stats / preflight 复用。"""
     covered = int(results.get("_ingest_covered", 0))
     total = int(results.get("_ingest_total", 0))
+    percent = round(covered / total * 100) if total else 0
+    return {"covered": covered, "total": total, "percent": percent}
+
+
+def compute_ingest_coverage() -> dict[str, int]:
+    """轻量级计算 wiki 页面的 Sources 覆盖率（与 coverage_stats(lint()) 同口径）。"""
+    covered = 0
+    total = 0
+    for page in get_wiki_pages():
+        rel = page.relative_to(REPO_ROOT)
+        is_meta_page = (
+            page.name.lower() in ("readme.md", "index.md")
+            or "references/" in str(rel)
+            or "roadmaps/" in str(rel)
+        )
+        if not is_meta_page:
+            total += 1
+            if has_source_reference(_read_page_text(page)):
+                covered += 1
     percent = round(covered / total * 100) if total else 0
     return {"covered": covered, "total": total, "percent": percent}
 
@@ -2523,36 +2731,37 @@ def save_lint_report(results: dict[str, Any], report_path: Path | None = None) -
 def lint() -> dict[str, Any]:
     pages = get_wiki_pages()
     page_set = {p.resolve() for p in pages}
-    inbound, broken_links = _build_link_index(pages, page_set)
     results = _empty_results()
 
-    _check_per_page(pages, inbound, broken_links, results)
-    _check_missing_concepts(pages, results)
-    _check_missing_concept_pages(pages, results)
-    _check_sources_health(results)
-    _check_contradictions(pages, results)
-    _check_frontmatter(pages, results)
-    _check_original_reading(pages, results)
-    _check_log_activity(results)
-    _check_query_format(pages, results)
-    _check_formalizations(pages, results)
-    _check_readme_badges(results)
-    _check_graph_orphans(results)
-    _check_methods_entities(pages, results)
-    _check_methods_without_practitioner_query(pages, inbound, results)
-    _check_paper_entity_metadata(pages, results)
-    _check_duplicate_arxiv(pages, results)
-    results["duplicate_project_nodes"] = check_project_nodes(REPO_ROOT)
-    _check_dataset_entity_metadata(pages, results)
-    _check_stale_claims(pages, results)
-    _check_physics_concept_crosslink(pages, results)
-    _check_contact_control_crosslink(pages, results)
-    _check_embodied_fm_crosslink(pages, results)
-    _check_eval_benchmark_crosslink(pages, results)
-    _check_actuator_drive_chain_crosslink(pages, results)
-    _check_perception_stack_crosslink(pages, results)
-    _check_tool_institutions(pages, results)
-    _check_frontmatter_topic(pages, results)
+    with _page_read_cache():
+        inbound, broken_links = _build_link_index(pages, page_set)
+        _check_per_page(pages, inbound, broken_links, results)
+        _check_missing_concepts(pages, results)
+        _check_missing_concept_pages(pages, results)
+        _check_sources_health(results)
+        _check_contradictions(pages, results)
+        _check_frontmatter(pages, results)
+        _check_original_reading(pages, results)
+        _check_log_activity(results)
+        _check_query_format(pages, results)
+        _check_formalizations(pages, results)
+        _check_readme_badges(results)
+        _check_graph_orphans(results)
+        _check_methods_entities(pages, results)
+        _check_methods_without_practitioner_query(pages, inbound, results)
+        _check_paper_entity_metadata(pages, results)
+        _check_duplicate_arxiv(pages, results)
+        results["duplicate_project_nodes"] = check_project_nodes(REPO_ROOT)
+        _check_dataset_entity_metadata(pages, results)
+        _check_stale_claims(pages, results)
+        _check_physics_concept_crosslink(pages, results)
+        _check_contact_control_crosslink(pages, results)
+        _check_embodied_fm_crosslink(pages, results)
+        _check_eval_benchmark_crosslink(pages, results)
+        _check_actuator_drive_chain_crosslink(pages, results)
+        _check_perception_stack_crosslink(pages, results)
+        _check_tool_institutions(pages, results)
+        _check_frontmatter_topic(pages, results)
 
     return results
 

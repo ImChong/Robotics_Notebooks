@@ -134,3 +134,9 @@ sequenceDiagram
 
 - [arXiv PDF](https://arxiv.org/pdf/2610.35385)
 - [https://github.com/HexaFuture/EmbodiedLab](https://github.com/HexaFuture/EmbodiedLab)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2610.35385](https://arxiv.org/abs/2610.35385)。
+- **项目或官方发布入口：** [项目页](https://hexafuture.ai/benchmarks/embodiedlab/)。
+- **清单记录：** `survey_ax_2610_35385`；本次仅补充身份与链接，未重新通读或核验已有结论。

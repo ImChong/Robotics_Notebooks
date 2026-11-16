@@ -255,6 +255,929 @@ op: ingest
 
 按主论文核对 DINOv3、GAWM、DUET-DINO、PointWorld、FlowWM、RLA-WM、JEPA-WMs；DINO-WM 作为使用 DINOv2 的历史对照。复用已有实体，追加缺少的原文/代码/项目页归档。原文和源码尚未全部通读；PR 保持 Draft 直至复核通过。
 
+# [2026-11-08] ingest | Recova 既有节点原文复核与真机编排补全
+
+- **去重：** `wiki/entities/paper-recova.md` 已存在且 `project_id: recova`；本次不新建重复实体。
+- **官方原文：** https://arxiv.org/html/2610.01178v1 （论文 §1–5、附录 A–E、Tables 1–5、Figures 1–10）；https://research.nvidia.com/labs/gear/recova/
+- **更新节点：** `wiki/entities/paper-recova.md`，补 Appendix A Algorithm 1 对应的 Mermaid 真机调度时序（**论文伪代码，不是源码时序**）、四任务逐项 20-trial 成功率、异步 VLM 判定与过期回调防护、训练动作 offset/absolute 语义、技能计数原文差异。
+- **更新原文归档：** `sources/papers/recova_arxiv_2610_01178.md`，逐条记录对照章节、实验统计和未开放源码边界。
+- **数据核验：** Base 23.8% → DAgger 77.5% → 恢复 87.5%；摸牌任务四轮人工接管 7/8 → 0/7；不能将后者推广到所有真机任务。
+- **论文内部统计差异：** §4.2 报告 25 recovery skills；附录 D 图 8–9 展示 24 项。本次不推测缺少的一项。
+- **健康度目标：** 沿用原节点 `type/project_id/tags/status/summary/original/sources` 和九节阅读骨架，`original` 指向标有「通读：已完成」的现有来源；按仓库三项静态检查预期 3/3，需 Actions 最终复核。
+- **发布边界：** 没有找到官方独立完整源码/权重/数据下载入口，不虚构源码调用或复现结果；不更新自动生成的 `catalog.md`、`log.md` 或站点导出物。
+
+# 2026-11-08 ingest — ResearchBoost-Agent：可审计的 AI 训练 Infra 优化
+
+- **意图：** 根据作者的《ResearchBoost: RSI starts with Infra》、官方 README/Methodology/Judge 及可运行脚本，收录“先冻结裁判再由 Agent 持续提效”的技术路线，并为机器人训练工程提供辨析。
+- **材料：** `sources/blogs/researchboost-rsi-starts-with-infra-2026.md`；`sources/repos/researchboost-agent.md`。
+- **主节点：** [ResearchBoost-Agent 双语深读](../wiki/entities/researchboost-agent.md)（一个项目一个实体，不为 Motus/NanoChat 重复建立 ResearchBoost 主节点）。
+- **开源/源码结论：** GitHub 仓库公开了实际运行入口及评测组件；本次查到的根目录未列 `LICENSE`，未擅自认定宽松代码再分发许可。
+- **核心核验：** 2026-11-08 官方 README 累计 20 项、7 个领域，9.59× 仅是 8×B200 上 Faster-Motus 7.468→0.779 秒/迭代；NanoChat 1.0744× 在 8×H20 的 FP8 训练更新中测得。必须区分 step time、estimated eval wall-clock 与完整训练。
+- **流程可溯源：** 冻结数值 baseline σ → 逐轮 profile/time/check → FINAL.json → `judge.sh` 最终 B-C-B `check --final` → `accept.py` PASS/收益/哈希校验。节点含 Mermaid 项目流程图和真实源码入口时序图。
+- **边界：** 尚未独立 GPU 复现；短轨迹验证、bubblewrap 回退安全和商业授权均已单独标注。研究 Infra 速度提升不等于完整 RSI。
+- **图谱入链：** [递归自改进 RSI](../wiki/concepts/recursive-self-improvement.md) 添加反向入口。
+- **变更边界：** 仅改 wiki、sources 与 log.d；未触碰 `catalog.md`、`log.md`、导出/站点统计文件。
+
+# 2026-11-08 · Odyssey-3 官方首发原文深读与去重更新
+
+- **Op：** ingest
+- **意图：** 根据用户提供的 Odyssey @odysseyml 首发截图查找一手资料，避免与已有 Odyssey-3 项目节点重复。
+- **原文：** 2026-09-15 [Introducing Odyssey-3](https://odyssey.systems/introducing-odyssey-3)；2026-10-08 [Meet Odyssey-3](https://odyssey.systems/meet-odyssey-3)。两份官方文章已逐节核对并标注阅读范围。
+- **开源结论：** 官网有交互研究预览与开发者入口；未发现可公开下载的 Odyssey-3 权重、训练/推理源码和完整数据；不绘制虚构的源码时序图。
+- **关键差异：** 共享的是世界模型的视觉表征，不是一个零适配的统一执行器；驾驶 20 小时为模拟训练，77% 是安全员接管之间行驶距离比，不是任务成功率。
+- **节点：** [Odyssey-3](../wiki/entities/odyssey-3.md)；[首发归档](../sources/sites/odyssey-3-introducing.md)；[后续发布归档](../sources/sites/odyssey-3.md)。
+
+# 2026-11-10 · ingest · FLORA 原文深读与开源状态修正
+
+- **意图：** 用户指定 Sicong Leng、Yunze Man、Zhiqi Li 等的 `FLORA: An Open Model Suite for Scaling Robotics Data Engines`（arXiv:2610.31779v1）进行 ingest。
+- **去重：** 保留已有唯一实体 `wiki/entities/flora-robotics-data-engine.md`；论文、项目主页和源码均挂到此实体，不创建重复论文节点。
+- **原文：** 核对 arXiv v1 正文与 Appendix A–H，补分段/字幕 GRPO、Rewarder SFT、不同测试协议及成本与生产吞吐的估计口径。
+- **开放状态：** NVIDIA 官方 Code 链接现指向 `NVlabs/Flora`；开源推理示例与三类模型权重，**不含训练代码/生产服务**。补 `sources/repos/flora-nvlabs.md` 源码实际入口与 `sequenceDiagram`。
+- **输出：** 完整中英标题、方法流程图、对照表、边界/许可说明；同步更新 paper / site / repo 归档。
+- **未复现：** 未下载 130 GB / 56 GB 权重，也未在 H100 或 512×GB300 集群运行实验。
+- **原文：** <https://arxiv.org/html/2610.31779v1>
+- **项目：** <https://research.nvidia.com/labs/gear/flora/>
+- **代码：** <https://github.com/NVlabs/Flora>
+
+# 2026-11-10 · ingest · RoboLineage（CoRL 2026）
+
+- **意图：** 根据用户指定的《RoboLineage: Agent-Native Data Lifecycle Governance Across Robot Policy Iterations》（Qian Luo 等；arXiv:2606.22142）收录跨机器人策略轮次的数据生命周期治理。
+- **去重：** 检索 Robotics_Notebooks 主分支代码与 PR，未发现同名实体；论文/官网/代码统一到 `wiki/entities/paper-robolineage.md` 一个稳定 `project_id: robolineage` 节点。
+- **原文：** 通读 arXiv HTML §1–5 和 Appendix A–K，保留 25 tasks / 500 rollouts、12 对 session、八任务匹配训练和三轮复采的口径，并区分人工活跃时间与物理采集。
+- **开放状态：** 官方 GitHub MIT 许可，已提供 Python runtime、ROS2 数据采集与 VSA、review、dataset lock、训练/评测适配、FastAPI/Vue frontend；mock replay、打包评分脚本和更广覆盖 adapter 尚在 README 待办。
+- **输出：** 中英双标题、原始资料三层归档、方法 Mermaid flowchart、基于 `run.sh` / `UnifiedRuntime` / `PostRolloutReviewWorker` / `TrainingLifecycleRunner` / `PolicyEvaluationAgent` 的 Mermaid sequenceDiagram，并从数据飞轮已有页面入链。
+- **核验边界：** 静态阅读官方源码与文档；未在真机、GPU 或 ROS2 完整 workstation 运行，不声称复现论文中定量结果。
+- **论文：** <https://arxiv.org/html/2606.22142v1>
+- **项目：** <https://robolineage.github.io/>
+- **代码：** <https://github.com/robolineage/robolineage>
+
+# 2026-11-11 ingest：LHNav / DASH / VLA Adaptation Chess / ExoStack
+
+- 意图：为长时程人形导航、异步 VLA 控制、VLA 具身适配实验及 ROS 2 外骨骼软件栈建立四个独立实体节点；保留英文题名与中文机制摘要。
+- 一手来源：arXiv:2611.12136、2611.11854、2611.12676、2611.12306；LHNav 项目站、Chess 官方代码/LeRobot 数据及 ExoStack 官方实现与技术文档。
+- 关键结论：LHNav 现有仓仅展示网页；DASH 未核得官方代码；Chess 公开 MuJoCo/训练/评测和 261 条真实轨迹；ExoStack 公开 ROS 2/micro-ROS 代码但 PolyForm Noncommercial 限非商用。
+- 边界：结果为原作者报告；未在本环境完成硬件或完整 CI 复现，待 PR GitHub Actions 检查。
+
+# 2026-11-11 ingest | Ai2 ToyBlocks 原始研究深化与 Sim2Real 边界核实
+
+- **意图：** 响应 ToyBlocks 单项目 ingest，发现 2026-11-09 已由 PR #3551 建立主节点，因而选择更新现有唯一实体、补充定量实验与真实源码执行链，避免重建同项目节点。
+- **原文：** https://huggingface.co/blog/allenai/toyblocks （2026-11-06）；https://allenai.github.io/ToyBlocks/experiments.html；https://allenai.github.io/ToyBlocks/sim2real.html；https://github.com/allenai/ToyBlocks
+- **开源结论：** 仿真/数据生成、模型训练/评测、官方模型与数据已公开；FR3 真机执行工具包与 system identification 指南截至本次核查仍标注 Coming soon，完整一体化 RL 训练尚待补充。
+- **主要更新：** VLA 空间泛化的五种对照方法、智能体与世界模型定量结果、FR3 真机与仿真分母区分、代码核验的 datagen 与 eval 时序图。
+- **主节点：** [ToyBlocks](../wiki/entities/toyblocks.md)
+- **核验边界：** 通读官方发布原文与实验/Sim2Real 页面，核对运行入口代码；未执行 Isaac、GPU 训练或真机部署。
+
+# 2026-11-11 — ingest LIFE：Learning to Live
+
+- 来源：arXiv:2611.00180v2（2026-11-04）、AgibotTech/LIFE 官方 README、RoboBeats `gate.py`、SSS-Bench `pipeline.py` / `agent.py`，项目页以及前作 ReSight arXiv:2610.33487。
+- 唯一主实体：[`wiki/entities/paper-life-learning-to-live.md`](../wiki/entities/paper-life-learning-to-live.md)。
+- 区分论文完整系统主张（RoboBeats / Plastic Memory / EDM）与公开可运行部分（门控推理、模型适配器、SSS-Bench）。
+- 按源码绘制因果事件流图和 `Gate.stream` → `select` → writer / reader 的 Mermaid 运行时序图；解释 100/10/90 分块、0.5/0.3 滞回、提问截断与 hard10 单次最多 10 帧回看。
+- 从既有 Agent 记忆 wiki 建反向链接；未改动 catalog/log/export 派生文件。
+- 论文数字属作者报告，未进行 CUDA benchmark 与实机复现；项目主页正文抓取未完成，具体边界记录在 sources/sites。
+
+# 2026-11-12｜Ingest ReACT、RedirectMimic 与 BEHAVIOR 2026
+
+- **意图：** 将三项 2026 年 11 月新研究编译进机器人知识库，区分人形非对称负载移动、全身动作局部编辑与百任务家务 VLA。
+- **论文：** [ReACT](https://arxiv.org/abs/2611.13929)、[RedirectMimic](https://arxiv.org/abs/2611.14049)、[One Policy for 100 Household Tasks](https://arxiv.org/abs/2611.14432)。
+- **核对与开放范围：** ReACT 和 RedirectMimic 当前未确认可运行作者源码；BEHAVIOR 提供 Apache-2.0 仓库、可下载权重与示范数据，但完整 agent 练习会话未公开。
+- **主要结论：** ReACT 的 G1 导航 40/40 完成不等于全部运动误差更低；RedirectMimic 仅对局部动作奖励参考做删改；BEHAVIOR 纯 VLA 本地 Q-score 0.392，公开榜混合方案为 0.446。
+- **编译形式：** 3 份论文通读归档、2 份项目站点归档、1 份官方源码归档、3 个含 Mermaid 方法流程的中英双语实体页；可运行 BEHAVIOR 源码另附时序图；回链挂至人形移动与 VLA 方法页。
+- **说明：** 本次仅基于一手论文和公开源码静态核查，尚未在本环境执行本地仿真或全仓预检。
+
+# 2026-11-12 · Glen Berseth CoRL 2026 Reading List（全文 ingest）
+
+- **来源：** 博客全文已取得并通读（`sources/blogs/glen-berseth-corl-2026-reading-list-2026-11-10.md`，原文落盘 `sources/raw/`）；101 篇（P0 26 / P1 45 / P2 30）。
+- **节点：** 101 篇逐条对应唯一详情节点：新建与升级的节点逐篇读论文并核对清单摘要；2 篇全文拿不到（FlashRFCL、Emergent Control via Prior-Based Free Energy Minimization），节点为 draft、未达 3/3。
+- **概述页：** `wiki/overview/corl-2026-glen-berseth-reading-list.md` 重写为 101 篇索引，含跨论文观察与局限。
+- **说明：** arXiv 号由标题精确匹配搜得；OpenReview 被验证页挡住，未逐篇核对；会场标注取自清单。
+
+# 2026-11-13 ingest：SuperMimic 获奖更新与 RoboCap LiDAR-100
+
+- **意图：** 为既有 SuperMimic 实体补充 CoRL 2026 获奖动态，另收录 BitRobot 真实作业头戴 LiDAR 数据集，不新建 SuperMimic 重复节点。
+- **核验：** 原文以 SuperMimic arXiv v2、作者项目页、现有已读代码归档，以及 BitRobot Hugging Face 数据卡为主。获奖由 11 月 12 日媒体报道核对，用户提供的 Berkeley AI X 原帖受限，标记待直接复核。
+- **开源边界：** SuperMimic 研究团队有训练/回放源码但完整实验资产未知；RoboCap LiDAR-100 是非商业许可数据集，下载须接受条件，目前 50 / 100 小时开放，没有独立可运行策略训练仓库。
+- **涉及页面：** wiki/entities/paper-supermimic.md 与 wiki/entities/dataset-robocap-lidar-100.md；另给 wiki/entities/paper-robomocap.md 添加区别说明与反向链接。
+
+# 2026-11-13 ingest｜VINO 与 Volt：3D 场景自监督与体积 Transformer
+
+- **意图：** 将社群所称“3D DINO 时刻”的 VINO 表征学习工作与 ECCV 2026 Long Oral 的 Volt 骨干分开归档，避免把两篇论文及不同的训练协议合并。
+- **原文：** arXiv:2611.07176v1（含补充材料）与 arXiv:2604.19609v2；对照两个作者项目主页与官方 GitHub/Volt 训练代码。
+- **开源结论：** Volt 官方代码、训练脚本和 HF 权重已发布；VINO 仓库只有 README 占位，模型权重和完整代码待发布。
+- **知识沉淀：** [VINO](../wiki/entities/paper-vino.md) 与 [Volt](../wiki/entities/paper-volt.md)，并补充具身感知三维表征的交叉引用。
+
+# 2026-11-13 ingest：Mundo 相机 Plücker 射线与可编程仿真技术精读
+
+- **意图：** 对已有 Mundo 节点增量深入整理，避免重复实体；厘清 Scene Program、MuJoCo、Proxy Video、Plücker Camera Encoder 与视频扩散 Transformer 的职责分界。
+- **原始资料：** 2026-10-23 作者官方技术博客全文、项目主页全部技术板块、商汤 2026-11-04 官方新闻、Luo-Yihang/Mundo 仓库 README；数学定义参考 ICLR 2024 Cameras as Rays。
+- **核心修订：** 增加 Plücker 射线定义与相机坐标约定、注入位置、无位姿参考图的 learned embedding；改绘项目 Mermaid 方法图，补输入/仿真/训练/性能边界。
+- **开放结论：** 2026-11-13 官方仓库只有 README 与 assets，README 将代码/权重列为 11 月底待发布；不绘制虚构源码运行时序图。
+- **质量：** 为原文归档补显式通读记录，wiki 增加 original 和统一阅读骨架；仓库完整预检需以 GitHub Actions 为准。
+
+# [2026-11-13] ingest | 星尘智能 CoMind / Be My Eye
+
+- **操作：** ingest。
+- **意图：** 收录星尘智能 CoMind 项目页及 arXiv:2611.12295v1 论文，准确组织双机器人受限通信下的任务相关上下文共享，并对比零通信 CHORUS。
+- **已核对：** arXiv HTML v1 §1–6 方法、公式、Tables 1–5、定性实验与限制；官网 CoMind 任务描述与公开资源入口。
+- **新增主实体：** [CoMind / Be My Eye](../wiki/entities/paper-be-my-eye-comind.md)；包含双语标题、机制、论文方法 Mermaid 流程图、数值证据和开源边界。
+- **来源：** [论文](../sources/papers/be-my-eye-arxiv-2611-12295.md)、[官网](../sources/sites/astribot-comind-project.md)、[官方代码核验](../sources/repos/astribot-comind-code-status.md)。
+- **开源判定：** 截至本日官网未公开该方法可运行代码、权重与数据；不虚构源码时序图。
+- **关联：** 新主实体引用 [CHORUS](../wiki/entities/paper-chorus.md) 作零通信对照；[人形多机协调](../wiki/concepts/humanoid-multi-robot-coordination.md) 增加 CoMind 入链。
+- **通读补齐：** PR #3699 复核中逐篇通读 Swarm Sensors 2025、SPL 2401.15026v1、ARTEMIS 2512.09431v1、RoboCompiler-Humanoids 2610.14237v1 及 CoMind 2611.12295v1；前四篇集中为[一手论文全文核验记录](../sources/papers/humanoid-coordination-fulltext-review-2026-11-13.md)，协调概念页以 `original` 关联该记录与 CoMind 归档。
+- **纠错：** 区分单机内管理与队级集中控制、SPL 定性赛事与 60 min 仿真、Swarm 控球百分点与缺员/丢包口径；CoMind 图中未来帧改为独立训练目标，补充 Process Score 权重定义。
+
+# 2026-11-13 ingest：Flash ALOHA（高速双臂动觉示教）
+
+- **Op：** ingest
+- **意图：** 为机器人学习知识库归档 Stanford Flash ALOHA 的原始论文、项目页与源码，并写入独立、可导航的论文详情节点。
+- **查重：** 已用 Flash ALOHA、flash-aloha 与 ALOHA Lightning 查询当前仓库内容和 PR；未发现同论文专属详情页，新建唯一节点 `wiki/entities/paper-flash-aloha.md`。
+- **原文核验：** 官方论文 PDF 12 页（方法、Table I–III、附录）与官方站点，来源完整记录于 `sources/papers/flash_aloha_icra2026.md`。
+- **开源结论：** 官方 GitHub 已开放 MIT 许可的采集、训练及真机推理框架；未确认原论文完整五任务示范与检查点公开下载；新仓库 Flow/RTC 能力不可反推为论文主结果。
+- **关键技术：** 可反驱手持示教、编码器采集轨迹、基于运动学的操作员手部图像遮罩、ACT 动作块重叠 Sigmoid 平滑。节点内含原文流程 Mermaid 和结合真实源文件入口的运行时序 Mermaid。
+- **评测读法：** 各 50 条示范、五项成功率 80%–100%；电池插入 5.70 s vs 主从 17.87 s；抛接球 1.85 s。把速度、数据采集与任务成功率的因果边界分开。
+- **关联入口：** `wiki/tasks/bimanual-manipulation.md`，避免孤立页。
+- **源码边界：** 已追踪 `scripts/run.py` → 采集/训练/推理入口及 `blend_actions`；论文 FK+相机标定手部遮罩的完整函数仍未定位，不宣称源码完全复核。
+- **校验：** 当前 GitHub 连接仅允许读写线上仓库，无法在此运行 `make ci-preflight` 完整本地检查；最终以 GitHub Actions 的 Wiki Lint / Mermaid 检查为准。
+
+# [2026-11-13] ingest | FlowDPG CoRL 2026
+
+- **意图：** 把 Skild AI/CMU/UPenn FlowDPG 的长期双臂策略优化路线收录为唯一论文节点。
+- **原文核验：** arXiv:2606.22303v2 正文与 Appendix A–D，官网 PDF、任务/扰动评测。
+- **交叉链接：** 双臂协调操作任务；正文增加基于论文 Algorithm 1 的 Mermaid 主干流程图。
+- **开源结论：** 项目页未列正式源码/权重/数据下载，因此不生成未经核对的运行时序图。
+- **指标纠正：** Franka AirPods 92% 为端到端成功率；YAM 炒蛋 85.8% 为离线阶段评分；不混入 PNP 营销信息。
+
+# [2026-11-14] ingest | sources/blogs/embodied-research-digest-2026-11-12.md — 13 篇论文去重收录
+
+- 逐页分析用户上传的 5 页研究资讯，确定 13 篇论文的 arXiv 来源。
+- 复用主分支已有 MetaWAM、BEHAVIOR 2026、DexSeed、Elastic-WAM 四个节点。
+- 为其余九篇创建独立论文实体、来源与源码/项目归档、Mermaid 方法图，以及可由 README 对齐的概念时序图。
+- **开源与健康边界：** 后续已核对九篇原文及相关附录、追加实验约束与源码入口；知识节点健康度按规则升级，源码与机器人实测仍未独立复现。URDF2Ontology 原站 PDF 获取受限，已明确标注使用论文文字镜像。
+
+# 2026-11-14 ingest：2026 VLA 15 项目开源对比
+
+- **意图：** 将用户附件《15 个开源项目，看透 2026 年 VLA 的三个关键转变》（深蓝具身智能，25 页）整理为 2026 开源生态选型对照，衔接 2025 VLA 资源索引。
+- **入库：** 二手报道来源导读 1 份；按论文/项目唯一身份升级 10 个既有 wiki 实体，并新增 5 个独立 wiki 实体（TurboVLA、Hy-Embodied-0.5-VLA、StarVLA 框架论文、vla-evaluation-harness、verl-vla）；新增 9 个一手原文阅读归档与补充官方源码导航；新增跨项目 comparison 1 页。
+- **核验：** 当前官方 `allenai` 仓库纠正评测工具归属；Qwen-VLA 只披露研究结果、尚未找到完整开放代码/权重；区分 TurboVLA 单次推理 32 Hz 与整环频率；区分 Hy-VLA 10k+ h 总数据与 2k+ h 公开数据。
+- **边界：** 未重新通读 15 篇独立原始论文/源码，未运行 15 套基准。各实体只指向对应论文或项目的一手归档；StarVLA 框架和 α 为两篇不同论文，也不更改自动生成的目录/站点导出物。
+
+# 2026-11-14 · ingest · 紧密螺旋橄榄球投掷
+
+- **意图：** 收录爱荷华州立大学 Zaid Mahboob / Bowen Weng 关于 Unitree G1 精确旋转出球的 Humanoids 2026 论文，形成跨动态操作与接触控制的知识导航。
+- **原文：** https://arxiv.org/html/2608.16642v2（已核对 §I–§V 方法、实验、局限）；作者项目页 https://www.zaidmahboob.com/projects/tight-spiral/
+- **关键结论：** 两阶段抛投/随动；MPC 采样优化求解一次约 500 ms，真机使用离线 52 维查表；最高旋转效率 93.6%、最佳球头角 0.286 rad；不能误读为在线 250 Hz MPC 求解。
+- **开放程度：** 论文和演示公开视频；未查到该论文的官方可运行控制器仓库及查表数据，故源码运行时序图明确不适用。
+- **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
+- **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
+
+# 位置编码教程 ingest 记录
+
+# 2026-11-16 | ingest | Agentic Robots 第一批独立节点
+
+- 从官方固定清单快照建立 307 条批次台账，编号匹配仅作候选，后续继续语义查重。
+- 完成 PAFF 独立详情页：通读 v4，区分评测协议，静态核查 CALVIN 代码及默认重标注阈值，补充流程图和运行时序图。
+- 综述建立入链，VLA Stage 5 建立阅读入口。代码未全仓审计，实验未复现，其余条目仍待逐项验收。
+
+# 2026-11-16 | ingest | Agentic Robots 第二批
+
+- 完成 TidyBot、OLAF、LMPC 三个独立论文节点；先按编号、标题、官方入口查重，区分 TidyBot2 与 Disney Olaf。
+- 核读固定版本正文与相关附录；核查 TidyBot 官方实现，获取并静态阅读 LMPC 官方教学 Colab，记录 OLAF 空 Code 链接。
+- 三类适应分别作用于语言规则、视觉运动策略与语言模型。建立综述入链和 VLA Stage 5 导航。
+- 台账总计 307，累计完成 4，剩余 303；实验均未运行，节点健康度以脚本为准。
+
+# 2026-11-16 | ingest | Agentic Robots stub 与地址覆盖
+
+- 用户调整为先建 stub，不以健康度为本阶段门槛。
+- 补入此前漏计的 additional_papers.yaml 23 条，范围从 307 修正为 330。
+- 新建 229 个 stub，复用 101 个既有节点，节点缺失 0；项目入口未确认与无 arXiv 编号分别列出，未猜测地址。
+- 深读仍为 4 条，剩余 326 条；本次地址提取不冒充论文通读或复现。
+
+# 2026-11-16 | ingest | Towards Agentic Robots v1 分类补核
+
+- **意图：** 论文节点已存在，不重复建页；依据原文改善摘要式旧页，聚焦 Table 1 四域十七类、执行编排与评测边界。
+- **一手材料：** [固定 v1 HTML](https://arxiv.org/html/2610.20442v1)、[固定 v1 PDF](https://arxiv.org/pdf/2610.20442v1) 与 [TeX 源包](https://arxiv.org/e-print/2610.20442v1)；PDF 第 10 页 Table 1 原表已核。
+- **开放边界：** [作者 Awesome 索引](https://github.com/chonghanqin/Awesome-Agentic-Robots) 是动态文献资料库及生成/校验脚本，并非机器人训练/推理方法代码。
+- **主要位置：** [唯一论文实体](../wiki/entities/paper-towards-agentic-robots-survey.md)、[v1 来源归档](../sources/papers/towards_agentic_robots_arxiv_2610_20442.md)、[VLA Stage 4](../roadmap/depth-vla.md)。
+- **待完成：** e-print 源包在当前环境无法解包，全部引用未逐条审计；故来源归档为「通读：未完成」、实体保持 draft；健康度需以脚本实测为准。
+
+# 2026-11-16 · ingest
+
+- 完整读取具身运控lab《11.09–11.13 人形／四足 29 篇》原始上传 PDF，建立 29 篇独立论文阅读坐标。
+- 以 arXiv 主身份去重：复用 15 篇已完成论文详情；升级已有 BlinkMimic 草稿 1 篇；新建 13 篇独立论文节点及其一手原文归档。
+- 本次更新的 14 篇论文包含方法、实验、局限、Mermaid 主流程、双语标题、跨页面引用；BlinkMimic 与 FORGE 另基于实际可运行入口添加源码运行时序图。
+- 本次 29 篇均有健康度 3/3 的结构化判据；最终以报告脚本与 CI 实测为准。
+- [29 篇阅读坐标](../wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+
+## [2026-11-16] ingest | sources/blogs/wechat-robotics-29-papers-2026-11-16.md | 29 篇具身论文导览线索与两篇重点原文
+
+- 意图：归档用户提供的 8 页论文动态，不用转载摘要代替 29 篇论文核读。
+- 完成：通读 ActionCodec2、ManiLadder 一手论文并分别生成独立实体/流程图；ActionCodec2 额外核读官方可运行评测入口和时序图；新增对应 VLA、具身评测路线链接。
+- 去重：JustRUA 和 STVLA 已有独立实体节点，不复制。
+- 边界：其余线索仅供后续逐篇核实；ManiLadder 项目站点读取失败，源码/数据是否开放待查；本次不声称完成 29 篇全文核读和实验复现。
+
+## [2026-11-16] ingest | OVBench 与 S-EMBER：流式视频理解与第一视角情景记忆
+
+- **意图：** 独立归档两篇原文，建立在线视频问答及第一视角有证据记忆检索两条知识节点，并挂载具身模型评测 Stage 1。
+- **开源结论：** OVBench 官方已有训练/评测脚本与 ViT 特征 PMB（KV-cache 版本尚待）；S-EMBER 已有 MCQ/grounding 评测脚本和 HF 数据。
+- **判断边界：** 在线时空问答与时间证据检索相关却不同；都不能代替机器人动作成功率。
+- **待办：** 论文所有附录完整核读、模型评测复现、健康度与 CI 实测。PR 保持草稿。
+
+## [2026-11-16] ingest | InternW0-Δ 官方权重上线与源码运行时序核对
+
+- 原位完善 `wiki/entities/paper-internw0-delta.md`，避免按同篇 arXiv 论文重建重复实体。
+- 复核 Base/LIBERO/RoboTwin/RoboDojo 四个公开 HF checkpoint，修正旧的 forthcoming 表述，明确 MIT 代码、Apache-2.0 模型与第三方数据许可边界。
+- 阅读训练与 RTC ROS2 部署源码、补 Mermaid 源码时序图，挂载 WAM 纵深路线 Stage 3；未实际运行训练或真机。
+
+## [2026-11-16] ingest | MACaQ | 逐层 MXFP4 量化的精度、时间与推理代价
+
+- 意图：依据 arXiv:2611.10649v2 完整方法与实验收录 MACaQ，并核实多后端官方实现。
+- 开源结论：论文、vLLM/llama.cpp/Diffusers/PyTorch 代码与部分 HF 模型产物可访问；未实际复现。
+- 知识定位：新增 [MACaQ 独立论文详情](../wiki/entities/paper-macaq.md)，挂载模型架构纵深路线 Stage 5；与机器人 VLAQuantBench 闭环量化评测对照，避免把语言模型 PPL 误写成真机成功率。
+- 一手资料：https://arxiv.org/abs/2611.10649v2；https://github.com/huawei-csl/MACaQ；https://huawei-csl.com/blog/macaq/；https://huggingface.co/collections/huawei-csl/macaq
+
+## [2026-11-16] ingest | sources/papers/opennwm_arxiv_2611_01844.md — 核对 OpenNWM arXiv v1 公式与实验、源码和 Go2 部署边界
+
+- 更新已存在的论文实体 wiki/entities/paper-opennwm.md（不重复建页）：UNLA 物理监督、CDiT、真实动作 CEM、v1 Table 1–5 与 NavAnywhere Table 6。
+- 更新来源归档（paper/repo/site），核查根 run.py、LAM/NWM 训练评测入口、Hugging Face 模型与数据。
+- 明确 Office-Go2 ATE 2.89 / RPE 0.65 是离线评测；Go2 EDU + Jetson 仅有部署计划，尚无验证的闭环节点。
+- 将节点挂接至导航纵深路线 Stage 5。
+
+## [2026-11-16] ingest | sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md — 通读 Raschka 教程，归纳现代 LLM 位置编码
+
+- 原文为 2026-11-15 发布的技术博客；全文 §1–§7 已核对，非独立论文或新项目。
+- 新建位置编码概念页（GPT-2 absolute、sinusoidal、RoPE、Partial RoPE、NoPE、相对偏置），并为 Transformer 与模型架构纵深 Stage 1 建立交叉引用。
+- 源码核对了原文所引用的 rasbt/LLMs-from-scratch Qwen3 notebook，绘制基于真实调用关系的运行时序图；未执行模型。
+- 对长上下文泛化与行业趋势的结论保留文章采样边界，区分数学性质与模型表现。
+
+## [2026-11-16] ingest | sources/papers/cortex_arxiv_2610_20399.md — Cortex：上下文到 FFN 参数记忆的巩固
+
+- 依据 arXiv:2610.20399v1 整理 prospective rehearsal、FFN 参数扩展及无上下文蒸馏，独立建立中文/英文论文详情。
+- 明确 CR/RR 与 50 次连续事实编辑口径，区分 LLM 文本记忆巩固、外部 agent 记忆及机器人连续学习。
+- 官方 zjunlp/Cortex 仓库截至核验日只有 LICENSE，暂无可阅读的可运行源码；不编造源码时序图。
+- 将差异对照链接到 Agent 记忆概念页与 RSI 纵深路线；未触碰部署派生文件。
+
+## [2026-11-16] ingest | sources/papers/vbot_exo2ego_arxiv_2611_16417.md — 归档 VBot Exo2Ego Policy 并挂载具身数据纵深路线
+
+- 依据 arXiv:2611.16417v1 全文核对双机 EGO/EXO 采集、MiniMax-H3 视频生成、训练期相机射线与语义/手部监督。
+- 归纳完整系统与 EgoX 对照，明确训练配方差异、部分覆盖率下降、未提供真机策略成功率。
+- 当前论文未列官方可运行源码入口；暂不绘制未经核实的运行时序图。
+
+## [2026-11-16] lint | 全路线复核：基于 7801 个 wiki 文件及上次审查后的新增 26/修改 483 个节点，修正先修与图文分支、基础控制结论及模块边界，补 VLA 复现入口；逐页记录见 docs/quality/roadmap-audit-2026-11-16.md。
+
+## [2026-11-16] ingest | 近期机器人学习论文六项补录
+
+- 意图：补齐 SALA、EgoX、Reins、ACE-CaP-0、STVLA、JustRUA 的论文实体和方法/评测/局限，建立主题互链并接入 VLA 与跨本体纵深路线。
+- 查重：CoMind / Be My Eye（arXiv:2611.12295）已有实体和来源档案，本次避免重复入库。
+- 代码：EgoX 可运行仿真训练/评测但缺数据及权重；JustRUA 开源评测适配器但有外部依赖；其余论文尚无完整公开可运行入口。
+- 关键页：wiki/entities/paper-sala-latent-actions.md、wiki/entities/paper-egox-mxt-plus.md、wiki/entities/paper-justrua-robot-use-agents.md。
+
+## [2026-11-16] ingest | sources/repos/googlechrome-modern-web-guidance.md — 收录跨浏览器现代 Web Agent Skill
+
+- 意图：为知识库前端工程和编码代理工作流补充一手 Web 平台实践指南；不将其误归类为机器人算法框架。
+- 开放结论：技能分发仓 GoogleChrome/modern-web-guidance、实际源码仓 modern-web-guidance-src 均公开；CLI 支持 search / retrieve / legacy-scan，扫描覆盖有限。
+- 关键页：[Modern Web Guidance](../wiki/entities/modern-web-guidance.md)、[项目页核查](../sources/sites/modern-web-guidance.md)。
+- 纵深路线：已核对 roadmap/README.md 的三十条路线，无对应的机器人纵深 Stage，不强行挂载。
+
+## [2026-11-16] ingest | PACE 人机交互人格适配原论文与项目资料
+
+- 来源：arXiv:2607.15579v5（Humanoids 2026）；麦考瑞大学、英伟达新加坡。
+- 知识：互动问答 → PersonaSpec → 动态 prompt 编译 → Ameca 语音/面部表情同步；对比静态人格并保留实验统计非显著结果。
+- 资源核验：lipzh5/PACE GitHub 有公开项目资料，README 所列 Python 启动脚本不在仓库，暂不具备公开源码级复现入口。
+- 关键页面：wiki/entities/paper-pace-persona-adaptation.md；wiki/methods/humanoid-voice-interaction.md。
+
+## [2026-11-15] ingest | AesFormer（ICML 2026）：七维美学规划与结构化照片编辑
+
+- 意图：核对 arXiv:2605.22126 的 APR 任务、VCMP/AesRecon、SFT+GRPO-A、动作条件编辑器及评测，并归档到独立论文实体。
+- 开源：AesFormer 训练/推理/评测代码公开，权重由官方仓库链接；AesRecon 图片需签协议邮件申请，基础模型与依赖须自行配置。
+- 知识节点：wiki/entities/paper-aesformer.md；交叉引用：wiki/methods/grpo.md。
+- 校验范围：arXiv v1 全文；官方 README；Stage 1 规划与 Stage 2 编辑脚本；未在本机运行模型训练/推理。
+
+## [2026-11-15] ingest | 补齐本次 lint PR 涉及节点的原文通读、结构与工程实践；新增 StarVLA-α 独立论文实体，复核硬件官方运行入口及论文评测边界，使 41 个 wiki 节点健康度全部达到 3/3，并挂载 4 条健康度 3/3 的既有纵深路线。
+
+## [2026-11-15] lint | 全量健康检查与预警修复
+
+- 基线：`main` 的 `3f90b97e0f9b57ad197287d9cb0167367689a4e6`，包含本日首页路线预览与星标统计更新。
+- 基线报告：17 处来源时效问题、29 条信息型预警。缺页候选在报告中只展示前 15 项，本次展开并逐项核对全部 23 项。
+- 来源复核：为 H-JEPA/HWM、LEGO/LEGS 与感知链、LeWM/LpWM/INTACT、LG-DKGP/MPC、ODEWorld/V-JEPA 2、OVO、Faster-WAM、RoboHarness、SPU 和 StarVLA 等关联补齐版本、协议与接口边界。
+- 历史入口：复核超过 180 天的 5 页，归档 myCobot、Fourier、Kinova、Poppy 的官方说明；区分文档与 SDK 源码、本体与 ROS 配置、软硬件许可及 CAD LFS 获取方式。
+- 结构与措辞：将 NavWAM 已有对照表升为正式对比章节，补充 7 处主题枢纽回链；将 4 处“最新”表述绑定到发布配置或明确版本。
+- 检查器：登记已有实体/缩写及命令字段的语义归属；科学湿实验预测基准留在 AI Agent 评测链，带机器人标签的跨域基准继续要求具身枢纽；增加正反回归用例。
+- 验证：完整 Python 测试 596 项与 843 项子测试通过，覆盖率 63.16%；同步上游后，前端 138 项和受影响的 13 项 Python 测试通过。完整门禁及逐页健康度见 PR 验证记录。
+
+## [2026-11-14] ingest | roadmap/depth-vla.md — 补齐 VLA 纵深路线全部 80 个 Stage wiki 节点原文证据与满分健康度
+
+## [2026-11-14] ingest | sources/blogs/wechat_guyueju_perceptive_nmpc_convex_decomposition_2026-11-14.md — 感知型 NMPC 高程图凸分解与 Go2 源码核对
+
+- **意图：** 消化用户提供的古月居技术解读 PDF，建立可溯源的感知型 NMPC / 凸踏面几何约束工程入口。
+- **开源核验：** Grandia 等原始方法见 IEEE T-RO 2023（ANYmal）；Go2 适配补丁和 ROS 2/MuJoCo 工具见 Khaledsweid1/ocs2-perceptive-mpc-go2（公开）。
+- **重要边界：** Go2 工程的落足区域约束默认关闭，指南说明尚不能完整爬完楼梯；模拟射线高程图非真机感知，附件参数来自文章与仓库文档，未独立复测。
+- **沉淀：** [Go2 感知型 NMPC 实体](../wiki/entities/ocs2-perceptive-mpc-go2.md)，并接入 [感知越障纵深路线](../roadmap/depth-perceptive-locomotion.md)。
+
+## [2026-11-14] ingest | 完成 PR #3732（Issue #3487）涉及全部 63 个知识节点的原文与官方源码通读、Mermaid 项目流程图与源码运行时序图补齐，修正 SRU 404 仓库链接为 leggedrobotics/sru-pytorch-spatial-learning，63 页节点健康度全部升至 3/3
+
+## [2026-11-14] structural | wiki — 完成 #3487 全量 277 页候选语义核验：回填 55 页、排除 217 页、待定 5 页；保留首批 8 页并恢复原 updated，核验记录见 docs/quality/issue-3487-code-backfill.md
+
+## [2026-11-13] lint | wiki/entities — 回填第一批 8 个实体页官方 GitHub 仓库 code 字段 (#3487)
+
+## [2026-11-14] ingest | sources/papers/science_prediction_universe_arxiv_2611_15049.md — 收录 UniPat AI Science Prediction Universe；归档论文、官方站点与仓库，新增独立论文详情节点并互链 AI Agent 评测。
+
+## [2026-11-14] ingest | sources/blogs/ultralytics_yolo26_ocr_python_2026_11_12.md — 入库 YOLO26+PP-OCRv6 OCR 与 HierText 数据集
+
+- 以 Ultralytics 英文原文、官方 OCR Guide 和 `ultralytics/solutions/ocr.py` 为依据，新增逐词识别、旋转矫正、阅读顺序、PDF 工程入口及源码时序图。
+- 整理 HierText 的分层标注与评测协议，并单独记录 Signature 签名定位数据集；将作者基准明确标识为非独立复测。
+- 用户的 bit.ly 短链无法直接解析，原样保留并给出独立核实的官方对应资料，不冒认重定向结果。
+- 官方框架代码已公开，PP-OCRv6 模型由 assets 下载；在线 Demo 上传页面，应注意隐私与许可证。
+
+## [2026-11-14] ingest | 2026 BEHAVIOR Challenge 赛制、评测协议与源码核对
+
+- **意图：** 按 CoRL 2026 官方一手资料补全已有 2026 BEHAVIOR Challenge 来源归档，增加独立赛事节点，不重复建设 BEHAVIOR-1K 基准或 HiPhys-RSI 冠军论文。
+- **归档：** sources/sites/behavior-challenge.md 与 sources/repos/behavior-1k-challenge.md。
+- **wiki：** wiki/entities/behavior-challenge-2026.md；评测选型 hub 添加内部入口。
+- **开源结论：** 赛事环境与基线开放、示范数据公开；冠军方案并不包含在赛事代码库。官网要求 v3.9.3，但本次源码接口只成功读到 main，版本对齐与端到端复现待办。
+
+## [2026-11-14] ingest | AHEADance 官方项目页复核与复现边界
+
+- 意图：用户再次提出 AHEADance 入库；按 arXiv:2611.13370 在库内查重，复用现有唯一论文实体，不重复创建节点。
+- 来源：arXiv v1 完整论文和 UCL Humanoid Robotics Lab 官方项目主页（https://ihcr.github.io/AHEADance/）。
+- 结论：ListenAhead 与 Commit Forcing 的既有论文分析可保留；补录官方网页真机视频、麦克风演示、MuJoCo 回放和云端 Live 的开放范围。
+- 开源：项目页仍为 “Code soon”，未发布可复现的 AHEADance 研究训练/推理源码或评测入口，源码运行时序图不适用。
+- 更新：`sources/sites/aheadance_project.md`、`sources/papers/aheadance_arxiv_2611_13370.md` 与 `wiki/entities/paper-aheadance.md`；流程图补全机器人测量状态仅反馈 SONIC 跟踪层。
+
+## [2026-11-14] ingest | LG-DKGP 连续性感知世界模型规划：原文、代码、时序与指标口径
+
+- 新增论文原文归档 sources/papers/lg_dkgp_arxiv_2611_16645.md、官方开源仓库归档 sources/repos/lg-dkgp.md，以及独立论文实体 wiki/entities/paper-lg-dkgp.md。
+- 核对 arXiv:2611.16645v1 全文、附录及官方 CLI/训练/规划/评测源码：门控历史注意力 → 神经均值 + GP 残差 → 专家动作增量探索尺度 → 冻结 LeWM + CEM。
+- 主文 Macro 成功率 87.07%；明确区分 PushT/Cube 原生成功与 LIBERO/RoboTwin 局部目标口径，附上流程图和真实代码运行时序图。
+- 开源状态：源码与评测配方已发布；模型权重、大型训练数据、原生仿真 fixtures 分别获取。当前环境未实际训练或复现模拟器成绩。
+
+## [2026-11-14] ingest | sources/sites/steel-skild-ai.md — 复核 Steel 的完整异构基准与复现实验边界
+
+- 2026-11-09 Skild AI × NVIDIA 官方发布的 Steel 已于先前 ingest 建立唯一实体；本次复用原页，不重复建节点。
+- 核对并补录 5/10/15/20 种混合任务吞吐表、20 类任务 matched-batch 12.0×、约 62% 显存节约。
+- 澄清 `reuse_kinematics=True` 仅用于单任务对照，异构批次因 joint velocity limits 未启用；补充 PhysX 6.1 与 6.0 的版本敏感性、5 ms 物理步和单卡评测条件。
+- 更新 Newton 求解器目录和 Steel 双向知识链接；性能数字均源于作者发布，未独立运行基准。
+
+## [2026-11-14] ingest | ATLAS × SuperMimic：真机在线模型学习与 BPTT，核对网站代码开放边界
+
+- 在已合并的 ATLAS 项目实体上补充与 SuperMimic 的方法关系：同为通过学习的可微动力学反传优化，但 ATLAS 从真实尝试学习末端残差、冻结 ScaleBFM 全身跟踪基座，不复用 SuperMimic 代码的证据。
+- 复核 ATLAS 网站源码仓库，其 tools 是网页概念动画与视频渲染辅助脚本，不是 ATLAS 的可复现模型训练、部署与真机控制源码。
+- 已读官方技术博客与项目页；现有节点避免重复，保留 Mermaid 机制图并细化在线模型学习与 BPTT 数据流。
+
+## [2026-11-14] lint | 全量健康检查与预警修复
+
+- 基线：`main` 的 `57c0b29c3c29190e93b4337d2186d72a9e2b3d1e`，包含 RTC、轮式双臂 URDF 的合入更新，以及随后机器人更新的星标统计。
+- 来源复核：区分训练期/推理期 RTC 源码分支；修正生成式世界模型页的 W0 资源发布状态；补充 UnifoLM 与 W0 的视频/动作接口对照，以及 EgoXperience 与 Xperience 2 的重建/场景数据边界。复核后更新四页日期并保留来源链接。
+- 结构与回链：补齐 DexTacWAM、Flash ALOHA 的对比章节及综述预印本发布元数据；给 VINO、Volt 和智驾/具身对照页补充相应知识链枢纽回链。
+- 检查器：ATLAS 候选混合多个已有同名实体，登记已覆盖的不同语义；回归测试同时确认真正缺页的机制仍会被报告。
+- 搜索：CLF 定义页标题补齐通用缩写，恢复「CLF Lyapunov 衰减 稳定性」查询的前五命中，不修改搜索权重或回归门槛。
+- 验证：完整 Python 测试 571 项及 843 项子测试通过，覆盖率 63.16%；前端 130 项测试通过。完整门禁与最终计数见 PR 验证记录。
+
+## [2026-11-13] ingest | sources/sites/lightwheel_robofinals_rl_env.md — 核验光轮 RoboFinals RL-Env 官方公告，建立独立训练环境节点并与 RoboFinals 评测双向关联（官网产品全文待补核）
+
+## [2026-11-13] ingest | 关联 #3490：通读并核对 WAM 纵深路线的主要原文与公开运行入口，补齐 51 个节点的原文证据、评测口径及运行图，62 个 Stage 节点全部达到 3/3；更新全局健康度待办清单。
+
+## [2026-11-14] ingest | RTC / arXiv:2506.07339 | 对齐论文与官方仿真源码、补充流程与时序图
+
+- 资料：arXiv v2（NeurIPS 2025）、PI 官方研究说明、Physical-Intelligence/real-time-chunking-kinetix README 及核心训练/评测代码。
+- 去重：复用既有 `wiki/entities/paper-real-time-chunking.md`（论文 ID 2506.07339），不创建重复实体。
+- 澄清：PI research URL 是项目介绍页；官方可运行源码范围为 Kinetix 仿真，不等于 π₀.₅ 真机 RTC 部署仓。
+- 修改：论文页补 `project_id` 和中英全称、Mermaid 论文流程图，修订为代码可追溯的 Kinetix 运行时序图；补充论文、仿真仓来源核对记录。
+- 验证边界：使用论文 v2 HTML、官方博客和仓库源码静态核对，未本地执行完整多 GPU 复现；PR 依赖 GitHub Actions 进行完整 lint。
+
+## [2026-11-14] ingest | sources/blogs/zane-hub-wheeled-dual-arm-urdf-workflow-2026-11-14.md — 收录轮式双臂人形 URDF 工程工具链
+
+- 来源：Zane Zhang / Zane Hub 2026-11-14 工程文章，用户上传 20 页 PDF，逐页核对。
+- 新建：wiki/queries/wheeled-dual-arm-humanoid-urdf-workflow.md；从 wiki/concepts/urdf-robot-description.md 建立入链。
+- 内容：七阶段工作流、Mermaid 流程图、工具链和验收表；标注惯性 rpy、单位换算、mimic 与格式转换的原文边界。
+
+## [2026-11-13] ingest | 第 86 期组队学习 21 项来源核对
+
+- 输入：用户提供课程表截图，按图片顺序逐项匹配。21 条课程对应 17 个候选项目 / 书籍身份。
+- 查重：Agentic RL Lab 与 Easy-Vibe 已有 sources/wiki 节点，未复制；llm-algo-leetcode 四方向及 Hello-Agents 入门/进阶分别合并项目身份。
+- 核验：建立总来源表与 13 个新资料归档（含沐曦官方活动课表、黄佳《企业本体论》配套代码、范冰 FDE 公开书）。
+- 阻塞：Nailongbot 和图片所称「AI for Science 科学模型与科研智能体实战」尚无准确对应的一手课程仓库；不借用无关仓库充数。
+- 阅读：已通读沐曦官方活动介绍；其他教程仅读 README / 目录，未完整精读各章节和源码，归档标注通读未完成。
+- 健康度：本轮未新增或修改 wiki 实体页，不影响现有节点分数；因未完成全面深读，不标记任何新节点为 3/3。
+- 复核后续：逐章通读、源码入口确认、Mermaid 主流程及运行时序、去重后的 wiki 节点建档、ci-preflight/health 报告。本 PR 应保持草稿，直到满足门禁。
+
+## [2026-11-13] ingest | Whole-Body Dexterity 全文深读与原有节点升级
+
+- 复用 2026-10 已合入的论文身份（arXiv:2610.22184），不重复建节点。
+- 核对 arXiv v1 正文及附录 A–G，补录 251 万稳定抓取、27.4 万轨迹、8.73 亿帧、PPO 专家与扩散/逆动力学蒸馏链路。
+- 补充 Unitree G1 真机 45/50、模拟 EMA 对比、RTX 5090 推理延迟与实验边界。
+- 作者项目页截至 2026-11-13 未列可运行源码/数据下载入口，源码运行时序图不适用。
+- 更新 `wiki/entities/paper-whole-body-dexterity.md` 的原文通读、图谱主流程和健康度字段。
+
+## [2026-11-13] ingest | TRABot 原文 v2 复核并修正规划参数
+
+- 论文：Talk, Render, Act: Integrating Social Gesture and Digital Face with Synchronized Speech for Conversational Humanoid Robot（arXiv:2610.06153v2）。
+- 查重：已有 wiki/entities/paper-trabot-talk-render-act.md 与对应来源，故原位升级，不重复创建论文节点。
+- 阅读：完成 arXiv HTML v2 摘要、I–V 全文章节、式 1–14、算法、表 I–VI、参考文献；对照官方项目页。
+- 核验：机构为阿联酋大学计算与人工智能学院；最小加加速度桥接速度 **1 rad/s**，纠正原记录误写的 **11 rad/s**。
+- 内容：补英中论文标题、机构标签、全文通读状态与 original 映射、12 组对话中的具体样例、规划代价/原子执行机制与五条件排序口径；Mermaid 主流程图按论文重新核对。
+- 开源：官方项目仍标注 Code (soon)，无 TRABot 代码入口；未编造源码运行时序。
+- 变更：wiki/entities/paper-trabot-talk-render-act.md；sources/papers/trabot_arxiv_2610_06153.md；sources/sites/trabot-project.md；log.d/2026-11-13-194700-ingest-trabot-v2-source-review.md。不触碰 catalog.md、log.md 与生成文件。
+
+## [2026-11-13] ingest | sources/blogs/atlas_humanoid_early_release.md — 收录 ATLAS System 2 / System 0 与在线残差学习架构
+
+- 已通读项目官方 Early release 技术长文及主页的机制、实验、部署与局限。
+- 创建 ATLAS 唯一项目实体、Mermaid 控制流图，链接到 Loco-Manipulation 技术地图。
+- 截至 2026-11-13，项目页未列 ATLAS 可运行源码、权重或论文 PDF；不虚构源码时序或 arXiv 身份。
+
+## [2026-11-13] ingest | Embodied First Exam 论文协议、九套件与失败阶段深化
+
+- 复用已入库的 arXiv:2611.12177 唯一实体 `wiki/entities/embodied-first-exam.md`，不重复建立同论文第二个节点。
+- 根据论文 v1（正文 §1–5、附录 A–K 的既有通读记录，以及本次 Figure 3、§2–3、Appendix I–J 原文复核），补充三种控制路径、三类模式、九个原创套件与 Mermaid 对应数据流。
+- 澄清 456 核心 Standard 33.6%、391 配对任务 Standard 30% vs Privileged 77%、391 受控消融 28% → 45% / 53% / 68%，避免跨分母误读。
+- 补充阶段失败、Realtime 配对、harness 差异、真机演示边界；按 2026-11-13 官方 README 更新代码仓扩增至 36 benchmarks / 1,211 tasks 与论文 35/1,156 区分。
+- 保留原先逐文件核对的官方源码时序图；资料归档更新 `sources/papers/`、`sources/repos/` 与 `sources/sites/`。
+
+## [2026-11-13] ingest | sources/papers/ropedia_xperience_2_arxiv_2611_17060.md — 收录 Ropedia Xperience 2 环境与行为数据基座
+
+- 通读 arXiv v1 正文及重要附录，归档官方项目、数据集、配准源码，并建立统一论文实体节点。
+- 区分 1,589 个保留扫描与 Hugging Face 首批 126 个场景的分批上传状态；区分采集清单与可下载内容。
+- 通过源码确认仅配准工具已公开可执行，并补主干 Mermaid 与配准运行时序图。
+
+## [2026-11-13] ingest | sources/papers/dextacwam_arxiv_2609_24976.md — DexTacWAM 视触觉世界—动作模型
+
+- 核对论文 `1–6 与附录 A.1–A.11，单一 wiki 实体收录跨指触觉压缩、预测式接触世界模型、六任务实验及局限。
+- 核实代码及权重开放边界：三阶段训练与离线推理代码、Stage 1 触觉编码器与数据公开；作者任务专属 Stage 2/3 checkpoint 未发布；部署脚本在 deploy 分支。
+- 为节点添加方法 Mermaid 流程图和源码训练时序图，并从触觉感知概念页建立入链。
+
+## [2026-11-13] ingest | TipSim 触觉仿真平台：官方技术文档、闭环示例与许可证核实
+
+- 收录华威科 TIP 的 MuJoCo Loong/Universa 触觉仿真，补充双语实体介绍、Mermaid 接触/反馈流程、Python 示例运行时序。
+- 核对核心触觉插件只提供预编译二进制，示例与场景 MIT；双指力阈值抓取不代表真机 Sim2Real 已验证。
+- 关联 [触觉感知](../wiki/concepts/tactile-sensing.md)；保持本次 PR 仅源文件，不触碰自动生成的 catalog/log 和前端统计。
+
+## [2026-11-13] ingest | Kimodo-Policy 官方资源与源码闭环核验
+
+- 意图：复用现有 `wiki/entities/paper-kimodo-policy.md`，避免重复项目节点；补全论文全体作者署名。
+- 一手来源：arXiv:2611.11554v1 全文（既有归档已通读）；本次增量核对官方 GitHub README、训练/评测核心入口与真机部署脚本。
+- 开源结论：官方发布了预训练、HumanoidArena、SIMPLE、真机 G1 + Dex3 数据/检查点/部署流程；BiGym 2.0、HumanoidToolBench 仍为计划项。
+- 写回：`wiki/entities/paper-kimodo-policy.md`、`sources/papers/kimodo_policy_primary.md`、`sources/repos/kimodo-policy-official.md`；区分模型生成、SONIC 跟踪、两套仿真环境与实测成绩；记录未独立复现。
+
+## [2026-11-13] lint | 基于 main@7dd940a4 全量清理 Wiki 阻塞及信息预警，补齐论文阅读结构并复核来源更新
+
+- 基线：`main@7dd940a4dd73021b9a80b10d36f6d71a36b8cca1`；全库 7,715 个 wiki 页面。
+- 原始明细：64 条阻塞预警、197 条信息预警。旧摘要把 82 条缺结论合为一个桶，因此显示的信息预警总数为 116；本次按真实明细处理。
+- 补齐 82 页结论（总判 + 三条操作要点）；90 页整理已有评测/对比标题，未把摘要页改为已通读。补 3 页来源元数据、2 页数据集维度和 2 页评测枢纽回链。
+- 7 个超过 180 天的页面已核对官方 README，固定版本和未运行边界写在对应 wiki 页。
+- `exec` 是执行符号，RTC 已由动作块方法和两个论文实体覆盖；书名号内的资料标题和明确否认用词不是时效性性能断言。识别修复附真阳性保留测试，未降低阈值或关闭规则。
+
+### 64 个来源更新预警的复核记录
+
+核对范围为库内来源归档的更新摘录、修订说明与对应 wiki 的既有定义/职责及交叉引用。以下日期表示此次维护复核，不表示重新通读了所有被引论文或运行了实现；既有 `original`、`status` 和原文阅读记录均保留。除表中明确纠正的内容外，保留页面定义，更新 `updated` 为复核日。
+
+| 页面 | 触发来源 | 复核结论 / 保留边界 |
+|---|---|---|
+| [wiki/methods/action-chunking.md](../wiki/methods/action-chunking.md) | [behavior_2026_solution_arxiv_2611_14432.md](../sources/papers/behavior_2026_solution_arxiv_2611_14432.md) | 动作块与仿真 tick / 控制时钟分离；不把挑战赛 Q-score 当完整成功率 |
+| [wiki/concepts/contact-rich-manipulation.md](../wiki/concepts/contact-rich-manipulation.md) | [chord_nvidia_video_to_data_2026.md](../sources/papers/chord_nvidia_video_to_data_2026.md) | 接触力旋量奖励、物理重定向及 Isaac Lab 的职责保持区分 |
+| [wiki/tasks/manipulation.md](../wiki/tasks/manipulation.md) | [chord_nvidia_video_to_data_2026.md](../sources/papers/chord_nvidia_video_to_data_2026.md) | 接触力旋量奖励、物理重定向及 Isaac Lab 的职责保持区分 |
+| [wiki/methods/spider-physics-informed-dexterous-retargeting.md](../wiki/methods/spider-physics-informed-dexterous-retargeting.md) | [chord_nvidia_video_to_data_2026.md](../sources/papers/chord_nvidia_video_to_data_2026.md) | 接触力旋量奖励、物理重定向及 Isaac Lab 的职责保持区分 |
+| [wiki/queries/dexterous-manipulation-data-pipeline.md](../wiki/queries/dexterous-manipulation-data-pipeline.md) | [chord_nvidia_video_to_data_2026.md](../sources/papers/chord_nvidia_video_to_data_2026.md) | 接触力旋量奖励、物理重定向及 Isaac Lab 的职责保持区分 |
+| [wiki/entities/isaac-lab.md](../wiki/entities/isaac-lab.md) | [chord_nvidia_video_to_data_2026.md](../sources/papers/chord_nvidia_video_to_data_2026.md) | 接触力旋量奖励、物理重定向及 Isaac Lab 的职责保持区分 |
+| [wiki/entities/cosmos-3.md](../wiki/entities/cosmos-3.md) | [cosmos_interactive_world_simulation_tech_report_2026.md](../sources/papers/cosmos_interactive_world_simulation_tech_report_2026.md) | Cosmos 3 基座与交互世界仿真后训练报告分别引用 |
+| [wiki/entities/sharpa-robotics.md](../wiki/entities/sharpa-robotics.md) | [dex-x_arxiv_2609_07747.md](../sources/papers/dex-x_arxiv_2609_07747.md) | 保留 Sharpa 硬件角色；Dex-X 的视觉触觉策略不等于公司全部技术栈 |
+| [wiki/methods/egoscale.md](../wiki/methods/egoscale.md) | [ego2robot_arxiv_2608_02580.md](../sources/papers/ego2robot_arxiv_2608_02580.md) | Ego2Robot 合成、EgoScale 预训练、EgoVerse 数据生态与 RoboTwin 平台分别定位 |
+| [wiki/entities/robotwin.md](../wiki/entities/robotwin.md) | [ego2robot_arxiv_2608_02580.md](../sources/papers/ego2robot_arxiv_2608_02580.md) | Ego2Robot 合成、EgoScale 预训练、EgoVerse 数据生态与 RoboTwin 平台分别定位 |
+| [wiki/entities/paper-egoverse.md](../wiki/entities/paper-egoverse.md) | [ego2robot_arxiv_2608_02580.md](../sources/papers/ego2robot_arxiv_2608_02580.md) | Ego2Robot 合成、EgoScale 预训练、EgoVerse 数据生态与 RoboTwin 平台分别定位 |
+| [wiki/concepts/motion-retargeting.md](../wiki/concepts/motion-retargeting.md) | [egoscale_arxiv_2602_16710.md](../sources/papers/egoscale_arxiv_2602_16710.md) | 人类腕/手标签仍需目标机器人重定向与对齐，不能把 HumanNet 规模当可执行动作规模 |
+| [wiki/entities/humannet.md](../wiki/entities/humannet.md) | [egoscale_arxiv_2602_16710.md](../sources/papers/egoscale_arxiv_2602_16710.md) | 人类腕/手标签仍需目标机器人重定向与对齐，不能把 HumanNet 规模当可执行动作规模 |
+| [wiki/entities/painode-332-eurekanvidia.md](../wiki/entities/painode-332-eurekanvidia.md) | [eureka-llm-reward-design_arxiv_2310_12931.md](../sources/papers/eureka-llm-reward-design_arxiv_2310_12931.md) | Eureka 迭代奖励代码；官方说明与配置默认值不同，保留实体页的复现边界 |
+| [wiki/entities/paper-expo.md](../wiki/entities/paper-expo.md) | [expo_ft_arxiv_2605_25477.md](../sources/papers/expo_ft_arxiv_2605_25477.md) | EXPO 是方法前作；EXPO-FT 的 VLA 真机结论不回填为前作通用保证 |
+| [wiki/entities/paper-dreamwam.md](../wiki/entities/paper-dreamwam.md) | [fact_arxiv_2608_10232.md](../sources/papers/fact_arxiv_2608_10232.md) | FACT 的因果动作后果预测与 DreamWAM 的多模态联合预测分别定位 |
+| [wiki/overview/robot-world-models-action-consequence-technology-map.md](../wiki/overview/robot-world-models-action-consequence-technology-map.md) | [fact_arxiv_2608_10232.md](../sources/papers/fact_arxiv_2608_10232.md) | FACT 的因果动作后果预测与 DreamWAM 的多模态联合预测分别定位 |
+| [wiki/overview/embodied-station-2026-10-14-41-papers-technology-map.md](../wiki/overview/embodied-station-2026-10-14-41-papers-technology-map.md) | [freebar_barrier_guidance_async_vla_arxiv_2610_14997.md](../sources/papers/freebar_barrier_guidance_async_vla_arxiv_2610_14997.md) | FreeBar 属推理期动作块边界约束，保留专题导航定位 |
+| [wiki/concepts/tactile-sensing.md](../wiki/concepts/tactile-sensing.md) | [ftp-1_arxiv_2606_13102.md](../sources/papers/ftp-1_arxiv_2606_13102.md) | FTP-1 为跨触觉传感器策略；触觉测量不直接等于跨硬件控制接口 |
+| [wiki/tasks/loco-manipulation.md](../wiki/tasks/loco-manipulation.md) | [grail_arxiv_2606_05160.md](../sources/papers/grail_arxiv_2606_05160.md) | GRAIL 的数字合成、SONIC tracker、视觉策略与约 22k 公开数据集逐层区分 |
+| [wiki/methods/sonic-motion-tracking.md](../wiki/methods/sonic-motion-tracking.md) | [grail_arxiv_2606_05160.md](../sources/papers/grail_arxiv_2606_05160.md) | GRAIL 的数字合成、SONIC tracker、视觉策略与约 22k 公开数据集逐层区分 |
+| [wiki/entities/paper-viral-humanoid-visual-sim2real.md](../wiki/entities/paper-viral-humanoid-visual-sim2real.md) | [grail_arxiv_2606_05160.md](../sources/papers/grail_arxiv_2606_05160.md) | GRAIL 的数字合成、SONIC tracker、视觉策略与约 22k 公开数据集逐层区分 |
+| [wiki/entities/paper-hrl-stack-34-gr00t_n1.md](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) | [grail_arxiv_2606_05160.md](../sources/papers/grail_arxiv_2606_05160.md) | GRAIL 的数字合成、SONIC tracker、视觉策略与约 22k 公开数据集逐层区分 |
+| [wiki/entities/grail-locomanipulation-dataset.md](../wiki/entities/grail-locomanipulation-dataset.md) | [grail_arxiv_2606_05160.md](../sources/papers/grail_arxiv_2606_05160.md) | GRAIL 的数字合成、SONIC tracker、视觉策略与约 22k 公开数据集逐层区分 |
+| [wiki/overview/loco-manip-161-category-03-visuomotor.md](../wiki/overview/loco-manip-161-category-03-visuomotor.md) | [grail_arxiv_2606_05160.md](../sources/papers/grail_arxiv_2606_05160.md) | GRAIL 的数字合成、SONIC tracker、视觉策略与约 22k 公开数据集逐层区分 |
+| [wiki/overview/motion-cerebellum-category-08-real-tasks.md](../wiki/overview/motion-cerebellum-category-08-real-tasks.md) | [grail_arxiv_2606_05160.md](../sources/papers/grail_arxiv_2606_05160.md) | GRAIL 的数字合成、SONIC tracker、视觉策略与约 22k 公开数据集逐层区分 |
+| [wiki/overview/loco-manip-contact-category-03-generative-data.md](../wiki/overview/loco-manip-contact-category-03-generative-data.md) | [grail_arxiv_2606_05160.md](../sources/papers/grail_arxiv_2606_05160.md) | GRAIL 的数字合成、SONIC tracker、视觉策略与约 22k 公开数据集逐层区分 |
+| [wiki/entities/article-videodb-jepa-world-models.md](../wiki/entities/article-videodb-jepa-world-models.md) | [hierarchical_planning_latent_world_models_arxiv_2604_03208.md](../sources/papers/hierarchical_planning_latent_world_models_arxiv_2604_03208.md) | HWM 是分层规划扩展，不把 JEPA 表征本身等同控制策略 |
+| [wiki/entities/paper-vjepa2.md](../wiki/entities/paper-vjepa2.md) | [hierarchical_planning_latent_world_models_arxiv_2604_03208.md](../sources/papers/hierarchical_planning_latent_world_models_arxiv_2604_03208.md) | HWM 是分层规划扩展，不把 JEPA 表征本身等同控制策略 |
+| [wiki/entities/behavior-1k.md](../wiki/entities/behavior-1k.md) | [hiphys-rsi-scaling-by-structure-2026.md](../sources/papers/hiphys-rsi-scaling-by-structure-2026.md) | BEHAVIOR 是评测环境；HiPhys-RSI 冠军方案不等于基准自带能力 |
+| [wiki/overview/embodied-station-2026-10-18-26-papers-technology-map.md](../wiki/overview/embodied-station-2026-10-18-26-papers-technology-map.md) | [hire_hindsight_reward_editing_arxiv_2609_27068.md](../sources/papers/hire_hindsight_reward_editing_arxiv_2609_27068.md) | HiRE 是奖励编辑方法，专题页保留其与其他奖励路线的导航关系 |
+| [wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md](../wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md) | [humanoid_pnb_meshmimic.md](../sources/papers/humanoid_pnb_meshmimic.md) | MeshMimic 对接运动地形重建，分类索引不承担论文独立实验结论 |
+| [wiki/overview/hub-embodied-eval-benchmark.md](../wiki/overview/hub-embodied-eval-benchmark.md) | [imitator_game_arxiv_2608_22301.md](../sources/papers/imitator_game_arxiv_2608_22301.md) | Imitator Game 按场景失配分级；LeRobot 仍是实现基础设施 |
+| [wiki/entities/lerobot.md](../wiki/entities/lerobot.md) | [imitator_game_arxiv_2608_22301.md](../sources/papers/imitator_game_arxiv_2608_22301.md) | Imitator Game 按场景失配分级；LeRobot 仍是实现基础设施 |
+| [wiki/entities/molmo-er.md](../wiki/entities/molmo-er.md) | [molmoact2_arxiv_2605_02881.md](../sources/papers/molmoact2_arxiv_2605_02881.md) | Molmo2-ER 为推理骨干，MolmoAct2 另含连续动作专家 |
+| [wiki/methods/crisp-real2sim.md](../wiki/methods/crisp-real2sim.md) | [prism_real2sim2real_arxiv_2609_38172.md](../sources/papers/prism_real2sim2real_arxiv_2609_38172.md) | PRISM 接触锚定 Real2Sim、CRISP 场景重建与 DAgger 数据聚合分别定位 |
+| [wiki/methods/dagger.md](../wiki/methods/dagger.md) | [prism_real2sim2real_arxiv_2609_38172.md](../sources/papers/prism_real2sim2real_arxiv_2609_38172.md) | PRISM 接触锚定 Real2Sim、CRISP 场景重建与 DAgger 数据聚合分别定位 |
+| [wiki/entities/videomimic.md](../wiki/entities/videomimic.md) | [prism_real2sim2real_arxiv_2609_38172.md](../sources/papers/prism_real2sim2real_arxiv_2609_38172.md) | PRISM 接触锚定 Real2Sim、CRISP 场景重建与 DAgger 数据聚合分别定位 |
+| [wiki/methods/grpo.md](../wiki/methods/grpo.md) | [r3_robotic_reasoner_arxiv_2608_26053.md](../sources/papers/r3_robotic_reasoner_arxiv_2608_26053.md) | R³ 的单步量表 RL 接口与 GRPO 组内相对优化机制保持区分 |
+| [wiki/concepts/motion-control-policy-evaluation-metrics.md](../wiki/concepts/motion-control-policy-evaluation-metrics.md) | [react_arxiv_2611_13929.md](../sources/papers/react_arxiv_2611_13929.md) | 负载导航成功与分方向速度/航向误差均须报告 |
+| [wiki/methods/diffusion-policy.md](../wiki/methods/diffusion-policy.md) | [robofft_arxiv_2609_32236.md](../sources/papers/robofft_arxiv_2609_32236.md) | RoboFFT 的 matching-loss 比率为代理，不当作 PPO 精确似然比 |
+| [wiki/methods/ppo.md](../wiki/methods/ppo.md) | [robofft_arxiv_2609_32236.md](../sources/papers/robofft_arxiv_2609_32236.md) | RoboFFT 的 matching-loss 比率为代理，不当作 PPO 精确似然比 |
+| [wiki/methods/reinforcement-learning.md](../wiki/methods/reinforcement-learning.md) | [sdpg_visual_rl_arxiv_2605_26478.md](../sources/papers/sdpg_visual_rl_arxiv_2605_26478.md) | SDPG 的物理辅助环境与渲染环境分开计数；不改变其他视觉蒸馏框架定位 |
+| [wiki/entities/genesis-sim.md](../wiki/entities/genesis-sim.md) | [sdpg_visual_rl_arxiv_2605_26478.md](../sources/papers/sdpg_visual_rl_arxiv_2605_26478.md) | SDPG 的物理辅助环境与渲染环境分开计数；不改变其他视觉蒸馏框架定位 |
+| [wiki/methods/policy-optimization.md](../wiki/methods/policy-optimization.md) | [sdpg_visual_rl_arxiv_2605_26478.md](../sources/papers/sdpg_visual_rl_arxiv_2605_26478.md) | SDPG 的物理辅助环境与渲染环境分开计数；不改变其他视觉蒸馏框架定位 |
+| [wiki/tasks/locomotion.md](../wiki/tasks/locomotion.md) | [sdpg_visual_rl_arxiv_2605_26478.md](../sources/papers/sdpg_visual_rl_arxiv_2605_26478.md) | SDPG 的物理辅助环境与渲染环境分开计数；不改变其他视觉蒸馏框架定位 |
+| [wiki/entities/gr00t-visual-sim2real.md](../wiki/entities/gr00t-visual-sim2real.md) | [sdpg_visual_rl_arxiv_2605_26478.md](../sources/papers/sdpg_visual_rl_arxiv_2605_26478.md) | SDPG 的物理辅助环境与渲染环境分开计数；不改变其他视觉蒸馏框架定位 |
+| [wiki/methods/sumo.md](../wiki/methods/sumo.md) | [smpc2rl_arxiv_2608_12063.md](../sources/papers/smpc2rl_arxiv_2608_12063.md) | SMPC-to-RL 是 MPC 专家到 RL 策略的训练方向，与 Sumo 运行时层级相区分；judo 非官方实现 |
+| [wiki/comparisons/mpc-vs-rl.md](../wiki/comparisons/mpc-vs-rl.md) | [smpc2rl_arxiv_2608_12063.md](../sources/papers/smpc2rl_arxiv_2608_12063.md) | SMPC-to-RL 是 MPC 专家到 RL 策略的训练方向，与 Sumo 运行时层级相区分；judo 非官方实现 |
+| [wiki/comparisons/online-vs-offline-rl.md](../wiki/comparisons/online-vs-offline-rl.md) | [smpc2rl_arxiv_2608_12063.md](../sources/papers/smpc2rl_arxiv_2608_12063.md) | SMPC-to-RL 是 MPC 专家到 RL 策略的训练方向，与 Sumo 运行时层级相区分；judo 非官方实现 |
+| [wiki/entities/mjlab.md](../wiki/entities/mjlab.md) | [smpc2rl_arxiv_2608_12063.md](../sources/papers/smpc2rl_arxiv_2608_12063.md) | SMPC-to-RL 是 MPC 专家到 RL 策略的训练方向，与 Sumo 运行时层级相区分；judo 非官方实现 |
+| [wiki/methods/model-predictive-control.md](../wiki/methods/model-predictive-control.md) | [smpc2rl_arxiv_2608_12063.md](../sources/papers/smpc2rl_arxiv_2608_12063.md) | SMPC-to-RL 是 MPC 专家到 RL 策略的训练方向，与 Sumo 运行时层级相区分；judo 非官方实现 |
+| [wiki/entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md](../wiki/entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) | [solo_arxiv_2608_26583.md](../sources/papers/solo_arxiv_2608_26583.md) | SOLO 的 QR / TA-MSE、DPL / AME / SSR 的感知路线分开，保留教师学生边界 |
+| [wiki/concepts/privileged-training.md](../wiki/concepts/privileged-training.md) | [solo_arxiv_2608_26583.md](../sources/papers/solo_arxiv_2608_26583.md) | SOLO 的 QR / TA-MSE、DPL / AME / SSR 的感知路线分开，保留教师学生边界 |
+| [wiki/entities/paper-ame-attention-based-map-encoding.md](../wiki/entities/paper-ame-attention-based-map-encoding.md) | [solo_arxiv_2608_26583.md](../sources/papers/solo_arxiv_2608_26583.md) | SOLO 的 QR / TA-MSE、DPL / AME / SSR 的感知路线分开，保留教师学生边界 |
+| [wiki/tasks/stair-obstacle-perceptive-locomotion.md](../wiki/tasks/stair-obstacle-perceptive-locomotion.md) | [solo_arxiv_2608_26583.md](../sources/papers/solo_arxiv_2608_26583.md) | SOLO 的 QR / TA-MSE、DPL / AME / SSR 的感知路线分开，保留教师学生边界 |
+| [wiki/entities/paper-ssr-humanoid-open-world-traversal.md](../wiki/entities/paper-ssr-humanoid-open-world-traversal.md) | [solo_arxiv_2608_26583.md](../sources/papers/solo_arxiv_2608_26583.md) | SOLO 的 QR / TA-MSE、DPL / AME / SSR 的感知路线分开，保留教师学生边界 |
+| [wiki/overview/embodied-station-2026-10-28-59-papers-technology-map.md](../wiki/overview/embodied-station-2026-10-28-59-papers-technology-map.md) | [tapestry_arxiv_2610_36823.md](../sources/papers/tapestry_arxiv_2610_36823.md) | TAPESTRY 的视频训练先验与部署动作单步路径分开 |
+| [wiki/methods/star-vla.md](../wiki/methods/star-vla.md) | [thaw_vla_arxiv_2609_24682.md](../sources/papers/thaw_vla_arxiv_2609_24682.md) | THAW-VLA 为训练期特征蒸馏，部署不调用教师；收敛 StarVLA 的普遍领先措辞 |
+| [wiki/entities/paper-gift-intermediate-feature-training.md](../wiki/entities/paper-gift-intermediate-feature-training.md) | [thaw_vla_arxiv_2609_24682.md](../sources/papers/thaw_vla_arxiv_2609_24682.md) | THAW-VLA 为训练期特征蒸馏，部署不调用教师；收敛 StarVLA 的普遍领先措辞 |
+| [wiki/concepts/progress-reward-modeling.md](../wiki/concepts/progress-reward-modeling.md) | [topreward_arxiv_2602_19313.md](../sources/papers/topreward_arxiv_2602_19313.md) | TOPReward 的 VLM 进度信号不等于成败保证；OXE 是数据集，AWR 是策略更新方法 |
+| [wiki/concepts/open-x-embodiment.md](../wiki/concepts/open-x-embodiment.md) | [topreward_arxiv_2602_19313.md](../sources/papers/topreward_arxiv_2602_19313.md) | TOPReward 的 VLM 进度信号不等于成败保证；OXE 是数据集，AWR 是策略更新方法 |
+| [wiki/methods/awr.md](../wiki/methods/awr.md) | [topreward_arxiv_2602_19313.md](../sources/papers/topreward_arxiv_2602_19313.md) | TOPReward 的 VLM 进度信号不等于成败保证；OXE 是数据集，AWR 是策略更新方法 |
+| [wiki/entities/aloha.md](../wiki/entities/aloha.md) | [transformer_transformer_arxiv_2607_25798.md](../sources/papers/transformer_transformer_arxiv_2607_25798.md) | 纠正 ALOHA2 为论文所写 ALOHA，补原始作者与单次真机比较限制 |
+
+## [2026-11-12] ingest | THAW-VLA | 论文 v3 复核与实体健康度补全
+
+- 原因：同一论文已经入库，不创建重复实体；将全文通读状态、项目身份和源码核对补全至既有 THAW-VLA 节点。
+- 核查：arXiv:2609.24682v3、作者项目页、GitHub README 与预计算 / 蒸馏 / 评测源码、Hugging Face 模型列表。
+- 结论：Cosmos3-Nano 特征离线缓存，训练使用余弦对齐损失且部署去掉辅助头；权重可公开浏览，但 README 仍写 private。
+- 产物：wiki/entities/paper-thaw-vla.md，及论文/项目页/源码三份 sources 归档；保留 Mermaid 主流程图并修订源码运行时序图。
+
+## [2026-11-12] ingest | Cartwheel Control 三机型全身跟踪控制策略
+
+- 通读官方模型卡、README 和核心仿真/策略运行源码，新增一手来源与知识实体；附 Mermaid 主流程及已核实的源码运行时序图。
+- 明确三款机器人模型、50 Hz 控制 / 200 Hz 物理步进，以及无训练开源、无真机验证、无仿真随机化等边界。
+
+## [2026-11-12] ingest | Cosmos 3 Interactive World Simulation 官方报告复核
+
+- 复用已存在的 Cosmos Interactive World Simulation 唯一实体，不拆分四个 checkpoint 或重复建页。
+- 重新核对 NVIDIA 2026-11-04 技术报告的时序因果注意力、四阶段后训练和原表关键指标：Bimanual 1× GB300 48.1 FPS；Sim-Auto 7 路 RGB + LiDAR 16× GB200 16.7 FPS。
+- 新增 NVIDIA Cosmos Lab 官方项目页一手来源归档，修正旧报告日期和“双向 / 流式”“实时 / 30 FPS”“视觉生成 / 动作策略”的混淆；保留现有项目 Mermaid 流程图与源码时序图。
+- 权重与框架已公开，但完整端到端闭环、传感器适配、模型安全评估仍需开发者自己完成。随后补充通读报告正文 §1–9、附录 A–D 的可读取文本与图表文字转写，并新增 Isaac Lab 策略闭环实验的正反例；唯一 wiki 节点补充指向原文归档的 `original` 字段，按三项结构健康规则核算为 3/3。PDF 高分辨率图片未独立目视审计，GPU 实验未复现。
+
+## [2026-11-12] ingest | sources/papers/fast-motion-retargeting-pipeline-humanoid_arxiv_2610_28470.md — 精读 FRDV 并核对 2.0 开源实现
+
+- 升级已有 FRDV 唯一论文实体，补全文中约束 SQP／RTI、可选 CI-iLQR 及两张 Mermaid 图，纠正过时的 pixi 运行命令与模块路径。
+- 新增官方项目页和代码仓库来源归档；2.0 README 确认**公开的是运动学阶段，动力学验证阶段未开源**。
+- 明确区分论文 1.0（9,156 FPS）与 2.0 Apple M1 热运行 8 workers（503,288.6 FPS）不同设置和测量口径；未宣称本地复现。
+
+## [2026-11-12] ingest | CoRL 2026 Glen Berseth 阅读清单 101 篇：博客全文归档 + 概述页 + 逐篇详情节点（新建 / 升级到 3/3，2 篇 draft）
+
+## [2026-11-12] ingest | sources/repos/mingrammer-diagrams.md — 收录 Diagrams（Python Diagram as Code）
+
+- 意图：将 Diagrams 作为可版本管理的 Python 云系统架构可视化工具单独收录，并与 Mermaid.js 关联。
+- 开源结论：官方 MIT 开源，源码及预置图标、CLI 均可公开获取；仅绘图，不控制实际云资源或生成 Terraform/CloudFormation。
+- 证据：通读 README、pyproject.toml、Diagram/Node/Edge/Cluster 实现、CLI 入口与官方 Installation/Diagram/Cluster/Edge/Playground 文档。
+- 知识沉淀：[Diagrams](../wiki/entities/mingrammer-diagrams.md)；附 Mermaid 流程及源代码时序，纠正“17 家云”与 Python 版本要求混淆。
+
+## [2026-11-12] ingest | NVIDIA Holoscan SDK 5.0 — 实时多传感器与 Physical AI 运行时
+
+- **意图：** 将 NVIDIA Holoscan 平台 SDK 与此前已收录的 Sensor Bridge 区分，新增带原文/源码证据的完整技术节点。
+- **一手资料：** NVIDIA 官方 SDK 5.0 文档、2026-10-21 发布的 `v5.0.0` release、`slow_fast_fusion.cpp` 与 `camera_imu_control.cpp`。
+- **开源结论：** SDK 本体与可运行 C++ / Python 示例已公开；HSB 是另一个独立接入项目；未在本地编译或做真实机器人时延实测。
+- **关键页：** [Holoscan SDK](../wiki/entities/nvidia-holoscan-sdk.md)、[官方文档归档](../sources/sites/nvidia-holoscan-sdk-5.md)、[源码归档](../sources/repos/nvidia_holoscan_sdk.md)。
+
+## [2026-11-12] ingest | sources/repos/nutlope-hallmark.md — 收录 Hallmark 前端设计 Agent Skill 与源码检查链
+
+- 意图：将用户提供的 Nutlope/hallmark 原始仓库转换为可交叉引用的工具实体知识页。
+- 核对：通读官方 README 与 SKILL.md，核查主题选择和 sloplint 的源码入口；官网确认安装命令 `npx skills add nutlope/hallmark -g`。
+- 开源结论：MIT；技能文档、50 个主题目录和 Node.js 检查脚本公开；浏览器渲染检查另需 Chrome 与 puppeteer-core。
+- 写回：新增 [Hallmark](../wiki/entities/hallmark.md)，关联 [MengTo/Skills](../wiki/entities/mengto-skills.md)。
+- 验证边界：已核对源码与官方文档，未实际安装执行，也未运行完整知识库 CI。
+
+## [2026-11-12] ingest | 4D-HOF 与三篇基础文献
+
+- 意图：补足 4D 手物体交互中，视觉初始化、条件流匹配、物体 6D 位姿、手部 MANO 之间的技术联系。
+- 主要结果：新增 4D-HOF 主知识实体（论文/官网/实现统一身份）与双语阅读、Mermaid 流程图和真实源码推理时序；归档 Albergo et al.、WiLoR、FoundationPose 三篇一手文献。
+- 开源边界：TAMU-Visual-AI/4D-HOF 当前公开 HO3D 的推理/评估，不等于完整训练与原始视频初始化。
+- 关联：复用已有 WiLoR 方法页，新增与 4D-HOF 的互链。
+- 通读边界：已完成 4D-HOF v1 全文；本次补读 WiLoR CVPR 2025 正文和 supplementary，并结合官方 demo.py 补全来源、流程和实验边界。Stochastic Interpolants 与 FoundationPose 尚属初步核验，未标记已通读。
+
+## [2026-11-12] ingest | Eureka ICLR 2024 官方论文与源码复核
+
+- 在已有 [Eureka 论文实体](../wiki/entities/paper-eureka-llm-reward-design.md) 上增补基于源码的 Mermaid 运行时序图，没有新增重复项目节点。
+- 复核 [arXiv 2310.12931v2](https://arxiv.org/html/2310.12931v2) 与 [官方项目页](https://eureka-research.github.io/)，新增 [官方仓库源码档案](../sources/repos/eureka-research-eureka.md) 和 [项目页归档](../sources/sites/eureka-research.md)。
+- 源码快照 eureka-research/Eureka@9eee428；核实 MIT 许可、`eureka.py` → `train.py` → `rl_games` 的训练/反思路径；发现 README 和 config.yaml 的 sample/iteration 默认值不一致。
+- 论文原文通读结果沿用 2026-11-08 的详细归档；本次源码检查只读与本流程相关的文件，未运行训练或视频。
+
+## [2026-11-12] ingest | Runway Praxis-1 视频预训练到机器人控制
+
+- 通读 Runway 官方技术报告，核对视频预训练、具身中训练、视频—动作联合训练、本体适配与 benchmark 的评测边界。
+- 已核查 Runway 官方仓库公开权重、推理、MuJoCo 仿真、策略服务及微调入口；记录源码运行时序并补充 WAM 概念交叉引用。
+- 新建独立项目节点，与历史同名 Praxis（第一视角全身操作）及 OAT 的 praxis-vla 明确区分。
+
+## [2026-11-12] ingest | sources/papers/ego2robot_learning_survey_arxiv_2611_13610.md — 通读 Ego2Robot Learning 综述并建立独立实体
+
+- 对 2026-11-10 的 arXiv:2611.13610v1 通读四范式、三类数据资源、五项开放挑战并绘制论文分类 Mermaid 图；区分库内 arXiv:2608.02580 同名合成方法。
+- 项目页公开、论文 HTML 可读；GitHub 入口当前 404，未找到本综述自身可运行源码，因此源码时序图不适用。
+- 关联既有 Ego2Robot 论文页避免孤儿节点；未修改派生 catalog / log / exports。
+
+## [2026-11-12] ingest | sources/papers/rethinking_figures_arxiv_2611_08486.md — 通读 NTU 科研图示生成式 AI 评价研究
+
+- 核对 arXiv:2611.08486v1 官方全文及 NTU AI4X 图集，收录 200 篇论文、371 张引导图/框架图的样本设计与保真评估。
+- 记录 369 张修订图通过研究流程中的保真核查、清晰度模型评分均值 +0.428、美学协调评分均值 −0.111；明确单模型评价不能代表人类读者测试或 AI 使用的因果效应。
+- 图集及 CSV 公开，但项目页未列出可核实的研究可运行源码仓库；不虚构源码时序图。
+- 写回：wiki/entities/paper-rethinking-ai-scientific-figures.md，并从 AI Auto-Research 页面建立站内入链。
+
+## [2026-11-11] ingest | sources/papers/self_refine_arxiv_2303_17651.md — 收录 Self-Refine 自反馈迭代改进
+
+- 核对 arXiv v2 原文与附录，七任务评测及数学推理的自评瓶颈。
+- 核实官网 Code 指向 madaan/self-refine，源码已开源；记录缩写生成与对话生成的真实入口以及论文算法和脚本停止条件的差异。
+- 升格唯一论文实体节点并与 RSI 现有知识页互链，加入 Mermaid 主流程图和源码时序图。
+
+## [2026-11-11] ingest | sources/papers/tcsexam_arxiv_2611_07962.md — TCSExam v1 论文、项目与评测源码
+
+- 意图：归档理论计算机科学研究的四赛道可核验 benchmark，避免把指数误作准确率或机器人能力。
+- 来源：arXiv v1 全文、Moonshot AI 项目/交互结果、MoonshotAI/TCSExam 官方源代码与运行手册。
+- 开源：代码、任务与部分验证资源可用；部分独立 backend/固定镜像/来源材料需单独准备；许可按内容区分。
+- 沉淀：[TCSExam 统一论文实体](../wiki/entities/paper-tcsexam.md)；关联 AI Agent 评测。
+- 验证：静态阅读/接口核对；未执行模型或 Docker 复现。
+
+## [2026-11-11] ingest | 具身智能小站 11-11（53 篇）与 43 个论文节点
+
+## [2026-11-11] ingest | sources/sites/huawei-harmonyos-developer-doc-center.md — 收录华为 HarmonyOS 5.0+ 开发者文档中心
+
+- 将官方文档入口、开发者知识 MCP、llms.txt 两级索引编译为单个双语实体节点；附 Mermaid 文档获取流程。
+- 已通读文档中心主页、MCP 与 llms.txt 官方指南、一级索引；未扩大宣称至整个 API 文档库。
+- 开源边界：网页与索引公开；知识 MCP 为远程服务，未找到可核验的官方服务端源码运行入口，源码时序图不适用。
+- 与 Agentic Coding 工程实践建立双向交叉引用，强调按 API 版本检索、留存出处和运行验证。
+
+## [2026-11-11] ingest | ReflexArc 论文全文精读与现有节点升级
+
+- 在原有唯一实体上升级 ReflexArc（arXiv:2611.04424v1）的完整方法、训练、真机冲击实验与消融对照，避免同论文重复建页。
+- 核对官方项目页当前代码待发布；不编造 ARC 源码运行时序图。
+- 新增原文通读字段与主流程 / ARC-Gym Mermaid 图，区分 Fig. 6 的箱体冲量与 Table I 的 100 ms 冲量口径。
+- 对应节点：wiki/entities/paper-reflexarc.md；原文：sources/papers/reflexarc_arxiv_2611_04424.md。
+
+## [2026-11-11] ingest | zju-foundations-of-llms | 浙江大学《大模型基础》教材
+
+- 官方仓库：https://github.com/ZJU-LLMs/Foundations-of-LLMs；中文/英文 PDF 与六章分章、Paper List 已定位。
+- 新增 wiki/entities/zju-foundations-of-llms.md，并从 Transformer 概念页引入；来源归档拆分为书籍 PDF 与官方 README。
+- 原文核对：官方 README 已通读；对照中文教材 PDF 的可检索全文镜像完成六章 §1.1–§6.5 的分节阅读，记录公式/图示/案例及版本差异边界。教材与当前官方 GitHub PDF 的二进制版本一致性仍未独立确认，英文版尚未逐节对照。
+- 教材资料仓库不提供明确运行入口，Mermaid 绘制教材知识路径，源码时序图不适用。
+
+## [2026-11-11] ingest | TacitVLA（arXiv:2610.17540）— 推理监督与动作时延解耦
+
+- 意图：通读论文 v1 正文与 Appendix A–D，补充 VLA 的 attention-mask、流匹配动作专家和异步子任务账本知识。
+- 一手来源：sources/papers/tacitvla_arxiv_2610_17540.md、sources/sites/tacitvla.md。
+- 编译实体：wiki/entities/paper-tacitvla.md；从 wiki/methods/vla.md 建立入链。
+- 官方开源状态：截至 2026-11-11 项目页仍标“Code soon”，无可核实运行入口；未编造源码时序。
+- 证据边界：区分 RoboMME Counting-only 89.5% 与 16-task 训练 82.7%；最多 3.4× 为动作就绪延迟对比，不是全系统控制周期。
+
+## [2026-11-11] ingest | sources/repos/code-review-skill.md — 模块化代码审查技能
+
+- **目标：** 引入 Code Review Skill 的四阶段审查、语言指南按需读取、严重性等级和差异分析器机制。
+- **一手资料：** 通读官方 SKILL.md，检查 README、官方 GitHub Pages、Python 分析器与其测试；源码与站点皆 MIT 开放。
+- **成果：** 新增 [独立 wiki 节点](../wiki/entities/code-review-skill.md)、[原始仓库归档](../sources/repos/code-review-skill.md)、[项目站归档](../sources/sites/code-review-skill.md)，并与相邻工程技能节点互链；提供 Mermaid 项目流程图与基于 Python 真实调用的运行时序图。
+- **限制：** 不把启发式脚本描述成完整漏洞扫描；未执行上游单元测试或真实 PR 的效果 benchmark。
+
+## [2026-11-11] ingest | 激光雷达SLAM综述（新机器视觉转载）：综述归档 + 概念页 + 19 个算法独立节点
+
+## [2026-11-11] ingest | PartyMimic 单卡分钟级全身运动跟踪
+
+- 意图：将 RoboParty Lab 的 PartyMimic 一手项目资料、全套训练数据配方、统一评测与 SuperMimic 消融落地为独立知识节点。
+- 开源：官方已发布训练/数据/ONNX/评测代码与 G1、RP1 checkpoint；原始数据及派生物受到源数据许可证约束。
+- 写回：`sources/sites/partymimic.md`、`sources/repos/partymimic.md`、`wiki/entities/partymimic.md`；含 Mermaid 数据流及源码时序图。
+- 边界：数据为官方结果，未进行单卡或真机复现；修正转载中 RP1 16 mm 的近似数与 `sparse5` 输入数目口径。
+
+## [2026-11-11] ingest | A²-MEAS 论文已有深读节点：补核官方开源、实现时序和复现边界
+
+- 目的：对照 arXiv:2611.09124v1、官方项目页和 `AutoLab-SAI-SJTU/A2MEAS` `evaluation` 分支，避免重复创建已有主节点。
+- 开源结论：已公开 BEHAVIOR / RoboTwin 推理和评测实现、权重与一个 Adapter；完整纠错配置、部分任务特化策略及完整训练基础设施未在当前发布版开放。
+- 关键区别：论文完整 BEHAVIOR Q-score 0.6411 / SR 45.40%；官方 README 发布版复现表 0.5287 / 32.40%，本次未执行 GPU benchmark。
+- 产物：补充项目主页与源码两份来源归档，更新论文归档及唯一主节点，新增基于实际源码入口的 Mermaid 运行时序图。
+
+## [2026-11-11] ingest | 生成动作与人形闭环关联综述
+
+- 意图：去重补齐 Motion Graphs / MDM / A-MDM / AAMDM / Kimodo-Policy，并建立非 roadmap 对照节点。
+- 开源核查：MDM、A-MDM 与 Kimodo-Policy 有官方可运行仓库；Motion Graphs、AAMDM 官方项目页本次未确认可运行代码。
+- 阅读状态：后续已通读五篇论文正文及适用附录，复核实验表、代码入口和关键边界；本次七个修改 wiki 页健康度均为 3/3；未在本地复现训练或真机。
+
+## [2026-11-11] ingest | SeeBFM：接入地形扫描后训练与双深度相机视觉感知路线
+
+- **意图：** 以作者项目页、官方完整演示脚本/字幕和浏览器源代码为一手材料，将 SeeBFM 纳入 BFM 技术谱系；记录高度扫描条件化、地形无关 backward 提示、独立深度学生估计器、仿真穿越率与失败模式。
+- **开源结论：** `capfab/seebfm-media` 公开的是项目网页、视频及预录仿真动作的 3D 回放，并非控制策略训练、推理或 G1 部署源码。
+- **关键边界：** 作者主页标注 under review，尚未取得完整论文/附录；现有官方演示为仿真，G1 搭载深度学生的真实测试待完成。因此知识节点保持 `draft`、原文通读标为未完成，PR 保持 Draft。
+- **关键页：** `wiki/entities/paper-seebfm.md`，`sources/papers/seebfm_preprint_2026.md`；从行为基础模型概念页增加交叉引用。
+
+## [2026-11-11] ingest | sources/sites/qiayuan-liao-homepage.md — 通读 Qiayuan Liao 学术主页并升级研究索引
+
+- **意图：** 复用既有 `wiki/entities/qiayuan-liao.md`，把六项研究、五个软件项目映射至已有实体而不重复建页。
+- **核验：** 主页全文、Workhorse 与 SuperMimic 等官方页面，whole_body_tracking 与 mjlab README；发现 Walking in Narrow Spaces 署名/入口误链及 Berkeley Humanoid 源码 404。
+- **开源结论：** whole_body_tracking 已归档；legged_control 主页标注 retired 但仓库未设置 archived；mjlab 公开维护；Workhorse 代码暂未发布。
+- **关键页：** `wiki/entities/qiayuan-liao.md`；`sources/sites/qiayuan-liao-homepage.md`。补足完整阅读骨架、研究导航 Mermaid 图与单页原文追溯；人物索引不伪造跨项目源码时序图。
+
+## [2026-11-11] ingest | sources/sites/corl-2026-program.md — 扩充 CoRL 2026 官方议程、Keynotes 与论文检索导航
+
+- 对照大会 Program、首页、Keynotes、报告说明与 OpenReview 会议入口，增补场地、日期、报告类型、三场 keynote 和论文 ingest 追溯路径。
+- 复用已存在的 CoRL Program 来源与 SuperMimic 关联，未新建重复会议项目或未核实的论文占位节点。
+- Accepted Papers 动态正文与 Cvent 场次表未取得；直播公告不等于单篇论文可验证的录播 URL。此次仅修改 sources/ 和 log.d/，不触及 wiki 与派生文件。
+
+## [2026-11-10] lint | 全量 lint 清零：29 个 wiki 实体补齐对比/评测/结论/重定向就绪度章节与评测基准、感知栈枢纽回链；flex-rsi 陈旧声明误报改写；gr00t-2 补 venue；缺页概念巡检豁免 openpi / start；review 22 个陈旧页面（补论文回链、修正 action-chunking 子步骤口径与 CRISP 同名页描述）
+
+## [2026-11-11] ingest | Zane Hub #389《如何对机器人关节模组进行轻量化设计》：新增 robot-joint-module-lightweight-design 概念页，一手核对 Sandia 散热数字、国标与 CSG 对 CSF，标出未核实数字与槽满率自相矛盾
+
+## [2026-11-11] ingest | sources/papers/dexroam_arxiv_2609_35761.md — DexRoam 全文精读并提升既有论文实体健康度
+
+- 复核 arXiv 全文与附录、CoRL 2026 项目页、采集对齐与双 VLA 训练代码的实际入口。
+- 不新建重复节点，升级既有 DexRoam 论文实体，补原文通读标记、Mermaid 主流程图、源码运行时序图与工程实践。
+- 核实 29%→56% / 32%→57% 的五任务成功率及人机混合示教边界，公开 HF 50 条 episode 仅为单任务示例数据。
+
+## [2026-11-11] ingest | CamoDreamer / arXiv:2607.17768v2 — 上下文解耦伪装图像生成
+
+- 阅读作者 arXiv HTML v2 全文含附录，归档 CCB、CDAS、FACB、LAKE-RED 结果、下游 ZoomNet 验证及方法局限。
+- 核对作者 GitHub 主分支仅 README 与展示图片，Oral 标记来自作者 README；未发布可运行代码，不虚构源码时序图。
+- 新增论文唯一实体与主干 Mermaid 流程图，并从目标检测方法页建立入链；未修改由 bot 维护的 catalog.md/log.md。
+
+## [2026-11-10] ingest | ResGAC（arXiv:2610.09479）全文复核与原节点升级
+
+- **对象：** Precise SE(3) End-Effector Tracking in Whole-Body Humanoid Control / 全身人形控制中的精确 SE(3) 末端执行器跟踪。
+- **去重：** 保留唯一实体 `wiki/entities/paper-resgac-precise-se3-end-effector-tracking.md`；论文、官网继续指向同一实体，不新建重复项目节点。
+- **一手来源：** https://arxiv.org/html/2610.09479v1 ，已核读正文摘要、I–V（方法公式 1–30、实验 Tables I–IV 和结论）；https://github.com/ResGAC/ResGAC-website 中 README.md/index.html/details.html 已核查站点展示和补充参数。
+- **修订：** 补通读标记与原文 original 字段；中英双标题、阅读骨架、GAC 无实测 wrench 的边界、控制公式、六阶段训练和真实实验条件、重画 Mermaid 算法流程图；修正被误标为原文直引的改写摘要。
+- **开源状态：** 官网注明 Code 将在论文被接收后开放；当前只有项目展示网页源文件，无可核验的控制器训练/部署入口，源码 sequenceDiagram 暂不适用。
+- **工程与评测边界：** 记录 G1 50 Hz、FastSAC、4096 环境、L40S、OptiTrack 外部定位/配准、插孔 18/20 与 H0 对不同轴不同程度改善。
+- **派生文件：** 未修改 `catalog.md`、`log.md` 或前端导出文件，等待主分支自动生成。
+
+## [2026-11-10] ingest | sources/papers/agenticgenplan_coding_agents_generalized_tamp_arxiv_2609_30233.md — 通读 AgenticGenPlan 原文，核对官方项目与 RoboCode 运行入口，建立英中双语 TAMP 泛化节点、Mermaid 主流程图和源码时序图；澄清“同一环境内不同实例”不等于跨模拟器迁移。
+
+- 一手材料：arXiv:2609.30233v1 官方 HTML、agenticgentamp.github.io、tomsilver/robocode@d3d42dd、作者 Hugging Face 运行数据。
+- 开源状态：研究代码和运行数据已公开；作者论文 held-out seed 仍需按需申请。
+- 规模核对：28 环境、980 个程序、98,000 次评估；16 个 planner 环境子集为 47% 对 Astra 95%；动态 3D 仍有明显弱项。
+- 防重复：论文、项目站点与官方源码归同一 wiki 项目实体；仅新增源文件与 log.d，不提交 catalog.md / log.md。
+
+## [2026-11-10] ingest | PlanContext | 原文精读与导航意图成对评测基准
+
+- **意图：** 收录 arXiv:2611.03067v1，建立独立论文实体并把六类驾驶情境、三要素成功判定、NAS/CPS/NCS/LAS/MCS 与 23 模型结论连到已有 OneVL。
+- **来源：** sources/papers/plancontext_arxiv_2611_03067.md；sources/sites/plancontext-project.md。
+- **原文：** 阅读 arXiv v1 正文与附录 A–E，来源归档记录了章节/表格/实验及局限。
+- **开源：** 官方项目页截至 2026-11-10 标注 Code / Datasets Coming soon；不虚构代码入口或源码运行时序图。
+- **落点：** wiki/entities/paper-plancontext.md；补 OneVL 交叉引用。避免修改 main 自动维护的 catalog.md / log.md。
+
+## [2026-11-10] ingest | sources/repos/velxio.md — 核验 Velxio 开源嵌入式固件与 SPICE 协同仿真平台
+
+- 意图：将真实固件编译、CPU 指令仿真、ngspice-WASM 数模联合求解的架构整理为独立知识节点。
+- 一手资料：Velxio 官网与年付定价、官方 README / 架构文档 / 模拟器实现、作者在 Espressif Developer Portal 的技术文章。
+- 事实校正：正确拼写 Velxio；官网 35 板/6 类与源码 README 40 板/5 CPU 家族统计不一致；Linux 不是 ISA。
+- 开源结论：AGPL-3.0 核心开源，STM32 / 树莓派 Linux 等商业板卡后端及 AI Agent / 账号功能由私有 overlay 提供。
+- 沉淀：新增 [Velxio](../wiki/entities/velxio.md)，并与 [Wokwi](../wiki/entities/wokwi.md) 双向互链。
+
+## [2026-11-10] ingest | sources/papers/tf2_steering_tactile_forecast_arxiv_2611_01483.md — TF²-Steering 原文精读与唯一节点升级
+
+- **意图：** 将 11-04 周报的索引级 TF²-Steering 升级为直接阅读 arXiv v1 正文、附录的可检索知识节点；复用原项目身份，不新增重复实体。
+- **原文核验：** 阅读作者官方 HTML 全文，核对触觉预测/反馈双专家、Flow Matching 速度场修正、stop-gradient、异步 chunk 执行、三阶段训练和 Tables 1–7。
+- **结果与口径：** 六项仿真成功率 68.3%（较 FTP-1 摘要报告 +10.7 pp）；六项真机 PSR 71.5%（较 T-Rex +9.1 pp，非二值成功率）。
+- **开源结论（2026-11-10）：** 项目主页暂未提供可访问的 Code / 官方 GitHub 地址；已补方法 Mermaid 流程图，源码时序图不适用，不编造代码入口。
+- **修改：** 同步更新 sources/papers、sources/sites 与 wiki/entities/paper-tf2-steering-tactile-forecast.md；不改 catalog.md / log.md 等派生文件。
+
+## [2026-11-10] ingest | 具身智能小站 11-10（22 篇：A²-MEAS 深读 + TPS-A* / 被动折叠四旋翼 + 19 篇扫读）：新建 20 个独立论文详情节点（逐篇通读核对小站说法），复用 2 个既有节点，新增来源归档与阅读坐标页
+
+## [2026-11-10] ingest | sources/papers/dgm_arxiv_2505_22954v3.md | DGM arXiv v3
+
+- **意图：** 将 Darwin Gödel Machine（Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents）整理为 Robotics_Notebooks 可检索的独立中英双语知识实体，复用已有源码归档。
+- **资料：** arXiv:2505.22954v3 正文与附录 A–J；Sakana AI 官方介绍；jennyzzt/dgm 官方 README、DGM_outer.py、self_improve_step.py 及源码入口。
+- **主要结论：** 固定基础模型、探索可修改的编码 Agent 代码；用外部编程基准评估与开放式 archive 保留暂时退步的候选。SWE-bench Verified 20.0%→50.0%，完整 Polyglot 14.2%→30.7%；50 题搜索集的 38.0% 与全量复评须分开读。
+- **开源结论：** 官方仓库 Apache-2.0，Docker / Python 主入口与示例代码已发布。未实测完整进化，需付费模型调用，并须隔离不可信代码。
+- **写回：** wiki/entities/paper-darwin-godel-machine.md；sources/papers/dgm_arxiv_2505_22954v3.md；sources/sites/dgm-sakana-ai.md；更新 sources/repos/darwin-godel-machine.md 与 roadmap/depth-rsi.md。
+- **图表：** 论文方法 flowchart、对照源码调用路径的 sequenceDiagram。
+- **局限：** 论文目标劫持案例与高算力成本；未实证机器人真机或基础模型权重自我更新。
+
+## [2026-11-10] ingest | Guava（arXiv:2606.18363v3）：机器人语义 Harness 与 4B 蒸馏
+
+- **意图：** 区分大模型逐步语义工具调用和底层实时控制，补足带失败恢复的数据蒸馏路线。
+- **一手核对：** 通读论文 v3 正文/附录，核对项目页、发布仓库 README、评测主链、数据采集与恢复分支、SFT/GRPO 入口。
+- **技术核心：** GPT-5.4 → 共享工具 Harness + MuJoCo 轨迹/恢复分支 → Qwen3.5-4B SFT；GRPO 仅附加于选定长任务。
+- **数据口径：** 2,268 条成功及恢复轨迹（1,554 主轨迹/714 分支）；仿真 15×30 次 87.1%，真机 9×10 次 90.0%（论文作者报告）。
+- **源码与权重：** 官方仿真执行、轨迹、训练及评测脚本公开；SAM3 权重与真实机器人条件另需具备。仓库根目录未发现顶层 LICENSE，授权不可臆断。
+- **新增实体：** [Guava：机器人操作 Harness 中的前沿 VLM 蒸馏](../wiki/entities/paper-guava-harness.md)（含原文 Mermaid 流程图与源码运行时序图）。
+- **站内关联：** [LLM 机器人控制接口](../wiki/concepts/llm-robotics-control-interfaces.md) 入链，区别于同名 3D 渲染 GUAVA。
+- **测试边界：** 本次经 GitHub 静态源码核对；未启动 MuJoCo/模型推理或进行真机复现，完整 CI 以 PR Actions 为准。
+
+## [2026-11-10] ingest | LingBot-Touch | 异构触觉 JEPA 表征与官方推理实现
+
+- 意图：为 Robbyant LingBot-Touch 建立唯一项目实体，关联 LingBot 家族。
+- 已核验：官网 4,983h / 三模态、26 真机 + 12 仿真任务、GitHub 推理入口/输入契约、Tiny/Small 冻结 encoder 和 Apache-2.0。
+- 开源边界：当前发行提供推理链、样例及权重，不能等同于完整预训练开源。
+- 复核完成：通过临时 GitHub Actions 按 SHA-256 校验并逐页阅读官方 PDF **27 页**（正文 §1–6、Appendix A–C、References）；技术报告和评测表已进入 sources/papers 与主实体。
+- 关键纠正：论文 Table 2 的 26 项真机结果基于 **4K 预训练 Tiny**，§4 frozen probing 是 **5K Small**，§5.4 单独对比 **1K–5K Tiny**；多源预训练在固定总时长下存在空间精度 trade-off。
+- 节点健康度：新实体与 Robbyant 公司总览均补齐原文核验锚点，目标按报告脚本验证 **3/3**；未做本地 GPU/真机数值复现。
+- 主节点：[LingBot-Touch](../wiki/entities/paper-lingbot-touch.md)；[论文记录](../sources/papers/lingbot-touch-technical-report.md)。
+
+## [2026-11-10] ingest | sources/papers/horizonstream_arxiv_2605_23889.md — 归档 NeurIPS 2026 HorizonStream 全文与流式三维重建源码
+
+- 以 arXiv v2 正文 §1–5、Appendix A–E、官方主页及 GitHub 推理实现为一手依据，补充 Geometric Linear Attention、Gated Window Attention、Metric Readout Tokens 的方法图及真实推理时序图。
+- 同一项目合并论文、项目页与代码为唯一 wiki 实体；从视觉/3D 感知研究地图加回链。
+- 实验区分 48 帧训练→万帧推理、无/有回环 ATE/FPS、训练重叠和总内存口径；训练代码暂未公开，许可证 CC BY-NC-SA 4.0。
+
+## [2026-11-10] ingest | EmbodiedEvo 原文与源码深读复核
+
+- **意图：** 不重复创建既有 EmbodiedEvo 节点；按仓库最新规范登记 arXiv v2 全文通读及附录 A–F，修正 Playground / Test 只读边界，核对实际代码入口与仿真调用。
+- **一手来源：** https://arxiv.org/html/2610.18867v2 ; https://lab.einsia.ai/embodiedevo/ ; https://github.com/Einsia/EmbodiedEvo
+- **关键补充：** 区分 full 2,100 与配对 210 episode；+41.3%（相对无经验）与 -53.0%（相对原始历史）的不同成本口径；跨任务与未成功 Playground 的正面与局限案例。
+- **开源边界：** 源码可访问，但项目级许可证未选定；仿真资源/GPU/模型服务另配。未本地复现 RoboDojo-Sim。
+- **落地节点：** [EmbodiedEvo](../wiki/entities/paper-embodied-evo-coding-agent.md)。
+
+## [2026-11-10] ingest | EgoWild2Dex | 既有节点论文全文与附录精读升级
+
+- **意图：** 避免与历史 PR #2296 的 EgoWild2Dex 同项目节点重复，沿用唯一论文实体，补充原始文献通读证据。
+- **原文：** arXiv:2609.23755v1（§I–VI，Algorithm 1，附录 A–D，图表）与 https://mmlab.hk/egowild2dex/。
+- **研究事实：** EgoWild 538.9 h、179,049 episodes；GeoFormer 五级 8 参数单应变换，学 robot→ego，使用逆变换对齐 ego；三阶段 FM VLA（task-specific ego、robot-view glove、expert robot + 10 条 DAgger）。
+- **工程边界：** 96.7% 是三任务各 10 次共 29/30 次真机成功；图像对齐 21.9× 不是控制策略加速；每任务 robot <1 h 不包含人类数据与 A100 训练算力。
+- **开放核查：** 2026-11-10 项目页无可下载的 EgoWild/GeoFormer 官方实现与模型资源，论文仅承诺待发布，源码时序图不适用。
+- **回写：** [EgoWild2Dex](../wiki/entities/paper-egowild2dex.md)；[论文源归档](../sources/papers/egowild2dex_arxiv_2609_23755.md)；[项目页源归档](../sources/sites/mmlab-egowild2dex.md)。
+
+## [2026-11-10] ingest | Flow-GRPO（arXiv:2505.05470）：流匹配模型在线 GRPO
+
+- 通读 arXiv v5 正文与附录，归档 ODE→SDE、GRPO、训练/推理步数和实验边界。
+- 核对官网与已公开的训练代码；新增论文实体，附 Mermaid 方法流程图和基于真实源码的训练时序图。
+- 与 Diffusion Policy 双向关联；GenEval 63%→95% 和 OCR 59%→92% 为图像生成评测，不能误读为机器人真机结果。
+
+## [2026-11-10] ingest | 收录 Steel、ToolDex、Agentic Robotics 与 ODEAction，复用 GR00T 2 和 AMP1
+
+- 意图：核对六项原始论文/项目，统一收录一手资料、作者实验指标、Mermaid 流程与开源状态。
+- 去重：GR00T 2 与 Apple AMP1 已存在完整项目实体，本次只补充相关节点交叉链接。
+- 新入库：Steel/Newton 求解器、ToolDex 工具示范数据集、智能体机器人对照研究、ODEAction 连续动作演化。
+- 源码核验：Steel 的 SolverSteel 在 Newton 主仓已公开；其余新研究的官方完整代码/数据开放范围已标注证据边界。
+- 指标边界：Steel 最高 13× 是异构仿真吞吐峰值；ODEAction 61.8% 是 EBench 成功率相对提升。均未在本地重测。
+
+## [2026-11-10] ingest | sources/papers/fah_arxiv_2611_07711.md — 收录 FAH 手部 2D/3D 对应点估计、网格拟合与接触/世界系扩展
+
+- 原始资料：arXiv:2611.07711v1、官方项目主页和 noahcao/FAH 开源实现；分别归档至 sources/papers、sources/sites、sources/repos。
+- 知识沉淀：wiki/entities/paper-fah.md；使用论文主干流程图及可执行推理路径的源码时序图。
+- 开源结论：代码 Apache-2.0；FAH 模型权重研究/非商用许可；MANO/SAM 等外部资产另行授权。
+- 指标边界：HOT3D PA-MPJPE 4.31 mm、65 FPS 含网格拟合，不包含部位/接触全功能；与世界系模式速度区别记录。
+
+## [2026-11-10] ingest | Zane Hub #388《机器人动力学仿真和动力学标定有什么区别和联系》：新增 robot-dynamics-simulation-vs-calibration 概念页，自算质心偏差与差分噪声量级，标出未核的标准条款与笔误疑点
+
+## [2026-11-09] ingest | AdaPolicy 原论文深读与已发布源码复核
+
+- 意图：将二手摘要级 AdaPolicy 节点升级为论文一手证据驱动的工程笔记，不重复建实体。
+- 来源：arXiv:2610.34280v1（含附录）、作者项目主页与 teee000/AdaPolicy 源码。
+- 开源结论：MetaWorld / RoboTwin 2.0 仿真训练评测代码已发布；未核实完整 LIBERO 与真机部署源代码。
+- 知识产物：补 next-chunk 梯度机制、实验/消融与训练成本、Mermaid 流程及已核验入口的源码运行时序图；改进 wiki/entities/paper-adapolicy.md。
+
+## [2026-11-09] ingest | HWAM arXiv:2610.12026v2 增量深读与节点校核
+
+- 已有 HWAM 主节点，未重复建页；论文 v2 全文 §1–5 与附录 A–D 已核对，并更新来源、三路径 Mermaid 主流程与原文通读状态。
+- 明确 ALOHA Clothes Folding 的 86.00 为 0–100 分任务完成评分（含部分完成得分），不是成功率。
+- 2026-11-09 直接核对官方项目页：Code / Dataset / Video 均为 “Coming soon”，与 arXiv v2 摘要中的 available 描述存在落差；无可运行官方 HWAM 源码入口，不伪造源码运行时序图。
+
+## [2026-11-09] ingest | LLM 推理开源贡献职业分层与六项目一手文档核验
+
+- 意图：按学生、1–2 年工程师和资深跨行工程师给出可验证的推理引擎 / kernel 开源贡献入口。
+- 一手资料：Nano-vLLM、Mini-SGLang、FlashInfer、vLLM、SGLang、TensorRT-LLM 官方源码、README 与贡献指南，全部为公开仓库。
+- 写回：一页分阶段 wiki 路线与六个互不重复的项目详情节点（新建 Nano-vLLM、Mini-SGLang、FlashInfer、SGLang、TensorRT-LLM；升级已有 vLLM 清单节点），项目均含流程图与基于代码入口的时序图，补充既有软件工程知识页入链。
+- 证据边界：尚未定位用户所述视频原稿；“10 月 24 日 Discord 组队”和“更容易合并”的表述不作为已证实事实；官方性能数字不冒充本站实测。
+- 节点健康度：本 PR 涉及的 8 个 Wiki 页按仓库健康度三项规则逐项检查均为 3/3；完整 CI 仍待检查，以最终 Actions 结果为准。
+
+## [2026-11-09] ingest | 具身智能小站 11-09（29 篇：SLA 深读 + Flex-RSI / 美团 MR0 跟进 + 26 篇扫读）：新建 19 个独立论文详情节点（逐篇通读核对小站说法），复用 10 个既有节点，新增来源归档与阅读坐标页
+
+## [2026-11-09] ingest | CamX / CamUVA | 跨本体机器人数据与 rollout 展示
+
+- **意图：** 收录 https://camx-anonymous.github.io/ 的 CamX 数据集、CamUVA 评测回放与公开源码。
+- **核验：** 区分许可裁剪后的 17.1K h 网站数据与未裁剪的 25.85K h 原论文附录统计；核对 LeRobot v3 单 episode 样本与视频同步工具。
+- **开源结论：** 数据索引、样本/视频处理工具及回放网页可见；完整训练集、论文全文和 CamUVA 策略权重/训练代码尚未核实。
+- **知识页：** [CamX / CamUVA](../wiki/entities/project-camx-camuva.md)（draft，待原文通读）。
+
+## [2026-11-09] ingest | 三项评测基准
+
+- 意图：按一手论文、官方项目页与可运行开源入口，新增 DeliverBench、SelfImprove-Bench、AmbiHTMLBench 三个唯一知识节点并建立到 Agent 评测概念页的双向链接。
+- 开源核查：三项主仓均公开；DeliverBench 当前只有三项完整公开案例，SelfImprove-Bench 包含受限第三方依赖，AmbiHTMLBench 的主观原始数据需另行准备。
+- 限制：论文全文/附录尚未完成逐节通读，保留 Draft PR 与每项 2/3 健康度；仓库 CI 和端到端复现实验待执行。
+
+## [2026-11-09] ingest | MIIB：多模态信息交互瓶颈，通读论文与补充材料并核验开源状态
+
+- 一手原文：arXiv:2611.07718v1（正文 I–VII 与 3 页 supplementary Appendix A–C）；作者在 arXiv 声明已获 IEEE TPAMI 接收，未核实正式刊出卷期。
+- 核心方法：模态专属、联合融合、协同表征经双视图自监督与熵/对齐代理目标共同优化；新增论文方法 Mermaid 流程图。
+- 开源状态：2026-11-09 核验 wanglingzaishi/MIIB 公开空仓，无可运行实现；源码运行时序图不适用。
+- 知识节点：wiki/entities/paper-miib-multimodal-information-bottleneck.md，与 arXiv:2609.14421 信息论综述实体双向关联。
+
+## [2026-11-09] ingest | arXiv:2610.33026v1 — 通读曼德拉效应多智能体虚假信念传播、持续与缓解论文；归档 540 条合成断言与三拓扑的实验设计，记录搜索污染主通道和定向纠错结果；源码及数据按作者声明尚待发布。
+
+## [2026-11-09] ingest | senlanke 具身运控lab 11.02-11.06 前沿论文动态（人形/四足 30 + Manipulation 23）：新建 27 个独立论文详情节点（逐篇通读核对周报说法），复用 26 篇既有节点，新增两份周报来源归档与技术地图
+
+## [2026-11-08] ingest | sources/papers/open-x-embodiment-arxiv-2310-08864-v9.md — 通读 OXE v9，升级既有 RT-X 节点
+
+- 官方项目主页是 `robotics-transformer-x.github.io`，源码为 `google-deepmind/open_x_embodiment`；复用既有论文实体，避免重复。
+- 区分 60 个数据集/22 种机器人本体/1M+ 轨迹与论文实验实际使用的 9 种机械臂混合数据。
+- 基于论文 IV–V 和官方 RT-1-X 离线推理示例复核 Mermaid 主流程/源码时序；修正 61% 与 62% 的泛化评测口径。
+- 开放范围：数据读取示例和 RT-1-X checkpoint / 推理示例；不把 RT-2-X 55B 全链路训练或真机部署写成开源。
+
+## [2026-11-08] ingest | sources/repos/facefusion.md — 官方 FaceFusion 3.9.2 源码主链与技术文档收录
+
+- 目标：新增 FaceFusion 独立实体；中英双标题、CLI/job/processor 主干与官方源码运行时序图，同时关联已有 Deep-Live-Cam 节点。
+- 开源结论：公开可浏览、可安装的 Python 源码；根 LICENSE.md 只有 OpenRAIL-AS 标识，模型和商用权限需逐项确认；无未经验证的性能承诺。
+- 主要核对：官方 README、Introduction、Installation、Processors 文档、headless/image/video 工作流、face_swapper/core.py 与软件许可证标识。
+- 涉及关键页：wiki/entities/facefusion.md、sources/repos/facefusion.md、sources/sites/facefusion-official.md。
+
+## [2026-11-08] ingest | EmbodiedRSI 假设引导的机器人持续学习
+
+- **意图：** 收录哥伦比亚大学与普林斯顿大学 EmbodiedRSI 一手研究；澄清“机器人自己教自己”的模型/执行框架边界。
+- **论文：** arXiv:2610.10498v1（公开 12 页全文已读）；整理 VOI 选择、Hypothesis Graph、Code-Skill 联合试验、PPO 记忆 Manager、仿真与 SO-101 真机结果。
+- **可复现性：** 官方项目仓库只开放网站源码，未发现 EmbodiedRSI 可运行训练/部署实现；论文引用但未附的附录 A–I 另列公开材料缺口。
+- **知识节点：** [EmbodiedRSI](../wiki/entities/paper-embodiedrsi.md)；从 [RoboDoctor](../wiki/entities/paper-robodoctor.md) 加入站内关联。
+- **关键事实：** 冻结基础 VLA；真机零样本对象是仿真演化后的 harness；眼镜精密抓取任务出现回退。
+
 ## [2026-11-08] ingest | Vork Agent 原生 3D/VFX 渲染引擎 — 核对官方项目、源码、许可证与性能边界
 
 - 意图：为知识库补充 agent-native GPU 渲染工具，并与 Sand3D / 3D-as-Code 和机器人仿真描述建立对照。

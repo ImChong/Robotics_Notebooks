@@ -2,7 +2,7 @@
 type: concept
 tags: [concept, flow-matching, diffusion, vla, action-generation, generative-ai]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-15
 related:
   - ../formalizations/probability-flow.md
   - ../overview/mit-flow-matching-diffusion-2026.md
@@ -15,6 +15,7 @@ related:
   - ../entities/paper-pi0.md
   - ../entities/paper-smolvla.md
   - ../entities/paper-real-time-chunking.md
+  - ../entities/paper-moss-mode-source-shaping.md
   - ./diffusion-transformer.md
 original:
   - ../../sources/papers/lipman_flow_matching_arxiv_2210_02747.md
@@ -143,6 +144,7 @@ flowchart LR
 
 - [Diffusion Transformer](./diffusion-transformer.md)
 - [Real-Time Chunking](../entities/paper-real-time-chunking.md)
+- [MOSS（Mode-Oriented Source Shaping）](../entities/paper-moss-mode-source-shaping.md) — 通过调整 Flow Matching 源分布，实现多模态动作的指定模式采样
 - [Probability Flow（形式化）](../formalizations/probability-flow.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [MIT Flow Matching & Diffusion 2026](../overview/mit-flow-matching-diffusion-2026.md)

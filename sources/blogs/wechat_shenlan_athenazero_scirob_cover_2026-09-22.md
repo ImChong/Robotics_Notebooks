@@ -60,7 +60,7 @@
 
 - **主更新页：** [paper-athenazero](../../wiki/entities/paper-athenazero.md) — 补三条路线对照、摆锤/刚度/7.3 m 评测细数字、Bowden 手与腕 LUT 工程细节
 - **论文归档：** [athenazero_scirobotics_aee1868](../papers/athenazero_scirobotics_aee1868.md) — 互链本公众号导读
-- **交叉：** [Robot Juggling](./paper-robot-juggling-athenazero.md)（同平台软件线）、[Contact-Rich Manipulation](../../wiki/concepts/contact-rich-manipulation.md)、[Manipulation](../../wiki/tasks/manipulation.md)
+- **交叉：** [Robot Juggling](../../wiki/entities/paper-robot-juggling-athenazero.md)（同平台软件线）、[Contact-Rich Manipulation](../../wiki/concepts/contact-rich-manipulation.md)、[Manipulation](../../wiki/tasks/manipulation.md)
 
 ## 可信度与使用边界
 

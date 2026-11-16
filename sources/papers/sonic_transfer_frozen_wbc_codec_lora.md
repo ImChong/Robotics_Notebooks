@@ -31,7 +31,7 @@ Foundation-scale WBT 已公开，但仍焊在源机体上。目标机 incumbent 
 4. 两条边界：跨谱系不变的 **embodiment cost floor**；因果验证的 **信息瓶颈**（奖励看不见的信号无法被 freeze 下游恢复）。
 5. 配方双向：去掉 codec 后，同一 adapters 在 **G1 本体**上专精演示库且 **无遗忘**。
 
-**对 wiki 的映射：** 升格 [`wiki/entities/paper-sonic-transfer.md`](../../wiki/entities/paper-sonic-transfer.md)；对照 [Any2Any](../../wiki/entities/paper-any2any-cross-embodiment-wbt.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[跨具身迁移选型](../../wiki/queries/cross-embodiment-transfer-strategy.md)。
+**对 wiki 的映射：** 升格 [`wiki/entities/paper-sonic-transfer.md`](../../wiki/entities/paper-sonic-transfer.md)；对照 [Any2Any](../../wiki/entities/paper-any2any-cross-embodiment-wbt.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[跨具身迁移选型](../../wiki/queries/cross-embodiment-transfer-strategy.md)。
 
 ## 摘录 2：与 Any2Any 的三点差别（§2.1）
 
@@ -74,4 +74,4 @@ Foundation-scale WBT 已公开，但仍焊在源机体上。目标机 incumbent 
 ## 对 wiki 的映射
 
 - 沉淀实体页：[SONIC-Transfer](../../wiki/entities/paper-sonic-transfer.md)
-- 交叉：[Any2Any](../../wiki/entities/paper-any2any-cross-embodiment-wbt.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[跨具身迁移选型](../../wiki/queries/cross-embodiment-transfer-strategy.md)、[WBT pipeline](../../wiki/concepts/whole-body-tracking-pipeline.md)、[LoRA](../../wiki/concepts/lora.md)、[PHUMA](../../wiki/entities/dataset-bfm-phuma.md)
+- 交叉：[Any2Any](../../wiki/entities/paper-any2any-cross-embodiment-wbt.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[跨具身迁移选型](../../wiki/queries/cross-embodiment-transfer-strategy.md)、[WBT pipeline](../../wiki/concepts/whole-body-tracking-pipeline.md)、[LoRA](../../wiki/concepts/lora.md)、[PHUMA](../../wiki/entities/dataset-bfm-phuma.md)

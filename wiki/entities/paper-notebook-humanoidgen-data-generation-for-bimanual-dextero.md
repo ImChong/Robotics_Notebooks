@@ -111,3 +111,9 @@ HumanoidGen 要：**自动**生成双手灵巧任务与高质量演示。
 ## 推荐继续阅读
 
 - [机器人论文阅读笔记：HumanoidGen](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/HumanoidGen__Data_Generation_for_Bimanual_Dexterous_Manipulation_via_LLM_Reasoning/HumanoidGen__Data_Generation_for_Bimanual_Dexterous_Manipulation_via_LLM_Reasoning.html)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2507.00833](https://arxiv.org/abs/2507.00833)。
+- **项目或官方发布入口：** [项目页](https://openhumanoidgen.github.io)。
+- **清单记录：** `survey_ax_2507_00833`；本次仅补充身份与链接，未重新通读或核验已有结论。

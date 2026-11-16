@@ -33,7 +33,7 @@
 | 想看 locomotion RL 论文 | [papers/locomotion-rl.md](papers/locomotion-rl.md) |
 | 想看模仿学习论文 | [papers/imitation-learning.md](papers/imitation-learning.md) |
 | 想看 whole-body control / TSID / WBC 论文 | [papers/whole-body-control.md](papers/whole-body-control.md) |
-| 想看 sim2real 论文 | [papers/sim2real.md](papers/sim2real.md) |
+| 想看 sim2real 论文 | [wiki/concepts/sim2real.md](../wiki/concepts/sim2real.md) |
 | 想找仿真平台 / 训练框架 | [repos/simulation.md](repos/simulation.md) / [repos/rl-frameworks.md](repos/rl-frameworks.md) |
 | 想看 humanoid / locomotion benchmark | [benchmarks/locomotion-benchmarks.md](benchmarks/locomotion-benchmarks.md) / [benchmarks/humanoid-environments.md](benchmarks/humanoid-environments.md) |
 
@@ -117,7 +117,7 @@ State Estimation / System Identification / Sim2Real
 - [benchmarks/locomotion-benchmarks.md](benchmarks/locomotion-benchmarks.md)
 
 ### sim2real / 平台主链
-- [papers/sim2real.md](papers/sim2real.md)
+- [wiki/concepts/sim2real.md](../wiki/concepts/sim2real.md)
 - [repos/simulation.md](repos/simulation.md)
 - [benchmarks/humanoid-environments.md](benchmarks/humanoid-environments.md)
 

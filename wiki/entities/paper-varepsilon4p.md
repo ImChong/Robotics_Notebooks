@@ -7,7 +7,7 @@ tags:
   - manipulation
   - data-efficiency
 status: complete
-updated: 2026-09-23
+updated: 2026-11-08
 arxiv: "2609.26672"
 related:
   - ../methods/vla.md

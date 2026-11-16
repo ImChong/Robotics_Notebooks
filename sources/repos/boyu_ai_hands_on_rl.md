@@ -10,7 +10,7 @@
 - **核对范围：** 2026-11-07 读完仓库 `README.md` 全文（含 gym==0.18.3 提示、notebook 渲染说明、书籍与视频课入口）；在线站点首页与章节目录（前言 + 基础篇 6 章 + 进阶篇 8 章 + 前沿篇 7 章 + 总结与展望）；并通过抓取摘要核对了四章正文：基础篇《马尔可夫决策过程》、进阶篇《PPO 算法》《SAC 算法》、前沿篇《目标导向的强化学习》（摘要由抓取工具生成，非逐字阅读，数学公式在页面上未渲染）。**没有读**其余章节的正文，没有下载或运行仓库中的 notebook。
 - **通读：** 未完成
 - **一句话说明：** 上海交通大学 APEX 实验室主导的**中文**强化学习开源教材与 Jupyter 代码仓：从表格型 RL 到 DQN/PPO/SAC，再到模仿学习、MPC、离线 RL 与 MARL；配套免费视频课与 Dumi 站点在线运行 notebook。
-- **沉淀到 wiki：** 是 → [`wiki/entities/hands-on-rl-book.md`](../wiki/entities/hands-on-rl-book.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/hands-on-rl-book.md`](../../wiki/entities/hands-on-rl-book.md)
 
 ## 核对要点（2026-11-07）
 

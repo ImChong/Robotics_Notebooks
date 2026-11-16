@@ -45,7 +45,7 @@
 **对 wiki 的映射：**
 - [HumanoidArena](../../wiki/entities/paper-humanoidarena.md) — 任务表与 Football 扰动示例
 - [TWIST2](../../wiki/entities/paper-twist2.md) — GMT 后端之一
-- [SONIC](../../wiki/methods/sonic-motion-tracking.md) — GMT 后端之二
+- [SONIC](../../wiki/entities/nvidia-sonic.md) — GMT 后端之二
 
 ## 摘录 3：采集–规范化–训练管线（§Pipeline）
 

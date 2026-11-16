@@ -1,8 +1,8 @@
 ---
 type: entity
 tags: [paper, humanoid, motion-retargeting, loco-manipulation, contact-aware-control, reinforcement-learning]
-status: draft
-updated: 2026-10-24
+status: complete
+updated: 2026-11-15
 project_id: str-spatiotemporal-retargeting-humanoid-loco-manipulation
 arxiv: "2610.30540"
 related:
@@ -12,12 +12,29 @@ related:
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/str_arxiv_2610_30540.md
+original: ../../sources/papers/str_arxiv_2610_30540.md
 summary: "STR allocates motion-retargeting effort to task-critical keyframes, body parts, and object contacts, then trains contact-aware humanoid control."
 ---
 
 # STR：面向人形移动操作的时空偏好动作重定向
 
-**一句话定义：** STR 把重定向优化重点放在任务关键帧、关键身体部位与物体接触上，再将重定向结果用于人形控制。
+## 一句话定义
+
+STR 把重定向优化重点放在任务关键帧、关键身体部位与物体接触上，再将重定向结果用于人形控制。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| STR | Spatiotemporal Retargeting | 本文时空偏好动作重定向方法 |
+| VLM | Vision-Language Model | 选择任务相关动作信号与身体部位 |
+| MCA | Mechanics-Aware Contact Anchoring | 基于近似物体 wrench 模型的接触锚定 |
+| STRL | Spatiotemporal Reinforcement Learning | 关键阶段采样 + 接触奖励的下游控制训练 |
+| RL | Reinforcement Learning | 下游控制器训练范式 |
+
+## 为什么重要
+
+- 人形移动操作中，均匀分配每帧与全身部位的优化预算既耗时又易在关键接触帧失真；STR 将求解资源集中到任务关键阶段与接触部位，提升参考轨迹的物理可用性。
 
 ## 流程总览
 
@@ -41,16 +58,6 @@ flowchart TD
 
 图依据：论文 §III-A–D / Fig.2（STR 与 STRL 总览）。
 
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| STR | Spatiotemporal Retargeting | 本文时空偏好动作重定向方法 |
-| VLM | Vision-Language Model | 选择任务相关动作信号与身体部位 |
-| MCA | Mechanics-Aware Contact Anchoring | 基于近似物体 wrench 模型的接触锚定 |
-| STRL | Spatiotemporal Reinforcement Learning | 关键阶段采样 + 接触奖励的下游控制训练 |
-| RL | Reinforcement Learning | 下游控制器训练范式 |
-
 ## 核心方法
 
 1. **Spatiotemporal Retargeting：** VLM 选择与任务相关的动作信号和身体部位；信号变化用于定位关键帧，关键帧获得更多求解迭代，相关部位获得更高交互权重。
@@ -68,7 +75,7 @@ flowchart TD
 - **相对 [Dense Temporal Motion Retargeting](./paper-dense-temporal-motion-retargeting.md)：** 后者联合优化动作与参考相位、调整难段节奏；STR 不改参考节奏，而是改变各帧的求解强度。
 - **相对 [Contact-Anchored Retargeting](./paper-contact-anchored-retargeting-residual-dexterous.md)：** 同样以接触为锚，但后者面向灵巧手，STR 面向人形全身移动操作。
 
-## 工程启示
+## 工程实践与启示
 
 - 人体动作重定向可按任务重要性分配求解预算，避免每帧采用相同优化强度。
 - 对物体交互任务，身体关键部位、接触点和接触方向都应作为显式约束核验。
@@ -98,3 +105,8 @@ flowchart TD
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) — 交互保留的人形重定向
+
+## 推荐继续阅读
+
+- [arXiv:2610.30540](https://arxiv.org/abs/2610.30540)
+- [arXiv PDF](https://arxiv.org/pdf/2610.30540)

@@ -8,6 +8,8 @@ tags:
   - teleoperation
   - stanford
 status: complete
+original:
+  - ../../sources/papers/act_arxiv_2304_13705.md
 updated: 2026-11-05
 arxiv: "2304.13705"
 code: https://github.com/tonyzhaozh/act
@@ -30,7 +32,7 @@ summary: "ACT（arXiv:2304.13705，Stanford）：CVAE + Transformer 预测动作
 
 # ACT：低成本硬件上的动作块 Transformer
 
-**ACT**（*Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware*，[arXiv:2304.13705](https://arxiv.org/abs/2304.13705)，[代码](https://github.com/tonyzhaozh/act)）由 **斯坦福大学** 提出：用 **CVAE + Transformer** 一次预测未来 **K** 步动作，在约 **$2k** 的 ALOHA 双臂上做精细操作。机制页见 [action-chunking](../methods/action-chunking.md)。
+**ACT**（*Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware*，[arXiv:2304.13705](https://arxiv.org/abs/2304.13705)，[代码](https://github.com/tonyzhaozh/act)）由 **斯坦福大学** 提出：用 **CVAE + Transformer** 一次预测未来 **K** 步动作，在整套成本 **低于 $20k** 的 ALOHA 双臂上做精细操作。机制页见 [action-chunking](../methods/action-chunking.md)。
 
 ## 一句话定义
 
@@ -62,6 +64,10 @@ summary: "ACT（arXiv:2304.13705，Stanford）：CVAE + Transformer 预测动作
 | **控制** | chunk 预测 + 时间集成 |
 | **开源** | **已开源** [tonyzhaozh/act](https://github.com/tonyzhaozh/act) |
 
+## 核心原理
+
+训练时，CVAE 编码器结合专家动作块与当前关节状态估计潜变量；视觉编码器处理多视角图像，Transformer 在关节状态与潜变量条件下预测未来一段动作。推理时将潜变量设为零，针对同一执行时刻的重叠预测进行指数加权时间集成（Temporal Ensembling）。这一机制与 Diffusion Policy 的滚动重规划不同。
+
 ### 流程总览
 
 ```mermaid
@@ -75,8 +81,13 @@ flowchart LR
   te --> arms[双手执行]
 ```
 
+## 工程实践
+
+原论文的 ALOHA 使用四个相机和两条随动臂，训练时记录 50 Hz 遥操作数据；ACT 学习未来动作块，推理用 z=0 并在同一控制时刻重叠多个 chunk 做指数加权平均。不要把 temporal ensembling 简化为固定 5 Hz 推理，也不要将图 1 的整套硬件成本误写为 $2k。
+
 ## 评测
 
+- 原论文包含两项模拟任务、六项 ALOHA 真机任务；真实 Slide Ziploc / Slot Battery 的成功率分别为 88% / 96%，其他真机任务的局部成功率应按 Table II 分步阅读。
 - 精细双臂任务上相对逐步 BC 更稳。
 - chunk 长度与时间集成是主超参。
 - 表以 [原文](https://arxiv.org/abs/2304.13705) 为准。

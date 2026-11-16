@@ -388,6 +388,7 @@
       if (!layer) return;
       labelEls.clear();
       communityLabelEls.clear();   // innerHTML='' 会一并清掉社区胶囊，重建时重新创建
+      routeBadgeEls.clear();
       invalidateCommunityCentroids3D();
       nodeLabelsRendered = false;
       layer.innerHTML = '';
@@ -2107,6 +2108,7 @@
 
       refreshColors: function () {
         graph.backgroundColor(backgroundColor());
+        linkMaterialCache.forEach(function (mat) { if (mat && mat.dispose) mat.dispose(); });
         linkMaterialCache.clear();   // 混色依赖背景色，换主题后全部重算
         linkDisplayColorMemo.clear();
         refreshAppearance();
@@ -2331,6 +2333,8 @@
         container.removeEventListener('touchstart', onContainerInput);
         if (idlePauseTimer) { window.clearTimeout(idlePauseTimer); idlePauseTimer = 0; }
         if (pointerInteractionTimer) { window.clearTimeout(pointerInteractionTimer); pointerInteractionTimer = 0; }
+        if (subsetRebuildTimer) { window.clearTimeout(subsetRebuildTimer); subsetRebuildTimer = null; }
+        if (contextLostTimer) { window.clearTimeout(contextLostTimer); contextLostTimer = 0; }
         window.removeEventListener('error', reviveRenderLoopOnError);
         if (fitLabelZoomUnlockTimer) {
           window.clearTimeout(fitLabelZoomUnlockTimer);
@@ -2341,6 +2345,23 @@
           window.cancelAnimationFrame(cameraLabelSyncRaf);
           cameraLabelSyncRaf = 0;
         }
+        if (timelinePopRaf != null) {
+          window.cancelAnimationFrame(timelinePopRaf);
+          timelinePopRaf = null;
+        }
+        if (hubBlinkRaf) {
+          window.cancelAnimationFrame(hubBlinkRaf);
+          hubBlinkRaf = 0;
+        }
+        removeHubHalos();
+        nodeMaterialCache.forEach(function (mat) { if (mat && mat.dispose) mat.dispose(); });
+        nodeMaterialCache.clear();
+        linkMaterialCache.forEach(function (mat) { if (mat && mat.dispose) mat.dispose(); });
+        linkMaterialCache.clear();
+        if (sharedSphereGeometry && sharedSphereGeometry.dispose) {
+          sharedSphereGeometry.dispose();
+        }
+        sharedSphereGeometry = null;
         routeBadgeEls.clear();
         if (graph && graph._destructor) graph._destructor();
         graph = null;

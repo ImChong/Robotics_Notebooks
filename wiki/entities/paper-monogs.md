@@ -101,6 +101,17 @@ sequenceDiagram
 
 Replica RGB-D：作者 Table2 多进程配置 ATE 平均约 0.58cm，单进程平均 0.32cm（不同 mapping iteration 数），不属于相同效率条件。论文报告总 SLAM 平均约 3 FPS，附录对渲染 FPS 和进程计时分别统计，不能把约 769 FPS 的渲染速度当整套 SLAM 速度。
 
+## 与其他工作对比
+
+MonoGS 与同期高斯 SLAM 的最大区别是**支持单目输入**并采用异步前后端；下表数值均出自各自论文自己的表格。
+
+| 对照 | 差异 | 论文结果/说明 |
+|---|---|---|
+| [SplaTAM](./paper-splatam.md) | SplaTAM 只做 RGB-D，用 silhouette 掩码限定追踪像素，每帧顺序执行 Tracking→Densification→Map Update；MonoGS 单目/RGB-D 皆可，靠高斯共视窗口选关键帧，前后端异步 | SplaTAM 页面报告 ScanNet++ PSNR；本页报告 TUM/Replica ATE，指标不同 |
+| [Gaussian-SLAM](./paper-gaussian-slam.md) | Gaussian-SLAM 用多个独立子地图控制规模；MonoGS 后端持有一个全局高斯集合 | 两者均无全局回环 |
+| [GS-SLAM（Yan）](./paper-gs-slam-yan.md) | GS-SLAM 仅 RGB-D，位姿追踪只用 RGB 光度项、完整系统未开源；MonoGS 在 RGB-D 模式下额外加深度残差，并给出位姿解析雅可比，完整代码开源 | 三者作者与源码不同，避免混名 |
+| [NICE-SLAM](./paper-nice-slam.md) | NICE-SLAM 是 RGB-D 隐式 feature grid；MonoGS 是显式高斯，单目也可运行 | 同为 TUM fr1/desk、fr2/xyz、fr3/office：NICE-SLAM Table2 报 2.7/1.8/3.0 cm（5 次取最佳），MonoGS RGB-D Table1 报 1.50/1.44/1.49 cm；两篇论文运行协议不同，仅作参考 |
+
 ## 结论
 
 **显式高斯兼顾渲染与位姿优化，但实时跟踪依赖稳定共视窗口、几何正则和位姿初值。**

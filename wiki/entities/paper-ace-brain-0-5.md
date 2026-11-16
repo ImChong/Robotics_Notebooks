@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, ace-robotics, embodied-foundation-model, vla, qwen, spatial-grounding, navigation, manipulation, progress-estimation, ssr, foundation-policy, flow-matching]
 status: complete
-updated: 2026-10-20
+updated: 2026-11-14
 project_id: ace-brain
 arxiv: "2607.04426"
 code: https://github.com/ACE-BRAIN-Team/ACE-Brain-0.5

@@ -3,7 +3,7 @@ type: entity
 title: HandUMI
 tags: [hardware, software, teleoperation, dual-arm, bimanual, data-collection, robot-free, retargeting, lerobot, open-source, parallel-gripper, robonet]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-15
 related:
   - ../tasks/teleoperation.md
   - ../tasks/bimanual-manipulation.md
@@ -22,12 +22,18 @@ sources:
   - ../../sources/repos/handumi-hw.md
   - ../../sources/repos/handumi-quest-app.md
   - ../../sources/sites/handumi-sw.md
+original:
+  - ../../sources/repos/handumi-sw.md
 summary: "HandUMI 是面向平行夹爪双臂的无机器人示教接口与软件栈：一次采集 LeRobot 兼容数据，经校准与 QA 后重定向/回放到 PiPER、OpenArm、TRLC-DK1、YAM 等固定基座双臂，无需为每台臂重新遥操作。"
 ---
 
 # HandUMI
 
 **HandUMI** 是一套面向 **固定基座双臂 + 平行夹爪（parallel-jaw gripper）** 的 **无机器人示教（robot-free demonstration）** 接口与开源软件栈（硬件 [handumi-hw](https://github.com/robonet-ai/handumi-hw)、软件 [handumi-sw](https://github.com/robonet-ai/handumi-sw)，均 Apache-2.0）。操作者佩戴 HandUMI **一次采集** 同步多模态示范后，同一批 **robot-agnostic** 数据可经内置 **校准、转换前 QA、仿真回放与真机遥操作**，重定向到 **AgileX PiPER、OpenArm、TRLC-DK1、I2RT YAM** 等不同双臂平台——**无需机器人参与采集，也无需为每台目标臂重做 leader–follower 遥操作**。
+
+## 一句话定义
+
+HandUMI 是面向固定基座平行夹爪双臂的无机器人示教接口与开源软件栈：一次采集 LeRobot 兼容数据，经校准与 QA 后重定向或回放到多种双臂。
 
 ## 英文缩写速查
 

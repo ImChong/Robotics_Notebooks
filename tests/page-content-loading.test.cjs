@@ -4,6 +4,12 @@ const { resolve } = require('node:path');
 const { test } = require('node:test');
 const vm = require('node:vm');
 const source = readFileSync(resolve(__dirname, '../docs/main.js'), 'utf8');
+function sliceMain(startMarker, endMarker, from = 0) {
+  const s = source.indexOf(startMarker, from);
+  const e = source.indexOf(endMarker, Math.max(s, 0));
+  assert.ok(s >= 0 && e > s, `slice markers missing: ${startMarker} .. ${endMarker}`);
+  return source.slice(s, e);
+}
 const catalogUrl = 'exports/site-catalog-v1.json';
 const bodyUrl = `exports/page-content/${'a'.repeat(64)}.json`;
 const routeUrl = `exports/page-content/${'b'.repeat(64)}.json`;
@@ -37,9 +43,10 @@ function harness(fetcher, runtime = false) {
     removeLoadingState() {}, escapeHtml: (s) => s,
     renderDetailPage: (data) => renders.push(data),
   });
-  vm.runInContext(source.slice(source.indexOf('  function resolveDetailPage('), source.indexOf('  var DETAIL_MINI_TABLEAU10')), context);
+  vm.runInContext(sliceMain('  function resolveDetailPage(', '  var DETAIL_MINI_TABLEAU10'), context);
   const start = source.indexOf('  var pageDataRequests =');
   const end = source.indexOf(runtime ? '  if (homeStatsRoot) {' : '  function handlePageDataError(', start);
+  assert.ok(start >= 0 && end > start, 'pageDataRequests slice markers missing');
   vm.runInContext(source.slice(start, end), context);
   return { context, calls, timers, renders, button, summary, load: context.loadSitePageData };
 }
@@ -171,8 +178,8 @@ test('slim catalog: ids come from keys and body-only link fields are merged into
 });
 
 function installRouting(context) {
-  vm.runInContext(source.slice(source.indexOf('  function detailHref('), source.indexOf('  function latestNodeHref(')), context);
-  vm.runInContext(source.slice(source.indexOf('  function moduleHref('), source.indexOf('  function unescapeMarkdownEscapes(')), context);
+  vm.runInContext(sliceMain('  function detailHref(', '  function latestNodeHref('), context);
+  vm.runInContext(sliceMain('  function roadmapHref(', '  function unescapeMarkdownEscapes('), context);
 }
 
 test('metadata-only catalog resolves Markdown deep links with anchors', async () => {
@@ -191,8 +198,8 @@ test('actual detail and roadmap renderers retain alias redirects and fragments',
   const redirects = [];
   h.context.window.location.replace = (href) => redirects.push(href);
   h.context.window.location.hash = '#section';
-  vm.runInContext(source.slice(source.indexOf('  function renderDetailPage('), source.indexOf('  function renderRoadmapPage(')), h.context);
-  vm.runInContext(source.slice(source.indexOf('  function renderRoadmapPage('), source.indexOf('  function renderRoadmapMarkdownBody(')), h.context);
+  vm.runInContext(sliceMain('  function renderDetailPage(', '  function renderRoadmapPage('), h.context);
+  vm.runInContext(sliceMain('  function renderRoadmapPage(', '  function renderRoadmapMarkdownBody('), h.context);
   h.context.window.location.search = '?id=old';
   h.context.renderDetailPage(data);
   h.context.window.location.search = '?id=roadmap-motion-control';
@@ -208,9 +215,9 @@ test('actual inline preview renders title, summary and destination without fetch
   const data = await h.load('catalog', '');
   installRouting(h.context);
   vm.runInContext(readFileSync(resolve(__dirname, '../docs/graph-tooltip.js'), 'utf8'), h.context);
-  vm.runInContext(source.slice(source.indexOf('  var ROADMAP_KMAP_PATH_TYPE'), source.indexOf('  function collectDepthBranchRoadmaps(')), h.context);
-  vm.runInContext(source.slice(source.indexOf('  function formatGraphTooltipSummary('), source.indexOf('  function buildGraphNodeTooltipHtml(')), h.context);
-  vm.runInContext(source.slice(source.indexOf('  var detailLinkBridge ='), source.indexOf('  function collectInlineLinkPreviewRoots(')), h.context);
+  vm.runInContext(sliceMain('  var ROADMAP_KMAP_PATH_TYPE', '  function collectDepthBranchRoadmaps('), h.context);
+  vm.runInContext(sliceMain('  function formatGraphTooltipSummary(', '  function buildGraphNodeTooltipHtml('), h.context);
+  vm.runInContext(sliceMain('  var detailLinkBridge =', '  function collectInlineLinkPreviewRoots('), h.context);
   const html = h.context.buildDetailInlineLinkTooltipHtml('entity-demo', data.pages.detail_pages['entity-demo']);
   assert.match(html, /preview/);
   assert.match(html, /entity-demo/);

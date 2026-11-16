@@ -25,3 +25,8 @@
 
 - [paper-freebar-barrier-guidance-async-vla](../../wiki/entities/paper-freebar-barrier-guidance-async-vla.md)
 - [流式动作块与世界模型记忆：具身智能小站 10-14 期 41 篇阅读坐标](../../wiki/overview/embodied-station-2026-10-14-41-papers-technology-map.md)
+
+## 本次原文精读复核（2026-11-12）
+
+- **核对范围：** arXiv:2610.14997 HTML 主文/附录，含时域分区、CBF 式指导闭式 QP、Kinetix 与 RoboCasa 实验及局限；逐项核对官方仓库 README、kinetix/src/eval_flow_rtc.py 与 kinetix/src/model.py。未实测真机。
+- **通读：** 已完成

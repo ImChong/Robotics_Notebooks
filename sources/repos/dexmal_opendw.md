@@ -69,7 +69,7 @@ model.load_checkpoint("/path/to/DW05-Base/model.pt")
 |------|------|
 | 动作条件 RobotWin 在线 demo | `playground/online_demos/robotwin_online_demo.py` |
 | 单图开环视频生成 | `playground/example_dw_exp.py --task inference` |
-| JSONL 帧 + action/proprio 条件 | `script/dw/infer_aloha_joint.py` |
+| JSONL 帧 + action/proprio 条件 | README 所列旧脚本当前 tree 缺失；优先使用现有 experiment / policy 入口 |
 
 ## 与本仓库知识的关系
 
@@ -90,3 +90,13 @@ model.load_checkpoint("/path/to/DW05-Base/model.pt")
 ## 对 wiki 的映射
 
 - 沉淀 **[`wiki/entities/dexmal-dw05.md`](../../wiki/entities/dexmal-dw05.md)**；HF Base 卡要点已并入本 source，不单独建 sites 页。
+
+## 官方文档与源码通读复核（2026-11-13）
+
+- **版本：** `e33befa8005a1585e0140dbf464566e90bc79aa1`
+- **核对范围：** 官方根 README 全文、`docs_dw05_runtime.md`；`playground/example_dw_exp.py`、BaseDWExp 的模型构建/训练/推理调度、DW05Exp 的配置与归一化统计、DW05Core.infer_joint 与 policy.infer_action_chunk 的调用链。未逐行核对全部模型/训练器，未运行 GPU 或真机。
+- **通读：** 已完成
+- 当前仓库已经内置 Dexbotic-native 运行时，不必把历史外部 Dexbotic 树当唯一执行依赖。可用入口为 `playground/example_dw_exp.py`；继承 BaseDWExp.inference 构建模型、加载 checkpoint、载入图像、调用 model.infer，写 MP4 与 action JSON。
+- DW05Core.infer_joint 构造独立 video/action flow schedule，钳住首帧 latent，循环预测两路速度并步进。策略用 infer_action 路径并按对应 norm stats 反归一化。
+- 根 README 仍提 `script/dw/infer_aloha_joint.py`，但该固定版本 tree 未包含此文件；不要直接把这一条 README 命令作为已核实入口。
+- Value Expert 仍标后续发布，当前实现与示例主要围绕 video/action；官方开放不等于已复现全部宣称能力。

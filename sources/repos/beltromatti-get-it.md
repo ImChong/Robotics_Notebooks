@@ -9,6 +9,10 @@
 - **项目页：** <https://getit.noesisai.it/>
 - **许可证：** Apache-2.0
 - **入库日期：** 2026-10-15
+- **原文复核日期：** 2026-11-13
+- **原文版本：** [上游 ae0fa999f352b951ab8150fac5dcf9d7ab6fd9a4](https://github.com/beltromatti/get-it/tree/ae0fa999f352b951ab8150fac5dcf9d7ab6fd9a4)
+- **通读：** 已完成
+- **核对范围：** 已完整通读该版本官方 `README.md`（产品工作流、四项评价、模型接入、文档格式、安装与隐私边界等）；并复核 `technical-writeup.md` 的系统整体流程、可视化任务与图谱评价段落，未将技术长文的其他章节或整个代码库标为通读；未安装或运行应用。
 - **一句话说明：** 本地优先的 PDF/Markdown 学习桌面应用：从文档提取概念、生成可选 2D/3D/公式/图表可视化，并用知识图谱、主动回忆、测验、Feynman 讲解和学习日志组织复习。
 - **开源状态：** 已开源，代码仓库与项目页均公开；README 提供本地开发、构建及发布说明。
 - **沉淀到 wiki：** 是 → [`wiki/entities/get-it-study-companion.md`](../../wiki/entities/get-it-study-companion.md)

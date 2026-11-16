@@ -36,7 +36,7 @@ flowchart LR
 - 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
 
 **和主路线的关系：**
-- 本路线是主路线 [L5.4 动作重定向](motion-control.md#l54-动作重定向) 的展开：L2 的 FK/IK 是 Stage 1 的直接前置，L5.3 的模仿学习是下游消费者
+- 本路线是主路线 [L5.4 动作重定向](motion-control.md#l54-动作重定向) 的展开：[L1 的 FK/IK](motion-control.md#l1-机器人学骨架) 是 Stage 1 的直接前置，L5.3 的模仿学习是下游消费者
 - [模仿学习纵深](depth-imitation-learning.md) Stage 2 与 [BFM 纵深](depth-bfm.md) Stage 1 都只给了重定向一个阶段的篇幅；本路线把这一步展开成完整谱系
 - 如果关心"参考动作从哪来"的上游问题（文本/多模态生成动作），走 [动作生成纵深](depth-motion-generation.md)
 
@@ -48,7 +48,7 @@ flowchart LR
 
 ### 前置知识
 - Python 熟练，能读懂旋转表示（四元数 / 旋转矩阵 / 6D）
-- 理解正运动学（FK）概念（参考主路线 L2）
+- 理解正运动学（FK）概念（参考主路线 [L1](motion-control.md#l1-机器人学骨架)）
 
 ### 核心问题
 - 重定向到底在解什么：保留运动语义与风格的同时满足目标骨架的可执行性
@@ -127,6 +127,8 @@ flowchart LR
 - [HiPHI](../wiki/entities/paper-hiphi.md) — 90 Hz / 55 关节 BVH 与同步物体 CSV/OBJ；先统一厘米/米、Y-up 与时间，再做人体–物体联合重定向；数据门控，Viewer 已开放
 - [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md) — 选型主入口
 - [GVHMR](../wiki/entities/gvhmr.md)、[SAM 3D Body](../wiki/entities/sam-3d-body.md)、[FreeMoCap](../wiki/entities/freemocap.md) — 视频/低成本采集
+- [EgoMo3R](../wiki/entities/paper-egomo3r.md) — 第一视角视频→统一场景与 SMPL-X 全身运动，可作为重定向前的参考动作数据源；本身不执行机器人重定向
+- [MacroHands](../wiki/entities/macrohands.md) — Ego 单/双目 3D 手部 + 相机位姿上游数据质量；读 Cam-MPJPE、Action MPJPE 与误认率，**不是**机器人重定向器（官方暂未开放代码）
 - [FMPose3D](../wiki/entities/paper-fmpose3d-monocular-3d-pose-flow-matching.md) — 条件 Flow Matching 单目 2D→3D 姿态提升，3 步 ODE 多假设 + RPEA 聚合，可作视频→稀疏 3D 骨架的轻量上游
 - [PEAR](../wiki/entities/paper-pear-pixel-aligned-expressive-hmr.md) 与 [ViDiHand](../wiki/entities/paper-vidihand.md) — 表达级数据源前沿：单图 SMPL-X 身/脸/手 >100 FPS 实时恢复（SIGGRAPH 2026）与 egocentric 双手 4D 视频扩散估计
 - [Motion Data Quality](../wiki/concepts/motion-data-quality.md) 与 [LiMMT / GQS 动作数据整编](../wiki/methods/limmt-gqs-motion-curation.md) — 质量量化
@@ -160,6 +162,8 @@ flowchart LR
 - 四足方向：先做空间重定向（足端 + 基座关键点，按腿长比例缩放），检查 trot / pace 的接触相位是否被保留，再用时间缩放把峰值关节速度压回机器人可执行范围——把 STMR 的 SMR/TMR 拆解亲手走一遍
 
 ### 推荐读什么
+- [MotionSkill：单视频跨机体运动参考](../wiki/entities/paper-motionskill-cross-embodiment.md) — 区分共享参考与逐机体训练的低层策略。
+- [单图场景接触引导重定向](../wiki/entities/paper-rgb-scene-contact-retargeting.md) — 在人体源端和机器人足底两次修正接触几何。
 - [GMR](../wiki/methods/motion-retargeting-gmr.md)、[NMR](../wiki/methods/neural-motion-retargeting-nmr.md)、[ReActor](../wiki/methods/reactor-physics-aware-motion-retargeting.md) — 三条代表路线
 - [GMR vs NMR vs ReActor 选型对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md) — 谱系主入口
 - [DynaRetarget / SBTO](../wiki/methods/dynaretarget-sbto-motion-retargeting.md) 与 [SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md) — 物理感知扩展
@@ -282,7 +286,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 纵深汇总](../wiki/overview/hub-wbt.md)
-- [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 跟踪侧消费者
+- [SONIC](../wiki/entities/nvidia-sonic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 跟踪侧消费者
 - [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
 - [Teleoperation](../wiki/tasks/teleoperation.md) — 实时重定向的应用面
 - [legged_gym](../wiki/entities/legged-gym.md)、[AMP 奖励设计](../wiki/methods/amp-reward.md) 与 [Locomotion](../wiki/tasks/locomotion.md) — 四足支线的跟踪训练侧与任务层落点

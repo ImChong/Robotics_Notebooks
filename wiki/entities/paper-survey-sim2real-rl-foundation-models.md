@@ -13,10 +13,9 @@ related:
   - ../comparisons/sim2real-four-routes-identifiability.md
   - ../comparisons/sim2real-approaches.md
   - ../methods/reinforcement-learning.md
-  - ../methods/domain-randomization.md
+  - ../concepts/domain-randomization.md
   - ../queries/sim2real-checklist.md
   - ./awesome-real2sim2real.md
-  - ../entities/awesome-real2sim2real.md
   - ../overview/sun-awesome-r2s2r-technology-map.md
   - ../methods/crisp-real2sim.md
   - ../tasks/locomotion.md

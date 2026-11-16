@@ -26,7 +26,7 @@ summary: "Paper Notebooks 分类 03：高影响力精选（26 篇深读笔记索
 
 - [ExBody2](../concepts/whole-body-control.md) — 见 wiki 实体页
 - [HOVER](../entities/paper-bfm-14-hover.md) — 见 wiki 实体页
-- [SONIC](../methods/sonic-motion-tracking.md) — 见 wiki 实体页
+- [SONIC](../entities/nvidia-sonic.md) — 见 wiki 实体页
 - [UH-1](../entities/dataset-bfm-humanoid-x.md) — 见 wiki 实体页
 
 ### 遥操作与模仿学习

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, humanoid, loco-manipulation, flow-matching, reinforcement-learning, post-training, behavior-cloning, whole-body-control, pku, x-humanoid, nankai, xjtu]
 status: complete
-updated: 2026-10-21
+updated: 2026-11-12
 project_id: haf-humanoid-whole-body-loco-manipulation
 arxiv: "2608.16837"
 papers: ["2608.16837", "2610.26584"]
@@ -19,6 +19,8 @@ related:
   - ./paper-greenvla-staged-vla-humanoid.md
   - ./paper-hrl-stack-30-wholebodyvla.md
   - ./x-humanoid.md
+original:
+  - ../../sources/papers/haf_vla_arxiv_2610_26584.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-19_23.md
   - ../../sources/papers/haf_arxiv_2608_16837.md
@@ -115,6 +117,10 @@ flowchart TB
 3. 在该子空间训练 **正则化 SAC**，混合离线演示与在线交互数据。
 
 这样既避免全维时序噪声 RL 的低效，也避免「整个 horizon 重复同一噪声向量」对时序表达力的牺牲。论文报告在 Toy Storage 与 Basket Transfer 上，对 **π₀.₅** 与 **HAF-VLA** 骨干均有增益；不安全探索设置下 **DSRL** 训练被终止（论文自注）。
+
+## HAF-VLA 配套论文单独核验
+
+本节点将同一 HAF 项目的两篇论文维护为单实体，但明确区分协议：**arXiv:2610.26584 的 HAF-VLA 专文**关注全身层次 action flow（三阶段逐步去噪、跨阶段 KV 缓存），它不是“LLM 语义分解→技能调度→力矩控制”三层软件规划器。专文在 **六项真实任务**上对比策略，不能把 HAF 综合论文的七项任务 **70.5%** 结果直接挪用为六任务实验；六项任务专文报告平均 **68.3%**（见原文实验表）。相关归档：[HAF-VLA 原文](../../sources/papers/haf_vla_arxiv_2610_26584.md)。
 
 ## 评测与结果
 

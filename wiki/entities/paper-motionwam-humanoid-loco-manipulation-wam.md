@@ -13,7 +13,7 @@ tags:
   - unified-action-space
   - loco-manip-contact-survey
 status: complete
-updated: 2026-10-12
+updated: 2026-11-14
 arxiv: "2606.09215"
 venue: "arXiv 2026"
 related:
@@ -28,7 +28,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
   - ../concepts/whole-body-control.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/vla.md
   - ../methods/generative-world-models.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -136,7 +136,7 @@ MotionWAM 不让策略直接从静态图像和语言抽动作，也不要求世�
 
 - $\tilde{k}_t$：SONIC FSQ token 的连续槽，代表 locomotion、torso、height、foot interaction 等全身动作意图；
 - $\mathbf{m}_t^{cont}$：夹爪/手部连续通道；
-- 推理时 $\hat{k}_t=\mathrm{round}(\hat{\tilde{k}}_t)$，经 [SONIC](../methods/sonic-motion-tracking.md) 解码为关节命令。
+- 推理时 $\hat{k}_t=\mathrm{round}(\hat{\tilde{k}}_t)$，经 [SONIC](./nvidia-sonic.md) 解码为关节命令。
 
 相比「上身 18-D 关节/末端 + 下身 base velocity」接口，统一 token 允许腿部成为任务执行器：踢球、踩踏板、蹲行和身高手臂协调都可以从同一动作空间输出。
 
@@ -186,7 +186,7 @@ MotionWAM 不让策略直接从静态图像和语言抽动作，也不要求世�
 | arXiv | <https://arxiv.org/abs/2606.09215> |
 | 独立项目页 / 代码 | **未发现**（abs / HTML 均无 Code 链） |
 | 用户常见关联 URL | <https://dit4dit.github.io/> 为同团队前序 **[DiT4DiT](./paper-dit4dit-video-action-model.md)** 项目页（[代码已开源](https://github.com/Mondo-Robotics/DiT4DiT)），**不是** MotionWAM 发布页 |
-| 源码运行时序图 | **不适用**（无官方可运行仓）；低层解码依赖已开源的 [SONIC / GR00T-WholeBodyControl](../methods/sonic-motion-tracking.md) |
+| 源码运行时序图 | **不适用**（无官方可运行仓）；低层解码依赖已开源的 [SONIC / GR00T-WholeBodyControl](./nvidia-sonic.md) |
 | 可复现依赖 | Cosmos-Predict2.5、SONIC token / controller、Unitree G1、PICO VR teleop、D435i、ALOHA2 grippers |
 | 部署形态 | RTX 4090 WebSocket policy server + G1 闭环查询 |
 | 复现边界 | 模型结构、数据规模和实验协议可从论文理解；训练数据、权重、代码、teleop pipeline 未开放 |
@@ -228,7 +228,7 @@ MotionWAM 不让策略直接从静态图像和语言抽动作，也不要求世�
 - [Loco-Manip 161 篇技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md) 与 [04 生成式运动/语言/轨迹](../overview/loco-manip-161-category-04-generative-language-trajectory.md) — MotionWAM 的 161 survey 坐标。
 - [运动小脑 E 可提示控制](../overview/motion-cerebellum-category-05-promptable-control.md) — MotionWAM 的 motion-cerebellum 坐标。
 - [Loco-Manip 接触分类 05：VLA/世界模型调用](../overview/loco-manip-contact-category-05-vla-world-models.md) — 接触横切面坐标。
-- [SONIC](../methods/sonic-motion-tracking.md) — 统一 motion token 的低层解码接口。
+- [SONIC](./nvidia-sonic.md) — 统一 motion token 的低层解码接口。
 - [VLA](../methods/vla.md) — GR00T / π0.5 等对照基线语境。
 - [Unitree G1](./unitree-g1.md) — 论文硬件平台。
 - [DiT4DiT](./paper-dit4dit-video-action-model.md) — 同团队前序双 DiT VAM。

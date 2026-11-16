@@ -22,7 +22,7 @@ tags:
 - privileged-training
 - dagger
 status: complete
-updated: 2026-10-06
+updated: 2026-11-15
 arxiv: '2604.13015'
 venue: IROS 2026
 code: https://github.com/chrisyrniu/humanoid-touch-dream
@@ -311,7 +311,7 @@ Per-axis curriculum 在 20k–60k iteration 把躯干范围从保守区间扩到
 
 #### 4. 奖励偏跟踪，不偏技能库
 
-主正奖励是速度跟踪、身高/roll/pitch/yaw 指数跟踪、站立足端稳定与膝间距；重负项包括终止、腰/踝/髋 pitch **软力矩限**（weight \(-100\)）、飞脚与非期望接触。目标是 **命令跟踪器**，不是 motion-tracking 技能库（对照 [SONIC](../methods/sonic-motion-tracking.md) / [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)）。
+主正奖励是速度跟踪、身高/roll/pitch/yaw 指数跟踪、站立足端稳定与膝间距；重负项包括终止、腰/踝/髋 pitch **软力矩限**（weight \(-100\)）、飞脚与非期望接触。目标是 **命令跟踪器**，不是 motion-tracking 技能库（对照 [SONIC](./nvidia-sonic.md) / [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)）。
 
 ### 工程实践
 

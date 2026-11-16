@@ -30,11 +30,11 @@
 
 - **核心贡献：** 冻结 **person detector + HMR2.0** 提帧级特征；**BiGRU + RoPE self-attention + cross-window attention**（TCAM）得共享 $\mathbf{u}_t$；各机器人 **残差解码** root 平移、连续 root 旋转与关节；**contact-aware** 模块做时序滤波、root 修正与约束腿 IK。支持 **Unitree G1/R1/H1、Booster T1、Tienkung、Fourier GR1-T1/GR2-V3、Atlas** 等八款人形。
 - **对 wiki 的映射：**
-  - [GMR](../../methods/motion-retargeting-gmr.md)（对照：优化式两阶段）
-  - [NMR](../../methods/neural-motion-retargeting-nmr.md)（对照：学习式重定向）
+  - [GMR](../../wiki/methods/motion-retargeting-gmr.md)（对照：优化式两阶段）
+  - [NMR](../../wiki/methods/neural-motion-retargeting-nmr.md)（对照：学习式重定向）
 
 ### 3) 定量与实时性（项目页表，2026-09-26）
 
 - **相对 GVHMR/WHAM → GMR/NMR：** 报告 **RAMPJPE 26.36 mm**、**Simulation SR 95.86%**；两阶段基线 **motion collapse** 与更高 failure rate。
 - **流式推理（同 GPU）：** **Latency ~192.8 ms**、**~50 FPS throughput** vs GVHMR→GMR **~1369 ms**。
-- **对 wiki 的映射：** [SONIC / 全身遥操作栈](../../methods/sonic-motion-tracking.md)（真机 teleop 可经 SONIC + 本项目 GR00T ZMQ 接口对接）
+- **对 wiki 的映射：** [SONIC / 全身遥操作栈](../../wiki/entities/nvidia-sonic.md)（真机 teleop 可经 SONIC + 本项目 GR00T ZMQ 接口对接）

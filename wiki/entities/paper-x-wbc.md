@@ -95,7 +95,7 @@ X-WBC 的出发点是一条工程观察：**一机一策略** 让运动经验被
 |------|----------|
 | **一机一策略 WBC**（要替代的默认做法） | 每台机独立训练，运动经验不流动；X-WBC 的全部主张就是「异构人形可以当 **联合数据源**」。代价是要维护一套跨本体的命令对齐与本体适配层 |
 | [模型-based WBC](../concepts/whole-body-control.md)（Khatib–Sentis 一脉） | 跨本体靠的是 **显式模型**：换机器人换 URDF 与动力学参数即可，不需要数据；X-WBC 走学习路线，换来的是人类运动语义的可迁移性，失去的是可解析的优先级保证 |
-| [SONIC](../methods/sonic-motion-tracking.md) / [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) | 同为运动跟踪策略，但训练目标是 **单本体做深**（跟踪精度、接触柔顺）；X-WBC 优先做 **宽**。深与宽是取舍：本文未主张在单机跟踪精度上胜过专精策略 |
+| [SONIC](./nvidia-sonic.md) / [GentleHumanoid](./paper-gentlehumanoid.md) | 同为运动跟踪策略，但训练目标是 **单本体做深**（跟踪精度、接触柔顺）；X-WBC 优先做 **宽**。深与宽是取舍：本文未主张在单机跟踪精度上胜过专精策略 |
 | [BFM-Zero](./paper-bfm-zero.md) / [多技能师生蒸馏 BFM](../methods/teacher-student-multi-skill-bfm.md) | 同属「人形基础模型」叙事，但共享的东西不同：BFM 系共享的是 **潜命令空间/技能**（多在同一本体内），X-WBC 共享的是 **跨本体的运动时间结构** |
 | [TWIST2](./paper-twist2.md) | 同样吃 VR / 遥操作命令源，落点在 **数据采集与遥操作链路**；X-WBC 把 VR 稀疏观测当成 **命令源之一** 收进统一 token 空间，二者可串联而非竞争 |
 | [运动重定向（GMR 等）](../methods/motion-retargeting-gmr.md) | **上游而非竞品**：重定向解决「人类动作怎么变成这台机器人的参考」，X-WBC 假设参考已给定，解决「一套策略怎么服务多台机」。重定向质量直接决定本页跟踪数字的上限 |

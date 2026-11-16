@@ -1,5 +1,6 @@
 ---
 type: entity
+original: ../../sources/papers/glide_beyond_human_demonstration_arxiv_2609_24996.md
 project_id: glide-beyond-human-demonstration
 tags:
   - paper
@@ -8,7 +9,7 @@ tags:
   - failure-modes
   - imitation-learning
 status: complete
-updated: 2026-10-18
+updated: 2026-11-15
 arxiv: "2609.24996"
 project: https://guardrail-policy.github.io/
 related:
@@ -70,7 +71,7 @@ flowchart TD
 | **arXiv** | [2609.24996](https://arxiv.org/abs/2609.24996) |
 | **开源** | **项目页未列 GitHub** |
 | **要点** | 任务描述 + 遥操作代码 → 推断失败模式 → 规则护栏。 |
-| **文内指标** | 公众号称证据来自三个具体任务，应连同护栏约束一起理解策略表现。 |
+| **文内指标** | 三任务（各 10 次试验）：采集成功率 OpenTV 0/10/0% → G* 70/90/90%；混合数据+护栏策略 70/60/60%（Tab. 1–2）。 |
 
 ## 源码运行时序图
 
@@ -78,10 +79,11 @@ flowchart TD
 
 ## 实验与评测
 
-- 公众号称证据来自三个具体任务，应连同护栏约束一起理解策略表现。
-- **读法：** 本页为索引级摘要，依据公众号转述的官方摘要与仓库信息整理；逐项数字与 baseline 以原文 PDF 为准。
+- 采集（Tab. 1，各 10 试）：Tomato OpenTV 0% / Manual 20% / G⁽⁰⁾ 60% / G⁽¹⁾ 60% / G* 70%；Marker 10% / 60% / 70% / 60% / 90%（吞吐 0.5→3.9 次/分）；Wine 0% / 60% / 0% / 0% / 90%（0→0.9 次/分）。自我修订并非单调提升。
+- 策略（Tab. 2，π0.5，各 10 试）：混合数据+护栏 70/60/60%；同策略去护栏 0/40/40%；Vanilla(OpenTV 数据)无护栏全 0%，加护栏仅 20/20/0%。
+- Wine 例外：成功集训练无护栏 50% 高于加护栏 40%。
 
-## 与其他工作对比
+## 局限与对比
 
 - 横向索引见 [编程智能体造数据与 VLA 闭环评测：具身智能小站 10-18 期 26 篇阅读坐标](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)；同 arXiv 不重复造页。
 
@@ -100,12 +102,25 @@ flowchart TD
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-10-18-26-papers-technology-map](../overview/embodied-station-2026-10-18-26-papers-technology-map.md)
 
+## 工程实践
+
+以下均依据论文全文（v1，§3–4、附录 A–B）；论文未给出的细节（编码智能体具体型号、π0.5 微调超参、控制频率等）正文未找到，不在此臆测。
+
+- **硬件：** 双臂 I2RT YAM Ultra，每臂 6 DoF + 1 DoF 夹爪；灵巧任务把右臂夹爪换成 15 DoF CRAFT 手。遥操作用 Meta Quest Pro：夹爪任务用手柄，灵巧任务用 VR 手部追踪（沿用 OpenTV 的相对头显追踪）；相机含头部与左右腕部。
+- **护栏生成：** 以任务描述 ℓ + 遥操作代码 T 提示编码智能体，让其识别命令接口、可编辑动作与可用状态信号、列出可能失败并实现滤波代码；修订提示跨任务、跨轮共用，仅换数据路径。人只遥操作、可选记录成败与直觉反馈，无需手写诊断。
+- **迭代规模：** 每轮采 10 条（含成功与失败），K=2，共 3 轮（G⁽⁰⁾→G⁽²⁾），按成功率选 k*；诊断用头/腕视频与轨迹，运行时护栏只用本体感知。
+- **数据规模：** Tomato、Marker 复用 3 轮共 30 条（成功 19、22）；Wine 前两轮零成功，改用 G* 另采 60 条（30 成功 + 30 不完美）。成功集是混合池的子集。
+- **训练与部署：** π0.5 微调（flow-matching 目标，状态+语言条件，动作目标为护栏后命令 ã_t）；部署时同一 G* 过滤预测动作（式 6）。评测各 10 次试验。
+- **护栏形态：** 阶段触发的命令限制：Tomato 双夹爪共享中点耦合搬运并限高差/宽度；Marker 近距离交接阻尼、放置时作为显式受保护阶段（保持位姿、张开夹爪后才受控后撤）；Wine 瓶口对杯对齐、倾角与抓握限幅、倒酒时放大瓶旋转。
+- **踩坑：** 初版护栏过度阻尼造成遥操作滞后（原始控制器速度远快于受限速度，竖直运动反复触顶），需放宽；Marker 释放阶段触发过早致倒下，需延迟并减速张开；Wine 初版两轮 0%。
+- **局限：** 运行时无视觉/触觉；仅三任务、非长程；护栏单独不足（Vanilla 数据仍近 0%）。
+
 ## 参考来源
 
 - [glide_beyond_human_demonstration_arxiv_2609_24996.md](../../sources/papers/glide_beyond_human_demonstration_arxiv_2609_24996.md)
 - [wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md](../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md)
 - [arXiv:2609.24996](https://arxiv.org/abs/2609.24996)
-- [arXiv PDF](https://arxiv.org/pdf/2609.24996)：已通读方法部分（实验与附录以略读为准）：§3 GLIDE（3.1–3.3、Alg. 1）、§4 实验设定
+- [arXiv PDF](https://arxiv.org/pdf/2609.24996)：已通读全文（不含参考文献）
 
 ## 推荐继续阅读
 

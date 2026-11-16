@@ -2,7 +2,7 @@
 type: concept
 tags: [data-flywheel, deployment, feedback, recap, teleoperation, umi, regression-testing]
 status: complete
-updated: 2026-09-19
+updated: 2026-11-15
 related:
   - ./data-flywheel.md
   - ./embodied-data-collection-four-layers-taxonomy.md

@@ -5,7 +5,6 @@ status: complete
 updated: 2026-09-15
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
-  - ../methods/motionbricks.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../concepts/whole-body-control.md
   - ../entities/gr00t-wholebodycontrol.md

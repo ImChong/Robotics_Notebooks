@@ -2,7 +2,7 @@
 type: concept
 tags: [generative-model, diffusion, machine-learning]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-13
 related:
   - ../formalizations/generative-foundations.md
   - ../overview/ai-architecture-map.md
@@ -17,6 +17,7 @@ related:
   - ../entities/paper-diffsheg.md
   - ../entities/paper-importance-sampling-pca-av-failures.md
   - ../entities/paper-adversarial-training-pixel-diffusion.md
+  - ../entities/paper-nitrofusion2.md
   - ../entities/comfyui.md
   - ../entities/paper-global-style-transfer.md
 original:
@@ -166,6 +167,7 @@ flowchart LR
 - [Importance Sampling + PCA（商业 AV；DiFS）](../entities/paper-importance-sampling-pca-av-failures.md)
 - [ComfyUI](../entities/comfyui.md) — 节点图式扩散/视频/3D 推理引擎；实验室常用可版本化工作流宿主
 - [像素扩散的对抗训练](../entities/paper-adversarial-training-pixel-diffusion.md) — 用时间步门控的 GAN 后训练修补像素扩散的高频统计
+- [NitroFusion2：文本流对抗蒸馏](../entities/paper-nitrofusion2.md) — 用 MMDiT 图文联合注意力的文本流与属性 cue 加速文生图到 1–2 NFE（并非机器人控制结果）
 - [Sergey Levine：表达力更强的连续动作策略](../overview/sergey-levine-diffusion-expressive-policies.md) — 扩散/flow 作为连续控制动作头的讲者坐标（Simons 2026）
 
 ## 参考来源

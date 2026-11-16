@@ -6,7 +6,7 @@ updated: 2026-09-15
 arxiv: "2608.18234"
 venue: "2026 · arXiv"
 related:
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-twist2.md
   - ./paper-scenebot.md
   - ./paper-cmp.md
@@ -45,7 +45,7 @@ summary: "GigaBrain-WBC-0.5（arXiv:2608.18234v2，清华/GigaAI 等）：首个
 
 ## 为什么重要
 
-- **补齐 flat-ground tracker 盲区：** [SONIC](../methods/sonic-motion-tracking.md) / [TWIST2](./paper-twist2.md) / [Humanoid-GPT](./paper-humanoid-gpt.md) 多在空场景训练，不学椅子/台阶/负载如何改变动力学；[SceneBot](./paper-scenebot.md) 需 per-link contact label 与 7.5 h 专用数据，且 terrain 为 2.5D elevation map。
+- **补齐 flat-ground tracker 盲区：** [SONIC](./nvidia-sonic.md) / [TWIST2](./paper-twist2.md) / [Humanoid-GPT](./paper-humanoid-gpt.md) 多在空场景训练，不学椅子/台阶/负载如何改变动力学；[SceneBot](./paper-scenebot.md) 需 per-link contact label 与 7.5 h 专用数据，且 terrain 为 2.5D elevation map。
 - **OOD 机制可部署：** 相对单纯扩大 reference corpus（或 [CMP](./paper-cmp.md) 式上下文先验），本文用 **自身预测的 next-command GMM** 做 stateless Mahalanobis test + radial retract，无需额外 classifier 或 fallback controller。
 - **Fall 与 tracking 合一：** 相对 [BFM-Zero](./paper-bfm-zero.md) 的 latent recovery 或独立 get-up skill，fallen initialization 直接训进 tracker，倒地后仍可继续跟 live command。
 
@@ -164,7 +164,7 @@ flowchart TB
 
 ## 关联页面
 
-- [SONIC 全身跟踪](../methods/sonic-motion-tracking.md) — 最强 flat-ground baseline 与并排真机对照
+- [SONIC 全身跟踪](./nvidia-sonic.md) — 最强 flat-ground baseline 与并排真机对照
 - [SceneBot](./paper-scenebot.md) — 另一环境交互 tracking 路线（contact-prompt + 2.5D）
 - [CMP](./paper-cmp.md) — 上下文条件 motion prior（flat-ground OOD 另一思路）
 - [BFM-Zero](./paper-bfm-zero.md) — fall recovery 不切换 specialist 的 BFM 对照

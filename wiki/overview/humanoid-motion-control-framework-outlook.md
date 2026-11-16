@@ -9,7 +9,7 @@ related:
   - ../queries/control-architecture-comparison.md
   - ../comparisons/wbc-vs-rl.md
   - ../concepts/behavior-foundation-model.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../concepts/motion-retargeting.md
 sources:
   - ../../sources/raw/feishu_humanoid_motion_control_know_how_full_2026-07-14.md
@@ -81,7 +81,7 @@ summary: "飞书 Know-How「技术框架路线展望」：传统 Navigation–Pl
 ## 工程实践
 
 - 选型时先回答：数据从 **人形遥操作 / 人体 retarget / 无监督 BFM** 哪条来；Controller 是否已通用。
-- 读 ETH Humanoids 2016 + Grandia TRO 2023 对照本站 [Centroidal NMPC+WBC](../methods/centroidal-nmpc-wbc-stack.md)、[SONIC](../methods/sonic-motion-tracking.md)。
+- 读 ETH Humanoids 2016 + Grandia TRO 2023 对照本站 [Centroidal NMPC+WBC](../methods/centroidal-nmpc-wbc-stack.md)、[SONIC](../entities/nvidia-sonic.md)。
 
 ## 局限与风险
 

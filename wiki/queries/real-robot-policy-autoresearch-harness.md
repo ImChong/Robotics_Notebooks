@@ -25,7 +25,7 @@ related:
   - ../entities/deepseek-harness.md
   - ../entities/paper-grid-general-robot-intelligence-development.md
   - ../concepts/agentic-coding-software-fundamentals.md
-updated: 2026-10-06
+updated: 2026-11-10
 ---
 
 # 真机策略 autoresearch 闭环搭建指南
@@ -128,6 +128,7 @@ ENPIRE 用 **AutoEnvBench** 比较不同 coding agent（Codex / Claude Code / Ki
 
 - [ENPIRE](../methods/enpire.md) — 本页骨架来源：EN–PI–R–E 真机自改进束具
 - [ASPIRE](../methods/aspire.md) — 程序技能库持续学习（code-as-policy + 进化搜索）
+- [Agentic Manipulation Policies](../methods/agentic-manipulation-policies.md) — 同属 code-as-policy 路线：通用模型经机器人 SDK 感知、编写并执行工具程序再逐步验证（[Apple AMP1](../entities/paper-apple-amp1.md) 为代表实例），适合可分解的准静态操作，不替代实时反馈控制
 - [Behavior Cloning](../methods/behavior-cloning.md) — PI 范式之一，常作 RL 之前的稳定起点
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — online/offline RL 在 harness 内与启发式、BC 公平对比
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 自动 verification 与受控 reset 的工程背景

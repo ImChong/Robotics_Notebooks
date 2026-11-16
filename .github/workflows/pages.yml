@@ -3,6 +3,9 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'media/zero-to-ppo-video/**'
+      - 'media/roadmap-motion-control-video/**'
   workflow_dispatch:
 
 permissions:
@@ -36,7 +39,7 @@ jobs:
       - name: Install lightweight dependencies
         run: pip install -r requirements-ci-lite.txt
 
-      # 站点大 JSON（search-index / index-v1 / site-data-v1 / link-graph /
+      # 站点 JSON（search-index / site-catalog-v1 / page-content / link-graph /
       # hub-rankings）与 sitemap 不入库，部署时现场生成（等价 make export graph，约 40s）
       - name: Generate site data
         run: |
@@ -48,10 +51,13 @@ jobs:
       # 统计数字不入库（避免并行 PR 冲突），仅在构建产物里写入：
       # README 徽章 endpoint JSON、docs/index.html Hero 兜底数字、docs/sw.js 缓存版本
       - name: Stamp stats into site build
-        run: python3 scripts/sync_all_stats.py --skip-graph --skip-home-stats
+        run: python3 scripts/sync_all_stats.py --skip-graph --skip-home-stats --skip-copy
 
       - name: Copy README to docs
-        run: cp README.md docs/README.md
+        run: |
+          cp README.md docs/README.md
+          mkdir -p docs/media
+          cp media/site-demo.gif docs/media/site-demo.gif
 
       - name: Setup Pages
         uses: actions/configure-pages@v6

@@ -12,7 +12,7 @@ tags:
   - tencent
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-15
+updated: 2026-11-15
 arxiv: "2601.05844"
 code: https://github.com/PKU-MoCCA/dextercap
 related:
@@ -22,6 +22,8 @@ related:
   - ../tasks/teleoperation.md
   - ./paper-notebook-dexumi-using-human-hand-as-the-universal-manipul.md
   - ../../roadmap/depth-teleoperation.md
+original:
+  - ../../sources/papers/humanoid_pnb_dextercap.md
 sources:
   - ../../sources/papers/humanoid_pnb_dextercap.md
   - ../../sources/sites/dextercap.md
@@ -159,7 +161,7 @@ sequenceDiagram
 - 数据集中主体、物体和双手/工具任务多样性有限，且缺少力、接触区域与意图标注。
 - 仓库许可证未声明，数据与代码的再分发/商业使用需要额外核查。
 
-## 与其他页面的关系
+## 关联页面（与其他页面的关系）
 
 - 路线定位：[遥操作纵深 Stage 4/5](../../roadmap/depth-teleoperation.md) 的离线手部数据采集支线，而非实时遥操作器。
 - 手部表示：[Dexterous Kinematics](../concepts/dexterous-kinematics.md)。

@@ -18,7 +18,7 @@ sources:
   - ../../sources/repos/awesome-egocentric-vision.md
 ---
 
-# Pandora
+# Pandora: Articulated 3D Scene Graphs from Egocentric Vision
 
 **Pandora: Articulated 3D Scene Graphs from Egocentric Vision** 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/awesome-egocentric-vision) **第 215/249** 篇，分组 **Human Pose & Mesh Recovery**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

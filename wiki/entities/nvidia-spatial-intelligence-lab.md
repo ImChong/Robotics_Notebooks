@@ -44,7 +44,7 @@ summary: "NVIDIA Spatial Intelligence Lab（SIL）是 NVIDIA Research 的空间�
 ## 为什么重要
 
 - **Real2Sim / 仿真评测上游：** [Instant NuRec](./paper-instant-nurec.md) 把驾驶 clip **秒级** 打成可仿真 3DGS，并证明 AlpaSim **策略排序不变**——直接服务 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) 与 [NuRec](./nvidia-nurec.md) 产品栈。
-- **机器人数据上游：** [Kimodo](./kimodo.md) 从大规模动捕生成 **G1 / SOMA** 参考轨迹，衔接 [ProtoMotions](./protomotions.md) 与 [SONIC](../methods/sonic-motion-tracking.md) 跟踪。
+- **机器人数据上游：** [Kimodo](./kimodo.md) 从大规模动捕生成 **G1 / SOMA** 参考轨迹，衔接 [ProtoMotions](./protomotions.md) 与 [SONIC](./nvidia-sonic.md) 跟踪。
 - **生成式世界模型：** [Gamma-World](./paper-gamma-world-multi-agent.md) 等多体可控视频世界模型补 [生成式世界模型](../methods/generative-world-models.md) 的 **空间交互** 维度。
 - **遮挡感知 3D 补全：** [Axolotl3D](./paper-axolotl3d.md) 在 Hunyuan3D-DiT 上统一 **部分点云 + 多视图 + 编辑** 条件，服务 Real2Sim 与场景物体补全（代码待发布）。
 - **与 GEAR 互补：** [GEAR Lab](./nvidia-gear-lab.md) 偏通才具身 agent / GR00T / SONIC **系统栈**；SIL 更偏 **几何、重建、4D 与生成式空间先验**。

@@ -89,3 +89,13 @@
 - 主实体页：[`wiki/entities/paper-physmani-dynamic-manipulation-world-model.md`](../../wiki/entities/paper-physmani-dynamic-manipulation-world-model.md)
 - 代码归档：[`sources/repos/vlar_group_physmani.md`](../repos/vlar_group_physmani.md)
 - 互链：[Generative World Models](../../wiki/methods/generative-world-models.md)、[Manipulation](../../wiki/tasks/manipulation.md)、[Kairos（视频 WAM 栈）](../../wiki/entities/paper-kairos-native-world-model-stack.md)、[MINT（3D IL 泛化）](../../wiki/entities/paper-mint-vla.md)
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2607.01938v1（2026-07-02）正文§1–§6全文，必要附录A.1–A.3及A.6，图表文字层，参考文献浏览；另读官方README与固定版本服务/策略源码。未运行GPU、仿真或真机。
+- **通读：** 已完成
+- 16任务是8组×正常/高速，100/20/40训练/验证/测试轨迹；45.9±.8为最后5个checkpoint中最好3个的统计，非三个独立训练seed。消融45.4±.9是最后checkpoint两次测试，勿混作同一统计协议。
+- 发散为零是速度场构造约束，不等于牛顿动力学、碰撞/摩擦或所有预测都满足完整物理规律。政策接每Gaussian六速度分量，不是候选机器人动作条件的反事实视频WM。
+- 正文Algorithm1写速度网与Gaussian位置/朝向优化，附录A.1写先冻结Gaussian更新网50步、再冻结网更新Gaussian7步；当前WorldModel.update也分两循环。初始化另需约15s，不包含在约200ms在线更新内。
+- 272.8ms为keyframe policy推理；WM约200ms并行，5Hz是动作buffer/ensemble执行，不能写完整感知预测每200ms保证完成。PhysMani也慢于表5 π0.5/Act3D，不能称所有基线更快。
+- 真机4任务每任务64次（16条件×4），62.5对45.3平均，成功需抓取/放置、无严重碰撞且60s内；相机30Hz不等于控制5Hz。表1常速insert/beat等并非所有任务优于3DFA。

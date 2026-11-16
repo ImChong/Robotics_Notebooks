@@ -32,3 +32,7 @@
 - 论文：[`sources/papers/slim_05b_arxiv_2608_09771.md`](../papers/slim_05b_arxiv_2608_09771.md)
 - 仓库：[`sources/repos/slim.md`](../repos/slim.md)
 - Wiki：[`wiki/entities/paper-slim-05b.md`](../../wiki/entities/paper-slim-05b.md)
+
+## 2026-11-13 项目页复核
+
+已通读官方页面全文及Paper/Code链接。网站继续报77.3ms端到端、2.01GiB server，与PDF表4受控模型推理60.6ms/4.26GiB不可混用。页面明确20个视频仅成功选例、3倍速，不是全部试验或实时速度；本次未观看视频。

@@ -83,12 +83,12 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 
 ### 步骤 3：判断是否沉淀到 `wiki/`
 
-#### 同一项目只维护一个实体节点（CI 门禁）
+#### 一篇论文一个独立详情节点，同一研究成果不重复（CI 门禁）
 
-创建页面前先检索项目名、`project_id`、论文编号、官方项目地址和源码仓库。**论文、官方网站、官方训练/推理/部署实现是同一项目的不同材料，统一编译进一个 `wiki/entities/` 主节点**，不得再建 `project-*` / `repo-*` 或策展清单占位页来分流导航。清单与路线直接引用主节点；原始材料仍分别放在 `sources/papers/`、`sources/sites/`、`sources/repos/`。
+创建页面前先检索论文标题、arXiv ID、DOI、`project_id`、官方项目地址及源码仓库。**每篇独立论文必须有自己唯一的 `wiki/entities/paper-*.md` 详情节点**；同篇论文的 PDF、HTML、不同版本、项目页和官方训练/推理/部署代码统一映射该论文节点，禁止重复创建同一论文的 `project-*`、`repo-*` 或策展占位页。一个项目包含多篇独立论文时，各篇分别建立详情节点并互相链接，不能仅以同页引用列表代替详情；非论文项目按项目身份维护唯一实体。原始材料分别保存在 `sources/papers/`、`sources/sites/`、`sources/repos/`。
 
 - 新项目实体填写稳定的 `project_id: <小写英文-slug>`，并标注主论文 `arxiv:` / `papers:`、官方 `project:` 或 `code:` 等身份材料。项目页可使用 `paper:` 引用论文编号，但也会参与重复检查。
-- 同一项目的多篇配套论文可以记入主节点的 `papers: ["ID1", "ID2"]`；arXiv 版本号不构成新节点。
+- 一篇论文只对应一个主身份（优先 arXiv ID，其次 DOI / 规范化标题），不同版本不另建节点；`papers: ["ID1", "ID2"]` 只能用于文献索引，**不能替代每篇独立论文的详情节点**。多篇论文共享源码或项目页时，使用各自稳定 `project_id`，并用真实 `code_scope` / `project_distinction` 说明差异，避免重复身份及内容。
 - 相同缩写、不同论文或独立工具不自动合并。一个源码仓库承载不同论文时，以各自主论文编号区分；确为独立单仓模块时，新节点须写明不同的 `code_scope`（模块路径）及 `project_distinction`（独立维护理由），不能用这两个字段为同项目资源拆页找理由。
 - 合并节点必须迁移内链、来源映射和公司路线 ID，并将旧详情页 ID 登记到 `schema/page-aliases.json`；保留独有方法、实验、运行流程与来源，不复制清单模板正文。
 - `python3 scripts/check_project_nodes.py --base HEAD` 是本地快速检查；`make ci-preflight` 自动执行。GitHub **Wiki Lint** 相对 PR base / push before 检查新增实体，且全库重复身份、规范化论文编号和项目 URL 均为阻塞项。正文引用和 `sources/` 多份归档不计作节点身份。
@@ -132,7 +132,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 - `参考来源` — 必须标注本次 ingest 的原始资料（至少 1 条），格式：
   ```markdown
   ## 参考来源
-  - [资料标题](../sources/xxx.md)
+  - [资料标题](../../sources/xxx.md)
   ```
 - `关联页面` — 至少 2 个相关 wiki 页
 - `推荐继续阅读` — 至少 1 个外部资源
@@ -144,6 +144,19 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
   - **Mermaid CI 门禁**：`npm ci && npm run lint:mermaid` 全量检查 `wiki/`、`roadmap/`、`tech-map/`、`references/` 中的图（包括 `<details>` 内图表），与本站锁定同一 Mermaid 版本。保留字节点 ID（例如 `graph`）、未加引号的括号、无效时序语法、空图、未闭合围栏、非标准围栏与占位符都会阻塞 CI；报错定位到文件和围栏行号。节点 ID 使用普通标识符，含标点的标签使用双引号。
   - `make ci-preflight`、`make ci-test` 和 GitHub **Tests / Validate all published Mermaid diagrams** 均执行此门禁；单页调试可用 `node scripts/check_mermaid.cjs wiki/entities/<page>.md`。此检查验证围栏与语法；图表布局与可读性仍须在目标渲染器中验证。
 - 必要时更新 `index.md`
+
+### 步骤 5.5：核对并挂载至已有纵深路线（必查）
+
+每次新 ingest（新建或主要更新 `wiki/` 页面后），须确认本次内容是否符合**已有纵深路线**（[`roadmap/README.md`](../roadmap/README.md) 中列出的 `roadmap/depth-*.md`，以及相关的 `wiki/roadmaps/*.md`）：
+
+- **符合已有纵深路线时**：
+  - 打开对应的 `roadmap/depth-*.md`（或 `wiki/roadmaps/*.md`），定位最契合的 Stage（通常在「### 推荐读什么」或对应小节），以标准相对路径 `[页面标题](../wiki/...)` 挂载该页链接，并附一句简明定位说明（点明它在该 Stage 解决的问题或与前后节点的分工），保持该路线原有格式与风格。
+  - 若与多条纵深路线直接相关，可分别挂载到对应路线最相关的 Stage；若仅为泛泛提及而非该路线主线学习/工程所需，不必硬塞。
+  - 建议在对应 `wiki/` 页面的 `## 关联页面` 中反向链回该纵深路线（如 `[VLA 纵深路线](../../roadmap/depth-vla.md)`），方便双向导航。
+- **没有匹配的已有纵深路线时**：
+  - 确认无匹配即可，**不要**为了单次 ingest 强行新建纵深路线，也不要勉强挂入不相关的路线，直接进入下一步。
+
+> **为什么需要这一步**：避免新入库的论文与方法只停留在 `wiki/` 孤岛中，确保已有纵深路线随新资料持续演进、读者顺着路线即可读到最新节点。
 
 > **为什么要在 wiki 页面内标注来源**：git 记录文件变更时间线，`log.md` 可选记录操作意图，但页面本身也应能追溯知识来源，
 > 这样读者不依赖 git / log.md 就能知道这个 wiki 页的知识是从哪里编译来的。
@@ -158,7 +171,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 
 ```bash
 make export  # 等价于 python3 scripts/export_minimal.py
-# 同时更新 exports/index-v1.json、exports/site-data-v1.json、docs/sitemap.xml
+# 同时更新 exports/site-catalog-v1.json、docs/exports/page-content/、docs/search-index*.json、docs/sitemap.xml
 ```
 
 ### 步骤 7.5：批量 bump 交叉引用 wiki 的 `updated`（推荐）
@@ -377,5 +390,6 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面�
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
 - **有项目页必先查源码是否开放**（步骤 2.5），再写 wiki 开源表述与 `sources/repos/` 归档
+- **每次新 ingest 须核对已有纵深路线**（步骤 5.5）：对照 [`roadmap/README.md`](../roadmap/README.md) 确认是否符合 `roadmap/depth-*.md` 内容，符合则挂载到对应 Stage，无匹配则略过
 - 每次 ingest 用 `make log` 写一条 `log.d/` 碎片，不要遗漏；**不要**在 PR 里改 `catalog.md` / `log.md`
 - 提交前务必 `make ci-preflight` 做本地检查（派生 JSON 不入库）

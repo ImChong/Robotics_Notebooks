@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, humanoid, leju, open-source, openatom, manipulation, loco-manipulation]
 status: complete
-updated: 2026-10-11
+updated: 2026-11-15
 related:
   - ./leju-robotics.md
   - ./letools.md

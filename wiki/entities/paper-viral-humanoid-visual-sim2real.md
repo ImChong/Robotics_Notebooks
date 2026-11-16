@@ -3,7 +3,8 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, ppo, unitree-g1, isaac-lab, cvpr2026, nvidia, cmu, berkeley, cuhk, body-system-stack]
 status: complete
-updated: 2026-10-06
+original: ../../sources/papers/viral-humanoid-visual-sim2real.md
+updated: 2026-11-15
 arxiv: "2511.15200"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
@@ -33,6 +34,10 @@ summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 
 # VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）
 
 **VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略 **完全在仿真中训练**，以 **机载 RGB + 本体感知** 在 **Unitree G1** 上 **零样本真机** 执行多步行走–放置–抓取–转向循环。作者强调贡献是 **「全栈技术配方 + 规模化」**——何种设计有效、何处失效、如何相互作用——而非单一新 RL 公式。
+
+## 一句话定义
+
+VIRAL 在大规模仿真中结合视觉随机化与人形运动控制，验证纯视觉感知下人形机器人零样本 Sim2Real 迁移的可扩展路径。
 
 ## 英文缩写速查
 
@@ -132,6 +137,11 @@ sequenceDiagram
 
 - **同仓多论文**：换 Hydra exp 切换 VIRAL / DoorMan 等配方，共享 `gr00t/rl` 基础设施。
 - **教师不部署**：真机只跑视觉学生策略。
+
+## 工程实践
+
+- **视觉随机化与控制解耦**：先在干净状态空间训练稳健运动控制基座，再叠加大规模视觉域随机化蒸馏纯视觉策略。
+- **高吞吐渲染**：需依赖 GPU 并行仿真器（如 Isaac Gym / Isaac Lab）的批量相机渲染能力以支撑视觉 RL 样本量。
 
 ## 常见误区或局限
 

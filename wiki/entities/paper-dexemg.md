@@ -180,6 +180,8 @@ flowchart TB
 - [TeleDexter](./paper-teledexter.md) — 同一手上的 MoCap co-tracking 遥操作
 - [Dex-X](./paper-dex-x.md)、[UVTA](./paper-uvta-human-tactile-dexterous-manipulation.md) — 文章「主线一」的另两项工作
 
+- [并行注意力 DCNN-GRU 肌电手势识别（JBE 2026）](./paper-parallel-attention-myoelectric-gesture-recognition.md) — sEMG 手势**分类**与动态手臂姿态鲁棒性；不同于 DexEMG 的连续手部姿态估计（新论文全文待核）。
+
 ## 参考来源
 
 - [dexemg_arxiv_2603_05861.md](../../sources/papers/dexemg_arxiv_2603_05861.md) — 原始摘录与开源核查

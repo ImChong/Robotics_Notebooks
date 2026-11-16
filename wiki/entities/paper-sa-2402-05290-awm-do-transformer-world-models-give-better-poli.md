@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# AWM
+# AWM: Transformer World Models & Policy Gradients（arXiv:2402.05290）
 
 **AWM: Do Transformer World Models Give Better Policy Gradients?** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 240/571** 篇，分组 **72 Continuous Control**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

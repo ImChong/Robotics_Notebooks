@@ -10,7 +10,6 @@ related:
   - ../entities/sage-sim2real-actuator-gap-estimator.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-neuralactuator-neural-actuation-modeling.md
-  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../concepts/system-identification.md
   - ../entities/nvidia-getting-started-isaac-lab.md
 original:

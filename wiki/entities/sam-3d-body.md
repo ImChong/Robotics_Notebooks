@@ -3,7 +3,7 @@ type: entity
 tags: [perception, human-mesh-recovery, mhr, foundation-model, meta, single-image, promptable, open-source, motion-capture]
 status: complete
 arxiv: "2602.15989"
-updated: 2026-09-28
+updated: 2026-11-15
 related:
   - ./instanthmr.md
   - ./paper-biomechanical-3d-body.md
@@ -21,6 +21,7 @@ sources:
   - ../../sources/repos/sam-3d-body.md
   - ../../sources/sites/meta-sam3d-body.md
   - ../../sources/repos/instanthmr.md
+original: ../../sources/papers/sam_3d_body_arxiv_2602_15989.md
 summary: "SAM 3D Body（3DB）是 Meta 发布的可提示单图全身人体网格恢复基础模型：基于 MHR 参数化解耦骨架与表面，encoder–decoder 架构支持 2D 关键点/mask 引导，在 3DPW/EMDB 等基准报告 SOTA 级误差，并开放 checkpoint、数据集与 Hugging Face 推理接口。"
 ---
 
@@ -84,7 +85,7 @@ flowchart LR
   MESH --> DOWN[下游：BVH / GMR / 标注 / IL]
 ```
 
-## 与 WiLoR、GENMO 的关系
+## 工程实践：与 WiLoR、GENMO 的关系
 
 | 维度 | SAM 3D Body | [InstantHMR](./instanthmr.md) | [PEAR](./paper-pear-pixel-aligned-expressive-hmr.md) | [WiLoR](../methods/wilor.md) | [GENMO](../methods/genmo.md) |
 |------|-------------|-------------------------------|------------------------------------------------------|------------------------------|------------------------------|

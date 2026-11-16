@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, vlwa, world-models, latent-action, flow-matching, egocentric-vision, human-robot-transfer, manipulation, agibot, jd]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-14
 arxiv: "2608.05674"
 related:
   - ../methods/vla.md
@@ -17,6 +17,9 @@ related:
   - ./paper-data-pyramid-embodied-manipulation.md
   - ../overview/ego-category-02-human-to-robot.md
 sources:
+  - ../../sources/papers/joyai_ra_05_arxiv_2608_05674.md
+  - ../../sources/sites/joyai-ra-05-github-io.md
+original:
   - ../../sources/papers/joyai_ra_05_arxiv_2608_05674.md
   - ../../sources/sites/joyai-ra-05-github-io.md
 summary: "JoyAI-RA 0.5（京东 Joy Future Academy，arXiv:2608.05674）：VLWA = VLM + LAC-WM + Flow Action Expert；隐式 latent-action 对齐吃无标签人视频，显式 130-D 规范动作对齐吃可靠轨迹；内–外环 RL；AgiBot G1 seen 92.0 / unseen 75.5，人视频缩放未见饱和；截至入库日项目页未开源。"
@@ -55,13 +58,13 @@ summary: "JoyAI-RA 0.5（京东 Joy Future Academy，arXiv:2608.05674）：VLWA 
 | 字段 | 内容 |
 |------|------|
 | **机构** | 京东（JD）Joy Future Academy / JoyAI-RA Team |
-| **arXiv** | [2608.05674](https://arxiv.org/abs/2608.05674) |
-| **项目页** | <https://joyai-ra-05.github.io/> |
+| **arXiv** | [2608.05674](https://arxiv.org/abs/2608.05674)（v1 2026-08-06） |
+| **项目页** | <https://joyai-ra-05.github.io/>（顶栏 Datasets 链 <https://robotdata.jdcloud.com/>；HTML 中 Demos 区块暂被注释隐藏） |
 | **架构** | VLM + LAC-WM + Flow-Matching Action Expert（late fusion） |
-| **动作空间** | **130-D** 跨具身规范槽；相机系 chunk-relative EE |
-| **预训练数据** | 人 **53K+ h**（含 EgoLive **20K+ h**）+ 仿 **11K+ h** + 真机 **8K+ h** |
+| **动作空间** | **130-D** 跨具身规范槽（Table 1：Left `[0,54)` / Right `[54,108)` / Body `[108,130)`）；相机系 chunk-relative EE |
+| **预训练数据** | **72K+ h** = 人 **53K+ h**（含 **EgoLive 20K+ h**，60 FPS / ~898K episodes / 23.6M subtasks / 600+ scenarios）+ 仿 **11K+ h** + 真机 **8K+ h** |
 | **评测平台** | 智元 AgiBot G1 · Real-World AgiBot Benchmark |
-| **开源** | **确认未开源**（核查日 2026-08-07；项目页未列代码/权重） |
+| **开源** | **代码与模型权重未开源**（核查日 **2026-11-14**；项目页未列 GitHub/HF，仅数据平台外链 `robotdata.jdcloud.com`） |
 
 ## 核心原理
 
@@ -73,29 +76,29 @@ summary: "JoyAI-RA 0.5（京东 Joy Future Academy，arXiv:2608.05674）：VLWA 
 | **LAC-WM（Stage 1）** | latent / 语言条件未来视频 flow matching；部署冻住，抽 \(\mathbf{D}_t\) |
 | **VLM** | 任务语义、物体与指令对应；Stage 2 联合 VQA + FAST |
 | **Flow Action Expert** | 对 fused \(\mathbf{C}_t=[\mathbf{U}_t;\mathbf{D}_t]\) 做 masked flow matching → \(H\times 130\) |
-| **显式 adaptor \(\Phi_e\)** | 原生轨迹 → 130-D + validity mask；人用腕+指尖稀疏槽 |
+| **显式 adaptor \(\Phi_e\)** | 原生轨迹 → 130-D（Left `[0,54)` [7 臂+6 EE+1 夹爪+15 指尖+25 手]、Right `[54,108)`、Body `[108,130)` [6 底盘+4 头+4 腰+8 预留]）+ validity mask；人用腕+指尖稀疏槽 |
 | **内–外环 RL** | 边缘 residual 快适应；中心异步改进 VLWA 并低频同步 |
 
 ### 流程总览
 
 ```mermaid
 flowchart TB
-  subgraph data [异构数据]
-    ego["人视频 53K+h\n含 EgoLive"]
-    sim["仿真 11K+h"]
-    rob["真机 8K+h"]
+  subgraph data["异构数据 (72K+ h)"]
+    ego["人视频 53K+ h<br/>含 EgoLive 20K+ h"]
+    sim["仿真 11K+ h"]
+    rob["真机 8K+ h"]
   end
-  subgraph align [双对齐]
+  subgraph align["双对齐"]
     lam["隐式：多视角 LAM → z̄"]
-    canon["显式：130-D + 相机系\nchunk-relative EE"]
+    canon["显式：130-D + 相机系<br/>chunk-relative EE"]
   end
-  subgraph stages [训练阶段]
-    s1["Stage1 LAC-WM 预训练"]
-    s2["Stage2 VLWA 预训练\n冻 LAC-WM"]
-    s3["Stage3 目标机 post-train"]
-    s4["Stage4 内–外环 RL"]
+  subgraph stages["四阶段训练"]
+    s1["Stage 1 LAC-WM 预训练"]
+    s2["Stage 2 VLWA 预训练<br/>冻 LAC-WM"]
+    s3["Stage 3 目标机 post-train"]
+    s4["Stage 4 内–外环 RL"]
   end
-  subgraph deploy [部署]
+  subgraph deploy["部署"]
     vlm["VLM → U_t"]
     wm["冻 LAC-WM → D_t"]
     fuse["late fuse C_t"]
@@ -119,20 +122,20 @@ flowchart TB
 
 | 阶段 | 冻/训 | 监督 | 要点 |
 |------|-------|------|------|
-| **1 LAC-WM** | 训 WM | latent 条件视频 FM + TD | condition dropout 便于下游无 z |
+| **1 LAC-WM** | 训 WM | latent 条件视频 FM + TD | condition dropout \(p_{\text{drop}}\) 便于下游无 z |
 | **2 VLWA** | 冻 WM；训 VLM+Expert | VQA + FAST + masked FM | 跨具身显式对齐轨迹 |
 | **3 Post-train** | 冻 WM；适配目标机 | 同 Stage 2，限目标具身 | AgiBot G1 部署初始化 |
 | **4 RL** | 内环 residual；外环 VLWA | HITL / 成功交互回灌 | 低频同步保 off-policy 稳定 |
 
 ## 源码运行时序图
 
-**不适用。** 截至 **2026-08-07**，[项目页](https://joyai-ra-05.github.io/) 与 arXiv 页 **未列** GitHub / Hugging Face / 可运行训练或推理入口；无法对齐 `sources/repos/` 绘制复现时序。若后续发布官方仓，应补仓库归档并更新本图。
+**不适用。** 截至 **2026-11-14**，[项目页](https://joyai-ra-05.github.io/) 与 arXiv:2608.05674v1 全文均 **未列** GitHub、Hugging Face 或可运行训练/推理/部署入口（项目页仅链接至 `robotdata.jdcloud.com` 数据门户，且 Demos 视频区块在 HTML 中注释隐藏）；无法对齐 `sources/repos/` 绘制真实源码时序图。若后续发布官方仓，应补仓库归档并更新本节。
 
 ## 工程实践
 
 | 项 | 内容 |
 |----|------|
-| **开源状态** | **确认未开源**（见 [项目页归档](../../sources/sites/joyai-ra-05-github-io.md)） |
+| **开源状态** | **模型与代码未开源**（仅数据平台入口外链 `robotdata.jdcloud.com`，见 [项目页归档](../../sources/sites/joyai-ra-05-github-io.md)） |
 | **复现入口** | 目前仅论文 PDF + 项目页叙事/演示视频 |
 | **动作接口** | 部署只取目标机器人有效规范槽，再映射原生控制 |
 | **WM 推理** | 因果第一帧特征；**不要**按 imagine-then-act 滚未来像素 |
@@ -157,13 +160,13 @@ flowchart TB
 
 ## 结论
 
-**JoyAI-RA 0.5 的核心赌注是：人视频要当主缩放轴，就必须先把「无标签动力学」和「可执行动作」拆成两条对齐通道，而不是往同一个 VLA 目标里硬混。**
+**一句话总判：JoyAI-RA 0.5 的核心赌注是——人视频要当主缩放轴，就必须先把「无标签动力学」和「可执行动作」拆成两条对齐通道，而不是往同一个 VLA 目标里硬混。**
 
-- 真正拉开 \(\pi_{0.5}\) 的是 **双对齐互补**：隐式通道把人视频多样性转成外观/光照鲁棒（去隐式后 unseen 重伤），显式 **130-D + chunk-relative EE** 提供精度与物理一致性（去显式后 PnP-Hard 掉点）。
-- 部署形态是 late-fuse 的 **特征级动力学先验**，不是测试期像素想象；LAC-WM 用 condition dropout 保证推理侧无需再跑 LAM。
-- 缩放证据比单点 SOTA 更重要：EgoLive 与全量人视频在最大测试规模仍上升——选型上应把「人视频小时 + 对齐机制」当成与真机小时同级的杠杆。
-- 内–外环 RL 把 **快适应** 与 **底座改进** 分时间尺度；工程上要接受 **低频同步** 的稳定–新鲜度权衡。
-- 复现边界清晰：截至入库日 **无公开代码/权重**；读法是系统设计与缩放曲线，不是可直接跑的开源栈。
+1. **双对齐互补才拉开 \(\pi_{0.5}\)** — 隐式通道把人视频多样性转成外观/光照鲁棒（去隐式后 unseen 降至 **46.8**），显式 **130-D + chunk-relative EE** 提供精度与物理一致性（去显式后 seen 降至 **85.7**，主伤 PnP-Hard）。
+2. **部署形态是特征级动力学先验，而非像素想象** — Stage 1 用 `condition dropout` 训练 LAC-WM，推理时仅因果提取首帧特征 \(D_t\) 传给 late-fuse 专家，无需在线跑 LAM。
+3. **缩放曲线比单点榜单更有信息量** — EgoLive（10%→100%：seen **47.8→85.6**，unseen **37.6→60.2**）与 LAC-WM 人视频（**83.13→97.50** / **56.88→72.40**）在最大测试规模仍未见饱和。
+4. **内–外环 RL 需接受低频权重同步** — 边缘 residual 快适应与中心异步迭代 SFT 拆开时间尺度，论文实测高频同步会破坏 off-policy 稳定性。
+5. **模型代码与权重未开源** — 截至 2026-11-14 仅官网数据按钮链至 `robotdata.jdcloud.com`（Demos 区块 HTML 注释隐藏），宜将其作为系统设计参考而非可直接跑的开源栈。
 
 ## 与其他工作对比
 

@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-10-26
+updated: 2026-11-15
 original:
   - ../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md
 sources:
@@ -161,6 +161,7 @@ sources:
 | 系统 | 机器人 | 输入设备 | 数据规模 | 特点 |
 |------|--------|---------|---------|------ |
 | UMI（Stanford 2024） | 通用 | GoPro + 夹爪 | 可扩展 | 无需专用机器人，数据可迁移 |
+| **[Specialist](../entities/specialist-umi.md)**（UC Berkeley 2026） | 匹配形态的主动夹爪与机械臂（训练/部署待公开） | **Insta360 双鱼眼 + IMU + AprilTag** 手持夹爪 | 公开重建管线；未核实公共示范规模 | **公制 VI-BA 轨迹 + 指节角**，无需现场机器人采集；硬件/数据处理/驱动已开源，BC/LeRobot 仍待发布 |
 | [HandUMI](../entities/handumi.md)（RoboNet 2026） | PiPER / OpenArm / TRLC-DK1 / YAM 等平行夹爪双臂 | HandUMI 手持接口（~$110 tip 可换）+ PICO / Quest | 无机器人采集 | **一次采集、多臂重定向**；Feetech 直测开合；LeRobot v3 + `handumi validate` QA |
 | **[HiFi-UMI](../entities/paper-hifi-umi.md)（Simple AI 2026）** | 真机双臂（评测部署） | 头戴 stereo-inertial SLAM + 双手广角（六视角，~3 mm / <40 µs） | **HiFi-UMI-2K 2000 h** 已开源 | **zero-robot 后训练**匹配同域 teleop；数据 CC BY 4.0；采数代码未列 |
 | [BifrostUMI](../entities/paper-bifrost-umi.md)（BAAI Aether 2026） | Unitree G1 | Pico 追踪 + 双腕鱼眼夹爪 | 无机器人采集 | UMI 式示范 + 扩散高层 + SKR → 人形全身 WBC |
@@ -234,7 +235,7 @@ VR / 手柄每 tick 给出末端 `T_target` 时，常见模式是 **「离当前
 
 ### 全身人形：视频 / VR 条件 + 低层 tracking
 
-NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)）把遥操作与 **规模化 motion tracking policy** 放在同一套 **统一 token / 控制接口** 下展示：人体视频经 **GEM** 估计姿态后实时跟踪；VR 含 **头 + 双手三点** 驱动上身并由 **运动学规划器** 补全下身，以及 **全身 VR 追踪** 模式。知识库方法页见 [SONIC（规模化运动跟踪人形控制）](../methods/sonic-motion-tracking.md)。[HumanoidArena](../entities/paper-humanoidarena.md) 将 SONIC 与 [TWIST2](../entities/paper-twist2.md) 并列为 **分层全身学习的双 GMT 评测后端**，在共享 **35D 上游参考** 下 stress-test **跨 tracker 迁移**。
+NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)）把遥操作与 **规模化 motion tracking policy** 放在同一套 **统一 token / 控制接口** 下展示：人体视频经 **GEM** 估计姿态后实时跟踪；VR 含 **头 + 双手三点** 驱动上身并由 **运动学规划器** 补全下身，以及 **全身 VR 追踪** 模式。知识库方法页见 [SONIC（规模化运动跟踪人形控制）](../entities/nvidia-sonic.md)。[HumanoidArena](../entities/paper-humanoidarena.md) 将 SONIC 与 [TWIST2](../entities/paper-twist2.md) 并列为 **分层全身学习的双 GMT 评测后端**，在共享 **35D 上游参考** 下 stress-test **跨 tracker 迁移**。
 
 ## 遥操作到策略学习 Pipeline
 
@@ -363,6 +364,7 @@ NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)�
 - [motion_tracking（代码实体）](../entities/axellwppr-motion-tracking.md) — HEFT 官方 mjlab 训练与 sim2real 检查点
 - [HumanoidArena（论文实体）](../entities/paper-humanoidarena.md) — PICO egocentric 采集管线与 TWIST2/SONIC 双 GMT 分层 benchmark（arXiv:2606.17833）
 - [REFINE-DP（论文实体）](../entities/paper-loco-manip-161-157-refine-dp.md) — VR 遥操作约 50 条 + 启发式扩数据，再 DPPO 联合微调（arXiv:2603.13707）
+- [OpenHLM（论文实体）](../entities/paper-loco-manip-161-154-openhlm.md) — PICO 全身遥操作接口对照：21-D decoupled / 24-D VR 三点 / 32-D 关节级，仅关节级覆盖踩踏板、蹲身穿架等全部任务（task progress，非二值成功率）；HuMI 无机器人采集每 40 条约 7 min（arXiv:2606.22174）
 
 ### 平台、中间件与操作员工作站
 

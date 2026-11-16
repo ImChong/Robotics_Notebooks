@@ -13,3 +13,7 @@
 ## 项目页确认内容
 
 官方页面介绍 H-JEPA 的分层预测学习、由粗到细的层级规划，以及 Visual AntMaze、FourRoom、Push-T、Cube 与 DROID 视频上的实验。其结果页明确：DROID 使用离线规划的 Fréchet fidelity 衡量末端执行器路径与专家轨迹的接近程度，不将此指标表述为真机闭环任务成功率。
+
+## 2026-11-13 项目页复核
+
+已通读h-jepa.com正文及Paper/Code资源链接；当前代码仓库提供训练/规划与HF数据/权重入口。站点明确DROID离线Fréchet fidelity、5fps模型对原生1fps冻结基线的协议差异；视频未观看。

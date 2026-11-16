@@ -9,7 +9,7 @@
 - **Stars：** ~11.7k（2026-09-05 再核）
 - **入库日期：** 2026-06-06
 - **再核日期：** 2026-09-05；2026-11-07 重读 `main` 分支 README 全文
-- **核对范围：** 2026-11-07 通读 raw.githubusercontent.com 上 NVIDIA/cosmos `main` 的 README.md（What's new：2026-05 Cosmos 3、2026-07 Cosmos3-Edge、2026-10 Interactive World Simulation；What is Cosmos；Find your path；Generate your first video 的依赖与 `Cosmos3OmniPipeline` 代码；Models 与 Example checkpoints 表；Platform 表；Limitations & safety；Citation & license）；未读 COOKBOOK.md、docs/reference/*、Cosmos 3 技术报告 PDF 与 cosmos-framework 源码，也未运行代码。
+- **核对范围：** 2026-11-13重读固定540106233a1a834f00fddd368dd6e3e818575696的根README全文（模型/发布/quickstart/许可）；未将COOKBOOK及全部后端当作已执行。Cosmos3论文与framework本次另有独立核读归档。
 - **通读：** 已完成
 - **一句话说明：** NVIDIA **Physical AI 世界模型开放平台**：托管 **Cosmos 3** 全模态模型族、推理 cookbook、Diffusers / vLLM-Omni / SGLang / NIM 集成，以及指向 **cosmos-framework** 的微调 / 蒸馏配方。
 
@@ -103,3 +103,9 @@ Edge 限制：分辨率仅 256p/480p，12–30 fps，50–150 帧；当前不支
 - 2.x 配方：[`wiki/entities/cosmos-cookbook.md`](../../wiki/entities/cosmos-cookbook.md)
 - 视频策展：[`wiki/entities/cosmos-curator.md`](../../wiki/entities/cosmos-curator.md) · [`sources/repos/nvidia_cosmos_curator.md`](./nvidia_cosmos_curator.md)
 - Physical AI 数据：[`wiki/entities/nvidia-physical-ai-datasets.md`](../../wiki/entities/nvidia-physical-ai-datasets.md)
+
+## 当前发布快照（2026-11-13）
+
+- 固定[540106233a1a834f00fddd368dd6e3e818575696](https://github.com/NVIDIA/cosmos/tree/540106233a1a834f00fddd368dd6e3e818575696)：Edge七月发布，十月新增Sim-Auto/Transfer-Auto/Sim-Bimanual/Sim-Transfer examples，与六月论文基础模型分开。
+- 当前README quickstart需要先获Guardrail仓访问授权；hf login本身不授予访问。静态FP8权重减少存储，激活精度取决backend，不等于全链路FP8。
+- 16B/64B是双塔模型族口径；实际某模式激活参数与其他适配版本全部组件计数不同。此前具体300帧/Edge限制为历史文档快照，当前模式边界按model reference与checkpoint卡核对。

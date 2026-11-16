@@ -9,9 +9,12 @@
 - **代码：** <https://github.com/z-lab/flashvla>
 - **权重：** <https://huggingface.co/collections/z-lab/flashvla>
 - **入库日期：** 2026-08-29
-- **一句话说明：** z-lab 官方项目页：流式动作解码、异步推理与模型集合入口；与 GitHub / Hugging Face 互指。
+- **核对更新：** 2026-11-14
+- **通读：** 未完成
+- **核对说明：** 2026-11-14 离线原文核查目录（`originals/sites/`）未归档 `https://z-lab.ai/projects/flashvla/` 的本地 HTML 快照，故按规范保留为未通读外部索引，不列入 wiki 实体页 `original:` 原文链；项目论文全文与官方开源代码已分别在 [`flashvla_arxiv_2608_27384.md`](../papers/flashvla_arxiv_2608_27384.md) 与 [`flashvla.md`](../repos/flashvla.md) 中完成全量通读与核对。
+- **一句话说明：** z-lab 官方项目页链接入口：与 arXiv 论文、GitHub 仓库和 Hugging Face 模型集合互指。
 
-## 页面结构（维护索引）
+## 页面结构（历史维护索引）
 
 | 区块 | 内容要点 |
 |------|----------|

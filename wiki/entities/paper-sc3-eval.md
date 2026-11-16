@@ -17,7 +17,7 @@ tags:
   - awesome-world-models
   - sun254667-wm
 status: complete
-updated: 2026-10-06
+updated: 2026-11-13
 arxiv: "2606.18610"
 venue: "arXiv 2026"
 related:
@@ -36,11 +36,13 @@ related:
   - ../overview/sun-awesome-wm-technology-map.md
   - ../tasks/manipulation.md
   - ../methods/vla.md
+original:
+  - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
 sources:
   - ../../sources/papers/sc3_eval_arxiv_2606_18610.md
   - ../../sources/sites/weichengtseng-sc3-eval.md
   - ../../sources/papers/sun_awesome_wm_2606_18610_sc3-eval-evaluating-robot-foundation-mod.md
-summary: "SC3-Eval（arXiv:2606.18610，UToronto×Vector×NVIDIA×π）：自一致视频生成作真机 VLA 策略评估器；前向–逆向动力学 + 跨视角 inpainting + 测试时早停；七 checkpoint 闭环 Pearson 0.929 / MMRV 0.119；确认未开源。"
+summary: "SC3-Eval（arXiv:2606.18610，UToronto×Vector×NVIDIA×π）：自一致视频生成作真机 VLA 策略评估器；前向–逆向动力学 + 跨视角 inpainting + 测试时早停；七 checkpoint 闭环 Pearson 0.929 / MMRV 0.119；未找到可运行模型入口。"
 ---
 
 # SC3-Eval（自一致视频生成策略评估 · arXiv:2606.18610）
@@ -85,7 +87,7 @@ summary: "SC3-Eval（arXiv:2606.18610，UToronto×Vector×NVIDIA×π）：自一
 | 轴 | 训练或推理 | 作用 |
 |----|------------|------|
 | **Forward–inverse** | 联合训 FD + ID（共享参数） | 前向帧须能让 ID 恢复命令动作 → 锚定物理可行动作流形，抑制纯前向无法惩罚的漂移 |
-| **Cross-view** | 随机遮一视角做 inpainting | 多相机（2×第三人称 + 腕部）互监督，无需显式 memory bank |
+| **Cross-view** | 保留一个视角、inpaint其他视角 | 多相机（2×第三人称 + 腕部）互监督，无需显式 memory bank |
 | **Test-time** | 推理复用 \(\mathcal{W}^{id}\) | \(U_{\mathrm{chunk}}(t)=\frac{1}{l}\sum\|a_i-\hat a_i\|_2\)，超阈值 \(\tau\) 终止 off-manifold rollout |
 
 模式混合（每实例独立采样）：\(p_{\mathrm{FD}}=0.8\)、\(p_{\mathrm{CVI}}=0.1\)、\(p_{\mathrm{ID}}=0.1\)。
@@ -122,9 +124,14 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-08-11** 项目页未挂训练/推理代码或权重；[`WeiChengTseng/sc3-eval`](https://github.com/WeiChengTseng/sc3-eval) 仅为 GitHub Pages 静态站（见 [项目页归档](../../sources/sites/weichengtseng-sc3-eval.md)）。
+**不适用** — 截至 **2026-11-13** 项目页未挂训练/推理代码或权重；[`WeiChengTseng/sc3-eval`](https://github.com/WeiChengTseng/sc3-eval) 仅为 GitHub Pages 静态站（见 [项目页归档](../../sources/sites/weichengtseng-sc3-eval.md)）。
 
 ## 工程实践
+
+- 以已通读arXiv v3为准：七个均为π0.5架构checkpoint；每个三成功准则，相关指标用21个checkpoint/criterion点，不能解读成七种策略家族或21次独立机器人实验。
+- 策略预测25条动作，WM用前24条生成，只保留前16帧后再查询；2.3秒是24帧预测chunk耗时。
+- τ=.02在30条held-out轨迹上选定，4.88%提前终止。更激进早停会损害InD；逆动力学误差不是成功概率，Pearson亦不保证绝对校准。
+
 
 | 项 | 实践要点 |
 |----|----------|
@@ -154,7 +161,7 @@ flowchart TB
 2. **三轴互补** — 去 ID / 去 CVI / 去 early-term / 去 horizon decoupling 均显著掉点；跨视角主要救腕部重入场景，ID 主要压 OOD 漂移。
 3. **诊断价值高于只排名** — 能复现 language / lifting / placing 失败类别，适合 checkpoint 选型与失败归因。
 4. **工程代价清楚** — 训练需大集群 GB200；推理 **2.3 s/chunk**，不能替代实时物理仿真做日常刷分。
-5. **开源边界** — 截至入库日 **确认未开源**；复现入口只有论文与项目页视频，选型时勿当可部署工具链。
+5. **开源边界** — 截至2026-11-13未找到专属模型代码/权重/数据入口；复现入口只有论文与项目页视频，选型时勿当可部署工具链。
 6. **任务域窄** — 单场景 table bussing ≈ **20 s** 短时程；更长 horizon 预期局部校正失效 + 视觉先验崩坏。
 
 ## 局限与风险

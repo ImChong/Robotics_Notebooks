@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, hardware, sensing]
 status: complete
-updated: 2026-11-04
+updated: 2026-11-15
 related:
   - ../entities/paper-visualforce.md
   - ../entities/rhoda-dva-tactile-sensing.md
@@ -20,10 +20,10 @@ related:
   - ../entities/paper-softvtbench.md
   - ../entities/humantouch.md
   - ../entities/awesome-touch.md
+  - ../entities/tipsim.md
+  - ../entities/paper-dextacwam.md
   - ../entities/paper-tactilestep.md
   - ../entities/paper-anytouch.md
-  - ../entities/paper-anytouch.md
-  - ../entities/paper-anytouch2.md
   - ../entities/paper-anytouch2.md
   - ../entities/eflesh.md
   - ../entities/opentac.md
@@ -69,7 +69,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 
 ## 核心原理
 
-以视觉类传感器为例（据 GelSight 综述 §3）：
+以视觉类传感器为例（据 GelSight 综述 `3）：
 
 - **形状**：透明弹性体加反射涂层，内置相机在多方向彩色光下成像，用光度立体求表面法线，再积分（泊松方程）得到高度图；用已知直径小球标定查找表，每个传感器须单独标定。
 - **力与扭矩**：涂层下的标记点位移场反映切向形变，法向力使点外扩、剪切力使点平移、面内扭矩使点旋转，幅度大致与载荷成正比；形状变化时比例系数改变，故用 CNN 做与形状无关的力回归。
@@ -129,6 +129,8 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 
 ## 在机器人学习中的应用
 
+- **预测式接触世界状态：** [DexTacWAM](../entities/paper-dextacwam.md) 将十指视觉触觉压缩为左右手 latent，与视觉世界模型共同预测接触演化；论文保持触觉输入与动作专家相同的消融中，四任务分数 74.7→26.6，说明触觉条件化不等于触觉世界预测。
+
 在最新的 Robot Learning 研究中，触觉反馈正在成为突破视觉遮挡（Occlusion）瓶颈的关键：
 
 - **跨模态融合 (Cross-modal Fusion)**：将视觉 RGB 特征与 GelSight 图像特征在 Transformer 晚期融合，使得模型在“手遮挡了目标”时，依然能依靠触觉完成插入孔位的微调。
@@ -139,6 +141,8 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - **作为双足 locomotion 闭环状态（plantar）**：[TactileStep](../entities/paper-tactilestep.md) 将 **足底压力鞋垫** 汇总为法向力、接触面积与 CoP，与 Isaac 仿真 **特征对齐** 后并入 **深度跑酷** actor，用四相位奖励调节 **触地冲击与支撑**（相对仅视觉几何的 Hiking 系基线）。
 
 ## 关联页面
+
+- [TipSim（MuJoCo 触觉仿真）](../entities/tipsim.md) — Loong/Universa 阵列触点力读取、参数化传感器误差与 UR5e 分指受力阈值抓取演示；核心插件为闭源二进制。
 
 - [VisualForce](../entities/paper-visualforce.md) — 从柔性夹爪形变估计法向力并标注操作示范。
 
@@ -160,6 +164,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [HumanTouch（人手全掌触觉采集）](../entities/humantouch.md) — 压阻手套 + EMF 手姿 + 多视角 RGB；强调校准/质控与 DcSNR（首批数据已在 ModelScope 发布）
 - [Awesome Touch（精选集）](../entities/awesome-touch.md) — 2025–2026 触觉×VLA/WM/WAM 文献索引
 - [UVTA（跨本体视触觉动作建模）](../entities/paper-uvta-human-tactile-dexterous-manipulation.md) — 人类可穿戴触觉示范与机器人遥操作联合训练，并用未来触觉预测塑造灵巧操作策略
+- [TF²-Steering（触觉预测 + 实时触觉速度场修正）](../entities/paper-tf2-steering-tactile-forecast.md) — 预测触觉与实时触觉共同输出 Δv，修正 Flow Matching 动作专家的生成过程（arXiv:2611.01483）
 - [TactileStep（足底触觉跑酷）](../entities/paper-tactilestep.md) — G1 压力鞋垫 + 相位条件 RL；CoRL 2026 Spotlight
 - [GhostTac（触觉物理层 EMI 攻击）](../entities/paper-ghosttac.md) — CCS 2026；非接触操纵传感读数，提醒部署侧物理层威胁建模
 - [ViTacPhys（视触觉物理属性）](../entities/paper-vitacphys.md) — 人体视触觉示范预测质量/刚度/摩擦并条件化抓取
@@ -182,6 +187,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [OpenTac 官方项目页与代码](../../sources/sites/opentac-project.md) — 可定制压阻触觉皮肤、剪切凸点与自适应采样生态
 - [AnyTouch 论文来源](../../sources/papers/anytouch_arxiv_2502_12191.md) 与 [AnyTouch 2 论文来源](../../sources/papers/anytouch2_arxiv_2602_09617.md)
 - [UVTA（arXiv:2609.34182）](../../sources/papers/uvta_arxiv_2609_34182.md) — 跨本体人类触觉示范与机器人灵巧操作联合学习
+- [TipSim 官方仓库与示例通读归档](../../sources/repos/tiplab-tipsim.md) — MuJoCo 触点阵列模拟及双指闭环示例（核心插件只提供二进制）
 - [TactileStep（arXiv:2609.28959）](../../sources/papers/tactilestep_arxiv_2609_28959.md) — 足底特征级 sim2real + 四相位接触奖励；G1 跑酷真机
 
 ## 继续阅读

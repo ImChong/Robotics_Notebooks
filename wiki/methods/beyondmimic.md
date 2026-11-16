@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, locomotion, humanoid, sampling, diffusion, paper, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-10-26
+updated: 2026-11-15
 code: https://github.com/HybridRobotics/whole_body_tracking
 venue: "2026 · Science Robotics"
 arxiv: "2508.08241"
@@ -15,11 +15,10 @@ related:
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-05-hierarchical-control.md
-  - ../methods/beyondmimic.md
   - ./imitation-learning.md
   - ./deepmimic.md
   - ./egm-efficient-general-mimic.md
-  - ./sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../concepts/armature-modeling.md
   - ../concepts/curriculum-learning.md
   - ../concepts/reward-design.md
@@ -383,7 +382,7 @@ flowchart LR
 
 BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - **RobotEra (宇树春晚爆款等)**：其技术路线中大量参考了 BeyondMimic 的物理建模思想。
-- **[SONIC](./sonic-motion-tracking.md)（NVIDIA/CMU 等）**：将 BeyondMimic 的能力扩展到手柄、VR 和文本控制；并被 [ExoActor](./exoactor.md) 直接当作"视频生成 → 动作估计 → 通用动作跟踪"流水线中的物理过滤器。
+- **[SONIC](../entities/nvidia-sonic.md)（NVIDIA/CMU 等）**：将 BeyondMimic 的能力扩展到手柄、VR 和文本控制；并被 [ExoActor](./exoactor.md) 直接当作"视频生成 → 动作估计 → 通用动作跟踪"流水线中的物理过滤器。
 
 ## 参考来源
 - [机器人论文阅读笔记：BeyondMimic](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/BeyondMimic/BeyondMimic.html)
@@ -408,7 +407,7 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 ## 继续阅读
 
 - 论文原文与补充材料：<https://arxiv.org/abs/2508.08241>；项目页 <https://beyondmimic.github.io/>。
-- 同族对照：[DeepMimic](./deepmimic.md)（跟踪式模仿前置）、[SONIC](./sonic-motion-tracking.md)（扩展到手柄/VR/文本）、[EGM](./egm-efficient-general-mimic.md)。
+- 同族对照：[DeepMimic](./deepmimic.md)（跟踪式模仿前置）、[SONIC](../entities/nvidia-sonic.md)（扩展到手柄/VR/文本）、[EGM](./egm-efficient-general-mimic.md)。
 - 实操入口：[G1 视频舞蹈多动作追踪 Query](../queries/g1-video-dance-gvhmr-gmr-beyondmimic-multi-motion.md)。
 
 ## 关联页面

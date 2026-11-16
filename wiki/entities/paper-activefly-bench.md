@@ -14,7 +14,7 @@ related:
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
-  - ../../sources/papers/activefly_bench_arxiv_2607_10180.md
+  - ../../sources/papers/activefly-bench_arxiv_2607_10180.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "空中具身问答与 VLA 对齐基准：拆分问答、观察行为规划与语言引导控制三层，真实+仿真户外数据与实机验证。"
 ---

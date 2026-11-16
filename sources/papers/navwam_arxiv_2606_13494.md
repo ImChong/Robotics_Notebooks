@@ -102,3 +102,14 @@
   note          = {Project page: https://dachii-azm.github.io/navwam/}
 }
 ```
+
+## 全文通读复核（2026-11-13）
+
+- **核对范围：** arXiv:2606.13494v1 正文 §1–§6、附录 A–D（canvas、完整设置、效率/监督消融、失败与局限）；图表按文字层核对，参考文献浏览；官方项目页全文及资源链接；未运行模型或观看视频。
+- **通读：** 已完成
+- 九帧是 latent canvas（对应 causal VAE 的 33 raw frames），不是九张原始 RGB。非视觉量广播并空间平均读出，无额外 action/value head。policy/WM/value=50/25/25；主结果只用 policy，一次查询仍包含多步去噪。
+- Phase1 HM3D H=16，Phase2 RECON/SACSON/SCAND 改 H=4，GO STANFORD 另做可选 FT。动作是当前机器人坐标的 3D waypoint increments；各数据 waypoint spacing 不同，action loss multiplier=5。
+- 附录 value 名称写 v(t+H)，公式实际使用当前 p(t) 到记录终点的距离，阈值 dmax 未给精确数值；不把它视为校准的成功概率。未来/当前时间下标需实现核对，代码未发布，不能自行补造。
+- GO STANFORD 固定 30 episodes，SIT 1,400 episodes；真机每方法 24 episodes，19/24 的 Wilson 95% CI [59.5,90.8] 与 OmniVLA [38.8,75.5] 重叠。主张观测成功率更高，不声称显著领先。
+- 效率 205.7ms 为 RTX PRO 6000 96GB 单卡、按执行 action 归一化；机器人携带 Orin 不证明该延迟在 Orin 上测得。去未来监督 ATE@8 0.262→0.192 是配平容量/数据/步数的对照。
+- 仅静态室内、单机器人、短中程；失败包含摩擦导致过转、后续预测失配和碰撞。项目 Code 为 coming soon，模板/Nerfies 链接不是模型代码。

@@ -149,7 +149,7 @@ flowchart LR
 - [PhysDiff](../wiki/entities/paper-notebook-physdiff-physics-guided-human-motion-diffusion-m.md) — 物理引导扩散
 - [PhyGile](../wiki/entities/paper-phygile.md) — robot-native 生成 + GMT 闭环
 - [Gen2Humanoid](../wiki/entities/gen2humanoid.md) — 生成 → 重定向端到端管线
-- [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) — 跟踪侧消费者
+- [SONIC](../wiki/entities/nvidia-sonic.md) 与 [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) — 跟踪侧消费者
 - [合成视频人形任务生成（NCKU）](../wiki/entities/paper-synthetic-video-humanoid-tasks.md) — 文本提示 → Veo 生成视频 → SMPL-X/GMR 重定向 → motion stitching → DeepMimic 式 RL 跟踪，全程无真机、无 MoCap 示范即可在仿真里学多样人形任务；确认未开源
 - [GenTrack](../wiki/entities/paper-gentrack.md)（AAAI 2027）— 生成器–跟踪器在线互训打破"单向管线冻结一边很快过时"的耦合瓶颈，接 ProtoMotions/SONIC checkpoint 做后训练而非从头训，KL 锚 + rehearsal 防生成器塌成慢动作；SONIC 支 LAFAN1 跟踪 SR 85→90；确认未开源
 
@@ -182,6 +182,8 @@ flowchart LR
 - [Learning Whole-Body Humanoid Locomotion](../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) 与 [Heracles](../wiki/entities/paper-heracles-humanoid-diffusion.md) — 扩散规划与恢复中间件
 - [OMG](../wiki/entities/paper-omg-omni-modal-humanoid-control.md) 与 [MotionBricks](../wiki/methods/motionbricks.md) — 多模态接口与实时基元
 - [GPC](../wiki/entities/paper-gpc-generative-pretrained-controllers.md) — token 化生成控制器
+- [Kimodo-Policy](../wiki/entities/paper-kimodo-policy.md) — 冻结 Kimodo-G1，用视觉 ControlNet、HandNet 与实测运动历史分段重规划，再由 SONIC 跟踪；与仅输出运动学参考的 Kimodo 分开阅读
+- [从生成全身动作到人形闭环](../wiki/comparisons/generative-motion-to-humanoid-closed-loop.md) — 对齐生成、跟踪、视觉适配与闭环执行的接口和证据，避免把生成帧率当整机控制频率
 - [Muninn](../wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md) — training-free 轨迹扩散缓存加速：probe 稳定性 + conformal 标定偏差预算，最高约 4.6× 墙钟加速且可证轨迹偏离界，可直接叠在现有扩散规划器 / Diffusion Policy 上
 
 ### 学完输出什么
@@ -205,7 +207,7 @@ flowchart LR
 
 **方向 C：动作生成 × 行为基础模型**
 - 生成器为 BFM 供给行为先验、BFM 为生成器提供物理执行底座
-- 关键词：[Kimodo](../wiki/entities/kimodo.md)（直出 G1 / ProtoMotions 闭环）、[BFM 纵深路线](depth-bfm.md)
+- 关键词：[Kimodo](../wiki/entities/kimodo.md)（G1 参考动作生成）、[Kimodo-Policy](../wiki/entities/paper-kimodo-policy.md)（视觉条件闭环策略）、[BFM 纵深路线](depth-bfm.md)
 
 **方向 D：场景与交互感知生成**
 - 从"空场地生成"走向"贴着场景与物体生成"

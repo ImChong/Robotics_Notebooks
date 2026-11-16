@@ -10,7 +10,7 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-11-06
+updated: 2026-11-10
 related:
   - ./deepseek-harness.md
   - ./ponytail.md
@@ -18,6 +18,7 @@ related:
   - ./superpowers-obra.md
   - ./sensenova-skills.md
   - ./agent-reach.md
+  - ./kensaku.md
   - ./openviking-context-database.md
   - ./cli-anything.md
   - ./deeptutor.md
@@ -36,8 +37,6 @@ sources:
 original:
   - ../../sources/repos/hermes_agent_reading_readme_arch_h1.md
 summary: "Hermes Agent（NousResearch）是 MIT 开源的常驻自主代理运行时：单一 AIAgent 服务 CLI、20+ 消息网关与 ACP；SQLite+FTS5 会话、记忆/技能自举闭环与 Honcho 用户建模；70+ 工具、七类终端沙箱与 MCP 扩展；内置 cron 与子代理委托，并支持 ShareGPT 轨迹导出与 Atropos RL 研究管线。"
-tags: [llm-agents, coding-agents, agent-infrastructure, skills, mcp, persistent-memory, messaging-gateway, mit]
-
 ---
 
 # Hermes Agent（Nous Research）
@@ -154,6 +153,7 @@ flowchart TB
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **软件工程流程** 技能库
 - [SkillCorpus](paper-skillcorpus.md) — 社区技能策展语料；可与 Hermes 技能目录对照「精品库 vs 生态语料」
 - [Agent Reach](agent-reach.md) — 编码代理 **外网读搜** 脚手架
+- [Kensaku](kensaku.md) — 本地文件名/全文/OCR/语义搜索，经 MCP 提供只读检索，与 Hermes 的 Agent 工具环互补
 - [OpenViking 上下文数据库](./openviking-context-database.md) — 将 Agent 的资源、记忆与技能组织为可浏览和检索的独立上下文库
 - [CLI-Anything（HKUDS）](cli-anything.md) — 专业软件 → agent-native CLI / Hub / SKILL（可装入 Hermes）
 - [DeepTutor（HKUDS）](deeptutor.md) — 辅导工作区；My Agents 可 live consult Hermes

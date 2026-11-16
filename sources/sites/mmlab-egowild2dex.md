@@ -7,6 +7,9 @@
 - **PDF：** <https://arxiv.org/pdf/2609.23755>
 - **机构：** 香港大学（The University of Hong Kong，Ping Luo* 等）；Kinetix AI；项目 lead：Kunyang Lin†
 - **入库日期：** 2026-09-27
+- **复核日期：** 2026-11-10
+- **核对范围：** 官方主页 Learning from in-the-wild ego-human data、GeoFormer、Progressive Human–Robot Training、EgoWild、Results、Cross-Embodiment 与 Citation 全部公开文字板块及资源链接
+- **通读：** 已完成
 
 ## 一句话摘要
 
@@ -21,14 +24,14 @@
 5. **Results** — Open-Box / Glue-Figure / Ice-Water；跨本体（Tianji Marvin Pro）与抗扰/自恢复视频
 6. Citation — BibTeX
 
-## 开源核查（步骤 2.5，2026-09-27）
+## 开源核查（步骤 2.5，2026-11-10 复核）
 
 | 资产 | 状态 |
 |------|------|
-| 项目页 Code / GitHub 链 | **无**（HTML 仅解析到 arXiv PDF） |
+| 项目页 Code / GitHub 链 | **未见** EgoWild2Dex 官方可运行仓库链接；项目页技术报告指向 arXiv |
 | 论文 Abstract | 「The data, models, and code **will be released**」 |
-| EgoWild 数据集 | **待发布** |
-| GeoFormer / 训练代码 | **待发布** |
+| EgoWild 数据集 | **尚无页面可核验的公开下载地址**，论文承诺未来发布 |
+| GeoFormer / 训练代码 | **尚无页面可核验的训练 / 推理入口**，论文承诺未来发布 |
 
 ## 为何值得保留
 
@@ -39,3 +42,10 @@
 ## 对 wiki 的映射
 
 - [paper-egowild2dex](../../wiki/entities/paper-egowild2dex.md)
+
+## 与 arXiv v1 交叉核验（2026-11-10）
+
+- 项目页讲述 robot→ego 学 T、对 ego 使用 T⁻¹，和正文 §III-A 一致；数值 **21.9×** 来自原文 Table III 图像预处理延迟 **162.58→7.43 ms**，不是整机控制加速。
+- 项目页展示 Open-Box、Glue-Figure、Ice-Water 和 Tianji Marvin Pro 迁移视频；量化成功率、消融、数据时长应以 [论文 v1 原文归档](../papers/egowild2dex_arxiv_2609_23755.md) 中的 Table I–IV/IX 为准。
+- 页面报告 EgoWild 538.9 h / 179,049 episodes / 125,961 unique descriptions / 1,282 object categories；头部手部追踪降低指尖误差 4.21→0.66 cm，和论文附录 C 一致。
+- 页面 **没有**单独的下载/安装/运行指南；XRoboToolkit 仅是论文引用的遥操作依赖，不能充作作者已公开的 GeoFormer 实现。

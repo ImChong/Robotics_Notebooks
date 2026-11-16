@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, teleoperation, dual-arm, dataset-collection, google-deepmind, bimanual, simulation]
 status: complete
-updated: 2026-09-27
+updated: 2026-11-15
 related:
   - ./aloha.md
   - ./mujoco-menagerie.md
@@ -12,6 +12,8 @@ related:
   - ../methods/action-chunking.md
   - ../concepts/hand-eye-calibration.md
   - ../concepts/system-identification.md
+original:
+  - ../../sources/papers/aloha2_arxiv_2405_02292.md
 sources:
   - ../../sources/sites/aloha-2-github-io.md
   - ../../sources/papers/aloha2_arxiv_2405_02292.md
@@ -43,7 +45,7 @@ summary: "Google DeepMind ALOHA 2：升级夹爪/机架/重力补偿与 RealSens
 - **视觉 Sim2Real 锚点：** 腕/顶/仰视四路相机在 Menagerie 中 **内参对齐 D405**；外参链仍要在真机做 [手眼标定](../concepts/hand-eye-calibration.md)。
 - **与 ACT 生态连续：** 仍是 [action-chunking](../methods/action-chunking.md) / 双臂 IL 的默认硬件升级路径，而非替换算法范式。
 
-## 核心组成（相对 ALOHA 1）
+## 核心原理（核心组成，相对 ALOHA 1）
 
 | 模块 | 要点 |
 |------|------|

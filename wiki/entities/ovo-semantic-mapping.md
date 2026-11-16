@@ -2,7 +2,9 @@
 type: entity
 tags: [repo, semantic-mapping, open-vocabulary, sam, slam, clip, rgb-d, unizar]
 status: complete
-updated: 2026-07-26
+original:
+  - ../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md
+updated: 2026-11-15
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../queries/go2-3d-semantic-mapping-sam-pipeline.md
@@ -13,6 +15,7 @@ related:
   - ./orb-slam3.md
   - ../overview/navigation-slam-autonomy-stack.md
 sources:
+  - ../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md
   - ../../sources/repos/ovo-semantic-mapping.md
   - ../../sources/papers/sam2_arxiv_2408_00714.md
 summary: "OVO 是开放词汇在线三维语义映射：对有位姿 RGB-D 关键帧用 SAM2 初始化 mask、跟踪 3D 实例并融合 CLIP；可接 ORB-SLAM / Gaussian-SLAM，支持回环场景。"
@@ -126,7 +129,13 @@ sequenceDiagram
 
 图依据：tberriel/OVO@e0d16f7，读过 `ReadMe.md`（运行说明与参数）、`run_eval.py`（main、run_scene、compute_scene_labels 全文）、`ovo/entities/ovomapping.py`（__init__、run 主循环与保存）。`OVO` 类内部（`detect_and_track_objects`、`classify_instances` 等）与 `ovo/slam/*` 未读，图只标出调用点。
 
+## OVO 评测与在线更新
+
+在 ScanNetv2 五个 HVS 场景，真值位姿下 OVO-mapping 的 ScanNet20 mIoU 为 38.1%，接 Gaussian-SLAM 时为 29.3%；两种位姿假设不能合并。语义地图与 CLIP 提取异步排队，相机跟踪的视频率不代表语义映射逐帧同步完成。依据[来源复核归档](../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md)。
+
 ## 关联页面
+
+- [模型架构纵深路线](../../roadmap/depth-model-architecture.md)
 
 - [GO2 三维语义建图与 SAM 流水线](../queries/go2-3d-semantic-mapping-sam-pipeline.md)
 - [SAM 2](./paper-sam2.md) / [SAM](./paper-segment-anything.md) — 2D mask 前端基础模型
@@ -136,6 +145,8 @@ sequenceDiagram
 - [导航·SLAM 栈](../overview/navigation-slam-autonomy-stack.md)
 
 ## 参考来源
+
+- [OVO 评测与在线更新 原文与边界复核](../../sources/papers/ovo_online_semantic_mapping_arxiv_2411_15043.md)
 
 - [sources/repos/ovo-semantic-mapping.md](../../sources/repos/ovo-semantic-mapping.md)
 - [sam2_arxiv_2408_00714.md](../../sources/papers/sam2_arxiv_2408_00714.md) — SAM 2 基础模型归档

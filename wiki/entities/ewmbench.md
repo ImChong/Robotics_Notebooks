@@ -5,7 +5,7 @@ status: complete
 original:
   - ../../sources/papers/ewmbench_reading_arxiv_2505_09694_ewm1.md
 arxiv: "2505.09694"
-updated: 2026-10-16
+updated: 2026-11-14
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md

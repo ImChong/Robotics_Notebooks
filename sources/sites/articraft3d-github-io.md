@@ -6,6 +6,7 @@
 - **类型：** site（项目页 / Demo / 论文与数据集展示）
 - **链接：** https://articraft3d.github.io/
 - **入库日期：** 2026-05-16
+- **通读：** 已完成
 - **一句话说明：** 面向「从物体描述生成可仿真可关节 3D 资产」的 **agentic 系统**：编码代理在受限工作区内用 **LLM 友好 SDK** 写 `model.py` 类程序，经 **执行 harness** 编译/探测资产并返回结构化验证信号，迭代得到带关节与运动限位、PBR 的仿真就绪对象；公开 **Articraft-10K**（万余可关节资产）及与 LiteReality、VR、图像条件生成等集成演示。
 - **论文（项目页引用）：** arXiv:2605.15187（bib 条目中作者含 Zhou, Matt 等；项目页亦列出 Zheng / Rupprecht / Vedaldi / Wu 等合作方信息）
 - **沉淀到 wiki：** 是 → [`wiki/entities/articraft.md`](../../wiki/entities/articraft.md)

@@ -176,7 +176,7 @@
 | 166 | Open Manipulator | `url:emanual.robotis.com/docs/en/platform` | Hardware Platforms | natnew | [`robotis-open-manipulator-line.md`](../../wiki/entities/robotis-open-manipulator-line.md) | 复用 |
 | 167 | PAL Robotics TIAGo | `url:pal-robotics.com` | Hardware Platforms | natnew | [`painode-167-palroboticstiago.md`](../../wiki/entities/painode-167-palroboticstiago.md) | 新建 |
 | 168 | Reachy 2 (Pollen Robotics / Hugging Face) | `url:pollen-robotics.com/reachy-2` | Hardware Platforms | natnew | [`pollen-reachy2.md`](../../wiki/entities/pollen-reachy2.md) | 复用 |
-| 169 | Reachy Mini | `url:huggingface.co/blog/reachy-mini` | Hardware Platforms | natnew | [`painode-169-reachymini.md`](../../wiki/entities/painode-169-reachymini.md) | 新建 |
+| 169 | Reachy Mini | `url:huggingface.co/blog/reachy-mini` | Hardware Platforms | natnew | [`painode-169-reachymini.md`](../../wiki/entities/reachy-mini.md) | 新建 |
 | 170 | SO-ARM100 | `gh:therobotstudio/so-arm100` | Hardware Platforms | natnew | [`painode-170-soarm100.md`](../../wiki/entities/painode-170-soarm100.md) | 新建 |
 | 171 | Stanford Pupper | `url:stanfordstudentrobotics.org/pupper` | Hardware Platforms | natnew | [`stanford-doggo-and-pupper.md`](../../wiki/entities/stanford-doggo-and-pupper.md) | 复用 |
 | 172 | UMI Gripper | `url:umi-gripper.github.io` | Hardware Platforms | natnew | [`painode-172-umigripper.md`](../../wiki/entities/painode-172-umigripper.md) | 新建 |
@@ -316,7 +316,7 @@
 | 306 | RoboFlamingo | `arxiv:2311.01378` | Robotics Foundation Models | natnew | [`paper-pai-2311-01378-roboflamingo.md`](../../wiki/entities/paper-pai-2311-01378-roboflamingo.md) | 新建 |
 | 307 | RT-1 | `arxiv:2212.06817` | Robotics Foundation Models | natnew+aichr | [`paper-rt-1.md`](../../wiki/entities/paper-rt-1.md) | 复用 |
 | 308 | RT-2 | `url:robotics-transformer2.github.io` | Robotics Foundation Models | natnew+aichr | [`paper-rt-2.md`](../../wiki/entities/paper-rt-2.md) | 复用 |
-| 309 | SayCan | `arxiv:2204.01691` | Robotics Foundation Models | natnew | [`saycan.md`](../../wiki/methods/saycan.md) | 复用 |
+| 309 | SayCan | `arxiv:2204.01691` | Robotics Foundation Models | natnew | [`saycan.md`](../../wiki/entities/paper-saycan.md) | 复用 |
 | 310 | VIMA | `arxiv:2210.03094` | Robotics Foundation Models | natnew | [`paper-pai-2210-03094-vima.md`](../../wiki/entities/paper-pai-2210-03094-vima.md) | 新建 |
 | 311 | π0 (Physical Intelligence) | `url:physicalintelligence.company` | Robotics Foundation Models | natnew | [`paper-pi0.md`](../../wiki/entities/paper-pi0.md) | 复用 |
 | 312 | Constrained Policy Optimization (Achiam et al.) | `arxiv:1705.10528` | Safety & Robustness | natnew | [`paper-pai-1705-10528-constrainedpolicyoptimizationachi.md`](../../wiki/entities/paper-pai-1705-10528-constrainedpolicyoptimizationachi.md) | 新建 |

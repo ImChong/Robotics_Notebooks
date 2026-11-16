@@ -11,7 +11,7 @@ related:
   - ../methods/deepmimic.md
   - ../methods/motionbricks.md
   - ../methods/imitation-learning.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./protomotions.md
   - ./amass.md
   - ./paper-behavior-foundation-model-humanoid.md
@@ -45,7 +45,7 @@ summary: "GPC（arXiv:2606.29148，SIGGRAPH 2026）：用 FSQ 端到端 RL 将�
 - **离散化路线的新规模点：** 相对 VQ-VAE token 化多在 **~20 h** 级数据验证，GPC 在 **BONES（~680 h）+ 总计 >600 h** 上训练，FSQ 跟踪成功率 **99.98%**，且 **无需 VQ 常见 codebook 启发式**。
 - **实时交互式控制：** 消费级 **RTX 4090** 可实时运行（$G{=}4$ 分组时约 **115 FPS**），支持摇杆转向、轨迹跟踪等 **闭环交互**，不是离线 clip 生成。
 - **涌现恢复与多样性：** 无条件采样与扰动响应中出现 **侧手翻、前滚起身** 等恢复行为（无专门恢复奖励）；下游任务中相对 CVAE 控制器保留 **同任务多次 rollout 的行为多样性**。
-- **与机器人 WBC 栈的对照坐标：** 同属 Peng / NVIDIA **物理角色控制** 谱系（DeepMimic → ASE → ProtoMotions），但 GPC 明确面向 **SIGGRAPH 角色动画**；与 [SONIC](../methods/sonic-motion-tracking.md)、[BFM](./paper-behavior-foundation-model-humanoid.md) 的 **人形真机 universal tracking** 形成 **「仿真动画生成式先验 vs 机器人部署执行器」** 互补阅读。
+- **与机器人 WBC 栈的对照坐标：** 同属 Peng / NVIDIA **物理角色控制** 谱系（DeepMimic → ASE → ProtoMotions），但 GPC 明确面向 **SIGGRAPH 角色动画**；与 [SONIC](./nvidia-sonic.md)、[BFM](./paper-behavior-foundation-model-humanoid.md) 的 **人形真机 universal tracking** 形成 **「仿真动画生成式先验 vs 机器人部署执行器」** 互补阅读。
 
 ## 流程总览
 
@@ -115,7 +115,7 @@ flowchart TB
 
 - **相对 [ASE](../methods/ase.md) / CVAE 连续潜空间：** ASE 用 **对抗 + 连续超球面嵌入** 学可复用技能；GPC 用 **离散 FSQ + 自回归 Transformer**，在 **600 h+** 规模上规避连续流形 **mode collapse / 离流形漂移**，且下游保留 **随机多样性**（论文 Fig. 8–9 对比 CVAE 任务控制器）。
 - **相对 VQ-VAE token 跟踪（PLT、TokenHSI 等）：** 共享「离散运动 token」思路，但 GPC 强调 **FSQ 简化训练** 与 **端到端 RL 词表学习**，并把重点放在 **GPT 式预训练 + PEFT 迁移**。
-- **相对 [MotionBricks](../methods/motionbricks.md) / [SONIC](../methods/sonic-motion-tracking.md)：** 均涉及 **FSQ/离散运动表示** 与 NVIDIA 栈；MotionBricks/SONIC 面向 **机器人实时 WBC 与 GR00T 集成**，GPC 面向 **物理角色动画大规模生成式先验**——读论文前先确认 **部署目标（真机 vs 仿真角色）**。
+- **相对 [MotionBricks](../methods/motionbricks.md) / [SONIC](./nvidia-sonic.md)：** 均涉及 **FSQ/离散运动表示** 与 NVIDIA 栈；MotionBricks/SONIC 面向 **机器人实时 WBC 与 GR00T 集成**，GPC 面向 **物理角色动画大规模生成式先验**——读论文前先确认 **部署目标（真机 vs 仿真角色）**。
 - **相对 [BFM](./paper-behavior-foundation-model-humanoid.md) / [ReactiveBFM](./paper-reactivebfm.md)：** BFM 系解决 **人形多接口跟踪 + 真机闭环规划**；GPC 解决 **仿真角色技能库上的生成式预训练与 token 微调**——二者可组合想象为「GPC 式离散技能先验 + BFM 式执行器」，但 **本文未做人形机器人实验**。
 - **工程底座：** 训练与评估基于 **Isaac Gym + [ProtoMotions](./protomotions.md)**；主数据 **BONES-SEED**，对照 **AMASS** 子集。
 
@@ -127,7 +127,7 @@ flowchart TB
 - FSQ 相对 VQ-VAE 的收益更多是工程性的：省掉 dead-code 重初始化等 codebook 启发式，同时跟踪成功率（**99.98%**）与 MPJPE 更优；grouped token 的 $G$ 则是 **多样性 vs FPS** 的显式旋钮（$G{=}4$ → 约 **115 FPS**）。
 - 行为侧的实际差异在于 **多样性没有被微调掉**：涌现的侧手翻/前滚起身无专门恢复奖励，CoLA（**<1%** 新参）适配后仍保留同任务多次 rollout 的随机性与扰动鲁棒性。
 - 边界必须说死：对象是 **物理仿真角色**、**无语言接口**、下游只覆盖 locomotion 与场景几何（转向/轨迹/障碍/平台），**不含抓取与人–物交互**，与真机 WBC 结果不可直接类比。
-- 与 [SONIC](../methods/sonic-motion-tracking.md) / [BFM](./paper-behavior-foundation-model-humanoid.md) 的分工是「**仿真动画生成式先验 vs 机器人部署执行器**」；两者组合可以想象，但本文未做人形机器人实验。
+- 与 [SONIC](./nvidia-sonic.md) / [BFM](./paper-behavior-foundation-model-humanoid.md) 的分工是「**仿真动画生成式先验 vs 机器人部署执行器**」；两者组合可以想象，但本文未做人形机器人实验。
 
 ## 常见误区或局限
 
@@ -142,7 +142,7 @@ flowchart TB
 - [ASE（对抗性技能嵌入）](../methods/ase.md)
 - [DeepMimic](../methods/deepmimic.md)
 - [MotionBricks](../methods/motionbricks.md)
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md)
 - [ProtoMotions](./protomotions.md)
 - [AMASS](./amass.md)
 - [Imitation Learning](../methods/imitation-learning.md)

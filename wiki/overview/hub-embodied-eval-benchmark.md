@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-13
 related:
   - ../entities/inspect-robots.md
   - ../entities/robocurve.md
@@ -21,6 +21,7 @@ related:
   - ../entities/robodojo.md
   - ../entities/paper-coap-embodied-turing-machines.md
   - ../entities/robolab.md
+  - ../entities/behavior-challenge-2026.md
   - ../entities/libero-benchmark.md
   - ../entities/robocasa.md
   - ../entities/manda-robotics-open-policy-evaluation.md
@@ -129,7 +130,7 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 | **LIBERO / LIBERO-Plus / LIBERO-PRO** | 语言条件桌面操作、知识迁移与分布变化 | 策略是否记住轨迹；对视角、布局、物体、状态和指令扰动是否稳健 | [LIBERO 主实体](../entities/libero-benchmark.md)、[Plus](../../sources/repos/libero-plus.md)、[PRO](../../sources/repos/libero-pro.md) |
 | **RoboCasa365** | 厨房家庭操作、多任务与复合任务泛化 | 策略能否在多布局厨房完成日常任务 | [RoboCasa 实体](../entities/robocasa.md)、[项目归档](../../sources/repos/robocasa.md) |
 | **RoboTwin 2.0** | 双臂协作操作、合成数据与域随机化 | 合成数据和随机化能否提升未见场景的双臂操作鲁棒性 | [项目归档](../../sources/repos/robotwin-2.md) |
-| **BEHAVIOR-1K / 2026 Challenge** | 家庭尺度长时程任务、导航与物体状态变化 | 策略能否跨房间执行家务并满足终态条件 | [挑战归档](../../sources/repos/behavior-1k-challenge.md) |
+| **BEHAVIOR-1K / 2026 Challenge** | 家庭尺度长时程任务、导航与物体状态变化 | 策略能否跨房间执行家务并满足终态条件；Q-score 的部分目标完成度与完整成功率需分开报告 | [2026 Challenge 实体](../entities/behavior-challenge-2026.md)、[挑战源码归档](../../sources/repos/behavior-1k-challenge.md) |
 | **RoboLab-120** | 高保真仿真中的通用操纵策略 | 真机数据策略在仿真新任务上的表现如何 | [RoboLab 实体](../entities/robolab.md) |
 
 **选型提示：** LIBERO 扰动扩展适合检查记忆依赖；RoboTwin 聚焦双臂与合成数据，RoboCasa 聚焦厨房分布，BEHAVIOR 聚焦长时程家务，RoboLab 关注真机训练策略在高保真仿真中的表现。它们互补，不能用单一平均成功率构成统一排名。
@@ -211,6 +212,9 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [OmniCompass](../entities/paper-omnicompass.md) — 视频时空 grounding 与 VL / AV 理解基准（① 层上游评测）
 - [XPolicyLab](../entities/xpolicylab.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)
+- [AST（arXiv:2611.14111）](../entities/paper-ast-task-information.md) — 以任务信息获取进展与无效重复摩擦度量运行过程，不等于单一完成率指标
+- [LEASH / RoboRisk（arXiv:2611.14115）](../entities/paper-leash.md) — 用任务/动作/提交三级语义安全检查配合五类闭环风险评测，仍非形式化安全证明
+- [Safe Depth（arXiv:2611.13769）](../entities/paper-safe-depth.md) — 对单目深度偏差、不确定性和 Nav2 导航碰撞率进行仿真对照，真实部署还缺里程计与域迁移验证
 
 ## 参考来源
 

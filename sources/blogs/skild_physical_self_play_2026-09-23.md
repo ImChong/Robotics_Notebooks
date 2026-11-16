@@ -52,7 +52,7 @@
 
 | 摘录主题 | 建议 wiki 落点 |
 |----------|----------------|
-| Skild Brain 三阶段 | [`skild-ai`](../entities/skild-ai.md)、[`skild-s1`](../entities/skild-s1.md)、新建 `skild-physical-self-play` |
-| 自博弈 RL | [`reinforcement-learning`](../methods/reinforcement-learning.md)、[`deep-rl-game-milestones`](../concepts/deep-rl-game-milestones.md) |
-| Isaac Sim + Sim2Real | [`sim2real`](../concepts/sim2real.md)、[`isaac-sim`](../entities/isaac-sim.md) |
-| 人形动态对抗 | [`loco-manipulation`](../tasks/loco-manipulation.md)、[`paper-notebook-robostriker`](../entities/paper-notebook-robostriker.md) |
+| Skild Brain 三阶段 | [`skild-ai`](../../wiki/entities/skild-ai.md)、[`skild-s1`](../../wiki/entities/skild-s1.md)、新建 `skild-physical-self-play` |
+| 自博弈 RL | [`reinforcement-learning`](../../wiki/methods/reinforcement-learning.md)、[`deep-rl-game-milestones`](../../wiki/concepts/deep-rl-game-milestones.md) |
+| Isaac Sim + Sim2Real | [`sim2real`](../../wiki/concepts/sim2real.md)、[`isaac-sim`](../../wiki/entities/isaac-sim.md) |
+| 人形动态对抗 | [`loco-manipulation`](../../wiki/tasks/loco-manipulation.md)、[`paper-notebook-robostriker`](../../wiki/entities/paper-notebook-robostriker.md) |

@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-10-17
+updated: 2026-11-15
 summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT 等主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
@@ -11,7 +11,8 @@ related:
   - ./whole-body-control.md
   - ./sim2real.md
   - ./behavior-foundation-model.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
+  - ../entities/paper-ila-interface-level-adapter.md
   - ../methods/beyondmimic.md
   - ../methods/any2track.md
   - ../methods/deepmimic.md
@@ -162,7 +163,7 @@ flowchart TD
 WBT 的**容量上限**由参考池决定。三类典型来源：
 
 - **干净棚拍**：LAFAN1（少量、高质量）、AMASS（万级 SMPL 序列）；适合 fine-grained tracking。
-- **大规模 SMPL 库**：Motion-X / HumanML3D / Motion-X++；适合规模化预训练（[SONIC](../methods/sonic-motion-tracking.md) 路线）。
+- **大规模 SMPL 库**：Motion-X / HumanML3D / Motion-X++；适合规模化预训练（[SONIC](../entities/nvidia-sonic.md) 路线）。
 - **视频估计 / 生成**：GVHMR、WHAM、扩散模型；噪声大、覆盖广，适合 long-tail 行为。轨迹级 **[HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md)** 等后处理可在重定向前改善 **jitter / 脚滑 / 速度–加速度保真度**（对 TRAM、GVHMR 等初始化即插即用）。
 
 > **关键经验**：参考池的**多样性**比单条参考的"精细度"更影响下游泛化；但太脏的视频估计会让全局位置漂移在策略上被放大（参见 [ExoActor](../methods/exoactor.md) 的"跳过重定向"反例）。高阶动力学精炼 **不能替代** 下游物理筛选与 tracking 消融。
@@ -176,7 +177,7 @@ WBT 的**容量上限**由参考池决定。三类典型来源：
 - `contact_phase(t)`：接触相位标签（可选但强烈建议）
 - `keypoints_ref(t)`：手 / 脚 / 头 / 骨盆 SE(3)（用于 tracking reward 设计）
 
-**绕过重定向的反例**：[SONIC](../methods/sonic-motion-tracking.md) / [ExoActor](../methods/exoactor.md) 路线把"通用 tracker"当物理过滤器，直接消费视频估计源——这是一个**任务依赖**的选择，并非通用结论。
+**绕过重定向的反例**：[SONIC](../entities/nvidia-sonic.md) / [ExoActor](../methods/exoactor.md) 路线把"通用 tracker"当物理过滤器，直接消费视频估计源——这是一个**任务依赖**的选择，并非通用结论。
 
 ### 3. 训练数据（Training Data）
 
@@ -198,7 +199,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 | **预训练 latent + 显式跟踪** | β-VAE 运动先验与 PPO 解耦，动画参考接口 | [VMP](../entities/paper-notebook-vmp.md) |
 | **对抗式 motion prior** | 判别器约束风格分布，tracking 由任务奖励驱动 | [AMP](../methods/amp-reward.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) |
 | **生成式中间件** | 扩散/VAE 在 tracking 失败时改写参考 | [Heracles](../entities/paper-heracles-humanoid-diffusion.md) |
-| **规模化通用 tracker** | 海量参考 + 大模型，把 tracking 当**预训练任务** | [SONIC](../methods/sonic-motion-tracking.md)、[GMT/RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track](../methods/any2track.md) |
+| **规模化通用 tracker** | 海量参考 + 大模型，把 tracking 当**预训练任务** | [SONIC](../entities/nvidia-sonic.md)、[GMT/RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track](../methods/any2track.md) |
 
 ### 5. 跨具身迁移（Cross-Embodiment Transfer）
 
@@ -222,7 +223,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 
 | 路径 | 参考池 | 重定向 | 训练目标 | 跨具身策略 | 真机交付 | 典型代表 |
 |------|--------|--------|----------|------------|----------|----------|
-| **SONIC** | 万级 SMPL（Motion-X 等） | 上游 GMR/语义对齐 | tracking-as-pretraining | 多具身联合 + 统一 token | NVIDIA GEAR-SONIC 仓库 | [SONIC](../methods/sonic-motion-tracking.md) |
+| **SONIC** | 万级 SMPL（Motion-X 等） | 上游 GMR/语义对齐 | tracking-as-pretraining | 多具身联合 + 统一 token | NVIDIA GEAR-SONIC 仓库 | [SONIC](../entities/nvidia-sonic.md) |
 | **BeyondMimic** | 干净棚拍（LAFAN1 等） | GMR / 手工对齐 | 显式 tracking + 失败率采样 | 单具身重训 | Isaac Lab + Unitree | [BeyondMimic](../methods/beyondmimic.md) |
 | **SD-AMP** | 3 条 LAFAN1（走/跑/起身） | GMR | 双判别器门控 AMP + PPO | 单具身 | ONNX 50 Hz / Unitree G1 | [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) |
 | **Heracles** | 跟踪失败时由扩散重生成 | — | tracking + 扩散中间件兜底 | 单具身 | 项目页 demo | [Heracles](../entities/paper-heracles-humanoid-diffusion.md) |
@@ -327,13 +328,15 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 
 ## 关联页面
 
+- [ILA：可迁移接口级柔顺适配器](../entities/paper-ila-interface-level-adapter.md) — 在冻结的 MT、MimicLite 与 Sonic 全身跟踪器前修改上肢参考；属于 WBT 部署侧的人机交互接口，而非新的动作重定向器。
+
 - [运控模型评测指标](./motion-control-policy-evaluation-metrics.md) — 本流水线产出的 tracker 用哪些指标验收（Succ 与 MPJPE 联报、终止准则对齐、难度分层）
 
 - [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) — WBT 流水线的**上游**：参考从哪里来
 - [Whole-Body Control (WBC)](./whole-body-control.md) — 一帧内的全身协调（与本页是两层抽象）
 - [Sim2Real](./sim2real.md) — WBT 阶段 6 的核心问题域
 - [Behavior Foundation Model](./behavior-foundation-model.md) — 与 SONIC 路线在叙事上同构的「身体基础模型」视角
-- [SONIC](../methods/sonic-motion-tracking.md) — 规模化通用 tracker 代表
+- [SONIC](../entities/nvidia-sonic.md) — 规模化通用 tracker 代表
 - [BeyondMimic](../methods/beyondmimic.md) — 显式 tracking + 失败率自适应代表
 - [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) — 状态门控对抗 motion prior
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md) — 扩散中间件兜底

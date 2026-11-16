@@ -31,3 +31,7 @@
 
 - 论文摘录：[`sources/papers/sc3_eval_arxiv_2606_18610.md`](../papers/sc3_eval_arxiv_2606_18610.md)
 - 沉淀 **[`wiki/entities/paper-sc3-eval.md`](../../wiki/entities/paper-sc3-eval.md)**
+
+## 2026-11-13 资源复核
+
+已读 <https://weichengtseng.github.io/sc3-eval/> 正文和资源区，Paper指向arXiv:2606.18610；未提供模型训练/推理、权重、381h数据下载入口。页面定性演示未观看；未把网站源码当模型代码。

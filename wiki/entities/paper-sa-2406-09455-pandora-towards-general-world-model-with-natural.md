@@ -20,7 +20,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# Pandora
+# Pandora: General World Model with Language Actions（arXiv:2406.09455）
 
 **Pandora: Towards General World Model with Natural Language Actions and Video States** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 150/571** 篇，分组 **47 General Foundation World Models**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 
