@@ -179,6 +179,8 @@ A–G 基于附件原文的公式推导；H–I 是实际 MPC 建模时仍需完
 
 ## 关联页面
 
+- [仿真物理保真度知识链枢纽](../overview/hub-physics-fidelity.md) — 对照接触假设、数值误差与 Sim2Real 物理保真度
+
 - [Model Predictive Control](../methods/model-predictive-control.md) — MPC 优化机制
 - [Floating-Base Dynamics](../concepts/floating-base-dynamics.md) — 浮动基动力学总览
 - [Robot Jacobian](./robot-jacobian.md) — 雅可比与广义力映射
