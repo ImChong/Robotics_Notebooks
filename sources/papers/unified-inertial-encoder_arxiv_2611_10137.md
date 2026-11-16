@@ -13,10 +13,14 @@
 - **一句话说明：** 用「运动学 IMU 合成」把人体与重定向 G1 人形放进同一 12 部位惯性输入空间，联合训练速度估计与动作-文本对齐，零样本迁移到真机 Unitree G1。
 - **核对范围：** 通读 arXiv v1 PDF 全文（摘要、引言、相关工作、方法 III-A 至 III-D、实验 IV-A 至 IV-F、结论、参考文献列表），含图 1-7 与表 I-V 的文字内容；论文无附录 / 补充材料章节（PDF 在参考文献后结束）。另读了项目页文字与 GitHub README（只静态读，未克隆、未运行代码）；README 的实现细节未与代码逐行核对。
 - **通读：** 已完成
+- **补核（2026-11-16）：** 对照 [arXiv HTML v1](https://arxiv.org/html/2611.10137v1) §III–V、官方项目页、GitHub README、`src/train.py`、`src/model/model.py`、`src/eval.py`、`src/eval_foundation.py` 及 Hugging Face 模型卡。下述开源细节是代码/模型卡证据，并非论文正文；尚未运行程序。
 
 ## 开源状态
 
-- **已开源**（步骤 2.5 核查，2026-11-10）：项目页「Code」链接指向 GitHub 仓库；README 称包含训练、基线对比、数据预处理、评测与论文分析，Apache-2.0 许可，初始发布 2026-11。仓库未克隆，未核实权重是否发布（README 摘录中未见权重说明，推测需自行训练）。
+- **已开源（2026-11-16 更新）：** [项目页](https://unified-inertial-encoder.github.io/) Code 入口指向 [amazon-far/Unified-Inertial-Encoder](https://github.com/amazon-far/Unified-Inertial-Encoder)；Apache-2.0，官方提供训练、预处理、离线评测与 TensorRT profiling 入口。
+- **已发布权重：** [Open-IO/Unified-Inertial-Encoder](https://huggingface.co/Open-IO/Unified-Inertial-Encoder) 已公开 EMA bf16、55.6M 参数的 `checkpoints/unified_encoder.ckpt` 与 `.hydra/`；**不含优化器状态**，无法据此原样续跑训练。
+- **离线真机数据：** [Open-IO/humanoid-g1-odometry](https://huggingface.co/datasets/Open-IO/humanoid-g1-odometry) 可取得 G1 惯性里程计数据，模型 README 提供下载及 `src.eval_foundation` 示例；其他语料有独立下载/授权。
+- **开源归档：** [项目](../sites/unified-inertial-encoder.md)；[代码](../repos/unified-inertial-encoder.md)。
 
 ## 核心摘录（均出自论文，括号为章节 / 表号）
 
@@ -37,6 +41,13 @@
 
 - 20 epoch、4096 ms 窗口、bfloat16、batch 1024；Muon（矩阵参数学习率 2e-3）+ AdamW（其余 5e-3）；结果使用权重 EMA 0.95。
 - README 补充（非论文正文，未核对代码）：6 个 Transformer block、宽度 768、每 token 125 ms，训练用 8 GPU、每卡 128 窗口。
+
+## 复现配方与选模边界（2026-11-16 新增，一手 README/模型卡）
+
+1. [官方训练说明](https://github.com/amazon-far/Unified-Inertial-Encoder#training)：`python -m src.train experiment=exp15_full_train_C` 配方运行 64 epochs；论文报告结果选第 20 epoch（step 6420）的 EMA checkpoint。不要将「配方默认轮数」与「论文结果所用权重轮数」混淆。
+2. [官方模型卡](https://huggingface.co/Open-IO/Unified-Inertial-Encoder) 明确说明：**Real-G1 clips 不用于梯度训练，但其分数影响了当前 checkpoint 的选择**。论文「零样本」指未用真机数据拟合权重或微调，不能解释为完全不参考真机分数进行模型选择。
+3. [评测入口](https://github.com/amazon-far/Unified-Inertial-Encoder/blob/main/src/eval_foundation.py)：`load_model` 恢复 `.hydra/` + checkpoint，`inference` 在多站点数据上计算，`pelvis_restrict` 后才算 AVE 与 ATE；该流程是数据集上的**离线评测**，不是已开源的 G1 实时控制闭环。
+4. [模型实现](https://github.com/amazon-far/Unified-Inertial-Encoder/blob/main/src/model/model.py)：`FoundationIMU.forward` 依次调用 tokenizer / adaptor / trunk，输出修正加速度、角速度、速度与语言特征。详见 wiki 中的源码运行时序图。
 
 ## 二手说法核对（具身智能小站 2026-11-10 条目）
 
