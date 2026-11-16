@@ -2,13 +2,15 @@
 type: entity
 tags: [repo, micromouse, education, arduino, embedded, ukmars, diy, open-source, competition]
 status: complete
-updated: 2026-07-27
+updated: 2026-11-16
 related:
   - ../concepts/micromouse.md
   - ./wolfiemouse.md
   - ./mushr.md
   - ../methods/pid-control.md
   - ./kicad.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/ukmarsbot.md
   - ../../sources/sites/ukmars-org.md
@@ -39,7 +41,7 @@ summary: "UKMARSBOT 是英国 UKMARS 的开源入门多用途机器人：Arduino
 - **一台机多赛种**：先学会电机/编码器/传感，再上 [mazerunner-core](https://github.com/ukmars/mazerunner-core)，降低「直接做竞赛鼠」挫败。
 - **与竞赛鼠对照**：相对 [WolfieMouse](./wolfiemouse.md)（STM32F4 / FreeRTOS / KiCad 一体），UKMARSBOT 优先 **可购性与教学**。
 
-## 核心结构/机制
+## 核心机制
 
 ```mermaid
 flowchart TB
@@ -94,6 +96,8 @@ flowchart TB
 - [KiCad](./kicad.md) — 协会后续模块倾向的开源 EDA
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [sources/repos/ukmarsbot.md](../../sources/repos/ukmarsbot.md)
 - [sources/sites/ukmars-org.md](../../sources/sites/ukmars-org.md)

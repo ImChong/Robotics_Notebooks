@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, wire-harness, cable, flex-life, shielding, strain-relief, connector, reliability, wechat]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-16
 related:
   - ./robot-power-distribution-architecture.md
   - ./robot-onboard-communication-architecture.md
@@ -199,3 +199,19 @@ N = 每分钟循环数 × 每日运动分钟数 × 年工作天数 × 服役年�
 ## 参考来源
 
 - [Zane Hub：人形机器人用线束有哪些类型？如何进行防护？](../../sources/blogs/wechat_zane_hub_humanoid_wire_harness_types_protection_2026-10-20.md)（原文：https://mp.weixin.qq.com/s/xL6Zd8yU4oeUDOG7cxWu8g ；个人观点，数值未核实）
+
+## 核心原理
+
+线束失效由电流发热、运动应变与电磁耦合共同决定。先以安装位和运动轨迹分离动力、反馈与通信线路，再确定导体、屏蔽、护套和应变释放结构。
+
+## 工程实践
+
+用实际弯曲半径、运动速度、温度与载流条件定义循环试验，记录断芯、接触电阻及通信错误随循环数的变化；将连接器固定点与可动段边界画进装配图。
+
+## 局限与风险
+
+原文是工程经验文章，寿命数字和标准引用不能直接作为本产品验收限值。材料替换、端接和装配差异均可能改变寿命，应保留批次与试验边界。
+
+## 推荐继续阅读
+
+结合[整机配电架构](robot-power-distribution-architecture.md)核对载流与保护，再按所选线缆厂商的数据手册确定最小动态弯曲半径。

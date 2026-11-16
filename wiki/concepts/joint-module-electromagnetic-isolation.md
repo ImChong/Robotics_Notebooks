@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, joint-module, emc, electromagnetic-isolation, shielding, grounding, magnetic-encoder, wechat]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-16
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../overview/humanoid-actuator-102-technology-map.md
@@ -165,3 +165,19 @@ summary: "依据 Zane Hub 公众号长文，梳理机器人关节模组内强电
 ## 参考来源
 
 - [微信公众号 Zane Hub《机器人关节模组电磁隔离有哪些方式？》来源归档](../../sources/blogs/wechat_zane_hub_joint_module_electromagnetic_isolation_2026-10-14.md)（原文：https://mp.weixin.qq.com/s/9_KTmC4yzqRrBEo95Sf4Uw ）
+
+## 核心原理
+
+以干扰源、耦合路径和敏感节点建立诊断模型。先区分传导、辐射与磁场耦合，再选择隔离、滤波与屏蔽；器件耐压、共模瞬变抗扰度和编码器误差需分别验证。
+
+## 工程实践
+
+在最大开关电流与实际线束配置下，同步记录编码器角度、电流采样及总线错误；逐次改变回流路径、滤波或屏蔽端接，保留修改前后的对照波形。
+
+## 局限与风险
+
+本页归纳作者工程经验，不能据其中通用数值证明某个关节满足 EMC 标准。磁性材料、开孔、连接器和屏蔽端接都会影响整机结果，须按产品与工况测量。
+
+## 推荐继续阅读
+
+先对照[关节编码器选型](joint-encoder-selection.md)确定敏感对象，再结合[整机通信架构](robot-onboard-communication-architecture.md)安排总线与动力回路。

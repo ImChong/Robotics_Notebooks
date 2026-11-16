@@ -2,13 +2,15 @@
 type: entity
 tags: [repo, micromouse, stm32, pcb, competition, embedded, ieee, open-source]
 status: complete
-updated: 2026-07-27
+updated: 2026-11-16
 related:
   - ../concepts/micromouse.md
   - ./ukmarsbot.md
   - ./kicad.md
   - ../methods/a-star.md
   - ../methods/pid-control.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/wolfiemouse.md
   - ../../sources/sites/micromouseonline-com.md
@@ -38,7 +40,7 @@ summary: "WolfieMouse 是面向 IEEE Region 1 Micromouse 的开源竞赛鼠：ST
 - **工具链完整**：Arm GCC + Makefile + OpenOCD，并提供 Vagrant，降低「只有 Windows 创客 IDE」的路径依赖。
 - **硬件可读**：KiCad 工程与原理图/封装概览图在文档中，适合作为 [KiCad](./kicad.md) 在移动机器人上的案例。
 
-## 核心结构/机制
+## 核心机制
 
 ```mermaid
 flowchart TB
@@ -97,6 +99,8 @@ flowchart TB
 - [PID Control](../methods/pid-control.md)
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [sources/repos/wolfiemouse.md](../../sources/repos/wolfiemouse.md)
 - [sources/sites/micromouseonline-com.md](../../sources/sites/micromouseonline-com.md)

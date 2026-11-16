@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, motor, axial-flux, pcb, open-source, kicad, pmsm, bldc]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-16
 related:
   - ../comparisons/open-source-torque-motor-em-design.md
   - ./axfluxmdo.md
@@ -12,11 +12,13 @@ related:
   - ../concepts/halbach-array.md
   - ./pyleecan.md
   - ../../roadmap/depth-torque-motor-design.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/pcb_motor.md
   - ../../sources/personal/open_source_torque_motor_em_design_curator.md
   - ../../sources/blogs/cadenkraft_coreless_axial_flux_motor_part1.md
-summary: "pcb-motor：开源 PCB 定子轴向磁通 PMSM/BLDC（WIP，MIT）；公开槽极/绕组拓扑与 KiCad；约 20 极、6 层、铜 140 μm、气隙 1 mm；适合微型关节学习，不适合人形髋膝。"
+summary: "pcb-motor：开源 PCB 定子轴向磁通 PMSM/BLDC（WIP，MIT）；公开槽极/绕组拓扑与 KiCad；README 引述研究的 20 极、6 层、铜 140 μm、气隙 1 mm（非本仓实测）；适合微型关节学习，不适合人形髋膝。"
 ---
 
 # PCB Motor（PCB 定子轴向磁通电机）
@@ -43,6 +45,8 @@ summary: "pcb-motor：开源 PCB 定子轴向磁通 PMSM/BLDC（WIP，MIT）；�
 - 与 [Caden Axial Flux Part 1](./cadenkraft-ironless-axial-flux-motor.md)（漆包线线圈 + 打印结构、**未开源 CAD**）对照：本仓提供 **可打样 Gerber**，彼仓提供 Halbach 手算叙事。
 
 ## 核心信息（README 摘录）
+
+其中 20 极、六层、2 mm、140 μm 与 1 mm 来自 README 所引文献 [3] 的方案，未核实为本仓硬件或实测结果。
 
 | 项 | 内容 |
 |----|------|
@@ -91,6 +95,8 @@ flowchart LR
 
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [sources/repos/pcb_motor.md](../../sources/repos/pcb_motor.md)
 - [开源力矩电机电磁设计策展](../../sources/personal/open_source_torque_motor_em_design_curator.md)

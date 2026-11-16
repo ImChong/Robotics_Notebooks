@@ -2,7 +2,7 @@
 type: concept
 tags: [hardware, protocol, uart, ttl, cmos, embedded, debugging, robotics]
 status: complete
-updated: 2026-06-10
+updated: 2026-11-16
 related:
   - ./uart-serial-communication.md
   - ./rs-232-serial-interface.md
@@ -120,3 +120,11 @@ flowchart LR
 
 - SparkFun [Logic Levels](https://learn.sparkfun.com/tutorials/logic-levels)
 - Wikipedia：[Universal asynchronous receiver-transmitter](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter)
+
+## 工程实践
+
+对照发送端 VOH/VOL、接收端 VIH/VIL 与绝对最大额定值逐项检查跨压域兼容性。先共地、确认 USB 串口适配器电平，再交叉连接 TX/RX；电源跳线电压不必等于信号电平。
+
+## 局限与风险
+
+“TTL 串口”是常见口语，现代 MCU 引脚可能采用 CMOS 阈值；不能据名称推断 5 V 容忍。短线直连的成功结果不能外推到长线或电机开关噪声环境。

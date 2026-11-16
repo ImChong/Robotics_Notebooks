@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, hardware, battery, compute, pcb, bms, category-hub]
 status: complete
-updated: 2026-07-18
+updated: 2026-11-16
 summary: "Humanoid Hardware 101 · 05 能源与计算电子 — 锂电 NMC 标配、功率密度与能量密度难兼得；Thor/NX 主导算力；PCB/BMS 可随 DFM 复用降本。"
 related:
   - ./humanoid-hardware-101-technology-map.md
@@ -58,3 +58,27 @@ sources:
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)
 - [wechat_humanoid_hardware_101_2026-06-01.md](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
+
+## 一句话定义
+
+能源与计算电子把电池的能量预算、计算平台的功耗与板卡的配电、保护和散热连成整机的电气底座。
+
+## 为什么重要
+
+电池、计算模块与关节负载共享有限的质量和热预算；板卡设计既要承接峰值功率，又要保证控制与感知持续供电。
+
+## 核心原理
+
+从任务占空比估算平均能耗，以峰值负载校核母线和保护，再分域供电给计算、传感与执行器。PCB 将电源变换、信号接口与测试入口落实为可制造电路。
+
+## 工程实践
+
+建立电源树与各路电压、电流和上电顺序表；带真实计算任务与执行器负载测母线跌落、温升和复位事件。PCB 改版应关联 BOM、固件和测试记录。
+
+## 局限与风险
+
+原文的产品与成本判断带有时间和样机边界；不能把某计算平台或电芯体系当作所有人形的固定配置。续航必须给出运动、待机与作业的比例。
+
+## 推荐继续阅读
+
+先读[整机配电架构](../concepts/robot-power-distribution-architecture.md)，再用[KiCad](../entities/kicad.md)落实板级电路与制造交付。

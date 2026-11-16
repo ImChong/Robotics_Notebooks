@@ -2,7 +2,7 @@
 type: concept
 tags: [hardware, actuator, encoder, joint-module, humanoid, quadruped]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-16
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ./joint-torque-sensor-selection.md
@@ -104,3 +104,7 @@ $$ \tau_{\mathrm{est}} \approx K_\theta \left( \frac{\theta_{\mathrm{motor}}}{N}
 
 - [Heidenhain ECN/EQN 系列公开参数](https://www.heidenhain.com/)
 - [RLS AksIM-2 磁环系统规格](https://www.rls.si/)
+
+## 核心原理
+
+光电编码器通过码盘调制光信号，磁编码器测转子磁场，电感编码器利用线圈耦合变化测位置。反馈安装在电机侧时服务换相，安装在输出侧时才能直接观测减速器之后的角度；两侧反馈须校准传动比与零位。

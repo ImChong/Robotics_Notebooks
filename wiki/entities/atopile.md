@@ -6,12 +6,14 @@ institutions: [atopile]
 code: https://github.com/atopile/atopile
 tags: [software, electronics, eda, pcb, hardware, robotics]
 status: complete
-updated: 2026-10-26
+updated: 2026-11-16
 related:
   - ./kicad.md
   - ./heypcb.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
   - ../overview/motor-drive-firmware-bus-protocols.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/atopile.md
 summary: "atopile 是以声明式代码表达电子设计的语言、编译器与工具链，强调模块复用、约束校验和参数化器件选择，并与 KiCad PCB 布局衔接。"
@@ -39,7 +41,7 @@ summary: "atopile 是以声明式代码表达电子设计的语言、编译器�
 
 机器人硬件往往要反复调整电机驱动、电源、传感器和计算板。atopile 将电路模块与参数化约束保存在代码工程中，便于复用、版本管理、协作审查，并把电子设计流程接入软件化构建与检查。它补充了 [KiCad](./kicad.md) 的图形化原理图与 PCB 布局流程，适合关注代码化设计和复用的团队评估。
 
-## 核心结构与工作流
+## 核心机制与工作流
 
 1. **描述设计**：在 `.ato` 文件中定义模块、接口、单位、容差和断言。
 2. **复用模块与选择器件**：组合设计模块，并使用参数化器件选择能力。
@@ -61,6 +63,19 @@ README 的快速上手方式是安装 VS Code/Cursor 扩展后打开示例并运
 atopile 主仓库公开并采用 MIT 许可，包含语言、编译器与工具链代码；官方 README 还链接文档、示例、编辑器扩展和模块注册表。机器人驱动板是否能被某个模块库直接覆盖，需按具体器件与电气约束确认。
 
 atopile 的代码化描述和构建检查不能单独证明电路安全、可制造或已通过实板验证。高电流、高压、热设计、EMI 与安全相关部分仍需硬件工程师检查，并在打样后测试。
+
+## 流程总览
+
+以下是官方 README 描述的功能与数据流；具体源码调用链以本页注明版本的时序图为准。
+
+```mermaid
+flowchart LR
+  N0[".ato 模块与约束"]
+  N1["ato build 编译与检查"]
+  N2["参数化器件选择"]
+  N3["KiCad 布局与制造输出"]
+  N0 --> N1 --> N2 --> N3
+```
 
 ## 源码运行时序图
 
@@ -109,6 +124,8 @@ sequenceDiagram
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — atopile 属驱动链 ① EDA 电路设计层：以代码描述电路与约束，PCB 布局仍落到 KiCad
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [atopile 官方仓库归档](../../sources/repos/atopile.md)
 - 源码核对（2026-11-02）：atopile/atopile@619eda7，读过 README.md、pyproject.toml、src/atopile/cli/cli.py、src/atopile/cli/build.py、src/atopile/model/build_queue.py、src/atopile/buildutil.py、src/atopile/build_steps.py；时序图依据以上文件，未运行代码。

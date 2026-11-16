@@ -6,11 +6,13 @@ project: https://docs.part-db.de/
 code: https://github.com/Part-DB/Part-DB-server
 tags: [software, electronics, hardware, open-source, inventory]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-16
 related:
   - ./kicad.md
   - ./atopile.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/part-db.md
 summary: "Part-DB 是自托管电子元件库存系统，可管理元件参数、数量和存放位置，并与 KiCad 物料流程衔接。"
@@ -35,7 +37,7 @@ summary: "Part-DB 是自托管电子元件库存系统，可管理元件参数�
 
 机器人驱动板、电源板和传感器板需要追踪多种器件。Part-DB 将元件资料、库存数量及位置放在同一系统，便于实验室查找物料、盘点库存和准备板卡装配。
 
-## 核心功能与工作流
+## 核心机制与工作流
 
 - **建档与查找**：记录分类、封装、制造商、参数、价格及数据手册；可按参数搜索。
 - **库存与位置**：元件可关联多个存放位置；支持条码生成和扫描、库存变更日志。
@@ -47,6 +49,19 @@ summary: "Part-DB 是自托管电子元件库存系统，可管理元件参数�
 官方提供 Docker 部署路径，也支持自行配置 Web 服务器；数据库可选 SQLite、MySQL 或 PostgreSQL。部署前按官方文档选择数据库并配置用户权限，库存准确性仍依赖实际入库、领用和盘点。
 
 服务端源码以 AGPL-3.0-or-later 许可公开。Part-DB 管理物料和库存，电路设计与 PCB 布局可与 [KiCad](./kicad.md) 配合；器件设计约束和板级验证仍需在设计流程中完成。
+
+## 流程总览
+
+以下是官方 README 描述的功能与数据流；具体源码调用链以本页注明版本的时序图为准。
+
+```mermaid
+flowchart LR
+  N0["元件与库存建档"]
+  N1["项目 BOM 关联"]
+  N2["可装配数量与领料"]
+  N3["库存变更日志"]
+  N0 --> N1 --> N2 --> N3
+```
 
 ## 源码运行时序图
 
@@ -97,6 +112,8 @@ sequenceDiagram
 - [Humanoid Hardware 101 · 能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md) — 机器人板级硬件背景。
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [Part-DB 官方仓库归档](../../sources/repos/part-db.md)
 - 源码核对（2026-11-02）：Part-DB/Part-DB-server@462d36c，读过 `public/index.php`、`config/packages/security.yaml`、`src/Controller/KiCadApiController.php`、`src/Services/EDA/KiCadHelper.php`、`docs/usage/eda_integration.md`；时序图依据以上文件，未运行代码。

@@ -2,7 +2,7 @@
 type: concept
 tags: [hardware, protocol, rs232, serial, industrial, embedded, robotics]
 status: complete
-updated: 2026-06-10
+updated: 2026-11-16
 related:
   - ./uart-serial-communication.md
   - ./ttl-serial-logic-level.md
@@ -134,3 +134,11 @@ flowchart TB
 
 - TI [SLLA038 — RS-232 Basics](https://www.ti.com/lit/an/slla038/slla038.pdf)
 - ITU-T [V.24](https://www.itu.int/rec/T-REC-V.24) 电路定义
+
+## 工程实践
+
+MCU UART 与 RS-232 之间使用匹配供电与摆幅的收发器；接线前确认 DTE/DCE、TX/RX 与信号地。用回环先验证波特率与帧格式，再接仪器并检查握手配置。
+
+## 局限与风险
+
+RS-232 是单端点对点接口，不能把多个发送器直接并接。长线、共地电位差和工业噪声会压缩裕量，距离与速率应按所选收发器及电缆实测。

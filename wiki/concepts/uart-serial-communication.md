@@ -2,7 +2,7 @@
 type: concept
 tags: [hardware, protocol, uart, rs485, serial, embedded, debugging, robotics]
 status: complete
-updated: 2026-10-29
+updated: 2026-11-16
 related:
   - ./ttl-serial-logic-level.md
   - ./rs-232-serial-interface.md
@@ -101,3 +101,15 @@ flowchart LR
 
 - Texas Instruments [SLLA383 — UART-to-RS-485 Interface](https://www.ti.com/lit/an/slla383b/slla383b.pdf)
 - Wikipedia：[UART](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter)
+
+## 核心机制
+
+UART 发送器将数据按起始位、数据位、可选校验位和停止位串行化；接收器以起始沿同步并按配置波特率采样。UART 不决定引脚电压标准，TTL/CMOS、RS-232 与 RS-485 是不同电气实现。
+
+## 工程实践
+
+先用回环验证波特率、数据位、校验与停止位，再接入目标设备。持续遥测使用缓冲与非阻塞收发，记录溢出、帧错误和丢包；RS-485 还需在帧结束后控制发送方向。
+
+## 局限与风险
+
+UART 本身没有地址仲裁、重传或消息边界；二进制流需自行定义长度、校验和超时。阻塞日志会占用控制线程，不能把波特率直接当成应用吞吐或实时性保证。

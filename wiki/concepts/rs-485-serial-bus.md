@@ -2,7 +2,7 @@
 type: concept
 tags: [hardware, protocol, rs485, modbus, fieldbus, embedded, robotics, industrial]
 status: complete
-updated: 2026-06-10
+updated: 2026-11-16
 related:
   - ./uart-serial-communication.md
   - ./ttl-serial-logic-level.md
@@ -10,6 +10,8 @@ related:
   - ./can-bus-protocol.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
+original:
+  - ../../sources/sites/ti-rs485-slla070d.md
 sources:
   - ../../sources/sites/rs485_tia_eia_primary_refs.md
   - ../../sources/courses/uart_rs485_serial_embedded.md
@@ -129,6 +131,8 @@ flowchart LR
 
 ## 参考来源
 
+- [已有一手原文通读归档](../../sources/sites/ti-rs485-slla070d.md) — 复用已归档的阅读记录，具体核对范围见该归档。
+
 - [RS-485（TIA/EIA-485）一手资料索引](../../sources/sites/rs485_tia_eia_primary_refs.md)
 - [UART / RS-485 嵌入式入门索引](../../sources/courses/uart_rs485_serial_embedded.md)
 
@@ -136,3 +140,11 @@ flowchart LR
 
 - TI [SLLA383B — UART-to-RS-485 Interface](https://www.ti.com/lit/an/slla383b/slla383b.pdf)
 - Modbus [Modbus over serial line V1.02](https://modbus.org/docs/Modbus_over_serial_line_V1_02.pdf)
+
+## 工程实践
+
+以主干加短支线布线，两端端接匹配电缆阻抗；检查空闲偏置与收发器内建 failsafe。发送完成应等待 UART 移位寄存器清空后再释放 DE，并用示波器检查方向切换是否截断停止位。
+
+## 局限与风险
+
+32 指单位负载预算，不是所有收发器的固定节点上限；端接和偏置也消耗驱动能力。差分接收仍有共模范围，长线或不同电源域须评估隔离及浪涌防护。
