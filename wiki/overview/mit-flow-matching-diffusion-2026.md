@@ -2,7 +2,7 @@
 type: overview
 tags: [diffusion, flow-matching, generative-ai, course, mit, sde, score-matching]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-16
 related:
   - ../formalizations/probability-flow.md
   - ../methods/diffusion-policy.md
@@ -23,7 +23,7 @@ summary: "MIT CSAIL IAP 2026 课程 6.S184：从 ODE/SDE 与 Fokker–Planck 到
 
 # MIT 6.S184：Flow Matching & Diffusion Models（2026）
 
-> **本页定位**：为 [MIT CSAIL 2026 课程站](https://diffusion.csail.mit.edu/2026/index.html) 提供 **按理论–Lab–机器人应用** 组织的阅读坐标。2026-11-07 已对照官方 2026 版讲义 PDF（84 页）核实各讲要点；Lab 以 [iap-diffusion-labs](https://github.com/eje24/iap-diffusion-labs/tree/2026) 为准，notebook 本身尚未逐段核查。
+> **本页定位**：为 [MIT CSAIL 2026 课程站](https://diffusion.csail.mit.edu/2026/index.html) 提供 **按理论–Lab–机器人应用** 组织的阅读坐标。2026-11-07 已对照官方 2026 版讲义 PDF（84 页）核实各讲要点；Lab 以 [iap-diffusion-labs](https://github.com/eje24/iap-diffusion-labs/tree/2026) 为准；2026-11-16 已核对三份练习 notebook 的关键入口及 Lab 3 官方解答的训练/采样逻辑，**尚未实际运行**。
 
 ## 一句话定义
 
@@ -91,7 +91,7 @@ flowchart LR
 ## 课程入口与核查范围
 
 - [2026 课程主页](https://diffusion.csail.mit.edu/2026/index.html)提供六段讲课录像、幻灯片和三个实验入口；[课程讲义 PDF](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)是官方推荐的课程主线，站点称它“自包含”并“强烈推荐使用”。先修：线性代数、多元微积分、基础概率，会 Python 与一些 PyTorch；站点许可 CC BY-NC-SA。
-- 2026-11-07 已通读官方 2026 版讲义（§1–§7 的正文与各定理/小结框；证明、概率复习、附录 D–E 只浏览）。讲课录像、幻灯片尚未观看，Lab notebook 核心源码尚未逐段核查或运行；本页不包含源码运行时序图。
+- 2026-11-07 已通读官方 2026 版讲义（§1–§7 的正文与各定理/小结框；证明、概率复习、附录 D–E 只浏览）。讲课录像、幻灯片尚未观看。2026-11-16 增量核对了 Lab 1–3 的关键代码单元与 Lab 3 官方解答；**未实际运行/评估**，下面的时序图仅记录源码明确的执行路径。
 - 站点把第 3 讲拆成 3-A（分数匹配）与 3-B（CFG），讲义对应第 4、5 节；第 4 讲对应讲义第 6 节，第 5 讲对应第 7 节。
 - [实验仓库](https://github.com/eje24/iap-diffusion-labs/tree/2026)提供 notebook 与解法；其 README 记录了 2026-01 对 Lab 2 `ConditionalVectorFieldSDE` / `LangevinFlowSDE` 扩散系数 bug 的修复。
 
@@ -101,11 +101,45 @@ flowchart LR
 
 | Lab | 练什么 | 仓库 |
 |-----|--------|------|
-| **Lab 1** | Working with ODEs and SDEs（站点标题；README 提到含 Langevin 动力学） | [iap-diffusion-labs](https://github.com/eje24/iap-diffusion-labs/tree/2026) |
-| **Lab 2** | Flow Matching and Score Matching（站点标题；README 提到条件 SDE 采样） | Colab + GitHub solutions |
-| **Lab 3** | Diffusion Transformer and VAEs（站点标题；与讲义 §6 对应的 latent diffusion） | 完整生成管线 capstone |
+| **Lab 1** | ODE/SDE、Euler / Euler–Maruyama、Brownian / OU | [练习](https://github.com/eje24/iap-diffusion-labs/blob/2026/labs/lab_one.ipynb) · [解答](https://github.com/eje24/iap-diffusion-labs/blob/2026/solutions/lab_one_complete.ipynb) |
+| **Lab 2** | 条件概率路径、CFM/Score Matching、ODE/SDE 采样 | [练习](https://github.com/eje24/iap-diffusion-labs/blob/2026/labs/lab_two.ipynb) · [解答](https://github.com/eje24/iap-diffusion-labs/blob/2026/solutions/lab_two_complete.ipynb) |
+| **Lab 3** | MNIST CFG、DiT、VAE、潜空间生成 | [练习](https://github.com/eje24/iap-diffusion-labs/blob/2026/labs/lab_three.ipynb) · [解答](https://github.com/eje24/iap-diffusion-labs/blob/2026/solutions/lab_three_complete.ipynb) |
 
-**建议顺序：** 先读 Lecture 1–2 notes → 做 Lab 1–2 → 再读 score/CFG 与 Lecture 4–5 → Lab 3。
+**建议顺序：** 先读 Lecture 1–2 notes → 做 Lab 1–2 → 再读 score/CFG 与 Lecture 4–5 → Lab 3。注意官方 `labs/` 是含待实现方法的作业骨架；参考答案在 `solutions/`，不可将骨架视为开箱即训模型。
+
+### Lab 3 源码运行时序图（官方完成版）
+
+下图取自 [官方 `solutions/lab_three_complete.ipynb`](https://github.com/eje24/iap-diffusion-labs/blob/2026/solutions/lab_three_complete.ipynb) 的单元格执行路径：先训练 VAE，再在潜空间训练 DiT 的 CFG 向量场，最后通过 ODE 采样并解码。`get_train_loss` 中的标签置空、潜变量编码、速度监督以及 `visualize_samples` 中的采样/解码均已核对；**并非实测运行日志**。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant J as Jupyter Lab 3
+  participant D as MNISTSampler
+  participant V as VAE
+  participant T as LatentCFGTrainer
+  participant P as GaussianConditionalProbabilityPath
+  participant F as DiffusionTransformerFlowModel
+  participant S as EulerSimulator
+  J->>D: sample MNIST images and labels
+  J->>V: MNISTVAETrainer.train (VAE reconstruction)
+  J->>T: train(model=dit)
+  loop each training step
+    T->>D: sample(batch_size)
+    T->>V: encode(images) to latent z
+    T->>P: sample_conditional_path(z,t)
+    T->>P: conditional_vector_field(z_t,z,t)
+    T->>F: forward(z_t,t,y) and regress velocity
+  end
+  J->>T: visualize_samples / checkpoint
+  T->>S: simulate(latent noise, times, labels)
+  S->>F: CFGVectorFieldODE evaluates conditional and null field
+  S-->>T: generated latent z_1
+  T->>V: decode(z_1)
+  V-->>J: generated MNIST images
+```
+
+这套代码运行于 Jupyter/Colab，模型生成的是 MNIST 图像，不包含机器人的控制回路、动作 chunk 或硬件驱动。
 
 ## 局限与风险
 
@@ -116,6 +150,7 @@ flowchart LR
 
 ## 关联页面
 
+- [扩散与流匹配策略纵深路线](../../roadmap/depth-robotics-diffusion-dit-flow.md) — 作为 Diffusion Policy / π₀ 学习前的可选数学与实验准备
 - [流匹配与具身策略（概念）](../concepts/flow-matching-embodied-policy.md) — 机器人 VLA / 动作头侧 FM 导读
 - [Probability Flow（形式化）](../formalizations/probability-flow.md)
 - [Diffusion Model（概念）](../concepts/diffusion-model.md)
