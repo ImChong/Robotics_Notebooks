@@ -1,5 +1,6 @@
 ---
 type: entity
+status: complete
 title: TensorFlow
 date: 2026-06-25
 tags: [framework, deep-learning, tensorflow, deployment, edge-inference, google, mlops]

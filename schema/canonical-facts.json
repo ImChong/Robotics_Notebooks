@@ -4,10 +4,10 @@
       "PPO"
     ],
     "pos_claims": [
-      "PPO.*样本效率.*高|高.*样本效率.*PPO|PPO.*sample.efficient"
+      "PPO[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}高|高[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}PPO|PPO[^。！？\\n]{0,80}sample.efficient"
     ],
     "neg_claims": [
-      "PPO.*样本效率.*低|PPO.*sample.inefficient|PPO.*样本效率差"
+      "PPO[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}低|PPO[^。！？\\n]{0,80}sample.inefficient|PPO[^。！？\\n]{0,80}样本效率差"
     ]
   },
   "MPC 实时性": {
@@ -16,10 +16,10 @@
       "model.predictive"
     ],
     "pos_claims": [
-      "MPC.*实时|实时.*MPC|MPC.*real.?time|MPC.*online"
+      "MPC[^。！？\\n]{0,80}实时|实时[^。！？\\n]{0,80}MPC|MPC[^。！？\\n]{0,80}real.?time|MPC[^。！？\\n]{0,80}online"
     ],
     "neg_claims": [
-      "MPC.*无法实时|MPC.*not real.?time|MPC.*计算量.*过大.*实时"
+      "MPC[^。！？\\n]{0,80}无法实时|MPC[^。！？\\n]{0,80}not real.?time|MPC[^。！？\\n]{0,80}计算量[^。！？\\n]{0,80}过大[^。！？\\n]{0,80}实时"
     ]
   },
   "Domain Randomization 必要性": {
@@ -28,10 +28,10 @@
       "域随机"
     ],
     "pos_claims": [
-      "必须|必要|sim2real.*必|是.*sim2real.*关键"
+      "必须|必要|sim2real[^。！？\\n]{0,80}必|是[^。！？\\n]{0,80}sim2real[^。！？\\n]{0,80}关键"
     ],
     "neg_claims": [
-      "降低.*in.distribution|DR.*不.*必要|不需要.*domain.*random|domain.*random.*unnecessary"
+      "降低[^。！？\\n]{0,80}in.distribution|DR[^。！？\\n]{0,80}不[^。！？\\n]{0,80}必要|不需要[^。！？\\n]{0,80}domain[^。！？\\n]{0,80}random|domain[^。！？\\n]{0,80}random[^。！？\\n]{0,80}unnecessary"
     ]
   },
   "RL 推理速度": {
@@ -41,10 +41,10 @@
       "强化学习"
     ],
     "pos_claims": [
-      "推理.*快|推理延迟.*低|inference.*fast|low.*latency"
+      "推理[^。！？\\n]{0,80}快|推理延迟[^。！？\\n]{0,80}低|inference[^。！？\\n]{0,80}fast|low[^。！？\\n]{0,80}latency"
     ],
     "neg_claims": [
-      "推理.*慢|推理.*延迟.*高|inference.*slow|latency.*high"
+      "推理[^。！？\\n]{0,80}慢|推理[^。！？\\n]{0,80}延迟[^。！？\\n]{0,80}高|inference[^。！？\\n]{0,80}slow|latency[^。！？\\n]{0,80}high"
     ]
   },
   "WBC 计算复杂度": {
@@ -56,7 +56,7 @@
       "实时|real.?time|efficient|高效|fast"
     ],
     "neg_claims": [
-      "WBC.*计算量大|WBC.*computationally expensive|WBC.*not real.?time|WBC.*无法实时"
+      "WBC[^。！？\\n]{0,80}计算量大|WBC[^。！？\\n]{0,80}computationally expensive|WBC[^。！？\\n]{0,80}not real.?time|WBC[^。！？\\n]{0,80}无法实时"
     ]
   },
   "接触力估计精度": {
@@ -65,10 +65,10 @@
       "接触力"
     ],
     "pos_claims": [
-      "精确.*估计|accurate.*estimation|高精度"
+      "精确[^。！？\\n]{0,80}估计|accurate[^。！？\\n]{0,80}estimation|高精度"
     ],
     "neg_claims": [
-      "估计不准|inaccurate|sim2real.*gap.*contact|接触.*仿真.*差距"
+      "估计不准|inaccurate|sim2real[^。！？\\n]{0,80}gap[^。！？\\n]{0,80}contact|接触[^。！？\\n]{0,80}仿真[^。！？\\n]{0,80}差距"
     ]
   },
   "TSID 基于 QP": {
@@ -76,10 +76,10 @@
       "TSID"
     ],
     "pos_claims": [
-      "基于.*QP|QP.*框架|QP.*求解|二次规划.*求解"
+      "基于[^。！？\\n]{0,80}QP|QP[^。！？\\n]{0,80}框架|QP[^。！？\\n]{0,80}求解|二次规划[^。！？\\n]{0,80}求解"
     ],
     "neg_claims": [
-      "不.*基于.*QP|独立.*于.*QP|非.*QP.*方法|TSID.*不.*基于"
+      "不[^。！？\\n]{0,80}基于[^。！？\\n]{0,80}QP|独立[^。！？\\n]{0,80}于[^。！？\\n]{0,80}QP|非[^。！？\\n]{0,80}QP[^。！？\\n]{0,80}方法|TSID[^。！？\\n]{0,80}不[^。！？\\n]{0,80}基于"
     ]
   },
   "WBC 多接触优势": {
@@ -88,10 +88,10 @@
       "whole.body"
     ],
     "pos_claims": [
-      "优于|多接触.*优|必要|必须.*控制|统一.*优化"
+      "优于|多接触[^。！？\\n]{0,80}优|必要|必须[^。！？\\n]{0,80}控制|统一[^。！？\\n]{0,80}优化"
     ],
     "neg_claims": [
-      "WBC.*完全没用|WBC.*没有.*多接触优势|WBC.*没必要.*多接触"
+      "WBC[^。！？\\n]{0,80}完全没用|WBC[^。！？\\n]{0,80}没有[^。！？\\n]{0,80}多接触优势|WBC[^。！？\\n]{0,80}没必要[^。！？\\n]{0,80}多接触"
     ]
   },
   "MuJoCo 接触精度": {
@@ -100,21 +100,21 @@
       "MuJoCo"
     ],
     "pos_claims": [
-      "精确|accurate|高精度|精度.*高|接触.*真实"
+      "精确|accurate|高精度|精度[^。！？\\n]{0,80}高|接触[^。！？\\n]{0,80}真实"
     ],
     "neg_claims": [
-      "不精确|不适合.*接触|接触.*gap.*大|contact.*inaccurate"
+      "不精确|不适合[^。！？\\n]{0,80}接触|接触[^。！？\\n]{0,80}gap[^。！？\\n]{0,80}大|contact[^。！？\\n]{0,80}inaccurate"
     ]
   },
   "仿真频率对接触稳定性": {
     "terms": [
-      "仿真频率|simulation.*frequenc|sim.*freq"
+      "仿真频率|simulation[^。！？\\n]{0,80}frequenc|sim[^。！？\\n]{0,80}freq"
     ],
     "pos_claims": [
-      "关键|重要|必须|稳定.*必要|stability.*critical|高频.*稳定"
+      "关键|重要|必须|稳定[^。！？\\n]{0,80}必要|stability[^。！？\\n]{0,80}critical|高频[^。！？\\n]{0,80}稳定"
     ],
     "neg_claims": [
-      "频率.*无关|低频.*足够|频率.*不重要|不影响.*稳定"
+      "频率[^。！？\\n]{0,80}无关|低频[^。！？\\n]{0,80}足够|频率[^。！？\\n]{0,80}不重要|不影响[^。！？\\n]{0,80}稳定"
     ]
   },
   "GAE λ 范围": {
@@ -123,10 +123,10 @@
       "广义优势"
     ],
     "pos_claims": [
-      "λ.*\\(0.*1\\)|lambda.*0.*1|λ.*介于|0.*<.*λ.*<.*1"
+      "λ[^。！？\\n]{0,80}\\(0[^。！？\\n]{0,80}1\\)|lambda[^。！？\\n]{0,80}0[^。！？\\n]{0,80}1|λ[^。！？\\n]{0,80}介于|0[^。！？\\n]{0,80}<[^。！？\\n]{0,80}λ[^。！？\\n]{0,80}<[^。！？\\n]{0,80}1"
     ],
     "neg_claims": [
-      "λ.*>.*1|λ.*<.*0|GAE.*无.*λ|GAE.*不.*用.*lambda"
+      "λ[^。！？\\n]{0,80}>[^。！？\\n]{0,80}1|λ[^。！？\\n]{0,80}<[^。！？\\n]{0,80}0|GAE[^。！？\\n]{0,80}无[^。！？\\n]{0,80}λ|GAE[^。！？\\n]{0,80}不[^。！？\\n]{0,80}用[^。！？\\n]{0,80}lambda"
     ]
   },
   "EKF 线性化误差": {
@@ -138,18 +138,18 @@
       "线性化|lineariz|一阶近似|first.order"
     ],
     "neg_claims": [
-      "EKF.*精确非线性|EKF.*无线性化误差|EKF.*exact"
+      "EKF[^。！？\\n]{0,80}精确非线性|EKF[^。！？\\n]{0,80}无线性化误差|EKF[^。！？\\n]{0,80}exact"
     ]
   },
   "Model-Based RL 样本效率": {
     "terms": [
-      "model.based.*rl|model.based.*reinforcement|基于模型.*强化"
+      "model.based[^。！？\\n]{0,80}rl|model.based[^。！？\\n]{0,80}reinforcement|基于模型[^。！？\\n]{0,80}强化"
     ],
     "pos_claims": [
-      "样本效率.*高|sample.*efficient|数据效率.*高|更.*efficient"
+      "样本效率[^。！？\\n]{0,80}高|sample[^。！？\\n]{0,80}efficient|数据效率[^。！？\\n]{0,80}高|更[^。！？\\n]{0,80}efficient"
     ],
     "neg_claims": [
-      "model.based.*样本效率.*低|model.based.*inefficient|数据效率.*差"
+      "model.based[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}低|model.based[^。！？\\n]{0,80}inefficient|数据效率[^。！？\\n]{0,80}差"
     ]
   },
   "Diffusion Policy 推理延迟": {
@@ -158,10 +158,10 @@
       "扩散策略"
     ],
     "pos_claims": [
-      "去噪.*步数|denoising.*step|推理.*多步|multi.*step.*inference"
+      "去噪[^。！？\\n]{0,80}步数|denoising[^。！？\\n]{0,80}step|推理[^。！？\\n]{0,80}多步|multi[^。！？\\n]{0,80}step[^。！？\\n]{0,80}inference"
     ],
     "neg_claims": [
-      "diffusion.*单步|diffusion.*instant|扩散.*无延迟|denoising.*free"
+      "diffusion[^。！？\\n]{0,80}单步|diffusion[^。！？\\n]{0,80}instant|扩散[^。！？\\n]{0,80}无延迟|denoising[^。！？\\n]{0,80}free"
     ]
   },
   "WBC 优先级约束": {
@@ -170,10 +170,10 @@
       "whole.body"
     ],
     "pos_claims": [
-      "优先级|priority|层次|hierarchy|安全.*约束.*首"
+      "优先级|priority|层次|hierarchy|安全[^。！？\\n]{0,80}约束[^。！？\\n]{0,80}首"
     ],
     "neg_claims": [
-      "WBC.*无优先级|WBC.*等权|WBC.*flat.*weight"
+      "WBC[^。！？\\n]{0,80}无优先级|WBC[^。！？\\n]{0,80}等权|WBC[^。！？\\n]{0,80}flat[^。！？\\n]{0,80}weight"
     ]
   },
   "Sim2Real 主流手段": {
@@ -182,10 +182,10 @@
       "sim.to.real"
     ],
     "pos_claims": [
-      "domain.*randomization|域随机|\\bDR\\b|adaptive.*domain"
+      "domain[^。！？\\n]{0,80}randomization|域随机|\\bDR\\b|adaptive[^。！？\\n]{0,80}domain"
     ],
     "neg_claims": [
-      "sim2real.*无需随机|sim2real.*only.*real.*data"
+      "sim2real[^。！？\\n]{0,80}无需随机|sim2real[^。！？\\n]{0,80}only[^。！？\\n]{0,80}real[^。！？\\n]{0,80}data"
     ]
   },
   "Retargeting 运动学约束": {
@@ -194,10 +194,10 @@
       "重定向"
     ],
     "pos_claims": [
-      "运动学.*约束|kinematic.*constraint|关节.*限制.*重定向|需要.*匹配.*运动学"
+      "运动学[^。！？\\n]{0,80}约束|kinematic[^。！？\\n]{0,80}constraint|关节[^。！？\\n]{0,80}限制[^。！？\\n]{0,80}重定向|需要[^。！？\\n]{0,80}匹配[^。！？\\n]{0,80}运动学"
     ],
     "neg_claims": [
-      "重定向.*仅.*角度|retarget.*just.*angle|retarget.*no.*constraint"
+      "重定向[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}角度|retarget[^。！？\\n]{0,80}just[^。！？\\n]{0,80}angle|retarget[^。！？\\n]{0,80}no[^。！？\\n]{0,80}constraint"
     ]
   },
   "PPO Clip 范围": {
@@ -206,21 +206,21 @@
       "clip"
     ],
     "pos_claims": [
-      "clip.*ratio|ε.*=.*0\\.[12]|epsilon.*clip|裁剪.*比率"
+      "clip[^。！？\\n]{0,80}ratio|ε[^。！？\\n]{0,80}=[^。！？\\n]{0,80}0\\.[12]|epsilon[^。！？\\n]{0,80}clip|裁剪[^。！？\\n]{0,80}比率"
     ],
     "neg_claims": [
-      "PPO.*无.*clip|PPO.*不.*裁剪|clip.*unnecessary"
+      "PPO[^。！？\\n]{0,80}无[^。！？\\n]{0,80}clip|PPO[^。！？\\n]{0,80}不[^。！？\\n]{0,80}裁剪|clip[^。！？\\n]{0,80}unnecessary"
     ]
   },
   "接触互补性条件": {
     "terms": [
-      "complementarity|互补性|接触.*互补"
+      "complementarity|互补性|接触[^。！？\\n]{0,80}互补"
     ],
     "pos_claims": [
-      "φ.*≥.*0|λ.*≥.*0|非负|non.negative|互补.*约束"
+      "φ[^。！？\\n]{0,80}≥[^。！？\\n]{0,80}0|λ[^。！？\\n]{0,80}≥[^。！？\\n]{0,80}0|非负|non.negative|互补[^。！？\\n]{0,80}约束"
     ],
     "neg_claims": [
-      "接触.*无约束|contact.*unconstrained|互补.*不必要"
+      "接触[^。！？\\n]{0,80}无约束|contact[^。！？\\n]{0,80}unconstrained|互补[^。！？\\n]{0,80}不必要"
     ]
   },
   "DAgger 数据效率": {
@@ -228,10 +228,10 @@
       "DAgger"
     ],
     "pos_claims": [
-      "比.*BC.*数据效率.*高|解决.*分布漂移|处理.*covariate shift|缓解.*covariate shift"
+      "比[^。！？\\n]{0,80}BC[^。！？\\n]{0,80}数据效率[^。！？\\n]{0,80}高|解决[^。！？\\n]{0,80}分布漂移|处理[^。！？\\n]{0,80}covariate shift|缓解[^。！？\\n]{0,80}covariate shift"
     ],
     "neg_claims": [
-      "与.*BC.*等价|不处理.*covariate shift|不处理.*分布漂移"
+      "与[^。！？\\n]{0,80}BC[^。！？\\n]{0,80}等价|不处理[^。！？\\n]{0,80}covariate shift|不处理[^。！？\\n]{0,80}分布漂移"
     ]
   },
   "VLA 推理延迟": {
@@ -239,10 +239,10 @@
       "VLA|Vision.Language.Action|RT-2|π₀|pi0"
     ],
     "pos_claims": [
-      "50ms\\+|50ms以上|推理延迟.*高|控制频率.*低|latency.*50"
+      "50ms\\+|50ms以上|推理延迟[^。！？\\n]{0,80}高|控制频率[^。！？\\n]{0,80}低|latency[^。！？\\n]{0,80}50"
     ],
     "neg_claims": [
-      "实时性.*传统控制器相当|与.*传统控制器相当|低延迟.*1kHz|高频闭环.*无需缓冲"
+      "实时性[^。！？\\n]{0,80}传统控制器相当|与[^。！？\\n]{0,80}传统控制器相当|低延迟[^。！？\\n]{0,80}1kHz|高频闭环[^。！？\\n]{0,80}无需缓冲"
     ]
   },
   "行为克隆 compounding error": {
@@ -253,7 +253,7 @@
       "compounding error|错误累积|累积误差|covariate shift"
     ],
     "neg_claims": [
-      "累积误差.*无关|序列长度.*无关|不会.*错误累积"
+      "累积误差[^。！？\\n]{0,80}无关|序列长度[^。！？\\n]{0,80}无关|不会[^。！？\\n]{0,80}错误累积"
     ]
   },
   "接触力摩擦约束": {
@@ -261,10 +261,10 @@
       "接触|contact|摩擦锥|friction cone"
     ],
     "pos_claims": [
-      "\\|f_\\{?xy\\}?\\|.*<=.*(μ|mu).*f_z|\\|f_t\\|.*<=.*mu.*f_n|摩擦锥.*约束|friction cone"
+      "\\|f_\\{?xy\\}?\\|[^。！？\\n]{0,80}<=[^。！？\\n]{0,80}(μ|mu)[^。！？\\n]{0,80}f_z|\\|f_t\\|[^。！？\\n]{0,80}<=[^。！？\\n]{0,80}mu[^。！？\\n]{0,80}f_n|摩擦锥[^。！？\\n]{0,80}约束|friction cone"
     ],
     "neg_claims": [
-      "无需.*摩擦锥|不需要.*摩擦锥|contact force.*unconstrained"
+      "无需[^。！？\\n]{0,80}摩擦锥|不需要[^。！？\\n]{0,80}摩擦锥|contact force[^。！？\\n]{0,80}unconstrained"
     ]
   },
   "腿足地形感知": {
@@ -275,7 +275,7 @@
       "高度图|点云|height map|point cloud|地形感知"
     ],
     "neg_claims": [
-      "不需要.*地形感知|无需.*高度图|无需.*点云"
+      "不需要[^。！？\\n]{0,80}地形感知|无需[^。！？\\n]{0,80}高度图|无需[^。！？\\n]{0,80}点云"
     ]
   },
   "MiniLM 向量维度": {
@@ -283,32 +283,10 @@
       "MiniLM|all-MiniLM-L6-v2"
     ],
     "pos_claims": [
-      "384.*维|384-dim|384维"
+      "384[^。！？\\n]{0,80}维|384-dim|384维"
     ],
     "neg_claims": [
-      "768.*维|768-dim|768维"
-    ]
-  },
-  "Marp 幻灯片格式": {
-    "terms": [
-      "Marp"
-    ],
-    "pos_claims": [
-      "Markdown.*frontmatter|frontmatter.*Markdown|生成.*幻灯片"
-    ],
-    "neg_claims": [
-      "需要.*LaTeX|需要.*Beamer|必须.*LaTeX"
-    ]
-  },
-  "sentence-transformers CPU": {
-    "terms": [
-      "sentence-transformers|SentenceTransformer"
-    ],
-    "pos_claims": [
-      "CPU.*运行|可在.*CPU.*运行|无需.*GPU|without GPU"
-    ],
-    "neg_claims": [
-      "必须.*GPU|only.*GPU|cannot.*CPU"
+      "768[^。！？\\n]{0,80}维|768-dim|768维"
     ]
   },
   "VLA 训练数据规模": {
@@ -316,10 +294,10 @@
       "VLA|RT-1|RT-2|π₀|pi0"
     ],
     "pos_claims": [
-      "大量.*演示|数千\\+|130k\\+|大规模.*数据|多样化.*演示"
+      "大量[^。！？\\n]{0,80}演示|数千\\+|130k\\+|大规模[^。！？\\n]{0,80}数据|多样化[^。！？\\n]{0,80}演示"
     ],
     "neg_claims": [
-      "十条.*演示|10条.*演示|少量.*演示.*收敛"
+      "十条[^。！？\\n]{0,80}演示|10条[^。！？\\n]{0,80}演示|少量[^。！？\\n]{0,80}演示[^。！？\\n]{0,80}收敛"
     ]
   },
   "BM25 参数含义": {
@@ -327,10 +305,10 @@
       "BM25|k1|\\bb\\b"
     ],
     "pos_claims": [
-      "k1.*词频.*饱和|b.*长度归一化|长度归一化.*b|词频饱和.*k1"
+      "k1[^。！？\\n]{0,80}词频[^。！？\\n]{0,80}饱和|b[^。！？\\n]{0,80}长度归一化|长度归一化[^。！？\\n]{0,80}b|词频饱和[^。！？\\n]{0,80}k1"
     ],
     "neg_claims": [
-      "b.*与词频无关|b.*控制词频|k1.*长度归一化"
+      "b[^。！？\\n]{0,80}与词频无关|b[^。！？\\n]{0,80}控制词频|k1[^。！？\\n]{0,80}长度归一化"
     ]
   },
   "π₀ Flow Matching": {
@@ -338,10 +316,10 @@
       "π₀|pi0|Flow Matching|flow matching"
     ],
     "pos_claims": [
-      "Flow Matching|flow matching|连续动作.*生成"
+      "Flow Matching|flow matching|连续动作[^。！？\\n]{0,80}生成"
     ],
     "neg_claims": [
-      "不.*用.*Flow Matching|仅.*Transformer.*直接回归|without.*flow matching"
+      "不[^。！？\\n]{0,80}用[^。！？\\n]{0,80}Flow Matching|仅[^。！？\\n]{0,80}Transformer[^。！？\\n]{0,80}直接回归|without[^。！？\\n]{0,80}flow matching"
     ]
   },
   "CBF 安全集条件": {
@@ -349,10 +327,10 @@
       "CBF|Control Barrier Function|控制障碍函数"
     ],
     "pos_claims": [
-      "h\\(x\\).*≥.*0|安全集.*h.*≥|维持.*安全集|超平面.*h.*≥.*0"
+      "h\\(x\\)[^。！？\\n]{0,80}≥[^。！？\\n]{0,80}0|安全集[^。！？\\n]{0,80}h[^。！？\\n]{0,80}≥|维持[^。！？\\n]{0,80}安全集|超平面[^。！？\\n]{0,80}h[^。！？\\n]{0,80}≥[^。！？\\n]{0,80}0"
     ],
     "neg_claims": [
-      "CBF.*直接优化.*性能|CBF.*最大化.*奖励|CBF.*优化.*目标函数"
+      "CBF[^。！？\\n]{0,80}直接优化[^。！？\\n]{0,80}性能|CBF[^。！？\\n]{0,80}最大化[^。！？\\n]{0,80}奖励|CBF[^。！？\\n]{0,80}优化[^。！？\\n]{0,80}目标函数"
     ]
   },
   "CLF 指数衰减条件": {
@@ -360,10 +338,10 @@
       "CLF|Control Lyapunov Function|控制李雅普诺夫"
     ],
     "pos_claims": [
-      "V̇.*≤.*-.*α.*V|衰减.*条件|指数.*衰减|dot.*V.*≤.*-.*alpha"
+      "V̇[^。！？\\n]{0,80}≤[^。！？\\n]{0,80}-[^。！？\\n]{0,80}α[^。！？\\n]{0,80}V|衰减[^。！？\\n]{0,80}条件|指数[^。！？\\n]{0,80}衰减|dot[^。！？\\n]{0,80}V[^。！？\\n]{0,80}≤[^。！？\\n]{0,80}-[^。！？\\n]{0,80}alpha"
     ],
     "neg_claims": [
-      "CLF.*无需.*衰减|Lyapunov.*无衰减条件|CLF.*不要求.*导数.*负"
+      "CLF[^。！？\\n]{0,80}无需[^。！？\\n]{0,80}衰减|Lyapunov[^。！？\\n]{0,80}无衰减条件|CLF[^。！？\\n]{0,80}不要求[^。！？\\n]{0,80}导数[^。！？\\n]{0,80}负"
     ]
   },
   "双臂闭链约束": {
@@ -371,22 +349,10 @@
       "双臂|bimanual|dual.arm"
     ],
     "pos_claims": [
-      "闭链|closed.loop.*kinematic|closed-loop.*kinematic|闭环运动学|闭链约束"
+      "闭链|closed.loop[^。！？\\n]{0,80}kinematic|closed-loop[^。！？\\n]{0,80}kinematic|闭环运动学|闭链约束"
     ],
     "neg_claims": [
-      "双臂.*独立.*单臂|bimanual.*two.*independent|双臂.*各自独立"
-    ]
-  },
-  "Anki TSV 字段分隔符": {
-    "terms": [
-      "Anki|anki",
-      "TSV|tsv"
-    ],
-    "pos_claims": [
-      "制表符|Tab.*分隔|tab.separated|\\t.*分隔符"
-    ],
-    "neg_claims": [
-      "逗号.*分隔|comma.*separated|CSV.*Anki|Anki.*CSV"
+      "双臂[^。！？\\n]{0,80}独立[^。！？\\n]{0,80}单臂|bimanual[^。！？\\n]{0,80}two[^。！？\\n]{0,80}independent|双臂[^。！？\\n]{0,80}各自独立"
     ]
   },
   "WBC QP 求解时间": {
@@ -395,54 +361,54 @@
       "QP|二次规划"
     ],
     "pos_claims": [
-      "50.*200.*μs|OSQP.*微秒|QP.*求解.*50|QP.*μs"
+      "50[^。！？\\n]{0,80}200[^。！？\\n]{0,80}μs|OSQP[^。！？\\n]{0,80}微秒|QP[^。！？\\n]{0,80}求解[^。！？\\n]{0,80}50|QP[^。！？\\n]{0,80}μs"
     ],
     "neg_claims": [
-      "WBC.*QP.*秒级|WBC.*求解.*几秒|QP.*second.*WBC"
+      "WBC[^。！？\\n]{0,80}QP[^。！？\\n]{0,80}秒级|WBC[^。！？\\n]{0,80}求解[^。！？\\n]{0,80}几秒|QP[^。！？\\n]{0,80}second[^。！？\\n]{0,80}WBC"
     ]
   },
   "特权训练非对称 Actor": {
     "terms": [
-      "特权训练|privileged.*training|teacher.student|asymmetric.*actor"
+      "特权训练|privileged[^。！？\\n]{0,80}training|teacher.student|asymmetric[^。！？\\n]{0,80}actor"
     ],
     "pos_claims": [
-      "非对称|asymmetric.*actor|Teacher.*有.*特权|Student.*无.*特权|训练时.*额外"
+      "非对称|asymmetric[^。！？\\n]{0,80}actor|Teacher[^。！？\\n]{0,80}有[^。！？\\n]{0,80}特权|Student[^。！？\\n]{0,80}无[^。！？\\n]{0,80}特权|训练时[^。！？\\n]{0,80}额外"
     ],
     "neg_claims": [
-      "特权训练.*对称|teacher.*student.*相同.*观测|privileged.*symmetric"
+      "特权训练[^。！？\\n]{0,80}对称|teacher[^。！？\\n]{0,80}student[^。！？\\n]{0,80}相同[^。！？\\n]{0,80}观测|privileged[^。！？\\n]{0,80}symmetric"
     ]
   },
   "Foundation Policy 预训练数据规模": {
     "terms": [
-      "foundation.*policy|基础策略模型|RT-1|Octo"
+      "foundation[^。！？\\n]{0,80}policy|基础策略模型|RT-1|Octo"
     ],
     "pos_claims": [
-      "130k\\+|大规模.*演示|多机器人.*形态|800k|跨.*任务.*预训练"
+      "130k\\+|大规模[^。！？\\n]{0,80}演示|多机器人[^。！？\\n]{0,80}形态|800k|跨[^。！？\\n]{0,80}任务[^。！？\\n]{0,80}预训练"
     ],
     "neg_claims": [
-      "RT-1.*少量.*数据|foundation.*policy.*百条|基础策略.*低数据"
+      "RT-1[^。！？\\n]{0,80}少量[^。！？\\n]{0,80}数据|foundation[^。！？\\n]{0,80}policy[^。！？\\n]{0,80}百条|基础策略[^。！？\\n]{0,80}低数据"
     ]
   },
   "模仿学习分布外泛化": {
     "terms": [
-      "imitation.*learning|模仿学习|behavior.*cloning|行为克隆"
+      "imitation[^。！？\\n]{0,80}learning|模仿学习|behavior[^。！？\\n]{0,80}cloning|行为克隆"
     ],
     "pos_claims": [
-      "分布外.*失败|out.*of.*distribution|分布偏移|covariate shift|compounding"
+      "分布外[^。！？\\n]{0,80}失败|out[^。！？\\n]{0,80}of[^。！？\\n]{0,80}distribution|分布偏移|covariate shift|compounding"
     ],
     "neg_claims": [
-      "模仿学习.*分布外.*稳定|BC.*不受.*分布偏移.*影响|IL.*robust.*distribution"
+      "模仿学习[^。！？\\n]{0,80}分布外[^。！？\\n]{0,80}稳定|BC[^。！？\\n]{0,80}不受[^。！？\\n]{0,80}分布偏移[^。！？\\n]{0,80}影响|IL[^。！？\\n]{0,80}robust[^。！？\\n]{0,80}distribution"
     ]
   },
   "HQP 优先级层次": {
     "terms": [
-      "HQP|Hierarchical.*QP|层次化.*QP"
+      "HQP|Hierarchical[^。！？\\n]{0,80}QP|层次化[^。！？\\n]{0,80}QP"
     ],
     "pos_claims": [
-      "优先级|priority|层次|hierarchy|高优先级.*先满足"
+      "优先级|priority|层次|hierarchy|高优先级[^。！？\\n]{0,80}先满足"
     ],
     "neg_claims": [
-      "HQP.*无优先级|HQP.*等权.*优化|hierarchical.*no.*priority"
+      "HQP[^。！？\\n]{0,80}无优先级|HQP[^。！？\\n]{0,80}等权[^。！？\\n]{0,80}优化|hierarchical[^。！？\\n]{0,80}no[^。！？\\n]{0,80}priority"
     ]
   },
   "PPO on-policy 特性": {
@@ -450,21 +416,21 @@
       "PPO"
     ],
     "pos_claims": [
-      "PPO.*on.policy|PPO.*每次.*更新.*丢弃|PPO.*不.*复用.*历史数据"
+      "PPO[^。！？\\n]{0,80}on.policy|PPO[^。！？\\n]{0,80}每次[^。！？\\n]{0,80}更新[^。！？\\n]{0,80}丢弃|PPO[^。！？\\n]{0,80}不[^。！？\\n]{0,80}复用[^。！？\\n]{0,80}历史数据"
     ],
     "neg_claims": [
-      "PPO 是 off.policy|PPO 属于 off.policy|PPO 本质上.*off.policy|PPO.*replay buffer.*来.*复用"
+      "PPO 是 off.policy|PPO 属于 off.policy|PPO 本质上[^。！？\\n]{0,80}off.policy|PPO[^。！？\\n]{0,80}replay buffer[^。！？\\n]{0,80}来[^。！？\\n]{0,80}复用"
     ]
   },
   "Contact-rich 接触力建模": {
     "terms": [
-      "contact.rich|接触丰富|接触.*丰富"
+      "contact.rich|接触丰富|接触[^。！？\\n]{0,80}丰富"
     ],
     "pos_claims": [
-      "显式.*建模.*接触|接触力.*建模|force.*model|顺应性.*控制|impedance"
+      "显式[^。！？\\n]{0,80}建模[^。！？\\n]{0,80}接触|接触力[^。！？\\n]{0,80}建模|force[^。！？\\n]{0,80}model|顺应性[^。！？\\n]{0,80}控制|impedance"
     ],
     "neg_claims": [
-      "contact.rich.*忽略.*接触|接触丰富.*不需要.*力控|contact.*force.*ignored"
+      "contact.rich[^。！？\\n]{0,80}忽略[^。！？\\n]{0,80}接触|接触丰富[^。！？\\n]{0,80}不需要[^。！？\\n]{0,80}力控|contact[^。！？\\n]{0,80}force[^。！？\\n]{0,80}ignored"
     ]
   },
   "CLF 收敛驱动目标": {
@@ -472,21 +438,21 @@
       "CLF|Control Lyapunov|控制李雅普诺夫"
     ],
     "pos_claims": [
-      "CLF.*收敛.*平衡|CLF.*驱动.*收敛|CLF.*渐近稳定|Control Lyapunov.*stabiliz"
+      "CLF[^。！？\\n]{0,80}收敛[^。！？\\n]{0,80}平衡|CLF[^。！？\\n]{0,80}驱动[^。！？\\n]{0,80}收敛|CLF[^。！？\\n]{0,80}渐近稳定|Control Lyapunov[^。！？\\n]{0,80}stabiliz"
     ],
     "neg_claims": [
-      "CLF 用于安全边界|CLF 就是 CBF|CLF 等同于 CBF|CLF.*safety barrier function"
+      "CLF 用于安全边界|CLF 就是 CBF|CLF 等同于 CBF|CLF[^。！？\\n]{0,80}safety barrier function"
     ]
   },
   "CBF vs CLF 功能区别": {
     "terms": [
-      "CBF|CBF.*CLF|CLF.*CBF"
+      "CBF|CBF[^。！？\\n]{0,80}CLF|CLF[^。！？\\n]{0,80}CBF"
     ],
     "pos_claims": [
-      "CBF.*安全.*CLF.*收敛|安全集.*CBF.*稳定性.*CLF|CBF.*维持.*CLF.*驱动"
+      "CBF[^。！？\\n]{0,80}安全[^。！？\\n]{0,80}CLF[^。！？\\n]{0,80}收敛|安全集[^。！？\\n]{0,80}CBF[^。！？\\n]{0,80}稳定性[^。！？\\n]{0,80}CLF|CBF[^。！？\\n]{0,80}维持[^。！？\\n]{0,80}CLF[^。！？\\n]{0,80}驱动"
     ],
     "neg_claims": [
-      "CBF.*CLF.*功能相同|CBF.*与.*CLF.*等价|CBF.*替代.*CLF"
+      "CBF[^。！？\\n]{0,80}CLF[^。！？\\n]{0,80}功能相同|CBF[^。！？\\n]{0,80}与[^。！？\\n]{0,80}CLF[^。！？\\n]{0,80}等价|CBF[^。！？\\n]{0,80}替代[^。！？\\n]{0,80}CLF"
     ]
   },
   "VLA 输出空间": {
@@ -494,10 +460,10 @@
       "VLA|Vision.Language.Action"
     ],
     "pos_claims": [
-      "末端执行器.*位姿|end.effector.*pose|EE.*pose|目标位姿.*输出"
+      "末端执行器[^。！？\\n]{0,80}位姿|end.effector[^。！？\\n]{0,80}pose|EE[^。！？\\n]{0,80}pose|目标位姿[^。！？\\n]{0,80}输出"
     ],
     "neg_claims": [
-      "VLA.*直接.*关节.*力矩|VLA.*joint.*torque.*direct|VLA.*关节级.*指令"
+      "VLA[^。！？\\n]{0,80}直接[^。！？\\n]{0,80}关节[^。！？\\n]{0,80}力矩|VLA[^。！？\\n]{0,80}joint[^。！？\\n]{0,80}torque[^。！？\\n]{0,80}direct|VLA[^。！？\\n]{0,80}关节级[^。！？\\n]{0,80}指令"
     ]
   },
   "双臂内力协调": {
@@ -505,32 +471,32 @@
       "双臂|bimanual|dual.arm"
     ],
     "pos_claims": [
-      "协调规划|内力.*避免|avoid.*internal.*force|closed.loop.*coordination|协调.*内力"
+      "协调规划|内力[^。！？\\n]{0,80}避免|avoid[^。！？\\n]{0,80}internal[^。！？\\n]{0,80}force|closed.loop[^。！？\\n]{0,80}coordination|协调[^。！？\\n]{0,80}内力"
     ],
     "neg_claims": [
-      "双臂.*各自.*独立.*规划|bimanual.*no.*coordination|双臂.*内力.*无需处理"
+      "双臂[^。！？\\n]{0,80}各自[^。！？\\n]{0,80}独立[^。！？\\n]{0,80}规划|bimanual[^。！？\\n]{0,80}no[^。！？\\n]{0,80}coordination|双臂[^。！？\\n]{0,80}内力[^。！？\\n]{0,80}无需处理"
     ]
   },
   "Isaac Lab GPU 并行规模": {
     "terms": [
-      "Isaac Lab|IsaacLab|isaac.*lab"
+      "Isaac Lab|IsaacLab|isaac[^。！？\\n]{0,80}lab"
     ],
     "pos_claims": [
-      "GPU.*并行|并行.*环境|数千.*环境|thousands.*enviro|massive.*parallel"
+      "GPU[^。！？\\n]{0,80}并行|并行[^。！？\\n]{0,80}环境|数千[^。！？\\n]{0,80}环境|thousands[^。！？\\n]{0,80}enviro|massive[^。！？\\n]{0,80}parallel"
     ],
     "neg_claims": [
-      "Isaac Lab.*不.*并行|Isaac Lab.*单环境|IsaacLab.*no.*GPU"
+      "Isaac Lab[^。！？\\n]{0,80}不[^。！？\\n]{0,80}并行|Isaac Lab[^。！？\\n]{0,80}单环境|IsaacLab[^。！？\\n]{0,80}no[^。！？\\n]{0,80}GPU"
     ]
   },
   "Domain Randomization 随机扰动方式": {
     "terms": [
-      "domain.randomization|域随机|DR.*参数|随机化.*参数"
+      "domain.randomization|域随机|DR[^。！？\\n]{0,80}参数|随机化[^。！？\\n]{0,80}参数"
     ],
     "pos_claims": [
-      "随机.*扰动|随机化.*参数|参数.*分布|parameter.*distribution|uniform.*range"
+      "随机[^。！？\\n]{0,80}扰动|随机化[^。！？\\n]{0,80}参数|参数[^。！？\\n]{0,80}分布|parameter[^。！？\\n]{0,80}distribution|uniform[^。！？\\n]{0,80}range"
     ],
     "neg_claims": [
-      "DR.*固定.*参数|domain.*random.*fixed.*param|随机化.*无效"
+      "DR[^。！？\\n]{0,80}固定[^。！？\\n]{0,80}参数|domain[^。！？\\n]{0,80}random[^。！？\\n]{0,80}fixed[^。！？\\n]{0,80}param|随机化[^。！？\\n]{0,80}无效"
     ]
   },
   "Diffusion Policy 多模态能力": {
@@ -538,10 +504,10 @@
       "diffusion.policy|扩散策略"
     ],
     "pos_claims": [
-      "多模态|multimodal|复杂.*操作|multi.modal.*action|多峰.*分布"
+      "多模态|multimodal|复杂[^。！？\\n]{0,80}操作|multi.modal[^。！？\\n]{0,80}action|多峰[^。！？\\n]{0,80}分布"
     ],
     "neg_claims": [
-      "diffusion.*单模态|diffusion.*unimodal|扩散.*单峰.*分布"
+      "diffusion[^。！？\\n]{0,80}单模态|diffusion[^。！？\\n]{0,80}unimodal|扩散[^。！？\\n]{0,80}单峰[^。！？\\n]{0,80}分布"
     ]
   },
   "VLA 高延迟异步执行": {
@@ -549,33 +515,33 @@
       "VLA|Vision.Language.Action"
     ],
     "pos_claims": [
-      "100ms|异步.*执行|async.*execution|action.*chunk|动作.*块.*缓冲"
+      "100ms|异步[^。！？\\n]{0,80}执行|async[^。！？\\n]{0,80}execution|action[^。！？\\n]{0,80}chunk|动作[^。！？\\n]{0,80}块[^。！？\\n]{0,80}缓冲"
     ],
     "neg_claims": [
-      "VLA.*无需异步|VLA.*同步.*控制|VLA.*低延迟.*同步"
+      "VLA[^。！？\\n]{0,80}无需异步|VLA[^。！？\\n]{0,80}同步[^。！？\\n]{0,80}控制|VLA[^。！？\\n]{0,80}低延迟[^。！？\\n]{0,80}同步"
     ]
   },
   "接触丰富顺应性控制": {
     "terms": [
       "contact.rich|接触丰富",
-      "force.*control|impedance|力控|阻抗"
+      "force[^。！？\\n]{0,80}control|impedance|力控|阻抗"
     ],
     "pos_claims": [
-      "力控|阻抗控制|impedance.*control|force.*control|顺应性.*控制|compliance"
+      "力控|阻抗控制|impedance[^。！？\\n]{0,80}control|force[^。！？\\n]{0,80}control|顺应性[^。！？\\n]{0,80}控制|compliance"
     ],
     "neg_claims": [
-      "contact.rich.*纯位置控制|接触丰富.*位置控制.*足够|contact.*pure.*position.*control"
+      "contact.rich[^。！？\\n]{0,80}纯位置控制|接触丰富[^。！？\\n]{0,80}位置控制[^。！？\\n]{0,80}足够|contact[^。！？\\n]{0,80}pure[^。！？\\n]{0,80}position[^。！？\\n]{0,80}control"
     ]
   },
   "Impedance Control 模型": {
     "terms": [
-      "impedance.*control|阻抗控制"
+      "impedance[^。！？\\n]{0,80}control|阻抗控制"
     ],
     "pos_claims": [
-      "质量.*弹簧.*阻尼|mass.*spring.*damper|M_d.*B_d.*K_d|虚拟.*物理系统"
+      "质量[^。！？\\n]{0,80}弹簧[^。！？\\n]{0,80}阻尼|mass[^。！？\\n]{0,80}spring[^。！？\\n]{0,80}damper|M_d[^。！？\\n]{0,80}B_d[^。！？\\n]{0,80}K_d|虚拟[^。！？\\n]{0,80}物理系统"
     ],
     "neg_claims": [
-      "阻抗控制.*无阻尼|阻抗控制.*纯刚性|阻抗控制.*等同PID"
+      "阻抗控制[^。！？\\n]{0,80}无阻尼|阻抗控制[^。！？\\n]{0,80}纯刚性|阻抗控制[^。！？\\n]{0,80}等同PID"
     ]
   },
   "Impedance vs Admittance": {
@@ -584,52 +550,52 @@
       "admittance|导纳"
     ],
     "pos_claims": [
-      "阻抗.*位移.*力|导纳.*力.*位移|输入.*误差.*输出.*力矩"
+      "阻抗[^。！？\\n]{0,80}位移[^。！？\\n]{0,80}力|导纳[^。！？\\n]{0,80}力[^。！？\\n]{0,80}位移|输入[^。！？\\n]{0,80}误差[^。！？\\n]{0,80}输出[^。！？\\n]{0,80}力矩"
     ],
     "neg_claims": [
-      "阻抗.*导纳.*相同|阻抗控制.*输入力|导纳控制.*输出力"
+      "阻抗[^。！？\\n]{0,80}导纳[^。！？\\n]{0,80}相同|阻抗控制[^。！？\\n]{0,80}输入力|导纳控制[^。！？\\n]{0,80}输出力"
     ]
   },
   "Impedance 柔顺性": {
     "terms": [
-      "impedance.*control|阻抗控制"
+      "impedance[^。！？\\n]{0,80}control|阻抗控制"
     ],
     "pos_claims": [
-      "主动柔顺|active.*compliance|接触力.*安全|退让"
+      "主动柔顺|active[^。！？\\n]{0,80}compliance|接触力[^。！？\\n]{0,80}安全|退让"
     ],
     "neg_claims": [
-      "阻抗控制.*位置.*绝对|阻抗控制.*不具备柔顺|缺乏柔顺"
+      "阻抗控制[^。！？\\n]{0,80}位置[^。！？\\n]{0,80}绝对|阻抗控制[^。！？\\n]{0,80}不具备柔顺|缺乏柔顺"
     ]
   },
   "Impedance 阻尼调参": {
     "terms": [
-      "impedance.*control|阻抗控制",
+      "impedance[^。！？\\n]{0,80}control|阻抗控制",
       "阻尼|damper|B_d"
     ],
     "pos_claims": [
-      "临界阻尼|critical.*damping|防止.*震荡|往复振荡"
+      "临界阻尼|critical[^。！？\\n]{0,80}damping|防止[^。！？\\n]{0,80}震荡|往复振荡"
     ],
     "neg_claims": [
-      "阻尼.*越大越好|阻尼.*无需调整|阻尼.*导致.*震荡"
+      "阻尼[^。！？\\n]{0,80}越大越好|阻尼[^。！？\\n]{0,80}无需调整|阻尼[^。！？\\n]{0,80}导致[^。！？\\n]{0,80}震荡"
     ]
   },
   "Trajectory Optimization 离线": {
     "terms": [
-      "trajectory.*optimization|轨迹优化"
+      "trajectory[^。！？\\n]{0,80}optimization|轨迹优化"
     ],
     "pos_claims": [
       "离线规划|offline|长时域|开环|非线性规划|NLP"
     ],
     "neg_claims": [
-      "轨迹优化.*必须在线|轨迹优化.*等于.*MPC|完全实时"
+      "轨迹优化[^。！？\\n]{0,80}必须在线|轨迹优化[^。！？\\n]{0,80}等于[^。！？\\n]{0,80}MPC|完全实时"
     ]
   },
   "Direct Collocation 约束": {
     "terms": [
-      "direct.*collocation|直接配点"
+      "direct[^。！？\\n]{0,80}collocation|直接配点"
     ],
     "pos_claims": [
-      "状态.*控制.*同时优化|动力学.*等式约束|隐式.*接触"
+      "状态[^。！？\\n]{0,80}控制[^。！？\\n]{0,80}同时优化|动力学[^。！？\\n]{0,80}等式约束|隐式[^。！？\\n]{0,80}接触"
     ],
     "neg_claims": [
       "只优化控制|只优化状态|无动力学约束"
@@ -643,7 +609,7 @@
       "串联弹性执行器|SEA|力控执行器|碰撞缓冲"
     ],
     "neg_claims": [
-      "ANYmal.*纯刚性电机|ANYmal.*准直接驱动|ANYmal.*QDD"
+      "ANYmal[^。！？\\n]{0,80}纯刚性电机|ANYmal[^。！？\\n]{0,80}准直接驱动|ANYmal[^。！？\\n]{0,80}QDD"
     ]
   },
   "ANYmal 鲁棒性": {
@@ -651,10 +617,10 @@
       "ANYmal|anymal"
     ],
     "pos_claims": [
-      "防水防尘|IP67|工业环境|极端.*地形|RMA|ANYmal.*C"
+      "防水防尘|IP67|工业环境|极端[^。！？\\n]{0,80}地形|RMA|ANYmal[^。！？\\n]{0,80}C"
     ],
     "neg_claims": [
-      "ANYmal.*仅限室内|ANYmal.*实验室.*环境|ANYmal.*无感知"
+      "ANYmal[^。！？\\n]{0,80}仅限室内|ANYmal[^。！？\\n]{0,80}实验室[^。！？\\n]{0,80}环境|ANYmal[^。！？\\n]{0,80}无感知"
     ]
   },
   "WBC 权重分配": {
@@ -662,10 +628,10 @@
       "WBC|whole.body.control"
     ],
     "pos_claims": [
-      "躯干姿态.*高优先级|相对比例|支撑足.*硬约束|Orientation.*Support"
+      "躯干姿态[^。！？\\n]{0,80}高优先级|相对比例|支撑足[^。！？\\n]{0,80}硬约束|Orientation[^。！？\\n]{0,80}Support"
     ],
     "neg_claims": [
-      "WBC.*所有任务.*等权|躯干姿态.*低优先级|权重.*绝对值"
+      "WBC[^。！？\\n]{0,80}所有任务[^。！？\\n]{0,80}等权|躯干姿态[^。！？\\n]{0,80}低优先级|权重[^。！？\\n]{0,80}绝对值"
     ]
   },
   "WBC 约束松弛": {
@@ -674,10 +640,10 @@
       "约束|constraint"
     ],
     "pos_claims": [
-      "松弛变量|slack.*variable|惩罚项|软约束"
+      "松弛变量|slack[^。！？\\n]{0,80}variable|惩罚项|软约束"
     ],
     "neg_claims": [
-      "WBC.*必须硬约束|WBC.*不可松弛|松弛变量.*无用"
+      "WBC[^。！？\\n]{0,80}必须硬约束|WBC[^。！？\\n]{0,80}不可松弛|松弛变量[^。！？\\n]{0,80}无用"
     ]
   },
   "WBC 力矩正则化": {
@@ -686,110 +652,110 @@
       "正则|regularization"
     ],
     "pos_claims": [
-      "惩罚.*力矩|稳定.*数值|Hessian.*正定|阻尼项"
+      "惩罚[^。！？\\n]{0,80}力矩|稳定[^。！？\\n]{0,80}数值|Hessian[^。！？\\n]{0,80}正定|阻尼项"
     ],
     "neg_claims": [
-      "WBC.*无需正则化|力矩正则化.*有害|雅可比.*永远满秩"
+      "WBC[^。！？\\n]{0,80}无需正则化|力矩正则化[^。！？\\n]{0,80}有害|雅可比[^。！？\\n]{0,80}永远满秩"
     ]
   },
   "Boston Dynamics 控制": {
     "terms": [
-      "boston.*dynamics|波士顿动力|Atlas"
+      "boston[^。！？\\n]{0,80}dynamics|波士顿动力|Atlas"
     ],
     "pos_claims": [
-      "基于优化|optimization.*based|WBC.*MPC|全身控制"
+      "基于优化|optimization[^。！？\\n]{0,80}based|WBC[^。！？\\n]{0,80}MPC|全身控制"
     ],
     "neg_claims": [
-      "纯.*强化学习|完全弃用.*控制|波士顿动力.*只用.*RL"
+      "纯[^。！？\\n]{0,80}强化学习|完全弃用[^。！？\\n]{0,80}控制|波士顿动力[^。！？\\n]{0,80}只用[^。！？\\n]{0,80}RL"
     ]
   },
   "Boston Dynamics 硬件": {
     "terms": [
-      "boston.*dynamics|波士顿动力|Atlas"
+      "boston[^。！？\\n]{0,80}dynamics|波士顿动力|Atlas"
     ],
     "pos_claims": [
-      "高功率密度|液压.*全电|定制电机"
+      "高功率密度|液压[^。！？\\n]{0,80}全电|定制电机"
     ],
     "neg_claims": [
-      "Atlas.*一直液压|全电版.*未发布|低成本电机"
+      "Atlas[^。！？\\n]{0,80}一直液压|全电版[^。！？\\n]{0,80}未发布|低成本电机"
     ]
   },
   "Reward Shaping 平滑": {
     "terms": [
-      "reward.*shaping|奖励函数",
+      "reward[^。！？\\n]{0,80}shaping|奖励函数",
       "smoothness|平滑|抖动"
     ],
     "pos_claims": [
-      "惩罚.*功耗|惩罚.*加速度|action.*rate|防止.*振荡"
+      "惩罚[^。！？\\n]{0,80}功耗|惩罚[^。！？\\n]{0,80}加速度|action[^。！？\\n]{0,80}rate|防止[^。！？\\n]{0,80}振荡"
     ],
     "neg_claims": [
-      "平滑项.*不重要|只需.*正奖励|无需惩罚.*加速度"
+      "平滑项[^。！？\\n]{0,80}不重要|只需[^。！？\\n]{0,80}正奖励|无需惩罚[^。！？\\n]{0,80}加速度"
     ]
   },
   "Reward Shaping Air Time": {
     "terms": [
-      "air.*time|腾空时间"
+      "air[^。！？\\n]{0,80}time|腾空时间"
     ],
     "pos_claims": [
-      "落地后.*结算|诱导.*迈步|产生.*节奏"
+      "落地后[^。！？\\n]{0,80}结算|诱导[^。！？\\n]{0,80}迈步|产生[^。！？\\n]{0,80}节奏"
     ],
     "neg_claims": [
-      "Air Time.*随时给|Air Time.*导致.*站立|不需要.*落地结算"
+      "Air Time[^。！？\\n]{0,80}随时给|Air Time[^。！？\\n]{0,80}导致[^。！？\\n]{0,80}站立|不需要[^。！？\\n]{0,80}落地结算"
     ]
   },
   "Locomotion 原地踏步": {
     "terms": [
-      "locomotion.*failure|失败模式|原地踏步"
+      "locomotion[^。！？\\n]{0,80}failure|失败模式|原地踏步"
     ],
     "pos_claims": [
-      "前进奖励.*低|惩罚.*过重|curriculum|增加.*速度权重"
+      "前进奖励[^。！？\\n]{0,80}低|惩罚[^。！？\\n]{0,80}过重|curriculum|增加[^。！？\\n]{0,80}速度权重"
     ],
     "neg_claims": [
-      "原地踏步.*是好现象|无需.*调整奖励|惩罚.*越重越好"
+      "原地踏步[^。！？\\n]{0,80}是好现象|无需[^。！？\\n]{0,80}调整奖励|惩罚[^。！？\\n]{0,80}越重越好"
     ]
   },
   "Locomotion 策略崩溃": {
     "terms": [
-      "locomotion.*failure|策略崩溃|policy.*collapse"
+      "locomotion[^。！？\\n]{0,80}failure|策略崩溃|policy[^。！？\\n]{0,80}collapse"
     ],
     "pos_claims": [
-      "学习率.*过大|随机性.*太大|DR.*范围|减小.*学习率"
+      "学习率[^。！？\\n]{0,80}过大|随机性[^。！？\\n]{0,80}太大|DR[^。！？\\n]{0,80}范围|减小[^。！？\\n]{0,80}学习率"
     ],
     "neg_claims": [
-      "策略崩溃.*学习率.*太小|DR.*范围.*必须.*最大|无需.*衰减"
+      "策略崩溃[^。！？\\n]{0,80}学习率[^。！？\\n]{0,80}太小|DR[^。！？\\n]{0,80}范围[^。！？\\n]{0,80}必须[^。！？\\n]{0,80}最大|无需[^。！？\\n]{0,80}衰减"
     ]
   },
   "Locomotion 双脚起跳": {
     "terms": [
-      "locomotion.*failure|失败模式|双脚起跳|Bunny.*Hop"
+      "locomotion[^。！？\\n]{0,80}failure|失败模式|双脚起跳|Bunny[^。！？\\n]{0,80}Hop"
     ],
     "pos_claims": [
-      "Air Time.*滥用|缺少.*步态约束|限制.*最大值|对角步态"
+      "Air Time[^。！？\\n]{0,80}滥用|缺少[^。！？\\n]{0,80}步态约束|限制[^。！？\\n]{0,80}最大值|对角步态"
     ],
     "neg_claims": [
-      "双脚起跳.*正常|增加.*Air Time|不需要.*约束"
+      "双脚起跳[^。！？\\n]{0,80}正常|增加[^。！？\\n]{0,80}Air Time|不需要[^。！？\\n]{0,80}约束"
     ]
   },
   "ZMP 稳定性": {
     "terms": [
-      "ZMP|Zero.*Moment.*Point"
+      "ZMP|Zero[^。！？\\n]{0,80}Moment[^。！？\\n]{0,80}Point"
     ],
     "pos_claims": [
-      "支撑多边形|support.*polygon|落在.*内|不翻倒"
+      "支撑多边形|support[^。！？\\n]{0,80}polygon|落在[^。！？\\n]{0,80}内|不翻倒"
     ],
     "neg_claims": [
-      "ZMP.*可以.*外|支撑多边形.*无关|落在边缘.*安全"
+      "ZMP[^。！？\\n]{0,80}可以[^。！？\\n]{0,80}外|支撑多边形[^。！？\\n]{0,80}无关|落在边缘[^。！？\\n]{0,80}安全"
     ]
   },
   "CMDP 拉格朗日法": {
     "terms": [
-      "CMDP|Constrained.*MDP|Lagrangian|拉格朗日"
+      "CMDP|Constrained[^。！？\\n]{0,80}MDP|Lagrangian|拉格朗日"
     ],
     "pos_claims": [
-      "转化为.*惩罚项|交替更新|权重|乘子"
+      "转化为[^。！？\\n]{0,80}惩罚项|交替更新|权重|乘子"
     ],
     "neg_claims": [
-      "不使用.*乘子|拉格朗日.*无效|只.*CPO"
+      "不使用[^。！？\\n]{0,80}乘子|拉格朗日[^。！？\\n]{0,80}无效|只[^。！？\\n]{0,80}CPO"
     ]
   },
   "VLA Action Tokenization": {
@@ -798,43 +764,43 @@
       "分词|tokeniz"
     ],
     "pos_claims": [
-      "离散.*Token|映射|Scalar.*Binning|分箱|Codebook|量化"
+      "离散[^。！？\\n]{0,80}Token|映射|Scalar[^。！？\\n]{0,80}Binning|分箱|Codebook|量化"
     ],
     "neg_claims": [
-      "VLA.*不使用.*Token|VLA.*纯连续输出|无需量化"
+      "VLA[^。！？\\n]{0,80}不使用[^。！？\\n]{0,80}Token|VLA[^。！？\\n]{0,80}纯连续输出|无需量化"
     ]
   },
   "Cross-modal Attention 作用": {
     "terms": [
-      "Cross.modal.*Attention|跨模态.*注意力"
+      "Cross.modal[^。！？\\n]{0,80}Attention|跨模态[^。！？\\n]{0,80}注意力"
     ],
     "pos_claims": [
-      "关联|视.*语.*控| RGB.*指令|对齐|拼接到.*序列"
+      "关联|视[^。！？\\n]{0,80}语[^。！？\\n]{0,80}控| RGB[^。！？\\n]{0,80}指令|对齐|拼接到[^。！？\\n]{0,80}序列"
     ],
     "neg_claims": [
-      "模态间.*独立|注意力.*无关|无需关注指令"
+      "模态间[^。！？\\n]{0,80}独立|注意力[^。！？\\n]{0,80}无关|无需关注指令"
     ]
   },
   "Allegro Hand 自由度": {
     "terms": [
-      "Allegro.*Hand|灵巧手"
+      "Allegro[^。！？\\n]{0,80}Hand|灵巧手"
     ],
     "pos_claims": [
-      "16.*自由度|16.*DOFs|4.*指|4.*fingers"
+      "16[^。！？\\n]{0,80}自由度|16[^。！？\\n]{0,80}DOFs|4[^。！？\\n]{0,80}指|4[^。！？\\n]{0,80}fingers"
     ],
     "neg_claims": [
-      "Allegro.*拥有.*20.*自由度|Allegro.*具备.*5.*指"
+      "Allegro[^。！？\\n]{0,80}拥有[^。！？\\n]{0,80}20[^。！？\\n]{0,80}自由度|Allegro[^。！？\\n]{0,80}具备[^。！？\\n]{0,80}5[^。！？\\n]{0,80}指"
     ]
   },
   "In-hand Reorientation 定义": {
     "terms": [
-      "In.hand.*Reorientation|手内重定向"
+      "In.hand[^。！？\\n]{0,80}Reorientation|手内重定向"
     ],
     "pos_claims": [
-      "不借助于.*外部环境|不利用.*桌面|手指间的协同|改变.*位姿"
+      "不借助于[^。！？\\n]{0,80}外部环境|不利用[^。！？\\n]{0,80}桌面|手指间的协同|改变[^。！？\\n]{0,80}位姿"
     ],
     "neg_claims": [
-      "依赖.*桌面|必须放回桌面|非手内"
+      "依赖[^。！？\\n]{0,80}桌面|必须放回桌面|非手内"
     ]
   },
   "Preempt_RT 实时性": {
@@ -842,10 +808,10 @@
       "PREEMPT_RT|硬实时"
     ],
     "pos_claims": [
-      "补丁|内核源码|SCHED_FIFO|消除.*抖动|消除.*Jitter"
+      "补丁|内核源码|SCHED_FIFO|消除[^。！？\\n]{0,80}抖动|消除[^。！？\\n]{0,80}Jitter"
     ],
     "neg_claims": [
-      "普通.*Ubuntu.*足够|无需内核补丁|实时性.*无关"
+      "普通[^。！？\\n]{0,80}Ubuntu[^。！？\\n]{0,80}足够|无需内核补丁|实时性[^。！？\\n]{0,80}无关"
     ]
   },
   "CPU Isolation 效果": {
@@ -853,21 +819,21 @@
       "isolcpus|核心隔离"
     ],
     "pos_claims": [
-      "GRUB|预留.*核心|屏蔽.*中断|零中断|独占"
+      "GRUB|预留[^。！？\\n]{0,80}核心|屏蔽[^。！？\\n]{0,80}中断|零中断|独占"
     ],
     "neg_claims": [
-      "CPU.*自动平衡|隔离.*无用|无需隔离核心"
+      "CPU[^。！？\\n]{0,80}自动平衡|隔离[^。！？\\n]{0,80}无用|无需隔离核心"
     ]
   },
   "LCM 协议特征": {
     "terms": [
-      "LCM|UDP.*组播|组播"
+      "LCM|UDP[^。！？\\n]{0,80}组播|组播"
     ],
     "pos_claims": [
-      "UDP.*组播|Multicast|极低延迟|1000Hz|无.*重传"
+      "UDP[^。！？\\n]{0,80}组播|Multicast|极低延迟|1000Hz|无[^。！？\\n]{0,80}重传"
     ],
     "neg_claims": [
-      "LCM.*基于.*TCP|LCM.*高开销|保证.*重传"
+      "LCM[^。！？\\n]{0,80}基于[^。！？\\n]{0,80}TCP|LCM[^。！？\\n]{0,80}高开销|保证[^。！？\\n]{0,80}重传"
     ]
   },
   "Pinocchio 核心优势": {
@@ -875,10 +841,10 @@
       "Pinocchio|刚体动力学库"
     ],
     "pos_claims": [
-      "解析导数|Analytical.*Derivatives|模板元编程|Eigen|Featherstone"
+      "解析导数|Analytical[^。！？\\n]{0,80}Derivatives|模板元编程|Eigen|Featherstone"
     ],
     "neg_claims": [
-      "Pinocchio.*无法.*计算.*导数|Pinocchio.*严重依赖.*动态内存分配"
+      "Pinocchio[^。！？\\n]{0,80}无法[^。！？\\n]{0,80}计算[^。！？\\n]{0,80}导数|Pinocchio[^。！？\\n]{0,80}严重依赖[^。！？\\n]{0,80}动态内存分配"
     ]
   },
   "MuJoCo 接触模型": {
@@ -886,10 +852,10 @@
       "MuJoCo|mjcf"
     ],
     "pos_claims": [
-      "凸优化|convex.*optimization|稳定|平滑.*离散化|解析.*求导"
+      "凸优化|convex[^。！？\\n]{0,80}optimization|稳定|平滑[^。！？\\n]{0,80}离散化|解析[^。！？\\n]{0,80}求导"
     ],
     "neg_claims": [
-      "MuJoCo.*底层.*是.*惩罚冲量|MuJoCo.*接触.*极不稳定|MuJoCo.*不支持.*解析.*求导"
+      "MuJoCo[^。！？\\n]{0,80}底层[^。！？\\n]{0,80}是[^。！？\\n]{0,80}惩罚冲量|MuJoCo[^。！？\\n]{0,80}接触[^。！？\\n]{0,80}极不稳定|MuJoCo[^。！？\\n]{0,80}不支持[^。！？\\n]{0,80}解析[^。！？\\n]{0,80}求导"
     ]
   },
   "Drake 轨迹优化": {
@@ -897,45 +863,45 @@
       "Drake|Tedrake"
     ],
     "pos_claims": [
-      "为优化而生|直接配点|Direct.*Collocation|NLP.*构建|TRI"
+      "为优化而生|直接配点|Direct[^。！？\\n]{0,80}Collocation|NLP[^。！？\\n]{0,80}构建|TRI"
     ],
     "neg_claims": [
-      "Drake.*仅仿真|Drake.*无优化|不支持.*OCP"
+      "Drake[^。！？\\n]{0,80}仅仿真|Drake[^。！？\\n]{0,80}无优化|不支持[^。！？\\n]{0,80}OCP"
     ]
   },
   "混合中间件架构": {
     "terms": [
-      "ROS.*2",
+      "ROS[^。！？\\n]{0,80}2",
       "LCM"
     ],
     "pos_claims": [
-      "分层|ROS.*2.*大脑|LCM.*小脑|ROS.*2.*中高层|LCM.*底层"
+      "分层|ROS[^。！？\\n]{0,80}2[^。！？\\n]{0,80}大脑|LCM[^。！？\\n]{0,80}小脑|ROS[^。！？\\n]{0,80}2[^。！？\\n]{0,80}中高层|LCM[^。！？\\n]{0,80}底层"
     ],
     "neg_claims": [
-      "底层.*必须.*ROS.*2|LCM.*负责感知|LCM.*和.*ROS.*2.*竞争"
+      "底层[^。！？\\n]{0,80}必须[^。！？\\n]{0,80}ROS[^。！？\\n]{0,80}2|LCM[^。！？\\n]{0,80}负责感知|LCM[^。！？\\n]{0,80}和[^。！？\\n]{0,80}ROS[^。！？\\n]{0,80}2[^。！？\\n]{0,80}竞争"
     ]
   },
   "GelSight 触觉原理": {
     "terms": [
-      "GelSight|视觉.*触觉"
+      "GelSight|视觉[^。！？\\n]{0,80}触觉"
     ],
     "pos_claims": [
       "摄像头|硅胶|形变图像|分辨率|千万像素"
     ],
     "neg_claims": [
-      "GelSight.*电阻|GelSight.*无摄像头|仅测量压力"
+      "GelSight[^。！？\\n]{0,80}电阻|GelSight[^。！？\\n]{0,80}无摄像头|仅测量压力"
     ]
   },
   "BC Loss 协变量偏移": {
     "terms": [
-      "Behavior.*Cloning|BC.*Loss",
+      "Behavior[^。！？\\n]{0,80}Cloning|BC[^。！？\\n]{0,80}Loss",
       "偏移|shift"
     ],
     "pos_claims": [
-      "协变量偏移|Covariate.*Shift|错误累积|Compounding.*Error"
+      "协变量偏移|Covariate[^。！？\\n]{0,80}Shift|错误累积|Compounding[^。！？\\n]{0,80}Error"
     ],
     "neg_claims": [
-      "BC.*无偏移|BC.*绝对鲁棒|数据越多越好"
+      "BC[^。！？\\n]{0,80}无偏移|BC[^。！？\\n]{0,80}绝对鲁棒|数据越多越好"
     ]
   },
   "概率流 ODE 效率": {
@@ -944,54 +910,54 @@
       "Probability.Flow"
     ],
     "pos_claims": [
-      "1-3.*步|加速|确定性|ODE.*求解器|实时性"
+      "1-3[^。！？\\n]{0,80}步|加速|确定性|ODE[^。！？\\n]{0,80}求解器|实时性"
     ],
     "neg_claims": [
-      "概率流.*慢于.*扩散|概率流.*需要.*100.*步"
+      "概率流[^。！？\\n]{0,80}慢于[^。！？\\n]{0,80}扩散|概率流[^。！？\\n]{0,80}需要[^。！？\\n]{0,80}100[^。！？\\n]{0,80}步"
     ]
   },
   "流匹配目标函数": {
     "terms": [
-      "流匹配|Flow.*Matching"
+      "流匹配|Flow[^。！？\\n]{0,80}Matching"
     ],
     "pos_claims": [
-      "回归.*速度场|velocity.*field|最小化.*速度.*差异|线性插值"
+      "回归[^。！？\\n]{0,80}速度场|velocity[^。！？\\n]{0,80}field|最小化[^。！？\\n]{0,80}速度[^。！？\\n]{0,80}差异|线性插值"
     ],
     "neg_claims": [
-      "流匹配.*最小化.*Q值|流匹配.*是.*分类任务"
+      "流匹配[^。！？\\n]{0,80}最小化[^。！？\\n]{0,80}Q值|流匹配[^。！？\\n]{0,80}是[^。！？\\n]{0,80}分类任务"
     ]
   },
   "潜空间想象优势": {
     "terms": [
-      "潜空间想象|Latent.*Imagination|Dreamer"
+      "潜空间想象|Latent[^。！？\\n]{0,80}Imagination|Dreamer"
     ],
     "pos_claims": [
-      "无需.*真实.*交互|快.*100-1000.*倍|过滤.*背景.*噪声|脑海.*预演"
+      "无需[^。！？\\n]{0,80}真实[^。！？\\n]{0,80}交互|快[^。！？\\n]{0,80}100-1000[^。！？\\n]{0,80}倍|过滤[^。！？\\n]{0,80}背景[^。！？\\n]{0,80}噪声|脑海[^。！？\\n]{0,80}预演"
     ],
     "neg_claims": [
-      "想象.*必须.*真实采样|潜空间.*比.*物理仿真.*慢"
+      "想象[^。！？\\n]{0,80}必须[^。！？\\n]{0,80}真实采样|潜空间[^。！？\\n]{0,80}比[^。！？\\n]{0,80}物理仿真[^。！？\\n]{0,80}慢"
     ]
   },
   "RSSM 构成": {
     "terms": [
-      "RSSM|Recurrent.*State.*Space.*Model"
+      "RSSM|Recurrent[^。！？\\n]{0,80}State[^。！？\\n]{0,80}Space[^。！？\\n]{0,80}Model"
     ],
     "pos_claims": [
-      "Transition|Observation|Reward|确定性.*随机.*状态"
+      "Transition|Observation|Reward|确定性[^。！？\\n]{0,80}随机[^。！？\\n]{0,80}状态"
     ],
     "neg_claims": [
-      "RSSM.*无随机项|RSSM.*仅包含.*卷积"
+      "RSSM[^。！？\\n]{0,80}无随机项|RSSM[^。！？\\n]{0,80}仅包含[^。！？\\n]{0,80}卷积"
     ]
   },
   "生成式世界模型定义": {
     "terms": [
-      "生成式世界模型|Generative.*World.*Models"
+      "生成式世界模型|Generative[^。！？\\n]{0,80}World[^。！？\\n]{0,80}Models"
     ],
     "pos_claims": [
-      "以生成代替计算|海量视频数据|模拟.*运动规律|反事实推演"
+      "以生成代替计算|海量视频数据|模拟[^。！？\\n]{0,80}运动规律|反事实推演"
     ],
     "neg_claims": [
-      "底层.*基于.*力学方程|必须.*解析.*计算.*接触力"
+      "底层[^。！？\\n]{0,80}基于[^。！？\\n]{0,80}力学方程|必须[^。！？\\n]{0,80}解析[^。！？\\n]{0,80}计算[^。！？\\n]{0,80}接触力"
     ]
   },
   "Video-as-Simulation 差异": {
@@ -999,32 +965,32 @@
       "Video.as.Simulation"
     ],
     "pos_claims": [
-      "算像素|Next-frame.*Prediction|无鸿沟|无需.*手工.*建模"
+      "算像素|Next-frame[^。！？\\n]{0,80}Prediction|无鸿沟|无需[^。！？\\n]{0,80}手工[^。！？\\n]{0,80}建模"
     ],
     "neg_claims": [
-      "必须.*建模.*几何体|Video.as.Simulation.*计算.*冲量"
+      "必须[^。！？\\n]{0,80}建模[^。！？\\n]{0,80}几何体|Video.as.Simulation[^。！？\\n]{0,80}计算[^。！？\\n]{0,80}冲量"
     ]
   },
   "电池压降风险": {
     "terms": [
-      "电池.*压降|Voltage.*Sag"
+      "电池[^。！？\\n]{0,80}压降|Voltage[^。！？\\n]{0,80}Sag"
     ],
     "pos_claims": [
-      "瞬时.*掉电|主板.*重启|欠压|独立.*供电"
+      "瞬时[^。！？\\n]{0,80}掉电|主板[^。！？\\n]{0,80}重启|欠压|独立[^。！？\\n]{0,80}供电"
     ],
     "neg_claims": [
-      "压降.*无影响|电池.*电压.*恒定"
+      "压降[^。！？\\n]{0,80}无影响|电池[^。！？\\n]{0,80}电压[^。！？\\n]{0,80}恒定"
     ]
   },
   "关节过热对策": {
     "terms": [
-      "关节.*过热|散热|Thermal"
+      "关节[^。！？\\n]{0,80}过热|散热|Thermal"
     ],
     "pos_claims": [
-      "能效项|主动散热|导热硅脂|减少.*对抗.*出力"
+      "能效项|主动散热|导热硅脂|减少[^。！？\\n]{0,80}对抗[^。！？\\n]{0,80}出力"
     ],
     "neg_claims": [
-      "过热.*必须.*停机|散热.*无关.*控制"
+      "过热[^。！？\\n]{0,80}必须[^。！？\\n]{0,80}停机|散热[^。！？\\n]{0,80}无关[^。！？\\n]{0,80}控制"
     ]
   },
   "野外感知失效": {
@@ -1033,10 +999,10 @@
       "感知|LiDAR|相机"
     ],
     "pos_claims": [
-      "过曝|镜面反射|点云.*嘈杂|强度过滤"
+      "过曝|镜面反射|点云[^。！？\\n]{0,80}嘈杂|强度过滤"
     ],
     "neg_claims": [
-      "户外.*感知.*更准|感知.*无需.*增强"
+      "户外[^。！？\\n]{0,80}感知[^。！？\\n]{0,80}更准|感知[^。！？\\n]{0,80}无需[^。！？\\n]{0,80}增强"
     ]
   },
   "地面硬度不匹配": {
@@ -1044,32 +1010,32 @@
       "地面硬度|草地|刚性地面"
     ],
     "pos_claims": [
-      "阻尼.*弹性|深陷泥潭|降低.*Kp|刚度随机化"
+      "阻尼[^。！？\\n]{0,80}弹性|深陷泥潭|降低[^。！？\\n]{0,80}Kp|刚度随机化"
     ],
     "neg_claims": [
-      "草地.*等同.*硬地|Kp.*越高越好"
+      "草地[^。！？\\n]{0,80}等同[^。！？\\n]{0,80}硬地|Kp[^。！？\\n]{0,80}越高越好"
     ]
   },
   "SE(3) 6D 表示优点": {
     "terms": [
-      "6D.*连续表示|6D.*Rep"
+      "6D[^。！？\\n]{0,80}连续表示|6D[^。！？\\n]{0,80}Rep"
     ],
     "pos_claims": [
-      "姿态空间连续|适合.*回归|平滑.*梯度"
+      "姿态空间连续|适合[^。！？\\n]{0,80}回归|平滑[^。！？\\n]{0,80}梯度"
     ],
     "neg_claims": [
-      "6D.*表示.*不连续|不如.*欧拉角"
+      "6D[^。！？\\n]{0,80}表示[^。！？\\n]{0,80}不连续|不如[^。！？\\n]{0,80}欧拉角"
     ]
   },
   "Oculus Quest 遥操作": {
     "terms": [
-      "Quest|VR.*遥操作"
+      "Quest|VR[^。！？\\n]{0,80}遥操作"
     ],
     "pos_claims": [
-      "低成本|Inside-out.*Tracking|沉浸式|6D.*位姿"
+      "低成本|Inside-out[^。！？\\n]{0,80}Tracking|沉浸式|6D[^。！？\\n]{0,80}位姿"
     ],
     "neg_claims": [
-      "Quest.*极其昂贵|Quest.*不支持.*手部追踪"
+      "Quest[^。！？\\n]{0,80}极其昂贵|Quest[^。！？\\n]{0,80}不支持[^。！？\\n]{0,80}手部追踪"
     ]
   },
   "Omniverse 核心底座": {
@@ -1077,21 +1043,21 @@
       "Omniverse|USD"
     ],
     "pos_claims": [
-      "实时协作|数字化孪生|OpenUSD|高保真.*渲染"
+      "实时协作|数字化孪生|OpenUSD|高保真[^。！？\\n]{0,80}渲染"
     ],
     "neg_claims": [
-      "Omniverse.*仅限游戏|Omniverse.*不支持.*物理"
+      "Omniverse[^。！？\\n]{0,80}仅限游戏|Omniverse[^。！？\\n]{0,80}不支持[^。！？\\n]{0,80}物理"
     ]
   },
   "生成式数据增强重点": {
     "terms": [
-      "生成式数据增强|Generative.*Data.*Augmentation"
+      "生成式数据增强|Generative[^。！？\\n]{0,80}Data[^。！？\\n]{0,80}Augmentation"
     ],
     "pos_claims": [
-      "长尾合成|物体变幻|场景编辑|解决.*瓶颈"
+      "长尾合成|物体变幻|场景编辑|解决[^。！？\\n]{0,80}瓶颈"
     ],
     "neg_claims": [
-      "仅限.*裁剪翻转|增强.*无效"
+      "仅限[^。！？\\n]{0,80}裁剪翻转|增强[^。！？\\n]{0,80}无效"
     ]
   },
   "ELBO 目标": {
@@ -1099,21 +1065,21 @@
       "ELBO|证据下界|变分"
     ],
     "pos_claims": [
-      "重建项|正则项|最小化.*KL散度|一致性"
+      "重建项|正则项|最小化[^。！？\\n]{0,80}KL散度|一致性"
     ],
     "neg_claims": [
-      "ELBO.*最大化.*误差|ELBO.*不含.*KL"
+      "ELBO[^。！？\\n]{0,80}最大化[^。！？\\n]{0,80}误差|ELBO[^。！？\\n]{0,80}不含[^。！？\\n]{0,80}KL"
     ]
   },
   "开源人形硬件方案": {
     "terms": [
-      "Berkeley.*Humanoid|Roboto.*Origin|ODRI"
+      "Berkeley[^。！？\\n]{0,80}Humanoid|Roboto[^。！？\\n]{0,80}Origin|ODRI"
     ],
     "pos_claims": [
-      "低成本|验证.*算法|QDD.*电机|12-14.*自由度"
+      "低成本|验证[^。！？\\n]{0,80}算法|QDD[^。！？\\n]{0,80}电机|12-14[^。！？\\n]{0,80}自由度"
     ],
     "neg_claims": [
-      "开源硬件.*昂贵|仅限.*工业.*应用"
+      "开源硬件[^。！？\\n]{0,80}昂贵|仅限[^。！？\\n]{0,80}工业[^。！？\\n]{0,80}应用"
     ]
   },
   "WBC 奇异点保护": {
@@ -1121,21 +1087,21 @@
       "奇异点|Singularity"
     ],
     "pos_claims": [
-      "膝关节.*伸直|虚拟弹簧力|雅可比.*退化|力矩.*爆炸"
+      "膝关节[^。！？\\n]{0,80}伸直|虚拟弹簧力|雅可比[^。！？\\n]{0,80}退化|力矩[^。！？\\n]{0,80}爆炸"
     ],
     "neg_claims": [
-      "奇异点.*无需保护|奇异点.*力矩.*最小"
+      "奇异点[^。！？\\n]{0,80}无需保护|奇异点[^。！？\\n]{0,80}力矩[^。！？\\n]{0,80}最小"
     ]
   },
   "具身数据清洗": {
     "terms": [
-      "数据清洗|Data.*Cleaning"
+      "数据清洗|Data[^。！？\\n]{0,80}Cleaning"
     ],
     "pos_claims": [
-      "时序对齐|剔除.*无效动作|修复.*重定向误差|动作分段"
+      "时序对齐|剔除[^。！？\\n]{0,80}无效动作|修复[^。！？\\n]{0,80}重定向误差|动作分段"
     ],
     "neg_claims": [
-      "原始数据.*完美|无需清洗"
+      "原始数据[^。！？\\n]{0,80}完美|无需清洗"
     ]
   },
   "CLF vs CBF 目标区别": {
@@ -1144,55 +1110,55 @@
       "CBF"
     ],
     "pos_claims": [
-      "CLF.*负责稳定性",
-      "CBF.*负责安全性",
-      "CLF.*旨在.*目标状态",
-      "CBF.*旨在.*安全集"
+      "CLF[^。！？\\n]{0,80}负责稳定性",
+      "CBF[^。！？\\n]{0,80}负责安全性",
+      "CLF[^。！？\\n]{0,80}旨在[^。！？\\n]{0,80}目标状态",
+      "CBF[^。！？\\n]{0,80}旨在[^。！？\\n]{0,80}安全集"
     ],
     "neg_claims": [
-      "CLF.*旨在.*安全性",
-      "CBF.*旨在.*稳定性",
-      "两者.*逻辑完全相同"
+      "CLF[^。！？\\n]{0,80}旨在[^。！？\\n]{0,80}安全性",
+      "CBF[^。！？\\n]{0,80}旨在[^。！？\\n]{0,80}稳定性",
+      "两者[^。！？\\n]{0,80}逻辑完全相同"
     ]
   },
   "数据手套 vs 视觉遥控": {
     "terms": [
-      "数据手套|Data.*Glove",
-      "视觉.*遥操作|Vision.*Teleop"
+      "数据手套|Data[^。！？\\n]{0,80}Glove",
+      "视觉[^。！？\\n]{0,80}遥操作|Vision[^。！？\\n]{0,80}Teleop"
     ],
     "pos_claims": [
-      "手套.*免疫遮挡",
-      "视觉.*低成本",
-      "手套.*稳定",
-      "视觉.*自然"
+      "手套[^。！？\\n]{0,80}免疫遮挡",
+      "视觉[^。！？\\n]{0,80}低成本",
+      "手套[^。！？\\n]{0,80}稳定",
+      "视觉[^。！？\\n]{0,80}自然"
     ],
     "neg_claims": [
-      "视觉.*免疫遮挡",
-      "手套.*低成本",
-      "两者.*精度相同"
+      "视觉[^。！？\\n]{0,80}免疫遮挡",
+      "手套[^。！？\\n]{0,80}低成本",
+      "两者[^。！？\\n]{0,80}精度相同"
     ]
   },
   "InEKF 适用层级": {
     "terms": [
       "InEKF",
-      "Invariant.*EKF"
+      "Invariant[^。！？\\n]{0,80}EKF"
     ],
     "pos_claims": [
-      "InEKF.*(底层|1kHz|1000Hz|脊髓级)"
+      "InEKF[^。！？\\n]{0,80}(底层|1kHz|1000Hz|脊髓级)"
     ],
     "neg_claims": [
-      "InEKF.*(大脑级|30Hz|高延迟)"
+      "InEKF[^。！？\\n]{0,80}(大脑级|30Hz|高延迟)"
     ]
   },
   "优化派估计优势": {
     "terms": [
-      "滑窗优化|Factor.*Graph|因子图"
+      "滑窗优化|Factor[^。！？\\n]{0,80}Graph|因子图"
     ],
     "pos_claims": [
-      "非线性拟合.*准|纠正.*漂移|闭环检测|Loop.*Closure|异步.*传感器"
+      "非线性拟合[^。！？\\n]{0,80}准|纠正[^。！？\\n]{0,80}漂移|闭环检测|Loop[^。！？\\n]{0,80}Closure|异步[^。！？\\n]{0,80}传感器"
     ],
     "neg_claims": [
-      "优化.*不如.*EKF.*准|优化.*无法处理.*非线性"
+      "优化[^。！？\\n]{0,80}不如[^。！？\\n]{0,80}EKF[^。！？\\n]{0,80}准|优化[^。！？\\n]{0,80}无法处理[^。！？\\n]{0,80}非线性"
     ]
   },
   "Model-Free 样本要求": {
@@ -1201,10 +1167,10 @@
       "无模型"
     ],
     "pos_claims": [
-      "样本效率.*低|需.*大量交互|依赖.*仿真训练|数百M步"
+      "样本效率[^。！？\\n]{0,80}低|需[^。！？\\n]{0,80}大量交互|依赖[^。！？\\n]{0,80}仿真训练|数百M步"
     ],
     "neg_claims": [
-      "Model-Free.*样本效率.*高|无需.*大规模.*仿真"
+      "Model-Free[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}高|无需[^。！？\\n]{0,80}大规模[^。！？\\n]{0,80}仿真"
     ]
   },
   "Model-Based 规划能力": {
@@ -1213,22 +1179,22 @@
       "有模型"
     ],
     "pos_claims": [
-      "推理未来|具备规划能力|虚拟.*rollout|样本效率.*高"
+      "推理未来|具备规划能力|虚拟[^。！？\\n]{0,80}rollout|样本效率[^。！？\\n]{0,80}高"
     ],
     "neg_claims": [
-      "Model-Based.*无规划|Model-Based.*样本效率.*低"
+      "Model-Based[^。！？\\n]{0,80}无规划|Model-Based[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}低"
     ]
   },
   "Scaling Law 跨形态": {
     "terms": [
-      "Scaling.*Law|规模法则",
+      "Scaling[^。！？\\n]{0,80}Law|规模法则",
       "跨形态|不同机器人"
     ],
     "pos_claims": [
-      "混合数据.*优于.*单一|多样性.*关键|数据.*多样性|规模.*临界点"
+      "混合数据[^。！？\\n]{0,80}优于[^。！？\\n]{0,80}单一|多样性[^。！？\\n]{0,80}关键|数据[^。！？\\n]{0,80}多样性|规模[^。！？\\n]{0,80}临界点"
     ],
     "neg_claims": [
-      "单一形态.*更佳|多样性.*有害|规模.*无关"
+      "单一形态[^。！？\\n]{0,80}更佳|多样性[^。！？\\n]{0,80}有害|规模[^。！？\\n]{0,80}无关"
     ]
   },
   "Auto-labeling 技术实现": {
@@ -1236,10 +1202,10 @@
       "自动化标注|Auto-labeling"
     ],
     "pos_claims": [
-      "VLM.*驱动|Teacher-Student|自动.*指令生成|API.*成本低"
+      "VLM[^。！？\\n]{0,80}驱动|Teacher-Student|自动[^。！？\\n]{0,80}指令生成|API[^。！？\\n]{0,80}成本低"
     ],
     "neg_claims": [
-      "必须.*人工标注|VLM.*无法标注"
+      "必须[^。！？\\n]{0,80}人工标注|VLM[^。！？\\n]{0,80}无法标注"
     ]
   },
   "Foundation Policy 对齐目标": {
@@ -1247,21 +1213,21 @@
       "策略对齐|Alignment"
     ],
     "pos_claims": [
-      "统一.*隐空间|映射到.*z|跨形态.*迁移|共享表示"
+      "统一[^。！？\\n]{0,80}隐空间|映射到[^。！？\\n]{0,80}z|跨形态[^。！？\\n]{0,80}迁移|共享表示"
     ],
     "neg_claims": [
-      "形态间.*必须独立|无需对齐"
+      "形态间[^。！？\\n]{0,80}必须独立|无需对齐"
     ]
   },
   "统一 Token 优势": {
     "terms": [
-      "统一.*Token|Unified.*Token"
+      "统一[^。！？\\n]{0,80}Token|Unified[^。！？\\n]{0,80}Token"
     ],
     "pos_claims": [
-      "摒弃.*专用分支|通用.*Transformer|灵活性|自回归"
+      "摒弃[^。！？\\n]{0,80}专用分支|通用[^。！？\\n]{0,80}Transformer|灵活性|自回归"
     ],
     "neg_claims": [
-      "必须.*专用分支|Transformer.*不适合多模态"
+      "必须[^。！？\\n]{0,80}专用分支|Transformer[^。！？\\n]{0,80}不适合多模态"
     ]
   },
   "EtherCAT DC 同步": {
@@ -1270,10 +1236,10 @@
       "EtherCAT"
     ],
     "pos_claims": [
-      "时钟对齐|对齐.*从站|消除.*抖动|Sync0"
+      "时钟对齐|对齐[^。！？\\n]{0,80}从站|消除[^。！？\\n]{0,80}抖动|Sync0"
     ],
     "neg_claims": [
-      "DC.*增加抖动|DC.*无关紧要"
+      "DC[^。！？\\n]{0,80}增加抖动|DC[^。！？\\n]{0,80}无关紧要"
     ]
   },
   "HAL 设计职责": {
@@ -1281,10 +1247,10 @@
       "硬件抽象层|HAL"
     ],
     "pos_claims": [
-      "屏蔽.*总线差异|解耦|统一接口|逻辑.*API"
+      "屏蔽[^。！？\\n]{0,80}总线差异|解耦|统一接口|逻辑[^。！？\\n]{0,80}API"
     ],
     "neg_claims": [
-      "HAL.*必须绑定.*CAN|HAL.*增加.*耦合"
+      "HAL[^。！？\\n]{0,80}必须绑定[^。！？\\n]{0,80}CAN|HAL[^。！？\\n]{0,80}增加[^。！？\\n]{0,80}耦合"
     ]
   },
   "运控对 CPU 要求": {
@@ -1294,32 +1260,32 @@
       "运控"
     ],
     "pos_claims": [
-      "单核主频.*关键|依赖.*单核|QR分解.*难并行|主频.*重要"
+      "单核主频[^。！？\\n]{0,80}关键|依赖[^。！？\\n]{0,80}单核|QR分解[^。！？\\n]{0,80}难并行|主频[^。！？\\n]{0,80}重要"
     ],
     "neg_claims": [
-      "运控.*主要靠.*GPU|单核性能.*不重要"
+      "运控[^。！？\\n]{0,80}主要靠[^。！？\\n]{0,80}GPU|单核性能[^。！？\\n]{0,80}不重要"
     ]
   },
   "生成式增强路径": {
     "terms": [
-      "生成式数据增强|Generative.*Data.*Augmentation"
+      "生成式数据增强|Generative[^。！？\\n]{0,80}Data[^。！？\\n]{0,80}Augmentation"
     ],
     "pos_claims": [
       "场景编辑|语义编辑|长尾合成|物体变幻|多样化"
     ],
     "neg_claims": [
-      "仅限.*旋转裁剪|增强.*无语义"
+      "仅限[^。！？\\n]{0,80}旋转裁剪|增强[^。！？\\n]{0,80}无语义"
     ]
   },
   "6D 姿态表示优点": {
     "terms": [
-      "6D.*表示|6D.*Rep"
+      "6D[^。！？\\n]{0,80}表示|6D[^。！？\\n]{0,80}Rep"
     ],
     "pos_claims": [
       "连续性|姿态空间连续|适合神经网络回归|梯度平滑"
     ],
     "neg_claims": [
-      "6D.*表示.*不连续|不如.*四元数.*平滑"
+      "6D[^。！？\\n]{0,80}表示[^。！？\\n]{0,80}不连续|不如[^。！？\\n]{0,80}四元数[^。！？\\n]{0,80}平滑"
     ]
   },
   "MuJoCo 选型理由": {
@@ -1327,43 +1293,43 @@
       "MuJoCo|mjcf"
     ],
     "pos_claims": [
-      "基于模型.*控制|Model.based.*Control|推导动力学|MPC|iLQR|轨迹优化"
+      "基于模型[^。！？\\n]{0,80}控制|Model.based[^。！？\\n]{0,80}Control|推导动力学|MPC|iLQR|轨迹优化"
     ],
     "neg_claims": [
-      "MuJoCo.*只适合.*Model.free|MuJoCo.*不支持.*MPC"
+      "MuJoCo[^。！？\\n]{0,80}只适合[^。！？\\n]{0,80}Model.free|MuJoCo[^。！？\\n]{0,80}不支持[^。！？\\n]{0,80}MPC"
     ]
   },
   "Isaac Sim 选型理由": {
     "terms": [
-      "Isaac.*Sim|Isaac.*Gym"
+      "Isaac[^。！？\\n]{0,80}Sim|Isaac[^。！？\\n]{0,80}Gym"
     ],
     "pos_claims": [
-      "千万级并行|千万.*机器人|GPU.*采样|经验采样速度|光线追踪|RTX"
+      "千万级并行|千万[^。！？\\n]{0,80}机器人|GPU[^。！？\\n]{0,80}采样|经验采样速度|光线追踪|RTX"
     ],
     "neg_claims": [
-      "Isaac.*Sim.*采样慢|Isaac.*Sim.*仅限 CPU|Isaac.*Sim.*无渲染"
+      "Isaac[^。！？\\n]{0,80}Sim[^。！？\\n]{0,80}采样慢|Isaac[^。！？\\n]{0,80}Sim[^。！？\\n]{0,80}仅限 CPU|Isaac[^。！？\\n]{0,80}Sim[^。！？\\n]{0,80}无渲染"
     ]
   },
   "Single Shooting 缺点": {
     "terms": [
-      "Single.*Shooting|单重打靶"
+      "Single[^。！？\\n]{0,80}Shooting|单重打靶"
     ],
     "pos_claims": [
-      "高度非线性|容易陷入.*局部最优|蝴蝶效应|难以处理.*中间.*状态.*约束"
+      "高度非线性|容易陷入[^。！？\\n]{0,80}局部最优|蝴蝶效应|难以处理[^。！？\\n]{0,80}中间[^。！？\\n]{0,80}状态[^。！？\\n]{0,80}约束"
     ],
     "neg_claims": [
-      "单重打靶.*处理约束.*极佳|单重打靶.*是线性系统"
+      "单重打靶[^。！？\\n]{0,80}处理约束[^。！？\\n]{0,80}极佳|单重打靶[^。！？\\n]{0,80}是线性系统"
     ]
   },
   "Direct Collocation 优点": {
     "terms": [
-      "Direct.*Collocation|直接配点"
+      "Direct[^。！？\\n]{0,80}Collocation|直接配点"
     ],
     "pos_claims": [
-      "处理.*极多.*状态约束|初始猜测.*物理不可行.*依然收敛|隐式.*动力学"
+      "处理[^。！？\\n]{0,80}极多[^。！？\\n]{0,80}状态约束|初始猜测[^。！？\\n]{0,80}物理不可行[^。！？\\n]{0,80}依然收敛|隐式[^。！？\\n]{0,80}动力学"
     ],
     "neg_claims": [
-      "直接配点.*无法处理约束|初始猜测.*必须.*可行"
+      "直接配点[^。！？\\n]{0,80}无法处理约束|初始猜测[^。！？\\n]{0,80}必须[^。！？\\n]{0,80}可行"
     ]
   },
   "Contact-Implicit 核心": {
@@ -1371,10 +1337,10 @@
       "Contact.Implicit|接触隐式"
     ],
     "pos_claims": [
-      "互补.*约束|complementarity|无需.*手工.*编排.*时序|自主发现.*步态"
+      "互补[^。！？\\n]{0,80}约束|complementarity|无需[^。！？\\n]{0,80}手工[^。！？\\n]{0,80}编排[^。！？\\n]{0,80}时序|自主发现[^。！？\\n]{0,80}步态"
     ],
     "neg_claims": [
-      "接触隐式.*需要.*预设.*时序|手动编排.*落地"
+      "接触隐式[^。！？\\n]{0,80}需要[^。！？\\n]{0,80}预设[^。！？\\n]{0,80}时序|手动编排[^。！？\\n]{0,80}落地"
     ]
   },
   "VLA 真机分层": {
@@ -1383,10 +1349,10 @@
       "真机|部署"
     ],
     "pos_claims": [
-      "中高层策略|不要直接.*驱动.*执行器|低频.*高频.*分层|action.*chunk"
+      "中高层策略|不要直接[^。！？\\n]{0,80}驱动[^。！？\\n]{0,80}执行器|低频[^。！？\\n]{0,80}高频[^。！？\\n]{0,80}分层|action[^。！？\\n]{0,80}chunk"
     ],
     "neg_claims": [
-      "VLA.*直接.*1kHz.*闭环|VLA.*控制.*脊髓"
+      "VLA[^。！？\\n]{0,80}直接[^。！？\\n]{0,80}1kHz[^。！？\\n]{0,80}闭环|VLA[^。！？\\n]{0,80}控制[^。！？\\n]{0,80}脊髓"
     ]
   },
   "SCHED_FIFO 风险": {
@@ -1394,10 +1360,10 @@
       "SCHED_FIFO|实时线程"
     ],
     "pos_claims": [
-      "死循环.*卡死|忘记.*sleep|优先级|拔电源"
+      "死循环[^。！？\\n]{0,80}卡死|忘记[^。！？\\n]{0,80}sleep|优先级|拔电源"
     ],
     "neg_claims": [
-      "SCHED_FIFO.*绝对安全|系统.*自动.*恢复"
+      "SCHED_FIFO[^。！？\\n]{0,80}绝对安全|系统[^。！？\\n]{0,80}自动[^。！？\\n]{0,80}恢复"
     ]
   },
   "CPU Isolation 配置": {
@@ -1405,32 +1371,32 @@
       "isolcpus|nohz_full"
     ],
     "pos_claims": [
-      "GRUB|屏蔽.*tick|RCU.*回调|屏蔽.*中断"
+      "GRUB|屏蔽[^。！？\\n]{0,80}tick|RCU[^。！？\\n]{0,80}回调|屏蔽[^。！？\\n]{0,80}中断"
     ],
     "neg_claims": [
-      "isolcpus.*无法屏蔽中断|isolcpus.*内核级.*无关"
+      "isolcpus[^。！？\\n]{0,80}无法屏蔽中断|isolcpus[^。！？\\n]{0,80}内核级[^。！？\\n]{0,80}无关"
     ]
   },
   "RT-1 动作分词": {
     "terms": [
-      "RT-1|Action.*Tokenization"
+      "RT-1|Action[^。！？\\n]{0,80}Tokenization"
     ],
     "pos_claims": [
-      "标量分箱|Scalar.*Binning|256.*bin|独立量化"
+      "标量分箱|Scalar[^。！？\\n]{0,80}Binning|256[^。！？\\n]{0,80}bin|独立量化"
     ],
     "neg_claims": [
-      "RT-1.*连续回归|RT-1.*不分词"
+      "RT-1[^。！？\\n]{0,80}连续回归|RT-1[^。！？\\n]{0,80}不分词"
     ]
   },
   "In-hand Reorientation 挑战": {
     "terms": [
-      "In.hand.*Reorientation|手内重定向"
+      "In.hand[^。！？\\n]{0,80}Reorientation|手内重定向"
     ],
     "pos_claims": [
-      "频繁.*接触切换|感知遮挡|滑移|Slip|离散非线性"
+      "频繁[^。！？\\n]{0,80}接触切换|感知遮挡|滑移|Slip|离散非线性"
     ],
     "neg_claims": [
-      "重定向.*无遮挡|接触.*恒定|重定向.*是线性系统"
+      "重定向[^。！？\\n]{0,80}无遮挡|接触[^。！？\\n]{0,80}恒定|重定向[^。！？\\n]{0,80}是线性系统"
     ]
   },
   "π₀ 核心技术": {
@@ -1438,43 +1404,43 @@
       "π₀|Pi-zero"
     ],
     "pos_claims": [
-      "流匹配|Flow.*Matching|Scaling.*Law|规模法则|后训练"
+      "流匹配|Flow[^。！？\\n]{0,80}Matching|Scaling[^。！？\\n]{0,80}Law|规模法则|后训练"
     ],
     "neg_claims": [
-      "π₀.*基于.*DQN|π₀.*无预训练"
+      "π₀[^。！？\\n]{0,80}基于[^。！？\\n]{0,80}DQN|π₀[^。！？\\n]{0,80}无预训练"
     ]
   },
   "Allegro Hand 优势": {
     "terms": [
-      "Allegro.*Hand|灵巧手"
+      "Allegro[^。！？\\n]{0,80}Hand|灵巧手"
     ],
     "pos_claims": [
       "结构精简|4指|易于集成触觉|HandLib|DexDex"
     ],
     "neg_claims": [
-      "Allegro.*太复杂|Allegro.*无法加触觉"
+      "Allegro[^。！？\\n]{0,80}太复杂|Allegro[^。！？\\n]{0,80}无法加触觉"
     ]
   },
   "Embodied Data Cleaning 重点": {
     "terms": [
-      "Data.*Cleaning|数据清洗"
+      "Data[^。！？\\n]{0,80}Cleaning|数据清洗"
     ],
     "pos_claims": [
-      "时序对齐|剔除.*异常|重定向误差|插值|重新采样"
+      "时序对齐|剔除[^。！？\\n]{0,80}异常|重定向误差|插值|重新采样"
     ],
     "neg_claims": [
-      "数据.*无需清洗|脏数据.*直接训练"
+      "数据[^。！？\\n]{0,80}无需清洗|脏数据[^。！？\\n]{0,80}直接训练"
     ]
   },
   "Actuator Network 作用": {
     "terms": [
-      "Actuator.*Network|执行器网络"
+      "Actuator[^。！？\\n]{0,80}Network|执行器网络"
     ],
     "pos_claims": [
-      "拟合.*真实电机|非线性特性|反向电动势|摩擦|延迟特性|TorchScript"
+      "拟合[^。！？\\n]{0,80}真实电机|非线性特性|反向电动势|摩擦|延迟特性|TorchScript"
     ],
     "neg_claims": [
-      "执行器网络.*拟合传感器|执行器网络.*代替策略"
+      "执行器网络[^。！？\\n]{0,80}拟合传感器|执行器网络[^。！？\\n]{0,80}代替策略"
     ]
   },
   "Visuo-Tactile Fusion 接触瞬间": {
@@ -1482,32 +1448,32 @@
       "Visuo.Tactile|视触觉融合"
     ],
     "pos_claims": [
-      "接触瞬间.*不可靠|阶段切换|软门控|gated.*fusion|接触前.*视觉|接触后.*触觉"
+      "接触瞬间[^。！？\\n]{0,80}不可靠|阶段切换|软门控|gated[^。！？\\n]{0,80}fusion|接触前[^。！？\\n]{0,80}视觉|接触后[^。！？\\n]{0,80}触觉"
     ],
     "neg_claims": [
-      "视触觉.*等权拼接|视触觉.*整段.*视觉为主|视触觉.*整段.*触觉为主"
+      "视触觉[^。！？\\n]{0,80}等权拼接|视触觉[^。！？\\n]{0,80}整段[^。！？\\n]{0,80}视觉为主|视触觉[^。！？\\n]{0,80}整段[^。！？\\n]{0,80}触觉为主"
     ]
   },
   "Tactile Impedance Control 变阻抗": {
     "terms": [
-      "Tactile.*Impedance|触觉.*阻抗"
+      "Tactile[^。！？\\n]{0,80}Impedance|触觉[^。！？\\n]{0,80}阻抗"
     ],
     "pos_claims": [
-      "在线调整|变阻抗|压力中心|滑移|self.adaptive|自适应力度|K_d.*在线|B_d.*在线"
+      "在线调整|变阻抗|压力中心|滑移|self.adaptive|自适应力度|K_d[^。！？\\n]{0,80}在线|B_d[^。！？\\n]{0,80}在线"
     ],
     "neg_claims": [
-      "Tactile.*Impedance.*固定参数|触觉阻抗.*静态.*K_d|触觉阻抗.*与触觉无关"
+      "Tactile[^。！？\\n]{0,80}Impedance[^。！？\\n]{0,80}固定参数|触觉阻抗[^。！？\\n]{0,80}静态[^。！？\\n]{0,80}K_d|触觉阻抗[^。！？\\n]{0,80}与触觉无关"
     ]
   },
   "Contact Wrench Cone 6 维推广": {
     "terms": [
-      "Contact.*Wrench.*Cone|力旋量锥|CWC"
+      "Contact[^。！？\\n]{0,80}Wrench[^。！？\\n]{0,80}Cone|力旋量锥|CWC"
     ],
     "pos_claims": [
-      "六维.*力旋量|6D.*wrench|面接触|ZMP.*支撑|偏航.*摩擦|推广.*摩擦锥"
+      "六维[^。！？\\n]{0,80}力旋量|6D[^。！？\\n]{0,80}wrench|面接触|ZMP[^。！？\\n]{0,80}支撑|偏航[^。！？\\n]{0,80}摩擦|推广[^。！？\\n]{0,80}摩擦锥"
     ],
     "neg_claims": [
-      "Wrench.*Cone.*仅.*力|CWC.*只有.*三维|CWC.*不含.*力矩"
+      "Wrench[^。！？\\n]{0,80}Cone[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}力|CWC[^。！？\\n]{0,80}只有[^。！？\\n]{0,80}三维|CWC[^。！？\\n]{0,80}不含[^。！？\\n]{0,80}力矩"
     ]
   },
   "GelSlim 指节级薄型化": {
@@ -1515,87 +1481,87 @@
       "GelSlim"
     ],
     "pos_claims": [
-      "薄片|指节|高分辨率.*视觉触觉|压缩.*GelSight|MIT|平行夹爪|形变深度图"
+      "薄片|指节|高分辨率[^。！？\\n]{0,80}视觉触觉|压缩[^。！？\\n]{0,80}GelSight|MIT|平行夹爪|形变深度图"
     ],
     "neg_claims": [
-      "GelSlim.*体积大|GelSlim.*只能.*桌面|GelSlim.*电容阵列"
+      "GelSlim[^。！？\\n]{0,80}体积大|GelSlim[^。！？\\n]{0,80}只能[^。！？\\n]{0,80}桌面|GelSlim[^。！？\\n]{0,80}电容阵列"
     ]
   },
   "控制环路延迟五段分解": {
     "terms": [
-      "控制环路.*延迟|control.*loop.*latency|端到端.*时延"
+      "控制环路[^。！？\\n]{0,80}延迟|control[^。！？\\n]{0,80}loop[^。！？\\n]{0,80}latency|端到端[^。！？\\n]{0,80}时延"
     ],
     "pos_claims": [
-      "T_sense|T_bus|T_compute|T_sched|总线|内核.*调度|加性|累加"
+      "T_sense|T_bus|T_compute|T_sched|总线|内核[^。！？\\n]{0,80}调度|加性|累加"
     ],
     "neg_claims": [
-      "控制环路.*单段|延迟.*只算.*推理|延迟.*与总线无关"
+      "控制环路[^。！？\\n]{0,80}单段|延迟[^。！？\\n]{0,80}只算[^。！？\\n]{0,80}推理|延迟[^。！？\\n]{0,80}与总线无关"
     ]
   },
   "UDP 组播四类事件": {
     "terms": [
-      "UDP.*组播|UDP.*multicast|LCM.*多播"
+      "UDP[^。！？\\n]{0,80}组播|UDP[^。！？\\n]{0,80}multicast|LCM[^。！？\\n]{0,80}多播"
     ],
     "pos_claims": [
-      "丢包|迟到|乱序|成功|Gilbert.Elliott|无重传|无.*ACK|即发即弃"
+      "丢包|迟到|乱序|成功|Gilbert.Elliott|无重传|无[^。！？\\n]{0,80}ACK|即发即弃"
     ],
     "neg_claims": [
-      "UDP.*组播.*支持.*重传|UDP.*多播.*提供.*ACK|组播.*能.*保证.*顺序"
+      "UDP[^。！？\\n]{0,80}组播[^。！？\\n]{0,80}支持[^。！？\\n]{0,80}重传|UDP[^。！？\\n]{0,80}多播[^。！？\\n]{0,80}提供[^。！？\\n]{0,80}ACK|组播[^。！？\\n]{0,80}能[^。！？\\n]{0,80}保证[^。！？\\n]{0,80}顺序"
     ]
   },
   "PTP 时钟同步精度": {
     "terms": [
-      "PTP|IEEE.*1588"
+      "PTP|IEEE[^。！？\\n]{0,80}1588"
     ],
     "pos_claims": [
-      "100.*ns.*1.*[μu]s|亚微秒|主时钟选举|BMCA|偏置.*漂移|delay.*request.*response"
+      "100[^。！？\\n]{0,80}ns[^。！？\\n]{0,80}1[^。！？\\n]{0,80}[μu]s|亚微秒|主时钟选举|BMCA|偏置[^。！？\\n]{0,80}漂移|delay[^。！？\\n]{0,80}request[^。！？\\n]{0,80}response"
     ],
     "neg_claims": [
-      "PTP.*精度.*毫秒|PTP.*与.*NTP.*等价|PTP.*不需要.*主时钟"
+      "PTP[^。！？\\n]{0,80}精度[^。！？\\n]{0,80}毫秒|PTP[^。！？\\n]{0,80}与[^。！？\\n]{0,80}NTP[^。！？\\n]{0,80}等价|PTP[^。！？\\n]{0,80}不需要[^。！？\\n]{0,80}主时钟"
     ]
   },
   "EtherCAT DC 同步精度": {
     "terms": [
-      "EtherCAT.*DC|分布式时钟|EtherCAT.*Distributed.*Clock"
+      "EtherCAT[^。！？\\n]{0,80}DC|分布式时钟|EtherCAT[^。！？\\n]{0,80}Distributed[^。！？\\n]{0,80}Clock"
     ],
     "pos_claims": [
-      "<.*100.*ns|百纳秒|硬件.*ASIC|参考时钟|从站芯片|ESC"
+      "<[^。！？\\n]{0,80}100[^。！？\\n]{0,80}ns|百纳秒|硬件[^。！？\\n]{0,80}ASIC|参考时钟|从站芯片|ESC"
     ],
     "neg_claims": [
-      "EtherCAT.*DC.*微秒.*量级|分布式时钟.*纯软件|EtherCAT.*依赖.*NTP"
+      "EtherCAT[^。！？\\n]{0,80}DC[^。！？\\n]{0,80}微秒[^。！？\\n]{0,80}量级|分布式时钟[^。！？\\n]{0,80}纯软件|EtherCAT[^。！？\\n]{0,80}依赖[^。！？\\n]{0,80}NTP"
     ]
   },
   "EtherCAT vs EtherNet/IP 选型": {
     "terms": [
-      "EtherCAT.*EtherNet/IP|EtherNet/IP.*EtherCAT|工业.*总线.*选型"
+      "EtherCAT[^。！？\\n]{0,80}EtherNet/IP|EtherNet/IP[^。！？\\n]{0,80}EtherCAT|工业[^。！？\\n]{0,80}总线[^。！？\\n]{0,80}选型"
     ],
     "pos_claims": [
-      "on.the.fly|火车式|标准.*以太网|CIP|TSN|确定性.*EtherCAT|生态.*EtherNet/IP|1.*kHz.*EtherCAT"
+      "on.the.fly|火车式|标准[^。！？\\n]{0,80}以太网|CIP|TSN|确定性[^。！？\\n]{0,80}EtherCAT|生态[^。！？\\n]{0,80}EtherNet/IP|1[^。！？\\n]{0,80}kHz[^。！？\\n]{0,80}EtherCAT"
     ],
     "neg_claims": [
-      "EtherNet/IP.*确定性.*高于.*EtherCAT|EtherCAT.*生态.*更广|两者.*完全等价"
+      "EtherNet/IP[^。！？\\n]{0,80}确定性[^。！？\\n]{0,80}高于[^。！？\\n]{0,80}EtherCAT|EtherCAT[^。！？\\n]{0,80}生态[^。！？\\n]{0,80}更广|两者[^。！？\\n]{0,80}完全等价"
     ]
   },
   "NMR CEPR 管线": {
     "terms": [
-      "NMR|Neural.*Motion.*Retargeting"
+      "NMR|Neural[^。！？\\n]{0,80}Motion[^。！？\\n]{0,80}Retargeting"
     ],
     "pos_claims": [
-      "CEPR|物理感知筛选|GMR|分簇.*RL|聚类.*专家|仿真.*rollout|非自回归|Transformer|双向"
+      "CEPR|物理感知筛选|GMR|分簇[^。！？\\n]{0,80}RL|聚类[^。！？\\n]{0,80}专家|仿真[^。！？\\n]{0,80}rollout|非自回归|Transformer|双向"
     ],
     "neg_claims": [
-      "NMR.*纯优化|NMR.*仅.*几何|NMR.*自回归.*单步|NMR.*无.*仿真.*监督"
+      "NMR[^。！？\\n]{0,80}纯优化|NMR[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}几何|NMR[^。！？\\n]{0,80}自回归[^。！？\\n]{0,80}单步|NMR[^。！？\\n]{0,80}无[^。！？\\n]{0,80}仿真[^。！？\\n]{0,80}监督"
     ]
   },
   "GMR 运动学优化定位": {
     "terms": [
-      "GMR|General.*Motion.*Retargeting"
+      "GMR|General[^。！？\\n]{0,80}Motion[^。！？\\n]{0,80}Retargeting"
     ],
     "pos_claims": [
-      "关键点.*IK|QP|运动学.*层|几何对齐|CPU.*实时|关节.*轨迹|限位.*平滑|骨架.*对齐"
+      "关键点[^。！？\\n]{0,80}IK|QP|运动学[^。！？\\n]{0,80}层|几何对齐|CPU[^。！？\\n]{0,80}实时|关节[^。！？\\n]{0,80}轨迹|限位[^。！？\\n]{0,80}平滑|骨架[^。！？\\n]{0,80}对齐"
     ],
     "neg_claims": [
-      "GMR.*基于.*强化学习|GMR.*基于.*RL|GMR.*神经网络.*推理|GMR.*仿真.*闭环|GMR.*策略.*学习"
+      "GMR[^。！？\\n]{0,80}基于[^。！？\\n]{0,80}强化学习|GMR[^。！？\\n]{0,80}基于[^。！？\\n]{0,80}RL|GMR[^。！？\\n]{0,80}神经网络[^。！？\\n]{0,80}推理|GMR[^。！？\\n]{0,80}仿真[^。！？\\n]{0,80}闭环|GMR[^。！？\\n]{0,80}策略[^。！？\\n]{0,80}学习"
     ]
   },
   "ReActor 双层联合优化": {
@@ -1603,65 +1569,65 @@
       "ReActor"
     ],
     "pos_claims": [
-      "双层|bilevel|参数化.*参考|联合.*更新|物理.*感知.*RL|交替.*更新|结构化.*近似.*梯度|在线.*形变"
+      "双层|bilevel|参数化[^。！？\\n]{0,80}参考|联合[^。！？\\n]{0,80}更新|物理[^。！？\\n]{0,80}感知[^。！？\\n]{0,80}RL|交替[^。！？\\n]{0,80}更新|结构化[^。！？\\n]{0,80}近似[^。！？\\n]{0,80}梯度|在线[^。！？\\n]{0,80}形变"
     ],
     "neg_claims": [
-      "ReActor.*纯.*运动学|ReActor.*离线.*单步|ReActor.*无.*仿真|ReActor.*仅.*几何.*对齐|ReActor.*完全.*开环"
+      "ReActor[^。！？\\n]{0,80}纯[^。！？\\n]{0,80}运动学|ReActor[^。！？\\n]{0,80}离线[^。！？\\n]{0,80}单步|ReActor[^。！？\\n]{0,80}无[^。！？\\n]{0,80}仿真|ReActor[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}几何[^。！？\\n]{0,80}对齐|ReActor[^。！？\\n]{0,80}完全[^。！？\\n]{0,80}开环"
     ]
   },
   "Motion Retargeting Pipeline 端到端阶段": {
     "terms": [
-      "Motion.*Retargeting.*Pipeline|动作重定向.*流水线|重定向.*流水线"
+      "Motion[^。！？\\n]{0,80}Retargeting[^。！？\\n]{0,80}Pipeline|动作重定向[^。！？\\n]{0,80}流水线|重定向[^。！？\\n]{0,80}流水线"
     ],
     "pos_claims": [
-      "源.*归一|骨架.*映射|体型.*缩放|IK.*QP|硬约束.*平滑|物理.*可行性.*筛选|端到端|多阶段|8.*阶段"
+      "源[^。！？\\n]{0,80}归一|骨架[^。！？\\n]{0,80}映射|体型[^。！？\\n]{0,80}缩放|IK[^。！？\\n]{0,80}QP|硬约束[^。！？\\n]{0,80}平滑|物理[^。！？\\n]{0,80}可行性[^。！？\\n]{0,80}筛选|端到端|多阶段|8[^。！？\\n]{0,80}阶段"
     ],
     "neg_claims": [
-      "重定向.*单次.*映射|重定向.*一步.*完成|重定向.*仅.*一阶段|流水线.*只.*IK"
+      "重定向[^。！？\\n]{0,80}单次[^。！？\\n]{0,80}映射|重定向[^。！？\\n]{0,80}一步[^。！？\\n]{0,80}完成|重定向[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}一阶段|流水线[^。！？\\n]{0,80}只[^。！？\\n]{0,80}IK"
     ]
   },
   "Motion Retargeting 目标函数加权组合": {
     "terms": [
-      "motion.retargeting.*objective|重定向.*目标函数|retargeting.*objective"
+      "motion.retargeting[^。！？\\n]{0,80}objective|重定向[^。！？\\n]{0,80}目标函数|retargeting[^。！？\\n]{0,80}objective"
     ],
     "pos_claims": [
-      "姿态.*项|接触.*项|平衡.*项|限位.*项|平滑.*项|加权.*组合|多项.*加和|姿态.*接触.*平衡|关节.*限位"
+      "姿态[^。！？\\n]{0,80}项|接触[^。！？\\n]{0,80}项|平衡[^。！？\\n]{0,80}项|限位[^。！？\\n]{0,80}项|平滑[^。！？\\n]{0,80}项|加权[^。！？\\n]{0,80}组合|多项[^。！？\\n]{0,80}加和|姿态[^。！？\\n]{0,80}接触[^。！？\\n]{0,80}平衡|关节[^。！？\\n]{0,80}限位"
     ],
     "neg_claims": [
-      "重定向.*目标.*单一.*姿态|目标函数.*只有.*姿态|目标函数.*无.*接触|目标函数.*无.*限位"
+      "重定向[^。！？\\n]{0,80}目标[^。！？\\n]{0,80}单一[^。！？\\n]{0,80}姿态|目标函数[^。！？\\n]{0,80}只有[^。！？\\n]{0,80}姿态|目标函数[^。！？\\n]{0,80}无[^。！？\\n]{0,80}接触|目标函数[^。！？\\n]{0,80}无[^。！？\\n]{0,80}限位"
     ]
   },
   "Character Humanoid 目标双重性": {
     "terms": [
-      "character.*humanoid|角色化.*人形|character.*animation.*vs.*robot"
+      "character[^。！？\\n]{0,80}humanoid|角色化[^。！？\\n]{0,80}人形|character[^。！？\\n]{0,80}animation[^。！？\\n]{0,80}vs[^。！？\\n]{0,80}robot"
     ],
     "pos_claims": [
-      "表演.*可信度|character.*believability|物理.*可控性|风格先验|风格.*机电.*安全|三方博弈|双.*目标"
+      "表演[^。！？\\n]{0,80}可信度|character[^。！？\\n]{0,80}believability|物理[^。！？\\n]{0,80}可控性|风格先验|风格[^。！？\\n]{0,80}机电[^。！？\\n]{0,80}安全|三方博弈|双[^。！？\\n]{0,80}目标"
     ],
     "neg_claims": [
-      "角色化.*人形.*与.*工业.*人形.*等价|character.*humanoid.*仅.*物理|风格.*与.*物理.*无关|纯粹.*功能.*优化"
+      "角色化[^。！？\\n]{0,80}人形[^。！？\\n]{0,80}与[^。！？\\n]{0,80}工业[^。！？\\n]{0,80}人形[^。！？\\n]{0,80}等价|character[^。！？\\n]{0,80}humanoid[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}物理|风格[^。！？\\n]{0,80}与[^。！？\\n]{0,80}物理[^。！？\\n]{0,80}无关|纯粹[^。！？\\n]{0,80}功能[^。！？\\n]{0,80}优化"
     ]
   },
   "6-DoF vs 7-DoF 抓取": {
     "terms": [
-      "6.?DoF.*7.?DoF|7.?DoF.*6.?DoF|grasp.*pose.*7.?DoF|抓取.*7.?DoF"
+      "6.?DoF[^。！？\\n]{0,80}7.?DoF|7.?DoF[^。！？\\n]{0,80}6.?DoF|grasp[^。！？\\n]{0,80}pose[^。！？\\n]{0,80}7.?DoF|抓取[^。！？\\n]{0,80}7.?DoF"
     ],
     "pos_claims": [
-      "夹爪.*开度|gripper.*width|6.?DoF.*位姿|7.?DoF.*=.*6.?DoF|加.*开度|加上.*开度|开度.*抓取"
+      "夹爪[^。！？\\n]{0,80}开度|gripper[^。！？\\n]{0,80}width|6.?DoF[^。！？\\n]{0,80}位姿|7.?DoF[^。！？\\n]{0,80}=[^。！？\\n]{0,80}6.?DoF|加[^。！？\\n]{0,80}开度|加上[^。！？\\n]{0,80}开度|开度[^。！？\\n]{0,80}抓取"
     ],
     "neg_claims": [
-      "7.?DoF.*与.*6.?DoF.*等价|7.?DoF.*只是.*坐标|7.?DoF.*不含.*开度|6.?DoF.*已包含.*夹爪"
+      "7.?DoF[^。！？\\n]{0,80}与[^。！？\\n]{0,80}6.?DoF[^。！？\\n]{0,80}等价|7.?DoF[^。！？\\n]{0,80}只是[^。！？\\n]{0,80}坐标|7.?DoF[^。！？\\n]{0,80}不含[^。！？\\n]{0,80}开度|6.?DoF[^。！？\\n]{0,80}已包含[^。！？\\n]{0,80}夹爪"
     ]
   },
   "GraspNet 三代谱系演进": {
     "terms": [
-      "GraspNet.*Contact.*GraspNet|Contact.*GraspNet.*GSNet|GraspNet.*GSNet|grasp.*pose.*estimation"
+      "GraspNet[^。！？\\n]{0,80}Contact[^。！？\\n]{0,80}GraspNet|Contact[^。！？\\n]{0,80}GraspNet[^。！？\\n]{0,80}GSNet|GraspNet[^。！？\\n]{0,80}GSNet|grasp[^。！？\\n]{0,80}pose[^。！？\\n]{0,80}estimation"
     ],
     "pos_claims": [
-      "采样.*评估|稠密.*回归|稠密.*预测|时序.*关联|graspness|演进|第二代|第三代|GraspNet.*1Billion"
+      "采样[^。！？\\n]{0,80}评估|稠密[^。！？\\n]{0,80}回归|稠密[^。！？\\n]{0,80}预测|时序[^。！？\\n]{0,80}关联|graspness|演进|第二代|第三代|GraspNet[^。！？\\n]{0,80}1Billion"
     ],
     "neg_claims": [
-      "GraspNet.*与.*Contact.*GraspNet.*等价|GraspNet.*一代.*方法|GraspNet.*家族.*同一架构|稠密.*与.*采样.*相同"
+      "GraspNet[^。！？\\n]{0,80}与[^。！？\\n]{0,80}Contact[^。！？\\n]{0,80}GraspNet[^。！？\\n]{0,80}等价|GraspNet[^。！？\\n]{0,80}一代[^。！？\\n]{0,80}方法|GraspNet[^。！？\\n]{0,80}家族[^。！？\\n]{0,80}同一架构|稠密[^。！？\\n]{0,80}与[^。！？\\n]{0,80}采样[^。！？\\n]{0,80}相同"
     ]
   },
   "Contact-GraspNet 接触点参数化": {
@@ -1669,10 +1635,10 @@
       "Contact.?GraspNet"
     ],
     "pos_claims": [
-      "接触点|contact.*point|基线.*方向|接近.*向量|抓取.*宽度|每.*点.*回归|稠密.*预测"
+      "接触点|contact[^。！？\\n]{0,80}point|基线[^。！？\\n]{0,80}方向|接近[^。！？\\n]{0,80}向量|抓取[^。！？\\n]{0,80}宽度|每[^。！？\\n]{0,80}点[^。！？\\n]{0,80}回归|稠密[^。！？\\n]{0,80}预测"
     ],
     "neg_claims": [
-      "Contact.?GraspNet.*全.*6.?DoF.*回归|Contact.?GraspNet.*不基于.*接触点|Contact.?GraspNet.*仅.*分类"
+      "Contact.?GraspNet[^。！？\\n]{0,80}全[^。！？\\n]{0,80}6.?DoF[^。！？\\n]{0,80}回归|Contact.?GraspNet[^。！？\\n]{0,80}不基于[^。！？\\n]{0,80}接触点|Contact.?GraspNet[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}分类"
     ]
   },
   "AnyGrasp 跨帧时序关联": {
@@ -1680,76 +1646,76 @@
       "AnyGrasp"
     ],
     "pos_claims": [
-      "时序.*关联|跨帧|temporal|tracking|物体.*坐标系|动态.*跟踪|bin.*clearing|many.to.many|稳定度|COG"
+      "时序[^。！？\\n]{0,80}关联|跨帧|temporal|tracking|物体[^。！？\\n]{0,80}坐标系|动态[^。！？\\n]{0,80}跟踪|bin[^。！？\\n]{0,80}clearing|many.to.many|稳定度|COG"
     ],
     "neg_claims": [
-      "AnyGrasp.*仅.*单帧|AnyGrasp.*无.*时序|AnyGrasp.*与.*GraspNet.*无差异|AnyGrasp.*每.*帧.*独立"
+      "AnyGrasp[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}单帧|AnyGrasp[^。！？\\n]{0,80}无[^。！？\\n]{0,80}时序|AnyGrasp[^。！？\\n]{0,80}与[^。！？\\n]{0,80}GraspNet[^。！？\\n]{0,80}无差异|AnyGrasp[^。！？\\n]{0,80}每[^。！？\\n]{0,80}帧[^。！？\\n]{0,80}独立"
     ]
   },
   "AnyGrasp SDK License 分发": {
     "terms": [
-      "AnyGrasp.*SDK|AnyGrasp.*License|AnyGrasp.*权重"
+      "AnyGrasp[^。！？\\n]{0,80}SDK|AnyGrasp[^。！？\\n]{0,80}License|AnyGrasp[^。！？\\n]{0,80}权重"
     ],
     "pos_claims": [
-      "二进制|binary|License|商业.*许可|闭源.*权重|不.*开源.*权重|SDK.*分发"
+      "二进制|binary|License|商业[^。！？\\n]{0,80}许可|闭源[^。！？\\n]{0,80}权重|不[^。！？\\n]{0,80}开源[^。！？\\n]{0,80}权重|SDK[^。！？\\n]{0,80}分发"
     ],
     "neg_claims": [
-      "AnyGrasp.*完全.*开源|AnyGrasp.*权重.*开放|AnyGrasp.*MIT|AnyGrasp.*Apache|AnyGrasp.*无.*License.*限制"
+      "AnyGrasp[^。！？\\n]{0,80}完全[^。！？\\n]{0,80}开源|AnyGrasp[^。！？\\n]{0,80}权重[^。！？\\n]{0,80}开放|AnyGrasp[^。！？\\n]{0,80}MIT|AnyGrasp[^。！？\\n]{0,80}Apache|AnyGrasp[^。！？\\n]{0,80}无[^。！？\\n]{0,80}License[^。！？\\n]{0,80}限制"
     ]
   },
   "MPPH 抓取吞吐指标": {
     "terms": [
-      "MPPH|Mean.*Picks.*Per.*Hour"
+      "MPPH|Mean[^。！？\\n]{0,80}Picks[^。！？\\n]{0,80}Per[^。！？\\n]{0,80}Hour"
     ],
     "pos_claims": [
-      "吞吐|throughput|bin.*clearing|每.*小时|抓取.*数|SDK.*报"
+      "吞吐|throughput|bin[^。！？\\n]{0,80}clearing|每[^。！？\\n]{0,80}小时|抓取[^。！？\\n]{0,80}数|SDK[^。！？\\n]{0,80}报"
     ],
     "neg_claims": [
-      "MPPH.*精度.*指标|MPPH.*抓取.*成功率.*等价|MPPH.*与.*AP.*相同|MPPH.*单帧.*评测"
+      "MPPH[^。！？\\n]{0,80}精度[^。！？\\n]{0,80}指标|MPPH[^。！？\\n]{0,80}抓取[^。！？\\n]{0,80}成功率[^。！？\\n]{0,80}等价|MPPH[^。！？\\n]{0,80}与[^。！？\\n]{0,80}AP[^。！？\\n]{0,80}相同|MPPH[^。！？\\n]{0,80}单帧[^。！？\\n]{0,80}评测"
     ]
   },
   "抓取候选需显式碰撞检查": {
     "terms": [
-      "抓取候选|grasp.*candidate|grasp.*pose"
+      "抓取候选|grasp[^。！？\\n]{0,80}candidate|grasp[^。！？\\n]{0,80}pose"
     ],
     "pos_claims": [
-      "显式.*碰撞|碰撞.*检查|IK.*解|可执行|物理.*可执行|网络.*分.*高.*不保证|不可省略|IK.*存在"
+      "显式[^。！？\\n]{0,80}碰撞|碰撞[^。！？\\n]{0,80}检查|IK[^。！？\\n]{0,80}解|可执行|物理[^。！？\\n]{0,80}可执行|网络[^。！？\\n]{0,80}分[^。！？\\n]{0,80}高[^。！？\\n]{0,80}不保证|不可省略|IK[^。！？\\n]{0,80}存在"
     ],
     "neg_claims": [
-      "网络.*分.*高.*等于.*可执行|无需.*碰撞.*检查|无需.*IK.*校验|网络.*打分.*直接.*执行"
+      "网络[^。！？\\n]{0,80}分[^。！？\\n]{0,80}高[^。！？\\n]{0,80}等于[^。！？\\n]{0,80}可执行|无需[^。！？\\n]{0,80}碰撞[^。！？\\n]{0,80}检查|无需[^。！？\\n]{0,80}IK[^。！？\\n]{0,80}校验|网络[^。！？\\n]{0,80}打分[^。！？\\n]{0,80}直接[^。！？\\n]{0,80}执行"
     ]
   },
   "抓取选型 检测式优先": {
     "terms": [
-      "grasp.*policy.*selection|抓取.*策略.*选型|抓取.*选型"
+      "grasp[^。！？\\n]{0,80}policy[^。！？\\n]{0,80}selection|抓取[^。！？\\n]{0,80}策略[^。！？\\n]{0,80}选型|抓取[^。！？\\n]{0,80}选型"
     ],
     "pos_claims": [
-      "检测式.*起步|先.*检测式|先.*用.*检测|GraspNet.*起步|逐步.*替换|IL.*VLA.*替换|工程序"
+      "检测式[^。！？\\n]{0,80}起步|先[^。！？\\n]{0,80}检测式|先[^。！？\\n]{0,80}用[^。！？\\n]{0,80}检测|GraspNet[^。！？\\n]{0,80}起步|逐步[^。！？\\n]{0,80}替换|IL[^。！？\\n]{0,80}VLA[^。！？\\n]{0,80}替换|工程序"
     ],
     "neg_claims": [
-      "端到端.*VLA.*优先|直接.*端到端|跳过.*检测式|无需.*检测式|端到端.*替代.*所有"
+      "端到端[^。！？\\n]{0,80}VLA[^。！？\\n]{0,80}优先|直接[^。！？\\n]{0,80}端到端|跳过[^。！？\\n]{0,80}检测式|无需[^。！？\\n]{0,80}检测式|端到端[^。！？\\n]{0,80}替代[^。！？\\n]{0,80}所有"
     ]
   },
   "GraspNet-1Billion 评测基准": {
     "terms": [
-      "GraspNet.?1Billion|GraspNet-1Billion|GraspNet.*1.*Billion"
+      "GraspNet.?1Billion|GraspNet-1Billion|GraspNet[^。！？\\n]{0,80}1[^。！？\\n]{0,80}Billion"
     ],
     "pos_claims": [
-      "百万|million|真实.*标注|评测.*基准|数据集|benchmark|公开"
+      "百万|million|真实[^。！？\\n]{0,80}标注|评测[^。！？\\n]{0,80}基准|数据集|benchmark|公开"
     ],
     "neg_claims": [
-      "GraspNet.?1Billion.*仿真.*合成|GraspNet.?1Billion.*未开放|GraspNet.?1Billion.*小规模|GraspNet.?1Billion.*仅.*千.*级"
+      "GraspNet.?1Billion[^。！？\\n]{0,80}仿真[^。！？\\n]{0,80}合成|GraspNet.?1Billion[^。！？\\n]{0,80}未开放|GraspNet.?1Billion[^。！？\\n]{0,80}小规模|GraspNet.?1Billion[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}千[^。！？\\n]{0,80}级"
     ]
   },
   "BifrostUMI 无机器人示范": {
     "terms": [
-      "BifrostUMI|Bifrost.*UMI"
+      "BifrostUMI|Bifrost[^。！？\\n]{0,80}UMI"
     ],
     "pos_claims": [
-      "无机器人|robot.free|人形.*全身|示范|demonstration|SKR|扩散.*高层.*策略|遥操作.*替代|采集.*成本"
+      "无机器人|robot.free|人形[^。！？\\n]{0,80}全身|示范|demonstration|SKR|扩散[^。！？\\n]{0,80}高层[^。！？\\n]{0,80}策略|遥操作[^。！？\\n]{0,80}替代|采集[^。！？\\n]{0,80}成本"
     ],
     "neg_claims": [
-      "BifrostUMI.*依赖.*真机.*遥操作|BifrostUMI.*无.*人形.*目标|BifrostUMI.*仅.*仿真.*数据|BifrostUMI.*不含.*扩散"
+      "BifrostUMI[^。！？\\n]{0,80}依赖[^。！？\\n]{0,80}真机[^。！？\\n]{0,80}遥操作|BifrostUMI[^。！？\\n]{0,80}无[^。！？\\n]{0,80}人形[^。！？\\n]{0,80}目标|BifrostUMI[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}仿真[^。！？\\n]{0,80}数据|BifrostUMI[^。！？\\n]{0,80}不含[^。！？\\n]{0,80}扩散"
     ]
   },
   "OpenLoong 全栈开源": {
@@ -1757,10 +1723,10 @@
       "OpenLoong|青龙"
     ],
     "pos_claims": [
-      "全栈.*开源|公版|参考.*实现|开源.*硬件|开源.*软件|开放.*社区|国家.*地方.*共建|人形.*开源"
+      "全栈[^。！？\\n]{0,80}开源|公版|参考[^。！？\\n]{0,80}实现|开源[^。！？\\n]{0,80}硬件|开源[^。！？\\n]{0,80}软件|开放[^。！？\\n]{0,80}社区|国家[^。！？\\n]{0,80}地方[^。！？\\n]{0,80}共建|人形[^。！？\\n]{0,80}开源"
     ],
     "neg_claims": [
-      "OpenLoong.*闭源|OpenLoong.*仅.*软件|OpenLoong.*不开放|青龙.*商业.*独占|青龙.*未公开"
+      "OpenLoong[^。！？\\n]{0,80}闭源|OpenLoong[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}软件|OpenLoong[^。！？\\n]{0,80}不开放|青龙[^。！？\\n]{0,80}商业[^。！？\\n]{0,80}独占|青龙[^。！？\\n]{0,80}未公开"
     ]
   },
   "SONIC 规模化预训练": {
@@ -1768,10 +1734,10 @@
       "SONIC"
     ],
     "pos_claims": [
-      "tracking.*预训练|规模化.*运动跟踪|MoCap.*scaling|三轴.*scaling|统一.*token|单一.*统一.*策略|预训练.*任务|上亿帧|GPU.*小时"
+      "tracking[^。！？\\n]{0,80}预训练|规模化[^。！？\\n]{0,80}运动跟踪|MoCap[^。！？\\n]{0,80}scaling|三轴[^。！？\\n]{0,80}scaling|统一[^。！？\\n]{0,80}token|单一[^。！？\\n]{0,80}统一[^。！？\\n]{0,80}策略|预训练[^。！？\\n]{0,80}任务|上亿帧|GPU[^。！？\\n]{0,80}小时"
     ],
     "neg_claims": [
-      "SONIC.*仅.*小规模|SONIC.*无.*scaling|SONIC.*多.*策略.*切换|SONIC.*不.*依赖.*MoCap|SONIC.*非.*预训练"
+      "SONIC[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}小规模|SONIC[^。！？\\n]{0,80}无[^。！？\\n]{0,80}scaling|SONIC[^。！？\\n]{0,80}多[^。！？\\n]{0,80}策略[^。！？\\n]{0,80}切换|SONIC[^。！？\\n]{0,80}不[^。！？\\n]{0,80}依赖[^。！？\\n]{0,80}MoCap|SONIC[^。！？\\n]{0,80}非[^。！？\\n]{0,80}预训练"
     ]
   },
   "Any2Any 跨具身迁移": {
@@ -1779,32 +1745,32 @@
       "Any2Any"
     ],
     "pos_claims": [
-      "LoRA.*后训练|运动学.*对齐|动力学.*残差|动力学.*适配|约.*1%|many.to.many|PEFT|后训练.*迁移|低秩.*补丁"
+      "LoRA[^。！？\\n]{0,80}后训练|运动学[^。！？\\n]{0,80}对齐|动力学[^。！？\\n]{0,80}残差|动力学[^。！？\\n]{0,80}适配|约[^。！？\\n]{0,80}1%|many.to.many|PEFT|后训练[^。！？\\n]{0,80}迁移|低秩[^。！？\\n]{0,80}补丁"
     ],
     "neg_claims": [
-      "Any2Any.*从头.*重训|Any2Any.*全参.*微调|Any2Any.*仅.*单具身|Any2Any.*需.*亿级.*MoCap.*重训|Any2Any.*不.*用.*LoRA"
+      "Any2Any[^。！？\\n]{0,80}从头[^。！？\\n]{0,80}重训|Any2Any[^。！？\\n]{0,80}全参[^。！？\\n]{0,80}微调|Any2Any[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}单具身|Any2Any[^。！？\\n]{0,80}需[^。！？\\n]{0,80}亿级[^。！？\\n]{0,80}MoCap[^。！？\\n]{0,80}重训|Any2Any[^。！？\\n]{0,80}不[^。！？\\n]{0,80}用[^。！？\\n]{0,80}LoRA"
     ]
   },
   "BFM 行为基础模型无参考": {
     "terms": [
-      "behavior.*foundation.*model|BFM|行为基础模型"
+      "behavior[^。！？\\n]{0,80}foundation[^。！？\\n]{0,80}model|BFM|行为基础模型"
     ],
     "pos_claims": [
-      "无参考|前向.*后向|successor|CVAE|生成式.*WBC|技能.*预训练|zero.?shot|提示.*推断.*行为|无.*奖励.*预训练"
+      "无参考|前向[^。！？\\n]{0,80}后向|successor|CVAE|生成式[^。！？\\n]{0,80}WBC|技能[^。！？\\n]{0,80}预训练|zero.?shot|提示[^。！？\\n]{0,80}推断[^。！？\\n]{0,80}行为|无[^。！？\\n]{0,80}奖励[^。！？\\n]{0,80}预训练"
     ],
     "neg_claims": [
-      "BFM.*必须.*参考|BFM.*每.*任务.*重训|BFM.*仅.*tracking|行为基础模型.*依赖.*逐任务.*奖励|BFM.*单一.*任务.*策略"
+      "BFM[^。！？\\n]{0,80}必须[^。！？\\n]{0,80}参考|BFM[^。！？\\n]{0,80}每[^。！？\\n]{0,80}任务[^。！？\\n]{0,80}重训|BFM[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}tracking|行为基础模型[^。！？\\n]{0,80}依赖[^。！？\\n]{0,80}逐任务[^。！？\\n]{0,80}奖励|BFM[^。！？\\n]{0,80}单一[^。！？\\n]{0,80}任务[^。！？\\n]{0,80}策略"
     ]
   },
   "SD-AMP 状态门控双判别器": {
     "terms": [
-      "SD-AMP|State.?Dependent.*AMP"
+      "SD-AMP|State.?Dependent[^。！？\\n]{0,80}AMP"
     ],
     "pos_claims": [
-      "双判别器|状态.*门控|投影重力.*门控|3.*条.*LAFAN1|recovery.*locomotion|部署.*无.*FSM|无.*运行时.*模式.*切换|50.*Hz.*ONNX"
+      "双判别器|状态[^。！？\\n]{0,80}门控|投影重力[^。！？\\n]{0,80}门控|3[^。！？\\n]{0,80}条[^。！？\\n]{0,80}LAFAN1|recovery[^。！？\\n]{0,80}locomotion|部署[^。！？\\n]{0,80}无[^。！？\\n]{0,80}FSM|无[^。！？\\n]{0,80}运行时[^。！？\\n]{0,80}模式[^。！？\\n]{0,80}切换|50[^。！？\\n]{0,80}Hz[^。！？\\n]{0,80}ONNX"
     ],
     "neg_claims": [
-      "SD-AMP.*单判别器|SD-AMP.*仅.*一个.*判别器|SD-AMP.*部署.*需.*FSM|SD-AMP.*运行时.*模式.*切换|SD-AMP.*需要.*大量.*参考.*片段|SD-AMP.*运行时.*读.*门控"
+      "SD-AMP[^。！？\\n]{0,80}单判别器|SD-AMP[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}一个[^。！？\\n]{0,80}判别器|SD-AMP[^。！？\\n]{0,80}部署[^。！？\\n]{0,80}需[^。！？\\n]{0,80}FSM|SD-AMP[^。！？\\n]{0,80}运行时[^。！？\\n]{0,80}模式[^。！？\\n]{0,80}切换|SD-AMP[^。！？\\n]{0,80}需要[^。！？\\n]{0,80}大量[^。！？\\n]{0,80}参考[^。！？\\n]{0,80}片段|SD-AMP[^。！？\\n]{0,80}运行时[^。！？\\n]{0,80}读[^。！？\\n]{0,80}门控"
     ]
   },
   "Heracles 扩散中间件": {
@@ -1812,43 +1778,43 @@
       "Heracles"
     ],
     "pos_claims": [
-      "状态条件.*flow.*matching|状态条件.*扩散|生成.*中间件|近.*恒等|生成.*恢复.*关键帧|receding.?horizon|改.*参考|分层.*系统"
+      "状态条件[^。！？\\n]{0,80}flow[^。！？\\n]{0,80}matching|状态条件[^。！？\\n]{0,80}扩散|生成[^。！？\\n]{0,80}中间件|近[^。！？\\n]{0,80}恒等|生成[^。！？\\n]{0,80}恢复[^。！？\\n]{0,80}关键帧|receding.?horizon|改[^。！？\\n]{0,80}参考|分层[^。！？\\n]{0,80}系统"
     ],
     "neg_claims": [
-      "Heracles.*重训.*tracker|Heracles.*显式.*状态机|Heracles.*单一.*rigid.*tracker|Heracles.*无.*生成|Heracles.*加重.*tracking.*权重"
+      "Heracles[^。！？\\n]{0,80}重训[^。！？\\n]{0,80}tracker|Heracles[^。！？\\n]{0,80}显式[^。！？\\n]{0,80}状态机|Heracles[^。！？\\n]{0,80}单一[^。！？\\n]{0,80}rigid[^。！？\\n]{0,80}tracker|Heracles[^。！？\\n]{0,80}无[^。！？\\n]{0,80}生成|Heracles[^。！？\\n]{0,80}加重[^。！？\\n]{0,80}tracking[^。！？\\n]{0,80}权重"
     ]
   },
   "WBT 跨具身解耦": {
     "terms": [
-      "跨具身.*迁移|cross.?embodiment.*transfer"
+      "跨具身[^。！？\\n]{0,80}迁移|cross.?embodiment[^。！？\\n]{0,80}transfer"
     ],
     "pos_claims": [
-      "运动学.*对齐.*动力学|encoder.*可迁移|decoder.*动力学.*修正|LoRA.*补丁|低秩.*残差.*适配|运动学.*接口.*对齐"
+      "运动学[^。！？\\n]{0,80}对齐[^。！？\\n]{0,80}动力学|encoder[^。！？\\n]{0,80}可迁移|decoder[^。！？\\n]{0,80}动力学[^。！？\\n]{0,80}修正|LoRA[^。！？\\n]{0,80}补丁|低秩[^。！？\\n]{0,80}残差[^。！？\\n]{0,80}适配|运动学[^。！？\\n]{0,80}接口[^。！？\\n]{0,80}对齐"
     ],
     "neg_claims": [
-      "跨具身.*必须.*从头.*训|跨具身.*无法.*复用.*专家|跨具身.*迁移.*等于.*全量.*重训|跨具身.*仅.*联合训练"
+      "跨具身[^。！？\\n]{0,80}必须[^。！？\\n]{0,80}从头[^。！？\\n]{0,80}训|跨具身[^。！？\\n]{0,80}无法[^。！？\\n]{0,80}复用[^。！？\\n]{0,80}专家|跨具身[^。！？\\n]{0,80}迁移[^。！？\\n]{0,80}等于[^。！？\\n]{0,80}全量[^。！？\\n]{0,80}重训|跨具身[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}联合训练"
     ]
   },
   "WBT pipeline 端到端阶段": {
     "terms": [
-      "whole.?body.?tracking.*pipeline|WBT.*流水线|全身运动跟踪.*流水线"
+      "whole.?body.?tracking[^。！？\\n]{0,80}pipeline|WBT[^。！？\\n]{0,80}流水线|全身运动跟踪[^。！？\\n]{0,80}流水线"
     ],
     "pos_claims": [
-      "参考.*采集|重定向|训练.*数据|策略.*学习|跨具身.*迁移|真机.*部署|六.*阶段|6.*条.*路径|端到端"
+      "参考[^。！？\\n]{0,80}采集|重定向|训练[^。！？\\n]{0,80}数据|策略[^。！？\\n]{0,80}学习|跨具身[^。！？\\n]{0,80}迁移|真机[^。！？\\n]{0,80}部署|六[^。！？\\n]{0,80}阶段|6[^。！？\\n]{0,80}条[^。！？\\n]{0,80}路径|端到端"
     ],
     "neg_claims": [
-      "WBT.*单.*阶段.*完成|WBT.*一步.*映射|WBT.*无需.*重定向|全身运动跟踪.*仅.*策略.*学习"
+      "WBT[^。！？\\n]{0,80}单[^。！？\\n]{0,80}阶段[^。！？\\n]{0,80}完成|WBT[^。！？\\n]{0,80}一步[^。！？\\n]{0,80}映射|WBT[^。！？\\n]{0,80}无需[^。！？\\n]{0,80}重定向|全身运动跟踪[^。！？\\n]{0,80}仅[^。！？\\n]{0,80}策略[^。！？\\n]{0,80}学习"
     ]
   },
   "SONIC vs Any2Any 训练范式": {
     "terms": [
-      "SONIC.*Any2Any|Any2Any.*SONIC"
+      "SONIC[^。！？\\n]{0,80}Any2Any|Any2Any[^。！？\\n]{0,80}SONIC"
     ],
     "pos_claims": [
-      "从头.*预训练.*迁移|后训练.*迁移|Any2Any.*复用.*SONIC|Any2Any.*在.*SONIC.*骨干|1%.*算力|残差.*适配"
+      "从头[^。！？\\n]{0,80}预训练[^。！？\\n]{0,80}迁移|后训练[^。！？\\n]{0,80}迁移|Any2Any[^。！？\\n]{0,80}复用[^。！？\\n]{0,80}SONIC|Any2Any[^。！？\\n]{0,80}在[^。！？\\n]{0,80}SONIC[^。！？\\n]{0,80}骨干|1%[^。！？\\n]{0,80}算力|残差[^。！？\\n]{0,80}适配"
     ],
     "neg_claims": [
-      "SONIC.*Any2Any.*相同.*成本|Any2Any.*也.*从头.*训|二者.*算力.*等价|Any2Any.*无法.*复用.*SONIC"
+      "SONIC[^。！？\\n]{0,80}Any2Any[^。！？\\n]{0,80}相同[^。！？\\n]{0,80}成本|Any2Any[^。！？\\n]{0,80}也[^。！？\\n]{0,80}从头[^。！？\\n]{0,80}训|二者[^。！？\\n]{0,80}算力[^。！？\\n]{0,80}等价|Any2Any[^。！？\\n]{0,80}无法[^。！？\\n]{0,80}复用[^。！？\\n]{0,80}SONIC"
     ]
   },
   "BeyondMimic 失败率采样": {
@@ -1856,21 +1822,21 @@
       "BeyondMimic"
     ],
     "pos_claims": [
-      "失败率.*采样|失败率.*自适应|自适应.*重采样|精确.*armature|简单.*PPO|历史.*本体.*堆叠|失败率.*驱动"
+      "失败率[^。！？\\n]{0,80}采样|失败率[^。！？\\n]{0,80}自适应|自适应[^。！？\\n]{0,80}重采样|精确[^。！？\\n]{0,80}armature|简单[^。！？\\n]{0,80}PPO|历史[^。！？\\n]{0,80}本体[^。！？\\n]{0,80}堆叠|失败率[^。！？\\n]{0,80}驱动"
     ],
     "neg_claims": [
-      "BeyondMimic.*均匀.*采样|BeyondMimic.*复杂.*奖励.*工程|BeyondMimic.*无.*失败.*采样|BeyondMimic.*多.*策略.*切换"
+      "BeyondMimic[^。！？\\n]{0,80}均匀[^。！？\\n]{0,80}采样|BeyondMimic[^。！？\\n]{0,80}复杂[^。！？\\n]{0,80}奖励[^。！？\\n]{0,80}工程|BeyondMimic[^。！？\\n]{0,80}无[^。！？\\n]{0,80}失败[^。！？\\n]{0,80}采样|BeyondMimic[^。！？\\n]{0,80}多[^。！？\\n]{0,80}策略[^。！？\\n]{0,80}切换"
     ]
   },
   "SD-AMP vs Heracles 抽象层": {
     "terms": [
-      "SD-AMP.*Heracles|Heracles.*SD-AMP"
+      "SD-AMP[^。！？\\n]{0,80}Heracles|Heracles[^。！？\\n]{0,80}SD-AMP"
     ],
     "pos_claims": [
-      "奖励层.*参考层|SD-AMP.*单策略.*Heracles.*分层|SD-AMP.*AMP.*Heracles.*扩散|不同.*抽象|落.*在.*奖励.*与.*参考"
+      "奖励层[^。！？\\n]{0,80}参考层|SD-AMP[^。！？\\n]{0,80}单策略[^。！？\\n]{0,80}Heracles[^。！？\\n]{0,80}分层|SD-AMP[^。！？\\n]{0,80}AMP[^。！？\\n]{0,80}Heracles[^。！？\\n]{0,80}扩散|不同[^。！？\\n]{0,80}抽象|落[^。！？\\n]{0,80}在[^。！？\\n]{0,80}奖励[^。！？\\n]{0,80}与[^。！？\\n]{0,80}参考"
     ],
     "neg_claims": [
-      "SD-AMP.*Heracles.*相同.*抽象|二者.*都.*单策略|二者.*都.*分层.*中间件|SD-AMP.*Heracles.*无差异"
+      "SD-AMP[^。！？\\n]{0,80}Heracles[^。！？\\n]{0,80}相同[^。！？\\n]{0,80}抽象|二者[^。！？\\n]{0,80}都[^。！？\\n]{0,80}单策略|二者[^。！？\\n]{0,80}都[^。！？\\n]{0,80}分层[^。！？\\n]{0,80}中间件|SD-AMP[^。！？\\n]{0,80}Heracles[^。！？\\n]{0,80}无差异"
     ]
   },
   "SLowRL 安全 LoRA 微调": {
@@ -1878,54 +1844,54 @@
       "SLowRL"
     ],
     "pos_claims": [
-      "rank.?1|LoRA|Recovery.*Policy|Safety.*Filter|安全.*滤波|46.5%|近零.*摔倒|99%|低维.*流形|冻结.*预训练"
+      "rank.?1|LoRA|Recovery[^。！？\\n]{0,80}Policy|Safety[^。！？\\n]{0,80}Filter|安全[^。！？\\n]{0,80}滤波|46.5%|近零[^。！？\\n]{0,80}摔倒|99%|低维[^。！？\\n]{0,80}流形|冻结[^。！？\\n]{0,80}预训练"
     ],
     "neg_claims": [
-      "SLowRL.*全参.*微调|SLowRL.*无.*安全|SLowRL.*高秩|SLowRL.*不.*冻结|SLowRL.*需.*FFT"
+      "SLowRL[^。！？\\n]{0,80}全参[^。！？\\n]{0,80}微调|SLowRL[^。！？\\n]{0,80}无[^。！？\\n]{0,80}安全|SLowRL[^。！？\\n]{0,80}高秩|SLowRL[^。！？\\n]{0,80}不[^。！？\\n]{0,80}冻结|SLowRL[^。！？\\n]{0,80}需[^。！？\\n]{0,80}FFT"
     ]
   },
   "真机 RL 微调安全约束必要": {
     "terms": [
-      "真机.*RL.*微调|真机.*在线.*适配|safe.*real.?world.*RL|真机.*安全.*RL"
+      "真机[^。！？\\n]{0,80}RL[^。！？\\n]{0,80}微调|真机[^。！？\\n]{0,80}在线[^。！？\\n]{0,80}适配|safe[^。！？\\n]{0,80}real.?world[^。！？\\n]{0,80}RL|真机[^。！？\\n]{0,80}安全[^。！？\\n]{0,80}RL"
     ],
     "pos_claims": [
-      "安全.*约束|安全.*滤波|安全.*壳|CBF|安全集|Recovery|不可.*省略|残差.*视角|安全.*探索"
+      "安全[^。！？\\n]{0,80}约束|安全[^。！？\\n]{0,80}滤波|安全[^。！？\\n]{0,80}壳|CBF|安全集|Recovery|不可[^。！？\\n]{0,80}省略|残差[^。！？\\n]{0,80}视角|安全[^。！？\\n]{0,80}探索"
     ],
     "neg_claims": [
-      "真机.*RL.*无需.*安全|真机.*直接.*自由.*探索|真机.*微调.*无.*约束|真机.*在线.*适配.*无.*安全.*壳"
+      "真机[^。！？\\n]{0,80}RL[^。！？\\n]{0,80}无需[^。！？\\n]{0,80}安全|真机[^。！？\\n]{0,80}直接[^。！？\\n]{0,80}自由[^。！？\\n]{0,80}探索|真机[^。！？\\n]{0,80}微调[^。！？\\n]{0,80}无[^。！？\\n]{0,80}约束|真机[^。！？\\n]{0,80}在线[^。！？\\n]{0,80}适配[^。！？\\n]{0,80}无[^。！？\\n]{0,80}安全[^。！？\\n]{0,80}壳"
     ]
   },
   "Sim2Real 残差 vs Real2Sim 回放": {
     "terms": [
-      "Sim2Real.*Real2Sim|Real2Sim.*Sim2Real|残差.*真机.*回放|残差.*适配.*回放"
+      "Sim2Real[^。！？\\n]{0,80}Real2Sim|Real2Sim[^。！？\\n]{0,80}Sim2Real|残差[^。！？\\n]{0,80}真机[^。！？\\n]{0,80}回放|残差[^。！？\\n]{0,80}适配[^。！？\\n]{0,80}回放"
     ],
     "pos_claims": [
-      "残差.*适配|低秩.*残差|真机.*回放|CRISP|三.*策略|成本.*安全.*数据效率|反修.*仿真|真机.*直接.*RL"
+      "残差[^。！？\\n]{0,80}适配|低秩[^。！？\\n]{0,80}残差|真机[^。！？\\n]{0,80}回放|CRISP|三[^。！？\\n]{0,80}策略|成本[^。！？\\n]{0,80}安全[^。！？\\n]{0,80}数据效率|反修[^。！？\\n]{0,80}仿真|真机[^。！？\\n]{0,80}直接[^。！？\\n]{0,80}RL"
     ],
     "neg_claims": [
-      "Sim2Real.*与.*Real2Sim.*等价|残差.*与.*回放.*相同|三.*策略.*无差异|残差.*适配.*即.*真机.*回放"
+      "Sim2Real[^。！？\\n]{0,80}与[^。！？\\n]{0,80}Real2Sim[^。！？\\n]{0,80}等价|残差[^。！？\\n]{0,80}与[^。！？\\n]{0,80}回放[^。！？\\n]{0,80}相同|三[^。！？\\n]{0,80}策略[^。！？\\n]{0,80}无差异|残差[^。！？\\n]{0,80}适配[^。！？\\n]{0,80}即[^。！？\\n]{0,80}真机[^。！？\\n]{0,80}回放"
     ]
   },
   "安全 LoRA 投影更新": {
     "terms": [
-      "安全.*LoRA.*投影|safe.*lora.*projection|安全.*LoRA.*更新"
+      "安全[^。！？\\n]{0,80}LoRA[^。！？\\n]{0,80}投影|safe[^。！？\\n]{0,80}lora[^。！？\\n]{0,80}projection|安全[^。！？\\n]{0,80}LoRA[^。！？\\n]{0,80}更新"
     ],
     "pos_claims": [
-      "冻结.*W_?0|低秩.*残差|安全.*投影|Pi_?.*S|\\\\Pi_|CMDP|硬切换.*Recovery|QP.*安全壳|两层.*安全"
+      "冻结[^。！？\\n]{0,80}W_?0|低秩[^。！？\\n]{0,80}残差|安全[^。！？\\n]{0,80}投影|Pi_?[^。！？\\n]{0,80}S|\\\\Pi_|CMDP|硬切换[^。！？\\n]{0,80}Recovery|QP[^。！？\\n]{0,80}安全壳|两层[^。！？\\n]{0,80}安全"
     ],
     "neg_claims": [
-      "安全.*LoRA.*全参.*更新|安全.*LoRA.*无.*投影|安全.*LoRA.*高秩|安全.*LoRA.*不.*冻结.*W_?0"
+      "安全[^。！？\\n]{0,80}LoRA[^。！？\\n]{0,80}全参[^。！？\\n]{0,80}更新|安全[^。！？\\n]{0,80}LoRA[^。！？\\n]{0,80}无[^。！？\\n]{0,80}投影|安全[^。！？\\n]{0,80}LoRA[^。！？\\n]{0,80}高秩|安全[^。！？\\n]{0,80}LoRA[^。！？\\n]{0,80}不[^。！？\\n]{0,80}冻结[^。！？\\n]{0,80}W_?0"
     ]
   },
   "跨具身策略迁移三路径": {
     "terms": [
-      "跨具身.*策略.*迁移|cross.?embodiment.*transfer.*strategy"
+      "跨具身[^。！？\\n]{0,80}策略[^。！？\\n]{0,80}迁移|cross.?embodiment[^。！？\\n]{0,80}transfer[^。！？\\n]{0,80}strategy"
     ],
     "pos_claims": [
-      "单具身.*重定向.*迁移|Any2Any.*高效.*迁移|多具身.*联合.*训练|决策树|三.*路径|算力.*数据.*泛化"
+      "单具身[^。！？\\n]{0,80}重定向[^。！？\\n]{0,80}迁移|Any2Any[^。！？\\n]{0,80}高效[^。！？\\n]{0,80}迁移|多具身[^。！？\\n]{0,80}联合[^。！？\\n]{0,80}训练|决策树|三[^。！？\\n]{0,80}路径|算力[^。！？\\n]{0,80}数据[^。！？\\n]{0,80}泛化"
     ],
     "neg_claims": [
-      "跨具身.*迁移.*唯一.*方案|跨具身.*只能.*联合.*训练|跨具身.*迁移.*无.*选型|三.*路径.*等价"
+      "跨具身[^。！？\\n]{0,80}迁移[^。！？\\n]{0,80}唯一[^。！？\\n]{0,80}方案|跨具身[^。！？\\n]{0,80}只能[^。！？\\n]{0,80}联合[^。！？\\n]{0,80}训练|跨具身[^。！？\\n]{0,80}迁移[^。！？\\n]{0,80}无[^。！？\\n]{0,80}选型|三[^。！？\\n]{0,80}路径[^。！？\\n]{0,80}等价"
     ]
   },
   "CRISP Real2Sim 反修": {
@@ -1933,10 +1899,10 @@
       "CRISP"
     ],
     "pos_claims": [
-      "真机.*回放|反修.*仿真|Real2Sim|回.*仿真.*重训|真机.*数据.*修.*仿真|闭环.*修正.*仿真"
+      "真机[^。！？\\n]{0,80}回放|反修[^。！？\\n]{0,80}仿真|Real2Sim|回[^。！？\\n]{0,80}仿真[^。！？\\n]{0,80}重训|真机[^。！？\\n]{0,80}数据[^。！？\\n]{0,80}修[^。！？\\n]{0,80}仿真|闭环[^。！？\\n]{0,80}修正[^。！？\\n]{0,80}仿真"
     ],
     "neg_claims": [
-      "CRISP.*Sim2Real.*残差|CRISP.*真机.*直接.*RL|CRISP.*不.*回.*仿真|CRISP.*纯.*域随机化"
+      "CRISP[^。！？\\n]{0,80}Sim2Real[^。！？\\n]{0,80}残差|CRISP[^。！？\\n]{0,80}真机[^。！？\\n]{0,80}直接[^。！？\\n]{0,80}RL|CRISP[^。！？\\n]{0,80}不[^。！？\\n]{0,80}回[^。！？\\n]{0,80}仿真|CRISP[^。！？\\n]{0,80}纯[^。！？\\n]{0,80}域随机化"
     ]
   },
   "ResNet 残差缓解退化": {
@@ -1945,10 +1911,10 @@
       "残差|残差连接|捷径|shortcut|residual"
     ],
     "pos_claims": [
-      "残差.*退化|捷径连接.*退化|缓解.*退化|残差.*可训|百层.*可训|学习.*残差|残差扰动|shortcut.*degrad"
+      "残差[^。！？\\n]{0,80}退化|捷径连接[^。！？\\n]{0,80}退化|缓解[^。！？\\n]{0,80}退化|残差[^。！？\\n]{0,80}可训|百层[^。！？\\n]{0,80}可训|学习[^。！？\\n]{0,80}残差|残差扰动|shortcut[^。！？\\n]{0,80}degrad"
     ],
     "neg_claims": [
-      "残差连接.*导致.*退化|残差.*加剧.*梯度消失|ResNet.*无法.*加深|捷径连接.*无.*用|残差.*没有.*帮助"
+      "残差连接[^。！？\\n]{0,80}导致[^。！？\\n]{0,80}退化|残差[^。！？\\n]{0,80}加剧[^。！？\\n]{0,80}梯度消失|ResNet[^。！？\\n]{0,80}无法[^。！？\\n]{0,80}加深|捷径连接[^。！？\\n]{0,80}无[^。！？\\n]{0,80}用|残差[^。！？\\n]{0,80}没有[^。！？\\n]{0,80}帮助"
     ]
   },
   "深层网络退化非过拟合": {
@@ -1957,10 +1923,10 @@
       "训练误差|training error|更深"
     ],
     "pos_claims": [
-      "更深.*训练误差.*升高|退化.*非.*过拟合|训练误差.*反而.*升高|退化.*不是.*过拟合|degradation.*not.*overfit"
+      "更深[^。！？\\n]{0,80}训练误差[^。！？\\n]{0,80}升高|退化[^。！？\\n]{0,80}非[^。！？\\n]{0,80}过拟合|训练误差[^。！？\\n]{0,80}反而[^。！？\\n]{0,80}升高|退化[^。！？\\n]{0,80}不是[^。！？\\n]{0,80}过拟合|degradation[^。！？\\n]{0,80}not[^。！？\\n]{0,80}overfit"
     ],
     "neg_claims": [
-      "退化问题.*就是.*过拟合|退化.*源于.*过拟合|更深网络.*训练误差.*必然.*下降|degradation.*caused by.*overfitting"
+      "退化问题[^。！？\\n]{0,80}就是[^。！？\\n]{0,80}过拟合|退化[^。！？\\n]{0,80}源于[^。！？\\n]{0,80}过拟合|更深网络[^。！？\\n]{0,80}训练误差[^。！？\\n]{0,80}必然[^。！？\\n]{0,80}下降|degradation[^。！？\\n]{0,80}caused by[^。！？\\n]{0,80}overfitting"
     ]
   },
   "ViT 数据量门槛": {
@@ -1969,10 +1935,10 @@
       "数据量|数据规模|data"
     ],
     "pos_claims": [
-      "ViT.*大数据|ViT.*小数据.*欠拟合|ViT.*需.*大数据|ViT.*SSL.*预训练|数据.*越大.*增益|大数据.*反超|ViT.*data.?hungry"
+      "ViT[^。！？\\n]{0,80}大数据|ViT[^。！？\\n]{0,80}小数据[^。！？\\n]{0,80}欠拟合|ViT[^。！？\\n]{0,80}需[^。！？\\n]{0,80}大数据|ViT[^。！？\\n]{0,80}SSL[^。！？\\n]{0,80}预训练|数据[^。！？\\n]{0,80}越大[^。！？\\n]{0,80}增益|大数据[^。！？\\n]{0,80}反超|ViT[^。！？\\n]{0,80}data.?hungry"
     ],
     "neg_claims": [
-      "ViT.*小数据.*即可.*收敛|ViT.*无需.*大数据|ViT.*数据量.*需求.*低|ViT.*小样本.*优于.*CNN"
+      "ViT[^。！？\\n]{0,80}小数据[^。！？\\n]{0,80}即可[^。！？\\n]{0,80}收敛|ViT[^。！？\\n]{0,80}无需[^。！？\\n]{0,80}大数据|ViT[^。！？\\n]{0,80}数据量[^。！？\\n]{0,80}需求[^。！？\\n]{0,80}低|ViT[^。！？\\n]{0,80}小样本[^。！？\\n]{0,80}优于[^。！？\\n]{0,80}CNN"
     ]
   },
   "ViT 归纳偏置弱": {
@@ -1981,10 +1947,10 @@
       "归纳偏置|inductive bias"
     ],
     "pos_claims": [
-      "ViT.*归纳偏置.*弱|归纳偏置.*弱.*ViT|位置.*全靠.*学习|ViT.*weak.*inductive|弱.*位置.*学习"
+      "ViT[^。！？\\n]{0,80}归纳偏置[^。！？\\n]{0,80}弱|归纳偏置[^。！？\\n]{0,80}弱[^。！？\\n]{0,80}ViT|位置[^。！？\\n]{0,80}全靠[^。！？\\n]{0,80}学习|ViT[^。！？\\n]{0,80}weak[^。！？\\n]{0,80}inductive|弱[^。！？\\n]{0,80}位置[^。！？\\n]{0,80}学习"
     ],
     "neg_claims": [
-      "ViT.*归纳偏置.*强|ViT.*自带.*局部.*归纳偏置|ViT.*平移等变.*强|ViT.*强.*归纳偏置"
+      "ViT[^。！？\\n]{0,80}归纳偏置[^。！？\\n]{0,80}强|ViT[^。！？\\n]{0,80}自带[^。！？\\n]{0,80}局部[^。！？\\n]{0,80}归纳偏置|ViT[^。！？\\n]{0,80}平移等变[^。！？\\n]{0,80}强|ViT[^。！？\\n]{0,80}强[^。！？\\n]{0,80}归纳偏置"
     ]
   },
   "CNN 归纳偏置强": {
@@ -1993,10 +1959,10 @@
       "归纳偏置|inductive bias"
     ],
     "pos_claims": [
-      "CNN.*归纳偏置.*强|卷积.*局部性|平移等变|CNN.*中小数据.*收敛|卷积.*归纳偏置|强.*局部性|locality.*equivariance"
+      "CNN[^。！？\\n]{0,80}归纳偏置[^。！？\\n]{0,80}强|卷积[^。！？\\n]{0,80}局部性|平移等变|CNN[^。！？\\n]{0,80}中小数据[^。！？\\n]{0,80}收敛|卷积[^。！？\\n]{0,80}归纳偏置|强[^。！？\\n]{0,80}局部性|locality[^。！？\\n]{0,80}equivariance"
     ],
     "neg_claims": [
-      "CNN.*归纳偏置.*弱|卷积.*无.*归纳偏置|CNN.*需.*大数据.*才.*收敛|CNN.*无.*平移等变"
+      "CNN[^。！？\\n]{0,80}归纳偏置[^。！？\\n]{0,80}弱|卷积[^。！？\\n]{0,80}无[^。！？\\n]{0,80}归纳偏置|CNN[^。！？\\n]{0,80}需[^。！？\\n]{0,80}大数据[^。！？\\n]{0,80}才[^。！？\\n]{0,80}收敛|CNN[^。！？\\n]{0,80}无[^。！？\\n]{0,80}平移等变"
     ]
   },
   "YOLO 单阶段实时": {
@@ -2005,10 +1971,10 @@
       "单阶段|单次回归|one.?stage|实时|real.?time"
     ],
     "pos_claims": [
-      "YOLO.*单阶段|YOLO.*单次回归|YOLO.*实时|单次.*回归.*实时|YOLO.*end.?to.?end.*回归|S.S.*网格.*一次|45.*FPS"
+      "YOLO[^。！？\\n]{0,80}单阶段|YOLO[^。！？\\n]{0,80}单次回归|YOLO[^。！？\\n]{0,80}实时|单次[^。！？\\n]{0,80}回归[^。！？\\n]{0,80}实时|YOLO[^。！？\\n]{0,80}end.?to.?end[^。！？\\n]{0,80}回归|S.S[^。！？\\n]{0,80}网格[^。！？\\n]{0,80}一次|45[^。！？\\n]{0,80}FPS"
     ],
     "neg_claims": [
-      "YOLO.*两阶段|YOLO.*区域提议|YOLO.*RPN|YOLO.*无法.*实时|YOLO.*non.?real.?time"
+      "YOLO[^。！？\\n]{0,80}两阶段|YOLO[^。！？\\n]{0,80}区域提议|YOLO[^。！？\\n]{0,80}RPN|YOLO[^。！？\\n]{0,80}无法[^。！？\\n]{0,80}实时|YOLO[^。！？\\n]{0,80}non.?real.?time"
     ]
   },
   "两阶段精度高延迟大": {
@@ -2017,22 +1983,22 @@
       "精度|延迟|accuracy|latency"
     ],
     "pos_claims": [
-      "两阶段.*精度.*高|Faster R.?CNN.*精度高.*延迟|两阶段.*延迟.*较大|精度高.*延迟较大|区域提议.*精度"
+      "两阶段[^。！？\\n]{0,80}精度[^。！？\\n]{0,80}高|Faster R.?CNN[^。！？\\n]{0,80}精度高[^。！？\\n]{0,80}延迟|两阶段[^。！？\\n]{0,80}延迟[^。！？\\n]{0,80}较大|精度高[^。！？\\n]{0,80}延迟较大|区域提议[^。！？\\n]{0,80}精度"
     ],
     "neg_claims": [
-      "两阶段.*延迟.*更低|Faster R.?CNN.*实时.*优于.*YOLO|两阶段.*比.*单阶段.*快|两阶段.*精度.*更低"
+      "两阶段[^。！？\\n]{0,80}延迟[^。！？\\n]{0,80}更低|Faster R.?CNN[^。！？\\n]{0,80}实时[^。！？\\n]{0,80}优于[^。！？\\n]{0,80}YOLO|两阶段[^。！？\\n]{0,80}比[^。！？\\n]{0,80}单阶段[^。！？\\n]{0,80}快|两阶段[^。！？\\n]{0,80}精度[^。！？\\n]{0,80}更低"
     ]
   },
   "YOLO 误差结构": {
     "terms": [
       "YOLO",
-      "定位.*误差|背景.*误报|localization|background"
+      "定位[^。！？\\n]{0,80}误差|背景[^。！？\\n]{0,80}误报|localization|background"
     ],
     "pos_claims": [
-      "定位.*错误.*占比.*最高|定位.*误差.*高|背景.*误报.*显著.*更少|背景.*误报.*更少|定位.*错误.*最高"
+      "定位[^。！？\\n]{0,80}错误[^。！？\\n]{0,80}占比[^。！？\\n]{0,80}最高|定位[^。！？\\n]{0,80}误差[^。！？\\n]{0,80}高|背景[^。！？\\n]{0,80}误报[^。！？\\n]{0,80}显著[^。！？\\n]{0,80}更少|背景[^。！？\\n]{0,80}误报[^。！？\\n]{0,80}更少|定位[^。！？\\n]{0,80}错误[^。！？\\n]{0,80}最高"
     ],
     "neg_claims": [
-      "YOLO.*背景.*误报.*更多|YOLO.*定位.*误差.*更低.*Fast R.?CNN|YOLO.*定位.*几乎.*无.*误差"
+      "YOLO[^。！？\\n]{0,80}背景[^。！？\\n]{0,80}误报[^。！？\\n]{0,80}更多|YOLO[^。！？\\n]{0,80}定位[^。！？\\n]{0,80}误差[^。！？\\n]{0,80}更低[^。！？\\n]{0,80}Fast R.?CNN|YOLO[^。！？\\n]{0,80}定位[^。！？\\n]{0,80}几乎[^。！？\\n]{0,80}无[^。！？\\n]{0,80}误差"
     ]
   },
   "注意力二次复杂度": {
@@ -2041,34 +2007,34 @@
       "token|分辨率|复杂度"
     ],
     "pos_claims": [
-      "注意力.*二次|二次.*增长|随.*token.*二次|quadratic|注意力.*随.*token数.*平方|token.*数.*二次"
+      "注意力[^。！？\\n]{0,80}二次|二次[^。！？\\n]{0,80}增长|随[^。！？\\n]{0,80}token[^。！？\\n]{0,80}二次|quadratic|注意力[^。！？\\n]{0,80}随[^。！？\\n]{0,80}token数[^。！？\\n]{0,80}平方|token[^。！？\\n]{0,80}数[^。！？\\n]{0,80}二次"
     ],
     "neg_claims": [
-      "朴素.*注意力.*线性.*token|注意力.*随.*token.*线性增长|自注意力.*复杂度.*与.*token.*无关|注意力.*常数.*复杂度"
+      "朴素[^。！？\\n]{0,80}注意力[^。！？\\n]{0,80}线性[^。！？\\n]{0,80}token|注意力[^。！？\\n]{0,80}随[^。！？\\n]{0,80}token[^。！？\\n]{0,80}线性增长|自注意力[^。！？\\n]{0,80}复杂度[^。！？\\n]{0,80}与[^。！？\\n]{0,80}token[^。！？\\n]{0,80}无关|注意力[^。！？\\n]{0,80}常数[^。！？\\n]{0,80}复杂度"
     ]
   },
   "冻结预训练表征样本效率高": {
     "terms": [
-      "冻结.*预训练|冻结.*骨干|frozen.*pretrain",
+      "冻结[^。！？\\n]{0,80}预训练|冻结[^。！？\\n]{0,80}骨干|frozen[^。！？\\n]{0,80}pretrain",
       "样本效率|sample.?efficien"
     ],
     "pos_claims": [
-      "冻结.*预训练.*样本效率.*高|冻结.*骨干.*样本效率.*高|预训练.*表征.*降低.*数据|冻结.*高.*样本效率|降低.*一到两个量级"
+      "冻结[^。！？\\n]{0,80}预训练[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}高|冻结[^。！？\\n]{0,80}骨干[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}高|预训练[^。！？\\n]{0,80}表征[^。！？\\n]{0,80}降低[^。！？\\n]{0,80}数据|冻结[^。！？\\n]{0,80}高[^。！？\\n]{0,80}样本效率|降低[^。！？\\n]{0,80}一到两个量级"
     ],
     "neg_claims": [
-      "冻结.*预训练.*样本效率.*低|冻结.*骨干.*需.*更多.*交互|冻结.*表征.*样本效率.*差"
+      "冻结[^。！？\\n]{0,80}预训练[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}低|冻结[^。！？\\n]{0,80}骨干[^。！？\\n]{0,80}需[^。！？\\n]{0,80}更多[^。！？\\n]{0,80}交互|冻结[^。！？\\n]{0,80}表征[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}差"
     ]
   },
   "端到端视觉策略样本效率低": {
     "terms": [
       "端到端|end.?to.?end|E2E",
-      "视觉.*表征|策略.*输入|从头学|从头.*训练"
+      "视觉[^。！？\\n]{0,80}表征|策略[^。！？\\n]{0,80}输入|从头学|从头[^。！？\\n]{0,80}训练"
     ],
     "pos_claims": [
-      "端到端.*样本效率.*低|端到端.*需.*大量.*交互|从头.*学.*视觉.*海量|端到端.*易过拟合|从头学.*低.*样本效率"
+      "端到端[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}低|端到端[^。！？\\n]{0,80}需[^。！？\\n]{0,80}大量[^。！？\\n]{0,80}交互|从头[^。！？\\n]{0,80}学[^。！？\\n]{0,80}视觉[^。！？\\n]{0,80}海量|端到端[^。！？\\n]{0,80}易过拟合|从头学[^。！？\\n]{0,80}低[^。！？\\n]{0,80}样本效率"
     ],
     "neg_claims": [
-      "端到端.*样本效率.*高|端到端.*无需.*大量.*交互|从头.*学.*视觉.*数据.*需求.*低|端到端.*泛化.*最强"
+      "端到端[^。！？\\n]{0,80}样本效率[^。！？\\n]{0,80}高|端到端[^。！？\\n]{0,80}无需[^。！？\\n]{0,80}大量[^。！？\\n]{0,80}交互|从头[^。！？\\n]{0,80}学[^。！？\\n]{0,80}视觉[^。！？\\n]{0,80}数据[^。！？\\n]{0,80}需求[^。！？\\n]{0,80}低|端到端[^。！？\\n]{0,80}泛化[^。！？\\n]{0,80}最强"
     ]
   },
   "R3M 人类视频预训练表征": {
@@ -2076,10 +2042,10 @@
       "R3M"
     ],
     "pos_claims": [
-      "R3M.*Ego4D|R3M.*人类.*视频|R3M.*操作.*表征|Ego4D.*预训练|R3M.*Reusable.*Representation"
+      "R3M[^。！？\\n]{0,80}Ego4D|R3M[^。！？\\n]{0,80}人类[^。！？\\n]{0,80}视频|R3M[^。！？\\n]{0,80}操作[^。！？\\n]{0,80}表征|Ego4D[^。！？\\n]{0,80}预训练|R3M[^。！？\\n]{0,80}Reusable[^。！？\\n]{0,80}Representation"
     ],
     "neg_claims": [
-      "R3M.*仿真.*数据.*预训练|R3M.*ImageNet.*分类.*预训练|R3M.*端到端.*从头|R3M.*非.*预训练"
+      "R3M[^。！？\\n]{0,80}仿真[^。！？\\n]{0,80}数据[^。！？\\n]{0,80}预训练|R3M[^。！？\\n]{0,80}ImageNet[^。！？\\n]{0,80}分类[^。！？\\n]{0,80}预训练|R3M[^。！？\\n]{0,80}端到端[^。！？\\n]{0,80}从头|R3M[^。！？\\n]{0,80}非[^。！？\\n]{0,80}预训练"
     ]
   },
   "VC-1 具身视觉骨干": {
@@ -2087,44 +2053,44 @@
       "VC-1|VC1|Visual Cortex 1"
     ],
     "pos_claims": [
-      "VC-1.*MAE|VC-1.*ViT|VC-1.*具身|CortexBench|VC-1.*预训练.*视觉骨干|Visual Cortex.*具身"
+      "VC-1[^。！？\\n]{0,80}MAE|VC-1[^。！？\\n]{0,80}ViT|VC-1[^。！？\\n]{0,80}具身|CortexBench|VC-1[^。！？\\n]{0,80}预训练[^。！？\\n]{0,80}视觉骨干|Visual Cortex[^。！？\\n]{0,80}具身"
     ],
     "neg_claims": [
-      "VC-1.*CNN.*骨干|VC-1.*监督.*分类.*预训练|VC-1.*非.*预训练|VC-1.*端到端.*从头"
+      "VC-1[^。！？\\n]{0,80}CNN[^。！？\\n]{0,80}骨干|VC-1[^。！？\\n]{0,80}监督[^。！？\\n]{0,80}分类[^。！？\\n]{0,80}预训练|VC-1[^。！？\\n]{0,80}非[^。！？\\n]{0,80}预训练|VC-1[^。！？\\n]{0,80}端到端[^。！？\\n]{0,80}从头"
     ]
   },
   "视觉域差距优先于换骨干": {
     "terms": [
-      "视觉.*域差距|视觉.*域.*差距|domain gap|域差距",
+      "视觉[^。！？\\n]{0,80}域差距|视觉[^。！？\\n]{0,80}域[^。！？\\n]{0,80}差距|domain gap|域差距",
       "骨干|backbone"
     ],
     "pos_claims": [
-      "域差距.*比.*换骨干.*致命|视觉.*域差距.*比.*骨干.*关键|标定.*时序.*比.*骨干|换.*骨干.*策略.*未必.*更好|骨干越强.*未必.*更好"
+      "域差距[^。！？\\n]{0,80}比[^。！？\\n]{0,80}换骨干[^。！？\\n]{0,80}致命|视觉[^。！？\\n]{0,80}域差距[^。！？\\n]{0,80}比[^。！？\\n]{0,80}骨干[^。！？\\n]{0,80}关键|标定[^。！？\\n]{0,80}时序[^。！？\\n]{0,80}比[^。！？\\n]{0,80}骨干|换[^。！？\\n]{0,80}骨干[^。！？\\n]{0,80}策略[^。！？\\n]{0,80}未必[^。！？\\n]{0,80}更好|骨干越强[^。！？\\n]{0,80}未必[^。！？\\n]{0,80}更好"
     ],
     "neg_claims": [
-      "换.*更强.*骨干.*策略.*必然.*更好|骨干越强.*机器人策略.*越好(?!.*误区)|视觉.*域差距.*无关紧要|换骨干.*最.*关键"
+      "换[^。！？\\n]{0,80}更强[^。！？\\n]{0,80}骨干[^。！？\\n]{0,80}策略[^。！？\\n]{0,80}必然[^。！？\\n]{0,80}更好|骨干越强[^。！？\\n]{0,80}机器人策略[^。！？\\n]{0,80}越好(?![^。！？\\n]{0,80}误区)|视觉[^。！？\\n]{0,80}域差距[^。！？\\n]{0,80}无关紧要|换骨干[^。！？\\n]{0,80}最[^。！？\\n]{0,80}关键"
     ]
   },
   "纯光学 MoCap 缺力接触不可直执行": {
     "terms": [
-      "AMASS|纯光学.*MoCap|纯.*MoCap|光学.*动作捕捉"
+      "AMASS|纯光学[^。！？\\n]{0,80}MoCap|纯[^。！？\\n]{0,80}MoCap|光学[^。！？\\n]{0,80}动作捕捉"
     ],
     "pos_claims": [
-      "只记录\\*?\\*?运动学|纯光学.*只.*运动学|不含力.*接触|不含力 ?/ ?接触|缺.*力.*接触.*信息|物理可行性.*弱（纯运动学）|物理可行性弱.*纯运动学|穿地.*滑步|播放给机器人.*穿地"
+      "只记录\\*?\\*?运动学|纯光学[^。！？\\n]{0,80}只[^。！？\\n]{0,80}运动学|不含力[^。！？\\n]{0,80}接触|不含力 ?/ ?接触|缺[^。！？\\n]{0,80}力[^。！？\\n]{0,80}接触[^。！？\\n]{0,80}信息|物理可行性[^。！？\\n]{0,80}弱（纯运动学）|物理可行性弱[^。！？\\n]{0,80}纯运动学|穿地[^。！？\\n]{0,80}滑步|播放给机器人[^。！？\\n]{0,80}穿地"
     ],
     "neg_claims": [
-      "纯光学.*MoCap.*已含.*力.*信息|AMASS.*物理可行.*可直接.*上机|纯运动学.*MoCap.*无需.*物理一致化"
+      "纯光学[^。！？\\n]{0,80}MoCap[^。！？\\n]{0,80}已含[^。！？\\n]{0,80}力[^。！？\\n]{0,80}信息|AMASS[^。！？\\n]{0,80}物理可行[^。！？\\n]{0,80}可直接[^。！？\\n]{0,80}上机|纯运动学[^。！？\\n]{0,80}MoCap[^。！？\\n]{0,80}无需[^。！？\\n]{0,80}物理一致化"
     ]
   },
   "人体视频规模大但3D接触信息弱": {
     "terms": [
-      "人体视频|人体.*视频"
+      "人体视频|人体[^。！？\\n]{0,80}视频"
     ],
     "pos_claims": [
-      "视频.*量大.*3D.*弱|视频.*规模.*大.*标注.*弱|3D ?/ ?接触信息弱|3D/接触信息弱|视频 3D/接触信息弱|视频.*需.*重建|规模可极大.*3D.*接触.*弱|人体视频.*标注.*3D.*信息弱"
+      "视频[^。！？\\n]{0,80}量大[^。！？\\n]{0,80}3D[^。！？\\n]{0,80}弱|视频[^。！？\\n]{0,80}规模[^。！？\\n]{0,80}大[^。！？\\n]{0,80}标注[^。！？\\n]{0,80}弱|3D ?/ ?接触信息弱|3D/接触信息弱|视频 3D/接触信息弱|视频[^。！？\\n]{0,80}需[^。！？\\n]{0,80}重建|规模可极大[^。！？\\n]{0,80}3D[^。！？\\n]{0,80}接触[^。！？\\n]{0,80}弱|人体视频[^。！？\\n]{0,80}标注[^。！？\\n]{0,80}3D[^。！？\\n]{0,80}信息弱"
     ],
     "neg_claims": [
-      "人体视频.*3D.*接触.*信息.*完整.*可直接|人体视频.*规模.*碾压.*MoCap.*可直接训(?!.*误区)"
+      "人体视频[^。！？\\n]{0,80}3D[^。！？\\n]{0,80}接触[^。！？\\n]{0,80}信息[^。！？\\n]{0,80}完整[^。！？\\n]{0,80}可直接|人体视频[^。！？\\n]{0,80}规模[^。！？\\n]{0,80}碾压[^。！？\\n]{0,80}MoCap[^。！？\\n]{0,80}可直接训(?![^。！？\\n]{0,80}误区)"
     ]
   },
   "形态差距大重定向不可省略": {
@@ -2132,10 +2098,10 @@
       "形态差距|morphology gap|Morphology Gap"
     ],
     "pos_claims": [
-      "形态差距越大.*重定向越不可省|形态差距.*越大.*重定向.*不可省|形态差距大 ?→ ?.*重定向不可省略|必须重定向（几何映射）|形态差距.*决定.*要不要重定向"
+      "形态差距越大[^。！？\\n]{0,80}重定向越不可省|形态差距[^。！？\\n]{0,80}越大[^。！？\\n]{0,80}重定向[^。！？\\n]{0,80}不可省|形态差距大 ?→ ?[^。！？\\n]{0,80}重定向不可省略|必须重定向（几何映射）|形态差距[^。！？\\n]{0,80}决定[^。！？\\n]{0,80}要不要重定向"
     ],
     "neg_claims": [
-      "形态差距.*大.*仍可.*直接.*关节映射.*上机|形态差距.*无关.*是否重定向|形态差距大.*无需重定向|大形态差距.*可省略重定向"
+      "形态差距[^。！？\\n]{0,80}大[^。！？\\n]{0,80}仍可[^。！？\\n]{0,80}直接[^。！？\\n]{0,80}关节映射[^。！？\\n]{0,80}上机|形态差距[^。！？\\n]{0,80}无关[^。！？\\n]{0,80}是否重定向|形态差距大[^。！？\\n]{0,80}无需重定向|大形态差距[^。！？\\n]{0,80}可省略重定向"
     ]
   },
   "几何重定向不等于物理可执行": {
@@ -2143,10 +2109,10 @@
       "几何映射|几何重定向"
     ],
     "pos_claims": [
-      "几何映射.*往往无法直接上机|单纯的几何映射.*无法直接上机|只做几何映射.*脚滑|只做几何映射就上机|几何重定向.*缺.*动力学一致化|几何重定向 ?= ?可上机.*缺动力学|姿态像.*但.*动力学不可执行|姿态像但动力学不可执行"
+      "几何映射[^。！？\\n]{0,80}往往无法直接上机|单纯的几何映射[^。！？\\n]{0,80}无法直接上机|只做几何映射[^。！？\\n]{0,80}脚滑|只做几何映射就上机|几何重定向[^。！？\\n]{0,80}缺[^。！？\\n]{0,80}动力学一致化|几何重定向 ?= ?可上机[^。！？\\n]{0,80}缺动力学|姿态像[^。！？\\n]{0,80}但[^。！？\\n]{0,80}动力学不可执行|姿态像但动力学不可执行"
     ],
     "neg_claims": [
-      "几何重定向.*即可.*直接上机|几何映射.*已.*物理可行.*无需.*动力学一致化|纯几何映射.*脚不滑.*可直接部署"
+      "几何重定向[^。！？\\n]{0,80}即可[^。！？\\n]{0,80}直接上机|几何映射[^。！？\\n]{0,80}已[^。！？\\n]{0,80}物理可行[^。！？\\n]{0,80}无需[^。！？\\n]{0,80}动力学一致化|纯几何映射[^。！？\\n]{0,80}脚不滑[^。！？\\n]{0,80}可直接部署"
     ]
   },
   "PHUMA 物理过滤已重定向免工程": {
@@ -2154,54 +2120,54 @@
       "PHUMA"
     ],
     "pos_claims": [
-      "PHUMA.*已.*重定向|已 PhySINK 重定向到 G1|物理可信 ?\\+ ?已重定向|PHUMA.*预重定向|PHUMA.*物理可信.*免重定向|物理可信 \\+ 免重定向|PhySINK 管线.*物理|物理可行性.*强（已过滤）"
+      "PHUMA[^。！？\\n]{0,80}已[^。！？\\n]{0,80}重定向|已 PhySINK 重定向到 G1|物理可信 ?\\+ ?已重定向|PHUMA[^。！？\\n]{0,80}预重定向|PHUMA[^。！？\\n]{0,80}物理可信[^。！？\\n]{0,80}免重定向|物理可信 \\+ 免重定向|PhySINK 管线[^。！？\\n]{0,80}物理|物理可行性[^。！？\\n]{0,80}强（已过滤）"
     ],
     "neg_claims": [
-      "PHUMA.*纯运动学.*未过滤|PHUMA.*仍需.*从零重定向|PHUMA.*物理不可行"
+      "PHUMA[^。！？\\n]{0,80}纯运动学[^。！？\\n]{0,80}未过滤|PHUMA[^。！？\\n]{0,80}仍需[^。！？\\n]{0,80}从零重定向|PHUMA[^。！？\\n]{0,80}物理不可行"
     ]
   },
   "接触一致性是物理可行性前置": {
     "terms": [
-      "接触一致性|接触.*一致性"
+      "接触一致性|接触[^。！？\\n]{0,80}一致性"
     ],
     "pos_claims": [
-      "接触一致性是物理可行性的\\*?\\*?前置条件|接触一致性.*物理可行性.*前置|接触错了.*再多力矩修正也救不回|接触.*前置条件"
+      "接触一致性是物理可行性的\\*?\\*?前置条件|接触一致性[^。！？\\n]{0,80}物理可行性[^。！？\\n]{0,80}前置|接触错了[^。！？\\n]{0,80}再多力矩修正也救不回|接触[^。！？\\n]{0,80}前置条件"
     ],
     "neg_claims": [
-      "接触一致性.*物理可行性.*无关|物理可行.*无需.*接触.*一致|接触.*相位.*可有可无"
+      "接触一致性[^。！？\\n]{0,80}物理可行性[^。！？\\n]{0,80}无关|物理可行[^。！？\\n]{0,80}无需[^。！？\\n]{0,80}接触[^。！？\\n]{0,80}一致|接触[^。！？\\n]{0,80}相位[^。！？\\n]{0,80}可有可无"
     ]
   },
   "规模不能替代物理可行性": {
     "terms": [
-      "规模.*多样性|规模与多样性|Scale.*Diversity"
+      "规模[^。！？\\n]{0,80}多样性|规模与多样性|Scale[^。！？\\n]{0,80}Diversity"
     ],
     "pos_claims": [
-      "规模.*不能补物理可行性|规模.*不能替代|大而不可行.*污染|规模不能补|大而不可行的库.*系统性污染|大而不可行的数据.*更系统|不能\\*?\\*?替代\\*?\\*?它们"
+      "规模[^。！？\\n]{0,80}不能补物理可行性|规模[^。！？\\n]{0,80}不能替代|大而不可行[^。！？\\n]{0,80}污染|规模不能补|大而不可行的库[^。！？\\n]{0,80}系统性污染|大而不可行的数据[^。！？\\n]{0,80}更系统|不能\\*?\\*?替代\\*?\\*?它们"
     ],
     "neg_claims": [
-      "数据越多越好(?!.*误区)|规模.*可.*替代.*物理可行性|只要.*规模大.*就.*能训"
+      "数据越多越好(?![^。！？\\n]{0,80}误区)|规模[^。！？\\n]{0,80}可[^。！？\\n]{0,80}替代[^。！？\\n]{0,80}物理可行性|只要[^。！？\\n]{0,80}规模大[^。！？\\n]{0,80}就[^。！？\\n]{0,80}能训"
     ]
   },
   "真机执行数据天然物理可行但任务窄": {
     "terms": [
-      "真机.*执行数据|真机执行数据|真机.*操作.*数据|Humanoid Everyday"
+      "真机[^。！？\\n]{0,80}执行数据|真机执行数据|真机[^。！？\\n]{0,80}操作[^。！？\\n]{0,80}数据|Humanoid Everyday"
     ],
     "pos_claims": [
-      "真机执行数据天然物理可行|真机.*数据天然物理可行|天然物理可行.*多模态|物理可行性.*强（真机执行）|真机执行.*物理可行.*任务.*窄|真机.*执行.*数据.*任务窄|任务窄.*非参考库"
+      "真机执行数据天然物理可行|真机[^。！？\\n]{0,80}数据天然物理可行|天然物理可行[^。！？\\n]{0,80}多模态|物理可行性[^。！？\\n]{0,80}强（真机执行）|真机执行[^。！？\\n]{0,80}物理可行[^。！？\\n]{0,80}任务[^。！？\\n]{0,80}窄|真机[^。！？\\n]{0,80}执行[^。！？\\n]{0,80}数据[^。！？\\n]{0,80}任务窄|任务窄[^。！？\\n]{0,80}非参考库"
     ],
     "neg_claims": [
-      "真机执行数据.*物理不可行|真机.*数据.*需.*重定向.*才能.*物理可行|真机执行数据.*分布.*极广.*覆盖.*通用"
+      "真机执行数据[^。！？\\n]{0,80}物理不可行|真机[^。！？\\n]{0,80}数据[^。！？\\n]{0,80}需[^。！？\\n]{0,80}重定向[^。！？\\n]{0,80}才能[^。！？\\n]{0,80}物理可行|真机执行数据[^。！？\\n]{0,80}分布[^。！？\\n]{0,80}极广[^。！？\\n]{0,80}覆盖[^。！？\\n]{0,80}通用"
     ]
   },
   "四质量轴串联门体检顺序": {
     "terms": [
-      "四.*质量轴|四个.*评估轴|四轴"
+      "四[^。！？\\n]{0,80}质量轴|四个[^。！？\\n]{0,80}评估轴|四轴"
     ],
     "pos_claims": [
-      "串联的\\*?\\*?门|串联门|串联的门|形态差距 ?→ ?接触 ?→ ?物理 ?→ ?规模|按 .*形态差距 → 接触 → 物理 → 规模|前一轴不过.*后一轴.*浪费|前一轴不过，后一轴的投入大多浪费"
+      "串联的\\*?\\*?门|串联门|串联的门|形态差距 ?→ ?接触 ?→ ?物理 ?→ ?规模|按 [^。！？\\n]{0,80}形态差距 → 接触 → 物理 → 规模|前一轴不过[^。！？\\n]{0,80}后一轴[^。！？\\n]{0,80}浪费|前一轴不过，后一轴的投入大多浪费"
     ],
     "neg_claims": [
-      "四轴.*独立.*打分.*相加.*即可|四质量轴.*互不相关.*任意顺序"
+      "四轴[^。！？\\n]{0,80}独立[^。！？\\n]{0,80}打分[^。！？\\n]{0,80}相加[^。！？\\n]{0,80}即可|四质量轴[^。！？\\n]{0,80}互不相关[^。！？\\n]{0,80}任意顺序"
     ]
   },
   "Humanoid Everyday 非重定向源": {
@@ -2209,10 +2175,10 @@
       "Humanoid Everyday"
     ],
     "pos_claims": [
-      "Humanoid Everyday.*当.*重定向源.*不解决|它是 \\*?\\*?机器人执行数据|它是机器人执行数据|不解决「人.*→.*机器人参考」|不解决「人体→机器人参考」|非 MoCap 参考库|不适用（已是机器人）"
+      "Humanoid Everyday[^。！？\\n]{0,80}当[^。！？\\n]{0,80}重定向源[^。！？\\n]{0,80}不解决|它是 \\*?\\*?机器人执行数据|它是机器人执行数据|不解决「人[^。！？\\n]{0,80}→[^。！？\\n]{0,80}机器人参考」|不解决「人体→机器人参考」|非 MoCap 参考库|不适用（已是机器人）"
     ],
     "neg_claims": [
-      "Humanoid Everyday.*是.*MoCap.*重定向源|Humanoid Everyday.*解决.*人体.*到.*机器人.*参考"
+      "Humanoid Everyday[^。！？\\n]{0,80}是[^。！？\\n]{0,80}MoCap[^。！？\\n]{0,80}重定向源|Humanoid Everyday[^。！？\\n]{0,80}解决[^。！？\\n]{0,80}人体[^。！？\\n]{0,80}到[^。！？\\n]{0,80}机器人[^。！？\\n]{0,80}参考"
     ]
   },
   "已重定向数据集免重定向直接训练": {
@@ -2220,21 +2186,21 @@
       "已重定向|预重定向"
     ],
     "pos_claims": [
-      "已重定向数据集（PHUMA）.*可直接进|已内含运动学.*物理.*两层.*可直接|预重定向.*免.*重定向|已重定向.*免重定向|免重定向.*直接.*训练|可直接进第 3 层"
+      "已重定向数据集（PHUMA）[^。！？\\n]{0,80}可直接进|已内含运动学[^。！？\\n]{0,80}物理[^。！？\\n]{0,80}两层[^。！？\\n]{0,80}可直接|预重定向[^。！？\\n]{0,80}免[^。！？\\n]{0,80}重定向|已重定向[^。！？\\n]{0,80}免重定向|免重定向[^。！？\\n]{0,80}直接[^。！？\\n]{0,80}训练|可直接进第 3 层"
     ],
     "neg_claims": [
-      "已重定向.*数据集.*仍需.*再.*重定向|预重定向.*无法.*直接.*训练"
+      "已重定向[^。！？\\n]{0,80}数据集[^。！？\\n]{0,80}仍需[^。！？\\n]{0,80}再[^。！？\\n]{0,80}重定向|预重定向[^。！？\\n]{0,80}无法[^。！？\\n]{0,80}直接[^。！？\\n]{0,80}训练"
     ]
   },
   "物理不可行参考致RL学错力矩": {
     "terms": [
-      "物理不可行|物理.*不可行"
+      "物理不可行|物理[^。！？\\n]{0,80}不可行"
     ],
     "pos_claims": [
-      "物理不可行的参考.*RL.*学到不存在的力矩|物理不可行的参考会让 RL 学到不存在的力矩|不存在的力矩需求|物理不可行 ?──. ?物理过滤|物理不可行.*RL fine-tune|姿态像但执行不了"
+      "物理不可行的参考[^。！？\\n]{0,80}RL[^。！？\\n]{0,80}学到不存在的力矩|物理不可行的参考会让 RL 学到不存在的力矩|不存在的力矩需求|物理不可行 ?──. ?物理过滤|物理不可行[^。！？\\n]{0,80}RL fine-tune|姿态像但执行不了"
     ],
     "neg_claims": [
-      "物理不可行的参考.*不影响.*RL|物理不可行.*可.*直接.*训练.*无副作用"
+      "物理不可行的参考[^。！？\\n]{0,80}不影响[^。！？\\n]{0,80}RL|物理不可行[^。！？\\n]{0,80}可[^。！？\\n]{0,80}直接[^。！？\\n]{0,80}训练[^。！？\\n]{0,80}无副作用"
     ]
   },
   "接触保真度与可微性吞吐冲突": {
@@ -2708,23 +2674,6 @@
       "VLN.{0,6}覆盖.{0,4}力控.{0,4}操作",
       "VLN.{0,6}底盘移动.{0,8}并.{0,4}含.{0,4}操作分支",
       "VLN.{0,6}既导航.{0,4}又.{0,4}力控.{0,2}操作"
-    ]
-  },
-  "共享 Transformer 底座不免真机数据": {
-    "terms": [
-      "共享",
-      "真机动作数据"
-    ],
-    "pos_claims": [
-      "模型规模不替代真机动作数据",
-      "缺真机动作数据",
-      "真机动作数据.{0,6}采集昂贵"
-    ],
-    "neg_claims": [
-      "共享 Transformer.{0,10}即可.{0,6}免.{0,4}真机",
-      "共享底座.{0,8}就.{0,4}不需.{0,4}真机.{0,2}数据",
-      "共享 Transformer.{0,10}消除.{0,4}sim2real",
-      "共享底座.{0,8}免调.{0,4}sim2real"
     ]
   },
   "模型规模不替代真机动作数据": {

@@ -1,5 +1,6 @@
 ---
 type: entity
+status: complete
 title: Time-Series-Library（TSLib）
 project_id: time-series-library
 code: https://github.com/thuml/Time-Series-Library

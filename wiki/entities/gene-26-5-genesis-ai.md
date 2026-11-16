@@ -1,6 +1,7 @@
 ---
 
 type: entity
+status: complete
 tags: [foundation-model, manipulation, dexterous-hand, teleoperation, industry, genesis-ai]
 updated: 2026-09-15
 related:

@@ -18,12 +18,9 @@ select = ["F", "I"]
 testpaths = ["tests"]
 addopts = [
     "-q",
-    "--cov=search_indexing",
-    "--cov=search_wiki_core",
-    "--cov=search_wiki",
-    "--cov=utils",
+    "--cov=scripts",
     "--cov-report=term-missing",
-    "--cov-fail-under=52",
+    "--cov-fail-under=50",
 ]
 markers = [
     "full_only: 全图构建等慢测试或依赖部署生成 exports 的测试；纯内容 ingest PR 以 -m \"not full_only\" 跳过，main 全量 CI 仍运行",

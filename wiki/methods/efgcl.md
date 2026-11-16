@@ -1,5 +1,6 @@
 ---
 type: method
+status: complete
 title: EFGCL（外部力引导的课程学习）
 tags: [rl, quadruped, locomotion, curriculum-learning, sim2real, guided-exploration, legged-robots]
 date: 2026-05-13

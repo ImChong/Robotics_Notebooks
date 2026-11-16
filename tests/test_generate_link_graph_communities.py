@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import time
 
+import diagnose_topics as dt
 import generate_link_graph as glg
 
 
@@ -19,7 +20,7 @@ def test_detect_communities_completes_quickly_on_medium_graph() -> None:
         adjacency[f"n{i + 5}"].add(f"n{i}")
 
     t0 = time.perf_counter()
-    partition = glg.detect_communities(adjacency)
+    partition = dt.detect_communities(adjacency)
     elapsed = time.perf_counter() - t0
 
     assert partition
@@ -37,7 +38,7 @@ def test_merge_communities_to_cap_merges_smallest() -> None:
         "e": {"d", "f"},
         "f": {"d", "e"},
     }
-    merged = glg._merge_communities_to_cap(partition, adjacency, cap=2)
+    merged = dt._merge_communities_to_cap(partition, adjacency, cap=2)
     assert len(merged) == 2
     assert sum(len(c) for c in merged) == 6
 

@@ -56,6 +56,8 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 
 原始资料先收录到 `sources/` 对应子目录（`papers/`、`repos/`、`sites/`、`blogs/`、`courses/`、`videos/`、`talks/`、`books/`、`datasets/`、`models/`、`notes/`、`patents/`、`personal/`、`raw/`），根目录仅保留 `README.md` 总索引，保留完整来源信息。
 
+- **`sources/raw/` 单文件体积上限**：仅收录 `< 500 KB` 的轻量文本/截图/小附件；更大的 PDF 论文、模型权重或多媒体二进制资源**一律不入库**，在对应 `sources/` 归档中通过 URL / arXiv ID / DOI 引用原文。
+
 若不确定应落在 `sources/`、`references/`、`resources/` 还是直接进 `wiki/`，先看 [内容目录怎么选](content-directories.md) 的决策漏斗。
 
 建议记录：
@@ -159,9 +161,9 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 > **为什么要在 wiki 页面内标注来源**：git 记录文件变更时间线，`log.md` 可选记录操作意图，但页面本身也应能追溯知识来源，
 > 这样读者不依赖 git / log.md 就能知道这个 wiki 页的知识是从哪里编译来的。
 
-### 步骤 6：catalog.md 自动更新（PR 不提交）
+### 步骤 6：`catalog.md` 本地按需预览（不再随 Git 入库）
 
-`catalog.md` 由 main 上的 `export.yml` 在合并后自动重新生成。**PR 不要修改 / 提交 `catalog.md`**（并行 PR 都改它会互相冲突；PR 上的 Wiki Lint 会用 `scripts/pr_derived_guard.py` 拦截）。本地想预览可以 `make catalog`，但提交前用 `git checkout -- catalog.md` 还原。
+`catalog.md` 已移出 Git 跟踪并加入 `.gitignore`（线上由 `hubs.html` + `site-catalog-v1.json` 按需浏览，不再维护静态 `catalog.md` 提交）。本地如需离线预览全库目录可运行 `make catalog`，切勿在 PR 中提交它（`scripts/pr_derived_guard.py` 会拦截）。
 
 ### 步骤 7：运行导出脚本
 
@@ -326,7 +328,7 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面�
 5. **空壳页面**：只有标题没有实质内容的页面
 6. **stale related**：某页面的 `related` 列表已经明显不反映当前知识结构
 7. **索引一致性**：index.md 中的页面列表是否和实际 wiki 目录一致
-8. **缺失英文缩写速查**：知识页是否缺少 `## 英文缩写速查` 区块（`make lint` 会统计 backlog；**新建或大幅改写页面时必须补齐**）
+8. **缺失英文缩写速查 / status / 实体出边（历史基线门禁）**：存量历史豁免清单冻结在 [`schema/lint-legacy-baseline.json`](lint-legacy-baseline.json)（只减不增）；所有**新增或未豁免页面**在 `make lint` / CI 中强制要求合法 `status:`（`stub` / `draft` / `complete`）、`## 英文缩写速查` 区块，以及 `entities/` 页面至少 2 个指向 `methods/` 或 `tasks/` 的关联出边（违例阻塞 CI）。
 
 ### Lint 后记录
 
@@ -351,11 +353,11 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面�
 
 ### 维护原则
 
-`index.md` 只保留核心导航与推荐阅读顺序；`catalog.md` 是自动生成的全量页面目录。每次新增页面必须重新生成目录，不允许知识页缺席于 `catalog.md`。
+`index.md` 只保留核心导航与推荐阅读顺序；`catalog.md` 仅作为本地按需生成目录（已 `.gitignore`，不随版本库维护）。
 
 更新内容：
-- 由 main 上的 `export.yml` 运行 `scripts/generate_page_catalog.py` 自动重新生成（扫描 `wiki/`、`roadmap/`、`tech-map/` 与 `references/`）
-- 不要手工编辑 `catalog.md`，PR 也不要提交它
+- 本地按需运行 `make catalog`（`scripts/generate_page_catalog.py` 扫描 `wiki/`、`roadmap/`、`tech-map/` 与 `references/`）
+- 不要将 `catalog.md` 提交入库
 - 只有核心入口、推荐顺序或主线变化时才手工更新 `index.md`
 
 ---

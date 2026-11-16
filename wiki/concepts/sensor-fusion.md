@@ -1,5 +1,6 @@
 ---
 type: concept
+status: complete
 tags: [sensor-fusion, perception, localization, vio, ekf, state-estimation]
 updated: 2026-09-22
 related:

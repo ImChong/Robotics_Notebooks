@@ -20,9 +20,13 @@
 from __future__ import annotations
 
 import argparse
-import glob
-import os
 import sys
+from pathlib import Path
+
+if str(Path(__file__).resolve().parent) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from utils.markdown import find_chromium_executable
 
 WECHAT_UA = (
     "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 "
@@ -33,15 +37,7 @@ BLOCKED_MARK = "环境异常"
 
 def find_chromium() -> str | None:
     """返回显式指定或预装的 Chromium 可执行文件；找不到则交给 Playwright 自带浏览器。"""
-    env = os.environ.get("CHROMIUM_PATH")
-    if env:
-        return env
-    root = os.environ.get("PLAYWRIGHT_BROWSERS_PATH", "/opt/pw-browsers")
-    for pattern in ("chromium-*/chrome-linux*/chrome", "chromium/chrome-linux*/chrome"):
-        hits = sorted(glob.glob(os.path.join(root, pattern)))
-        if hits:
-            return hits[-1]
-    return None
+    return find_chromium_executable()
 
 
 def fetch(url: str, timeout_ms: int = 40000) -> str:

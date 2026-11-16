@@ -64,10 +64,19 @@ from export_minimal import (
     parse_roadmap_stages,
     strip_frontmatter,
 )
-from lint_wiki import has_section, strip_code_blocks
+from lint_wiki import has_section
 from markdown_it import MarkdownIt
 from original_reading import original_fully_read
 from utils.community_labels import load_topics
+from utils.markdown import (
+    extract_internal_links as _extract_md_links,
+)
+from utils.markdown import (
+    parse_frontmatter as parse_raw_frontmatter,
+)
+from utils.markdown import (
+    parse_frontmatter_list,
+)
 from utils.paths import path_to_id
 from utils.wiki_cache import wiki_stem_to_path
 
@@ -123,8 +132,6 @@ INSTITUTION_REGISTRY: dict[str, dict[str, Any]] = _load_institution_registry(
 )
 INSTITUTION_ALIAS_MAP: dict[str, str] = _build_institution_alias_map(INSTITUTION_REGISTRY)
 
-# 诊断用 Louvain 结构聚类（scripts/diagnose_topics.py）合并后的目标簇数上限。
-PRIMARY_COMMUNITY_CAP = 21
 OTHER_COMMUNITY_ID = "community-other"
 OTHER_COMMUNITY_LABEL = "其他（Other） 社区"
 
@@ -213,11 +220,6 @@ def warn_nonconforming_community_hub_names(
         )
 
 
-# V22: 当主簇占比超过该阈值时，对其内部做 Louvain 二级拆分（诊断用结构聚类）。
-LARGE_COMMUNITY_SPLIT_RATIO = 0.40
-LARGE_COMMUNITY_MIN_SIZE = 30
-# resolution > 1.0 偏好更细粒度社区（Reichardt-Bornholdt 形式的 modularity）。
-LOUVAIN_RESOLUTION = 1.15
 COMMUNITY_WARNING_RATIO = 0.40
 # V23: latest_wiki_nodes 默认/上限项数与回看窗口（天）。
 LATEST_NODES_DEFAULT = 20
@@ -1166,12 +1168,10 @@ def compute_roadmap_health_score(content: str, internal_link_count: int) -> int:
 
 
 def parse_frontmatter_type(content: str) -> str:
-    if not content.startswith("---"):
+    fm, _ = parse_raw_frontmatter(content)
+    if not fm:
         return ""
-    end = content.find("\n---", 3)
-    if end == -1:
-        return ""
-    for line in content[3:end].splitlines():
+    for line in fm.splitlines():
         if line.strip().startswith("type:"):
             return line.split(":", 1)[1].strip().strip("'\"")
     return ""
@@ -1186,33 +1186,15 @@ def extract_title(content: str) -> str:
     return re.sub(r"\\([\\`*_{}\[\]()#+\-.!|])", r"\1", title)
 
 
-def parse_frontmatter_list(content: str, key: str) -> list[str]:
-    """提取 frontmatter 某列表字段，支持行内 `key: [a, b]` 与块状 `- item`。"""
-    if not content.startswith("---"):
-        return []
-    end = content.find("\n---", 3)
-    if end == -1:
-        return []
-    fm = content[3:end]
-    inline = re.search(rf"^{re.escape(key)}\s*:\s*\[(.*?)\]", fm, re.MULTILINE)
-    if inline:
-        return [item.strip().strip("'\"") for item in inline.group(1).split(",") if item.strip()]
-    block = re.search(rf"^{re.escape(key)}\s*:\s*\n((?:[ \t]*-[ \t]*.+\n?)+)", fm, re.MULTILINE)
-    if block:
-        items = re.findall(r"-[ \t]*(.+)", block.group(1))
-        return [item.strip().strip("'\"") for item in items if item.strip()]
-    return []
-
-
 def parse_frontmatter_topics(content: str) -> list[str]:
     """frontmatter 显式主题 `topic:`（标量 `topic: vla` 或列表 `topic: [vla, manipulation]`），小写去重保序。"""
     items = parse_frontmatter_list(content, "topic")
-    if not items and content.startswith("---"):
-        end = content.find("\n---", 3)
-        fm = content[3:end] if end != -1 else ""
-        scalar = re.search(r"^topic\s*:\s*([^\s\[#][^#\n]*)", fm, re.MULTILINE)
-        if scalar:
-            items = [scalar.group(1)]
+    if not items:
+        fm, _ = parse_raw_frontmatter(content)
+        if fm:
+            scalar = re.search(r"^topic\s*:\s*([^\s\[#][^#\n]*)", fm, re.MULTILINE)
+            if scalar:
+                items = [scalar.group(1)]
     out: list[str] = []
     for item in items:
         topic_id = item.strip().strip("'\"").lower()
@@ -1285,28 +1267,24 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
         return False
 
     # 1. 标准 Markdown 链接（先去代码块，支持 .md#anchor 锚点链接）
-    cleaned = strip_code_blocks(content)
-    for match in re.finditer(r"\]\(([^)#\s]+\.md)(?:#[^)\s]*)?\)", cleaned):
-        href = match.group(1)
-        if href.startswith("http"):
+    for href in _extract_md_links(content):
+        if not href.endswith(".md"):
             continue
         resolved = (source_path.parent / href).resolve()
         if is_graph_path(resolved):
             targets.append(resolved)
 
     # 2. Frontmatter 'related' 列表
-    if content.startswith("---"):
-        end = content.find("\n---", 3)
-        if end != -1:
-            fm = content[3:end]
-            related_match = re.search(r"^related\s*:(.*?)(?=^\w|\Z)", fm, re.MULTILINE | re.DOTALL)
-            if related_match:
-                for line in related_match.group(1).splitlines():
-                    line = line.strip().strip("- ")
-                    if line.endswith(".md"):
-                        resolved = (source_path.parent / line).resolve()
-                        if is_graph_path(resolved):
-                            targets.append(resolved)
+    fm, _ = parse_raw_frontmatter(content)
+    if fm:
+        related_match = re.search(r"^related\s*:(.*?)(?=^\w|\Z)", fm, re.MULTILINE | re.DOTALL)
+        if related_match:
+            for line in related_match.group(1).splitlines():
+                line = line.strip().strip("- ")
+                if line.endswith(".md"):
+                    resolved = (source_path.parent / line).resolve()
+                    if is_graph_path(resolved):
+                        targets.append(resolved)
 
     # 3. Wikilinks [[name]]
     stem_map = wiki_stem_to_path()
@@ -1358,216 +1336,6 @@ def build_undirected_adjacency(
         adjacency[source].add(target)
         adjacency[target].add(source)
     return adjacency
-
-
-def connected_components(adjacency: dict[str, set[str]]) -> list[list[str]]:
-    seen: set[str] = set()
-    components: list[list[str]] = []
-    for start in sorted(adjacency):
-        if start in seen:
-            continue
-        stack = [start]
-        component: list[str] = []
-        seen.add(start)
-        while stack:
-            node = stack.pop()
-            component.append(node)
-            for neighbor in sorted(adjacency[node]):
-                if neighbor not in seen:
-                    seen.add(neighbor)
-                    stack.append(neighbor)
-        components.append(sorted(component))
-    return sorted(components, key=lambda members: (-len(members), members[0] if members else ""))
-
-
-def edge_betweenness(adjacency: dict[str, set[str]]) -> dict[tuple[str, str], float]:
-    """Brandes edge betweenness for small unweighted graphs."""
-    betweenness: dict[tuple[str, str], float] = defaultdict(float)
-    for source in sorted(adjacency):
-        stack: list[str] = []
-        predecessors: dict[str, list[str]] = {node: [] for node in adjacency}
-        sigma: dict[str, float] = {node: 0.0 for node in adjacency}
-        distance: dict[str, int] = {node: -1 for node in adjacency}
-        sigma[source] = 1.0
-        distance[source] = 0
-        queue = [source]
-        head = 0
-        while head < len(queue):
-            vertex = queue[head]
-            head += 1
-            stack.append(vertex)
-            for neighbor in sorted(adjacency[vertex]):
-                if distance[neighbor] < 0:
-                    queue.append(neighbor)
-                    distance[neighbor] = distance[vertex] + 1
-                if distance[neighbor] == distance[vertex] + 1:
-                    sigma[neighbor] += sigma[vertex]
-                    predecessors[neighbor].append(vertex)
-
-        dependency: dict[str, float] = {node: 0.0 for node in adjacency}
-        while stack:
-            vertex = stack.pop()
-            if sigma[vertex] == 0:
-                continue
-            for predecessor in predecessors[vertex]:
-                contribution = (sigma[predecessor] / sigma[vertex]) * (1.0 + dependency[vertex])
-                a, b = predecessor, vertex
-                edge: tuple[str, str] = (a, b) if a < b else (b, a)
-                betweenness[edge] += contribution
-                dependency[predecessor] += contribution
-
-    for edge in list(betweenness):
-        betweenness[edge] /= 2.0
-    return betweenness
-
-
-def modularity(partition: list[list[str]], adjacency: dict[str, set[str]]) -> float:
-    edge_count = sum(len(neighbors) for neighbors in adjacency.values()) / 2
-    if edge_count == 0:
-        return 0.0
-    degree = {node: len(neighbors) for node, neighbors in adjacency.items()}
-    score = 0.0
-    for community in partition:
-        for i in community:
-            for j in community:
-                a_ij = 1.0 if j in adjacency[i] else 0.0
-                score += a_ij - degree[i] * degree[j] / (2 * edge_count)
-    return score / (2 * edge_count)
-
-
-def _merge_communities_to_cap(
-    partition: list[list[str]],
-    adjacency: dict[str, set[str]],
-    cap: int,
-) -> list[list[str]]:
-    """将 Louvain 过细分区合并到不超过 cap 个社区（优先合并跨边最少的相邻小社区）。"""
-    if len(partition) <= cap:
-        return partition
-
-    groups: list[set[str]] = [set(members) for members in partition]
-    while len(groups) > cap:
-        smallest_idx = min(range(len(groups)), key=lambda i: len(groups[i]))
-        small = groups.pop(smallest_idx)
-        best_j = 0
-        best_cross = -1
-        for j, other in enumerate(groups):
-            cross = sum(
-                1 for node in small for neighbor in adjacency.get(node, ()) if neighbor in other
-            )
-            if cross > best_cross:
-                best_cross = cross
-                best_j = j
-        groups[best_j].update(small)
-
-    return [sorted(members) for members in groups]
-
-
-def detect_communities(adjacency: dict[str, set[str]]) -> list[list[str]]:
-    """主社区检测：Louvain（O(n log n) 量级）替代 Girvan-Newman 边介数（O(n³)）。"""
-    if not adjacency:
-        return []
-
-    partition = louvain_communities(adjacency, resolution=LOUVAIN_RESOLUTION)
-    if not partition:
-        partition = connected_components(adjacency)
-
-    merged = _merge_communities_to_cap(partition, adjacency, PRIMARY_COMMUNITY_CAP)
-    refined = refine_oversized_communities(merged, adjacency)
-    return sorted(refined, key=lambda members: (-len(members), members[0] if members else ""))
-
-
-def refine_oversized_communities(
-    partition: list[list[str]],
-    adjacency: dict[str, set[str]],
-) -> list[list[str]]:
-    """对超出阈值的巨型社区做 Louvain 二级拆分。
-
-    采用 Reichardt-Bornholdt 带 resolution γ 的 modularity，γ>1 偏好更细粒度社区。
-    仅当拆分后子社区个数≥2 且能降低最大社区占比时才采纳。
-    """
-    total_nodes = sum(len(c) for c in partition)
-    if total_nodes == 0:
-        return partition
-
-    refined: list[list[str]] = []
-    for community in partition:
-        ratio = len(community) / total_nodes
-        if ratio <= LARGE_COMMUNITY_SPLIT_RATIO or len(community) < LARGE_COMMUNITY_MIN_SIZE:
-            refined.append(community)
-            continue
-
-        members = set(community)
-        sub_adj = {node: adjacency[node] & members for node in community}
-        sub_groups = louvain_communities(sub_adj, resolution=LOUVAIN_RESOLUTION)
-        if len(sub_groups) >= 2:
-            refined.extend(sub_groups)
-        else:
-            refined.append(community)
-    return refined
-
-
-def louvain_communities(
-    adjacency: dict[str, set[str]],
-    resolution: float = 1.0,
-) -> list[list[str]]:
-    """纯 Python Louvain 单层局部移动，无外部依赖。
-
-    模块度增益（无权图）：ΔQ = k_i_in - γ * Σ_tot * k_i / 2m
-    """
-    nodes = sorted(adjacency.keys())
-    if not nodes:
-        return []
-
-    total_edges = sum(len(neighbors) for neighbors in adjacency.values()) / 2
-    if total_edges == 0:
-        return [[node] for node in nodes]
-
-    m2 = 2 * total_edges
-    degrees = {node: len(adjacency[node]) for node in nodes}
-    node_to_comm = {node: idx for idx, node in enumerate(nodes)}
-    comm_degree: dict[int, float] = {}
-    for node in nodes:
-        comm = node_to_comm[node]
-        comm_degree[comm] = comm_degree.get(comm, 0.0) + degrees[node]
-
-    improved = True
-    iteration = 0
-    max_iterations = 30
-    while improved and iteration < max_iterations:
-        improved = False
-        iteration += 1
-        for node in nodes:
-            current_comm = node_to_comm[node]
-            neighbor_weights: dict[int, int] = {}
-            for neighbor in sorted(adjacency[node]):
-                nc = node_to_comm[neighbor]
-                neighbor_weights[nc] = neighbor_weights.get(nc, 0) + 1
-
-            comm_degree[current_comm] -= degrees[node]
-            k_i_in_current = neighbor_weights.get(current_comm, 0)
-            best_comm = current_comm
-            best_gain = k_i_in_current - resolution * comm_degree[current_comm] * degrees[node] / m2
-
-            for candidate, k_i_in in sorted(neighbor_weights.items(), key=lambda kv: kv[0]):
-                if candidate == current_comm:
-                    continue
-                gain = k_i_in - resolution * comm_degree.get(candidate, 0.0) * degrees[node] / m2
-                if gain > best_gain + 1e-12:
-                    best_gain = gain
-                    best_comm = candidate
-
-            comm_degree[best_comm] = comm_degree.get(best_comm, 0.0) + degrees[node]
-            node_to_comm[node] = best_comm
-            if best_comm != current_comm:
-                improved = True
-
-    groups: dict[int, list[str]] = {}
-    for node, comm in node_to_comm.items():
-        groups.setdefault(comm, []).append(node)
-    return sorted(
-        (sorted(members) for members in groups.values()),
-        key=lambda members: (-len(members), members[0] if members else ""),
-    )
 
 
 def derive_node_topics(

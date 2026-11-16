@@ -1,6 +1,7 @@
 ---
 
 type: entity
+status: complete
 title: PyTorch
 date: 2026-05-15
 tags: [framework, deep-learning, pytorch, distributed-training, deployment, meta, linux-foundation]

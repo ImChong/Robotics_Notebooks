@@ -1,13 +1,11 @@
-import re
 from pathlib import Path
+
+from utils.markdown import slugify_ascii
 
 
 def slugify(value: str) -> str:
     """Convert a string to a URL-friendly slug."""
-    value = value.lower()
-    value = re.sub(r"[^a-z0-9]+", "-", value)
-    value = re.sub(r"-+", "-", value).strip("-")
-    return value
+    return slugify_ascii(value, default="")
 
 
 def path_to_id(path: Path, repo_root: Path) -> str:

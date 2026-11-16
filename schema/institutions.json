@@ -1356,7 +1356,7 @@
       ]
     },
     "figure-ai": {
-      "label": "人形机器人公司（Figure AI）",
+      "label": "美国斐格机器人（Figure AI）",
       "aliases": [
         "figure-ai",
         "figure"
@@ -1670,8 +1670,7 @@
     "motphys": {
       "label": "谋先飞（Motphys）",
       "aliases": [
-        "motphys",
-        "motrix"
+        "motphys"
       ]
     },
     "motioncode": {
@@ -1727,7 +1726,7 @@
       ]
     },
     "humanoid-ai": {
-      "label": "人形机器人公司（Humanoid）",
+      "label": "英国人形机器人（Humanoid）",
       "aliases": [
         "humanoid-ai",
         "thehumanoid",

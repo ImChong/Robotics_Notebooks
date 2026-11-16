@@ -1,5 +1,6 @@
 ---
 type: concept
+status: complete
 tags: [foundation-policy, vla, rt1, rt2, pi0, pi07, octo, generalist, pretraining, manipulation]
 updated: 2026-11-15
 related:

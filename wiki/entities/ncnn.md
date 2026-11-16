@@ -1,5 +1,6 @@
 ---
 type: entity
+status: complete
 title: ncnn
 date: 2026-06-25
 tags: [framework, deployment, ncnn, inference, mobile, edge-ai, tencent]

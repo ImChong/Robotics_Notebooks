@@ -1,5 +1,6 @@
 ---
 type: comparison
+status: complete
 title: 自我改进智能体与具身终身学习
 updated: 2026-10-28
 tags: [self-improvement, lifelong-learning, robot-learning, reinforcement-learning]

@@ -1,5 +1,6 @@
 ---
 type: method
+status: complete
 title: CRISP（Contact-guided Real2Sim）
 tags: [real2sim, monocular-video, human-scene-interaction, reinforcement-learning, humanoid, iclr2026, planar-primitives]
 updated: 2026-11-15

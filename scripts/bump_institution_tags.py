@@ -20,6 +20,8 @@ import re
 import sys
 from pathlib import Path
 
+from utils.markdown import parse_frontmatter_list
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 INSTITUTIONS_PATH = REPO_ROOT / "schema" / "institutions.json"
@@ -244,20 +246,7 @@ def _preferred_alias(canonical_id: str, registry: dict[str, dict]) -> str:
 
 
 def _parse_frontmatter_list(content: str, key: str) -> list[str]:
-    if not content.startswith("---"):
-        return []
-    end = content.find("\n---", 3)
-    if end == -1:
-        return []
-    fm = content[3:end]
-    inline = re.search(rf"^{re.escape(key)}\s*:\s*\[(.*?)\]", fm, re.MULTILINE)
-    if inline:
-        return [item.strip().strip("'\"") for item in inline.group(1).split(",") if item.strip()]
-    block = re.search(rf"^{re.escape(key)}\s*:\s*\n((?:[ \t]*-[ \t]*.+\n?)+)", fm, re.MULTILINE)
-    if block:
-        items = re.findall(r"-[ \t]*(.+)", block.group(1))
-        return [item.strip().strip("'\"") for item in items if item.strip()]
-    return []
+    return parse_frontmatter_list(content, key)
 
 
 def _derive_institutions(content: str, alias_map: dict[str, str]) -> list[str]:

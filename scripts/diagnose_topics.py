@@ -23,10 +23,167 @@ from collections import Counter, defaultdict
 
 import generate_link_graph as glg
 
+# 诊断用 Louvain 结构聚类配置
+PRIMARY_COMMUNITY_CAP = 21
+LARGE_COMMUNITY_SPLIT_RATIO = 0.40
+LARGE_COMMUNITY_MIN_SIZE = 30
+LOUVAIN_RESOLUTION = 1.15
+
 # 仅对足够大、主题足够集中的结构簇报可疑项，避免小簇噪声。
 MIN_CLUSTER_SIZE = 10
 MIN_MAJORITY_SHARE = 0.6
 MAX_SUSPECTS = 50
+
+
+def connected_components(adjacency: dict[str, set[str]]) -> list[list[str]]:
+    seen: set[str] = set()
+    components: list[list[str]] = []
+    for start in sorted(adjacency):
+        if start in seen:
+            continue
+        stack = [start]
+        component: list[str] = []
+        seen.add(start)
+        while stack:
+            node = stack.pop()
+            component.append(node)
+            for neighbor in sorted(adjacency[node]):
+                if neighbor not in seen:
+                    seen.add(neighbor)
+                    stack.append(neighbor)
+        components.append(sorted(component))
+    return sorted(components, key=lambda members: (-len(members), members[0] if members else ""))
+
+
+def _merge_communities_to_cap(
+    partition: list[list[str]],
+    adjacency: dict[str, set[str]],
+    cap: int,
+) -> list[list[str]]:
+    """将 Louvain 过细分区合并到不超过 cap 个社区（优先合并跨边最少的相邻小社区）。"""
+    if len(partition) <= cap:
+        return partition
+
+    groups: list[set[str]] = [set(members) for members in partition]
+    while len(groups) > cap:
+        smallest_idx = min(range(len(groups)), key=lambda i: len(groups[i]))
+        small = groups.pop(smallest_idx)
+        best_j = 0
+        best_cross = -1
+        for j, other in enumerate(groups):
+            cross = sum(
+                1 for node in small for neighbor in adjacency.get(node, ()) if neighbor in other
+            )
+            if cross > best_cross:
+                best_cross = cross
+                best_j = j
+        groups[best_j].update(small)
+
+    return [sorted(members) for members in groups]
+
+
+def louvain_communities(
+    adjacency: dict[str, set[str]],
+    resolution: float = 1.0,
+) -> list[list[str]]:
+    """纯 Python Louvain 单层局部移动，无外部依赖。
+
+    模块度增益（无权图）：ΔQ = k_i_in - γ * Σ_tot * k_i / 2m
+    """
+    nodes = sorted(adjacency.keys())
+    if not nodes:
+        return []
+
+    total_edges = sum(len(neighbors) for neighbors in adjacency.values()) / 2
+    if total_edges == 0:
+        return [[node] for node in nodes]
+
+    m2 = 2 * total_edges
+    degrees = {node: len(adjacency[node]) for node in nodes}
+    node_to_comm = {node: idx for idx, node in enumerate(nodes)}
+    comm_degree: dict[int, float] = {}
+    for node in nodes:
+        comm = node_to_comm[node]
+        comm_degree[comm] = comm_degree.get(comm, 0.0) + degrees[node]
+
+    improved = True
+    iteration = 0
+    max_iterations = 30
+    while improved and iteration < max_iterations:
+        improved = False
+        iteration += 1
+        for node in nodes:
+            current_comm = node_to_comm[node]
+            neighbor_weights: dict[int, int] = {}
+            for neighbor in sorted(adjacency[node]):
+                nc = node_to_comm[neighbor]
+                neighbor_weights[nc] = neighbor_weights.get(nc, 0) + 1
+
+            comm_degree[current_comm] -= degrees[node]
+            k_i_in_current = neighbor_weights.get(current_comm, 0)
+            best_comm = current_comm
+            best_gain = k_i_in_current - resolution * comm_degree[current_comm] * degrees[node] / m2
+
+            for candidate, k_i_in in sorted(neighbor_weights.items(), key=lambda kv: kv[0]):
+                if candidate == current_comm:
+                    continue
+                gain = k_i_in - resolution * comm_degree.get(candidate, 0.0) * degrees[node] / m2
+                if gain > best_gain + 1e-12:
+                    best_gain = gain
+                    best_comm = candidate
+
+            comm_degree[best_comm] = comm_degree.get(best_comm, 0.0) + degrees[node]
+            node_to_comm[node] = best_comm
+            if best_comm != current_comm:
+                improved = True
+
+    groups: dict[int, list[str]] = {}
+    for node, comm in node_to_comm.items():
+        groups.setdefault(comm, []).append(node)
+    return sorted(
+        (sorted(members) for members in groups.values()),
+        key=lambda members: (-len(members), members[0] if members else ""),
+    )
+
+
+def refine_oversized_communities(
+    partition: list[list[str]],
+    adjacency: dict[str, set[str]],
+) -> list[list[str]]:
+    """对超出阈值的巨型社区做 Louvain 二级拆分。"""
+    total_nodes = sum(len(c) for c in partition)
+    if total_nodes == 0:
+        return partition
+
+    refined: list[list[str]] = []
+    for community in partition:
+        ratio = len(community) / total_nodes
+        if ratio <= LARGE_COMMUNITY_SPLIT_RATIO or len(community) < LARGE_COMMUNITY_MIN_SIZE:
+            refined.append(community)
+            continue
+
+        members = set(community)
+        sub_adj = {node: adjacency[node] & members for node in community}
+        sub_groups = louvain_communities(sub_adj, resolution=LOUVAIN_RESOLUTION)
+        if len(sub_groups) >= 2:
+            refined.extend(sub_groups)
+        else:
+            refined.append(community)
+    return refined
+
+
+def detect_communities(adjacency: dict[str, set[str]]) -> list[list[str]]:
+    """主社区检测：Louvain（O(n log n) 量级），仅用于主题归属诊断对照。"""
+    if not adjacency:
+        return []
+
+    partition = louvain_communities(adjacency, resolution=LOUVAIN_RESOLUTION)
+    if not partition:
+        partition = connected_components(adjacency)
+
+    merged = _merge_communities_to_cap(partition, adjacency, PRIMARY_COMMUNITY_CAP)
+    refined = refine_oversized_communities(merged, adjacency)
+    return sorted(refined, key=lambda members: (-len(members), members[0] if members else ""))
 
 
 def main() -> None:
@@ -54,7 +211,7 @@ def main() -> None:
             f"{src['tags']} | {src['propagated']} | {secondary} |"
         )
 
-    clusters = glg.detect_communities(adjacency)
+    clusters = detect_communities(adjacency)
     print("\n## Louvain 结构簇 × 多数主题\n")
     print("| 结构簇 | 节点 | 多数主题 | 占比 |")
     print("|---:|---:|---|---:|")

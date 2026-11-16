@@ -1,5 +1,6 @@
 ---
 type: concept
+status: complete
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/whole_body_control.md

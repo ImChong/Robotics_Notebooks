@@ -1,5 +1,6 @@
 ---
 type: entity
+status: complete
 title: OpenVINO
 date: 2026-06-25
 tags: [framework, deployment, openvino, inference, edge-ai, intel, physical-ai]

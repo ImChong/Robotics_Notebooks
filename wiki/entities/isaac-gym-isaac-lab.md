@@ -1,5 +1,6 @@
 ---
 type: entity
+status: complete
 original:
   - ../../sources/papers/isaac_lab_reading_arxiv_2511_04831.md
 sources:

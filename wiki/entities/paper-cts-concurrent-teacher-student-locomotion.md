@@ -137,7 +137,7 @@ sequenceDiagram
 - **与 RoboGauge 勿混：** [RoboGauge](https://robogauge.github.io/)（MoE + sim2sim 评测）为 **另一研究线**（XJTU Go2），非 CTS 官方代码。
 - **平台差异：** 原文含点足双足实验；Legbot Lab 面向自研四足，迁移需重调 MDP 与网关。
 
-## 评测与结论
+## 评测结果
 
 - **仿真：** 相对两阶段 teacher–student，盲 locomotion 平均速度跟踪误差 **最多约 −20%**（原文 Table 对比）。
 - **真机：** 四足与点足双足室内外 agile locomotion 视频见 [项目页](https://clearlab-sustech.github.io/concurrentTS)。

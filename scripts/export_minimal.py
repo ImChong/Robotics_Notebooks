@@ -14,6 +14,12 @@ from xml.sax.saxutils import escape
 import yaml
 from build_search_index import generate_search_index
 from search_indexing import parse_frontmatter, strip_frontmatter
+from utils.markdown import (
+    extract_internal_links,
+)
+from utils.markdown import (
+    parse_frontmatter as parse_raw_frontmatter,
+)
 from utils.paths import path_to_id
 from utils.wiki_cache import wiki_stem_to_path
 
@@ -58,9 +64,8 @@ def page_has_repo_source(text: str) -> bool:
     text = text or ""
     if REPO_SOURCE_LINK_RE.search(text):
         return True
-    # frontmatter 边界与 search_indexing.parse_frontmatter 一致
-    end = text.find("\n---", 3) if text.startswith("---") else -1
-    return end != -1 and bool(CODE_REPO_URL_RE.search(text[3:end]))
+    fm_block, _ = parse_raw_frontmatter(text)
+    return bool(fm_block and CODE_REPO_URL_RE.search(fm_block))
 
 
 # roadmap/ 无 YAML frontmatter 时，用 git 最近一次提交日作为「更新时间」徽标来源。
@@ -422,10 +427,7 @@ def extract_section_links(text: str, current_path: Path, headings: List[str]) ->
                 collecting = False
         if not collecting:
             continue
-        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", line):
-            if target.startswith(("http://", "https://", "#")):
-                continue
-            target = target.split("#", 1)[0]
+        for target in extract_internal_links(line, strip_code=False):
             if not target.endswith(".md"):
                 continue
             resolved = (current_path.parent / target).resolve()
@@ -438,10 +440,7 @@ def extract_section_links(text: str, current_path: Path, headings: List[str]) ->
 def collect_markdown_links(text: str, current_path: Path, limit: int | None = 12) -> List[str]:
     priority = extract_section_links(text, current_path, ["关联页面", "继续深挖入口", "关联任务"])
     general = []
-    for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
-        if target.startswith("http://") or target.startswith("https://") or target.startswith("#"):
-            continue
-        target = target.split("#", 1)[0]
+    for target in extract_internal_links(text, strip_code=False):
         if not target.endswith(".md"):
             continue
         resolved = (current_path.parent / target).resolve()
