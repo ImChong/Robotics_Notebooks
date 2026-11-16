@@ -430,6 +430,8 @@ op: ingest
 - **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
 - **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
 
+## [2026-11-16] lint | 全路线复核：基于 7801 个 wiki 文件及上次审查后的新增 26/修改 483 个节点，修正先修与图文分支、基础控制结论及模块边界，补 VLA 复现入口；逐页记录见 docs/quality/roadmap-audit-2026-11-16.md。
+
 ## [2026-11-16] ingest | 近期机器人学习论文六项补录
 
 - 意图：补齐 SALA、EgoX、Reins、ACE-CaP-0、STVLA、JustRUA 的论文实体和方法/评测/局限，建立主题互链并接入 VLA 与跨本体纵深路线。
