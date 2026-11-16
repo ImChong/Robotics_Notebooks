@@ -75,7 +75,7 @@ sequenceDiagram
   participant Module as 官方模块
   participant Data as 外部数据与环境
   participant Output as 输出
-  Researcher->>CLI: ~/IsaacLab/isaaclab.sh -p executables/evaluate.py
+  Researcher->>CLI: ./executables/eval_planner.sh
   CLI->>Data: 载入配置和输入
   Data-->>CLI: 传感数据或仿真状态
   CLI->>Module: source 的障碍图估计器及控制器

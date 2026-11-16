@@ -140,6 +140,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [2026-11-16 具身前沿 29 篇论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
+
 - [动作分词综述](./paper-vla-action-tokenization-survey.md)
 - [OAT](./paper-oat-ordered-action-tokenization.md)
 - [FAST](./paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md)

@@ -42,10 +42,10 @@ summary: "ManiLadder 用参考策略与一致训练预算校准 112 个操作任
 | 项 | 内容 |
 |---|---|
 | 原文 | [arXiv:2611.16374v1](https://arxiv.org/abs/2611.16374) |
-| 项目 | [ManiLadder](https://maniladder-benchmark.github.io/)（站点读取未完成） |
+| 项目 | [ManiLadder](https://maniladder-benchmark.github.io/)（已核对项目页，开放数据集与模型入口） |
 | 范围 | **112 项**操作任务，**4 级**难度 |
 | 真机 | **8 项**对应任务，每项 **50 次** |
-| 可运行代码 | 未核实官方发布链接，待再次检查项目页 |
+| 可运行代码 | 项目页有 Dataset / Models 链接，但未列可核实的 Code 入口 |
 
 ## 核心原理
 
@@ -72,7 +72,7 @@ flowchart TD
 
 ## 源码运行时序图
 
-**不适用（项目代码待核实）：** 原文提供项目入口，但当前无法可靠读取 https://maniladder-benchmark.github.io/ 的 Code / Resources，也未核实官方可运行实现和脚本入口；不能编造 `sequenceDiagram` 或断言未开源。
+**不适用（项目代码待核实）：** 已核对 https://maniladder-benchmark.github.io/，其导航提供 Dataset / Models，但未提供可核实的官方代码入口，故不能编造 `sequenceDiagram` 或断言未开源。
 
 ## 工程实践
 
@@ -95,7 +95,7 @@ flowchart TD
 2. 准确计算 AL@50 的低层连续覆盖，不把它误作均值。
 3. 把训练/示教预算作为难度定义的一部分公开。
 4. 将真机结果理解为有限对应场景的验证，不能外推全部形态。
-5. 官方代码是否发布须等待项目页重新核验，再补真正的运行时序。
+5. 后续若作者发布可运行代码，再核对真实入口补充源码时序图。
 
 ## 与其他工作对比
 
@@ -107,9 +107,11 @@ flowchart TD
 
 ## 局限与风险
 
-任务难度是参考策略与训练资源条件化的测量，等级跨策略/跨本体不必相同。真机只验证八个对应任务。项目页读取受阻，源码和数据开放状态未核实；**论文解读完成不意味着官方实现已验证或已复现**。
+任务难度是参考策略与训练资源条件化的测量，等级跨策略/跨本体不必相同。真机只验证八个对应任务。项目页现公开 Dataset / Models 链接，官方可运行源码尚未核实；**论文解读完成不意味着官方实现已验证或已复现**。
 
 ## 关联页面
+
+- [2026-11-16 具身前沿 29 篇论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 
 - [机器人操作基准审计](./paper-manipulation-benchmark-audit.md)
 - [LIBERO](./libero-benchmark.md)
