@@ -239,6 +239,7 @@ flowchart LR
 
 **方向 B：世界模型融合**
 - 把"预测未来"并入策略训练或推理时预演——完整 Stage 路径见 [WAM 纵深路线](depth-wam.md)
+- [VLAW：VLA 与世界模型迭代协同后训练](../wiki/entities/paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md) — 少量真机成功/失败 rollout 校准 Ctrl-World；Qwen3-VL 奖励筛选合成成功轨迹后微调 π₀.₅，属于训练期世界模型辅助而非 Joint WAM。
 - 关键词：[Generative World Models](../wiki/methods/generative-world-models.md)、[World Action Models](../wiki/concepts/world-action-models.md)、[WAM 纵深](depth-wam.md)、[τ₀-VLA](../wiki/entities/paper-tau0-vla.md)（记忆增强高层子任务策略 + 世界模型引导 TTC beam search，长程真机分层 45.0% vs 直出 27.5%；`sii-research/tau-0-vla` 已开源低层 MoT、Proposal 与世界模型 LoRA，Value/Reflective/Router/TTC 搜索未公开）
 
 **方向 C：全身与移动操作扩展**
