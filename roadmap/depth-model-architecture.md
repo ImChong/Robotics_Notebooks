@@ -234,6 +234,7 @@ flowchart LR
 - 选一条压缩路径（蒸馏或量化）做一次 A/B：记录成功率、动作平滑度与最坏时延三项，而不是只看平均时延
 
 ### 推荐读什么
+- [MACaQ：模型无关的 MXFP4 W4A4 校准量化](../wiki/entities/paper-macaq.md) — 逐线性层缩放、旋转、指数筛选与 Flip-Refinement；用于研究低比特模型部署，但需另测机器人闭环质量与实际时延。
 - [AIInfraGuide：AI Infra 全栈学习指南](../wiki/entities/aiinfraguide.md) — 单卡 Kernel、显存与多卡通信到推理调度的分层 Profiling 路线，用于给架构选型补性能证据
 - [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) — 数据 / 参数 / 泛化的幂律关系与边界
 - [实时性与泛化取舍](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) — 规模与推演步长如何压住控制带宽
