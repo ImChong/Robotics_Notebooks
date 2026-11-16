@@ -7582,6 +7582,7 @@
 - [Lyapunov 稳定性](wiki/formalizations/lyapunov.md) — Lyapunov 稳定性：通过构造一个随系统状态变化的标量函数 $V(x)$ 来判断平衡点附近的误差是否收敛。对机器人控制来说，它回答的是："这个控制器不仅能把误差压小，而且能持续保持稳定吗？" `📅2026-09-15` `[formalization_page]`
 - [Markov Decision Process (MDP)](wiki/formalizations/mdp.md) — 马尔可夫决策过程：在离散时间步中，智能体根据当前状态选择动作，环境根据转移概率回应新状态和奖励的数学框架，是强化学习的理论基础。 `📅2026-11-07` `[formalization_page]`
 - [Motion Retargeting Objective（动作重定向目标函数形式化）](wiki/formalizations/motion-retargeting-objective.md) — Motion Retargeting Objective 是 Motion Retargeting Pipeline 第 4–6 阶段共用的数学骨架：把「让机器人长得像人」「关键点跟得上」「不穿地、不 `📅2026-05-17` `[formalization_page]`
+- [MPC 预测模型推导（MPC Prediction Model Derivation from Floating-Base Dynamics）](wiki/formalizations/mpc-prediction-model-from-floating-base-dynamics.md) — MPC 的预测模型来自对机器人运动规律的数学表达：先从几何关系与牛顿定律构造浮动基动力学，再按控制任务选取状态、输入、接触近似和离散化方法，得到可供优化器预测未来运动的模型。 `📅2026-11-16` `[formalization_page]`
 - [常微分方程求解决策链（ODE Solving Methods）](wiki/formalizations/ode-solving-methods.md) — 常微分方程（ODE） 求解的难点通常不在「会不会套公式」，而在 识别结构并选对路线：解析法沿决策链归类（可分离、线性、恰当、降阶、常系数、Laplace…）；数值法则转向 误差阶、稳定性、刚性、守恒结 `📅2026-09-20` `[formalization_page]`
 - [Partially Observable MDP (POMDP)](wiki/formalizations/pomdp.md) — POMDP 是「智能体看不到真实状态，只能看到带噪观测」的 MDP：最优决策依赖对状态的信念（belief，状态的概率分布），而不是最近一次观测。 `📅2026-11-07` `[formalization_page]`
 - [Probability Flow (概率流形式化)](wiki/formalizations/probability-flow.md) — 在具身智能的生成式动作建模（如 π₀ 或 Diffusion Policy）中，概率流 (Probability Flow) 是连接噪声分布与真实动作分布的数学“传送带”。它将生成过程描述为一种连续的 `📅2026-09-30` `[formalization_page]`
