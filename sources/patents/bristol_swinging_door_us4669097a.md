@@ -20,7 +20,7 @@
 ## 对 wiki 的映射
 
 - [Swinging Door Trending（摆动门趋势压缩）](../../wiki/concepts/swinging-door-trending-compression.md) — 以在线误差走廊解释算法、参数和机器人遥测适用边界。
-- [AVEVA PI 压缩资料](../sites/aveva-pi-swinging-door-compression.md) — 历史数据库中的参数与工程行为。
+- [AVEVA PI 压缩资料](../sites/aveva_pi_swinging_door_compression.md) — 历史数据库中的参数与工程行为。
 - [Bristol 1990 年会议论文书目](../papers/bristol_swinging_door_trending_1990.md) — 同一发明者后续的 SDT 论文出处。
 
 ## 法律与来源说明

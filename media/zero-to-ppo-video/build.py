@@ -191,7 +191,8 @@ async def main():
         w.setsampwidth(2)
         w.setframerate(SR)
         w.writeframes(bytes(pcm))
-    json.dump({"total": round(t, 3), "segments": segs, "subs": subs}, open(OUT / "timeline.json", "w"), ensure_ascii=False, indent=1)
+    with open(OUT / "timeline.json", "w", encoding="utf-8") as f:
+        json.dump({"total": round(t, 3), "segments": segs, "subs": subs}, f, ensure_ascii=False, indent=1)
     print(f"total {t:.1f}s", file=sys.stderr)
 
 

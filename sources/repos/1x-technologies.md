@@ -8,7 +8,7 @@
 - **关于页：** https://1x.tech/about
 - **入库日期：** 2026-05-07
 - **一句话说明：** 挪威–美国背景的通用人形机器人公司；产品线包含轮式人形 **EVE** 与面向家庭场景的双足 **NEO**，强调真实部署数据与 AI 结合。
-- **沉淀到 wiki：** 是 → [`wiki/entities/1x-technologies.md`](../wiki/entities/1x-technologies.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/1x-technologies.md`](../../wiki/entities/1x-technologies.md)
 
 ## 第三方综述（便于核对时间与融资脉络）
 

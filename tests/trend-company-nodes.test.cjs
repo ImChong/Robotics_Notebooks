@@ -8,7 +8,10 @@ const source = readFileSync(resolve(__dirname, '../docs/star-history.html'), 'ut
 const tooltip = readFileSync(resolve(__dirname, '../docs/graph-tooltip.js'), 'utf8');
 const depthFilters = readFileSync(resolve(__dirname, '../docs/depth-filters.js'), 'utf8');
 const typeLabels = readFileSync(resolve(__dirname, '../docs/wiki-type-labels.js'), 'utf8');
-const loaders = source.slice(source.indexOf('      function getJSON('), source.indexOf('      var touch ='));
+const loaderStart = source.indexOf('      function getJSON(');
+const loaderEnd = source.indexOf('      var touch =', loaderStart);
+assert.ok(loaderStart >= 0 && loaderEnd > loaderStart, 'star-history loader slice markers missing');
+const loaders = source.slice(loaderStart, loaderEnd);
 
 function loadViews(graph, companies, labs = [], routeHealth = []) {
   const requests = [];

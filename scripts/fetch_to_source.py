@@ -79,6 +79,8 @@ def generate_template(url: str, title: str, description: str, stem: str) -> str:
 - **入库日期：** {today}
 - **最后更新：** {today}
 - **一句话说明：** {description or "（待填写）"}
+- **核对范围：** （待填写）
+- **通读：** 未完成
 
 ## 核心摘录
 
@@ -124,7 +126,9 @@ def main() -> None:
     print(f"✅ 生成模板: {out_path.relative_to(REPO_ROOT)}")
     print(f"   标题：{title}")
     print(f"   摘要：{description[:80]}{'...' if len(description) > 80 else ''}")
-    print("\n下一步：编辑模板，填写核心要点和 wiki 映射，然后运行 make lint && make catalog")
+    print(
+        "\n下一步：编辑模板，填写核心要点和 wiki 映射，然后运行 make ci-preflight（或 make lint）"
+    )
 
 
 if __name__ == "__main__":

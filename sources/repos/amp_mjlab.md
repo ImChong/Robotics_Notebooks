@@ -95,7 +95,7 @@ AMP_mjlab/
 
 | 资料 | 关系 |
 |------|------|
-| [amp-reward.md](../../wiki/entities/amp-reward.md) | AMP 方法本体，本 repo 是其 G1 + mjlab 实现 |
+| [amp-reward.md](../../wiki/methods/amp-reward.md) | AMP 方法本体，本 repo 是其 G1 + mjlab 实现 |
 | [unitree.md](unitree.md) | G1 是主要硬件目标 |
 | [legged_gym.md](legged_gym.md) | 同为 rsl_rl + 并行仿真框架，legged_gym 基于 IsaacGym |
 | [robot_lab.md](robot_lab.md) | robot_lab 也有 BeyondMimic/AMP Dance，但基于 IsaacLab |

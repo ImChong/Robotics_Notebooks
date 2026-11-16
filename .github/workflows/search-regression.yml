@@ -6,6 +6,9 @@ on:
     paths:
       - '.github/workflows/search-regression.yml'
       - 'wiki/**'
+      - 'roadmap/**'
+      - 'tech-map/**'
+      - 'references/**'
       - 'scripts/**'
       - 'schema/**'
       - 'sources/**'
@@ -15,6 +18,9 @@ on:
     paths:
       - '.github/workflows/search-regression.yml'
       - 'wiki/**'
+      - 'roadmap/**'
+      - 'tech-map/**'
+      - 'references/**'
       - 'scripts/**'
       - 'schema/**'
       - 'sources/**'

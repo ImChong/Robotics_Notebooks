@@ -51,7 +51,7 @@
 - **摘录要点：** **Tidy kitchen**（多物体整理+丢弃）；**Retrieve medicine**（记忆 drawer、双手分工、顺带扔 carton）。
 - **对 wiki 的映射：**
   - [HomeBody](../../wiki/entities/paper-homebody.md) — 结论与局限。
-  - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务语境。
+  - [Loco-Manipulation](../../wiki/tasks/loco-manipulation.md) — 任务语境。
 
 ## BibTeX
 

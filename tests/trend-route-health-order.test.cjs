@@ -8,7 +8,10 @@ const html = readFileSync(resolve(__dirname, '../docs/star-history.html'), 'utf8
 const depthFilters = readFileSync(resolve(__dirname, '../docs/depth-filters.js'), 'utf8');
 const tooltip = readFileSync(resolve(__dirname, '../docs/graph-tooltip.js'), 'utf8');
 const typeLabels = readFileSync(resolve(__dirname, '../docs/wiki-type-labels.js'), 'utf8');
-const loaders = html.slice(html.indexOf('      function getJSON('), html.indexOf('      var touch ='));
+const loaderStart = html.indexOf('      function getJSON(');
+const loaderEnd = html.indexOf('      var touch =', loaderStart);
+assert.ok(loaderStart >= 0 && loaderEnd > loaderStart, 'star-history loader slice markers missing');
+const loaders = html.slice(loaderStart, loaderEnd);
 
 const graph = {
   nodes: [

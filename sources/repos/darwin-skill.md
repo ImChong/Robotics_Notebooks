@@ -10,7 +10,7 @@
 - **入库日期：** 2026-07-07
 - **一句话说明：** 受 [karpathy/autoresearch](karpathy-autoresearch.md) 启发的 **Agent Skill 自主优化系统**：9 维加权评分 + 独立子 agent 评委 + 棘轮 keep/revert + 人在回路 checkpoint；v2.0 吸收微软 SkillLens / SkillOpt 论文。
 - **为什么值得保留：** 把 autoresearch 的 **只保留可测量改进** 机制映射到 `SKILL.md` 优化域；与 [nuwa-skill](nuwa-skill.md)、[cangjie-skill](cangjie-skill.md) 形成 **造 skill → 进化 skill** 闭环；微软 SkillOpt 官方集成名单收录；对本站理解 **如何迭代 `schema/` 与 agent 规约文件** 有方法论参照。
-- **沉淀到 wiki：** 是 → [`wiki/entities/darwin-skill.md`](../wiki/entities/darwin-skill.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/darwin-skill.md`](../../wiki/entities/darwin-skill.md)
 
 ## README 要点（归纳）
 

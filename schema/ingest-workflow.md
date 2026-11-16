@@ -132,7 +132,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 - `参考来源` — 必须标注本次 ingest 的原始资料（至少 1 条），格式：
   ```markdown
   ## 参考来源
-  - [资料标题](../sources/xxx.md)
+  - [资料标题](../../sources/xxx.md)
   ```
 - `关联页面` — 至少 2 个相关 wiki 页
 - `推荐继续阅读` — 至少 1 个外部资源

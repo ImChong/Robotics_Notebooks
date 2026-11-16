@@ -10,7 +10,7 @@
 - **前身：** OpenAI Gym（Gymnasium 为社区维护的延续 fork）
 - **入库日期：** 2026-06-28
 - **一句话说明：** 定义单智能体 RL 环境与训练代码之间的标准 Python 接口（`make` / `reset` / `step` / `render`），并附带经典控制、MuJoCo、Atari 等参考环境；多智能体场景由姊妹项目 PettingZoo 覆盖。
-- **沉淀到 wiki：** 是 → [`wiki/entities/gymnasium.md`](../wiki/entities/gymnasium.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/gymnasium.md`](../../wiki/entities/gymnasium.md)
 
 ---
 
@@ -42,8 +42,8 @@
 ## 为什么值得保留
 
 - **算法与仿真解耦**：Stable-Baselines3、CleanRL 等主流 RL 库以 Gymnasium API 为默认环境契约；读懂接口即可迁移到 MuJoCo / PyBullet / 自研仿真。
-- **基准可比性**：经典控制与 MuJoCo 域长期用于 PPO、SAC 等算法横向对比；与 [dm_control](../wiki/entities/dm-control.md) 等「另一套约定更统一的 MuJoCo 基准」并行存在。
-- **机器人项目常见用法**：环境实现层（如 [gym-pybullet-drones](../wiki/entities/gym-pybullet-drones.md)、各 sim 的 Gym 封装）对齐本 API，训练 loop 与论文复现更一致。
+- **基准可比性**：经典控制与 MuJoCo 域长期用于 PPO、SAC 等算法横向对比；与 [dm_control](../../wiki/entities/dm-control.md) 等「另一套约定更统一的 MuJoCo 基准」并行存在。
+- **机器人项目常见用法**：环境实现层（如 [gym-pybullet-drones](../../wiki/entities/gym-pybullet-drones.md)、各 sim 的 Gym 封装）对齐本 API，训练 loop 与论文复现更一致。
 - **维护状态**：OpenAI 停止维护 Gym 后，Farama Foundation 接手；新代码应使用 `import gymnasium as gym`，旧 Gym 环境需按官方 migration guide 适配 `terminated`/`truncated` 语义。
 
 ## 对 wiki 的映射

@@ -99,6 +99,7 @@ def main() -> int:
         rel = page.relative_to(ROOT)
         if not keys:
             zero_hits.append(str(rel))
+            continue
         section = render_section(keys, terms)
         new = insert_section(content, section)
         if not dry:

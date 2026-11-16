@@ -5,6 +5,7 @@ import hashlib
 import json
 import re
 import subprocess
+from collections.abc import Sequence
 from pathlib import Path
 from typing import Any, Dict, List
 from urllib.parse import quote
@@ -63,29 +64,6 @@ def page_has_repo_source(text: str) -> bool:
     end = text.find("\n---", 3) if text.startswith("---") else -1
     return end != -1 and bool(CODE_REPO_URL_RE.search(text[3:end]))
 
-
-def build_ingest_index() -> Dict[str, str]:
-    """Return {wiki_stem: sources_file_rel} for all wiki pages mentioned in sources/papers/*.md.
-
-    Sources files are iterated in sorted order so that wiki pages with multiple
-    ingest references get a deterministic single source (the alphabetically first
-    one), avoiding spurious diffs in exports/index-v1.json across machines/runs.
-    """
-    index: Dict[str, str] = {}
-    sources_dir = ROOT / "sources" / "papers"
-    if not sources_dir.exists():
-        return index
-    wiki_link_re = re.compile(r"\]\(\S*wiki/[^)]+/([^/)]+)\.md\)")
-    for src in sorted(sources_dir.glob("*.md")):
-        text = src.read_text(encoding="utf-8")
-        for m in wiki_link_re.finditer(text):
-            stem = m.group(1)
-            if stem not in index:
-                index[stem] = rel(src)
-    return index
-
-
-_INGEST_INDEX: Dict[str, str] = {}  # populated in main()
 
 # roadmap/ 无 YAML frontmatter 时，用 git 最近一次提交日作为「更新时间」徽标来源。
 _ROADMAP_GIT_UPDATED_CACHE: Dict[str, str] | None = None
@@ -395,11 +373,12 @@ def extract_body_markdown(text: str) -> str:
     body = "\n".join(lines)
     if extract_labeled_bullets(body, ROADMAP_HERO_LABEL):
         body = strip_labeled_section(body, ROADMAP_HERO_LABEL)
-    while body and not body.splitlines()[0].strip():
-        body = "\n".join(body.splitlines()[1:])
-    while body and not body.splitlines()[-1].strip():
-        body = "\n".join(body.splitlines()[:-1])
-    return body
+    body_lines = body.splitlines()
+    while body_lines and not body_lines[0].strip():
+        body_lines.pop(0)
+    while body_lines and not body_lines[-1].strip():
+        body_lines.pop()
+    return "\n".join(body_lines)
 
 
 def infer_tags(path: Path, title: str, text: str) -> List[str]:
@@ -843,11 +822,6 @@ def build_item(path: Path) -> dict[str, Any]:
         else:
             item["type"] = "wiki_page"
             item["page_type"] = WIKI_PAGE_TYPES.get(parts[1], parts[1])
-        # ingest coverage: check if any sources/papers/ file mentions this wiki page
-        src_file = _INGEST_INDEX.get(path.stem)
-        if src_file:
-            item["has_ingest"] = True
-            item["ingest_source"] = src_file
     elif parts[0] == "roadmap":
         item["type"] = "roadmap_page"
         item["stages"] = parse_roadmap_stages(text, path)
@@ -1153,15 +1127,22 @@ BODY_ONLY_FIELDS = ("related", "source_links", "paper_notebook_links")
 CATALOG_DROPPED_FIELDS = ("id", "content_markdown", *BODY_ONLY_FIELDS)
 
 
-def write_page_exports(site_payload: Dict, output_dir: Path) -> None:
+def write_page_exports(
+    site_payload: Dict,
+    output_dir: Path,
+    *,
+    mirror_dirs: Sequence[Path] = (),
+) -> None:
     """Publish metadata and immutable bodies while keeping the full v1 export.
 
     Hash filenames support all existing IDs (including Unicode) without using
     IDs as filesystem paths. Only the dedicated generated directory is pruned.
     """
+    target_dirs = (output_dir, *mirror_dirs)
     detail_pages = {}
-    body_dir = output_dir / "page-content"
-    body_dir.mkdir(parents=True, exist_ok=True)
+    body_dirs = [d / "page-content" for d in target_dirs]
+    for body_dir in body_dirs:
+        body_dir.mkdir(parents=True, exist_ok=True)
     expected = set()
     for page_id, entry in site_payload["pages"]["detail_pages"].items():
         body_payload: dict[str, Any] = {
@@ -1175,7 +1156,8 @@ def write_page_exports(site_payload: Dict, output_dir: Path) -> None:
         body = json.dumps(body_payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
         filename = f"{hashlib.sha256(body).hexdigest()}.json"
         expected.add(filename)
-        (body_dir / filename).write_bytes(body)
+        for body_dir in body_dirs:
+            (body_dir / filename).write_bytes(body)
         detail_pages[page_id] = {
             key: value for key, value in entry.items() if key not in CATALOG_DROPPED_FIELDS
         }
@@ -1185,11 +1167,15 @@ def write_page_exports(site_payload: Dict, output_dir: Path) -> None:
         "content_mode": "per-page-v1",
         "pages": {**site_payload["pages"], "detail_pages": detail_pages},
     }
+    catalog_bytes = json.dumps(catalog, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     # Write the catalog after every referenced body exists.
-    write_json(output_dir / "site-catalog-v1.json", catalog)
-    for stale in body_dir.glob("*.json"):
-        if stale.name not in expected:
-            stale.unlink()
+    for target_dir in target_dirs:
+        target_dir.mkdir(parents=True, exist_ok=True)
+        (target_dir / "site-catalog-v1.json").write_bytes(catalog_bytes)
+    for body_dir in body_dirs:
+        for stale in body_dir.glob("*.json"):
+            if stale.name not in expected:
+                stale.unlink()
 
 
 def generate_sitemap(items: List[Dict], base_url: str = BASE_URL) -> str:
@@ -1249,8 +1235,6 @@ def generate_sitemap(items: List[Dict], base_url: str = BASE_URL) -> str:
 
 
 def main() -> None:
-    global _INGEST_INDEX
-    _INGEST_INDEX = build_ingest_index()
     items = [build_item(p) for p in collect_paths()]
     attach_paper_notebook_links(items)
     payload = {
@@ -1263,8 +1247,7 @@ def main() -> None:
 
     write_json(OUTPUT, payload)
     write_json(SITE_OUTPUT, site_payload)
-    write_page_exports(site_payload, OUTPUT.parent)
-    write_page_exports(site_payload, DOCS_EXPORT_DIR)
+    write_page_exports(site_payload, OUTPUT.parent, mirror_dirs=(DOCS_EXPORT_DIR,))
     # 本地旧产物清掉，预览目录与线上一致
     for legacy in LEGACY_DOCS_MIRRORS:
         (DOCS_EXPORT_DIR / legacy).unlink(missing_ok=True)

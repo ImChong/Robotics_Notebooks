@@ -617,7 +617,12 @@ def search(
 
 
 def _cache_key(
-    query_words: list[str], type_filter: str | None, tag_filters: list[str], semantic: bool
+    query_words: list[str],
+    type_filter: str | None,
+    tag_filters: list[str],
+    semantic: bool,
+    context_lines: int = 1,
+    show_related: bool = False,
 ) -> str:
     return json.dumps(
         {
@@ -625,6 +630,8 @@ def _cache_key(
             "t": type_filter or "",
             "tags": sorted(tag_filters),
             "semantic": semantic,
+            "context": context_lines,
+            "related": show_related,
         },
         sort_keys=True,
         ensure_ascii=False,
@@ -640,21 +647,41 @@ def load_cache() -> dict[str, Any]:
     return {"entries": []}
 
 
-def save_cache(cache: dict[str, Any], key: str, results: list[dict]) -> None:
+def save_cache(
+    cache: dict[str, Any],
+    key: str,
+    results: list[dict],
+    semantic_notice: str | None = None,
+) -> None:
     serializable = []
     for r in results[:10]:
         serializable.append(
             {
                 "path": str(r["path"]),
+                "fm": r.get("fm", {}),
+                "matches": [
+                    [lineno, ctx_lines, match_offset]
+                    for lineno, ctx_lines, match_offset in r.get("matches", [])
+                ],
+                "related": [str(rel) for rel in r.get("related", [])],
                 "score": round(r.get("score", 0.0), 6),
+                "bm25_score": round(r.get("bm25_score", r.get("score", 0.0)), 6),
                 "title": r.get("title", ""),
+                "summary": r.get("summary", ""),
+                "page_type": r.get("page_type", ""),
                 "type": r["fm"].get("type", r.get("page_type", "")),
                 "tags": r["fm"].get("tags", []),
                 "vector_score": round(r.get("vector_score", 0.0), 6),
                 "hybrid_score": round(r.get("hybrid_score", r.get("score", 0.0)), 6),
             }
         )
-    entry = {"key": key, "ts": datetime.now().isoformat()[:19], "results": serializable}
+    entry: dict[str, Any] = {
+        "key": key,
+        "ts": datetime.now().isoformat()[:19],
+        "results": serializable,
+    }
+    if semantic_notice:
+        entry["semantic_notice"] = semantic_notice
     entries = [e for e in cache.get("entries", []) if e.get("key") != key]
     entries.insert(0, entry)
     cache["entries"] = entries[:CACHE_MAX]

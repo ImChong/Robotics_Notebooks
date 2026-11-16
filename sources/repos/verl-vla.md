@@ -8,7 +8,7 @@
 - **文档：** https://verl-vla.readthedocs.io/en/latest/
 - **代码维护组织：** verl-project（不要仅依据转载将组织归属写成单一高校）
 - **核对范围：** 官方 README 的 Framework、Distributed execution、Human intervention、Training/Evaluation Matrix、Quick Start。
-- **通读：** 未完成（已核对 README 与操作入口，未逐一读完训练/RL 算法源码）。
+- **通读说明：** 已核对 README 与操作入口，未逐一读完训练/RL 算法源码）。
 
 ## 栈分层与操作入口
 

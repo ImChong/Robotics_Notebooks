@@ -7,19 +7,23 @@
 // 分镜 / 片头主图里面也查：看得见的字、公式、图形、机器人不许超出画面被裁掉，字和字（含公式）不许互相压住。
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { serve } from './serve.mjs';
 
+const HERE = path.dirname(fileURLToPath(import.meta.url));
 const [name, mode] = process.argv.slice(2);
-const tlPath = `out/${name}/timeline.json`;
+const tlPath = path.join(HERE, 'out', name, 'timeline.json');
 const tl = fs.existsSync(tlPath) ? JSON.parse(fs.readFileSync(tlPath, 'utf8'))
   : { total: 30, segments: [{ scene: 'intro', t0: 0, t1: 30, from: 0, to: 30, lead: 0 }], subs: [] };
 const b = await chromium.launch({ executablePath: process.env.CHROME });
 const pg = await b.newPage({ viewport: { width: 1080, height: 1920 } });
-const server = await serve(process.cwd());
+const server = await serve(HERE);
 await pg.goto(server.url + `stage.${name}.built.html`);
 await pg.evaluate(() => window.robotsReady);
 await pg.evaluate((t) => window.setup(t), tl);
 await pg.evaluate(() => document.fonts.ready);
+await pg.evaluate(() => window.fitStages && window.fitStages());
 
 if (mode === 'cover') {
   const intro = tl.segments.filter((s) => s.scene === 'intro').pop();
@@ -74,7 +78,7 @@ if (mode === 'cover') {
   console.log(name, 'cover', r.length ? '\n  ' + r.join('\n  ') : 'no overlap');
   await b.close();
   server.close();
-  process.exit(0);
+  process.exit(r.length ? 1 : 0);
 }
 for (const s of tl.segments) await pg.evaluate((t) => window.renderAt(t), s.t0 + 0.5);
 const issues = new Map();
@@ -264,3 +268,4 @@ for (let t = 0.2; t < tl.total; t += 0.5) {
 console.log(name, issues.size ? [...issues].map(([k, v]) => `${k} @${v}s`).join('\n  ') : 'no overlap');
 await b.close();
 server.close();
+process.exit(issues.size ? 1 : 0);

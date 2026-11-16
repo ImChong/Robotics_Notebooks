@@ -11,8 +11,7 @@
     "Sim-to-Real": "Sim2Real",
     "ROS2": "ROS 2",
     "ROS 2.0": "ROS 2",
-    "Mixture of Experts": "MoE",
-    "iLQR": "iLQR"
+    "Mixture of Experts": "MoE"
   },
   "terms": {
     "RL": {"en": "Reinforcement Learning", "zh": "通过与环境交互最大化长期回报来学习策略的范式"},

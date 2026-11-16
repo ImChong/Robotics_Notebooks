@@ -20,7 +20,7 @@ import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).parent
-MANIFEST = json.loads((HERE / "robots.json").read_text())["robots"]
+MANIFEST = json.loads((HERE / "robots.json").read_text(encoding="utf-8"))["robots"]
 OUT = HERE / "assets" / "robots"
 
 

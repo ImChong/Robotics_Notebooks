@@ -60,7 +60,7 @@
 |------|------|
 | [grpc/grpc](grpc.md) | gRPC 默认 Protobuf 作 service/message 定义与序列化 |
 | [ONNX Runtime](onnxruntime-v1.28.0.md) | ONNX 1.22 捆绑 protobuf 6.33.5 作模型格式依赖 |
-| [LCM](../concepts/lcm-basics.md) | 同为 IDL + 强类型序列化，但 UDP 组播 pub/sub，非 Protobuf wire |
+| [LCM](../../wiki/concepts/lcm-basics.md) | 同为 IDL + 强类型序列化，但 UDP 组播 pub/sub，非 Protobuf wire |
 | [rhoban_bam](rhoban_bam.md) | eRob 采集示例需 `generate_protobuf.sh` 生成 gRPC stub |
 
 ## 推荐继续阅读

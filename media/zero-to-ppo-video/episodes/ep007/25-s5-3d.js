@@ -163,8 +163,8 @@
 
           /* 右栏 B：连乘 */
           E.op(phB, f(st, T.chain, 0.4));
-          var ab = bump(st, T.angle, 0.9);   // 「关节的角度」：四块 4×4 一起亮一下
-          chips.forEach(function (ch, i) { E.pop(ch.g, ch.x, 140, f(st, T.links[i], 0.35), 0.8); ch.r.style.strokeWidth = 2.5 + 2.5 * ab; });   // 只把框线加粗：放大、发光都会压到中间的 ×
+          var angB = bump(st, T.angle, 0.9);   // 「关节的角度」：四块 4×4 一起亮一下
+          chips.forEach(function (ch, i) { E.pop(ch.g, ch.x, 140, f(st, T.links[i], 0.35), 0.8); ch.r.style.strokeWidth = 2.5 + 2.5 * angB; });   // 只把框线加粗：放大、发光都会压到中间的 ×
           timesN.forEach(function (n, i) {
             var b = bump(st, T.mul[i], 0.6), q = [532 + i * 88, 132];
             E.op(n, f(st, T.links[i + 1], 0.3)); E.scaleAt(n, q[0], q[1], 1 + 0.12 * b); n.style.fill = b > 0.1 ? E.HI : E.INK;

@@ -10,7 +10,7 @@
 - **入库日期：** 2026-10-01
 - **抓取方式：** Agent Reach v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；专辑页同会话 `data-link` 跳转（直连 CAPTCHA）
 - **专栏专辑：** [Modern Robotics 原理精读](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2ODgxOTA1Mw==&action=getalbum&album_id=4521219024549937157)（第 2 篇 / 10）
-- **原始抓取落盘：** [`sources/raw/wechat_modern_robotics_album_4521219024549937157/02_mid2247483820/02_mid2247483820.md`](../sources/raw/wechat_modern_robotics_album_4521219024549937157/02_mid2247483820/02_mid2247483820.md)
+- **原始抓取落盘：** [`sources/raw/wechat_modern_robotics_album_4521219024549937157/02_mid2247483820/02_mid2247483820.md`](../raw/wechat_modern_robotics_album_4521219024549937157/02_mid2247483820/02_mid2247483820.md)
 - **一句话说明：** Modern Robotics 第 3 章（1）：向量与参考系、平面 SE(2) 刚体运动与旋转矩阵下标规则。
 
 ## 核心摘录（归纳，非全文）

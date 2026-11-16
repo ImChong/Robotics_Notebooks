@@ -60,7 +60,7 @@ cd natural-disasters && npm install && npm run dev
 ## 与机器人研究的邻接读法
 
 - **不是** 物理引擎或 RL 环境——无刚体/接触动力学；价值在 **程序化环境场** 与 **GPU 实时渲染管线**（FFT 海面、体积天气）可作为 sim 可视化、海事/两栖机器人 **外观级** 场景生成参考。
-- 与 [InfiniteDiffusion Terrain Diffusion](../papers/infinite_diffusion_terrain.md) 等 **程序化户外几何** 同属「无手工资产的大尺度场」方向，但本仓侧重 **流体/大气实时着色** 而非 RL 训练接口。
+- 与 [InfiniteDiffusion Terrain Diffusion](../papers/infinite_diffusion_terrain_diffusion_siggraph_2026.md) 等 **程序化户外几何** 同属「无手工资产的大尺度场」方向，但本仓侧重 **流体/大气实时着色** 而非 RL 训练接口。
 
 ---
 

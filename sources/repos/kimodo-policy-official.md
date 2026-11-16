@@ -5,7 +5,8 @@
 - **项目页：** https://kimodo-policy.github.io/
 - **开放情况：** 官方仓库可访问；具体训练环境、预训练权重与依赖需要按仓库 README 单独配置。
 - **核对范围：** 2026-11-13 阅读官方 README 的安装、训练、Arena/SIMPLE 评测及真机采集/部署章节；对照 `train.py`、`model/kimodo_policy.py`、`model/modules/controlnet.py`、`evaluation/humanoidarena_eval_multi_task_sonic.sh`、`evaluation/humanoidarena_eval_signal_task_sonic.sh`、`evaluation/humanoidarena_server.py`、`real-world/deploy/{deploy,tunnel,sonic}.sh` 的运行入口。未在本环境实际安装、训练、评测或上机。
-- **通读：** 已完成官方 README 对应的发布与复现章节；大型源码仓仅核对上述关键入口，不声称全仓源码通读
+- **通读：** 已完成
+- **通读说明：** 已完成官方 README 对应的发布与复现章节；大型源码仓仅核对上述关键入口，不声称全仓源码通读
 
 ## 运行入口与限制
 

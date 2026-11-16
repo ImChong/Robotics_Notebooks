@@ -152,6 +152,11 @@
       function close() { sidebar.classList.remove('open'); overlay.classList.remove('show'); document.body.style.overflow = ''; }
       toggle.addEventListener('click', function(e) { e.stopPropagation(); sidebar.classList.contains('open') ? close() : open(); });
       if (overlay) overlay.addEventListener('click', close);
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 1632 && document.body.style.overflow === 'hidden') {
+          close();
+        }
+      });
       sidebar.addEventListener('click', function(e) {
         if (e.target.tagName === 'A' || e.target.closest('a')) {
           close(); // Close immediately to allow hash jump
