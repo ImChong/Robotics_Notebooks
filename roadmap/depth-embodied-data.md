@@ -126,6 +126,7 @@ flowchart LR
 - [Embodied Data Cleaning（具身数据清洗）](../wiki/concepts/embodied-data-cleaning.md) — 时序对齐 / 异常过滤 / 重定向修复 / 分段剪辑四步管线，本阶段的核心页
 - [Auto-labeling Pipelines](../wiki/methods/auto-labeling-pipelines.md) — VLM 自动生成描述与成功率标签
 - [HumanNet](../wiki/entities/humannet.md) — 采集 → 处理 → 标注三阶段大规模管线，含 robot-ready 子集的量化判据
+- [TacClaw-Infinity（视触觉语言动作数据集）](../wiki/entities/paper-tacclaw-infinity.md) — Stage 2 案例：以触觉接触事件支撑分段与空间标注，结合可达性/可操纵度做跨本体筛选；采集规模与公开子集须分开核验
 - [灵巧操作数据管线与 RL 训练基建指南](../wiki/queries/dexterous-manipulation-data-pipeline.md) — 清洗产物如何接上训练基建
 - [Motion Data Quality](../wiki/concepts/motion-data-quality.md) — 用四轴口径给清洗结果打分
 
