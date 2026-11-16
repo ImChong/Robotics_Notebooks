@@ -460,6 +460,13 @@ op: ingest
 - **主要位置：** [唯一论文实体](../wiki/entities/paper-towards-agentic-robots-survey.md)、[v1 来源归档](../sources/papers/towards_agentic_robots_arxiv_2610_20442.md)、[VLA Stage 4](../roadmap/depth-vla.md)。
 - **待完成：** e-print 源包在当前环境无法解包，全部引用未逐条审计；故来源归档为「通读：未完成」、实体保持 draft；健康度需以脚本实测为准。
 
+## [2026-11-16] ingest | sources/blogs/wechat-robotics-29-papers-2026-11-16.md | 29 篇具身论文导览线索与两篇重点原文
+
+- 意图：归档用户提供的 8 页论文动态，不用转载摘要代替 29 篇论文核读。
+- 完成：通读 ActionCodec2、ManiLadder 一手论文并分别生成独立实体/流程图；ActionCodec2 额外核读官方可运行评测入口和时序图；新增对应 VLA、具身评测路线链接。
+- 去重：JustRUA 和 STVLA 已有独立实体节点，不复制。
+- 边界：其余线索仅供后续逐篇核实；ManiLadder 项目站点读取失败，源码/数据是否开放待查；本次不声称完成 29 篇全文核读和实验复现。
+
 ## [2026-11-16] ingest | OVBench 与 S-EMBER：流式视频理解与第一视角情景记忆
 
 - **意图：** 独立归档两篇原文，建立在线视频问答及第一视角有证据记忆检索两条知识节点，并挂载具身模型评测 Stage 1。
