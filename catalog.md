@@ -1870,7 +1870,7 @@
 - [Astra on RoboMME（arXiv:2611.06184）](wiki/entities/paper-astra-on-robomme.md) — Astra on RoboMME**（*Can Astra Solve RoboMME without Breaking the Bank?*，[arXiv:2611.06184](https:/ `📅unknown` `[entity_page]`
 - [AstroBench（arXiv:2610.31064）](wiki/entities/paper-astrobench.md) — AstroBench**（*AstroBench: Benchmarking Free-Floating Capture and Space Robotic Manipulation*，[arXi `📅unknown` `[entity_page]`
 - [Astronex-World 1.0（arXiv:2609.20034）](wiki/entities/paper-astronex-world-1.md) — Astronex-World 1.0**（*Real-Time Interactive World Model Foundation*，Astronex Robotics / 南京信息工程大学， `📅unknown` `[entity_page]`
-- [Asynchronous Robot Policies（arXiv:2611.05155）](wiki/entities/paper-asynchronous-robot-policies.md) — Asynchronous Robot Policies**（*Asynchronous Robot Policies*，[arXiv:2611.05155](https://arxiv.org/a `📅unknown` `[entity_page]`
+- [ARP：异步机器人策略（Asynchronous Robot Policies）](wiki/entities/paper-asynchronous-robot-policies.md) — ARP 将 VLA 分成独立的低频语义推理与高频视觉动作两条循环：大 VLM 异步写入语义记忆，小动作专家直接读取最新相机画面和最近一次记忆来输出动作，不必等待下一次 VLM 推理。 `📅unknown` `[entity_page]`
 - [Athena-WBC：面向人形全身控制长尾的能力对齐策略专家](wiki/entities/paper-athena-wbc-humanoid-longtail.md) — Athena-WBC**（*Capability-Aligned Policy Experts for Long-Tail Humanoid Whole-Body Control*，arXiv:2 `📅unknown` `[entity_page]`
 - [AthenaZero：低惯量双臂动态操作平台](wiki/entities/paper-athenazero.md) — AthenaZero**（*A low-inertia, bimanual robot for dynamic manipulation*，[*Science Robotics* 11(118)， `📅unknown` `[entity_page]`
 - [ATHLETE：用通用行走数据加普通视频学人形反应式网球](wiki/entities/paper-athlete-reactive-humanoid-tennis-tgmm.md) — ATHLETE**（论文 *ATHLETE: Learning Reactive Humanoid Tennis via Trajectory-Guided Motion Matching*，[a `📅unknown` `[entity_page]`
