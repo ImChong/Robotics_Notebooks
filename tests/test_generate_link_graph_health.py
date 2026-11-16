@@ -208,6 +208,7 @@ def test_route_health_distribution_counts_route_map_nodes() -> None:
         }
     ]
 
+
 @pytest.mark.full_only
 def test_repo_routes_have_route_map_nodes() -> None:
     """roadmap/ 下的主路线与纵深路线都能解析出知识地图节点（图表不会缺路线）。"""
