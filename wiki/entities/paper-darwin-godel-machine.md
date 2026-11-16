@@ -164,6 +164,7 @@ SWE-bench Verified 原始 Agent 为 **20.0%**，进化后最好为 **50.0%**。�
 |---|---|---|
 | 理论 Gödel Machine | 以形式证明驱动程序自修改 | DGM 用编程基准经验评测，不具备全局收益证明 |
 | [HarnessBank](./paper-harnessbank.md) | 语义基因库 + 显著性门控的 harness 进化 | DGM 更重视自修改代码、开放搜索与可退步的祖先档案 |
+| [Hyperagents（DGM-H）](./paper-hyperagents.md) | 任务 Agent 与 Meta Agent 共同位于可修改代码库 | DGM 主要进化任务编码 Agent，DGM-H 还允许修改后续产生改进的元层程序；其 Go2 奖励设计仅在仿真中评测 |
 | [Darwin Skill](./darwin-skill.md) | SKILL.md 文件级技能优化 | DGM 进化编码 Agent 自身的更广泛代码 |
 | [具身终身学习](../comparisons/self-improving-agents-embodied-lifelong-learning.md) | 数据、记忆、策略与真机反馈 | 编程任务上的自改进并非机器人策略训练的直接证据 |
 
@@ -180,6 +181,7 @@ SWE-bench Verified 原始 Agent 为 **20.0%**，进化后最好为 **50.0%**。�
 - [Awesome RSI](./awesome-rsi.md) — 相关方法索引
 - [HarnessBank](./paper-harnessbank.md) — 自进化 harness 的门控对照
 - [Darwin Skill](./darwin-skill.md) — 代码自改的更窄技能层变体
+- [Hyperagents（DGM-H）](./paper-hyperagents.md) — 自修改元层改进者的后续研究与 Genesis Go2 仿真边界
 - [自我改进智能体与具身终身学习](../comparisons/self-improving-agents-embodied-lifelong-learning.md) — 机器人研究迁移边界
 
 ## 参考来源
