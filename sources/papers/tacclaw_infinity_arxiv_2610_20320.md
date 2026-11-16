@@ -25,6 +25,15 @@
 - [项目页归档](../sites/tacclaw_infinity.md)与[源码归档](../repos/tacclaw_infinity.md)记录官方入口。数据子集及三种机器人回放和运动学工具公开，策略训练与任务级评测代码仍待发布。
 - HF 数据卡称首批 1,000 小时，完整采集规模和公开下载规模不可混同；数据卡注明 CC BY-NC-SA 4.0。
 
+## 2026-11-16 再核对：论文与数据门户的证据边界
+
+- **原论文 v2：** <https://arxiv.org/html/2610.20320v2>（2026-10-30）；核对第 III 节采集与标注、第 IV 节分布式多样性、第 V 节可达性/触觉消融及任务成功率。论文所称 10,000+ 小时、1M+ episodes 为**采集规模**。
+- **项目与仓库：** <https://tacclaw-infinity.github.io/> 和 <https://github.com/tacclaw-infinity/TacClaw-Infinity>；公开的可执行工具为三种机器人运动学可执行性评测及回放；策略训练与任务级评测代码仍列待发布。
+- **HF 发布门户：** <https://huggingface.co/datasets/daimonrobotics/Daimon-Infinity>；数据卡称首批 1,000 小时，统计图基于约 1,209 小时；分别为**发布说明**与**统计样本**，均不可充当 10,000+ 小时完整公开证明。
+- **设备/数据混合：** 该数据卡并列 DM-DataClaw 与外骨骼 DM-DataDex（TacExoGaze），须按 episode 的设备与标定元数据区分，不把 DataDex 全部数据归到 TacClaw 论文验证范围。
+- **门户格式检查：** Parquet/视频/元数据目录；门户字段表列 114-D `observation.state` / 111-D `action`、`9930` 占位值掩码、30 fps 同步建议、`uint16` 触觉解码和 CC BY-NC-SA 4.0。不同设备/配置并不保证每维都有效。
+- **核对边界：** 本次从 arXiv v2 全文 HTML 逐节核对，PDF 链接存在但当前读取器因文件体积未直接打开；未下载完整数据或重跑论文训练和真机实验。
+
 ## 对 wiki 的映射
 
 - 更新已有 [TacClaw-Infinity 实体页](../../wiki/entities/paper-tacclaw-infinity.md)，补充数据管线、筛选阈值、实验条件、局限与源码时序。
