@@ -78,7 +78,7 @@ sequenceDiagram
   participant Core as 项目实现模块
   participant Env as 仿真或数据环境
   participant Out as 结果
-  User->>Entry: 运行 python -c 'import alloy; sim=alloy.build(alloy.Scene(dt=0.01)); sim.run(1.0)'
+  User->>Entry: 运行 python examples/api/01_drop_box.py
   Entry->>Env: 读取输入与配置
   Env-->>Entry: 输入样本
   Entry->>Core: 调用 alloy.Scene、alloy.build 与 Simulation

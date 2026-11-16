@@ -47,7 +47,7 @@ summary: "2026-11-16 具身智能导览 29 篇论文的独立详情索引，按�
 | 1 | [ActionCodec2](../entities/paper-actioncodec2-streaming-action-tokenizer.md) | [2611.15490](https://arxiv.org/abs/2611.15490) | 动作编解码 |
 | 2 | [JustRUA](../entities/paper-justrua-robot-use-agents.md) | [2611.16009](https://arxiv.org/abs/2611.16009) | 机器人智能体接口 |
 | 3 | [ManiLadder](../entities/paper-maniladder-manipulation-benchmark.md) | [2611.16374](https://arxiv.org/abs/2611.16374) | 操作评测 |
-| 4 | [BlinkMimic](../entities/paper-blinkmimic-2611-16422.md) | [2611.16422](https://arxiv.org/abs/2611.16422) | 人形动作跟踪 |
+| 4 | [BlinkMimic](../entities/blinkmimic.md) | [2611.16422](https://arxiv.org/abs/2611.16422) | 人形动作跟踪 |
 | 5 | [HALO](../entities/paper-halo-2611-16439.md) | [2611.16439](https://arxiv.org/abs/2611.16439) | 示教采集 |
 | 6 | [Autonomous Trail Racing](../entities/paper-bicycle-trail-racing-2611-15280.md) | [2611.15280](https://arxiv.org/abs/2611.15280) | 移动导航 |
 | 7 | [VIM](../entities/paper-vim-operator-intent-2611-16419.md) | [2611.16419](https://arxiv.org/abs/2611.16419) | 遥操作意图 |
