@@ -35,12 +35,23 @@ if (!fs.existsSync(tlPath)) {
 }
 
 const epDir = path.join(HERE, 'episodes', ep);
+const hasEpDir = fs.existsSync(epDir);
+const epFiles = hasEpDir ? fs.readdirSync(epDir).filter((f) => f.endsWith('.js')).sort() : [];
 const singleEp = path.join(HERE, 'episodes', `${ep}.js`);
-const scripts = fs.existsSync(epDir)
-  ? fs.readdirSync(epDir).filter((f) => f.endsWith('.js')).sort().map((f) => `episodes/${ep}/${f}`)
+const scripts = hasEpDir
+  ? epFiles.map((f) => `episodes/${ep}/${f}`)
   : fs.existsSync(singleEp)
     ? [`episodes/${ep}.js`]
     : null;
+const scriptTags = [];
+if (hasEpDir && fs.existsSync(path.join(HERE, 'episodes', 'common.js'))) {
+  if (!epFiles.includes('00-common.js')) {
+    scriptTags.push(`<script>window.__EPISODE_NS__=${JSON.stringify(ep.toUpperCase())};</script>`, '<script src="episodes/common.js"></script>');
+  } else if (fs.readFileSync(path.join(epDir, '00-common.js'), 'utf8').includes('createEpisodeCommon')) {
+    scriptTags.push('<script src="episodes/common.js"></script>');
+  }
+}
+if (scripts) scriptTags.push(...scripts.map((s) => `<script src="${s}"></script>`));
 if (!scripts || scripts.length === 0) {
   console.error(`找不到分镜源码：episodes/${ep}.js 或 episodes/${ep}/*.js`);
   process.exit(1);
@@ -143,7 +154,7 @@ window.addEventListener('message', async (e) => {
 </script></body>`;
 
 const stageHtml = stageHtmlRaw
-  .replace('<script src="episodes/EPISODE.js"></script>', scripts.map((s) => `<script src="${s}"></script>`).join('\n'))
+  .replace('<script src="episodes/EPISODE.js"></script>', scriptTags.join('\n'))
   .replace('</body>', bridgeScript);
 fs.writeFileSync(path.join(SRC_PUB, 'stage.html'), stageHtml);
 
