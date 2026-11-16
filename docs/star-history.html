@@ -172,6 +172,70 @@
         });
       }
 
+      // 行分类保持不变，四个标签只切换条形内部的分组；均从同一批现存节点逐一计数。
+      function buildNodeCounts(graph, rowMode, stackMode, theme) {
+        function groupsFor(mode) {
+          var groups = nodeTrendGroups(graph, mode, theme);
+          var known = new Set(groups.map(function (g) { return g.id; }));
+          if (graph.nodes.some(function (n) { return !known.has(NODE_STACK_MODES[mode].key(n)); })) {
+            groups.push({ id: '__unclassified__', label: '未分类', color: '#64748b' });
+          }
+          return groups;
+        }
+        var rows = groupsFor(rowMode);
+        var groups = rowMode === stackMode ? rows : groupsFor(stackMode);
+        var rowIndex = new Map(rows.map(function (g, i) { return [g.id, i]; }));
+        var groupIndex = new Map(groups.map(function (g, i) { return [g.id, i]; }));
+        var counts = rows.map(function () { return 0; });
+        var values = groups.map(function () { return rows.map(function () { return 0; }); });
+        graph.nodes.forEach(function (n) {
+          var rowKey = NODE_STACK_MODES[rowMode].key(n);
+          var groupKey = NODE_STACK_MODES[stackMode].key(n);
+          var r = rowIndex.get(rowIndex.has(rowKey) ? rowKey : '__unclassified__');
+          var c = groupIndex.get(groupIndex.has(groupKey) ? groupKey : '__unclassified__');
+          counts[r] += 1;
+          values[c][r] += 1;
+        });
+        var included = rows.map(function (_, i) { return i; }).filter(function (i) {
+          return counts[i] > 0 || rows[i].showEmpty;
+        });
+        var total = graph.nodes.length;
+        var summary;
+        if (rowMode === 'community' || rowMode === 'type') {
+          summary = included.length + (rowMode === 'community' ? ' 个社区' : ' 种类型') + '，合计 ' + total + ' 节点';
+        } else if (rowMode === 'opensource') {
+          var open = counts[rowIndex.get('open')];
+          summary = '开源 ' + open + ' / ' + total + ' 节点（' + (100 * open / Math.max(total, 1)).toFixed(1) + '%）';
+        } else {
+          var sum = rows.reduce(function (s, g, i) { return s + Number(g.id) * counts[i]; }, 0);
+          summary = total + ' 个节点，平均 ' + (sum / Math.max(total, 1)).toFixed(2) + ' 分；' +
+            rows.map(function (g, i) {
+              return g.label + ' ' + counts[i] + '（' + (100 * counts[i] / Math.max(total, 1)).toFixed(1) + '%）';
+            }).join('、');
+        }
+        return {
+          cats: included.map(function (i) { return String(rows[i].label || rows[i].id).replace(/\s*社区\s*$/, ''); }),
+          links: rowMode === 'community' ? included.map(function (i) {
+            return rows[i].id === '__unclassified__' ? null : 'hubs.html?community=' + encodeURIComponent(rows[i].id);
+          }) : undefined,
+          series: rowMode === stackMode ? [{
+            values: included.map(function (i) { return counts[i]; }),
+            color: included.map(function (i) { return rows[i].color; })
+          }] : groups.map(function (g, c) {
+            return { name: stackMode === 'community' ? RNGraphTooltip.shortenCommunityLabel(g.label) : g.label,
+              color: g.color, values: included.map(function (i) { return values[c][i]; }) };
+          }).filter(function (g, i) { return groups[i].showEmpty || g.values.some(function (n) { return n > 0; }); }),
+          showLegend: rowMode !== stackMode,
+          total: summary
+        };
+      }
+
+      function nodeCounts(rowMode) {
+        var mode = nodeStackMode;
+        var theme = document.documentElement.getAttribute('data-theme');
+        return linkGraph().then(function (g) { return buildNodeCounts(g, rowMode, mode, theme); });
+      }
+
       // 按日计数 → 累计序列
       function cumulative(daily) {
         var total = 0;
@@ -360,94 +424,15 @@
           load: function () { return depthDaily().then(cumulative); } },
         { id: 'depth-daily', label: '每日纵深数', unit: '新增纵深路线', kind: 'bar', hidden: true,
           load: depthDaily },
-        { id: 'communities', label: '社区节点数', unit: '节点', kind: 'category',
-          load: function () {
-            return linkGraph().then(function (g) {
-              var list = RNGraphTooltip.getSortedCommunities(g.communities)
-                .filter(function (c) { return c.size > 0; });
-              var color = RNGraphTooltip.buildCommunityColorMap(g.communities);
-              return {
-                // 与纵深节点数一致：显示「中文（English）」，仅去掉末尾「社区」
-                cats: list.map(function (c) { return String(c.label || c.id).replace(/\s*社区\s*$/, ''); }),
-                // 点击跳到互链榜单页的对应社区榜单
-                links: list.map(function (c) { return 'hubs.html?community=' + encodeURIComponent(c.id); }),
-                series: [{
-                  values: list.map(function (c) { return c.size; }),
-                  color: list.map(function (c) { return color[c.id]; })
-                }],
-                total: list.length + ' 个社区，合计 ' + list.reduce(function (a, c) { return a + c.size; }, 0) + ' 节点'
-              };
-            });
-          } },
-        // 类型 / 开源 / 健康度：同取当前知识图谱快照，配色与 graph.html「按类型 / 按开源 / 按健康度」一致
-        { id: 'type-nodes', label: '类型节点数', unit: '节点', kind: 'category',
-          load: function () {
-            return linkGraph().then(function (g) {
-              var types = nodeTrendGroups(g, 'type');
-              return {
-                // 「中文（English）」：窄屏与社区图一样只留中文
-                cats: types.map(function (t) { return t.label; }),
-                series: [{
-                  values: types.map(function (t) { return t.size; }),
-                  color: types.map(function (t) { return t.color; })
-                }],
-                total: types.length + ' 种类型，合计 ' + g.nodes.length + ' 节点'
-              };
-            });
-          } },
-        { id: 'opensource-nodes', label: '开源节点数', unit: '节点', kind: 'category',
-          load: function () {
-            // 开源 = 节点 has_repo（关联 sources/repos/ 或 frontmatter code: 仓库，与详情页 ⭐️、图谱「按开源」同口径），按社区堆叠
-            return linkGraph().then(function (g) {
-              var list = RNGraphTooltip.getSortedCommunities(g.communities)
-                .filter(function (c) { return c.size > 0; });
-              var open = {};
-              var all = {};
-              var openTotal = 0;
-              g.nodes.forEach(function (n) {
-                all[n.community] = (all[n.community] || 0) + 1;
-                if (n.has_repo) {
-                  open[n.community] = (open[n.community] || 0) + 1;
-                  openTotal += 1;
-                }
-              });
-              return {
-                cats: list.map(function (c) { return String(c.label || c.id).replace(/\s*社区\s*$/, ''); }),
-                links: list.map(function (c) { return 'hubs.html?community=' + encodeURIComponent(c.id); }),
-                series: [
-                  { name: '开源', color: OPEN_SOURCE_COLORS.open, values: list.map(function (c) { return open[c.id] || 0; }) },
-                  { name: '未开源', color: OPEN_SOURCE_COLORS.closed, values: list.map(function (c) { return (all[c.id] || 0) - (open[c.id] || 0); }) }
-                ],
-                total: '开源 ' + openTotal + ' / ' + g.nodes.length + ' 节点（' +
-                  (100 * openTotal / Math.max(g.nodes.length, 1)).toFixed(1) + '%），按社区堆叠'
-              };
-            });
-          } },
-        { id: 'health-nodes', label: '健康度节点数', unit: '节点', kind: 'category',
-          load: function () {
-            // 得分口径见 scripts/generate_link_graph.py compute_health（路线页走 compute_roadmap_health）
-            return linkGraph().then(function (g) {
-              var colors = healthColors(document.documentElement.getAttribute('data-theme'));
-              var count = [0, 0, 0, 0];
-              var sum = 0;
-              g.nodes.forEach(function (n) {
-                var s = Math.max(0, Math.min(3, n.health_score || 0));
-                count[s] += 1;
-                sum += s;
-              });
-              var scores = [3, 2, 1, 0];
-              var share = function (s) { return (100 * count[s] / Math.max(g.nodes.length, 1)).toFixed(1) + '%'; };
-              return {
-                cats: scores.map(function (s) { return s + ' 分'; }),
-                series: [{
-                  values: scores.map(function (s) { return count[s]; }),
-                  color: scores.map(function (s) { return colors[s]; })
-                }],
-                total: g.nodes.length + ' 个节点，平均 ' + (sum / Math.max(g.nodes.length, 1)).toFixed(2) + ' 分；' +
-                  scores.map(function (s) { return s + ' 分 ' + count[s] + '（' + share(s) + '）'; }).join('、')
-              };
-            });
-          } },
+        // 社区 / 类型 / 开源 / 健康度共用图谱快照，行分类与堆叠依据可交叉组合。
+        { id: 'communities', label: '社区节点数', unit: '节点', kind: 'category', rowMode: 'community',
+          load: function () { return nodeCounts('community'); } },
+        { id: 'type-nodes', label: '类型节点数', unit: '节点', kind: 'category', rowMode: 'type',
+          load: function () { return nodeCounts('type'); } },
+        { id: 'opensource-nodes', label: '开源节点数', unit: '节点', kind: 'category', rowMode: 'opensource',
+          load: function () { return nodeCounts('opensource'); } },
+        { id: 'health-nodes', label: '健康度节点数', unit: '节点', kind: 'category', rowMode: 'health',
+          load: function () { return nodeCounts('health'); } },
         { id: 'depth-nodes', label: '路线收录节点数', unit: '节点', kind: 'category',
           load: function () {
             // 仅使用各 roadmap 知识地图的 related_items 收录清单，分类与健康度共享同一去重后的节点集合。
@@ -621,14 +606,19 @@
         var version = ++renderVersion;
         if (legend.classList.contains('trend-legend--interactive')) legend.hidden = true;
         current = view;
-        var stackable = view.load === nodeTrends || view.id === 'depth-nodes';
+        var stackable = view.load === nodeTrends || view.id === 'depth-nodes' || !!view.rowMode;
         stackBar.hidden = !stackable;
         stackBar.querySelectorAll('button').forEach(function (b) {
           var active = b.dataset.stack === nodeStackMode;
           b.className = 'home-hub-tab' + (active ? ' is-active' : '');
           b.setAttribute('aria-pressed', String(active));
         });
-        description.textContent = view.id === 'depth-nodes'
+        description.textContent = view.rowMode
+          ? '统计当前知识图谱中的全部节点，按' + NODE_STACK_MODES[view.rowMode].description + '分行，按' +
+            NODE_STACK_MODES[nodeStackMode].description + '着色' + (view.rowMode === nodeStackMode ? '。' : '堆叠。') +
+            '切换标签不改变每行节点总数。' +
+            (view.rowMode === 'opensource' || nodeStackMode === 'opensource' ? '开源表示已关联源码仓库。' : '')
+          : view.id === 'depth-nodes'
           ? '仅统计路线知识地图中实际收录的现存节点，路线内去重；按' +
             NODE_STACK_MODES[nodeStackMode].description + '堆叠。' +
             (nodeStackMode === 'opensource' ? '开源表示已关联源码仓库。' : '')
@@ -671,7 +661,7 @@
         rangeBar.hidden = true;
         ganttRange = null;
         legend.classList.toggle('trend-legend--interactive', nodeTrend);
-        if (!nodeTrend) legend.setAttribute('aria-label', view.id === 'depth-nodes'
+        if (!nodeTrend) legend.setAttribute('aria-label', view.id === 'depth-nodes' || view.rowMode
           ? NODE_STACK_MODES[nodeStackMode].label + '图例' : '社区配色');
         // 交互图例放在两张趋势图下方，窄屏先显示时间轴和图表。
         if (nodeTrend) chart.after(legend);
@@ -837,7 +827,7 @@
         var labels = s.cats.map(function (c) {
           return narrow ? RNGraphTooltip.shortenCommunityLabel(c) : c;
         });
-        var stacked = s.series.length > 1;
+        var stacked = s.series.length > 1 || s.showLegend;
         var traces = s.series.map(function (t) {
           return {
             type: 'bar', orientation: 'h', name: t.name,
@@ -854,6 +844,7 @@
         // 有链接时名称做成文本链接；合并视图名称前加类别标记（● 公司 / ◆ 实验室，标记着色、名称保持链接色）
         var theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
         var ticktext = s.links ? labels.map(function (l, i) {
+          if (!s.links[i]) return l;
           var k = s.marked && ORG_KINDS[s.kinds[i]];
           return (k ? '<span style="color:' + k.color[theme] + '">' + k.glyph + '</span> ' : '') +
             '<a href="' + s.links[i] + '" target="_self">' + l + '</a>';
