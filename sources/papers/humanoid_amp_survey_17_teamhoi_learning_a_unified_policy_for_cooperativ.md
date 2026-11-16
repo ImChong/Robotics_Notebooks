@@ -27,7 +27,7 @@
 - [paper-amp-survey-17-teamhoi](../../wiki/entities/paper-amp-survey-17-teamhoi.md) — 主实体页
 - [amp-reward](../../wiki/methods/amp-reward.md)
 - [PhysHSI #15](../../wiki/entities/paper-amp-survey-15-physhsi.md) — 单人 HSI 对照
-- [MoRE #08](../../wiki/entities/paper-amp-survey-08-more.md)、[Goalkeeper #13](../../wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md) — 条件化/分部位 AMP 家族
+- [MoRE #08](../../wiki/entities/paper-amp-survey-08-more.md)、[Goalkeeper #13](../../wiki/entities/paper-amp-survey-13-humanoid-goalkeeper.md) — 条件化/分部位 AMP 家族
 
 ## 参考来源（原始）
 

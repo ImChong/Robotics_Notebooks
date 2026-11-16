@@ -21,7 +21,7 @@
 
 ## 对 wiki 的映射
 
-  - [paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)
+  - [paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md)
   - [gr00t_n1_arxiv_2503_14734.md](./gr00t_n1_arxiv_2503_14734.md)
 
 ## 参考来源（原始）

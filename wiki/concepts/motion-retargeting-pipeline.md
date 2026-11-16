@@ -293,4 +293,4 @@ flowchart TD
 ## 推荐继续阅读
 
 - [GMR 源码仓库](https://github.com/YanjieZe/GMR) — 多机型 / 多源格式的工程参考
-- [Karpathy LLM Wiki 方法论](../references/llm-wiki-karpathy.md) — "compilation beats retrieval" 的内在动机
+- [Karpathy LLM Wiki 方法论](../concepts/llm-wiki-karpathy.md) — "compilation beats retrieval" 的内在动机

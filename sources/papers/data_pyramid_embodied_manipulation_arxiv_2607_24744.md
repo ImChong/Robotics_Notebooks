@@ -39,7 +39,7 @@
   4. **仿真数据**：物理引擎并行生成，返回可执行动作 + 特权标签（接触/位姿/成功信号），边际成本近零；返回不了它近似的物理本身。
   5. **通用数据**（General）：web 级图像/视频/语言/视觉-语言语料，承载语义、空间结构与常识； ground 感知与推理而非动作，不谈接触与后果。
 
-**对 wiki 的映射：** 升格 [`wiki/entities/paper-data-pyramid-embodied-manipulation.md`](../../wiki/entities/paper-data-pyramid-embodied-manipulation.md)；与模型专属金字塔叙事 [GR00T N1 数据金字塔](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[mimic 数据金字塔](../../wiki/entities/mimic-hand-m1.md) 互为「类目级系统化 vs 单模型配方」对照；真机层锚定 [Open X-Embodiment](../../wiki/concepts/open-x-embodiment.md)。
+**对 wiki 的映射：** 升格 [`wiki/entities/paper-data-pyramid-embodied-manipulation.md`](../../wiki/entities/paper-data-pyramid-embodied-manipulation.md)；与模型专属金字塔叙事 [GR00T N1 数据金字塔](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md)、[mimic 数据金字塔](../../wiki/entities/mimic-hand-m1.md) 互为「类目级系统化 vs 单模型配方」对照；真机层锚定 [Open X-Embodiment](../../wiki/concepts/open-x-embodiment.md)。
 
 ## 摘录 2：各层采集管线要点（§2–§6）
 
@@ -77,4 +77,4 @@
 
 - 新建 **`wiki/entities/paper-data-pyramid-embodied-manipulation.md`**（含五层金字塔 Mermaid + 模型数据配方分析 + 结论）。
 - 新建 **`sources/sites/embodied-data-pyramid.md`**、**`sources/repos/awesome-embodied-data-pyramid.md`**。
-- 交叉更新 [open-x-embodiment](../../wiki/concepts/open-x-embodiment.md)、[paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[embodied-scaling-laws](../../wiki/concepts/embodied-scaling-laws.md)、[world-action-models](../../wiki/concepts/world-action-models.md)、[vla](../../wiki/methods/vla.md)、[roadmap/depth-vla](../../roadmap/depth-vla.md)。
+- 交叉更新 [open-x-embodiment](../../wiki/concepts/open-x-embodiment.md)、[paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md)、[embodied-scaling-laws](../../wiki/concepts/embodied-scaling-laws.md)、[world-action-models](../../wiki/concepts/world-action-models.md)、[vla](../../wiki/methods/vla.md)、[roadmap/depth-vla](../../roadmap/depth-vla.md)。

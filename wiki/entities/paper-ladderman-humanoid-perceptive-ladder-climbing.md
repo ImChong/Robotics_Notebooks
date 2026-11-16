@@ -30,7 +30,7 @@ related:
   - ../methods/dagger.md
   - ./unitree-g1.md
   - ./paper-rpl-robust-humanoid-perceptive-locomotion.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-pilot-perceptive-loco-manipulation.md
   - ./paper-faststair-humanoid-stair-ascent.md
 sources:
@@ -189,5 +189,5 @@ flowchart TB
 - 论文 PDF：<https://arxiv.org/pdf/2606.05873>
 - 项目页（演示视频）：<https://ladderman-robot.github.io/>
 - [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) — 同平台双向深度行走与载荷对照
-- [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 同系深度感知跑酷技能链
+- [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) — 同系深度感知跑酷技能链
 - [PILOT](./paper-pilot-perceptive-loco-manipulation.md) — 单阶段 LiDAR 感知全身 LLC 对照

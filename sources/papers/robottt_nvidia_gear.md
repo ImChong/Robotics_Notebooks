@@ -28,7 +28,7 @@
 - **Sequence action forcing：** 每个 action chunk **独立采样** flow-matching 噪声 \(\tau_t\)；全序列共享噪声会使整条轨迹 **同易同难** 并 destabilize 训练。
 - **TBPTT：** 序列切段反传以控显存；**fast weights 跨段传递**，段边界 **detach 其梯度**；\(W_0\) 初始化仍经 **meta-learning（gradients of gradients）** 优化。
 
-**对 wiki 的映射：** 与 [GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[Action Chunking](../../wiki/methods/action-chunking.md)、[VLA](../../wiki/methods/vla.md) 的 flow/chunk 部署语境交叉；训练配方区别于 [TTT-Parkour](../../wiki/entities/paper-notebook-ttt-parkour.md) 的「仿真里短时微调跑酷策略」。
+**对 wiki 的映射：** 与 [GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md)、[Action Chunking](../../wiki/methods/action-chunking.md)、[VLA](../../wiki/methods/vla.md) 的 flow/chunk 部署语境交叉；训练配方区别于 [TTT-Parkour](../../wiki/entities/paper-notebook-ttt-parkour.md) 的「仿真里短时微调跑酷策略」。
 
 ## 摘录 3：有效上下文学习与评测（Effective Learning + Evaluation）
 

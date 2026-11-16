@@ -124,7 +124,7 @@ flowchart TB
 | [Figure](../entities/figure-ai.md) |  | ● |  | Helix → [Helix 02](../entities/helix-02.md) → Helix 2.5 |
 | [Skild AI](../entities/skild-ai.md) |  | ● | ● | Skild Brain / LocoFormer / S1 / 自博弈 |
 | [NVIDIA](../entities/isaac-gr00t.md) | ○ | ● | ● | GR00T、Cosmos、Isaac Lab、GR00T Control |
-| [Amazon FAR](../../sources/sites/amazon-far.md) | ○ | ● | ● | [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md)、[ResMimic](../entities/paper-resmimic.md)、[TWIST2](../entities/paper-twist2.md)、[RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)、[holosoma](../entities/holosoma.md) |
+| [Amazon FAR](../../sources/sites/amazon-far.md) | ○ | ● | ● | [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md)、[ResMimic](../entities/paper-resmimic.md)、[TWIST2](../entities/paper-twist2.md)、[RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[PHP](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)、[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)、[holosoma](../entities/holosoma.md) |
 | LimX 逐际动力 |  | ● | ● | COSA、FluxVLA、腿足技能 |
 | Unitree 宇树 |  | ● | ● | G1、UnifoLM、控制生态 |
 | [Light Origins 亮源新创](../entities/light-o1.md) | ○ |  | ● | Light-O1、REACT、Parkour、Nav |

@@ -88,7 +88,7 @@ sequenceDiagram
 
 - [Unlimited OCR Works 2](./unlimited-ocr-2.md)
 - [TeleOCR](./paper-teleocr.md)
-- [LLM Wiki](../references/llm-wiki-karpathy.md)
+- [LLM Wiki](../concepts/llm-wiki-karpathy.md)
 
 ## 参考来源
 

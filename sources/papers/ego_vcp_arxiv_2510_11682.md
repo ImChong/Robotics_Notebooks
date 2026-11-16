@@ -20,7 +20,7 @@
 - **链接：** <https://arxiv.org/abs/2510.11682>
 - **摘录要点：** 人形要利用接触（扶墙、挡球、钻矮拱）而非只避碰；传统优化规划遇接触组合爆炸，在线 RL 样本效率低且多任务弱。作者用 **learned world model + sampling-based MPC** 在潜空间预测任务结果，并用 **surrogate value** 缓解稀疏接触奖励与传感噪声。
 - **对 wiki 的映射：**
-  - [Ego-VCP 实体页](../../wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md)
+  - [Ego-VCP 实体页](../../wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md)
   - [WAM×运动控制五路径](../../wiki/overview/wam-motion-control-five-paths.md) — ① 在线规划
 
 ### 2) 方法：潜空间展开 + CEM 筛选 + 只执行第一步
@@ -46,7 +46,7 @@
 
 ## 关联 Wiki 页面
 
-- [paper-hrl-stack-33-ego_vision_world_model_for_humanoid](../../wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md)
+- [paper-hrl-stack-33-ego_vision_world_model_for_humanoid](../../wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md)
 - [wam-motion-control-five-paths](../../wiki/overview/wam-motion-control-five-paths.md)
 
 ## 当前提炼状态

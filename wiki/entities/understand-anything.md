@@ -17,7 +17,7 @@ related:
   - ./hermes-agent.md
   - ./deepseek-harness.md
   - ./openclaw.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
 sources:
@@ -47,7 +47,7 @@ summary: "Understand Anything（Egonex，MIT）：多平台 coding agent 插件�
 
 ## 为什么重要（对本知识库读者）
 
-- **与本站维护模式直接相关：** 本仓库采用 [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) ingest/query/lint；Understand Anything 提供 **`/understand-knowledge`** 把同类 wiki 变成 **力导向知识图 + 社区聚类**，适合新人快速摸清 `wiki/` / `sources/` 拓扑（**不替代** `make lint` 与 `## 参考来源` 质量门）。
+- **与本站维护模式直接相关：** 本仓库采用 [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) ingest/query/lint；Understand Anything 提供 **`/understand-knowledge`** 把同类 wiki 变成 **力导向知识图 + 社区聚类**，适合新人快速摸清 `wiki/` / `sources/` 拓扑（**不替代** `make lint` 与 `## 参考来源` 质量门）。
 - **机器人 monorepo 上手：** Isaac / MuJoCo / ROS2 / 训练脚本 / 论文 PDF 混仓时，用 **结构图 + 业务域视图**（认证、数据层、仿真接口）降低 onboarding 成本；与 [graphify](./graphify.md) 同属「代理读代码前先构图」路线，但 UA 强调 **dashboard、tour、diff 影响面** 与 **多 IDE 插件分发**。
 - **团队可提交图：** `.ua/` JSON 可进 git（大文件用 LFS），队友用 **viewer** 本地打开 dashboard **无需 LLM API**——适合 PR review 与文档即代码。
 - **宿主生态已铺好：** 一条 `install.sh` 覆盖 Codex、OpenClaw、Hermes、Cursor 等，和 [CLI-Anything](./cli-anything.md)（生成应用 CLI）、[DeepSeek Harness](./deepseek-harness.md)（agent 运行时）互补。
@@ -164,7 +164,7 @@ sequenceDiagram
 ## 关联页面
 
 - [graphify](./graphify.md) — 另一套「文件夹 → 知识图」技能
-- [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md) — `/understand-knowledge` 目标形态
+- [LLM Wiki（Karpathy）](../concepts/llm-wiki-karpathy.md) — `/understand-knowledge` 目标形态
 - [CLI-Anything](./cli-anything.md) — agent-native 软件操控
 - [Hermes Agent](./hermes-agent.md) / [OpenClaw](./openclaw.md) — `install.sh` 支持的宿主
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本库人工 ingest 规范

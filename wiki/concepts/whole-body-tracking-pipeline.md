@@ -26,7 +26,7 @@ related:
   - ../entities/paper-heracles-humanoid-diffusion.md
   - ../entities/paper-omg-omni-modal-humanoid-control.md
   - ../entities/paper-perceptive-bfm.md
-  - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
+  - ../entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md
   - ../entities/paper-resmimic.md
   - ../entities/paper-notebook-vmp.md
   - ../entities/paper-pgmt.md
@@ -199,7 +199,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 | **预训练 latent + 显式跟踪** | β-VAE 运动先验与 PPO 解耦，动画参考接口 | [VMP](../entities/paper-notebook-vmp.md) |
 | **对抗式 motion prior** | 判别器约束风格分布，tracking 由任务奖励驱动 | [AMP](../methods/amp-reward.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) |
 | **生成式中间件** | 扩散/VAE 在 tracking 失败时改写参考 | [Heracles](../entities/paper-heracles-humanoid-diffusion.md) |
-| **规模化通用 tracker** | 海量参考 + 大模型，把 tracking 当**预训练任务** | [SONIC](../entities/nvidia-sonic.md)、[GMT/RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track](../methods/any2track.md) |
+| **规模化通用 tracker** | 海量参考 + 大模型，把 tracking 当**预训练任务** | [SONIC](../entities/nvidia-sonic.md)、[GMT/RGMT](../entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md)、[Any2Track](../methods/any2track.md) |
 
 ### 5. 跨具身迁移（Cross-Embodiment Transfer）
 
@@ -229,7 +229,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 | **Heracles** | 跟踪失败时由扩散重生成 | — | tracking + 扩散中间件兜底 | 单具身 | 项目页 demo | [Heracles](../entities/paper-heracles-humanoid-diffusion.md) |
 | **Any2Any** | 复用源机参考池 | 运动学对齐层 | LoRA 后训练（约 1% 算力） | 多目标机 LoRA 适配 | LimX Oli/Luna、G1、H1 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
 | **SONIC-Transfer** | 复用公开 GEAR-SONIC | 闭式关节 codec | 单解码器 LoRA（约 2% cited 算力） | 近亲骨架冻结迁移 | AgiBot X2 Ultra（MuJoCo play 已开） | [SONIC-Transfer](../entities/paper-sonic-transfer.md) |
-| **GMT (RGMT)** | 多任务参考 + 扰动课程 | 上游通用 | 历史编码 + 命令交叉注意力 | 单具身（强抗扰） | Unitree G1 项目页 | [RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track](../methods/any2track.md) |
+| **GMT (RGMT)** | 多任务参考 + 扰动课程 | 上游通用 | 历史编码 + 命令交叉注意力 | 单具身（强抗扰） | Unitree G1 项目页 | [RGMT](../entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md)、[Any2Track](../methods/any2track.md) |
 | **PGMT** | 独立 motion + 地形 | 平地先验再注入 | motion-conditioned terrain glimpses + tracking relaxation | 单具身 G1 | Mid-360S + Orin NX | [PGMT](../entities/paper-pgmt.md) |
 | **VMP** | 11 h 未过滤 CMU/Mixamo/Reallusion | IK retarget（LIME） | β-VAE prior + 条件 PPO 跟踪 | 单具身角色平台 | LIME 双足真机 | [VMP](../entities/paper-notebook-vmp.md) |
 
@@ -246,7 +246,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 
 ### 扩展：Omni-modal 运动生成 + tracker（OMG）
 
-当 WBT 推理期需要 **语言 / 音频 / 人体参考 / 运动历史** 等多模态意图而非固定参考文件时，可在流水线前端插入 **运动生成器**。[OMG](../entities/paper-omg-omni-modal-humanoid-control.md)（清华 MARS Lab）采用 **generator–tracker 分层**：**OMG-DiT** 在 **OMG-Data**（约 1174.66 h，G1 对齐 + sim-in-the-loop 过滤）上训练扩散先验，经轻量 encoder 与 **CFG** 接入各模态；执行层复用 [HoloMotion](../entities/holomotion.md) tracker ONNX，并在 G1 上实现 **运行时多模态切换**。它与 [ETH G1 扩散 locomotion](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)（地形条件 MDM + 自训 tracker）、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)（recovery 中间件）并列，代表 **「参考生产」阶段的多模态 foundation 路线**。
+当 WBT 推理期需要 **语言 / 音频 / 人体参考 / 运动历史** 等多模态意图而非固定参考文件时，可在流水线前端插入 **运动生成器**。[OMG](../entities/paper-omg-omni-modal-humanoid-control.md)（清华 MARS Lab）采用 **generator–tracker 分层**：**OMG-DiT** 在 **OMG-Data**（约 1174.66 h，G1 对齐 + sim-in-the-loop 过滤）上训练扩散先验，经轻量 encoder 与 **CFG** 接入各模态；执行层复用 [HoloMotion](../entities/holomotion.md) tracker ONNX，并在 G1 上实现 **运行时多模态切换**。它与 [ETH G1 扩散 locomotion](../entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md)（地形条件 MDM + 自训 tracker）、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)（recovery 中间件）并列，代表 **「参考生产」阶段的多模态 foundation 路线**。
 
 ### 扩展：双人物理交互 tracking（AssistMimic）
 
@@ -342,7 +342,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md) — 扩散中间件兜底
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) — 跨具身 LoRA 后训练
 - [SONIC-Transfer](../entities/paper-sonic-transfer.md) — 近亲骨架冻结 codec + 单解码器 LoRA
-- [RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) / [Any2Track](../methods/any2track.md) — 历史编码 + 抗扰
+- [RGMT](../entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md) / [Any2Track](../methods/any2track.md) — 历史编码 + 抗扰
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — 阶段 4「策略学习」四条路线逐维度对比
 - [人形运动跟踪方法选型指南](../queries/humanoid-motion-tracking-method-selection.md) — 选型决策树
 - [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 阶段 5 三路径选型与故障模式
@@ -354,4 +354,4 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 
 - [GEAR-SONIC 项目页](https://nvlabs.github.io/GEAR-SONIC/) — 规模化 tracking 的工程实现
 - [BeyondMimic 仓库说明](https://github.com/HybridRobotics/BeyondMimic) — Isaac Lab 上的标准 tracking 实现
-- [Karpathy LLM Wiki 方法论](../references/llm-wiki-karpathy.md) — "compilation beats retrieval" 的内在动机
+- [Karpathy LLM Wiki 方法论](../concepts/llm-wiki-karpathy.md) — "compilation beats retrieval" 的内在动机

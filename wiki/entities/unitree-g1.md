@@ -130,12 +130,12 @@ Unitree G1 是宇树科技 2024-05-13 发布的 23–43 DoF、约 35 kg、折叠
 9. **浏览器侧策略–仿真编排（生态周边）**：地瓜机器人 [BotLab / MotionCanvas](./botlab-motioncanvas.md) 在网页中提供面向 G1 / Go2 的 ONNX + MuJoCo 节点图实验台，便于对照训练侧 obs 堆叠语义与推理同步策略。
 10. **无机器人全身示范部署**：[BifrostUMI](./paper-bifrost-umi.md)（BAAI Aether, 2026）在 G1 上验证 Pico + 双腕夹爪采集数据经扩散策略与 SKR 的杂乱桌面与桌下全身操作。
 11. **统一走跑起身（SD-AMP）**：[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)（HKU, arXiv:2605.18611）在 G1 真机用三条 LAFAN1 参考 + 双 AMP 判别器实现 recovery→walk→run 无部署模式切换。
-12. **感知跑酷（PHP）**：[Perceptive Humanoid Parkour](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)（arXiv:2602.15827，RSS 2026）在 G1 上仅用机载深度与 2D 速度指令完成 1.25 m 攀墙与长程多障碍跑酷；官方代码与学生 ONNX 已开源（[实现归档](../../sources/repos/php_parkour.md)）。
+12. **感知跑酷（PHP）**：[Perceptive Humanoid Parkour](./paper-hrl-stack-22-perceptive-humanoid-parkour.md)（arXiv:2602.15827，RSS 2026）在 G1 上仅用机载深度与 2D 速度指令完成 1.25 m 攀墙与长程多障碍跑酷；官方代码与学生 ONNX 已开源（[实现归档](../../sources/repos/php_parkour.md)）。
 13. **稀疏踏点跑酷（Echo）**：[Echo in the Steps](./paper-echo-in-the-steps.md)（arXiv:2609.28960，CoRL 2026）门控深度记忆 + 交替对称损失；Jetson Orin NX + D435i；代码待发布。
 13. **显式楼梯几何爬梯**：[Explicit Stair Geometry Conditioning](./paper-explicit-stair-geometry-humanoid-locomotion.md)（arXiv:2605.09944）在 G1 上零样本部署 BEV 点云 → 楼梯几何 token → PPO，户外连续 33 级上楼。
 14. **多姿态起身（HoST）**：[HoST](./paper-host-humanoid-standingup.md)（arXiv:2502.08378，RSS 2025 系统论文 finalist）在 G1 上从零 RL 学习跨地面/平台/墙/坡及俯仰卧、室内外场景的起身，官方 [InternRobotics/HoST](https://github.com/InternRobotics/HoST) 开源。
 15. **感知 loco-manipulation LLC（PILOT）**：[PILOT](./paper-pilot-perceptive-loco-manipulation.md)（arXiv:2601.17440，上海交大）在 G1 上用 LiDAR 高程图 + MoE 单阶段全身策略完成楼梯/高台等非结构化 **边走边操作**（VR 遥操作 + 分层 RL）。
-16. **扩散生成 + RL 全身感知移动**：[Learning Whole-Body Humanoid Locomotion](./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)（arXiv:2604.17335，ETH RSL）在 G1 上全 onboard 部署地形条件扩散参考生成与 RL 跟踪器，完成 75 cm 箱攀、跨栏、楼梯与混合地形穿越。
+16. **扩散生成 + RL 全身感知移动**：[Learning Whole-Body Humanoid Locomotion](./paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md)（arXiv:2604.17335，ETH RSL）在 G1 上全 onboard 部署地形条件扩散参考生成与 RL 跟踪器，完成 75 cm 箱攀、跨栏、楼梯与混合地形穿越。
 17. **感知梯子攀爬 + 梯上操作（LadderMan）**：[LadderMan](./paper-ladderman-humanoid-perceptive-ladder-climbing.md)（arXiv:2606.05873，Amazon FAR 等）在 G1 上用机载深度 + VFM 零样本攀爬多样梯子，梯顶 PICO VR 双智能体遥操作（调画、换灯泡、递箱）。
 18. **格斗体育联赛（REK）**：[REK](./rek.md) 以 **VR 遥操作 G1** 进行全接触擂台赛，并提供 G1 U2 活动/教育租赁——消费级人形的娱乐产品化出口，与科研 teleop 数据采集形成对照。
 19. **低噪行走（QuietWalk）**：[QuietWalk](./paper-quietwalk-humanoid-locomotion.md)（NIMTE / Westlake, arXiv:2604.23702）在 G1 上用 **PINN 估计竖直 GRF** 作 RL 冲击惩罚，真机 **1.2 m/s** 相对基线 RL 平均降噪 **7.17 dB**，验证 **赤脚 / 滑板鞋 / 运动鞋 / 高跟鞋** 跨鞋型泛化。
@@ -239,7 +239,7 @@ sequenceDiagram
 - [SteadyTray（论文实体）](./paper-notebook-steadytray.md) — G1 端托盘 ReST-RL 残差平衡，96.9% 变速跟踪 / 74.5% 抗扰，零样本 sim-to-real（arXiv:2603.10306；**已开源**）。
 - [RuN（论文实体）](./paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md) — G1 上 CMG 运动先验 + 轻量残差策略的 0–2.5 m/s 自然走跑切换（arXiv:2509.20696）。
 - [Residual Policy Learning（方法页）](../methods/residual-policy-learning.md) — base + 残差谱系总览（含 G1 上 RuN/ResMimic 定位）。
-- [Whole-Body Locomotion（论文实体）](./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — G1 扩散运动生成 + RL 全身跟踪（arXiv:2604.17335）。
+- [Whole-Body Locomotion（论文实体）](./paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) — G1 扩散运动生成 + RL 全身跟踪（arXiv:2604.17335）。
 - [REK](./rek.md) — G1 VR 格斗联赛与机器人租赁品牌。
 - [QuietWalk（论文实体）](./paper-quietwalk-humanoid-locomotion.md) — G1 PINN-GRF 低噪行走（arXiv:2604.23702）。
 - [TactileStep（论文实体）](./paper-tactilestep.md) — G1 足底压力鞋垫 + 四相位触觉 RL 跑酷（CoRL 2026 Spotlight；arXiv:2609.28959；代码待发布）。

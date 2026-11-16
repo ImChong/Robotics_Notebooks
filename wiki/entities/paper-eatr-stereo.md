@@ -10,7 +10,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ../concepts/visual-representation-for-policy.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./paper-now-you-see-that-humanoid-vision-locomotion.md
   - ../methods/beyondmimic.md
 sources:
@@ -161,14 +161,14 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用** — 截至 **2026-08-23**，arXiv 与公开检索均未发现官方项目页、训练/推理仓库或权重；无法对齐 README 入口绘制运行时序。动作骨干可对照 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) / [Isaac GR00T](./isaac-gr00t.md)，但 **EATR-Stereo 路由模块无公开实现**。
+**不适用** — 截至 **2026-08-23**，arXiv 与公开检索均未发现官方项目页、训练/推理仓库或权重；无法对齐 README 入口绘制运行时序。动作骨干可对照 [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) / [Isaac GR00T](./isaac-gr00t.md)，但 **EATR-Stereo 路由模块无公开实现**。
 
 ## 与其他页面的关系
 
 - [vla](../methods/vla.md) — VLA 视觉接口与双目融合选型
 - [manipulation](../tasks/manipulation.md) / [loco-manipulation](../tasks/loco-manipulation.md) — 长程抓取–放置–返回任务设定
 - [visual-representation-for-policy](../concepts/visual-representation-for-policy.md) — 策略侧视觉表征设计
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 实验骨干与双系统 flow action expert
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) — 实验骨干与双系统 flow action expert
 - [Now You See That](./paper-now-you-see-that-humanoid-vision-locomotion.md) — 同机构人形深度感知/locomotion 线
 - [BeyondMimic](../methods/beyondmimic.md) — Omega 1.0 全身控制底座
 
@@ -180,5 +180,5 @@ flowchart TB
 
 - [arXiv:2608.17453](https://arxiv.org/abs/2608.17453)
 - [StereoPolicy（arXiv:2605.09989）](https://arxiv.org/abs/2605.09989) — 立体 cross-attention 融合对照
-- [GR00T N1 论文实体](./paper-hrl-stack-34-gr00t_n1.md)
+- [GR00T N1 论文实体](./paper-hrl-stack-34-gr00t-n1.md)
 - [Query：机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)

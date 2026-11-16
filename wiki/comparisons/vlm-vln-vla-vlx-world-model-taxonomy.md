@@ -60,7 +60,7 @@ summary: "VLM、VLN、VLA、VLX 与世界模型共享 Transformer 与多模态�
 | 家族 | 用来核对的一手样本 | 核对结论 |
 |------|--------------------|----------|
 | **VLM** | [PaliGemma](../entities/paper-rcl-2407-07726-paligemma-a-versatile-3b-vlm-for-transfer.md)（arXiv:2407.07726） | 与"无动作、纯认知层"一致：输入图像 + 文本前缀，输出文本后缀（含检测框 / 分割 token 的文本化表示），< 3B。论文本身不含机器人内容。 |
-| **VLA** | [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md)（arXiv:2503.14734）、[π₀.₇](../methods/pi07-policy.md)（arXiv:2604.15483） | 与"整合 VLM、观测到动作"一致：N1 以 Eagle-2 VLM（System 2）+ DiT flow-matching 动作头（System 1）联合训练，输入图像 + 语言 + 本体状态，输出 16 步动作块。但二手文章说的"单网闭环"需放宽：N1 是**同一模型内两个模块**；π₀.₇ 在部署时是 **VLA + 同架构高层语言策略 + 独立世界模型**组成的系统。 |
+| **VLA** | [GR00T N1](../entities/paper-hrl-stack-34-gr00t-n1.md)（arXiv:2503.14734）、[π₀.₇](../methods/pi07-policy.md)（arXiv:2604.15483） | 与"整合 VLM、观测到动作"一致：N1 以 Eagle-2 VLM（System 2）+ DiT flow-matching 动作头（System 1）联合训练，输入图像 + 语言 + 本体状态，输出 16 步动作块。但二手文章说的"单网闭环"需放宽：N1 是**同一模型内两个模块**；π₀.₇ 在部署时是 **VLA + 同架构高层语言策略 + 独立世界模型**组成的系统。 |
 | **WM** | [Cosmos 1.0](../entities/paper-sa-2501-03575-cosmos-world-foundation-model-platform-for-physi.md)（arXiv:2501.03575） | 与"观测 + 扰动（动作/文本）→ 未来观测、不直接驱动硬件"一致。但"VLA 出候选动作 → WM 逐帧推演 → 择优执行"这条级联**在 Cosmos 1.0 里只是列出的五类用途之一，论文明确写"本文不含这些用途的实证结果"**；真实出现的是别的接法：π₀.₇ 用轻量世界模型（BAGEL 14B 初始化）生成**子目标图像**喂给 VLA；GR00T N1 用视频生成模型生成 827 小时**神经轨迹**当训练数据。 |
 | **VLN** | 本次未通读任何 VLN 一手论文 | "VLN ⊂ VLA""仅底盘移动、无操作分支"等说法**未经一手核实**，只是二手文章的叙述（推测：对多数 VLN 基准成立，但不应当成定义）。 |
 | **VLX** | 本次未通读任何以 VLX 自称的一手论文 | VLX 是二手文章归纳的"愿景型"名词，**未经一手核实**；一手资料里更常见的是 VLA / WAM 等名字。 |

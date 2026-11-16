@@ -10,7 +10,7 @@ related:
   - ../tasks/humanoid-locomotion.md
   - ../concepts/sim2real.md
   - ../../roadmap/depth-navigation.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 sources:
   - ../../sources/papers/hint-vlm-rough-terrain_arxiv_2611_11665.md
 original:
@@ -97,7 +97,7 @@ VLM 提供物体可移动性先验，交互数据训练 Gaussian Process 残差�
 - [humanoid locomotion](../tasks/humanoid-locomotion.md)
 - [sim2real](../concepts/sim2real.md)
 - [navigation](../../roadmap/depth-navigation.md)
-- [11.09–11.13 29 篇总览](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

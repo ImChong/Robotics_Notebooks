@@ -9,7 +9,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../../roadmap/depth-classical-control.md
   - ../../roadmap/depth-humanoid-hardware-design.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 sources:
   - ../../sources/papers/softness-compliant-ankle_arxiv_2611_13779.md
 original:
@@ -94,7 +94,7 @@ flowchart TD
 - [whole body control](../concepts/whole-body-control.md)
 - [classical control](../../roadmap/depth-classical-control.md)
 - [humanoid hardware design](../../roadmap/depth-humanoid-hardware-design.md)
-- [11.09–11.13 29 篇总览](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

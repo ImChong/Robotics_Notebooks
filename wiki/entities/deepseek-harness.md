@@ -28,7 +28,7 @@ related:
   - ./agent-lightning.md
   - ./typesafe-jev.md
   - ../concepts/ai-auto-research.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/deepseek-harness.md
 summary: "DeepSeek Harness（dsh，deepseek-ai/deepseek-harness，MIT，0.1.0-rc.5）是深度求索官方插件化 agent 运行时：一切皆插件，内核为 vendored Cordis；提供 Web UI、headless、Python SDK 与 ACP。开发者预览，破坏兼容变更在预期内。不是具身 Harness VLA / RoboHarness。"
@@ -220,7 +220,7 @@ sequenceDiagram
 - [Agent Lightning](./agent-lightning.md) — **harness 零改动** 的 agentic RL 训练环（Gateway + verl）
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — coding agent 后端选型
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究自动化阶段论
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs 可执行 agent 运行时
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 可执行 agent 运行时
 
 ## 参考来源
 

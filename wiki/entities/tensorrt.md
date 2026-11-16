@@ -102,7 +102,7 @@ TensorRT 11 文档列出 FP32/FP16/FP8/BF16/INT8，INT4 仅权重量化，量化
 ### 与机器人研究的关系
 
 - **全身控制**：[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 真机层与 [ONNX Runtime](./onnxruntime.md) 并列；**极致延迟**场景优先 TRT（[Booster RoboCup demo](./booster-robocup-demo.md)：仿真 ORT / 真机 TRT）。
-- **扩散/生成中间件**：[ETH G1 扩散 locomotion](./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) 等用 **TensorRT ~20 ms** 两步去噪（来自本库其他页）。注意 [PredActor](./paper-predactor.md) 在 G1 的 Orin NX 上是以 TorchScript + LibTorch 的 C++ 路径、FP32 达到 p50 16.79 ms / p95 19.38 ms，并非 TensorRT，说明 Orin NX 上 20 ms 预算并不必然要靠 TensorRT。
+- **扩散/生成中间件**：[ETH G1 扩散 locomotion](./paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) 等用 **TensorRT ~20 ms** 两步去噪（来自本库其他页）。注意 [PredActor](./paper-predactor.md) 在 G1 的 Orin NX 上是以 TorchScript + LibTorch 的 C++ 路径、FP32 达到 p50 16.79 ms / p95 19.38 ms，并非 TensorRT，说明 Orin NX 上 20 ms 预算并不必然要靠 TensorRT。
 - **感知**：[RF-DETR](./rf-detr.md)、[object-detection 选型](../queries/object-detection-model-selection.md) — Jetson 上 TRT 为默认 benchmark 后端。
 - **非 NVIDIA 硬件**：**不适用**；应选 [ONNX Runtime](./onnxruntime.md)、[MNN](./mnn.md)、[OpenVINO](./openvino.md) 等。
 

@@ -6,7 +6,7 @@ updated: 2026-09-22
 code: https://github.com/mindvla-team/EFFVLA
 related:
   - ../methods/vla.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ./paper-minerva-libero.md
   - ./paper-openvla.md
   - ../overview/embodied-resources-10-papers-technology-map.md
@@ -140,7 +140,7 @@ sequenceDiagram
 ## 关联页面
 
 - [VLA](../methods/vla.md)
-- [π₀](../methods/π0-policy.md)
+- [π₀](../methods/pi0-policy.md)
 - [MINERVA](./paper-minerva-libero.md)
 - [十篇资源技术地图](../overview/embodied-resources-10-papers-technology-map.md)
 

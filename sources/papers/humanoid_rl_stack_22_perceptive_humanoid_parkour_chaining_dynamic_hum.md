@@ -21,7 +21,7 @@
 
 ## 对 wiki 的映射
 
-- [wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- [wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)
 - 上游：[omniretarget_arxiv_2509_26633.md](omniretarget_arxiv_2509_26633.md) → [paper-hrl-stack-03-omniretarget.md](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)
 
 ## 参考来源（原始）

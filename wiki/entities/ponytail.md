@@ -21,7 +21,7 @@ related:
   - ./mattpocock-skills.md
   - ./hermes-agent.md
   - ./agent-reach.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
 sources:
@@ -48,7 +48,7 @@ summary: "Ponytail（DietrichGebert/ponytail）是多 harness 可安装的编码
 
 ## 为什么重要（对本知识库读者）
 
-- **与本仓库维护场景直接相关：** Robotics_Notebooks 的 ingest 常改 **Python 脚本、Makefile 派生链与长 markdown**；代理容易「为一个小功能加一层抽象或新依赖」。ponytail 针对 **实现选择**（stdlib / 原生 HTML / 复用现有模块），与 [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 的「知识编译进文件」互补。
+- **与本仓库维护场景直接相关：** Robotics_Notebooks 的 ingest 常改 **Python 脚本、Makefile 派生链与长 markdown**；代理容易「为一个小功能加一层抽象或新依赖」。ponytail 针对 **实现选择**（stdlib / 原生 HTML / 复用现有模块），与 [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 的「知识编译进文件」互补。
 - **生态位清晰 — 代码量 vs 措辞 vs 流程 vs 知识编译：**
   - [Caveman](caveman.md) — **怎么说更短**（输出与部分上下文 token）
   - [Superpowers（obra）](superpowers-obra.md) — **怎么做对流程**（TDD、worktree、子代理评审）
@@ -114,7 +114,7 @@ flowchart TD
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — **轻量日常** 工程技能（grill、CONTEXT.md、TDD）
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时（可安装 ponytail 插件）
 - [Agent Reach](agent-reach.md) — 外网读搜脚手架
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 本仓库知识编译范式
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 本仓库知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — ingest / query / lint 操作规范
 - [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) / [Darwin Skill](darwin-skill.md) — skill 蒸馏与进化生态
 

@@ -9,7 +9,7 @@ related:
   - ./paper-robot-parkour-learning.md
   - ./paper-light-loco-parkour.md
   - ./paper-rpl-robust-humanoid-perceptive-locomotion.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-athena-wbc-humanoid-longtail.md
   - ../methods/multi-expert-distillation.md
   - ../methods/dagger.md

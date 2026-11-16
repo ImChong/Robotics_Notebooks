@@ -18,10 +18,10 @@
 | 3 | TRAM | [TRAM](../../wiki/entities/paper-tram-global-human-motion.md) | 相机与人体全局轨迹 |
 | 4 | GVHMR | [GVHMR](../../wiki/entities/gvhmr.md) | 重力视角运动恢复 |
 | 5 | PHC | [PHC](../../wiki/entities/phc.md) | 物理人体角色跟踪 |
-| 6 | Retargeting Matters | [Retargeting Matters](../../wiki/entities/paper-hrl-stack-01-retargeting_matters.md) | GMR 重定向质量 |
+| 6 | Retargeting Matters | [Retargeting Matters](../../wiki/entities/paper-hrl-stack-01-retargeting-matters.md) | GMR 重定向质量 |
 | 7 | OmniRetarget | [OmniRetarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md) | 保留人与场景交互 |
 | 8 | DynaRetarget | [DynaRetarget](../../wiki/entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md) | 动力学可行轨迹 |
-| 9 | Make Tracking Easy | [Make Tracking Easy](../../wiki/entities/paper-hrl-stack-02-make_tracking_easy.md) | 神经动作重定向 |
+| 9 | Make Tracking Easy | [Make Tracking Easy](../../wiki/entities/paper-hrl-stack-02-make-tracking-easy.md) | 神经动作重定向 |
 | 10 | HumanoidMimicGen | [HumanoidMimicGen](../../wiki/entities/paper-humanoidmimicgen.md) | 全身规划生成数据 |
 | 11 | ECHO-G | [ECHO-G](../../wiki/entities/paper-echo-g-cospeech-humanoid.md) | 语音驱动全身动作 |
 | 12 | OTRetarget | [OTRetarget](../../wiki/entities/paper-otretarget.md) | 联合机器人与物体轨迹 |

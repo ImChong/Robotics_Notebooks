@@ -16,7 +16,7 @@ related:
   - ./hindsight.md
   - ./ponytail.md
   - ./mattpocock-skills.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/ecc.md

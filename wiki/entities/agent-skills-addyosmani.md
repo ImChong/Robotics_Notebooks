@@ -20,7 +20,7 @@ related:
   - ./bilibili-douyin-notes.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./paper-wikiskill.md
   - ../../schema/ingest-workflow.md
 sources:
@@ -51,7 +51,7 @@ summary: "Agent Skills（addyosmani/agent-skills）是 Addy Osmani 维护的 25 
 ## 为什么重要（对本知识库读者）
 
 - **与 Superpowers / mattpocock 构成选型三角：** [Superpowers（obra）](superpowers-obra.md) 偏 **强制交付管线 + 子代理评审**；[mattpocock/skills](mattpocock-skills.md) 偏 **轻量可组合 + grill/CONTEXT**；本包偏 **覆盖完整 SDLC 的 25 技能 + Google 工程文化嵌入**，并自带 [官方 comparison 文档](https://github.com/addyosmani/agent-skills/blob/main/docs/comparison.md)。
-- **与本站维护流程同构：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) + [Ingest Workflow](../../schema/ingest-workflow.md) 把 **知识维护** 写成文件契约；Agent Skills 把 **软件交付** 写成 SKILL + references + evals；`constraint-driven-development` 与 `make ci-preflight` 文化相近（**质量栏写进文件、禁止静默跳过检查**）。
+- **与本站维护流程同构：** [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) + [Ingest Workflow](../../schema/ingest-workflow.md) 把 **知识维护** 写成文件契约；Agent Skills 把 **软件交付** 写成 SKILL + references + evals；`constraint-driven-development` 与 `make ci-preflight` 文化相近（**质量栏写进文件、禁止静默跳过检查**）。
 - **与 Open Code Review 分工：** [Open Code Review](open-code-review.md) 提供 **diff 级评审 CLI**；本包 `code-review-and-quality` 与 `/review` 提供 **流程内五轴 review 技能**；可组合而非互斥。
 - **stars 高 ≠ 机器人栈开箱即用：** 示例与 checklist 偏 **Web/TS 应用工程**；迁移到 Isaac / MuJoCo / ROS 时需重写 CONSTRAINTS 与测试证据类型。
 - **应用重建工作流对照：** [Replica Skill](replica-skill.md) 专注竞品功能调研、clean-room 重建与产品化；适合比较编码代理如何处理「观察目标 → 实现新产品」任务，不能替代机器人软件的安全验证。
@@ -155,7 +155,7 @@ sequenceDiagram
 - [HumanLayer Skills](humanlayer-skills.md) — 迭代维护 control-loop
 - [WikiSkill（论文实体）](paper-wikiskill.md) — wiki + skill 共进化学术对照
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 人如何用取舍语言转向 agent
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久知识编译范式
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 持久知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 
 ## 参考来源

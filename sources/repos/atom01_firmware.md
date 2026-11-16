@@ -21,4 +21,4 @@
 ## 与本仓库现有资料的关系
 
 - [roboto_origin.md](roboto_origin.md) 的固件子模块
-- 与 `sources/sim2real.md` 的落地环节相关
+- 与 `sources/notes/sim2real.md` 的落地环节相关

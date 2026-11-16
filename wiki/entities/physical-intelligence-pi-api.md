@@ -12,7 +12,7 @@ related:
   - ./pi-physical-intelligence-layer.md
   - ./paper-pi0.md
   - ./paper-pi05-open-world-vla.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../methods/pi07-policy.md
 sources:
   - ../../sources/sites/physical-intelligence-pi-api-beta.md
@@ -81,7 +81,7 @@ flowchart LR
 - [The Physical Intelligence Layer](./pi-physical-intelligence-layer.md)
 - [π₀ 论文实体](./paper-pi0.md)
 - [π₀.₅ 论文实体](./paper-pi05-open-world-vla.md)
-- [π₀ 策略方法](../methods/π0-policy.md)
+- [π₀ 策略方法](../methods/pi0-policy.md)
 - [π₀.₇ 策略方法](../methods/pi07-policy.md)
 
 ## 参考来源

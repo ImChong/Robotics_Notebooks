@@ -1,7 +1,7 @@
 # GR00T N1.5 项目页（NVIDIA GEAR）
 
 - **URL：** <https://research.nvidia.com/labs/gear/gr00t-n1_5/>
-- **前序：** [GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)（arXiv:2503.14734）
+- **前序：** [GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md)（arXiv:2503.14734）
 - **代码 / 权重：** <https://github.com/NVIDIA/Isaac-GR00T> · [HF GR00T-N1.5-3B](https://huggingface.co/nvidia/GR00T-N1.5-3B)
 - **平台页：** [isaac-gr00t.md](../../wiki/entities/isaac-gr00t.md)
 - **入库日期：** 2026-09-28（2026-11-07 全文复核）

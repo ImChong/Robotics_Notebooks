@@ -72,7 +72,7 @@ flowchart TD
 
 ## 为什么重要（对本知识库读者）
 
-- **LLM Wiki 维护：** 多次 ingest 的 **教训、lint 踩坑、选型结论** 适合 ** retain 到 memory bank** 而非只留在 chat；与 [Karpathy 模式](../references/llm-wiki-karpathy.md)「写回 wiki」互补 — wiki 是 canonical，Hindsight 是 **会话间 Agent 私有经验**。
+- **LLM Wiki 维护：** 多次 ingest 的 **教训、lint 踩坑、选型结论** 适合 ** retain 到 memory bank** 而非只留在 chat；与 [Karpathy 模式](../concepts/llm-wiki-karpathy.md)「写回 wiki」互补 — wiki 是 canonical，Hindsight 是 **会话间 Agent 私有经验**。
 - **运行时对照：** [Hermes Agent](hermes-agent.md) 自带记忆/技能；[Deep Agents](deep-agents.md) 偏文件系统；Hindsight 是 **独立 memory 微服务**。
 - **编码 Agent：** `npx skills add ... --skill hindsight-docs` 供 Cursor/Claude 边写边查文档。
 

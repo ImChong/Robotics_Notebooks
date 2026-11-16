@@ -41,7 +41,7 @@ sources:
 | 04 | MARCH | [paper-motion-cerebellum-march.md](../entities/paper-motion-cerebellum-march.md) | [catalog](../../sources/papers/motion_cerebellum_survey_04_march.md) |
 | 05 | AMS | [ams.md](../methods/ams.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 06 | OmniXtreme | [paper-hrl-stack-16-omnixtreme.md](../entities/paper-hrl-stack-16-omnixtreme.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 07 | PHP | [paper-hrl-stack-22-perceptive_humanoid_parkour.md](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 07 | PHP | [paper-hrl-stack-22-perceptive-humanoid-parkour.md](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 08 | Deep Whole-body Parkour | [paper-deep-whole-body-parkour.md](../entities/paper-deep-whole-body-parkour.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 09 | TAGA | [paper-motion-cerebellum-taga.md](../entities/paper-motion-cerebellum-taga.md) | [catalog](../../sources/papers/motion_cerebellum_survey_09_taga.md) |
 | 10 | SSR | [paper-ssr-humanoid-open-world-traversal.md](../entities/paper-ssr-humanoid-open-world-traversal.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |

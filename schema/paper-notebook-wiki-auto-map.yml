@@ -26,7 +26,7 @@ overrides:
   Learning_to_Walk_in_Minutes:
   - wiki/entities/paper-anymal-walk-minutes-parallel-drl.md
   Make_Tracking_Easy__Neural_Motion_Retargeting_for_Humanoid_Whole-body_Control:
-  - wiki/entities/paper-hrl-stack-02-make_tracking_easy.md
+  - wiki/entities/paper-hrl-stack-02-make-tracking-easy.md
   Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical_World:
   - wiki/methods/disney-olaf-character-robot.md
   OmniXtreme_Breaking_the_Generality_Barrier_in_High-Dynamic_Humanoid_Control:
@@ -36,11 +36,11 @@ overrides:
   PILOT__A_Perceptive_Integrated_Low-level_Controller_for_Loco-manipulation:
   - wiki/entities/paper-pilot-perceptive-loco-manipulation.md
   Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching:
-  - wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md
   Retargeting_Matters__General_Motion_Retargeting_for_Humanoid_Motion_Tracking:
-  - wiki/entities/paper-hrl-stack-01-retargeting_matters.md
+  - wiki/entities/paper-hrl-stack-01-retargeting-matters.md
   Robust_and_Generalized_Humanoid_Motion_Tracking:
-  - wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
+  - wiki/entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md
   ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control:
   - wiki/methods/zest.md
   cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_Distance_Fields:

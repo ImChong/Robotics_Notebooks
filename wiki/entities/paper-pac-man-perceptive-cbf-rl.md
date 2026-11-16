@@ -31,7 +31,7 @@ related:
   - ./mjlab.md
   - ./amp-mjlab.md
   - ./paper-notebook-shield-safety-on-humanoids-via-cbfs-in-expectati.md
-  - ./paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
+  - ./paper-hrl-stack-26-learning-vision-driven-reactive-socc.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/pac_man_perceptive_cbf_rl_arxiv_2607_28623.md
@@ -241,7 +241,7 @@ sequenceDiagram
 - [CLF vs CBF](../comparisons/clf-vs-cbf.md) — 稳定性 vs 安全性工具对
 - [Unitree G1](./unitree-g1.md)、[mjlab](./mjlab.md)、[AMP_mjlab](./amp-mjlab.md)
 - [SHIELD（CBF-in-Expectation）](./paper-notebook-shield-safety-on-humanoids-via-cbfs-in-expectati.md)
-- [Vision-Driven Reactive Soccer](./paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) — 另一条视觉反应式全身技能线
+- [Vision-Driven Reactive Soccer](./paper-hrl-stack-26-learning-vision-driven-reactive-socc.md) — 另一条视觉反应式全身技能线
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 分割→深度→策略观测契约选型
 
 ## 参考来源

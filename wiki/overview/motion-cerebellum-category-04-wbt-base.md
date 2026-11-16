@@ -42,7 +42,7 @@ sources:
 | 29 | HumanoidGPT | [paper-humanoid-gpt.md](../entities/paper-humanoid-gpt.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 30 | LIMMT | [limmt-gqs-motion-curation.md](../methods/limmt-gqs-motion-curation.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 31 | M3imic | [paper-loco-manip-06-m3imic.md](../entities/paper-loco-manip-06-m3imic.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 32 | RGMT | [paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 32 | RGMT | [paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md](../entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 33 | Any2Track | [any2track.md](../methods/any2track.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 34 | Stubborn | [paper-motion-cerebellum-stubborn.md](../entities/paper-motion-cerebellum-stubborn.md) | [catalog](../../sources/papers/motion_cerebellum_survey_34_stubborn.md) |
 | 35 | ConstrainedMimic | [paper-motion-cerebellum-constrainedmimic.md](../entities/paper-motion-cerebellum-constrainedmimic.md) | [catalog](../../sources/papers/motion_cerebellum_survey_35_constrainedmimic.md) |

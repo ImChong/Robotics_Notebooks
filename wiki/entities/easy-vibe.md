@@ -18,7 +18,7 @@ updated: 2026-11-13
 related:
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../concepts/retrieval-augmented-generation.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./learnprompt.md
   - ./openclaw.md
   - ./mattpocock-skills.md
@@ -55,7 +55,7 @@ summary: "Easy-Vibe 是 Datawhale 开源的 AI 原生产品构建教程（~19.5k
 
 - **中文 vibe coding 入口：** 本库 [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 讲 **有 agent 仍要懂 SE 取舍**；Easy-Vibe 教 **第一轮怎么把想法做出来** — 宜 **先快赢、再补工程纪律**（对照 [mattpocock/skills](mattpocock-skills.md)、[Superpowers](superpowers-obra.md)）。
 - **RAG 可视化入门：** Stage 3 [RAG 原理](https://datawhalechina.github.io/easy-vibe/en/stage-3/ai-advanced/rag-introduction/) 与附录 **点击式 RAG 流程** 适合在读完 [RAG 概念页](../concepts/retrieval-augmented-generation.md) 后 **动手建立直觉**；进阶链 [LangGraph 高级 RAG](https://datawhalechina.github.io/easy-vibe/en/stage-3/ai-advanced/langgraph-advanced-rag/)。
-- **Agent 维护本库的可参照物：** 根目录 **`llms.txt`** 为 OpenClaw/Cursor/Trae 等提供 **阶段决策树** — 与本站 [LLM Wiki](../references/llm-wiki-karpathy.md) + [ingest 规范](../../schema/ingest-workflow.md) 的「给 Agent 一张地图」同构。
+- **Agent 维护本库的可参照物：** 根目录 **`llms.txt`** 为 OpenClaw/Cursor/Trae 等提供 **阶段决策树** — 与本站 [LLM Wiki](../concepts/llm-wiki-karpathy.md) + [ingest 规范](../../schema/ingest-workflow.md) 的「给 Agent 一张地图」同构。
 - **与 LearnPrompt 分工：** [LearnPrompt](learnprompt.md) 偏 **任务卡 + Skill 工坊 + Obsidian 记忆**；Easy-Vibe 偏 **产品/全栈/跨平台课纲** + Datawhale 社区规模 — 机器人维护者做 **文档站、工具页、内部 dashboard** 时可并用。
 
 ## 核心原理：3+1 阶段
@@ -143,7 +143,7 @@ sequenceDiagram
 - [LearnPrompt](learnprompt.md) — 中文 Agent/Skill 实战对照
 - [OpenClaw](openclaw.md) — hello-claw 侧链
 - [LangChain](langchain.md) — Stage 3 RAG 生态常提及框架
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — llms.txt 导航同构
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — llms.txt 导航同构
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 
 ## 参考来源

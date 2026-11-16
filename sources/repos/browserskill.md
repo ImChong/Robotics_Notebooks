@@ -27,4 +27,4 @@
 
 - **wiki/entities/browserskill.md** — 框架实体（与 [deepseek-harness](../../wiki/entities/deepseek-harness.md)、[agent-reach](../../wiki/entities/agent-reach.md) 对照）
 - **wiki/concepts/ai-auto-research.md** — 文献/项目页调研时的浏览器自动化层
-- **wiki/references/llm-wiki-karpathy.md** — ingest 维护者借助 agent 读网页的工具体系
+- **wiki/concepts/llm-wiki-karpathy.md** — ingest 维护者借助 agent 读网页的工具体系

@@ -22,10 +22,10 @@ summary: "Paper Notebooks 分类 02：运动重定向（4 篇深读笔记索引�
 
 ## 本类论文索引
 
-- [Make Tracking Easy](../entities/paper-hrl-stack-02-make_tracking_easy.md) — 见 wiki 实体页
+- [Make Tracking Easy](../entities/paper-hrl-stack-02-make-tracking-easy.md) — 见 wiki 实体页
 - [OmniRetarget](../entities/holosoma.md) — 见 wiki 实体页
 - [ReActor](../methods/reactor-physics-aware-motion-retargeting.md) — [深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/02_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting/ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting.html)
-- [Retargeting Matters](../entities/paper-hrl-stack-01-retargeting_matters.md) — 见 wiki 实体页
+- [Retargeting Matters](../entities/paper-hrl-stack-01-retargeting-matters.md) — 见 wiki 实体页
 
 ## 与其他页面的关系
 

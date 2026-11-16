@@ -82,7 +82,7 @@
 - [joint-module-self-development-workflow](../../wiki/concepts/joint-module-self-development-workflow.md)（L2 关节四层测试矩阵；本页补 L0–L5 整机视角）
 - [motor-dynamometer](../../wiki/concepts/motor-dynamometer.md)（L1/L2 台架核心设备）
 - [humanoid-mass-production-engineering](../../wiki/concepts/humanoid-mass-production-engineering.md)（L5 与中试/良率语境）
-- [humanoid-practitioner-entry-roadmap](../../wiki/roadmaps/humanoid-practitioner-entry-roadmap.md)（测试工程师切口）
+- [humanoid-practitioner-entry-roadmap](../humanoid-practitioner-entry-roadmap.md)（测试工程师切口）
 - [humanoid-knee-harmonic-drive-limits](../../wiki/concepts/humanoid-knee-harmonic-drive-limits.md)（谐波冲击寿命坑）
 
 ## 可信度与使用边界

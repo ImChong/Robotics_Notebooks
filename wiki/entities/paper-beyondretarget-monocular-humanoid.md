@@ -20,7 +20,7 @@ related:
   - ../tasks/teleoperation.md
   - ./nvidia-sonic.md
   - ./unitree-g1.md
-  - ./paper-hrl-stack-01-retargeting_matters.md
+  - ./paper-hrl-stack-01-retargeting-matters.md
 sources:
   - ../../sources/papers/beyondretarget_arxiv_2609_29850.md
   - ../../sources/sites/beyondretarget-github-io.md
@@ -53,7 +53,7 @@ summary: "BeyondRetarget（arXiv:2609.29850）：单目 RGB 端到端映射共�
 - **把 retargeting 从「SMPL 后处理」改成「机器人空间直接监督」。** 人与 humanoid 在 DoF、比例与动力学上差异大；两阶段还把 **视频估计误差** 原样灌进重定向且 **无法端到端反传**。
 - **多机共享 encoder、轻量换 decoder。** 相对「新机整套重训 NMR」或论文对照里 **GVHMR/WHAM→优化式 retargeting** 报告的 **motion collapse**，共享 $\mathbf{u}_t$ + robot-specific 残差头更利于 **跨形态扩展**（页内八机 RAMPJPE 表）；**不否定** [GMR](../methods/motion-retargeting-gmr.md) 作为离线运动学工具的价值。
 - **实时 teleop 证据。** 同 GPU 上 **~192.8 ms median latency** vs GVHMR→GMR **~1369 ms**；项目页演示 **仅单目 1080p@30Hz** 驱动真机（背景 mocap 未开）。
-- **与 [Retargeting Matters](./paper-hrl-stack-01-retargeting_matters.md) 同命题不同解：** 仍关心 **可执行参考质量**，但路线是 **绕过显式 human representation** 而非只优化 GMR 目标。
+- **与 [Retargeting Matters](./paper-hrl-stack-01-retargeting-matters.md) 同命题不同解：** 仍关心 **可执行参考质量**，但路线是 **绕过显式 human representation** 而非只优化 GMR 目标。
 
 ## 流程总览
 
@@ -126,7 +126,7 @@ sequenceDiagram
 2. **collapse 是硬差异：** 双手背后/大画圆等场景两阶段 **GT SMPL 仍失败** 的 qualitative 说明瓶颈不只在估计噪声，而在 **human-centric 中间表示**。
 3. **部署读法：** 选型 **base 版** 时默认 **固定相机、无大全局轨迹**；户外/跟拍需等 **performance 版** 或自研后处理。
 4. **工程入口：** 复现从 `infer_video.py` 与 Drive checkpoint 开始；真机 teleop 预算 **SONIC + ZMQ** 集成时间。
-5. **与 GMR、NMR 对照：** 仍可把输出轨迹接 **whole-body tracking / IL**；上游质量逻辑与 [Retargeting Matters](./paper-hrl-stack-01-retargeting_matters.md) 一致，但 **生成路径** 不同。
+5. **与 GMR、NMR 对照：** 仍可把输出轨迹接 **whole-body tracking / IL**；上游质量逻辑与 [Retargeting Matters](./paper-hrl-stack-01-retargeting-matters.md) 一致，但 **生成路径** 不同。
 
 ## 与其他工作对比
 
@@ -156,4 +156,4 @@ sequenceDiagram
 
 - [arXiv PDF](https://arxiv.org/pdf/2609.29850)
 - [GitHub README 推理入口](https://github.com/bear-ty/BeyondRetarget/blob/main/README.md)
-- [Retargeting Matters（两阶段质量命题）](./paper-hrl-stack-01-retargeting_matters.md)
+- [Retargeting Matters（两阶段质量命题）](./paper-hrl-stack-01-retargeting-matters.md)

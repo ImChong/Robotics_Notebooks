@@ -31,7 +31,7 @@
 2. **Future-conditioned Policy Learning：** 显式预测短时域本体状态，并用监督信号把动作条件化到预测未来上。
 3. **Unified One-Policy Multi-Terrain：** 单一策略覆盖九类地形，不按地形拆奖励或拆网络。
 
-**对 wiki 的映射：** 升格 [`wiki/entities/paper-parkourformer.md`](../../wiki/entities/paper-parkourformer.md)；对照 [Hiking in the Wild](../../wiki/entities/paper-hiking-in-the-wild.md)（同用 Project Instinct MuJoCo）、[PHP](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[LightLP](../../wiki/entities/paper-light-loco-parkour.md)、[SSR](../../wiki/entities/paper-ssr-humanoid-open-world-traversal.md)、[Next Token Prediction](../../wiki/entities/paper-notebook-humanoid-locomotion-as-next-token-prediction.md)。
+**对 wiki 的映射：** 升格 [`wiki/entities/paper-parkourformer.md`](../../wiki/entities/paper-parkourformer.md)；对照 [Hiking in the Wild](../../wiki/entities/paper-hiking-in-the-wild.md)（同用 Project Instinct MuJoCo）、[PHP](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)、[LightLP](../../wiki/entities/paper-light-loco-parkour.md)、[SSR](../../wiki/entities/paper-ssr-humanoid-open-world-traversal.md)、[Next Token Prediction](../../wiki/entities/paper-notebook-humanoid-locomotion-as-next-token-prediction.md)。
 
 ## 摘录 2：方法栈（§3）
 

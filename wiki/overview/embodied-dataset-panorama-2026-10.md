@@ -128,7 +128,7 @@ original:
 | 35 | ARNOLD | [painode-010-arnold](../entities/painode-010-arnold.md) | 复用已有节点 |
 | 36 | RoboVerse Data | [dataset-roboverse-data](../entities/dataset-roboverse-data.md) | 新建节点 |
 | 37 | HumanoidMimicGen Dataset | [paper-humanoidmimicgen](../entities/paper-humanoidmimicgen.md) | 复用已有节点 |
-| 38 | InternData-A1 | [dataset-internData-a1](../entities/dataset-internData-a1.md) | 新建节点 |
+| 38 | InternData-A1 | [dataset-internData-a1](../entities/dataset-interndata-a1.md) | 新建节点 |
 | 39 | MolmoBot-Data | [dataset-molmobot-data](../entities/dataset-molmobot-data.md) | 新建节点 |
 
 ### 人类示范与第一视角（7 项）

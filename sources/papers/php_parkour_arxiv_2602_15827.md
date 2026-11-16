@@ -43,7 +43,7 @@
 
 ## 对 wiki 的映射
 
-- 沉淀 / 深化实体页：[`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- 沉淀 / 深化实体页：[`wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md`](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)
 - 交叉更新：
   - [DAgger](../../wiki/methods/dagger.md) — PHP 学生蒸馏混合 DAgger + PPO
   - [Locomotion](../../wiki/tasks/locomotion.md) — 感知跑酷 / 技能链

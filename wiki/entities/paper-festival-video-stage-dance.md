@@ -9,7 +9,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../concepts/sim2real.md
   - ../tasks/humanoid-locomotion.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 sources:
   - ../../sources/papers/festival-video-stage-dance_arxiv_2611_11127.md
 original:
@@ -94,7 +94,7 @@ v5 真机无安全绳 3/3 次完成 43 s；v6 完成含结束与自动交接的 
 - [motion retargeting](../concepts/motion-retargeting.md)
 - [sim2real](../concepts/sim2real.md)
 - [humanoid locomotion](../tasks/humanoid-locomotion.md)
-- [11.09–11.13 29 篇总览](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

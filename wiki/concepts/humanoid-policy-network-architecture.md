@@ -17,7 +17,7 @@ related:
   - ../methods/amp-reward.md
   - ../methods/diffusion-policy.md
   - ../methods/vla.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../methods/robotics-transformer-rt-series.md
   - ../concepts/world-action-models.md
   - ../concepts/foundation-policy.md
@@ -99,7 +99,7 @@ flowchart TB
 | AMP（对抗运动先验） | MLP policy + 独立 MLP 判别器（如 1024→512） | 本体状态；判别器看状态转移 | 单步动作 | [AMP](../methods/amp-reward.md)、ASE | 风格自然，免逐项手工奖励 shaping | 判别器易不稳 / mode collapse，调参敏感 |
 | Multi-expert / MoE | 多个 expert MLP + gating 网络 | 本体状态 + 任务 / 步态指令 | 单步动作（加权或选中 expert） | MCP、multi-expert locomotion | 多技能切换可解释，技能分解清晰 | expert 划分靠人工设计，扩展性有限 |
 | Transformer / Diffusion | Transformer 或 UNet 去噪骨干 | 图像 + 历史观测特征 | **action chunk**（多步轨迹） | [Diffusion Policy](../methods/diffusion-policy.md)、ACT | 表达多模态动作分布，长 horizon 操作强 | 推理慢，高频控制需蒸馏 / 异步执行 |
-| VLA / WAM | VLM 骨干 + 动作 token 或 flow / 扩散动作头；WAM 加视频 token 联合建模 | 图像 + 语言 + 本体（+ 历史） | 动作 token / chunk（低频） | [RT-2](../methods/robotics-transformer-rt-series.md)、OpenVLA、[π0](../methods/π0-policy.md)、[WAM](./world-action-models.md) | 开放指令、跨任务跨本体泛化 | 算力与延迟大，需低层跟踪器配合 |
+| VLA / WAM | VLM 骨干 + 动作 token 或 flow / 扩散动作头；WAM 加视频 token 联合建模 | 图像 + 语言 + 本体（+ 历史） | 动作 token / chunk（低频） | [RT-2](../methods/robotics-transformer-rt-series.md)、OpenVLA、[π0](../methods/pi0-policy.md)、[WAM](./world-action-models.md) | 开放指令、跨任务跨本体泛化 | 算力与延迟大，需低层跟踪器配合 |
 | 低层小网（并行仿真主力） | 2–3 层 MLP，256–512 隐藏单元，`ELU` | 本体 + 指令（critic 可加特权信息） | 高频关节目标 | legged_gym / Isaac Gym 系 PPO 策略 | 吞吐高、延迟低、sim2real 路径成熟 | 表达力有限，语义与规划交给上层 |
 
 > 阅读建议：前五行是「论文叙事主线」的代际演化；最后一行提醒——**无论上层多新，真机低层高频策略至今仍常是小 MLP**，两条线在实际系统里是分层共存而非互相取代。

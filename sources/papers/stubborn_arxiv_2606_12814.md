@@ -20,7 +20,7 @@
    - **对 wiki 的映射：** [paper-motion-cerebellum-stubborn](../../wiki/entities/paper-motion-cerebellum-stubborn.md)、[SD-AMP 统一走跑起身](../../wiki/entities/paper-unified-walk-run-recovery-sdamp.md)
 
 2. **Yaw-aligned 跟踪表征：** 在 **yaw 对齐根坐标系** 下表示身体跟踪误差，削弱对 **全局平移漂移与航向扰动** 的敏感度，同时保留 **重力相关俯仰/横滚** 平衡信息；策略仅用本体感知，Critic 可用仿真特权信息（非对称 AC）。
-   - **对 wiki 的映射：** [Whole-Body Control](../../wiki/concepts/whole-body-control.md)、[RGMT](../../wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)
+   - **对 wiki 的映射：** [Whole-Body Control](../../wiki/concepts/whole-body-control.md)、[RGMT](../../wiki/entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md)
 
 3. **Bernoulli 概率终止（PT）：** 当根部高度误差 $|e_{root,z}^p|>\theta_{pos}$ 或姿态误差 $e_{root}^q>\theta_{quat}$ 时，**不以概率 1 终止**，而以概率 $p_{term}$ 终止（条件 Bernoulli）。实验取 $p_{term}=0.005$、$\theta_{pos}=0.25$ m、$\theta_{quat}=\pi/2$，使期望存活步数 $\mathbb{E}[\mathcal{T}]=1/p_{term}=200$（50 Hz × 4 s 恢复窗），为倒地后恢复行为留出探索空间。
    - **对 wiki 的映射：** [paper-motion-cerebellum-stubborn](../../wiki/entities/paper-motion-cerebellum-stubborn.md)

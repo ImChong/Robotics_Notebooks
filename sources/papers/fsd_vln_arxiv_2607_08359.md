@@ -49,7 +49,7 @@
 - **摘录要点：** 慢路 \(z_t=f_{\mathrm{VLM}}(I_t,L)\) 写入 VLSF；新 RGB 到达（UAV 到航点）才刷新。快路 \(a_{t:t+H}\sim p_\theta(a_{t:t+H}\mid z_t,s_t,a_{t-1})\)，DiT 对状态做 self-attn、对语义做 cross-attn。到达航点后更新观测，形成感知–动作环。
 - **对 wiki 的映射：**
   - [FSD-VLN](../../wiki/entities/paper-fsd-vln.md)
-  - [GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) — 预训练骨干与双系统原型
+  - [GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) — 预训练骨干与双系统原型
   - [VLA](../../wiki/methods/vla.md)
 
 ### 3) 训练：自适应归一化 + TW-MSE
@@ -77,7 +77,7 @@
 - [`wiki/entities/paper-da-nav.md`](../../wiki/entities/paper-da-nav.md) — 地面城市 VLN 对照
 - [`wiki/concepts/embodied-fm-latency-generalization-tradeoff.md`](../../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) — 异步双频实例
 - [`wiki/methods/vla.md`](../../wiki/methods/vla.md) — GR00T 系导航适配
-- [`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) — 骨干来源
+- [`wiki/entities/paper-hrl-stack-34-gr00t-n1.md`](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) — 骨干来源
 - [`wiki/overview/vln-open-source-repro-paradigms.md`](../../wiki/overview/vln-open-source-repro-paradigms.md) — 暂不可复现对照
 - [`wiki/overview/multirotor-simulation-planning-control-stack.md`](../../wiki/overview/multirotor-simulation-planning-control-stack.md) — 多旋翼仿真栈交叉
 

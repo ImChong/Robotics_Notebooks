@@ -45,7 +45,7 @@ related:
   - ../methods/dagger.md
   - ../tasks/teleoperation.md
   - ../tasks/manipulation.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./xiaomi-robotics-1.md
   - ./paper-hifi-umi.md
   - ./paper-trex-tactile-reactive-dexterous-manipulation.md
@@ -88,7 +88,7 @@ summary: "Data Pyramid for Embodied Manipulation（arXiv:2607.24744，PKU 牵头
 
 ## 为什么重要
 
-- **首个类目级（category-level）具身数据系统组织：** 此前金字塔叙事（[GR00T N1](paper-hrl-stack-34-gr00t_n1.md)、Motus）都是 **围绕单个模型训练配方** 设计的，缺少跨「采集可扩展性、本体依赖、物理保真、可迁移性、下游效用」的类目级对比；本综述把整条数据生态放进同一坐标系。
+- **首个类目级（category-level）具身数据系统组织：** 此前金字塔叙事（[GR00T N1](paper-hrl-stack-34-gr00t-n1.md)、Motus）都是 **围绕单个模型训练配方** 设计的，缺少跨「采集可扩展性、本体依赖、物理保真、可迁移性、下游效用」的类目级对比；本综述把整条数据生态放进同一坐标系。
 - **给「数据选型」提供了可操作的决策语言：** 五层 × 六维属性直接回答「我缺什么能力、该补哪一层、代价是什么」，而非笼统的「数据越多越好」。
 - **把模型族与数据层对齐：** 具身脑 / VLA / WAM 三类模型 **消费金字塔的方式不同**（理解 vs 执行 vs 预测），综述逐族拆解 action-labeled 与 action-free 数据的角色。
 - **挑战清单即研究路线图：** 触觉、失败恢复、可扩展采集、跨本体对齐、人视频→灵巧、有原则的配方——六条都是当前发论文与做系统的高价值缺口。
@@ -214,7 +214,7 @@ flowchart TB
 
 ## 与其他工作对比
 
-| 维度 | 本综述（Data Pyramid） | [GR00T N1 金字塔](paper-hrl-stack-34-gr00t_n1.md) | [WAM 综述](../concepts/world-action-models.md) | [具身 Scaling Laws](../concepts/embodied-scaling-laws.md) |
+| 维度 | 本综述（Data Pyramid） | [GR00T N1 金字塔](paper-hrl-stack-34-gr00t-n1.md) | [WAM 综述](../concepts/world-action-models.md) | [具身 Scaling Laws](../concepts/embodied-scaling-laws.md) |
 |------|------------------------|--------------------------------------------------|------------------------------------------------|-----------------------------------------------------------|
 | 组织对象 | **数据生态**（类目级五层） | 单模型训练配方（三层） | 模型族（Cascaded/Joint） | 数据/参数/算力 ↔ 性能的幂律 |
 | 主轴 | 可扩展性 × 机器人对齐 + 四维 | 数量 × 具身特异性 | 世界预测与动作的耦合位置 | 规模 → 泛化 |
@@ -224,7 +224,7 @@ flowchart TB
 ## 关联页面
 
 - [Open X-Embodiment](../concepts/open-x-embodiment.md) — 真机层聚合数据的锚点项目
-- [GR00T N1](paper-hrl-stack-34-gr00t_n1.md) — 模型专属数据金字塔叙事（本综述的系统化对象之一）
+- [GR00T N1](paper-hrl-stack-34-gr00t-n1.md) — 模型专属数据金字塔叙事（本综述的系统化对象之一）
 - [VLA](../methods/vla.md) — action-labeled 数据的主要消费者模型族
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 世界–动作模型族谱（数据消费视角互补）
 - [世界模型定义与路线图](./paper-sa-2607-06401-a-definition-and-roadmap-for-world-models.md) — 「广度→可执行」倒金字塔，与本页五层配方正交

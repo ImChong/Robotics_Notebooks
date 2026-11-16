@@ -9,7 +9,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../concepts/whole-body-control.md
   - ../../roadmap/depth-real2sim.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 sources:
   - ../../sources/papers/rgb-scene-contact-retargeting_arxiv_2611_14981.md
 original:
@@ -97,7 +97,7 @@ SAM 3D Objects 重建单图场景并生成人体交互参考；JMIR 先优化人
 - [motion retargeting](../concepts/motion-retargeting.md)
 - [whole body control](../concepts/whole-body-control.md)
 - [real2sim](../../roadmap/depth-real2sim.md)
-- [11.09–11.13 29 篇总览](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

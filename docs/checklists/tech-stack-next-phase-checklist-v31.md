@@ -3,7 +3,7 @@
 最后更新：2026-07-26（v30 全数完成后新建：聚焦「机器人视觉感知栈选型闭环」知识链——把近周密集 ingest 的一批**目标检测 / 分割 / 2D→3D 语义建图**资料，从分散的实体页沉淀为一条贯通的「传感与标定 → 2D 检测/分割选型 → 2D→3D 提升与语义建图 → 下游策略消费」感知栈选型链，补感知栈层间矛盾检测规则与路线视图）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v30.md`](archive/tech-stack-next-phase-checklist-v30.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
+方法论参考：[Karpathy LLM Wiki](../../wiki/concepts/llm-wiki-karpathy.md)
 
 ---
 

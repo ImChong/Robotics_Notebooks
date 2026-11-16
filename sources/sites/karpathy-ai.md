@@ -76,7 +76,7 @@ AI 研究者与教育者：OpenAI 创始成员、Tesla AI 总监（Autopilot 视
 
 - 升格页面：[wiki/entities/andrej-karpathy.md](../../wiki/entities/andrej-karpathy.md)
 - 课程归档：[karpathy_zero_to_hero_youtube.md](../courses/karpathy_zero_to_hero_youtube.md) · [nn-zero-to-hero.md](../repos/nn-zero-to-hero.md) · [karpathy_intro_llms_youtube.md](../courses/karpathy_intro_llms_youtube.md) · [karpathy_deep_dive_llms_youtube.md](../courses/karpathy_deep_dive_llms_youtube.md)
-- 方法论姊妹资料：[karpathy_llm_wiki_gist.md](../blogs/karpathy_llm_wiki_gist.md) → [wiki/references/llm-wiki-karpathy.md](../../wiki/references/llm-wiki-karpathy.md)
+- 方法论姊妹资料：[karpathy_llm_wiki_gist.md](../blogs/karpathy_llm_wiki_gist.md) → [wiki/concepts/llm-wiki-karpathy.md](../../wiki/concepts/llm-wiki-karpathy.md)
 
 ## 参考链接
 

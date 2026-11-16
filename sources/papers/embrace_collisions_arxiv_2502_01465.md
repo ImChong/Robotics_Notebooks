@@ -42,7 +42,7 @@
 
 ## 对 wiki 的映射
 
-- 沉淀实体页：[Embrace Collisions（AMP #19）](../../wiki/entities/paper-amp-survey-19-embrace_collisions.md)
+- 沉淀实体页：[Embrace Collisions（AMP #19）](../../wiki/entities/paper-amp-survey-19-embrace-collisions.md)
 - 交叉：[project-instinct](../../wiki/entities/project-instinct.md)、[whole-body-control](../../wiki/concepts/whole-body-control.md)、[sim2real](../../wiki/concepts/sim2real.md)、[unitree-g1](../../wiki/entities/unitree-g1.md)、[paper-deep-whole-body-parkour](../../wiki/entities/paper-deep-whole-body-parkour.md)
 
 ## 参考来源（原始）

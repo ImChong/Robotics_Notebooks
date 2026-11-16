@@ -648,30 +648,26 @@
 | [x] [jason_peng_synthetic_motion_humanoid_youtube.md](courses/jason_peng_synthetic_motion_humanoid_youtube.md) | Jason Peng（SFU & NVIDIA）NUS 研讨会：合成运动数据与通用人形控制（`2looxieN53o`；PARC / MimicKit / G1；`wiki/overview/jason-peng-flexible-motion-skill-learning.md`） |
 | [x] [sergey_levine_diffusion_rl_robotics_simons_youtube.md](courses/sergey_levine_diffusion_rl_robotics_simons_youtube.md) | Sergey Levine（UC Berkeley）Simons 工作坊：扩散/flow 连续动作策略与 action chunk（`agi3xLTGyaU`；`wiki/overview/sergey-levine-diffusion-expressive-policies.md`） |
 
-### notes/ — 原始笔记归档
+### notes/ — 原始笔记与legacy索引归档
 | 文件 | 内容 |
 |------|------|
 | [know-how.md](notes/know-how.md) | 人形机器人技术框架、Know-How 文档、深蓝学院课程 |
 | [legged_humanoid_rl_pd_gains.md](notes/legged_humanoid_rl_pd_gains.md) | 腿足/人形 RL 关节 Kp、Kd（刚度阻尼）开源实现与文档索引 |
 | [humanoid_motion_control_know_how.md](notes/humanoid_motion_control_know_how.md) | 飞书公开文档《人形机器人运动控制 Know-How》结构化来源归档 |
 | [legacy-readme-resource-map.md](notes/legacy-readme-resource-map.md) | 旧 README 完整原始内容（归档备份） |
+| [theory.md](notes/theory.md) | 机器人学理论、RL 基础、控制理论课程 |
+| [papers.md](notes/papers.md) | 论文来源（GitHub + arXiv） |
+| [motion.md](notes/motion.md) | 动捕数据集与运动生成 |
+| [urdf.md](notes/urdf.md) | URDF 模型资源、可视化、开源模型 |
+| [retarget.md](notes/retarget.md) | 动作重定向、MoCap、Retarget 相关 |
+| [train.md](notes/train.md) | 训练框架（IsaacGym, IsaacLab, RL/IL 框架汇总）|
+| [sim2sim.md](notes/sim2sim.md) | 仿真到仿真：Mujoco、PyBullet、Gazebo |
+| [sim2real.md](notes/sim2real.md) | 仿真到现实：部署框架、ROS2、经验分享 |
 
 ### patents/ — 专利申请与专利文献归档
 | 文件 | 内容 |
 |------|------|
 | [us20260326293a1_mobile_robot_control_architecture.md](patents/us20260326293a1_mobile_robot_control_architecture.md) | Boston Dynamics：全身动态平衡与局部末端执行器控制协同（US 2026/0326293 A1；同族 WO 2026/136238 A1） |
-
-### 根目录散文件
-| 文件 | 内容 |
-|------|------|
-| [theory.md](theory.md) | 机器人学理论、RL 基础、控制理论课程 |
-| [papers.md](papers.md) | 论文来源（GitHub + arXiv） |
-| [motion.md](motion.md) | 动捕数据集与运动生成 |
-| [urdf.md](urdf.md) | URDF 模型资源、可视化、开源模型 |
-| [retarget.md](retarget.md) | 动作重定向、MoCap、Retarget 相关 |
-| [train.md](train.md) | 训练框架（IsaacGym, IsaacLab, RL/IL 框架汇总）|
-| [sim2sim.md](sim2sim.md) | 仿真到仿真：Mujoco、PyBullet、Gazebo |
-| [sim2real.md](sim2real.md) | 仿真到现实：部署框架、ROS2、经验分享 |
 
 ## 使用原则
 

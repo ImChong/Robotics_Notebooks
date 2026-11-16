@@ -264,7 +264,7 @@ roadmap/depth-robotics-diffusion-dit-flow.md,Stage 1 · Diffusion Policy（① �
 roadmap/depth-robotics-diffusion-dit-flow.md,Stage 2 · The Ingredients for Robotic Diffusion Transformers（② ★★★★★）,wiki/entities/paper-robotic-dit-ingredients-dit-block-policy.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-robotics-diffusion-dit-flow.md,Stage 3 · RDT-1B（③ ★★★★☆）,wiki/entities/paper-rdt-1b.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-robotics-diffusion-dit-flow.md,Stage 4 · π₀（④ ★★★★★ · Flow Matching 机器人入门）,wiki/entities/paper-pi0.md,3,complete,—
-roadmap/depth-robotics-diffusion-dit-flow.md,Stage 5 · GR00T N1（⑤ ★★★★★ · 人形 / NVIDIA）,wiki/entities/paper-hrl-stack-34-gr00t_n1.md,3,complete,—
+roadmap/depth-robotics-diffusion-dit-flow.md,Stage 5 · GR00T N1（⑤ ★★★★★ · 人形 / NVIDIA）,wiki/entities/paper-hrl-stack-34-gr00t-n1.md,3,complete,—
 roadmap/depth-robotics-diffusion-dit-flow.md,Stage 5 · GR00T N1（⑤ ★★★★★ · 人形 / NVIDIA）,wiki/entities/isaac-gr00t.md,3,complete,—
 roadmap/depth-robotics-diffusion-dit-flow.md,Stage 6 · GR00T N1.5（⑥ ★★★★★ · 紧接 N1）,wiki/entities/paper-gr00t-n1-5.md,3,complete,—
 roadmap/depth-robotics-diffusion-dit-flow.md,Stage 7 · Diffusion Transformer Policy / Dita（⑦ ★★★★☆）,wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md,2,complete,缺 original 归档
@@ -298,7 +298,7 @@ roadmap/depth-motion-generation.md,Stage 3 物理化落地：从运动学输出�
 roadmap/depth-motion-generation.md,Stage 3 物理化落地：从运动学输出到机器人可执行,wiki/entities/paper-synthetic-video-humanoid-tasks.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 3 物理化落地：从运动学输出到机器人可执行,wiki/entities/paper-gentrack.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/methods/diffusion-motion-generation.md,3,complete,—
-roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/entities/paper-heracles-humanoid-diffusion.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/entities/paper-omg-omni-modal-humanoid-control.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/methods/motionbricks.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -306,7 +306,7 @@ roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据�
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/entities/paper-kimodo-policy.md,3,complete,—
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/comparisons/generative-motion-to-humanoid-closed-loop.md,3,complete,—
 roadmap/depth-motion-generation.md,Stage 4 控制环内的生成器：从数据引擎到在线规划,wiki/entities/paper-muninn-trajectory-diffusion-acceleration.md,1,complete,阅读骨架不完整；缺 original 归档
-roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/entities/paper-hrl-stack-04-from-generated-human-videos-to-physi.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/methods/mimic-video.md,3,complete,—
 roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-generation.md,Stage 5 进阶方向,wiki/entities/paper-gpc-generative-pretrained-controllers.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -594,7 +594,7 @@ roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间�
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/paper-lac-wm-cross-embodiment-latent-action-world-model.md,2,complete,缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 1 统一接口：动作与状态空间怎么对齐,wiki/entities/paper-urdd-universal-robot-description-directory.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-octo.md,3,complete,—
-roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-hrl-stack-34-gr00t_n1.md,3,complete,—
+roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-hrl-stack-34-gr00t-n1.md,3,complete,—
 roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-x-wbc.md,2,complete,缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-xhugwbc-cross-humanoid.md,2,complete,缺 original 归档
 roadmap/depth-cross-embodiment.md,Stage 2 形态感知架构：共享什么、本体专属什么,wiki/entities/paper-recmorph.md,2,complete,缺 original 归档
@@ -702,7 +702,7 @@ roadmap/depth-motion-retargeting.md,Stage 3 方法谱系主线：从 GMR 到物�
 roadmap/depth-motion-retargeting.md,Stage 3 方法谱系主线：从 GMR 到物理感知重定向,wiki/entities/paper-core.md,2,complete,缺 original 归档
 roadmap/depth-motion-retargeting.md,Stage 3 方法谱系主线：从 GMR 到物理感知重定向,wiki/entities/paper-rmr.md,2,complete,缺 original 归档
 roadmap/depth-motion-retargeting.md,Stage 3 方法谱系主线：从 GMR 到物理感知重定向,wiki/entities/paper-hrl-stack-03-omniretarget.md,3,complete,—
-roadmap/depth-motion-retargeting.md,Stage 3 方法谱系主线：从 GMR 到物理感知重定向,wiki/entities/paper-hrl-stack-01-retargeting_matters.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-motion-retargeting.md,Stage 3 方法谱系主线：从 GMR 到物理感知重定向,wiki/entities/paper-hrl-stack-01-retargeting-matters.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-retargeting.md,Stage 3 方法谱系主线：从 GMR 到物理感知重定向,wiki/entities/paper-warp-whole-body-retargeting.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-motion-retargeting.md,Stage 3 方法谱系主线：从 GMR 到物理感知重定向,wiki/entities/paper-umr-unified-motion-retargeting.md,2,complete,缺 original 归档
 roadmap/depth-motion-retargeting.md,Stage 3 方法谱系主线：从 GMR 到物理感知重定向,wiki/entities/stmr-quadruped-retargeting.md,1,complete,阅读骨架不完整；缺 original 归档
@@ -759,7 +759,7 @@ roadmap/depth-humanoid-soccer.md,Stage 1 运动基座：参数化全向行走与
 roadmap/depth-humanoid-soccer.md,Stage 2 机载感知：球、球门、对手与自定位,wiki/methods/object-detection.md,3,complete,—
 roadmap/depth-humanoid-soccer.md,Stage 2 机载感知：球、球门、对手与自定位,wiki/queries/object-detection-model-selection.md,2,complete,缺 original 归档
 roadmap/depth-humanoid-soccer.md,Stage 2 机载感知：球、球门、对手与自定位,wiki/queries/perception-backbone-selection.md,2,complete,缺 original 归档
-roadmap/depth-humanoid-soccer.md,Stage 2 机载感知：球、球门、对手与自定位,wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-humanoid-soccer.md,Stage 2 机载感知：球、球门、对手与自定位,wiki/entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-humanoid-soccer.md,Stage 2 机载感知：球、球门、对手与自定位,wiki/entities/booster-robocup-demo.md,1,draft,阅读骨架不完整；缺 original 归档；status 限分
 roadmap/depth-humanoid-soccer.md,Stage 3 单机技能：追球、对齐与射门的课程 RL,wiki/queries/humanoid-soccer-skill-learning-method-selection.md,2,complete,缺 original 归档
 roadmap/depth-humanoid-soccer.md,Stage 3 单机技能：追球、对齐与射门的课程 RL,wiki/methods/paid-framework.md,1,draft,阅读骨架不完整；缺 original 归档；status 限分
@@ -900,7 +900,7 @@ roadmap/depth-imitation-learning.md,Stage 6 进阶方向,wiki/methods/mimic-vide
 roadmap/depth-imitation-learning.md,Stage 6 进阶方向,wiki/methods/wilor.md,3,complete,—
 roadmap/depth-imitation-learning.md,Stage 6 进阶方向,wiki/concepts/visuo-tactile-fusion.md,3,complete,—
 roadmap/depth-imitation-learning.md,Stage 6 进阶方向,wiki/methods/vla.md,3,complete,—
-roadmap/depth-imitation-learning.md,Stage 6 进阶方向,wiki/methods/π0-policy.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-imitation-learning.md,Stage 6 进阶方向,wiki/methods/pi0-policy.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-imitation-learning.md,Stage 6 进阶方向,wiki/entities/paper-kai0.md,2,complete,缺 original 归档
 roadmap/depth-imitation-learning.md,Stage 6 进阶方向,wiki/concepts/whole-body-tracking-pipeline.md,3,complete,—
 roadmap/depth-imitation-learning.md,Stage 6 进阶方向,wiki/methods/beyondmimic.md,3,complete,—
@@ -948,7 +948,7 @@ roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结�
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/robotics-transformer-rt-series.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/unified-multimodal-tokens.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/entities/paper-octo.md,2,complete,缺 original 归档
-roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/π0-policy.md,1,complete,阅读骨架不完整；缺 original 归档
+roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/pi0-policy.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/pi07-policy.md,3,complete,—
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/methods/star-vla.md,1,complete,阅读骨架不完整；缺 original 归档
 roadmap/depth-model-architecture.md,Stage 4 多模态基座：VLA / WAM 的结构件与双系统,wiki/concepts/foundation-policy.md,3,unknown,—

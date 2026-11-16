@@ -31,7 +31,7 @@ sources:
   - ../../sources/papers/birrell_nelson_implementing_rpc_tocs_1984.md
   - ../../sources/sites/grpc-io-docs.md
 original:
-  - ../../sources/docs_ros2_concepts_reading_humble.md
+  - ../../sources/sites/docs_ros2_concepts_reading_humble.md
 summary: "ROS 2 是机器人系统集成的事实标准中间件栈：节点图 + DDS/RMW 通信 + 工具链与海量生态包；中高层感知/规划首选，底层 1 kHz 硬环路通常另走 LCM/共享内存。"
 ---
 
@@ -41,7 +41,7 @@ summary: "ROS 2 是机器人系统集成的事实标准中间件栈：节点图 
 
 ## 一句话定义
 
-ROS 2 = 以节点图为骨架、经 RMW 默认走 DDS 的去中心化通信中间件加工具链；官方文档的原语是话题（连续流）、服务（短 RPC）、动作（带反馈可取消的长任务）与参数，连接须经自动发现且 QoS 兼容才建立（见 [原文通读归档](../../sources/docs_ros2_concepts_reading_humble.md)）。
+ROS 2 = 以节点图为骨架、经 RMW 默认走 DDS 的去中心化通信中间件加工具链；官方文档的原语是话题（连续流）、服务（短 RPC）、动作（带反馈可取消的长任务）与参数，连接须经自动发现且 QoS 兼容才建立（见 [原文通读归档](../../sources/sites/docs_ros2_concepts_reading_humble.md)）。
 
 ## 英文缩写速查
 

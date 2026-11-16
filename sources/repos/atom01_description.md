@@ -21,4 +21,4 @@
 ## 与本仓库现有资料的关系
 
 - [roboto_origin.md](roboto_origin.md) 的描述子模块
-- 与 `sources/urdf.md`（URDF 资源入口）形成互补
+- 与 `sources/notes/urdf.md`（URDF 资源入口）形成互补

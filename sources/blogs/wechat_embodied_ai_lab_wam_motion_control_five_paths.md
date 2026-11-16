@@ -55,7 +55,7 @@
 
 - 主升格：[wam-motion-control-five-paths](../../wiki/overview/wam-motion-control-five-paths.md)
 - 论文实体（复用已有，不新建重复节点）：
-  - [Ego-VCP / Ego-Vision WM](../../wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md)
+  - [Ego-VCP / Ego-Vision WM](../../wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md)
   - [RWM-U](../../wiki/entities/robotic-world-model-eth-rsl.md)
   - [LIFT](../../wiki/entities/lift-humanoid.md)
   - [HAIC](../../wiki/entities/paper-haic.md)

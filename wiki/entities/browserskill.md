@@ -11,7 +11,7 @@ related:
   - ./mattpocock-skills.md
   - ./typesafe-jev.md
   - ../concepts/ai-auto-research.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/browserskill.md
 summary: "BrowserSkill（Tencent/BrowserSkill，MIT）用 bsk CLI + 浏览器扩展把任意 shell-capable agent 接到用户已登录 Chrome/Edge：任务在独立 Agent Window 运行，按需 borrow tab，内置 human-in-loop 与多 harness 技能安装；DeepSeek Harness 有一等 npm 插件。"
@@ -38,7 +38,7 @@ summary: "BrowserSkill（Tencent/BrowserSkill，MIT）用 bsk CLI + 浏览器扩
 ## 为什么重要
 
 - **与 [Agent Reach](./agent-reach.md) 分工：** Agent Reach 聚合 **只读检索**（Jina、yt-dlp、`gh`、RSS 等 CLI/MCP）；BrowserSkill 解决 **需交互、需登录态、需可见 DOM** 的浏览器任务（表单、内网控制台、项目页步骤 2.5 核查）。
-- **维护本 wiki 的 ingest 场景：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 要求维护者 **打开项目页核代码开放**；对仅 Web UI 发布、需登录的 lab 页，`bsk` 可在 **不中断你当前浏览** 的前提下让 agent 代开 Agent Window 取证。
+- **维护本 wiki 的 ingest 场景：** [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 要求维护者 **打开项目页核代码开放**；对仅 Web UI 发布、需登录的 lab 页，`bsk` 可在 **不中断你当前浏览** 的前提下让 agent 代开 Agent Window 取证。
 - **Harness 生态位：** 内置 `skill/SKILL.md`，`bsk install-skill` 写入 Cursor / Claude Code / Codex 等技能目录；与 [Agent Skills 目录](./agent-skills-addyosmani.md) 同属 **可装载规约**，但对象是 **浏览器操作协议** 而非 TDD/评审流程。
 - **DeepSeek 一等公民：** [DeepSeek Harness](./deepseek-harness.md) 用户可 `dsh plugin add @wxg-prc-cpg/browser-skill-dsh-plugin`，获得原生 `browser_*` 工具与 Web UI 会话视图，无需再 `install-skill`。
 

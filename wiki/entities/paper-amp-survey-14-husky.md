@@ -15,7 +15,7 @@ related:
   - ./unitree-g1.md
   - ./paper-amp-survey-08-more.md
   - ./paper-amp-survey-15-physhsi.md
-  - ./paper-amp-survey-13-humanoid_goalkeeper.md
+  - ./paper-amp-survey-13-humanoid-goalkeeper.md
 sources:
   - ../../sources/papers/husky_humanoid_skateboarding_arxiv_2602_03205.md
   - ../../sources/papers/humanoid_amp_survey_14_husky_humanoid_skateboarding_system_via_physics.md
@@ -122,7 +122,7 @@ flowchart TB
 
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#14/19）
 - 方法：[amp-reward.md](../methods/amp-reward.md)
-- 交互姊妹：[PhysHSI #15](./paper-amp-survey-15-physhsi.md)、[Goalkeeper #13](./paper-amp-survey-13-humanoid_goalkeeper.md)
+- 交互姊妹：[PhysHSI #15](./paper-amp-survey-15-physhsi.md)、[Goalkeeper #13](./paper-amp-survey-13-humanoid-goalkeeper.md)
 - 同机构方法：[MoRE #08](./paper-amp-survey-08-more.md)
 - 平台：[unitree-g1.md](./unitree-g1.md)
 

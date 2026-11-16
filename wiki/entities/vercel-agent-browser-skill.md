@@ -17,7 +17,7 @@ related:
   - ./find-skills-skill.md
   - ./anthropic-frontend-design-skill.md
   - ./mattpocock-skills.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/vercel-labs-agent-browser.md

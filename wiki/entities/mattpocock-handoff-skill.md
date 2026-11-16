@@ -12,7 +12,7 @@ related:
   - ./mattpocock-skills.md
   - ./humanlayer-skills.md
   - ./hermes-agent.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/mattpocock-skills.md
   - ../../sources/sites/skills-sh-mattpocock-selected-skills.md

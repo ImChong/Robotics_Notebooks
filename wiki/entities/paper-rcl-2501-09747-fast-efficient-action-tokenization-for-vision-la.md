@@ -22,7 +22,7 @@ related:
 - ../methods/vla.md
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
-- ../methods/π0-policy.md
+- ../methods/pi0-policy.md
 - ./paper-real-time-chunking.md
 sources:
 - ../../sources/papers/rcl_awesome_wam_2501_09747_fast-efficient-action-tokenization-for-v.md
@@ -218,7 +218,7 @@ sequenceDiagram
 1. 从官方 HF 模型卡加载 tokenizer，先验证自己的动作 chunk 编码→解码重建。
 2. 对齐采样率、chunk 长度、归一化与动作顺序，检查重建误差和每个 chunk 的 token 数。
 3. 比较闭环成功率与真实时延：训练序列缩短不保证逐 token 生成满足控制预算。
-4. 已有 tokenizer 实现与资产；全套策略/机器人接口须另查 [openpi](../methods/π0-policy.md)。
+4. 已有 tokenizer 实现与资产；全套策略/机器人接口须另查 [openpi](../methods/pi0-policy.md)。
 5. 针对真实机器人增加 **解码失败/零动作降级告警**：官方 HF `decode` 遇到损坏 token 或形状不匹配会退回全零频域系数；`openpi.FASTTokenizer.extract_actions` 未检测到 `Action: ` 标志时也返回零动作。需区分“策略意图停止”和“解析失败”。
 6. 对于自定义 action horizon / action dim，调用 `decode` 时显式指定形状；`trust_remote_code=True` 加载前审核代码并固定可信 revision。
 
@@ -245,7 +245,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [π₀ / openpi](../methods/π0-policy.md)
+- [π₀ / openpi](../methods/pi0-policy.md)
 - [RTC](./paper-real-time-chunking.md)
 - [VLA](../methods/vla.md)
 

@@ -66,7 +66,7 @@ joint_rot_obs_flat = torch_util.quat_to_tan_norm(joint_rot_flat)  # J×6
 obs = [root_rot_obs, root_vel_obs, root_ang_vel_obs, joint_rot_obs, dof_vel, ...]
 ```
 
-`global_obs=True` 时用世界系四元数；否则根朝向先乘 `heading_inv` 再编码。G1 DeepMimic 配置下 `root_rot_obs` + 28 关节 × 6 维约占 char_obs 中旋转块主体（见组内笔记 `resources/train/MimicKit/MimicKit 05 DeepMimic.md`）。
+`global_obs=True` 时用世界系四元数；否则根朝向先乘 `heading_inv` 再编码。G1 DeepMimic 配置下 `root_rot_obs` + 28 关节 × 6 维约占 char_obs 中旋转块主体。
 
 **对 wiki 的映射**：[`wiki/entities/mimickit.md`](../../wiki/entities/mimickit.md)、[`wiki/methods/deepmimic.md`](../../wiki/methods/deepmimic.md) — 观测维度与原版 DeepMimic（四元数）差异。
 

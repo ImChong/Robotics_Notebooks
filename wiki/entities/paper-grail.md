@@ -20,7 +20,7 @@ related:
   - ./nvidia-sonic.md
   - ./unitree-g1.md
   - ./paper-viral-humanoid-visual-sim2real.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./videomimic.md
   - ./grail-locomanipulation-dataset.md
   - ./paper-umr-unified-motion-retargeting.md
@@ -135,7 +135,7 @@ GRAIL 的核心选择是 **在生成前固定物理上下文**。给定物体、
 
 GRAIL 还渲染头部第一视角 RGB，把生成轨迹转成视觉策略训练数据。论文叙事与 [VIRAL](./paper-viral-humanoid-visual-sim2real.md) 共享视觉 sim-to-real 思路：域随机化、相机对齐、egocentric 观测训练，然后部署到真实 G1。
 
-项目页还展示了作为 [GR00T](./paper-hrl-stack-34-gr00t_n1.md) 微调数据的混合方案：**95% GRAIL + 5% teleoperation**，比纯遥操作减少「卡在目标附近」等失败。
+项目页还展示了作为 [GR00T](./paper-hrl-stack-34-gr00t-n1.md) 微调数据的混合方案：**95% GRAIL + 5% teleoperation**，比纯遥操作减少「卡在目标附近」等失败。
 
 ### 5. 公开数据集结构
 
@@ -158,7 +158,7 @@ GRAIL 的评测重点在「生成数据能否规模化、能否落到真机可�
 
 - **数据规模与覆盖：** 项目页 / 论文报告 **20,000+** 序列（HF 发布约 **22k** 条 G1 post-SONIC 轨迹，约 250 GB），覆盖 pick-up（table / ground）、whole-body manipulation、sitting、slope、curb、stair 等 object-centric 与 scene-centric 能力。
 - **真机闭环成功率：** 仅用 GRAIL 生成数据训练 egocentric RGB 策略并部署到 Unitree G1，论文 / source 记录 **pick-up 84%**、**stair-climbing 90%**。
-- **作为微调混合数据：** 以 **95% GRAIL + 5% 遥操作** 混合微调 [GR00T](./paper-hrl-stack-34-gr00t_n1.md)，抓取成功率优于纯遥操作，并减少「卡在目标附近」类失败。
+- **作为微调混合数据：** 以 **95% GRAIL + 5% 遥操作** 混合微调 [GR00T](./paper-hrl-stack-34-gr00t-n1.md)，抓取成功率优于纯遥操作，并减少「卡在目标附近」类失败。
 - **重建质量兜底：** metric 4D HOI 依赖 GENMO / WiLoR / FoundationPose 与已知 3D 上下文的联合优化，接触/深度不合理项被惩罚；`robot/` 与 `objects/` 为 post-RL 物理可行轨迹，而非纯 kinematic retarget。
 
 > 以上为论文 / 项目页 / HF 数据集口径的清单式指标；完整设定与消融以 [arXiv:2606.05160](https://arxiv.org/abs/2606.05160) 为准。
@@ -253,7 +253,7 @@ sequenceDiagram
 - [UMR](./paper-umr-unified-motion-retargeting.md) — 用本页 HSI 轨迹做接触重定向对照（Stair/Slope 优于 OmniRetarget）。
 - [Unitree G1](./unitree-g1.md) — 论文硬件平台。
 - [VIRAL](./paper-viral-humanoid-visual-sim2real.md) — egocentric visual sim-to-real 对照。
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — GRAIL 数据微调对象。
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) — GRAIL 数据微调对象。
 - [VideoMimic](./videomimic.md) — 真实视频路线对照。
 - [GRAIL Loco-Manipulation Dataset](./grail-locomanipulation-dataset.md) — 公开数据集实体页。
 

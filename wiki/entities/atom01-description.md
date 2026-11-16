@@ -55,5 +55,5 @@ summary: "Atom01_description 提供 Atom01 的 URDF 与网格模型资源，是�
 
 ## 推荐继续阅读
 
-- [sources/urdf.md](../../sources/urdf.md)
+- [sources/notes/urdf.md](../../sources/notes/urdf.md)
 - [Atom01 Deploy](./roboparty-deploy.md)

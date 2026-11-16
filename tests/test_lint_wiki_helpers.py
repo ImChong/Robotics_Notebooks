@@ -5,6 +5,9 @@ from __future__ import annotations
 from pathlib import Path
 
 from lint_wiki import (
+    WIKI_FILENAME_RE,
+    _check_per_page,
+    _empty_results,
     extract_internal_links,
     has_section,
     has_source_reference,
@@ -95,3 +98,41 @@ def test_strip_misconception_sections_strips_english_pitfall_heading() -> None:
     out = strip_misconception_sections(content)
     assert "before" in out and "after" in out
     assert "bad" not in out
+
+
+def test_wiki_filename_regex_and_per_page_check(tmp_path: Path, monkeypatch) -> None:
+    import lint_wiki as lw
+
+    monkeypatch.setattr(lw, "REPO_ROOT", tmp_path)
+    wiki_dir = tmp_path / "wiki" / "entities"
+    wiki_dir.mkdir(parents=True)
+
+    valid_names = ["README.md", "index.md", "pi0-policy.md", "humanoid-2026-11-09.md"]
+    invalid_names = ["dataset-internData-a1.md", "paper_underscore.md", "π0-policy.md"]
+
+    for name in valid_names:
+        if name != "README.md":
+            assert WIKI_FILENAME_RE.match(name), name
+    for name in invalid_names:
+        assert not WIKI_FILENAME_RE.match(name), name
+
+    sample_body = (
+        "# Sample\n\n## 英文缩写速查\n\n| A | B | C |\n|---|---|---|\n| X | Xxx | note |\n"
+        "\n## 关联页面\n\n- [x](pi0-policy.md)\n\n## 参考来源\n\n- [s](../../sources/x.md)\n"
+    )
+    pages = []
+    for name in valid_names + invalid_names:
+        p = wiki_dir / name
+        p.write_text(sample_body, encoding="utf-8")
+        pages.append(p)
+
+    results = _empty_results()
+    inbound = {p.resolve(): [pages[0].resolve()] for p in pages}
+    _check_per_page(pages, inbound, {}, results)
+
+    assert len(results["invalid_filenames"]) == len(invalid_names)
+    reported = "\n".join(results["invalid_filenames"])
+    for bad in invalid_names:
+        assert bad in reported
+    for good in valid_names:
+        assert good not in reported

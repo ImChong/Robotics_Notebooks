@@ -23,7 +23,7 @@ related:
   - ../concepts/contact-rich-manipulation.md
   - ../methods/vla.md
   - ../methods/pi07-policy.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../methods/action-chunking.md
   - ./paper-kemo-event-driven-keyframe-memory-vla.md
   - ./paper-eventvla-visual-evidence-memory.md
@@ -212,7 +212,7 @@ Action expert 序列：`[noisy-action × H] ‖ [力记忆 × K] ‖ [状态 × 
 - [Manipulation](../tasks/manipulation.md) — 桌面/双臂操作与记忆依赖任务语境
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 接触力作为任务状态
 - [VLA](../methods/vla.md) — 记忆增强与力模态子路线
-- [π₀.₇ Policy](../methods/pi07-policy.md) / [π₀ Policy](../methods/π0-policy.md) — π 系 flow-matching 骨干
+- [π₀.₇ Policy](../methods/pi07-policy.md) / [π₀ Policy](../methods/pi0-policy.md) — π 系 flow-matching 骨干
 - [Action Chunking](../methods/action-chunking.md) — $H=30$ 动作块
 - [KEMO](./paper-kemo-event-driven-keyframe-memory-vla.md) — 事件关键帧视觉记忆（π₀.₅）
 - [EventVLA](./paper-eventvla-visual-evidence-memory.md) — 学习式视觉关键帧记忆 + RoboTwin-MeM

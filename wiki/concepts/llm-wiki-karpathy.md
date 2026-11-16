@@ -1,0 +1,225 @@
+---
+type: concept
+tags: [methodology, llm, wiki, karpathy, knowledge-base]
+status: complete
+sources:
+  - ../../sources/blogs/karpathy_llm_wiki_gist.md
+  - ../../sources/blogs/rohitg00_llm_wiki_v2_gist.md
+  - ../../sources/sites/karpathy-ai.md
+related:
+  - ../concepts/retrieval-augmented-generation.md
+  - ../entities/paper-wikiskill.md
+  - ../entities/ponytail.md
+  - ../entities/nuwa-skill.md
+  - ../entities/cangjie-skill.md
+  - ../entities/darwin-skill.md
+  - ../entities/andrej-karpathy.md
+  - ../entities/graphify.md
+  - ../entities/book-to-skill.md
+  - ../entities/understand-anything.md
+  - ../overview/robot-learning-overview.md
+  - ../overview/karpathy-asd-ste100-llm-outputs.md
+  - ../concepts/asd-ste100.md
+  - ../entities/asd-ste100-skill.md
+summary: "LLM Wiki 是由 LLM 持续维护的结构化知识库模式；Karpathy 原始构想强调 sources/wiki/schema 与 ingest/query/lint，rohitg00 的 v2 Gist 提出生命周期、类型化图谱、混合检索、自动化与治理扩展。"
+updated: 2026-11-16
+original:
+  - ../../sources/blogs/karpathy_llm_wiki_gist_reading_full.md
+---
+
+# LLM Wiki
+
+**LLM Wiki**：用 LLM **增量编译并维护持久 markdown 知识库**（ingest / query / lint），让 cross-reference 与综合洞见 **复利积累**，而非每次 RAG 重新检索原始资料。
+
+## 一句话定义
+
+LLM Wiki 是由 LLM 增量编译、持续维护的持久 markdown 知识库模式，由 raw sources / wiki / schema 三层与 ingest / query / lint 三操作构成。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LLM | Large Language Model | 负责读源、写 wiki、交叉引用与 lint 的维护代理 |
+| RAG | Retrieval-Augmented Generation | 查询时检索片段再生成；详见 [RAG 概念页](../concepts/retrieval-augmented-generation.md)；本模式强调 **预编译 wiki** 优于纯 RAG |
+| BM25 | Best Matching 25 | 经典稀疏检索；Gist 推荐 qmd 等 hybrid BM25/vector 检索 wiki |
+| MCP | Model Context Protocol | 代理工具协议；qmd 等可提供 MCP 供 LLM 原生搜索 wiki |
+| RRF | Reciprocal Rank Fusion | 按多个排序列表的名次融合检索结果；v2 建议融合 BM25、向量与图检索 |
+| PII | Personally Identifiable Information | 个人可识别信息；v2 建议在入库时过滤敏感内容 |
+
+> Source: [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) · Saved: 2026-04-13 · 仓库归档: [sources/blogs/karpathy_llm_wiki_gist.md](../../sources/blogs/karpathy_llm_wiki_gist.md)
+
+## 为什么重要
+
+- 维护知识库的瓶颈是 bookkeeping（交叉引用、摘要更新、矛盾标记）而非阅读思考；LLM 把这部分成本降到近零，使 wiki 能随资料增长而不被放弃（Gist 原文论点）。
+- 知识"编译一次、持续更新"，cross-reference 与综合已就位，与每次查询重新检索的纯 RAG 形成对照。
+- 本仓库 sources → wiki → schema 的结构与 ingest / query / lint 流程直接源自该模式（见下文「关联页面」）。
+
+## 核心原理
+
+- **三层**：Raw sources（不可变，只读）、Wiki（LLM 拥有的 markdown 页）、Schema（CLAUDE.md / AGENTS.md，约定结构与工作流）。
+- **三操作**：Ingest（一个源可触达 10–15 页）、Query（好答案回写为新页）、Lint（矛盾、过时、孤儿、缺页、缺链）。
+- **两个导航文件**：index.md（内容目录，中等规模下可替代 embedding 检索）与 log.md（追加式时间线，统一前缀便于 grep）。
+- 分工：人策展来源、提问、判断意义；LLM 负责归纳、链接、归档。
+
+## 工程实践
+
+- 原文工具提示：Obsidian（Web Clipper、本地图片、graph view）、Marp、Dataview、qmd 混合检索（CLI + MCP）、git 版本管理；均为可选。
+- 逐个摄入并保持人在回路，是作者偏好；批量摄入监督更少，应在 schema 中记录所选流程。
+- 本仓库的落地见 [Ingest Workflow](../../schema/ingest-workflow.md) 与 `AGENTS.md`（推断：属于对 Gist 的域内实例化，Gist 本身不规定具体实现）。
+
+## 局限
+
+- Gist 自称刻意抽象，只描述想法而非实现；目录结构、schema、工具需依领域自行实例化。
+- "约 100 源、数百页内 index 即够用"是作者经验判断，非通用阈值；规模更大需搜索工具。
+- 原文未给出评测数据；自动写入的治理、矛盾自动解决等议题见上文 v2 扩展与「采用时的边界」。
+
+## 继续阅读
+
+- [LLM Wiki v2 Gist 原始资料](../../sources/blogs/rohitg00_llm_wiki_v2_gist.md) — 生命周期与治理扩展
+- [Karpathy Gist 通读归档](../../sources/blogs/karpathy_llm_wiki_gist_reading_full.md)
+- [RAG 概念页](../concepts/retrieval-augmented-generation.md) — 对照的检索式路线
+
+## 参考来源
+
+- [LLM Wiki Gist 原始资料](../../sources/blogs/karpathy_llm_wiki_gist.md)
+- [LLM Wiki v2 Gist 原始资料](../../sources/blogs/rohitg00_llm_wiki_v2_gist.md)
+- [Andrej Karpathy 个人站点原始资料](../../sources/sites/karpathy-ai.md)
+- [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — Original Gist
+- [Robotics_Notebooks Methodology](../../AGENTS.md) — How this project applies the pattern
+
+A pattern for building personal knowledge bases using LLMs.
+
+This is an idea file, it is designed to be copy pasted to your own LLM Agent (e.g. OpenAI Codex, Claude Code, OpenCode / Pi, or etc.). Its goal is to communicate the high level idea, but your agent will build out the specifics in collaboration with you.
+
+## The core idea
+
+Most people's experience with LLMs and documents looks like RAG: you upload a collection of files, the LLM retrieves relevant chunks at query time, and generates an answer. This works, but the LLM is rediscovering knowledge from scratch on every question. There's no accumulation. Ask a subtle question that requires synthesizing five documents, and the LLM has to find and piece together the relevant fragments every time. Nothing is built up. NotebookLM, ChatGPT file uploads, and most RAG systems work this way.
+
+The idea here is different. Instead of just retrieving from raw documents at query time, the LLM **incrementally builds and maintains a persistent wiki** — a structured, interlinked collection of markdown files that sits between you and the raw sources. When you add a new source, the LLM doesn't just index it for later retrieval. It reads it, extracts the key information, and integrates it into the existing wiki — updating entity pages, revising topic summaries, noting where new data contradicts old claims, strengthening or challenging the evolving synthesis. The knowledge is compiled once and then *kept current*, not re-derived on every query.
+
+This is the key difference: **the wiki is a persistent, compounding artifact.** The cross-references are already there. The contradictions have already been flagged. The synthesis already reflects everything you've read. The wiki keeps getting richer with every source you add and every question you ask.
+
+You never (or rarely) write the wiki yourself — the LLM writes and maintains all of it. You're in charge of sourcing, exploration, and asking the right questions. The LLM does all the grunt work — the summarizing, cross-referencing, filing, and bookkeeping that makes a knowledge base actually useful over time. In practice, I have the LLM agent open on one side and Obsidian open on the other. The LLM makes edits based on our conversation, and I browse the results in real time — following links, checking the graph view, reading the updated pages. Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase.
+
+This can apply to a lot of different contexts. A few examples:
+
+- **Personal**: tracking your own goals, health, psychology, self-improvement — filing journal entries, articles, podcast notes, and building up a structured picture of yourself over time.
+- **Research**: going deep on a topic over weeks or months — reading papers, articles, reports, and incrementally building a comprehensive wiki with an evolving thesis.
+- **Reading a book**: filing each chapter as you go, building out pages for characters, themes, plot threads, and how they connect. By the end you have a rich companion wiki. Think of fan wikis like [Tolkien Gateway](https://tolkiengateway.net/wiki/Main_Page) — thousands of interlinked pages covering characters, places, events, languages, built by a community of volunteers over years. You could build something like that personally as you read, with the LLM doing all the cross-referencing and maintenance.
+- **Business/team**: an internal wiki maintained by LLMs, fed by Slack threads, meeting transcripts, project documents, customer calls. Possibly with humans in the loop reviewing updates. The wiki stays current because the LLM does the maintenance that no one on the team wants to do.
+- **Competitive analysis, due diligence, trip planning, course notes, hobby deep-dives** — anything where you're accumulating knowledge over time and want it organized rather than scattered.
+
+## Architecture
+
+There are three layers:
+
+**Raw sources** — your curated collection of source documents. Articles, papers, images, data files. These are immutable — the LLM reads from them but never modifies them. This is your source of truth. For **PDF / 扫描件** 类原始资料，可先用专用文档 VLM（如本库 [TeleOCR](../entities/paper-teleocr.md) 归档）做结构化 OCR，再进入 `sources/` 归纳，避免把整份 PDF 直接丢给通用聊天模型重复解析。
+
+**The wiki** — a directory of LLM-generated markdown files. Summaries, entity pages, concept pages, comparisons, an overview, a synthesis. The LLM owns this layer entirely. It creates pages, updates them when new sources arrive, maintains cross-references, and keeps everything consistent. You read it; the LLM writes it.
+
+**The schema** — a document (e.g. CLAUDE.md for Claude Code or AGENTS.md for Codex) that tells the LLM how the wiki is structured, what the conventions are, and what workflows to follow when ingesting sources, answering questions, or maintaining the wiki. This is the key configuration file — it's what makes the LLM a disciplined wiki maintainer rather than a generic chatbot. You and the LLM co-evolve this over time as you figure out what works for your domain.
+
+## Operations
+
+**Ingest.** You drop a new source into the raw collection and tell the LLM to process it. An example flow: the LLM reads the source, discusses key takeaways with you, writes a summary page in the wiki, updates the index, updates relevant entity and concept pages across the wiki, and appends an entry to the log. A single source might touch 10-15 wiki pages. Personally I prefer to ingest sources one at a time and stay involved — I read the summaries, check the updates, and guide the LLM on what to emphasize. But you could also batch-ingest many sources at once with less supervision. It's up to you to develop the workflow that fits your style and document it in the schema for future sessions.
+
+**Query.** You ask questions against the wiki. The LLM searches for relevant pages, reads them, and synthesizes an answer with citations. Answers can take different forms depending on the question — a markdown page, a comparison table, a slide deck (Marp), a chart (matplotlib), a canvas. The important insight: **good answers can be filed back into the wiki as new pages.** A comparison you asked for, an analysis, a connection you discovered — these are valuable and shouldn't disappear into chat history. This way your explorations compound in the knowledge base just like ingested sources do.
+
+**Lint.** Periodically, ask the LLM to health-check the wiki. Look for: contradictions between pages, stale claims that newer sources have superseded, orphan pages with no inbound links, important concepts mentioned but lacking their own page, missing cross-references, data gaps that could be filled with a web search. The LLM is good at suggesting new questions to investigate and new sources to look for. This keeps the wiki healthy as it grows.
+
+## Indexing and logging
+
+Two special files help the LLM (and you) navigate the wiki as it grows. They serve different purposes:
+
+**index.md** is content-oriented. It's a catalog of everything in the wiki — each page listed with a link, a one-line summary, and optionally metadata like date or source count. Organized by category (entities, concepts, sources, etc.). The LLM updates it on every ingest. When answering a query, the LLM reads the index first to find relevant pages, then drills into them. This works surprisingly well at moderate scale (~100 sources, ~hundreds of pages) and avoids the need for embedding-based RAG infrastructure.
+
+**log.md** is chronological. It's an append-only record of what happened and when — ingests, queries, lint passes. A useful tip: if each entry starts with a consistent prefix (e.g. `## [2026-04-02] ingest | Article Title`), the log becomes parseable with simple unix tools — `grep "^## \[" log.md | tail -5` gives you the last 5 entries. The log gives you a timeline of the wiki's evolution and helps the LLM understand what's been done recently.
+
+## Optional: CLI tools
+
+At some point you may want to build small tools that help the LLM operate on the wiki more efficiently. A search engine over the wiki pages is the most obvious one — at small scale the index file is enough, but as the wiki grows you want proper search. [qmd](https://github.com/tobi/qmd) is a good option: it's a local search engine for markdown files with hybrid BM25/vector search and LLM re-ranking, all on-device. It has both a CLI (so the LLM can shell out to it) and an MCP server (so the LLM can use it as a native tool). For **visual exploration** of a Karpathy-pattern wiki as a force-directed graph, [Understand Anything](../entities/understand-anything.md) exposes `/understand-knowledge` (see also [graphify](../entities/graphify.md) for mixed code+docs corpora). You could also build something simpler yourself — the LLM can help you vibe-code a naive search script as the need arises.
+
+## Tips and tricks
+
+- **Obsidian Web Clipper** is a browser extension that converts web articles to markdown. Very useful for quickly getting sources into your raw collection.
+- **Download images locally.** In Obsidian Settings → Files and links, set "Attachment folder path" to a fixed directory (e.g. `raw/assets/`). Then in Settings → Hotkeys, search for "Download" to find "Download attachments for current file" and bind it to a hotkey (e.g. Ctrl+Shift+D). After clipping an article, hit the hotkey and all images get downloaded to local disk. This is optional but useful — it lets the LLM view and reference images directly instead of relying on URLs that may break. Note that LLMs can't natively read markdown with inline images in one pass — the workaround is to have the LLM read the text first, then view some or all of the referenced images separately to gain additional context. It's a bit clunky but works well enough.
+- **Obsidian's graph view** is the best way to see the shape of your wiki — what's connected to what, which pages are hubs, which are orphans.
+- **Marp** is a markdown-based slide deck format. Obsidian has a plugin for it. Useful for generating presentations directly from wiki content.
+- **Dataview** is an Obsidian plugin that runs queries over page frontmatter. If your LLM adds YAML frontmatter to wiki pages (tags, dates, source counts), Dataview can generate dynamic tables and lists.
+- The wiki is just a git repo of markdown files. You get version history, branching, and collaboration for free.
+
+## Why this works
+
+The tedious part of maintaining a knowledge base is not the reading or the thinking — it's the bookkeeping. Updating cross-references, keeping summaries current, noting when new data contradicts old claims, maintaining consistency across dozens of pages. Humans abandon wikis because the maintenance burden grows faster than the value. LLMs don't get bored, don't forget to update a cross-reference, and can touch 15 files in one pass. The wiki stays maintained because the cost of maintenance is near zero.
+
+The human's job is to curate sources, direct the analysis, ask good questions, and think about what it all means. The LLM's job is everything else.
+
+The idea is related in spirit to Vannevar Bush's Memex (1945) — a personal, curated knowledge store with associative trails between documents. Bush's vision was closer to this than to what the web became: private, actively curated, with the connections between documents as valuable as the documents themselves. The part he couldn't solve was who does the maintenance. The LLM handles that.
+
+## Note
+
+This document is intentionally abstract. It describes the idea, not a specific implementation. The exact directory structure, the schema conventions, the page formats, the tooling — all of that will depend on your domain, your preferences, and your LLM of choice. Everything mentioned above is optional and modular — pick what's useful, ignore what isn't. For example: your sources might be text-only, so you don't need image handling at all. Your wiki might be small enough that the index file is all you need, no search engine required. You might not care about slide decks and just want markdown pages. You might want a completely different set of output formats. The right way to use this is to share it with your LLM agent and work together to instantiate a version that fits your needs. The document's only job is to communicate the pattern. Your LLM can figure out the rest.
+
+## LLM Wiki v2：面向规模与生命周期的扩展
+
+[rohitg00 的 LLM Wiki v2 Gist](../../sources/blogs/rohitg00_llm_wiki_v2_gist.md) 以 Karpathy 的基础模式为起点，讨论知识库面对长周期、多用户和更多资料后可添加哪些能力。它提出方向与设计选项，不是某套端到端实现的效果保证。
+
+| 维度 | 基础模式 | v2 提出的扩展 |
+|------|----------|---------------|
+| 知识状态 | 来源与页面交叉引用 | 记录证据与核验时间；显式 supersession；按需做保留/降权 |
+| 信息结构 | Markdown 页面 + wikilinks | 带类型实体和具名关系的知识图谱 |
+| 检索 | index 或单一搜索 | BM25 + 向量 + 图遍历，建议以 RRF 融合 |
+| 维护 | 人工触发 ingest / query / lint | 来源、会话、查询、写入和定时任务驱动的 hooks |
+| 质量 | 周期性检查 | 质量门、断链修复、矛盾候选与 self-healing |
+| 协作治理 | 单用户 / 单代理 | 多代理同步、私有/共享范围、审计和敏感信息过滤 |
+
+### 扩展的数据流
+
+```mermaid
+flowchart LR
+  S[Sources 与会话记录] --> I[Ingest / Crystallize]
+  I --> W[Wiki 页面与证据]
+  I --> G[类型化实体图谱]
+  W --> R[BM25 + 向量检索]
+  G --> R
+  R --> F[RRF 融合与关系遍历]
+  F --> A[带引用的回答]
+  A --> C[人工策展 / 可选回写]
+  C --> W
+  W --> L[Supersession / 保留策略 / Lint]
+```
+
+### 与本仓库实现的关系
+
+Robotics_Notebooks 已有 `sources/`、`wiki/`、`schema/`、独立的 ingest/query/lint 规范和基于 wiki 内链生成的知识图。v2 可作为检视后续扩展的清单；当前页面目录结构与链接图并不等同于 Gist 提议的事实级 typed graph、BM25/vector/graph 三路 RRF 检索或 confidence lifecycle，这些扩展不应被误写成已部署能力。
+
+### 采用时的边界
+
+- **置信分数可能制造精确感。** 只有评分能追到具体来源、核验时间和矛盾记录时才有意义；否则展示证据链往往比单个小数更可审查。
+- **遗忘与保留策略风险不同。** 旧知识可能仍是重要历史；优先显式标记替代关系和检索降权，避免不可逆删除。
+- **图谱与混合检索需要评测。** 实体/关系抽取会引入错误边，三路搜索也增加工程成本；应测召回、排序质量、延迟和维护成本。
+- **自动写入必须有治理。** 多代理同步、PII 过滤、自动矛盾解决与批量修复需要权限、审计、人工复核和回滚边界。
+- **规模阈值不是硬定律。** Gist 中的文档数经验是作者的启发式判断，不应直接当成通用迁移门槛。
+
+## 关联页面
+
+- [book-to-skill](../entities/book-to-skill.md) — 将指定书籍、文档目录或研究资料编译为可按需加载的 Agent Skill；与本页的跨来源持久 wiki 形成互补。
+
+- [ASD-STE100 与 LLM 输出可理解性](../overview/karpathy-asd-ste100-llm-outputs.md) — 受控语言原则与按任务选择图示、交互页面和视频
+- [ASD-STE100 概念页](../concepts/asd-ste100.md) — 技术英语规范及用于 LLM 的边界
+- [ASD-STE100 Skill](../entities/asd-ste100-skill.md) — 公开的 Claude Code 实现与结构检查器
+
+- [Andrej Karpathy](../entities/andrej-karpathy.md) — 模式提出者与 Tesla / CS231n / Zero to Hero 背景
+- [Robot Learning Overview](../overview/robot-learning-overview.md) — 本知识库的三层架构（sources → wiki → schema）正是基于此方法论
+- [Ingest Workflow](../../schema/ingest-workflow.md) — Karpathy 循环在本项目中的具体实现
+- [Ponytail](../entities/ponytail.md) — **少写代码** 必要性阶梯技能，与 Superpowers（流程）、Caveman（措辞）形成代理行为文件化三角
+- [Superpowers（obra）](../entities/superpowers-obra.md) — 面向编码代理的 **技能 + 交付流程** 方法论，可与本页的「持久 wiki」对照阅读
+- [WikiSkill（论文实体）](../entities/paper-wikiskill.md) — Google Research 将 **LLM Wiki 式持久知识层** 嵌入 **agent skill 进化环** 的实证框架（arXiv:2608.27454）
+- [graphify（Graphify Labs）](../entities/graphify.md) — **自动构图 + 图查询** 技能，覆盖探索陌生代码库/混合语料阶段，与本页 **人工策展 wiki** 互补
+- [Skills For Real Engineers（mattpocock）](../entities/mattpocock-skills.md) — **轻量可组合** 的日常工程技能库（grill、CONTEXT.md、TDD），与 Superpowers 形成流程轻重对照
+- [HumanLayer Skills](../entities/humanlayer-skills.md) — **迭代代理维护环** 与控制论式 loop 脚手架（sensor–controller–actuator、GHA 调度）
+- [LearnPrompt](../entities/learnprompt.md) — **中文 AI Practice Wiki**：Obsidian/Skills/Loop 路径与本页 ingest→记忆沉淀同向；47 篇 Showcase 教程
+- [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 是本知识库最核心的主题，体现"好问题回写 wiki"原则
+- [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型代表机器人领域对 LLM 范式的借鉴
+- [AI Auto-Research（学术研究自动化）](../concepts/ai-auto-research.md) — 综述视角下的全生命周期 agent 辅助与 **人机共治 / 溯源** 边界，与本页 ingest/query/lint 同构
+- [Agent 记忆与 dreaming](../concepts/agent-memory-and-dreaming.md) — Anthropic 的 agent 记忆与 dreaming（wiki 作为记忆表示，与本库模式同构）

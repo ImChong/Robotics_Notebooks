@@ -13,7 +13,7 @@ related:
   - ./isaac-lab.md
   - ./pulse-physics.md
   - ./paper-notebook-latent.md
-  - ./paper-hrl-stack-01-retargeting_matters.md
+  - ./paper-hrl-stack-01-retargeting-matters.md
   - ./paper-skillx-humanoid-soccer.md
   - ./paper-notebook-learning-soccer-skills-for-humanoid-robots.md
   - ./paper-robonaldo-humanoid-soccer-shooting.md
@@ -54,7 +54,7 @@ summary: "SoccerBot（arXiv:2611.06564v1，CoRL 2026）：约 2.5 小时筛选�
 | PULSE | Physics-based Universal motion Latent SpacE | 论文借鉴的"跟踪教师蒸馏为 VAE 式潜动作空间"框架（库内：[pulse-physics](./pulse-physics.md)） |
 | AMP / ASE | Adversarial Motion Priors / Adversarial Skill Embeddings | 对抗式运动先验基线 |
 | LATENT | 网球人形技能学习（Latent Action Barrier 基线） | 论文引用 [3]，库内：[paper-notebook-latent](./paper-notebook-latent.md) |
-| GMR | General Motion Retargeting | 把人类动捕重定向到 G1（库内：[retargeting matters](./paper-hrl-stack-01-retargeting_matters.md)） |
+| GMR | General Motion Retargeting | 把人类动捕重定向到 G1（库内：[retargeting matters](./paper-hrl-stack-01-retargeting-matters.md)） |
 | DAgger | Dataset Aggregation | 在线蒸馏用的学生状态 + 教师动作缓冲（库内：[dagger](../methods/dagger.md)） |
 | SR / VE / DE | Success Rate / Velocity Error / Direction Error | 评测指标，见实验节 |
 | MMD² | squared Maximum Mean Discrepancy | 策略 rollout 与人类参考运动特征的分布距离（Train ref. / Post-train ref.） |
@@ -248,7 +248,7 @@ sequenceDiagram
 - [Isaac Lab](./isaac-lab.md)
 - [PULSE](./pulse-physics.md)
 - [LATENT（网球）](./paper-notebook-latent.md)
-- [GMR 论文](./paper-hrl-stack-01-retargeting_matters.md)
+- [GMR 论文](./paper-hrl-stack-01-retargeting-matters.md)
 - [DAgger](../methods/dagger.md)
 - [AMP 奖励](../methods/amp-reward.md)
 - [域随机化](../concepts/domain-randomization.md)

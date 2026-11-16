@@ -25,7 +25,7 @@
 - [paper-deep-whole-body-parkour](../../wiki/entities/paper-deep-whole-body-parkour.md) — 主实体页
 - [project-instinct](../../wiki/entities/project-instinct.md)
 - [humanoid_rl_stack_23_deep_whole_body_parkour.md](humanoid_rl_stack_23_deep_whole_body_parkour.md) — 42 篇栈 #23
-- [paper-hiking-in-the-wild](../../wiki/entities/paper-hiking-in-the-wild.md)、[paper-amp-survey-19-embrace_collisions](../../wiki/entities/paper-amp-survey-19-embrace_collisions.md) — Instinct 姊妹篇
+- [paper-hiking-in-the-wild](../../wiki/entities/paper-hiking-in-the-wild.md)、[paper-amp-survey-19-embrace_collisions](../../wiki/entities/paper-amp-survey-19-embrace-collisions.md) — Instinct 姊妹篇
 
 ## 参考来源（原始）
 

@@ -50,7 +50,7 @@
 ## 对 wiki 的映射
 
 - 升格：[paper-echo-in-the-steps](../../wiki/entities/paper-echo-in-the-steps.md)
-- 交叉：[paper-hrl-stack-22-perceptive_humanoid_parkour](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[stair-obstacle-perceptive-locomotion](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[unitree-g1](../../wiki/entities/unitree-g1.md)
+- 交叉：[paper-hrl-stack-22-perceptive_humanoid_parkour](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)、[stair-obstacle-perceptive-locomotion](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[unitree-g1](../../wiki/entities/unitree-g1.md)
 
 ## 当前提炼状态
 

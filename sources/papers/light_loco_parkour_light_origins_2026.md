@@ -32,7 +32,7 @@
 2. **稀疏种子 → 地形条件技能：** 把单条动作扩成跨障碍几何的动力学可行、地形配对参考，而非依赖大体量动作库。
 3. **奖励驱动自主技能转移：** 仅从深度与指令决定何时调用何种全身技能；无 one-hot 标签、手写状态机或运行时 motion generator。
 
-**对 wiki 的映射：** 升格 [`wiki/entities/paper-light-loco-parkour.md`](../../wiki/entities/paper-light-loco-parkour.md)；对比 [PHP](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)。
+**对 wiki 的映射：** 升格 [`wiki/entities/paper-light-loco-parkour.md`](../../wiki/entities/paper-light-loco-parkour.md)；对比 [PHP](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)。
 
 ## 摘录 2：方法栈（Fig. 2 / §III–VI）
 

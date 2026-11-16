@@ -45,7 +45,7 @@ Karpathy 提出的 **LLM 维护持久 wiki** 模式：原始资料只读入库�
 
 ## 对 wiki 的映射
 
-- 升格页面：[wiki/references/llm-wiki-karpathy.md](../../wiki/references/llm-wiki-karpathy.md)
+- 升格页面：[wiki/concepts/llm-wiki-karpathy.md](../../wiki/concepts/llm-wiki-karpathy.md)
 - 作者实体：[wiki/entities/andrej-karpathy.md](../../wiki/entities/andrej-karpathy.md)
 - 项目实现：[schema/ingest-workflow.md](../../schema/ingest-workflow.md)、[AGENTS.md](../../AGENTS.md)
 

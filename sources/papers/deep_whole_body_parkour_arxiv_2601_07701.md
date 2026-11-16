@@ -37,7 +37,7 @@
 ### 策展导读（AMP 专题 #18 / RL 栈 #23）
 
 - 非 AMP 核心论文，但属 **交互与长时程** 段：**感知 × 全身跟踪** 扩展 traversability。
-- 与 [Embrace Collisions #19](../../wiki/entities/paper-amp-survey-19-embrace_collisions.md) 同属 [Project Instinct](../../wiki/entities/project-instinct.md)。
+- 与 [Embrace Collisions #19](../../wiki/entities/paper-amp-survey-19-embrace-collisions.md) 同属 [Project Instinct](../../wiki/entities/project-instinct.md)。
 
 ## 对 wiki 的映射
 

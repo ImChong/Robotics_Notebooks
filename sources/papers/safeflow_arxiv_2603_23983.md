@@ -30,7 +30,7 @@
 - **实时化：** **Reflow** 蒸馏把物理引导内化进单步流，**NFE=1**；生成器单独约 **92.6 Hz**，完整安全管线约 **67.7 Hz**。
 - **流式接口：** 与 TextOp 同范式——每步接收当前文本 \(l_t\) 与历史参考 \(T_{\mathrm{hist}}=2\)，输出未来 \(T_{\mathrm{fut}}=8\) 帧参考，再由低层 RL 跟踪控制器 \(\pi\) 转关节指令。
 - **对 wiki 的映射：**
-  - [π₀ Policy / Flow Matching](../../wiki/methods/π0-policy.md)（流匹配动作生成对照）
+  - [π₀ Policy / Flow Matching](../../wiki/methods/pi0-policy.md)（流匹配动作生成对照）
   - [Whole-Body Control](../../wiki/concepts/whole-body-control.md)
 
 ### 3) 三阶段安全门（§III-C，训练无关）

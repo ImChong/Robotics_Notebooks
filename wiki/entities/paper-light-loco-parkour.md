@@ -6,7 +6,7 @@ updated: 2026-09-22
 venue: "Light Origins 项目页（暂无 arXiv）"
 related:
   - ./lightbot-0.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-notebook-humanoid-parkour-learning.md
   - ./paper-deep-whole-body-parkour.md
   - ./paper-parkourformer.md
@@ -53,7 +53,7 @@ summary: "Light-Loco-Parkour（Light Origins, 2026-08-03）：Real2Sim2Real 稀�
 
 - **补上「感知 loco ↔ 全身接触」缺口：** 纯跟踪富表达但绑场景；纯 reward locomotion 又偏腿主导。LightLP 用同一策略两者兼顾。
 - **数据配方可复用：** 不靠大体量动作库，而靠**单技能短种子 + 仿真抬障课程**（climb 45→75 cm ≈ 0.83H）。
-- **部署约束干净：** 无 one-hot 技能、无运行时 motion generator；对比 [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) / MGMT 的指令与双网推理负担。
+- **部署约束干净：** 无 one-hot 技能、无运行时 motion generator；对比 [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) / MGMT 的指令与双网推理负担。
 - **边缘算力诚实：** Jetson Orin Nano（~67 INT8 TOPS）上 50 Hz，强调「不必再挂专用算力盒」。
 
 ## 核心信息
@@ -156,7 +156,7 @@ flowchart TB
 
 | 对照 | 差异读法 |
 |------|----------|
-| [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) | PHP 用 motion matching 长程参考 + 技能指令；LightLP 用种子扩张 + 无标签转移，攀爬高度包络更激进（至 0.83H） |
+| [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) | PHP 用 motion matching 长程参考 + 技能指令；LightLP 用种子扩张 + 无标签转移，攀爬高度包络更激进（至 0.83H） |
 | [Humanoid Parkour Learning](./paper-notebook-humanoid-parkour-learning.md) | 更偏跟踪/课程跑酷；LightLP 强调感知端到端与边缘单策略 |
 | [Deep Whole-Body Parkour](./paper-deep-whole-body-parkour.md) | 全身跑酷数据/策略族对照 |
 | [HIL](../methods/hil-hybrid-imitation-learning.md) | 论文消融指出纯稀疏奖励（HIL 式无专家蒸馏）学暴力接触难收敛 |
@@ -173,7 +173,7 @@ flowchart TB
 
 ## 关联页面
 
-- [Perceptive Humanoid Parkour（PHP）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 主对照人形感知跑酷
+- [Perceptive Humanoid Parkour（PHP）](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) — 主对照人形感知跑酷
 - [Humanoid Parkour Learning](./paper-notebook-humanoid-parkour-learning.md) — 人形跑酷笔记锚点
 - [Deep Whole-Body Parkour](./paper-deep-whole-body-parkour.md) — 全身跑酷对照
 - [Robot Parkour Learning](./paper-robot-parkour-learning.md) — 四足跑酷前驱

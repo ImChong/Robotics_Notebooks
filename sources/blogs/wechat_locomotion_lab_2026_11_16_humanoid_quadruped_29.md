@@ -52,4 +52,4 @@
 - 更新时以每篇论文 HTML/PDF 的实验设置、消融与局限为准，不把论文自报结果直接当跨方法可比指标。
 
 ## 对 wiki 的映射
-- [11.09–11.13 人形／四足 29 篇阅读坐标](../../wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 人形／四足 29 篇阅读坐标](../../wiki/overview/humanoid-quadruped-2026-11-09-13-29-papers.md)

@@ -24,7 +24,7 @@ related:
   - ../methods/imitation-learning.md
   - ./paper-loco-manip-161-131-open-television.md
   - ./paper-loco-manip-161-012-humanplus.md
-  - ./paper-hrl-stack-07-learning_human_to_humanoid_real_time.md
+  - ./paper-hrl-stack-07-learning-human-to-humanoid-real-time.md
   - ./paper-teleopit.md
   - ./paper-loco-manip-161-062-h2-compact.md
   - ./unitree.md
@@ -54,7 +54,7 @@ sources:
 
 ## 为什么重要
 
-- **接口分层清晰：** locomotion 走高层语义命令，操作走连续手跟踪——相对全身 shadowing（如 [HumanPlus](./paper-loco-manip-161-012-humanplus.md)、[H2O](./paper-hrl-stack-07-learning_human_to_humanoid_real_time.md)）降低操作员体力，相对纯摇杆降低认知负担。
+- **接口分层清晰：** locomotion 走高层语义命令，操作走连续手跟踪——相对全身 shadowing（如 [HumanPlus](./paper-loco-manip-161-012-humanplus.md)、[H2O](./paper-hrl-stack-07-learning-human-to-humanoid-real-time.md)）降低操作员体力，相对纯摇杆降低认知负担。
 - **社交通道一等公民：** 不只采数，还用双向音频做传物/握手等 telepresence，对齐养老陪伴与危险环境远程协助叙事。
 - **采数模态更全：** egocentric RGB、语音/文本、19 身体 + 12 手关节、眼动——为后续 [模仿学习](../methods/imitation-learning.md) / embodied reasoning 留接口（文中指向同组 chain-of-action 等工作）。
 - **对照表可读：** Table II 把自身相对 [Open-TeleVision](./paper-loco-manip-161-131-open-television.md) / HumanPlus / H2O 定位为「语音 locomotion + 操作 + 社交」全覆盖。
@@ -180,7 +180,7 @@ flowchart TB
 |------|---------|------|-------------|------|
 | [Open-TeleVision](./paper-loco-manip-161-131-open-television.md) | 沉浸主动视觉遥操作 | VR 操作采数 | 非本文重点 | 有项目页 |
 | [HumanPlus](./paper-loco-manip-161-012-humanplus.md) | 全身 shadowing / IL | 全身 | — | 有开源栈 |
-| [H2O](./paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) | 实时全身 teleop | 全身 | — | [human2humanoid](./human2humanoid.md) |
+| [H2O](./paper-hrl-stack-07-learning-human-to-humanoid-real-time.md) | 实时全身 teleop | 全身 | — | [human2humanoid](./human2humanoid.md) |
 | [Teleopit](./paper-teleopit.md) | VR 全身跟踪 | 连续灵巧手 + 主动视觉 | — | **五仓开源** |
 | **本文（NYUAD）** | **语音 + LLM → 高层 API + RL** | **AVP 腕/指 + IK/PD** | **ROS 双向音频** | **未开源** |
 
@@ -191,7 +191,7 @@ flowchart TB
 - [Whole-Body Control](../concepts/whole-body-control.md) — 全身控制背景
 - [Imitation Learning](../methods/imitation-learning.md) — 多模态采数下游
 - [Unitree](./unitree.md) — H1 平台组织页
-- [Open-TeleVision](./paper-loco-manip-161-131-open-television.md) / [HumanPlus](./paper-loco-manip-161-012-humanplus.md) / [H2O](./paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) — Table II 对照
+- [Open-TeleVision](./paper-loco-manip-161-131-open-television.md) / [HumanPlus](./paper-loco-manip-161-012-humanplus.md) / [H2O](./paper-hrl-stack-07-learning-human-to-humanoid-real-time.md) — Table II 对照
 - [Teleopit](./paper-teleopit.md) — 同期 VR 全身+灵巧手开源对照
 - [H2-COMPACT](./paper-loco-manip-161-062-h2-compact.md) — 同组协作相关工作
 

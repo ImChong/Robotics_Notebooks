@@ -21,7 +21,7 @@ related:
   - ./paper-worldvln-aerial-vln-wam.md
   - ./paper-uni-lavira.md
   - ./paper-da-nav.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ../methods/vla.md
   - ../concepts/embodied-fm-latency-generalization-tradeoff.md
   - ../overview/vln-open-source-repro-paradigms.md
@@ -32,7 +32,7 @@ sources:
 
 # FSD-VLN（空中长程 VLN · 快慢双系统）
 
-**FSD-VLN**（*Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation*，[arXiv:2607.08359](https://arxiv.org/abs/2607.08359)，鹏城实验室 / 中科院深圳先进技术研究院 / 北京大学）把低空长程 **UAV VLN** 拆成两条异步通路：慢系统用冻结预训练 VLM 提取语义先验并写入 **VLSF** 缓冲；快系统用 [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) 系 **DiT** 在 UAV 状态、历史动作与缓存语义上生成飞行动作。作者在 AirVLN-S + OpenFly 的 UE 城市场景上报告：未见 SR 相对自复现 OpenFly 从 5.1% 升到 **13.6%**，单步推理 402→**176 ms**，214 条任务总时长约 **−53%**。截至入库日 **确认未开源**，也 **无真机**。
+**FSD-VLN**（*Fast-Slow Dual-System Modeling for Aerial Long-Horizon Vision-Language Navigation*，[arXiv:2607.08359](https://arxiv.org/abs/2607.08359)，鹏城实验室 / 中科院深圳先进技术研究院 / 北京大学）把低空长程 **UAV VLN** 拆成两条异步通路：慢系统用冻结预训练 VLM 提取语义先验并写入 **VLSF** 缓冲；快系统用 [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) 系 **DiT** 在 UAV 状态、历史动作与缓存语义上生成飞行动作。作者在 AirVLN-S + OpenFly 的 UE 城市场景上报告：未见 SR 相对自复现 OpenFly 从 5.1% 升到 **13.6%**，单步推理 402→**176 ms**，214 条任务总时长约 **−53%**。截至入库日 **确认未开源**，也 **无真机**。
 
 ## 一句话定义
 
@@ -171,7 +171,7 @@ flowchart LR
 - [WorldVLN](./paper-worldvln-aerial-vln-wam.md) — 同为空中 VLN 的训练式 WAM
 - [Uni-LaViRA](./paper-uni-lavira.md) — 零样本 Aerial-VLN 对照
 - [DA-Nav](./paper-da-nav.md) — 地面城市方向感知 VLN
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 双系统 VLA 骨干
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) — 双系统 VLA 骨干
 - [VLA](../methods/vla.md) — 导航子任务上的 foundation policy
 - [具身大模型实时性 ↔ 泛化取舍](../concepts/embodied-fm-latency-generalization-tradeoff.md) — 异步双频工程路线
 - [VLN 四范式开源复现](../overview/vln-open-source-repro-paradigms.md) — 可跑通栈对照（本文暂不可跑）

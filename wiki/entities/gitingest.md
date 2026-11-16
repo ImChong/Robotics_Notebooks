@@ -9,7 +9,7 @@ updated: 2026-10-08
 summary: "Gitingest 将本地目录或 Git 仓库筛选并串行为 prompt-friendly 文本 digest，附文件树和 token/大小统计；用于上下文打包，不负责向量检索、RAG 排序或代码推理。"
 related:
   - ../concepts/retrieval-augmented-generation.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./langchain.md
 sources:
   - ../../sources/repos/coderamp-labs-gitingest.md
@@ -79,7 +79,7 @@ Gitingest 提供 CLI 与 Python 包（包括异步接口），仓库 README 也�
 ## 关联页面
 
 - [RAG（检索增强生成）](../concepts/retrieval-augmented-generation.md) — 区分上下文打包与检索生成链路
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 将原始来源编译成可追溯知识页
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 将原始来源编译成可追溯知识页
 - [LangChain](./langchain.md) — 可在下游编排模型与检索组件；与 Gitingest 的上下文导出层次不同
 
 ## 参考来源

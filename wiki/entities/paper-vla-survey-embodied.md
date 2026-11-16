@@ -10,7 +10,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-open-source-repro-landscape-2025.md
   - ./paper-openvla.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../entities/humanoid-motion-intelligence.md
 sources:
   - ../../sources/papers/hmi_p071_vla-survey-embodied.md
@@ -117,7 +117,7 @@ flowchart LR
 - [vla](../methods/vla.md)
 - [vla-open-source-repro-landscape-2025](../overview/vla-open-source-repro-landscape-2025.md)
 - [openvla](paper-openvla.md)
-- [π0-policy](../methods/π0-policy.md)
+- [π0-policy](../methods/pi0-policy.md)
 
 ## 参考来源
 

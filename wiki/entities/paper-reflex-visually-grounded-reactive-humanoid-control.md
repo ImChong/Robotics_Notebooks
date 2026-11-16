@@ -9,7 +9,7 @@ project: https://toberj.github.io/reflex/
 code: https://github.com/ToberJ/reflex
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
-  - ../entities/paper-amp-survey-13-humanoid_goalkeeper.md
+  - ../entities/paper-amp-survey-13-humanoid-goalkeeper.md
   - ../entities/unitree-g1.md
   - ../methods/amp-reward.md
 sources:
@@ -141,7 +141,7 @@ sequenceDiagram
 ## 与其他页面的关系
 
 - [人形机器人 RL 运动控制：身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — Reflex 位于视觉闭环与动态交互的交界。
-- [Humanoid Goalkeeper](./paper-amp-survey-13-humanoid_goalkeeper.md) — 同为快速物体拦截，但守门路线按落点区域路由任务与运动先验；Reflex 研究视觉历史如何恢复接球所需的动力学状态。
+- [Humanoid Goalkeeper](./paper-amp-survey-13-humanoid-goalkeeper.md) — 同为快速物体拦截，但守门路线按落点区域路由任务与运动先验；Reflex 研究视觉历史如何恢复接球所需的动力学状态。
 - [Unitree G1](./unitree-g1.md) — 真机平台。
 - [AMP reward](../methods/amp-reward.md) — 对照运动先验在动态任务中的作用。
 

@@ -55,7 +55,7 @@ sources:
 | 051 | WholeBodyVLA | [paper-loco-manip-161-051-wholebodyvla](../entities/paper-hrl-stack-30-wholebodyvla.md) |
 | 052 | 价值网络结构很重要 | [paper-loco-manip-161-052-n052](../entities/paper-loco-manip-161-052-n052.md) |
 | 053 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-053-n053](../entities/paper-doorman-opening-sim2real-door.md) |
-| 054 | 用于人形策略学习的对抗性运动和运动模仿 | [paper-loco-manip-161-054-n054](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) |
+| 054 | 用于人形策略学习的对抗性运动和运动模仿 | [paper-loco-manip-161-054-n054](../entities/paper-amp-survey-07-adversarial-locomotion-and-motion-im.md) |
 | 055 | 用于跨人形运动的可扩展和通用全身控制 | [paper-loco-manip-161-055-n055](../entities/paper-loco-manip-161-055-n055.md) |
 
 ## 关联页面

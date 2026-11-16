@@ -160,7 +160,7 @@ flowchart TB
 - ENPIRE arXiv 原文：<https://arxiv.org/abs/2606.19980>
 - [ASPIRE](./aspire.md) — GEAR 姊妹工作：持续学习技能库 + code-as-policy（arXiv:2607.00272，官方代码已开源）
 - RoboCasa 论文（仿真日常操作基准）：<https://arxiv.org/abs/2406.02545>
-- Karpathy LLM Wiki 模式（本库维护哲学）：[llm-wiki-karpathy](../references/llm-wiki-karpathy.md)
+- Karpathy LLM Wiki 模式（本库维护哲学）：[llm-wiki-karpathy](../concepts/llm-wiki-karpathy.md)
 
 ## 参考来源
 

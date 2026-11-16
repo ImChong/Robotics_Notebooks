@@ -7,7 +7,7 @@ project_id: huawei-harmonyos-developer-doc-center
 project: https://developer.huawei.com/consumer/cn/doc/doccenter
 related:
   - ../concepts/agentic-coding-software-fundamentals.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./nvidia-skills.md
 sources:
   - ../../sources/sites/huawei-harmonyos-developer-doc-center.md
@@ -99,7 +99,7 @@ flowchart TB
 ## 关联页面
 
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — AI 获取官方上下文后仍需要版本核对与工程测试
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 将有出处的原文编译为可维护知识页
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 将有出处的原文编译为可维护知识页
 - [NVIDIA Skills](./nvidia-skills.md) — 另一种向 AI 工具提供官方工程知识的方式；Skills 与 MCP/llms.txt 不是同一种协议或内容形态
 
 ## 参考来源

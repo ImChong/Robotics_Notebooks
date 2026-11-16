@@ -13,7 +13,7 @@ related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ../queries/humanoid-hardware-selection.md
   - ../entities/unitree-g1.md
-  - ../roadmaps/humanoid-practitioner-entry-roadmap.md
+  - ../../roadmap/humanoid-practitioner-entry-roadmap.md
   - ./humanoid-testing-workflow.md
 sources:
   - ../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md

@@ -23,7 +23,7 @@
 
 ## 对 wiki 的映射
 
-  - [Ego-VCP 实体页](../../wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md)
+  - [Ego-VCP 实体页](../../wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md)
   - [WAM×运动控制五路径](../../wiki/overview/wam-motion-control-five-paths.md)
 
 ## 参考来源（原始）

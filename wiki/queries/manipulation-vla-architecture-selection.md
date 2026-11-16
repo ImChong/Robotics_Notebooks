@@ -32,7 +32,7 @@ related:
 
 | 你的约束 | 推荐路线 | 方法页 |
 |----------|----------|--------|
-| 有大规模带动作标签机器人数据 | 端到端 VLA / 开源策略族 | [VLA](../methods/vla.md)、[π₀](../methods/π0-policy.md)、[π0.7](../methods/pi07-policy.md)、[G0.5](../entities/paper-galaxea-g05.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican](../methods/pelican-unified-1.md)、[Isaac 0.5](../entities/perceptron-isaac-05.md) |
+| 有大规模带动作标签机器人数据 | 端到端 VLA / 开源策略族 | [VLA](../methods/vla.md)、[π₀](../methods/pi0-policy.md)、[π0.7](../methods/pi07-policy.md)、[G0.5](../entities/paper-galaxea-g05.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican](../methods/pelican-unified-1.md)、[Isaac 0.5](../entities/perceptron-isaac-05.md) |
 | 有人视频、缺动作标签 | 解耦前向/逆动力学 | [DeFI](../methods/defi-decoupled-dynamics-vla.md) |
 | 强调语义-动力学一体潜计划 | Video-Action Model | [mimic-video](../methods/mimic-video.md) |
 | 需要显式交互物理想象 | 灵巧世界模型 | [DWM](../methods/dwm.md) |
@@ -59,7 +59,7 @@ related:
 
 ### 桌面已知物体、已有机器人 demo
 
-优先 [VLA](../methods/vla.md) 或成熟开源权重：[π₀ Policy](../methods/π0-policy.md)、[π0.7 Policy](../methods/pi07-policy.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican Unified-1](../methods/pelican-unified-1.md)。部署细节见 [VLA 部署指南](./vla-deployment-guide.md)。
+优先 [VLA](../methods/vla.md) 或成熟开源权重：[π₀ Policy](../methods/pi0-policy.md)、[π0.7 Policy](../methods/pi07-policy.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican Unified-1](../methods/pelican-unified-1.md)。部署细节见 [VLA 部署指南](./vla-deployment-guide.md)。
 
 ### 长程、多步、语言条件
 
@@ -117,7 +117,7 @@ related:
 
 - [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md)
 - [VLA](../methods/vla.md)、[mimic-video](../methods/mimic-video.md)、[DeFI](../methods/defi-decoupled-dynamics-vla.md)、[DWM](../methods/dwm.md)、[CLAW](../methods/claw.md)
-- [π₀ Policy](../methods/π0-policy.md)、[π0.7 Policy](../methods/pi07-policy.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican Unified-1](../methods/pelican-unified-1.md)、[Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)
+- [π₀ Policy](../methods/pi0-policy.md)、[π0.7 Policy](../methods/pi07-policy.md)、[STAR-VLA](../methods/star-vla.md)、[Pelican Unified-1](../methods/pelican-unified-1.md)、[Perceptron Isaac 0.5](../entities/perceptron-isaac-05.md)
 - [VLA 部署指南](./vla-deployment-guide.md)、[IL for Manipulation](./il-for-manipulation.md)、[接触丰富操作指南](./contact-rich-manipulation-guide.md)
 
 ## 一句话记忆

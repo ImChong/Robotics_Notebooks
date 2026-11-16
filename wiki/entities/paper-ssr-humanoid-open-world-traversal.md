@@ -18,7 +18,7 @@ related:
   - ../concepts/footstep-planning.md
   - ../concepts/privileged-training.md
   - ../concepts/sim2real.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-faststair-humanoid-stair-ascent.md
   - ./paper-explicit-stair-geometry-humanoid-locomotion.md
   - ./isaac-gym-isaac-lab.md
@@ -75,7 +75,7 @@ summary: "SSR（arXiv:2605.30770）用单阶段第一视角深度 PPO，以想�
 - **开放世界 = 落脚 × 动态 × 长程：** 人类环境中穿越不止「能走」，还要在 **高动态摆动相** 里用视觉把脚引向 **足弓可支撑区域**；边缘落脚对平足人形尤其致命。
 - **把稀疏接触安全信号前移：** 多数感知 locomotion 只在 **触地时/后** 评估落脚；SSR 的 **想象落脚点引导** 在摆动相预测未来接触分布并度量 **支撑不足度**，改善摆动相 credit assignment（消融 **NoImgn** 落脚仍偏边缘）。
 - **视觉 RNN 上的对称学习可扩展：** 输入级镜像要重编码深度 + 滚动镜像隐藏态；**等变编码器 + 潜空间增广** 在 RTX 4090 上相对输入镜像 **省约 18% 显存** 且更快达最大地形难度。
-- **单策略覆盖多地形 + 户外外推：** 相对 [HPL](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 等多阶段跑酷管线，SSR 强调 **统一单阶段** 与 **长程野外**（工业遗产公园 1.3 km）而不仅是结构化障碍课。
+- **单策略覆盖多地形 + 户外外推：** 相对 [HPL](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) 等多阶段跑酷管线，SSR 强调 **统一单阶段** 与 **长程野外**（工业遗产公园 1.3 km）而不仅是结构化障碍课。
 
 ## 流程总览
 
@@ -195,7 +195,7 @@ flowchart TB
 | 路线 | 感知 | 落脚/安全信号 | 阶段 | 户外长程 |
 |------|------|---------------|------|----------|
 | **SSR** | 36×36 深度 | **想象未来接触 + 支撑不足度** | **单阶段 PPO** | **1.3 km** |
-| [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) | 深度 | motion tracking 参考 + DAgger | 多阶段蒸馏 | 跑酷障碍课 |
+| [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) | 深度 | motion tracking 参考 + DAgger | 多阶段蒸馏 | 跑酷障碍课 |
 | [FastStair](./paper-faststair-humanoid-stair-ascent.md) | 高程图 | DCM 规划监督 | 三阶段 + LoRA | 螺旋梯/竞赛 |
 | [Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md) | 点云 BEV token | 几何条件化 PPO | 单阶段 | 长户外楼梯 |
 | HPL（论文基线） | 深度 | 稀疏/间接 | 多阶段 | 结构化课 |
@@ -222,7 +222,7 @@ flowchart TB
 - [楼梯与障碍 Locomotion](../tasks/stair-obstacle-perceptive-locomotion.md)、[Humanoid Locomotion](../tasks/humanoid-locomotion.md)、[Locomotion](../tasks/locomotion.md)
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)、[Footstep Planning](../concepts/footstep-planning.md)、[Privileged Training](../concepts/privileged-training.md)、[Sim2Real](../concepts/sim2real.md)
 - [AMP & HumanX](../methods/amp-reward.md)、[Reinforcement Learning](../methods/reinforcement-learning.md)、[Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
-- [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[FastStair](./paper-faststair-humanoid-stair-ascent.md)、[Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md)、[ParkourFormer](./paper-parkourformer.md)
+- [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md)、[FastStair](./paper-faststair-humanoid-stair-ascent.md)、[Explicit Stair Geometry](./paper-explicit-stair-geometry-humanoid-locomotion.md)、[ParkourFormer](./paper-parkourformer.md)
 - [CReF](./paper-cref.md) — 同 X2 平台的单阶段 raw 深度；落脚用足端点云奖励而非想象接触；强调室内 OOD 与无几何中间层
 - [SOLO](./paper-solo.md) — 教师–学生 + 显式高程；天工 Omni 连续 **1.5 km**（未开源）
 - [FootQuery](./paper-footquery-perceptive-humanoid-locomotion.md) — 触地前瞻 query 深度历史；与 SSR「想象落脚→奖励」形成部署检索对照

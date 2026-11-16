@@ -21,7 +21,7 @@ related:
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
   - ../methods/ppo.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-agile-perceptive-traversal-sparse-3d.md
   - ./extreme-parkour.md
   - ./paper-parkourformer.md
@@ -57,7 +57,7 @@ summary: "Echo in the Steps（arXiv:2609.28960，清华，CoRL 2026）：显著�
 - **稀疏踏点 ≠ 普通感知 locomotion：** 结构化楼梯/坡道已有大量工作；**20 cm 桩、窄梁、不连续 box** 需要 **精确落脚 + 部分可观** — 单帧深度不够。
 - **记忆要有选择：** 论文消融显示 **均匀堆历史深度** SR 仅 **52%**；**显著性 prior + 门控** 拉到 **98.27%** — 说明「全历史」与「门控瓶颈」差一个量级。
 - **对称性会害人：** 纯 mirror loss 易 **同步 hopping**；**交替损失** 把 double-support 从 **0.806→0.308**，训练更快、落脚更准。
-- **与 PHP 互补：** [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 用 motion matching **合成长程技能链**；Echo 专注 **单课地形上的深度时序与步态正则** — 都走 G1 机载深度，但数据与决策结构不同。
+- **与 PHP 互补：** [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) 用 motion matching **合成长程技能链**；Echo 专注 **单课地形上的深度时序与步态正则** — 都走 G1 机载深度，但数据与决策结构不同。
 
 ## 核心信息
 
@@ -160,7 +160,7 @@ flowchart TB
 
 - [楼梯与障碍感知 locomotion](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [Locomotion](../tasks/locomotion.md)
-- [PHP 感知跑酷](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- [PHP 感知跑酷](./paper-hrl-stack-22-perceptive-humanoid-parkour.md)
 - [Unitree G1](./unitree-g1.md)
 - [12 篇具身研究地图](../overview/embodied-research-12-papers-technology-map.md)
 

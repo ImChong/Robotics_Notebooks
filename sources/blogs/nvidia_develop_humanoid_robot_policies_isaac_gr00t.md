@@ -44,6 +44,6 @@
 ## 对 wiki 的映射
 
 - [Isaac GR00T（开发平台）](../../wiki/entities/isaac-gr00t.md) — 端到端五阶段流程与 N1.7 GA 工程入口
-- [GR00T N1（论文）](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) — N1 论文机制与早期数据金字塔叙事
+- [GR00T N1（论文）](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) — N1 论文机制与早期数据金字塔叙事
 - [GR00T-WholeBodyControl](../../wiki/entities/gr00t-wholebodycontrol.md) — WBC 与 G1 全身控制细节
 - [Isaac Gym / Isaac Lab](../../wiki/entities/isaac-gym-isaac-lab.md) — 仿真训练框架层

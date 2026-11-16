@@ -24,7 +24,7 @@ related:
   - ./deepseek-harness.md
   - ./paper-skillcorpus.md
   - ../concepts/model-context-protocol.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/hkuds_cli_anything.md
   - ../../sources/sites/cli-anything-hub.md
@@ -180,7 +180,7 @@ sequenceDiagram
 - [HarnessBank](paper-harnessbank.md) — 宿主 harness 自进化（概念相邻、问题不同）
 - [SkillCorpus](paper-skillcorpus.md) — 社区 `SKILL.md` 语料与评测语境
 - [Model Context Protocol](../concepts/model-context-protocol.md) — 工具协议层
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs 软件 harness 编译的对照
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 软件 harness 编译的对照
 
 ## 参考来源
 

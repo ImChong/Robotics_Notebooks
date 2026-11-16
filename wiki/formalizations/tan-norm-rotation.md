@@ -104,7 +104,7 @@ flowchart LR
 | `joint_rot_obs` | 28 关节 × tan_norm | 168 |
 | `tar_obs`（×3 步） | 每步含 root_rot + joint_rot tan_norm | 3×(6+168+…) |
 
-组内配置估算总观测约 780 维（见 `resources/train/MimicKit/MimicKit 05 DeepMimic.md`）。
+组内配置估算总观测约 780 维（以官方 `char_env.py` 与具体环境配置为准）。
 
 ### 调试要点
 

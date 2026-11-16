@@ -33,7 +33,7 @@ lint-py:
 	ruff format --check scripts tests
 
 lint-js:
-	npx --yes eslint docs/main.js
+	npm run lint:js
 
 typecheck:
 	PYTHONPATH=scripts mypy scripts
@@ -67,9 +67,6 @@ ingest:
 
 log:
 	python3 scripts/append_log.py $(OP) "$(DESC)"
-
-sync:
-	./scripts/sync_wiki.sh "$(DESC)"
 
 coverage:
 	python3 scripts/ingest_coverage.py $(F)

@@ -36,6 +36,6 @@
 
 ## 对 wiki 的映射
 
-- [`wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md`](../../wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)
+- [`wiki/entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md`](../../wiki/entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md)
 - [`sources/papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md`](../papers/humanoid_rl_stack_26_learning_vision_driven_reactive_soccer_skills_fo.md)
 - [`sources/repos/humanoid-kick-vision-driven-soccer.md`](../repos/humanoid-kick-vision-driven-soccer.md)

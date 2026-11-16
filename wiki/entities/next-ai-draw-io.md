@@ -20,7 +20,7 @@ related:
   - ./manim.md
   - ./freecad-mcp.md
   - ../concepts/model-context-protocol.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/next-ai-draw-io.md
@@ -152,7 +152,7 @@ sequenceDiagram
 - [Manim](./manim.md) — **程序化讲解动画**
 - [FreeCAD MCP](./freecad-mcp.md) — **桌面 CAD MCP** 桥（3D 机械，非 2D 框图）
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — 协议层与传输
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs 代理制图工具
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 代理制图工具
 - [ingest 工作流](../../schema/ingest-workflow.md) — 本站资料入库规范
 
 ## 参考来源

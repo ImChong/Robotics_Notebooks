@@ -464,7 +464,7 @@
 
 | 节点 | 分值 | 状态 | 缺项原因 |
 |---|---:|---|---|
-| [`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-hrl-stack-34-gr00t-n1.md`](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) | 3/3 | complete | — |
 | [`wiki/entities/isaac-gr00t.md`](../../wiki/entities/isaac-gr00t.md) | 3/3 | complete | — |
 
 #### Stage 6 · GR00T N1.5（⑥ ★★★★★ · 紧接 N1）
@@ -540,7 +540,7 @@
 | 节点 | 分值 | 状态 | 缺项原因 |
 |---|---:|---|---|
 | [`wiki/methods/diffusion-motion-generation.md`](../../wiki/methods/diffusion-motion-generation.md) | 3/3 | complete | — |
-| [`wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md`](../../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
+| [`wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md`](../../wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-heracles-humanoid-diffusion.md`](../../wiki/entities/paper-heracles-humanoid-diffusion.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-omg-omni-modal-humanoid-control.md`](../../wiki/entities/paper-omg-omni-modal-humanoid-control.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/methods/motionbricks.md`](../../wiki/methods/motionbricks.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
@@ -553,7 +553,7 @@
 
 | 节点 | 分值 | 状态 | 缺项原因 |
 |---|---:|---|---|
-| [`wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md`](../../wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
+| [`wiki/entities/paper-hrl-stack-04-from-generated-human-videos-to-physi.md`](../../wiki/entities/paper-hrl-stack-04-from-generated-human-videos-to-physi.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/methods/mimic-video.md`](../../wiki/methods/mimic-video.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md`](../../wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-gpc-generative-pretrained-controllers.md`](../../wiki/entities/paper-gpc-generative-pretrained-controllers.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
@@ -1050,7 +1050,7 @@
 | 节点 | 分值 | 状态 | 缺项原因 |
 |---|---:|---|---|
 | [`wiki/entities/paper-octo.md`](../../wiki/entities/paper-octo.md) | 3/3 | complete | — |
-| [`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-hrl-stack-34-gr00t-n1.md`](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-x-wbc.md`](../../wiki/entities/paper-x-wbc.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/entities/paper-xhugwbc-cross-humanoid.md`](../../wiki/entities/paper-xhugwbc-cross-humanoid.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/entities/paper-recmorph.md`](../../wiki/entities/paper-recmorph.md) | 2/3 | complete | 缺 original 归档 |
@@ -1227,7 +1227,7 @@
 | [`wiki/entities/paper-core.md`](../../wiki/entities/paper-core.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/entities/paper-rmr.md`](../../wiki/entities/paper-rmr.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/entities/paper-hrl-stack-03-omniretarget.md`](../../wiki/entities/paper-hrl-stack-03-omniretarget.md) | 3/3 | complete | — |
-| [`wiki/entities/paper-hrl-stack-01-retargeting_matters.md`](../../wiki/entities/paper-hrl-stack-01-retargeting_matters.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
+| [`wiki/entities/paper-hrl-stack-01-retargeting-matters.md`](../../wiki/entities/paper-hrl-stack-01-retargeting-matters.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-warp-whole-body-retargeting.md`](../../wiki/entities/paper-warp-whole-body-retargeting.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-umr-unified-motion-retargeting.md`](../../wiki/entities/paper-umr-unified-motion-retargeting.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/entities/stmr-quadruped-retargeting.md`](../../wiki/entities/stmr-quadruped-retargeting.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
@@ -1316,7 +1316,7 @@
 | [`wiki/methods/object-detection.md`](../../wiki/methods/object-detection.md) | 3/3 | complete | — |
 | [`wiki/queries/object-detection-model-selection.md`](../../wiki/queries/object-detection-model-selection.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/queries/perception-backbone-selection.md`](../../wiki/queries/perception-backbone-selection.md) | 2/3 | complete | 缺 original 归档 |
-| [`wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md`](../../wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
+| [`wiki/entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md`](../../wiki/entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/booster-robocup-demo.md`](../../wiki/entities/booster-robocup-demo.md) | 1/3 | draft | 阅读骨架不完整；缺 original 归档；status 限分 |
 
 #### Stage 3 单机技能：追球、对齐与射门的课程 RL
@@ -1573,7 +1573,7 @@
 | [`wiki/methods/wilor.md`](../../wiki/methods/wilor.md) | 3/3 | complete | — |
 | [`wiki/concepts/visuo-tactile-fusion.md`](../../wiki/concepts/visuo-tactile-fusion.md) | 3/3 | complete | — |
 | [`wiki/methods/vla.md`](../../wiki/methods/vla.md) | 3/3 | complete | — |
-| [`wiki/methods/π0-policy.md`](../../wiki/methods/π0-policy.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
+| [`wiki/methods/pi0-policy.md`](../../wiki/methods/pi0-policy.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-kai0.md`](../../wiki/entities/paper-kai0.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/concepts/whole-body-tracking-pipeline.md`](../../wiki/concepts/whole-body-tracking-pipeline.md) | 3/3 | complete | — |
 | [`wiki/methods/beyondmimic.md`](../../wiki/methods/beyondmimic.md) | 3/3 | complete | — |
@@ -1648,7 +1648,7 @@
 | [`wiki/methods/robotics-transformer-rt-series.md`](../../wiki/methods/robotics-transformer-rt-series.md) | 3/3 | complete | — |
 | [`wiki/methods/unified-multimodal-tokens.md`](../../wiki/methods/unified-multimodal-tokens.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-octo.md`](../../wiki/entities/paper-octo.md) | 2/3 | complete | 缺 original 归档 |
-| [`wiki/methods/π0-policy.md`](../../wiki/methods/π0-policy.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
+| [`wiki/methods/pi0-policy.md`](../../wiki/methods/pi0-policy.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/methods/pi07-policy.md`](../../wiki/methods/pi07-policy.md) | 3/3 | complete | — |
 | [`wiki/methods/star-vla.md`](../../wiki/methods/star-vla.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/concepts/foundation-policy.md`](../../wiki/concepts/foundation-policy.md) | 3/3 | unknown | — |

@@ -30,7 +30,7 @@
 | 4 | **Light-Loco-Parkour**（Light Origins 2026） | [light_loco_parkour_light_origins_2026.md](./light_loco_parkour_light_origins_2026.md) | [paper-light-loco-parkour.md](../../wiki/entities/paper-light-loco-parkour.md) | loco + 多 skill **teacher** → **多专家 DAgger**（无技能标签 height-scan）→ **transition RL** → **GRU 深度**；Lightbot 0 |
 | 5 | **RPL**（arXiv:2602.03002） | [rpl_arxiv_2602_03002.md](./rpl_arxiv_2602_03002.md) | [paper-rpl-robust-humanoid-perceptive-locomotion.md](../../wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) | **分地形高程专家** → **DAgger** 多视角深度 Transformer；DFSV/RSM |
 | 6 | **LadderMan**（arXiv:2606.05873） | [ladderman_arxiv_2606_05873.md](./ladderman_arxiv_2606_05873.md) | [paper-ladderman-humanoid-perceptive-ladder-climbing.md](../../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) | 多几何攀爬专家 → **DAgger+PPO+KL** 深度 visuomotor |
-| 7 | **PHP**（arXiv:2602.15827） | [php_parkour_arxiv_2602_15827.md](./php_parkour_arxiv_2602_15827.md) | [paper-hrl-stack-22-perceptive_humanoid_parkour.md](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | 跑酷 **teacher** → **DAgger+PPO** 学生；纯 DAgger 攀爬不足 |
+| 7 | **PHP**（arXiv:2602.15827） | [php_parkour_arxiv_2602_15827.md](./php_parkour_arxiv_2602_15827.md) | [paper-hrl-stack-22-perceptive-humanoid-parkour.md](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) | 跑酷 **teacher** → **DAgger+PPO** 学生；纯 DAgger 攀爬不足 |
 
 ## 全身跟踪 / scaling：专家蒸馏（非地形专家，但同范式）
 

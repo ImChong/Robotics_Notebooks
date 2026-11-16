@@ -7,7 +7,7 @@ arxiv: "2605.25782"
 venue: arXiv
 related:
   - ./paper-hiking-in-the-wild.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-light-loco-parkour.md
   - ./paper-ssr-humanoid-open-world-traversal.md
   - ./paper-notebook-humanoid-locomotion-as-next-token-prediction.md
@@ -51,7 +51,7 @@ summary: "ParkourFormer（HKUST-GZ 等，arXiv:2605.25782）：Transformer 用�
 
 - **把 foresight 从隐状态里拎出来：** [Next Token Prediction](./paper-notebook-humanoid-locomotion-as-next-token-prediction.md) 用因果 Transformer 拟合下一 token；ParkourFormer 额外加 **显式未来头 + 监督**，让当前动作直接吃 \(\hat{\mathbf{s}}_{t+1:t+2}\)。
 - **消融可操作：** 去 MSE 监督时下楼从 **95.42% → 9.50%**；去 RGB-D 时缺口从 **96.20% → 24.24%**。容量（vanilla Transformer 已 90.49%）不是主因。
-- **单策略、不拆技能：** 相对 [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 的 motion matching 技能链、[LightLP](./paper-light-loco-parkour.md) 的种子扩张 + 转移组，本稿押 **短时域预测 + 条件 FFN**。
+- **单策略、不拆技能：** 相对 [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) 的 motion matching 技能链、[LightLP](./paper-light-loco-parkour.md) 的种子扩张 + 转移组，本稿押 **短时域预测 + 条件 FFN**。
 - **仿真栈可对照：** 训练走 [Hiking in the Wild](./paper-hiking-in-the-wild.md) 同族的 **Project Instinct MuJoCo**，便于和 Hiking 的 MoE + AMP 单阶段路线并读。
 
 ## 核心信息
@@ -172,7 +172,7 @@ Conditional SwiGLU（论文 Eq. 5）：\(\mathrm{FFN}(x,c_t)=\mathbf{W}_5\bigl(\
 | 对照 | 差异读法 |
 |------|----------|
 | [Hiking in the Wild](./paper-hiking-in-the-wild.md) | 同族 MuJoCo / 单阶段深度+AMP；Hiking 用 MoE + 边缘/足端软约束做野外持续通过；本稿用 query 历史 + 未来监督做九类课成功率 |
-| [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) | PHP 离线 motion matching 长程参考 + DAgger 技能链；ParkourFormer 无技能标签、无 matching |
+| [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) | PHP 离线 motion matching 长程参考 + DAgger 技能链；ParkourFormer 无技能标签、无 matching |
 | [LightLP](./paper-light-loco-parkour.md) | LightLP 稀疏种子扩张 + 转移组蒸馏，平台是 Lightbot 0；本稿 G1、无蒸馏教师 |
 | [SSR](./paper-ssr-humanoid-open-world-traversal.md) | SSR 想象落脚 + 潜空间对称 + 分地形 AMP，押开放世界长程；本稿押短时域本体 foresight |
 | [Next Token Prediction](./paper-notebook-humanoid-locomotion-as-next-token-prediction.md) | 因果 Transformer 拟合下一 token / 行走数据；ParkourFormer 在 RL 环里加显式未来头，任务是跑酷而非平地行走 |
@@ -190,7 +190,7 @@ Conditional SwiGLU（论文 Eq. 5）：\(\mathrm{FFN}(x,c_t)=\mathbf{W}_5\bigl(\
 ## 关联页面
 
 - [Hiking in the Wild](./paper-hiking-in-the-wild.md) — 同仿真栈的单阶段感知跑酷
-- [Perceptive Humanoid Parkour（PHP）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 技能链对照
+- [Perceptive Humanoid Parkour（PHP）](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) — 技能链对照
 - [Light-Loco-Parkour（LightLP）](./paper-light-loco-parkour.md) — 无标签深度跑酷对照
 - [SSR 开放世界穿越](./paper-ssr-humanoid-open-world-traversal.md) — 想象落脚 vs 本体 foresight
 - [Humanoid Locomotion as Next Token Prediction](./paper-notebook-humanoid-locomotion-as-next-token-prediction.md) — 序列建模行走前驱

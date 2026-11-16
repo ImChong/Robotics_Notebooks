@@ -81,7 +81,7 @@
 
 - 沉淀实体页：[Now You See That 端到端视觉人形 locomotion（arXiv:2602.06382）](../../wiki/entities/paper-now-you-see-that-humanoid-vision-locomotion.md)
 - 交叉更新：[humanoid-locomotion.md](../../wiki/tasks/humanoid-locomotion.md)、[stair-obstacle-perceptive-locomotion.md](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[privileged-training.md](../../wiki/concepts/privileged-training.md)、[sim2real.md](../../wiki/concepts/sim2real.md)、[dagger.md](../../wiki/methods/dagger.md)
-- 姊妹对照：[SSR](../../wiki/entities/paper-ssr-humanoid-open-world-traversal.md)、[PHP](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[Humanoid Parkour Learning（Zhuang et al.）](../../wiki/entities/paper-notebook-humanoid-parkour-learning.md)
+- 姊妹对照：[SSR](../../wiki/entities/paper-ssr-humanoid-open-world-traversal.md)、[PHP](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)、[Humanoid Parkour Learning（Zhuang et al.）](../../wiki/entities/paper-notebook-humanoid-parkour-learning.md)
 
 ## 参考来源（原始）
 

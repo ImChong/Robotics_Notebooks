@@ -5,7 +5,7 @@ tags: [deep-learning, education, tesla, openai, llm, methodology, computer-visio
 status: complete
 updated: 2026-11-14
 related:
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./karpathy-autoresearch.md
   - ./llms-from-scratch-raschka.md
   - ../methods/reinforcement-learning.md
@@ -52,7 +52,7 @@ summary: "Andrej Karpathy：OpenAI 创始成员、前 Tesla AI 总监（Autopilo
 
 - **机器人栈上的「产品级视觉 ML」样本**：Tesla 任内公开描述 **车内标注 + NN 训练 + 定制推理芯片** 一体化，是理解 **Sim2Real 以外的大规模部署工程** 与 **Software 2.0** 叙事的参照点。
 - **研究–教育–工具三位一体**：CS231n、Zero to Hero（micrograd / makemore / nanoGPT）、Software 2.0 等构成社区 **深度学习入门与工程习惯** 的公共基础设施；与本站 [Deep Learning Foundations](../concepts/deep-learning-foundations.md)、[Reinforcement Learning](../methods/reinforcement-learning.md) 直接相交。
-- **本知识库的方法论作者**： [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md) 提出 **compilation beats retrieval**；Robotics_Notebooks 的 `sources/` → `wiki/` → `schema/` 分层即该思想在 **机器人跨主题知识** 上的落地。
+- **本知识库的方法论作者**： [LLM Wiki（Karpathy）](../concepts/llm-wiki-karpathy.md) 提出 **compilation beats retrieval**；Robotics_Notebooks 的 `sources/` → `wiki/` → `schema/` 分层即该思想在 **机器人跨主题知识** 上的落地。
 
 ## 核心脉络（与机器人学习相关的子集）
 
@@ -81,7 +81,7 @@ summary: "Andrej Karpathy：OpenAI 创始成员、前 Tesla AI 总监（Autopilo
 - YouTube 三条并行轨：
   - **技术轨 — [Neural Networks: Zero to Hero](../../sources/courses/karpathy_zero_to_hero_youtube.md)**（`karpathy.ai/zero-to-hero.html` 列 8 讲主课：micrograd 2h25m → makemore 5 讲 → GPT 1h56m → GPT Tokenizer 2h13m；播放列表含 State of GPT / GPT-2 124M 共 10 集 ~19 h；配套 [`nn-zero-to-hero`](../../sources/repos/nn-zero-to-hero.md) 仓 `lectures/` 入库第 1–6 讲 7 份 notebook，GPT 与 Tokenizer 分别外链至视频描述/nanoGPT 与 [minBPE](https://github.com/karpathy/minbpe)）。
   - **大众轨 — LLM 科普（成对）**：[Intro to LLMs（~1 h，2023）](../../sources/courses/karpathy_intro_llms_youtube.md) 建立两文件模型、预训练/微调、Scaling Laws、工具与多模态、**LLM OS** 与安全攻击面；[Deep Dive into LLMs（~3.5 h，2025）](../../sources/courses/karpathy_deep_dive_llms_youtube.md) 系统拆解预训练（tokenization / Transformer / GPT-2 / Llama 3.1 base）→ 后训练（SFT、幻觉与上下文、RL / DeepSeek-R1 / RLHF）；主页另列 *How I use LLMs*。
-  - **方法论轨 — LLM Wiki Gist**：持久 markdown wiki + ingest/query/lint —— 见 [LLM Wiki 方法论页](../references/llm-wiki-karpathy.md)。
+  - **方法论轨 — LLM Wiki Gist**：持久 markdown wiki + ingest/query/lint —— 见 [LLM Wiki 方法论页](../concepts/llm-wiki-karpathy.md)。
 - 走 [VLA 纵深](../../roadmap/depth-vla.md) 者建议 **Intro → Deep Dive**（直觉）或 **Zero to Hero**（动手），再接 [Raschka 书/课](./llms-from-scratch-raschka.md)。
 - **autoresearch（2026）**：[karpathy/autoresearch](./karpathy-autoresearch.md) — 在 nanochat 单 GPU 栈上让编码代理通宵改 `train.py`、以 **val_bpb** 与固定 5 分钟预算循环实验；人类迭代 `program.md` 作为「研究组织技能」。与 [AI Auto-Research](../concepts/ai-auto-research.md) S3 阶段直接同构。
 
@@ -155,7 +155,7 @@ Andrej Karpathy 的公开教学与开源工具链构成了机器人/VLA 读者�
 
 ## 关联页面
 
-- [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md)
+- [LLM Wiki 方法论（Karpathy）](../concepts/llm-wiki-karpathy.md)
 - [autoresearch（karpathy/autoresearch）](./karpathy-autoresearch.md)
 - [AI Auto-Research](../concepts/ai-auto-research.md)
 - [Robot Learning Overview](../overview/robot-learning-overview.md)

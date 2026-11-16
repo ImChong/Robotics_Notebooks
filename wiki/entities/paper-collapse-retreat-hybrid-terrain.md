@@ -9,7 +9,7 @@ related:
   - ../concepts/sim2real.md
   - ../tasks/humanoid-locomotion.md
   - ../../roadmap/depth-perceptive-locomotion.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 sources:
   - ../../sources/papers/collapse-retreat-hybrid-terrain_arxiv_2611_16337.md
 original:
@@ -94,7 +94,7 @@ flowchart TD
 - [sim2real](../concepts/sim2real.md)
 - [humanoid locomotion](../tasks/humanoid-locomotion.md)
 - [perceptive locomotion](../../roadmap/depth-perceptive-locomotion.md)
-- [11.09–11.13 29 篇总览](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

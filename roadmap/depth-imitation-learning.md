@@ -240,7 +240,7 @@ flowchart LR
 
 **方向 C：Long-horizon 任务 / VLA**
 - 把多个技能串成一个长序列；用语言指令驱动技能组合
-- 关键词：task planning、skill chaining、[VLA](../wiki/methods/vla.md)、[π0](../wiki/methods/π0-policy.md)、[χ₀/kai0](../wiki/entities/paper-kai0.md)（Model Arithmetic + Stage Advantage + Train-Deploy Alignment，π₀.₅ 微调双臂协同叠衣/挂衣相对 π₀.₅ 成功率约 +250%，24 h 连续自主运行，已开源）
+- 关键词：task planning、skill chaining、[VLA](../wiki/methods/vla.md)、[π0](../wiki/methods/pi0-policy.md)、[χ₀/kai0](../wiki/entities/paper-kai0.md)（Model Arithmetic + Stage Advantage + Train-Deploy Alignment，π₀.₅ 微调双臂协同叠衣/挂衣相对 π₀.₅ 成功率约 +250%，24 h 连续自主运行，已开源）
 
 **方向 D：Humanoid 全身动作跟踪**
 - 走路、跑步、跳跃、平衡等全身技能跟踪

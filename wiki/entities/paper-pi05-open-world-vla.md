@@ -16,7 +16,7 @@ venue: HMI curated · 2025
 summary: π0.5 通过异构数据协同训练与分层语义/动作推理，增强未见家庭环境中的长时程操作泛化；openpi 已开放部分代码和模型 checkpoint。
 related:
 - ./paper-activescale.md
-- ../methods/π0-policy.md
+- ../methods/pi0-policy.md
 - ../methods/pi07-policy.md
 - ../methods/vla.md
 - ../concepts/foundation-policy.md
@@ -233,7 +233,7 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-| 维度 | 本工作（π0.5） | [π0](../methods/π0-policy.md) | [π0.7](../methods/pi07-policy.md) | [基础策略](../concepts/foundation-policy.md) |
+| 维度 | 本工作（π0.5） | [π0](../methods/pi0-policy.md) | [π0.7](../methods/pi07-policy.md) | [基础策略](../concepts/foundation-policy.md) |
 |------|----------------|------------------------------|----------------------------------|----------------------------------------------|
 | 动作表示 | 预训 FAST 离散 + 后训连续 flow 专家 | 单一 flow-matching 连续动作 | 多模态提示 steer，异质数据对齐 | 通才/基础策略的抽象概念 |
 | 目标场景 | 家庭移动操作长时任务、开放世界泛化 | 复杂操作的通用建模 | 组合任务 + 跨本体泛化 | 单一大模型覆盖多任务/本体 |
@@ -248,7 +248,7 @@ sequenceDiagram
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [Knowledge Insulation（知识隔离）](./paper-knowledge-insulation.md) — 解释 π₀.₅ 异构 co-training 中 FAST 监督与连续动作专家的梯度隔离
-- [π0-policy](../methods/π0-policy.md)
+- [π0-policy](../methods/pi0-policy.md)
 - [pi07-policy](../methods/pi07-policy.md)
 - [Robbyant（蚂蚁灵波）](./robbyant.md) — LingBot-VLA 1.0 / 2.0 与 LingBot-VA 论文均以 π₀.₅ 为对照基线
 - [vla](../methods/vla.md)

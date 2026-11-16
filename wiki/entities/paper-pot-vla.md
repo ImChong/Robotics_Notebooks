@@ -23,7 +23,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ./unitree-g1.md
   - ./isaac-gr00t.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./paper-loco-manip-161-057-being-0.md
   - ./paper-eventvla-visual-evidence-memory.md
   - ./paper-harness-vla.md
@@ -116,7 +116,7 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用。** 截至 **2026-07-29**，arXiv v2 与公开检索（含 GitHub `POT-VLA` / DeepCybo）均未发现官方项目页、训练/推理代码或权重；无法对齐仓库模块画运行时序。动作骨干可对照公开 [Isaac GR00T](./isaac-gr00t.md) / [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)，但 **POT 侧车与谓词环无公开入口**。
+**不适用。** 截至 **2026-07-29**，arXiv v2 与公开检索（含 GitHub `POT-VLA` / DeepCybo）均未发现官方项目页、训练/推理代码或权重；无法对齐仓库模块画运行时序。动作骨干可对照公开 [Isaac GR00T](./isaac-gr00t.md) / [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md)，但 **POT 侧车与谓词环无公开入口**。
 
 ## 工程实践
 
@@ -196,7 +196,7 @@ flowchart TB
 - [VLA](../methods/vla.md) — 视觉–语言–动作方法总览
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 移动操作任务
 - [Unitree G1](./unitree-g1.md) — 实机平台
-- [Isaac GR00T](./isaac-gr00t.md) / [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 动作骨干对照
+- [Isaac GR00T](./isaac-gr00t.md) / [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) — 动作骨干对照
 - [Being-0](./paper-loco-manip-161-057-being-0.md) — 外部服务任务参考
 - [EventVLA](./paper-eventvla-visual-evidence-memory.md) — 另一类长程视觉记忆
 - [Harness VLA](./paper-harness-vla.md) — 冻结 VLA + 编排闭环对照

@@ -26,7 +26,7 @@ related:
 - ./hermes-agent.md
 - ./sciencediscovery.md
 - ./easy-vibe.md
-- ../references/llm-wiki-karpathy.md
+- ../concepts/llm-wiki-karpathy.md
 - ../entities/awesome-physical-ai-aichr.md
 - ../overview/awesome-physical-ai-technology-map.md
 sources:
@@ -152,7 +152,7 @@ sequenceDiagram
 - [awesome-physical-ai（aichr）](./awesome-physical-ai-aichr.md)
 
 - [model-context-protocol](../concepts/model-context-protocol.md)
-- [llm-wiki-karpathy](../references/llm-wiki-karpathy.md)
+- [llm-wiki-karpathy](../concepts/llm-wiki-karpathy.md)
 - [awesome-physical-ai-aichr](../entities/awesome-physical-ai-aichr.md)
 
 ## 参考来源

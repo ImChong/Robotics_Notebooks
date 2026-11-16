@@ -14,7 +14,7 @@ related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./project-instinct.md
   - ./paper-hiking-in-the-wild.md
-  - ./paper-amp-survey-19-embrace_collisions.md
+  - ./paper-amp-survey-19-embrace-collisions.md
   - ./unitree-g1.md
 sources:
   - ../../sources/papers/deep_whole_body_parkour_arxiv_2601_07701.md
@@ -51,7 +51,7 @@ sources:
 - **范式缝合：** 在 [运动小脑 64 篇地图](../overview/humanoid-motion-cerebellum-technology-map.md) 归类 **A 走路底座**（8/64）——手脚躯干 **一起** 参与跑酷，而非仅足式踏板。
 - **闭环 vs 盲跟踪：** 盲 WBT 需精确摆放才能对齐预录轨迹；深度策略可 **缩步/伸步** 以对准撑手点——把脆弱 playback 变成可部署空间行为。
 - **仿真工程贡献：** 分组 mesh 实例 + 预计算 group→mesh 表，万级并行深度 **~10×** 加速（Algorithm 1）——感知 WBT 训练吞吐的关键。
-- **非 AMP 主线但专题收录：** 与 [Embrace Collisions #19](./paper-amp-survey-19-embrace_collisions.md) 共构 Instinct **全身极限运动** 版图；读 AMP 专题末段时应与 **Hiking #09**、[PhysHSI #15](./paper-amp-survey-15-physhsi.md) 对照。
+- **非 AMP 主线但专题收录：** 与 [Embrace Collisions #19](./paper-amp-survey-19-embrace-collisions.md) 共构 Instinct **全身极限运动** 版图；读 AMP 专题末段时应与 **Hiking #09**、[PhysHSI #15](./paper-amp-survey-15-physhsi.md) 对照。
 
 ## 流程总览
 
@@ -128,7 +128,7 @@ flowchart TB
 - 团队门户：[project-instinct.md](./project-instinct.md)
 - RL 栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)（#23/42）
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#18/19）
-- 姊妹：[paper-hiking-in-the-wild.md](./paper-hiking-in-the-wild.md)、[paper-amp-survey-19-embrace_collisions.md](./paper-amp-survey-19-embrace_collisions.md)
+- 姊妹：[paper-hiking-in-the-wild.md](./paper-hiking-in-the-wild.md)、[paper-amp-survey-19-embrace-collisions.md](./paper-amp-survey-19-embrace-collisions.md)
 - 对照（无技能标签 / Lightbot 0）：[Light-Loco-Parkour（LightLP）](./paper-light-loco-parkour.md)
 - 任务：[stair-obstacle-perceptive-locomotion.md](../tasks/stair-obstacle-perceptive-locomotion.md)
 

@@ -535,7 +535,7 @@
       "id": "ai-agents",
       "label": "智能体与 AI 工具（AI Agents and Tools）",
       "seeds": [
-        "wiki/references/llm-wiki-karpathy.md",
+        "wiki/concepts/llm-wiki-karpathy.md",
         "wiki/concepts/ai-auto-research.md",
         "wiki/concepts/recursive-self-improvement.md",
         "roadmap/depth-rsi.md"

@@ -18,7 +18,7 @@ related:
   - ./paper-cref.md
   - ./paper-solo.md
   - ./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./unitree-g1.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-09-21_25.md

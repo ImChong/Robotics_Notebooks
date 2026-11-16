@@ -9,7 +9,7 @@ related:
   - ../methods/enpire.md
   - ./nvidia-sonic.md
   - ./gr00t-wholebodycontrol.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./gr00t-visual-sim2real.md
   - ./jim-fan.md
   - ./zhengyi-luo.md
@@ -77,7 +77,7 @@ flowchart TB
 
 | 项目 | 一句话 | 本库状态 |
 |------|--------|----------|
-| **GR00T** | 人形机器人基础模型 | [GR00T N1 实体](./paper-hrl-stack-34-gr00t_n1.md)、[WBC 仓库](./gr00t-wholebodycontrol.md) |
+| **GR00T** | 人形机器人基础模型 | [GR00T N1 实体](./paper-hrl-stack-34-gr00t-n1.md)、[WBC 仓库](./gr00t-wholebodycontrol.md) |
 | **Eureka** | Coding LLM 自动设计奖励 | 外链待深读 |
 | **Voyager** | LLM 开放式具身 agent（Minecraft） | 外链待深读 |
 | **VIMA** | 多模态 prompt 操作 | 外链待深读 |

@@ -17,7 +17,7 @@ related:
   - ../concepts/sim2real.md
   - ./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md
   - ./paper-loco-manip-161-040-homie.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./gr00t-visual-sim2real.md
   - ./paper-softmimicgen.md
 original: ../../sources/papers/humanoidmimicgen_arxiv_2605_27724.md
@@ -194,7 +194,7 @@ HumanoidMimicGen 把示范适配扩展到人形移动操作，适用于既定技
 - [Sim2Real](../concepts/sim2real.md)
 - [DexMimicGen](./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md)
 - [Homie](./paper-loco-manip-161-040-homie.md)：提供下肢 RL 控制器
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md)
 - [GR00T Visual Sim2Real](./gr00t-visual-sim2real.md)
 - [SoftMimicGen](./paper-softmimicgen.md)：同系数据生成，面向可变形物体
 

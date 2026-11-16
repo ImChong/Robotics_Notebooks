@@ -18,7 +18,7 @@ related:
   - ./hermes-agent.md
   - ./mattpocock-skills.md
   - ./archify.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./understand-anything.md
   - ./codegraph.md
   - ../../schema/ingest-workflow.md
@@ -49,7 +49,7 @@ PyPI 包名暂为 **`graphifyy`**（双 y），CLI 与技能命令仍为 **`grap
 
 ## 为什么重要（对本知识库读者）
 
-- **与 Karpathy LLM Wiki 形成互补对照：** [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) 与本仓库 [Ingest Workflow](../../schema/ingest-workflow.md) 把机器人知识 **人工编译进 `wiki/`**，强调策展、溯源与 cross-reference；graphify 解决的是 **「刚 clone 一个 Isaac Lab 插件 / 人形控制仓库 / 论文+代码混合目录，如何快速建立可查询结构图」** —— 自动构图、边带 `EXTRACTED`/`INFERRED` 标签，适合 **探索期**，不替代本站的 ingest 质量门与 `## 参考来源` 契约。
+- **与 Karpathy LLM Wiki 形成互补对照：** [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) 与本仓库 [Ingest Workflow](../../schema/ingest-workflow.md) 把机器人知识 **人工编译进 `wiki/`**，强调策展、溯源与 cross-reference；graphify 解决的是 **「刚 clone 一个 Isaac Lab 插件 / 人形控制仓库 / 论文+代码混合目录，如何快速建立可查询结构图」** —— 自动构图、边带 `EXTRACTED`/`INFERRED` 标签，适合 **探索期**，不替代本站的 ingest 质量门与 `## 参考来源` 契约。
 - **机器人研发常见语料正好命中：** 仿真栈（MuJoCo / Isaac）、ROS2 包、Python 训练脚本、`.md` 实验笔记、arXiv PDF、架构截图混在同一 monorepo 时，graphify 把 **跨文件调用链 + 文档概念 + 论文术语** 放进同一图；上游 README 以 Karpathy 混合语料宣称 **~71.5×** 单次查询相对重读原文的 token 降幅（见上游 `worked/` 与 `BENCHMARKS.md`）。
 - **与本站已有图谱不冲突：** `make graph` 生成的 `exports/link-graph.json` 统计 **wiki 页间 markdown 链接**；graphify 可覆盖 **`sources/`、脚本、未升格原文与多语言代码**，二者可并存。
 - **Cursor 用户路径明确：** `graphify cursor install` 写入 `.cursor/rules/graphify.mdc`（`alwaysApply: true`），与维护本仓库的 Cloud Agent / 本地 Cursor 工作流直接相关。
@@ -90,7 +90,7 @@ flowchart TD
 
 ## 关联页面
 
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久策展 wiki** 范式；与本页 **自动构图** 对照
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — **持久策展 wiki** 范式；与本页 **自动构图** 对照
 - [Superpowers（obra）](superpowers-obra.md) — **交付流程** Agent Skills；与本页 **代码库理解** 技能互补
 - [Agent Reach](agent-reach.md) — **外网读搜** 脚手架；与本页 **本地/仓库内** 多模态图互补
 - [CodeGraph](./codegraph.md) — coding-agent 代码图基础设施，重点是静态代码关系、MCP 查询和自动同步。

@@ -46,7 +46,7 @@ sources:
 |---|------|-----------|
 | 146 | AgiBot World Colosseo | [paper-loco-manip-161-146-agibot-world-colosseo](../entities/agibot-world-2026.md) |
 | 147 | DIAL | [paper-loco-manip-161-147-dial](../methods/dial-instruction-augmentation.md) |
-| 148 | GR00T N1 | [paper-hrl-stack-34-gr00t_n1](../entities/paper-hrl-stack-34-gr00t_n1.md) |
+| 148 | GR00T N1 | [paper-hrl-stack-34-gr00t_n1](../entities/paper-hrl-stack-34-gr00t-n1.md) |
 | 149 | Gemini Robotics | [paper-loco-manip-161-149-gemini-robotics](../entities/gemini-robotics.md) |
 | 150 | Genie Envisioner | [paper-loco-manip-161-150-genie-envisioner](../entities/ge-sim-2.md) |
 | 151 | LEGS | [paper-loco-manip-161-151-legs](../entities/paper-legs-embodied-gaussian-splatting-vla.md) |

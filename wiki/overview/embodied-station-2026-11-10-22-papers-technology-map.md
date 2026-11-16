@@ -91,7 +91,7 @@ summary: "具身智能小站 2026-11-10 的 22 篇论文阅读坐标：失败诊
 
 ## 关联页面
 
-- [具身运控lab：11.09–11.13 人形／四足 29 篇阅读坐标](./humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [具身运控lab：11.09–11.13 人形／四足 29 篇阅读坐标](./humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 - [下一期（11-11）53 篇阅读坐标](./embodied-chunk-replanning-2026-11-11-53-papers-technology-map.md)
 - [上一期（11-09）29 篇阅读坐标](./embodied-station-2026-11-09-29-papers-technology-map.md)

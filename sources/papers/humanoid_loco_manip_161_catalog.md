@@ -28,10 +28,10 @@
 | 012 | HumanPlus | [paper-loco-manip-161-012-humanplus](../../wiki/entities/paper-loco-manip-161-012-humanplus.md) |
 | 013 | KungfuBot2 | [paper-loco-manip-161-013-kungfubot2](../../wiki/entities/paper-notebook-kungfubot-2.md) |
 | 014 | MOSAIC | [paper-loco-manip-161-014-mosaic](../../wiki/entities/paper-loco-manip-161-014-mosaic.md) |
-| 015 | Make Tracking Easy | [paper-loco-manip-161-015-make-tracking-easy](../../wiki/entities/paper-hrl-stack-02-make_tracking_easy.md) |
+| 015 | Make Tracking Easy | [paper-loco-manip-161-015-make-tracking-easy](../../wiki/entities/paper-hrl-stack-02-make-tracking-easy.md) |
 | 016 | OmniH2O | [paper-loco-manip-161-016-omnih2o](../../wiki/entities/paper-hrl-stack-08-omnih2o.md) |
 | 017 | OmniRetarget | [paper-loco-manip-161-017-omniretarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md) |
-| 018 | Retargeting | [paper-loco-manip-161-018-retargeting](../../wiki/entities/paper-hrl-stack-01-retargeting_matters.md) |
+| 018 | Retargeting | [paper-loco-manip-161-018-retargeting](../../wiki/entities/paper-hrl-stack-01-retargeting-matters.md) |
 | 019 | SONIC | [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md) |
 | 020 | TWIST2 | [paper-loco-manip-161-020-twist2](../../wiki/entities/paper-twist2.md) |
 | 021 | TWIST | [paper-loco-manip-161-021-twist](../../wiki/entities/paper-twist.md) |
@@ -42,9 +42,9 @@
 | 026 | 人形机器人富有表现力的全身控制 | [paper-loco-manip-161-026-n026](../../wiki/entities/paper-loco-manip-161-026-n026.md) |
 | 027 | 人形机器人行为基础模型 | [paper-loco-manip-161-027-n027](../../wiki/entities/paper-loco-manip-161-027-n027.md) |
 | 028 | 从专家到通用：走向人形机器人的通用全身控制 | [paper-loco-manip-161-028-n028](../../wiki/entities/paper-loco-manip-161-028-n028.md) |
-| 029 | 学习人对人的实时全身远程操作 | [paper-loco-manip-161-029-n029](../../wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) |
+| 029 | 学习人对人的实时全身远程操作 | [paper-loco-manip-161-029-n029](../../wiki/entities/paper-hrl-stack-07-learning-human-to-humanoid-real-time.md) |
 | 030 | 跟踪任何干扰下的任何动作 | [paper-loco-manip-161-030-n030](../../wiki/methods/any2track.md) |
-| 031 | 鲁棒且通用的人形运动跟踪 | [paper-loco-manip-161-031-n031](../../wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) |
+| 031 | 鲁棒且通用的人形运动跟踪 | [paper-loco-manip-161-031-n031](../../wiki/entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md) |
 
 ## 02. 上半身中心控制与移动操作接口
 
@@ -74,7 +74,7 @@
 | 051 | WholeBodyVLA | [paper-loco-manip-161-051-wholebodyvla](../../wiki/entities/paper-hrl-stack-30-wholebodyvla.md) |
 | 052 | 价值网络结构很重要 | [paper-loco-manip-161-052-n052](../../wiki/entities/paper-loco-manip-161-052-n052.md) |
 | 053 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-053-n053](../../wiki/entities/paper-doorman-opening-sim2real-door.md) |
-| 054 | 用于人形策略学习的对抗性运动和运动模仿 | [paper-loco-manip-161-054-n054](../../wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) |
+| 054 | 用于人形策略学习的对抗性运动和运动模仿 | [paper-loco-manip-161-054-n054](../../wiki/entities/paper-amp-survey-07-adversarial-locomotion-and-motion-im.md) |
 | 055 | 用于跨人形运动的可扩展和通用全身控制 | [paper-loco-manip-161-055-n055](../../wiki/entities/paper-loco-manip-161-055-n055.md) |
 
 ## 03. 视觉感知驱动的人形移动操作
@@ -117,7 +117,7 @@
 | 087 | 具有选择策略的协调人形操作 | [paper-loco-manip-161-087-n087](../../wiki/entities/paper-loco-manip-161-087-n087.md) |
 | 088 | 基于基础模型的自主人形抓取快速部署管道 | [paper-loco-manip-161-088-n088](../../wiki/entities/paper-loco-manip-161-088-n088.md) |
 | 089 | 打开仿真到现实世界的人形像素到动作策略传输之门 | [paper-loco-manip-161-089-n089](../../wiki/entities/paper-doorman-opening-sim2real-door.md) |
-| 090 | 通过带有多模态基础模型的具体行动链推理的人形智能体用于零样本移动操作 | [paper-loco-manip-161-090-n090](../../wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
+| 090 | 通过带有多模态基础模型的具体行动链推理的人形智能体用于零样本移动操作 | [paper-loco-manip-161-090-n090](../../wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) |
 | 091 | 通过真实部署就绪的技能空间释放人形机器人的潜力 | [paper-loco-manip-161-091-n091](../../wiki/entities/paper-loco-manip-161-091-n091.md) |
 | 092 | 通过触摸梦学习多样化人形操作 | [paper-loco-manip-161-092-n092](../../wiki/entities/paper-loco-manip-161-092-n092.md) |
 
@@ -154,7 +154,7 @@
 | 110 | HDMI | [paper-hrl-stack-06-hdmi](../../wiki/entities/paper-hrl-stack-06-hdmi.md) |
 | 111 | HITTER | [paper-loco-manip-161-111-hitter](../../wiki/entities/paper-loco-manip-161-111-hitter.md) |
 | 112 | HumanX | [paper-loco-manip-161-112-humanx](../../wiki/entities/paper-hrl-stack-05-humanx.md) |
-| 113 | Humanoid | [paper-loco-manip-161-113-humanoid](../../wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md) |
+| 113 | Humanoid | [paper-loco-manip-161-113-humanoid](../../wiki/entities/paper-amp-survey-13-humanoid-goalkeeper.md) |
 | 114 | OmniRetarget | [paper-loco-manip-161-114-omniretarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md) |
 | 115 | ResMimic | [paper-loco-manip-161-115-resmimic](../../wiki/entities/paper-resmimic.md) |
 | 116 | WoCoCo | [paper-loco-manip-161-116-wococo](../../wiki/entities/paper-loco-manip-161-116-wococo.md) |
@@ -175,7 +175,7 @@
 | 124 | 学习人形机器人的足球技能：渐进式感知-行动框架 | [paper-loco-manip-161-124-n124](../../wiki/entities/paper-loco-manip-161-124-n124.md) |
 | 125 | 学习人形机器人视觉驱动的反应式足球技能 | [paper-loco-manip-161-125-n125](../../wiki/entities/paper-loco-manip-161-125-n125.md) |
 | 126 | 手眼自主配送 | [paper-loco-manip-161-126-n126](../../wiki/entities/paper-loco-manip-161-126-n126.md) |
-| 127 | 用于人形接触规划的自我视觉世界模型 | [paper-loco-manip-161-127-n127](../../wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
+| 127 | 用于人形接触规划的自我视觉世界模型 | [paper-loco-manip-161-127-n127](../../wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) |
 
 ## 07. 数据采集与遥操作系统
 
@@ -217,7 +217,7 @@
 |---|------|-----------|
 | 146 | AgiBot World Colosseo | [paper-loco-manip-161-146-agibot-world-colosseo](../../wiki/entities/agibot-world-2026.md) |
 | 147 | DIAL | [paper-loco-manip-161-147-dial](../../wiki/methods/dial-instruction-augmentation.md) |
-| 148 | GR00T N1 | [paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) |
+| 148 | GR00T N1 | [paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) |
 | 149 | Gemini Robotics | [paper-loco-manip-161-149-gemini-robotics](../../wiki/entities/gemini-robotics.md) |
 | 150 | Genie Envisioner | [paper-loco-manip-161-150-genie-envisioner](../../wiki/entities/ge-sim-2.md) |
 | 151 | LEGS | [paper-loco-manip-161-151-legs](../../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md) |

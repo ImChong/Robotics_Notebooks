@@ -19,11 +19,13 @@
 - `methods/`
 - `tasks/`
 - `comparisons/`
-- `roadmaps/`
+- `formalizations/`
+- `entities/`
+- `queries/`
 
 ## 文件命名
 
-统一使用小写英文 + 连字符 + `.md`：
+统一使用小写 ASCII 英文 + 连字符 + `.md`（除目录说明 `README.md` 外，`scripts/lint_wiki.py` 强制校验 `^[a-z0-9]+(?:-[a-z0-9]+)*\.md$`）：
 
 示例：
 - `robot-learning-overview.md`

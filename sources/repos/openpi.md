@@ -38,7 +38,7 @@
 
 - [π0.5 论文实体](../../wiki/entities/paper-pi05-open-world-vla.md)
 - [π₀ 论文实体](../../wiki/entities/paper-pi0.md)
-- [π₀ 策略方法页](../../wiki/methods/π0-policy.md)
+- [π₀ 策略方法页](../../wiki/methods/pi0-policy.md)
 - [Humanoid Motion Intelligence](../../wiki/entities/humanoid-motion-intelligence.md)
 - [χ₀ / kai0](../../wiki/entities/paper-kai0.md) — 基于 openpi 的协同叠衣后训练与部署对齐
 - [Jetson Thor π₀.₅ 教程](../courses/jetson_openpi_pi05_on_thor.md)

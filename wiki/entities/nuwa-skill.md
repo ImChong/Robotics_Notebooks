@@ -15,7 +15,7 @@ related:
   - ./karpathy-autoresearch.md
   - ./andrej-karpathy.md
   - ./superpowers-obra.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/nuwa-skill.md
@@ -42,7 +42,7 @@ summary: "女娲.skill（alchaincyf/nuwa-skill）从公开信息蒸馏任意人�
 ## 为什么重要（对本知识库读者）
 
 - **人物 skill 蒸馏标杆：** 上游 README 强调与 [colleague-skill](https://github.com/titanwings/colleague-skill)（蒸馏同事）对照 — **何必只蒸馏同事**；对本站读者，可把 **领域专家（如 Karpathy、Peng）** 的公开论述与 wiki 实体页 **分层**：wiki 编译 **事实与交叉引用**，Nuwa 编译 **决策启发式与表达风格**（上游另有 [karpathy-skill](https://github.com/alchaincyf/karpathy-skill) 独立仓）。
-- **与 LLM Wiki 互补：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 维护 **持久结构化知识**；女娲维护 **可对话的认知透镜** — 适合「用芒格视角审这笔投资」类问题，但不替代 ingest 溯源与 `make ci-preflight`。
+- **与 LLM Wiki 互补：** [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 维护 **持久结构化知识**；女娲维护 **可对话的认知透镜** — 适合「用芒格视角审这笔投资」类问题，但不替代 ingest 溯源与 `make ci-preflight`。
 - **生态三角：** **女娲** 造 skill → [Cangjie Skill](cangjie-skill.md) 从书/长视频造方法论 skill → [Darwin Skill](darwin-skill.md) 棘轮进化；女娲 Phase 5 双 agent 精炼内置达尔文评估思路。
 
 ## 核心结构
@@ -84,7 +84,7 @@ flowchart TD
 - [Andrej Karpathy](andrej-karpathy.md) — 本站 Karpathy 实体；对照上游 karpathy-skill
 - [autoresearch（karpathy）](karpathy-autoresearch.md) — Darwin 的灵感链上游
 - [Superpowers（obra）](superpowers-obra.md) — 编码交付流程 skill
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译范式
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 
 ## 参考来源

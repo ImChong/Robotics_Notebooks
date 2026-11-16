@@ -7,7 +7,7 @@ venue: "2026 preprint"
 related:
   - ../tasks/humanoid-soccer.md
   - ./unitree-g1.md
-  - ./paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
+  - ./paper-hrl-stack-26-learning-vision-driven-reactive-socc.md
   - ./paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md
 original:
   - ../../sources/papers/joga_learning_agile_humanoid_soccer.md
@@ -86,7 +86,7 @@ WB-UAN 是全身共享的无监督执行器模型：根据全身关节位置与�
 
 ## 与其他工作对比
 
-相较于常见的球检测加全身策略架构，Joga 将颈部运动纳入策略动作，并在训练中显式处理感知与执行器两类误差。与 [Vision-Driven Reactive Soccer](./paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) 的虚拟感知和 AMP 先验、[Agile Striker](./paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md) 的分阶段教师–学生训练相比，Joga 突出短时真机数据驱动的感知/全身动力学校准及行进中的技能衔接；各工作硬件、任务定义和评测场景不同，不宜只按速度指标排序。
+相较于常见的球检测加全身策略架构，Joga 将颈部运动纳入策略动作，并在训练中显式处理感知与执行器两类误差。与 [Vision-Driven Reactive Soccer](./paper-hrl-stack-26-learning-vision-driven-reactive-socc.md) 的虚拟感知和 AMP 先验、[Agile Striker](./paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md) 的分阶段教师–学生训练相比，Joga 突出短时真机数据驱动的感知/全身动力学校准及行进中的技能衔接；各工作硬件、任务定义和评测场景不同，不宜只按速度指标排序。
 
 ## 结论
 
@@ -143,7 +143,7 @@ WB-UAN 是全身共享的无监督执行器模型：根据全身关节位置与�
 
 - [Humanoid Soccer 任务](../tasks/humanoid-soccer.md)：足球技能与系统挑战总览。
 - [Unitree G1](./unitree-g1.md)：Joga 的真机平台。
-- [Vision-Driven Reactive Soccer](./paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)：视觉误差与 AMP 运动先验。
+- [Vision-Driven Reactive Soccer](./paper-hrl-stack-26-learning-vision-driven-reactive-socc.md)：视觉误差与 AMP 运动先验。
 - [Agile Striker](./paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md)：分阶段足球技能训练对照。
 
 ## 参考来源

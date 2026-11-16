@@ -24,7 +24,7 @@ related:
   - ./claude-code-game-studios.md
   - ./birdview.md
   - ./graphify.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
@@ -55,7 +55,7 @@ summary: "Superpowers（obra/superpowers）是一套面向多种编码代理 har
 
 ## 为什么重要（对本知识库读者）
 
-- **与「LLM 维护 wiki」同构的另一条轴：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 强调 **持久 wiki 与 cross-reference**；Superpowers 强调 **持久技能与可验证工程习惯**（TDD、评审、worktree）。两者都试图把 **人类策展 + 机器执行** 写成 **可重复、可审计** 的文件结构。
+- **与「LLM 维护 wiki」同构的另一条轴：** [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 强调 **持久 wiki 与 cross-reference**；Superpowers 强调 **持久技能与可验证工程习惯**（TDD、评审、worktree）。两者都试图把 **人类策展 + 机器执行** 写成 **可重复、可审计** 的文件结构。
 - **对机器人代码与仿真栈开发的迁移价值：** 本仓库读者常在 **Isaac Lab / MuJoCo / ROS2** 等多仓库、长链路场景下并行实验；`using-git-worktrees`、分任务子代理与 **RED/GREEN** 节奏，有助于降低「单会话上下文里乱改多模块」的风险（仍以团队自己的 CI 与规约为准）。
 - **生态位清晰：** 上游 README 明确技能集合与 **多 harness 安装差异**；贡献边界保守（不随意合并新技能），适合作为 **方法论参考** 而非未经验证的插件大杂烩。
 - **与「软件基础技能图」分工：** [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) 讲人要保留哪些 **取舍判断**；Superpowers 讲代理默认走哪条 **交付管线**。有流程无判断，仍会把 vibe coding 加速进生产。
@@ -118,7 +118,7 @@ flowchart TD
 - [Ponytail](ponytail.md) — **必要性阶梯减 LOC**（与本页「流程对」与 Caveman「措辞对」形成三角）
 - [Hermes Agent](hermes-agent.md) — **常驻代理运行时**（网关、记忆/技能、cron；与本页「流程技能」互补）
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 吴恩达五项 SE 基础：转向 agent 的取舍语言，不是语法记忆
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久结构化知识** 与 **人类策展** 的范式说明
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — **持久结构化知识** 与 **人类策展** 的范式说明
 - [WikiSkill（论文实体）](paper-wikiskill.md) — **持久 wiki + 可执行 skill** 共进化；与本页「技能文件交付」形成学术对照
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **ingest / query / lint** 操作规范
 - [Claude Code Game Studios（CCGS）](claude-code-game-studios.md) — **游戏域** 49 代理 + 74 skills + `project.yaml` rigor；与 Superpowers 的 **通用交付管线** 对照

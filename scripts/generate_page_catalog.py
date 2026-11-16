@@ -71,7 +71,7 @@ def get_type(relative: Path) -> str:
         return "[entity_page]"
     if "references/" in rel_str:
         return "[reference_page]"
-    if "roadmap/" in rel_str or "roadmaps/" in rel_str or "learning-paths/" in rel_str:
+    if "roadmap/" in rel_str or "learning-paths/" in rel_str:
         return "[roadmap_page]"
     if "tech-map/" in rel_str:
         return "[tech_map_node]"
@@ -124,8 +124,6 @@ def render_catalog() -> str:
         ("Wiki Comparisons（对比页）", WIKI / "comparisons"),
         ("Wiki Overview（总览）", WIKI / "overview"),
         ("Wiki Queries（问答归档）", WIKI / "queries"),
-        ("Wiki Roadmaps（Wiki 路线入口）", WIKI / "roadmaps"),
-        ("Wiki References（Wiki 参考索引）", WIKI / "references"),
         ("Roadmaps（路线页）", ROADMAP),
         ("Tech-map Nodes（技术栈节点）", TECHMAP),
         ("References（参考资料页）", ROOT / "references"),

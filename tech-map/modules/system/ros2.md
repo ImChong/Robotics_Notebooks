@@ -62,7 +62,7 @@ ROS 2 相对 ROS 1 的最大变化是采用 **DDS** 作为默认中间件实现�
 - 控制器插件（位置/速度/力矩、轨迹跟踪）与仿真后端（Gazebo、Isaac）可替换；
 - 是人形/机械臂从「算法输出」到「电机命令」的常见工程路径之一。
 
-本仓库 [sim2real 部署索引](../../../sources/sim2real.md) 将 Humble + ros2_control + [ATOM01 部署](../../../sources/repos/atom01_deploy.md) 列为典型组合。
+本仓库 [sim2real 部署索引](../../../sources/notes/sim2real.md) 将 Humble + ros2_control + [ATOM01 部署](../../../sources/repos/atom01_deploy.md) 列为典型组合。
 
 ### 3. 生态栈（按任务选）
 

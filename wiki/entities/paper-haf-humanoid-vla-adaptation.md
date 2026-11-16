@@ -14,7 +14,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../tasks/manipulation.md
   - ./paper-pi05-open-world-vla.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./paper-rove-humanoid-vla-intervention.md
   - ./paper-greenvla-staged-vla-humanoid.md
   - ./paper-hrl-stack-30-wholebodyvla.md
@@ -192,7 +192,7 @@ flowchart TB
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 移动操作任务与全身协调
 - [Behavior Cloning](../methods/behavior-cloning.md) — HAF-VLA 离线模仿主线
 - [π₀.₅](./paper-pi05-open-world-vla.md) — 主要 flow-matching 基线之一
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 人形 foundation VLA 基线
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) — 人形 foundation VLA 基线
 - [WholeBodyVLA](./paper-hrl-stack-30-wholebodyvla.md) — 另一套全身 VLA + 低层执行器分层
 - [ROVE](./paper-rove-humanoid-vla-intervention.md) — 人形 VLA 部署后训练另一路径
 - [X-Humanoid](./x-humanoid.md) — 天工硬件与开源生态

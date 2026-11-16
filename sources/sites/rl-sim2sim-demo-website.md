@@ -22,5 +22,5 @@
 
 - [sim2real](../../wiki/concepts/sim2real.md) — Sim2Sim 作为迁移前仿真验证入口
 - [amp-mjlab](../../wiki/entities/amp-mjlab.md) — AMP 走跑起身策略
-- [Perceptive Humanoid Parkour](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 感知跑酷
+- [Perceptive Humanoid Parkour](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) — 感知跑酷
 - [GentleHumanoid](../../wiki/entities/paper-gentlehumanoid.md) / [Axellwppr/motion_tracking](../../wiki/entities/axellwppr-motion-tracking.md) — 全身 tracking

@@ -7,7 +7,7 @@ summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创
 related:
   - ../entities/stanford-hai-discovery-loop-2026.md
   - ./retrieval-augmented-generation.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./recursive-self-improvement.md
   - ../entities/karpathy-autoresearch.md
   - ../entities/hermes-agent.md
@@ -67,7 +67,7 @@ AI 可以加速「研究形态」的产出，但 **科学实质**（证据、判
 
 ## 为什么重要（对本知识库读者）
 
-- **本库即实例**：Robotics_Notebooks 采用 [Karpathy LLM Wiki 模式](../references/llm-wiki-karpathy.md) — `ingest` / `query` / `lint` 把资料 **编译进 wiki** 并强制 `## 参考来源`，对应综述中 S2（文献综合）与 **治理/溯源** 主张。
+- **本库即实例**：Robotics_Notebooks 采用 [Karpathy LLM Wiki 模式](../concepts/llm-wiki-karpathy.md) — `ingest` / `query` / `lint` 把资料 **编译进 wiki** 并强制 `## 参考来源`，对应综述中 S2（文献综合）与 **治理/溯源** 主张。
 - **机器人 ML 研究栈**：S3（实验编排、paper-to-code、benchmark 复现）与 S4（图表）直接关联 sim2real、RL/IL 管线维护；综述列出的 **PaperBench、MLE-Bench、ResearchCodeBench** 等是评估「agent 能否做研究级实验」的通用标尺。
 - **Agent 基础设施对照**：[Hermes Agent](../entities/hermes-agent.md)（常驻运行时）、[Agent Reach](../entities/agent-reach.md)（外网读搜）、[Superpowers](../entities/superpowers-obra.md)（交付流程技能）分别覆盖执行、检索与工程纪律 — 宜按生命周期阶段 **组合** 而非指望单 agent 端到端。[Agent Lightning](../entities/agent-lightning.md)（微软）则把 **真实 harness 轨迹** 经 Gateway 代理接到 **verl** RL 环，适合 S3 上「coding / 工具 agent 策略后训练」而非替代 wiki 知识编译。[ScienceDiscovery](../entities/sciencediscovery.md)（[openJiuwen](../entities/openjiuwen.md)）把 S2 文献 MCP 与 S3 沙箱实验收进同一本地工作台，验证靠权限卡与 CAS 而非单一 metric。
 - **S3 最小实例**：[karpathy/autoresearch](../entities/karpathy-autoresearch.md) 把代理限制为只改 `train.py`、固定 5 分钟训练与 **val_bpb** 去留环，人类迭代 `program.md` — 直接演示 **Explore→Execute→Verify** 在 LLM 训练 ablation 上的落地。
@@ -181,7 +181,7 @@ flowchart LR
 
 ## 与其他页面的关系
 
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识 **预编译** 范式，对应 S2 深度综合而非每次 RAG。
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识 **预编译** 范式，对应 S2 深度综合而非每次 RAG。
 - [Hermes Agent](../entities/hermes-agent.md) — 常驻 agent OS：工具、记忆、网关、cron。
 - [Agent Reach](../entities/agent-reach.md) — 微信/ arXiv 等 **读搜上游** 聚合，偏 S2 资料获取。
 - [Superpowers（obra）](../entities/superpowers-obra.md) — TDD、worktree、评审子代理等 **交付纪律**。
@@ -219,7 +219,7 @@ flowchart LR
 
 - [Claude-shaped science](../entities/claude-shaped-science.md) — 适配模型能力的科研选题与专家判断。
 - [BootLoops](../entities/bootloops.md) — 精确计算工具与独立验证门禁，固定版本核查开放边界。
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md)
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md)
 - [Hermes Agent](../entities/hermes-agent.md)
 - [Agent Reach](../entities/agent-reach.md)
 - [Superpowers（obra）](../entities/superpowers-obra.md)

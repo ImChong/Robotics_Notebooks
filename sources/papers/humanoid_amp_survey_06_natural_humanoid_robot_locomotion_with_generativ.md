@@ -22,7 +22,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-amp-survey-06-natural_humanoid_robot_locomotion_wi](../../wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) — 主实体页（深读归纳）
+- [paper-amp-survey-06-natural_humanoid_robot_locomotion_wi](../../wiki/entities/paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md) — 主实体页（深读归纳）
 - [amp-reward](../../wiki/methods/amp-reward.md)、[locomotion](../../wiki/tasks/locomotion.md)
 - [paper-amp-survey-08-more](../../wiki/entities/paper-amp-survey-08-more.md) — 对抗多判别器对照
 

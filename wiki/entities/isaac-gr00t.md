@@ -6,7 +6,7 @@ updated: 2026-11-15
 summary: "Isaac GR00T 是 NVIDIA 开源的人形 VLA 开发平台：GR00T N1.7 GA 参考代码、LeRobot 数据管线、后训练/评测/TensorRT 部署，并与 Isaac Lab-Arena、Teleop、Isaac ROS 组成端到端策略流水线。"
 related:
   - ./nvidia-gr00t-e2e-g1-workflow.md
-  - ../entities/paper-hrl-stack-34-gr00t_n1.md
+  - ../entities/paper-hrl-stack-34-gr00t-n1.md
   - ../entities/paper-gr00t-n1-5.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/lerobot.md
@@ -38,7 +38,7 @@ sources:
 
 > **名称消歧：** 本页是 **NVIDIA Isaac** 仿真/人形 VLA **平台**。Perceptron 2026-08 发布的开源通才模型也叫 Isaac，见 [Perceptron Isaac 0.5](./perceptron-isaac-05.md) — 二者无代码或权重关系。
 
-> **论文机制深读：** [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) — N1 双系统架构、数据金字塔与 GR-1 评测以 arXiv:2503.14734 为准。  
+> **论文机制深读：** [GR00T N1](../entities/paper-hrl-stack-34-gr00t-n1.md) — N1 双系统架构、数据金字塔与 GR-1 评测以 arXiv:2503.14734 为准。  
 > **全身低层控制：** [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) — G1 上 `UNITREE_G1_SONIC` latent → SONIC WBC 解码。
 
 ## 一句话定义
@@ -66,7 +66,7 @@ Isaac GR00T 把「采集 demonstration → LeRobot 格式 → GR00T N1.7 后训�
 
 ## 核心原理
 
-N1.7 的「模型内部」以仓库 `Gr00tN1d7Config`（`gr00t/configs/model/gr00t_n1d7.py`）为准，与 [N1 论文](./paper-hrl-stack-34-gr00t_n1.md)的双系统思路一脉相承，但主要超参已不同：
+N1.7 的「模型内部」以仓库 `Gr00tN1d7Config`（`gr00t/configs/model/gr00t_n1d7.py`）为准，与 [N1 论文](./paper-hrl-stack-34-gr00t-n1.md)的双系统思路一脉相承，但主要超参已不同：
 
 | 模块 | N1 论文（2B） | N1.7 代码默认值 |
 |------|---------------|-----------------|
@@ -168,7 +168,7 @@ NVIDIA 与 [具身智能研究室](https://mp.weixin.qq.com/s/Y2mlKtd-dGGdA33Sx_
 
 ## 关联页面
 
-- 论文 canonical：[paper-hrl-stack-34-gr00t_n1.md](../entities/paper-hrl-stack-34-gr00t_n1.md)  
+- 论文 canonical：[paper-hrl-stack-34-gr00t-n1.md](../entities/paper-hrl-stack-34-gr00t-n1.md)  
 - 低层 WBC / SONIC：[gr00t-wholebodycontrol.md](../entities/gr00t-wholebodycontrol.md)  
 - 数据互操作：[lerobot.md](../entities/lerobot.md)
 - 官方数据索引：[nvidia-physical-ai-datasets.md](./nvidia-physical-ai-datasets.md) — GR00T / Teleop / LeRobot v3 子集

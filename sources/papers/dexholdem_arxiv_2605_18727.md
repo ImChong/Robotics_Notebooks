@@ -66,4 +66,4 @@ GPT 5.5 field-wise 66.8%，严格 Overall 只有 31.5%。盲注/轮次标记接�
 ## 对 wiki 的映射
 
 - 实体页：[wiki/entities/paper-dexholdem.md](../../wiki/entities/paper-dexholdem.md)
-- 交叉：[操作](../../wiki/tasks/manipulation.md)、[接触丰富操作](../../wiki/concepts/contact-rich-manipulation.md)、[DexBench](../../wiki/entities/dexbench.md)、[具身评测枢纽](../../wiki/overview/hub-embodied-eval-benchmark.md)、[评测选型闭环](../../wiki/queries/embodied-eval-benchmark-selection-loop.md)、[π₀](../../wiki/methods/π0-policy.md)、[VLA](../../wiki/methods/vla.md)、[Diffusion Policy](../../wiki/methods/diffusion-policy.md)
+- 交叉：[操作](../../wiki/tasks/manipulation.md)、[接触丰富操作](../../wiki/concepts/contact-rich-manipulation.md)、[DexBench](../../wiki/entities/dexbench.md)、[具身评测枢纽](../../wiki/overview/hub-embodied-eval-benchmark.md)、[评测选型闭环](../../wiki/queries/embodied-eval-benchmark-selection-loop.md)、[π₀](../../wiki/methods/pi0-policy.md)、[VLA](../../wiki/methods/vla.md)、[Diffusion Policy](../../wiki/methods/diffusion-policy.md)

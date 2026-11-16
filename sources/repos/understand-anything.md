@@ -52,4 +52,4 @@
 
 - 主实体：[Understand Anything](../../wiki/entities/understand-anything.md)
 - 站点归档：[understand-anything.md](../sites/understand-anything.md)
-- 交叉：[graphify](../../wiki/entities/graphify.md)、[LLM Wiki（Karpathy）](../../wiki/references/llm-wiki-karpathy.md)、[CLI-Anything](../../wiki/entities/cli-anything.md)
+- 交叉：[graphify](../../wiki/entities/graphify.md)、[LLM Wiki（Karpathy）](../../wiki/concepts/llm-wiki-karpathy.md)、[CLI-Anything](../../wiki/entities/cli-anything.md)

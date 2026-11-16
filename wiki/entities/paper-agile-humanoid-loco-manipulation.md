@@ -25,7 +25,7 @@ related:
 - ../methods/ppo.md
 - ../concepts/privileged-training.md
 - ../methods/vla.md
-- ./paper-hrl-stack-34-gr00t_n1.md
+- ./paper-hrl-stack-34-gr00t-n1.md
 - ./paper-loco-manip-161-040-homie.md
 - ./paper-humanoid-touch-dream.md
 - ../overview/humanoid-loco-manip-161-papers-technology-map.md
@@ -239,7 +239,7 @@ AGILE 先从相机图像/多视角观测、本体状态与关节序列、仿真�
 - [Unitree G1](./unitree-g1.md) — 主要验证平台之一
 - [BeyondMimic](../methods/beyondmimic.md) — 运动模仿对照与依赖谱系
 - [PPO](../methods/ppo.md) / [Privileged Training](../concepts/privileged-training.md) — 训练与蒸馏读法
-- [VLA](../methods/vla.md) / [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 上身专家微调路径
+- [VLA](../methods/vla.md) / [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) — 上身专家微调路径
 - [HOMIE](./paper-loco-manip-161-040-homie.md) — 分层 loco-manip 对照
 - [HTD 解耦 WBC](paper-humanoid-touch-dream.md) — 另一条 Isaac Lab 单 GPU 解耦下肢控制器（G1，HTD）
 

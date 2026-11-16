@@ -8,7 +8,7 @@ related:
   - ./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
   - ./paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ./paper-ame-attention-based-map-encoding.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-notebook-anymal-parkour-robust-perceptive-locomotion.md
   - ./isaac-lab.md
   - ./rsl-rl.md
@@ -177,7 +177,7 @@ flowchart TB
 |------|----------|
 | [AME-2](./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) | 稠密地形高程/注意力；本文把 **同一编码器** 迁到 **原始 E1R 稀疏点云** |
 | [LadderMan](./paper-ladderman-humanoid-perceptive-ladder-climbing.md) | 深度+VFM 梯子攀爬；本文 **LiDAR 直接感知** + **荡杆/跳跃** 全序列 |
-| [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) | 稠密障碍跑酷 + motion matching；本文专攻 **厘米级悬空细杆** |
+| [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) | 稠密障碍跑酷 + motion matching；本文专攻 **厘米级悬空细杆** |
 | [ANYmal Parkour](./paper-notebook-anymal-parkour-robust-perceptive-locomotion.md) | 技能库切换；本文把多教师 **焊成单策略**，阶段调度只在训练期 |
 | 体素 / 高程图路线（如 Gallant） | 丢悬空结构或算存随分辨率暴涨；本文 **map-free raw LiDAR** |
 
@@ -193,7 +193,7 @@ flowchart TB
 
 - [AME-2](./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 本文感知编码器直接前作
 - [LadderMan](./paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 人形梯子攀爬（深度路线对照）
-- [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 稠密地形端到端感知跑酷
+- [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) — 稠密地形端到端感知跑酷
 - [ANYmal Parkour](./paper-notebook-anymal-parkour-robust-perceptive-locomotion.md) — 技能库对照：训练期多专家 vs 部署期切换
 - [楼梯与障碍感知 locomotion](../tasks/stair-obstacle-perceptive-locomotion.md) — 感知 loco 任务枢纽
 - [Privileged training](../concepts/privileged-training.md) — 教师–学生范式

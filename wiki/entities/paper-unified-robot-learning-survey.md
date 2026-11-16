@@ -150,4 +150,4 @@ Fig. 1 的理想顺序是：先从观测建环境表征 → 再映射到动作 �
 ## 推荐继续阅读
 
 - [arXiv:2609.03927](https://arxiv.org/abs/2609.03927)（HTML 含 Table 2/4/8）
-- 已有节点：[OpenVLA](./paper-openvla.md)、[π₀](../methods/π0-policy.md)、[PointWorld](./paper-sa-2601-03782-pointworld.md)
+- 已有节点：[OpenVLA](./paper-openvla.md)、[π₀](../methods/pi0-policy.md)、[PointWorld](./paper-sa-2601-03782-pointworld.md)

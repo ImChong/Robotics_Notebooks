@@ -117,7 +117,7 @@
           "title": "Whole-Body Humanoid Locomotion",
           "track": "人形全身 / 感知运动",
           "desc": "地形条件扩散生成器在线出全身参考，DeepMimic 式 RL 跟踪器执行并闭环微调；G1 机载感知完成箱攀、跨栏与楼梯；与 SFU Peng 组合作。",
-          "id": "entity-paper-hrl-stack-27-learning_whole_body_humanoid_locomot",
+          "id": "entity-paper-hrl-stack-27-learning-whole-body-humanoid-locomot",
           "url": "https://arxiv.org/abs/2604.17335",
           "date_note": "arXiv:2604.17335 v1 为 2026-04-19。"
         },
@@ -403,7 +403,7 @@
           "title": "PHP Parkour",
           "track": "感知跑酷 / 技能拼接",
           "desc": "motion matching 把原子跑酷技能与行走拼成长程参考，DAgger + PPO 蒸馏为单一深度学生策略；G1 仅凭机载深度与 2D 速度指令完成 1.25 m 攀墙与多障碍长程跑酷；RSS 2026。",
-          "id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+          "id": "entity-paper-hrl-stack-22-perceptive-humanoid-parkour",
           "url": "https://arxiv.org/abs/2602.15827",
           "date_note": "arXiv:2602.15827 v1 为 2026-02-17（UTC）；多机构合作（本库页标签含 Amazon FAR、Berkeley、CMU、Stanford），列于 LeCAR 官网项目区，不等于仅由 LeCAR 完成。"
         },
@@ -435,7 +435,7 @@
           "title": "ALMI",
           "track": "上下半身对抗 / 全身控制",
           "desc": "下半身 locomotion 与上半身 mimic 两策略互相对抗迭代训练，逼近纳什均衡，并发布 ALMI-X 数据集；NeurIPS 2025。",
-          "id": "entity-paper-amp-survey-07-adversarial_locomotion_and_motion_im",
+          "id": "entity-paper-amp-survey-07-adversarial-locomotion-and-motion-im",
           "url": "https://arxiv.org/abs/2504.14305",
           "date_note": "按 arXiv:2504.14305 编号月份（v1 提交月）；会议收录见详情页"
         },

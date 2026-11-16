@@ -105,7 +105,7 @@ flowchart TB
 | 03 | EgoMimic | 02 | [paper-ego-03-egomimic](../entities/paper-ego-03-egomimic.md) |
 | 04 | EMMA | 02 | [paper-ego-04-emma](../entities/paper-ego-04-emma.md) |
 | 05 | Gaze2Act | 02 | [paper-ego-05-gaze2act](../entities/paper-ego-05-gaze2act.md) |
-| 06 | Ego-Vision WM | 03 | [paper-hrl-stack-33](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
+| 06 | Ego-Vision WM | 03 | [paper-hrl-stack-33](../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) |
 | 07 | WEM | 03 | [paper-wem](../entities/paper-wem-world-ego-modeling.md) |
 | 08 | EgoExoMem | 04 | [paper-ego-08-egoexomem](../entities/paper-ego-08-egoexomem.md) |
 | 09 | E³C | 04 | [paper-ego-09-e3c](../entities/paper-ego-09-e3c.md) |

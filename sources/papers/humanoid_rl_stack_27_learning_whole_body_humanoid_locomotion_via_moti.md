@@ -22,7 +22,7 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[Learning Whole-Body Humanoid Locomotion（#27）](../../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)
+- 实体页：[Learning Whole-Body Humanoid Locomotion（#27）](../../wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md)
 - 深度 source：[eth-g1-diffusion.md](./eth-g1-diffusion.md)、[wholebody-locomotion.md](../sites/wholebody-locomotion.md)
 
 ## 参考来源（原始）

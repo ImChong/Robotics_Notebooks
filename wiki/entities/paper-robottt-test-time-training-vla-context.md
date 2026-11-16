@@ -10,7 +10,7 @@ related:
   - ../methods/vla.md
   - ../methods/action-chunking.md
   - ../methods/dagger.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./paper-notebook-ttt-parkour.md
   - ./paper-wam-ttt-human-video-test-time-steering.md
   - ./paper-stellavla-structured-icl-vla.md
@@ -164,7 +164,7 @@ flowchart TB
 ## 关联页面
 
 - [VLA（Vision-Language-Action）](../methods/vla.md) 论文所扩展的基础模型抽象
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) 与 [Isaac GR00T](./isaac-gr00t.md) 论文的底座模型线
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) 与 [Isaac GR00T](./isaac-gr00t.md) 论文的底座模型线
 - [Action Chunking](../methods/action-chunking.md) 动作头按 chunk 预测的背景
 - [流匹配具身策略](../concepts/flow-matching-embodied-policy.md) 动作头的训练目标背景
 - [DAgger](../methods/dagger.md) DAgger Distillation 所对照的标准做法
