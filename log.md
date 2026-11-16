@@ -460,6 +460,14 @@ op: ingest
 - **主要位置：** [唯一论文实体](../wiki/entities/paper-towards-agentic-robots-survey.md)、[v1 来源归档](../sources/papers/towards_agentic_robots_arxiv_2610_20442.md)、[VLA Stage 4](../roadmap/depth-vla.md)。
 - **待完成：** e-print 源包在当前环境无法解包，全部引用未逐条审计；故来源归档为「通读：未完成」、实体保持 draft；健康度需以脚本实测为准。
 
+# 2026-11-16 · ingest
+
+- 完整读取具身运控lab《11.09–11.13 人形／四足 29 篇》原始上传 PDF，建立 29 篇独立论文阅读坐标。
+- 以 arXiv 主身份去重：复用 15 篇已完成论文详情；升级已有 BlinkMimic 草稿 1 篇；新建 13 篇独立论文节点及其一手原文归档。
+- 本次更新的 14 篇论文包含方法、实验、局限、Mermaid 主流程、双语标题、跨页面引用；BlinkMimic 与 FORGE 另基于实际可运行入口添加源码运行时序图。
+- 本次 29 篇均有健康度 3/3 的结构化判据；最终以报告脚本与 CI 实测为准。
+- [29 篇阅读坐标](../wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+
 ## [2026-11-16] ingest | sources/blogs/wechat-robotics-29-papers-2026-11-16.md | 29 篇具身论文导览线索与两篇重点原文
 
 - 意图：归档用户提供的 8 页论文动态，不用转载摘要代替 29 篇论文核读。

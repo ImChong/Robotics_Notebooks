@@ -2248,6 +2248,7 @@
 - [CAP（arXiv:2609.11553）](wiki/entities/paper-cap-perception-blind-humanoid.md) — CAP（Continuously Adaptive Perception-Blind Humanoid Locomotion via Learned Denoising，arXiv:2609.1155 `📅2026-09-17` `[entity_page]`
 - [CapPro：单段人类视频引导的 VLA 新任务适配](wiki/entities/paper-cappro.md) — CapPro（论文 One-shot Human Video-Guided Adaptation for Vision-Language-Action Models，arXiv:2610.19746， `📅2026-10-15` `[entity_page]`
 - [CaPtain（arXiv:2610.40799）](wiki/entities/paper-captain.md) — CaPtain（CaPtain: A Pipeline for Post-Training Code-as-Policy Robot Agents，arXiv:2610.40799，项目页，代码）来自 `📅2026-11-03` `[entity_page]`
+- [可捕获性约束的安全走廊足步规划（Capturability-Aware Footstep Planning in Cluttered Environments: A Recursively Feasible Sequential MPC on Axis-Aligned Safe Corridors）](wiki/entities/paper-capturability-footstep-mpc.md) — 机构： 雅典国家技术大学、加州大学伯克利分校、特拉华大学、Athena 研究中心 `📅2026-11-16` `[entity_page]`
 - [CapVector（VLA 参数空间可迁移能力向量）](wiki/entities/paper-capvector-capability-vectors-vla.md) — CapVector 是 HKUST（广州）、浙江大学、西湖大学、清华大学与北京智源等合作者的论文工作（arXiv:2605.10903，项目页 capvector.github.io）：针对 预训练 `📅2026-11-15` `[entity_page]`
 - [CARD（接触锚定的灵巧操作重定向）](wiki/entities/paper-card-contact-anchored-retargeting.md) — CARD（Contact-Anchored Retargeting for Dexterous Manipulation，arXiv:2610.36539）通过保留接触力目标，将人类示范映射为机器人动 `📅2026-11-06` `[entity_page]`
 - [Scaling Continual Learning to 300+ Tasks with Bi-Level Routing Mixture-of-Experts / 双层路由专家混合：扩展至 300 余项任务的持续学习](wiki/entities/paper-care-bi-level-routing.md) — CaRE 在预训练视觉 Transformer 的各层加入双层路由专家模块，按输入检索历史任务的相关知识，以解决图像分类中的长序列类别增量学习。 `📅2026-11-02` `[entity_page]`
@@ -2314,6 +2315,7 @@
 - [CoHuB：多个人形机器人协作仿真基准](wiki/entities/paper-cohub.md) — CoHuB: A Simulation Benchmark for Multi-Humanoid Collaboration（arXiv:2609.34782）聚焦一个机器人学习/控制缺口：现有人形基 `📅2026-10-06` `[entity_page]`
 - [COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）](wiki/entities/paper-coins-compositional-human-scene-interaction.md) — COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control，Zhao et al.，ECCV 2022，ar `📅2026-11-15` `[entity_page]`
 - [多操作员多机器人遥操作界面（arXiv:2610.15001）](wiki/entities/paper-collaborative-teleoperation-multi-operator-multi-robot.md) — 多操作员多机器人遥操作界面（Design and Evaluation of a Collaborative Teleoperation Interface for Multi-Operator Mu `📅2026-10-14` `[entity_page]`
+- [混合地形建模的内存高效坍塌反应式撤退策略学习（Memory-Efficient Parallel Policy Learning for Collapse-Reactive Retreat via Hybrid Terrain Modeling）](wiki/entities/paper-collapse-retreat-hybrid-terrain.md) — 机构： 福岛国际研究教育机构（F-REI）、奈良先端科学技术大学院大学 `📅2026-11-16` `[entity_page]`
 - [Commander–Executor：多角色协作操作的规划与策略迁移](wiki/entities/paper-commander-executor-coordination.md) — 一句话定义： 该方法把长程协作操作拆成「Commander 规划共享物体轨迹与角色线索」和「Executor 用共享物理策略完成仿真人形角色交互」两层。 `📅2026-10-19` `[entity_page]`
 - [CommNav（通信使能社交导航）](wiki/entities/paper-commnav.md) — CommNav（Robots Ask the Way: Communication-Enabled Social Navigation，arXiv:2607.01044，IROS 2026）来自 罗马 `📅2026-09-25` `[entity_page]`
 - [Commodity-Price Closed-Loop Evaluation（arXiv:2611.07441）](wiki/entities/paper-commodity-price-closed-loop-evaluation.md) — Commodity-Price Closed-Loop Evaluation（Closed-Loop Physics-Based Manipulation Evaluation at a Commod `📅2026-11-06` `[entity_page]`
@@ -2783,6 +2785,7 @@
 - [Feijoa（arXiv:2611.04080）](wiki/entities/paper-feijoa.md) — Feijoa（Feijoa: Task-Driven Grounding and Execution for Mobile Manipulation，arXiv:2611.04080，项目页）来自 具 `📅2026-11-05` `[entity_page]`
 - [股静脉压缩仿真（arXiv:2611.12818）](wiki/entities/paper-femoral-vein-compressibility-sim.md) — 股静脉压缩仿真（Simulating Vein Compressibility for Ultrasound-Guided Femoral Access: Speed, Accuracy, and P `📅2026-11-11` `[entity_page]`
 - [FER ROS 2 Panda 栈](wiki/entities/paper-fer-ros2-panda-stack.md) — Keeping the Franka Emika Panda alive: a ROS 2 stack with a reliable position interface（arXiv:2608.19 `📅2026-09-15` `[entity_page]`
+- [节庆视频到人形机器人长时舞台表演的 Sim2Real 阶梯（From Festival Video to the Stage: A Sim-to-Real Ladder for Long-Horizon Expressive Whole-Body Dance on a Commercial Humanoid）](wiki/entities/paper-festival-video-stage-dance.md) — 机构： Arithmer 株式会社研发部 `📅2026-11-16` `[entity_page]`
 - [Fetch My Beer（arXiv:2609.18119）](wiki/entities/paper-fetch-my-beer.md) — Fetch My Beer（Fetch My Beer: Synthetic-to-real Hierarchical Policy for Smooth Pick-and-place，arXiv:2 `📅2026-09-23` `[entity_page]`
 - [FetchMan：仿真视觉人形 loco-manipulation](wiki/entities/paper-fetchman.md) — FetchMan（Learning Visual Humanoid Loco-Manipulation Policies from Simulated Experiences，arXiv:2608.1 `📅2026-08-25` `[entity_page]`
 - [Fiatlux：G1 攀梯换灯长时程基准](wiki/entities/paper-fiatlux.md) — Fiatlux 把搬梯、上下梯、双手换灯与易碎物品处置放进同一维护任务，用十二个子任务定位失败环节；它提供评测环境，完整自主换灯仍未解决。 `📅2026-10-02` `[entity_page]`
@@ -2858,6 +2861,7 @@
 - [Foresight (PI)](wiki/entities/paper-foresight-action-conditioned-failure-monitoring.md) — Foresight (PI) 收录于 具身智能研究室 · 具身世界模型六路线综述 趋势与判断 段。本页为知识库 策展编译 详情节点；量化指标以原文 PDF / 项目页为准。 `📅2026-08-25` `[entity_page]`
 - [ForeTac：先预测触觉后果，再引导动作生成](wiki/entities/paper-foretac.md) — ForeTac 在冻结的扩散或 flow matching 策略上增加一个「表示-预测-评估-引导」环：先编码当前触觉，再预测候选动作序列的未来触觉，用接触质量打分器评估，并把梯度沿预测器回传到采样状 `📅2026-10-17` `[entity_page]`
 - [ForeTime-VLA：世界模型未来 Token 蒸馏](wiki/entities/paper-foretime-vla.md) — ForeTime-VLA（Causal Future-Token Distillation from a World Action Model for Conveyor-Belt Manipulati `📅2026-10-06` `[entity_page]`
+- [FORGE：力感知多粒度人形移动操作（FORGE: Force-Aware Multi-Granularity Control for Efficient Humanoid Loco-Manipulation）](wiki/entities/paper-forge-force-aware-loco-manipulation.md) — 机构： 上海人工智能实验室、清华大学、浙江大学、上海交通大学、香港中文大学 `📅2026-11-16` `[entity_page]`
 - [FORGE：面向敏捷人形运动的在线可行降阶参考生成与全身执行](wiki/entities/paper-forge-humanoid-reduced-order-reference.md) — FORGE（FORGE: Feasible Online Reduced-Order Reference Generation and Whole-Body Execution for Agile H `📅2026-11-02` `[entity_page]`
 - [ForgetMimic（arXiv:2609.28378）](wiki/entities/paper-forgetmimic.md) — ForgetMimic: Motion Unlearning for Reinforcement Learning Humanoid Control（代码，arXiv:2609.28378）来自 具身 `📅2026-09-24` `[entity_page]`
 - [ForkCast：通过反事实未来实现 VLA 的预测式恢复](wiki/entities/paper-forkcast-counterfactual-recovery.md) — ForkCast 在每个决策点比较"继续执行、换视角观察、重新规划"三种候选的预测结果，只在预测会更好时才干预冻结的 VLA。 `📅2026-10-22` `[entity_page]`
@@ -3070,6 +3074,7 @@
 - [HIL：混合模仿学习做动态运动控制](wiki/entities/paper-hil-hybrid-imitation-learning.md) — HIL（Hybrid Imitation Learning for Dynamic Athletic Control，ACM Transactions on Graphics 2026，预印本 arX `📅2026-09-15` `[entity_page]`
 - [HiLo-WAM（arXiv:2611.05023）](wiki/entities/paper-hilo-wam.md) — HiLo-WAM（HiLo-WAM: Decoupling Long-Horizon Task Evolution and Local Dynamics in World Action Models， `📅2026-11-05` `[entity_page]`
 - [HINT：长视野操作的人类意图注入](wiki/entities/paper-hint-robot-manipulation.md) — HINT（Human-Intent Inception for Long-Horizon Robot Manipulation，arXiv:2609.02653，项目页）由 浙江大学（ZJU）、上海交 `📅2026-09-15` `[entity_page]`
+- [具身视觉语言模型驱动的崎岖地形交互导航（HINT-VLM: Humanoid Interactive Navigation over Rough Terrain with Embodiment-Grounded Vision-Language Model）](wiki/entities/paper-hint-vlm-rough-terrain.md) — 机构： 佐治亚理工学院、VinMotion、南加州大学 `📅2026-11-16` `[entity_page]`
 - [hint²：层级世界模型推理时 LTL 引导](wiki/entities/paper-hint2.md) — hint²（Hierarchical World Models for Inference-Time Temporal Logic Guidance；arXiv:2608.13678，补充材料）由 P `📅2026-09-15` `[entity_page]`
 - [HiPHI（高精度人体运动与人–物交互基准）](wiki/entities/paper-hiphi.md) — HiPHI 是面向人形学习的光学动捕数据集与基准：以语义结构设计运动覆盖，同时记录人体动作、物体轨迹和物体几何，作为重定向与全身模仿的参考源。 `📅2026-11-15` `[entity_page]`
 - [HiPhys-RSI：Scaling by Structure｜结构化扩展：BEHAVIOR 2026 冠军 Agent 驱动机器人 Pipeline](wiki/entities/paper-hiphys-rsi.md) — HiPhys-RSI（Hierarchical Physical Recursive Self-Improvement） 让冻结的视觉语言编程 Agent 把导航、视觉感知、规划、逆运动学和控制工具编 `📅2026-11-12` `[entity_page]`
@@ -3635,6 +3640,7 @@
 - [MotionDisco（极端人形 Loco-Manipulation 运动发现）](wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — MotionDisco（Motion Discovery for Extreme Humanoid Loco-Manipulation，arXiv:2606.06139，TUM · NYU · CMU `📅2026-10-06` `[entity_page]`
 - [MotionForge: A Data Generation Pipeline and Large-Scale Benchmark for Long-Horizon Manipulation of Dynamic Objects with Domain Shifts](wiki/entities/paper-motionforge.md) — MotionForge生成动态物体长程操作任务，改变速度、物体、背景和光照以测域偏移。 `📅2026-10-07` `[entity_page]`
 - [MotionJEPA：在隐空间捕获视觉变化以防止时间特征坍塌](wiki/entities/paper-motionjepa.md) — MotionJEPA（Preventing Temporal Feature Collapse by Capturing Visual Changes in Latent Space，arXiv:26 `📅2026-09-26` `[entity_page]`
+- [从双足视频到跨形态运动控制 MotionSkill（MotionSkill: From Bipedal Motion Video to Control across Embodiments）](wiki/entities/paper-motionskill-cross-embodiment.md) — 机构： Fortune AI `📅2026-11-16` `[entity_page]`
 - [MotionSpaceFlow：在原始动作空间直接做流匹配](wiki/entities/paper-motionspaceflow.md) — MotionSpaceFlow（MSFlow，Representation-Aware Flow Matching in Direct Motion Space，arXiv:2609.34190，项目 `📅2026-10-10` `[entity_page]`
 - [MotionWAM（实时人形 Loco-Manipulation · World Action Model）](wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — MotionWAM（Towards Foundation World Action Models for Real-Time Humanoid Loco-Manipulation，arXiv:2606 `📅2026-11-14` `[entity_page]`
 - [MotorDev-RL：利用人形机器人验证人类运动发育量表](wiki/entities/paper-motor-development-scales-humanoid-curriculum.md) — MotorDev-RL（Validation of Human Motor Development Scales with Humanoid Robots，arXiv:2610.25701）收录于 s `📅2026-10-26` `[entity_page]`
@@ -4247,6 +4253,7 @@
 - [Peg-in-Bench：高精度插入模块化基准](wiki/entities/paper-peg-in-bench.md) — Peg-in-Bench（A Modular Benchmark for High-Precision Robotic Insertion，arXiv:2609.00906）由 日本产业技术综合研究所 `📅2026-09-15` `[entity_page]`
 - [Pelican-Sim 1.0（arXiv:2609.12036）](wiki/entities/paper-pelican-sim.md) — Pelican-Sim 1.0（Pelican-Sim 1.0: A General World Model Simulator for Embodied Intelligence）由 北京人形机器人 `📅2026-09-16` `[entity_page]`
 - [Sim-to-real transfer of robotic control with dynamics randomization](wiki/entities/paper-peng-dynamics-randomization-sim2real.md) — Sim-to-real transfer of robotic control with dynamics randomization（arXiv:1710.06537）收录于 自由度FreeDof `📅2026-10-06` `[entity_page]`
+- [PERA：面向持续全身控制的可插拔动作专家（PERA: Plug-in Experts for Robotic Actions in Continual Whole-Body Control）](wiki/entities/paper-pera-plugin-experts.md) — 机构： 原文 v1 未列出作者机构 `📅2026-11-16` `[entity_page]`
 - [Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain](wiki/entities/paper-perceptive-bfm.md) — Perceptive BFM（Perceptive Behavior Foundation Model: Adapting Human Motion Priors to Robot-Centric T `📅2026-10-27` `[entity_page]`
 - [PerchRL](wiki/entities/paper-perchrl-2606-03441.md) — PerchRL: Vision-Based Agile Perching on Inclined Platforms under Rapid and Irregular Motion（arXiv:26 `📅2026-10-06` `[entity_page]`
 - [PETS](wiki/entities/paper-pets-probabilistic-dynamics-mpc.md) — PETS 收录于 具身智能研究室 · 具身世界模型六路线综述 规划主导型 段。本页为知识库 策展编译 详情节点；量化指标以原文 PDF / 项目页为准。 `📅2026-08-25` `[entity_page]`
@@ -4320,6 +4327,7 @@
 - [POISE：手内物体到达任意 6D 位姿](wiki/entities/paper-poise-in-hand-6d-pose-reaching.md) — POISE（Learning In-Hand Object Reaching to General 6D Poses，arXiv:2609.13761，项目页）由悉尼大学、Sharpa、香港大学合作（ `📅2026-10-22` `[entity_page]`
 - [Beyond Validation Loss: Coverage and Reliability Dynamics in Robot Policy Pretraining / 超越验证损失：机器人策略预训练的覆盖度与可靠性动态](wiki/entities/paper-policy-coverage-reliability.md) — 本文研究机器人策略预训练中覆盖度与可靠性的权衡，提出离线检查点选择和生成式数据增强。 `📅2026-11-04` `[entity_page]`
 - [PolicyIK：高精度强化学习逆运动学 / High-Precision RL Inverse Kinematics](wiki/entities/paper-policyik.md) — PolicyIK（PolicyIK: High-Precision Inverse Kinematics for Robot Arms with Reinforcement Learning；arXi `📅2026-11-08` `[entity_page]`
+- [四足跨机械臂形态末端轨迹全身控制 PolyMorphWBC（PolyMorphWBC: Whole-Body Control from End-Effector Trajectories for Quadrupedal Mobile Manipulation across Arm Morphologies with Extended Reach）](wiki/entities/paper-polymorphwbc-quadruped.md) — 机构： 中国科学技术大学 `📅2026-11-16` `[entity_page]`
 - [PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomization](wiki/entities/paper-polysim-multi-simulator-humanoid-sim2real.md) — PolySim: bridging the sim-to-real gap for humanoid control via multi-simulator dynamics randomizatio `📅2026-10-06` `[entity_page]`
 - [PolyUMI](wiki/entities/paper-polyumi.md) — PolyUMI（Accessible Visual-Tactile-Audio Data Collection for Object Inference and Manipulation，arXiv: `📅2026-09-26` `[entity_page]`
 - [POSE（arXiv:2609.19460）](wiki/entities/paper-pose-semantic-legged-exploration.md) — POSE（Pose-aware Legged Robot Semantic Exploration with Omnidirectional Perception in Confined Unknow `📅2026-09-20` `[entity_page]`
@@ -4852,6 +4860,7 @@
 - [无奖励持续适应：太空机器人的潜奖励景观](wiki/entities/paper-reward-free-continual-adaptation-space.md) — Reward-Free Continual Adaptation for Resilient Space Robots（arXiv:2608.23452，代码）由 卢森堡大学（University o `📅2026-09-15` `[entity_page]`
 - [Residual Force Control（RFC，NeurIPS 2020）](wiki/entities/paper-rfc-residual-force-control.md) — Residual Force Control for Agile Human Behavior Imitation and Extended Motion Synthesis（Ye Yuan、Kris `📅2026-07-28` `[entity_page]`
 - [RFPO：把具身 Flow policy 压到单步推理](wiki/entities/paper-rfpo-rectified-flow-policy-optimization.md) — RFPO（Rectified Flow Policy Optimization for Embodied Control，arXiv:2610.10453，项目页，GitHub）研究如何在不明显损失控 `📅2026-10-11` `[entity_page]`
+- [单图度量场景对齐与接触引导动作重定向（From a Single RGB Image to Robot Execution: Metric Scene Alignment and Contact-Guided Retargeting）](wiki/entities/paper-rgb-scene-contact-retargeting.md) — 机构： 北京化工大学、国防科技大学、松延动力 `📅2026-11-16` `[entity_page]`
 - [Rho：面向高效适应的 VLA 基础模型](wiki/entities/paper-rho.md) — Rho: A Foundation for Efficiently Adaptable VLA Models（arXiv:2609.38164）聚焦一个机器人学习/控制缺口：通用 VLA 一方面需要从 `📅2026-10-06` `[entity_page]`
 - [Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）](wiki/entities/paper-rhythm-dual-humanoid-interaction.md) — Rhythm 是面向 双 humanoid 物理耦合全身交互 的系统论文（arXiv:2603.02856）：在 两台 Unitree G1 真机上首次报告 拥抱、共舞、问候、肩并肩 等 富接触 / `📅2026-09-15` `[entity_page]`
 - [Rich Human Feedback（arXiv:2312.10240）](wiki/entities/paper-rich-human-feedback.md) — Rich Human Feedback（Rich Human Feedback for Text-to-Image Generation，arXiv:2312.10240，代码）来自 深蓝具身智能 2 `📅2026-11-01` `[entity_page]`
@@ -4983,6 +4992,7 @@
 - [RTPolicy（arXiv:2610.41625）](wiki/entities/paper-rtpolicy.md) — RTPolicy（RTPolicy: Real-Time (32.9 Hz) Multi-View Visuomotor Policy for Robotic Manipulation on Edge `📅2026-11-03` `[entity_page]`
 - [Rubik Skills：四足机器人足端解大型魔方](wiki/entities/paper-rubik-skills.md) — 一句话定义： Rubik Skills 把机载 RGB-D 感知、魔方求解规划和足端操作策略组合起来，让四足机器人在实机上自主扫描并完成多步魔方旋转。 `📅2026-11-01` `[entity_page]`
 - [Runtime Safety Check Robot Loops（arXiv:2610.27350）](wiki/entities/paper-runtime-safety-check-robot-loops.md) — Runtime Safety Check Robot Loops（Refuses When Asked, Complies When Acting: A Runtime Safety Check fo `📅2026-10-31` `[entity_page]`
+- [全尺寸人形运行时安全与紧急停止：分级力权限的部署教训（Runtime Safety and Emergency Stops on a Full-Size Humanoid: Deployment Lessons and a Case for Graduated Force Authority）](wiki/entities/paper-runtime-safety-graduated-force-authority.md) — 机构： 科罗拉多大学博尔德分校（University of Colorado Boulder）、圣母大学（University of Notre Dame） `📅2026-11-16` `[entity_page]`
 - [走秀表现型行走（arXiv:2609.27003）](wiki/entities/paper-runway-expressive-locomotion.md) — 走秀表现型行走（Learning Expressive Humanoid Locomotion from Monocular Runway Videos for Robot Fashion Shows `📅2026-10-03` `[entity_page]`
 - [RxR](wiki/entities/paper-rxr.md) — RxR（Room-Across-Room: Multilingual VLN with Dense Spatiotemporal Grounding）在 Light Origins · LightNa `📅2026-09-23` `[entity_page]`
 - [RynnBrain 1.1：更强、更可泛化的具身基础模型](wiki/entities/paper-rynnbrain-1-1.md) — RynnBrain 1.1（Towards More Capable and Generalizable Embodied Foundation Model，arXiv:2607.17977，项目页， `📅2026-11-15` `[entity_page]`
@@ -6011,10 +6021,12 @@
 - [Camera equalisation of an 11.5x drop in environmental illuminance: four imitation-learning policies on an SO-101 arm｜自动曝光如何影响 SO-101 光照鲁棒性评测](wiki/entities/paper-so101-lighting.md) — SO-101 光照对照实验发现环境照度下降 11.5 倍时，自动曝光使模型输入图像变化远小于照度变化。 `📅2026-11-14` `[entity_page]`
 - [Low-Cost Mobile Bimanual Manipulation for Long-Horizon Toilet Cleaning｜低成本移动双臂马桶清洁长程操作](wiki/entities/paper-so101-toilet-cleaning-2611-15381.md) — 低成本移动双臂马桶清洁长程操作：在 TurtleBot 4 与双 SO-101 平台，用统一演示数据对比多种 VLA 完整清洁长程任务。 `📅2026-11-16` `[entity_page]`
 - [SoccerBot：潜在运动先验的统一人形足球](wiki/entities/paper-soccerbot-latent-motion-priors.md) — SoccerBot（Playing Soccer Like Humans Do: Learning Versatile and Agile Humanoid Soccer via Latent Mot `📅2026-11-06` `[entity_page]`
+- [扩展社会力、MPC 与 CBF 的人形群体重定位（Can I Join You? Extended Social Force Based Model with Predictive Control and Barrier Functions for Humanoid Group Repositioning Amidst Obstacles）](wiki/entities/paper-social-force-mpc-cbf-group.md) — 机构： 西蒙菲莎大学（Simon Fraser University） `📅2026-11-16` `[entity_page]`
 - [Social Humanoid：可社交响应的人–人形交互](wiki/entities/paper-social-humanoid.md) — 感知人类交互 → 共享 VQ 运动表示 → 扩散式协同响应生成 → G1 全身跟踪的双人社交交互系统；约 260 小时数据。 `📅2026-11-09` `[entity_page]`
 - [被动变形四旋翼的任务驱动闭环设计优化（arXiv:2611.09272）](wiki/entities/paper-soft-morphing-quadrotor-gap-traversal.md) — Task-Driven Closed-Loop Design Optimization of Passively Morphing Quadrotors for Contact-Mediated Na `📅2026-11-10` `[entity_page]`
 - [A Fix for Softmax and Cross-Entropy](wiki/entities/paper-softmax-cross-entropy-fix.md) — A Fix for Softmax and Cross-Entropy（Jonathan T. Barron、Dan Gnanapragasam、Michael Tschannen，Google De `📅2026-10-25` `[entity_page]`
 - [SoftMimicGen：可变形物体操作自动化示范生成](wiki/entities/paper-softmimicgen.md) — SoftMimicGen（A Data Generation System for Scalable Robot Learning in Deformable Object Manipulation， `📅2026-11-14` `[entity_page]`
+- [被动步行器柔顺踝与信息复杂度度量（Softness is Something You also Need! Why Compliance Helps Control: Information Metrics of a Passive Walker with Compliant Ankle）](wiki/entities/paper-softness-compliant-ankle.md) — 机构： Fabio Bonsignorio 等；论文列有萨格勒布大学与巴西利卡塔大学等作者单位 `📅2026-11-16` `[entity_page]`
 - [SoftVTBench（安全感知视触觉可变形操作基准 · arXiv:2607.04234）](wiki/entities/paper-softvtbench.md) — SoftVTBench（SoftVTBench: A Safety-Aware Visuo-Tactile Benchmark for Physically Constrained Robotic M `📅2026-09-15` `[entity_page]`
 - [SOLO：稳定全地形长程感知人形运动](wiki/entities/paper-solo.md) — SOLO（Stable Omni-terrain Long-Horizon Perceptive Humanoid Locomotion，arXiv:2608.26583，项目页）由 中国科学技术大学 `📅2026-11-12` `[entity_page]`
 - [SOMA：从体表观测到肌肉解剖](wiki/entities/paper-soma-surface-observations-muscle-anatomy.md) — SOMA（Surface Observations to Muscle Anatomy，arXiv:2606.09246，项目页，ECCV 2026）由 马克斯·普朗克信息学研究所（MPI-INF） `📅2026-10-23` `[entity_page]`
@@ -6102,6 +6114,7 @@
 - [StreamingWAM（arXiv:2610.15585）](wiki/entities/paper-streamingwam.md) — StreamingWAM（StreamingWAM: Streaming World Action Modeling via Chunk-Wise Staircase Flow Matching，ar `📅2026-11-06` `[entity_page]`
 - [StreamPI](wiki/entities/paper-streampi.md) — StreamPI: Streaming Multimodal Temporal Modeling for Vision-Language-Action Models（arXiv:2608.26067， `📅2026-09-15` `[entity_page]`
 - [StreamSplat：未标定视频流的在线动态 3D 重建](wiki/entities/paper-streamsplat-iclr-2026.md) — StreamSplat 是一个前馈式动态 3D Gaussian Splatting（3DGS）框架：逐帧处理未标定视频流，在线融合静态场景结构和动态形变，支持任意时刻的插值与新视角渲染。 `📅2026-10-24` `[entity_page]`
+- [STRIDE：基于加速度奖励的分钟级人形行走学习（STRIDE: Learning Humanoid Locomotion in Minutes with Acceleration-Based Rewards）](wiki/entities/paper-stride-acceleration-locomotion.md) — 机构： 达姆施塔特工业大学（Technical University of Darmstadt） `📅2026-11-16` `[entity_page]`
 - [STRIDER（arXiv:2609.23483）](wiki/entities/paper-strider-multi-gait-loco-manip.md) — STRIDER（STRIDER: Stepping-Enabled Multi-Gait Hierarchical 3D Loco-Manipulation Framework for Humanoi `📅2026-10-06` `[entity_page]`
 - [StrucPhysVideo（arXiv:2609.18430）](wiki/entities/paper-strucphysvideo.md) — StrucPhysVideo（Learning Physical Dynamics from Structured Captions and Robot Actions，arXiv:2609.1843 `📅2026-09-17` `[entity_page]`
 - [StructRL](wiki/entities/paper-structrl.md) — StructRL: Structured Action-Space Exploration for Flow-Based VLAs（arXiv:2608.15139，项目页）——复旦大学；上海人工智能 `📅2026-09-15` `[entity_page]`
@@ -7773,7 +7786,7 @@
 - [接触丰富的手物重定向、分项泛化评测与手持夹爪示范：具身智能小站 11-05 期 43 篇阅读坐标](wiki/overview/embodied-station-2026-11-05-43-papers-technology-map.md) — 这是一份对具身智能小站 2026-11-05 期 43 篇论文的主题导航与阅读优先级索引，不是 43 篇论文的系统综述或实验复现报告。 `📅2026-11-12` `[overview_page]`
 - [按路段调速的规划、虚拟房间到真机的人形动作与人类视频缩放：具身智能小站 11-06 期 20 篇阅读坐标](wiki/overview/embodied-station-2026-11-06-20-papers-technology-map.md) — 本期主线是把规划、仿真训练和评测的耗时与失败边界拆开看：cuRoboV2-Fast 把规划耗时与真机抓放周期分开计时，HALO 把虚拟房间里的训练带到真机，Open-HumanWAM 检验人类第一人称 `📅2026-11-08` `[overview_page]`
 - [空间表征、自我改进评测与接触操作：29 篇论文阅读坐标](wiki/overview/embodied-station-2026-11-09-29-papers-technology-map.md) — 具身智能小站 11-09 的 29 篇论文更新（1 篇深读、2 篇跟进、26 篇扫读）的阅读坐标页。 `📅2026-11-09` `[overview_page]`
-- [失败恢复、安全规划与接触交互：22 篇论文阅读坐标](wiki/overview/embodied-station-2026-11-10-22-papers-technology-map.md) — 具身智能小站 11-10 的 22 篇论文更新（1 篇深读、2 篇跟进、19 篇扫读）的阅读坐标页。 `📅2026-11-10` `[overview_page]`
+- [失败恢复、安全规划与接触交互：22 篇论文阅读坐标](wiki/overview/embodied-station-2026-11-10-22-papers-technology-map.md) — 具身智能小站 11-10 的 22 篇论文更新（1 篇深读、2 篇跟进、19 篇扫读）的阅读坐标页。 `📅2026-11-16` `[overview_page]`
 - [空间指令、时间建模与世界模型：34 篇论文阅读坐标](wiki/overview/embodied-station-34-papers-spatial-grounding-technology-map.md) — 缩写 | 英文全称 | 简要说明 `📅2026-10-12` `[overview_page]`
 - [具身世界模型六路线 · 行动主导型](wiki/overview/embodied-wm-route-action.md) — 缩写 | 英文全称 | 简要说明 `📅2026-08-29` `[overview_page]`
 - [具身世界模型六路线 · 上下文主导型](wiki/overview/embodied-wm-route-context.md) — 缩写 | 英文全称 | 简要说明 `📅2026-08-25` `[overview_page]`
@@ -7854,6 +7867,7 @@
 - [人形 RL 策略训练五模块：从 MDP 到蒸馏部署](wiki/overview/humanoid-rl-policy-training-five-modules.md) — 人形 RL 策略训练五模块 把数据驱动运动控制拆成固定耦合的闭环：RL/MDP 交互框架 → Actor-Critic 决策–评估 → PPO 稳定更新 → 多维奖励塑形 → Teacher-Stud `📅2026-08-17` `[overview_page]`
 - [人形机器人发展历史](wiki/overview/humanoid-robot-history.md) — 人形机器人发展历史梳理双足类人平台从实验室样机到可量产科研整机的关键里程碑，帮助理解今日 G1 等课程平台为何同时继承 模型基平衡直觉 与 RL 全身控制 两套遗产——课程第 1.1 节。 `📅2026-07-23` `[overview_page]`
 - [人形结构设计工程师的跨专业知识地图](wiki/overview/humanoid-structure-engineer-cross-discipline-map.md) — 结构参数本身就是控制系统的输入——凡是会通过结构把约束传递给下游的东西，结构工程师都必须懂。（文章结语的概括） `📅2026-11-01` `[overview_page]`
+- [人形／四足前沿 29 篇：2026-11-09—11-13 论文阅读坐标](wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md) — 本页将具身运控lab 的 29 篇论文周报变成可追溯的研究路线索引：先按 arXiv 唯一身份去重，再按真实任务、控制接口及实验证据选读。 `📅2026-11-16` `[overview_page]`
 - [IROS 2026 九篇获奖论文：阅读地图](wiki/overview/iros-2026-awards-9-papers-technology-map.md) — IROS 2026 主会/workshop 获奖线同时覆盖「长期记忆、毫秒级传统控制+学习、人形 loco-manip、人类视频与轨迹 WM、接触 RL 表示、执行期 TAMP」——没有单一赢家范式。 `📅2026-10-03` `[overview_page]`
 - [IROS 2026：1933 篇论文的六条变化](wiki/overview/iros-2026-six-trends-technology-map.md) — 大模型没有「吃掉」机器人学——学习、感知、规划、控制与操作以更高密度交织；VLA 从 scaling 转向效率/几何/记忆/系统壳，World Model 仍少（~1%）但更贴近控制环。 `📅2026-09-25` `[overview_page]`
 - [Jason Peng：更灵活的运动技能学习](wiki/overview/jason-peng-flexible-motion-skill-learning.md) — 人形运动控制的下一关不是「把更多 clip 跟踪得更像」，而是让控制器在 数据稀缺 下仍能 组合行为、适应新目标与物体——对抗性分布匹配与生成式迭代数据增强是 Peng 组给出的两条互补主线，真机部署 `📅2026-08-15` `[overview_page]`
