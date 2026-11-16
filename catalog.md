@@ -1405,6 +1405,7 @@
 - [ABot-World-0（单卡桌面无限交互世界 Rollout）](wiki/entities/paper-abot-world-0.md) — ABot-World-0**（*ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU*，[arXiv:2 `📅unknown` `[entity_page]`
 - [ACCRUE：机器人基础模型的持续离策略强化学习](wiki/entities/paper-accrue-continual-off-policy-rl.md) — ACCRUE**（*Continual Off-Policy Reinforcement Learning for Robot Foundation Models*，arXiv:2610.1859 `📅unknown` `[entity_page]`
 - [ACE-Brain：统一具身基础模型（ACE-Brain-0.5 / ACE-Brain-0.6）](wiki/entities/paper-ace-brain-0-5.md) — ACE-Brain-0.5**（*A Unified Embodied Foundational Model for Physical Agentic AI*，[arXiv:2607.04426 `📅unknown` `[entity_page]`
+- [ACE-CaP-0：将真机经验固化为可复用的代码策略](wiki/entities/paper-ace-cap-0.md) — ACE-CaP-0: Real-World Code-as-Policies in the Era of Experience `📅unknown` `[entity_page]`
 - [ACE-Data-0：以人为中心的 Ambient Capture 具身数据引擎](wiki/entities/paper-ace-data-0.md) — ACE-Data-0**（*Human-Centric Ambient Capture as Embodied Data Engine*，[arXiv:2607.28625](https://ar `📅unknown` `[entity_page]`
 - [ACG-WAM：用几何后果监督世界动作模型](wiki/entities/paper-acg-wam-geometric-latent-prediction.md) — ACG-WAM**（*World-Action Modeling via Action-Conditioned Geometric Latent Prediction*）给世界动作模型增加一个训练 `📅unknown` `[entity_page]`
 - [Validating robotics simulators on real-world impacts](wiki/entities/paper-acosta-validating-simulators-real-world-impacts.md) — Validating robotics simulators on real-world impacts**（[arXiv:2110.00541](https://arxiv.org/abs/21 `📅unknown` `[entity_page]`
@@ -3003,6 +3004,7 @@
 - [Joga：带主动视觉的人形足球技能学习](wiki/entities/paper-joga-humanoid-soccer.md) — Joga（Joint Optimization of Gaze and Action，视线与动作联合优化）** 是 MIT Improbable AI Lab 的全栈人形足球系统：Unitree  `📅unknown` `[entity_page]`
 - [JoyAI-RA 0.5：双动作对齐的 VLWA 通才操作](wiki/entities/paper-joyai-ra-05.md) — JoyAI-RA 0.5**（*Scaling Robot Manipulation Learning via Dual Action Alignment*，[arXiv:2608.05674 `📅unknown` `[entity_page]`
 - [Just Between Us（arXiv:2611.04692）](wiki/entities/paper-just-between-us.md) — Just Between Us**（*Just Between Us? Exploring a Wearable-Mediated Channel for Discreet Human-Agent `📅unknown` `[entity_page]`
+- [JustRUA：GPT-6 机器人操作智能体的受控拆解研究](wiki/entities/paper-justrua-robot-use-agents.md) — JustRUA: A Controlled Study of GPT-6 Robot-Use Agents `📅unknown` `[entity_page]`
 - [K-AoI（arXiv:2610.26201）](wiki/entities/paper-k-aoi.md) — K-AoI**（*K-AoI: A Spatio-Temporal Synchronization Metric for Digital Twin-based Teleoperation in D `📅unknown` `[entity_page]`
 - [Sim2Real predictivity: does evaluation in simulation predict real-world performance?](wiki/entities/paper-kadian-sim2real-predictivity.md) — Sim2Real predictivity: does evaluation in simulation predict real-world performance?**（RA-L 2020）收 `📅unknown` `[entity_page]`
 - [χ₀ / kai0：资源感知的分布对齐稳健操作](wiki/entities/paper-kai0.md) — χ₀**（公开工程名 **kai0**；*Resource-Aware Robust Manipulation via Taming Distributional Inconsistencies `📅unknown` `[entity_page]`
@@ -4561,6 +4563,7 @@
 - [ReFORM：Support 约束的 Reflected Flow Offline RL](wiki/entities/paper-reform-iclr-2026.md) — ReFORM**（*Reflected Flows for On-support Offline RL via Noise Manipulation*，**ICLR 2026**，[OpenRev `📅unknown` `[entity_page]`
 - [ReGATE（arXiv:2611.02871）](wiki/entities/paper-regate.md) — ReGATE**（*Recurrent Gated Visual Fusion for Reactive Humanoid-Object Interaction*，[arXiv:2611.0287 `📅unknown` `[entity_page]`
 - [Reinforced ILC Elastic Joint Arms（arXiv:2610.28329）](wiki/entities/paper-reinforced-ilc-elastic-joint-arms.md) — Reinforced ILC Elastic Joint Arms**（*Reinforced Iterative Learning Control for elastic joint arms: `📅unknown` `[entity_page]`
+- [Reins：前沿多模态模型零样本驱动真机长程双臂操作](wiki/entities/paper-reins-robot-harness.md) — Reins: Frontier Multimodal Models Driving Real Robot Arms on Long-Horizon Tasks, Zero-Shot `📅unknown` `[entity_page]`
 - [REKI：在 VLA 中注册近期知识](wiki/entities/paper-reki-vla-register-memory.md) — REKI 在 VLA 动作专家中加入少量 register tokens，将每帧视觉语言表征缓存进 expert KV cache，让动作策略低成本读取近期历史。 `📅unknown` `[entity_page]`
 - [RelateAnything：实时开放词汇关系预测](wiki/entities/paper-relateanything.md) — RelateAnything**（*Real-Time Open-Vocabulary Relation Prediction From Any Inputs*，[arXiv:2609.12552 `📅unknown` `[entity_page]`
 - [Relational Spatial Alignment VLA（arXiv:2610.24705）](wiki/entities/paper-relational-spatial-alignment-vla.md) — Relational Spatial Alignment VLA**（*Relational Spatial Alignment for Vision-Language-Action Models `📅unknown` `[entity_page]`
@@ -5583,6 +5586,7 @@
 - [SAI：序贯非对称模仿学习耦合双机策略](wiki/entities/paper-sai-sequential-asymmetric-imitation.md) — SAI**（*Sequential Asymmetric Imitation for Learning Coupled Robot Policies*，[arXiv:2606.16490](htt `📅unknown` `[entity_page]`
 - [SAIGEN：材料合成自动化平台](wiki/entities/paper-saigen.md) — SAIGEN**（arXiv:2609.14928，[代码](https://github.com/YusukeHashim `📅unknown` `[entity_page]`
 - [SaiVLA-JEPA：评估 JEPA 条件化 VLA 控制中的未来潜在表示预测](wiki/entities/paper-saivla-jepa-future-latent-prediction.md) — SaiVLA-JEPA**（*SaiVLA-JEPA: Evaluating Future Latent Prediction in JEPA-Conditioned VLA Control*， `📅unknown` `[entity_page]`
+- [SALA：语义对齐潜在动作实现具身模型双轴扩展](wiki/entities/paper-sala-latent-actions.md) — SALA: Semantically Aligned Latent Actions Enable Dual-Axis Scaling of Embodied Foundation Models `📅unknown` `[entity_page]`
 - [SALT（arXiv:2608.10484）](wiki/entities/paper-salt-vla-action-language-alignment.md) — SALT**（*Lost in Reconstruction: Aligning Action Representations with Language in Vision-Language-A `📅unknown` `[entity_page]`
 - [SAM-V：几何感知的多视角 Segment Anything](wiki/entities/paper-sam-v.md) — SAM-V 把多视角几何信息放进 SAM 的图像与提示特征，在一次前向推理中让多帧对同一物体保持一致分割。 `📅unknown` `[entity_page]`
 - [SAM-VTP（arXiv:2611.12099）](wiki/entities/paper-sam-vtp.md) — SAM-VTP**（*SAM-VTP: Video Memory and Measured Geometry for Continuous Traversability Segmentation `📅unknown` `[entity_page]`
@@ -5843,6 +5847,7 @@
 - [StructRL](wiki/entities/paper-structrl.md) — StructRL: Structured Action-Space Exploration for Flow-Based VLAs**（[arXiv:2608.15139](https://arx `📅unknown` `[entity_page]`
 - [Structure over Reasoning（arXiv:2610.25130）](wiki/entities/paper-structure-over-reasoning.md) — Structure over Reasoning**（*Structure over Reasoning: Unified Zero-Shot Navigation with a Small Vi `📅unknown` `[entity_page]`
 - [Structured Perception Off-road Dynamics（arXiv:2610.22900）](wiki/entities/paper-structured-perception-off-road-dynamics.md) — Structured Perception Off-road Dynamics**（*Structured Perception Representations for Off-road Dyna `📅unknown` `[entity_page]`
+- [STVLA：融合空间几何与时序记忆的视觉语言动作模型](wiki/entities/paper-stvla-spatial-temporal-memory.md) — STVLA: Spatial-aware and Temporal-memory for Vision-Language-Action Models `📅unknown` `[entity_page]`
 - [SUAVE：统一视频、语言与动作的 Masked Diffusion 模型](wiki/entities/paper-suave-unified-video-action.md) — SUAVE** 展开为 *Single-vocabulary Unified Action-Video modEl*，将语言、视频帧和机器人动作表示为同一离散词表 token，再通过 masked `📅unknown` `[entity_page]`
 - [亚厘米级管道检测机器人：DEA 驱动的蠕动穿管软体机器人](wiki/entities/paper-subcentimeter-pipeline-inspection-robot.md) — A pipeline inspection robot for navigating tubular environments in the sub-centimeter scale**（Tang `📅unknown` `[entity_page]`
 - [亚毫秒反射：连续人机物理交互的无锁控制切换](wiki/entities/paper-submillisecond-reflex-engine.md) — 以可并存的多控制器与无锁切换机制，在连续控制中快速切换运动、柔顺与安全反射控制行为。 `📅unknown` `[entity_page]`
