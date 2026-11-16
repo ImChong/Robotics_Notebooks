@@ -144,6 +144,7 @@ sequenceDiagram
 - [OAT](./paper-oat-ordered-action-tokenization.md)
 - [FAST](./paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md)
 - [VLA 纵深路线 Stage 4](../../roadmap/depth-vla.md)
+- [ManiLadder 分类分难度评测](./paper-maniladder-manipulation-benchmark.md) — 作为未来验证流式动作策略跨任务难度鲁棒性的评测协议参考；**非本文已做的直接对照**
 
 ## 参考来源
 

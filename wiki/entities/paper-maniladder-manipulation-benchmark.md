@@ -115,6 +115,8 @@ flowchart TD
 - [LIBERO](./libero-benchmark.md)
 - [JustRUA](./paper-justrua-robot-use-agents.md)
 - [具身评测纵深 Stage 3](../../roadmap/depth-embodied-eval.md)
+- [ActionCodec2 流式动作分词](./paper-actioncodec2-streaming-action-tokenizer.md) — 动作表示与推理时延优化的独立方向；在 ManiLadder 上的效果仍需同协议实验验证
+- [具身模型评测基准选型](../overview/hub-embodied-eval-benchmark.md)
 
 ## 参考来源
 
