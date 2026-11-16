@@ -4,7 +4,7 @@ project_id: birddreams
 arxiv: "2611.14815"
 project: https://research.nvidia.com/labs/sil/projects/birddreams/
 tags: [paper, nvidia, world-model, autonomous-driving, bev]
-status: draft
+status: complete
 updated: 2026-11-16
 summary: "BirdDreams 联合生成驾驶前视 RGB 与示意 BEV 视频，并用 BEV 重投影实现米制自车轨迹条件控制。"
 original:
@@ -58,8 +58,18 @@ flowchart TD
 
 - 两路因果视频 DiT 分别处理 RGB 和 BEV；逐层 joint attention 使交通几何和视觉线索互补。
 - 采用 Diffusion Forcing，并为两路流独立采样噪声水平。
+- 视频 VAE 使用冻结的 Cosmos-Predict2.5 权重；chunk 内双向、chunk 间因果注意力；采用 Resampling Forcing 后训练以缓解自身历史误差累积。原文式（2）（3）对两路 latent 预测 flow velocity 并归一化后等权。
 - 训练 BEV 由地图与三维物体标注渲染，强调车道关系、车辆位置与朝向；推理只需初始 RGB 图像，不需要高精地图或周围车辆状态。
 - 轨迹控制将最近预测 BEV 沿给定自车位置与朝向重投影，再作为软条件指导下一段生成。
+- 重投影条件用 VAE 编码后加入噪声（σ_cond=0.1），通过零初始化投影注入 BEV 分支；训练时随机丢弃动作条件，支持无动作自回归生成。
+
+## 论文级实验与消融核对（§4.1–4.4）
+
+- **训练**：OmniDreams 变体初始化、双路约 4B 参数；64×H100、总 batch 64。RDS-HQ-1M 子集约 670 小时；BEV 由地图与标注 3D box 生成。nuScenes train split 700 段约 3.9 小时用于额外后训练。
+- **评测集**：PhysicalAI-AV 200 clips，nuScenes validation 150 scenes。有动作条件用单样本 ADE/DTW；无动作条件用三次采样的 minADE/minDTW；轨迹从生成视频借助 Depth Anything 3 重建。
+- **双路噪声策略**：相较同一 chunk RGB/BEV 共用噪声，独立噪声采样得到更低的 FVD、FTD（论文 §4.4.1），但不能从论文图形估读未标出的具体数值。
+- **WAM 扩展**：冻结 BEV 分支、给 RGB 主干加轨迹 head 并后训练 22,000 steps；100 条留出片段、3 秒预测的 best-of-six minADE，BirdDreams 为 0.295 m，对照 0.318 m。带额外 GT BEV 的 0.274 m 只属于特权输入诊断。
+- **编辑实例**：从编辑过的初始 BEV 生成首帧 RGB 和后续双路视频；属于可视化展示，不代表已量化验证编辑精度。
 
 ## 评测与指标
 
@@ -71,6 +81,9 @@ flowchart TD
 | 无动作输入 | 7.76 m | 6.15 m | minADE，三次采样取最优，越低越好 |
 
 人类评价：25 名参与者、375 次成对比较；57% 偏好 BirdDreams、24% 偏好基线、19% 认为相近。该对照使用相同初始图像、轨迹及道路地图的 HD-map-conditioned 变体，不能混同于完全无地图推理设置。
+
+nuScenes 上，表 1 的无动作条件 minADE 为 **6.20 m → 3.91 m**（OmniDreams Vanilla → BirdDreams）；表 2 的有动作条件 ADE 为 **5.38 m → 3.42 m**（OmniDreams Plücker → BirdDreams）。两数据集 FVD/FID 均有降低，但逐帧 Image Quality 不是所有设置都最优；不能把多指标描述成无条件全面领先。
+
 
 ## 与其他工作对比
 
@@ -86,7 +99,7 @@ BirdDreams 的核心贡献是把交通布局从外部给定条件转为与 RGB �
 - BEV 重投影提供米制轨迹控制接口，而非仅用相机射线条件。
 - 周围车辆行为由模型生成，适合研究反事实交通场景。
 - 指标来自指定数据集和对照实验，不能直接推断闭环驾驶安全性。
-- 完整实验及附录仍待核对，故本节点保留 draft。
+- 已对照 arXiv v1 HTML 的 §1–§5、全部实验表及图注复核；v1 HTML 未列独立附录。页面 complete 仅表示文献笔记与来源核对完毕，不表示训练复现或源码开源。
 
 ## 工程实践与复现边界
 
@@ -99,7 +112,7 @@ BirdDreams 的核心贡献是把交通布局从外部给定条件转为与 RGB �
 
 ## 局限与风险
 
-训练阶段依赖数据集地图和 3D 物体标注制作 BEV 监督，不能把「推理不需要 HD map」误写成「训练不需要地图」。官方展示的车辆反应属于生成结果，尚不能代替真实道路交互验证。代码、权重及全量实验细节需后续核实。
+训练阶段依赖数据集地图和 3D 物体标注制作 BEV 监督，不能把「推理不需要 HD map」误写成「训练不需要地图」。动作误差的轨迹依据 Depth Anything 3 从生成视频重建，受轨迹重建方法影响；人类偏好实验使用带 HD-map 的对照变体，不能直接泛化到完全无地图推理。演示中的车辆反应仍是生成结果，不能代替真实道路交互/安全验证。未公开可核验的 BirdDreams 专属训练和推理代码/权重，因此不能声称已复现。
 
 ## 关联页面
 
