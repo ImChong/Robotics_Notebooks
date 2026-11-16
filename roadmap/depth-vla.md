@@ -198,6 +198,7 @@ flowchart LR
 - 用行为树把 2–3 个 VLA 技能串成一个长时程任务，观察失败恢复逻辑
 
 ### 推荐读什么
+- [Towards Agentic Robots：模型、数据、环境与 Harness 综述](../wiki/entities/paper-towards-agentic-robots-survey.md) — 固定 arXiv:2610.20442v1 的四域十七类地图；对照 VLA 执行器与工具编排、状态交接、失败恢复及分层实时控制，不是可直接部署的算法。
 - [JustRUA](../wiki/entities/paper-justrua-robot-use-agents.md) — RoboDojo 受控对照：实测状态、估深、短运动步进与 Coding Actor
 - [ACE-CaP-0](../wiki/entities/paper-ace-cap-0.md) — 开发期按需示范/仿真，冻结代码策略在执行期脱离编码 Agent
 - [Reins](../wiki/entities/paper-reins-robot-harness.md) — 多模态 Agent 通过三维感知、条件化动作链与并行旁白驱动真机
