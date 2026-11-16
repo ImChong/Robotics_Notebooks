@@ -614,6 +614,7 @@ summary: "生成式世界模型（Generative World Models）利用扩散模型�
 
 ### 领域实例：驾驶 / 多体 / 长程
 
+- [BirdDreams](../entities/paper-birddreams.md) — NVIDIA / KAIST **前视 RGB + 示意 BEV 联合生成**；可选米制自车轨迹通过 BEV 重投影施加软条件（arXiv:2611.14815；尚待全文实验复核）。
 - [X-World](../entities/paper-x-world.md) — 小鹏 **7 摄动作条件** 驾驶世界模型（arXiv:2603.19979）。
 - [X-Cache](../entities/paper-x-cache.md) — 少步 AR 世界模型 **跨 chunk** 推理加速（arXiv:2604.20289）。
 - [X-Foresight](../entities/paper-x-foresight.md) — 驾驶 VLA **内嵌** 长视界预测式世界建模（arXiv:2605.24892）。
