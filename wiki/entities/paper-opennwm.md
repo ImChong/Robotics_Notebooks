@@ -57,7 +57,7 @@ summary: "OpenNWM 通过联合视觉重建与物理运动监督提取通用导�
 3. **Stage 2：** 用 RECON、HuRoN/SACSoN、SCAND、TartanDrive 的位置与偏航构造真实动作，先训练动作适配器再联合微调，让世界模型能响应真实 waypoint 动作。
 4. **规划：** 用后训练模型为真实动作候选生成未来画面，按目标视觉相似度及导航约束计算能量，用 CEM 优化；潜动作是**训练时桥梁**，不是规划时被搜索的控制变量。
 
-~~~mermaid
+```mermaid
 flowchart TD
     V["NavAnywhere · 15 源无动作 RGB"] --> LAM["UNLA / LAM · 视觉转移建模"]
     P["RECON、HuRoN、SCAND · 位姿标签"] --> LAM
@@ -70,8 +70,7 @@ flowchart TD
     GOAL["目标图像"] --> CEM["目标相似度 + 导航约束 → CEM"]
     ROL --> CEM
     CEM --> ACT["最优动作序列 · 仅执行首步后重规划（论文算法）"]
-~~~
-
+```
 ### v1 原文公式（沿用论文编号）
 
 **UNLA 视觉变分重建（Eq. 2）：**
@@ -139,7 +138,7 @@ $$
 
 下图对应已核对的仓库根目录 `run.py`、`lam/run.py`、`nwm/run.py`、`nwm/prepare.py`、`nwm/train.py`、`nwm/isolated_nwm_infer.py`、`nwm/planning_eval.py`，区分训练与离线评测；并非未经核实的 Go2 在线控制流程。
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant U as 实验者
     participant R as run.py (根目录分派)
@@ -167,8 +166,7 @@ sequenceDiagram
     U->>R: nwm plan
     R->>P: 候选真实动作的离线 CEM 评分
     P-->>U: 轨迹评测、可视化与指标
-~~~
-
+```
 ## 实验与评测（仅 arXiv v1）
 
 ### Table 1：4 s 直接视觉预测
