@@ -236,6 +236,7 @@ flowchart LR
 
 **方向 C：评测与安全一致性**
 - 同时看世界侧（保真、物理常识、动作可推断性）与策略侧（成功率、长程、sim2real）；避免单侧代理
+- [VLAW：真实失败校准与想象策略改进](../wiki/entities/paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md) — 对照接触物理误判、Qwen3-VL 奖励 FP/FN 和真机策略成功率，强调视觉逼真与物理可信不同；为 WM 辅助策略后训练的边界案例。
 - 关键词：综述评测节、[GigaWorld-1](../wiki/entities/paper-gigaworld-1-policy-evaluation.md)、[SC3-Eval](../wiki/entities/paper-sc3-eval.md)（自一致视频生成作真机 VLA 策略评估器，闭环 Pearson 0.929）、[HarnessEval-W](../wiki/entities/paper-harnesseval-w.md)（LLM harness 接交互式世界模型评测，Intentional 排序与人类 ρ=0.93）、开放挑战（想象未来与真实执行的因果一致）
 
 **方向 D：与 VLA / BFM / 移动操作整机栈汇合**
