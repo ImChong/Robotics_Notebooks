@@ -1,7 +1,7 @@
 ---
 type: entity
 tags: [paper, survey, agentic-robots, vla, world-model, world-action-model, data-pipeline, robot-learning]
-status: draft
+status: complete
 updated: 2026-11-16
 project_id: towards-agentic-robots-survey
 arxiv: "2610.20442"
@@ -23,7 +23,9 @@ summary: "Towards Agentic Robots（arXiv:2610.20442v1）将机器人智能体工
 
 **英文论文：** *Towards Agentic Robots: Model, Data, Environment, and Harness*，Chonghan Qin 等，arXiv:2610.20442v1（2026-10-14）。
 
-**一句话定义：** 一篇机器人智能体综述，以 Model、Data、Environment、Harness 四域、17 个非互斥类别刻画自主规划、执行协调、数据积累和反馈改进；不是一套新训练算法或机器人产品。
+## 一句话定义
+
+一篇机器人智能体综述，以 Model、Data、Environment、Harness 四域、17 个非互斥类别刻画自主规划、执行协调、数据积累和反馈改进；不是一套新训练算法或机器人产品。
 
 ## 英文缩写速查
 
@@ -51,7 +53,7 @@ summary: "Towards Agentic Robots（arXiv:2610.20442v1）将机器人智能体工
 | 图表 | v1 PDF Figure 1、Figure 2、Figure 7 及第 10 页 Table 1 |
 | 研究类型 | 文献综述，未提出统一的新机器人实验或控制网络 |
 | 代码开放 | 论文无专属可运行训练/推理代码；[官方 Awesome 文献索引](../../sources/repos/awesome-agentic-robots-survey-index.md) 公开 |
-| 核读状态 | HTML 核对 §1–9 主框架、PDF 表格和主要图注；TeX 源包无法解包，引用未逐项复核，保留 draft |
+| 核读状态 | 已通读 arXiv v1 HTML 正文 §1–§9，核对四域 17 类、正文表格和主要图注；TeX 原包与全部被引论文未单独审计，不影响本综述正文的通读状态 |
 
 ## 核心原理
 
@@ -117,6 +119,10 @@ flowchart LR
 
 **源码运行时序图：不适用。** 这是文献综述，配套仓库为数据清单与 README 生成/校验脚本，而不是本论文的训练、推理或真机部署实现；因此不伪造运行时序。
 
+## 源码与工程接口的边界
+
+论文 §7.1–7.6 把工具路由、跨执行器状态交接、历史更新、监测恢复、技能复用和实时推理服务都归入 Harness 的系统职责。特别是 §7.6 的 **System 2（任务推理）→ System 1（学习策略）→ System 0（解析控制）** 是对已有分层方案的总结，而非可直接安装运行的单一三层软件包。高层输出须有明确类型、有效期、完成条件；底层保持执行反馈与安全门控。
+
 ## 实验与评测
 
 - 论文 §4–7 比较的是**不同被引项目**的模型、任务、动作输出、技能交接等，不是作者在同一个 benchmark 上新跑的对照实验。
@@ -147,7 +153,7 @@ flowchart LR
 - **实验证据：** 不同项目的基座、机器人、任务、工具和重试预算不统一；本综述并未验证「四域组合必更强」。
 - **物理安全：** 模型可能请求不可达动作或使用过期状态；独立执行检查、安全门控、恢复与人工接管仍必要。
 - **版本：** 本页锁定论文 v1；[配套文献索引](../../sources/repos/awesome-agentic-robots-survey-index.md) 是动态材料。
-- **核读边界：** [来源归档](../../sources/papers/towards_agentic_robots_arxiv_2610_20442.md) 如实记录 TeX 原包未能读取和全部逐项引用尚未审计，故保留 draft。
+- **核读边界：** [来源归档](../../sources/papers/towards_agentic_robots_arxiv_2610_20442.md) 已记录 v1 HTML 正文 §1–§9 的通读范围；TeX 原包未能解包，所有被引研究未逐篇独立审计。`complete` 表示本综述节点内容与正文核对完成，不代表作者引用的每个项目均经复现实验。
 
 ## 关联页面
 
