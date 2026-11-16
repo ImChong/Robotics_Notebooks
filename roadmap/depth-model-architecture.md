@@ -92,6 +92,7 @@ flowchart LR
 ### 推荐读什么
 - [RNN vs CNN vs Transformer vs Mamba](../wiki/comparisons/rnn-cnn-transformer-mamba.md) — 四类骨干在长程 / 并行 / 复杂度 / 归纳偏置上的对照
 - [Transformer](../wiki/concepts/transformer.md) · [多头注意力](../wiki/concepts/multi-head-attention.md) — 现代骨干的通用底座与核心交互算子
+- [位置编码：绝对、RoPE、NoPE 与相对偏置](../wiki/concepts/positional-encoding.md) — 对照 GPT-2、正弦编码、RoPE 旋转与现代混合层，理解长序列顺序建模、实现细节及外推边界
 - [卷积神经网络](../wiki/concepts/convolutional-neural-network.md) · [通道与空间注意力](../wiki/methods/channel-spatial-attention.md) — 卷积路线与 Transformer 之前的注意力增强
 - [状态空间模型（SSM）](../wiki/concepts/state-space-model-ssm.md) — 选择性 SSM 如何在近线性复杂度下拿到长程能力
 - [U-Net](../wiki/methods/unet.md) — 编码器–解码器 + 跳跃连接，后来成为扩散策略的常用去噪骨干
