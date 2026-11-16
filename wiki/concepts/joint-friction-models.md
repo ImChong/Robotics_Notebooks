@@ -12,7 +12,6 @@ related:
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/flobaroid.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
-  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../methods/actuator-network.md
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../formalizations/damped-systems.md

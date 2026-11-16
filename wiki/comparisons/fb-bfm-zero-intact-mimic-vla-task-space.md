@@ -15,7 +15,7 @@ related:
   - ../entities/paper-intact.md
   - ../entities/mimiclite.md
   - ../entities/roboparty-ufo.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../methods/vla.md
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-category-01-forward-backward-representation.md
@@ -64,7 +64,7 @@ summary: "把 FB / BFM-Zero / INTACT / Mimic / VLA 放到同一「任务空间 l
 | **未见 A→B 完整转移时** | 理论上可用中间状态组合（依赖球假设） | 随机 \(Z\) + 子流形约束增强拼接 | 通常**需要见过** A→B 路径 | 通常**需要见过**近似曲线；间距大即 OOD | 数据里没有对应语言条件行为则推不出 |
 | **精度 vs 可组合** | \(D\) 维近似 + 时滞；组合性强 | 同左，精度换风格覆盖与 prompt 接口 | 意图级泛化（同意图多姿态）强于单轨迹 Mimic | **跟踪精度友好**；组合/转移弱 | 语义对齐宽则指令覆盖宽；动作仍绑数据条件 |
 | **典型 OOD 失效** | 子空间坍缩到常走状态（需正则） | 风格外 / 正则不足时维度塌缩 | 未覆盖的跨区域 transition | 倒地却仍追跳舞参考 → 乱动或 termination | 换说法 / 换背景不会 |
-| **站内锚点** | [BFM 分类 01](../overview/bfm-category-01-forward-backward-representation.md) | [paper-bfm-zero](../entities/paper-bfm-zero.md)、[UFO](../entities/roboparty-ufo.md) | [paper-intact](../entities/paper-intact.md) | [SONIC](../methods/sonic-motion-tracking.md)、[MimicLite](../entities/mimiclite.md) | [VLA](../methods/vla.md) |
+| **站内锚点** | [BFM 分类 01](../overview/bfm-category-01-forward-backward-representation.md) | [paper-bfm-zero](../entities/paper-bfm-zero.md)、[UFO](../entities/roboparty-ufo.md) | [paper-intact](../entities/paper-intact.md) | [SONIC](../entities/nvidia-sonic.md)、[MimicLite](../entities/mimiclite.md) | [VLA](../methods/vla.md) |
 
 ## 流程总览：同一球面，五种投影
 
@@ -109,7 +109,7 @@ flowchart TB
 | **开 termination** | 可学会更多运动 | 阈值把有效误差压在梯度不消失的区间内，奖励信号更干净 |
 | **FSQ / VQ codebook** | 同数据下泛化常优于普通 MLP Mimic | 离散码本更不易坍缩，任务隐空间投影面积更大 |
 
-工程含义：做 [MimicLite](../entities/mimiclite.md) / [SONIC](../methods/sonic-motion-tracking.md) 迭代时，**termination 与隐空间正则是任务坐标问题，不只是超参调参**。
+工程含义：做 [MimicLite](../entities/mimiclite.md) / [SONIC](../entities/nvidia-sonic.md) 迭代时，**termination 与隐空间正则是任务坐标问题，不只是超参调参**。
 
 ## 旁支：RL 为何比 MPC 更快啃下人形行走
 
@@ -129,7 +129,7 @@ flowchart TB
 |------------|--------------|--------|
 | 要 **prompt / 奖励方向可组合**，接受近似精度 | FB → BFM-Zero | [BFM-Zero](../entities/paper-bfm-zero.md)、[UFO](../entities/roboparty-ufo.md) |
 | 要 **意图级 Goal Reach**、部署要毫秒级无搜索 | INTACT 式子空间 | [INTACT](../entities/paper-intact.md) |
-| 要 **轨迹跟踪精度** 与小时级 infra 迭代 | Mimic + FSQ/termination 纪律 | [MimicLite](../entities/mimiclite.md)、[SONIC](../methods/sonic-motion-tracking.md) |
+| 要 **轨迹跟踪精度** 与小时级 infra 迭代 | Mimic + FSQ/termination 纪律 | [MimicLite](../entities/mimiclite.md)、[SONIC](../entities/nvidia-sonic.md) |
 | 要 **语言接口**，并清楚其任务球仍稀疏 | VLA；OOD 勿只归因数据量 | [VLA](../methods/vla.md) |
 | 要同时补 Dynamic | 接触平滑进策略或进闭环，而非只开环模仿 | [MPC vs RL](./mpc-vs-rl.md)、[Party OS 地图](../overview/roboparty-lab-party-os-technology-map.md) |
 
@@ -146,7 +146,7 @@ flowchart TB
 - [INTACT（论文实体）](../entities/paper-intact.md)
 - [MimicLite](../entities/mimiclite.md)
 - [UFO（Roboparty）](../entities/roboparty-ufo.md)
-- [SONIC 运动跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC 运动跟踪](../entities/nvidia-sonic.md)
 - [VLA](../methods/vla.md)
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md)
 - [BFM 分类 01：Forward-backward 表征](../overview/bfm-category-01-forward-backward-representation.md)

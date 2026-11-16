@@ -187,7 +187,7 @@ sources:
 
 | 项目 | 类别 | 站内详情页 |
 | --- | --- | --- |
-| DIAL | VLA/操作模型 | [DIAL](../entities/cn-os-dial.md) |
+| DIAL | VLA/操作模型 | [DIAL](../entities/paper-dial-latent-world-vla.md) |
 | UniT | VLA/操作模型 | [UniT](../entities/paper-unit-unified-physical-language.md) |
 
 #### 星动纪元（8）
@@ -652,7 +652,7 @@ sources:
 | RoboOrchardLab | 运动RL/技能训练 | [RoboOrchardLab](../entities/robo-orchard-lab.md) |
 | RoboOrchardSim | 仿真环境 | [RoboOrchardSim](../entities/cn-os-roboorchardsim.md) |
 | RoboOrchardHardware | 本体模型资产 | [RoboOrchardHardware](../entities/cn-os-roboorchardhardware.md) |
-| RoboTransfer | 世界模型 | [RoboTransfer](../entities/cn-os-robotransfer.md) |
+| RoboTransfer | 世界模型 | [RoboTransfer](../entities/paper-rcl-2505-23171-robotransfer-controllable-geometry-consistent-vi.md) |
 | RoboSplatter | 仿真环境 | [RoboSplatter](../entities/cn-os-robosplatter.md) |
 | GeoFlowSlam | 感知/导航 | [GeoFlowSlam](../entities/cn-os-geoflowslam.md) |
 

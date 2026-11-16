@@ -93,7 +93,7 @@ flowchart LR
 | 项 | 建议 |
 |----|------|
 | **复现入口** | [arXiv PDF](https://arxiv.org/pdf/2410.12773) + [项目页视频](https://ut-austin-rpl.github.io/Harmon/) |
-| **与执行栈衔接** | 生成物是 **参考 motion**；落地需 WBC/tracker（可参考 [ProtoMotions](./protomotions.md)、[SONIC](../methods/sonic-motion-tracking.md)） |
+| **与执行栈衔接** | 生成物是 **参考 motion**；落地需 WBC/tracker（可参考 [ProtoMotions](./protomotions.md)、[SONIC](./nvidia-sonic.md)） |
 | **VLM 依赖** | 编辑质量受 VLM 视觉推理与 **editing primitive 覆盖** 限制；高频/大偏差人体先验错误难救 |
 | **数据策略** | 若自建 pipeline，优先保证 **language–render–edit** 闭环日志，而非只堆 IK 对 |
 

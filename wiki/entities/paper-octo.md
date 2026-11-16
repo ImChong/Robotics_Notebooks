@@ -3,7 +3,10 @@ type: entity
 tags:
 - paper
 - vla
+- open-source
+- diffusion
 - generalist-policy
+- hmi-papers
 - manipulation
 - berkeley
 - stanford
@@ -13,15 +16,18 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 status: complete
-updated: 2026-11-14
+updated: 2026-11-16
 arxiv: '2405.12213'
 code: https://github.com/octo-models/octo
 project: https://octo-models.github.io/
 related:
-- ../methods/octo-model.md
 - ./paper-openvla.md
 - ./paper-open-x-embodiment.md
+- ../concepts/open-x-embodiment.md
+- ../concepts/foundation-policy.md
+- ../methods/robotics-transformer-rt-series.md
 - ../overview/vla-wm-reading-roadmap-14-papers-technology-map.md
+- ../queries/hmi-papers-coverage.md
 - ./paper-dita-scaling-diffusion-transformer-vla.md
 - paper-rcl-wam-robot-learning-control-survey.md
 - ../overview/rcl-awesome-wam-technology-map.md
@@ -34,6 +40,9 @@ related:
 - ../overview/embodied-algorithm-stack-2026-vla-diffusion-rl-world-model.md
 sources:
 - ../../sources/papers/octo_arxiv_2405_12213.md
+- ../../sources/papers/rl_foundation_models.md
+- ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
+- ../../sources/repos/humanoid-motion-intelligence.md
 - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
 - ../../sources/repos/octo-models.md
 - ../../sources/papers/rcl_awesome_wam_ref_1c048eabe2faa444f31b_octo-an-open-source-generalist-robot-pol.md
@@ -51,7 +60,7 @@ venue: RSS 2024
 
 # Octo：灵活输入的开源通才操作策略
 
-**Octo**（*Octo: An Open-Source Generalist Robot Policy*，[arXiv:2405.12213v2](https://arxiv.org/abs/2405.12213)，[项目页](https://octo-models.github.io/)，[代码](https://github.com/octo-models/octo)）由 **UC Berkeley、Stanford、CMU 与 Google DeepMind** 联合提出并发表于 **RSS 2024**：模型将多视角 RGB 观测、语言指令与目标图像条件统一组装为 token 序列，通过块级因果注意力主干与被动 `readout_action` token 驱动轻量扩散动作头，在约 27M–93M 参数量下实现跨本体零样本泛化与新相机/新动作空间的少样本微调。方法级综述与选型定位见 [octo-model](../methods/octo-model.md)；**`arxiv` 元数据规范只挂在本实体页**。
+**Octo**（*Octo: An Open-Source Generalist Robot Policy*，[arXiv:2405.12213v2](https://arxiv.org/abs/2405.12213)，[项目页](https://octo-models.github.io/)，[代码](https://github.com/octo-models/octo)）由 **UC Berkeley、Stanford、CMU 与 Google DeepMind** 联合提出并发表于 **RSS 2024**：模型将多视角 RGB 观测、语言指令与目标图像条件统一组装为 token 序列，通过块级因果注意力主干与被动 `readout_action` token 驱动轻量扩散动作头，在约 27M–93M 参数量下实现跨本体零样本泛化与新相机/新动作空间的少样本微调。HMI 论文总索引编号 **P056**（世界模型、VLA 与 Agent 分组；参见 [HMI 论文导读](../queries/hmi-papers-coverage.md) 与 [Foundation Policy](../concepts/foundation-policy.md)）。
 
 ## 一句话定义
 
@@ -153,7 +162,7 @@ sequenceDiagram
 2. **夹爪表征：** 保持绝对二值夹爪（`+1` 开 / `0` 闭）而非相对增量夹爪，原文消融表明相对夹爪显著损害抓取失败后的重试能力。
 3. **预训练本体感知取舍：** 在开放离线示范上做大范围预训练时慎加本体状态（易诱发只看关节位置不看图像的因果混淆），将其留到下游特定机器人微调阶段再以 `LowdimObsTokenizer` 接入。
 4. **条件接口切换：** 语义组合清晰用语言条件；目标摆放形态精准、语言难描述时优先给目标图像条件（或两者混合）。
-5. **定位边界：** Octo 适合作为桌面级操作与跨本体微调基座，对需要极高空间语义推理或全新技能零样本泛化的场景可进一步对比 [OpenVLA](./paper-openvla.md) 与 [Dita](./paper-dita-scaling-diffusion-transformer-vla.md)，方法叙事详参 [octo-model](../methods/octo-model.md)。
+5. **定位边界与许可：** Octo 适合作为桌面级操作与跨本体微调基座（在人形场景仍需由低层 WBC / locomotion 承接全身平衡与接触约束），对需要极高空间语义推理或全新技能零样本泛化的场景可进一步对比 [OpenVLA](./paper-openvla.md) 与 [Dita](./paper-dita-scaling-diffusion-transformer-vla.md)；预训练涉及 OXE 混合数据时须核对各源数据集原始许可条款，勿假设聚合权重等同统一商用授权。
 
 ## 局限与风险
 
@@ -173,9 +182,12 @@ sequenceDiagram
 
 ## 关联页面
 
-- [Octo 方法页](../methods/octo-model.md)
 - [OpenVLA](./paper-openvla.md)
-- [Open X-Embodiment](./paper-open-x-embodiment.md)
+- [Open X-Embodiment（论文实体）](./paper-open-x-embodiment.md)
+- [Open X-Embodiment（概念）](../concepts/open-x-embodiment.md)
+- [Foundation Policy](../concepts/foundation-policy.md)
+- [Robotics Transformer（RT 系列）](../methods/robotics-transformer-rt-series.md)
+- [HMI 论文导读](../queries/hmi-papers-coverage.md)
 - [VLA/WM 14 篇路线](../overview/vla-wm-reading-roadmap-14-papers-technology-map.md)
 - [Dita](./paper-dita-scaling-diffusion-transformer-vla.md)
 - [Action Chunking](../methods/action-chunking.md)
@@ -193,6 +205,9 @@ sequenceDiagram
 
 - [octo_arxiv_2405_12213](../../sources/papers/octo_arxiv_2405_12213.md) — **主要一手来源**：论文全文 `2405.12213v2`（RSS 2024，含附录 A–F）与官网核对归档
 - [octo-models](../../sources/repos/octo-models.md) — **主要一手来源**：官方仓 `octo-models/octo`（`241fb351`）源码与 v1.5 配置归档
+- [rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
+- [ted_xiao_embodied_three_eras_primary_refs.md](../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md)
+- [humanoid-motion-intelligence.md](../../sources/repos/humanoid-motion-intelligence.md)
 - [具身智能研究室 VLA/WM 阅读路线](../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md)
 - [`sources/papers/rcl_awesome_wam_ref_1c048eabe2faa444f31b_octo-an-open-source-generalist-robot-pol.md`](../../sources/papers/rcl_awesome_wam_ref_1c048eabe2faa444f31b_octo-an-open-source-generalist-robot-pol.md) — RCL 条目策展摘录
 - [`sources/papers/rcl_awesome_wam_catalog.md`](../../sources/papers/rcl_awesome_wam_catalog.md) — RCL 列表总表
@@ -205,6 +220,6 @@ sequenceDiagram
 
 - [Octo 官方项目页](https://octo-models.github.io/)
 - [Octo 论文全文（arXiv:2405.12213）](https://arxiv.org/abs/2405.12213)
-- [Octo 方法深入对比页](../methods/octo-model.md)
+- [GitHub: octo-models/octo](https://github.com/octo-models/octo)
 - [RSS 2024 正式收录 PDF](https://www.roboticsproceedings.org/rss20/p090.pdf)
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)

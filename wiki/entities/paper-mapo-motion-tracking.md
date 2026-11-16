@@ -8,7 +8,7 @@ arxiv: "2611.02613"
 project: https://mapo-corl2026.github.io/MAPO/
 related:
   - ./paper-yahmp.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/ppo.md
   - ../concepts/mixture-of-experts.md
   - ../methods/teacher-student-dagger-training.md
@@ -155,7 +155,7 @@ MAPO 改的是**更新目标**而非网络结构，因此与结构侧的 MoE 设
 ## 关联页面
 
 - [YAHMP](./paper-yahmp.md)
-- [SONIC 运动跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC 运动跟踪](./nvidia-sonic.md)
 - [PPO](../methods/ppo.md) — MAPO 所修改的基础策略梯度算法
 - [MoE（专家混合）](../concepts/mixture-of-experts.md) — 密集与稀疏 MoE 的背景
 - [教师-学生 DAgger 训练](../methods/teacher-student-dagger-training.md) — 本文的教师到学生蒸馏流程

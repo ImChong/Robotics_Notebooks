@@ -84,7 +84,7 @@
 
 - 升格页面：[wiki/entities/jim-fan.md](../../wiki/entities/jim-fan.md)
 - 所属研究组：[NVIDIA GEAR Lab](../../wiki/entities/nvidia-gear-lab.md)
-- 关联实体 / 方法（节选）：[GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[EgoScale](../../wiki/methods/egoscale.md)、[ENPIRE](../../wiki/methods/enpire.md)、[ASPIRE](../../wiki/methods/aspire.md)、[VLA](../../wiki/methods/vla.md)、[Foundation Policy](../../wiki/concepts/foundation-policy.md)、[Zhengyi Luo](../../wiki/entities/zhengyi-luo.md)、[Tairan He](../../wiki/entities/tairan-he.md)
+- 关联实体 / 方法（节选）：[GR00T N1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[EgoScale](../../wiki/methods/egoscale.md)、[ENPIRE](../../wiki/methods/enpire.md)、[ASPIRE](../../wiki/methods/aspire.md)、[VLA](../../wiki/methods/vla.md)、[Foundation Policy](../../wiki/concepts/foundation-policy.md)、[Zhengyi Luo](../../wiki/entities/zhengyi-luo.md)、[Tairan He](../../wiki/entities/tairan-he.md)
 
 ## 参考链接
 

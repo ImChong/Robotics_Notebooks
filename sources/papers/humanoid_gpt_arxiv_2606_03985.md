@@ -56,7 +56,7 @@
 ## 对 wiki 的映射（汇总）
 
 - [paper-humanoid-gpt.md](../../wiki/entities/paper-humanoid-gpt.md) — 主沉淀页
-- 交叉更新：[sonic-motion-tracking.md](../../wiki/methods/sonic-motion-tracking.md)、[humanoid-motion-tracking-method-selection.md](../../wiki/queries/humanoid-motion-tracking-method-selection.md)
+- 交叉更新：[sonic-motion-tracking.md](../../wiki/entities/nvidia-sonic.md)、[humanoid-motion-tracking-method-selection.md](../../wiki/queries/humanoid-motion-tracking-method-selection.md)
 
 ## 引用（项目页 BibTeX）
 

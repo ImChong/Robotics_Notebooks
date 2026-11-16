@@ -23,7 +23,6 @@ sources:
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
   - ../../sources/blogs/wechat_guyueju_quadruped_opensource_deep_dive_2026-11-01.md
 tags: [eth]
-
 ---
 
 # legged_gym

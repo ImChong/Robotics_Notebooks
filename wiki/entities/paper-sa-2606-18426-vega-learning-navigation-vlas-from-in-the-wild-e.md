@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-egocentric-vision.md
 ---
 
-# VEGA
+# VEGA: Navigation VLAs from Egocentric Video（arXiv:2606.18426）
 
 **VEGA: Learning Navigation VLAs from In-the-Wild Egocentric Video with Geometric Trajectory Supervision** 收录于 [Awesome Egocentric Vision](https://github.com/sun254667/awesome-egocentric-vision) **第 100/249** 篇，分组 **27 Embodied AI & Vision-Language-Action Ego-VLA**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

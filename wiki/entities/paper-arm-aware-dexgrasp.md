@@ -6,7 +6,6 @@ updated: 2026-09-15
 arxiv: "2608.16351"
 related:
   - ../tasks/manipulation.md
-  - ../tasks/manipulation.md
   - ./paper-goag.md
   - ../overview/vla-predict-grasp-9-papers-technology-map.md
 sources:

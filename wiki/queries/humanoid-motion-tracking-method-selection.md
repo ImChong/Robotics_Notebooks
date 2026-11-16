@@ -65,7 +65,7 @@ flowchart TD
 |----------|------------|----------|
 | 证明「能跟参考跑起来」 | 显式 tracking reward | [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md) |
 | 任务完成后仍像「人」 | 对抗式 motion prior | [AMP](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md) |
-| 多动作通用 tracker | 规模化 tracking policy | [GMT](../entities/paper-gmt.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[MotionBricks](../methods/motionbricks.md)、[EGM](../methods/egm-efficient-general-mimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md)、[UniTracker](../entities/paper-loco-manip-161-024-unitracker.md)（CVAE 蒸馏；G1；**代码未开源**） |
+| 多动作通用 tracker | 规模化 tracking policy | [GMT](../entities/paper-gmt.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[MotionBricks](../methods/motionbricks.md)、[EGM](../methods/egm-efficient-general-mimic.md)、[SONIC](../entities/nvidia-sonic.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md)、[UniTracker](../entities/paper-loco-manip-161-024-unitracker.md)（CVAE 蒸馏；G1；**代码未开源**） |
 | 工业极简、跨形态真机 tracking | 下一步参考 + 无估计器 | [ZEST](../entities/paper-zest.md)（Atlas/G1/Spot；部署仍要播参考） |
 | SciRob 同期三层怎么放 | 配方 / 底座 / 感知任务，勿与 WBT 方法族混表 | [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) |
 | 比较多个已有 tracker | 四族光学基准 + HumanScore，勿只报 AMASS-140 / MPJPE | [HumanTracker](../entities/paper-humantracker.md)（评测代码已开，153 h 数据待发布） |
@@ -108,7 +108,7 @@ flowchart TD
 
 ### 4. 接触柔顺、场景交互与生成式补充
 
-[GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) 把力/柔顺约束写进跟踪目标，适合接触丰富场景。当已有 **通用 tracker（如 SONIC）** 但需在 **楼梯、搬箱、坐椅** 等 **terrain + object** 组合任务上零样本执行时，优先评估 **[SceneBot](../entities/paper-scenebot.md)**：在参考运动外增加 **per-link contact label**（link 应对 terrain/object 施力），并用 **hindsight scene reconstruction** 从无场景动捕合成训练配对数据；论文报告自由空间与 SONIC 同级，而 object/terrain 成功率 **95–100% vs 5–15%**。高层可用规则/遥操作生成 label，部署时 **$c_t=0$** 可回退平地跟踪。
+[GentleHumanoid](../entities/paper-gentlehumanoid.md) 把力/柔顺约束写进跟踪目标，适合接触丰富场景。当已有 **通用 tracker（如 SONIC）** 但需在 **楼梯、搬箱、坐椅** 等 **terrain + object** 组合任务上零样本执行时，优先评估 **[SceneBot](../entities/paper-scenebot.md)**：在参考运动外增加 **per-link contact label**（link 应对 terrain/object 施力），并用 **hindsight scene reconstruction** 从无场景动捕合成训练配对数据；论文报告自由空间与 SONIC 同级，而 object/terrain 成功率 **95–100% vs 5–15%**。高层可用规则/遥操作生成 label，部署时 **$c_t=0$** 可回退平地跟踪。
 
 若 **不能** 给 teleoperator 额外 contact label，但仍要 **online reference window + terrain/object + OOD/fall 鲁棒**，可对照 **[GigaBrain-WBC-0.5](../entities/paper-gigabrain-wbc-0-5.md)**（arXiv:2608.18234v2）：**Behavior World Model** 联合预测 action/next-state/next-command GMM，从 retarget corpus **自动恢复 3D terrain 几何**（非 2.5D height field），部署期用 **Mahalanobis retract** 处理不可行命令并把 **fall recovery** 训进同一 tracker；MuJoCo 四 regime 上 Terrain SR **81.3%**、Fall recovery **99.3%**；截至 **2026-09-07** 代码仍 **coming soon**。
 
@@ -120,7 +120,7 @@ flowchart TD
 
 当入口是 **自然语言** 且目标是 **机器人可执行的高动态全身**（而非人体 SMPL 再 retarget）时，优先评估 **[PhyGile](../entities/paper-phygile.md)**：**262D robot-native 扩散 + physics-prefix + GMT 验证/微调闭环**；与 [Harmon](../entities/paper-loco-manip-161-097-harmon.md) 同族但强调 **物理前缀与跟踪器共训**，避免人体 T2M 先验的推理期重定向鸿沟。
 
-当 **tracker 已经训好**（如 [SONIC](../methods/sonic-motion-tracking.md) / ProtoMotions），痛点是 **静态生成池跟不上执行前沿**、又不想再采具身数据时，优先评估 **[GenTrack](../entities/paper-gentrack.md)**：滞后闭环执行 + FlowGRPO 对齐 robot-native 生成器，新参考再等量混进 tracker。论文在仿真 G1 上把 SONIC 的 LAFAN1 SR 从 85 拉到 90；**不是** PhyGile 那种从头生成高动态，也 **没有代码**。
+当 **tracker 已经训好**（如 [SONIC](../entities/nvidia-sonic.md) / ProtoMotions），痛点是 **静态生成池跟不上执行前沿**、又不想再采具身数据时，优先评估 **[GenTrack](../entities/paper-gentrack.md)**：滞后闭环执行 + FlowGRPO 对齐 robot-native 生成器，新参考再等量混进 tracker。论文在仿真 G1 上把 SONIC 的 LAFAN1 SR 从 85 拉到 90；**不是** PhyGile 那种从头生成高动态，也 **没有代码**。
 
 ### 5. 大扰动：跟踪 vs 生成中间件 vs 统一 AMP
 
@@ -146,13 +146,13 @@ flowchart TD
 
 ### 7. 跨具身：已有 WBT 专家迁到新硬件
 
-当 **源机上已有大规模 WBT 专家**（如 [SONIC](../methods/sonic-motion-tracking.md) / Gear-SONIC on G1），而目标机 DoF、观测布局与动力学不同时：
+当 **源机上已有大规模 WBT 专家**（如 [SONIC](../entities/nvidia-sonic.md) / Gear-SONIC on G1），而目标机 DoF、观测布局与动力学不同时：
 
 | 目标 | 优先路线 | 入口 |
 |------|----------|------|
 | 少数据、少算力迁到新机型 | **运动学对齐 + 局部 LoRA 动力学适配** | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
 | 近亲骨架、更严冻结、要看 OOD 能否反超原生 tracker | **闭式 codec + 单解码器 LoRA** | [SONIC-Transfer](../entities/paper-sonic-transfer.md) |
-| 从零获得单平台最强 tracker | **继续 scaling 预训练** | [SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md)（2B 帧 + Transformer 蒸馏，CVPR 2026） |
+| 从零获得单平台最强 tracker | **继续 scaling 预训练** | [SONIC](../entities/nvidia-sonic.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md)（2B 帧 + Transformer 蒸馏，CVPR 2026） |
 | 多机统一 generalist | **多具身联合预训练 / 统一动作空间** | 见 [BFM](../entities/paper-behavior-foundation-model-humanoid.md) 等 |
 
 **常见误判**：把 Any2Any 当作「再训一个 SONIC」——其设定是 **冻结单源专家 + 后训练**，与亿级帧从头预训练的算力预算不同；运动学对齐层必须覆盖 **髋轴、闭链** 等结构差异，不能只做关节 index 重排。
@@ -210,7 +210,7 @@ flowchart TD
 - [Switch](../methods/switch-framework.md) — 多技能图 + 缓冲节点的显式技能切换编排层
 - [YAHMP](../entities/paper-yahmp.md) — 开源 G1 GMT 消融试验台（命令/历史/残差/PD/手部力）
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — 高动态持续学习 generalist（未开源）
-- [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md)
+- [GentleHumanoid](../entities/paper-gentlehumanoid.md)
 - [DSMS（接触隐式多重打靶）](../methods/dsms-contact-implicit-multiple-shooting.md) — 参考层动力学可行化，串联在跟踪 RL 之前
 - [ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md)
 - [AMP / ADD / SMP 对比](../comparisons/amp-add-smp-motion-prior-variants.md)

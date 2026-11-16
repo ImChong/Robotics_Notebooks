@@ -54,7 +54,7 @@
 | [vla](../../wiki/methods/vla.md) | V³-0 作为 S1 技能层人形 VLA 实例；FluxVLA 工程入口 |
 | [loco-manipulation](../../wiki/tasks/loco-manipulation.md) | 长程全身移动操作产业 Demo 索引 |
 | [whole-body-tracking-pipeline](../../wiki/concepts/whole-body-tracking-pipeline.md) | LimX WBT 作为 S0 产品化 WBT 锚点 |
-| [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md) | WBT 对标参照 |
+| [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md) | WBT 对标参照 |
 | [notable-commercial-robot-platforms](../../wiki/overview/notable-commercial-robot-platforms.md) | LimX 平台纵览补链 |
 
 ## 可信度与使用边界

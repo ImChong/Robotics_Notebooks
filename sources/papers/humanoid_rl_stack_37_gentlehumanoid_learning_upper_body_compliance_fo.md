@@ -20,7 +20,7 @@
 
 ## 对 wiki 的映射
 
-  - [gentlehumanoid-motion-tracking](../../wiki/methods/gentlehumanoid-motion-tracking.md)
+  - [gentlehumanoid-motion-tracking](../../wiki/entities/paper-gentlehumanoid.md)
 
 ## 参考来源（原始）
 

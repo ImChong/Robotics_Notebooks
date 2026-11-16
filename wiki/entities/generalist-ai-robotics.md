@@ -14,7 +14,7 @@ related:
   - ./skild-s1.md
   - ../concepts/embodied-scaling-laws.md
   - ../concepts/foundation-policy.md
-  - ../methods/octo-model.md
+  - ./paper-octo.md
   - ../overview/hub-cross-embodiment.md
 sources:
   - ../../sources/sites/generalistai-blog-index.md
@@ -46,7 +46,7 @@ sources:
 
 ## 与其他「Generalist」用语区分
 
-知识库中另有「通用策略（generalist policy）」泛指任意跨任务模型；本页仅指 **Generalist AI 公司**，避免与 [Octo](../methods/octo-model.md)、[VLA](../methods/vla.md)、[Open X-Embodiment](../concepts/open-x-embodiment.md) 等开源或开放数据路线混淆。
+知识库中另有「通用策略（generalist policy）」泛指任意跨任务模型；本页仅指 **Generalist AI 公司**，避免与 [Octo](./paper-octo.md)、[VLA](../methods/vla.md)、[Open X-Embodiment](../concepts/open-x-embodiment.md) 等开源或开放数据路线混淆。
 
 ## 为什么重要
 
@@ -154,7 +154,7 @@ sources:
 - [Foundation Policy](../concepts/foundation-policy.md)
 - [跨具身迁移（知识链）](../overview/hub-cross-embodiment.md)
 - [Manipulation](../tasks/manipulation.md)
-- [Octo](../methods/octo-model.md)
+- [Octo](./paper-octo.md)
 - [S1 / Skild AI](./skild-s1.md) — 另一条闭源 ICL 通才线（显式视频预训练）
 - [HOST](./paper-host-one-shot-human-video.md) — 开源单视频 one-shot 对照，不是本公司产品
 

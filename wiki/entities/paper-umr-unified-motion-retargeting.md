@@ -11,7 +11,7 @@ related:
   - ./paper-hrl-stack-03-omniretarget.md
   - ./paper-omnicontact-humanoid-loco-manipulation.md
   - ../methods/beyondmimic.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-adapt.md
   - ./paper-grail.md
   - ./unitree-g1.md
@@ -142,7 +142,7 @@ sequenceDiagram
 
 相对 Unitree 官方 LAFAN1 参考：成功率与 mpbpe 接近，**关节角均值误差 UMR 更低**。
 
-[SONIC](../methods/sonic-motion-tracking.md) 在 BONES-SEED 上：关掉 SMPL encoder 时，UMR 参考相对官方 GMR 参考约 **+10%**；打开 encoder 后两边接近——人侧潜空间对齐会掩盖参考差距。
+[SONIC](./nvidia-sonic.md) 在 BONES-SEED 上：关掉 SMPL encoder 时，UMR 参考相对官方 GMR 参考约 **+10%**；打开 encoder 后两边接近——人侧潜空间对齐会掩盖参考差距。
 
 接触策略只换参考（Table IV，UMR / OmniRetarget）：Carry / Kick 成功与物体误差全面更好，三任务关节误差约 **−40–56%**；Stair **43.53% vs 11.01%**；Chair 上 OmniRetarget 略好（75.24 / 79.67）。
 
@@ -187,7 +187,7 @@ sequenceDiagram
 - [动作重定向枢纽](../overview/hub-motion-retargeting.md)
 - [GMR](../methods/motion-retargeting-gmr.md) / [GMR vs NMR vs ReActor](../comparisons/gmr-vs-nmr-vs-reactor.md)
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) / [OmniContact](./paper-omnicontact-humanoid-loco-manipulation.md) / [GRAIL](./paper-grail.md)
-- [BeyondMimic](../methods/beyondmimic.md) / [SONIC](../methods/sonic-motion-tracking.md)
+- [BeyondMimic](../methods/beyondmimic.md) / [SONIC](./nvidia-sonic.md)
 - [AdaPT](./paper-adapt.md) — MoCap / racket 支路用 UMR
 - [Unitree G1](./unitree-g1.md)
 

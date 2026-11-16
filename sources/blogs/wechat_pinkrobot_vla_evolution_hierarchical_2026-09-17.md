@@ -77,4 +77,4 @@
 ## 对 wiki 的映射
 
 - **新建：** [VLA 演进技术地图](../../wiki/overview/vla-evolution-lineage.md)
-- **交叉补强：** [VLA 方法页](../../wiki/methods/vla.md)、[五大具身模型分类](../../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)、[VLA 14 篇阅读地图](../../wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md)、[SayCan](../../wiki/methods/saycan.md)、[RT 系列](../../wiki/methods/robotics-transformer-rt-series.md)、[π₀.₇](../../wiki/methods/pi07-policy.md)
+- **交叉补强：** [VLA 方法页](../../wiki/methods/vla.md)、[五大具身模型分类](../../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)、[VLA 14 篇阅读地图](../../wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md)、[SayCan](../../wiki/entities/paper-saycan.md)、[RT 系列](../../wiki/methods/robotics-transformer-rt-series.md)、[π₀.₇](../../wiki/methods/pi07-policy.md)

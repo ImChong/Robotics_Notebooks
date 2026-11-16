@@ -17,7 +17,7 @@ related:
   - ../overview/motion-cerebellum-category-08-real-tasks.md
   - ../overview/loco-manip-contact-category-03-generative-data.md
   - ../tasks/loco-manipulation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./unitree-g1.md
   - ./paper-viral-humanoid-visual-sim2real.md
   - ./paper-hrl-stack-34-gr00t_n1.md
@@ -122,7 +122,7 @@ GRAIL 的核心选择是 **在生成前固定物理上下文**。给定物体、
 
 ### 3. Retargeting 与 task-general tracking
 
-重建得到的人体/物体轨迹还不是 G1 可执行轨迹。GRAIL 将其重定向到 Unitree G1，并在预训练 [SONIC](../methods/sonic-motion-tracking.md) 全身控制器之上训练两类 tracker：
+重建得到的人体/物体轨迹还不是 G1 可执行轨迹。GRAIL 将其重定向到 Unitree G1，并在预训练 [SONIC](./nvidia-sonic.md) 全身控制器之上训练两类 tracker：
 
 | Tracker | 任务侧重 | 输入/调制 |
 |---------|----------|-----------|
@@ -249,7 +249,7 @@ sequenceDiagram
 - [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 与 [H 真实任务](../overview/motion-cerebellum-category-08-real-tasks.md) — GRAIL 是 #57/64。
 - [Loco-Manip 接触分类 03：生成式补数](../overview/loco-manip-contact-category-03-generative-data.md) — GRAIL 所属接触横切面。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务背景。
-- [SONIC](../methods/sonic-motion-tracking.md) — G1 task-general tracker 基础。
+- [SONIC](./nvidia-sonic.md) — G1 task-general tracker 基础。
 - [UMR](./paper-umr-unified-motion-retargeting.md) — 用本页 HSI 轨迹做接触重定向对照（Stair/Slope 优于 OmniRetarget）。
 - [Unitree G1](./unitree-g1.md) — 论文硬件平台。
 - [VIRAL](./paper-viral-humanoid-visual-sim2real.md) — egocentric visual sim-to-real 对照。

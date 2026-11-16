@@ -8,7 +8,6 @@ venue: "IROS 2025"
 code: https://github.com/tmjeong1103/CoRe
 related:
   - ./paper-core.md
-  - ./paper-core.md
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../methods/motion-retargeting-gmr.md

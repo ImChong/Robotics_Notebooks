@@ -40,4 +40,4 @@
 
 - 阅读坐标：[embodied-ai-guide-wechat-album-curator.md](../../wiki/overview/embodied-ai-guide-wechat-album-curator.md) § 篇 1
 - 概念：[LLM 机器人控制接口](../../wiki/concepts/llm-robotics-control-interfaces.md)
-- 方法：[SayCan](../../wiki/methods/saycan.md)、[VLA](../../wiki/methods/vla.md)
+- 方法：[SayCan](../../wiki/entities/paper-saycan.md)、[VLA](../../wiki/methods/vla.md)

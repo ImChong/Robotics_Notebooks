@@ -65,7 +65,7 @@ related:
 
 [mimic-video](../methods/mimic-video.md) 的 video-action 路线适合需要**潜空间长程一致性**的任务；[DeFI](../methods/defi-decoupled-dynamics-vla.md) 强调 CALVIN / SimplerEnv 类长程指标。
 
-**Planner + actor 分层（非端到端 VLA）：** [Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 用 **image+text memory** 与 **CoT 子任务** 作 System-2，配对 **Gr00t-N1.6** 等 actor；真机记忆型任务 **+38.3%**（arXiv:2606.20905）。与 [SayCan](../methods/saycan.md) 同族但 **统一多认知轴 SFT**。
+**Planner + actor 分层（非端到端 VLA）：** [Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 用 **image+text memory** 与 **CoT 子任务** 作 System-2，配对 **Gr00t-N1.6** 等 actor；真机记忆型任务 **+38.3%**（arXiv:2606.20905）。与 [SayCan](../entities/paper-saycan.md) 同族但 **统一多认知轴 SFT**。
 
 ### 人视频预训练 → 机器人微调
 

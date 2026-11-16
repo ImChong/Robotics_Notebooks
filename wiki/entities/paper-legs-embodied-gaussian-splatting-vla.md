@@ -11,7 +11,7 @@ project: https://hojjunekim.github.io/legs/
 related:
   - ../tasks/loco-manipulation.md
   - ../methods/vla.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/pi07-policy.md
   - ./unitree-g1.md
   - ./gs-playground.md
@@ -169,7 +169,7 @@ sequenceDiagram
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务定义与路线谱系
 - [VLA](../methods/vla.md) — 微调对象抽象
-- [SONIC](../methods/sonic-motion-tracking.md) — 低层全身控制器
+- [SONIC](./nvidia-sonic.md) — 低层全身控制器
 - [π0.7 Policy](../methods/pi07-policy.md) — 相邻策略背景（本文骨干为 ψ0、π0.5、GR00T N1.6）
 - [Unitree G1](./unitree-g1.md) — 评测平台
 - [GS-Playground](./gs-playground.md) — 另一条 3DGS×仿真视觉 RL 路线

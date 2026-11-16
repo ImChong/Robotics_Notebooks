@@ -20,7 +20,6 @@ related:
   - ../entities/paper-zero-wam.md
   - ../entities/paper-wam-ttt-human-video-test-time-steering.md
   - ../entities/light-react.md
-  - ../entities/qwen-robot-manip.md
   - ../comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md
   - ../entities/skild-s1.md
   - ../entities/skild-ai.md

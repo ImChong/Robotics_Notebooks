@@ -12,7 +12,6 @@ related:
   - ../queries/embodied-fm-taxonomy-loop.md
   - ../entities/langchain.md
   - ../entities/gitingest.md
-  - ../entities/langchain.md
   - ../entities/easy-vibe.md
   - ../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md
   - ../entities/paper-scanford-robot-powered-data-flywheel.md

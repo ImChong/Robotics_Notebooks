@@ -52,7 +52,7 @@ VLA/WM 若只输出目标点或粗动作，**接触问题仍被丢回底层**。
 
 ## 关联页面
 
-- [HAIC 方法页](../methods/haic.md)
+- [HAIC 方法页](../entities/paper-haic.md)
 - [VLA](../methods/vla.md)
 - [世界动作模型](../concepts/world-action-models.md)
 - [161 篇 · 09 VLA/WM](./loco-manip-161-category-09-vla-world-models.md)

@@ -22,4 +22,4 @@
 ## 交叉链接
 
 - [Octo 论文实体](../../wiki/entities/paper-octo.md)
-- [Octo 方法页](../../wiki/methods/octo-model.md)
+- [Octo 方法页](../../wiki/entities/paper-octo.md)

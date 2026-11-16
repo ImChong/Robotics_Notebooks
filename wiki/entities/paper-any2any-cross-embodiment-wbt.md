@@ -7,7 +7,7 @@ arxiv: "2605.23733"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-06-cross-embodiment-teleop.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ../concepts/whole-body-control.md
   - ./unitree-g1.md
@@ -51,7 +51,7 @@ summary: "Any2Any（arXiv:2605.23733）把单源人形 WBT 专家经运动学对
 ## 为什么重要
 
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **F 跨本体与遥操作**（42/64）：跨本体：把预训练 whole-body tracker 迁到新身体。
-- **WBT scaling 的下一站：** [SONIC](../methods/sonic-motion-tracking.md) 等路线证明「大规模 tracking 预训练」可行，但策略与 **源机 DoF、观测顺序、动力学** 强绑定；Any2Any 给出 **后训练迁移范式**，降低新机部署的重复烧卡。
+- **WBT scaling 的下一站：** [SONIC](./nvidia-sonic.md) 等路线证明「大规模 tracking 预训练」可行，但策略与 **源机 DoF、观测顺序、动力学** 强绑定；Any2Any 给出 **后训练迁移范式**，降低新机部署的重复烧卡。
 - **运动学–动力学解耦可操作化：** 与经典「参考运动 + 分层 WBC」一致，现代 WBT 的 **Reference Encoder vs Action Decoder** 分工使 **局部 PEFT** 有结构依据——_encoder 偏可迁移，_decoder 更需动力学修正。
 - **与多机 generalist 互补：** 联合多具身从头训通用控制器需要大数据；本文假设 **你已有单源成熟专家**，只需对齐 + 低秩动力学补丁。
 
@@ -141,7 +141,7 @@ flowchart LR
 
 ## 关联页面
 
-- [SONIC](../methods/sonic-motion-tracking.md)、[人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [SONIC](./nvidia-sonic.md)、[人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [SONIC-Transfer](./paper-sonic-transfer.md) — 近亲骨架上的闭式 codec + 单解码器 LoRA 变体
 - [Whole-Body Control](../concepts/whole-body-control.md)、[Unitree G1](./unitree-g1.md)
 - [BFM 人形基础模型](./paper-behavior-foundation-model-humanoid.md)、[FastStair](./paper-faststair-humanoid-stair-ascent.md)（LimX Oli 工程线）

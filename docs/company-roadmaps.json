@@ -172,7 +172,7 @@
           "title": "SONIC",
           "track": "全身控制",
           "desc": "把大规模动捕运动跟踪当作预训练任务，得到通用人形全身策略，并经统一 token 接口接入 VR、视频、文本与 VLA；代码并入 GR00T-WholeBodyControl 单仓，后在 Science Robotics 发表。",
-          "id": "wiki-methods-sonic-motion-tracking",
+          "id": "entity-nvidia-sonic",
           "url": "https://nvlabs.github.io/GEAR-SONIC/",
           "date_note": "arXiv:2511.07820 v1 提交于 2025-11-11；并入 GR00T-WBC 仓（节点 GR00T-WholeBodyControl 已记 2026-02）与 Science Robotics 发表为后续事件。",
           "date_source": "https://arxiv.org/abs/2511.07820"
@@ -584,7 +584,7 @@
           "title": "DIAL",
           "track": "潜在世界模型 / VLA",
           "desc": "通过潜在世界建模把意图与动作解耦的端到端 VLA；HKU × XPENG Robotics × UNC 合作，官方仓库 xpeng-robotics/DIAL 公开（Apache-2.0）。",
-          "id": "entity-cn-os-dial",
+          "id": "entity-paper-dial-latent-world-vla",
           "url": "https://xpeng-robotics.github.io/dial/",
           "date_note": "arXiv:2603.29844 v1 提交于 2026-03-31；XPENG Robotics 官网研究列表同为 2026-03-31。库内 sources/papers/loco_manip_161_survey_147_dial.md 的“发表日期 4 月 28 日”是公众号策展日，不用。",
           "date_source": "https://arxiv.org/abs/2603.29844"

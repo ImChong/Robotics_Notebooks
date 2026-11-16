@@ -24,8 +24,6 @@ related:
   - ../entities/paper-dextacwam.md
   - ../entities/paper-tactilestep.md
   - ../entities/paper-anytouch.md
-  - ../entities/paper-anytouch.md
-  - ../entities/paper-anytouch2.md
   - ../entities/paper-anytouch2.md
   - ../entities/eflesh.md
   - ../entities/opentac.md

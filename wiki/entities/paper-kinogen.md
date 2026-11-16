@@ -11,7 +11,7 @@ related:
   - ../concepts/video-as-simulation.md
   - ../concepts/motion-retargeting.md
   - ../methods/beyondmimic.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/papers/kinogen_arxiv_2610_20552.md
@@ -115,7 +115,7 @@ flowchart LR
 | [mimic-video](../methods/mimic-video.md) | 视频动作模型，视觉计划直接驱动动作；KinoGen 用视频生成恢复显式参考轨迹，再交给跟踪策略 |
 | [视频即仿真](../concepts/video-as-simulation.md) | 视频作为仿真替代；KinoGen 把视频拟合回机器人构型空间，强调运动学一致性 |
 | [运动重定向](../concepts/motion-retargeting.md) | 人体动作到机器人的主流路线；KinoGen 不经过人体代理，避免重定向误差 |
-| [BeyondMimic](../methods/beyondmimic.md) / [SONIC](../methods/sonic-motion-tracking.md) | 下游跟踪方法；KinoGen 负责生成参考，不替代跟踪策略 |
+| [BeyondMimic](../methods/beyondmimic.md) / [SONIC](./nvidia-sonic.md) | 下游跟踪方法；KinoGen 负责生成参考，不替代跟踪策略 |
 
 ## 局限与风险
 

@@ -14,7 +14,6 @@ related:
   - ../tasks/manipulation.md
   - ../concepts/contact-rich-manipulation.md
   - ../concepts/tactile-sensing.md
-  - ../concepts/tactile-sensing.md
   - ../overview/embodied-station-2026-11-01-56-papers-technology-map.md
 sources:
   - ../../sources/papers/no_eyes_no_problem_arxiv_2610_23438.md

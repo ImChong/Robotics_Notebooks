@@ -235,7 +235,7 @@ VR / 手柄每 tick 给出末端 `T_target` 时，常见模式是 **「离当前
 
 ### 全身人形：视频 / VR 条件 + 低层 tracking
 
-NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)）把遥操作与 **规模化 motion tracking policy** 放在同一套 **统一 token / 控制接口** 下展示：人体视频经 **GEM** 估计姿态后实时跟踪；VR 含 **头 + 双手三点** 驱动上身并由 **运动学规划器** 补全下身，以及 **全身 VR 追踪** 模式。知识库方法页见 [SONIC（规模化运动跟踪人形控制）](../methods/sonic-motion-tracking.md)。[HumanoidArena](../entities/paper-humanoidarena.md) 将 SONIC 与 [TWIST2](../entities/paper-twist2.md) 并列为 **分层全身学习的双 GMT 评测后端**，在共享 **35D 上游参考** 下 stress-test **跨 tracker 迁移**。
+NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)）把遥操作与 **规模化 motion tracking policy** 放在同一套 **统一 token / 控制接口** 下展示：人体视频经 **GEM** 估计姿态后实时跟踪；VR 含 **头 + 双手三点** 驱动上身并由 **运动学规划器** 补全下身，以及 **全身 VR 追踪** 模式。知识库方法页见 [SONIC（规模化运动跟踪人形控制）](../entities/nvidia-sonic.md)。[HumanoidArena](../entities/paper-humanoidarena.md) 将 SONIC 与 [TWIST2](../entities/paper-twist2.md) 并列为 **分层全身学习的双 GMT 评测后端**，在共享 **35D 上游参考** 下 stress-test **跨 tracker 迁移**。
 
 ## 遥操作到策略学习 Pipeline
 

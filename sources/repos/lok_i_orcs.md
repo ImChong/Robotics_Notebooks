@@ -65,7 +65,7 @@ PerLoco：额外 `uv pip install -e ".[perloco]"` + `bash scripts/setup/percepti
 
 - [orcs](../../wiki/entities/orcs.md) — 本仓升格实体页
 - [paper-vibe](../../wiki/entities/paper-vibe.md) — 研究出处；视觉后训练仍待发布
-- [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md) — 冻结基座
+- [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md) — 冻结基座
 - [privileged-training](../../wiki/concepts/privileged-training.md) — 不对称 actor-critic 范式
 - [gr00t-wholebodycontrol](../../wiki/entities/gr00t-wholebodycontrol.md) — 官方 SONIC 训练/部署对照
 

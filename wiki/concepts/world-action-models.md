@@ -103,7 +103,6 @@ related:
   - ../tasks/loco-manipulation.md
   - ./ai-auto-research.md
   - ../entities/paper-rcl-wam-robot-learning-control-survey.md
-  - ../entities/paper-rcl-wam-robot-learning-control-survey.md
   - ../entities/awesome-world-models.md
   - ../entities/paper-cf-wam-dynamic-next-state-prediction.md
   - ../entities/paper-long-wam-scaling-context.md

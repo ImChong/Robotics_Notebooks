@@ -124,7 +124,7 @@ flowchart LR
 |----|---------|---------|---------|
 | 速度指令 | (vx, vy, ω_yaw) 3 维 | 遥控器 / 上层导航 / 训练时随机采样 | legged_gym / Isaac Lab 系全部 |
 | 步态相位/时钟 | sin/cos(2πφ) 2 维 | 固定周期发生器，或接触估计在线修正 | 周期奖励系（gait clock） |
-| 参考运动 | 相位 φ + 参考相对量（关节角、关键点） | MoCap/视频 → [动作重定向](./motion-retargeting.md) 离线生成 | DeepMimic、[AMP](../methods/amp-reward.md)、[BeyondMimic](../methods/beyondmimic.md)、[SONIC](../methods/sonic-motion-tracking.md) |
+| 参考运动 | 相位 φ + 参考相对量（关节角、关键点） | MoCap/视频 → [动作重定向](./motion-retargeting.md) 离线生成 | DeepMimic、[AMP](../methods/amp-reward.md)、[BeyondMimic](../methods/beyondmimic.md)、[SONIC](../entities/nvidia-sonic.md) |
 | 目标点/航向 | 局部坐标目标 (x, y) 或航向角 | 上层规划器 / waypoint 接口 | [Extreme Parkour](../entities/extreme-parkour.md) 的 oracle 航向（后被蒸馏为深度自预测 yaw） |
 | 技能/模式选择 | 独热或离散 latent | 人为切换或高层调度 | multi-skill / MoE 系 |
 

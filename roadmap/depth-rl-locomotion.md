@@ -212,7 +212,7 @@ flowchart LR
 
 **方向 B：模仿学习初始化 / 动作跟踪**
 - 用 MoCap 数据初始化 RL 策略，或全身动作跟踪
-- 关键词：ASE、CALM、[DeepMimic](../wiki/methods/deepmimic.md)、[BeyondMimic](../wiki/methods/beyondmimic.md)、[Sonic](../wiki/methods/sonic-motion-tracking.md)
+- 关键词：ASE、CALM、[DeepMimic](../wiki/methods/deepmimic.md)、[BeyondMimic](../wiki/methods/beyondmimic.md)、[Sonic](../wiki/entities/nvidia-sonic.md)
 - 独立路线页：[模仿学习纵深路线](depth-imitation-learning.md)
 
 **方向 C：视觉 + locomotion**

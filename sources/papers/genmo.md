@@ -70,7 +70,7 @@
 - **摘录要点：** README 把 GEM/GENMO 定位为「NVIDIA 人形机器人栈」中的人体运动接口环节，关联工作包括 [GEM-X](https://github.com/NVlabs/GEM-X)（全身 + 手脸）、[SOMA-X](https://github.com/NVlabs/SOMA-X) body model、BONES-SEED 数据集、[ProtoMotions](https://github.com/NVlabs/ProtoMotions)、SOMA Retargeter、[SONIC](https://github.com/NVlabs/GR00T-WholeBodyControl) 与 [Kimodo](https://github.com/nv-tlabs/kimodo)。在 [ExoActor](https://baai-agents.github.io/ExoActor/) 中，GENMO 被作为「生成视频 → SMPL 全身轨迹」的标准中间件，与 WiLoR（手部）+ SONIC（跟踪控制器）拼成端到端的 video-to-G1 管线。
 - **对 wiki 的映射：**
   - [ExoActor (视频生成驱动的交互式人形控制)](../../wiki/methods/exoactor.md) — 已经把 GENMO 列为系统集成位之一；本次 ingest 在 GENMO 方法页补全这一双向引用。
-  - [SONIC（规模化运动跟踪人形控制）](../../wiki/methods/sonic-motion-tracking.md) — 在「公开材料要点」中明确「视频/文本/音乐 → GEM → SONIC」的官方演示路径，GENMO 方法页应反向链回。
+  - [SONIC（规模化运动跟踪人形控制）](../../wiki/entities/nvidia-sonic.md) — 在「公开材料要点」中明确「视频/文本/音乐 → GEM → SONIC」的官方演示路径，GENMO 方法页应反向链回。
   - [ProtoMotions](../../wiki/entities/protomotions.md) — 作为同一 NVIDIA 人形栈中的训练框架，间接利用 GEM/GENMO 输出的人体运动作训练参考。
 
 ## 当前提炼状态

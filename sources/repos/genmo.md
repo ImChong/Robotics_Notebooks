@@ -55,6 +55,6 @@ NVIDIA 官方实现，把扩散式的「带观测约束的运动生成」做成�
 - **`wiki/methods/genmo.md`**：人体运动估计/生成方法页（本次同步补全 dual-mode 训练、multi-text 注入、NVIDIA 人形栈关联）。
 - **`sources/papers/genmo.md`**：配套的论文级摘录，承载方法学细节。
 - **`wiki/methods/exoactor.md`**：作为「生成视频 → SMPL 全身轨迹」环节的下游消费者。
-- **`wiki/methods/sonic-motion-tracking.md`**：官网与 README 将 GEM/GENMO 与 SONIC 拼成「人体运动 → 通用跟踪」演示。
+- **`wiki/entities/nvidia-sonic.md`**：官网与 README 将 GEM/GENMO 与 SONIC 拼成「人体运动 → 通用跟踪」演示。
 - **`wiki/methods/diffusion-motion-generation.md`**：扩散范式在人体运动域的代表实现交叉引用。
 - **`wiki/entities/protomotions.md`**：同属 NVIDIA 人形栈的训练框架；本次在 GENMO 方法页中显式建立横向关联。

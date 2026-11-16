@@ -100,7 +100,7 @@ flowchart TD
 | [AMP 运动先验](../methods/amp-reward.md) / [AMP 综述](../overview/humanoid-amp-motion-prior-survey.md) | 风格来自 **判别器**「像不像数据集」，强度不可连续调、换风格要换数据或换判别器；EMoG 用连续风格码 + 统一 tracker，可插值且不重训。代价是需要带情绪标注的表演数据 |
 | [步态生成](../concepts/gait-generation.md)（CPG / 参数化周期步态） | EMoG 的输出形态与之同族——**周期步态轨迹**，只是参数由神经网络按风格码产生而非人工整定。读本页时应把它看成「可学习的步态参数生成器 + RL 跟踪」，不是端到端策略 |
 | [EMOTION](./paper-loco-manip-161-094-emotion.md) | 名字近似但问题不同：那条线做的是从感知恢复表征再生成全身轨迹的 **整链路**；EMoG 只做 **步态风格** 这一层，落点在 HRI 表达而非任务执行 |
-| [SONIC](../methods/sonic-motion-tracking.md) 等运动跟踪 | **下游而非竞品**：EMoG 出参考轨迹，物理执行由统一 RL tracker 完成。若要替换 tracker，风格码的表达效果会随跟踪能力变化，两层需分开评估 |
+| [SONIC](./nvidia-sonic.md) 等运动跟踪 | **下游而非竞品**：EMoG 出参考轨迹，物理执行由统一 RL tracker 完成。若要替换 tracker，风格码的表达效果会随跟踪能力变化，两层需分开评估 |
 
 ## 结论
 

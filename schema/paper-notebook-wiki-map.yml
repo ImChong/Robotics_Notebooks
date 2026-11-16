@@ -50,9 +50,9 @@ overrides:
   Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report:
   - wiki/methods/generative-world-models.md
   GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object:
-  - wiki/methods/gentlehumanoid-motion-tracking.md
+  - wiki/entities/paper-gentlehumanoid.md
   HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model:
-  - wiki/methods/haic.md
+  - wiki/entities/paper-haic.md
   HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton_Cockpit:
   - wiki/tasks/loco-manipulation.md
   - wiki/tasks/teleoperation.md
@@ -139,7 +139,7 @@ overrides:
   SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation:
   - wiki/tasks/teleoperation.md
   SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control:
-  - wiki/methods/sonic-motion-tracking.md
+  - wiki/entities/nvidia-sonic.md
   STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain:
   - wiki/tasks/vision-language-navigation.md
   TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior:

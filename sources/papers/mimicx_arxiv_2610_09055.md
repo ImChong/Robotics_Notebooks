@@ -49,4 +49,4 @@
 ## 对 wiki 的映射
 
 - 新建统一项目实体：[MimicX](../../wiki/entities/paper-mimicx.md)（论文、项目页、源码和 HF 资产共用一个项目节点）。
-- 交叉：[SONIC 运动跟踪](../../wiki/methods/sonic-motion-tracking.md)、[模仿学习](../../wiki/methods/imitation-learning.md)、[GVHMR](../../wiki/entities/gvhmr.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)。
+- 交叉：[SONIC 运动跟踪](../../wiki/entities/nvidia-sonic.md)、[模仿学习](../../wiki/methods/imitation-learning.md)、[GVHMR](../../wiki/entities/gvhmr.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)。

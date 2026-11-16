@@ -29,7 +29,7 @@
   - 这篇工作不是单纯让机器人“更软”，而是让它在 whole-body tracking 成功率和 interaction safety 之间获得可调、可部署的平衡。
   - 对 Robotics_Notebooks 来说，它是连接 **Whole-Body Control / Contact Dynamics / Loco-Manipulation / Human-Robot Interaction** 的一篇非常典型的桥接论文。
 - **对 wiki 的映射：**
-  - [GentleHumanoid（方法页）](../../wiki/methods/gentlehumanoid-motion-tracking.md)
+  - [GentleHumanoid（方法页）](../../wiki/entities/paper-gentlehumanoid.md)
   - [axellwppr_motion_tracking（工程实体）](../../wiki/entities/axellwppr-motion-tracking.md)
   - [Whole-Body Control](../../wiki/concepts/whole-body-control.md)
   - [Contact Dynamics](../../wiki/concepts/contact-dynamics.md)
@@ -39,7 +39,7 @@
 
 - [x] HTML 原文核心方法与实验信息已摘录
 - [x] wiki 页面映射确认
-- [x] 方法页 `wiki/methods/gentlehumanoid-motion-tracking.md` 与工程实体已沉淀
+- [x] 方法页 `wiki/entities/paper-gentlehumanoid.md` 与工程实体已沉淀
 - [x] 相关概念页交叉链接已更新
 - [ ] 若后续需要，可继续拆成 upper-body compliance / safe physical interaction / assistive humanoid interaction 子页面
 
@@ -48,4 +48,4 @@
 - **论文/项目：** arXiv:2511.04679；项目页 <https://gentle-humanoid.axell.top/>。
 - **代码：** 训练仓 <https://github.com/Axellwppr/gentle-humanoid-training>、部署仓 <https://github.com/Axellwppr/gentle-humanoid>，相关 `Axellwppr/motion_tracking` compliance 分支。
 - **关键数字：** `τ_safe ∈ [5,15] N`，约 25 h @ 50 Hz motion data，40 路 calibrated capacitive taxels 压力垫。
-- **wiki 深化：** [paper-gentlehumanoid](../../wiki/entities/paper-gentlehumanoid.md)；方法页见 [gentlehumanoid-motion-tracking](../../wiki/methods/gentlehumanoid-motion-tracking.md)。
+- **wiki 深化：** [paper-gentlehumanoid](../../wiki/entities/paper-gentlehumanoid.md)；方法页见 [gentlehumanoid-motion-tracking](../../wiki/entities/paper-gentlehumanoid.md)。

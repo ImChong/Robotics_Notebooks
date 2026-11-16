@@ -13,7 +13,6 @@ related:
   - ../concepts/embodied-data-collection-four-layers-taxonomy.md
   - ../tasks/teleoperation.md
   - ../methods/imitation-learning.md
-  - ../tasks/teleoperation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
 sources:
   - ../../sources/papers/pixel_umi_arxiv_2611_03647.md

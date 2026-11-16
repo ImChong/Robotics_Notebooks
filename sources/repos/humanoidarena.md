@@ -32,4 +32,4 @@
 
 - [HumanoidArena 实体](../../wiki/entities/paper-humanoidarena.md)
 - [项目页](../sites/humanoidarena-github-io.md)
-- [TWIST2](../../wiki/entities/paper-twist2.md) · [SONIC](../../wiki/methods/sonic-motion-tracking.md)
+- [TWIST2](../../wiki/entities/paper-twist2.md) · [SONIC](../../wiki/entities/nvidia-sonic.md)

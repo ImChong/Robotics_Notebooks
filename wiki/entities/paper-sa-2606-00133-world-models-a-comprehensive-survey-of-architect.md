@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# World Models
+# World Models: A Comprehensive Survey（arXiv:2606.00133）
 
 **World Models: A Comprehensive Survey of Architectures, Methodologies, Reasoning Paradigms, and Applications** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 546/571** 篇，分组 **Surveys & Overviews**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

@@ -22,7 +22,7 @@ related:
   - ./unitree-g1.md
   - ./paper-twist2.md
   - ./paper-twist.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-pilot-perceptive-loco-manipulation.md
 original:
   - ../../sources/papers/telegate_arxiv_2602_09628.md
@@ -192,7 +192,7 @@ flowchart TB
 ## 关联页面
 
 - 便携采集 + tracking：[TWIST2](./paper-twist2.md)、[TWIST](./paper-twist.md)
-- 大规模 tracking：[SONIC 方法页](../methods/sonic-motion-tracking.md)
+- 大规模 tracking：[SONIC 方法页](./nvidia-sonic.md)
 - 蒸馏统一多接口：[BFM 相关论文与 teleoperation 任务页](../tasks/teleoperation.md)
 - 感知 MoE LLC（不同问题）：[PILOT](./paper-pilot-perceptive-loco-manipulation.md)
 - 重定向：[Motion Retargeting](../concepts/motion-retargeting.md)
@@ -209,5 +209,5 @@ flowchart TB
 - [TeleGate 项目页](https://anywitresearch.github.io/TeleGate/)
 - [机器人论文阅读笔记：TeleGate](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior/TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior.html)
 - [TWIST2（便携全身采集对照）](./paper-twist2.md) — arXiv:2511.02832
-- [SONIC（规模化 tracking 对照）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化 tracking 对照）](./nvidia-sonic.md)
 - [Teleoperation 任务页](../tasks/teleoperation.md) — 全身遥操作系统横向表

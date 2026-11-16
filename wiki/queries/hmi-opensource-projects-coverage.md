@@ -180,7 +180,7 @@ original:
 | [GO-2](https://www.agibot.com/article/231/detail/56.html) | [GO-2（智元执行基座）](../entities/go-2.md) |
 | [HoloAgent](https://github.com/HorizonRobotics/HoloAgent) | [HoloAgent](../entities/holoagent.md) |
 | [Isaac-GR00T / GR00T N1.7](https://github.com/NVIDIA/Isaac-GR00T) | [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) |
-| [Octo](https://github.com/octo-models/octo) | [Octo（开源 Generalist Policy）](../methods/octo-model.md) |
+| [Octo](https://github.com/octo-models/octo) | [Octo（开源 Generalist Policy）](../entities/paper-octo.md) |
 | [openpi](https://github.com/Physical-Intelligence/openpi) | [π₀ (Pi-zero) 策略模型](../methods/π0-policy.md) |
 | [OpenVLA](https://github.com/openvla/openvla) | [OpenVLA](../entities/paper-openvla.md) |
 | [WholeBodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) | [WholeBodyVLA](../entities/paper-hrl-stack-30-wholebodyvla.md) |

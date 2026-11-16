@@ -9,7 +9,7 @@ related:
   - ../tasks/locomotion.md
   - ../concepts/whole-body-control.md
   - ../concepts/motion-retargeting.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-perceptive-bfm.md
   - ./paper-teleopit.md
   - ./holomotion.md
@@ -41,7 +41,7 @@ summary: "NEXUS（SJTU 缪翔宇等，Research Preview）：感知型基础策�
 
 ## 为什么重要
 
-- **Foundation policy × 遥操作：** 与 [VLA](../methods/vla.md) 操作向 foundation 不同，NEXUS 把卖点放在 **全身跟踪 + 感知 + 跨域**，贴近 [BFM](./paper-behavior-foundation-model-humanoid.md) / [SONIC](../methods/sonic-motion-tracking.md) / [HoloMotion](./holomotion.md) 的「低层通才策略」叙事，但强调 **operator-in-the-loop** 与 **terrain-aware** 落地。
+- **Foundation policy × 遥操作：** 与 [VLA](../methods/vla.md) 操作向 foundation 不同，NEXUS 把卖点放在 **全身跟踪 + 感知 + 跨域**，贴近 [BFM](./paper-behavior-foundation-model-humanoid.md) / [SONIC](./nvidia-sonic.md) / [HoloMotion](./holomotion.md) 的「低层通才策略」叙事，但强调 **operator-in-the-loop** 与 **terrain-aware** 落地。
 - **与 Perceptive BFM 同命题轴：** [Perceptive BFM](./paper-perceptive-bfm.md) 用机器人中心地形把 **raw 人体参考** 变为可踩点行为；NEXUS 预告页同样突出 **楼梯地形** 与 **sim/real** 预览——入库日尚无论文细节，**不可混为同一工作**，但选型时应并列关注。
 - **跨域（cross-domain）：** 项目标题明示 operator / robot / scene 可能 **不同域**（见 Perceptive BFM 问题设定）；若论文成立，对 [Teleoperation](../tasks/teleoperation.md) 数据飞轮与部署接口设计有参考价值。
 - **开源边界清醒：** 截至 **2026-09-06**，Paper / arXiv / Code / Video 均为 **Coming Soon**；GitHub 仅 [nexus-humanoid.github.io](https://github.com/nexus-humanoid/nexus-humanoid.github.io) 静态站——**不能**用于复现。
@@ -93,7 +93,7 @@ flowchart LR
 
 | 路线 | 代表 | 与 NEXUS 预告的差异（截至入库日） |
 |------|------|-----------------------------------|
-| 大规模 motion tracking GMT | [SONIC](../methods/sonic-motion-tracking.md) | SONIC 已开源 + 论文；强调 **scaling**；NEXUS 预告强调 **感知 + 跨域 teleop** |
+| 大规模 motion tracking GMT | [SONIC](./nvidia-sonic.md) | SONIC 已开源 + 论文；强调 **scaling**；NEXUS 预告强调 **感知 + 跨域 teleop** |
 | VR 全身体遥操作栈 | [Teleopit](./paper-teleopit.md) | Teleopit **五仓开源** + arXiv；分层 tracker + 手重定向；NEXUS 自称 **单一 foundation policy** |
 | 地形感知 + raw 参考 | [Perceptive BFM](./paper-perceptive-bfm.md) | 已有 arXiv 与 TCRS 管线细节；NEXUS **尚未发布** 技术稿 |
 | 生成式多接口 WBC | [BFM](./paper-behavior-foundation-model-humanoid.md) | BFM 用 CVAE + 掩码蒸馏；NEXUS 感知叙事更接近 **teleop 闭环** |
@@ -131,7 +131,7 @@ flowchart LR
 - [Foundation Policy](../concepts/foundation-policy.md)
 - [Teleoperation](../tasks/teleoperation.md)
 - [Perceptive BFM](./paper-perceptive-bfm.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](./nvidia-sonic.md)
 - [Teleopit](./paper-teleopit.md)
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — NEXUS 的「地形感知」落在感知栈的「2D→3D 提升与语义建图 → 下游策略消费」两层；项目页未披露具体感知实现，待论文/代码公开后再对号入座
 

@@ -48,7 +48,7 @@ summary: "EGM（Efficient General Mimic）：以 Bin 级跨动作课程自适应
 
 - **与「堆更多小时 MoCap」路线对照**：论文通过 **小高质量集优于大规则筛集** 的实验，支持「**通用 tracking 更吃质量与多样性**」这一判断，对 **数据策展与采样** 的优先级有直接启示。
 - **工程上可拆的四个旋钮**：**采样粒度（bin）**、**专家结构（上下身 + 共享/正交）**、**课程式采样分布**、**仿真课程（地形/DR/奖励收紧）**，便于与 [BeyondMimic](./beyondmimic.md) 等 **失败率驱动采样** 路线对照。
-- **平台语境清晰**：**Unitree G1、23 DoF 跟踪 + PD 扭矩**，与当前开源人形 **RL tracking** 生态一致，便于和 [DeepMimic](./deepmimic.md)、规模化 tracking 叙述（如 [SONIC](./sonic-motion-tracking.md)）放在同一知识地图里。
+- **平台语境清晰**：**Unitree G1、23 DoF 跟踪 + PD 扭矩**，与当前开源人形 **RL tracking** 生态一致，便于和 [DeepMimic](./deepmimic.md)、规模化 tracking 叙述（如 [SONIC](../entities/nvidia-sonic.md)）放在同一知识地图里。
 
 ## 主要技术路线
 

@@ -19,7 +19,7 @@
 | LocoFormer | 新建 | [paper-locoformer](../../wiki/entities/paper-locoformer.md) |
 | HUMANUP | 新建 | [paper-humanup-getting-up](../../wiki/entities/paper-humanup-getting-up.md) |
 | BeyondMimic | 复用 | [wiki/methods/beyondmimic.md](../../wiki/methods/beyondmimic.md) |
-| SONIC | 复用 | [wiki/methods/sonic-motion-tracking.md](../../wiki/methods/sonic-motion-tracking.md) |
+| SONIC | 复用 | [wiki/entities/nvidia-sonic.md](../../wiki/entities/nvidia-sonic.md) |
 | HoST | 复用 | [wiki/entities/paper-host-humanoid-standingup.md](../../wiki/entities/paper-host-humanoid-standingup.md) |
 | PPO | 复用 | [wiki/methods/ppo.md](../../wiki/methods/ppo.md) |
 | AMP | 复用 | [wiki/methods/amp-reward.md](../../wiki/methods/amp-reward.md) |

@@ -16,11 +16,11 @@ related:
   - ../entities/skild-ai.md
   - ../entities/paper-host-one-shot-human-video.md
   - ../entities/generalist-gen1-thousand-hands.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/isaac-gr00t.md
   - ./open-x-embodiment.md
-  - ../methods/octo-model.md
+  - ../entities/paper-octo.md
   - ../methods/robotics-transformer-rt-series.md
   - ../entities/gemini-robotics.md
   - ../overview/hub-cross-embodiment.md
@@ -115,7 +115,7 @@ summary: "Foundation Policy 指在大规模多任务机器人数据上预训练�
 - **意义**：证明强 VLM 能力足以支撑高性能控制，打破了对复杂生成式动作头的依赖，成功率在 LIBERO 基准达到 98.8%
 
 ### GR00T（NVIDIA, 2024-2026）
-- **架构**：VLA 基础策略 + [MotionBricks](../methods/motionbricks.md) 生成式 WBC；公开演示亦将 VLA（如 **GR00T N1.5**）与规模化 **motion tracking** 执行器 [SONIC](../methods/sonic-motion-tracking.md) 经 **统一控制 / token 接口** 串联，形成「高层推理 + 低层全身跟踪」栈（以 NVIDIA 项目页与论文为准）。工程入口与训练/部署文档集中在 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) 官方仓库。
+- **架构**：VLA 基础策略 + [MotionBricks](../methods/motionbricks.md) 生成式 WBC；公开演示亦将 VLA（如 **GR00T N1.5**）与规模化 **motion tracking** 执行器 [SONIC](../entities/nvidia-sonic.md) 经 **统一控制 / token 接口** 串联，形成「高层推理 + 低层全身跟踪」栈（以 NVIDIA 项目页与论文为准）。工程入口与训练/部署文档集中在 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) 官方仓库。
 - **意义**：实现人形机器人的通用技能习得与高动态执行，打通了从语言指令到物理关节力矩的完整闭环
 
 ### Octo（2023）
@@ -156,7 +156,7 @@ summary: "Foundation Policy 指在大规模多任务机器人数据上预训练�
 ### HoloMotion-1（Horizon Robotics, 2026）
 - **架构**：**稀疏 MoE Transformer** 跟踪策略 + **KV-cache** 推理；**序列级 PPO** 训练长运动片段；观测含 **短 horizon 参考前瞻**
 - **数据**：**混合大规模运动语料**——**野外视频重建运动**主导 **行为多样性**，**MoCap + 室内自采** 补 **高保真与部署覆盖**（与纯 MoCap scaling 路线对照阅读）
-- **定位**：面向 **零样本全身运动跟踪** 的 **运动基础模型** 工程栈；与 [SONIC](../methods/sonic-motion-tracking.md)（MoCap-centric scaling）、[BFM](../entities/paper-behavior-foundation-model-humanoid.md)（生成式多接口 WBC）形成 **数据—结构—接口** 三角对照
+- **定位**：面向 **零样本全身运动跟踪** 的 **运动基础模型** 工程栈；与 [SONIC](../entities/nvidia-sonic.md)（MoCap-centric scaling）、[BFM](../entities/paper-behavior-foundation-model-humanoid.md)（生成式多接口 WBC）形成 **数据—结构—接口** 三角对照
 - **入口**：[HoloMotion 实体页](../entities/holomotion.md)（代码 / HF / Docker / arXiv:2605.15336 一手索引）
 
 ### NEXUS（SJTU，Research Preview，2026）
@@ -247,7 +247,7 @@ flowchart TD
 - [Gemini Robotics](../entities/gemini-robotics.md) — DeepMind 闭源全身 VLA + 可调用 ER 2
 
 ## 继续阅读
-- [VLA 方法页](../methods/vla.md)、[Open X-Embodiment](./open-x-embodiment.md)、[Octo](../methods/octo-model.md)、[RT 系列](../methods/robotics-transformer-rt-series.md)
+- [VLA 方法页](../methods/vla.md)、[Open X-Embodiment](./open-x-embodiment.md)、[Octo](../entities/paper-octo.md)、[RT 系列](../methods/robotics-transformer-rt-series.md)
 - [Foundation Policy for Humanoids（Query）](../queries/foundation-policy-for-humanoids.md)
 
 ## 参考来源

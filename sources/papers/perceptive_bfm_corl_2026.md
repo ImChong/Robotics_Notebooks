@@ -48,7 +48,7 @@
 - **局限：** TCRS 为运动学合成、静态刚体高程假设；足部中心适应保留上身命令 → 上肢碰撞风险。
 - **对 wiki 的映射：**
   - [Unitree G1](../../wiki/entities/unitree-g1.md)
-  - [SONIC](../../wiki/methods/sonic-motion-tracking.md)、[BFM](../../wiki/entities/paper-behavior-foundation-model-humanoid.md) — 无感知跟踪 foundation 对照
+  - [SONIC](../../wiki/entities/nvidia-sonic.md)、[BFM](../../wiki/entities/paper-behavior-foundation-model-humanoid.md) — 无感知跟踪 foundation 对照
 
 ## 对 wiki 的映射（汇总）
 

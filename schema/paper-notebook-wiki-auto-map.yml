@@ -14,9 +14,9 @@ overrides:
   EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video:
   - wiki/entities/paper-ego-03-egomimic.md
   GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object:
-  - wiki/methods/gentlehumanoid-motion-tracking.md
+  - wiki/entities/paper-gentlehumanoid.md
   HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model:
-  - wiki/methods/haic.md
+  - wiki/entities/paper-haic.md
   HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control:
   - wiki/entities/paper-amp-survey-14-husky.md
   HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi:

@@ -17,7 +17,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../tasks/ultra-survey.md
   - ../methods/deepmimic.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../methods/beyondmimic.md
   - ../methods/any2track.md
   - ../methods/ams.md
@@ -102,9 +102,9 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 |---|---|---|---|
 | **1. 数据** | 人类动作 / 视频 / 遥操作 → 机器人可执行参考 | [GMR](../methods/motion-retargeting-gmr.md)、[NMR](../methods/neural-motion-retargeting-nmr.md) | OmniRetarget, GenMimic, HumanX, HDMI, H2O, OmniH2O, TWIST, TWIST2 |
 | **2. 参考 / 跟踪控制** | 参考动作进入物理仿真、稳定跟踪、在线修正 | [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md) | OmniTrack, Motion Gen+Tracking, Heracles |
-| **3. 控制（通用 tracker / 身体基础模型）** | 多动作跟踪、抗扰、负载适应、恢复；身体级 foundation model | [SONIC](../methods/sonic-motion-tracking.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[BFM 论文](../entities/paper-behavior-foundation-model-humanoid.md)、[Extreme-RGMT](../entities/paper-extreme-rgmt.md)、[YAHMP](../entities/paper-yahmp.md)、[RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[OmniXtreme](../entities/paper-hrl-stack-16-omnixtreme.md) | HALO, PvP, Adaptive Humanoid Control |
+| **3. 控制（通用 tracker / 身体基础模型）** | 多动作跟踪、抗扰、负载适应、恢复；身体级 foundation model | [SONIC](../entities/nvidia-sonic.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[BFM 论文](../entities/paper-behavior-foundation-model-humanoid.md)、[Extreme-RGMT](../entities/paper-extreme-rgmt.md)、[YAHMP](../entities/paper-yahmp.md)、[RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[OmniXtreme](../entities/paper-hrl-stack-16-omnixtreme.md) | HALO, PvP, Adaptive Humanoid Control |
 | **4. 感知（视觉闭环）** | RGB / 深度进入动作闭环、sim-to-real | [VIRAL 论文](../entities/paper-viral-humanoid-visual-sim2real.md)、[DoorMan 论文](../entities/paper-doorman-opening-sim2real-door.md)、[Reflex](../entities/paper-reflex-visually-grounded-reactive-humanoid-control.md) | PHP, Deep Whole-body Parkour, Hiking in the Wild, ASAP, 视觉足球 |
-| **5. 接触 / 柔顺** | 力 / 柔顺 / 对象动力学进入控制；接触安全 | [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) | CHIP, HAIC, Thor |
+| **5. 接触 / 柔顺** | 力 / 柔顺 / 对象动力学进入控制；接触安全 | [GentleHumanoid](../entities/paper-gentlehumanoid.md) | CHIP, HAIC, Thor |
 | **6. 安全 / 失败恢复** | 跌倒、异常姿态恢复、冲击力管理 | — | SafeFall（强相关：[balance-recovery](../tasks/balance-recovery.md)） |
 | **7. 任务接口 / VLA 调用** | 身体能力封装成 skill token / latent action / action chunk，供语言或 VLA 调用 | [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)、[ULTRA Survey](../tasks/ultra-survey.md)、[DAJI 预期关节意图](../entities/paper-daji-anticipatory-joint-intent.md) | SENTINEL, WholeBodyVLA, MetaWorld, BFM-Zero |
 | **8. 世界模型** | 执行前预测接触后果、评估策略可行性 | [机器人世界模型：训练闭环与三线 taxonomy](./robot-world-models-training-loop-taxonomy.md) | Ego-Vision World Model, DreamDojo |
@@ -131,7 +131,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 
 - 本页是**总框架**，回答「这批论文整体在搭什么」；具体工程经验沉淀在 [humanoid-motion-control-know-how](./humanoid-motion-control-know-how.md)（传感器 / 电机 / 热管理 / 接触估计）。
 - **训练模块视角**（MDP → Actor-Critic → PPO → 奖励 → 蒸馏）见 [人形 RL 策略训练五模块](./humanoid-rl-policy-training-five-modules.md)，与本页「能力层栈」正交。
-- 单篇方法的方法学细节在 `wiki/methods/`（[DeepMimic](../methods/deepmimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[GMR](../methods/motion-retargeting-gmr.md)、[NMR](../methods/neural-motion-retargeting-nmr.md) 等）；跟踪局限与超越路径见 [Jason Peng 灵活运动技能学习](./jason-peng-flexible-motion-skill-learning.md)。
+- 单篇方法的方法学细节在 `wiki/methods/`（[DeepMimic](../methods/deepmimic.md)、[SONIC](../entities/nvidia-sonic.md)、[BeyondMimic](../methods/beyondmimic.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[GMR](../methods/motion-retargeting-gmr.md)、[NMR](../methods/neural-motion-retargeting-nmr.md) 等）；跟踪局限与超越路径见 [Jason Peng 灵活运动技能学习](./jason-peng-flexible-motion-skill-learning.md)。
 - 任务侧的统一控制讨论见 [ULTRA Survey](../tasks/ultra-survey.md)（统一多模态全身 loco-manipulation 控制器）。
 - 单篇论文页：[DoorMan](../entities/paper-doorman-opening-sim2real-door.md)、[VIRAL](../entities/paper-viral-humanoid-visual-sim2real.md)、[Reflex](../entities/paper-reflex-visually-grounded-reactive-humanoid-control.md)（RGB-D 时序恢复接球动力学状态）、[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 等。
 
@@ -151,7 +151,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)、[loco-manipulation](../tasks/loco-manipulation.md)、[balance-recovery](../tasks/balance-recovery.md) — 任务侧入口
 - [Query：人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — DeepMimic / AMP 家族 / 通用 tracker 的工程选型
 - [ZEST vs SONIC vs 视觉足球](../comparisons/zest-vs-sonic-vs-vision-soccer.md) — 同策展方 SciRob 同期三层读法（配方 / 底座 / 感知任务）
-- [DeepMimic](../methods/deepmimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[GMR](../methods/motion-retargeting-gmr.md)、[NMR](../methods/neural-motion-retargeting-nmr.md) — 跟踪 / 控制层方法页
+- [DeepMimic](../methods/deepmimic.md)、[SONIC](../entities/nvidia-sonic.md)、[GentleHumanoid](../entities/paper-gentlehumanoid.md)、[BeyondMimic](../methods/beyondmimic.md)、[Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[GMR](../methods/motion-retargeting-gmr.md)、[NMR](../methods/neural-motion-retargeting-nmr.md) — 跟踪 / 控制层方法页
 - [DoorMan 论文](../entities/paper-doorman-opening-sim2real-door.md)、[VIRAL 论文](../entities/paper-viral-humanoid-visual-sim2real.md)、[BFM 论文](../entities/paper-behavior-foundation-model-humanoid.md)、[GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) — 视觉闭环 / 身体基础模型 / VLA 调用相关单篇
 
 ## Wiki 实体索引（站内详情页）
@@ -176,7 +176,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | 14 | Robust and Generalized Humanoid Motion Tracking | [paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) |
 | 15 | BeyondMimic | [beyondmimic.md](../methods/beyondmimic.md) |
 | 16 | OmniXtreme | [paper-hrl-stack-16-omnixtreme.md](../entities/paper-hrl-stack-16-omnixtreme.md) |
-| 17 | SONIC | [sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) |
+| 17 | SONIC | [sonic-motion-tracking.md](../entities/nvidia-sonic.md) |
 | 18 | Agility Meets Stability | [ams.md](../methods/ams.md) |
 | 19 | BFM-Zero | [paper-bfm-zero.md](../entities/paper-bfm-zero.md) |
 | 20 | PvP | [paper-hrl-stack-20-pvp.md](../entities/paper-hrl-stack-20-pvp.md) |
@@ -196,8 +196,8 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | 34 | GR00T N1 | [paper-hrl-stack-34-gr00t_n1.md](../entities/paper-hrl-stack-34-gr00t_n1.md) |
 | 35 | DreamDojo | [paper-hrl-stack-35-dreamdojo.md](../entities/paper-hrl-stack-35-dreamdojo.md) |
 | 36 | CHIP | [paper-hrl-stack-36-chip.md](../entities/paper-hrl-stack-36-chip.md) |
-| 37 | GentleHumanoid | [gentlehumanoid-motion-tracking.md](../methods/gentlehumanoid-motion-tracking.md) |
-| 38 | HAIC | [haic.md](../methods/haic.md) |
+| 37 | GentleHumanoid | [gentlehumanoid-motion-tracking.md](../entities/paper-gentlehumanoid.md) |
+| 38 | HAIC | [haic.md](../entities/paper-haic.md) |
 | 39 | Closing Sim-to-Real Gap for Heavy-loaded Humanoid Agile Motion Skills via Differentiable Simulation | [paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md](../entities/paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md) |
 | 40 | Heracles | [paper-heracles-humanoid-diffusion.md](../entities/paper-heracles-humanoid-diffusion.md) |
 | 41 | SafeFall | [paper-hrl-stack-41-safefall.md](../entities/paper-hrl-stack-41-safefall.md) |

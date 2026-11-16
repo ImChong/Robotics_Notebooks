@@ -117,7 +117,7 @@ flowchart TD
 | 工作 | 动作接口 / 分工 | 与 DKWBC 的对比（数字为本文表 1–2） |
 |------|----------------|-----------------------------------|
 | [BeyondMimic](../methods/beyondmimic.md) | RL 输出位置目标，跟踪与平衡耦合在一个策略里 | 同预算 coupled 对照：LAFAN 97.67% / 34.06 mm vs DKWBC 98.95% / 26.59 mm |
-| [SONIC](../methods/sonic-motion-tracking.md) | 规模化动捕跟踪预训练通用策略 | 本文按 BONES-SEED 2–128 h 子集重训对比，DKWBC 各规模成功率更高、MPJPE 更低 |
+| [SONIC](./nvidia-sonic.md) | 规模化动捕跟踪预训练通用策略 | 本文按 BONES-SEED 2–128 h 子集重训对比，DKWBC 各规模成功率更高、MPJPE 更低 |
 | [FALCON](./paper-loco-manip-161-109-falcon.md) | 上下肢双 agent + 力课程 | 最大手部外力下上身 MPJPE 83.51 mm vs 24.68 mm |
 | [ResMimic](./paper-resmimic.md) | GMT 先验 + 残差策略 | 同测试 54.96 mm、成功率 100%（略高于 DKWBC 99.54%）；DKWBC 残差为直接关节力矩而非位置目标 |
 

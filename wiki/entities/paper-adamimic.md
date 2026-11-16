@@ -20,7 +20,7 @@ code: https://github.com/InternRobotics/AdaMimic
 related:
   - ../methods/beyondmimic.md
   - ../methods/amp-reward.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-adapt.md
   - ./paper-yahmp.md
   - ./paper-extreme-rgmt.md

@@ -8,7 +8,7 @@ project_id: partigen
 related:
   - ../methods/diffusion-motion-generation.md
   - ../methods/motion-retargeting-gmr.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/whole-body-tracking-pipeline.md
 sources:
   - ../../sources/papers/partigen_arxiv_2610_13373.md
@@ -108,7 +108,7 @@ DA-LDM 根据文本嵌入、运动历史和噪声潜变量自回归生成运动�
 
 - [基于扩散模型的运动生成](../methods/diffusion-motion-generation.md) — 扩散模型生成机器人全身参考的路线综述
 - [通用运动重定向（GMR）](../methods/motion-retargeting-gmr.md) — 人体动作映射到机器人骨架
-- [SONIC 运动跟踪](../methods/sonic-motion-tracking.md) — 参考运动到机器人控制的跟踪接口
+- [SONIC 运动跟踪](./nvidia-sonic.md) — 参考运动到机器人控制的跟踪接口
 - [全身跟踪流水线](../concepts/whole-body-tracking-pipeline.md) — 生成、重定向与控制执行的系统关系
 
 ## 参考来源

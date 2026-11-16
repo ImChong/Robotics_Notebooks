@@ -37,7 +37,7 @@
 
 - **核心贡献：** 全身 motion latent $\mathbf{m}_t = (\mathbf{m}_t^{\text{cont}}, \mathbf{k}_t)$：**离散 SONIC token** $\mathbf{k}_t$（FSQ：2 token × 32 level → 64 维）概括 locomotion / 躯干 / 身高 / 足端意图；**连续通道** $\mathbf{m}_t^{\text{cont}}$ 驱动双手夹爪/灵巧手。Stage 3 将 SONIC 索引 $k_t$ 作为 **连续标量槽** 回归，推理时 **最近邻取整** 再经 **SONIC whole-body controller** 解码为关节命令——与 LEGS / 分层 VLA 的 **18-D 上身+基座命令** 接口形成对照。
 - **对 wiki 的映射：**
-  - [SONIC](../../wiki/methods/sonic-motion-tracking.md)
+  - [SONIC](../../wiki/entities/nvidia-sonic.md)
   - [Whole-Body Control](../../wiki/concepts/whole-body-control.md)
   - [LEGS](../../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md)（同 G1 + SONIC 栈，数据路线不同）
 
@@ -64,7 +64,7 @@
 ## 对 wiki 的映射（汇总）
 
 - 沉淀实体页：[`wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md`](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
-- 互链参考：[World Action Models](../../wiki/concepts/world-action-models.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[VLA](../../wiki/methods/vla.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
+- 互链参考：[World Action Models](../../wiki/concepts/world-action-models.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[VLA](../../wiki/methods/vla.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
 - 161 survey 坐标：[loco_manip_161_survey_100_motionwam.md](./loco_manip_161_survey_100_motionwam.md)
 - 接触横切面：[loco-manip-contact-category-05-vla-world-models](../../wiki/overview/loco-manip-contact-category-05-vla-world-models.md)
 

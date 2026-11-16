@@ -34,4 +34,4 @@
 ## 对 wiki 的映射
 
 - [paper-haic](../../wiki/entities/paper-haic.md)
-- [haic](../../wiki/methods/haic.md)
+- [haic](../../wiki/entities/paper-haic.md)

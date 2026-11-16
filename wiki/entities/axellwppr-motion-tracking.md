@@ -9,7 +9,7 @@ related:
   - ./paper-heft.md
   - ./paper-twist2.md
   - ./grit-deploy-onboard-g1.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../tasks/teleoperation.md
 sources:
   - ../../sources/repos/axellwppr_motion_tracking_reading.md
@@ -125,7 +125,7 @@ sequenceDiagram
 ## 关联页面
 
 - 对应论文实体：[HEFT 论文页](./paper-heft.md)（完整实验结果、表 E.1 7 项 24 kg 真机负载任务与基线对比）
-- 跟踪与遥操作基线：[TWIST2](./paper-twist2.md)、[SONIC 全身跟踪方法](../methods/sonic-motion-tracking.md)
+- 跟踪与遥操作基线：[TWIST2](./paper-twist2.md)、[SONIC 全身跟踪方法](./nvidia-sonic.md)
 - 机载部署对照：[GRIT Deploy Onboard G1](./grit-deploy-onboard-g1.md)（G1 机载部署架构对照）
 - 上游任务定义：[遥操作（Teleoperation）](../tasks/teleoperation.md)
 

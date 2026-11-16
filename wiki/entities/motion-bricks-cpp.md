@@ -10,7 +10,7 @@ related:
   - ./crowdbricks.md
   - ./kimodo.md
   - ./kimodo-cpp.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./gr00t-wholebodycontrol.md
   - ./unitree-g1.md
   - ./protomotions.md
@@ -106,7 +106,7 @@ sequenceDiagram
 | 绑定 | PureGo 动态加载 `libmotionbricks`；推荐 `CGO_ENABLED=0` |
 | 权重 | [MotionBricks-G1-GGML](https://huggingface.co/LocalAI-io/MotionBricks-G1-GGML)；NVIDIA Open Model License |
 | 上游对照 | [GR00T motionbricks 预览](https://github.com/NVlabs/GR00T-WholeBodyControl/tree/main/motionbricks) + `reference/README.md` open-loop parity |
-| 下游 | 运动学轨迹进 [SONIC](../methods/sonic-motion-tracking.md) / [ProtoMotions](./protomotions.md)；勿当真机扭矩 |
+| 下游 | 运动学轨迹进 [SONIC](./nvidia-sonic.md) / [ProtoMotions](./protomotions.md)；勿当真机扭矩 |
 
 ## 局限与风险
 
@@ -119,7 +119,7 @@ sequenceDiagram
 - [MotionBricks（方法页）](../methods/motionbricks.md) — Smart Primitives 与 GR00T 角色
 - [paper-motionbricks](./paper-motionbricks.md) — 论文与官方开源边界
 - [Kimodo](./kimodo.md) — Demo 可选动画来源；文本约束生成仍走官方 Python
-- [SONIC 运动跟踪](../methods/sonic-motion-tracking.md) — 可选 GGML 跟踪后端
+- [SONIC 运动跟踪](./nvidia-sonic.md) — 可选 GGML 跟踪后端
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md) — 官方预览代码母仓
 
 - [CrowdBricks](./crowdbricks.md) — 面向 SOMA 多角色的 TensorRT 批量运行时。

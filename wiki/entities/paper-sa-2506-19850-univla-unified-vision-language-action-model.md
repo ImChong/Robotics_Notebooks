@@ -20,7 +20,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# UniVLA
+# UniVLA: Unified Vision-Language-Action Model（arXiv:2506.19850）
 
 **UniVLA: Unified Vision-Language-Action Model** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 209/571** 篇，分组 **62 Joint WAM & Unified VLA-World Models**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

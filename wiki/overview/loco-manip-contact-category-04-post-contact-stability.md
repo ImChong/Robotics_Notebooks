@@ -52,7 +52,7 @@ sources:
 
 ## 关联页面
 
-- [GentleHumanoid 方法页](../methods/gentlehumanoid-motion-tracking.md)
+- [GentleHumanoid 方法页](../entities/paper-gentlehumanoid.md)
 - [阻抗控制](../concepts/impedance-control.md)
 - [力位混合控制](../concepts/hybrid-force-position-control.md)
 - [运动小脑 · I 柔顺接触](./motion-cerebellum-category-09-compliance-contact.md)

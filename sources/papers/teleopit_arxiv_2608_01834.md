@@ -94,7 +94,7 @@
 - 沉淀实体页：[Teleopit（论文实体）](../../wiki/entities/paper-teleopit.md)
 - 项目页：[teleopit-project.md](../sites/teleopit-project.md)
 - 代码：[teleopit.md](../repos/teleopit.md)、[somehand.md](../repos/somehand.md)
-- 交叉补强：[Teleoperation](../../wiki/tasks/teleoperation.md)、[TWIST2](../../wiki/entities/paper-twist2.md)、[HEFT](../../wiki/entities/paper-heft.md)、[OASIS](../../wiki/entities/paper-loco-manip-04-oasis.md)、[MimicLite](../../wiki/entities/mimiclite.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
+- 交叉补强：[Teleoperation](../../wiki/tasks/teleoperation.md)、[TWIST2](../../wiki/entities/paper-twist2.md)、[HEFT](../../wiki/entities/paper-heft.md)、[OASIS](../../wiki/entities/paper-loco-manip-04-oasis.md)、[MimicLite](../../wiki/entities/mimiclite.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
 
 ## 当前提炼状态
 

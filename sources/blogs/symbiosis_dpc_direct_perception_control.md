@@ -71,7 +71,7 @@
 
 - [paper-dpc](../../wiki/entities/paper-dpc.md) — 本篇主升格实体页
 - [loco-manipulation](../../wiki/tasks/loco-manipulation.md) — 新增「去掉运动接口」技术路线
-- [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md) — 被本页当作冻结 System 0 的具体靶
+- [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md) — 被本页当作冻结 System 0 的具体靶
 - [vla-with-low-level-controller](../../wiki/queries/vla-with-low-level-controller.md) — 相对 VLA+WBC 异步的第四条架构读法
 - [paper-motionwam-humanoid-loco-manipulation-wam](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 页内引用的分层 WAM 例
 - [paper-omega-0](../../wiki/entities/paper-omega-0.md) — 页内引用的 SONIC latent WAM 例

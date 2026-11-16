@@ -72,7 +72,6 @@ sources:
   - ../../sources/sites/roboduet.md
   - ../../sources/repos/roboduet.md
   - ../../sources/repos/roboduet_deployment.md
-
 ---
 
 # Loco-Manipulation (移动操作)

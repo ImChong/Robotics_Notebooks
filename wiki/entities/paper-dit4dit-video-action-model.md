@@ -25,7 +25,7 @@ related:
   - ../methods/mimic-video.md
   - ../methods/vla.md
   - ../methods/generative-world-models.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ./unitree-g1.md
@@ -181,7 +181,7 @@ sequenceDiagram
 - [World Action Models（WAM）](../concepts/world-action-models.md) — Joint 族文献坐标
 - [mimic-video（VAM）](../methods/mimic-video.md) — 冻结骨干对照
 - [VLA](../methods/vla.md) — 静态先验基线语境
-- [SONIC](../methods/sonic-motion-tracking.md) — G1 全身低层接口（+SONIC 演示）
+- [SONIC](./nvidia-sonic.md) — G1 全身低层接口（+SONIC 演示）
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身任务族
 - [国内具身开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) — 本页即该清单「第二层 · 妙动科技 / VLA 操作模型」条目的 站内对应条目页
 - [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) — 同公司其它开源入口

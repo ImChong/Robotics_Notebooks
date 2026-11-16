@@ -286,7 +286,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 纵深汇总](../wiki/overview/hub-wbt.md)
-- [SONIC](../wiki/methods/sonic-motion-tracking.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 跟踪侧消费者
+- [SONIC](../wiki/entities/nvidia-sonic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 跟踪侧消费者
 - [Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
 - [Teleoperation](../wiki/tasks/teleoperation.md) — 实时重定向的应用面
 - [legged_gym](../wiki/entities/legged-gym.md)、[AMP 奖励设计](../wiki/methods/amp-reward.md) 与 [Locomotion](../wiki/tasks/locomotion.md) — 四足支线的跟踪训练侧与任务层落点

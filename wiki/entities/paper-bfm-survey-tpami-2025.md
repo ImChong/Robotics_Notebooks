@@ -11,7 +11,7 @@ related:
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-bfm-zero.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/foundation-policy.md
   - ../concepts/whole-body-control.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -88,7 +88,7 @@ flowchart TB
 
 | 路线 | 训练信号 | 代表（awesome 列表） | 本库入口 |
 |------|----------|----------------------|----------|
-| **Goal-conditioned** | 外在 reward + 参考运动/目标 | SONIC、OpenTrack、AMS、BFM4Humanoid、HOVER、MaskedMimic | [SONIC](../methods/sonic-motion-tracking.md)、[BFM 论文](../entities/paper-behavior-foundation-model-humanoid.md) |
+| **Goal-conditioned** | 外在 reward + 参考运动/目标 | SONIC、OpenTrack、AMS、BFM4Humanoid、HOVER、MaskedMimic | [SONIC](./nvidia-sonic.md)、[BFM 论文](../entities/paper-behavior-foundation-model-humanoid.md) |
 | **Intrinsic-reward** | 好奇心、多样性、覆盖 | DIAYN、RND、ICM、ProtoRL、RE3 | [BFM 概念页](../concepts/behavior-foundation-model.md) § intrinsic 线 |
 | **Forward–backward** | 无 reward 转移；F/B + 测试时 reward 组合 | BFM-Zero、MetaMotivo、FB-IL 系列 | [BFM-Zero](../entities/paper-bfm-zero.md) |
 

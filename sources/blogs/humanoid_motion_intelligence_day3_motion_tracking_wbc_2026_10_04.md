@@ -20,7 +20,7 @@
 | MaskedMimic | [MaskedMimic](../../wiki/entities/paper-bfm-17-maskedmimic.md) | 遮罩条件动作补全 |
 | HOVER | [HOVER](../../wiki/entities/paper-bfm-14-hover.md) | 多模态命令统一控制 |
 | BeyondMimic | [BeyondMimic](../../wiki/methods/beyondmimic.md) | 动作跟踪与引导扩散规划 |
-| SONIC | [SONIC](../../wiki/methods/sonic-motion-tracking.md) | 规模化全身动作跟踪 |
+| SONIC | [SONIC](../../wiki/entities/nvidia-sonic.md) | 规模化全身动作跟踪 |
 | GAE | [GAE](../../wiki/entities/paper-gae-general-action-expert.md) | 跨本体实时遥操作 |
 | PLAT | [PLAT](../../wiki/entities/paper-plat-sparse-keyframe-tracking.md) | 稀疏关键帧跟踪 |
 | Runway Humanoid | [Runway Humanoid](../../wiki/entities/paper-runway-expressive-locomotion.md) | 从单目视频迁移步态风格 |

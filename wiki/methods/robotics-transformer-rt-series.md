@@ -58,7 +58,7 @@ summary: "RT-1 将语言条件图像操控建模为序列预测；RT-2 将大规
 ## RT-2（Brohan et al.）
 
 - **核心 jump**：直接基于预训练 VLM 微调出视觉–语言–动作联合模型，使开放词汇指令与物体语义迁移到控制决策。
-- **与相关工作的位置**：常与 [SayCan](./saycan.md)（规划导向）、[DIAL](./dial-instruction-augmentation.md)（数据侧指令增强）、[Octo](./octo-model.md)（开源 generalist）对照阅读。
+- **与相关工作的位置**：常与 [SayCan](../entities/paper-saycan.md)（规划导向）、[DIAL](./dial-instruction-augmentation.md)（数据侧指令增强）、[Octo](../entities/paper-octo.md)（开源 generalist）对照阅读。
 
 ## 工程实践
 

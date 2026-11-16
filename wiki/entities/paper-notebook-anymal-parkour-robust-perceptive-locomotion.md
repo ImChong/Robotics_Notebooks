@@ -10,7 +10,6 @@ related:
   - ./extreme-parkour.md
   - ./paper-notebook-humanoid-parkour-learning.md
   - ./paper-agile-perceptive-traversal-sparse-3d.md
-  - ./paper-agile-perceptive-traversal-sparse-3d.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../concepts/terrain-latent-representation.md
   - ../concepts/hierarchical-quadruped-navigation-stack.md

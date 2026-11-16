@@ -10,7 +10,7 @@
 - **主链接：** <https://huggingface.co/blog/reachy-mini>
 - **代码：** 未在清单中标注
 - **清单摘要：** Compact open-source desktop robot from $299 for AI experimentation.
-- **沉淀到 wiki：** [`wiki/entities/painode-169-reachymini.md`](../../wiki/entities/painode-169-reachymini.md)
+- **沉淀到 wiki：** [`wiki/entities/reachy-mini.md`](../../wiki/entities/reachy-mini.md)
 
 ---
 
@@ -23,6 +23,6 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[`wiki/entities/painode-169-reachymini.md`](../../wiki/entities/painode-169-reachymini.md)
+- 实体页：[`wiki/entities/reachy-mini.md`](../../wiki/entities/reachy-mini.md)
 - 列表实体：[natnew](../../wiki/entities/awesome-physical-ai-natnew.md) · [aichr](../../wiki/entities/awesome-physical-ai-aichr.md)
 - 技术地图：[`wiki/overview/awesome-physical-ai-technology-map.md`](../../wiki/overview/awesome-physical-ai-technology-map.md)

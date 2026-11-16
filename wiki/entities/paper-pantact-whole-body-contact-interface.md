@@ -12,7 +12,7 @@ related:
   - ../tasks/teleoperation.md
   - ../concepts/whole-body-control.md
   - ../concepts/contact-rich-manipulation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/diffusion-policy.md
   - ./paper-humanoidumi.md
   - ./paper-loco-manip-07-wt-umi.md
@@ -68,7 +68,7 @@ flowchart LR
 - **接触贴片：** 44×44 mm 模块，1 个 FSR，最多 16 路、1 kHz，RS-485 菊花链，自适应基线二值化（抗温漂）；覆盖前臂与膝盖；磁吸可挂 Vive tracker。其余传感：头戴 ZED X Mini、两路鱼眼腕相机、Vive 追踪、UMI 夹爪宽度，记录于 Jetson AGX Orin。
 - **策略：** DiT 扩散策略（10 层、768 宽）、微调 DINOv3；10 Hz、H=16、历史 2；输入身体遮挡点图与腕图，输出头注视点、EEF 位姿、夹爪、各传感器接触目标。身体区域由夹爪与贴片定义的半空间交集近似，在注意力中遮挡，以缓解人机观察差异。
 - **接触到本体：** 平滑最小距离（温度 0.02 m）把命令接触点与候选机器人本体对齐，并沿物体方向加虚拟位移产生按压。
-- **控制器：** Upper-Body IK（EEF 500 / 姿态 200 / 接触 250 权重，腿站立）；WBIK + SONIC（QP 加步进逻辑，交 [SONIC](../methods/sonic-motion-tracking.md) 执行）；Sparse Contact Tracker（PPO 30,000 迭代、4096 环境、50 Hz、29 关节 PD 目标，用 SONIC rollout 事后标注接触训练）。
+- **控制器：** Upper-Body IK（EEF 500 / 姿态 200 / 接触 250 权重，腿站立）；WBIK + SONIC（QP 加步进逻辑，交 [SONIC](./nvidia-sonic.md) 执行）；Sparse Contact Tracker（PPO 30,000 迭代、4096 环境、50 Hz、29 关节 PD 目标，用 SONIC rollout 事后标注接触训练）。
 - **定位：** G1 头部 LiDAR-惯性单元 + Super Odometry。
 
 ## 源码运行时序图
@@ -116,7 +116,7 @@ Sweep-and-Stow 评分为扫入物体数量得分与柜门闭合得分之积；�
 |------|----------|
 | [HumanoidUMI](./paper-humanoidumi.md) | 同样用 UMI 式无机器人采集；PanTact 增加接触贴片并预测接触目标 |
 | [WT-UMI](./paper-loco-manip-07-wt-umi.md) | 全身触觉接口采集接触力，侧重力监督与导纳控制 |
-| [SONIC](../methods/sonic-motion-tracking.md) | 本文把它作为稠密全身跟踪器和稀疏跟踪器的数据来源 |
+| [SONIC](./nvidia-sonic.md) | 本文把它作为稠密全身跟踪器和稀疏跟踪器的数据来源 |
 | [接触丰富操作](../concepts/contact-rich-manipulation.md) | 本文把接触位置/时机而非力作为接口 |
 
 ## 工程实践
@@ -135,7 +135,7 @@ Sweep-and-Stow 评分为扫入物体数量得分与柜门闭合得分之积；�
 - [34 篇空间落地论文技术地图](../overview/embodied-station-34-papers-spatial-grounding-technology-map.md) — 本文所在盘点
 - [人形 loco-manipulation](../tasks/loco-manipulation.md)
 - [全身控制](../concepts/whole-body-control.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](./nvidia-sonic.md)
 - [HumanoidUMI](./paper-humanoidumi.md)
 
 ## 参考来源

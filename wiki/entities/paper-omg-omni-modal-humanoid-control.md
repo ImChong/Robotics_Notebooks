@@ -8,7 +8,7 @@ related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-05-promptable-control.md
   - ../methods/diffusion-motion-generation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md
@@ -47,7 +47,7 @@ summary: "OMG（清华 MARS Lab）提出 generator–tracker 分层的 omni-moda
 ## 为什么重要
 
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **E 可提示控制**（40/64）：可提示小脑：多模态提示到人形全身动作。
-- **补上「意图 → 运动」缺失层：** [SONIC](../methods/sonic-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md) 等 tracking 路线推理期仍需参考；窄技能 RL 又难覆盖开放指令。OMG 把 **多模态意图** 当作生成条件，与 [ETH G1 扩散 locomotion](./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)、[Heracles](./paper-heracles-humanoid-diffusion.md) 同属 **生成参考 + 物理执行**，但强调 **omni-modal 组合与 foundation scaling**。
+- **补上「意图 → 运动」缺失层：** [SONIC](./nvidia-sonic.md)、[BeyondMimic](../methods/beyondmimic.md) 等 tracking 路线推理期仍需参考；窄技能 RL 又难覆盖开放指令。OMG 把 **多模态意图** 当作生成条件，与 [ETH G1 扩散 locomotion](./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)、[Heracles](./paper-heracles-humanoid-diffusion.md) 同属 **生成参考 + 物理执行**，但强调 **omni-modal 组合与 foundation scaling**。
 - **数据与模型一体：** **OMG-Data**（约 **1174.66 h**，经重定向 + 仿真筛选对齐 G1）支撑 **50M–1B** 规模 OMG-DiT 训练与 scaling 叙事，接近 [BFM](./paper-behavior-foundation-model-humanoid.md) / [HoloMotion](./holomotion.md) 的「运动基础模型」工程路径。
 - **真机多模态切换：** 项目页 **一镜到底** 演示在 text / human ref / audio / 组合条件间 **实时切换**，把「通用人形控制接口」从单模态 tracking 推进到 **runtime 可组合**。
 - **开源可复现栈：** MIT 仓库覆盖训练、ONNX 导出、pipeline 模式与 **G1 双机部署**（GPU planner + Orin tracker/bridge），降低与 [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 对照实验的门槛。

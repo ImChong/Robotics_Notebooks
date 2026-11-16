@@ -17,7 +17,7 @@ related:
   - ../concepts/open-x-embodiment.md
   - ../methods/robotics-transformer-rt-series.md
   - ./paper-openvla.md
-  - ../methods/octo-model.md
+  - ./paper-octo.md
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../entities/humanoid-motion-intelligence.md
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
@@ -51,7 +51,7 @@ sources:
 
 ## 为什么重要
 
-传统机器人训练数据碎片化、单机器人样本稀少。OXE 提供共享数据基础设施与跨本体实验基准，回答 **“异构数据是否能帮助特定机器人提升成功率”**。论文实证是 **正迁移在一定条件下可发生**，而不是证明一个策略可以零样本控制任意形态机器人。可与 [跨本体迁移策略](../queries/cross-embodiment-transfer-strategy.md) 和 [Octo Model](../methods/octo-model.md) 对照。
+传统机器人训练数据碎片化、单机器人样本稀少。OXE 提供共享数据基础设施与跨本体实验基准，回答 **“异构数据是否能帮助特定机器人提升成功率”**。论文实证是 **正迁移在一定条件下可发生**，而不是证明一个策略可以零样本控制任意形态机器人。可与 [跨本体迁移策略](../queries/cross-embodiment-transfer-strategy.md) 和 [Octo Model](./paper-octo.md) 对照。
 
 ## 核心信息
 
@@ -182,7 +182,7 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-| 维度 | OXE / RT-X | [RT 系列](../methods/robotics-transformer-rt-series.md) | [Octo](../methods/octo-model.md) | [OpenVLA](paper-openvla.md) |
+| 维度 | OXE / RT-X | [RT 系列](../methods/robotics-transformer-rt-series.md) | [Octo](./paper-octo.md) | [OpenVLA](paper-openvla.md) |
 |------|-------------|---------------------------------------------|------------------------------------|----------------------------|
 | 主要贡献 | 统一数据与跨本体正迁移实验 | RT-1 / RT-2 架构与单体训练基线 | 开源通用操作策略及适配接口 | 开源视觉语言动作策略 |
 | 数据层关系 | 提供 60 份数据集的聚合资源，模型只用其中部分 | 作为基础架构与数据来源 | OXE 数据生态的下游使用者 | OXE 数据生态的下游使用者 |
@@ -197,7 +197,7 @@ sequenceDiagram
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [RT / RT-X 系列](../methods/robotics-transformer-rt-series.md)
-- [Octo](../methods/octo-model.md)
+- [Octo](./paper-octo.md)
 - [OpenVLA](paper-openvla.md)
 
 ## 参考来源

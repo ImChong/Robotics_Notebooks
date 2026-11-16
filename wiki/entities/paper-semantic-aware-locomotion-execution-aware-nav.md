@@ -12,7 +12,7 @@ related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../methods/teacher-student-dagger-training.md
   - ../methods/dagger.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-ame-attention-based-map-encoding.md
   - ./paper-lingbot-map.md
   - ./paper-notebook-navila-legged-robot-vision-language-action-model.md
@@ -148,7 +148,7 @@ L3 且扰动 1.5× 时 Ours 为 22.7% SR / 56.7% 进度。
 | [AME](./paper-ame-attention-based-map-encoding.md) | 本文的运动基座，仅依赖高程图；本文补语义分支 |
 | [NaVILA](./paper-notebook-navila-legged-robot-vision-language-action-model.md) | 提供 VLN 高层与 VLN-CE-Isaac 场景；本文补执行偏差与难见危险 |
 | [LingBot-Map](./paper-lingbot-map.md) | 被用作反偏差的单目位姿源 |
-| [SONIC 运动跟踪](../methods/sonic-motion-tracking.md) | 真机对照中盲视、由人给速度指令的全身控制器 |
+| [SONIC 运动跟踪](./nvidia-sonic.md) | 真机对照中盲视、由人给速度指令的全身控制器 |
 | [阶梯/障碍感知运动](../tasks/stair-obstacle-perceptive-locomotion.md) | 以几何感知为主；本文补语义风险 |
 
 ## 局限与风险

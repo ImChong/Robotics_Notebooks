@@ -10,7 +10,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/privileged-training.md
   - ../methods/egm-efficient-general-mimic.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/beyondmimic.md
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ./paper-resmimic.md
@@ -206,7 +206,7 @@ sequenceDiagram
 | ASAP | 每动作策略 | 敏捷 Sim2Real | 非统一策略 |
 | **GMT** | **单策略 + MoE** | **8925 filtered + Adaptive Sampling** | 接触/地形弱；训练栈部分未开源 |
 | [EGM](../methods/egm-efficient-general-mimic.md) | CDMoE + Bin 课程 | 强调小高质量集 | 同族「高效通用 mimic」对照 |
-| [SONIC](../methods/sonic-motion-tracking.md) | 规模化 token/接口 | 更大语料叙事 | 工程栈更重 |
+| [SONIC](./nvidia-sonic.md) | 规模化 token/接口 | 更大语料叙事 | 工程栈更重 |
 | [HumanTracker](./paper-humantracker.md) | 评测层（非新策略） | 153 h 四族 + HumanScore | GMT 在 Ground Succ **0.0**、Daily HS **2.4**；独立零样本协议 |
 | [ResMimic](./paper-resmimic.md) | GMT 先验 + 残差 | 物体条件 | 下游 loco-manip，非替代 GMT |
 | [CHOREO](./paper-choreo.md) | **冻结 GMT 执行** SkillMotion 库 | 免训练 seam/bridge 组合 | 库外长程编排，非改 GMT 训练 |
@@ -216,7 +216,7 @@ sequenceDiagram
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [EGM（Efficient General Mimic）](../methods/egm-efficient-general-mimic.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](./nvidia-sonic.md)
 - [HumanTracker](./paper-humantracker.md) — 四族零样本评测；GMT Ground Succ 0
 - [ResMimic](./paper-resmimic.md)
 - [PhyGile](./paper-phygile.md)

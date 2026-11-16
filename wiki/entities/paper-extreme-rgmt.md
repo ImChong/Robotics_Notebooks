@@ -7,7 +7,7 @@ arxiv: "2607.20110"
 related:
   - ./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
   - ../methods/any2track.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/beyondmimic.md
   - ./paper-hrl-stack-16-omnixtreme.md
   - ./paper-yahmp.md
@@ -43,7 +43,7 @@ summary: "Extreme-RGMT（arXiv:2607.20110）：在 RGMT 上做两阶段 continua
 
 - **打破 generalist–specialist 死结：** 直接在全库混训会稀释高动态信号；只微调高动态又会冲掉日常跟踪。PACE 用 \(\mathcal{D}_m\) 正则对齐基座、\(\mathcal{D}_c\) 强化难段，把两条目标写进同一 \(\pi_{\mathrm{aug}}\)。
 - **面向「脏」在线参考：** 惯性 MoCap 的根漂、相位偏差、局部姿态不一致在空中段会被放大；STAR 对 Xsens 来源提升最大（论文 Table VII：**45.5% → 86.3%**）。
-- **工程可读对照：** 与 [SONIC](../methods/sonic-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md)、[OmniXtreme](./paper-hrl-stack-16-omnixtreme.md) 同台：通用库上不掉太多，高动态库（尤其低质量重定向）更敢跟。
+- **工程可读对照：** 与 [SONIC](./nvidia-sonic.md)、[BeyondMimic](../methods/beyondmimic.md)、[OmniXtreme](./paper-hrl-stack-16-omnixtreme.md) 同台：通用库上不掉太多，高动态库（尤其低质量重定向）更敢跟。
 
 ## 核心信息
 
@@ -126,7 +126,7 @@ flowchart TB
 - vs [RGMT](./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)：保留动力学条件参考聚合，补分支出编码 / FSQ，并加 Stage II 持续扩展。
 - vs [OmniXtreme](./paper-hrl-stack-16-omnixtreme.md)：高质量 XtremeMotion 上均可近满分；换直接重定向 AMASS 困难集时 Extreme-RGMT 更稳（90.91% vs 36.16%）。
 - vs 直接 Fine-Tuning：specialist 上升但 generalist 明显掉；PACE 用 consolidation 对齐基座抑制漂移。
-- vs [SONIC](../methods/sonic-motion-tracking.md) / [BeyondMimic](../methods/beyondmimic.md)：generalist 库上同量级；本工作重点是把高动态段叠进同一策略并吃脏在线 MoCap。
+- vs [SONIC](./nvidia-sonic.md) / [BeyondMimic](../methods/beyondmimic.md)：generalist 库上同量级；本工作重点是把高动态段叠进同一策略并吃脏在线 MoCap。
 
 读法：OmniXtreme 在其高质量库上关节误差更低；Extreme-RGMT Full 更吃「参考质量变化 + 在线惯性输入」。
 
@@ -165,7 +165,7 @@ flowchart TB
 
 - [RGMT（前作）](./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) — 动力学条件参考聚合与恢复课程
 - [Any2Track & RGMT](../methods/any2track.md) — Transformer 历史编码 + 交叉注意力跟踪范式
-- [SONIC](../methods/sonic-motion-tracking.md) — 规模化全身跟踪对照
+- [SONIC](./nvidia-sonic.md) — 规模化全身跟踪对照
 - [BeyondMimic](../methods/beyondmimic.md) — 高动态跟踪 + 扩散蒸馏路线
 - [OmniXtreme](./paper-hrl-stack-16-omnixtreme.md) — 高动态 specialist 对照
 - [YAHMP](./paper-yahmp.md) — 开源 G1 GMT 消融试验台（mjlab + ONNX；非高动态持续学习）

@@ -25,7 +25,7 @@ related:
   - ../methods/being-h07.md
   - ../methods/generative-world-models.md
   - ../methods/action-chunking.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/vla.md
   - ../concepts/motion-retargeting-pipeline.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
@@ -204,7 +204,7 @@ SIMPLE 为六任务 × 三个随机化难度 × 每配置十次；多任务模�
 | Being-M0.7 | 人视频–motion 先验 → 机器人适配 → 冻结视觉预测上下文与动作专家 | 当前节点 |
 | MotionWAM | 视频预测表示与人形动作生成的另一系统设计；数据与协议不同，避免直接横比成功率 | [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) |
 | Being-H0.7 | 同机构操作方向；latent queries 与未来表示对齐，不能将 H 系代码默认为 M 系实现 | [Being-H0.7](../methods/being-h07.md) |
-| SONIC | 接收动作接口并执行全身运动，属于控制层；50 Hz 执行不等于上层专家查询频率 | [SONIC](../methods/sonic-motion-tracking.md) |
+| SONIC | 接收动作接口并执行全身运动，属于控制层；50 Hz 执行不等于上层专家查询频率 | [SONIC](./nvidia-sonic.md) |
 
 ## 结论
 
@@ -236,7 +236,7 @@ SIMPLE 为六任务 × 三个随机化难度 × 每配置十次；多任务模�
 - [Being-H0.7](../methods/being-h07.md)
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)
 - [ω-0](./paper-omega-0.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](./nvidia-sonic.md)
 - [动作分块](../methods/action-chunking.md)
 - [G1](./unitree-g1.md)
 - [【10.5-10.9前沿论文动态】人形/四足44篇](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)

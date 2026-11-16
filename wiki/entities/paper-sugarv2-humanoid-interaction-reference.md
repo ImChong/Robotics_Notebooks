@@ -17,7 +17,7 @@ related:
   - ../methods/ppo.md
   - ../methods/teacher-student-dagger-training.md
   - ../methods/dagger.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/whole-body-control.md
   - ../concepts/domain-randomization.md
   - ../concepts/sim2real.md
@@ -130,7 +130,7 @@ flowchart LR
 ## 工程实践
 
 - **作者给出的设置：** 每任务一个特权教师 + 一个视觉策略；每任务 100 条参考；仿真报告 3 种子均值 ± 标准差（§4.1）。真机为 Unitree G1，无真机微调，每任务 10 次、改变初始位置（§4.6）。
-- **依赖：** GPT-6 Astra（模板）、现成运动生成模型 [34]、预训练 WBC [26]（SONIC，见 [SONIC 页](../methods/sonic-motion-tracking.md)）、视觉编码器 [32]。复现需要这些外部组件，具体型号与超参论文正文未全部给出。
+- **依赖：** GPT-6 Astra（模板）、现成运动生成模型 [34]、预训练 WBC [26]（SONIC，见 [SONIC 页](./nvidia-sonic.md)）、视觉编码器 [32]。复现需要这些外部组件，具体型号与超参论文正文未全部给出。
 - **代码：** 项目页标注 "Code (Coming Soon)"，截至 2026-11-10 无仓库，故不写 `code:`。
 - **使用提示（推测）：** 若想复用思路，可先在自己的 WBC 上验证「参考 → 教师」这一步的跟踪成功率，再接视觉蒸馏；蒸馏阶段不可省（表 4：无蒸馏为 0.0%）。
 
@@ -158,7 +158,7 @@ flowchart LR
 - [GRAIL（参考合成对比对象）](paper-grail.md)
 - [HumanoidMimicGen（遥操作演示扩增对照）](paper-humanoidmimicgen.md)
 - [SUGAR（2605.20373，wiki 中的同名系列页）](paper-loco-manip-161-076-sugar.md)
-- [SONIC 动作跟踪（论文 WBC [26]）](../methods/sonic-motion-tracking.md)
+- [SONIC 动作跟踪（论文 WBC [26]）](./nvidia-sonic.md)
 - [教师 - 学生蒸馏训练](../methods/teacher-student-dagger-training.md)、[DAgger](../methods/dagger.md)、[PPO](../methods/ppo.md)
 - [全身控制](../concepts/whole-body-control.md)、[域随机化](../concepts/domain-randomization.md)、[Sim2Real](../concepts/sim2real.md)
 - [Unitree G1](unitree-g1.md)

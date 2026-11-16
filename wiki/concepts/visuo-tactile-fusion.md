@@ -36,8 +36,6 @@ related:
   - ../entities/paper-taco-tactile-sensor-benchmark.md
   - ../entities/paper-softvtbench.md
   - ../entities/paper-anytouch.md
-  - ../entities/paper-anytouch.md
-  - ../entities/paper-anytouch2.md
   - ../entities/paper-anytouch2.md
   - ../entities/humantouch.md
   - ../entities/paper-sa-2605-13083-touchanything-a-dataset-and-framework-for-bimanu.md

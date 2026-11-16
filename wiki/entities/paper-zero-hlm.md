@@ -10,7 +10,7 @@ summary: "Zero-HLM 结合真实场景重建和仿真示范扩增，用执行反�
 related:
   - ../tasks/loco-manipulation.md
   - ./isaac-gr00t.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
 sources:
   - ../../sources/blogs/wechat_senlanke_weekly_manipulation_2026-10-26_30.md
   - ../../sources/blogs/wechat_senlanke_weekly_humanoid_quadruped_2026-10-26_30.md
@@ -81,7 +81,7 @@ flowchart TD
 
 - **对 [MimicGen](./mimicgen.md)：** 两者都从少量源示范出发，按物体坐标变换扩增轨迹；MimicGen 面向桌面操作的片段重组，Zero-HLM 将其扩展到人形全身移动操作，并加入真实场景重建与基于执行反馈的几何修正。
 - **对 [Agentic Real2Sim](./paper-agentic-real2sim.md)：** 同样用智能体构建仿真孪生；Agentic Real2Sim 以真机交互 episode 为输入，Zero-HLM 以手机场景扫描为输入且不使用真机操作示范训练。
-- 下游策略与控制接口依赖 [Isaac GR00T](./isaac-gr00t.md) 与 [SONIC](../methods/sonic-motion-tracking.md)，迁移到其他控制器需重新验证。
+- 下游策略与控制接口依赖 [Isaac GR00T](./isaac-gr00t.md) 与 [SONIC](./nvidia-sonic.md)，迁移到其他控制器需重新验证。
 
 ## 结论
 
@@ -96,7 +96,7 @@ Zero-HLM 展示了以物理验证和执行反馈扩增仿真示范并迁移到�
 
 - [移动操作](../tasks/loco-manipulation.md)
 - [Isaac GR00T](./isaac-gr00t.md)
-- [SONIC 运动跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC 运动跟踪](./nvidia-sonic.md)
 
 ## 参考来源
 

@@ -12,7 +12,7 @@ updated: 2026-10-14
 arxiv: "2610.14106"
 code: https://github.com/Ltankersley15/SK-Zero-Shot-Research
 related:
-  - ../methods/saycan.md
+  - ./paper-saycan.md
   - ../concepts/llm-robotics-control-interfaces.md
   - ../tasks/manipulation.md
   - ../overview/embodied-station-2026-10-14-41-papers-technology-map.md
@@ -94,7 +94,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [saycan](../methods/saycan.md)
+- [saycan](./paper-saycan.md)
 - [llm-robotics-control-interfaces](../concepts/llm-robotics-control-interfaces.md)
 - [manipulation](../tasks/manipulation.md)
 - [embodied-station-2026-10-14-41-papers-technology-map](../overview/embodied-station-2026-10-14-41-papers-technology-map.md)

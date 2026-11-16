@@ -8,7 +8,7 @@ related:
   - ../methods/genmo.md
   - ./soma-x.md
   - ./soma-retargeter.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/repos/localai-gem-x-cpp.md
@@ -87,7 +87,7 @@ flowchart TB
 
 - [GEM-X](https://github.com/NVlabs/GEM-X) 是 NVIDIA 上游模型和参考实现；LocalAI 仓库提供其独立 GGML/C++ runtime、GGUF 转换资产与浏览器 demo。
 - [GENMO / GEM](../methods/genmo.md) 是 ICCV 2025 的人体运动估计与生成研究线，提供 NVIDIA 人形动作栈上下文。GEM-X 是有关联的全身姿态估计模型；这份 LocalAI 移植不应记作另一篇 GENMO 论文，也不应与上游实现合并成同一个代码项目节点。
-- [SOMA-X](./soma-x.md) 解释输出骨架的标准化表示；[SOMA Retargeter](./soma-retargeter.md) 与 [SONIC](../methods/sonic-motion-tracking.md) 可帮助理解骨架的后处理与下游跟踪关系，但此仓库 demo 没有自动串接它们。
+- [SOMA-X](./soma-x.md) 解释输出骨架的标准化表示；[SOMA Retargeter](./soma-retargeter.md) 与 [SONIC](./nvidia-sonic.md) 可帮助理解骨架的后处理与下游跟踪关系，但此仓库 demo 没有自动串接它们。
 
 ## 推荐继续阅读
 
@@ -108,5 +108,5 @@ flowchart TB
 - [GENMO（统一人体运动估计与生成）](../methods/genmo.md)
 - [SOMA-X（统一参数化人体模型）](./soma-x.md)
 - [SOMA Retargeter](./soma-retargeter.md)
-- [SONIC（规模化运动跟踪人形控制）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪人形控制）](./nvidia-sonic.md)
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 单目全身姿态估计属该链 ③ 2D→3D 提升层的人体分支；输出骨架供下游重定向 / 运动跟踪（④ 消费层）使用时需另行核对帧率与延迟

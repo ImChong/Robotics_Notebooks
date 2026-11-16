@@ -45,7 +45,7 @@
 
 - **14/14 独立详情节点**：每篇对应唯一 `wiki/entities/paper-*.md`；静态站 `detail.html?id=wiki-entities-paper-…` 均可直达。
 - **本 ingest 新建 10** 个实体；**复用 4**（LaDi-WM / DreamDojo / RISE / PointWorld 已有 arXiv 节点）；**0 重复 arXiv 节点**。
-- Octo 的 canonical 论文节点从方法页 [octo-model](../../wiki/methods/octo-model.md) **迁到** [paper-octo](../../wiki/entities/paper-octo.md)（方法页保留，去掉 `arxiv` 以免双节点）。
+- Octo 的 canonical 论文节点从方法页 [octo-model](../../wiki/entities/paper-octo.md) **迁到** [paper-octo](../../wiki/entities/paper-octo.md)（方法页保留，去掉 `arxiv` 以免双节点）。
 - 阅读坐标：[VLA / 世界模型 14 篇阅读路线](../../wiki/overview/vla-wm-reading-roadmap-14-papers-technology-map.md)（**非**论文详情替代）。
 - 交叉：[VLA](../../wiki/methods/vla.md)、[hub-vla](../../wiki/overview/hub-vla.md)、[VLA 纵深](../../roadmap/depth-vla.md)。
 

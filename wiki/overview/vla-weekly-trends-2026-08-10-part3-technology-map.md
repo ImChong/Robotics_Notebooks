@@ -6,7 +6,7 @@ updated: 2026-09-26
 related:
   - ../entities/paper-atombridge.md
   - ../entities/paper-bicpo-vla.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../entities/paper-vla-representation-task-progress.md
   - ../entities/paper-unitexture-vla-adversarial.md
   - ../entities/paper-flashdrive-vla-autonomous-driving.md
@@ -46,7 +46,7 @@ summary: "多模空间 2026-09-26 策展：2026.08.10–08.16 一周 VLA 第三�
 
 - [AtomBridge](../entities/paper-atombridge.md) — arXiv:2602.09430
 - [BICPO-VLA](../entities/paper-bicpo-vla.md) — arXiv:2608.13924
-- [SONIC](../methods/sonic-motion-tracking.md) — arXiv:2511.07820（VLA 可调用的全身控制基座）
+- [SONIC](../entities/nvidia-sonic.md) — arXiv:2511.07820（VLA 可调用的全身控制基座）
 
 ### 分析 · 安全
 

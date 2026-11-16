@@ -19,7 +19,7 @@ updated: 2026-08-27
 related:
   - ../entities/paper-zest.md
   - ../methods/zest.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md
   - ./sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md
   - ./hil-vs-mtrg-vs-zest-parkour-imitation.md
@@ -44,7 +44,7 @@ summary: "Science Robotics 11(117) 同期三篇不是互相竞争的通用 track
 
 # ZEST vs SONIC vs 视觉足球：人形学习控制三层对比
 
-*Science Robotics* 11(117) 同期发表 [ZEST](../entities/paper-zest.md)、[SONIC](../methods/sonic-motion-tracking.md) 与 [视觉驱动反应式足球](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)。具身智能研究室把它们读成**同一条身体栈上的三个层级**，而不是「谁是更好的全身跟踪器」。本页只保留这条选型坐标；方法细节与数字以各实体/方法页为准。
+*Science Robotics* 11(117) 同期发表 [ZEST](../entities/paper-zest.md)、[SONIC](../entities/nvidia-sonic.md) 与 [视觉驱动反应式足球](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)。具身智能研究室把它们读成**同一条身体栈上的三个层级**，而不是「谁是更好的全身跟踪器」。本页只保留这条选型坐标；方法细节与数字以各实体/方法页为准。
 
 ## 一句话定义
 
@@ -71,7 +71,7 @@ summary: "Science Robotics 11(117) 同期三篇不是互相竞争的通用 track
 
 ### 三层对照
 
-| 维度 | [ZEST](../methods/zest.md) | [SONIC](../methods/sonic-motion-tracking.md) | [视觉足球](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) |
+| 维度 | [ZEST](../methods/zest.md) | [SONIC](../entities/nvidia-sonic.md) | [视觉足球](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) |
 |------|---------------------------|---------------------------------------------|--------------------------------------------------------|
 | **主要问题** | 参考如何高效变成真机技能 | 跟踪是否随数据/模型/算力持续变好，并形成统一接口 | 视觉噪声、延迟、漏检下如何连续搜球–踢球 |
 | **策略条件** | 下一步参考姿态 + 本体 | 机器人/人体/混合动作命令 → 共享 token | 结构化视觉观测 + 本体 + 历史 |
@@ -143,7 +143,7 @@ flowchart TB
 ## 关联页面
 
 - [ZEST 论文实体](../entities/paper-zest.md) / [ZEST 方法](../methods/zest.md) — 技能编译器层
-- [SONIC](../methods/sonic-motion-tracking.md) — 运动基础模型层
+- [SONIC](../entities/nvidia-sonic.md) — 运动基础模型层
 - [Vision-Driven Reactive Soccer](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) — 感知任务层
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles](./sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — WBT 方法族
 - [HIL vs MTRG vs ZEST](./hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿对照

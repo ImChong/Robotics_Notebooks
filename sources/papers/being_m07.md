@@ -75,7 +75,7 @@
 - **摘录要点：** **宇树 G1** + 双 **Linker Hand O6** + 头部 **RealSense D435i**；采集：**PICO VR** 头显、手柄与踝部 tracker → **XRoboToolkit** 估计 SMPL → **SONIC** 转 **29-DoF** 全身命令（50 Hz）；同步记录 egocentric RGB、本体、motion command 与 robot motion 表示；推理在 **RTX 4090** 工作站，ZMQ 与机载低层闭环。
 - **对 wiki 的映射：**
   - [Unitree G1](../../wiki/entities/unitree-g1.md)
-  - [SONIC Motion Tracking](../../wiki/methods/sonic-motion-tracking.md)
+  - [SONIC Motion Tracking](../../wiki/entities/nvidia-sonic.md)
   - [Teleoperation](../../wiki/tasks/teleoperation.md)
 
 ### 6) 真机实验：四项全身任务 vs GR00T-N1.6 / Ψ0
@@ -89,7 +89,7 @@
 ## 对 wiki 的映射（汇总）
 
 - 沉淀实体页：[`wiki/entities/paper-being-m07-humanoid-latent-wam.md`](../../wiki/entities/paper-being-m07-humanoid-latent-wam.md)
-- 互链参考：[World Action Models](../../wiki/concepts/world-action-models.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Being-H0.7](../../wiki/methods/being-h07.md)、[MotionWAM](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[Teleoperation](../../wiki/tasks/teleoperation.md)
+- 互链参考：[World Action Models](../../wiki/concepts/world-action-models.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Being-H0.7](../../wiki/methods/being-h07.md)、[MotionWAM](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[Teleoperation](../../wiki/tasks/teleoperation.md)
 
 ## 全文通读复核（2026-11-13）
 

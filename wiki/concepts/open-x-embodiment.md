@@ -8,7 +8,7 @@ related:
   - ../queries/contact-wrench-closed-loop.md
   - ./foundation-policy.md
   - ./embodied-scaling-laws.md
-  - ../methods/octo-model.md
+  - ../entities/paper-octo.md
   - ../methods/vla.md
   - ../entities/paper-topreward.md
   - ../entities/paper-data-pyramid-embodied-manipulation.md
@@ -38,7 +38,7 @@ original:
 
 ## 为什么重要
 
-它为 [Embodied Scaling Laws](./embodied-scaling-laws.md) 与 [Foundation Policy](./foundation-policy.md) 叙事提供了可公开核验的数据轴：在同一大混合上预训练的策略（如 [Octo](../methods/octo-model.md)）成为后续微调与对比实验的默认起点。
+它为 [Embodied Scaling Laws](./embodied-scaling-laws.md) 与 [Foundation Policy](./foundation-policy.md) 叙事提供了可公开核验的数据轴：在同一大混合上预训练的策略（如 [Octo](../entities/paper-octo.md)）成为后续微调与对比实验的默认起点。
 
 ## 核心原理
 
@@ -58,7 +58,7 @@ original:
 
 - [具身智能数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md) — 按形态分组的数据集入口与节点映射
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 跨本体操作数据训练的策略，其接触执行环节由本链托底
-- [Octo Model](../methods/octo-model.md)
+- [Octo Model](../entities/paper-octo.md)
 - [Foundation Policy](./foundation-policy.md)
 - [TOPReward](../entities/paper-topreward.md) — 在 OXE 上评测零样本进度奖励（Mean VOC；项目页 / v1 口径 39 个数据集，v2 论文过滤为 33 个）
 - [具身数据金字塔综述](../entities/paper-data-pyramid-embodied-manipulation.md) — 把 OXE 定位为五层金字塔真机层的聚合代表，并给出跨层数据选型坐标系

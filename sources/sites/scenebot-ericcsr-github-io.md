@@ -34,5 +34,5 @@ Amazon FAR / Stanford / CMU 团队的 **SceneBot** 官方站点：强调 **单�
 ## 关联资料
 
 - 论文归档：[`sources/papers/scenebot_arxiv_2606_27581.md`](../papers/scenebot_arxiv_2606_27581.md)
-- 对照 tracker：[`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md)
+- 对照 tracker：[`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md)
 - 场景数据对照：[`wiki/entities/paper-hrl-stack-03-omniretarget.md`](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)

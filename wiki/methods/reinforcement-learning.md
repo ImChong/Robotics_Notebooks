@@ -28,7 +28,6 @@ related:
   - ./intentional-updates-streaming-rl.md
   - ./imitation-learning.md
   - ./inverse-reinforcement-learning.md
-  - ./inverse-reinforcement-learning.md
   - ../concepts/sim2real.md
   - ../concepts/whole-body-control.md
   - ../tasks/locomotion.md

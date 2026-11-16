@@ -9,7 +9,7 @@ doi: "10.1145/3811284"
 code: https://github.com/nv-tlabs/ardy
 related:
   - ../methods/diffusion-motion-generation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/motionbricks.md
   - ./kimodo.md
   - ../methods/genmo.md
@@ -48,7 +48,7 @@ summary: "ARDY（SIGGRAPH 2026 / arXiv:2607.08741）是自回归扩散交互式�
 
 - **填平「离线可控」与「在线实时」鸿沟**：[Kimodo](./kimodo.md) 等离线扩散可在文本与运动学约束下做高质量导演式编辑，但 **推理延迟阻碍交互**；MotionStreamer、DiP 等在线方法虽快，却常 **缺关节旋转约束**、**短 history/future 窗口** 或依赖 test-time optimization / RL control（论文 Table 1）。ARDY 在 **同一框架** 内同时做到 **实时 + 在线文本 + 长时域稀疏约束**。
 - **工程可复现：** 不仅是项目页 Demo — **GitHub + HF checkpoint + `run_demo.py` / `generate.py`**；4-step 模型在 RTX 4090 上 **平均 ~33 ms/步**（G=40 @ 20fps）。
-- **人形栈闭环：** **ARDY 规划 + [SONIC](../methods/sonic-motion-tracking.md) 跟踪** → [Unitree G1](./unitree-g1.md)，与 Kimodo→SONIC **离线管线** 形成 **同生态、不同延迟档位**。
+- **人形栈闭环：** **ARDY 规划 + [SONIC](./nvidia-sonic.md) 跟踪** → [Unitree G1](./unitree-g1.md)，与 Kimodo→SONIC **离线管线** 形成 **同生态、不同延迟档位**。
 
 ## 方法栈与流程
 
@@ -179,7 +179,7 @@ ARDY 把 **离线扩散的可控性** 与 **自回归在线推理** 合成到同
 
 - [Kimodo](./kimodo.md) — 离线高质量两阶段运动学扩散姊妹
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)
-- [SONIC](../methods/sonic-motion-tracking.md) — ARDY→G1 物理跟踪下游
+- [SONIC](./nvidia-sonic.md) — ARDY→G1 物理跟踪下游
 - [MotionBricks](../methods/motionbricks.md) — 同生态实时潜空间生成
 - [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md)
 - [Unitree G1](./unitree-g1.md)

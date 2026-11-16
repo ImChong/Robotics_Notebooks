@@ -162,7 +162,11 @@ class PaperHubStatsTest(unittest.TestCase):
         self.assertIsNotNone(bfm)
         self.assertTrue(bfm.get("_is_paper"))
         # 升格为深度拆解页的论文（type=method + paper 标签）也是论文节点
-        sonic = by_id.get("wiki/methods/sonic-motion-tracking.md")
+        beyond = by_id.get("wiki/methods/beyondmimic.md")
+        self.assertIsNotNone(beyond)
+        self.assertTrue(beyond.get("_is_paper"))
+        # 合并后的 SONIC 论文/项目实体节点也是论文节点
+        sonic = by_id.get("wiki/entities/nvidia-sonic.md")
         self.assertIsNotNone(sonic)
         self.assertTrue(sonic.get("_is_paper"))
         # 概念页不是论文节点

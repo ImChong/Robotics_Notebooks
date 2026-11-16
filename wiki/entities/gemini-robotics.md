@@ -57,7 +57,7 @@ sources:
 
 ## 为什么重要
 
-- 代表闭源多模态大模型接入机器人控制的产品化叙事，常与开源 [Octo](../methods/octo-model.md) / [OpenVLA](paper-openvla.md) / [π 系列](../methods/pi07-policy.md) 对照阅读。
+- 代表闭源多模态大模型接入机器人控制的产品化叙事，常与开源 [Octo](./paper-octo.md) / [OpenVLA](paper-openvla.md) / [π 系列](../methods/pi07-policy.md) 对照阅读。
 - **GR2 / GR2.5** 把「全身 loco-manipulation + 多指灵巧 + 多机协作 + 复杂接触任务」写进同一产品线，是产业侧对 [loco-manipulation](../tasks/loco-manipulation.md) 与学习式 [WBC](../concepts/whole-body-control.md) 的强信号。
 - ER 变体把「会做动作」与「会分解长程任务」拆开；ER 2 另提供 **可调用的 API + 样例仓**，而 VLA 权重仍 gated。
 - 在自动标注与评测生态中常被用作强教师/对照（见 [Perceptron Egocentric](./perceptron-egocentric.md) 对 ER-1.6 的用法）。

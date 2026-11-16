@@ -27,7 +27,6 @@ related:
   - ./paper-face-anything-4d-face-reconstruction.md
   - ./paper-4danyone.md
   - ./motion2mixamorig.md
-  - ./paper-luna-universal-3d-human-animation.md
 original: ../../sources/papers/gvhmr_arxiv_2409_06662.md
 sources:
   - ../../sources/papers/gvhmr_arxiv_2409_06662.md

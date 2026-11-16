@@ -14,7 +14,6 @@ arxiv: "2607.20653"
 related:
   - ../overview/world-model-physics-fidelity-outputs.md
   - ./paper-core.md
-  - ./paper-core.md
   - ../methods/generative-world-models.md
   - ../concepts/kinematic-vs-dynamic-feasibility.md
   - ./paper-vt-wam-visuotactile-contact-rich.md

@@ -11,7 +11,7 @@ related:
   - ./egalahad-sim2real.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/beyondmimic.md
   - ../methods/dagger.md
   - ../methods/imitation-learning.md
@@ -59,7 +59,7 @@ summary: "Humanoid-GPT（arXiv:2606.03985，CVPR 2026）在 2B 帧 G1 重定向�
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **D 全身跟踪基座**（29/64）：跟踪策略：海量动作帧和 Transformer 化。
 - **打破「敏捷 vs 泛化」叙事**：论文将既有 MLP tracker 在百万～亿级帧上的 trade-off 归因于 **规模与结构不匹配**，并用 **2B 帧 + Transformer** 给出同时改进两端的证据。
 - **数据工程可复用**：公开 **多 mocap 源聚合 + G1 retarget + 时间扭曲增广 + HME 度量（gstd / log-volume）** 的完整管线，对任何「通才 WBT」数据策展有直接参考价值。
-- **与 SONIC 的正交对照**：SONIC（[方法页](../methods/sonic-motion-tracking.md)）在 **~100M 帧 + MLP** 上已证明 scaling；Humanoid-GPT 推进到 **Transformer + 2B 帧 + expert 蒸馏**，站点提供 **四类并排真机对比**（daily / dance / high-dynamic / balance）。
+- **与 SONIC 的正交对照**：SONIC（[方法页](./nvidia-sonic.md)）在 **~100M 帧 + MLP** 上已证明 scaling；Humanoid-GPT 推进到 **Transformer + 2B 帧 + expert 蒸馏**，站点提供 **四类并排真机对比**（daily / dance / high-dynamic / balance）。
 - **在线因果结构**：测试时 **不可见未来**；模型用 **GPT 式因果注意力** 输出关节 PD 目标，与部署约束一致，并支持 DAgger 的 **并行多步监督**（一次前向对齐整段 teacher 动作）。
 
 ## 流程总览
@@ -198,7 +198,7 @@ sequenceDiagram
 
 ## 与其他页面的关系
 
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — 同任务 **MLP + 100M** scaling 基线；Humanoid-GPT 可视为 **结构升级 + 数据再放大** 的后续前沿。
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md) — 同任务 **MLP + 100M** scaling 基线；Humanoid-GPT 可视为 **结构升级 + 数据再放大** 的后续前沿。
 - [BeyondMimic](../methods/beyondmimic.md) — 同属高质量仿真跟踪，但 Humanoid-GPT 强调 **零样本泛化 + Transformer scaling**，而非单动作极限拟合。
 - [DAgger](../methods/dagger.md) — 蒸馏阶段核心算法；与 AssistMimic 等 **expert→generalist** 管线同族。
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md) — 将 Humanoid-GPT 纳入「规模化通才 tracker」分支。
@@ -227,7 +227,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md)
 - [BeyondMimic](../methods/beyondmimic.md)
 - [DAgger](../methods/dagger.md)
 - [Imitation Learning](../methods/imitation-learning.md)

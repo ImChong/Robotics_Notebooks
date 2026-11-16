@@ -58,7 +58,7 @@ flowchart TB
 | [BeyondMimic](../methods/beyondmimic.md) | 只做跟踪，命令不可达时继续追参考；本协议下 0/100 恢复，肢体运动和力矩最大 | 跟踪精度接近（MPBPE 32.37 vs 28.53 mm），但没有跌倒后的行为设计 |
 | [KungFuAthlete](paper-kungfuathlete-humanoid-martial-arts-tracking.md) | 同样支持自主恢复和命令重获，也是 100/100 | StableMimic 的肢体行程、恢复位移、力矩和正功更低，跟踪误差也明显更低 |
 | [BFM-Zero](paper-bfm-zero.md) | 用 promptable behavioral foundation model 覆盖多种行为，训练算力高 | 关节目标变化率最低，但恢复率 94/100，跟踪误差远大于其他方法（249.40 mm） |
-| [SONIC](../methods/sonic-motion-tracking.md) | 大规模扩展动作跟踪，但不规定跟踪走廊外的人类式响应 | 论文只在 Table I 做定性对比，没有纳入定量评测 |
+| [SONIC](./nvidia-sonic.md) | 大规模扩展动作跟踪，但不规定跟踪走廊外的人类式响应 | 论文只在 Table I 做定性对比，没有纳入定量评测 |
 | [HoST](paper-host-humanoid-standingup.md) / [HumanUP](paper-humanup-getting-up.md) | 独立的起身策略，不做动作跟踪，也不恢复原命令 | 起身能力更专门，但需要和跟踪器切换；StableMimic 把恢复嵌入常驻跟踪器 |
 | Single-MLP 消融 | 同接口同奖励，只换成单一加宽主干 | 参数更多但跟踪和恢复都更差（98/100），支持用专家拆分减少两种状态分布之间的更新干扰 |
 

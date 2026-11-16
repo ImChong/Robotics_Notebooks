@@ -6,7 +6,7 @@ updated: 2026-09-15
 arxiv: "2609.09918"
 related:
   - ../methods/beyondmimic.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./orcs.md
   - ./paper-yahmp.md
   - ./unitree-g1.md
@@ -138,13 +138,13 @@ flowchart TB
 2. **任务覆盖广：** 行走、跑酷、物体操作、动态躲避均有真机演示；**定量表以 PDF 为准**。
 3. **分层友好：** Repose Cube 证明 **简单 planner + ViBe 控制器** 可解目标导向任务。
 4. **开源边界（2026-09-15）：** **部分开源** — [ORCS](./orcs.md) 覆盖特权 LoRA 后训练与公开 checkpoint；**视觉后训练与可部署 student 仍待发布**。
-5. **与 tracking 生态：** 可与 [BeyondMimic](../methods/beyondmimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[ORCS](./orcs.md) 等跟踪/后训练栈对照。
+5. **与 tracking 生态：** 可与 [BeyondMimic](../methods/beyondmimic.md)、[SONIC](./nvidia-sonic.md)、[ORCS](./orcs.md) 等跟踪/后训练栈对照。
 
 ## 关联页面
 
 - [ORCS（特权后训练工具包）](./orcs.md)
 - [BeyondMimic](../methods/beyondmimic.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](./nvidia-sonic.md)
 - [YAHMP](./paper-yahmp.md)
 - [Unitree G1](./unitree-g1.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)

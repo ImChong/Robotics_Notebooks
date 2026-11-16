@@ -46,7 +46,7 @@
 - **Generalist（联合多任务多本体）：** process **94.14%** / success **91.67%**，优于分任务微调。
 - **G1 Pull the Chair：** RynnBrain-VLA **90%** vs GR00T N1.7+SONIC **75%**（同 SONIC 低层）。
 
-**对 wiki 的映射：** [VLA](../../wiki/methods/vla.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[Action Chunking](../../wiki/methods/action-chunking.md)、[Qwen-VLA](../../wiki/entities/qwen-vla.md)。
+**对 wiki 的映射：** [VLA](../../wiki/methods/vla.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[Action Chunking](../../wiki/methods/action-chunking.md)、[Qwen-VLA](../../wiki/entities/qwen-vla.md)。
 
 ## 摘录 4：Scaling 与基准要点
 

@@ -119,7 +119,7 @@ flowchart TB
 | AMP 模仿 + RL（仿人行走） | [AMP Reward](../methods/amp-reward.md) |
 | BFM 行为基础模型（总览） | [Behavior Foundation Model](../concepts/behavior-foundation-model.md)、[BFM 纵深](../../roadmap/depth-bfm.md) |
 | 基于 FB 的无监督学习（BFM-Zero） | [BFM-Zero](../entities/paper-bfm-zero.md) |
-| 基于 DeepMimic（SONIC） | [SONIC](../methods/sonic-motion-tracking.md) |
+| 基于 DeepMimic（SONIC） | [SONIC](../entities/nvidia-sonic.md) |
 | 基于 Teacher-Student 多动作学习 | [Teacher-Student 多技能 BFM](../methods/teacher-student-multi-skill-bfm.md) |
 
 ### 学习路线工具与教材

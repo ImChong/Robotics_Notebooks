@@ -10,7 +10,7 @@ related:
   - ./motion-bricks-cpp.md
   - ./kimodo.md
   - ./gr00t-wholebodycontrol.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./unitree-g1.md
   - ./ardy.md
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -112,7 +112,7 @@ sequenceDiagram
 | [ARDY](./ardy.md) | 同为交互式生成路线，但骨干形态不同：ARDY 是 **自回归扩散**；MotionBricks 是 **模块化潜空间 + 多头 tokenizer**（Root / Pose / Contact 分头），后者把实时性放在首位 |
 | [AMP 运动先验](../methods/amp-reward.md) | 代表 **判别式** 运动先验一支：用判别器给 RL 打「像不像数据」的奖励，技能库随判别器与数据集绑定；MotionBricks 是 **生成式** 演进——直接产出参考轨迹，单骨干覆盖 350k+ clips，不必 per-skill 重训判别器 |
 | 传统动画图 / blend tree | 论文要替代的默认做法：状态机 + 混合树需人工布线，技能越多越脆；项目页 UE5 Demo 强调 **无 foot-locking / blending** 即为此条的直接证据 |
-| [SONIC](../methods/sonic-motion-tracking.md) | **不是竞品而是下游**：MotionBricks 出的是参考全身轨迹，物理执行仍交给跟踪/WBC 层。读本页时不要把生成吞吐当成真机跟踪成功率 |
+| [SONIC](./nvidia-sonic.md) | **不是竞品而是下游**：MotionBricks 出的是参考全身轨迹，物理执行仍交给跟踪/WBC 层。读本页时不要把生成吞吐当成真机跟踪成功率 |
 | [motion-bricks.cpp](./motion-bricks-cpp.md) | 同一方法的 **社区 C++/GGML 移植**，非独立方法；能力边界以 NVIDIA 预览 + parity 报告为准，Smart Object 全谱与 Kimodo style 转换仍不完整 |
 
 ## 结论
@@ -120,7 +120,7 @@ sequenceDiagram
 **MotionBricks 把「生成式运动」做成可嵌入控制栈的实时意图 API，而不是离线动画工具。**
 
 - **真影响指标**：单骨干能否在 **350k+** 技能上保持 **毫秒级** 推理，并用 Smart Primitives **零样本** 组合导航与交互。
-- **机器人读法**：把它放在 **VLA/任务层之下、WBC/跟踪层之上**；轨迹仍须 [SONIC](../methods/sonic-motion-tracking.md) 等执行，不要跳过物理层。
+- **机器人读法**：把它放在 **VLA/任务层之下、WBC/跟踪层之上**；轨迹仍须 [SONIC](./nvidia-sonic.md) 等执行，不要跳过物理层。
 - **与 Kimodo**：Kimodo 强 **文本与运动学约束编辑**；MotionBricks 强 **实时命令式 locomotion + 游戏/机器人 API**。
 - **开源策略**：当前以 **GR00T 预览子目录** 为准；完整训练与深度嵌入版需跟进项目页更新。
 - **部署备选**：[motion-bricks.cpp](./motion-bricks-cpp.md) 提供 G1 GGUF + 可选 GGML SONIC，但 Smart Object 全谱与 Kimodo style 转换仍不完整。

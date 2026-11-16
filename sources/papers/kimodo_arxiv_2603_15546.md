@@ -48,7 +48,7 @@
 - **链接：** <https://research.nvidia.com/labs/sil/projects/kimodo/> · <https://nvlabs.github.io/GEAR-SONIC/demo.html>
 - **摘录要点：** G1 骨架变体可 **快于遥操作** 地生成人形演示数据；导出 ProtoMotions / MuJoCo 格式训练物理策略；GEAR-SONIC 在线 Demo 集成「Kimodo 生成运动学轨迹 → 仿真跟踪」。
 - **对 wiki 的映射：**
-  - [SONIC（规模化运动跟踪）](../../wiki/methods/sonic-motion-tracking.md)
+  - [SONIC（规模化运动跟踪）](../../wiki/entities/nvidia-sonic.md)
   - [GR00T WholeBodyControl](../../wiki/entities/gr00t-wholebodycontrol.md)
 
 ## 引用（仓库 / 项目页）

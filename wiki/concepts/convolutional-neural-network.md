@@ -16,7 +16,7 @@ related:
   - ../comparisons/cnn-vs-vit-backbones.md
   - ./deep-learning-foundations.md
   - ../overview/ai-architecture-map.md
-  - ./unet.md
+  - ../methods/unet.md
   - ../entities/transformer-cv-curriculum.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
@@ -82,7 +82,7 @@ flowchart LR
 ## 关联页面
 
 - [AI 架构地图](../overview/ai-architecture-map.md)
-- [U-Net](./unet.md)
+- [U-Net](../methods/unet.md)
 - [Vision Backbones](./vision-backbones.md)
 - [CNN vs ViT Backbones](../comparisons/cnn-vs-vit-backbones.md)
 - [ResNet](../entities/paper-resnet-deep-residual-learning.md)

@@ -25,7 +25,7 @@ related:
   - ../entities/kimodo.md
   - ../entities/ardy.md
   - ../entities/paper-motionbricks.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../entities/paper-kimodo-policy.md
   - ../entities/paper-halo-perceptive-humanoid-motion-sim.md
   - ../methods/beyondmimic.md
@@ -72,7 +72,7 @@ summary: "比较动捕图、扩散动作生成、在线重规划、运动跟踪�
 | 离线可控骨干 | [Kimodo](../entities/kimodo.md) | 文本 + 轨迹/关键姿态 → 全身参考 | 可产合成示范 |
 | 在线可控规划 | [ARDY](../entities/ardy.md) | 历史动作 + 动态路点/关键帧 → 下一段动作 | 33 ms 是生成延迟 |
 | 实时动作续写 | [MotionBricks](../entities/paper-motionbricks.md) | 摇杆/关键动作 → 连续生成 | 与 ARDY 约束机制不同 |
-| 跟踪执行 | [SONIC](../methods/sonic-motion-tracking.md) | 全身参考 + 机器人状态 → 关节控制 | 50 Hz 并非生成速率 |
+| 跟踪执行 | [SONIC](../entities/nvidia-sonic.md) | 全身参考 + 机器人状态 → 关节控制 | 50 Hz 并非生成速率 |
 | 视觉闭环策略 | [Kimodo-Policy](../entities/paper-kimodo-policy.md) | RGB + 语言 + 实测历史 → root/body/hand 块 | 预测 1.67 s，执行 0.5 s |
 | 合成数据学视觉 | [HALO](../entities/paper-halo-perceptive-humanoid-motion-sim.md) | Kimodo 示范 + 虚拟房间 → 视觉策略和跟踪器 | 不直接采用 SONIC 作为跟踪器 |
 | 测试时目标引导 | [BeyondMimic](../methods/beyondmimic.md) | 运动先验 + 到达/避障代价 → 可跟踪动作 | 真机目标与障碍有动捕依赖 |
@@ -115,11 +115,11 @@ flowchart TD
 ## 工程实践
 
 - **要批量生成示范**：检查 [Kimodo](../entities/kimodo.md) 的运动骨架与导出格式，辅以 [ProtoMotions](../entities/protomotions.md) 的物理跟踪训练。
-- **要在交互中修改未来路点/手脚目标**：参考 [ARDY](../entities/ardy.md) 实时生成；跟踪与驱动仍由 [SONIC](../methods/sonic-motion-tracking.md) 等控制器完成。
+- **要在交互中修改未来路点/手脚目标**：参考 [ARDY](../entities/ardy.md) 实时生成；跟踪与驱动仍由 [SONIC](../entities/nvidia-sonic.md) 等控制器完成。
 - **要图像驱动真机搬运/推车**：参考 [Kimodo-Policy](../entities/paper-kimodo-policy.md) 及 [HumanoidArena](../entities/paper-humanoidarena.md) / [SIMPLE](../entities/paper-loco-manip-161-075-simple.md) 评测，重点检查历史状态、执行前缀和 hand 指令同步。
 - **要无真实视觉数据的系统训练**：参考 [HALO](../entities/paper-halo-perceptive-humanoid-motion-sim.md)，并核查 [BONES-SEED](../entities/bones-seed.md) / [SOMA Retargeter](../entities/soma-retargeter.md) 对应的数据或骨架转换作用，不把它们当同一个 HALO 官方执行链。
 - **要直接接受末端目标**：参考 [Metatron](../entities/paper-metatron-promptable-whole-body-execution.md)，与 [BeyondMimic](../methods/beyondmimic.md) 的去噪代价引导区分。
-- **开放训练/执行基础设施**：[SONIC](../methods/sonic-motion-tracking.md)、[ProtoMotions](../entities/protomotions.md)、[HumanoidArena](../entities/paper-humanoidarena.md)；各自有独立环境、许可和控制频率。
+- **开放训练/执行基础设施**：[SONIC](../entities/nvidia-sonic.md)、[ProtoMotions](../entities/protomotions.md)、[HumanoidArena](../entities/paper-humanoidarena.md)；各自有独立环境、许可和控制频率。
 
 ## 局限与风险
 
@@ -145,7 +145,7 @@ flowchart TD
 - [Kimodo](../entities/kimodo.md)
 - [ARDY](../entities/ardy.md)
 - [MotionBricks](../entities/paper-motionbricks.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](../entities/nvidia-sonic.md)
 - [Kimodo-Policy](../entities/paper-kimodo-policy.md)
 - [HALO](../entities/paper-halo-perceptive-humanoid-motion-sim.md)
 - [BeyondMimic](../methods/beyondmimic.md)

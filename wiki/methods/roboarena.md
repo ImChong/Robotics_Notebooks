@@ -28,7 +28,7 @@ related:
   - ../concepts/sim-vs-real-eval-gap.md
   - ../concepts/motion-control-policy-evaluation-metrics.md
   - ../methods/vla.md
-  - ./octo-model.md
+  - ../entities/paper-octo.md
   - ../tasks/manipulation.md
   - ../entities/droid-policy-learning.md
   - ../entities/paper-open-x-embodiment.md
@@ -166,7 +166,7 @@ sequenceDiagram
 - [仿实评测鸿沟（Sim-vs-Real Eval Gap）](../concepts/sim-vs-real-eval-gap.md) — 对比纯仿真并行评测与真机众包评测的失效边界
 - [运动控制策略评测指标（Motion Control Policy Evaluation Metrics）](../concepts/motion-control-policy-evaluation-metrics.md) — 成对偏好、部分进度分、`MMRV` 与绝对成功率指标的关系
 - [视觉-语言-动作模型（VLA）](../methods/vla.md) — 现阶段接入 RoboArena 排名最核心的模型族
-- [Octo Model](./octo-model.md) — 早期开源通用操作策略基准参照
+- [Octo Model](../entities/paper-octo.md) — 早期开源通用操作策略基准参照
 - [机器人操作（Manipulation）](../tasks/manipulation.md) — 第一阶段桌面与通用物体操作核心评估任务
 - [DROID Policy Learning](../entities/droid-policy-learning.md) — 奠定 RoboArena 第一期跨校硬件与相机布局一致性的底层标准平台
 - [Open X-Embodiment](../entities/paper-open-x-embodiment.md) — 推动跨机构数据与泛化评测从单机迈向全网协作的先驱工作

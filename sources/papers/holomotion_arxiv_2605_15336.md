@@ -30,4 +30,4 @@
 ## 对 wiki 的映射
 
 - 沉淀实体页：[`wiki/entities/holomotion.md`](../../wiki/entities/holomotion.md)
-- 互链参考：[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[BFM](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)、[Foundation Policy](../../wiki/concepts/foundation-policy.md)、[AMASS](../../wiki/entities/amass.md)、[模仿学习 / PPO](../../wiki/methods/imitation-learning.md)
+- 互链参考：[SONIC](../../wiki/entities/nvidia-sonic.md)、[BFM](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)、[Foundation Policy](../../wiki/concepts/foundation-policy.md)、[AMASS](../../wiki/entities/amass.md)、[模仿学习 / PPO](../../wiki/methods/imitation-learning.md)

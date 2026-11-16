@@ -23,7 +23,7 @@ ScaleBFM 技术报告官方项目页：展示 **on-policy 数据 / 参考运动 
 
 ## 为何值得保留
 
-- **BFM scaling 一手证据**：比 arXiv PDF 更易浏览的交互曲线与真机视频，便于与 [SONIC](../../wiki/methods/sonic-motion-tracking.md) 等 scaling 叙事对照。
+- **BFM scaling 一手证据**：比 arXiv PDF 更易浏览的交互曲线与真机视频，便于与 [SONIC](../../wiki/entities/nvidia-sonic.md) 等 scaling 叙事对照。
 - **代码开放跟进锚点**：README 给出明确释出时间表，后续 lint 可据此更新 `sources/repos/scalebfm.md` 开放状态。
 - **与 CVAE-BFM 项目页区分**：[bfm4humanoid.github.io](https://bfm4humanoid.github.io/) 对应 arXiv:2509.13780；本页对应 **2607.15163** scaling 技术报告，勿混用。
 

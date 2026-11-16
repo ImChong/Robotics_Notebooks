@@ -63,4 +63,4 @@
 - 主实体：[HEFT（论文实体）](../../wiki/entities/paper-heft.md)
 - 论文摘录：[heft_arxiv_2607_02332.md](../papers/heft_arxiv_2607_02332.md)
 - 代码归档：[axellwppr_motion_tracking.md](../repos/axellwppr_motion_tracking.md)
-- 任务交叉：[Teleoperation](../../wiki/tasks/teleoperation.md)、[TWIST2](../../wiki/entities/paper-twist2.md)、[SONIC 方法页](../../wiki/methods/sonic-motion-tracking.md)
+- 任务交叉：[Teleoperation](../../wiki/tasks/teleoperation.md)、[TWIST2](../../wiki/entities/paper-twist2.md)、[SONIC 方法页](../../wiki/entities/nvidia-sonic.md)

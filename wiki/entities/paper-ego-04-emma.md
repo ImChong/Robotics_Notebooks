@@ -16,7 +16,7 @@ sources:
   - ../../sources/papers/ego_9_papers_catalog.md
 ---
 
-# EMMA
+# EMMA（跨本体人机迁移 · arXiv:2509.04443）
 
 **EMMA** 收录于 [具身智能研究室 · Ego 9 篇专题](https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA) **第 04/9** 篇，归类为 **02 人→机器人**。
 

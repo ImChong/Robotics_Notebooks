@@ -18,7 +18,6 @@ related:
   - ../entities/sol-pi.md
   - ../entities/paper-metarsi-v1.md
   - ../entities/paper-rrsi-2609-24972.md
-  - ../entities/paper-metarsi-v1.md
   - ../entities/awesome-rsi.md
   - ../entities/paper-self-refine-2303-17651.md
   - ../entities/paper-rsi-survey-2607-07663.md

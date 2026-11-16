@@ -143,7 +143,7 @@ VLA / 规划：子目标、顺序、动作意图
 | VLM | 图像/视频+文本 | 文本、结构化理解 | 场景理解、VQA |
 | VLA | 视觉/状态+语言 | 动作 | 抓取、移动、操作 |
 
-[Open X-Embodiment](../concepts/open-x-embodiment.md) / RT-X 从数据侧推跨本体；[Octo](../methods/octo-model.md)、[OpenVLA](../entities/paper-openvla.md) 为可复现开源通用策略路线。
+[Open X-Embodiment](../concepts/open-x-embodiment.md) / RT-X 从数据侧推跨本体；[Octo](../entities/paper-octo.md)、[OpenVLA](../entities/paper-openvla.md) 为可复现开源通用策略路线。
 
 ### 6. 世界模型
 

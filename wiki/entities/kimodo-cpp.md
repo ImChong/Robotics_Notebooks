@@ -110,7 +110,7 @@ sequenceDiagram
 | 设备 | `KIMODO_DEVICE_CPU` / `VULKAN` / `AUTO`；`KIMODO_TEXT_LAYER_CHUNK=1..32` 调文本塔显存 |
 | 输出 | C 缓冲是借用指针，`kimodo_motion_free` 前有效；Demo 另写无网格骨架 GLB，方便拷进 Three.js |
 | 权重校验 | 安装器核 `MANIFEST.json` 与 SHA-256；运动 GGUF 元数据含骨架、schedule、归一化统计 |
-| 下游 | 运动学轨迹仍要进 [ProtoMotions](./protomotions.md) / [SONIC](../methods/sonic-motion-tracking.md) / [CoRe](paper-core.md)；**不要**把 GLB/旋转缓冲当真机指令。CoRe 当前契约吃的是官方 Kimodo **SOMA77 `.npz`**，本仓 30 关节缓冲不能直接喂 |
+| 下游 | 运动学轨迹仍要进 [ProtoMotions](./protomotions.md) / [SONIC](./nvidia-sonic.md) / [CoRe](paper-core.md)；**不要**把 GLB/旋转缓冲当真机指令。CoRe 当前契约吃的是官方 Kimodo **SOMA77 `.npz`**，本仓 30 关节缓冲不能直接喂 |
 
 ## 局限与风险
 

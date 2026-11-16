@@ -49,7 +49,7 @@
 
 1. **[Kimodo（实体页）](../../wiki/entities/kimodo.md)** — 架构、变体选型与下游管线
 2. **[Diffusion-based Motion Generation](../../wiki/methods/diffusion-motion-generation.md)** — 约束式全身扩散范例
-3. **[ProtoMotions](../../wiki/entities/protomotions.md)** / **[SONIC](../../wiki/methods/sonic-motion-tracking.md)** — 生成轨迹 → 物理跟踪
+3. **[ProtoMotions](../../wiki/entities/protomotions.md)** / **[SONIC](../../wiki/entities/nvidia-sonic.md)** — 生成轨迹 → 物理跟踪
 
 ## 关联原始资料
 

@@ -1,17 +1,20 @@
 ---
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack, loco-manip-contact-survey, world-model, underactuated-objects, privileged-training, sim2real, unitree-g1, rss2026, tsinghua, hkust-gz, eth, xiaomi]
+project_id: haic-humanoid-interaction
+tags: [paper, humanoid, rl, imitation-learning, motion-control, body-system-stack, loco-manip-contact-survey, world-model, underactuated-objects, privileged-training, sim2real, unitree-g1, rss2026, tsinghua, hkust-gz, eth, xiaomi]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-16
 arxiv: "2602.11758"
 venue: "RSS 2026"
 code: https://github.com/ldt29/HAIC
+project: https://haic-humanoid.github.io/
 related:
   - ../overview/wam-motion-control-five-paths.md
-  - ../methods/haic.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/loco-manip-contact-category-05-vla-world-models.md
+  - ../overview/humanoid-amp-motion-prior-survey.md
   - ../methods/model-based-rl.md
+  - ../methods/amp-reward.md
   - ../concepts/privileged-training.md
   - ../concepts/sim2real.md
 original:
@@ -20,6 +23,7 @@ original:
 sources:
   - ../../sources/papers/haic_arxiv_2602_11758_reading.md
   - ../../sources/repos/ldt29_haic.md
+  - ../../sources/papers/motion_control_projects.md
   - ../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md
   - ../../sources/papers/humanoid_rl_stack_38_haic_humanoid_agile_object_interaction_control_v.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -85,6 +89,20 @@ flowchart TB
 ### 3. 两阶段训练与非对称微调（`PPOHAIC`）
 - **Stage 1（`ppo_haic_train`）**：联合训练 Teacher Actor / Privilege Encoder / Critic，同时用真值监督训练 `object_adapt`、`adapt_module` 与 `actor_adapt` 残差蒸馏。
 - **Stage 2（`ppo_haic_finetune`）**：以 `object_adapt_ema` 和 `adapt_ema`（更新系数 `0.04`）驱动 `actor_adapt` 采样，Critic 继续读取特权真值执行非对称 PPO 更新，同时在学生自身分布上在线微调 World Model，消除 Teacher-Student 协变量偏移。
+
+### 主要技术路线（对齐 `PPOHAIC` 实现）
+
+| 模块 | 在管线中的角色 | 实际输入与输出 |
+|------|----------------|----------------|
+| **Teacher / Privilege Encoder** | 特权状态编码与冷启动专家 | 输入 `priv_`、`object_`、`object_trans`；输出 `256` 维 `priv_feature` 与参考专家动作 |
+| **Object Adapter** | 实时对象动力学预测器 | MLP（`[256, 256]`），从 `[obs_, command_]` 预测对象相对位姿、速度与加速度 |
+| **Explicit Geometric Projection** | 空间接地动态占据 | `TransformObject` 用预测或真值位姿对 128 点静态模板 $\mathcal{P}$ 做刚体变换 |
+| **Privilege Adapter** | 可部署特权重建器 | MLP 或 `GRUModule`，对齐 Teacher 侧 `priv_feature`，微调期配合 EMA 稳定推理 |
+| **Asymmetric Actor-Critic** | 跨阶段策略优化器 | `actor_adapt` 只看可部署观测；`critic` 保留仿真特权真值执行多奖励组 PPO |
+
+### Survey 坐标（策展索引）
+
+- 在「具身智能研究室 · 42 篇 humanoid RL 运动控制长文」中编号 **38/42**，所属系统栈层：**05 接触 · 柔顺 · 安全恢复**。
 
 ## 实验与评测
 
@@ -170,23 +188,26 @@ sequenceDiagram
 
 ## 关联页面
 
-- [HAIC 方法页](../methods/haic.md)
 - [Model-Based RL](../methods/model-based-rl.md)
+- [AMP Reward](../methods/amp-reward.md)
 - [Privileged Training（特权信息训练）](../concepts/privileged-training.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Loco-Manip 接触分类 05：VLA 与世界模型调用](../overview/loco-manip-contact-category-05-vla-world-models.md)
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
+- [人形 AMP 与运动先验综述](../overview/humanoid-amp-motion-prior-survey.md)
 - [OpenHLM](./paper-loco-manip-161-154-openhlm.md)
 
 ## 参考来源
 
 - [haic_arxiv_2602_11758_reading.md](../../sources/papers/haic_arxiv_2602_11758_reading.md) — `arXiv:2602.11758v2` 原文全文通读归档
 - [ldt29_haic.md](../../sources/repos/ldt29_haic.md) — 官方代码 `ldt29/HAIC` 源码与配置核查归档
+- [motion_control_projects.md](../../sources/papers/motion_control_projects.md)
 - [humanoid_rl_stack_38_haic_humanoid_agile_object_interaction_control_v.md](../../sources/papers/humanoid_rl_stack_38_haic_humanoid_agile_object_interaction_control_v.md) — 42 篇长文索引与项目页核查
 - [humanoid_rl_stack_42_catalog.md](../../sources/papers/humanoid_rl_stack_42_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
 - [wechat_embodied_ai_lab_loco_manip_contact_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_contact_survey.md)
 - [wechat_embodied_ai_lab_wam_motion_control_five_paths.md](../../sources/blogs/wechat_embodied_ai_lab_wam_motion_control_five_paths.md)
+- 原始抓取：[wechat_humanoid_rl_42_survey_2026-05-26.md](../../sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)
 
 ## 推荐继续阅读
 
@@ -194,3 +215,4 @@ sequenceDiagram
 - [HAIC 官方项目页](https://haic-humanoid.github.io/)
 - [HAIC 官方训练仓库 (ldt29/HAIC)](https://github.com/ldt29/HAIC)
 - [HOIC-baseline MuJoCo Sim2Sim](https://github.com/Cybercal/HOIC-baseline)
+- [Robot_Learning_Paper_Notebooks：HAIC 深读笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model/HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model.html)

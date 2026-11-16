@@ -7,7 +7,7 @@ updated: 2026-11-14
 arxiv: "2610.41354"
 project: https://onesteer.github.io/
 related:
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/beyondmimic.md
   - ./paper-yahmp.md
   - ./paper-extreme-rgmt.md
@@ -146,7 +146,7 @@ v3 在统一 MuJoCo sim-to-sim harness 评测 **AMASS 150 个 held-out 窗口、
 
 | 方法 | 控制架构 | 与 OneSteer 的差别 |
 |---|---|---|
-| [SONIC](../methods/sonic-motion-tracking.md) | 确定性通用 tracker | 统一基准的跟踪对照，未在其 tracker 内使用同类测试时噪声梯度成本 |
+| [SONIC](./nvidia-sonic.md) | 确定性通用 tracker | 统一基准的跟踪对照，未在其 tracker 内使用同类测试时噪声梯度成本 |
 | [YAHMP](./paper-yahmp.md) | RL 运动跟踪设计消融 | 偏向命令、历史、PD 与残差动作对比，非冻结生成器的计划 steer |
 | [BeyondMimic](../methods/beyondmimic.md) | 扩散相关全身控制 | 任务和参考接口不同，不能跨数据集直接比较成功率 |
 | [Extreme-RGMT](./paper-extreme-rgmt.md) | 高动态困难动作持续学习 | 采用仿真筛失败；OneSteer 提供基于噪声计划离散度的预筛方式 |
@@ -168,7 +168,7 @@ v3 在统一 MuJoCo sim-to-sim harness 评测 **AMASS 150 个 held-out 窗口、
 
 ## 关联页面
 
-- [SONIC：规模化人形全身运动跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC：规模化人形全身运动跟踪](./nvidia-sonic.md)
 - [YAHMP：G1 通用跟踪设计消融](./paper-yahmp.md)
 - [BeyondMimic：扩散引导人形控制](../methods/beyondmimic.md)
 - [Extreme-RGMT：困难动作持续学习](./paper-extreme-rgmt.md)
@@ -188,5 +188,5 @@ v3 在统一 MuJoCo sim-to-sim harness 评测 **AMASS 150 个 held-out 窗口、
 
 - [OneSteer 最新 arXiv 版本历史](https://arxiv.org/abs/2610.41354)
 - [OneSteer：实机视频、地形与自评实验](https://onesteer.github.io/)
-- [SONIC 跟踪基线](../methods/sonic-motion-tracking.md)
+- [SONIC 跟踪基线](./nvidia-sonic.md)
 - [扩散控制相关：BeyondMimic](../methods/beyondmimic.md)
