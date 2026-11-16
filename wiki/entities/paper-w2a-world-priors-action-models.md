@@ -9,7 +9,7 @@ tags:
   - distillation
   - hitsz
 status: complete
-updated: 2026-11-12
+updated: 2026-11-16
 arxiv: "2611.02600"
 project: https://misaka0502.github.io/W2A
 original:
@@ -33,7 +33,7 @@ sources:
 summary: "W2A（arXiv:2611.02600，哈工大深圳）：训练时把视频 DiT 的中间层隐变量经 PCA 压缩后，用 Q-Former 读出并以余弦损失蒸馏进 action DiT，部署时完全移除视频模型。LIBERO 平均 95.9%，单张 A100 约 55 ms 每次预测，据称比 mimic-video 快约 21 倍。"
 ---
 
-# W2A（arXiv:2611.02600）
+# W2A：蒸馏世界先验实现实时机器人控制 / W2A: Distilling World Priors into Action Models for Real-Time Robotic Control
 
 **W2A**（*W2A: Distilling World Priors into Action Models for Real-Time Robotic Control*，[arXiv:2611.02600](https://arxiv.org/abs/2611.02600)，[项目页](https://misaka0502.github.io/W2A)）来自哈尔滨工业大学（深圳），线索见 [具身智能小站 2026-11-04 盘点](../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md)，也列入 CoRL 2026 Glen Berseth 阅读清单第 080 条（P2）。本页依据论文 v1 全文通读（归档见[来源归档](../../sources/papers/w2a_world_priors_action_models_arxiv_2611_02600.md)）。
 
@@ -88,6 +88,10 @@ flowchart LR
 - **推理：** 视频 DiT 与 Q-Former 全部移除，20 步去噪，预测 16 步、执行 8 步，warmstart τws=0.5（§4.3、表 12）。
 - **假设（作者自述）：** 视频隐变量虽高维，但一个压缩的低维子空间足以监督动作生成（摘要）；视频隐变量与动作隐变量「共享动作条件的动力学」，所以蒸馏是合理的（§1，属作者的概念性论证，非实验证明）。
 
+## 源码运行时序图
+
+**不适用（截至 2026-11-16）**：官方项目页 `Code` 按钮链接为 `#` 占位；[misaka0502/W2A](https://github.com/misaka0502/W2A) 是项目展示网站，README 为 `Coming soon...`，未发现算法训练或推理入口。故无法基于真实代码绘制运行时序图，不使用通用模拟图替代；上面的 Mermaid 图仅依据论文 §4 与附录 B 描述**论文方法流程**。
+
 ## 工程实践
 
 - **配置速记：** 输入 224×224 前视 + 腕部图像、ResNet-18 编码、观测历史 2 步、T5 预计算语言嵌入；batch 128、100 epoch、AdamW、学习率 1e-4、EMA 0.999、训练流时间采样 logit-normal（表 7、10、11）。
@@ -95,7 +99,7 @@ flowchart LR
 - **真机：** Franka Research 3，前视 RealSense D435i + 腕部 D405，Omega 7 遥操作；每个子任务 50 条示教共 750 条；策略在真机上 15 Hz（§5.1、附录 F）。
 - **数据口径：** 「scratch」只表示不用外部机器人动作数据，允许通用视频预训练；W2A 的视频教师来自通用视频预训练并在目标基准视频上做 LoRA 适配（附录 B.2、表 9）。与 π0.5 等「finetuned」比较时口径不同，与 mimic-video、DreamZero 同属 scratch。
 - **关键消融（LIBERO 平均，表 4–6，作者报告）：** 去蒸馏 84.4（-11.5），去 PCA 88.6（-7.3），打乱教师 78.2，随机教师 69.2，ResNet 未来帧特征当教师 87.8，全局 MLP 代替 Q-Former 82.7。教师深度 50% 最优（图 10）。
-- **代码：** 论文未给代码链接；入库时项目页核查未见 GitHub（2026-11-04），因此本页不写 `code:`。复现信息以论文附录 B 的配置表为准。
+- **代码：** 论文未提供可运行实现链接。2026-11-16 核查官方项目页 `Code` 按钮实际指向 `#`；[同名公开仓库](https://github.com/misaka0502/W2A) 仅有展示站点文件，不能算作 W2A 算法开源。因此暂不填写 `code:`；复现信息以论文附录 B 的配置表为准。
 
 ## 实验结果速览
 
@@ -141,9 +145,11 @@ W2A 用训练期视频隐变量蒸馏降低部署成本，但同时放弃显式�
 - 真机每个子任务 30 次 rollout，未报告真机多随机种子或置信区间；真机基线仅 DP 与 OpenVLA，无法回答相对其他 WAM 的真机优势。
 - 「scratch」口径允许通用视频预训练与目标基准视频，而 DP 不使用视频，不同 scratch 方法的数据量并不完全等价（表 9）。
 - 机制解释（热力图、掩码富集度、线性探针）是相关性证据；「视频与动作共享动作条件动力学」是作者的概念性假设（§1）。
-- 论文与项目页（入库时核查）均未见公开代码，复现依赖附录配置表。
+- 项目页虽显示 `Code`，但链接为 `#` 占位；同名 GitHub 仓库只提供展示站代码（2026-11-16 核查），尚无可复核的 W2A 训练/推理实现。复现目前依赖论文附录配置表。
 
 ## 关联页面
+
+- [WAM 纵深路线：Stage 4 部署与训练期蒸馏对照](../../roadmap/depth-wam.md)
 
 - [vla](../methods/vla.md)
 - [imitation-learning](../methods/imitation-learning.md)
@@ -168,4 +174,5 @@ W2A 用训练期视频隐变量蒸馏降低部署成本，但同时放弃显式�
 
 - [arXiv PDF](https://arxiv.org/pdf/2611.02600)
 - [项目页](https://misaka0502.github.io/W2A)
+- [arXiv HTML 全文](https://arxiv.org/html/2611.02600v1)
 - 论文相关工作入口：mimic-video（arXiv:2512.15692）、Video Prediction Policy（arXiv:2412.14803）、Fast-WAM（arXiv:2603.16666）、DreamZero（arXiv:2602.15922）
