@@ -75,7 +75,7 @@ jobs:
         if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.mode == 'media' || steps.scope.outputs.has_wiki == 'true'
         run: npm ci
 
-      - name: ESLint docs/main.js
+      - name: ESLint JavaScript
         if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.mode == 'media'
         run: npm run lint:js
 
@@ -104,7 +104,7 @@ jobs:
         run: python3 -m pytest -m "not full_only" --no-cov --durations=10
 
       - name: Frontend reliability behavior tests
-        if: steps.scope.outputs.mode == 'full'
+        if: steps.scope.outputs.mode == 'full' || steps.scope.outputs.has_wiki == 'true'
         run: npm run test:frontend
 
       # 快照测试（test_community_naming / test_wiki_roadmaps_export）读取

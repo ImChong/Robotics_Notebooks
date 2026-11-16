@@ -6,6 +6,8 @@
 
 | 脚本 | 作用摘要 | 常见调用 |
 |------|----------|----------|
+| `audit_depth_health.py` | 审计 `roadmap/depth-*.md` 关联页健康度与缺项，输出质量报告 | 按需直接运行 |
+| `audit_diagram_coverage.py` | 统计全库流程图与源码运行时序图覆盖率 | 按需直接运行 |
 | `log_md.py` | `log.md` 顶部插入共用函数（`append_log` / `lint_wiki --write-log`） | （内部模块） |
 | `append_log.py` | 向 `log.md` **顶部**插入维护操作记录（新记录在上） | `make log` |
 | `build_search_index.py` | 生成站点搜索索引 JSON | 由 `export_minimal.py` / `make export` 间接使用 |
@@ -23,21 +25,14 @@
 | `generate_page_catalog.py` | 生成独立的 `catalog.md` 完整页面目录（仅 main 上 `export.yml` 提交） | `export.yml`；`make catalog`（本地预览） |
 | `fold_log_fragments.py` | 把 `log.d/` 碎片并入 `log.md` 顶部并删除碎片 | `export.yml`（main） |
 | `pr_derived_guard.py` | PR 不得改 `catalog.md` / `log.md` / 部署生成统计；`sync` 合入 main 并自动消解这些冲突 | `make pr-check`；`make sync-main`；`lint.yml` |
-| `graph_exports_sync.py` | 将图谱相关 JSON 从 `exports/` 复制到 `docs/exports/` | `make graph`；preflight；`sync_all_stats`；`sync_wiki.sh` |
+| `graph_exports_sync.py` | 将图谱相关 JSON 从 `exports/` 复制到 `docs/exports/` | `make graph`；preflight；`sync_all_stats` |
 | `ingest_coverage.py` | 与覆盖率/ingest 相关的辅助脚本 | `make coverage` |
 | `ingest_paper.py` | 生成 `sources/papers/` 论文 ingest 模板 | `make ingest` |
 | `lint_wiki.py` | Wiki 健康检查（断链、孤儿页、frontmatter 等） | `make lint`；`make ci-preflight`（`--report`） |
-| `migrate_wikilinks.py` | 将 `[[wikilink]]` 迁移为标准 `[text](path)` | 一次性维护时直接运行 |
 | `scaffold_wiki_page.py` | 按统一阅读骨架生成 wiki 页面并做结构自检 | `python3 scripts/scaffold_wiki_page.py concept "标题" --slug page-slug` |
 | `search_wiki.py` | 终端搜索 wiki 内容 | `make search` |
 | `sync_all_stats.py` | 部署时写徽章 endpoint JSON、`docs/index.html` Hero 数字、`docs/sw.js` 缓存版本（改动勿提交） | `pages.yml`；`make sync-stats` |
 | `wiki_to_marp.py` | 将 wiki 页转为 Marp 幻灯片 Markdown | `make slides` |
-
-## Shell 与其它
-
-| 路径 | 作用摘要 | 常见调用 |
-|------|----------|----------|
-| `sync_wiki.sh` | 串联 graph、export、log 碎片等（历史便捷入口） | `make sync` |
 
 ## 主要 Python 模块（通常不直接当 CLI）
 
