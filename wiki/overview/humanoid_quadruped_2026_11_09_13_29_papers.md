@@ -11,7 +11,7 @@ sources:
   - ../../sources/blogs/wechat_locomotion_lab_2026_11_16_humanoid_quadruped_29.md
 original:
   - ../../sources/blogs/wechat_locomotion_lab_2026_11_16_humanoid_quadruped_29.md
-summary: "11 月 9–13 日人形／四足 29 篇论文阅读坐标，按运动控制、导航安全、移动操作与跨本体迁移组织；先以 arXiv 身份去重，保留已有 15 篇论文节点，本次补全14篇独立论文详情，29篇已全部映射唯一的原文核对节点。"
+summary: "11 月 9–13 日人形／四足 29 篇论文阅读坐标，按运动控制、导航安全、移动操作与跨本体迁移组织；先以 arXiv 身份去重，复用 15 篇已完成论文、升级已有 BlinkMimic 草稿并新增13篇论文节点；29篇均映射唯一的原文核对节点。"
 ---
 
 # 人形／四足前沿 29 篇：2026-11-09—11-13 论文阅读坐标
@@ -97,7 +97,7 @@ flowchart TD
 | 28 | 轮足/腿式 | MotionSkill：从双足视频到跨本体运动策略 | [2611.16346](https://arxiv.org/abs/2611.16346) | [论文详情](../entities/paper-motionskill-cross-embodiment.md) |
 | 29 | 轮足/腿式 | Softness / Compliance：柔顺踝被动行走的信息度量 | [2611.13779](https://arxiv.org/abs/2611.13779) | [论文详情](../entities/paper-softness-compliant-ankle.md) |
 
-> **状态说明：** 本次去重沿用已有详情 15 篇，新建 14 篇；全部 29 篇有独立论文节点及其原文通读归档。具体健康度以脚本 `python3 scripts/report_health.py` 或 Wiki Lint CI 的实测为准。
+> **状态说明：** 本次去重沿用 15 篇已达标详情，升级 1 篇已存在的 BlinkMimic 草稿，新增 13 篇详情；全部 29 篇均有独立论文节点及原文通读归档。具体健康度以脚本 `python3 scripts/report_health.py` 或 Wiki Lint CI 的实测为准。
 
 ## 工程实践
 
