@@ -7006,6 +7006,7 @@
 - [感知后处理与坐标变换](wiki/concepts/perception-coordinate-postprocessing.md) — 感知后处理与坐标变换**把检测器输出的 **像素量**（框、线、交点）经相机内参、深度/平面假设与外参链，变成 **机器人 base 或场地世界系下的几何量**，并做过滤与拓扑校验——课程第 7. `📅unknown` `[wiki_page]`
 - [Physics Fidelity ↔ Sim2Real Gap（物理保真度与仿真到现实差距）](wiki/concepts/physics-fidelity-sim2real-gap.md) — 物理保真度（Physics Fidelity）**：仿真器对真实物理过程的逼近程度。它不是一个标量，而是沿 **几何/URDF 精度 → 刚体动力学算法 → 接触/摩擦模型 → 执行器模型** 四 `📅unknown` `[wiki_page]`
 - [人形腿部行星滚柱丝杠直线驱动（PRS 路线）](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 人形腿部用**行星滚柱丝杠（Planetary Roller Screw, PRS）**把电机旋转转为**直线推力**，再经**连杆机构**映射为髋/膝/踝等关节角，是在**负载密度、静态保持、纵向布 `📅unknown` `[wiki_page]`
+- [位置编码（Positional Encoding）：绝对位置、RoPE、NoPE 与相对偏置](wiki/concepts/positional-encoding.md) — 位置编码（Positional Encoding）** 为 Transformer 的 token 表示或注意力分数注入位置与距离信息，让内容相同、位置不同的序列能得到不同的交互关系；现代 LLM `📅unknown` `[wiki_page]`
 - [动力下降制导（Powered Descent Guidance, PDG）](wiki/concepts/powered-descent-guidance.md) — 动力下降制导**：火箭在着陆前的最后一段只靠发动机推力减速和横移，制导算法要实时算出一条推力剖面，使火箭在高度归零的同时速度也归零，且全程满足硬件和安全约束。 `📅unknown` `[wiki_page]`
 - [Privileged Training（特权信息训练）](wiki/concepts/privileged-training.md) — 特权训练**（Privileged Training / Teacher-Student Training）：训练阶段提供给策略额外的、在真实部署时无法获取的信息，再通过知识蒸馏将能力迁移给仅使用 `📅unknown` `[wiki_page]`
 - [Procedural Terrain Generation（程序化地形生成）](wiki/concepts/procedural-terrain-generation.md) — 程序化地形生成**：在仿真器中 **按规则或噪声参数** 自动生成多样地形 mesh/高度场，而非手工建模单个场景，用于 **批量训练** 四足越障与泛化评估。 `📅unknown` `[wiki_page]`

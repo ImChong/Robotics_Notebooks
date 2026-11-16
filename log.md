@@ -430,6 +430,15 @@ op: ingest
 - **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
 - **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
 
+# 位置编码教程 ingest 记录
+
+## [2026-11-16] ingest | sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md — 通读 Raschka 教程，归纳现代 LLM 位置编码
+
+- 原文为 2026-11-15 发布的技术博客；全文 §1–§7 已核对，非独立论文或新项目。
+- 新建位置编码概念页（GPT-2 absolute、sinusoidal、RoPE、Partial RoPE、NoPE、相对偏置），并为 Transformer 与模型架构纵深 Stage 1 建立交叉引用。
+- 源码核对了原文所引用的 rasbt/LLMs-from-scratch Qwen3 notebook，绘制基于真实调用关系的运行时序图；未执行模型。
+- 对长上下文泛化与行业趋势的结论保留文章采样边界，区分数学性质与模型表现。
+
 ## [2026-11-16] ingest | sources/papers/cortex_arxiv_2610_20399.md — Cortex：上下文到 FFN 参数记忆的巩固
 
 - 依据 arXiv:2610.20399v1 整理 prospective rehearsal、FFN 参数扩展及无上下文蒸馏，独立建立中文/英文论文详情。
