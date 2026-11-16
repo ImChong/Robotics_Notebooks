@@ -46,6 +46,6 @@ Gist 的“implementation spectrum”强调模块化：先有 raw sources、wiki
 
 ## 对 Wiki 的映射
 
-- 主页面：[LLM Wiki（Karpathy 模式与 v2 扩展）](../../wiki/references/llm-wiki-karpathy.md)
+- 主页面：[LLM Wiki（Karpathy 模式与 v2 扩展）](../../wiki/concepts/llm-wiki-karpathy.md)
 - 原始模式来源：[Karpathy LLM Wiki Gist](./karpathy_llm_wiki_gist.md)
 - 本仓库实施规范：[schema/ingest-workflow.md](../../schema/ingest-workflow.md) 与 [AGENTS.md](../../AGENTS.md)

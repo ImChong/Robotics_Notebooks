@@ -164,3 +164,50 @@ def test_added_pages_include_untracked_entities_and_reject_bad_base(tmp_path: Pa
     assert added_entities(tmp_path, "HEAD") == {new}
     with pytest.raises(subprocess.CalledProcessError):
         added_entities(tmp_path, "missing-base")
+
+
+def test_added_pages_ignores_renamed_entities(tmp_path: Path) -> None:
+    subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
+    old = page(
+        tmp_path,
+        "paper-legacy_name.md",
+        body="A sufficiently detailed legacy entity page to ensure rename similarity stays high.\n"
+        * 3,
+    )
+    subprocess.run(["git", "add", old], cwd=tmp_path, check=True)
+    subprocess.run(
+        [
+            "git",
+            "-c",
+            "user.name=Test",
+            "-c",
+            "user.email=test@example.org",
+            "commit",
+            "-qm",
+            "baseline",
+        ],
+        cwd=tmp_path,
+        check=True,
+    )
+    renamed = "wiki/entities/paper-legacy-name.md"
+    subprocess.run(["git", "mv", old, renamed], cwd=tmp_path, check=True)
+    brand_new = page(tmp_path, "paper-brand-new.md", arxiv="2503.00001")
+
+    assert added_entities(tmp_path, "HEAD") == {brand_new}
+
+    subprocess.run(["git", "add", brand_new], cwd=tmp_path, check=True)
+    subprocess.run(
+        [
+            "git",
+            "-c",
+            "user.name=Test",
+            "-c",
+            "user.email=test@example.org",
+            "commit",
+            "-qm",
+            "rename and add",
+        ],
+        cwd=tmp_path,
+        check=True,
+    )
+    assert added_entities(tmp_path, "HEAD~1") == {brand_new}

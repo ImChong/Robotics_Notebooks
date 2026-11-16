@@ -33,7 +33,7 @@
 - 每步 prepend **机器人身份 prompt**；输出 **32 维 padded action**，统一不同本体动作空间与控制频率。
 - 部署：各机加载 **同一权重副本**，异步执行；团队扩大时 **参数与上下文窗口不变**。
 
-**对 wiki 的映射：** [paper-chorus](../../wiki/entities/paper-chorus.md)、[π0 Policy](../../wiki/methods/π0-policy.md)
+**对 wiki 的映射：** [paper-chorus](../../wiki/entities/paper-chorus.md)、[π0 Policy](../../wiki/methods/pi0-policy.md)
 
 ### 摘录 3：真机任务与量化结果
 

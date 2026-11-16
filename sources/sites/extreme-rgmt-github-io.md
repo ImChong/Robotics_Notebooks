@@ -33,4 +33,4 @@
 
 - 论文归档：[`sources/papers/extreme_rgmt_arxiv_2607_20110.md`](../papers/extreme_rgmt_arxiv_2607_20110.md)
 - 前作 RGMT 项目页：<https://zeonsunlightyu.github.io/RGMT.github.io/>
-- 前作 wiki：[`wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md`](../../wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)
+- 前作 wiki：[`wiki/entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md`](../../wiki/entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md)

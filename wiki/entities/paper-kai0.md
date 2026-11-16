@@ -23,7 +23,7 @@ code: https://github.com/OpenDriveLab/kai0
 venue: "2026 · arXiv"
 related:
   - ../methods/vla.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../methods/dagger.md
   - ../methods/awr.md
   - ./paper-pi05-open-world-vla.md
@@ -200,7 +200,7 @@ sequenceDiagram
 ## 关联页面
 
 - [VLA](../methods/vla.md) — 视觉–语言–动作后训练语境
-- [π₀ Policy](../methods/π0-policy.md) — flow-matching 骨干与 openpi
+- [π₀ Policy](../methods/pi0-policy.md) — flow-matching 骨干与 openpi
 - [π0.5](./paper-pi05-open-world-vla.md) — 主基线与微调起点
 - [DAgger](../methods/dagger.md) — Heuristic / 标准纠偏闭环
 - [AWR](../methods/awr.md) — advantage 加权回归族

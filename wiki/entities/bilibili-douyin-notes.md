@@ -9,7 +9,7 @@ summary: "bilibili-douyin-notes 是一个多平台 Agent Skill：先取视频字
 related:
   - ./agent-skills-addyosmani.md
   - ../concepts/agentic-coding-software-fundamentals.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/bilibili-douyin-notes.md
 ---
@@ -121,7 +121,7 @@ sequenceDiagram
 
 - [Agent Skills（Addy Osmani）](./agent-skills-addyosmani.md) — 通用编码工作流技能包，可与面向视频学习的 Skill 对照。
 - [Agentic Coding 软件工程基础](../concepts/agentic-coding-software-fundamentals.md)
-- [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) — 生成笔记如何接入持续维护的知识库。
+- [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) — 生成笔记如何接入持续维护的知识库。
 
 ## 参考来源
 

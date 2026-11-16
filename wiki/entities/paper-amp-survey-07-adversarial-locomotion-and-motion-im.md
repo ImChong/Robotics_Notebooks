@@ -11,7 +11,7 @@ related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../tasks/locomotion.md
   - ../tasks/loco-manipulation.md
-  - ./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md
+  - ./paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md
   - ./paper-amp-survey-08-more.md
   - ./paper-hiking-in-the-wild.md
   - ./paper-notebook-unitree-h1-whitepaper.md
@@ -125,7 +125,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
-- 同段姊妹：[GMP #06](./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md)、[MoRE #08](./paper-amp-survey-08-more.md)、[Hiking #09](./paper-hiking-in-the-wild.md)
+- 同段姊妹：[GMP #06](./paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md)、[MoRE #08](./paper-amp-survey-08-more.md)、[Hiking #09](./paper-hiking-in-the-wild.md)
 - 任务：[locomotion.md](../tasks/locomotion.md)、[loco-manipulation.md](../tasks/loco-manipulation.md)
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#07/19）
 

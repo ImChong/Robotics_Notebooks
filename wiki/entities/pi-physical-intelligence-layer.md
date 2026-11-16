@@ -5,7 +5,7 @@ title: The Physical Intelligence Layer
 status: complete
 updated: 2026-10-14
 related:
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ./paper-pi05-open-world-vla.md
   - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ../methods/pi07-policy.md
@@ -64,7 +64,7 @@ Ultra 写美国客户仓库的订单打包。一段连续镜头标注自主率 *
 
 ## 关联页面
 
-- [π₀](../methods/π0-policy.md)
+- [π₀](../methods/pi0-policy.md)
 - [π₀.₅](./paper-pi05-open-world-vla.md)
 - [π\*₀.₆ / RECAP](./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md)
 - [π₀.₇](../methods/pi07-policy.md)

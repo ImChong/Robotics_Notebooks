@@ -1,23 +1,10 @@
----
-type: roadmap_page
-tags: [roadmap, humanoid, career, hardware, manufacturing, testing, mechanical]
-status: complete
-updated: 2026-09-19
-related:
-  - ../../roadmap/motion-control.md
-  - ../concepts/humanoid-mass-production-engineering.md
-  - ../concepts/humanoid-testing-workflow.md
-  - ../overview/humanoid-hardware-101-technology-map.md
-  - ../../roadmap/depth-humanoid-hardware-design.md
-  - ../queries/humanoid-hardware-selection.md
-sources:
-  - ../../sources/blogs/wechat_zanehub_humanoid_career_entry_for_generalists.md
-summary: "面向非算法专长的工程人员：从结构/执行器/测试/制造四类切口切入人形机器人，按背景选岗位关键词，用 12 个月单机构闭环建立作品集，并以相邻迁移、供应链先行、可交付能力换入场。"
----
+# 人形机器人工程实践入门路线（Humanoid Practitioner Entry Roadmap）
 
-# Humanoid Practitioner Entry Roadmap
+**首屏导读**：
 
-**普通人切入人形机器人赛道的工程实践路线**
+- **为谁**：面向机械、电气、测试、制造与系统集成等非算法专长工程师的赛道切入指南。
+- **路径**：Stage 1–4 · 工程基础（单机构选型与详设）→ 控制接入（位置/速度闭环）→ 感知交互（视觉/力觉/IMU 三选一）→ 完整单任务作品集交付。
+- **定位**：[运动控制主路线](motion-control.md)服务运控算法工程师；[整机硬件纵深](depth-humanoid-hardware-design.md)面向全机负责人；本路线聚焦 **12 个月单机构闭环**，用可交付工程能力换入场。
 
 ## 一句话定义
 
@@ -41,7 +28,7 @@ summary: "面向非算法专长的工程人员：从结构/执行器/测试/制�
 ## 为什么重要
 
 - **行业阶段变化**：人形机器人正从「展示技术」转向「验证生产力」——整机企业与明星算法岗之外，结构、执行器、测试、供应链、现场调试同样缺人。
-- **与算法路线互补**：[运动控制主路线](../../roadmap/motion-control.md) 服务运控算法工程师；本页服务 **把原理做成稳定产品** 的 practitioner。
+- **与算法路线互补**：[运动控制主路线](motion-control.md) 服务运控算法工程师；本页服务 **把原理做成稳定产品** 的 practitioner。
 - **降低错误预期**：只搜「人形机器人算法工程师」会漏掉大量真实岗位；只学大模型概念无法承担完整机器人工程。
 
 ## 核心原理
@@ -57,7 +44,7 @@ summary: "面向非算法专长的工程人员：从结构/执行器/测试/制�
 | **软件** | ROS2、仿真、采集、训练、编排 | 需理解硬件限位与安全逻辑 |
 | **制造** | 加工、装配、标定、测试、追溯 | 装配一致性决定样机能否量产 |
 
-系统全景入口：[Humanoid Hardware 101 技术地图](../overview/humanoid-hardware-101-technology-map.md)。
+系统全景入口：[Humanoid Hardware 101 技术地图](../wiki/overview/humanoid-hardware-101-technology-map.md)。
 
 ### 流程总览：从切口到入场
 
@@ -78,12 +65,10 @@ flowchart LR
 |------|----------|----------|
 | **机械结构** | 结构工程师、试制工程师 | 选一个关节/连杆/夹爪，完成需求→建模→打样→测试 |
 | **执行器/关节模组** | 关节模组、执行器、传动工程师 | 从测试/集成/供应商工程进入，关注力矩、回差、温升、编码器安装 |
-| **测试与验证** | 测试、可靠性、标定工程师 | 把寿命、温升、步态稳定、故障模式变成 **可重复方法与数据**；见 [人形测试 L0–L5](../concepts/humanoid-testing-workflow.md) |
-| **制造与工艺** | 工艺、制造、SQE、NPI | 从 DFM/DFA、工装、CPK、MES 理解样机→量产；见 [量产工程能力](../concepts/humanoid-mass-production-engineering.md) |
+| **测试与验证** | 测试、可靠性、标定工程师 | 把寿命、温升、步态稳定、故障模式变成 **可重复方法与数据**；见 [人形测试 L0–L5](../wiki/concepts/humanoid-testing-workflow.md) |
+| **制造与工艺** | 工艺、制造、SQE、NPI | 从 DFM/DFA、工装、CPK、MES 理解样机→量产；见 [量产工程能力](../wiki/concepts/humanoid-mass-production-engineering.md) |
 
-## 工程实践
-
-### 按背景选路径
+## 按背景选路径与 12 个月阶段总览
 
 | 你的背景 | 优先搜这些岗位 | 必须补的机器人特有约束 |
 |----------|----------------|------------------------|
@@ -92,18 +77,43 @@ flowchart LR
 | 软件/计算机/算法 | ROS2、仿真、运动学/动力学、感知融合、控制/步态 | 传感器噪声、通信延迟、限位、急停、电池电压 |
 | 产品/项目/售后 | 场景调研、应用工程、现场部署、任务编排、交付/运维 | 节拍、故障恢复、安全隔离、维护成本、数据闭环 |
 
-**算法向深度路线**仍请走[运动控制主路线](../../roadmap/motion-control.md)；**整机硬件纵深**见 [depth-humanoid-hardware-design](../../roadmap/depth-humanoid-hardware-design.md)。
+**算法向深度路线**仍请走[运动控制主路线](motion-control.md)；**整机硬件纵深**见 [depth-humanoid-hardware-design](depth-humanoid-hardware-design.md)。
 
 ### 12 个月学习顺序（从单机构，非整机）
 
 | 阶段 | 时间 | 选题示例 | 最低交付物 |
 |------|------|----------|------------|
-| **1. 工程基础** | 1–2 月 | 2-DoF 臂、减速旋转关节、线性执行器、简化踝/夹爪 | 需求说明、三维模型、装配/零件图、材料与载荷假设、风险清单 |
-| **2. 控制接入** | 3–4 月 | 同上机构的实机或仿真闭环 | 位置/速度控制、限位、编码器读取、轨迹误差、急停与异常日志 |
-| **3. 感知交互** | 5–8 月 | 视觉 / 力觉 / IMU **三选一** | 例：力反馈接触检测 + 不同速度/接触条件数据 |
-| **4. 完整项目** | 9–12 月 | 抓取、插入、搬运或步态稳定等 **单一任务** | 约束说明、测试工况、失败案例、视频 + 数据 + 技术说明 |
+| **Stage 1. 工程基础** | 1–2 月 | 2-DoF 臂、减速旋转关节、线性执行器、简化踝/夹爪 | 需求说明、三维模型、装配/零件图、材料与载荷假设、风险清单 |
+| **Stage 2. 控制接入** | 3–4 月 | 同上机构的实机或仿真闭环 | 位置/速度控制、限位、编码器读取、轨迹误差、急停与异常日志 |
+| **Stage 3. 感知交互** | 5–8 月 | 视觉 / 力觉 / IMU **三选一** | 例：力反馈接触检测 + 不同速度/接触条件数据 |
+| **Stage 4. 完整项目** | 9–12 月 | 抓取、插入、搬运或步态稳定等 **单一任务** | 约束说明、测试工况、失败案例、视频 + 数据 + 技术说明 |
 
 控制方向：**先单关节 / 机械臂 / 倒立摆调通**，再进入 RL 或 VLA；测试方向：**把「偶尔出问题」变成可定位、可统计的工程问题**。
+
+---
+
+## Stage 1 工程基础（1–2 月：单机构选型与详设）
+
+- **目标**：聚焦单个可验证机构（如 2-DoF 机械臂、准直驱/减速旋转关节、线性执行器或简化平行踝/夹爪），建立工程设计边界与风险台账。
+- **核心动作**：明确工况负载、峰值与连续力矩、安全系数与传动选型；输出需求说明、三维装配与零件图、材料与载荷假设及 FMEA 风险清单。
+- **进阶参考**：[执行器传动专题](../wiki/concepts/humanoid-mass-production-engineering.md) 与 [人形硬件选型指南](../wiki/queries/humanoid-hardware-selection.md)。
+
+## Stage 2 控制接入（3–4 月：位置/速度闭环与安全边界）
+
+- **目标**：把 Stage 1 的单机构接入仿真（MuJoCo / Isaac）或桌面实机控制器，跑通底层反馈与保护逻辑。
+- **核心动作**：验证编码器采样、通信周期、软件限位、物理急停与过流保护，实测不同阶跃与正弦轨迹下的跟踪误差与异常日志。
+- **进阶参考**：[控制环路延迟建模](../wiki/formalizations/control-loop-latency-modeling.md) 与 [ROS 2 基础](../wiki/concepts/ros2-basics.md)。
+
+## Stage 3 感知交互（5–8 月：视觉 / 力觉 / IMU 三选一）
+
+- **目标**：为已调通控制的机构补齐一种关键外部或本体交互感知，完成非结构化扰动或接触响应测试。
+- **核心动作**：在相机标定与手眼对齐、关节电流/六维力接触检测、IMU 姿态估计中任选其一，对比不同速度与接触条件下的噪声与鲁棒性。
+- **进阶参考**：[人形测试 L0–L5](../wiki/concepts/humanoid-testing-workflow.md) 与 [接触力控制概念](../wiki/concepts/contact-dynamics.md)。
+
+## Stage 4 完整项目与作品集交付（9–12 月：单任务闭环）
+
+- **目标**：围绕抓取、插孔、搬运或单腿/双足姿态稳定等**单一完整任务**收口，并沉淀为招聘方可直接审查的可复现作品集。
+- **核心动作**：遵循下文「作品集：招聘方真正看的」与「三条现实策略」，公开参数版本、BOM、失败与改版对比、测试数据摘要及演示视频。
 
 ### 作品集：招聘方真正看的
 
@@ -131,24 +141,24 @@ flowchart LR
 ## 局限与风险
 
 - **技术路线未收敛**：旋转/直线关节、传感器布置、灵巧手、控制架构各家不同——学 **评价指标与底层原理**，勿把单一产品当唯一答案。
-- **样机 ≠ 量产**：能走不等于能造一千台；制造侧见 [量产工程能力](../concepts/humanoid-mass-production-engineering.md)。
+- **样机 ≠ 量产**：能走不等于能造一千台；制造侧见 [量产工程能力](../wiki/concepts/humanoid-mass-production-engineering.md)。
 - **跨学科沟通成本**：机械需懂电气限位，软件需懂安全与延迟，测试需懂系统边界。
 - **现场比例可能高**：场景验证、出差、夜间测试、频繁改版——入职前确认项目阶段与出差安排。
 - **不适合第一切口**：只学大模型 API、只做外观、只买设备不做闭环、追逐未验证市场数字。
 
 ## 关联页面
 
-- [运动控制主路线](../../roadmap/motion-control.md) — 运控算法工程师互补路线
-- [人形机器人量产工程能力](../concepts/humanoid-mass-production-engineering.md) — 制造/良率/CPK 姊妹页（同作者线）
-- [Humanoid Hardware 101 技术地图](../overview/humanoid-hardware-101-technology-map.md) — 六/七类子系统全景
-- [depth-humanoid-hardware-design](../../roadmap/depth-humanoid-hardware-design.md) — 整机硬件 Stage 0–6 纵深
-- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md) — 平台与部件选型
+- [运动控制主路线](motion-control.md) — 运控算法工程师互补路线
+- [人形机器人量产工程能力](../wiki/concepts/humanoid-mass-production-engineering.md) — 制造/良率/CPK 姊妹页（同作者线）
+- [Humanoid Hardware 101 技术地图](../wiki/overview/humanoid-hardware-101-technology-map.md) — 六/七类子系统全景
+- [depth-humanoid-hardware-design](depth-humanoid-hardware-design.md) — 整机硬件 Stage 0–6 纵深
+- [Query：人形机器人硬件怎么选](../wiki/queries/humanoid-hardware-selection.md) — 平台与部件选型
 
 ## 参考来源
 
-- [wechat_zanehub_humanoid_career_entry_for_generalists.md（仓库内归档）](../../sources/blogs/wechat_zanehub_humanoid_career_entry_for_generalists.md) — Zane Hub 公众号：<https://mp.weixin.qq.com/s/poovGbdpyDUCEcU9j_93iw>
+- [wechat_zanehub_humanoid_career_entry_for_generalists.md（仓库内归档）](../sources/blogs/wechat_zanehub_humanoid_career_entry_for_generalists.md) — Zane Hub 公众号：<https://mp.weixin.qq.com/s/poovGbdpyDUCEcU9j_93iw>
 
 ## 推荐继续阅读
 
-- [motion-control 主路线](../../roadmap/motion-control.md) — 若后续转向运控算法工程师
-- [Humanoid Hardware 101 原始长文编译](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — 部件级 BOM 与系统分解背景
+- [motion-control 主路线](motion-control.md) — 若后续转向运控算法工程师
+- [Humanoid Hardware 101 原始长文编译](../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — 部件级 BOM 与系统分解背景

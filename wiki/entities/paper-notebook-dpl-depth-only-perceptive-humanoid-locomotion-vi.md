@@ -21,7 +21,7 @@ related:
   - ./tienkung-humanoid-open-source.md
   - ./isaac-gym-isaac-lab.md
   - ./paper-ame-attention-based-map-encoding.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-solo.md
 sources:
   - ../../sources/papers/dpl_arxiv_2510_07152.md
@@ -219,5 +219,5 @@ $$
 - 论文 HTML：<https://arxiv.org/html/2510.07152>
 - 论文 PDF：<https://arxiv.org/pdf/2510.07152>
 - [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) — G1 多向深度 + 载荷对照
-- [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 人形深度跑酷技能链
+- [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) — 人形深度跑酷技能链
 - [AME-2](./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 神经高程映射 + Teacher–Student 对照

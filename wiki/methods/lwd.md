@@ -5,7 +5,7 @@ status: complete
 updated: 2026-09-15
 related:
   - ./vla.md
-  - ./π0-policy.md
+  - ./pi0-policy.md
   - ./reinforcement-learning.md
   - ./policy-optimization.md
   - ../concepts/foundation-policy.md
@@ -75,7 +75,7 @@ LWD 在车队级 RL 上面对两个具体困难，并各自给出一个组件作
 
 ### 2. QAM — Q-learning with Adjoint Matching
 
-**问题**：现代 VLA 普遍使用 flow-matching / diffusion 这类**多步生成式动作头**（[π₀](./π0-policy.md)、[Diffusion Policy](./diffusion-policy.md) 等）。这类策略的动作 likelihood 不好算，直接对整个生成过程做 critic-gradient 反向传播也不稳定，让经典 likelihood-based RL 算法很难直接套上。
+**问题**：现代 VLA 普遍使用 flow-matching / diffusion 这类**多步生成式动作头**（[π₀](./pi0-policy.md)、[Diffusion Policy](./diffusion-policy.md) 等）。这类策略的动作 likelihood 不好算，直接对整个生成过程做 critic-gradient 反向传播也不稳定，让经典 likelihood-based RL 算法很难直接套上。
 
 **做法**：
 
@@ -123,7 +123,7 @@ DIVL 与 QAM 一起实现了**策略评估（value learning）与策略抽取（
 ## 关联页面
 
 - [VLA (Vision-Language-Action)](./vla.md) — LWD 改进的对象就是一个 VLA generalist 策略
-- [π₀ (Pi-zero) 策略模型](./π0-policy.md) — Flow-matching 动作头的代表，QAM 正是为这类策略设计
+- [π₀ (Pi-zero) 策略模型](./pi0-policy.md) — Flow-matching 动作头的代表，QAM 正是为这类策略设计
 - [Foundation Policy](../concepts/foundation-policy.md) — LWD 是基础策略"持续后训练"阶段的具体方案
 - [Data Flywheel（数据飞轮）](../concepts/data-flywheel.md) — LWD 对应的是"RL 版本"的数据飞轮
 - [Online RL vs Offline RL](../comparisons/online-vs-offline-rl.md) — LWD 的 offline-to-online 定位

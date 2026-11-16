@@ -6,7 +6,7 @@ updated: 2026-09-15
 arxiv: "2607.26055"
 code: https://github.com/pi-r2-flow/pi-r2-flow
 related:
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./isaac-gr00t.md
   - ../methods/action-chunking.md
   - ../methods/vla.md
@@ -160,7 +160,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 基座论文
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) — 基座论文
 - [Isaac GR00T](./isaac-gr00t.md) — 官方工程栈
 - [Action Chunking](../methods/action-chunking.md) — chunk 与延迟缓冲
 - [VLA](../methods/vla.md) — 通才策略层

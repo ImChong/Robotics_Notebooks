@@ -33,7 +33,7 @@ Caltech AMBER 官方站点：展示 **双层感知 locomotion**（flow matching 
 
 ## 为何值得保留
 
-- **非 PDF 证据：** 户外楼梯/箱跳/跑等多技能单策略对视频，便于与 [RPL](../../wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[ETH 扩散+跟踪](../../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) 对照。
+- **非 PDF 证据：** 户外楼梯/箱跳/跑等多技能单策略对视频，便于与 [RPL](../../wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[ETH 扩散+跟踪](../../wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) 对照。
 - **开源状态锚点：** HTML TODO 便于 lint 跟进代码发布。
 
 ## 对 wiki 的映射

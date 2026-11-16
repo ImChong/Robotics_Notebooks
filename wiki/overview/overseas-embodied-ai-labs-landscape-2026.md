@@ -21,7 +21,7 @@ related:
   - ../entities/skild-ai.md
   - ../methods/diffusion-policy.md
   - ../methods/vla.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../methods/pi07-policy.md
   - ../methods/sac.md
   - ../concepts/sim2real.md
@@ -83,7 +83,7 @@ flowchart LR
 |--------|----------|----------|----------|
 | SVL | Stanford | 李飞飞；World Labs 大型世界模型 | [世界模型相关地图](./robot-world-models-training-loop-taxonomy.md) |
 | REAL Lab | Stanford | 宋舒然；Diffusion Policy、UMI；2026 十四篇脉络见技术地图 | [Diffusion Policy](../methods/diffusion-policy.md)、[REALab 14 篇技术地图](./realab-14-papers-technology-map-2026.md)、[manipulation](../tasks/manipulation.md) |
-| IRIS Lab | Stanford | Chelsea Finn；π（Physical Intelligence）；ALOHA / Mobile ALOHA | [ALOHA](../entities/aloha.md)、[π₀](../methods/π0-policy.md)、[π₀.7](../methods/pi07-policy.md)、[VLA 复现谱系](./vla-open-source-repro-landscape-2025.md) |
+| IRIS Lab | Stanford | Chelsea Finn；π（Physical Intelligence）；ALOHA / Mobile ALOHA | [ALOHA](../entities/aloha.md)、[π₀](../methods/pi0-policy.md)、[π₀.7](../methods/pi07-policy.md)、[VLA 复现谱系](./vla-open-source-repro-landscape-2025.md) |
 | CSAIL / Improbable AI | MIT | Daniela Rus；Pulkit Agrawal / DribbleBot | [locomotion](../tasks/locomotion.md) |
 | Robotics Institute | CMU | 操作 / 足式 / 学习；[Skild AI](../entities/skild-ai.md) 等衍生 | [市面平台纵览](./notable-commercial-robot-platforms.md) |
 | BAIR / RLL / RAIL | UC Berkeley | Abbeel / Levine；SAC、HER、BridgeData；Covariant | [SAC](../methods/sac.md)、[VLA](../methods/vla.md) |
@@ -119,7 +119,7 @@ flowchart LR
 
 ## 工程实践：三条常用路径
 
-1. **学操作策略**：Stanford REAL / IRIS → [Diffusion Policy](../methods/diffusion-policy.md) + [ALOHA](../entities/aloha.md) + [π 系](../methods/π0-policy.md)。
+1. **学操作策略**：Stanford REAL / IRIS → [Diffusion Policy](../methods/diffusion-policy.md) + [ALOHA](../entities/aloha.md) + [π 系](../methods/pi0-policy.md)。
 2. **学腿足 / 工业四足**：ETH RSL → [ANYmal](../entities/anymal.md)；对照 [Boston Dynamics](../entities/boston-dynamics.md) 商业谱系。
 3. **学开源复现入口**：Berkeley RAIL / π openpi / UT Austin robosuite → [VLA 开源复现谱系](./vla-open-source-repro-landscape-2025.md)。
 
@@ -140,7 +140,7 @@ flowchart LR
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [ALOHA](../entities/aloha.md)
 - [ANYmal](../entities/anymal.md)
-- [π₀ Policy](../methods/π0-policy.md)
+- [π₀ Policy](../methods/pi0-policy.md)
 
 ## 参考来源
 

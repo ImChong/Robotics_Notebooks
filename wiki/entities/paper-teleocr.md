@@ -12,7 +12,7 @@ updated: 2026-09-30
 arxiv: "2608.12898"
 related:
   - ../methods/auto-labeling-pipelines.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../methods/vla.md
 sources:
   - ../../sources/papers/teleocr_arxiv_2608_12898.md
@@ -44,7 +44,7 @@ summary: "TeleOCR（arXiv:2608.12898，TeleAI）：~1.2B 文档专用 VLM，统�
 
 - **统一数字/拍摄场景：** 多数专用 OCR-VLM 只优化其一；Wild-OmniDocBench / PureDocBench **真实退化** 轨上 TeleOCR 仍领先同量级 **MinerU / PaddleOCR-VL**。
 - **轻量可部署：** **1.2B** 在 OmniDocBench v1.6 **Overall 96.87**，超过多数 **3B–4B** 专用模型与部分 **通用大 VLM**。
-- **机器人/知识库侧读法：** 设备手册、SOP PDF、现场拍照页的可机器读结构化，是 [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md) 与 [LLM Wiki 资料 ingest](../references/llm-wiki-karpathy.md) 的 **上游 OCR**，不等同于轨迹语义标注。
+- **机器人/知识库侧读法：** 设备手册、SOP PDF、现场拍照页的可机器读结构化，是 [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md) 与 [LLM Wiki 资料 ingest](../concepts/llm-wiki-karpathy.md) 的 **上游 OCR**，不等同于轨迹语义标注。
 - **工程闭环完整：** [GitHub](https://github.com/caipeng328/TeleOCR) 推理栈 + [HF 权重](https://huggingface.co/StarDoc-AI/TeleOCR) + [TeleAI 在线 demo](https://www.teleai.com.cn/docparse/documentParsing)。
 
 ## 核心信息
@@ -176,7 +176,7 @@ sequenceDiagram
 - [Unlimited OCR Works 2](./unlimited-ocr-2.md)（长文档跨页解析）
 
 - [Auto-labeling Pipelines](../methods/auto-labeling-pipelines.md)
-- [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md)
+- [LLM Wiki（Karpathy）](../concepts/llm-wiki-karpathy.md)
 - [VLA](../methods/vla.md)（VLM 上游能力谱系）
 
 ## 参考来源

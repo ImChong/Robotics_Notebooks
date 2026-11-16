@@ -11,7 +11,7 @@ related:
   - ../overview/motion-cerebellum-category-03-data-pipeline.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./holosoma.md
   - ./paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
   - ../methods/dynaretarget-sbto-motion-retargeting.md
@@ -41,7 +41,7 @@ sources:
 
 **OmniRetarget**（*OmniRetarget: Interaction-Preserving Data Generation for Humanoid Whole-Body Loco-Manipulation and Scene Interaction*，ICRA 2026，arXiv:[2509.26633](https://arxiv.org/abs/2509.26633)，[项目页](https://omniretarget.github.io/)）是 Amazon FAR 团队的**交互保留人形运动重定向与数据生成**引擎：用 **interaction mesh** 显式建模人/机器人与物体、地形之间的空间关系，在**硬运动学约束**下最小化 Laplacian 形变能，生成可下游 RL 跟踪的高质量参考，并能把**单条人类演示**增广到多种 embodiment、地形与物体配置。代码与训练管线以 **[holosoma](./holosoma.md)** 开源；公开重定向轨迹见 **[OmniRetarget 数据集](./omniretarget-dataset.md)**。
 
-本页在 [42 篇 humanoid RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中编号 **03/42**（**01 数据 · 重定向 · 遥操作**）。下游应用示例：[Perceptive Humanoid Parkour（PHP）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 用其构建跑酷**原子技能库**。
+本页在 [42 篇 humanoid RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中编号 **03/42**（**01 数据 · 重定向 · 遥操作**）。下游应用示例：[Perceptive Humanoid Parkour（PHP）](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) 用其构建跑酷**原子技能库**。
 
 ## 一句话定义
 
@@ -192,7 +192,7 @@ sequenceDiagram
 
 - 代码/部署：[holosoma](./holosoma.md)
 - 公开轨迹：[OmniRetarget 数据集](./omniretarget-dataset.md)
-- 下游跑酷：[PHP（2602.15827）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- 下游跑酷：[PHP（2602.15827）](./paper-hrl-stack-22-perceptive-humanoid-parkour.md)
 - Dynamic refinement：[DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md) 以本库 kinematic 参考为 SBTO 输入（285 motions · refinement **76.8%**）
 - Dynamic refinement（多重打靶）：[Shooting for Contact / DSMS](./paper-shooting-for-contact.md) — 论文 Table II 以 OmniRetarget 为运动学基线对照（super-hero backflip 落地 9.3% vs DSMS 98.7%）
 - 下游数据消费：[EgoHTR](./paper-egohtr.md) 项目页声明 Human2Robot 场景感知 retarget 基于 OmniRetarget / GMR / CoACD
@@ -226,7 +226,7 @@ sequenceDiagram
 ## 关联
 
 - 同族工程与数据：[holosoma](./holosoma.md)、[OmniRetarget 数据集](./omniretarget-dataset.md)
-- 下游与对照：[PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[HOI-Retarget](./paper-hoi-retarget.md)、[UMR](./paper-umr-unified-motion-retargeting.md)
+- 下游与对照：[PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md)、[HOI-Retarget](./paper-hoi-retarget.md)、[UMR](./paper-umr-unified-motion-retargeting.md)
 - 问题域：[Motion Retargeting](../concepts/motion-retargeting.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 
 ## 参考来源

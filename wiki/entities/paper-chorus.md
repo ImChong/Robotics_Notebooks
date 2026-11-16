@@ -7,7 +7,7 @@ arxiv: "2606.12352"
 venue: "CoRL 2026"
 related:
   - ../methods/vla.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../tasks/manipulation.md
   - ../concepts/humanoid-multi-robot-coordination.md
   - ../comparisons/ctde-vs-decentralized-marl.md
@@ -146,7 +146,7 @@ flowchart TB
 ## 关联页面
 
 - [VLA](../methods/vla.md)
-- [π0 Policy](../methods/π0-policy.md)
+- [π0 Policy](../methods/pi0-policy.md)
 - [Manipulation](../tasks/manipulation.md)
 - [人形多机协调](../concepts/humanoid-multi-robot-coordination.md)
 - [π₀.₅](./paper-pi05-open-world-vla.md)

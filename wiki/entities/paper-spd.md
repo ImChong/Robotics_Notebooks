@@ -28,7 +28,7 @@ related:
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ./paper-teledexter.md
   - ./paper-why-action-chunking-improves-bc.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ./paper-pi05-open-world-vla.md
 sources:
   - ../../sources/papers/spd_corl_2026.md
@@ -176,7 +176,7 @@ flowchart TB
 - [数据手套 vs 视觉遥操作](../comparisons/data-gloves-vs-vision-teleop.md) — 仿真用头显手跟踪、真机改 Manus
 - [TeleDexter](./paper-teledexter.md) — 同系 Sharpa Wave 的真机采数路线
 - [Why Action Chunking Improves BC](./paper-why-action-chunking-improves-bc.md) — chunk 机制对照
-- [π₀](../methods/π0-policy.md) / [π0.5](./paper-pi05-open-world-vla.md) — 单帧长 chunk VLA 对照
+- [π₀](../methods/pi0-policy.md) / [π0.5](./paper-pi05-open-world-vla.md) — 单帧长 chunk VLA 对照
 
 ## 参考来源
 

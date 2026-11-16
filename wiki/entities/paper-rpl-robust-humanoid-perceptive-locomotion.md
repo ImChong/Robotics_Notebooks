@@ -32,7 +32,7 @@ related:
   - ../methods/dagger.md
   - ./unitree-g1.md
   - ./isaac-gym-isaac-lab.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-pilot-perceptive-loco-manipulation.md
   - ./paper-faststair-humanoid-stair-ascent.md
   - ./paper-ladderman-humanoid-perceptive-ladder-climbing.md
@@ -236,7 +236,7 @@ sequenceDiagram
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 深度/高程感知闭环
 - [Privileged Training](../concepts/privileged-training.md) — 高程图专家 → 深度学生
 - [DAgger](../methods/dagger.md) — Stage 2 蒸馏算法
-- [PHP（Perceptive Humanoid Parkour）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 同系 Amazon FAR 深度跑酷对照
+- [PHP（Perceptive Humanoid Parkour）](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) — 同系 Amazon FAR 深度跑酷对照
 - [DPL](./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md) — 单深度学习高程重建对照（无外定位；TienKung Ultra）
 - [LadderMan](./paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 同系 Amazon FAR 稀疏踏棍攀爬与梯上操作
 - [EgoHTR](./paper-egohtr.md) — rough-terrain 人演示 → 高度图条件 mimic（数据缺口对照；待开放）
@@ -259,4 +259,4 @@ sequenceDiagram
 - 项目页（演示视频）：<https://rpl-humanoid.github.io/>
 - [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) — 统一全身 loco-manipulation VLA（README 引用 RPL 为相关工作）
 - [PILOT](./paper-pilot-perceptive-loco-manipulation.md) — 单阶段 LiDAR 感知全身 LLC 对照
-- [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 同平台深度感知跑酷技能链
+- [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) — 同平台深度感知跑酷技能链

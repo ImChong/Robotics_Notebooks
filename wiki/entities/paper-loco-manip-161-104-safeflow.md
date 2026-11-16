@@ -12,7 +12,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../methods/reinforcement-learning.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ./paper-loco-manip-161-022-textop.md
   - ./unitree-g1.md
 sources:
@@ -154,7 +154,7 @@ flowchart TB
 - 相对 TextOp，**关节越界与成功率** 的跃升主要来自 **生成期物理引导 + Reflow**，而非仅靠更大跟踪增益。
 - **67.7 Hz 全栈** 说明安全门可负担——Stage 2 的 \(\mathcal{R}\) 检测是主要延迟来源，但仍是毫秒级。
 - OOD 场景下 **站立 fallback** 是产品化必需模式；无安全门的流式生成在真机上不可接受。
-- 与 [π₀ Policy](../methods/π0-policy.md) 等同属流匹配动作生成族，但 SafeFlow 聚焦 **人形全身运动学参考 + 跟踪栈**，而非桌面操作 chunk。
+- 与 [π₀ Policy](../methods/pi0-policy.md) 等同属流匹配动作生成族，但 SafeFlow 聚焦 **人形全身运动学参考 + 跟踪栈**，而非桌面操作 chunk。
 - 截至入库日 **未开源**；工程复现需对齐 TextOp 流式接口、VAE 潜空间流训练与 G1 RL 跟踪器。
 - 横向对照见 [分类 04 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md) 与 [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)。
 
@@ -171,7 +171,7 @@ flowchart TB
 - 分类 hub：[loco-manip-161-category-04-generative-language-trajectory.md](../overview/loco-manip-161-category-04-generative-language-trajectory.md)
 - 基线对照：[TextOp](./paper-loco-manip-161-022-textop.md)
 - 硬件平台：[Unitree G1](./unitree-g1.md)
-- 流匹配方法族：[π₀ Policy](../methods/π0-policy.md)
+- 流匹配方法族：[π₀ Policy](../methods/pi0-policy.md)
 
 ## 参考来源
 

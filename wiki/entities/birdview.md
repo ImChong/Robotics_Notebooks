@@ -19,7 +19,7 @@ related:
   - ./mattpocock-skills.md
   - ./graphify.md
   - ../concepts/agentic-coding-software-fundamentals.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
 sources:
@@ -150,7 +150,7 @@ sequenceDiagram
 - [LearnPrompt](learnprompt.md) — 中文 Agent / Skills 教程生态
 - [Graphify](graphify.md) — 自动知识图构图
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 取舍语言框架
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 本库维护范式
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 本库维护范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 维护规范
 
 ## 参考来源

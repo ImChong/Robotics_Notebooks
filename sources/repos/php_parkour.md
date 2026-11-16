@@ -53,6 +53,6 @@
 
 ## 对 wiki 的映射
 
-- 统一补充现有 [PHP 实体](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)，不创建第二个项目节点。
+- 统一补充现有 [PHP 实体](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)，不创建第二个项目节点。
 - 关联 [Holosoma](../../wiki/entities/holosoma.md)、[DAgger](../../wiki/methods/dagger.md) 与 [楼梯 / 障碍感知 locomotion](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)。
 - 配套归档：[项目页](../sites/php-parkour-github-io.md)、[论文](../papers/php_parkour_arxiv_2602_15827.md)。

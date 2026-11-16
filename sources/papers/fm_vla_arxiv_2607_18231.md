@@ -46,7 +46,7 @@
   - **注入：** `[noisy actions ‖ Z_f (8) ‖ z_s (1)]` 挂在 action expert **后缀**，保留预训练 RoPE 位置。
 - **对 wiki 的映射：**
   - [FM-VLA](../../wiki/entities/paper-fm-vla.md) — 流程总览与工程表。
-  - [π₀.₇ Policy](../../wiki/methods/pi07-policy.md) / [π₀ Policy](../../wiki/methods/π0-policy.md) — π 系骨干。
+  - [π₀.₇ Policy](../../wiki/methods/pi07-policy.md) / [π₀ Policy](../../wiki/methods/pi0-policy.md) — π 系骨干。
 
 ### 3) 真机三项任务与主结果
 

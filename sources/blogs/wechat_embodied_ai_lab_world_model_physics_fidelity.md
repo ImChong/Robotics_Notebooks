@@ -73,7 +73,7 @@
   - [RynnWorld-4D](../../wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md)
   - [MECo-WAM](../../wiki/entities/paper-meco-wam-4d-geometry-cotraining.md)
   - [VT-WAM](../../wiki/entities/paper-vt-wam-visuotactile-contact-rich.md)
-  - [Ego-VCP](../../wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md)（文首对照）
+  - [Ego-VCP](../../wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md)（文首对照）
   - [MotionWAM](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)（文首对照）
   - [Dexterous DWM](../../wiki/methods/dwm.md)（仅作命名消歧，非本文 DWM）
 - **新建独立论文实体：** World Models、PlaNet、TD-MPC2、UniSim、IRASim、V-JEPA 2、WorldWeaver、DWM-Separating、PhysCoRe、Imagined Rollouts、KineBench、Thinking in Video

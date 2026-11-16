@@ -8,8 +8,8 @@ code: https://github.com/XiongyiCai/Human0
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
   - ../overview/humanoid-paper-notebooks-index.md
-  - ../methods/π0-policy.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ../methods/pi0-policy.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./paper-notebook-humanoid-policy-human-policy.md
   - ../concepts/data-flywheel.md
   - ./paper-egowam-egocentric-human-wam-co-training.md
@@ -133,7 +133,7 @@ In-N-On 要：一套**可扩展配方**（野外 + 任务对齐）+ 数据集 + 
 | 工作 | 数据配方 | 与 In-N-On 的差异 |
 |------|------|------|
 | [HAT](./paper-notebook-humanoid-policy-human-policy.md) | 仅任务对齐的 PH2D | 专才策略、不能做语言条件预训练；In-N-On 再加 1000+ 小时野外数据做基座 |
-| [π₀](../methods/π0-policy.md) / [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) | 机器人数据为主 | 多物体 O.O.D. 与汉堡组装明显落后，未见指令跟随弱 |
+| [π₀](../methods/pi0-policy.md) / [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) | 机器人数据为主 | 多物体 O.O.D. 与汉堡组装明显落后，未见指令跟随弱 |
 | [EgoWAM](./paper-egowam-egocentric-human-wam-co-training.md) | 野外第一视角人数据 + 世界–动作模型 | 同样利用野外人数据，但用世界模型而非人体中心动作表示 |
 | [EgoDex](./paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md) | 大规模第一视角灵巧操作数据 | 提供数据；In-N-On 回答的是「野外 vs 任务对齐」如何组合使用 |
 
@@ -159,8 +159,8 @@ In-N-On 要：一套**可扩展配方**（野外 + 任务对齐）+ 数据集 + 
 
 - 分类父节点：[paper-notebook-category-06-manipulation](../overview/paper-notebook-category-06-manipulation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
-- 初始化权重与对比基线 π₀：[π0-policy](../methods/π0-policy.md)
-- 对比基线 GR00T N1：[paper-hrl-stack-34-gr00t_n1](./paper-hrl-stack-34-gr00t_n1.md)
+- 初始化权重与对比基线 π₀：[π0-policy](../methods/pi0-policy.md)
+- 对比基线 GR00T N1：[paper-hrl-stack-34-gr00t_n1](./paper-hrl-stack-34-gr00t-n1.md)
 - 同组前作 HAT / PH2D：[paper-notebook-humanoid-policy-human-policy](./paper-notebook-humanoid-policy-human-policy.md)
 - 人类数据作为可扩展数据源：[data-flywheel](../concepts/data-flywheel.md)
 - 野外第一视角人数据协同训练的另一路线：[paper-egowam-egocentric-human-wam-co-training](./paper-egowam-egocentric-human-wam-co-training.md)

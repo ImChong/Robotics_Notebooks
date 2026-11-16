@@ -31,7 +31,7 @@
 ## 对 wiki 的映射
 
 - [Parkour MJLab 独立代码库节点](../../wiki/entities/parkour-mjlab.md)
-- [PHP 论文与官方实现实体](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- [PHP 论文与官方实现实体](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md)
 - [PHP 官方仓库归档](./php_parkour.md)
 
 ## 参考入口

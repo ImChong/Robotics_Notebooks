@@ -17,7 +17,7 @@ related:
   - ./cangjie-skill.md
   - ../concepts/ai-auto-research.md
   - ../concepts/recursive-self-improvement.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../methods/muon.md
   - ./superpowers-obra.md
   - ./hermes-agent.md
@@ -50,7 +50,7 @@ summary: "karpathy/autoresearch 把单 GPU nanochat 训练收成三文件闭环�
 ## 为什么重要（对本知识库读者）
 
 - **S3 可触摸样本：** [AI Auto-Research](../concepts/ai-auto-research.md) 综述强调「研究代码弱于 SWE、验证慢于生成」；autoresearch 用 **单文件编辑面 + 固定 5 分钟 eval** 把风险框在可审 diff 与可比实验内，是 **Coding & Experimentation** 阶段的教科书级最小实现。
-- **人机分工清晰：** 人类不写 `train.py`，而迭代 **`program.md`** — 与 [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md) 的「把组织知识写成 markdown 契约」、[Superpowers](./superpowers-obra.md) 的 `SKILL.md` 同构，但目标域是 **超参/架构搜索** 而非软件交付 TDD。
+- **人机分工清晰：** 人类不写 `train.py`，而迭代 **`program.md`** — 与 [LLM Wiki（Karpathy）](../concepts/llm-wiki-karpathy.md) 的「把组织知识写成 markdown 契约」、[Superpowers](./superpowers-obra.md) 的 `SKILL.md` 同构，但目标域是 **超参/架构搜索** 而非软件交付 TDD。
 - **与机器人 ML 的间接关系：** 本仓训练 LLM，但 **固定预算实验环、单一验证指标、代理改训练脚本** 的结构可迁移到 sim 中策略训练、小模型 ablation 或 benchmark 复现 — 前提是环境能提供 **自动 reset + 可比 metric**（参见 [ENPIRE](../methods/enpire.md) 的真机 autoresearch 叙事）。
 - **Skill 域映射：** [Darwin Skill](./darwin-skill.md) 将同一 **keep/revert 棘轮** 映射到 `SKILL.md` 优化（9 维评分 + 独立评委 + 人在回路），与 [Nuwa](./nuwa-skill.md) / [Cangjie](./cangjie-skill.md) 的「造 skill」形成闭环。
 
@@ -103,7 +103,7 @@ flowchart LR
 
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 生命周期框架；本仓落 **S3** 与 **Explore→Execute→Verify** 分层。
 - [Andrej Karpathy](./andrej-karpathy.md) — 作者；nanochat / Zero to Hero 教育栈的实验自动化延伸。
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — markdown 契约驱动的人机协作。
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — markdown 契约驱动的人机协作。
 - [Superpowers（obra）](./superpowers-obra.md) — 另一类 agent 技能与交付纪律。
 - [Hermes Agent](./hermes-agent.md) — 常驻代理运行时；可与 autoresearch 组合为「长驻代理 + 夜间实验环」。
 - [ScienceDiscovery](./sciencediscovery.md) — 开放文献/沙箱工作台；对照本仓「锁 `train.py` + 单一 val_bpb」。
@@ -122,7 +122,7 @@ flowchart LR
 - [AI Auto-Research](../concepts/ai-auto-research.md)
 - [递归自改进](../concepts/recursive-self-improvement.md) — 实验室内部「实现已代理化」；本仓是固定 metric 的最小闭环，不是 RSI
 - [Andrej Karpathy](./andrej-karpathy.md)
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md)
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md)
 - [Superpowers（obra）](./superpowers-obra.md)
 - [Hermes Agent](./hermes-agent.md)
 - [ScienceDiscovery](./sciencediscovery.md) — 开放文献/沙箱工作台对照

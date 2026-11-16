@@ -51,7 +51,7 @@
 - **对 wiki 的映射：**
   - [Open-TeleVision](../../wiki/entities/paper-loco-manip-161-131-open-television.md)
   - [HumanPlus](../../wiki/entities/paper-loco-manip-161-012-humanplus.md)
-  - [H2O / human-to-humanoid](../../wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md)
+  - [H2O / human-to-humanoid](../../wiki/entities/paper-hrl-stack-07-learning-human-to-humanoid-real-time.md)
   - [模仿学习](../../wiki/methods/imitation-learning.md)
 
 ### 4) 开源与复现边界（步骤 2.5）
@@ -65,7 +65,7 @@
 ## 对 wiki 的映射（汇总）
 
 - 沉淀实体页：[`wiki/entities/paper-immersive-social-vr-llm-humanoids.md`](../../wiki/entities/paper-immersive-social-vr-llm-humanoids.md)
-- 互链参考：[Teleoperation](../../wiki/tasks/teleoperation.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Open-TeleVision](../../wiki/entities/paper-loco-manip-161-131-open-television.md)、[HumanPlus](../../wiki/entities/paper-loco-manip-161-012-humanplus.md)、[H2O](../../wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md)、[Teleopit](../../wiki/entities/paper-teleopit.md)、[模仿学习](../../wiki/methods/imitation-learning.md)、[宇树](../../wiki/entities/unitree.md)
+- 互链参考：[Teleoperation](../../wiki/tasks/teleoperation.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Open-TeleVision](../../wiki/entities/paper-loco-manip-161-131-open-television.md)、[HumanPlus](../../wiki/entities/paper-loco-manip-161-012-humanplus.md)、[H2O](../../wiki/entities/paper-hrl-stack-07-learning-human-to-humanoid-real-time.md)、[Teleopit](../../wiki/entities/paper-teleopit.md)、[模仿学习](../../wiki/methods/imitation-learning.md)、[宇树](../../wiki/entities/unitree.md)
 
 ## 当前提炼状态
 

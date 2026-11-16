@@ -7,7 +7,7 @@ project_id: yhx1203-parkour-mjlab
 code: https://github.com/yhx1203/parkour_mjlab
 summary: "Parkour MJLab 是基于 MJLab 的 G1 / Go2 强化学习代码库，包含 PHP teacher/student 训练、策略回放与 MuJoCo Sim2Sim。"
 related:
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./unitree-g1.md
   - ../concepts/sim2real.md
   - ../tasks/locomotion.md
@@ -52,7 +52,7 @@ README 中的迭代次数和 `model_23000.pt` 文件名来自示例命令，不�
 
 ## 与 PHP 官方项目的关系
 
-此仓库致谢并引用 [Amazon FAR 的 PHP 官方实现](https://github.com/amazon-far/php_parkour)，并复用官方发布的训练动作数据，但其训练和 MuJoCo Sim2Sim 入口由此仓库独立提供。因此本节点描述的是一个覆盖多个任务的 MJLab 代码库；论文方法和官方实现仍以 [PHP 主实体](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 为准。
+此仓库致谢并引用 [Amazon FAR 的 PHP 官方实现](https://github.com/amazon-far/php_parkour)，并复用官方发布的训练动作数据，但其训练和 MuJoCo Sim2Sim 入口由此仓库独立提供。因此本节点描述的是一个覆盖多个任务的 MJLab 代码库；论文方法和官方实现仍以 [PHP 主实体](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) 为准。
 
 ## 源码运行时序图
 
@@ -106,6 +106,6 @@ sequenceDiagram
 
 ## 推荐继续阅读
 
-- [PHP 论文与方法分析](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- [PHP 论文与方法分析](./paper-hrl-stack-22-perceptive-humanoid-parkour.md)
 - [PHP 官方仓库](https://github.com/amazon-far/php_parkour)
 - [MJLab](https://github.com/mujocolab/mjlab)

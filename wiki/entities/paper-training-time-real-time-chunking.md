@@ -12,7 +12,7 @@ updated: 2026-11-14
 arxiv: "2512.05964"
 related:
   - ../methods/action-chunking.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ./paper-real-time-chunking.md
   - ./paper-rcl-2511-14759-0-6-a-vla-that-learns-from-experience.md
   - ./paper-remac.md

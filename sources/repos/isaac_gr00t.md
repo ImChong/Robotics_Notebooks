@@ -74,7 +74,7 @@
 ## 对 wiki 的映射
 
 1. **[Isaac GR00T（开发平台）](../../wiki/entities/isaac-gr00t.md)** — 本仓作为平台/engineering 实体页主来源
-2. **[GR00T N1（论文实体）](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)** — arXiv:2503.14734 机制与 N1 论文评测；代码入口即本仓
+2. **[GR00T N1（论文实体）](../../wiki/entities/paper-hrl-stack-34-gr00t-n1.md)** — arXiv:2503.14734 机制与 N1 论文评测；代码入口即本仓
 3. **[GR00T-WholeBodyControl](../../wiki/entities/gr00t-wholebodycontrol.md)** — G1 全身 latent 解码与 SONIC WBC
 4. **[LeRobot](../../wiki/entities/lerobot.md)** — 数据格式与 `groot` policy 互操作
 5. **[Foundation Policy / VLA](../../wiki/concepts/foundation-policy.md)** — 通才基础策略概念层

@@ -17,7 +17,7 @@ related:
   - ./unitree-g1.md
   - ./lafan1-dataset.md
   - ./paper-hiking-in-the-wild.md
-  - ./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md
+  - ./paper-amp-survey-07-adversarial-locomotion-and-motion-im.md
   - ./paper-unified-walk-run-recovery-sdamp.md
   - ./paper-explicit-stair-geometry-humanoid-locomotion.md
   - ./paper-cmoe.md
@@ -215,7 +215,7 @@ sequenceDiagram
 
 - AMP 纵深总览：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#08/19）
 - 方法基线：[amp-reward.md](../methods/amp-reward.md)
-- 同段姊妹篇：[ALMI #07](./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)（上下半身）、[Hiking in the Wild #09](./paper-hiking-in-the-wild.md)（感知跑酷）、[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)（状态门控双判别器）
+- 同段姊妹篇：[ALMI #07](./paper-amp-survey-07-adversarial-locomotion-and-motion-im.md)（上下半身）、[Hiking in the Wild #09](./paper-hiking-in-the-wild.md)（感知跑酷）、[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)（状态门控双判别器）
 - 任务/概念：[locomotion.md](../tasks/locomotion.md)、[terrain-adaptation.md](../concepts/terrain-adaptation.md)
 - 平台与数据：[unitree-g1.md](./unitree-g1.md)、[lafan1-dataset.md](./lafan1-dataset.md)
 - 对照基线（楼梯）：[paper-explicit-stair-geometry-humanoid-locomotion.md](./paper-explicit-stair-geometry-humanoid-locomotion.md)

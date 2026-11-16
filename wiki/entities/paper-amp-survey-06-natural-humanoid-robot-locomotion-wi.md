@@ -44,7 +44,7 @@ sources:
 
 - **监督粒度对照：** [AMP #01](./paper-amp-survey-01-amp.md) 给「像不像」的**标量**；GMP 给「该往哪靠近」的**轨迹级**关节/关键点目标——策展称「不只告诉你不像，还告诉你该往哪靠近」。
 - **训练稳定性：** 先验 **离线训练、RL 阶段冻结**，避免策略–判别器共训不稳定；与 [SMP #03](../methods/smp.md) 同属「模块化先验」但机制为 **生成式参考** 而非 SDS。
-- **人形走跑段锚点：** 与 [ALMI #07](./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)（分部位对抗）、[MoRE #08](./paper-amp-survey-08-more.md)（多判别器+地形）构成「自然性从哪来」的多路线对照。
+- **人形走跑段锚点：** 与 [ALMI #07](./paper-amp-survey-07-adversarial-locomotion-and-motion-im.md)（分部位对抗）、[MoRE #08](./paper-amp-survey-08-more.md)（多判别器+地形）构成「自然性从哪来」的多路线对照。
 - **量化优势：** JFID **0.931** vs PBRS+AMP **2.088** 等（论文 Table）；MELV、JDTW/KDTW 全面优于 SaW、PBRS、HumanMimic 及 +AMP 基线。
 
 ## 流程总览
@@ -118,7 +118,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - 对抗对照：[AMP #01](./paper-amp-survey-01-amp.md)、[amp-reward.md](../methods/amp-reward.md)
-- 同段姊妹：[ALMI #07](./paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)、[MoRE #08](./paper-amp-survey-08-more.md)、[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)
+- 同段姊妹：[ALMI #07](./paper-amp-survey-07-adversarial-locomotion-and-motion-im.md)、[MoRE #08](./paper-amp-survey-08-more.md)、[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)
 - 任务：[locomotion.md](../tasks/locomotion.md)
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#06/19）
 

@@ -39,7 +39,7 @@
 
 | 你想复现什么 | 优先看 |
 |-------------|--------|
-| 通用操作策略 + π 系 | OpenPI → 本站 [π0 Policy](../../wiki/methods/π0-policy.md)、[π0.7](../../wiki/methods/pi07-policy.md) |
+| 通用操作策略 + π 系 | OpenPI → 本站 [π0 Policy](../../wiki/methods/pi0-policy.md)、[π0.7](../../wiki/methods/pi07-policy.md) |
 | 低算力 / 小模型 VLA | VLA-Adapter |
 | VLA 的 RL 后训练 | SimpleVLA-RL；系统层见 RLinf |
 | 跨机器人形态 | UniVLA |

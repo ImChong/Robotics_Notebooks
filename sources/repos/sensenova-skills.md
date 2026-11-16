@@ -37,7 +37,7 @@
 | 推荐运行时 | [`wiki/entities/hermes-agent.md`](../../wiki/entities/hermes-agent.md) |
 | 编码向技能对照 | [`wiki/entities/mattpocock-skills.md`](../../wiki/entities/mattpocock-skills.md) |
 | 外网读搜脚手架 | [`wiki/entities/agent-reach.md`](../../wiki/entities/agent-reach.md) |
-| LLM 知识编译范式 | [`wiki/references/llm-wiki-karpathy.md`](../../wiki/references/llm-wiki-karpathy.md) |
+| LLM 知识编译范式 | [`wiki/concepts/llm-wiki-karpathy.md`](../../wiki/concepts/llm-wiki-karpathy.md) |
 
 ## 与本站 sources 的其它锚点
 

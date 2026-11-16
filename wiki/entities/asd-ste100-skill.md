@@ -6,7 +6,7 @@ updated: 2026-10-03
 related:
   - ../concepts/asd-ste100.md
   - ../overview/karpathy-asd-ste100-llm-outputs.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./mattpocock-skills.md
 sources:
   - ../../sources/repos/danyuchn-asd-ste100-skill.md
@@ -126,7 +126,7 @@ sequenceDiagram
 
 - [ASD-STE100 概念页](../concepts/asd-ste100.md) — 受控语言标准及其边界
 - [Karpathy 的文章导读](../overview/karpathy-asd-ste100-llm-outputs.md) — 原文主张和表达形式选择
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 代理持续维护知识页的方法
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 代理持续维护知识页的方法
 - [Skills For Real Engineers](./mattpocock-skills.md) — 可组合编码代理技能的对照入口
 
 ## 参考来源

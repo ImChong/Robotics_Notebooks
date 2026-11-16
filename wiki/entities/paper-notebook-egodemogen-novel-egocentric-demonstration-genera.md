@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
   - ./robotwin.md
   - ../methods/generative-data-augmentation.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ./paper-rcl-2408-06072-cogvideox-text-to-video-diffusion-models-with-an.md
   - ./paper-notebook-masquerade-learning-from-in-the-wild-human-video.md
 sources:
@@ -148,7 +148,7 @@ EgoDemoGen 要：**无需多视角数据**，**生成**新视角下的配对演�
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
 - 仿真评测 RoboTwin 2.0：[robotwin](./robotwin.md)
 - 生成式数据增强：[generative-data-augmentation](../methods/generative-data-augmentation.md)
-- 真机策略 π₀：[π0-policy](../methods/π0-policy.md)
+- 真机策略 π₀：[π0-policy](../methods/pi0-policy.md)
 - 视频生成底座 CogVideoX：[paper-rcl-2408-06072-cogvideox-text-to-video-diffusion-models-with-an](./paper-rcl-2408-06072-cogvideox-text-to-video-diffusion-models-with-an.md)
 - 同为「编辑视频造演示」的路线：[paper-notebook-masquerade-learning-from-in-the-wild-human-video](./paper-notebook-masquerade-learning-from-in-the-wild-human-video.md)
 

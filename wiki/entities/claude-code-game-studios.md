@@ -21,7 +21,7 @@ related:
   - ./open-code-review.md
   - ./mattpocock-skills.md
   - ../concepts/agentic-coding-software-fundamentals.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../overview/racing-drift-rl-open-source-landscape.md
 sources:
   - ../../sources/repos/claude_code_game_studios.md
@@ -178,7 +178,7 @@ sequenceDiagram
 - [Three.js Game Skills](threejs-game-skills.md) — **Web/Three.js** 游戏技能；CCGS 偏 **原生引擎** 工作室结构
 - [Open Code Review](open-code-review.md) — **diff 级评审 CLI**；可与 CCGS `/code-review` 技能对照
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 流程加重仍须 **人掌握取舍**
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 本库 **知识 wiki** 维护范式；与 CCGS **交付模板** 目标不同
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 本库 **知识 wiki** 维护范式；与 CCGS **交付模板** 目标不同
 - [开源赛车 / 漂移 RL 景观](../overview/racing-drift-rl-open-source-landscape.md) — 游戏栈横向索引；CCGS 不属 RL 训练后端
 
 ## 参考来源

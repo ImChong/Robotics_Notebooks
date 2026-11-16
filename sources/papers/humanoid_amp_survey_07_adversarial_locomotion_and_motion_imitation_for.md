@@ -23,7 +23,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-amp-survey-07-adversarial_locomotion_and_motion_im](../../wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) — 主实体页（深读归纳）
+- [paper-amp-survey-07-adversarial_locomotion_and_motion_im](../../wiki/entities/paper-amp-survey-07-adversarial-locomotion-and-motion-im.md) — 主实体页（深读归纳）
 - [locomotion](../../wiki/tasks/locomotion.md)、[paper-amp-survey-08-more](../../wiki/entities/paper-amp-survey-08-more.md)
 
 ## 参考来源（原始）

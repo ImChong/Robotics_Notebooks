@@ -57,10 +57,10 @@ sources:
 | 012 | HumanPlus | [paper-loco-manip-161-012-humanplus](../entities/paper-loco-manip-161-012-humanplus.md) |
 | 013 | KungfuBot2 | [paper-loco-manip-161-013-kungfubot2](../entities/paper-notebook-kungfubot-2.md) |
 | 014 | MOSAIC | [paper-loco-manip-161-014-mosaic](../entities/paper-loco-manip-161-014-mosaic.md) |
-| 015 | Make Tracking Easy | [paper-loco-manip-161-015-make-tracking-easy](../entities/paper-hrl-stack-02-make_tracking_easy.md) |
+| 015 | Make Tracking Easy | [paper-loco-manip-161-015-make-tracking-easy](../entities/paper-hrl-stack-02-make-tracking-easy.md) |
 | 016 | OmniH2O | [paper-loco-manip-161-016-omnih2o](../entities/paper-hrl-stack-08-omnih2o.md) |
 | 017 | OmniRetarget | [paper-loco-manip-161-017-omniretarget](../entities/paper-hrl-stack-03-omniretarget.md) |
-| 018 | Retargeting | [paper-loco-manip-161-018-retargeting](../entities/paper-hrl-stack-01-retargeting_matters.md) |
+| 018 | Retargeting | [paper-loco-manip-161-018-retargeting](../entities/paper-hrl-stack-01-retargeting-matters.md) |
 | 019 | SONIC | [sonic-motion-tracking](../entities/nvidia-sonic.md) |
 | 020 | TWIST2 | [paper-loco-manip-161-020-twist2](../entities/paper-twist2.md) |
 | 021 | TWIST | [paper-loco-manip-161-021-twist](../entities/paper-twist.md) |
@@ -71,9 +71,9 @@ sources:
 | 026 | 人形机器人富有表现力的全身控制 | [paper-loco-manip-161-026-n026](../entities/paper-loco-manip-161-026-n026.md) |
 | 027 | 人形机器人行为基础模型 | [paper-loco-manip-161-027-n027](../entities/paper-loco-manip-161-027-n027.md) |
 | 028 | 从专家到通用：走向人形机器人的通用全身控制 | [paper-loco-manip-161-028-n028](../entities/paper-loco-manip-161-028-n028.md) |
-| 029 | 学习人对人的实时全身远程操作 | [paper-loco-manip-161-029-n029](../entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) |
+| 029 | 学习人对人的实时全身远程操作 | [paper-loco-manip-161-029-n029](../entities/paper-hrl-stack-07-learning-human-to-humanoid-real-time.md) |
 | 030 | 跟踪任何干扰下的任何动作 | [paper-loco-manip-161-030-n030](../methods/any2track.md) |
-| 031 | 鲁棒且通用的人形运动跟踪 | [paper-loco-manip-161-031-n031](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) |
+| 031 | 鲁棒且通用的人形运动跟踪 | [paper-loco-manip-161-031-n031](../entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md) |
 
 ## 方法栈与代表思路
 

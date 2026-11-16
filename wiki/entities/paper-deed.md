@@ -5,7 +5,7 @@ status: complete
 updated: 2026-09-15
 arxiv: "2607.20345"
 related:
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ../methods/vla.md
   - ./paper-steam-advantage-modeling.md
   - ./paper-lehome-learning-to-fold.md
@@ -91,7 +91,7 @@ flowchart TB
 
 ### 源码运行时序图
 
-**不适用** — 截至 2026-07-24，论文未提供可运行官方代码或项目页实现入口；读者可对照公开的 [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T) / [GR00T N1 实体](./paper-hrl-stack-34-gr00t_n1.md) 自行搭建后训练实验，但 **无法复现 DEED 官方管线**。
+**不适用** — 截至 2026-07-24，论文未提供可运行官方代码或项目页实现入口；读者可对照公开的 [Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T) / [GR00T N1 实体](./paper-hrl-stack-34-gr00t-n1.md) 自行搭建后训练实验，但 **无法复现 DEED 官方管线**。
 
 ## 工程实践
 
@@ -136,7 +136,7 @@ flowchart TB
 | [STEAM](./paper-steam-advantage-modeling.md) | 离线自监督 advantage + CFGRL；DEED 是 **在线 rollout + 文本 advantage 前缀** 且绑 GR00T 解耦结构 |
 | [Learning to Fold](./paper-lehome-learning-to-fold.md) | 开源 AWR+RECAP 飞轮（双臂叠衣）；DEED 面向 **零售人形 + 系统配方**，代码未开 |
 | [OpenHLM](./paper-loco-manip-161-154-openhlm.md) | 全身原生 VLA 经验配方与长程榜；DEED 基线是 **同 ckpt naive SFT**，不声称横扫全身榜 |
-| [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) | 预训练基础模型；DEED 是其 **门店后训练系统学** |
+| [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) | 预训练基础模型；DEED 是其 **门店后训练系统学** |
 
 ## 局限与风险
 
@@ -147,7 +147,7 @@ flowchart TB
 
 ## 关联页面
 
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 后训练所依赖的基础模型族
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) — 后训练所依赖的基础模型族
 - [VLA](../methods/vla.md) — 方法总览与「部署经验后训练」语境
 - [STEAM](./paper-steam-advantage-modeling.md) — 离线 advantage / CFGRL 对照
 - [Learning to Fold](./paper-lehome-learning-to-fold.md) — AWR+RECAP 异步飞轮对照（已开源）

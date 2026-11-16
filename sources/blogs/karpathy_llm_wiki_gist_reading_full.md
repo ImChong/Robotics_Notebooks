@@ -1,6 +1,6 @@
 # Karpathy LLM Wiki Gist 全文通读
 
-> 来源归档（原文通读 · 支撑 `wiki/references/llm-wiki-karpathy.md`）
+> 来源归档（原文通读 · 支撑 `wiki/concepts/llm-wiki-karpathy.md`）
 
 - **标题：** LLM Wiki
 - **作者：** Andrej Karpathy

@@ -160,7 +160,7 @@ flowchart TB
 | 低层 tracking policy / WBC | 学习型跟踪器如 SONIC 约 50 Hz；模型式 WBC 常为数百 Hz 至 1 kHz，按平台实测 | L4.4 / L5.2 |
 | 关节 PD / 电流环 | 驱动器内更高频闭环 | L3 / L12 |
 
-> 频率数字来自站内已有页面：[控制与推理频率解耦](../wiki/concepts/control-inference-frequency-decoupling.md)、[GR00T N1](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)、[π0](../wiki/entities/paper-pi0.md)、[SONIC 部署栈](../wiki/entities/nvidia-sonic.md)。**网络查询、动作下发、跟踪控制与驱动器内环是不同频率**；要分别核对，不能把某一架构的 1 kHz 当成所有学习型跟踪器的门槛。
+> 频率数字来自站内已有页面：[控制与推理频率解耦](../wiki/concepts/control-inference-frequency-decoupling.md)、[GR00T N1](../wiki/entities/paper-hrl-stack-34-gr00t-n1.md)、[π0](../wiki/entities/paper-pi0.md)、[SONIC 部署栈](../wiki/entities/nvidia-sonic.md)。**网络查询、动作下发、跟踪控制与驱动器内环是不同频率**；要分别核对，不能把某一架构的 1 kHz 当成所有学习型跟踪器的门槛。
 
 <a id="physical-ai-core-path"></a>
 
@@ -1910,7 +1910,7 @@ flowchart TB
 
 | 条目 | Paper | Project | Code | Hugging Face | 站内卡片 |
 |------|-------|---------|------|--------------|---------|
-| GR00T N1 | [arXiv:2503.14734](https://arxiv.org/abs/2503.14734) | [NVIDIA 研究页](https://research.nvidia.com/labs/lpr/publication/gr00tn1_2025/) | [NVIDIA/Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T) | [nvidia/GR00T-N1-2B](https://huggingface.co/nvidia/GR00T-N1-2B) | [GR00T N1](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) · [Isaac GR00T 平台](../wiki/entities/isaac-gr00t.md) · [GR00T N1.5](../wiki/entities/paper-gr00t-n1-5.md) |
+| GR00T N1 | [arXiv:2503.14734](https://arxiv.org/abs/2503.14734) | [NVIDIA 研究页](https://research.nvidia.com/labs/lpr/publication/gr00tn1_2025/) | [NVIDIA/Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T) | [nvidia/GR00T-N1-2B](https://huggingface.co/nvidia/GR00T-N1-2B) | [GR00T N1](../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) · [Isaac GR00T 平台](../wiki/entities/isaac-gr00t.md) · [GR00T N1.5](../wiki/entities/paper-gr00t-n1-5.md) |
 
 - 概念卡片：[VLA](../wiki/methods/vla.md) · [Foundation Policy](../wiki/concepts/foundation-policy.md)
 

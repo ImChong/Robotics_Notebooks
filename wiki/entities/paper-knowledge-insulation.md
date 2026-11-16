@@ -6,7 +6,7 @@ status: complete
 updated: 2026-09-28
 arxiv: "2505.23705"
 related:
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ./paper-pi05-open-world-vla.md
   - ./paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md
   - ../methods/vla.md
@@ -84,7 +84,7 @@ flowchart TB
 
 ## 关联页面
 
-- [π₀ 策略](../methods/π0-policy.md)
+- [π₀ 策略](../methods/pi0-policy.md)
 - [π₀.₅](./paper-pi05-open-world-vla.md)
 - [FAST](./paper-rcl-2501-09747-fast-efficient-action-tokenization-for-vision-la.md)
 - [VLA](../methods/vla.md)

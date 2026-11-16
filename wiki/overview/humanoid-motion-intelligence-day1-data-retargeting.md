@@ -68,10 +68,10 @@ flowchart TB
 
 | 原序号 | 论文详情 | 读它是为了解决 |
 |------:|----------|----------------|
-| 6 | [Retargeting Matters](../entities/paper-hrl-stack-01-retargeting_matters.md) | 重定向质量对后续控制的影响 |
+| 6 | [Retargeting Matters](../entities/paper-hrl-stack-01-retargeting-matters.md) | 重定向质量对后续控制的影响 |
 | 7 | [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) | 保留人与场景的交互关系 |
 | 8 | [DynaRetarget](../entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md) | 生成动力学可行轨迹 |
-| 9 | [Make Tracking Easy](../entities/paper-hrl-stack-02-make_tracking_easy.md) | 神经动作重定向与跟踪衔接 |
+| 9 | [Make Tracking Easy](../entities/paper-hrl-stack-02-make-tracking-easy.md) | 神经动作重定向与跟踪衔接 |
 | 12 | [OTRetarget](../entities/paper-otretarget.md) | 联合重定向机器人与物体轨迹 |
 | 14 | [Dense Temporal Motion Retargeting](../entities/paper-dense-temporal-motion-retargeting.md) | 联合优化时间相位 |
 | 15 | [GestAdapt](../entities/paper-gestadapt.md) | 在工作空间约束下适配手势 |

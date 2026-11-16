@@ -60,4 +60,4 @@
 
 ## 本页参考
 
-- 外链清单沿革自归档文件 [sources/retarget.md](../../sources/retarget.md)（旧版 README 资源地图），本页按用途分组并互链到 wiki 主线。
+- 外链清单沿革自归档文件 [sources/notes/retarget.md](../../sources/notes/retarget.md)（旧版 README 资源地图），本页按用途分组并互链到 wiki 主线。

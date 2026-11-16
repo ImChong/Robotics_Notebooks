@@ -13,7 +13,7 @@ related:
   - ../methods/any2track.md
   - ../entities/holomotion.md
   - ../methods/beyondmimic.md
-  - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
+  - ../entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/lafan1-dataset.md
   - ../entities/unitree-g1.md
@@ -114,7 +114,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - 分类 hub：[运动小脑 D 组 · 全身跟踪基座](../overview/motion-cerebellum-category-04-wbt-base.md)
-- 鲁棒跟踪姊妹篇：[RGMT](./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track](../methods/any2track.md)
+- 鲁棒跟踪姊妹篇：[RGMT](./paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md)、[Any2Track](../methods/any2track.md)
 - 统一「走/跑/起身」对照：[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)
 - 规模化跟踪基线：[HoloMotion](./holomotion.md)、[BeyondMimic](../methods/beyondmimic.md)
 - 数据与平台：[LaFAN1](./lafan1-dataset.md)、[Unitree G1](./unitree-g1.md)

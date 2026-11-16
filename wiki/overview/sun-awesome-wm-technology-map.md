@@ -556,7 +556,7 @@ sources:
 | 361 | [COMBO: Compositional World Models for Embodied Multi-Agent Cooperation](../entities/paper-sa-2404-10775-combo-compositional-world-models-for-embodied-mu.md) |
 | 362 | [DWL: Advancing Humanoid Locomotion: Mastering Challenging Terrains with Denoising World Mo](../entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md) |
 | 363 | [D^2PO: World Modeling Makes a Better Planner – Dual Preference Optimization for Embodied T](../entities/paper-sa-2503-10480-d-2po-world-modeling-makes-a-better-planner-dual.md) |
-| 364 | [Ego-VCP: Ego-Vision World Model for Humanoid Contact Planning](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
+| 364 | [Ego-VCP: Ego-Vision World Model for Humanoid Contact Planning](../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) |
 | 365 | [HRSSM: Learning Latent Dynamic Robust Representations for World Models](../entities/paper-sa-2405-06263-hrssm-learning-latent-dynamic-robust-representat.md) |
 | 366 | [Humanoid World Models: Open World Foundation Models for Humanoid Robotics](../entities/paper-notebook-humanoid-world-models-open-world-foundation-mode.md) |
 | 367 | [Learning Humanoid Locomotion with World Model Reconstruction](../entities/paper-notebook-learning-humanoid-locomotion-with-world-model-re.md) |

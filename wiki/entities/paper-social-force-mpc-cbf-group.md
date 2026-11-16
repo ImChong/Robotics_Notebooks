@@ -9,7 +9,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../../roadmap/depth-safe-control.md
   - ../../roadmap/depth-humanoid-swarm-performance.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 sources:
   - ../../sources/papers/social-force-mpc-cbf-group_arxiv_2611_14853.md
 original:
@@ -96,7 +96,7 @@ ESFFM 加入障碍排斥、群心牵引、成员间排斥与速度衰减；MPC �
 - [whole body control](../concepts/whole-body-control.md)
 - [safe control](../../roadmap/depth-safe-control.md)
 - [humanoid swarm performance](../../roadmap/depth-humanoid-swarm-performance.md)
-- [11.09–11.13 29 篇总览](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

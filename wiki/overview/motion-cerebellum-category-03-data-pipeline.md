@@ -8,8 +8,8 @@ related:
   - ./humanoid-motion-cerebellum-technology-map.md
   - ../entities/gvhmr.md
   - ../entities/paper-tram-global-human-motion.md
-  - ../entities/paper-hrl-stack-01-retargeting_matters.md
-  - ../entities/paper-hrl-stack-02-make_tracking_easy.md
+  - ../entities/paper-hrl-stack-01-retargeting-matters.md
+  - ../entities/paper-hrl-stack-02-make-tracking-easy.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
@@ -37,13 +37,13 @@ sources:
 |---|------|-----------|--------|
 | 16 | GVHMR | [gvhmr.md](../entities/gvhmr.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 17 | TRAM | [paper-motion-cerebellum-tram.md](../entities/paper-tram-global-human-motion.md) | [catalog](../../sources/papers/motion_cerebellum_survey_17_tram.md) |
-| 18 | GMR | [paper-hrl-stack-01-retargeting_matters.md](../entities/paper-hrl-stack-01-retargeting_matters.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 19 | NMR | [paper-hrl-stack-02-make_tracking_easy.md](../entities/paper-hrl-stack-02-make_tracking_easy.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 18 | GMR | [paper-hrl-stack-01-retargeting-matters.md](../entities/paper-hrl-stack-01-retargeting-matters.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 19 | NMR | [paper-hrl-stack-02-make-tracking-easy.md](../entities/paper-hrl-stack-02-make-tracking-easy.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 20 | OmniRetarget | [paper-hrl-stack-03-omniretarget.md](../entities/paper-hrl-stack-03-omniretarget.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 21 | HumanX | [paper-hrl-stack-05-humanx.md](../entities/paper-hrl-stack-05-humanx.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 22 | HDMI | [paper-hrl-stack-06-hdmi.md](../entities/paper-hrl-stack-06-hdmi.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 23 | SUGAR | [paper-notebook-sugar-a-scalable-human-video-driven-generalizabl.md](../entities/paper-loco-manip-161-076-sugar.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 24 | GenMimic | [paper-hrl-stack-04-from_generated_human_videos_to_physi.md](../entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 24 | GenMimic | [paper-hrl-stack-04-from-generated-human-videos-to-physi.md](../entities/paper-hrl-stack-04-from-generated-human-videos-to-physi.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
 ## 关联页面
 

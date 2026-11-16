@@ -90,6 +90,6 @@ TensorRT 优化部分受 **FlashRT** 社区 Jetson Thor 结果启发。
 - [jetson-openpi-pi05-on-thor](../../wiki/entities/jetson-openpi-pi05-on-thor.md) — 本教程知识页
 - [Jetson AI Lab](../../wiki/entities/jetson-ai-lab.md) — 教程 hub
 - [openpi 仓库归档](../repos/openpi.md)
-- [π₀ 策略方法页](../../wiki/methods/π0-policy.md)
+- [π₀ 策略方法页](../../wiki/methods/pi0-policy.md)
 - [APXInf](../../wiki/entities/apxinf.md) — 第三方专用 VLA 引擎路线（与官方 TRT 教程互补对照）
 - [VLA 真机部署指南](../../wiki/queries/vla-deployment-guide.md)

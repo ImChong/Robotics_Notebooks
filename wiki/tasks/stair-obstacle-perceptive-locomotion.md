@@ -24,7 +24,7 @@ related:
   - ../entities/extreme-parkour.md
   - ../entities/paper-vision-locomotion-egocentric.md
   - ../entities/paper-swap-parkour.md
-  - ../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ../entities/paper-light-loco-parkour.md
   - ../entities/paper-parkourformer.md
   - ../entities/paper-deep-whole-body-parkour.md
@@ -183,7 +183,7 @@ flowchart TB
 
 | 平台 | 感知 | 页面 | 要点 |
 |------|------|------|------|
-| 人形 G1 | **深度** | [PHP（Perceptive Humanoid Parkour）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | motion matching 合成长程参考 + DAgger+PPO 单策略；官方代码、五组训练示例与 D435i 学生 ONNX 已公开，见该节点复现边界 |
+| 人形 G1 | **深度** | [PHP（Perceptive Humanoid Parkour）](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) | motion matching 合成长程参考 + DAgger+PPO 单策略；官方代码、五组训练示例与 D435i 学生 ONNX 已公开，见该节点复现边界 |
 | 人形 PM-01 | **头部固态 LiDAR（原始栅格）** | [Agile Perceptive Traversal](../entities/paper-agile-perceptive-traversal-sparse-3d.md) | AME-2+GRU 直接吃 E1R 稀疏回波；分阶段多教师蒸馏；猴架全序列真机 **14/15**、荡杆 0.5 m/s；截至 2026-09-04 未开源 |
 | 人形 Lightbot 0 | **深度** | [Light-Loco-Parkour（LightLP）](../entities/paper-light-loco-parkour.md) | 稀疏种子 Real2Sim2Real + 多专家/转移组蒸馏；**无技能标签**；代码未开源 |
 | 人形 G1 | **RGB-D** | [ParkourFormer](../entities/paper-parkourformer.md) | Transformer 查询历史 + 未来两步 AMP 监督；九类地形单策略 **93.85%**；代码 Coming Soon |
@@ -237,7 +237,7 @@ flowchart TB
 | 四足 **稀疏地形泛化** + 可解释地图注意力 | [AME](../entities/paper-ame-attention-based-map-encoding.md) |
 | 四足/双足 **parkour 敏捷 + 未见稀疏组合** + 神经映射 | [AME-2](../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) |
 | 四足 **足底 ToF** 踏石/沟（无视觉栈） | [离散地形最小感知](../entities/paper-discrete-terrain-minimal-proximity-sensing.md) |
-| 人形 **跑酷技能链** + 机载深度 | [PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
+| 人形 **跑酷技能链** + 机载深度 | [PHP](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) |
 | 人形 **无技能标签** 深度跑酷 + 稀疏种子扩张 | [LightLP](../entities/paper-light-loco-parkour.md) |
 | 人形 **未来监督** Transformer 跑酷（单策略九类课） | [ParkourFormer](../entities/paper-parkourformer.md) |
 | 人形 **稀疏踏点** + 深度 **门控记忆**（相对 Hiking +16.7 pt SR） | [Echo in the Steps](../entities/paper-echo-in-the-steps.md) |

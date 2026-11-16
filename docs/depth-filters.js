@@ -439,7 +439,7 @@
       ids: mergeIds('humanoid-soccer', [
         'wiki/entities/paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md',
         'wiki/entities/paper-humanoidarena.md',
-        'wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md',
+        'wiki/entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md',
         'wiki/entities/smplolympics.md'
       ])
     },
@@ -615,7 +615,7 @@
         'wiki/entities/paper-freqfm-vla-flow-matching.md',
         'wiki/entities/paper-notebook-flow-matching-imitation-learning-for-multi-suppo.md',
         'wiki/entities/paper-pi0.md',
-        'wiki/entities/paper-hrl-stack-34-gr00t_n1.md',
+        'wiki/entities/paper-hrl-stack-34-gr00t-n1.md',
         'wiki/entities/paper-gr00t-n1-5.md',
         'wiki/entities/isaac-gr00t.md'
       ])
@@ -718,7 +718,7 @@
         'wiki/entities/paper-latent-actions-matter.md',
         'wiki/entities/paper-urdd-universal-robot-description-directory.md',
         'wiki/entities/paper-octo.md',
-        'wiki/entities/paper-hrl-stack-34-gr00t_n1.md',
+        'wiki/entities/paper-hrl-stack-34-gr00t-n1.md',
         'wiki/entities/paper-x-wbc.md',
         'wiki/entities/paper-recmorph.md',
         'wiki/entities/paper-hodge-morphology-priors-quadruped-degradation.md',

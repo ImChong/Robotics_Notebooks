@@ -10,7 +10,7 @@ related:
   - ./ego-category-04-ego-exo-fusion.md
   - ./robot-world-models-training-loop-taxonomy.md
   - ../methods/generative-world-models.md
-  - ../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md
+  - ../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md
   - ../entities/paper-wem-world-ego-modeling.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
@@ -39,7 +39,7 @@ sources:
 
 | # | 工作 | Wiki 实体 | Source |
 |---|------|-----------|--------|
-| 06 | Ego-Vision World Model | [paper-hrl-stack-33](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) | [source](../../sources/papers/ego_survey_06_ego_vision_world_model.md) |
+| 06 | Ego-Vision World Model | [paper-hrl-stack-33](../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) | [source](../../sources/papers/ego_survey_06_ego_vision_world_model.md) |
 | 07 | WEM | [paper-wem](../entities/paper-wem-world-ego-modeling.md) | [source](../../sources/papers/ego_survey_07_wem.md) |
 
 ## 关联页面

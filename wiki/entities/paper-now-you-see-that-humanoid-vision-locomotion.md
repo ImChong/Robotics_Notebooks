@@ -20,7 +20,7 @@ related:
   - ../concepts/terrain-adaptation.md
   - ./paper-ssr-humanoid-open-world-traversal.md
   - ./paper-cref.md
-  - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - ./paper-hrl-stack-22-perceptive-humanoid-parkour.md
   - ./paper-notebook-humanoid-parkour-learning.md
   - ./paper-eatr-stereo.md
   - ./extreme-parkour.md
@@ -127,7 +127,7 @@ flowchart TB
 ## 常见误区
 
 1. **「增广 = 普通 DR」** — 本文重点是 **传感器物理与立体几何伪影**，不是只随机化地面摩擦；RDT-Bench 专为 **感知迁移** 设计。
-2. **「多 critic = 多策略」** — 仍是 **单 actor 统一策略**；分地形的是 **价值与风格判别**，不是技能切换专家库（对照 [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)）。
+2. **「多 critic = 多策略」** — 仍是 **单 actor 统一策略**；分地形的是 **价值与风格判别**，不是技能切换专家库（对照 [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md)）。
 3. **「端到端 = 单阶段 RL」** — 部署端到端，但训练依赖 **特权 height teacher**；直接深度 RL 明显更差（Table IV）。
 4. **与 [SSR](./paper-ssr-humanoid-open-world-traversal.md) 混淆** — SSR 强调 **单阶段想象落脚点 + 对称增广 + 户外 1.3 km**；Now You See That 强调 **深度噪声建模 + 特权蒸馏 + 多 critic**，更贴近 **立体深度 sim2real** 与 **跑酷+精细楼梯** 组合。
 
@@ -162,7 +162,7 @@ flowchart TB
 | **Now You See That** | **24×32 深度** | **8 步立体增广 + 去噪蒸馏** | **多 critic + 多 disc** | **特权 height → 深度 DAgger** | **✓ 双向长程** | **✓** |
 | [SSR](./paper-ssr-humanoid-open-world-traversal.md) | 36×36 深度 | 标准 DR + Warp 深度 | 分地形 AMP | **单阶段 PPO** | ✓ | 户外长程为主 |
 | [CReF](./paper-cref.md) | 64×48 深度 | **训练不注入合成损坏** | 单 critic | **单阶段 PPO**（无蒸馏） | ✓ 实验室楼梯 | 室内 OOD / 反射孔洞 |
-| [PHP](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) | 深度 | 标准 DR | motion matching 多技能 | MM 参考 + 专家 + DAgger | ✓ | ✓ 技能链 |
+| [PHP](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) | 深度 | 标准 DR | motion matching 多技能 | MM 参考 + 专家 + DAgger | ✓ | ✓ 技能链 |
 | [Humanoid Parkour Learning](./paper-notebook-humanoid-parkour-learning.md) | 端到端深度 | Moderate DR | 单策略 | 直接/标准管线 | ✗ | ✓ |
 | [Extreme Parkour](./extreme-parkour.md) | 四足深度 | scandots 蒸馏 | 单策略 | 两阶段 DAgger | ✗ | ✓ |
 

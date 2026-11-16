@@ -48,7 +48,7 @@
 | 目标页 | 关系 |
 |--------|------|
 | [`wiki/concepts/retrieval-augmented-generation.md`](../../wiki/concepts/retrieval-augmented-generation.md) | 概念主链：定义、架构、变体、局限 |
-| [`wiki/references/llm-wiki-karpathy.md`](../../wiki/references/llm-wiki-karpathy.md) | LLM Wiki 模式 vs 查询时 RAG 的对照 |
+| [`wiki/concepts/llm-wiki-karpathy.md`](../../wiki/concepts/llm-wiki-karpathy.md) | LLM Wiki 模式 vs 查询时 RAG 的对照 |
 | [`wiki/entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md`](../../wiki/entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md) | 机器人侧 **非文本** RAG：语义模板检索 |
 
 ## 当前提炼状态

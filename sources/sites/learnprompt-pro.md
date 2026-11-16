@@ -14,7 +14,7 @@
 
 ## 为什么值得保留
 
-- **与本库维护范式同向：** 新版站点强调 **Idea → Task → Delivery → Memory**，Obsidian/Markdown 作 Agent 记忆、Skills 沉淀重复流程 — 与 [Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md) 及本仓库 [ingest/query/lint](../../schema/ingest-workflow.md) 文化直接相交。
+- **与本库维护范式同向：** 新版站点强调 **Idea → Task → Delivery → Memory**，Obsidian/Markdown 作 Agent 记忆、Skills 沉淀重复流程 — 与 [Karpathy LLM Wiki](../../wiki/concepts/llm-wiki-karpathy.md) 及本仓库 [ingest/query/lint](../../schema/ingest-workflow.md) 文化直接相交。
 - **Coding Agent 中文路径稀缺：** 8 条路径中 **Claude Code / Codex / Agent Skills / Loop** 四块，是本站在 `AGENTS.md`、Cloud Agent、skills 生态下的 **读者友好中文入口**。
 - **OpenClaw / Hermes 教程锚点：** 含 [OpenClaw 架构导读](https://www.learnprompt.pro/agent-frameworks/openclaw-architecture-guide/) 等，可补 [OpenClaw 实体页](../../wiki/entities/openclaw.md) 的 **上手文档** 侧链。
 - **Skill 工坊生态：** 站点 `/skills/` 与 GitHub 组织下 **鲁班、庖丁、蔡伦、阿福、愚公、搭子** 等 skills 互链，可与 [mattpocock/skills](../../wiki/entities/mattpocock-skills.md)、[Nuwa Skill](../../wiki/entities/nuwa-skill.md) 对照阅读。

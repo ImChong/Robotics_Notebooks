@@ -115,7 +115,7 @@ flowchart LR
 ### 推荐读什么
 - [Object Detection](../wiki/methods/object-detection.md) — 检测方法谱系
 - [Query：目标检测模型选型](../wiki/queries/object-detection-model-selection.md) 与 [Query：感知 backbone 选型](../wiki/queries/perception-backbone-selection.md)
-- [Vision-Driven Reactive Soccer](../wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) — 视觉驱动反应式足球技能
+- [Vision-Driven Reactive Soccer](../wiki/entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md) — 视觉驱动反应式足球技能
 - [Booster RoboCup Demo](../wiki/entities/booster-robocup-demo.md) — YOLOv8 感知在整队系统里的位置
 
 ### 学完输出什么

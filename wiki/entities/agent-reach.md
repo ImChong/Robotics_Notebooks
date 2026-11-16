@@ -18,7 +18,7 @@ related:
   - ./deeptutor.md
   - ./articraft.md
   - ./graphify.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../concepts/ai-auto-research.md
   - ./nvidia-openshell.md
 sources:
@@ -130,7 +130,7 @@ sequenceDiagram
 - [DeepTutor（HKUDS）](deeptutor.md) — **辅导工作区 + 内置 web/paper search**（与本页「外网读搜脚手架」互补）
 - [Articraft](articraft.md) — 另一类 **harness + SDK** 型代理外围（3D 资产域）
 - [graphify（Graphify Labs）](graphify.md) — **本地/仓库内** 多模态知识图（与本页「外网读搜」互补）
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久化知识结构与 **人类策展** 范式
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 持久化知识结构与 **人类策展** 范式
 
 ## 参考来源
 

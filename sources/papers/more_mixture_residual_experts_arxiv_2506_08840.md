@@ -51,7 +51,7 @@
 ## 对 wiki 的映射
 
 - 沉淀实体页：[MoRE（AMP 专题 #08）](../../wiki/entities/paper-amp-survey-08-more.md)
-- 交叉补强：[AMP & HumanX](../../wiki/methods/amp-reward.md)、[Locomotion](../../wiki/tasks/locomotion.md)、[Terrain Adaptation](../../wiki/concepts/terrain-adaptation.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[LAFAN1](../../wiki/entities/lafan1-dataset.md)、[显式楼梯几何条件化](../../wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（MoRE 作视觉基线）、[Hiking in the Wild](../../wiki/entities/paper-hiking-in-the-wild.md)、[ALMI #07](../../wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)
+- 交叉补强：[AMP & HumanX](../../wiki/methods/amp-reward.md)、[Locomotion](../../wiki/tasks/locomotion.md)、[Terrain Adaptation](../../wiki/concepts/terrain-adaptation.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[LAFAN1](../../wiki/entities/lafan1-dataset.md)、[显式楼梯几何条件化](../../wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（MoRE 作视觉基线）、[Hiking in the Wild](../../wiki/entities/paper-hiking-in-the-wild.md)、[ALMI #07](../../wiki/entities/paper-amp-survey-07-adversarial-locomotion-and-motion-im.md)
 
 ## 参考来源（原始）
 

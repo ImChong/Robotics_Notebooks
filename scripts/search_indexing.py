@@ -170,11 +170,9 @@ def page_type_for_path(path: Path, fm: dict) -> str:
             "tasks": "task",
             "comparisons": "comparison",
             "overview": "overview",
-            "roadmaps": "roadmap",
             "formalizations": "formalization",
             "queries": "query",
             "entities": "entity",
-            "references": "reference",
         }
         return mapping.get(parts[1], parts[1])
     if parts[0] == "roadmap":

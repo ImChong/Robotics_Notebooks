@@ -21,7 +21,7 @@ related:
   - ./dexbench.md
   - ../overview/hub-embodied-eval-benchmark.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../methods/vla.md
   - ../methods/diffusion-policy.md
   - ./paper-pi0.md
@@ -203,7 +203,7 @@ sequenceDiagram
 | CALVIN / LIBERO / RoboCasa | 语言条件长程，但仿真或夹爪为主 |
 | Adroit / DexArt / Dex1B | 灵巧技能或大规模抓取；少指令接地与场面保持 |
 | EmbodiedBench 等 agent 榜 | 重感知规划，轻真机多指执行 |
-| [π₀](./paper-pi0.md) / [π₀ 方法](../methods/π0-policy.md) | 本榜最强策略族；OpenPI 桥接 30 维关节 |
+| [π₀](./paper-pi0.md) / [π₀ 方法](../methods/pi0-policy.md) | 本榜最强策略族；OpenPI 桥接 30 维关节 |
 | [Diffusion Policy](../methods/diffusion-policy.md) | 最强从零基线是 DP (DINO)；DP-UNet 在本协议上接近失败 |
 | [VLA](../methods/vla.md) | 预训练 VLA 领先任务 IL，但芯片状态与场面保持仍是缺口 |
 
@@ -214,7 +214,7 @@ sequenceDiagram
 - [DexBench](./dexbench.md) — 工业规格对照，不要和本榜数字直接比
 - [具身评测基准枢纽](../overview/hub-embodied-eval-benchmark.md) — ③ 层真机灵巧条目
 - [评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — ③ 层：SPSR ≠ 仿真 SR
-- [π₀ 策略模型](../methods/π0-policy.md)
+- [π₀ 策略模型](../methods/pi0-policy.md)
 - [π₀ 论文实体](./paper-pi0.md)
 - [VLA](../methods/vla.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)

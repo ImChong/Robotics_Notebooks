@@ -22,7 +22,7 @@
 ## 为什么值得保留
 
 - **数学–工程闭环：** 不只讲图像生成 demo，而是把 **随机分析工具箱**（SDE 采样、概率路径、向量场）与 **DiT / VAE / CTMC** 组件逐步拆开。
-- **与本库交叉：** 机器人侧 [Diffusion Policy](../../wiki/methods/diffusion-policy.md)、[Probability Flow](../../wiki/formalizations/probability-flow.md)、[π₀ flow matching VLA](../../wiki/methods/π0-policy.md) 的上游 **形式化课程**；与 [Sergey Levine Simons 报告](../../wiki/overview/sergey-levine-diffusion-expressive-policies.md) 形成「理论课 ↔ 控制应用」对读。
+- **与本库交叉：** 机器人侧 [Diffusion Policy](../../wiki/methods/diffusion-policy.md)、[Probability Flow](../../wiki/formalizations/probability-flow.md)、[π₀ flow matching VLA](../../wiki/methods/pi0-policy.md) 的上游 **形式化课程**；与 [Sergey Levine Simons 报告](../../wiki/overview/sergey-levine-diffusion-expressive-policies.md) 形成「理论课 ↔ 控制应用」对读。
 
 ## 课程结构（2026 版站点）
 

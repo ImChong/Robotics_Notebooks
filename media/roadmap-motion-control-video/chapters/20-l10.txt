@@ -42,7 +42,7 @@
 2| 后续的 π 模型，比如 π0.7，继续在同一个骨架上改数据的对齐方式和提示方式，比如多模态提示。
 3| 所以学习方法很简单：每出一个新的 π 模型，只问它改了骨架的哪一块——视觉语言模型、动作专家、数据、训练目标，还是推理方式。
 
-## slide: tag=L10; title=GR00T N1：System 2 / System 1 双系统; src=roadmap/motion-control.md §L10 · wiki/entities/paper-hrl-stack-34-gr00t_n1.md · arXiv:2503.14734
+## slide: tag=L10; title=GR00T N1：System 2 / System 1 双系统; src=roadmap/motion-control.md §L10 · wiki/entities/paper-hrl-stack-34-gr00t-n1.md · arXiv:2503.14734
 <div class='cols'>
 <div class='col' style='justify-content:center'>
 <div class='flow v' style='gap:8px'>

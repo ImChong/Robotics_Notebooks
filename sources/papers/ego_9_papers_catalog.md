@@ -17,7 +17,7 @@
 | 03 | 02 人→机器人 | [ego_survey_03_egomimic.md](ego_survey_03_egomimic.md) | [paper-ego-03-egomimic](../../wiki/entities/paper-ego-03-egomimic.md) |
 | 04 | 02 人→机器人 | [ego_survey_04_emma.md](ego_survey_04_emma.md) | [paper-ego-04-emma](../../wiki/entities/paper-ego-04-emma.md) |
 | 05 | 02 人→机器人 | [ego_survey_05_gaze2act.md](ego_survey_05_gaze2act.md) | [paper-ego-05-gaze2act](../../wiki/entities/paper-ego-05-gaze2act.md) |
-| 06 | 03 世界模型 | [ego_survey_06_ego_vision_world_model.md](ego_survey_06_ego_vision_world_model.md) | `wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md` |
+| 06 | 03 世界模型 | [ego_survey_06_ego_vision_world_model.md](ego_survey_06_ego_vision_world_model.md) | `wiki/entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md` |
 | 07 | 03 世界模型 | [ego_survey_07_wem.md](ego_survey_07_wem.md) | `wiki/entities/paper-wem-world-ego-modeling.md` |
 | 08 | 04 Ego+Exo | [ego_survey_08_egoexomem.md](ego_survey_08_egoexomem.md) | [paper-ego-08-egoexomem](../../wiki/entities/paper-ego-08-egoexomem.md) |
 | 09 | 04 Ego+Exo | [ego_survey_09_e3c.md](ego_survey_09_e3c.md) | [paper-ego-09-e3c](../../wiki/entities/paper-ego-09-e3c.md) |

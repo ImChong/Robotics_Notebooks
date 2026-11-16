@@ -12,7 +12,7 @@
 - **核对范围：** `README.md`（1–92 行）、`program.md`（1–114 行全文）、`prepare.py`（1–389 行全文：常量、分片下载、`rustbpe` 训练、BOS-aligned best-fit `make_dataloader`、`evaluate_bpb`）、`train.py`（1–630 行全文：`GPTConfig`/`GPT`/RoPE/FA3/`value_embeds`/logit softcap/`MuonAdamW`/5 分钟训练环）
 - **通读：** 已完成
 - **一句话说明：** 让编码代理在固定 5 分钟墙钟预算内自主修改 `train.py`、训练基于 nanochat 简化的单 GPU GPT（RoPE + FA3 + ResFormer 值嵌入 + `MuonAdamW`）、以 **val_bpb** 决定去留并循环实验；人类主要迭代 `program.md`（轻量「研究组织技能」）而非直接改 Python。
-- **为什么值得保留：** 把 [AI Auto-Research](../../wiki/concepts/ai-auto-research.md) 综述中 **S3 编码与实验** 落到可复现的最小闭环：单文件可编辑面、固定可比预算、单一验证指标、人机分工（`program.md` vs `train.py`）。与 [LLM Wiki（Karpathy 模式）](../../wiki/references/llm-wiki-karpathy.md)、[Superpowers](../../wiki/entities/superpowers-obra.md)（`SKILL.md` 技能契约）形成 **研究自动化 / 知识编译 / 工程技能** 三角参照。
+- **为什么值得保留：** 把 [AI Auto-Research](../../wiki/concepts/ai-auto-research.md) 综述中 **S3 编码与实验** 落到可复现的最小闭环：单文件可编辑面、固定可比预算、单一验证指标、人机分工（`program.md` vs `train.py`）。与 [LLM Wiki（Karpathy 模式）](../../wiki/concepts/llm-wiki-karpathy.md)、[Superpowers](../../wiki/entities/superpowers-obra.md)（`SKILL.md` 技能契约）形成 **研究自动化 / 知识编译 / 工程技能** 三角参照。
 - **沉淀到 wiki：** 是 → [`wiki/entities/karpathy-autoresearch.md`](../../wiki/entities/karpathy-autoresearch.md)
 
 ## README 要点（归纳）
@@ -37,7 +37,7 @@
 - 交叉补强：
   - [AI Auto-Research（概念）](../../wiki/concepts/ai-auto-research.md) — S3 最小可运行实例；Explore→Execute→Verify 分层。
   - [Andrej Karpathy](../../wiki/entities/andrej-karpathy.md) — nanochat 教育栈延伸与 LLM 时代实验自动化。
-  - [LLM Wiki（Karpathy 模式）](../../wiki/references/llm-wiki-karpathy.md) — `program.md` 作为可版本化「组织上下文」与 ingest 文件契约同构。
+  - [LLM Wiki（Karpathy 模式）](../../wiki/concepts/llm-wiki-karpathy.md) — `program.md` 作为可版本化「组织上下文」与 ingest 文件契约同构。
   - [Superpowers（obra）](../../wiki/entities/superpowers-obra.md) — `program.md` ≈ 单文件 skill；本仓偏 **ML 实验搜索** 而非软件交付 TDD。
   - [Darwin Skill](../../wiki/entities/darwin-skill.md) — 将 keep/revert 棘轮映射到 `SKILL.md` 优化；与 [Nuwa](../../wiki/entities/nuwa-skill.md) / [Cangjie](../../wiki/entities/cangjie-skill.md) 造 skill 闭环。
 

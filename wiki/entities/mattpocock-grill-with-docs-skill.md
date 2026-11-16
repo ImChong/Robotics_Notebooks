@@ -13,7 +13,7 @@ related:
   - ./mattpocock-skills.md
   - ./mattpocock-grill-me-skill.md
   - ./mattpocock-setup-skills-skill.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/mattpocock-skills.md
@@ -39,7 +39,7 @@ summary: "grill-with-docs 在 grilling 对齐同时调用 domain-modeling，边�
 
 ## 为什么重要（对本知识库读者）
 
-- **与 LLM Wiki 同构：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 把知识编译进 `wiki/`；grill-with-docs 把 **会话中的决策** 编译进 **`GLOSSARY.md` + ADR** — 适合 **应用代码仓**，也可借鉴到大型 monorepo 工具脚本命名。
+- **与 LLM Wiki 同构：** [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 把知识编译进 `wiki/`；grill-with-docs 把 **会话中的决策** 编译进 **`GLOSSARY.md` + ADR** — 适合 **应用代码仓**，也可借鉴到大型 monorepo 工具脚本命名。
 - **本库维护：** Robotics_Notebooks 已有 `schema/` 与 ingest 规范；若在 **fork 的应用层** 用 agent 改代码，宜用本技能统一 **术语**（sim2real、WBC 等）再改实现。
 
 ## 流程总览

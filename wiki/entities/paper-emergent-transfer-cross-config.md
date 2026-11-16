@@ -25,7 +25,7 @@ related:
   - ./paper-pi05-open-world-vla.md
   - ../methods/vla.md
   - ../methods/behavior-cloning.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../concepts/open-x-embodiment.md
 sources:
   - ../../sources/papers/emergent_transfer_cross_config_arxiv_2607_25593.md

@@ -54,7 +54,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 
 ### 步骤 2：进入 `sources/`
 
-原始资料先收录到 `sources/` 对应位置，保留来源信息。
+原始资料先收录到 `sources/` 对应子目录（`papers/`、`repos/`、`sites/`、`blogs/`、`courses/`、`videos/`、`talks/`、`books/`、`datasets/`、`models/`、`notes/`、`patents/`、`personal/`、`raw/`），根目录仅保留 `README.md` 总索引，保留完整来源信息。
 
 若不确定应落在 `sources/`、`references/`、`resources/` 还是直接进 `wiki/`，先看 [内容目录怎么选](content-directories.md) 的决策漏斗。
 
@@ -110,13 +110,11 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 | 实体（工具/框架/硬件）| `wiki/entities/` |
 | 任务方向 | `wiki/tasks/` |
 | 对比分析 | `wiki/comparisons/` |
-| 学习路线 | `roadmap/` 或 `wiki/roadmaps/` |
+| 学习路线 | `roadmap/` |
 
-#### `roadmap/` 与 `wiki/roadmaps/` 怎么选
+#### 学习路线统一收敛至 `roadmap/`
 
-- **`roadmap/`**：默认放这里。面向读者的**主学习路径**、条件分支路线图（例如「若目标是 X 则走哪条」）、与首页/技术地图强绑定的入口；`README` 与站点导航主要指向本目录。
-- **`wiki/roadmaps/`**：纵深或子路线、与 `wiki/concepts` 等方法页**强互链**、且不必占据仓库根级「主路线」展示位时使用。
-- **仍犹豫**：优先 `roadmap/`；若整页几乎只服务某一 `wiki` 子树且读者主要从该主题进入，再考虑 `wiki/roadmaps/`。
+- 所有面向读者的主学习路径、行业/岗位入门路线与专题纵深路线统一放在 **`roadmap/`**（不再拆到 `wiki/roadmaps/`；不再保留 `wiki/references/` 单文件子目录，方法论页归 `wiki/concepts/`，索引列表归根级 `references/`）。
 
 ### 步骤 5：更新相关页面
 
@@ -147,10 +145,10 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 
 ### 步骤 5.5：核对并挂载至已有纵深路线（必查）
 
-每次新 ingest（新建或主要更新 `wiki/` 页面后），须确认本次内容是否符合**已有纵深路线**（[`roadmap/README.md`](../roadmap/README.md) 中列出的 `roadmap/depth-*.md`，以及相关的 `wiki/roadmaps/*.md`）：
+每次新 ingest（新建或主要更新 `wiki/` 页面后），须确认本次内容是否符合**已有纵深路线**（[`roadmap/README.md`](../roadmap/README.md) 中列出的 `roadmap/depth-*.md` 及专题入门路线）：
 
 - **符合已有纵深路线时**：
-  - 打开对应的 `roadmap/depth-*.md`（或 `wiki/roadmaps/*.md`），定位最契合的 Stage（通常在「### 推荐读什么」或对应小节），以标准相对路径 `[页面标题](../wiki/...)` 挂载该页链接，并附一句简明定位说明（点明它在该 Stage 解决的问题或与前后节点的分工），保持该路线原有格式与风格。
+  - 打开对应的 `roadmap/depth-*.md`（或相关 `roadmap/*.md`），定位最契合的 Stage（通常在「### 推荐读什么」或对应小节），以标准相对路径 `[页面标题](../wiki/...)` 挂载该页链接，并附一句简明定位说明（点明它在该 Stage 解决的问题或与前后节点的分工），保持该路线原有格式与风格。
   - 若与多条纵深路线直接相关，可分别挂载到对应路线最相关的 Stage；若仅为泛泛提及而非该路线主线学习/工程所需，不必硬塞。
   - 建议在对应 `wiki/` 页面的 `## 关联页面` 中反向链回该纵深路线（如 `[VLA 纵深路线](../../roadmap/depth-vla.md)`），方便双向导航。
 - **没有匹配的已有纵深路线时**：

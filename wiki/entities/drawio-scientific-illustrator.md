@@ -26,7 +26,7 @@ related:
   - ./mattpocock-skills.md
   - ../concepts/model-context-protocol.md
   - ../concepts/remote-procedure-call.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/drawio-scientific-illustrator.md
@@ -180,7 +180,7 @@ sequenceDiagram
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
 - [Model Context Protocol（MCP）](../concepts/model-context-protocol.md) — 协议层 Host/Client/Server 与传输
 - [远程过程调用（RPC）](../concepts/remote-procedure-call.md) — 本地工具桥与过程调用概念同族
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs Skill/MCP 规约编译
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs Skill/MCP 规约编译
 - [ingest 工作流](../../schema/ingest-workflow.md) — 本站资料入库规范
 
 ## 参考来源

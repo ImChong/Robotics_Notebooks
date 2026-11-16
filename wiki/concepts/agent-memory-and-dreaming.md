@@ -7,7 +7,7 @@ original:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
 related:
   - ../entities/claude-cookbook-dreaming-dynamic-workflow.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../concepts/robot-in-context-learning.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/agentic-coding-software-fundamentals.md
@@ -112,7 +112,7 @@ flowchart LR
 - [Cortex：上下文到参数记忆](../entities/paper-cortex-parametric-memory.md) — 对比外部持久笔记与权重级巩固
 
 - [Claude Cookbook：用动态工作流做 dreaming](../entities/claude-cookbook-dreaming-dynamic-workflow.md)
-- [LLM Wiki（Karpathy）](../references/llm-wiki-karpathy.md) — 本库自身的 wiki 模式，与「wiki 作为记忆表示」同构
+- [LLM Wiki（Karpathy）](../concepts/llm-wiki-karpathy.md) — 本库自身的 wiki 模式，与「wiki 作为记忆表示」同构
 - [Robot In-Context Learning](./robot-in-context-learning.md)
 - [AI Agent 评测](./ai-agent-evaluation.md)
 - [JitRL：免梯度的测试时经验检索与 logit 修正](../entities/paper-jitrl-just-in-time-rl.md)（经验库 + 推理时修正，论文实验在 WebArena / Jericho）

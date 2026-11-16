@@ -36,7 +36,7 @@
 
 ## 对 wiki 的映射
 
-- 沉淀实体页（AMP 专题 #06 深读）：[paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md](../../wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md)
+- 沉淀实体页（AMP 专题 #06 深读）：[paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md](../../wiki/entities/paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md)
 - 交叉补强：[AMP & HumanX](../../wiki/methods/amp-reward.md)、[Locomotion](../../wiki/tasks/locomotion.md)、[MoRE #08](../../wiki/entities/paper-amp-survey-08-more.md)（对抗多判别器对照）、[humanoid-amp-motion-prior-survey](../../wiki/overview/humanoid-amp-motion-prior-survey.md)
 - 策展索引：[humanoid_amp_survey_06_natural_humanoid_robot_locomotion_with_generativ.md](humanoid_amp_survey_06_natural_humanoid_robot_locomotion_with_generativ.md)
 

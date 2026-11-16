@@ -22,7 +22,7 @@ related:
   - ../tasks/teleoperation.md
   - ../methods/imitation-learning.md
   - ../methods/motion-retargeting-gmr.md
-  - ./paper-hrl-stack-01-retargeting_matters.md
+  - ./paper-hrl-stack-01-retargeting-matters.md
   - ./paper-hrl-stack-03-omniretarget.md
   - ./paper-cwi-composite-humanoid-whole-body-imitation.md
   - ./paper-bifrost-umi.md
@@ -164,7 +164,7 @@ Replay 相近；WARP 监督对 BC **+12%** 平均策略成功率。
 1. **离线监督比遥操作苛刻** — 无人在环纠错；重定向误差直接进 BC loss，必须 **精确（palm + 全身结构）且一致（唯一解）**。
 2. **c-SEW 是主杠杆** — adaptive offset + palm 硬约束 + Stereo-sew/SP3 闭式链；palm 误差相对 MINK-EF 降 **>150×**，variation 近机器精度。
 3. **Lazy base 管协同** — torso 吸收微调、base 只做 relocation，减轻 manipulation 中底座滞后与 overshoot。
-4. **Replay ≠ 可学** — DexMimicGen replay 相近时策略仍差 **12%**；真机转箱同等 replay 下 **65% vs 40%** — 运动质量决定下游上限（呼应 [Retargeting Matters](./paper-hrl-stack-01-retargeting_matters.md)）。
+4. **Replay ≠ 可学** — DexMimicGen replay 相近时策略仍差 **12%**；真机转箱同等 replay 下 **65% vs 40%** — 运动质量决定下游上限（呼应 [Retargeting Matters](./paper-hrl-stack-01-retargeting-matters.md)）。
 5. **全身语义不可省** — 冰箱肘接触等任务 EEF-only 无法表达；须保留 SEW/躯干/底座意图。
 6. **边界：无视觉策略** — 作者承认当前无图像观测限制任务面；代码截至入库日未开源，复现待跟进。
 
@@ -185,7 +185,7 @@ Replay 相近；WARP 监督对 BC **+12%** 平均策略成功率。
 
 ## 关联页面
 
-- **Retargeting 质量命题：** [Retargeting Matters / GMR](./paper-hrl-stack-01-retargeting_matters.md) — 重定向质量上限早于 RL/BC
+- **Retargeting 质量命题：** [Retargeting Matters / GMR](./paper-hrl-stack-01-retargeting-matters.md) — 重定向质量上限早于 RL/BC
 - **交互场景硬约束：** [OmniRetarget](./paper-hrl-stack-03-omniretarget.md) — interaction mesh + SOCP；侧重场景/物体交互增广
 - **Meta Quest 但不同环：** [CWI](./paper-cwi-composite-humanoid-whole-body-imitation.md)（robot teleop BC）、[BifrostUMI](./paper-bifrost-umi.md)（SKR + 扩散高层）
 - **问题域：** [Motion Retargeting](../concepts/motion-retargeting.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)、[Imitation Learning](../methods/imitation-learning.md)

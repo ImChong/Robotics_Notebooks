@@ -38,7 +38,7 @@ related:
   - ../methods/behavior-cloning.md
   - ../methods/reinforcement-learning.md
   - ../methods/lwd.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../comparisons/online-vs-offline-rl.md
   - ../tasks/manipulation.md
   - ../tasks/teleoperation.md
@@ -113,7 +113,7 @@ $$A(f_{k,i}; \theta) = \frac{2}{N}\!\left(\mathbb{E}_{b \sim p_\theta}[b] - \til
 
 1. **Worst-of-$M$ 最小聚合：** 训练 $M=3$ 个不同随机种子初始化的优势模型，推理取逐帧最小值 $A_{\text{STEAM}}(f_i) = \min_{m \in \{1..M\}} A(f_i; \theta_m)$。当 rollout 进入分布外重试状态时（如图 4 毛巾折叠 1200–1350 帧），个别成员的乐观误判会被其余成员拉低，从而剔除不良片段。
 2. **分池分位数阈值：** 为防止专家与低质非专家轨迹互相挤压入选名额，分别对**专家池**（$q^{\text{exp}} = 0.8$，保留 Top-80%）和**非专家池**（纠偏 + rollout，$q^{\text{non-exp}} = 0.3$，保留 Top-30%）划定阈值生成二值标签 $I_t \in \{0, 1\}$。
-3. **CFGRL 策略提纯：** 将二值优势标记作为文本/条件前缀输入 $\pi_0$（[$\pi_0$ 策略](../methods/π0-policy.md)），训练期以 $p_{\text{drop}}=0.1$ 随机丢弃条件实现无条件/有条件联合建模；推理期采用 $w=2.5$ 执行无分类器引导采样，稳定输出高优势动作块。
+3. **CFGRL 策略提纯：** 将二值优势标记作为文本/条件前缀输入 $\pi_0$（[$\pi_0$ 策略](../methods/pi0-policy.md)），训练期以 $p_{\text{drop}}=0.1$ 随机丢弃条件实现无条件/有条件联合建模；推理期采用 $w=2.5$ 执行无分类器引导采样，稳定输出高优势动作块。
 
 ## 实验评测与方法对比
 
@@ -211,7 +211,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- 方法基础：[VLA 综述](../methods/vla.md) · [强化学习与后训练](../methods/reinforcement-learning.md) · [行为克隆](../methods/behavior-cloning.md) · [π₀ 策略](../methods/π0-policy.md) · [LWD 隐世界动力学](../methods/lwd.md)
+- 方法基础：[VLA 综述](../methods/vla.md) · [强化学习与后训练](../methods/reinforcement-learning.md) · [行为克隆](../methods/behavior-cloning.md) · [π₀ 策略](../methods/pi0-policy.md) · [LWD 隐世界动力学](../methods/lwd.md)
 - 路线对比：[在线 RL vs 离线 RL](../comparisons/online-vs-offline-rl.md)
 - 任务与基础设施：[操作任务](../tasks/manipulation.md) · [遥操作数据采集](../tasks/teleoperation.md) · [LeRobot 数据基础设施](./lerobot.md)
 - 相关论文实体：[χ₀ / kai0：真机鲁棒操作与分布式 DAgger](./paper-kai0.md) · [ROVE：人形 VLA 人工干预与恢复](./paper-rove-humanoid-vla-intervention.md) · [DEED：双臂精细操作纠偏与数据演化](./paper-deed.md) · [LeHome：双臂衣物折叠评测基准](./paper-lehome-learning-to-fold.md)

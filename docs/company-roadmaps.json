@@ -80,7 +80,7 @@
           "title": "GR00T N1",
           "track": "VLA",
           "desc": "Eagle VLM + DiT 动作头，数据金字塔联合预训练。",
-          "id": "entity-paper-hrl-stack-34-gr00t_n1",
+          "id": "entity-paper-hrl-stack-34-gr00t-n1",
           "url": "https://github.com/NVIDIA/Isaac-GR00T"
         },
         {
@@ -1892,7 +1892,7 @@
           "title": "openpi",
           "track": "开源",
           "desc": "开源 π₀ / π₀-FAST 权重与微调、推理示例，成为社区复现底座。",
-          "id": "wiki-methods-π0-policy",
+          "id": "wiki-methods-pi0-policy",
           "url": "https://www.pi.website/blog/openpi"
         },
         {
@@ -2333,7 +2333,7 @@
           "title": "Perceptive Humanoid Parkour",
           "track": "感知跑酷",
           "desc": "运动匹配合成长程技能链，再经专家训练与 DAgger / PPO 蒸馏为机载深度策略；已归档官方代码、动作库与学生 ONNX。",
-          "id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+          "id": "entity-paper-hrl-stack-22-perceptive-humanoid-parkour",
           "url": "https://php-parkour.github.io/",
           "date_note": "日期按已归档论文的 arXiv v1 月份；会议发表与代码发布另计。",
           "date_source": "https://arxiv.org/abs/2602.15827"

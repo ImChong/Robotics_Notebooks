@@ -5,7 +5,7 @@ status: complete
 updated: 2026-10-08
 summary: "RAG（Retrieval-Augmented Generation）在生成前从外部知识库检索相关片段再条件生成，用可更新、可溯源的非参数记忆补足 LLM 参数化知识，是 agent grounding、VLM 约束与 LLM Wiki 对照范式的共同基座。"
 related:
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ./ai-auto-research.md
   - ./transformer.md
   - ../methods/vla.md
@@ -46,7 +46,7 @@ sources:
 ## 为什么重要
 
 - **知识密集型任务的基础范式：** 开放域 QA、企业知识库问答、代码/日志 grounding 都依赖「先找再答」；Lewis et al.（NeurIPS 2020）证明 **retrieve-then-generate** 在 QA 上优于纯生成与 extractive 基线，且 **换检索语料即可更新知识**。
-- **降低幻觉、改善溯源：** 生成可指向检索段（attribution）；本库 [Karpathy LLM Wiki 模式](../references/llm-wiki-karpathy.md) 把 RAG 的反面讲透——**预编译 wiki + 强制 `## 参考来源`** 让综合洞见 **复利**，而非每次 query 重新拼片段。
+- **降低幻觉、改善溯源：** 生成可指向检索段（attribution）；本库 [Karpathy LLM Wiki 模式](../concepts/llm-wiki-karpathy.md) 把 RAG 的反面讲透——**预编译 wiki + 强制 `## 参考来源`** 让综合洞见 **复利**，而非每次 query 重新拼片段。
 - **机器人/agent 的通用「外脑」结构：** 不限于文本段落——[Scanford](../entities/paper-scanford-robot-powered-data-flywheel.md) 用 **图书馆 catalog RAG** 约束 VLM 书标签；[SafeHumanoid](../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md) 用 **FAISS 检索安全阻抗模板**；与 [VLA](../methods/vla.md) / 技能库检索同属 **「检索约束 + 生成/控制」** 家族。
 - **AI Auto-Research 方法族之一：** [AI Auto-Research](./ai-auto-research.md) 综述将 RAG 列为 S2 文献综合的 **五类方法** 之一；Structured、可检索任务上 RAG 成熟，但 **不保证源正确或忠实转述**。
 
@@ -109,7 +109,7 @@ flowchart LR
 |------|------------------|--------------|----------|
 | 野外 VLM 微调 | 图书馆 catalog | VLM 书脊标签/OCR | [Scanford](../entities/paper-scanford-robot-powered-data-flywheel.md) |
 | 安全阻抗控制 | 16 条验证模板 + FAISS | 每关节 Kp/Kd/速度 | [SafeHumanoid](../entities/paper-notebook-safehumanoid-vlm-rag-driven-control-of-upper-bod.md) |
-| 知识库维护 | `sources/` + wiki 页 | ingest/query 写回 wiki | [LLM Wiki](../references/llm-wiki-karpathy.md) |
+| 知识库维护 | `sources/` + wiki 页 | ingest/query 写回 wiki | [LLM Wiki](../concepts/llm-wiki-karpathy.md) |
 
 ### 框架与工具
 
@@ -125,7 +125,7 @@ flowchart LR
 
 ## 关联页面
 
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 预编译知识 vs 查询时 RAG
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 预编译知识 vs 查询时 RAG
 - [AI Auto-Research（学术研究自动化）](./ai-auto-research.md) — RAG 在 S2 文献综合中的位置
 - [Transformer](./transformer.md) — 现代 RAG 生成器骨干
 - [VLA（Vision-Language-Action）](../methods/vla.md) — 多模态策略与 catalog/技能检索

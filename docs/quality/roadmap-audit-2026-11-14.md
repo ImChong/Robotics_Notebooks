@@ -52,7 +52,7 @@
 | [Real2Sim](../../roadmap/depth-real2sim.md) | 更新：episode 孪生也可包含执行器/控制响应，不能把执行器划为 Sim2Real 独占；VLM 说明链接改到分类页，避免点击却进入 VLA 动作模型。 |
 | [具身数据](../../roadmap/depth-embodied-data.md) | 更新：ARSTAG 从采集装置移到合成支路，补操作数据/基准选型与 DAS 2.0 代际/模态选型；无动作视频仍可预训练，时钟同步不等于消除链路/执行延迟。保留失败数据、许可与配比维度。 |
 | [WAM](../../roadmap/depth-wam.md) | 更新：Cascaded/Joint 分支并列；SLIM 移到训练期预测对照并分清 H100 模型计时，LeWM/LG-DKGP 作为独立世界模型+规划对照，不按 world-model 名称自动归类。 |
-| [工程入门子路线](../../wiki/roadmaps/humanoid-practitioner-entry-roadmap.md) | 保留正文：局部切口→单机构闭环→作品集的定位与算法路线不同；从总览补入口解决导航遗漏，不复制为新的 root 路线。 |
+| [工程入门子路线](../humanoid-practitioner-entry-roadmap.md) | 保留正文：局部切口→单机构闭环→作品集的定位与算法路线不同；从总览补入口解决导航遗漏，不复制为新的 root 路线。 |
 
 ## 关键变化的一手核验
 

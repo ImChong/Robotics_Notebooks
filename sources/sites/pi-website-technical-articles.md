@@ -11,9 +11,9 @@
 
 | 日期 | 文章 | 技术摘录与阅读价值 |
 | --- | --- | --- |
-| 2024-10-31 | [π₀: Our First Generalist Policy](https://www.pi.website/blog/pi0) | 跨机器人、跨任务数据训练 VLA，以连续动作生成控制不同本体；[π₀ 方法](../../wiki/methods/π0-policy.md)。 |
+| 2024-10-31 | [π₀: Our First Generalist Policy](https://www.pi.website/blog/pi0) | 跨机器人、跨任务数据训练 VLA，以连续动作生成控制不同本体；[π₀ 方法](../../wiki/methods/pi0-policy.md)。 |
 | 2025-01-16 | [FAST: Efficient Robot Action Tokenization](https://www.pi.website/research/fast) | 用 DCT、量化和 BPE 压缩连续动作 chunk 为离散 token；π₀-FAST 把动作预测变成自回归训练，但逐 token 推理有延迟代价。 |
-| 2025-02-04 | [Open Sourcing π₀](https://www.pi.website/blog/openpi) | 发布 openpi 的基础权重、微调与推理示例，以及 π₀-FAST；接入新机器人仍需匹配观测、动作和归一化。[π₀ 方法页](../../wiki/methods/π0-policy.md)。 |
+| 2025-02-04 | [Open Sourcing π₀](https://www.pi.website/blog/openpi) | 发布 openpi 的基础权重、微调与推理示例，以及 π₀-FAST；接入新机器人仍需匹配观测、动作和归一化。[π₀ 方法页](../../wiki/methods/pi0-policy.md)。 |
 | 2025-02-26 | [Teaching Robots to Listen and Think Harder](https://www.pi.website/research/hirobot) | Hi Robot 将高层任务分解与低层动作执行结合，引入人类反馈处理复杂的多阶段指令。[论文实体](../../wiki/entities/paper-hi-robot.md)。 |
 | 2025-04-22 | [π₀.₅: A VLA with Open-World Generalization](https://www.pi.website/blog/pi05) | 混合知识来源提升陌生家庭环境中的任务泛化；[论文实体](../../wiki/entities/paper-pi05-open-world-vla.md)。 |
 | 2025-05-28 | [VLAs that Train Fast, Run Fast, and Generalize Better](https://www.pi.website/research/knowledge_insulation) | Knowledge Insulation 用 FAST token 训练骨干，动作专家梯度不回传。[论文实体](../../wiki/entities/paper-knowledge-insulation.md)。 |
@@ -40,5 +40,5 @@
 ## 关联页面
 
 - [VLA 方法总览](../../wiki/methods/vla.md)
-- [π₀](../../wiki/methods/π0-policy.md)
+- [π₀](../../wiki/methods/pi0-policy.md)
 - [π₀.₇](../../wiki/methods/pi07-policy.md)

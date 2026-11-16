@@ -181,20 +181,20 @@ flowchart TB
 | 03 | SMP | [smp.md](../methods/smp.md) |
 | 04 | Kimodo | [kimodo.md](../entities/kimodo.md) |
 | 05 | MotionBricks | [motionbricks.md](../methods/motionbricks.md) |
-| 06 | Natural Humanoid Robot Locomotion with Generative Motion Prior | [paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md](../entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) |
-| 07 | Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning | [paper-amp-survey-07-adversarial_locomotion_and_motion_im.md](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) |
+| 06 | Natural Humanoid Robot Locomotion with Generative Motion Prior | [paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md](../entities/paper-amp-survey-06-natural-humanoid-robot-locomotion-wi.md) |
+| 07 | Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning | [paper-amp-survey-07-adversarial-locomotion-and-motion-im.md](../entities/paper-amp-survey-07-adversarial-locomotion-and-motion-im.md) |
 | 08 | MoRE | [paper-amp-survey-08-more.md](../entities/paper-amp-survey-08-more.md) |
 | 09 | Hiking in the Wild | [paper-hiking-in-the-wild.md](../entities/paper-hiking-in-the-wild.md) |
 | 10 | Unified Walking, Running, and Recovery for Humanoids via State-Dependent Adversarial Motion Priors | [paper-unified-walk-run-recovery-sdamp.md](../entities/paper-unified-walk-run-recovery-sdamp.md) |
 | 11 | Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning | [paper-adaptive-humanoid-control.md](../entities/paper-adaptive-humanoid-control.md) |
 | 12 | HAML | [paper-amp-survey-12-haml.md](../entities/paper-amp-survey-12-haml.md) |
-| 13 | Humanoid Goalkeeper | [paper-amp-survey-13-humanoid_goalkeeper.md](../entities/paper-amp-survey-13-humanoid_goalkeeper.md) |
+| 13 | Humanoid Goalkeeper | [paper-amp-survey-13-humanoid-goalkeeper.md](../entities/paper-amp-survey-13-humanoid-goalkeeper.md) |
 | 14 | HUSKY | [paper-amp-survey-14-husky.md](../entities/paper-amp-survey-14-husky.md) |
 | 15 | PhysHSI | [paper-amp-survey-15-physhsi.md](../entities/paper-amp-survey-15-physhsi.md) |
 | 16 | CLOT | [paper-amp-survey-16-clot.md](../entities/paper-amp-survey-16-clot.md) |
 | 17 | TeamHOI | [paper-amp-survey-17-teamhoi.md](../entities/paper-amp-survey-17-teamhoi.md) |
 | 18 | Deep Whole-body Parkour | [paper-deep-whole-body-parkour.md](../entities/paper-deep-whole-body-parkour.md) |
-| 19 | Embrace Collisions | [paper-amp-survey-19-embrace_collisions.md](../entities/paper-amp-survey-19-embrace_collisions.md) |
+| 19 | Embrace Collisions | [paper-amp-survey-19-embrace-collisions.md](../entities/paper-amp-survey-19-embrace-collisions.md) |
 
 ## 局限
 

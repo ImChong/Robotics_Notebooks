@@ -5,7 +5,7 @@ status: complete
 updated: 2026-09-15
 arxiv: "2607.20110"
 related:
-  - ./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
+  - ./paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md
   - ../methods/any2track.md
   - ./nvidia-sonic.md
   - ../methods/beyondmimic.md
@@ -22,7 +22,7 @@ summary: "Extreme-RGMT（arXiv:2607.20110）：在 RGMT 上做两阶段 continua
 
 # Extreme-RGMT：高动态技能的持续学习与鲁棒通用全身跟踪
 
-**Extreme-RGMT**（*Continual Learning of Highly Dynamic Skills for Robust Generalist Humanoid Control*，[arXiv:2607.20110](https://arxiv.org/abs/2607.20110)）由 **北京理工大学**、**人形机器人（上海）有限公司（青龙 / OpenLoong）** 与 **山东大学** 提出：在前作 [RGMT](./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) 的动力学条件参考编码之上，用 **两阶段 continual learning** 先稳住 generalist 跟踪，再以 **PACE** 与 **STAR** 把空翻、侧手翻等高动态技能叠进同一策略，并在 Unitree G1 上验证固定回放与 Xsens 在线遥操作。
+**Extreme-RGMT**（*Continual Learning of Highly Dynamic Skills for Robust Generalist Humanoid Control*，[arXiv:2607.20110](https://arxiv.org/abs/2607.20110)）由 **北京理工大学**、**人形机器人（上海）有限公司（青龙 / OpenLoong）** 与 **山东大学** 提出：在前作 [RGMT](./paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md) 的动力学条件参考编码之上，用 **两阶段 continual learning** 先稳住 generalist 跟踪，再以 **PACE** 与 **STAR** 把空翻、侧手翻等高动态技能叠进同一策略，并在 Unitree G1 上验证固定回放与 Xsens 在线遥操作。
 
 ## 一句话定义
 
@@ -123,7 +123,7 @@ flowchart TB
 
 ## 与其他工作对比
 
-- vs [RGMT](./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)：保留动力学条件参考聚合，补分支出编码 / FSQ，并加 Stage II 持续扩展。
+- vs [RGMT](./paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md)：保留动力学条件参考聚合，补分支出编码 / FSQ，并加 Stage II 持续扩展。
 - vs [OmniXtreme](./paper-hrl-stack-16-omnixtreme.md)：高质量 XtremeMotion 上均可近满分；换直接重定向 AMASS 困难集时 Extreme-RGMT 更稳（90.91% vs 36.16%）。
 - vs 直接 Fine-Tuning：specialist 上升但 generalist 明显掉；PACE 用 consolidation 对齐基座抑制漂移。
 - vs [SONIC](./nvidia-sonic.md) / [BeyondMimic](../methods/beyondmimic.md)：generalist 库上同量级；本工作重点是把高动态段叠进同一策略并吃脏在线 MoCap。
@@ -163,7 +163,7 @@ flowchart TB
 
 ## 关联页面
 
-- [RGMT（前作）](./paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) — 动力学条件参考聚合与恢复课程
+- [RGMT（前作）](./paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md) — 动力学条件参考聚合与恢复课程
 - [Any2Track & RGMT](../methods/any2track.md) — Transformer 历史编码 + 交叉注意力跟踪范式
 - [SONIC](./nvidia-sonic.md) — 规模化全身跟踪对照
 - [BeyondMimic](../methods/beyondmimic.md) — 高动态跟踪 + 扩散蒸馏路线

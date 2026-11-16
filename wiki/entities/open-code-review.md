@@ -24,7 +24,7 @@ related:
   - ./humanlayer-skills.md
   - ./birdview.md
   - ../concepts/agentic-coding-software-fundamentals.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 original:
   - ../../sources/repos/open-code-review.md
@@ -155,7 +155,7 @@ sequenceDiagram
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 轻量日常工程 skill，与 OCR **垂直工具** 对照
 - [Agent Reach](agent-reach.md) — 外网读搜脚手架；与 OCR **仓库内评审** 互补
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 人如何用取舍语言 **转向** agent
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 本库 **ingest/lint** 与 OCR **PR 评审** 可并行
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 本库 **ingest/lint** 与 OCR **PR 评审** 可并行
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 
 ## 参考来源

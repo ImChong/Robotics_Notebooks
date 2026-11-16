@@ -11,7 +11,7 @@ related:
   - ./instanttrack.md
   - ./paper-supermimic.md
   - ../methods/model-based-rl.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 original:
   - ../../sources/papers/blinkmimic-2611-16422.md
   - ../../sources/papers/blinkmimic_arxiv_2611_16422.md
@@ -119,7 +119,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [11.09–11.13 人形／四足 29 篇论文阅读坐标](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)：本次周报中的 BlinkMimic 唯一节点复用入口。
+- [11.09–11.13 人形／四足 29 篇论文阅读坐标](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)：本次周报中的 BlinkMimic 唯一节点复用入口。
 
 - [本期 29 篇具身智能论文地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 

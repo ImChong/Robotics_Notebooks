@@ -50,5 +50,5 @@
 
 ## 对 wiki 的映射
 
-- 实体页：[paper-hrl-stack-26-learning_vision_driven_reactive_socc.md](../../wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)
+- 实体页：[paper-hrl-stack-26-learning-vision-driven-reactive-socc.md](../../wiki/entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md)
 - 项目页：[humanoid-kick-vision-driven-soccer.md](../sites/humanoid-kick-vision-driven-soccer.md)

@@ -68,7 +68,7 @@ $$ v(x_t, t) = f(x_t, t) - \frac{1}{2} g(t)^2 \nabla_x \log p_t(x_t) $$
 ## 关联页面
 - [流匹配与具身策略（概念）](../concepts/flow-matching-embodied-policy.md) — VLA 动作头 FM 的工程口径（专栏编译）
 - [MIT 6.S184 Flow Matching & Diffusion（2026）](../overview/mit-flow-matching-diffusion-2026.md) — SDE/FM 系统课
-- [π₀ (Pi-zero) 策略模型](../methods/π0-policy.md)
+- [π₀ (Pi-zero) 策略模型](../methods/pi0-policy.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [Generative World Models](../methods/generative-world-models.md)
 

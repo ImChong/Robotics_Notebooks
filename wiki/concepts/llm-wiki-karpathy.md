@@ -1,5 +1,5 @@
 ---
-type: reference
+type: concept
 tags: [methodology, llm, wiki, karpathy, knowledge-base]
 status: complete
 sources:
@@ -22,7 +22,7 @@ related:
   - ../concepts/asd-ste100.md
   - ../entities/asd-ste100-skill.md
 summary: "LLM Wiki 是由 LLM 持续维护的结构化知识库模式；Karpathy 原始构想强调 sources/wiki/schema 与 ingest/query/lint，rohitg00 的 v2 Gist 提出生命周期、类型化图谱、混合检索、自动化与治理扩展。"
-updated: 2026-10-09
+updated: 2026-11-16
 original:
   - ../../sources/blogs/karpathy_llm_wiki_gist_reading_full.md
 ---

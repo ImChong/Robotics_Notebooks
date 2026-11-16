@@ -97,7 +97,7 @@ MuJoCo 的 G1/T1、单机器人采样、每轮最多 250k transitions（83 分�
 - [人形运动控制](../tasks/humanoid-locomotion.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [PPO：与离策略 XQC 对照](../methods/ppo.md)
-- [11.09–11.13 人形／四足 29 篇周报](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 人形／四足 29 篇周报](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

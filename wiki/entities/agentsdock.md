@@ -20,7 +20,7 @@ related:
   - ./agent-reach.md
   - ./superpowers-obra.md
   - ../concepts/model-context-protocol.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/sites/agentsdock-net.md
   - ../../sources/repos/zhengyiluo_agentsdock.md
@@ -144,7 +144,7 @@ sequenceDiagram
 - [Agent Reach](./agent-reach.md) — 编码代理外网读搜脚手架
 - [Superpowers（obra）](./superpowers-obra.md) — 交付流程 skills，可与任意 CLI 代理叠加
 - [Model Context Protocol](../concepts/model-context-protocol.md) — 客户端 `/` 菜单可管理 MCP（以官方 features 为准）
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译范式；AgentsDock 编译的是 **代理会话与产物审阅体验**
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译范式；AgentsDock 编译的是 **代理会话与产物审阅体验**
 
 ## 参考来源
 

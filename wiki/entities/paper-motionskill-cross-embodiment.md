@@ -9,7 +9,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../../roadmap/depth-cross-embodiment.md
   - ../concepts/sim2real.md
-  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
+  - ../overview/humanoid-quadruped-2026-11-09-13-29-papers.md
 sources:
   - ../../sources/papers/motionskill-cross-embodiment_arxiv_2611_16346.md
 original:
@@ -94,7 +94,7 @@ flowchart TD
 - [motion retargeting](../concepts/motion-retargeting.md)
 - [cross embodiment](../../roadmap/depth-cross-embodiment.md)
 - [sim2real](../concepts/sim2real.md)
-- [11.09–11.13 29 篇总览](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
+- [11.09–11.13 29 篇总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
 ## 参考来源
 

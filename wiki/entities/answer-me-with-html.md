@@ -15,7 +15,7 @@ related:
   - ./agent-skills-addyosmani.md
   - ./vercel-agent-browser-skill.md
   - ../concepts/agentic-coding-software-fundamentals.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/qingyuna-answer-me-with-html.md
   - ../../sources/sites/answer-me-with-html.md
@@ -121,7 +121,7 @@ sequenceDiagram
 - [Agent Skills（Addy Osmani）](./agent-skills-addyosmani.md) — 将软件工程流程打包成编码代理技能
 - [agent-browser（Vercel Labs Skill）](./vercel-agent-browser-skill.md) — 让代理通过 CLI 操作浏览器
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 人与编码代理的协作边界
-- [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) — 把检索与对话结论沉淀为可复用知识
+- [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) — 把检索与对话结论沉淀为可复用知识
 
 ## 参考来源
 

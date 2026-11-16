@@ -25,7 +25,7 @@ GitHub 组织自述为 Amazon 的 Frontier AI & Robotics Org。Amazon 官方招�
 | 2025-10 | ResMimic | 通用运动跟踪先验上的残差全身操作 | [ResMimic](../../wiki/entities/paper-resmimic.md) |
 | 2025-11 | TWIST2 | 便携全身遥操作、数采与 visuomotor 学习 | [TWIST2](../../wiki/entities/paper-twist2.md) |
 | 2026-02 | RPL | 多视角深度与复杂地形行走 | [RPL](../../wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) |
-| 2026-02 | Perceptive Humanoid Parkour | 动作匹配、技能链与深度感知跑酷 | [PHP](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
+| 2026-02 | Perceptive Humanoid Parkour | 动作匹配、技能链与深度感知跑酷 | [PHP](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) |
 | 2026-06 | LadderMan | 深度感知攀梯、梯上遥操作 | [LadderMan](../../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) |
 | 未确认首发月份 | holosoma | 训练、推理与重定向框架 | [holosoma](../../wiki/entities/holosoma.md) |
 

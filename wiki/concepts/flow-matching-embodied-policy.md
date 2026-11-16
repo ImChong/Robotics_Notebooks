@@ -6,11 +6,11 @@ updated: 2026-11-15
 related:
   - ../formalizations/probability-flow.md
   - ../overview/mit-flow-matching-diffusion-2026.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../methods/pi07-policy.md
   - ../methods/vla.md
   - ../methods/diffusion-policy.md
-  - ../entities/paper-hrl-stack-34-gr00t_n1.md
+  - ../entities/paper-hrl-stack-34-gr00t-n1.md
   - ../entities/paper-ros2smolvla.md
   - ../entities/paper-pi0.md
   - ../entities/paper-smolvla.md
@@ -110,8 +110,8 @@ flowchart LR
 
 | 系统 | 角色 | 本库入口 |
 |------|------|----------|
-| π₀ / π₀.5 | PaliGemma（3B）+ **约 300M flow matching 动作专家**，共 3.3B 参数（π₀ 论文） | [π₀ 方法](../methods/π0-policy.md)、[π₀.7](../methods/pi07-policy.md) |
-| GR00T N1 | DiT **flow-matching** 动作模块（System 1，论文称 120 Hz 闭环出动作；VLM 约 10 Hz） | [GR00T N1 实体](../entities/paper-hrl-stack-34-gr00t_n1.md) |
+| π₀ / π₀.5 | PaliGemma（3B）+ **约 300M flow matching 动作专家**，共 3.3B 参数（π₀ 论文） | [π₀ 方法](../methods/pi0-policy.md)、[π₀.7](../methods/pi07-policy.md) |
+| GR00T N1 | DiT **flow-matching** 动作模块（System 1，论文称 120 Hz 闭环出动作；VLM 约 10 Hz） | [GR00T N1 实体](../entities/paper-hrl-stack-34-gr00t-n1.md) |
 | SmolVLA | 0.45B，**Action Expert 用 FM**（LIBERO 平均 87.3，与 π₀ 的 86.0 相当） | 底座 [2506.01844](https://arxiv.org/abs/2506.01844)；[ROS2SmolVLA](../entities/paper-ros2smolvla.md) 部署例 |
 
 更多 flow VLA 索引见 [VLA 方法页](../methods/vla.md)「π₀ / SmolVLA / Green-VLA …」段；**World Action Model** 侧的 joint flow 见 [Rolling-WAM](../entities/paper-rolling-wam.md) 等，与「动作头 FM」问题域不同。
@@ -164,6 +164,6 @@ flowchart LR
 
 - [Flow Matching for Generative Modeling（arXiv:2210.02747）](https://arxiv.org/abs/2210.02747)
 - [MIT 6.S184 讲义 An Introduction to Flow Matching and Diffusion Models（arXiv:2506.02070）](https://arxiv.org/abs/2506.02070)
-- [π₀ (Pi-zero) 策略模型](../methods/π0-policy.md)
-- [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md)
+- [π₀ (Pi-zero) 策略模型](../methods/pi0-policy.md)
+- [GR00T N1](../entities/paper-hrl-stack-34-gr00t-n1.md)
 - [arXiv:2506.01844 SmolVLA](https://arxiv.org/abs/2506.01844)

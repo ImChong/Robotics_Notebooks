@@ -35,7 +35,7 @@
   - **Skills Layer (`skills/`)：** 每 skill 含 `SKILL.md`（规程）与 `PURPOSE.md`（回溯 motivating wiki patterns）。
 - **对 wiki 的映射：**
   - [WikiSkill（论文实体）](../../wiki/entities/paper-wikiskill.md) — 架构与运行时合约。
-  - [LLM Wiki（Karpathy）](../../wiki/references/llm-wiki-karpathy.md) — 论文显式援引的「编译经验为持久知识」范式。
+  - [LLM Wiki（Karpathy）](../../wiki/concepts/llm-wiki-karpathy.md) — 论文显式援引的「编译经验为持久知识」范式。
 
 ### 2) 演化闭环四组件
 
@@ -88,4 +88,4 @@
 ## 对 wiki 的映射
 
 - 升格实体页：[WikiSkill（论文实体）](../../wiki/entities/paper-wikiskill.md)
-- 交叉补强：[LLM Wiki（Karpathy）](../../wiki/references/llm-wiki-karpathy.md)、[Superpowers（obra）](../../wiki/entities/superpowers-obra.md)、[Darwin Skill](../../wiki/entities/darwin-skill.md)
+- 交叉补强：[LLM Wiki（Karpathy）](../../wiki/concepts/llm-wiki-karpathy.md)、[Superpowers（obra）](../../wiki/entities/superpowers-obra.md)、[Darwin Skill](../../wiki/entities/darwin-skill.md)

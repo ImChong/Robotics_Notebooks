@@ -10,7 +10,7 @@
 - **Stars：** ~2643（2026-09-20）
 - **入库日期：** 2026-09-20
 - **一句话说明：** GitHub 组织默认 Profile README 兼新版 AI Practice Wiki 项目仓：从早期 AIGC 工具课升级为 **真实任务驱动** 的中文教程（Claude Code、Codex、Agent Harness、Skills、Loop、Obsidian、Hermes/OpenClaw），并索引鲁班/庖丁/蔡伦等 **班门家族** skills 与 Carl Skills 工作流仓。
-- **为什么值得保留：** 与本站 [Karpathy LLM Wiki 模式](../../wiki/references/llm-wiki-karpathy.md) 及 [ingest 规范](../../schema/ingest-workflow.md) 同向 — 强调 **任务卡、验收、把踩坑写进规则/Skill**；中文路径覆盖本库维护者常用的 Cloud Agent / skills 生态；OpenClaw/Hermes 教程可补 [openclaw 实体页](../../wiki/entities/openclaw.md) 文档侧链。
+- **为什么值得保留：** 与本站 [Karpathy LLM Wiki 模式](../../wiki/concepts/llm-wiki-karpathy.md) 及 [ingest 规范](../../schema/ingest-workflow.md) 同向 — 强调 **任务卡、验收、把踩坑写进规则/Skill**；中文路径覆盖本库维护者常用的 Cloud Agent / skills 生态；OpenClaw/Hermes 教程可补 [openclaw 实体页](../../wiki/entities/openclaw.md) 文档侧链。
 - **沉淀到 wiki：** 是 → [`wiki/entities/learnprompt.md`](../../wiki/entities/learnprompt.md)
 
 ## 开源状态
@@ -38,7 +38,7 @@
 | 关联 | 说明 |
 |------|------|
 | [learnprompt-pro.md](../sites/learnprompt-pro.md) | 教程站结构与 8 路径索引 |
-| [llm-wiki-karpathy.md](../../wiki/references/llm-wiki-karpathy.md) | 知识编译 + Agent 记忆同构 |
+| [llm-wiki-karpathy.md](../../wiki/concepts/llm-wiki-karpathy.md) | 知识编译 + Agent 记忆同构 |
 | [openclaw.md](../../wiki/entities/openclaw.md) | 站点含 OpenClaw 架构导读 |
 | [hermes-agent.md](../../wiki/entities/hermes-agent.md) | Hermes 学习循环教程 |
 | [mattpocock-skills.md](../../wiki/entities/mattpocock-skills.md) | 工程 skills 轻量对照 |

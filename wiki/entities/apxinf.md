@@ -6,7 +6,7 @@ updated: 2026-11-07
 code: https://github.com/RLinf/APXinf-robo
 related:
   - ../methods/vla.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../entities/paper-pi05-open-world-vla.md
   - ../entities/nvidia-jetson.md
   - ../entities/jetson-ai-lab.md
@@ -140,7 +140,7 @@ sequenceDiagram
 - [RLark](./rlark.md) — 同生态跨集群云–边 Job 编排（可选）
 - [Harness VLA / RPent](./paper-harness-vla.md) — 同 RLinf 生态 agentic 运行时
 - [π₀.₅](./paper-pi05-open-world-vla.md) — 默认 benchmark 模型
-- [π₀ Policy](../methods/π0-policy.md) — OpenPI 官方栈
+- [π₀ Policy](../methods/pi0-policy.md) — OpenPI 官方栈
 - [VLA](../methods/vla.md) — 方法总览与部署经验
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md) — 延迟/异步对照
 - [VLA 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) — RLinf 栈索引

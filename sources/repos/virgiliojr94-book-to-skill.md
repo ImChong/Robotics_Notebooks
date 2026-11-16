@@ -23,4 +23,4 @@
 ## 对 wiki 的映射
 
 - 主实体：[book-to-skill](../../wiki/entities/book-to-skill.md)
-- 对照阅读：[LLM Wiki（Karpathy 模式）](../../wiki/references/llm-wiki-karpathy.md) — 持久、跨来源的人工策展知识层。
+- 对照阅读：[LLM Wiki（Karpathy 模式）](../../wiki/concepts/llm-wiki-karpathy.md) — 持久、跨来源的人工策展知识层。

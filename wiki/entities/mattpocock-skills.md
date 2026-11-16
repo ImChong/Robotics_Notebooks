@@ -37,7 +37,7 @@ related:
   - ./gsap-skills.md
   - ./video-shotcraft.md
   - ./agent-reach.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
@@ -65,7 +65,7 @@ summary: "mattpocock/skills（Skills For Real Engineers）是 Matt Pocock 公开
 
 ## 为什么重要（对本知识库读者）
 
-- **与 LLM Wiki 维护同构：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 把 **知识编译进 `wiki/`**；本技能库把 **工程习惯编译进 `SKILL.md` + `CONTEXT.md` + ADR**。两者都服务 **人类策展 + 代理执行**，但对象分别是 **机器人知识** 与 **通用应用代码**。
+- **与 LLM Wiki 维护同构：** [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 把 **知识编译进 `wiki/`**；本技能库把 **工程习惯编译进 `SKILL.md` + `CONTEXT.md` + ADR**。两者都服务 **人类策展 + 代理执行**，但对象分别是 **机器人知识** 与 **通用应用代码**。
 - **与 Superpowers 的分工：** [Superpowers（obra）](superpowers-obra.md) 强调 **brainstorm → worktree → 子代理评审 → 强制 TDD 管线**；mattpocock/skills 更强调 **保留开发者控制权**、反对 GSD/BMAD/Spec-Kit 式「流程包办」，技能可 **自选组合**（README 自述 *Hack around with them*）。
 - **对本仓库 agent 的直接价值：** 维护 Robotics_Notebooks 时大量 **ingest、派生文件同步、长 markdown 交叉引用**；`/grill-with-docs` 与 `CONTEXT.md` 可降低 **术语不一致导致的冗长解释**；`/tdd` 与 `/diagnose` 可迁移到 **脚本与 CI 工具链** 的修改场景（与 `make ci-preflight` 文化一致）。
 - **命名注意：** 本库含 `productivity/caveman` 技能，与 [Caveman（JuliusBrussee）](caveman.md) **不同上游、不同实现**；二者都追求更短输出，宜对照选用而非混为同一插件。
@@ -134,7 +134,7 @@ flowchart TD
 - [video-shotcraft](video-shotcraft.md) — **Remotion 产品宣传片** 垂直 Agent Skill（镜头配方卡 + Ink Press 模板）
 - [Agent Reach](agent-reach.md) — 外网读搜工具链脚手架
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 吴恩达技能图：有 agent 仍要懂取舍，不能把 vibe coding 当能力
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
 - [Nuwa Skill](nuwa-skill.md) / [Cangjie Skill](cangjie-skill.md) / [Darwin Skill](darwin-skill.md) — 通用 skill 蒸馏/进化（与本库 **编码工程** 技能互补）
 - [SkillCorpus](paper-skillcorpus.md) — 社区 `SKILL.md` 生态级策展语料与检索评测（对照精品垂直技能库）

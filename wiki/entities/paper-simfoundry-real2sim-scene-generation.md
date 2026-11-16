@@ -18,7 +18,7 @@ related:
   - ./behavior-1k.md
   - ./physx-omni.md
   - ./genesis-world-10.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./paper-agentic-real2sim.md
   - ./paper-lucida-r2s.md
   - ./paper-sceneagent-real2sim-capture-physics.md
@@ -228,7 +228,7 @@ sequenceDiagram
 - [BEHAVIOR-1K / OmniGibson](./behavior-1k.md) — 开源仓实际导出与加载层
 - [PhysX-Omni](./physx-omni.md) — 另一条 **统一物理字段 3D 生成** 路线，可对照「视频孪生 vs 生成式资产库」
 - [Genesis World 1.0](./genesis-world-10.md) — 产业侧 **real-to-sim 评测基础设施** 叙事参照
-- [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md) — 实验策略族之一（GR00T N1.6/N1.7）
+- [GR00T N1](./paper-hrl-stack-34-gr00t-n1.md) — 实验策略族之一（GR00T N1.6/N1.7）
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md) — 研究组与姊妹工作（ENPIRE、GR00T Visual Sim2Real 等）
 - [Agentic Real2Sim](./paper-agentic-real2sim.md) — VLM agent 编排的 episode 级 Real2Sim（代码待开放）
 - [Lucida](./paper-lucida-r2s.md) — 室内多视角 → 可编辑资产 + GizmoAct 9-DoF（几何对齐，无策略评测）
@@ -243,7 +243,7 @@ sequenceDiagram
 
 - 上游路线：[Sim2Real](../concepts/sim2real.md)、[仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)；运行层 [BEHAVIOR-1K / OmniGibson](./behavior-1k.md)。
 - 同类 Real2Sim 对照：[Agentic Real2Sim](./paper-agentic-real2sim.md)、[Lucida](./paper-lucida-r2s.md)、[SceneAgent](./paper-sceneagent-real2sim-capture-physics.md)、[CRISP](../methods/crisp-real2sim.md)。
-- 下游策略：[VLA](../methods/vla.md)、[GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)。
+- 下游策略：[VLA](../methods/vla.md)、[GR00T N1](./paper-hrl-stack-34-gr00t-n1.md)。
 
 ## 参考来源
 

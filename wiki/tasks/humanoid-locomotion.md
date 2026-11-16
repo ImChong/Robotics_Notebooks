@@ -150,7 +150,7 @@ summary: "人形机器人在复杂地形下的平衡与移动任务，强调高�
 ### 运动先验与生成式控制
 
 - [Walk Like This](../entities/paper-walk-like-this-stylized-locomotion.md) — 示例动作编码风格 + 自回归扩散生成 + PPO 跟踪；Unitree G1 / Jetson Thor 实时演示（CoRL 2026；未见可运行代码）
-- [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) — 扩散运动生成 + RL 全身跟踪，真机箱攀/跨栏/楼梯与混合地形
+- [Learning Whole-Body Humanoid Locomotion（ETH G1）](../entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) — 扩散运动生成 + RL 全身跟踪，真机箱攀/跨栏/楼梯与混合地形
 - [Generate, Track, Improve（GTI）](../entities/paper-generate-track-improve.md) — 双深度 flow matching 生成 + CLF-RL 跟踪 + AWR 微调生成器；G1 户外走跑跳箱/楼梯（arXiv:2609.31577；代码待发布）
 - [ADP 对抗动力学先验](../entities/paper-adp.md) — SRBD-TO + 动力学窗对抗奖励，推扰相对 AMP 更稳；代码 coming soon
 - [被动轮人形轮滑 AMP（Tsinghua）](../entities/paper-roller-skating-amp-humanoid-passive-wheels.md) — 被动轮滑 + 9 片圆柱碰撞模型；人体 MoCap→GMR→独立 AMP 学 Pump Glide / Push Glide

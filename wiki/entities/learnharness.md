@@ -15,7 +15,7 @@ sources:
 related:
   - ./get-it-study-companion.md
   - ./deeptutor.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 summary: "LearnHarness 是 AGPL-3.0 开源的本地优先 AI 学习私教：通过 Probe 诊断起点、Mermaid 依赖图规划、预测式教学、独立变式练习，以及由命题与推理链构成的跨会话知识图谱形成学习闭环；模型成本与数据出站依所选提供商而定。"
 ---
 
@@ -151,7 +151,7 @@ sequenceDiagram
 
 - [Get It. Study Companion](get-it-study-companion.md)：对照文档可视化、复习日志与节点评分；LearnHarness 更强调摸底及推理链。
 - [DeepTutor](deeptutor.md)：对照 RAG / Book / Skills 的综合学习平台与诊断式教学 harness。
-- [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md)：比较人工维护的结构化 wiki 与学习会话抽取的个人命题图。
+- [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md)：比较人工维护的结构化 wiki 与学习会话抽取的个人命题图。
 
 ## 参考来源
 

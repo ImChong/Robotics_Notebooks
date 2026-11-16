@@ -127,7 +127,7 @@ flowchart TB
 
 ### 推荐读什么
 
-- [GR00T N1 实体](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) · [Isaac GR00T 平台](../wiki/entities/isaac-gr00t.md)
+- [GR00T N1 实体](../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) · [Isaac GR00T 平台](../wiki/entities/isaac-gr00t.md)
 - GEAR · 代码：<https://github.com/NVIDIA/Isaac-GR00T> · arXiv：<https://arxiv.org/abs/2503.14734>
 
 ### 学完输出什么
@@ -190,7 +190,7 @@ flowchart LR
 | ② | Ingredients / DiT-Block | [paper-robotic-dit-ingredients-dit-block-policy](../wiki/entities/paper-robotic-dit-ingredients-dit-block-policy.md) |
 | ③ | RDT-1B | [paper-rdt-1b](../wiki/entities/paper-rdt-1b.md) |
 | ④ | π₀ | [paper-pi0](../wiki/entities/paper-pi0.md) |
-| ⑤ | GR00T N1 | [paper-hrl-stack-34-gr00t_n1](../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) |
+| ⑤ | GR00T N1 | [paper-hrl-stack-34-gr00t_n1](../wiki/entities/paper-hrl-stack-34-gr00t-n1.md) |
 | ⑥ | GR00T N1.5 | [paper-gr00t-n1-5](../wiki/entities/paper-gr00t-n1-5.md) |
 | ⑦ | Dita | [paper-dita-scaling-diffusion-transformer-vla](../wiki/entities/paper-dita-scaling-diffusion-transformer-vla.md) |
 | ⑧ | PredActor（人形机载控制专题） | [paper-predactor](../wiki/entities/paper-predactor.md) |

@@ -24,7 +24,7 @@ related:
   - ../concepts/ai-auto-research.md
   - ../concepts/model-context-protocol.md
   - ../queries/real-robot-policy-autoresearch-harness.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/sciencediscovery.md
   - ../../sources/sites/openjiuwen-com.md
@@ -63,7 +63,7 @@ summary: "ScienceDiscovery（openJiuwen-ai/sciencediscovery，Apache-2.0）是�
 
 ## 为什么重要
 
-- **S2+S3 工作台，不是 wiki 编译器：** [AI Auto-Research](../concepts/ai-auto-research.md) 把文献综合与实验编排分成两段。本产品用 MCP 接 PubMed / arXiv / PDB 等，用沙箱跑分析脚本，用 Prompt Manifest 冻结技能修订—— complementary 于本库 [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 的「先编译进页面」。
+- **S2+S3 工作台，不是 wiki 编译器：** [AI Auto-Research](../concepts/ai-auto-research.md) 把文献综合与实验编排分成两段。本产品用 MCP 接 PubMed / arXiv / PDB 等，用沙箱跑分析脚本，用 Prompt Manifest 冻结技能修订—— complementary 于本库 [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 的「先编译进页面」。
 - **对照最小实验环：** [karpathy/autoresearch](./karpathy-autoresearch.md) 用固定 5 分钟 + `val_bpb` 约束代理只改 `train.py`。ScienceDiscovery 相反：开放文献、多工具、子代理 `task`，验证靠权限卡、审阅与 CAS，**没有**单一可比指标。选型时问的是「要不要锁编辑面」，不是谁更 SOTA。
 - **控制面可审计：** 文档把「自然语言空间」（agent 环）和「代码实体空间」（Runner + workspace）拆开；MCP 结果一律当不可信数据，claim/evidence 只接受受治理的 MCP 或可追溯执行。这对机器人论文复现里「模型随口引用 DOI」是直接纠偏。
 
@@ -194,7 +194,7 @@ sequenceDiagram
 - [Agent Reach](./agent-reach.md) — 外网读搜脚手架；与 MCP Connector 互补
 - [Model Context Protocol](../concepts/model-context-protocol.md) — Connector 协议层
 - [真机策略 autoresearch 闭环](../queries/real-robot-policy-autoresearch-harness.md) — 物理实验环；本页不覆盖 reset/verify
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs 可执行工作台
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 可执行工作台
 
 ## 参考来源
 

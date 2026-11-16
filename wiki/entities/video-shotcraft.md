@@ -24,7 +24,7 @@ related:
   - ./superpowers-obra.md
   - ./cad-skills.md
   - ../concepts/character-animation-vs-robotics.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/video-shotcraft.md
@@ -57,7 +57,7 @@ summary: "video-shotcraft（Vincentwei1021/video-shotcraft）是面向 Claude Co
 
 - **Agent Skills 生态的「成片交付」样本：** 与 [GSAP Skills](./gsap-skills.md)（DOM/Scroll 交互）、[img2threejs](./img2threejs.md)（程序化 Three.js）、[CAD Skills](./cad-skills.md)（STEP/URDF）并列，代表 **运动设计 / 产品视频** 垂直技能——把 **配方卡 + 调校过的 demo TSX + 独立 subagent 终检** 写成规约，而不是只给提示词。
 - **对本站与研究 demo 的直接价值：** 机器人/仿真项目常需 **几分钟级产品或结果宣传片**；本技能提供可复用镜头语法与 Ink Press 换皮路径，降低代理「炫技动画、无呼吸、无音效句式」的概率。
-- **与 LLM Wiki 维护同构：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 把研究知识编译进 `wiki/`；video-shotcraft 把 **镜头语言与验收清单** 编译进 `SKILL.md` / `references/`——都是 **人类策展 + 代理执行**。
+- **与 LLM Wiki 维护同构：** [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) 把研究知识编译进 `wiki/`；video-shotcraft 把 **镜头语言与验收清单** 编译进 `SKILL.md` / `references/`——都是 **人类策展 + 代理执行**。
 - **开源状态清晰：** 技能库与 Gallery **已开源**；渲染引擎 Remotion、音频 Mixkit 有 **独立许可**，商用前必须单独核验（见局限）。
 
 ## 核心机制与架构
@@ -161,7 +161,7 @@ sequenceDiagram
 - [Draw.io Scientific Illustrator](./drawio-scientific-illustrator.md) — **可见科研插图**（MCP + Skill）
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库（与本库 **垂直制片** 互补）
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 表演意图 vs 物理可控边界（弱交叉）
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译范式对照
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译范式对照
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护规范
 
 ## 参考来源

@@ -26,7 +26,7 @@ related:
   - ./unitree-g1.md
   - ./paper-shooting-for-contact.md
   - ./paper-rpl-robust-humanoid-perceptive-locomotion.md
-  - ./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md
+  - ./paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md
   - ./paper-notebook-walk-the-planc-physics-guided-rl-for-agile-human.md
   - ./paper-rom-nav.md
 sources:
@@ -146,7 +146,7 @@ flowchart TB
 
 ## 与其他工作对比
 
-| 维度 | [ETH 扩散+跟踪](./paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) | [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) | **GTI（本文）** |
+| 维度 | [ETH 扩散+跟踪](./paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) | [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) | **GTI（本文）** |
 |------|-----------------------------------------------|----------------------------|----------------|
 | 规划层 | 地形条件 **扩散** | 无（DAgger 深度策略） | **Flow matching** 全身轨迹 |
 | 微调对象 | 主要 **tracker** 闭环 RL | Stage 1–2 蒸馏 | **Generator AWR** |

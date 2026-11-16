@@ -15,7 +15,7 @@ related:
   - ./robot-world-models-training-loop-taxonomy.md
   - ../methods/generative-world-models.md
   - ../methods/model-based-rl.md
-  - ../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md
+  - ../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md
   - ../entities/robotic-world-model-eth-rsl.md
   - ../entities/lift-humanoid.md
   - ../entities/paper-haic.md
@@ -75,7 +75,7 @@ flowchart TB
 
 | 位置 | 世界模型做什么 | 代表页面 |
 |------|----------------|------------------------------|
-| **① 在线规划** | 潜空间展开候选动作，价值/失败筛选，只执行第一步 | [Ego-VCP](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
+| **① 在线规划** | 潜空间展开候选动作，价值/失败筛选，只执行第一步 | [Ego-VCP](../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) |
 | **② 模型式 RL / 适配** | 想象轨迹上继续训/微调策略；不确定性或解析动力学先验 | [RWM-U](../entities/robotic-world-model-eth-rsl.md)、[LIFT](../entities/lift-humanoid.md) |
 | **③ 内部动力学估计** | 补策略看不到的物体/耦合状态，**不**替策略搜动作 | [HAIC](../entities/paper-haic.md) |
 | **④ 未来预测进策略** | 训练目标/潜特征携带未来；部署更像动作策略 | [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)、[Being-M0.7](../entities/paper-being-m07-humanoid-latent-wam.md)、[Being-H0.7](../methods/being-h07.md) |
@@ -85,7 +85,7 @@ flowchart TB
 
 ### ① 在线规划：模型有决策权
 
-[Ego-VCP](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) 把第一视角深度与本体编成潜状态，采样高层动作序列并在世界模型里前滚，用价值与失败概率做 CEM 筛选；只执行第一步，观测一到就重规划。策展口径：G1 上约 **25 Hz**、约 **1024** 候选、时域约 **4** 步，下面仍接 RL 全身控制器。**世界模型改变下一条身体命令。**
+[Ego-VCP](../entities/paper-hrl-stack-33-ego-vision-world-model-for-humanoid.md) 把第一视角深度与本体编成潜状态，采样高层动作序列并在世界模型里前滚，用价值与失败概率做 CEM 筛选；只执行第一步，观测一到就重规划。策展口径：G1 上约 **25 Hz**、约 **1024** 候选、时域约 **4** 步，下面仍接 RL 全身控制器。**世界模型改变下一条身体命令。**
 
 ### ② 训练期动力学：误差沿时间累积是共同风险
 

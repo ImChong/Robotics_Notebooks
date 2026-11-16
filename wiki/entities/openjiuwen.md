@@ -20,7 +20,7 @@ related:
   - ./philia.md
   - ../concepts/ai-auto-research.md
   - ../concepts/model-context-protocol.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/sites/openjiuwen-com.md
   - ../../sources/repos/sciencediscovery.md
@@ -116,7 +116,7 @@ ScienceDiscovery 的 Explanation 写明 agent 环是 **本仓 TypeScript `native
 - [Philia](./philia.md) — 助手控制平面 + Robot Gateway；对照 JiuwenSymbiosis 的本体 adapter
 - [AI Auto-Research](../concepts/ai-auto-research.md) — 研究生命周期；ScienceDiscovery 落 S2/S3
 - [Model Context Protocol](../concepts/model-context-protocol.md) — 科学 Connector 与工具总线
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs 可执行 Swarm
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 可执行 Swarm
 
 ## 参考来源
 

@@ -99,7 +99,7 @@ original:
 | [Legged Lab DWAQ（Unitree G1）](https://gitee.com/chaomingsanhua/legged_lab) | [DreamWaQ：盲走一阶段鲁棒行走](../methods/dreamwaq.md) · 同主题共用 |
 | [legged_gym](https://github.com/leggedrobotics/legged_gym) | [legged_gym](../entities/legged-gym.md) |
 | [MoRE](https://github.com/TeleHuman/MoRE) | [MoRE：复杂地形上的人形多步态残差专家混合](../entities/paper-amp-survey-08-more.md) |
-| [Perceptive Humanoid Parkour](https://php-parkour.github.io/) | [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
+| [Perceptive Humanoid Parkour](https://php-parkour.github.io/) | [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) |
 | [Project Instinct](https://project-instinct.github.io/) | [Project Instinct](../entities/project-instinct.md) · 同主题共用 |
 | [PULSE](https://github.com/ZhengyiLuo/PULSE) | [PULSE](../entities/pulse-physics.md) |
 | [roboparty_train](https://github.com/Roboparty/roboparty_train) | [RoboParty（萝博派对）](../entities/roboparty.md) |
@@ -115,16 +115,16 @@ original:
 
 | 上游项目 | 本库详情 |
 | --- | --- |
-| [ALMI-Open](https://github.com/TeleHuman/ALMI-Open) | [ALMI：对抗 locomotion 与运动模仿的人形策略学习](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) |
+| [ALMI-Open](https://github.com/TeleHuman/ALMI-Open) | [ALMI：对抗 locomotion 与运动模仿的人形策略学习](../entities/paper-amp-survey-07-adversarial-locomotion-and-motion-im.md) |
 | [BeyondMimic](https://github.com/HybridRobotics/whole_body_tracking) | [BeyondMimic](../methods/beyondmimic.md) · 同主题共用 |
 | [BeyondMimic-Reproduction](https://github.com/hunter20041220/BeyondMimic-Reproduction) | [BeyondMimic](../methods/beyondmimic.md) · 同主题共用 |
 | [Deep Whole-Body Parkour](https://project-instinct.github.io/deep-whole-body-parkour/) | [Deep Whole-body Parkour：感知式全身跑酷](../entities/paper-deep-whole-body-parkour.md) |
 | [DeepMimic](https://github.com/xbpeng/DeepMimic) | [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) |
-| [Embrace Collisions](https://project-instinct.github.io/embrace-collisions/) | [Embrace Collisions：可部署的接触无关人形 Shadowing](../entities/paper-amp-survey-19-embrace_collisions.md) |
+| [Embrace Collisions](https://project-instinct.github.io/embrace-collisions/) | [Embrace Collisions：可部署的接触无关人形 Shadowing](../entities/paper-amp-survey-19-embrace-collisions.md) |
 | [engineai_rl_lab](https://github.com/engineai-robotics/engineai_rl_lab) | [engineai_rl_lab](../entities/engineai-rl-lab.md) |
-| [GenMimic](https://genmimic.github.io/) | [GenMimic：生成视频到物理可执行轨迹](../entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) |
+| [GenMimic](https://genmimic.github.io/) | [GenMimic：生成视频到物理可执行轨迹](../entities/paper-hrl-stack-04-from-generated-human-videos-to-physi.md) |
 | [GMT](https://github.com/zixuan417/humanoid-general-motion-tracking) | [GMT（General Motion Tracking for Humanoid Whole-Body Control）](../entities/paper-gmt.md) |
-| [H2O / human2humanoid](https://github.com/LeCAR-Lab/human2humanoid) | [H2O：人体到人形的实时全身遥操作](../entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) |
+| [H2O / human2humanoid](https://github.com/LeCAR-Lab/human2humanoid) | [H2O：人体到人形的实时全身遥操作](../entities/paper-hrl-stack-07-learning-human-to-humanoid-real-time.md) |
 | [Heracles](https://heracles-humanoid-control.github.io/) | [Heracles：跟踪精度与生成式恢复的扩散中间件](../entities/paper-heracles-humanoid-diffusion.md) |
 | [HoloMotion](https://github.com/HorizonRobotics/HoloMotion) | [HoloMotion（HoloMotion-1）](../entities/holomotion.md) |
 | [HumanPlus](https://github.com/MarkFzp/humanplus) | [HumanPlus](../entities/paper-loco-manip-161-012-humanplus.md) |
@@ -179,9 +179,9 @@ original:
 | [GigaWorld-0](https://giga-world-0.github.io/) | [GigaWorld-0](../entities/gigaworld-0.md) |
 | [GO-2](https://www.agibot.com/article/231/detail/56.html) | [GO-2（智元执行基座）](../entities/go-2.md) |
 | [HoloAgent](https://github.com/HorizonRobotics/HoloAgent) | [HoloAgent](../entities/holoagent.md) |
-| [Isaac-GR00T / GR00T N1.7](https://github.com/NVIDIA/Isaac-GR00T) | [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) |
+| [Isaac-GR00T / GR00T N1.7](https://github.com/NVIDIA/Isaac-GR00T) | [GR00T N1](../entities/paper-hrl-stack-34-gr00t-n1.md) |
 | [Octo](https://github.com/octo-models/octo) | [Octo（开源 Generalist Policy）](../entities/paper-octo.md) |
-| [openpi](https://github.com/Physical-Intelligence/openpi) | [π₀ (Pi-zero) 策略模型](../methods/π0-policy.md) |
+| [openpi](https://github.com/Physical-Intelligence/openpi) | [π₀ (Pi-zero) 策略模型](../methods/pi0-policy.md) |
 | [OpenVLA](https://github.com/openvla/openvla) | [OpenVLA](../entities/paper-openvla.md) |
 | [WholeBodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) | [WholeBodyVLA](../entities/paper-hrl-stack-30-wholebodyvla.md) |
 | [WorldArena](https://github.com/tsinghua-fib-lab/WorldArena) | [WorldArena](../entities/worldarena.md) |
@@ -268,7 +268,7 @@ original:
 | 主表上常见的多个入口 | 本库主阅读页 | 怎么理解 |
 |------|------|------|
 | ACT | [Action Chunking / ACT](../methods/action-chunking.md) | 方法页承载 ACT 与 action chunk 主线 |
-| openpi（π₀ 开源栈） | [π₀ Policy](../methods/π0-policy.md) | 官方开源实现挂在 π₀ 方法页 |
+| openpi（π₀ 开源栈） | [π₀ Policy](../methods/pi0-policy.md) | 官方开源实现挂在 π₀ 方法页 |
 | IsaacGymEnvs | [Isaac Gym](../entities/isaac-gym.md) | 示例环境归入 Gym 世代说明 |
 | BEHAVIOR-1K / OmniGibson | [BEHAVIOR-1K](../entities/behavior-1k.md) | 基准与仿真栈同页 |
 | InstinctLab / instinct_rl / instinct_onboard / 站群 | [Project Instinct](../entities/project-instinct.md) | 站群 + 训练/仿真/板载三仓 |
@@ -277,8 +277,8 @@ original:
 | BeyondMimic 与社区复现仓 | [BeyondMimic](../methods/beyondmimic.md) | 方法 + 复现入口 |
 | Motion-Between BFM-2 | [AgiBot BFM-2](../entities/agibot-bfm-2.md) | 产品线实体页 |
 | MuJoCo Menagerie | [MuJoCo](../entities/mujoco.md) | 官方模型库挂在仿真引擎页 |
-| ALMI-Open | [ALMI](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) | 开源仓归入对应论文页 |
-| GenMimic 项目页 | [GenMimic（生成视频→可执行轨迹）](../entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) | 项目页与论文深读同页 |
+| ALMI-Open | [ALMI](../entities/paper-amp-survey-07-adversarial-locomotion-and-motion-im.md) | 开源仓归入对应论文页 |
+| GenMimic 项目页 | [GenMimic（生成视频→可执行轨迹）](../entities/paper-hrl-stack-04-from-generated-human-videos-to-physi.md) | 项目页与论文深读同页 |
 
 ```mermaid
 flowchart LR

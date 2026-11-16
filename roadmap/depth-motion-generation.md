@@ -179,7 +179,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Diffusion-based Motion Generation](../wiki/methods/diffusion-motion-generation.md) — 控制环内生成器总览
-- [Learning Whole-Body Humanoid Locomotion](../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) 与 [Heracles](../wiki/entities/paper-heracles-humanoid-diffusion.md) — 扩散规划与恢复中间件
+- [Learning Whole-Body Humanoid Locomotion](../wiki/entities/paper-hrl-stack-27-learning-whole-body-humanoid-locomot.md) 与 [Heracles](../wiki/entities/paper-heracles-humanoid-diffusion.md) — 扩散规划与恢复中间件
 - [OMG](../wiki/entities/paper-omg-omni-modal-humanoid-control.md) 与 [MotionBricks](../wiki/methods/motionbricks.md) — 多模态接口与实时基元
 - [GPC](../wiki/entities/paper-gpc-generative-pretrained-controllers.md) — token 化生成控制器
 - [Kimodo-Policy](../wiki/entities/paper-kimodo-policy.md) — 冻结 Kimodo-G1，用视觉 ControlNet、HandNet 与实测运动历史分段重规划，再由 SONIC 跟踪；与仅输出运动学参考的 Kimodo 分开阅读
@@ -199,7 +199,7 @@ flowchart LR
 
 **方向 A：视频生成 → 机器人轨迹**
 - 用视频生成模型的动作先验反哺机器人：生成人类动作视频，再估计并物理化
-- 关键词：[From Generated Human Videos to Physically Plausible Robot Trajectories](../wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md)、[Mimic-Video](../wiki/methods/mimic-video.md)
+- 关键词：[From Generated Human Videos to Physically Plausible Robot Trajectories](../wiki/entities/paper-hrl-stack-04-from-generated-human-videos-to-physi.md)、[Mimic-Video](../wiki/methods/mimic-video.md)
 
 **方向 B：零样本与 Scaling**
 - 百万级数据 + 十亿级参数把文本-动作推向零样本泛化

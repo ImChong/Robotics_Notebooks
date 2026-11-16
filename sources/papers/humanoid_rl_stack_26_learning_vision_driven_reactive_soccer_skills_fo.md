@@ -26,7 +26,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-hrl-stack-26-learning_vision_driven_reactive_socc](../../wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)
+- [paper-hrl-stack-26-learning_vision_driven_reactive_socc](../../wiki/entities/paper-hrl-stack-26-learning-vision-driven-reactive-socc.md)
 - [humanoid-kick-vision-driven-soccer.md](../sites/humanoid-kick-vision-driven-soccer.md)
 - [humanoid-kick-vision-driven-soccer.md](../repos/humanoid-kick-vision-driven-soccer.md)
 - [humanoid-soccer](../../wiki/tasks/humanoid-soccer.md)

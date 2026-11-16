@@ -17,7 +17,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../concepts/foundation-policy.md
   - ./gr00t-wholebodycontrol.md
-  - ./paper-hrl-stack-34-gr00t_n1.md
+  - ./paper-hrl-stack-34-gr00t-n1.md
   - ./unitree-g1.md
 sources:
   - ../../sources/papers/openhlm_arxiv_2606_22174.md

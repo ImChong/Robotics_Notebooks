@@ -24,10 +24,7 @@ def main() -> int:
     wrong: list[str] = []
 
     for page in sorted(WIKI_DIR.rglob("*.md")):
-        rel_str = str(page.relative_to(ROOT))
-        if page.name.lower() in ("readme.md", "index.md") or any(
-            seg in rel_str for seg in ("references/", "roadmaps/")
-        ):
+        if page.name.lower() in ("readme.md", "index.md"):
             continue
 
         content = page.read_text(encoding="utf-8")

@@ -21,7 +21,7 @@ related:
   - ./superpowers-obra.md
   - ./video-shotcraft.md
   - ./sc-datav.md
-  - ../references/llm-wiki-karpathy.md
+  - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/threejs-game-skills.md
 summary: "Three.js Game Skills（majidmanzarpour/threejs-game-skills）是九件套 Agent Skills：threejs-game-director 路由玩法、AAA 画面、UI、Tripo/Gemini/ElevenLabs 资产生成、调试与 Playwright QA；内置 Vite+TS 脚手架、确定性测试钩子与证据清单，把浏览器 Three.js 游戏从零做到可发布。"
@@ -155,7 +155,7 @@ sequenceDiagram
 - [Skills For Real Engineers（mattpocock）](./mattpocock-skills.md) — 通用编码工程技能对照
 - [Superpowers（obra）](./superpowers-obra.md) — 重流程交付技能库
 - [sc-datav](./sc-datav.md) — **Three.js + ECharts 地理大屏**（运营视图，非游戏循环）
-- [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 知识编译 vs skill 规约编译
+- [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs skill 规约编译
 
 ## 参考来源
 

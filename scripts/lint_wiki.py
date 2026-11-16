@@ -54,6 +54,7 @@ from original_reading import original_entries, reading_status
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 CANONICAL_FACTS_FILE = REPO_ROOT / "schema" / "canonical-facts.json"
+WIKI_FILENAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 
 # methods/ 页面入链数超过该阈值即视为"高频引用"，需有对应 queries/comparisons 操作落地
 METHOD_PRACTITIONER_INBOUND_THRESHOLD = 3
@@ -442,7 +443,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     # pi：同形异义缩写，无单一概念可建页——Modelica 的圆周率常量 `pi`、Pi 编码 agent
     # CLI（`pi install ...`）、StarVLA 的 **PI** flow-matching 动作头、ENPIRE 的
     # **PI**（Policy Improvement）模块、仿生多模态评测的 **PI**（Performance
-    # Improvement）指标等；π0 / π0.5 策略已由 methods/π0-policy.md
+    # Improvement）指标等；π0 / π0.5 策略已由 methods/pi0-policy.md
     # 承载（正文写作 π 而非 pi），不建 concepts/pi.md。
     "pi",
     # run / evaluate / make：命令行与 API 动词 token——`ros2 run`、`docker run`、
@@ -1198,6 +1199,7 @@ def _empty_results() -> dict[str, Any]:
         "missing_abbrev_glossary": [],
         "abbrev_glossary_wrong_order": [],
         "broken_links": [],
+        "invalid_filenames": [],
         "stub_pages": [],
         "missing_pages": [],
         "missing_concept_pages": [],
@@ -1262,28 +1264,23 @@ def _check_per_page(
                 f"{rel}:{line_no}: Mermaid 占位围栏须替换为 ```mermaid"
             )
 
+        if page.name != "README.md" and not WIKI_FILENAME_RE.match(page.name):
+            results["invalid_filenames"].append(
+                f"{rel}（须使用小写 ASCII kebab-case 文件名：^[a-z0-9]+(?:-[a-z0-9]+)*\\.md$）"
+            )
+
         if page.name.lower() not in ("readme.md", "index.md"):
             if not inbound.get(resolved):
                 results["orphan_pages"].append(str(rel))
 
-        is_meta_page = (
-            page.name.lower() in ("readme.md", "index.md")
-            or "references/" in str(rel)
-            or "roadmaps/" in str(rel)
-        )
+        is_meta_page = page.name.lower() in ("readme.md", "index.md")
         if not is_meta_page and not has_section(content, ["关联", "related", "已有页面", "关系"]):
             results["missing_related"].append(str(rel))
 
-        is_meta_sources = page.name.lower() in ("readme.md", "index.md") or "references/" in str(
-            rel
-        )
-        if not is_meta_sources and not has_section(content, ["参考来源", "sources", "参考"]):
+        if not is_meta_page and not has_section(content, ["参考来源", "sources", "参考"]):
             results["missing_sources"].append(str(rel))
 
-        is_meta_abbrev = page.name.lower() in ("readme.md", "index.md") or any(
-            seg in str(rel) for seg in ("references/", "roadmaps/")
-        )
-        if not is_meta_abbrev:
+        if not is_meta_page:
             has_abbrev = has_section(
                 content, ["英文缩写速查", "abbreviation glossary", "abbreviations"]
             )
@@ -1784,7 +1781,7 @@ def _check_original_reading(pages: list[Path], results: dict[str, Any]) -> None:
 
 def _check_frontmatter(pages: list[Path], results: dict[str, Any]) -> None:
     """Frontmatter 检查：type 字段、updated 过期、summary 字段。"""
-    fm_exempt_dirs = {"references", "roadmaps", "tech-map", "overview", "schema", "queries"}
+    fm_exempt_dirs = {"tech-map", "overview", "schema", "queries"}
     today_for_stale = date.today()
 
     for page in pages:
@@ -2705,12 +2702,7 @@ def compute_ingest_coverage() -> dict[str, int]:
     covered = 0
     total = 0
     for page in get_wiki_pages():
-        rel = page.relative_to(REPO_ROOT)
-        is_meta_page = (
-            page.name.lower() in ("readme.md", "index.md")
-            or "references/" in str(rel)
-            or "roadmaps/" in str(rel)
-        )
+        is_meta_page = page.name.lower() in ("readme.md", "index.md")
         if not is_meta_page:
             total += 1
             if has_source_reference(_read_page_text(page)):
@@ -2813,6 +2805,7 @@ def format_report(results: dict[str, Any]) -> str:
             "❌",
         ),
         ("broken_links", "断链（内链目标不存在）", "❌"),
+        ("invalid_filenames", "Wiki 文件名不符合小写 ASCII kebab-case 规范", "❌"),
         ("wikilink_syntax", "禁止的 [[...]] wikilink 写法（请用标准 Markdown）", "❌"),
         ("mermaid_placeholder_fences", "Mermaid 围栏仍为占位符（图表不会渲染）", "❌"),
         (

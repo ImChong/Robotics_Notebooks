@@ -10,7 +10,7 @@ related:
   - ./beyondmimic.md
   - ../concepts/domain-randomization.md
   - ../entities/paper-extreme-rgmt.md
-  - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
+  - ../entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
@@ -98,6 +98,6 @@ Any2Track 采用了一种自适应缩放的残差映射方式，提高动作的�
 - [Model-Based RL](./model-based-rl.md) — 世界模型在 Any2Track 中的辅助作用。
 - [BeyondMimic](./beyondmimic.md) — 同样强调参考轨迹跟踪。
 - [Extreme-RGMT](../entities/paper-extreme-rgmt.md) — RGMT 后作：PACE + STAR 高动态扩展。
-- [RGMT 论文实体](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) — 42 篇栈策展页。
+- [RGMT 论文实体](../entities/paper-hrl-stack-14-robust-and-generalized-humanoid-moti.md) — 42 篇栈策展页。
 - [Switch](./switch-framework.md) — 引入了增强技能图与缓冲节点，彻底解决了 Any2Track 在处理大跨度动作切换时的失稳问题。
 - [Domain Randomization](../concepts/domain-randomization.md) — 历史编码器本质上是在线识别被随机化的环境参数。

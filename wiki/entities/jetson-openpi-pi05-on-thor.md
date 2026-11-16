@@ -8,7 +8,7 @@ related:
   - ./nvidia-jetson.md
   - ./tensorrt.md
   - ./apxinf.md
-  - ../methods/π0-policy.md
+  - ../methods/pi0-policy.md
   - ../methods/vla.md
   - ../entities/paper-pi05-open-world-vla.md
   - ../queries/vla-deployment-guide.md
@@ -108,7 +108,7 @@ sequenceDiagram
 - **Thor + JP 7.2 绑定：** 教程在 **AGX Thor DevKit** 验证；Orin 需另查容器与算力是否满足 **~6 GB** 权重与 TRT 编译内存。
 - **补丁维护：** Thor 脚本不在 **Physical-Intelligence/openpi** 主分支；upstream 漂移时需重新 pin 或自行合并 `download.sh` 补丁。
 - **固定 language 长度：** 超长 prompt（常规 >208 token）会被截断；极长指令需改 engine 构建参数。
-- **非训练课：** 只覆盖 **推理与 serve**；微调仍走 openpi 官方文档与 [π₀ 方法页](../methods/π0-policy.md)。
+- **非训练课：** 只覆盖 **推理与 serve**；微调仍走 openpi 官方文档与 [π₀ 方法页](../methods/pi0-policy.md)。
 
 ## 关联页面
 
@@ -116,7 +116,7 @@ sequenceDiagram
 - [NVIDIA Jetson](./nvidia-jetson.md) — Thor 硬件与 JetPack
 - [TensorRT](./tensorrt.md) — NVFP4 / trtexec 背景
 - [APXInf](./apxinf.md) — 第三方低延迟 OpenPI-compatible 引擎
-- [π₀ (Pi-zero) 策略](../methods/π0-policy.md) — openpi 方法入口
+- [π₀ (Pi-zero) 策略](../methods/pi0-policy.md) — openpi 方法入口
 - [VLA](../methods/vla.md) — 通才 VLA 脉络
 - [VLA 真机部署指南](../queries/vla-deployment-guide.md)
 

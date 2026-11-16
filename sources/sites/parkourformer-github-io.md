@@ -37,7 +37,7 @@ HKUST-GZ 等单位的人形跑酷项目页：用 **Transformer + 未来两步本
 
 - 与 [Hiking in the Wild](../../wiki/entities/paper-hiking-in-the-wild.md) 同用 Project Instinct MuJoCo，但把贡献从「感知 + AMP + MoE」转到 **显式未来监督 + query 历史**。
 - 消融把「下楼靠 MSE 监督、缺口靠 RGB-D」拆开，比只报 Transformer 容量更可操作。
-- 对照 [PHP](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) / [LightLP](../../wiki/entities/paper-light-loco-parkour.md)：不走技能链或种子扩张，押 **单网 + 短时域 foresight**。
+- 对照 [PHP](../../wiki/entities/paper-hrl-stack-22-perceptive-humanoid-parkour.md) / [LightLP](../../wiki/entities/paper-light-loco-parkour.md)：不走技能链或种子扩张，押 **单网 + 短时域 foresight**。
 
 ## 关联资料
 
