@@ -135,3 +135,9 @@ Program-synthesis approach that compiles language instructions into executable r
 - [natnew/awesome-physical-ai](https://github.com/natnew/awesome-physical-ai)
 - [aichr/awesome-physical-ai](https://github.com/aichr/awesome-physical-ai)
 - [原文 / 官方入口](https://arxiv.org/abs/2209.07753)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2209.07753](https://arxiv.org/abs/2209.07753)。
+- **项目或官方发布入口：** [项目页](https://code-as-policies.github.io)。
+- **清单记录：** `survey_ax_2209_07753`；本次仅补充身份与链接，未重新通读或核验已有结论。

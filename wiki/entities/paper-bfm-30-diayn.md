@@ -11,7 +11,7 @@ related:
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-03-intrinsic-reward-pretraining.md
   - ../methods/reinforcement-learning.md
-  - ../concepts/exploration-in-rl.md
+  - ../tasks/autonomous-exploration.md
   - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/generative-world-models.md

@@ -131,3 +131,9 @@ We present Teach-and-Grow Learning (TGL), an agent-centered architecture for gen
 
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [原文](https://arxiv.org/abs/2608.17209)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2608.17209](https://arxiv.org/abs/2608.17209)。
+- **项目或官方发布入口：** [项目页](https://tgl.changnie.top)。
+- **清单记录：** `survey_ax_2608_17209`；本次仅补充身份与链接，未重新通读或核验已有结论。

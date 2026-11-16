@@ -10,7 +10,7 @@
 - **代码：** **已开源**（Apache-2.0；Rust CLI + Node 包装、Chrome for Testing 引导、skill 内容与 `agent-browser skills get` 动态文档均在 GitHub）
 - **一句话说明：** 面向 coding agent 的 **原生 Rust 浏览器自动化 CLI**：CDP + 无障碍树快照 + `@eN` 元素引用；技能 stub 指向 `skills get core` 等与安装版本同步的工作流，并含 Electron/Slack/dogfood 等专项 skill。
 - **为什么值得保留：** 与本站 ingest **步骤 2.5 项目页核查**、静态站 `docs/detail.html` 截图验证、以及 [BrowserSkill](browserskill.md)（借真实 Chrome profile）形成 **无头 CDP CLI vs 扩展借 tab** 对照；Cloud Agent 文档要求浏览器验证时可优先此 CLI 而非内置 web 工具。
-- **沉淀到 wiki：** 是 → [`wiki/entities/vercel-agent-browser-skill.md`](../wiki/entities/vercel-agent-browser-skill.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/vercel-agent-browser-skill.md`](../../wiki/entities/vercel-agent-browser-skill.md)
 
 ## README 要点（归纳）
 

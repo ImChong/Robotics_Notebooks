@@ -28,7 +28,7 @@
     h0: 36.15, h0t: 36.95, hInf: 38.18, hInfT: 39.92,
     form: 41.64, cam: 41.9, two: 44.1,
     part1: 46.1, turning: 46.79, plate: 49.29, origin: 50.05, around: [51.84, 53.3], same: 54.31,
-    qArr: [55.64, 56.95], slide: [57.59, 58.35], rot: [58.83, 59.5], stretch: [59.91, 60.45], p1Lab: 60.22,
+    qArr: [55.64, 56.95], slide: [57.59, 58.35], rot90: [58.83, 59.5], stretch: [59.91, 60.45], p1Lab: 60.22,
     part2: 61.94, along: 63.68, dir2: 67.58, grow: [68.74, 69.9], p2Lab: 69.71,
     sum: [71.24, 71.95], plus: 71.59, vLab: 72.59
   };
@@ -348,7 +348,7 @@
           if (pg > 0.01) { var pp = ringPts(Pc, q0, RQ, AO + 0.25, AO + 0.25 + (2 * Math.PI - 0.42) * pg, 64); dPath.setAttribute('d', E.poly(pp)); headAt(dPathHead, pp, 12); }
           E.op(dPath, pg > 0.01 ? 1 : 0); E.op(dPathHead, pg > 0.01 ? 1 : 0);
           // 转轴上方的蓝色小椭圆：转的方向（远的半圈压在轴后面）
-          var zS = Pc.z1 - 0.38, spinPts = ringPts(Pc, [Qw[0], Qw[1], zS], 0.32, -60 * D, 220 * D, 40), nearD = '', farD = '', prevN = null;
+          var zS = Pc.z1 - 0.38, spinPts = ringPts(Pc, [Qw[0], Qw[1], zS], 0.32, -60 * D, 220 * D, 40), nearD = '', farD = ''; prevN = null;
           spinPts.forEach(function (pt, k2) {
             var aa = (-60 + 280 * k2 / 40) * D, isN = Pc.depth([Math.cos(aa), Math.sin(aa), 0]) < 0, sg = pt[0].toFixed(1) + ' ' + pt[1].toFixed(1);
             if (isN) nearD += (prevN === true ? ' L ' : ' M ') + sg; else farD += (prevN === false ? ' L ' : ' M ') + sg;
@@ -368,7 +368,7 @@
           dOLab.setAttribute('x', (O[0] - 64).toFixed(1)); dOLab.setAttribute('y', (O[1] + 6).toFixed(1)); E.op(dOLab, oOn);
           // 句 8：q → 原点的黄箭头；平移到原点；在板面里绕原点转 90°；拉长（乘角速度）
           var g0 = f(st, T.qArr[0] + 0.3, T.qArr[1] - T.qArr[0]), sl = f(st, T.slide[0], T.slide[1] - T.slide[0]);
-          var al = f(st, T.rot[0], T.rot[1] - T.rot[0]), sc = f(st, T.stretch[0], T.stretch[1] - T.stretch[0]);
+          var al = f(st, T.rot90[0], T.rot90[1] - T.rot90[0]), sc = f(st, T.stretch[0], T.stretch[1] - T.stretch[0]);
           var ca = Math.cos(Math.PI / 2 * al), sn = Math.sin(Math.PI / 2 * al), kk = 1 + (KW - 1) * sc;
           var dv = [(ca * MQ[0] - sn * MQ[1]) * kk, (sn * MQ[0] + ca * MQ[1]) * kk];
           var tl0 = [Qw[0] * (1 - sl), Qw[1] * (1 - sl)];
@@ -380,12 +380,12 @@
           E.op(rArc, arcOn); E.op(rArcHead, arcOn);
           var rl = Pc([1.15 * Math.cos(AO + Math.PI / 4), 1.15 * Math.sin(AO + Math.PI / 4), 0]);
           rLab.setAttribute('x', rl[0].toFixed(1)); rLab.setAttribute('y', (rl[1] + 7).toFixed(1));
-          E.op(rLab, f(st, T.rot[0] + 0.3, 0.3) * (1 - f(st, T.part2, 0.3)));
+          E.op(rLab, f(st, T.rot90[0] + 0.3, 0.3) * (1 - f(st, T.part2, 0.3)));
           var P1 = [KW * -MQ[1], KW * MQ[0], 0], p1s = Pc(P1);
           p1Lab.setAttribute('x', (p1s[0] + 12).toFixed(1)); p1Lab.setAttribute('y', (p1s[1] + 14).toFixed(1)); E.op(p1Lab, f(st, T.p1Lab, 0.3));
           dA1.line.style.strokeWidth = 4.5 + 2.5 * b(st, T.stretch[1], 0.8);
           // 句 9：沿着轴走（转轴旁的绿箭头）；第一份的尖上往上接第二份
-          var ug = f(st, T.along, 0.5), u0 = Pc([Qw[0], Qw[1], 0.2]), u1 = Pc([Qw[0], Qw[1], 0.2 + 0.7 * ug]);
+          var ug = f(st, T.along, 0.5); u0 = Pc([Qw[0], Qw[1], 0.2]); u1 = Pc([Qw[0], Qw[1], 0.2 + 0.7 * ug]);
           upA.set(u0[0] + 18, u0[1], u1[0] + 18, u1[1]); E.op(upA.g, ug > 0.01 ? 1 - f(st, T.sum[0], 0.4) : 0);
           var g2 = f(st, T.grow[0], T.grow[1] - T.grow[0]), p2s = Pc([P1[0], P1[1], HW * g2]);
           dA2.set(p1s[0], p1s[1], p2s[0], p2s[1]); E.op(dA2.g, g2 > 0.01 ? 1 : 0);

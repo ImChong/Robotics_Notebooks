@@ -10,7 +10,7 @@
 - **官方后续软件论文（引用格式见仓库 README）：** [Software Impacts, 2020](https://doi.org/10.1016/j.simpa.2020.100022)
 - **入库日期：** 2026-05-11
 - **一句话说明：** 基于 MuJoCo 的 Python 仿真与 RL 环境基础设施：`suite` 基准任务、`mujoco` 绑定、`viewer` / `mjcf` / `composer` / `locomotion` 等组件。
-- **沉淀到 wiki：** 是 → [`wiki/entities/dm-control.md`](../wiki/entities/dm-control.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/dm-control.md`](../../wiki/entities/dm-control.md)
 
 ---
 

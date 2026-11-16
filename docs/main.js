@@ -58,7 +58,11 @@
 
   const links = document.querySelectorAll('.page-subnav a, .main-nav a');
   const sections = Array.from(links)
-    .map(function (link) { return document.querySelector(link.getAttribute('href')); })
+    .map(function (link) {
+      var href = link.getAttribute('href');
+      if (!href || !/^#.+/.test(href)) return null;
+      return document.querySelector(href);
+    })
     .filter(Boolean);
 
   function updateActive() {
@@ -145,6 +149,7 @@
     s = s.replace(/&#x([0-9a-f]+);?/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
          .replace(/&#([0-9]+);?/g, (_, dec) => String.fromCharCode(parseInt(dec, 10)))
          .replace(/&colon;?/gi, ':');
+    if (/^\/\//.test(s)) return false;
     if (/^(?:https?|mailto|tel):/i.test(s)) return true;
     if (/:/i.test(s)) return false;
     return true;
@@ -5549,9 +5554,12 @@
         pathToNodeType: attrIndex.pathToNodeType,
         detailIdToNodeType: attrIndex.detailIdToNodeType
       };
+      _detailCommunityIndexPromise = null;
       return _detailCommunityIndex;
     }).catch(function () {
-      _detailCommunityIndex = {
+      _detailCommunityIndex = null;
+      _detailCommunityIndexPromise = null;
+      return {
         pathToCommunity: new Map(),
         communityLabel: {},
         pathToHasRepo: new Map(),
@@ -5559,7 +5567,6 @@
         pathToNodeType: new Map(),
         detailIdToNodeType: new Map()
       };
-      return _detailCommunityIndex;
     });
     return _detailCommunityIndexPromise;
   }
@@ -6732,11 +6739,17 @@
     if (!currentPath) return;
 
     ensureLinkGraphData().then(function (gd) {
-      var palette = (window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10;
-      var communityColor = {};
+      var tooltipApi = window.RNGraphTooltip;
+      var palette = (tooltipApi && typeof tooltipApi.getCommunityColors === 'function')
+        ? tooltipApi.getCommunityColors()
+        : ((window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10);
+      var communityColor = (tooltipApi && typeof tooltipApi.buildCommunityColorMap === 'function')
+        ? tooltipApi.buildCommunityColorMap(gd.communities || [])
+        : {};
       var communityLabelMap = {};
+      var hasColorMap = Object.keys(communityColor).length > 0;
       (gd.communities || []).forEach(function (c, i) {
-        communityColor[c.id] = palette[i % palette.length];
+        if (!hasColorMap) communityColor[c.id] = palette[i % palette.length];
         communityLabelMap[c.id] = c.label || c.id;
       });
       var nodeMap = {};
@@ -8012,10 +8025,12 @@
   var labSearchEmpty = document.getElementById('homeLabSearchEmpty');
   function syncOrgSearchPlaceholder(tabName) {
     if (!orgSearch) return;
+    var sourceZh = tabName === 'lab' ? '搜索实验室路线…' : '搜索公司路线…';
+    orgSearch.setAttribute('data-home-placeholder-source', sourceZh);
     var isEn = document.documentElement.lang === 'en';
     orgSearch.placeholder = tabName === 'lab'
-      ? (isEn ? 'Search lab roadmaps…' : '搜索实验室路线…')
-      : (isEn ? 'Search company roadmaps…' : '搜索公司路线…');
+      ? (isEn ? 'Search lab roadmaps…' : sourceZh)
+      : (isEn ? 'Search company roadmaps…' : sourceZh);
   }
   // 公司 / 实验室标签切换：同一张卡内只显示一个面板
   function showOrgTab(name) {

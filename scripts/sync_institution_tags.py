@@ -427,7 +427,7 @@ def _should_process(rel_path: str, tags: list[str], *, entities_only: bool) -> b
     if "paper-notebook-stub" in tagset or "paper-notebook-planned" in tagset:
         return False
     if entities_only and not is_tool_entity(rel_path, tags):
-        pass
+        return False
     return True
 
 

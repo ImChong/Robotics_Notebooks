@@ -10,7 +10,7 @@
 - **入库日期：** 2026-10-01
 - **抓取方式：** Agent Reach v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox；`playwright==1.49.1`）；专辑页同会话 `data-link` 跳转（直连 CAPTCHA）
 - **专栏专辑：** [Modern Robotics 原理精读](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg2ODgxOTA1Mw==&action=getalbum&album_id=4521219024549937157)（第 5 篇 / 10）
-- **原始抓取落盘：** [`sources/raw/wechat_modern_robotics_album_4521219024549937157/05_mid2247483867/05_mid2247483867.md`](../sources/raw/wechat_modern_robotics_album_4521219024549937157/05_mid2247483867/05_mid2247483867.md)
+- **原始抓取落盘：** [`sources/raw/wechat_modern_robotics_album_4521219024549937157/05_mid2247483867/05_mid2247483867.md`](../raw/wechat_modern_robotics_album_4521219024549937157/05_mid2247483867/05_mid2247483867.md)
 - **一句话说明：** 运动旋量 $\mathcal{V}=[\omega;v]$：统一描述刚体瞬时速度，区分空间 twist 与物体 twist。
 
 ## 核心摘录（归纳，非全文）

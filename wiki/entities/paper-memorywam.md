@@ -20,7 +20,6 @@ related:
 sources:
   - ../../sources/papers/memorywam_arxiv_2606_20562.md
   - ../../sources/repos/memorywam.md
-  - ../../sources/sites/memorywam.md
   - ../../sources/blogs/wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md
 summary: "MemoryWAM（arXiv:2606.20562）：混合持久记忆 WAM：滑窗近期帧 + 任务起点 anchor + gist token 压缩长历史；推理复杂度 O(N)→O(N/d)，长时序家务优于 VLA/WAM 基线。"
 ---

@@ -138,18 +138,27 @@
         return window.RNExportFormats ? window.RNExportFormats.expandLinkGraph(gd) : gd;
       });
   graphDataPromise.then(function(gd) {
-    var palette = (typeof d3 !== 'undefined' && d3.schemeTableau10) ? d3.schemeTableau10 : TABLEAU10;
-    var communityFill = {};
+    var palette = (window.RNGraphTooltip && window.RNGraphTooltip.getCommunityColors)
+      ? window.RNGraphTooltip.getCommunityColors()
+      : ((typeof d3 !== 'undefined' && d3.schemeTableau10) ? d3.schemeTableau10 : TABLEAU10);
+    var communityFill = (window.RNGraphTooltip && typeof window.RNGraphTooltip.buildCommunityColorMap === 'function')
+      ? window.RNGraphTooltip.buildCommunityColorMap(gd.communities || [])
+      : {};
     var communityLabelMap = {};
+    var hasColorMap = Object.keys(communityFill).length > 0;
     var namedColorIdx = 0;
     (gd.communities || []).slice().sort(function (a, b) {
       if (a.id === 'community-other') return 1;
       if (b.id === 'community-other') return -1;
-      return (b.size || 0) - (a.size || 0);
+      var sizeDiff = (b.size || 0) - (a.size || 0);
+      if (sizeDiff !== 0) return sizeDiff;
+      return String(a.label || a.id).localeCompare(String(b.label || b.id), 'zh-CN');
     }).forEach(function(c) {
-      communityFill[c.id] = c.id === 'community-other'
-        ? '#94a3b8'
-        : palette[namedColorIdx++ % palette.length];
+      if (!hasColorMap) {
+        communityFill[c.id] = c.id === 'community-other'
+          ? '#94a3b8'
+          : palette[namedColorIdx++ % palette.length];
+      }
       communityLabelMap[c.id] = c.label || c.id;
     });
     function nodeFill(d) {

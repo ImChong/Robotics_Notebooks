@@ -18,7 +18,7 @@
 ## 为什么值得保留
 
 - 社区 **~105k stars**（2026-09-16）的 LLM 教育标杆之一，与 Karpathy *Zero to Hero*（micrograd / nanoGPT）形成 **视频驱动 vs 书+notebook 结构化** 互补。
-- 主线 **不依赖 HuggingFace 等高层 LLM 库**，用纯 PyTorch 把 tokenizer、MHA、GPT block、预训练环、SFT 拆开讲清 —— 对理解 [VLA](../wiki/methods/vla.md) / [动作分词](../wiki/formalizations/vla-tokenization.md) 背后的 **序列建模与离散 token 接口** 有直接帮助。
+- 主线 **不依赖 HuggingFace 等高层 LLM 库**，用纯 PyTorch 把 tokenizer、MHA、GPT block、预训练环、SFT 拆开讲清 —— 对理解 [VLA](../../wiki/methods/vla.md) / [动作分词](../../wiki/formalizations/vla-tokenization.md) 背后的 **序列建模与离散 token 接口** 有直接帮助。
 - 笔记本可在普通笔记本 GPU 上跑通；bonus 含 Llama/Qwen/Gemma 等 **from-scratch 变体** 与 DPO 对齐示例，便于从教学小模型过渡到工业架构直觉。
 
 ## 仓库结构（主线章节）

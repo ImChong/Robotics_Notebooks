@@ -12,7 +12,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/jepa_wam_arxiv_2608_09381.md
+  - ../../sources/papers/jepa-wam_arxiv_2608_09381.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "V-JEPA 潜空间联合嵌入世界动作模型：共享预测器学习视觉变化与连续动作，可接入已有 VLA 而不改感知–动作通路。"
 ---

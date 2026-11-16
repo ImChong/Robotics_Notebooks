@@ -137,7 +137,7 @@ def write_home_stats(coverage: dict[str, int] | None = None) -> dict[str, Any]:
     if coverage is None:
         import lint_wiki
 
-        coverage = lint_wiki.coverage_stats(lint_wiki.lint())
+        coverage = lint_wiki.compute_ingest_coverage()
 
     payload = build_payload(graph_stats, coverage)
     OUT_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")

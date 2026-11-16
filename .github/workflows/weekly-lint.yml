@@ -29,8 +29,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements-ci-lite.txt
 
-      # lint-report.md 不入库（避免与 PR 冲突），作为 workflow artifact 保存
+      # graph-stats.json 不入库，孤儿节点检查需要先生成
+      - name: Generate graph-stats before lint
+        run: python3 scripts/generate_link_graph.py
+
+      # lint-report.md 不入库（避免与 PR 冲突），作为 workflow artifact 保存；
+      # 允许存量警告/问题不阻断每日星标采集与报告上传
       - name: Run lint and save report
+        continue-on-error: true
         run: python3 scripts/lint_wiki.py --report
 
       - name: Upload lint report
@@ -42,6 +48,8 @@ jobs:
 
       # 顺带记录当日星标总数（增长趋势页 docs/star-history.html 的数据源）
       - name: Record star count
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/generate_star_history.py
 
       - name: Commit report

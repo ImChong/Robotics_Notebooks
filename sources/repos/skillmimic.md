@@ -84,7 +84,7 @@ python skillmimic/run.py --task SkillMimicBallPlay \
 | 关联 | 说明 |
 |------|------|
 | [ASE](../papers/ase.md) | 代码与技能嵌入族基座 |
-| [Learning to Ball](./humanoid_pnb_learning-to-ball.md)（PNB） | 同主题篮球长程组合对照 |
+| [Learning to Ball](../papers/humanoid_pnb_learning-to-ball.md)（PNB） | 同主题篮球长程组合对照 |
 | PhysHOI / SkillMimic-V2（外链） | 同作者 HOI 模仿前后作 |
 
 ## 对 wiki 的映射

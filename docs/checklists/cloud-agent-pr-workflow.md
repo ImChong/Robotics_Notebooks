@@ -65,7 +65,7 @@ git push -u origin <branch-name>
    若外网字体/CSS 加载较慢，可再增大 `--virtual-time-budget` 或外层 `timeout`。  
 4. **已合并且 Pages 已更新时**（可选）  
    亦可使用线上等价 URL，例如：  
-   `https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=...`  
+   `https://imchong.github.io/Robotics_Notebooks/detail.html?id=...`  
    注意：功能分支在合并前通常**不会**出现在线上，此时必须以本地 `http.server` 为准。
 
 ### 4.2 命令行门禁摘要（补充，不能替代站点页）

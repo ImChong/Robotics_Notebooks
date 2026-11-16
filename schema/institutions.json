@@ -408,7 +408,7 @@
       ]
     },
     "psibot": {
-      "label": "灵巧智能（PsiBot）",
+      "label": "灵初智能（PsiBot）",
       "aliases": [
         "psibot",
         "pku-psibot"
@@ -876,9 +876,10 @@
       ]
     },
     "umich": {
-      "label": "密歇根大学（UMich）",
+      "label": "密歇根大学（University of Michigan）",
       "aliases": [
-        "umich"
+        "umich",
+        "university-of-michigan"
       ]
     },
     "uw": {
@@ -1274,7 +1275,6 @@
       "label": "韩国国防科学研究所（Agency for Defense Development）",
       "aliases": [
         "agency-for-defense-development",
-        "add",
         "add-korea"
       ]
     },
@@ -1393,8 +1393,7 @@
     "robot-nav": {
       "label": "机器人导航开源社区（Robot-Nav）",
       "aliases": [
-        "robot-nav",
-        "robot nav"
+        "robot-nav"
       ]
     },
     "robotis": {
@@ -1745,8 +1744,7 @@
     "mimic-robotics": {
       "label": "迷可机器人（Mimic Robotics）",
       "aliases": [
-        "mimic-robotics",
-        "mimic"
+        "mimic-robotics"
       ]
     },
     "sssa": {
@@ -1849,14 +1847,16 @@
       ]
     },
     "dexmal": {
-      "label": "大晓智能（Dexmal）",
+      "label": "原力灵机（Dexmal）",
       "aliases": [
         "dexmal",
-        "dexmal-robotics"
+        "dexmal-robotics",
+        "original-intelligence",
+        "yuanli"
       ]
     },
     "dexforce": {
-      "label": "灵巧智能（DexForce）",
+      "label": "跨维智能（DexForce）",
       "aliases": [
         "dexforce"
       ]
@@ -2420,7 +2420,6 @@
       "aliases": [
         "imperial-college",
         "imperial",
-        "icl",
         "imperial-college-london"
       ]
     },
@@ -2454,13 +2453,6 @@
         "3d-gen-studio",
         "3dgenstudio",
         "visualbruno"
-      ]
-    },
-    "university-of-michigan": {
-      "label": "密歇根大学（University of Michigan）",
-      "aliases": [
-        "university-of-michigan",
-        "umich"
       ]
     },
     "iowa-state": {
@@ -2662,12 +2654,13 @@
         "hamburg",
         "university-of-hamburg",
         "uhh",
-        "uni hamburg"
+        "uni-hamburg"
       ]
     },
     "bit-bots": {
       "label": "汉堡比特机器人队（Hamburg Bit-Bots）",
       "aliases": [
+        "bit-bots",
         "bitbots",
         "hamburg-bit-bots"
       ]
@@ -3115,8 +3108,7 @@
       "label": "第一人称视觉实验室（FPV Labs）",
       "aliases": [
         "fpv-labs",
-        "fpvlabs",
-        "fpv"
+        "fpvlabs"
       ]
     },
     "rt-labs": {
@@ -3855,13 +3847,6 @@
         "aobi"
       ]
     },
-    "original-intelligence": {
-      "label": "原力灵机（Original Intelligence）",
-      "aliases": [
-        "original-intelligence",
-        "yuanli"
-      ]
-    },
     "qianjue": {
       "label": "千觉机器人（Qianjue Robotics）",
       "aliases": [
@@ -4416,8 +4401,7 @@
     "ardupilot-foundation": {
       "label": "开源自动驾驶仪基金会（ArduPilot Foundation）",
       "aliases": [
-        "ardupilot-foundation",
-        "ardupilot foundation"
+        "ardupilot-foundation"
       ]
     },
     "part-db": {
@@ -4449,7 +4433,6 @@
       "label": "机器人云推理平台团队（Dreamscale Labs）",
       "aliases": [
         "dreamscale-labs",
-        "dreamscale labs",
         "dreamscalelabs"
       ]
     }

@@ -71,7 +71,7 @@
 ## 对 wiki 的映射
 
 - **主更新：** [robot-in-context-learning](../../wiki/concepts/robot-in-context-learning.md) — 补双层口径、演化谱系、八项深读对照与未来评测轴。
-- **交叉引用（复用既有节点）：** [GEN-1.5](../../wiki/entities/generalist-gen15-one-shot.md)、[S1](../../wiki/entities/skild-s1.md)、[RoboTTT](../../wiki/entities/paper-robottt-test-time-training-vla-context.md)、[WAM-TTT](../../wiki/entities/paper-wam-ttt-human-video-test-time-steering.md)、[四路线对比](../../wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md)、[LocoFormer 待深读](../../wiki/entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md)。
+- **交叉引用（复用既有节点）：** [GEN-1.5](../../wiki/entities/generalist-gen15-one-shot.md)、[S1](../../wiki/entities/skild-s1.md)、[RoboTTT](../../wiki/entities/paper-robottt-test-time-training-vla-context.md)、[WAM-TTT](../../wiki/entities/paper-wam-ttt-human-video-test-time-steering.md)、[四路线对比](../../wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md)、[LocoFormer 待深读](../../wiki/entities/paper-locoformer.md)。
 - **与既有综述关系：** [具身智能之心 ICL 综述（2026-08-25）](wechat_embodied_heart_robot_icl_gen15_survey_2026-08-25.md) 侧重 **三类不确定性 taxonomy** 与 26 篇索引；本篇侧重 **八项主线深读 + 机构版图 + 演化时间线**，互补不重复。
 
 ### 文内其余工作（本 ingest 仅索引）

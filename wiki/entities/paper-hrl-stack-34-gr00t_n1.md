@@ -283,3 +283,9 @@ sequenceDiagram
 - [161 篇 Loco-Manip（微信公众号）](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A)
 - [GR00T-WholeBodyControl 仓库实体](./gr00t-wholebodycontrol.md)
 - [πR²](./paper-pi-r2.md) — 在 GR00T-N1.7 上做反应式实时 flow 闭环部署（约 25 Hz；代码已开）
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2503.14734](https://arxiv.org/abs/2503.14734)。
+- **项目或官方发布入口：** [项目页](https://developer.nvidia.com/isaac/gr00t)。
+- **清单记录：** `survey_ax_2503_14734`；本次仅补充身份与链接，未重新通读或核验已有结论。

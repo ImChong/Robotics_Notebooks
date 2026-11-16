@@ -51,7 +51,7 @@
   - 训练还需 **MoGe-2-vitb-normal** 等教师权重（见 `Training_Config.md`）。
 - **对 wiki 的映射：**
   - [LingBot-VLA 2.0](../../wiki/entities/lingbot-vla-v2.md) — Dual-Query 流程图
-  - [Being-H0.7](../methods/being-h07.md) — 另一类「未来观测监督」潜空间先验对照
+  - [Being-H0.7](../../wiki/methods/being-h07.md) — 另一类「未来观测监督」潜空间先验对照
 
 ### 4) 后训练、评测与真机部署
 

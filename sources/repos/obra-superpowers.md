@@ -10,7 +10,7 @@
 - **入库日期：** 2026-05-17
 - **一句话说明：** 面向多种「编码代理 harness」的可安装技能库 + 启动规约：在写代码前强制走头脑风暴→设计确认→可执行计划→子代理实现与评审→TDD 与 git worktree 隔离等流程；技能以 `SKILL.md` 等形式可被代理检索并按规约执行。
 - **为什么值得保留：** 与本知识库采用的 **Karpathy LLM Wiki + schema/ingest** 思路相邻：都是把「人类策展 + LLM 执行」写成可重复的流程与文件契约；对维护本仓库的 agent 工作流有对照价值。
-- **沉淀到 wiki：** 是 → [`wiki/entities/superpowers-obra.md`](../wiki/entities/superpowers-obra.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/superpowers-obra.md`](../../wiki/entities/superpowers-obra.md)
 
 ## README 要点（归纳）
 

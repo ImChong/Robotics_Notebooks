@@ -6,6 +6,8 @@ code: https://github.com/CopilotKit/OpenMuse
 tags:
   - llm-agents
   - agent-infrastructure
+  - copilotkit
+  - ag-ui
 status: complete
 updated: 2026-10-14
 related:
@@ -15,8 +17,6 @@ related:
 sources:
   - ../../sources/repos/copilotkit-openmuse.md
 summary: "OpenMuse 是 CopilotKit 构建的开源个人代理应用：以 AG-UI 连接跨端客户端和服务端 agent runtime，通过持久任务 worker、浏览器、可选 Linux 工作区及行动审阅执行多步工作；Alpha 阶段，面向机器人可作上层任务代理架构参考，不提供机器人控制能力。"
-tags: [llm-agents, agent-infrastructure, copilotkit, ag-ui]
-
 ---
 
 # OpenMuse（CopilotKit）

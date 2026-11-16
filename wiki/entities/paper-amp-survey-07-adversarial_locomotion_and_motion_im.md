@@ -14,7 +14,7 @@ related:
   - ./paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md
   - ./paper-amp-survey-08-more.md
   - ./paper-hiking-in-the-wild.md
-  - ./unitree-h1.md
+  - ./paper-notebook-unitree-h1-whitepaper.md
 sources:
   - ../../sources/repos/almi-open.md
   - ../../sources/papers/almi_adversarial_locomotion_motion_imitation_arxiv_2504_14305.md

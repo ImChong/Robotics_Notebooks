@@ -9,7 +9,7 @@ related:
   - ../concepts/differentiable-simulation.md
   - ./newton-physics.md
   - ./paper-onoff-handwriting.md
-  - ../methods/sim2real.md
+  - ../concepts/sim2real.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/ostrich_arxiv_2609_08800.md

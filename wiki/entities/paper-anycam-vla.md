@@ -12,7 +12,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/anycam_vla_arxiv_2603_05868.md
+  - ../../sources/papers/anycam-vla_arxiv_2603_05868.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "零样本相机适配 VLA：测试时用前馈新视角合成将画面转为接近训练相机配置，无需增数据或改结构（IROS 2026）。"
 ---

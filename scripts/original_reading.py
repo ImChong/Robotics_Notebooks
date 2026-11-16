@@ -16,16 +16,22 @@ from search_indexing import parse_frontmatter
 READING_FIELD_RE = re.compile(r"^- \*\*通读：\*\*[ \t]*(\S*)[ \t]*$", re.MULTILINE)
 READING_DONE = "已完成"
 READING_VALUES = frozenset({READING_DONE, "未完成"})
+_READING_STATUS_CACHE: dict[Path, tuple[int, int, str | None]] = {}
 
 
 def reading_status(path: Path) -> str | None:
     """sources/ 归档的通读取值；文件或字段缺失、字段重复、取值不合法时返回 None。"""
     if not path.is_file():
         return None
+    stat = path.stat()
+    key = path.resolve()
+    cached = _READING_STATUS_CACHE.get(key)
+    if cached is not None and cached[0] == stat.st_mtime_ns and cached[1] == stat.st_size:
+        return cached[2]
     values = READING_FIELD_RE.findall(path.read_text(encoding="utf-8"))
-    if len(values) == 1 and values[0] in READING_VALUES:
-        return values[0]
-    return None
+    status = values[0] if len(values) == 1 and values[0] in READING_VALUES else None
+    _READING_STATUS_CACHE[key] = (stat.st_mtime_ns, stat.st_size, status)
+    return status
 
 
 def original_entries(content: str) -> list[str]:

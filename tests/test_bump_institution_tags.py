@@ -64,3 +64,33 @@ def test_infer_from_summary_nvidia() -> None:
         bump._label_keywords(registry),
     )
     assert "nvidia" in ids
+
+
+def test_keyword_in_text_rejects_chinese_mit_license() -> None:
+    assert not bump._keyword_in_text("mit", "本项目采用 mit 开源协议分发。")
+    assert not bump._keyword_in_text("mit", "许可证：mit 协议。")
+
+
+def test_label_keywords_excludes_short_paren_aliases() -> None:
+    registry = bump._load_registry(bump.INSTITUTIONS_PATH)
+    kws = {kw for kw, _ in bump._label_keywords(registry)}
+    assert "mit" not in kws
+    assert "eth" not in kws
+
+
+def test_add_tags_to_frontmatter_updates_block_list_without_duplicate_key() -> None:
+    content = (
+        "---\n"
+        "title: Demo Tool\n"
+        "type: entity\n"
+        "tags:\n"
+        "  - entity\n"
+        "  - tool\n"
+        "updated: 2026-11-16\n"
+        "---\n\n"
+        "# Demo Tool\n"
+    )
+    updated = bump._add_tags_to_frontmatter(content, ["nvidia"])
+    assert updated.count("\ntags:") == 1
+    assert "  - entity\n  - tool\n  - nvidia\n" in updated
+    assert "updated: 2026-11-16" in updated

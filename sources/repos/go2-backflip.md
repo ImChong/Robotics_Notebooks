@@ -4,7 +4,7 @@
 - **类型：** repo
 - **仓库：** <https://github.com/Robot-Nav/GO2_backflip/tree/PPO-backflip>
 - **演示：** <https://www.bilibili.com/video/BV1HbtJ6AENK/>
-- **维护：** Robot-Nav 社区（同 [legbot-MPC-WBC](./legbot-mpc-wbc.md)）
+- **维护：** Robot-Nav 社区（同 [legbot-MPC-WBC](../../wiki/entities/legbot-mpc-wbc.md)）
 - **硬件：** Unitree Go2（12 DoF）
 - **收录日期：** 2026-09-15
 - **开源状态：** **已开源**（训练 / Sim2Sim / 真机部署 / 预训练 ONNX）

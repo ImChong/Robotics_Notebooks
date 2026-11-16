@@ -2,8 +2,8 @@
 
 最后更新：2026-07-20（v29 全数完成后新建：聚焦「执行器驱动链选型闭环」知识链——把近周密集 ingest 的一批**电子硬件 / 驱动 / 执行器建模**资料，从分散的实体页沉淀为一条贯通的「EDA 电路设计 → 电机驱动固件 FOC → 执行器建模与摩擦辨识 → 实时总线闭环集成」选型链，补驱动链层间矛盾检测规则与专题视图）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
-上一版清单：[`tech-stack-next-phase-checklist-v29.md`](archive/tech-stack-next-phase-checklist-v29.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
+上一版清单：[`tech-stack-next-phase-checklist-v29.md`](tech-stack-next-phase-checklist-v29.md)
+方法论参考：[Karpathy LLM Wiki](../../../wiki/references/llm-wiki-karpathy.md)
 
 ---
 

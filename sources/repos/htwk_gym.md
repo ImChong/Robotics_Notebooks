@@ -56,5 +56,5 @@ htwk-gym 是一个专注于人形机器人足球竞技（Humanoid Soccer）的�
 | 资料 | 关系 |
 |------|------|
 | [booster-robocup-demo.md](../../wiki/entities/booster-robocup-demo.md) | htwk-gym 训练出的策略可集成到该决策框架中 |
-| [isaac_gym_isaac_lab.md](../isaac_gym_isaac_lab.md) | htwk-gym 使用 Isaac Gym 作为底层引擎 |
+| [isaac_gym_isaac_lab.md](isaac_gym_isaac_lab.md) | htwk-gym 使用 Isaac Gym 作为底层引擎 |
 | [robot_lab.md](robot_lab.md) | robot_lab 也支持 Booster T1，但 htwk-gym 更偏重足球垂直任务 |

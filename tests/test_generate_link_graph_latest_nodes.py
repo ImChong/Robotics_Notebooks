@@ -37,6 +37,9 @@ class LatestWikiNodesWindowTest(unittest.TestCase):
         if len(self.existing_paths) < 2:
             self.skipTest("仓库中可用 wiki 节点不足以执行测试")
         self.nodes = [_node(rel) for rel in self.existing_paths]
+        self._git_patcher = mock.patch.object(glg, "wiki_git_added_dates", return_value={})
+        self._git_patcher.start()
+        self.addCleanup(self._git_patcher.stop)
         self._tmpdir = tempfile.TemporaryDirectory()
         self.addCleanup(self._tmpdir.cleanup)
         self._fake_log_path = Path(self._tmpdir.name) / "log.md"

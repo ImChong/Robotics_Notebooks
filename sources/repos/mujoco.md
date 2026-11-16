@@ -11,7 +11,7 @@
 - **npm（WASM）：** https://www.npmjs.com/package/@mujoco/mujoco
 - **入库日期：** 2026-04-11（2026-06-30 增补 WASM / 生态）
 - **一句话说明：** Google DeepMind 维护的开源通用物理引擎（Multi-Joint dynamics with Contact），强调刚体动力学、接触仿真、控制与优化友好性；主仓含 C API、Python 绑定、**官方 JavaScript/WASM 绑定**、MJX（JAX）与 Unity 插件。
-- **沉淀到 wiki：** 是 → [`wiki/entities/mujoco.md`](../wiki/entities/mujoco.md)、[`wiki/entities/mujoco-wasm.md`](../wiki/entities/mujoco-wasm.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/mujoco.md`](../../wiki/entities/mujoco.md)、[`wiki/entities/mujoco-wasm.md`](../../wiki/entities/mujoco-wasm.md)
 
 ## 仓库结构（读者心智模型）
 

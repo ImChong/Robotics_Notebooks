@@ -117,3 +117,9 @@ flowchart TD
 
 - [Awesome-Affordance-Learning 仓库](https://github.com/hq-King/Awesome-Affordance-Learning)
 - [原文](https://arxiv.org/abs/2606.04172)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2606.04172](https://arxiv.org/abs/2606.04172)。
+- **项目或官方发布入口：** [官方代码或发布入口](https://github.com/arc-l/a2a)。
+- **清单记录：** `survey_ax_2606_04172`；本次仅补充身份与链接，未重新通读或核验已有结论。

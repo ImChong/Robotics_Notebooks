@@ -192,3 +192,9 @@ sequenceDiagram
 - [报告正文与附录（arXiv HTML v2）](https://arxiv.org/html/2610.22471v2)
 - [项目页](https://www.sensenova.ai/has-gpt-6-astra-achieved-embodied-intelligence)
 - [SenseNova-RoboRSI 官方仓库](https://github.com/OpenSenseNova/SenseNova-RoboRSI)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2610.22471](https://arxiv.org/abs/2610.22471)。
+- **项目或官方发布入口：** [项目页](https://sensenova.ai/has-gpt-6-astra-achieved-embodied-intelligence)。
+- **清单记录：** `survey_ax_2610_22471`；本次仅补充身份与链接，未重新通读或核验已有结论。

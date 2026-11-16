@@ -8,7 +8,7 @@
 - **代码：** https://github.com/allenai/vla-evaluation-harness
 - **维护组织：** Allen Institute for AI（Ai2；GitHub `allenai`）
 - **核对范围：** 官方 README 的介绍、News、Quick Start、Python API、Container/Docker、Benchmarks/Models 矩阵。
-- **通读：** 未完成（已核对 README 关键章节和命令，未逐一审计后端模块）。
+- **通读说明：** 已核对 README 关键章节和命令，未逐一审计后端模块）。
 - **来源纠错：** 二手文章前文标「MAUM.AI」、后文写「Ai2」。以当前官方 `allenai` 仓库与 README 为准，不能把前文单处名称当维护归属证据。
 
 ## 可复现路径与边界

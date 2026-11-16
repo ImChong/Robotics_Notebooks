@@ -265,3 +265,9 @@ sequenceDiagram
 - [Safety Technical Report (PDF)](https://storage.googleapis.com/deepmind-media/gemini-robotics/Gemini-Robotics-2-Safety.pdf)
 - [robotics-samples（GitHub）](https://github.com/google-gemini/robotics-samples)
 - [Gemini Robotics 1.5 博客（前代）](https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2503.20020](https://arxiv.org/abs/2503.20020)。
+- **项目或官方发布入口：** [项目页](https://deepmind.google/models/gemini-robotics/)。
+- **清单记录：** `survey_ax_2503_20020`；本次仅补充身份与链接，未重新通读或核验已有结论。

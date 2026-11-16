@@ -432,6 +432,34 @@ op: ingest
 
 # 位置编码教程 ingest 记录
 
+# 2026-11-16 | ingest | Agentic Robots 第一批独立节点
+
+- 从官方固定清单快照建立 307 条批次台账，编号匹配仅作候选，后续继续语义查重。
+- 完成 PAFF 独立详情页：通读 v4，区分评测协议，静态核查 CALVIN 代码及默认重标注阈值，补充流程图和运行时序图。
+- 综述建立入链，VLA Stage 5 建立阅读入口。代码未全仓审计，实验未复现，其余条目仍待逐项验收。
+
+# 2026-11-16 | ingest | Agentic Robots 第二批
+
+- 完成 TidyBot、OLAF、LMPC 三个独立论文节点；先按编号、标题、官方入口查重，区分 TidyBot2 与 Disney Olaf。
+- 核读固定版本正文与相关附录；核查 TidyBot 官方实现，获取并静态阅读 LMPC 官方教学 Colab，记录 OLAF 空 Code 链接。
+- 三类适应分别作用于语言规则、视觉运动策略与语言模型。建立综述入链和 VLA Stage 5 导航。
+- 台账总计 307，累计完成 4，剩余 303；实验均未运行，节点健康度以脚本为准。
+
+# 2026-11-16 | ingest | Agentic Robots stub 与地址覆盖
+
+- 用户调整为先建 stub，不以健康度为本阶段门槛。
+- 补入此前漏计的 additional_papers.yaml 23 条，范围从 307 修正为 330。
+- 新建 229 个 stub，复用 101 个既有节点，节点缺失 0；项目入口未确认与无 arXiv 编号分别列出，未猜测地址。
+- 深读仍为 4 条，剩余 326 条；本次地址提取不冒充论文通读或复现。
+
+# 2026-11-16 | ingest | Towards Agentic Robots v1 分类补核
+
+- **意图：** 论文节点已存在，不重复建页；依据原文改善摘要式旧页，聚焦 Table 1 四域十七类、执行编排与评测边界。
+- **一手材料：** [固定 v1 HTML](https://arxiv.org/html/2610.20442v1)、[固定 v1 PDF](https://arxiv.org/pdf/2610.20442v1) 与 [TeX 源包](https://arxiv.org/e-print/2610.20442v1)；PDF 第 10 页 Table 1 原表已核。
+- **开放边界：** [作者 Awesome 索引](https://github.com/chonghanqin/Awesome-Agentic-Robots) 是动态文献资料库及生成/校验脚本，并非机器人训练/推理方法代码。
+- **主要位置：** [唯一论文实体](../wiki/entities/paper-towards-agentic-robots-survey.md)、[v1 来源归档](../sources/papers/towards_agentic_robots_arxiv_2610_20442.md)、[VLA Stage 4](../roadmap/depth-vla.md)。
+- **待完成：** e-print 源包在当前环境无法解包，全部引用未逐条审计；故来源归档为「通读：未完成」、实体保持 draft；健康度需以脚本实测为准。
+
 ## [2026-11-16] ingest | OVBench 与 S-EMBER：流式视频理解与第一视角情景记忆
 
 - **意图：** 独立归档两篇原文，建立在线视频问答及第一视角有证据记忆检索两条知识节点，并挂载具身模型评测 Stage 1。

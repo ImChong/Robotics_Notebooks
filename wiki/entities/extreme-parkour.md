@@ -9,6 +9,7 @@ tags:
   - sim2real
   - privileged-training
   - parkour
+  - unitree
 status: complete
 updated: 2026-11-07
 arxiv: "2309.14341"
@@ -33,8 +34,6 @@ sources:
   - ../../sources/repos/extreme-parkour.md
   - ../../sources/sites/extreme-parkour-github-io.md
 summary: "Extreme Parkour（ICRA 2024）：Unitree A1 低成本四足在单目深度下端到端跑酷；两阶段 RL（特权 scandots + oracle 航向 → 深度 + 自预测 yaw 双重 DAgger 蒸馏），约 20 小时仿真训练。"
-tags: [quadruped, reinforcement-learning, locomotion, perception, sim2real, privileged-training, parkour, unitree]
-
 ---
 
 # Extreme Parkour（端到端四足感知跑酷）

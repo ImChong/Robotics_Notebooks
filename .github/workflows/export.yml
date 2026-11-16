@@ -17,6 +17,7 @@ on:
       - 'log.d/**'
       - 'scripts/generate_page_catalog.py'
       - 'scripts/log_md.py'
+      - 'scripts/fold_log_fragments.py'
   workflow_dispatch:
 
 # 串行执行，避免与并发 main 推送互相 cancel / 抢写导致 git push 被拒

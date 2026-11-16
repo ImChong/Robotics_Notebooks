@@ -4765,6 +4765,7 @@ body.roadmap-ltree-map-open {
 .co-lens-wam { border-color: rgba(91, 156, 246, .55); }
 .co-lens-humanoid { border-color: rgba(214, 150, 60, .6); }
 .co-lens-wbc { border-color: rgba(80, 170, 120, .6); }
+.co-lens-embodied { border-color: rgba(168, 120, 230, .6); }
 .co-timeline {
   list-style: none;
   margin: 14px 0 0;

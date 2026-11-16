@@ -182,7 +182,7 @@
       "sim.to.real"
     ],
     "pos_claims": [
-      "domain.*randomization|域随机|DR.*|adaptive.*domain"
+      "domain.*randomization|域随机|\\bDR\\b|adaptive.*domain"
     ],
     "neg_claims": [
       "sim2real.*无需随机|sim2real.*only.*real.*data"
@@ -247,7 +247,7 @@
   },
   "行为克隆 compounding error": {
     "terms": [
-      "Behavior Cloning|行为克隆|\bBC\b"
+      "Behavior Cloning|行为克隆|\\bBC\\b"
     ],
     "pos_claims": [
       "compounding error|错误累积|累积误差|covariate shift"
@@ -324,7 +324,7 @@
   },
   "BM25 参数含义": {
     "terms": [
-      "BM25|k1|\bb\b"
+      "BM25|k1|\\bb\\b"
     ],
     "pos_claims": [
       "k1.*词频.*饱和|b.*长度归一化|长度归一化.*b|词频饱和.*k1"
@@ -2517,7 +2517,7 @@
     "pos_claims": [
       "雅可比.{0,2}惯量.{0,4}标定.{0,8}敏感",
       "标定不准.{0,10}力的方向.{0,4}错",
-      "先做.{0,2}SysID.{0,4}.{0,2}雅可比.{0,2}校核"
+      "先做.{0,2}SysID.{0,6}雅可比.{0,2}校核"
     ],
     "neg_claims": [
       "力旋量.{0,4}映射.{0,6}与.{0,4}雅可比.{0,4}标定.{0,4}无关",

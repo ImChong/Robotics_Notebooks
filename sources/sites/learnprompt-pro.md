@@ -68,4 +68,4 @@
 
 ## 沉淀到 wiki
 
-是 → [`wiki/entities/learnprompt.md`](../wiki/entities/learnprompt.md)
+是 → [`wiki/entities/learnprompt.md`](../../wiki/entities/learnprompt.md)

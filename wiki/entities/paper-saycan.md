@@ -105,3 +105,9 @@ SayCan 确立了 LLM+机器人最可落地的分工：规划在上、affordance 
 ## 推荐继续阅读
 
 - [arXiv:2204.01691](https://arxiv.org/abs/2204.01691)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2204.01691](https://arxiv.org/abs/2204.01691)。
+- **项目或官方发布入口：** [项目页](https://say-can.github.io/)。
+- **清单记录：** `survey_ax_2204_01691`；本次仅补充身份与链接，未重新通读或核验已有结论。

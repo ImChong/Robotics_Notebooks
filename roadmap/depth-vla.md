@@ -198,6 +198,7 @@ flowchart LR
 - 用行为树把 2–3 个 VLA 技能串成一个长时程任务，观察失败恢复逻辑
 
 ### 推荐读什么
+- [Towards Agentic Robots：模型、数据、环境与 Harness 综述](../wiki/entities/paper-towards-agentic-robots-survey.md) — 固定 arXiv:2610.20442v1 的四域十七类地图；对照 VLA 执行器与工具编排、状态交接、失败恢复及分层实时控制，不是可直接部署的算法。
 - [ActionCodec2](../wiki/entities/paper-actioncodec2-streaming-action-tokenizer.md) — Stage 4 动作端低延迟：误差反馈量化 + Set-BPE 逐步解码；流式 token 输出与实际闭环执行需分别验证
 - [JustRUA](../wiki/entities/paper-justrua-robot-use-agents.md) — RoboDojo 受控对照：实测状态、估深、短运动步进与 Coding Actor
 - [ACE-CaP-0](../wiki/entities/paper-ace-cap-0.md) — 开发期按需示范/仿真，冻结代码策略在执行期脱离编码 Agent
@@ -234,6 +235,8 @@ flowchart LR
 - Stage 4 内容
 
 **方向 A：RL 微调与自改进**
+- [TidyBot](../wiki/entities/paper-tidybot-2305-05658.md)、[OLAF](../wiki/entities/paper-olaf-verbal-correction.md)、[LMPC](../wiki/entities/paper-lmpc-2402-11450.md) — 对照规则总结、动作重标注和语言模型微调三种适应对象。
+- [PAFF](../wiki/entities/paper-paff-2212-07398.md) — 用基础模型反馈重标注目标域交互，再监督微调策略；对照 RL 与重标注驱动的适应。
 - 用 RL / 真机数据闭环继续改进预训练策略
 - [PEAR / Robot-Use RL](../wiki/entities/paper-pear-robot-use-rl.md) — 无机器人示范、在仿真中强化学习多轮视觉推理及末端位姿操作；对照传统动作块 VLA 的训练信号与执行延迟。
 - 关键词：[ENPIRE](../wiki/methods/enpire.md)、[安全真机 RL 微调](../wiki/concepts/safe-real-world-rl-fine-tuning.md)、[STEAM](../wiki/entities/paper-steam-advantage-modeling.md)（自监督时序 advantage 离线提纯 π₀，已集成于官方 `RLinf`）、[WCM](../wiki/entities/paper-wcm-world-critic-model.md)（世界模型 critic 修正 VLA RL 单帧价值估计错配，4 基准 149 任务提升显著；`sylvestf/WCM` 已 MIT 开源 critic，RL 策略代码待发）、[TEMPO](../wiki/entities/paper-tempo.md)（语义 projection 低频 / action expert 高频双 TD3；CALVIN SR5 81.7%，匿名页 404 且未开源）、[AutoIntervene](../wiki/entities/paper-autointervene.md)（chunk 策略视觉–动作支持校准接管，选择性 DAgger；算法未开源，同名仓为静态页镜像）、[Prism-GRPO](../wiki/entities/paper-prism-grpo.md)（success+quality 打破 Binary GRPO 同结果组退化，RoboTwin rollout 最多 −56%；独立补丁未开源）

@@ -304,7 +304,9 @@ def _label_keywords(registry: dict[str, dict]) -> list[tuple[str, str]]:
             pairs.append((label.lower(), cid))
         paren = re.search(r"（([^）]+)）", label)
         if paren:
-            pairs.append((paren.group(1).lower(), cid))
+            paren_kw = paren.group(1).strip().lower()
+            if len(paren_kw) >= 4 and paren_kw not in SHORT_ALIASES:
+                pairs.append((paren_kw, cid))
         for alias in meta.get("aliases", []) or []:
             al = str(alias).strip().lower()
             if len(al) >= 4:
@@ -343,7 +345,13 @@ def _keyword_in_text(keyword: str, text: str) -> bool:
     if re.search(r"[\u4e00-\u9fff]", kw):
         return kw in text
     if kw == "mit":
-        if re.search(r"\bmit\s+license\b", text):
+        if re.search(
+            r"(?<![a-z0-9])mit\s*(?:license(?![a-z0-9])|开源(?:协议|许可)|协议|许可)",
+            text,
+        ) or re.search(
+            r"(?:许可证|开源协议|license)[^\n]{0,12}(?<![a-z0-9])mit(?![a-z0-9])",
+            text,
+        ):
             return False
     return bool(re.search(r"(?<![a-z0-9])" + re.escape(kw) + r"(?![a-z0-9])", text))
 
@@ -414,15 +422,19 @@ def _add_tags_to_frontmatter(content: str, new_tags: list[str]) -> str:
         return content
     merged = existing + to_add
 
-    inline = re.search(r"^tags\s*:\s*\[(.*?)\]", fm, re.MULTILINE)
-    if inline:
-        new_fm = re.sub(
-            r"^tags\s*:\s*\[.*?\]",
-            "tags: [" + ", ".join(merged) + "]",
+    inline_re = re.compile(r"^tags\s*:\s*\[.*?\]", re.MULTILINE)
+    block_re = re.compile(r"^tags\s*:[ \t]*\n(?:[ \t]*-[ \t]*[^\n]+\n?)+", re.MULTILINE)
+    block_match = block_re.search(fm)
+    if inline_re.search(fm):
+        new_fm = inline_re.sub(
+            lambda _: "tags: [" + ", ".join(merged) + "]",
             fm,
             count=1,
-            flags=re.MULTILINE,
         )
+    elif block_match:
+        trailing = "\n" if block_match.group(0).endswith("\n") else ""
+        block_text = "tags:\n" + "\n".join(f"  - {t}" for t in merged) + trailing
+        new_fm = fm[: block_match.start()] + block_text + fm[block_match.end() :]
     else:
         new_fm = fm.rstrip() + "\ntags: [" + ", ".join(merged) + "]\n"
 
