@@ -198,60 +198,60 @@
           <div class="home-org-panel" id="home-company-routes" role="tabpanel" aria-labelledby="homeOrgTabCompany">
             <h3 data-home-copy>按公司查看具身基础模型与人形技术演进</h3>
             <!-- 按成立年份从早到晚排序；同年顺序不代表已确认的精确先后。
-                 顺序与 docs/company-roadmaps.json 一致（tests/test_company_roadmaps.py 校验）；
+                 按成立年份排序，缺失时按最早知识节点日期；元数据与 docs/company-roadmaps.json 一致（tests/test_company_roadmaps.py 校验）；
                  默认桌面露出前 8 家、窄屏前 4 家，其余 data-company-extra + hidden，由 main.js 控制 -->
             <div class="home-entry-route-links" id="homeCompanyLinks">
-              <a class="btn-secondary" href="company.html?id=nvidia">英伟达<span class="route-en">（NVIDIA）</span></a>
-              <a class="btn-secondary" href="company.html?id=gdm">Google DeepMind</a>
-              <a class="btn-secondary" href="company.html?id=1x">1X</a>
-              <a class="btn-secondary" href="company.html?id=unitree">宇树<span class="route-en">（Unitree）</span></a>
-              <a class="btn-secondary" href="company.html?id=xpeng">小鹏机器人<span class="route-en">（XPENG Robotics）</span></a>
-              <a class="btn-secondary" href="company.html?id=deeprobotics">云深处<span class="route-en">（Deep Robotics）</span></a>
-              <a class="btn-secondary" href="company.html?id=motphys">谋先飞<span class="route-en">（Motphys）</span></a>
-              <a class="btn-secondary" href="company.html?id=xiaomi">小米机器人<span class="route-en">（Xiaomi Robotics）</span></a>
-              <a class="btn-secondary" href="company.html?id=westlake" data-company-extra hidden>西湖机器人<span class="route-en">（Westlake Robotics）</span></a>
-              <a class="btn-secondary" href="company.html?id=limx" data-company-extra hidden>逐际动力<span class="route-en">（LimX）</span></a>
-              <a class="btn-secondary" href="company.html?id=figure" data-company-extra hidden>Figure</a>
-              <a class="btn-secondary" href="company.html?id=agibot" data-company-extra hidden>智元<span class="route-en">（AgiBot）</span></a>
-              <a class="btn-secondary" href="company.html?id=skild" data-company-extra hidden>Skild AI</a>
-              <a class="btn-secondary" href="company.html?id=galbot" data-company-extra hidden>银河通用<span class="route-en">（Galbot）</span></a>
-              <a class="btn-secondary" href="company.html?id=galaxea" data-company-extra hidden>星海图<span class="route-en">（Galaxea）</span></a>
-              <a class="btn-secondary" href="company.html?id=robotera" data-company-extra hidden>星动纪元<span class="route-en">（ROBOTERA）</span></a>
-              <a class="btn-secondary" href="company.html?id=xsquare" data-company-extra hidden>自变量机器人<span class="route-en">（X Square Robot）</span></a>
-              <a class="btn-secondary" href="company.html?id=lightwheel" data-company-extra hidden>光轮智能<span class="route-en">（Lightwheel）</span></a>
-              <a class="btn-secondary" href="company.html?id=noetix" data-company-extra hidden>松延动力<span class="route-en">（Noetix）</span></a>
-              <a class="btn-secondary" href="company.html?id=pi" data-company-extra hidden>Physical Intelligence</a>
-              <a class="btn-secondary" href="company.html?id=light" data-company-extra hidden>亮源新创<span class="route-en">（Light Origins）</span></a>
-              <a class="btn-secondary" href="company.html?id=robbyant" data-company-extra hidden>蚂蚁灵波<span class="route-en">（Robbyant）</span></a>
-              <a class="btn-secondary" href="company.html?id=generalist" data-company-extra hidden>Generalist AI</a>
-              <a class="btn-secondary" href="company.html?id=amazon-far" data-company-extra hidden>亚马逊<span class="route-en">（Amazon FAR）</span></a>
-              <a class="btn-secondary" href="company.html?id=rhoda" data-company-extra hidden>Rhoda AI</a>
-              <a class="btn-secondary" href="company.html?id=sharpa" data-company-extra hidden>夏帕机器人<span class="route-en">（Sharpa Robotics）</span></a>
-              <a class="btn-secondary" href="company.html?id=rewardai" data-company-extra hidden>励元智能<span class="route-en">（Reward AI）</span></a>
-              <a class="btn-secondary" href="company.html?id=roboparty" data-company-extra hidden>萝博派对<span class="route-en">（RoboParty）</span></a>
-              <a class="btn-secondary" href="company.html?id=beingbeyond" data-company-extra hidden>智在无界<span class="route-en">（BeingBeyond）</span></a>
-              <a class="btn-secondary" href="company.html?id=deltai" data-company-extra hidden>德塔智能<span class="route-en">（Delta Intelligence）</span></a>
-              <a class="btn-secondary" href="company.html?id=symbiosis" data-company-extra hidden>共生知行<span class="route-en">（Symbiosis Robotics）</span></a>
-              <a class="btn-secondary" href="company.html?id=liauto" data-company-extra hidden>理想汽车<span class="route-en">（Li Auto）</span></a>
-              <a class="btn-secondary" href="company.html?id=simate" data-company-extra hidden>硅基伙伴<span class="route-en">（Simate）</span></a>
-              <a class="btn-secondary" href="company.html?id=aether" data-company-extra hidden>Aether AI</a>
-              <a class="btn-secondary" href="company.html?id=archon" data-company-extra hidden>源策未来<span class="route-en">（Archon Robotics）</span></a>
-              <a class="btn-secondary" href="company.html?id=gamma" data-company-extra hidden>伽马智能<span class="route-en">（Gamma Robotics）</span></a>
+              <a class="btn-secondary" data-founded-year="1993" data-first-node-date="2020-10" href="company.html?id=nvidia">英伟达<span class="route-en">（NVIDIA）</span></a>
+              <a class="btn-secondary" data-founded-year="2010" data-first-node-date="2021-10" href="company.html?id=gdm">Google DeepMind</a>
+              <a class="btn-secondary" data-founded-year="2014" data-first-node-date="2024-08" href="company.html?id=1x">1X</a>
+              <a class="btn-secondary" data-founded-year="2016" data-first-node-date="2023-10" href="company.html?id=unitree">宇树<span class="route-en">（Unitree）</span></a>
+              <a class="btn-secondary" data-founded-year="2016" data-first-node-date="2026-03" href="company.html?id=xpeng">小鹏机器人<span class="route-en">（XPENG Robotics）</span></a>
+              <a class="btn-secondary" data-founded-year="2017" data-first-node-date="2026-09" href="company.html?id=deeprobotics">云深处<span class="route-en">（Deep Robotics）</span></a>
+              <a class="btn-secondary" data-founded-year="2020" data-first-node-date="2025-09" href="company.html?id=motphys">谋先飞<span class="route-en">（Motphys）</span></a>
+              <a class="btn-secondary" data-founded-year="2021" data-first-node-date="2025-09" href="company.html?id=xiaomi">小米机器人<span class="route-en">（Xiaomi Robotics）</span></a>
+              <a class="btn-secondary" data-founded-year="2021" data-first-node-date="2025-03" href="company.html?id=westlake" data-company-extra hidden>西湖机器人<span class="route-en">（Westlake Robotics）</span></a>
+              <a class="btn-secondary" data-founded-year="2022" data-first-node-date="2024-11" href="company.html?id=limx" data-company-extra hidden>逐际动力<span class="route-en">（LimX）</span></a>
+              <a class="btn-secondary" data-founded-year="2022" data-first-node-date="2025-02" href="company.html?id=figure" data-company-extra hidden>Figure</a>
+              <a class="btn-secondary" data-founded-year="2023" data-first-node-date="2024-10" href="company.html?id=agibot" data-company-extra hidden>智元<span class="route-en">（AgiBot）</span></a>
+              <a class="btn-secondary" data-founded-year="2023" data-first-node-date="2025-07" href="company.html?id=skild" data-company-extra hidden>Skild AI</a>
+              <a class="btn-secondary" data-founded-year="2023" data-first-node-date="2025-05" href="company.html?id=galbot" data-company-extra hidden>银河通用<span class="route-en">（Galbot）</span></a>
+              <a class="btn-secondary" data-founded-year="2023" data-first-node-date="2025-08" href="company.html?id=galaxea" data-company-extra hidden>星海图<span class="route-en">（Galaxea）</span></a>
+              <a class="btn-secondary" data-founded-year="2023" data-first-node-date="2024-04" href="company.html?id=robotera" data-company-extra hidden>星动纪元<span class="route-en">（ROBOTERA）</span></a>
+              <a class="btn-secondary" data-founded-year="2023" data-first-node-date="2025-09" href="company.html?id=xsquare" data-company-extra hidden>自变量机器人<span class="route-en">（X Square Robot）</span></a>
+              <a class="btn-secondary" data-founded-year="2023" data-first-node-date="2024-10" href="company.html?id=lightwheel" data-company-extra hidden>光轮智能<span class="route-en">（Lightwheel）</span></a>
+              <a class="btn-secondary" data-founded-year="2023" data-first-node-date="2025-10" href="company.html?id=noetix" data-company-extra hidden>松延动力<span class="route-en">（Noetix）</span></a>
+              <a class="btn-secondary" data-founded-year="2024" data-first-node-date="2024-10" href="company.html?id=pi" data-company-extra hidden>Physical Intelligence</a>
+              <a class="btn-secondary" data-founded-year="2024" data-first-node-date="2026-08" href="company.html?id=light" data-company-extra hidden>亮源新创<span class="route-en">（Light Origins）</span></a>
+              <a class="btn-secondary" data-founded-year="2024" data-first-node-date="2026-01" href="company.html?id=robbyant" data-company-extra hidden>蚂蚁灵波<span class="route-en">（Robbyant）</span></a>
+              <a class="btn-secondary" data-founded-year="2024" data-first-node-date="2025-06" href="company.html?id=generalist" data-company-extra hidden>Generalist AI</a>
+              <a class="btn-secondary" data-founded-year="2024" data-first-node-date="2025-09" href="company.html?id=amazon-far" data-company-extra hidden>亚马逊<span class="route-en">（Amazon FAR）</span></a>
+              <a class="btn-secondary" data-founded-year="2024" data-first-node-date="2026-03" href="company.html?id=rhoda" data-company-extra hidden>Rhoda AI</a>
+              <a class="btn-secondary" data-founded-year="2024" data-first-node-date="2025-10" href="company.html?id=sharpa" data-company-extra hidden>夏帕机器人<span class="route-en">（Sharpa Robotics）</span></a>
+              <a class="btn-secondary" data-founded-year="2025" data-first-node-date="2024-03" href="company.html?id=rewardai" data-company-extra hidden>励元智能<span class="route-en">（Reward AI）</span></a>
+              <a class="btn-secondary" data-founded-year="2025" data-first-node-date="2026-01" href="company.html?id=roboparty" data-company-extra hidden>萝博派对<span class="route-en">（RoboParty）</span></a>
+              <a class="btn-secondary" data-founded-year="2025" data-first-node-date="2024-10" href="company.html?id=beingbeyond" data-company-extra hidden>智在无界<span class="route-en">（BeingBeyond）</span></a>
+              <a class="btn-secondary" data-founded-year="2026" data-first-node-date="2026-09" href="company.html?id=deltai" data-company-extra hidden>德塔智能<span class="route-en">（Delta Intelligence）</span></a>
+              <a class="btn-secondary" data-founded-year="2026" data-first-node-date="2026-08" href="company.html?id=symbiosis" data-company-extra hidden>共生知行<span class="route-en">（Symbiosis Robotics）</span></a>
+              <a class="btn-secondary" data-founded-year="2026" data-first-node-date="2026-09" href="company.html?id=liauto" data-company-extra hidden>理想汽车<span class="route-en">（Li Auto）</span></a>
+              <a class="btn-secondary" data-founded-year="2026" data-first-node-date="2026-09" href="company.html?id=simate" data-company-extra hidden>硅基伙伴<span class="route-en">（Simate）</span></a>
+              <a class="btn-secondary" data-founded-year="2026" data-first-node-date="2026-05" href="company.html?id=aether" data-company-extra hidden>Aether AI</a>
+              <a class="btn-secondary" data-founded-year="2026" data-first-node-date="2026-06" href="company.html?id=archon" data-company-extra hidden>源策未来<span class="route-en">（Archon Robotics）</span></a>
+              <a class="btn-secondary" data-founded-year="2026" data-first-node-date="2026-09" href="company.html?id=gamma" data-company-extra hidden>伽马智能<span class="route-en">（Gamma Robotics）</span></a>
             </div>
             <p class="home-card-search-empty" id="homeCompanySearchEmpty" hidden data-home-copy>未找到匹配的公司路线</p>
             <button type="button" id="homeCompanyToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeCompanyLinks" data-home-copy>展开全部 36 家公司 ↓</button>
           </div>
           <div class="home-org-panel" id="home-lab-routes" role="tabpanel" aria-labelledby="homeOrgTabLab" hidden>
             <h3 data-home-copy>按实验室查看具身智能研究演进</h3>
-            <!-- 按成立年份或排序锚点排序，与 lab-roadmaps.json 同序；桌面预览前 8 个、窄屏前 4 个，不足时全部展示。 -->
+            <!-- 按成立年份排序，缺失时按最早知识节点日期；元数据与 lab-roadmaps.json 一致；桌面预览前 8 个、窄屏前 4 个，不足时全部展示。 -->
             <div class="home-entry-route-links" id="homeLabLinks">
-              <a class="btn-secondary" href="lab.html?id=eth-rsl" data-founded-year="2015">ETH RSL</a>
-              <a class="btn-secondary" href="lab.html?id=hku-mmlab" data-founded-year="2019">香港大学<span class="route-en">（MMLab）</span></a>
-              <a class="btn-secondary" href="lab.html?id=opendrivelab" data-founded-year="2021">香港大学<span class="route-en">（OpenDriveLab）</span></a>
-              <a class="btn-secondary" href="lab.html?id=rai" data-founded-year="2022">RAI Institute</a>
-              <a class="btn-secondary" href="lab.html?id=lecar" data-founded-year="2023">CMU LeCAR</a>
-              <a class="btn-secondary" href="lab.html?id=teleai" data-founded-year="2024">中国电信人工智能研究院<span class="route-en">（TeleAI）</span></a>
-              <a class="btn-secondary" href="lab.html?id=roboparty-lab" data-founded-year="2026">RoboParty Lab</a>
+              <a class="btn-secondary" data-founded-year="2015" data-first-node-date="2016-10" href="lab.html?id=eth-rsl">ETH RSL</a>
+              <a class="btn-secondary" data-founded-year="2019" data-first-node-date="2025-06" href="lab.html?id=hku-mmlab">香港大学<span class="route-en">（MMLab）</span></a>
+              <a class="btn-secondary" data-founded-year="2021" data-first-node-date="2025-03" href="lab.html?id=opendrivelab">香港大学<span class="route-en">（OpenDriveLab）</span></a>
+              <a class="btn-secondary" data-founded-year="2022" data-first-node-date="2022-08" href="lab.html?id=rai">RAI Institute</a>
+              <a class="btn-secondary" data-founded-year="2023" data-first-node-date="2024-03" href="lab.html?id=lecar">CMU LeCAR</a>
+              <a class="btn-secondary" data-founded-year="2024" data-first-node-date="2025-04" href="lab.html?id=teleai">中国电信人工智能研究院<span class="route-en">（TeleAI）</span></a>
+              <a class="btn-secondary" data-founded-year="2026" data-first-node-date="2026-07" href="lab.html?id=roboparty-lab">RoboParty Lab</a>
             </div>
             <p class="home-card-search-empty" id="homeLabSearchEmpty" hidden data-home-copy>未找到匹配的实验室路线</p>
             <button type="button" id="homeLabToggle" class="home-entry-link home-route-toggle" aria-expanded="false" aria-controls="homeLabLinks" hidden data-home-copy>展开全部 7 个实验室 ↓</button>
@@ -353,6 +353,7 @@
 
   <script src="home-i18n.js"></script>
   <script src="wiki-type-labels.js"></script>
+  <script src="org-route-order.js"></script>
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
   <script src="graph-node-size.js"></script>

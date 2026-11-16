@@ -11,6 +11,7 @@ const SHELL_ASSETS = [
   'style.css',
   'theme-init.js',
   'main.js',
+  'org-route-order.js',
   'home-i18n.js',
 ].map(asset);
 // 可选资源：其余页面外壳与小体积数据，逐个缓存，单个失败只降级该资源的离线可用性。

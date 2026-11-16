@@ -22,6 +22,7 @@ test('homepage sorts shuffled labs before choosing up to eight visible entries',
   const start = source.indexOf('  // ── 首页路线预览');
   const end = source.indexOf('  // ── 首页入口卡指针光斑', start);
   assert.ok(start >= 0 && end > start, 'home preview slice markers missing');
+  w.eval(read('docs/org-route-order.js'));
   w.eval(source.slice(start, end));
   const keys = () => [...links.children].map(link => link.getAttribute('href').split('=')[1]);
   const visible = () => [...links.children].filter(link => !link.hidden);
@@ -44,6 +45,7 @@ async function renderPage(kind, data, query = '') {
     url: 'https://example.test/' + query, runScripts: 'outside-only',
   });
   dom.window.fetch = async () => ({ ok: true, json: async () => data });
+  dom.window.eval(read('docs/org-route-order.js'));
   dom.window.eval(read('docs/company-roadmap.js'));
   await new Promise(setImmediate);
   return dom;
@@ -62,9 +64,9 @@ test('lab switcher, default selection and pager use founding order with shuffled
   dom.window.close();
 });
 
-test('company pages retain their curated order', async () => {
+test('company pages also sort by founding year', async () => {
   const companies = [{ key: 'later', name: 'Later', founded_year: 2024 }, { key: 'earlier', name: 'Earlier', founded_year: 2010 }];
   const dom = await renderPage('companyRoadmapPage', { companies });
-  assert.equal(dom.window.document.getElementById('coName').textContent, 'Later');
+  assert.equal(dom.window.document.getElementById('coName').textContent, 'Earlier');
   dom.window.close();
 });
