@@ -36,7 +36,7 @@
 | 19 | 人形 | ILA：冻结跟踪器的接口级柔顺适配 | [2611.14985](https://arxiv.org/abs/2611.14985) | [站内详情](../../wiki/entities/paper-ila-interface-level-adapter.md) |
 | 20 | 人形 | Runtime Safety and E-stop：全尺寸人形运行时安全与急停反思 | [2611.15928](https://arxiv.org/abs/2611.15928) | [站内详情](../../wiki/entities/paper-runtime-safety-graduated-force-authority.md) |
 | 21 | 人形 | PERA：冻结基础策略的可插拔技能专家 | [2611.16188](https://arxiv.org/abs/2611.16188) | [站内详情](../../wiki/entities/paper-pera-plugin-experts.md) |
-| 22 | 人形 | BlinkMimic：单卡分钟级全身动作跟踪训练 | [2611.16422](https://arxiv.org/abs/2611.16422) | [站内详情](../../wiki/entities/paper-blinkmimic.md) |
+| 22 | 人形 | BlinkMimic：单卡分钟级全身动作跟踪训练 | [2611.16422](https://arxiv.org/abs/2611.16422) | [站内详情](../../wiki/entities/blinkmimic.md) |
 | 23 | 人形 | FORGE：多粒度命令与力感知移动操作 | [2611.17142](https://arxiv.org/abs/2611.17142) | [站内详情](../../wiki/entities/paper-forge-force-aware-loco-manipulation.md) |
 | 24 | 四足 | DobotTrack：目标身份约束的具身行人跟踪 | [2611.09041](https://arxiv.org/abs/2611.09041) | [站内详情](../../wiki/entities/paper-dobottrack.md) |
 | 25 | 四足 | PolyMorphWBC：四足移动操作跨机械臂形态末端轨迹控制 | [2611.15117](https://arxiv.org/abs/2611.15117) | [站内详情](../../wiki/entities/paper-polymorphwbc-quadruped.md) |

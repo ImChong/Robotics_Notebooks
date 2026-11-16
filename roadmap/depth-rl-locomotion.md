@@ -225,7 +225,7 @@ flowchart LR
 - 选型参考：[Query：跨形态迁移策略](../wiki/queries/cross-embodiment-transfer-strategy.md)
 
 ### 推荐读什么
-- [BlinkMimic：可微世界模型 + CUDA Graph 的分钟级训练](../wiki/entities/paper-blinkmimic.md) — 对照 SuperMimic/InstantTrack 的仿真训练时间与失败片段清除机制。
+- [BlinkMimic：可微世界模型 + CUDA Graph 的分钟级训练](../wiki/entities/blinkmimic.md) — 对照 SuperMimic/InstantTrack 的仿真训练时间与失败片段清除机制。
 - [坍塌地形反应式撤退](../wiki/entities/paper-collapse-retreat-hybrid-terrain.md) — 轮足 Go2W 的混合地形并行 RL 与失支撑恢复。
 - 这四个方向各有独立纵深页：见主路线的[可选纵深索引](motion-control.md#depth-optional-index)
 

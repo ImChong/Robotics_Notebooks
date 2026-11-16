@@ -23,4 +23,4 @@
 官方仓库公开 scripts/train.sh、scripts/presets.sh、src/blinkmimic/train.py、tools/eval_batch.py、tools/export_onnx.py；只核对代码接口，不宣称已在本环境 GPU 重训。
 
 ## 对 wiki 的映射
-- [BlinkMimic](../../wiki/entities/paper-blinkmimic.md)
+- [BlinkMimic](../../wiki/entities/blinkmimic.md)
