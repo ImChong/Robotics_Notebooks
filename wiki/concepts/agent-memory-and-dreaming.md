@@ -19,6 +19,7 @@ related:
 sources:
   - ../../sources/blogs/anthropic_components_of_agent_memory_2026-11-06.md
   - ../../sources/sites/claude_cookbook_dreaming_dynamic_workflow_2026-11-02.md
+  - ../../sources/videos/google-cloud-tech-agent-memory-architecture-2026-10-28.md
 summary: "Agent 记忆 = 会话间保留的经验笔记；Anthropic 把它拆成「当场写笔记」与「dreaming 后台整理」（纠错、建 wiki 表示、提升到上层、按目标塑形、补缺口），并用 CL-Bench、Pokémon Red、企业文档 wiki 的评测说明：强模型自己判断显著性优于写死规则。"
 ---
 
@@ -106,6 +107,12 @@ flowchart LR
 ## 权重级记忆巩固的对照
 
 [Cortex（arXiv:2610.20399）](../entities/paper-cortex-parametric-memory.md) 研究把上下文指定的能力蒸馏成 FFN 参数更新，部署时可以不再注入原上下文；与本页 Claude/dreaming 的**外部文件型持久记忆**不同。Cortex 的实验是文本型知识、行为与 agent 经验巩固，不是对真实机器人运动控制的证明（[论文核读](../../sources/papers/cortex_arxiv_2610_20399.md)）。
+
+## 补充参考：Google Cloud Tech 的双层 Agent 记忆设计（待完整核读）
+
+[Google Cloud Tech 视频](https://www.youtube.com/watch?v=8C4bh59FtsI)及其 [Fashion Mind 演示代码短链接](https://g.dev/ai/fashion-mind)讨论另一种记忆分工：需要按 ID / 日期进行**精确查询的事实**由 SQL 类结构化存储管理，依赖**语义相似度的偏好与模式**通过向量检索或 Memory Bank 召回；面向实时语音交互时，将语义抽取放在时延敏感路径之外。这与本页的 dreaming 都强调将耗时整理工作与当前交互分离，但**不是同一套实现或评测**。
+
+**证据边界：** 目前仅核对公开的视频说明，尚未通读官方视频字幕或取得短链接后的源码，不能声称已验证真实数据库、API 或运行链路。详见[原始资料核对记录](../../sources/videos/google-cloud-tech-agent-memory-architecture-2026-10-28.md)。这条资料讨论通用 Agent；机器人实测结论仍需独立证据。
 
 ## 关联页面
 
