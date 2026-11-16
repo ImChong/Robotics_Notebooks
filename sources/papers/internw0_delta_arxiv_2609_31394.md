@@ -7,6 +7,8 @@
 - **类别 / 许可：** cs.RO、cs.CV；论文标注 CC BY-NC-SA 4.0
 - **论文：** <https://arxiv.org/abs/2609.31394>
 - **HTML：** <https://arxiv.org/html/2609.31394v1>
+- **核对范围：** arXiv HTML v1 §1–8 与附录 A；方法/训练/数据/评测/作者局限；官方项目页、模型指南及训练/部署源码入口复核于 2026-11-16。
+- **通读：** 已完成
 - **官方项目：** <https://internrobotics.github.io/InternW0-Delta/>
 - **策展节点：** [InternW0-Δ](../../wiki/entities/paper-internw0-delta.md)
 
@@ -74,3 +76,9 @@ LIBERO-Plus 独立训练消融：
 - arXiv 论文显示 CC BY-NC-SA 4.0。
 - 该许可适用于论文文本，不能据此推断机器人数据、模型 backbone 或第三方数据许可。
 - arXiv HTML 为内容事实来源；结果表、实验协议与详细限制以论文全文为准。
+
+## 2026-11-16 一手发布状态复核
+
+- [官方模型指南](https://github.com/InternRobotics/InternW0-Delta/blob/main/docs/models.md) 已列出 [Base/pretrain.pt](https://huggingface.co/InternRobotics/InternW0-Delta-Base/tree/main)、[LIBERO/libero.pt](https://huggingface.co/InternRobotics/InternW0-Delta-Libero/tree/main)、[RoboTwin/robotwin.pt](https://huggingface.co/InternRobotics/InternW0-Delta-RoboTwin/tree/main)、[RoboDojo/robodojo.pt](https://huggingface.co/InternRobotics/InternW0-Delta-RoboDojo/tree/main)。已核对四个 Hugging Face 文件列表，均有约 12.4 GB 对应权重文件，模型页标注 Apache-2.0。
+- 资源页 / README 顶部的 forthcoming、coming soon 字样已落后于权重文件实况。代码仓为 MIT，原始/处理后数据及第三方骨干模型遵循各自许可；权重发布不是论文指标的独立复现。
+- 阅读源码：`run.sh` → `scripts/train_distributed.sh` → `scripts/train.py` → `CacheManager.from_config` / `run_training`；`deploy/run.sh` → `deploy/run.py` → `deploy.policy` / `deploy.controller.AsyncController` / `deploy.robot`；未下载模型、跑训练或控制真机。
