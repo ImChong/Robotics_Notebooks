@@ -136,6 +136,7 @@ flowchart LR
 - [RoboMP-DINOv2](../wiki/entities/paper-robomp-dinov2.md) — 在完整图像特征上加入区域提示，而不是用硬掩码过滤，避免丢掉障碍与背景线索（仅开源视觉编码器与颜色增强，无下游策略/权重）
 - [X-Planner](../wiki/entities/paper-x-planner-event-structured-task-planning.md) — 用事件状态衔接高层指令与下游动作模型，把长任务计划写成可执行事件，并探索连续潜在推理接口（推理与静态基准已开源，训练依赖未开内部后端）
 - [MIGU](../wiki/entities/paper-migu-multimodal-instruction-grounding.md) — 融合语言语义与指向手势的三维几何不确定性，先形成目标信念，再决定执行或澄清（`MingkeLu/MIGU` 部分开源核心 grounding、样本与 ROS 接口，不含 POMDP 澄清对话与 S2 规划器）
+- [VLA-Δ：物理状态转移监督](../wiki/entities/paper-vla-delta.md) — Stage 2：用未来差异文本、结构化转移槽和光流在预训练期监督 Query，再由 flow matching 直接预测动作；LIBERO 98.4%、RoboTwin 90.06%/89.74%；已公开训练/评测代码与权重。
 - [TEMPO](../wiki/entities/paper-tempo-dynamic-manipulation.md) — CoRL 2026 Oral；为单帧 VLA 补充视觉运动摘要与动作历史，缓解双臂动态操作歧义；`tempo-robot/TEMPO` 模型代码与 `TempoBench` 257 回合数据已开源，权重与真机部署待补
 
 ### 学完输出什么
