@@ -6,8 +6,8 @@ updated: 2026-10-03
 arxiv: "2609.38873"
 related:
   - ../tasks/locomotion.md
-  - ../tasks/navigation.md
-  - ../concepts/safe-reinforcement-learning.md
+  - ../comparisons/mobile-robot-navigation-planning-methods.md
+  - ../methods/safe-rl.md
 sources:
   - ../../sources/blogs/humanoid_motion_intelligence_day2_locomotion_motion_priors_2026_10_03.md
 summary: "DODGER（arXiv:2609.38873）：通过安全引导的强化学习在人群等动态障碍中生成导航速度命令，再交由低层行走控制执行。"

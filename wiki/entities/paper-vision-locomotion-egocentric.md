@@ -31,7 +31,6 @@ sources:
   - ../../sources/papers/vision_locomotion_corl_2022_arxiv_2211_07638.md
   - ../../sources/sites/vision-locomotion-github-io.md
 summary: "CoRL 2022 Best Systems：A1 单前向深度 + GRU 记忆的两阶段 scandots RL → 深度 DAgger，无高程图实机过 stair/踏石/gap；官方代码未发布。"
-tags: [quadruped, reinforcement-learning, locomotion, perception, sim2real, privileged-training, unitree, cmu, berkeley]
 ---
 
 # Vision Locomotion（Egocentric Depth 四足穿越复杂地形）

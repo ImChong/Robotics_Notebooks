@@ -14,7 +14,7 @@ related:
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
   - ./paper-unified-continuum-actuation.md
 sources:
-  - ../../sources/papers/tdhd_surgical_dual_arm_arxiv_2608_09125.md
+  - ../../sources/papers/tdhd-surgical-dual-arm_arxiv_2608_09125.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "双臂手术 VLA 的轨迹分歧视界决策：生成两份轻微扰动的动作计划，分歧扩大时提前停下重规划，减少固定长度执行累积偏差，提升针与组织操作可靠性。"
 ---

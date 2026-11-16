@@ -16,11 +16,9 @@ related:
   - ../methods/vla.md
   - ./paper-openeai-vla.md
   - ../overview/embodied-frontier-algorithms-technology-map.md
-  - ../overview/embodied-frontier-algorithms-technology-map.md
 sources:
   - ../../sources/papers/embodiedbrain_arxiv_2510_20578.md
   - ../../sources/repos/embodiedbrain.md
-  - ../../sources/sites/embodiedbrain.md
   - ../../sources/blogs/wechat_robot_engineer_embodied_frontier_algorithms_2026-09-23.md
 summary: "EmbodiedBrain（arXiv:2510.20578）：7B/32B 具身规划 VLM：agent-aligned 数据结构 + 大规模 SFT + Step-GRPO（Guided Precursors）+ GRM 奖励；开源 VLM-PlanSim-99 仿真基准。"
 ---

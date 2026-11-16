@@ -37,8 +37,6 @@ sources:
 original:
   - ../../sources/repos/hermes_agent_reading_readme_arch_h1.md
 summary: "Hermes Agent（NousResearch）是 MIT 开源的常驻自主代理运行时：单一 AIAgent 服务 CLI、20+ 消息网关与 ACP；SQLite+FTS5 会话、记忆/技能自举闭环与 Honcho 用户建模；70+ 工具、七类终端沙箱与 MCP 扩展；内置 cron 与子代理委托，并支持 ShareGPT 轨迹导出与 Atropos RL 研究管线。"
-tags: [llm-agents, coding-agents, agent-infrastructure, skills, mcp, persistent-memory, messaging-gateway, mit]
-
 ---
 
 # Hermes Agent（Nous Research）

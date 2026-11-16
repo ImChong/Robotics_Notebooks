@@ -4,12 +4,12 @@ tags: [overview, survey, world-models, world-action-models, technology-map, embo
 status: complete
 updated: 2026-08-29
 related:
-  - ./embodied-wm-route-01-model-building.md
-  - ./embodied-wm-route-02-planning.md
-  - ./embodied-wm-route-03-learning.md
-  - ./embodied-wm-route-04-action.md
-  - ./embodied-wm-route-05-evaluation.md
-  - ./embodied-wm-route-06-context.md
+  - ./embodied-wm-route-model-building.md
+  - ./embodied-wm-route-planning.md
+  - ./embodied-wm-route-learning.md
+  - ./embodied-wm-route-action.md
+  - ./embodied-wm-route-evaluation.md
+  - ./embodied-wm-route-context.md
   - ./embodied-wm-route-outlook.md
   - ./robot-world-models-action-consequence-technology-map.md
   - ./robot-world-models-training-loop-taxonomy.md
