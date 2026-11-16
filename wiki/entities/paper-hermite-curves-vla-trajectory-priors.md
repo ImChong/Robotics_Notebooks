@@ -12,7 +12,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/hermite_curves_vla_trajectory_priors_arxiv_2608_01265.md
+  - ../../sources/papers/hermite-curves-vla-trajectory-priors_arxiv_2608_01265.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "用 Hermite 曲线作 VLA 轨迹先验：训练阶段引导动作接近平滑曲线即可提升成功率，部署无额外计算；对比直接预测/曲线修正等变体，训练期曲线引导最实用。"
 ---

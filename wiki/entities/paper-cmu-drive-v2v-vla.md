@@ -14,7 +14,7 @@ related:
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
 sources:
-  - ../../sources/papers/cmu_drive_v2v_vla_arxiv_2608_07621.md
+  - ../../sources/papers/cmu-drive-v2v-vla_arxiv_2608_07621.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "协作式多车 V2V-VLA 与 CMU-Drive 闭环基准：一次前向同时生成驾驶动作、未来轨迹、语言推理与通信策略。"
 ---

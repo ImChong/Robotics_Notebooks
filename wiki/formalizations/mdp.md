@@ -1,7 +1,6 @@
 ---
 type: formalization
 tags: [rl, mdp, markov, decision-process]
-status: complete
 related:
   - ./bellman-equation.md
   - ../methods/reinforcement-learning.md

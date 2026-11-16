@@ -12,7 +12,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/cross_view_action_consistency_vla_arxiv_2608_06965.md
+  - ../../sources/papers/cross-view-action-consistency-vla_arxiv_2608_06965.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "相机鲁棒流式 VLA：仅用场景 RGB+语言+本体，屏蔽腕部相机；对正常与扰动视角渲染同一机器人状态并约束流匹配速度一致，提升未见相机位姿成功率。"
 ---

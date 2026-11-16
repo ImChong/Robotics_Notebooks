@@ -12,7 +12,7 @@ updated: 2026-08-12
 summary: "目标检测评价指标以 IoU 匹配为基础，核心报告 COCO 风格 mAP（多阈值平均精度）及 AR；是对比 YOLO/DETR 等检测器的共同尺。"
 related:
   - ../methods/object-detection.md
-  - ./dataset-coco.md
+  - ../entities/dataset-coco.md
   - ../entities/transformer-cv-curriculum.md
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../queries/robot-perception-stack-selection-loop.md

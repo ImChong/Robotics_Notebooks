@@ -12,6 +12,7 @@ tags:
   - sim2real
   - limx-dynamics
   - stairs
+  - limx
 status: complete
 updated: 2026-09-15
 arxiv: "2601.10365"
@@ -31,8 +32,6 @@ sources:
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/sites/npcliu-faststair-github-io.md
 summary: "FastStair（arXiv:2601.10365）把 GPU 并行离散搜索的 DCM 落脚点规划嵌进 Isaac Lab 大规模 RL：先用 foothold-tracking 强监督得到偏安全的基策略，再分训高速/低速专家并用 LoRA 合成单网络，在 LimX Oli 上报告约 1.65 m/s 指令速度下的稳定上楼与长螺旋梯实机结果。"
-tags: [paper, humanoid, locomotion, reinforcement-learning, foothold-planning, dcm, isaac-lab, sim2real, limx-dynamics, stairs, limx]
-
 ---
 
 # FastStair（Learning to Run Up Stairs with Humanoid Robots）

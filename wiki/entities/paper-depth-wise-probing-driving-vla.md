@@ -12,7 +12,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/depth_wise_probing_driving_vla_arxiv_2608_07361.md
+  - ../../sources/papers/depth-wise-probing-driving-vla_arxiv_2608_07361.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "智驾 VLA 规划 token 逐层探针：导航意图与规划信息在浅层已出现，深层层主要负责对齐规划器表示；学习式早读与剪层可提速且未见明确任务退化（DriveX@ECCV 2026）。"
 ---

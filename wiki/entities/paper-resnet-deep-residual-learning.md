@@ -8,6 +8,7 @@ tags:
   - cnn
   - classification
   - perception
+  - microsoft
 status: complete
 updated: 2026-11-06
 arxiv: "1512.03385"
@@ -24,8 +25,6 @@ sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
 summary: "ResNet（arXiv:1512.03385，CVPR 2016）用残差映射与恒等捷径连接解决极深 CNN 的退化问题，使 152 层网络可训练并在 ImageNet/COCO 上成为后续视觉与机器人感知骨干的默认底座。"
-tags: [paper, computer-vision, backbone, cnn, classification, perception, microsoft]
-
 ---
 
 # ResNet（Deep Residual Learning for Image Recognition）
