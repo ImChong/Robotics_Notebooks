@@ -1851,6 +1851,7 @@ def route_health_distribution(nodes: list[dict[str, Any]]) -> list[dict[str, Any
         )
     return out
 
+
 def _compute_graph_stats(
     nodes: list[dict[str, Any]],
     edges: list[dict[str, str]],
