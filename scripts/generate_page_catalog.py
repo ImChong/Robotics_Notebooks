@@ -20,10 +20,18 @@ CATALOG_HEADER = """# Robotics Notebooks Page Catalog
 """
 
 
-def extract_frontmatter_date(path: Path) -> str:
+def extract_frontmatter_date(path_or_text: Path | str) -> str:
     try:
-        content = path.read_text(encoding="utf-8")
-        match = re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", content, re.MULTILINE)
+        content = (
+            path_or_text
+            if isinstance(path_or_text, str)
+            else path_or_text.read_text(encoding="utf-8")
+        )
+        match = re.search(
+            r'^(?:updated|date|created):\s*["\']?(\d{4}-\d{2}-\d{2})["\']?',
+            content,
+            re.MULTILINE,
+        )
         if match:
             return match.group(1)
         match = re.search(r"📅(\d{4}-\d{2}-\d{2})", content)
@@ -50,23 +58,25 @@ def extract_first_sentence(content: str) -> str:
         line = raw_line.strip()
         if not line or line.startswith("#") or line.startswith(">") or line == "---":
             continue
-        summary = line[:100].strip("[]()#*`|")
-        summary = re.sub(r"\[([^]]+)]\([^)]+\)", r"\1", summary)
+        summary = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", line)
+        summary = re.sub(r"[`*]", "", summary).strip("[]()#`|").strip()[:100].strip()
         if summary:
             return summary
     return "—"
 
 
 def get_type(relative: Path) -> str:
-    rel_str = str(relative)
+    rel_str = str(relative).replace("\\", "/")
     if "entities/" in rel_str:
         return "[entity_page]"
     if "references/" in rel_str:
         return "[reference_page]"
-    if "roadmap/" in rel_str or "learning-paths/" in rel_str:
+    if "roadmap/" in rel_str or "roadmaps/" in rel_str or "learning-paths/" in rel_str:
         return "[roadmap_page]"
     if "tech-map/" in rel_str:
         return "[tech_map_node]"
+    if "queries/" in rel_str:
+        return "[query_page]"
     if "concepts/" in rel_str:
         return "[wiki_page]"
     if "methods/" in rel_str:
@@ -87,6 +97,8 @@ def collect_pages(dir_path: Path) -> list[dict[str, Any]]:
     if not dir_path.exists():
         return pages
     for md in sorted(dir_path.rglob("*.md")):
+        if md.name.lower() == "readme.md":
+            continue
         relative = md.relative_to(ROOT)
         content = md.read_text(encoding="utf-8", errors="ignore")
         title_match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
@@ -95,7 +107,7 @@ def collect_pages(dir_path: Path) -> list[dict[str, Any]]:
                 "title": title_match.group(1).strip() if title_match else relative.stem,
                 "path": str(relative).replace("\\", "/"),
                 "summary": extract_first_sentence(content),
-                "date": extract_frontmatter_date(md),
+                "date": extract_frontmatter_date(content),
                 "page_type": get_type(relative),
             }
         )
@@ -111,6 +123,9 @@ def render_catalog() -> str:
         ("Wiki Formalizations（形式化基础）", WIKI / "formalizations"),
         ("Wiki Comparisons（对比页）", WIKI / "comparisons"),
         ("Wiki Overview（总览）", WIKI / "overview"),
+        ("Wiki Queries（问答归档）", WIKI / "queries"),
+        ("Wiki Roadmaps（Wiki 路线入口）", WIKI / "roadmaps"),
+        ("Wiki References（Wiki 参考索引）", WIKI / "references"),
         ("Roadmaps（路线页）", ROADMAP),
         ("Tech-map Nodes（技术栈节点）", TECHMAP),
         ("References（参考资料页）", ROOT / "references"),

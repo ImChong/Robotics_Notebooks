@@ -89,9 +89,11 @@ def main() -> None:
 
     # 1. search-index.json 存在且非空
     si = DOCS / "search-index.json"
+    si_data: dict | None = None
+    doc_count = 0
     if si.exists():
-        data = json.loads(si.read_text(encoding="utf-8"))
-        doc_count = len(data.get("docs", []))
+        si_data = json.loads(si.read_text(encoding="utf-8"))
+        doc_count = len(si_data.get("docs", []))
         results.append(check("search-index.json 存在", True, f"{doc_count} 文档"))
         results.append(check("search-index.json 非空", doc_count > 0, f"docs={doc_count}"))
     else:
@@ -113,23 +115,27 @@ def main() -> None:
 
     # 2. index-v1.json 存在且文档数合理
     iv1 = EXPORTS / "index-v1.json"
+    iv1_data: dict | list | None = None
+    iv1_count = 0
     if iv1.exists():
-        data = json.loads(iv1.read_text(encoding="utf-8"))
-        items = data.get("items", data if isinstance(data, list) else [])
-        count = len(items)
-        results.append(check("exports/index-v1.json 存在", True, f"{count} 页面"))
-        results.append(check("index-v1.json 文档数合理（≥50）", count >= 50, f"count={count}"))
+        iv1_data = json.loads(iv1.read_text(encoding="utf-8"))
+        iv1_items = (
+            iv1_data.get("items", [])
+            if isinstance(iv1_data, dict)
+            else (iv1_data if isinstance(iv1_data, list) else [])
+        )
+        iv1_count = len(iv1_items)
+        results.append(check("exports/index-v1.json 存在", True, f"{iv1_count} 页面"))
+        results.append(
+            check("index-v1.json 文档数合理（≥50）", iv1_count >= 50, f"count={iv1_count}")
+        )
     else:
         results.append(check("exports/index-v1.json 存在", False, "文件缺失"))
         results.append(check("index-v1.json 文档数合理", False, "文件缺失"))
 
     # 3. search-index.json 与 index-v1.json 文档数量大体一致
-    if si.exists() and iv1.exists():
-        si_data = json.loads(si.read_text(encoding="utf-8"))
-        iv1_data = json.loads(iv1.read_text(encoding="utf-8"))
-        si_count = len(si_data.get("docs", []))
-        iv1_items = iv1_data.get("items", iv1_data if isinstance(iv1_data, list) else [])
-        iv1_count = len(iv1_items)
+    if si_data is not None and iv1_data is not None:
+        si_count = doc_count
         # 允许 ±20% 差异（search-index 只含 wiki pages，index-v1 含全部页面）
         ratio = si_count / max(iv1_count, 1)
         consistent = 0.3 <= ratio <= 1.05
@@ -171,6 +177,7 @@ def main() -> None:
 
     # 5. graph-stats.json 节点数与 wiki 页面数大体一致
     gs = EXPORTS / "graph-stats.json"
+    gs_data: dict | None = None
     wiki_pages = list((REPO_ROOT / "wiki").rglob("*.md"))
     wiki_count = len([p for p in wiki_pages if p.name != "README.md"])
     if gs.exists():
@@ -189,8 +196,7 @@ def main() -> None:
         results.append(check("graph-stats.json 存在", False, "文件缺失"))
 
     # 6. graph-stats.json 中孤儿节点应为空
-    if gs.exists():
-        gs_data = json.loads(gs.read_text(encoding="utf-8"))
+    if gs_data is not None:
         orphan_nodes = gs_data.get("orphan_nodes", [])
         orphan_free = len(orphan_nodes) == 0
         detail = "0 个孤儿节点" if orphan_free else f"⚠️ 发现 {len(orphan_nodes)} 个孤儿节点"
@@ -204,7 +210,7 @@ def main() -> None:
         check("exports/lint-report.md 存在", lr.exists(), "（首次运行 weekly action 后生成）")
     )
 
-    # 8. catalog.md 同步检查（新增 wiki 页后应 make catalog）
+    # 8. catalog.md 同步检查（由 main 上的 export.yml 自动维护，PR 勿改）
     catalog_md = REPO_ROOT / "catalog.md"
     index_json = EXPORTS / "index-v1.json"
     if catalog_md.exists() and index_json.exists():
@@ -212,14 +218,18 @@ def main() -> None:
         json_mtime = index_json.stat().st_mtime
         # lag_days > 0: json 比 catalog.md 新；可能 catalog 未及时重新生成
         lag_days = (json_mtime - md_mtime) / 86400
-        # 允许 7 天内的偏差（硬失败阈值），超过则提示但不阻止 CI
-        in_sync = lag_days <= 7.0
-        detail = (
-            f"⚠️ index-v1.json 比 catalog.md 新了 {lag_days:.1f} 天（建议 make catalog）"
-            if not in_sync
-            else f"同步正常（差 {lag_days:.1f} 天）"
-        )
-        results.append(check("catalog.md 与 exports/index-v1.json 同步（7 天内）", in_sync, detail))
+        # 超过 7 天只打印告警，不阻塞 CI（PR 不得修改 bot-owned 的 catalog.md）
+        if lag_days > 7.0:
+            print(
+                f"⚠️  catalog.md 与 exports/index-v1.json 差 {lag_days:.1f} 天"
+                "（catalog.md 由 main 上的 export.yml 自动维护，PR 勿提交）"
+            )
+        else:
+            check(
+                "catalog.md 与 exports/index-v1.json 同步（7 天内）",
+                True,
+                f"同步正常（差 {lag_days:.1f} 天）",
+            )
 
     print("=" * 55)
     passed = sum(results)

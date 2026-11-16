@@ -20,6 +20,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 ARXIV = re.compile(r"(?<!\d)(\d{4}\.\d{4,5})(?:v\d+)?(?!\d)")
 PROJECT_ID = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
+_YAML_LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 
 
 def frontmatter(path: Path) -> dict[str, Any]:
@@ -27,7 +28,7 @@ def frontmatter(path: Path) -> dict[str, Any]:
     match = re.match(r"^---\s*\n(.*?)\n---", text, re.S)
     if not match:
         return {}
-    data = yaml.safe_load(match[1])
+    data = yaml.load(match[1], Loader=_YAML_LOADER)
     if not isinstance(data, dict):
         raise ValueError("frontmatter 必须是映射")
     return data

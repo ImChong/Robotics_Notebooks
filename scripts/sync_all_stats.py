@@ -75,18 +75,18 @@ def main():
 
     # 1. 生成图谱数据和统计
     if not args.skip_graph:
-        run_command(["python3", "scripts/generate_link_graph.py"], "生成图谱数据")
+        run_command([sys.executable, "scripts/generate_link_graph.py"], "生成图谱数据")
 
     # 2. 生成首页统计 JSON（无 --coverage-json 时会内部跑一次 lint）
     if not args.skip_home_stats:
-        run_command(["python3", "scripts/generate_home_stats.py"], "生成首页统计 JSON")
+        run_command([sys.executable, "scripts/generate_home_stats.py"], "生成首页统计 JSON")
 
     # 3. 确保 docs/exports 目录存在并同步图谱相关 JSON（与 make graph 共用逻辑）
     if not args.skip_copy:
         copy_graph_exports_to_docs()
 
     # 3b. 与 graph-stats.generated_at 对齐 Service Worker 缓存版本
-    run_command(["python3", "scripts/sync_sw_cache_version.py"], "同步 SW 缓存版本")
+    run_command([sys.executable, "scripts/sync_sw_cache_version.py"], "同步 SW 缓存版本")
 
     # 读取最新统计数据
     if not HOME_STATS_JSON.exists():
@@ -111,6 +111,22 @@ def main():
     if INDEX_HTML.exists():
         print("📝 更新 docs/index.html...")
         content = INDEX_HTML.read_text(encoding="utf-8")
+
+        for block_id, target_id in (
+            ("homeRouteLinks", "heroDepthRouteCount"),
+            ("homeCompanyLinks", "heroCompanyCount"),
+            ("homeLabLinks", "heroLabCount"),
+        ):
+            block_m = re.search(rf'id="{block_id}"[^>]*>(.*?)</div>', content, re.DOTALL)
+            if block_m:
+                link_count = len(re.findall(r"<a\s", block_m.group(1)))
+                if link_count > 0:
+                    content = re.sub(
+                        rf'(id="{target_id}"[^>]*>)\d+',
+                        rf"\g<1>{link_count}",
+                        content,
+                        count=1,
+                    )
 
         content = re.sub(
             r'(id="heroNodeCount"[^>]*>)\d+',

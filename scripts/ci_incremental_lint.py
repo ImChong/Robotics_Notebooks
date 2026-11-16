@@ -77,7 +77,7 @@ def affected_pages(scope: dict, pages: list[Path], broken: dict) -> list[Path]:
     changed_sources = {(ROOT / name).resolve() for name in scope["changed_sources"]}
     if removed_wiki or changed_sources:
         for page in pages:
-            content = page.read_text(encoding="utf-8")
+            content = wiki._read_page_text(page)
             # Revalidate pages whose original: archive or Markdown links changed.
             targets = set(wiki.extract_internal_links(content, page))
             if any(
@@ -101,7 +101,12 @@ def check_source_links(scope: dict, results: dict) -> None:
     """New/edited source archives may not introduce dangling wiki links."""
     for name in scope["changed_sources"]:
         path = ROOT / name
-        if not path.is_file() or not name.startswith("sources/papers/"):
+        if (
+            not path.is_file()
+            or not name.startswith("sources/")
+            or name.startswith("sources/raw/")
+            or not name.endswith(".md")
+        ):
             continue
         content = path.read_text(encoding="utf-8")
         for match in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", content):
@@ -123,7 +128,7 @@ def contradiction_fact_ids(scope: dict) -> set[str]:
         path = ROOT / name
         if not path.is_file():
             continue
-        content = wiki.strip_misconception_sections(path.read_text(encoding="utf-8"))
+        content = wiki.strip_misconception_sections(wiki._read_page_text(path))
         for fact_id, fact in facts.items():
             if not all(re.search(term, content, re.IGNORECASE) for term in fact["terms"]):
                 continue
@@ -139,31 +144,32 @@ def lint_changed(scope: dict) -> dict:
         raise ValueError("incremental lint requires a detected PR ingest scope")
     pages = wiki.get_wiki_pages()
     page_set = {page.resolve() for page in pages}
-    inbound, broken = wiki._build_link_index(pages, page_set)
-    selected = affected_pages(scope, pages, broken)
     results = wiki._empty_results()
-    print(
-        f"Incremental wiki lint: {len(selected)} affected pages "
-        f"from {len(scope['paths'])} changed paths",
-        flush=True,
-    )
-    wiki._check_per_page(selected, inbound, broken, results)
-    wiki._check_frontmatter(selected, results)
-    wiki._check_original_reading(selected, results)
-    wiki._check_query_format(selected, results)
-    wiki._check_formalizations(selected, results)
-    wiki._check_methods_entities(selected, results)
-    wiki._check_paper_entity_metadata(selected, results)
-    wiki._check_dataset_entity_metadata(selected, results)
-    wiki._check_tool_institutions(selected, results)
-    wiki._check_frontmatter_topic(selected, results)
+    with wiki._page_read_cache():
+        inbound, broken = wiki._build_link_index(pages, page_set)
+        selected = affected_pages(scope, pages, broken)
+        print(
+            f"Incremental wiki lint: {len(selected)} affected pages "
+            f"from {len(scope['paths'])} changed paths",
+            flush=True,
+        )
+        wiki._check_per_page(selected, inbound, broken, results)
+        wiki._check_frontmatter(selected, results)
+        wiki._check_original_reading(selected, results)
+        wiki._check_query_format(selected, results)
+        wiki._check_formalizations(selected, results)
+        wiki._check_methods_entities(selected, results)
+        wiki._check_paper_entity_metadata(selected, results)
+        wiki._check_dataset_entity_metadata(selected, results)
+        wiki._check_tool_institutions(selected, results)
+        wiki._check_frontmatter_topic(selected, results)
 
-    # Full-index invariants are cheap relative to full lint and must not be lost.
-    wiki._check_duplicate_arxiv(pages, results)
-    # Contradictions are cross-page: compare all pages, but only for facts a changed page hits.
-    wiki._check_contradictions(pages, results, contradiction_fact_ids(scope))
-    if any(name.startswith("wiki/") for name in scope["removed"]):
-        wiki._check_sources_health(results)
+        # Full-index invariants are cheap relative to full lint and must not be lost.
+        wiki._check_duplicate_arxiv(pages, results)
+        # Contradictions are cross-page: compare all pages, but only for facts a changed page hits.
+        wiki._check_contradictions(pages, results, contradiction_fact_ids(scope))
+        if any(name.startswith("wiki/") for name in scope["removed"]):
+            wiki._check_sources_health(results)
     check_source_links(scope, results)
     return results
 

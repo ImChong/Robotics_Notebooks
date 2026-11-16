@@ -41,6 +41,8 @@ import os
 import re
 import subprocess
 import sys
+from collections.abc import Iterator
+from contextlib import contextmanager
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -1029,6 +1031,34 @@ def get_wiki_pages() -> list[Path]:
     return sorted(WIKI_DIR.rglob("*.md"))
 
 
+_PAGE_READ_CACHE: dict[Path, tuple[int, int, str]] | None = None
+
+
+@contextmanager
+def _page_read_cache() -> Iterator[None]:
+    """在单次 lint / 增量 lint 期间按 (mtime_ns, size) 缓存页面文本，避免重复读盘。"""
+    global _PAGE_READ_CACHE
+    prev = _PAGE_READ_CACHE
+    _PAGE_READ_CACHE = {} if prev is None else prev
+    try:
+        yield
+    finally:
+        _PAGE_READ_CACHE = prev
+
+
+def _read_page_text(page: Path) -> str:
+    if _PAGE_READ_CACHE is None:
+        return page.read_text(encoding="utf-8")
+    stat = page.stat()
+    key = page.resolve()
+    cached = _PAGE_READ_CACHE.get(key)
+    if cached is not None and cached[0] == stat.st_mtime_ns and cached[1] == stat.st_size:
+        return cached[2]
+    text = page.read_text(encoding="utf-8")
+    _PAGE_READ_CACHE[key] = (stat.st_mtime_ns, stat.st_size, text)
+    return text
+
+
 # frontmatter status 只允许这三个取值（schema/page-types.md）；缺省允许
 WIKI_STATUS_VALUES = frozenset({"stub", "draft", "complete"})
 
@@ -1143,7 +1173,7 @@ def _build_link_index(
     broken_links: dict[Path, list[str]] = {}
 
     for page in pages:
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         links = extract_internal_links(content, page)
         for target in links:
             if target in page_set:
@@ -1218,9 +1248,11 @@ def _check_per_page(
     results: dict[str, Any],
 ) -> None:
     """逐页检查：孤儿、关联区块、参考来源、断链、空壳、wikilink 语法、source 引用。"""
+    from wiki_abbrev_section import is_abbrev_glossary_well_placed
+
     for page in pages:
         resolved = page.resolve()
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         rel = page.relative_to(REPO_ROOT)
 
         for line_no in find_mermaid_placeholder_lines(content):
@@ -1249,43 +1281,39 @@ def _check_per_page(
         is_meta_abbrev = page.name.lower() in ("readme.md", "index.md") or any(
             seg in str(rel) for seg in ("references/", "roadmaps/")
         )
-        if not is_meta_abbrev and not has_section(
-            content, ["英文缩写速查", "abbreviation glossary", "abbreviations"]
-        ):
-            results["missing_abbrev_glossary"].append(str(rel))
-
         if not is_meta_abbrev:
-            from wiki_abbrev_section import is_abbrev_glossary_well_placed
-
-            if has_section(
+            has_abbrev = has_section(
                 content, ["英文缩写速查", "abbreviation glossary", "abbreviations"]
-            ) and not is_abbrev_glossary_well_placed(content):
+            )
+            if not has_abbrev:
+                results["missing_abbrev_glossary"].append(str(rel))
+            elif not is_abbrev_glossary_well_placed(content):
                 results["abbrev_glossary_wrong_order"].append(str(rel))
 
         if resolved in broken:
             for b in broken[resolved]:
                 results["broken_links"].append(f"{rel} → {b}")
 
-        if word_count(content) < 200:
-            results["stub_pages"].append(f"{rel} ({word_count(content)} 字)")
+        wc = word_count(content)
+        if wc < 200:
+            results["stub_pages"].append(f"{rel} ({wc} 字)")
 
         if not is_meta_page:
             results["_ingest_total"] += 1
             if has_source_reference(content):
                 results["_ingest_covered"] += 1
 
-        wl_stripped = strip_code_blocks(content)
-        for m in re.finditer(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", wl_stripped):
+        stripped = strip_code_blocks(content)
+        for m in re.finditer(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", stripped):
             token = m.group(1).strip()
             if re.match(r"^[\d\.\-\s,]+$", token):
                 continue
             results["wikilink_syntax"].append(f"{rel}: {m.group(0)}")
 
-        for line_no, line in enumerate(wl_stripped.splitlines(), start=1):
+        for line_no, line in enumerate(stripped.splitlines(), start=1):
             if re.search(r"<https?://[^\s>]+(?=\s*\||\s*$)", line):
                 results["unclosed_autolinks"].append(f"{rel}:{line_no}: {line.strip()}")
 
-        stripped = strip_code_blocks(content)
         for m in re.finditer(r"\[([^\]]*)\]\(([^)]+sources/[^)]+\.md)[^)]*\)", stripped):
             href = m.group(2).split("#")[0]
             resolved_src = (page.parent / href).resolve()
@@ -1307,7 +1335,7 @@ def _check_missing_concepts(pages: list[Path], results: dict[str, Any]) -> None:
         "MARL": "marl",
         "ContactNet": "contact-net",
     }
-    all_content = "".join(page.read_text(encoding="utf-8") for page in pages)
+    all_content = "".join(_read_page_text(page) for page in pages)
     term_counts: dict[str, int] = {}
     for term, slug in watch_terms.items():
         count = len(re.findall(rf"\b{re.escape(term)}\b", all_content))
@@ -1346,7 +1374,7 @@ def _check_missing_concept_pages(pages: list[Path], results: dict[str, Any]) -> 
     term_pages: dict[str, set[str]] = {}
     term_display: dict[str, str] = {}
     for page in pages:
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         body = re.sub(r"^---\n.*?\n---", "", content, flags=re.DOTALL)
         body = re.sub(r"```.*?```", "", body, flags=re.DOTALL)  # 仅去围栏块，保留行内反引号
         # 策展索引页模板里的分类学标签：粗体是清单 type 枚举与分组名，非概念
@@ -1428,6 +1456,39 @@ def _build_git_mtime_map() -> dict[Path, float]:
     return mtime_map
 
 
+def _git_dirty_paths() -> set[Path] | None:
+    """单次 ``git status --porcelain -z -uall`` 收集工作区全部未提交/未跟踪路径。"""
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(REPO_ROOT), "status", "--porcelain", "-z", "-uall"],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=10,
+        )
+        if result.returncode != 0:
+            return None
+    except (subprocess.SubprocessError, OSError):
+        return None
+    dirty: set[Path] = set()
+    tokens = result.stdout.split("\0")
+    i = 0
+    while i < len(tokens):
+        entry = tokens[i]
+        i += 1
+        if len(entry) < 4:
+            continue
+        status = entry[:2]
+        rel_path = entry[3:]
+        if rel_path:
+            dirty.add((REPO_ROOT / rel_path).resolve())
+        if "R" in status or "C" in status:
+            if i < len(tokens) and tokens[i]:
+                dirty.add((REPO_ROOT / tokens[i]).resolve())
+            i += 1
+    return dirty
+
+
 def _path_has_local_changes(path: Path) -> bool:
     """工作区相对 HEAD 是否有未提交改动（含 staged）。"""
     try:
@@ -1444,33 +1505,44 @@ def _path_has_local_changes(path: Path) -> bool:
         return False
 
 
-def _effective_mtime(path: Path, git_mtime_map: dict[Path, float]) -> float:
+def _effective_mtime(
+    path: Path,
+    git_mtime_map: dict[Path, float],
+    dirty_paths: set[Path] | None = None,
+) -> float:
     """Git commit time；未跟踪文件或本地有未提交改动时用 max(git, fs)。"""
     fs_mtime = path.stat().st_mtime
     git_mtime = git_mtime_map.get(path)
     if git_mtime is None:
         return fs_mtime
-    if _path_has_local_changes(path):
+    has_changes = (
+        path.resolve() in dirty_paths if dirty_paths is not None else _path_has_local_changes(path)
+    )
+    if has_changes:
         return max(git_mtime, fs_mtime)
     return git_mtime
 
 
-def _frontmatter_updated_date(path: Path) -> date | None:
-    """解析 wiki frontmatter 的 updated: YYYY-MM-DD（维护者显式复核日期）。"""
-    try:
-        content = path.read_text(encoding="utf-8")
-    except OSError:
+def _parse_updated_date(fm_block: str) -> date | None:
+    """从已提取的 frontmatter YAML 文本解析 updated: YYYY-MM-DD。"""
+    if not fm_block:
         return None
-    fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-    if not fm_match:
-        return None
-    upd_m = re.search(r"^updated:\s*(\d{4}-\d{2}-\d{2})", fm_match.group(1), re.MULTILINE)
+    upd_m = re.search(r'^updated:\s*["\']?(\d{4}-\d{2}-\d{2})["\']?', fm_block, re.MULTILINE)
     if not upd_m:
         return None
     try:
         return date.fromisoformat(upd_m.group(1))
     except ValueError:
         return None
+
+
+def _frontmatter_updated_date(path: Path) -> date | None:
+    """解析 wiki frontmatter 的 updated: YYYY-MM-DD（维护者显式复核日期）。"""
+    try:
+        content = _read_page_text(path)
+    except OSError:
+        return None
+    return _parse_updated_date(_frontmatter_block(content))
 
 
 def _frontmatter_block(content: str) -> str:
@@ -1571,19 +1643,21 @@ def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
 
     page_stems = {p.stem.lower() for p in pages}
     meta: list[tuple[Path, date | None, set[str], str]] = []
+    latest_by_tag: dict[str, tuple[date, Path]] = {}
     for page in pages:
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
+        fm_block = _frontmatter_block(content)
+        upd = _parse_updated_date(fm_block)
+        tags = _frontmatter_tags(fm_block)
         body = re.sub(r"^---\n.*?\n---", "", content, flags=re.DOTALL)
         body = extract_abbrev_section(body)[1]
         body = strip_misconception_sections(strip_code_blocks(body))
-        meta.append(
-            (
-                page,
-                _frontmatter_updated_date(page),
-                _frontmatter_tags(_frontmatter_block(content)),
-                body,
-            )
-        )
+        meta.append((page, upd, tags, body))
+        if upd is not None:
+            for tag in tags:
+                prev = latest_by_tag.get(tag)
+                if prev is None or upd > prev[0]:
+                    latest_by_tag[tag] = (upd, page)
 
     for page, upd, tags, body in meta:
         if upd is None or not tags:
@@ -1591,18 +1665,17 @@ def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
         hit = _stale_claim_hit(body, page_stems)
         if hit is None:
             continue
-        newer = next(
-            (
-                (other, o_upd)
-                for other, o_upd, o_tags, _ in meta
-                if other != page and o_upd is not None and o_upd > upd and tags & o_tags
-            ),
-            None,
-        )
-        if newer is not None:
+        best_newer: tuple[date, Path] | None = None
+        for tag in tags:
+            cand = latest_by_tag.get(tag)
+            if cand is not None and cand[0] > upd:
+                if best_newer is None or cand[0] > best_newer[0]:
+                    best_newer = cand
+        if best_newer is not None:
+            o_upd, other = best_newer
             results["stale_claims"].append(
                 f"{page.relative_to(REPO_ROOT)}（含绝对化措辞「{hit}」，updated={upd.isoformat()}；"
-                f"同主题更新页 {newer[0].relative_to(REPO_ROOT)} updated={newer[1].isoformat()}）"
+                f"同主题更新页 {other.relative_to(REPO_ROOT)} updated={o_upd.isoformat()}）"
             )
 
 
@@ -1620,8 +1693,10 @@ def _check_sources_health(results: dict[str, Any]) -> None:
     if not sources_papers_dir.exists():
         return
 
+    src_contents: dict[Path, str] = {}
     for src_file in sorted(sources_papers_dir.glob("*.md")):
         src_content = src_file.read_text(encoding="utf-8")
+        src_contents[src_file] = src_content
         for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
             href = m.group(1).split("#")[0]
             target = (src_file.parent / href).resolve()
@@ -1631,21 +1706,21 @@ def _check_sources_health(results: dict[str, Any]) -> None:
     if os.environ.get("GITHUB_ACTIONS") == "true":
         return
     git_mtime_map = _build_git_mtime_map()
+    dirty_paths = _git_dirty_paths()
     seen_stale: set[Path] = set()
-    for src_file in sorted(sources_papers_dir.glob("*.md")):
+    for src_file, src_content in src_contents.items():
         # 策展清单总表（*_catalog.md）是索引：一次链接改写会把它链到的数百页一起标陈旧，
         # 而这些页各自另有逐篇 source 承载真实的陈旧信号；死链仍由上方孤儿检查覆盖。
         if src_file.stem.endswith("_catalog"):
             continue
-        src_content = src_file.read_text(encoding="utf-8")
-        src_mtime = _effective_mtime(src_file, git_mtime_map)
+        src_mtime = _effective_mtime(src_file, git_mtime_map, dirty_paths=dirty_paths)
         for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
             href = m.group(1).split("#")[0]
             wiki_target = (src_file.parent / href).resolve()
             if wiki_target.exists() and wiki_target not in seen_stale:
                 if _wiki_reviewed_on_or_after_source(wiki_target, src_mtime):
                     continue
-                wiki_mtime = _effective_mtime(wiki_target, git_mtime_map)
+                wiki_mtime = _effective_mtime(wiki_target, git_mtime_map, dirty_paths=dirty_paths)
                 if src_mtime > wiki_mtime + 86400:
                     seen_stale.add(wiki_target)
                     rel_wiki = wiki_target.relative_to(REPO_ROOT)
@@ -1668,9 +1743,7 @@ def _check_contradictions(
         canonical_facts = {k: v for k, v in canonical_facts.items() if k in fact_ids}
         if not canonical_facts:
             return
-    all_pages_content = {
-        p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages
-    }
+    all_pages_content = {p: strip_misconception_sections(_read_page_text(p)) for p in pages}
     for fact_id, fact in canonical_facts.items():
         pos_pages, neg_pages = [], []
         for page, content in all_pages_content.items():
@@ -1694,7 +1767,7 @@ def _check_original_reading(pages: list[Path], results: dict[str, Any]) -> None:
     """frontmatter original 每条须指向 sources/ 下现有归档，且归档有唯一合法的通读字段。"""
     sources_dir = (REPO_ROOT / "sources").resolve()
     for page in pages:
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         for entry in original_entries(content):
             path = (page.parent / entry).resolve()
             if not path.is_relative_to(sources_dir) or not path.is_file():
@@ -1715,7 +1788,7 @@ def _check_frontmatter(pages: list[Path], results: dict[str, Any]) -> None:
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
 
         if page.name.lower() not in ("readme.md", "index.md") and not any(
@@ -1817,7 +1890,7 @@ def _check_query_format(pages: list[Path], results: dict[str, Any]) -> None:
             or page.name == "README.md"
         ):
             continue
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         missing_parts = []
         if "**Query 产物**" not in content:
             missing_parts.append("缺 'Query 产物' 说明")
@@ -1836,7 +1909,7 @@ def _check_formalizations(pages: list[Path], results: dict[str, Any]) -> None:
         parts = rel.parts
         if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "formalizations":
             continue
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
 
         if "$$" not in content and "$`" not in content and "`$" not in content:
             results["formalization_no_formula"].append(str(rel))
@@ -2048,7 +2121,7 @@ def _check_duplicate_arxiv(pages: list[Path], results: dict[str, Any]) -> None:
     """
     arxiv_pages: dict[str, list[str]] = {}
     for page in pages:
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         if not fm_match:
             continue
@@ -2097,7 +2170,7 @@ def _check_paper_entity_metadata(pages: list[Path], results: dict[str, Any]) -> 
         if not page.name.startswith("paper-"):
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         has_source = any(re.search(rf"^{key}\s*:", fm_block, re.MULTILINE) for key in source_keys)
@@ -2209,7 +2282,7 @@ def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -
         if len(parts) < 3 or parts[0] != "wiki" or parts[1] != "entities":
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         tags = _frontmatter_tags(fm_block)
@@ -2287,7 +2360,7 @@ def _check_physics_concept_crosslink(pages: list[Path], results: dict[str, Any])
         if page.stem in PHYSICS_FIDELITY_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- dynamics），也支持内联式 [dynamics, ...]
@@ -2337,7 +2410,7 @@ def _check_contact_control_crosslink(pages: list[Path], results: dict[str, Any])
         if page.stem in CONTACT_FORCE_CONTROL_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- contact），也支持内联式 [contact, ...]
@@ -2388,7 +2461,7 @@ def _check_embodied_fm_crosslink(pages: list[Path], results: dict[str, Any]) -> 
         if page.stem in EMBODIED_FM_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- vla），也支持内联式 [vla, ...]
@@ -2438,7 +2511,7 @@ def _check_eval_benchmark_crosslink(pages: list[Path], results: dict[str, Any]) 
         if page.stem in EVAL_BENCHMARK_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- benchmark），也支持内联式 [benchmark, ...]
@@ -2497,7 +2570,7 @@ def _check_actuator_drive_chain_crosslink(pages: list[Path], results: dict[str, 
         if page.stem in ACTUATOR_DRIVE_CHAIN_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- actuator），也支持内联式 [actuator, ...]
@@ -2550,7 +2623,7 @@ def _check_perception_stack_crosslink(pages: list[Path], results: dict[str, Any]
         if page.stem in PERCEPTION_STACK_HUBS:
             continue
 
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
         # tags 既支持列表式（- object-detection），也支持内联式 [object-detection, ...]
@@ -2582,7 +2655,7 @@ def _check_tool_institutions(pages: list[Path], results: dict[str, Any]) -> None
         parts = rel.parts
         if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "entities":
             continue
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         tags = _parse_frontmatter_list(content, "tags")
         if not is_tool_entity(rel.as_posix(), tags):
             continue
@@ -2595,29 +2668,21 @@ def _check_frontmatter_topic(pages: list[Path], results: dict[str, Any]) -> None
     from generate_link_graph import MAX_NODE_TOPICS, TOPIC_BY_ID, parse_frontmatter_topics
 
     for page in pages:
-        topics = parse_frontmatter_topics(page.read_text(encoding="utf-8"))
+        topics = parse_frontmatter_topics(_read_page_text(page))
         unknown = [tid for tid in topics if tid not in TOPIC_BY_ID]
         if unknown or len(topics) > MAX_NODE_TOPICS:
             results["invalid_topic"].append(f"{page.relative_to(REPO_ROOT)} （topic: {topics}）")
 
 
 def _check_methods_entities(pages: list[Path], results: dict[str, Any]) -> None:
-    """methods/ 页面结构检查 + entities/ 出边检查。
-
-    注意：原始实现中 entities/ 检查写在 methods/ 循环内部，
-    因 ``continue`` 门控导致 entities/ 页面实际不会被扫描。
-    此处保持相同行为——仅在 methods/ 页面上执行两项检查。
-    """
+    """methods/ 页面结构检查。"""
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
         if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "methods":
             continue
-        content = page.read_text(encoding="utf-8")
+        content = _read_page_text(page)
         _check_method_page(page, rel, content, results)
-
-        if parts[1] == "entities":
-            _check_entity_page(page, rel, content, results)
 
 
 # ---------------------------------------------------------------------------
@@ -2629,6 +2694,25 @@ def coverage_stats(results: dict[str, Any]) -> dict[str, int]:
     """从 lint 结果提取 Sources 覆盖率，供 home-stats / preflight 复用。"""
     covered = int(results.get("_ingest_covered", 0))
     total = int(results.get("_ingest_total", 0))
+    percent = round(covered / total * 100) if total else 0
+    return {"covered": covered, "total": total, "percent": percent}
+
+
+def compute_ingest_coverage() -> dict[str, int]:
+    """轻量级计算 wiki 页面的 Sources 覆盖率（与 coverage_stats(lint()) 同口径）。"""
+    covered = 0
+    total = 0
+    for page in get_wiki_pages():
+        rel = page.relative_to(REPO_ROOT)
+        is_meta_page = (
+            page.name.lower() in ("readme.md", "index.md")
+            or "references/" in str(rel)
+            or "roadmaps/" in str(rel)
+        )
+        if not is_meta_page:
+            total += 1
+            if has_source_reference(_read_page_text(page)):
+                covered += 1
     percent = round(covered / total * 100) if total else 0
     return {"covered": covered, "total": total, "percent": percent}
 
@@ -2645,36 +2729,37 @@ def save_lint_report(results: dict[str, Any], report_path: Path | None = None) -
 def lint() -> dict[str, Any]:
     pages = get_wiki_pages()
     page_set = {p.resolve() for p in pages}
-    inbound, broken_links = _build_link_index(pages, page_set)
     results = _empty_results()
 
-    _check_per_page(pages, inbound, broken_links, results)
-    _check_missing_concepts(pages, results)
-    _check_missing_concept_pages(pages, results)
-    _check_sources_health(results)
-    _check_contradictions(pages, results)
-    _check_frontmatter(pages, results)
-    _check_original_reading(pages, results)
-    _check_log_activity(results)
-    _check_query_format(pages, results)
-    _check_formalizations(pages, results)
-    _check_readme_badges(results)
-    _check_graph_orphans(results)
-    _check_methods_entities(pages, results)
-    _check_methods_without_practitioner_query(pages, inbound, results)
-    _check_paper_entity_metadata(pages, results)
-    _check_duplicate_arxiv(pages, results)
-    results["duplicate_project_nodes"] = check_project_nodes(REPO_ROOT)
-    _check_dataset_entity_metadata(pages, results)
-    _check_stale_claims(pages, results)
-    _check_physics_concept_crosslink(pages, results)
-    _check_contact_control_crosslink(pages, results)
-    _check_embodied_fm_crosslink(pages, results)
-    _check_eval_benchmark_crosslink(pages, results)
-    _check_actuator_drive_chain_crosslink(pages, results)
-    _check_perception_stack_crosslink(pages, results)
-    _check_tool_institutions(pages, results)
-    _check_frontmatter_topic(pages, results)
+    with _page_read_cache():
+        inbound, broken_links = _build_link_index(pages, page_set)
+        _check_per_page(pages, inbound, broken_links, results)
+        _check_missing_concepts(pages, results)
+        _check_missing_concept_pages(pages, results)
+        _check_sources_health(results)
+        _check_contradictions(pages, results)
+        _check_frontmatter(pages, results)
+        _check_original_reading(pages, results)
+        _check_log_activity(results)
+        _check_query_format(pages, results)
+        _check_formalizations(pages, results)
+        _check_readme_badges(results)
+        _check_graph_orphans(results)
+        _check_methods_entities(pages, results)
+        _check_methods_without_practitioner_query(pages, inbound, results)
+        _check_paper_entity_metadata(pages, results)
+        _check_duplicate_arxiv(pages, results)
+        results["duplicate_project_nodes"] = check_project_nodes(REPO_ROOT)
+        _check_dataset_entity_metadata(pages, results)
+        _check_stale_claims(pages, results)
+        _check_physics_concept_crosslink(pages, results)
+        _check_contact_control_crosslink(pages, results)
+        _check_embodied_fm_crosslink(pages, results)
+        _check_eval_benchmark_crosslink(pages, results)
+        _check_actuator_drive_chain_crosslink(pages, results)
+        _check_perception_stack_crosslink(pages, results)
+        _check_tool_institutions(pages, results)
+        _check_frontmatter_topic(pages, results)
 
     return results
 

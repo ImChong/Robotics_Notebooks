@@ -64,7 +64,7 @@ from export_minimal import (
     parse_roadmap_stages,
     strip_frontmatter,
 )
-from lint_wiki import has_section
+from lint_wiki import has_section, strip_code_blocks
 from markdown_it import MarkdownIt
 from original_reading import original_fully_read
 from utils.community_labels import load_topics
@@ -1284,9 +1284,10 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
                 continue
         return False
 
-    # 1. 标准 Markdown 链接
-    for match in re.finditer(r"\]\(([^)]+\.md)\)", content):
-        href = match.group(1).split("#")[0]
+    # 1. 标准 Markdown 链接（先去代码块，支持 .md#anchor 锚点链接）
+    cleaned = strip_code_blocks(content)
+    for match in re.finditer(r"\]\(([^)#\s]+\.md)(?:#[^)\s]*)?\)", cleaned):
+        href = match.group(1)
         if href.startswith("http"):
             continue
         resolved = (source_path.parent / href).resolve()
