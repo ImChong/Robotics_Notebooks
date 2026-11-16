@@ -2,7 +2,7 @@
 type: entity
 project_id: ovbench-videochat-online
 tags: [paper, video-understanding, streaming, memory, mllm, benchmark, cvpr-2025]
-status: draft
+status: complete
 updated: 2026-11-16
 arxiv: "2501.00584"
 project: https://videochat-online.github.io/
@@ -104,6 +104,13 @@ sequenceDiagram
 - **结果：** 官方 README 给出 OVBench **54.9**（VideoChatOnline-4B）；跨 offline/sliding-window/streaming 结果不能当作同协议比较。
 - **检查轴：** 分层记忆的空间-时间取舍及离线到在线训练收益；分数仅适用原评测数据和帧预算。
 
+### 附录核对与指标边界
+
+- **在线与滑窗不是同一协议：** 表 2 中 VideoChat-Online 4B 的 streaming 分数为 **54.9**，32 秒滑窗为 **53.9**；§5.4 表 6 的 **53.89** 来自训练策略消融设置，不能与 streaming 结果混记。
+- **PMB 记忆预算：** 补充材料 §1.1/§5 明确 `m_s`：2×256、`m_main`：2×64、`m_t`：12×16，总 **832 visual tokens**；正文 §4.1 描述相邻帧相似度淘汰与逐层下写，KV-cache 同步为**论文方案**，并非宣称官方已经开放相应实现。
+- **训练增益：** 96K 在线 SFT 样本约占训练数据 6%；训练消融中仅离线为 **45.23**，渐进式混合+交错数据 **53.89**。补充材料中删去时空动作检测、时间定位分别下降 **3.3 / 2.7** 分。
+- **审慎处理原文冲突：** §1 写 7 个源数据集，§3.2 写 8 个；保留差异而非推断同一数量。附录在特定 1000 帧测试下报告 **8.71 GB VRAM**，不能外推为普遍硬件需求。
+
 ## 结论
 
 **在线视频模型评测必须同时限定提问时刻与记忆预算，不能用完整视频的离线问答分数冒充实时理解。**
@@ -125,7 +132,7 @@ sequenceDiagram
 
 - 官方 README 明确：当前开源 PMB 使用 **ViT 特征**；基于 KV-cache 特征的实现计划后续开放，不能当作已发布。
 - 流式评测脚本包含内部路径与 8 GPU 默认设定，不能直接在普通机器上原样复现。
-- 论文所有附录逐段核对、完整 `ci-preflight` 和模型运行未完成，状态保留 `draft`。
+- arXiv v2 正文和补充材料已核读，官方脚本入口已对照；**未运行完整训练、推理或全部本地 CI**，本节点 `complete` 表示文献解读完成，不是复现通过。
 
 ## 关联页面
 

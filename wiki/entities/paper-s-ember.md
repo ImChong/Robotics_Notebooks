@@ -2,7 +2,7 @@
 type: entity
 project_id: s-ember-streaming-egocentric-memory
 tags: [paper, meta, egocentric, streaming, episodic-memory, benchmark]
-status: draft
+status: complete
 updated: 2026-11-16
 arxiv: "2607.02689"
 code: https://github.com/facebookresearch/S-EMBER
@@ -28,7 +28,7 @@ summary: "S-EMBER：Meta FAIR / Reality Labs 流式第一视角情景记忆检�
 
 | 缩写 | 英文全称 | 简要说明 |
 |---|---|---|
-| S-EMBER | Streaming Egocentric Memory Retrieval Benchmark | 本文流式第一视角长时记忆基准 |
+| S-EMBER | Streaming Egocentric Memory Benchmark for Episodic Retrieval | 官方摘要定义的大规模第一视角情景记忆基准 |
 | GSER | Grounded Streaming Episodic Retrieval | 只读取问前历史，并对答案证据做时间定位 |
 | MCQ | Multiple-Choice Questions | 多选题形式的记忆正确率 |
 | IoU | Intersection over Union | 预测证据区间和标注区间的交并比 |
@@ -107,6 +107,14 @@ sequenceDiagram
 - **证据定位：** `sember_grounding` 输出时间区间，并按 temporal IoU 汇总；默认不验证文本语义正确性。
 - **联合测量：** “回答正确且定位准确”比单个 MCQ 或 IoU 更严格，复现时需显式说明判分器与阈值。
 
+### 正文及附录核验细节
+
+- **指标不能互换：** 论文 §4 定义 `Acc_ov`（不因非矛盾的额外细节扣分）、`Acc_cl`（要求零幻觉）以及 MCQ；证据定位用 `mIoU`、`R@1`；联合 **GQ@0.5** 要求答案语义正确且证据 IoU≥0.5。官方默认 grounding 脚本的纯 temporal IoU **不是 GQ@0.5**。
+- **原文表 3：** Gemini 3.1 Pro 的 **MCQ 54.41%**、**mIoU 0.479**、**GQ@0.5 0.297**；人工参考 GQ@0.5 为 **0.698**；Qwen3VL-32B 为 **0.163**。闭源模型不同取帧接口和预算（附录 D），跨模型比较应保留这一条件。
+- **采集及时间戳：** 613 名佩戴者，原视频编码 720p/12 fps，开源评测统一抽取提问前 128 帧并提供**绝对时间戳**。§7 展示 Qwen3VL-32B 有无每帧时间戳时 mIoU 从 **0.018 → 0.412**，时间接口是定位能力的重要变量。
+- **附录核对：** B：600 组 judge 对照准确率 **96.2%**；F：64 帧粗索引加 64 帧局部采样的自适应时间索引；G：首分钟无提问、至少 3 种问题类型及证据区间 padding 约束；H：PDF 第 16–17 页明确 `Answer:`、`Time: [start,end]` 和 judge JSON 字段，网页 HTML 转换缺此节内容。
+- **研究边界：** 任务评测去除了音频，不验证触觉/机器人动作闭环。论文核读与 Github 源码审查已完成，但**未运行模型权重和 388 小时数据**。
+
 ## 结论
 
 **视频记忆必须同时证明答案来自可见历史和能定位的证据，而不是只在问答上猜对。**
@@ -130,7 +138,7 @@ sequenceDiagram
 - 第一视角视频缺少机器人真实动力学、触觉等状态，不可等同多模态状态估计。
 - 官方仓库代码主体 CC BY-NC 4.0、部分第三方另有许可；HF 数据另受访问/使用条款约束。
 - 可选 Gemini judge 需 API；默认 grounding 仅计算 IoU。
-- 未实际运行数据/模型，论文附录尚未完整核验，保留 `draft`。
+- arXiv v2 正文与附录 A–H（含 PDF 原文提示词）已核对；没有实际运行基准模型或数据，`complete` 仅代表文献解读完成。
 
 ## 关联页面
 
