@@ -5,6 +5,7 @@ status: complete
 updated: 2026-09-15
 related:
   - ./reinforcement-learning.md
+  - ./rlcr-collective-inference-time-scaling.md
   - ../concepts/rl-runner.md
   - ../tasks/humanoid-soccer.md
   - ../concepts/humanoid-multi-robot-coordination.md
@@ -60,7 +61,12 @@ MARL 是人形 **多机战术** 的学习式路线之一（自博弈、CTDE 等�
 
 选型总览见 [人形多机协调](../concepts/humanoid-multi-robot-coordination.md)。
 
+## 与软件 Agent 群体 RLCR 的关系
+
+[RLCR：集体奖励与集体推理时扩展](./rlcr-collective-inference-time-scaling.md)（General Reasoning，2026-11-02）讨论共享策略、多 Agent 统一回报、wall-clock 截止时间与通信原语如何促成**软件 Agent 的并行协作**。它与本页 MARL 共享多智能体奖励和信用分配问题，但其 Avalon-M1 结果仅来自长时软件任务；**不是机器人编队、多机动作控制或实体群体的真机验证**。迁移至机器人需要另外处理通信失效、安全约束与物理动力学。
+
 ## 关联页面
+- [RLCR：集体奖励与集体推理时扩展](./rlcr-collective-inference-time-scaling.md) — 软件 Agent 群共享回报与延迟激励，不能直接等同机器人 MARL
 - [CTDE vs 完全去中心化 MARL](../comparisons/ctde-vs-decentralized-marl.md) — 两大训练范式选型对比
 - [RL Runner（训练循环编排）](../concepts/rl-runner.md) — Multi-agent / Self-play Runner：打包多 agent 观测或从策略池抽对手
 - [Reinforcement Learning](./reinforcement-learning.md)
