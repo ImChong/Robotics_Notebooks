@@ -49,6 +49,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Floating-Base Dynamics](../wiki/concepts/floating-base-dynamics.md)
+- [MPC 预测模型完整推导](../wiki/formalizations/mpc-prediction-model-from-floating-base-dynamics.md) — Stage 0 从单摆虚功、点雅可比推导浮动基动力学，为 Stage 3 预测模型建立物理基础
 - [Quadratic Programming](../wiki/formalizations/quadratic-programming.md)
 - [Optimal Control](../wiki/concepts/optimal-control.md)
 - [LQR](../wiki/formalizations/lqr.md)
