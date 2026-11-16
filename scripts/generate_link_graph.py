@@ -1815,21 +1815,41 @@ def pack_activity_days_compact(
 
 
 def route_health_distribution(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """增长趋势「纵深路线健康度」：每条路线知识地图节点的健康度分布 counts[得分]（0–3）。"""
-    health_by_detail = {str(n["detail_id"]): int(n.get("health_score") or 0) for n in nodes}
+    """路线知识地图实际收录节点：同一份去重清单生成健康度与各堆叠维度。"""
+    by_detail = {str(n["detail_id"]): n for n in nodes}
     out: list[dict[str, Any]] = []
-    for node in nodes:
-        scores = [
-            health_by_detail[i] for i in node.get("_route_items") or [] if i in health_by_detail
-        ]
-        if scores:
-            out.append(
-                {
-                    "detail_id": str(node["detail_id"]),
-                    "label": str(node["label"]),
-                    "counts": [scores.count(score) for score in range(4)],
-                }
-            )
+    for route in nodes:
+        seen: set[str] = set()
+        included: list[dict[str, Any]] = []
+        for detail_id in route.get("_route_items") or []:
+            if detail_id in seen or detail_id not in by_detail:
+                continue
+            seen.add(detail_id)
+            included.append(by_detail[detail_id])
+        if not included:
+            continue
+
+        scores = [int(node.get("health_score") or 0) for node in included]
+        communities: dict[str, int] = {}
+        types: dict[str, int] = {}
+        open_count = 0
+        for node in included:
+            community = str(node.get("community") or "other")
+            node_type = str(node.get("type") or "")
+            communities[community] = communities.get(community, 0) + 1
+            types[node_type] = types.get(node_type, 0) + 1
+            open_count += bool(node.get("has_repo"))
+
+        out.append(
+            {
+                "detail_id": str(route["detail_id"]),
+                "label": str(route["label"]),
+                "counts": [scores.count(score) for score in range(4)],
+                "communities": dict(sorted(communities.items())),
+                "types": dict(sorted(types.items())),
+                "opensource": {"open": open_count, "closed": len(included) - open_count},
+            }
+        )
     return out
 
 

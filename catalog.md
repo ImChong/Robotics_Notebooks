@@ -2456,6 +2456,7 @@
 - [Energy-Based Policy Orchestration（arXiv:2611.02546）](wiki/entities/paper-energy-based-policy-orchestration.md) — Energy-Based Policy Orchestration**（*Energy-Based Policy Orchestration*，[arXiv:2611.02546](https:/ `📅unknown` `[entity_page]`
 - [ENPIRE：真机上的 coding agent 策略自改进（arXiv:2606.19980）](wiki/entities/paper-enpire.md) — ENPIRE** 是一个给 coding agent 用的 harness：先由 agent 在人类反馈下为某个任务搭好带安全约束、自动验证（二值奖励）、自动复位的真机环境，之后 agent 不再 `📅unknown` `[entity_page]`
 - [环境编辑奖励学习：将环境编辑作为奖励学习的纠正信号](wiki/entities/paper-environment-edits-corrective-reward-learning.md) — 环境编辑奖励学习**（*Environment Edits as a Corrective Signal for Reward Learning*，[arXiv:2610.35659](https `📅unknown` `[entity_page]`
+- [展望智能体机器人：机器人系统的新纪元 / Envisioning Agentic Robotics: A New Era of Robotic Systems](wiki/entities/paper-envisioning-agentic-robotics.md) — Agentic Robotics（智能体机器人）** 围绕人的目标，让基础模型与具身运行框架组织可执行技能，持续观察、执行、独立验证物理效果并按证据改计划；本文给出可检验的架构、评测原则与逐步扩大 `📅unknown` `[entity_page]`
 - [EO-1（EO-Robotics）](wiki/entities/paper-eo1.md) — EO-1**（arXiv:2508.21112，[GitHub](https://github.com/EO-Robotic `📅unknown` `[entity_page]`
 - [Agent-guided Epitope Excision（表位切除 + 智能体引导的 de novo 结合体设计）](wiki/entities/paper-epitope-excision-binder-design.md) — 本页依据 Google Research / DeepMind / Cloud 论文 *Agent-guided epitope excision enables economical de novo `📅unknown` `[entity_page]`
 - [EPOpt: learning robust neural network policies using model ensembles](wiki/entities/paper-epopt-robust-policies-model-ensembles.md) — EPOpt: learning robust neural network policies using model ensembles**（[arXiv:1610.01283](https:// `📅unknown` `[entity_page]`
@@ -3906,6 +3907,7 @@
 - [OSWAM：具有单步动作生成能力的高效世界动作模型](wiki/entities/paper-oswam-one-step-action-generation.md) — OSWAM**（*OSWAM: An Effective World Action Model with One-Step Action Generation*，[arXiv:2610.35850 `📅unknown` `[entity_page]`
 - [OTQL：Optimal Transport Q-Learning（arXiv:2607.06262）](wiki/entities/paper-otql-flow-policy-steering.md) — OTQL**（*Optimal Transport Q-Learning for Flow Policy Steering and Acceleration*，[arXiv:2607.06262 `📅unknown` `[entity_page]`
 - [OTRetarget：Joint Robot and Object Motion Retargeting via Optimal Transport](wiki/entities/paper-otretarget.md) — OTRetarget** 不只调整机器人的动作，也一起优化物体的位姿，让换了身材的机器人仍能完成原本的人—物接触。 `📅unknown` `[entity_page]`
+- [Online Video Understanding: OVBench and VideoChat-Online｜在线视频理解：OVBench 与 VideoChat-Online](wiki/entities/paper-ovbench-videochat-online.md) — OVBench** 以特定提问时间点考察持续视频流的过去记忆、当前感知与未来理解；**VideoChat-Online** 通过 Pyramid Memory Bank（PMB）和由离线到在线的训 `📅unknown` `[entity_page]`
 - [OverlapNet：面向激光雷达 SLAM 的回环检测](wiki/entities/paper-overlapnet.md) — OverlapNet（Xieyuanli Chen 等，波恩大学，RSS 2020，arXiv:2105.11344）是一个孪生 `📅unknown` `[entity_page]`
 - [OverlapTransformer（arXiv:2203.03397）](wiki/entities/paper-overlaptransformer.md) — OverlapTransformer（OT）**（Ma 等，*OverlapTransformer: An Efficient and Yaw-Angle-Invariant Transforme `📅unknown` `[entity_page]`
 - [P-BFM：感知行为基础模型的人形控制](wiki/entities/paper-p-bfm.md) — P-BFM**（*Perceptive Behavioral Foundation Models for Humanoid Control via Unsupervised Reinforceme `📅unknown` `[entity_page]`
@@ -4738,6 +4740,7 @@
 - [RynnWorld-4D（4D Embodied World Models · arXiv:2607.06559）](wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md) — RynnWorld-4D**（*RynnWorld-4D: 4D Embodied World Models for Robotic Manipulation*，[arXiv:2607.06559 `📅unknown` `[entity_page]`
 - [RynnWorld-Latent（arXiv:2610.36791）](wiki/entities/paper-rynnworld-latent.md) — RynnWorld-Latent**（*RynnWorld-Latent: A Cross-Embodiment World Model Conditioned on Universal Late `📅unknown` `[entity_page]`
 - [S-Agent 2.0：通用编码智能体的空间推理](wiki/entities/paper-s-agent-2.md) — 为通用编码智能体接入三维感知命令行工具、持久场景记忆和可解释的空间读数。 `📅unknown` `[entity_page]`
+- [S-EMBER: A Large-Scale Benchmark for Streaming Egocentric Memory Retrieval｜大规模流式第一视角记忆检索基准](wiki/entities/paper-s-ember.md) — S-EMBER**（arXiv:2607.02689，Meta FAIR / Reality Labs）用日常第一视角长视频测量**流式情景记忆检索**：模型仅能看到提问前画面，必须回答问题并给出 `📅unknown` `[entity_page]`
 - [S²-VLA（Semantic–Spatial Dual-Stream · 驾驶 VLA · arXiv:2607.13926）](wiki/entities/paper-s-squared-vla.md) — S²-VLA**（*Decoupling Semantic and Spatial Streams in Vision-Language-Action Models for Autonomous  `📅unknown` `[entity_page]`
 - [S²-VLA（状态空间引导的长程操作）](wiki/entities/paper-s2-vla-state-space-guided.md) — S²-VLA（状态空间引导的长程操作）**（arXiv:2606.27872）是 [新机器视觉《2026年了，主流具身智能算 `📅unknown` `[entity_page]`
 - [S2C](wiki/entities/paper-s2c-safety-filtered-rl.md) — Turning Safety into Competence: Minimally Exploitable Robot Policies via Safety-Filtered Reinforce `📅unknown` `[entity_page]`
