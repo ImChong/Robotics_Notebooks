@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego-survey, category-hub, data-collection, dataset]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-16
 summary: "Ego 9 篇专题 · 01 数据采集（2 篇）— 机器人数据贵，Ego 让人类成为分布式采集者；核心是把「日常第一视角」做成可过滤、可规模化的训练素材。旁路对照：Ego4D、Ego-OSCAR/Stereo-550、EgoVerse、EgoWorld-100W、RekaDaily-10k、RekaCS2-10k、Unidata Pico 4 Ultra 量产采集与 Macrodata 度量手轨迹配方。"
 related:
   - ./ego-9-papers-technology-map.md
@@ -22,6 +22,7 @@ related:
   - ../methods/macrodata-egocentric-hand-action.md
   - ../entities/pico-4-ultra-egocentric-capture.md
   - ../entities/tsing-ego-pro.md
+  - ../entities/paper-vbot-exo2ego-policy.md
 sources:
   - ../../sources/sites/maxinsights-official.md
   - ../../sources/blogs/maxinsights-beyond-1m-hours-physical-ai-data.md
@@ -93,6 +94,7 @@ original:
 - [Ego-Exo4D-HM](../entities/paper-egoexo4d-hm.md) — 在 [Ego-Exo4D](https://ego-exo4d-data.org/) 同步多视角上发布 **2,649 takes / 104.59 h** SMPL-H 4D 重建（HF npz + MIT 管线）；ego-exo 视频→**稠密 3D 说明书** 层，机器人策略收益仍待下游验证
 - [Ego-OSCAR / Stereo-550](../entities/paper-ego-oscar.md) — 第一人称视觉实验室（FPV Labs）**~USD 200** 开源硬件硬同步立体+IMU 头戴；**~550 h/相机** gated 语料验证众包续采（观测-only，非 teleop）
 - [EgoVerse](../entities/paper-egoverse.md) — 联盟式 egocentric 活数据集（Aria / 产业 / 手机采集）与 EgoDB 接入；与本组「人类作分布式采集者」同动机、更偏操纵向 Direct 标注
+- [VBot Exo2Ego Policy](../entities/paper-vbot-exo2ego-policy.md) — 双 iPhone 真实 EGO/EXO 配对与第三人称→第一人称视频生成的数据扩增；生成影像并非具动作真值的示教轨迹
 - [EgoWorld-100W](../entities/egoworld-100w.md) — StellarNex **百万级** 第一人称操作语料（**申请制**；四维 Scene×Object×Action×Handedness）；与 ICLR [EgoWorld 视图翻译](../entities/paper-egoworld.md) **同名异物**
 - [RekaDaily-10k](../entities/rekadaily-10k-dataset.md) — Reka/Claru **10k+ 小时** 无剧本家务 ego 视频（Apache 2.0；raw HF 增量 + processed/captioned）
 - [RekaCS2-10k](../entities/rekacs2-10k-dataset.md) — 职业 CS2 demo 渲染的 **10k+ 小时** ego 视频 + 逐帧键鼠/轨迹（世界模型沙盒；非真实家务）
@@ -110,6 +112,7 @@ original:
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md)
 - [EgoVerse 论文摘录](../../sources/papers/egoverse_arxiv_2604_07607.md)
 - [Ego4D 论文摘录](../../sources/papers/ego4d_arxiv_2110_07058.md)
+- [VBot Exo2Ego Policy（arXiv:2611.16417v1）](../../sources/papers/vbot_exo2ego_arxiv_2611_16417.md)
 - [Ego4D 项目页归档](../../sources/sites/ego4d-data-org.md)
 - [stellarnex_egoworld_100w.md](../../sources/blogs/stellarnex_egoworld_100w.md)
 - [RekaDaily-10k 研究页归档](../../sources/sites/rekadaily-10k.md)
