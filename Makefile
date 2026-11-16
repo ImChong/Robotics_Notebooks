@@ -116,10 +116,10 @@ ci-preflight:
 ci-check:
 	python3 scripts/ci_preflight.py --check-generated-clean
 
-# PR 不得修改 catalog.md / log.md / 部署生成的统计文件（lint.yml 在 PR 上同样检查）
+# PR 不得修改 log.md 或提交已 gitignore 的 catalog / 部署生成统计文件（lint.yml 在 PR 上同样检查）
 pr-check:
 	python3 scripts/pr_derived_guard.py check
 
-# 合入 origin/main；上述文件的冲突自动以 main 为准，分支写进 log.md 的条目转存为 log.d/ 碎片
+# 合入 origin/main；上述文件的冲突自动以 main 为准 / 移出索引，分支写进 log.md 的条目转存为 log.d/ 碎片
 sync-main:
 	python3 scripts/pr_derived_guard.py sync

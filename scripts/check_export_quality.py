@@ -215,26 +215,6 @@ def main() -> None:
         check("exports/lint-report.md 存在", lr.exists(), "（首次运行 weekly action 后生成）")
     )
 
-    # 8. catalog.md 同步检查（由 main 上的 export.yml 自动维护，PR 勿改）
-    catalog_md = REPO_ROOT / "catalog.md"
-    if catalog_md.exists() and sc.exists():
-        md_mtime = catalog_md.stat().st_mtime
-        json_mtime = sc.stat().st_mtime
-        # lag_days > 0: json 比 catalog.md 新；可能 catalog 未及时重新生成
-        lag_days = (json_mtime - md_mtime) / 86400
-        # 超过 7 天只打印告警，不阻塞 CI（PR 不得修改 bot-owned 的 catalog.md）
-        if lag_days > 7.0:
-            print(
-                f"⚠️  catalog.md 与 exports/site-catalog-v1.json 差 {lag_days:.1f} 天"
-                "（catalog.md 由 main 上的 export.yml 自动维护，PR 勿提交）"
-            )
-        else:
-            check(
-                "catalog.md 与 exports/site-catalog-v1.json 同步（7 天内）",
-                True,
-                f"同步正常（差 {lag_days:.1f} 天）",
-            )
-
     print("=" * 55)
     passed = sum(results)
     total = len(results)

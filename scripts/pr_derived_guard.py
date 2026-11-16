@@ -41,13 +41,30 @@ def _repo_root() -> Path:
 
 REPO_ROOT = _repo_root()
 
-BOT_OWNED: tuple[str, ...] = ("catalog.md", "log.md")
+BOT_OWNED: tuple[str, ...] = ("log.md",)
 DEPLOY_GENERATED: tuple[str, ...] = (
+    "catalog.md",
+    "docs/search-index.json",
+    "docs/search-index-lite.json",
+    "docs/sitemap.xml",
+    "exports/site-catalog-v1.json",
+    "exports/link-graph.json",
+    "exports/link-graph-summaries.json",
+    "exports/wiki-activity.json",
+    "exports/hub-rankings.json",
     "exports/graph-stats.json",
     "exports/home-stats.json",
     "exports/lint-report.md",
+    "exports/vector-index-meta.json",
+    "exports/search-cache.json",
+    "docs/exports/site-catalog-v1.json",
+    "docs/exports/link-graph.json",
+    "docs/exports/link-graph-summaries.json",
+    "docs/exports/wiki-activity.json",
+    "docs/exports/hub-rankings.json",
     "docs/exports/graph-stats.json",
     "docs/exports/home-stats.json",
+    "docs/exports/graph-badge.json",
 )
 GUARDED = BOT_OWNED + DEPLOY_GENERATED
 # 入库文件里曾被统计脚本写数字的行（README 徽章、Hero 数字、SW 缓存版本）。旧分支合入时

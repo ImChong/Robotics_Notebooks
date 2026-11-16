@@ -93,7 +93,7 @@ def test_sync_resolves_derived_conflicts_and_keeps_log_entry(repo: Path) -> None
     assert guard.cmd_sync("origin", "main") == 0
 
     assert _git(repo, "status", "--porcelain", "--untracked-files=no") == ""
-    assert (repo / "catalog.md").read_text(encoding="utf-8") == "catalog main\n"
+    assert "catalog.md" not in _git(repo, "ls-files")
     assert "main entry" in (repo / "log.md").read_text(encoding="utf-8")
     assert "exports/graph-stats.json" not in _git(repo, "ls-files")
     assert (repo / "wiki" / "b.md").exists() and (repo / "wiki" / "c.md").exists()

@@ -17,8 +17,8 @@ make ci-test
 
 ## 派生文件与 `exports/`、`docs/` 下的副本
 
-- 维护脚本写入的导出与统计（**`exports/`**、**`docs/exports/`** 下的 JSON、搜索索引、sitemap、lint 报告）**全部 gitignore**，由 `pages.yml` 部署时生成；PR 不提交它们。[`scripts/ci_preflight.py`](../scripts/ci_preflight.py) 的 **`GENERATED_PATHS`** 是「preflight 不应改动的入库路径」清单，`make ci-check` 据此验证。
-- **`catalog.md`、`log.md` 为机器人专属**：只由 main 上的 `export.yml` 更新（重新生成目录、并入 `log.d/` 碎片）。PR 修改它们会被 Wiki Lint 的 `pr_derived_guard.py` 拦下；与 main 冲突时运行 `make sync-main`。
+- 维护脚本写入的导出与统计（`catalog.md` 与 **`exports/`**、**`docs/exports/`** 下的 JSON、搜索索引、sitemap、lint 报告）**全部 gitignore**，由 `pages.yml` 部署时生成或按需本地生成；PR 不提交它们。[`scripts/ci_preflight.py`](../scripts/ci_preflight.py) 的 **`GENERATED_PATHS`** 是「preflight 不应改动的入库路径」清单，`make ci-check` 据此验证。
+- **`log.md` 为机器人专属**：只由 main 上的 `export.yml` 更新（将 `log.d/` 碎片并入顶部，并将超过保留窗口的旧条目按季度归档至 `docs/plans/archive/`）。PR 修改 `log.md` 或提交 gitignored 派生文件会被 Wiki Lint 的 `pr_derived_guard.py` 拦下；与 main 冲突时运行 `make sync-main`。
 - **GitHub Pages** 以 [`docs/`](../docs/) 为站点根，因此同一条生成链会把搜索索引、sitemap、部分导出等写到 **`docs/search-index.json`**、**`docs/sitemap.xml`**、**`docs/exports/`** 等路径；它们是供站点读取的派生物，与根目录 `exports/` 等对应，不是第二套手写正文。
 - **实务**：只跑 `make graph` 或 `make export` 之一容易漏掉链上其它步骤；修改 `wiki/` 或导出相关脚本后，请优先 **`make ci-preflight`** 做本地检查，只 stage 源文件。
 

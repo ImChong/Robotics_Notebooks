@@ -13,8 +13,12 @@ node_modules/
 test-results/
 playwright-report/
 
-# Local vector artifacts
+# Local vector artifacts & legacy on-demand exports
 exports/vector-index.npz
+exports/vector-index-meta.json
+exports/anki-*.tsv
+exports/slides/
+catalog.md
 
 # Local search cache (CLI use only)
 exports/search-cache.json
