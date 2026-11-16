@@ -34,6 +34,7 @@ function home(extraLabs = 0, width = 1280) {
     link.setAttribute('data-founded-year', String(2030 + i));
     labs.prepend(link);
   }
+  w.eval(read('docs/org-route-order.js'));
   w.eval(source.slice(start, end));
   return dom;
 }

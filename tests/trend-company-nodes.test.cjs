@@ -36,6 +36,7 @@ function loadViews(graph, companies, labs = [], routeHealth = []) {
   vm.runInContext(tooltip, context);
   vm.runInContext(typeLabels, context);
   vm.runInContext(depthFilters, context);
+  vm.runInContext(readFileSync(resolve(__dirname, '../docs/org-route-order.js'), 'utf8'), context);
   vm.runInContext(loaders, context);
   return { requests, views: context.VIEWS, context, setTheme: (value) => { theme = value; } };
 }
@@ -79,6 +80,38 @@ test('company data loads on demand and repeated views share the graph and compan
   assert.match(result.total, /0 家公司，合计 0 节点次/);
 });
 
+test('all six organisation views use founding dates with earliest-node fallback, including interleaved labs', async () => {
+  const companies = [
+    { key: 'late', name: 'Late', founded_year: 2022, nodes: [{ id: 'entity-a', date: '2001-02' }] },
+    { key: 'undated', name: 'Undated', nodes: [{ id: 'entity-b' }] },
+    { key: 'fallback', name: 'Fallback', nodes: [{ id: 'entity-a', date: '2024-07' }, { id: 'entity-b', date: '2015-03' }] },
+    { key: 'early', name: 'Early', founded_year: 2010, nodes: [{ id: 'entity-b', date: '2026-01' }] },
+  ];
+  const labs = [
+    { key: 'lab-fallback', name: 'Lab fallback', founded_year: null, nodes: [{ id: 'entity-a', date: '2015-01' }] },
+    { key: 'lab-early', name: 'Lab early', founded_year: 2010, nodes: [{ id: 'entity-b', date: '2025-01' }] },
+  ];
+  const expected = {
+    company: ['early', 'fallback', 'late', 'undated'],
+    lab: ['lab-early', 'lab-fallback'],
+    org: ['early', 'lab-early', 'lab-fallback', 'fallback', 'late', 'undated'],
+  };
+  const original = JSON.stringify([companies, labs]);
+  const { views, context } = loadViews(graph, companies, labs);
+  for (const kind of ['company', 'lab', 'org']) {
+    for (const mode of ['community', 'type', 'opensource', 'health']) {
+      context.nodeStackMode = mode;
+      const counts = JSON.parse(JSON.stringify(await views.find(v => v.id === kind + '-nodes').load()));
+      assert.deepEqual(counts.links.map(link => link.split('=')[1]), expected[kind]);
+      assert.deepEqual(counts.cats.map((_, i) => counts.series.reduce((sum, s) => sum + s.values[i], 0)),
+        expected[kind].map(key => key === 'fallback' ? 2 : 1));
+    }
+    const timeline = JSON.parse(JSON.stringify(await views.find(v => v.id === kind + '-timeline').load()));
+    assert.deepEqual(timeline.rows.map(row => row.key), expected[kind].filter(key => key !== 'undated'));
+  }
+  assert.equal(JSON.stringify([companies, labs]), original);
+});
+
 test('company timeline groups dated nodes by month and skips undated nodes and empty companies', async () => {
   const { requests, views } = loadViews(graph, [
     { key: 'yi', name: '公司乙', nodes: [
@@ -93,11 +126,11 @@ test('company timeline groups dated nodes by month and skips undated nodes and e
   const result = JSON.parse(JSON.stringify(await views.find((v) => v.id === 'company-timeline').load()));
   assert.ok(!requests.includes('exports/link-graph.json'));
   assert.deepEqual(result.rows.map(({ key, name, href, points }) => ({ key, name, href, points })), [
+    { key: 'jia', name: '公司甲', href: 'company.html?id=jia', points: [{ date: '2024-10', items: ['A1（VLA）'] }] },
     { key: 'yi', name: '公司乙', href: 'company.html?id=yi', points: [
       { date: '2025-01', items: ['B1（世界模型）'] },
       { date: '2026-03', items: ['B2（VLA）', 'B3（全身控制）'] },
     ] },
-    { key: 'jia', name: '公司甲', href: 'company.html?id=jia', points: [{ date: '2024-10', items: ['A1（VLA）'] }] },
   ]);
   assert.equal(result.first, '2024-10');
   assert.equal(result.last, '2026-03');

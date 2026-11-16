@@ -31,6 +31,7 @@
   </script>
   <script src="graph-tooltip.js"></script>
   <script src="depth-filters.js"></script>
+  <script src="org-route-order.js"></script>
   <script src="wiki-type-labels.js"></script>
   <style>
     /* 七个视图在窄屏换行，并与副标题拉开距离 */
@@ -89,7 +90,7 @@
           <h1 class="section-title" id="trend-heading">增长趋势</h1>
           <div class="home-hub-tabs" id="trend-tabs" role="group" aria-label="切换趋势视图"></div>
         </div>
-        <p class="section-subtitle" id="trend-description">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区、类型、开源、健康度取自当前知识图谱；路线收录节点数按各路线知识地图中的去重节点统计，公司 / 实验室节点数按各自技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
+        <p class="section-subtitle" id="trend-description">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区、类型、开源、健康度取自当前知识图谱；路线收录节点数按各路线知识地图中的去重节点统计，公司 / 实验室节点数按各自技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。机构按成立年份从早到晚排列，未注明时按最早知识节点日期，两者均缺失时置后。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
         <div class="trend-range" id="trend-stack" role="group" aria-label="堆叠依据" hidden>
           <span class="trend-range-hint">堆叠依据</span>
@@ -374,7 +375,8 @@
 
       // 每个机构一行；同月节点合并为一个点，未注明日期的节点只计数不绘制
       function ganttRows(orgs, kind) {
-        return (orgs || []).map(function (org) {
+        return window.OrgRouteOrder.sort(orgs).map(function (org) {
+          var orgKind = kind || org.kind;
           var byDate = {};
           var undated = 0;
           (org.nodes || []).forEach(function (n) {
@@ -384,9 +386,9 @@
           return {
             key: org.key,
             name: org.name,
-            kind: kind,
+            kind: orgKind,
             year: org.founded_year,
-            href: ORG_KINDS[kind].page + '?id=' + encodeURIComponent(org.key),
+            href: ORG_KINDS[orgKind].page + '?id=' + encodeURIComponent(org.key),
             undated: undated,
             points: Object.keys(byDate).sort().map(function (d) { return { date: d, items: byDate[d] }; })
           };
@@ -525,6 +527,7 @@
       // 公司 / 实验室节点数：顺序与首页一致；同一机构内按知识节点 ID 去重，跨机构分别计数。
       // 四种堆叠依据共享同一收录清单，点击条形或名称跳到该机构的路线页。
       function orgNodeCounts(g, orgs, mode, theme) {
+        orgs = window.OrgRouteOrder.sort(orgs);
         var groups = nodeTrendGroups(g, mode, theme);
         var known = new Set(groups.map(function (group) { return group.id; }));
         var nodes = new Map(g.nodes.map(function (n) { return [n.detail_id, n]; }));
@@ -582,14 +585,13 @@
             return s;
           });
         } });
-      // 公司与实验室合并：与合并时间线同序（按成立年份交错，同年公司在前），名称前用 ● / ◆ 区分两类机构
+      // 公司与实验室合并：同样优先成立年份、回退最早节点；同时间公司在前。
       VIEWS.push({ id: 'org-nodes', label: '公司 + 实验室节点数', unit: '节点', kind: 'category', orgNodes: true,
         load: function () {
           var mode = nodeStackMode;
           var theme = document.documentElement.getAttribute('data-theme');
           return Promise.all([linkGraph(), companyRoadmaps(), labRoadmaps()]).then(function (data) {
             var orgs = withKind(data[1].companies, 'company').concat(withKind(data[2].labs, 'lab'));
-            orgs.sort(function (a, b) { return a.founded_year - b.founded_year; });
             var s = orgNodeCounts(data[0], orgs, mode, theme);
             var companies = s.kinds.filter(function (k) { return k === 'company'; }).length;
             s.marked = true;
@@ -598,7 +600,7 @@
             return s;
           });
         } });
-      // 路线甘特图：每个机构一行（顺序同首页，按成立年份），同月节点合并为一个点
+      // 路线甘特图：每个机构一行（共用首页的时间排序），同月节点合并为一个点
       VIEWS.push({ id: 'company-timeline', label: '公司时间线', unit: '节点', kind: 'gantt',
         load: function () {
           return companyRoadmaps().then(function (data) {
@@ -611,13 +613,12 @@
             return ganttData(ganttRows(data.labs, 'lab'));
           });
         } });
-      // 公司与实验室合并：按成立年份交错排列（同年公司在前），用颜色和点形区分两类机构
+      // 公司与实验室合并：按相同时间口径交错排列，用颜色和点形区分两类机构
       VIEWS.push({ id: 'org-timeline', label: '公司 + 实验室时间线', unit: '节点', kind: 'gantt',
         load: function () {
           return Promise.all([companyRoadmaps(), labRoadmaps()]).then(function (data) {
-            var rows = ganttRows(data[0].companies, 'company').concat(ganttRows(data[1].labs, 'lab'));
-            rows.sort(function (a, b) { return a.year - b.year; });
-            return ganttData(rows);
+            var orgs = withKind(data[0].companies, 'company').concat(withKind(data[1].labs, 'lab'));
+            return ganttData(ganttRows(orgs));
           });
         } });
       // 暂时隐藏的视图（纵深数趋势 / 每日纵深数）
@@ -653,6 +654,7 @@
         description.textContent = view.orgNodes
           ? '统计各机构技术路线收录的现存节点，机构内去重；同一节点可属多个机构。按' +
             NODE_STACK_MODES[nodeStackMode].description + '堆叠，切换标签不改变每行节点总数。' +
+            '机构按成立年份从早到晚排列，未注明时按最早知识节点日期，两者均缺失时置后。' +
             (nodeStackMode === 'opensource' ? '开源表示已关联源码仓库。' : '')
           : view.rowMode
           ? '统计当前知识图谱中的全部节点，按' + NODE_STACK_MODES[view.rowMode].description + '分行，按' +

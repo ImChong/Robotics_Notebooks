@@ -8080,6 +8080,17 @@
   // 首页「公司路线」卡：桌面露出前 8 家，窄屏前 4 家
   var companyToggle = document.getElementById('homeCompanyToggle');
   var companyLinks = document.getElementById('homeCompanyLinks');
+  function sortHomeOrgLinks(links) {
+    var items = Array.prototype.slice.call(links.querySelectorAll('a'));
+    function route(link) {
+      return {
+        founded_year: link.getAttribute('data-founded-year'),
+        nodes: [{ date: link.getAttribute('data-first-node-date') }]
+      };
+    }
+    items.sort(function (a, b) { return window.OrgRouteOrder.compare(route(a), route(b)); });
+    items.forEach(function (link) { links.appendChild(link); });
+  }
   function setHomeCompaniesExpanded(expanded) {
     if (!companyToggle || !companyLinks) return;
     if (applyHomeLinksFilter(companyLinks, companyToggle, companySearchEmpty, orgSearch && orgSearch.value)) return;
@@ -8092,6 +8103,7 @@
       ? '收起公司列表 ↑'
       : '展开全部 ' + companyLinks.querySelectorAll('a').length + ' 家公司 ↓';
   }
+  if (companyLinks) sortHomeOrgLinks(companyLinks);
   if (companyToggle && companyLinks) {
     setHomeCompaniesExpanded(false);
     companyToggle.addEventListener('click', function () {
@@ -8102,7 +8114,7 @@
     });
   }
 
-  // 实验室按成立年份排序，预览阈值同为桌面 8 个、窄屏 4 个。
+  // 公司 / 实验室均优先成立年份，缺失时取最早节点日期；预览前先排序。
   var labToggle = document.getElementById('homeLabToggle');
   var labLinks = document.getElementById('homeLabLinks');
   function setHomeLabsExpanded(expanded) {
@@ -8118,14 +8130,7 @@
       : '展开全部 ' + labLinks.querySelectorAll('a').length + ' 个实验室 ↓';
   }
   if (labToggle && labLinks) {
-    var labItems = Array.prototype.slice.call(labLinks.querySelectorAll('a'));
-    labItems.sort(function (a, b) {
-      return (Number(a.getAttribute('data-founded-year')) || Infinity)
-        - (Number(b.getAttribute('data-founded-year')) || Infinity);
-    });
-    labItems.forEach(function (link) {
-      labLinks.appendChild(link);
-    });
+    sortHomeOrgLinks(labLinks);
     setHomeLabsExpanded(false);
     labToggle.addEventListener('click', function () {
       var expanded = labToggle.getAttribute('aria-expanded') !== 'true';
