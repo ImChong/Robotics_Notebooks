@@ -5,6 +5,7 @@ status: complete
 updated: 2026-11-16
 project_id: tacclaw-infinity
 arxiv: "2610.20320"
+original: ../../sources/papers/tacclaw_infinity_arxiv_2610_20320.md
 code: https://github.com/tacclaw-infinity/TacClaw-Infinity
 project: https://tacclaw-infinity.github.io/
 related:
@@ -22,6 +23,8 @@ summary: "TacClaw-Infinity（arXiv:2610.20320）：手持触觉接口 TacClaw �
 ---
 
 # TacClaw-Infinity：面向灵巧操作的大规模视触觉语言动作数据集
+
+## 一句话定义
 
 **TacClaw-Infinity 是面向接触丰富灵巧操作的视觉-触觉-语言-动作（VTLA）数据集：用无需目标机器人的手持触觉接口采集同步的视觉、指尖触觉与末端轨迹，再经质量控制、可执行性筛选与结构化标注形成数据管线。**
 
@@ -74,7 +77,7 @@ flowchart TB
   dataset --> policy
 ```
 
-- **采集与配准：** 指尖直接驱动夹爪，腕部 RGB、触觉和末端轨迹以 30 Hz 同步；双手与头戴相机通过可见标记配准。
+- **采集与配准：** 指尖直接驱动夹爪，腕部 RGB、触觉和末端轨迹以 30 Hz 同步；原始 DM-Tac X 触觉传感器最高 120 Hz，这不等于公开对齐后的片段帧率；双手与头戴相机通过可见标记配准。
 - **可执行性：** TCP 转换至机器人基座系，IK/FK 重建的位置误差小于 5 mm、姿态误差小于 3° 判为可达；双臂须同时满足。加权雅可比的最小与最大奇异值之比低于 0.04 为低可操纵度。
 - **时空标注：** 每臂两指尖深度图压缩为 8 维描述，与视觉及本体状态输入 ASFormer，区分自由运动、初始接触、接触操作、释放；边界分数过滤短段。Qwen3-VL-Plus 生成子任务文本；接触时指间 3D 点投影到各视角，结合夹爪负掩码提示 SAM3 分割目标。
 
@@ -140,6 +143,7 @@ sequenceDiagram
 - **双臂可达率：** Tianji 97.23%，RealMan 95.15%，DM-Sparky 全身控制 100%；均按论文所述位姿误差准则计算，并非任务成功率。
 - **接触分段：** 在 15 条双臂测试演示形成的 30 条单臂序列上，加入触觉使 ASFormer 的 F1@25 从 57.6 提升至 63.9；接触起始召回从 58.6% 升至 68.0%。
 - **标注质量：** 指定协议数据的标注窗口 98.5% 帧有掩码，论文明确指出覆盖率不等于掩码准确率；随机抽查 5% 的语言描述，约 83% 通过动作与物体核查。
+- **多点采集收益：** 仅对开放式采集片段，在同样 300 小时预算下多点采集比单点增加 201 个 action–object pair（95% 区间 [60,335]，2000 次重采样）；不能将其解释为策略成功率提升。
 - **跨本体迁移：** 每任务 1,600 条训练示范、每任务 50 次评测，选第 3–5 epoch 的最佳 checkpoint；在叠杯、瓶子分类、擦花瓶及三种本体上，加入触觉后 π₀.₅ 总平均成功率由 50.0% 升至 74.0%，StarVLA 由 46.0% 升至 72.7%。该结果限定于论文设置，不代表所有任务均有提升。
 
 ## 结论
@@ -173,7 +177,6 @@ sequenceDiagram
 ## 关联页面
 
 - [具身数据纵深路线](../../roadmap/depth-embodied-data.md) — 采集 → 清洗与接触标注 → 格式与本体筛选
-
 - [触觉感知](../concepts/tactile-sensing.md) — 数据中的触觉模态背景
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — 视觉与触觉表示的对照
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 任务场景
