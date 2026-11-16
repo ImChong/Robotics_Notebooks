@@ -159,6 +159,10 @@ flowchart LR
 
 - [PAFF](paper-paff-2212-07398.md)：基础模型反馈重标注与策略适应；对应 Model / Adaptation。
 
+- [TidyBot](paper-tidybot-2305-05658.md)：从示例归纳个性化收纳规则。
+- [OLAF](paper-olaf-verbal-correction.md)：语言纠错驱动介入前动作重标注。
+- [LMPC](paper-lmpc-2402-11450.md)：微调语言模型以减少教学轮数。
+
 ## 关联页面
 
 - [VLA](../methods/vla.md)

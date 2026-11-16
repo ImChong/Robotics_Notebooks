@@ -25,8 +25,10 @@
         "model.adaptation"
       ],
       "arxiv": "2305.05658",
-      "candidate_nodes": [],
-      "status": "needs-identity-review"
+      "candidate_nodes": [
+        "wiki/entities/paper-tidybot-2305-05658.md"
+      ],
+      "status": "completed-batch-2"
     },
     {
       "source_id": "adaptation_ax_2310_17555",
@@ -35,8 +37,10 @@
         "model.adaptation"
       ],
       "arxiv": "2310.17555",
-      "candidate_nodes": [],
-      "status": "needs-identity-review"
+      "candidate_nodes": [
+        "wiki/entities/paper-olaf-verbal-correction.md"
+      ],
+      "status": "completed-batch-2"
     },
     {
       "source_id": "adaptation_ax_2402_11450",
@@ -45,8 +49,10 @@
         "model.adaptation"
       ],
       "arxiv": "2402.11450",
-      "candidate_nodes": [],
-      "status": "needs-identity-review"
+      "candidate_nodes": [
+        "wiki/entities/paper-lmpc-2402-11450.md"
+      ],
+      "status": "completed-batch-2"
     },
     {
       "source_id": "adaptation_ax_2403_12910",
@@ -3364,5 +3370,11 @@
       "candidate_nodes": [],
       "status": "needs-identity-review"
     }
-  ]
+  ],
+  "progress": {
+    "total": 307,
+    "completed": 4,
+    "remaining": 303,
+    "completed_batches": 2
+  }
 }
