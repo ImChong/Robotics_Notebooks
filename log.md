@@ -468,6 +468,8 @@ op: ingest
 - 本次 29 篇均有健康度 3/3 的结构化判据；最终以报告脚本与 CI 实测为准。
 - [29 篇阅读坐标](../wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
 
+## [2026-11-17] structural | 抽取 scripts/utils/markdown 公共工具、合并交叉链接测试并校准全量覆盖率、收紧 canonical-facts 与建立历史 Lint 基线
+
 ## [2026-11-17] structural | 清理 exports 遗留产物、归档历史文档、将 catalog.md 移出 Git 并启用 log.md 季度自动归档
 
 ## [2026-11-16] ingest | sources/blogs/wechat-robotics-29-papers-2026-11-16.md | 29 篇具身论文导览线索与两篇重点原文
