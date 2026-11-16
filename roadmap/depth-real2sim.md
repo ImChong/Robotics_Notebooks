@@ -209,7 +209,7 @@ flowchart LR
 - gap 在仿真侧还是真机侧消化：[Real2Sim 真机回放 vs 残差适配 vs 直接微调](../wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md)
 
 **方向 C：成熟度与开源边界**
-- 许多工作仍 **code coming soon**（如 Agentic Real2Sim）。[SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) 已 **部分开源**（[NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry)：A/B 重建与 cousins 可跑，论文级训练/评测未随仓）。[CRISP](../wiki/methods/crisp-real2sim.md) / [Articraft](../wiki/entities/articraft.md) / [PhysX-Omni](../wiki/entities/physx-omni.md) 有公开代码或数据——选型前务必先核查开源状态与可复现边界
+- **Agentic Real2Sim 已开源转换管线**（[官方源码](https://github.com/agentic-real2sim/agentic_real2sim)），但仍依赖独立权重、GPU 与多个环境；[SimFoundry](../wiki/entities/paper-simfoundry-real2sim-scene-generation.md) 已 **部分开源**（[NVlabs/SimFoundry](https://github.com/NVlabs/SimFoundry)：A/B 重建与 cousins 可跑，论文级训练/评测未随仓）。[CRISP](../wiki/methods/crisp-real2sim.md) / [Articraft](../wiki/entities/articraft.md) / [PhysX-Omni](../wiki/entities/physx-omni.md) 有公开代码或数据——选型前务必先核查开源状态与可复现边界
 
 **方向 D：与整机栈汇合**
 - Real2Sim 资产/评测在 [VLA 纵深](depth-vla.md)、[BFM 纵深](depth-bfm.md)、[WAM 纵深](depth-wam.md) 与 [Sim2Real 纵深](depth-sim2real.md) 中的位置；重建的可训练环境是整机栈数据与评测层的一块拼图
