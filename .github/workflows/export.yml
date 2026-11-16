@@ -1,21 +1,16 @@
-name: Auto Export & Lint
+name: Auto Fold & Archive Logs
 
 # main 上唯一会改「机器人专属」入库文件的地方：
-#   - 重新生成 catalog.md
 #   - 把 log.d/ 碎片并入 log.md 顶部
-# PR 不修改这两个文件（lint.yml 的 pr_derived_guard 会拦），所以这里的提交不会与任何 PR 冲突。
-# 统计 JSON / 徽章 / Hero 数字已不入库，由 pages.yml 部署时生成。
+#   - 将超过保留窗口的历史 log.md 条目按季度归档到 docs/plans/archive/log-YYYY-QN.md
+# PR 不修改 log.md（lint.yml 的 pr_derived_guard 会拦），所以这里的提交不会与任何 PR 冲突。
+# catalog.md 与统计 JSON / 徽章 / Hero 数字均已移出版本库（按需或部署时生成）。
 
 on:
   push:
     branches: [main]
     paths:
-      - 'wiki/**'
-      - 'roadmap/**'
-      - 'tech-map/**'
-      - 'references/**'
       - 'log.d/**'
-      - 'scripts/generate_page_catalog.py'
       - 'scripts/log_md.py'
       - 'scripts/fold_log_fragments.py'
   workflow_dispatch:
@@ -44,23 +39,21 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Regenerate catalog and fold log fragments
-        run: |
-          python3 scripts/generate_page_catalog.py
-          python3 scripts/fold_log_fragments.py
+      - name: Fold log fragments and rotate old archives
+        run: python3 scripts/fold_log_fragments.py
 
       - name: Commit
         run: |
           set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A catalog.md log.md log.d/
+          git add -A log.md log.d/ docs/plans/archive/
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "chore: auto catalog + fold log.d [skip ci]"
-          # 与其他 PR 合并推送竞态时 rebase 重试；PR 不碰 catalog.md / log.md，rebase 不会冲突
+          git commit -m "chore: fold log.d and archive old logs [skip ci]"
+          # 与其他 PR 合并推送竞态时 rebase 重试；PR 不碰 log.md，rebase 不会冲突
           for attempt in 1 2 3 4 5; do
             if git push; then
               echo "Pushed on attempt ${attempt}"

@@ -38,8 +38,8 @@ Every interaction must adhere to the workflows defined in `schema/ingest-workflo
 2. **Distill to Wiki:** Create or update a `wiki/` page. **Do not copy-paste**; synthesize and提炼 (distill).
 3. **Link Everything:** Add at least 2 cross-references (`related`) to other wiki pages.
 4. **Mandatory Section:** Every wiki page **MUST** have a `## 参考来源` (References) section linking back to `sources/`.
-5. **Catalog:** Do **not** edit or commit `catalog.md` — `export.yml` regenerates it on `main`.
-6. **Log Change:** Run `make log OP=ingest DESC="..."` (writes a `log.d/` fragment; never edit `log.md` directly — it is folded on `main`).
+5. **Catalog:** `catalog.md` is gitignored (use `make catalog` for local preview only; online browsing uses `docs/hubs.html`).
+6. **Log Change:** Run `make log OP=ingest DESC="..."` (writes a `log.d/` fragment; never edit `log.md` directly — `export.yml` folds fragments into `log.md` and archives old quarters into `docs/plans/archive/` on `main`).
 
 ### 2. Query (Answering & Synthesis)
 1. **Search:** Use `make search Q=...` or semantic search scripts.
@@ -74,7 +74,7 @@ Example: `chore: 更新主页统计数据与图谱 (172 nodes, 955 edges)`
 | Command | Action |
 |---------|--------|
 | `make lint` | Runs wiki linter and search quality evaluation. |
-| `make catalog` | Regenerates `catalog.md` locally (preview only; bot-owned, do not commit). |
+| `make catalog` | Regenerates `catalog.md` locally (gitignored; on-demand local preview only). |
 | `make export` | Generates JSON data for the frontend graph and search. |
 | `make search Q=...` | Performs a keyword search across the wiki. |
 | `make ingest NAME=... TITLE="..."` | Generates a new paper source template. |

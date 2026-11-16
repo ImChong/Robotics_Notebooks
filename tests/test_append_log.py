@@ -1,10 +1,12 @@
 """log.md 写入应与「新记录在上」约定一致；PR 写 log.d/ 碎片，main 上并入 log.md。"""
 
+from datetime import date
 from pathlib import Path
 
 from log_md import (
     fold_log_fragments,
     prepend_log_entry,
+    rotate_old_log_entries,
     write_log_fragment,
     write_log_prepend,
 )
@@ -62,3 +64,76 @@ def test_fold_log_fragments_newest_on_top_and_removed(tmp_path: Path) -> None:
     )
     assert sorted(p.name for p in frag_dir.iterdir()) == ["README.md"]
     assert fold_log_fragments(log, frag_dir) == []
+
+
+def test_rotate_old_log_entries_groups_by_quarter_and_keeps_recent(tmp_path: Path) -> None:
+    log = tmp_path / "log.md"
+    archive_dir = tmp_path / "docs" / "plans" / "archive"
+    log.write_text(
+        "> 顶部说明\n\n"
+        "## [2026-11-10] ingest | new\n\n- newest\n\n"
+        "## [2026-10-05] structural | recent\n\n- oct\n\n"
+        "## [2026-09-20] ingest | q3\n\n- sep\n\n"
+        "## [2026-06-15] ingest | q2\n\n- jun\n",
+        encoding="utf-8",
+    )
+
+    written = rotate_old_log_entries(
+        log_path=log,
+        archive_dir=archive_dir,
+        keep_recent_months=2,
+        reference_date=date(2026, 11, 17),
+    )
+
+    assert sorted(p.name for p in written) == ["log-2026-Q2.md", "log-2026-Q3.md"]
+    remaining = log.read_text(encoding="utf-8")
+    assert "> 顶部说明" in remaining
+    assert "## [2026-11-10] ingest | new" in remaining
+    assert "## [2026-10-05] structural | recent" in remaining
+    assert "2026-09-20" not in remaining
+    assert "2026-06-15" not in remaining
+    assert "## [2026-09-20] ingest | q3" in (archive_dir / "log-2026-Q3.md").read_text(
+        encoding="utf-8"
+    )
+    assert "## [2026-06-15] ingest | q2" in (archive_dir / "log-2026-Q2.md").read_text(
+        encoding="utf-8"
+    )
+
+    # 幂等性：再次执行不会重复归档
+    assert (
+        rotate_old_log_entries(
+            log_path=log,
+            archive_dir=archive_dir,
+            keep_recent_months=2,
+            reference_date=date(2026, 11, 17),
+        )
+        == []
+    )
+
+
+def test_rotate_old_log_entries_prepends_to_existing_archive(tmp_path: Path) -> None:
+    log = tmp_path / "log.md"
+    archive_dir = tmp_path / "archive"
+    archive_dir.mkdir()
+    existing_q3 = archive_dir / "log-2026-Q3.md"
+    existing_q3.write_text(
+        "# 知识库维护日志归档（2026 Q3）\n\n## [2026-08-01] ingest | earlier\n\n- aug\n",
+        encoding="utf-8",
+    )
+    log.write_text(
+        "> 顶部说明\n\n"
+        "## [2026-11-01] ingest | now\n\n- nov\n\n"
+        "## [2026-09-12] ingest | sep\n\n- sep\n",
+        encoding="utf-8",
+    )
+
+    rotate_old_log_entries(
+        log_path=log,
+        archive_dir=archive_dir,
+        keep_recent_months=2,
+        reference_date=date(2026, 11, 17),
+    )
+
+    q3_text = existing_q3.read_text(encoding="utf-8")
+    assert q3_text.count("# 知识库维护日志归档（2026 Q3）") == 1
+    assert q3_text.index("2026-09-12") < q3_text.index("2026-08-01")

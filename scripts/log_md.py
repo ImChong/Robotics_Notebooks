@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+import re
 import secrets
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -88,3 +89,72 @@ def fold_log_fragments(
     for frag in fragments:
         frag.unlink()
     return fragments
+
+
+_LOG_DATE_HEADING_RE = re.compile(r"^## \[(\d{4})-(\d{2})-\d{2}\]")
+DEFAULT_ARCHIVE_DIR = REPO_ROOT / "docs" / "plans" / "archive"
+
+
+def _month_index(year: int, month: int) -> int:
+    return year * 12 + month
+
+
+def rotate_old_log_entries(
+    log_path: Path = DEFAULT_LOG_PATH,
+    archive_dir: Path = DEFAULT_ARCHIVE_DIR,
+    keep_recent_months: int = 2,
+    reference_date: date | None = None,
+) -> list[Path]:
+    """将早于保留窗口的 ``## [YYYY-MM-DD]`` 条目按季度归档到 ``docs/plans/archive/log-YYYY-QN.md``。
+
+    保留顶部说明与最近 ``keep_recent_months`` 个自然月的记录，缩短主 ``log.md`` 体积。
+    """
+    if not log_path.is_file() or keep_recent_months < 1:
+        return []
+    text = log_path.read_text(encoding="utf-8")
+    blocks = re.split(r"(?=^## \[)", text, flags=re.MULTILINE)
+    if len(blocks) <= 1:
+        return []
+
+    preamble = "" if blocks[0].startswith("## [") else blocks[0]
+    entries = blocks[1:] if preamble else blocks
+
+    ref = reference_date or date.today()
+    cutoff_idx = _month_index(ref.year, ref.month) - (keep_recent_months - 1)
+
+    kept: list[str] = []
+    archived_by_quarter: dict[tuple[int, int], list[str]] = {}
+    for entry in entries:
+        match = _LOG_DATE_HEADING_RE.match(entry)
+        if not match:
+            kept.append(entry)
+            continue
+        year, month = int(match.group(1)), int(match.group(2))
+        if _month_index(year, month) >= cutoff_idx:
+            kept.append(entry)
+        else:
+            quarter = (month - 1) // 3 + 1
+            archived_by_quarter.setdefault((year, quarter), []).append(entry)
+
+    if not archived_by_quarter:
+        return []
+
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    written: list[Path] = []
+    for (year, quarter), group in sorted(archived_by_quarter.items()):
+        dest = archive_dir / f"log-{year}-Q{quarter}.md"
+        header = f"# 知识库维护日志归档（{year} Q{quarter}）\n\n"
+        new_body = "".join(b.strip("\n") + "\n\n" for b in group)
+        if dest.is_file():
+            existing = dest.read_text(encoding="utf-8")
+            # 插在现有条目顶部，保留文件标题
+            body_part = re.sub(r"^# [^\n]+\n+", "", existing, count=1)
+            combined = header + new_body + body_part
+        else:
+            combined = header + new_body
+        dest.write_text(combined.rstrip("\n") + "\n", encoding="utf-8")
+        written.append(dest)
+
+    rebuilt = preamble + "".join(kept)
+    log_path.write_text(rebuilt.rstrip("\n") + "\n", encoding="utf-8")
+    return written

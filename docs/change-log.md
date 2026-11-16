@@ -36,7 +36,7 @@
 
 ## 2026-06-12 — 仓库清理首批：checklists 归档与一次性产物移除
 
-依据 `docs/plans/2026-04-29-repo-cleanup-planning.md` 首批试点执行：
+依据 `docs/plans/archive/2026-04-29-repo-cleanup-planning.md` 首批试点执行：
 
 - `docs/checklists/` 历史执行清单 v1–v23 移入 `archive/` 子目录，根目录仅保留当前 v24；索引 README、v24 头部「上一版」链接同步更新，归档文件内 `../../wiki/` 相对链接改写为 `../../../wiki/`。
 - 移除一次性 PR 验证产物 `docs/checklists/verification/pr-411-graph-layout/` 与 `docs/checklists/screenshots/pr-280-bfm-detail.png`（共约 2.1MB；按约定此类截图只留在 `.cursor-artifacts/` 与 PR 描述中，git 历史仍可追溯）。
