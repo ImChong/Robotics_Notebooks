@@ -243,6 +243,7 @@ flowchart LR
 **方向 D：Humanoid 全身动作跟踪**
 - 走路、跑步、跳跃、平衡等全身技能跟踪
 - 关键词：[Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)、[BeyondMimic](../wiki/methods/beyondmimic.md)、[Sonic](../wiki/methods/sonic-motion-tracking.md)
+- 进阶策略编辑：[RedirectMimic：全身模仿策略的局部动作替换](../wiki/entities/paper-redirectmimic.md) — 在原始参考仍作为输入的情况下，通过编辑目标奖励与窗口重采样让 G1 策略替换指定上肢片段；仅仿真验证。
 - 选型参考：[Query：人形动作跟踪方法选型](../wiki/queries/humanoid-motion-tracking-method-selection.md)
 
 ---
