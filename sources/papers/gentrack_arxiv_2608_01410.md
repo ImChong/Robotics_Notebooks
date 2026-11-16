@@ -80,7 +80,7 @@ Filtered SFT 把成功刷到 96.97，但是迎合冻结 \(T_0\) 的低难度偏�
 ## 对 wiki 的映射
 
 - 升格 [GenTrack 论文实体](../../wiki/entities/paper-gentrack.md)
-- 交叉：[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[ProtoMotions](../../wiki/entities/protomotions.md)、[HY-Motion 1.0](../../wiki/methods/hy-motion-1.md)、[PhyGile](../../wiki/entities/paper-phygile.md)、[PARC](../../wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md)、[RLPF](../../wiki/entities/paper-notebook-rl-from-physical-feedback-aligning-large-motion.md)、[人形运动跟踪选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[Kimodo](../../wiki/entities/kimodo.md)、[Humanoid-GPT](../../wiki/entities/paper-humanoid-gpt.md)
+- 交叉：[SONIC](../../wiki/entities/nvidia-sonic.md)、[ProtoMotions](../../wiki/entities/protomotions.md)、[HY-Motion 1.0](../../wiki/methods/hy-motion-1.md)、[PhyGile](../../wiki/entities/paper-phygile.md)、[PARC](../../wiki/entities/paper-notebook-parc-physics-based-augmentation-with-reinforceme.md)、[RLPF](../../wiki/entities/paper-notebook-rl-from-physical-feedback-aligning-large-motion.md)、[人形运动跟踪选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[Kimodo](../../wiki/entities/kimodo.md)、[Humanoid-GPT](../../wiki/entities/paper-humanoid-gpt.md)
 
 ## 当前提炼状态
 

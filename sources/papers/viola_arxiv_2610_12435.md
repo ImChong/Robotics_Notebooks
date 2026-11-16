@@ -20,7 +20,7 @@
 
 VioLA 的动作不是关节角，而是拼接后的 128 维动作潜变量：64 维 body latent + 64 维 hand latent。人体与机器人各有配对编码器，将两种来源的身体 / 手部运动映射到对应的共享潜空间；与之配对的机器人 body controller 和 hand decoder 将策略输出解码为关节命令。编码器和解码器预训练后冻结，通用策略训练阶段只更新策略本身。body 侧继承 SONIC 的运动编码器与控制器，hand 模块单独预训练。
 
-**对 Wiki 的映射：** [既有 VioLA 实体页](../../wiki/entities/paper-viola-human-data-control.md)「核心机制」；[SONIC](../../wiki/methods/sonic-motion-tracking.md) 的潜变量控制接口。
+**对 Wiki 的映射：** [既有 VioLA 实体页](../../wiki/entities/paper-viola-human-data-control.md)「核心机制」；[SONIC](../../wiki/entities/nvidia-sonic.md) 的潜变量控制接口。
 
 ### 2. 人类视频如何成为机器人策略标签
 

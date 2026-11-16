@@ -25,7 +25,7 @@
 
 - **摘录要点：** \(\mathbf{a}_t=[\mathbf{q}^B_t,\mathbf{r}_t,\mathbf{q}^L_t,\mathbf{q}^R_t]\in\mathbb{R}^{72}\)：**body 关节参考、root、左右 articulated hand**；各数据源 **部分通道有标注** 即可填入对应坐标。**Video expert + Action expert** 在 vision / language / proprio 条件下 **联合** 预测视觉动力学与全身动作轨迹；部署时 **body/root 经 SONIC 执行**，**hand 直接控 Wuji 指关节**。
 - **对 wiki 的映射：**
-  - [SONIC](../../wiki/methods/sonic-motion-tracking.md) — 低层全身跟踪
+  - [SONIC](../../wiki/entities/nvidia-sonic.md) — 低层全身跟踪
   - [World Action Models](../../wiki/concepts/world-action-models.md)
 
 ### 3) 三阶段训练与 WB-Datasets

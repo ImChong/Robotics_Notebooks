@@ -122,7 +122,7 @@ flowchart LR
 - [Robotics Transformer（RT 系列）](../wiki/methods/robotics-transformer-rt-series.md)、[RT-1](../wiki/entities/paper-rt-1.md)、[RT-2](../wiki/entities/paper-rt-2.md)、[OpenVLA](../wiki/entities/paper-openvla.md)、[Octo](../wiki/entities/paper-octo.md)
 - [π0](../wiki/entities/paper-pi0.md) 与 [π0.7](../wiki/methods/pi07-policy.md)
 - [StarVLA-α](../wiki/entities/paper-starvla-alpha.md) — 强 VLM 加轻量动作头的受控基线，区分 specialist、generalist 与不同本体的评测协议。
-- [SayCan](../wiki/methods/saycan.md) 与 [DIAL 指令增强](../wiki/methods/dial-instruction-augmentation.md)
+- [SayCan](../wiki/entities/paper-saycan.md) 与 [DIAL 指令增强](../wiki/methods/dial-instruction-augmentation.md)
 - [InternVLA-A1.5](../wiki/entities/paper-internvla-a15-unified-vla.md) — 2026 主线前沿对照：统一理解 + 潜式前瞻 + flow matching 动作的单一 MoT 框架，组合泛化与长程执行显著超 π₀.₅；`InternRobotics/InternVLA-A1` `main` 分支与 HF `InternRobotics/internvla-a15` 已开源（CC BY-NC-SA 4.0）
 - [LingBot-VLA](../wiki/entities/lingbot-vla.md) — Qwen2.5-VL-3B + flow 动作头，2 万小时双臂真机预训练；开源 4B 权重与 LeRobot v3.0 后训练栈，RoboTwin 仿真领先 π₀.₅
 - [KUAVO-VLA-1.0](../wiki/entities/kuavo-vla-1.md) — 乐聚基于 LingBot-VLA-2.0（6B）在 680 h / 100 任务上重训的工业人形垂域模型，25 任务评测达 48.3% SR / 74.5% PS；`LeTools-Learning` 已开源，24 页技术报告与官网已公开，HF 模型与数据 `gated: auto` 需申请审核

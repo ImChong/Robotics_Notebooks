@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-145-n145](../../wiki/entities/paper-loco-manip-161-145-n145.md)
+- [paper-loco-manip-161-145-n145](../../wiki/entities/paper-loco-manip-161-126-n126.md)
 - [loco-manip-161-category-08-hardware-deployment](../../wiki/overview/loco-manip-161-category-08-hardware-deployment.md)
 
 ## 参考来源（原始）

@@ -8,7 +8,7 @@ project: https://nebulis-lab.com/MimicX
 code: https://github.com/NEBULIS-Lab/MimicX
 arxiv: "2610.09055"
 related:
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/imitation-learning.md
   - ../concepts/whole-body-control.md
   - ../entities/gvhmr.md
@@ -146,7 +146,7 @@ sequenceDiagram
 
 | 路线 | 监督信号 | 主要关注点 |
 |------|----------|------------|
-| [SONIC](../methods/sonic-motion-tracking.md) | 规模化参考运动跟踪 | 用多样动作训练可复用的全身运动先验 |
+| [SONIC](./nvidia-sonic.md) | 规模化参考运动跟踪 | 用多样动作训练可复用的全身运动先验 |
 | MimicX | 策略 rollout 反向编辑训练监督 | 针对当前视频参考中的失败段调整目标与 reset curriculum，并验证候选策略 |
 | [模仿学习](../methods/imitation-learning.md) | 示范或参考分布 | 更广义的学习范式；MimicX 的策略在环是监督精炼机制 |
 
@@ -172,7 +172,7 @@ sequenceDiagram
 
 ## 关联页面
 
-- [SONIC 规模化人形运动跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC 规模化人形运动跟踪](./nvidia-sonic.md)
 - [模仿学习](../methods/imitation-learning.md)
 - [全身控制](../concepts/whole-body-control.md)
 - [GVHMR 人体动作重建](../entities/gvhmr.md)

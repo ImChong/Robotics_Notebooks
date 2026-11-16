@@ -9,7 +9,6 @@ related:
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../entities/flobaroid.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
-  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/paper-notebook-sampling-based-system-identification-with-active.md
   - ../entities/prime-system-id.md

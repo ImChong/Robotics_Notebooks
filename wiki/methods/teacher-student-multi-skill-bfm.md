@@ -7,7 +7,7 @@ summary: "BFM 路线之一：用 Teacher-Student 在仿真特权信息下学习�
 related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-bfm-zero.md
-  - ./sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ./teacher-student-dagger-training.md
   - ../concepts/privileged-training.md
   - ../../roadmap/depth-bfm.md
@@ -53,14 +53,14 @@ sources:
 | 路线 | 代表链接 | 说明 |
 |------|----------|------|
 | BFM 无监督 | [BFM-Zero](../entities/paper-bfm-zero.md) | FB 表示 |
-| 规模化跟踪 | [SONIC](./sonic-motion-tracking.md) | 多动作跟踪 |
+| 规模化跟踪 | [SONIC](../entities/nvidia-sonic.md) | 多动作跟踪 |
 | 特权多技能 | [Privileged Training](../concepts/privileged-training.md) | 本页 TS 路线 |
 
 ## 工程实践
 
 - 统一 **动作接口**（参考关节/根轨迹）与 **失败采样** 策略，避免多动作互相干扰。
 - 评估 **未见动作泛化** 与 **单动作最优性** 的权衡。
-- 交叉阅读 [SONIC](./sonic-motion-tracking.md) 规模化路线与 [BFM-Zero](../entities/paper-bfm-zero.md)。
+- 交叉阅读 [SONIC](../entities/nvidia-sonic.md) 规模化路线与 [BFM-Zero](../entities/paper-bfm-zero.md)。
 
 ## 局限与风险
 
@@ -73,7 +73,7 @@ sources:
 
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md)
 - [Teacher-Student + DAgger](./teacher-student-dagger-training.md)
-- [SONIC](./sonic-motion-tracking.md)、[BFM-Zero](../entities/paper-bfm-zero.md)
+- [SONIC](../entities/nvidia-sonic.md)、[BFM-Zero](../entities/paper-bfm-zero.md)
 - [Know-How 技术地图](../overview/humanoid-motion-control-know-how-technology-map.md)
 
 ## 参考来源

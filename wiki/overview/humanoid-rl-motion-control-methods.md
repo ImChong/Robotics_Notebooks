@@ -49,7 +49,7 @@ summary: "飞书「深度强化学习运动控制方法（Learning Base）」父
 | AMP 仿人行走 | [AMP](../methods/amp-reward.md) |
 | BFM 总览 | [BFM](../concepts/behavior-foundation-model.md) |
 | BFM-Zero | [BFM-Zero](../entities/paper-bfm-zero.md) |
-| SONIC | [SONIC](../methods/sonic-motion-tracking.md) |
+| SONIC | [SONIC](../entities/nvidia-sonic.md) |
 | TS 多动作 BFM | [TS 多技能 BFM](../methods/teacher-student-multi-skill-bfm.md) |
 
 ## 学习路线

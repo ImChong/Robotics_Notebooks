@@ -17,7 +17,7 @@ updated: 2026-09-15
 venue: "draft preprint, 2026（项目页 PDF；暂无 arXiv）"
 code: https://github.com/meetsitaram/sonic-x2
 related:
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-any2any-cross-embodiment-wbt.md
   - ../queries/cross-embodiment-transfer-strategy.md
   - ../concepts/whole-body-tracking-pipeline.md
@@ -36,7 +36,7 @@ summary: "SONIC-Transfer（draft 2026-08-16）：冻结公开 GEAR-SONIC（G1）
 
 # SONIC-Transfer：冻结全身控制器的解析 codec + LoRA 跨具身迁移
 
-**SONIC-Transfer**（*Cross-Embodiment Transfer of a Frozen Humanoid Whole-Body Controller via Analytic Codec and LoRA Adapters*，[项目页](https://sonic-agibot-x2.github.io/sonic-transfer/)，[draft PDF](https://sonic-agibot-x2.github.io/sonic-transfer/static/pdfs/paper.pdf)；Sitarama Chekuri · Claude Fable 5 / Anthropic AI co-author；**draft v0.1，2026-08-16**）把公开发布的 [GEAR-SONIC](../methods/sonic-motion-tracking.md)（Unitree G1）当作 **不可改的平台**：闭式关节 codec 包住 G1 接口，只在动力学解码器上插 [LoRA](../concepts/lora.md)，把全身跟踪迁到 **AgiBot X2 Ultra**。
+**SONIC-Transfer**（*Cross-Embodiment Transfer of a Frozen Humanoid Whole-Body Controller via Analytic Codec and LoRA Adapters*，[项目页](https://sonic-agibot-x2.github.io/sonic-transfer/)，[draft PDF](https://sonic-agibot-x2.github.io/sonic-transfer/static/pdfs/paper.pdf)；Sitarama Chekuri · Claude Fable 5 / Anthropic AI co-author；**draft v0.1，2026-08-16**）把公开发布的 [GEAR-SONIC](./nvidia-sonic.md)（Unitree G1）当作 **不可改的平台**：闭式关节 codec 包住 G1 接口，只在动力学解码器上插 [LoRA](../concepts/lora.md)，把全身跟踪迁到 **AgiBot X2 Ultra**。
 
 > **落地状态：** 入库时 **无 arXiv**。推理 **已开源可跑**（[`meetsitaram/sonic-x2`](https://github.com/meetsitaram/sonic-x2) 的 `./play_v2.sh` + HF 权重）；**无 SPDX LICENSE**；**LoRA 训练不在 play 仓**。选中 checkpoint 的真机验证文中写 ongoing。
 
@@ -198,7 +198,7 @@ G1 本体对照（去 codec）：演示库从 93.6% 饱和恢复；novel500 **98
 
 ## 关联页面
 
-- [SONIC](../methods/sonic-motion-tracking.md) — 被冻结的源平台
+- [SONIC](./nvidia-sonic.md) — 被冻结的源平台
 - [Any2Any](./paper-any2any-cross-embodiment-wbt.md) — 同骨干、更宽形态差的后训练对照
 - [跨具身策略迁移选型](../queries/cross-embodiment-transfer-strategy.md) — 本页是 Any2Any 路径在近亲骨架上的变体
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 阶段 5

@@ -9,7 +9,7 @@ related:
   - ../concepts/embodied-scaling-laws.md
   - ../concepts/foundation-policy.md
   - ../methods/action-chunking.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./qwen-vla.md
   - ./paper-rynnworld-4d-rgb-depth-flow.md
   - ./paper-internvla-a15-unified-vla.md
@@ -139,7 +139,7 @@ sequenceDiagram
 |----|------|
 | **选型** | 要 **具身 QA/定位/3D/接触** 开箱能力 → 先跑公开 2B/9B；要 **跨本体 VLA** → 读论文配方，权重需自训或等后续 release |
 | **依赖钉** | README 示例 `transformers==5.2.0`；大模型注意显存与 MoE 部署 |
-| **G1 栈** | VLA 输出需接 [SONIC](../methods/sonic-motion-tracking.md)；64D SONIC token **不在** 81D 统一空间内 |
+| **G1 栈** | VLA 输出需接 [SONIC](./nvidia-sonic.md)；64D SONIC token **不在** 81D 统一空间内 |
 | **RTC** | chunk 32、每 5 步重推、\(\beta=10\)；与 [Action Chunking](../methods/action-chunking.md) 异步部署同族 |
 | **开源状态** | 详见 [sources/repos/rynnbrain.md](../../sources/repos/rynnbrain.md)：基础模型 **已开源**；VLA **待发布/未公开** |
 
@@ -165,7 +165,7 @@ sequenceDiagram
 - 最硬的证据是受控对照而非榜单：同演示、同 60k 后训练下只换初始化，成功率 **60% → 86.67%**、process **68.33% → 91.28%**；统一 81D + mask 的 Generalist 再抬到 **91.67%**，说明增益来自预训练配方与跨本体联合训练，不是骨干参数量。
 - 具身 scaling 是 **非均匀** 的：推理密集型认知上 RynnBrain 升而 Qwen3.5 负缩放，定位上最大 Qwen 仍低于最小 RynnBrain——参数轴替代不了显式空间监督这条数据轴。
 - 适用边界要分清尺度：3D grounding 目前主推 **2B/9B**，122B 的领先证据在认知/定位基准，真机 VLA 实验并未宣称用 122B 作策略骨干。
-- 主要局限在验证与迁移：接触点缺标准化功能有效性指标、以定性为主；G1 依赖 [SONIC](../methods/sonic-motion-tracking.md) 低层与平台特有 64D 输出，换人形栈需重做 embodiment layer。
+- 主要局限在验证与迁移：接触点缺标准化功能有效性指标、以定性为主；G1 依赖 [SONIC](./nvidia-sonic.md) 低层与平台特有 64D 输出，换人形栈需重做 embodiment layer。
 - 开源侧要按「基础模型可复现、VLA 不可复现」来读：权重与推理/cookbook 可跑感知/定位/3D/接触点，VLA 训练码与权重未随仓发布。
 - 对照定位：与 [InternVLA-A1.5](./paper-internvla-a15-unified-vla.md) 同属 Qwen3.5 族但后者走 latent foresight，本页走 **大规模具身脑 + 统一跨本体动作空间**；与 [RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md) 构成同院系「脑 / 4D 世界模型」的分工。
 
@@ -192,7 +192,7 @@ sequenceDiagram
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 非均匀具身 scaling 对照。
 - [Foundation Policy](../concepts/foundation-policy.md) — 基础策略抽象母类。
 - [Action Chunking](../methods/action-chunking.md) — H=32 与 RTC 语境。
-- [SONIC](../methods/sonic-motion-tracking.md) — G1 全身跟踪低层。
+- [SONIC](./nvidia-sonic.md) — G1 全身跟踪低层。
 - [Qwen-VLA](./qwen-vla.md) — 同阿里 Qwen 生态通才 VLA。
 - [RynnWorld-4D](./paper-rynnworld-4d-rgb-depth-flow.md) — 同院系 4D 世界模型。
 - [InternVLA-A1.5](./paper-internvla-a15-unified-vla.md) — Qwen3.5 + flow VLA 对照。

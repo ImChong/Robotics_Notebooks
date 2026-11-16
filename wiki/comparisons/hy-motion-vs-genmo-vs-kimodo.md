@@ -22,14 +22,14 @@ related:
   - ../entities/awesome-text-to-motion-zilize.md
   - ../formalizations/probability-flow.md
   - ../methods/motion-retargeting-gmr.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../entities/paper-gentrack.md
 summary: "HY-Motion 1.0 / GENMO(GEM) / Kimodo 三条『文本·多模态 → 人体运动』生成式骨干对比：腾讯混元的十亿级流匹配 DiT（纯文本+时长、DPO/Flow-GRPO 对齐）vs NVIDIA 的 dual-mode 估计+生成统一扩散（视频/2D/音乐/关键帧多模态）vs NVIDIA 的两阶段 root/body 运动学扩散（文本+强约束、多骨架）；从生成范式、条件模态、运动表示、数据规模、对齐方式与机器人落地接口六个维度给出选型坐标。"
 ---
 
 # HY-Motion vs GENMO/GEM vs Kimodo：三条「文本/多模态 → 人体运动」生成式骨干对比
 
-**背景**：2025–2026 年「文本/多模态驱动人体运动生成」涌出一批大模型，它们都把一段语言/视频/约束变成 **SMPL 系骨架的时间序列**，但落点截然不同。本页对比三条代表性路线——腾讯混元 **[HY-Motion 1.0](../methods/hy-motion-1.md)**（十亿级 **流匹配 DiT**，纯文本 + 期望时长，全阶段对齐）、NVIDIA **[GENMO/GEM](../methods/genmo.md)**（**dual-mode** 把「估计」与「生成」统一进一套扩散，多模态条件）、NVIDIA **[Kimodo](../entities/kimodo.md)**（**两阶段 root/body 运动学扩散**，文本 + 强运动学约束，多骨架输出）。三者**不是同一道题的三个答案**：HY-Motion 押 **文本→运动的生成质量与 scaling**，GENMO 押 **视频估计与生成的同模型统一**，Kimodo 押 **可控/可编辑的约束生成**。它们共享一个硬约束——**输出都是运动学层，不等于物理可行的机器人指令**（落地仍需 [SONIC](../methods/sonic-motion-tracking.md) 类 tracker / WBC / MPC）。
+**背景**：2025–2026 年「文本/多模态驱动人体运动生成」涌出一批大模型，它们都把一段语言/视频/约束变成 **SMPL 系骨架的时间序列**，但落点截然不同。本页对比三条代表性路线——腾讯混元 **[HY-Motion 1.0](../methods/hy-motion-1.md)**（十亿级 **流匹配 DiT**，纯文本 + 期望时长，全阶段对齐）、NVIDIA **[GENMO/GEM](../methods/genmo.md)**（**dual-mode** 把「估计」与「生成」统一进一套扩散，多模态条件）、NVIDIA **[Kimodo](../entities/kimodo.md)**（**两阶段 root/body 运动学扩散**，文本 + 强运动学约束，多骨架输出）。三者**不是同一道题的三个答案**：HY-Motion 押 **文本→运动的生成质量与 scaling**，GENMO 押 **视频估计与生成的同模型统一**，Kimodo 押 **可控/可编辑的约束生成**。它们共享一个硬约束——**输出都是运动学层，不等于物理可行的机器人指令**（落地仍需 [SONIC](../entities/nvidia-sonic.md) 类 tracker / WBC / MPC）。
 
 > **一句话区分**：HY-Motion「**纯文本 + 时长，十亿级流匹配 DiT，靠数据 × 算力 × DPO/Flow-GRPO 把生成质量拉满**」；GENMO「**一套权重既做视频→SMPL 估计又做多模态生成，dual-mode 训练吃掉两套流水线**」；Kimodo「**文本 + 关键帧/末端/2D 路径强约束，两阶段 root/body 去噪压脚滑漂浮，直出 SOMA/G1/SMPL-X**」。
 
@@ -57,7 +57,7 @@ summary: "HY-Motion 1.0 / GENMO(GEM) / Kimodo 三条『文本·多模态 → 人
 | **对齐 / 后训练** | **DPO**（人类成对偏好，约 4 万对筛 9228 高信息对）→ **Flow-GRPO**（显式物理/语义奖励） | **dual-mode** 本身即「估计 ↔ 生成」双向收益；estimation-guided 2D 弱监督扩多样性 | 约束**覆写** + 推理后处理（脚滑/约束修正，可 `--no-postprocess` 关） |
 | **参数 / scaling 叙事** | **>1B**（领域内首次把流匹配 DiT 推到 B 级，给 T2M scaling 提供正样本） | 不主打参数规模，主打**统一估计+生成**的范式收益 | 主打**大规模工作室数据 + 可控性**，而非纯参数堆叠 |
 | **开源形态** | 代码 + 权重（HF `tencent/HY-Motion-1.0`） | 代码 [NVlabs/GENMO](https://github.com/NVlabs/GENMO)（Apache-2.0）+ 权重 `nvidia/GEM-X`；全身扩展 [GEM-X](https://github.com/NVlabs/GEM-X) | HF 权重（多变体）+ [Benchmark](https://huggingface.co/datasets/nvidia/Kimodo-Motion-Gen-Benchmark) + 时间线 Demo；本地推理另有社区 [kimodo.cpp](../entities/kimodo-cpp.md) |
-| **机器人落地接口** | SMPL-H 序列 → [GMR](../methods/motion-retargeting-gmr.md) 重定向到人形/引擎 | SMPL 序列 → [SONIC](../methods/sonic-motion-tracking.md) token 化跟踪；视频→运动是「像素→控制」中枢 | 直出 **G1 变体 → MuJoCo qpos CSV**；NPZ → [ProtoMotions](../entities/kimodo.md) / GEAR-SONIC 闭环 |
+| **机器人落地接口** | SMPL-H 序列 → [GMR](../methods/motion-retargeting-gmr.md) 重定向到人形/引擎 | SMPL 序列 → [SONIC](../entities/nvidia-sonic.md) token 化跟踪；视频→运动是「像素→控制」中枢 | 直出 **G1 变体 → MuJoCo qpos CSV**；NPZ → [ProtoMotions](../entities/kimodo.md) / GEAR-SONIC 闭环 |
 | **核心假设** | 数据 × 模型 × 算力 + 偏好对齐单调改善「指令跟随 × 运动质量」 | 估计与生成**共享时间动力学/运动学表示**，可由一种带约束生成范式统一吸收 | **root/body 分解** + 约束同表示覆写，比单阶段更能压漂浮脚滑且保多约束可控 |
 
 ---
@@ -120,7 +120,7 @@ flowchart TD
 1. **输入含视频/单目**：要从野外或生成视频**估计**时间一致的全身 SMPL，再顺手做生成式补全（遮挡/截断帧靠生成先验修补）；
 2. 需要**多模态混合可编辑**：在时间轴上拼视频片段 + 多段文本 + 音乐 + 关键帧，接 LLM/VLA/视频生成当上游；
 3. 想用**一套权重**替掉「估计一套 + 生成一套」两条流水线；
-4. 已在 NVIDIA 人形栈（[SONIC](../methods/sonic-motion-tracking.md) / ProtoMotions / GEM-X）内，要标准化「视频/音乐/文本 → 人体运动」I/O。
+4. 已在 NVIDIA 人形栈（[SONIC](../entities/nvidia-sonic.md) / ProtoMotions / GEM-X）内，要标准化「视频/音乐/文本 → 人体运动」I/O。
 
 > **避坑**：dual-mode 有效性建立在「**视频条件下扩散首步方差极低**」的观察上；用极抽象语言直接驱动估计会回退到生成方差。命名迁移：论文叫 GENMO、权重以 **GEM** 发布，检索两关键词都要试。
 
@@ -141,7 +141,7 @@ flowchart TD
 1. **「三者可互换」**：错。HY-Motion **只吃文本**，做不了视频估计；GENMO 把**视频→SMPL 估计**当一等任务；Kimodo 强在**关键帧/路径约束编辑**。条件模态决定了它们解的是不同的题。
 2. **「都是 SMPL，表示通用」**：错。HY-Motion 用 **SMPL-H 201 维**（弃 HumanML3D 263 维、无显式足接触）；GENMO 把 **SMPL + 相机外参 + 接触标签**拼进同一向量（估计需相机对齐）；Kimodo 是**多骨架**（SOMA/G1/SMPL-X）的平滑 root + 全局关节表示。直接对接会维度/语义错位。
 3. **「流匹配 vs 扩散是范式鸿沟」**：夸大。两者同属 [probability flow](../formalizations/probability-flow.md) 家族，工程差异在**采样桥/ODE 步数**而非本质——HY-Motion 用 OT 线性桥流匹配，GENMO/Kimodo 用 DDPM/DDIM 式扩散，可比但不构成不可逾越的分界。
-4. **「生成即可驱动机器人」**：错且关键。三者**全是运动学层**，输出不含扭矩/接触可行性；上实机要再过 tracker（[SONIC](../methods/sonic-motion-tracking.md) / BeyondMimic）或经典 WBC/MPC。Kimodo/GENMO 的项目页与本仓 [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) 都反复强调这一点。
+4. **「生成即可驱动机器人」**：错且关键。三者**全是运动学层**，输出不含扭矩/接触可行性；上实机要再过 tracker（[SONIC](../entities/nvidia-sonic.md) / BeyondMimic）或经典 WBC/MPC。Kimodo/GENMO 的项目页与本仓 [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) 都反复强调这一点。
 5. **「Kimodo = GENMO」**（同属 NVIDIA 易混）：错。GENMO 侧重**单目视频→SMPL 估计/生成**；Kimodo 侧重**文本 + 运动学约束→骨架合成**，二者在 NVIDIA 栈中**互补**（项目页互列为相邻工作）。
 6. **「数据规模决定排名」**：维度不同。HY-Motion >3000h 押生成质量 scaling，Kimodo ~700h 押可控性，GENMO 押**估计+生成共享**带来的弱监督杠杆——三者优化目标不同，不能只比小时数。
 
@@ -214,7 +214,7 @@ flowchart TD
 - [骨架动作识别（HOVL）](../methods/skeleton-action-recognition.md) — 判别侧的 motion-text 对齐（HumanML3D 为 HOV 基准来源之一）；三者生成结果的语义一致性需靠这类识别/检索模型复核，勿与生成质量指标混读
 - [Probability Flow](../formalizations/probability-flow.md) — 流匹配与扩散共同的数学基础
 - [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — SMPL 系运动 → 机器人骨架的工程落点
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — 生成运动 → 真机物理跟踪的下游消费方
+- [SONIC（规模化运动跟踪）](../entities/nvidia-sonic.md) — 生成运动 → 真机物理跟踪的下游消费方
 - [GenTrack](../entities/paper-gentrack.md) — 把 HYMotion 风格 \(G_0\) 接到 G1 执行环做后训练；三者仍止步运动学层时的物理对齐一步
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles](./sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — 下游 WBT 策略学习路线对比
 - [GMR vs NMR vs ReActor](./gmr-vs-nmr-vs-reactor.md) — 重定向算法谱系对比

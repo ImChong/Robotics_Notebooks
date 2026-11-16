@@ -100,7 +100,7 @@ sequenceDiagram
 
 ## 与其他工作对比
 
-| 维度 | Intern-Decision（本文） | [Jev](../entities/typesafe-jev.md) | [Valen](../entities/valen.md) | [SayCan](../methods/saycan.md) |
+| 维度 | Intern-Decision（本文） | [Jev](../entities/typesafe-jev.md) | [Valen](../entities/valen.md) | [SayCan](./paper-saycan.md) |
 |------|------|------|------|------|
 | 决策形式 | JSON 骨架中的 `<decision>` 标记，一次因果前向输出 choice / score / noul 及概率 | schema 约束的类型安全多字段决策 + 校准概率，并行采样 | Choice / Noul / Score 概率输出 | LLM 生成子任务候选，价值函数估计可行性 |
 | 模型与输入 | 微调 Qwen3.5 语言主干（0.8B / 2B / 4B），冻结视觉塔；文本 + 可选图片 | 早期访问 API，非结构化 state 输入 | Qwen3.5-2B + 共享决策头；文本 / 图 / 视频 | 语言模型 + 机器人技能价值函数 |

@@ -19,10 +19,10 @@ related:
   - ../methods/mt-opt.md
   - ../methods/learning-from-play-lmp.md
   - ../methods/cyclegan-sim2real.md
-  - ../methods/saycan.md
+  - ../entities/paper-saycan.md
   - ../methods/robotics-transformer-rt-series.md
   - ../methods/dial-instruction-augmentation.md
-  - ../methods/octo-model.md
+  - ../entities/paper-octo.md
   - ../methods/roboarena.md
   - ../entities/gemini-robotics.md
   - ../entities/generalist-ai-robotics.md
@@ -69,7 +69,7 @@ related:
 
 ## 轴线 II — 基础模型：把外部多模态智能接入机器人策略
 
-- **规划 + affordance**：[SayCan](../methods/saycan.md) 用语言模型生成候选子任务并用价值估计约束可行性。
+- **规划 + affordance**：[SayCan](../entities/paper-saycan.md) 用语言模型生成候选子任务并用价值估计约束可行性。
 - **策略侧 Transformer / VLA**：[Robotics Transformer（RT-1 / RT-2）](../methods/robotics-transformer-rt-series.md) 与总览页 [VLA](../methods/vla.md)。
 - **跨本体数据轴**：[Open X-Embodiment](../concepts/open-x-embodiment.md) 连接 [Foundation Policy](../concepts/foundation-policy.md) 与 [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)。
 
@@ -82,7 +82,7 @@ related:
 - **宏观连续谱**：DeepMind [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md) 把 **有效算力增长、数据墙、测试时 scaling 与多智能体集体** 放入 **后 AGI** 预测框架——可与本轴线的产业 scaling 叙事前后对照（非时间线承诺）。
 - **分布式真实评测**：[RoboArena](../methods/roboarena.md)。
 - **闭源模型族**：[Gemini Robotics](../entities/gemini-robotics.md)（以官方博客与技术报告为准；**GR2** 含全身 VLA / ER 2 API / On-Device，见 [发布归档](../../sources/blogs/gemini_robotics_2_whole_body.md)）。
-- **开源 generalist**：[Octo](../methods/octo-model.md)；**商业数据叙事**：[Generalist AI](../entities/generalist-ai-robotics.md)（以公司博客为准，区分论文与市场宣传）。
+- **开源 generalist**：[Octo](../entities/paper-octo.md)；**商业数据叙事**：[Generalist AI](../entities/generalist-ai-robotics.md)（以公司博客为准，区分论文与市场宣传）。
 - **世界模型纵览**：仓库内 [Generative World Models](../methods/generative-world-models.md)、[rl_foundation_models](../../sources/papers/rl_foundation_models.md) 索引。
 
 **知识库延伸**：[Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)、[Data Flywheel](../concepts/data-flywheel.md)。
@@ -103,8 +103,8 @@ related:
 - [VLA](../methods/vla.md)
 - [QT-Opt](../methods/qt-opt.md) · [MT-Opt](../methods/mt-opt.md) · [BC-Z](../methods/bc-z.md)
 - [Learning from Play](../methods/learning-from-play-lmp.md) · [HER](../methods/her.md) · [CycleGAN Sim2Real](../methods/cyclegan-sim2real.md)
-- [SayCan](../methods/saycan.md) · [Robotics Transformer](../methods/robotics-transformer-rt-series.md) · [DIAL](../methods/dial-instruction-augmentation.md)
-- [Octo](../methods/octo-model.md) · [RoboArena](../methods/roboarena.md)
+- [SayCan](../entities/paper-saycan.md) · [Robotics Transformer](../methods/robotics-transformer-rt-series.md) · [DIAL](../methods/dial-instruction-augmentation.md)
+- [Octo](../entities/paper-octo.md) · [RoboArena](../methods/roboarena.md)
 - [Gemini Robotics](../entities/gemini-robotics.md) · [Generalist AI](../entities/generalist-ai-robotics.md)
 - [Imitation Learning](../methods/imitation-learning.md) · [Reinforcement Learning](../methods/reinforcement-learning.md) · [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 

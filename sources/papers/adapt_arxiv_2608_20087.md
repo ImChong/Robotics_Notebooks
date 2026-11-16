@@ -35,7 +35,7 @@
 - **核心贡献：** 从 Nadal / Federer / Djokovic 转播片段（约 2 s/clip）经 **GVHMR → GMR 重定向** 得 SMPL/机器人运动；MoCap 运动员 **Mr. Black** 补充风格。标注 stroke / spin / 触球时刻；发球额外标 **抛球释放时刻**。对拉数据经 **通用跟踪器物理修正** 得 \(\mathcal{D}_{\mathrm{rally}}\)、\(\mathcal{D}_{\mathrm{serve}}\)。
 - **对 wiki 的映射：**
   - [AdaPT 项目页](../sites/adapt-humanoidtennis.md)
-  - [SONIC](../../wiki/methods/sonic-motion-tracking.md)（对照：统一全身跟踪栈）
+  - [SONIC](../../wiki/entities/nvidia-sonic.md)（对照：统一全身跟踪栈）
 
 ### 3) 速度自适应跟踪与分层规划（§3.2–3.3）
 

@@ -13,7 +13,6 @@ related:
   - ../entities/paper-metarsi-v1.md
   - ../entities/paper-dream-rsi.md
   - ../entities/karpathy-autoresearch.md
-  - paper-metarsi-v1.md
   - ../entities/paper-harnessbank.md
   - ../entities/sol-pi.md
   - ../queries/embodied-eval-benchmark-selection-loop.md

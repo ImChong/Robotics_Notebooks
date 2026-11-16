@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)
+- [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md)
 - [loco-manip-161-category-04-generative-language-trajectory](../../wiki/overview/loco-manip-161-category-04-generative-language-trajectory.md)
 
 ## 参考来源（原始）

@@ -42,7 +42,7 @@
 
 1. **[MotionBricks](../../wiki/methods/motionbricks.md)**：生成式运动层与本仓 `motionbricks/` 子项目对应
 2. **[motion-bricks.cpp](../../wiki/entities/motion-bricks-cpp.md)**：社区 C++/GGML G1 推理移植（非本仓官方维护）
-2. **[SONIC（规模化运动跟踪）](../../wiki/methods/sonic-motion-tracking.md)**：GEAR-SONIC 论文与训练/部署入口（含详细源码时序图）
+2. **[SONIC（规模化运动跟踪）](../../wiki/entities/nvidia-sonic.md)**：GEAR-SONIC 论文与训练/部署入口（含详细源码时序图）
 3. **[GR00T-WholeBodyControl 实体](../../wiki/entities/gr00t-wholebodycontrol.md)**：本仓导航页（含仓级时序图）
 4. **[Foundation Policy / GR00T](../../wiki/concepts/foundation-policy.md)**：N1.5 / N1.6 解耦 WBC 与 VLA 工作流文档（站点 tutorials）
 5. **[GR00T-VisualSim2Real](../../wiki/entities/gr00t-visual-sim2real.md)**：同品牌下视觉 Sim2Real 另一官方仓库，分工不同

@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
-# World Action Models
+# World Action Models: The Next Frontier in Embodied AI（arXiv:2605.12090）
 
 **World Action Models: The Next Frontier in Embodied AI** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 221/564** 篇，分组 **Related resources**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

@@ -94,7 +94,7 @@
 ## 对 wiki 的映射
 
 - 升格 [UMR 论文实体](../../wiki/entities/paper-umr-unified-motion-retargeting.md)
-- 更新 [Motion Retargeting](../../wiki/concepts/motion-retargeting.md)、[hub](../../wiki/overview/hub-motion-retargeting.md)、[GMR](../../wiki/methods/motion-retargeting-gmr.md)、[OmniRetarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)、[OmniContact](../../wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[AdaPT](../../wiki/entities/paper-adapt.md)
+- 更新 [Motion Retargeting](../../wiki/concepts/motion-retargeting.md)、[hub](../../wiki/overview/hub-motion-retargeting.md)、[GMR](../../wiki/methods/motion-retargeting-gmr.md)、[OmniRetarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)、[OmniContact](../../wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[AdaPT](../../wiki/entities/paper-adapt.md)
 - **勿与** AdaMorph（arXiv:2601.07284，embodiment-aware Transformer「统一重定向」）或 PALUM（arXiv:2601.07272）混页
 
 ## 当前提炼状态

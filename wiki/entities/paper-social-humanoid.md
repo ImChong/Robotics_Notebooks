@@ -10,7 +10,7 @@ updated: 2026-11-09
 summary: "感知人类交互 → 共享 VQ 运动表示 → 扩散式协同响应生成 → G1 全身跟踪的双人社交交互系统；约 260 小时数据。"
 related:
   - ../methods/motion-retargeting-gmr.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../tasks/manipulation.md
 original:
   - ../../sources/papers/social_humanoid_arxiv_2611_08407.md
@@ -94,7 +94,7 @@ flowchart TD
 ## 关联页面
 
 - [motion-retargeting-gmr ](../methods/motion-retargeting-gmr.md)
-- [sonic-motion-tracking ](../methods/sonic-motion-tracking.md)
+- [sonic-motion-tracking ](./nvidia-sonic.md)
 - [manipulation ](../tasks/manipulation.md)
 
 ## 参考来源

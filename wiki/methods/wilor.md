@@ -14,7 +14,7 @@ related:
   - ../entities/paper-fah.md
   - ../entities/paper-hand-visibility-detector.md
   - ../tasks/manipulation.md
-  - ./sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ./macrodata-egocentric-hand-action.md
   - ../entities/paper-ego2robot.md
   - ../entities/paper-digitcode.md
@@ -152,7 +152,7 @@ sequenceDiagram
 - [Hand Visibility Detector](../entities/paper-hand-visibility-detector.md)：冻结 WiLoR / HaMeR 骨干，只训轻量头估计 **MANO 21 点可见概率**；HInt mAP 0.931，多视三角化重投影最多降 10.1%。WiLoR 出坐标，HVD 出「这个点能不能当观测」。
 - [Macrodata Egocentric Hand-Action](./macrodata-egocentric-hand-action.md)：在 HOT3D **Action MPJPE** 管线中，WiLoR 作 **检测前端**（置信阈值 0.75 + 保守短间隙）；**逐帧 WiLoR 重建** 长视频轨迹弱于时序 [HaWoR](../../sources/repos/hawor.md)（约 77 vs 54 mm）。
 - [Manipulation](../tasks/manipulation.md)：手部估计是灵巧操作感知链路的一环。
-- [SONIC](./sonic-motion-tracking.md)：全身跟踪控制器接收融合后的双手目标。
+- [SONIC](../entities/nvidia-sonic.md)：全身跟踪控制器接收融合后的双手目标。
 
 ## 推荐继续阅读
 

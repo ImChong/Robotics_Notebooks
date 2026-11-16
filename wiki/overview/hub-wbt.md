@@ -36,7 +36,7 @@ summary: "全身运动跟踪（WBT）知识链汇总：参考采集→重定向�
 | 层次 | 典型问题 | 站内入口 |
 |------|----------|----------|
 | 流水线 | 六阶段端到端 | [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) |
-| 方法 | SONIC / BeyondMimic | [SONIC Motion Tracking](../methods/sonic-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md) |
+| 方法 | SONIC / BeyondMimic | [SONIC Motion Tracking](../entities/nvidia-sonic.md)、[BeyondMimic](../methods/beyondmimic.md) |
 | 项目 | 自演进交互动作与规划式示范生成 | [InterMimicGen](../entities/paper-intermimicgen.md)、[HumanoidMimicGen](../entities/paper-humanoidmimicgen.md) |
 | 对比 | 主流 WBT 路线 | [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) |
 | Query | 方法选型 | [Humanoid Motion Tracking Method Selection](../queries/humanoid-motion-tracking-method-selection.md) |
@@ -65,7 +65,7 @@ WBT 流水线可概括为：参考动作采集 → [重定向](../concepts/motio
 
 ## 继续阅读
 - [行为基础模型与 WBT 路线图](../../roadmap/depth-bfm.md)
-- [SONIC Motion Tracking](../methods/sonic-motion-tracking.md)
+- [SONIC Motion Tracking](../entities/nvidia-sonic.md)
 - [BeyondMimic](../methods/beyondmimic.md)
 - [Humanoid RL Motion Control Body System Stack](./humanoid-rl-motion-control-body-system-stack.md)
 

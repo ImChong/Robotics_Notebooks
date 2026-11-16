@@ -18,7 +18,7 @@
 - **对 wiki 的映射：**
   - [Vesta 论文实体](../../wiki/entities/paper-vesta-generalist-embodied-reasoning.md) — 问题定义与相对 RynnBrain / RoboBrain / Qwen3-VL 定位
   - [VLA](../../wiki/methods/vla.md) — planner VLM + actor VLA 分层栈上下文
-  - [SayCan](../../wiki/methods/saycan.md) — 高层语言规划 + 低层执行的经典分层叙事
+  - [SayCan](../../wiki/entities/paper-saycan.md) — 高层语言规划 + 低层执行的经典分层叙事
 
 ### 2) 四能力训练与 memory harness（§2）
 
@@ -61,7 +61,7 @@
 ## 对 wiki 的映射（汇总）
 
 - [paper-vesta-generalist-embodied-reasoning.md](../../wiki/entities/paper-vesta-generalist-embodied-reasoning.md) — 主沉淀页
-- 交叉更新：[vla.md](../../wiki/methods/vla.md)、[vision-language-navigation.md](../../wiki/tasks/vision-language-navigation.md)、[saycan.md](../../wiki/methods/saycan.md)
+- 交叉更新：[vla.md](../../wiki/methods/vla.md)、[vision-language-navigation.md](../../wiki/tasks/vision-language-navigation.md)、[saycan.md](../../wiki/entities/paper-saycan.md)
 
 ## 引用（arXiv BibTeX 摘要）
 

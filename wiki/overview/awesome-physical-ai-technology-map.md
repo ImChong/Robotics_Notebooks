@@ -298,7 +298,7 @@ sources:
 | 166 | [Open Manipulator](../entities/robotis-open-manipulator-line.md) | natnew |
 | 167 | [PAL Robotics TIAGo](../entities/painode-167-palroboticstiago.md) | natnew |
 | 168 | [Reachy 2 (Pollen Robotics / Hugging Face)](../entities/pollen-reachy2.md) | natnew |
-| 169 | [Reachy Mini](../entities/painode-169-reachymini.md) | natnew |
+| 169 | [Reachy Mini](../entities/reachy-mini.md) | natnew |
 | 170 | [SO-ARM100](../entities/painode-170-soarm100.md) | natnew |
 | 171 | [Stanford Pupper](../entities/stanford-doggo-and-pupper.md) | natnew |
 | 172 | [UMI Gripper](../entities/painode-172-umigripper.md) | natnew |
@@ -488,7 +488,7 @@ sources:
 | 306 | [RoboFlamingo](../entities/paper-pai-2311-01378-roboflamingo.md) | natnew |
 | 307 | [RT-1](../entities/paper-rt-1.md) | natnew+aichr |
 | 308 | [RT-2](../entities/paper-rt-2.md) | natnew+aichr |
-| 309 | [SayCan](../methods/saycan.md) | natnew |
+| 309 | [SayCan](../entities/paper-saycan.md) | natnew |
 | 310 | [VIMA](../entities/paper-pai-2210-03094-vima.md) | natnew |
 | 311 | [π0 (Physical Intelligence)](../entities/paper-pi0.md) | natnew |
 

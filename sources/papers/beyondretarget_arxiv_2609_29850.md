@@ -37,4 +37,4 @@
 
 - **相对 GVHMR/WHAM → GMR/NMR：** 报告 **RAMPJPE 26.36 mm**、**Simulation SR 95.86%**；两阶段基线 **motion collapse** 与更高 failure rate。
 - **流式推理（同 GPU）：** **Latency ~192.8 ms**、**~50 FPS throughput** vs GVHMR→GMR **~1369 ms**。
-- **对 wiki 的映射：** [SONIC / 全身遥操作栈](../../wiki/methods/sonic-motion-tracking.md)（真机 teleop 可经 SONIC + 本项目 GR00T ZMQ 接口对接）
+- **对 wiki 的映射：** [SONIC / 全身遥操作栈](../../wiki/entities/nvidia-sonic.md)（真机 teleop 可经 SONIC + 本项目 GR00T ZMQ 接口对接）

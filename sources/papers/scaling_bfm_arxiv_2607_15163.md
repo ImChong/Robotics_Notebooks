@@ -35,7 +35,7 @@
   - **部署：** 支持 **global**（HTC VIVE Ultimate Tracker 根定位 + 首帧标定）与 **local**（控制信号相对当前根重锚定）两模式；真机 G1、高层 BFM 50 Hz（TensorRT）、低层 PD 200 Hz（LCM + SDK2）。
 - **对 wiki 的映射：**
   - [Whole-Body Control](../../wiki/concepts/whole-body-control.md)
-  - [SONIC](../../wiki/methods/sonic-motion-tracking.md)（对照：SONIC 亦用 motion tracking 作 BFM 预训练，但 scaling 结论较初步）
+  - [SONIC](../../wiki/entities/nvidia-sonic.md)（对照：SONIC 亦用 motion tracking 作 BFM 预训练，但 scaling 结论较初步）
   - [Unitree G1](../../wiki/entities/unitree-g1.md)
 
 ### 3) 数据 scaling：on-policy 数量 × 参考多样性（§3.3）
@@ -74,7 +74,7 @@
 - 关联升级：
   - [BFM 论文实体](../../wiki/entities/paper-behavior-foundation-model-humanoid.md) — 同作者团队 CVAE 路线；ScaleBFM 为 **PPO + Transformer scaling 技术报告**
   - [Behavior Foundation Model](../../wiki/concepts/behavior-foundation-model.md) — goal-conditioned 线补 **scaling recipe**
-  - [SONIC](../../wiki/methods/sonic-motion-tracking.md) — 主要 motion-tracking scaling 对照基线
+  - [SONIC](../../wiki/entities/nvidia-sonic.md) — 主要 motion-tracking scaling 对照基线
   - [ReactiveBFM](../../wiki/entities/paper-reactivebfm.md) — 共享作者与 Shanghai AI Lab 栈
 
 ## 其他公开资料

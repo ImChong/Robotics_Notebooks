@@ -9,7 +9,7 @@ project: https://viola.is.tue.mpg.de/
 venue: "arXiv preprint"
 related:
   - ../methods/vla.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/world-action-models.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ../tasks/humanoid-locomotion.md
@@ -118,7 +118,7 @@ VioLA 的关键贡献是让人类动作标签和机器人可执行动作共享�
 
 ## 关联页面
 
-- [SONIC motion tracking](../methods/sonic-motion-tracking.md) — VioLA 复用的 body motion encoder 与 controller
+- [SONIC motion tracking](./nvidia-sonic.md) — VioLA 复用的 body motion encoder 与 controller
 - [VLA 方法总览](../methods/vla.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [人形策略网络架构](../concepts/humanoid-policy-network-architecture.md)

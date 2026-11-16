@@ -42,7 +42,7 @@
 ## 对 wiki 的映射
 
 - [DiffWBC 论文实体页](../../wiki/entities/paper-diffwbc.md)
-- [SONIC 通用跟踪](../../wiki/methods/sonic-motion-tracking.md)
+- [SONIC 通用跟踪](../../wiki/entities/nvidia-sonic.md)
 - [YAHMP 跟踪消融](../../wiki/entities/paper-yahmp.md)
 
 ## 参考来源

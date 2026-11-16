@@ -39,4 +39,4 @@
 ## 对 wiki 的映射
 
 - 新建：[paper-sample-simulate-select](../../wiki/entities/paper-sample-simulate-select.md)
-- 交叉：[sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)、[locomotion](../../wiki/tasks/locomotion.md)、[sim2real](../../wiki/concepts/sim2real.md)
+- 交叉：[sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md)、[locomotion](../../wiki/tasks/locomotion.md)、[sim2real](../../wiki/concepts/sim2real.md)

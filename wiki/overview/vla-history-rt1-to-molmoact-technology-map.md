@@ -67,9 +67,9 @@ summary: "Khushi 长文《From RT1 to MolMoAct2》的阅读坐标：按时间线
 
 - [VLA 方法总览](../methods/vla.md)
 - [动作分块 Action Chunking](../methods/action-chunking.md)
-- [SayCan](../methods/saycan.md)
+- [SayCan](../entities/paper-saycan.md)
 - [RT 系列](../methods/robotics-transformer-rt-series.md)
-- [Octo 模型](../methods/octo-model.md)
+- [Octo 模型](../entities/paper-octo.md)
 
 ## 参考来源
 

@@ -5,7 +5,6 @@ status: complete
 updated: 2026-11-07
 related:
   - ./embodied-interview-qa.md
-  - ./embodied-interview-qa.md
   - ./robotics-bench.md
   - ./modern-robotics-book.md
   - ./python-robotics.md

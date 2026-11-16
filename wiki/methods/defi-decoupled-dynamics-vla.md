@@ -14,7 +14,7 @@ related:
   - ../concepts/world-action-models.md
   - ../concepts/video-as-simulation.md
   - ../tasks/manipulation.md
-  - ./octo-model.md
+  - ../entities/paper-octo.md
 original:
   - ../../sources/papers/defi_arxiv_2604_16391.md
 sources:

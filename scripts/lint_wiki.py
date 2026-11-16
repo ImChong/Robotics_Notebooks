@@ -544,7 +544,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #                框架与环境分发机制，不单建概念页
 #   mjlab      → entities/mjlab.md（库/工具）
 #   mujoco     → entities/mujoco.md（仿真器/工具）
-#   sonic      → methods/sonic-motion-tracking.md（具体方法）
+#   sonic      → entities/nvidia-sonic.md（SONIC 项目与论文实体）
 #   locomotion → tasks/locomotion.md（+ humanoid-/hybrid-locomotion，任务域，归 tasks）
 #   loco-manipulation → tasks/loco-manipulation.md（移动操作，任务域，归 tasks）
 #   step       → entities/step2urdf.md（CAD 交换格式，已在 concepts/text-to-cad.md 引介）

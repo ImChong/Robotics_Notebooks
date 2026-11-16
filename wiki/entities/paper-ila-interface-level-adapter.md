@@ -9,8 +9,8 @@ arxiv: "2611.14985"
 original:
   - ../../sources/papers/ila_arxiv_2611_14985.md
 related:
-  - ../methods/gentlehumanoid-motion-tracking.md
-  - ../methods/sonic-motion-tracking.md
+  - ./paper-gentlehumanoid.md
+  - ./nvidia-sonic.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../tasks/teleoperation.md
 sources:
@@ -174,8 +174,8 @@ flowchart TD
 
 ## 关联页面
 
-- [GentleHumanoid：上半身柔顺全身运动跟踪](../methods/gentlehumanoid-motion-tracking.md) — 在策略训练内部学柔顺，适合与 ILA 的接口级 retrofit 对照。
-- [SONIC：规模化运动跟踪](../methods/sonic-motion-tracking.md) — 论文验证的可迁移目标 tracker。
+- [GentleHumanoid：上半身柔顺全身运动跟踪](./paper-gentlehumanoid.md) — 在策略训练内部学柔顺，适合与 ILA 的接口级 retrofit 对照。
+- [SONIC：规模化运动跟踪](./nvidia-sonic.md) — 论文验证的可迁移目标 tracker。
 - [Teleoperation](../tasks/teleoperation.md) — 人工引导与跟踪数据采集应用。
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 将参考意图与全身执行分层的位置。
 - [BFM 纵深路线 Stage 4](../../roadmap/depth-bfm.md) — 冻结策略的适配与分层接口。

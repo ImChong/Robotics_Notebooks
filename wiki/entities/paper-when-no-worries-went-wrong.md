@@ -13,7 +13,6 @@ related:
   - ../tasks/locomotion.md
   - ../tasks/vision-language-navigation.md
   - ../concepts/llm-robotics-control-interfaces.md
-  - ../concepts/llm-robotics-control-interfaces.md
   - ../overview/embodied-station-2026-10-30-28-papers-technology-map.md
 sources:
   - ../../sources/papers/when_no_worries_went_wrong_arxiv_2610_38400.md

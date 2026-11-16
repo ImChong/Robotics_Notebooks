@@ -53,4 +53,4 @@
 
 - 沉淀实体页：[Heracles（arXiv:2603.27756）](../../wiki/entities/paper-heracles-humanoid-diffusion.md)
 - 项目页归档：[sources/sites/heracles-humanoid-control.md](../sites/heracles-humanoid-control.md)
-- 交叉补强：[人形运动跟踪方法选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[扩散运动生成](../../wiki/methods/diffusion-motion-generation.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md)、[BFM 人形基础模型](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)
+- 交叉补强：[人形运动跟踪方法选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[扩散运动生成](../../wiki/methods/diffusion-motion-generation.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md)、[BFM 人形基础模型](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)

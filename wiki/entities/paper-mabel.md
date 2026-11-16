@@ -15,7 +15,6 @@ related:
   - ../tasks/teleoperation.md
   - ../methods/imitation-learning.md
   - ../tasks/bimanual-manipulation.md
-  - ../tasks/teleoperation.md
   - ../overview/embodied-station-2026-11-04-57-papers-technology-map.md
   - ../overview/embodied-station-2026-11-05-43-papers-technology-map.md
 original:

@@ -18,7 +18,7 @@ related:
   - ../methods/model-predictive-control.md
   - ../queries/vla-deployment-guide.md
   - ../entities/paper-dpc.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
 ---
 
 # Query：VLA 与低级关节控制器（MPC/WBC）融合架构
@@ -201,7 +201,7 @@ class ActionBuffer:
 
 #### 4.5 对照：Direct-joint（无冻结学习式 System 0）
 
-[DPC](../entities/paper-dpc.md)（Symbiosis Robotics, 2026-08）不反对「VLA 后面仍接 PD」——它反对的是 **VLA/WAM 输出运动 token \(Z_t\)，再交给冻结全身 tracker（如 [SONIC](../methods/sonic-motion-tracking.md)）**。在它的读法里，架构三的安全来自可复用 System 0，但三条代价同时成立：任务控制信息在运动学接口被压缩、分训合推导致未来视觉梯度到不了解码器、最终动作被冻结解码器像 \(M_h\) 卡住。
+[DPC](../entities/paper-dpc.md)（Symbiosis Robotics, 2026-08）不反对「VLA 后面仍接 PD」——它反对的是 **VLA/WAM 输出运动 token \(Z_t\)，再交给冻结全身 tracker（如 [SONIC](../entities/nvidia-sonic.md)）**。在它的读法里，架构三的安全来自可复用 System 0，但三条代价同时成立：任务控制信息在运动学接口被压缩、分训合推导致未来视觉梯度到不了解码器、最终动作被冻结解码器像 \(M_h\) 卡住。
 
 Direct-joint 仍输出关节 PD 目标（与架构一同一电机接口），但 **没有学习式 tracker**：感知与控制在关节空间联合训练，再用 DriftDistill 补闭环漂移。这不是「VLA 直接驱动力矩」，也还没有公开代码或成功率表；选型时只把它当作架构三的反对命题，而不是已验证的第四套可部署栈。
 - VLA 输出格式和 WBC 接口之间需要精心设计任务约定
@@ -218,7 +218,7 @@ Direct-joint 仍输出关节 PD 目标（与架构一同一电机接口），但
 2. 训练是否覆盖物体动力学与接触变化，使 S0 学会基于动作后果闭环调整？
 3. S1→S0 接口是否能表达物体运动与接触意图，而非只传一条身体轨迹？同一手臂轨迹可能代表轻触或用力按压，所需接触力不同。
 
-文中报告的概念验证使用 HDMI 代码库与 WEAVE 人–物交互数据，在仿真中与箱子、桌椅等物体交互；没有量化对照或通用真机指标。应把它读作 **S0 设计目标与接口论证**，而不是已证明的通用控制方案。它与 [SONIC](../methods/sonic-motion-tracking.md) 的自由空间全身跟踪定位、[DPC](../entities/paper-dpc.md) 对冻结运动接口的批评互补：前者强调增加场景/物理交互能力和更丰富的 intent，后者强调去掉冻结运动解码瓶颈；两者不能简单视为同一个方法。
+文中报告的概念验证使用 HDMI 代码库与 WEAVE 人–物交互数据，在仿真中与箱子、桌椅等物体交互；没有量化对照或通用真机指标。应把它读作 **S0 设计目标与接口论证**，而不是已证明的通用控制方案。它与 [SONIC](../entities/nvidia-sonic.md) 的自由空间全身跟踪定位、[DPC](../entities/paper-dpc.md) 对冻结运动接口的批评互补：前者强调增加场景/物理交互能力和更丰富的 intent，后者强调去掉冻结运动解码瓶颈；两者不能简单视为同一个方法。
 
 ---
 
@@ -318,6 +318,6 @@ VLA 是黑盒模型，直接驱动执行器存在输出异常的风险：
 - [Model Predictive Control](../methods/model-predictive-control.md) — MPC 与 VLA 的组合模式
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md) — 部署 checklist 与延迟管理实践
 - [DPC](../entities/paper-dpc.md) — 无冻结 System 0 的 direct-joint 反对命题（未开源）
-- [SONIC](../methods/sonic-motion-tracking.md) — 被 DPC 当作冻结全身 tracker 的具体接口
+- [SONIC](../entities/nvidia-sonic.md) — 被 DPC 当作冻结全身 tracker 的具体接口
 - [行为树 × VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 任务层 LOAD/RESUME/STOP 与宏动作组合
 - [Cyclo Intelligence（实体）](../entities/cyclo-intelligence.md) — ROBOTIS 开源 BT+VLA 栈

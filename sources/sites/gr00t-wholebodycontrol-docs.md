@@ -32,4 +32,4 @@
 
 - [GR00T-WholeBodyControl 实体](../../wiki/entities/gr00t-wholebodycontrol.md)
 - [仓库归档](../repos/gr00t_wholebodycontrol.md)
-- [SONIC 方法页](../../wiki/methods/sonic-motion-tracking.md)
+- [SONIC 方法页](../../wiki/entities/nvidia-sonic.md)

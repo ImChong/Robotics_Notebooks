@@ -16,7 +16,7 @@ related:
   - ./paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md
   - ./paper-hrl-stack-35-dreamdojo.md
   - ./isaac-gr00t.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/ams.md
   - ../methods/vla.md
   - ../concepts/behavior-foundation-model.md
@@ -102,7 +102,7 @@ flowchart TB
 | **S2** 任务与世界 | 语言、目标、场景理解、记忆、长程规划、任务分解、安全规则、重规划；何时停止或求助 | 目标 + 语言 → 子目标 | VLM agent、语义地图、mission controller（对照 [Flexion Reflect v1.0](./flexion-reflect-v1.md)） |
 | **S1** 原生人形模型 | 学视线、脚、躯干、臂、手、接触与平衡如何在一个身体内权衡；「不是加大动作头的机械臂 VLA」 | 视觉、语言、本体、触觉、历史、任务上下文 → 全身动作意图 / action chunk / motion token | 无点名（这是公司要做的核心） |
 | **S0.5** 运动生成 + BFM | 把高层意图变成可跟踪、可恢复的全身运动；通常不吃丰富视觉语言输入 | 紧凑目标、约束、motion token → 参考运动 | 闭环 BFM、运动生成框架 |
-| **S0** 跟踪与控制 | 跟踪参考运动；平衡、接触、关节与力限制、延迟、硬件保护；不负责全局任务 | 本体 + 参考运动 + 可选局部高程 / 接触 → 控制目标 | [SONIC](../methods/sonic-motion-tracking.md)、BFM 类控制器；中文版还点名 [AMS](../methods/ams.md)，称其为「Archon 方案原型」 |
+| **S0** 跟踪与控制 | 跟踪参考运动；平衡、接触、关节与力限制、延迟、硬件保护；不负责全局任务 | 本体 + 参考运动 + 可选局部高程 / 接触 → 控制目标 | [SONIC](./nvidia-sonic.md)、BFM 类控制器；中文版还点名 [AMS](../methods/ams.md)，称其为「Archon 方案原型」 |
 
 博文强调「名字不重要，职责分离重要」，并说人形基础模型「不是一个 checkpoint，而是一个复利循环」。
 
@@ -151,7 +151,7 @@ flowchart TB
 | 场景 | 建议 |
 |------|------|
 | 设计自己的人形分层栈 | 可按 S2 / S1 / S0.5 / S0 先写清每层的输入输出接口，再决定哪些层用学习、哪些用规则；对照 [Helix 02](./helix-02.md) 的 S2 / S1 / S0 与 [Flexion Reflect v1.0](./flexion-reflect-v1.md) 的 mission controller + 运动层 + Reflex |
-| 选 S0 / S0.5 组件 | S0 可从开源跟踪器起步（[SONIC](../methods/sonic-motion-tracking.md)、[AMS](../methods/ams.md)）；S0.5 参考 [BFM 概念页](../concepts/behavior-foundation-model.md) 中闭环 BFM 与运动生成路线 |
+| 选 S0 / S0.5 组件 | S0 可从开源跟踪器起步（[SONIC](./nvidia-sonic.md)、[AMS](../methods/ams.md)）；S0.5 参考 [BFM 概念页](../concepts/behavior-foundation-model.md) 中闭环 BFM 与运动生成路线 |
 | 用人类数据 | 先读同一实验室的 [EgoHumanoid](./paper-loco-manip-161-060-egohumanoid.md) 与公司署名的 [EgoHumanoid-V2](./paper-egohumanoid-v2.md)：后者报告四个 G1 真机任务上用对齐后的人类数据训练任务专属 VLA；OpenDriveLab 官方仓库目前只部分开源动作对齐链路，完整训练与部署代码待发布（以 2026-10-12 核查为准） |
 | 搭评测 | 直接用 §09 的 7 个问题做表头，记录每个新任务所需真机数据量与换硬件后的适配时长 |
 | 复现 WBI 本身 | **不适用**：没有论文、代码、权重、数据或模型规格；只能复现思路 |
@@ -213,7 +213,7 @@ sequenceDiagram
 - [EgoHumanoid](./paper-loco-manip-161-060-egohumanoid.md) · [EgoScale](./paper-sa-2602-16710-egoscale-scaling-dexterous-manipulation-with-div.md) — 博文引用的人类数据工作
 - [RISE](./paper-sa-2602-11075-rise-self-improving-robot-policy-with-compositio.md) · [DreamDojo](./paper-hrl-stack-35-dreamdojo.md) — 博文引用的世界模型工作
 - [Helix 02](./helix-02.md) · [Flexion Reflect v1.0](./flexion-reflect-v1.md) · [Isaac GR00T](./isaac-gr00t.md) — 博文引用的产业分层系统
-- [SONIC](../methods/sonic-motion-tracking.md) · [AMS](../methods/ams.md) — S0 层代表
+- [SONIC](./nvidia-sonic.md) · [AMS](../methods/ams.md) — S0 层代表
 - [行为基础模型](../concepts/behavior-foundation-model.md) · [全身控制](../concepts/whole-body-control.md) · [全身协调](../concepts/whole-body-coordination.md)
 - [VLA](../methods/vla.md) · [Loco-Manipulation](../tasks/loco-manipulation.md)
 

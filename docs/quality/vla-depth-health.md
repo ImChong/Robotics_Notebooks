@@ -72,7 +72,7 @@
 | [`paper-octo.md`](../../wiki/entities/paper-octo.md) | `1/3` | 阅读骨架不完整；缺 original 归档 | **`3/3`** | 补齐骨架/图表/缩写速查与一手来源 |
 | [`paper-pi0.md`](../../wiki/entities/paper-pi0.md) | `3/3` | — | **`3/3`** | 基线已满分 |
 | [`pi07-policy.md`](../../wiki/methods/pi07-policy.md) | `3/3` | — | **`3/3`** | 基线已满分；共享来源反向复核刷新 `updated` |
-| [`saycan.md`](../../wiki/methods/saycan.md) | `1/3` | 阅读骨架不完整；缺 original 归档 | **`3/3`** | 补齐骨架/图表/缩写速查与一手来源 |
+| [`saycan.md`](../../wiki/entities/paper-saycan.md) | `1/3` | 阅读骨架不完整；缺 original 归档 | **`3/3`** | 补齐骨架/图表/缩写速查与一手来源 |
 | [`dial-instruction-augmentation.md`](../../wiki/methods/dial-instruction-augmentation.md) | `1/3` | 阅读骨架不完整；缺 original 归档 | **`3/3`** | 补齐骨架/图表/缩写速查与一手来源 |
 | [`paper-internvla-a15-unified-vla.md`](../../wiki/entities/paper-internvla-a15-unified-vla.md) | `1/3` | 阅读骨架不完整；缺 original 归档 | **`3/3`** | 补齐骨架/图表/缩写速查与一手来源 |
 | [`lingbot-vla.md`](../../wiki/entities/lingbot-vla.md) | `1/3` | 阅读骨架不完整；缺 original 归档 | **`3/3`** | 补齐骨架/图表/缩写速查与一手来源 |

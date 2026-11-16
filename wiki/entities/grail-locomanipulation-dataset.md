@@ -8,7 +8,7 @@ status: complete
 related:
   - ./paper-grail.md
   - ./unitree-g1.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../tasks/loco-manipulation.md
   - ../comparisons/humanoid-reference-motion-datasets.md
   - ./omniretarget-dataset.md
@@ -100,7 +100,7 @@ flowchart LR
 
 - **生成方法：** [GRAIL 论文实体](./paper-grail.md)
 - **代码与可视化：** [NVlabs/GRAIL](../../sources/repos/grail_nvlabs.md)
-- **低层 tracker：** [SONIC](../methods/sonic-motion-tracking.md)
+- **低层 tracker：** [SONIC](./nvidia-sonic.md)
 - **对照数据集：** [OmniRetarget Dataset](./omniretarget-dataset.md)（运动学重定向 G1 轨迹）、[人形参考运动数据集对比](../comparisons/humanoid-reference-motion-datasets.md)
 
 ## 推荐继续阅读

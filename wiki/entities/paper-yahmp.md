@@ -10,7 +10,7 @@ related:
   - ./paper-humanoidttt.md
   - ./mjlab.md
   - ./paper-extreme-rgmt.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/beyondmimic.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../queries/humanoid-motion-tracking-method-selection.md
@@ -155,7 +155,7 @@ sequenceDiagram
 |------|----------|
 | [TWIST2](./paper-twist2.md) | 完整遥操作+采集栈；YAHMP 是 **GMT 设计消融试验台**，并用同数据重训 TWIST2 作外部基线 |
 | [Extreme-RGMT](./paper-extreme-rgmt.md) | 高动态 continual learning（PACE/STAR）；**未开源**；YAHMP 覆盖日常 GMT 因子与 ONNX 复现 |
-| [SONIC](../methods/sonic-motion-tracking.md) / [BeyondMimic](../methods/beyondmimic.md) | 规模化或接触丰富方法贡献；YAHMP 贡献在 **可控消融协议** |
+| [SONIC](./nvidia-sonic.md) / [BeyondMimic](../methods/beyondmimic.md) | 规模化或接触丰富方法贡献；YAHMP 贡献在 **可控消融协议** |
 | [DiffWBC](./paper-diffwbc.md) | G1 50 Hz 单步扩散式跟踪器，冻结权重后做测试时梯度 steering（仿真）；YAHMP 关注命令、历史、PD、残差动作等设计因子的受控消融 |
 
 ## 局限与风险
@@ -174,7 +174,7 @@ sequenceDiagram
 - [TWIST2](./paper-twist2.md) — 外部完整 GMT/遥操作管线基线
 - [mjlab](./mjlab.md) — 训练栈依赖
 - [Extreme-RGMT](./paper-extreme-rgmt.md) — G1 高动态 generalist 持续学习（未开源）
-- [SONIC](../methods/sonic-motion-tracking.md) / [BeyondMimic](../methods/beyondmimic.md) — 规模化 / 接触丰富跟踪方法对照
+- [SONIC](./nvidia-sonic.md) / [BeyondMimic](../methods/beyondmimic.md) — 规模化 / 接触丰富跟踪方法对照
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 

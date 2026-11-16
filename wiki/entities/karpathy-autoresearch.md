@@ -24,7 +24,6 @@ related:
   - ./sciencediscovery.md
   - ./sol-pi.md
   - ./paper-metarsi-v1.md
-  - ./paper-metarsi-v1.md
   - ../../schema/ingest-workflow.md
 sources:
   - ../../sources/repos/karpathy-autoresearch.md

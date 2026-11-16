@@ -209,7 +209,7 @@ overrides:
   Genie_Sim_3.0__A_High-Fidelity_Comprehensive_Simulation_Platform_for_Humanoid_Robot:
   - wiki/entities/genie-sim-3.md
   GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object:
-  - wiki/methods/gentlehumanoid-motion-tracking.md
+  - wiki/entities/paper-gentlehumanoid.md
   Go_to_Zero__Towards_Zero-shot_Motion_Generation_with_Million-scale_Data:
   - wiki/entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md
   GuideWalk__Learning_Unified_Autonomous_Navigation_and_Locomotion_for_Humanoid:
@@ -221,7 +221,7 @@ overrides:
   H2-COMPACT__Human-Humanoid_Co-Manipulation_via_Adaptive_Contact_Trajectory_Polic:
   - wiki/entities/paper-loco-manip-161-062-h2-compact.md
   HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model:
-  - wiki/methods/haic.md
+  - wiki/entities/paper-haic.md
   HALO_Closing_Sim-to-Real_Gap_for_Heavy-loaded_Humanoid_Agile_Motion:
   - wiki/entities/paper-notebook-halo-closing-sim-to-real-gap-for-heavy-loaded-hu.md
   HANDOFF__Humanoid_Agentic_Task-Space_Whole-Body_Control_via_Distilled_Teachers:
@@ -508,7 +508,7 @@ overrides:
   SIMPLE__Simulation-Based_Policy_Learning_and_Evaluation_for_Humanoid_Loco-manipulation:
   - wiki/entities/paper-loco-manip-161-075-simple.md
   SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control:
-  - wiki/methods/sonic-motion-tracking.md
+  - wiki/entities/nvidia-sonic.md
   SPI-Active__Sampling-Based_System_Identification_with_Active_Exploration:
   - wiki/entities/paper-notebook-sampling-based-system-identification-with-active.md
   SPIDER__Scalable_Physics-Informed_DExterous_Retargeting:

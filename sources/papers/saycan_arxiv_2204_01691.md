@@ -14,7 +14,7 @@
 - **复核日期：** 2026-11-14
 - **核对范围：** `2204.01691.txt` 全文（Sec. 1–8 及 Appendix A–E.6，共 2001 行：含 Algorithm 1、Table 1–8、Listing 1–3 与 101 条评测指令全表）及项目官网 `saycan.html`（https://say-can.github.io/ 文本与链接清单）
 - **通读：** 已完成
-- **沉淀到 wiki：** [`wiki/methods/saycan.md`](../../wiki/methods/saycan.md)、[`wiki/entities/paper-saycan.md`](../../wiki/entities/paper-saycan.md)
+- **沉淀到 wiki：** [`wiki/entities/paper-saycan.md`](../../wiki/entities/paper-saycan.md)、[`wiki/entities/paper-saycan.md`](../../wiki/entities/paper-saycan.md)
 
 ## 一句话摘要
 

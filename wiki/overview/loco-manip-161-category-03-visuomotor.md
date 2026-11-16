@@ -67,7 +67,7 @@ sources:
 | 081 | VIRAL | [paper-loco-manip-161-081-viral](../entities/paper-viral-humanoid-visual-sim2real.md) |
 | 082 | VisualMimic | [paper-loco-manip-161-082-visualmimic](../entities/paper-notebook-visualmimic.md) |
 | 083 | WholeBodyVLA | [paper-loco-manip-161-083-wholebodyvla](../entities/paper-hrl-stack-30-wholebodyvla.md) |
-| 084 | 人形操作接口 | [paper-loco-manip-161-084-n084](../entities/paper-loco-manip-161-084-n084.md) |
+| 084 | 人形操作接口 | [paper-loco-manip-161-084-n084](../entities/paper-notebook-humanoid-manipulation-interface.md) |
 | 085 | 人形机器人运动与操作 | [paper-loco-manip-161-085-n085](../entities/paper-loco-manip-161-085-n085.md) |
 | 086 | 使用3D扩散策略的通用人形操作 | [paper-loco-manip-161-086-n086](../entities/paper-loco-manip-161-086-n086.md) |
 | 087 | 具有选择策略的协调人形操作 | [paper-loco-manip-161-087-n087](../entities/paper-loco-manip-161-087-n087.md) |

@@ -18,7 +18,6 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ../methods/dart-control.md
   - ./paper-molingo.md
-  - ./phc.md
   - ./zhengyi-luo.md
   - ./protomotions.md
 sources:

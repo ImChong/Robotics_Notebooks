@@ -11,7 +11,7 @@ updated: 2026-10-18
 related:
   - ../queries/robot-perception-stack-selection-loop.md
   - ../overview/ai-architecture-map.md
-  - ./unet.md
+  - ../methods/unet.md
   - ./vision-transformer.md
   - ./deep-learning-foundations.md
   - ./generative-vision-pretraining.md
@@ -121,7 +121,7 @@ flowchart TB
 ## 关联页面
 
 - [AI 架构地图](../overview/ai-architecture-map.md)
-- [U-Net](./unet.md)
+- [U-Net](../methods/unet.md)
 - [Vision Transformer（概念）](./vision-transformer.md)
 - [深度学习基础](./deep-learning-foundations.md)
 - [目标检测（方法）](../methods/object-detection.md)

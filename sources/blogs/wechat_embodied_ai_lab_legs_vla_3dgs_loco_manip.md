@@ -60,7 +60,7 @@
 
 - [paper-legs-embodied-gaussian-splatting-vla](../../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md)（论文实体 + Mermaid 管线）
 - [legs_arxiv_2606_01458.md](../papers/legs_arxiv_2606_01458.md)（arXiv 摘录）
-- 交叉：[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[VLA](../../wiki/methods/vla.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[GS-Playground](../../wiki/entities/gs-playground.md)、[VIRAL](../../wiki/entities/paper-viral-humanoid-visual-sim2real.md)
+- 交叉：[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[VLA](../../wiki/methods/vla.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[GS-Playground](../../wiki/entities/gs-playground.md)、[VIRAL](../../wiki/entities/paper-viral-humanoid-visual-sim2real.md)
 
 ## 可信度与使用边界
 

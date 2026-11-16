@@ -61,4 +61,4 @@
 
 - **wiki/entities/paper-heft.md**：HEFT 论文实体页（方法、真机负载、流程图）。
 - **wiki/tasks/teleoperation.md**：VR 重载全身遥操作工程参考。
-- **wiki/entities/paper-twist2.md**、**wiki/methods/sonic-motion-tracking.md**：跟踪基线对照。
+- **wiki/entities/paper-twist2.md**、**wiki/entities/nvidia-sonic.md**：跟踪基线对照。

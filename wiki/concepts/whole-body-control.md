@@ -236,7 +236,7 @@ print("joint acceleration command:", qdd_star)
 - [SWAP：测试时可控的人形全身避障](../entities/paper-swap-humanoid-collision-avoidance.md) — 感知条件扩散动作提案 + 低层 RL 稳定控制的分层示例；代码待开放
 - [李群、李代数与刚体旋转](../formalizations/lie-group-rigid-body-motions.md) — 任务空间 twist 与 se(3) 增量
 - [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础
-- [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — [SONIC](../methods/sonic-motion-tracking.md) 作低层 WBC 合成 loco-manip VLA 数据（arXiv:2606.01458）
+- [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — [SONIC](../entities/nvidia-sonic.md) 作低层 WBC 合成 loco-manip VLA 数据（arXiv:2606.01458）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — WAM 在 **SONIC 统一 motion token** 空间预测全身行为，替代上下身分层命令接口（arXiv:2606.09215）
 - [G1 Confined-Space WBP](../entities/paper-g1-confined-space-wbp.md) — 狭窄空间三阶段全身规划 + 残差跟踪（arXiv:2608.10220；UT Austin）
 - [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
@@ -245,7 +245,7 @@ print("joint acceleration command:", qdd_star)
 - [Behavior Foundation Model（BFM 概念）](./behavior-foundation-model.md) — 人形 WBC 行为基础模型 taxonomy
 - [BFM（Behavior Foundation Model 论文实体）](../entities/paper-behavior-foundation-model-humanoid.md) — 把 WBC 多接口重表述为 CVAE 生成 + 位级掩码的人形基础模型
 - [ReactiveBFM（论文实体）](../entities/paper-reactivebfm.md) — BFM 类 tracker + 闭环 AR-MDM 规划，缓解开环级联 exposure bias（arXiv:2606.30362）
-- [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md) — 在 motion tracking 中集成阻抗参考动力学与可调力阈值
+- [GentleHumanoid（上半身柔顺运动跟踪）](../entities/paper-gentlehumanoid.md) — 在 motion tracking 中集成阻抗参考动力学与可调力阈值
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — 学习型 **单阶段 MoE 全身 LLC**：LiDAR 高程图 + 跨模态编码，作 loco-manipulation 上层 API（arXiv:2601.17440）
 - [PADP（论文实体）](../entities/paper-padp-projection-legged-loco-manipulation.md) — 四足+臂：**策略动作→全身动力学投影**（RA-L 2026，Go2/LYNX M20 + Z1；DOI:10.1109/lra.2026.3734869）
 - [KungfuBot 2 / VMS](../entities/paper-notebook-kungfubot-2.md) — OMoE 单策略多技能低层全身控制器，可作 text-to-motion 执行层（[PBHC](../../sources/repos/pbhc.md)）

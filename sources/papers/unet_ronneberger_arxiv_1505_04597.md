@@ -16,17 +16,17 @@
 ### 1) 收缩路径 + 扩张路径
 
 - **要点：** 左侧反复卷积与下采样捕获上下文；右侧上采样恢复定位。整网呈 U 形，一次前向即可对任意尺寸输入做密集预测（重叠-tile 推理）。
-- **对 wiki 的映射：** [`wiki/concepts/unet.md`](../../wiki/concepts/unet.md)
+- **对 wiki 的映射：** [`wiki/methods/unet.md`](../../wiki/methods/unet.md)
 
 ### 2) 跳跃连接保细节
 
 - **要点：** 把编码器同尺度特征图 **裁剪后拼接** 到解码器，避免单纯上采样丢失边界。这对医学细胞轮廓与后来的扩散降噪 U-Net 都是同一几何动机。
-- **对 wiki 的映射：** [`wiki/concepts/unet.md`](../../wiki/concepts/unet.md)、[`wiki/concepts/diffusion-model.md`](../../wiki/concepts/diffusion-model.md)
+- **对 wiki 的映射：** [`wiki/methods/unet.md`](../../wiki/methods/unet.md)、[`wiki/concepts/diffusion-model.md`](../../wiki/concepts/diffusion-model.md)
 
 ### 3) 弹性形变增广与少样本
 
 - **要点：** 用弹性形变在极少标注图上训练；ISBI 细胞追踪挑战上以大优势获胜。机器人侧的语义分割/占用栅格常复用同一 U 形而不是复用医学增广配方。
-- **对 wiki 的映射：** [`wiki/concepts/unet.md`](../../wiki/concepts/unet.md)、[`wiki/overview/ai-architecture-map.md`](../../wiki/overview/ai-architecture-map.md)
+- **对 wiki 的映射：** [`wiki/methods/unet.md`](../../wiki/methods/unet.md)、[`wiki/overview/ai-architecture-map.md`](../../wiki/overview/ai-architecture-map.md)
 
 ## 开源状态（步骤 2.5）
 

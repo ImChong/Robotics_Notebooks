@@ -5,7 +5,6 @@ status: complete
 updated: 2026-11-15
 related:
   - ../entities/paper-humanoid-touch-dream.md
-  - ../entities/paper-humanoid-touch-dream.md
   - ./imitation-learning.md
   - ./bc-with-transformer.md
   - ./action-chunking.md

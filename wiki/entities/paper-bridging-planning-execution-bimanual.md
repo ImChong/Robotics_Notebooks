@@ -18,7 +18,7 @@ related:
   - ../tasks/manipulation.md
   - ../formalizations/inverse-kinematics.md
   - ../concepts/llm-robotics-control-interfaces.md
-  - ../methods/saycan.md
+  - ./paper-saycan.md
   - ../entities/paper-hardware-aware-llm-vlm-zero-shot-task-planning.md
   - ../entities/paper-sayplan-llm-scene-graph-planning.md
   - ../entities/paper-err-replan-error-recovery.md
@@ -90,7 +90,7 @@ flowchart LR
 
 | 工作 | 关注点 | 与本文的区别 |
 |------|--------|--------------|
-| [SayCan](../methods/saycan.md) | LLM 出子任务候选，价值函数估计可行性 | 可行性来自学习的技能价值函数；本文把面级可接近 / 可达直接写进场景图，零样本、无训练 |
+| [SayCan](./paper-saycan.md) | LLM 出子任务候选，价值函数估计可行性 | 可行性来自学习的技能价值函数；本文把面级可接近 / 可达直接写进场景图，零样本、无训练 |
 | [SayPlan](./paper-sayplan-llm-scene-graph-planning.md) | 大场景图检索子图 + 符号约束检查计划 | 关注大尺度场景与语义关系；本文表 III 显示只有符号关系在并排物体场景成功率为 0% |
 | [硬件感知 LLM-VLM 零样本规划](./paper-hardware-aware-llm-vlm-zero-shot-task-planning.md) | LLM 出符号任务，确定性模块处理抓取、碰撞与可达性 | 同样把可达性交给几何模块，但在 Isaac Sim 数字孪生验证；本文是真机双臂并行阶段与分层恢复 |
 | [ERR](./paper-err-replan-error-recovery.md) | 具身 VLM 错误恢复的基准与 RL 训练 | 训练专用恢复模型；本文用零样本 VLM 按 repeat / modify / replan 规则恢复 |
@@ -138,7 +138,7 @@ flowchart LR
 - [操作任务总览](../tasks/manipulation.md)
 - [逆运动学](../formalizations/inverse-kinematics.md)
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md)
-- [SayCan](../methods/saycan.md)
+- [SayCan](./paper-saycan.md)
 - [硬件感知 LLM-VLM 零样本任务规划](paper-hardware-aware-llm-vlm-zero-shot-task-planning.md)
 - [SayPlan：LLM 场景图规划](paper-sayplan-llm-scene-graph-planning.md)
 - [错误恢复与重规划](paper-err-replan-error-recovery.md)

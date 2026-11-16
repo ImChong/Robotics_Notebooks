@@ -5,7 +5,7 @@ status: complete
 updated: 2026-10-03
 arxiv: "2609.39575"
 related:
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../tasks/humanoid-locomotion.md
 sources:
   - ../../sources/blogs/humanoid_motion_intelligence_day1_data_retargeting_2026_10_02.md
@@ -63,7 +63,7 @@ flowchart TD
 
 ## 与其他工作对比
 
-相较 [SONIC](../methods/sonic-motion-tracking.md) 的跟踪控制，ECHO-G 解决上游“该说话时做什么动作”；二者串联而非替代。
+相较 [SONIC](./nvidia-sonic.md) 的跟踪控制，ECHO-G 解决上游“该说话时做什么动作”；二者串联而非替代。
 
 ## 结论
 
@@ -87,7 +87,7 @@ flowchart TD
 
 ## 关联页面
 
-- [SONIC 跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC 跟踪](./nvidia-sonic.md)
 - [人形运动](../tasks/humanoid-locomotion.md)
 
 ## 参考来源

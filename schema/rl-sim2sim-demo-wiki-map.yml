@@ -9,5 +9,5 @@ overrides:
   g1-parkour:
     - wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
   g1-tracking-latest:
-    - wiki/methods/gentlehumanoid-motion-tracking.md
+    - wiki/entities/paper-gentlehumanoid.md
     - wiki/entities/axellwppr-motion-tracking.md

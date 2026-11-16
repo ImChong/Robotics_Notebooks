@@ -8,7 +8,7 @@ related:
   - ./hy-motion-1.md
   - ./exoactor.md
   - ./diffusion-motion-generation.md
-  - ./sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ./wilor.md
   - ../entities/sam-3d-body.md
   - ../entities/gem-x-cpp.md
@@ -42,7 +42,7 @@ summary: "GENMO（官方代码与权重以 GEM 名义发布）把人体运动估
 ## 为什么重要？
 
 - **打破「估计 vs 生成」的人为分裂**：传统流水线维护两套权重 —— 估计追求精度（视频/2D 输入），生成追求多样性（文本/音乐输入）。GENMO 论文论证两者共享时间动力学 + 运动学表示，可以由「带观测约束的生成」一种范式统一吸收。
-- **视频→机器人链路的中枢**：从单目或生成视频恢复时间一致的全身 SMPL 序列，是「像素 → 跟踪控制器」管道的标准中间表示之一（参见 [ExoActor](./exoactor.md)、[SONIC](./sonic-motion-tracking.md) 中明确把 GEM 列为「视频/音乐/文本 → 人体运动」的接口）。
+- **视频→机器人链路的中枢**：从单目或生成视频恢复时间一致的全身 SMPL 序列，是「像素 → 跟踪控制器」管道的标准中间表示之一（参见 [ExoActor](./exoactor.md)、[SONIC](../entities/nvidia-sonic.md) 中明确把 GEM 列为「视频/音乐/文本 → 人体运动」的接口）。
 - **生成 ↔ 估计的双向收益**：生成先验显式改善遮挡 / 截断等困难帧上的估计质量；同时大规模野外视频上的 2D 弱监督又能反过来扩宽生成分布。这是论文最核心的「同模型多任务」论据。
 - **多模态混合可编辑**：同一模型可在时间轴上混合多种条件（视频片段 + 文本片段 + 音乐 + 关键帧），适合接 LLM / VLA / 视频生成模块当上游。
 
@@ -157,12 +157,12 @@ GEM/GENMO 是 NVIDIA Research 人形运动数据栈的「人体运动 I/O」环�
 - [GEM-X](https://github.com/NVlabs/GEM-X)：把 GEM 扩展到全身（手、脸）。
 - [SOMA-X](../entities/soma-x.md) + [SOMA Retargeter](../entities/soma-retargeter.md)：统一 body model 与 G1 重定向。
 - [ProtoMotions](../entities/protomotions.md)：大规模并行人形仿真与 RL 训练框架，常以 SMPL 系动作（含 GEM 产出）作为参考运动来源。
-- [SONIC](./sonic-motion-tracking.md)：把人体运动作为 token 化条件喂入大规模 motion tracking 控制器，落到 Unitree G1 等硬件。
+- [SONIC](../entities/nvidia-sonic.md)：把人体运动作为 token 化条件喂入大规模 motion tracking 控制器，落到 Unitree G1 等硬件。
 - [Kimodo](../entities/kimodo.md)：文本 + 运动学约束的运动扩散与生成工具链。
 
 ## 常见误区或局限
 
-- **不等于实时控制器**：GENMO 输出的是人体运动序列；要在实体人形上闭环还需动力学可行的跟踪策略（如 [SONIC](./sonic-motion-tracking.md)）或经典 WBC/MPC。
+- **不等于实时控制器**：GENMO 输出的是人体运动序列；要在实体人形上闭环还需动力学可行的跟踪策略（如 [SONIC](../entities/nvidia-sonic.md)）或经典 WBC/MPC。
 - **命名迁移**：论文使用 GENMO，仓库与权重以 **GEM** 发布，并存在 [GEM-X](https://github.com/NVlabs/GEM-X) 全身扩展；检索代码与 checkpoint 时需两者兼顾。
 - **实现边界**：社区维护的 [gem-x.cpp](../entities/gem-x-cpp.md) 是 NVIDIA GEM-X 的独立 C++/GGML 本地运行时与浏览器 demo；它不属于 GENMO/GEM 的官方实现，也不等于机器人闭环控制器。
 - **域差异**：从「生成的人体视频」估计运动时，视频生成阶段的物体幻觉、手腕方向错误等会传递到下游；[ExoActor](./exoactor.md) 详细讨论了这一类失败模式。
@@ -172,7 +172,7 @@ GEM/GENMO 是 NVIDIA Research 人形运动数据栈的「人体运动 I/O」环�
 
 - [gem-x.cpp（GEM-X 的 GGML/C++ 本地实现）](../entities/gem-x-cpp.md)：由 LocalAI 社区维护的独立推理/演示实现，使用 NVIDIA GEM-X 权重转换；输入视频或摄像头画面，输出 SOMA-77 骨架。
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)：典型系统集成位 —— GENMO 承担「生成视频 → 全身 SMPL 序列」。
-- [SONIC（规模化运动跟踪人形控制）](./sonic-motion-tracking.md)：把 GEM/GENMO 的人体运动作为统一 token 喂入大规模跟踪策略。
+- [SONIC（规模化运动跟踪人形控制）](../entities/nvidia-sonic.md)：把 GEM/GENMO 的人体运动作为统一 token 喂入大规模跟踪策略。
 - [WiLoR（野外手部 3D 重建）](./wilor.md)：与 GENMO 拼接成「全身 SMPL + 手部姿态」的下游接口。
 - [Diffusion-based Motion Generation](./diffusion-motion-generation.md)：扩散范式在人体运动域的代表实现，与机器人控制域的扩散生成（如 ETH G1）形成跨领域对照。
 - [DART（DartControl）](./dart-control.md)：另一套人体潜扩散路线，强调自回归原语与在线文本/空间控制。
@@ -194,7 +194,7 @@ GEM/GENMO 是 NVIDIA Research 人形运动数据栈的「人体运动 I/O」环�
 ## 关联页面
 
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
-- [SONIC（规模化运动跟踪人形控制）](./sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪人形控制）](../entities/nvidia-sonic.md)
 - [WiLoR（野外手部 3D 重建）](./wilor.md)
 - [Diffusion-based Motion Generation](./diffusion-motion-generation.md)
 - [ProtoMotions](../entities/protomotions.md)

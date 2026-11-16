@@ -27,7 +27,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../concepts/motion-retargeting.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./unitree-g1.md
   - ./paper-twist2.md
   - ./paper-gae-general-action-expert.md
@@ -260,7 +260,7 @@ sequenceDiagram
 - [Immersive Social VR+LLM](./paper-immersive-social-vr-llm-humanoids.md) — AVP + LLM 语音腿控（非全身 VR 跟踪）对照
 - [OASIS](./paper-loco-manip-04-oasis.md) — 以 Teleopit 为仿真 teleop 低层 WBC
 - [MimicLite](./mimiclite.md) — 跨 codebase 部署列表含 TeleopIT
-- [SONIC](../methods/sonic-motion-tracking.md) — Table 6 规模化 tracking 基线
+- [SONIC](./nvidia-sonic.md) — Table 6 规模化 tracking 基线
 - [Unitree G1](./unitree-g1.md)、[Whole-Body Control](../concepts/whole-body-control.md)、[Motion Retargeting](../concepts/motion-retargeting.md)
 
 - [GAE：General Action Expert](./paper-gae-general-action-expert.md) — 同为西湖全身遥操作，着重万小时运动数据、双阶段训练与延迟预判。

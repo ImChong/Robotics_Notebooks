@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# GenAD
+# GenAD: Generalized Predictive Model for Autonomous Driving（arXiv:2403.09630）
 
 **GenAD: Generalized Predictive Model for Autonomous Driving** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 437/571** 篇，分组 **82 Autonomous Driving**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

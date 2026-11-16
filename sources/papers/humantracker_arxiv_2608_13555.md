@@ -38,14 +38,14 @@
 ### 3) 标准化评测协议与零样本表
 
 - **链接：** <https://arxiv.org/abs/2608.13555> §3.2、Table 3
-- **摘录要点：** 统一 **29-DoF `qpos` + 共用 MuJoCo 入口**；各 tracker 保留原生观测/动作解码。记录 50 Hz 状态史（`qpos`/`qvel`、动作、电机目标、足接触与力、14 关键点）。终止准则对齐 [SONIC](../../wiki/methods/sonic-motion-tracking.md)：骨盆/踝/腕垂向误差 > **0.25 m**、骨盆旋转 > **1 rad** 或非有限值即失败。指标：**Succ**、**MPJPE**（29 主动关节 rad）、**HumanScore**（0–100）。四方法均**不在 HumanTracker 上训练**。
+- **摘录要点：** 统一 **29-DoF `qpos` + 共用 MuJoCo 入口**；各 tracker 保留原生观测/动作解码。记录 50 Hz 状态史（`qpos`/`qvel`、动作、电机目标、足接触与力、14 关键点）。终止准则对齐 [SONIC](../../wiki/entities/nvidia-sonic.md)：骨盆/踝/腕垂向误差 > **0.25 m**、骨盆旋转 > **1 rad** 或非有限值即失败。指标：**Succ**、**MPJPE**（29 主动关节 rad）、**HumanScore**（0–100）。四方法均**不在 HumanTracker 上训练**。
   - Daily：Humanoid-GPT Succ **94.4** / MPJPE **0.046** / HS **54.7**；SONIC 93.8 / 0.102 / 49.5；TWIST2 60.1 / 0.105 / 10.1；GMT 17.0 / 0.250 / 2.4。
   - Highly Dynamic：Humanoid-GPT **86.9 / 0.047 / 49.2** 领先。
   - Interaction：SONIC Succ **97.6** 最高；Humanoid-GPT HS **56.8** 最高。
   - Ground：GMT/TWIST2 Succ **0.0**；Humanoid-GPT Succ **32.9**；SONIC HS **26.5** 最高（感知更稳）。
 - **对 wiki 的映射：**
   - [HumanTracker](../../wiki/entities/paper-humantracker.md) — 协议与 Table 3
-  - [Humanoid-GPT](../../wiki/entities/paper-humanoid-gpt.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[GMT](../../wiki/entities/paper-gmt.md)、[TWIST2](../../wiki/entities/paper-twist2.md)
+  - [Humanoid-GPT](../../wiki/entities/paper-humanoid-gpt.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[GMT](../../wiki/entities/paper-gmt.md)、[TWIST2](../../wiki/entities/paper-twist2.md)
 
 ### 4) HumanScore：轨迹级偏好奖励模型
 
@@ -71,7 +71,7 @@
 ## 对 wiki 的映射（汇总）
 
 - [paper-humantracker.md](../../wiki/entities/paper-humantracker.md) — 主沉淀页
-- 交叉更新：[paper-humanoid-gpt.md](../../wiki/entities/paper-humanoid-gpt.md)、[sonic-motion-tracking.md](../../wiki/methods/sonic-motion-tracking.md)、[paper-gmt.md](../../wiki/entities/paper-gmt.md)、[paper-twist2.md](../../wiki/entities/paper-twist2.md)、[humanoid-motion-tracking-method-selection.md](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[humanoid-reference-motion-datasets.md](../../wiki/comparisons/humanoid-reference-motion-datasets.md)
+- 交叉更新：[paper-humanoid-gpt.md](../../wiki/entities/paper-humanoid-gpt.md)、[sonic-motion-tracking.md](../../wiki/entities/nvidia-sonic.md)、[paper-gmt.md](../../wiki/entities/paper-gmt.md)、[paper-twist2.md](../../wiki/entities/paper-twist2.md)、[humanoid-motion-tracking-method-selection.md](../../wiki/queries/humanoid-motion-tracking-method-selection.md)、[humanoid-reference-motion-datasets.md](../../wiki/comparisons/humanoid-reference-motion-datasets.md)
 
 ## 引用（项目页 / 仓库 BibTeX）
 

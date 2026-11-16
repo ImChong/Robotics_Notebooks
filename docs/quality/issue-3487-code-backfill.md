@@ -145,7 +145,7 @@ PYSCAN
 | [wiki/entities/qwen-robot-nav.md](../../wiki/entities/qwen-robot-nav.md) | [QwenLM/Qwen-RobotNav](https://github.com/QwenLM/Qwen-RobotNav) | L22：Qwen-RobotNav（GitHub ｜ 深度博客）将 多域导航  reframing 为 上下文建模问题：共享 Qwen3-VL 感知–规划骨干，但 如何消费视觉历史 因任务而异，故暴露 类 MCP 的可配置观测协议，供上层 agent 按 call 指定。 | Qwen-RobotNav 模型与 Qwen 官方组织专属代码对应，正文另链官方博客，无本项目未发布声明。 |
 | [wiki/entities/sida.md](../../wiki/entities/sida.md) | [hzlsaber/SIDA](https://github.com/hzlsaber/SIDA) | L93：GitHub: hzlsaber/SIDA | SIDA 单一图像检测方法，正文工程实践指向官方仓/权重，参考来源给出专属 GitHub。 |
 | [wiki/entities/tidybot2.md](../../wiki/entities/tidybot2.md) | [jimmyyhwu/tidybot2](https://github.com/jimmyyhwu/tidybot2) | L50：项目主页 Code / GitHub 区当前指向的仓库（以站点更新为准；常见入口为 jimmyyhwu/tidybot2） | 原页项目站/硬件文档与常见入口相互对应；本次 README 明确 This code release accompanies TidyBot++，项目页为 tidybot2.github.io，发布控制/遥操/训练/推理。 |
-| [wiki/methods/haic.md](../../wiki/methods/haic.md) | [ldt29/HAIC](https://github.com/ldt29/HAIC) | L99：官方代码：&lt;https://github.com/ldt29/HAIC&gt; | HAIC 单项方法页明确官方代码并列 train.py/play.py；与论文实体共享仓允许，本次不新建节点。 |
+| [wiki/entities/paper-haic.md](../../wiki/entities/paper-haic.md) | [ldt29/HAIC](https://github.com/ldt29/HAIC) | L99：官方代码：&lt;https://github.com/ldt29/HAIC&gt; | HAIC 单项方法页明确官方代码并列 train.py/play.py；与论文实体共享仓允许，本次不新建节点。 |
 | [wiki/methods/lion.md](../../wiki/methods/lion.md) | [google/automl](https://github.com/google/automl) | L94：Lion 官方实现 (Google Research) | Lion 单项优化器，原文明确 Google Research 官方 lion 子目录；code 规范化为承载实现的 google/automl 仓根。 |
 | [wiki/methods/roboarena.md](../../wiki/methods/roboarena.md) | [robo-arena/roboarena](https://github.com/robo-arena/roboarena) | L43：代码：https://github.com/robo-arena/roboarena | RoboArena 单一评测框架，原论文与参考来源的「代码」入口对应。 |
 

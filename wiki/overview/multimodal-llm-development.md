@@ -14,8 +14,6 @@ summary: "多模态大模型发展路线：对比学习对齐（CLIP）→ 桥�
 related:
   - ../concepts/multimodality-basics.md
   - ../entities/paper-clip.md
-  - ../entities/paper-clip.md
-  - ../entities/paper-llava.md
   - ../entities/paper-llava.md
   - ../methods/vla.md
   - ../entities/paper-blip2.md

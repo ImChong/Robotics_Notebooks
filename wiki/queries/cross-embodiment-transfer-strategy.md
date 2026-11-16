@@ -30,7 +30,7 @@ related:
   - ../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md
   - ../entities/generalist-gen1-thousand-hands.md
   - ../entities/paper-transformer-transformer.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../methods/uhas-unified-hand-action-space.md
   - ../entities/paper-advdex.md
   - ../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md
@@ -39,7 +39,7 @@ original: ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「同一段人形运动控制能力要搬到一台新机器人，单具身重训、Any2Any 高效后训练、多具身联合训练这三条路怎么选、各踩什么坑？」
-> 综合来源：[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)、[Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)、[SONIC](../methods/sonic-motion-tracking.md)、[Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)、[Behavior Foundation Model](../concepts/behavior-foundation-model.md)
+> 综合来源：[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)、[Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)、[SONIC](../entities/nvidia-sonic.md)、[Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)、[Behavior Foundation Model](../concepts/behavior-foundation-model.md)
 
 # 跨具身策略迁移选型指南
 
@@ -55,7 +55,7 @@ original: ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
 |------|--------|----------|
 | **单具身重训 + 重定向迁移** | 目标机重新跑一遍参考池 → 重定向 → 训练全链路；只复用**数据与配方**，不复用策略权重。 | [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) + [BeyondMimic](../methods/beyondmimic.md) |
 | **Any2Any 高效后训练** | 冻结源机 WBT 专家，差距拆成**无梯度运动学对齐** + **动力学敏感层 LoRA**，约 1% 全量算力迁到新机。 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
-| **多具身联合训练** | 从一开始就把多台机器人塞进同一训练，用统一观测/动作编码吸收差异，训出一个 generalist 骨干。 | [SONIC](../methods/sonic-motion-tracking.md) 多具身路线 / [BFM](../concepts/behavior-foundation-model.md) / [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md)（generalist→specialist→DAgger 迭代） |
+| **多具身联合训练** | 从一开始就把多台机器人塞进同一训练，用统一观测/动作编码吸收差异，训出一个 generalist 骨干。 | [SONIC](../entities/nvidia-sonic.md) 多具身路线 / [BFM](../concepts/behavior-foundation-model.md) / [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md)（generalist→specialist→DAgger 迭代） |
 
 **灵巧手子栈（与上表正交）：** 若迁移对象是 **多指灵巧手** 而非整身人形，[UHAS](../methods/uhas-unified-hand-action-space.md) 用 **规范球面形变 + 级联 IK** 定义共享动作空间，在 [手内重定向](../methods/in-hand-reorientation.md) 上实证 **四手单策略、零样本与 500 iter 微调**（Allegro / LEAP / Shadow / MANO）。若问题是 **人手演示 → VLA 可执行关节**，对照 [AdvDex](../entities/paper-advdex.md) 的 **JAAS（腕 SE(3) + 15 指关节槽）+ 域对抗视觉**——那是监督空间对齐，不是 RL 球面控制器；确认未开源。选型时勿把人形 WBT 的 token/LoRA 经验直接套到手指关节层。
 
@@ -106,7 +106,7 @@ flowchart TD
 | **动力学差异处理** | 域随机化 + 重训 | 动力学敏感层 LoRA 残差 | 联合训练内化 |
 | **新增机型边际成本** | 高（再来一遍全量） | 中（再对齐 + 一份 LoRA） | **低（数据里加一台）** |
 | **catastrophic forgetting 风险** | 无（互不影响） | 有（需冻结骨干兜底） | 有（联合调度不均会偏科） |
-| **典型代表** | BeyondMimic 单具身路线 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) | [SONIC](../methods/sonic-motion-tracking.md) 多具身 / [BFM](../concepts/behavior-foundation-model.md) |
+| **典型代表** | BeyondMimic 单具身路线 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) | [SONIC](../entities/nvidia-sonic.md) 多具身 / [BFM](../concepts/behavior-foundation-model.md) |
 
 ---
 
@@ -124,7 +124,7 @@ flowchart TD
 
 ### 2. Any2Any 高效后训练：已有专家时的首选
 
-**何时选**：源机上已有成熟 WBT 专家（如 [SONIC](../methods/sonic-motion-tracking.md) / Gear-SONIC），目标机预算紧，想用 ~1% 算力把能力搬过去。
+**何时选**：源机上已有成熟 WBT 专家（如 [SONIC](../entities/nvidia-sonic.md) / Gear-SONIC），目标机预算紧，想用 ~1% 算力把能力搬过去。
 
 [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) 把跨机差距拆成两段：
 
@@ -141,7 +141,7 @@ flowchart TD
 
 **何时选**：要服务**一族机型**而非单台；有大规模多机型仿真与数据预算；想要边际新增机型成本低的长期资产。
 
-从训练之初就把多台机器人塞进同一份训练，用**统一观测/动作空间编码**吸收 DoF 与布局差异，训出一个 generalist 骨干（[SONIC](../methods/sonic-motion-tracking.md) 的多具身路线、[BFM](../concepts/behavior-foundation-model.md) 叙事）。一旦骨干训成，加一台新机型主要是「数据里加一台」，边际成本远低于重训。代价是**前期一次性成本极高**，且联合调度不均容易让某些机型「偏科」。
+从训练之初就把多台机器人塞进同一份训练，用**统一观测/动作空间编码**吸收 DoF 与布局差异，训出一个 generalist 骨干（[SONIC](../entities/nvidia-sonic.md) 的多具身路线、[BFM](../concepts/behavior-foundation-model.md) 叙事）。一旦骨干训成，加一台新机型主要是「数据里加一台」，边际成本远低于重训。代价是**前期一次性成本极高**，且联合调度不均容易让某些机型「偏科」。
 
 **常见误判**：以为「多具身 = 自动跨具身」。统一动作空间只在**训练时见过的机型分布**内泛化；分布外的新机仍可能要回到 Any2Any 风后训练或重训。
 
@@ -151,7 +151,7 @@ flowchart TD
 
 实际系统常**串联**：
 
-1. 先用**多具身联合训练**或**大规模单机预训练**养出一个强骨干（[SONIC](../methods/sonic-motion-tracking.md)）；
+1. 先用**多具身联合训练**或**大规模单机预训练**养出一个强骨干（[SONIC](../entities/nvidia-sonic.md)）；
 2. 遇到分布外的新机型，用 **Any2Any** 运动学对齐 + LoRA 以 ~1% 算力快速适配；
 3. 对极端关键的旗舰机型，再退回**单具身重训**榨出最后一点性能与最干净的 sim-to-real。
 
@@ -218,7 +218,7 @@ flowchart TD
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) — 高效后训练路径的代表论文
 - [RecMorph](../entities/paper-recmorph.md) — UNIMAL/四足广义形态控制：拓扑 DFS 序 + 空间 RNN（arXiv:2609.18359；已开源）
 - [SONIC-Transfer](../entities/paper-sonic-transfer.md) — 近亲骨架、更严冻结的 Any2Any 变体
-- [SONIC](../methods/sonic-motion-tracking.md) — 规模化预训练 / 多具身骨干
+- [SONIC](../entities/nvidia-sonic.md) — 规模化预训练 / 多具身骨干
 - [EAGLE-WBC](../entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md) — 跨本体 WBC：迭代 specialist 蒸馏 + 统一速度/高度/pitch 指令（ICRA 2026）
 - [UHAS](../methods/uhas-unified-hand-action-space.md) — 灵巧手 RL 球面统一动作空间
 - [AdvDex](../entities/paper-advdex.md) — 人手/灵巧手 VLA 关节槽统一动作空间（确认未开源）

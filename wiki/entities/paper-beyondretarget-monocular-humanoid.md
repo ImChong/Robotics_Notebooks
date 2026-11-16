@@ -18,7 +18,7 @@ related:
   - ../methods/motion-retargeting-gmr.md
   - ../methods/neural-motion-retargeting-nmr.md
   - ../tasks/teleoperation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./unitree-g1.md
   - ./paper-hrl-stack-01-retargeting_matters.md
 sources:
@@ -144,7 +144,7 @@ sequenceDiagram
 - [GMR](../methods/motion-retargeting-gmr.md)
 - [NMR](../methods/neural-motion-retargeting-nmr.md)
 - [Teleoperation](../tasks/teleoperation.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](./nvidia-sonic.md)
 
 ## 参考来源
 

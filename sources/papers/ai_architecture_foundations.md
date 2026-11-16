@@ -77,7 +77,7 @@
 - [`wiki/concepts/mlp.md`](../../wiki/concepts/mlp.md)
 - [`wiki/concepts/mixture-of-experts.md`](../../wiki/concepts/mixture-of-experts.md)
 - [`wiki/concepts/convolutional-neural-network.md`](../../wiki/concepts/convolutional-neural-network.md)
-- [`wiki/concepts/unet.md`](../../wiki/concepts/unet.md)
+- [`wiki/methods/unet.md`](../../wiki/methods/unet.md)
 - [`wiki/concepts/vision-transformer.md`](../../wiki/concepts/vision-transformer.md)
 - [`wiki/concepts/recurrent-neural-network.md`](../../wiki/concepts/recurrent-neural-network.md)
 - [`wiki/concepts/temporal-convolutional-network.md`](../../wiki/concepts/temporal-convolutional-network.md)

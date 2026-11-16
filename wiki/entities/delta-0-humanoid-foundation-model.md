@@ -14,7 +14,7 @@ related:
   - ../concepts/world-action-models.md
   - ../concepts/whole-body-control.md
   - ../tasks/loco-manipulation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-being-m07-humanoid-latent-wam.md
   - ./paper-omega-0.md
   - ./pi-physical-intelligence-layer.md
@@ -124,7 +124,7 @@ flowchart TB
 ## 局限与风险
 
 - **确认未开源**：无权重、训练代码、数据集或正式论文；数字与视频 **不可独立复现**。
-- **本体未在文中钉死型号**：与 [SONIC](../methods/sonic-motion-tracking.md) 等 **仅作控制器对比名**，勿默认 Δ₀ 即 NVIDIA SONIC 栈。
+- **本体未在文中钉死型号**：与 [SONIC](./nvidia-sonic.md) 等 **仅作控制器对比名**，勿默认 Δ₀ 即 NVIDIA SONIC 栈。
 - **LLM 命名（GPT-6 Astra）** 属产品叙事，仿真管线细节与许可未公开。
 - 与 [Physical Intelligence Layer](./pi-physical-intelligence-layer.md) 类似，这是 **系统与缩放故事**，不是可对照的 arXiv 实验协议。
 

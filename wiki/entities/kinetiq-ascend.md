@@ -138,7 +138,7 @@ flowchart TB
 - **不等于消灭仿真：** 仿真仍用于方法迭代与数字孪生；真机 RL 是为 **部署后持续学习** 与 **零 gap** 优化。
 - **稀疏奖励不是银弹：** 博客依赖 **可自动判定的成功/可恢复错误** 与成熟 BC 起点；极难重置或难检测失败的任务未讨论。
 - **硬件栈未完全开源：** Alpha、Thor 栈细节与代码未随文发布。
-- **与分层 WBC 路线不同：** 此处为 **端到端 VLA RL**，非「慢 VLA + 快 tracking」拼接（对照 [SONIC](../methods/sonic-motion-tracking.md) 等）。
+- **与分层 WBC 路线不同：** 此处为 **端到端 VLA RL**，非「慢 VLA + 快 tracking」拼接（对照 [SONIC](./nvidia-sonic.md) 等）。
 
 ## 关联页面
 

@@ -28,7 +28,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
   - ../tasks/teleoperation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/vla.md
   - ./unitree-g1.md
 original:
@@ -221,7 +221,7 @@ sequenceDiagram
 - [World Action Models](../concepts/world-action-models.md) — WAM 概念坐标
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务背景
 - [Teleoperation](../tasks/teleoperation.md) — Pico VR + SONIC 采集栈
-- [SONIC](../methods/sonic-motion-tracking.md) — 低层全身接口
+- [SONIC](./nvidia-sonic.md) — 低层全身接口
 - [DiT4DiT](./paper-dit4dit-video-action-model.md) — 文内强 WAM 基线
 - [DyPES-VLA](./paper-dypes-vla.md) — 同期跨本体 VLA（动力学先验用法不同）
 - [VLA](../methods/vla.md) — 对照基线范式

@@ -54,7 +54,7 @@ GGML 以 **pinned git submodule** 引入；`-DMOTIONBRICKS_ENABLE_GGML=OFF` 可�
 1. **[motion-bricks.cpp（实体页）](../../wiki/entities/motion-bricks-cpp.md)** — 本地 GGML 运行时、SONIC/MuJoCo 可选栈与缺失能力
 2. **[MotionBricks（方法页）](../../wiki/methods/motionbricks.md)** — 上游 Smart Primitives 与 GR00T 角色
 3. **[Kimodo（上游实体）](../../wiki/entities/kimodo.md)** — Demo 可选 Kimodo 动画回放来源
-4. **[SONIC 运动跟踪](../../wiki/methods/sonic-motion-tracking.md)** — 可选 GGML 物理跟踪后端
+4. **[SONIC 运动跟踪](../../wiki/entities/nvidia-sonic.md)** — 可选 GGML 物理跟踪后端
 
 ## 关联原始资料
 

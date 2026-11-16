@@ -56,4 +56,4 @@
 
 - [mimiclite](../../wiki/entities/mimiclite.md)
 - 父级：[party-os](../../wiki/entities/party-os.md)
-- 交叉：[sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)、[motion-retargeting](../../wiki/concepts/motion-retargeting.md)
+- 交叉：[sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md)、[motion-retargeting](../../wiki/concepts/motion-retargeting.md)

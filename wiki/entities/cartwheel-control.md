@@ -10,7 +10,7 @@ original: ../../sources/sites/cartwheel-control-huggingface.md
 summary: "Cartwheel Control 发布 RP1、Asimov-1 和 G1 三款人形机器人专属动作跟踪策略，在物理仿真中以 50 Hz 输出关节位置目标；已开放权重与推理/仿真代码，尚无训练管线或真机验证。"
 related:
   - ../concepts/whole-body-control.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-supermimic.md
   - ../methods/imitation-learning.md
 sources:
@@ -150,7 +150,7 @@ python -m http.server -d play_out/viewer 8000
 ## 关联页面
 
 - [Whole-Body Control](../concepts/whole-body-control.md) — 与经典 WBC 的接口和方法区别。
-- [SONIC](../methods/sonic-motion-tracking.md) — 大规模 motion tracking 路线。
+- [SONIC](./nvidia-sonic.md) — 大规模 motion tracking 路线。
 - [SuperMimic](./paper-supermimic.md) — 物理运动跟踪的训练路线。
 - [模仿学习](../methods/imitation-learning.md) — 动作示范与控制策略背景。
 

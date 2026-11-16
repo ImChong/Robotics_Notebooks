@@ -129,7 +129,7 @@ flowchart LR
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
 - [重定向总览 Hub](./hub-motion-retargeting.md)
 - [BeyondMimic](../methods/beyondmimic.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](../entities/nvidia-sonic.md)
 - [InstantTrack](../entities/instanttrack.md)
 - [SBTO](../entities/sbto.md)
 - [holosoma](../entities/holosoma.md)

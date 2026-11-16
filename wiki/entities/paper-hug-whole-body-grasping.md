@@ -9,7 +9,7 @@ project: https://xuanbinpeng.com/hug
 related:
   - ../tasks/manipulation.md
   - ../concepts/whole-body-control.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../queries/robot-perception-stack-selection-loop.md
 sources:
   - ../../sources/papers/hug_arxiv_2611_01659.md
@@ -124,7 +124,7 @@ $$
 
 - [机器人操作](../tasks/manipulation.md)
 - [全身控制](../concepts/whole-body-control.md)
-- [SONIC 运动跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC 运动跟踪](./nvidia-sonic.md)
 - [机器人视觉感知栈选型闭环（知识链）](../queries/robot-perception-stack-selection-loop.md)
 
 ## 参考来源

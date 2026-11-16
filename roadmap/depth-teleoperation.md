@@ -159,7 +159,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md) 与 [WBT 纵深汇总](../wiki/overview/hub-wbt.md) — 全身跟踪主链路
-- [SONIC（规模化运动跟踪）](../wiki/methods/sonic-motion-tracking.md) 与 [TWIST2](../wiki/entities/paper-twist2.md) — 双 GMT 后端，头手三点驱动上身 + 规划补下身
+- [SONIC（规模化运动跟踪）](../wiki/entities/nvidia-sonic.md) 与 [TWIST2](../wiki/entities/paper-twist2.md) — 双 GMT 后端，头手三点驱动上身 + 规划补下身
 - [BFM-Zero](../wiki/entities/paper-bfm-zero.md) 与 [BFM 纵深](depth-bfm.md) — 运动流形约束的低层，VR 遥操作是其接口之一
 - [HEFT](../wiki/entities/paper-heft.md) — 嘈杂 raw VR + WPC 双手负载，全尺寸 L7 重载遥操作
 - [PILOT](../wiki/entities/paper-pilot-perceptive-loco-manipulation.md) — VR 长程 loco-manip + 感知 MoE 全身 LLC

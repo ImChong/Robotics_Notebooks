@@ -27,7 +27,7 @@
    - **对 wiki 的映射：** [paper-grail](../../wiki/entities/paper-grail.md)
 
 3. **任务通用 tracker：** 重定向到 Unitree G1 后，在预训练全身控制器（SONIC）上训练两类互补 tracker——**物体感知 latent adaptor**（操作）与 **场景感知 height-map tracker**（地形/坐姿）；生成 **20,000+** 序列，覆盖 pick-up、全身操作、sitting、楼梯/坡道/路缘等。
-   - **对 wiki 的映射：** [SONIC](../../wiki/methods/sonic-motion-tracking.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
+   - **对 wiki 的映射：** [SONIC](../../wiki/entities/nvidia-sonic.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
 
 4. **Sim-to-real：** 仅用 GRAIL 生成数据训练 egocentric RGB 策略（VIRAL 管线 + 视觉域随机化与相机对齐），部署于 Unitree G1；pick-up **84%**、stair-climbing **90%** 真机成功率。另以 95% GRAIL + 5% 遥操作混合微调 GR00T，抓取成功率优于纯遥操作。
    - **对 wiki 的映射：** [paper-viral-humanoid-visual-sim2real](../../wiki/entities/paper-viral-humanoid-visual-sim2real.md)、[paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)

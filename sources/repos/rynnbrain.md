@@ -51,6 +51,6 @@ pip install transformers==5.2.0
 ## 对 wiki 的映射
 
 - 实体页：[RynnBrain 1.1](../../wiki/entities/paper-rynnbrain-1-1.md)
-- 方法交叉：[VLA](../../wiki/methods/vla.md)、[Action Chunking](../../wiki/methods/action-chunking.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)
+- 方法交叉：[VLA](../../wiki/methods/vla.md)、[Action Chunking](../../wiki/methods/action-chunking.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)
 - 概念交叉：[Embodied Scaling Laws](../../wiki/concepts/embodied-scaling-laws.md)、[Foundation Policy](../../wiki/concepts/foundation-policy.md)
 - 同院系对照：[RynnWorld-4D](../../wiki/entities/paper-rynnworld-4d-rgb-depth-flow.md)、[Qwen-VLA](../../wiki/entities/qwen-vla.md)

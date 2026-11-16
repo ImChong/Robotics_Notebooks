@@ -14,7 +14,7 @@ arxiv: "2611.02555"
 related:
   - ../tasks/balance-recovery.md
   - ../methods/residual-policy-learning.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/deepmimic.md
   - ../methods/safe-rl.md
   - ../concepts/safety-filter.md
@@ -163,7 +163,7 @@ flowchart TD
 
 - [平衡恢复任务页](../tasks/balance-recovery.md)：论文所补的「推扰后恢复」问题所在任务。
 - [残差策略学习](../methods/residual-policy-learning.md) 与 [Residual Policy Learning 论文页](./paper-residual-policy-learning.md)：论文相关工作中列为动机，但其恢复区域不约束成功轨迹。
-- [SONIC 运动跟踪](../methods/sonic-motion-tracking.md)：G1 流的基座控制器。
+- [SONIC 运动跟踪](./nvidia-sonic.md)：G1 流的基座控制器。
 - [DeepMimic](../methods/deepmimic.md)：论文引用 [3] 的运动模仿跟踪范式背景。
 - [Safe RL](../methods/safe-rl.md) 与 [Safety Filter](../concepts/safety-filter.md)：论文明确声明不把学习入口分类器等同于认证安全过滤器（II）。
 - [持续人形动作学习（LoRA-PNN）](./paper-continual-humanoid-motion-learning.md)：同为人形序贯学习，用参数列继承而非入口排除，可对照。
@@ -177,4 +177,4 @@ flowchart TD
 
 - [arXiv PDF](https://arxiv.org/pdf/2611.02555)
 - [平衡恢复任务页](../tasks/balance-recovery.md)
-- [SONIC 运动跟踪方法页](../methods/sonic-motion-tracking.md)
+- [SONIC 运动跟踪方法页](./nvidia-sonic.md)

@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-world-action-models-rcl.md
 ---
 
-# Beyond Task Success
+# Beyond Task Success: World Model Planning Reliability（arXiv:2609.07126）
 
 **Beyond Task Success: Stage-Wise Reliability of World Model Planning under Sensing Degradation** 收录于 [Awesome World-Action Models (RCL)](https://github.com/rcl-robotics/Awesome-World-Action-Models) **第 133/564** 篇，分组 **Evaluation metrics**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

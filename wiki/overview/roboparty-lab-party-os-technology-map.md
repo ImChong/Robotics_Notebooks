@@ -14,7 +14,7 @@ related:
   - ../entities/roboto-origin.md
   - ./bfm-41-papers-technology-map.md
   - ./robot-training-stack-layers-technology-map.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../concepts/motion-retargeting.md
   - ../entities/mjlab.md
   - ../entities/paper-bfm-zero.md
@@ -138,7 +138,7 @@ flowchart LR
 ## 关联页面
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](../entities/nvidia-sonic.md)
 - [mjlab](../entities/mjlab.md)
 - [BFM-Zero（论文实体）](../entities/paper-bfm-zero.md)
 - [INTACT（意图→动作无搜索 WM）](../entities/paper-intact.md)

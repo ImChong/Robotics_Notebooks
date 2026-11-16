@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# World Action Models
+# World Action Models: A Survey（arXiv:2606.20781）
 
 **World Action Models: A Survey** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 542/571** 篇，分组 **Surveys & Overviews**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

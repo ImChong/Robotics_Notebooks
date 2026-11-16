@@ -47,7 +47,7 @@
   - **零样本移动目标到达**：训练仅用静态到达数据；推理时每步将机器人根姿态重置为原点、目标变换到 **egocentric 帧**，把动态跟踪分解为静态到达子任务，同时用历史 proprioception 保留动量。真机 **10 次试验 90% 成功率**，连续执行 **>40 s**。
 - **对 wiki 的映射：**
   - [Unitree G1](../../wiki/entities/unitree-g1.md)
-  - [SONIC](../../wiki/methods/sonic-motion-tracking.md)（低层跟踪基线对照）
+  - [SONIC](../../wiki/entities/nvidia-sonic.md)（低层跟踪基线对照）
 
 ### 4) BFM 跟踪控制器（§3.3）
 
@@ -73,7 +73,7 @@
   - [BFM 论文实体](../../wiki/entities/paper-behavior-foundation-model-humanoid.md) — 补 ReactiveBFM 作为 BFM **闭环规划上层** 代表
   - [Behavior Foundation Model](../../wiki/concepts/behavior-foundation-model.md) — 层次化控制 / goal-conditioned 线补闭环规划
   - [Whole-Body Control](../../wiki/concepts/whole-body-control.md) — Learning-based WBC 段补闭环生成规划
-  - [SONIC](../../wiki/methods/sonic-motion-tracking.md)（对照基线）
+  - [SONIC](../../wiki/entities/nvidia-sonic.md)（对照基线）
   - [Curriculum Learning](../../wiki/concepts/curriculum-learning.md)（prefix sampling curriculum）
 
 ## 其他公开资料

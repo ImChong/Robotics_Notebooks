@@ -31,7 +31,7 @@ related:
   - ./paper-twist.md
   - ./paper-telegate.md
   - ./paper-teleopit.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./axellwppr-motion-tracking.md
 sources:
   - ../../sources/sites/heft-project.md
@@ -179,7 +179,7 @@ flowchart TB
 
 - VR 便携采集对照：[paper-twist2.md](./paper-twist2.md)、[paper-twist.md](./paper-twist.md)
 - 全身体+连续灵巧手对照：[paper-teleopit.md](./paper-teleopit.md)
-- 规模化无负载跟踪：[sonic-motion-tracking.md](../methods/sonic-motion-tracking.md)
+- 规模化无负载跟踪：[sonic-motion-tracking.md](./nvidia-sonic.md)
 - 惯性动捕门控专家遥操作：[paper-telegate.md](./paper-telegate.md)
 - 任务语境：[teleoperation.md](../tasks/teleoperation.md)、[loco-manipulation.md](../tasks/loco-manipulation.md)
 - 代码栈：[axellwppr-motion-tracking.md](./axellwppr-motion-tracking.md)
@@ -242,6 +242,6 @@ G1 对比 **SONIC**、**TWIST2** 官方 checkpoint；L7 对比重训 **TWIST2**�
 - [HEFT 项目页](https://heft.axell.top/)
 - [motion_tracking GitHub](https://github.com/Axellwppr/motion_tracking)（`sim2real` 分支检查点）
 - [TWIST2（便携 VR 采集对照）](./paper-twist2.md)
-- [SONIC（规模化 tracking 对照）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化 tracking 对照）](./nvidia-sonic.md)
 - [TeleGate（门控专家遥操作对照）](./paper-telegate.md)
 - [Teleopit（全身体+连续灵巧手对照）](./paper-teleopit.md)

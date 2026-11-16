@@ -63,7 +63,6 @@ related:
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
-  - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-grid-general-robot-intelligence-development.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../entities/paper-rl-vs-gc.md

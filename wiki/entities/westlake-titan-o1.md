@@ -104,7 +104,7 @@ flowchart LR
 |------|------|
 | 评估遥操延迟 | 在同一绝对时间轴记录操作员动捕与机器人关节，分别测 0 预判和按实测延迟预判两档 |
 | 群控演出 | 先确认网络抖动分布；GAE 预判只能估计动作趋势，不能消除丢包与突变 |
-| 复现 / 对比 | 无官方代码；方法对照见 [GAE 论文页](./paper-gae-general-action-expert.md)，全身跟踪基线可用 [SONIC](../methods/sonic-motion-tracking.md) |
+| 复现 / 对比 | 无官方代码；方法对照见 [GAE 论文页](./paper-gae-general-action-expert.md)，全身跟踪基线可用 [SONIC](./nvidia-sonic.md) |
 | 采购前 | 索取续航、算力、关节温升与价格；官网参数均为图片标注，无测试条件 |
 
 ## 局限与风险

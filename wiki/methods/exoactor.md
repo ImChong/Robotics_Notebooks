@@ -13,7 +13,7 @@ related:
   - ../entities/unitree-g1.md
   - ./genmo.md
   - ./wilor.md
-  - ./sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
 sources:
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/genmo.md
@@ -44,7 +44,7 @@ summary: "ExoActor 是 BAAI 提出的视频生成驱动的人形控制框架：�
 | **第三人称视频生成** | 大型视频生成模型 | 主用 Kling 3，相比 Veo 3.1 / Wan 2.6 物理合理性与 prompt 跟随更稳 |
 | **全身动作估计** | 扩散式约束生成 | [GENMO](./genmo.md) 输出 SMPL $(q_t, p_t)$ |
 | **双手姿态估计** | 单图像手部姿态网络 | [WiLoR](./wilor.md) + {open/half-open/closed} 三态 |
-| **通用动作跟踪** | 大规模 motion tracking 控制器 | [SONIC](./sonic-motion-tracking.md) 作为"物理过滤器"，免除任务级 reward 工程；不接 GMR 等中间重定向 |
+| **通用动作跟踪** | 大规模 motion tracking 控制器 | [SONIC](../entities/nvidia-sonic.md) 作为"物理过滤器"，免除任务级 reward 工程；不接 GMR 等中间重定向 |
 | **手部下发** | 关节级映射 | Unitree Dex3-1 兼容 7-DoF 关节 + event queue 同步 |
 
 ## 三阶段流水线
@@ -85,7 +85,7 @@ Unitree G1 物理执行
 
 视频生成的产物是像素，机器人需要的是结构化运动。这一阶段同时关注全身和双手：
 
-- **全身动作（[GENMO](./genmo.md)）**：扩散式约束生成模型，以视频特征 + 2D 关键点为条件，输出时序一致、物理合理的 SMPL 参数序列 $\mathcal{M}=\{q_t, p_t\}_{t=1}^T$，并对部分遮挡帧做时序填补。GENMO 采用 **dual-mode 训练**（估计模式 + 生成模式），使视频条件下首步预测足够准确——这正是 ExoActor 把「生成视频 → SMPL」交给 GENMO 而非纯 tracking 网络的原因；其与 [SONIC](./sonic-motion-tracking.md) 同属 NVIDIA 人形栈的上下游接口。
+- **全身动作（[GENMO](./genmo.md)）**：扩散式约束生成模型，以视频特征 + 2D 关键点为条件，输出时序一致、物理合理的 SMPL 参数序列 $\mathcal{M}=\{q_t, p_t\}_{t=1}^T$，并对部分遮挡帧做时序填补。GENMO 采用 **dual-mode 训练**（估计模式 + 生成模式），使视频条件下首步预测足够准确——这正是 ExoActor 把「生成视频 → SMPL」交给 GENMO 而非纯 tracking 网络的原因；其与 [SONIC](../entities/nvidia-sonic.md) 同属 NVIDIA 人形栈的上下游接口。
 - **双手动作（[WiLoR](./wilor.md)）**：逐帧估计双手 3D 姿态 $\mathcal{H}=\{h_t^l, h_t^r\}$，并把每只手映射为 {open, half-open, closed} 三态 $\mathcal{S}$。视点（正面 / 背面）会决定左右手的语义对应方式，避免手性歧义。
 
 最终拼成联合表示：
@@ -96,7 +96,7 @@ $$ \tilde{\mathcal{M}}=\{q_t,\,p_t,\,h_t^l,\,h_t^r,\,s_t^l,\,s_t^r\}_{t=1}^{T} $
 
 ### Stage 3：通用动作跟踪部署
 
-估计到的是高质量的"运动学参考"，但还缺少接触力、扭矩限制、平衡约束等动力学一致性。ExoActor 直接复用 [SONIC (Luo et al., 2025)](./sonic-motion-tracking.md) 这种规模化 motion tracking 控制器（与 [BeyondMimic](./beyondmimic.md) 同属高质量模仿 / 跟踪技术脉络）：
+估计到的是高质量的"运动学参考"，但还缺少接触力、扭矩限制、平衡约束等动力学一致性。ExoActor 直接复用 [SONIC (Luo et al., 2025)](../entities/nvidia-sonic.md) 这种规模化 motion tracking 控制器（与 [BeyondMimic](./beyondmimic.md) 同属高质量模仿 / 跟踪技术脉络）：
 
 - **物理过滤器 (physics-filter) 视角**：让 SONIC 把"想象出来"的人体运动映射到 G1 的可行控制空间，即使是视频里出现的 parkour 风格大动作也能保持稳定。
 - **不需要重定向**：作者有意省略 SMPLX → robot 的中间 retargeting 阶段（详见下文消融）。
@@ -136,7 +136,7 @@ ExoActor 是一篇典型的"桥接型"论文，把好几条看似独立的技术
 
 - 把 [Video-as-Simulation](../concepts/video-as-simulation.md) / [Generative World Models](./generative-world-models.md) 的"视频生成当世界模型"思想，从视觉策略训练扩展到**物理人形机器人控制**。
 - 把 [Motion Retargeting](../concepts/motion-retargeting.md) 与 [GMR](./motion-retargeting-gmr.md) 放进消融，提示"重定向不是免费的"。
-- 把 [BeyondMimic](./beyondmimic.md) / [SONIC](./sonic-motion-tracking.md) 风格的 motion tracking 大模型作为通用执行层，而不再为每个任务单独 reward 工程。
+- 把 [BeyondMimic](./beyondmimic.md) / [SONIC](../entities/nvidia-sonic.md) 风格的 motion tracking 大模型作为通用执行层，而不再为每个任务单独 reward 工程。
 - 在 [Unitree G1](../entities/unitree-g1.md) 上端到端验证，是当前 G1 平台上"video → motion → tracking"系统的代表实现。
 
 ## 英文缩写速查
@@ -157,7 +157,7 @@ ExoActor 是一篇典型的"桥接型"论文，把好几条看似独立的技术
 - [sources/papers/genmo.md](../../sources/papers/genmo.md) — GENMO dual-mode 训练
 - Zhou Y., Ma J., Peng Y., Sun Z., Bai Y., Karlsson B. F. *ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control.* arXiv:2604.27711, BAAI, 2026. <https://arxiv.org/abs/2604.27711> / <https://arxiv.org/html/2604.27711v1>
 - 项目主页：<https://baai-agents.github.io/ExoActor/>
-- 相关基础工作：[GENMO](./genmo.md) (Li et al., 2025)、[WiLoR](./wilor.md) (Potamias et al., 2025)、[SONIC](./sonic-motion-tracking.md) (Luo et al., 2025)、Kling 3 (Kling Team, 2025)、SMPL (Loper et al., 2015)。
+- 相关基础工作：[GENMO](./genmo.md) (Li et al., 2025)、[WiLoR](./wilor.md) (Potamias et al., 2025)、[SONIC](../entities/nvidia-sonic.md) (Luo et al., 2025)、Kling 3 (Kling Team, 2025)、SMPL (Loper et al., 2015)。
 
 ## 关联页面
 
@@ -165,8 +165,8 @@ ExoActor 是一篇典型的"桥接型"论文，把好几条看似独立的技术
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频即仿真范式在人形控制上的具体实例化。
 - [GMR (通用动作重定向)](./motion-retargeting-gmr.md) — ExoActor 的消融提供了"什么时候不该用重定向"的反例。
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 流水线中"是否需要中间重定向"的决策点。
-- [BeyondMimic](./beyondmimic.md) — 与 SONIC 同属高质量模仿 / 跟踪路线；ExoActor 以 [SONIC](./sonic-motion-tracking.md) 为通用执行器。
-- [GENMO](./genmo.md)、[WiLoR](./wilor.md)、[SONIC](./sonic-motion-tracking.md) — ExoActor 流水线的三条可替换模块，本库已分别入库。
+- [BeyondMimic](./beyondmimic.md) — 与 SONIC 同属高质量模仿 / 跟踪路线；ExoActor 以 [SONIC](../entities/nvidia-sonic.md) 为通用执行器。
+- [GENMO](./genmo.md)、[WiLoR](./wilor.md)、[SONIC](../entities/nvidia-sonic.md) — ExoActor 流水线的三条可替换模块，本库已分别入库。
 - [RoboReact（论文实体）](../entities/paper-roboreact.md) — egocentric 生成视频 + 物体中心关键帧 + 标定 VLM；对照本文第三人称 GMT 跟踪（arXiv:2608.03387）。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — ExoActor 在 G1 上验证的 A/S 级任务大部分属于 loco-manipulation。
 - [Unitree G1](../entities/unitree-g1.md) — 端到端验证平台。

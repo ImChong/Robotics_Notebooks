@@ -11,7 +11,7 @@
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + `wechat-article-for-ai`（Camoufox）；`--no-images`；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
 - **原始抓取落盘：** [wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026-08-27.md](../raw/wechat_embodied_ai_lab_scirobotics_three_humanoid_papers_2026-08-27.md)
 - **姊妹长文：** [42 篇 RL 运动控制](wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（身体系统栈总框架）
-- **一句话说明：** 把 *Science Robotics* 11(117) 同期三篇——[ZEST](../../wiki/entities/paper-zest.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)、[视觉驱动反应式足球](../../wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)——读成**三个系统层级**（技能编译器 / 运动基础模型 / 感知任务策略），而不是互相竞争的通用 tracker。
+- **一句话说明：** 把 *Science Robotics* 11(117) 同期三篇——[ZEST](../../wiki/entities/paper-zest.md)、[SONIC](../../wiki/entities/nvidia-sonic.md)、[视觉驱动反应式足球](../../wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)——读成**三个系统层级**（技能编译器 / 运动基础模型 / 感知任务策略），而不是互相竞争的通用 tracker。
 
 ## 核心摘录（归纳，非全文）
 
@@ -46,7 +46,7 @@
 
 - [ZEST vs SONIC vs 视觉足球（三层对比）](../../wiki/comparisons/zest-vs-sonic-vs-vision-soccer.md) — 本次升格主页面
 - [ZEST 论文实体](../../wiki/entities/paper-zest.md) / [ZEST 方法](../../wiki/methods/zest.md)
-- [SONIC](../../wiki/methods/sonic-motion-tracking.md)
+- [SONIC](../../wiki/entities/nvidia-sonic.md)
 - [Vision-Driven Reactive Soccer](../../wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md)
 - [人形运动跟踪方法选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)
 - [Humanoid Soccer](../../wiki/tasks/humanoid-soccer.md)

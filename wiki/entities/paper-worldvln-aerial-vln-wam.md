@@ -30,7 +30,6 @@ sources:
   - ../../sources/sites/worldvln-embodiedcity.md
   - ../../sources/repos/worldvln_embodiedcity.md
 summary: "WorldVLN（arXiv:2605.15964）：首个面向空中 VLN 的自回归 World Action Model——潜视频骨干预测短视界世界转移并解码为航点，执行后观测回写闭环；SFT 接地 + Action-aware GRPO；室内外 UAV 基准相对 VLA 成功率提高超过12个百分点，报告真机零样本部署。"
-
 ---
 
 # WorldVLN（空中 VLN · 自回归 World Action Model）

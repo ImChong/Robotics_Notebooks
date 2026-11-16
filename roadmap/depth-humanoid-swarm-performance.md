@@ -75,7 +75,7 @@ flowchart LR
 
 ### 核心问题
 - 舞蹈动作的来源管线：动捕 / 视频估计 → 重定向 → 物理可行化，与 [动作重定向](../wiki/concepts/motion-retargeting.md) 通用管线的差异在于**节拍对齐**与**风格保持**
-- 跟踪 RL 怎么选：[DeepMimic](../wiki/methods/deepmimic.md) 谱系单段跟踪、[BeyondMimic](../wiki/methods/beyondmimic.md) 通用跟踪、[SONIC](../wiki/methods/sonic-motion-tracking.md) 规模化预训练各适合什么规模的曲目库；音乐条件先生成运动参考，再接跟踪器，不把 SONIC 的运动 token 接口等同于音频输入
+- 跟踪 RL 怎么选：[DeepMimic](../wiki/methods/deepmimic.md) 谱系单段跟踪、[BeyondMimic](../wiki/methods/beyondmimic.md) 通用跟踪、[SONIC](../wiki/entities/nvidia-sonic.md) 规模化预训练各适合什么规模的曲目库；音乐条件先生成运动参考，再接跟踪器，不把 SONIC 的运动 token 接口等同于音频输入
 - 音乐/文本驱动的编舞素材生产：[GENMO](../wiki/methods/genmo.md)、[HY-Motion](../wiki/methods/hy-motion-1.md) 类生成模型怎么接进"生成 → 重定向 → 跟踪"管线
 - 展演动作的特殊约束：动作要"好看"而不只是"不摔"——风格奖励、动作幅度与安全裕度的平衡
 
@@ -85,7 +85,7 @@ flowchart LR
 
 ### 推荐读什么
 - [DeepMimic](../wiki/methods/deepmimic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 动作跟踪两代代表
-- [SONIC](../wiki/methods/sonic-motion-tracking.md) — 规模化运动跟踪后端
+- [SONIC](../wiki/entities/nvidia-sonic.md) — 规模化运动跟踪后端
 - [AHEADance](../wiki/entities/paper-aheadance.md) — 流式音乐先生成 G1 参考，再由 SONIC 执行；生成器未接收机器人状态反馈，单机演示也不等于多机同步方案；2026-11-14 官方仍标 Code soon
 - [GENMO](../wiki/methods/genmo.md) 与 [HY-Motion 1.0](../wiki/methods/hy-motion-1.md) — 音乐/文本驱动动作生成
 - [人形参考动作数据集对比](../wiki/comparisons/humanoid-reference-motion-datasets.md) — 曲目库选型
@@ -195,7 +195,7 @@ flowchart LR
 
 **方向 A：在线互动展演**
 - 从固定时间轴走向观众/音乐实时驱动：现场音乐节拍提取 → 在线编舞生成 → 群体即兴，把 Stage 1 的生成模型搬到闭环里
-- 关键词：[GENMO / GEM](../wiki/methods/genmo.md) 或 [AHEADance](../wiki/entities/paper-aheadance.md)（音乐→参考运动）、[SONIC](../wiki/methods/sonic-motion-tracking.md)（运动参考→机器人跟踪）；单机音乐条件生成之外，仍需 Stage 2 的多机时间轴与同步
+- 关键词：[GENMO / GEM](../wiki/methods/genmo.md) 或 [AHEADance](../wiki/entities/paper-aheadance.md)（音乐→参考运动）、[SONIC](../wiki/entities/nvidia-sonic.md)（运动参考→机器人跟踪）；单机音乐条件生成之外，仍需 Stage 2 的多机时间轴与同步
 
 **方向 B：学习式多机协调**
 - 用 [MARL](../wiki/methods/marl.md) 学走位与协作，替代手工指派与规则容错；对照 [CTDE vs 去中心化](../wiki/comparisons/ctde-vs-decentralized-marl.md) 的训练拓扑选型

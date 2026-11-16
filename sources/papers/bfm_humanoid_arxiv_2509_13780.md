@@ -34,7 +34,7 @@
 
 - 与 [HOVER](https://hover-versatile-humanoid.github.io/)（Zhengyi Luo 等）类似都做 **多模式 WBC**，但 HOVER 偏 **multi-mode multitask RL**；BFM 显式建生成式潜空间，**支持插值与 CFG 调制**，并允许 **任意位级掩码组合**。
 - 与 [GMT / OmniH2O](../../wiki/tasks/teleoperation.md) 等专家策略相比，BFM 一个策略覆盖跟踪/遥操作/locomotion，性能在多数指标上 **持平或更好**。
-- 与 [SONIC](../../wiki/methods/sonic-motion-tracking.md) 等「大规模 motion tracking 当预训练」叙事互补：SONIC 强调 **数据 / 网络 / 算力同步 scaling**；BFM 强调 **条件生成结构 + 蒸馏** 让 **一个 checkpoint 覆盖多种控制接口**。
+- 与 [SONIC](../../wiki/entities/nvidia-sonic.md) 等「大规模 motion tracking 当预训练」叙事互补：SONIC 强调 **数据 / 网络 / 算力同步 scaling**；BFM 强调 **条件生成结构 + 蒸馏** 让 **一个 checkpoint 覆盖多种控制接口**。
 - 与 **BFM-Zero**（[lecar-lab.github.io/BFM-Zero](https://lecar-lab.github.io/BFM-Zero/)，arXiv:2511.04131）同名但取向不同：BFM-Zero 用 **无监督 RL + Forward-Backward 表示** 学 dynamics-aware 潜空间；本论文走 **有监督特权蒸馏 + CVAE** 路线。两者可并列阅读以理解「Behavior Foundation Model」当前的方法谱系。
 - 综述：**A Survey of Behavior Foundation Model**（Yuan 等，arXiv:2506.20487，TPAMI 2025）系统梳理 BFM 作为 humanoid WBC 下一代范式的 pre-training pipeline 分类。
 

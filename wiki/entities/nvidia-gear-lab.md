@@ -7,7 +7,7 @@ related:
   - ../methods/aspire.md
   - ../methods/egoscale.md
   - ../methods/enpire.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./gr00t-wholebodycontrol.md
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ./gr00t-visual-sim2real.md
@@ -69,7 +69,7 @@ flowchart TB
 | 支柱 | 公开定义（归纳） | 本库已沉淀代表 |
 |------|------------------|----------------|
 | **Multimodal Foundation Models** | 互联网规模数据上的 LLM 规划、VLM、世界模型 | [VLA](../methods/vla.md) 生态中的 GR00T / planner 叙事 |
-| **General-Purpose Robots** | 复杂环境人形 locomotion + 灵巧操作 | [SONIC](../methods/sonic-motion-tracking.md)、[EgoScale](../methods/egoscale.md)、[GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md) |
+| **General-Purpose Robots** | 复杂环境人形 locomotion + 灵巧操作 | [SONIC](./nvidia-sonic.md)、[EgoScale](../methods/egoscale.md)、[GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md) |
 | **Foundation Agents** | 游戏/仿真中自探索、自举能力的大 action model | 主页 Featured：**Voyager**、**MineDojo**（待单独 ingest） |
 | **Simulation & Synthetic Data** | 大规模学习的仿真 infra 与合成数据 | [GR00T Visual Sim2Real](./gr00t-visual-sim2real.md)、Isaac 系教程交叉 |
 
@@ -92,7 +92,7 @@ flowchart TB
 
 | 工作 | 角色 | 本库入口 |
 |------|------|----------|
-| **SONIC** | 规模化人形 motion tracking / 统一低层接口 | [sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) |
+| **SONIC** | 规模化人形 motion tracking / 统一低层接口 | [sonic-motion-tracking.md](./nvidia-sonic.md) |
 | **ENPIRE** | 真机 coding-agent 策略自改进 harness | [enpire.md](../methods/enpire.md) |
 | **ASPIRE** | 持续学习 code-as-policy + 可扩展技能库（arXiv:2607.00272；NVlabs/ASPIRE 代码已开源） | [aspire.md](../methods/aspire.md) |
 | **GaP** | Graph-as-Policy 多 agent harness + 变体自动化 benchmark | [paper-gap-graph-as-policy.md](./paper-gap-graph-as-policy.md) |
@@ -133,7 +133,7 @@ flowchart TB
 
 ## 关联页面
 
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md)
 - [EgoScale](../methods/egoscale.md)
 - [ENPIRE](../methods/enpire.md)
 - [ASPIRE](../methods/aspire.md)

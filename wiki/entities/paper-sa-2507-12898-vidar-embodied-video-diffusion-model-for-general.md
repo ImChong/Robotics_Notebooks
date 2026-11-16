@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# Vidar
+# Vidar: Embodied Video Diffusion Manipulation（arXiv:2507.12898）
 
 **Vidar: Embodied Video Diffusion Model for Generalist Manipulation** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 338/571** 篇，分组 **812 Manipulation**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

@@ -19,7 +19,7 @@ updated: 2026-11-13
 venue: "Symbiosis Robotics Blog · 2026-08"
 related:
   - ../tasks/loco-manipulation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../queries/vla-with-low-level-controller.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-omega-0.md
@@ -40,7 +40,7 @@ summary: "DPC（Symbiosis Robotics, 2026-08 博客）：去掉分层全身栈的
 
 # DPC：Direct Perception Control（直接感知控制）
 
-**DPC**（*Direct Perception Control Model*，[项目页](https://symbiosis-robotics.com/research/dpc/en/)，[规范引用](https://symbiosis-robotics.com/research/dpc)）是 **Symbiosis Robotics** 在 2026-08 发布的公司研究报告：主张把智能模型的边界从「生成待跟踪的运动学目标」推到「依赖当前身体状态、可直接执行的物理动作」。它把 [Helix](https://www.figure.ai/news/helix)、[Gemini Robotics 2](./gemini-robotics.md)、[ω-0](./paper-omega-0.md)、[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 等分层全身系统写成 **System 1 Latent Policy → \(Z_t\) → 冻结 System 0 Whole-Body Tracker**，并以冻结 [SONIC](../methods/sonic-motion-tracking.md) 解码器为具体靶，给出三条可证伪的信息瓶颈。
+**DPC**（*Direct Perception Control Model*，[项目页](https://symbiosis-robotics.com/research/dpc/en/)，[规范引用](https://symbiosis-robotics.com/research/dpc)）是 **Symbiosis Robotics** 在 2026-08 发布的公司研究报告：主张把智能模型的边界从「生成待跟踪的运动学目标」推到「依赖当前身体状态、可直接执行的物理动作」。它把 [Helix](https://www.figure.ai/news/helix)、[Gemini Robotics 2](./gemini-robotics.md)、[ω-0](./paper-omega-0.md)、[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) 等分层全身系统写成 **System 1 Latent Policy → \(Z_t\) → 冻结 System 0 Whole-Body Tracker**，并以冻结 [SONIC](./nvidia-sonic.md) 解码器为具体靶，给出三条可证伪的信息瓶颈。
 
 ## 一句话定义
 
@@ -61,7 +61,7 @@ summary: "DPC（Symbiosis Robotics, 2026-08 博客）：去掉分层全身栈的
 
 ## 为什么重要
 
-- **把「VLA/WAM + 冻结 GMT」写成能力上限，而不是默认底座。** 2026 年大量人形 loco-manipulation 把 [SONIC](../methods/sonic-motion-tracking.md) token 当统一动作空间（[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)、[ω-0](./paper-omega-0.md)、[LEGS](./paper-legs-embodied-gaussian-splatting-vla.md)）。DPC 的论点是：缩放的是目标生成器，接触/平衡/上下身协调仍发生在冻结解码器之后。
+- **把「VLA/WAM + 冻结 GMT」写成能力上限，而不是默认底座。** 2026 年大量人形 loco-manipulation 把 [SONIC](./nvidia-sonic.md) token 当统一动作空间（[MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md)、[ω-0](./paper-omega-0.md)、[LEGS](./paper-legs-embodied-gaussian-splatting-vla.md)）。DPC 的论点是：缩放的是目标生成器，接触/平衡/上下身协调仍发生在冻结解码器之后。
 - **瓶颈不在维度而在监督几何。** 页内明确：问题不是「64 维太小」，而是 token 损失走 \(I_{64}\)、动作损失走 \(\mathrm{rank}\le 29\) 的 \(J_h^\top J_h\)，二者全局不等价。
 - **数据主张可对照产业叙事。** 15,010 h 统一到 G1 关节空间，介于 [Curr-0](./current-robotics-curr0.md) 的 human-task-hour 与 π 系异构多本体之间：先对齐执行空间，再谈混合。
 - **工程读法必须保守：** 无代码、无消融表、无对照成功率；适合当选型坐标，不适合当复现基线。
@@ -210,7 +210,7 @@ flowchart TB
 ## 关联页面
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 任务坐标与「去掉运动接口」路线
-- [SONIC](../methods/sonic-motion-tracking.md) — 被本页当作冻结 System 0 的具体接口
+- [SONIC](./nvidia-sonic.md) — 被本页当作冻结 System 0 的具体接口
 - [Query：VLA 与低级控制器融合](../queries/vla-with-low-level-controller.md) — 把 DPC 读成无冻结 tracker 的 direct-joint 档
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 页内引用的实时 WAM + SONIC token 对照
 - [ω-0](./paper-omega-0.md) — 页内引用的潜空间 foresight + SONIC latent 对照

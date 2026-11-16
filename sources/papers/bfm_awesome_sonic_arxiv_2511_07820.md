@@ -20,7 +20,7 @@
 
 ## 对 wiki 的映射
 
-  - [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)
+  - [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md)
   - [bfm-41-papers-technology-map](../../wiki/overview/bfm-41-papers-technology-map.md)
 
 ## 参考来源（原始）

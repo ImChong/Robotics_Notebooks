@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# AWM
+# AWM: Group-Structured Abstract World Models（arXiv:2506.01529）
 
 **AWM: Learning Abstract World Models with a Group-Structured Latent Space** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 107/571** 篇，分组 **44 Latent Space World Models**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

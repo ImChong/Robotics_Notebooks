@@ -163,7 +163,7 @@ sequenceDiagram
 
 - **地形条件参考生成**：PMT 内的 TCRS 只做脚轨迹采样优化、根高度调整和腿部 IK，非腿关节不动；NEXUS 同时处理手和脚接触。表 I 中 NEXUS 的非接触关节偏差（0.00984 / 0.01473 rad）远低于 TCRS（0.08884 / 0.12213 rad）；TCRS 在 64 次计时用例中各有 1 次和 5 次进程出错。
 - **感知运动跟踪 [PMT](./paper-perceptive-bfm.md)**：问题设定最接近，但平地上就在 100STYLE、LaFAN1 子集失败（SR 0），论文认为与其以行走和舞蹈为主的语料有关。
-- **地形无关 BFM（[SONIC](../methods/sonic-motion-tracking.md)、[HoloMotion](./holomotion.md)、HumanoidGPT）**：平地上覆盖面与 NEXUS 接近，地形越陡 SR 降得越多。HoloMotion 在地形上的 MPKPE 更低（8.83 vs 10.15 cm），但误差只统计各自失败前的窗口，须与 SR 一起读。
+- **地形无关 BFM（[SONIC](./nvidia-sonic.md)、[HoloMotion](./holomotion.md)、HumanoidGPT）**：平地上覆盖面与 NEXUS 接近，地形越陡 SR 降得越多。HoloMotion 在地形上的 MPKPE 更低（8.83 vs 10.15 cm），但误差只统计各自失败前的窗口，须与 SR 一起读。
 - **同名预告**：与 [早期 NEXUS 预告页](./nexus-humanoid.md) 的关系见上文「与同名工作区分」。
 
 ## 结论

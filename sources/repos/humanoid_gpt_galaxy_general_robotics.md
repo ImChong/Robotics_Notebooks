@@ -18,7 +18,7 @@ CVPR 2026 论文 **Humanoid-GPT** 的官方代码入口：已发布 **推理 / �
 ## 为何值得保留
 
 - **可复现锚点**：与 arXiv / 项目页并列，便于跟进工程细节（仿真、checkpoint、部署脚本、数据格式）。
-- **生态位**：与 [SONIC](../../wiki/methods/sonic-motion-tracking.md)（NVIDIA，100M MLP）形成 **Transformer + 2B 帧** 对照的开源跟踪基线候选。
+- **生态位**：与 [SONIC](../../wiki/entities/nvidia-sonic.md)（NVIDIA，100M MLP）形成 **Transformer + 2B 帧** 对照的开源跟踪基线候选。
 - **工程可用性（2026-06-19）**：README 标明 **推理与部署代码**、**`storage/ckpts/pns_wo_priv216.onnx`** 已发布；真机 / Jetson / BrainCo 手部分支有独立 `DEPLOY.md`。
 
 ## 发布状态（README TODO 区块）
@@ -79,7 +79,7 @@ python -m scripts.vis --mocap_path storage/test
 ## 对 Wiki 的映射
 
 - [Humanoid-GPT（论文实体页）](../../wiki/entities/paper-humanoid-gpt.md)
-- [SONIC（规模化运动跟踪）](../../wiki/methods/sonic-motion-tracking.md) — 同任务不同规模/结构路线的对照阅读
+- [SONIC（规模化运动跟踪）](../../wiki/entities/nvidia-sonic.md) — 同任务不同规模/结构路线的对照阅读
 
 ## 参考来源（原始）
 

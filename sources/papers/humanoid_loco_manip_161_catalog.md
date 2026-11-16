@@ -32,13 +32,13 @@
 | 016 | OmniH2O | [paper-loco-manip-161-016-omnih2o](../../wiki/entities/paper-hrl-stack-08-omnih2o.md) |
 | 017 | OmniRetarget | [paper-loco-manip-161-017-omniretarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md) |
 | 018 | Retargeting | [paper-loco-manip-161-018-retargeting](../../wiki/entities/paper-hrl-stack-01-retargeting_matters.md) |
-| 019 | SONIC | [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md) |
+| 019 | SONIC | [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md) |
 | 020 | TWIST2 | [paper-loco-manip-161-020-twist2](../../wiki/entities/paper-twist2.md) |
 | 021 | TWIST | [paper-loco-manip-161-021-twist](../../wiki/entities/paper-twist.md) |
 | 022 | TextOp | [paper-loco-manip-161-022-textop](../../wiki/entities/paper-loco-manip-161-022-textop.md) |
 | 023 | UniAct | [paper-loco-manip-161-023-uniact](../../wiki/entities/paper-loco-manip-161-023-uniact.md) |
 | 024 | UniTracker | [paper-loco-manip-161-024-unitracker](../../wiki/entities/paper-loco-manip-161-024-unitracker.md) |
-| 025 | 人形操作接口 | [paper-loco-manip-161-025-n025](../../wiki/entities/paper-loco-manip-161-025-n025.md) |
+| 025 | 人形操作接口 | [paper-loco-manip-161-025-n025](../../wiki/entities/paper-notebook-humanoid-manipulation-interface.md) |
 | 026 | 人形机器人富有表现力的全身控制 | [paper-loco-manip-161-026-n026](../../wiki/entities/paper-loco-manip-161-026-n026.md) |
 | 027 | 人形机器人行为基础模型 | [paper-loco-manip-161-027-n027](../../wiki/entities/paper-loco-manip-161-027-n027.md) |
 | 028 | 从专家到通用：走向人形机器人的通用全身控制 | [paper-loco-manip-161-028-n028](../../wiki/entities/paper-loco-manip-161-028-n028.md) |
@@ -111,7 +111,7 @@
 | 081 | VIRAL | [paper-loco-manip-161-081-viral](../../wiki/entities/paper-viral-humanoid-visual-sim2real.md) |
 | 082 | VisualMimic | [paper-loco-manip-161-082-visualmimic](../../wiki/entities/paper-notebook-visualmimic.md) |
 | 083 | WholeBodyVLA | [paper-loco-manip-161-083-wholebodyvla](../../wiki/entities/paper-hrl-stack-30-wholebodyvla.md) |
-| 084 | 人形操作接口 | [paper-loco-manip-161-084-n084](../../wiki/entities/paper-loco-manip-161-084-n084.md) |
+| 084 | 人形操作接口 | [paper-loco-manip-161-084-n084](../../wiki/entities/paper-notebook-humanoid-manipulation-interface.md) |
 | 085 | 人形机器人运动与操作 | [paper-loco-manip-161-085-n085](../../wiki/entities/paper-loco-manip-161-085-n085.md) |
 | 086 | 使用3D扩散策略的通用人形操作 | [paper-loco-manip-161-086-n086](../../wiki/entities/paper-loco-manip-161-086-n086.md) |
 | 087 | 具有选择策略的协调人形操作 | [paper-loco-manip-161-087-n087](../../wiki/entities/paper-loco-manip-161-087-n087.md) |
@@ -137,7 +137,7 @@
 | 100 | MotionWAM | [paper-loco-manip-161-100-motionwam](../../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) |
 | 101 | OMG | [paper-loco-manip-161-101-omg](../../wiki/entities/paper-omg-omni-modal-humanoid-control.md) |
 | 102 | Robot Motion Diffusion Model | [paper-loco-manip-161-102-robot-motion-diffusion-model](../../wiki/entities/paper-loco-manip-161-102-robot-motion-diffusion-model.md) |
-| 103 | SONIC | [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md) |
+| 103 | SONIC | [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md) |
 | 104 | SafeFlow | [paper-loco-manip-161-104-safeflow](../../wiki/entities/paper-loco-manip-161-104-safeflow.md) |
 | 105 | TextOp | [paper-loco-manip-161-022-textop](../../wiki/entities/paper-loco-manip-161-022-textop.md) |
 | 106 | 从语言到运动 | [paper-loco-manip-161-106-n106](../../wiki/entities/paper-loco-manip-161-106-n106.md) |
@@ -168,7 +168,7 @@
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 120 | GentleHumanoid | [paper-loco-manip-161-120-gentlehumanoid](../../wiki/methods/gentlehumanoid-motion-tracking.md) |
+| 120 | GentleHumanoid | [paper-loco-manip-161-120-gentlehumanoid](../../wiki/entities/paper-gentlehumanoid.md) |
 | 121 | Humanoid-VLA | [paper-loco-manip-161-121-humanoid-vla](../../wiki/entities/paper-loco-manip-161-121-humanoid-vla.md) |
 | 122 | LeVERB | [paper-loco-manip-161-122-leverb](../../wiki/entities/paper-bfm-36-leverb.md) |
 | 123 | 从嘈杂的感官输入中学习人形足球机器人的敏捷前锋技能 | [paper-loco-manip-161-123-n123](../../wiki/entities/paper-loco-manip-161-123-n123.md) |
@@ -207,7 +207,7 @@
 | 142 | 具有实时基础地形重建的步态自适应感知人形运动 | [paper-loco-manip-161-142-n142](../../wiki/entities/paper-loco-manip-161-142-n142.md) |
 | 143 | 在人形操作的ACT模仿学习中，主动立体相机的性能优于多传感器设置 | [paper-loco-manip-161-143-act](../../wiki/entities/paper-loco-manip-161-131-open-television.md) |
 | 144 | 学习人对人的实时全身远程操作。 | [paper-loco-manip-161-144-n144](../../wiki/entities/paper-loco-manip-161-144-n144.md) |
-| 145 | 手眼自主配送 | [paper-loco-manip-161-145-n145](../../wiki/entities/paper-loco-manip-161-145-n145.md) |
+| 145 | 手眼自主配送 | [paper-loco-manip-161-145-n145](../../wiki/entities/paper-loco-manip-161-126-n126.md) |
 
 ## 09. 人形 VLA、世界模型与通用操作
 

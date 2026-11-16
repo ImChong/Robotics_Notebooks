@@ -11,7 +11,7 @@ code: https://github.com/AIGeeksGroup/HumanoidTTT
 related:
   - ./paper-twist2.md
   - ./paper-yahmp.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/behavior-foundation-model.md
 sources:
   - ../../sources/papers/humanoidttt_arxiv_2610_00198.md
@@ -154,7 +154,7 @@ sequenceDiagram
 
 - [TWIST2：人形全身数据采集与跟踪](./paper-twist2.md)
 - [YAHMP：通用人形动作跟踪实证框架](./paper-yahmp.md)
-- [SONIC 全身运动跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC 全身运动跟踪](./nvidia-sonic.md)
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md)
 
 ## 参考来源

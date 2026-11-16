@@ -8,7 +8,7 @@ related:
   - ./party-os.md
   - ./partymimic.md
   - ../overview/roboparty-lab-party-os-technology-map.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/motion-retargeting.md
   - ../tasks/teleoperation.md
   - ./paper-bfm-zero.md
@@ -57,7 +57,7 @@ summary: "MimicLite 是 RoboParty 面向人形通用运动跟踪的开源训练�
 - **输入：** 统一格式的参考 motion（来自多数据集或真机采集）。
 - **机制：** 在并行仿真环境中优化跟踪策略；文称可随并行环境数、GPU 数与模型容量扩展，更大规模训练可提高高动态动作完成度。
 - **输出：** 可部署的 tracking policy artifact。
-- **文内对标：** 训练成本约为 [SONIC](../methods/sonic-motion-tracking.md) 算力的 ~1/875（自述），全局根部跟踪更好、局部身体跟踪相当——**须以公开复现与 matched evaluation 验证**。
+- **文内对标：** 训练成本约为 [SONIC](./nvidia-sonic.md) 算力的 ~1/875（自述），全局根部跟踪更好、局部身体跟踪相当——**须以公开复现与 matched evaluation 验证**。
 
 ### 2. Tracking Infra：any4hdmi + mjhub
 
@@ -187,7 +187,7 @@ sequenceDiagram
 - [Party OS](./party-os.md)
 - [PartyMimic：单卡可微世界模型全身跟踪](./partymimic.md) — 相比 MimicLite 的多 codebase 训练部署基础设施定位，PartyMimic 聚焦 SuperMimic 系可微模型训练配方与单卡评测
 - [human-humanoid-tools](./human-humanoid-tools.md)
-- [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [SONIC（规模化运动跟踪）](./nvidia-sonic.md)
 - [BFM-Zero（论文实体）](./paper-bfm-zero.md)
 - [TWIST2（论文实体）](./paper-twist2.md)
 - [Teleopit（论文实体）](./paper-teleopit.md) — 文内跨 codebase 列表中的 TeleopIT

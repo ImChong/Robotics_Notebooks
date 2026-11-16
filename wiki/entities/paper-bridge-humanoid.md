@@ -90,7 +90,7 @@ Table 4 类人度（越小越好的误差 + 综合 \(\mathcal{S}_{\mathrm{HL}}\)
 
 相对 SMPL 的肢体缩放均值：Bridge **1.021**，ToddlerBot 1.171，K1 1.344，Bumi 1.376。
 
-Table 5：各形态上训 [SONIC](../methods/sonic-motion-tracking.md)，LaFAN1 + `bones_seed` 统一基准：
+Table 5：各形态上训 [SONIC](./nvidia-sonic.md)，LaFAN1 + `bones_seed` 统一基准：
 
 | 平台 | SR ↑ | MPJPE ↓ | MPJVE ↓ | RootVelErr ↓ | MPKPE ↓ |
 |------|------|---------|---------|--------------|---------|

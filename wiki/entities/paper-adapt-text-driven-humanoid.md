@@ -18,7 +18,7 @@ related:
   - ./paper-bfm-40-uniphys.md
   - ./paper-adapt.md
   - ./paper-sentinel.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../concepts/motion-retargeting-pipeline.md
 sources:
   - ../../sources/papers/adapt_arxiv_2609_00677.md
@@ -49,7 +49,7 @@ summary: "ADAPT（arXiv:2609.00677，ETH）：端到端文本条件扩散技能�
 
 ## 为什么重要
 
-- 两阶段 text-to-motion（[TextOp](./paper-loco-manip-161-022-textop.md)、Kimodo、[SONIC](../methods/sonic-motion-tracking.md) 跟踪栈）在**快速换令**时容易吐出跟踪器跟不住的参考。
+- 两阶段 text-to-motion（[TextOp](./paper-loco-manip-161-022-textop.md)、Kimodo、[SONIC](./nvidia-sonic.md) 跟踪栈）在**快速换令**时容易吐出跟踪器跟不住的参考。
 - 端到端 [LangWBC](./paper-bfm-37-langwbc.md) / [SENTINEL](./paper-sentinel.md) 多用序列级标题，训练看不到片段内切换边界。
 - 同作者 [UniPhys](./paper-bfm-40-uniphys.md) 已在角色动画里做端到端扩散；本篇把延迟压到 **2 ms / 50 Hz** 并上 **G1 真机**。
 - **截至 2026-09-03 未开源** — 项目页无 GitHub / 权重。
@@ -150,7 +150,7 @@ flowchart TB
 - [UniPhys](./paper-bfm-40-uniphys.md) — 同作者角色动画前作
 - [AdaPT（网球）](./paper-adapt.md) — 同名另一篇
 - [SENTINEL](./paper-sentinel.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](./nvidia-sonic.md)
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md)
 
 ## 推荐继续阅读

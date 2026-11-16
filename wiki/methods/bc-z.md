@@ -27,7 +27,7 @@ summary: "BC-Z 通过大规模真实世界模仿学习（示范 + 人工干预�
 ## 主要技术路线
 
 - **规模化模仿**：海量遥操作轨迹上的语言 / 视频等多形态任务条件行为克隆，面向零样本迁移到新指令。论文把数据收集扩展到 100 多项真机操控任务后，策略在 24 项训练中未见的任务上取得 44% 平均成功率，且这些任务没有任何机器人示范。
-- **与通用策略衔接**：与 [Foundation Policy](../concepts/foundation-policy.md) 叙事一致，并为后续 [DIAL](./dial-instruction-augmentation.md)、[Octo](./octo-model.md) 等方法提供数据范式参照。
+- **与通用策略衔接**：与 [Foundation Policy](../concepts/foundation-policy.md) 叙事一致，并为后续 [DIAL](./dial-instruction-augmentation.md)、[Octo](../entities/paper-octo.md) 等方法提供数据范式参照。
 
 ## 关联页面
 

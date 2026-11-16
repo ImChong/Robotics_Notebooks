@@ -45,7 +45,7 @@ BFM 从 **大规模、多样化行为数据** 学习 **广义行为先验（broa
 下列工作在本库 **已有** wiki 页或 methods 页，本 source 主要作 **谱系索引**：
 
 - [BFM（arXiv:2509.13780）](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)
-- [SONIC](../../wiki/methods/sonic-motion-tracking.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md)、[AMS](../../wiki/methods/ams.md)（若已收录）
+- [SONIC](../../wiki/entities/nvidia-sonic.md)、[BeyondMimic](../../wiki/methods/beyondmimic.md)、[AMS](../../wiki/methods/ams.md)（若已收录）
 - [Foundation Policy](../../wiki/concepts/foundation-policy.md)、[Whole-Body Control](../../wiki/concepts/whole-body-control.md)
 
 ### 值得后续单篇 ingest 的候选（列表有、本库尚无独立页）

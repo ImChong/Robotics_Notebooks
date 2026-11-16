@@ -53,7 +53,7 @@
 |---|------|------|-----------|
 | 25 | OmniTrack | 跟踪策略：物理一致参考让 tracking 更稳 | [OmniTrack](../../wiki/entities/paper-hrl-stack-12-omnitrack.md) |
 | 26 | BeyondMimic | 跟踪策略：从动作跟踪到多功能人形控制 | [BeyondMimic](../../wiki/methods/beyondmimic.md) |
-| 27 | SONIC | 跟踪策略：把 motion tracking 规模化成控制基座 | [SONIC](../../wiki/methods/sonic-motion-tracking.md) |
+| 27 | SONIC | 跟踪策略：把 motion tracking 规模化成控制基座 | [SONIC](../../wiki/entities/nvidia-sonic.md) |
 | 28 | HoloMotion-1 | 跟踪策略：视频动作也进入运动基座训练 | [HoloMotion-1](../../wiki/entities/holomotion.md) |
 | 29 | HumanoidGPT | 跟踪策略：海量动作帧和 Transformer 化 | [HumanoidGPT](../../wiki/entities/paper-humanoid-gpt.md) |
 | 30 | LIMMT | 跟踪策略：数据质量筛选比盲目堆量更重要 | [LIMMT](../../wiki/methods/limmt-gqs-motion-curation.md) |
@@ -113,6 +113,6 @@
 |---|------|------|-----------|
 | 60 | SoftMimic | 接触：柔顺全身控制也在成为 tracking 条件 | [SoftMimic](../../wiki/entities/paper-notebook-softmimic-learning-compliant-whole-body-control.md) |
 | 61 | CHIP | 接触：通过 hindsight perturbation 学自适应柔顺 | [CHIP](../../wiki/entities/paper-hrl-stack-36-chip.md) |
-| 62 | GentleHumanoid | 接触：人和物体接触里的上半身分寸感 | [GentleHumanoid](../../wiki/methods/gentlehumanoid-motion-tracking.md) |
+| 62 | GentleHumanoid | 接触：人和物体接触里的上半身分寸感 | [GentleHumanoid](../../wiki/entities/paper-gentlehumanoid.md) |
 | 63 | Thor | 接触：强接触环境里的全身反应 | [Thor](../../wiki/entities/paper-hrl-stack-42-thor.md) |
 | 64 | WT-UMI | 接触数据：触觉和力监督进入数据链路 | [WT-UMI](../../wiki/entities/paper-loco-manip-07-wt-umi.md) |

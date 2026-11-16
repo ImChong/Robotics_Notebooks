@@ -359,7 +359,7 @@
 | [`wiki/entities/paper-octo.md`](../../wiki/entities/paper-octo.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-pi0.md`](../../wiki/entities/paper-pi0.md) | 3/3 | complete | — |
 | [`wiki/methods/pi07-policy.md`](../../wiki/methods/pi07-policy.md) | 3/3 | complete | — |
-| [`wiki/methods/saycan.md`](../../wiki/methods/saycan.md) | 3/3 | complete | — |
+| [`wiki/entities/paper-saycan.md`](../../wiki/entities/paper-saycan.md) | 3/3 | complete | — |
 | [`wiki/methods/dial-instruction-augmentation.md`](../../wiki/methods/dial-instruction-augmentation.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-internvla-a15-unified-vla.md`](../../wiki/entities/paper-internvla-a15-unified-vla.md) | 3/3 | complete | — |
 | [`wiki/entities/lingbot-vla.md`](../../wiki/entities/lingbot-vla.md) | 3/3 | complete | — |
@@ -530,7 +530,7 @@
 | [`wiki/entities/paper-notebook-physdiff-physics-guided-human-motion-diffusion-m.md`](../../wiki/entities/paper-notebook-physdiff-physics-guided-human-motion-diffusion-m.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-phygile.md`](../../wiki/entities/paper-phygile.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/gen2humanoid.md`](../../wiki/entities/gen2humanoid.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
-| [`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md) | 3/3 | complete | — |
+| [`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md) | 3/3 | complete | — |
 | [`wiki/concepts/whole-body-tracking-pipeline.md`](../../wiki/concepts/whole-body-tracking-pipeline.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-synthetic-video-humanoid-tasks.md`](../../wiki/entities/paper-synthetic-video-humanoid-tasks.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-gentrack.md`](../../wiki/entities/paper-gentrack.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
@@ -764,7 +764,7 @@
 | [`wiki/entities/phc.md`](../../wiki/entities/phc.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-bfm-17-maskedmimic.md`](../../wiki/entities/paper-bfm-17-maskedmimic.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-bfm-14-hover.md`](../../wiki/entities/paper-bfm-14-hover.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
-| [`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md) | 3/3 | complete | — |
+| [`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md) | 3/3 | complete | — |
 | [`wiki/methods/beyondmimic.md`](../../wiki/methods/beyondmimic.md) | 3/3 | complete | — |
 | [`wiki/methods/teacher-student-multi-skill-bfm.md`](../../wiki/methods/teacher-student-multi-skill-bfm.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/entities/paper-pfm-hr.md`](../../wiki/entities/paper-pfm-hr.md) | 2/3 | complete | 缺 original 归档 |
@@ -1115,7 +1115,7 @@
 | [`wiki/concepts/motion-retargeting.md`](../../wiki/concepts/motion-retargeting.md) | 3/3 | complete | — |
 | [`wiki/methods/deepmimic.md`](../../wiki/methods/deepmimic.md) | 3/3 | complete | — |
 | [`wiki/methods/beyondmimic.md`](../../wiki/methods/beyondmimic.md) | 3/3 | complete | — |
-| [`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md) | 3/3 | complete | — |
+| [`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md) | 3/3 | complete | — |
 | [`wiki/methods/genmo.md`](../../wiki/methods/genmo.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/methods/hy-motion-1.md`](../../wiki/methods/hy-motion-1.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-aheadance.md`](../../wiki/entities/paper-aheadance.md) | 3/3 | complete | — |
@@ -1158,7 +1158,7 @@
 
 | 节点 | 分值 | 状态 | 缺项原因 |
 |---|---:|---|---|
-| [`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md) | 3/3 | complete | — |
+| [`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md) | 3/3 | complete | — |
 | [`wiki/methods/genmo.md`](../../wiki/methods/genmo.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/methods/marl.md`](../../wiki/methods/marl.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/comparisons/ctde-vs-decentralized-marl.md`](../../wiki/comparisons/ctde-vs-decentralized-marl.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
@@ -1262,7 +1262,7 @@
 |---|---:|---|---|
 | [`wiki/concepts/whole-body-tracking-pipeline.md`](../../wiki/concepts/whole-body-tracking-pipeline.md) | 3/3 | complete | — |
 | [`wiki/overview/hub-wbt.md`](../../wiki/overview/hub-wbt.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
-| [`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md) | 3/3 | complete | — |
+| [`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md) | 3/3 | complete | — |
 | [`wiki/methods/beyondmimic.md`](../../wiki/methods/beyondmimic.md) | 3/3 | complete | — |
 | [`wiki/queries/humanoid-motion-tracking-method-selection.md`](../../wiki/queries/humanoid-motion-tracking-method-selection.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/tasks/teleoperation.md`](../../wiki/tasks/teleoperation.md) | 3/3 | complete | — |
@@ -1504,7 +1504,7 @@
 | [`wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md`](../../wiki/entities/paper-gaitspan-humanoid-locomotion-walking-running.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/methods/deepmimic.md`](../../wiki/methods/deepmimic.md) | 3/3 | complete | — |
 | [`wiki/methods/beyondmimic.md`](../../wiki/methods/beyondmimic.md) | 3/3 | complete | — |
-| [`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md) | 3/3 | complete | — |
+| [`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md) | 3/3 | complete | — |
 | [`wiki/queries/cross-embodiment-transfer-strategy.md`](../../wiki/queries/cross-embodiment-transfer-strategy.md) | 2/3 | complete | 缺 original 归档 |
 
 ### roadmap/depth-imitation-learning.md（路线 3/3，节点 3/3: 23/35）
@@ -1577,7 +1577,7 @@
 | [`wiki/entities/paper-kai0.md`](../../wiki/entities/paper-kai0.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/concepts/whole-body-tracking-pipeline.md`](../../wiki/concepts/whole-body-tracking-pipeline.md) | 3/3 | complete | — |
 | [`wiki/methods/beyondmimic.md`](../../wiki/methods/beyondmimic.md) | 3/3 | complete | — |
-| [`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md) | 3/3 | complete | — |
+| [`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md) | 3/3 | complete | — |
 | [`wiki/queries/humanoid-motion-tracking-method-selection.md`](../../wiki/queries/humanoid-motion-tracking-method-selection.md) | 2/3 | complete | 缺 original 归档 |
 
 ### roadmap/depth-model-architecture.md（路线 3/3，节点 3/3: 30/58）
@@ -1647,7 +1647,7 @@
 | [`wiki/methods/vla.md`](../../wiki/methods/vla.md) | 3/3 | complete | — |
 | [`wiki/methods/robotics-transformer-rt-series.md`](../../wiki/methods/robotics-transformer-rt-series.md) | 3/3 | complete | — |
 | [`wiki/methods/unified-multimodal-tokens.md`](../../wiki/methods/unified-multimodal-tokens.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
-| [`wiki/methods/octo-model.md`](../../wiki/methods/octo-model.md) | 2/3 | complete | 缺 original 归档 |
+| [`wiki/entities/paper-octo.md`](../../wiki/entities/paper-octo.md) | 2/3 | complete | 缺 original 归档 |
 | [`wiki/methods/π0-policy.md`](../../wiki/methods/π0-policy.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/methods/pi07-policy.md`](../../wiki/methods/pi07-policy.md) | 3/3 | complete | — |
 | [`wiki/methods/star-vla.md`](../../wiki/methods/star-vla.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
@@ -2327,7 +2327,7 @@
 | [`wiki/concepts/whole-body-control.md`](../../wiki/concepts/whole-body-control.md) | 3/3 | complete | — |
 | [`wiki/concepts/whole-body-tracking-pipeline.md`](../../wiki/concepts/whole-body-tracking-pipeline.md) | 3/3 | complete | — |
 | [`wiki/overview/hub-wbt.md`](../../wiki/overview/hub-wbt.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
-| [`wiki/methods/sonic-motion-tracking.md`](../../wiki/methods/sonic-motion-tracking.md) | 3/3 | complete | — |
+| [`wiki/entities/nvidia-sonic.md`](../../wiki/entities/nvidia-sonic.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-twist2.md`](../../wiki/entities/paper-twist2.md) | 3/3 | complete | — |
 | [`wiki/entities/paper-bfm-zero.md`](../../wiki/entities/paper-bfm-zero.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |
 | [`wiki/entities/paper-heft.md`](../../wiki/entities/paper-heft.md) | 1/3 | complete | 阅读骨架不完整；缺 original 归档 |

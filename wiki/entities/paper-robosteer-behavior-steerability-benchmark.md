@@ -13,7 +13,7 @@ related:
   - ../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md
   - ../concepts/behavior-foundation-model.md
   - ./paper-bfm-zero.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/motion-retargeting-gmr.md
   - ./paper-hy-motion-1-0.md
 sources:
@@ -153,7 +153,7 @@ BG = `1000 × exp(−0.3 × FID − 1.6 × MM-Distance)`。FID 衡量生成/目�
 |------|----------|
 | [BFM-Zero](./paper-bfm-zero.md) | 本基准的被评对象之一（轨迹条件，BG 95.39） |
 | [BFM 概念页](../concepts/behavior-foundation-model.md) | 本文给出 BFM 的评测维度 |
-| [SONIC](../methods/sonic-motion-tracking.md) | 本文用其跟踪验证 G1 可执行性 |
+| [SONIC](./nvidia-sonic.md) | 本文用其跟踪验证 G1 可执行性 |
 | [HY-Motion 1.0](./paper-hy-motion-1-0.md) | 文本到动作生成模型，属于同类生成端 |
 
 ## 局限与风险

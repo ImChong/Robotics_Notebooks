@@ -7,7 +7,6 @@ arxiv: "2609.17300"
 code: https://github.com/LyesSaadSaoud/machine-zygote
 related:
   - ../methods/reinforcement-learning.md
-  - ../methods/reinforcement-learning.md
   - ../tasks/manipulation.md
   - ./paper-robresilience.md
   - ../overview/vla-deploy-12-papers-technology-map.md

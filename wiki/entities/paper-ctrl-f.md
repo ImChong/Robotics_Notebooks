@@ -10,7 +10,7 @@ summary: "Ctrl-F以三维力命令连接动作跟踪与物体交互：无物体�
 related:
   - ../tasks/loco-manipulation.md
   - ../concepts/hybrid-force-position-control.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
 sources:
   - ../../sources/papers/ctrl-f.md
   - ../../sources/sites/ctrl-f.md
@@ -105,7 +105,7 @@ Ctrl-F验证力命令能补全动作参考缺少的交互强度，但现有结�
 
 | 项目 | 定位区别 |
 |---|---|
-| [SONIC动作跟踪](../methods/sonic-motion-tracking.md) | 论文采用的无显式力命令基线；名义载荷下五手部任务完成率31%，1.5倍载荷归零 |
+| [SONIC动作跟踪](./nvidia-sonic.md) | 论文采用的无显式力命令基线；名义载荷下五手部任务完成率31%，1.5倍载荷归零 |
 | [混合力位控制](../concepts/hybrid-force-position-control.md) | 经典控制按方向划分力/位子空间；本文把每接触体三维力做成学习式高低层接口 |
 | [Loco-Manipulation](../tasks/loco-manipulation.md) | 全身运动与物体操作的任务主线；本文只覆盖有限动作集与接触体用力强度 |
 
@@ -120,7 +120,7 @@ Ctrl-F验证力命令能补全动作参考缺少的交互强度，但现有结�
 
 - [Loco-Manipulation](../tasks/loco-manipulation.md)：全身运动与物体操作任务主线。
 - [混合力位控制](../concepts/hybrid-force-position-control.md)：对比经典控制中的位置/力分工与本文学习接口。
-- [SONIC动作跟踪](../methods/sonic-motion-tracking.md)：理解论文采用的无显式力命令基线。
+- [SONIC动作跟踪](./nvidia-sonic.md)：理解论文采用的无显式力命令基线。
 
 ## 参考来源
 

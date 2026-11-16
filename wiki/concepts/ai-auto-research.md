@@ -23,7 +23,6 @@ related:
   - ../entities/paper-metarsi-v1.md
   - ../entities/paper-rsi-survey-2607-07663.md
   - ../entities/paper-scientisttwo.md
-  - ../entities/paper-metarsi-v1.md
   - ../entities/agent-lightning.md
   - ../entities/paper-paper2agent.md
   - ../entities/paper-rethinking-ai-scientific-figures.md

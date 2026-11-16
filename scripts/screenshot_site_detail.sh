@@ -3,8 +3,8 @@
 # 统一使用 Node + puppeteer-core 等待元信息异步渲染完成后再截图。
 #
 # 用法（在仓库根目录）:
-#   ./scripts/screenshot_site_detail.sh wiki-methods-sonic-motion-tracking
-#   ./scripts/screenshot_site_detail.sh wiki-methods-sonic-motion-tracking /path/out.png
+#   ./scripts/screenshot_site_detail.sh entity-nvidia-sonic
+#   ./scripts/screenshot_site_detail.sh entity-nvidia-sonic /path/out.png
 #   ./scripts/screenshot_site_detail.sh wiki-concepts-sim2real /path/to/out.png detail-sources
 #   ./scripts/screenshot_site_detail.sh wiki-concepts-vision-backbones /path/to/out.png detailMetaPanel
 #     第三个参数为页面锚点（不带 #），例如 detail-sources / detailMetaPanel。
@@ -16,7 +16,7 @@
 
 set -u
 
-PAGE_ID="${1:?第一个参数: detail 页 id，如 wiki-methods-sonic-motion-tracking}"
+PAGE_ID="${1:?第一个参数: detail 页 id，如 entity-nvidia-sonic}"
 OUT_PATH="${2:-}"
 ANCHOR_RAW="${3:-}"
 PORT="${PORT:-8765}"

@@ -10,7 +10,7 @@ related:
   - ../tasks/locomotion.md
   - ../concepts/whole-body-control.md
   - ../methods/switch-framework.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-gmt.md
   - ./paper-humanoidarena.md
   - ./paper-twist2.md
@@ -168,7 +168,7 @@ Import 验证 **表示转换**；rollout 验证 **同一 GMT 下可执行性**�
 - [Whole-Body Control](../concepts/whole-body-control.md) — 低层 tracking 与全身执行
 - [GMT（论文实体）](./paper-gmt.md) — 主实验 Tracker 与开源 sim 栈
 - [Unitree G1](./unitree-g1.md) — 实验平台
-- [SONIC（方法）](../methods/sonic-motion-tracking.md) — 多 Tracker 兼容性对照之一
+- [SONIC（方法）](./nvidia-sonic.md) — 多 Tracker 兼容性对照之一
 - [TWIST2（论文实体）](./paper-twist2.md) — Tracker 兼容性对照
 - [Switch（方法）](../methods/switch-framework.md) — 训练式技能切换对照
 

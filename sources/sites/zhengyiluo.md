@@ -10,7 +10,7 @@
 
 ## 为什么值得保留
 
-- **CMU → NVIDIA GEAR 职业与论文时间线**：新闻栏写明 **2025-05 入职 GEAR**、**博士答辩** 等节点；出版物区给出 arXiv、项目站与 **GitHub** 成对链接，适合与 [Tairan He](../../wiki/entities/tairan-he.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md) 等页互链，理解 **LECAR / GEAR 人形研究簇**。
+- **CMU → NVIDIA GEAR 职业与论文时间线**：新闻栏写明 **2025-05 入职 GEAR**、**博士答辩** 等节点；出版物区给出 arXiv、项目站与 **GitHub** 成对链接，适合与 [Tairan He](../../wiki/entities/tairan-he.md)、[SONIC](../../wiki/entities/nvidia-sonic.md) 等页互链，理解 **LECAR / GEAR 人形研究簇**。
 - **通用控制表示与遥操作主线**：PHC、PULSE、OmniH2O、Real-Time Teleoperation 等工作与仓库 [Teleoperation](../../wiki/tasks/teleoperation.md)、[运动重定向](../../wiki/concepts/motion-retargeting.md) 主题直接相交。
 
 ## 履历要点（来自主页自述，2026-05-14 抓取）

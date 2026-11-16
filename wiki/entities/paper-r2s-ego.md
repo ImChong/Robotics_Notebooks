@@ -22,7 +22,7 @@ related:
   - ./paper-simfoundry-real2sim-scene-generation.md
   - ./paper-lucida-r2s.md
   - ./awesome-real2sim2real.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./unitree-g1.md
   - ../comparisons/sim2real-vs-real2sim-fine-tuning.md
   - ./paper-fixanything.md
@@ -54,7 +54,7 @@ summary: "R2S-EGO（arXiv:2608.06827，XPENG Robotics × PolyU）：稀疏捕获
 
 - **稀疏采集是工程常态：** 每环境稠密多视角成本高；人类便捷轨迹与机器人挂载相机的可见面经常错位——通用重建/生成补全不等于「策略训练时用得到的 ego 支持」。
 - **把生成约束到 R2S 接口：** 生成图既要行为可执行，又要以捕获锚定结构为条件；否则伪观测会把错误布局/遮挡写进仿真。
-- **下游读得动：** 同一碰撞网格与 [SONIC](../methods/sonic-motion-tracking.md) 栈下，仅换视觉资产即可拉开真机坐姿成功率（相对 [GaussGym](./paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md)）。
+- **下游读得动：** 同一碰撞网格与 [SONIC](./nvidia-sonic.md) 栈下，仅换视觉资产即可拉开真机坐姿成功率（相对 [GaussGym](./paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md)）。
 
 ## 核心信息
 
@@ -162,7 +162,7 @@ flowchart TB
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 视频孪生 + cousins + 策略评测
 - [Lucida](./paper-lucida-r2s.md) — 室内多视角 → 可编辑物体资产 + GizmoAct（几何对齐）
 - [Awesome-Real2Sim2Real](./awesome-real2sim2real.md) — 迁移闭环文献索引
-- [SONIC](../methods/sonic-motion-tracking.md) — 文中下游坐姿蒸馏所用运动/WBC 栈
+- [SONIC](./nvidia-sonic.md) — 文中下游坐姿蒸馏所用运动/WBC 栈
 - [Unitree G1](./unitree-g1.md) — 实验平台
 - [Sim2Real 残差适配 vs Real2Sim vs 真机 RL](../comparisons/sim2real-vs-real2sim-fine-tuning.md) — 迁移路径选型
 

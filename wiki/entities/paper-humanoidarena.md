@@ -14,9 +14,8 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/vla.md
   - ../methods/motion-retargeting-gmr.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../entities/paper-twist2.md
-  - ../entities/paper-gmt.md
   - ../entities/paper-gmt.md
   - ../entities/isaac-lab.md
   - ./paper-humanoidmimicgen.md
@@ -67,7 +66,7 @@ summary: "HumanoidArena（arXiv:2606.17833）：仿真优先的 egocentric 分�
 | 项目页 | <https://humanoidarena.github.io/> |
 | 代码 | <https://github.com/William-wAng618/HumanoidArena>（`release/open-source-prep`） |
 | 机体 | Unitree G1（Isaac Lab 仿真） |
-| 低层 GMT | [TWIST2](./paper-twist2.md)、[SONIC](../methods/sonic-motion-tracking.md) |
+| 低层 GMT | [TWIST2](./paper-twist2.md)、[SONIC](./nvidia-sonic.md) |
 
 ## 任务套件（7 项）
 
@@ -221,7 +220,7 @@ sequenceDiagram
 | 工作 | 关系 |
 |------|------|
 | **[HumanoidMimicGen](./paper-humanoidmimicgen.md)** | 同为 G1 仿真 loco-manip 基准，互补：HumanoidMimicGen 走 **合成示范 + 九任务 IL 数据缩放**，HumanoidArena 走 **分层 policy–GMT 接口诊断**，把「中间全身动作是否可执行/可迁移」当一等公民。 |
-| **[TWIST2](./paper-twist2.md) / [SONIC](../methods/sonic-motion-tracking.md)** | 二者作为 HumanoidArena 的 **两套可互换低层 GMT 后端**（同一 35D 上游参考、不同低层动力学），构成 cross-GMT 迁移 stress-test 的对照轴，而非竞争基准。 |
+| **[TWIST2](./paper-twist2.md) / [SONIC](./nvidia-sonic.md)** | 二者作为 HumanoidArena 的 **两套可互换低层 GMT 后端**（同一 35D 上游参考、不同低层动力学），构成 cross-GMT 迁移 stress-test 的对照轴，而非竞争基准。 |
 | **[GMT](./paper-gmt.md)** | 提供 General Motion Tracking 方法锚点（Adaptive Sampling + MoE）；HumanoidArena 复用「高层中间动作 → 低层跟踪」分层语义，转而评测该接口的可执行性与可转移性（后端为 TWIST2/SONIC，非 Chen et al. 原文策略）。 |
 | **[OpenHLM](./paper-loco-manip-161-154-openhlm.md)** | 真机全身原生 VLA **配方**；HumanoidArena 是 **仿真分层接口基准**——可对照「中间动作可迁移性」与「全身 VLA 采集接口」两条线。 |
 | **端到端 loco-manip / 纯 tracking 评测** | 多数既有工作只评 **端到端任务成功率** 或 **纯 motion tracking**；HumanoidArena 用共享中间动作接口 + 四扰动轴 + cross-GMT，显式暴露 policy–tracker 接口瓶颈。 |
@@ -233,7 +232,7 @@ sequenceDiagram
 - [Teleoperation（任务）](../tasks/teleoperation.md) — PICO egocentric 采集与示范管线。
 - [Whole-Body Control](../concepts/whole-body-control.md) — 高层–低层分工与 WBC 背景。
 - [TWIST2（论文实体）](./paper-twist2.md) — GMT 后端与便携全身采集前序。
-- [SONIC（方法页）](../methods/sonic-motion-tracking.md) — 规模化 tracking GMT 对照后端。
+- [SONIC（方法页）](./nvidia-sonic.md) — 规模化 tracking GMT 对照后端。
 - [GMT（论文实体）](./paper-gmt.md) — General Motion Tracking 方法锚点。
 - [Imitation Learning](../methods/imitation-learning.md) — 高层 IL baseline 语境。
 - [VLA](../methods/vla.md) — VLA 风格高层策略对照。

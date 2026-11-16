@@ -49,4 +49,4 @@
 
 1. **[Kimodo（实体页）](../../wiki/entities/kimodo.md)** — 深化架构、评测与下游管线
 2. **[Diffusion-based Motion Generation](../../wiki/methods/diffusion-motion-generation.md)** — 约束式全身扩散的工程范例
-3. **[ProtoMotions](../../wiki/entities/protomotions.md)** / **[SONIC](../../wiki/methods/sonic-motion-tracking.md)** — 文生运动 → 物理跟踪闭环
+3. **[ProtoMotions](../../wiki/entities/protomotions.md)** / **[SONIC](../../wiki/entities/nvidia-sonic.md)** — 文生运动 → 物理跟踪闭环

@@ -18,7 +18,7 @@ related:
   - ../concepts/world-action-models.md
   - ../concepts/whole-body-control.md
   - ../tasks/loco-manipulation.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ./paper-motionwam-humanoid-loco-manipulation-wam.md
   - ./paper-dido-wam.md
   - ./paper-wholebodywam-unimotion-4k.md
@@ -165,7 +165,7 @@ flowchart TB
 - [world-action-models](../concepts/world-action-models.md)
 - [whole-body-control](../concepts/whole-body-control.md)
 - [loco-manipulation](../tasks/loco-manipulation.md)
-- [SONIC](../methods/sonic-motion-tracking.md)
+- [SONIC](./nvidia-sonic.md)
 - [paper-motionwam-humanoid-loco-manipulation-wam.md](./paper-motionwam-humanoid-loco-manipulation-wam.md)
 - [paper-dido-wam](./paper-dido-wam.md)
 

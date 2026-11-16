@@ -13,7 +13,6 @@ related:
   - ../tasks/vision-language-navigation.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
-  - ../tasks/vision-language-navigation.md
   - ../overview/embodied-station-2026-10-31-50-papers-technology-map.md
 sources:
   - ../../sources/papers/veocc_plus_plus_arxiv_2610_27704.md

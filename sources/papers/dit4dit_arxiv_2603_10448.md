@@ -47,7 +47,7 @@
 - **效率（A100）：** **6 Hz** 部署频率；**2.2B** 可训参数；相对 Cosmos Policy **0.7 Hz**、mimic-video **1.9 Hz** 更快。
 - **对 wiki 的映射：**
   - [Unitree G1](../../wiki/entities/unitree-g1.md)
-  - [SONIC](../../wiki/methods/sonic-motion-tracking.md)
+  - [SONIC](../../wiki/entities/nvidia-sonic.md)
   - [Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)
 
 ### 5) 与 MotionWAM 谱系（后续工作）

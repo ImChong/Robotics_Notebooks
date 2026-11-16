@@ -12,7 +12,7 @@ related:
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ./isaac-gr00t.md
   - ./gr00t-wholebodycontrol.md
-  - ../methods/sonic-motion-tracking.md
+  - ./nvidia-sonic.md
   - ../methods/vla.md
   - ../tasks/loco-manipulation.md
 sources:
@@ -199,7 +199,7 @@ flowchart TD
 - [GR00T N1](./paper-hrl-stack-34-gr00t_n1.md)
 - [Isaac-GR00T 工程平台（现有版本）](./isaac-gr00t.md)
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)
-- [SONIC 运动跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC 运动跟踪](./nvidia-sonic.md)
 - [VLA 方法](../methods/vla.md)
 - [全身移动操作任务](../tasks/loco-manipulation.md)
 

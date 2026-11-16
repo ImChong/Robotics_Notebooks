@@ -375,7 +375,7 @@
         'wiki/methods/action-chunking.md',
         'wiki/methods/unified-multimodal-tokens.md',
         'wiki/methods/unet.md',
-        'wiki/methods/octo-model.md',
+        'wiki/entities/paper-octo.md',
         'wiki/methods/star-vla.md',
         'wiki/overview/hub-vision-backbone.md'
       ])

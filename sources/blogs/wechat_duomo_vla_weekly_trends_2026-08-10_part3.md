@@ -17,7 +17,7 @@
 |---|------|------|-------|-------------------|
 | 01 | AtomBridge | 架构/异步 | [2602.09430](https://arxiv.org/abs/2602.09430) | [paper-atombridge](../../wiki/entities/paper-atombridge.md) |
 | 02 | BICPO-VLA | 架构/异步 | [2608.13924](https://arxiv.org/abs/2608.13924) | [paper-bicpo-vla](../../wiki/entities/paper-bicpo-vla.md) |
-| 03 | SONIC | 架构/全身 | [2511.07820](https://arxiv.org/abs/2511.07820) | [sonic-motion-tracking](../../wiki/methods/sonic-motion-tracking.md)（复用） |
+| 03 | SONIC | 架构/全身 | [2511.07820](https://arxiv.org/abs/2511.07820) | [sonic-motion-tracking](../../wiki/entities/nvidia-sonic.md)（复用） |
 | 04 | Decoding Task Progress from VLA | 分析诊断 | [2608.13474](https://arxiv.org/abs/2608.13474) | [paper-vla-representation-task-progress](../../wiki/entities/paper-vla-representation-task-progress.md) |
 | 05 | UniTexture | 安全防御 | [2608.13453](https://arxiv.org/abs/2608.13453) | [paper-unitexture-vla-adversarial](../../wiki/entities/paper-unitexture-vla-adversarial.md) |
 | 06 | FlashDrive | 性能/智驾 | [2608.12932](https://arxiv.org/abs/2608.12932) | [paper-flashdrive-vla-autonomous-driving](../../wiki/entities/paper-flashdrive-vla-autonomous-driving.md) |

@@ -19,7 +19,7 @@ sources:
   - ../../sources/repos/awesome-world-models.md
 ---
 
-# Position
+# Position: Interactive Generative Video as Game Engine（arXiv:2503.17359）
 
 **Position: Interactive Generative Video as Next-Generation Game Engine** 收录于 [Awesome World Models](https://github.com/sun254667/awesome-world-models) **第 038/571** 篇，分组 **113 Interactive World Models & Game Engines**。本页是 **清单索引**：给出它在清单中的位置与原文入口，方法细节和量化结果请看原文。
 

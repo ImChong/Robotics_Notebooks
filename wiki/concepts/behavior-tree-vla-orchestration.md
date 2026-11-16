@@ -11,7 +11,7 @@ related:
   - ../entities/laya.md
   - ../entities/cyclo-intelligence.md
   - ../entities/navigation2.md
-  - ../methods/saycan.md
+  - ../entities/paper-saycan.md
   - ../queries/vla-deployment-guide.md
   - ../queries/vla-with-low-level-controller.md
   - ../methods/action-chunking.md
@@ -129,7 +129,7 @@ flowchart TB
 - [Cyclo Intelligence（实体）](../entities/cyclo-intelligence.md) — ROBOTIS 全栈实现细节
 - [LeTools（实体）](../entities/letools.md) — Kuavo 侧行为树调度的是 **SDK 原子技能**，而非 VLA `LOAD/RESUME` 生命周期
 - [Navigation2（实体）](../entities/navigation2.md) — 移动机器人域导航与任务调度参照
-- [SayCan（方法）](../methods/saycan.md) — LLM 高层规划 + 低层技能的分层对照
+- [SayCan（方法）](../entities/paper-saycan.md) — LLM 高层规划 + 低层技能的分层对照
 - [VLA 真机部署指南（Query）](../queries/vla-deployment-guide.md) — chunk 与推理延迟优化
 - [VLA 与低级控制器融合（Query）](../queries/vla-with-low-level-controller.md) — 执行层接口
 - [Action Chunking（方法）](../methods/action-chunking.md) — `RESUME` 阶段的动作块语义

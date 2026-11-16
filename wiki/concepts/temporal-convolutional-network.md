@@ -12,7 +12,7 @@ related:
   - ./transformer.md
   - ./mamba.md
   - ./whole-body-tracking-pipeline.md
-  - ../methods/sonic-motion-tracking.md
+  - ../entities/nvidia-sonic.md
   - ../comparisons/rnn-cnn-transformer-mamba.md
   - ../overview/ai-architecture-map.md
 sources:
@@ -46,7 +46,7 @@ summary_source: arXiv:1803.01271v2
 ## 为什么重要
 
 - **打破“序列建模默认 RNN”惯性**：Bai et al. (2018) 在 11 项跨模态基准上的实证表明，配置常规超参的通用 TCN 在准确率、训练稳定性与可并行性上大面积超越同尺度标准 LSTM/GRU，并将有效记忆从数十至百余步（Copy Memory 上 LSTM <50、GRU <200）推至 1000+ 步且几乎无梯度消失。
-- **高度匹配机器人本体与接触物理窗口**：在足式/人形机器人全身控制与状态估计中（如 [全身跟踪管线](./whole-body-tracking-pipeline.md)、[SONIC 运动跟踪](../methods/sonic-motion-tracking.md)），高频本体状态（关节角/速度、IMU、足端触觉）的关键物理记忆通常集中于最近 0.5–2 s 固定视野内，与 TCN 严格因果、硬件友好且静态图易部署的归纳偏置天然契合。
+- **高度匹配机器人本体与接触物理窗口**：在足式/人形机器人全身控制与状态估计中（如 [全身跟踪管线](./whole-body-tracking-pipeline.md)、[SONIC 运动跟踪](../entities/nvidia-sonic.md)），高频本体状态（关节角/速度、IMU、足端触觉）的关键物理记忆通常集中于最近 0.5–2 s 固定视野内，与 TCN 严格因果、硬件友好且静态图易部署的归纳偏置天然契合。
 - **架构选型分界点**：它提醒工程团队在转向复杂动态注意力（[Transformer](./transformer.md)）或选择性状态空间（[Mamba](./mamba.md)）之前，先校验任务需求究竟是“定长平滑与延迟关联”还是“按内容动态索引未知长度的远距离语义”。
 
 ## 核心机制
@@ -114,7 +114,7 @@ flowchart LR
 - [Transformer](./transformer.md)
 - [Mamba](./mamba.md)
 - [全身跟踪管线](./whole-body-tracking-pipeline.md)
-- [SONIC 运动跟踪](../methods/sonic-motion-tracking.md)
+- [SONIC 运动跟踪](../entities/nvidia-sonic.md)
 - [RNN vs CNN vs Transformer vs Mamba 对比](../comparisons/rnn-cnn-transformer-mamba.md)
 - [AI 架构地图](../overview/ai-architecture-map.md)
 

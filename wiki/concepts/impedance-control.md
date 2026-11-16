@@ -138,7 +138,7 @@ $$ \tau_c = J^T(-K\Delta\xi - D J\dot q) + (I - J^T (J^T)^\dagger)\tau_0 + J^T F
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力与柔顺执行基础
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触任务中的执行层组织
 - [刚-软混合链路人形论文归档](../../sources/papers/rigid_soft_hybrid_link_humanoid_arxiv_2610_15073.md) — PCS 柔性段 + 柔顺优化控制（arXiv:2610.15073）
-- [GentleHumanoid（方法页）](../methods/gentlehumanoid-motion-tracking.md) — RL motion tracking 中嵌入虚拟弹簧–阻尼参考动力学与力阈值
+- [GentleHumanoid（方法页）](../entities/paper-gentlehumanoid.md) — RL motion tracking 中嵌入虚拟弹簧–阻尼参考动力学与力阈值
 
 ## 关联页面
 - [MIT 模式模拟 CSP 的前馈优先整定](../methods/mit-mode-csp-emulation-tuning.md)
@@ -160,6 +160,6 @@ $$ \tau_c = J^T(-K\Delta\xi - D J\dot q) + (I - J^T (J^T)^\dagger)\tau_0 + J^T F
 - [Manipulation](../tasks/manipulation.md)
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
 - [LAC](../entities/paper-lac.md) — 人形上身线+角刚度命令；角通道走被动运动链（部分开源）
-- [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md)
+- [GentleHumanoid（上半身柔顺运动跟踪）](../entities/paper-gentlehumanoid.md)
 - [刚-软混合链路人形建模与控制](../entities/paper-rigid-soft-hybrid-link-humanoid.md) — 已有被动黏弹性（板簧假肢腿）时联合优化主动关节柔顺矩阵
 - [阻尼系统（M–B–K 与 ζ）](../formalizations/damped-systems.md) — 临界阻尼 $B_d\approx 2\sqrt{M_d K_d}$ 的理论背景

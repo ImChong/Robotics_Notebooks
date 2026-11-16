@@ -218,7 +218,7 @@ sequenceDiagram
 ```
 
 - **N1 论文机制 vs N1.5+ 工程**：本时序对应当前 Isaac-GR00T 发布栈；版本号以模型卡为准。
-- **全身低层**常再接 [SONIC / GR00T-WholeBodyControl](../methods/sonic-motion-tracking.md)。
+- **全身低层**常再接 [SONIC / GR00T-WholeBodyControl](./nvidia-sonic.md)。
 
 ## 结论
 
