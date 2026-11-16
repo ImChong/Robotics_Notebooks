@@ -3182,6 +3182,7 @@
 - [Hydra-0：Action Flow 通才世界模型](wiki/entities/paper-hydra-0.md) — Hydra-0（Action Flow for Generalist World Modeling and Control，arXiv:2608.18077，项目页）由 英伟达（NVIDIA）、布朗大 `📅2026-11-13` `[entity_page]`
 - [HydroGym：流体动力学强化学习平台](wiki/entities/paper-hydrogym.md) — The HydroGym reinforcement learning platform for fluid dynamics（Lagemann 等，Nature 2026，DOI 10.1038/s `📅2026-09-15` `[entity_page]`
 - [HyMeS（arXiv:2608.09410）](wiki/entities/paper-hymes-hybrid-memory-manipulation.md) — HyMeS（arXiv:2608.09410）收录于 多模空间 · 一周 VLA 研究趋势简析（2026.08.10–08.16）第一篇 类 Agent、长程记忆 段。 `📅2026-09-19` `[entity_page]`
+- [Hyperagents（DGM-H）：超智能体——可递归自修改元改进机制](wiki/entities/paper-hyperagents.md) — 论文： Hyperagents（arXiv:2603.19461v2），2026-11-01 修订；作者： Jenny Zhang、Bingchen Zhao、Wannan Yang、Jakob Fo `📅2026-11-16` `[entity_page]`
 - [I-BFM: Reward-Conditioned Robust Humanoid Interaction via Unsupervised Reinforcement Learning](wiki/entities/paper-i-bfm.md) — 作者： Ziqi Han、Yitang Li、Junhan Sun、Fanrong Dong、Yaojie Shen、Lei Ye、Zetong Jing、Yongqi Zhang、Yiming Zh `📅2026-10-27` `[entity_page]`
 - [I2O2I-Nav：把导航拆成阶段再接起来的长程基准](wiki/entities/paper-i2o2i-nav.md) — I2O2I-Nav 是一个"室内出门 → 室外行进 → 进入另一栋楼 → 找物体"的长程导航基准，每一阶段都从上一阶段实际到达的位置开始；配套的 MODULAR-Agent 用 VLM 协调冻结的导航 `📅2026-10-17` `[entity_page]`
 - [i3dGS（Immediate 3D Gaussian Splat Reconstruction of Unordered Input with Global Consistency）](wiki/entities/paper-i3dgs-immediate-3dgs-unordered.md) — i3dGS（Meuleman et al., arXiv:2607.14481，项目页，代码）由 Inria GraphDeco 提出，SIGGRAPH Conference Papers 2026 `📅2026-11-15` `[entity_page]`
