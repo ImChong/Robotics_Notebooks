@@ -6864,6 +6864,7 @@
 - [Centroidal Dynamics](wiki/concepts/centroidal-dynamics.md) — Centroidal Dynamics（质心动力学）**：用机器人整体质心的线动量和角动量来描述全身动力学的一种中层建模方式。 `📅unknown` `[wiki_page]`
 - [Character Animation vs Robotics（角色动画与机器人控制的边界）](wiki/concepts/character-animation-vs-robotics.md) — 一句话定义：** 当一个人形平台的目标函数里同时出现「表演可信度（character believability）」与「物理可控性（physical controllability）」时，工程取舍 `📅unknown` `[wiki_page]`
 - [时钟同步算法 (Clock Synchronization Algorithms)](wiki/concepts/clock-synchronization-algorithms.md) — 时钟同步算法** 解决一个看似简单、却在多板卡运控里反复折腾人的问题：**两台机器的时间到底差多少，怎么把这个差距持续压到与控制环路相比可忽略的水平？** 在人形机器人里，IMU 在一块板、关节驱 `📅unknown` `[wiki_page]`
+- [多 Agent 编码管理与认知把关 / Managing Coding Agents without Cognitive Surrender](wiki/concepts/coding-agent-orchestration-and-cognitive-oversight.md) — 多 Agent 编码管理**不是同时打开更多自动编程会话，而是由人负责目标与风险判断，让不同 agent 在独立边界内交付可验证的变更，同时保留足够的独立理解，避免把 AI 输出未经判断地当成自己 `📅unknown` `[wiki_page]`
 - [Collision Distance Optimization（碰撞距离优化）](wiki/concepts/collision-distance-optimization.md) — 碰撞距离优化**：求机器人构型 $q$ 与障碍物之间 **最小距离** 或 **有符号距离（SDF）**，并在 TrajOpt / NMPC 中作为不等式 $d(q) \ge d_{\min}$  `📅unknown` `[wiki_page]`
 - [位形空间（Configuration Space, C-space）](wiki/concepts/configuration-space.md) — 一句话：** 用最少独立坐标描述整台机器人的状态，所有可能位形的集合就是 C-space；规划器在 C-space 里找路径，碰撞与约束也首先在这里定义。 `📅unknown` `[wiki_page]`
 - [Constrained Optimization（约束优化）](wiki/concepts/constrained-optimization.md) — 约束优化**：在等式 $h(x)=0$ 与不等式 $g(x)\le 0$ 下最小化目标 $f(x)$；机器人 OCP、WBC、NMPC 的本质都是约束优化——动力学是等式，摩擦/碰撞/输入饱和是不 `📅unknown` `[wiki_page]`
