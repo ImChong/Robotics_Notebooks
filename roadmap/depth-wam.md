@@ -214,6 +214,7 @@ flowchart LR
 ### 推荐读什么
 - [动作后果技术地图（2026-07 策展）](../wiki/overview/robot-world-models-action-consequence-technology-map.md)
 - [DSWAM](../wiki/entities/paper-dswam-dual-system-wam.md) · [DynaWM](../wiki/entities/paper-dynawm-vla-online-correction.md) · [DreamSteer](../wiki/entities/paper-dreamsteer-vla-deployment-steering.md)
+- **训练期蒸馏的低延迟对照：** [W2A](../wiki/entities/paper-w2a-world-priors-action-models.md) — 用 Cosmos-Predict2 中间层世界先验监督 action DiT，推理时不再运行视频模型；LIBERO 95.9%、A100 预测 55 ms（论文报告）。它不属于部署时执行/修正/筛选三种显式 WAM 接口，适合用来比较「世界知识内化在权重中」与「上线保留世界模型」的延迟及泛化边界；官方算法代码尚未公开（2026-11-16 核查）。
 - [VT-WAM](../wiki/entities/paper-vt-wam-visuotactile-contact-rich.md) · [MECo-WAM](../wiki/entities/paper-meco-wam-4d-geometry-cotraining.md)
 - [接触操作纵深](depth-contact-manipulation.md) — 力 / 触觉工程侧展开
 
