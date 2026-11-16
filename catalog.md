@@ -3254,6 +3254,7 @@
 - [M⁴World（Multi-view Multimodal Driving World Model）](wiki/entities/paper-m4world.md) — M⁴World**（*M⁴World: A Multi-view Multimodal Driving World Model for Interactive Object Manipulatio `📅unknown` `[entity_page]`
 - [MA-VLA](wiki/entities/paper-ma-vla.md) — MA-VLA: Multi-Arm Vision-Language-Action Model for Collaboration and Compositional Generalization `📅unknown` `[entity_page]`
 - [MABEL（arXiv:2611.04083）](wiki/entities/paper-mabel.md) — MABEL**（*MABEL: An Open Anthropomorphic Mobile Bimanual Platform for Teleoperation and Learning*， `📅unknown` `[entity_page]`
+- [MACaQ: Fast, Model Agnostic Calibrated Quantization for Low-Precision Weights and Activations](wiki/entities/paper-macaq.md) — MACaQ** 是 Huawei Computing Systems Lab（华为计算系统实验室，瑞士）提出的 **逐线性层独立** MXFP4 W4A4 训练后量化（PTQ）方法：在线对激活进行 `📅unknown` `[entity_page]`
 - [Machine Zygote（arXiv:2609.17300）](wiki/entities/paper-machine-zygote.md) — Machine Zygote**（*Machine Zygote: Causal Biparental Heredity Before Learning in a Germline--Soma A `📅unknown` `[entity_page]`
 - [MAESTRO（arXiv:2511.00917）](wiki/entities/paper-maestro.md) — MAESTRO**（*Managerial Agent for Executing Sensorimotor Tasks in RObotics*；v1 标题 *MAESTRO: Orchestr `📅unknown` `[entity_page]`
 - [腿式机器人的磁场感知控制](wiki/entities/paper-magnet-aware-legged-control.md) — 论文 *Magnet-Aware Control of Legged Robots*（arXiv:2610.08653）由  `📅unknown` `[entity_page]`
