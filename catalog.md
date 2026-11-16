@@ -1975,6 +1975,7 @@
 - [仿生多模态机器人综述：五项指标与软硬智能融合](wiki/entities/paper-bioinspired-multimodal-robotics.md) — Bioinspired multimodal robotics**（共同一作：Ziyu Ren† / Youning Duo† / Haoyuan Xu†；Yihui Zhang、Xingjian `📅unknown` `[entity_page]`
 - [Biomechanical 3D Body：从 3D 人体基础模型蒸馏生物力学姿态](wiki/entities/paper-biomechanical-3d-body.md) — Biomechanical 3D Body**（*Self-Supervised Distillation of Biomechanical Pose from a 3D Body Foundat `📅unknown` `[entity_page]`
 - [Biomimetic Skin Sensory Arrangements（arXiv:2610.26680）](wiki/entities/paper-biomimetic-skin-sensory-arrangements.md) — Biomimetic Skin Sensory Arrangements**（*Robotic Physical Comparison of Biologically Motivated and  `📅unknown` `[entity_page]`
+- [BirdDreams：联合前视与 BEV 视频生成的可响应驾驶世界模型](wiki/entities/paper-birddreams.md) — BirdDreams 是 NVIDIA 与 KAIST 提出的自回归驾驶世界模型：从单张前视图联合生成前视 RGB 和示意 BEV 视频，允许使用米制自车轨迹进行条件控制，并预测周围车辆的运动。 `📅unknown` `[entity_page]`
 - [BIRDriver：BEV  informed 的 VLM 推理驾驶员](wiki/entities/paper-birdriver.md) — BIRDriver**（*Bird's-Eye-View Informed Reasoning Driver*，**ICLR 2026** Poster，[OpenReview](https:// `📅unknown` `[entity_page]`
 - [双稳态软跳跃机器人（Bistable Soft Jumper）](wiki/entities/paper-bistable-soft-jumper-magnetic.md) — Bistable soft jumper capable of fast response and high takeoff velocity**（Daofan Tang、Chengqian Zh `📅unknown` `[entity_page]`
 - [BK-MBD](wiki/entities/paper-bkmbd-koopman-diffusion.md) — Koopman-Accelerated Model-Based Diffusion for Real-Time Robot Control**（[arXiv:2609.28920](https:/ `📅unknown` `[entity_page]`
