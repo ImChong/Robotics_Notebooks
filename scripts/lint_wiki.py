@@ -1002,6 +1002,8 @@ INFO_ONLY_KEYS: set[str] = {
     "paper_missing_three_sections",
     "paper_missing_conclusions",
     "dataset_missing_metadata",
+    # GitHub Actions 跳过 git mtime 陈旧比较；本地仍完整输出供 review，不阻塞无关 PR / preflight。
+    "stale_pages",
     # updated 日期超过 180 天只提示复核；历史 backlog 不应阻塞无关 PR。
     "outdated_pages",
     "stale_claims",
