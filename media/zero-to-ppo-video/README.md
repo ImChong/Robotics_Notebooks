@@ -21,6 +21,7 @@
 
 | 路径 | 内容 |
 |------|------|
+| `episodes/common.js` | 共享分镜工具库（`ep015+` 自动注入使用，注册到 `window[NS]`）；`ep001`–`ep013` 各自保留冻结版 `00-common.js` 不改 |
 | `episodes/<ep>/*.js` | 一集的分镜，按文件名顺序加载：共用部件 → 片头主图 → 各幕 → 最后一个文件组装 `window.EpisodeVideo`（集数、季、角标、问句、一句话、主图 `hero`、各幕 `scenes`、片尾总结 `recap`、片尾 `outro`）。短的一集也可以只写一个 `episodes/<ep>.js` |
 | `episodes/<ep>.py` | 旁白：`SCRIPT`（每句绑定一幕的分镜时间 `[from, to]`）与 `DISPLAY`（字幕换写法；换成的字可带 `$…$`，字幕里用 KaTeX 排） |
 | `stage.html` | 1080×1920 舞台：片头、分镜、片尾、封面版式，安全区 330–1440 |
@@ -55,3 +56,4 @@ node check_layout.mjs ep001 cover
 - 分段并行只在换幕处切（一幕里有的动画记着前面几帧），各段各开一个页面、各编一段无声视频，最后拼接再配旁白。001 全片（9356 帧）在 4 核机器上实测：1 / 2 / 3 / 4 段 = 530 / 392 / 360 / 342 s，逐帧和一口气渲染的版本比 PSNR 都 ≥ 50 dB。核数多的机器可以多分几段，最多到幕数。
 - 成片、封面、配音都在 `out/`，不入库。
 - URDF 机器人在无 GPU 的机器上走 Chromium 自带的 SwiftShader 软件渲染：G1 减面后约 8 万个三角形，一次重画约 50 ms；姿态和上色没变的视图不重画，移动、倾斜、倒地用 svg 变换，也不重画。一集用哪些机器人写在 `EpisodeVideo.robots`，舞台加载完才开始渲染。
+- 环境变量兼容：`CHROME` 兼容 `CHROME_PATH`；`SSL_CERT_FILE` 兼容 `TTS_CA_BUNDLE`，并同时作用于 `build.py`（edge-tts）与 `fetch_robots.py`（URDF 下载）。

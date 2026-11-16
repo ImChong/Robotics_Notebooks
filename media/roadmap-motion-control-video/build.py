@@ -153,8 +153,9 @@ def tts_path(text):
 async def _synth(sem, text, path):
     import edge_tts
     import edge_tts.communicate as c
-    if os.environ.get("TTS_CA_BUNDLE"):  # 走 TLS 代理时指定证书链
-        c._SSL_CTX = ssl.create_default_context(cafile=os.environ["TTS_CA_BUNDLE"])
+    ca_bundle = os.environ.get("SSL_CERT_FILE") or os.environ.get("TTS_CA_BUNDLE")
+    if ca_bundle:  # 走 TLS 代理时指定证书链
+        c._SSL_CTX = ssl.create_default_context(cafile=ca_bundle)
     async with sem:
         for attempt in range(5):
             try:

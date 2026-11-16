@@ -25,17 +25,29 @@ let tl = mode === 'scene' ? null : fs.existsSync(tlPath) ? JSON.parse(fs.readFil
 fs.mkdirSync(OUT, { recursive: true });
 
 // 一集可以是一个文件 episodes/<ep>.js，也可以拆成目录 episodes/<ep>/*.js（按文件名顺序加载，最后一个设 window.EpisodeVideo）
+// ep015+ 未提供 00-common.js（或 00-common.js 调用 createEpisodeCommon）时自动注入共享 episodes/common.js
 const epDir = path.join(HERE, 'episodes', name);
-const scripts = fs.existsSync(epDir)
-  ? fs.readdirSync(epDir).filter((f) => f.endsWith('.js')).sort().map((f) => `episodes/${name}/${f}`)
+const hasEpDir = fs.existsSync(epDir);
+const epFiles = hasEpDir ? fs.readdirSync(epDir).filter((f) => f.endsWith('.js')).sort() : [];
+const scripts = hasEpDir
+  ? epFiles.map((f) => `episodes/${name}/${f}`)
   : [`episodes/${name}.js`];
+const scriptTags = [];
+if (hasEpDir) {
+  if (!epFiles.includes('00-common.js')) {
+    scriptTags.push(`<script>window.__EPISODE_NS__=${JSON.stringify(name.toUpperCase())};</script>`, '<script src="episodes/common.js"></script>');
+  } else if (fs.readFileSync(path.join(epDir, '00-common.js'), 'utf8').includes('createEpisodeCommon')) {
+    scriptTags.push('<script src="episodes/common.js"></script>');
+  }
+}
+scriptTags.push(...scripts.map((s) => `<script src="${s}"></script>`));
 const html = fs.readFileSync(path.join(HERE, 'stage.html'), 'utf8')
-  .replace('<script src="episodes/EPISODE.js"></script>', scripts.map((s) => `<script src="${s}"></script>`).join('\n'));
+  .replace('<script src="episodes/EPISODE.js"></script>', scriptTags.join('\n'));
 // 每集一份（scene 模式每幕一份），几个进程可以同时渲染
 const built = path.join(HERE, mode === 'scene' ? `stage.${name}.scene${arg}.built.html` : `stage.${name}.built.html`);
 fs.writeFileSync(built, html);
 
-const browser = await chromium.launch({ executablePath: process.env.CHROME || undefined });
+const browser = await chromium.launch({ executablePath: process.env.CHROME || process.env.CHROME_PATH || undefined });
 const server = await serve(HERE);   // 舞台用 ES module 读 three.js / URDF，要走 http（见 serve.mjs）
 // 一个页面就是一条渲染线：装好时间线、每幕预热一次、按实际字宽缩放分镜。并行分段时每段各开一个
 async function openPage(log) {

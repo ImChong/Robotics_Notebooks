@@ -116,7 +116,7 @@
 - 优先复用现有页面与链接
 - 若知识点已存在，补充而不是重复造页
 - 若是新外部资料，先进入 `sources/`，再决定是否沉淀到 `wiki/`
-- 新增页面**不需要**手动更新 `catalog.md`（合入 main 后 `export.yml` 自动重新生成，PR 不得修改它）；只有核心入口或学习路径变化时才更新 `index.md` 或相关 roadmap 页面
+- 新增页面**不需要**手动更新 `catalog.md`（`catalog.md` 已移出 Git，本地按需运行 `make catalog` 预览，PR 禁止提交它）；只有核心入口或学习路径变化时才更新 `index.md` 或相关 roadmap 页面
 
 ### 视频内容核对（`media/`）
 
@@ -126,6 +126,11 @@
 ### 网页读取失败时
 
 - 网页抓取或搜索工具打不开用户提供的公开资料时，优先尝试可用的浏览器直接打开并读取页面，确认实际可访问状态；工具报错不等于网站不可访问。遵循浏览器使用规则，不绕过登录、验证码或访问限制。若仍无法读取，如实说明阻塞。
+
+### 零基础篇共享脚本与历史范围（`media/zero-to-ppo-video/`）
+
+- `ep001`–`ep005` 历史集数冻结（不追改 `outro.refs`）；自 `ep006` 起严格执行 `outro.refs` 一手资料规范。
+- `ep015+` 自动注入并共用 `media/zero-to-ppo-video/episodes/common.js`（`ep001`–`ep013` 各自保留冻结版 `00-common.js` 不动）；环境统一优先使用 `CHROME` / `SSL_CERT_FILE`（兼容 `CHROME_PATH` / `TTS_CA_BUNDLE`）。
 
 ### 浏览器验证工具
 
@@ -183,7 +188,7 @@ python3 scripts/fetch_feishu_doc.py "https://<tenant>.feishu.cn/wiki/<token>" --
 - **论文实体页（`wiki/entities/paper-*.md`）在官方有可运行代码时，必须增加 `## 源码运行时序图`**（`mermaid sequenceDiagram`，节点对齐 `sources/repos/` 与 README 入口；无可运行实现时写明「不适用」及原因）。详见 [schema/ingest-workflow.md § 步骤 5](schema/ingest-workflow.md)
 - **CI 质量网关（必须通过）**：
   - 提交前必须本地运行 `make ci-preflight`：重新生成 `exports/`、`docs/exports/`、搜索索引、sitemap、图谱与首页统计，然后执行 lint/search/export 检查。**这些派生产物全部 gitignore、不随提交入库**（Pages 部署时现场生成），preflight 生成它们只为本地检查与预览；preflight 不会改动任何入库文件（`make ci-check` 可验证）。
-  - **PR 只提交源文件**（`wiki/`、`sources/`、`roadmap/`、`schema/`、`log.d/` 碎片、脚本等）。**不得修改** `catalog.md`、`log.md`（由 main 上的 `export.yml` 维护），也不要提交 `README.md` 徽章数字、`docs/index.html` Hero 数字、`docs/sw.js` 缓存版本这类统计改动——它们在部署时生成。PR 上的 **Wiki Lint** 会用 `scripts/pr_derived_guard.py` 检查。
+  - **PR 只提交源文件**（`wiki/`、`sources/`、`roadmap/`、`schema/`、`log.d/` 碎片、脚本等）。**不得修改** `log.md`（由 `main` 上的 `export.yml` 自动汇总 `log.d/` 并按季度归档），也不要提交 `catalog.md`（已 `.gitignore`）、`README.md` 徽章数字、`docs/index.html` Hero 数字、`docs/sw.js` 缓存版本等派生统计。PR 上的 **Wiki Lint** 会用 `scripts/pr_derived_guard.py` 检查。
   - **与 main 冲突 / guard 失败**：运行 `make sync-main`（合入 `origin/main`，派生文件一律以 main 为准，分支写进 `log.md` 的条目自动转存为 `log.d/` 碎片），然后 push。只有真正的源文件（同一 wiki 页）冲突才需要按内容手工合并。
   - **严禁使用 `[[...]]` 语法**进行内链（代码块内除外），必须使用标准 `[text](path)` 格式，以确保 `lint_wiki.py` 的入链统计与断链检查准确。
   - **首页「最新知识节点」**：由 git 中 `wiki/` / `roadmap/` 的**首次加入日**驱动（最近窗口内的新增节点）；`log.md` 不再作为站点活动数据源。`home-stats.json` 等统计不入库，部署时生成。
@@ -239,7 +244,7 @@ This is a **pure content + tooling** repo — no backend services, databases, or
 
 ### Before committing wiki changes
 
-Always run `make ci-preflight` — it regenerates derived files (`exports/`, `docs/exports/`, search index, sitemap, graph/home stats) and then runs lint + export checks. All of these are gitignored (generated at Pages deploy time), so **commit only source files**. Never modify `catalog.md` or `log.md` in a PR (bot-owned: `export.yml` regenerates the catalog and folds `log.d/` fragments into `log.md` on main); write log entries with `make log` (creates a `log.d/` fragment). If the PR conflicts with main or the Wiki Lint guard fails, run `make sync-main` and push.
+Always run `make ci-preflight` — it regenerates derived files (`exports/`, `docs/exports/`, search index, sitemap, graph/home stats) and then runs lint + export checks. All of these (as well as `catalog.md`, which can still be previewed locally via `make catalog`) are gitignored, so **commit only source files**. Never modify `log.md` in a PR (bot-owned: `export.yml` folds `log.d/` fragments into `log.md` and archives older quarters automatically on `main`); write log entries with `make log` (creates a `log.d/` fragment). If the PR conflicts with main or the Wiki Lint guard fails, run `make sync-main` and push.
 
 **ingest 提速**：交叉更新多个 wiki 后先 `make bump-wiki-from-sources`（或 `bump_wiki_updated_for_sources.py` 指定本次 `sources/papers/...`），再 commit，最后 **只跑一轮** `make ci-preflight`（preflight 内 lint 只执行一次；图谱社区为 `schema/topics.json` 固定主题，全库约 2–5 分钟量级）。
 

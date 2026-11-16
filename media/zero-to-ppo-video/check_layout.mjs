@@ -16,7 +16,7 @@ const [name, mode] = process.argv.slice(2);
 const tlPath = path.join(HERE, 'out', name, 'timeline.json');
 const tl = fs.existsSync(tlPath) ? JSON.parse(fs.readFileSync(tlPath, 'utf8'))
   : { total: 30, segments: [{ scene: 'intro', t0: 0, t1: 30, from: 0, to: 30, lead: 0 }], subs: [] };
-const b = await chromium.launch({ executablePath: process.env.CHROME });
+const b = await chromium.launch({ executablePath: process.env.CHROME || process.env.CHROME_PATH || undefined });
 const pg = await b.newPage({ viewport: { width: 1080, height: 1920 } });
 const server = await serve(HERE);
 await pg.goto(server.url + `stage.${name}.built.html`);

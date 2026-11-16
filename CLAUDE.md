@@ -128,7 +128,8 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ### 5.4 避免合并冲突（agent 无需人工介入即可合入）
 
 - **只提交源文件**：派生统计 / 导出 JSON 全部 gitignore，部署时生成；`make ci-preflight` 只做本地检查。
-- **不改 `catalog.md` / `log.md`**：由 main 上的 `export.yml` 维护。日志用 `make log OP=... DESC="..."` 写入 `log.d/` 碎片。
+- **不改 `log.md`（`catalog.md` 已移出版本库）**：`log.md` 由 main 上的 `export.yml` 维护并按季度归档；本地可运行 `make catalog` 预览目录（`.gitignore` 已忽略），PR 禁止提交。日志用 `make log OP=... DESC="..."` 写入 `log.d/` 碎片。
+- **006 起要求 `outro.refs`；015+ 共用 `episodes/common.js`**：零基础篇 `001`–`005` 与已冻结分镜不追改；新建 `ep015+` 复用 `media/zero-to-ppo-video/episodes/common.js`（不再复制 `00-common.js`），从 `006` 起严格遵守片尾一手资料 `outro.refs` 规范。
 - **PR 与 main 冲突，或 Wiki Lint 的 guard 失败**：运行 `make sync-main` 后 push（派生文件自动以 main 为准，`log.md` 新增条目自动转存为碎片）。只剩真实源文件冲突时再按内容合并。
 
 ### 5.5 提交前格式化 Python（不靠 CI 兜底）
