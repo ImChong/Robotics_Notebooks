@@ -97,23 +97,23 @@ sequenceDiagram
  participant Runner as RoboDojo / XPolicyLab runner
  participant Deploy as policy/JustRUA/deploy.py
  participant Obs as Observer / Depth Pro
- participant Actor as CodingClient
+ participant CodeAgent as CodingClient
  participant Policy as JustRUAPolicy
  participant Planner as Direct EEF Planner
  Runner->>Deploy: eval_one_episode(TASK_ENV, model_client)
  Deploy->>Obs: 初始化观测扩充
- Deploy->>Actor: 创建每 episode 持久会话
+ Deploy->>CodeAgent: 创建每 episode 持久会话
  Deploy->>Policy: 组合 planner, observer, client
  Runner->>Policy: 当前 RGB 与状态
  Policy->>Obs: enrich(observation) 深度与测量
  Obs-->>Policy: 估深图与传感器文本
- Policy->>Actor: 决策和坐标求解
- Actor-->>Policy: 绝对世界系 move_eef
+ Policy->>CodeAgent: 决策和坐标求解
+ CodeAgent-->>Policy: 绝对世界系 move_eef
  Policy->>Planner: _handle_motion 规划
  Planner-->>Policy: 控制 chunk
  Policy-->>Runner: 最多前 20 控制步
  Runner->>Policy: confirm_executed(played)
- Policy->>Actor: 下轮保留历史与执行误差
+ Policy->>CodeAgent: 下轮保留历史与执行误差
 ```
 
 > 时序依据官方仓库 README 与入口脚本；依赖外部环境/数据未在此声称实机复现。
