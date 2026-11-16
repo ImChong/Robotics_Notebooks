@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dataset, tactile, visuo-tactile, vla, handheld, teleoperation, dexterous, cross-embodiment, lerobot, daimon-robotics, tsinghua, fudan, sustech, hkust, hkust-gz, nus, ntu, ucl, kth, tohoku, google-deepmind]
 status: complete
-updated: 2026-11-05
+updated: 2026-11-16
 project_id: tacclaw-infinity
 arxiv: "2610.20320"
 code: https://github.com/tacclaw-infinity/TacClaw-Infinity
@@ -49,9 +49,9 @@ summary: "TacClaw-Infinity（arXiv:2610.20320）：手持触觉接口 TacClaw �
 |----|------|
 | **机构** | 发布方 Daimon Robotics；项目页列出 16 个合作单位（项目页列示） |
 | **平台** | TacClaw 手持触觉接口；LeRobot v3 数据格式；仓库内 Tianji、DM-Sparky、RealMan RM75-B 的回放与运动学评测工具 |
-| **数据** | 项目页称：10,000+ 小时、1 百万+ 回合、10 亿+ 帧、1,000+ 任务类型（200+ 设备、20+ 机构、50+ 地点）；公开子集为 HF / ModelScope 的 `Daimon-Infinity`，README 称首批约 1,000 小时 |
+| **数据** | 项目页称：10,000+ 小时、1 百万+ 回合、10 亿+ 帧、1,000+ 任务类型（200+ 设备、20+ 机构、50+ 地点）；公开子集为 HF / ModelScope 的 `Daimon-Infinity`，HF 数据卡称首批公开 1,000 小时，并另以约 1,209 小时为统计样本；不是全部采集数据的下载量 |
 | **重定向就绪度** | 动作以手持接口的**末端轨迹**记录（采集时无目标机器人），非机器人关节轨迹；喂给具体本体前需核对 TCP / 场景标定，并按本体做逆运动学可达性与可操纵度筛选——官方仅给出 Tianji、DM-Sparky、RealMan RM75-B 三种本体的回放与运动学检查工具 |
-| **开源** | **部分开源**（2026-11-05 核查）：数据子集与机器人回放 / 运动学评测工具已公开；数据加载与预处理工具、策略训练与任务级评测代码仍未发布 |
+| **开源** | **部分开源**（2026-11-16 核查）：数据子集与机器人回放 / 运动学评测工具已公开；数据加载与预处理工具、策略训练与任务级评测代码仍未发布 |
 
 ## 核心原理
 
@@ -112,11 +112,25 @@ sequenceDiagram
 
 | 项 | 建议 |
 |----|------|
-| 获取数据 | 公开子集见 HF / ModelScope `Daimon-Infinity`；HF 页面（转述）标注 CC BY-NC-SA 4.0 |
+| 获取数据 | 公开子集见 HF / ModelScope `Daimon-Infinity`；先按数据卡区分 DM-DataClaw 与 DM-DataDex、已公开范围和 CC BY-NC-SA 4.0 |
 | 评测工具 | 在对应机器人目录内建独立环境；工具仅做仿真与运动学分析，不评测策略成功率或真机安全（README 明示） |
 | 复现前检查 | 核对坐标系、TCP 与场景注册；LeRobot v3 格式不保证标定帧一致（README 要求） |
 | 训练与任务评测 | 代码未发布（To-do）；需要等待官方更新或自行搭建 |
 | 调试指标 | 逆运动学可达性与可操纵度（由评测脚本输出） |
+
+## 数据门户：下载前核对格式与许可
+
+> **口径边界（2026-11-16）：** [Daimon-Infinity 数据卡](https://huggingface.co/datasets/daimonrobotics/Daimon-Infinity) 同时介绍 **DM-DataClaw/DM-TacClaw** 与 **DM-DataDex（TacExoGaze 外骨骼）**。它是数据发布门户，不应把门户下所有样本都当成论文中的 TacClaw 手持示范；论文的 10,000+ 小时**采集规模**也不代表已经全部可下载。数据卡说明首批 1,000 小时，统计章节又使用约 1,209 小时的分析样本，二者为不同口径，具体可用样本应按版本、配置和文件清单检查。
+
+| 核对项目 | 官方数据卡列示 | 实作时的注意点 |
+|---|---|---|
+| 数据组织 | `data/chunk-xxx/file-xxx.parquet`；视频在 `videos/{video_key}/chunk-xxx/file-xxx.mp4`，元数据在 `meta/info.json`、`episodes_metadata.json` | 先按 DM-DataClaw 双手/单手或 DM-DataDex 配置确认视频键和设备、标定信息 |
+| 状态与动作 | 数据卡字段表列 `observation.state` 为 **114-D**、`action` 为 **111-D** | 这是门户列示的**通用字段布局**，不是论文已证明每条 TacClaw episode 均有这些本体关节、头部、底盘或外骨骼通道 |
+| 失效维度 | 数值 `9930` 表示占位、无效或未激活的维度 | 先生成有效性 mask；不要将 `9930` 当真实物理量参与归一化 |
+| 时间与触觉 | 数据卡推荐用 `episode_index + frame_index` 对齐并核对 30 fps；触觉导出为 `uint16` | 按实际视频编码与配置解码、转换；双手左右流额外检查同步 |
+| 数据授权 | 数据卡标注 [CC BY-NC-SA 4.0](https://huggingface.co/datasets/daimonrobotics/Daimon-Infinity) | 非商用条款适用于对应发布内容，二次使用前确认样本及子目录许可 |
+
+这份表是**官方数据卡的格式说明**，未在本次执行中下载完整数据或逐 episode 校验字段。训练前还需要单独核验标定帧、工具中心点（TCP）、相机/触觉视角以及筛选后可执行率。
 
 ## 实验与评测
 
@@ -158,6 +172,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [具身数据纵深路线](../../roadmap/depth-embodied-data.md) — 采集 → 清洗与接触标注 → 格式与本体筛选
+
 - [触觉感知](../concepts/tactile-sensing.md) — 数据中的触觉模态背景
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — 视觉与触觉表示的对照
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 任务场景
@@ -169,7 +185,8 @@ sequenceDiagram
 - [tacclaw_infinity_arxiv_2610_20320.md](../../sources/papers/tacclaw_infinity_arxiv_2610_20320.md) — 论文摘录与开源核查
 - [项目页归档](../../sources/sites/tacclaw_infinity.md)；[源码归档](../../sources/repos/tacclaw_infinity.md)
 - [arXiv:2610.20320](https://arxiv.org/abs/2610.20320) — 原文
-- [daimon-robotics/TacClaw-Infinity](https://github.com/tacclaw-infinity/TacClaw-Infinity) — 官方仓库（回放与评测工具）
+- [tacclaw-infinity/TacClaw-Infinity](https://github.com/tacclaw-infinity/TacClaw-Infinity) — 官方仓库（回放与评测工具）
+- [Daimon-Infinity 官方数据卡](https://huggingface.co/datasets/daimonrobotics/Daimon-Infinity) — 发布口径、数据字段、同步与许可说明（2026-11-16 复核）
 
 ## 推荐继续阅读
 
