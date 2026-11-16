@@ -6083,6 +6083,7 @@
 - [Learning Variable Impedance Control for Contact Sensitive Tasks](wiki/entities/paper-variable-impedance-contact-rl.md) — 一句话定义**：在 **接触丰富** 的任务里，让 RL 策略输出 **关节空间期望轨迹 + 可变阻抗参数**，并用 **额外正则** 约束阻抗变化，使学习 **更快、更稳、更可迁移** 到真机（ `📅unknown` `[entity_page]`
 - [Variable Stiffness for Robust Locomotion through Reinforcement Learning](wiki/entities/paper-variable-stiffness-locomotion-rl.md) — 一句话定义**：策略同时输出 **关节位置（或等价目标）与可变刚度参数**，在仿真中学会鲁棒行走，并展示 **刚度参数化粒度**（逐关节、分腿、混合）对性能与能耗的影响。 `📅unknown` `[entity_page]`
 - [Variational-Based Optimal Control of Underactuated Balancing](wiki/entities/paper-variational-underactuated-balancing-quadruped.md) — Chignoli & Wensing（IEEE Access 2020）** 提出面向四足**欠驱动平 `📅unknown` `[entity_page]`
+- [VBot Exo2Ego Policy：轻量采集与第三人称到第一人称视频生成](wiki/entities/paper-vbot-exo2ego-policy.md) — VBot Exo2Ego Policy**（*Lightweight Data Collection and Exocentric-to-Egocentric Video Generation*， `📅unknown` `[entity_page]`
 - [VecTile（arXiv:2610.31472）](wiki/entities/paper-vectile.md) — VecTile**（*VecTile: A Low-Cost Flexible Tactile Array for 3-DoF Force Sensing*，[arXiv:2610.31472 `📅unknown` `[entity_page]`
 - [仿生腹沟纤维：体积可编程气动驱动](wiki/entities/paper-ventral-groove-fibers.md) — 仿生腹沟纤维通过微沟槽展开与弹性膨胀耦合，实现低压下可逆的截面积变化，用于气动抓取与响应式织物。 `📅unknown` `[entity_page]`
 - [Veo World Simulator](wiki/entities/paper-veo-world-simulator-policy-testing.md) — Veo World Simulator** 收录于 [具身智能研究室 · 具身世界模型六路线综述](https://mp.weixin.qq.com/s/mmIJRp9g6NqblMCjd9D5G `📅unknown` `[entity_page]`
