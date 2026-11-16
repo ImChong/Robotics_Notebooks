@@ -66,6 +66,11 @@ def main():
         action="store_true",
         help="跳过 generate_home_stats（ci-preflight 已注入 lint coverage 时使用）",
     )
+    parser.add_argument(
+        "--skip-copy",
+        action="store_true",
+        help="跳过 copy_graph_exports_to_docs（graph_exports_sync 已跑过时使用）",
+    )
     args = parser.parse_args()
 
     # 1. 生成图谱数据和统计
@@ -77,7 +82,8 @@ def main():
         run_command(["python3", "scripts/generate_home_stats.py"], "生成首页统计 JSON")
 
     # 3. 确保 docs/exports 目录存在并同步图谱相关 JSON（与 make graph 共用逻辑）
-    copy_graph_exports_to_docs()
+    if not args.skip_copy:
+        copy_graph_exports_to_docs()
 
     # 3b. 与 graph-stats.generated_at 对齐 Service Worker 缓存版本
     run_command(["python3", "scripts/sync_sw_cache_version.py"], "同步 SW 缓存版本")

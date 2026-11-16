@@ -11,6 +11,7 @@
 from __future__ import annotations
 
 import json
+import os
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,13 +21,17 @@ OUT_PATH = Path(__file__).resolve().parent.parent / "docs" / "exports" / "star-h
 
 
 def fetch_star_count() -> int:
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "Robotics-Notebooks-star-history",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    token = os.environ.get("GITHUB_TOKEN", "").strip()
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
     req = urllib.request.Request(
         f"https://api.github.com/repos/{REPO}",
-        headers={
-            "Accept": "application/vnd.github+json",
-            "User-Agent": "Robotics-Notebooks-star-history",
-            "X-GitHub-Api-Version": "2022-11-28",
-        },
+        headers=headers,
     )
     with urllib.request.urlopen(req, timeout=30) as resp:
         return int(json.load(resp)["stargazers_count"])

@@ -48,10 +48,13 @@ jobs:
       # 统计数字不入库（避免并行 PR 冲突），仅在构建产物里写入：
       # README 徽章 endpoint JSON、docs/index.html Hero 兜底数字、docs/sw.js 缓存版本
       - name: Stamp stats into site build
-        run: python3 scripts/sync_all_stats.py --skip-graph --skip-home-stats
+        run: python3 scripts/sync_all_stats.py --skip-graph --skip-home-stats --skip-copy
 
       - name: Copy README to docs
-        run: cp README.md docs/README.md
+        run: |
+          cp README.md docs/README.md
+          mkdir -p docs/media
+          cp media/site-demo.gif docs/media/site-demo.gif
 
       - name: Setup Pages
         uses: actions/configure-pages@v6

@@ -10,6 +10,8 @@ ci-test:
 	npm run lint:js
 	npm run lint:mermaid
 	npm run test:frontend
+	test -f exports/site-data-v1.json || python3 scripts/export_minimal.py
+	test -f exports/link-graph.json || python3 scripts/generate_link_graph.py
 	PYTHONPATH=scripts python3 -m pytest
 
 lint:
