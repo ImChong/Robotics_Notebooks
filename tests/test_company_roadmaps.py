@@ -28,9 +28,7 @@ def test_company_keys_unique_and_lenses_known() -> None:
 
 
 def test_nvidia_name_matches_institution_registry_and_homepage() -> None:
-    registry = json.loads(
-        (REPO_ROOT / "schema" / "institutions.json").read_text(encoding="utf-8")
-    )
+    registry = json.loads((REPO_ROOT / "schema" / "institutions.json").read_text(encoding="utf-8"))
     expected = registry["registry"]["nvidia"]["label"]
     nvidia = next(c for c in DATA["companies"] if c["key"] == "nvidia")
     html = (REPO_ROOT / "docs" / "index.html").read_text(encoding="utf-8")
