@@ -138,6 +138,17 @@ flowchart TB
 | 大偏差恢复 | 有 pre-shift 时 AMJT / AMDV 波动与平滑度显著优于无 pre-shift |
 | 真机长时程 | 多步 loco-manipulation 保持与人 **恒定世界系偏移**；单操作员连续任务 |
 
+## 对比
+
+| 对照对象 | 论文中的差异 | 适用边界 |
+|---|---|---|
+| TWIST2 等局部坐标跟踪 | CLOT 额外闭环观测人和机器人全局位姿，缓解长时程世界坐标漂移；论文报告 G1 仿真跟踪误差显著下降 | 需要 OptiTrack 全局定位，便携性不如局部跟踪方案 |
+| 无 Observation Pre-shift 的全局跟踪 | Pre-shift 在训练时错开观测参考与奖励参考，降低大偏差纠错时的关节力矩、速度尖峰 | 该机制仅在训练期使用 |
+| 仅 Transformer 的跟踪器 | CLOT 联合 AMP 运动先验约束动作自然性，论文消融显示组合方案更稳定 | 不能把改善归因于 Transformer 单一组件 |
+
+以上是论文报告的同任务对照，不代表跨平台零样本泛化；详见 [原文归档](../../sources/papers/clot_arxiv_2602_15060.md) 和 [论文](https://arxiv.org/abs/2602.15060)。
+
+
 ## 结论
 
 **闭环全局位姿反馈配合 Observation Pre-shift、Transformer 与 AMP，在 Adam Pro 上实现长时程无漂移全身遥操作。**
