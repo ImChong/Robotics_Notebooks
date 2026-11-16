@@ -36,7 +36,7 @@ summary: "OpenNWM 通过联合视觉重建与物理运动监督提取通用导�
 
 | 缩写 | 英文全称 | 简要说明 |
 |---|---|---|
-| OpenNWM | Open Navigation World Model | 本论文的导航世界模型（完整论文名见标题） |
+| OpenNWM | OpenNWM: A Generalist Navigation World Model with Latent Action Pretraining | 论文方法名；不自行推断名称缩写展开 |
 | UNLA | Universal Navigation Latent Actions | 以视觉转移及少量物理监督学习的导航潜动作 |
 | LAM | Latent Action Model | 从图像对提取潜动作的模型 |
 | NWM | Navigation World Model | 给定观测与动作预测未来视觉状态 |
@@ -89,9 +89,7 @@ $$
 $$
 
 $$
-\mathcal L_{\mathrm{latent}}
-=\mathbb E_{\mathcal D}[\mathcal L_{\mathrm{vis}}]
-+\lambda_{\mathrm{phy}}\mathbb E_{\mathcal D_{\mathrm{phy}}}[\mathcal L_{\mathrm{phy}}].
+\mathcal{L}_{\mathrm{latent}}=\mathbb{E}_{(\mathbf{x},\mathbf{y})\sim\mathcal{D}}\left[\mathcal{L}_{\mathrm{vis}}\right]+\lambda_{\mathrm{phy}}\mathbb{E}_{(\mathbf{x},\mathbf{y})\sim\mathcal{D}_{\mathrm{phy}}}\left[\mathcal{L}_{\mathrm{phy}}\right].
 $$
 
 其中 q_phi 是从视觉转移推断的后验；p_omega 只对带物理位姿监督的数据启用。**只有视觉重建并不能保证潜变量对应机器人可控的运动**。
