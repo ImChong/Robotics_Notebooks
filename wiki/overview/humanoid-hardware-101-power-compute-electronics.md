@@ -22,6 +22,10 @@ sources:
 
 > **分类页**：**电池、计算单元、PCB** 三章 — 移动人形的 **能量预算** 与 **边缘算力**。
 
+## 一句话定义
+
+能源与计算电子把电池的能量预算、计算平台的功耗与板卡的配电、保护和散热连成整机的电气底座。
+
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
@@ -71,10 +75,6 @@ PCB 交付以[已通读的 KiCad 10.0 官方入门](../../sources/courses/kicad_
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)
 - [wechat_humanoid_hardware_101_2026-06-01.md](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
-
-## 一句话定义
-
-能源与计算电子把电池的能量预算、计算平台的功耗与板卡的配电、保护和散热连成整机的电气底座。
 
 ## 为什么重要
 
