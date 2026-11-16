@@ -198,6 +198,7 @@ flowchart LR
 - 用行为树把 2–3 个 VLA 技能串成一个长时程任务，观察失败恢复逻辑
 
 ### 推荐读什么
+- [ActionCodec2](../wiki/entities/paper-actioncodec2-streaming-action-tokenizer.md) — Stage 4 动作端低延迟：误差反馈量化 + Set-BPE 逐步解码；流式 token 输出与实际闭环执行需分别验证
 - [JustRUA](../wiki/entities/paper-justrua-robot-use-agents.md) — RoboDojo 受控对照：实测状态、估深、短运动步进与 Coding Actor
 - [ACE-CaP-0](../wiki/entities/paper-ace-cap-0.md) — 开发期按需示范/仿真，冻结代码策略在执行期脱离编码 Agent
 - [Reins](../wiki/entities/paper-reins-robot-harness.md) — 多模态 Agent 通过三维感知、条件化动作链与并行旁白驱动真机
