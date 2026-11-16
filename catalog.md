@@ -6153,7 +6153,7 @@
 - [T²Mem：面向机器人的测试时记忆学习](wiki/entities/paper-t2mem.md) — T²Mem: Learning Test-Time Memory for Robotics（arXiv:2609.36720）聚焦一个机器人学习/控制缺口：很多长程 Manipulation 是部分可 `📅2026-10-06` `[entity_page]`
 - [T3R：免训练两阶段 Token 优化（arXiv:2611.08413）](wiki/entities/paper-t3r-training-free-two-stage-token-refinement.md) — T3R（T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models，arXiv:2611 `📅2026-11-09` `[entity_page]`
 - [TacBPM：触觉条件的行为先验，用于灵巧手内重定向](wiki/entities/paper-tacbpm.md) — TacBPM（TacBPM: A Tactile-conditioned Behavior Prior Model for Dexterous Reorientation，arXiv:2609.181 `📅2026-10-16` `[entity_page]`
-- [TacClaw-Infinity：面向灵巧操作的大规模视触觉语言动作数据集](wiki/entities/paper-tacclaw-infinity.md) — TacClaw-Infinity 是面向接触丰富灵巧操作的视觉-触觉-语言-动作（VTLA）数据集：用无需目标机器人的手持触觉接口采集同步的视觉、指尖触觉与末端轨迹，再经质量控制、可执行性筛选与结构化 `📅2026-11-05` `[entity_page]`
+- [TacClaw-Infinity：面向灵巧操作的大规模视触觉语言动作数据集](wiki/entities/paper-tacclaw-infinity.md) — TacClaw-Infinity 是面向接触丰富灵巧操作的视觉-触觉-语言-动作（VTLA）数据集：用无需目标机器人的手持触觉接口采集同步的视觉、指尖触觉与末端轨迹，再经质量控制、可执行性筛选与结构化 `📅2026-11-16` `[entity_page]`
 - [TACET：面向四足机器人的情境适配声学—社会导航](wiki/entities/paper-tacet.md) — TACET: Context-Appropriate Acoustic-Social Navigation for Quadrupeds（arXiv:2610.03828）聚焦一个机器人学习/控制缺口 `📅2026-10-06` `[entity_page]`
 - [TacitVLA：无需等待推理文本的 VLA（Reasoning Vision-Language-Action Models Without Reasoning Latency）](wiki/entities/paper-tacitvla.md) — 论文： TacitVLA: Reasoning Vision-Language-Action Models Without Reasoning Latency（Jack Lu 等，2026-10-13 `📅2026-11-11` `[entity_page]`
 - [Tacmap：几何一致的穿透深度图触觉仿真](wiki/entities/paper-tacmap.md) — Tacmap（Tacmap: Bridging the Tactile Sim-to-Real Gap via Geometry-Consistent Penetration Depth Map，ar `📅2026-10-16` `[entity_page]`
