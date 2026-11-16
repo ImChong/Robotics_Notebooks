@@ -119,6 +119,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [XMimic（JAX）](./paper-xmimic-jax.md)：一分钟内动作跟踪，侧重编译程序与多 GPU 训练流水线；不要与单张 RTX 4090 的训练时长直接混算。
+
 - [InstantTrack](./instanttrack.md)：同机同评测设置下的训练速度基线。
 - [SuperMimic](./paper-supermimic.md)：可微世界模型思路的前置工作。
 - [model-based RL](../methods/model-based-rl.md)：用模型在规划与学习中补充环境动态。
