@@ -137,6 +137,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [2026-11-16 具身前沿 29 篇论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
+
 - [Reins](./paper-reins-robot-harness.md)
 - [ACE-CaP-0](./paper-ace-cap-0.md)
 - [VLA 学习纵深路线](../../roadmap/depth-vla.md)

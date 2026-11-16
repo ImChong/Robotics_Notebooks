@@ -162,6 +162,7 @@ flowchart LR
 - 把失败 rollout 按模式聚类（抓取失败 / 子任务切换失败 / 超时 / 过压），而不是只报一个均值
 
 ### 推荐读什么
+- [ManiLadder](../wiki/entities/paper-maniladder-manipulation-benchmark.md) — Stage 3 将 112 项操作任务按四难度级及任务族校准，用 AL@50 暴露平均成功率无法体现的能力短板（官方项目代码待核实）
 - [RoboDojo](../wiki/entities/robodojo.md) — 统一 sim-and-real 评测：42 仿真五维任务 + 18 真机任务，Isaac 异构并行 + RealEval 云真机；verified 上榜须开源训推与权重
 - [2026 BEHAVIOR Challenge](../wiki/entities/behavior-challenge-2026.md) — 100 项长程家务任务的赛事协议：主排名 Q-score 是末状态 BDDL 谓词部分完成度，不等于 full-task success；同时核对 RGB-D+proprio 观测限制与公开/隐藏实例划分
 - [机器人操作基准审计](../wiki/entities/paper-manipulation-benchmark-audit.md) — 检查语言捷径、统计显著性、测试条件过拟合与训练数据来源，作为解释 LIBERO/CALVIN 等高分的对照读物
