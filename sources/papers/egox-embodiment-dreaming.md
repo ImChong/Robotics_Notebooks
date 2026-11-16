@@ -5,6 +5,7 @@
 - **中文标题：** EgoX：借助 Embodiment Dreaming 的第一视角跨本体操作学习
 - **英文标题：** EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming
 - **论文 PDF：** https://egox-dream.github.io/assets/egox.pdf
+- **arXiv（v1，2026-11-12）：** https://arxiv.org/abs/2611.16728
 - **项目页：** https://egox-dream.github.io/
 - **官方代码：** https://github.com/egox-dream/egox
 - **机构：** Carnegie Mellon University、Bosch Center for Artificial Intelligence、University of Texas at Arlington、UC Berkeley、NVIDIA

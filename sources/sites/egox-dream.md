@@ -4,6 +4,7 @@
 - **名称：** EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming
 - **项目：** https://egox-dream.github.io/
 - **论文：** https://egox-dream.github.io/assets/egox.pdf
+- **arXiv：** https://arxiv.org/abs/2611.16728
 - **代码：** https://github.com/egox-dream/egox
 - **核对日期：** 2026-11-13
 - **主节点：** [EgoX](../../wiki/entities/paper-egox-mxt-plus.md)
@@ -14,4 +15,4 @@
 
 **代码开放程度：部分开源。** 官方 GitHub 已提供模型、训练、微调和 G1 仿真 rollout；但 README 说明数据集和 VR 数据采集流水线尚未公开。不能把项目页展示的运行结果等同于公开可复现的完整训练包。
 
-**阅读边界：** 网页内容已核对，论文 PDF 全文尚未通读，详见 [论文来源记录](../papers/egox-embodiment-dreaming.md)。
+**阅读边界：** 本文件归档官方项目页；论文正文和附录的全文核对已记录于 [论文来源记录](../papers/egox-embodiment-dreaming.md)（2026-11-13 完成）。尚未进行 GPU 训练或仿真复现。
