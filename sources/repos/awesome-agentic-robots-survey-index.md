@@ -21,3 +21,8 @@
 ## 对 wiki 的映射
 
 - [唯一的综述论文实体节点](../../wiki/entities/paper-towards-agentic-robots-survey.md)：固化 v1 定义与系统分工，提供动态检索资源入口。
+
+## 独立节点补全进度
+
+- [307 条固定快照分批台账](../../docs/checklists/awesome-agentic-robots-node-coverage.md)：记录候选与验收状态，详情链接统一回各自的论文实体。
+- [PAFF 独立详情](../../wiki/entities/paper-paff-2212-07398.md)：第一批完成原文与相关源码入口核查。
