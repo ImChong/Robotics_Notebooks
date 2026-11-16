@@ -191,6 +191,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Darwin Gödel Machine（DGM）](../wiki/entities/paper-darwin-godel-machine.md) — 冻结基础模型外层的自修改编码 Agent；开放式档案保留过渡分支，区分 50 题和全量 Polyglot 成绩
+- [Hyperagents（DGM-H）](../wiki/entities/paper-hyperagents.md) — 将任务 Agent 与元级改进者放入同一可编辑程序；Genesis Go2 奖励设计属于仿真实验，不等于真机策略自修改
 - [MetaRSI-v1](../wiki/entities/paper-metarsi-v1.md) — Data / Harness / Model 三算子与两轴优化器；无外部 teacher 的验证设定
 - [RSI-Harness](../wiki/entities/paper-metarsi-v1.md) — Genome 配置层与 GEE（从 session 生成 Genome）；Harness-RSI 官方实现
 - [HarnessBank](../wiki/entities/paper-harnessbank.md) — 冻结模型下的语义归档与门控式 harness 自进化
