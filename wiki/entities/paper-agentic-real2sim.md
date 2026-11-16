@@ -74,7 +74,7 @@ summary: "Agentic Real2Sim（arXiv:2607.19190，UBC×JHU×Columbia×UCLA×NUS �
 
 | 字段 | 内容 |
 |------|------|
-| 机构 | 英属哥伦比亚大学（UBC）；约翰霍普金斯大学（Johns Hopkins）；埃尔朗根-纽伦堡大学 / NHR@FAU（FAU）；哥伦比亚大学（Columbia）；加州大学洛杉矶分校（UCLA）；新加坡国立大学（NUS）；凌迪科技（Style3D） |
+| 机构 | 英属哥伦比亚大学（UBC）；约翰霍普金斯大学（Johns Hopkins）；埃尔朗根-纽伦堡大学 / NHR@FAU（FAU）；哥伦比亚大学（Columbia）；加州大学洛杉矶分校（UCLA）；新加坡国立大学（NUS）；剑桥大学（Cambridge）；凌迪科技（Style3D） |
 | arXiv | [2607.19190](https://arxiv.org/abs/2607.19190) |
 | 项目页 | <https://agentic-real2sim.github.io/> |
 | 仿真后端（刚性） | MuJoCo |
@@ -179,7 +179,7 @@ README 的主要产物在 `sysid_inputs/manifest.yaml`、`objects/`、`physical_
 |----|------|
 | 选型定位 | 需要 **episode 级物理回放** 与 **可换 VLM 编排** 时对照；若只需操作场景 + cousins + 策略相关评测，优先看 [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) |
 | 复现边界 | **已有官方 CLI**，但要求 Linux/NVIDIA GPU、Python 3.12+、约 80 GB 工作空间、外部视觉权重（部分需授权）；本次未实测运行 |
-| 评测阅读 | 「回放成功」≠「策略成功率相关」；与 SimFoundry Pearson / MMRV 口径不同 |
+| 评测阅读 | 「回放成功」≠「闭环策略成功率」；v5 另报六任务 Pearson，且不等同 SimFoundry 的评测设置 |
 
 ## 结论
 
@@ -213,6 +213,7 @@ README 的主要产物在 `sysid_inputs/manifest.yaml`、`objects/`、`physical_
 
 ## 关联页面
 
+- [Real2Sim 纵深路线](../../roadmap/depth-real2sim.md) — 本论文已挂载 Stage 3
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim 资产与迁移总图
 - [CRISP](../methods/crisp-real2sim.md) — 单目人–场景 Real2Sim（平面原语 + RL）
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — 真机视频 → sim-ready 孪生 + cousins + 策略评测
