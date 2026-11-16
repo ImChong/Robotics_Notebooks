@@ -7,11 +7,13 @@ const vm = require('node:vm');
 const source = readFileSync(resolve(__dirname, '../docs/star-history.html'), 'utf8');
 const tooltip = readFileSync(resolve(__dirname, '../docs/graph-tooltip.js'), 'utf8');
 const depthFilters = readFileSync(resolve(__dirname, '../docs/depth-filters.js'), 'utf8');
+const typeLabels = readFileSync(resolve(__dirname, '../docs/wiki-type-labels.js'), 'utf8');
 const loaders = source.slice(source.indexOf('      function getJSON('), source.indexOf('      var touch ='));
 
 function loadViews(graph, companies, labs = [], routeHealth = []) {
   const requests = [];
   const context = vm.createContext({
+    document: { documentElement: { getAttribute: () => 'dark' } },
     fetch: async (url) => {
       requests.push(url);
       const data = {
@@ -28,6 +30,7 @@ function loadViews(graph, companies, labs = [], routeHealth = []) {
   });
   context.window = context;
   vm.runInContext(tooltip, context);
+  vm.runInContext(typeLabels, context);
   vm.runInContext(depthFilters, context);
   vm.runInContext(loaders, context);
   return { requests, views: context.VIEWS };
