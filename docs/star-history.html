@@ -523,10 +523,12 @@
           } }
       ];
       // 公司 / 实验室节点数：顺序与首页一致；同一机构内按知识节点 ID 去重，跨机构分别计数。
-      // 条形按节点主社区堆叠着色，点击条形或名称跳到该机构的路线页
-      function orgNodeCounts(g, orgs) {
+      // 四种堆叠依据共享同一收录清单，点击条形或名称跳到该机构的路线页。
+      function orgNodeCounts(g, orgs, mode, theme) {
+        var groups = nodeTrendGroups(g, mode, theme);
+        var known = new Set(groups.map(function (group) { return group.id; }));
         var nodes = new Map(g.nodes.map(function (n) { return [n.detail_id, n]; }));
-        var count = {};
+        var count = new Map();
         var sum = 0;
         orgs.forEach(function (org, i) {
           var seen = new Set();
@@ -534,50 +536,61 @@
             var n = nodes.get(entry.id);
             if (!n || seen.has(n.id)) return;
             seen.add(n.id);
-            var values = count[n.community] || (count[n.community] = orgs.map(function () { return 0; }));
+            var key = NODE_STACK_MODES[mode].key(n);
+            if (!known.has(key)) key = '__unclassified__';
+            if (!count.has(key)) count.set(key, orgs.map(function () { return 0; }));
+            var values = count.get(key);
             values[i] += 1;
             sum += 1;
           });
         });
-        var color = RNGraphTooltip.buildCommunityColorMap(g.communities);
+        if (count.has('__unclassified__')) groups.push({ id: '__unclassified__', label: '未分类', color: '#64748b' });
         return {
           cats: orgs.map(function (org) { return org.name; }),
           links: orgs.map(function (org) { return ORG_KINDS[org.kind].page + '?id=' + encodeURIComponent(org.key); }),
           kinds: orgs.map(function (org) { return org.kind; }),
-          series: RNGraphTooltip.getSortedCommunities(g.communities)
-            .filter(function (c) { return count[c.id]; })
-            .map(function (c) {
-              return { name: RNGraphTooltip.shortenCommunityLabel(c.label), values: count[c.id], color: color[c.id] };
+          series: groups
+            .filter(function (group) { return count.has(group.id) || (group.showEmpty && orgs.length); })
+            .map(function (group) {
+              return { name: mode === 'community' ? RNGraphTooltip.shortenCommunityLabel(group.label) : group.label,
+                values: count.get(group.id) || orgs.map(function () { return 0; }), color: group.color };
             }),
+          showLegend: true,
           sum: sum
         };
       }
       function withKind(orgs, kind) {
         return (orgs || []).map(function (org) { return Object.assign({ kind: kind }, org); });
       }
-      VIEWS.push({ id: 'company-nodes', label: '公司节点数', unit: '节点', kind: 'category',
+      VIEWS.push({ id: 'company-nodes', label: '公司节点数', unit: '节点', kind: 'category', orgNodes: true,
         load: function () {
+          var mode = nodeStackMode;
+          var theme = document.documentElement.getAttribute('data-theme');
           return Promise.all([linkGraph(), companyRoadmaps()]).then(function (data) {
-            var s = orgNodeCounts(data[0], withKind(data[1].companies, 'company'));
+            var s = orgNodeCounts(data[0], withKind(data[1].companies, 'company'), mode, theme);
             s.total = s.cats.length + ' 家公司，合计 ' + s.sum + ' 节点次（公司内去重，一个节点可属多家公司）';
             return s;
           });
         } });
-      VIEWS.push({ id: 'lab-nodes', label: '实验室节点数', unit: '节点', kind: 'category',
+      VIEWS.push({ id: 'lab-nodes', label: '实验室节点数', unit: '节点', kind: 'category', orgNodes: true,
         load: function () {
+          var mode = nodeStackMode;
+          var theme = document.documentElement.getAttribute('data-theme');
           return Promise.all([linkGraph(), labRoadmaps()]).then(function (data) {
-            var s = orgNodeCounts(data[0], withKind(data[1].labs, 'lab'));
+            var s = orgNodeCounts(data[0], withKind(data[1].labs, 'lab'), mode, theme);
             s.total = s.cats.length + ' 个实验室，合计 ' + s.sum + ' 节点次（实验室内去重，一个节点可属多个实验室）';
             return s;
           });
         } });
       // 公司与实验室合并：与合并时间线同序（按成立年份交错，同年公司在前），名称前用 ● / ◆ 区分两类机构
-      VIEWS.push({ id: 'org-nodes', label: '公司 + 实验室节点数', unit: '节点', kind: 'category',
+      VIEWS.push({ id: 'org-nodes', label: '公司 + 实验室节点数', unit: '节点', kind: 'category', orgNodes: true,
         load: function () {
+          var mode = nodeStackMode;
+          var theme = document.documentElement.getAttribute('data-theme');
           return Promise.all([linkGraph(), companyRoadmaps(), labRoadmaps()]).then(function (data) {
             var orgs = withKind(data[1].companies, 'company').concat(withKind(data[2].labs, 'lab'));
             orgs.sort(function (a, b) { return a.founded_year - b.founded_year; });
-            var s = orgNodeCounts(data[0], orgs);
+            var s = orgNodeCounts(data[0], orgs, mode, theme);
             var companies = s.kinds.filter(function (k) { return k === 'company'; }).length;
             s.marked = true;
             s.total = companies + ' 家公司、' + (orgs.length - companies) + ' 个实验室，合计 ' + s.sum +
@@ -630,14 +643,18 @@
         var version = ++renderVersion;
         if (legend.classList.contains('trend-legend--interactive')) legend.hidden = true;
         current = view;
-        var stackable = view.load === nodeTrends || view.id === 'depth-nodes' || !!view.rowMode;
+        var stackable = view.load === nodeTrends || view.id === 'depth-nodes' || !!view.rowMode || !!view.orgNodes;
         stackBar.hidden = !stackable;
         stackBar.querySelectorAll('button').forEach(function (b) {
           var active = b.dataset.stack === nodeStackMode;
           b.className = 'home-hub-tab' + (active ? ' is-active' : '');
           b.setAttribute('aria-pressed', String(active));
         });
-        description.textContent = view.rowMode
+        description.textContent = view.orgNodes
+          ? '统计各机构技术路线收录的现存节点，机构内去重；同一节点可属多个机构。按' +
+            NODE_STACK_MODES[nodeStackMode].description + '堆叠，切换标签不改变每行节点总数。' +
+            (nodeStackMode === 'opensource' ? '开源表示已关联源码仓库。' : '')
+          : view.rowMode
           ? '统计当前知识图谱中的全部节点，按' + NODE_STACK_MODES[view.rowMode].description + '分行，按' +
             NODE_STACK_MODES[nodeStackMode].description + '着色' + (view.rowMode === nodeStackMode ? '。' : '堆叠。') +
             '切换标签不改变每行节点总数。' +
@@ -685,7 +702,7 @@
         rangeBar.hidden = true;
         ganttRange = null;
         legend.classList.toggle('trend-legend--interactive', nodeTrend);
-        if (!nodeTrend) legend.setAttribute('aria-label', view.id === 'depth-nodes' || view.rowMode
+        if (!nodeTrend) legend.setAttribute('aria-label', view.id === 'depth-nodes' || view.rowMode || view.orgNodes
           ? NODE_STACK_MODES[nodeStackMode].label + '图例' : '社区配色');
         // 交互图例放在两张趋势图下方，窄屏先显示时间轴和图表。
         if (nodeTrend) chart.after(legend);

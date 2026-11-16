@@ -15,8 +15,9 @@ const loaders = source.slice(loaderStart, loaderEnd);
 
 function loadViews(graph, companies, labs = [], routeHealth = []) {
   const requests = [];
+  let theme = 'dark';
   const context = vm.createContext({
-    document: { documentElement: { getAttribute: () => 'dark' } },
+    document: { documentElement: { getAttribute: () => theme } },
     fetch: async (url) => {
       requests.push(url);
       const data = {
@@ -36,13 +37,13 @@ function loadViews(graph, companies, labs = [], routeHealth = []) {
   vm.runInContext(typeLabels, context);
   vm.runInContext(depthFilters, context);
   vm.runInContext(loaders, context);
-  return { requests, views: context.VIEWS };
+  return { requests, views: context.VIEWS, context, setTheme: (value) => { theme = value; } };
 }
 
 const graph = {
   nodes: [
-    { id: 'wiki/entities/a.md', detail_id: 'entity-a', community: 'vla' },
-    { id: 'wiki/entities/b.md', detail_id: 'entity-b', community: 'control' },
+    { id: 'wiki/entities/a.md', detail_id: 'entity-a', community: 'vla', type: 'entity', has_repo: true, health_score: 3 },
+    { id: 'wiki/entities/b.md', detail_id: 'entity-b', community: 'control', type: 'concept', health_score: 1 },
   ],
   communities: [
     { id: 'vla', label: '视觉动作（VLA）社区', size: 10 },
@@ -158,6 +159,86 @@ test('combined node counts interleave companies and labs by founding year and ma
   assert.deepEqual(result.links, ['company.html?id=old', 'lab.html?id=lab-a', 'company.html?id=new', 'lab.html?id=lab-b']);
   assert.equal(result.marked, true);
   assert.match(result.total, /^2 家公司、2 个实验室，合计 3 节点次（.*名称前 ● 为公司、◆ 为实验室）$/);
+});
+
+test('all 12 institution/stack combinations preserve deduplication, row order, links and totals', async () => {
+  const { context, views, requests } = loadViews(graph, [
+    { key: 'old', name: '老公司', founded_year: 1993, nodes: [
+      { id: 'entity-a' }, { id: 'entity-a' }, { id: 'entity-b' }, { id: 'missing' },
+    ] },
+    { key: 'new', name: '新公司', founded_year: 2022, nodes: [{ id: 'entity-b' }] },
+    { key: 'empty', name: '空公司', founded_year: 2023, nodes: [] },
+  ], [
+    { key: 'lab-a', name: '实验室甲', founded_year: 2015, nodes: [
+      { id: 'entity-a' }, { id: 'entity-b' }, { id: 'entity-a' },
+    ] },
+    { key: 'lab-b', name: '实验室乙', founded_year: 2022, nodes: [{ id: 'entity-a' }] },
+    { key: 'lab-empty', name: '空实验室', founded_year: 2024, nodes: [] },
+  ]);
+  const modes = ['community', 'type', 'opensource', 'health'];
+  for (const [id, expected] of [
+    ['company-nodes', [2, 1, 0]], ['lab-nodes', [2, 1, 0]], ['org-nodes', [2, 2, 1, 1, 0, 0]],
+  ]) {
+    const view = views.find((v) => v.id === id);
+    assert.equal(view.orgNodes, true);
+    let previous;
+    for (const mode of modes) {
+      context.nodeStackMode = mode;
+      const result = JSON.parse(JSON.stringify(await view.load()));
+      assert.deepEqual(result.cats.map((_, i) => result.series.reduce((sum, s) => sum + s.values[i], 0)), expected, id + '/' + mode);
+      assert.equal(result.sum, expected.reduce((a, b) => a + b, 0));
+      if (previous) {
+        for (const key of ['cats', 'links', 'kinds', 'marked', 'total']) assert.deepEqual(result[key], previous[key], key);
+      }
+      previous = result;
+      if (id === 'company-nodes') {
+        assert.deepEqual(result.series.map((s) => s.values), mode === 'health'
+          ? [[1, 0, 0], [0, 0, 0], [1, 1, 0], [0, 0, 0]] : [[1, 0, 0], [1, 1, 0]]);
+      }
+    }
+  }
+  for (const url of ['exports/link-graph.json', 'company-roadmaps.json', 'lab-roadmaps.json']) {
+    assert.equal(requests.filter((request) => request === url).length, 1, url);
+  }
+});
+
+test('institution stacks retain unclassified nodes, zero buckets and current theme colors', async () => {
+  const data = { communities: graph.communities, nodes: [
+    ...graph.nodes,
+    { id: 'wiki/c.md', detail_id: 'c', community: 'unknown', health_score: -1 },
+    { id: 'wiki/d.md', detail_id: 'd', health_score: 9 },
+  ] };
+  const { context, views, setTheme } = loadViews(data, [{ key: 'test', name: '公司', nodes: [
+    { id: 'entity-a' }, { id: 'c' }, { id: 'c' }, { id: 'd' }, { id: 'missing' },
+  ] }]);
+  const view = views.find((v) => v.id === 'company-nodes');
+  const load = async () => JSON.parse(JSON.stringify(await view.load()));
+  let result = await load();
+  assert.deepEqual(result.series.map((s) => [s.name, s.values]), [['视觉动作', [1]], ['未分类', [2]]]);
+  context.nodeStackMode = 'type';
+  result = await load();
+  assert.deepEqual(result.series.map((s) => s.values).sort(), [[1], [2]]);
+  context.nodeStackMode = 'opensource';
+  assert.deepEqual((await load()).series.map((s) => [s.name, s.values]), [['开源', [1]], ['未开源', [2]]]);
+  context.nodeStackMode = 'health';
+  const dark = await load();
+  assert.deepEqual(dark.series.map((s) => s.values), [[2], [0], [0], [1]]);
+  assert.deepEqual(dark.series.map((s) => s.color), ['#4ade80', '#facc15', '#fb923c', '#f87171']);
+  setTheme('light');
+  const light = await load();
+  assert.deepEqual(light.series.map((s) => s.values), dark.series.map((s) => s.values));
+  assert.deepEqual(light.series.map((s) => s.color), ['#16a34a', '#ca8a04', '#ea580c', '#ef4444']);
+});
+
+test('institution loaders capture the requested stack before their shared requests resolve', async () => {
+  const { context, views } = loadViews(graph, [{ key: 'test', name: '公司', nodes: [{ id: 'entity-a' }] }]);
+  const view = views.find((v) => v.id === 'company-nodes');
+  context.nodeStackMode = 'opensource';
+  const openRequest = view.load();
+  context.nodeStackMode = 'health';
+  const healthRequest = view.load();
+  assert.deepEqual(JSON.parse(JSON.stringify((await openRequest).series.map((s) => s.name))), ['开源', '未开源']);
+  assert.deepEqual(JSON.parse(JSON.stringify((await healthRequest).series.map((s) => s.name))), ['3 分', '2 分', '1 分', '0 分']);
 });
 
 test('route collected node counts link each route to its roadmap page', async () => {
