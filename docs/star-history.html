@@ -83,7 +83,7 @@
           <h1 class="section-title" id="trend-heading">增长趋势</h1>
           <div class="home-hub-tabs" id="trend-tabs" role="group" aria-label="切换趋势视图"></div>
         </div>
-        <p class="section-subtitle" id="trend-description">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区、类型、开源、健康度与纵深节点数取自当前知识图谱，公司 / 实验室节点数按各自技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
+        <p class="section-subtitle" id="trend-description">星标数每日定时记录；节点与纵深路线按 git 首次加入日统计（仅含现存页面）；社区、类型、开源、健康度取自当前知识图谱；路线收录节点数按各路线知识地图中的去重节点统计，公司 / 实验室节点数按各自技术路线收录统计；公司 / 实验室时间线按各节点注明的月份绘制。</p>
         <p class="data-meta" id="trend-status" aria-live="polite">加载中…</p>
         <div class="trend-range" id="trend-stack" role="group" aria-label="堆叠依据" hidden>
           <span class="trend-range-hint">堆叠依据</span>
@@ -448,12 +448,13 @@
               };
             });
           } },
-        { id: 'route-health', label: '纵深路线健康度', unit: '节点', kind: 'category',
+        { id: 'depth-nodes', label: '路线收录节点数', unit: '节点', kind: 'category',
           load: function () {
-            // 每条路线知识地图节点（路线页各阶段列出的节点）的健康度分布，
-            // 由 generate_link_graph.route_health_distribution 预先算进 graph-stats.json；路线按首页 / roadmap/README 的历史起点顺序排列
-            return graphStats().then(function (st) {
+            // 仅使用各 roadmap 知识地图的 related_items 收录清单，分类与健康度共享同一去重后的节点集合。
+            // graph-stats.json 生成各路线的四维计数；link-graph.json 仅提供社区、类型的标签与配色。
+            return Promise.all([graphStats(), linkGraph()]).then(function (data) {
               var D = RNDepthFilters;
+              var mode = nodeStackMode;
               var nameByPath = {};
               var orderByPath = {};
               D.DEPTH_ORDER.forEach(function (k, i) {
@@ -461,57 +462,61 @@
                 nameByPath[path] = D.DEPTH_META[k].label;
                 orderByPath[path] = i;
               });
-              var colors = healthColors(document.documentElement.getAttribute('data-theme'));
-              var rows = (st.route_health || []).map(function (r) {
+              var rows = (data[0].route_health || []).map(function (r) {
                 var n = r.counts.reduce(function (a, c) { return a + c; }, 0);
                 var path = 'roadmap/' + r.detail_id.replace(/^roadmap-/, '') + '.md';
                 return {
                   id: r.detail_id, counts: r.counts, n: n,
+                  communities: r.communities, types: r.types, opensource: r.opensource,
                   avg: (r.counts[1] + 2 * r.counts[2] + 3 * r.counts[3]) / Math.max(n, 1),
                   name: nameByPath[path] || r.label,
                   order: orderByPath[path] === undefined ? D.DEPTH_ORDER.length : orderByPath[path]
                 };
               }).sort(function (a, b) { return a.order - b.order || a.id.localeCompare(b.id); });
-              var scores = [3, 2, 1, 0];
-              return {
-                cats: rows.map(function (r) { return r.name + ' · 均 ' + r.avg.toFixed(2); }),
-                links: rows.map(function (r) { return 'roadmap.html?id=' + encodeURIComponent(r.id); }),
-                series: scores.map(function (s) {
-                  return { name: s + ' 分', color: colors[s], values: rows.map(function (r) { return r.counts[s]; }) };
-                }),
-                total: rows.length + ' 条路线，统计各自知识地图里的节点（一个节点可属多条路线）；按各方向起点里程碑的历史顺序排列（主路线置顶），点路线名进入路线页'
-              };
-            });
-          } },
-        { id: 'depth-nodes', label: '纵深节点数', unit: '节点', kind: 'category',
-          load: function () {
-            // 纵深命中口径与 graph.html 路线视图一致；条形按节点主社区堆叠着色
-            return linkGraph().then(function (g) {
-              var D = RNDepthFilters;
-              var count = {};
-              g.nodes.forEach(function (n) {
-                D.depthsForNode(n).forEach(function (k) {
-                  var byDepth = count[n.community] || (count[n.community] = {});
-                  byDepth[k] = (byDepth[k] || 0) + 1;
+              function breakdown(row) {
+                if (mode === 'health') {
+                  return Object.fromEntries(row.counts.map(function (n, score) { return [String(score), n]; }));
+                }
+                return row[mode === 'community' ? 'communities' : mode === 'type' ? 'types' : 'opensource'];
+              }
+              if (mode !== 'health' && rows.some(function (r) { return !breakdown(r); })) {
+                throw new Error('路线分组数据未生成，请更新 graph-stats.json');
+              }
+              var included = new Set();
+              rows.forEach(function (r) {
+                Object.entries(breakdown(r)).forEach(function (entry) {
+                  if (entry[1] > 0) included.add(entry[0]);
                 });
               });
-              var color = RNGraphTooltip.buildCommunityColorMap(g.communities);
-              var sum = 0;
-              var series = RNGraphTooltip.getSortedCommunities(g.communities)
-                .filter(function (c) { return count[c.id]; })
-                .map(function (c) {
-                  var values = D.DEPTH_ORDER.map(function (k) { return count[c.id][k] || 0; });
-                  values.forEach(function (v) { sum += v; });
-                  return { name: RNGraphTooltip.shortenCommunityLabel(c.label), values: values, color: color[c.id] };
-                });
+              var groups = nodeTrendGroups(data[1], mode, document.documentElement.getAttribute('data-theme'))
+                .filter(function (g) { return mode === 'health' || mode === 'opensource' || included.has(g.id); });
+              var known = new Set(groups.map(function (g) { return g.id; }));
+              included.forEach(function (id) {
+                if (!known.has(id)) {
+                  groups.push({ id: id, label: mode === 'type' ? RNWikiTypeLabels.formatChinese(id) : id,
+                    color: '#94a3b8' });
+                }
+              });
+              var series = groups.map(function (g) {
+                return {
+                  name: mode === 'community' ? RNGraphTooltip.shortenCommunityLabel(g.label) : g.label,
+                  color: g.color,
+                  values: rows.map(function (r) { return breakdown(r)[g.id] || 0; })
+                };
+              });
+              var sum = rows.reduce(function (n, r) { return n + r.n; }, 0);
+              var stackedSum = series.reduce(function (n, s) {
+                return n + s.values.reduce(function (a, b) { return a + b; }, 0);
+              }, 0);
+              if (sum !== stackedSum) throw new Error('路线分组数量与收录节点数量不一致');
               return {
-                cats: D.DEPTH_ORDER.map(function (k) { return D.DEPTH_META[k].label; }),
-                // 点击跳到该纵深的路线页：roadmap/depth-x.md → roadmap.html?id=roadmap-depth-x
-                links: D.DEPTH_ORDER.map(function (k) {
-                  return 'roadmap.html?id=roadmap-' + D.depthHubPath(k).replace(/^roadmap\//, '').replace(/\.md$/, '');
+                cats: rows.map(function (r) {
+                  return r.name + (mode === 'health' ? ' · 均 ' + r.avg.toFixed(2) : '');
                 }),
+                links: rows.map(function (r) { return 'roadmap.html?id=' + encodeURIComponent(r.id); }),
                 series: series,
-                total: D.DEPTH_ORDER.length + ' 条纵深，合计 ' + sum + ' 节点次（一个节点可属多条纵深）'
+                total: rows.length + ' 条路线，合计 ' + sum +
+                  ' 节点次（以各路线知识地图收录为准，路线内去重；一个节点可属多条路线；按历史顺序排列，主路线置顶）'
               };
             });
           } }
@@ -616,16 +621,21 @@
         var version = ++renderVersion;
         if (legend.classList.contains('trend-legend--interactive')) legend.hidden = true;
         current = view;
-        stackBar.hidden = view.load !== nodeTrends;
+        var stackable = view.load === nodeTrends || view.id === 'depth-nodes';
+        stackBar.hidden = !stackable;
         stackBar.querySelectorAll('button').forEach(function (b) {
           var active = b.dataset.stack === nodeStackMode;
           b.className = 'home-hub-tab' + (active ? ' is-active' : '');
           b.setAttribute('aria-pressed', String(active));
         });
-        description.textContent = view.load === nodeTrends
-          ? '按现存页面的 Git 首次加入日统计，按当前知识图谱的' + NODE_STACK_MODES[nodeStackMode].description + '回溯归类。'
-            + (nodeStackMode === 'opensource' ? '开源表示已关联源码仓库。' : '')
-          : defaultDescription;
+        description.textContent = view.id === 'depth-nodes'
+          ? '仅统计路线知识地图中实际收录的现存节点，路线内去重；按' +
+            NODE_STACK_MODES[nodeStackMode].description + '堆叠。' +
+            (nodeStackMode === 'opensource' ? '开源表示已关联源码仓库。' : '')
+          : view.load === nodeTrends
+            ? '按现存页面的 Git 首次加入日统计，按当前知识图谱的' + NODE_STACK_MODES[nodeStackMode].description + '回溯归类。'
+              + (nodeStackMode === 'opensource' ? '开源表示已关联源码仓库。' : '')
+            : defaultDescription;
         Array.prototype.forEach.call(tabs.children, function (b) {
           var active = b.dataset.view === view.id;
           b.className = 'home-hub-tab' + (active ? ' is-active' : '');
@@ -639,11 +649,11 @@
         }).catch(function (e) {
           if (version !== renderVersion) return;
           status.textContent = window.Plotly ? '加载失败：' + e.message : '图表库（Plotly）加载失败，请检查网络后刷新页面重试';
-          if (view.load === nodeTrends) legend.hidden = true;
+          if (stackable) legend.hidden = true;
           if (window.Plotly) Plotly.purge('trend-chart');
         });
         history.replaceState(null, '', '?view=' + view.id +
-          (view.load === nodeTrends && nodeStackMode !== 'community' ? '&stack=' + nodeStackMode : ''));
+          (stackable && nodeStackMode !== 'community' ? '&stack=' + nodeStackMode : ''));
       }
 
       function draw(view, s) {
@@ -661,7 +671,8 @@
         rangeBar.hidden = true;
         ganttRange = null;
         legend.classList.toggle('trend-legend--interactive', nodeTrend);
-        if (!nodeTrend) legend.setAttribute('aria-label', '社区配色');
+        if (!nodeTrend) legend.setAttribute('aria-label', view.id === 'depth-nodes'
+          ? NODE_STACK_MODES[nodeStackMode].label + '图例' : '社区配色');
         // 交互图例放在两张趋势图下方，窄屏先显示时间轴和图表。
         if (nodeTrend) chart.after(legend);
         else if (legend.previousElementSibling === chart) rangeBar.before(legend);
@@ -1099,6 +1110,11 @@
       var requestedStack = params.get('stack');
       if (Object.prototype.hasOwnProperty.call(NODE_STACK_MODES, requestedStack)) nodeStackMode = requestedStack;
       var wanted = params.get('view');
+      // 旧收藏链接仍可打开：原「路线健康度」并入统一图的健康度模式。
+      if (wanted === 'route-health') {
+        wanted = 'depth-nodes';
+        if (!params.has('stack')) nodeStackMode = 'health';
+      }
       render(VIEWS.filter(function (v) { return v.id === wanted; })[0] || VIEWS[0]);
     })();
   </script>

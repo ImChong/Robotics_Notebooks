@@ -7,17 +7,20 @@ const vm = require('node:vm');
 const source = readFileSync(resolve(__dirname, '../docs/star-history.html'), 'utf8');
 const tooltip = readFileSync(resolve(__dirname, '../docs/graph-tooltip.js'), 'utf8');
 const depthFilters = readFileSync(resolve(__dirname, '../docs/depth-filters.js'), 'utf8');
+const typeLabels = readFileSync(resolve(__dirname, '../docs/wiki-type-labels.js'), 'utf8');
 const loaders = source.slice(source.indexOf('      function getJSON('), source.indexOf('      var touch ='));
 
-function loadViews(graph, companies, labs = []) {
+function loadViews(graph, companies, labs = [], routeHealth = []) {
   const requests = [];
   const context = vm.createContext({
+    document: { documentElement: { getAttribute: () => 'dark' } },
     fetch: async (url) => {
       requests.push(url);
       const data = {
         'exports/star-history.json': { counts: [] },
         'exports/wiki-activity.json': { days: [] },
         'exports/link-graph.json': graph,
+        'exports/graph-stats.json': { route_health: routeHealth },
         'company-roadmaps.json': { companies },
         'lab-roadmaps.json': { labs },
       };
@@ -27,6 +30,7 @@ function loadViews(graph, companies, labs = []) {
   });
   context.window = context;
   vm.runInContext(tooltip, context);
+  vm.runInContext(typeLabels, context);
   vm.runInContext(depthFilters, context);
   vm.runInContext(loaders, context);
   return { requests, views: context.VIEWS };
@@ -153,12 +157,24 @@ test('combined node counts interleave companies and labs by founding year and ma
   assert.match(result.total, /^2 家公司、2 个实验室，合计 3 节点次（.*名称前 ● 为公司、◆ 为实验室）$/);
 });
 
-test('depth node counts link each depth to its roadmap page', async () => {
-  const { views } = loadViews(graph, []);
+test('route collected node counts link each route to its roadmap page', async () => {
+  const routeHealth = [
+    { detail_id: 'roadmap-depth-vla', label: 'VLA', counts: [0, 0, 1, 0],
+      communities: { vla: 1 }, types: { entity: 1 }, opensource: { open: 0, closed: 1 } },
+    { detail_id: 'roadmap-motion-control', label: '主路线', counts: [0, 1, 0, 1],
+      communities: { vla: 1, control: 1 }, types: { entity: 2 }, opensource: { open: 1, closed: 1 } },
+  ];
+  const { views } = loadViews(graph, [], [], routeHealth);
   const result = JSON.parse(JSON.stringify(await views.find((v) => v.id === 'depth-nodes').load()));
+  assert.deepEqual(result.links, [
+    'roadmap.html?id=roadmap-motion-control',
+    'roadmap.html?id=roadmap-depth-vla',
+  ]);
   assert.equal(result.links.length, result.cats.length);
-  assert.equal(result.links[0], 'roadmap.html?id=roadmap-motion-control');
-  assert.ok(result.links.slice(1).every((href) => /^roadmap\.html\?id=roadmap-depth-[a-z0-9-]+$/.test(href)), result.links.join(','));
+  assert.deepEqual(
+    result.cats.map((_, i) => result.series.reduce((sum, series) => sum + series.values[i], 0)),
+    [2, 1]
+  );
 });
 
 test('community node counts link each community to its hubs ranking', async () => {
