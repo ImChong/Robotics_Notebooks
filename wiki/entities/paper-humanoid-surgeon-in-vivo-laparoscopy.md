@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, teleoperation, manipulation, surgical-robotics, healthcare, humanoid, nature, ucsd]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-16
 doi: "10.1038/s41586-026-10796-x"
 venue: "Nature 2026"
 related:
@@ -12,6 +12,8 @@ related:
   - ../entities/paper-notebook-humanoids-in-hospitals-a-technical-study-of-huma.md
   - ../overview/paper-notebook-category-07-teleoperation.md
 sources:
+  - ../../sources/papers/humanoid_surgeon_nature_2026.md
+original:
   - ../../sources/papers/humanoid_surgeon_nature_2026.md
 summary: "UCSD（Liang/Yip 等，Nature 2026）：首次 in vivo 系统评估人形机器人腹腔镜手术——通用器械遥操作框架经台架/干实验室/活体猪验证，完成腹腔镜胆囊切除术，精度可比专用平台但标定与时长仍是临床前瓶颈。"
 ---
@@ -60,8 +62,8 @@ flowchart TB
     bench --> drylab --> invivo
   end
   subgraph teams [活体实验编队]
-    hr["人机团队<br/>Surgie + 人类助手"]
-    rr["机机团队<br/>双 Surgie 并排"]
+    hr["主体人机团队<br/>Surgie + 人类助手"]
+    rr["第二台 Surgie<br/>病例1短时持镜/牵拉"]
   end
   framework --> eval
   invivo --> hr
@@ -85,8 +87,8 @@ flowchart TB
 - **平台：** 团队昵称 **Surgie** 的 UCSD 人形；轻量、可移动，可站在常规 OR 内（新闻稿：与现有工作流融合度超预期）。
 - **In vivo 任务：** **腹腔镜胆囊切除术** — 布署、戳卡、牵拉、分离、夹闭、肝床摘除（项目页 Fig. 4–5）。
 - **编队：**
-  - **人机：** 一台 Surgie 主操 + 人类助手；
-  - **机机：** 两台 Surgie 并排协作完成同一术式。
+  - **人机：** 一台 Surgie 由资深外科医生在控制台遥操作，床旁主要由人类助手辅助；
+  - **第二台人形：** 仅在第一例短时参与持镜与牵拉；两例主要床旁辅助仍由人类提供。不能理解为双人形独立完成整个术式。
 
 ### 3）分层评测设计
 
@@ -109,7 +111,7 @@ flowchart TB
 |------|----------|----------|
 | 台架 | 工作空间 + command-execution tracking | 量化人形术野可达性与指令跟踪误差（Fig. 2） |
 | 干实验室 | 多手术经验层级操作员 | 相对专用平台评估任务表现与临床就绪度 |
-| In vivo 猪 | 腹腔镜胆囊切除术 | **完整 MIS 流程**成功；人机/机机两种编队（Fig. 4–5） |
+| In vivo 猪 | 2 例腹腔镜胆囊切除术 | 两例均完成、无需转传统/开放术；**夹闭和结扎由人工腹腔镜完成**，第二人形只在病例 1 短时协助（Fig. 4） |
 | 对照 | da Vinci 类专用平台 | 精度可比；**时长与标定频率**显著落后成熟商用系统 |
 
 ## 对比
@@ -120,7 +122,7 @@ flowchart TB
 | 通用人形腹腔镜遥操作 | 人形平台操纵常规器械，适配既有手术室工作流 | 论文评估台架、干实验室与活体猪模型中的可行性 |
 | 临床人体手术 | 涉及临床有效性、监管审批及长期安全性 | 活体动物实验成功不等于已证明人体临床安全或可替代外科医生 |
 
-论文的比较主要是可行性和系统特性，不应将活体猪实验外推为临床就绪；见 [Nature 原文](https://doi.org/10.1038/s41586-026-10796-x) 与 [来源归档](../../sources/papers/humanoid_surgeon_nature_2026.md)。
+论文的比较主要是可行性和系统特性：O-ring 测试中人形与 dVRK 的加权错误相近（4.53 ± 3.14 对 4.59 ± 2.53），但人形耗时更长（74.67 ± 39.22 s 对 43.01 ± 15.25 s）；FLS peg transfer 中人形的平衡得分为 85.39 ± 16.25，低于 da Vinci Xi 的 97.67 ± 1.54。不能将活体猪实验外推为临床就绪。详见 [作者公开全文](https://arxiv.org/html/2607.07972) Tables 1–2 和 [通读核对记录](../../sources/papers/humanoid_surgeon_nature_2026.md)。
 
 
 ## 结论
@@ -131,7 +133,7 @@ flowchart TB
 - 证据强度来自 **三级评测链**（台架 command-execution tracking → 多经验层级干实验室 → 活体猪完整胆囊切除），而不是单次演示；in vivo 阶段还给出人机与机机两种编队。
 - 适用边界是 **偏远/资源不足/野战医疗** 这类难以添置专用手术岛的场景：卖点是 ~5 ft / 60 lb 的部署弹性与手术辅助、器械递送、术后清理等全身任务扩展。
 - 主要缺口明确：术中需 **多次重新标定**、时长明显长于成熟专用系统、远程手术还卡在 latency。
-- 定位仍是 **preclinical feasibility**：作者所称的「精度可比」限于遥操作精度，不含吞吐量、无菌流程与器械生态；代码目前仅项目页占位。
+- 定位仍是 **preclinical feasibility**：作者所称的「精度可比」限于遥操作精度，不含吞吐量、无菌流程与器械生态；代码已通过论文所列 Zenodo 归档发布，但未做本地复现。
 
 ## 常见误区与局限
 
@@ -155,17 +157,19 @@ flowchart TB
 | 平台 | Surgie 人形（~5 ft，~60 lb） |
 | 术式 | 腹腔镜胆囊切除术（活体猪） |
 | 发表 | Nature，2026-07-08 在线 |
-| 代码 | 项目页 Code 暂占位；预印本线曾有 Zenodo 腹腔镜人形代码记录，待官方 GitHub 放出后补链 |
+| 代码 | 作者公开 [Zenodo 代码归档](https://zenodo.org/records/18023650)（`g1_teleoperate-lap_surgie.zip`）；项目页仍无 GitHub 直链，暂未核实运行入口 |
 
 ## 工程实践
 
-本页为论文策展归纳：工程落地请按本页「流程总览」「核心机制」与「参考来源」中的项目页/论文原文核对设置；官方代码是否开放以项目页为准，本页未独立复现。
+本页为论文策展归纳：工程落地请按本页「流程总览」「核心机制」与「参考来源」中的原文核对设置。作者在论文 §6.3 公布 [Zenodo 代码](https://zenodo.org/records/18023650)；本次仅核对其公开文件目录，未审查实际运行入口或复现，因此不编造未经源码核对的运行时序图。
 
 ## 参考来源
 
 - [humanoid_surgeon_nature_2026.md](../../sources/papers/humanoid_surgeon_nature_2026.md)
 - 项目页：<https://humanoid-surgeon.github.io/>
-- 论文：<https://doi.org/10.1038/s41586-026-10796-x>
+- 期刊论文：<https://doi.org/10.1038/s41586-026-10796-x>
+- 作者公开全文：<https://arxiv.org/html/2607.07972>（2607.07972v1）
+- 作者公开代码归档：<https://zenodo.org/records/18023650>
 - UCSD 新闻：<https://today.ucsd.edu/story/surgeons-use-teleoperated-humanoid-robots-to-perform-live-surgery-a-world-first>
 
 ## 推荐继续阅读
