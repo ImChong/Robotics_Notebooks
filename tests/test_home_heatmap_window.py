@@ -4,16 +4,21 @@ from __future__ import annotations
 
 import json
 import subprocess
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN_JS = ROOT / "docs" / "main.js"
 
-# CI 不生成 gitignore 的 wiki-activity.json；用合成日数据验证窗口逻辑。
+# CI 不生成 gitignore 的 wiki-activity.json；用相对当前 UTC 日期的合成日数据验证窗口逻辑。
+_UTC_TODAY = datetime.now(timezone.utc).date()
+_D1 = (_UTC_TODAY - timedelta(days=60)).isoformat()
+_D2 = (_UTC_TODAY - timedelta(days=30)).isoformat()
+_D3 = (_UTC_TODAY - timedelta(days=7)).isoformat()
 _SAMPLE_DAYS = [
-    {"date": "2026-04-24", "count": 3, "added_count": 1, "maintained_count": 2},
-    {"date": "2026-06-01", "count": 5, "added_count": 5},
-    {"date": "2026-07-07", "count": 2, "maintained_count": 2},
+    {"date": _D1, "count": 3, "added_count": 1, "maintained_count": 2},
+    {"date": _D2, "count": 5, "added_count": 5},
+    {"date": _D3, "count": 2, "maintained_count": 2},
 ]
 
 _NODE_SNIPPET = r"""
@@ -95,9 +100,9 @@ def test_home_heatmap_added_only_uses_added_count() -> None:
     out = _run_node(_SAMPLE_DAYS, mode="added")
     assert out["modeAttr"] == "added"
     by_date = {c["date"]: c["count"] for c in out["clickable"]}
-    assert by_date.get("2026-04-24") == 1
-    assert by_date.get("2026-06-01") == 5
-    assert "2026-07-07" not in by_date  # 仅维护，默认不点亮
+    assert by_date.get(_D1) == 1
+    assert by_date.get(_D2) == 5
+    assert _D3 not in by_date  # 仅维护，默认不点亮
     assert "新增" in out["tipSample"]
 
 
@@ -105,7 +110,7 @@ def test_home_heatmap_total_uses_count() -> None:
     out = _run_node(_SAMPLE_DAYS, mode="total")
     assert out["modeAttr"] == "total"
     by_date = {c["date"]: c["count"] for c in out["clickable"]}
-    assert by_date.get("2026-04-24") == 3
-    assert by_date.get("2026-06-01") == 5
-    assert by_date.get("2026-07-07") == 2
+    assert by_date.get(_D1) == 3
+    assert by_date.get(_D2) == 5
+    assert by_date.get(_D3) == 2
     assert "新增" not in out["tipSample"]

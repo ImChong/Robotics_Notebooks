@@ -28,7 +28,7 @@
     dOut: 18.2, out: 19.22, where: 21.02, nameS: 23.82,
     big: 25.75, bigS: 27.75, out2: 29.3,
     elbow: 29.42, you: 30.65, sNums: [32.49, 32.93, 33.39, 49.95, 50.46, 57.87], front3: 34.9,
-    back3: 36.84, q: 37.73, arr: [39.82, 40.3], sub: [40.81, 41.61], neg: 42.52, slide: [42.6, 43.2],
+    back3: 36.84, q: 37.73, arr: [39.82, 40.3], subQ: [40.81, 41.61], neg: 42.52, slide: [42.6, 43.2],
     same: 44.66, take1: 46.51, take2: 47.79, rot: [49.03, 49.8], pos: 49.76,
     h0: 52.3, hs0: 53.05, back3b: 56.74,
     again: [60.31, 60.83, 61.34, 61.86, 62.32, 62.93], times: 63.94, zeros: 65.42, mul: [66.41, 67.37, 68.58], got: [66.98, 68.1, 69.35], twist: 71.07, out3: 72.82,
@@ -231,7 +231,7 @@
           E.op(mYou, f(st, T.you, 0.3)); E.op(mQ, f(st, T.q, 0.3)); E.op(mH, f(st, T.h0, 0.3));
           // 肘 → 原点（画出来）→ 平移到原点（尾巴在原点，指到 (−1, −2)）→ 绕原点逆时针转 90° 到 (2, −1)
           if (s.isConnected) layoutFlows();
-          E.op(m1a, f(st, T.sub[0], 0.3)); E.op(m1b, f(st, T.sub[0] + 0.3, 0.3)); E.op(m1c, f(st, T.neg, 0.3));
+          E.op(m1a, f(st, T.subQ[0], 0.3)); E.op(m1b, f(st, T.subQ[0] + 0.3, 0.3)); E.op(m1c, f(st, T.neg, 0.3));
           E.op(m2a, f(st, T.same, 0.3)); E.op(m2b, f(st, T.take1, 0.3)); E.op(m2c, f(st, T.take2, 0.3)); E.op(m2d, f(st, T.pos, 0.3));
           var ma = f(st, T.take1, 0.5), mb = f(st, T.take2, 0.5), ma1 = MP(0, -ma), mb1 = MP(2 * mb, -1);
           mA.set(MO[0], MO[1], ma1[0], ma1[1]); E.op(mA.g, ma > 0.01 ? 1 : 0);

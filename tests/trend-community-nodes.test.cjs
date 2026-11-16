@@ -7,7 +7,10 @@ const vm = require('node:vm');
 const page = readFileSync(resolve(__dirname, '../docs/star-history.html'), 'utf8');
 const tooltip = readFileSync(resolve(__dirname, '../docs/graph-tooltip.js'), 'utf8');
 const typeLabels = readFileSync(resolve(__dirname, '../docs/wiki-type-labels.js'), 'utf8');
-const loaders = page.slice(page.indexOf('      function getJSON('), page.indexOf('      var touch ='));
+const loaderStart = page.indexOf('      function getJSON(');
+const loaderEnd = page.indexOf('      var touch =', loaderStart);
+assert.ok(loaderStart >= 0 && loaderEnd > loaderStart, 'star-history loader slice markers missing');
+const loaders = page.slice(loaderStart, loaderEnd);
 
 const graph = {
   nodes: [

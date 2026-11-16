@@ -21,6 +21,9 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent
+VENDOR_DIR = str(ROOT / "vendor")
+if VENDOR_DIR not in sys.path:
+    sys.path.insert(0, VENDOR_DIR)
 CH_DIR = ROOT / "chapters"
 TTS_DIR = ROOT / "cache" / "tts"
 FRAME_DIR = ROOT / "cache" / "frames"
@@ -213,7 +216,6 @@ BREAK_AFTER = "，。；：、！？）”』」,;:!?)"
 def boundaries(t):
     """jieba 分词边界（字符下标集合），避免把一个词拆到两行；没装 jieba 时退化为只按标点断行。"""
     import logging
-    sys.path.insert(0, str(ROOT / "vendor"))
     try:
         import jieba
     except ImportError:

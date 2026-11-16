@@ -77,9 +77,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -111,9 +112,10 @@ console.log('ok');
 """
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -222,9 +224,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -275,9 +278,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -293,47 +297,16 @@ console.log('ok');
         self.assertIn("const cells = splitMarkdownTableCells(row);", content)
 
         node_script = r"""
-function splitMarkdownTableCells(row) {
-  const cells = [];
-  let current = '';
-  let inInlineMath = false;
-  let inDisplayMath = false;
-  let inParenMath = false;
-  let inCode = false;
-  const source = String(row || '');
-  let i = 0;
-  while (i < source.length) {
-    const ch = source[i];
-    const next = source[i + 1];
-    if (!inCode && !inInlineMath && !inDisplayMath && !inParenMath && ch === '\\' && next === '|') {
-      current += '\\|'; i += 2; continue;
-    }
-    if (!inInlineMath && !inDisplayMath && !inParenMath && ch === '`') {
-      inCode = !inCode; current += ch; i++; continue;
-    }
-    if (!inCode && !inInlineMath && !inParenMath && ch === '$' && next === '$') {
-      inDisplayMath = !inDisplayMath; current += '$$'; i += 2; continue;
-    }
-    if (!inCode && !inDisplayMath && ch === '$' && !inParenMath) {
-      inInlineMath = !inInlineMath; current += ch; i++; continue;
-    }
-    if (!inCode && !inInlineMath && !inDisplayMath && ch === '\\' && next === '(') {
-      inParenMath = true; current += '\\('; i += 2; continue;
-    }
-    if (inParenMath && ch === '\\' && next === ')') {
-      inParenMath = false; current += '\\)'; i += 2; continue;
-    }
-    if (!inCode && !inInlineMath && !inDisplayMath && !inParenMath && ch === '|') {
-      cells.push(current); current = ''; i++; continue;
-    }
-    current += ch; i++;
-  }
-  cells.push(current);
-  const trimmed = cells.map(function (c) { return c.trim(); });
-  if (trimmed.length > 0 && trimmed[0] === '') trimmed.shift();
-  if (trimmed.length > 0 && trimmed[trimmed.length - 1] === '') trimmed.pop();
-  return trimmed;
+const fs = require('fs');
+const vm = require('vm');
+const content = fs.readFileSync(process.argv[1], 'utf8');
+const start = content.indexOf('  function splitMarkdownTableCells(row) {');
+const end = content.indexOf('  function normalizeCodeLang(lang) {', start);
+if (start < 0 || end <= start) {
+  throw new Error('Could not locate splitMarkdownTableCells bounds in main.js');
 }
+const context = vm.createContext({});
+vm.runInContext(content.slice(start, end), context);
 const cases = [
   [
     '| M3 | 3 | + 负载相关 $K_l\\|\\tau_m-\\tau_e\\|$ | eRob80:50 |',
@@ -345,7 +318,7 @@ const cases = [
   ]
 ];
 for (const [row, expected] of cases) {
-  const got = splitMarkdownTableCells(row);
+  const got = context.splitMarkdownTableCells(row);
   if (JSON.stringify(got) !== JSON.stringify(expected)) {
     console.error(JSON.stringify({ row, expected, got }));
     process.exit(1);
@@ -354,7 +327,7 @@ for (const [row, expected] of cases) {
 console.log('ok');
 """
         result = subprocess.run(
-            ["node", "-e", node_script],
+            ["node", "-e", node_script, str(MAIN_JS)],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -417,9 +390,10 @@ console.log('ok');
 """
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -453,9 +427,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -491,9 +466,10 @@ console.log('ok');
 """
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -522,9 +498,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -555,9 +532,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -629,9 +607,10 @@ console.log('ok checked=' + checked);
         from pathlib import Path
 
         wiki_root = Path(__file__).resolve().parents[1] / "wiki"
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS), str(wiki_root)],
             capture_output=True,
@@ -738,9 +717,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -783,9 +763,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -826,9 +807,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -868,9 +850,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,
@@ -943,9 +926,10 @@ console.log('ok');
         import subprocess
         import tempfile
 
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+        with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".js", delete=False) as tmp:
             tmp.write(node)
             tmp_path = tmp.name
+        self.addCleanup(Path(tmp_path).unlink, missing_ok=True)
         result = subprocess.run(
             ["node", tmp_path, str(MAIN_JS)],
             capture_output=True,

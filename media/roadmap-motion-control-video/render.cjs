@@ -4,14 +4,21 @@ const { chromium } = require("playwright-core");
 const fs = require("fs");
 const path = require("path");
 
-const CHROME = process.env.CHROME_PATH || "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
+const CHROME = [
+  process.env.CHROME_PATH,
+  process.env.CHROME,
+  "/opt/pw-browsers/chromium-1194/chrome-linux/chrome",
+].find((p) => p && fs.existsSync(p));
 
 (async () => {
   const deck = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
   const outDir = process.argv[3];
   const only = process.argv[4] || "";
   fs.mkdirSync(outDir, { recursive: true });
-  const browser = await chromium.launch({ executablePath: CHROME, args: ["--no-sandbox", "--font-render-hinting=none"] });
+  const browser = await chromium.launch({
+    ...(CHROME ? { executablePath: CHROME } : {}),
+    args: ["--no-sandbox", "--font-render-hinting=none"],
+  });
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
   page.on("pageerror", e => console.error("pageerror:", e.message));
   await page.goto("file://" + path.resolve(__dirname, "template.html"));

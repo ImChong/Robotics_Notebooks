@@ -6,7 +6,10 @@ const vm = require('node:vm');
 
 const html = readFileSync(resolve(__dirname, '../docs/star-history.html'), 'utf8');
 const depthFilters = readFileSync(resolve(__dirname, '../docs/depth-filters.js'), 'utf8');
-const loaders = html.slice(html.indexOf('      function getJSON('), html.indexOf('      var touch ='));
+const loaderStart = html.indexOf('      function getJSON(');
+const loaderEnd = html.indexOf('      var touch =', loaderStart);
+assert.ok(loaderStart >= 0 && loaderEnd > loaderStart, 'star-history loader slice markers missing');
+const loaders = html.slice(loaderStart, loaderEnd);
 
 async function loadRouteHealth(routeHealth) {
   const context = vm.createContext({
