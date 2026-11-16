@@ -162,6 +162,8 @@ flowchart LR
 - 四足方向：先做空间重定向（足端 + 基座关键点，按腿长比例缩放），检查 trot / pace 的接触相位是否被保留，再用时间缩放把峰值关节速度压回机器人可执行范围——把 STMR 的 SMR/TMR 拆解亲手走一遍
 
 ### 推荐读什么
+- [MotionSkill：单视频跨机体运动参考](../wiki/entities/paper-motionskill-cross-embodiment.md) — 区分共享参考与逐机体训练的低层策略。
+- [单图场景接触引导重定向](../wiki/entities/paper-rgb-scene-contact-retargeting.md) — 在人体源端和机器人足底两次修正接触几何。
 - [GMR](../wiki/methods/motion-retargeting-gmr.md)、[NMR](../wiki/methods/neural-motion-retargeting-nmr.md)、[ReActor](../wiki/methods/reactor-physics-aware-motion-retargeting.md) — 三条代表路线
 - [GMR vs NMR vs ReActor 选型对比](../wiki/comparisons/gmr-vs-nmr-vs-reactor.md) — 谱系主入口
 - [DynaRetarget / SBTO](../wiki/methods/dynaretarget-sbto-motion-retargeting.md) 与 [SPIDER](../wiki/methods/spider-physics-informed-dexterous-retargeting.md) — 物理感知扩展

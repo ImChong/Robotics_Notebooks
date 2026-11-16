@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, failure-recovery, navigation, humanoid, tactile, benchmark, technology-map]
 status: complete
-updated: 2026-11-10
+updated: 2026-11-16
 related:
   - embodied-chunk-replanning-2026-11-11-53-papers-technology-map.md
   - embodied-station-2026-11-09-29-papers-technology-map.md
@@ -90,6 +90,8 @@ summary: "具身智能小站 2026-11-10 的 22 篇论文阅读坐标：失败诊
 | 22 | 扫读 | [让社交机器人按情境说好第一句话](../entities/paper-proactive-conversation-opener-cco.md) | [2611.09906](https://arxiv.org/abs/2611.09906) | 新建 |
 
 ## 关联页面
+
+- [具身运控lab：11.09–11.13 人形／四足 29 篇阅读坐标](./humanoid_quadruped_2026_11_09_13_29_papers.md)
 
 - [下一期（11-11）53 篇阅读坐标](./embodied-chunk-replanning-2026-11-11-53-papers-technology-map.md)
 - [上一期（11-09）29 篇阅读坐标](./embodied-station-2026-11-09-29-papers-technology-map.md)

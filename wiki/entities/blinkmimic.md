@@ -11,8 +11,10 @@ related:
   - ./instanttrack.md
   - ./paper-supermimic.md
   - ../methods/model-based-rl.md
+  - ../overview/humanoid_quadruped_2026_11_09_13_29_papers.md
 original:
   - ../../sources/papers/blinkmimic-2611-16422.md
+  - ../../sources/papers/blinkmimic_arxiv_2611_16422.md
 sources:
   - ../../sources/repos/blinkmimic.md
   - ../../sources/repos/blinkmimic-2611-16422.md
@@ -117,6 +119,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [11.09–11.13 人形／四足 29 篇论文阅读坐标](../overview/humanoid_quadruped_2026_11_09_13_29_papers.md)：本次周报中的 BlinkMimic 唯一节点复用入口。
+
 - [本期 29 篇具身智能论文地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 
 - [XMimic（JAX）](./paper-xmimic-jax.md)：将本训练器重构为编译程序与多 GPU 流水线；其 H100 对比排除编译，勿与本页 RTX 4090 时间混算。
@@ -125,6 +129,8 @@ sequenceDiagram
 - [SuperMimic](./paper-supermimic.md)：可微世界模型方法。
 
 ## 参考来源
+
+- [本期论文补充核对归档](../../sources/papers/blinkmimic_arxiv_2611_16422.md)
 
 - [BlinkMimic 论文原文与核对归档](../../sources/papers/blinkmimic-2611-16422.md)
 - [本次核对的官方源码与入口](../../sources/repos/blinkmimic-2611-16422.md)
