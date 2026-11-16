@@ -33,7 +33,8 @@ def test_nvidia_name_matches_institution_registry_and_homepage() -> None:
     nvidia = next(c for c in DATA["companies"] if c["key"] == "nvidia")
     html = (REPO_ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     assert nvidia["name"] == expected
-    assert f'href="company.html?id=nvidia">{expected}</a>' in html
+    chinese, english = expected.split("（", maxsplit=1)
+    assert f'href="company.html?id=nvidia">{chinese}<span class="route-en">（{english}</span></a>' in html
 
 
 def test_every_node_links_site_page_and_original() -> None:
