@@ -1662,11 +1662,239 @@
 - [Agent-Friendly by Design：用 SQL 引擎比较 MoonBit 与 Rust](wiki/entities/paper-agent-friendly-by-design.md) — Agent-Friendly by Design: An Empirical Comparison of MoonBit and Rust in AI-Driven Software Constr `📅unknown` `[entity_page]`
 - [Agent S3：Scaling Agents for Computer Use｜可扩展电脑操作智能体](wiki/entities/paper-agent-s3.md) — Agent S3**（Simular Research，论文 arXiv:2510.02250，[官方源码](https:/ `📅unknown` `[entity_page]`
 - [AgentGarten（Code Worlds for Evolving Agents）](wiki/entities/paper-agentgarten.md) — AgentGarten**（arXiv:2610.12374，[项目页](https://mirros-lab.github `📅unknown` `[entity_page]`
+- [ProgPrompt: Generating Situated Robot Task Plans using Large Language Models](wiki/entities/paper-agentic-2209-11302.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Voyager: An Open-Ended Embodied Agent with Large Language Models](wiki/entities/paper-agentic-2305-16291.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboCat: A Self-Improving Generalist Agent for Robotic Manipulation](wiki/entities/paper-agentic-2306-11706.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [REFLECT: Summarizing Robot Experiences for Failure Explanation and Correction](wiki/entities/paper-agentic-2306-15724.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [DoReMi: Grounding Language Model by Detecting and Recovering from Plan-Execution Misalignment](wiki/entities/paper-agentic-2307-00329.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Robots That Ask For Help: Uncertainty Alignment for Large Language Model Planners](wiki/entities/paper-agentic-2307-01928.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoCo: Dialectic Multi-Robot Collaboration with Large Language Models](wiki/entities/paper-agentic-2307-04738.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Plug in the Safety Chip: Enforcing Constraints for LLM-driven Robot Agents](wiki/entities/paper-agentic-2309-09919.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [GenSim: Generating Robotic Simulation Tasks via Large Language Models](wiki/entities/paper-agentic-2310-01361.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Distilling and Retrieving Generalizable Knowledge for Robot Manipulation via Language Corrections](wiki/entities/paper-agentic-2311-10678.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [SpatialVLM: Endowing Vision-Language Models with Spatial Reasoning Capabilities](wiki/entities/paper-agentic-2401-12168.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics](wiki/entities/paper-agentic-2401-12202.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Introspective Planning: Aligning Robots' Uncertainty with Inherent Task Ambiguity](wiki/entities/paper-agentic-2402-06529.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboCodeX: Multimodal Code Generation for Robotic Behavior Synthesis](wiki/entities/paper-agentic-2402-16117.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [MOKA: Open-World Robotic Manipulation through Mark-Based Visual Prompting](wiki/entities/paper-agentic-2403-03174.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Yell At Your Robot: Improving On-the-Fly from Language Corrections](wiki/entities/paper-agentic-2403-12910.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Agentic Skill Discovery](wiki/entities/paper-agentic-2405-15019.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboCoder: Robotic Learning from Basic Skills to General Tasks with Large Language Models](wiki/entities/paper-agentic-2406-03757.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Lifelong Robot Library Learning: Bootstrapping Composable and Generalizable Skills for Embodied Control with Language Models](wiki/entities/paper-agentic-2406-18746.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Autonomous Improvement of Instruction Following Skills via Foundation Models](wiki/entities/paper-agentic-2407-20635.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [AHA: A Vision-Language-Model for Detecting and Reasoning Over Failures in Robotic Manipulation](wiki/entities/paper-agentic-2410-00371.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [HiRT: Enhancing Robotic Control with Hierarchical Robot Transformers](wiki/entities/paper-agentic-2410-05273.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Towards Synergistic, Generalized, and Efficient Dual-System for Robotic Manipulation](wiki/entities/paper-agentic-2410-08001.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Jailbreaking LLM-Controlled Robots](wiki/entities/paper-agentic-2410-13691.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Articulate-Anything: Automatic Modeling of Articulated Objects via a Vision-Language Foundation Model](wiki/entities/paper-agentic-2410-13882.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Scaling Robot Policy Learning via Zero-Shot Labeling with Foundation Models](wiki/entities/paper-agentic-2410-17772.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [EMOS: Embodiment-aware Heterogeneous Multi-robot Operating System with LLM Agents](wiki/entities/paper-agentic-2410-22662.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [PARTNR: A Benchmark for Planning and Reasoning in Embodied Multi-agent Tasks](wiki/entities/paper-agentic-2411-00081.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Code-as-Monitor: Constraint-aware Visual Programming for Reactive and Proactive Robotic Failure Detection](wiki/entities/paper-agentic-2412-04455.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation](wiki/entities/paper-agentic-2502-05485.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents](wiki/entities/paper-agentic-2502-09560.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Video2Policy: Scaling up Manipulation Tasks in Simulation through Internet Videos](wiki/entities/paper-agentic-2502-09886.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [SoFar: Language-Grounded Orientation Bridges Spatial Reasoning and Object Manipulation](wiki/entities/paper-agentic-2502-13143.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Safety Guardrails for LLM-Enabled Robots](wiki/entities/paper-agentic-2503-07885.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboFactory: Exploring Embodied Agent Collaboration with Compositional Constraints](wiki/entities/paper-agentic-2503-16408.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [From Seeing to Doing: Bridging Reasoning and Decision for Robotic Manipulation](wiki/entities/paper-agentic-2505-08548.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [BitVLA: 1-bit Vision-Language-Action Models for Robotics Manipulation](wiki/entities/paper-agentic-2506-07530.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [VLA-OS: Structuring and Dissecting Planning Representations and Paradigms in Vision-Language-Action Models](wiki/entities/paper-agentic-2506-17561.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [ROVER: Recursive Reasoning Over Videos with Vision-Language Models for Embodied Tasks](wiki/entities/paper-agentic-2508-01943.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Robotic Ultra-Long-Horizon Manipulation Skills via Human-guided Lifelong Code Generation](wiki/entities/paper-agentic-2509-18597.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Gemini Robotics 1.5: Pushing the Frontier of Generalist Robots with Advanced Embodied Reasoning, Thinking, and Motion Transfer](wiki/entities/paper-agentic-2510-03342.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [LIBERO-PRO: Towards Robust and Fair Evaluation of Vision-Language-Action Models Beyond Memorization](wiki/entities/paper-agentic-2510-03827.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Running VLAs at Real-time Speed](wiki/entities/paper-agentic-2510-26742.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [VLASH: Real-Time VLAs via Future-State-Aware Asynchronous Inference](wiki/entities/paper-agentic-2512-01031.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboNeuron: A Middle-Layer Infrastructure for Agent-Driven Orchestration in Embodied AI](wiki/entities/paper-agentic-2512-10394.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboSafe: Safeguarding Embodied Agents via Executable Safety Logic](wiki/entities/paper-agentic-2512-21220.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Genie Sim 3.0 : A High-Fidelity Comprehensive Simulation Platform for Humanoid Robot](wiki/entities/paper-agentic-2601-02078.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [EmboTeam: Grounding LLM Reasoning into Reactive Behavior Trees via PDDL for Embodied Multi-Robot Collaboration](wiki/entities/paper-agentic-2601-11063.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [FARE: Fast-Slow Agentic Robotic Exploration](wiki/entities/paper-agentic-2601-14681.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [DextER: Language-driven Dexterous Grasp Generation with Embodied Reasoning](wiki/entities/paper-agentic-2601-16046.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [DV-VLN: Dual Verification for Reliable LLM-Based Vision-and-Language Navigation](wiki/entities/paper-agentic-2601-18492.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Demonstration-Free Robotic Control via LLM Agents](wiki/entities/paper-agentic-2601-20334.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [MeCo: Enhancing LLM-Empowered Multi-Robot Collaboration via Similar Task Memoization](wiki/entities/paper-agentic-2601-20577.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [APEX: A Decoupled Memory-based Explorer for Asynchronous Aerial Object Goal Navigation](wiki/entities/paper-agentic-2602-00551.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [A2Eval: Agentic and Automated Evaluation for Embodied Brain](wiki/entities/paper-agentic-2602-01640.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [A Modern System Recipe for Situated Embodied Human-Robot Conversation with Real-Time Multimodal LLMs and Tool-Calling](wiki/entities/paper-agentic-2602-04157.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [SceneSmith: Agentic Generation of Simulation-Ready Indoor Scenes](wiki/entities/paper-agentic-2602-09153.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [SAGE: Scalable Agentic 3D Scene Generation for Embodied AI](wiki/entities/paper-agentic-2602-10116.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Scene2Demo: Self-Evolving Embodied Data Generation via Object-Action Graph](wiki/entities/paper-agentic-2602-12065.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Scaling Verification Can Be More Effective than Scaling Policy Learning for Vision-Language-Action Alignment](wiki/entities/paper-agentic-2602-12281.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Agentic AI for Robot Control: Flexible but still Fragile](wiki/entities/paper-agentic-2602-13081.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Steerable Vision-Language-Action Policies for Embodied Reasoning and Hierarchical Control](wiki/entities/paper-agentic-2602-13193.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [AgentRob: From Virtual Forum Agents to Hijacked Physical Robots](wiki/entities/paper-agentic-2602-13591.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [How Fast Can I Run My VLA? Demystifying VLA Inference Performance with VLA-Perf](wiki/entities/paper-agentic-2602-18397.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboCurate: Harnessing Diversity with Action-Verified Neural Trajectory for Robot Learning](wiki/entities/paper-agentic-2602-18742.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Contextual Safety Reasoning and Grounding for Open-World Robots](wiki/entities/paper-agentic-2602-19983.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [PhysMem: Scaling Test-Time Memory for Embodied Physical Reasoning](wiki/entities/paper-agentic-2602-20323.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Learning from Trials and Errors: Reflective Test-Time Planning for Embodied LLMs](wiki/entities/paper-agentic-2602-21198.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Hierarchical LLM-Based Multi-Agent Framework with Prompt Optimization for Multi-Robot Task Planning](wiki/entities/paper-agentic-2602-21670.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [When to Act, Ask, or Learn: Uncertainty-Aware Policy Steering](wiki/entities/paper-agentic-2602-22474.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [FATE: Closed-Loop Feasibility-Aware Task Generation with Active Repair for Physically Grounded Robotic Curricula](wiki/entities/paper-agentic-2603-01505.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Uni-Skill: Building Self-Evolving Skill Repository for Generalizable Robotic Manipulation](wiki/entities/paper-agentic-2603-02623.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [IMR-LLM: Industrial Multi-Robot Task Planning and Program Generation using Large Language Models](wiki/entities/paper-agentic-2603-02669.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Self-Evolutionary Replanning for Failure-Aware Motion Planning](wiki/entities/paper-agentic-2603-02772.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [From Language to Action: Can LLM-Based Agents Be Used for Embodied Robot Cognition?](wiki/entities/paper-agentic-2603-03148.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Tether: Autonomous Functional Play with Correspondence-Driven Trajectory Warping](wiki/entities/paper-agentic-2603-03278.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Act-Observe-Rewrite: Multimodal Coding Agents as In-Context Policy Learners for Robot Manipulation](wiki/entities/paper-agentic-2603-04466.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Critic in the Loop: A Tri-System VLA Framework for Robust Long-Horizon Manipulation](wiki/entities/paper-agentic-2603-05185.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [OpenFrontier: General Navigation with Visual-Language Grounded Frontiers](wiki/entities/paper-agentic-2603-05377.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboRouter: Training-Free Policy Routing for Robotic Manipulation](wiki/entities/paper-agentic-2603-07892.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [CMMR-VLN: Vision-and-Language Navigation via Continual Multimodal Memory Retrieval](wiki/entities/paper-agentic-2603-07997.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [OnFly: Onboard Zero-Shot Aerial Vision-Language Navigation toward Safety and Efficiency](wiki/entities/paper-agentic-2603-10682.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboClaw: An Agentic Framework for Scalable Long-Horizon Robotic Tasks](wiki/entities/paper-agentic-2603-11558.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboStream: Weaving Spatio-Temporal Reasoning with Memory in Vision-Language Models for Robotics](wiki/entities/paper-agentic-2603-12939.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Learning Actionable Manipulation Recovery via Counterfactual Failure Synthesis](wiki/entities/paper-agentic-2603-13528.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [OxyGen: Unified KV Cache Management for VLA Inference under Multi-Task Parallelism](wiki/entities/paper-agentic-2603-14371.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [GoalVLM: VLM-driven Object Goal Navigation for Multi-Agent System](wiki/entities/paper-agentic-2603-18210.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [V-Dreamer: Automating Robotic Simulation and Trajectory Synthesis via Video Generation Priors](wiki/entities/paper-agentic-2603-18811.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboECC: Multi-Factor-Aware Edge-Cloud Collaborative Deployment for VLA Models](wiki/entities/paper-agentic-2603-20711.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation](wiki/entities/paper-agentic-2603-22435.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [ROSClaw: An OpenClaw ROS 2 Framework for Agentic Robot Control and Interaction](wiki/entities/paper-agentic-2603-26997.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Agent-Driven Autonomous Reinforcement Learning Research: Iterative Policy Improvement for Quadruped Locomotion](wiki/entities/paper-agentic-2603-27416.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Stop Wandering: Efficient Vision-Language Navigation via Metacognitive Reasoning](wiki/entities/paper-agentic-2604-02318.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboPlayground: Democratizing Robotic Evaluation through Structured Physical Domains](wiki/entities/paper-agentic-2604-05226.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Pre-Execution Safety Gate & Task Safety Contracts for LLM-Controlled Robot Systems](wiki/entities/paper-agentic-2604-05427.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [A Physical Agentic Loop for Language-Guided Grasping with Execution-State Monitoring](wiki/entities/paper-agentic-2604-07395.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [GenPHRI: Agentic Generative Simulation for Physical Human-Robot Interaction](wiki/entities/paper-agentic-2604-08664.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [M2HRI: An LLM-Driven Multimodal Multi-Agent Framework for Personalized Human-Robot Interaction](wiki/entities/paper-agentic-2604-11975.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [OVAL: Open-Vocabulary Augmented Memory Model for Lifelong Object Goal Navigation](wiki/entities/paper-agentic-2604-12872.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Evolvable Embodied Agent for Robotic Manipulation via Long Short-Term Reflection and Optimization](wiki/entities/paper-agentic-2604-13533.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Goal2Skill: Long-Horizon Manipulation with Adaptive Planning and Reflection](wiki/entities/paper-agentic-2604-13942.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [EmbodiedLGR: Integrating Lightweight Graph Representation and Retrieval for Semantic-Spatial Memory in Robotic Agents](wiki/entities/paper-agentic-2604-18271.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [KinDER: A Physical Reasoning Benchmark for Robot Learning and Planning](wiki/entities/paper-agentic-2604-25788.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Thinking in Text and Images: Interleaved Vision–Language Reasoning Traces for Long-Horizon Robot Manipulation](wiki/entities/paper-agentic-2605-00438.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [CoRAL: Contact-Rich Adaptive LLM-based Control for Robotic Manipulation](wiki/entities/paper-agentic-2605-02600.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [DexSim2Real: Foundation Model-Guided Sim-to-Real Transfer for Generalizable Dexterous Manipulation](wiki/entities/paper-agentic-2605-05241.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [SimWorld Studio: Automatic Environment Generation with Evolving Coding Agent for Embodied Agent Learning](wiki/entities/paper-agentic-2605-09423.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboMemArena: A Comprehensive and Challenging Robotic Memory Benchmark](wiki/entities/paper-agentic-2605-10921.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Nautilus: From One Prompt to Plug-and-Play Robot Learning](wiki/entities/paper-agentic-2605-11665.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [EvoNav: Evolutionary Reward Function Design for Robot Navigation with Large Language Models](wiki/entities/paper-agentic-2605-11859.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [From Reaction to Anticipation: Proactive Failure Recovery through Agentic Task Graph for Robotic Manipulation](wiki/entities/paper-agentic-2605-11951.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Towards Long-horizon Embodied Agents with Tool-Aligned Vision-Language-Action Models](wiki/entities/paper-agentic-2605-13119.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Articraft: An Agentic System for Scalable Articulated 3D Asset Generation](wiki/entities/paper-agentic-2605-15187.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Robo-Cortex: A Self-Evolving Embodied Agent via Dual-Grain Cognitive Memory and Autonomous Knowledge Induction](wiki/entities/paper-agentic-2605-18729.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Closing the Loop in Teleoperation: Episode-Level Data Quality Assessment and Feedback for High-Quality Demonstration Collection](wiki/entities/paper-agentic-2605-26349.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Enabling Extensible Embodied Capabilities with Tools](wiki/entities/paper-agentic-2605-26637.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [From Demonstrations to Rewards: Test-Time Prompt Optimization for VLM Reward Models](wiki/entities/paper-agentic-2606-00083.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [PEACE: A Planner-Executor Agent with Constraint Enforcement for UAVs](wiki/entities/paper-agentic-2606-00104.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Reward Design Agent for Reinforcement Learning](wiki/entities/paper-agentic-2606-01672.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [VASO: Formally Verifiable Self-Evolving Skills for Physical AI Agents](wiki/entities/paper-agentic-2606-05395.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [A Conversational Framework for Human-Robot Collaborative Manipulation with Distributed Generative AI models](wiki/entities/paper-agentic-2606-06061.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [VoLo: A Physical Orchestrator for Open-Vocabulary Long-Horizon Manipulation](wiki/entities/paper-agentic-2606-07723.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [vla.cpp: A Unified Inference Runtime for Vision-Language-Action Models](wiki/entities/paper-agentic-2606-08094.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [ReCoVLA: VLM-Guided Reward Compilation for Failure Recovery in Vision-Language-Action Policies](wiki/entities/paper-agentic-2606-09630.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [What Matters in Orchestrating Robot Policies: A Systematic Study of Hierarchical VLA Agents](wiki/entities/paper-agentic-2606-10267.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [AgenticNav: Zero-Shot Vision-and-Language Navigation as a Tool-Calling Harness](wiki/entities/paper-agentic-2606-10577.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [UniIntervene: Agentic Intervention for Efficient Real-World Reinforcement Learning](wiki/entities/paper-agentic-2606-12372.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [SPARC: Reliable Spatial Annotations from Robot Demonstrations at Scale](wiki/entities/paper-agentic-2606-13497.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [LabVLA: Grounding Vision-Language-Action Models in Scientific Laboratories](wiki/entities/paper-agentic-2606-13578.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RHO: Your Coding Agent is Secretly a Roboticist](wiki/entities/paper-agentic-2606-16458.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [AnnotateAnything: Automatic Annotation of 3D Assets for Robot Manipulation](wiki/entities/paper-agentic-2606-17446.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Visual Verification Enables Inference-time Steering and Autonomous Policy Improvement](wiki/entities/paper-agentic-2606-18247.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Playful Agentic Robot Learning](wiki/entities/paper-agentic-2606-19419.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Causal Reward World Models: Zero-shot Reward Design for Automated Skill Generation](wiki/entities/paper-agentic-2606-23280.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [HoloAgent-0: A Unified Embodied Agent Framework with 3D Spatial Memory](wiki/entities/paper-agentic-2606-23565.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [LocalNav: Distilling Frontier VLMs and Embodied RL for On-Device Object Goal Navigation](wiki/entities/paper-agentic-2606-27871.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [ASPIRE: Agentic /Skills Discovery for Robotics](wiki/entities/paper-agentic-2607-00272.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [ROSA: A Robotics Foundation Model Serving System for Robot Factories](wiki/entities/paper-agentic-2607-01088.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [HiMe: Hierarchical Embodied Memory for Long-Horizon Vision-Language-Action Control](wiki/entities/paper-agentic-2607-03449.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [ACE: Agentic Control for Embodied Manipulation via Zero-shot Workflow Reasoning](wiki/entities/paper-agentic-2607-04162.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboVista: Evaluating Vision Language Models for Diverse Robot Applications](wiki/entities/paper-agentic-2607-04610.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Cortex: A Bidirectionally Aligned Embodied Agent Framework for Long-horizon Manipulation](wiki/entities/paper-agentic-2607-05377.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Diagnosing Semantic Handoff Failures in Agent-Orchestrated Vision-Language-Action Skill Composition](wiki/entities/paper-agentic-2607-06256.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Hypothesis-driven Model Expansion under Uncertainty for Open-World Robot Planning](wiki/entities/paper-agentic-2607-06501.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [A Closed-Loop Multi-Agent Framework for Robust Multi-Robot Manipulation](wiki/entities/paper-agentic-2607-06990.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [VIA: Visual Interface Agent for Robot Control](wiki/entities/paper-agentic-2607-11119.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [SPINE: Bridging the Cyber-Physical Gap with Agentic AI](wiki/entities/paper-agentic-2607-13049.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Exploratory, Communicative, and Deployable: Vision-Driven Embodied Agents for Open-World Mobile Manipulation](wiki/entities/paper-agentic-2607-13653.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Zero2Skill: Bootstrapping Robot Skills through Autonomous Data Collection, Training, and Deployment](wiki/entities/paper-agentic-2607-14047.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [MEMORA: Embodied Action Memory from Egocentric Videos for Reasoning and Planning](wiki/entities/paper-agentic-2607-14252.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [PhyAgentOS: A Self-Evolving Operating System for Embodied Agents with Decoupled Cognitive Planning and Physical Execution](wiki/entities/paper-agentic-2607-16636.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Retriever: Composing the Perception-Reasoning-Action Loop for Long-Horizon Manipulation](wiki/entities/paper-agentic-2607-17213.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Addressing the Orchestration Gap in Generalist Robots via Physical Agency](wiki/entities/paper-agentic-2607-21725.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Zero-Shot Mission-Level Evaluation for Aerial MLLM Agents](wiki/entities/paper-agentic-2607-22014.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [MEMENTO: Memory-Guided Memetic Code-as-Policy Evolution](wiki/entities/paper-agentic-2607-22832.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [WCM: World-Cognition Model for Generalizable Human-Robot Interaction](wiki/entities/paper-agentic-2607-22999.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Mission-Level Runtime Assurance for LLM-Assisted ISR Swarms over a Verification-Aware Fabric](wiki/entities/paper-agentic-2607-23532.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [A Few Words Go a Long Way: Language Guided Robot Policy Synthesis](wiki/entities/paper-agentic-2607-23784.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Embodied Agents Take Control: Minimal-Interface Zero-Shot Agents Rival Industrial-Scale Policies in Vision-and-Language Navigation](wiki/entities/paper-agentic-2607-26148.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Practice Makes Policies: Bootstrapping and Consolidating Robotic Capabilities from Zero Human Demonstrations](wiki/entities/paper-agentic-2607-26809.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [HAM-VLN: Harnessing Hierarchical Agentic Memory for Zero-Shot Vision-and-Language Navigation](wiki/entities/paper-agentic-2607-29600.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Action Chunk Scheduling for Batched Robot Policy Serving](wiki/entities/paper-agentic-2608-00337.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [ETA: A New Agentic Paradigm for Embodied Tasks](wiki/entities/paper-agentic-2608-03924.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Mimir: A Neuro-Symbolic Memory System with Dynamic Grounding for Embodied Agents in Interactive Environments](wiki/entities/paper-agentic-2608-04933.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [You Don't Need To Stay in The Loop: An Agentic Robotics Loop for Robot-Policy Improvement](wiki/entities/paper-agentic-2608-07555.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Compiling and Benchmarking Task-State Horizons for Embodied Agents](wiki/entities/paper-agentic-2608-08036.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Towards the Harness of Embodied Agents](wiki/entities/paper-agentic-2608-11246.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Self-Evolving Embodied Agents via Skill-Harness Evolution](wiki/entities/paper-agentic-2608-11350.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [SkillComposer: Learning Reusable Skills for Natural-Language Robot Programming](wiki/entities/paper-agentic-2608-14944.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [MG-VQA: Manipulation Grounded Visual Question Answering with VLMs](wiki/entities/paper-agentic-2608-17129.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [FLARE: A Failure-Aware Framework for Autonomous Correction and Recovery in Visual-Language Robotic Manipulation](wiki/entities/paper-agentic-2608-26645.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [MaCoPlanner: LLM-Assisted Manual-Compiled Task Planning with Proactive Safety Verification for Robotic Industrial Panel Operation](wiki/entities/paper-agentic-2608-28300.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Bridging Semantics and Physics with Constrained LLMs for Safe and Trustworthy Robotic Manipulation](wiki/entities/paper-agentic-2608-29379.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [GIF: Agentic Generation of Interactive and Functional Object Compositions for Robot Learning](wiki/entities/paper-agentic-2609-05927.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [A Brain-inspired Hierarchical Framework for Zero-Shot Robot Task Reasoning and Execution](wiki/entities/paper-agentic-2609-05985.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [VLA-Corrector: Stage-Aware Observable State Understanding for Prompt-Based Closed-Loop Recovery of Vision-Language-Action Policies](wiki/entities/paper-agentic-2609-06508.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [MEMOBench: A Process Level Memory Benchmark for Robotic Manipulation](wiki/entities/paper-agentic-2609-07047.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [EvoNav-Bench: Benchmarking Lifelong Navigation in Evolving Environments](wiki/entities/paper-agentic-2609-08292.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Towards Embodied Air-Ground Cooperative Object Search: Benchmark, Dataset and Agentic Method](wiki/entities/paper-agentic-2609-08402.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Safe Task Planning with Long-Term Graph Memory for Embodied Agents](wiki/entities/paper-agentic-2609-08444.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [2AM: Grounding Agent-Side Memory as Guidance for Steerable Action Models in Long-Horizon Manipulation](wiki/entities/paper-agentic-2609-11308.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Efficient Vision-Language-Action Management and Serving for Robot Factories](wiki/entities/paper-agentic-2609-12075.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [AnchorVLN: Geometry-Anchored Vision-Language Grounding Reasoning for Open-Vocabulary Navigation](wiki/entities/paper-agentic-2609-12285.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Agent as Policy for Robotic Manipulation](wiki/entities/paper-agentic-2609-12541.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Embodied-BenchForge: A Closed-Loop Agentic Workflow for Embodied Benchmark Construction](wiki/entities/paper-agentic-2609-13082.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Bridging Thought and Action: Taming Long-Horizon Instability in Open-Source LLM Agents with a MetaTool-Enhanced ROS Framework](wiki/entities/paper-agentic-2609-13335.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [HarnessVLN: Unifying Training-Free Embodied Navigation through an Agent Harness](wiki/entities/paper-agentic-2609-15195.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [MessyMem: Learning-from-Doing Memory for Mobile Manipulation](wiki/entities/paper-agentic-2609-15976.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [AeroWeaver: An Embodied-Agent Harness for Weaving Aerial Skills into Distributed, Adaptive Swarm Execution](wiki/entities/paper-agentic-2609-18520.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [GAVEL: Graph World Models for Verified and Efficient Long-Horizon LLM Task Planning](wiki/entities/paper-agentic-2609-19315.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Kinematics-Grounded Agentic AI for Robotic Additive Manufacturing Process Planning](wiki/entities/paper-agentic-2609-19347.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [From Rollout to Reset: A Graph-Based Harness for Autonomous Long-Horizon Manipulation Evaluation](wiki/entities/paper-agentic-2609-19413.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [VABench: Measuring Embodied Spatial Intelligence through Visual Demonstrations, Active Perception, and Metric Control](wiki/entities/paper-agentic-2609-19554.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Learning and Transferring Closed-Loop Robot Software](wiki/entities/paper-agentic-2609-19906.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Coding Agents with Harness for Safe Robot Control](wiki/entities/paper-agentic-2609-20822.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [DiagGen: Agentic Generation of Deformable Assets with Sim-based Diagnostics for Robotic Simulation](wiki/entities/paper-agentic-2609-23103.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RoboTalk: Learning Multi-Robot Communication and Coordination from Multimodal Demonstrations](wiki/entities/paper-agentic-2609-23997.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [ActiveArena: Benchmarking and Understanding Active Perception in Robotic Manipulation](wiki/entities/paper-agentic-2609-24124.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Hierarchical Floorplan-Guided Vision-Language Exploration for Embodied Question Answering](wiki/entities/paper-agentic-2609-26360.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [NavProbe: Evidence-Grounded Reasoning with Active Memory Retrieval for Zero-Shot Navigation](wiki/entities/paper-agentic-2609-27526.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [CoRelNav: Collaborative Relational Navigation for Multi-Robot Spatially Constrained Semantic Navigation](wiki/entities/paper-agentic-2609-27720.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Controlling Collectives of AI Agents in Reasoning Space with Spatial Transformers](wiki/entities/paper-agentic-2609-28247.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Robo-Harness K1: Harnessing Robot-Use Agents via Perception Augmentation](wiki/entities/paper-agentic-2609-29389.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [What Stops Recursive Self-Improvement in Robotics? Lessons from 123 Rounds of Agentic Skill Discovery](wiki/entities/paper-agentic-2609-31760.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Find Something You Can't Do: Agentic Real-World Reinforcement Learning for Self-Improving VLA Models](wiki/entities/paper-agentic-2609-32069.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [SEES: A Self-Evolving Embodied System via Failure-Guided VLA Policy Adaptation](wiki/entities/paper-agentic-2609-32698.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [ARS: Agentic Reward System for Robot Learning](wiki/entities/paper-agentic-2609-34484.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [DexAgent: An Agentic Human2Sim2Robot Framework for Dexterous Manipulation with Self-Evolving Tool Library](wiki/entities/paper-agentic-2609-35318.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [CoDimRecon: Agentic Reconstruction of Sim-Ready 3D Scenes with Deformable Curves, Surfaces, and Volumes](wiki/entities/paper-agentic-2609-36024.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [LEGO-Anything: Coding Agents for 3D Scene Reconstruction](wiki/entities/paper-agentic-2609-36380.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Code4Scene: Benchmarking Coding Agents for Constructing and Editing 3D Scenes](wiki/entities/paper-agentic-2609-36777.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Exemplar2VQA: A Scalable Exemplar-Driven Visual Question Answering Generation Framework via Multi-Agent Coding](wiki/entities/paper-agentic-2609-37655.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation](wiki/entities/paper-agentic-2609-38905.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [EgoTools: Towards Tool-Centric Reasoning in Real-World Egocentric Videos](wiki/entities/paper-agentic-2609-39378.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [DynaHarness: A Dynamic Physical Harness for Self-Evolving Robot Agents](wiki/entities/paper-agentic-2609-40306.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Are Frontier VLM Agents Ready to Be Robot Generalists? An Empirical Study with the Embodied Agent Arena](wiki/entities/paper-agentic-2610-00854.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Reconstruct, Practice, Go Real: Guided Self-Improvement for Embodied Agents](wiki/entities/paper-agentic-2610-02204.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Awomo-SimDataEngine: Agentic Simulation-Ready World Generation](wiki/entities/paper-agentic-2610-02274.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [4DCodeBench: Benchmarking Agents on Inverse Graphics of Dynamic Scenes](wiki/entities/paper-agentic-2610-03715.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [EmbodiedSmith: Scaling Embodied Data through Recursive Self-Improvement Flywheel in Simulation](wiki/entities/paper-agentic-2610-07969.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [RobotWorld: Benchmarking Multimodal Agents for Robot Use Across Diverse Tasks and Embodiments](wiki/entities/paper-agentic-2610-10409.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [MJev-Spatial: System One Spatial Intelligence via Native Attention Matching](wiki/entities/paper-agentic-2610-22276.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [How High Can GPT-6 Astra Climb in Contact-Rich Manipulation? PhysLadder: A Hierarchical, Matched Sim-Real Benchmark for Physical Interaction](wiki/entities/paper-agentic-2610-34527.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
 - [Aptamers as a sandbox for lab-in-the-loop agentic molecular discovery](wiki/entities/paper-agentic-aptamer-sandbox.md) — 论文：** arXiv:2610.24806（q-bio.BM，v1，2026-10-17）／[PDF（gstatic，27 `📅unknown` `[entity_page]`
 - [Agentic Coding Agent（arXiv:2609.26499）](wiki/entities/paper-agentic-coding-manipulation.md) — Agentic Coding Agent**（*Generalizing Manipulation Skills with a Local Coding Agent*，[arXiv:2609.26 `📅unknown` `[entity_page]`
 - [Agentic Real2Sim（VLM Agent 编排的物理 Real2Sim）](wiki/entities/paper-agentic-real2sim.md) — Agentic Real2Sim**（*Physics-based World Modeling with Vision-Language Agents*，[arXiv:2607.19190](h `📅unknown` `[entity_page]`
 - [AgenticRoboRL：把 Coding-Agent 后训练用于机器人 Planner](wiki/entities/paper-agentic-roborl.md) — AgenticRoboRL**（arXiv:2610.28589，[项目页](https://xinxinliu-ai.gi `📅unknown` `[entity_page]`
 - [智能体机器人中模型、技能、反馈与课程的对照研究 / A Controlled Study of Models, Skills, Feedback, and Curriculum in Agentic Robotics](wiki/entities/paper-agentic-robotics-controlled-study.md) — 这项控制变量研究把机器人 coding agent 的“生成策略—仿真执行—收集反馈—改写代码”拆解为模型、技能先验、反馈结构和训练课程四类因素，研究为什么有反馈也不一定能学会修复物理操作失败。 `📅unknown` `[entity_page]`
+- [Adaptive Task Planning for Long-Horizon Robotic Manipulation Based on Video Priors and Dynamic Scene Graphs](wiki/entities/paper-agentic-survey-doi-07c1d81a50e5849a.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [SCOPE: Real-Time Natural Language Camera Agent at the Edge](wiki/entities/paper-agentic-survey-doi-353abec881f4d997.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [STARS: extending interactive task learning with large language models](wiki/entities/paper-agentic-survey-doi-ddc6fc88fa219f08.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [ManipEvalAgent: Promptable and Efficient Evaluation Framework for Robotic Manipulation Policies](wiki/entities/paper-agentic-survey-iclr-2026-8833c8aa.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
+- [Reflective Planning: Vision-Language Models for Multi-Stage Long-Horizon Robotic Manipulation](wiki/entities/paper-agentic-survey-pmlr-v305-feng25b.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
 - [AgenticGenPlan：代码代理能否写出跨实例可复用的任务与运动规划程序？ / Coding Agents for Generalized Task and Motion Planning Problems](wiki/entities/paper-agenticgenplan-generalized-tamp-coding-agents.md) — AgenticGenPlan**（Matteo Merler、Bowen Li、Josh Roy、Yichao Liang、Qianwei Wang、Yixuan Huang、Tom Silver `📅unknown` `[entity_page]`
 - [AgentSTAR（单目视频 Agentic 形状跟踪与重建）](wiki/entities/paper-agenticstar.md) — AgentSTAR**（*Agentic Shape Tracking and Reconstruction from Monocular Videos*，[arXiv:2609.24487](h `📅unknown` `[entity_page]`
 - [AGILE：人形 Loco-Manipulation 学习工作流](wiki/entities/paper-agile-humanoid-loco-manipulation.md) — AGILE**（*A Generic Isaac-Lab based Engine*；论文 *AGILE: A Comprehensive Workflow for Humanoid Loco-M `📅unknown` `[entity_page]`
@@ -3131,6 +3359,7 @@
 - [LLM+P](wiki/entities/paper-llm-p.md) — LLM+P**（arXiv:2304.11477）收录于 Lumina [Embodied-AI-Guide 微信专辑](. `📅unknown` `[entity_page]`
 - [LLM-STL Quadruped（arXiv:2609.07111）](wiki/entities/paper-llm-stl-quadruped-locomotion.md) — LLM-STL Quadruped**（*From LLM-Generated Specifications to Learned Quadruped Locomotion*，[arXiv:260 `📅unknown` `[entity_page]`
 - [LMM Direct Robot Control（arXiv:2610.28259）](wiki/entities/paper-lmm-direct-robot-control.md) — LMM Direct Robot Control**（*Large Multimodal Models for Direct Robot Control: GPT-6 as a Beginning `📅unknown` `[entity_page]`
+- [LMPC：学习人机交互动态以减少机器人教学轮数](wiki/entities/paper-lmpc-2402-11450.md) — LMPC 用成功教学对话微调语言模型以预测后续人机交互，并在推理时滚动搜索通向成功的短对话路径。 `📅unknown` `[entity_page]`
 - [LOADNav（arXiv:2610.14596）](wiki/entities/paper-loadnav-load-aware-quadruped-navigation.md) — LOADNav**（*Load-Aware Quadruped Navigation with Online Contact-based Geometry Estimation*，[arXiv:2 `📅unknown` `[entity_page]`
 - [LOAM：Lidar Odometry and Mapping in Real-time](wiki/entities/paper-loam-lidar-odometry-and-mapping.md) — LOAM**（Ji Zhang, Sanjiv Singh，卡内基梅隆大学机器人研究所，*LOAM: Lidar Odometry and Mapping in Real-time*，Roboti `📅unknown` `[entity_page]`
 - [Loam_livox：面向小视场激光雷达的快速鲁棒高精度里程计与建图（arXiv:1909.06700）](wiki/entities/paper-loam-livox.md) — Loam_livox**（Jiarong Lin、Fu Zhang，香港大学机械工程系，arXiv:1909.06700）是 `📅unknown` `[entity_page]`
@@ -3846,6 +4075,7 @@
 - [ODEWorld（物理时间流连续预测架构）](wiki/entities/paper-odeworld.md) — ODEWorld**（*A Continuous Predictive Architecture via Physical-Time Flow*，[arXiv:2607.27924](https: `📅unknown` `[entity_page]`
 - [OdorSpaces（arXiv:2611.05738）](wiki/entities/paper-odorspaces.md) — OdorSpaces**（*OdorSpaces: Visual-Olfactory Embodied Navigation in 3D Environments*，[arXiv:2611.057 `📅unknown` `[entity_page]`
 - [Off-Road Global Nav：可通行感知的长程越野全局规划](wiki/entities/paper-offroad-global-nav.md) — Learning Traversability-Aware Global Planners for Long Horizon Off-Road Navigation**（[arXiv:2607.2 `📅unknown` `[entity_page]`
+- [OLAF：从语言纠错重标注动作并更新策略](wiki/entities/paper-olaf-verbal-correction.md) — OLAF 将用户停止机器人时给出的语言纠错转为介入前短窗口的动作标签，并用行为克隆更新视觉运动策略。 `📅unknown` `[entity_page]`
 - [ω-0：潜空间预测式人形并发 Loco-Manipulation WAM](wiki/entities/paper-omega-0.md) — ω-0**（OMEGA-0；*A Latent Predictive World Action Model for Concurrent Humanoid Loco-Manipulation*， `📅unknown` `[entity_page]`
 - [OMG：Omni-Modal Motion Generation for Generalist Humanoid Control](wiki/entities/paper-omg-omni-modal-humanoid-control.md) — OMG**（*Omni-Modal Motion Generation for Generalist Humanoid Control*，[项目页](https://tsinghua-mars-l `📅unknown` `[entity_page]`
 - [Omni-Woodpecker：音视频跨模态幻觉纠正](wiki/entities/paper-omni-woodpecker.md) — OWP 是无需训练的推理干预方法，通过识别音视频模态冲突并调整隐藏表征，抑制误导性先验、恢复与问题相关的证据。 `📅unknown` `[entity_page]`
@@ -3926,6 +4156,7 @@
 - [PACT：溯源守恒的多视角融合与动作准入](wiki/entities/paper-pact-hrc-action-admission.md) — PACT**（*Provenance-Conserving Multi-View Fusion for Typed Action Admission in Human-Robot Collabor `📅unknown` `[entity_page]`
 - [PACT-VLA：利用执行前观测进行推测式动作块验证](wiki/entities/paper-pact-vla-speculative-action-chunk-verification.md) — PACT-VLA**（*PACT-VLA: Speculative Action-Chunk Verification with Pre-Commit Observations*，[arXiv:2 `📅unknown` `[entity_page]`
 - [PADP（Policy Action Dynamics Projection）四足 loco-manipulation](wiki/entities/paper-padp-projection-legged-loco-manipulation.md) — From Policy Actions to Whole-Body Dynamics: A Unified Projection-Based Framework for Versatile Leg `📅unknown` `[entity_page]`
+- [PAFF：基于基础模型反馈的策略适应](wiki/entities/paper-paff-2212-07398.md) — PAFF 在新任务或环境中收集策略交互轨迹，利用视觉语言基础模型反馈重新标注数据，再用这些数据微调策略。 `📅unknown` `[entity_page]`
 - [SimGAN](wiki/entities/paper-pai-1612-07828-simgan.md) — SimGAN** 收录于 awesome-physical-ai（natnew）**第 339/384** 条，分组 **Sim-to-Real**。本页是 **清单索引**：给出它在清单中的位置 `📅unknown` `[entity_page]`
 - [Constrained Policy Optimization (Achiam et al.)](wiki/entities/paper-pai-1705-10528-constrainedpolicyoptimizationachi.md) — Constrained Policy Optimization (Achiam et al.)** 收录于 awesome-physical-ai（natnew）**第 312/384** 条，分 `📅unknown` `[entity_page]`
 - [Deep RL That Matters](wiki/entities/paper-pai-1709-06560-deeprlthatmatters.md) — Deep RL That Matters** 收录于 awesome-physical-ai（natnew）**第 107/384** 条，分组 **Evaluation Methodology `📅unknown` `[entity_page]`
@@ -5971,6 +6202,7 @@
 - [Thrust-Assisted Trotting：基于实时 QP-MPC 的仿生推力辅助空地双足小跑](wiki/entities/paper-thrust-assisted-trotting-legged-aerial-qp-mpc.md) — Thrust-Assisted Trotting**（*Bio-inspired Thrust-Assisted Trotting on a Legged-Aerial Robot via Rea `📅unknown` `[entity_page]`
 - [TianjicX：面向多任务机器人的时空弹性神经形态芯片](wiki/entities/paper-tianjicx-neuromorphic-chip-robots.md) — Neuromorphic computing chip with spatiotemporal elasticity for multi-intelligent-tasking robots**（ `📅unknown` `[entity_page]`
 - [TIDE/TIDES（arXiv:2610.16167）](wiki/entities/paper-tide-tides-4d-liquid-forecasting.md) — TIDE/TIDES**（*Interactive 4D Volumetric Liquid Forecasting under Moving-Solid Interaction*，[arXiv: `📅unknown` `[entity_page]`
+- [TidyBot：从少量示例归纳个性化收纳规则](wiki/entities/paper-tidybot-2305-05658.md) — TidyBot 用语言模型把少量用户摆放示例归纳为类别级规则，再用开放词汇感知和预定义操作原语完成个性化收纳。 `📅unknown` `[entity_page]`
 - [TILDE（arXiv:2610.25376）](wiki/entities/paper-tilde.md) — TILDE**（*TILDE: Teacher-in-the-Loop Distillation from Embodied Foundation Models*，[arXiv:2610.2537 `📅unknown` `[entity_page]`
 - [TimeLens 与 TimeLens-Bench](wiki/entities/paper-timelens.md) — TimeLens 研究视频时序定位：根据视频和文字查询预测事件的起止时间。TimeLens-Bench 是经过人工审校的评测套件。 `📅unknown` `[entity_page]`
 - [Tiresias / LCWM-Bench（arXiv:2611.10392）](wiki/entities/paper-tiresias.md) — Tiresias**（*Tiresias: Towards Language-Conditioned World Models*，[arXiv:2611.10392](https://arxiv. `📅unknown` `[entity_page]`
@@ -5991,7 +6223,7 @@
 - [迈向建筑施工人形机器人：遥操作可行性研究](wiki/entities/paper-toward-humanoid-robots-in-construction.md) — Toward Humanoid Robots in Construction: A Teleoperation Feasibility Study**（[arXiv:2610.00718](htt `📅unknown` `[entity_page]`
 - [Toward Lunar Legged Robots：LUNA 月面模拟场的部署教训](wiki/entities/paper-toward-lunar-legged-robots-luna-field.md) — Toward Lunar Legged Robots**（arXiv:2610.12276，Adrian Fuhrer、Ma `📅unknown` `[entity_page]`
 - [Toward Self-Improving Robotic Agents：迈向自我改进机器人智能体](wiki/entities/paper-toward-self-improving-robotic-agents.md) — 英文副标题：** From Interaction Experience to Reusable Manipulation Capabilities `📅unknown` `[entity_page]`
-- [Towards Agentic Robots：模型、数据、环境与编排的综述](wiki/entities/paper-towards-agentic-robots-survey.md) — 一句话定义：** 一篇综述，把基础模型驱动的机器人执行从任务专用策略扩展到"代理式"协同，并按模型、数据、环境与编排（harness）四个领域组织相关文献。 `📅unknown` `[entity_page]`
+- [Towards Agentic Robots：迈向智能体机器人——模型、数据、环境与编排](wiki/entities/paper-towards-agentic-robots-survey.md) — 英文论文：** *Towards Agentic Robots: Model, Data, Environment, and Harness*，Chonghan Qin 等，arXiv:2610. `📅unknown` `[entity_page]`
 - [TPS-A*：任意形状车辆的认证碰撞检查规划（arXiv:2611.09210）](wiki/entities/paper-tps-astar.md) — TPS-A***（*TPS-A\*: Path Planning for Any-Shape Vehicles with Certified Collision Checking in Traje `📅unknown` `[entity_page]`
 - [TRABot：说、演、动（Talk, Render, Act: Integrating Social Gesture and Digital Face with Synchronized Speech for Conversational Humanoid Robot）](wiki/entities/paper-trabot-talk-render-act.md) — TRABot（Talk, Render, Act）**（arXiv:2610.06153，Jiang 等）是一个让 **Un `📅unknown` `[entity_page]`
 - [TRACE：轨迹路由因果记忆](wiki/entities/paper-trace-causal-memory.md) — TRACE**（*Trajectory-Routed Causal Memory for Delayed-Evidence Visuomotor Imitation*，[arXiv:2606.14 `📅unknown` `[entity_page]`
@@ -6416,6 +6648,7 @@
 - [Poppy 开源机器人平台](wiki/entities/poppy-project-robots.md) — Poppy** 是由 **法国 Inria** 相关社区推动的 **开源 3D 打印机器人** 家族：包含 **Poppy Humanoid**、**Poppy Torso**、**Ergo Jr `📅unknown` `[entity_page]`
 - [ppf-contact-solver（ZOZO Contact Solver）](wiki/entities/ppf-contact-solver.md) — ppf-contact-solver**（README 亦称 *ZOZO's Contact Solver*）是 ZOZO, Inc. 技 `📅unknown` `[entity_page]`
 - [PRIME](wiki/entities/prime-system-id.md) — PRIME**（*Physically-consistent Robotic Inertial and Motion Estimation*，[arXiv:2605.17681](https:// `📅unknown` `[entity_page]`
+- [Physical RSI on RoboCasa](wiki/entities/project-agentic-project-physical-rsi-robocasa.md) — 这是独立项目入口 stub；当前仅整理来源身份及地址，论文方法、实验与实现尚未核读。 `📅unknown` `[entity_page]`
 - [CamX / CamUVA：17K 小时跨本体机器人操作数据与策略评测](wiki/entities/project-camx-camuva.md) — CamX（跨本体机器人操作数据集）**将不同机械臂、双臂、移动操作和手持采集的数据汇集为带相机信息的 LeRobot v3 数据目录；**CamUVA**是配套策略评测视频库。两个站点来自同一匿名 `📅unknown` `[entity_page]`
 - [Project Instinct](wiki/entities/project-instinct.md) — 本页汇总 Project Instinct 公开站点与子课题主张；定量结论与实现细节以各论文 PDF 与代码仓库为准。 `📅2026-05-12` `[entity_page]`
 - [Project Quiver](wiki/entities/project-quiver.md) — Project Quiver**（Arrow-air/project-quiver）是 Arrow A `📅unknown` `[entity_page]`
@@ -7456,6 +7689,7 @@
 - [AI 架构地图（Neural Network Architecture Map）](wiki/overview/ai-architecture-map.md) — 先问输入住在哪种几何里（向量 / 栅格 / 序列 / 分布 / 图），再问输出要单点回归还是多模态分布，最后才选具体骨干——机器人策略只是同一张地图在 `obs → action` 上的实例化。 `📅unknown` `[overview_page]`
 - [AME-1 → AME-2：感知运动系统演进坐标](wiki/overview/ame-1-to-ame-2-technology-map.md) — AME-1 用本体条件注意力解决稀疏落脚；AME-2 在同一编码思想上补齐全局语境、在线不确定性感知映射与 Teacher–Student 部署一致性，把能力从「精确踩过去」推进到「混合地形里选对 `📅unknown` `[overview_page]`
 - [《自动驾驶核心算法盘点》专栏技术地图](wiki/overview/autonomous-driving-core-algorithms-series.md) — 经典自动驾驶软件栈仍可概括为 **感知 → 定位/地图 → 跟踪/预测 → 规划 → 控制**：上游把世界变成带 ID 的 3D 实体与未来意图，下游在运动学与舒适约束下把意图变成可执行轨迹与执行器指 `📅unknown` `[overview_page]`
+- [Awesome Agentic Robots：独立项目节点导航](wiki/overview/awesome-agentic-robots-node-index.md) — 将官方清单中的每条记录映射到唯一的独立实体，当前允许 stub，供后续逐篇补读。 `📅unknown` `[overview_page]`
 - [Awesome Physical AI 技术地图](wiki/overview/awesome-physical-ai-technology-map.md) — Physical AI 双清单技术地图** = 两份同名 Awesome 列表合并后的站内可点开版本（按清单分组浏览，一点即达详情页）。 `📅unknown` `[overview_page]`
 - [BFM 技术地图：41 篇论文的五类问题视角](wiki/overview/bfm-41-papers-technology-map.md) — BFM 技术地图**是把 awesome-bfm-papers 的 41 篇论文按「五类问题」（FB 表征、目标条件、内在奖励、适应、层次控制）排布的阅读坐标，用来回答「人形身体如何成为可复用、可 `📅unknown` `[overview_page]`
 - [BFM 分类 01：Forward-backward 表征](wiki/overview/bfm-category-01-forward-backward-representation.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[overview_page]`
