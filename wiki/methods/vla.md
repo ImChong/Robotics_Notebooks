@@ -2,9 +2,10 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-16
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation、loco-manipulation 与端到端驾驶等任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作；真机部署受推理延迟约束，常以 action chunk 异步执行衔接低层控制器。"
 related:
+  - ../entities/paper-vla-delta.md
   - ../overview/vla-history-rt1-to-molmoact-technology-map.md
   - ../entities/paper-viola-human-data-control.md
   - ../overview/ai-architecture-map.md
@@ -817,6 +818,10 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Query：如何在真机上部署 VLA 策略？](../queries/vla-deployment-guide.md)
 - [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)
 
+
+## 物理状态转移监督：VLA-Δ
+
+- [VLA-Δ](../entities/paper-vla-delta.md)（arXiv:2610.21306）用未来状态差异文本、九类结构化槽与稠密光流监督 Query 表征；下游仅动作损失、推理不解码辅助目标。LIBERO 98.4%、RoboTwin Clean/Random 90.06%/89.74%；开源训练、仿真评测和权重，484h 物理标注全集开放范围待核实。
 
 ## 近期轻量化实例：FastOPD
 
