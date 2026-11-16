@@ -3,8 +3,8 @@ type: entity
 tags: [company, archon-robotics, humanoid, humanoid-foundation-model, whole-body-intelligence, loco-manipulation, behavior-foundation-model, human-centric-data, opendrivelab, hku, china]
 title: 源策未来（Archon Robotics）
 status: complete
-summary: "源策未来（Archon Robotics）2026-04 成立（媒体口径），研发总部在上海徐汇漕河泾，由港大助理教授、OpenDriveLab 负责人李弘扬（Founder & CRO）与李天羽（CEO）、陈立（Head of AI）创办，约 20 人；目标是做全身智能（WBI）人形基础模型（HFM）。2026-06-29 公布数亿元种子轮（真格、高榕、IDG、五源、戈壁与港大联名基金、奇绩、上海创智学院；未披露领投）。官网仅 1 篇博文（WBI，2026-07-13）；arXiv 署名论文 2 篇（RoboNaldo、EgoHumanoid-V2）；公司 GitHub / HF 组织均为空。"
-updated: 2026-10-16
+summary: "源策未来（Archon Robotics）以全身智能（WBI）为核心，2026-07 至 11 官网 Research 发布 WBI 技术路线、PingpongDuo 双机控制、Anchor 1 精准全身运控和 Compass 1 历史记忆导航；RoboNaldo 与 EgoHumanoid-V2 亦有公司合作署名。对外成果包含论文、演示与部分 OpenDriveLab 展示仓，尚不能视为完整通用人形基础模型已开源。"
+updated: 2026-11-16
 institutions: [archon-robotics]
 related:
   - ./archon-whole-body-intelligence.md
@@ -22,18 +22,23 @@ related:
   - ../tasks/humanoid-soccer.md
   - ../overview/china-embodied-ai-labs-landscape-2026.md
   - ./paper-pingpongduo.md
+  - ./paper-anchor-1.md
+  - ./paper-compass-1-navigation.md
 sources:
   - ../../sources/sites/archon-tech.md
   - ../../sources/blogs/archon_whole_body_intelligence.md
   - ../../sources/blogs/archon_robotics_press.md
   - ../../sources/papers/robonaldo_arxiv_2606_11092.md
+  - ../../sources/sites/archon-research-2026-11.md
+original:
+  - ../../sources/sites/archon-research-2026-11.md
 ---
 
 # 源策未来（Archon Robotics）
 
 ## 一句话定义
 
-**源策未来（Archon Robotics，官网 archon.tech）** 是 2026 年 4 月成立（媒体口径）、研发总部在上海的人形机器人基础模型公司，由香港大学助理教授、OpenDriveLab 负责人 **李弘扬** 创办。公司不造本体，主攻 **全身智能（Whole-Body Intelligence, WBI）**：用以人为中心的全身数据预训练一个原生 **人形基础模型（HFM）**，再用真机数据后训练，让人形同时完成移动与操作。官网自称目标是做中国的「OpenAI for Humanoid Robotics」。
+**源策未来（Archon Robotics，官网 archon.tech）** 是 2026 年 4 月成立（媒体口径）、研发总部在上海的人形机器人基础模型公司，由香港大学助理教授、OpenDriveLab 负责人 **李弘扬** 创办。公司以 **全身智能（Whole-Body Intelligence, WBI）** 为核心方向：提出以人类全身数据预训练人形基础模型（HFM）、再结合真机数据后训练的技术路线。2026 年 10–11 月官网陆续公开双机乒乓（PingpongDuo）、全身控制器（Anchor 1）与跨本体导航（Compass 1）；**不同项目是独立研究成果，官网未宣称已组合为一套完成开源的通用人形模型**。
 
 ## 英文缩写速查
 
@@ -51,9 +56,9 @@ sources:
 ## 为什么重要
 
 - **自动驾驶团队整体转向人形的样本：** 三位创始人都来自端到端自动驾驶（UniAD 负责人、UniAD 第一作者、华为 ADS 4.0 核心开发者）。投资方评论直接把 UniAD「planning-oriented」类比为公司的「Human Body Learning」，可以观察智驾方法论能否迁移到人形。
-- **路线选择鲜明：** 只做完整人形、不做轮式底盘 + 双臂；把人类全身数据当主训练信号；在 Figure 式 S2/S1/S0 分层中单列「S0.5 运动生成 + BFM」层（见 [WBI](./archon-whole-body-intelligence.md)）。
-- **学术实验室与公司边界的观察点：** 公司与港大 OpenDriveLab 共用人员、项目页和会议品牌（「Archon & OpenDriveLab at RSS 2026」），但 arXiv 上明确署名公司的论文目前只有 2 篇。读者需要区分实验室成果和公司成果。
-- **开源承诺可追踪：** 媒体称公司计划 2026 年内（下旬）发布首个开源人形基座模型；截至 2026-10-10 尚未发布。
+- **全身运动路线逐步具象化：** WBI 提出 S2/S1/S0.5/S0 分层与人类全身数据预训练；[Anchor 1](./paper-anchor-1.md) 给出 S0 稀疏指令与反馈控制的实测案例，[PingpongDuo](./paper-pingpongduo.md) 则展示双机协同和分层技能。核心是人形，但 [Compass 1](./paper-compass-1-navigation.md) 另有跨轮式、四足、人形与无人机的导航验证。
+- **学术与公司边界仍需区分：** RoboNaldo、EgoHumanoid-V2 及 2026 年 10–11 月官网 Research 公开的 PingpongDuo、Anchor 1、Compass 1 含合作机构成果；不能把所有 OpenDriveLab 论文都自动计为公司独立研发或可直接复现的产品。
+- **开源边界可追踪：** RoboNaldo 训练/部署已在 OpenDriveLab 下开放；Anchor 1 的权重和部署计划 2026 年末发布，Compass 1 的数据、权重与部署预计 2026 年 12 月发布；截至 2026-11-16 仍应将这些计划与实际发布区分。
 
 ## 公司概况
 
@@ -64,7 +69,7 @@ sources:
 | 总部 | 研发总部 **上海市徐汇区漕河泾开发区** | 硬氪 2026-06-29（**媒体口径**）；港大 TEC 页「Shanghai-based」 |
 | 团队规模 | 约 20 名研究员与工程师，来自港大、清华、上海交大及科技公司 | 官网 |
 | 使命 | 为全身智能构建 HFM：让人形在真实世界中移动、感知、推理与行动的基础 AI 层（自报） | 官网 Mission |
-| 是否造本体 | 未写；演示中机器人穿公司 T 恤，机型未标注 | 官网、博文海报 |
+| 研究平台 | 公开研究使用 Unitree G1、Booster K1 等合作方本体；官网未见自研整机产品发布 | PingpongDuo、Compass 1 项目页 |
 | 渠道 | X [@archon_robotics](https://x.com/archon_robotics)；YouTube [@archon_robotics](https://www.youtube.com/@archon_robotics)；LinkedIn；招聘站 careers.archonrobotics.tech（「源策新星计划 / Archon Star Program」） | 官网页脚 |
 
 ### 创始团队
@@ -90,25 +95,37 @@ sources:
 | 日期 | 事件 | 来源 |
 |------|------|------|
 | 2026-04 | 公司成立（媒体口径） | 硬氪、投中网、港大 TEC |
-| 2026-05-23 | Hugging Face 组织 `ArchonRobotics` 创建（由组织 ID 时间戳折算，推测） | HF API |
-| 2026-06-09 | **RoboNaldo** arXiv v1（2606.11092），署名含 Archon Robotics | arXiv |
-| 2026-06-29 | 公布数亿元种子轮；称 2026 年下旬发布首个开源人形原生基座模型 | 硬氪、投中网 |
-| **2026-07-13** | 官网唯一博文 **《Whole-Body Intelligence: The Pretraining Path to Large Humanoid Models》** 发布 | 官网 |
-| 2026-07-13 至 17 | RSS 2026（悉尼）：「Archon & OpenDriveLab」联合参会；李天羽、李弘扬、陈立分别演讲；RoboNaldo 现场人形足球演示 | [opendrivelab.com/rss2026](https://opendrivelab.com/rss2026) |
-| 2026-09-29 | **EgoHumanoid-V2** arXiv v1（2609.37181），署名含 Archon Robotics | arXiv |
-| 约 2026-09-30 | 官网首屏视频更新（资源路径含 `20260930`，推测） | 官网 HTML |
-| 2026-10-10 | 本库核查：开源模型尚未发布；GitHub / HF 组织为空 | 本页 |
+| 2026-06-09 | **[RoboNaldo](./paper-robonaldo-humanoid-soccer-shooting.md)** arXiv v1（2606.11092）；G1 运动引导课程 RL 射门，训练与部署代码在 OpenDriveLab | [论文](https://arxiv.org/abs/2606.11092) |
+| 2026-06-29 | 公布数亿元种子轮；提出 2026 年内开放人形基础模型的目标 | 硬氪、投中网 |
+| **2026-07-13** | **[Whole-Body Intelligence](./archon-whole-body-intelligence.md)**：S2/S1/S0.5/S0 分层、全身人体数据预训练路径（研究观点） | [官网 Research](https://www.archon.tech/research/whole-body-intelligence) |
+| 2026-07-13 至 17 | RSS 2026：「Archon & OpenDriveLab」联合参会与 RoboNaldo 现场演示 | [官方 RSS 页面](https://opendrivelab.com/rss2026) |
+| 2026-09-29 | **[EgoHumanoid-V2](./paper-egohumanoid-v2.md)** arXiv v1（2609.37181），人体到人形全身协调技能迁移 | [论文](https://arxiv.org/abs/2609.37181) |
+| **2026-10-15** | **[PingpongDuo](./paper-pingpongduo.md)**：双台 G1 乒乓球双打，团队风险过滤站位 + 分层击球 | [官网 Research](https://www.archon.tech/research/pingpongduo) |
+| **2026-10-30** | **[Anchor 1](./paper-anchor-1.md)**：五点稀疏指令、离线动作配对和独立跟踪误差反馈的全身控制器 | [官网 Research](https://www.archon.tech/research/anchor1) |
+| **2026-11-09** | **[Compass 1](./paper-compass-1-navigation.md)**：长时视觉历史地图与异步导航，官方跨本体真机评测 | [官网 Research](https://www.archon.tech/research/compass1) |
+| 2026-11-16 | 本库更新 Research 四项与六项公司路线节点，按实际开放状态区分论文/演示/部署 | [Research 核查归档](../../sources/sites/archon-research-2026-11.md) |
 
-## 署名 Archon Robotics 的论文（arXiv，截至 2026-10-10）
+## 公司署名与官网 Research 成果（截至 2026-11-16）
 
-检索方法：arXiv API 按三位创始人姓名检索 2026-03 之后的论文（共约 40 篇），逐篇读取 arXiv HTML 搜索 "Archon"；另检索 `all:"Archon Robotics"` 与网页搜索。只有下列两篇在作者单位中列出 Archon Robotics。
+**历史核查快照（2026-10-10）：** 当时按作者及机构检索后，确认下列两篇论文有 Archon Robotics 署名。该结论**仅对应当时的时间窗**，不代表 2026-11-16 仍只有两篇。此后官网 Research 公开三篇论文/项目，另列于下表，不能把官网栏目总数等同于公司全部署名论文总数。
 
 | arXiv | 标题 | v1 日期 | Archon 署名作者 | 代码 | 本库页面 |
 |-------|------|---------|-----------------|------|----------|
 | [2606.11092](https://arxiv.org/abs/2606.11092) | RoboNaldo: Accurate, Stable and Powerful Humanoid Soccer Shooting via Motion-Guided Curriculum Reinforcement Learning | 2026-06-09 | Yixuan Pan、李天羽、李弘扬（李弘扬同时署港大） | ✅ `OpenDriveLab/RoboNaldo` + `RoboNaldo_Deploy`（在实验室组织下） | [RoboNaldo](./paper-robonaldo-humanoid-soccer-shooting.md) |
 | [2609.37181](https://arxiv.org/abs/2609.37181) | EgoHumanoid-V2: Human-to-Humanoid Transfer of Coordinated Whole-Body Skills for Loco-Manipulation | 2026-09-29 | Modi Shi、Shijia Peng、陈立、李天羽（李弘扬署 OpenDriveLab@HKU） | ❌ 项目页标「Coming soon」 | [EgoHumanoid-V2](./paper-egohumanoid-v2.md) |
 
-**已核查但未署名公司的相关论文**（作者有创始人，单位是港大 / OpenDriveLab 等）：AMS（2511.17373）、EgoHumanoid（2602.10106）、RISE（2602.11075）、SparseVideoNav（2602.05827）、GuidedVLA（2605.12369）、NativeMEM（2607.06678）、World Engine（2606.19836）等。其中 RISE、EgoHumanoid、GuidedVLA、NativeMEM、SparseVideoNav 出现在「Archon & OpenDriveLab at RSS 2026」页面，但论文本身没有 Archon 署名。
+**2026-10-10 快照中已核查但未署名公司的相关论文**（作者有创始人，单位是港大 / OpenDriveLab 等）：AMS（2511.17373）、EgoHumanoid（2602.10106）、RISE（2602.11075）、SparseVideoNav（2602.05827）、GuidedVLA（2605.12369）、NativeMEM（2607.06678）、World Engine（2606.19836）等。其中 RISE、EgoHumanoid、GuidedVLA、NativeMEM、SparseVideoNav 出现在「Archon & OpenDriveLab at RSS 2026」页面，但论文本身没有 Archon 署名。
+
+### 官网 Research 四项（按发布日期）
+
+| 发布日期 | 类型 / 研究 | 技术位置 | 结果与开放状态 |
+|---|---|---|---|
+| 2026-07-13 | [WBI](./archon-whole-body-intelligence.md)（Perspective） | 人体全身预训练 + 真机后训练的全局路线 | 研究愿景；无可下载 HFM |
+| 2026-10-15 | [PingpongDuo](./paper-pingpongduo.md)（X-Lab） | 双机团队站位 + 个体步法/击球技能 | 双台 G1 演示与仿真对照；未找到运行代码 |
+| 2026-10-30 | [Anchor 1](./paper-anchor-1.md)（System 0） | 校准五点稀疏动作参考、独立误差反馈 | 真机精度/稳定性基准；权重和部署计划 2026 年末公开 |
+| 2026-11-09 | [Compass 1](./paper-compass-1-navigation.md)（Navigation） | 单目视觉历史地图、结构化 VQA、异步视频动作 | Go2 真机 254/320（79.4%），对照 17.8%；展示仓已公开，数据/部署/权重计划 2026-12 |
+
+官网目录见 [Research](https://www.archon.tech/research)，独立核验记录见 [来源归档](../../sources/sites/archon-research-2026-11.md)。上表是**不同研究主题**，不是声称它们已经整合为同一个部署栈。
 
 ## 核心原理：全身智能路线（摘要）
 
@@ -128,30 +145,37 @@ flowchart LR
   ROB --> S1
   S0 --> BOT["人形本体"]
   BOT -. 失败回流 .-> FAIL --> S1
-  subgraph PAPERS["已公开的署名论文（对应层，推测）"]
-    RN["RoboNaldo<br/>S0：跟踪 + 课程 RL 射门"]
-    EH["EgoHumanoid-V2<br/>人类数据 → 全身技能"]
+  subgraph PAPERS["公开成果（箭头仅表示研究主题对应，不代表已集成）"]
+    RN["RoboNaldo<br/>射门课程 RL"]
+    EH["EgoHumanoid-V2<br/>人类到人形技能"]
+    PD["PingpongDuo<br/>双机站位 + 分层击球"]
+    AN["Anchor 1<br/>五点参考 + 显式误差反馈"]
+    CP["Compass 1<br/>视觉记忆导航"]
   end
   RN -.-> S0
   EH -.-> HUM
+  PD -.-> S0
+  AN -.-> S0
+  CP -.-> S2
 ```
 
 - **首页四要点（自报）：** WBI 框架；面向带地形交互的移动操作的情境感知 BFM；大规模人类全身数据预训练；真机数据高效后训练。
 - **媒体访谈三层（自报）：** 大脑（任务理解、长程规划）/ 中脑（跨本体全身运动表征，输出全身轨迹而非特定机型关节角）/ 小脑（实时跟踪与平衡）。与博文 S2 / S1+S0.5 / S0 大致对应（推测）。
 - **Human Body Learning：** 学人类全身位姿与协调方式，而非只跟踪末端轨迹；访谈称「一条覆盖重心移动、躯干角度变化的全身数据，信息密度远高于一百条只有手部轨迹的桌面数据」（自报）。
 
-## 开源与开放状态（2026-10-10）
+## 开源与开放状态（2026-11-16）
 
-| 渠道 / 项目 | 状态 | 依据 |
-|-------------|------|------|
-| GitHub 组织 [`ArchonRobotics`](https://github.com/ArchonRobotics) | 存在，**0 个公开仓库** | GitHub 用户搜索 + 组织页 |
-| Hugging Face 组织 [`ArchonRobotics`](https://huggingface.co/ArchonRobotics) | 存在，**0 模型 / 0 数据集 / 0 Space** | HF API |
-| WBI 博文 | 无论文、代码、权重、数据 | [博文归档](../../sources/blogs/archon_whole_body_intelligence.md) |
-| RoboNaldo | ✅ 训练 + 部署代码已开源，但在 **OpenDriveLab** 组织 | [RoboNaldo](./paper-robonaldo-humanoid-soccer-shooting.md) |
-| EgoHumanoid-V2 | ❌ 代码「Coming soon」 | 项目页 |
-| 「开源人形基座模型」 | 媒体称 2026 年下旬发布；**尚未发布** | 硬氪 2026-06-29 |
+| 渠道 / 项目 | 已验证状态 | 依据 |
+|-------------|------------|------|
+| WBI 观点文章 | 研究愿景与结构图，没有公开完整 HFM 的可运行实现 | [Research](https://www.archon.tech/research/whole-body-intelligence) |
+| [RoboNaldo](./paper-robonaldo-humanoid-soccer-shooting.md) | **已开放**训练和 G1 部署实现；代码位于 OpenDriveLab 组织 | [RoboNaldo 仓库](https://github.com/OpenDriveLab/RoboNaldo) |
+| [EgoHumanoid-V2](./paper-egohumanoid-v2.md) | 既有核查显示项目页代码待发布；本次未复查其最新代码状态 | [论文](https://arxiv.org/abs/2609.37181) |
+| [PingpongDuo](./paper-pingpongduo.md) | 官网提供论文、视频、3D 回放；**未发现运行代码入口** | [项目页](https://www.archon.tech/research/pingpongduo) |
+| [Anchor 1](./paper-anchor-1.md) | 权重、部署、PICO 遥操作与示范采集工具均标记 **预计 2026 年末**，目前 GitHub/HF 按钮显示 Available soon | [项目页](https://www.archon.tech/research/anchor1) |
+| [Compass 1](./paper-compass-1-navigation.md) | [OpenDriveLab/Compass](https://github.com/OpenDriveLab/Compass) 已公开 README/研究展示；数据、部署代码与真机权重仍为 **2026 年 12 月预计** | [项目页](https://www.archon.tech/research/compass1) / [README](https://github.com/OpenDriveLab/Compass) |
+| 公司自身 GitHub / Hugging Face 组织 | 2026-10-10 历史核查为 0 公开仓库/模型；**本次未重新完成组织级核查**，不作为今日实时结论 | [旧核查](../../sources/sites/archon-tech.md) |
 
-**结论：** 公司自身目前没有可运行的开源代码或模型；可用的只有署名论文中实验室组织托管的 RoboNaldo 代码。
+**结论：** 已有论文、真机演示和部分研究仓库，**不等于 WBI 全栈通用模型已开放**。官方未来发布日期属于预期，不能当作可复现发布。
 
 ## 与港大 OpenDriveLab 的关系
 
@@ -164,20 +188,20 @@ flowchart LR
 
 | 场景 | 建议 |
 |------|------|
-| 想用公司的模型 | 目前无可下载模型；关注 GitHub / HF `ArchonRobotics` 组织与官网博客是否发布开源基座模型 |
-| 复现署名工作 | [RoboNaldo](./paper-robonaldo-humanoid-soccer-shooting.md) 有完整训练 + G1 部署代码，可直接上手；EgoHumanoid-V2 等代码发布 |
-| 借鉴路线做自己的栈 | 用 [WBI 页](./archon-whole-body-intelligence.md) 的四层接口和 7 条评测问题；S0 可用开源跟踪器，人类数据路线参考 [EgoHumanoid](./paper-loco-manip-161-060-egohumanoid.md) |
-| 写行业 / 融资综述 | 成立日期写「2026-04（媒体口径）」；种子轮写「数亿元、未披露领投」；论文成果只计 arXiv 署名公司的两篇 |
-| 同类公司对照 | 对照 [西湖机器人](./westlake-robotics.md)（同为高校实验室孵化、主打全身动作模型，但有自研本体与闭源商用软件）与 [Figure Helix 02](./helix-02.md)（S2/S1/S0 分层） |
+| 复现现有开源实现 | 优先看 [RoboNaldo](./paper-robonaldo-humanoid-soccer-shooting.md) 的训练与真机部署仓；其他项目逐一核查，不以论文发表替代可运行性 |
+| 精确遥操作 / 全身追踪 | 参考 [Anchor 1](./paper-anchor-1.md) 的五点稀疏参考和独立误差反馈；源码和权重发布前暂不写未经核对的运行命令 |
+| 双机器人协同 | 用 [PingpongDuo](./paper-pingpongduo.md) 的风险过滤站位及分层击球设计分析系统，但论文/视频不等于现成可用 SDK |
+| 长时导航 | [Compass 1](./paper-compass-1-navigation.md) 提供单目 RGB + 历史关键帧/地图的评测思路；仓库目前是研究展示入口，需等待官方发布可运行资源 |
+| 规划整套人形架构 | [WBI](./archon-whole-body-intelligence.md) 作为分层路线参考，不假定四项 Research 已有成熟可互联接口 |
+| 行业研究 | 成立日期仍采用「2026-04（媒体口径）」；论文学术归属与公司研究展示分别标注，避免过度归因 |
 
 ## 局限与风险
 
-- **成立时间短，公开证据少：** 只有 1 篇愿景博文、4 段短视频和 1 条完整视频，没有模型规格、数据规模或评测数字。
-- **成立日期与总部只有媒体来源：** 官网未写，工商全称未找到；Gasgoo 的「2024 年 4 月」与其他来源冲突。
-- **实验室 / 公司边界模糊：** 会议品牌、项目页和代码组织都与 OpenDriveLab 共用，媒体和投资方常把实验室成果算给公司。
-- **开源承诺未兑现（截至 2026-10-10）：** 「2026 年下旬开源人形基座模型」仍待观察。
-- **本体未知：** 公司是否自研或采购人形本体、演示所用机型均未公开。
-- **自报荣誉：** 「首位华人学者」等表述来自媒体稿，未独立核实。
+- **研究并非单一系统：** 四项 Research 内容涉及预训练路线、团队体育控制、精确跟踪与长时导航；未公开统一训练与部署接口。
+- **实验协议差异：** Compass 1 的 79.4% 来自特定 Go2 实地导航任务；Anchor 1 报告不同全局/局部跟踪误差；PingpongDuo 有仿真与真机两类指标，不能直接横向排名。
+- **开源不完整：** 除 RoboNaldo 已有可运行训练和部署入口外，Anchor 1/Compass 1 的关键资源仍列为计划发布，PingpongDuo 未给代码；不能用展示仓代替模型和部署的实测。
+- **机构边界：** 多项研究由 Archon、HKU、SII、OpenDriveLab 等合作团队开展，不应直接归为公司独家成果。
+- **成立/投资信息来源性质：** 成立时间、融资金额仍来自媒体；官网未给出同口径工商信息。
 
 ## 关联页面
 
@@ -188,11 +212,12 @@ flowchart LR
 - [Helix 02](./helix-02.md) · [西湖机器人](./westlake-robotics.md) — 产业对照
 - [行为基础模型](../concepts/behavior-foundation-model.md) · [Loco-Manipulation](../tasks/loco-manipulation.md) · [人形足球](../tasks/humanoid-soccer.md)
 - [国内具身智能实验室三层地图 2026](../overview/china-embodied-ai-labs-landscape-2026.md)
-- [PingpongDuo](./paper-pingpongduo.md) — 双台 Unitree G1 乒乓球双打：团队层风险过滤站位 + 分层击球技能
+- [PingpongDuo](./paper-pingpongduo.md) — 双台 G1 乒乓球双打；[Anchor 1](./paper-anchor-1.md) — 精准稳定全身控制；[Compass 1](./paper-compass-1-navigation.md) — 长时视觉历史导航
 
 ## 参考来源
 
-- [源策未来官网核查（2026-10-10）](../../sources/sites/archon-tech.md)
+- [Research 四项与开放状态核查（2026-11-16）](../../sources/sites/archon-research-2026-11.md)
+- [源策未来官网历史核查（2026-10-10）](../../sources/sites/archon-tech.md)
 - [WBI 博文来源归档](../../sources/blogs/archon_whole_body_intelligence.md)
 - [成立与融资报道归档](../../sources/blogs/archon_robotics_press.md)
 - [RoboNaldo 论文归档](../../sources/papers/robonaldo_arxiv_2606_11092.md)
@@ -204,6 +229,6 @@ flowchart LR
 
 ## 推荐继续阅读
 
-- [源策未来官网](https://www.archon.tech/) — Mission、团队与投资方
+- [源策未来 Research](https://www.archon.tech/research) — 四项官方研究入口与发布日期
 - [Whole-Body Intelligence 博文](https://www.archon.tech/blog/whole-body-intelligence) — 公司技术路线全文
 - [硬氪独家融资报道与访谈](https://www.36kr.com/p/3868055841641476) — 三层架构与数据路线的创始人原话
