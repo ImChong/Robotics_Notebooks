@@ -198,6 +198,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Xiaomi-Robotics-0](../wiki/entities/xiaomi-robotics-0.md) — 异步 action chunk 部署
+- [2026 年 VLA 开源生态三转变](../wiki/comparisons/vla-open-source-ecosystem-2026-three-shifts.md) — 按策略模型、实验框架、统一评测与后训练系统选择复现入口；从同协议基线再到部署/后训练，不把工具框架当成新的 VLA 模型
 - [具身模型延迟–泛化权衡](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md)
 - [Evo-1](../wiki/entities/paper-evo1-lightweight-vla.md) — 0.77B 轻量 VLA：两阶段训练保持 VLM 语义对齐，消费级 GPU 2.3 GB / 16.4 Hz，边缘侧选型的代表样本
 - [行为树 VLA 编排](../wiki/concepts/behavior-tree-vla-orchestration.md)

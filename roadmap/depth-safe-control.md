@@ -3,7 +3,7 @@
 **首屏导读**：
 
 - **为谁**：要在满足安全约束的前提下控制机器人的人。
-- **路径**：Stage 0–4 · 数学基础 → CLF / CBF → CLF + CBF 进 WBC / MPC → Safe RL → 真机分层安全壳。
+- **路径**：Stage 0–4 · 数学基础 → CLF / CBF → CLF + CBF 进 WBC / MPC → 真机分层安全壳；Safe RL 为学习策略的选读分支。
 - **纵深路线**：[运动控制主路线](motion-control.md)的一条分支。
 
 ## 路线一览
@@ -16,7 +16,9 @@ flowchart LR
   S3["<b>Stage 3</b><br/>Safe RL<br/><em>CMDP / Lagrangian</em>"]
   S4["<b>Stage 4</b><br/>真机安全部署<br/><em>分层安全壳 / 安全 FSM</em>"]
 
-  S0 --> S1 --> S2 --> S3 --> S4
+  S0 --> S1 --> S2 --> S4
+  S2 -. "选读：安全策略训练" .-> S3
+  S3 --> S4
 
   classDef stage fill:#142a3a,stroke:#e67e22,stroke-width:2px,color:#fff
   class S0,S1,S2,S3,S4 stage

@@ -195,7 +195,7 @@ flowchart LR
 
 **方向 A：在线互动展演**
 - 从固定时间轴走向观众/音乐实时驱动：现场音乐节拍提取 → 在线编舞生成 → 群体即兴，把 Stage 1 的生成模型搬到闭环里
-- 关键词：[SONIC](../wiki/methods/sonic-motion-tracking.md)（音乐 token 实时条件）、[GENMO](../wiki/methods/genmo.md)
+- 关键词：[GENMO / GEM](../wiki/methods/genmo.md) 或 [AHEADance](../wiki/entities/paper-aheadance.md)（音乐→参考运动）、[SONIC](../wiki/methods/sonic-motion-tracking.md)（运动参考→机器人跟踪）；单机音乐条件生成之外，仍需 Stage 2 的多机时间轴与同步
 
 **方向 B：学习式多机协调**
 - 用 [MARL](../wiki/methods/marl.md) 学走位与协作，替代手工指派与规则容错；对照 [CTDE vs 去中心化](../wiki/comparisons/ctde-vs-decentralized-marl.md) 的训练拓扑选型
@@ -245,3 +245,4 @@ flowchart LR
 - [Swarm in the Wild](../wiki/entities/paper-swarm-micro-flying-robots-in-the-wild.md)（Science Robotics 2022）与 [Crazyswarm2](../wiki/entities/crazyswarm2.md) — 无人机 swarm 编队/避碰工具箱的迁移参照
 - [TeamHOI](../wiki/entities/paper-amp-survey-17-teamhoi.md)（arXiv:2603.07988）— 多机物理协作的去中心化策略前沿
 - [AHEADance 官方项目](https://ihcr.github.io/AHEADance/) 与 [原论文 III-E / V](https://arxiv.org/html/2611.13370v1) — 流式音乐生成与下游全身跟踪的职责边界
+- [SONIC 官方项目 · Multi-Modal Control](https://nvlabs.github.io/GEAR-SONIC/) — 音乐/文本先经 GEM 生成人体运动，再由统一运动接口跟踪
