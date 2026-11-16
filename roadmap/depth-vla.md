@@ -203,6 +203,7 @@ flowchart LR
 - [Reins](../wiki/entities/paper-reins-robot-harness.md) — 多模态 Agent 通过三维感知、条件化动作链与并行旁白驱动真机
 - [STVLA](../wiki/entities/paper-stvla-spatial-temporal-memory.md) — 用空间几何与有界历史记忆改善长任务中遮挡与状态歧义
 - [Xiaomi-Robotics-0](../wiki/entities/xiaomi-robotics-0.md) — 异步 action chunk 部署
+- [ARP：异步机器人策略](../wiki/entities/paper-asynchronous-robot-policies.md) — 将 VLM 低频语义缓存与自带实时视觉的高频动作专家分进程运行，训练显式建模缓存陈旧和执行延迟；动态扰动更稳，但通用 RoboLab 仍落后 π0.5（官方源码/权重待发布）
 - [2026 年 VLA 开源生态三转变](../wiki/comparisons/vla-open-source-ecosystem-2026-three-shifts.md) — 按策略模型、实验框架、统一评测与后训练系统选择复现入口；从同协议基线再到部署/后训练，不把工具框架当成新的 VLA 模型
 - [具身模型延迟–泛化权衡](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md)
 - [Evo-1](../wiki/entities/paper-evo1-lightweight-vla.md) — 0.77B 轻量 VLA：两阶段训练保持 VLM 语义对齐，消费级 GPU 2.3 GB / 16.4 Hz，边缘侧选型的代表样本
