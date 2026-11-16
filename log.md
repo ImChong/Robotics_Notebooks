@@ -430,6 +430,13 @@ op: ingest
 - **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
 - **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
 
+## [2026-11-16] ingest | sources/papers/cortex_arxiv_2610_20399.md — Cortex：上下文到 FFN 参数记忆的巩固
+
+- 依据 arXiv:2610.20399v1 整理 prospective rehearsal、FFN 参数扩展及无上下文蒸馏，独立建立中文/英文论文详情。
+- 明确 CR/RR 与 50 次连续事实编辑口径，区分 LLM 文本记忆巩固、外部 agent 记忆及机器人连续学习。
+- 官方 zjunlp/Cortex 仓库截至核验日只有 LICENSE，暂无可阅读的可运行源码；不编造源码时序图。
+- 将差异对照链接到 Agent 记忆概念页与 RSI 纵深路线；未触碰部署派生文件。
+
 ## [2026-11-16] ingest | sources/papers/vbot_exo2ego_arxiv_2611_16417.md — 归档 VBot Exo2Ego Policy 并挂载具身数据纵深路线
 
 - 依据 arXiv:2611.16417v1 全文核对双机 EGO/EXO 采集、MiniMax-H3 视频生成、训练期相机射线与语义/手部监督。

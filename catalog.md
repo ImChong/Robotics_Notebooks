@@ -2128,6 +2128,7 @@
 - [CoRef-GS（arXiv:2609.20586）](wiki/entities/paper-coref-gs.md) — CoRef-GS**（*Cooperative Referring Gaussian Splatting for Multi-Agent Scene Understanding*，[arXiv:2 `📅unknown` `[entity_page]`
 - [CoReMatch（arXiv:2611.03932）](wiki/entities/paper-corematch.md) — CoReMatch**（*CoReMatch: Recurrent Continuous Coordinate Refinement for Real-Time Robotic Feature M `📅unknown` `[entity_page]`
 - [CorrectVLA：VLA 失败的语言反馈推理期动作纠错](wiki/entities/paper-correctvla.md) — CorrectVLA**（*Training-Free Action Correction for VLA Model Failures via Language Feedback*，[arXiv `📅unknown` `[entity_page]`
+- [Cortex: Consolidating Context into Parametric Memory / Cortex：将上下文巩固为参数记忆](wiki/entities/paper-cortex-parametric-memory.md) — Cortex**（*Consolidating Context into Parametric Memory*，arXiv:2610.20399v1）让模型先用上下文回答未来可能的问题，再把这份条 `📅unknown` `[entity_page]`
 - [Cortical knowledge structures guide word concept learning](wiki/entities/paper-cortical-knowledge-word-learning.md) — Cortical knowledge structures guide word concept learning** 是北京大学与北京师范大学团队发表于 *Nature Communicatio `📅unknown` `[entity_page]`
 - [COSMI：多物体人–物交互的组合式合成](wiki/entities/paper-cosmi.md) — COSMI（COmpositional Synthesis of Multi-object Interactions）从已有单物体交互动作中组合多物体序列，并以文本条件扩散 Transformer 生 `📅unknown` `[entity_page]`
 - [CoSMO：用共形预测给开放世界语义地图配安全边距](wiki/entities/paper-cosmo.md) — CoSMO 把 VLM 的地图嵌入转成带覆盖保证的标签集合，再据此给不同类别的障碍物设不同的膨胀半径；安全词典随新危险类别只增不减，阈值由延迟的专家反馈在线更新。 `📅unknown` `[entity_page]`
