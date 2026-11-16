@@ -94,6 +94,7 @@ flowchart LR
 - [HandUMI](../wiki/entities/handumi.md) · [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) — 无机器人示教接口的夹爪侧与人形全身侧两种形态
 - [ACE-Data-0](../wiki/entities/paper-ace-data-0.md) — 把真实家居做成时空校准录制工作室（150 h / 17M 帧 / 75k episodes）的场景化采集样本
 - [EgoScale](../wiki/methods/egoscale.md) · [EgoMimic](../wiki/entities/paper-ego-03-egomimic.md) — 第一视角人视频作为可缩放监督源
+- [VBot Exo2Ego Policy](../wiki/entities/paper-vbot-exo2ego-policy.md) — 双 iPhone EGO/EXO 配对 RGB-D + 单视角众包采集，区分真实视角与生成视角；尚非带机器人动作真值的示教数据
 
 ### 学完输出什么
 - 一张"范式 × 单位可用轨迹成本 × 对齐度"的选型表
@@ -191,6 +192,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Generative Data Augmentation](../wiki/methods/generative-data-augmentation.md) — 长尾与罕见物理交互的低成本合成
+- [VBot Exo2Ego Policy](../wiki/entities/paper-vbot-exo2ego-policy.md) — 第三人称操作视频经 MiniMax-H3/LoRA 生成第一视角 RGB；训练期几何退火与手–物监督，推理无需目标相机标定；使用前须验证合成接触/动作的真实性
 - [ARSTAG](../wiki/entities/paper-arstag.md) — 单图与任务指令经场景重建、专家生成和扩增产出仿真示范，归合成数据支路，不当作实机采集装置
 - [Perceptron Isaac 0.5](../wiki/entities/perceptron-isaac-05.md) — 通用视频置换 teleop 的开源等高线，本阶段最可操作的量化锚点
 - [EgoScale](../wiki/methods/egoscale.md) — 人视频预训练 + 小规模视点对齐 mid-training 的两段式配方
