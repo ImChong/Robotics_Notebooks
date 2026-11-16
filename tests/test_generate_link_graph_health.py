@@ -173,9 +173,29 @@ def test_route_health_distribution_counts_route_map_nodes() -> None:
             "_route_items": ["a", "b", "b", "c", "zz"],
         },
         {"detail_id": "roadmap-depth-y", "label": "Y", "health_score": 3, "_route_items": []},
-        {"detail_id": "a", "label": "A", "health_score": 3, "community": "control", "type": "entity", "has_repo": True},
-        {"detail_id": "b", "label": "B", "health_score": 1, "community": "vla", "type": "entity"},
-        {"detail_id": "c", "label": "C", "health_score": 1, "community": "control", "type": "concept", "has_repo": True},
+        {
+            "detail_id": "a",
+            "label": "A",
+            "health_score": 3,
+            "community": "control",
+            "type": "entity",
+            "has_repo": True,
+        },
+        {
+            "detail_id": "b",
+            "label": "B",
+            "health_score": 1,
+            "community": "vla",
+            "type": "entity",
+        },
+        {
+            "detail_id": "c",
+            "label": "C",
+            "health_score": 1,
+            "community": "control",
+            "type": "concept",
+            "has_repo": True,
+        },
     ]
     assert glg.route_health_distribution(nodes) == [
         {
