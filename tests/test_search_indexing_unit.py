@@ -92,6 +92,21 @@ class TestSearchIndexingText(unittest.TestCase):
         self.assertIn("强化学习", toks)
         self.assertIn("rl", toks)
 
+    def test_tokenize_text_drops_long_cjk_phrases_but_keeps_synonyms_and_bigrams(self) -> None:
+        phrase_toks = tokenize_text("端到端机器人策略学习")
+        self.assertNotIn("端到端机器人策略学习", phrase_toks)
+        self.assertIn("策略", phrase_toks)
+        self.assertIn("器", phrase_toks)
+
+        # >4 字但登记在 TOKEN_SYNONYMS 中的专业短语保留整词与英文同义词
+        syn_toks = tokenize_text("模型预测控制")
+        self.assertIn("模型预测控制", syn_toks)
+        self.assertIn("mpc", syn_toks)
+
+        # keep_long_cjk=True 用于人工 alias 与查询串，保留完整长词组
+        alias_toks = tokenize_text("机器人学习论文笔记", keep_long_cjk=True)
+        self.assertIn("机器人学习论文笔记", alias_toks)
+
 
 class TestSearchWikiHelpers(unittest.TestCase):
     def test_filter_doc_type(self):

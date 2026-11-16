@@ -18,12 +18,10 @@ from utils.paths import path_to_id
 from utils.wiki_cache import wiki_stem_to_path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "exports" / "index-v1.json"
-SITE_OUTPUT = ROOT / "exports" / "site-data-v1.json"
-# 站点只读 site-catalog-v1.json + page-content/，index-v1 / site-data-v1（各约 45 MB，带正文）
-# 只留在 exports/ 供脚本与测试使用，不再镜像进 docs/ 随 Pages 部署
+EXPORTS_DIR = ROOT / "exports"
+# 站点只读 site-catalog-v1.json + page-content/，已停写冗长带全正文的 index-v1.json / site-data-v1.json
 DOCS_EXPORT_DIR = ROOT / "docs" / "exports"
-LEGACY_DOCS_MIRRORS = ("index-v1.json", "site-data-v1.json")
+LEGACY_EXPORTS = ("index-v1.json", "site-data-v1.json")
 SITEMAP_OUTPUT = ROOT / "docs" / "sitemap.xml"
 BASE_URL = "https://imchong.github.io/Robotics_Notebooks"
 SCHEMA_DIR = ROOT / "schema"
@@ -1084,7 +1082,7 @@ def build_site_data(items: List[Dict]) -> Dict:
     return {
         "version": "v1",
         "generated_mode": "script",
-        "source_index": "index-v1.json",
+        "source_index": "site-catalog-v1.json",
         "page_types": ["home_page", "module_page", "roadmap_page", "tech_map_page", "detail_page"],
         "pages": {
             "home_page": home_page,
@@ -1237,20 +1235,13 @@ def generate_sitemap(items: List[Dict], base_url: str = BASE_URL) -> str:
 def main() -> None:
     items = [build_item(p) for p in collect_paths()]
     attach_paper_notebook_links(items)
-    payload = {
-        "version": "v1",
-        "generated_mode": "script",
-        "item_count": len(items),
-        "items": items,
-    }
     site_payload = build_site_data(items)
 
-    write_json(OUTPUT, payload)
-    write_json(SITE_OUTPUT, site_payload)
-    write_page_exports(site_payload, OUTPUT.parent, mirror_dirs=(DOCS_EXPORT_DIR,))
-    # 本地旧产物清掉，预览目录与线上一致
-    for legacy in LEGACY_DOCS_MIRRORS:
-        (DOCS_EXPORT_DIR / legacy).unlink(missing_ok=True)
+    write_page_exports(site_payload, EXPORTS_DIR, mirror_dirs=(DOCS_EXPORT_DIR,))
+    # 清理遗留的双份大体积整包文件（已由 site-catalog-v1.json + page-content/ 替代）
+    for directory in (EXPORTS_DIR, DOCS_EXPORT_DIR):
+        for legacy in LEGACY_EXPORTS:
+            (directory / legacy).unlink(missing_ok=True)
 
     sitemap_content = generate_sitemap(items, BASE_URL)
     SITEMAP_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
@@ -1258,8 +1249,9 @@ def main() -> None:
 
     search_payload = generate_search_index()
 
-    print(f"Wrote {OUTPUT} with {len(items)} items")
-    print(f"Wrote {SITE_OUTPUT} with {len(site_payload['pages']['detail_pages'])} detail pages")
+    print(
+        f"Wrote {EXPORTS_DIR / 'site-catalog-v1.json'} with {len(site_payload['pages']['detail_pages'])} detail pages"
+    )
     print(f"Mirrored site catalog and page bodies to {DOCS_EXPORT_DIR}")
     print(
         f"Wrote {SITEMAP_OUTPUT} with {sum(1 for i in items if i.get('type') in {'wiki_page', 'entity_page'})} wiki/entity URLs"

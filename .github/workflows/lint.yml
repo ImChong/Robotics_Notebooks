@@ -36,11 +36,14 @@ jobs:
         run: |
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             python3 scripts/ci_change_scope.py --base "origin/${{ github.base_ref }}" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            python3 scripts/ci_change_scope.py --push-before "${{ github.event.before }}" --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
           else
             python3 scripts/ci_change_scope.py --full --output-file "$RUNNER_TEMP/ci-scope.json" --github-output "$GITHUB_OUTPUT"
           fi
 
       - name: Install dependencies
+        if: steps.scope.outputs.mode != 'media'
         run: pip install -r requirements-ci-lite.txt
 
       # PR 不得修改 catalog.md / log.md / 部署生成的统计文件，否则与 main 的自动提交冲突。
@@ -50,6 +53,7 @@ jobs:
         run: python3 scripts/pr_derived_guard.py check --base "origin/${{ github.base_ref }}"
 
       - name: Guard unique project nodes and new entity identities
+        if: steps.scope.outputs.mode != 'media'
         env:
           PROJECT_NODE_BASE: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || github.event.before || 'HEAD' }}
         run: |
@@ -75,7 +79,7 @@ jobs:
       # 新增/改动 wiki 页的 PR 须在正文贴 report_health.py 表格（schema/ingest-workflow.md 步骤 8.5）。
       # 前面步骤失败也照跑，一次运行就能看到全部问题；正文经环境变量传入，不拼进脚本。
       - name: Check node health report in PR body
-        if: ${{ !cancelled() && github.event_name == 'pull_request' }}
+        if: ${{ !cancelled() && github.event_name == 'pull_request' && steps.scope.outputs.mode != 'media' }}
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
         run: python3 scripts/report_health.py --check-pr-body

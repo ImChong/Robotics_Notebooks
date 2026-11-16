@@ -23,7 +23,11 @@ class WikiRoadmapsExportTests(unittest.TestCase):
         )
         self.assertEqual(page_id, "wiki-roadmaps-humanoid-practitioner-entry-roadmap")
 
-        site_data = json.loads((ROOT / "exports" / "site-data-v1.json").read_text(encoding="utf-8"))
-        detail_pages = site_data["pages"]["detail_pages"]
+        catalog = json.loads(
+            (ROOT / "exports" / "site-catalog-v1.json").read_text(encoding="utf-8")
+        )
+        detail_pages = catalog["pages"]["detail_pages"]
         self.assertIn(page_id, detail_pages)
-        self.assertTrue(detail_pages[page_id].get("content_markdown"))
+        body_path = ROOT / detail_pages[page_id]["content_url"]
+        body_data = json.loads(body_path.read_text(encoding="utf-8"))
+        self.assertTrue(body_data.get("content_markdown"))

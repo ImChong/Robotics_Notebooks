@@ -98,13 +98,13 @@ Example: `chore: 更新主页统计数据与图谱 (172 nodes, 955 edges)`
 - **Verifiable:** Always provide provenance (links to sources).
 
 ### 3. Repository Constraints
-- **Do Not** commit or stage changes unless explicitly asked.
+- **Follow `AGENTS.md` Commit & PR Workflow:** After running `make ci-preflight` (and `python3 -m ruff format/check scripts tests` when touching Python files), stage only task-relevant source files, create a Chinese commit on the working/PR branch, and push unless the user explicitly asks not to commit or push (never commit `catalog.md`, `log.md`, or gitignored exports, and open/use a PR branch instead of pushing directly to `main` when review is expected).
 - **Do Not** move files between layers without following the `ingest` workflow.
 - **Do Not** modify the frontend (`docs/*.js`) unless the request is specifically about UI/UX.
 
 ---
 
 ## Maintenance Targets (Current Phase)
-- **Sources Coverage:** >99%
-- **Knowledge Graph:** 217+ nodes, 1274+ edges.
-- **Focus Areas:** Contact-rich manipulation, tactile/force feedback, and formalization of communication links.
+- **Sources Coverage:** 100% (`wiki/entities/`).
+- **Knowledge Graph:** 7,800+ nodes, 65,000+ edges.
+- **Focus Areas:** Contact-rich manipulation, tactile/force feedback, embodied foundation/world models, and formalization of communication links.

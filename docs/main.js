@@ -1963,10 +1963,6 @@
     });
   }
 
-  function moduleHref(id) {
-    return 'module.html?id=' + encodeURIComponent(id);
-  }
-
   function roadmapHref(id) {
     return 'roadmap.html?id=' + encodeURIComponent(id);
   }
@@ -7430,315 +7426,6 @@
     syncRoadmapStagesMetaHref(roadmapPage);
   }
 
-  function renderPreviewPage(siteData) {
-    if (!siteData || !siteData.pages) return;
-
-    const pages = siteData.pages;
-    const homePage = pages.home_page || {};
-    const modulePages = pages.module_pages || {};
-    const roadmapPages = pages.roadmap_pages || {};
-    const techMapPage = pages.tech_map_page || {};
-    const detailPages = pages.detail_pages || {};
-
-    const summary = document.getElementById('previewSummary');
-    if (summary) {
-      const moduleCount = Object.keys(modulePages).length;
-      const roadmapCount = Object.keys(roadmapPages).length;
-      const detailCount = Object.keys(detailPages).length;
-      const nodeCount = Array.isArray(techMapPage.nodes) ? techMapPage.nodes.length : 0;
-      summary.innerHTML = [
-        '<article class="card kpi-card">',
-        '  <div class="kpi-value">' + moduleCount + '</div>',
-        '  <div class="kpi-label">模块页数量</div>',
-        '  <p class="kpi-note">当前聚合模块：' + escapeHtml(Object.keys(modulePages).join(' / ')) + '</p>',
-        '</article>',
-        '<article class="card kpi-card">',
-        '  <div class="kpi-value">' + roadmapCount + '</div>',
-        '  <div class="kpi-label">路线页数量</div>',
-        '  <p class="kpi-note">已覆盖 route 与 learning path，可直接生成路线入口。</p>',
-        '</article>',
-        '<article class="card kpi-card">',
-        '  <div class="kpi-value">' + detailCount + '</div>',
-        '  <div class="kpi-label">详情页对象数量</div>',
-        '  <p class="kpi-note">detail_pages 已可支持第一阶段通用详情页渲染。</p>',
-        '</article>',
-        '<article class="card kpi-card">',
-        '  <div class="kpi-value">' + nodeCount + '</div>',
-        '  <div class="kpi-label">tech-map 节点数量</div>',
-        '  <p class="kpi-note">说明 tech_map_page 已经不只是说明文档，而是可消费的数据页。</p>',
-        '</article>'
-      ].join('');
-      removeLoadingState(summary);
-    }
-
-    const hero = document.getElementById('homeHeroPreview');
-    if (hero) {
-      const title = homePage.hero && homePage.hero.title ? homePage.hero.title : '未提供标题';
-      const subtitle = homePage.hero && homePage.hero.subtitle ? homePage.hero.subtitle : '未提供副标题';
-      hero.innerHTML = [
-        '<h4>' + escapeHtml(title) + '</h4>',
-        '<p class="data-meta">' + escapeHtml(subtitle) + '</p>',
-        '<p class="data-submeta">当前首页 CTA、quick entries、featured chain、featured modules 都能直接从聚合导出中拿到。</p>'
-      ].join('');
-      removeLoadingState(hero);
-    }
-
-    const quickEntries = document.getElementById('quickEntriesPreview');
-    if (quickEntries) {
-      const entries = Array.isArray(homePage.quick_entries) ? homePage.quick_entries : [];
-      quickEntries.innerHTML = entries.length
-        ? entries.map(function (item) {
-            const page = roadmapPages[item] || detailPages[item] || {};
-            return '<li><a href="' + escapeHtml(roadmapHref(item)) + '"><strong>' + escapeHtml(page.title || item) + '</strong></a><br /><small>' + escapeHtml(item) + '</small></li>';
-          }).join('')
-        : '<li>暂无快速入口数据</li>';
-      removeLoadingState(quickEntries);
-    }
-
-    renderChipList(document.getElementById('featuredChainPreview'), homePage.featured_chain, {
-      renderItem: function (item) {
-        const page = detailPages[item] || {};
-        return '<a class="data-chip" href="' + escapeHtml(detailHref(item)) + '" title="' + escapeHtml(item) + '">' + escapeHtml(page.title || item) + '</a>';
-      }
-    });
-
-    renderChipList(document.getElementById('featuredModulesPreview'), homePage.featured_modules, {
-      renderItem: function (item) {
-        const page = modulePages[item] || {};
-        return '<a class="data-chip" href="' + escapeHtml(moduleHref(item)) + '" title="' + escapeHtml(item) + '">' + escapeHtml(page.title || item) + '</a>';
-      }
-    });
-
-    const moduleGrid = document.getElementById('modulePreviewGrid');
-    if (moduleGrid) {
-      // ⚡ Bolt Optimization: Replace Object.values().map().join('') with for...in and string concatenation
-      // Expected impact: Eliminates intermediate array allocations and closure overhead during page initialization, reducing memory pressure.
-      var moduleCardsHtml = '';
-      var moduleCardsCount = 0;
-      for (var moduleId in modulePages) {
-        if (!Object.prototype.hasOwnProperty.call(modulePages, moduleId)) continue;
-        var modulePage = modulePages[moduleId] || {};
-        var references = Array.isArray(modulePage.references) ? modulePage.references.length : 0;
-        var roadmaps = Array.isArray(modulePage.roadmaps) ? modulePage.roadmaps.length : 0;
-        var entries = Array.isArray(modulePage.entry_items) ? modulePage.entry_items.slice(0, 4) : [];
-        var entriesHtml = '';
-        for (var i = 0; i < entries.length; i++) {
-          entriesHtml += '    <li><a href="' + escapeHtml(detailHref(entries[i])) + '"><code>' + escapeHtml(entries[i]) + '</code></a></li>';
-        }
-        moduleCardsHtml += '<article class="card data-card">' +
-          '  <div>' +
-          '    <h3>' + escapeHtml(modulePage.title || modulePage.module_id || '未命名模块') + '</h3>' +
-          '    <p class="card-meta">tag: ' + escapeHtml(modulePage.tag || '-') + '</p>' +
-          '    <p>' + escapeHtml(modulePage.summary || '暂无模块摘要') + '</p>' +
-          '  </div>' +
-          '  <div class="chip-list">' +
-          '    <span class="data-chip">入口 ' + escapeHtml((modulePage.entry_items || []).length) + '</span>' +
-          '    <span class="data-chip">参考 ' + escapeHtml(references) + '</span>' +
-          '    <span class="data-chip">路线 ' + escapeHtml(roadmaps) + '</span>' +
-          '  </div>' +
-          '  <ul>' +
-               entriesHtml +
-          '  </ul>' +
-          '</article>';
-        moduleCardsCount++;
-      }
-      moduleGrid.innerHTML = moduleCardsCount > 0 ? moduleCardsHtml : '<article class="card"><p>暂无模块页数据</p></article>';
-      removeLoadingState(moduleGrid);
-    }
-
-    const roadmapGrid = document.getElementById('roadmapPreviewGrid');
-    if (roadmapGrid) {
-      // ⚡ Bolt Optimization: Replace Object.entries().map().join('') with for...in and string concatenation
-      // Expected impact: Eliminates intermediate array allocations and closure overhead during page initialization, reducing memory pressure.
-      var roadmapCardsHtml = '';
-      var roadmapCardsCount = 0;
-      for (var roadmapId in roadmapPages) {
-        if (!Object.prototype.hasOwnProperty.call(roadmapPages, roadmapId)) continue;
-        var roadmapPage = roadmapPages[roadmapId] || {};
-        var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
-        var related = Array.isArray(roadmapPage.related_items) ? roadmapPage.related_items.slice(0, 4) : [];
-
-        var stagesHtml = '';
-        var maxStages = Math.min(stages.length, 4);
-        for (var j = 0; j < maxStages; j++) {
-          var stage = stages[j];
-          stagesHtml += '    <li>' + escapeHtml(stage.title || stage.id || '未命名阶段') + '</li>';
-        }
-
-        var relatedHtml = '';
-        for (var k = 0; k < related.length; k++) {
-          var item = related[k];
-          relatedHtml += '<a class="data-chip" href="' + escapeHtml(detailHref(item)) + '">' + escapeHtml(item) + '</a>';
-        }
-
-        roadmapCardsHtml += '<article class="card data-card">' +
-          '  <div>' +
-          '    <h3><a href="' + escapeHtml(roadmapHref(roadmapId)) + '">' + escapeHtml(roadmapPage.title || roadmapId) + '</a></h3>' +
-          '    <p class="card-meta">' + escapeHtml(roadmapId) + '</p>' +
-          '    <p>' + escapeHtml(roadmapPage.summary || '暂无路线摘要') + '</p>' +
-          '  </div>' +
-          '  <div class="chip-list">' +
-          '    <span class="data-chip">阶段 ' + escapeHtml(stages.length) + '</span>' +
-          '    <span class="data-chip">关联项 ' + escapeHtml(related.length) + '</span>' +
-          '  </div>' +
-          '  <ul>' +
-               stagesHtml +
-          '  </ul>' +
-          '  <div class="chip-list">' +
-               relatedHtml +
-          '  </div>' +
-          '</article>';
-        roadmapCardsCount++;
-      }
-      roadmapGrid.innerHTML = roadmapCardsCount > 0 ? roadmapCardsHtml : '<article class="card"><p>暂无路线页数据</p></article>';
-      removeLoadingState(roadmapGrid);
-    }
-
-    const detailGrid = document.getElementById('detailPreviewGrid');
-    if (detailGrid) {
-      const preferredDetails = [
-        'wiki-concepts-centroidal-dynamics',
-        'wiki-methods-model-predictive-control',
-        'entity-isaac-gym-isaac-lab',
-        'tech-node-control-mpc'
-      ];
-      // ⚡ Bolt Optimization: Replace chained array methods (.map, .filter, .join) with string concatenation in a for loop
-      // Expected impact: Eliminates closure creation and intermediate array allocations during layout generation.
-      var detailCardsHtml = '';
-      for (var dk = 0; dk < preferredDetails.length; dk++) {
-        var dpId = preferredDetails[dk];
-        var detailPage = detailPages[dpId];
-        if (!detailPage) continue;
-
-        var tags = Array.isArray(detailPage.tags) ? detailPage.tags.slice(0, 5) : [];
-        var detailRelated = Array.isArray(detailPage.related) ? detailPage.related.slice(0, 4) : [];
-        var sources = Array.isArray(detailPage.source_links) ? detailPage.source_links.slice(0, 2) : [];
-
-        var tagsHtml = '';
-        if (tags.length) {
-          for (var ti = 0; ti < tags.length; ti++) {
-             tagsHtml += '<span class="data-chip">' + escapeHtml(tags[ti]) + '</span>';
-          }
-        } else {
-          tagsHtml = '<span class="data-meta">暂无标签</span>';
-        }
-
-        var detailRelatedHtml = '';
-        if (detailRelated.length) {
-          for (var ri = 0; ri < detailRelated.length; ri++) {
-            var itemStr = detailRelated[ri];
-            detailRelatedHtml += '<li><a href="' + escapeHtml(detailHref(itemStr)) + '"><code>' + escapeHtml(itemStr) + '</code></a></li>';
-          }
-        } else {
-          detailRelatedHtml = '<li>暂无关联项</li>';
-        }
-
-        var sourcesHtml = '';
-        if (sources.length) {
-           for (var si = 0; si < sources.length; si++) {
-              var entry = sources[si];
-              var itemObj = normalizeSourceLink(entry);
-              var href = sourceLinkHref(entry);
-              var label = itemObj.label || href || '参考条目';
-              if (!href) {
-                sourcesHtml += '<li>' + escapeHtml(label) + '</li>';
-              } else {
-                var external = /^https?:/i.test(href);
-                sourcesHtml += '<li><a href="' + escapeHtml(href) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escapeHtml(label) + '</a></li>';
-              }
-           }
-        } else {
-           sourcesHtml = '<li>暂无来源链接</li>';
-        }
-
-        detailCardsHtml += '<article class="card data-card">' +
-            '  <div>' +
-            '    <h3><a href="' + escapeHtml(detailHref(detailPage.id)) + '">' + escapeHtml(detailPage.title || detailPage.id) + '</a></h3>' +
-            '    <p class="card-meta">' + escapeHtml(wikiTypeLabel(detailPage.type || 'detail_page', 'node')) + '</p>' +
-            '    <p>' + escapeHtml(detailPage.summary || '暂无摘要') + '</p>' +
-            '    <p class="data-submeta"><code>' + escapeHtml(detailPage.path || detailPage.id || '') + '</code></p>' +
-            '  </div>' +
-            '  <div>' +
-            '    <h4>标签</h4>' +
-            '    <div class="chip-list">' + tagsHtml + '</div>' +
-            '  </div>' +
-            '  <div>' +
-            '    <h4>关联项</h4>' +
-            '    <ul>' + detailRelatedHtml + '</ul>' +
-            '  </div>' +
-            '  <div>' +
-            '    <h4>来源链接</h4>' +
-            '    <ul>' + sourcesHtml + '</ul>' +
-            '  </div>' +
-            '  <div class="chip-list">' +
-            '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(detailPage.id)) + '">打开详情页</a>' +
-            '  </div>' +
-            '</article>';
-      }
-      detailGrid.innerHTML = detailCardsHtml || '<article class="card"><p>暂无详情页数据</p></article>';
-      removeLoadingState(detailGrid);
-    }
-
-    const techMapSummary = document.getElementById('techMapSummary');
-    const techMapNodes = Array.isArray(techMapPage.nodes) ? techMapPage.nodes : [];
-    if (techMapSummary) {
-      const uniqueLayers = Array.from(new Set(techMapNodes.map(function (node) { return node.layer; }).filter(Boolean)));
-      techMapSummary.innerHTML = [
-        '<h4>graph_meta</h4>',
-        '<p class="data-meta">overview_id: <code>' + escapeHtml((techMapPage.graph_meta || {}).overview_id || '-') + '</code></p>',
-        '<p class="data-submeta">当前 tech-map 共 ' + escapeHtml(techMapNodes.length) + ' 个节点，覆盖 ' + escapeHtml(uniqueLayers.length) + ' 个 layer，可直接生成第一版分层节点视图。</p>'
-      ].join('');
-      removeLoadingState(techMapSummary);
-    }
-
-    const layerCounts = techMapNodes.reduce(function (acc, node) {
-      const layer = node.layer || 'unknown';
-      acc[layer] = (acc[layer] || 0) + 1;
-      return acc;
-    }, {});
-    renderChipList(document.getElementById('techMapLayers'), Object.keys(layerCounts), {
-      renderItem: function (layer) {
-        return '<span class="data-chip">' + escapeHtml(layer) + ' · ' + escapeHtml(layerCounts[layer]) + '</span>';
-      }
-    });
-
-    const techMapNodeGrid = document.getElementById('techMapNodeGrid');
-    if (techMapNodeGrid) {
-      // ⚡ Bolt Optimization: Replace chained array operations and nested .map().join('') with string concatenation in for loop
-      // Expected impact: Eliminates closure creation and array allocation during layout generation, reducing memory GC pauses.
-      var nodeCardsHtml = '';
-      var techNodesLimit = Math.min(techMapNodes.length, 6);
-      for (var tn = 0; tn < techNodesLimit; tn++) {
-        var nodeObj = techMapNodes[tn];
-        var nodeRelated = Array.isArray(nodeObj.related) ? nodeObj.related.slice(0, 3) : [];
-        var nodeRelatedHtml = '';
-        if (nodeRelated.length) {
-          for (var nri = 0; nri < nodeRelated.length; nri++) {
-            var nodeItemStr = nodeRelated[nri];
-            nodeRelatedHtml += '<li><a href="' + escapeHtml(detailHref(nodeItemStr)) + '"><code>' + escapeHtml(nodeItemStr) + '</code></a></li>';
-          }
-        } else {
-          nodeRelatedHtml = '<li>当前节点暂无 related</li>';
-        }
-
-        nodeCardsHtml += '<article class="card data-card">' +
-          '  <div>' +
-          '    <h3><a href="' + escapeHtml(detailHref(nodeObj.id)) + '">' + escapeHtml(nodeObj.title || nodeObj.id) + '</a></h3>' +
-          '    <p class="card-meta">layer: ' + escapeHtml(nodeObj.layer || '-') + ' · kind: ' + escapeHtml(nodeObj.node_kind || '-') + '</p>' +
-          '    <p>' + escapeHtml(nodeObj.summary || '暂无节点摘要') + '</p>' +
-          '  </div>' +
-          '  <div class="chip-list">' +
-          '    <span class="data-chip"><code>' + escapeHtml(nodeObj.id || '-') + '</code></span>' +
-          '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(nodeObj.id)) + '">打开详情页</a>' +
-          '  </div>' +
-          '  <ul>' + nodeRelatedHtml + '</ul>' +
-          '</article>';
-      }
-      techMapNodeGrid.innerHTML = nodeCardsHtml || '<article class="card"><p>暂无技术地图节点。</p></article>';
-      removeLoadingState(techMapNodeGrid);
-    }
-  }
-
   // Catalog and body requests share successful results; rejected requests are retryable.
   var pageDataRequests = new Map();
   var loadedPageCatalog = null;
@@ -7863,7 +7550,6 @@
     }
   }
 
-  const previewRoot = document.getElementById('previewSummary');
   const detailRoot = document.getElementById('detailTitle');
   const roadmapPageMount = document.getElementById('roadmapTitle');
   const homeStatsRoot =
@@ -7876,26 +7562,10 @@
     var id = new URLSearchParams(window.location.search).get('id') || '';
     return loadSitePageData(kind, id, retry)
       .then(function (siteData) {
-        if (previewRoot) renderPreviewPage(siteData);
         if (detailRoot) renderDetailPage(siteData);
         if (roadmapPageMount) renderRoadmapPage(siteData);
       })
       .catch(function (error) {
-        if (previewRoot) {
-          handlePageDataError(error, [
-            'previewSummary',
-            'homeHeroPreview',
-            'quickEntriesPreview',
-            'featuredChainPreview',
-            'featuredModulesPreview',
-            'modulePreviewGrid',
-            'roadmapPreviewGrid',
-            'detailPreviewGrid',
-            'techMapSummary',
-            'techMapLayers',
-            'techMapNodeGrid'
-          ]);
-        }
         if (detailRoot) {
           handlePageDataError(error, [
             'detailSummary',
@@ -7920,7 +7590,7 @@
       });
   }
 
-  if (previewRoot || detailRoot || roadmapPageMount) {
+  if (detailRoot || roadmapPageMount) {
     startPageDataLoad(false);
   }
 

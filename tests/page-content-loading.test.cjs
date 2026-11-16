@@ -179,7 +179,7 @@ test('slim catalog: ids come from keys and body-only link fields are merged into
 
 function installRouting(context) {
   vm.runInContext(sliceMain('  function detailHref(', '  function latestNodeHref('), context);
-  vm.runInContext(sliceMain('  function moduleHref(', '  function unescapeMarkdownEscapes('), context);
+  vm.runInContext(sliceMain('  function roadmapHref(', '  function unescapeMarkdownEscapes('), context);
 }
 
 test('metadata-only catalog resolves Markdown deep links with anchors', async () => {

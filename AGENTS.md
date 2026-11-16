@@ -88,14 +88,10 @@
 - 与其他页面的关系
 - 推荐继续阅读
 
-## 第一阶段目标
+## 演进阶段说明
 
-第一阶段只做：
-- 建立新目录结构
-- 建立 schema 文件
-- 建立 index/log
-- 建立一批 MVP wiki 页面
-- 不大动旧网页渲染
+- **第一阶段（已完成）**：目录骨架（`sources/` / `wiki/` / `schema/`）、基础索引与 MVP 页面均已建成。
+- **当前持续维护**：按 `schema/ingest-workflow.md`、实体唯一性校验（`scripts/check_project_nodes.py`）、`make ci-preflight` 与 PR 门禁演进，静态站点基于 `docs/exports/site-catalog-v1.json` + `page-content/` 按需渲染。
 
 ## 禁止事项
 
@@ -200,7 +196,7 @@ python3 scripts/fetch_feishu_doc.py "https://<tenant>.feishu.cn/wiki/<token>" --
 - 只 stage 本次任务相关文件，避免带入无关工作区变化。
 - 改动 `scripts/` 或 `tests/` 下的 Python 文件时，**提交前**先运行 `python3 -m ruff format scripts tests && python3 -m ruff check scripts tests`，都通过再 commit。用 `python3 -m ruff`（`pip install -r requirements-dev.txt` 装的版本，与 CI 一致），不要用 PATH 上可能过旧的 `ruff`：不同版本格式化结果不同。CI 的 `ruff format --check` 只做兜底。
 - 按本节格式创建中文 commit，commit 消息参考近期历史提交风格。
-- 将当前分支推送到 GitHub 远端（通常是 `origin main` 或当前工作分支）。
+- 将当前分支推送到 GitHub 远端（默认推送当前工作分支以发起或更新 PR；仅在用户明确指示直推时推送 `origin main`）。
 
 1. **知识入库提交 (Ingest)**：
    格式：`[YYYY-MM-DD] ingest | <源文件路径> — <中文描述内容>`
@@ -226,7 +222,7 @@ This is a **pure content + tooling** repo — no backend services, databases, or
 ### Gotchas
 
 - `pip-audit` (used in `make ci-test`) requires `python3-venv` to be installed at the system level (`apt install python3.12-venv`). The update script handles `pip install` but system packages must be pre-installed.
-- `make test` / `make ci-test` 依赖 gitignore 的站点 JSON（`exports/site-data-v1.json` 等）。全新环境若未先生成，`test_community_naming` 与 `test_wiki_roadmaps_export` 会因 `FileNotFoundError` 失败。**跑测试前先执行一次 `make export graph`**（约 30s）生成派生数据，之后 `make test`/`make ci-test` 即可全绿。
+- `make test` / `make ci-test` 依赖 gitignore 的站点 JSON（`exports/site-catalog-v1.json`、`exports/link-graph.json` 等）。全新环境若未先生成，`test_community_naming` 与 `test_wiki_roadmaps_export` 会因 `FileNotFoundError` 失败。**跑测试前先执行一次 `make export graph`**（约 30s）生成派生数据，之后 `make test`/`make ci-test` 即可全绿。
 - Python tools (`ruff`, `mypy`, `pytest`, `pip-audit`, etc.) install to `~/.local/bin`. Ensure `PATH` includes `$HOME/.local/bin` before running Make targets.
 - `PYTHONPATH=scripts` is required for `mypy` and `pytest` (already set in the Makefile targets).
 
