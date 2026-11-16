@@ -6415,6 +6415,7 @@
 - [VLA 后训练数据增强（arXiv:2610.05994）](wiki/entities/paper-vla-augm-data-augmentation-post-training.md) — VLA 后训练数据增强（How (and How Not) to Use Data Augmentation in VLA Post-Training，arXiv:2610.05994，项目页，代码） `📅2026-10-14` `[entity_page]`
 - [VLA Bit-Flip Attacks（arXiv:2608.15475）](wiki/entities/paper-vla-bit-flip-attacks-int8.md) — VLA Bit-Flip Attacks（Bit-Flip Attacks on Vision-Language-Action Models: Action-Decoding Architecture `📅2026-09-27` `[entity_page]`
 - [VLA Corruption Failure Attribution（arXiv:2610.27277）](wiki/entities/paper-vla-corruption-failure-attribution.md) — VLA Corruption Failure Attribution（What Would Removing This Corruption Change? Failure Attribution f `📅2026-10-31` `[entity_page]`
+- [VLA-Δ：学习物理状态转移的视觉语言动作模型 / Learning Physical State Transition for Vision-Language-Action Models](wiki/entities/paper-vla-delta.md) — VLA-Δ（VLA-Δ: Learning Physical State Transition for Vision-Language-Action Models，arXiv:2610.21306v1 `📅2026-11-16` `[entity_page]`
 - [VLA-Fabric（arXiv:2610.23018）](wiki/entities/paper-vla-fabric.md) — VLA-Fabric（VLA-Fabric: Learning Interaction for Composable Multi-Arm VLA Agents，arXiv:2610.23018，项目页 `📅2026-11-01` `[entity_page]`
 - [Localizing and Editing the Goal Representation of a VLA（arXiv:2611.08895）](wiki/entities/paper-vla-goal-representation-editing.md) — Localizing and Editing the Goal Representation of a Vision-Language-Action Model（Srivastava、Aqlan，Un `📅2026-11-09` `[entity_page]`
 - [VLA-HWBench：视觉语言动作模型在端侧硬件上的推理耗时分析](wiki/entities/paper-vla-hwbench-edge-hardware-latency.md) — VLA-HWBench（VLA-HWBench: Where the Time Goes When VLA Models Run on Edge Hardware，arXiv:2610.34717）收 `📅2026-11-02` `[entity_page]`
@@ -7552,7 +7553,7 @@
 - [线特征视觉定位的 EKF 融合](wiki/methods/visual-line-ekf-fusion.md) — 线特征 EKF 融合在 扩展卡尔曼滤波 下，以行走/里程计运动模型预测场地平面位姿，以 线匹配 的位姿或线几何残差为观测更新，得到抗抖的 \((x,y,\theta)\)——课程第 7.3 节。 `📅2026-07-23` `[method_page]`
 - [线匹配视觉定位](wiki/methods/visual-line-matching-localization.md) — 线匹配视觉定位将图像中提取的 场地线或交点 与已知场地图纸上的线特征做 数据关联，估计机器人在场地坐标系中的位姿——课程第 7.2 节「空间视觉定位 — 线匹配」。 `📅2026-07-23` `[method_page]`
 - [Visual Servoing（视觉伺服控制）](wiki/methods/visual-servoing.md) — 视觉伺服 (Visual Servoing) 是一门将计算机视觉（Computer Vision）与经典控制理论（Control Theory）深度融合的技术。它不依赖于将图像构建为复杂的 3D 静态 `📅2026-10-20` `[method_page]`
-- [VLA（Vision-Language-Action）](wiki/methods/vla.md) — VLA：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。 `📅2026-11-15` `[method_page]`
+- [VLA（Vision-Language-Action）](wiki/methods/vla.md) — VLA：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。 `📅2026-11-16` `[method_page]`
 - [WiLoR（野外 3D 手部定位与重建）](wiki/methods/wilor.md) — WiLoR（CVPR 2025）面向 单目 RGB 场景下的 双手 检测与 MANO 类 3D 重建：先用轻量全卷积结构在高分辨率特征上定位手部，再用 Transformer 细化三维姿态与形状，强调 `📅2026-11-12` `[method_page]`
 - [YOLO26-Text + PP-OCRv6：场景与文档 OCR](wiki/methods/yolo26-ocr-document-parsing.md) — 用 YOLO26-Text 定位旋转文本区域、PP-OCRv6 读取单词，再恢复整页方向与行序的模块化 OCR 工程管线，适用于图片、扫描页与逐页渲染的 PDF。 `📅2026-11-14` `[method_page]`
 - [ZEST (Zero-shot Embodied Skill Transfer)](wiki/methods/zest.md) — ZEST 是 RAI Institute 与 Boston Dynamics 的统一具身技能迁移配方：用强化学习把 MoCap、单目视频（ViCap）和关键帧动画变成高动态、多接触全身技能，并在全电 `📅2026-09-15` `[method_page]`
