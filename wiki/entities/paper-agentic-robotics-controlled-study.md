@@ -3,11 +3,12 @@ type: entity
 project_id: agentic-robotics-controlled-study-261109030
 tags: [paper, agentic, manipulation, simulation, robot-learning, evaluation]
 status: complete
-updated: 2026-11-10
+updated: 2026-11-16
 arxiv: "2611.09030"
 original:
   - ../../sources/papers/agentic_robotics_controlled_study_arxiv_2611_09030.md
 related:
+  - ./paper-envisioning-agentic-robotics.md
   - ./paper-apple-amp1.md
   - ./steel-newton-solver.md
   - ../methods/agentic-manipulation-policies.md
@@ -118,6 +119,8 @@ flowchart TD
 - 未独立重跑或审核作者每轮策略改写与评测日志。
 
 ## 关联页面
+
+- [Envisioning Agentic Robotics：系统架构与评测路线](./paper-envisioning-agentic-robotics.md) — 对照研究说明怎么改写策略，路线论文说明 S2/S1/S0、可验证闭环及长期自主目标。
 
 - [Apple AMP1：直接用代码闭环操作](paper-apple-amp1.md)
 - [Steel：异构仿真引擎](steel-newton-solver.md)
