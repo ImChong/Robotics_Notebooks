@@ -91,6 +91,7 @@ flowchart LR
 - Safety filter 和 MPC safety constraint 有什么区别
 
 ### 推荐读什么
+- [Can I Join You?：群体 MPC + CBF 过滤](../wiki/entities/paper-social-force-mpc-cbf-group.md) — 局部碰撞规避与社交队形的受限人形群体实验。
 - [Safety Filter](../wiki/concepts/safety-filter.md)
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md)
 - [Query：CLF+CBF 在 WBC/MPC 中联合使用](../wiki/queries/clf-cbf-in-wbc.md)

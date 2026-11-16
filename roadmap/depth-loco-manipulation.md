@@ -84,6 +84,8 @@ flowchart LR
 - 对比"上身固定 / 上身随机动作"两种课程下，下身策略的抗扰能力
 
 ### 推荐读什么
+- [FORGE：力感知多粒度移动操作](../wiki/entities/paper-forge-force-aware-loco-manipulation.md) — 速度/足端/双腕/载荷命令与冻结 locomotion 先验的残差协调。
+- [PolyMorphWBC：跨臂形态四足移动操作](../wiki/entities/paper-polymorphwbc-quadruped.md) — 用末端轨迹预览自动协调底座与机械臂 IK。
 - [HOMIE](../wiki/entities/paper-loco-manip-161-040-homie.md) 与 [FALCON](../wiki/entities/paper-loco-manip-161-109-falcon.md) — 上下身解耦锚点
 - [PILOT](../wiki/entities/paper-pilot-perceptive-loco-manipulation.md) — 感知统一低层 LLC
 - [AGILE](../wiki/entities/paper-agile-humanoid-loco-manipulation.md) — NVIDIA Isaac Lab + RSL-RL 全生命周期工作流（Prepare→Train→Evaluate→Deploy），描述符驱动 Sim2Sim/真机 I/O；G1 与 Booster T1 双机验证 locomotion/recovery/motion imitation/loco-manipulation 五类技能，上身专家微调 GR00T N1.5 仿真闭环 pick&place 90%；已开源

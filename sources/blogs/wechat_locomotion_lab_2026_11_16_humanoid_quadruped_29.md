@@ -9,7 +9,7 @@
 - **入库日期：** 2026-11-16
 - **核对范围：** 已读取 PDF 全部 10 页，按文章三部分核对 23 篇人形、3 篇四足、3 篇轮足与通用腿式的标题、arXiv 编号、机构、问题与创新点；单篇论文原文核查状态独立管理，不能把本篇二手周报的通读等同 29 篇论文的原文通读。
 - **通读：** 已完成
-- **一句话说明：** 把 29 篇人形、四足及轮足论文映射到唯一的知识节点；已入库论文复用，尚缺节点保留 arXiv 待核入口。
+- **一句话说明：** 把 29 篇人形、四足及轮足论文映射到唯一的知识节点；已入库的 15 篇论文复用，新建 14 篇，每篇唯一映射原文核查归档。
 
 ## 29 篇论文检索表
 
@@ -20,30 +20,30 @@
 | 03 | 人形 | SUGARv2：合成交互参考训练视觉移动操作 | [2611.09266](https://arxiv.org/abs/2611.09266) | [站内详情](../../wiki/entities/paper-sugarv2-humanoid-interaction-reference.md) |
 | 04 | 人形 | DKWBC：逆动力学跟踪与 RL 平衡解耦 | [2611.09605](https://arxiv.org/abs/2611.09605) | [站内详情](../../wiki/entities/paper-dkwbc.md) |
 | 05 | 人形 | Unified Inertial Encoder：人体与人形的统一惯性编码 | [2611.10137](https://arxiv.org/abs/2611.10137) | [站内详情](../../wiki/entities/paper-unified-inertial-encoder.md) |
-| 06 | 人形 | Capturability-Aware MPC：安全走廊中的递归可行足步规划 | [2611.10169](https://arxiv.org/abs/2611.10169) | 暂未建立独立详情节点 |
+| 06 | 人形 | Capturability-Aware MPC：安全走廊中的递归可行足步规划 | [2611.10169](https://arxiv.org/abs/2611.10169) | [站内详情](../../wiki/entities/paper-capturability-footstep-mpc.md) |
 | 07 | 人形 | DreamVLA：人体运动生成与人形 VLA 蒸馏 | [2611.10872](https://arxiv.org/abs/2611.10872) | [站内详情](../../wiki/entities/paper-dreamvla.md) |
 | 08 | 人形 | RoboMoCap：带第一视角视觉的全身动捕数据集 | [2611.10994](https://arxiv.org/abs/2611.10994) | [站内详情](../../wiki/entities/paper-robomocap.md) |
-| 09 | 人形 | Festival-to-Stage：从节庆视频到长时真机舞蹈的部署阶梯 | [2611.11127](https://arxiv.org/abs/2611.11127) | 暂未建立独立详情节点 |
+| 09 | 人形 | Festival-to-Stage：从节庆视频到长时真机舞蹈的部署阶梯 | [2611.11127](https://arxiv.org/abs/2611.11127) | [站内详情](../../wiki/entities/paper-festival-video-stage-dance.md) |
 | 10 | 人形 | Kimodo-Policy：以全身运动生成先验构建运动学动作模型 | [2611.11554](https://arxiv.org/abs/2611.11554) | [站内详情](../../wiki/entities/paper-kimodo-policy.md) |
-| 11 | 人形 | HINT-VLM：具身可移动性校正的崎岖地形交互导航 | [2611.11665](https://arxiv.org/abs/2611.11665) | 暂未建立独立详情节点 |
+| 11 | 人形 | HINT-VLM：具身可移动性校正的崎岖地形交互导航 | [2611.11665](https://arxiv.org/abs/2611.11665) | [站内详情](../../wiki/entities/paper-hint-vlm-rough-terrain.md) |
 | 12 | 人形 | DASH：慢速 VLM 与快速动作头异步解耦 | [2611.11854](https://arxiv.org/abs/2611.11854) | [站内详情](../../wiki/entities/paper-dash-async-humanoid-vla.md) |
 | 13 | 人形 | LHNav：多速率长时人形语言导航 | [2611.12136](https://arxiv.org/abs/2611.12136) | [站内详情](../../wiki/entities/paper-lhnav.md) |
 | 14 | 人形 | AHEADance：流式音乐的预判式动作生成 | [2611.13370](https://arxiv.org/abs/2611.13370) | [站内详情](../../wiki/entities/paper-aheadance.md) |
 | 15 | 人形 | ReACT：非对称负载下镜像一致速度跟踪 | [2611.13929](https://arxiv.org/abs/2611.13929) | [站内详情](../../wiki/entities/paper-react-asymmetric-load-tracking.md) |
 | 16 | 人形 | RedirectMimic：局部动作内容替换而非简单取消跟踪 | [2611.14049](https://arxiv.org/abs/2611.14049) | [站内详情](../../wiki/entities/paper-redirectmimic.md) |
-| 17 | 人形 | Can I Join You?：社会力、MPC 与 CBF 群体重定位 | [2611.14853](https://arxiv.org/abs/2611.14853) | 暂未建立独立详情节点 |
-| 18 | 人形 | Single RGB to Robot：场景尺度对齐与接触引导重定向 | [2611.14981](https://arxiv.org/abs/2611.14981) | 暂未建立独立详情节点 |
+| 17 | 人形 | Can I Join You?：社会力、MPC 与 CBF 群体重定位 | [2611.14853](https://arxiv.org/abs/2611.14853) | [站内详情](../../wiki/entities/paper-social-force-mpc-cbf-group.md) |
+| 18 | 人形 | Single RGB to Robot：场景尺度对齐与接触引导重定向 | [2611.14981](https://arxiv.org/abs/2611.14981) | [站内详情](../../wiki/entities/paper-rgb-scene-contact-retargeting.md) |
 | 19 | 人形 | ILA：冻结跟踪器的接口级柔顺适配 | [2611.14985](https://arxiv.org/abs/2611.14985) | [站内详情](../../wiki/entities/paper-ila-interface-level-adapter.md) |
 | 20 | 人形 | Runtime Safety and E-stop：全尺寸人形运行时安全与急停反思 | [2611.15928](https://arxiv.org/abs/2611.15928) | [站内详情](../../wiki/entities/paper-runtime-safety-graduated-force-authority.md) |
 | 21 | 人形 | PERA：冻结基础策略的可插拔技能专家 | [2611.16188](https://arxiv.org/abs/2611.16188) | [站内详情](../../wiki/entities/paper-pera-plugin-experts.md) |
-| 22 | 人形 | BlinkMimic：单卡分钟级全身动作跟踪训练 | [2611.16422](https://arxiv.org/abs/2611.16422) | 暂未建立独立详情节点 |
-| 23 | 人形 | FORGE：多粒度命令与力感知移动操作 | [2611.17142](https://arxiv.org/abs/2611.17142) | 暂未建立独立详情节点 |
+| 22 | 人形 | BlinkMimic：单卡分钟级全身动作跟踪训练 | [2611.16422](https://arxiv.org/abs/2611.16422) | [站内详情](../../wiki/entities/paper-blinkmimic.md) |
+| 23 | 人形 | FORGE：多粒度命令与力感知移动操作 | [2611.17142](https://arxiv.org/abs/2611.17142) | [站内详情](../../wiki/entities/paper-forge-force-aware-loco-manipulation.md) |
 | 24 | 四足 | DobotTrack：目标身份约束的具身行人跟踪 | [2611.09041](https://arxiv.org/abs/2611.09041) | [站内详情](../../wiki/entities/paper-dobottrack.md) |
-| 25 | 四足 | PolyMorphWBC：四足移动操作跨机械臂形态末端轨迹控制 | [2611.15117](https://arxiv.org/abs/2611.15117) | 暂未建立独立详情节点 |
-| 26 | 四足 | Collapse-Reactive Retreat：坍塌地形的内存高效并行强化学习 | [2611.16337](https://arxiv.org/abs/2611.16337) | 暂未建立独立详情节点 |
+| 25 | 四足 | PolyMorphWBC：四足移动操作跨机械臂形态末端轨迹控制 | [2611.15117](https://arxiv.org/abs/2611.15117) | [站内详情](../../wiki/entities/paper-polymorphwbc-quadruped.md) |
+| 26 | 四足 | Collapse-Reactive Retreat：坍塌地形的内存高效并行强化学习 | [2611.16337](https://arxiv.org/abs/2611.16337) | [站内详情](../../wiki/entities/paper-collapse-retreat-hybrid-terrain.md) |
 | 27 | 轮足/腿式 | Bimanual Planning–Execution：语言双臂任务规划与执行验证 | [2611.12409](https://arxiv.org/abs/2611.12409) | [站内详情](../../wiki/entities/paper-bridging-planning-execution-bimanual.md) |
-| 28 | 轮足/腿式 | MotionSkill：从双足视频到跨本体运动策略 | [2611.16346](https://arxiv.org/abs/2611.16346) | 暂未建立独立详情节点 |
-| 29 | 轮足/腿式 | Softness / Compliance：柔顺踝被动行走的信息度量 | [2611.13779](https://arxiv.org/abs/2611.13779) | 暂未建立独立详情节点 |
+| 28 | 轮足/腿式 | MotionSkill：从双足视频到跨本体运动策略 | [2611.16346](https://arxiv.org/abs/2611.16346) | [站内详情](../../wiki/entities/paper-motionskill-cross-embodiment.md) |
+| 29 | 轮足/腿式 | Softness / Compliance：柔顺踝被动行走的信息度量 | [2611.13779](https://arxiv.org/abs/2611.13779) | [站内详情](../../wiki/entities/paper-softness-compliant-ankle.md) |
 
 ## 编辑与证据边界
 - 这里的「通读」只指**本篇转载文章**。论文的「原文已通读」须在对应 `sources/papers/` 另行记录，独立于本篇周报。

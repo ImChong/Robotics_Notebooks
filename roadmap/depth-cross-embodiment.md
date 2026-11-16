@@ -224,6 +224,8 @@ flowchart LR
 - 对自己的人类数据做一次可执行性筛查：多少比例在目标本体上物理可行——这个比例决定人类数据的真实"折算率"
 
 ### 推荐读什么
+- [PolyMorphWBC：机械臂形态条件化四足控制](../wiki/entities/paper-polymorphwbc-quadruped.md) — URDF 几何条件与末端统一接口。
+- [MotionSkill：视频公共动作参考与机体特定残差](../wiki/entities/paper-motionskill-cross-embodiment.md) — 非共享策略的跨机体迁移边界。
 - [EgoX](../wiki/entities/paper-egox-mxt-plus.md) — 统一第一人称模态、共享干路和本体专属动作头，训练期未来潜变量 Dreaming
 - [SALA](../wiki/entities/paper-sala-latent-actions.md) — 无配对人类视频借助动作语义软邻域与机器人控制潜变量对齐
 - [X-Morph](../wiki/entities/paper-xmorph.md) — 人体→非人形腿式：重定向 + 物理校正 + 特权跟踪蒸馏
