@@ -22,7 +22,13 @@
   <meta name="theme-color" content="#191919" />
   <!-- Plotly 同域加载（vendor/，版本 2.35.2）；同域脚本失败时回退 jsDelivr，避免外网 CDN 不可达导致 "Plotly is not defined" -->
   <script src="vendor/plotly.min.js"></script>
-  <script>if (!window.Plotly) document.write('<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js"><\/script>');</script>
+  <script>
+    if (!window.Plotly) {
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2.35.2/plotly.min.js';
+      document.head.appendChild(s);
+    }
+  </script>
   <script src="graph-tooltip.js"></script>
   <script src="depth-filters.js"></script>
   <script src="wiki-type-labels.js"></script>
@@ -143,13 +149,14 @@
       }
 
       function nodeTrendGroups(graph, mode, theme) {
+        var colors;
         if (mode === 'type') {
           var count = {};
           graph.nodes.forEach(function (n) { count[n.type || ''] = (count[n.type || ''] || 0) + 1; });
+          colors = RNGraphTooltip.GRAPH_NODE_TYPE_COLOR;
           return Object.keys(count).sort(function (a, b) { return count[b] - count[a]; }).map(function (id) {
             var zh = RNWikiTypeLabels.formatChinese(id);
             var en = RNWikiTypeLabels.EN[id];
-            var colors = RNGraphTooltip.GRAPH_NODE_TYPE_COLOR;
             return { id: id, label: en && en !== zh ? zh + '（' + en + '）' : zh,
               color: colors[id] || colors[''], size: count[id] };
           });
@@ -161,12 +168,12 @@
           ];
         }
         if (mode === 'health') {
-          var colors = healthColors(theme);
+          colors = healthColors(theme);
           return [3, 2, 1, 0].map(function (score) {
             return { id: String(score), label: score + ' 分', color: colors[score], showEmpty: true };
           });
         }
-        var colors = RNGraphTooltip.buildCommunityColorMap(graph.communities);
+        colors = RNGraphTooltip.buildCommunityColorMap(graph.communities);
         return RNGraphTooltip.getSortedCommunities(graph.communities).map(function (c) {
           return { id: c.id, label: c.label, color: colors[c.id], size: c.size };
         });
@@ -189,14 +196,23 @@
         return { x: d.counts.map(function (c) { return c[0]; }), y: d.counts.map(function (c) { return c[1]; }) };
       });
 
-      // link-graph / wiki-activity 是紧凑格式，用 main.js 的共享还原逻辑展开（见 expandLinkGraph / expandWikiActivity）
+      // link-graph / wiki-activity 是紧凑格式，用 main.js 的共享还原逻辑展开（见 expandLinkGraph / expandWikiActivity）；
+      // main.js 在本脚本之后同步/延后加载，首包命中缓存时需等 DOM 脚本执行完毕后再展开。
+      function afterDomScripts() {
+        if (window.RNExportFormats || typeof document === 'undefined' || document.readyState !== 'loading' || typeof document.addEventListener !== 'function') {
+          return Promise.resolve();
+        }
+        return new Promise(function (resolve) {
+          document.addEventListener('DOMContentLoaded', function () { resolve(); }, { once: true });
+        });
+      }
       function expandExport(kind, data) {
         var formats = window.RNExportFormats;
         return formats && typeof formats[kind] === 'function' ? formats[kind](data) : data;
       }
 
-      var addedNodes = getJSON('exports/wiki-activity.json').then(function (a) {
-        a = expandExport('expandWikiActivity', a);
+      var addedNodes = Promise.all([getJSON('exports/wiki-activity.json'), afterDomScripts()]).then(function (pair) {
+        var a = expandExport('expandWikiActivity', pair[0]);
         var out = [];
         a.days.forEach(function (d) {
           d.nodes.forEach(function (n) {
@@ -209,8 +225,8 @@
       // 社区、节点趋势及分类统计共用当前图谱快照，按需加载。
       var linkGraphPromise = null;
       function linkGraph() {
-        return linkGraphPromise || (linkGraphPromise = getJSON('exports/link-graph.json').then(function (g) {
-          return expandExport('expandLinkGraph', g);
+        return linkGraphPromise || (linkGraphPromise = Promise.all([getJSON('exports/link-graph.json'), afterDomScripts()]).then(function (pair) {
+          return expandExport('expandLinkGraph', pair[0]);
         }));
       }
 
@@ -605,6 +621,14 @@
       VIEWS = VIEWS.filter(function (v) { return !v.hidden; });
 
       var touch = window.matchMedia('(pointer: coarse)').matches;
+      function esc(s) {
+        return String(s == null ? '' : s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
       var narrowMq = window.matchMedia('(max-width: 640px)');
       var current = null;
       // Plotly 调用串行化：上一次 react 未完成时再 react 会留下错乱的内部状态
@@ -837,7 +861,7 @@
         });
         // 社区配色图例用 HTML 网格：Plotly 图例在长纵轴标签旁换行不可控
         legend.innerHTML = stacked ? s.series.map(function (t) {
-          return '<li><i style="background:' + t.color + '"></i>' + t.name + '</li>';
+          return '<li><i style="background:' + esc(t.color) + '"></i>' + esc(t.name) + '</li>';
         }).join('') : '';
         legend.hidden = !stacked;
         // 有链接时名称做成文本链接；合并视图名称前加类别标记（● 公司 / ◆ 实验室，标记着色、名称保持链接色）
@@ -845,7 +869,7 @@
         var ticktext = s.links ? labels.map(function (l, i) {
           var k = s.marked && ORG_KINDS[s.kinds[i]];
           return (k ? '<span style="color:' + k.color[theme] + '">' + k.glyph + '</span> ' : '') +
-            '<a href="' + s.links[i] + '" target="_self">' + l + '</a>';
+            '<a href="' + esc(s.links[i]) + '" target="_self">' + esc(l) + '</a>';
         }) : undefined;
         var height = labels.length * (narrow ? 26 : 24) + 50;
         var max = Math.max.apply(null, [1].concat(totals));
@@ -914,7 +938,7 @@
       // 窄屏隐藏纵轴标签，把机构名放到各自横线上方，让时间轴占满整宽；
       // 点击节点或机构名跳到对应的路线页 company.html?id=<key> / lab.html?id=<key>
       function orgLink(r) {
-        return '<a href="' + r.href + '" target="_self">' + r.name + '</a>';
+        return '<a href="' + esc(r.href) + '" target="_self">' + esc(r.name) + '</a>';
       }
       function drawGantt(view, s, text, muted, grid, bg) {
         var narrow = narrowMq.matches;
@@ -945,8 +969,8 @@
             dots.marker.color.push(k.color[theme]);
             dots.marker.symbol.push(k.symbol);
             dots.marker.size.push(Math.min(9 + 2 * (pt.items.length - 1), 15));
-            dots.text.push('<b>' + r.name + '</b>' + (mixed ? '（' + k.label + '）' : '') + ' · ' + pt.date +
-              '<br>' + pt.items.join('<br>') + (touch ? '<br><i>再点一次该节点进入' + k.label + '路线 →</i>' : ''));
+            dots.text.push('<b>' + esc(r.name) + '</b>' + (mixed ? '（' + k.label + '）' : '') + ' · ' + esc(pt.date) +
+              '<br>' + pt.items.map(esc).join('<br>') + (touch ? '<br><i>再点一次该节点进入' + k.label + '路线 →</i>' : ''));
           });
         });
         var rowH = narrow ? 44 : 28;
