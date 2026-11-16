@@ -34,7 +34,7 @@
     from0: 185.9, shAng: 187.39, xAng: 188.48, elAng: 190.66, rel: 191.72, match: 194.15,
     sW: 197.35, s1: 198.42, s1b: 199.32, s2: 200.49, alg: 202.22, v3: 203.81,
     unp: 207.45, unp2: 208.92, sep: 210.61, upS: 211.9, dnS: 212.86,
-    rad: 214.87, radW: 215.85, fkC: 216.87, store: 218.86,
+    radP2: 214.87, radW: 215.85, fkC: 216.87, store: 218.86,
     last: 221.3, ep11s: 222.3, brk: 223.68, rowSel: 224.63, colSel: 226.37, hpos: 227.62, two3: 228.68, rr: 229.79, rd2: 231.11, both: 232.57,
     run2: 234.64, up2: 235.28, dn2: 235.96, hand10: 236.98, neg0: 238.68,
     why: 240.89, off: 242.95, milli: 245.68, rd3: 247.1
@@ -171,8 +171,8 @@
       var SU = '{h.ud:up, down} = {n.ik1b:ik(1)}';
       var PU = l2(SU, [['up, down', 0, T.unp, T.unp + 0.5], [' = ik(1)', 0, T.unp2, T.unp2 + 0.5]], T.unp);
       var ST1 = 'T1 = {n.fk1:fk_space}(M, S, {a.r1:np.radians}(up))', ST2 = 'T2 = {n.fk2:fk_space}(M, S, {a.r2:np.radians}(down))';
-      var PT1 = l2(ST1, [['T1 = fk_space(M, S, np.radians(up))', 0, T.rad, T.rad + 1.0]], T.rad);
-      var PT2 = l2(ST2, [['T2 = fk_space(M, S, np.radians(down))', 0, T.rad + 1.0, T.rad + 2.0]], T.rad + 1.0);
+      var PT1 = l2(ST1, [['T1 = fk_space(M, S, np.radians(up))', 0, T.radP2, T.radP2 + 1.0]], T.radP2);
+      var PT2 = l2(ST2, [['T2 = fk_space(M, S, np.radians(down))', 0, T.radP2 + 1.0, T.radP2 + 2.0]], T.radP2 + 1.0);
       var SP = 'print(T1{h.sl1:[:2, 3]}{i.rd1:.round(2)}, T2{h.sl2:[:2, 3]}{i.rd2:.round(2)})';
       var PP = l2(SP, [['print(T1', 0, T.last, T.last + 0.4], ['[:2, 3]', 0, T.hpos, T.hpos + 0.5], ['.round(2)', 0, T.rd2, T.rd2 + 0.4],
         [', T2[:2, 3].round(2))', 0, T.both, T.both + 0.9]], T.last);
@@ -410,9 +410,9 @@
           show(v3, st, T.zero, T.from0, [T.zero, T.straight, T.handM, T.sq5, T.far]);
           show(v4, st, T.from0, T.sW, [T.from0, T.shAng, T.xAng, T.elAng, T.rel, T.match]);
           show(v5, st, T.sW, T.unp, [T.sW, T.s1, T.s2, T.v3, T.alg]);
-          show(v6, st, T.unp, T.rad, [T.unp, T.unp, T.unp2, T.upS]);
+          show(v6, st, T.unp, T.radP2, [T.unp, T.unp, T.unp2, T.upS]);
           E.op(v6.r[3].parts[2], fr(st, T.dnS)); E.op(v6.r[3].parts[3], fr(st, T.dnS));
-          show(v7, st, T.rad, T.last, [T.radW, T.fkC, T.store]);
+          show(v7, st, T.radP2, T.last, [T.radW, T.fkC, T.store]);
           show(v8, st, T.last, T.run2, [T.hpos, T.brk, T.ep11s, T.two3, T.rr, T.rd2, T.both]);
           show(v9, st, T.up2, END + 1, [T.up2, T.dn2, T.hand10, T.neg0]);
           show(v10, st, T.why, END + 1, [T.why, T.off, T.rd3]);
@@ -424,8 +424,8 @@
           ed2.box('m03', E.TGT, win(st, T.sq5, T.from0));
           PS.forEach(function (i) { ed2.hl(i, E.WARN, win(st, T.sW, T.unp)); });
           ed2.box('s1', E.WARN, win(st, T.s1, T.s2)); ed2.box('s2', E.WARN, win(st, T.s2, T.v3)); ed2.box('s2b', E.WARN, win(st, T.s2, T.v3)); ed2.box('v3', E.HI, win(st, T.v3, T.unp));
-          ed2.hl(PU, E.HI, win(st, T.unp, T.rad)); ed2.box('ud', E.HI, win(st, T.unp, T.unp2)); ed2.box('ik1b', E.HI, win(st, T.unp2, T.rad));
-          ed2.hl(PT1, E.HI, win(st, T.rad, T.last)); ed2.hl(PT2, E.HI, win(st, T.rad, T.last));
+          ed2.hl(PU, E.HI, win(st, T.unp, T.radP2)); ed2.box('ud', E.HI, win(st, T.unp, T.unp2)); ed2.box('ik1b', E.HI, win(st, T.unp2, T.radP2));
+          ed2.hl(PT1, E.HI, win(st, T.radP2, T.last)); ed2.hl(PT2, E.HI, win(st, T.radP2, T.last));
           ed2.box('r1', E.ACC, win(st, T.radW, T.fkC)); ed2.box('r2', E.ACC, win(st, T.radW, T.fkC));
           ed2.box('fk1', E.HI, win(st, T.fkC, T.store)); ed2.box('fk2', E.HI, win(st, T.fkC, T.store));
           ed2.hl(PP, E.HI, win(st, T.last, T.run2));

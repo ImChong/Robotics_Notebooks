@@ -10,7 +10,7 @@
 - **代码：** **已开源**（MIT；CLI 源码、`skills/find-skills` 元技能与 agent 适配逻辑均在 GitHub）
 - **一句话说明：** 开放 Agent Skills 生态的包管理器：`npx skills add/find/update/use`，把 GitHub/GitLab/本地路径上的 `SKILL.md` 安装到 Claude Code、Cursor、Codex 等 75+ harness。
 - **为什么值得保留：** 本库大量实体页（mattpocock、Anthropic、Addy Osmani、GSAP 等）均经此 CLI 分发；`find-skills` 元技能指导代理按安装量与来源声誉检索 skills.sh，是 **技能发现层** 的官方入口。
-- **沉淀到 wiki：** 是 → [`wiki/entities/find-skills-skill.md`](../wiki/entities/find-skills-skill.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/find-skills-skill.md`](../../wiki/entities/find-skills-skill.md)
 
 ## README 要点（归纳）
 

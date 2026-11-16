@@ -12,7 +12,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/wnm_3d_vln_arxiv_2608_07267.md
+  - ../../sources/papers/wnm-3d-vln_arxiv_2608_07267.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "3D 场景条件闭环 VLN 世界导航模型：冻结几何编码器整合单目历史为 token，联合生成未来视角与动作，闭环 RL 优化，优于 2D 条件与强 VLM 策略。"
 ---

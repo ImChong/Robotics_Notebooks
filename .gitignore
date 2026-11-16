@@ -7,6 +7,7 @@ node_modules/
 
 # Test / tool caches
 .pytest_cache/
+.ruff_cache/
 .coverage
 .mypy_cache/
 test-results/
@@ -54,3 +55,8 @@ docs/exports/graph-badge.json
 
 # Obsidian 本地配置与工作区（因人而异，不入库）
 .obsidian/
+
+# 视频子工程构建产物与本地缓存（兜底，防止新增目录漏配 .gitignore）
+media/**/out/
+media/**/cache/
+media/**/stage.*.built.html

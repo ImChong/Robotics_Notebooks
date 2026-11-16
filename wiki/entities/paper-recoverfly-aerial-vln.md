@@ -13,7 +13,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/recoverfly_aerial_vln_arxiv_2608_09467.md
+  - ../../sources/papers/recoverfly-aerial-vln_arxiv_2608_09467.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "空中 VLN 失败感知 RL 后训练：token 级优化、反复学习未解失败案例，分阶段长尾训练与参考策略约束，提升闭环纠错与泛化。"
 ---

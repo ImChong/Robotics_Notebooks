@@ -2,8 +2,8 @@
 
 最后更新：2026-06-29（P3 详情页「物理保真度」专题徽标端到端验证：复用 `topic-filters.js` 单一事实源，`contact-dynamics` 详情页实测渲染「✋ 触觉 + ⚙️ 物理保真度」双徽标，`make lint` 0 errors，**v26 清单全数完成**）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
-上一版清单：[`tech-stack-next-phase-checklist-v25.md`](archive/tech-stack-next-phase-checklist-v25.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
+上一版清单：[`tech-stack-next-phase-checklist-v25.md`](tech-stack-next-phase-checklist-v25.md)
+方法论参考：[Karpathy LLM Wiki](../../../wiki/references/llm-wiki-karpathy.md)
 
 ---
 

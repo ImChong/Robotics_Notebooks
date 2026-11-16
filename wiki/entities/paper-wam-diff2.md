@@ -13,7 +13,7 @@ related:
   - ../methods/vla.md
   - ../overview/vla-weekly-trends-2026-08-10-part1-technology-map.md
 sources:
-  - ../../sources/papers/wam_diff2_arxiv_2608_01035.md
+  - ../../sources/papers/wam-diff2_arxiv_2608_01035.md
   - ../../sources/blogs/wechat_duomo_vla_weekly_trends_2026-08-10_part1.md
 summary: "层次 AR→扩散蒸馏的高效智驾 VLA：分块适配/蒸馏/跨尺度整模蒸馏，将自回归预训练转为离散扩散 VLA，并行解码减轻暴露偏差。"
 ---

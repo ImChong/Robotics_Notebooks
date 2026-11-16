@@ -97,3 +97,9 @@ Instruction2Act 与 CaP 同属 code-as-policy 谱。
 ## 推荐继续阅读
 
 - [arXiv:2305.11176](https://arxiv.org/abs/2305.11176)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2305.11176](https://arxiv.org/abs/2305.11176)。
+- **项目或官方发布入口：** [官方代码或发布入口](https://github.com/OpenGVLab/Instruct2Act)。
+- **清单记录：** `survey_ax_2305_11176`；本次仅补充身份与链接，未重新通读或核验已有结论。

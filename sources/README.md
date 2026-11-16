@@ -38,8 +38,8 @@
 - [x] [cari4d_arxiv_2512_11988.md](papers/cari4d_arxiv_2512_11988.md) | CARI4D CVPR 2026 论文摘录（arXiv:2512.11988）
 
 | 文件 | 内容 |
-| [x] [perchrl_arxiv_2606_03441_v3.md](papers/perchrl_arxiv_2606_03441_v3.md) | PerchRL：间歇视觉丢失下移动倾斜平台四旋翼敏捷栖停（arXiv:2606.03441v3；Omnidrones/PPO；真机 7/10 Hard 场景）论文摘录与 wiki 映射 |
 |------|------|
+| [x] [perchrl_arxiv_2606_03441_v3.md](papers/perchrl_arxiv_2606_03441_v3.md) | PerchRL：间歇视觉丢失下移动倾斜平台四旋翼敏捷栖停（arXiv:2606.03441v3；Omnidrones/PPO；真机 7/10 Hard 场景）论文摘录与 wiki 映射 |
 | [x] [i_bfm_arxiv_2610_06129.md](papers/i_bfm_arxiv_2610_06129.md) | I-BFM：物体/接触感知 FB 行为基础模型 + LOGO 局部–目标条件化（arXiv:2610.06129；G1 仿真/真机定性演示） |
 | [x] [prism_real2sim2real_arxiv_2609_38172.md](papers/prism_real2sim2real_arxiv_2609_38172.md) | PRISM：V2V counterfactual + 接触锚定 Real2Sim2Real 人形 loco-manip（arXiv:2609.38172，Amazon FAR 等；Code 链待公开）摘录与 wiki 映射 |
 | [x] [qplanning_arxiv_2608_21204.md](papers/qplanning_arxiv_2608_21204.md) | Q-Planning：冻结 BC/VLA + 离策略 Q 加权规划与 Q-only 自改进（arXiv:2608.21204，Georgia Tech；已开源）摘录与 wiki 映射 |

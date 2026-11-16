@@ -112,6 +112,8 @@ flowchart TD
 
 ## 关联页面
 
+- [2026-11-16 具身前沿 29 篇论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
+
 - [JustRUA](./paper-justrua-robot-use-agents.md)
 - [ACE-CaP-0](./paper-ace-cap-0.md)
 - [机器人 Code-as-Policies 对照](./paper-ace-cap-0.md)

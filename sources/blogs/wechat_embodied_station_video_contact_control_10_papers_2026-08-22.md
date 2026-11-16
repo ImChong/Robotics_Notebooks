@@ -49,7 +49,7 @@
 - **10/10 独立详情节点**：每篇对应唯一 `wiki/entities/paper-*.md`；静态站 `detail.html?id=entity-paper-…` 均可直达。
 - **本 ingest 新建 9** 个实体；**AdaPT** 在当日先前 ingest 已有 complete 页 → **只回链博客，不重复造页**。
 - 阅读坐标：[视频–接触–控制 10 篇技术地图](../../wiki/overview/video-contact-control-10-papers-technology-map.md)（**非**论文详情替代，仅作横切面索引）。
-- 交叉：[Egocentric Vision](../../wiki/tasks/egocentric-vision.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Dexterous Grasping](../../wiki/tasks/dexterous-grasping.md)、[VLA](../../wiki/methods/vla.md)、[Offline RL](../../wiki/methods/offline-rl.md)、[AdaPT](../../wiki/entities/paper-adapt.md)。
+- 交叉：[Egocentric Vision](../../wiki/entities/awesome-egocentric-vision.md)、[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Dexterous Grasping](../../wiki/tasks/manipulation.md)、[VLA](../../wiki/methods/vla.md)、[Offline RL](../../wiki/comparisons/online-vs-offline-rl.md)、[AdaPT](../../wiki/entities/paper-adapt.md)。
 
 ## 当前提炼状态
 

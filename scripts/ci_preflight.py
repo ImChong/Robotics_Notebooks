@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -80,62 +81,113 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def _default_diff_base() -> str:
+    """分支已有提交相对 origin/main 偏离时用 origin/main，否则回退 HEAD。"""
+    try:
+        subprocess.run(
+            ["git", "rev-parse", "--verify", "origin/main"],
+            cwd=REPO_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        head_sha = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=REPO_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        merge_base = subprocess.run(
+            ["git", "merge-base", "HEAD", "origin/main"],
+            cwd=REPO_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        if merge_base and merge_base != head_sha:
+            return "origin/main"
+    except (subprocess.SubprocessError, OSError):
+        pass
+    return "HEAD"
+
+
+def _needs_npm_ci() -> bool:
+    lock_file = REPO_ROOT / "package-lock.json"
+    if not lock_file.is_file():
+        return False
+    if os.environ.get("CI") == "true":
+        return True
+    mermaid_pkg = REPO_ROOT / "node_modules" / "mermaid" / "package.json"
+    if not mermaid_pkg.is_file():
+        return True
+    node_modules = REPO_ROOT / "node_modules"
+    return lock_file.stat().st_mtime > node_modules.stat().st_mtime
+
+
 def main() -> None:
     args = parse_args()
 
     if not args.skip_quality:
         run(
-            ["python3", "scripts/check_project_nodes.py", "--base", "HEAD"],
+            [sys.executable, "scripts/check_project_nodes.py", "--base", _default_diff_base()],
             "Check project identities and newly added entity metadata",
         )
 
-    run(["python3", "scripts/export_minimal.py"], "Export wiki JSON, sitemap, and search index")
+    run(
+        [sys.executable, "scripts/export_minimal.py"],
+        "Export wiki JSON, sitemap, and search index",
+    )
     if (REPO_ROOT / "package-lock.json").is_file():
-        run(["npm", "ci"], "Install Node dependencies (ESLint)")
+        if _needs_npm_ci():
+            run(["npm", "ci"], "Install Node dependencies (ESLint)")
         if not args.skip_quality:
             run(["npm", "run", "lint:mermaid"], "Validate all published Mermaid diagrams")
 
-    run(["python3", "scripts/generate_link_graph.py"], "Update link graph and graph-stats")
+    run([sys.executable, "scripts/generate_link_graph.py"], "Update link graph and graph-stats")
 
     lint_results = None
     coverage_json: Path | None = None
-    if not args.skip_quality:
-        # 单次 lint：home-stats 与 lint-report 共用结果，避免 generate_home_stats 内二次全库扫描。
-        import lint_wiki
+    try:
+        if not args.skip_quality:
+            # 单次 lint：home-stats 与 lint-report 共用结果，避免 generate_home_stats 内二次全库扫描。
+            import lint_wiki
 
-        print("\n==> Run wiki lint (once, shared with home-stats)", flush=True)
-        lint_results = lint_wiki.lint()
-        coverage = lint_wiki.coverage_stats(lint_results)
-        with tempfile.NamedTemporaryFile(
-            mode="w",
-            suffix=".json",
-            delete=False,
-            encoding="utf-8",
-        ) as tmp:
-            json.dump(coverage, tmp)
-            coverage_json = Path(tmp.name)
+            print("\n==> Run wiki lint (once, shared with home-stats)", flush=True)
+            lint_results = lint_wiki.lint()
+            coverage = lint_wiki.coverage_stats(lint_results)
+            with tempfile.NamedTemporaryFile(
+                mode="w",
+                suffix=".json",
+                delete=False,
+                encoding="utf-8",
+            ) as tmp:
+                json.dump(coverage, tmp)
+                coverage_json = Path(tmp.name)
 
-    if coverage_json is not None:
-        run(
-            [
-                "python3",
-                "scripts/generate_home_stats.py",
-                "--coverage-json",
-                str(coverage_json),
-            ],
-            "Update home-stats from graph + lint coverage",
-        )
-        coverage_json.unlink(missing_ok=True)
-    else:
-        run(["python3", "scripts/generate_home_stats.py"], "Update home-stats")
+        if coverage_json is not None:
+            run(
+                [
+                    sys.executable,
+                    "scripts/generate_home_stats.py",
+                    "--coverage-json",
+                    str(coverage_json),
+                ],
+                "Update home-stats from graph + lint coverage",
+            )
+        else:
+            run([sys.executable, "scripts/generate_home_stats.py"], "Update home-stats")
+    finally:
+        if coverage_json is not None:
+            coverage_json.unlink(missing_ok=True)
 
-    run(["python3", "scripts/graph_exports_sync.py"], "Copy graph exports to docs/exports")
+    run([sys.executable, "scripts/graph_exports_sync.py"], "Copy graph exports to docs/exports")
 
     if not args.skip_quality:
         import lint_wiki
 
         assert lint_results is not None
-        run(["python3", "scripts/eval_search_quality.py"], "Run search regression")
+        run([sys.executable, "scripts/eval_search_quality.py"], "Run search regression")
         print(lint_wiki.format_report(lint_results))
         failing = lint_wiki._failing_total(lint_results)
         info = lint_wiki._info_total(lint_results)
@@ -150,7 +202,7 @@ def main() -> None:
         print(f"\n已将健康报告保存到 {report_path}")
         if failing > 0:
             sys.exit(1)
-        run(["python3", "scripts/check_export_quality.py"], "Check export consistency")
+        run([sys.executable, "scripts/check_export_quality.py"], "Check export consistency")
 
     if args.check_generated_clean:
         check_generated_clean()

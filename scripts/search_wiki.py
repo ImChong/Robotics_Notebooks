@@ -9,14 +9,15 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from pathlib import Path
 from typing import Any
 
-from search_indexing import iter_wiki_documents
 from search_wiki_core import (
     _cache_key,
     _filter_doc,
     _find_matched_lines,
     collect_known_terms,
+    iter_wiki_documents,
     load_cache,
     print_results,
     save_cache,
@@ -64,22 +65,45 @@ def main() -> None:
         sys.exit(0)
 
     cache = load_cache()
-    cache_key = _cache_key(args.query, args.type_filter, args.tag_filters, args.semantic)
-    cached_entry = next((e for e in cache.get("entries", []) if e.get("key") == cache_key), None)
-    if cached_entry and not args.json_out:
-        print(f"\033[2m[缓存命中：{cached_entry['ts']}]\033[0m")
-
-    results, semantic_notice = search(
-        query_words=args.query,
-        type_filter=args.type_filter,
-        tag_filters=args.tag_filters,
-        context_lines=args.context,
-        case_sensitive=args.case,
-        show_related=args.related,
-        semantic=args.semantic,
+    cache_key = _cache_key(
+        args.query,
+        args.type_filter,
+        args.tag_filters,
+        args.semantic,
+        args.context,
+        args.related,
     )
-    if args.query:
-        save_cache(cache, cache_key, results)
+    cached_entry = next((e for e in cache.get("entries", []) if e.get("key") == cache_key), None)
+    cache_usable = bool(
+        cached_entry
+        and cached_entry.get("results") is not None
+        and all("fm" in item and "matches" in item for item in cached_entry["results"])
+    )
+    if cache_usable:
+        assert cached_entry is not None
+        if not args.json_out:
+            print(f"\033[2m[缓存命中：{cached_entry['ts']}]\033[0m")
+        results = [
+            {
+                **item,
+                "path": Path(item["path"]),
+                "matches": [(m[0], m[1], m[2]) for m in item.get("matches", [])],
+            }
+            for item in cached_entry["results"]
+        ]
+        semantic_notice = cached_entry.get("semantic_notice")
+    else:
+        results, semantic_notice = search(
+            query_words=args.query,
+            type_filter=args.type_filter,
+            tag_filters=args.tag_filters,
+            context_lines=args.context,
+            case_sensitive=args.case,
+            show_related=args.related,
+            semantic=args.semantic,
+        )
+        if args.query:
+            save_cache(cache, cache_key, results, semantic_notice=semantic_notice)
 
     suggestions: list[tuple[str, int]] = []
     if not results and args.query:

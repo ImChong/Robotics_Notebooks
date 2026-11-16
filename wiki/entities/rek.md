@@ -11,7 +11,7 @@ related:
   - ./urkl.md
   - ./paper-notebook-robostriker.md
   - ../tasks/teleoperation.md
-  - ../methods/open-duck-mini.md
+  - ./open-duck-mini.md
 sources:
   - ../../sources/sites/rek-com.md
   - ../../sources/sites/rek-simulator.md

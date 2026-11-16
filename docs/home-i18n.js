@@ -6,7 +6,9 @@
   var storageKey = 'robotics-home-language', language = 'zh';
   try { if (localStorage.getItem(storageKey) === 'en') language = 'en'; } catch (_) { /* optional */ }
   var copy = {
+    '🗺️ Robotics Notebooks | 机器人技术栈地图': '🗺️ Robotics Notebooks | Robotics Knowledge Map',
     'Robotics Notebooks | 机器人技术栈地图': 'Robotics Notebooks | Robotics Knowledge Map',
+    '机器人技术栈地图首页': 'Robotics Knowledge Map Home',
     '切换白天黑夜模式': 'Toggle light / dark mode',
     '跳到正文': 'Skip to content',
     '持续更新的机器人技术栈地图': 'An evolving robotics knowledge map',
@@ -67,6 +69,9 @@
     '无向边总数（入链+出链）': 'Total connections (incoming + outgoing)',
     '加载离线搜索索引中…': 'Loading the offline search index…',
     '未找到': 'No results for', '的匹配结果。': '.',
+    '的匹配结果（只搜了标题、摘要、标签与别名）。': ' (searched titles, summaries, tags and aliases only).',
+    '只搜了标题、摘要、标签与别名 ·': 'Searched titles, summaries, tags and aliases only ·',
+    '搜索全文': 'Search full text', '首次下载较大': 'Larger initial download',
     '尝试更短的关键词，或英文原文': 'Try a shorter keyword or the original English term',
     '命令行搜索：': 'Search from the command line: ', '在': 'Browse the',
     '中浏览相关节点': 'for related nodes',
@@ -105,6 +110,8 @@
     '.home-hub-row-degree', '.home-hub-row-type', '#wikiSearchResults > p',
     '#wikiSearchResults > div > p', '#wikiSearchResults > div > ul > li',
     '#wikiSearchResults > div a', '#wikiSearchResults .search-retry',
+    '#wikiSearchResults .search-full-text', '#wikiSearchResults .search-scope-note',
+    '#wikiSearchResults .data-meta',
     '#wikiSearchResults .result-preview-toggle', '#wikiSearchResults .js-graph-btn',
     '#wikiSearchResults .search-tier-heading', '#wikiSearchResults .search-tier-heading .data-meta',
     '#wikiSearchResults .card-meta', '#wikiSearchResults .card-meta > span',
@@ -117,6 +124,7 @@
     [/^展开全部 (\d+) 条纵深路线 ↓$/, 'Show all $1 roadmaps ↓'],
     [/^展开全部 (\d+) 家公司 ↓$/, 'Show all $1 companies ↓'],
     [/^展开全部 (\d+) 个实验室 ↓$/, 'Show all $1 labs ↓'],
+    [/^首次需下载约 (\d+) MB$/, 'Requires ~$1 MB initial download'],
     [/^互链 (\d+)$/, 'Connections $1'], [/^· (\d+) 项$/, '· $1 results'],
     [/^预览：全站连接度 Top-(\d+) 枢纽节点$/, 'Preview: top $1 nodes by connections'],
     [/^别名命中: /, 'Alias match: '], [/^核心标签命中: /, 'Tag match: '],
@@ -133,8 +141,13 @@
     return translated === undefined ? value : value.replace(trimmed, function () { return translated; });
   }
   function update(owner, key, current, write) {
+    var explicitSource = key === 'placeholder' && owner && owner.getAttribute && owner.getAttribute('data-home-placeholder-source');
     var record = originals.get(owner) || {};
-    if (!record[key] || record[key].last !== current) record[key] = { source: current };
+    if (explicitSource) {
+      record[key] = { source: explicitSource, last: record[key] && record[key].last };
+    } else if (!record[key] || record[key].last !== current) {
+      record[key] = { source: current };
+    }
     var next = language === 'en' ? translate(record[key].source) : record[key].source;
     record[key].last = next; originals.set(owner, record);
     if (next !== current) write(next);

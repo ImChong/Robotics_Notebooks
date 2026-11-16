@@ -204,3 +204,9 @@ sequenceDiagram
 - [Flow Matching 与具身策略](../concepts/flow-matching-embodied-policy.md)
 - [Training-Time RTC](./paper-training-time-real-time-chunking.md)（[arXiv:2512.05964](https://arxiv.org/abs/2512.05964)）
 - [Hugging Face LeRobot RTC](https://huggingface.co/docs/lerobot/rtc)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2506.07339](https://arxiv.org/abs/2506.07339)。
+- **项目或官方发布入口：** [项目页](https://pi.website/research/real_time_chunking)。
+- **清单记录：** `survey_ax_2506_07339`；本次仅补充身份与链接，未重新通读或核验已有结论。

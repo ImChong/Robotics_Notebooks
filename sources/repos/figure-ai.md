@@ -10,7 +10,7 @@
 - **Helix 2.5 新闻：** https://www.figure.ai/news/helix-2-5-zero-shot-30-home-generalization（2026-09-17：Index 预训练 + 30 家庭零样本全身 locomanipulation）
 - **入库日期：** 2026-05-07
 - **一句话说明：** 美国人形机器人公司，主打 **Figure 02** 平台与自研 **Helix** 系列视觉-语言-动作（VLA）模型，强调全身控制与端侧部署。
-- **沉淀到 wiki：** 是 → [`wiki/entities/figure-ai.md`](../wiki/entities/figure-ai.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/figure-ai.md`](../../wiki/entities/figure-ai.md)
 
 ## 第三方报道（合作与模型路线）
 

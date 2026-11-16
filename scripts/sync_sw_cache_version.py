@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 from datetime import date
 from pathlib import Path
@@ -15,16 +16,34 @@ SW_PATH = ROOT / "docs" / "sw.js"
 CACHE_RE = re.compile(r"const CACHE_NAME = 'robotics-wiki-[^']+';")
 
 
+def _git_short_sha() -> str:
+    try:
+        res = subprocess.run(
+            ["git", "-C", str(ROOT), "rev-parse", "--short=7", "HEAD"],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=5,
+        )
+        if res.returncode == 0:
+            return res.stdout.strip()
+    except (subprocess.SubprocessError, OSError):
+        pass
+    return ""
+
+
 def resolve_build_id() -> str:
+    base = date.today().isoformat()
     if GRAPH_STATS.is_file():
         try:
             data = json.loads(GRAPH_STATS.read_text(encoding="utf-8"))
             generated = data.get("generated_at")
             if isinstance(generated, str) and generated.strip():
-                return generated.strip()
+                base = generated.strip()
         except (json.JSONDecodeError, OSError):
             pass
-    return date.today().isoformat()
+    sha = _git_short_sha()
+    return f"{base}-{sha}" if sha else base
 
 
 def main() -> int:

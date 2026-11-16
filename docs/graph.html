@@ -5373,22 +5373,6 @@
         if (!isMobile || !pinnedNode) {
           hideTooltip();
         }
-      })
-      .on('click', (ev, d) => {
-        ev.stopPropagation();
-        if (isMobile) {
-          // 移动端：点击节点显示/关闭固定卡片
-          if (pinnedNode === d) {
-            pinnedNode = null;
-            hideTooltip();
-          } else {
-            pinnedNode = d;
-            showTooltip(ev, d);
-          }
-        } else {
-          // PC：直接跳转详情页 / 路线页
-          window.location.href = pageUrlForNode(d);
-        }
       });
 
     /* ── 节点计数 ── */
@@ -5668,6 +5652,7 @@
     document.getElementById('graph-search').addEventListener('input', ev => {
       searchQuery = ev.target.value.trim().toLowerCase();
       applyFilters();
+      updateFilterCount();
     });
 
     /* ── 路线视图切换（已合入筛选面板内 <details> 区块）── */
@@ -5730,24 +5715,6 @@
         return activeFilters.has(String(d.health_score != null ? d.health_score : 0));
       }
       return activeFilters.has(d.type) || (activeFilters.has('__orphan__') && d._degree <= 1);
-    }
-
-    function edgeMatchesCurrentFilter(n) {
-      if (focusedCommunityId) return n.community === focusedCommunityId;
-      if (focusedType) return n.type === focusedType;
-      if (focusedOpensource) return nodeOpensourceKey(n) === focusedOpensource;
-      if (focusedHealth !== null) return String(n.health_score != null ? n.health_score : 0) === focusedHealth;
-      if (!activeFilters.size) return true;
-      if (colorMode === 'community') {
-        return activeFilters.has(n.community);
-      }
-      if (colorMode === 'opensource') {
-        return activeFilters.has(nodeOpensourceKey(n));
-      }
-      if (colorMode === 'health') {
-        return activeFilters.has(String(n.health_score != null ? n.health_score : 0));
-      }
-      return activeFilters.has(n.type) || (activeFilters.has('__orphan__') && n._degree <= 1);
     }
 
     function nodeMatchesSearch(d) {
@@ -6992,13 +6959,17 @@
     if (focusId) {
       const focusNode = findFocusNode(focusId);
       if (focusNode) {
+        let initialFocusDone = false;
         const flyToFocus = () => {
+          if (initialFocusDone) return;
           if (is3DView() && graph3dView) {
+            initialFocusDone = true;
             graph3dView.focusNode(focusNode);
             presentNodeDetail(focusNode);
             return;
           }
           if (focusNode.x == null) return;
+          initialFocusDone = true;
           const scale = 2.2;
           svg.transition().duration(700).call(
             zoom.transform,

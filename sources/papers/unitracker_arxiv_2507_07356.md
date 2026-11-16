@@ -82,4 +82,4 @@
 - 项目页：[`sources/sites/humanoid-unitracker-github-io.md`](../sites/humanoid-unitracker-github-io.md)
 - 项目页镜像仓：[`sources/repos/humanoid-unitracker.md`](../repos/humanoid-unitracker.md)
 - 161 策展摘录：[`sources/papers/loco_manip_161_survey_024_unitracker.md`](loco_manip_161_survey_024_unitracker.md)
-- 互链：[Loco-Manip 161 · 01 运控基座](../overview/loco-manip-161-category-01-motion-base-wbt.md)、[Humanoid Motion Tracking 选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)
+- 互链：[Loco-Manip 161 · 01 运控基座](../../wiki/overview/loco-manip-161-category-01-motion-base-wbt.md)、[Humanoid Motion Tracking 选型](../../wiki/queries/humanoid-motion-tracking-method-selection.md)

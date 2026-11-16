@@ -21,6 +21,7 @@ test('homepage sorts shuffled labs before choosing up to eight visible entries',
   const source = read('docs/main.js');
   const start = source.indexOf('  // ── 首页路线预览');
   const end = source.indexOf('  // ── 首页入口卡指针光斑', start);
+  assert.ok(start >= 0 && end > start, 'home preview slice markers missing');
   w.eval(source.slice(start, end));
   const keys = () => [...links.children].map(link => link.getAttribute('href').split('=')[1]);
   const visible = () => [...links.children].filter(link => !link.hidden);

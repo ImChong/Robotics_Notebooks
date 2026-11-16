@@ -102,3 +102,9 @@ flowchart TD
 ## 推荐继续阅读
 
 - [Day 5 导读](../overview/humanoid-motion-intelligence-day5-world-models-decision.md)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2609.29394](https://arxiv.org/abs/2609.29394)。
+- **项目或官方发布入口：** [官方代码或发布入口](https://github.com/Robo-Harness/racap)。
+- **清单记录：** `survey_ax_2609_29394`；本次仅补充身份与链接，未重新通读或核验已有结论。

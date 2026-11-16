@@ -10,6 +10,7 @@ sources:
   - ../../sources/papers/robot_kinematics_tools.md
   - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
   - ../../sources/papers/robocompiler_humanoids_composable_dynamics_arxiv_2610_14237.md
+  - ../../sources/blogs/wechat_shenlan_mpc_floating_base_derivation_2026-11-16.md
 summary: "Floating Base Dynamics 描述底座不固定机器人在自由空间和接触条件下的整体动力学组织方式。"
 updated: 2026-11-07
 ---
@@ -282,6 +283,12 @@ WBC/TSID 的核心任务就是在满足此 EOM 和接触约束的前提下分配
 
 ---
 
+### 从材料块牛顿投影构造 M、Cv、G
+
+[深蓝具身智能原文 27 页推导](../formalizations/mpc-prediction-model-from-floating-base-dynamics.md)（[来源归档](../../sources/blogs/wechat_shenlan_mpc_floating_base_derivation_2026-11-16.md)）展示与本页方程一致的构造路径：材料块位置 `r_a=p_B+R_Bρ_a(θ)` → 雅可比 `J_a=[I₃,−[s_a]×,R_BK_a]` → 加速度 `J_a v̇ + J̇_a v` → 对质量块的牛顿方程做虚功投影 → 收集 `M=Σm_a J_aᵀJ_a`、`Cv=Σm_aJ_aᵀJ̇_a v`、重力 `G`、驱动 `Sᵀτ` 和接触反力 `J_cᵀf_c`。原文还把质量块聚合为连杆质心 + 转动惯量，回代单摆验证系数。
+
+**注意：** 这得到的是连续时间全阶动力学与接触约束。要供 MPC 在未来时域滚动预测，还须选择简化模型与状态输入、处理接触模式并离散化；它并非自动就是一个 QP 控制器。
+
 ## 和 centroidal dynamics 的关系
 
 Herzog et al. 2016 给出了二者的精确连接：质心动量 $h=H_G(q)\dot q$（$H_G$ 为 centroidal momentum matrix，$h=[h_{lin};h_{ang}]$ 取在质心），$\dot h=H_G\ddot q+\dot H_G\dot q$，同时由浮动基行得 $\dot h=\begin{bmatrix}I&0&\cdots\\ [x_i-x_{cog}]_\times&I&\cdots\end{bmatrix}\lambda+\begin{bmatrix}mg\\0\end{bmatrix}$——即 centroidal dynamics 恰是浮动基方程的这 6 行。
@@ -384,6 +391,8 @@ floating base 系统还有一个麻烦点：
 
 ## 关联页面
 
+- [MPC 预测模型从哪里来？完整推导](../formalizations/mpc-prediction-model-from-floating-base-dynamics.md) — 浮动基方程从材料块几何和牛顿定律推导的细节。
+
 - [Centroidal Dynamics](./centroidal-dynamics.md) — 浮动基方程的 6 个未驱动行
 - [Contact Dynamics](./contact-dynamics.md) — 接触力与接触约束如何进入方程
 - [TSID](./tsid.md)、[Whole-Body Control](./whole-body-control.md) — 在该方程上做任务空间控制
@@ -403,6 +412,8 @@ floating base 系统还有一个麻烦点：
 这页其实就是你的前置数学语境。
 
 ## 参考来源
+
+- [深蓝学院/深蓝具身智能：MPC 预测模型与浮动基动力学完整推导](../../sources/blogs/wechat_shenlan_mpc_floating_base_derivation_2026-11-16.md) — 用户提供 27 页原文，牛顿、虚功、雅可比、接触约束与刚体质心惯量聚合；[公式化笔记](../formalizations/mpc-prediction-model-from-floating-base-dynamics.md)。
 
 - [Herzog et al. 2016，arXiv:1410.7284 原文归档](../../sources/papers/herzog_2016_momentum_control_hierarchical_inverse_dynamics_arxiv_1410_7284.md) — 浮动基运动方程、驱动 / 浮动基行拆分、质心动量矩阵
 - [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — ingest 档案（Pinocchio 2019 / RBDL / Crocoddyl，均基于浮动基 RNEA/CRBA/ABA）

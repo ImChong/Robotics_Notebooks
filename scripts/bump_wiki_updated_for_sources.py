@@ -51,7 +51,7 @@ def bump_updated(path: Path, today: str) -> bool:
     fm_block = fm_match.group(1)
     if re.search(r"^updated:\s*", fm_block, re.MULTILINE):
         new_fm, n = re.subn(
-            r"^updated:\s*\d{4}-\d{2}-\d{2}\s*$",
+            r'^updated:\s*["\']?\d{4}-\d{2}-\d{2}["\']?\s*$',
             f"updated: {today}",
             fm_block,
             count=1,

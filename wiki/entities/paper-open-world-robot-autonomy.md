@@ -110,3 +110,9 @@ sequenceDiagram
 - [arXiv PDF](https://arxiv.org/pdf/2610.34649)
 - [项目页](https://huggingface.co/AetherLabs-AI/InternVLA-A1.5-RAB)
 - [https://github.com/AetherLabsAI/RobotAgentBench](https://github.com/AetherLabsAI/RobotAgentBench)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2610.34649](https://arxiv.org/abs/2610.34649)。
+- **项目或官方发布入口：** [项目页](https://aetherlabsai.github.io/RobotAgentBench/)。
+- **清单记录：** `survey_ax_2610_34649`；本次仅补充身份与链接，未重新通读或核验已有结论。

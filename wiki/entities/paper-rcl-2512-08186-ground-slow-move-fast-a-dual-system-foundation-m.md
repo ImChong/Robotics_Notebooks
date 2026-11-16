@@ -127,3 +127,9 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [原文](https://arxiv.org/abs/2512.08186)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2512.08186](https://arxiv.org/abs/2512.08186)。
+- **项目或官方发布入口：** [官方代码或发布入口](https://github.com/InternRobotics/InternNav)。
+- **清单记录：** `survey_ax_2512_08186`；本次仅补充身份与链接，未重新通读或核验已有结论。

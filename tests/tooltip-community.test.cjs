@@ -22,7 +22,9 @@ test('community tag renders on its own row below summary, outside the type badge
     communityColor: '#4e79a7',
     linkHtml: '<a class="tt-link" href="#">打开详情页 →</a>'
   });
-  const badgeRow = html.slice(0, html.indexOf('</div>') + 6);
+  const divEnd = html.indexOf('</div>');
+  assert.ok(divEnd >= 0, 'expected closing badgeRow </div>');
+  const badgeRow = html.slice(0, divEnd + 6);
   assert.match(badgeRow, /class="tt-meta-badges"/);
   assert.ok(!badgeRow.includes('tt-community'), 'community tag is not in the type badge row');
   const order = ['tt-meta-badges', 'tt-title', 'tt-summary', 'tt-community', 'tt-link'].map((c) => html.indexOf(c));

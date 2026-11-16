@@ -43,7 +43,7 @@
 - **7/7 独立详情节点**：每篇对应唯一 `wiki/entities/paper-*.md`；静态站 `detail.html?id=entity-paper-…` 均可直达。
 - **本 ingest 新建 6** 个实体；**Motus2** 先前 ingest 已有 complete 页 → **只回链博客，不重复造页**。
 - 阅读坐标：[开源系统闭环 7 篇技术地图](../../wiki/overview/open-source-system-loop-7-papers-technology-map.md)（**非**论文详情替代，仅作横切面索引）。
-- 交叉：[VLA](../../wiki/methods/vla.md)、[生成式世界模型](../../wiki/methods/generative-world-models.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[具身导航](../../wiki/tasks/navigation.md)。
+- 交叉：[VLA](../../wiki/methods/vla.md)、[生成式世界模型](../../wiki/methods/generative-world-models.md)、[World Action Models](../../wiki/concepts/world-action-models.md)、[具身导航](../../wiki/tasks/vision-language-navigation.md)。
 
 ## 当前提炼状态
 

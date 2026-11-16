@@ -158,8 +158,10 @@ class WikiFirstLogDatesTest(unittest.TestCase):
 
     def test_shallow_clone_skips_git_added_dates(self) -> None:
         """浅克隆不可信：wiki_git_added_dates 应返回空，避免全库标成 tip 日新增。"""
-        with mock.patch.object(glg, "_git_is_shallow", return_value=True):
-            glg._WIKI_GIT_ADDED_DATES_CACHE = None
+        with (
+            mock.patch.object(glg, "_git_is_shallow", return_value=True),
+            mock.patch.object(glg, "_WIKI_GIT_ADDED_DATES_CACHE", None),
+        ):
             self.assertEqual(glg.wiki_git_added_dates(force_refresh=True), {})
         # 无 git 表时回退日志首日
         rel = self.existing_paths[0]

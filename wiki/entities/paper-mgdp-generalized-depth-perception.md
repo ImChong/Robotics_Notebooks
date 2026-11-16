@@ -15,7 +15,7 @@ related:
   - ../concepts/sim2real.md
   - ./paper-apt-rl-agile-perceptive-quadruped-locomotion.md
   - ./extreme-parkour.md
-  - ./unitree-go2.md
+  - ./go-2.md
   - ./anymal.md
 sources:
   - ../../sources/papers/mgdp_adv_sci_2026.md

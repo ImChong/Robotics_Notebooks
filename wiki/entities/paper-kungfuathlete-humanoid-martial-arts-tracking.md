@@ -8,7 +8,7 @@ code: https://github.com/NPCLEI/KungFuAthleteBot
 summary: "KungfuAthleteBot 从武术公开视频构建 G1 高动态运动参考，结合物理引导修复、伪低动能采样与统一跟踪-抗扰-恢复策略；新版论文报告真机任意跌倒约 0.7 秒恢复。"
 related:
   - ../tasks/balance-recovery.md
-  - ../concepts/loco-manipulation.md
+  - ../tasks/loco-manipulation.md
   - ../concepts/motion-retargeting.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md

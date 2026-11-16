@@ -239,7 +239,7 @@ python3 scripts/scaffold_wiki_page.py entity "论文短名" --slug paper-xxx --p
 ```markdown
 ## 参考来源
 
-- [Schulman et al. - PPO 论文](../sources/papers/ppo.md)
+- [Schulman et al. - PPO 论文](../../sources/papers/ppo.md)
 - [Karpathy RL 博客](https://karpathy.github.io/2016/05/31/rl/)
 ```
 

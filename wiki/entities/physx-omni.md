@@ -9,6 +9,7 @@ tags:
   - embodied-ai
   - articulated-objects
   - deformable-objects
+  - huggingface
 status: complete
 original: ../../sources/papers/physx_omni_arxiv_2605_21572.md
 updated: 2026-11-15
@@ -27,8 +28,6 @@ sources:
   - ../../sources/repos/physx-omni.md
   - ../../sources/repos/physx-omni-physxverse.md
 summary: "PhysX-Omni（arXiv:2605.21572）：Qwen2.5-VL 统一生成刚体/可变形/关节化 sim-ready 3D 资产，模板化 RLE 几何表征 + TRELLIS 解码；配套 PhysXVerse（8.7K+）与 PhysX-Bench 六维物理评测。"
-tags: [3d-generation, vision-language-model, simulation, dataset, embodied-ai, articulated-objects, deformable-objects, huggingface]
-
 ---
 
 # PhysX-Omni（统一仿真就绪物理 3D 生成）

@@ -17,7 +17,7 @@
     over: 7.34, gray: 8.6, bottom: 9.59, out: 11.07,
     feas: 13.01, roll1: [14.3, 0.9], ten: 15.78, edge: 17.92,
     move: [21.3, 0.8], roll2: [22.3, 0.8], ok: 23.4, noUse: 24.84, two: 26.24,
-    infe: 28.56, add: 30.25, lo: 31.5, none: 33.15, word: 34.65,
+    infe: 28.56, add: 30.25, lo: 31.5, none: 33.15, noSol: 34.65,
     leave: 36.25, cards: [38.39, 40.66, 42.12], push: 42.7, pull: 43.67
   };
 
@@ -157,7 +157,7 @@
           var loOn = f(st, T.lo, 0.4);
           E.op(loC.g, loOn); E.op(loT.g, loOn);
           loLab.setAttribute('x', (P(4, 0)[0] - 10).toFixed(1)); E.op(loLab, loOn);
-          E.pop(noneLab, P(2, 0)[0], P(0, 4)[1] - 10, f(st, T.word, 0.35), 0.7);
+          E.pop(noneLab, P(2, 0)[0], P(0, 4)[1] - 10, f(st, T.noSol, 0.35), 0.7);
 
           /* 小球：碗底 → 1 格（贴着墙）→ 回到碗底 */
           var ub = E.steps(st, [[0, 2], [T.roll1[0], 1], [T.roll2[0], 2]], 0.85);
@@ -196,7 +196,7 @@
           E.op(line2, Z ? f(st, T.none, 0.3) : A ? f(st, T.feas, 0.3) * (1 - f(st, T.move[0] - 0.3, 0.3)) : f(st, T.noUse, 0.3) * zOut);
           line3.textContent = Z ? '无解（不可行）' : A ? '最好：u = 1，代价 10' : '答案：还是 u = 2';
           line3.style.fill = Z ? E.BAD : E.HI;
-          E.op(line3, Z ? f(st, T.word, 0.3) : A ? f(st, T.ten, 0.3) * (1 - f(st, T.move[0] - 0.3, 0.3)) : f(st, T.two, 0.3) * zOut);
+          E.op(line3, Z ? f(st, T.noSol, 0.3) : A ? f(st, T.ten, 0.3) * (1 - f(st, T.move[0] - 0.3, 0.3)) : f(st, T.two, 0.3) * zOut);
 
           /* 句 5：三块牌 */
           cards.forEach(function (c, i) { E.pop(c.g, c.cx, 212, f(st, T.cards[i], 0.35), 0.85); });

@@ -2,8 +2,8 @@
 
 最后更新：2026-07-05（v27 全数完成后新建：聚焦「具身大模型分类学选型闭环」知识链——把近周密集 ingest 的 VLM / VLN / VLA / VLX / World-Model 五大具身模型家族，从分散的实体/方法/对比页沉淀为一条贯通的「感知理解 → 空间导航 → 动作执行 → 一体化扩展 → 世界模型推演」选型链，补家族间矛盾检测规则与专题视图）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
-上一版清单：[`tech-stack-next-phase-checklist-v27.md`](archive/tech-stack-next-phase-checklist-v27.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
+上一版清单：[`tech-stack-next-phase-checklist-v27.md`](tech-stack-next-phase-checklist-v27.md)
+方法论参考：[Karpathy LLM Wiki](../../../wiki/references/llm-wiki-karpathy.md)
 
 ---
 

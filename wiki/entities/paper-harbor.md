@@ -164,3 +164,9 @@ HARBOR 的贡献是把机器人 RL 训练流程做成有工件和关卡的自动
 - [arXiv PDF](https://arxiv.org/pdf/2606.08610v1)
 - [Eureka：LLM 奖励设计](paper-eureka-llm-reward-design.md)
 - [Sim2Real 方法对比](../comparisons/sim2real-approaches.md)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2606.08610](https://arxiv.org/abs/2606.08610)。
+- **项目或官方发布入口：** [官方代码或发布入口](https://github.com/supersglzc/harbor-rl)。
+- **清单记录：** `survey_ax_2606_08610`；本次仅补充身份与链接，未重新通读或核验已有结论。

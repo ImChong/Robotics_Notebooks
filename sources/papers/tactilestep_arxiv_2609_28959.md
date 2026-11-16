@@ -19,7 +19,7 @@
 
 - 把 **足底阵列触觉** 做成 **部署期 actor 观测**（非仅 critic 特权），直接闭合 **触地冲击与支撑质量**，补感知跑酷「能过但踩得重」的短板。
 - **特征级 sim2real**：仿真与硬件共享 $\bar F$、CoP、$\bar A$，避免 raw taxel 高维迁移；与 [QuietWalk](../../wiki/entities/paper-quietwalk-humanoid-locomotion.md)（训练期 GRF 惩罚、部署不用 sole 反馈）形成对照轴。
-- 强 **Hiking in the Wild** 基线 + 系统消融，便于和 [人形运控奖励](../concepts/humanoid-policy-reward-functions.md)、[触觉感知](../concepts/tactile-sensing.md) 交叉。
+- 强 **Hiking in the Wild** 基线 + 系统消融，便于和 [人形运控奖励](../../wiki/concepts/humanoid-policy-reward-functions.md)、[触觉感知](../../wiki/concepts/tactile-sensing.md) 交叉。
 
 ## 核心摘录（≥3 条）
 

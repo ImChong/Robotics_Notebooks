@@ -165,3 +165,9 @@ sequenceDiagram
 - [LiteReality-Agent 官方博客（2026）](../../sources/blogs/litereality_agent_post_2026.md)
 - [LiteReality-Agent 项目页](../../sources/sites/litereality-agent-github-io.md)
 - [LiteReality/LiteReality-Agent](../../sources/repos/litereality-litereality-agent.md)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2610.01863](https://arxiv.org/abs/2610.01863)。
+- **项目或官方发布入口：** [项目页](http://Room.py)。
+- **清单记录：** `survey_ax_2610_01863`；本次仅补充身份与链接，未重新通读或核验已有结论。

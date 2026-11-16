@@ -96,3 +96,9 @@ sequenceDiagram
 ## 推荐继续阅读
 
 - [arXiv:2307.05973](https://arxiv.org/abs/2307.05973)
+
+## Awesome Agentic Robots 导航补充
+
+- **论文入口：** [arXiv:2307.05973](https://arxiv.org/abs/2307.05973)。
+- **项目或官方发布入口：** [项目页](https://voxposer.github.io)。
+- **清单记录：** `survey_ax_2307_05973`；本次仅补充身份与链接，未重新通读或核验已有结论。

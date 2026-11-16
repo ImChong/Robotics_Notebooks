@@ -9,7 +9,7 @@
 - **配套论文：** [Brax — A Differentiable Physics Engine for Large Scale Rigid Body Simulation](https://arxiv.org/abs/2106.13281)（NeurIPS 2021 Datasets and Benchmarks Track）
 - **入库日期：** 2026-05-18
 - **一句话说明：** 基于 JAX 的可微物理与 RL 训练库；README（0.13.0 起）强调 **`brax/training` 为主维护面**，环境侧推荐转向 **MuJoCo Playground**，纯物理仿真优先 **MJX** 或 **MuJoCo Warp**。
-- **沉淀到 wiki：** 是 → [`wiki/entities/brax.md`](../wiki/entities/brax.md)
+- **沉淀到 wiki：** 是 → [`wiki/entities/brax.md`](../../wiki/entities/brax.md)
 
 ## 仓库定位（与 README 警告对齐）
 

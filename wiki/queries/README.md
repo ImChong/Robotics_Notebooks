@@ -97,3 +97,44 @@
 
 该页面是早期的 Query 产物（MPC 与 WBC 如何协同工作），但创建时 queries/ 目录尚未存在，因此留在了 `wiki/concepts/`。
 后续新的 query 产物统一放入本目录。
+| [actuator-drive-chain-selection-loop](./actuator-drive-chain-selection-loop.md) | 策略（RL/MPC）算出来的关节力矩指令，最终由什么样的电子硬件驱动链落地——从画驱动板、写 FOC 固件、给执行器建模辨识摩擦，到用实时总线把它们闭环起来，中间分几层、每层选什么工具/方案、数据手册标称参数和真机实测曲线为什么对不上、执行器建到多真才够、总线跑得快是不是就等于闭环带宽高？ | KiCad（开源 EDA）、Altium Designer（商用 EDA）、SimpleFOC（开源 FOC 驱动固件）、NeuralActuator（神经执行器建模）、BAM（执行器摩擦辨识）、Implicit/Explicit 执行器建模、EtherCAT 协议基础。它是具身大模型分类学选型闭环（选哪一类策略）与具身大模型评测基准选型闭环（怎么证明它）的**硬件侧姊妹链**——回答「策略的力矩指令能不能被真实驱动链忠实执行」。 |
+| [clf-cbf-in-wbc](./clf-cbf-in-wbc.md) | CLF 和 CBF 如何在 WBC/MPC 中联合使用保证稳定性与安全性？ | Control Lyapunov Function、Control Barrier Function、Whole-Body Control、CLF vs CBF 对比 |
+| [contact-rich-manipulation-guide](./contact-rich-manipulation-guide.md) | 做接触丰富的操作任务（装配/拧螺丝），有哪些实践要点？ | Manipulation、Contact-Rich Manipulation、Bimanual Manipulation |
+| [contact-wrench-closed-loop](./contact-wrench-closed-loop.md) | 我要做接触丰富的操作，从『手碰到东西』到『稳定用力完成任务』中间到底有哪几层，每一层各自解决什么、怎么互相约束、哪一层做不好会怎样失败？ | Contact Estimation、Force Control Basics、Hybrid Force-Position Control、Impedance Control、Visuo-Tactile Fusion。 |
+| [cross-embodiment-transfer-strategy](./cross-embodiment-transfer-strategy.md) | 同一段人形运动控制能力要搬到一台新机器人，单具身重训、Any2Any 高效后训练、多具身联合训练这三条路怎么选、各踩什么坑？ | Whole-Body Tracking Pipeline、Any2Any、SONIC、Motion Retargeting Pipeline、Behavior Foundation Model |
+| [dexterous-data-collection-guide](./dexterous-data-collection-guide.md) | 如何采集灵巧手操作的专家数据？有哪些主流的遥操作方案？ | Allegro Hand、Demo Data Collection |
+| [domain-randomization-guide](./domain-randomization-guide.md) | 做 sim2real，如何设计 domain randomization 的参数与分布范围？ | Domain Randomization、Sim2Real、Sim2Real 工程 Checklist |
+| [embodied-data-collection-five-routes-landscape](./embodied-data-collection-five-routes-landscape.md) | 具身智能数据采集有哪些技术路线？各路线装备分支与代表案例是什么？ | 见页内「关联页面」与「参考来源」 |
+| [embodied-eval-benchmark-selection-loop](./embodied-eval-benchmark-selection-loop.md) | 我训了一个具身大模型，接下来到底怎么『测/证明它』——从『大脑看懂没』到『真机能不能做成』中间分几层评测、每层测什么、用哪个代表性基准、指标要复现性还是真实代表性、看过程指标还是结果指标、哪一层评测结论最容易骗人？ | RoboBench（MLLM 具身大脑评测）、ESI-Bench（具身空间智能）、Daily-Omni（日常 AV 时序对齐）、EWMBench（世界模型生成评测）、WorldScore（开放域世界生成）、HarnessEval-W（交互式世界 agentic 评测）、GigaWorld-1（策略评估器）、仿真评测基础设施。它是具身大模型分类学选型闭环（选哪一类模型）的姊妹链——回答「选完之后怎么评测/证明它」。 |
+| [embodied-fm-taxonomy-loop](./embodied-fm-taxonomy-loop.md) | 我要给一个具身系统选模型，从『看懂场景』到『在真机上稳定完成任务』中间到底分几层——VLM / VLN / VLA / VLX / 世界模型各自解决什么、各家族的 I/O 边界与数据需求/泛化能力/实时性/闭环稳定性怎么互相约束、哪一层选错会怎样失败？ | 五大具身模型分类对比、VLA 方法页、VLN 任务页、World Action Models、生成式世界模型、统一多模态 token。 |
+| [embodied-six-routes-survey-lineage](./embodied-six-routes-survey-lineage.md) | 模块化、技能编排、IL、RL、VLA、世界模型六条路线在吵什么？有没有一条按综述补课的阅读顺序？ | 五大范式、六条路线的窟窿、VLA、生成式世界模型、深蓝 2026-09-20 公众号归档。 |
+| [ethercat-master-optimization](./ethercat-master-optimization.md) | 为什么我的 EtherCAT 主站跑不到 1kHz？丢包和抖动怎么处理？分布式时钟 (DC) 怎么配置？ | Real-time Middleware、Humanoid Know-how |
+| [field-robotics-troubleshooting](./field-robotics-troubleshooting.md) | 机器人在实验室跑得很稳，一带到户外草地或碎石路就各种摔，传感器也频繁报错，怎么排查？ | Know-how、System ID |
+| [hardware-abstraction-layer](./hardware-abstraction-layer.md) | 如何写一套代码，既能跑在仿真里，又能跑在不同品牌的机器人硬件上？硬件抽象层该怎么分层？ | 运动控制主路线、Humanoid Know-how |
+| [humanoid-battery-thermal-management](./humanoid-battery-thermal-management.md) | 人形机器人在做高动态动作时电池掉电极快，且关节电机经常过热停机，怎么排查和优化？ | Know-how、Humanoid Hardware |
+| [humanoid-joint-motor-topology-selection](./humanoid-joint-motor-topology-selection.md) | 无框力矩、空心杯、轴向磁通，谁才是人形机器人关节电机的首选？ | 见页内「关联页面」与「参考来源」 |
+| [humanoid-robot-data-collection-landscape](./humanoid-robot-data-collection-landscape.md) | 人形机器人训练数据怎么采？Substack 里提到的项目/论文各自是什么？ | LeoInAI Substack、Scanford 论文摘录 |
+| [humanoid-soccer-skill-learning-method-selection](./humanoid-soccer-skill-learning-method-selection.md) | 人形机器人踢球/射门技能学习，工程上该走 PAiD 式感知–动作渐进融合，还是 RoboNaldo 式 motion scaffold + 课程 RL，怎么选、怎么组合？ | PAiD Framework、RoboNaldo、Humanoid Soccer |
+| [humanoid-training-data-pipeline](./humanoid-training-data-pipeline.md) | 我要训练一个人形全身策略，从**原始动作捕捉 / 人体视频**到能喂进 **RL/IL** 的训练输入，参考运动来源、重定向方案、训练范式三层各该怎么选？ | 人形参考运动与操作数据集选型、Motion Data Quality、Motion Retargeting |
+| [humanoid-voice-interaction-pipeline](./humanoid-voice-interaction-pipeline.md) | 人形机器人的语音交互要做成可打断的闭环，工程上从唤醒/ASR、LLM 理解规划、技能或 VLN 执行到 TTS 反馈，每一环该怎么选型、会踩哪些坑、出问题先查什么？ | 见页内「关联页面」与「参考来源」 |
+| [legged-humanoid-rl-pd-gain-setting](./legged-humanoid-rl-pd-gain-setting.md) | 人形或腿足式机器人强化学习里，底层关节 Kp/Kd（或仿真里的 stiffness/damping）一般怎么设、和什么量绑定？ | legged_gym、Sim2Real、Sim2Real Checklist、Domain Randomization 指南、开源实现索引、RL+PD 接口论文索引 |
+| [lightnav-0-blog-references-deep-read](./lightnav-0-blog-references-deep-read.md) | 深读 [LightNav-0 Tech Blog](https://www.lightorigins.com/en/blog/lightnav-0) 引用的所有相关项目和论文。 | lightorigins-3blogs-technology-map、paper-lightnav-0、spatial-reasoning-benchmarks-technology-map 及博客正文 ingest 节点。 |
+| [locomotion-failure-modes](./locomotion-failure-modes.md) | locomotion RL 训练时常见的失败模式有哪些？怎么诊断？ | Reward Shaping Guide、Robot Policy Debug Playbook、Legged Gym |
+| [motion-retargeting-three-routes-landscape](./motion-retargeting-three-routes-landscape.md) | 运动重定向有哪几条技术路线？深蓝 ICRA 2026 长文里每篇论文/项目分别是什么？ | 深蓝公众号归档 |
+| [mpc-tuning-guide](./mpc-tuning-guide.md) | 我的线性 MPC 跟踪很不稳，Base 晃动严重，应该先调哪个参数？Q 和 R 怎么给值？ | MPC 核心页、Optimal Control |
+| [multimodal-fusion-tricks](./multimodal-fusion-tricks.md) | 我的机器人有视觉、触觉和 IMU，怎么把这些数据喂给神经网络效果最好？模态间的权重怎么分配？ | Cross-modal Attention、Tactile Sensing |
+| [optimization-software-selection](./optimization-software-selection.md) | 机器人优化软件怎么选：QP / NLP / 锥规划求解器与建模框架（CasADi、Drake、Acados、OSQP 等）对照。 | 见页内「关联页面」与「参考来源」 |
+| [real-time-control-middleware-guide](./real-time-control-middleware-guide.md) | 为什么我的机器人策略在仿真里很完美，上了真机却经常疯狂抽搐？Linux 实时性怎么配置？ | ROS 2 vs LCM 对比、Sim2Real 工程 Checklist |
+| [reward-shaping-guide](./reward-shaping-guide.md) | 训练 locomotion RL 策略时，奖励函数怎么设计？有哪些调教技巧？ | Reward Design、Humanoid RL Cookbook、Legged Gym |
+| [rl-sim2real-deployment-conditions](./rl-sim2real-deployment-conditions.md) | 强化学习真机部署时，机器人在仿真里究竟学会了什么？为什么维度对齐仍会翻车？ | Sim2Real、RL 策略真机调试 Playbook、Sim2Real 闭环误差分层工程、RMA；叙事骨架编译自 深蓝具身智能 2026-09-18 公众号文。 |
+| [robot-learning-three-eras-narrative](./robot-learning-three-eras-narrative.md) | 围绕 Ted Xiao 访谈编译稿中出现的机器人学习话题，能否用一手文献串联成可维护的知识索引？ | Foundation Policy、VLA、Imitation Learning、Reinforcement Learning、Embodied Scaling Laws、以及 `ted_xiao_embodied_three_eras_primary_refs.md` 中的论文指针。 |
+| [robot-perception-stack-selection-loop](./robot-perception-stack-selection-loop.md) | 机器人策略/操作/导航要消费的视觉感知信号，到底从哪来、怎么一层层选出来——从选传感与标定（RGB / RGB-D / LiDAR、内外参标定、深度精度 vs 成本），到 2D 检测/分割选型（单阶段 YOLO vs 两阶段 vs DETR、闭集 vs 开放词汇、实时机载 vs 服务器侧），再到 2D→3D 提升与语义建图（深度融合、点云语义、在线 vs 离线、稠密 vs 稀疏），最后到下游策略怎么消费感知输出（坐标后处理、感知频率 vs 控制频率对齐）？中间分几层、每层选什么、精度和时延/算力怎么取舍、什么时候 2D 框就够、什么时候非上 3D 语义几何不可？ | Ultralytics YOLO（单阶段实时检测）、RF-DETR（端到端 DETR）、YOLO 奠基论文、Segment Anything（可提示分割）、SAM2（视频可提示分割）、FindAnything（对象级开放词汇 3D 语义建图）、CMU MSCV 语义 3D 建图、OV-SAM3D（开放词汇 3D 分割）。它位于策略的**输入端**，是执行器驱动链选型闭环（策略**输出端**「力矩指令怎么被硬件执行」）的**镜像姊妹链**，也与具身大模型分类学选型闭环（选哪一类策略）、具身大模型评测基准选型闭环（怎么证明它）互补——回答「策略要消费的感知信号从哪来、怎么选这条感知栈」。 |
+| [rsi-four-tier-five-pushes](./rsi-four-tier-five-pushes.md) | RSI 从 EURISKO 到 GPT-5.6 RSI Index 究竟走到了哪一层？会自我改进是否等于智能爆炸？ | 递归自改进、Awesome RSI、RSI Survey 实体、AI Auto-Research、Motus2；叙事骨架编译自 Datawhale 2026 RSI 科普综述（赵志民）；机制 taxonomy 与验证层级对齐 arXiv:2607.07663。 |
+| [sim2real-closed-loop-engineering](./sim2real-closed-loop-engineering.md) | 为什么说 Sim2Real 不是训完之后才考虑的事？工程上如何从系统辨识做到在线适应与安全部署？ | Sim2Real、System Identification、Domain Randomization、Privileged Training、RMA、Sim2Real Checklist、Gap 缩减指南；叙述骨架编译自 深蓝具身智能公众号文（2026-07-28）。 |
+| [simulation-physics-fidelity](./simulation-physics-fidelity.md) | 我要在仿真里训一个腿式/操作策略，**从几何/URDF 精度到执行器模型这几层物理保真度，分别该投到什么程度、各自补的是哪一种 sim2real gap、代价是什么？** | Physics Fidelity ↔ Sim2Real Gap、Sim2Real、Contact Dynamics |
+| [soccer-visual-field-localization-pipeline](./soccer-visual-field-localization-pipeline.md) | 足球机器人只有相机，如何从场地白线一路做到抗抖的 (x,y,θ) 位姿？检测、线匹配、EKF 三步怎么串、各环怎么选型、坑在哪？ | 场线/交点检测（课程 6.4）、线匹配定位（课程 7.2）、线特征 EKF 融合（课程 7.3）。 |
+| [table-tennis-hierarchical-skill-learning-guide](./table-tennis-hierarchical-skill-learning-guide.md) | 物理乒乓球动画里技能 mode collapse 严重、又要支持双智能体对打与 VR 人–机，该走单 ASE 还是分层专家 + 策略？ | Table Tennis Strategy & Skill Learning、SMPLOlympics、ASE |
+| [tactile-feedback-in-rl](./tactile-feedback-in-rl.md) | 在强化学习抓取和操作任务中，如何有效地加入触觉反馈？怎么解决视触觉多模态融合以及 Sim2Real 差距的问题？ | Tactile Sensing、Contact-Rich Manipulation |
+| [vla-with-low-level-controller](./vla-with-low-level-controller.md) | VLA 如何与低级关节控制器（MPC/WBC）融合？有哪些架构？ | VLA、Whole-Body Control、MPC、VLA 真机部署指南 |
+| [wbc-tuning-guide](./wbc-tuning-guide.md) | WBC QP 求解器怎么调参？权重矩阵、约束松弛、热启动有哪些技巧？ | Whole-Body Control、TSID、WBC Implementation Guide |
+| [wheeled-dual-arm-humanoid-urdf-workflow](./wheeled-dual-arm-humanoid-urdf-workflow.md) | 输出轮式双臂人形机器人的 URDF 的基本流程与工具链是什么？ | Zane Hub 原文 PDF 归档、URDF 概念、URDF 惯量真机核查 与下列 ROS 规范。 |

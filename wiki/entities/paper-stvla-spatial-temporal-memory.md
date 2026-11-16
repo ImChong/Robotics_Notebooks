@@ -113,6 +113,8 @@ flowchart TD
 
 ## 关联页面
 
+- [2026-11-16 具身前沿 29 篇论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
+
 - [SALA](./paper-sala-latent-actions.md)
 - [EgoX](./paper-egox-mxt-plus.md)
 - [VLA 学习纵深路线](../../roadmap/depth-vla.md)
