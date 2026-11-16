@@ -11,7 +11,7 @@ tags:
   - motion-language
   - amazon
 status: complete
-updated: 2026-11-10
+updated: 2026-11-16
 arxiv: "2611.10137"
 venue: arXiv 2026 (cs.RO)
 code: https://github.com/amazon-far/Unified-Inertial-Encoder
@@ -32,7 +32,7 @@ sources:
 summary: "Unified Inertial Encoder（arXiv:2611.10137，Amazon FAR 等）：用运动学 IMU 合成把人体与重定向 G1 放进 12 部位共享惯性输入空间，联合训练速度估计与动作-文本对齐，零样本迁移真机 G1（AVE 0.099 m/s），姿态漂移仍是主要局限。"
 ---
 
-# A Unified Inertial Encoder for Human and Humanoid Motion（arXiv:2611.10137）
+# A Unified Inertial Encoder for Human and Humanoid Motion｜面向人类与人形机器人运动的统一惯性编码器（arXiv:2611.10137）
 
 *A Unified Inertial Encoder for Human and Humanoid Motion*，[arXiv:2611.10137](https://arxiv.org/abs/2611.10137)，Amazon FAR、UC Berkeley、Stanford、CMU（论文首页），项目页 <https://unified-inertial-encoder.github.io/>。本页依据对论文全文的通读（见 [来源归档](../../sources/papers/unified-inertial-encoder_arxiv_2611_10137.md)），数字均出自论文并标章节 / 表号；「推测」「我的判断」为本页补充。
 
@@ -89,6 +89,41 @@ flowchart LR
 5. **多任务损失（III-C，式 5-7）：** 速度、短区间位移轨迹一致性、与冻结 CLIP 文本特征的余弦对齐、去噪辅助；速度与轨迹权重用梯度范数比 EMA 自适应。
 6. **随机化（III-D，表 I）：** 重力、噪声、偏置漂移、振动、冲击、体型 / 速度 / 采样率扰动；范围为启发式选取。
 
+## 源码运行时序图
+
+以下为官方开源仓库 **训练与离线评测** 的实际入口（已核对 `src/train.py`、`src/model/model.py`、`src/eval.py` 和 `src/eval_foundation.py`），**不是**已验证的 G1 机载在线部署调用图。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant CLI as 命令行
+  participant Train as src.train
+  participant Data as 数据集与 DataLoader
+  participant Net as FoundationIMU
+  participant Loss as 多任务损失
+  participant CKPT as Lightning Checkpoint
+  participant Eval as src.eval_foundation
+  participant Metric as 评测指标
+  CLI->>Train: python -m src.train experiment=exp15_full_train_C
+  Train->>Data: 加载 train 与 valid 语料并拼接
+  Data-->>Train: IMUData_w_GT_Jagged
+  loop Lightning training_step
+    Train->>Net: model(batch, 全 false mask)
+    Note over Net: tokenizer → adaptor → Transformer → 速度/去噪/语言头
+    Net-->>Train: FoundationIMU_Output
+    Train->>Loss: loss(model, batch, output)
+    Loss-->>Train: loss 与 metrics
+  end
+  Train->>CKPT: trainer.fit 中周期保存权重与 EMA
+  CLI->>Eval: python -m src.eval_foundation --ckpt ... --data_from ... --dataset ...
+  Eval->>Net: load_model(ckpt) 与 inference(batch)
+  Net-->>Eval: 多站点预测
+  Eval->>Metric: pelvis_restrict → Velocity_Metric 与 Trajectory_Metric
+  Metric-->>CLI: AVE / ATE_GT / ATE_Pred
+```
+
+复现路径：数据预处理命令见 [官方 README](https://github.com/amazon-far/Unified-Inertial-Encoder#preprocessing)；训练入口 `src.train` 通过 Hydra 配置实例化 `FoundationIMU` 和损失；评测入口 `src.eval_foundation` 加载 checkpoint 与 `.hydra/`，整窗多站点推理后仅对骨盆流统计指标。语言检索另用 `src.scripts.evaluate_language_classification`，不在上述速度评测调用链内。
+
 ## 实验与评测结果（作者实测）
 
 | 项 | 数值 | 出处 |
@@ -114,10 +149,10 @@ flowchart LR
 ## 工程实践
 
 - **输入要求：** 真机只需骨盆 IMU 与关节位置 / 速度（论文称 1 IMU + 关节），然后按式 2 合成其余 11 个站点；采样率不必统一。
-- **训练配方（IV-A.3）：** 20 epoch、4096 ms 窗口、bfloat16、batch 1024、Muon + AdamW、权重 EMA 0.95。
+- **训练配方（IV-A.3）：** 论文报告 20 epoch、4096 ms 窗口、bfloat16、batch 1024、Muon + AdamW、权重 EMA 0.95；开源 README 的 `exp15_full_train_C` 配置运行 64 epoch，论文所用权重取第 20 epoch（step 6420），二者不是同一口径。
 - **数据划分（IV-A.1）：** 人体按轨迹 85% / 15% 划分；G1 的复杂动作（如舞蹈）整体留作未见评测；真机 G1 记录仅 0.7 h，完全留作评测，评测时不做增强。
 - **部署：** 论文给出 L40S + TensorRT 的时延，没有给出机载算力上的时延（论文未说明，未核实）。
-- **代码：** 项目页链到 [amazon-far/Unified-Inertial-Encoder](https://github.com/amazon-far/Unified-Inertial-Encoder)，README 称含训练、基线、预处理、评测与分析，Apache-2.0；本页未克隆也未运行代码。
+- **代码与权重（2026-11-16 核对）：** 官方 [代码仓库](https://github.com/amazon-far/Unified-Inertial-Encoder) 已公开训练、预处理、评测（Apache-2.0）；[Open-IO/Unified-Inertial-Encoder](https://huggingface.co/Open-IO/Unified-Inertial-Encoder) 已发布 55.6M 参数的 EMA bf16 权重与 `.hydra/` 配置，**只有权重，没有优化器状态**。真机 G1 [离线评测数据](https://huggingface.co/datasets/Open-IO/humanoid-g1-odometry) 也已公开；其他原始人体数据需要各自按授权获取。详见 [项目页归档](../../sources/sites/unified-inertial-encoder.md) 和 [源码归档](../../sources/repos/unified-inertial-encoder.md)。未在本环境安装依赖或复现实测。
 - **消融提示（表 V）：** 去掉连续时间编码退化最重（真机 ATE_GT 17.37 m）；只加关节量（骨盆 IMU + joints）真机 ATE_GT 3.513 m，但 ATE_Pred 18.36 m，差于完整方法的 11.50 m。
 
 ## 与其他工作对比（论文 IV-B、IV-C）
@@ -146,7 +181,8 @@ flowchart LR
 - 速度误差是在离线记录上评测，论文未做闭环状态估计或控制验证；与滤波融合列为后续工作。
 - 表 IV 的 R@1 用 19 个随机干扰项，难度低于全库检索；未见类别也是「重定向 G1 上、人体训练中出现过」的类别，不等于真机未见动作。
 - 摘要说「最低速度误差」指论文选定的基线集合；基线中 TLIO、AirIO、AirIMU 为逐数据集重新训练，训练细节以论文为准。
-- 项目页与 README 的更多声明（权重、复现结果）未逐项核实。
+- **零样本的评测边界（官方模型卡与 README）：** 真机 G1 样本确实**未用于梯度训练**，但其评测分数**参与了已发布 checkpoint 的选择**。因此这是「无真机梯度训练/微调」的零样本迁移，**不是**与真机评测完全隔离的盲测选模；论文正文未突出这一点。
+- 开源权重已核对 Hugging Face 模型卡，但尚未下载、运行或验证可复现指标。
 - 论文无附录，超参、网络规模等细节主要靠正文与代码。
 
 ## 关联页面
@@ -160,6 +196,7 @@ flowchart LR
 - [BONES-SEED 数据集](./bones-seed.md)
 - [CLIP](./paper-clip.md)
 - [X-IONet 跨平台惯性里程计](./paper-x-ionet-cross-platform-inertial-odometry.md)
+- [跨本体迁移纵深 Stage 4](../../roadmap/depth-cross-embodiment.md) — 这里迁移的是传感/状态估计表征，不是人形控制策略
 
 ## 参考来源
 
@@ -167,6 +204,9 @@ flowchart LR
 - [arXiv:2611.10137](https://arxiv.org/abs/2611.10137)
 - [项目页](https://unified-inertial-encoder.github.io/)
 - [GitHub 仓库](https://github.com/amazon-far/Unified-Inertial-Encoder)
+- [官方项目页归档](../../sources/sites/unified-inertial-encoder.md)
+- [官方源码归档](../../sources/repos/unified-inertial-encoder.md)
+- [已发布权重与模型卡](https://huggingface.co/Open-IO/Unified-Inertial-Encoder)
 
 ## 推荐继续阅读
 

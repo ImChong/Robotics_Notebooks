@@ -3,7 +3,7 @@ type: concept
 status: complete
 summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长程依赖成为现代序列建模与机器人基础策略（VLA、ACT、扩散策略骨干）的通用架构底座。"
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
-updated: 2026-11-11
+updated: 2026-11-16
 related:
   - ../entities/paper-attention-is-all-you-need.md
   - ../entities/transformer-cv-curriculum.md
@@ -15,17 +15,20 @@ related:
   - ../methods/robotics-transformer-rt-series.md
   - ../methods/action-chunking.md
   - ../entities/llms-from-scratch-raschka.md
+  - ./positional-encoding.md
   - ../entities/zju-foundations-of-llms.md
   - ../entities/andrej-karpathy.md
   - ../entities/paper-effective-degree.md
 original:
   - ../../sources/papers/attention_is_all_you_need.md
+  - ../../sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md
 sources:
   - ../../sources/blogs/alexwang_associative_memory.md
   - ../../sources/repos/keawang_associative_memory_blog.md
   - ../../sources/papers/attention_is_all_you_need.md
   - ../../sources/books/udl_book.md
   - ../../sources/repos/rasbt_llms_from_scratch.md
+  - ../../sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md
   - ../../sources/courses/karpathy_zero_to_hero_youtube.md
 ---
 
@@ -72,7 +75,14 @@ $$
 - 模型无循环无卷积，需把位置信息加到嵌入上。原文用正弦/余弦：$PE_{(pos,2i)}=\sin(pos/10000^{2i/d_{model}})$，奇数维取余弦；与可学习位置嵌入对比结果几乎相同（Table 3 行 E）。
 - 每层 = 多头注意力 + 逐位置前馈网络 $\max(0,xW_1+b_1)W_2+b_2$（$d_{model}=512$，$d_{ff}=2048$），子层输出为 $\mathrm{LayerNorm}(x+\mathrm{Sublayer}(x))$（原版 Post-LN；与 [深度学习基础](./deep-learning-foundations.md) 中的残差思想一致）。编码器、解码器各 6 层；解码器在自注意力上加因果掩码，并多一个对编码器输出的交叉注意力。
 
-### 4. 为什么用自注意力（原文 Table 1）
+### 4. 现代位置编码的实现差异（Raschka, 2026）
+
+- 原始 Transformer 的正弦位置编码与 GPT-2 可学习绝对位置向量都在**输入嵌入处相加**；现代 LLM 常用 **RoPE** 在各层注意力内部按位置旋转 **Q/K**，Value 不旋转。
+- 相同未旋转 Q/K 在 RoPE 下的点积由两 token 的**相对位移**控制；但增加新前缀会改变真实隐藏状态，不能把这个数学性质误读为上下文输出必然不变。
+- 2026 年开源架构中还可见 **Partial RoPE**（只旋转部分 head 维度）、**RoPE/NoPE 混合层**及**可学习相对位置偏置**；具体长上下文效果需要模型级实验验证。
+- 独立知识页：[位置编码：绝对位置、RoPE、NoPE 与相对偏置](./positional-encoding.md)；一手教程：[Sebastian Raschka 原文归档](../../sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md)。
+
+### 5. 为什么用自注意力（原文 Table 1）
 
 | 层类型 | 每层复杂度 | 顺序操作 | 最大路径长度 |
 |--------|-----------|----------|--------------|
@@ -122,11 +132,13 @@ $n<d$ 时自注意力层比循环层更省；$n$ 很大时需受限自注意力�
 - [Robotics Transformer（RT 系列）](../methods/robotics-transformer-rt-series.md)
 - [动作分块（Action Chunking）](../methods/action-chunking.md)
 - [《大模型基础》（浙江大学 DAILY Lab）](../entities/zju-foundations-of-llms.md) — 系统整理语言模型、架构、Prompt、PEFT、模型编辑和 RAG 六章教材
+- [位置编码（Positional Encoding）](./positional-encoding.md) — GPT-2 / 正弦 / RoPE / Partial RoPE / NoPE
 - [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
 - [Andrej Karpathy](../entities/andrej-karpathy.md)
 - [Effective Degree](../entities/paper-effective-degree.md) — ViT / BERT 上用路径多项式正则提升泛化（ICML 2026）
 
 ## 参考来源
+- [Sebastian Raschka：现代 LLM 位置编码教程（2026-11-15）](../../sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md)
 - [Alex Wang：联想记忆与 Transformer](../../sources/blogs/alexwang_associative_memory.md)
 - [配套数值实验代码](../../sources/repos/keawang_associative_memory_blog.md)
 - [Attention Is All You Need（论文实体）](../entities/paper-attention-is-all-you-need.md)
@@ -137,6 +149,7 @@ $n<d$ 时自注意力层比循环层更省；$n$ 很大时需受限自注意力�
 - Vaswani, A., et al. (2017). *Attention Is All You Need*. NeurIPS. <https://arxiv.org/abs/1706.03762>
 
 ## 推荐继续阅读
+- [Understanding Positional Embeddings in Modern LLMs（Raschka，2026）](https://magazine.sebastianraschka.com/p/understanding-positional-embeddings)
 - [LLMs-from-scratch（Raschka 实体页）](../entities/llms-from-scratch-raschka.md) — 纯 PyTorch 实现 MHA/GPT 的系统教程
 - [原论文 PDF（arXiv:1706.03762）](https://arxiv.org/pdf/1706.03762)
 - [Karpathy Zero to Hero #7 Let's build GPT](https://www.youtube.com/watch?v=kCc8FmEb1nY) — 视频驱动从零实现

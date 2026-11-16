@@ -89,6 +89,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [MACaQ：模型无关的 MXFP4 校准量化](./paper-macaq.md) — 从 GGUF 量化格式进一步连接到逐层 Hessian 校准、Hadamard 旋转与 W4A4 推理；不能混淆两者的格式与适用后端。
+
 - [cpp-llm-engine](./cpp-llm-engine.md) — 关联的工程知识或开源项目。
 - [tensorrt-llm](./tensorrt-llm.md) — 关联的工程知识或开源项目。
 - [pytorch](./pytorch.md) — 关联的工程知识或开源项目。

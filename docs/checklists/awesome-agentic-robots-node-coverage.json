@@ -1703,9 +1703,9 @@
       ],
       "status": "existing-reused",
       "paper_url": "https://arxiv.org/abs/2602.12063",
-      "project_page_url": "https://sites.google.com/view/vla-w",
+      "project_page_url": "https://sites.google.com/view/vlaw-arxiv",
       "project_page_kind": "website",
-      "project_page_evidence": "arxiv-abstract-or-comments",
+      "project_page_evidence": "existing-node-main-primary-source",
       "node_path": "wiki/entities/paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md",
       "link_status": "project-entry-recorded",
       "reading_status": "not-reviewed-in-this-task"

@@ -204,6 +204,7 @@ flowchart LR
 - [Reins](../wiki/entities/paper-reins-robot-harness.md) — 多模态 Agent 通过三维感知、条件化动作链与并行旁白驱动真机
 - [STVLA](../wiki/entities/paper-stvla-spatial-temporal-memory.md) — 用空间几何与有界历史记忆改善长任务中遮挡与状态歧义
 - [Xiaomi-Robotics-0](../wiki/entities/xiaomi-robotics-0.md) — 异步 action chunk 部署
+- [ARP：异步机器人策略](../wiki/entities/paper-asynchronous-robot-policies.md) — 将 VLM 低频语义缓存与自带实时视觉的高频动作专家分进程运行，训练显式建模缓存陈旧和执行延迟；动态扰动更稳，但通用 RoboLab 仍落后 π0.5（官方源码/权重待发布）
 - [2026 年 VLA 开源生态三转变](../wiki/comparisons/vla-open-source-ecosystem-2026-three-shifts.md) — 按策略模型、实验框架、统一评测与后训练系统选择复现入口；从同协议基线再到部署/后训练，不把工具框架当成新的 VLA 模型
 - [具身模型延迟–泛化权衡](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md)
 - [Evo-1](../wiki/entities/paper-evo1-lightweight-vla.md) — 0.77B 轻量 VLA：两阶段训练保持 VLM 语义对齐，消费级 GPU 2.3 GB / 16.4 Hz，边缘侧选型的代表样本
@@ -241,6 +242,7 @@ flowchart LR
 
 **方向 B：世界模型融合**
 - 把"预测未来"并入策略训练或推理时预演——完整 Stage 路径见 [WAM 纵深路线](depth-wam.md)
+- [VLAW：VLA 与世界模型迭代协同后训练](../wiki/entities/paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md) — 少量真机成功/失败 rollout 校准 Ctrl-World；Qwen3-VL 奖励筛选合成成功轨迹后微调 π₀.₅，属于训练期世界模型辅助而非 Joint WAM。
 - 关键词：[Generative World Models](../wiki/methods/generative-world-models.md)、[World Action Models](../wiki/concepts/world-action-models.md)、[WAM 纵深](depth-wam.md)、[τ₀-VLA](../wiki/entities/paper-tau0-vla.md)（记忆增强高层子任务策略 + 世界模型引导 TTC beam search，长程真机分层 45.0% vs 直出 27.5%；`sii-research/tau-0-vla` 已开源低层 MoT、Proposal 与世界模型 LoRA，Value/Reflective/Router/TTC 搜索未公开）
 
 **方向 C：全身与移动操作扩展**

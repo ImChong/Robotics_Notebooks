@@ -100,6 +100,7 @@ flowchart LR
 - [PhysisForcing](../wiki/entities/paper-physisforcing.md) — 训练期分层物理对齐（像素级轨迹 + 语义级 token 关系），推理零额外开销："视频保真 ≠ 物理可信"的正面解法
 - [PhysMani](../wiki/entities/paper-physmani-dynamic-manipulation-world-model.md) — 在线学习的无散度 3D Gaussian 速度场世界模型与 future-aware 策略并行耦合，面向快速动态目标操作（ECCV 2026）
 - [Xiaomi-Robotics-U0](../wiki/entities/xiaomi-robotics-u0.md) — 38B 统一自回归世界基础模型：T2I/X2I 与多视角具身场景生成/迁移/操纵视频共训，不内置策略头，作为下游 VLA 的合成数据引擎——「视觉逼真≠动作可推断」的直接例证
+- [Looped World Models（循环世界模型）](../wiki/entities/paper-sa-2606-18208-looped-world-models.md) — **Stage 1 世界侧架构对照**：同一动作步内共享 Transformer 迭代细化潜状态、延迟解码末态；原文主要验证文本世界预测，非已部署机器人 Joint WAM。
 - [ODEWorld](../wiki/entities/paper-odeworld.md) — PT-Flow 在物理时间上学 latent ODE 速度场，JVP 一阶监督 + 动力学解耦缓解 JEPA 坍塌；LIBERO 长程视频 PSNR 19.46，AgileX+X-VLA 55%→80%；推理与权重已开源
 - [Hydra-0](../wiki/entities/paper-hydra-0.md) — 用图像平面稀疏 action flow 作跨具身 WM 条件，robot EPE −90.4%、RoboLab 开环 r=0.96；2,202 h 训练；确认未开源
 - [CausalWM](../wiki/entities/paper-causalwm.md) — Aether AI 具身世界模型：按「光流 → XYZ 点图 → 未来 RGB」显式因果链生成
@@ -169,6 +170,7 @@ flowchart LR
 ### 推荐读什么
 - [DiT4DiT（双 DiT 联合 VAM）](../wiki/entities/paper-dit4dit-video-action-model.md)
 - [MotionWAM（人形 loco-manip · 实时 WAM）](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
+- [InternW0-Δ（Causal Imprint / 20K+ h 异构数据）](../wiki/entities/paper-internw0-delta.md) — Joint MoT（视频专家 + 动作专家），训练期 future-feature + Track4World 监督、部署期 action-only 去噪；代码与四类权重已公开，跨本体仍需 adapter 和 post-training。
 - [ABot-M0.5（移动操作 · latent action + Dream Forcing）](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)
 - [Dexmal DW05（OpenDW）](../wiki/entities/dexmal-dw05.md) — Wan 骨干 + MoT 三专家头联合视频/动作/价值的开源 Joint WAM，含训练/推理全栈与 RoboTwin 2.0 微调评测包
 - [Lumo-2（Latent World-Action Model）](../wiki/entities/lumo-2.md) — Qwen3.5-4B 潜空间世界–动作模型，三阶段渐进模态预对齐 + BAR 块解码，真机 22 项挑战全面超 π₀.₅/Fast-WAM
@@ -236,6 +238,7 @@ flowchart LR
 
 **方向 C：评测与安全一致性**
 - 同时看世界侧（保真、物理常识、动作可推断性）与策略侧（成功率、长程、sim2real）；避免单侧代理
+- [VLAW：真实失败校准与想象策略改进](../wiki/entities/paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md) — 对照接触物理误判、Qwen3-VL 奖励 FP/FN 和真机策略成功率，强调视觉逼真与物理可信不同；为 WM 辅助策略后训练的边界案例。
 - 关键词：综述评测节、[GigaWorld-1](../wiki/entities/paper-gigaworld-1-policy-evaluation.md)、[SC3-Eval](../wiki/entities/paper-sc3-eval.md)（自一致视频生成作真机 VLA 策略评估器，闭环 Pearson 0.929）、[HarnessEval-W](../wiki/entities/paper-harnesseval-w.md)（LLM harness 接交互式世界模型评测，Intentional 排序与人类 ρ=0.93）、开放挑战（想象未来与真实执行的因果一致）
 
 **方向 D：与 VLA / BFM / 移动操作整机栈汇合**

@@ -430,6 +430,42 @@ op: ingest
 - **知识落点：** 建立唯一论文 wiki 实体、论文与项目页 sources 归档，加入 WBC 概念入链；包含原文数据/控制流程 Mermaid。
 - **验证边界：** 按仓库来源与阅读骨架静态核对；通过 GitHub 连接器提交，当前容器无法访问 GitHub，未本地执行全量 make ci-preflight 或真机复现。
 
+# 位置编码教程 ingest 记录
+
+## [2026-11-16] ingest | OVBench 与 S-EMBER：流式视频理解与第一视角情景记忆
+
+- **意图：** 独立归档两篇原文，建立在线视频问答及第一视角有证据记忆检索两条知识节点，并挂载具身模型评测 Stage 1。
+- **开源结论：** OVBench 官方已有训练/评测脚本与 ViT 特征 PMB（KV-cache 版本尚待）；S-EMBER 已有 MCQ/grounding 评测脚本和 HF 数据。
+- **判断边界：** 在线时空问答与时间证据检索相关却不同；都不能代替机器人动作成功率。
+- **待办：** 论文所有附录完整核读、模型评测复现、健康度与 CI 实测。PR 保持草稿。
+
+## [2026-11-16] ingest | InternW0-Δ 官方权重上线与源码运行时序核对
+
+- 原位完善 `wiki/entities/paper-internw0-delta.md`，避免按同篇 arXiv 论文重建重复实体。
+- 复核 Base/LIBERO/RoboTwin/RoboDojo 四个公开 HF checkpoint，修正旧的 forthcoming 表述，明确 MIT 代码、Apache-2.0 模型与第三方数据许可边界。
+- 阅读训练与 RTC ROS2 部署源码、补 Mermaid 源码时序图，挂载 WAM 纵深路线 Stage 3；未实际运行训练或真机。
+
+## [2026-11-16] ingest | MACaQ | 逐层 MXFP4 量化的精度、时间与推理代价
+
+- 意图：依据 arXiv:2611.10649v2 完整方法与实验收录 MACaQ，并核实多后端官方实现。
+- 开源结论：论文、vLLM/llama.cpp/Diffusers/PyTorch 代码与部分 HF 模型产物可访问；未实际复现。
+- 知识定位：新增 [MACaQ 独立论文详情](../wiki/entities/paper-macaq.md)，挂载模型架构纵深路线 Stage 5；与机器人 VLAQuantBench 闭环量化评测对照，避免把语言模型 PPL 误写成真机成功率。
+- 一手资料：https://arxiv.org/abs/2611.10649v2；https://github.com/huawei-csl/MACaQ；https://huawei-csl.com/blog/macaq/；https://huggingface.co/collections/huawei-csl/macaq
+
+## [2026-11-16] ingest | sources/papers/opennwm_arxiv_2611_01844.md — 核对 OpenNWM arXiv v1 公式与实验、源码和 Go2 部署边界
+
+- 更新已存在的论文实体 wiki/entities/paper-opennwm.md（不重复建页）：UNLA 物理监督、CDiT、真实动作 CEM、v1 Table 1–5 与 NavAnywhere Table 6。
+- 更新来源归档（paper/repo/site），核查根 run.py、LAM/NWM 训练评测入口、Hugging Face 模型与数据。
+- 明确 Office-Go2 ATE 2.89 / RPE 0.65 是离线评测；Go2 EDU + Jetson 仅有部署计划，尚无验证的闭环节点。
+- 将节点挂接至导航纵深路线 Stage 5。
+
+## [2026-11-16] ingest | sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md — 通读 Raschka 教程，归纳现代 LLM 位置编码
+
+- 原文为 2026-11-15 发布的技术博客；全文 §1–§7 已核对，非独立论文或新项目。
+- 新建位置编码概念页（GPT-2 absolute、sinusoidal、RoPE、Partial RoPE、NoPE、相对偏置），并为 Transformer 与模型架构纵深 Stage 1 建立交叉引用。
+- 源码核对了原文所引用的 rasbt/LLMs-from-scratch Qwen3 notebook，绘制基于真实调用关系的运行时序图；未执行模型。
+- 对长上下文泛化与行业趋势的结论保留文章采样边界，区分数学性质与模型表现。
+
 ## [2026-11-16] ingest | sources/papers/cortex_arxiv_2610_20399.md — Cortex：上下文到 FFN 参数记忆的巩固
 
 - 依据 arXiv:2610.20399v1 整理 prospective rehearsal、FFN 参数扩展及无上下文蒸馏，独立建立中文/英文论文详情。

@@ -31,6 +31,7 @@ flowchart TB
 - **推荐度（用户策展）**：①②④⑤⑥⑧为 ★★★★★；③⑦为 ★★★★☆；③适合理解 **十亿级 Robotics Diffusion Transformer**，⑦与②的 IL 配方互补、偏 **OXE 通才 VLA**。
 - 每篇先抓 **action chunk** 与 **推理时 horizon**（receding horizon / 异步执行），再抓 **条件注入**（CNN/U-Net、adaLN、cross-attn VLM、flow 速度场）。
 - [模仿学习纵深](depth-imitation-learning.md) Stage 3 已覆盖 DP 概念时可 **跳过重复**，从 Stage ② 进入。
+- **课前补基础（可选，不占 8 篇代表作名额）：** [MIT 6.S184：Flow Matching & Diffusion Models（2026）](../wiki/overview/mit-flow-matching-diffusion-2026.md) 配官方 Lab 1–3，从 ODE/SDE、条件概率路径、CFG 到 DiT/VAE。先完成 Lab 1–2 再读 ① Diffusion Policy / ④ π₀，可用源码区分速度场积分与去噪采样；该课本身不研究机器人动作控制。
 - 图中箭头表示建议对比顺序，不表示后作直接继承前作；**扩散/流匹配是训练与采样机制，DiT 是骨干结构**，两条轴可组合。FM 仍需积分，少步/单步效果须由具体模型与实验确认。
 
 **命名消歧**

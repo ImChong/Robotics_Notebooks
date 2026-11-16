@@ -92,6 +92,7 @@ flowchart LR
 ### 推荐读什么
 - [RNN vs CNN vs Transformer vs Mamba](../wiki/comparisons/rnn-cnn-transformer-mamba.md) — 四类骨干在长程 / 并行 / 复杂度 / 归纳偏置上的对照
 - [Transformer](../wiki/concepts/transformer.md) · [多头注意力](../wiki/concepts/multi-head-attention.md) — 现代骨干的通用底座与核心交互算子
+- [位置编码：绝对、RoPE、NoPE 与相对偏置](../wiki/concepts/positional-encoding.md) — 对照 GPT-2、正弦编码、RoPE 旋转与现代混合层，理解长序列顺序建模、实现细节及外推边界
 - [卷积神经网络](../wiki/concepts/convolutional-neural-network.md) · [通道与空间注意力](../wiki/methods/channel-spatial-attention.md) — 卷积路线与 Transformer 之前的注意力增强
 - [状态空间模型（SSM）](../wiki/concepts/state-space-model-ssm.md) — 选择性 SSM 如何在近线性复杂度下拿到长程能力
 - [U-Net](../wiki/methods/unet.md) — 编码器–解码器 + 跳跃连接，后来成为扩散策略的常用去噪骨干
@@ -233,6 +234,7 @@ flowchart LR
 - 选一条压缩路径（蒸馏或量化）做一次 A/B：记录成功率、动作平滑度与最坏时延三项，而不是只看平均时延
 
 ### 推荐读什么
+- [MACaQ：模型无关的 MXFP4 W4A4 校准量化](../wiki/entities/paper-macaq.md) — 逐线性层缩放、旋转、指数筛选与 Flip-Refinement；用于研究低比特模型部署，但需另测机器人闭环质量与实际时延。
 - [AIInfraGuide：AI Infra 全栈学习指南](../wiki/entities/aiinfraguide.md) — 单卡 Kernel、显存与多卡通信到推理调度的分层 Profiling 路线，用于给架构选型补性能证据
 - [具身规模法则](../wiki/concepts/embodied-scaling-laws.md) — 数据 / 参数 / 泛化的幂律关系与边界
 - [实时性与泛化取舍](../wiki/concepts/embodied-fm-latency-generalization-tradeoff.md) — 规模与推演步长如何压住控制带宽

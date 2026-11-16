@@ -98,6 +98,8 @@ flowchart LR
 - [RoboBench](../wiki/entities/robo-bench.md) — 五维 14 能力 25 任务 6092 QA；规划维用 MLLM-as-world-simulator 检验物理/视觉可行性，用8骨干迁移实验审计认知与下游控制的关系：CALVIN感知相关显著，LIBERO-Long affordance 仅呈非显著正趋势
 - [ESI-Bench](../wiki/entities/esi-bench.md) — OmniGibson 上 10 类 29 子类 3081 题，要求主动闭合感知–行动环，暴露 MLLM 的行动盲与元认知缺口
 - [Daily-Omni](../wiki/entities/paper-daily-omni.md) — 日常音视频跨模态时序对齐（684 视频 / 1197 MCQA），补"环境声与画面是否对齐理解"这一维
+- [OVBench / VideoChat-Online](../wiki/entities/paper-ovbench-videochat-online.md) — 在线视频的历史、当前、未来时空理解及 PMB 多尺度记忆评测，非机器人执行成功率
+- [S-EMBER](../wiki/entities/paper-s-ember.md) — 流式第一视角记忆问答：因果截断加证据时间定位，区分回答正确性与记忆溯源
 - [MMHU](../wiki/entities/paper-mmhu.md) — 驾驶场景人本 Behavior VQA，相邻域对照
 
 ### 学完输出什么

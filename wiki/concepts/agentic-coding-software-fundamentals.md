@@ -8,9 +8,10 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-11-11
+updated: 2026-11-16
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身；当代码吞吐扩张后，源码控制、检出、CI 与评审也会成为基础设施瓶颈。"
 related:
+  - ./coding-agent-orchestration-and-cognitive-oversight.md
   - ../entities/mattpocock-skills.md
   - ../entities/archify.md
   - ../entities/superpowers-obra.md
@@ -39,6 +40,9 @@ related:
 original:
   - ../../sources/blogs/anthropic_context_engineering_reading_agcsf1.md
 sources:
+  - ../../sources/blogs/addyosmani_coding_agents_manager_2026-01-08.md
+  - ../../sources/blogs/addyosmani_cognitive_surrender_2026-05-05.md
+  - ../../sources/sites/anthropic_claude_code_best_practices_2026.md
   - ../../sources/repos/humanfia-humanize.md
   - ../../sources/blogs/anthropic_finding_your_unknowns_2026-07-06.md
   - ../../sources/blogs/anthropic_context_engineering_2026-07-24.md
@@ -195,6 +199,10 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 - [Data Flywheel](./data-flywheel.md) — 数据生命周期与回流；对应本页「Managing data」
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 把判断编译进持久 wiki，而不是每次让 agent 从零 vibe
 
+## 多 Agent 管理与认知把关
+
+[多 Agent 编码管理与认知把关](./coding-agent-orchestration-and-cognitive-oversight.md) 补齐「把 coding agents 当团队管理」与「不把 AI 结论直接当自己的判断」两条约束：任务简报明确非目标、验收与文件所有权；分支隔离和 WIP 限额保护 review 容量；测试、独立 diff 审查与人对关键取舍的解释共同构成交付证据。Claude Code 官方进一步区分依靠模型遵循的指引（prompt、skills）和由 harness / CI 执行的硬门禁（hooks、权限、sandbox）。在机器人栈中，评测通过不自动等于安全上机。
+
 ## 软件分析与重建
 
 [Craft Anything](../entities/craft-anything.md) 将目标检查、coding agent 构建与结果比较串联；输出仍需按任务验证功能与边界。
@@ -204,6 +212,10 @@ Felix Rieseberg 则把目标分成速度、高度、深度和广度：除了加�
 [Humanize](../../sources/repos/humanfia-humanize.md) 提供 CLI、终端与 Web 工作流来编排 coding agent；其 README 明确提示运行时绕过审批，应先在临时仓库验证。将其用于机器人代码时，仍需由项目自己的测试与评审定义交付条件。
 
 ## 参考来源
+
+- [Addy Osmani，多编码代理的管理（本站归档）](../../sources/blogs/addyosmani_coding_agents_manager_2026-01-08.md)
+- [Addy Osmani，认知投降与理解债（本站归档）](../../sources/blogs/addyosmani_cognitive_surrender_2026-05-05.md)
+- [Anthropic，Claude Code 最佳实践（官方文档归档）](../../sources/sites/anthropic_claude_code_best_practices_2026.md)
 
 - [Humanize 仓库归档](../../sources/repos/humanfia-humanize.md)
 
