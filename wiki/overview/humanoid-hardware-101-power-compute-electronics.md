@@ -3,13 +3,16 @@ type: overview
 tags: [humanoid, hardware, battery, compute, pcb, bms, category-hub]
 status: complete
 updated: 2026-11-16
-summary: "Humanoid Hardware 101 · 05 能源与计算电子 — 锂电 NMC 标配、功率密度与能量密度难兼得；Thor/NX 主导算力；PCB/BMS 可随 DFM 复用降本。"
+summary: "人形机器人能源与计算电子：按任务占空比做电池、算力、配电与热预算；以 TI 电池监测、NVIDIA Jetson Thor 与 KiCad 官方资料区分器件规格、系统能力和制造交付。"
 related:
   - ./humanoid-hardware-101-technology-map.md
   - ../queries/humanoid-battery-thermal-management.md
   - ../entities/open-source-humanoid-brains.md
   - ../entities/kicad.md
   - ../entities/altium-designer.md
+original:
+  - ../../sources/sites/robot-energy-compute-pcb-review.md
+  - ../../sources/courses/kicad_docs_10_zh.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
@@ -30,19 +33,27 @@ sources:
 
 ## 电池
 
-- **锂离子** 标配（轻、高电压）；正极常见 **NMC** 等镍基体系利能量密度。
+- 电芯化学体系、串数、倍率和温度范围按任务选择；原综述的 NMC 行业判断不作为所有人形机器人的固定配置。
 - 人形需同时：**高功率密度**（失稳毫秒级修正）+ **高能量密度**（整班续航）——化学体系 **难以双极致**。
 - 电池包增重 → 更大电机扭矩 → 更高功耗（**重量螺旋**）；优化在 **标准电芯 + 封装集成 + 认证 BMS**。
 
 ## 计算单元
 
-- 文内：**NVIDIA Thor / NX / ADX** 等在机器人边缘算力占主导，短期难大幅降价。
+- 以 **NVIDIA Jetson Thor T5000** 为一个官方可核对的案例：128 GB 内存、273 GB/s 带宽、40–130 W 功率范围，最高 2070 **FP4 sparse TFLOPS**；这不代表任意模型的实测速率，也不证明市场占有率。
 - 早期定制板卡贵，**模块复用 + DFM** 可快速降本（非硅价 alone）。
 
 ## PCB
 
 - 驱动板、控制板、通信与电源管理；受益于 **面板化批量** 与汽车/移动电子生态。
 - 自研或改版开源板卡时，常用 **[KiCad](../entities/kicad.md)** 等开源 EDA 完成原理图 → layout → Gerber 交付；量产向流程可参考商业 EDA 官方文档 **[Altium Designer](../entities/altium-designer.md)**（规则驱动 layout、制造 OutJob、ECAD-MCAD 协同）。关节驱动落板细节见 [力矩电机设计纵深 Stage 4](../../roadmap/depth-torque-motor-design.md)；低功率开源对照见 [SimpleFOC](../entities/simplefoc.md) 板卡资料。
+
+## 官方资料核对：器件、模块与系统分别验收
+
+[TI 与 NVIDIA 官方资料](../../sources/sites/robot-energy-compute-pcb-review.md)将本页的硬件例子落实到具体边界：BQ76952 面向 3–16 串电池，提供监测、保护及均衡能力，支持多种电池体系；它本身不是完整电池包或认证 BMS，仍需外部开关、采样网络、阈值配置及电芯验证。
+
+Jetson 模块的内存、带宽、功率模式和推理数值应连同精度/稀疏性口径一起记录；计算模块功耗还要叠加载板、存储、传感器和 DC/DC 损耗。不能把 FP4 sparse TFLOPS 与 INT8 TOPS 直接比较，也不能由峰值算力推定持续工作频率或整机续航。
+
+PCB 交付以[已通读的 KiCad 10.0 官方入门](../../sources/courses/kicad_docs_10_zh.md)为依据：保留工程、规则、原理图和布局的一致性，填铜与 DRC 完成后导出 Gerber/钻孔/BOM；工具过检不等于电流、热与 EMC 已通过实板测试。
 
 ## 关联页面
 
@@ -55,6 +66,8 @@ sources:
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 
 ## 参考来源
+
+- [TI 电池监测与 NVIDIA Jetson Thor 官方资料复核](../../sources/sites/robot-energy-compute-pcb-review.md) — 本次实际读完的一手资料与核对边界。
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)
 - [wechat_humanoid_hardware_101_2026-06-01.md](../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)

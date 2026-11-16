@@ -9,6 +9,8 @@ related:
   - ./rs-485-serial-bus.md
   - ./can-bus-protocol.md
   - ../overview/motor-drive-firmware-bus-protocols.md
+original:
+  - ../../sources/sites/adi-serial-ti-level-translation-pcb-review.md
 sources:
   - ../../sources/sites/rs232_tia_eia_primary_refs.md
   - ../../sources/courses/uart_rs485_serial_embedded.md
@@ -127,6 +129,8 @@ flowchart TB
 
 ## 参考来源
 
+- [ADI 串行接口与 TI 电平转换官方资料复核](../../sources/sites/adi-serial-ti-level-translation-pcb-review.md) — 本次实际读完的一手资料与核对边界。
+
 - [RS-232（TIA/EIA-232）一手资料索引](../../sources/sites/rs232_tia_eia_primary_refs.md)
 - [UART / RS-485 嵌入式入门索引](../../sources/courses/uart_rs485_serial_embedded.md)
 
@@ -134,6 +138,12 @@ flowchart TB
 
 - TI [SLLA038 — RS-232 Basics](https://www.ti.com/lit/an/slla038/slla038.pdf)
 - ITU-T [V.24](https://www.itu.int/rec/T-REC-V.24) 电路定义
+
+## 官方资料核对：UART 与线路收发器
+
+[ADI/Maxim 官方技术全文](../../sources/sites/adi-serial-ti-level-translation-pcb-review.md)将 UART 与 RS-232 线路器件分开：UART 完成字节与比特流转换、起始/停止/校验位，线路驱动器和接收器则完成 TTL/CMOS 到正负电压及反相的转换。
+
+选板级收发器时，应核对电源、外接电荷泵电容、接收端允许电平、ESD 条件与负载电容。历史教程中“标准速率”和器件的扩展高速模式口径不同，不能把表格最大值当作任意电缆和芯片的保证；本文不转引其疑似单位错误的 slew-rate 文本，设计以目标器件当前数据手册为准。
 
 ## 工程实践
 

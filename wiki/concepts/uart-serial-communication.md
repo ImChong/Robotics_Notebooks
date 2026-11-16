@@ -12,6 +12,8 @@ related:
   - ../comparisons/can-vs-ethercat-joint-bus.md
   - ../concepts/processor-in-the-loop-sim2real.md
   - ../queries/real-time-control-middleware-guide.md
+original:
+  - ../../sources/sites/adi-serial-ti-level-translation-pcb-review.md
 sources:
   - ../../sources/courses/uart_rs485_serial_embedded.md
   - ../../sources/sites/ttl_uart_logic_level_primary_refs.md
@@ -92,6 +94,8 @@ flowchart LR
 
 ## 参考来源
 
+- [ADI 串行接口与 TI 电平转换官方资料复核](../../sources/sites/adi-serial-ti-level-translation-pcb-review.md) — 本次实际读完的一手资料与核对边界。
+
 - [UART / RS-485 嵌入式入门索引](../../sources/courses/uart_rs485_serial_embedded.md)
 - [TTL / CMOS UART 逻辑电平一手资料](../../sources/sites/ttl_uart_logic_level_primary_refs.md)
 - [RS-232（TIA/EIA-232）一手资料](../../sources/sites/rs232_tia_eia_primary_refs.md)
@@ -105,6 +109,12 @@ flowchart LR
 ## 核心机制
 
 UART 发送器将数据按起始位、数据位、可选校验位和停止位串行化；接收器以起始沿同步并按配置波特率采样。UART 不决定引脚电压标准，TTL/CMOS、RS-232 与 RS-485 是不同电气实现。
+
+## 官方资料核对：帧格式与物理层分工
+
+[ADI 官方串行通信全文](../../sources/sites/adi-serial-ti-level-translation-pcb-review.md)确认 UART 负责并串转换以及异步收发的起始、停止和可选校验位，外部收发器负责 TTL/CMOS 与 RS-232 的电压和极性转换。UART 配置正确不代表电气连接正确；排障应先检查电平与共地，再确认波特率和字符格式。
+
+校验位只能发现部分传输错误；消息边界、地址、超时、重传和完整性校验由应用协议定义。RS-232 的 RTS/CTS 等握手线与 UART 数据引脚也应分开核对，不能只按连接器外形判断可直接互连。
 
 ## 工程实践
 

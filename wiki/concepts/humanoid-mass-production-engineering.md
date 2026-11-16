@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, manufacturing, dfm, supply-chain, reliability, yield]
 status: complete
-updated: 2026-09-19
+updated: 2026-11-16
 related:
   - structure-tolerance-simulation-toolchain.md
   - ./embodied-foundation-model-hardware-codesign.md
@@ -15,12 +15,16 @@ related:
   - ../entities/unitree-g1.md
   - ../../roadmap/humanoid-practitioner-entry-roadmap.md
   - ./humanoid-testing-workflow.md
+original:
+  - ../../sources/sites/nist-process-capability-acceptance-pcb-review.md
 sources:
   - ../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md
-summary: "人形量产经验是把技术可行性转化为制造可行性的系统工程能力：三大核心件（谐波/PRS/无框电机）工艺定型、良率 S 曲线与 CPK 门槛、供应链一致性与 ISO/IEC 可靠性体系，并可从汽车 PPAP 与 3C MES 等跨行业迁移——样机与资本不等于量产。"
+summary: "人形量产工程将样机能力转为可重复制造和批次交付：以过程稳定性、能力指标、抽样验收与失效数据闭环组织评审；Cpk、客户门槛和整机良率须按不同口径解释。"
 ---
 
 # 人形机器人量产工程能力
+
+> **资料口径**：本次以 NIST 一手资料核对过程能力与抽样验收。历史工程文章中的厂商产能、良率、成本与测试时长未经原始统计核实，保留为背景线索；它们不构成本页的统一验收门槛。
 
 ## 一句话定义
 
@@ -65,7 +69,7 @@ flowchart LR
   Ramp[良率 S 曲线爬坡<br/>中试→小批→规模]
   SC[供应链一致性<br/>材料/绕线/磨削]
   Rel[可靠性验证<br/>ISO/IEC + 寿命台架]
-  PPAP[PPAP / 控制计划<br/>CPK≥1.33 等]
+  PPAP[PPAP / 控制计划<br/>客户约定的过程放行条件]
   Ship[规模交付]
   DFM --> Proc --> Ramp --> SC --> Rel --> PPAP --> Ship
 ```
@@ -94,7 +98,7 @@ flowchart LR
 
 **产线节拍 CT（文内典型量级）：** 关节模组装配 15–30 min/件；减速器测试 5–10 min；电机绕线 3–5 min。  
 **FPY：** 首批 ≥95% 一次合格。  
-**CPK：** 关键尺寸 ≥1.33（≈99.99%）常被视为进主流供应链的 **过程能力门槛**。
+**Cpk：** 历史文章以关键尺寸 ≥1.33 为客户放行门槛的示例；具体值应由规格与客户协议确定，不能直接等同整机 99.99% 良率。适用前提和估计不确定性见下文 NIST 核对。
 
 ### 跨行业可迁移经验（摘要）
 
@@ -106,6 +110,16 @@ flowchart LR
 | **航天** | FMEA、冗余、HALT | 成本与重量 |
 | **手机精密制造** | CNC、阳极氧化、喷涂 | 结构件载荷与材料 |
 
+## 官方资料核对：过程能力与抽样验收
+
+[NIST 一手原文](../../sources/sites/nist-process-capability-acceptance-pcb-review.md)给出的前提是**受控过程、明确规格限和合适的分布假设**。`Cp = (USL - LSL) / (6σ)` 只比较分布宽度；`Cpk` 取均值到两侧规格限的裕量除以 `3σ` 的较小值，因此均值偏移会降低 Cpk，即使 Cp 不变。
+
+- **不能由 Cpk 阈值直接保证整机良率**：还要看量测系统、独立样本、分布形态与估计置信区间。NIST 的中心正态示例中 Cp=1.33 对应约 64 ppm 拒收，这是带前提的模型结果。
+- **抽样验收决定一批是否接受**，不能用一批抽检通过替代长期过程控制，也不能把抽检结果当成精确的总体缺陷率。
+- 对机器人批产，先冻结关节关键尺寸和测试方法，检查过程稳定性，再报告能力指标、样本量与区间；客户要求的 Cpk/AQL 与实际抽样计划需单独签核。
+
+下文保留的厂商产能、成本、良率与具体测试时长是历史二手文章的叙述，**本次未取得其原始统计，不作为本库确认的行业门槛或厂商冻结规格**。
+
 ## 工程实践
 
 ### 可靠性测试主干（选型/验收清单）
@@ -113,7 +127,7 @@ flowchart LR
 - **标准族：** ISO 9283（性能）、ISO 10218/13849（安全）、IEC 61508（功能安全）、IEC 60068-2 / MIL-STD-810H（环境）、GB/T 38559 等。  
 - **环境：** 85°C/85%RH 存储、-40~+85°C 温度循环、盐雾、多轴振动。  
 - **寿命台架：** 关节模组周级循环、减速器万小时级、电机绝缘寿命；配合 **扭转载荷谱** 与加速老化。  
-- **批产：** AQL 0.65 + GB/T 2828.1 水平 II 等——与 CPK 互补，一个管 **过程**，一个管 **批次放行**。
+- **批产：** 历史文章举例 AQL 0.65 与 GB/T 2828.1 水平 II；不是所有机器人统一的抽样要求。过程能力与批次验收须分别报告，具体计划按客户风险和产品规格确定。
 
 ### 主流路径对照（公开叙事，非冻结 BOM）
 
@@ -135,7 +149,7 @@ flowchart LR
 
 - **第三方解读边界**：本文编译自公众号工程叙事；产能、良率、投资金额等多来自公开报道，**会随财报与产品迭代变化**。  
 - **不要把汽车 PPAP 生搬硬套**：人形关节数多、耦合公差链长，且 RL 时代存在 **可消耗件与 QDD** 路线，安全与寿命指标需按整机重新定义。  
-- **样机 ≠ 量产**：媒体展示的行走/抓取不等于 CPK≥1.33 与万小时寿命；[硬件选型 Query](../queries/humanoid-hardware-selection.md) 应同时看 **科研平台** 与 **工业交付** 两条线。  
+- **样机 ≠ 量产**：媒体展示的行走/抓取不等于稳定过程和在目标工况下经过验证的寿命；[硬件选型 Query](../queries/humanoid-hardware-selection.md) 应同时看 **科研平台** 与 **工业交付** 两条线。  
 - **地缘与产能叙事**：[产业与成本](../overview/humanoid-hardware-101-supply-chain-economics.md) 中的中美供应链框架仍约束 **谁能先拿到稳定四大件**。
 
 ## 关联页面
@@ -149,6 +163,8 @@ flowchart LR
 - [Unitree G1](../entities/unitree-g1.md) — 量产科研平台对照  
 
 ## 参考来源
+
+- [NIST：过程能力与抽样验收原文复核](../../sources/sites/nist-process-capability-acceptance-pcb-review.md) — 本次实际读完的一手资料与核对边界。
 
 - [wechat_zanehub_humanoid_mass_production_experience.md（仓库内归档）](../../sources/blogs/wechat_zanehub_humanoid_mass_production_experience.md) — Zane Hub 公众号：<https://mp.weixin.qq.com/s/CARW0vvd4doO1htt0Q1bHg>
 

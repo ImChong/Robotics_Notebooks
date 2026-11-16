@@ -10,6 +10,8 @@ related:
   - ./humanoid-mass-production-engineering.md
   - ../overview/humanoid-hardware-101-actuation-sensing-chain.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
+original:
+  - ../../sources/sites/igus-cables-adi-emc-pcb-review.md
 sources:
   - ../../sources/blogs/wechat_zane_hub_humanoid_wire_harness_types_protection_2026-10-20.md
 summary: "人形机器人线束按功能分为动力、编码器、总线、传感器、微连、复合与配电安全七类，按运动特性选导体等级；防护以走线结构优先，辅以应变消除、屏蔽、护套、弯曲半径—寿命匹配、连接器与电气缓冲，并用实际半径/速率/温度下的循环次数而非标称「百万次」做选型。"
@@ -198,11 +200,21 @@ N = 每分钟循环数 × 每日运动分钟数 × 年工作天数 × 服役年�
 
 ## 参考来源
 
+- [igus 运动电缆与 ADI/TI 电磁兼容资料复核](../../sources/sites/igus-cables-adi-emc-pcb-review.md) — 本次实际读完的一手资料与核对边界。
+
 - [Zane Hub：人形机器人用线束有哪些类型？如何进行防护？](../../sources/blogs/wechat_zane_hub_humanoid_wire_harness_types_protection_2026-10-20.md)（原文：https://mp.weixin.qq.com/s/xL6Zd8yU4oeUDOG7cxWu8g ；个人观点，数值未核实）
 
 ## 核心原理
 
 线束失效由电流发热、运动应变与电磁耦合共同决定。先以安装位和运动轨迹分离动力、反馈与通信线路，再确定导体、屏蔽、护套和应变释放结构。
+
+## 官方资料核对：运动类型与屏蔽端接
+
+[igus 官方运动电缆资料及 ADI MT-095](../../sources/sites/igus-cables-adi-emc-pcb-review.md)分别支撑机械和电气两类选型：电机、反馈、总线、混合与机器人扭转电缆按任务选择，拖链往复弯曲与多轴扭转不能只用同一个“柔性”标签替代；耐油、温度与允许运动边界也随电缆型号变化。
+
+厂家宣传的最大循环数、最小半径或服务寿命有具体产品和测试条件，不能直接承诺任意关节寿命。评审应将半径、扭转角/单位长度、速度、温度、载流与端部固定方式一起交给供应商，并以实际线束工况验证。
+
+屏蔽端接需考虑干扰频率与电缆电长度。MT-095 指出高频干扰下通常需要两端低阻抗、连续屏蔽；低频地环则应按电路与安全要求处理，不能把“两端接地”一概列为错误。
 
 ## 工程实践
 
