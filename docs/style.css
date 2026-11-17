@@ -20,6 +20,9 @@
   --shadow-sm: 0 4px 12px color-mix(in srgb, var(--shadow-tint) 5%, transparent);
   --shadow-md: 0 8px 30px color-mix(in srgb, var(--shadow-tint) 24%, transparent);
   --radius: 12px;
+  /* 所有模态弹窗及遮挡式抽屉共用中性半透明磨砂遮罩；不影响浮动提示和页面背景 */
+  --modal-backdrop-bg: rgba(32, 32, 32, 0.52);
+  --modal-backdrop-blur: blur(4px);
   --header-h: 58px;
   /* 与 https://imchong.github.io/ 主栏 (.container / .header-inner) 一致 */
   --content-max-width: 960px;
@@ -54,10 +57,24 @@
   --header-bg: rgba(255, 255, 255, 0.8);
   --header-border: rgba(0, 0, 0, 0.1);
   --shadow-tint: #37352f;
+  --modal-backdrop-bg: rgba(80, 80, 80, 0.26);
   --shadow-sm: 0 4px 12px color-mix(in srgb, var(--shadow-tint) 6%, transparent);
   --shadow-md: 0 8px 30px color-mix(in srgb, var(--shadow-tint) 10%, transparent);
   /* 亮色保持纯净底，仅首屏 .hero-backdrop 保留点阵 */
   --grid-dot: transparent;
+}
+
+/* 全站弹窗 / 抽屉遮罩：统一透明度、色调和模糊，底色为不支持 backdrop-filter 的回退 */
+.sponsor-dialog-backdrop,
+.mermaid-lightbox-backdrop,
+.sidebar-overlay,
+.home-nav-overlay,
+.roadmap-ltree-map-backdrop,
+#graph-legend-scrim,
+#filter-panel-scrim {
+  background: var(--modal-backdrop-bg);
+  -webkit-backdrop-filter: var(--modal-backdrop-blur);
+  backdrop-filter: var(--modal-backdrop-blur);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -238,9 +255,6 @@ body.sponsor-dialog-open {
 .sponsor-dialog-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
 }
 .sponsor-dialog-card {
   position: relative;
@@ -2224,7 +2238,6 @@ button.home-wiki-heatmap-cell.is-active {
 .mermaid-lightbox-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
   pointer-events: auto;
 }
 .mermaid-lightbox-panel {
@@ -2711,8 +2724,6 @@ button.home-wiki-heatmap-cell.is-active {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(2px);
   z-index: 900;
   opacity: 0;
   transition: opacity 0.3s var(--ease);
@@ -2901,8 +2912,6 @@ button.home-wiki-heatmap-cell.is-active {
   position: fixed;
   inset: 0;
   z-index: 1250;
-  background: rgba(0, 0, 0, 0.42);
-  backdrop-filter: blur(2px);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s var(--ease), visibility 0.25s var(--ease);
@@ -3588,9 +3597,6 @@ body.roadmap-ltree-map-open {
 .roadmap-ltree-map-backdrop {
   position: fixed;
   inset: 0;
-  background: color-mix(in srgb, var(--bg) 56%, transparent);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
 }
 .roadmap-ltree-map-panel {
   position: relative;

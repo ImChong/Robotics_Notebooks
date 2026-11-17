@@ -1533,8 +1533,10 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
                 seen_edges.add(key)
                 edges.append({"source": page_id, "target": target_id})
 
-    # README 等现存文件未必是图谱节点；序号徽标只能指向真实节点。
+    # README 等现存文件未必是图谱节点。提取内链时允许指向这些文件，
+    # 但它们不在 _iter_graph_pages() 的节点表中，必须在社区分配/统计前排除悬空边。
     node_ids = {node["id"] for node in nodes}
+    edges = [edge for edge in edges if edge["source"] in node_ids and edge["target"] in node_ids]
     for node in nodes:
         if "route_order" in node:
             node["route_order"] = [key for key in node["route_order"] if key in node_ids]

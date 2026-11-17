@@ -17,6 +17,31 @@ def test_pack_edges_as_indices_follows_node_order_and_drops_unknown_endpoints(ca
     assert "1 条边" in capsys.readouterr().err
 
 
+def test_build_graph_data_skips_readme_edges_but_keeps_real_links(tmp_path, monkeypatch) -> None:
+    """文档内链可指向 README，但其不入图谱节点，不能进入边表或社区邻接表。"""
+    wiki = tmp_path / "wiki"
+    roadmap = tmp_path / "roadmap"
+    wiki.mkdir()
+    roadmap.mkdir()
+    (wiki / "a.md").write_text(
+        "# A\n\n[路线](../roadmap/depth-test.md)\n\n[索引](../roadmap/README.md)\n",
+        encoding="utf-8",
+    )
+    (roadmap / "depth-test.md").write_text("# Route\n", encoding="utf-8")
+    (roadmap / "README.md").write_text("# Index\n", encoding="utf-8")
+
+    monkeypatch.setattr(glg, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(glg, "GRAPH_CONTENT_DIRS", (wiki, roadmap))
+    nodes, edges = glg._build_graph_data()
+
+    assert {node["id"] for node in nodes} == {"wiki/a.md", "roadmap/depth-test.md"}
+    assert edges == [{"source": "wiki/a.md", "target": "roadmap/depth-test.md"}]
+    assert len(glg.pack_edges_as_indices(nodes, edges)) == len(edges)
+    adjacency = glg.build_undirected_adjacency([node["id"] for node in nodes], edges)
+    assert adjacency["wiki/a.md"] == {"roadmap/depth-test.md"}
+    assert "roadmap/README.md" not in adjacency
+
+
 def test_pack_activity_days_compact_round_trips_every_reference() -> None:
     days = [
         {
