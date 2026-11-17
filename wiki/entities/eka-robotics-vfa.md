@@ -2,7 +2,7 @@
 type: entity
 tags: [vfa, vision-force-action, manipulation, foundation-model, sim2real, reinforcement-learning, tactile, startup, mit, deepmind, eka-robotics]
 status: complete
-updated: 2026-10-21
+updated: 2026-11-17
 related:
   - ../methods/vla.md
   - ../concepts/sim2real.md
@@ -16,6 +16,9 @@ related:
 sources:
   - ../../sources/sites/eka_robotics_com.md
   - ../../sources/blogs/wechat_sourcemind_eka_vfa_actuate26_2026-09-26.md
+  - ../../sources/blogs/eka_robotics_official_vfa_2026-10-20.md
+original:
+  - ../../sources/sites/eka_robotics_com.md
   - ../../sources/blogs/eka_robotics_official_vfa_2026-10-20.md
 summary: "Eka Robotics（剑桥）公开 Vision-Force-Action（VFA）操作基础模型：力与视觉同为控制一等信号，主打仿真 RL 规模化与自研触觉手；相对 VLA/纯视频缩放强调速度×可靠性与 sim-to-real；截至入库日无官方代码/权重。"
 ---
@@ -149,6 +152,9 @@ flowchart TD
 - [Pulkit Agrawal — MIT CSAIL](https://people.csail.mit.edu/pulkitag/)
 
 ## 参考来源
+
+**原文核对（2026-11-17）：** 已通读 [Eka 官网](../../sources/sites/eka_robotics_com.md) 的公开文字与 [2026-10-20 官方文章](../../sources/blogs/eka_robotics_official_vfa_2026-10-20.md) 全文。模型训练超参、独立 benchmark 与可运行源码仍未由这些资料给出；视频未逐帧验证，故性能数据仍仅作公司自述，非第三方结论。
+
 
 - [Eka Robotics 官网（一手）](../../sources/sites/eka_robotics_com.md)
 - [Eka Robotics 官方文章：VFA 与实验室操作吞吐（2026-10-20）](../../sources/blogs/eka_robotics_official_vfa_2026-10-20.md)
