@@ -11,12 +11,21 @@ sources:
   - ../../sources/papers/survey_papers.md
   - ../../sources/papers/gamma_world_arxiv_2605_28816.md
 summary: "CTDE（集中式训练，分布式执行）vs 完全去中心化：多智能体 RL 两大训练范式的选型对比。"
-updated: 2026-05-31
+updated: 2026-11-17
 ---
 
 # CTDE vs 完全去中心化 MARL
 
 在 [多智能体强化学习（MARL）](../methods/marl.md) 里，多个机器人在同一空间协作或竞争（多臂流水线、机器人足球、集群导航）。两个核心难点是 **非平稳性**（别人的策略在变，环境转移也在变）与 **联合动作空间维度爆炸**。围绕「训练时能看到多少信息」这条轴，MARL 分成两大范式：**CTDE** 与 **完全去中心化**。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MARL | Multi-Agent Reinforcement Learning | 多智能体协作或竞争中的强化学习 |
+| CTDE | Centralized Training, Decentralized Execution | 训练可利用集中信息，执行按各体可用观测决策 |
+| PPO | Proximal Policy Optimization | MAPPO 与 IPPO 使用的策略优化方法 |
+| RLCR | Reinforcement Learning from Collective Rewards | 用集体回报训练共享策略的软件 Agent 方法 |
 
 ## 核心对比
 
@@ -58,21 +67,28 @@ updated: 2026-05-31
 | 需部署时各体独立运行 | 两者皆可（执行期都只用局部观测） | 关键差异在训练期信息 |
 | 强协作、信用分配难 | CTDE | 去中心化非平稳性放大协作难度 |
 
-## 英文缩写速查
+## 与 RLCR 集体推理时扩展的选型边界
 
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+[RLCR：集体推理时扩展](../methods/rlcr-collective-inference-time-scaling.md) 讨论共享策略的软件 Agent 如何借集体回报、通信与 wall-clock 截止时间学习协作。**训练/执行的信息范围**和**奖励/时延激励**是不同选型轴；不能仅因 RLCR 使用共享回报，就把它归成集中式 critic 的 CTDE 实现。
+
+| 要解决的问题 | 先核对什么 | 评估方式 |
+|---|---|---|
+| 机器人各体在局部观测下协作 | 训练是否可访问全局状态、执行允许哪些观测与通信 | 对齐任务、体数、观测和通信预算比较 CTDE 与独立学习基线 |
+| 软件 Agent 能否在限定时间内交付更多工作 | 环境能否在任意截断点给可信进度回报 | 比较单 Agent、匹配 token 的长思考、独立并行尝试和可通信集体 |
+| 判断 RLCR 的通信是否值得 | 任务是否真的需要交接、消息是否挤占执行时间 | 同时报告回报随时间曲线、达到同分的耗时、token 和通信量 |
+
+这里的 RLCR 对照依据 [General Reasoning 官方博客归档](../../sources/blogs/gr_how_to_train_a_swarm_2026_11_02.md)。Avalon-M1 的截止时间方案不会给截止前同分但更快的 rollout 额外奖励；其软件任务观察也没有验证机器人通信、安全或群控收益。
 
 ## 参考来源
 
+- [How to Train a Swarm 官方博客归档](../../sources/blogs/gr_how_to_train_a_swarm_2026_11_02.md) — RLCR 的奖励、通信、时间约束及软件任务证据边界
 - Vinyals, O., et al. (2019). *Grandmaster level in StarCraft II using multi-agent reinforcement learning*.
 - [sources/papers/survey_papers.md](../../sources/papers/survey_papers.md) — MARL 综述与范式分类
 - [sources/papers/gamma_world_arxiv_2605_28816.md](../../sources/papers/gamma_world_arxiv_2605_28816.md) — 多智能体生成式交互世界模型
 
 ## 关联页面
 
+- [RLCR：集体推理时扩展](../methods/rlcr-collective-inference-time-scaling.md) — 共享回报与时延激励的实践对照，不等同于训练/执行信息结构的分类
 - [Multi-Agent Reinforcement Learning (MARL)](../methods/marl.md) — 范式、挑战与分类总览
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — 单体 RL 基础
 - [Whole-body Coordination](../concepts/whole-body-coordination.md) — 单体内部多自由度协调，与多体协调相对照

@@ -130,6 +130,7 @@ flowchart TD
 
 ## 关联页面
 
+- [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 机器人研发还需区分代码验收与策略、仿真和真机评测；编码 Agent 的测试通过不能代替后几层验证。
 - [Agentic Coding 时代的软件工程基础](./agentic-coding-software-fundamentals.md) — 管理前先具备架构与取舍语言。
 - [AI Agent 评测](./ai-agent-evaluation.md) — 将运行结果而非自述作为验收基础。
 - [规格驱动开发](./specification-driven-development.md) — 如何明确需求与验收条件。

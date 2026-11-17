@@ -108,6 +108,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 对照目标检测、跟踪、语义建图和下游任务接口，区分已公开的 Cutie 跟踪模块与整机系统。
 - [29 篇具身论文研究地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder 操作任务难度分层](./paper-maniladder-manipulation-benchmark.md)
 

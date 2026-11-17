@@ -92,6 +92,7 @@ flowchart LR
 
 ## 关联页面
 
+- [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 将可执行软件修复评测与机器人策略成功率、sim↔real 校准分层；F2P/P2P 通过不能替代真机行为验证。
 - [本期 29 篇具身论文选型地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder：任务难度分层评测](./paper-maniladder-manipulation-benchmark.md)
 

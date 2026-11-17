@@ -2,9 +2,11 @@
 type: query
 tags: [benchmark, evaluation, embodied-ai, mllm, world-model, vla, sim2real, taxonomy]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-17
 summary: "具身大模型评测基准选型闭环知识链：把具身大脑/MLLM 认知评测 → 世界模型预测保真度评测 → 策略任务成功率评测 → sim↔real 评测 gap 校准 四层评测，从分散的评测基准实体页沉淀为一条端到端选型决策链，逐层说明测什么、用什么代表性基准、指标的可复现性/真实代表性/过程 vs 结果/成本如何取舍及典型误判。"
 sources:
+  - ../../sources/papers/agentic_real2sim_arxiv_2607_19190.md
+  - ../../sources/papers/robolab_arxiv_2604_09860.md
   - ../../sources/papers/robo_bench_arxiv_2510_17801.md
   - ../../sources/papers/ewmbench.md
   - ../../sources/papers/worldolympiad_arxiv_2606_11129.md
@@ -159,6 +161,11 @@ flowchart TD
 
 ---
 
+## 来源更新后的证据边界（2026-11-17）
+
+- **Agentic Real2Sim v5：回放、策略学习与虚实相关分开验收。** [既有 v5 原文核对归档](../../sources/papers/agentic_real2sim_arxiv_2607_19190.md) 已补充 DROID-500 主实验：242/500（48.4%）回放成功；四个 VLM 的成本对照仍是 DROID-100 子集。v5 另有合成扩增微调 π0.5，以及六个 pick-and-place 任务上的 π0 虚实闭环成功率 Pearson r=0.920、p=0.009。后者是有限任务上的相关性证据，不能由回放成功率推算，也不能外推为所有任务的排名保证。官方六阶段转换代码已公开，运行条件与未复现边界见[唯一论文实体](../entities/paper-agentic-real2sim.md)。
+- **RoboLab：同时固定指标、样本量与版本。** [v4 原文与 v0.3.3 核对归档](../../sources/papers/robolab_arxiv_2604_09860.md) 指出，单任务 N=10 时，50% SR 附近的 95% CI 半宽约 ±30 个百分点；小差值或逐任务研究建议至少 100 回合/任务。完整成功率 SR 与子目标 Score 分开报告。v0.3.3 增加初始位姿随机化和灯光预设，跨版本比较前必须固定这些条件。RoboArena 的 Spearman ρ=0.94 是排序相关，不是绝对成功率的一致性保证。
+
 ## 评测层选型矛盾速查（按取舍归因）
 
 | 矛盾 | 一端 | 另一端 | 选型第一判据 |
@@ -199,6 +206,8 @@ flowchart TD
 
 ## 参考来源
 
+- [Agentic Real2Sim v5 核对归档](../../sources/papers/agentic_real2sim_arxiv_2607_19190.md) — DROID-500、DROID-100 与六任务虚实相关性的不同口径
+- [RoboLab v4 / v0.3.3 核对归档](../../sources/papers/robolab_arxiv_2604_09860.md) — 样本量、SR/Score 与评测版本边界
 - [RoboBench 全文与统计边界复核](../../sources/papers/robo_bench_arxiv_2510_17801_full_reading_2026_11_15.md)
 
 - [worldolympiad_arxiv_2606_11129.md](../../sources/papers/worldolympiad_arxiv_2606_11129.md) — WorldOlympiad 长视频物理、3D 与交互诊断

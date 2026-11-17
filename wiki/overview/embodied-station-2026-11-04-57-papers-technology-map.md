@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-17
 related:
   - ../entities/paper-dna.md
   - ../entities/paper-ode-policy-action-dynamics.md
@@ -74,7 +74,7 @@ flowchart TB
 | RAFT | [paper-raft-reasoning-aligned-finetuning](../entities/paper-raft-reasoning-aligned-finetuning.md) | 部分开源 |
 | Energy-Based Policy Orchestration | [paper-energy-based-policy-orchestration](../entities/paper-energy-based-policy-orchestration.md) | 项目页未列 GitHub |
 | Beyond Policy Patches | [paper-beyond-policy-patches](../entities/paper-beyond-policy-patches.md) | 项目页未列 GitHub |
-| W2A | [paper-w2a-world-priors-action-models](../entities/paper-w2a-world-priors-action-models.md) | 项目页未列 GitHub |
+| W2A | [paper-w2a-world-priors-action-models](../entities/paper-w2a-world-priors-action-models.md) | 展示网站仓已公开；Code 按钮仍为占位，无可运行训练/推理入口（2026-11-16 核查） |
 | CANDO | [paper-cando-residual-rl](../entities/paper-cando-residual-rl.md) | 项目页未列 GitHub |
 
 ### 世界模型与感知（6 篇）
@@ -171,6 +171,7 @@ flowchart TB
 
 ## 参考来源
 
+- [W2A 原文与项目页代码入口核对](../../sources/papers/w2a_world_priors_action_models_arxiv_2611_02600.md) — 展示站仓库与可运行算法代码分别判断
 - [D&A 论文通读归档](../../sources/papers/dna_reading_arxiv_2611_03622_techmap57.md)（arXiv:2611.03622）
 - [wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md](../../sources/blogs/wechat_embodied_station_57_papers_da_reward_model_failure_2026-11-04.md)
 

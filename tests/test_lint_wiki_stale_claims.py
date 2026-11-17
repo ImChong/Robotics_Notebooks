@@ -20,6 +20,26 @@ def test_absence_of_a_phrase_is_not_a_performance_claim() -> None:
     assert lw._stale_claim_hit('全文不含 "SOTA" 表述。但这是最新方法。', set()) == "最新"
 
 
+def test_warning_about_exaggeration_preserves_real_performance_claims() -> None:
+    warning = "性能报告要分开写动态扰动、静态成功率、真机进度和通用 benchmark，避免把局部收益夸大成全面 SOTA"
+    assert lw._stale_claim_hit(warning + "。", set()) is None
+    assert lw._stale_claim_hit(warning + "，但本方法是 SOTA。", set()) == "SOTA"
+    assert lw._stale_claim_hit(warning + "；本方法是最新的开源实现。", set()) == "最新"
+    assert lw._stale_claim_hit("为避免碰撞，本方法达到 SOTA。", set()) == "SOTA"
+
+
+def test_async_policy_runtime_updates_preserve_algorithm_claims() -> None:
+    body = (
+        "动作专家读取最新相机画面和共享最新语义记忆；"
+        "使用最新缓存、最新观测及最新完成版本，不必等待慢循环。"
+    )
+    assert lw._stale_claim_hit(body, set()) is None
+    assert lw._stale_claim_hit(body + "本方法是最新的开源实现。", set()) == "最新"
+    assert lw._stale_claim_hit("本方法是最新缓存算法。", set()) == "最新"
+    assert lw._stale_claim_hit("本方法是最新语义记忆模型。", set()) == "最新"
+    assert lw._stale_claim_hit("本系统采用最新相机。", set()) == "最新"
+
+
 def _setup_wiki(tmp_path: Path, monkeypatch) -> Path:
     monkeypatch.setattr(lw, "REPO_ROOT", tmp_path)
     wiki = tmp_path / "wiki" / "concepts"

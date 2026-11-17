@@ -140,6 +140,7 @@ $$
 
 ## 关联页面
 
+- [机器人本体（Embodiment）](../concepts/embodiment.md) — 理解 Embodiment 类任务为何需要当前身体与状态的可行性约束
 - [PaLM-E](./paper-palm-e-embodied-language-model.md)
 - [RT-2](./paper-rt-2.md)
 - [Vesta 通用具身推理](./paper-vesta-generalist-embodied-reasoning.md)

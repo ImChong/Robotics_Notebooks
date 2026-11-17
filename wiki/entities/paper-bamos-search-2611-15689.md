@@ -108,6 +108,7 @@ Isaac Sim 与 HSSD 场景、多种误检/漏检条件的消融说明未检更新
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 将检测、深度几何与搜索决策串联，分别检查漏检建模、视角选择和停止判据。
 - [2026-11-16 具身研究论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ActionCodec2：流式动作编解码](./paper-actioncodec2-streaming-action-tokenizer.md)
 

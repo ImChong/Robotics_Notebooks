@@ -107,6 +107,7 @@ Isaac Lab 随机相机位姿布局、多个相机与近照片级场景测试；�
 
 ## 关联页面
 
+- [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 对照相机位姿、障碍图坐标转换与导航器消费接口，分别评估地图 IoU 和导航成功率。
 - [本期 29 篇具身论文选型地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder：任务难度分层评测](./paper-maniladder-manipulation-benchmark.md)
 

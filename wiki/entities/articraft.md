@@ -4,7 +4,7 @@ tags: [generative-ai, simulation, articulated-bodies, dataset, llm-agents, 3d-as
 status: complete
 original: ../../sources/sites/articraft3d-github-io.md
 date: 2026-05-16
-updated: 2026-11-15
+updated: 2026-11-17
 related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
@@ -145,7 +145,7 @@ sequenceDiagram
 - [Artisan](./artisan.md) — 在多智能体程序化生成链路中加入独立 Review 与物理仿真反馈，和 Articraft 形成直接方法对照。
 - [PhysX-Omni](./physx-omni.md) — **VLM + 模板 RLE + TRELLIS** 统一三类物理 3D 与 **PhysXVerse** 数据引擎；项目页亦列 Articraft 等为生成对比基线。
 - [SCULPT](./paper-sculpt-subtractive-3d-part-generation.md) — **TRELLIS.2 减法式纹理部件生成**；共享骨干生态但不含关节/物理仿真字段。
-- [Agentic Real2Sim](./paper-agentic-real2sim.md) — 同属 **agentic VLM** 谱系，但单位是 **交互 episode→MuJoCo 孪生**，而非可关节网格资产库。
+- [Agentic Real2Sim](./paper-agentic-real2sim.md) — 同属 **agentic VLM** 谱系，但单位是 **交互 episode→MuJoCo 孪生**，而非可关节网格资产库。[v5 核对归档](../../sources/papers/agentic_real2sim_arxiv_2607_19190.md) 已记录公开的六阶段转换管线与下游策略实验；其回放成功率、策略微调和六任务虚实相关性不能代作 Articraft 资产质量的指标。
 - [AgentSTAR](./paper-agenticstar.md) — 同属 **代码化可关节几何 + agent harness**；AgentSTAR 从 **单目视频** 联合 **shape track**，Articraft 偏 **静态 sim-ready 资产生成**。
 - [Video2DoorTraversal（论文实体）](./paper-video2door-traversal.md) — DoorTwin 在 Articraft 程序上叠加度量视频接地与参考视角 critic，用于轮足推门穿越（arXiv:2608.20251；代码待发布）。
 - [LiteReality-Agent](./litereality-agent.md) — 房间级 scan→交互场景；init 阶段 **改编 Articraft** 生成 procedural 物体。

@@ -10,6 +10,7 @@ doi: "10.3389/fcomp.2026.1848830"
 project_id: agentic-survey-doi-ddc6fc88fa219f08
 paper_url: https://www.frontiersin.org/journals/computer-science/articles/10.3389/fcomp.2026.1848830/full
 project_page: https://github.com/Center-for-Integrated-Cognition/STARS
+code: https://github.com/Center-for-Integrated-Cognition/STARS
 sources:
 - ../../sources/repos/awesome-agentic-robots-survey-index.md
 summary: 'STARS: extending interactive task learning with large language models：Awesome

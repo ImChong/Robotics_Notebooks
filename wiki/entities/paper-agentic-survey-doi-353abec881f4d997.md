@@ -10,6 +10,7 @@ doi: "10.1145/3757279.3785641"
 project_id: agentic-survey-doi-353abec881f4d997
 paper_url: https://doi.org/10.1145/3757279.3785641
 project_page: https://github.com/HindsboNikolaj/SCOPE
+code: https://github.com/HindsboNikolaj/SCOPE
 sources:
 - ../../sources/repos/awesome-agentic-robots-survey-index.md
 summary: 'SCOPE: Real-Time Natural Language Camera Agent at the Edge：Awesome Agentic

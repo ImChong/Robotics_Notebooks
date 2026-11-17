@@ -141,7 +141,8 @@ STALE_CLAIM_OVERREAD_WINDOW = 30
 # 「画面 / 图像」指策略每步拿到的当前相机输入（「小模型结合最新画面高频出动作」），同属运行时量；
 # 「深度图」同理（「RL 策略依据最新深度图与运动状态追踪 carrot」）。
 STALE_CLAIM_RUNTIME_OBJECT_RE = re.compile(
-    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数|候选|画面|图像|深度图)"
+    r"[\sA-Za-z0-9_./-]{0,16}(?:帧|状态|观测|位姿|数据|快照|消息|指令|读数|候选|画面|图像|深度图|"
+    r"(?:相机画面|相机图像|语义记忆|缓存|完成版本)(?!算法|模型|方法))"
 )
 # 「SOTA / state-of-the-art + 基线」是对照组的类别名（「相对经典/SOTA 基线，证书
 # 平均收窄 51.6%」），指的是被比较的那批既有方法，不是本页对自身的时效性断言；
@@ -225,6 +226,9 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "true",
     "false",
     "null",
+    # complete：节点 status / 完成档位 / demo 场景名；不是独立技术概念。
+    # 例如「本节点 `complete` 表示文献解读完成」不构成缺页信号。
+    "complete",
     # none：命中处均为 Python 空值 `None` 或配置枚举默认值 `none`（WeVisOne-VL /
     # GroundingPI 的拒答输出、Gymnasium 的 `render_mode=None`、AW-0 服务响应字段、
     # diagram-design 动效默认值），与 null/true/false 同类字面量，非可成页概念。
@@ -1588,6 +1592,10 @@ def _stale_claim_negated(body: str, start: int, end: int) -> bool:
     for brk in STALE_CLAIM_SENTENCE_BREAKS:
         before = before.rsplit(brk, 1)[-1]
     if any(cue in before for cue in STALE_CLAIM_NEGATION_CUES):
+        return True
+    # 「避免把局部收益夸大成全面 SOTA」在提醒读者限制结论，不是在宣称最优。
+    # 只认紧邻命中词的完整句式，不把一般的「避免碰撞，达到 SOTA」一并豁免。
+    if re.search(r"避免把[^，。！？；\n]{1,20}夸大成(?:全面)?\s*$", before):
         return True
     after = body[end : end + STALE_CLAIM_OVERREAD_WINDOW]
     for brk in STALE_CLAIM_SENTENCE_BREAKS:

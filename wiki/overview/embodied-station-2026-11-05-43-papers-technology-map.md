@@ -2,7 +2,7 @@
 type: overview
 tags: [overview, survey, embodied-ai, vla, world-model, benchmark, technology-map, wechat]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-17
 original:
   - ../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md
 related:
@@ -39,7 +39,7 @@ summary: "具身智能小站 2026-11-05 盘点：GRASP 梯度引导采样的接�
 ## 为什么重要
 
 - 公众号一次列出 43 篇（1 深读 + 2 跟进 + 40 扫读）、方向跨度大，需要横切面索引；每篇只保留一个判断，细节在各节点。
-- 节点内的数字为公众号转述，未核验原文表格（GRASP 已通读原文，例外）；开源结论为入库日核查结果，见各节点「为什么重要」。
+- 初始索引中的数字来自公众号转述；GRASP 与后续复核的 ARP 已有一手原文归档，具体核对范围见独立节点。开源结论按各节点注明的最近核查日期阅读。
 
 ## 流程总览
 
@@ -55,7 +55,7 @@ flowchart TB
 ## 工程实践
 
 1. **按任务筛选：** 从下方四个主题分组找到目标问题，跳转独立论文节点阅读方法、实验证据和局限，避免把 43 条短摘要当成完整论证。
-2. **核对实验数字：** 公众号给出的指标仅作为初筛线索；定量比较必须回到对应论文、实验设置和表格。GRASP 已有独立全文通读记录；其余节点的阅读/复现程度分别以各自页面为准。
+2. **核对实验数字：** 公众号给出的指标仅作为初筛线索；定量比较必须回到对应论文、实验设置和表格。GRASP、ARP 已有独立全文通读归档；其余节点的阅读/复现程度分别以各自页面为准。ARP 的动态扰动收益与 RoboLab 综合能力须分开：原文 ARP-3B 在 RoboLab 报告 20.0%，π0.5-DROID 为 37.9%，且训练数据与视觉特征不同；真机任务进度也不等于完成率，详见[原文核对](../../sources/papers/asynchronous_robot_policies_arxiv_2611_05155.md)。
 3. **检查复现入口：** 开源列为入库或最近核验时的状态，点击独立实体页核对代码、权重与训练入口。例：ReflexArc 可在官方页看交互演示，但作者仍标注 `Code Coming soon`，不能据此将其计为可复现开源实现。
 
 ## 分组索引
@@ -92,7 +92,7 @@ flowchart TB
 | Proactive Human-in-the-Loop Correction | [paper-proactive-human-in-the-loop-correction](../entities/paper-proactive-human-in-the-loop-correction.md) | 项目页未列 GitHub |
 | GSBR | [paper-gsbr](../entities/paper-gsbr.md) | 已开源 |
 | Action-Token Supervision | [paper-action-token-supervision](../entities/paper-action-token-supervision.md) | 项目页未列 GitHub |
-| Asynchronous Robot Policies | [paper-asynchronous-robot-policies](../entities/paper-asynchronous-robot-policies.md) | 待发布 |
+| Asynchronous Robot Policies | [paper-asynchronous-robot-policies](../entities/paper-asynchronous-robot-policies.md)（已有 v1 原文复核） | Code / Models 待发布（官方页 2026-11-16 核查） |
 | CRONOS | [paper-cronos](../entities/paper-cronos.md) | 项目页未列 GitHub |
 | CANDO | [paper-cando-residual-rl](../entities/paper-cando-residual-rl.md)（复用） | 已开源 |
 
@@ -136,6 +136,7 @@ flowchart TB
 
 ## 参考来源
 
+- [ARP v1 原文核对归档](../../sources/papers/asynchronous_robot_policies_arxiv_2611_05155.md) — 动态扰动、RoboLab、真机任务进度与代码/权重开放边界
 - [wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md](../../sources/blogs/wechat_embodied_station_43_papers_grasp_mesa_airoa_2026-11-05.md)
 - [ReflexArc 官方项目页核查归档](../../sources/sites/reflexarc.md) — 2026-11-12 代码仍待发布
 - [grasp_arxiv_2611_05754.md](../../sources/papers/grasp_arxiv_2611_05754.md) — GRASP 原文通读：OakInk2 Sharpa 双手 1,352 条示范，1,024 粒子成功率 92.8%、2,000 粒子 94.2%（成功率来自仿真；arXiv:2611.05754）
