@@ -154,6 +154,7 @@ flowchart LR
 - 任选一篇视觉 sim2real 工作，画出它在"随机化 / 蒸馏 / VFM 替代"三分中的位置
 
 ### 推荐读什么
+- [MolmoB0T（大规模合成轨迹与视觉先验的零样本迁移）](../wiki/entities/paper-molmobot.md) — Stage 3 视觉 Sim2Real 案例：机器人策略纯仿真轨迹训练，但 Molmo2-4B 骨干已有真实图像/视频预训练，须分清训练数据边界。
 - [GR00T-VisualSim2Real](../wiki/entities/gr00t-visual-sim2real.md) — PPO Teacher + DAgger RGB Student，G1 零样本
 - [LadderMan](../wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 真机用 VFM 深度替代重度 depth randomization
 - [SRU](../wiki/entities/paper-sru-spatially-enhanced-recurrent-memory.md) — 合成深度预训练 + 深度噪声增强的零样本导航
