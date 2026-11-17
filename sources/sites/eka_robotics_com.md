@@ -7,6 +7,8 @@
 - **链接：** https://www.ekarobotics.com/
 - **联系：** hello@ekarobotics.com
 - **入库日期：** 2026-09-26
+- **核对范围：** 2026-11-17 复核官网首页的 VFA 定位、General / Performant / Interactive 三项能力描述、团队背景、导航与公开资源入口；未逐帧观看全部嵌入视频，未获得非公开模型细节。
+- **通读：** 已完成
 - **一句话说明：** 剑桥创业团队公开的 **Vision-Force-Action（VFA）** 操作基础模型叙事：以 **力** 为物理世界「母语」，宣称同时追求 **通用性、性能（速度×可靠性）与人机安全**；强调仿真规模化 RL 与自研触觉机械手，目标 **超越人类** 的操作吞吐而非仅模仿人类视频。
 - **沉淀到 wiki：** 是 → [`wiki/entities/eka-robotics-vfa.md`](../../wiki/entities/eka-robotics-vfa.md)
 

@@ -8,6 +8,8 @@
 - **链接：** https://ekarobotics.com/blog/eka-robotics-raises-150m-to-build-superhuman-intelligence-for-the-physical-world
 - **发布日期：** 2026-10-20
 - **入库日期：** 2026-10-21
+- **核对范围：** 2026-11-17 通读 Eka Robotics 2026-10-20 官方文章全文（融资背景、VFA 力觉与视觉定位、仿真 RL、Sim2Real、1,500 与 600 operations/h 对比、后续方向及团队）；文章未公开训练配置、标准评测协议或源码入口。
+- **通读：** 已完成
 - **一句话说明：** Eka 介绍其 Vision-Force-Action（VFA）路线：将视觉与接触力信息结合，通过仿真强化学习训练操作策略，并报告实验室中每小时约 1,500 次操作。
 
 ## 官方介绍摘要
