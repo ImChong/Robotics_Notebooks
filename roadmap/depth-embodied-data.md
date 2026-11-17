@@ -124,6 +124,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Embodied Data Cleaning（具身数据清洗）](../wiki/concepts/embodied-data-cleaning.md) — 时序对齐 / 异常过滤 / 重定向修复 / 分段剪辑四步管线，本阶段的核心页
+- [Data Pyramid：DataPyramid LeRobot v3 质量清洗](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) — 六类数据转为统一格式并按帧标注 `quality.valid` 的官方开源案例；区分处理清单、可下载范围与质量版本
 - [Auto-labeling Pipelines](../wiki/methods/auto-labeling-pipelines.md) — VLM 自动生成描述与成功率标签
 - [HumanNet](../wiki/entities/humannet.md) — 采集 → 处理 → 标注三阶段大规模管线，含 robot-ready 子集的量化判据
 - [TacClaw-Infinity（视触觉语言动作数据集）](../wiki/entities/paper-tacclaw-infinity.md) — Stage 2 案例：以触觉接触事件支撑分段与空间标注，结合可达性/可操纵度做跨本体筛选；采集规模与公开子集须分开核验
