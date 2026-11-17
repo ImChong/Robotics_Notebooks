@@ -7,6 +7,8 @@
 - **链接：** <https://huggingface.co/datasets/fpvlabs/stereo-550>
 - **论文：** [arXiv:2608.08285](https://arxiv.org/abs/2608.08285)
 - **项目页 / 3D：** <https://www.fpvlabs.ai/ego-oscar/cap>
+- **官方采集代码：** <https://github.com/fpv-labs/ego-oscar>（开源代码 Apache-2.0，不改变数据集授权条件）
+- **复核日期：** 2026-11-17
 - **机构：** 第一人称视觉实验室（FPV Labs）
 - **许可：** FPV Labs 定制 license（`fpvlabs-license`；见 <https://fpvlabs.ai/license> / HF 卡内链接）；**gated** 申请制
 - **入库日期：** 2026-08-12
@@ -21,7 +23,7 @@
 | 动作段 | **209,315**；时间线覆盖 ~100%；中位 94 段/会话 |
 | 词汇 | 460 verbs；32,630 object phrases；57,104 verb–object 组合 |
 | 长尾 | Top-20 表达式仅占 1.5% 实例 |
-| IMU | 1,271/1,462 会话（86.9%）；论文 ~120 Hz；HF 目录说明写 ~180 Hz |
+| IMU | 1,271/1,462 会话（86.9%）；论文 v3/公开录制器默认/HF 卡约 180 Hz，官网旧博客仍写 120 Hz |
 | 分辨率 | 1280×720 @ 30 fps，H.264 MP4 |
 | 标定 | 每会话 `calibration.json`（针孔 + radtan；基线 ≈42 mm） |
 | 贡献者 / 设备 | 25 user IDs / 13 共享设备 |
@@ -44,4 +46,5 @@
 - [Ego-OSCAR 论文实体](../../wiki/entities/paper-ego-oscar.md)
 - [论文归档](../papers/ego_oscar_arxiv_2608_08285.md)
 - [项目页归档](../sites/fpvlabs-ego-oscar.md)
+- [公开采集源码归档](../repos/fpv-labs-ego-oscar.md)
 - [Ego4D](../../wiki/entities/paper-ego4d.md)、[Ego 数据采集分类](../../wiki/overview/ego-category-01-data-collection.md)
