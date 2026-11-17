@@ -211,6 +211,7 @@ flowchart LR
 ### 推荐读什么
 - [GEN-1.5](../wiki/entities/generalist-gen15-one-shot.md) — 涌现式 one-shot 的产业样本（闭源自报）
 - [S1（Skild）](../wiki/entities/skild-s1.md) — 显式 ICL 预训练；未见长程操作（闭源自报）
+- [Machenta Instant Robot Learning](../wiki/entities/machenta-instant-robot-learning.md) — 纯仿真元学习 + 一次真机示范作为 VDA 上下文，跨本体演示为公司自报、源码未公开。
 - [ICL Emergence: Context and Diversity Matter](../wiki/entities/paper-sa-2509-22353-icl-emergence-context-and-diversity-matter-the-e.md) — 世界模型侧的涌现条件研究
 - [具身缩放律](../wiki/concepts/embodied-scaling-laws.md) · [数据飞轮](../wiki/concepts/data-flywheel.md) — 规模与数据循环侧的背景
 - [具身模型测评纵深](depth-embodied-eval.md) — 未见集划分与成功率之外的过程指标
