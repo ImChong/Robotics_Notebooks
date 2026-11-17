@@ -20,6 +20,8 @@ related:
   - ../concepts/world-action-models.md
   - ../concepts/recursive-self-improvement.md
   - ../methods/vla.md
+  - ../tasks/manipulation.md
+  - ../methods/model-based-rl.md
 original:
   - ../../sources/sites/motubrain-2-live.md
   - ../../sources/blogs/motubrain-2-official-live-updates.md
@@ -66,7 +68,10 @@ summary: "Motubrain 2.0 / Physical AI Live Lab：生数科技 2026-10-21 起公�
 | 代码 / 权重 | 官方曾预告后续开源；**截至 2026-11-17 未核实到 2.0 训练/推理代码或权重** |
 | 版本边界 | 现有 [MotuBrain GitHub 仓](https://github.com/shengshu-ai/MotuBrain) 对应第一代论文/资料，不能据其宣告 2.0 可复现 |
 
-## 官方公布的过程与证据
+## 核心原理与公开证据结构
+
+公开资料呈现的是分阶段训练与真机反馈过程，而**非**可确认的 2.0 内部网络结构：预训练和后训练的真机示例用于观察动作能力；Agent 阶段把任务执行失败反馈给代码调试环节；RSI 阶段仍是探索展示。这里仅根据官方公开描述整理信息流，不推断未披露的模型梯度、参数更新或自我改进机制。
+
 
 | 时间 | 阶段/事件 | 可观察内容 | 不应推断 |
 |------|-----------|------------|----------|
@@ -124,6 +129,9 @@ flowchart TD
 - [Motus2（含策略/世界/价值接口的自进化研究）](./paper-motus2.md)
 - [World Action Models](../concepts/world-action-models.md)
 - [递归自我改进](../concepts/recursive-self-improvement.md)
+- [VLA（视觉语言动作模型）](../methods/vla.md) — 对照前馈策略与世界模型耦合
+- [机器人操作任务](../tasks/manipulation.md) — 直播演示的任务类别
+- [Model-Based RL](../methods/model-based-rl.md) — 理解“由真机反馈改进模型”仍需何种证明
 - [WAM 纵深路线](../../roadmap/depth-wam.md)
 - [RSI 纵深路线](../../roadmap/depth-rsi.md)
 
