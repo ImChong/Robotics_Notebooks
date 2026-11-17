@@ -185,6 +185,7 @@ flowchart LR
 ### 推荐读什么
 - [VLA 与世界模型（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-09-vla-world-models.md)
 - [MotionWAM](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 与 [ABot-M0.5](../wiki/entities/paper-abot-m05-mobile-manipulation-wam.md)
+- [Rhoda Mobile DVA](../wiki/entities/rhoda-direct-video-action.md#mobile-dva2026-11-03-统一移动与操作扩展) — 非人形移动底盘 + 机械臂共享因果视觉未来并统一解码动作的产业样本；公司自报短数据迁移与目标桌混淆失效，未提供代码/权重。
 - [ω-0](../wiki/entities/paper-omega-0.md) — 潜空间未来观测 embedding 驱动的人形并发 loco-manipulation Joint WAM，G1 上 11 任务 Omni 成功率 81.8%；代码、数据与预训练检查点入口已公开，运行仍依赖外部模型资产（[官方 README](https://github.com/gentlefress/Omega-0/tree/2ca35a3ff9363c54c9c206ca101cdf58028824cb)）
 - [Kimodo-Policy](../wiki/entities/paper-kimodo-policy.md) — 运动学生成骨干接视觉条件与实测历史，再由 SONIC 执行的 VLA 路线；与 WAM 对比时先检查是否显式预测世界后果，参见 [动作生成 Stage 4](depth-motion-generation.md)
 - [World Action Models（WAM）](../wiki/concepts/world-action-models.md) 与 [VLA](../wiki/methods/vla.md)
