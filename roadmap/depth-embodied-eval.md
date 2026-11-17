@@ -162,6 +162,7 @@ flowchart LR
 - 把失败 rollout 按模式聚类（抓取失败 / 子任务切换失败 / 超时 / 过压），而不是只报一个均值
 
 ### 推荐读什么
+- [首届蚂蚁灵波具身大模型挑战赛（2026）](../wiki/entities/robbyant-embodied-ai-challenge-2026.md) — Stage 3 的标准化 50 任务赛事案例：统一 LingBot-VLA 2.0，仅 clean 训练、clean/randomized 双设置测试；线下真机决赛与仿真成绩分开记账。
 - [ManiLadder](../wiki/entities/paper-maniladder-manipulation-benchmark.md) — Stage 3 将 112 项操作任务按四难度级及任务族校准，用 AL@50 暴露平均成功率无法体现的能力短板（官方项目代码待核实）
 - [RoboLab-120（NVIDIA）](../wiki/entities/robolab.md) — 120 项桌面通用操作任务，聚焦真机训练策略零样本仿真评测、成功率/子任务得分/执行事件与语言、视觉扰动；与 RoboDojo 的 sim+real 协议互补。
 - [RoboDojo](../wiki/entities/robodojo.md) — 统一 sim-and-real 评测：42 仿真五维任务 + 18 真机任务，Isaac 异构并行 + RealEval 云真机；verified 上榜须开源训推与权重

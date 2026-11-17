@@ -14,7 +14,7 @@ tags:
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
 summary: RoboTwin 2.0 是专为双臂机器人设计的自动数据生成与仿真平台，基于 SAPIEN 引擎，支持大规模高质量专家数据合成。
-updated: 2026-11-15
+updated: 2026-11-17
 project_id: robotwin
 sources:
 - ../../sources/papers/rcl_awesome_wam_2506_18088_robotwin-2-0-a-scalable-data-generator-a.md
@@ -29,6 +29,7 @@ related:
 - ../methods/vla.md
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
+- ./robbyant-embodied-ai-challenge-2026.md
 arxiv: '2506.18088'
 venue: ICML 2026
 ---
@@ -95,6 +96,8 @@ RoboTwin 2.0 = **MLLM 写代码 + 仿真闭环纠错的双臂专家数据生成�
 
 ## 工程实践
 
+- **赛事协议示例：** [蚂蚁灵波具身大模型挑战赛（2026）](./robbyant-embodied-ai-challenge-2026.md)使用 Aloha-AgileX 50 任务的每任务 50 条 **clean** 数据训练 LingBot-VLA 2.0，**禁止 randomized 训练**；clean 和 randomized **各评测每任务 100 次**。该限制来自赛事规则，不等同于 RoboTwin 原论文的一般研究建议。
+
 - **数据怎么用：** 官方预采 10 万+ 轨迹（50 任务）；基准协议为 Aloha-AgileX、每任务 50 条干净演示、100 次 rollout，分 Easy（干净）与 Hard（随机化）。
 - **预训练建议：** 论文中用域随机化数据预训练（32 任务 × 300 条）使 RDT/Pi0 对未见任务相对提升约 31.9%/29.3%，而干净数据预训练几乎无增益。
 - **Sim2Real 配方：** 10 条真机 + 1000 条随机化合成，平均成功率提升 24.4 个点；纯合成零样本在未见背景上也有约 +20 个点；仿真相机位姿加 ≤1 cm 扰动以抗标定误差。
@@ -109,6 +112,8 @@ RoboTwin 2.0 = **MLLM 写代码 + 仿真闭环纠错的双臂专家数据生成�
 - 高自由度臂（Franka、UR5）从抓取适配几乎无增益（推断：瓶颈不在抓取候选）。
 
 ## 关联页面
+
+- [首届蚂蚁灵波具身大模型挑战赛（2026）](./robbyant-embodied-ai-challenge-2026.md) — 统一模型、数据隔离、仿真评测与真机决赛的赛事应用
 
 - [Lumina 具身智能社区](./lumina-embodied.md) — Guide 与 RoboTwin 2.0 Talk 的社区入口
 - [SAPIEN](./sapien.md) / [ALOHA](./aloha.md)
@@ -132,6 +137,7 @@ RoboTwin 2.0 = **MLLM 写代码 + 仿真闭环纠错的双臂专家数据生成�
 - [paper-a3-vla-attention-alignment](paper-a3-vla-attention-alignment.md) — A³-VLA（RoboTwin 2.0 上的注意力对齐微调）
 
 ## 参考来源
+- [赛事一手规则与赛题归档](../../sources/sites/robbyant-embodied-ai-challenge-2026.md) — 50 任务 clean 训练、clean/randomized 测试协议
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [Lumina 官网归档](../../sources/sites/lumina-embodied-ai.md)
 - [RoboTwin 官方仓库](https://github.com/msc-robotwin/robotwin)
