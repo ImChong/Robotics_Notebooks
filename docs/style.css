@@ -5008,3 +5008,17 @@ a.card:active { transform: translateY(-1px); }
     transition: none;
   }
 }
+
+/* 公司技术节点与各入口浮窗共享知识元数据。 */
+.co-node-metadata, .tt-communities, .tt-routes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+  font-size: .72rem;
+  color: var(--text-muted);
+}
+.co-node-metadata .tt-health { margin: 0 8px 0 0; }
+.tt-routes { max-height: 140px; overflow-y: auto; }
+.tt-communities .detail-meta-badge, .tt-routes .detail-meta-badge { font-size: .72rem; }

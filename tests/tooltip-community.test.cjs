@@ -37,3 +37,26 @@ test('no community label → no community tag', () => {
   const html = api().buildNodeTooltipHtml({ type: 'concept', title: 'T', communityColor: '#4e79a7' });
   assert.ok(!html.includes('tt-community'));
 });
+
+
+test('page-path metadata resolves communities and all matching routes without a mini graph', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(tooltipSource, context);
+  vm.runInContext(readFileSync(resolve(__dirname, '../docs/depth-filters.js'), 'utf8'), context);
+  const api = context.window.RNGraphTooltip;
+  const node = { id: 'wiki/entities/paper-gr00t.md', detail_id: 'entity-gr00t',
+    community: 'community-vla', community_secondary: 'community-imitation-learning' };
+  api.setGraphData({ nodes: [node], communities: [
+    { id: node.community, label: '视觉语言动作（VLA）社区' },
+    { id: node.community_secondary, label: '模仿学习（IL）社区' }
+  ] });
+  const html = api.buildNodeTooltipHtml({ health: { path: node.id }, title: 'GR00T' });
+  assert.match(html, /所属社区/);
+  assert.match(html, /视觉语言动作/);
+  assert.match(html, /模仿学习/);
+  const routes = context.window.RNDepthFilters.depthsForNode(node);
+  assert.ok(routes.length > 0);
+  for (const key of routes) assert.ok(html.includes('graph.html?depth=' + encodeURIComponent(key)));
+  assert.equal(api.resolveMetadataNode({ id: 'entity-gr00t' }), node);
+  assert.ok(!api.buildNodeTooltipHtml({ health: { path: 'unknown.md' } }).includes('tt-routes'));
+});

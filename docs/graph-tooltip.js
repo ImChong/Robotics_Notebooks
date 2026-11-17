@@ -408,6 +408,51 @@
     return '<div class="tt-health"><span class="tt-health-label">健康度</span>' + api.renderMeta(node) + '</div>';
   }
 
+  // 共享图谱索引：全站链接预览与卡片按路径或 detail_id 查同一个知识节点。
+  var metadataNodes = Object.create(null);
+  var metadataCommunities = Object.create(null);
+  var metadataColors = {};
+
+  function setGraphData(data) {
+    metadataNodes = Object.create(null);
+    metadataCommunities = Object.create(null);
+    metadataColors = buildCommunityColorMap(data.communities || []);
+    (data.nodes || []).forEach(function (node) {
+      metadataNodes[node.id] = node;
+      if (node.detail_id) metadataNodes[node.detail_id] = node;
+    });
+    (data.communities || []).forEach(function (community) {
+      metadataCommunities[community.id] = community;
+    });
+  }
+
+  function resolveMetadataNode(node) {
+    node = node || {};
+    return metadataNodes[node.path || node.id] || node;
+  }
+
+  function buildNodeCommunityBadgesHtml(node) {
+    node = resolveMetadataNode(node);
+    return [node.community, node.community_secondary].filter(function (id, i, ids) {
+      return id && ids.indexOf(id) === i;
+    }).map(function (id) {
+      var community = metadataCommunities[id];
+      return community ? buildCommunityBadgeHtml(id, community.label, metadataColors[id]) : '';
+    }).join('');
+  }
+
+  function buildTooltipRoutesHtml(node) {
+    var filters = window.RNDepthFilters;
+    if (!filters) return '';
+    var routes = filters.depthsForNode(resolveMetadataNode(node));
+    if (!routes.length) return '';
+    return '<div class="tt-routes"><span class="tt-health-label">所属路线</span>' + routes.map(function (key) {
+      var meta = filters.DEPTH_META[key];
+      return '<a class="detail-meta-badge" href="graph.html?depth=' + encodeURIComponent(key) + '">' +
+        '<span>' + escapeHtml(meta.emoji) + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
+    }).join('') + '</div>';
+  }
+
   function buildNodeTooltipHtml(opts) {
     opts = opts || {};
     var badges = buildMetaBadgesHtml(opts);
@@ -419,7 +464,11 @@
     var summary = opts.summary
       ? '<div class="tt-summary">' + renderInlineMarkdown(prepareMathText(opts.summary)) + '</div>'
       : '';
-    var community = buildTooltipCommunityHtml(opts.communityLabel, opts.communityColor);
+    var node = resolveMetadataNode(opts.node || opts.health || {});
+    var community = buildNodeCommunityBadgesHtml(node);
+    community = community ? '<div class="tt-communities"><span class="tt-health-label">所属社区</span>' + community + '</div>'
+      : buildTooltipCommunityHtml(opts.communityLabel, opts.communityColor);
+    var routes = buildTooltipRoutesHtml(node);
     var health = buildTooltipHealthHtml(opts.health);
     var extra = opts.extraHtml || '';
     var link = opts.linkHtml || '';
@@ -427,6 +476,7 @@
       '<div class="tt-title">' + title + '</div>' +
       summary +
       community +
+      routes +
       health +
       extra +
       link;
@@ -452,6 +502,10 @@
   }
 
   window.RNGraphTooltip = {
+    setGraphData: setGraphData,
+    resolveMetadataNode: resolveMetadataNode,
+    buildNodeCommunityBadgesHtml: buildNodeCommunityBadgesHtml,
+    buildTooltipRoutesHtml: buildTooltipRoutesHtml,
     bindBlankDismiss: bindGraphTooltipBlankDismiss,
     bindOutsideDismiss: bindGraphTooltipOutsideDismiss,
     isMetadataOnlySummary: isMetadataOnlySummary,

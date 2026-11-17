@@ -73,6 +73,10 @@
   }
 
   function renderNode(node) {
+    var api = window.RNGraphTooltip;
+    var knowledgeNode = api && api.resolveMetadataNode({ id: node.id });
+    var metadata = api && knowledgeNode
+      ? api.buildTooltipHealthHtml(knowledgeNode) + api.buildNodeCommunityBadgesHtml(knowledgeNode) : '';
     var links = '';
     if (node.id) links += '<a class="co-node-link" href="' + esc(detailHref(node.id)) + '">本库笔记 →</a>';
     if (node.url) links += extLink(node.url, '原文 ↗', 'co-node-link');
@@ -85,6 +89,7 @@
       '<span class="co-node-track">' + esc(node.track) + '</span></div>' +
       '<p class="co-node-desc">' + esc(node.desc) + '</p>' +
       (node.date_note ? '<p class="co-node-desc">日期口径：' + esc(node.date_note) + '</p>' : '') +
+      (metadata ? '<div class="co-node-metadata">' + metadata + '</div>' : '') +
       '<div class="co-node-links">' + links + '</div>' +
       '</div></li>';
   }
@@ -184,7 +189,11 @@
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
     })
-    .then(render)
+    .then(function (data) {
+      // 元数据失败时仍保留时间线与原文入口。
+      var metadata = window.RNLinkGraph ? window.RNLinkGraph.ensure() : Promise.resolve();
+      return metadata.catch(function () { return null; }).then(function () { render(data); });
+    })
     .catch(function (err) {
       console.warn('[company-roadmap] 加载失败', err);
       mount.classList.remove('data-loading');
