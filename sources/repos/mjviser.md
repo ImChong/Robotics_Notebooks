@@ -7,7 +7,10 @@
 - **官方仓库：** https://github.com/mujocolab/mjviser
 - **关联项目：** [MuJoCo](https://github.com/google-deepmind/mujoco)、[Viser](https://github.com/viser-project/viser)、[mjlab](https://github.com/mujocolab/mjlab)
 - **许可证：** Apache-2.0
-- **核查版本：** 0.0.14（读取仓库 `pyproject.toml`，2026-10-12）
+- **核查版本：** 0.0.17（官方 `main` 提交 `a9e52d5`，2026-11-12；本次核查 2026-11-17）
+- **通读：** 已完成
+- **核对范围：** 官方 README 全文、`pyproject.toml`、`CLAUDE.md` 架构说明，以及 `src/mjviser/__main__.py` 全文、`viewer.py` 入口与 `_tick/_step_physics/_render`、`scene.py` 的 `ViserMujocoScene` 初始化、`interaction.py` 刚体交互关键实现；以官方代码可读部分为依据，未实际安装运行或验证浏览器兼容性。
+- **开放状态：** 已开源（Apache-2.0；公开 Python 源码、CLI、示例与测试）；并非 RL 训练框架。
 - **入库日期：** 2026-10-12
 - **一句话说明：** 将 MuJoCo 模型与状态接入 Viser，提供浏览器里的实时 3D 场景、仿真控制和状态检查；它是查看器，不是训练框架或物理引擎。
 - **沉淀到 wiki：** 是 → [`wiki/entities/mjviser.md`](../../wiki/entities/mjviser.md)
@@ -49,7 +52,7 @@ data = mujoco.MjData(model)
 Viewer(model, data).run()
 ```
 
-Viewer 提供接近 MuJoCo 原生查看器的常用交互，包括仿真播放/暂停/单步/重置、关节与执行器滑块、相机跟踪、关键帧，以及接触和力的显示。自定义应用可以传入 `step_fn`、`render_fn`、`reset_fn`；也可以直接使用 `ViserMujocoScene`，自行管理仿真循环和 GUI。
+Viewer 提供接近 MuJoCo 原生查看器的常用交互，包括仿真播放/暂停/单步/重置、关节与执行器滑块、相机跟踪、关键帧，以及接触和力的显示。当前 `interaction.py` 已实现刚体选择、Cmd/Ctrl + 鼠标左右拖动以及运行时弹簧扰动/暂停时位姿移动，不应沿用早期「鼠标交互暂不可用」的判断。自定义应用可以传入 `step_fn`、`render_fn`、`reset_fn`；也可以直接使用 `ViserMujocoScene`，自行管理仿真循环和 GUI。
 
 ---
 
@@ -69,6 +72,16 @@ flowchart LR
 
 ---
 
+## 官方源码运行入口与时序（0.0.17）
+
+- CLI：`pyproject.toml` 的 `[project.scripts]` 将 `mjviser` 指向 `mjviser.__main__:main`。
+- 模型：`__main__.py::_resolve_path` 依次检查文件路径、可选 `robot_descriptions` 模型名，再按工作目录 glob 匹配；`MjModel.from_xml_path` 与 `MjData` 构造 MuJoCo 状态。
+- 查看器：`viser.ViserServer(port=...)` → `Viewer(...).run()`；`Viewer` 内创建 `ViserMujocoScene`，在 `run()` 生成 GUI 后进入 `_tick()` 循环。
+- 步进与渲染：`_step_physics()` 先调用 `Perturbation.step(..., paused=False)`，再调用 `step_fn`（默认 `mujoco.mj_step`）；按渲染节拍进入 `_render()`，默认 `scene.update_from_mjdata(data)`。暂停期间仍处理 `Perturbation.step(..., paused=True)`。
+- 扩展点：`Viewer` 的 `step_fn/render_fn/reset_fn` 可替换默认行为；`ViserMujocoScene` 也支持外部手动循环及多环境数据更新；多环境示例不是说 CLI 自动进行 RL 训练。
+
+这些关系来自实际公开源码，而非仅按 README 想象的通用架构。本次仅静态核对，未运行 Python 包、MuJoCo 或网页服务。
+
 ## 与 mjlab 的关系
 
 mjlab 的训练环境可使用 mjviser 作为可视化工具。mjlab 侧通过 `MjlabViserScene` 扩展 `ViserMujocoScene`，补充训练/仿真相关的调试可视化与 MuJoCo Warp 适配。训练任务、策略更新和大规模并行 rollout 属于 mjlab；通用场景查看、交互控件和网页呈现由 mjviser/Viser 提供。
@@ -86,7 +99,7 @@ Draft 仓库依赖分组区分了不同用途：浏览器参数编辑器的 `edi
 | 为自定义控制器接入可视化回调 | MuJoCo / MuJoCo Warp 物理内核 |
 | 远程运行仿真并通过浏览器观察 | CAD 设计或通用 DCC 内容制作 |
 
-仓库 README 标注的限制之一是鼠标直接点击/拖拽刚体和键盘回调受上游 Viser 能力限制。
+当前 README 和 `interaction.py` 明确实现刚体点击选择与拖拽扰动；相机与键盘快捷键仅在 Viser 允许的范围内与原生 `simulate` 对齐。源码实现不等于所有浏览器、系统及网络环境均经本次实际验证。当前 `pyproject.toml` 要求 Python `>=3.11,<3.15`，依赖 `mujoco-core>=4.0.1`、`viser>=1.1.1`、`trimesh>=4.8.3`，不能把旧版本依赖当作当前安装要求。
 
 ---
 
@@ -94,6 +107,10 @@ Draft 仓库依赖分组区分了不同用途：浏览器参数编辑器的 `edi
 
 - 官方仓库 README：<https://github.com/mujocolab/mjviser>
 - 依赖与版本：<https://github.com/mujocolab/mjviser/blob/main/pyproject.toml>
+- CLI：<https://github.com/mujocolab/mjviser/blob/main/src/mjviser/__main__.py>
+- 主动查看器：<https://github.com/mujocolab/mjviser/blob/main/src/mjviser/viewer.py>
+- 场景层：<https://github.com/mujocolab/mjviser/blob/main/src/mjviser/scene.py>
+- 鼠标交互：<https://github.com/mujocolab/mjviser/blob/main/src/mjviser/interaction.py>
 - 开发架构说明：<https://github.com/mujocolab/mjviser/blob/main/CLAUDE.md>
 - Viser 网页 3D 可视化库：<https://github.com/viser-project/viser>
 - MuJoCo 物理引擎：<https://github.com/google-deepmind/mujoco>
