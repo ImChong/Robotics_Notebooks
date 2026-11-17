@@ -89,6 +89,7 @@ flowchart LR
 - 在纸上画出一条 Cascaded 管线的信息流：观测 → 未来表征 → IDM / 动作头 → 控制
 
 ### 推荐读什么
+- [PixVid：逐帧像素视频生成](../wiki/entities/paper-pixvid-back-to-pixels.md) — 作为视频世界模型的**逐帧渲染架构对照**：像素 patch + 因果 detailer 消除时空 VAE 的块级动作等待；测的是相机控制到屏幕延迟，不是机器人动作头或物理一致性。
 - [Generative World Models](../wiki/methods/generative-world-models.md)
 - [Model-Based RL](../wiki/methods/model-based-rl.md)
 - [V-JEPA 2 / 2-AC](../wiki/entities/paper-vjepa2.md) — 视频表征预训练、机器人动作条件后训练与图像目标 CEM 规划的分阶段基座；不是仅凭视频预训练即可直接控制机器人。
