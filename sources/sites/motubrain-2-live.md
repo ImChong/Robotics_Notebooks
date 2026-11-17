@@ -23,7 +23,7 @@
 
 ## 对 Wiki 的映射
 
-- [Motubrain 2.0 公开训练直播](../../wiki/entities/motubrain-2-live.md)
+- [Motubrain 第一代论文页（附 2.0 公开进度链接）](../../wiki/entities/paper-motubrain.md)
 - [Motubrain 第一代技术论文](../../wiki/entities/paper-motubrain.md)
 
 ## 复核要求
