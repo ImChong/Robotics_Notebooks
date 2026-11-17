@@ -10,6 +10,10 @@ related:
   - ../concepts/humanoid-parallel-joint-kinematics.md
   - ../concepts/armature-modeling.md
   - ../concepts/sim2real.md
+  - ../methods/sim2real-joint-sysid-experiment-design.md
+  - ../methods/joint-actuator-parameter-identification.md
+  - ../tasks/humanoid-locomotion.md
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ./unitree-g1.md
   - ./mujoco.md
   - ./mjlab.md
@@ -166,6 +170,10 @@ sequenceDiagram
 - [MuJoCo](./mujoco.md) — MJCF tendon/equality/积分器所依赖的引擎
 - [mjlab](./mjlab.md) — RL reset/soft limit 与 tendon constraint 的集成问题
 - [Sim2Real](../concepts/sim2real.md) — 从简化仿真到控制器上机验证
+- [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 闭链反射惯量和电机侧参数的实测校准方法
+- [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 电机惯量、摩擦、增益等辨识链路
+- [人形行走](../tasks/humanoid-locomotion.md) — 将机械限位与执行器约束纳入全身运动控制
+- [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 从机构设计、传动雅可比到真实驱动控制验收
 - [Sim2Real 纵深 Stage 1](../../roadmap/depth-sim2real.md) — 资产与执行器对齐
 
 ## 参考来源
