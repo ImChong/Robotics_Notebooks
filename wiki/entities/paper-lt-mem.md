@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, lifelong-scene-understanding, spatio-temporal-memory, slam, vqa, iros-2026]
 status: complete
-updated: 2026-10-11
+project_id: lt-mem-2608-19059
+updated: 2026-11-17
 arxiv: "2608.19059"
 related:
   - ./paper-spatial-memory-agent.md
@@ -10,6 +11,8 @@ related:
   - ../methods/generative-world-models.md
   - ./paper-h2r-bench.md
   - ../overview/iros-2026-awards-9-papers-technology-map.md
+original:
+  - ../../sources/papers/lt_mem_arxiv_2608_19059.md
 sources:
   - ../../sources/papers/lt_mem_arxiv_2608_19059.md
   - ../../sources/sites/lt-mem-github-io.md

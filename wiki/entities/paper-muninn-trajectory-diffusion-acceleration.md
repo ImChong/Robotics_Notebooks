@@ -9,7 +9,8 @@ tags:
   - offline-rl
   - uiuc
 status: complete
-updated: 2026-09-15
+project_id: muninn-2605-09999
+updated: 2026-11-17
 arxiv: "2605.09999"
 venue: RSS 2026
 code: https://github.com/gokulp01/Muninn
@@ -18,6 +19,8 @@ related:
   - ../methods/diffusion-motion-generation.md
   - ../methods/reinforcement-learning.md
   - ../tasks/manipulation.md
+original:
+  - ../../sources/papers/muninn_arxiv_2605_09999.md
 sources:
   - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
@@ -83,6 +86,17 @@ flowchart TB
   C --> online
 ```
 
+## 工程实践
+
+官方仓库 [gokulp01/Muninn](https://github.com/gokulp01/Muninn) 提供`muninn` 通用缓存库和 `integrations/diffuser/` 完整复现环境。运行顺序（在 `integrations/diffuser` 工作区）：
+
+1. `bash setup_env.sh`：安装 D4RL/torch/diffuser 相关依赖。
+2. `python scripts/muninn_test.py --dataset halfcheetah-medium-v2 --logbase logs/pretrained --vis_freq -1`：验证基础教师。
+3. `python scripts/muninn_calibrate.py --dataset halfcheetah-medium-v2 --logbase logs/pretrained --vis_freq -1`：校准 probe 复用误差。
+4. `python scripts/muninn_eta_probe.py --dataset halfcheetah-medium-v2 --logbase logs/pretrained --vis_freq -1`：选择预算；随后分别执行 `scripts/muninn_eval.py --mode full` 与 `--mode muninn --eta 4.2` 对比。
+
+自定义模型须实现 `muninn.DiffusionAdapter`（至少五个必要方法），让 `muninn.cached_sample_loop` 在标定风险预算下调用或跳过完整 denoiser。该路径已核对官方 README 与 `integrations/diffuser/scripts` 文件列表，未独立复现实验；**轨迹偏差证书不是任务安全证明**。
+
 ## 评测覆盖
 
 | 家族 | 代表模型 | 主要指标 |
@@ -142,3 +156,26 @@ flowchart TB
 - Chi et al., [*Diffusion Policy*](https://arxiv.org/abs/2303.04137) — visuomotor 扩散策略基线
 - [Diffusion Policy 方法页](../methods/diffusion-policy.md) — 本库对 DP 训练与加速变体的归纳
 - [Muninn GitHub README](https://github.com/gokulp01/Muninn) — `DiffusionAdapter` 集成与 Diffuser 复现命令
+
+## 源码运行时序图
+
+官方实现和 README 命令核对如下。与论文的数据流图不同，以下只画可核实的复现调用路径。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 复现者
+  participant Cal as integrations/diffuser/scripts/muninn_calibrate.py
+  participant Adapter as muninn_diffuser/adapter.py
+  participant Core as muninn Calibrator
+  participant Eval as integrations/diffuser/scripts/muninn_eval.py
+  participant Sampler as muninn.cached_sample_loop
+  User->>Cal: 标定 full denoiser 和 probe 偏差
+  Cal->>Adapter: 加载 Diffuser 预训练策略
+  Adapter->>Core: 构造逐步误差标定
+  User->>Eval: --mode muninn --eta 4.2
+  Eval->>Sampler: 传入 adapter、calibrator、风险预算
+  Sampler->>Adapter: 按证书选择复用或完整 denoiser
+  Sampler-->>Eval: 轨迹、推理次数、耗时
+```
+

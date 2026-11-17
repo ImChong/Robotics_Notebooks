@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, sim2real, actuator, differentiable-simulation, force-estimation, transformer, servo, dynamixel, openmanipulator, lerobot, mit]
 status: complete
-updated: 2026-09-15
+project_id: neuralactuator-2607-11734
+updated: 2026-11-17
 arxiv: "2607.11734"
 code: https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator
 related:
@@ -15,6 +16,8 @@ related:
   - ../entities/paper-current-as-touch-proprioceptive-contact.md
   - ../entities/lerobot.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
+original:
+  - ../../sources/papers/neuralactuator_arxiv_2607_11734.md
 sources:
   - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
@@ -87,6 +90,16 @@ flowchart TB
   end
   collect --> H
 ```
+
+## 工程实践
+
+官方实现 [Dynamics-Modeling/NeuralActuator](https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator) 已开放训练、评测与检查点。可从仓库子目录执行：
+
+1. `bash scripts/train_force_sensor.sh 0`：脚本以 `configs/force_sensor.yaml` 调起 `train_actuator_diffsim.py`，读取 NAD 关节遥测/力数据，在 MJX 可微仿真中训练代理力矩与受力头。
+2. `bash scripts/eval_force_sensor.sh outputs/force_sensor_params_best_val.pkl 0`：调用 `evaluate_actuator.py`，输出 `outputs/force_sensor_eval.json` 和 rollout 供检查。
+3. `python infer_actuator.py --robot omx --checkpoint checkpoints/omx_weight_all_ema.pkl --config configs/lift_hold.yaml`：官方单机械臂推理示例；需先按 README 下载已发布权重。
+
+两个 shell 入口及其调用参数已经与官方源码逐项核对。运行要求适配 JAX/MJX/CUDA 环境，本文不宣称已上机复现。
 
 ## 核心结构与方法
 
@@ -168,3 +181,29 @@ flowchart TB
 - Dou et al., *NeuralActuator: Neural Actuation Modeling for Robot Dynamics and External Force Perception*, arXiv:2607.11734
 - [项目页](https://frank-zy-dou.github.io/projects/NeuralActuator/index.html)
 - [Frank-ZY-Dou/Dynamics-Modeling（NeuralActuator 子目录）](https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator)
+
+## 源码运行时序图
+
+官方实现和 README 命令核对如下。与论文的数据流图不同，以下只画可核实的复现调用路径。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 复现者
+  participant Shell as scripts/train_force_sensor.sh
+  participant Train as train_actuator_diffsim.py
+  participant Data as NAD CSV 数据
+  participant Sim as MJX 可微仿真
+  participant Model as Transformer 执行器网络
+  participant Eval as evaluate_actuator.py
+  User->>Shell: bash scripts/train_force_sensor.sh 0
+  Shell->>Train: --train_config configs/force_sensor.yaml
+  Train->>Data: 加载电流/状态/力标签序列
+  Train->>Model: 预测 torque surrogate 与受力
+  Model->>Sim: 力矩驱动姿态 rollout
+  Sim-->>Train: 位置误差反向传播
+  Train-->>User: 保存 checkpoint
+  User->>Eval: bash scripts/eval_force_sensor.sh ckpt 0
+  Eval-->>User: force_sensor_eval.json 和 rollout
+```
+

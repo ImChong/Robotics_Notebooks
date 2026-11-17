@@ -11,6 +11,8 @@
 - **作者：** Donghu Kim, Youngdo Lee, Minho Park, Kinam Kim, I Made Aswin Nahendra, Takuma Seno, Sehee Min, Daniel Palenicek, Florian Vogt, Danica Kragic, Jan Peters, Jaegul Choo, Hojoon Lee
 - **机构：** Holiday Robotics、KAIST、KRAFTON、Turing Inc.、TU Darmstadt、hessian.AI、KTH、DFKI、RIG 等（多机构联合）
 - **入库日期：** 2026-07-16
+- **核对范围：** arXiv HTML v2 正文 §1–7、算法 §4、环境与 G1 Sim2Real §5、消融 §6、附录的训练/超参数；官方 Holiday-Robot/FlashSAC README 训练入口与依赖冲突；参考文献未逐条核对。
+- **通读：** 已完成
 - **一句话说明：** 在 **SAC** 基础上，用 **少梯度步 + 大模型 + 高吞吐** 的 scaling 配方，并联合 **权重/特征/梯度范数约束** 与 **统一熵目标 + 噪声重复** 探索，在 **60+ 任务 / 10 个仿真器** 上稳定超越 PPO 与强 off-policy 基线；**Unitree G1** 盲行走 sim-to-real 墙钟从 **小时级压到分钟级**。
 
 ## 摘要级要点
