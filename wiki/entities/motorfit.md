@@ -11,6 +11,7 @@ related:
   - ../methods/sim2real-joint-sysid-experiment-design.md
   - ../concepts/joint-friction-models.md
   - ../concepts/armature-modeling.md
+  - ../queries/actuator-drive-chain-selection-loop.md
   - ./paper-bam-extended-friction-servo-actuators.md
 sources:
   - ../../sources/repos/motorfit.md
@@ -146,6 +147,7 @@ uv run --no-sync motorfit replay \
 
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md)
 - [Sim2Real 关节辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md)
+- [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 本工具位于第③层：电机真机记录、辨识与仿真校准；不能代替固件电流环和总线实时性验证
 - [Rhoban BAM 论文](./paper-bam-extended-friction-servo-actuators.md)
 - [Armature 建模](../concepts/armature-modeling.md)与[关节摩擦](../concepts/joint-friction-models.md)
 - [力矩电机设计路线 Stage 6](../../roadmap/depth-torque-motor-design.md)和[Sim2Real 路线 Stage 1](../../roadmap/depth-sim2real.md)

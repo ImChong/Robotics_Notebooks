@@ -2,7 +2,7 @@
 type: method
 tags: [system-identification, actuator, friction, armature, sim2real, identification]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-17
 related:
   - ./ssrm-steady-state-response-method.md
   - ../concepts/system-identification.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/gravity-compensation.md
   - ./cma-es.md
   - ../entities/flobaroid.md
+  - ../entities/motorfit.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ./sim2real-joint-sysid-experiment-design.md
   - ../entities/paper-pace-sim2real-legged-robots.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/papers/joint_actuator_parameter_identification.md
   - ../../sources/repos/flobaroid.md
   - ../../sources/sites/bam-readthedocs.md
+  - ../../sources/repos/motorfit.md
   - ../../sources/repos/rhoban_bam.md
   - ../../sources/repos/pace-sim2real.md
 summary: "关节执行器参数辨识：从实验数据估计转子反射惯量 Ia 与库仑/粘滞等摩擦项；Fourier+线性回归需要力矩，CMA-ES 仿真对齐只需编码器。"
@@ -135,6 +137,7 @@ flowchart TB
 - [连杆与转子惯量](../concepts/robot-link-and-rotor-inertia.md) / [Armature Modeling](../concepts/armature-modeling.md)
 - [CMA-ES](./cma-es.md) — BAM/PACE 的优化器
 - [FloBaRoID](../entities/flobaroid.md) — Fourier + 两步摩擦开源箱
+- [MotorFit（电机台架辨识与验证工具）](../entities/motorfit.md) — 在 Rhoban BAM M1–M6 参数模型上增加 RobStride/达妙 SocketCAN 采集、独立记录评估和 M1 单摆跨引擎回放，区别于论文中的模型方法
 - [BAM](../entities/paper-bam-extended-friction-servo-actuators.md) / [BAM 论文](../entities/paper-bam-extended-friction-servo-actuators.md)
 - [PACE](../entities/paper-pace-sim2real-legged-robots.md) / [SPI-Active](../entities/paper-notebook-sampling-based-system-identification-with-active.md)
 - [Pinocchio](../entities/pinocchio.md) / [Pinocchio 快速上手](../queries/pinocchio-quick-start.md)
@@ -150,6 +153,7 @@ flowchart TB
 - [关节执行器参数辨识论文簇](../../sources/papers/joint_actuator_parameter_identification.md)
 - [FloBaRoID 仓库](../../sources/repos/flobaroid.md)
 - [BAM 文档站](../../sources/sites/bam-readthedocs.md)
+- [MotorFit 官方源码归档](../../sources/repos/motorfit.md) — BAM 方法落到真实电机采集、拟合及固定模型回放的工程实现
 - [Rhoban/bam](../../sources/repos/rhoban_bam.md)
 - [PACE 仓库](../../sources/repos/pace-sim2real.md)
 
