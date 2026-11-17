@@ -65,6 +65,7 @@ sequenceDiagram
   actor U as 用户 CLI
   participant CLI as "__main__.py"
   participant M as "mujoco"
+  participant P as "Perturbation"
   participant V as "ViserServer"
   participant W as "Viewer"
   participant S as "ViserMujocoScene"
@@ -77,7 +78,7 @@ sequenceDiagram
   W->>W: _setup_gui()
   loop 主循环 run -> _tick
     W->>W: _step_physics(dt)
-    W->>M: Perturbation.step(data, paused=False)
+    W->>P: step(data, paused=False)
     W->>M: step_fn(model, data) 默认 mj_step
     opt 画面需刷新
       W->>S: _render() -> update_from_mjdata(data)
