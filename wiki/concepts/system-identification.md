@@ -13,6 +13,7 @@ related:
   - ../entities/paper-pace-sim2real-legged-robots.md
   - ../entities/paper-notebook-sampling-based-system-identification-with-active.md
   - ../entities/prime-system-id.md
+  - ../entities/mujoco-sysid.md
   - ../queries/sim2real-closed-loop-engineering.md
   - ./sim2real.md
   - ./gravity-compensation.md
@@ -342,6 +343,7 @@ MPC 的预测质量高度依赖模型质量。模型错得离谱，预测再漂�
 - [Gravity Compensation](./gravity-compensation.md) — $g(q)$ 的精度由惯性参数决定
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — $I_a$ / 摩擦：Fourier+OLS（要力矩）vs CMA-ES 仿真对齐（只要编码器）
 - [关节动力学辨识实验设计](../methods/sim2real-joint-sysid-experiment-design.md) — 单关节 PD：延迟→摩擦→惯量→柔性的分级实验与纠缠表
+- [MuJoCo SysID（Google DeepMind 官方工具箱）](../entities/mujoco-sysid.md) — 基于真机日志，有限差分 Jacobian + 并行 rollout + 有界最小二乘拟合模型和传感参数
 - [FloBaRoID](../entities/flobaroid.md) — Fourier 激励 + 两步摩擦的开源流水线
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
 - [PACE（足式系统化 Sim2Real）](../entities/paper-pace-sim2real-legged-robots.md) — chirp 悬空数据 + [CMA-ES](../methods/cma-es.md) 紧凑关节参数辨识（arXiv:2509.06342）
