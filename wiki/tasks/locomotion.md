@@ -60,6 +60,7 @@ related:
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ./stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-cap-perception-blind-humanoid.md
+  - ../entities/paper-proof-loco.md
   - ../entities/paper-p3.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
   - ../entities/paper-variable-stiffness-locomotion-rl.md
@@ -160,6 +161,8 @@ flowchart TD
 
 - **在线闭环**：观测 → 状态估计 → 规划/策略 → 关节接口 → 机器人执行。
 - **离线迭代**：真实或仿真 rollout 产生指标，再回到 reward、domain randomization、curriculum 和控制参数调试。
+
+**视觉失效回退案例：** [PROOF](../entities/paper-proof-loco.md)（CoRL 2026）在高程图教师训练中引入本体回退，深度学生用不确定性与滞回门控应对分布外感知；Go2 真机验证。
 
 ## 核心挑战
 
