@@ -92,7 +92,7 @@ flowchart TD
 sequenceDiagram
     autonumber
     actor User as 调用方脚本
-    participant Opt as optimize.py
+    participant Engine as optimize.py
     participant Solver as mujoco.minimize
     participant Res as residual.py
     participant Modifier as model_modifier.py
@@ -100,8 +100,8 @@ sequenceDiagram
     participant Roll as mujoco.rollout
     User->>Res: build_residual_fn(models_sequences=[ms])
     Res-->>User: residual_fn
-    User->>Opt: optimize(initial_params, residual_fn)
-    Opt->>Solver: least_squares(x0, bounds, residual)
+    User->>Engine: optimize(initial_params, residual_fn)
+    Engine->>Solver: least_squares(x0, bounds, residual)
     loop 每次优化评估 / 有限差分扰动
         Solver->>Res: residual_fn(x, params)
         Res->>Modifier: apply_param_modifiers(params, spec)
@@ -112,8 +112,8 @@ sequenceDiagram
         Traj-->>Res: SystemTrajectory
         Res-->>Solver: 对齐后的残差向量
     end
-    Solver-->>Opt: 最优 x 与 Jacobian
-    Opt-->>User: opt_params, opt_result
+    Solver-->>Engine: 最优 x 与 Jacobian
+    Engine-->>User: opt_params, opt_result
     User->>User: save_results(...) / default_report(...)
 ```
 
