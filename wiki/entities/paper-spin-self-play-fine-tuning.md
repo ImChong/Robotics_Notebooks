@@ -10,6 +10,8 @@ code: https://github.com/uclaml/SPIN
 related:
   - ./paper-self-rewarding-language-models.md
   - ../concepts/supervised-fine-tuning.md
+  - ../methods/behavior-cloning.md
+  - ../methods/dagger.md
   - ../concepts/recursive-self-improvement.md
   - ./paper-rsi-survey-2607-07663.md
   - ../../roadmap/depth-rsi.md
@@ -191,6 +193,8 @@ sequenceDiagram
 
 - [Self-Rewarding Language Models：自评判驱动偏好更新](./paper-self-rewarding-language-models.md)
 - [监督微调（SFT）](../concepts/supervised-fine-tuning.md)
+- [行为克隆（BC）](../methods/behavior-cloning.md) — 跨领域对应：SPIN 的 SFT 数据锚点可类比机器人示范 BC，但输出是文字而非动作
+- [DAgger](../methods/dagger.md) — 对比迭代数据策略：DAgger 用专家给当前策略访问状态重新标注动作；SPIN 使用旧模型生成回答作为负例，两者机制不同
 - [递归自我改进（RSI）](../concepts/recursive-self-improvement.md)
 - [RSI 全谱系综述](./paper-rsi-survey-2607-07663.md)
 - [RSI 纵深路线 Stage 2](../../roadmap/depth-rsi.md)
