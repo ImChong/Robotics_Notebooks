@@ -109,7 +109,7 @@ flowchart LR
 
 ## 源码运行时序图
 
-已阅读 [官方代码归档](../../sources/repos/forge.md) 所列 shell、训练/回放入口、任务注册与 PPO Runner；下面仅绘制**已公开**的第二阶段训练和 Isaac Gym 评估调用链：
+已阅读 [官方代码归档](../../sources/repos/forge.md) 所列 shell、训练/回放入口、任务注册、`g1_29dof_ee_residual_config.py` 和 **`OnPolicyResidualRunner`**；下面仅绘制**已公开**的第二阶段训练和 Isaac Gym 评估调用链：
 
 ```mermaid
 sequenceDiagram
@@ -119,7 +119,7 @@ sequenceDiagram
     participant Train as legged_gym/scripts/train.py
     participant Reg as task_registry
     participant Env as g1_ee_residual 环境
-    participant Run as PPO Runner
+    participant Run as OnPolicyResidualRunner
     participant CK as checkpoint
     participant Test as scripts/test_res_pf.sh
     participant Play as legged_gym/scripts/play_res.py
@@ -130,7 +130,7 @@ sequenceDiagram
     Reg-->>Train: PPO Runner
     Train->>Run: learn(max_iterations)
     loop 采样与更新
-        Run->>Env: alg.act 后 env.step(actions)
+        Run->>Env: alg.act 返回 actions, force_residual_pred 后 env.step(两者)
         Env-->>Run: observations / rewards / done
         Run->>Run: compute_returns + alg.update
     end
@@ -140,7 +140,7 @@ sequenceDiagram
     Play->>Reg: 创建环境 / 恢复 runner
     Reg-->>Play: inference policy
     loop 仿真回放
-        Play->>Env: policy(obs) 后 env.step(actions)
+        Play->>Env: policy(obs) 后 env.step(actions, force_residual_pred)
         Env-->>Play: observations
     end
 ```
