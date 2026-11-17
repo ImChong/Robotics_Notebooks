@@ -16,6 +16,7 @@ status: complete
 updated: 2026-11-17
 arxiv: "2604.27792"
 related:
+  - ./motubrain-2-live.md
   - ./paper-gwm-first-principles.md
   - ./paper-vidu-s2.md
   - ../overview/gwm-closed-loop-5-papers-technology-map.md
@@ -153,7 +154,7 @@ flowchart TB
 
 ## Motubrain 2.0 训练直播（后续进展，非本论文数据）
 
-2026-10-21 起，生数科技公开了 **[Motubrain 2.0 / Physical AI Live Lab](../../sources/sites/motubrain-2-live.md)** 训练过程；其后在 11-11、11-13、11-14 分别展示预/后训练真机片段、Agent 失败后基于反馈修复**代码**再测试，以及 RSI 探索内容。这些是**第二代训练过程记录**，不能将本页 arXiv:2604.27792 的指标、架构细节或第一代 GitHub 占位仓当作 2.0 的公开实验结论。后续版本论文、代码/权重以及直播完整日志仍需分别核验。
+2026-10-21 起，生数科技公开了 **[Motubrain 2.0 / Physical AI Live Lab](../../sources/sites/motubrain-2-live.md)** 训练过程；本站另建 [2.0 官方公开训练动态详情](./motubrain-2-live.md)，只归纳已核对的官方帖子，不冒充完整直播复现。其后在 11-11、11-13、11-14 分别展示预/后训练真机片段、Agent 失败后基于反馈修复**代码**再测试，以及 RSI 探索内容。这些是**第二代训练过程记录**，不能将本页 arXiv:2604.27792 的指标、架构细节或第一代 GitHub 占位仓当作 2.0 的公开实验结论。后续版本论文、代码/权重以及直播完整日志仍需分别核验。
 
 ## 与其他工作对比
 
