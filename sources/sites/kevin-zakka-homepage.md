@@ -20,7 +20,7 @@
 |---|---|---|
 | mjlab: A Lightweight Framework for GPU-Accelerated Robot Learning | [arXiv:2601.22074](https://arxiv.org/abs/2601.22074)，2026 预印本；[代码](https://github.com/mujocolab/mjlab) | [mjlab](../../wiki/entities/mjlab.md) |
 | MuJoCo Playground | [arXiv:2502.08844](https://arxiv.org/abs/2502.08844)，RSS 2025 Outstanding Demo Paper Award；[代码](https://github.com/google-deepmind/mujoco_playground) | [MuJoCo Playground](../../wiki/entities/mujoco-playground.md) |
-| ALOHA 2 | [arXiv:2405.02292](https://arxiv.org/abs/2405.02292)；[代码](https://github.com/tonyzhaozh/aloha) | 双臂遥操作硬件 |
+| ALOHA 2 | [arXiv:2405.02292](https://arxiv.org/abs/2405.02292)；[代码](https://github.com/google-deepmind/mujoco_menagerie/tree/main/aloha) | 双臂遥操作硬件 |
 | RoboPianist | [项目演示](https://kzakka.com/robopianist/)，CoRL 2023 | 双灵巧手 + 强化学习钢琴基准 |
 | XIRL | [官方项目页](https://x-irl.github.io/)，CoRL 2021 Best Paper Finalist | 跨本体逆强化学习 |
 | Form2Fit | [官方项目页](https://form2fit.github.io/)，ICRA 2020 Best Paper Finalist | 拆解示范驱动的装配学习 |
