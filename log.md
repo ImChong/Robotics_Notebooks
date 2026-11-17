@@ -468,6 +468,13 @@ op: ingest
 - 本次 29 篇均有健康度 3/3 的结构化判据；最终以报告脚本与 CI 实测为准。
 - [29 篇阅读坐标](../wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
 
+## [2026-11-17] ingest | Deepu Talla 访谈同源材料去重合并
+
+- 同一 YouTube 视频 `rarKwkLN-Bg` 已在 PR #3867 收录；PR #3870 只补充更细分段的访谈观点、Microduck 案例、System 0–3 分层和五项工程基本功。
+- 保留唯一视频资料：`sources/videos/nvidia-robotics-chatgpt-moment-deepu-talla.md`；保留唯一知识实体：`wiki/entities/nvidia-robotics-chatgpt-moment-deepu-talla-2026.md`。
+- NVIDIA Cosmos 补充到唯一实体的入链；不再新增 `titv-nvidia-deepu-talla-physical-ai-2026.md` 同源资料和实体，避免重复。
+- 倍数、可靠性和时间预测均与独立实验结果分开标注。
+
 ## [2026-11-17] ingest | NVIDIA 公司路线更新至 2026-11-17：补入 GR00T 2、cuRoboV2-Fast、Lab 3.0 与 DexBench，复核历史工具节点及原文边界；其余未通读论文保留真实健康度。
 
 ## [2026-11-17] ingest | sources/papers/mosu2_arxiv_2611_11148.md — 归档 MOSU2 多模态长程户外导航；新增独立论文实体、Mermaid 流程与导航纵深入链
