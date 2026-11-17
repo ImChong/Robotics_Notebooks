@@ -13,6 +13,7 @@ summary: "Coding Agent 验证闭环将 E2E、属性测试、差分测试和独�
 related:
   - ../concepts/coding-agent-orchestration-and-cognitive-oversight.md
   - ../concepts/agentic-coding-software-fundamentals.md
+  - ../concepts/agentic-coding-trust-pyramid.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/test-driven-development.md
   - ../entities/open-code-review.md
@@ -21,6 +22,7 @@ original:
   - ../../sources/blogs/claude_dev_verification_addy_osmani_2026-11-16.md
 sources:
   - ../../sources/blogs/claude_dev_verification_addy_osmani_2026-11-16.md
+  - ../../sources/videos/lauren-tan-all-code-is-slop-2026.md
 ---
 
 # Coding Agent 验证闭环 / Evidence-Based Verification Loops for Coding Agents
@@ -45,6 +47,10 @@ sources:
 Addy Osmani 在 [Claude Code 团队验证实践（2026-11-16）](../../sources/blogs/claude_dev_verification_addy_osmani_2026-11-16.md) 中指出：当多个 coding agent 并行编写代码时，真正限制委托规模的是**人工验收能力与验证器是否可靠**。作者称 Claude Code 团队约 90% 的代码由 Claude 编写并审阅；其内部结构化文件生成测试中，额外的独立 grader 最多提高约 10 个百分点任务成功率。这些是**团队自述和特定内部实验**，并非所有编码任务的普适统计。
 
 本页聚焦「**怎样验证**」；[多 Agent 编码管理与认知把关](../concepts/coding-agent-orchestration-and-cognitive-oversight.md) 聚焦「如何分工、谁负责最后判断」，两页不互相替代。
+
+### 从验证向前延伸：先让错误难以发生
+
+[Lauren Tan 的 Coding Agent 信任金字塔](../concepts/agentic-coding-trust-pyramid.md)（AI Engineer CODE 2026）把本页的“验证”放入更完整的链路：先通过良好 API、架构边界和 lint 消除重复错误，再让 agent 在真实应用中运行验证，最后扩展自动合并与软件工厂。演讲中个人约 3,000、团队约 11,000 个生产 PR 及约 0.5% 回滚率均是团队自述，不应替代本仓库的实际质量指标。
 
 ## 核心原理
 
@@ -133,6 +139,8 @@ flowchart TD
 - [真机策略 Autoresearch Harness](../queries/real-robot-policy-autoresearch-harness.md) — 机器人试验的反馈与验收机制。
 
 ## 参考来源
+
+- [Lauren Tan：All Code Is Slop (Except Mine)（官方视频与字幕归档）](../../sources/videos/lauren-tan-all-code-is-slop-2026.md)
 
 - [Claude Code 团队如何看待验证（2026-11-16，官方原文归档）](../../sources/blogs/claude_dev_verification_addy_osmani_2026-11-16.md)
 

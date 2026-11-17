@@ -1,5 +1,6 @@
-## [2026-11-17] ingest | TITV Deepu Talla 物理 AI 深度访谈（YouTube `rarKwkLN-Bg`）
+## [2026-11-17] ingest | Deepu Talla 访谈同源材料去重合并
 
-- 新增原始视频通读归档：`sources/videos/titv-nvidia-deepu-talla-physical-ai-2026.md`（逐行通读 1:14:49 完整英文字幕 `00:00:00`–`01:14:41`，附专名勘误与分段证据边界表，`通读：已完成`）。
-- 新增实体知识页：`wiki/entities/titv-nvidia-deepu-talla-physical-ai-2026.md`（沉淀「百米 10 秒门槛」、Agentic 前后向 100× 提效、VLA→WAM 演进、System 0–3 边云算力分层与通用机器人五项有序基本功，健康度 `3/3`）。
-- 更新关联入链：`wiki/entities/nvidia-cosmos.md`（补充本次访谈实体入链，保持健康度 `3/3`）。
+- 同一 YouTube 视频 `rarKwkLN-Bg` 已在 PR #3867 收录；PR #3870 只补充更细分段的访谈观点、Microduck 案例、System 0–3 分层和五项工程基本功。
+- 保留唯一视频资料：`sources/videos/nvidia-robotics-chatgpt-moment-deepu-talla.md`；保留唯一知识实体：`wiki/entities/nvidia-robotics-chatgpt-moment-deepu-talla-2026.md`。
+- NVIDIA Cosmos 补充到唯一实体的入链；不再新增 `titv-nvidia-deepu-talla-physical-ai-2026.md` 同源资料和实体，避免重复。
+- 倍数、可靠性和时间预测均与独立实验结果分开标注。

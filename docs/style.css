@@ -1827,7 +1827,21 @@ button.home-wiki-heatmap-cell.is-active {
   background: rgba(91, 156, 246, 0.14);
   border-color: rgba(91, 156, 246, 0.5);
 }
-.detail-meta-badge span:first-child { font-size: .95em; line-height: 1; }
+.detail-meta-badge > span:first-child { font-size: .95em; line-height: 1; }
+.detail-meta-route-badge {
+  max-width: 100%;
+}
+.detail-meta-route-badge > span:first-child {
+  flex-shrink: 0;
+}
+.detail-meta-route-label {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.detail-meta-route-label > span {
+  max-width: 100%;
+}
 .detail-community-badge {
   border-color: rgba(var(--community-r, 167), var(--community-g, 139), var(--community-b, 250), 0.35);
   background: rgba(var(--community-r, 167), var(--community-g, 139), var(--community-b, 250), 0.08);
