@@ -13,6 +13,12 @@
 - **沉淀到 wiki：** [`wiki/concepts/embodied-foundation-model-hardware-codesign.md`](../../wiki/concepts/embodied-foundation-model-hardware-codesign.md)
 - **姊妹文：** [`wechat_zanehub_humanoid_mass_production_experience.md`](wechat_zanehub_humanoid_mass_production_experience.md)（量产与三大核心件）、[`wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md`](wechat_zanehub_humanoid_leg_knee_why_not_harmonic.md)（膝侧执行器选型）、[`wechat_zanehub_humanoid_career_entry_for_generalists.md`](wechat_zanehub_humanoid_career_entry_for_generalists.md)（普通人入场路线）
 
+## 本次核查边界（2026-11-17）
+
+- **核对范围：** 仓库既有归纳摘要；公开原文的浏览器访问因连接失败未能完成。以下保留为第三方观点线索，不作为本次概念页关键事实的通读依据。
+- **通读：** 未完成
+- 关键技术案例已改由 [Figure Helix 官方原文复核](../papers/rcl_awesome_wam_ref_cb61c489d1333f433fc4_helix-a-vision-language-action-model-for.md)支撑；不据此声称微信原文或其引用的 ISO 标准已读完。
+
 ## 核心摘录（归纳，非全文）
 
 ### 1) 「通用」的工程定义
