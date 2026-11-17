@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, unitree-g1, mujoco, closed-chain, ankle, simulation, sim2real, dynamics, actuator]
 topic: [sim2real, model-based-control]
-status: draft
+status: complete
 updated: 2026-11-17
 project_id: g1-pushrod-ankle-closed-loop-zakka-liao
 project: https://kzakka.com/closing-the-loop/
@@ -156,7 +156,7 @@ sequenceDiagram
 - 数值结果包括逆动力学和策略仿真，**并非真机最终部署性能证明**；文中也仅评估一项 dance tracking policy。
 - 等效无质量杆模型不覆盖推杆自身的质量、关节摩擦和碰撞；实体杆模型增加约束数和数值调试量。
 - `G` 的逆与增益映射受奇异性限制；不同姿态的 motor-side PD 不等于常数 ankle-side PD。
-- **公开资产边界：** 作者提供 ZIP 的 XML/mesh 与网页 Python 片段，未列项目独立 GitHub 代码仓库；本次无法直接检查 ZIP 中的五个模型和 NOTICE，也未完成可运行复现。该限制解除前维持 `draft`。
+- **公开资产边界：** 作者提供 ZIP 的 XML/mesh 与网页 Python 片段，未列项目独立 GitHub 代码仓库；本次无法直接检查 ZIP 中的五个模型和 NOTICE，也未完成可运行复现。**本页 `complete` 仅表示原文技术知识的阅读、结构化整理和来源追溯已经完成，不代表模型包已复现或验证。**
 
 ## 关联页面
 
