@@ -227,6 +227,9 @@ flowchart LR
 - 用 WAM 联合预测未来观测与动作；空中 VLN 等新设定
 - 关键词：[OpenNWM（潜动作预训练的导航世界模型）](../wiki/entities/paper-opennwm.md)、[NavWAM](../wiki/entities/paper-navwam-goal-conditioned-visual-navigation-wam.md)、[WorldVLN](../wiki/entities/paper-worldvln-aerial-vln-wam.md)、[PanoWorld（真实世界全景可控生成）](../wiki/entities/paper-panoworld-real-world-panoramic-generation.md)、[社会导航](../wiki/entities/paper-notebook-learning-social-navigation-from-positive-and-neg.md)、[iCrowdNav](../wiki/entities/paper-icrowdnav.md)、[SPLC](../wiki/entities/paper-splc.md)、[CommNav](../wiki/entities/paper-commnav.md)
 
+**方向 E：户外社会与交通情境导航**
+- [MOSU2：可检索局部地图 + 按需两阶段 VLM 导航](../wiki/entities/paper-mosu2.md) — GPS 子目标、LiDAR+SAM3 物理可通行候选先筛选，再查询车辆/行人位置速度处理路口、礼让和临时施工；与 Stage 4 按语言指令导航的 VLN 区分，注意 3.83 s 平均云端决策延迟。
+
 ---
 
 ## 快速入口汇总
