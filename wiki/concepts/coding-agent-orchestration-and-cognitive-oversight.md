@@ -8,7 +8,7 @@ tags:
   - agent-orchestration
   - human-in-the-loop
 status: complete
-updated: 2026-11-16
+updated: 2026-11-17
 summary: "多编码 Agent 的有效管理，核心是把任务边界、独立审查、可执行验证与人类判断组成闭环；通过区分认知卸载和认知投降，防止代码吞吐上升但理解与安全责任空心化。"
 related:
   - ./agentic-coding-software-fundamentals.md
@@ -136,6 +136,7 @@ flowchart TD
 - [规格驱动开发](./specification-driven-development.md) — 如何明确需求与验收条件。
 - [Agent Skills（Addy Osmani）](../entities/agent-skills-addyosmani.md) — 将工程纪律编为可复用的流程技能。
 - [Open Code Review](../entities/open-code-review.md) — 用独立评审检查 diff。
+- [OpenBot（CopilotKit）](../entities/copilotkit-openbot.md) — 用统一 Agent 工作空间实施角色授权、执行审批与审计。
 
 ## 参考来源
 
