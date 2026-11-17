@@ -86,6 +86,17 @@ flowchart TB
   C --> online
 ```
 
+## 工程实践
+
+官方仓库 [gokulp01/Muninn](https://github.com/gokulp01/Muninn) 提供`muninn` 通用缓存库和 `integrations/diffuser/` 完整复现环境。运行顺序（在 `integrations/diffuser` 工作区）：
+
+1. `bash setup_env.sh`：安装 D4RL/torch/diffuser 相关依赖。
+2. `python scripts/muninn_test.py --dataset halfcheetah-medium-v2 --logbase logs/pretrained --vis_freq -1`：验证基础教师。
+3. `python scripts/muninn_calibrate.py --dataset halfcheetah-medium-v2 --logbase logs/pretrained --vis_freq -1`：校准 probe 复用误差。
+4. `python scripts/muninn_eta_probe.py --dataset halfcheetah-medium-v2 --logbase logs/pretrained --vis_freq -1`：选择预算；随后分别执行 `scripts/muninn_eval.py --mode full` 与 `--mode muninn --eta 4.2` 对比。
+
+自定义模型须实现 `muninn.DiffusionAdapter`（至少五个必要方法），让 `muninn.cached_sample_loop` 在标定风险预算下调用或跳过完整 denoiser。该路径已核对官方 README 与 `integrations/diffuser/scripts` 文件列表，未独立复现实验；**轨迹偏差证书不是任务安全证明**。
+
 ## 评测覆盖
 
 | 家族 | 代表模型 | 主要指标 |

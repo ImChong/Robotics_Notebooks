@@ -91,6 +91,16 @@ flowchart TB
   collect --> H
 ```
 
+## 工程实践
+
+官方实现 [Dynamics-Modeling/NeuralActuator](https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator) 已开放训练、评测与检查点。可从仓库子目录执行：
+
+1. `bash scripts/train_force_sensor.sh 0`：脚本以 `configs/force_sensor.yaml` 调起 `train_actuator_diffsim.py`，读取 NAD 关节遥测/力数据，在 MJX 可微仿真中训练代理力矩与受力头。
+2. `bash scripts/eval_force_sensor.sh outputs/force_sensor_params_best_val.pkl 0`：调用 `evaluate_actuator.py`，输出 `outputs/force_sensor_eval.json` 和 rollout 供检查。
+3. `python infer_actuator.py --robot omx --checkpoint checkpoints/omx_weight_all_ema.pkl --config configs/lift_hold.yaml`：官方单机械臂推理示例；需先按 README 下载已发布权重。
+
+两个 shell 入口及其调用参数已经与官方源码逐项核对。运行要求适配 JAX/MJX/CUDA 环境，本文不宣称已上机复现。
+
 ## 核心结构与方法
 
 | 模块 | 要点 |

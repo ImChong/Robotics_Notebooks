@@ -16,6 +16,7 @@ related:
   - ./paper-vl-nav.md
   - ./paper-notebook-steadytray.md
   - ../tasks/manipulation.md
+  - ../methods/grasp-pose-estimation.md
   - ../../roadmap/depth-contact-manipulation.md
 ---
 
@@ -105,6 +106,7 @@ flowchart TD
 - [VL-Nav](./paper-vl-nav.md)
 - [SteadyTray](./paper-notebook-steadytray.md)
 - [操作任务](../tasks/manipulation.md)
+- [抓取姿态估计](../methods/grasp-pose-estimation.md)
 - [接触操作路线](../../roadmap/depth-contact-manipulation.md)
 
 ## 参考来源

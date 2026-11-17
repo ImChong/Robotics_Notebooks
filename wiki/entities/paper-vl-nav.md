@@ -17,6 +17,7 @@ related:
   - ./paper-lt-mem.md
   - ./paper-picking-bins-empty.md
   - ../tasks/vision-language-navigation.md
+  - ../tasks/autonomous-exploration.md
   - ../../roadmap/depth-navigation.md
 ---
 
@@ -104,6 +105,7 @@ NeSy Task Planner 将命令分为 explore / go-to 原子任务，使用房间/�
 - [LT-Mem](./paper-lt-mem.md)
 - [Picking Bins Empty](./paper-picking-bins-empty.md)
 - [导航任务](../tasks/vision-language-navigation.md)
+- [自主探索任务](../tasks/autonomous-exploration.md)
 - [导航纵深路线](../../roadmap/depth-navigation.md)
 
 ## 参考来源
