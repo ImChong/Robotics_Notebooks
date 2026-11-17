@@ -11,7 +11,7 @@ tags:
   - isaac-sim
   - inverse-kinematics
 status: complete
-updated: 2026-09-24
+updated: 2026-11-17
 related:
   - ../methods/trajectory-optimization.md
   - ./crocoddyl.md
@@ -21,6 +21,8 @@ related:
   - ./isaac-gym-isaac-lab.md
   - ./lw-benchhub-tour.md
   - ./robotis-ai-worker-isaac-cumotion.md
+original:
+  - ../../sources/repos/nvlabs-curobo.md
 sources:
   - ../../sources/repos/nvlabs-curobo.md
   - ../../sources/repos/isaac_ros_cumotion.md
@@ -58,7 +60,7 @@ summary: "cuRobo 是 NVIDIA 开源的 GPU 并行机器人运动生成库：在�
 - **与 NVIDIA 机器人栈对齐**：文档与示例围绕 **Isaac Sim**、**nvblox / 深度** 与 **ROS 2**；无碰撞规划能力亦通过 **Isaac ROS cuMotion** 进入 **MoveIt** 集成路径（以官方说明为准）。
 - **V2 补齐「快但不物理」的常见短板**：在 **负载力矩**、**人形 IK**、**动捕重定向可行性** 等问题上给出与 **PyRoki、GMR** 等对照的实证叙事，便于和 **学习式操作 / 模仿学习** 的数据管线对齐讨论。
 
-## 核心结构（初版 MotionGen 管线）
+## 核心原理（初版 MotionGen 管线）
 
 | 模块 | 作用 |
 |------|------|
@@ -139,3 +141,29 @@ flowchart LR
 - [机器人论文阅读笔记：cuRoboV2](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_Distance_Fields/cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_Distance_Fields.html)
 - [Isaac ROS cuMotion（MoveIt 插件仓库）](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_cumotion) — 产品化集成与部署文档入口
 - [nvblox（GPU TSDF/ESDF）](https://github.com/nvidia-isaac/nvblox) — 初版文档常引用的深度 **ESDF** 后端之一
+
+## 工程实践
+
+截至 2026-11-17，官方主分支已是 V2 API，依赖旧 `MotionGen` API 的项目应固定 `v0.7.8`。新项目以 `python -m curobo.examples.getting_started.motion_planning --mode pose` 验证配置、warmup、规划与稠密验证，再接真机。求解成功后仍须检查 `result.success`，不能把返回非空对象当作轨迹可执行的证明。新算法及量化实验见 [cuRoboV2-Fast 独立论文页](./paper-curobov2-fast.md)。
+
+## 源码运行时序图
+
+依据官方 motion_planning 教程和 pose_planning_example，固定版本见来源归档；这是 Python 示例调用边界，未运行 CUDA。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant E as motion_planning.py
+  participant C as MotionPlannerCfg
+  participant P as MotionPlanner
+  E->>C: create(robot, scene_model, graph_planner_algorithm)
+  C-->>E: config
+  E->>P: MotionPlanner(config)
+  E->>P: warmup(enable_graph=True)
+  E->>P: compute_kinematics(q_goal)
+  P-->>E: goal_pose
+  E->>P: plan_pose(goal_pose, q_start)
+  P-->>E: result / success / trajectory_source
+  E->>E: 检查成功标记并提取 get_interpolated_plan()
+  E->>E: 保存轨迹图供检查
+```

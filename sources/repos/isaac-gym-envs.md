@@ -20,3 +20,11 @@
 
 - [isaac-gym](../../wiki/entities/isaac-gym.md) — HMI 开源主表入口 isaac-sim/IsaacGymEnvs（Isaac Gym 时代官方任务与训练配置仓）
 - [Humanoid Motion Intelligence](../../wiki/entities/humanoid-motion-intelligence.md)
+
+## 官方原文复核（2026-11-17）
+
+- **版本：** `aeed298638a1f7b5421b38f5f3cc2d1079b6d9c3`。
+- **核对范围：** 官方 README（安装、任务、参数、训练、checkpoint、随机化、多卡与视频）；对照 `isaacgymenvs/train.py` 环境注册和 Runner 入口、`tasks/base/vec_task.py` 的 step 实现；未运行 GPU 训练、推理或真机实验。
+- **通读：** 已完成
+
+官方任务仓可运行实现公开；Isaac Gym Preview 二进制须另行下载，不能把任务仓开源理解为 PhysX/Gym 全部源码开放。`VecTask.step` 只有 CPU pipeline 分支显式调用 `fetch_results`。

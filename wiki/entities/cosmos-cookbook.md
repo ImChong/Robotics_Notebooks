@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, sim2real, open-source]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-17
 related:
   - ./nvidia-cosmos.md
   - ./cosmos-transfer.md
@@ -15,6 +15,8 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/sim2real.md
   - ../methods/mimic-video.md
+original:
+  - ../../sources/repos/nvidia_cosmos_cookbook.md
 sources:
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/sites/cosmos-cookbook.md
@@ -136,3 +138,23 @@ Transfer2.5 官方 README News：2025-10-28 加入 Cosmos Cookbook；不使用 1
 - [Getting Started](https://nvidia-cosmos.github.io/cosmos-cookbook/getting_started/setup.html)
 - [GitHub: cosmos-cookbook](https://github.com/nvidia-cosmos/cosmos-cookbook)
 - [GitHub: NVIDIA/cosmos](https://github.com/NVIDIA/cosmos) — 继任 cookbook / 模型卡
+
+## 源码运行时序图
+
+基于当前官方 `justfile`，描绘文档站运行入口；模型训练需另行执行各 recipe，不能把文档构建通过当作 GPU 配方可复现。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as 用户
+  participant J as justfile
+  participant T as makejinja
+  participant M as MkDocs
+  U->>J: just install
+  J->>J: setup / uv sync
+  U->>J: just serve-external
+  J->>T: _template -d external.yaml
+  T-->>J: build/docs
+  J->>M: uv run mkdocs serve
+  M-->>U: 本地配方文档
+```

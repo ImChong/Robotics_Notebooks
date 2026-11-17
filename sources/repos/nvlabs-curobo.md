@@ -70,3 +70,11 @@
 - [NVlabs/curobo（GitHub）](https://github.com/NVlabs/curobo)
 - [cuRobo 文档站](https://curobo.org/)
 - [Isaac ROS cuMotion](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_cumotion)
+
+## 官方原文复核（2026-11-17）
+
+- **版本：** `824f063a55ecd0386c698347951e384f80dd7919`。
+- **核对范围：** 官方 README、`docs/getting-started/motion_planning.rst` 引用的教程说明全文；对照 `curobo/examples/getting_started/motion_planning.py` 的 pose_planning_example 与 `curobo/motion_planner.py` API；未运行 GPU 训练、推理或真机实验。
+- **通读：** 已完成
+
+当前主分支是 V2 重写，v1 用户须固定 `v0.7.8`。新入口 `python -m curobo.examples.getting_started.motion_planning --mode pose`：MotionPlannerCfg.create → MotionPlanner → warmup → plan_pose → get_interpolated_plan。README 指向独立论文 cuRoboV2-Fast（arXiv:2611.06913）；论文机制与指标复用已有独立实体，不混入早期 cuRobo 首发事件。代码 Apache-2.0，机器人资产按 LICENSE_ASSETS 分别授权。

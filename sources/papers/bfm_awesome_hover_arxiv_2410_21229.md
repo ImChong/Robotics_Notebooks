@@ -27,3 +27,11 @@
 - 论文：<https://arxiv.org/abs/2410.21229>
 - 策展列表：<https://github.com/friedrichyuan/awesome-bfm-papers>
 - 微信公众号编译：[wechat_embodied_ai_lab_bfm_41_papers_survey.md](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
+
+## 原文复核（2026-11-17）
+
+- **原文版本：** [arXiv:2410.21229v2](https://arxiv.org/pdf/2410.21229v2)，2025-03-06。
+- **核对范围：** PDF 正文 I–V、Tables I–V 与图注（方法、仿真和 H1 真机实验、讨论）；官方项目页开放入口，NVlabs/HOVER README 全文；对照 train_student_policy.py 与 StudentPolicyTrainer 的 rollout、oracle 标注及 update 实现。未运行 Isaac Lab 或真机，视频未逐帧核验。
+- **通读：** 已完成
+
+Oracle PPO 学习全身运动跟踪，学生在自身 rollout 状态上查询 oracle，采用 mode/sparsity mask 与本体观测历史。论文仿真相比 multi-mode RL 在 32/32 指标更优，真机 20 段站立动作在 11/12 指标优于 specialist。当前官方开源是 Isaac Lab 2.0 实现；默认 OmniH2O specialist，generalist 需配置 DISTILL_MASK_MODES_ALL；README 推荐关闭 sparsity randomization 以减少动作歧义。AMASS、重定向动作、teacher checkpoint 不随仓提供，不能称为下载即复现。
