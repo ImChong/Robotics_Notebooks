@@ -60,6 +60,7 @@ flowchart LR
 
 ### 推荐读什么
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md) — 本路线的判别底座：四层表、五次推进与 2026 信号读法
+- [Motubrain 2.0 训练直播](../wiki/entities/motubrain-2-live.md) — 观察真机 Agent 失败反馈、更新代码复测与 RSI 探索；**尚无**能证明开放式递归改进或权重自更新的公开评测，作为证据分级练习
 - [RSI 全谱系 survey（arXiv:2607.07663）](../wiki/entities/paper-rsi-survey-2607-07663.md) — 1,250 篇文献的 **改进对象 × 闭环程度** 两轴 taxonomy，把有界 self-refinement 与开放式 RSI 切开；语料与脚本已开源
 - [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md) — Anthropic 的完整 RSI 定义、内部生产率数字与三情景；含"具身跟随"假设
 - [Awesome RSI](../wiki/entities/awesome-rsi.md) — 50+ 方法 / 29 基准按 **artifact × mode** 策展，是查证归类的索引入口
