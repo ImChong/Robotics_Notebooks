@@ -11,7 +11,7 @@ tags:
   - usc
   - microsoft
 status: complete
-updated: 2026-11-14
+updated: 2026-11-17
 arxiv: "2609.25376"
 code: https://github.com/jiuyixu25/VLAQuantBench
 related:
@@ -105,6 +105,12 @@ flowchart LR
 3. **区分“模拟省位宽”与“真实低延迟部署”：** 边缘端显存充足时，在 `RTX 4090`、`bs=1` 场景中直接保留 `BF16` 往往比 `AWQ`/`NF4`/`LLM.int8()` 拥有更低控制延迟；仅在明确触发显存上限或使用经过针对 `M=1` GEMV 优化的定制 kernel 后再切换真量化算子。
 4. **严格锁定仿真环境、Chunk 执行长度与 Hook 覆盖率：** LIBERO 评测必须固定 `mujoco==3.3.2`（`>=3.4.0` 会改变物体碰撞结算并暗扣 3–9 pp）；同时核对 `NUM_ACTIONS_CHUNK` 与重规划间隔，并使用 `scripts/verify_cells.py` 对实际被挂接激活 hook 的层数与声明作用域执行自动一致性校验。
 
+## 与 MACaQ 的证据边界
+
+[MACaQ](./paper-macaq.md) 的 [v2 核对归档](../../sources/papers/macaq_arxiv_2611_10649.md) 给出了逐线性层独立的 MXFP4 W4A4 校准、在线缩放与块旋转，以及 LLM/图像生成模型的重建、质量和真实算子实验。其 Llama/Qwen 困惑度、量化耗时或 vLLM 吞吐不能替代本基准的机器人闭环验收：该论文未测 VLA 动作头、控制周期或真机任务成功率。
+
+将此类通用 PTQ 方法用于 VLA 时，应先固定量化组件与校准数据，再检查动作输出层及多组件交互，最后测目标硬件的真实时延和逐任务闭环成功率。这里给出候选方法与验收方法的分工，未声称已验证 MACaQ 在 VLA 上的收益。
+
 ## 局限与风险
 
 1. **伪量化与真实加速算子覆盖不对称：** 全链路（含视觉编码器、投影层与动作头）消融采用原地伪量化以精确分离数值误差；真机与真实 kernel 测试目前主要集中在 `OpenVLA-OFT` 与 $\pi_{0.5}$ 的 LLM 骨干与 `bs=1` 桌面 GPU，尚未覆盖 TensorRT-LLM / 嵌入式 Orin 端上的定制 INT4 融合算子。
@@ -175,6 +181,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [MACaQ v2 原文核对归档](../../sources/papers/macaq_arxiv_2611_10649.md) — 通用 PTQ 候选及其机器人证据缺口
 - [VLAQuantBench 论文来源归档](../../sources/papers/vlaquantbench_arxiv_2609_25376.md)（arXiv:2609.25376v1 全文与附录核查）
 - [VLAQuantBench 官方仓库归档](../../sources/repos/vlaquantbench.md)（`jiuyixu25/VLAQuantBench` MIT 开源实现与 417 cells 结果存档）
 - [公众号 26 篇论文速览归档](../../sources/blogs/wechat_embodied_station_26_papers_embodiedswe_2026-10-18.md)（早期线索来源）

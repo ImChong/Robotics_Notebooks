@@ -225,6 +225,9 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "true",
     "false",
     "null",
+    # complete：节点 status / 完成档位 / demo 场景名；不是独立技术概念。
+    # 例如「本节点 `complete` 表示文献解读完成」不构成缺页信号。
+    "complete",
     # none：命中处均为 Python 空值 `None` 或配置枚举默认值 `none`（WeVisOne-VL /
     # GroundingPI 的拒答输出、Gymnasium 的 `render_mode=None`、AW-0 服务响应字段、
     # diagram-design 动效默认值），与 null/true/false 同类字面量，非可成页概念。
@@ -1588,6 +1591,10 @@ def _stale_claim_negated(body: str, start: int, end: int) -> bool:
     for brk in STALE_CLAIM_SENTENCE_BREAKS:
         before = before.rsplit(brk, 1)[-1]
     if any(cue in before for cue in STALE_CLAIM_NEGATION_CUES):
+        return True
+    # 「避免把局部收益夸大成全面 SOTA」在提醒读者限制结论，不是在宣称最优。
+    # 只认紧邻命中词的完整句式，不把一般的「避免碰撞，达到 SOTA」一并豁免。
+    if re.search(r"避免把[^，。！？；\n]{1,20}夸大成(?:全面)?\s*$", before):
         return True
     after = body[end : end + STALE_CLAIM_OVERREAD_WINDOW]
     for brk in STALE_CLAIM_SENTENCE_BREAKS:

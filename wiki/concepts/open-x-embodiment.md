@@ -56,6 +56,7 @@ original:
 
 ## 关联页面
 
+- [机器人本体（Embodiment）](./embodiment.md) — 区分存储格式统一与身体、观测、动作及控制契约的一致性
 - [具身智能数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md) — 按形态分组的数据集入口与节点映射
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 跨本体操作数据训练的策略，其接触执行环节由本链托底
 - [Octo Model](../entities/paper-octo.md)

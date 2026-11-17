@@ -13,7 +13,7 @@ tags:
   - ucsb
   - uiuc
 status: complete
-updated: 2026-09-15
+updated: 2026-11-17
 arxiv: "2607.21655"
 related:
   - ../concepts/progress-reward-modeling.md
@@ -83,6 +83,8 @@ flowchart TB
 2. **Mechanism taxonomy：** 按「进度信号从哪来、如何变成可用奖励」分四范式（详见 [概念页](../concepts/progress-reward-modeling.md)）。
 3. **Evidence split：** 保真度基准与下游效用基准分列，避免「策略涨了就等于进度学对了」。
 
+依据[2026-11-15 的 v1 全文复核归档](../../sources/papers/progress_reward_modeling_survey_arxiv_2607_21655.md)，接口比较还需保留以下条件：相同画面可能出现在完成不同子目标之后，单帧不一定足以判断进度；完整轨迹视频只能用于事后评价，不能在任务尚未结束时作为在线输入；相对排序与时间单调性不能直接证明绝对进度百分比已校准。评测应分别覆盖标定、失败/回退/恢复，以及下游效用。
+
 画廊覆盖 ProgressLM、RoboReward、Robometer、Robo-Dopamine、VLAC、VIP、Eureka、Text2Reward 等代表工作（以 Awesome README 为准）。
 
 ## 源码运行时序图
@@ -124,6 +126,7 @@ flowchart TB
 - 综述覆盖截至投稿时文献；Awesome 需持续维护才不漂移。
 - 不等价于「选哪个开源实现就能上真机」的部署手册。
 - 程序化范式在无特权状态的真机场景适用面窄。
+- streaming、caching、distillation 与分层查询是原文提出的部署研究方向，不是该综述已验证的实时控制方案；本次仅同步既有核读归档，未运行训练或策略评测。
 
 ## 与其他工作对比
 

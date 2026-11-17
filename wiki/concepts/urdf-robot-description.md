@@ -89,6 +89,7 @@ summary: "URDF 是 ROS 生态统一的机器人连杆-关节-惯量描述格式�
 
 ## 关联页面
 
+- [机器人本体（Embodiment）](./embodiment.md) — URDF 描述身体结构；策略部署还需核对观测、动作与控制契约
 - [Articulated Body Algorithms](../formalizations/articulated-body-algorithms.md)
 - [Pinocchio](../entities/pinocchio.md) — C++ 刚体动力学全家桶
 - [Dynibo](../entities/dynibo.md) — Rust 运行时 URDF → FK/RNEA 轻量内核

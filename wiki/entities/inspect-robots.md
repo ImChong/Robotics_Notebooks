@@ -153,6 +153,7 @@ flowchart LR
 
 ## 关联页面
 
+- [机器人本体（Embodiment）](../concepts/embodiment.md) — 将框架中的身体适配器与物理身体、观测动作语义和控制范围对应起来
 - [Robocurve（机构）](./robocurve.md) — 独立 Physical AI 能力评测机构
 - [XPolicyLab](./xpolicylab.md) — 将多种 VLA 服务接入统一策略槽位
 - [Isaac Lab-Arena](./isaac-lab-arena.md) — 仿真策略评测路径

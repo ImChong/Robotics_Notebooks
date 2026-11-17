@@ -11,7 +11,7 @@ tags:
   - stanford
   - tsinghua
 status: complete
-updated: 2026-11-14
+updated: 2026-11-17
 arxiv: "2510.10125"
 related:
   - ../methods/generative-world-models.md
@@ -132,7 +132,9 @@ flowchart LR
 | 权重 | HF [`yjguo/Ctrl-World`](https://huggingface.co/yjguo/Ctrl-World)（另需 SVD + CLIP） |
 | 数据 | HF DROID `cadene/droid_1.0.1`；仓内 `dataset_example/droid_subset` |
 | 推理入口 | `scripts/rollout_replay_traj.py` / `rollout_key_board.py` / `rollout_interact_pi*.py` |
-| 训练 | `scripts/train_wm.py`（含下游 post-train / VLAW 流程） |
+| 训练 | `scripts/train_wm.py`（世界模型训练 / 后训练入口；VLAW 仅公开部分见下） |
+
+**与 VLAW 的代码边界（依据 2026-11-16 既有归档）：** [VLAW](./paper-rcl-2602-12063-vlaw-iterative-co-improvement-of-vision-language.md) 是 arXiv:2602.12063 的另一篇独立论文，复用 Ctrl-World 做世界模型后训练；官方 Code (Post-train WM) 指向同一仓库。公开的 `scripts/train_wm.py` 与 `scripts/rollout_interact_pi_eval.py` 不代表完整的奖励模型微调、合成轨迹筛选及 VLA 后训练流水线均已发布，详见 [VLAW 来源归档](../../sources/papers/vlaw_arxiv_2602_12063.md)。两篇论文的实验结果与开源范围应分别归属。
 
 ## 源码运行时序图
 
@@ -231,6 +233,7 @@ sequenceDiagram
 
 ## 参考来源
 
+- [VLAW v2 原文与代码边界核对](../../sources/papers/vlaw_arxiv_2602_12063.md) — 同仓库的 WM 后训练入口与完整 VLAW 流程区别
 - [Ctrl-World 论文摘录](../../sources/papers/ctrl_world_arxiv_2510_10125.md)
 - [Ctrl-World 官方仓库](../../sources/repos/ctrl-world.md)
 - [Ctrl-World 项目页](../../sources/sites/ctrl-world-github-io.md)
