@@ -169,6 +169,7 @@ flowchart LR
 - [平滑导航路径生成](../wiki/methods/smooth-navigation-path-generation.md)
 - [Sim2Real](../wiki/concepts/sim2real.md)
 - [Query：locomotion 失效模式](../wiki/queries/locomotion-failure-modes.md)
+- [PROOF：OOD 视觉失效时的本体回退](../wiki/entities/paper-proof-loco.md)（CoRL 2026）— 高程图教师随机 mask 学回退、深度 CNN-GRU 学不确定性，以滞回 gate 切断不可靠视觉特征；Go2 + D435 验证。
 - [VB-Com](../wiki/entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md)（ICRA 2026）— 把"感知失效"写成可切换的控制问题而不是再加训练噪声：只吃历史本体的回报估计器判断高程图还靠不靠谱，不靠谱就把控制权交给已学会接触恢复的盲策略；G1/H1 双机验证高速迎面行人与零高程输入下的降级恢复；项目页 Code coming soon
 
 ### 推荐做什么
