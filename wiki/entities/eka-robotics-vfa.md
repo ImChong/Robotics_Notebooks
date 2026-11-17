@@ -139,7 +139,7 @@ flowchart TD
 - **与 VLA 长期关系未定：** 市场可能并存（VFA 低层 + VLA 语义规划），也可能收敛；本页按 **2026 公开对立叙事** 记录。
 - **硬件锁定风险：** 自研手可能限制 **第三方臂** 复现，需关注后续 SDK 策略。
 
-## 与其他页面的关系
+## 关联页面
 
 - VLA 主链与误区：[VLA](../methods/vla.md)
 - Sim2Real 方法论：[sim2real](../concepts/sim2real.md)
