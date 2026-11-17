@@ -217,6 +217,8 @@ flowchart LR
 - [DSWAM](../wiki/entities/paper-dswam-dual-system-wam.md) · [DynaWM](../wiki/entities/paper-dynawm-vla-online-correction.md) · [DreamSteer](../wiki/entities/paper-dreamsteer-vla-deployment-steering.md)
 - **训练期蒸馏的低延迟对照：** [W2A](../wiki/entities/paper-w2a-world-priors-action-models.md) — 用 Cosmos-Predict2 中间层世界先验监督 action DiT，推理时不再运行视频模型；LIBERO 95.9%、A100 预测 55 ms（论文报告）。它不属于部署时执行/修正/筛选三种显式 WAM 接口，适合用来比较「世界知识内化在权重中」与「上线保留世界模型」的延迟及泛化边界；官方算法代码尚未公开（2026-11-16 核查）。
 - [VT-WAM](../wiki/entities/paper-vt-wam-visuotactile-contact-rich.md) · [MECo-WAM](../wiki/entities/paper-meco-wam-4d-geometry-cotraining.md)
+- [VTAM v2](../wiki/entities/paper-sa-2603-23481-vtam-video-tactile-action-models-for-complex-phy.md) — Stage I 训练视触觉未来预测、Stage II 训练动作专家；推理跳过完整视频去噪，适合比较触觉世界监督与部署延迟。
+- [DexTacWAM](../wiki/entities/paper-dextacwam.md) — 十指触觉以手指/姿态感知压缩为双手 latent 并预测未来接触演化；对照仅触觉条件化的消融。
 - [接触操作纵深](depth-contact-manipulation.md) — 力 / 触觉工程侧展开
 
 ### 学完输出什么
