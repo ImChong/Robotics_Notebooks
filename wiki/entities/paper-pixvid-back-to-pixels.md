@@ -18,6 +18,7 @@ sources:
   - ../../sources/sites/pixvid-project.md
 related:
   - ../methods/generative-world-models.md
+  - ../methods/diffusion-motion-generation.md
   - ../concepts/video-as-simulation.md
   - ../concepts/diffusion-transformer.md
   - ../concepts/world-action-models.md
@@ -139,6 +140,7 @@ flowchart TD
 ## 关联页面
 
 - [生成式世界模型](../methods/generative-world-models.md)
+- [扩散运动生成方法](../methods/diffusion-motion-generation.md)
 - [视频即仿真](../concepts/video-as-simulation.md)
 - [Diffusion Transformer](../concepts/diffusion-transformer.md)
 - [世界–动作模型边界](../concepts/world-action-models.md)
