@@ -88,6 +88,7 @@ flowchart LR
 
 ### 推荐读什么
 - [System Identification](../wiki/concepts/system-identification.md)
+- [MuJoCo SysID（官方系统辨识工具箱）](../wiki/entities/mujoco-sysid.md) — Stage 1 动力学对齐实操入口：真机日志 + MjSpec + 有界最小二乘，检查惯量/阻尼/摩擦拟合与可辨识性
 - [Implicit / Explicit 执行器建模](../wiki/concepts/implicit-explicit-actuator-modeling.md) · [Armature 建模](../wiki/concepts/armature-modeling.md)
 - [Actuator Network](../wiki/methods/actuator-network.md) — 数据驱动执行器模型
 - [BAM 扩展摩擦模型](../wiki/entities/paper-bam-extended-friction-servo-actuators.md) · [PACE](../wiki/entities/paper-pace-sim2real-legged-robots.md) — 解析辨识两条代表路线
