@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, gpu-simulation, reinforcement-learning, sim2real, legacy, nvidia]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-17
 related:
   - ../overview/sim-platforms-decade-technology-map.md
   - ./isaac-gym-isaac-lab.md
@@ -14,6 +14,8 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
   - ../concepts/domain-randomization.md
+original:
+  - ../../sources/repos/isaac-gym-envs.md
 sources:
   - ../../sources/sites/isaac-gym-preview-history.md
   - ../../sources/repos/isaac-gym-envs.md
@@ -70,7 +72,7 @@ NVIDIA 公司路线中的 **Isaac Gym Preview** 记为 **2020-10**：官方 [Pre
 
 **2020-12-17** 的 [官方介绍博客](https://developer.nvidia.com/blog/introducing-isaac-gym-rl-for-robotics/) 和 **2021-08-24** 的 [论文 v1](https://arxiv.org/abs/2108.10470) 属于后续事件，不用来替代更早的 Preview 开放月份。这里记录的是独立预览版公告，不是 IsaacGymEnvs、Isaac Sim 或 Isaac Lab 的首发时间。
 
-## 为什么它重要
+## 为什么重要
 
 在人形 / 足式机器人 RL 里，训练成本一直是大问题：CPU 仿真慢、机器人状态维度高、接触计算复杂，训练一个可用策略很耗时。
 
@@ -162,7 +164,9 @@ sequenceDiagram
         User->>Gym: set_dof_actuation_force_tensor 等
         User->>Gym: simulate(sim)
         Gym->>Sim: GPU 物理步进
-        User->>Gym: fetch_results(sim)
+        opt CPU pipeline
+        User->>Gym: fetch_results(sim, True)
+        end
         User->>Torch: refresh_*_tensor()
         Torch-->>User: obs / reward 相关 buffer
         User-->>Pol: obs, reward, reset
@@ -173,7 +177,7 @@ sequenceDiagram
 - **复现路径：** 旧论文 / legged_gym 仍走 Gym Preview + IsaacGymEnvs；新实验应迁 [Isaac Lab](./isaac-lab.md)（底座为 [Isaac Sim](./isaac-sim.md)）。
 - **开源 / 维护状态：** 官方已标 deprecated / legacy；以 [NVIDIA Isaac Gym 页](https://developer.nvidia.com/isaac-gym) 与迁移文档为准。
 
-## 数据流与训练循环
+## 核心原理：数据流与训练循环
 
 Isaac Gym 的关键设计是「观测、动作、奖励、重置全部以 GPU tensor 形式留在显存里」，PPO 直接消费这些 tensor，不下放到 CPU：
 
@@ -218,7 +222,7 @@ flowchart TB
   POL --> S2R[sim2real 部署]
 ```
 
-## 它的问题
+## 局限与风险
 
 Isaac Gym 虽然强，但它现在有三个现实问题：
 
@@ -302,3 +306,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎，这条能�
 ## 一句话记忆
 
 > Isaac Gym 是 NVIDIA 旧一代高性能 GPU RL 仿真框架，现已 deprecated；读旧论文和复现旧 baseline 要懂它，新实验请优先 Isaac Lab（底座 Isaac Sim）。
+
+## 工程实践
+
+固定 Gym Preview 4 和 IsaacGymEnvs 的版本后，先运行 Preview 的 `joint_monkey.py` 验证安装，再用 `python train.py task=Ant headless=True` 跑历史基线；`test=True checkpoint=... num_envs=64` 走 checkpoint 回放。记录 `sim_device`、`rl_device`、`pipeline` 三个参数：GPU 仿真配 CPU pipeline 仍有每步 CPU 拷贝。任务定义与 PPO 配置分别在 `config/task`、`config/train`，不能只保存网络权重而丢失配置。新项目迁移至 Isaac Lab，保留 Gym 环境用于历史结果对照。

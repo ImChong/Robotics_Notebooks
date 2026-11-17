@@ -58,3 +58,11 @@ split-annotate 还可产出 `cosmos_predict2_video2world_dataset/`（T5 caption 
 - 平台：[`wiki/entities/nvidia-cosmos.md`](../../wiki/entities/nvidia-cosmos.md)
 - Cookbook Curator 配方：[`wiki/entities/cosmos-cookbook.md`](../../wiki/entities/cosmos-cookbook.md)
 - 技术地图：[`wiki/overview/nvidia-physical-ai-toolchain-technology-map.md`](../../wiki/overview/nvidia-physical-ai-toolchain-technology-map.md)
+
+## 官方原文复核（2026-11-17）
+
+- **版本：** `95675431e309fd86c1c559a39fcb694ddedaa2a9`。
+- **核对范围：** 官方 README、`cosmos_curator/next/README.md` 全文；对照 builtin_pipeline_kinds.py、video_embed/pipeline_kind.py 与 pipeline.py 的入口及 Ray 图；未运行 GPU 训练、推理或真机实验。
+- **通读：** 已完成
+
+当前新工作流优先 Curator Next：Ray Data 执行，Lance 为标准表输出；Xenna 和 legacy Ray Data 管线过渡保留。Next 尚在孵化，schema、identity、config 和 import path 无后向兼容保证。video-embed 在注册表中经 resolve_config / prepare_run 进入 run_config，使用 run_enrichment 调用显式 Ray 下载、GPU map_batches、processing.write，最后发布 checkpoint 结果。

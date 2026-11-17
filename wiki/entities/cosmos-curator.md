@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, data-curation, open-source]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-17
 related:
   - ./nvidia-cosmos.md
   - ./cosmos-cookbook.md
@@ -13,6 +13,8 @@ related:
   - ../overview/nvidia-physical-ai-toolchain-technology-map.md
   - ../methods/generative-world-models.md
   - ../concepts/sim2real.md
+original:
+  - ../../sources/repos/nvidia_cosmos_curator.md
 sources:
   - ../../sources/sites/company-roadmap-date-audit-2026-10-08.md
   - ../../sources/repos/nvidia_cosmos_curator.md
@@ -20,7 +22,7 @@ sources:
   - ../../sources/repos/nvidia_cosmos.md
   - ../../sources/sites/nvidia-cosmos.md
   - ../../sources/sites/cosmos-cookbook.md
-summary: "Cosmos Curator 是 NVIDIA 为 Cosmos WFM 训练数据做的 GPU 视频策展系统：Ray 流式管线切镜、过滤、embedding、VLM 字幕与语义去重，可自托管（Apache-2.0）或用 DGX Cloud 托管服务（S3/ZIP + WebUI/API）。"
+summary: "Cosmos Curator 是 NVIDIA 的物理 AI 数据策展工具：新工作流优先 Curator Next（Ray Data + Lance），Xenna 与 legacy 管线过渡保留；Next 接口仍在孵化，历史托管文档须单独核查。"
 code: https://github.com/NVIDIA/cosmos-curator
 ---
 
@@ -52,9 +54,9 @@ code: https://github.com/NVIDIA/cosmos-curator
 
 ## 核心原理
 
-Curator 建立在 **[Cosmos-Xenna](https://github.com/nvidia-cosmos/cosmos-xenna)**（Ray 多节点 GPU 流式框架）之上：逻辑阶段可拆成多个物理 stage，按吞吐 **autoscale worker**（caption 预处理在 CPU、推理在 GPU 时尤其明显）。
+历史管线建立在 **[Cosmos-Xenna](https://github.com/nvidia-cosmos/cosmos-xenna)**（Ray 多节点 GPU 流式框架）之上：逻辑阶段可拆成多个物理 stage，按吞吐 **autoscale worker**（caption 预处理在 CPU、推理在 GPU 时尤其明显）。
 
-### 三条参考视频管线
+### 历史三条参考视频管线
 
 ```mermaid
 flowchart LR
@@ -73,7 +75,7 @@ flowchart LR
 
 **读法：** 只做探索性分析可停在 split-annotate；要上 Predict2 后训练通常还要 shard-dataset；百万级爬取必须加 dedup。
 
-### 源码运行时序图
+### 历史 Xenna 管线调用概览
 
 ```mermaid
 sequenceDiagram
@@ -173,3 +175,39 @@ GitHub v1.0.0 Release published_at：2025-07-25（UTC）；开源工具版本事
 - [Cosmos Curator End User Guide（GitHub）](https://github.com/NVIDIA/cosmos-curator/blob/main/docs/client/end-user-guide.md) — 本地 / Slurm / DGX Cloud 完整步骤
 - [Reference Video Pipelines](https://github.com/NVIDIA/cosmos-curator/blob/main/docs/curator/reference/video-pipelines.md) — split / dedup / shard 输出格式与 CLI 选项
 - [Cosmos Curator LHA Introduction](https://docs.nvidia.com/cosmos-curator-lha/current/introduction.html) — 托管服务 S3 / ZIP 与 API 概览
+
+## Curator Next：当前入口（2026-11-17）
+
+官方 README 现建议新工作流从 `cosmos_curator/next/` 开始：使用 Ray Data 执行 reference recipe，Lance 持久化标准表；Xenna 与旧 Ray Data 实现仍保留迁移。历史三管线、WebDataset 输出与 LHA 托管服务文档不能视为 Next 的统一数据契约。先用 `cosmos-curator pipeline --help` 查看当前配置入口，再固定 commit、模型和 schema；Next 孵化期没有后向兼容保证。
+
+```mermaid
+flowchart LR
+  CFG["recipe 配置"] --> REG["PipelineKindRegistry"]
+  REG --> RECIPE["Curator Next recipe"]
+  CLIPS["Lance clips 表 / 媒体存储"] --> RECIPE
+  RECIPE --> RAY["Ray Data 下载与 GPU 推理"]
+  RAY --> OUT["Lance enrichment 结果 / checkpoint 发布"]
+```
+
+## 源码运行时序图
+
+以下对应本次读取的 `video-embed` recipe，不泛指全部 Curator 管线。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant K as VIDEO_EMBED_KIND
+  participant C as resolve_config
+  participant P as run_config
+  participant R as run_enrichment / Ray Data
+  participant L as Lance / 媒体存储
+  K->>C: 校验配置与 overrides
+  K->>P: prepare_run 返回的 run 闭包
+  P->>R: start_ray + embed_clips
+  R->>L: processing.read(READ_COLUMNS)
+  R->>R: map(download_clip)
+  R->>R: map_batches(VideoEmbedder, num_gpus=1)
+  R->>L: processing.write / 发布可恢复结果
+  R-->>P: outcome summary
+  P-->>K: clips_lance_uri / version
+```

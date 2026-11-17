@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vlm, planner, embodied-reasoning, vln, spatial-intelligence, memory, long-horizon, qwen3-vl, nvidia, bimanual, hierarchical-control]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-17
 arxiv: "2606.20905"
 related:
   - ../methods/vla.md
@@ -15,6 +15,8 @@ related:
   - ../entities/qwen-robot-nav.md
   - ../queries/manipulation-vla-architecture-selection.md
   - ../queries/robot-learning-three-eras-narrative.md
+original:
+  - ../../sources/papers/vesta_arxiv_2606_20905.md
 sources:
   - ../../sources/papers/vesta_arxiv_2606_20905.md
 summary: "Vesta（arXiv:2606.20905）在 Qwen3-VL-8B 上以空间导向 SFT 混合语料与极简 image+text memory harness，统一定位、VLN、具身推理与长时程子任务规划；四轴 benchmark 平均超最强单基线 >20 pt，真机 Gr00t-N1.6+YAM 记忆任务 +38.3% 成功率。"
@@ -23,6 +25,10 @@ summary: "Vesta（arXiv:2606.20905）在 Qwen3-VL-8B 上以空间导向 SFT 混�
 # Vesta（A Generalist Embodied Reasoning Model）
 
 **Vesta** 是 NVIDIA 等团队提出的 **具身通才 planner VLM**（arXiv:2606.20905）：在 **Qwen3-VL-8B** 上，用 **六类空间导向 SFT 混合语料** 与 **极简多模态 memory harness**（采样历史帧 + 运行中子任务文本缓存），把 **定位（localization）、视觉–语言导航（VLN）、具身推理（embodied reasoning）、带记忆的动作规划（action planning）** 收进 **单一 checkpoint**，作为 **System-2 认知脑** 向 **System-1 actor**（论文真机用 **Gr00t-N1.6**）输出 ** grounded 自然语言子任务**，而非直接输出电机命令。
+
+## 一句话定义
+
+Vesta 是统一定位、导航、具身推理与带历史记忆子任务规划的 Qwen3-VL-8B 系统级规划器，不直接产生电机动作。
 
 ## 英文缩写速查
 
@@ -181,6 +187,28 @@ flowchart TB
 - 论文：<https://arxiv.org/abs/2606.20905>
 - 对照 planner 栈：[Qwen-Robot Suite](./qwen-robot-suite.md)、[Pelican-Unified 1.0](../methods/pelican-unified-1.md)
 - Actor 对照：[Gr00t-N1（NVIDIA）](https://arxiv.org/abs/2503.14734) — 论文真机低层
+
+## 工程实践：论文里的同步与异步规划
+
+[论文 Appendix B](https://arxiv.org/html/2606.20905)明确 Vesta 负责高层文本子任务，GR00T-N1.6 负责低层动作。同步模式在目标缺失/过期或新目标到来时阻塞请求 planner，actor 再以当前子任务连续推理；异步模式由 planner 线程更新共享文本子任务，actor 使用最新有效目标。论文真机数字使用**同步模式**。Memory 只由 planner 维护，actor 不接收历史采样帧或推理轨迹。工程接入须管理过时命令、子任务切换与执行失败。
+
+```mermaid
+sequenceDiagram
+ autonumber
+ participant E as YAM 环境
+ participant P as Vesta 与图文 memory
+ participant A as GR00T-N1.6 actor
+ loop 当前任务未结束
+  E->>P: 最新观测和高层任务
+  opt 文本子任务缺失或已过期
+   P-->>A: 更新文本子任务 z
+  end
+  E->>A: 当前图像与本体观测
+  A->>E: 执行低层动作
+ end
+```
+
+**代码边界：** 当前项目页与论文可读，未发现可核实的完整官方模型权重和执行代码入口；上图只描述论文 Algorithm 1 的控制流程，**不是源码运行时序图**。实验仅限 YAM 双臂三种长时程记忆任务。
 
 ## 参考来源
 

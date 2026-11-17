@@ -79,3 +79,11 @@
 - [x] 摘要与核心方法摘录（≥5 条）
 - [x] wiki 页面映射
 - [ ] 官方代码/权重发布（截至 ingest 日未见公开 repo）
+
+## 一手论文核读（2026-11-17）
+
+- **原文：** [Vesta arXiv:2606.20905v1](https://arxiv.org/html/2606.20905)；[NVIDIA GEAR 项目页](https://research.nvidia.com/labs/gear/vesta/)。
+- **核读范围：** 正文四能力混合 SFT、Image+Text memory、AgiBot/Ego/导航及 YAM 真机表、各附录的同步/异步 planner–actor 控制循环、训练与局限。未运行模型，项目页未确认可直接下载官方权重/完整训练代码。
+- **通读：** 已完成
+
+真机 Appendix B 的同步方案在缺少子任务或超时后阻塞查询 planner，异步方案用后台 planner 更新共享文本目标，actor 继续以最新有效子任务执行；均不是每个低层动作都经过 VLM 推理。actor 是 GR00T-N1.6，Vesta 只负责高层文本子任务与历史 memory。真机仅 YAM 双臂三任务，平均 +38.3% 是相对于 actor-only 的特定测试差值，不能泛化到任意具身平台。

@@ -32,3 +32,11 @@
 - 实体：[`wiki/entities/cosmos-cookbook.md`](../../wiki/entities/cosmos-cookbook.md)
 - 站点摘录：[`sources/sites/cosmos-cookbook.md`](../sites/cosmos-cookbook.md)
 - Transfer：[`wiki/entities/cosmos-transfer.md`](../../wiki/entities/cosmos-transfer.md)
+
+## 官方原文复核（2026-11-17）
+
+- **版本：** `d0857364e8a727be41b181731e03f478213e4558`。
+- **核对范围：** 官方 README 全文与 justfile（install、模板生成、serve-external 和 CI 构建）；未运行 GPU 训练、推理或真机实验。
+- **通读：** 已完成
+
+README 仍将旧 Cookbook 标为有限维护并引导迁移 NVIDIA/cosmos。文档入口 just serve-external 先运行 makejinja 模板（external.yaml），再 uv run mkdocs serve；这只是配方文档运行，不会自动下载所有模型或启动 GPU 推理。

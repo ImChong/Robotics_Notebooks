@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, grpo, ppo, unitree-g1, isaac-lab, door-opening, cvpr2026, nvidia, gear, body-system-stack]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-17
 arxiv: "2512.01061"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
@@ -25,6 +25,8 @@ related:
   - ./paper-video2door-traversal.md
   - ./unitree-g1.md
   - ./isaac-gym-isaac-lab.md
+original:
+  - ../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md
 sources:
   - ../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md
   - ../../sources/sites/doorman-humanoid-github-io.md
@@ -39,6 +41,10 @@ summary: "DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 lo
 # DoorMan（Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer）
 
 **DoorMan** 是 NVIDIA GEAR 等团队的人形 **视觉 loco-manipulation** 论文（arXiv:2512.01061，CVPR 2026）：策略 **完全在仿真中训练**，部署时仅 **机载 RGB + 本体感知**，在 **Unitree G1** 上对 **未见过的真实门** 做 **零样本** 开关门与穿行。与姊妹工作 [VIRAL](./paper-viral-humanoid-visual-sim2real.md) 同属 [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) 开源栈，但 DoorMan 强调 **铰接接触 + 长时域** 下的 **像素到关节目标** 迁移与 **GRPO 自举**。
+
+## 一句话定义
+
+DoorMan 通过特权教师 PPO、视觉学生 DAgger 和 GRPO 自举，使 G1 从 RGB 与本体观测完成长时程开门任务。
 
 ## 英文缩写速查
 
@@ -207,6 +213,10 @@ sequenceDiagram
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
+## 工程实践
+
+按 [NVlabs/GR00T-VisualSim2Real](https://github.com/NVlabs/GR00T-VisualSim2Real) 固定 Isaac Lab 和 DoorMan 任务资产。程序化门的铰链、把手、物理阻力、PBR 材质、dome light 与相机随机化要同时验证；按特权教师 PPO → RGB+本体学生 DAgger → GRPO 自举推进，`train_agent_trl.py` / `eval_agent_trl.py` 的确切 `+exp=` 配置以官方仓为准。动作目标由预训练 WBC 跟踪，不能将高维目标理解为裸电机力矩。论文的真机约 **83%** 成功率与专家遥操作约 **80%** 属于指定实验协议，不应推广至任意真实门；尚未运行真机。
 
 ## 参考来源
 

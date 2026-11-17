@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, human-video, cross-embodiment, nvidia, ut-austin, hkust, berkeley, uw, stanford, kaist, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-17
 arxiv: "2602.06949"
 venue: "ICML 2026"
 code: https://github.com/NVIDIA/DreamDojo
@@ -12,6 +12,8 @@ related:
   - ./paper-anyworld.md
   - ./paper-sa-2601-03782-pointworld.md
   - ../methods/generative-world-models.md
+original:
+  - ../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md
   - ../../sources/blogs/wechat_embodied_ai_lab_vla_wm_reading_roadmap_2026-09-02.md
@@ -128,6 +130,25 @@ sequenceDiagram
 - [项目页](https://dreamdojo-world.github.io/)
 - [论文笔记](https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos/DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos.html)
 - [arXiv:2602.06949](https://arxiv.org/abs/2602.06949)
+
+## 核心原理：连续潜动作到交互世界模型
+
+对照 [arXiv:2602.06949](https://arxiv.org/html/2602.06949)：先从大规模第一视角人视频学习连续潜动作与动作条件世界模型，再通过少量目标本体机器人片段后训练，并蒸馏长时序自回归预测。数据规模需区分 **DreamDojo-HV 43,827 小时**与含其他视频的 **44,711 小时混合集**，不可将其混成精确的“44K 纯人视频”。
+
+```mermaid
+flowchart LR
+ H["第一视角人类视频"] --> L["连续 latent action 训练"]
+ L --> W["视频世界模型预训练"]
+ R["目标机器人动作片段"] --> P["本体 post-training"]
+ W --> P
+ P --> D["自回归生成蒸馏"]
+ D --> F["动作条件未来画面"]
+ F --> A["策略评估、交互与规划"]
+```
+
+## 工程实践
+
+[官方 DreamDojo 仓库](https://github.com/NVIDIA/DreamDojo) 已公开预训练、后训练、latent action、蒸馏与评测文档及 2B/14B 权重；`launch_teacher_gen.sh`、`launch_student_inference.sh` 是可核实的工程入口。先对齐模型权重、视频帧率与机器人动作条件，评测可控性，再决定是否承担高成本预训练。论文蒸馏后约 **10 FPS** 视频交互是特定设备和分辨率下的指标，不可等同低层机器人控制频率；未运行 GPU。
 
 ## 参考来源
 

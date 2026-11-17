@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "comparison_id": "wiki-comparisons-robot-foundation-model-company-paths-2026",
   "lenses": {
     "wam": "世界 / 动作模型",
@@ -17,7 +17,7 @@
         "humanoid",
         "wbc"
       ],
-      "summary": "平台型路线：Cosmos 世界生成 + Isaac 仿真 + GR00T 人形基础模型 + 全身控制栈，多层资产分别开放。",
+      "summary": "平台型路线：Cosmos 世界模型、Isaac 仿真学习、GR00T VLA/WAM 与全身控制；截至 2026-11-17 已推进到 Isaac Lab 3.0、cuRoboV2-Fast 和 GR00T 2，代码、权重与交付状态逐项区分。",
       "official": "https://developer.nvidia.com/blog/tag/robotics/",
       "nodes": [
         {
@@ -43,7 +43,7 @@
           "date": "2023-10",
           "title": "cuRobo",
           "track": "运动规划",
-          "desc": "GPU 并行机器人运动生成库：碰撞检测、无碰撞 IK 与多种子并行轨迹优化；NVlabs 官方开源，后续 cuRoboV2 并入同一代码基。",
+          "desc": "GPU 运动生成库的初版论文事件；当前主分支已重写为 V2 API，旧 MotionGen 用户须固定 v0.7.8；新算法另见 cuRoboV2-Fast。",
           "id": "entity-curobo",
           "url": "https://arxiv.org/abs/2310.17274",
           "date_note": "arXiv:2310.17274 v1 提交于 2023-10-26；cuRoboV2 与 Isaac ROS cuMotion 集成另计，不并入本节点。"
@@ -123,7 +123,7 @@
           "date": "2025-07",
           "title": "Cosmos Curator",
           "track": "数据",
-          "desc": "开源视频筛选、去重与标注工具；2025-07-25 v1.0.0 Initial version，托管服务另核查。",
+          "desc": "2025-07-25 v1.0.0 初版事件；截至 2026-11-17 新工作流优先 Curator Next（Ray Data + Lance），历史 Xenna 管线过渡保留，Next 接口仍在孵化。",
           "id": "entity-cosmos-curator",
           "url": "https://github.com/nvidia-cosmos/cosmos-curator",
           "date_note": "GitHub v1.0.0 Release published_at：2025-07-25（UTC）；开源工具版本事件，不代表托管云服务首发。",
@@ -174,7 +174,7 @@
           "desc": "把大规模动捕运动跟踪当作预训练任务，得到通用人形全身策略，并经统一 token 接口接入 VR、视频、文本与 VLA；代码并入 GR00T-WholeBodyControl 单仓，后在 Science Robotics 发表。",
           "id": "entity-nvidia-sonic",
           "url": "https://nvlabs.github.io/GEAR-SONIC/",
-          "date_note": "arXiv:2511.07820 v1 提交于 2025-11-11；并入 GR00T-WBC 仓（节点 GR00T-WholeBodyControl 已记 2026-02）与 Science Robotics 发表为后续事件。",
+          "date_note": "arXiv:2511.07820 v1 提交于 2025-11-11；并入 GR00T-WBC 仓（GR00T-WholeBodyControl 初版节点的说明已记 2026-02 并入）与 Science Robotics 发表为后续事件。",
           "date_source": "https://arxiv.org/abs/2511.07820"
         },
         {
@@ -246,6 +246,16 @@
           "date_source": "https://arxiv.org/abs/2603.15546"
         },
         {
+          "date": "2026-03",
+          "title": "GR00T N1.7",
+          "track": "VLA",
+          "desc": "3B 开放 VLA 的 3 月 early-access 公告；7 月工程工作流为后续事件，当前公开模型与 GR00T 2 待发布代码分开。",
+          "id": "entity-paper-gr00t-n1-7",
+          "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Global-Robotics-Leaders-Take-Physical-AI-to-the-Real-World/",
+          "date_note": "2026-03-16 NVIDIA 官方新闻稿宣布 N1.7 early access，不等同后续 GA 日期。",
+          "date_source": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Global-Robotics-Leaders-Take-Physical-AI-to-the-Real-World/"
+        },
+        {
           "date": "2026-04",
           "title": "RoboLab",
           "track": "评测",
@@ -309,6 +319,46 @@
           "url": "https://research.nvidia.com/labs/gear/robottt/",
           "date_note": "arXiv:2607.15275 v1 提交于 2026-07-16；此前已有项目页，项目页首发日未核到。",
           "date_source": "https://arxiv.org/abs/2607.15275"
+        },
+        {
+          "date": "2026-10",
+          "title": "Isaac Lab 3.0 GA",
+          "track": "仿真 / RL",
+          "desc": "10 月官方宣布 3.0 GA，多物理后端与基础模型 RL 后训练；复用 Lab 实体保留 2024 初版历史。",
+          "id": "entity-isaac-lab",
+          "url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Advances-Isaac-Platform-for-General-Purpose-Robotics-With-New-Reference-Humanoid-Frameworks-Simulation-Pipelines-and-Data/default.aspx",
+          "date_note": "2026-10-21 官方发布公告；11 月 CoRL 展示为后续介绍。",
+          "date_source": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Advances-Isaac-Platform-for-General-Purpose-Robotics-With-New-Reference-Humanoid-Frameworks-Simulation-Pipelines-and-Data/default.aspx"
+        },
+        {
+          "date": "2026-11",
+          "title": "cuRoboV2-Fast",
+          "track": "运动规划",
+          "desc": "B 样条路径优化、GPU RRT 种子与固定路径 TimeOpt，支持负载相关力矩约束；复用独立论文节点。",
+          "id": "entity-paper-curobov2-fast",
+          "url": "https://research.nvidia.com/labs/lpr/curobov2-fast/",
+          "date_note": "arXiv:2611.06913 v1 为 2026-11-04；不覆盖 cuRobo 初版 2023-10 事件。",
+          "date_source": "https://arxiv.org/abs/2611.06913"
+        },
+        {
+          "date": "2026-11",
+          "title": "GR00T 2",
+          "track": "WAM / 全身控制",
+          "desc": "联合视频与动作预测，跨本体适配、少样本后训练和 Turbo+SONIC；截至 11-17 官方代码仍预计 12 月发布。",
+          "id": "entity-paper-gr00t-2",
+          "url": "https://research.nvidia.com/labs/gear/gr00t-2/",
+          "date_note": "2026-11-09 NVIDIA CoRL 博客公开介绍；代码计划 12 月，公告日不是代码可用日。",
+          "date_source": "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/"
+        },
+        {
+          "date": "2026-11",
+          "title": "DexBench",
+          "track": "评测",
+          "desc": "RLWRLD 与 NVIDIA 基于 Isaac Lab-Arena / Newton 合作的工业灵巧性基准：15 任务、四类场景；与通才模型发布分开。",
+          "id": "entity-dexbench",
+          "url": "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/",
+          "date_note": "2026-11-09 CoRL 官方公告；此处记录联合展示事件，不推定所有资产同日开放。",
+          "date_source": "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/"
         }
       ]
     },

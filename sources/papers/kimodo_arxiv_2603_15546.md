@@ -61,3 +61,11 @@
   year={2026}
 }
 ```
+
+## 一手技术报告与实现核读（2026-11-17）
+
+- **原文：** [Kimodo arXiv:2603.15546](https://arxiv.org/html/2603.15546)；[官方项目](https://research.nvidia.com/labs/sil/projects/kimodo/)；[源码](https://github.com/nv-tlabs/kimodo)。
+- **核读范围：** 动作表示、root/body 两阶段去噪、约束注入、数据与扩展实验、BONES-SEED 基准及限制；对照 README 的模型变体、CLI、显存建议。未运行模型。
+- **通读：** 已完成
+
+Kimodo 是运动学轨迹生成器，不是接触稳定的真机力矩控制器。root 与 body 约束先后去噪，输出仍需重定向、物理跟踪和接触校验。官方说明本地全 GPU 生成显存需求约 17 GB，若 `TEXT_ENCODER_DEVICE=cpu` 可降至约 3 GB 以下，代价是更慢；这不是速度实时性的保证。实验中的文本遵循、稀疏末端约束和物理可执行度是不同指标。
