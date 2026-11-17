@@ -3,14 +3,15 @@
 import generate_link_graph as glg
 
 
-def test_graph_updated_matches_detail_page_dates(monkeypatch):
+def test_graph_updated_matches_detail_page_dates():
     pages = [
         glg.REPO_ROOT / "wiki/concepts/motion-retargeting.md",
         glg.REPO_ROOT / "roadmap/motion-control.md",
     ]
-    monkeypatch.setattr(glg, "_iter_graph_pages", lambda: pages)
     nodes, _edges = glg._build_graph_data()
-    for node, page in zip(nodes, pages, strict=True):
+    by_path = {node["id"]: node for node in nodes}
+    for page in pages:
+        node = by_path[str(page.relative_to(glg.REPO_ROOT))]
         expected = glg.resolve_page_updated(page, glg.parse_frontmatter(page.read_text()))
         assert expected
         assert node["updated"] == expected
