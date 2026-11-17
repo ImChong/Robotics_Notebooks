@@ -37,6 +37,7 @@ related:
 - ./robot-descriptions-py.md
 - ../comparisons/robot-description-catalogs.md
 - ./mjbatch.md
+- ./mujoco-sysid.md
 - ./text2mujoco.md
 - ../entities/awesome-sim2real.md
 - ../overview/lc-awesome-sim2real-technology-map.md
@@ -86,7 +87,7 @@ MuJoCo 是在广义（关节）坐标下做刚体动力学、并把摩擦接触�
 
 ## 为什么重要
 
-- 它同时满足「接触稳定」「单步极快」「逆动力学可解析」三点，因此既是 RL 基准（Gymnasium、dm_control）的底座，也是轨迹优化、系统辨识等基于模型方法的常用仿真器（来源：官方文档 Overview / Computation）。
+- 它同时满足「接触稳定」「单步极快」「逆动力学可解析」三点，因此既是 RL 基准（Gymnasium、dm_control）的底座，也是轨迹优化、系统辨识等基于模型方法的常用仿真器（来源：官方文档 Overview / Computation）。专用的 [MuJoCo SysID 工具箱](./mujoco-sysid.md) 用真实轨迹、有限差分与批量 rollout 拟合模型参数。
 - 2021 年被 DeepMind 收购并免费、2022 年开源后，MJX、MuJoCo Warp、Playground、Menagerie 等生态围绕同一份 MJCF 与 mjModel / mjData 结构展开，本页是这些子页的入口。
 
 ## 核心原理
