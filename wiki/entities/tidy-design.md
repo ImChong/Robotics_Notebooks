@@ -16,6 +16,7 @@ related:
   - ../concepts/model-context-protocol.md
   - ../concepts/agentic-coding-software-fundamentals.md
   - ./anthropic-frontend-design-skill.md
+  - ./open-design.md
   - ./freecad-mcp.md
 sources:
   - ../../sources/sites/tidy-design.md
@@ -69,6 +70,7 @@ Tidy 是面向设计师、工程师和 agent 的开源产品画布：人可直�
 
 ## 关联页面
 
+- [OpenDesign](./open-design.md) — 对照其设计系统、模板、Coding Agent 与 Web/Daemon 协作流程。
 - [Desigma](./desigma.md) — Rust 本地优先设计工具，也提供 MCP 接口。
 - [Model Context Protocol](../concepts/model-context-protocol.md) — agent 与外部工具交互的协议层。
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 设计协作仍需架构、约束和评测判断。
