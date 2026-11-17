@@ -105,6 +105,7 @@ Agent 因 **多轮、改状态、路径多样** 而比单轮 LLM 更难评；可
 ### 非确定性指标
 
 - **pass@k：** k 次中至少 1 次成功（coding 常关注 pass@1）。  
+- **采样策略与多样性：** [Reasoning with Sampling](../entities/paper-reasoning-with-sampling.md) 提供无需 RL 更新的幂分布采样对照，评估时应同时核对 pass@1、pass@k 和额外推理 token 成本。
 - **pass^k：** k 次全部成功（用户-facing 一致性）。  
 - 二者随 k 增大 **发散**——选型取决于产品要「一次做对」还是「每次都稳」。
 
