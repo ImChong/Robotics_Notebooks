@@ -62,6 +62,7 @@ from export_minimal import (
     page_has_repo_source,
     parse_frontmatter,
     parse_roadmap_stages,
+    resolve_page_updated,
     strip_frontmatter,
 )
 from lint_wiki import has_section
@@ -1495,6 +1496,8 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             "detail_id": path_to_id(page, REPO_ROOT),
             "label": extract_title(content) or page.stem,
             "type": node_type,
+            # 与详情页使用同一更新时间口径，禁止用导出时的文件 mtime。
+            "updated": resolve_page_updated(page, parse_frontmatter(content)),
             "health_score": health_score,
             # 缺项位掩码：图谱浮窗 / 侧栏，以及榜单、更新记录行的悬停提示
             "health_gaps": health_gaps,

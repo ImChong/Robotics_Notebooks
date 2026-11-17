@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import export_minimal
 import generate_link_graph as glg
 import pytest
 
@@ -31,6 +32,7 @@ def test_build_graph_data_skips_readme_edges_but_keeps_real_links(tmp_path, monk
     (roadmap / "README.md").write_text("# Index\n", encoding="utf-8")
 
     monkeypatch.setattr(glg, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(export_minimal, "ROOT", tmp_path)
     monkeypatch.setattr(glg, "GRAPH_CONTENT_DIRS", (wiki, roadmap))
     nodes, edges = glg._build_graph_data()
 

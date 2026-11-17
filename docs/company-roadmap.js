@@ -76,7 +76,8 @@
     var api = window.RNGraphTooltip;
     var knowledgeNode = api && api.resolveMetadataNode({ id: node.id });
     var metadata = api && knowledgeNode
-      ? api.buildTooltipHealthHtml(knowledgeNode) + api.buildNodeCommunityBadgesHtml(knowledgeNode) : '';
+      ? api.buildTooltipHealthHtml(knowledgeNode) + api.buildNodeCommunityBadgesHtml(knowledgeNode) +
+        api.buildUpdatedBadgeHtml(knowledgeNode) + api.buildTooltipRoutesHtml(knowledgeNode) : '';
     var links = '';
     if (node.id) links += '<a class="co-node-link" href="' + esc(detailHref(node.id)) + '">本库笔记 →</a>';
     if (node.url) links += extLink(node.url, '原文 ↗', 'co-node-link');

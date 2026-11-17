@@ -5028,3 +5028,9 @@ a.card:active { transform: translateY(-1px); }
   white-space: normal;
   min-width: 0;
 }
+
+/* 更新时间为知识页维护日期，与时间线中的技术发布日期分开显示。 */
+.tt-updated { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 8px 0; font-size: .72rem; color: var(--text-muted); }
+.tt-updated .detail-meta-badge { font-size: inherit; }
+.co-node-metadata .tt-updated { margin: 0; }
+.co-node-metadata .tt-routes { flex-basis: 100%; max-height: none; overflow: visible; margin: 0; }

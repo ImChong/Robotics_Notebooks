@@ -91,3 +91,18 @@ test('tooltip community and route labels show Chinese only for either parenthesi
     }
   }
 });
+
+test('tooltip updated badge uses the page date, keeps catalog fallback, and never uses activity or release date', () => {
+  const tooltipApi = api();
+  const node = { id: 'wiki/example.md', detail_id: 'example', updated: '2026-10-12', activity: '2026-11-17' };
+  tooltipApi.setGraphData({ nodes: [node], communities: [] });
+  const html = tooltipApi.buildNodeTooltipHtml({ health: { path: node.id }, title: 'Example' });
+  assert.match(html, /更新时间/);
+  assert.match(html, /<time datetime="2026-10-12">2026-10-12<\/time>/);
+  assert.ok(!html.includes('2026-11-17'));
+  assert.equal(tooltipApi.buildUpdatedBadgeHtml({ activity: '2026-11-17', date: '2025-03' }), '');
+  assert.match(tooltipApi.buildUpdatedBadgeHtml({ updated: '2026-09-01' }), /2026-09-01/);
+  assert.equal(tooltipApi.buildUpdatedBadgeHtml({ updated: '<invalid>' }), '');
+  tooltipApi.setGraphData({ nodes: [{ id: node.id }], communities: [] });
+  assert.match(tooltipApi.buildUpdatedBadgeHtml({ path: node.id, updated: '2026-09-01' }), /2026-09-01/);
+});

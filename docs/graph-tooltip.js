@@ -465,6 +465,15 @@
     }).join('') + '</div>';
   }
 
+  function buildUpdatedBadgeHtml(node) {
+    var resolved = resolveMetadataNode(node);
+    var updated = resolved.updated || (node && node.updated) || '';
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(updated)) return '';
+    return '<div class="tt-updated"><span class="tt-health-label">更新时间</span>' +
+      '<span class="detail-meta-badge detail-meta-date"><span aria-hidden="true">📅</span>' +
+      '<time datetime="' + escapeHtml(updated) + '">' + escapeHtml(updated) + '</time></span></div>';
+  }
+
   function buildNodeTooltipHtml(opts) {
     opts = opts || {};
     var badges = buildMetaBadgesHtml(opts);
@@ -489,6 +498,7 @@
       summary +
       community +
       routes +
+      buildUpdatedBadgeHtml(opts.node || opts.health) +
       health +
       extra +
       link;
@@ -518,6 +528,7 @@
     resolveMetadataNode: resolveMetadataNode,
     buildNodeCommunityBadgesHtml: buildNodeCommunityBadgesHtml,
     buildTooltipRoutesHtml: buildTooltipRoutesHtml,
+    buildUpdatedBadgeHtml: buildUpdatedBadgeHtml,
     bindBlankDismiss: bindGraphTooltipBlankDismiss,
     bindOutsideDismiss: bindGraphTooltipOutsideDismiss,
     isMetadataOnlySummary: isMetadataOnlySummary,

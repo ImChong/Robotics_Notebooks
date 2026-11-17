@@ -1,0 +1,16 @@
+"""图谱更新时间与详情目录共用口径，不以文件 mtime 或活动日期替代。"""
+
+import generate_link_graph as glg
+
+
+def test_graph_updated_matches_detail_page_dates(monkeypatch):
+    pages = [
+        glg.REPO_ROOT / "wiki/concepts/motion-retargeting.md",
+        glg.REPO_ROOT / "roadmap/motion-control.md",
+    ]
+    monkeypatch.setattr(glg, "_iter_graph_pages", lambda: pages)
+    nodes, _edges = glg._build_graph_data()
+    for node, page in zip(nodes, pages, strict=True):
+        expected = glg.resolve_page_updated(page, glg.parse_frontmatter(page.read_text()))
+        assert expected
+        assert node["updated"] == expected
