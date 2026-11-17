@@ -29,7 +29,7 @@ related:
 |------|----------|----------|
 | SEA | Series Elastic Actuator | 电机传动链与输出负载之间有串联弹性件的执行器 |
 | FSEA | Force-Sensing Series Elastic Actuator | Paine 等人区分的一种通过串联弹簧测力的构型 |
-| RFSEA | Reaction Force Series Elastic Actuator | Paine 等人比较的另一种反作用力式 SEA 构型 |
+| RFSEA | Reaction Force Sensing Series Elastic Actuator | Paine 等人比较的另一种反作用力式 SEA 构型 |
 | DOB | Disturbance Observer | 利用测量量与标称模型估计未建模扰动的观测器 |
 | PD | Proportional–Derivative | 比例–微分反馈；过大反馈增益可能激励弹性模态 |
 | FRF | Frequency Response Function | 扫频取得的幅相频率响应，用于识别谐振及稳定性 |
