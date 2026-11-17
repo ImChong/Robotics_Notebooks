@@ -27,3 +27,11 @@
 
 - 深读笔记：<https://imchong.github.io/Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models/DreamGen__Unlocking_Generalization_in_Robot_Learning_through_Video_World_Models.html>
 - 论文：<https://arxiv.org/abs/2505.12705>
+
+## 一手原文核读（2026-11-17）
+
+- **论文版本：** [arXiv:2505.12705](https://arxiv.org/html/2505.12705)；官方实现 [NVIDIA/GR00T-Dreams](https://github.com/NVIDIA/GR00T-Dreams)。
+- **核读范围：** 原文动机、四阶段方法、RoboCasa 与 GR1/Franka/SO-100 实验、DreamGen Bench、消融、限制；对照官方 README 的视频生成、IDM、LeRobot 数据转换及 GR00T N1 训练入口。未运行训练、视频生成或真机。
+- **通读：** 已完成
+
+论文重点是把目标本体视频模型的生成样本用逆动力学模型变成有动作标签的 neural trajectories，再与真实演示混合。RoboCasa 24 任务与真机新行为泛化是两种不同评测口径：已见环境新行为成功率 43.2%，未见环境 28.5%；不等于 22 个动作都达到同一成功率。官方 GR00T-Dreams 的 Cosmos-Predict2 工作流属于开放实现，不能把论文全部视频模型实验都称为 Cosmos 专属。视频生成需大量 GPU，IDM 对新本体需要自己的成对数据。

@@ -56,3 +56,11 @@ MotionBricks 采用**模块化潜空间生成底座**，结合高层行为系统
 - [Project Page](https://nvlabs.github.io/motionbricks/)
 - [ArXiv Paper (2604.24833)](https://arxiv.org/abs/2604.24833)
 - [GitHub Repository](https://github.com/NVlabs/GR00T-WholeBodyControl)
+
+## 一手论文与新官方仓核读（2026-11-17）
+
+- **原文：** [arXiv:2604.24833](https://arxiv.org/html/2604.24833)；[项目页](https://nvlabs.github.io/motionbricks/)；[独立官方仓 NVlabs/motionbricks](https://github.com/NVlabs/motionbricks)。
+- **核读范围：** 结构化多头 tokenizer、root/pose 模块、Smart Locomotion 与 Smart Object、350K 运动数据和评测/消融；新仓 README 与 `docs/runtime_api.md` 的 create_input、generate_animation、sample、MotionRecorder 调用链。未运行 TensorRT/CUDA/真机。
+- **通读：** 已完成
+
+**修正历史开源状态：** 原记录 2026-09 的“完整版本待发布”已过时。现在 NVlabs/motionbricks 官方仓公开 SOMA/G1 ONNX 运行时、safetensors checkpoint、Smart Primitive 编辑器及可执行 Demo；发布资源以 README 的逐项清单为准，不能等同全量训练数据/训练脚本均可自由获得。官方 runtime 每次使用四帧上下文、一至四帧目标，经 root/pose/decoder 生成连续片段，MotionRecorder 记录播放后的姿态以供下一次生成；首跑构建 TensorRT plan。

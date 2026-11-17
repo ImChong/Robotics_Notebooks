@@ -27,3 +27,11 @@
 
 - 论文：<https://arxiv.org/abs/2601.16163>
 - 微信公众号编译：[wechat_shenlan_world_models_15_open_source_2026.md](../blogs/wechat_shenlan_world_models_15_open_source_2026.md)
+
+## 一手论文复核（2026-11-17）
+
+- **原文：** [Cosmos Policy: Fine-Tuning Video Models for Visuomotor Control and Planning, arXiv:2601.16163](https://arxiv.org/html/2601.16163)。
+- **核读范围：** 正文问题设定、latent frame injection 与 action/world/value 的联合建模、示范数据后训练、test-time value-guided planning、LIBERO/RoboCasa/真机实验及限制；原论文公开项目入口。未实际执行官方代码。
+- **通读：** 已完成
+
+使用 Cosmos-Predict2 的视频生成先验，将动作、未来视觉及价值估计编码成同一扩散过程中的潜在帧，在目标平台示范数据上单阶段训练。论文报告 LIBERO 98.5% 和 RoboCasa 67.1% 的平均成功率（不同任务基准不可直接比较），基于世界与价值预测的候选动作筛选可改善困难任务，但耗时的测试期规划不是每步 50Hz 的低层闭环控制。原 survey 仅作索引，不作为方法和数字依据。

@@ -29,3 +29,11 @@
 
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
 - 姊妹篇 AMP 专题：[wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
+
+## 一手论文与代码核读（2026-11-17）
+
+- **原文：** [DreamDojo arXiv:2602.06949](https://arxiv.org/html/2602.06949)；[官方仓](https://github.com/NVIDIA/DreamDojo)；[项目](https://dreamdojo-world.github.io/)。
+- **核读范围：** 论文潜动作、视频预训练、机器人后训练、蒸馏及长时域滚动、评测、训练代价、局限；核对官方仓 README 与 pretrain/post-train/distillation 文档入口。未运行 GPU 实验。
+- **通读：** 已完成
+
+原文把大量第一视角人类视频转换成带连续潜动作条件的世界建模训练信号，再用少量目标本体机器人片段后训练。DreamDojo-HV 约 43,827 小时，混合训练总量约 44,711 小时；“44K 人视频”和“全部训练集”不可混作同一精确口径。蒸馏后的 10 FPS 交互生成属于特定硬件和分辨率实验，不是任意场景通用实时保证。官方发布训练、后训练和 2B/14B 权重，复现仍需大规模算力、可用的数据资产与模型版本对齐。

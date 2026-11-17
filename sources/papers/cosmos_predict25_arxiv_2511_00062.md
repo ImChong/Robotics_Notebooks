@@ -47,3 +47,11 @@
 - 仓库：[`sources/repos/nvidia_cosmos_predict25.md`](../repos/nvidia_cosmos_predict25.md)
 - 下一代：[`wiki/entities/cosmos-3.md`](../../wiki/entities/cosmos-3.md)
 - Transfer 族：[`wiki/entities/cosmos-transfer.md`](../../wiki/entities/cosmos-transfer.md)
+
+## 一手原文核读（2026-11-17）
+
+- **论文版本：** [arXiv:2511.00062](https://arxiv.org/html/2511.00062)；官方仓 [Predict2.5](https://github.com/nvidia-cosmos/cosmos-predict2.5)、[Transfer2.5](https://github.com/nvidia-cosmos/cosmos-transfer2.5)。
+- **核读范围：** 原文模型构型、数据策展、预/后训练方法、PAI-Bench 与 Transfer 实验、下游应用、局限及实验口径；官方发布仓 README 的开源/迁移说明。未运行大规模 GPU 训练。
+- **通读：** 已完成
+
+Predict2.5 将 T2W、I2W、V2W 纳入统一 flow-matching video foundation model，并将 Reason1 用作文本条件编码。数亿训练 clip 来自多级筛选，不等于全部原始视频可直接公开下载。PAI-Bench I2W post-train Overall 0.810 是特定评测口径；Transfer2.5 的 3.5 倍缩小是模型大小比较，不能外推为统一速度收益。当前发布模型和已迁至 Cosmos 3 的继任主线须分开。
