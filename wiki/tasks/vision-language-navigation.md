@@ -2,9 +2,10 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-11-14
+updated: 2026-11-17
 status: complete
 related:
+  - ../entities/paper-mosu2.md
   - ../entities/paper-vtinstructor.md
   - ../entities/paper-abot-n1.md
   - ../entities/paper-roamflow.md
@@ -102,6 +103,10 @@ VLN = 在三维环境中依据自然语言指令，仅凭第一人称视觉观�
 | Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 为什么重要？
+
+- **户外交通情境导航对照：** [MOSU2](../entities/paper-mosu2.md) 保留 GPS 全局子目标与 LiDAR + SAM3 可通行轨迹筛选，复杂交互时再查询车辆/行人位置、速度来决定礼让、停走。它不是以自然语言指令为目标的 VLN benchmark，而是 VLM 场景理解与几何运动闭环的工程对照。
+
+
 
 - **分层导航运行时：** [NavGPT-3](../entities/paper-navgpt-3.md) 将语言模型规划、导航 VLA 和监控线程连接，通过中断与运动控制权切换协调执行；R2R-CE / RxR-CE Val-Unseen SR 分别为 81.51% / 90.43%。仿真代码与权重已公开，Unitree 部署代码待发布。
 
