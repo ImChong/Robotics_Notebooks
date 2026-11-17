@@ -15,6 +15,7 @@ related:
   - ../methods/joint-actuator-parameter-identification.md
   - ../overview/humanoid-actuator-102-compliance-sensing.md
   - ../../roadmap/depth-torque-motor-design.md
+  - ../queries/actuator-drive-chain-selection-loop.md
 ---
 
 # SEA 谐振抑制 / Series Elastic Actuator Resonance Suppression
@@ -127,6 +128,7 @@ flowchart LR
 - [关节执行器参数辨识](../methods/joint-actuator-parameter-identification.md) — 用台架数据估计惯量、摩擦和传动误差。
 - [Humanoid Actuator 102：柔顺与力感知](../overview/humanoid-actuator-102-compliance-sensing.md) — 传感结构与模组综合约束。
 - [力矩控制电机设计纵深路线](../../roadmap/depth-torque-motor-design.md) — Stage 5 的带宽测量和模态诊断。
+- [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md) — 本页对应其执行器建模与辨识层的弹性模态稳定性问题。
 
 ## 参考来源
 
