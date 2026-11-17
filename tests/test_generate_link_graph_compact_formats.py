@@ -26,11 +26,11 @@ def test_build_graph_data_skips_readme_edges_but_keeps_real_links(
     wiki.mkdir()
     roadmap.mkdir()
     (wiki / "a.md").write_text(
-        "# A\\n\\n[路线](../roadmap/depth-test.md)\\n\\n[索引](../roadmap/README.md)\\n",
+        "# A\n\n[路线](../roadmap/depth-test.md)\n\n[索引](../roadmap/README.md)\n",
         encoding="utf-8",
     )
-    (roadmap / "depth-test.md").write_text("# Route\\n", encoding="utf-8")
-    (roadmap / "README.md").write_text("# Index\\n", encoding="utf-8")
+    (roadmap / "depth-test.md").write_text("# Route\n", encoding="utf-8")
+    (roadmap / "README.md").write_text("# Index\n", encoding="utf-8")
 
     monkeypatch.setattr(glg, "REPO_ROOT", tmp_path)
     monkeypatch.setattr(glg, "GRAPH_CONTENT_DIRS", (wiki, roadmap))
