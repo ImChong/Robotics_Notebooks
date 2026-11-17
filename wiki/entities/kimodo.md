@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, paper, diffusion, motion-generation, humanoid, nvidia, unitree-g1, soma, smpl-x, text-to-motion, amp, motion-prior]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-17
 arxiv: "2603.15546"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -21,6 +21,8 @@ related:
   - ./kimodo-cpp.md
   - ./motion-bricks-cpp.md
   - ./paper-motionbricks.md
+original:
+  - ../../sources/papers/kimodo_arxiv_2603_15546.md
 sources:
   - ../../sources/repos/kimodo.md
   - ../../sources/repos/kimodo-cpp.md
@@ -35,6 +37,10 @@ summary: "Kimodo 是 NVIDIA 开源的运动学扩散模型：在约 700 小时 R
 # Kimodo（可控人体与人形运动扩散）
 
 **Kimodo**（**Ki**nematic **Mo**tion **D**iffusi**o**n）在 **运动学空间** 对骨架姿态序列做 **显式扩散去噪**：在约 **700 小时** [Bones Rigplay 1](https://bones.studio/datasets#rp01) 光学动捕上训练，输出可落在 **SOMA（somaskel77）、Unitree G1、SMPL-X** 等骨架；除自然语言外，支持全身关键帧、稀疏关节位姿、末端手/脚约束、2D 路点与稠密地面路径。
+
+## 一句话定义
+
+Kimodo 是文本与运动约束条件驱动的两阶段运动学扩散生成器，先预测根轨迹，再补全身体姿态。
 
 ## 英文缩写速查
 
@@ -66,7 +72,7 @@ summary: "Kimodo 是 NVIDIA 开源的运动学扩散模型：在约 700 小时 R
 
 策展导读直言：**不是机器人控制论文，但应该放在这里**——它代表「先验」在 **运动学生成层** 的 scaling 路线，回答「**参考从哪来**」；产出经 retarget + 跟踪/AMP 进真机，与 [AMP #01](./paper-amp-survey-01-amp.md) 的 **RL 风格奖励** 互补而非替代。同段姊妹 [MotionBricks #05](../methods/motionbricks.md) 更靠近 **实时机器人 WBC API**，Kimodo 偏 **离线高质量扩散 + 导演式编辑**。
 
-## 核心结构 / 机制
+## 核心原理
 
 ### 运动表示
 
@@ -140,6 +146,29 @@ flowchart LR
 - [CoRe v0.1.0](paper-core.md) — 官方消费 Kimodo SOMA77 `.npz`，接触精炼到 11 台人形
 - [kimodo.cpp](./kimodo-cpp.md) — LocalAI 的 C++/GGML 本地推理（SOMA/G1 GGUF；约束输入未移植）
 - [motion-bricks.cpp](./motion-bricks-cpp.md) — MotionBricks C++/GGML 运行时；Demo 可接 Kimodo 动画 + SONIC
+
+## 工程实践
+
+[Kimodo 官方仓](https://github.com/nv-tlabs/kimodo)的 `kimodo_demo` 可启动文本和关键帧时间线，选择 SOMA / G1 / SMPL-X 骨架，再约束根路径、末端位置与全身姿态，采样生成运动。官方 README 说明全 GPU 推理显存约 **17 GB**；`TEXT_ENCODER_DEVICE=cpu` 能将显存需求降至 **3 GB 以下**，但更慢。Kimodo 产出的是运动学参考，真正驱动 G1 还须 retarget、物理跟踪与接触验证。未实际运行。
+
+## 源码运行时序图
+
+依据[官方 CLI 文档](https://research.nvidia.com/labs/sil/projects/kimodo/docs/user_guide/cli.html)与 README 的应用入口，描述可核对的应用调用边界，内部 Python 运行路径未逐函数追踪。
+
+```mermaid
+sequenceDiagram
+ autonumber
+ actor U as 用户
+ participant A as kimodo_demo / CLI
+ participant C as 约束输入
+ participant M as Kimodo root / body 模型
+ participant V as 时间线预览与导出
+ U->>A: 选择 SOMA/G1/SMPL-X
+ A->>C: 文本、路径及关节关键帧
+ C->>M: 条件与 mask
+ M-->>V: 生成运动学姿态序列
+ V-->>U: 预览与导出
+```
 
 ## 参考来源
 

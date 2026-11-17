@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-generation, humanoid, generative-model, nvidia, siggraph-2026, unitree-g1, groot, motion-prior]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-17
 arxiv: "2604.24833"
 venue: "SIGGRAPH 2026"
 related:
@@ -14,12 +14,14 @@ related:
   - ./unitree-g1.md
   - ./ardy.md
   - ../overview/humanoid-amp-motion-prior-survey.md
+original:
+  - ../../sources/papers/motionbricks.md
 sources:
   - ../../sources/papers/motionbricks.md
   - ../../sources/sites/motionbricks-project.md
   - ../../sources/repos/gr00t_wholebodycontrol.md
   - ../../sources/repos/motion-bricks-cpp.md
-summary: "MotionBricks（NVIDIA SIGGRAPH 2026 / ACM TOG，arXiv:2604.24833）：模块化潜空间生成骨干 + Smart Primitives，单模型覆盖 350k+ 技能、报告 ~15k FPS/~2 ms；GR00T WBC 运动意图层，G1 已演示；预览代码已开源，完整训练管线待发布。"
+summary: "MotionBricks（NVIDIA SIGGRAPH 2026 / ACM TOG，arXiv:2604.24833）：模块化潜空间生成骨干 + Smart Primitives，单模型覆盖 350k+ 技能、报告 ~15k FPS/~2 ms；GR00T WBC 运动意图层，G1 已演示；独立官方仓已发布 SOMA/G1 推理运行时，完整训练资产须另核查。"
 ---
 
 # MotionBricks：模块化潜空间实时运动生成
@@ -122,12 +124,12 @@ sequenceDiagram
 - **真影响指标**：单骨干能否在 **350k+** 技能上保持 **毫秒级** 推理，并用 Smart Primitives **零样本** 组合导航与交互。
 - **机器人读法**：把它放在 **VLA/任务层之下、WBC/跟踪层之上**；轨迹仍须 [SONIC](./nvidia-sonic.md) 等执行，不要跳过物理层。
 - **与 Kimodo**：Kimodo 强 **文本与运动学约束编辑**；MotionBricks 强 **实时命令式 locomotion + 游戏/机器人 API**。
-- **开源策略**：当前以 **GR00T 预览子目录** 为准；完整训练与深度嵌入版需跟进项目页更新。
+- **开源策略**：当前优先查阅 **NVlabs/motionbricks 独立官方仓**；完整训练资产与 GR00T WBC 对接以两个官方仓最新文档为准。
 - **部署备选**：[motion-bricks.cpp](./motion-bricks-cpp.md) 提供 G1 GGUF + 可选 GGML SONIC，但 Smart Object 全谱与 Kimodo style 转换仍不完整。
 
 ## 局限与风险
 
-- **完整管线未全发布**：预览版不含项目页承诺的「完全嵌入 GR00T robotics formulation」训练栈。
+- **官方已开放独立推理运行时（训练资产另核查）**：预览版不含项目页承诺的「完全嵌入 GR00T robotics formulation」训练栈。
 - **UE5 Demo ≠ 机器人开箱**：游戏级展示依赖引擎侧资源与神经生成组合；机器人复现以 G1 预览与 parity 报告为准。
 - **社区 C++ 移植非官方**：数值与能力边界以 NVIDIA 预览 + LocalAI parity 为准。
 
@@ -138,6 +140,33 @@ sequenceDiagram
 - [Kimodo](./kimodo.md) — 同生态文生运动与约束扩散
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md) — 官方预览母仓
 - [ARDY](./ardy.md) — 交互式自回归扩散对照
+
+## 工程实践：独立官方仓已发布
+
+2026-11-17 核实 [NVlabs/motionbricks](https://github.com/NVlabs/motionbricks) 为官方独立代码仓，公开 SOMA/G1 的 ONNX 运行时、Hugging Face safetensors checkpoint、Smart Primitive 编辑器与 Demo。原来的 GR00T-WBC 目录为早期 G1 预览，**不能再把完整推理运行时写成待发布**；但训练数据、训练算法源码和推理权重的开放边界仍要分别核查。
+
+README 安装入口：`git lfs pull`、`uv sync`。可运行 `uv run python docs/examples/generate_once.py`，或 `uv run python docs/examples/locomotion_loop.py --model unitree_g1`。首次构建 TensorRT plan 需 NVIDIA GPU；生成的是运动学轨迹，不等于保证可安全真机执行。
+
+## 新版官方运行时序图
+
+核对 [runtime_api.md](https://github.com/NVlabs/motionbricks/blob/main/docs/runtime_api.md) 的 `MotionBricksUnitreeG1Engine`、`generate_animation`、`MotionRecorder`。四帧上下文与 1–4 帧目标反复链式生成，`output.num_frames` 定义有效帧数，输出由 recorder 回馈下一轮输入。
+
+```mermaid
+sequenceDiagram
+ autonumber
+ actor U as 应用
+ participant E as MotionBricksUnitreeG1Engine
+ participant I as context / target
+ participant O as DOFAnimationBuffer
+ participant R as MotionRecorder
+ U->>E: 加载 G1 ONNX 与 TensorRT plan
+ U->>E: create_input() / create_output()
+ U->>I: 更新四帧上下文与目标姿态
+ I->>E: update_from_poses()
+ E->>O: generate_animation(context, target, output)
+ O->>R: sample(time) / 记录已播放姿态
+ R-->>I: 回填下一段上下文
+```
 
 ## 参考来源
 
