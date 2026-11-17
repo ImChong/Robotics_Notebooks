@@ -2,11 +2,12 @@
 type: entity
 tags: [repo, lidar, lio, slam, ros, hku]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-17
 related:
   - ../entities/lio-sam.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../entities/navigation2.md
+  - ./gn10-pointcloud-localization.md
 sources:
   - ../../sources/repos/fast_lio.md
 summary: "FAST-LIO 是高效鲁棒的 LiDAR-惯性里程计：ikd-Tree + 迭代 ESKF，适合 3D 旋转激光高频状态估计。"
@@ -102,6 +103,7 @@ sequenceDiagram
 - [LIO-SAM](../entities/lio-sam.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [Navigation2](../entities/navigation2.md)
+- [GN10 PointCloud Localization](./gn10-pointcloud-localization.md) — 预建静态 ESDF 地图中的 GPU 激光定位 / 失锁全局重定位，与 FAST-LIO 里程计与建图分工不同。
 
 ## 推荐继续阅读
 
