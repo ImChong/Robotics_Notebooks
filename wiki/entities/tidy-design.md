@@ -9,7 +9,7 @@ tags:
   - software-engineering
   - open-source
 status: complete
-updated: 2026-10-19
+updated: 2026-11-17
 project: https://tidydesign.co
 code: https://github.com/tidydesigns/tidy
 related:
@@ -18,6 +18,8 @@ related:
   - ./anthropic-frontend-design-skill.md
   - ./open-design.md
   - ./freecad-mcp.md
+original:
+  - ../../sources/repos/tidydesigns-tidy.md
 sources:
   - ../../sources/sites/tidy-design.md
   - ../../sources/repos/tidydesigns-tidy.md
@@ -58,7 +60,9 @@ Tidy 是面向设计师、工程师和 agent 的开源产品画布：人可直�
 ## 工程实践
 
 - **先把它当设计工作区：** 配置仓库提供的 agent 插件，再让 agent 针对同一设计进行创建或修改；提交前由设计师或工程师检查层级、文案、布局与状态。
-- **本地试用：** README 列出 Bun 1.3.14、Git 和 Docker Compose；新建本地环境后按环境变量示例配置并启动。自托管涉及数据库、密钥和存储绑定，需按完整文档操作。
+- **本地桌面：** 官方现行 README 使用 Bun 1.3.14、Node.js 22.12+：`bun install --frozen-lockfile && bun dev:desktop`。本地桌面仅需项目目录与可用且登录的 Coding Agent CLI，**不依赖** Web app、数据库或云账户。
+- **Web 开发/自托管（另一条路径）：** 依据 `docs/development.md`，安装 Bun、Git、Docker Compose，配置 PostgreSQL 和 `apps/web/.env.local`，运行 `bun dev` 和 `bun dev:realtime`；公开部署另涉及 Workers、Hyperdrive、R2、鉴权及密钥配置。
+- **Agent 执行与权限：** 桌面端从现有本地 CLI 及其认证启动线程，Codex App Server 通过 stdio 通信，Claude Code 采用双向流式 JSON。敏感文件改动应保留原生确认请求，不把设计工具的生成能力视作自动授权。
 - **机器人场景先验证：** 可从非安全关键的内部面板原型开始，验证设计编辑、人员复核与导出交接。不能假定具备 CAD 几何精度、URDF/MJCF 导出或仿真器接口。
 
 ## 局限与风险
@@ -66,7 +70,7 @@ Tidy 是面向设计师、工程师和 agent 的开源产品画布：人可直�
 - **不是机器人 CAD 或仿真工具：** 已核查的 README 定位为产品设计画布，没有展示 URDF、MJCF、机器人运动学或仿真功能。
 - **MCP 只说明工具接入：** 协议可读写设计，并不自动保证视觉质量、可访问性、代码正确性或权限边界。
 - **官网内容未独立核验：** 官网入口由官方 README 确认，但官网页面本身无法读取；功能和许可判断基于公开仓库。
-- **自托管需运维配置：** README 的 Cloudflare Worker 部署涉及数据库、存储绑定和运行密钥，并非零配置部署。
+- **仅 Web 自托管需要云端运维配置：** Cloudflare Worker 部署涉及 PostgreSQL、R2、运行密钥及访问控制；不应误用于无需服务器的本地桌面路径。
 
 ## 关联页面
 
@@ -76,6 +80,24 @@ Tidy 是面向设计师、工程师和 agent 的开源产品画布：人可直�
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 设计协作仍需架构、约束和评测判断。
 - [frontend-design（Anthropic 官方 Skill）](./anthropic-frontend-design-skill.md) — 设计规约与视觉判断的补充工具。
 - [FreeCAD MCP](./freecad-mcp.md) — MCP 驱动专业桌面软件的机器人 CAD 对照案例。
+
+## 流程总览
+
+此图依据官方 README、桌面指南及 Web 开发文档，分开描述 **本地桌面 Agent 工作流** 与 **Web 协作/自托管工作流**，不将二者混成同一必需环境。
+
+```mermaid
+flowchart TD
+  U["用户选择项目 / 设计文件"] --> P{"运行环境"}
+  P -->|"本地 Electron 桌面"| L["选择 Coding Agent CLI 和权限"]
+  L --> A["本地线程运行 / 请求审批"]
+  A --> F["编辑项目文件与可编辑设计 JSON"]
+  F --> V["画布预览 / 人工迭代"]
+  P -->|"Web 协作"| W["Web 项目与工作区"]
+  W --> M["经授权的 MCP / 插件设计操作"]
+  M --> C["修订可编辑设计并协作评审"]
+  C --> V
+  V --> E["对照源代码实现并验证交付"]
+```
 
 ## 源码运行时序图
 
@@ -123,13 +145,17 @@ sequenceDiagram
     end
 ```
 
-图依据：tidy@cf9b099，`README.md`、`package.json`、`apps/desktop/package.json`、`apps/desktop/electron.vite.config.ts`、`apps/desktop/src/main/index.ts`、`apps/desktop/src/main/ipc/ipc.ts`、`apps/desktop/src/main/ipc/workspace-requests.ts`、`apps/desktop/src/main/workspace/workspace-service.ts`（sendMessage/run/runPrepared 与启动调用）、`apps/desktop/src/main/harnesses/harness-sessions.ts`、`apps/desktop/src/main/harnesses/interactive-harness.ts`、`apps/desktop/src/main/harnesses/harness-transport.ts`、`apps/desktop/src/main/harnesses/claude-adapter.ts`，以及 `apps/desktop/src/main/harnesses/harnesses.ts` 的关键词检索（未通读）。
+图依据：tidy@cf9b099（该时序图的历史定点源码核对版本；**不表示已经在本次复核中对当前所有入口重新审计**），`README.md`、`package.json`、`apps/desktop/package.json`、`apps/desktop/electron.vite.config.ts`、`apps/desktop/src/main/index.ts`、`apps/desktop/src/main/ipc/ipc.ts`、`apps/desktop/src/main/ipc/workspace-requests.ts`、`apps/desktop/src/main/workspace/workspace-service.ts`（sendMessage/run/runPrepared 与启动调用）、`apps/desktop/src/main/harnesses/harness-sessions.ts`、`apps/desktop/src/main/harnesses/interactive-harness.ts`、`apps/desktop/src/main/harnesses/harness-transport.ts`、`apps/desktop/src/main/harnesses/claude-adapter.ts`，以及 `apps/desktop/src/main/harnesses/harnesses.ts` 的关键词检索（未通读）。
 
 ## 参考来源
 
+- **2026-11-17 原文复核：** 已通读官方 `README.md`、`docs/development.md`、`apps/gpt-plugin/README.md` 以及 `package.json` / `CONTRIBUTING.md`，重点核查 `apps/desktop/README.md` 的线程、权限、项目文件与启动说明；仅对这些文档的已核对范围主张完成，不代表全部源码或完整项目文档均被审计。详细清单见下列 repo 归档。
 - [Tidy Design 官网归档](../../sources/sites/tidy-design.md)
 - [Tidy 官方仓库归档](../../sources/repos/tidydesigns-tidy.md)
 - [Tidy README](https://github.com/tidydesigns/tidy#readme)
+- [Desktop guide](https://github.com/tidydesigns/tidy/blob/main/apps/desktop/README.md)
+- [Web development & self-hosting](https://github.com/tidydesigns/tidy/blob/main/docs/development.md)
+- [GPT plugin](https://github.com/tidydesigns/tidy/blob/main/apps/gpt-plugin/README.md)
 - 源码核对（2026-11-02）：tidydesigns/tidy@cf9b099，读过 README.md、package.json、apps/desktop/package.json、apps/desktop/electron.vite.config.ts、apps/desktop/src/main/index.ts、ipc/ipc.ts、ipc/workspace-requests.ts、workspace/workspace-service.ts、harnesses/harness-sessions.ts、interactive-harness.ts、harness-transport.ts、claude-adapter.ts（harnesses.ts 仅关键词检索）；时序图依据以上文件，未运行代码。
 
 ## 推荐继续阅读
