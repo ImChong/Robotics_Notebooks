@@ -162,6 +162,7 @@ flowchart LR
 - 把失败 rollout 按模式聚类（抓取失败 / 子任务切换失败 / 超时 / 过压），而不是只报一个均值
 
 ### 推荐读什么
+- [GM-100（The Great March 100）](../wiki/entities/paper-gm-100.md) — RHOS AI 100 项真实双臂长尾细粒度任务；用 SR/PSR 拆解完整成功与子目标进度，注意 Cobot Magic 100 项与 Xtrainer 前 10 项的本体/协议差别。
 - [首届蚂蚁灵波具身大模型挑战赛（2026）](../wiki/entities/robbyant-embodied-ai-challenge-2026.md) — Stage 3 的标准化 50 任务赛事案例：统一 LingBot-VLA 2.0，仅 clean 训练、clean/randomized 双设置测试；线下真机决赛与仿真成绩分开记账。
 - [ManiLadder](../wiki/entities/paper-maniladder-manipulation-benchmark.md) — Stage 3 将 112 项操作任务按四难度级及任务族校准，用 AL@50 暴露平均成功率无法体现的能力短板（官方项目代码待核实）
 - [RoboLab-120（NVIDIA）](../wiki/entities/robolab.md) — 120 项桌面通用操作任务，聚焦真机训练策略零样本仿真评测、成功率/子任务得分/执行事件与语言、视觉扰动；与 RoboDojo 的 sim+real 协议互补。
