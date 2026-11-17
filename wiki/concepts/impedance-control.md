@@ -2,7 +2,7 @@
 type: concept
 tags: [control, manipulation, impedance-control, force-control, contact-rich, whole-body-control]
 status: complete
-updated: 2026-10-18
+updated: 2026-11-17
 summary: "Impedance Control 通过把末端行为写成质量-弹簧-阻尼关系，让机器人在接触任务中既能跟踪目标又能保持柔顺。"
 original:
   - ../../sources/papers/mayr_cartesian_impedance_reading_arxiv_2212_11215_imp1.md
@@ -148,6 +148,7 @@ $$ \tau_c = J^T(-K\Delta\xi - D J\dot q) + (I - J^T (J^T)^\dagger)\tau_0 + J^T F
 - [Admittance Control](../methods/admittance-control.md)
 - [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 本页是四层闭环里的 **③ 控制层**（阻抗/导纳对偶这条路线）
 - [Contact-Force-Loop Bandwidth（力控闭环带宽）](./contact-force-loop-bandwidth.md) — 「环境越硬刚度越低」反直觉法则的稳定性来源
+- [SEA 谐振抑制](./sea-resonance-suppression.md) — 被动弹性模态影响实际力控带宽，区分机械谐振与期望主动阻抗
 - [Contact-Rich Manipulation](./contact-rich-manipulation.md)
 - [Whole-Body Control](./whole-body-control.md)
 - [人形关节驱控三层框架](./humanoid-joint-drive-control-framework.md) — 阻抗律在关节层（FOC 电流环 → 力矩环 → 阻抗层）中的位置与实时约束
