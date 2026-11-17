@@ -23,6 +23,7 @@ related:
   - ./paper-cosmos-transfer1.md
   - ./nvidia-physical-ai-datasets.md
   - ./nvidia-gtc.md
+  - ./nvidia-robotics-chatgpt-moment-deepu-talla-2026.md
 original:
   - ../../sources/papers/cosmos_wfm_arxiv_2501_03575.md
   - ../../sources/repos/nvidia_cosmos.md
@@ -166,6 +167,8 @@ flowchart TB
 - [Cosmos Cookbook](./cosmos-cookbook.md) — 2.x 可运行配方
 - [Cosmos Curator](./cosmos-curator.md) — 视频切滤标与 WebDataset
 - [NVIDIA Physical AI 数据集](./nvidia-physical-ai-datasets.md) — HF 数据集合索引
+
+- [Deepu Talla 访谈：机器人 ChatGPT 时刻](./nvidia-robotics-chatgpt-moment-deepu-talla-2026.md) — 对世界模型作为物理状态预测和策略评估器的产业解释，技术实现以官方源码为准。
 
 ## 参考来源
 
