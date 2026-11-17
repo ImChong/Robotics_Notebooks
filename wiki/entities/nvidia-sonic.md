@@ -96,7 +96,7 @@ sources:
 
 SONIC 将规模化运动跟踪作为人形低层控制的统一预训练目标；论文主张网络容量、MoCap 数据与算力三轴 scaling，并以专用编码器 + FSQ 统一 token 接口接入 VR、视频、文本、交互规划与 VLA（如 GR00T N1.5）等上游。
 
-**SONIC**（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）由 NVIDIA（GEAR Lab 等）与 CMU 等合作者提出，论证在人形控制上**大规模拟合多样参考运动**（motion tracking）可获得稳健的全身体现与少手工奖励设计，并随**模型容量、数据量与算力**同步扩展性能。实现层面与 [Whole-Body Control (WBC)](../concepts/whole-body-control.md) 所讨论的「高自由度协调」问题同一战场：SONIC 用学习策略把参考运动映射为全身扭矩/位置指令。
+**SONIC**（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）由 NVIDIA（GEAR Lab 等）与 CMU 等合作者提出，论证在人形控制上**大规模拟合多样参考运动**（motion tracking）可获得稳健的全身体现与少手工奖励设计，并随**模型容量、数据量与算力**同步扩展性能。实现层面与 [Whole-Body Control (WBC)](../concepts/whole-body-control.md) 所讨论的「高自由度协调」问题同一战场：SONIC 用 PPO 学得的策略将参考运动映射为 29 DoF 目标关节位置，由 PD 控制器执行。
 
 官网（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)，与 [SONIC 别名页](https://nvlabs.github.io/SONIC/) 同源）在论文摘要之外，补充了 **VLA 堆叠、VR/视频遥操作、音乐与文本条件、运动学规划器交互** 等系统级演示；正式发表为 [*Science Robotics* 11(117)，DOI 10.1126/scirobotics.aed4592](https://doi.org/10.1126/scirobotics.aed4592)。下文「公开材料要点」与之对齐，**方法细节仍以 arXiv 与项目页为准**。
 
@@ -211,9 +211,9 @@ flowchart TD
     D2[多样化行为片段<br/>步态 / 操作 / 风格化动作等]
   end
 
-  subgraph train["监督学习（motion tracking）"]
+  subgraph train["PPO 强化学习（motion tracking）"]
     T1[网络容量 scaling<br/>约 1.2M→42M 参数量级叙述]
-    T2[密集轨迹监督<br/>跟踪损失为主]
+    T2[密集参考运动<br/>PPO + 跟踪奖励]
     T3[大规模算力投入<br/>约 2.1 万 GPU 小时量级叙述]
   end
 
@@ -249,7 +249,7 @@ flowchart LR
   end
 
   subgraph robot["人形硬件"]
-    R[关节扭矩或跟踪目标下发]
+    R[29 DoF 目标关节位置<br/>经 PD 控制执行]
   end
 
   U1 --> E
@@ -414,7 +414,7 @@ sequenceDiagram
 
 | 维度 | 要点 |
 |------|------|
-| **监督** | 密集跟踪损失：策略输出逼近参考全身运动（具体观测与动作空间以论文为准）。 |
+| **训练** | 仿真中以 PPO 优化 29 DoF 目标关节位置动作，通过密集参考运动构造跟踪奖励，并联合 token 重建 / 对齐等辅助损失；并非直接对 MoCap 做纯监督回归。 |
 | **规模** | 论文与官网公开量级包含 **上亿帧**、**约 700 小时** MoCap、**约 1.2M→42M** 参数叙述与 **约 2.1 万 GPU 小时** 算力叙述；性能随规模单调改善的报道支撑「跟踪可扩展」论点。 |
 | **接口** | **专用编码器 → FSQ → 统一 64-d token → 共享 decoder**；支持 **VLA、VR、视频、文本 / 音乐** 等上游与 **实时运动学规划** 桥接；部署 **50 Hz**，ONNX encoder/decoder 成套使用。 |
 
@@ -438,7 +438,7 @@ sequenceDiagram
 - **原文自述局限**：缺少对安全与长时间能耗的形式化处理；极端或极动态动作下仍可能失衡；实机脚部误差最大（53.7 mm vs 仿真 29.0 mm）；VLA 任务成功率 60–95%（每任务仅 10–20 次试验）；与 BeyondMimic / Any2Track 的对比因训练数据不同并非数据对齐的公平基准。
 - **演示与论文的边界**：官网视频突出系统集成；**可重复协议、随机种子与定量对比**仍以论文与仓库 `eval_agent_trl.py` / 文档站评测脚本为准。
 
-## 与其他页面的关系
+## 关联页面（与其他页面的关系）
 
 - [SuperMimic](./paper-supermimic.md) — 用可微世界模型降低动作跟踪训练成本的相关路线：在 129,514 个 BONES-SEED 训练动作上，SONIC 已发布 checkpoint 失败 179 个，SuperMimic 单卡 H100 3 h 失败 25 个、双卡 9.8 h 失败 0 个（训练动作覆盖率，非未见动作泛化；硬件与评估口径不同；arXiv:2610.28480）
 - [sim2real leaderboard 映射](./egalahad-sim2real.md) — SONIC 三个运行配置共用本项目实体
