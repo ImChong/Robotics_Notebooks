@@ -2,11 +2,13 @@
 type: entity
 project_id: gn10-pointcloud-localization
 code: https://github.com/tmcit-ararobo-2026a/gn10-pointcloud-localization
-tags: [repo, localization, lidar, esdf, cuda, ros2, navigation, jetson, open-source]
+tags: [repo, localization, lidar, esdf, cuda, ros2, navigation, jetson, open-source, tmcit-ararobo-2026a]
 status: complete
 updated: 2026-11-17
 related:
   - ./fast-lio.md
+  - ../methods/lidar-odometry-fusion.md
+  - ../methods/visual-line-matching-localization.md
   - ./lio-sam.md
   - ./isaac-ros-nvblox.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -160,6 +162,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 对照「里程计或 IMU 预测 + LiDAR 校正」的一般融合定位范式；GN10 不要求轮式里程计，直接在已知静态 ESDF 中配准。
+- [线匹配视觉定位](../methods/visual-line-matching-localization.md) — 对照已知场地图元的几何匹配、对称地图消歧；该方法用相机与场地线，而 GN10 用 3D 激光点云和 ESDF。
 - [FAST-LIO](./fast-lio.md)
 - [LIO-SAM](./lio-sam.md)
 - [Isaac ROS nvblox](./isaac-ros-nvblox.md)
