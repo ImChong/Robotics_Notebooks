@@ -7,6 +7,7 @@ summary: "Qiayuan Liao 的研究连接四足安全优化控制、人形硬件、
 related:
   - ./paper-supermimic.md
   - ./workhorse-humanoid-loco-manipulation.md
+  - ./kevin-zakka.md
   - ./mjlab.md
   - ./mujoco-playground.md
   - ./open-source-humanoid-hardware.md
@@ -91,6 +92,7 @@ flowchart TD
 
 ## 关联页面
 
+- [Kevin Zakka｜MuJoCo 与人形 Sim2Real 研究索引](./kevin-zakka.md) — 与 Qiayuan Liao 在 mjlab、MuJoCo Playground 与 G1 踝部闭链技术文章中合作。
 - [SuperMimic](./paper-supermimic.md) · [Workhorse](./workhorse-humanoid-loco-manipulation.md) · [BeyondMimic](../methods/beyondmimic.md)
 - [mjlab](./mjlab.md) · [MuJoCo Playground](./mujoco-playground.md) · [Berkeley Humanoid Lite](./berkeley-humanoid-lite.md)
 - [全身控制](../concepts/whole-body-control.md) · [强化学习](../methods/reinforcement-learning.md)
