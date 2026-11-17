@@ -13,6 +13,8 @@
 - **演示视频：** <https://youtu.be/P5-Ked8EoWk>（论文配套）；README 另链 <https://youtu.be/5XPEEKDnQEM>
 - **数据：** <https://drive.google.com/drive/folders/1SwVCcpJko7ZBsmSTuu3G_ZipVQFGZ11N?usp=drive_link>（MX-64 / MX-106 / eRob80:50 / eRob80:100 摆锤日志）
 - **入库日期：** 2026-05-28
+- **最近原文复核：** 2026-11-17（arXiv v1 HTML）
+- **核对范围：** 通读 arXiv:2410.08650v1 HTML 全文：Abstract、I 引言、II 摆锤动力学和 drive/backdrive、III M1–M6 摩擦模型、IV 电压/电流控制与单步动力学算法及 MuJoCo 接入、V 四种辨识轨迹和 CMA-ES、VI 四种电机与两台 2R 机械臂实验、VII 结论、局限和未来工作，并核对表 I、图 5/7 与参考文献。复核为原文阅读，不包含设备实验或源代码全量运行。
 - **通读：** 已完成
 - **一句话说明：** 为舵机/伺服执行器提出 M1–M6 扩展摩擦上界模型（Stribeck、负载相关、方向性与二次项），在摆锤台架用 CMA-ES 辨识参数，并在 MuJoCo 2R 臂上相对经典 Coulomb–Viscous 将轨迹 MAE 降低约 50% 以上，面向 RL 低增益控制下的 sim2real 执行器建模。
 
