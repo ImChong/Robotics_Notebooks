@@ -468,6 +468,12 @@ op: ingest
 - 本次 29 篇均有健康度 3/3 的结构化判据；最终以报告脚本与 CI 实测为准。
 - [29 篇阅读坐标](../wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
 
+## [2026-11-17] ingest | mjviser 原位更新官方版本、源码时序与交互边界
+
+- 已有 `wiki/entities/mjviser.md` 与 `sources/repos/mjviser.md`，避免重复实体。
+- 核对官方 README、0.0.17 依赖、CLI / Viewer / 场景与交互源码；新增主干 Mermaid 和运行时序图，修正刚体拖拽现状。
+- 仿真/训练分层：mjviser 是 Apache-2.0 MuJoCo 网页查看器，mjlab 承担 RL 工作流；本次未实机/本地启动验证。
+
 ## [2026-11-17] ingest | sources/repos/copilotkit-openbot.md — 收录 CopilotKit OpenBot AI Agent 工作空间
 
 - **入库目标：** 归档 OpenBot 官方 README、架构、工作流、部署与许可，整理为独立项目节点并增加跨页关联。
