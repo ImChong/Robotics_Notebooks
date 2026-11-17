@@ -17,9 +17,7 @@ def test_pack_edges_as_indices_follows_node_order_and_drops_unknown_endpoints(ca
     assert "1 条边" in capsys.readouterr().err
 
 
-def test_build_graph_data_skips_readme_edges_but_keeps_real_links(
-    tmp_path, monkeypatch
-) -> None:
+def test_build_graph_data_skips_readme_edges_but_keeps_real_links(tmp_path, monkeypatch) -> None:
     """文档内链可指向 README，但其不入图谱节点，不能进入边表或社区邻接表。"""
     wiki = tmp_path / "wiki"
     roadmap = tmp_path / "roadmap"
