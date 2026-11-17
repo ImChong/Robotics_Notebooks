@@ -4428,6 +4428,12 @@
         "nomadamas"
       ]
     },
+    "copilotkit": {
+      "label": "智能体交互工具团队（CopilotKit）",
+      "aliases": [
+        "copilotkit"
+      ]
+    },
     "dreamscale-labs": {
       "label": "机器人云推理平台团队（Dreamscale Labs）",
       "aliases": [
