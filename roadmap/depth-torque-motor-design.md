@@ -192,6 +192,7 @@ flowchart LR
 - [关节执行器参数辨识](../wiki/methods/joint-actuator-parameter-identification.md) — 台架上估 $I_a$ 与库仑/粘滞的算法选型
 - [Actuator 102 · 05：柔顺与感知反馈](../wiki/overview/humanoid-actuator-102-compliance-sensing.md) — 力/力矩感知与柔顺路线
 - [Impedance Control（阻抗控制）](../wiki/concepts/impedance-control.md) — 力矩模式之上最常用的关节级接口
+- [SEA 谐振抑制 / Series Elastic Actuator Resonance Suppression](../wiki/concepts/sea-resonance-suppression.md) — 弹性模态扫频辨识、相位裕度与阻尼/陷波/DOB 的力控带宽取舍
 
 ### 推荐做什么
 - 台架上做 \(K_t\) 标定曲线（含饱和区与温度点），对比标称值；把标定表写进驱动固件
