@@ -3,7 +3,7 @@ type: entity
 project_id: dextacwam
 tags: [paper, dexterous-manipulation, tactile-sensing, world-model, world-action-model, uiuc, berkeley, northwestern]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-17
 arxiv: "2609.24976"
 project: https://dextacwam.github.io/
 code: https://github.com/dextacwam/DexTacWAM
@@ -18,6 +18,7 @@ related:
   - ../concepts/visuo-tactile-fusion.md
   - ../concepts/contact-rich-manipulation.md
   - ../tasks/manipulation.md
+  - ./paper-sa-2603-23481-vtam-video-tactile-action-models-for-complex-phy.md
 summary: "DexTacWAM 将十指触觉压缩为双手 latent，与视觉联合预测接触演化，再由动作专家生成灵巧操作动作；关键增益来自预测触觉世界状态而非仅触觉条件化。"
 ---
 
@@ -123,6 +124,8 @@ flowchart LR
 
 这些分数遵循各任务评分协议，不是可与其他数据集或平台直接横比的统一成功率；方法族关系见[世界—动作模型](../concepts/world-action-models.md)。
 
+**与 [VTAM v2](./paper-sa-2603-23481-vtam-video-tactile-action-models-for-complex-phy.md) 的分工：** VTAM 共享视频 VAE/DiT，直接将单触觉流作为多视图学习，采用光流派生的 flow-force proxy 辅助动作学习，强调无需独立触觉预训练；DexTacWAM 首先在 488 轨迹上适配多指触觉编码器，再将十指结构化压缩为双手 latent 来预测接触演化。VTAM 的三任务平均成功率 90% 与本论文六项任务的综合分数 70.6 **协议不相同，不能据此判定孰优**。本对照以[VTAM v2 一手归档](../../sources/papers/vtam_arxiv_2603_23481.md)为准。
+
 ## 结论
 
 **在论文所用 Sharpa 视觉式触觉平台与六项任务中，预测接触演化的联合世界模型较单纯触觉条件化显著更有效，但失败恢复和跨硬件迁移仍未验证。**
@@ -179,6 +182,8 @@ sequenceDiagram
 - [视触觉融合](../concepts/visuo-tactile-fusion.md) — 当前输入融合与预测世界状态之别
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 摩擦、滑移、抓取
 - [Manipulation 任务](../tasks/manipulation.md) — 真实操作任务和评价
+- [VTAM：免独立触觉预训练的视触觉 WAM](./paper-sa-2603-23481-vtam-video-tactile-action-models-for-complex-phy.md) — 单触觉视图与 flow-force proxy 对照
+- [WAM 纵深路线](../../roadmap/depth-wam.md) — 训练期世界预测和部署期执行的衔接
 
 ## 参考来源
 
