@@ -221,6 +221,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [Mind Palace Exploration（CoRL 2025）](./paper-mind-palace-laeqa.md) — 长期多 episode 场景图 + VoI 主动问答；与 HUMEMBR 的人物例行记忆形成任务对照
 - [视觉–语言导航](../tasks/vision-language-navigation.md) — VLN / EQA 任务族边界
 - [Uni-LaViRA](./paper-uni-lavira.md) — 统一具身导航 + EQA 的 training-free agent 对照
 - [Qwen-RobotNav](./qwen-robot-nav.md) — 通才导航原语与长时程 EQA 对照

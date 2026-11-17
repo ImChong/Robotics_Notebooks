@@ -218,6 +218,7 @@ flowchart LR
 **方向 B：主动感知与无先验地图导航**
 - 视场受限时"为看见而行动"的规划
 - 关键词：[FLAP](../wiki/entities/paper-flap-fov-active-perception-3d-navigation.md)、[HiPAN](../wiki/methods/hipan.md)
+- 长期具身问答：[Mind Palace Exploration](../wiki/entities/paper-mind-palace-laeqa.md) — 用跨月场景图与 VoI 把历史检索、主动寻视角和时序问答闭成一条链
 
 **方向 C：导航–操作联合（OVMM）**
 - 导航终点姿态直接决定操作成败，分阶段流水线的错配怎么闭环
