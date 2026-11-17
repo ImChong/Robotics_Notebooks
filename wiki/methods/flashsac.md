@@ -17,6 +17,8 @@ related:
   - ../entities/unitree-g1.md
   - ../entities/unilab.md
   - ../entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md
+original:
+  - ../../sources/papers/flashsac_arxiv_2604_04539.md
 sources:
   - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
