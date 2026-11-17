@@ -6279,9 +6279,14 @@
       for (var i = 0; i < topics.length; i++) {
         var key = topics[i];
         var meta = TF.DEPTH_META[key] || { emoji: '🏷️', label: key };
-        html += '<a class="detail-meta-badge" href="graph.html?depth=' + encodeURIComponent(key) +
+        // 中英文分别成组：空间不足时在括号前换行，英文连同括号一起保留。
+        var labelParts = /^(.+?)([（(][^（）()]+[）)])$/.exec(meta.label);
+        var labelHtml = labelParts
+          ? '<span>' + escapeHtml(labelParts[1]) + '</span><span>' + escapeHtml(labelParts[2]) + '</span>'
+          : escapeHtml(meta.label);
+        html += '<a class="detail-meta-badge detail-meta-route-badge" href="graph.html?depth=' + encodeURIComponent(key) +
           '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」路线视图">' +
-          '<span>' + meta.emoji + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
+          '<span>' + meta.emoji + '</span><span class="detail-meta-route-label">' + labelHtml + '</span></a>';
       }
 
       renderDetailMetaItemRow(depthRowId, rowLabel, html);
