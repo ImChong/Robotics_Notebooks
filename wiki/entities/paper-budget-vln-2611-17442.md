@@ -11,7 +11,7 @@ sources:
   - ../../sources/papers/budget-vln-2611-17442.md
 related:
   - ./paper-wato-2611-17626.md
-  - ./paper-pear-2611-18562.md
+  - ./paper-pear-robot-use-rl.md
   - ./paper-agentic-teacher-2611-17394.md
 summary: "用剩余步数预算指导视觉语言导航中的多目标搜索，采用部分可观测房间级 Bellman 教师监督，而不只模仿全知 TSP 路线。"
 ---
@@ -99,7 +99,7 @@ arXiv v1 摘要称 HM3D 留出场景 2000 步内搜索到 71.4% 的可达目标�
 ## 关联页面
 
 - [paper wato 2611 17626](./paper-wato-2611-17626.md)
-- [paper pear 2611 18562](./paper-pear-2611-18562.md)
+- [paper pear 2611 18562](./paper-pear-robot-use-rl.md)
 - [paper agentic teacher 2611 17394](./paper-agentic-teacher-2611-17394.md)
 - [视觉语言导航](../tasks/vision-language-navigation.md)
 - [自主探索](../tasks/autonomous-exploration.md)

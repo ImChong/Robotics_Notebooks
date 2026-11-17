@@ -200,7 +200,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Agentic-Teacher：失败驱动 VLA 后训练](../wiki/entities/paper-agentic-teacher-2611-17394.md)：定向生成纠错演示并通过流匹配损失过滤。
-- [PEAR：仿真强化学习训练机器人原生推理模型](../wiki/entities/paper-pear-2611-18562.md)：记录大模型动作接口与分布式 rollout 部署前验收。
+- [PEAR：仿真强化学习训练机器人原生推理模型](../wiki/entities/paper-pear-robot-use-rl.md)：记录大模型动作接口与分布式 rollout 部署前验收。
 - [Towards Agentic Robots：模型、数据、环境与 Harness 综述](../wiki/entities/paper-towards-agentic-robots-survey.md) — 固定 arXiv:2610.20442v1 的四域十七类地图；对照 VLA 执行器与工具编排、状态交接、失败恢复及分层实时控制，不是可直接部署的算法。
 - [ActionCodec2](../wiki/entities/paper-actioncodec2-streaming-action-tokenizer.md) — Stage 4 动作端低延迟：误差反馈量化 + Set-BPE 逐步解码；流式 token 输出与实际闭环执行需分别验证
 - [JustRUA](../wiki/entities/paper-justrua-robot-use-agents.md) — RoboDojo 受控对照：实测状态、估深、短运动步进与 Coding Actor

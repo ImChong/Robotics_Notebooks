@@ -10,7 +10,7 @@ original:
 sources:
   - ../../sources/papers/agentic-teacher-2611-17394.md
 related:
-  - ./paper-pear-2611-18562.md
+  - ./paper-pear-robot-use-rl.md
   - ./paper-touchtwin-2611-17619.md
   - ./xhand-1-pro-u.md
 summary: "从基础 VLA 的失败轨迹出发，使用编码智能体构建纠错控制器，再筛选可供基础策略学习的补救演示以进行后训练。"
@@ -82,7 +82,7 @@ flowchart LR
 
 ## 与其他工作对比
 
-相比 [PEAR](./paper-pear-2611-18562.md) 以交互奖励直接进行 RL，Agentic-Teacher 以教师程序产生纠错示范供 VLA 后训练，二者监督信号与部署开销不同。
+相比 [PEAR](./paper-pear-robot-use-rl.md) 以交互奖励直接进行 RL，Agentic-Teacher 以教师程序产生纠错示范供 VLA 后训练，二者监督信号与部署开销不同。
 
 ## 结论
 
@@ -98,7 +98,7 @@ flowchart LR
 
 ## 关联页面
 
-- [paper pear 2611 18562](./paper-pear-2611-18562.md)
+- [paper pear 2611 18562](./paper-pear-robot-use-rl.md)
 - [paper touchtwin 2611 17619](./paper-touchtwin-2611-17619.md)
 - [xhand 1 pro u](./xhand-1-pro-u.md)
 - [模仿学习](../methods/imitation-learning.md)

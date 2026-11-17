@@ -13,7 +13,7 @@ sources:
 related:
   - ./xhand-1-pro-u.md
   - ./paper-agentic-teacher-2611-17394.md
-  - ./paper-pear-2611-18562.md
+  - ./paper-pear-robot-use-rl.md
 summary: "结合人类 RGB-D 视觉与 880 税素触觉手套记录，在 MuJoCo 中以真实接触力约束手—物体回放，生成可扩增的接触数据。"
 ---
 
@@ -101,7 +101,7 @@ flowchart LR
 
 - [xhand 1 pro u](./xhand-1-pro-u.md)
 - [paper agentic teacher 2611 17394](./paper-agentic-teacher-2611-17394.md)
-- [paper pear 2611 18562](./paper-pear-2611-18562.md)
+- [paper pear 2611 18562](./paper-pear-robot-use-rl.md)
 - [触觉阻抗控制](../methods/tactile-impedance-control.md)
 - [数据增广](../methods/generative-data-augmentation.md)
 - [embodied-data 路线](../../roadmap/depth-embodied-data.md)

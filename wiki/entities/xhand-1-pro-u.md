@@ -12,7 +12,7 @@ sources:
 related:
   - ./paper-touchtwin-2611-17619.md
   - ./paper-agentic-teacher-2611-17394.md
-  - ./paper-pear-2611-18562.md
+  - ./paper-pear-robot-use-rl.md
 summary: "16 自由度五指手，与 NVIDIA DexUMI 外骨骼示教关节布局对齐；厂商宣布首批 40 台可订购，尚未公开价格。"
 ---
 
@@ -88,7 +88,7 @@ flowchart LR
 
 - [paper touchtwin 2611 17619](./paper-touchtwin-2611-17619.md)
 - [paper agentic teacher 2611 17394](./paper-agentic-teacher-2611-17394.md)
-- [paper pear 2611 18562](./paper-pear-2611-18562.md)
+- [paper pear 2611 18562](./paper-pear-robot-use-rl.md)
 - [掌内操作](../methods/in-hand-reorientation.md)
 - [触觉阻抗控制](../methods/tactile-impedance-control.md)
 - [contact-manipulation 路线](../../roadmap/depth-contact-manipulation.md)
