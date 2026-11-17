@@ -7,6 +7,7 @@ tags:
 status: stub
 updated: '2026-11-16'
 url: "https://www.mdpi.com/1424-8220/26/17/5595"
+venue: "Sensors, 26(17), 5595"
 project_id: agentic-survey-doi-07c1d81a50e5849a
 paper_url: https://www.mdpi.com/1424-8220/26/17/5595
 sources:

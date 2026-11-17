@@ -10,6 +10,7 @@ url: "https://proceedings.mlr.press/v305/feng25b.html"
 project_id: agentic-survey-pmlr-v305-feng25b
 paper_url: https://proceedings.mlr.press/v305/feng25b.html
 project_page: https://github.com/yunhaif/reflect-vlm
+code: https://github.com/yunhaif/reflect-vlm
 sources:
 - ../../sources/repos/awesome-agentic-robots-survey-index.md
 summary: 'Reflective Planning: Vision-Language Models for Multi-Stage Long-Horizon

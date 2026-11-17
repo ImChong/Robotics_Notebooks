@@ -7,6 +7,7 @@ tags:
 status: stub
 updated: '2026-11-16'
 url: "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8833c8aa10542d24d693bbaf6a4598f5-Abstract-Conference.html"
+venue: "ICLR 2026"
 project_id: agentic-survey-iclr-2026-8833c8aa
 paper_url: https://proceedings.iclr.cc/paper_files/paper/2026/hash/8833c8aa10542d24d693bbaf6a4598f5-Abstract-Conference.html
 sources:
