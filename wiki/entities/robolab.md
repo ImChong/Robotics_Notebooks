@@ -227,7 +227,7 @@ sequenceDiagram
 
 - [具身模型测评纵深路线 Stage 3](../../roadmap/depth-embodied-eval.md) — RoboLab-120 的 SR、过程指标与榜单治理落在此阶段，sim↔real 的排名外推再衔接 Stage 5。
 
-## 与其他页面的关系
+## 关联页面
 
 - [Astranomy：GPT-6 Astra 原生机器人策略研究](./astranomy.md) — RoboLab-120 上的一项通用模型策略研究。
 
