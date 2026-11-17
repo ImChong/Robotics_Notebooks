@@ -2,7 +2,7 @@
 type: entity
 tags: [robot, quadruped, hardware, platform, eth]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-17
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
@@ -10,75 +10,126 @@ related:
   - ../entities/legged-gym.md
   - ../concepts/sim2real.md
   - ./paper-pace-sim2real-legged-robots.md
+  - ./paper-coordinated-badminton-skills-anymal.md
 sources:
+  - ../../sources/papers/anymal-iros-2016.md
   - ../../sources/papers/locomotion_rl.md
-summary: "ANYmal 是由 ETH Zurich 和 ANYbotics 开发的高性能四足机器人平台。它以 SEA 力控执行器和极高的防护等级著称，是机器人强化学习与 Sim2Real 技术研究的标志性载体。"
+original:
+  - ../../sources/papers/anymal-iros-2016.md
+summary: "ANYmal 是 ETH Zurich RSL 研发、ANYbotics 商业化的四足平台系列；2016 年原型以 ANYdrive SEA、力矩控制和 WBC 为核心，后续 D/X 工业巡检型号与学习式运动研究需分代区分。"
 ---
 
-# ANYmal 四足机器人
+# ANYmal 四足机器人（ETH RSL / ANYbotics）
 
-**ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能四足机器人。它不仅在学术界（特别是足式机器人强化学习、Sim2Real 领域）具有极高的统治力，同时在工业巡检（如海上钻井平台、化工矿区）领域也是首屈一指的标杆产品。
+**ANYmal** 由 ETH Zurich 的 Robotic Systems Lab（RSL）开展原始研究，并经 ANYbotics 商业化；它同时是**足式力控与运动控制研究平台**、**自主工业巡检产品家族**。理解它时必须区分 2016 年系统原型、后续 ANYmal D 和面向危险气体环境的 ANYmal X，不能混用参数与认证。
+
+## 一句话定义
+
+**ANYmal 是把模块化串联弹性关节、全身力控、导航感知和足式运动能力集成起来，并在后续型号上扩展学习式运动与工业巡检应用的四足机器人系列。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
-| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
-| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
-| SDK | Software Development Kit | 软件开发工具包 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+|---|---|---|
+| RSL | Robotic Systems Lab | ETH Zurich 机器人系统实验室 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，允许通过弹性形变估计输出力矩 |
+| WBC | Whole-Body Control | 同时协调机身运动、关节力矩和地面接触力的全身控制 |
+| HAA/HFE/KFE | Hip Abduction-Adduction / Hip Flexion-Extension / Knee Flexion-Extension | 每条腿的三个驱动关节 |
+| ZMP | Zero Moment Point | 原型静态行走中的质心/支撑稳定性规划方法之一 |
+| CANopen | CANopen | 2016 年 ANYdrive 关节命令与状态的总线协议 |
+| RL | Reinforcement Learning | ANYmal 后续复杂地形运动研究的重要范式 |
+| IP67 | Ingress Protection 67 | 产品防尘防水等级，不等同于防爆认证 |
+| ATEX / IECEx | ATEX / IECEx | 危险爆炸性环境的相关认证体系，须核对具体型号与分区 |
 
-## 核心硬件特征
+## 为什么重要
 
-1. **极其强悍的防护与鲁棒性**：
-   ANYmal 从设计之初就瞄准了最恶劣的工业环境。其机身具有极高的防尘防水等级（IP67），能够在大雨、泥泞甚至浅水中涉水行走，同时也防爆、抗摔。这使其在商业化巡检中能够做到真正的 24/7 全天候部署。
-2. **串联弹性执行器 (SEA, Series Elastic Actuator)**：
-   有别于目前市面上普及的准直接驱动（QDD）电机，ANYmal 采用了专门开发的 SEA。在电机和输出轴之间加入了一层物理弹簧。
-   - **优点**：SEA 提供了天然的机械碰撞缓冲，极大地保护了减速器免受冲击力破坏；同时，通过测量弹簧的形变，可以实现极其精确的关节力矩反馈（Torque Feedback）。这使得 ANYmal 在执行阻抗控制（Impedance Control）和接触力控制时具备无可比拟的优势。
-   - **挑战**：SEA 引入了额外的非线性动力学和共振问题，对底层控制算法的要求远高于 QDD 电机。
-3. **顶尖的传感器与算力配置**：
-   ANYmal C/D 系列集成了全景激光雷达（LiDAR）、多个深度相机、热成像仪以及高精度的 RTK/IMU，内置了强大的工控机和 GPU，支撑起其完全自主的 SLAM 导航与避障能力。
+- **执行器—控制联合设计：** 2016 年 IROS 原型将 12 个 ANYdrive SEA 关节、扭矩反馈与模型驱动 WBC 整合成可移动的整机，是理解高柔顺腿式机器人控制环的具体案例。
+- **研究到产品的延伸：** 后续 ETH 研究在 ANYmal 上验证纯本体感知强化学习的复杂地形运动；ANYbotics 又将足式移动、导航和巡检传感器做成工业产品。两条路线共享平台家族，但研究成果不应默认具备商业化认证。
+- **便于工程选型：** SEA 力控的冲击吸收与测力能力，和工业巡检需要的防护、续航、传感器、认证，是不同维度的指标。
 
-## 强化学习的“黄埔军校”
+## 核心原理
 
-ANYmal 被誉为机器人强化学习的“黄埔军校”，它是无数里程碑式 RL 论文的御用实验平台：
-- **Learning Agile Locomotion**：ETH 团队在 2020 年展示了 ANYmal 如何通过深度强化学习，在自然界复杂地形中学会类似动物的高动态恢复和翻越动作，彻底确立了 RL 在四足 locomotion 中的主流地位。
-- **RMA (Rapid Motor Adaptation)**：通过在仿真中对地形和动态参数进行特权训练（Privileged Training），再使用适配模块（Adaptation Module）在线估计隐式环境特征，使 ANYmal 展现出了极强的越野与地形自适应能力。
-- **盲走能力**：ANYmal 证明了仅依靠本体感受（Proprioception，即关节位置、速度和 IMU 数据），机器人就能在深雪、高草、碎石等复杂地形下稳健行走。
-- **PACE（系统化 Sim2Real）**：ETH RSL 在 ANYmal D 上用 [PACE](./paper-pace-sim2real-legged-robots.md) 将全 **Cost of Transport** 降至 **1.27**（相对先前方法约 **−32%**），展示紧凑动力学辨识 + 物理能量 reward 的零样本迁移（arXiv:2509.06342）。
-- **Coordinated Badminton（loco-manip + 机载视觉）**：[Science Robotics adu3922](./paper-coordinated-badminton-skills-anymal.md) 在 ANYmal-D + DynaArm 上实现与人对打羽毛球，统一 RL visuomotor 与感知噪声模型。
+### 2016 年原型：ANYdrive + 实时 WBC
 
-## 与 Unitree 产品的区别
+根据 [ETH IROS 2016 全文归档](../../sources/papers/anymal-iros-2016.md)，原始 ANYmal 略低于 **30 kg**、共 **12 个驱动关节**（每腿 HAA/HFE/KFE）。每个 ANYdrive 使用电机、减速器和**串联转动弹簧**；利用关节侧与减速器侧编码器的角度差估计力矩，底层为电流控制、力矩 PID（带前馈和摩擦补偿）及外层位置 PID。
 
-| 维度 | ANYmal (ANYbotics) | Unitree (Go2 / B2) |
-|------|--------------------|--------------------|
-| **市场定位** | 高端重型工业巡检 / 顶尖学术科研 | 极高性价比普及型科研 / 消费级与行业级混合 |
-| **驱动器架构** | 串联弹性执行器 (SEA) | 准直接驱动电机 (QDD) |
-| **物理特性** | 较重（约 50kg），负载能力强，防护极高 | 较轻（Go2 约 15kg），运动速度极快，爆发力强 |
-| **软件生态** | 基于 Raisim / OCS2 的开源强化学习框架 | 开源 Unitree SDK / Isaac Gym (legged_gym) |
+- **关节指标必须注明测试条件：** 原型单关节最大力矩 **40 Nm**、最大速度 **12 rad/s**；小信号力矩带宽约 **70 Hz**，在 10 Nm 激励时约 **24 Hz**。不能把 70 Hz 理解为所有工况下的恒定带宽。
+- **整机控制：** IMU、腿部运动学和足端接触用于本体状态估计；静态行走使用 ZMP 规划，动态步态落脚规划使用简化倒立摆模型；WBC 在关节力矩、接触力与机体轨迹约束下求解控制命令。
+- **计算和通信：** 论文中导航、运动、巡检职责分布在多台机载 PC；实时状态估计与 WBC 由 CAN 驱动以 **400 Hz** 定时，非实时模块通过共享内存及 ROS 交换信息。这是**2016 年历史架构**，不代表当前 ANYmal D/X 的控制栈。
 
-## 对机器人技术生态的深远贡献
+## 流程总览
 
-ANYmal 系列及其背后的 ETH RSL 团队是“**数据驱动足式控制（Data-driven Legged Locomotion）**”路线的绝对先驱。他们向全球研究者证明了：在仿真环境（如 Raisim 或 Isaac Gym）中进行大规模并行训练的神经网络策略，只要通过合理的域随机化（Domain Randomization）和精确的执行器建模（Actuator Network），就可以无缝、稳定地迁移（Sim2Real）到极端复杂的真实户外地形中。这一范式目前已被包括人形机器人在内的整个具身智能行业广泛采纳。
+以下是依据 IROS 2016 Sec. II.D、III.C、IV 绘制的**系统控制链路概念图**，不是从某个公开源码仓库逆向得到的运行调用图。
+
+```mermaid
+flowchart TD
+  lidar["LiDAR / 环境定位"] --> mission["任务与路径规划"]
+  mission --> command["期望机身速度"]
+  imu["IMU / 关节运动学 / 足端接触"] --> estimate["本体状态估计"]
+  command --> wbc["运动规划 + 全身控制 WBC"]
+  estimate --> wbc
+  wbc --> target["期望关节力矩"]
+  target --> torque["ANYdrive 力矩 PID / 摩擦补偿"]
+  angle["电机侧与关节侧编码器"] --> spring["弹簧形变估计输出力矩"]
+  spring --> torque
+  torque --> current["电机电流控制 / SEA 执行器"]
+  current --> legs["四足与地面交互"]
+  legs --> imu
+  legs --> angle
+```
+
+### 原型实验（IROS 2016）
+
+| 维度 | 论文报告结果 | 使用边界 |
+|---|---|---|
+| 静态步行 | 约 **0.3 m/s** | ZMP 规划下的原型演示 |
+| 动态小跑 | 约 **0.8 m/s** | 论文的特定步态与实验设置 |
+| 攀爬 | 约 **50°** 的工业梯面爬行动作 | 采用谨慎的贴地爬行，不是常规楼梯速度指标 |
+| 续航 | 约 **650 Wh** 电池，超过 **2 h** | 2016 年原型，不可套用于商业版 |
+
+## 型号与研究成果边界
+
+| 对象 | 证据明确的定位 | 不应混同的事项 |
+|---|---|---|
+| **ANYmal（IROS 2016 原型）** | 约 30 kg、ANYdrive SEA、基于模型的状态估计与 WBC；[原论文](../../sources/papers/anymal-iros-2016.md) | 不是后续 RL 算法或所有商业型号的参数表 |
+| **ANYmal D（工业巡检）** | ANYbotics [官方产品介绍](https://www.anybotics.com/robotics/anymal/)和 [2024 年规格资料](https://www.anybotics.com/ANYbotics_Specs_US.pdf)说明 IP67、LiDAR/多相机/热像、导航与自主巡检 | **IP67 不意味着防爆**；机载传感器与续航需按 D 的资料核查 |
+| **ANYmal X（防爆巡检）** | [ANYbotics 官方页](https://www.anybotics.com/robotics/anymal-x/)明确标明 ATEX/IECEx、Zone 1 IIB | 防爆能力**针对 X 型号及对应认证范围**，不能泛化为所有 ANYmal |
+| **后续学习式运动论文** | ETH [2020 年复杂地形运动研究](https://rsl.ethz.ch/the-lab/news/2020/10/learning-locomotion-over-challenging-terrain.html)展示纯本体感知深度 RL；另见 [PACE](./paper-pace-sim2real-legged-robots.md) | RL 成果来自**各篇独立工作**，不是 2016 年平台论文提出的控制算法 |
+
+## 工程实践
+
+1. **控制环设计：** 若参考 2016 年架构，先区分编码器估计关节输出力矩、内层扭矩环、WBC 约束求解与上层任务速度命令，再逐层验证延迟和带宽。
+2. **指标阅读：** 硬件参数必须标明原型或商业代际；70 Hz 关节小信号带宽、400 Hz 整机 WBC 频率、0.8 m/s 小跑速度分别是不同实验量，不能相互代换。
+3. **研究资料入口：** [Legged Gym](./legged-gym.md) 是后续足式强化学习的软件生态之一，**不等同于 ANYmal 2016 整机控制代码**；[PACE](./paper-pace-sim2real-legged-robots.md) 和 [协调羽毛球](./paper-coordinated-badminton-skills-anymal.md) 分别展示后续 Sim2Real、移动操作研究。
+
+**源码运行时序图：不适用。** 本页主原文是 2016 年系统论文，描述设计和控制架构，但本次未核验到能够复现**该版完整平台控制栈**的官方可运行仓库与入口。上图明确是论文架构概念图，不冒充源码调用顺序。
+
+## 局限与风险
+
+- **SEA 代价：** 物理弹簧带来冲击柔顺与力矩反馈，同时限制控制带宽，并引入弹性动态；论文的 70 Hz 结果仅适用于对应小信号实验。
+- **原型和产品混写风险：** 历史原型的 30 kg、650 Wh 与商业版规格不能拼接为“一台 ANYmal”；IP67 防护与 ATEX/IECEx 防爆也不能合并为全系列声明。
+- **开放程度：** 2016 年论文提供硬件、控制与实验描述，**不是一套可直接部署的开源工程仓**；工程复现需额外核查当前硬件与控制软件接口。
+- **研究结论外推：** 复杂地形 RL 和视觉移动操作实验应按对应论文的机器人型号、感知条件和评测边界解释，不能推断 ANYmal 在所有场景的成功率或长时可靠性。
 
 ## 关联页面
+
 - [四足机器人](./quadruped-robot.md)
-- [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
+- [人形机器人](./humanoid-robot.md)
 - [Locomotion 任务](../tasks/locomotion.md)
-- [Legged Gym](../entities/legged-gym.md)
-- [Sim2Real 概念](../concepts/sim2real.md)
+- [Legged Gym](./legged-gym.md)
+- [Sim2Real](../concepts/sim2real.md)
+- [PACE：ANYmal D 的 Sim2Real](./paper-pace-sim2real-legged-robots.md)
+- [ANYmal-D 动态羽毛球](./paper-coordinated-badminton-skills-anymal.md)
 
 ## 参考来源
-- Hutter, M., et al. (2016). *ANYmal - a highly mobile and dynamic quadrupedal robot*.
-- Lee, J., et al. (2020). *Learning quadrupedal locomotion over challenging terrain*.
-- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md)
+
+- [Hutter 等：ANYmal — A Highly Mobile and Dynamic Quadrupedal Robot（全文通读归档）](../../sources/papers/anymal-iros-2016.md)
+- [Locomotion RL 早期论文索引](../../sources/papers/locomotion_rl.md)
+- [ETH 2016 原始论文与 PDF](https://www.research-collection.ethz.ch/entities/publication/d3770b2f-5aa1-4a92-8c2c-a56d79771820)
+- [ANYbotics 官方 ANYmal / ANYmal X 产品资料](https://www.anybotics.com/robotics/anymal/)
+
+## 推荐继续阅读
+
+- [ANYmal IROS 2016 原文 DOI](https://doi.org/10.1109/IROS.2016.7758092)
+- [ANYbotics：ANYmal X 防爆认证与应用范围](https://www.anybotics.com/robotics/anymal-x/)
+- [ETH RSL：Learning Locomotion over Challenging Terrain（2020）](https://rsl.ethz.ch/the-lab/news/2020/10/learning-locomotion-over-challenging-terrain.html)
