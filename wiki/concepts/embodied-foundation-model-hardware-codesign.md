@@ -5,6 +5,7 @@ status: complete
 updated: 2026-11-17
 related:
   - ../overview/hub-embodied-foundation-model.md
+  - ../entities/nvidia-robotics-chatgpt-moment-deepu-talla-2026.md
   - ./foundation-policy.md
   - ./humanoid-policy-network-architecture.md
   - ./humanoid-mass-production-engineering.md
@@ -147,6 +148,8 @@ flowchart LR
 - [人形机器人量产工程能力](./humanoid-mass-production-engineering.md)
 - [跨具身迁移（知识链汇总）](../overview/hub-cross-embodiment.md)
 - [人形机械布局设计](./humanoid-mechanical-layout-design.md)
+
+- [NVIDIA Deepu Talla 访谈：机器人 ChatGPT 时刻](../entities/nvidia-robotics-chatgpt-moment-deepu-talla-2026.md)：人形在既有人类环境中的优势与分层部署边界，属嘉宾观点而非量产实测。
 
 ## 参考来源
 
