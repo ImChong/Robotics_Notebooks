@@ -230,6 +230,7 @@ flowchart LR
 - [递归自改进（宏观）](../wiki/concepts/recursive-self-improvement.md) — 三情景、Amdahl 瓶颈与"怎么读内部数字"对照表
 - [From AGI to ASI](../wiki/entities/paper-from-agi-to-asi.md) — DeepMind 的四条能力路径与六类瓶颈；与 RSI 机制勿混读
 - [AI Auto-Research](../wiki/concepts/ai-auto-research.md) — 人机共治、分层验证与跨阶段溯源
+- [Motubrain 2.0 官方公开动态](../wiki/entities/motubrain-2-live.md) — 11-13 失败后调试**代码**再测、11-14 RSI highlights；仅展示过程，不能当权重级持久改进的外部验证
 - [Datawhale RSI 科普综述（2026-09-19）](https://mp.weixin.qq.com/s/rlfTKyWhALsNONhAwGih1A) — 五次推进叙事与 2026 夏信号
 - [When AI builds itself（Anthropic Institute）](https://www.anthropic.com/institute/recursive-self-improvement) — 宏观论述原文
 
