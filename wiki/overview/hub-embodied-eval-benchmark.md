@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, embodied-eval-benchmark, benchmark, evaluation, mllm, world-model, sim2real]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-17
 related:
   - ../entities/inspect-robots.md
   - ../entities/robocurve.md
@@ -19,6 +19,7 @@ related:
   - ../entities/paper-gigaworld-1-policy-evaluation.md
   - ../entities/paper-worldecho-worldsync.md
   - ../entities/robodojo.md
+  - ../entities/paper-gm-100.md
   - ../entities/paper-coap-embodied-turing-machines.md
   - ../entities/robolab.md
   - ../entities/behavior-challenge-2026.md
@@ -121,6 +122,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 | ③‴ 手型 kinematic | **URDF 阶段** rolling-pinch **平移/旋转/seed** 下界（无控制器） | **KaRMA**（KaRMA-T/R/S；16 手榜） | [KaRMA](../entities/paper-karma-hand-metric.md)、[HAND ERC](../entities/paper-hand-erc-benchmarking-dexterity.md)、[All Hands Up](../entities/all-hands-up.md) |
 | 端到端 | 四层如何逐层选型取舍 | 选型决策树 | [评测基准选型闭环 Query](../queries/embodied-eval-benchmark-selection-loop.md) |
 
+**真实机器人长尾操纵评测：** [GM-100（The Great March 100）](../entities/paper-gm-100.md) 从人–物交互原语设计 100 项细粒度双臂任务，联合报告 SR 与 PSR；Cobot Magic 为 100 项、Xtrainer 为前 10 项，真机结果应与仿真榜分开比较。
+
 ## 仿真操纵基准：按任务分布选，不按总分硬排
 
 这些基准覆盖不同任务和环境分布，成功率不能直接横向比较。先选择与目标能力相符的评测，再对齐机器人、观察/动作接口、任务子集和版本。
@@ -217,6 +220,8 @@ summary: "具身评测基准选型闭环知识链枢纽：把具身大脑/MLLM �
 - [Safe Depth（arXiv:2611.13769）](../entities/paper-safe-depth.md) — 对单目深度偏差、不确定性和 Nav2 导航碰撞率进行仿真对照，真实部署还缺里程计与域迁移验证
 
 ## 参考来源
+
+- [GM-100 论文全文通读归档](../../sources/papers/gm100_arxiv_2601_11421.md) — 长尾任务设计及 SR/PSR 评测
 
 - [RoboBench 通读归档](../../sources/papers/robobench_reading_arxiv_2510_17801_hub_eval.md) — 一手论文通读（五维、世界模拟器评测、与 VLA 相关性）
 
