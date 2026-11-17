@@ -2,7 +2,7 @@
 type: entity
 tags: [software, world-models, physical-ai, nvidia, wfm, video-generation, vla, open-source]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-17
 related:
   - ./cosmos-3.md
   - ./alpamayo2-edge.md
@@ -23,6 +23,7 @@ related:
   - ./paper-cosmos-transfer1.md
   - ./nvidia-physical-ai-datasets.md
   - ./nvidia-gtc.md
+  - ./titv-nvidia-deepu-talla-physical-ai-2026.md
 original:
   - ../../sources/papers/cosmos_wfm_arxiv_2501_03575.md
   - ../../sources/repos/nvidia_cosmos.md
@@ -166,6 +167,7 @@ flowchart TB
 - [Cosmos Cookbook](./cosmos-cookbook.md) — 2.x 可运行配方
 - [Cosmos Curator](./cosmos-curator.md) — 视频切滤标与 WebDataset
 - [NVIDIA Physical AI 数据集](./nvidia-physical-ai-datasets.md) — HF 数据集合索引
+- [TITV 深度访谈：NVIDIA 物理 AI 与机器人 ChatGPT 时刻路线图](./titv-nvidia-deepu-talla-physical-ai-2026.md) — Deepu Talla 阐释 Cosmos 如何兼任仿真器/预测器/策略评估器并与 GR00T VLA 融合走向 WAM，以及 System 0–3 边云算力分层
 
 ## 参考来源
 
