@@ -31,5 +31,5 @@
 
 ## 对 wiki 的映射
 
-- [SEA 谐振抑制 / Series Elastic Actuator Resonance Suppression](../../wiki/concepts/sea-resonance-suppression.md)：新建独立**概念**知识页；本附件不是独立研究论文，不虚构 \`paper-*\` 实体。
+- [SEA 谐振抑制 / Series Elastic Actuator Resonance Suppression](../../wiki/concepts/sea-resonance-suppression.md)：新建独立**概念**知识页；本附件不是独立研究论文，不虚构 `paper-*` 实体。
 - [力矩控制电机设计纵深路线](../../roadmap/depth-torque-motor-design.md)：在 Stage 5 力矩闭环与标定处补充扫频诊断和抑振实践。
