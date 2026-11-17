@@ -468,6 +468,8 @@ op: ingest
 - 本次 29 篇均有健康度 3/3 的结构化判据；最终以报告脚本与 CI 实测为准。
 - [29 篇阅读坐标](../wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
 
+## [2026-11-17] ingest | NVIDIA 公司路线更新至 2026-11-17：补入 GR00T 2、cuRoboV2-Fast、Lab 3.0 与 DexBench，复核历史工具节点及原文边界；其余未通读论文保留真实健康度。
+
 ## [2026-11-17] ingest | sources/papers/mosu2_arxiv_2611_11148.md — 归档 MOSU2 多模态长程户外导航；新增独立论文实体、Mermaid 流程与导航纵深入链
 
 - 一手依据：arXiv:2611.11148v1 全文与官方项目页；实测数字只采用 v1，不混用网页其他稿次。
