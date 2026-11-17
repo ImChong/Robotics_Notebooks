@@ -7,7 +7,7 @@ tags:
   - software-engineering
   - anthropic
 status: complete
-updated: 2026-11-14
+updated: 2026-11-17
 related:
   - ../entities/paper-science-prediction-universe.md
   - ../entities/anthropic-claude-api-skill.md
@@ -100,7 +100,7 @@ Agent 因 **多轮、改状态、路径多样** 而比单轮 LLM 更难评；可
 | Conversational | 状态检查 + 轮数 + LLM rubric；常需 **用户模拟** | τ-Bench、τ2-Bench |
 | Research | Groundedness、coverage、来源质量 | BrowseComp 类；开放合成需专家校准 |
 | Computer use | 终态 URL/文件/OS artifact | WebArena、OSWorld；DOM vs 截图 tradeoff |
-| 结构化决策 | 候选标签 / 动作的概率与终态任务分数 | [Intern-Decision](../entities/paper-intern-decision.md) 将有限候选决策压成一次前向的字段概率；它是决策组件，不替代完整 agent harness |
+| 结构化决策 | 候选标签 / 动作的概率与终态任务分数 | [Intern-Decision](../entities/paper-intern-decision.md) 通过决策 token 输出有限候选概率；[Karpo Decision](../entities/karpo-decision.md) 使用独立 readout 提供同类多问题概率接口；二者都不是完整 agent harness |
 
 ### 非确定性指标
 
