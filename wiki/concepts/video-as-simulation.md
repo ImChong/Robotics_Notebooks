@@ -2,8 +2,9 @@
 type: concept
 tags: [simulation, video-generation, deepmind, computer-vision, robotics]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-17
 related:
+  - ../entities/paper-pixvid-back-to-pixels.md
   - ../entities/paper-vgi-white-paper.md
   - ../methods/generative-world-models.md
   - ./functional-taxonomy-world-models.md
@@ -160,6 +161,11 @@ UniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略�
 在 **开放域交互式内容 / 桌面实时** 设定下，[ABot-World-0](../entities/paper-abot-world-0.md)（arXiv:2607.19191）用 **原始键盘动作** 统一场景漫游与第三人称角色，经 **LongForcing** 压长程自回归漂移，并在 **单卡 RTX 5090** 上做到 **720P ≤16 FPS**；它更接近 UniSim「可玩的像素世界」叙事，而不是关节级机器人策略评估代理——推理学生已开源，完整训练数据/教师仍待发。
 
 ## 工程实践
+
+### 逐帧视频渲染接口：PixVid（2026）
+
+[PixVid / Back to Pixels](../entities/paper-pixvid-back-to-pixels.md) 将预训练视频 DiT 从 VAE 时空 latent 转成像素逐帧生成。它允许相机动作条件在下一帧生效，论文在单 B200 定制推理条件下报告控制到屏幕中位延迟 34 ms（12 帧块 SolarWM 为 495 ms），但 FPS 29.4 低于对照 72.0。**它是生成/渲染接口研究，不直接验证机器人动作可执行性或接触动力学**；可以用来讨论交互式视觉世界模型的延迟与吞吐取舍，而非当作完成了可闭环物理仿真的证明。
+
 
 - **数据配比**：UniSim 混合 14 类数据、权重 0.05 或 0.1 且未精细调参；去掉互联网数据后 FVD 明显变差，说明广覆盖数据不可省。
 - **历史长度**：Ego4D 上条件取最近 4 帧优于 1 帧或远距 4 帧；需长记忆的任务（如检索式导航）要更长历史。
