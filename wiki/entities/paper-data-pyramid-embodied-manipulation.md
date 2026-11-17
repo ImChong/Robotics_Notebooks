@@ -24,7 +24,7 @@ tags:
   - nju
   - sjtu
 status: complete
-updated: 2026-11-15
+updated: 2026-11-17
 arxiv: "2607.24744"
 code: https://github.com/worldbench/awesome-embodied-data-pyramid
 original:
@@ -101,17 +101,19 @@ summary: "Data Pyramid for Embodied Manipulation（arXiv:2607.24744，PKU 牵头
 | **类型** | Survey（数据中心视角；非架构综述） |
 | **arXiv** | <https://arxiv.org/abs/2607.24744>（v1 2026-07-27，v2 2026-08-08） |
 | **项目页** | <https://jasper-aaa.github.io/embodied-data-pyramid/>（五层数据集检索表） |
-| **开源** | **资源型开源（Apache-2.0）**：Awesome 策展清单（见下） |
+| **开源** | **资源清单与数据处理管线已开放**：策展索引，以及 2026-11-16 新增的 LeRobot v3 转换和质量清洗代码（各数据及模型许可需独立核查） |
 
 ## 开源状态
 
-核查日：**2026-11-14**（项目页 HTML / `worldbench/awesome-embodied-data-pyramid` 仓库 / arXiv v2 实测）。
+核查日：**2026-11-17**（11-16 官方仓库 README、LeRobot Pipeline 文档及运行源码；论文依据仍为 arXiv v2）。
 
 | 产物 | 状态 |
 |------|------|
-| Awesome 策展清单 [`worldbench/awesome-embodied-data-pyramid`](https://github.com/worldbench/awesome-embodied-data-pyramid) | **已开源（Apache-2.0）**：`README.md` 按五层与 VLA/WAM 配方持续更新至 2026-10（项目页另链 `Jasper-aaa/Awesome-Embodied-Data-Pyramid`）；`index.html` 仅为静态跳转页；归档见 [sources/repos/awesome-embodied-data-pyramid.md](../../sources/repos/awesome-embodied-data-pyramid.md) |
-| 项目页数据集表格（类别 × 任务检索，含规模/许可） | **已开放**（2026-08-07 增补 RekaCS2-10k / RekaDaily-10k 等条目；归档见 [sources/sites/embodied-data-pyramid.md](../../sources/sites/embodied-data-pyramid.md)） |
-| 训练/推理代码、模型权重 | **不适用**（综述仓库仅含 Markdown 策展表与跳转页，无可运行实现） |
+| [Awesome 策展清单](https://github.com/worldbench/awesome-embodied-data-pyramid) | 已开放：五层数据集与 VLA/WAM 配方索引，更新至 2026-11；见 [来源归档](../../sources/repos/awesome-embodied-data-pyramid.md) |
+| [项目页数据检索](https://jasper-aaa.github.io/embodied-data-pyramid/) | 已开放：按类别与任务筛选的检索表 |
+| [LeRobot v3 转换/清洗代码](https://github.com/worldbench/awesome-embodied-data-pyramid/tree/main/tools/lerobot_pipeline) | **有可运行 Python 入口**：六类数据转换器、质量导出、验证与测试；不是 VLA 模型训练/推理 |
+| [DataPyramid ModelScope 数据](https://www.modelscope.cn/datasets/jasper0519/DataPyramid) | 官方处理清单 **1,721 仓库 / 972,324 episodes / 10,207.57 小时**；2026-11-16 官方仍标注**上传中**，总量不等于当前可下载量 |
+| 具身模型权重及训练代码 | 本次发布没有提供；运行完整质量清洗还须取得授权 FK 模型，并遵守各源数据许可 |
 
 ## 核心原理
 
@@ -156,9 +158,57 @@ flowchart TB
 - **仿真层：** 基础设施三件套（本体-传感、物体场景资产、物理渲染后端）；合成演示四类（人执行、规则执行、回放扩展 MimicGen、自主/生成式 rollout 含 LLM 数据工厂 GenSim/RoboGen）；**世界模型正从预测组件演化为「学习型仿真器」**（策略训练 World4RL、评估 WorldGym、数据引擎 DreamGen/GigaWorld-0）；sim2real 差距 = 观测失配 + 交互失配（运动学 gap 可修，动力学 gap 难消）。
 - **通用层：** 按能力贡献组织（视觉语言 / 分割定位 / 3D / 规划 / 时序记忆 / 物理因果失败推理 / 抓取）；价值是认知地基，必须由更对齐的层接地到物理执行。
 
+### DataPyramid 数据处理流水线（2026-11-16 新增）
+
+与综述中的五层分类不同，DataPyramid 是整合 **AgiBot Beta、ABC-130k、AgiBotWorld2026、Galaxea、InternData A1、RoboMIND** 六家既有实机/仿真数据的**处理后集合**，并非额外采集的独立演示。官方处理清单共 **1,077,451,809 帧**。
+
+```mermaid
+flowchart LR
+  Raw["六类原始数据<br/>不同来源格式"] --> Convert["各家转换器<br/>LeRobot v3"]
+  Convert --> Validate1["转换校验<br/>Schema / 数量"]
+  Validate1 --> Quality["基础检查<br/>alpha10 四规则"]
+  Models["授权 FK 模型<br/>与坐标映射"] -.-> Quality
+  Quality --> Mark["原帧和原列不变<br/>新增 quality.valid"]
+  Mark --> Validate2["清洗校验<br/>元数据/视频链接"]
+  Validate2 --> Train["训练端应用<br/>quality.valid 和目标 masks"]
+```
+
+alpha10 四规则分别检查 **通道范围离群、速度/加速度突变、FK 末端姿态一致性、状态–动作速度方向一致性**（默认 FK 容差 1 cm/2°；时滞搜索 ±15 帧）。缺少有效观测/授权模型时相应检查跳过并记录原因，**未检查不等于通过**。
+
+**版本边界**：ModelScope 上传中的数据为 **20261016** 质量标注，官方代码新增 **alpha10** 四规则配置；前者尚不能默认视为后者重算。清洗保留全部行、帧索引和视频，新增的 `quality.valid` 必须与既有 action/EE masks 一起在训练端显式使用。
+
 ## 源码运行时序图
 
-**不适用。** 本工作为综述论文（`arXiv:2607.24744v2`），经逐文件核对官方仓库 `worldbench/awesome-embodied-data-pyramid`，仓内仅包含 `README.md`（持续更新至 2026-10 的五层数据集与 VLA/WAM 配方索引表）、`index.html`（静态跳转页）、`assets/` 与 `LICENSE`（Apache-2.0），不存在可运行的训练、推理或评测脚本入口。数据层选型入口见 [工程实践](#工程实践) 与 [sources/repos/awesome-embodied-data-pyramid.md](../../sources/repos/awesome-embodied-data-pyramid.md)。
+已阅读官方 `tools/lerobot_pipeline/pipeline.py`、`pipeline/cli.py`、`pipeline/conversion.py`、`pipeline/release.py` 及 `lerobot_quality.export/batch_export/four_rules`。以下图反映实际调用关系，并非本次重跑 1,721 仓的日志。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 使用者
+  participant CLI as pipeline.py / pipeline.cli
+  participant Plan as pipeline.conversion
+  participant Conv as converters/
+  participant Check as pipeline.release.verify
+  participant Batch as lerobot_quality.batch_export
+  participant Export as lerobot_quality.export_repo
+  User->>CLI: plan --config configs/local.json
+  CLI->>Plan: build_steps(数据家族)
+  Plan-->>CLI: 转换步骤和清洗计划
+  User->>CLI: run --config configs/local.json --execute
+  CLI->>Conv: 逐家族执行转换器命令
+  Conv-->>CLI: 转换后的 LeRobot v3 目录
+  CLI->>Check: verify(converted_root)
+  Check-->>CLI: 清单和 schema/frames 核查
+  CLI->>Batch: python -m lerobot_quality.batch_export --plan
+  loop 每个需要清洗的仓库
+    Batch->>Export: export_repo(source, output, policy)
+    Export-->>Batch: quality.valid + quality/ + 视频软链接
+  end
+  CLI->>Check: verify(cleaned_root, cleaned=true)
+  Check-->>User: 清洗结果核验
+```
+
+**官方运行入口**：在 `tools/lerobot_pipeline/` 内，准备 Linux、Python 3.12、FFmpeg、原始数据及另行授权的 FK 模型，配置 `raw_root/converted_root/cleaned_root/work_root` 四个互不重叠目录。先运行 `python pipeline.py doctor --config configs/local.json`、`python pipeline.py plan --config configs/local.json`，再运行 `python pipeline.py run --config configs/local.json --execute`，中断后可用 `--resume`。具体参见[官方 QUICKSTART](https://github.com/worldbench/awesome-embodied-data-pyramid/blob/main/tools/lerobot_pipeline/docs/QUICKSTART.md)。单仓清洗另有 `PYTHONPATH=quality/src python -m lerobot_quality.export --repo ... --output ... --four-rules-config configs/four_rules.json`。
 
 ## 工程实践
 
@@ -170,6 +220,7 @@ flowchart TB
 | 动作接口选型 | 三策略权衡：具身专属投影（保语义、换本体要重写）/ 零填充定长（接口统一、语义不齐）/ **语义动作槽**（维度+语义双对齐，如 Qwen-RobotManip 80 维） |
 | 用人类视频 | 当 **结构化交互先验**（任务意图/affordance/接触序列），别当精确动作标签；几何上合理的重定向未必物理可行 |
 | 失败数据 | 保留并结构化标注（pre-failure 上下文/onset/类别原因/恢复动作/结局），是恢复行为监督而非废数据 |
+| DataPyramid 质量标注 | 区分线上 20261016 与 alpha10；在训练 dataloader 显式应用 `quality.valid` 和原有 action/EE masks，检查跳过原因而不是把“未检查”当作“已通过” |
 
 ## 实验与评测（数据中心分析）
 
@@ -209,7 +260,8 @@ flowchart TB
 
 - **综述本身无实验：** 层级排序与配方分析是 **综合归纳**，论文自承「排序非任一单维严格单调」；不要把五层顺序当成某维度的绝对强弱裁决。
 - **数据规模数字口径混杂：** 小时数/条数跨模态、跨过滤标准、跨训练阶段，直接横比会得出错误结论（论文明确提醒）。
-- **覆盖截至 2026-07（仓内表持续更新至 2026-10）：** 论文正文图表截止 2026-07；Awesome 清单（`README.md`）与项目页（2026-08-07 更新）持续增补新数据集与 VLA/WAM 配方，后续增补条目应以清单为准。
+- **论文与工程发布时间不同：** 论文以 2026-07 资料为主，Awesome 仓库 2026-11-16 又发布了数据转换/质量清洗管线与 ModelScope 入口；不能沿用旧版「没有代码」的判断。
+- **再现与下载边界：** 官方给出的处理总量及既有运行记录不表示全部文件目前可下载；本次未独立重跑全量转换/清洗，官方尚未重新验证全新环境安装或全部视频字节级一致性。
 - **操作域限定：** 金字塔面向 manipulation；locomotion / 导航 / 自动驾驶的数据生态只部分适用同一坐标系。
 
 ## 与其他工作对比
@@ -251,6 +303,7 @@ flowchart TB
 ## 推荐继续阅读
 
 - Awesome 清单（持续更新的五层数据集索引）：<https://github.com/worldbench/awesome-embodied-data-pyramid>
+- [官方 LeRobot v3 处理代码说明](https://github.com/worldbench/awesome-embodied-data-pyramid/blob/main/tools/lerobot_pipeline/README.md) · [发布验证记录](https://github.com/worldbench/awesome-embodied-data-pyramid/blob/main/tools/lerobot_pipeline/docs/RELEASE_VALIDATION.md)
 - 项目页数据集检索表：<https://jasper-aaa.github.io/embodied-data-pyramid/>
 - UMI 原论文（第二层范式源头）：*Universal Manipulation Interface*，[arXiv:2402.10329](https://arxiv.org/abs/2402.10329)
 - Open X-Embodiment（真机层聚合源头）：[arXiv:2310.08864](https://arxiv.org/abs/2310.08864)
