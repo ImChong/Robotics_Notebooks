@@ -3,8 +3,8 @@ type: entity
 tags: [company, world-action-model, video-policy, foundation-policy, manipulation, tactile, rhoda-ai]
 title: Rhoda AI（机器人基础模型公司）
 status: complete
-updated: 2026-10-16
-summary: "Rhoda AI 以互联网规模视频预训练 + 闭环视频预测控制（Direct Video-Action，DVA）做机器人基础模型 FutureVision；2026-03 结束隐身并宣布 4.5 亿美元 A 轮，官网 3 篇研究博文覆盖 DVA、网络视频预训练 scaling 与触觉传感，全部闭源、数字为公司自报。"
+updated: 2026-11-17
+summary: "Rhoda AI 以互联网视频因果预测 + 逆动力学闭环控制（DVA）研发 FutureVision；2026-11 Mobile DVA 扩展底盘与机械臂共用视觉未来，官网现有 4 篇研究文章（原始 DVA、scaling、触觉、移动操作）。公开数字均为公司自报，技术代码/权重未开放。"
 related:
   - ./rhoda-direct-video-action.md
   - ./rhoda-scaling-web-video-pretraining.md
@@ -17,6 +17,9 @@ related:
   - ./dyna-2.md
 sources:
   - ../../sources/sites/rhoda-ai.md
+  - ../../sources/sites/rhoda-dva-and-mobile-dva-2026.md
+original:
+  - ../../sources/sites/rhoda-dva-and-mobile-dva-2026.md
 ---
 
 # Rhoda AI（机器人基础模型公司）
@@ -40,6 +43,7 @@ sources:
 - **「视频即策略」的产业样本：** 与 [Generalist AI](./generalist-ai-robotics.md) 以真实交互数据预训练的路线不同，Rhoda 把主要预训练预算放在**网络视频**上、只在后训练阶段引入机器人动作；与 [Dyna-2](./dyna-2.md) 等同属闭源的产业路线，读法见 [世界动作模型](../concepts/world-action-models.md)。
 - **公开了少见的真机 scaling 数据：** [网络视频预训练 scaling](./rhoda-scaling-web-video-pretraining.md) 在同一任务上只改模型规模与预训练算力，给出 200 多小时真机评测下的成功率曲线，可与 [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) 对照。
 - **从视觉扩到触觉：** [触觉 + DVA](./rhoda-dva-tactile-sensing.md) 把触觉当作与视频同构的「触觉视频」输入输出，延续同一套预测—逆动力学管线。
+- **从固定工位扩到移动操作：** [Mobile DVA](./rhoda-direct-video-action.md#mobile-dva2026-11-03-统一移动与操作扩展) 以共享视频未来联合预测机械臂与底盘动作；官方报告有限新增底盘数据在搬运/分拣任务有收益，但目的桌识别仍会失败。
 
 ## 公司概况
 
@@ -54,7 +58,7 @@ sources:
 | 产品 | FutureVision（智能层基础模型，预期未来授权给软硬件合作伙伴）；定制执行器机器人平台，额定负载 25 kg、峰值 40 kg | 官网首页、新闻稿 |
 | 场景 | 制造与物流（汽车、电商等）；新闻稿称一次高产量制造评估中单轮不到两分钟、无人干预，超过客户 KPI | 官网新闻稿（自报） |
 
-## 官方研究时间线（2026-10-16 共 3 篇）
+## 官方研究时间线（2026-11-17 共 4 篇）
 
 完整核查见 [官网研究页归档](../../sources/sites/rhoda-ai.md)。
 
@@ -63,6 +67,7 @@ sources:
 | 2026-03-10 | [Causal Video Models Are Data-Efficient Robot Policy Learners](https://www.rhoda.ai/research/direct-video-action) | DVA：因果视频模型 + 逆动力学模型；约 10 小时数据即可学新任务；长上下文记忆与一次示范模仿 | [DVA](./rhoda-direct-video-action.md) |
 | 2026-09-10 | [Does Scaling Web-Video Pre-training Help Real Robots Do Real Work?](https://www.rhoda.ai/research/scaling-web-video-pretraining) | 模型规模 XS→L：3.7%→84.7%；预训练算力与 DINO FD 同向 | [网络视频预训练 scaling](./rhoda-scaling-web-video-pretraining.md) |
 | 2026-10-13 | [Giving Robots a Sense of Touch](https://www.rhoda.ai/research/giving-robots-a-sense-of-touch) | 薄型触觉传感器 + 多模态 DVA；盲操作取回纹理球 | [触觉 + DVA](./rhoda-dva-tactile-sensing.md) |
+| 2026-11-03 | [Mobile DVA: A Single Video-Action Policy for Manipulation and Mobility](https://www.rhoda.ai/research/mobile-dva) | 将底盘动作接入同一 DVA 预测-逆动力学闭环，瓶分拣搬运 95.1%；陌生障碍托盘搬运 15 分钟数据达 88.3%（均官方自报） | [DVA + Mobile 扩展](./rhoda-direct-video-action.md) |
 
 ## 核心原理（对外可核对部分）
 
@@ -79,7 +84,7 @@ flowchart LR
 
 - **预训练：** 无动作标注的网络视频，目标是学到运动、物理与交互的先验。
 - **后训练：** 在具体本体上学习视频预测，以及「预测画面 → 动作」的映射（由独立的逆动力学模型完成，约 10 小时本体数据即可训练）。
-- **运行：** 每几百毫秒重复「观察 → 预测未来视频 → 转动作 → 执行」。
+- **运行：** 每几百毫秒重复「观察 → 预测未来视频 → 转动作 → 执行」。2026-11 Mobile DVA 在这个共享未来上扩充 **IDM 输出**，同时控制机械臂和移动底盘；文中无地图/SLAM/独立导航规划器，不等于没有视觉反馈。
 
 ## 工程实践
 
@@ -88,11 +93,12 @@ flowchart LR
 | 写综述 / 路线对照 | 归入「世界与动作基础模型」视角，见[公司路线对照](../comparisons/robot-foundation-model-company-paths-2026.md)；不要与开源 VLA 混排座次 |
 | 评估 scaling 结论 | 引 [scaling 研究](./rhoda-scaling-web-video-pretraining.md) 时同时写明：单任务、单本体、每条件仅一次后训练、规模实验未做算力匹配 |
 | 复现 | **不可复现**：官网未列代码、权重、数据、参数量；可复现的同类开源线见 [mimic-video](../methods/mimic-video.md) 与 [逆动力学模型](../concepts/inverse-dynamics-model.md) |
+| Mobile DVA 评测读法 | 瓶分拣任务 95.1% vs 88.5% 是同框架静态操作预训练消融，不是同硬件 VLA 横向胜率；模拟工厂测试也不是生产线多工况测评 |
 | 开源状态 | **确认未开源**；**不适用源码运行时序图** |
 
 ## 局限与风险
 
-- 所有成功率、时长、数据量均为**公司自报**；DVA 博文没有成功率与基线对比，触觉博文没有成功率与试验次数。
+- 所有成功率、时长、数据量均为**公司自报**；**首篇 DVA 博文**没有成功率与基线对比，触觉博文没有成功率与试验次数；Mobile DVA（2026-11）新增内部成功率和初始化消融，不等于外部独立对比。
 - 成立时间官方未写；17 亿美元估值只见媒体标题。
 - 模型参数量、训练数据规模、客户名称、传感器价格与规格未公开。
 - 逆动力学模型按**本体类型**采集数据，并非完全通用（DVA 博文自述）。
@@ -102,6 +108,7 @@ flowchart LR
 - [DVA：因果视频模型作机器人策略](./rhoda-direct-video-action.md)
 - [网络视频预训练 scaling](./rhoda-scaling-web-video-pretraining.md)
 - [触觉 + DVA](./rhoda-dva-tactile-sensing.md)
+- [Mobile DVA：底盘与机械臂统一控制](./rhoda-direct-video-action.md#mobile-dva2026-11-03-统一移动与操作扩展)
 - [世界动作模型](../concepts/world-action-models.md)
 - [逆动力学模型](../concepts/inverse-dynamics-model.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
@@ -111,11 +118,13 @@ flowchart LR
 
 ## 参考来源
 
-- [Rhoda AI 官网研究页、新闻稿与团队页核查（2026-10-16）](../../sources/sites/rhoda-ai.md)
+- [Rhoda AI 官网研究页、新闻稿与团队页核查](../../sources/sites/rhoda-ai.md)
+- [DVA 与 Mobile DVA 官方技术原文核对](../../sources/sites/rhoda-dva-and-mobile-dva-2026.md)
 - 官网研究页：<https://www.rhoda.ai/research>
 - 新闻稿：<https://www.rhoda.ai/news/press-release>
 
 ## 推荐继续阅读
 
-- [Rhoda AI Research](https://www.rhoda.ai/research) — 官方研究博文列表
+- [Rhoda AI Research](https://www.rhoda.ai/research) — 官方研究博文列表（截至 2026-11-17 共 4 篇）
+- [Mobile DVA 官方原文](https://www.rhoda.ai/research/mobile-dva) — 新增移动底盘动作与任务评测
 - [Rhoda AI 新闻稿：Exits Stealth with $450 Million Series A](https://www.rhoda.ai/news/press-release) — 公司定位、融资与 FutureVision 叙事
