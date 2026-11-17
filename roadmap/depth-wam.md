@@ -186,6 +186,7 @@ flowchart LR
 - [Riemann-1.0](../wiki/entities/paper-riemann-1.md) — 黎曼动力闭源全因果 AR WAM：动作优先再条件化未来视觉；232K+ h 人/UMI/机三阶段课程；RoboCasa365 62.6%（+8.4 vs ABot-M0.5）、天机 Marvin 真机均 85.0% SR；无 arXiv / 未开源
 - [FACT](../wiki/entities/paper-fact.md) — 用失败演示的后果监督打破 Joint WAM 的 success bias（只在成功轨迹上训未来，测试时错误动作仍配上"成功未来"）；进度头可选做部署前打分，真机消融显示无失败共训时打分能力显著下降（79%），证明价值头确实吃后果监督；RoboTwin 管线 + HF checkpoint 已开源
 - [Motubrain](../wiki/entities/paper-motubrain.md) — UniDiffuser 式 Joint WAM，三流 MoT + H-bridge，50–100 条同本体轨迹即可适配；RoboTwin 2.0 95.8/96.1；官方仓仅 PDF，训练/推理待发布
+- [Motubrain 2.0 公开训练动态](../wiki/entities/motubrain-2-live.md) — 2026-10 至 11 月官方账号阶段公开记录：预训练/后训练/Agent/RSI；仍缺 2.0 可复现源码与完整直播数据，不继承第一代指标
 - [Flex-π](../wiki/entities/paper-flex-pi.md) — 6B 多流 Joint WAM，共享冻结 Wan VAE 编码 RGB+pointmap，并联合 DINOv3 特征；流 dropout + CMF 让单 checkpoint 覆盖 56 种流组合；v3 LIBERO-Plus 两模式均 88.6%，真机完成度与全成功率分开；代码、权重与数据已公开
 - [GlanceWAM](../wiki/entities/paper-glancewam.md) — 单视频 DiT 内异步稀疏前瞻，想象离关键路径、动作头潜空间 48 ms 解码；RoboCasa 72.2%、LIBERO 99.0%；代码与权重已开源
 - [OpenWAM](../wiki/entities/paper-openwam.md) — 模块化 Infra + Study 六项对照提炼预训练三原则；OpenWAM-α Wan2.2-5B + ActionDiT mutual mask；518.5M 帧一阶段 ego+robot 共训；LIBERO 99.3%、RoboTwin2.0-Full 93.60%、RoboDojo 真机 37.6 分/24.4% SR；GitHub + HF 46 检查点已开源
