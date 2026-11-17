@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, world-models, shenlan-survey, open-source, nvidia, stanford]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-17
 arxiv: "2601.16163"
 venue: —
 summary: "微调 Cosmos-Predict2 视频基础模型实现视觉运动控制与规划。"
@@ -14,6 +14,8 @@ related:
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
   - ./paper-navwam-goal-conditioned-visual-navigation-wam.md
+original:
+  - ../../sources/papers/shenlan_wm_survey_11_cosmos-policy.md
 sources:
   - ../../sources/papers/shenlan_wm_survey_11_cosmos-policy.md
   - ../../sources/papers/shenlan_world_models_15_reference_catalog.md
@@ -99,11 +101,43 @@ flowchart TD
 - 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
-## 与其他页面的关系
+## 关联页面
 
 - 路线 hub：[world-models-route-02-joint.md](../overview/world-models-route-02-joint.md)
 - 总地图：[world-models-15-open-source-technology-map.md](../overview/world-models-15-open-source-technology-map.md)
 - 原始 source：[shenlan_wm_survey_11_cosmos-policy.md](../../sources/papers/shenlan_wm_survey_11_cosmos-policy.md)
+
+## 原文核读：联合动作、未来与价值
+
+[arXiv:2601.16163](https://arxiv.org/html/2601.16163)利用 Cosmos-Predict2-2B，在视频扩散的潜在帧上联合编码 action、future image 与 value；在目标机器人示范上单阶段后训练，测试时可预测多组候选动作并按价值筛选。这与 DreamGen 生成视频再训练 IDM 是不同机制。
+
+```mermaid
+flowchart LR
+ O["观测与目标"] --> V["Cosmos-Predict2-2B"]
+ D["目标本体示范"] --> T["单阶段后训练"]
+ T --> V
+ V --> A["动作潜帧"]
+ V --> F["未来视频潜帧"]
+ V --> R["价值潜帧"]
+ A --> C["多候选动作块"]
+ F --> C
+ R --> S["价值引导选择"]
+ C --> S
+ S --> X["执行动作块"]
+```
+
+## 工程实践
+
+论文/官方项目页报告 LIBERO **98.5%**、RoboCasa **67.1%** 的不同基准平均成功率；RoboCasa 每任务使用 50 条训练示范。测试时规划的采样耗时与高频低层控制并非同一约束。项目页列出论文及实验结果，但尚未核实可复现的单独训练脚本与 checkpoint 配对入口。
+
+## 源码运行时序图
+
+**不适用（源码执行入口未核实）。** 论文表示公开代码，但[官方项目页](https://research.nvidia.com/labs/cosmos-lab/cosmos-policy/)目前未列可直接追溯的 GitHub 源码文件；上面的 Mermaid 仅对应论文算法流程，不冒充运行时源码分析。
+
+## 局限与风险
+
+- 目标本体示范、视频基座及多候选规划带来数据和计算成本，不能把离线 benchmark 直接推断为真机实时性能。
+- 缺少已确认的完整源码调用链时，不应宣传为一键复现。
 
 ## 参考来源
 

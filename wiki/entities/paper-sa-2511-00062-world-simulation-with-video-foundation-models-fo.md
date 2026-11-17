@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, nvidia, world-models, physical-ai, wfm, sim2real, curated-index, awesome-real2sim2real, sun254667-r2s2r]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-17
 arxiv: "2511.00062"
 venue: "arXiv 2025"
 code: https://github.com/nvidia-cosmos/cosmos-predict2.5
@@ -21,6 +21,8 @@ related:
   - ./cosmos-cookbook.md
   - ./paper-cosmos-transfer1.md
   - ./paper-sa-2512-01989-pai-bench-a-comprehensive-benchmark-for-physical-ai.md
+original:
+  - ../../sources/papers/cosmos_predict25_arxiv_2511_00062.md
 sources:
   - ../../sources/papers/cosmos_predict25_arxiv_2511_00062.md
   - ../../sources/repos/nvidia_cosmos_predict25.md
@@ -185,6 +187,10 @@ Transfer：PAIBench-Transfer（600 视频）上 Transfer2.5-2B 在控制遵循�
 - [Cosmos Transfer](./cosmos-transfer.md) — 1 / 2.5 工程族
 - [Transfer1 论文](./paper-cosmos-transfer1.md)
 - [Cosmos Cookbook](./cosmos-cookbook.md)
+
+## 原文复核补充（2026-11-17）
+
+[arXiv:2511.00062](https://arxiv.org/html/2511.00062)的 Predict2.5 是统一 T2W/I2W/V2W 的 flow-matching 生成骨干；Transfer2.5 的控制式变换属于另一条模型分支。论文 I2W 的 PAI-Bench Overall **0.810** 是特定 benchmark 综合口径；Transfer2.5 参数规模 3.5 倍缩小不代表推理吞吐也快 3.5 倍。公开 checkpoint、NVIDIA 模型许可、Cosmos 3 继任入口需要分别核对，未执行 GPU 复现。
 
 ## 参考来源
 

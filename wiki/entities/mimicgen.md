@@ -10,9 +10,9 @@ tags:
 - paper
 - awesome-world-action-models-rcl
 - rcl-wam-catalog
-status: draft
-updated: 2026-10-06
-summary: MimicGen：物体相对运动片段从少量人工示范中切出，再在随机初始布局中重组为四万八千余条轨迹和十二类任务数据。它提供了一条可测量的数据扩增基线，能直接比较新增轨迹是否真正提高模仿策略成功率。
+status: complete
+updated: 2026-11-17
+summary: MimicGen：物体相对运动片段从少量示范切出并在新布局重组；论文覆盖 18 任务、50K+ 轨迹，公开数据集覆盖 12 任务、48K+ 轨迹。它提供了一条可测量的数据扩增基线，能直接比较新增轨迹是否真正提高模仿策略成功率。
 related:
 - ./paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md
 - ../methods/imitation-learning.md
@@ -25,6 +25,8 @@ related:
 - ../methods/vla.md
 - ../tasks/manipulation.md
 - ../tasks/locomotion.md
+original:
+  - ../../sources/papers/mimicgen_arxiv_2310_17596.md
 sources:
 - ../../sources/repos/mimicgen.md
 - ../../sources/repos/humanoid-motion-intelligence.md
@@ -122,6 +124,50 @@ flowchart LR
 - [awesome-world-action-models-rcl](paper-rcl-wam-robot-learning-control-survey.md)
 - [vla](../methods/vla.md)
 - [locomotion](../tasks/locomotion.md)
+
+## 原文复核：规模、方法与边界
+
+[CoRL 2023 原文](https://arxiv.org/html/2310.17596)报告约 200 条源演示衍生 **18 任务、50K+ 轨迹**；[官网 README](https://github.com/NVlabs/mimicgen) 可下载数据为 **12 任务、48K+ 轨迹**，两者不是同一口径。MimicGen 是数据生成方法，不是直接上机的通用人形控制策略：先基于环境对象位姿切分演示的对象交互子任务，再变换末端轨迹、拼接仿真 waypoint 并筛选成功样本。需要对象位姿、明确的子任务边界和仿真控制器。代码按 NVIDIA Source Code License，数据集 CC-BY 4.0。
+
+## 基于原文的项目流程图
+
+```mermaid
+flowchart LR
+ A["少量人工演示"] --> B["对象交互子任务分割"]
+ B --> C["源物体位姿和末端轨迹"]
+ D["随机场景物体位姿"] --> E["对象相对轨迹变换"]
+ C --> E
+ E --> F["Waypoint 拼接与执行"]
+ F --> G{"任务成功?"}
+ G -->|是| H["生成演示数据"]
+ G -->|否| D
+```
+
+## 源码运行时序图
+
+按官方 [Codebase Overview](https://mimicgen.github.io/docs/modules/overview.html) 的运行入口和模块构成，非训练复现记录。
+
+```mermaid
+sequenceDiagram
+ autonumber
+ actor U as 用户
+ participant S as scripts/generate_dataset.py
+ participant T as TaskSpec
+ participant E as Environment Interface
+ participant D as DataGenerator
+ participant V as SelectionStrategy
+ participant W as Waypoint
+ U->>S: 演示与任务配置
+ S->>T: 解析子任务模板
+ S->>D: 启动数据生成
+ D->>E: 读取当前对象状态和终止信号
+ E-->>D: DatagenInfo
+ D->>V: 选择源演示的子任务片段
+ V-->>D: 源轨迹片段
+ D->>W: 变换轨迹并执行末端目标
+ W-->>D: 仿真执行结果
+ D-->>S: 轨迹与成功标志
+```
 
 ## 参考来源
 
