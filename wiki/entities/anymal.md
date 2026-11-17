@@ -39,7 +39,7 @@ summary: "ANYmal 是 ETH Zurich RSL 研发、ANYbotics 商业化的四足平台�
 | CANopen | CANopen | 2016 年 ANYdrive 关节命令与状态的总线协议 |
 | RL | Reinforcement Learning | ANYmal 后续复杂地形运动研究的重要范式 |
 | IP67 | Ingress Protection 67 | 产品防尘防水等级，不等同于防爆认证 |
-| ATEX / IECEx | ATEX / IECEx | 危险爆炸性环境的相关认证体系，须核对具体型号与分区 |
+| ATEX / IECEx | ATEX / IECEx | 危险爆炸性环境的相关认证体系；当前 ANYmal X 官方页标明 ATEX，IECEx 仍写作计划随首批生产提供 |
 
 ## 为什么重要
 
@@ -93,7 +93,7 @@ flowchart TD
 |---|---|---|
 | **ANYmal（IROS 2016 原型）** | 约 30 kg、ANYdrive SEA、基于模型的状态估计与 WBC；[原论文](../../sources/papers/anymal-iros-2016.md) | 不是后续 RL 算法或所有商业型号的参数表 |
 | **ANYmal D（工业巡检）** | ANYbotics [官方产品介绍](https://www.anybotics.com/robotics/anymal/)和 [2024 年规格资料](https://www.anybotics.com/ANYbotics_Specs_US.pdf)说明 IP67、LiDAR/多相机/热像、导航与自主巡检 | **IP67 不意味着防爆**；机载传感器与续航需按 D 的资料核查 |
-| **ANYmal X（防爆巡检）** | [ANYbotics 官方页](https://www.anybotics.com/robotics/anymal-x/)明确标明 ATEX/IECEx、Zone 1 IIB | 防爆能力**针对 X 型号及对应认证范围**，不能泛化为所有 ANYmal |
+| **ANYmal X（防爆巡检）** | [ANYbotics 官方页](https://www.anybotics.com/robotics/anymal-x/)标明 **ATEX Zone 1/2、IIB T4**；其页面写明 IECEx 将在首批生产时提供，并区分 **IP65 机身 / IP67 载荷** | 防爆能力**针对 X 型号及对应认证范围**，不能泛化为所有 ANYmal |
 | **后续学习式运动论文** | ETH [2020 年复杂地形运动研究](https://rsl.ethz.ch/the-lab/news/2020/10/learning-locomotion-over-challenging-terrain.html)展示纯本体感知深度 RL；另见 [PACE](./paper-pace-sim2real-legged-robots.md) | RL 成果来自**各篇独立工作**，不是 2016 年平台论文提出的控制算法 |
 
 ## 工程实践
