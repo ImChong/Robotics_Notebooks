@@ -5512,6 +5512,7 @@
             if (data.nodes[i]) data.nodes[i].summary = summaries[i] || '';
           }
         }
+        if (typeof window !== 'undefined' && window.RNGraphTooltip && window.RNGraphTooltip.setGraphData) window.RNGraphTooltip.setGraphData(data);
         _linkGraphData = data;
         _linkGraphPromise = null;
         return _linkGraphData;
@@ -6606,6 +6607,11 @@
     link.dataset.wikiId = pageId;
     if (page.path) link.dataset.wikiPath = page.path;
     state.hoverTip.show(ev, null, buildDetailInlineLinkTooltipHtml(pageId, page));
+    // 图谱可能尚未由页面其它组件加载；完成后只刷新仍在悬停的链接。
+    ensureLinkGraphData().then(function () {
+      if (state.activeLink !== link) return;
+      state.hoverTip.show(state.lastMouseEvent || ev, null, buildDetailInlineLinkTooltipHtml(pageId, page));
+    }).catch(function () {});
     detailBridgeHighlightMini(page.path || '');
   }
 

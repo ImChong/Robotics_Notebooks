@@ -37,3 +37,57 @@ test('no community label → no community tag', () => {
   const html = api().buildNodeTooltipHtml({ type: 'concept', title: 'T', communityColor: '#4e79a7' });
   assert.ok(!html.includes('tt-community'));
 });
+
+
+test('page-path metadata resolves communities and all matching routes without a mini graph', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(tooltipSource, context);
+  vm.runInContext(readFileSync(resolve(__dirname, '../docs/depth-filters.js'), 'utf8'), context);
+  const api = context.window.RNGraphTooltip;
+  const node = { id: 'wiki/entities/paper-gr00t.md', detail_id: 'entity-gr00t',
+    community: 'community-vla', community_secondary: 'community-imitation-learning' };
+  api.setGraphData({ nodes: [node], communities: [
+    { id: node.community, label: '视觉语言动作（VLA）社区' },
+    { id: node.community_secondary, label: '模仿学习（IL）社区' }
+  ] });
+  const html = api.buildNodeTooltipHtml({ health: { path: node.id }, title: 'GR00T' });
+  assert.match(html, /所属社区/);
+  assert.match(html, /视觉语言动作/);
+  assert.match(html, /模仿学习/);
+  const routes = context.window.RNDepthFilters.depthsForNode(node);
+  assert.ok(routes.length > 0);
+  for (const key of routes) assert.ok(html.includes('graph.html?depth=' + encodeURIComponent(key)));
+  assert.equal(api.resolveMetadataNode({ id: 'entity-gr00t' }), node);
+  assert.ok(!api.buildNodeTooltipHtml({ health: { path: 'unknown.md' } }).includes('tt-routes'));
+});
+
+
+test('tooltip community and route labels show Chinese only for either parenthesis style', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(tooltipSource, context);
+  const api = context.window.RNGraphTooltip;
+  for (const [open, close] of [['（', '）'], ['(', ')']]) {
+    const label = '机器人基础模型' + open + 'Robot Foundation Models' + close;
+    context.window.RNDepthFilters = {
+      depthsForNode: () => ['bfm', 'vla'],
+      DEPTH_META: {
+        bfm: { emoji: '🗺️', label },
+        vla: { emoji: '🗺️', label: '视觉动作' + open + 'VLA' + close }
+      }
+    };
+    const fallback = api.buildNodeTooltipHtml({ communityLabel: label + ' 社区' });
+    api.setGraphData({
+      nodes: [{ id: 'wiki/example.md', community: 'example' }],
+      communities: [{ id: 'example', label: label + ' 社区' }]
+    });
+    const indexed = api.buildNodeTooltipHtml({ health: { path: 'wiki/example.md' } });
+    for (const html of [fallback, indexed]) {
+      assert.match(html, /<span>机器人基础模型<\/span>/);
+      assert.match(html, /<span>视觉动作<\/span>/);
+      assert.ok(!html.includes('Robot Foundation Models'));
+      assert.ok(!html.includes('VLA'));
+      assert.ok(!html.includes('tt-label-en'));
+      assert.match(html, /graph.html\?depth=bfm/);
+    }
+  }
+});
