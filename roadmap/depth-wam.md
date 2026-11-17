@@ -140,6 +140,7 @@ flowchart LR
 
 ### 推荐读什么
 - [DeFI（解耦动力学 VLA）](../wiki/methods/defi-decoupled-dynamics-vla.md)
+- [Rhoda DVA / Mobile DVA](../wiki/entities/rhoda-direct-video-action.md) — 因果未来视频经 IDM 转动作的闭源 Cascaded 产业样本；Mobile 扩展为机械臂 + 底盘统一闭环，读实验时区分公司自报与开源复现。
 - [World Action Models](../wiki/concepts/world-action-models.md) 中 Cascaded 小节
 - [Being-M0.7（人形潜空间 World–Action Model）](../wiki/entities/paper-being-m07-humanoid-latent-wam.md) — Cascaded WAM 人形实例：人中心 video-motion 先验预训练 + future-conditioned action expert，三阶段训练与门控视觉预测上下文；新版 SIMPLE 合计最高，G1 真机与 GR00T-N1.6 并列
 - [TrAct（视觉轨迹桥接控制与预测）](../wiki/entities/paper-tract.md) — VLAT 在 π₀.₅ 上联合采样动作–轨迹对，TWM 轨迹条件世界模型滚未来视频，VLAC 选最高分 rollout 执行；2D 轨迹作具身无关中间接口，LIBERO-INTEGRAL 27%→55%、真机 49%→76%；代码已公开，检查点及部分数据仍缺
