@@ -2,7 +2,7 @@
 type: entity
 tags: [vla, open-source, moe, flow-matching, multi-embodiment, humanoid, qwen, manipulation, loco-manipulation, depth-distillation, robbyant]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-17
 arxiv: "2607.06403"
 code: https://github.com/robbyant/lingbot-vla-v2
 related:
@@ -20,6 +20,7 @@ related:
   - ../methods/lingbot-map.md
   - ../entities/lerobot.md
   - ./letools.md
+  - ./robbyant-embodied-ai-challenge-2026.md
 sources:
   - ../../sources/papers/lingbot_vla_v2_tech_report.md
   - ../../sources/repos/lingbot-vla-v2.md
@@ -175,6 +176,8 @@ sequenceDiagram
 
 ## 工程实践：训练与部署核验
 
+- **2026 蚂蚁灵波具身大模型挑战赛协议：** [赛事一手规则](./robbyant-embodied-ai-challenge-2026.md)规定在 RoboTwin 2.0 Aloha-AgileX 50 任务上**只用每任务 50 条 clean 示范训练**，但在 clean 与 randomized 两种 setting 下**各测试每任务 100 次**。**不要**把官方 README 的通用 clean + randomized 混训示例当作该赛事的合规训练配置。
+
 - 依据官方模型版本和 55 维动作槽位表核对本体掩码，机器人端未覆盖维度不可当作可控指令。
 - 核对已筛选 50,000 小时机器人数据 + 10,000 小时第一视角人视频，与原始收集量是不同口径；微调时记录目标任务示范和数据权重。
 - 使用官方 RoboTwin 后训练/部署脚本前先在仿真中校验相机、动作单位、推理时延及末端控制接口。
@@ -205,6 +208,8 @@ sequenceDiagram
 
 ## 关联页面
 
+- [首届蚂蚁灵波具身大模型挑战赛（2026）](./robbyant-embodied-ai-challenge-2026.md) — 基于本模型的 50 任务后训练协议与线下真机决赛
+
 - [Robbyant（蚂蚁灵波）](./robbyant.md) — 发布方公司页与 LingBot 全栈
 - [VLA（Vision-Language-Action）](../methods/vla.md) — 方法总览与 2026 开源 VLA 谱系
 - [Manipulation](../tasks/manipulation.md) — GM-100 / RoboTwin 双臂 generalist 语境
@@ -217,6 +222,8 @@ sequenceDiagram
 - [LingBot-Map](../methods/lingbot-map.md) — 同团队 **流式 3D 几何** 基础模型（问题域不同）
 
 ## 参考来源
+
+- [蚂蚁灵波挑战赛天池赛题一手归档](../../sources/sites/robbyant-embodied-ai-challenge-2026.md) — 赛事专属 clean 数据准入与双设置评测约束
 
 - [LingBot-VLA 2.0 一手论文通读归档](../../sources/papers/lingbot_vla_v2_full_reading_2026_11_14.md)
 
