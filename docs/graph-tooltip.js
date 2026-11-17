@@ -411,7 +411,7 @@
   // 长双语标签在浮窗中分成中、英文两行，避免英文把中文挤成碎片。
   function tooltipLabelHtml(label, shorten) {
     label = String(label || '').replace(/\s*社区\s*$/, '').trim();
-    var bilingual = /^(.*?)\s*[（(]([^）)]+)[）)]$/.exec(label);
+    var bilingual = /^(.*?)\s*([（(][^）)]+[）)])$/.exec(label);
     if (bilingual && label.length > 28) {
       return '<span class="tt-label-bilingual"><span>' + escapeHtml(bilingual[1].trim()) + '</span>' +
         '<span class="tt-label-en" lang="en">' + escapeHtml(bilingual[2].trim()) + '</span></span>';

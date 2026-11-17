@@ -75,7 +75,7 @@ test('long bilingual tooltip badges place Chinese above English and keep short l
   const html = context.window.RNGraphTooltip.buildNodeTooltipHtml({
     communityLabel: '机器人基础模型（Robot Foundation Models）社区'
   });
-  assert.match(html, /tt-label-bilingual"><span>机器人基础模型<\/span><span class="tt-label-en" lang="en">Robot Foundation Models/);
-  assert.match(html, /tt-label-bilingual"><span>扩散与流匹配策略<\/span><span class="tt-label-en" lang="en">Diffusion &amp; Flow Matching/);
+  assert.match(html, /tt-label-bilingual"><span>机器人基础模型<\/span><span class="tt-label-en" lang="en">（Robot Foundation Models）/);
+  assert.match(html, /tt-label-bilingual"><span>扩散与流匹配策略<\/span><span class="tt-label-en" lang="en">（Diffusion &amp; Flow Matching）/);
   assert.match(html, /<span>视觉动作（VLA）<\/span>/);
 });
