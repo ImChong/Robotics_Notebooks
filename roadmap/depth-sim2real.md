@@ -95,6 +95,7 @@ flowchart LR
 - [SAGE（执行器 Sim2Real 间隙估计）](../wiki/entities/sage-sim2real-actuator-gap-estimator.md)
 - [人形整机闭环惯量标定](../wiki/concepts/humanoid-closed-loop-inertia-calibration.md) 与 [PRIME](../wiki/entities/prime-system-id.md)（RSS 2026）— 单关节台架量的是空关节，覆盖不了整机分布式质量与终身漂移：运动学 / 惯量 / IMU 零偏 / 足底力四张单子要做成可随负载更新、可绑机身序列号的闭环；PRIME 给出可跑实现（可微 Anitescu 接触 + Crocoddyl，MAP 联合估轨迹/接触力/物理一致惯量，G1 与 Go2 已验证，BSD-3-Clause 已开源）
 - [人形机器人并联关节解算](../wiki/concepts/humanoid-parallel-joint-kinematics.md)
+- [Closing the Loop：G1 推杆踝闭链 MuJoCo 建模](../wiki/entities/g1-pushrod-ankle-closed-loop-modeling.md) — 真机联合限位、空间腱/实体杆闭链、姿态相关传动与 PD/积分器验证（原文模型 ZIP 待复现）
 
 ### 学完输出什么
 - 一份 URDF/执行器验收 checklist 与本平台的执行器 gap 画像
