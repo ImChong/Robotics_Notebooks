@@ -2,13 +2,15 @@
 type: entity
 tags: [software, independent-maintainer, visualization, debugging, telemetry, embedded, serial, can, mqtt]
 status: complete
-updated: 2026-10-03
+updated: 2026-11-16
 related:
   - ./plotjuggler.md
   - ./foxglove-studio.md
   - ../concepts/uart-serial-communication.md
   - ../concepts/can-bus-protocol.md
   - ../queries/robot-policy-debug-playbook.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/serial-studio.md
   - ../../sources/sites/serial-studio.md
@@ -16,6 +18,8 @@ summary: "Serial Studio 把硬件遥测转成实时仪表盘；适合串口电�
 ---
 
 # Serial Studio
+
+## 一句话定义
 
 **Serial Studio** 是跨平台硬件遥测仪表盘：将设备数据解析成字段，显示曲线、仪表与传感器状态，帮助机器人开发者观察电机和通信链路。
 
@@ -95,7 +99,7 @@ flowchart TD
 | SQLite 会话、MDF4、报告 | Pro |
 | 开源状态 | **部分开源**；Pro 源码可见但非 GPL，官方二进制按专有许可发布 |
 
-源码构建要求 Qt 6.9+、C++20 与 CMake 3.20+，默认构建为 GPL 核心。安装包和构建步骤见上游 README；功能应对照实际安装版本，master 的描述可能先于稳定版。
+源码构建要求 Qt 6.11.2（2026-11-16 README 的 CI 基线）、C++20 与 CMake 3.20+，默认构建为 GPL 核心。安装包和构建步骤见上游 README；功能应对照实际安装版本，master 的描述可能先于稳定版。
 
 ### 与已有工具的分工
 
@@ -124,6 +128,8 @@ flowchart TD
 - [机器人策略调试 Playbook](../queries/robot-policy-debug-playbook.md) — 部署排查路径。
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [Serial Studio 仓库归档](../../sources/repos/serial-studio.md) — README、构建要求与许可核查。
 - [Serial Studio 官方站点核查](../../sources/sites/serial-studio.md) — 项目入口、GPL / Pro 能力边界。

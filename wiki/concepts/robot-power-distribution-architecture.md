@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, electrical-design, power-distribution, bms, safety-circuit, emc, wiring]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-16
 related:
   - humanoid-wire-harness-types-protection.md
   - ./humanoid-mechanical-layout-design.md
@@ -14,6 +14,8 @@ related:
   - ../queries/humanoid-battery-thermal-management.md
   - ../entities/kicad.md
   - ../../roadmap/depth-humanoid-hardware-design.md
+original:
+  - ../../sources/papers/fail_passive_gap_reading_arxiv_2608_02809_reading_hubsys.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/papers/fail_passive_gap_arxiv_2608_02809.md
@@ -118,6 +120,8 @@ flowchart LR
 - [磁场定向控制（FOC）](./field-oriented-control.md) — 逆变器既是主要负载也是主要噪声源
 
 ## 参考来源
+
+- [一手原文阅读记录](../../sources/papers/fail_passive_gap_reading_arxiv_2608_02809_reading_hubsys.md) — 复用已有通读归档；仅支持总线能力 / 失电安全边界，系统分域和预算表仍是工程归纳。
 
 - [Humanoid Hardware 101 微信长文编译](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — 电池、BMS、PCB 与计算单元的部件级视角
 - [Hardware 101 · 能源与计算电子](../overview/humanoid-hardware-101-power-compute-electronics.md) 及其 sources

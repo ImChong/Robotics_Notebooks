@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, joint-module, emc, electromagnetic-isolation, shielding, grounding, magnetic-encoder, wechat]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-16
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../overview/humanoid-actuator-102-technology-map.md
@@ -10,6 +10,8 @@ related:
   - ./joint-torque-sensor-selection.md
   - ./robot-onboard-communication-architecture.md
   - ./robot-power-distribution-architecture.md
+original:
+  - ../../sources/sites/igus-cables-adi-emc-pcb-review.md
 sources:
   - ../../sources/blogs/wechat_zane_hub_joint_module_electromagnetic_isolation_2026-10-14.md
 summary: "依据 Zane Hub 公众号长文，梳理机器人关节模组内强电 / 弱电共处时的电磁兼容分层设计：干扰源与失效模式、传导隔离、辐射屏蔽、磁屏蔽、滤波、标准与常见误区。"
@@ -17,7 +19,7 @@ summary: "依据 Zane Hub 公众号长文，梳理机器人关节模组内强电
 
 # 关节模组电磁隔离
 
-> **本页定位**：[Zane Hub《机器人关节模组电磁隔离有哪些方式？》](https://mp.weixin.qq.com/s/9_KTmC4yzqRrBEo95Sf4Uw)（2026-10-14）的要点整理。原文是作者个人观点的工程随笔，**数值为作者表述，未核实**；本页不添加原文以外的事实。
+> **本页定位**：[Zane Hub《机器人关节模组电磁隔离有哪些方式？》](https://mp.weixin.qq.com/s/9_KTmC4yzqRrBEo95Sf4Uw)（2026-10-14）的要点整理。原文是作者个人观点的工程随笔，**数值为作者表述，未核实**；本次另以 TI/ADI 一手资料核对板级原理；历史文章中的数值仍不作为已认证规格。
 
 ## 一句话定义
 
@@ -128,7 +130,7 @@ summary: "依据 Zane Hub 公众号长文，梳理机器人关节模组内强电
 
 1. 把隔离、屏蔽、磁屏蔽混为一谈；
 2. 隔离后两侧地又连通（「白隔离」：器件没坏，效果为零）；
-3. 屏蔽层两端接地形成地环，反引入低频干扰；
+3. 未区分频率与回路条件就决定屏蔽接地；两端直连可能形成低频地环，但高频屏蔽又常需两端低阻抗端接；
 4. 只屏蔽电机，忽视编码器近场（电机是源，编码器是靶）；
 5. 忽视装配公差造成的缝隙——超差常出在壳体接缝而非电路。
 
@@ -146,7 +148,7 @@ summary: "依据 Zane Hub 公众号长文，梳理机器人关节模组内强电
 | 磁—屏蔽罩 | 坡莫合金 | 磁导率、厚度层数、开口 |
 | 磁—冗余 | 电机端 + 关节端双编码器 | 分辨率、交叉校验 |
 | 滤波 | 共模电感、X/Y 电容、铁氧体、馈通 | 频段、漏电流、饱和 |
-| 接地 | 星形点、单点接地 | 搭接电阻、地环路 |
+| 接地 | 按频段、电缆电长度与安全要求选择端接 | 搭接阻抗、回流路径、地环路 |
 
 ## 设计清单（按原文结语归纳）
 
@@ -164,4 +166,31 @@ summary: "依据 Zane Hub 公众号长文，梳理机器人关节模组内强电
 
 ## 参考来源
 
+- [igus 运动电缆与 ADI/TI 电磁兼容资料复核](../../sources/sites/igus-cables-adi-emc-pcb-review.md) — 本次实际读完的一手资料与核对边界。
+
 - [微信公众号 Zane Hub《机器人关节模组电磁隔离有哪些方式？》来源归档](../../sources/blogs/wechat_zane_hub_joint_module_electromagnetic_isolation_2026-10-14.md)（原文：https://mp.weixin.qq.com/s/9_KTmC4yzqRrBEo95Sf4Uw ）
+
+## 核心原理
+
+以干扰源、耦合路径和敏感节点建立诊断模型。先区分传导、辐射与磁场耦合，再选择隔离、滤波与屏蔽；器件耐压、共模瞬变抗扰度和编码器误差需分别验证。
+
+## 官方资料核对：隔离屏障、供电与屏蔽
+
+[TI ISO7741 技术正文与 ADI MT-095 全文](../../sources/sites/igus-cables-adi-emc-pcb-review.md)支持以下板级决策：
+
+1. **数字信号隔离不自动隔离电源**：ISO7741 不集成隔离供电，隔离侧仍需合适的供电路径；其三正向一反向通道、F/非 F 后缀的默认输出与封装耐压边界必须逐项匹配。
+2. **传导、近场耦合和远场辐射分开处理**：先定位干扰源与回流/耦合路径，再选信号隔离、去耦、滤波、回路面积优化或外壳屏蔽。
+3. **屏蔽材料按频段选择**：导电屏蔽主要用于电场及高频磁场，低频磁场往往需要高磁导率材料；开口、接缝与穿壳连接会削弱理想材料指标。
+4. **屏蔽接地没有统一单点答案**：高频常需两端低阻抗或 360° 搭接；低频地环可按适用电路采用混合接地。器件认证或屏蔽材料参数不能直接等同关节整机 EMC 合格。
+
+## 工程实践
+
+在最大开关电流与实际线束配置下，同步记录编码器角度、电流采样及总线错误；逐次改变回流路径、滤波或屏蔽端接，保留修改前后的对照波形。
+
+## 局限与风险
+
+本页归纳作者工程经验，不能据其中通用数值证明某个关节满足 EMC 标准。磁性材料、开孔、连接器和屏蔽端接都会影响整机结果，须按产品与工况测量。
+
+## 推荐继续阅读
+
+先对照[关节编码器选型](joint-encoder-selection.md)确定敏感对象，再结合[整机通信架构](robot-onboard-communication-architecture.md)安排总线与动力回路。

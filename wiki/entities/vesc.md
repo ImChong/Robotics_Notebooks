@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, motor-control, foc, bldc, open-source, vesc]
 status: complete
-updated: 2026-07-25
+updated: 2026-11-16
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./opentorque-actuator.md
@@ -12,6 +12,8 @@ related:
   - ../concepts/field-oriented-control.md
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../../roadmap/depth-torque-motor-design.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/vesc_bldc.md
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
@@ -50,7 +52,7 @@ summary: "VESC（vedderb/bldc + bldc-hardware）：开源大电流 BLDC/FOC 固�
 | 文档/社区 | [vesc-project.com](https://vesc-project.com/)；入门帖见 Vedder 博客教程 |
 | 星标（2026-07） | 固件 ~3.3k · 硬件 ~1.3k |
 
-## 核心结构/机制
+## 核心机制
 
 ```mermaid
 flowchart LR
@@ -90,6 +92,8 @@ flowchart LR
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [sources/repos/vesc_bldc.md](../../sources/repos/vesc_bldc.md)
 - [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)

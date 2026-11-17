@@ -2,7 +2,7 @@
 type: concept
 tags: [micromouse, maze, embedded, education, competition, path-planning, stm32, differential-drive, ukmars]
 status: complete
-updated: 2026-07-27
+updated: 2026-11-16
 related:
   - ../entities/ukmarsbot.md
   - ../entities/wolfiemouse.md
@@ -10,6 +10,8 @@ related:
   - ../methods/pid-control.md
   - ../entities/kicad.md
   - ../entities/mushr.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/sites/micromouseonline-com.md
   - ../../sources/sites/ukmars-org.md
@@ -119,6 +121,8 @@ flowchart LR
 - [MuSHR](../entities/mushr.md) — 另一类低成本教育移动平台（ROS 竞速）
 
 ## 参考来源
+
+- [官方实现 README 通读记录](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — SimpleFOC 控制示例 / UKMARSBOT 与 WolfieMouse 架构；未将推荐教材视为已读。
 
 - [sources/sites/micromouseonline-com.md](../../sources/sites/micromouseonline-com.md)
 - [sources/sites/ukmars-org.md](../../sources/sites/ukmars-org.md)

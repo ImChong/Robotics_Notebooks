@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, motor-control, foc, can, open-source, motionlayer]
 status: complete
-updated: 2026-07-25
+updated: 2026-11-16
 related:
   - ./moteus.md
   - ./vesc.md
@@ -11,6 +11,8 @@ related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../concepts/field-oriented-control.md
   - ../../roadmap/depth-torque-motor-design.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/tinymovr.md
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
@@ -49,7 +51,7 @@ summary: "Tinymovr：紧凑无刷驱动（集成编码器 + CAN）；v3.0.0 及�
 | 文档 | **已发布**：Read the Docs + 仓内 `docs/` |
 | Releases | **已发布**：固件、Python wheel、Studio Web 等附件 |
 
-## 核心结构/机制
+## 核心机制
 
 ```mermaid
 flowchart TB
@@ -92,6 +94,8 @@ flowchart TB
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [sources/repos/tinymovr.md](../../sources/repos/tinymovr.md)
 - [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)

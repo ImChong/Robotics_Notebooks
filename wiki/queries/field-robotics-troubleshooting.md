@@ -2,13 +2,15 @@
 type: query
 tags: [humanoid, quadruped, deployment, troubleshooting, field-robotics]
 status: complete
-updated: 2026-07-08
+updated: 2026-11-16
 related:
   - ../overview/humanoid-motion-control-know-how.md
   - ./robot-policy-debug-playbook.md
   - ./real-time-control-middleware-guide.md
   - ../concepts/terrain-adaptation.md
   - ../entities/aeris-10-plfm-radar.md
+original:
+  - ../../sources/papers/humanoid_locomotion_reading_arxiv_2303_03381.md
 sources:
   - ../overview/humanoid-motion-control-know-how.md
   - ../../sources/papers/humanoid_motion_control_know_how.md
@@ -88,6 +90,8 @@ summary: "野外机器人排障指南：总结了机器人在非结构化地形�
 - [地形自适应 (Terrain Adaptation)](../concepts/terrain-adaptation.md)
 
 ## 参考来源
+
+- [已有一手原文通读归档](../../sources/papers/humanoid_locomotion_reading_arxiv_2303_03381.md) — 复用已归档的阅读记录，具体核对范围见该归档。
 - [humanoid-motion-control-know-how.md](../overview/humanoid-motion-control-know-how.md)
 - [sources/papers/humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
 - ETH Zurich RSL, *Learning to Walk in Minutes* 户外测试部分。

@@ -4,19 +4,23 @@ project_id: konnect-ai-kicad-mcp
 project: https://github.com/mixelpixx/Konnect
 code: https://github.com/mixelpixx/Konnect
 tags: [software, eda, pcb, kicad, mcp, generative-ai, hardware, robotics]
-status: draft
+status: complete
 date: 2026-10-24
-updated: 2026-10-24
+updated: 2026-11-16
 related:
   - ./kicad.md
   - ./heypcb.md
   - ./tscircuit.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/konnect.md
 summary: "Konnect 是 KiCad 10 的原生 Rust/MCP 插件，通过 KiCad IPC API 支持 AI 助手编辑原理图与 PCB，并辅助检查和制造导出；适合机器人板级设计原型，输出仍需硬件工程师复核。"
 ---
 
 # Konnect（KiCad 的 AI/MCP 设计插件）
+
+## 一句话定义
 
 **Konnect** 是面向 KiCad 10 的开源原生插件及 MCP 服务端：AI 助手可通过 MCP 调用原理图编辑、PCB 布局与布线、设计检查及制造导出能力。它位于机器人硬件设计流程的 EDA 环节，与 [KiCad](./kicad.md) 配合完成驱动、电源、传感器和计算板卡的设计迭代。
 
@@ -51,10 +55,25 @@ summary: "Konnect 是 KiCad 10 的原生 Rust/MCP 插件，通过 KiCad IPC API 
 
 ## 局限与风险
 
+- **维护边界（2026-11-16）：** 官方 README 已宣布旧仓归档，后续开发转至闭源商业产品 Konnect-EDA；本页描述旧仓 AGPL 版本，不承诺新版仍开源。
+
 - **开源状态：已开源，许可证为 AGPL-3.0。** 仓库 README 将项目标为 Beta；企业使用或网络服务分发需先评估 AGPL 义务，项目方另提供商业许可。
 - 当前定位是 KiCad 10 插件；安装与功能兼容性应按目标操作系统、KiCad 版本和发布包逐项确认。
 - ERC/DRC 只能检查规则所覆盖的问题，不能证明板卡设计安全、稳定或可量产；AI 生成和修改的内容需独立审查与实测。
 - README 所述功能和性能是项目方资料，尚未在本知识库中独立进行硬件验证。
+
+## 流程总览
+
+以下是官方 README 描述的功能与数据流；具体源码调用链以本页注明版本的时序图为准。
+
+```mermaid
+flowchart LR
+  N0["MCP 客户端请求"]
+  N1["Konnect 工具路由"]
+  N2["原理图文件编辑或 PCB IPC"]
+  N3["kicad-cli 检查与导出"]
+  N0 --> N1 --> N2 --> N3
+```
 
 ## 源码运行时序图
 
@@ -105,6 +124,8 @@ sequenceDiagram
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md) — 本页处于驱动链 **①层 EDA 电路设计**（AI/MCP 辅助编辑 KiCad 工程，输出仍需 ERC/DRC 与实测复核）
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [Konnect 仓库归档](../../sources/repos/konnect.md)
 - [Konnect 官方 GitHub 仓库](https://github.com/mixelpixx/Konnect)

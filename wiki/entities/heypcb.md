@@ -6,18 +6,22 @@ project: https://heypcb.ai/
 tags: [software, eda, pcb, generative-ai, hardware, robotics]
 status: complete
 date: 2026-10-23
-updated: 2026-10-23
+updated: 2026-11-16
 related:
   - ../overview/hub-actuator-drive-chain.md
   - ./altium-designer.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
   - ./cad-skills.md
+original:
+  - ../../sources/sites/heypcb.md
 sources:
   - ../../sources/sites/heypcb.md
 summary: "HeyPCB 是 AI 辅助 PCB 设计服务，可从自然语言需求生成原理图、PCB 布局与可编辑 KiCad / 制造文件；适合纳入机器人板级硬件早期设计流程，关键电气与制造结论仍需工程师复核。"
 ---
 
 # HeyPCB（AI PCB 设计）
+
+## 一句话定义
 
 **HeyPCB** 是一项 AI 辅助 EDA 服务：根据用户描述生成原理图、PCB 布局和制造文件，并交付可编辑的 KiCad 设计文件；它还提供开放硬件板目录 Circuit World。
 
@@ -76,3 +80,7 @@ Circuit World 是另一项相关能力：它将开放硬件板按所用器件、
 
 - [KiCad 官方文档](https://docs.kicad.org/) — 查看和复核生成的 KiCad 工程
 - [HeyPCB Circuit World](https://heypcb.ai/) — 浏览开放硬件板目录
+
+## 源码运行时序图
+
+不适用：本次读完的官方首页未提供服务端可运行源码；不能从产品宣传推定内部实现。

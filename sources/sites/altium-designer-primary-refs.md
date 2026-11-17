@@ -133,3 +133,10 @@
 - [x] 官方文档入口与 QuickStart 索引
 - [x] 原理图 / PCB / ECO / 制造 / ECAD-MCAD 核心摘录
 - [x] wiki 实体页升格
+
+## 官方页面复核（2026-11-16）
+
+- **核对范围：** 2026-11-16 取得的官方 Tutorial - A Complete Design Walkthrough 首页完整正文（页面更新 2026-10-15）；不包含导航链接的各分章、闭源源码或软件实操。
+- **通读：** 已完成
+
+本版教程要求连接含样例数据的 Workspace；功能取决于 Develop/Agile/Designer 方案。教程主页通读不等于九个后续章节均已读完。

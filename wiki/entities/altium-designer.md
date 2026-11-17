@@ -3,19 +3,23 @@ type: entity
 tags: [software, eda, pcb, hardware, electronics, manufacturing, cad, altium]
 status: complete
 date: 2026-07-18
-updated: 2026-10-23
+updated: 2026-11-16
 related:
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
   - ./simplefoc.md
   - ./cad-skills.md
   - ../../roadmap/depth-torque-motor-design.md
   - ../queries/actuator-drive-chain-selection-loop.md
+original:
+  - ../../sources/sites/altium-designer-primary-refs.md
 sources:
   - ../../sources/sites/altium-designer-primary-refs.md
 summary: "Altium Designer 是商业统一 EDA 环境：原理图捕获、规则驱动 PCB layout、制造 OutJob/发布与 ECAD-MCAD CoDesigner 协同；机器人自研驱动板/传感器板量产向流程的常用一手文档入口。"
 ---
 
 # Altium Designer
+
+## 一句话定义
 
 **Altium Designer** 是 Altium 旗下的 **商业 PCB EDA 套件**，在单一 **Unified Design Environment** 内完成原理图 → PCB → 仿真/BOM → 制造数据输出，并可通过 **Altium 365 Workspace** 与 **MCAD CoDesigner** 做版本化协作与机壳协同。2026 年官方技术文档已 **不再按 AD 版本分册**，与 Altium Designer / Develop / Agile 共用 [在线文档集](https://www.altium.com/documentation/altium-designer)。
 
@@ -38,7 +42,7 @@ summary: "Altium Designer 是商业统一 EDA 环境：原理图捕获、规则�
 - **与开源参考设计互补：** [SimpleFOC](./simplefoc.md) 等生态提供 **EasyEDA/KiCad 可读** 的低功率参考板；Altium 文档更侧重 **Constraint Manager / Design Rules、OutJob、Project Releaser、CoDesigner** 等量产与跨域协同流程。
 - **ECAD–MCAD 闭环：** 人形/移动机器人 PCB 常受 **异形机壳与关节体积** 约束；CoDesigner 支持在 SOLIDWORKS / Fusion 等环境中 **双向推送** 板形与 3D 间隙，比一次性 STEP 交换更易保持 revision 一致（机械侧另见 [CAD Skills](./cad-skills.md)）。
 
-## 核心结构 / 机制
+## 核心机制
 
 ### 设计数据流（官方 QuickStart 抽象）
 
@@ -95,3 +99,11 @@ flowchart LR
 
 - [sources/sites/altium-designer-primary-refs.md](../../sources/sites/altium-designer-primary-refs.md)
 - [Altium Designer Documentation](https://www.altium.com/documentation/altium-designer)
+
+## 工程实践
+
+将电源、采样和通信网络分组并制定独立规则；ECO 同步后复核引脚与封装，运行 DRC，再用 OutJob 输出制造包。冻结版本时同时归档库版本、BOM、规则与评审记录。
+
+## 源码运行时序图
+
+不适用：Altium Designer 是闭源商业软件，官方未提供可据以分析运行时调用链的源码。设计数据流见核心机制图。

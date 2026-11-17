@@ -2,7 +2,7 @@
 type: concept
 tags: [hardware, actuator, encoder, joint-module, humanoid, quadruped]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-16
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ./joint-torque-sensor-selection.md
@@ -10,6 +10,8 @@ related:
   - ../concepts/whole-body-control.md
   - ../methods/reinforcement-learning.md
   - ../entities/paper-lunadrive.md
+original:
+  - ../../sources/sites/encoder-official-pcb-review.md
 sources:
   - ../../sources/blogs/wechat_zane_zhang_joint_encoder_comparison_2026-09-23.md
 summary: "关节模组编码器选型：光电/磁/电感测不同物理量；电机侧服务 FOC，输出侧看见背隙；分辨率≠精度，双编码器补偿传动链。"
@@ -41,12 +43,12 @@ summary: "关节模组编码器选型：光电/磁/电感测不同物理量；�
 
 ## 三类原理对比
 
-| 类型 | 物理量 | 精度天花板 | 环境 | 典型安装 |
+| 类型 | 物理量 | 精度与规格读法 | 环境 | 典型安装 |
 |------|--------|------------|------|----------|
-| **光电** | 码盘光路 | 最高（角秒级系统） | 怕尘油水，要密封 | 输出侧绝对式、计量级 |
-| **磁（芯片）** | 磁场方向 | 芯片 ±0.8°–1° 级 | 耐污；怕强磁干扰 | 电机侧 FOC |
-| **磁（磁环系统）** | 离轴磁场 | 系统 ±0.004° 起 | 需磁路与标定 | 输出侧 |
-| **电感** | 互感调制 | 125–360 arcsec 级 | 无光源/永磁温漂 | 大中空输出侧 |
+| **光电** | 码盘光路 | 按完整编码器系统规格验证 | 按产品防护与污染条件选型 | 输出侧绝对式、计量级 |
+| **磁（芯片）** | 磁场方向 | 核对器件全温误差与磁体安装条件 | 核对外部磁场与机械偏心 | 电机侧 FOC |
+| **磁（磁环系统）** | 离轴磁场 | 例：AksIM-2 自校准后 ±0.004°–±0.020° | 按磁环/读头组合与标定条件 | 输出侧 |
+| **电感** | 导电靶调制线圈耦合 | 按前端、线圈、气隙与处理算法共同验收 | 不需永磁体；仍需验证目标结构 | 大中空输出侧 |
 
 ### 分辨率 vs 精度
 
@@ -75,6 +77,16 @@ $$ \tau_{\mathrm{est}} \approx K_\theta \left( \frac{\theta_{\mathrm{motor}}}{N}
 - 差值主要反映 **传动扭转变形** — 可作观测，**不能** 替代标定过的关节力矩传感器（非线性刚度、摩擦、滞回）；四路线对比与品牌见 [关节力矩传感器选型](./joint-torque-sensor-selection.md)。
 - **高电频率延迟：** 大极对 flat BLDC 超压驱动时电频率可达 **kHz 级**；除分辨率外须评估 **DAEC + MCU ωe 超前** — 见 [LunaDrive](../entities/paper-lunadrive.md)（3110 Hz 案例）。
 
+## 官方资料核对：分辨率、系统精度与安装边界
+
+[RLS、HEIDENHAIN 与 TI 官方资料](../../sources/sites/encoder-official-pcb-review.md)提供了三个可追溯边界：
+
+- **RLS AksIM-2**：最高 20 bit 分辨率；20 bit 量化步距约 `360° / 2^20 = 0.000343°`，但页面的自校准后系统精度为 ±0.004°–±0.020°。位数和系统准确度必须分别填写，且要匹配磁环/读头配置与校准条件。
+- **HEIDENHAIN 分类页**：内置与外装编码器具有不同防护和工作温度边界；不能将两个类别的最大指标拼成一个“最佳器件”。
+- **TI LDC5072-Q1**：PCB 激励线圈经导电靶耦合到接收线圈，输出位置的正弦/余弦分量；不依赖永磁体。芯片前端指标不能替代目标线圈、气隙、安装误差与后处理共同决定的系统精度。
+
+本次没有取回旧微信原文；旧文的品牌/数值仅作历史选型线索，具体方案以厂商同一版本的完整系统规格和实测为准。
+
 ## 工程实践（选型清单）
 
 1. 需求拆成：**绝对精度、重复精度、全温误差、动态误差、安装容差** — 避免单写「≥17 bit」。
@@ -98,9 +110,15 @@ $$ \tau_{\mathrm{est}} \approx K_\theta \left( \frac{\theta_{\mathrm{motor}}}{N}
 
 ## 参考来源
 
+- [RLS、HEIDENHAIN 与 TI 编码器官方资料复核](../../sources/sites/encoder-official-pcb-review.md) — 本次实际读完的一手资料与核对边界。
+
 - [wechat_zane_zhang_joint_encoder_comparison_2026-09-23.md](../../sources/blogs/wechat_zane_zhang_joint_encoder_comparison_2026-09-23.md)
 
 ## 推荐继续阅读
 
 - [Heidenhain ECN/EQN 系列公开参数](https://www.heidenhain.com/)
 - [RLS AksIM-2 磁环系统规格](https://www.rls.si/)
+
+## 核心原理
+
+光电编码器通过码盘调制光信号，磁编码器测转子磁场，电感编码器利用线圈耦合变化测位置。反馈安装在电机侧时服务换相，安装在输出侧时才能直接观测减速器之后的角度；两侧反馈须校准传动比与零位。

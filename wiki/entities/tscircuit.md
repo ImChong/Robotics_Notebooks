@@ -6,13 +6,15 @@ project: https://tscircuit.com/
 code: https://github.com/tscircuit/tscircuit
 tags: [software, electronics, eda, pcb, hardware, open-source, typescript]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-16
 related:
   - ../overview/hub-actuator-drive-chain.md
   - ./kicad.md
   - ./freecad.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
   - ../overview/motor-drive-firmware-bus-protocols.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/sites/tscircuit-com.md
   - ../../sources/repos/tscircuit.md
@@ -20,6 +22,8 @@ summary: "tscircuit 是 MIT 开源的 TypeScript/React 风格电子设计工具�
 ---
 
 # tscircuit（代码化电子设计工具链）
+
+## 一句话定义
 
 **tscircuit** 是以 TypeScript/React 组件描述电路的开源电子设计工具链：将芯片、电阻、网络与 PCB 走线等表示为代码，再预览原理图、PCB 和 3D 模型，并导出制造文件。在机器人栈中，它位于 [KiCad](./kicad.md) 所处的电子设计层，适合用代码复用和版本控制迭代关节驱动、电源、MCU 与传感器接口板。
 
@@ -33,14 +37,14 @@ summary: "tscircuit 是 MIT 开源的 TypeScript/React 风格电子设计工具�
 | CLI | Command-Line Interface | 命令行界面；`tsci` 用于本地预览、检查与导出 |
 | DRC | Design Rule Check | 设计规则检查；用于发现制造约束与几何规则问题 |
 
-## 为什么对机器人硬件有用
+## 为什么重要：机器人硬件中的用途
 
 - **控制板可直接代码化：** 官方示例包含 RP2040 电机控制器、步进电机控制器和 BLDC 控制板；这些板卡与机器人常见的 MCU、驱动、电源和传感器硬件相近。
 - **参数化和复用：** TypeScript/React 组件可将重复电路封装为模块，便于对不同电机、电源和连接器配置做版本化迭代。
 - **设计评审可进入软件工作流：** 电路源文件可由 Git 管理；本地 CLI 可预览/检查，制造文件可以作为可审查的产物。
 - **与既有 EDA 协作：** 官方文档列出 KiCad 等格式导出；可把 tscircuit 作为代码化入口，并在 [KiCad](./kicad.md) 中继续检查或编辑。
 
-## 核心工作流
+## 核心机制与工作流
 
 1. 使用 TypeScript/React 风格的元素定义电路板、器件、网络与连接。
 2. 通过核心工具链解析为 Circuit JSON，并生成原理图、PCB 布局和 3D 预览。
@@ -60,6 +64,19 @@ summary: "tscircuit 是 MIT 开源的 TypeScript/React 风格电子设计工具�
 - **不是机器人专用工具：** 项目是通用 EDA 工作流；机械结构仍由 [FreeCAD](./freecad.md) 等机械 CAD 工具处理，固件和实时控制需要独立工具链。
 - **制造细节仍需核验：** Gerber、BOM、钻孔与装配数据在投产前应由制造商规则和实物测试复查。
 
+## 流程总览
+
+以下是官方 README 描述的功能与数据流；具体源码调用链以本页注明版本的时序图为准。
+
+```mermaid
+flowchart LR
+  N0["TypeScript 与 React 电路描述"]
+  N1["Circuit JSON 与核心工具链"]
+  N2["原理图 PCB 和 3D 预览"]
+  N3["制造文件导出与人工审查"]
+  N0 --> N1 --> N2 --> N3
+```
+
 ## 关联页面
 
 - [KiCad（开源 PCB 与原理图 EDA）](./kicad.md) — 桌面端电子设计套件；tscircuit 支持与 KiCad 格式互通。
@@ -70,6 +87,8 @@ summary: "tscircuit 是 MIT 开源的 TypeScript/React 风格电子设计工具�
 - [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md) — 代码化电路设计适用于驱动、电源和传感器板。
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [tscircuit 官方项目页归档](../../sources/sites/tscircuit-com.md)
 - [tscircuit 官方源码仓库归档](../../sources/repos/tscircuit.md)

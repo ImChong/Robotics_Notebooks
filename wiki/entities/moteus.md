@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, motor-control, foc, can-fd, open-source, qdd, mjbots]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-16
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./simplefoc.md
@@ -16,6 +16,8 @@ related:
   - ../concepts/can-fd.md
   - ../../roadmap/depth-torque-motor-design.md
   - ../overview/quadruped-open-source-projects-technology-map.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/moteus.md
   - ../../sources/personal/open_source_qdd_actuator_learning_curator.md
@@ -67,7 +69,7 @@ summary: "mjbots moteus：面向机器人关节的开源无刷伺服驱动（多
 - 控制/PWM：r4.11 文档给控制环约 **15–30 kHz**、PWM **15–60 kHz**；MCU **STM32G4**。
 - 通信：**5 Mbps CAN-FD**。
 
-## 核心结构/机制
+## 核心机制
 
 ```mermaid
 flowchart LR
@@ -110,6 +112,8 @@ flowchart LR
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [sources/repos/moteus.md](../../sources/repos/moteus.md)
 - [开源 QDD 执行器学习策展](../../sources/personal/open_source_qdd_actuator_learning_curator.md)
