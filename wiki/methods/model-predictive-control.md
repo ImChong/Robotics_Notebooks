@@ -2,20 +2,24 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-17
 related:
   - ../comparisons/robot-control-eight-paradigms-taxonomy.md
   - ../overview/robot-control-paradigm-receding-horizon-ilc.md
   - ../formalizations/robot-jacobian.md
   - ./iterative-learning-control.md
   - ./lqr-ilqr.md
+  - ./pid-control.md
+  - ../entities/autoware.md
   - ../overview/autonomous-driving-core-algorithms-series.md
 original:
   - ../../sources/papers/force_moment_mpc_biped_reading_arxiv_2104_00065.md
+  - ../../sources/blogs/wechat_shenlan_ai_mpc_vs_pid_autonomous_driving_2026-11-17.md
 sources:
   - ../../sources/papers/lg_dkgp_arxiv_2611_16645.md
   - ../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md
+  - ../../sources/blogs/wechat_shenlan_ai_mpc_vs_pid_autonomous_driving_2026-11-17.md
   - ../../sources/blogs/wechat_shenlan_mpc_floating_base_derivation_2026-11-16.md
 summary: "MPC（模型预测控制）通过在线滚动优化未来轨迹，在约束控制与人形/腿足运动规划中广泛使用。"
 ---
@@ -120,6 +124,63 @@ $$J = \sum_{k=0}^{N-1} (x_k - x_{ref})^T Q (x_k - x_{ref}) + u_k^T R u_k$$
 - 关节速度限位：$\underline{\dot{q}} \leq \dot{q} \leq \bar{\dot{q}}$
 - 接触力约束：$f_z \geq 0$（地面反力非负）
 - 碰撞避免：作为不等式约束加入
+
+## 自动驾驶工程例子：PID 为什么不一定被 MPC 替代？
+
+> 来源：深蓝 AI 2026-11-17 [《彻底搞懂 MPC｜PID 免费又好用，自动驾驶为什么还要上模型预测控制？》](../../sources/blogs/wechat_shenlan_ai_mpc_vs_pid_autonomous_driving_2026-11-17.md)（用户提供 13 页 PDF 通读）以及 Autoware/MathWorks/MIT 官方文档。以下是方法归纳，不是本文原创算法或性能复现。
+
+### 弯道预瞄：同样的误差不代表相同控制动作
+
+在笔直路段与连续弯道入口，车辆可能具有相同的横向误差，但下一个动作应考虑**前方参考轨迹曲率、当前速度、转向执行器约束**。PID 并非绝对不能提前响应：它可以叠加前馈、预瞄、增益调度与限幅；MPC 的差异在于把未来若干步的模型预测、多目标代价和约束集中求解。
+
+| 判断维度 | PID + 前馈 / 预瞄 / 限幅 | MPC |
+|---|---|---|
+| 决策依据 | 误差反馈，必要时叠加前馈与补偿 | 当前估计状态、未来参考轨迹、预测模型 |
+| 运动平顺性 | 通过增益、滤波、限幅等工程设计 | 在代价函数中显式惩罚控制量及相邻控制量变化 |
+| 执行器限制 | 输出限幅与外围逻辑实现 | 可纳入优化硬约束或经选择设计软约束 |
+| 算力与开发成本 | 较低；易调试与维护 | 在线求解 QP / NLP，须保证时限与可行性 |
+| 典型适用 | 简单、弱耦合的速度/关节反馈闭环 | 轨迹曲率变化、多变量耦合、多约束工况 |
+
+### 车辆横向 MPC 的滚动闭环
+
+以运动学自行车模型为入门例子，状态可含平面位置、航向、速度，输入可为转向角；高动态或低附着工况可能需要侧偏、轮胎力、转向迟滞等更完整模型。下图是**文章所述概念数据流**，并非根据 Autoware 代码重建的源码运行时序图。
+
+```mermaid
+flowchart TD
+  ref["路径规划：未来 N 步参考轨迹"] --> opt["预测模型与约束优化器"]
+  state["定位/状态估计：车辆状态与转角"] --> opt
+  model["车辆运动学/动力学模型"] --> opt
+  constraints["代价：跟踪误差、转角与变化率；约束：转角、转向速率等"] --> opt
+  opt --> seq["优化未来 N 步控制序列"]
+  seq --> first["仅下发第一步控制 u0"]
+  first --> plant["车辆执行机构与实际车辆"]
+  plant --> state
+  plant --> next["进入下一控制周期，窗口滚动"]
+  next --> opt
+```
+
+如果优化器发现很小的横向误差，却知道接下来有连续弯道，它可以在当下提前选择较温和的转向动作；下一周期仍会用**新测状态**重算，以缓解侧风、坡度、轮胎侧偏等模型误差。此处的“N 步”是抽象预测时域，不代表统一固定 10 步。
+
+### 跟踪精度、动作平顺与硬约束不能混为一谈
+
+- **代价（可权衡）**：横向偏差、航向误差、转向量及转向增量，通过权重取舍；追求误差极小可能导致转向过猛，过度惩罚动作又会导致入弯滞后。
+- **硬约束（必须满足才是可行解）**：例如转向角机械限位、转向速率、加速度边界；**软约束**可以容许指定的有限违反并附加惩罚，必须明确哪些安全边界绝不可软化。
+- **有限时域不是形式安全保证**：求解成功不代表现实安全；未建模障碍、估计偏差、约束冲突与下一周期不可行仍需独立处理。递归可行性需要额外设计（见 MIT 课程）。
+
+### 官方系统的分工：横向 MPC 与纵向 PID 可以并存
+
+- [Autoware MPC Lateral Controller 官方文档](https://autowarefoundation.github.io/autoware_universe/main/control/autoware_mpc_lateral_controller/)：接收规划轨迹、里程计和转向反馈，设置车辆模型与 QP 求解器后计算横向转向控制；`calculateMPC()` 是文档给出的计算接口。
+- [Autoware PID Longitudinal Controller 官方文档](https://autowarefoundation.github.io/autoware_universe/latest/control/autoware_pid_longitudinal_controller/)：纵向速度/加速度跟踪仍可用 PID，辅以转向之外的延迟补偿、坡度补偿等，不意味着 PID 被 MPC 全面取代。
+- [MathWorks MPC-ACC 官方示例](https://www.mathworks.com/help/mpc/ref/adaptivecruisecontrolsystem.html)：另一种纵向设计通过 MPC 同时处理设定速度、与前车的安全距离、加速度边界；它是示例，不代表所有 Autoware 车辆采用该 ACC 设计。
+
+### 上车验收清单（依据文章第 9–11 页归纳）
+
+1. **先查模型适用域**：标定车辆与执行器，覆盖目标速度、转向迟滞及轮胎附着变化；避免将理想自行车模型误用到低附着极限工况。
+2. **再查预测时域与截止时间**：太短预瞄不足，太长延迟/模型误差与计算负担变大；实测每周期最坏求解耗时，而不只看均值。
+3. **分清代价与约束**：针对跟踪误差、方向盘振荡、弯道迟滞分别调整权重/约束，而不是复制一套“标准参数”。
+4. **设计失败兜底**：监测优化不可行、超时、估计失真与越界，明确保持控制、降级控制或安全停车等独立处置机制。
+
+相关入口：[PID 控制](./pid-control.md)、[Autoware](../entities/autoware.md)、[MPC 调参指南](../queries/mpc-tuning-guide.md)、[MIT Underactuated Robotics](https://underactuated.csail.mit.edu/trajopt.html)。
 
 ## 主要分类
 
@@ -274,6 +335,7 @@ print("apply control:", u.ravel())
 
 - [wechat_shenlan_robot_control_eight_paradigms.md](../../sources/blogs/wechat_shenlan_robot_control_eight_paradigms.md) — 深蓝八大控制体系：MPC 代表算法
 - [wechat_shenlan_ai_ad_planning_control.md](../../sources/blogs/wechat_shenlan_ai_ad_planning_control.md) — 车载轨迹跟踪 MPC 与 PID/LQR 分工
+- [深蓝 AI：MPC 与 PID 的自动驾驶工程选型（2026-11-17，原文通读）](../../sources/blogs/wechat_shenlan_ai_mpc_vs_pid_autonomous_driving_2026-11-17.md) — 滚动时域、代价/约束、Autoware 和 ACC 一手交叉核验
 - Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3 Through Convex Model-Predictive Control*（IROS 2018，[DOI 10.1109/IROS.2018.8594448](https://doi.org/10.1109/IROS.2018.8594448)）— 凸 MPC 代表论文（四足）
 - Li & Nguyen, *Force-and-moment-based Model Predictive Control for Achieving Highly Dynamic Locomotion on Bipedal Robots*（[arXiv:2104.00065](https://arxiv.org/abs/2104.00065)）— 双足行走 MPC
 - [CMU Optimal Control 2025 策展](../entities/cmu-optimal-control-curriculum.md) — Lec 10 Convex MPC（播放列表归档）
