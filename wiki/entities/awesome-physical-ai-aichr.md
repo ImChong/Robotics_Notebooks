@@ -3,9 +3,10 @@ type: entity
 tags: [curated-list, physical-ai, embodied-ai, vla, edge-ai, ros]
 topic: [ecosystem]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-17
 related:
   - ./awesome-physical-ai-natnew.md
+  - ./robotics-map.md
   - ../comparisons/awesome-physical-ai-curated-lists.md
   - ../methods/vla.md
   - ../overview/awesome-physical-ai-technology-map.md
@@ -73,6 +74,7 @@ Foundation Models (VLA) · 3D Computer Vision · Datasets · Benchmarks · Simul
 
 ## 关联页面
 
+- [The Robotics Map（机器人产业生态地图）](./robotics-map.md) — 以企业及跨层产品能力为中心的产业生态导航，与本资源清单互补
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [awesome-physical-ai（natnew）](./awesome-physical-ai-natnew.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
