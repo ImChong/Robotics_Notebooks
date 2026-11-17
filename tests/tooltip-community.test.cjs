@@ -62,42 +62,32 @@ test('page-path metadata resolves communities and all matching routes without a 
 });
 
 
-test('long bilingual tooltip badges place Chinese above English and keep short labels inline', () => {
-  const context = vm.createContext({ window: {} });
-  vm.runInContext(tooltipSource, context);
-  context.window.RNDepthFilters = {
-    depthsForNode: () => ['long', 'short'],
-    DEPTH_META: {
-      long: { emoji: '🗺️', label: '扩散与流匹配策略（Diffusion & Flow Matching）' },
-      short: { emoji: '🗺️', label: '视觉动作（VLA）' }
-    }
-  };
-  const html = context.window.RNGraphTooltip.buildNodeTooltipHtml({
-    communityLabel: '机器人基础模型（Robot Foundation Models）社区'
-  });
-  assert.match(html, /tt-label-bilingual"><span>机器人基础模型<\/span><span class="tt-label-en" lang="en">（Robot Foundation Models）/);
-  assert.match(html, /tt-label-bilingual"><span>扩散与流匹配策略<\/span><span class="tt-label-en" lang="en">（Diffusion &amp; Flow Matching）/);
-  assert.match(html, /<span>视觉动作（VLA）<\/span>/);
-});
-
-test('split community and route labels preserve their original full-width or ASCII parentheses', () => {
+test('tooltip community and route labels show Chinese only for either parenthesis style', () => {
   const context = vm.createContext({ window: {} });
   vm.runInContext(tooltipSource, context);
   const api = context.window.RNGraphTooltip;
   for (const [open, close] of [['（', '）'], ['(', ')']]) {
-    const english = open + 'Robot Foundation Models' + close;
-    const label = '机器人基础模型' + english;
+    const label = '机器人基础模型' + open + 'Robot Foundation Models' + close;
     context.window.RNDepthFilters = {
-      depthsForNode: () => ['bfm'],
-      DEPTH_META: { bfm: { emoji: '🗺️', label } }
+      depthsForNode: () => ['bfm', 'vla'],
+      DEPTH_META: {
+        bfm: { emoji: '🗺️', label },
+        vla: { emoji: '🗺️', label: '视觉动作' + open + 'VLA' + close }
+      }
     };
+    const fallback = api.buildNodeTooltipHtml({ communityLabel: label + ' 社区' });
     api.setGraphData({
       nodes: [{ id: 'wiki/example.md', community: 'example' }],
       communities: [{ id: 'example', label: label + ' 社区' }]
     });
-    const html = api.buildNodeTooltipHtml({ health: { path: 'wiki/example.md' } });
-    const englishLines = [...html.matchAll(/class="tt-label-en" lang="en">([^<]+)<\/span>/g)]
-      .map(match => match[1]);
-    assert.deepEqual(englishLines, [english, english], 'both community and route retain ' + open + close);
+    const indexed = api.buildNodeTooltipHtml({ health: { path: 'wiki/example.md' } });
+    for (const html of [fallback, indexed]) {
+      assert.match(html, /<span>机器人基础模型<\/span>/);
+      assert.match(html, /<span>视觉动作<\/span>/);
+      assert.ok(!html.includes('Robot Foundation Models'));
+      assert.ok(!html.includes('VLA'));
+      assert.ok(!html.includes('tt-label-en'));
+      assert.match(html, /graph.html\?depth=bfm/);
+    }
   }
 });
