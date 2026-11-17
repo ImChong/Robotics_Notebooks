@@ -19,6 +19,7 @@ related:
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/llm-inference-vram-estimation.md
   - ../methods/rlcr-collective-inference-time-scaling.md
+  - ../methods/reinforcement-learning.md
   - ./paper-grasp.md
 original:
   - ../../sources/papers/reasoning_with_sampling_arxiv_2510_14901.md
@@ -191,6 +192,7 @@ sequenceDiagram
 - [AI Agent 评测](../concepts/ai-agent-evaluation.md) — 区分 pass@1 与 pass@k，核对性能和多样性。
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md) — 比较多轮重采样的部署预算。
 - [RLCR：集体奖励强化学习](../methods/rlcr-collective-inference-time-scaling.md) — 另一类 inference-time scaling，机制与并行/训练前提不同。
+- [强化学习（RL）](../methods/reinforcement-learning.md) — 作为可训练策略优化的对照；本文的 MCMC 推理方法不更新模型权重。
 - [GRASP：梯度引导机器人采样优化](./paper-grasp.md) — 对照 MH 接受思想和不同目标分布。
 
 ## 参考来源
