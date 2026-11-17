@@ -468,6 +468,13 @@ op: ingest
 - 本次 29 篇均有健康度 3/3 的结构化判据；最终以报告脚本与 CI 实测为准。
 - [29 篇阅读坐标](../wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
 
+## [2026-11-17] ingest | 七项机器人研究与产品动态
+- 论文：沿用已有 PEAR/RURL 深度节点，新增 Agentic-Teacher、WATO、TouchTwin、Racing the Clock 四篇独立论文实体与来源。
+- 产品：XHAND 1 Pro-U 独立实体与新闻稿。
+- CloudRobo-WM1.2：官方发布资料 source-only，技术全文、可执行源码和榜单尚待核实，不虚报通读。
+- 纵深：WAM、VLA、具身数据、导航、接触操作路线挂载。
+- 未在本执行环境开展真机、仿真复现；健康度以 Wiki Lint 的 report_health.py 为准。
+
 ## [2026-11-17] lint | 复核来源时效性与缺页概念：按提交快照分流 169 条来源提示，实质同步八页并保留 161 条待核对；补机器人本体概念及回链，仅排除 complete 非概念标签，保留真实缺页回归检查。
 
 - 全量复检同时修复 ARP 的否定式 SOTA 误报；真实断言保留回归覆盖，不改论文结论或日期。
