@@ -2,7 +2,7 @@
 type: method
 tags: [system-identification, actuator, friction, armature, sim2real, identification]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-17
 related:
   - ./ssrm-steady-state-response-method.md
   - ../concepts/system-identification.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/gravity-compensation.md
   - ./cma-es.md
   - ../entities/flobaroid.md
+  - ../entities/motorfit.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ./sim2real-joint-sysid-experiment-design.md
   - ../entities/paper-pace-sim2real-legged-robots.md
@@ -25,10 +26,15 @@ sources:
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/papers/ssrm_steady_state_response_method.md
   - ../../sources/papers/joint_actuator_parameter_identification.md
+  - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
   - ../../sources/repos/flobaroid.md
   - ../../sources/sites/bam-readthedocs.md
+  - ../../sources/repos/motorfit.md
   - ../../sources/repos/rhoban_bam.md
   - ../../sources/repos/pace-sim2real.md
+original:
+  - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
+  - ../../sources/repos/motorfit.md
 summary: "关节执行器参数辨识：从实验数据估计转子反射惯量 Ia 与库仑/粘滞等摩擦项；Fourier+线性回归需要力矩，CMA-ES 仿真对齐只需编码器。"
 ---
 
@@ -101,6 +107,13 @@ flowchart TB
 
 ## 工程实践
 
+### 基于一手资料的辨识与验证边界
+
+[BAM 论文原文（arXiv:2410.08650v1）](https://arxiv.org/html/2410.08650v1)的辨识过程使用不同负载、长度和控制增益的四类摆锤轨迹，以 CMA-ES 最小化仿真与实测位置 MAE；数据按 75%/25% 分成拟合/验证。论文明确指出：Dynamixel 在单电机辨识时 M5 拟合更好，但迁移到 2R 臂时 M4 更好，提示**不能只看辨识训练集误差**；原论文未建模温度、径向力及 dwell time。
+
+[MotorFit 官方源码归档](../../sources/repos/motorfit.md)提供 BAM 方法的另一工程实现，包含真实电机记录、留出记录独立评估与冻结模型回放。其跨引擎 `replay` 目前限于 **M1 + torque-MIT + 单摆**，不应将 BAM M1–M6 拟合支持误写成所有摩擦模型都可跨引擎仿真。
+
+
 ### 选型（先读这一表）
 
 | 你的硬件 | 优先算法 | 不要一上来就 |
@@ -135,6 +148,7 @@ flowchart TB
 - [连杆与转子惯量](../concepts/robot-link-and-rotor-inertia.md) / [Armature Modeling](../concepts/armature-modeling.md)
 - [CMA-ES](./cma-es.md) — BAM/PACE 的优化器
 - [FloBaRoID](../entities/flobaroid.md) — Fourier + 两步摩擦开源箱
+- [MotorFit（电机台架辨识与验证工具）](../entities/motorfit.md) — 在 Rhoban BAM M1–M6 参数模型上增加 RobStride/达妙 SocketCAN 采集、独立记录评估和 M1 单摆跨引擎回放，区别于论文中的模型方法
 - [BAM](../entities/paper-bam-extended-friction-servo-actuators.md) / [BAM 论文](../entities/paper-bam-extended-friction-servo-actuators.md)
 - [PACE](../entities/paper-pace-sim2real-legged-robots.md) / [SPI-Active](../entities/paper-notebook-sampling-based-system-identification-with-active.md)
 - [Pinocchio](../entities/pinocchio.md) / [Pinocchio 快速上手](../queries/pinocchio-quick-start.md)
@@ -150,6 +164,8 @@ flowchart TB
 - [关节执行器参数辨识论文簇](../../sources/papers/joint_actuator_parameter_identification.md)
 - [FloBaRoID 仓库](../../sources/repos/flobaroid.md)
 - [BAM 文档站](../../sources/sites/bam-readthedocs.md)
+- [BAM 扩展摩擦模型论文原文归档](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md) — 已核查模型、辨识、实验与局限
+- [MotorFit 官方源码归档](../../sources/repos/motorfit.md) — BAM 方法落到真实电机采集、拟合及固定模型回放的工程实现
 - [Rhoban/bam](../../sources/repos/rhoban_bam.md)
 - [PACE 仓库](../../sources/repos/pace-sim2real.md)
 
