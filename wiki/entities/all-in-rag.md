@@ -9,6 +9,7 @@ related:
   - ../concepts/retrieval-augmented-generation.md
   - ./langchain.md
   - ./easy-vibe.md
+  - ./weknora.md
 sources:
   - ../../sources/repos/all-in-rag-course-overview-read-20261113.md
   - ../../sources/repos/all-in-rag.md
@@ -89,6 +90,7 @@ sequenceDiagram
 
 ## 关联页面
 
+- [WeKnora](./weknora.md) — 将课程的加载、索引、RAG 与评测知识映射到腾讯开源可私有化部署的知识管理平台；平台另带 Agent、Wiki、权限与数据源同步，不能将课程示例等同于生产系统。
 - [retrieval-augmented-generation](../concepts/retrieval-augmented-generation.md) — 相关概念、工具或工程路线。
 - [langchain](./langchain.md) — 相关概念、工具或工程路线。
 - [easy-vibe](./easy-vibe.md) — 相关概念、工具或工程路线。
