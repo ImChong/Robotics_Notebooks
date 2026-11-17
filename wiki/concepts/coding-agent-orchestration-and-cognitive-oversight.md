@@ -11,6 +11,7 @@ status: complete
 updated: 2026-11-17
 summary: "多编码 Agent 的有效管理，核心是把任务边界、独立审查、可执行验证与人类判断组成闭环；通过区分认知卸载和认知投降，防止代码吞吐上升但理解与安全责任空心化。"
 related:
+  - ../methods/coding-agent-verification-loops.md
   - ./agentic-coding-software-fundamentals.md
   - ./ai-agent-evaluation.md
   - ./specification-driven-development.md
@@ -23,6 +24,7 @@ original:
   - ../../sources/blogs/addyosmani_cognitive_surrender_2026-05-05.md
   - ../../sources/sites/anthropic_claude_code_best_practices_2026.md
 sources:
+  - ../../sources/blogs/claude_dev_verification_addy_osmani_2026-11-16.md
   - ../../sources/blogs/addyosmani_coding_agents_manager_2026-01-08.md
   - ../../sources/blogs/addyosmani_cognitive_surrender_2026-05-05.md
   - ../../sources/sites/anthropic_claude_code_best_practices_2026.md
@@ -120,6 +122,12 @@ flowchart TD
 
 对本知识库自身的 ingest，则把一手原文、来源归档、Mermaid、入链、健康度、`make ci-preflight` 和 PR 证据分开记录；**「写完 wiki」不等于「完成验证」**。
 
+### 4. 验证：必须让 Agent 交出可复核证据
+
+[Claude Code 团队验证实践](../methods/coding-agent-verification-loops.md)补上交付闭环的具体测试手段：E2E 验证真实操作路径、属性测试自动寻找不变量反例、差分测试对比迁移前后行为；并要求评审锁定 commit、检查规则不随被审 PR 自改。官方团队报告了按 diff 触发的 39 项可靠性清单和失败三轮转人工机制，但这些数字不应直接当作本库已验证的指标。
+
+在机器人软件变更中，还应单独补齐 ROS 2、仿真及真机分层验收；这是对编码 agent 管理机制的**验证方法补充**，不是用新页面替代管理与人类责任。
+
 ## 局限与风险
 
 - 文章反映作者的工程经验及其对研究的解读，不证明「更多 agent 必然提高总体产能」，也不能据此断言最佳 WIP 数量。
@@ -130,6 +138,8 @@ flowchart TD
 
 ## 关联页面
 
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 把 E2E / 属性 / 差分测试、独立门禁与故障复盘落实到可执行验证。
+
 - [具身评测基准选型闭环](../overview/hub-embodied-eval-benchmark.md) — 机器人研发还需区分代码验收与策略、仿真和真机评测；编码 Agent 的测试通过不能代替后几层验证。
 - [Agentic Coding 时代的软件工程基础](./agentic-coding-software-fundamentals.md) — 管理前先具备架构与取舍语言。
 - [AI Agent 评测](./ai-agent-evaluation.md) — 将运行结果而非自述作为验收基础。
@@ -139,6 +149,8 @@ flowchart TD
 - [OpenBot（CopilotKit）](../entities/copilotkit-openbot.md) — 用统一 Agent 工作空间实施角色授权、执行审批与审计。
 
 ## 参考来源
+
+- [Claude Code 团队验证方法（官方博客原文归档）](../../sources/blogs/claude_dev_verification_addy_osmani_2026-11-16.md)
 
 - [Addy Osmani — Your AI coding agents need a manager（原文归档）](../../sources/blogs/addyosmani_coding_agents_manager_2026-01-08.md)
 - [Addy Osmani — Cognitive Surrender（原文归档）](../../sources/blogs/addyosmani_cognitive_surrender_2026-05-05.md)
