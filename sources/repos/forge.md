@@ -7,7 +7,7 @@
 - **项目：** https://bb0928.github.io/forge/
 - **论文：** https://arxiv.org/abs/2611.17142
 - **开源状态：** 部分开源；第二阶段残差策略训练和仿真评估可读；真机部署链仍待发布
-- **核对范围：** 官方 README、`scripts/train_stage2_residual.sh`、`scripts/test_res_pf.sh`、`legged_gym_repo/legged_gym/scripts/train.py`、`play_res.py`、`legged_gym/utils/task_registry.py`、`legged_gym/envs/__init__.py`、`rsl_rl_repo/rsl_rl/runners/on_policy_runner.py`。
+- **核对范围：** 官方 README、`scripts/train_stage2_residual.sh`、`scripts/test_res_pf.sh`、`legged_gym_repo/legged_gym/scripts/train.py`、`play_res.py`、`legged_gym/utils/task_registry.py`、`legged_gym/envs/__init__.py`、`rsl_rl_repo/rsl_rl/runners/on_policy_residual_runner.py`。
 - **通读：** 已完成
 - **入库日期：** 2026-11-17
 
@@ -19,9 +19,11 @@
 | `legged_gym/scripts/train.py` | `task_registry.make_env` → `task_registry.make_alg_runner` → `ppo_runner.learn` |
 | `legged_gym/envs/__init__.py` | 将 `g1_ee_residual` 注册到 `LeggedRobotEEResidual` 与相应配置 |
 | `task_registry.py` | 组装仿真环境与训练 Runner，并处理 checkpoint 的 resume / 加载 |
-| `on_policy_runner.py` | 循环采样 `alg.act` → `env.step`，然后计算 returns、执行 `alg.update`、保存模型 |
+| `on_policy_residual_runner.py` | 任务配置选择 `OnPolicyResidualRunner`；`alg.act` 同时返回动作和 `force_residual_pred`，调用 `env.step(actions, force_residual_pred=...)` 后更新 PPO 并保存模型 |
 | `scripts/test_res_pf.sh` | 设置已有 checkpoint 路径，调用 `legged_gym/scripts/play_res.py --task g1_ee_residual --resume --num_envs 1 --headless` |
-| `play_res.py` | 创建环境及 runner、加载推理策略，用观测循环推理并推进 Isaac Gym 环境 |
+| `play_res.py` | 创建环境及 residual runner、恢复 checkpoint，用 `policy(obs)` 的动作和 `force_residual_pred` 推进 Isaac Gym 环境 |
+
+**运行时类别确认：** `g1_29dof_ee_residual_config.py` 指定 `runner_class_name = "OnPolicyResidualRunner"`，对应 `rsl_rl/runners/on_policy_residual_runner.py`，不是标准 `OnPolicyRunner`。该专用 Runner 会传递学习到的腕力补偿量。
 
 ## 复现边界与注意事项
 
