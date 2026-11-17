@@ -20,6 +20,7 @@ related:
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../entities/paper-uni-lavira.md
   - ../entities/paper-humembr.md
+  - ../entities/paper-mind-palace-laeqa.md
   - ../entities/paper-navwam-goal-conditioned-visual-navigation-wam.md
   - ../entities/paper-green-for-go-vla-nav-grounding.md
   - ../entities/paper-humanoidvln.md
@@ -124,6 +125,7 @@ VLN = 在三维环境中依据自然语言指令，仅凭第一人称视觉观�
 - **像素动作、按需推理与长程记忆的 VLN 策略**：[Embodied-Navigator / TAMP-Nav](../entities/paper-embodied-navigator-tamp-nav.md)（arXiv:2608.17512）以二维像素点经深度投影至 SLAM waypoint，使用选择性 CoT、Anchor-Trajectory Memory / STI 与双层 GRPO；R2R-CE Val-Unseen SR 66.2%，训练 90k 条轨迹。
 - **语义推理与几何控制混合导航：** [OptiSight](../entities/paper-optisight-embodied-navigation.md)（arXiv:2608.23354；IRI-TR-26-02）在关键决策点触发 VLM，以 Grounded-SAM 与相机投影接地目标，再用确定性视觉伺服连续移动；论文摘要报告 AI Habitat 零样本导航与 8 GB 显存预算。作者仓库公开，但地图/权重需另备，且汇总成功率由人工统计。\n- **预训练 MLLM 的导航 harness**：[SuperNav](../entities/paper-supernav-agentic-navigation.md)（arXiv:2610.12126）用视觉点目标、可互换运动后端、工具与 Skills 支持单物体 / 有序多物体 / 需求驱动导航；高层“已完成”声明与 benchmark 成功判定分开核验。
 - **具身视觉跟踪（EVT）专用 referring**：[ReferTrack](../entities/paper-refertrack.md)（arXiv:2607.20061）把「语言指定行人跟随」拆成索引 bbox Refer-CoT + TVBI 历史几何，再解码航点；EVT-Bench 单前视 STT/DT/AT 上相对 TrackVLA++ 大幅抬升，Go2/G1 真机定性——与通才 RobotNav 的 tracking mode 同榜不同协议，宜分开读。
+- **长期主动具身问答（LA-EQA）**：[Mind Palace Exploration](../entities/paper-mind-palace-laeqa.md)（CoRL 2025，arXiv:2507.12846）用多 episode 场景图连通历史检索与实时探索，以 VoI 选择何时停止查旧记录；与下一项 HUMEMBR 的人中心例行记忆形成对照。
 - **人中心例行记忆 EQA**：[HUMEMBR](../entities/paper-humembr.md)（arXiv:2606.30404）在办公室 Spot 上并行构建 **身份感知多日记忆** 与 LLM 工具检索，服务 PersonEQA 与「找某人」导航——相对 R2R 式路径指令，主轴是 **人例行预测** 而非地标语言接地。
 - **通才 planner 统一导航 + 推理**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 在同一 **Qwen3-VL-8B** checkpoint 上同时 SFT **VLN-CE（R2R/RxR/ScaleVLN）** 与具身 cognition/localization；R2R-CE **SR 55.5%** 与 InternVLA-N1 specialist 持平，而 **Nav-only finetune 的 generalist 竞品在 R2R 上 SR=0**（灾难性遗忘）——说明 VLN 是否应并入 **更大 planner mix** 时需评估 **域外遗忘** 而不仅是导航榜分数。
 - **REVERIE 末段接地鸿沟**：[REALM](../entities/paper-realm-last-3-meter-vln-grounding.md)（arXiv:2607.03792）指出 REVERIE-CE 等任务虽要求框出目标实例，但主流 **3 m SR** 不评 **最终朝向与可见性**——ETPNav-FT SR=34.67% 时 **ONS@0.1m 仅 6.32%**；作者提出 **plug-and-play 末段精修** 与 **REVERIE-AIM** 实例中心评测集。
