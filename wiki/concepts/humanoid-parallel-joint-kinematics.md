@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, kinematics, closed-chain, parallel-mechanism, ankle, simulation]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-17
 related:
   - ../entities/asimov-v1.md
   - ../entities/humanoid-robot.md
@@ -16,15 +16,21 @@ related:
   - ../entities/newton-physics.md
   - ../entities/paper-kamino.md
   - ../methods/trajectory-optimization.md
+  - ../entities/g1-pushrod-ankle-closed-loop-modeling.md
 sources:
   - ../../sources/notes/humanoid-parallel-joint-kinematics.md
   - ../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md
   - ../../sources/papers/humanoid_parallel_ankle_kinematics_ingest.md
   - ../../sources/repos/parallel_ankle_joint.md
+  - ../../sources/blogs/kzakka-closing-the-loop-g1-ankle-20261116.md
+original:
+  - ../../sources/blogs/kzakka-closing-the-loop-g1-ankle-20261116.md
 summary: "人形上常见并联/闭链关节（如并联踝）在机构学上需闭链运动学与力分配；控制与仿真常暴露为等效串联关节，二者不可混为一谈。"
 ---
 
 # 人形机器人并联关节解算（Parallel / Closed-Chain Joint Kinematics）
+
+## 一句话定义
 
 **并联关节解算**在这里指：当多个驱动分支通过刚性闭链耦合到同一末端（或同一等效自由度）时，在**机构空间**建立「驱动变量 ↔ 末端位姿/速度/力」映射，并处理**冗余与约束一致性**的一整套问题；人形产品中典型例子是 **并联踝（如 RSU 类构型）**，而不是「两个电池并联」之类的电气含义。
 
@@ -92,7 +98,7 @@ flowchart TB
 | GPU RL 中嵌入闭链踝动力学 | [LiPS（arXiv:2503.08349）](https://arxiv.org/abs/2503.08349) | 第 3 层：训练环境即计算并联分支动力学，缓解「开环 URDF 训练 → 串并联换算部署」缝隙 |
 | 解析驱动映射 + MPC/RL | [Kinematic Actuation Models（arXiv:2503.22459）](https://arxiv.org/abs/2503.22459) | 第 1–2 层：\(q_m=f(q_s)\)、\(J_A\) 及导数；在串联主链优化/学习中保留变传动比与电机侧限位 |
 
-## 工程参考实现（G1 / 天工）
+## 工程实践：参考实现（G1 / 天工）
 
 社区仓库 [Parallel_Ankle_Joint（feidedao）](https://github.com/feidedao/Parallel_Ankle_Joint) 把上述第 1–2 层落到 **两款人形踝** 的可运行 Python 上，与本库 [`sources/repos/parallel_ankle_joint.md`](../../sources/repos/parallel_ankle_joint.md) 归档对应。
 
@@ -104,6 +110,12 @@ flowchart TB
 **变量约定（G1 左腿）**：两电机绕 **x 轴**（roll）；**y** 为右腿→左腿（pitch）；**pitch/roll = 0** 为电机零点。速度关系 \(\Delta\theta = J_c \Delta[\text{roll}, \text{pitch}]\)，力映射 \(\tau_{\text{joint}} = J_c^\top \tau_{\text{motor}}\)——与上文流程图中 \(J_A\) 角色一致，但实现层采用作者定义的 \(J_c\) 符号。
 
 配套视频：<https://www.bilibili.com/video/BV1og9VBhEPn/>。部署 G1 控制栈时另见 [Unitree G1](../entities/unitree-g1.md) 与 WBC/RL 仓库索引。
+
+### G1 推杆踝闭链在 MuJoCo 中的落地案例（2026-11-16）
+
+[Closing the Loop：G1 推杆踝闭链 MuJoCo 建模](../entities/g1-pushrod-ankle-closed-loop-modeling.md)（Kevin Zakka / Qiayuan Liao）将本页的机构映射直接落到**真机联合限位 + 仿真闭链 + 电机侧惯量/阻抗验证**。作者手动测得 pitch 极限时 roll 可达域急剧缩小，采用 fixed tendon 拟合机械止挡；再用 spatial tendon 或显式连杆表达 `G=∂u/∂x`、`τ_x=Gᵀτ_u`、`I_x=GᵀI_uG`。
+
+**工程落点：** retarget / 早期 RL 可先用**串联踝 + 拟合止挡**；在真实电机力矩、PD 增益、反射惯量及积分器稳定性敏感的场合，部署前需要使用闭链模型校验。原文提供可下载的 MJCF 模型包及 Python 闭环初始化代码片段；该压缩包本次尚未解包复现，不能视为已通过本地仿真。
 
 ## 与人形其他闭链问题的关系
 
@@ -125,6 +137,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Closing the Loop：G1 推杆踝闭链 MuJoCo 建模](../entities/g1-pushrod-ankle-closed-loop-modeling.md) — 作者 2026-11-16 原文案例，串联/空间腱/实体杆对照与重置稳定性
 - [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Asimov v1](../entities/asimov-v1.md)
 - [Dexterous Kinematics](./dexterous-kinematics.md)
@@ -151,6 +164,7 @@ flowchart TB
 
 ## 参考来源
 
+- [Closing the Loop 原文通读归档](../../sources/blogs/kzakka-closing-the-loop-g1-ankle-20261116.md) — G1 踝实测联合限位、闭链雅可比、反射惯量及积分器验证
 - [sources/repos/parallel_ankle_joint.md](../../sources/repos/parallel_ankle_joint.md) — G1 / 天工并联踝 IK·FK·雅可比参考实现（本批入库）
 - [自由度FreeDof：Sim2Real 动力学辨识](../../sources/blogs/wechat_freedof_sim2real_dynamics_identification.md) — 并联有效惯量矩阵与 `armature` 对角容量
 - [sources/notes/humanoid-parallel-joint-kinematics.md](../../sources/notes/humanoid-parallel-joint-kinematics.md) — 本主题资料索引与 ingest 归档
