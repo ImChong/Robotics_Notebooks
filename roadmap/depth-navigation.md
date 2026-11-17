@@ -186,6 +186,7 @@ flowchart LR
 - 按四范式路径挑一条复现（推荐从模块化 VLFM 一系入手），记录每步的工程坑
 
 ### 推荐读什么
+- [Racing the Clock：动作预算条件下目标搜索](../wiki/entities/paper-budget-vln-2611-17442.md)：部分可观测房间级 Bellman 教师与 VLN 学生对齐。
 - [视觉–语言导航（VLN）任务页](../wiki/tasks/vision-language-navigation.md) — 主线索引页
 - [VLN 10 篇论文技术地图](../wiki/overview/vln-10-papers-technology-map.md) 与 [VLN 开源复现四范式](../wiki/overview/vln-open-source-repro-paradigms.md)
 - [Matterport3D Simulator](../wiki/entities/matterport3d-simulator.md) 与 [Habitat-Sim](../wiki/entities/habitat-sim.md)

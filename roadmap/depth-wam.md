@@ -168,6 +168,7 @@ flowchart LR
 - 对照 ABot-M0.5 的 Dream Forcing：解释自生成视频 latent 上训逆动力学在对齐什么
 
 ### 推荐读什么
+- [WATO：可微优化训练联合 WAM](../wiki/entities/paper-wato-2611-17626.md)：通过世界模型动力学约束优化回传任务目标，区分训练求解与推理采样。
 - [DiT4DiT（双 DiT 联合 VAM）](../wiki/entities/paper-dit4dit-video-action-model.md)
 - [MotionWAM（人形 loco-manip · 实时 WAM）](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
 - [InternW0-Δ（Causal Imprint / 20K+ h 异构数据）](../wiki/entities/paper-internw0-delta.md) — Joint MoT（视频专家 + 动作专家），训练期 future-feature + Track4World 监督、部署期 action-only 去噪；代码与四类权重已公开，跨本体仍需 adapter 和 post-training。
