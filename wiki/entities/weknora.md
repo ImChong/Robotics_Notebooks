@@ -9,6 +9,8 @@ updated: 2026-11-17
 related:
   - ../concepts/retrieval-augmented-generation.md
   - ./all-in-rag.md
+  - ../methods/humanoid-voice-interaction.md
+  - ../methods/yolo26-ocr-document-parsing.md
   - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/weknora.md
@@ -139,6 +141,8 @@ docker compose up -d
 
 ## 关联页面
 
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md) — 可将知识问答平台作为机器人对话的候选知识后端；语音识别、语音合成与实际技能控制仍需独立集成，不代表官方已有这项集成。
+- [文档与场景 OCR 方法](../methods/yolo26-ocr-document-parsing.md) — 对照专用 OCR 文字检测/识别与 WeKnora 的文档解析及索引职责，不代表 WeKnora 内置该 YOLO26 方法。
 - [RAG（检索增强生成）](../concepts/retrieval-augmented-generation.md) — 问答链路的基础方法
 - [All-in-RAG](./all-in-rag.md) — 从教学课程理解索引、检索、生成和评测
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 查询时检索与知识编译之间的关系
