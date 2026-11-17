@@ -2,14 +2,14 @@
 type: concept
 tags: [humanoid, hardware, testing, reliability, manufacturing, standards, sim2real]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-17
 related:
   - ./joint-module-self-development-workflow.md
   - ./humanoid-mass-production-engineering.md
   - ./motor-dynamometer.md
   - ./humanoid-knee-harmonic-drive-limits.md
   - ./planetary-roller-screw-humanoid-leg-actuation.md
-  - ../../roadmap/humanoid-practitioner-entry-roadmap.md
+  - ../../roadmap/depth-humanoid-hardware-design.md
   - ../overview/humanoid-hardware-101-technology-map.md
   - ../tasks/locomotion.md
 original:
@@ -41,7 +41,7 @@ summary: "人形机器人测试是 L0 仿真到 L5 场景化验收的六级递�
 - **演示观感 ≠ 工程成熟度**：整机密集发布期，采购方与研发团队能对照的少数硬依据之一是 **测试报告与失效模式库**，而非单次视频。
 - **与固定基座工业机器人不可照搬**：双足欠约束动态平衡、落地冲击与 AI 策略版本漂移，使试验大纲设计与失效量化显著更难。
 - **与关节模组开发互补**：[自研关节模组流程](./joint-module-self-development-workflow.md) 给出 L2 视角的四层测试矩阵；本页补齐 **L0/L3–L5 整机与子系统** 及标准对标框架。
-- **量产与 practitioner 入口**：L5 中试长跑与数据闭环直接支撑 [人形量产工程](./humanoid-mass-production-engineering.md)；测试/可靠性是 [practitioner 入场路线](../../roadmap/humanoid-practitioner-entry-roadmap.md) 的高价值切口之一。
+- **量产与整机验收**：L5 中试长跑与数据闭环直接支撑 [人形量产工程](./humanoid-mass-production-engineering.md)，并为 [人形整机硬件设计路线](../../roadmap/depth-humanoid-hardware-design.md) 的集成验收提供测试与可靠性依据。
 
 ## 核心原理
 
@@ -155,7 +155,7 @@ flowchart LR
 - [电机测功机](./motor-dynamometer.md) — L1/L2 台架核心设备与 TN 对账
 - [人形量产工程能力](./humanoid-mass-production-engineering.md) — L5 中试、良率与 PPAP 语境
 - [膝/腿主承力链为何通常避开谐波](./humanoid-knee-harmonic-drive-limits.md) — L1 冲击工况与谐波寿命
-- [Humanoid Practitioner Entry Roadmap](../../roadmap/humanoid-practitioner-entry-roadmap.md) — 测试/可靠性工程师切口
+- [人形整机硬件设计路线](../../roadmap/depth-humanoid-hardware-design.md) — 整机集成与验收
 - [Locomotion 任务页](../tasks/locomotion.md) — L4 动态性能试验对象
 
 ## 参考来源

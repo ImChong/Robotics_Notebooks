@@ -2,7 +2,7 @@
 type: concept
 tags: [embodied-foundation-model, hardware, codesign, humanoid, vla, data-loop, safety]
 status: complete
-updated: 2026-08-23
+updated: 2026-11-17
 related:
   - ../overview/hub-embodied-foundation-model.md
   - ./foundation-policy.md
@@ -11,7 +11,7 @@ related:
   - ./humanoid-mechanical-layout-design.md
   - ../overview/hub-cross-embodiment.md
   - ../overview/humanoid-hardware-101-technology-map.md
-  - ../../roadmap/humanoid-practitioner-entry-roadmap.md
+  - ../../roadmap/depth-humanoid-hardware-design.md
 sources:
   - ../../sources/blogs/wechat_zanehub_embodied_fm_why_self_develop_robot_body.md
 summary: "具身大模型的「通用」是任务泛化而非脱离本体：有效通用性受动作空间、传感闭环与安全边界约束；自研本体是为数据闭环、分层控制与仿真—标定—量产同线掌握系统定义权，而非与模型通用性矛盾。"
@@ -38,7 +38,7 @@ summary: "具身大模型的「通用」是任务泛化而非脱离本体：有�
 
 - **澄清「通用」两层含义**：模型层任务泛化（今天的主战场）与硬件层形态泛化（远未成熟）常被混谈，导致误判「自研本体 = 放弃通用」。
 - **解释产业现象**：Figure、特斯拉等「大模型 + 自研人形」不是走回封闭软硬绑定老路，而是把 **物理闭环** 放回讨论中心。
-- **给研发分阶段判据**：算法验证期可用成熟平台；产品交付期则本体、控制器、传感与售后须统一设计——见 [人形 practitioner 入场路线](../../roadmap/humanoid-practitioner-entry-roadmap.md)。
+- **给研发分阶段判据**：算法验证期可用成熟平台；产品交付期则本体、控制器、传感与售后须统一设计——见 [人形整机硬件设计路线](../../roadmap/depth-humanoid-hardware-design.md)。
 
 ## 核心原理
 

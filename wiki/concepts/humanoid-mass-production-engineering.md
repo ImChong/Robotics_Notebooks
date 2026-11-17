@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, manufacturing, dfm, supply-chain, reliability, yield]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-17
 related:
   - structure-tolerance-simulation-toolchain.md
   - ./embodied-foundation-model-hardware-codesign.md
@@ -13,7 +13,7 @@ related:
   - ../overview/humanoid-hardware-101-technology-map.md
   - ../queries/humanoid-hardware-selection.md
   - ../entities/unitree-g1.md
-  - ../../roadmap/humanoid-practitioner-entry-roadmap.md
+  - ../../roadmap/depth-humanoid-hardware-design.md
   - ./humanoid-testing-workflow.md
 original:
   - ../../sources/sites/nist-process-capability-acceptance-pcb-review.md
