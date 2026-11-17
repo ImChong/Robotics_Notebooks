@@ -5022,3 +5022,12 @@ a.card:active { transform: translateY(-1px); }
 .co-node-metadata .tt-health { margin: 0 8px 0 0; }
 .tt-routes { max-height: 140px; overflow-y: auto; }
 .tt-communities .detail-meta-badge, .tt-routes .detail-meta-badge { font-size: .72rem; }
+
+.tt-communities .detail-meta-badge, .tt-routes .detail-meta-badge {
+  max-width: 100%;
+  white-space: normal;
+  min-width: 0;
+}
+.tt-label-bilingual { display: flex; flex-direction: column; min-width: 0; line-height: 1.4; }
+.detail-meta-badge .tt-label-bilingual > span { overflow-wrap: anywhere; line-height: 1.4; }
+.tt-label-en { font-size: .9em; opacity: .8; }

@@ -60,3 +60,22 @@ test('page-path metadata resolves communities and all matching routes without a 
   assert.equal(api.resolveMetadataNode({ id: 'entity-gr00t' }), node);
   assert.ok(!api.buildNodeTooltipHtml({ health: { path: 'unknown.md' } }).includes('tt-routes'));
 });
+
+
+test('long bilingual tooltip badges place Chinese above English and keep short labels inline', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(tooltipSource, context);
+  context.window.RNDepthFilters = {
+    depthsForNode: () => ['long', 'short'],
+    DEPTH_META: {
+      long: { emoji: '🗺️', label: '扩散与流匹配策略（Diffusion & Flow Matching）' },
+      short: { emoji: '🗺️', label: '视觉动作（VLA）' }
+    }
+  };
+  const html = context.window.RNGraphTooltip.buildNodeTooltipHtml({
+    communityLabel: '机器人基础模型（Robot Foundation Models）社区'
+  });
+  assert.match(html, /tt-label-bilingual"><span>机器人基础模型<\/span><span class="tt-label-en" lang="en">Robot Foundation Models/);
+  assert.match(html, /tt-label-bilingual"><span>扩散与流匹配策略<\/span><span class="tt-label-en" lang="en">Diffusion &amp; Flow Matching/);
+  assert.match(html, /<span>视觉动作（VLA）<\/span>/);
+});

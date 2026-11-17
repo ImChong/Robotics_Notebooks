@@ -226,13 +226,13 @@
   }
 
   /** 与详情页一致的社区跳转按钮；communityColor 与图谱节点社区色一致 */
-  function buildCommunityBadgeHtml(communityId, communityLabel, communityColor) {
+  function buildCommunityBadgeHtml(communityId, communityLabel, communityColor, tooltip) {
     if (!communityId || !communityLabel) return '';
     var label = shortenCommunityLabel(communityLabel);
     return '<a class="detail-meta-badge detail-community-badge"' + communityBadgeStyleAttr(communityColor) +
       ' href="graph.html?community=' + encodeURIComponent(communityId) +
       '" title="在知识图谱中查看「' + escapeHtml(label) + '」社区视图">' +
-      '<span>🧭</span><span>' + escapeHtml(label) + '</span></a>';
+      '<span>🧭</span>' + (tooltip ? tooltipLabelHtml(communityLabel, true) : '<span>' + escapeHtml(label) + '</span>') + '</a>';
   }
 
   /**
@@ -395,7 +395,7 @@
   function buildTooltipCommunityHtml(communityLabel, communityColor) {
     if (!communityLabel) return '';
     return '<div class="tt-community"' + communityBadgeStyleAttr(communityColor) + '>' +
-      '<span aria-hidden="true">🧭</span><span>' + escapeHtml(shortenCommunityLabel(communityLabel)) + '</span></div>';
+      '<span aria-hidden="true">🧭</span>' + tooltipLabelHtml(communityLabel, true) + '</div>';
   }
 
   /**
@@ -406,6 +406,17 @@
     var api = window.RNNodeHealth;
     if (!api || !node || typeof node.health_score !== 'number') return '';
     return '<div class="tt-health"><span class="tt-health-label">健康度</span>' + api.renderMeta(node) + '</div>';
+  }
+
+  // 长双语标签在浮窗中分成中、英文两行，避免英文把中文挤成碎片。
+  function tooltipLabelHtml(label, shorten) {
+    label = String(label || '').replace(/\s*社区\s*$/, '').trim();
+    var bilingual = /^(.*?)\s*[（(]([^）)]+)[）)]$/.exec(label);
+    if (bilingual && label.length > 28) {
+      return '<span class="tt-label-bilingual"><span>' + escapeHtml(bilingual[1].trim()) + '</span>' +
+        '<span class="tt-label-en" lang="en">' + escapeHtml(bilingual[2].trim()) + '</span></span>';
+    }
+    return '<span>' + escapeHtml(shorten ? shortenCommunityLabel(label) : label) + '</span>';
   }
 
   // 共享图谱索引：全站链接预览与卡片按路径或 detail_id 查同一个知识节点。
@@ -431,13 +442,13 @@
     return metadataNodes[node.path || node.id] || node;
   }
 
-  function buildNodeCommunityBadgesHtml(node) {
+  function buildNodeCommunityBadgesHtml(node, tooltip) {
     node = resolveMetadataNode(node);
     return [node.community, node.community_secondary].filter(function (id, i, ids) {
       return id && ids.indexOf(id) === i;
     }).map(function (id) {
       var community = metadataCommunities[id];
-      return community ? buildCommunityBadgeHtml(id, community.label, metadataColors[id]) : '';
+      return community ? buildCommunityBadgeHtml(id, community.label, metadataColors[id], tooltip) : '';
     }).join('');
   }
 
@@ -449,7 +460,7 @@
     return '<div class="tt-routes"><span class="tt-health-label">所属路线</span>' + routes.map(function (key) {
       var meta = filters.DEPTH_META[key];
       return '<a class="detail-meta-badge" href="graph.html?depth=' + encodeURIComponent(key) + '">' +
-        '<span>' + escapeHtml(meta.emoji) + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
+        '<span>' + escapeHtml(meta.emoji) + '</span>' + tooltipLabelHtml(meta.label) + '</a>';
     }).join('') + '</div>';
   }
 
@@ -465,7 +476,7 @@
       ? '<div class="tt-summary">' + renderInlineMarkdown(prepareMathText(opts.summary)) + '</div>'
       : '';
     var node = resolveMetadataNode(opts.node || opts.health || {});
-    var community = buildNodeCommunityBadgesHtml(node);
+    var community = buildNodeCommunityBadgesHtml(node, true);
     community = community ? '<div class="tt-communities"><span class="tt-health-label">所属社区</span>' + community + '</div>'
       : buildTooltipCommunityHtml(opts.communityLabel, opts.communityColor);
     var routes = buildTooltipRoutesHtml(node);
