@@ -63,3 +63,12 @@
 - [KiCad 文档首页（版本选择）](https://docs.kicad.org/)
 - [KiCad 开发者文档](https://dev-docs.kicad.org/)
 - [KiCad 入门（10.0 zh PDF）](https://docs.kicad.org/10.0/zh/getting_started/) — 以站点当前路径为准
+
+## 官方英文入门全文复核（2026-11-16）
+
+- **原文：** [Getting Started in KiCad 10.0](https://docs.kicad.org/10.0/en/getting_started_in_kicad/getting_started_in_kicad.html)
+- **版本：** 页面标注 KiCad 10.0.8，文档 revision `8acc7624`；本次读取英文版，与上文中文入口区分。
+- **核对范围：** 完整入门正文：安装、工程与首次库配置、符号/连线/封装分配、ERC/PWR_FLAG/BOM、叠层/网络类、同步与板框、布局布线、覆铜重填、DRC、3D、Gerber/钻孔、自建符号/封装/库及 3D 模型关联。不包含各编辑器完整手册、源码或实际制板。
+- **通读：** 已完成
+
+关键边界：ERC 不能证明电路能工作；覆铜修改后需重填，导出制造文件前跑 DRC。工程级规则随 `.kicad_pro` 保存，孤立打开板文件可能丢失设计上下文。符号管脚保持 50 mil 网格；制造规则以板厂能力为准。

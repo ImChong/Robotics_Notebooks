@@ -3,13 +3,15 @@ type: entity
 project_id: opentac
 tags: [tactile-sensing, tactile-sensor, manipulation, open-source, simulation]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-16
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/contact-rich-manipulation.md
   - ../concepts/visuo-tactile-fusion.md
   - ./eflesh.md
   - ./paper-vtap-gripper.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/sites/opentac-project.md
   - ../../sources/repos/opentac.md
@@ -17,6 +19,8 @@ summary: "OpenTac 是一套开放的定制化触觉皮肤生态：从柔性 PCB 
 ---
 
 # OpenTac（可定制 3D 触觉皮肤生态）
+
+## 一句话定义
 
 **OpenTac** 是面向机器人任意可覆盖表面的开放触觉感知工具链。它将皮肤设计、制造、传感器读取、仿真、跨传感器数据映射和自适应采样放在一个共享 manifest 驱动的生态中；项目提供 [在线 CAD 设计器](https://opentac.github.io/cad/) 与 [官方代码](https://github.com/opentac/opentac)。
 
@@ -29,7 +33,7 @@ summary: "OpenTac 是一套开放的定制化触觉皮肤生态：从柔性 PCB 
 | TPU | Thermoplastic Polyurethane | 可打印的弹性材料，常用于剪切感知凸点外壳 |
 | DRC | Design Rule Check | 检查版图走线间距、边界等制造规则 |
 
-## 核心结构与力估计
+## 核心机制与力估计
 
 皮肤由柔性 PCB 上的交错电极 taxel 阵列、覆盖其上的压阻薄膜，以及外层结构组成。用于三维力估计时，外壳在每个 **2×2 taxel** 区域上方放置一个柔性凸点：
 
@@ -72,6 +76,19 @@ summary: "OpenTac 是一套开放的定制化触觉皮肤生态：从柔性 PCB 
 - [OpenTac 论文页](https://opentac.github.io/paper/)
 - [OpenTac 官方代码仓库](https://github.com/opentac/opentac)
 
+## 流程总览
+
+以下是官方 README 描述的功能与数据流；具体源码调用链以本页注明版本的时序图为准。
+
+```mermaid
+flowchart LR
+  N0["轮廓或曲面与 taxel 参数"]
+  N1["CAD 布局布线与制造文件"]
+  N2["manifest 配置读出或仿真"]
+  N3["触觉帧与跨布局映射"]
+  N0 --> N1 --> N2 --> N3
+```
+
 ## 源码运行时序图
 
 入口：`uv run opentac cad`（`pyproject.toml` 的 `[project.scripts]` 指向 `opentac.cli:main`；本图只覆盖 OpenTac-CAD 本地设计器的运行路径，未覆盖读板、仿真与传输）
@@ -113,6 +130,25 @@ sequenceDiagram
 
 ## 参考来源
 
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
+
 - [OpenTac 官方项目页与论文摘要](../../sources/sites/opentac-project.md)
 - [OpenTac 官方代码仓库归档](../../sources/repos/opentac.md)
 - 源码核对（2026-11-02）：opentac/opentac@e21a8ae，读过 README.md、pyproject.toml、opentac/cli.py、opentac/cad/launcher.py、opentac/cad/main.py（调用顺序）、opentac/cad/web/app.js；时序图依据以上文件，未运行代码。
+
+## 为什么重要
+
+机器人曲面上的触觉传感器需要把几何、制造与数据布局同步起来。共享 manifest 可将柔性 PCB 设计与读出、仿真和跨皮肤映射连接，减少各阶段分别维护布局的错误。
+
+## 工程实践
+
+先从小型平面轮廓生成设计，检查连接器方向、DRC 与 taxel 对应关系，再制造柔性 PCB 并配置读出板。力测量需针对材料与凸点标定；保存 manifest、制造包与标定版本。
+
+## 局限与风险
+
+完整扫描率与部分 taxel 更新率是不同指标。材料迟滞、装配偏移及未采样区域的旧值都会影响下游解释；本页列出的官方基准不能替代目标皮肤的实测。
+
+## 关联页面
+
+- [触觉感知](../concepts/tactile-sensing.md) — 模态与传感器路线。
+- [eFlesh](eflesh.md) — 磁性微结构的不同实现。

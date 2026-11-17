@@ -2,7 +2,7 @@
 type: overview
 tags: [hub, actuator-drive-chain, actuator, eda, foc, motor-control, ethercat, sim2real, hardware]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-16
 related:
   - ../entities/paper-lunadrive.md
   - ../queries/actuator-drive-chain-selection-loop.md
@@ -25,6 +25,8 @@ related:
   - ../methods/actuator-network.md
   - ../queries/ethercat-master-optimization.md
   - ../overview/motor-drive-firmware-bus-protocols.md
+original:
+  - ../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md
 sources:
   - ../../sources/sites/kicad-org.md
   - ../../sources/sites/altium-designer-primary-refs.md
@@ -98,9 +100,27 @@ summary: "执行器驱动链选型闭环知识链枢纽：把 EDA 电路设计 �
 
 ## 参考来源
 
+- [已有一手原文通读归档](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md) — 复用已归档的阅读记录，具体核对范围见该归档。
+
 - [KiCad 官网](../../sources/sites/kicad-org.md) — 开源 EDA 工具链
 - [Altium Designer 一手资料](../../sources/sites/altium-designer-primary-refs.md) — 商用 EDA
 - [SimpleFOC 仓库](../../sources/repos/simplefoc_arduino_foc.md) — 开源 FOC 驱动固件
 - [NeuralActuator 论文](../../sources/papers/neuralactuator_arxiv_2607_11734.md) — 神经执行器建模
 - [BAM-extended 论文](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md) — 执行器摩擦辨识
 - 本页归纳自 [驱动链选型闭环 Query](../queries/actuator-drive-chain-selection-loop.md) 及各驱动链实体/概念页
+
+## 核心原理
+
+驱动链把 EDA 电路约束、FOC 电流控制、执行器辨识与总线时序串成一个闭环：上一层的输出只有在下一层可测、可控时才形成系统能力。
+
+## 工程实践
+
+为每一层维护验收记录：PCB 的供电与采样波形、固件的电流阶跃、执行器的摩擦与热模型、集成后的时延和抖动。发生跟踪误差时按层定位，再回到同一轨迹回归。
+
+## 局限与风险
+
+器件数据手册额定值和单层仿真不能直接预测整机关节表现。不同散热、传动间隙、通信负载与控制周期下，应重新测量闭环能力。
+
+## 推荐继续阅读
+
+沿[驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)逐层选型，并用[FOC](../concepts/field-oriented-control.md)对齐电流环与机械输出的边界。

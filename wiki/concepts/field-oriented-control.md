@@ -2,7 +2,7 @@
 type: concept
 tags: [motor-control, embedded, bldc, stepper, actuators, firmware]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-16
 related:
   - ../entities/paper-lunadrive.md
   - ../formalizations/field-oriented-control-derivation.md
@@ -14,6 +14,8 @@ related:
   - ../formalizations/control-loop-latency-modeling.md
   - ../queries/sim2real-gap-reduction.md
   - ../queries/actuator-drive-chain-selection-loop.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/simplefoc_arduino_foc.md
   - ../../sources/sites/simplefoc_documentation.md
@@ -48,7 +50,7 @@ summary: "磁场定向控制（FOC）：通过 Clarke/Park 变换在旋转 dq �
 - **Sim2Real** 中仿真常把执行器简化为理想力矩源；真机 FOC 环延迟、饱和与电流限幅会造成跟踪误差（见 [Sim2Real 差距削减](../queries/sim2real-gap-reduction.md)）。
 - **DIY 与原型**：开源栈（如 [SimpleFOC](../entities/simplefoc.md)）让研究者在 MCU 上复现 FOC，用于云台、小型 BLDC、步进关节，而不必采购完整工业伺服。
 
-## 核心结构/机制
+## 核心机制
 
 ### 1) 物理直觉：90° 力矩条件
 
@@ -112,6 +114,8 @@ flowchart LR
 
 ## 参考来源
 
+- [官方实现 README 通读记录](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — SimpleFOC 控制示例 / UKMARSBOT 与 WolfieMouse 架构；未将推荐教材视为已读。
+
 - [sources/repos/simplefoc_arduino_foc.md](../../sources/repos/simplefoc_arduino_foc.md)
 - [sources/sites/simplefoc_documentation.md](../../sources/sites/simplefoc_documentation.md)
 - [SimpleFOC — Coordinate Transformations in FOC](https://docs.simplefoc.com/foc_theory)（外部理论页）
@@ -130,3 +134,11 @@ flowchart LR
 
 - [SimpleFOC Motion control 文档](https://docs.simplefoc.com/motion_control)
 - CiA 402 力矩模式与对象字典（工业伺服标准，见底软总览页外链）
+
+## 核心原理
+
+Clarke 变换把三相电流投影到静止坐标系，Park 变换再按电角度旋转到 dq 坐标系。电流调节器输出电压指令，经逆变换与 PWM 驱动功率级；编码器零位、相序和采样时刻共同决定闭环能否正确工作。
+
+## 工程实践
+
+先校验电流传感器偏置、增益与极性，再以限流低压校准电角度零位。记录电流阶跃、母线电压、饱和与温升；功率板修改后重新验证采样窗口，不能只复用旧 PI 增益。

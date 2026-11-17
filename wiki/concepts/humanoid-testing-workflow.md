@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, testing, reliability, manufacturing, standards, sim2real]
 status: complete
-updated: 2026-09-19
+updated: 2026-11-16
 related:
   - ./joint-module-self-development-workflow.md
   - ./humanoid-mass-production-engineering.md
@@ -12,6 +12,8 @@ related:
   - ../../roadmap/humanoid-practitioner-entry-roadmap.md
   - ../overview/humanoid-hardware-101-technology-map.md
   - ../tasks/locomotion.md
+original:
+  - ../../sources/blogs/wechat_zanehub_humanoid_testing_workflow_2026-09-19.md
 sources:
   - ../../sources/blogs/wechat_zanehub_humanoid_testing_workflow_2026-09-19.md
 summary: "人形机器人测试是 L0 仿真到 L5 场景化验收的六级递进链路：测试左移把部件/模组/子系统问题在前级暴露；双足动态平衡、AI 策略不可枚举与标准滞后使冲击工况、版本回归与研发/验收分离成为硬要求。"

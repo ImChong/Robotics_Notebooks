@@ -7,13 +7,15 @@ license: GPL-2.0
 institutions: [independent-maintainer]
 tags: [software, electronics, hardware, simulation, circuit-design, eda, spice, open-source]
 status: complete
-updated: 2026-10-24
+updated: 2026-11-16
 related:
   - ./kicad.md
   - ./altium-designer.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../queries/actuator-drive-chain-selection-loop.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/sites/qucs-s-official.md
   - ../../sources/repos/qucs-s.md
@@ -21,6 +23,8 @@ summary: "Qucs-S 是开源电路仿真 GUI，可绘制原理图并调用 Ngspice
 ---
 
 # Qucs-S（开源电路仿真 GUI）
+
+## 一句话定义
 
 **Qucs-S** 是一款开源电路绘图与仿真图形界面：用户绘制原理图、配置分析并查看波形，实际数值求解由外部仿真内核完成。
 
@@ -69,6 +73,19 @@ Qucs-S 官方主页列出 Vadim Kuznetsov 与 Mike Brinson 为项目创建者，
 - SPICE 模型兼容性由具体后端决定；同一模型未必能在不同引擎间直接复用。
 - 它不是 PCB 布局与制造工具，不能替代 [KiCad](./kicad.md) / [Altium Designer](./altium-designer.md) 的 PCB、DRC、Gerber 工作流。
 - 它不是机器人动力学仿真器，也不能验证实时固件、CAN 时序或整机 Sim2Real。
+
+## 流程总览
+
+以下是官方 README 描述的功能与数据流；具体源码调用链以本页注明版本的时序图为准。
+
+```mermaid
+flowchart LR
+  N0["原理图与器件模型"]
+  N1["Qucs-S 生成网表"]
+  N2["外部 Ngspice 等内核求解"]
+  N3["结果读取与波形显示"]
+  N0 --> N1 --> N2 --> N3
+```
 
 ## 源码运行时序图
 
@@ -126,6 +143,8 @@ sequenceDiagram
 - [执行器驱动链选型闭环知识链](../queries/actuator-drive-chain-selection-loop.md)
 
 ## 参考来源
+
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
 
 - [Qucs-S 官方项目主页归档](../../sources/sites/qucs-s-official.md)
 - [Qucs-S 官方源码归档](../../sources/repos/qucs-s.md)

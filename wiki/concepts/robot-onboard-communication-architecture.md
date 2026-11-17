@@ -2,7 +2,7 @@
 type: concept
 tags: [humanoid, hardware, communication-design, bus, topology, clock-sync, latency-budget, ethercat, can]
 status: complete
-updated: 2026-07-25
+updated: 2026-11-16
 related:
   - ./humanoid-mechanical-layout-design.md
   - ./robot-power-distribution-architecture.md
@@ -15,6 +15,8 @@ related:
   - ../formalizations/control-loop-latency-modeling.md
   - ../queries/ethercat-master-optimization.md
   - ../../roadmap/depth-humanoid-hardware-design.md
+original:
+  - ../../sources/sites/cia_can_canopen_canfd_hs_reading_mdfbp1.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
 summary: "整机通信架构把「用哪种总线」升级为「怎么分域、怎么布拓扑、时钟怎么对齐、端到端延迟预算怎么分」：实时关节域、传感器数据域、运维计算域三层分治，用带宽计算与延迟预算表验收，而不是靠试出来的心跳周期。"
@@ -134,6 +136,8 @@ flowchart TB
 - [硬件通信与协议知识链](../overview/hub-communication.md)
 
 ## 参考来源
+
+- [一手原文阅读记录](../../sources/sites/cia_can_canopen_canfd_hs_reading_mdfbp1.md) — 复用已有通读归档；仅支持总线能力 / 失电安全边界，系统分域和预算表仍是工程归纳。
 
 - [Humanoid Hardware 101 微信长文编译](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — 整机电子与链路的部件级视角
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md) 及其 sources

@@ -163,6 +163,7 @@ flowchart LR
 
 ### 推荐读什么
 - [ManiLadder](../wiki/entities/paper-maniladder-manipulation-benchmark.md) — Stage 3 将 112 项操作任务按四难度级及任务族校准，用 AL@50 暴露平均成功率无法体现的能力短板（官方项目代码待核实）
+- [RoboLab-120（NVIDIA）](../wiki/entities/robolab.md) — 120 项桌面通用操作任务，聚焦真机训练策略零样本仿真评测、成功率/子任务得分/执行事件与语言、视觉扰动；与 RoboDojo 的 sim+real 协议互补。
 - [RoboDojo](../wiki/entities/robodojo.md) — 统一 sim-and-real 评测：42 仿真五维任务 + 18 真机任务，Isaac 异构并行 + RealEval 云真机；verified 上榜须开源训推与权重
 - [2026 BEHAVIOR Challenge](../wiki/entities/behavior-challenge-2026.md) — 100 项长程家务任务的赛事协议：主排名 Q-score 是末状态 BDDL 谓词部分完成度，不等于 full-task success；同时核对 RGB-D+proprio 观测限制与公开/隐藏实例划分
 - [机器人操作基准审计](../wiki/entities/paper-manipulation-benchmark-audit.md) — 检查语言捷径、统计显著性、测试条件过拟合与训练数据来源，作为解释 LIBERO/CALVIN 等高分的对照读物
@@ -246,6 +247,7 @@ flowchart LR
 - [仿真 vs 真机评测 gap](../wiki/concepts/sim-vs-real-eval-gap.md) — 可复现性 ↔ 代表性代价表与缩小 gap 的三条工程路线
 - [仿真评测基础设施](../wiki/concepts/simulation-evaluation-infrastructure.md) — 把评测当可扩展闭环基建，把迭代速度从墙钟瓶颈换成算力瓶颈的前提条件
 - [Bet4Sim2Real](../wiki/entities/paper-bet4sim2real.md) — 仿真库逐次下注换 anytime-valid 真机性能证书，平均收窄 51.6%；G1/NIST/Go2 回放已开源
+- [RoboLab-120（NVIDIA）](../wiki/entities/robolab.md) — arXiv v4 报告跨策略仿真与 RoboArena 真机排名 Spearman ρ=0.94；它是聚合排名相关，不意味着逐任务或绝对 SR 的可迁移性。
 - [RoboDojo](../wiki/entities/robodojo.md) 的 RealEval 云真机— 标准化真机侧的一种现成答案
 - [Sim-to-Real 迁移下的策略评测](../wiki/entities/paper-sa-2508-11117-robot-policy-evaluation-for-sim-to-real-transfer.md) · [高斯重建做 real-to-sim 策略评测](../wiki/entities/paper-sa-2511-04665-real-to-sim-robot-policy-evaluation-with-gaussia.md)
 - [Sim2Real 纵深](depth-sim2real.md) · [Real2Sim 纵深](depth-real2sim.md) — 迁移侧与资产侧的展开版

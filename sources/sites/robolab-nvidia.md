@@ -13,6 +13,14 @@
 - **入库日期：** 2026-09-14
 - **一句话说明：** 面向**真机数据训练、零样本进仿真**的通用操纵策略评测平台：RoboLab-120 任务、三能力轴×三难度、场景/任务/agent 生成工作流、NPE 敏感性分析与 RoboArena 真机排名 **Spearman ρ=0.94**。
 
+## 本次官方页面复核（2026-11-17）
+
+- **核对范围：** NVIDIA SRL 项目页 Framework、Benchmark、论文与代码入口，官方动态 Leaderboard（网页当日读取快照）及 NVLabs README/Changelog；官方榜单会持续变化。
+- **通读：** 已完成
+- **开放情况：** 官方项目页指向 <https://github.com/NVlabs/RoboLab>；框架/任务资产仍公开，单个上榜模型的权重和客户端并非都公开。
+- **最新榜单样本：** 页面当前显示 AMP1 86.0%（2579/3000 episodes）、SenseNova-RoboRSI 57.1%（685/1200）、Lakeside 51.0%（1531/3000）、BiMind v0.5 49.2%（590/1200）、Praxis-1 46.2%（555/1200）。该截图式记录不等于同一实验协议下的可比结果。
+- **复核链接：** <https://research.nvidia.com/labs/srl/projects/robolab/leaderboard.html>；请在比较前固定指令档位、模型筛选条件和测试数量。
+
 ## 开源核查（步骤 2.5，2026-09-14）
 
 | 资源 | 状态 | 说明 |
@@ -32,7 +40,7 @@
 | Leaderboard | RoboLab-120 Overall；按难度/能力轴拆分；语言 specificity（Vague/Default/Specific） |
 | Sim-Real | 与 RoboArena Elo **Spearman ρ=0.94** |
 
-## Leaderboard 快照（Default 指令，2026-09-14 页上数据）
+## 历史 Leaderboard 快照（Default 指令，2026-09-14 页上数据；非当前榜）
 
 | 排名 | 策略 | SR% | Score |
 |------|------|-----|-------|

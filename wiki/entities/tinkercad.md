@@ -2,7 +2,7 @@
 type: entity
 tags: [software, cad, education, simulation, embedded, arduino, circuits, autodesk, stem, maker]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-16
 related:
   - ./wokwi.md
   - ./freecad.md
@@ -12,6 +12,8 @@ related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../concepts/text-to-cad.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
+original:
+  - ../../sources/courses/tinkercad-official-guide-pcb-review.md
 sources:
   - ../../sources/sites/tinkercad-com.md
 summary: "Tinkercad：Autodesk 免费浏览器端 STEM 平台，整合 3D 设计、Arduino/micro:bit 电路仿真与 Codeblocks 积木编程；适合机器人启蒙与焊板前入门，不是开源 CAD、制造级 EDA 或 RL 物理仿真器。"
@@ -106,6 +108,24 @@ flowchart LR
 - **几何与许可** — 导出多为网格；复杂参数与装配语义会在转制造 CAD 时丢失。产品闭源，机构数据与课堂内容受 Autodesk ToS / 隐私策略约束。
 - **研究复现不适用** — 不提供可版本锁定的开源仿真内核，不宜作为论文实验环境依赖。
 
+## 官方入门指南核对
+
+[Autodesk 官方 Getting Started Guide](../../sources/courses/tinkercad-official-guide-pcb-review.md)完整介绍了 3D Design、Circuits、Codeblocks、Classrooms 与 Sim Lab。Circuits 的明确流程是摆放和连接虚拟器件、从 starter circuits 开始、使用 Arduino/micro:bit 图形块或文本编程，再查看原理图和仿真响应；Codeblocks 则服务参数化 3D 造型。
+
+这是一份可读取的官方 PDF，替代本环境中无法取得正文的动态官网；它没有承诺制造级 DRC、研究级机器人接触动力学或实物电路的精确误差模型。本次未注册账号或宣称完成在线产品实测。
+
+## 源码运行时序图
+
+不适用：Tinkercad 是闭源托管产品，官方入门指南未提供可审计的仿真内核源码。下图是官方指南的用户工作流，不是内部源码调用链。
+
+```mermaid
+flowchart LR
+  Parts["放置与连接虚拟器件"] --> Code["配置 Arduino 或 micro:bit 程序"]
+  Code --> Sim["仿真并观察响应"]
+  Sim --> Revise["修改连接或程序"]
+  Revise --> Sim
+```
+
 ## 关联页面
 
 - [Wokwi](./wokwi.md) — 工程向浏览器 MCU/外设仿真（ESP32/STM32/CI）
@@ -118,6 +138,8 @@ flowchart LR
 - [Humanoid Hardware 101 · 电源与电子](../overview/humanoid-hardware-101-power-compute-electronics.md)
 
 ## 参考来源
+
+- [Autodesk Tinkercad Getting Started Guide 全文复核](../../sources/courses/tinkercad-official-guide-pcb-review.md) — 本次实际读完的一手资料与核对边界。
 
 - [Tinkercad 官网归档](../../sources/sites/tinkercad-com.md)
 - [Tinkercad 官网](https://www.tinkercad.com/)

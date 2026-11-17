@@ -2,13 +2,15 @@
 type: concept
 tags: [middleware, hardware, protocol, can-fd, fieldbus, embedded, robotics, humanoid]
 status: complete
-updated: 2026-08-12
+updated: 2026-11-16
 related:
   - ./can-bus-protocol.md
   - ./ethercat-protocol.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../formalizations/control-loop-latency-modeling.md
+original:
+  - ../../sources/sites/cia_can_fd_basic_idea.md
 sources:
   - ../../sources/sites/cia_can_fd_basic_idea.md
   - ../../sources/sites/cia_canopen_overview.md
@@ -108,6 +110,8 @@ flowchart LR
 
 ## 参考来源
 
+- [已有一手原文通读归档](../../sources/sites/cia_can_fd_basic_idea.md) — 复用已归档的阅读记录，具体核对范围见该归档。
+
 - [CiA：CAN FD 基本思想](../../sources/sites/cia_can_fd_basic_idea.md)
 - [CiA：CANopen 概览](../../sources/sites/cia_canopen_overview.md)
 - [CiA / DroneCAN](../../sources/sites/cia_dronecan_uavcan.md)
@@ -118,3 +122,7 @@ flowchart LR
 - CiA：[CAN FD – The basic idea](https://www.can-cia.org/can-knowledge/can-fd-the-basic-idea/)
 - CiA：[CANopen FD](https://www.can-cia.org/can-knowledge/canopen-fd-the-art-of-embedded-networking/)
 - 公众号原文：<https://mp.weixin.qq.com/s/UvjlH1bCsZwNHC2_z12cBg>
+
+## 局限与风险
+
+CAN FD 控制器不能让经典 CAN 节点自动兼容 FD 帧；数据段提速还受收发器、线缆拓扑和采样点限制。板级验收需在最远节点、最大总线负载下测错误计数与端到端延迟。

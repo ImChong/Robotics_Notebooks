@@ -2,13 +2,15 @@
 type: concept
 tags: [hardware, protocol, uart, ttl, cmos, embedded, debugging, robotics]
 status: complete
-updated: 2026-06-10
+updated: 2026-11-16
 related:
   - ./uart-serial-communication.md
   - ./rs-232-serial-interface.md
   - ./rs-485-serial-bus.md
   - ./can-bus-protocol.md
   - ../queries/real-time-control-middleware-guide.md
+original:
+  - ../../sources/sites/adi-serial-ti-level-translation-pcb-review.md
 sources:
   - ../../sources/sites/ttl_uart_logic_level_primary_refs.md
   - ../../sources/courses/uart_rs485_serial_embedded.md
@@ -113,6 +115,8 @@ flowchart LR
 
 ## 参考来源
 
+- [ADI 串行接口与 TI 电平转换官方资料复核](../../sources/sites/adi-serial-ti-level-translation-pcb-review.md) — 本次实际读完的一手资料与核对边界。
+
 - [TTL / CMOS UART 逻辑电平一手资料索引](../../sources/sites/ttl_uart_logic_level_primary_refs.md)
 - [UART / RS-485 嵌入式入门索引](../../sources/courses/uart_rs485_serial_embedded.md)
 
@@ -120,3 +124,17 @@ flowchart LR
 
 - SparkFun [Logic Levels](https://learn.sparkfun.com/tutorials/logic-levels)
 - Wikipedia：[Universal asynchronous receiver-transmitter](https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter)
+
+## 官方资料核对：跨电源域转换
+
+[TI SN74LVC1T45 官方技术正文](../../sources/sites/adi-serial-ti-level-translation-pcb-review.md)给出一个可核对的实现：A、B 端跟随各自供电，允许 1.65–5.5 V 电源域，`DIR` 由 VCCA 域驱动并明确选择传输方向。因此它不是自动判断 TX/RX 的通用双向转换器，UART 的两个单向数据路径应分别安排方向。
+
+该器件的 `Ioff` 与电源接地时端口高阻功能用于部分断电、防反灌；产品名中的 **VCC isolation 不等于安全电隔离屏障**。TTL/CMOS 的阈值、容忍电压和上电顺序仍按所选 MCU 与器件核对，不能从“3.3 V 串口”这个名称推定。
+
+## 工程实践
+
+对照发送端 VOH/VOL、接收端 VIH/VIL 与绝对最大额定值逐项检查跨压域兼容性。先共地、确认 USB 串口适配器电平，再交叉连接 TX/RX；电源跳线电压不必等于信号电平。
+
+## 局限与风险
+
+“TTL 串口”是常见口语，现代 MCU 引脚可能采用 CMOS 阈值；不能据名称推断 5 V 容忍。短线直连的成功结果不能外推到长线或电机开关噪声环境。

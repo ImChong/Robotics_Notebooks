@@ -2,7 +2,7 @@
 type: entity
 tags: [software, eda, pcb, hardware, open-source, embedded, manufacturing, kicad]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-16
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../overview/humanoid-hardware-101-power-compute-electronics.md
@@ -20,6 +20,8 @@ related:
   - ../concepts/field-oriented-control.md
   - ./wolfiemouse.md
   - ../concepts/micromouse.md
+original:
+  - ../../sources/courses/kicad_docs_10_zh.md
 sources:
   - ../../sources/sites/kicad-org.md
   - ../../sources/courses/kicad_docs_10_zh.md

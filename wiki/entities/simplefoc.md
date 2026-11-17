@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, framework, motor-control, foc, bldc, embedded, open-source, simplefoc]
 status: complete
-updated: 2026-11-03
+updated: 2026-11-16
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../comparisons/open-source-qdd-actuator-projects.md
@@ -18,6 +18,8 @@ related:
   - ../concepts/can-bus-protocol.md
   - ../../roadmap/depth-torque-motor-design.md
   - ../overview/cpp-motion-control-open-source-libraries-map.md
+original:
+  - ../../sources/repos/pcb-design-readme-review-2026-11-16.md
 sources:
   - ../../sources/repos/simplefoc_arduino_foc.md
   - ../../sources/sites/simplefoc_documentation.md
@@ -28,7 +30,13 @@ summary: "SimpleFOC 是社区驱动的开源 FOC 生态：Arduino-FOC 库、官�
 
 # SimpleFOC（Arduino-FOC 生态）
 
+## 一句话定义
+
 **SimpleFOC** 指围绕 [Arduino-FOC](https://github.com/simplefoc/Arduino-FOC) 库形成的开源项目：跨 MCU 的 **磁场定向控制** 实现、模块化硬件对象（电机 / 驱动 / 传感器 / 电流采样）、官方低成本驱动板，以及活跃的文档与社区（[simplefoc.com](https://simplefoc.com/) · [docs.simplefoc.com](https://docs.simplefoc.com/) · [community.simplefoc.com](https://community.simplefoc.com/)）。
+
+## 一句话定义
+
+SimpleFOC 是以 C++ 库、参考驱动板和官方文档组成的跨平台 FOC 生态，用于组合电机、传感器、驱动器与微控制器。
 
 ## 英文缩写速查
 
@@ -48,7 +56,7 @@ summary: "SimpleFOC 是社区驱动的开源 FOC 生态：Arduino-FOC 库、官�
 - 与仓库已有的 [电机底软通信总览](../overview/motor-drive-firmware-bus-protocols.md) 互补：后者讲 CANopen/私有帧 **协议**；SimpleFOC 讲 **算法与嵌入式实现**。
 - 学生项目、云台、小型执行器、开源人形/四足的 **自研关节板** 常见引用；v2.4 起支持 `estimated_current`、多电机电流采样与 ESP32/STM32 优化，工程可用性提升。
 
-## 核心结构/机制
+## 核心机制
 
 ### 软件：Arduino SimpleFOClibrary
 
@@ -127,6 +135,8 @@ flowchart TB
 
 ## 参考来源
 
+- [官方 README 通读复核（2026-11-16）](../../sources/repos/pcb-design-readme-review-2026-11-16.md) — 完整正文、版本校验与复现边界。
+
 - [sources/repos/simplefoc_arduino_foc.md](../../sources/repos/simplefoc_arduino_foc.md)
 - [sources/sites/simplefoc_documentation.md](../../sources/sites/simplefoc_documentation.md)
 - [simplefoc/Arduino-FOC](https://github.com/simplefoc/Arduino-FOC)
@@ -136,3 +146,7 @@ flowchart TB
 
 - [Theory corner](https://docs.simplefoc.com/theory_corner) — PID、对齐与滤波
 - [Motor parameter measurement](https://docs.simplefoc.com/) — 文档内电机参数测量指南（docs 导航）
+
+## 工程实践
+
+先选驱动器与位置传感器并限制电源电压、电流，完成 sensor、driver、motor 初始化及 initFOC 校准。主循环持续调用 loopFOC 与 move；有电流采样时还须检查相序、极性与采样同步。
