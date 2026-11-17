@@ -140,8 +140,10 @@ sequenceDiagram
   Tr->>Data: prepare_dataset()
   Data-->>Tr: 训练 batch
   Tr->>Models: prepare_models()
-  Tr->>Opt: prepare_trainable_parameters(); prepare_optimizer()
-  Tr->>Opt: prepare_for_training(); prepare_trackers()
+  Tr->>Opt: prepare_trainable_parameters()
+  Tr->>Opt: prepare_optimizer()
+  Tr->>Opt: prepare_for_training()
+  Tr->>Opt: prepare_trackers()
   Tr->>Models: train() / Stage I 未来视触觉 latent flow matching
   Models-->>CLI: Stage I checkpoint
   CLI->>Main: --config_file stage2_vtam.yaml (model_path 指向 Stage I)
