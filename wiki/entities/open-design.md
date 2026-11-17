@@ -20,6 +20,8 @@ related:
   - ./anthropic-frontend-design-skill.md
   - ../concepts/model-context-protocol.md
   - ../concepts/agentic-coding-software-fundamentals.md
+  - ../tasks/teleoperation.md
+  - ../tasks/autonomous-exploration.md
 sources:
   - ../../sources/repos/nexu-io-open-design.md
   - ../../sources/sites/open-design-ai.md
@@ -126,6 +128,8 @@ sequenceDiagram
 - [frontend-design（Anthropic 官方 Skill）](anthropic-frontend-design-skill.md) — 设计规约，不是完整工作区。
 - [Model Context Protocol](../concepts/model-context-protocol.md) — MCP 接口及工具权限边界。
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 设计转生产代码所需的软件工程保障。
+- [机器人遥操作](../tasks/teleoperation.md) — 可探索遥操作操作台的 UI 原型；不代表 OpenDesign 提供机器人控制链路。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 可探索地图覆盖率与任务进度监控面板原型；规划和状态估计仍由机器人系统实现。
 
 ## 参考来源
 
