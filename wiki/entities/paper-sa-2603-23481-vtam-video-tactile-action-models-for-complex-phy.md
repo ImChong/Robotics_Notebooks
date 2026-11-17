@@ -133,17 +133,17 @@ sequenceDiagram
   participant Tr as "runner/ge_trainer.py Trainer"
   participant Data as "CustomLeRobotDataset / DataLoader"
   participant Models as "LTX VAE / Video DiT / Action Expert"
-  participant Opt as "Accelerate / optimizer"
+  participant Acc as "Accelerate / optimizer"
   CLI->>Main: --config_file stage1_world_model.yaml
   Main->>Tr: import_custom_class("Trainer", runner/ge_trainer.py)
   Main->>Tr: Trainer(config)
   Tr->>Data: prepare_dataset()
   Data-->>Tr: 训练 batch
   Tr->>Models: prepare_models()
-  Tr->>Opt: prepare_trainable_parameters()
-  Tr->>Opt: prepare_optimizer()
-  Tr->>Opt: prepare_for_training()
-  Tr->>Opt: prepare_trackers()
+  Tr->>Acc: prepare_trainable_parameters()
+  Tr->>Acc: prepare_optimizer()
+  Tr->>Acc: prepare_for_training()
+  Tr->>Acc: prepare_trackers()
   Tr->>Models: train() / Stage I 未来视触觉 latent flow matching
   Models-->>CLI: Stage I checkpoint
   CLI->>Main: --config_file stage2_vtam.yaml (model_path 指向 Stage I)
