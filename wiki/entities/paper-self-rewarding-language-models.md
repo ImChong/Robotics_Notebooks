@@ -3,12 +3,13 @@ type: entity
 project_id: self-rewarding-language-models
 tags: [paper, llm, self-reward, dpo, preference-optimization, reward-modeling, recursive-self-improvement, meta, nyu]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-17
 arxiv: "2401.10020"
 related:
   - ../concepts/recursive-self-improvement.md
   - ./paper-rsi-survey-2607-07663.md
   - ./paper-self-refine-2303-17651.md
+  - ./paper-spin-self-play-fine-tuning.md
   - ../queries/rsi-four-tier-five-pushes.md
   - ../../roadmap/depth-rsi.md
 sources:
@@ -134,6 +135,7 @@ flowchart TD
 | 传统 RLHF | 人类偏好 → 固定奖励模型 | 模型参数 | 奖励模型训练后冻结 |
 | RLAIF + 独立 judge | 外部 AI judge / 奖励模型 | 模型参数 | judge 通常不随生成器一起改进 |
 | [Self-Refine](./paper-self-refine-2303-17651.md) | 同模型文字反馈 | 当前回答（推理期） | 不用偏好对训练权重 |
+| [SPIN（自博弈微调）](./paper-spin-self-play-fine-tuning.md) | 现有 SFT 参考回答 vs 上一轮模型生成负例（不让模型自评分） | 模型参数（相对历史模型 log-ratio） | SPIN 用固定 SFT 目标分布作正例，本文则由同一模型自评并生成偏好对 |
 | **Self-Rewarding** | 当前模型自评候选 | 模型参数（Iterative DPO） | 生成器与评审器合一 |
 | [开放式 RSI](../concepts/recursive-self-improvement.md) | 需可信外部验证与治理 | 可能包含改进机制和后继模型设计 | 本论文没有证明自主设目标/自治设计后继者 |
 
