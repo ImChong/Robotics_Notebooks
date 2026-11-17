@@ -79,3 +79,25 @@ test('long bilingual tooltip badges place Chinese above English and keep short l
   assert.match(html, /tt-label-bilingual"><span>扩散与流匹配策略<\/span><span class="tt-label-en" lang="en">（Diffusion &amp; Flow Matching）/);
   assert.match(html, /<span>视觉动作（VLA）<\/span>/);
 });
+
+test('split community and route labels preserve their original full-width or ASCII parentheses', () => {
+  const context = vm.createContext({ window: {} });
+  vm.runInContext(tooltipSource, context);
+  const api = context.window.RNGraphTooltip;
+  for (const [open, close] of [['（', '）'], ['(', ')']]) {
+    const english = open + 'Robot Foundation Models' + close;
+    const label = '机器人基础模型' + english;
+    context.window.RNDepthFilters = {
+      depthsForNode: () => ['bfm'],
+      DEPTH_META: { bfm: { emoji: '🗺️', label } }
+    };
+    api.setGraphData({
+      nodes: [{ id: 'wiki/example.md', community: 'example' }],
+      communities: [{ id: 'example', label: label + ' 社区' }]
+    });
+    const html = api.buildNodeTooltipHtml({ health: { path: 'wiki/example.md' } });
+    const englishLines = [...html.matchAll(/class="tt-label-en" lang="en">([^<]+)<\/span>/g)]
+      .map(match => match[1]);
+    assert.deepEqual(englishLines, [english, english], 'both community and route retain ' + open + close);
+  }
+});
