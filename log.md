@@ -468,6 +468,11 @@ op: ingest
 - 本次 29 篇均有健康度 3/3 的结构化判据；最终以报告脚本与 CI 实测为准。
 - [29 篇阅读坐标](../wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
 
+## [2026-11-17] ingest | Karpo Decision 全尺寸结构化决策模型、源码路径与许可核对
+- 归档 MachinePulse 的 0.8B–31B 六款公开模型及 `Decider` / System One 可运行推理入口，建立 [Karpo Decision](../wiki/entities/karpo-decision.md) 实体并交叉关联 AI Agent 评测。
+- 核心机制：共享状态下对 `choice` / `noul` / `score` 候选一次性概率读出；Qwen3.5 和 Gemma 4 的编码/注意力路径需区分。
+- 开放边界：推理仓 Apache-2.0，模型卡报告权重许可在 2026-11-12 后变更；性能是 Decision Index 口径，不推断真机控制结果。
+
 ## [2026-11-17] ingest | sources/sites/robbyant-embodied-ai-challenge-2026.md — 归档蚂蚁灵波具身大模型挑战赛官方赛题并关联 VLA / RoboTwin 测评链
 
 - 依据阿里云天池主办方赛事介绍与赛题资料，新增独立竞赛知识实体和赛事流程 Mermaid；关联 LingBot-VLA 2.0、RoboTwin 2.0 及具身模型测评纵深 Stage 3。
