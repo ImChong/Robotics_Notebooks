@@ -192,6 +192,7 @@ flowchart LR
 - 挑一类长尾失败（滑脱、遮挡、错抓），用生成式增强补 200 条，验证补的是不是模型真正缺的分布
 
 ### 推荐读什么
+- [TouchTwin：真实触觉约束的数据增广](../wiki/entities/paper-touchtwin-2611-17619.md)：同步真实触觉与 MuJoCo 物理回放，扩充有力标签的示范。
 - [Generative Data Augmentation](../wiki/methods/generative-data-augmentation.md) — 长尾与罕见物理交互的低成本合成
 - [VBot Exo2Ego Policy](../wiki/entities/paper-vbot-exo2ego-policy.md) — 第三人称操作视频经 MiniMax-H3/LoRA 生成第一视角 RGB；训练期几何退火与手–物监督，推理无需目标相机标定；使用前须验证合成接触/动作的真实性
 - [ARSTAG](../wiki/entities/paper-arstag.md) — 单图与任务指令经场景重建、专家生成和扩增产出仿真示范，归合成数据支路，不当作实机采集装置

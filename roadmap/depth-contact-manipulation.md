@@ -119,6 +119,7 @@ flowchart LR
 - 有哪些专门针对 contact-rich 的学习方法
 
 ### 推荐读什么
+- [XHAND 1 Pro-U：DexUMI 兼容灵巧手](../wiki/entities/xhand-1-pro-u.md)：对齐外骨骼示教关节与五指手动作映射。
 - [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md)
 - [Demo Data Collection Guide](../wiki/queries/demo-data-collection-guide.md)
 - [Tactile Sensing](../wiki/concepts/tactile-sensing.md) 与 [视触融合](../wiki/concepts/visuo-tactile-fusion.md)
