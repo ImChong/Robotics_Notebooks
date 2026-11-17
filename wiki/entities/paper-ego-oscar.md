@@ -13,8 +13,13 @@ tags:
   - robot-free
   - fpv-labs
 status: complete
-updated: 2026-09-15
+updated: 2026-11-17
+project_id: ego-oscar
+project: https://www.fpvlabs.ai/ego-oscar
+code: https://github.com/fpv-labs/ego-oscar
 arxiv: "2608.08285"
+original:
+  - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
 related:
   - ../overview/ego-category-01-data-collection.md
   - ./paper-ego4d.md
@@ -29,13 +34,14 @@ related:
 sources:
   - ../../sources/papers/ego_oscar_arxiv_2608_08285.md
   - ../../sources/sites/fpvlabs-ego-oscar.md
+  - ../../sources/repos/fpv-labs-ego-oscar.md
   - ../../sources/datasets/stereo-550.md
-summary: "Ego-OSCAR（arXiv:2608.08285，第一人称视觉实验室 / FPV Labs）：~USD 200 开源硬件头戴硬同步全局快门立体+IMU 采集系统；Stereo-550（~550 h/相机，gated）验证众包部署；评测传感器/可用性而非策略增益；采集 GitHub 截至入库日未列。"
+summary: "Ego-OSCAR（arXiv:2608.08285，第一人称视觉实验室 / FPV Labs）：~USD 200 开源硬件头戴硬同步全局快门立体+IMU 采集系统；Stereo-550（~550 h/相机，gated）验证众包部署；评测传感器/可用性而非策略增益；官方采集固件与 Radxa 录制器现已公开；数据集仍需 gated access。"
 ---
 
 # Ego-OSCAR / Stereo-550（开源硬件第一人称立体惯性采集）
 
-**Ego-OSCAR**（*Egocentric Open source Stereo CAptuRe System*，[arXiv:2608.08285](https://arxiv.org/abs/2608.08285)，[3D 页](https://www.fpvlabs.ai/ego-oscar/cap)，[HF Stereo-550](https://huggingface.co/datasets/fpvlabs/stereo-550)）由 **第一人称视觉实验室（FPV Labs）** 提出：用仅 COTS + 3D 打印、BoM **~USD 200** 的头戴装置，提供 **硬件同步全局快门立体 RGB + 6 轴 IMU + 嵌入式硬编码 + MCU 看门狗**，并把分布式贡献者网络采到的 **~550 h/相机** 标定立体语料（**Stereo-550** / Ego-OSCAR-550h）连同稠密自由格式动作字幕一并发布。
+**Ego-OSCAR**（*Egocentric Open source Stereo CAptuRe System*，[arXiv:2608.08285v3](https://arxiv.org/abs/2608.08285)，[官方项目说明](https://www.fpvlabs.ai/ego-oscar)，[GitHub 采集代码](https://github.com/fpv-labs/ego-oscar)，[HF Stereo-550](https://huggingface.co/datasets/fpvlabs/stereo-550)）由 **第一人称视觉实验室（FPV Labs）** 提出：用仅 COTS + 3D 打印、BoM **~USD 200** 的头戴装置，提供 **硬件同步全局快门立体 RGB + 6 轴 IMU + 嵌入式硬编码 + MCU 看门狗**，并把分布式贡献者网络采到的 **~550 h/相机** 标定立体语料（**Stereo-550** / Ego-OSCAR-550h）连同稠密自由格式动作字幕一并发布。
 
 ## 一句话定义
 
@@ -66,10 +72,10 @@ summary: "Ego-OSCAR（arXiv:2608.08285，第一人称视觉实验室 / FPV Labs�
 |----|------|
 | **机构** | 第一人称视觉实验室（FPV Labs） |
 | **BoM** | **~USD 200** / 台（论文 Table 1） |
-| **传感** | 硬同步全局快门立体 1280×720@30，FOV 126°，基线 **42 mm**；ICM-20948 6 轴 IMU（论文 120 Hz） |
+| **传感** | 硬同步全局快门立体 1280×720@30，FOV 126°，基线 **42 mm**；ICM-20948 6 轴 IMU（论文 v3 与公开录制器为 180 Hz；官网博客仍写 120 Hz） |
 | **计算** | Radxa Rock 5C（RK3588 硬编）；Xiao ESP32-S3（同步/UX/看门狗） |
 | **语料** | **≈550 h/相机**，1,462 sessions，209,315 动作段；IMU 86.9% 会话 |
-| **开源（截至 2026-08-12）** | **部分开源** — HF **Stereo-550**（gated + 定制许可）+ Hardware Spec PDF + 3D 页；**采集软件/CAD GitHub 未列** |
+| **开源（2026-11-17 复核）** | **采集栈已开源**：[fpv-labs/ego-oscar](https://github.com/fpv-labs/ego-oscar)（Apache-2.0，ESP32 固件、Radxa 录制器和诊断脚本）；DIY 指南提供 CAD/装配；**Stereo-550** 数据仍 gated 且有定制许可 |
 
 ## 核心原理
 
@@ -110,7 +116,44 @@ flowchart TB
 
 ## 源码运行时序图
 
-**不适用（官方无可运行采集/训练入口）。** 截至 **2026-08-12**：可公开获取的是 [Stereo-550](https://huggingface.co/datasets/fpvlabs/stereo-550)（gated）、[Hardware Spec PDF](https://drive.google.com/file/d/1ZMgKqFdM65cAtcaI2s7SHr3Z-DljlHbe/view) 与 [3D 页](https://www.fpvlabs.ai/ego-oscar/cap)；`fpv-labs` org 公开仓为手机向 Stera，**无** Ego-OSCAR 录制 daemon / 固件 / CAD 的可辨识 GitHub。若后续开放采集仓，应补 `sources/repos/` 并画「SoE→MCU→SBC 编码→离线标定同步」的 `sequenceDiagram`。
+**已核实公开代码（2026-11-17）：** [fpv-labs/ego-oscar](https://github.com/fpv-labs/ego-oscar) 的 [README](https://github.com/fpv-labs/ego-oscar/blob/main/README.md) 提供 Arduino 固件及 Radxa 主机运行入口。下图按 [`radxa/fpv_recorder.py`](https://github.com/fpv-labs/ego-oscar/blob/main/radxa/fpv_recorder.py) 的 `main`、`start_recording`、`stop_recording`、`EspLink` 与 [ESP32 固件](https://github.com/fpv-labs/ego-oscar/blob/main/firmware/esp32_coprocessor_led_watchdog/esp32_coprocessor_led_watchdog.ino) 核对，是实际采集运行流程，**不代表离线标定/训练源码已核实**。
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Wearer as 佩戴者 GPIO 按钮
+    participant Host as Radxa fpv_recorder.py
+    participant MCU as ESP32-S3 固件
+    participant Cam as 立体相机 V4L2
+    participant FF as Rockchip FFmpeg
+    participant Disk as 会话目录
+    Host->>MCU: 打开串口，W100 进入 READY
+    loop 每 1 秒
+        Host->>MCU: I102 心跳及中断统计请求
+        MCU-->>Host: I0 中断统计
+    end
+    Wearer->>Host: 长按开始
+    Host->>MCU: W101 录制状态
+    Host->>Disk: 建立 IMU CSV 与元数据
+    Host->>MCU: I100 开始帧中断计数
+    Host->>MCU: G100 启动 IMU 采样
+    Host->>FF: subprocess.Popen(ffmpeg 分段命令)
+    FF->>Cam: 从 /dev/video0 读 MJPEG
+    Cam-->>FF: 2560x720 立体拼接帧
+    FF->>Disk: MJPEG 硬解、H.264 硬编，5 分钟 MP4 片段
+    loop 录制中
+        Cam-->>MCU: VSYNC/SoE 帧触发
+        MCU-->>Host: G0 IMU、FSN、FSD 串口数据
+        Host->>Disk: 追加 IMU CSV
+    end
+    Wearer->>Host: 按下停止
+    Host->>MCU: W102 停止状态
+    Host->>FF: SIGINT 并等待退出
+    Host->>MCU: G101 停止 IMU；I101 停止中断计数
+    Host->>Disk: 关闭 CSV、记录偏移与会话元数据
+```
+
+**复现入口：** Arduino IDE 烧录 `firmware/esp32_coprocessor_led_watchdog/esp32_coprocessor_led_watchdog.ino`，Radxa 上运行 `python3 radxa/fpv_recorder.py`；先安装具有 `mjpeg_rkmpp`/`h264_rkmpp` 的 Rockchip FFmpeg，检查 `/dev/ttyS6`、`/dev/video0`、GPIO 与固件配置。源码默认 `ESP_IMU_RATE_HZ = 180`，不应将官网博客的 120 Hz 直接当作当前固件实测值。
 
 ## 工程实践
 
@@ -140,7 +183,7 @@ flowchart TB
 2. **部署证据** — 96% 可用会话、550 h/相机、25 贡献者，证明消费级栈可在分布式网络跑通。
 3. **标注密度** — 209,315 自由格式段、~100% 时间线覆盖，比多数叙述型语料更利于时序/世界模型式监督。
 4. **策略价值未证** — 作者明确不做本数据 vs 既有语料的策略对照；选型勿跳步。
-5. **开源边界** — 数据 gated + 定制许可；硬件 PDF/3D 已公开；**采集仓截至入库日未列**，复现设备需跟进 Drive 规格与后续 GitHub。
+5. **开源边界** — 采集源码、固件已公开；数据依然 gated 且有定制许可；实际复现需要 Rockchip FFmpeg、硬件及相应接线。
 
 ## 与其他工作对比
 
@@ -158,7 +201,8 @@ flowchart TB
 - **无位姿 GT：** 12/20 只是 VO 收敛率；勿推断轨迹精度。
 - **分布窄：** 印度室内、厨房向为主、25 贡献者 / 13 设备。
 - **访问摩擦：** Stereo-550 gated + 定制许可；规划存储与合规成本。
-- **开源不完整：** 论文「全部开源」与公开 GitHub 现状不完全对齐——以项目页/HF **实际链接** 为准。
+- **复现环境限制：** 采集代码已开放，但官方仓库不附预编译 Rockchip FFmpeg；需核实编码器、串口、相机、GPIO 与固件配置。
+- **来源版本差异：** arXiv v3 和录制器默认配置写 IMU 180 Hz，官网介绍仍写 120 Hz；最终以实际会话记录为准。
 - **HF vs 论文标注层：** 手重建是否随 Stereo-550 完整交付需下载核实。
 
 ## 关联页面
@@ -177,13 +221,15 @@ flowchart TB
 
 - [ego_oscar_arxiv_2608_08285.md](../../sources/papers/ego_oscar_arxiv_2608_08285.md) — 论文摘录与开源核查
 - [fpvlabs-ego-oscar.md](../../sources/sites/fpvlabs-ego-oscar.md) — 3D / 项目页归档
+- [fpv-labs-ego-oscar.md](../../sources/repos/fpv-labs-ego-oscar.md) — 采集固件与录制器源码核查
 - [stereo-550.md](../../sources/datasets/stereo-550.md) — HF 数据集归档
-- [arXiv:2608.08285](https://arxiv.org/abs/2608.08285) — 原文（Submitted 2026-08-08）
+- [arXiv:2608.08285v3](https://arxiv.org/abs/2608.08285) — 原文（2026-10-28 修订）
 
 ## 推荐继续阅读
 
 - [arXiv PDF](https://arxiv.org/pdf/2608.08285) — 硬件 BoM、同步细节与 Table 2
 - [Stereo-550 on Hugging Face](https://huggingface.co/datasets/fpvlabs/stereo-550) — 申请与目录格式
+- [官方 GitHub](https://github.com/fpv-labs/ego-oscar) — 可运行录制器与固件
 - [Stereo Cap 3D](https://www.fpvlabs.ai/ego-oscar/cap) — 可穿戴形态
 - [MobileEgo Anywhere（arXiv:2605.05945）](https://arxiv.org/abs/2605.05945) — 同机构手机采集互补点
 - [EgoHumanoid（arXiv:2602.10106）](https://arxiv.org/abs/2602.10106) — egocentric→人形策略迁移先例
