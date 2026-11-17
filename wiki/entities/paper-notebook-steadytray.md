@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, residual-learning, reinforcement-learning, ppo, tray-transport, sim2real, unitree-g1, ucsd, humanoid-paper-notebooks, iros-2026]
 status: complete
-updated: 2026-10-02
+project_id: steadytray-2603-10306
+updated: 2026-11-17
 arxiv: "2603.10306"
 code: https://github.com/AllenHuangGit/steadytray
 related:
@@ -14,6 +15,8 @@ related:
   - ./paper-glori-humanoid-loco-manipulation.md
   - ./unitree-g1.md
   - ../overview/iros-2026-awards-9-papers-technology-map.md
+original:
+  - ../../sources/papers/steadytray_arxiv_2603_10306.md
 sources:
   - ../../sources/papers/steadytray_arxiv_2603_10306.md
   - ../../sources/papers/humanoid_pnb_steadytray.md

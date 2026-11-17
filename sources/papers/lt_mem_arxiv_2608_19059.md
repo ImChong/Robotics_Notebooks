@@ -17,6 +17,8 @@
 - **作者：** Yumin Lee、Hyoseok Ju、Giseop Kim†
 - **发表时间：** 2026-08-19（arXiv v1）
 - **入库日期：** 2026-08-21；资源核查更新：2026-10-11
+- **核对范围：** arXiv HTML v1，§I–V、MASt3R 跨会话几何配准、跨时刻对象关联、Live/Delta/Meta 更新规则、LT-VQA 数据集及 Table V 消融；对照项目页确认只开放数据而暂无完整方法代码。
+- **通读：** 已完成
 - **索引来源：** [具身智能小站 8 篇综述](../blogs/wechat_embodied_station_8_papers_world_model_memory_2026-08-21.md)（<https://mp.weixin.qq.com/s/30hu9SRxbRNXJcGLnNwl_g>）
 
 ## 开源状态与奖项更新（2026-10-11）

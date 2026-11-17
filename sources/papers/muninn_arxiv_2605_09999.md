@@ -9,6 +9,8 @@
 - **HTML：** <https://arxiv.org/html/2605.09999v1>
 - **代码/项目：** <https://github.com/gokulp01/Muninn>
 - **入库日期：** 2026-07-16
+- **核对范围：** arXiv HTML v1，§I–VI、扩散采样器灵敏度/轻量 probe/conformal 偏差预算、D4RL/规划/Diffusion Policy/硬件实验表与附录 G–I 的实现和理论边界；源码 README 与 Diffuser 集成路径已核对；未逐条核对参考文献。
+- **通读：** 已完成
 - **一句话说明：** UIUC 等提出的 **免训练** 轨迹扩散 **缓存包装器**：用廉价 **probe 特征** + **采样器解析灵敏度系数** 做 split-conformal 标定，在可证 **轨迹偏差预算** 下选择性复用 denoiser 输出，D4RL / 构型空间规划 / visuomotor 扩散策略上最高约 **4.6×** 墙钟加速且保持任务指标，真机导航与操作闭环验证。
 
 ---

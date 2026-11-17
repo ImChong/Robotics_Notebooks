@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, sim2real, actuator, differentiable-simulation, force-estimation, transformer, servo, dynamixel, openmanipulator, lerobot, mit]
 status: complete
-updated: 2026-09-15
+project_id: neuralactuator-2607-11734
+updated: 2026-11-17
 arxiv: "2607.11734"
 code: https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator
 related:
@@ -15,6 +16,8 @@ related:
   - ../entities/paper-current-as-touch-proprioceptive-contact.md
   - ../entities/lerobot.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
+original:
+  - ../../sources/papers/neuralactuator_arxiv_2607_11734.md
 sources:
   - ../../sources/blogs/wechat_shenlan_rss2026_eight_papers_2026-07-24.md
   - ../../sources/blogs/wechat_qbitai_rss2026_awards_2026-07-16.md
@@ -168,3 +171,29 @@ flowchart TB
 - Dou et al., *NeuralActuator: Neural Actuation Modeling for Robot Dynamics and External Force Perception*, arXiv:2607.11734
 - [项目页](https://frank-zy-dou.github.io/projects/NeuralActuator/index.html)
 - [Frank-ZY-Dou/Dynamics-Modeling（NeuralActuator 子目录）](https://github.com/Frank-ZY-Dou/Dynamics-Modeling/tree/main/NeuralActuator)
+
+## 源码运行时序图
+
+官方实现和 README 命令核对如下。与论文的数据流图不同，以下只画可核实的复现调用路径。
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor User as 复现者
+  participant Shell as scripts/train_force_sensor.sh
+  participant Train as train_actuator_diffsim.py
+  participant Data as NAD CSV 数据
+  participant Sim as MJX 可微仿真
+  participant Model as Transformer 执行器网络
+  participant Eval as evaluate_actuator.py
+  User->>Shell: bash scripts/train_force_sensor.sh 0
+  Shell->>Train: --train_config configs/force_sensor.yaml
+  Train->>Data: 加载电流/状态/力标签序列
+  Train->>Model: 预测 torque surrogate 与受力
+  Model->>Sim: 力矩驱动姿态 rollout
+  Sim-->>Train: 位置误差反向传播
+  Train-->>User: 保存 checkpoint
+  User->>Eval: bash scripts/eval_force_sensor.sh ckpt 0
+  Eval-->>User: force_sensor_eval.json 和 rollout
+```
+

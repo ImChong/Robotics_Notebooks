@@ -11,6 +11,8 @@
 - **代码：** <https://github.com/AllenHuangGit/steadytray> — 归档见 [`sources/repos/steadytray.md`](../repos/steadytray.md)
 - **机构：** 加州大学圣地亚哥分校（UCSD）
 - **入库日期：** 2026-09-14
+- **核对范围：** arXiv HTML v1，§I–V、附录 A–E 观测/奖励/随机化/课程设置、残差学习与 DAgger 学生蒸馏、仿真与 G1 真机实验；对照官方 README 的 4 阶段 `scripts/rsl_rl/train.py`、MuJoCo 与真机部署命令。
+- **通读：** 已完成
 - **最后更新：** 2026-09-14
 - **一句话说明：** ReST-RL 把行走与托盘载荷稳定解耦：预训练 base locomotion + 残差模块抵消步态扰动；四阶段课程；G1 真机零样本 sim-to-real，仿真 96.9% 变速跟踪 / 74.5% 抗扰。
 
