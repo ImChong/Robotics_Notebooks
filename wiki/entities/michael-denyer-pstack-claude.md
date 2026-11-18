@@ -17,6 +17,7 @@ related:
   - ./superpowers-obra.md
   - ../concepts/agentic-coding-trust-pyramid.md
   - ../methods/coding-agent-verification-loops.md
+  - ../methods/agentic-manipulation-policies.md
 original:
   - ../../sources/repos/michael-denyer-pstack-claude.md
 sources:
@@ -126,6 +127,7 @@ sequenceDiagram
 - [Superpowers（obra）](superpowers-obra.md) — 强制流程、worktree 与 TDD 对照。
 - [Coding Agent 信任金字塔](../concepts/agentic-coding-trust-pyramid.md) — 先结构化约束、再用运行时证据建立信任。
 - [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 从测试到端到端验证的工程证据。
+- [Agentic Manipulation Policies](../methods/agentic-manipulation-policies.md) — 机器人上层 Agent 工具执行与逐步验证的对照；pstack 并不直接控制机器人。
 
 ## 参考来源
 
