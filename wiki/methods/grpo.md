@@ -4,12 +4,13 @@ tags: [reinforcement-learning, llm, policy-optimization, grpo]
 status: complete
 original:
   - ../../sources/papers/deepseekmath_grpo_2024.md
-updated: 2026-11-15
+updated: 2026-11-18
 related:
   - ./policy-optimization.md
   - ./ppo.md
   - ./reinforcement-learning.md
   - ../formalizations/mdp.md
+  - ../entities/paper-limit-of-rlvr.md
   - ../entities/paper-lightnav-0.md
   - ../entities/paper-prism-grpo.md
   - ../entities/minimind.md
@@ -80,6 +81,8 @@ flowchart LR
 - 相对回报对 reward 标定敏感；同题多次采样增加吞吐负担；导航任务需与 SFT 阶段接口一致（LightNav 复用 RVQ 动作词表）。
 - DeepSeekMath §5.2 指出 RL 提升多数投票 Maj@K，但对 Pass@K 没有明显改善，**不能仅凭 RL 分数上升就断言基础可解问题集合扩大**；其数学结果也不能直接视为机器人任务的结果。
 
+- [Limit of RLVR](../entities/paper-limit-of-rlvr.md)（NeurIPS 2025）进一步以同题 base/RLVR 的大 k 采样揭示：pass@1 增益通常来自高回报轨迹采样概率升高，而有限采样可解问题的覆盖可能收窄。该结论针对语言模型的可验证奖励设置，不能直接推广到机器人控制。
+
 ## 关联页面
 
 - [AesFormer：七维美学编辑规划](../entities/paper-aesformer.md) — GRPO-A 在照片编辑计划上用格式、参考意图对齐与创造性奖励做组内优化；这里的 action 是照片编辑指令，并非机器人控制量。
@@ -90,6 +93,8 @@ flowchart LR
 - [Atomic-WAM](../entities/paper-atomic-wam.md) — EG-GRPO 用执行奖励后训练「原子动作描述」推理器，固定 WAM 据此出视频与动作块
 
 ## 参考来源
+
+- [Limit of RLVR 原文（arXiv:2504.13837）核读](../../sources/papers/limit_of_rlvr_arxiv_2504_13837.md) — pass@k 与 GRPO/RLVR 训练对照。
 
 - [DeepSeekMath 原文通读归档（arXiv:2402.03300v3）](../../sources/papers/deepseekmath_grpo_2024.md)
 - [DeepSeekMath 官方全文](https://arxiv.org/html/2402.03300v3) — GRPO 原始定义、目标与实验（§4–§6，Appendix A.1）
