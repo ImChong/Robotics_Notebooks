@@ -49,6 +49,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Floating-Base Dynamics](../wiki/concepts/floating-base-dynamics.md)
+- [单位四元数与 SO(3)](../wiki/formalizations/unit-quaternion-so3.md) — Stage 0 姿态状态、世界系/本体系误差、角速度积分与欧拉奇异区验证（附 Zane Hub 工程案例勘误）
 - [MPC 预测模型完整推导](../wiki/formalizations/mpc-prediction-model-from-floating-base-dynamics.md) — Stage 0 从单摆虚功、点雅可比推导浮动基动力学，为 Stage 3 预测模型建立物理基础
 - [Quadratic Programming](../wiki/formalizations/quadratic-programming.md)
 - [Optimal Control](../wiki/concepts/optimal-control.md)
