@@ -1,114 +1,170 @@
 ---
 type: entity
-tags: [repo, china-embodied-opensource, open-source, project]
-status: draft
-updated: 2026-09-06
+tags: [repo, china-embodied-opensource, open-source, project, bridgedp, mpc, wbc, locomotion]
+status: complete
+updated: 2026-11-18
+project_id: cn-os-hunter-bipedal-control
+project: https://bridgedp.github.io/hunter_bipedal_control/
+code: https://github.com/bridgedp/hunter_bipedal_control
 related:
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
   - ../entities/humanoid-motion-intelligence.md
+  - ../entities/ocs2.md
+  - ../concepts/mpc-wbc-integration.md
+  - ../../roadmap/depth-classical-control.md
   - ../queries/china-domestic-opensource-424-coverage.md
+original:
+  - ../../sources/repos/hunter_bipedal_control.md
+  - ../../sources/sites/hunter-bipedal-control.md
 sources:
   - ../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md
   - ../../sources/repos/hunter_bipedal_control.md
-summary: "桥介数物 开源项目 hunter_bipedal_control（运动控制）：开源双足运动控制框架：非线性 MPC + 全身控制（WBC），面向 EC-hunter80 双足机器人，配套 Gazebo/MuJoCo 仿真与真机部署…"
+  - ../../sources/sites/hunter-bipedal-control.md
+summary: "桥介数物 hunter_bipedal_control：面向 EC-Hunter80-V01 十自由度双足的 ROS1 开源运控项目，采用 OCS2 SQP-MPC + Kalman 状态估计 + qpOASES WeightedWbc，提供 Gazebo、MuJoCo 与真机入口。"
 institutions:
   - bridgedp
 ---
 
-# hunter_bipedal_control
+# hunter_bipedal_control｜双足 SQP-MPC + WBC 控制框架
 
 ## 一句话定义
 
-**hunter_bipedal_control** 是 [桥介数物](https://github.com/bridgedp) 公开的 **运动控制** 开源项目：开源双足运动控制框架：非线性 MPC + 全身控制（WBC），面向 EC-hunter80 双足机器人，配套 Gazebo/MuJoCo 仿真与真机部署
+**hunter_bipedal_control** 是桥介数物（BridgeDP Robotics）为 **EC-Hunter80-V01** 双足机器人发布的 ROS1 Noetic 运控框架，结合 **OCS2 的 SQP-MPC**、基于 IMU/关节的状态估计、**WeightedWbc** 二次规划与关节混合控制，支持 Gazebo、MuJoCo 和指定硬件。它是 **Model-based 运控项目**，不是 RL/VLA 策略训练框架。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SDK | Software Development Kit | 真机控制与状态读取接口 |
-| RL | Reinforcement Learning | 强化学习训练与策略优化 |
-| VLA | Vision-Language-Action | 视觉–语言–动作统一策略 |
-| Sim2Real | Simulation to Real | 仿真策略迁移真机 |
-| URDF | Unified Robot Description Format | 机器人描述与仿真资产 |
+|---|---|---|
+| MPC | Model Predictive Control | 滚动求解预测时域内的状态与控制轨迹 |
+| SQP | Sequential Quadratic Programming | 此项目在 OCS2 中使用的 MPC 优化方法 |
+| WBC | Whole-Body Control | 把期望运动和接触约束转为全身关节控制 |
+| QP | Quadratic Programming | WeightedWbc 通过 qpOASES 求解的优化问题 |
+| IMU | Inertial Measurement Unit | 姿态、角速度与加速度测量 |
+| LCM | Lightweight Communications and Marshalling | README 要求的 MuJoCo 通信依赖 |
 
 ## 为什么重要
 
-- 收录于 [国内具身智能开源全景（76 家 · 424 项）](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md) 的 **第一层** 分组。
-- 与 [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md) 同源策展；本页为 **独立详情节点**，便于从公司清单跳到机制与入口说明。
+- 提供可沿代码走通的 **状态估计 → MPC → WBC → 关节位置/速度与力矩前馈** 双足系统链路，而不只是算法概念。
+- 同一个 ROS 控制器可通过 **Gazebo、MuJoCo 与 `legged_bridge_hw`** 替换底层接口，适合比较不同仿真/真机路径。
+- 官方项目页描述目标 EC-Hunter80-V01 为无上肢的 **10 DoF** 轻量双足机器人；本页专注这个具体本体，不外推到所有人形配置。
 
 ## 核心原理
 
-| 字段 | 内容 |
-|------|------|
-| 机构 | 桥介数物 |
-| 类别 | 运动控制 |
-| 官方组织 | https://github.com/bridgedp |
+| 模块 | 源码位置 / 事实 |
+|---|---|
+| 目标轨迹 | `TargetTrajectoriesPublisher.h/.cpp` 订阅 `/cmd_vel`、`/move_base_simple/goal`，基于 `legged_robot_mpc_observation` 和速度限幅发布 OCS2 目标轨迹 |
+| MPC | `LeggedController::setupMpc()` 构造 `SqpMpc`；`setupMrt()` 用独立线程调用 `MPC_MRT_Interface::advanceMpc()` |
+| 状态估计 | `setupStateEstimate()` 构造 `KalmanFilterEstimate`；控制周期融合关节状态、IMU 和计划接触模式 |
+| WBC | `WeightedWbc::update()` 组合浮动基动力学、力矩限制、摩擦锥约束及加权运动任务，交由 `qpOASES::QProblem` 求解 |
+| 输出 | `LeggedController::update()` 使用 WBC 的关节加速度修正位置/速度参考，并通过 `HybridJointInterface::setCommand(pos, vel, kp, kd, tau_ff)` 下发 |
 
-## 工程实践
+**关键区别：** MPC 计算期望未来轨迹，WBC 结合当前估计状态及接触约束求全身关节指令；`loadControllerFlag_`、`setWalkFlag_` 决定实际使用的控制分支，不能把流程理解为每次启动立即进入行走力矩控制。
 
-1. 从官方 GitHub/Gitee 组织检索 `hunter_bipedal_control` 仓库并核对 README 许可与依赖。
-2. 对照本库 [424 项覆盖索引](../queries/china-domestic-opensource-424-coverage.md) 查看同公司其它入口是否共用训练/部署链路。
-3. 若与既有方法页（如 RL 框架、VLA、SDK）主题相同，优先读关联页中的「开源入口」小节，避免重复维护平行叙事。
+## 流程总览
 
-## 局限与风险
+以下模块与流向对照官方项目页和 `LeggedController.cpp`、`TargetTrajectoriesPublisher.h`、`WeightedWbc.cpp`：
 
-- 公众号清单为 **策展快照**（2026-09-06）；仓库更名、归档或许可证变化须回官方组织页核实。
-- **开源状态**：以仓库 README 与 release 为准（入库日按文章描述归纳，未逐仓 clone 验证）。
+```mermaid
+flowchart LR
+    CMD["手柄或键盘 /cmd_vel"] --> TP["TargetTrajectoriesPublisher"]
+    OBS["关节状态与 IMU"] --> KF["KalmanFilterEstimate"]
+    TP --> REF["OCS2 RosReferenceManager"]
+    KF --> MPC["OCS2 SqpMpc / MPC_MRT_Interface"]
+    REF --> MPC
+    MPC --> WBC["WeightedWbc / qpOASES"]
+    KF --> WBC
+    WBC --> OUT["LeggedController 混合关节指令"]
+    OUT --> IO["Gazebo / MuJoCo / legged_bridge_hw"]
+    IO --> OBS
+```
+
+流程是**逻辑数据流**：真实执行中 MPC 在独立线程滚动求解，WBC 随控制器 `update()` 周期运行；参考轨迹通过 OCS2 ROS 发布与订阅传递。
 
 ## 源码运行时序图
 
-入口（ROS1 Noetic，仿真或实机二选一）：
-- MuJoCo 仿真：`roslaunch legged_controllers one_start_mujoco.launch`
-- Gazebo 仿真：`roslaunch legged_controllers one_start_gazebo.launch`
-- 实机：`roslaunch legged_controllers one_start_real.launch`（经 `legged_bridge_hw` 接入硬件）
-
-三个入口都经 `timedelay_launch.sh` 延迟 2 秒后启动 `one_start.launch`，由它加载参数并拉起 `controllers/legged_controller` 与 `legged_target_trajectories_publisher`；手柄经 `joy_teleop.launch` 发布 `/cmd_vel`。
+启动入口分别为 `roslaunch legged_controllers one_start_gazebo.launch`、`one_start_mujoco.launch` 或 `one_start_real.launch`。三个入口会加载各自仿真/硬件接口，再经 `timedelay_launch.sh` 延迟启动 `one_start.launch`，启动 `controllers/legged_controller` 及目标轨迹发布节点。
 
 ```mermaid
 sequenceDiagram
-    participant J as 手柄（joy_node → joy_teleop.py）
-    participant TP as legged_target_trajectories_publisher（TargetTrajectoriesPublisher）
-    participant LC as LeggedController（legged_controllers/src/LeggedController.cpp）
-    participant SE as 状态估计（legged_estimation）
-    participant MPC as MPC_MRT_Interface（ocs2，MPC 线程）
-    participant WBC as WeightedWbc（legged_wbc）
-    participant HW as HybridJointInterface（MuJoCo / Gazebo / legged_bridge_hw）
-    J->>TP: /cmd_vel（geometry_msgs/Twist）
-    TP->>MPC: 目标轨迹（cmdVelToTargetTrajectories 转换后下发，具体话题未核实）
-    loop MPC 线程，按 mpcDesiredFrequency 周期
-        MPC->>MPC: advanceMpc() 求解最优控制问题
+    autonumber
+    participant U as 操作者 /cmd_vel
+    participant TP as TargetTrajectoriesPublisher
+    participant RM as RosReferenceManager
+    participant HW as HybridJointInterface
+    participant LC as LeggedController
+    participant KF as KalmanFilterEstimate
+    participant MPC as SqpMpc / MPC_MRT_Interface
+    participant WBC as WeightedWbc / qpOASES
+    U->>TP: 发布 /cmd_vel (Twist)
+    LC-->>TP: 发布 legged_robot_mpc_observation
+    TP->>RM: publishTargetTrajectories (OCS2 ROS)
+    loop MPC 独立线程 (启用后)
+        MPC->>MPC: advanceMpc()
     end
-    loop 控制周期 update(time, period)
-        HW-->>LC: 关节位置 / 速度 / 力矩，IMU（imu_link）
-        LC->>SE: updateStateEstimation：updateJointStates / updateImu / updateContact
-        SE-->>LC: measuredRbdState_
-        LC->>MPC: setCurrentObservation(currentObservation_)
-        LC->>MPC: updatePolicy() + evaluatePolicy() 得到 optimizedState / optimizedInput
-        LC->>WBC: wbc_->update(optimizedState, optimizedInput, measuredRbdState_, plannedMode, dt)
-        WBC-->>LC: 关节力矩、关节加速度、接触力
-        LC->>HW: 关节指令（期望位置 / 速度，力矩前馈）
-        LC->>TP: 发布 mpc_observation（observationPublisher_）
+    loop 控制器 update(time, period)
+        HW-->>LC: 关节位置、速度、力矩和 IMU
+        LC->>KF: updateJointStates / updateImu / updateContact
+        KF-->>LC: measuredRbdState_
+        LC->>MPC: setCurrentObservation()
+        opt 已开始 MPC
+            LC->>MPC: updatePolicy() / evaluatePolicy()
+            MPC-->>LC: optimizedState / optimizedInput / plannedMode
+        end
+        LC->>WBC: update(optimizedState, optimizedInput, measuredRbdState_, mode, dt)
+        WBC-->>LC: 关节加速度、接触力、关节力矩
+        LC->>HW: setCommand(pos_des, vel_des, Kp, Kd, tau_ff)
+        LC-->>TP: mpc_observation (ROS topic)
     end
 ```
 
-注：`starting()` 时写入初始目标轨迹；`/set_walk`、`/load_controller`、`/emergency_stop`、`/reset_estimation` 由 `LeggedController` 订阅，回调未在图中展开。状态估计器的具体实现由配置决定，本图未逐一核实。
+源码参考：[`LeggedController.cpp`](https://github.com/bridgedp/hunter_bipedal_control/blob/main/legged_controllers/src/LeggedController.cpp)、[`TargetTrajectoriesPublisher.h`](https://github.com/bridgedp/hunter_bipedal_control/blob/main/legged_controllers/include/legged_controllers/TargetTrajectoriesPublisher.h)、[`WeightedWbc.cpp`](https://github.com/bridgedp/hunter_bipedal_control/blob/main/legged_wbc/src/WeightedWbc.cpp)；时序只概括已核对的调用链，未做运行时 tracing。
 
-图依据：hunter_bipedal_control@37310dd，读过 README.md、legged_controllers/launch/one_start.launch、one_start_mujoco.launch、one_start_real.launch、joy_teleop.launch（grep）、legged_controllers/src/LeggedController.cpp（init、starting、update、updateStateEstimation、setupMrt、订阅与发布）、legged_controllers/include/legged_controllers/TargetTrajectoriesPublisher.h（grep）、legged_controllers/src/TargetTrajectoriesPublisher.cpp（grep）；未运行代码。
+## 工程实践
+
+**依赖**：官方 README 指定 [OCS2](https://leggedrobotics.github.io/ocs2/installation.html#prerequisites)、ROS1 Noetic；MuJoCo 仿真还需 LCM。核心编译/启动命令：
+
+```bash
+mkdir -p <catkin_ws>/src
+cd <catkin_ws>/src
+git clone https://github.com/bridgedp/hunter_bipedal_control.git
+cd <catkin_ws>
+catkin init
+catkin config -DCMAKE_BUILD_TYPE=RelWithDebInfo
+# 根据选择执行一种构建
+catkin build legged_controllers legged_hunter_description legged_gazebo
+catkin build legged_controllers legged_hunter_description legged_mujoco lcm_msg mujoco
+# 运行相应入口
+roslaunch legged_controllers one_start_gazebo.launch
+roslaunch legged_controllers one_start_mujoco.launch
+roslaunch legged_controllers one_start_real.launch
+```
+
+上述构建/运行命令摘自官方 README，**三种启动方式按环境择一执行**，不是要求一次执行全部。无手柄仿真路径在启动控制器前要持续发送 `/cmd_vel`（README 示例 10 Hz），依次调用 `/load_controller`、`/set_walk`；MuJoCo 重载后另有 `/reset_estimation` 步骤。参数与重置操作以官方 README 的对应仿真章节为准。
+
+## 局限与风险
+
+- 适配目标是特定 **10 DoF 双足** 与 ROS1 Noetic；真机还涉及 EtherCAT/CAN、IMU 和厂家硬件，不能仅凭源码可见就推断其他平台即插即用。
+- README **明确提醒仿真初次启动可能跌倒**，需要调整 `kp_position`/`kd_position` 并重置；在真实机器人上修改增益或启动运动控制必须做好急停及限位保护。
+- `WeightedWbc.cpp` 对 QP 未求解情形打印错误，若存在上次解则回退到上次解；应在部署评测中监控求解失败和 MPC/WBC 周期。
+- **开源状态：已开源代码**（MIT）；截至本次核对，未做依赖安装、编译、Gazebo/MuJoCo 实测或真机测试，**不宣称复现成功**。
 
 ## 关联页面
 
-- [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
-- [HMI 开源项目主表导读](../queries/hmi-opensource-projects-coverage.md)
+- [传统模型控制纵深路线](../../roadmap/depth-classical-control.md)
+- [OCS2](../entities/ocs2.md)
+- [Model Predictive Control](../methods/model-predictive-control.md)
+- [MPC-WBC 集成](../concepts/mpc-wbc-integration.md)
 - [Humanoid Motion Intelligence](../entities/humanoid-motion-intelligence.md)
+- [国内具身开源全景技术地图](../overview/china-domestic-embodied-opensource-76-companies-technology-map.md)
 
 ## 参考来源
 
-- [hunter_bipedal_control 源码归档](../../sources/repos/hunter_bipedal_control.md)（<https://github.com/bridgedp/hunter_bipedal_control>）
-
-- [国内具身智能开源全景（微信公众号）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
-
-- 源码核对（2026-11-02）：bridgedp/hunter_bipedal_control@37310dd，读过 README.md、legged_controllers/launch/one_start.launch、one_start_mujoco.launch、one_start_real.launch、legged_controllers/src/LeggedController.cpp、legged_controllers/src/TargetTrajectoriesPublisher.cpp（grep）、legged_controllers/include/legged_controllers/TargetTrajectoriesPublisher.h（grep）；时序图依据以上文件，未运行代码。
+- [官方仓库与源码核对归档](../../sources/repos/hunter_bipedal_control.md) — 官方 README + 关键控制器/WBC/launch 源码，`main@37310dde`，2026-11-18 通读，未运行。
+- [官方项目页核对归档](../../sources/sites/hunter-bipedal-control.md) — 硬件、控制结构及 Code 入口，2026-11-18 通读。
+- [国内具身智能开源全景（策展来源）](../../sources/blogs/wechat_embodied_station_domestic_opensource_panorama_2026-09-06.md)
 
 ## 推荐继续阅读
 
-- [桥介数物 官方组织](https://github.com/bridgedp)
+- [hunter_bipedal_control 原始代码](https://github.com/bridgedp/hunter_bipedal_control)
+- [官方项目页](https://bridgedp.github.io/hunter_bipedal_control/)
+- [OCS2 官方文档](https://leggedrobotics.github.io/ocs2/)
