@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, urdf, model, kinematics, roboparty]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-18
 related:
   - ./roboto-origin.md
   - ./atom01-hardware.md
@@ -48,6 +48,9 @@ summary: "Atom01_description 提供 Atom01 的 URDF 与网格模型资源，是�
 - [Roboparty/atom01_description](https://github.com/Roboparty/atom01_description)
 
 ## 关联页面
+
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 人体参考映射到机器人前需核对骨架、轴向和关节限位，模型资源本身不是重定向算法。
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — URDF 惯量、单位和关节定义会影响力矩计算，仅可视化加载成功不足以证明动力学正确。
 
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [Atom01 Hardware](./atom01-hardware.md)

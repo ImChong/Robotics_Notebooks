@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, joint-module, actuator, can-fd, ethercat, foc, open-source, roboparty]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 project_id: romomo
 code: https://github.com/Roboparty/ROMOMO
 related:
@@ -91,6 +91,9 @@ flowchart LR
 - **温升接近上限**：10062 额定工况稳态电机 107 ℃，连续高负载部署需自行核对热余量（推测：未给出绕组绝缘等级前无法判定）。
 
 ## 关联页面
+
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 公开台架报告提供选型线索，装入关节后的摩擦、惯量和热边界仍需本机验证。
+- [MIT 关节阻抗模式参数整定](../methods/mit-joint-impedance-mode-tuning.md) — 位置/速度/前馈组合的关节整定应先核对协议手册与单位，不由规格图纸推断固件实现。
 
 - [RP1 总览（RoboParty RP1）](./roboparty-rp1.md)
 - [RoboParty（公司）](./roboparty.md)

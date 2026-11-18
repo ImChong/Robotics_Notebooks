@@ -2,7 +2,7 @@
 type: entity
 tags: [human-object-interaction, human-motion, diffusion, dataset, generative-model]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: cosmi
 arxiv: "2610.03252"
 project: https://ptrvilya.github.io/cosmi/
@@ -112,6 +112,8 @@ flowchart TD
 - 输出是人体与物体运动，不是机器人关节策略。真机落地还需重定向、物理验证和闭环控制。
 
 ## 关联页面
+
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — SMPL-X 多物体交互迁移到机器人前需骨架映射，再检查接触顺序、碰撞和物理跟踪。
 
 - [基于扩散模型的运动生成](../methods/diffusion-motion-generation.md) — COSMI 属于文本条件人体运动生成，重点扩展到多个对象与接触约束。
 - [FORM-HOI 数据集](./dataset-form-hoi.md) — 对照真实多视角人–物交互捕获数据与合成组合数据。

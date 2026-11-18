@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2102.11271"
 venue: "2021 · ICML"
 code: https://github.com/denisyarats/proto
@@ -101,6 +101,9 @@ flowchart TD
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 编码器/原型预训练后冻结，下游再学习任务策略，不能把两个阶段的数据预算混算。
+- [Policy Optimization](../methods/policy-optimization.md) — kNN 状态熵改变探索奖励；表示学习不替代下游策略优化，需单独核对其更新目标。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

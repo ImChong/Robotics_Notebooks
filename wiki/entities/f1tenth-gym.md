@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, f1tenth, autonomous-driving, racing, reinforcement-learning, upenn]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ../overview/racing-drift-rl-open-source-landscape.md
   - ./barc.md
@@ -76,6 +76,9 @@ sequenceDiagram
 - **局限：** README 记载 Windows Python 版本与 macOS OpenGL 渲染问题；高保真视觉漂移见 [CARLA](./carla.md) 系。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 赛车交互环境用于策略采样时，需要固定车辆动力学、赛道和终止条件。
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 与 LearningMPC 等控制实验对照时，分别核对预测模型、约束和滚动执行设置。
 
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)
 - [BARC](./barc.md) — 另一 1/10 硬件研究平台

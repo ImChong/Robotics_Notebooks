@@ -5,7 +5,7 @@ doi: 10.1109/IROS.2015.7353756
 venue: IROS 2015
 tags: [paper, humanoid, fall-safety, contact-planning, trajectory-optimization]
 status: complete
-updated: 2026-10-14
+updated: 2026-11-18
 summary: "Ha 与 Liu 将人形机器人平面跌倒建模为接触图约束下的多触点冲量峰值优化，用动态规划自动选择接触顺序、时机与位置。"
 related:
   - ./paper-hrl-stack-41-safefall.md
@@ -152,6 +152,8 @@ flowchart TB
 本文的优势是损伤目标与接触可行性都显式可解释；学习式工作则覆盖实时反应与摔后恢复，但通常不再给出这样可审计的接触序列优化目标。
 
 ## 关联页面
+
+- [Balance Recovery（平衡恢复）](../tasks/balance-recovery.md) — 跌倒规划在无法保持平衡时分散峰值冲量，与成功恢复站立的任务目标应分开定义。
 
 - [SafeFall：学习式人形跌倒保护控制](./paper-hrl-stack-41-safefall.md) — 触发式保护策略，可对照解析规划方法。
 - [Unified Humanoid Fall-Safety Policy from a Few Demonstrations](./paper-notebook-unified-humanoid-fall-safety-policy-from-a-few-d.md) — 少量演示驱动的安全跌倒策略。

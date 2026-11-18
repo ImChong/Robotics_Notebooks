@@ -2,7 +2,7 @@
 type: entity
 tags: [mjlab, reinforcement-learning, parkour, humanoid, quadruped, unitree-g1, unitree-go2, simulation]
 status: complete
-updated: 2026-10-13
+updated: 2026-11-18
 project_id: yhx1203-parkour-mjlab
 code: https://github.com/yhx1203/parkour_mjlab
 summary: "Parkour MJLab 是基于 MJLab 的 G1 / Go2 强化学习代码库，包含 PHP teacher/student 训练、策略回放与 MuJoCo Sim2Sim。"
@@ -51,6 +51,9 @@ README 中的迭代次数和 `model_23000.pt` 文件名来自示例命令，不�
 - 五类 teacher 和 student 所需的模型、配置、动作数据需按 README 分别准备；不能把“有训练入口”理解为完整预训练资产已随代码发布。
 
 ## 与 PHP 官方项目的关系
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 区分 teacher/student 训练、策略回放与导出的职责，不把 Sim2Sim 回放当作重新训练。
+- [楼梯与障碍 Locomotion（感知 / 盲走中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md) — G1/Go2 跑酷需在障碍几何与感知条件变化下验证通过率和恢复能力。
 
 此仓库致谢并引用 [Amazon FAR 的 PHP 官方实现](https://github.com/amazon-far/php_parkour)，并复用官方发布的训练动作数据，但其训练和 MuJoCo Sim2Sim 入口由此仓库独立提供。因此本节点描述的是一个覆盖多个任务的 MJLab 代码库；论文方法和官方实现仍以 [PHP 主实体](./paper-hrl-stack-22-perceptive-humanoid-parkour.md) 为准。
 

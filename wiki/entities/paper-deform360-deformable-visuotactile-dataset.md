@@ -9,7 +9,7 @@ tags:
   - visuotactile
   - eccv
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2607.05390"
 related:
   - ../entities/paper-clothtransformer-unified-latent-cloth-simulation.md
@@ -132,6 +132,8 @@ flowchart TB
 - **局限：** 采集 **lab 固定**；action space 以 **human UMI 原语** 为主；WM 榜单 **未含最新 WAM 闭环**；许可证需 **按 HF 页面** 遵守学术/商用条款。
 
 ## 与其他页面的关系
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 粒子/视频动态预测用于 MPC 时，需在同一可变形体任务上检验候选动作、接触和实际结果。
 
 - [wm-action-consequence-category-02-contact-modeling](../overview/wm-action-consequence-category-02-contact-modeling.md) — 数据层支柱
 - [wm-action-consequence-category-03-geometry-4d](../overview/wm-action-consequence-category-03-geometry-4d.md) — 2D/3D/4D WM 对照语境

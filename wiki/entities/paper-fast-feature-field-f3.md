@@ -3,7 +3,7 @@ type: entity
 project_id: fast-feature-field-f3
 tags: [paper, event-camera, neuromorphic-vision, predictive-representation, robotics-perception, optical-flow, depth-estimation, semantic-segmentation, stereo-matching, science-robotics, upenn]
 status: complete
-updated: 2026-10-15
+updated: 2026-11-18
 doi: "10.1126/scirobotics.aec8218"
 arxiv: "2509.25146"
 venue: "Science Robotics 2026"
@@ -141,6 +141,9 @@ sequenceDiagram
 - 项目页和 README 的吞吐量是特定设置下的报告值，不构成所有硬件的性能保证。
 
 ## 关联页面
+
+- [立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md) — 立体任务消费事件预测特征时，应区分共享表示与具体视差任务头。
+- [FCN 全卷积网络](../methods/fcn-semantic-segmentation.md) — 以像素语义分类接口对照事件特征到分割头的任务适配，不将 F³ 编码器称为 FCN 实现。
 
 - [AMI-EV：微扫视启发的事件相机系统](./paper-microsaccade-inspired-event-camera.md) — 从传感器层增强事件，与表示学习互补
 - [SSLA-Det：低延迟事件目标检测](./paper-sa-2603-06228-low-latency-event-based-object-detection-with.md) — 事件检测的任务专用方法

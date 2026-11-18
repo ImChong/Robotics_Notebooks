@@ -8,7 +8,7 @@ tags:
   - residual-policy
   - human-demonstration
 status: complete
-updated: 2026-11-15
+updated: 2026-11-18
 arxiv: "2609.24093"
 code: https://github.com/DexGEM-Lab/real2sim2real
 related:
@@ -100,6 +100,8 @@ sequenceDiagram
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Residual Policy Learning（残差策略学习）](../methods/residual-policy-learning.md) — 残差先补全示范接触，再执行接触锚定重定向与动态修复，需明确每阶段的残差接口。
 
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [motion-retargeting](../concepts/motion-retargeting.md)

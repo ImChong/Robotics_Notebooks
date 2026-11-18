@@ -6,7 +6,7 @@ code: https://github.com/TixiaoShan/LIO-SAM
 project: https://github.com/TixiaoShan/LIO-SAM
 tags: [repo, lidar, lio, gtsam, slam, gps, mit]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-18
 related:
   - ../entities/fast-lio.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -163,6 +163,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：TixiaoShan/LIO-SAM@0be1fbe，读过 README.md、launch/run.launch、launch/include/module_loam.launch、src/imageProjection.cpp、src/featureExtraction.cpp、src/mapOptmization.cpp、src/imuPreintegration.cpp（主流程与话题连接，非逐行）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — IMU 预积分、扫描匹配和全局约束共同形成紧耦合估计，需分别检查前端与图优化。
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 因子图残差的局部线性化可沿最小二乘原理理解，优化器收敛不保证数据关联正确。
 
 - [LVI-SAM：激光-视觉-IMU 双子系统](./paper-lvi-sam.md)
 - [Kalibr：相机与 IMU 时空标定](./kalibr.md) — 传感器标定与时间同步先决条件 — 在 LIO-SAM 之外增加 VIS/回环与退化场景互补

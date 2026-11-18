@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, mini-cheetah, mit, mpc, qdd, locomotion, sim2real, foc, open-source, hardware, actuator]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-18
 code: https://github.com/mit-biomimetics/Cheetah-Software
 related:
   - ./benjamin-katz.md
@@ -167,6 +167,8 @@ flowchart TB
 平台 → WBIC+MPC → RPC/启发式 → 视觉导航 → RL。博文清单 12 篇见下节；补充时序见 [论文集合](../../sources/papers/mit_mini_cheetah_control_papers.md)。
 
 ## 相关论文节点（Robot Daycare 博文清单）
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 凸 MPC 的反力计划与 WBIC 关节命令分层组织，需按接触时序和实际控制频率核对。
 
 1. [Platform ICRA 2019](./paper-mini-cheetah-platform.md)
 2. [WBIC + MPC](./paper-wbic-mpc-mini-cheetah.md)

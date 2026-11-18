@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, multi-agent, hoi, transformer, sea-ai-lab, nus]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2603.07988"
 venue: "CVPR 2026"
 code: https://github.com/sail-sg/TeamHOI
@@ -121,6 +121,8 @@ flowchart TB
 - **消融：** Transformer vs MLP 固定维；无 masked AMP 时协作多样性下降。
 
 ## 与其他页面的关系
+
+- [多智能体强化学习（MARL） ／ Multi-Agent Reinforcement Learning](../methods/marl.md) — 去中心化策略利用队友 token 协作搬运，需核对人数、归一化与队形变化的评测条件。
 
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#17/19）
 - 单人 HSI：[PhysHSI #15](./paper-amp-survey-15-physhsi.md)

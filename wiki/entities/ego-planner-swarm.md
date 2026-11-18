@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, planning, swarm, esdf, uav, ros, zju-fast-lab, zju]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-18
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md
@@ -101,6 +101,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：ZJU-FAST-Lab/ego-planner-swarm@92fe9f7，读过 README.md、plan_manage 的 launch 文件与 ego_planner_node.cpp、ego_replan_fsm.cpp/.h、planner_manager.cpp、traj_server.cpp、plan_env/grid_map.cpp、uav_simulator 的 poscmd_2_odom.cpp、pcl_render_node.cpp、random_forest_sensing.cpp；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 局部 B-spline 轨迹优化须同时满足避障与动态可行性，再对接 PX4 设定点。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 多机探索可使用局部轨迹规划作为执行环节，探索目标选择与地图更新仍需另行组织。
 
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [PX4 Autopilot](./px4-autopilot.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [robotera, repo, china-embodied-opensource, open-source, project]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-18
 related:
   - ./robotera.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
@@ -99,6 +99,8 @@ sequenceDiagram
 图依据：roboterax/xbot_sdk_api@f542ed2，实际读过 `README.md`、`examples/basic_robot_control.py`、`robot_controller/robot_controller.py`（`__init__`、`start_joint_service`、`initialize_joints` 段）、`robot_controller/trajectory_controller.py`（`__init__` 发布者段、`set_zero_position` 动作段、`move_to_joint_positions_sync` 插值循环）。机器人端服务与动作服务端不在本仓库，图中只标注客户端调用名；`MPCController` 与 `robot_controller` 其余方法未读。未运行代码。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 文档中的 MPC 调用需先取得控制权限、启动服务并释放资源，SDK API 与优化算法实现分属不同层。
 
 - [星动纪元](./robotera.md)
 - [M7 VLA 基线](./cn-os-robotera-vla.md)、[遥操作入口](./cn-os-teleop-client.md)

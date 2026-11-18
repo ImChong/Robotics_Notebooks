@@ -6,7 +6,7 @@ tags:
   - manipulation
   - contact-rich
 status: complete
-updated: 2026-10-28
+updated: 2026-11-18
 arxiv: "2610.33852"
 project: https://janebek.github.io/AdaDexTrack/
 code: https://github.com/Janebek/AdaDexTrack
@@ -92,6 +92,8 @@ sequenceDiagram
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 通用追踪器蒸馏与闭环调制分别承担示范技能转移和参考适配，需检查接触误差是否累积。
 
 - [manipulation](../tasks/manipulation.md)
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)

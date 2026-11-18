@@ -11,7 +11,7 @@ tags:
   - berkeley
   - cmu
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: "2107.04034"
 venue: "RSS 2021"
 related:
@@ -160,6 +160,8 @@ flowchart TB
 - Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots*, RSS 2021 — [arXiv:2107.04034](https://arxiv.org/abs/2107.04034)
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 历史观测到 extrinsics 的监督训练需覆盖部署偏差；低维隐变量不要求对应全套物理参数。
 
 - [Privileged Training](../concepts/privileged-training.md) — RMA 是特权训练 + 适应模块的经典实例
 - [Sim2Real](../concepts/sim2real.md) — 在线适应缩小动力学与地形 gap

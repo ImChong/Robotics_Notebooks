@@ -6,7 +6,7 @@ tags:
   - manipulation
   - contact-rich
 status: complete
-updated: 2026-10-28
+updated: 2026-11-18
 arxiv: "2610.35852"
 project: https://diffcontact.github.io/
 related:
@@ -95,6 +95,8 @@ flowchart LR
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 前向硬接触与反向平滑灵敏度承担不同职责，跨接触模式优化仍需检查真实执行。
 
 - [manipulation](../tasks/manipulation.md)
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)

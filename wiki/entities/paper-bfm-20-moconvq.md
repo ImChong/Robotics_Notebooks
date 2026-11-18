@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, pku]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2310.10198"
 venue: "2023 · TOG"
 summary: "离散动作 token 便于规划器/语言模块组织连续轨迹。"
@@ -109,6 +109,9 @@ flowchart TD
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 离散动作 token 可作为上层组织技能与下层连续执行之间的接口，需明确时间尺度。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — token 表示仍需对应可执行参考运动，表示压缩与物理动作学习承担不同职责。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

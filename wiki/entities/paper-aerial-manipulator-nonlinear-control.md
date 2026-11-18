@@ -6,7 +6,7 @@ tags:
   - control
   - planning
 status: complete
-updated: 2026-10-28
+updated: 2026-11-18
 arxiv: "2610.34454"
 code: https://github.com/sandeshthapa/Cartesian_Impedance_Control_Aerial_Manipulator
 related:
@@ -89,6 +89,8 @@ sequenceDiagram
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Sliding Mode Control（滑模控制，SMC）](../methods/sliding-mode-control.md) — 自适应滑模与笛卡尔阻抗是论文的控制对照，需在同初态和扰动条件下比较。
 
 - [manipulation](../tasks/manipulation.md)
 - [impedance-control](../concepts/impedance-control.md)

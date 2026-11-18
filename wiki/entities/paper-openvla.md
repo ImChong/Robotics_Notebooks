@@ -12,7 +12,7 @@ tags:
 - repo
 - vision-language-action
 status: complete
-updated: 2026-11-04
+updated: 2026-11-18
 arxiv: '2406.09246'
 code: https://github.com/openvla/openvla
 related:
@@ -213,6 +213,8 @@ sequenceDiagram
 - [Arcadia](./paper-arcadia.md) 把本页当操作基线（真机 9/100 vs Arcadia 27/100），并复用 7D de-tokenizer 思路；那是生命周期对照，不是 OpenVLA 官方 G1 协议。
 
 ## 关联页面
+
+- [Behavior Cloning（行为克隆）](../methods/behavior-cloning.md) — 动作 token 的示范交叉熵训练需核对数据过滤、动作分位数与微调协议。
 
 - [ECoT](./paper-ecot.md) — 基于 OpenVLA 的具身思维链奠基
 - [Fast ECoT](./paper-fast-ecot.md) — ECoT 推理时加速

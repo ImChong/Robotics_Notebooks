@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, skateboarding, hybrid-contact, sim2real, unitree-g1, teleai, shanghaitech, sjtu, hku, ustc]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2602.03205"
 venue: "RSS 2026"
 code: https://github.com/TeleHuman/humanoid_skateboarding
@@ -119,6 +119,8 @@ flowchart TB
 - **对照维度：** Table I 量化人形 vs 四足滑板在 DoF、接触点数、CoM 高度、侧向转向、腿重定向等差异。
 
 ## 与其他页面的关系
+
+- [Locomotion](../tasks/locomotion.md) — 推地、倾身转向与滑行构成接触模式切换，需结合轨迹引导和真实地面条件评价运动能力。
 
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#14/19）
 - 方法：[amp-reward.md](../methods/amp-reward.md)

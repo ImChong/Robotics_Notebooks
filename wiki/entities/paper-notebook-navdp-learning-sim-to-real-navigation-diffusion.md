@@ -13,7 +13,7 @@ tags:
   - hku
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-10-17
+updated: 2026-11-18
 arxiv: "2505.08712"
 code: https://github.com/InternRobotics/NavDP
 related:
@@ -182,6 +182,9 @@ sequenceDiagram
 - 仓库已演化为 InternVLA-N1 benchmark；复现论文结果时应锁定版本，不要把后续模型能力归因于原始 NavDP。
 
 ## 与其他页面的关系
+
+- [A* 全局路径规划](../methods/a-star.md) — 仿真 ESDF/A* 负责训练轨迹生成，需与学习得到的候选轨迹生成器分开阅读。
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — benchmark 用异步 MPC follower 执行轨迹，规划服务与控制跟随的延迟和接口应分别验收。
 
 - [导航纵深路线 Stage 3](../../roadmap/depth-navigation.md) — 扩散学习型导航主节点
 - [Sim2Real](../concepts/sim2real.md) — 仿真规模化 + real-to-sim target adaptation

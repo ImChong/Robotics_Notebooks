@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, simulation, reinforcement-learning, pybullet, gymnasium, quadcopter, multi-agent, mit]
 status: complete
-updated: 2026-08-26
+updated: 2026-11-18
 related:
   - ./pybullet.md
   - ../overview/multirotor-simulation-planning-control-stack.md
@@ -119,6 +119,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：utiasDSL/gym-pybullet-drones@bc5000c，读过 README.md、gym_pybullet_drones/examples/pid.py、gym_pybullet_drones/envs/BaseAviary.py、gym_pybullet_drones/envs/CtrlAviary.py、gym_pybullet_drones/control/BaseControl.py、gym_pybullet_drones/control/DSLPIDControl.py、gym_pybullet_drones/utils/enums.py；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — Gymnasium 的观测、动作与终止信号需要和四旋翼控制接口匹配。
+- [多智能体强化学习（MARL） ／ Multi-Agent Reinforcement Learning](../methods/marl.md) — 从单机扩展到多机任务时，还需明确共享观测、奖励、碰撞与协作评测设置。
 
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [RL vs GC](./paper-rl-vs-gc.md) — Isaac Lab 上带对称几何控制基线的跟踪试验台（更重、更贴近 RSS 协议）

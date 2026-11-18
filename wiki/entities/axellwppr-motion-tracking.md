@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, humanoid, motion-tracking, teleoperation, mjlab, unitree-g1, tsinghua, shanghai-pil]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 code: https://github.com/Axellwppr/motion_tracking
 summary: "Axellwppr/motion_tracking：HEFT 官方 mjlab 训练栈，支持 G1/L7 全身跟踪、PMG 配对数据、WPC 负载课程与 ONNX 检查点导出。"
 related:
@@ -123,6 +123,8 @@ sequenceDiagram
 - **`adapt` 阶段不更新学生 actor**：阅读 `ppo.py` 可见 `phase == "adapt"` 时 `train_op()` 仅调用 `_train_estimator()` 训练 `adapt_module` 去拟合教师 `encoder_priv` 特征，`actor_student` 参数仅在第三阶段 `finetune` 中通过 PPO 更新；若跳过 `finetune` 直接部署，学生策略应对未见估计误差的鲁棒性会受限。
 
 ## 关联页面
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — HEFT 的特权 teacher 阶段含 PPO 更新；PMG 配对数据与负载课程承担不同训练职责。
 
 - 对应论文实体：[HEFT 论文页](./paper-heft.md)（完整实验结果、表 E.1 7 项 24 kg 真机负载任务与基线对比）
 - 跟踪与遥操作基线：[TWIST2](./paper-twist2.md)、[SONIC 全身跟踪方法](./nvidia-sonic.md)

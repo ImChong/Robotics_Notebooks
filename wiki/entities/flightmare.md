@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, simulation, uav, unity, reinforcement-learning, rpg, agile-flight, eth]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-18
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./airsim.md
@@ -102,6 +102,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：uzh-rpg/flightmare@d4218ae，读过 README.md（grep 运行说明）、flightrl/examples/run_drone_control.py、flightrl/rpg_baselines/envs/vec_env_wrapper.py、flightrl/rpg_baselines/ppo/ppo2.py（grep）、flightlib/src/wrapper/pybind_wrapper.cpp、flightlib/src/envs/vec_env.cpp、flightlib/src/envs/quadrotor_env/quadrotor_env.cpp、flightlib/src/bridges/unity_bridge.cpp（grep）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 并行飞行环境为 RL 采样提供动力学与观测，渲染速度不等于训练收敛速度。
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 敏捷飞行实验可沿参考轨迹设计与动力学约束理解规划层，再检查飞控跟踪误差。
 
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [AirSim](./airsim.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, mpc, flying, utokyo]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2609.07544"
 related:
   - ../concepts/whole-body-control.md
@@ -93,6 +93,8 @@ flowchart LR
 续航与推进器故障未深入；户外风扰未报。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 推力率作为优化输入时，要将推进器动态、接触切换和法向力约束放入滚动时域检查。
 
 - [whole-body-control](../concepts/whole-body-control.md)
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)

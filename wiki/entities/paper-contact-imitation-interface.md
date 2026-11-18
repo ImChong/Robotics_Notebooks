@@ -7,7 +7,7 @@ tags:
   - manipulation
   - imitation-learning
 status: complete
-updated: 2026-11-09
+updated: 2026-11-18
 arxiv: "2610.41028"
 project: https://nus-lins-lab.github.io/CIMIWeb/
 code: https://github.com/ariszxxu/CIMI
@@ -204,6 +204,8 @@ CIMI 相比传统关节轨迹克隆，强调接触面共享和低层控制适配
 - **安全边界**：参考硬件和标定不是可直接复用的部署参数。离线 `--preflight` 不发运动命令；真机需独立验证抓握力、行程、通信超时和紧急停止。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 接触面重定向与视角重投影把人手示范转成机器人训练数据，分层策略再负责执行。
 
 - [Manipulation：机器人操作任务](../tasks/manipulation.md)
 - [Contact-Rich Manipulation：接触丰富操作](../concepts/contact-rich-manipulation.md)

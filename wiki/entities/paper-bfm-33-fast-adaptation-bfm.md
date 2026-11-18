@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2504.07896"
 venue: "2025 · CoRL"
 summary: "适配速度决定 BFM 工程价值：新任务样本与开发成本。"
@@ -105,6 +105,9 @@ flowchart TD
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 任务适配应同时报告新增交互样本和原基座能力的保留情况。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 若利用少量示范吸收新约束，需与从零学习及原模型直接调用分开比较。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

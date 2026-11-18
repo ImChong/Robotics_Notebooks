@@ -2,7 +2,7 @@
 type: entity
 tags: [robotis, cyclo, mjlab, mujoco, reinforcement-learning, imitation-learning, humanoid, k1, sim2real, physical-ai, open-source]
 status: complete
-updated: 2026-09-05
+updated: 2026-11-18
 summary: "ROBOTIS cyclo_mjlab：基于 mjlab + MuJoCo 3.5 的 AI Sapiens K1 人形 RL/模仿学习仓，含 Velocity 与 Dance Mimic 任务，训练写 sim2real.yaml、play 导出 ONNX/PT；与 Isaac 路径 cyclo_lab 并列。"
 related:
   - ./robotis.md
@@ -101,6 +101,9 @@ flowchart LR
 - 仓处于早期（2026-08 创建），跟进 README 与 issue 比假设 API 稳定更安全。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — Velocity 任务通过交互回报训练策略，导出配置与真机接口须保持一致。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — Dance Mimic 的参考动作与跟踪目标应独立于速度任务检查。
 
 - [ROBOTIS 组织 hub](./robotis.md)
 - [AI Sapiens K1](./robotis-ai-sapiens.md)

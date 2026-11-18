@@ -13,7 +13,7 @@ tags:
   - dut
   - eth-zurich
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2609.07497"
 venue: "CoRL 2026"
 code: https://github.com/Hbelief1998/Functional-SLAM-CoRL_2026
@@ -197,6 +197,8 @@ sequenceDiagram
 - **许可：** CC BY-NC-SA 4.0 限制商用集成。
 
 ## 关联页面
+
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md) — 功能场景图可提供目标语义与空间关联，仍需独立实现导航规划和执行。
 
 - [vS-Graphs](./paper-vs-graphs-visual-slam-scene-graph.md) — 在线 SLAM + 可优化 3D 场景图（建筑语义）
 - [SLAMFormer-∞](./paper-slamformer-infinity.md) — 学习型稠密单目 SLAM 对照

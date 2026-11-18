@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2410.03441"
 venue: "2024 · ICLR"
 code: https://github.com/GuyTevet/CLoSD
@@ -96,6 +96,9 @@ flowchart LR
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Diffusion-based Motion Generation (基于扩散模型的运动生成)](../methods/diffusion-motion-generation.md) — 扩散模块产生上层动作参考，生成质量需要和物理执行效果分别评估。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 底层跟踪策略将参考转成闭环动作，仿真反馈用于检查参考是否可执行。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

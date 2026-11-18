@@ -2,7 +2,7 @@
 type: entity
 tags: [navigation, slam, ros2, quadruped, genisom, path-planning]
 status: complete
-updated: 2026-06-23
+updated: 2026-11-18
 related:
   - ./matrix-simulation-platform.md
   - ./quadruped-control-curriculum.md
@@ -57,6 +57,8 @@ summary: "RoamerX 是智身科技开源的四足导航栈（GENISOM-AI）：ROS2
 典型流程：`ros2 launch robot_slam slam.launch.py` → 建图/定位服务 → Nav2 跟踪目标点 → 底层 RL 执行步态。
 
 ## 与其他页面的关系
+
+- [Model Predictive Path Integral (MPPI)](../methods/mppi.md) — MPPI 局部规划位于 SLAM/行为树与底层运动策略之间，应核对采样成本和控制周期。
 
 - 上游仿真：[MATRiX](./matrix-simulation-platform.md)
 - 任务：[Vision-Language Navigation](../tasks/vision-language-navigation.md) — 自然语言目标可接在导航栈之上

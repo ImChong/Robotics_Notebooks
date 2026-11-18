@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, quadruped, unitree-go2, motion-retargeting, genesis]
 status: complete
-updated: 2026-06-08
+updated: 2026-11-18
 summary: "TSUITUENYUE/motion-imitation 为 Unitree Go2 提供 MoCap→Genesis 重定向与关节速度匹配 RL 模仿管线。"
 related:
   - ../concepts/motion-retargeting.md
@@ -63,6 +63,8 @@ python retarget_motion/retarget_motion.py --input_file=source_motion.txt --outpu
 - **Sim2Real 验证有限**：仓库聚焦仿真内模仿训练，真机部署需额外补充域随机化与状态估计器对齐。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — MoCap 重定向与关节速度匹配构成示范到策略的管线，需同时检查相位和动态可执行性。
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [legged_gym](./legged-gym.md)

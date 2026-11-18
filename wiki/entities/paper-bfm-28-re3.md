@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2102.09430"
 venue: "2021 · ICML"
 code: https://github.com/younggyoseo/RE3
@@ -95,6 +95,8 @@ flowchart LR
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Policy Optimization](../methods/policy-optimization.md) — 随机编码器上的熵奖励改变探索目标，策略更新仍由所接 RL 后端承担，不能据此推断人形控制结果。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

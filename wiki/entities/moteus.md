@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, motor-control, foc, can-fd, open-source, qdd, mjbots]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./simplefoc.md
@@ -102,6 +102,9 @@ flowchart LR
 - 商标「mjbots」「moteus」受保护，产品命名须读官网政策。
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 位置、速度与力矩接口的反馈职责需要分层理解，FOC 与上层运动环并非同一层。
+- [MIT 关节阻抗模式参数整定](../methods/mit-joint-impedance-mode-tuning.md) — 关节 PD 加前馈的整定可作背景，命令字段、单位与模式仍以 moteus 协议为准。
 
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [SimpleFOC](./simplefoc.md)

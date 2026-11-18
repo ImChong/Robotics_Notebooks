@@ -1,7 +1,7 @@
 ---
 type: entity
 status: draft
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: sharpa-ae01
 tags: [hardware, sharpa-robotics, dexterous-manipulation, tactile]
 related:
@@ -60,6 +60,9 @@ summary: "Sharpa AE01：触觉外骨骼数据手套，22 DoF/22 编码器、每�
 - 开源状态：硬件产品，无开源设计或 SDK 信息（2026-10-22 未见）。
 
 ## 关联页面
+
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — 编码器动作与触觉反馈构成遥操作输入输出链，需要核对人手到机器人映射和延迟。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 采集轨迹进入示范学习前，应检查动作定义、同步和接触覆盖，而非仅统计采集时长。
 
 - [Sharpa Robotics](./sharpa-robotics.md) — 公司页
 - [Sharpa 学术路线三条主线（阅读坐标）](../overview/sharpa-academic-route-three-lines.md)

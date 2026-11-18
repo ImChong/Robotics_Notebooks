@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, world-model, foundation-model, imitation-learning, wam]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./unifolm-vla.md
@@ -152,6 +152,8 @@ cd external/dlimp && pip install -e .
 - **与 VLA / WLA 分工**：[`unifolm-vla`](./unifolm-vla.md) 走视觉–语言–动作；[`unifolm-wla`](./unifolm-wla.md) 为 6B 全身 WLA 新主线；本仓强调 **显式世界动态** 与 **仿真数据合成**，选型看是否需要交互式 WM 而非比星标。
 
 ## 关联页面
+
+- [VLA（Vision-Language-Action）](../methods/vla.md) — 动作头消费世界模型信息用于策略增强，需和仿真引擎生成反馈的模式分开验收。
 
 - [Ropedia W0：跨本体运动-操作世界模型](./paper-ropedia-w0.md) — 以共享运动学表示连接人类与机器人数据。
 - [SteerAct：少样本时间维动作引导](./paper-steeract-few-shot-temporal-steering.md) — 在冻结动作模型上实施测试时适配。

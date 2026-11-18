@@ -3,7 +3,7 @@ type: entity
 project_id: ae-vla-acg-bench
 tags: [paper, manipulation, bimanual, vla, compositional-generalization, lora, benchmark, pi05, so101]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-18
 arxiv: "2610.06184"
 venue: "arXiv 2026 (Technical Report)"
 summary: "ACG-Bench（8 任务族、23 条件）+ AE-VLA（臂 token 分组 + SkillLoRA + 臂间注意力阻断，建于 π0.5）：未见组合泛化 CCSR 21.53% 对单 π0.5 的 2.94%，SO101 双臂真机五个未见条件 39% 对最强基线 10%。"
@@ -99,6 +99,8 @@ flowchart LR
 - 无代码、无项目页；机构单位未在页面中列出（未核实）。
 
 ## 关联页面
+
+- [VLA（Vision-Language-Action）](../methods/vla.md) — 臂 token 分组、SkillLoRA 与注意力阻断修改 π0.5 的动作专家，需按未见组合协议评估。
 
 - [Manipulation 周报汇总（2026-10-05 至 10-09）](../overview/frontier-manipulation-2026-10-05-10-09.md)
 - [双臂操作任务页](../tasks/bimanual-manipulation.md)

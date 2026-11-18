@@ -2,7 +2,7 @@
 type: entity
 tags: [robotis, cyclo, isaac-lab, reinforcement-learning, imitation-learning, sim2real, physical-ai, open-source]
 status: complete
-updated: 2026-09-05
+updated: 2026-11-18
 summary: "ROBOTIS cyclo_lab：基于 Isaac Lab 的官方 RL/IL 扩展，含 OMY 与 FFW-BG2 等任务、Isaac Lab Mimic 与 Sim2Real DDS；对齐 Isaac Sim 5.1 / Lab 2.3。"
 related:
   - ./robotis.md
@@ -88,6 +88,9 @@ flowchart LR
 - **任务覆盖**：当前公开示例以臂式操作与 FFW reach/pick-place 为主，不是全身人形 locomotion Lab。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — Isaac Lab Mimic 与示范采集路径服务模仿学习，需和 RL 任务的奖励优化分开阅读。
+- [Manipulation](../tasks/manipulation.md) — 抓取、开抽屉、堆方块等任务以物体状态和操作成功判定为验收依据。
 
 - [ROBOTIS hub](./robotis.md) · [AI Worker](./robotis-ai-worker.md)
 - [Physical AI Tools](./robotis-physical-ai-tools.md) · [MuJoCo Menagerie](./robotis-mujoco-menagerie.md)

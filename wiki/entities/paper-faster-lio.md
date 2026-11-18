@@ -9,7 +9,7 @@ tags:
   - ivox
   - tsinghua
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 doi: 10.1109/LRA.2022.3152830
 code: https://github.com/gaoxiang12/faster-lio
 original:
@@ -153,6 +153,8 @@ flowchart LR
 - 论文与仓库数字有出入：机械雷达速度论文摘要写 200 Hz 以上，README 写 100 Hz 以上；Xeon 型号正文写 5128，图 1 写 5218（疑为笔误）。
 
 ## 关联页面
+
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 高频 LIO 可作为探索状态输入，iVox 加速不替代下游目标选择与避障验证。
 
 - [FAST-LIO（本库系列页）](./fast-lio.md)：该页只覆盖 FAST-LIO，且只提到 FAST-LIO2 与 ikd-Tree 的名字，没有 iVox 与 Faster-LIO 的内容，故本页单独成节点。
 - [LIO-SAM](./lio-sam.md)：论文表 I 与表 II 的对比基线之一。

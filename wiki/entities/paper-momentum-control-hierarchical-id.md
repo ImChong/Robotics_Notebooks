@@ -2,7 +2,7 @@
 type: entity
 tags: ["paper", "wbc", "momentum-control", "inverse-dynamics", "humanoid", "hmi-papers"]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 venue: "HMI curated · 2016"
 summary: "Momentum Control（HMI P004）：以质心线/角动量为高层平衡目标，用层级逆动力学在浮基动力学与接触约束内求加速度、接触力与力矩。"
 related:
@@ -113,6 +113,9 @@ Momentum Control 与本库同族的层级控制页面差异，主要在于「求
 | 关系/取舍 | 比纯 IK 多出动力学与接触可行域，可直接产出力矩；代价是求解更重、依赖正确的接触计划 | 需下游动力学层补力控 | 提供本工作所需的任务空间动力学求解骨架 |
 
 ## 关联页面
+
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — 质心动量目标需在浮基动力学与接触约束内转成加速度、接触力和力矩。
+- [Balance Recovery（平衡恢复）](../tasks/balance-recovery.md) — 动量目标的价值应在平衡与受扰恢复任务中检验，局部关节姿态不能代替整体可行性。
 
 - [HMI 论文覆盖导读](../queries/hmi-papers-coverage.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)

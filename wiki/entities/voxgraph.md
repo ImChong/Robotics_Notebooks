@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, tsdf, pose-graph, ethz, mapping]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-18
 related:
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -92,6 +92,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：ethz-asl/voxgraph@bd802b5，读过 README.md、voxgraph/launch/voxgraph_mapper.launch、voxgraph/src/voxgraph_mapping_node.cpp、voxgraph/src/frontend/voxgraph_mapper.cpp、voxgraph/src/frontend/pose_graph_interface/pose_graph_interface.cpp；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — TSDF 子图对齐与位姿图优化可沿残差线性化理解，需同时检查数据关联。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 多会话度量地图可服务探索地图维护，但地图对齐不自动生成探索目标。
 
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)

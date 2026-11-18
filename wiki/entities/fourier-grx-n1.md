@@ -4,7 +4,7 @@ tags: [humanoid, hardware, open-source, fourier, fftai]
 status: complete
 original:
   - ../../sources/repos/fourier-n1-core-docs-reading-2026-11-15.md
-updated: 2026-11-15
+updated: 2026-11-18
 related:
   - ./humanoid-robot.md
   - ./open-source-humanoid-hardware.md
@@ -96,6 +96,9 @@ sequenceDiagram
 - 快速开始明确失能时机器人会失去支撑；本次仅做资料核对，没有执行使能、行走或零位命令。
 
 ## 关联页面
+
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — User 手柄与 PubSub 接口属于不同调用层，遥控应用需先核对模式和消息语义。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — 运动接入前固定 SDK 版本、角度单位和关节顺序，不能仅凭 API 名称相近移植控制。
 
 - [人形机器人](./humanoid-robot.md)
 - [开源人形硬件方案对比](./open-source-humanoid-hardware.md)

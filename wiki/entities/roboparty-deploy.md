@@ -4,7 +4,7 @@ project_id: roboparty-deploy
 code: https://github.com/Roboparty/roboparty_deploy
 tags: [humanoid, deployment, ros2, onnx, can-fd, sim2real, open-source, roboparty]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 related:
   - ./roboparty-rp1.md
   - ./roboparty.md
@@ -104,6 +104,9 @@ flowchart LR
 - **性能无数字**：仓库不提供推理延迟、控制抖动或掉帧统计。
 
 ## 关联页面
+
+- [BeyondMimic](../methods/beyondmimic.md) — RP1 的 beyondmimic 启动与动作参考需和推理子仓的策略、关节顺序保持一致。
+- [AMP & HumanX: 判别器驱动的风格学习](../methods/amp-reward.md) — amp 启动配置对应另一训练/策略来源，部署层应分别核对观测与权重。
 
 - [RP1 总览（roboparty-rp1）](./roboparty-rp1.md)
 - [RoboParty（公司）](./roboparty.md)

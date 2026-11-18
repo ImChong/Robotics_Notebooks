@@ -4,7 +4,7 @@ project_id: tiplab-tipsim
 code: https://github.com/tiplab/TipSim
 tags: [tactile, tactile-simulation, mujoco, manipulation, dexterous-hand, robot-simulation, ros2, partially-open-source]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-18
 original:
   - ../../sources/repos/tiplab-tipsim.md
 sources:
@@ -138,6 +138,8 @@ sequenceDiagram
 - **示例证明范围有限：** 公开 GIF 和规则阈值抓取不能替代成功率统计、不同材质/摩擦条件的鲁棒性实验或插件内部算法审计。
 
 ## 关联页面
+
+- [Direct Force Feedback Control（直接力反馈控制）](../methods/direct-force-feedback-control.md) — 对照连续力误差调节与示例中的阈值闭合/保持，插件力读数本身不构成完整力控制器。
 
 - [触觉感知（Tactile Sensing）](../concepts/tactile-sensing.md)：传感器机理、压力分布与滑移感知的通用背景；TipSim 专注力值阵列模拟。
 - [接触丰富操作（Contact-Rich Manipulation）](../concepts/contact-rich-manipulation.md)：将阵列合力纳入操作控制的场景。

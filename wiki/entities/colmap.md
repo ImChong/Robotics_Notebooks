@@ -5,7 +5,7 @@ project: https://github.com/colmap/colmap
 code: https://github.com/colmap/colmap
 tags: [robotics, 3d-vision, optimization, reconstruction]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-18
 sources:
   - ../../sources/repos/vision3d_colmap_20261108.md
 original:
@@ -103,6 +103,9 @@ sequenceDiagram
 失败包括少纹理/重复纹理、曝光变化、纯旋转导致三角化几何退化、错误畸变模型、内参固定错、MVS 显存不足。匹配全部图像随 N 约二次增长，不适合上万图无筛选。SfM 是离线渐进重建，不保证随传感器时钟在线同步处理；把 COLMAP 生成的相机位姿用于 3DGS 训练时必须保留坐标变换约定。
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 束调整将重投影误差写成非线性最小二乘，可沿雅可比线性化理解局部求解。
+- [Levenberg-Marquardt（LM 阻尼最小二乘）](../methods/levenberg-marquardt.md) — 阻尼最小二乘有助于理解 BA 的初值与收敛问题，但不能代替特征匹配和几何验证。
 
 - [Kalibr](./kalibr.md)
 - [LVI-SAM](./paper-lvi-sam.md)

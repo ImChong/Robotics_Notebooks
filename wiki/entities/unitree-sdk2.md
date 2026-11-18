@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, sdk, dds, sim2real, humanoid, quadruped]
 status: complete
-updated: 2026-08-16
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./unitree-ros2.md
@@ -105,6 +105,9 @@ cmake .. -DCMAKE_INSTALL_PREFIX=/opt/unitree_robotics && sudo make install
 - **不要与 SDK1/ROS1 消息混用**：`unitree_ros_to_real` / `unitree_legged_msgs` 属于另一代通信约定。
 
 ## 关联页面
+
+- [Locomotion](../tasks/locomotion.md) — SDK 是腿式运动应用的通信入口，步态和策略控制逻辑仍在上层。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — 遥操作经 SDK 下发命令时，需对齐模式、消息、网卡与机器人状态。
 
 - [Unitree](./unitree.md) — 组织枢纽与仓清单
 - [unitree_ros2](./unitree-ros2.md) — ROS 2 + 同 DDS 语义；v0.3.0 手部 `HandCmd`/`HandState` 与本仓对齐

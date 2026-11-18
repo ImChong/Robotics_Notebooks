@@ -1,7 +1,7 @@
 ---
 type: entity
 status: draft
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: sharpa-w02
 tags: [hardware, sharpa-robotics, dexterous-manipulation, tactile]
 related:
@@ -61,6 +61,9 @@ summary: "Sharpa W02：W01（Sharpa Wave）后继，21 主动 DoF、<750 g，指
 - 开源状态：硬件产品，无开源设计或 SDK 信息（2026-10-22 未见）。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — 自由度、重量与触觉覆盖描述末端条件，操作成功率仍需结合驱动接口和任务验证。
+- [In-hand Reorientation (手内重定向)](../methods/in-hand-reorientation.md) — 手内改变物体姿态还取决于接触、可达性和控制带宽，不能由手部规格直接推断成绩。
 
 - [Sharpa Robotics](./sharpa-robotics.md) — 公司页
 - [Sharpa 学术路线三条主线（阅读坐标）](../overview/sharpa-academic-route-three-lines.md)

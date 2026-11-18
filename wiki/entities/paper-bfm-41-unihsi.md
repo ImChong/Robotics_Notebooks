@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, shanghai-ai-lab]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2309.07918"
 venue: "2023 · ICLR"
 code: https://github.com/OpenRobotLab/UniHSI
@@ -94,6 +94,9 @@ flowchart TD
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md) — 接触链组织的人–场景交互要求同时满足身体移动、物体与接触顺序约束。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 低层可执行动作与上层接触计划承担不同职责，参考学习不能省略物理跟踪验证。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

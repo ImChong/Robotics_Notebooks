@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, video-prediction, diffusion, uncertainty, controlnet, bridgedata, pusht, umich, nvidia]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-18
 topic: [world-models]
 project_id: d3wm
 arxiv: "2610.19212"
@@ -132,6 +132,8 @@ flowchart TB
 - 论文 HTML 末尾约 6k 字符未读，附录细节可能遗漏（未核实）。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 候选动作选择要对齐初态、预测时域与成本，单帧预测误差不能直接等同任务回报。
 
 - [生成式世界模型](../methods/generative-world-models.md) — 方法族背景
 - [扩散模型](../concepts/diffusion-model.md) — ControlNet 与去噪基础

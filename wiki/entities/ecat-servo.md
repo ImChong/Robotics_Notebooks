@@ -4,7 +4,7 @@ project_id: ecat-servo
 code: "https://github.com/kubabuda/ecat_servo"
 tags: [ethercat, fieldbus, open-source, servo, embedded, realtime]
 status: draft
-updated: 2026-10-14
+updated: 2026-11-18
 related:
   - ./soes.md
   - ./opensml.md
@@ -55,6 +55,9 @@ summary: "ecat_servo：实现 CiA402 伺服状态机的 EtherCAT 伺服配套库
 - EtherCAT 协议本身不开源，协议栈代码开源，ESC 硬件芯片需单独购买（文章避坑提醒）。
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — CiA402 状态机管理伺服使能与模式，电机反馈环仍需应用或驱动器实现。
+- [MIT 模式模拟 CSP：前馈优先的内环整定与五关验证](../methods/mit-mode-csp-emulation-tuning.md) — 对照 CSP 位置目标与关节阻抗接口适配，需先核实 PDO、模式和控制周期；本页二手入口不证明完整实现。
 
 - [soes](./soes.md)
 - [opensml](./opensml.md)

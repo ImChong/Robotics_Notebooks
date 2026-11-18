@@ -6,7 +6,7 @@ tags:
   - control
   - planning
 status: complete
-updated: 2026-10-28
+updated: 2026-11-18
 arxiv: "2610.35615"
 project: https://gen-mod-expressive-motion-behavior.github.io/
 code: https://github.com/TillHielscher/gen-mod-expressive-motion-behavior
@@ -91,6 +91,8 @@ sequenceDiagram
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Dynamic Movement Primitives (DMP)](../methods/dmp.md) — 动画原则进入动态运动基元后，再由上层模型调节手势，语境评价与轨迹可执行性须分别检查。
 
 - [manipulation](../tasks/manipulation.md)
 - [impedance-control](../concepts/impedance-control.md)

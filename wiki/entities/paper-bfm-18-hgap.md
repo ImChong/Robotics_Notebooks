@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2312.02682"
 venue: "2024 · ICLR"
 code: https://github.com/facebookresearch/hgap
@@ -103,6 +103,9 @@ flowchart TD
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — generalist planner 与低层身体能力之间需明确技能接口和时序约束。
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 以参考动作跟踪为低层控制背景，区分规划覆盖与单段物理跟踪质量。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, mujoco, cad, can-bus, sim2real, unitree]
 status: complete
-updated: 2026-09-30
+updated: 2026-11-18
 related:
   - ../concepts/humanoid-parallel-joint-kinematics.md
   - ./open-source-humanoid-hardware.md
@@ -209,6 +209,9 @@ Menlo 在 [《How we built humanoid legs from the ground up in 100 days》](http
 - **局限：商业套件与完全自采的 BOM 可能存在批次差异**，惯性参数与摩擦标定仍需以本机辨识为准。
 
 ## 与其他页面的关系
+
+- [AMP & HumanX: 判别器驱动的风格学习](../methods/amp-reward.md) — Isaac Lab + AMP 训练线需单独检查参考数据和判别器奖励，不能与 mjlab 线混拼配置。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — 机械、电气、模型与板载软件最终需在双足行走闭环中联合验证。
 
 - 放在 **开源硬件对比** 谱系中，与 **Roboto Origin**、**Atom01** 等并列，但 Asimov 更突出 **单仓全栈 + 官方手册/BOM 外链 + 商业套件** 的闭环。
 - 仿真工作流可接到 [MuJoCo](./mujoco.md) 与 [Sim2Real](../concepts/sim2real.md) 概念页；控制频率与 CAN 分段可接到通信/延迟类 query（若你正在做总线调度纵深，可从本页规格表跳转到对应笔记）。

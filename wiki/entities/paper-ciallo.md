@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, cross-embodiment, intent-representation, imitation-learning, vla, robot-manipulation]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-18
 project_id: ciallo
 arxiv: "2611.13732"
 summary: "CIALLO 通过动作、视觉变化与语言对比学习共享短程意图，再用本体特定解码器恢复动作；新本体可用最多 10 秒演示校准，真机 20 示范/任务平均自报 76.7%。"
@@ -87,6 +87,8 @@ flowchart TD
 短程意图不必然覆盖力控、多指触觉和长期接触任务；新本体校准与 VLA 任务示范不能混称为零样本部署；真实机器人样本量和任务类型有限。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 区分跨本体 codec 校准与下游任务示范学习，少量校准记录不等于免任务数据。
 
 - [DexSeed](paper-dexseed.md)
 - [VLA](../methods/vla.md)

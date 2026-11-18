@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2108.13956"
 venue: "2021 · ICML"
 code: https://github.com/rll-research/url_benchmark
@@ -98,6 +98,9 @@ flowchart TD
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 内在奖励服务任务到来前的主动探索，下游外部回报与预训练目标需分别评测。
+- [ASE: 对抗性技能嵌入](../methods/ase.md) — 对照后继特征预训练与对抗技能嵌入的表示思路，二者的奖励和技能接口不同。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

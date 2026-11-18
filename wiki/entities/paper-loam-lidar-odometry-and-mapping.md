@@ -3,7 +3,7 @@ type: entity
 project_id: loam-lidar-odometry-and-mapping
 tags: [paper, lidar, slam, odometry, mapping, cmu, loam]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 pdf: https://www.roboticsproceedings.org/rss10/p07.pdf
 code: https://github.com/laboshinl/loam_velodyne
 original:
@@ -151,6 +151,9 @@ flowchart LR
 - 若干数字（表 I、表 II、KITTI 0.88%）是论文自述，未复现。
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 把高频里程计、低频建图与可选 IMU 去畸变分开阅读，论文主线不含回环。
+- [Levenberg-Marquardt（LM 阻尼最小二乘）](../methods/levenberg-marquardt.md) — 点到线/面残差用 LM 优化，需和特征筛选及运动插值共同核对。
 
 - [激光雷达 SLAM 综述整理（2026 转载文）](../concepts/lidar-slam-survey-2026.md)
 - [LeGO-LOAM](./lego-loam.md)：在 LOAM 之上加入地面优化的轻量版本

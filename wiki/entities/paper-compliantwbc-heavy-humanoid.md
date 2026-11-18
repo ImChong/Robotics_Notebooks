@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, compliance, force-estimation]
 status: complete
-updated: 2026-10-05
+updated: 2026-11-18
 arxiv: "2609.33310"
 related:
   - ../tasks/loco-manipulation.md
@@ -73,6 +73,8 @@ flowchart TB
 - 评测同时看 E_imp、ρ_τ、R_LB 和成功率，不以单一成功率或跟踪误差代表柔顺能力。
 
 ## 关联页面
+
+- [Residual Policy Learning（残差策略学习）](../methods/residual-policy-learning.md) — 残差修改各 link 的阻抗平衡点，而非直接修改电机指令或增益，需明确残差所在接口。
 
 - [移动操作任务](../tasks/loco-manipulation.md)
 - [GentleHumanoid：上肢柔顺的全身运动跟踪](./paper-gentlehumanoid.md)

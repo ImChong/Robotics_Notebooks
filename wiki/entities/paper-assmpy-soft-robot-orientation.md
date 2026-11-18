@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, soft-robot, mpc, ethz]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2609.14376"
 code: https://github.com/karakaron/aSSMPy
 related:
@@ -117,6 +117,8 @@ flowchart TD
 - 结论范围以 arXiv 与项目页为准；待发布代码无法独立验数。
 
 ## 关联页面
+
+- [Nonlinear Model Predictive Control（NMPC）](../methods/nonlinear-model-predictive-control.md) — aSSM 降阶为姿态 MPC 提供低维非线性模型，应同时核对降阶误差、约束与控制周期。
 
 - [十篇资源技术地图](../overview/embodied-resources-10-papers-technology-map.md)
 

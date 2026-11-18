@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, cad, pcb, bom, roboparty]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-18
 related:
   - ./roboto-origin.md
   - ./open-source-humanoid-hardware.md
@@ -51,6 +51,9 @@ summary: "Atom01_hardware 是 Roboparty Atom01 的机械与电子设计仓库，
 - [Roboparty/Atom01_hardware](https://github.com/Roboparty/Atom01_hardware)
 
 ## 关联页面
+
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — CAD/PCB/BOM 是搭建本体的输入，行走能力还取决于装配、控制和标定。
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 装配后的关节反馈验证可沿位置/速度控制读法组织，硬件仓不替代具体控制实现。
 
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)

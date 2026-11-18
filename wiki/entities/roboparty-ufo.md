@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, reinforcement-learning, unsupervised-rl, bfm, open-source, roboparty, teleoperation, mjlab]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 related:
   - ./party-os.md
   - ../overview/roboparty-lab-party-os-technology-map.md
@@ -159,6 +159,8 @@ sequenceDiagram
 图依据：Roboparty/UFO@4f1a6f6，读过 `run_train.sh`、`run_inference.sh`、`ufo/train.py`、`ufo/training/trainer.py`、`ufo/training/config.py`、`ufo/agents/fb_cpr_aux/agent.py`（`update` 的调用顺序）、`ufo/envs/vector_env.py`（仅类/方法签名）、`ufo/inference/__main__.py`、`docs/ARCHITECTURE.md`、`docs/TRAIN_INFERENCE.md`。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — BFM-Zero/TeCH 的无监督表征研究属于交互学习管线，训练时长还取决于数据与多卡配置。
 
 - [Party OS](./party-os.md)
 - [MimicLite](./mimiclite.md) — 监督跟踪互补线

@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, vio, msckf, research, ros, cmu]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ../entities/vins-fusion.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -98,6 +98,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：rpng/open_vins@6948812，读过 ov_msckf/launch/subscribe.launch.py、ov_msckf/src/run_subscribe_msckf.cpp、ov_msckf/src/ros/ROS2Visualizer.cpp、ov_msckf/src/core/VioManager.cpp、ov_msckf/src/core/VioManager.h；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [机器人自主探索](../tasks/autonomous-exploration.md) — VIO 可为探索系统提供状态估计，目标选择与地图规划仍由下游负责。
+- [Visual Servoing（视觉伺服控制）](../methods/visual-servoing.md) — 对照视觉惯性估计与视觉误差反馈控制的职责，位姿输出本身不构成控制器。
 
 - [VINS-Fusion](../entities/vins-fusion.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)

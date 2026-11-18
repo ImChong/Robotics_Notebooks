@@ -2,7 +2,7 @@
 type: entity
 tags: [motion-retargeting, humanoid, mocap, hmi-opensource-table, project]
 status: draft
-updated: 2026-09-15
+updated: 2026-11-18
 summary: "DDR：跳过先做运动学重定向再补动力学的两阶段流程，直接在物理仿真中用采样式MPC与CEM搜索目标本体动作，使视频模仿参考同时满足任务空间与动力学约束；源码尚未发布。"
 related:
   - ../concepts/motion-retargeting.md
@@ -83,6 +83,8 @@ flowchart LR
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 采样式 MPC 与 CEM 在物理仿真中搜索动作，区别于仅拟合骨架的运动学步骤。
 
 - [motion-retargeting](../concepts/motion-retargeting.md)
 - [motion-retargeting-gmr](../methods/motion-retargeting-gmr.md)

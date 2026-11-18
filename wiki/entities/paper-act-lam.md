@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-model, latent-action, visual-planning, planning]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2609.15189"
 code: https://github.com/DingjieFu/ACT-LAM
 related:
@@ -130,6 +130,8 @@ sequenceDiagram
 - 长时像素重建弱意味着不能当 generative video world model 替代品。
 
 ## 关联页面
+
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md) — 潜动作须真正调制预测动态；视频重建改善不自动意味着动作可控性和下游效果改善。
 
 - [World Action Models](../concepts/world-action-models.md)
 - [VLA](../methods/vla.md)

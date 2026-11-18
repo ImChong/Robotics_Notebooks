@@ -6,7 +6,7 @@ project: https://github.com/HKUST-Aerial-Robotics/VINS-Mono
 code: https://github.com/HKUST-Aerial-Robotics/VINS-Mono
 tags: [slam, vio, imu, factor-graph, visual-inertial, camera-calibration]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-18
 related:
   - ./vins-fusion.md
   - ./paper-lvi-sam.md
@@ -138,6 +138,9 @@ VINS-Mono 是优化式单目 VIO 的代表，以下与本仓库已有的视觉-�
 运动激励不足会让 monocular scale/gravity/IMU biases 难观；纹理匮乏、强光变化、快速转动可能造成光流失跟。窗口边缘化固定线性化点、增加长期偏差；回环几何约束的误匹配需双重 RANSAC。默认 ROS1 老依赖需迁移，未在当前机器实测性能。
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 滑窗中的 IMU、重投影和边缘化残差需经局部线性化联合求解。
+- [Levenberg-Marquardt（LM 阻尼最小二乘）](../methods/levenberg-marquardt.md) — Ceres 优化的阻尼最小二乘背景有助于分析初值与病态问题，不能代替尺度初始化和标定。
 
 - [VINS-Fusion](./vins-fusion.md)
 - [LVI-SAM](./paper-lvi-sam.md)

@@ -4,7 +4,7 @@ project_id: sts32xx-firmware
 code: https://github.com/roboninecom/STS32XX-Firmware
 tags: [robot-control, manipulation, firmware, servo, robonine]
 status: draft
-updated: 2026-11-03
+updated: 2026-11-18
 summary: "STS32XX Firmware 为 GD32F130 舵机提供局部轨迹规划、位置控制和上位机重力补偿。"
 sources:
   - ../../sources/repos/sts32xx-firmware.md
@@ -90,6 +90,8 @@ sequenceDiagram
 - 刷写可能损坏舵机或擦除标定；负载、增益和电流限制需要在实际机构上验证。
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 本地 S 曲线、位置 PID 与速度前馈承担不同职责，上位机重力补偿还依赖模型和标定。
 
 - [遥操作](../tasks/teleoperation.md)
 - [Sim2Real](../concepts/sim2real.md)

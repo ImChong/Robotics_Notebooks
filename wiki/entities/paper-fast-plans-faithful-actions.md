@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robotics, robot-learning]
 status: complete
-updated: 2026-10-07
+updated: 2026-11-18
 project_id: fast-plans-faithful-actions
 arxiv: "2609.30833"
 related:
@@ -80,6 +80,8 @@ flowchart TD
 比单体VLA更明确分离规划与动作；路点信息是否充分、控制时延仍是关键。 当前导读以用户提供的文章和预印本题录为索引；详细配置与结果应核对论文全文。
 
 ## 关联页面
+
+- [Action Chunking（动作块输出）](../methods/action-chunking.md) — 路点包含目标、夹爪和时长，动作专家的连续输出需忠实满足上层时序约束。
 
 - [Day 5 导读](../overview/humanoid-motion-intelligence-day5-world-models-decision.md)
 - [生成式世界模型](../methods/generative-world-models.md)

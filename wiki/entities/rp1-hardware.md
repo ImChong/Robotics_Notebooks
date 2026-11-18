@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, cad, pcb, harness, bom, open-source, roboparty]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 project_id: rp1-hardware
 code: https://github.com/Roboparty/rp1_hardware
 related:
@@ -92,6 +92,9 @@ SolidWorks 源文件从 Release 压缩包解压后，以 `RP1_SolidWorks_Source/
 - **制造可行性未验证**：仓库未附复现实测记录；Release 压缩包完整性、第三方件版本需自行核对。
 
 ## 关联页面
+
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 整机装配后的惯量与摩擦应通过实验核对，制造料号一致不能替代动态参数验证。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — 不同运控头、线束和板卡配置需与行走部署对应，先固定实际本体修订。
 
 - [RP1 总览（RoboParty RP1）](./roboparty-rp1.md)
 - [RoboParty（公司）](./roboparty.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, badminton, reinforcement-learning, hierarchical-control, motion-prior, sim2real, tsinghua, cuhk, zju, deepcybo, embodied-ai-lab]
 status: complete
-updated: 2026-10-16
+updated: 2026-11-18
 arxiv: "2609.31840"
 related:
   - ./paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md
@@ -116,6 +116,8 @@ flowchart TB
 - **开源材料有限：** 截至 2026-10-05，项目页未提供可运行代码、权重或数据入口，暂不能独立复现实验流程。
 
 ## 关联页面
+
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 高层选连续潜技能、低层执行球拍目标，需把动作扩增和回球任务学习分阶段评估。
 
 - [深辰凯动 AI 羽毛球机器人（XA1）](./sckd-xa1-badminton-robot.md) — 商业系统与连续回球纪录案例；公开技术细节有限。
 

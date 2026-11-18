@@ -3,7 +3,7 @@ type: entity
 project_id: deeprobotics-amc
 tags: [paper, vla, manipulation, language-steering, force-control, bimanual, deep-robotics]
 status: complete
-updated: 2026-10-24
+updated: 2026-11-18
 arxiv: "2609.15012"
 project: "https://developer.deeprobotics.cn/research/articles/AMC_web_handoff_20261012/index.html"
 related:
@@ -78,6 +78,8 @@ flowchart TD
 **结论来自作者设定的转向评测与有限任务真机；对比方法随任务不同，勿跨表合并。**
 
 ## 关联页面
+
+- [Residual Policy Learning（残差策略学习）](../methods/residual-policy-learning.md) — 语言原子与接触历史通过残差调制动作专家，需区分语义转向和力响应两个信号路径。
 
 - [DR-WM](./paper-dr-wm.md) — 云深处同批研究
 - [云深处 rl_training](./deeprobotics-rl-training.md) — 同公司 RL 训练工程

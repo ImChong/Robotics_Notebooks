@@ -6,7 +6,7 @@ tags:
   - humanoid
   - dexterous
 status: complete
-updated: 2026-11-06
+updated: 2026-11-18
 arxiv: "2611.00193"
 project: https://archon.tech/research/anchor1
 related:
@@ -98,6 +98,8 @@ flowchart TD
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 训练参考的离线重定向与质量筛查为控制学习提供监督，部署免在线重定向不等于训练无需参考。
 
 - [locomotion](../tasks/locomotion.md)
 - [motion-retargeting](../concepts/motion-retargeting.md)

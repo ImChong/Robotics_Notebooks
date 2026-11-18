@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, lidar, loam, ground-vehicle, slam, hku]
 status: complete
-updated: 2026-07-21
+updated: 2026-11-18
 related:
   - ../entities/fast-lio.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -89,6 +89,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：RobustFieldAutonomyLab/LeGO-LOAM@896a7a9，读过 README.md、LeGO-LOAM/launch/run.launch、include/utility.h、src/imageProjection.cpp、src/featureAssociation.cpp、src/mapOptmization.cpp、src/transformFusion.cpp；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 地面约束、点云分割与扫描匹配共同影响地面平台的位姿估计。
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 可沿残差最小二乘分析地面/特征约束的可观性，不把优化收敛等同地图无漂移。
 
 - [FAST-LIO](../entities/fast-lio.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)

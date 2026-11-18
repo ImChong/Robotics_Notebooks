@@ -10,7 +10,7 @@ tags:
   - motion-understanding
   - multimodal
 status: complete
-updated: 2026-11-07
+updated: 2026-11-18
 original:
   - ../../sources/papers/mobius_arxiv_2611_05279.md
 sources:
@@ -128,6 +128,9 @@ Möbius 的核心贡献是把去噪生成放入与动作理解相同的多模态
 - [官方仓库归档](../../sources/repos/mobius-code.md)
 
 ## 关联页面
+
+- [Diffusion-based Motion Generation (基于扩散模型的运动生成)](../methods/diffusion-motion-generation.md) — 动作去噪与理解共享多模态注意力，生成、补全和编辑条件需分别核对。
+- [统一多模态 Token（Unified Multimodal Tokens）](../methods/unified-multimodal-tokens.md) — 逐帧连续动作特征与文本共享序列空间，不代表使用离散动作 tokenizer 或 VAE。
 
 - [Awesome Text-to-Motion（Zilize）](./awesome-text-to-motion-zilize.md) — 文本到动作生成论文索引，可对照其他 T2M 方法
 - [HumanML3D](./paper-notebook-humanml3d.md) — 论文主要评测数据集

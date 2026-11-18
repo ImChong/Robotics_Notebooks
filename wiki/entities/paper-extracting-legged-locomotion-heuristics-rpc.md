@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, mpc, locomotion, quadruped, mit, heuristics, control]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 venue: "ICRA 2020"
 related:
   - ./paper-bledt-rpc-thesis.md
@@ -102,6 +102,9 @@ flowchart LR
 - IEEE 全文访问受限时以摘要+博士论文互补。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — RPC 在预测控制代价中加入提取的正则启发式，先固定控制结构再评估在线适应。
+- [Locomotion](../tasks/locomotion.md) — Mini Cheetah 验收应比较相同增益下的速度、通过性与扰动恢复。
 
 - [Bledt RPC 论文](./paper-bledt-rpc-thesis.md)
 - [WBIC+MPC](./paper-wbic-mpc-mini-cheetah.md)

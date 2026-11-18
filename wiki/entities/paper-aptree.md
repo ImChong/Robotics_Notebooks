@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, behavior-tree, task-planning, pddl, construction, dsl, replanning, model-driven]
 status: complete
-updated: 2026-10-17
+updated: 2026-11-18
 project_id: aptree
 arxiv: "2610.18523"
 code: https://github.com/shshermin/APTree-automated-planning-tree
@@ -151,6 +151,8 @@ sequenceDiagram
 - **复现边界：** 本次未构建运行仓库，运行路径仅依据 `DOCKER_README.md`。
 
 ## 关联页面
+
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 符号动作与行为树计划仍需低层运动可行性支撑，可据此区分任务重规划和机器人轨迹求解。
 
 - [行为树与 VLA 编排](../concepts/behavior-tree-vla-orchestration.md) — 行为树作为执行层的另一类用法
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 对照：用语言模型而非符号规划器做任务分解

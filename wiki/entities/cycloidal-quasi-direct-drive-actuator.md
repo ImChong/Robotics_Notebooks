@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, qdd, open-source, cycloidal, bldc, foc]
 status: complete
-updated: 2026-07-25
+updated: 2026-11-18
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./berkeley-humanoid-lite.md
@@ -86,6 +86,9 @@ flowchart TB
 - 个人原型，缺工业级寿命/热循环公开数据。
 
 ## 关联页面
+
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 负载传感器力矩试验可与反射惯量、摩擦等关节表征一起核对。
+- [MIT 关节阻抗模式参数整定](../methods/mit-joint-impedance-mode-tuning.md) — 反驱关节的增益和前馈应按输出端响应整定，驱动协议与力矩估计误差另行确认。
 
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [Berkeley Humanoid Lite](./berkeley-humanoid-lite.md)

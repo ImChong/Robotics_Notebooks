@@ -6,7 +6,7 @@ project: https://gs-slam.github.io/
 code: https://github.com/yanchi-3dv/diff-gaussian-rasterization-for-gsslam
 tags: [slam, rgbd, 3dgs, localization, mapping, gaussian-splatting]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-18
 sources:
   - ../../sources/papers/vision3d_gs_slam_20261108.md
   - ../../sources/sites/vision3d_gs_slam_20261108.md
@@ -137,6 +137,9 @@ GS-SLAM（Yan）、[MonoGS](./paper-monogs.md)、[Gaussian-SLAM](./paper-gaussia
 4. 容易混淆 MonoGS（Matsuki）、Gaussian-SLAM（Yugay）与 GS-SLAM（Yan），三者论文、作者和源码均不同。
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 对照传统位姿残差优化与可微光栅化梯度；公开 rasterizer 的 depth-to-pose 已知问题须单独核对。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 渲染地图进入探索系统前需验证位姿与碰撞几何，不能仅以渲染 PSNR 判断可用性。
 
 - [MonoGS](./paper-monogs.md)
 - [Gaussian-SLAM](./paper-gaussian-slam.md)

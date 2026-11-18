@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, encos, encostech, ros2, isaac-lab, deployment, locomotion, bridgedp]
 status: complete
-updated: 2026-09-24
+updated: 2026-11-18
 related:
   - ./humanoid-robot.md
   - ./open-source-humanoid-hardware.md
@@ -121,6 +121,8 @@ flowchart LR
 - [sources/sites/encos.cn.md](../../sources/sites/encos.cn.md)
 
 ## 关联页面
+
+- [AMP & HumanX: 判别器驱动的风格学习](../methods/amp-reward.md) — PPO+AMP 训练与 ROS 2 ONNX 部署需分别核对运动数据、观测和导出策略格式。
 
 - [人形机器人（Humanoid Robot）](./humanoid-robot.md) — 平台总览
 - [天工 Lite / Pro（开源人形）](./tienkung-humanoid-open-source.md) — 同源 Isaac Lab / Open-X-Humanoid 生态对照

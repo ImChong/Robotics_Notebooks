@@ -3,7 +3,7 @@ type: entity
 project_id: core-collaboration-role-experts
 tags: [paper, manipulation, multi-robot, mixture-of-experts, decentralized, imitation-learning, usyd, pair-lab]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-18
 arxiv: "2610.07752"
 project: https://aus.bot/research/core/
 venue: "arXiv 2026"
@@ -108,6 +108,8 @@ flowchart LR
 - 中心化回归 90.4 > CoRE 84.2，说明去中心化仍有信息损失。
 
 ## 关联页面
+
+- [Action Chunking（动作块输出）](../methods/action-chunking.md) — Transformer 输出动作块并以 CVAE 和角色路由训练，需核对局部观测、块时域及时间集成。
 
 - [Manipulation 周报汇总（2026-10-05 至 10-09）](../overview/frontier-manipulation-2026-10-05-10-09.md)
 - [双臂操作任务页](../tasks/bimanual-manipulation.md)

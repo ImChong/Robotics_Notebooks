@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, spot, curriculum]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2609.09492"
 related:
   - ../tasks/locomotion.md
@@ -92,6 +92,8 @@ Spot stand-to-handstand 成功率；刚度 ablation。
 仅 Spot 平台；其他执行器曲线需重调课程。
 
 ## 关联页面
+
+- [Sim2Real Joint SysID Experiment Design（关节动力学辨识实验设计）](../methods/sim2real-joint-sysid-experiment-design.md) — 课程最终退火到辨识刚度，需先用可辨识实验确认动力学参数，再检查刚度 schedule 的迁移效果。
 
 - [locomotion](../tasks/locomotion.md)
 - [./paper-ebert-nonlinear-normal-modes.md](./paper-ebert-nonlinear-normal-modes.md)

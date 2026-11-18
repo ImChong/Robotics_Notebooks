@@ -2,7 +2,7 @@
 type: entity
 tags: [quadruped, biped, hardware, open-source, odri, torque-control, qdd, actuator]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-18
 related:
   - ./paper-open-torque-controlled-modular-robot-solo.md
   - ./quadruped-robot.md
@@ -68,6 +68,8 @@ summary: "Open Dynamic Robot Initiative（ODRI）：开源扭矩控制腿足平�
 | 组织 GitHub | [open-dynamic-robot-initiative](https://github.com/open-dynamic-robot-initiative) |
 
 ## 关联页面
+
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — 扭矩平台将模型和参考转成关节力矩时，需和双编码器、驱动环及接触状态一并验收。
 
 - [Solo 架构论文（arXiv:1910.00093）](./paper-open-torque-controlled-modular-robot-solo.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)

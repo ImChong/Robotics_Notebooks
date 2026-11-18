@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, rl, locomotion, quadruped, sim2real, mit, agility]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-18
 arxiv: "2205.02824"
 code: https://github.com/Improbable-AI/rapid-locomotion-rl
 related:
@@ -135,6 +135,9 @@ sequenceDiagram
 - 策略对机体参数敏感，换机需重标定/重训。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 速度课程、动力学随机化与适应模块共同服务策略训练，需分别记录样本和部署接口。
+- [Locomotion](../tasks/locomotion.md) — 野外高速行走应连同打滑、扰动和地形条件评估，不能只比较峰值速度。
 
 - [Learning to Jump from Pixels](./paper-learning-to-jump-from-pixels.md)
 - [Concurrent policy+estimator](./paper-concurrent-policy-estimator-locomotion.md)

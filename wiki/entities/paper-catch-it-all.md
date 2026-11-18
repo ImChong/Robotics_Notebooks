@@ -6,7 +6,7 @@ tags:
   - manipulation
   - dexterous
 status: complete
-updated: 2026-10-30
+updated: 2026-11-18
 arxiv: "2610.39044"
 project: https://arth-shukla.github.io/catch-it-all/
 code: https://github.com/arth-shukla/catch-it-all
@@ -94,6 +94,8 @@ sequenceDiagram
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 抓握奖励与安全课程共同训练动态接物，需在视觉噪声、接触变化和硬件约束下验收。
 
 - [manipulation](../tasks/manipulation.md)
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)

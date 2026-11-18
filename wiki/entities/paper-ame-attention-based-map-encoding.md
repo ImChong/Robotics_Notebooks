@@ -3,7 +3,7 @@ type: entity
 tags: [paper, quadruped, humanoid, reinforcement-learning, perceptive-locomotion, attention, sim2real, eth, disney, anymal, fourier, science-robotics]
 status: complete
 summary: "AME（AME-1，Science Robotics 10(105) eadv3604）：CNN+本体条件 MHA 编码 2.5D 高程图，两阶段 PPO 在 ANYmal-D 与 GR-1 上实现稀疏地形泛化与可解释 foothold 注意力；官方无训练代码，Zenodo 数据 + SII-FUSC 社区 G1 复现。"
-updated: 2026-11-13
+updated: 2026-11-18
 arxiv: "2506.09588"
 doi: "10.1126/scirobotics.adv3604"
 venue: "Science Robotics 2025"
@@ -164,6 +164,8 @@ flowchart LR
 - He et al., *Attention-Based Map Encoding for Learning Generalized Legged Locomotion*, [*Science Robotics* 10(105), eadv3604](https://doi.org/10.1126/scirobotics.adv3604) · [arXiv:2506.09588](https://arxiv.org/abs/2506.09588)
 
 ## 关联页面
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 高程图与本体条件注意力为策略提供观测，PPO 训练阶段和感知编码器消融需分别检查。
 
 - [AME-1→AME-2 技术地图](../overview/ame-1-to-ame-2-technology-map.md) — 两代系统对照阅读坐标
 - [AME-2](./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 全局特征、神经映射与 teacher–student

@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, engineai]
 status: draft
-updated: 2026-07-30
+updated: 2026-11-18
 summary: "EngineAI Native SDK：配置文件定义FSM、机器人参数和策略资源，Runner把IMU与关节反馈整理成观测，再发送PD关节命令。MuJoCo回放、远程下发、ROS 2监测和紧急回退共同构成模型导出后的部署检查链。"
 related:
   - ../concepts/sim2real.md
@@ -83,6 +83,9 @@ flowchart LR
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — Runner 的 PD 关节命令需与观测整理、推理周期及 FSM 回退分层检查。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — MuJoCo 回放与真机部署应以全身稳定性和异常回退验收，不能只看模型成功加载。
 
 - [sim2real](../concepts/sim2real.md)
 - [isaac-lab](../entities/isaac-lab.md)
