@@ -10,11 +10,12 @@ tags:
   - hku
   - open-source
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ./deeptutor.md
   - ./hermes-agent.md
   - ./openclaw.md
+  - ./phone-harness.md
   - ./agent-reach.md
   - ./freecad-mcp.md
   - ./unreal-mcp.md
@@ -25,6 +26,8 @@ related:
   - ./paper-skillcorpus.md
   - ../concepts/model-context-protocol.md
   - ../concepts/llm-wiki-karpathy.md
+original:
+  - ../../sources/repos/hkuds_cli_anything.md
 sources:
   - ../../sources/repos/hkuds_cli_anything.md
   - ../../sources/sites/cli-anything-hub.md
@@ -174,6 +177,7 @@ sequenceDiagram
 - [DeepSeek Harness](deepseek-harness.md) — DeepSeek 官方插件化宿主（自带 `packages/skill`；与生成式 CLI 互补）
 - [OpenClaw](openclaw.md) — SKILL 兼容个人助手宿主；Hub meta-skill 安装目标之一
 - [Agent Reach](agent-reach.md) — 外网读搜 CLI 脚手架（与「专业软件 CLI 生成」互补）
+- [Phone Harness](phone-harness.md) — 通过统一 Python helpers 操作真实或云端 iPhone / Android 手机 UI；与 CLI-Anything 的生成式结构化命令路线互补
 - [FreeCAD MCP](freecad-mcp.md) — 同软件域的 MCP 桥对照
 - [Unreal MCP](unreal-mcp.md) — 引擎侧代理桥对照
 - [CAD Skills](cad-skills.md) — 脚本化 CAD / URDF 技能链
@@ -183,6 +187,8 @@ sequenceDiagram
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 软件 harness 编译的对照
 
 ## 参考来源
+
+- 原文通读状态：已重新核对官方项目 README、技术 SOP（`cli-anything-plugin/HARNESS.md`）、命令规范与 CONTRIBUTING；具体范围见[仓库源归档](../../sources/repos/hkuds_cli_anything.md)。**技术报告 arXiv:2606.03854 未作为已全文通读原文登记**；其既有摘要只供定位，不声称验证实验结果。
 
 - [CLI-Anything 仓库源归档（本站）](../../sources/repos/hkuds_cli_anything.md)
 - [CLI-Hub 站点归档（本站）](../../sources/sites/cli-anything-hub.md)
