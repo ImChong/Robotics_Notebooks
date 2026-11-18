@@ -4446,6 +4446,12 @@
         "dreamscale-labs",
         "dreamscalelabs"
       ]
+    },
+    "upstar": {
+      "label": "机器人项目趋势榜（Upstar）",
+      "aliases": [
+        "upstar"
+      ]
     }
   }
 }
