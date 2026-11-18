@@ -3,7 +3,7 @@ type: entity
 project_id: forge-force-aware-loco-manipulation
 tags: [paper, humanoid, loco-manipulation, whole-body-control, force-estimation, rl]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-18
 arxiv: "2611.17142"
 project: https://bb0928.github.io/forge/
 code: https://github.com/bb0928/FORGE
@@ -194,6 +194,7 @@ sequenceDiagram
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [残差策略学习](../methods/residual-policy-learning.md)
 - [Loco-Manipulation 任务](../tasks/loco-manipulation.md)
+- [DiPLO：扩散全身运动规划与冻结 RL 跟踪器](./paper-diplo-self-distilled-diffusion-planning.md) — 与稀疏任务空间命令 + 残差控制形成方法对照。
 - [Loco-Manipulation 纵深路线 Stage 1](../../roadmap/depth-loco-manipulation.md)
 - [11.09–11.13 人形/四足论文总览](../overview/humanoid-quadruped-2026-11-09-13-29-papers.md)
 
