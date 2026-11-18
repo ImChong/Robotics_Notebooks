@@ -13,6 +13,8 @@ related:
   - ./deepseek-harness.md
   - ./openclaw.md
   - ../concepts/llm-robotics-control-interfaces.md
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/humanoid-voice-interaction.md
 sources:
   - ../../sources/repos/ankole.md
   - ../../sources/sites/ankole.md
@@ -155,6 +157,9 @@ sequenceDiagram
 - [DeepSeek Harness](./deepseek-harness.md) — 插件式 Agent Loop 与 SDK 的轻量级对照
 - [OpenClaw](./openclaw.md) — 多 IM / 本地 Skills 的个人助理与消息 Gateway 路线
 - [LLM 机器人控制接口](../concepts/llm-robotics-control-interfaces.md) — 任务级语言决策与实时设备控制的边界
+
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — Ankole 可承载编码任务，但提交、测试和人工验收的证据门禁仍需额外设计
+- [人形机器人智能语音交互](../methods/humanoid-voice-interaction.md) — 语言任务编排的潜在上层集成点；Ankole 本身不等于 ASR/TTS、机器人动作 API 或实时运动控制
 
 ## 参考来源
 
