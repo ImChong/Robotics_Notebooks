@@ -7,17 +7,30 @@
 - **arXiv abs：** <https://arxiv.org/abs/2608.15490>
 - **arXiv HTML：** <https://arxiv.org/html/2608.15490>
 - **PDF：** <https://arxiv.org/pdf/2608.15490>
-- **机构：** Great Bay University；The University of Hong Kong；Tsinghua University；Nanyang Technological University；The Hong Kong Polytechnic University；KTH；King's College London 等（多机构）
+- **机构：** 大湾区大学（Great Bay University）；香港大学（The University of Hong Kong）；清华大学（Tsinghua University）；南洋理工大学（Nanyang Technological University）；香港理工大学（The Hong Kong Polytechnic University）；华南理工大学（South China University of Technology）；KTH 皇家理工学院（KTH Royal Institute of Technology）；伦敦国王学院（King's College London）
 - **入库日期：** 2026-09-23
+- **复核日期：** 2026-11-18
+- **原文版本：** arXiv:2608.15490v1（2026-08-16）
+- **核对范围：** arXiv HTML 原文 §I–VII，Fig. 1–5、Table I–IV 及相关叙述；覆盖传感原理、硬件分类、感知学习、仿真与数据集、Sim2Real 和未来挑战。
+- **通读：** 已完成
+- **作者：** Peng Zhou, Jun Hu, Sihan Chen, Zeqing Zhang, Haofei Ma, Zhenyu Lu, Sichao Liu, Xueqian Wang, Pai Zheng, Xiang Li, Shan Luo, Jia Pan, David Navarro-Alarcon, Chenguang Yang, Michael Yu Wang
 - **一句话说明：** 将 VBTS **硬件 taxonomy**（弹性体 / 尺寸形状 / 光学系统）、**分层触觉智能学习**（低层信号 → 任务策略 → foundation models）与 **仿真–数据集–sim2real**  scaling 层作为 **一体化 sensing-and-learning 系统** 综述，并讨论 open challenges。
 
-## 开源核查（2026-09-23）
+## 开源核查（2026-11-18 复核）
 
 | 项 | 状态 |
 |----|------|
-| 综述配套代码仓 | **未列**（arXiv 与正文未给出官方 GitHub） |
+| 综述配套代码仓 | **未列**（复核 arXiv v1 HTML 原文，未见该综述官方 GitHub 或可运行入口；引用的第三方项目不视为本综述源码） |
 | 引用数据集/模型 | 指向 Sparsh、GelSight、DIGIT、TacBench 等第三方开源资源（见正文 Table / 引用） |
 | 结论 | **N/A（综述）** — 无独立「论文代码」；以文献索引与 taxonomy 为主 |
+
+## 原文表格补充核对（v1）
+
+- **Table I：光学读出** — marker tracking 适合解释剪切/滑移，受 marker 密度与跟踪质量约束；photometric stereo 适合细纹理和几何恢复，依赖照明与标定；stereo vision 通过视差求 3D 几何，但硬件复杂；shading-based 重建允许非理想光学，存在推断歧义。
+- **Table II：硬件三轴** — 弹性体（多模态表皮、标记/图案、弹性体本体）、尺寸形状（大面积、操作器集成、微型探头）、光学（照明、紧凑光路、多通道、事件相机）；不能把表中器件排序理解为统一性能排行榜。
+- **Table III：学习模型** — Sparsh/T3/AnyTouch 等偏通用表征；OmniVTLA、T-Rex、UniTacVLA 等进一步将触觉接入动作策略；表中实验数据与结果分别来自其所引用的论文，并非本综述训练或复现。
+- **Table IV：仿真/数据/评测** — TACTO、Taxim、DiffTactile、Taccel、SimTac 是不同路线的仿真平台；TacBench/ManiFeel 是评测资源；ObjectFolder、Touch100K、TVL 等是数据资源。
+- **§VI 七类挑战** — 灵巧手尺寸匹配、全身表皮、触觉基础模型与 VTLA、Sim2Real、多模态对齐、示教触觉反馈、第一视角触觉数据采集。
 
 ## 摘要级要点
 
@@ -68,12 +81,12 @@
 - 概念枢纽：[触觉传感](../../wiki/concepts/tactile-sensing.md)、[视触觉融合](../../wiki/concepts/visuo-tactile-fusion.md)、[接触丰富操作](../../wiki/concepts/contact-rich-manipulation.md)
 - 方法/任务：[VLA](../../wiki/methods/vla.md)、[Manipulation](../../wiki/tasks/manipulation.md)
 - 本批 ingest 交叉：[Sparsh](./sparsh_arxiv_2410_24090.md)、[Tactile-VLA](./tactile_vla_arxiv_2507_09160.md)、[OmniVTLA](./omnivtla_arxiv_2508_08706.md)、[TaF-VLA](./taf_vla_arxiv_2601_20321.md)
-- **注：** 尚无独立 wiki 实体页；后续可建 `wiki/entities/paper-vbts-survey-2608-15490.md`
+- **唯一详情节点：** [Vision-Based Tactile Intelligence](../../wiki/entities/paper-vision-based-tactile-intelligence.md)（已存在，避免同一 arXiv ID 重复建页）
 
 ## 当前提炼状态
 
 - [x] 三大贡献轴、光学机制表、学习/仿真层次、open challenges 框架已摘录
-- [ ] 全文 Table/Figure 细表待后续 query 深化
+- [x] v1 正文 §I–VII 与 Table I–IV 的结论、局限已复核；未逐项转录表格中全部传感器/论文条目
 
 ## BibTeX
 
