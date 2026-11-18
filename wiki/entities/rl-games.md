@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-11-18
 summary: "rl_games：提供面向GPU环境的PPO、A2C等训练实现，强调大批量采样、RNN策略、分布式训练和Isaac任务适配；适合需要直接查看训练循环、归一化与多设备组织方式的工程基线。"
 related:
   - ../concepts/sim2real.md
@@ -88,6 +88,8 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 理解 GPU 大批量采样后如何组织 PPO 更新与归一化。
+- [Generalized Advantage Estimation (GAE)](../methods/gae.md) — 核对并行 rollout 中优势估计的折扣、截断与价值自举。
 
 ## 参考来源
 

@@ -4,7 +4,7 @@ type: entity
 tags: [biped, cassie, reinforcement-learning, sim2real, pd-control, domain-randomization, berkeley]
 status: complete
 summary: "Cassie 双足：双历史 I/O 架构 + 任务随机化，统一多种动态技能；文中给出策略/PD 分频与 PD 增益缩放随机化等工程细节。"
-updated: 2026-09-28
+updated: 2026-11-18
 arxiv: "2401.16889"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
@@ -91,6 +91,8 @@ flowchart TB
 - [Domain Randomization 指南](../queries/domain-randomization-guide.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Cassie 迭代式 sim2real  locomotion](./paper-cassie-iterative-locomotion-sim2real.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 双历史观测与任务随机化属于策略训练设计，需与奖励和动作接口一起阅读。
+- [Locomotion](../tasks/locomotion.md) — 行走、跑步与跳跃属于动态双足运动任务，不能只凭单一步态评价通用性。
 
 ## 推荐继续阅读
 

@@ -4,7 +4,7 @@ type: entity
 tags: [entity, simulator, autonomous-driving, carla, urban, sensor-simulation, microsoft, curated-index, awesome-sim2real, awesome-world-action-models-rcl]
 status: complete
 arxiv: "1711.03938"
-updated: 2026-10-06
+updated: 2026-11-18
 related:
   - ./unreal-engine-5.md
   - ./airsim.md
@@ -118,6 +118,8 @@ sequenceDiagram
 - [赛车漂移 RL 开源景观](../overview/racing-drift-rl-open-source-landscape.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md)
+- [目标检测（Object Detection）](../methods/object-detection.md) — 多相机与交通参与者提供驾驶感知场景，检测精度不等于驾驶成功率。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 漂移等学习控制实验以仿真交互产生训练数据，须锁定车辆与场景配置。
 
 ## 参考来源
 

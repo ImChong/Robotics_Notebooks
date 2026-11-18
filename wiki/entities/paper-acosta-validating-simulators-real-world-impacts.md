@@ -6,7 +6,7 @@ tags:
   - contact-model
   - sim2real
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: "2110.00541"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
@@ -104,6 +104,8 @@ flowchart TD
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Sim2Real Joint SysID Experiment Design（关节动力学辨识实验设计）](../methods/sim2real-joint-sysid-experiment-design.md) — 对照辨识实验设计中的参数纠缠问题；本文辨识对象是接触参数，不能直接照搬单关节实验。
+- [Locomotion](../tasks/locomotion.md) — Cassie 落地冲击是足式任务的验证场景，结论需与方块抛落实验分开解释。
 
 ## 参考来源
 

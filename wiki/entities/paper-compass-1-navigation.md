@@ -6,7 +6,7 @@ project: "https://www.archon.tech/research/compass1"
 code: "https://github.com/OpenDriveLab/Compass"
 tags: [robotics, visual-navigation, video-generation, memory, embodied-ai]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 summary: "Compass 1 以单目 RGB、稀疏关键帧和历史表示地图实现持久导航；Cosmos3-Edge-4B 统一语言推理与视频-动作生成，Go2 真机 320 次任务成功率 79.4%，官方部署代码和权重仍待发布。"
 original:
   - ../../sources/papers/compass-1-2611-12087.md
@@ -137,6 +137,8 @@ flowchart TD
 - [导航纵深路线](../../roadmap/depth-navigation.md)（Stage 4：VLN 与持续导航）
 - [SWAM](./paper-swam-cross-modal-alignment.md)
 - [WICL](./paper-world-in-context-learning-roboscript.md)
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md) — 语言意图、历史表示和视频–动作头围绕持久导航任务协作。
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md) — 对照目标搜索与历史回溯的任务差异，Compass 1 的训练和评测不直接等同零样本设定。
 
 ## 参考来源
 

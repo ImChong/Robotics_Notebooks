@@ -9,7 +9,7 @@ tags:
   - controller
   - gait
 status: complete
-updated: 2026-11-01
+updated: 2026-11-18
 code: https://github.com/chvmp/champ
 related:
   - ../entities/quadruped-robot.md
@@ -107,6 +107,7 @@ sequenceDiagram
 - [open-quadruped](../entities/open-quadruped.md)
 - [spotmicro](../entities/spotmicro.md)
 - [quadruped-open-source-projects-technology-map](../overview/quadruped-open-source-projects-technology-map.md)
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 沿步态与运动学输出检查底层关节反馈环，区分模式调制、阻抗目标与伺服执行。
 
 ## 参考来源
 

@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, vio, visual-inertial, optimization, uav, hku]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ../entities/open-vins.md
   - ../entities/paper-co-calib-multi-fisheye-calibration.md
@@ -98,6 +98,8 @@ sequenceDiagram
 - [CO-Calib](../entities/paper-co-calib-multi-fisheye-calibration.md) — 同 HKUST Aerial Robotics 组的多鱼眼标定 plug-in
 - [ORB-SLAM3](../entities/orb-slam3.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 优化式多传感器估计可沿残差线性化理解局部求解，算法配置以实际实现为准。
+- [Levenberg-Marquardt（LM 阻尼最小二乘）](../methods/levenberg-marquardt.md) — 作为非线性最小二乘背景，核对初值和阻尼对收敛的影响，不把优化器当成完整 VIO。
 
 ## 推荐继续阅读
 

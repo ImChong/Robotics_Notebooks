@@ -2,7 +2,7 @@
 type: entity
 tags: [teleoperation, motion-retargeting, humanoid, dexterous-hand, robotics, open-source]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-18
 project_id: openrobokit-retargetingkit
 project: https://openrobokit.com/retargetingkit/
 code: https://github.com/openrobokit/retargetingkit
@@ -105,6 +105,8 @@ sequenceDiagram
 - [GraspKit 抓取流程](./graspkit.md)
 - [OpenRoboKit 总览](../overview/openrobokit-toolkit.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — 实时 VR/手套输入经重定向变为机器人命令，端到端还需核对延迟、坐标和设备安全接口。
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 对照人形全身几何映射；本工具还包含独立的手部和手臂求解路径。
 
 ## 参考来源
 

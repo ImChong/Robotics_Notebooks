@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, hardware, actuator, qdd, open-source, umich, thermal, legged]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-18
 arxiv: "2202.12395"
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
@@ -128,6 +128,8 @@ flowchart TD
 - [moteus](./moteus.md)
 - [Actuator 102 · 热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md)
 - [电机 TN 曲线](../concepts/motor-torque-speed-curve.md)
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 把反射惯量、摩擦与背隙表征对应到关节模型，不能仅凭减速比外推性能。
+- [Locomotion](../tasks/locomotion.md) — 42 万步态循环和 8–15 kg 平台范围构成足式应用边界，重型人形需重新验证。
 
 ## 参考来源
 

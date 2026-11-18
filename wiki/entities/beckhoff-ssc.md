@@ -3,7 +3,7 @@ type: entity
 project_id: beckhoff-ssc
 tags: [ethercat, fieldbus, open-source, slave, embedded, realtime]
 status: draft
-updated: 2026-10-14
+updated: 2026-11-18
 related:
   - ./soes.md
   - ../concepts/ethercat-protocol.md
@@ -60,6 +60,8 @@ summary: "Beckhoff SSC (EtherCAT Slave Stack Code)：倍福官方 EtherCAT 从�
 - [ethercat-protocol](../concepts/ethercat-protocol.md)
 - [ethercat-protocol](../concepts/ethercat-protocol.md)
 - [ethercat-opensource-libs-wechat](../overview/ethercat-opensource-libs-wechat.md)
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 从站栈承载过程数据，实际电机反馈环仍需驱动器应用实现；受限源码不等于公开实现。
+- [MIT 模式模拟 CSP：前馈优先的内环整定与五关验证](../methods/mit-mode-csp-emulation-tuning.md) — 对照 CSP 位置目标到关节阻抗目标的接口适配，先核实 PDO/控制模式，不能由 SSC 存在推断伺服能力。
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [robot, quadruped, hardware, platform, eth]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-18
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
@@ -120,6 +120,7 @@ flowchart TD
 - [Sim2Real](../concepts/sim2real.md)
 - [PACE：ANYmal D 的 Sim2Real](./paper-pace-sim2real-legged-robots.md)
 - [ANYmal-D 动态羽毛球](./paper-coordinated-badminton-skills-anymal.md)
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — 从期望运动到力矩的动力学映射可作为理解原型力控/WBC 的背景，不代表其全部任务约束求解器。
 
 ## 参考来源
 

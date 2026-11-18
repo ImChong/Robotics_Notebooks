@@ -3,7 +3,7 @@ type: entity
 project_id: end-to-end-deep-visuomotor-policies
 tags: [paper, guided-policy-search, manipulation, reinforcement-learning, berkeley]
 status: complete
-updated: 2026-11-09
+updated: 2026-11-18
 arxiv: '1504.00702'
 code: https://github.com/cbfinn/gps
 original:
@@ -119,6 +119,8 @@ JMLR 论文在 PR2 上测试挂衣架、形状分类、玩具锤子、拧瓶盖�
 - [DAVE-2](./paper-dave2-end-to-end-driving.md)
 - [Diffusion Policy](./paper-diffusion-policy.md)
 - [11 篇历史阅读路线](../overview/robot-learning-foundations-11-papers.md)
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 局部控制器利用训练时完整状态与动力学拟合生成策略监督。
+- [Manipulation](../tasks/manipulation.md) — PR2 的挂衣架、拧瓶盖等实验属于视觉操作任务，执行接口须按论文附录解释。
 
 ## 参考来源
 

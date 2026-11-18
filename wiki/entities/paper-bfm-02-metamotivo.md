@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2504.11054"
 venue: "2025 · ICLR"
 code: https://github.com/facebookresearch/metamotivo
@@ -115,6 +115,8 @@ flowchart TD
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_metamotivo_arxiv_2504_11054.md](../../sources/papers/bfm_awesome_metamotivo_arxiv_2504_11054.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 行为表征来自无监督或多任务交互学习，调用 latent 与重新训练策略是不同步骤。
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 将上层任务到身体 latent 的接口作为分层控制背景，不把所有 latent 调用都称为重新学习。
 
 ## 参考来源
 

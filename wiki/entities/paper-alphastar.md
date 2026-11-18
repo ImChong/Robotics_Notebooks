@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, google-deepmind, alphastar, deep-rl, multi-agent, starcraft]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-18
 project_id: alphastar
 doi: "10.1038/s41586-019-1724-z"
 project: https://deepmind.google/blog/alphastar-grandmaster-level-in-starcraft-ii-using-multi-agent-reinforcement-learning/
@@ -125,6 +125,7 @@ sequenceDiagram
 - [强化学习 Runner 与自我对弈](../concepts/rl-runner.md)
 - [物理自博弈：从游戏 League 到机器人](./skild-physical-self-play.md)
 - [MuZero：潜在动态模型与规划](./paper-muzero-planning-latent-dynamics.md)
+- [多智能体强化学习（MARL） ／ Multi-Agent Reinforcement Learning](../methods/marl.md) — 联赛中的主策略、历史对手与 exploiter 对应多智能体训练和对手分布设计。
 
 ## 参考来源
 

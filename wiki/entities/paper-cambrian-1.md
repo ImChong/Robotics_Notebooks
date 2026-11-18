@@ -8,7 +8,7 @@ tags:
   - open-source
   - nyu
 status: complete
-updated: 2026-09-23
+updated: 2026-11-18
 arxiv: "2406.16860"
 code: https://github.com/cambrian-mllm/cambrian
 related:
@@ -114,6 +114,8 @@ flowchart TB
 - [CV-Bench（LightNav-ER 套件）](./cv-bench-embodied.md)
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md)
 - [Molmo2 VLM](./molmo2-vlm.md)
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md) — 空间推理可作为导航语义侧的背景能力，CV-Bench 分数不能替代闭环导航指标。
+- [VLA（Vision-Language-Action）](../methods/vla.md) — 视觉塔与连接器消融可供 VLA 感知侧选型参考，但本文不是机器人动作策略。
 
 ## 参考来源
 

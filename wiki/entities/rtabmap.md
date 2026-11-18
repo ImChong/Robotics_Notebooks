@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, slam, rgbd, ros, mapping, loop-closure, hku]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-18
 related:
   - ../entities/navigation2.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -98,6 +98,8 @@ sequenceDiagram
 
 - [Navigation2](../entities/navigation2.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
+- [A* 全局路径规划](../methods/a-star.md) — 导航集成需把地图转成规划器可用表示，图优化后的地图不自动产生可行路径。
+- [DWA（Dynamic Window Approach）局部路径规划](../methods/dwa.md) — 与全局建图分工对照：局部速度避障属于下游控制，仍依赖机器人运动约束。
 
 ## 推荐继续阅读
 

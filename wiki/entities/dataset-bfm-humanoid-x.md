@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, bfm, behavior-foundation-model, human-motion, humanoid-control, awesome-bfm-papers, usc, berkeley, toyota-research]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 code: https://github.com/sihengz02/UH-1
 summary: "由大规模互联网人类视频与动捕库自动构建的多模态人形动作数据集（163.8K 片段、20.7M 帧、240.3 h），通过统一成 34 维人形关键点与 27 维 PD 动作支持文本驱动全身姿态控制模型 UH-1。"
 related:
@@ -142,6 +142,7 @@ sequenceDiagram
 - [Motion-X（全身表现力 3D 人体动作数据集）](dataset-bfm-motion-x.md) — 为 Humanoid-X 贡献了 40.6K 片段（72.9h）视频动捕源的上游多模态数据集
 - [AMASS](amass.md) — 为 Humanoid-X 重定向片段与目标条件 RL 策略提供高质量 CMU MoCap 训练基础的动捕库
 - [人形参考动作数据集对比](../comparisons/humanoid-reference-motion-datasets.md) — Humanoid-X 与 AMASS、LaFAN1、HumanML3D 等的横评定位
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 人体/机器人姿态与 PD 动作五元组连接数据构建和下游全身姿态控制，需核对监督层级。
 
 ## 参考来源
 

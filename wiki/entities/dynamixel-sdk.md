@@ -2,7 +2,7 @@
 type: entity
 tags: [robotis, dynamixel, sdk, actuator, embedded, ros, open-source]
 status: complete
-updated: 2026-09-05
+updated: 2026-11-18
 summary: "ROBOTIS DynamixelSDK：Dynamixel 舵机 Protocol 1.0/2.0 官方多语言 SDK，是 TurtleBot3、OpenMANIPULATOR 与大量第三方开源臂/手的执行器通信基座。"
 related:
   - ./robotis.md
@@ -118,6 +118,7 @@ sequenceDiagram
 - [EN02-OP](./en02-op.md) · [Yale OpenHand](./yale-openhand.md)
 - [Manipulation](../tasks/manipulation.md)
 - [执行器驱动链选型闭环](../overview/hub-actuator-drive-chain.md) · [选型 Query](../queries/actuator-drive-chain-selection-loop.md)
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — 上层遥操作可通过 SDK 读写执行器，但运动学、限位和控制表适配仍由应用负责。
 
 ## 参考来源
 

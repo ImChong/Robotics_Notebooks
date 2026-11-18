@@ -10,7 +10,7 @@ tags:
 - deep-learning
 - foundation-model
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: '2103.00020'
 code: https://github.com/openai/CLIP
 related:
@@ -161,6 +161,7 @@ flowchart LR
 - [多模态 LLM 路线](../overview/multimodal-llm-development.md)
 - [BLIP-2](./paper-blip2.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md) — 文本–图像相似度可作为开放词汇目标语义线索；定位、可达性与控制仍需其他模块。
 
 ## 推荐继续阅读
 

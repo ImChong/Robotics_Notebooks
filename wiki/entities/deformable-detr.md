@@ -7,7 +7,7 @@ tags:
   - deformable-attention
   - computer-vision
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 summary: "Deformable DETR 用多尺度可变形注意力加速收敛并提升小目标，成为 DETR 族实用化的关键改进。"
 related:
   - ./detr.md
@@ -69,6 +69,8 @@ flowchart LR
 - [检测指标](../concepts/object-detection-metrics.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 多尺度可变形注意力是②层 DETR 路线的实用化选项（小目标/收敛）
+- [目标检测（Object Detection）](../methods/object-detection.md) — 多尺度稀疏采样主要改善检测收敛与小目标表现，部署还要验证算子支持。
+- [R-CNN 族（R-CNN / Fast R-CNN / Faster R-CNN）](../methods/rcnn-family.md) — 与 RPN/RoI 的两阶段路线对照，避免把可变形注意力采样当成候选区域流水线。
 
 ## 参考来源
 

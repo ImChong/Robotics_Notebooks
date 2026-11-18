@@ -5,7 +5,7 @@ project_id: a-loam
 code: https://github.com/HKUST-Aerial-Robotics/A-LOAM
 tags: [paper, repo, lidar, loam, slam, ceres, ros, hkust]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 original:
   - ../../sources/papers/a-loam.md
 sources:
@@ -143,6 +143,8 @@ A-LOAM 只有代码仓库，**没有任何定量评测**：README 只提供 VLP-
 - [Ceres Solver](./ceres-solver.md)：A-LOAM 使用的优化库
 - [状态估计](../concepts/state-estimation.md)、[激光雷达感知](../concepts/lidar-sensing.md)、[传感器融合](../concepts/sensor-fusion.md)
 - [激光 SLAM / LIO / VIO 选型对比](../comparisons/lidar-slam-lio-vio-selection.md)
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 对照纯激光里程计与 LIO：A-LOAM 不包含 IMU 融合或回环后端。
+- [Levenberg-Marquardt（LM 阻尼最小二乘）](../methods/levenberg-marquardt.md) — Ceres 残差优化可沿阻尼最小二乘理解，不能把通用优化器直接视为完整建图算法。
 
 ## 参考来源
 

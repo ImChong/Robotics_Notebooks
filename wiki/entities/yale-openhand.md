@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, manipulation, underactuated, gripper, open-source, dexterous-hand, yale, grablab, dynamixel]
 status: complete
-updated: 2026-07-26
+updated: 2026-11-18
 related:
   - ../tasks/manipulation.md
   - ../overview/hub-grasp.md
@@ -161,6 +161,7 @@ sequenceDiagram
 - [EN02-OP](./en02-op.md) — 低成本开源三指全驱动对照
 - [Allegro Hand](./allegro-hand.md) / [RUKA-v2 Hand](./ruka-v2-hand.md) — 高 DoF 灵巧手对照
 - [Deimel 柔顺欠驱动手](./paper-deimel-compliant-underactuated-robotic-hand.md) — 欠驱动 + 顺应性理论谱系
+- [Grasp Pose Estimation（抓取位姿估计）](../methods/grasp-pose-estimation.md) — 抓取候选需符合欠驱动手的闭合方式与可达接触，不能只按高自由度手的假设选姿态。
 
 ## 参考来源
 

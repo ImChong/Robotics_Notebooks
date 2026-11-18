@@ -9,7 +9,7 @@ tags:
   - legged-robot
   - deepmind
 status: complete
-updated: 2026-11-01
+updated: 2026-11-18
 arxiv: "2305.14654"
 venue: "RSS 2018"
 code: https://github.com/google-deepmind/barkour_robot
@@ -134,6 +134,7 @@ flowchart TB
 - [RSS 2018 敏捷四足 sim2real](./paper-tan-quadruped-agile-locomotion-sim2real.md)
 - [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ③ 策略任务成功率评测层的四足敏捷代表基准，双向回链
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 专长策略基线采用 PPO；与 Transformer 蒸馏基线比较时应分清训练阶段和数据来源。
 
 ## 方法栈
 

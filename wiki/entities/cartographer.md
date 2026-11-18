@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, slam, google, 2d, 3d, ros]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-18
 related:
   - ../entities/navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -96,6 +96,8 @@ sequenceDiagram
 - [Navigation2](../entities/navigation2.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 对照局部扫描匹配/子图与全局位姿图校正，区分里程计连续性和地图一致性。
+- [A* 全局路径规划](../methods/a-star.md) — 建图结果经占据地图接口进入导航后，可供全局路径搜索使用；搜索不是 SLAM 自身功能。
 
 ## 推荐继续阅读
 

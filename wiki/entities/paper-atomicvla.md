@@ -10,7 +10,7 @@ tags:
   - sysu
   - peng-cheng-lab
 status: complete
-updated: 2026-09-18
+updated: 2026-11-18
 arxiv: "2603.07648"
 code: https://github.com/zhanglk9/AtomicVLA
 related:
@@ -173,6 +173,7 @@ sequenceDiagram
 - [π₀.₅](./paper-pi05-open-world-vla.md) — CALVIN 对照
 - [OrthoSkillVLA](./paper-orthoskillvla.md) — 另一 VLA 持续技能学习
 - [LIBERO](./libero-benchmark.md) / [CALVIN](./calvin-benchmark.md) — 主评测基准
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 借分层控制视角区分任务计划、原子技能和细粒度动作；不把其监督式技能路由误写成 HRL 训练。
 
 ## 参考来源
 

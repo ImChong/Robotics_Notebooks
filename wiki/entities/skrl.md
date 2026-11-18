@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-08-28
+updated: 2026-11-18
 summary: "skrl：以统一代理、内存、模型和训练器接口覆盖PyTorch、JAX及多种仿真环境，允许在相同任务上切换PPO、SAC等算法；模块化结构便于插入自定义网络与记录器做受控比较。"
 related:
   - ../concepts/sim2real.md
@@ -91,6 +91,8 @@ flowchart LR
 - [NVIDIA Getting Started With Isaac Lab](./nvidia-getting-started-isaac-lab.md) — 官方 Cartpole / UR10 课默认 skrl PPO；Lab 3.x 注意 YAML `input: OBSERVATIONS`
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 在统一代理与训练器接口中检查 on-policy 数据收集和更新配置。
+- [SAC（Soft Actor-Critic）](../methods/sac.md) — 用同任务的离策略路线对照回放缓冲、熵项及采样效率。
 
 ## 参考来源
 

@@ -7,7 +7,7 @@ tags:
   - one-stage
   - computer-vision
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 summary: "RetinaNet 以 Focal Loss 解决单阶段检测中极端正负样本不平衡，使 one-stage 在精度上逼近两阶段，并广泛用于密集预测骨干。"
 related:
   - ../methods/object-detection.md
@@ -69,6 +69,7 @@ flowchart LR
 - [检测指标](../concepts/object-detection-metrics.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — Focal Loss 单阶段密集检测是②层机载实时侧的经典候选
+- [目标检测（Object Detection）](../methods/object-detection.md) — 将 Focal Loss、密集锚框和 FPN 放回单阶段检测的精度/速度选型轴。
 
 ## 参考来源
 

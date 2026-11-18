@@ -10,7 +10,7 @@ tags:
 - dataset
 - code
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: '2602.09617'
 venue: ICLR 2026
 summary: AnyTouch 2（ICLR 2026）：基于 242 万级 ToucHD 动态触觉样本，以视频掩码、语义/跨传感器匹配及力变化监督学习通用光学触觉表示。
@@ -135,6 +135,8 @@ sequenceDiagram
 
 - [AnyTouch 前作项目](paper-anytouch.md)与[论文](./paper-anytouch.md)
 - [触觉感知主题](../concepts/tactile-sensing.md)
+- [Manipulation](../tasks/manipulation.md) — 力与力变化预测应和下游操作结果分别验证，表征指标不替代任务成功率。
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md) — 动态触觉特征可供接触状态反馈研究参考，但本文表示模型本身不是阻抗控制器。
 
 ## 参考来源
 

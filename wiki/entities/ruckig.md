@@ -7,7 +7,7 @@ tags:
   - cpp
   - real-time
 status: complete
-updated: 2026-11-03
+updated: 2026-11-18
 code: https://github.com/pantor/ruckig
 related:
   - ../methods/trajectory-optimization.md
@@ -63,6 +63,7 @@ summary: "Ruckig 实时生成从任意初始状态到目标状态（位置、速
 - [ros2-control](../entities/ros2-control.md)
 - [moveit2](../entities/moveit2.md)
 - [cpp-motion-control-open-source-libraries-map](../overview/cpp-motion-control-open-source-libraries-map.md)
+- [Time-Optimal Path Parameterization（TOPP）](../methods/time-optimal-path-parameterization.md) — 对照固定几何路径的时间标定与 Ruckig 任意状态到目标状态的 jerk 受限在线生成。
 
 ## 参考来源
 

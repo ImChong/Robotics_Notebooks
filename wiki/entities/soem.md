@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, framework, ethercat, fieldbus, embedded, open-source, middleware, robotics, realtime, soem, rt-labs]
 status: complete
-updated: 2026-11-03
+updated: 2026-11-18
 related:
   - ../concepts/ethercat-protocol.md
   - ../queries/ethercat-master-optimization.md
@@ -154,6 +154,8 @@ sequenceDiagram
 - [时钟同步算法](../concepts/clock-synchronization-algorithms.md)
 - [CanFestival](./canfestival.md) — CAN 侧 CANopen 栈对照
 - [EtherCAT 开源库大全（微信策展）](../overview/ethercat-opensource-libs-wechat.md) — 主站/从站/绑定/CiA402 全景及 [IgH](./igh-ethercat-master.md)、[SOES](./soes.md)、[pysoem](./pysoem.md) 等节点
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 主站交换 PDO 为上层关节反馈环传送命令与状态，协议栈本身不实现控制律。
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 多轴参考轨迹下发还需时钟同步与周期预算；优化器不会自动解决用户态总线抖动。
 
 ## 参考来源
 

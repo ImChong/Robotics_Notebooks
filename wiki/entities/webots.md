@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-08-28
+updated: 2026-11-18
 summary: "Webots：以桌面级三维仿真、传感器模型、控制器插件和多语言接口服务机器人原型验证，支持将同一控制程序连接模拟或真实设备；交互式场景编辑和较低部署门槛适合教育与系统联调。"
 related:
   - ../concepts/sim2real.md
@@ -95,6 +95,8 @@ flowchart LR
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 - [OmniSim](./omnisim.md) — Webots 独立 fork：Newton + HTTP/MCP
 - [tita_rl](./tita-rl.md) — TITA 官方 RL 的 Webots sim2sim 下游仓
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 用可解释的反馈控制原型检查模拟与真实设备的响应差异。
+- [A* 全局路径规划](../methods/a-star.md) — 在移动机器人场景中，可用网格路径搜索验证地图到导航控制的接口。
 
 ## 参考来源
 

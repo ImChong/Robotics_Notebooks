@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 venue: "2024 · SIGGRAPH"
 code: https://github.com/NVlabs/CALM
 summary: "可指挥 latent skill；BFM 前史：技能空间先于大基座。"
@@ -86,6 +86,8 @@ sources:
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_calm_siggraph_2024.md](../../sources/papers/bfm_awesome_calm_siggraph_2024.md)
 - 对照：[CMP](./paper-cmp.md) — 不引入可指挥 latent，在原参考空间按任务上下文软重权 AMP/SMP
+- [ASE: 对抗性技能嵌入](../methods/ase.md) — 对照对抗式技能嵌入与可指挥 latent 技能空间的表示思路。
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 区分上层目标/技能选择和下层身体控制的时间尺度与职责。
 
 ## 参考来源
 

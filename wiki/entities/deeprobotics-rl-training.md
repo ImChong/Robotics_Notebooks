@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, deeprobotics, reinforcement-learning, isaac-lab, locomotion, wheel-legged, amp, sim2real]
 status: complete
-updated: 2026-08-28
+updated: 2026-11-18
 related:
   - ./robot-lab.md
   - ./unitree-rl-lab.md
@@ -89,6 +89,7 @@ flowchart LR
 - [轮足四足机器人](../concepts/wheel-legged-quadruped.md)
 - [AWARE（M20 高动态反射避障）](./paper-aware-wheeled-legged-reflexive-evasion.md)
 - [Locomotion](../tasks/locomotion.md)
+- [AMP & HumanX: 判别器驱动的风格学习](../methods/amp-reward.md) — DR02 AMP 环境的运动数据与判别器奖励应和 Rough 速度任务分别调试。
 
 ## 参考来源
 

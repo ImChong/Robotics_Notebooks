@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, simulation, uav, computer-vision, unreal-engine, microsoft]
 status: complete
-updated: 2026-09-25
+updated: 2026-11-18
 related:
   - ./unreal-engine-5.md
   - ./unity-engine.md
@@ -105,6 +105,8 @@ sequenceDiagram
 - [XTDrone](./xtdrone.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [SPEAR](./spear-sim.md)
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 轨迹跟踪实验可据此区分上层轨迹设计与底层飞控执行。
+- [目标检测（Object Detection）](../methods/object-detection.md) — RGB 与标注输出可用于感知实验，视觉指标仍需与避障闭环效果分开评估。
 
 ## 推荐继续阅读
 

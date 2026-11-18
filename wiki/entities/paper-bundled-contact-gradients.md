@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robotics, robot-learning]
 status: complete
-updated: 2026-10-07
+updated: 2026-11-18
 project_id: bundled-contact-gradients
 arxiv: "2609.30951"
 related:
@@ -83,6 +83,8 @@ flowchart TD
 
 - [Day 6 导读](../overview/humanoid-motion-intelligence-day6-engineering-deployment.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 强接触邻域的梯度稳定性影响基于可微 rollout 的优化，仍须检查模型误差。
+- [ADD: 对抗性微分判别器](../methods/add.md) — 本文流程中的 ADD 模仿奖励与 bundled 接触梯度承担不同职责，可分别核对。
 
 ## 参考来源
 

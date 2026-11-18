@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, google-deepmind, alphago-zero, deep-rl, self-play, mcts, go]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-18
 project_id: alphago-zero
 venue: "Nature 2017"
 doi: "10.1038/nature24270"
@@ -86,6 +86,8 @@ Nature 论文、补充信息与棋谱公开可读；截至 2026-10-10，未找�
 - [强化学习 Runner 与自博弈](../concepts/rl-runner.md)
 - [深度强化学习游戏里程碑](../concepts/deep-rl-game-milestones.md)
 - [MuZero：潜在动态模型与规划](./paper-muzero-planning-latent-dynamics.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 将自我对弈产生的数据、终局奖励与策略/价值更新放回 RL 闭环理解。
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 对照模型式规划的职责：本文搜索使用已知围棋规则，不是学习物理环境转移。
 
 ## 参考来源
 

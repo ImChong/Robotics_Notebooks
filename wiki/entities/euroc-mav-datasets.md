@@ -10,7 +10,7 @@ tags:
   - ijrr2016
   - test-of-time
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 doi: "10.1177/0278364915620033"
 venue: IJRR 2016
 related:
@@ -147,6 +147,8 @@ sequenceDiagram
 - [ORB-SLAM3](./orb-slam3.md) — EuRoC 上测试的代表性多模态 SLAM
 - [Isaac ROS Visual SLAM](./isaac-ros-visual-slam.md) — GPU 加速 VIO；EuRoC 评测案例
 - [HDL Graph SLAM](./hdl-graph-slam.md) — LiDAR SLAM 参考；与视觉 SLAM 对比语境
+- [立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md) — 双目观测可用于理解几何前端，轨迹真值评测与稠密视差评测不是同一指标。
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 视觉惯性估计的非线性残差优化可沿 GN 原理阅读；用本数据的轨迹真值检验估计效果，而非将优化收敛当成精度保证。
 
 ## 参考来源
 

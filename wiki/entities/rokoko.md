@@ -2,7 +2,7 @@
 type: entity
 tags: [data-collection, motion-capture, mocap, humanoid, rokoko]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-18
 summary: "Rokoko：原 3D 动画动捕硬件商，转向为人形/机器人提供人体运动数据采集与管线能力。"
 related:
   - ../concepts/motion-retargeting.md
@@ -47,6 +47,8 @@ sources:
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [人形数据采集地图](../queries/humanoid-robot-data-collection-landscape.md)
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 人体动捕映射到机器人前需处理骨架、比例与关节限位。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 动捕是潜在示范来源，商业采集工具本身不是已训练的机器人策略。
 
 ## 参考来源
 

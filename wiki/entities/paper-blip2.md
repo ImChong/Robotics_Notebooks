@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vision-language-model, multimodal, q-former, blip2, salesforce, zero-shot, foundation-model]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2301.12597"
 code: https://github.com/salesforce/LAVIS
 related:
@@ -133,6 +133,7 @@ BLIP-2 证明「冻住单模态巨塔 + 训轻桥」足以解锁实用的零样�
 - [零样本目标导航](../tasks/zero-shot-object-navigation.md)
 - [VLM/VLN/VLA 分类](../comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
 - [四足×VLN 实战营总览](../overview/quadruped-vln-embodied-workshop.md)
+- [VLA（Vision-Language-Action）](../methods/vla.md) — 从视觉到语言的 Q-Former 桥接是动作模型的背景，BLIP-2 本身不输出机器人动作。
 
 ## 参考来源
 

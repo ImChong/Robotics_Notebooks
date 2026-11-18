@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, framework, motor-control, foc, bldc, embedded, open-source, simplefoc]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 related:
   - ../queries/actuator-drive-chain-selection-loop.md
   - ../comparisons/open-source-qdd-actuator-projects.md
@@ -132,6 +132,8 @@ flowchart TB
 - [Tinkercad](./tinkercad.md) — Arduino/micro:bit 课堂级电路与积木入门（再迁移真板）
 - [KiCad](./kicad.md) — 自研驱动板原理图与 PCB layout
 - [力矩电机设计纵深](../../roadmap/depth-torque-motor-design.md)
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 位置/速度运动环需与 loopFOC 的电流或电压扭矩模式分开理解与整定。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 从低功率电机实验过渡到关节模型时，需辨识摩擦与反射惯量，而非只调整反馈增益。
 
 ## 参考来源
 

@@ -4,7 +4,7 @@ type: entity
 tags: [quadruped, anymal, reinforcement-learning, isaac-gym, legged-gym, sim2real, eth]
 status: complete
 summary: "ANYmal：单机 GPU 上千并行环境与课程式地形，在分钟级训练出行走策略；开源 legged_gym，成为 RL+PD 配置与消融的教科书入口。"
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: "2109.11978"
 related:
   - ../entities/legged-gym.md
@@ -91,6 +91,8 @@ flowchart TB
 - [ANYmal](./anymal.md)
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 并行环境与地形课程提供样本，PPO 负责策略更新；需同时检查 rollout 长度与批大小。
+- [Locomotion](../tasks/locomotion.md) — 分钟级训练的目标是足式行走，评测仍要覆盖地形、扰动及真机迁移。
 
 ## 推荐继续阅读
 

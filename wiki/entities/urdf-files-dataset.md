@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, urdf, tooling, parsing, qut, repo]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2308.00514"
 code: https://github.com/Daniella1/urdf_files_dataset
 summary: "URDF Files Dataset 是 322 份 Bundle / 195 个独特机型的冻结语料（RA-L 2024）：用来分析 xacro、网格类型、跨源重复和 parser 分歧，而不是日常仿真加载器。"
@@ -99,6 +99,8 @@ flowchart LR
 - [Awesome Robot Descriptions](./awesome-robot-descriptions.md)
 - [URDD](./paper-urdd-universal-robot-description-directory.md)
 - [URDF-Studio](./urdf-studio.md)
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 模型轴向、关节树与限位会影响几何重定向，语料本身不含动作参考。
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — 仅解析 URDF 成功不足以保证力矩计算正确，还需核实惯量、单位与关节定义。
 
 ## 参考来源
 

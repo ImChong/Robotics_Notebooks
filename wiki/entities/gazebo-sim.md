@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, open-robotics]
 status: draft
-updated: 2026-07-30
+updated: 2026-11-18
 summary: "Gazebo Sim：在ROS生态中承担场景、物理、传感器和插件运行层，传输与组件接口便于把导航、感知、控制节点接入同一仿真系统；适合验证消息时序和系统集成，不以GPU强化学习吞吐为首要目标。"
 related:
   - ../concepts/sim2real.md
@@ -88,6 +88,8 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 系统联调时可用简单关节反馈控制核对插件、传感器与控制周期。
+- [Manipulation](../tasks/manipulation.md) — 将机械臂、物体与传感器组合成操作场景时，以任务约束检验系统集成。
 
 ## 参考来源
 

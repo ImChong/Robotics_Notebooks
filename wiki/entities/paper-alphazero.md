@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, google-deepmind, alphazero, deep-rl, self-play, mcts]
 status: complete
-updated: 2026-10-10
+updated: 2026-11-18
 project_id: alphazero
 arxiv: "1712.01815"
 doi: "10.1126/science.aar6404"
@@ -89,6 +89,7 @@ Science 论文和 arXiv 预印本可公开阅读；DeepMind 发布部分棋谱�
 - [强化学习](../methods/reinforcement-learning.md)
 - [强化学习 Runner 与自我对弈](../concepts/rl-runner.md)
 - [MuZero：潜在动态模型与规划](./paper-muzero-planning-latent-dynamics.md)
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 对照已知规则模型中的搜索与学习模型中的想象 rollout，避免把两种模型来源混同。
 
 ## 参考来源
 
