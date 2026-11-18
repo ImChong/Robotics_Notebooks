@@ -124,8 +124,10 @@ sequenceDiagram
 **依赖**：官方 README 指定 [OCS2](https://leggedrobotics.github.io/ocs2/installation.html#prerequisites)、ROS1 Noetic；MuJoCo 仿真还需 LCM。核心编译/启动命令：
 
 ```bash
-# 在 catkin 工作区 src 中克隆
+mkdir -p <catkin_ws>/src
+cd <catkin_ws>/src
 git clone https://github.com/bridgedp/hunter_bipedal_control.git
+cd <catkin_ws>
 catkin init
 catkin config -DCMAKE_BUILD_TYPE=RelWithDebInfo
 # 根据选择执行一种构建
