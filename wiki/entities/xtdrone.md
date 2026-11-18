@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, simulation, px4, ros, gazebo, uav, education, linux-foundation]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-18
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md
@@ -86,6 +86,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：robin-shaun/XTDrone@68c2bc6，读过 README.md、communication/multirotor_communication.py、control/keyboard/multirotor_keyboard_control.py（部分）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [目标检测（Object Detection）](../methods/object-detection.md) — 视觉检测教程服务无人机感知，检测指标与闭环飞行效果应分别评估。
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 规划输出需与 PX4 的目标接口和动力学约束衔接，仿真教程不替代真机跟踪验证。
 
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [PX4 Autopilot](./px4-autopilot.md)

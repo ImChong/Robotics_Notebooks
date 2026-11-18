@@ -10,7 +10,7 @@ tags:
   - rlwrld
   - nvidia
 status: complete
-updated: 2026-09-17
+updated: 2026-11-18
 related:
   - ./robocasa.md
   - ./all-hands-up.md
@@ -177,6 +177,8 @@ flowchart LR
 - **发布叙事含机构模型。** 2026-06-09 新闻稿用 [RLDX-1](./rldx-1.md) 在既有仿真 bench 上的结果为合作背书；那是另一套数字，不要读成本 bench 基线。
 
 ## 关联页面
+
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md) — 可沿触觉反馈路线理解高接触/力难度任务的闭环需求；开放评测规格不指定唯一控制算法。
 
 - [RoboCasa](./robocasa.md) — 厨房仿真 SR 榜；与本页工业规格 **不同赛道**
 - [All Hands Up](./all-hands-up.md) — 同机构硬件层；本页是它显式留空的任务层

@@ -12,7 +12,7 @@ tags:
   - ut-austin
   - open-source
 status: complete
-updated: 2026-09-16
+updated: 2026-11-18
 related:
   - ./dexbench.md
   - ./isaac-lab-arena.md
@@ -181,6 +181,8 @@ sequenceDiagram
 - **与 Isaac 栈非同一环境：** Arena 上 RoboCasa **风格**任务由 Lightwheel 重建，数值不能与原 MuJoCo 榜直接划等号。
 
 ## 关联页面
+
+- [Diffusion Policy](../methods/diffusion-policy.md) — 厨房示范可用于扩散动作策略训练；比较成功率时须对齐任务、场景划分与 horizon。
 
 - [DexBench](./dexbench.md) — 工业灵巧规格；仿真侧仍 coming soon
 - [Isaac Lab-Arena](./isaac-lab-arena.md) — GPU 并行评测；RoboCasa 类任务迁移对照

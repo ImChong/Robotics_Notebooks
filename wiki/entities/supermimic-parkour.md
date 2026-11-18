@@ -4,7 +4,7 @@ project_id: supermimic-parkour
 code: https://github.com/yhx1203/supermimic_parkour
 tags: [humanoid, motion-tracking, world-model, mujoco, reinforcement-learning, unitree-g1]
 status: draft
-updated: 2026-11-01
+updated: 2026-11-18
 summary: "SuperMimic Parkour 是结合 PHP 跑酷动作数据和可微世界模型的 G1 仿真训练实现。"
 related:
   - ./paper-supermimic.md
@@ -75,6 +75,9 @@ sequenceDiagram
 - 本次未运行训练或回放，也未完成奖励、地形和评测源码的完整核验；真机效果不能由仿真演示推断。
 
 ## 关联页面
+
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 可微世界模型为跟踪训练提供短时动态展开，模型误差仍需在实际仿真闭环检查。
+- [楼梯与障碍 Locomotion（感知 / 盲走中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md) — PHP 跑酷参考必须与障碍几何、接触和落地条件匹配，不能只按动作外观验收。
 
 - [SuperMimic](./paper-supermimic.md)：原方法及其他社区复现。
 - [ACP、SuperMimic 与 PHP 对照](../comparisons/acp-supermimic-php.md)：区分接触规划、世界模型训练与跑酷数据来源。

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, hsi, sim2real, unitree-g1, shanghai-ai-lab, hkust]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: "2510.11072"
 venue: arXiv
 summary: "PhysHSI（arXiv:2510.11072）：AMP+混合 RSI 学搬箱/坐/躺/站起，判别器含物体位姿；真机 LiDAR+相机粗细分层定位，G1 室内外自然 HSI。"
@@ -123,6 +123,8 @@ flowchart TB
 6. **评测口径** — 仿真相对无 AMP/无 RSI/无物体判别等基线，$R_{\text{succ}}$ 与 $S_{\text{human}}$ 双高；真机验证室内外多样尺寸与目标。
 
 ## 与其他页面的关系
+
+- [AMP & HumanX: 判别器驱动的风格学习](../methods/amp-reward.md) — 判别器加入物体位姿，并结合混合 RSI 与风格权重课程，需和场景定位误差分开检查。
 
 - AMP 专题：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#15/19）
 - 任务：[loco-manipulation.md](../tasks/loco-manipulation.md)、[sim2real.md](../concepts/sim2real.md)

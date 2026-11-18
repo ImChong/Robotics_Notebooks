@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bimanual-manipulation, rapid-motor-adaptation, latent-adaptation, sim-to-real, contact-rich]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: bimanual-rma
 arxiv: "2610.14833"
 related:
@@ -119,6 +119,8 @@ ManiSkill 仿真三任务（YCB 物体质量、摩擦、尺度、形状随机化
 - 随机化范围之外的物体与接触模型，泛化性未知。
 
 ## 关联页面
+
+- [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md) — 双臂抓取与抬起需在质量、摩擦、形状变化下检验协同和在线适应。
 
 - [强化学习](../methods/reinforcement-learning.md)
 - [Sim2Real](../concepts/sim2real.md)

@@ -6,7 +6,7 @@ tags:
   - manipulation
   - contact-rich
 status: complete
-updated: 2026-11-01
+updated: 2026-11-18
 arxiv: "2610.24235"
 project: https://contact-aware-adaptive-impedance.github.io
 related:
@@ -92,6 +92,8 @@ flowchart TD
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Direct Force Feedback Control（直接力反馈控制）](../methods/direct-force-feedback-control.md) — 力历史用于识别负载或外部推力，需和直接力误差闭环区分，尤其检查负载与推力并存时的响应。
 
 - [manipulation](../tasks/manipulation.md)
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)

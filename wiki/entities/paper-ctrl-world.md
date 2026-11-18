@@ -11,7 +11,7 @@ tags:
   - stanford
   - tsinghua
 status: complete
-updated: 2026-11-17
+updated: 2026-11-18
 arxiv: "2510.10125"
 related:
   - ../methods/generative-world-models.md
@@ -214,6 +214,8 @@ sequenceDiagram
 | **主卖点** | VLA 闭环评估 + 合成 SFT | 前向/逆向统一 + 跨具身 | 1-step 速度 + 搜索 | 自一致防漂移 + 早停评估 |
 
 ## 关联页面
+
+- [VLA（Vision-Language-Action）](../methods/vla.md) — policy-in-the-loop 将预测观测返回 VLA，再用合成轨迹微调；评测与 SFT 两种用途应分别报告。
 
 - [Generative World Models](../methods/generative-world-models.md) — 生成式 WM 方法谱系
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频即仿真概念

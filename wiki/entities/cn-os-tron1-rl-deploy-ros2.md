@@ -7,7 +7,7 @@ tags:
 - sim2real
 - reinforcement-learning
 status: complete
-updated: 2026-10-08
+updated: 2026-11-18
 related:
 - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
 - ../entities/humanoid-motion-intelligence.md
@@ -122,6 +122,8 @@ sequenceDiagram
 图依据：tron1-rl-deploy-ros2@2e70026，robot_hw/src/PointfootHardwareNode.cpp、robot_hw/src/HardwareLoop.cpp、robot_hw/src/HardwareBase.cpp、robot_hw/src/PointfootHardware.cpp、robot_hw/launch/pointfoot_hw.launch.py、robot_hw/launch/pointfoot_hw_sim.launch.py、robot_controllers/src/ControllerBase.cpp、robot_controllers/src/PointfootController.cpp、robot_controllers/config/robot_controllers.yaml、README.md
 
 ## 关联页面
+
+- [Hybrid Locomotion (混合运动)](../tasks/hybrid-locomotion.md) — TRON1 的具体足端/轮足配置需与导出策略匹配，部署接口不替代对应任务训练。
 
 - [FluxVLA](./fluxvla-engine.md)
 - [COSA](./limx-cosa.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
-updated: 2026-08-25
+updated: 2026-11-18
 arxiv: "2309.16650"
 related:
   - ./paper-relateanything.md
@@ -89,6 +89,8 @@ flowchart TD
 - **跨路线区分**：上下文主导型的闭环职责是「持续运行维护 World Proxy 的状态与记忆」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
 
 ## 关联页面
+
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md) — 开放词汇三维对象图可提供目标语义与空间线索，导航规划和执行仍需其他模块。
 
 - [具身世界模型六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)
 - [上下文主导型 分类 hub](../overview/embodied-wm-route-context.md)

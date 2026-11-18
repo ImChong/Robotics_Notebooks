@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, compliance]
 status: complete
-updated: 2026-10-05
+updated: 2026-11-18
 arxiv: "2609.38709"
 related:
   - ../tasks/loco-manipulation.md
@@ -73,6 +73,8 @@ flowchart TB
 - 方向柔顺在书写、协作搬运等任务中有实际收益；定量证据主要来自仿真，真机以定性任务演示为主。
 
 ## 关联页面
+
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 冻结低层跟踪策略后，高层调节 EE/root 命令，方向柔顺与根部模式承担不同控制职责。
 
 - [移动操作任务](../tasks/loco-manipulation.md)
 - [CHIP：自适应柔顺控制](./paper-hrl-stack-36-chip.md)

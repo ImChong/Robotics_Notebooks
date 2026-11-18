@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
-updated: 2026-08-25
+updated: 2026-11-18
 arxiv: "2009.11193"
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
@@ -81,6 +81,8 @@ flowchart TD
 - **跨路线区分**：模型构建型的闭环职责是「开发时验证预测器本身」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
 
 ## 关联页面
+
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 结构化接触动态可作为学习控制的模型背景；本文以预测与穿透检查为终点，并不等于已验证策略学习效果。
 
 - [具身世界模型六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)
 - [模型构建型 分类 hub](../overview/embodied-wm-route-model-building.md)

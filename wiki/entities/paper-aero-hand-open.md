@@ -10,7 +10,7 @@ tags:
   - mujoco
   - humanoid-paper-notebooks
 status: complete
-updated: 2026-09-16
+updated: 2026-11-18
 arxiv: "2608.28578"
 code: https://github.com/TetherIA/aero-hand-open
 related:
@@ -144,6 +144,8 @@ sequenceDiagram
 - **与 Paper Notebooks 占位页关系：** 已由 PROGRESS 占位升格为完整实体；深读细节见姊妹仓库笔记计划路径。
 
 ## 与其他页面的关系
+
+- [In-hand Reorientation (手内重定向)](../methods/in-hand-reorientation.md) — 立方体手内旋转需保留缆绳耦合、作动映射与编码器观测条件，不能套用独立关节模型。
 
 - [Deimel 顺应欠驱动手](./paper-deimel-compliant-underactuated-robotic-hand.md) — 另一欠驱动哲学
 - [Sim2Real](../concepts/sim2real.md) — 作动器级迁移

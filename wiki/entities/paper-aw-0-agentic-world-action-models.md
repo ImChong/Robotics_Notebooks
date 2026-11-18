@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-action-models, WAM, code-as-policies, mixture-of-transformers, manipulation, uc-berkeley, nvidia]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-18
 project_id: aw-0-agentic-world-action-models
 arxiv: "2610.30136"
 project: https://agentic-wam.github.io/
@@ -129,6 +129,8 @@ sequenceDiagram
 - 复现需准备训练数据、公开权重及论文指定的视觉/语言模型组件，不能只凭仓库源码运行完整训练。
 
 ## 关联页面
+
+- [VLA（Vision-Language-Action）](../methods/vla.md) — 代码、视频与动作专家共同组织规划执行，需区分直接动作输出与混合程序技能调用。
 
 - [World Action Models](../concepts/world-action-models.md)
 - [生成式世界模型](../methods/generative-world-models.md)

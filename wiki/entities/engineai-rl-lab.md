@@ -2,7 +2,7 @@
 type: entity
 tags: [whole-body-tracking, humanoid, rl, hmi-opensource-table, repo, engineai]
 status: draft
-updated: 2026-07-30
+updated: 2026-11-18
 summary: "engineai_rl_lab：单段参考轨迹进入Isaac Lab的PPO跟踪任务，PM01与T800配置特权Critic、失败片段采样和全身奖励。T800额外随机化执行延迟，导出的MNN策略可接配套SDK，但仓库没有VAE与扩散阶段。"
 related:
   - ../concepts/whole-body-control.md
@@ -84,6 +84,8 @@ flowchart LR
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
 ## 关联页面
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 单段参考跟踪使用 PPO；特权 Critic、失败采样和执行延迟随机化属于环境与训练设计。
 
 - [whole-body-control](../concepts/whole-body-control.md)
 - [beyondmimic](../methods/beyondmimic.md)

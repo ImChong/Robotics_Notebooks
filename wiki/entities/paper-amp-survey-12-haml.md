@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, multi-skill, policy-distillation, conditional-gan, sdu, unitree-g1]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 venue: MDPI Actuators 2026
 doi: "10.3390/act15040212"
 summary: "HAML（MDPI 2026）两阶段：条件对抗多技能 teacher（错配 transition–label 防条件坍缩）→ 历史本体蒸馏 student，G1 单策略覆盖走舞挥手等技能切换。"
@@ -120,6 +120,8 @@ flowchart TB
 - **消融：** 去掉错配或 condition-aware loss，条件坍缩加剧（论文讨论）。
 
 ## 与其他页面的关系
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 特权 teacher 的强化学习与历史本体 student 的蒸馏分属不同阶段，技能标签与观测也须保持一致。
 
 - 多技能姊妹：[AHC #11](./paper-adaptive-humanoid-control.md)、[SD-AMP #10](./paper-unified-walk-run-recovery-sdamp.md)、[MoRE #08](./paper-amp-survey-08-more.md)
 - 方法：[amp-reward.md](../methods/amp-reward.md)

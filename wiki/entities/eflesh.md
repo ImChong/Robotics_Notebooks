@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, repo, tactile-sensing, magnetic-tactile, visuo-tactile, manipulation, nyu]
 status: complete
-updated: 2026-10-13
+updated: 2026-11-18
 project_id: eflesh
 arxiv: "2506.09994"
 code: https://github.com/notvenky/eFlesh
@@ -65,6 +65,9 @@ flowchart LR
 - [论文](https://arxiv.org/abs/2506.09994)、[官方仓库](https://github.com/notvenky/eFlesh)、[项目页](https://e-flesh.com/)
 
 ## 关联
+
+- [Manipulation](../tasks/manipulation.md) — 接触位置、力与滑移估计可服务抓取操作，但需逐任务验证传感与控制效果。
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md) — 将触觉估计接入刚度/阻尼调节前，需另行标定力映射并设计反馈环。
 
 - [触觉感知](../concepts/tactile-sensing.md)：磁性形变传感与力/滑移估计。
 - [视触觉融合](../concepts/visuo-tactile-fusion.md)：触觉闭环如何补足视觉遮挡。

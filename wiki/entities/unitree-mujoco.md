@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, mujoco, sim2sim, sdk, sim2real]
 status: complete
-updated: 2026-07-24
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./unitree-sdk2.md
@@ -119,6 +119,9 @@ sequenceDiagram
 图依据：unitree_mujoco@1eb6642，读过 `readme.md`（运行命令与 DDS domain 配置）、`simulate/src/main.cc`（`main`、`PhysicsLoop`、`UnitreeSdk2BridgeThread`，部分）、`simulate/src/unitree_sdk2_bridge.h`（`RobotBridge::start/run`、`G1Bridge` 声明，部分）、`simulate/src/param.h`（`ResolveIdlType` 与 IDL 常量，部分）、`simulate_python/unitree_mujoco.py`、`simulate_python/unitree_sdk2py_bridge.py`（`LowCmdHandler`、`PublishLowState`，部分）。未运行代码；`Go2Bridge` 的专属逻辑与 `mujoco` 渲染细节未读。
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 低层 DDS 命令可用于验证关节位置/速度反馈，需核对增益、步长和消息族。
+- [Locomotion](../tasks/locomotion.md) — 运动控制器的 Sim2Sim 验证要检查接触、步态与稳定性，不能仅凭 DDS 消息同构判断迁移效果。
 
 - [unitree_sdk2](./unitree-sdk2.md)
 - [unitree_rl_mjlab](./unitree-rl-mjlab.md)

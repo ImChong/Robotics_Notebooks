@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, sdk, agibot, ros2, open-source]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-18
 related:
   - ./cn-os-aimrt.md
   - ./cn-os-agibot-x2-urdf.md
@@ -81,6 +81,9 @@ flowchart LR
 - **文档快照**：本页基于 AimDK **1.1.0** 文档（2026-09-23）；接口以在线文档为准。
 
 ## 关联页面
+
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — 走跑、运动模式和输入源仲裁属于人形运动任务接口，应按 X2 硬件变体核对。
+- [Manipulation](../tasks/manipulation.md) — 上肢、关节和末端 API 是操作应用的接入层，任务规划与控制能力须逐项确认。
 
 - [AimRT（部署运行时）](./cn-os-aimrt.md)
 - [agibot_x2_urdf（本体模型资产）](./cn-os-agibot-x2-urdf.md)

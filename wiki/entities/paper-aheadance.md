@@ -10,7 +10,7 @@ tags:
   - diffusion
   - ucl
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 arxiv: "2611.13370"
 related:
   - ../entities/nvidia-sonic.md
@@ -161,6 +161,8 @@ flowchart LR
 4. 局限：节拍指标测在参考动作而非真机状态上，生成器无状态反馈且场外运行，动力学多样性偏低（Divk 2.22 对 6.22），代码未发布。
 
 ## 关联页面
+
+- [Diffusion-based Motion Generation (基于扩散模型的运动生成)](../methods/diffusion-motion-generation.md) — 流式音频条件扩散生成参考动作，SONIC 跟踪层才使用机器人状态反馈，节拍指标与闭环稳定性需分开评估。
 
 - [NVIDIA SONIC](../entities/nvidia-sonic.md)：论文使用的全身跟踪器。
 - [全身跟踪管线](../concepts/whole-body-tracking-pipeline.md)

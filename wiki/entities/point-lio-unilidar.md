@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, lidar, slam, localization]
 status: complete
-updated: 2026-07-26
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./unilidar-sdk2.md
@@ -100,6 +100,8 @@ sequenceDiagram
 图依据：unitreerobotics/point_lio_unilidar@18ed597，读过 launch/mapping_unilidar_l1.launch、CMakeLists.txt（target 段）、config/unilidar_l1.yaml（部分）、src/laserMapping.cpp（main、sync_packages、imu_cbk、map_incremental、publish 段）、src/preprocess.cpp（process 分派，unilidar_handler 仅见位置）、src/Estimator.cpp（Nearest_Search 所在函数）。未编译、未在 ROS 中运行。
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 沿雷达/IMU 时间对齐、状态传播与点云校正核对适配层，不把驱动接入等同完整导航。
 
 - [UniLidar SDK](./unilidar-sdk2.md)
 - [autonomy_stack_go2](./autonomy-stack-go2.md)

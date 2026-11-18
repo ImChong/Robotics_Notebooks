@@ -7,7 +7,7 @@ tags:
 - grasping
 - sim2real
 status: complete
-updated: '2026-10-05'
+updated: 2026-11-18
 related:
 - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
 - ../entities/humanoid-motion-intelligence.md
@@ -81,6 +81,8 @@ sequenceDiagram
 - 公开代码与模型可用不自动说明所有训练依赖或每个许可都相同，使用前检查相应仓库/资产说明。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — 合成数据预训练的抓取迁移应按本体、相机与接触设置评估，不能泛化成所有操作任务零适配。
 
 - [AstraBrain](./galbot-astrabrain.md)
 - [VLA](../methods/vla.md)

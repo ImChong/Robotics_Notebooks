@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, isaac-lab, teleoperation, simulation, imitation-learning]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./xr-teleoperate.md
@@ -113,6 +113,8 @@ sequenceDiagram
 图依据：unitree_sim_isaaclab@e30c25b，读过 `README.md`（运行命令与参数）、`sim_main.py`（`main` 主流程与主循环，部分）、`layeredcontrol/robot_control_system.py`（`start`、`step`，部分）、`action_provider/action_provider_dds.py`（`get_action`，部分）、`dds/dds_create.py`（部分）、`dds/g1_robot_dds.py`（订阅与发布话题，部分）、`tasks/common_observations/g1_29dof_state.py`（`write_robot_state` 调用位置，部分）。未运行代码；Isaac Lab 的 `env.step` 与观测管理器内部未读，图中"观测计算触发发布"为依据调用位置的推断。`action_source` 的其它取值（file / trajectory / policy / replay）未画。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — PickPlace 等仿真任务需要对齐末端配置、动作频率与物体成功条件。
 
 - [xr_teleoperate](./xr-teleoperate.md)
 - [unitree_lerobot](./unitree-lerobot.md)

@@ -5,7 +5,7 @@ arxiv: "2611.14815"
 project: https://research.nvidia.com/labs/sil/projects/birddreams/
 tags: [paper, nvidia, world-model, autonomous-driving, bev]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 summary: "BirdDreams 联合生成驾驶前视 RGB 与示意 BEV 视频，并用 BEV 重投影实现米制自车轨迹条件控制。"
 original:
   - ../../sources/papers/birddreams-2611-14815.md
@@ -115,6 +115,8 @@ BirdDreams 的核心贡献是把交通布局从外部给定条件转为与 RGB �
 训练阶段依赖数据集地图和 3D 物体标注制作 BEV 监督，不能把「推理不需要 HD map」误写成「训练不需要地图」。动作误差的轨迹依据 Depth Anything 3 从生成视频重建，受轨迹重建方法影响；人类偏好实验使用带 HD-map 的对照变体，不能直接泛化到完全无地图推理。演示中的车辆反应仍是生成结果，不能代替真实道路交互/安全验证。未公开可核验的 BirdDreams 专属训练和推理代码/权重，因此不能声称已复现。
 
 ## 关联页面
+
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 米制自车轨迹是生成条件；轨迹由谁规划、是否可行需与 RGB/BEV 视频预测分层检查。
 
 - [生成式世界模型](../methods/generative-world-models.md)
 - [OmniDreams](./paper-sa-2606-03159-nvidia-omnidreams-real-time-generative-world-mod.md)

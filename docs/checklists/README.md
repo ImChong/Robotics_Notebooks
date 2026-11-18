@@ -13,6 +13,7 @@
 - [GitHub Actions CI 门禁](github-actions-ci-gate.md) — 合并 `main` 前必须等全量 Actions 全绿；branch protection 建议。
 
 - [Entities 关联出边 100 节点试点](lint-outgoing-pilot-100.md) — 10 个主题的样本、修复前后数量、目标与复验方法。
+- [Entities 关联出边第 2 批 100 节点](lint-outgoing-batch-02-100.md) — 与首批无重叠，含逐页目标、负对照与两批累计进度。
 
 ## 历史执行清单
 

@@ -3,7 +3,7 @@ type: entity
 tags: [paper, jepa, world-models, object-centric, planning, brown, nyu, mila, umontreal]
 project_id: causal-jepa
 status: complete
-updated: 2026-10-20
+updated: 2026-11-18
 arxiv: "2602.11389"
 code: https://github.com/galilai-group/cjepa
 related:
@@ -100,6 +100,8 @@ P->>P: Push-T 规划或 CLEVRER rollout
 4. **可复现性** — 代码与权重公开，适合作为对象级世界模型的起点。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 潜空间动态预测可服务候选动作序列规划，需明确预测模型与滚动优化的分工及误差累积。
 
 - [LeWorldModel](./paper-lewm.md) — 对照：不依赖对象分解的端到端 JEPA 世界模型
 - [LpWM](./paper-lpwm.md) — 同属 2026 年 JEPA 世界模型路线的表示结构研究

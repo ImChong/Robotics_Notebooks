@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, contact-rich, in-context-learning, one-shot, tactile, force-torque, flow-matching, xarm7, sjtu, tars-robotics, nus, casia, fudan]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-18
 project_id: ctp
 arxiv: "2610.18848"
 code: https://github.com/ctp-robotics/CTP
@@ -149,6 +149,9 @@ sequenceDiagram
 - **开源边界：** 官方仓库有数据转换、训练与开环评测入口；许可证、权重、真机运行脚本未核实（2026-10-23）。
 
 ## 关联页面
+
+- [Action Chunking（动作块输出）](../methods/action-chunking.md) — flow-matching 头输出动作块，需核对提示检索、控制频率与块执行时域。
+- [Manipulation](../tasks/manipulation.md) — 擦拭、拧盖和插入的接触目标不同，应逐任务检查参考示范与真机闭环结果。
 
 - [机器人上下文学习](../concepts/robot-in-context-learning.md) — 示范作为提示的范式
 - [接触丰富操作](../concepts/contact-rich-manipulation.md) — 任务背景

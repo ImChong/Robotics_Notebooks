@@ -3,7 +3,7 @@ type: entity
 project_id: cmp-irrt-star-height-adaptive-planner
 tags: [paper, quadruped, path-planning, perception, mamba, sampling-based-planning, unitree-go2, sysu]
 status: complete
-updated: 2026-10-12
+updated: 2026-11-18
 arxiv: "2610.10470"
 code: https://github.com/MingfanZhao/height-adaptive-planner
 related:
@@ -157,6 +157,8 @@ sequenceDiagram
 - **动态场景：** 不支持第一视角感知与在线重规划。
 
 ## 关联页面
+
+- [Informed RRT*](../methods/informed-rrt-star.md) — 对照信息椭圆采样、学习引导与自由空间回退，几何路径还需经过高度碰撞规则检查。
 
 - [人形/四足前沿周报（2026-10-05~10-09）](../overview/frontier-humanoid-quadruped-2026-10-05-10-09.md)
 - [运动控制任务页](../tasks/locomotion.md)

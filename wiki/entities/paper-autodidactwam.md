@@ -11,7 +11,7 @@ tags:
   - skolkovo
   - skoltech
 status: complete
-updated: 2026-10-09
+updated: 2026-11-18
 project_id: autodidactwam
 arxiv: "2610.08119"
 related:
@@ -156,6 +156,8 @@ AutodidactWAM 提供了一种值得继续验证的监督构造方式：让生成
 - [【10.5-10.9前沿论文动态】人形/四足44篇 综述条目](../../sources/blogs/frontier_humanoid_quadruped_2026_10_05_10_09.md)
 
 ## 关联页面
+
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md) — 从自生成视频恢复的轨迹是伪动作，需把视频预测、动作恢复和策略微调的误差分开检查。
 
 - [Cosmos 3](./cosmos-3.md) — 视频与动作生成骨干
 - [World Action Models](../concepts/world-action-models.md) — WAM 的联合世界预测与动作控制背景

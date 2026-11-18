@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, reinforcement-learning, isaac-gym, locomotion, sim2real]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./unitree-rl-lab.md
@@ -136,6 +136,8 @@ sequenceDiagram
 图依据：unitree_rl_gym@276801e，读过 `README.md`（训练与回放命令、参数）、`legged_gym/scripts/train.py`、`legged_gym/scripts/play.py`（部分）、`legged_gym/envs/__init__.py`（注册）、`legged_gym/utils/task_registry.py`（`make_env` 与 `make_alg_runner`，部分）、`legged_gym/envs/base/base_task.py`（`__init__` 片段）、`legged_gym/envs/base/legged_robot.py`（`__init__`、`step`、`post_physics_step`、`_compute_torques` 等，部分）。`rsl_rl` 为外部依赖，未读；`V` 与 `T` 控制分支的具体公式未逐行核对。未运行代码。
 
 ## 关联页面
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 沿 Train→Play 流程检查采样、裁剪目标及 checkpoint，Sim2Sim 成功仍需单独验收。
 
 - [unitree_rl_lab](./unitree-rl-lab.md)
 - [unitree_rl_mjlab](./unitree-rl-mjlab.md)

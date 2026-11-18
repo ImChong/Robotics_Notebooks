@@ -4,7 +4,7 @@ project_id: rp1-firmware
 code: https://github.com/Roboparty/RP1_firmware
 tags: [humanoid, firmware, bsp, can-fd, rk3588, armbian, open-source, roboparty]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 related:
   - ./roboparty-rp1.md
   - ./roboparty.md
@@ -75,6 +75,9 @@ flowchart TB
 - **许可混合**：Armbian 部分 GPL-2.0、CAN 桥 GPL-3.0、APT 清单仓未见许可证，再分发镜像前需逐项核对。
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — BSP/CAN 桥为上层反馈环提供通信基础，不能由固件索引推断电机控制器实现。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — RP1 全身运动部署需要这些底层资源，但本入口的 BSP、桥接与工厂镜像不能替代运动策略。
 
 - [RP1 总览（roboparty-rp1）](./roboparty-rp1.md)
 - [RoboParty（公司）](./roboparty.md)

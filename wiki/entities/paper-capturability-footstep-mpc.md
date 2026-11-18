@@ -3,7 +3,7 @@ type: entity
 project_id: capturability-footstep-mpc
 tags: [paper, footstep-planning, mpc, humanoid, capturability]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 arxiv: "2611.10169"
 related:
   - ../tasks/humanoid-locomotion.md
@@ -90,6 +90,8 @@ IV-A 比较多种障碍布局的 MPC 可行性和运行开销；IV-B 使用 Digi
 依赖 LIP 固定质心高度、矩形避障和有限步长假设；缺少复杂真实环境长时成功率。未在论文中发现已公开的官方可运行规划源码。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 足步序列优化需满足可捕获区域与走廊切换条件，虚拟停止点是可行性证书。
 
 - [humanoid locomotion](../tasks/humanoid-locomotion.md)
 - [whole body control](../concepts/whole-body-control.md)

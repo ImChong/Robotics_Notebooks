@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, vla, foundation-model, imitation-learning, humanoid]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./unifolm-world-model-action.md
@@ -75,6 +75,8 @@ pip install "flash-attn==2.5.6" --no-build-isolation
 - 与 WMA / [WLA-1.0](./unifolm-wla.md) 是**并行家族成员**，不是互相替代的同一仓库；WLA 为更新一代 6B 全身模型，本仓仍是 **可端到端训练** 的 VLA-0 落点。
 
 ## 关联页面
+
+- [VLA（Vision-Language-Action）](../methods/vla.md) — 视觉语言到动作的训练、推理与 checkpoint 应和钉扎的 LeRobot 数据/动作接口一起检查。
 
 - [UnifoLM-WMA](./unifolm-world-model-action.md)
 - [UnifoLM-WLA-1.0](./unifolm-wla.md)

@@ -3,7 +3,7 @@ type: entity
 tags: [repo, humanoid, motion-tracking, foundation-model, horizon-robotics, transformer, mixture-of-experts, ppo, zero-shot, teleoperation, imitation-learning]
 status: complete
 arxiv: "2605.15336"
-updated: 2026-10-27
+updated: 2026-11-18
 related:
   - ./egalahad-sim2real.md
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -183,6 +183,8 @@ sequenceDiagram
 文档路径中的 `robot_lab` 指 **Horizon 在 GitHub Pages 上的站点分段**，与社区 IsaacLab 扩展 **[robot_lab（fan-ziqi）](./robot-lab.md)** **不是同一仓库**；同分段下还有 [RoboOrchardLab](./robo-orchard-lab.md) 等具身 AI 训练框架。选型与引用时请用 **组织名与 Git URL** 区分。
 
 ## 关联页面
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 序列级 PPO 对长参考片段的采样、归一化与更新组织，需和 Transformer/MoE 结构分别核对。
 
 - [HoloBoxing 论文与竞赛策略](./holoboxing.md)
 - [SONIC（规模化运动跟踪人形控制）](./nvidia-sonic.md)

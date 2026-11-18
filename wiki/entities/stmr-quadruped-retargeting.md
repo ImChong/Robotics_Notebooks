@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, quadruped, motion-retargeting, spatio-temporal, legged-gym, paper, eth]
 status: complete
-updated: 2026-06-08
+updated: 2026-11-18
 summary: "STMR 四足时空重定向：论文官方项目页 + arXiv；SMR/TMR 分解将噪声动物关键点转为可跟踪全身参考；原 README 引用的 terry97-guel GitHub 子仓截至 2026-06 已不可公开访问。"
 related:
   - ../concepts/motion-retargeting.md
@@ -62,6 +62,8 @@ flowchart LR
 - 针对四足动物到四足机器人的特定映射设计，不直接适用于人形双足重定向。
 
 ## 关联页面
+
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 对照四足时空重定向与通用几何映射，分别核对时间相位、身体形态与可跟踪性。
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [motion_imitation（四足）](./motion-imitation-quadruped.md)

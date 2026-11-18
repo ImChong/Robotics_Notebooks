@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, dynamic-interaction, goalkeeper, sim2real, unitree-g1, hku, shanghai-ai-lab]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: "2510.18002"
 venue: arXiv
 code: https://github.com/InternRobotics/Humanoid-Goalkeeper
@@ -128,6 +128,8 @@ flowchart TB
 - **扩展任务：** 躲球（跳/蹲）、抓球——同一框架泛化。
 
 ## 与其他页面的关系
+
+- [Humanoid Soccer](../tasks/humanoid-soccer.md) — 守门任务需同时检查落点条件、扑救覆盖与扑救后稳定，不能仅用动作自然度评价。
 
 - AMP 纵深总览：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)（#13/19）
 - 方法：[amp-reward.md](../methods/amp-reward.md)

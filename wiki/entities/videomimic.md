@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, motion-retargeting, humanoid, video-imitation, reinforcement-learning, nvidia]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-18
 summary: "VideoMimic 将单目人体视频转为可仿真跟踪的人形参考运动并训练 RL 策略；与 CRISP、OmniRetarget 常在论文/项目页作基线对比。"
 related:
   - ../concepts/motion-retargeting.md
@@ -45,6 +45,8 @@ flowchart LR
 ```
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 单目视频先形成机器人参考，再通过策略学习实现闭环跟踪；视频重建精度与控制效果应分开验证。
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [CRISP](../methods/crisp-real2sim.md)

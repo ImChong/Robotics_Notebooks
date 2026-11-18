@@ -6,7 +6,7 @@ code: https://github.com/robosimstudio/robosimstudio
 arxiv: "2610.18835"
 tags: [simulation, real2sim, manipulation, gpu, newton, agentic-robotics]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-18
 related:
   - ./newton-physics.md
   - ../concepts/sim2real.md
@@ -176,6 +176,9 @@ RoboSimStudio 的主要价值是把场景构建、物理建模和人机反馈连
 - 不能把擦拭案例外推为任意机器人、物体或操作任务都能一小时建模或稳定 Sim2Real。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — Real2Sim 场景应围绕操作目标、接触过程和真机复验构建。
+- [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md) — 双臂海绵擦拭案例还需检查臂间协调、接触约束与软体响应，不将单例建模时间外推到全部任务。
 
 - [Newton Physics](./newton-physics.md)：RoboSimStudio 的主要仿真基础。
 - [Sim2Real](../concepts/sim2real.md)：仿真如何服务于真实机器人策略。

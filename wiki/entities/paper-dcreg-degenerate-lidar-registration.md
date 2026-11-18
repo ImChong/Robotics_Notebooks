@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, slam, lidar, registration, degeneracy, localization, ijrr, hkust, nudt, ustb, utoronto]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-18
 venue: "IJRR 2026"
 code: https://github.com/JokerJohn/DCReg
 related:
@@ -173,6 +173,8 @@ sequenceDiagram
 - **IMU 融合：** 本文聚焦 **纯 LiDAR 几何退化**；高速运动或 IMU 主导场景应走 LIO 而非单挂 DCReg。
 
 ## 关联页面
+
+- [Conjugate Gradient Method（共轭梯度法）](../methods/conjugate-gradient-method.md) — 结构化预条件 PCG 用于稳定弱方向，需结合 Schur 退化检测阅读线性求解过程。
 
 - [里程计与激光雷达融合](../methods/lidar-odometry-fusion.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)

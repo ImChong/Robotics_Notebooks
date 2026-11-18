@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, ros2, dds, sdk, humanoid, quadruped, g1, dex3]
 status: complete
-updated: 2026-08-16
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./unitree-sdk2.md
@@ -119,6 +119,9 @@ README 引言仍写「Supports Go2, B2, and H1」——**以 Release 与 `exampl
 - **开源状态：** **已开源**（BSD-3-Clause；Release 页即项目页）。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — G1 双臂与 Dex3 示例需对齐手部消息、末端配置和操作接口。
+- [Locomotion](../tasks/locomotion.md) — 四足/人形运动应用通过 DDS 接入时，仍需独立检查运动模式和本体约束。
 
 - [unitree_sdk2](./unitree-sdk2.md)
 - [unitree_ros（ROS1）](./unitree-ros.md)

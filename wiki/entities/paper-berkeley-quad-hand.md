@@ -8,7 +8,7 @@ tags:
   - underactuated
   - quasi-direct-drive
 status: complete
-updated: 2026-10-18
+updated: 2026-11-18
 arxiv: "2609.27240"
 project: https://benudavis.github.io/berkeley-quadhand/
 related:
@@ -90,6 +90,8 @@ flowchart TD
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Grasp Pose Estimation（抓取位姿估计）](../methods/grasp-pose-estimation.md) — 抓型候选要与非对称驱动、柔顺耦合和持续握力约束匹配，抓型覆盖不等于任意姿态可执行。
 
 - [dexterous-kinematics](../concepts/dexterous-kinematics.md)
 - [manipulation](../tasks/manipulation.md)

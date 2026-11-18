@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, autonomous-driving, world-model, traffic-flow, navsim, closed-loop, afari, megvii]
 status: complete
-updated: 2026-09-18
+updated: 2026-11-18
 arxiv: "2608.22187"
 related:
   - ../methods/generative-world-models.md
@@ -189,6 +189,8 @@ BehaviorWorldGen 说明驾驶 **action–world 自改进闭环** 的瓶颈往往
 - **与开放域 WM 评测正交：** 不替代 [WorldScore](./paper-worldscore.md) 相机可控或 [HarnessEval-W](./paper-harnesseval-w.md) 交互探针 — 本文锚 **驾驶策略闭环**。
 
 ## 关联页面
+
+- [Generative Data Augmentation (生成式数据增强)](../methods/generative-data-augmentation.md) — meta-action 条件交通流与世界渲染共同生成训练样本，增益需按交互长尾场景与驾驶任务指标检查。
 
 - [生成式世界模型](../methods/generative-world-models.md) — 驾驶 / 多智能体实例总览
 - [World Action Models](../concepts/world-action-models.md) — Cascaded 闭环与 control utility

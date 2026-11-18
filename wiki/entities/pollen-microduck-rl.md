@@ -2,7 +2,7 @@
 type: entity
 tags: [rl, mujoco, mjlab, locomotion, sim2real, pollen-robotics, pollen, onnx, bam, reward-design]
 status: complete
-updated: 2026-09-13
+updated: 2026-11-18
 related:
   - ./pollen-microduck.md
   - ./motrix.md
@@ -136,6 +136,8 @@ uv run scripts/infer_policy.py --walking walk.onnx --standing stand.onnx --new-c
 - **aarch64 上 PyPI torch 可能是 CPU-only：** 仓内用 uv sources 把 aarch64 指到 cu129；torch 必须保持直接依赖且 `==` 钉版本。
 
 ## 关联页面
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 将共享观测、奖励约定、齿轮背隙任务与 PPO 采样更新对应，导出 ONNX 后另验 Runtime。
 
 - [Pollen Microduck](./pollen-microduck.md) — 整机与 Runtime
 - [mjlab](./mjlab.md) — 训练框架

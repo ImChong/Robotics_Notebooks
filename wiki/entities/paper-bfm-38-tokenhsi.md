@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nus]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2503.19901"
 venue: "2025 · CVPR"
 code: https://github.com/liangpan99/TokenHSI
@@ -105,6 +105,9 @@ flowchart TD
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 统一多任务策略用 PPO 更新，并配合任务条件化判别器，需核对任务掩码和奖励。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md) — 坐、攀爬、搬运等场景交互要求同时满足身体运动、物体与接触约束。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

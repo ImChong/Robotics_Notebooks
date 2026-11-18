@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, reinforcement-learning, isaac-lab, locomotion, sim2real]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./unitree-rl-gym.md
@@ -111,6 +111,9 @@ sequenceDiagram
 图依据：unitree_rl_lab@4960b84，读过 `README.md`（训练命令与 `unitree_rl_lab.sh` 用法）、`scripts/rsl_rl/train.py`（主流程，`AppLauncher` 与 `learn` 等调用位置）、`source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/__init__.py`、`source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/robots/g1/29dof/__init__.py`（`gym.register`）、`source/unitree_rl_lab/unitree_rl_lab/tasks/locomotion/agents/rsl_rl_ppo_cfg.py`（`BasePPORunnerCfg` 片段）。`velocity_env_cfg.py`、`export_deploy_cfg`、`hydra_task_config`、Isaac Lab 与 rsl_rl 内部实现未读。未运行代码。
 
 ## 关联页面
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 将 Isaac Lab 环境配置、并行采样与 PPO 策略更新对应起来，部署时另核对观测和动作契约。
+- [Locomotion](../tasks/locomotion.md) — Go2/H1/G1 的行走验证需同时检查地形、速度跟踪与真机稳定性。
 
 - [unitree_rl_gym](./unitree-rl-gym.md)
 - [unitree_rl_mjlab](./unitree-rl-mjlab.md)

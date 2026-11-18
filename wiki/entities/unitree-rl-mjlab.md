@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, framework, unitree, mjlab, mujoco, reinforcement-learning, sim2real, humanoid, locomotion]
 status: complete
-updated: 2026-07-24
+updated: 2026-11-18
 related:
   - ./unitree-ros.md
   - ./unitree-rl-gym.md
@@ -139,6 +139,8 @@ sequenceDiagram
 图依据：unitree_rl_mjlab@1425b15，读过 `README.md`（训练与回放命令）、`scripts/train.py`（`main`、`launch_training`、`run_train`）、`src/tasks/velocity/__init__.py`（`register_mjlab_task`）、`src/tasks/velocity/rl/runner.py`（`VelocityOnPolicyRunner.save`）、`src/tasks/velocity/rl/__init__.py`。`src/tasks/velocity/config/g1/env_cfgs.py`、`rl_cfg.py` 仅由注册处引用，内部参数未读；mjlab、rsl_rl 内部未读。`save` 的调用方为推断。未运行代码。
 
 ## 关联页面
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 速度跟踪与动作模仿任务共用训练框架时，需分别核对奖励、观测及 PPO 更新配置。
 
 - [mjlab](./mjlab.md) — 底层框架（Isaac Lab API + MuJoCo Warp）
 - [Unitree](./unitree.md) — 品牌主页

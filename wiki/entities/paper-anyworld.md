@@ -14,7 +14,7 @@ tags:
   - zju
   - cuhk
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2608.29242"
 venue: "arXiv 2026"
 related:
@@ -186,6 +186,8 @@ VBench 四项平均 **0.971**，与强基线相当或略优。
 | [EgoWM](./paper-egowm-egocentric-world-model.md) | EgoWM 给视频扩散加动作条件；AnyWorld 额外 **解耦相机与具身** 并服务跨本体重组 |
 
 ## 关联页面
+
+- [VLA（Vision-Language-Action）](../methods/vla.md) — 重组人类交互 rollout 用于目标本体适配，混合生成数据与真机数据的阶段和比例需分别核对。
 
 - [WAM×运动控制五路径](../overview/wam-motion-control-five-paths.md)
 - [机器人世界模型训练环分类](../overview/robot-world-models-training-loop-taxonomy.md)

@@ -9,7 +9,7 @@ tags:
   - full-body-manipulation
   - 1x-technologies
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 venue: "1X Technologies Technical Progress Report 2025"
 code: https://github.com/1x-technologies/1xgpt
 related:
@@ -154,6 +154,8 @@ sequenceDiagram
 | [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) | 未来特征进 **在线动作**；1XWM 停在 **离线评测** |
 
 ## 关联页面
+
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 对照学习动态模型的用途：本页重点是策略排序与离线评测，不能据此推断完整在线策略优化栈。
 
 - [WAM×运动控制五路径](../overview/wam-motion-control-five-paths.md)
 - [具身评测基准选型闭环（知识链）](../overview/hub-embodied-eval-benchmark.md)

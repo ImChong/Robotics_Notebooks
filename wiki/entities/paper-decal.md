@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, tactile, dexterous-manipulation, world-model, mot, pku, baai, corl-2026]
 status: complete
-updated: 2026-09-23
+updated: 2026-11-18
 arxiv: "2609.09119"
 venue: "CoRL 2026"
 code: https://github.com/AureleoPKU/DeCAL
@@ -137,6 +137,8 @@ sequenceDiagram
 | 与 ForceVLA / FWBC | 那些偏 **力/力矩**；DeCAL 偏 **高维触觉想象** |
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — 视触想象与接触门控的效用最终需在遮挡、接触丰富的操作任务中验证。
 
 - [VLA](../methods/vla.md)
 - [AT-VLA](./paper-sa-2605-07308-at-vla-adaptive-tactile-injection-for-enhanced-f.md)

@@ -7,7 +7,7 @@ tags:
   - legged-robot
   - caltech
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2010.09259"
 venue: "arXiv 2020"
 related:
@@ -110,6 +110,8 @@ flowchart TB
 - **时效：** 2020 年 arXiv；地下探索自主栈此后仍有大量 SLAM / 语义地图进展，宜作 **历史系统参考** 而非 SOTA 算法目录。
 
 ## 关联页面
+
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 地下长程探索将感知、信念空间规划与腿足机动连接起来，需要评估持续定位和风险。
 
 - [Boston Dynamics](./boston-dynamics.md)
 - [四足机器人](./quadruped-robot.md)

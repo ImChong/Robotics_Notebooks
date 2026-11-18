@@ -4,7 +4,7 @@ project_id: robolab
 project: https://research.nvidia.com/labs/srl/projects/robolab/
 tags: [benchmark, manipulation, vla, evaluation, simulation, isaac-lab, nvidia, open-source, leaderboard]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-18
 arxiv: "2604.09860"
 code: https://github.com/NVLabs/RoboLab
 venue: "RSS 2026"
@@ -228,6 +228,9 @@ sequenceDiagram
 - [具身模型测评纵深路线 Stage 3](../../roadmap/depth-embodied-eval.md) — RoboLab-120 的 SR、过程指标与榜单治理落在此阶段，sim↔real 的排名外推再衔接 Stage 5。
 
 ## 关联页面
+
+- [VLA（Vision-Language-Action）](../methods/vla.md) — 真机策略进入仿真评测时，应核对 VLA 服务的图像、指令和动作接口。
+- [Manipulation](../tasks/manipulation.md) — 三能力轴最终仍需落到操作任务成功率，不能用视觉扰动覆盖率替代任务效果。
 
 - [Astranomy：GPT-6 Astra 原生机器人策略研究](./astranomy.md) — RoboLab-120 上的一项通用模型策略研究。
 

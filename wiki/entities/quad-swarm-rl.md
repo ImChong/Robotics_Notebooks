@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, reinforcement-learning, swarm, gym, quadcopter, multi-agent, mit]
 status: complete
-updated: 2026-09-25
+updated: 2026-11-18
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./gym-pybullet-drones.md
@@ -77,6 +77,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：Zhehui-Huang/quad-swarm-rl@e18d692，读过 README.md、setup.py、train.sh、swarm_rl/train.py、enjoy.py、env_wrappers/quad_utils.py、reward_shaping.py、runs/single_quad/*.py、gym_art/quadrotor_multi/quadrotor_multi.py、quadrotor_single.py（片段）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [多智能体强化学习（MARL） ／ Multi-Agent Reinforcement Learning](../methods/marl.md) — 编队、避碰与协同任务需明确多智能体的观测和训练/执行分工。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 群体环境仍需完整定义奖励、回合终止与交互采样，不能只按机群数量比较难度。
 
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
 - [gym-pybullet-drones](./gym-pybullet-drones.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-grasping, contact-topology, generative-model, cea-list]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2608.19776"
 related:
   - ../concepts/dexterous-kinematics.md
@@ -80,6 +80,8 @@ flowchart LR
 **不适用**（截至 **2026-08-22**）：项目页未列可运行代码仓库。
 
 ## 与其他页面的关系
+
+- [Grasp Pose Estimation（抓取位姿估计）](../methods/grasp-pose-estimation.md) — 对照接触拓扑条件的灵巧抓取与 6-DoF 抓取候选生成，不能只用腕部位姿描述全部接触。
 
 - [dexterous-grasping](../concepts/dexterous-kinematics.md)
 - [paper-goag](./paper-goag.md)

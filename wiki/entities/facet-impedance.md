@@ -2,7 +2,7 @@
 type: entity
 tags: [loco-manipulation, humanoid, contact, hmi-opensource-table, project]
 status: draft
-updated: 2026-07-30
+updated: 2026-11-18
 summary: "FACET：把虚拟质量－弹簧－阻尼系统的短时响应作为强化学习跟踪目标，让机器人在外力和接触下产生可控阻抗行为；主要量化和实机验证来自四足平台，人形移动操作属于方法迁移方向。"
 related:
   - ../tasks/loco-manipulation.md
@@ -83,6 +83,8 @@ flowchart LR
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 虚拟质量–弹簧–阻尼响应作为跟踪目标塑造策略，四足实证与人形迁移设想应分开表述。
 
 - [loco-manipulation](../tasks/loco-manipulation.md)
 - [whole-body-control](../concepts/whole-body-control.md)

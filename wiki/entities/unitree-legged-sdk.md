@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, sdk, legacy, quadruped, ros1]
 status: complete
-updated: 2026-07-24
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./unitree-sdk2.md
@@ -110,6 +110,9 @@ sequenceDiagram
 图依据：unitree_legged_sdk@4539a6c，读过 `README.md`、`CMakeLists.txt`（`example_position` 目标与库链接）、`example/example_position.cpp`、`include/unitree_legged_sdk/loop.h`、`include/unitree_legged_sdk/udp.h`（grep 声明）、`include/unitree_legged_sdk/safety.h`（grep 声明）、`include/unitree_legged_sdk/comm.h`（grep 片段）、`include/unitree_legged_sdk/unitree_legged_sdk.h`。`UDP` 收发与 `Safety` 限幅的内部实现未读（预编译库，本仓无源码）。
 
 ## 关联页面
+
+- [Locomotion](../tasks/locomotion.md) — 历史 Go1 行走应用应锁定固件与 UDP SDK 版本，不套用新机型接口。
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 低层关节反馈实验需核对目标、增益和发送周期，SDK 通信本身不构成控制律。
 
 - [unitree_sdk2](./unitree-sdk2.md)
 - [unitree_ros](./unitree-ros.md)

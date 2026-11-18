@@ -2,7 +2,7 @@
 type: entity
 tags: [robotera, repo, china-embodied-opensource, open-source, project]
 status: complete
-updated: 2026-10-08
+updated: 2026-11-18
 related:
   - ./robotera.md
   - ../overview/china-domestic-embodied-opensource-76-companies-technology-map.md
@@ -100,6 +100,8 @@ sequenceDiagram
 图依据：roboterax/teleop_client@578353e，l3_pub_client.py、q5_pub_client.py、README.md
 
 ## 关联页面
+
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — 消息入口还需和机器人侧服务、授权及状态生命周期配合，不能视作完整遥操作系统。
 
 - [星动纪元](./robotera.md)
 - [M7 VLA 基线](./cn-os-robotera-vla.md)、[控制 SDK](./cn-os-xbot-sdk-api.md)

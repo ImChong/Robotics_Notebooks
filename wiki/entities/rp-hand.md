@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, dexterous-hand, manipulation, can-fd, ros2, open-source, roboparty]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 project_id: rp-hand
 code: https://github.com/Roboparty/rp_dexhand
 related:
@@ -100,6 +100,8 @@ DH116S 每只手 17 个 link、11 个可动关节（6 独立 + 5 mimic）、5 �
 - **性能参数为手册值**：开合时间、行程不是逐轴软件限位或标定结果。
 
 ## 关联页面
+
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — 作为遥操作末端时，应先核对六主动轴映射、零位与反馈周期，不把 SDK 连通当作动作适配完成。
 
 - [RP1 总览（RoboParty RP1）](./roboparty-rp1.md)
 - [RoboParty（公司）](./roboparty.md)

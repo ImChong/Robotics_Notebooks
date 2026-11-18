@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, simulation, differentiable-simulation, quasi-dynamic, gpu, model-predictive-control, contact-rich]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: cqdc-warp
 arxiv: "2610.21349"
 related:
@@ -112,6 +112,8 @@ flowchart TD
 - 结论局限于手内旋转任务，对其他接触任务的泛化未知。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 批量可微准动态仿真服务 MPC 候选求解，意图接触软代价与实际摩擦响应需分别理解。
 
 - [可微仿真](../concepts/differentiable-simulation.md)
 - [接触丰富操作](../concepts/contact-rich-manipulation.md)

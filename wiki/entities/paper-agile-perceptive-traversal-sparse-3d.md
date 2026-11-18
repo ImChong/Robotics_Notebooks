@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, perceptive-locomotion, brachiation, lidar, teacher-student, sim2real, eth, engineai]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2608.29769"
 related:
   - ./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md
@@ -190,6 +190,8 @@ flowchart TB
 - **未开源：** sim、奖励权重与噪声实现未公开；上表参数可复述，不能直接训练。
 
 ## 关联页面
+
+- [Multi-Expert Distillation（多专家蒸馏）](../methods/multi-expert-distillation.md) — 跳上、荡杆、跳下的多个特权教师蒸馏为感知学生，阶段调度和学生可用观测必须对应。
 
 - [AME-2](./paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 本文感知编码器直接前作
 - [LadderMan](./paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 人形梯子攀爬（深度路线对照）

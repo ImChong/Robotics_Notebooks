@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, action-chunking, imitation-learning, ant-group]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2609.08638"
 related:
   - ../tasks/manipulation.md
@@ -92,6 +92,8 @@ CASD 离线蒸馏阶段语义到 action chunk，推理无需 VLM。
 新阶段需重新标注；VLM 偏见传入策略。
 
 ## 关联页面
+
+- [Action Chunking（动作块输出）](../methods/action-chunking.md) — 语义蒸馏以动作块为单位，块长度与阶段边界对齐会影响监督质量。
 
 - [manipulation](../tasks/manipulation.md)
 - [./paper-tfgca-chunked-vla.md](./paper-tfgca-chunked-vla.md)
