@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-11-15
+updated: 2026-11-18
 original:
   - ../../sources/papers/aloha_act_reading_arxiv_2304_13705_reading_teleop.md
 sources:
@@ -187,6 +187,7 @@ sources:
 | **[Immersive Social VR+LLM](../entities/paper-immersive-social-vr-llm-humanoids.md)**（NYUAD 2026） | Unitree H1 + Inspire 手 | **Apple Vision Pro** + 语音 | 多模态遥操作录制（RGB/语音/关节/眼动） | **LLM 语音高层 locomotion** + VR 腕/指操作 + ROS 双向音频社交；新手抓放 **80%** / 社交传方块 **70%**；**系统未开源** |
 | **[NEXUS](../entities/nexus-humanoid.md)**（SJTU，Research Preview 2026） | （待论文） | Live human motion | — | **感知型 foundation policy** + **跨域全身遥操作** + **地形感知**（预览楼梯 sim/real）；Paper/Code **Coming Soon** |
 | **[BeyondRetarget](../entities/paper-beyondretarget-monocular-humanoid.md)**（NJU 等 2026） | 八款人形（含 G1/R1/H1） | **单目 RGB**（1080p@30Hz 固定相机；非 XR） | 项目页 + 开源推理 | **跳过 SMPL 中间态** 端到端 motion；**~193 ms** 流式；真机 teleop 接 **SONIC + GR00T ZMQ**；当前 **base 版** |
+| **[MoViC](../entities/paper-movic-monocular-video-whole-body-control.md)**（HKU / NUS / BIT / EngineAI，2026） | **EngineAI PM01（24-DoF）** | **单目 RGB**，固定相机，视觉约 10 Hz | AMASS 等动作库训练；PM01 真机舞蹈/双臂搬箱/单臂提包 | **SAM 3D Body → GMR → FLD 50 Hz 外推 → θ 条件化 Transformer**；仿真跟踪成功率 **99%**（并非真机任务成功率）；代码待发布 |
 
 ### 外部追踪（动捕 / 光学 / 纯视觉）
 
