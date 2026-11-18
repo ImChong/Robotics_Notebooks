@@ -8,11 +8,12 @@ tags:
   - testing
   - human-in-the-loop
 status: complete
-updated: 2026-11-17
+updated: 2026-11-18
 summary: "Coding Agent 验证闭环将 E2E、属性测试、差分测试和独立评审组成有证据的交付门禁；强调在真实系统运行、按 diff 触发可靠性检查、隔离审查规则，并用事故反例持续校准验证器。"
 related:
   - ../concepts/coding-agent-orchestration-and-cognitive-oversight.md
   - ../concepts/agentic-coding-software-fundamentals.md
+  - ../comparisons/coding-agent-verification-vs-code-review.md
   - ../concepts/agentic-coding-trust-pyramid.md
   - ../concepts/ai-agent-evaluation.md
   - ../concepts/test-driven-development.md
@@ -129,7 +130,13 @@ flowchart TD
 - **验证门禁存在误报/漏报：** 检查规则由模型产生时，尤其要隔离被评审变更、加入稳定样本和历史事故。
 - **安全关键任务必须另验：** 机器人控制需覆盖实际时延、接触、限位、通信失效与现场安全评审，软件 E2E 不是物理安全证明。
 
+## 与风险分级评审的衔接
+
+**验证回答“实际运行是否有证据支持正确”，评审回答“剩余风险是否允许合并”。** 两者在 Claude Code 团队的工程文章中是前后关联的门禁，但通过 E2E 不等于通过安全审查，也不等于无需人工批准。风险分级、审查器校准与回滚的具体分工见 [Coding Agent 验证 vs 代码评审](../comparisons/coding-agent-verification-vs-code-review.md)。
+
 ## 关联页面
+
+- [Coding Agent 验证与代码评审分工](../comparisons/coding-agent-verification-vs-code-review.md) — 对照行为证据与审查、审批、发布门禁。
 
 - [多 Agent 编码管理与认知把关](../concepts/coding-agent-orchestration-and-cognitive-oversight.md) — 分工、评审容量和人类责任边界。
 - [Agentic Coding 时代的软件工程基础](../concepts/agentic-coding-software-fundamentals.md) — 设计与运行环境的取舍知识。
