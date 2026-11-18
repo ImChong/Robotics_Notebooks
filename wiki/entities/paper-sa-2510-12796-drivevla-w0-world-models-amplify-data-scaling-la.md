@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: driving-drivevla-w0
 tags: [paper, curated-index, awesome-world-models, sun254667-wm, awesome-world-action-models-rcl]
 status: complete
 updated: 2026-10-06
@@ -17,7 +18,12 @@ related:
   - paper-rcl-wam-robot-learning-control-survey.md
   - ../overview/rcl-awesome-wam-technology-map.md
   - ../methods/vla.md
+original:
+  - ../../sources/papers/ad_top10_2026_drivevla-w0.md
 sources:
+  - ../../sources/papers/ad_top10_2026_drivevla-w0.md
+  - ../../sources/repos/ad_top10_2026_drivevla-w0.md
+  - ../../sources/blogs/wechat_shenlan_ai_autonomous_driving_top10_2026.md
   - ../../sources/papers/sun_awesome_wm_2510_12796_drivevla-w0-world-models-amplify-data-sc.md
   - ../../sources/papers/sun_awesome_wm_catalog.md
   - ../../sources/repos/awesome-world-models.md
@@ -134,3 +140,52 @@ World models amplify data scaling laws in autonomous driving.
 
 - [Awesome World Models 仓库](https://github.com/sun254667/awesome-world-models)
 - [原文](https://arxiv.org/abs/2510.12796)
+
+
+## 2026-11-18 官方原文复核与复现边界
+
+**训练时加入未来视觉世界监督。** 历史图像、驾驶指令和动作进入VLA；训练期通过VQ或扩散世界模型预测未来图像形成稠密监督；推理时动作专家生成waypoints。
+
+- **原始指标：** 公开NAVSIM实验配置及模型权重；脚本名PDMS_87.2是具体配置名称。
+- **开源边界：** 世界模型在训练期辅助学习，不能把视觉生成指标直接当成驾驶规划安全指标。
+- **官方运行入口：** ```bash scripts/misc/download_emu3_pretrain.sh```、```bash inference/vla/infer_navsim_flow_matching_PDMS_87.2.sh```、```bash inference/vla/eval_navsim_metric_from_json.sh```。
+
+### 复核流程图
+
+```mermaid
+flowchart LR
+  Obs[当前及历史视觉动作] --> VLA[VLA主干]
+  VLA --> Expert[动作专家]
+  Expert --> Waypoints[规划航迹]
+  VLA --> WM[世界模型训练监督]
+  WM -.未来画面损失.-> VLA
+```
+
+## 源码运行时序图（源码入口核对）
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor Dev as 开发者
+  participant Setup as scripts/misc/download_emu3_pretrain.sh
+  participant Infer as inference/vla/infer_navsim_flow_matching_PDMS_87.2.sh
+  participant Model as DriveVLA-W0 action expert
+  participant Eval as inference/vla/eval_navsim_metric_from_json.sh
+  Dev->>Setup: 下载Emu3基础权重
+  Dev->>Infer: 设置NAVSIM数据与训练后检查点
+  Infer->>Model: 图像/指令/历史动作条件
+  Model-->>Infer: flow-matching轨迹
+  Infer-->>Eval: 生成规划JSON
+  Dev->>Eval: 运行官方评分脚本
+  Eval-->>Dev: NAVSIM评测结果
+```
+
+本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_drivevla-w0.md)和[代码入口](../../sources/repos/ad_top10_2026_drivevla-w0.md)。
+
+## 工程实践
+
+官方运行入口及数据限制见上一节；需按实际硬件与数据版本配置。
+
+## 局限与风险
+
+世界模型在训练期辅助学习，不能把视觉生成指标直接当成驾驶规划安全指标。

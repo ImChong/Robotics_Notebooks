@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: driving-autovla
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
 updated: 2026-10-06
@@ -14,7 +15,12 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+original:
+  - ../../sources/papers/ad_top10_2026_autovla.md
 sources:
+  - ../../sources/papers/ad_top10_2026_autovla.md
+  - ../../sources/repos/ad_top10_2026_autovla.md
+  - ../../sources/blogs/wechat_shenlan_ai_autonomous_driving_top10_2026.md
   - ../../sources/papers/rcl_awesome_wam_2506_13757_autovla-a-vision-language-action-model-f.md
   - ../../sources/papers/rcl_awesome_wam_catalog.md
   - ../../sources/repos/awesome-world-action-models-rcl.md
@@ -141,3 +147,55 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [原文](https://proceedings.neurips.cc/paper_files/paper/2025/hash/2843fccca5bedd369a4764848b9bd546-Abstract-Conference.html)
+
+
+## 2026-11-18 官方原文复核与复现边界
+
+**按需快慢推理、离散动作token及GRPO。** 将轨迹增量映射为动作codebook；简单场景直接产生动作token，复杂场景先生成驾驶CoT再生成动作；SFT之后用GRPO强化微调。
+
+- **原始指标：** 官方开放NAVSIM与nuScenes等训练和评测脚本，不能跨基准混用PDMS与轨迹误差。
+- **开源边界：** 动作token的离散误差及额外CoT的延时需单独评估；离线规划指标不是实车安全证明。
+- **官方运行入口：** ```bash scripts/action_token_cluster.sh```、```bash scripts/run_sft.sh```、```bash scripts/run_rft.sh```、```bash navsim/scripts/evaluation/run_autovla_agent_pdm_score_evaluation.sh```。
+
+### 复核流程图
+
+```mermaid
+flowchart LR
+  Obs[相机导航与自车状态] --> VLM[Qwen2.5 VL]
+  VLM --> Mode{快/慢推理}
+  Mode -->|快| Token[动作token]
+  Mode -->|慢| CoT[因果解释]
+  CoT --> Token
+  Token --> Dec[轨迹解码]
+  GRPO[GRPO后训练] -.优化.-> VLM
+```
+
+## 源码运行时序图（源码入口核对）
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor Dev as 开发者
+  participant Code as scripts/action_token_cluster.sh
+  participant SFT as scripts/run_sft.sh
+  participant RFT as scripts/run_rft.sh
+  participant Eval as navsim/scripts/evaluation/run_autovla_agent_pdm_score_evaluation.sh
+  Dev->>Code: 根据轨迹构造动作codebook
+  Code-->>SFT: 离散动作token
+  Dev->>SFT: 监督微调Qwen2.5-VL骨干
+  SFT-->>RFT: 初始化模型权重
+  Dev->>RFT: GRPO强化微调
+  RFT-->>Eval: 训练后检查点
+  Dev->>Eval: NAVSIM评分
+  Eval-->>Dev: PDMS输出
+```
+
+本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_autovla.md)和[代码入口](../../sources/repos/ad_top10_2026_autovla.md)。
+
+## 工程实践
+
+官方运行入口及数据限制见上一节；需按实际硬件与数据版本配置。
+
+## 局限与风险
+
+动作token的离散误差及额外CoT的延时需单独评估；离线规划指标不是实车安全证明。
