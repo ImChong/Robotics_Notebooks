@@ -141,18 +141,18 @@ flowchart LR
 
 在同一姿态约定下，给定目标 $q_d$、当前 $q_c$：
 
-$
+$$
 q_e^W=q_d\otimes q_c^{-1},\qquad
 q_e^B=q_c^{-1}\otimes q_d.
-$
+$$
 
 前者的旋转向量在**世界参考系**表达，后者在**机体参考系**表达。若要转成角速度指令，必须选择匹配的 $\omega_W$ 或 $\omega_B$；不能简单把两种误差混用。先把误差四元数整体选支到 $w_e\ge0$（$w_e=0$ 处需连续轴向策略），再求最短旋转角：
 
-$
+$$
 \theta_e=2\operatorname{atan2}(\|v_e\|,w_e)\in[0,\pi],
 \qquad
 r_e=\theta_e\frac{v_e}{\|v_e\|}
-$
+$$
 
 当 $\|v_e\|$ 很小时使用小角近似 $r_e\simeq 2v_e$。**180° 对应 $w_e\simeq0$、$\|v_e\|\simeq1$，并非 $\|v_e\|\simeq0$。** 在 180° 邻域最短误差轴选支可能不连续，不能据「四元数没有欧拉奇异」推断存在全局光滑的单一误差反馈。
 
@@ -166,11 +166,11 @@ $
 
 角速度在**本体系**表示时：
 
-$
+$$
 \dot q=\tfrac12 q\otimes[0,\omega_B],
 \qquad
 q_{k+1}=\operatorname{normalize}(q_k\otimes\exp_q(\tfrac{\Delta t}{2}\omega_B)).
-$
+$$
 
 对每个采样周期内恒定角速度，指数增量为 $\exp_q(\tfrac{\Delta t}{2}\omega)=[\cos(\|\omega\|\Delta t/2),\;\hat\omega\sin(\|\omega\|\Delta t/2)]$。角速度在**世界系**表示时改为 $\dot q=\tfrac12[0,\omega_W]\otimes q$，积分增量应左乘。归一化约束数值模长，但**不能消除陀螺零偏/传感器漂移**，需要外部观测或滤波修正。
 
