@@ -10,8 +10,9 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-11-10
+updated: 2026-11-18
 related:
+  - ./ankole.md
   - ./magpie.md
   - ./deepseek-harness.md
   - ./ponytail.md
@@ -143,6 +144,8 @@ flowchart TB
 - **局限：** 平台适配器、提供商列表与安装脚本变更频繁；本页不固化命令行。安全模型（命令 approval、DM pairing）需按 [官方 Security 文档](https://hermes-agent.nousresearch.com/docs/user-guide/security) 自行评估后再接生产网关。
 
 ## 关联页面
+
+- [Ankole](./ankole.md) — 企业 Pod、Company Brain、权限审批与独立 Worker；与 Hermes 的个人常驻 Agent / 网关路线对照
 
 - [Magpie](./magpie.md) — 跨 Claude Code / Codex 的本地多模型网关；对照 Hermes 的 Agent 执行层
 
