@@ -123,7 +123,7 @@ flowchart TB
 | **Urs et al. 2022** | A（教材型） | 7.5:1 行星 / ~15:1 bilateral | moteus r4.5 | 热/寿命/背隙测全；公开仓链接待核实 | [论文页](../entities/paper-3d-printed-open-source-actuators-legged.md) |
 | **Katz / Mini Cheetah（2018）** | A（历史先例，**部分开源**） | **6:1** 行星 | 自研集成驱动（[`3phase_integrated`](https://github.com/bgkatz/3phase_integrated)） | BOM≈$300、空翻级动态；**机械 CAD 未在 thesis 附录公开** | [Katz thesis](../entities/paper-low-cost-modular-actuator-katz.md) |
 | **Cycloidal QDD (Jeong)** | A+自制电机 | 双摆线 10:1、180° 相位 | moteus-c1 | 与 BHL/ICA 对照；缺背铁限扭矩 | [Jeong QDD](../entities/cycloidal-quasi-direct-drive-actuator.md) |
-| **Actuator 2.0 (the5439workshop)** | B（自制定子/转子与行星传动） | 定子内部集成行星减速（视频摘要约 6:1，待复核） | 自研 PCB + ESP32-S3 / SimpleFOC 电压型力矩接口 | STL/Gerber/BOM/示例程序可用；铝制齿轮磨损、公差与连续力矩待验证 | [Actuator 2.0](../entities/the5439workshop-actuator-2.md) |
+| **Actuator 2.0 (the5439workshop)** | B（自制定子/转子与行星传动） | 定子内部集成行星减速（视频原文确认 6:1） | 自研 PCB + ESP32-S3 / SimpleFOC 电压型力矩接口 | STL/Gerber/BOM/示例程序可用；作者报告接近 20 N·m / 100 W 损耗；齿轮寿命和连续力矩仍需验证 | [Actuator 2.0](../entities/the5439workshop-actuator-2.md) |
 | **Ironless QDD** | B（低成本） | 摆线—行星 | 集成驱动 + 磁编 | BOM~$70；**~29 N·m 是静态保持**；FEMM+36N42P 开源最完整样机之一 → [电磁完整度对比](./open-source-torque-motor-em-design.md) | [Ironless](../entities/ironless-qdd-actuator.md) |
 
 ## 驱动器配套（与电机不可分）
