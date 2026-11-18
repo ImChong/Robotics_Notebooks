@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, stereo-matching, middlebury, computer-vision]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ../methods/stereo-matching-foundation-models.md
   - ./eth3d-stereo-benchmark.md
@@ -37,6 +37,8 @@ summary: "Middlebury Stereo V3：经典立体匹配评测；S²M²、FoundationS
 | **V3 评测** | <https://vision.middlebury.edu/stereo/eval3/> |
 
 ## 关联页面
+
+- [Visual Servoing（视觉伺服控制）](../methods/visual-servoing.md) — 受控双目视差可作视觉反馈的深度模块对照，闭环控制仍需核对尺度、标定和在线延迟。
 
 - [立体匹配生态](../methods/stereo-matching-foundation-models.md)
 - [ETH3D](./eth3d-stereo-benchmark.md) / [KITTI](./kitti-stereo-benchmark.md)

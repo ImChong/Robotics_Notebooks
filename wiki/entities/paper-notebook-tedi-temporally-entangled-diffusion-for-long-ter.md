@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2307.15042"
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
@@ -98,6 +98,9 @@ TEDi 要：把扩散的渐进性"搬到"运动时间轴，**滑动缓冲**式地
 - 本页为深读笔记编译的笔记摘要，未给出量化 benchmark 与消融；长时程稳定性到底能撑多久，须回到笔记页与论文 PDF 核对。
 
 ## 与其他页面的关系
+
+- [Diffusion-based Motion Generation (基于扩散模型的运动生成)](../methods/diffusion-motion-generation.md) — 按运动位置分配噪声的滑动缓冲区别于整段同步去噪，应检查窗口边界与长时序连贯性。
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 持续生成的动画若用于物理执行，还需独立跟踪器，动作长度可扩展不等于长期控制稳定。
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)

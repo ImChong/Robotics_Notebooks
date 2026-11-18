@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, mujoco, web, wasm, javascript, deepmind]
 status: complete
-updated: 2026-09-08
+updated: 2026-11-18
 related:
   - ./mujoco.md
   - ./mujoco-mjx.md
@@ -71,6 +71,9 @@ MJCF 资产 ──► Emscripten FS ──► MjModel / MjData
 下游消费方包括 [Robot Viewer](./robot-viewer.md)（URDF/MJCF/Xacro 多格式 + MuJoCo 仿真）、感知 loco 论文页的浏览器 demo 等。
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 浏览器关节反馈演示可帮助观察增益响应，步长、驱动单位和饱和仍需按实际模型设置。
+- [Locomotion](../tasks/locomotion.md) — ONNX Sim2Sim 展示可作运动策略入口检查，浏览器演示通过不能代替真机动力学与接触验证。
 
 - [MuJoCo（主引擎）](./mujoco.md) — C/Python 核心与 MJCF 语义
 - [MuJoCo MJX](./mujoco-mjx.md) — JAX/GPU 批量路径（训练侧，非浏览器）

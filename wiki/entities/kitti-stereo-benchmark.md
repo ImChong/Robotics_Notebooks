@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, stereo-matching, kitti, autonomous-driving, computer-vision]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ../methods/stereo-matching-foundation-models.md
   - ./eth3d-stereo-benchmark.md
@@ -43,6 +43,8 @@ summary: "KITTI Stereo 2012/2015：自动驾驶场景最常用双目立体 bench
 - **与 ETH3D 不可横比：** 分辨率、场景、指标定义均不同。
 
 ## 关联页面
+
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 室外双目深度进入探索前还需标定、定位和避障验证，D1-all 改善不能直接外推任务成功率。
 
 - [立体匹配生态](../methods/stereo-matching-foundation-models.md)
 - [ETH3D](./eth3d-stereo-benchmark.md)

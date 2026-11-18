@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, manipulation, dexterous-manipulation, sim2real, eth-zurich, nvidia]
 status: complete
-updated: 2026-11-03
+updated: 2026-11-18
 project_id: goaldex
 arxiv: "2611.02171"
 project: https://rffr.leggedrobotics.com/works/goaldex/
@@ -95,6 +95,8 @@ flowchart TD
 论文说明尚不能泛化到完全未见物体类别；目标视图生成依赖物体几何；真机为掌心向上且需要物体掩码。五物体实验不足以证明开放世界泛化。学生训练约 30 小时，五物体使用两张 H100。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 特权教师向视觉循环学生传递动作监督，部署时不能泄漏真实物体状态或训练用掩码。
 
 - [ViserDex](./paper-viserdex.md)
 - [机器人操作](../tasks/manipulation.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, imitation-learning, sim2real, unitree-g1, agibot, booster, caltech, georgia-tech]
 status: complete
-updated: 2026-10-25
+updated: 2026-11-18
 project_id: morphmimic-cross-humanoid-tracking-2026
 project: https://lzyang2000.github.io/morphmimic/
 code: https://github.com/lzyang2000/morphmimic
@@ -118,6 +118,8 @@ sequenceDiagram
 5. **先检查算力和数据成本：** 三模型共训使用 16.3 GPU-hours，略多于三个单机专家合计；联合模型的优势是策略复用，不是这组实验中的最低训练算力。
 
 ## 关联页面
+
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 共享世界模型上的想象 rollout 通过反向传播改进跟踪策略，需与每机型独立回放和归一化接口对应。
 
 - [SuperMimic：用一个可微世界模型扩展人形全身控制](./paper-supermimic.md) — MorphMimic 沿用其世界模型想象 rollout 训练路线，并扩展到多种人形本体。
 - [SONIC：大规模自然人形全身控制](./nvidia-sonic.md) — 另一种人形动作跟踪扩展路线，可对照模型无关大规模仿真。

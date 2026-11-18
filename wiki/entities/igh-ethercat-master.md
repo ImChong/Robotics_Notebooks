@@ -4,7 +4,7 @@ project_id: igh-ethercat-master
 code: "https://gitlab.com/etherlab.org/ethercat"
 tags: [ethercat, fieldbus, open-source, master, embedded, realtime]
 status: draft
-updated: 2026-11-03
+updated: 2026-11-18
 related:
   - ./soem.md
   - ../queries/ethercat-master-optimization.md
@@ -73,6 +73,9 @@ summary: "IgH EtherCAT Master (EtherLab)：以 Linux 内核模块形式实现的
 - **核对结论：** 仓库同时含 COPYING（GPLv2）与 COPYING.LESSER（LGPL v2.1），文章只写 GPL；硬实时依赖内核补丁来自文章，未在许可文件中核对。
 
 ## 关联页面
+
+- [MIT 模式模拟 CSP：前馈优先的内环整定与五关验证](../methods/mit-mode-csp-emulation-tuning.md) — 周期位置模式接入关节阻抗时，需在主站与驱动器之间核对目标单位、PDO 和同步周期。
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 主站抖动和同步影响上层反馈时序，内核态运行不自动保证伺服参数或闭环稳定性。
 
 - [soem](./soem.md)
 - [ethercat-master-optimization](../queries/ethercat-master-optimization.md)

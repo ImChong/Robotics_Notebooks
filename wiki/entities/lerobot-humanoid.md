@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, lerobot, huggingface, biped, robstride, sim2real]
 status: complete
-updated: 2026-09-28
+updated: 2026-11-18
 related:
   - ./lerobot.md
   - ./humanoid-robot.md
@@ -156,6 +156,8 @@ LeRobot 主仓安装与硬件集成见 [官方文档](https://huggingface.co/doc
 - **辨识范围**：identification 仓 **不含** 真机延迟/采集全套工具，需与 runtime `data_acquisition` 等配合。
 
 ## 关联页面
+
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — MJWarp 参数辨识应和实际 12-DoF 本体、CAN 运行时及部署增益对齐，不能由 LeRobot 名称推断双臂能力。
 
 - [LeRobot (Hugging Face)](./lerobot.md) — 主框架、Hub 与 CLI
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)

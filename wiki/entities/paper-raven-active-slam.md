@@ -4,7 +4,7 @@ project_id: raven-active-slam-aerial
 arxiv: "2610.37111"
 tags: [paper, slam, navigation, aerial-robot, exploration, hkust]
 status: draft
-updated: 2026-11-05
+updated: 2026-11-18
 related:
   - ./paper-sa-2606-19378-roboatlas-contextual-active-slam.md
   - ./paper-raven-rl-adaptive-visibility-graph-mpc.md
@@ -89,6 +89,9 @@ RAVEN 的价值是把全局探索、回环机会和视觉感知质量放进同�
 不适用：论文称源码将发布，尚未找到官方可运行实现。
 
 ## 关联页面
+
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 主动回环与覆盖路线共同权衡探索时间和定位信息，需按相同环境比较任务完成效果。
+- [A* 全局路径规划](../methods/a-star.md) — 信息感知 A* 承担位置规划，Fisher 信息场近似和后续 B 样条平滑应分别检查。
 
 - [RoboAtlas：主动 SLAM](./paper-sa-2606-19378-roboatlas-contextual-active-slam.md)
 - [同名 RAVEN：人形导航](./paper-raven-rl-adaptive-visibility-graph-mpc.md) — 不同项目。

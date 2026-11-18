@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-retargeting, humanoid, trajectory-optimization, eth-zurich]
 status: complete
-updated: 2026-10-03
+updated: 2026-11-18
 arxiv: "2609.38617"
 related:
   - ./paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
@@ -84,6 +84,9 @@ flowchart TD
 **不适用**：官方可运行源码未获核实。
 
 ## 关联页面
+
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 关节目标与参考相位在离线仿真中联合搜索，局部节奏变化仍需满足连续性和总时长约束。
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 离线重定向产生参考，真机还需动作跟踪器；参考质量与物理执行误差应分开评价。
 
 - [DynaRetarget](./paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md)
 - [Shooting for Contact](./paper-shooting-for-contact.md)

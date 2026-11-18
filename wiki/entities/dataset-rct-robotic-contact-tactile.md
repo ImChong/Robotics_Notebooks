@@ -8,7 +8,7 @@ tags:
   - material
   - evaluation
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 arxiv: "2606.31694"
 project: https://faerber-lab.github.io/RCT/
 code: https://github.com/faerber-lab/RCT
@@ -154,6 +154,9 @@ sequenceDiagram
 - **seed=42 多样化划分的历史微瑕**：早期实验生成 K=20 diverse seed=42 切分时曾因 1 条标签编号不一致而基于 121/122 材料生成；官方已在随库发布的元数据与 `tools/results/` 说明中予以修正与记录。
 
 ## 关联页面
+
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md) — 同步接触力与触觉图像可辅助检查感知标定，但材料识别基准不等于阻抗控制实验。
+- [Manipulation](../tasks/manipulation.md) — 材料属性若用于接触操作，应保留跨材料、跨序列和跨传感器留出，避免把轨迹泄漏误当泛化。
 
 - [embodied-eval-benchmark-selection-loop.md](../queries/embodied-eval-benchmark-selection-loop.md) — 数据切分防泄漏、评测闭环与基准挑选原则
 - [dataset-visgel.md](./dataset-visgel.md) — 跨模态视觉-触觉生成配对基准（Seen/Unseen 物体验证范式）

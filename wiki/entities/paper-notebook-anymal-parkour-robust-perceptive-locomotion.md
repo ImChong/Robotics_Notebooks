@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, parkour, perceptive-locomotion, hierarchical-rl, navigation, sim2real, anymal, eth, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2306.14874"
 venue: "Science Robotics 2024"
 related:
@@ -135,6 +135,8 @@ flowchart LR
 - 论文没有公开完整代码、权重与机器人配置；复现实作只能依论文重建。
 
 ## 与其他页面的关系
+
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 高层按技能能力选择低层及位置–时间命令，需分别评估技能可达域、切换和整段导航效果。
 
 - 平台：[ANYmal](./anymal.md)
 - 路线入口：[感知越障纵深](../../roadmap/depth-perceptive-locomotion.md)

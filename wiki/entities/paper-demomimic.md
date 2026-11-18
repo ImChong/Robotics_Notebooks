@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, sim2real, imitation-learning, reinforcement-learning, contact-rich, single-demo, stanford, realab]
 status: complete
-updated: 2026-09-29
+updated: 2026-11-18
 arxiv: "2609.01938"
 venue: "2026 · Stanford（arXiv:2609.01938）"
 related:
@@ -167,6 +167,8 @@ flowchart TB
 > 读法提醒：\* 标注的基线数字来自 **项目页复现**，非原论文自报值；跨论文横比前应回各自原文核评测协议。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 腕部深度学生由 RL 教师 rollout 监督，接触奖励的真机收益需与学生蒸馏误差分开检验。
 
 - [Manipulation 任务](../tasks/manipulation.md) — 灵巧操作与单次示范路线语境
 - [Sim2Real](../concepts/sim2real.md) — 接触奖励缩小 visual/动力学 gap

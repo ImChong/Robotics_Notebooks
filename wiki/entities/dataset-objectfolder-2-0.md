@@ -7,7 +7,7 @@ tags:
   - multisensory
   - simulation
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "1,000 个虚拟家居物体的多感官神经表示：可渲染视觉、撞击声与触觉读数。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -64,6 +64,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md) — 虚拟触觉响应可作接触感知输入背景，进入阻抗闭环前仍需验证力标定、接触动态和真实时延。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [tactile-sensing](../concepts/tactile-sensing.md)

@@ -7,7 +7,7 @@ tags:
   - multisensory
   - real-object
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "100 个真实家居物体的多感官测量：三维网格、高清旋转视频、撞击声与触觉读数。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -64,6 +64,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [Direct Force Feedback Control（直接力反馈控制）](../methods/direct-force-feedback-control.md) — 同步力曲线可帮助理解接触测量，敲击采集并不等同连续力反馈控制日志。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [tactile-sensing](../concepts/tactile-sensing.md)

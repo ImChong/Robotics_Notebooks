@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, omniverse, gpu-simulation, usd, sensors, nvidia, sim2real]
 status: complete
-updated: 2026-10-26
+updated: 2026-11-18
 related:
   - ./isaac-lab.md
   - ./isaac-gym.md
@@ -270,6 +270,9 @@ Isaac Sim 将一组可复用工作流指南随产品发布，让 AI 编码 Agent
 - **ingest 档案：** [fiveages-sim/robot_descriptions](../../sources/repos/fiveages-sim-robot-descriptions.md) — URDF → `robot_usds` USD
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — Isaac Lab 消费仿真物理与传感器输出，环境配置和策略训练职责应分开核对。
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md) — Replicator 合成数据需对应场景语义和传感器配置，标注正确性不能只靠渲染观感判断。
 
 - [Isaac Lab](./isaac-lab.md) — 跑在 Sim 上的官方 robot learning 框架
 - [Isaac Gym](./isaac-gym.md) — 旧一代独立 GPU RL 仿真（legacy）

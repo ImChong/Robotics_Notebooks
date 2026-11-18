@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, scene-understanding, learning-from-demonstration, motion-retargeting]
 status: complete
-updated: 2026-10-03
+updated: 2026-11-18
 arxiv: "2609.21107"
 related:
   - ../concepts/motion-retargeting.md
@@ -79,6 +79,8 @@ MTC把[动作重定向](../concepts/motion-retargeting.md)与三维场景约束�
 MTC把三维场景几何和沉浸式动作示范用于全身穿行，而不只约束脚下落点。
 
 ## 关联页面
+
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 人体示范转机器人参考时需同时保持场景避碰与支撑；可对照通用重定向约束，不推断本文采用 GMR 实现。
 
 - [motion-retargeting](../concepts/motion-retargeting.md)
 - [humanoid-locomotion](../tasks/humanoid-locomotion.md)

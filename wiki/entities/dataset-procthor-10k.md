@@ -6,7 +6,7 @@ tags:
   - synthetic-scene
   - navigation
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "程序化生成的 1 万个可交互家庭环境，用于训练零样本的具身导航策略。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -63,6 +63,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 程序化房屋可提供策略交互环境，场景采样规模与策略训练预算需分别报告。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [habitat-sim](../entities/habitat-sim.md)

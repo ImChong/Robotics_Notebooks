@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, mujoco, mjcf, robot-models, deepmind, simulation]
 status: complete
-updated: 2026-09-27
+updated: 2026-11-18
 related:
   - ./mujoco.md
   - ./robot-descriptions-py.md
@@ -54,6 +54,9 @@ summary: "google-deepmind/mujoco_menagerie：DeepMind 官方 MJCF 模型库，�
 - **ROBOTIS fork：** [robotis-mujoco-menagerie](./robotis-mujoco-menagerie.md) 为厂商扩展，勿与官方 Menagerie 混为同一节点。
 
 ## 关联页面
+
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 模型中的惯量、摩擦和执行器参数仍需对照实机辨识，模型可加载不等于动力学已校准。
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — MJCF 的关节、惯量与执行器定义影响力矩计算，应先核对单位、关节顺序和模型版本。
 
 - [MuJoCo](./mujoco.md)
 - [unitree_mujoco](./unitree-mujoco.md)

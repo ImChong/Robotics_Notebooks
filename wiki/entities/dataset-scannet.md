@@ -6,7 +6,7 @@ tags:
   - rgb-d
   - semantic-segmentation
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "大规模室内 RGB-D 扫描数据集：1,513 次扫描、250 万帧视图，含位姿、重建与实例语义标注。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -64,6 +64,8 @@ RGB-D 视频自动重建，再经众包完成实例语义标注。
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [FCN 全卷积网络](../methods/fcn-semantic-segmentation.md) — 二维 RGB-D 语义监督可作分割输入，需区分帧级像素评价与重建后的三维实例评价。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [habitat-sim](../entities/habitat-sim.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, robotics, research]
 status: complete
-updated: 2026-10-28
+updated: 2026-11-18
 project_id: mimicall
 arxiv: "2610.33508"
 summary: "跨本体全身动作跟踪：将机体结构描述编码为全局和逐关节条件，与观测历史及匹配机体的参考动作一起预测关节目标偏移。"
@@ -85,6 +85,9 @@ flowchart TD
 数值限于论文所述数据集、随机 G1 和评测设置；不能直接推断真机效果。未核实到官方代码入口。
 
 ## 关联页面
+
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 以参考动作跟踪背景理解机体条件与关节目标偏移，需分别检验结构泛化和单机型跟踪质量。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — 跨人形共享跟踪仍需对应每个机体的接触、限位和执行器约束，不能只比较平均姿态误差。
 
 - [HuGe 人形 VLA](./paper-huge-humanoid-vla.md)
 - [RynnVLA-Latent](./paper-rynnvla-latent.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, framework, isaac-lab, humanoid, locomotion, reinforcement-learning, amp, asimov, sim2real, menlo]
 status: complete
-updated: 2026-09-30
+updated: 2026-11-18
 related:
   - ./asimov-v1.md
   - ./isaac-lab.md
@@ -104,6 +104,8 @@ sequenceDiagram
 - **部署细节：** README 强调可部署真机，但 **板载加载 ONNX / 与 asimov-v1 固件接口** 需对照主仓板载软件 revision 自行集成（本扩展仓侧重 **Isaac 训练与导出**）。
 
 ## 关联页面
+
+- [AMP & HumanX: 判别器驱动的风格学习](../methods/amp-reward.md) — AMP+PPO 与纯 PPO 是不同任务配置，需对齐参考动作、判别器观测和部署版本。
 
 - [Asimov v1](./asimov-v1.md) — 硬件、MuJoCo 主仓与三条训练线对照
 - [Isaac Lab](./isaac-lab.md) — 底座框架

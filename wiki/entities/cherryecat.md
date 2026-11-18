@@ -3,7 +3,7 @@ type: entity
 project_id: cherryecat
 tags: [ethercat, fieldbus, open-source, master, embedded, realtime]
 status: draft
-updated: 2026-10-14
+updated: 2026-11-18
 related:
   - ./igh-ethercat-master.md
   - ./soem.md
@@ -56,6 +56,9 @@ summary: "CherryECAT：面向 MCU + RTOS 裁剪的轻量 EtherCAT 主站，文�
 - EtherCAT 协议本身不开源，协议栈代码开源，ESC 硬件芯片需单独购买（文章避坑提醒）。
 
 ## 关联页面
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — MCU 主站的采样和通信周期影响反馈环时序，但总线主站本身不实现电机 PID。
+- [MIT 模式模拟 CSP：前馈优先的内环整定与五关验证](../methods/mit-mode-csp-emulation-tuning.md) — 若用于周期位置目标传输，需另行核实 CSP 模式、PDO 与实时周期；现有二手入口不证明这些功能已实现。
 
 - [igh-ethercat-master](./igh-ethercat-master.md)
 - [soem](./soem.md)

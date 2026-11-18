@@ -3,7 +3,7 @@ type: entity
 project_id: pami-part-anchored-motion
 tags: [paper, text-to-motion, human-object-interaction, contact-modeling, generative-model, university-of-tubingen, max-planck]
 status: complete
-updated: 2026-10-15
+updated: 2026-11-18
 arxiv: "2609.38466"
 venue: "2026 · arXiv"
 project: https://coral79.github.io/pami/
@@ -96,6 +96,9 @@ PAMI 与后两者的问题设定不同：它从文字合成时序动作；COINS 
 - 对机器人应用，把 PAMI 视为人-物动作先验；另行设计机器人形态映射、碰撞/接触约束及闭环运动跟踪。
 
 ## 关联页面
+
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 人体–物体序列迁移到机器人前需身体映射和接触约束，部位锚点生成不直接提供机器人关节参考。
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 接触精修后的虚拟动作仍需物理跟踪验证，接触召回率提升不等于已获得可执行控制策略。
 
 - [人体动作论文索引](../overview/paper-notebook-category-14-human-motion.md) — 人体动作生成与交互相关工作入口
 - [COINS](./paper-coins-compositional-human-scene-interaction.md) — 基于 action-object 语义组合的静态人-场景交互生成

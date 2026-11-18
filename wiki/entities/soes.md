@@ -4,7 +4,7 @@ project_id: soes
 code: "https://github.com/OpenEtherCATsociety/SOES"
 tags: [ethercat, fieldbus, open-source, slave, embedded, realtime]
 status: draft
-updated: 2026-10-14
+updated: 2026-11-18
 related:
   - ./soem.md
   - ./beckhoff-ssc.md
@@ -57,6 +57,9 @@ summary: "SOES (Simple Open EtherCAT Slave)：与 SOEM 同组织的轻量开源 
 - EtherCAT 协议本身不开源，协议栈代码开源，ESC 硬件芯片需单独购买（文章避坑提醒）。
 
 ## 关联页面
+
+- [MIT 模式模拟 CSP：前馈优先的内环整定与五关验证](../methods/mit-mode-csp-emulation-tuning.md) — 自研关节若以从站传输位置目标，CSP 与阻抗接口适配须在应用层另行实现，不能由协议栈名称推断。
+- [Direct Force Feedback Control（直接力反馈控制）](../methods/direct-force-feedback-control.md) — 自定义传感器 IO 可作为力反馈数据通道，仍需补齐力标定、同步和控制律，通信通路不是力控制器。
 
 - [soem](./soem.md)
 - [beckhoff-ssc](./beckhoff-ssc.md)

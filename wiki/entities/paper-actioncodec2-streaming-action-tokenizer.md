@@ -3,7 +3,7 @@ type: entity
 project_id: actioncodec2-2611-15490
 tags: [paper, vla, action-tokenization, streaming, imitation-learning, robot-control]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 arxiv: "2611.15490"
 project: https://zibindong.github.io/actioncodec2-page/
 code: https://github.com/ZibinDong/actioncodec2
@@ -139,6 +139,9 @@ sequenceDiagram
 动态环境是否及时改动作，依赖模型如何接收观测并重新出动作，不会仅因换分词器自动完成。量化界不覆盖接触物理、执行器跟踪及安全约束。公开代码仅静态核对，未下载权重或做真机复现；G0.5 衍生策略另有非商用许可。
 
 ## 关联页面
+
+- [统一多模态 Token（Unified Multimodal Tokens）](../methods/unified-multimodal-tokens.md) — 动作 token 的量化与合并定义序列接口，编码重建误差界不等于物理跟踪误差。
+- [Action Chunking（动作块输出）](../methods/action-chunking.md) — 对照逐步释放的流式动作与整块预测，观测更新能否影响未执行部分取决于策略和同步设计。
 
 - [2026-11-16 具身前沿 29 篇论文阅读地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 

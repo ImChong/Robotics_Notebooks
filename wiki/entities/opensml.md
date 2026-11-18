@@ -4,7 +4,7 @@ project_id: opensml
 code: "https://github.com/feecat/OpenSML"
 tags: [ethercat, fieldbus, open-source, servo, embedded, realtime]
 status: draft
-updated: 2026-10-14
+updated: 2026-11-18
 related:
   - ./ecat-servo.md
   - ./soem.md
@@ -55,6 +55,9 @@ summary: "OpenSML：适配 CiA402 的轻量 SoftMotion 运动控制库，提供�
 - EtherCAT 协议本身不开源，协议栈代码开源，ESC 硬件芯片需单独购买（文章避坑提醒）。
 
 ## 关联页面
+
+- [Time-Optimal Path Parameterization（TOPP）](../methods/time-optimal-path-parameterization.md) — 点位和插补可与路径时间参数化分层对照，支持插补不代表提供时间最优求解。
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — SoftMotion 生成参考轨迹，伺服驱动器负责反馈跟随，轨迹平滑与闭环稳定需分别验证。
 
 - [ecat-servo](./ecat-servo.md)
 - [soem](./soem.md)

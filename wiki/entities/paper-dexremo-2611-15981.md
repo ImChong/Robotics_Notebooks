@@ -3,7 +3,7 @@ type: entity
 project_id: dexremo-2611-15981
 tags: [paper, dexterous-manipulation, tactile, force-control]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 arxiv: "2611.15981"
 project: https://dexremo.github.io/
 original:
@@ -91,6 +91,9 @@ flowchart LR
 研究聚焦手已定位到局部作业区的揭除与清理，不涵盖大范围导航抓取；项目首页尚未核实完整可运行代码。
 
 ## 关联页面
+
+- [Action Chunking（动作块输出）](../methods/action-chunking.md) — ACT 以统一腕系力觉及视觉状态生成短动作块，需对齐力变换、块时域和执行节拍。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — 双臂 leader–follower 采集是监督来源，需保留同步、标定与任务分布，区别于部署时的自主策略。
 
 - [本期 29 篇具身论文选型地图](../overview/embodied-frontier-29-papers-2026-11-16.md)
 - [ManiLadder：任务难度分层评测](./paper-maniladder-manipulation-benchmark.md)

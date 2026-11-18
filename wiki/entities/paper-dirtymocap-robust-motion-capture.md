@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-capture, human-motion-reconstruction, smpl-h, differentiable-optimization, zju, westlake, fudan, nudt]
 status: complete
-updated: 2026-10-14
+updated: 2026-11-18
 arxiv: '2609.19927'
 venue: SIGGRAPH Asia 2026
 project: https://wanglongzju.github.io/DirtyMoCap-Project-Page/
@@ -127,6 +127,9 @@ CMU MoCap 与 GRAB 手部动作生成 2,068 段合成测试序列，按 80/20 �
 5. **复现前先等代码/数据发布并查明许可，**尤其 HKMALA-Motion 的原始采集与重建文件使用边界。
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 可微求解器把固定身份锚点拟合为 SMPL-H，迭代次数、雅可比与学习权重共同决定收敛。
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 人体动作重建是机器人重定向的上游，跨 marker 布局重建成功不代表已满足机器人限位和接触约束。
 
 - [动作重定向流水线](../concepts/motion-retargeting-pipeline.md) — MoCap 清洗和 SMPL-H 标准化位于机器人重定向前端
 - [人形参考运动与数据集对照](../comparisons/humanoid-reference-motion-datasets.md) — 区分光学动捕、人体参数化序列与已重定向机器人轨迹

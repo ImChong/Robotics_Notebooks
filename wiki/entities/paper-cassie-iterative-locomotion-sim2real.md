@@ -4,7 +4,7 @@ type: entity
 tags: [cassie, reinforcement-learning, sim2real, reward-design, legged, berkeley]
 status: complete
 summary: "Cassie 行走：记录 reward / observation / action 接口多轮迭代的 sim2real 设计史，含 DASS 等跨迭代经验复用。"
-updated: 2026-09-28
+updated: 2026-11-18
 arxiv: "1903.09537"
 venue: "CORL 2019"
 related:
@@ -55,6 +55,9 @@ flowchart TB
 ```
 
 ## 与 Kp / Kd 设置的关系
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 观测、动作与奖励随部署诊断迭代，跨版本经验复用需要记录接口与奖励变化。
+- [Locomotion](../tasks/locomotion.md) — 每次 sim2real 修改都应回到行走、接触和扰动恢复验证，单次仿真回报不能代表整轮设计成功。
 
 - 若出现「仿真走得漂亮、真机抖/摔」，先检查 **动作接口是否与 PD 表同一版本文档化**，再进入增益扫描；本文是这一纪律的 **案例教材**。
 

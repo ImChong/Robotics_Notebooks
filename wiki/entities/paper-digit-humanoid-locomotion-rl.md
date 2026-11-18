@@ -4,7 +4,7 @@ type: entity
 tags: [humanoid, reinforcement-learning, sim2real, legged, digit, pd-control, berkeley]
 status: complete
 summary: "UC Berkeley：全尺寸 Digit 人形上大规模并行 RL + 因果 Transformer 策略，零样本户外行走与 sim2real 流水线（含关节 PD 部署链）。"
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: "2303.03381"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
@@ -68,6 +68,8 @@ flowchart LR
 ```
 
 ## 与 Kp / Kd 设置的关系
+
+- [Teacher-Student 与 DAgger 训练](../methods/teacher-student-dagger-training.md) — 可对照特权教师到本体历史学生的蒸馏职责；本文学生还结合 POMDP 强化目标，不直接等同纯 DAgger。
 
 - 精读时应以 **论文附录 / 补充材料中的 PD 表** 为准；公开讨论里常以 **髋部量级 \(K_p\approx 200\) N·m/rad、\(K_d\approx 10\) N·m·s/rad** 作为可读锚点，**左右肢与各关节仍有差异**。
 - 调参时把 **策略时间步、仿真子步、PD 更新率** 与表放在同一页系统图里核对，避免只改 `stiffness` 不改分频。

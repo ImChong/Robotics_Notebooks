@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-11-18
 summary: "LocoMuJoCo：面向运动模仿统一十二种人形与四足模型、每种人形两万余动作样本以及MuJoCo、MJX和MuJoCo Warp后端，并集成PPO、GAIL、AMP与DeepMimic，便于做跨本体算法比较。"
 related:
   - ../concepts/sim2real.md
@@ -83,6 +83,9 @@ flowchart LR
 - **不要与同名论文页混淆**：若本库另有 `paper-*` 深读页，以论文页承载方法细节，本实体页侧重工程入口与选型。
 
 ## 关联页面
+
+- [AMP & HumanX: 判别器驱动的风格学习](../methods/amp-reward.md) — 统一运动模仿环境可比较 AMP 配置，需固定参考动作、本体和判别器观测。
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 参考动作跟踪基线应对齐模型、动作表示与奖励，跨后端比较还需检查接触和执行器差异。
 
 - [sim2real](../concepts/sim2real.md)
 - [isaac-lab](../entities/isaac-lab.md)

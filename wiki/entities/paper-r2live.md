@@ -5,7 +5,7 @@ arxiv: "2102.12400"
 code: https://github.com/hku-mars/r2live
 tags: [paper, slam, lidar, visual-inertial, lio, vio, kalman-filter, factor-graph, livox, hku]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 related:
   - ../entities/fast-lio.md
   - ../entities/paper-vins-mono.md
@@ -171,6 +171,9 @@ flowchart TD
 4. 局限：定量证据只有两条序列且无方差，需预标定时间偏移与 LiDAR-IMU 外参，无回环，子系统 R2LIVE-LIO 差于 FAST-LIO 的原因未解释。
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 区分 ESIKF 的激光/视觉紧耦合更新与固定激光位姿后的滑窗视觉精化。
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 滑窗重投影与预积分残差可沿线性化背景理解，不能将滤波更新和因子图优化混为一层。
 
 - [FAST-LIO](../entities/fast-lio.md)：R2LIVE 的 LIO 基础
 - [VINS-Mono 论文页](../entities/paper-vins-mono.md)：VIO 与因子图基础

@@ -3,7 +3,7 @@ type: entity
 tags: [simulation, physics-engine, rendering, compiler, foundation-model, evaluation, genesis-ai]
 status: complete
 original: ../../sources/blogs/genesis_ai_simulation_world_10_blog.md
-updated: 2026-11-15
+updated: 2026-11-18
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./genesis-sim.md
@@ -111,6 +111,9 @@ flowchart LR
 - 忽略 **评测优先于仿真训练数据** 的产品策略，误以为该公司当前主路径是「纯 sim 数据预训练」。
 
 ## 关联页面
+
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 场景物理校准与系统辨识是可信仿真背景，需以发布接口和可复验实验确认具体能力。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 闭环策略评测与仿真基础设施应分层验收，不能把 Genesis AI 的基础设施叙述等同具体策略成绩。
 
 - [Genesis (仿真器)](genesis-sim.md) — 开源学术/社区物理引擎与论文
 - [GENE-26.5（Genesis AI）](gene-26-5-genesis-ai.md) — 同公司操作基础模型

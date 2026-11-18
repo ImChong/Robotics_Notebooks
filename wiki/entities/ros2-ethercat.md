@@ -3,7 +3,7 @@ type: entity
 project_id: ros2-ethercat
 tags: [ethercat, fieldbus, open-source, binding, embedded, realtime]
 status: draft
-updated: 2026-10-14
+updated: 2026-11-18
 related:
   - ./soem.md
   - ./ros2-control.md
@@ -56,6 +56,9 @@ summary: "ROS2-ethercat：文章列出的 ROS 2 封装 EtherCAT 主站（SOEM / 
 - EtherCAT 协议本身不开源，协议栈代码开源，ESC 硬件芯片需单独购买（文章避坑提醒）。
 
 ## 关联页面
+
+- [MIT 模式模拟 CSP：前馈优先的内环整定与五关验证](../methods/mit-mode-csp-emulation-tuning.md) — ROS 2 到 EtherCAT 的位置命令适配须核实 CSP/PDO 与实时环路；本页只提供二手方案线索。
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — 上层逆动力学力矩需通过明确的关节接口执行，总线封装本身不提供动力学模型或控制律。
 
 - [soem](./soem.md)
 - [ros2-control](./ros2-control.md)

@@ -6,7 +6,7 @@ tags:
   - synthetic-scene
   - navigation
 status: draft
-updated: 2026-10-20
+updated: 2026-11-18
 summary: "211 个高质量合成室内场景，含 18,656 个真实物体模型；论文用实验说明“少而精”优于“多而粗”。"
 related:
   - ../overview/embodied-dataset-panorama-2026-10.md
@@ -63,6 +63,8 @@ sources:
 - 本页事实主要转述自 2026-10-19 公众号综述，尚未逐条对照官方页；使用前以官方说明为准。
 
 ## 关联页面
+
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md) — 高质量住宅布局用于物体目标导航，应在相同任务和测试场景下比较场景质量与数量收益。
 
 - [具身数据集全景（85 项去重映射）](../overview/embodied-dataset-panorama-2026-10.md)
 - [habitat-sim](../entities/habitat-sim.md)

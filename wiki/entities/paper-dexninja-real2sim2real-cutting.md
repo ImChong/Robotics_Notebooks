@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, cutting, deformable-object, real2sim2real, data-engine, sim2real]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: dexninja
 arxiv: "2610.17208"
 related:
@@ -101,6 +101,9 @@ flowchart TD
 - 仅切割任务，对其他可变形物体的适用性未知。
 
 ## 关联页面
+
+- [Generative Data Augmentation (生成式数据增强)](../methods/generative-data-augmentation.md) — 少量真实示范重建场景后扩增仿真分布，需分别核对几何、材料参数与生成样本的有效性。
+- [Manipulation](../tasks/manipulation.md) — 可变形食物切割最终以真实接触操作验收，仿真样本增加不能替代真机成功率和失败模式分析。
 
 - [Sim2Real](../concepts/sim2real.md)
 - [接触丰富操作](../concepts/contact-rich-manipulation.md)

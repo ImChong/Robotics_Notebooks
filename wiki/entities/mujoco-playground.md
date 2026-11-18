@@ -5,7 +5,7 @@ project: https://playground.mujoco.org/
 code: https://github.com/google-deepmind/mujoco_playground
 tags: [repo, mujoco, mujoco-warp, pytorch, reinforcement-learning, locomotion, manipulation, sim2real, deepmind]
 status: complete
-updated: 2026-11-10
+updated: 2026-11-18
 related:
   - ./mujoco.md
   - ./mujoco-mjx.md
@@ -168,6 +168,9 @@ uvx --default-index https://pypi.org/simple --python 3.13 --from "playground[rl]
 6. **验收边界：** 本次确认官方文本和关键源码入口，但**未实际运行仿真、训练、GPU benchmark 或真机测试**。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 1.0 的 RSL-RL 任务与历史 JAX 环境应分版本复现，固定物理后端、观测和奖励配置。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — sim/real 共享设备和任务接口仍需核对关节映射、时序和采集格式，查看器可交互不等于真机已验证。
 
 - [MuJoCo](./mujoco.md) — CPU 物理求解器和建模基准
 - [MuJoCo Warp](./mujoco-warp.md) — 1.0 可选择的 GPU 物理后端

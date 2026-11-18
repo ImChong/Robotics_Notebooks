@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, dexterous-manipulation, human-video, skill-segmentation, skill-composition, inpainting]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: dexstitch
 arxiv: "2610.17789"
 related:
@@ -107,6 +107,8 @@ DexStitch 的分类器基于 [V-JEPA 2](./paper-vjepa2.md) 特征加 MLP。以�
 - 补全质量依赖机器人渲染与视频分割的准确性（推测）。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — 长程操作需核验技能过渡与接触保持，单技能学习成功不自动保证指定顺序的整段执行。
 
 - [模仿学习](../methods/imitation-learning.md)
 - [接触丰富操作](../concepts/contact-rich-manipulation.md)

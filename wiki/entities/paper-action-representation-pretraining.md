@@ -6,7 +6,7 @@ tags:
   - manipulation
   - contact-rich
 status: complete
-updated: 2026-10-28
+updated: 2026-11-18
 arxiv: "2610.34453"
 project: https://arpg-project.github.io/
 related:
@@ -104,6 +104,8 @@ flowchart TD
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 人类操作预训练动作编码器后冻结表示，仍需任务条件的动作学习，表示质量不能直接当作策略成功率。
 
 - [manipulation](../tasks/manipulation.md)
 - [contact-rich-manipulation](../concepts/contact-rich-manipulation.md)

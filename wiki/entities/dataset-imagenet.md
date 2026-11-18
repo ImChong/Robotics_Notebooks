@@ -8,7 +8,7 @@ tags:
   - stanford
   - princeton
 status: complete
-updated: 2026-10-01
+updated: 2026-11-18
 summary: "WordNet 层次上的大规模图像本体；ILSVRC-1K（约 1.46M/1000 类竞赛子集）与全库 21K+ synset 支撑视觉预训练与 benchmark 对照。"
 related:
   - ../entities/transformer-cv-curriculum.md
@@ -89,6 +89,8 @@ flowchart TB
 - **非具身数据：** 不提供动作/力矩/多模态对齐；不能替代 **Open-X、DROID** 等机器人数据飞轮。
 
 ## 关联页面
+
+- [FCN 全卷积网络](../methods/fcn-semantic-segmentation.md) — 分类预训练可初始化分割特征，像素任务仍需独立标注和机器人域微调。
 
 - [AlexNet](../entities/alexnet.md) — 2012 ILSVRC 分类突破
 - [ResNet 论文页](../entities/paper-resnet-deep-residual-learning.md) — ILSVRC 2015 分类冠军骨干

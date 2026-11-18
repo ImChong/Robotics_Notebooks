@@ -7,7 +7,7 @@ project: https://ardupilot.org/
 code: https://github.com/ArduPilot/ardupilot
 tags: [repo, autopilot, ardupilot, mavlink, uav, multirotor, open-source, sitl]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-18
 related:
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./px4-autopilot.md
@@ -44,6 +44,9 @@ ArduPilot 是社区开发的项目；官方捐赠说明将 ArduPilot Foundation 
 - **地面站与工具生态**：可按任务配合 Mission Planner、MAVProxy 等工具；更高层应用也可经 MAVLink/MAVSDK 接入。
 
 ## 与 PX4 的关系
+
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 姿态与角速度反馈需按机型、输出混控和日志整定，MAVLink 通信不替代飞控内环。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 自动驾驶仪可执行上游航点，探索系统仍需独立完成地图、目标选择与路径规划。
 
 ArduPilot 与 [PX4 Autopilot](./px4-autopilot.md) 是两套独立的开源飞控软件栈，均可通过 MAVLink 与地面站和伴机系统集成。它们在固件架构、参数体系、板卡支持、仿真工作流和工具生态上各有实现，工程选型应按目标载具、硬件与已有流程验证，不能把两者的参数或固件直接互换。
 

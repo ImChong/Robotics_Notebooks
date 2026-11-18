@@ -8,7 +8,7 @@ tags:
   - reconstruction
   - cmu
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 arxiv: "2109.09884"
 venue: "ICRA 2022"
 code: https://github.com/Robo-Touch/YCB-Sight
@@ -134,6 +134,9 @@ sequenceDiagram
 - **传感器形变模型绑定**：仿真子集由 Taxim 针对特定 GelSight 硅胶垫片与标定参数生成，且查表脚本中的 `bg.jpg` 与 `gelmap2.npy` 绑定原实验传感器个体，迁移至其他视觉触觉传感器（如 DIGIT 或 GelSlim）需重新采集空载背景并训练/校准逆向传感器模型。
 
 ## 关联页面
+
+- [FCN 全卷积网络](../methods/fcn-semantic-segmentation.md) — FCRN 预测高度与接触掩膜，可对照全卷积密集输出接口，区分高度回归、接触分类与语义分割。
+- [Manipulation](../tasks/manipulation.md) — 增量形状地图可为操作提供物体几何，固定物体按压数据不直接覆盖自由物体操作策略。
 
 - [dataset-ycb-slide.md](./dataset-ycb-slide.md) — 同一作者团队面向滑动触觉全局定位的 DIGIT 数据集与 MidasTouch
 - [dataset-visgel.md](./dataset-visgel.md) — 同样基于 GelSight 但侧重跨模态视觉-触觉预测的 300 万帧数据集

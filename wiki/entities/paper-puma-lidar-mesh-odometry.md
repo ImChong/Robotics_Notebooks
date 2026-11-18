@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, slam, lidar, mesh, odometry, mapping, autonomous-driving, icra]
 status: complete
-updated: 2026-09-21
+updated: 2026-11-18
 venue: "ICRA 2021"
 code: https://github.com/PRBonn/puma
 related:
@@ -163,6 +163,8 @@ sequenceDiagram
 - **退化几何：** 长廊、开阔平面等与点云 ICP 类似的退化仍可能发生。
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — scan-to-mesh 的点到平面配准可沿残差线性化分析，射线数据关联与网格质量仍会限制收敛。
 
 - [里程计与激光雷达融合](../methods/lidar-odometry-fusion.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)

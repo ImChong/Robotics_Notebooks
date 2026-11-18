@@ -2,7 +2,7 @@
 type: entity
 tags: [dataset, computer-vision, benchmark, grounding, uiuc]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 arxiv: "1505.04870"
 code: https://github.com/BryanPlummer/flickr30k_entities
 summary: "Flickr30K 的短语级图文定位与跨句共指基准：以 244,035 条共指链与 275,775 个人工边界框把 158,915 条英文描述中的实体短语对齐到图像区域。"
@@ -113,6 +113,8 @@ sequenceDiagram
 - **场景与语言单一偏置：** 原图像继承自 Flickr 街头与日常摄影且仅含英文描述，较少出现室内机器人桌面近景微物与多语种专有名词，后者更适合结合 [WIT](./dataset-wit.md) 或室内 3D 数据集。
 
 ## 关联页面
+
+- [零样本目标导航（Zero-Shot Object Navigation）](../tasks/zero-shot-object-navigation.md) — 短语到二维区域的对应可作目标语义接地背景；数据本身不提供三维位置、导航轨迹或闭环成绩。
 
 - [Transformer 视觉课程笔记](../entities/transformer-cv-curriculum.md)
 - [视觉骨干网络](../concepts/vision-backbones.md)

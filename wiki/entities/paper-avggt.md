@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, sjtu, vggt, 3d-reconstruction, attention, pose-estimation]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-18
 project_id: avggt
 arxiv: "2512.02541"
 venue: "CVPR 2026"
@@ -149,6 +149,9 @@ flowchart TB
 | [VGG-T³](./paper-vgg-ttt.md) | 同样针对 VGGT 全局注意力的计算瓶颈 | VGG-T³ 用 TTT 压缩的固定 MLP 替换全局 softmax 注意力，需要训练；AVGGT 免训练，保留 softmax 结构 |
 
 ## 关联页面
+
+- [LingBot-Map (Streaming 3D Reconstruction Foundation Model)](../methods/lingbot-map.md) — 对照 VGGT 推理侧注意力裁剪与流式地图的状态管理，两者解决的计算增长问题不同。
+- [立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md) — 加速后的深度质量需按视图数和相机条件评估，不把多视图重建与校正双目视差当作同一协议。
 
 - [E0.5 几何世界动作模型](./paper-e05-geometry-world-action.md)：同样把几何先验引入世界/动作建模。
 - [DepthWorld 3D 世界模型](./paper-depthworld-3d-world-model.md)：另一条基于深度/3D 几何的世界模型路线。

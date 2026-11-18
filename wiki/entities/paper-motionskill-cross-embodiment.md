@@ -3,7 +3,7 @@ type: entity
 project_id: motionskill-cross-embodiment
 tags: [paper, bipedal, motion-retargeting, cross-embodiment, motion-tracking]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 arxiv: "2611.16346"
 related:
   - ../concepts/motion-retargeting.md
@@ -90,6 +90,9 @@ flowchart TD
 每机体仍分别训练策略，不是一个策略零样本泛化；只覆盖短视频步态和 MuJoCo 模拟。
 
 ## 关联页面
+
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 按段长和关节约束映射参考可与通用重定向读法对照，本文逐机型 IK 不等同采用 GMR 实现。
+- [Residual Policy Learning（残差策略学习）](../methods/residual-policy-learning.md) — 每机型独立训练接触残差，需把参考恢复、IK 误差与残差策略贡献分开评估。
 
 - [motion retargeting](../concepts/motion-retargeting.md)
 - [cross embodiment](../../roadmap/depth-cross-embodiment.md)
