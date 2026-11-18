@@ -9,7 +9,7 @@
 - **项目/论文链接：** <https://wyhuai.github.io/human-x/>
 - **索引来源：** [具身智能研究室 · 42 篇 RL 运动控制长文](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）
 - **原始抓取：** [wechat_humanoid_rl_42_survey_2026-05-26.md](../raw/wechat_humanoid_rl_42_survey_2026-05-26.md)（Agent Reach + Camoufox）
-- **入库日期：** 2026-05-26（2026-11-07 按 arXiv:2602.02473v2 全文复核）
+- **入库日期：** 2026-05-26（2026-11-07 按 arXiv:2602.02473v2 全文复核；2026-11-18 官方代码复查）
 - **原文：** <https://arxiv.org/abs/2602.02473>（v2，2026-10-09；CoRL 2026；项目页 <https://wyhuai.github.io/human-x/>），pdftotext 提取全文
 - **核对范围：** 通读摘要、§1 引言、相关工作、XGen（锚点–物体配置、接触 / 非接触分段、数据增广）、XMimic（教师–学生架构、交互向量 IV 奖励、IV 终止、交互扰动、两种部署感知方案）、实验设置与仿真消融（表 1）、真机实验（表 2、图 8–11）、结论与局限，以及附录中统一奖励表与观测 / 奖励设置表（图 13）；表中数字列在 pdftotext 中错位处未引用；视频与代码未读、未运行。
 - **通读：** 已完成
@@ -48,3 +48,15 @@
 - **部署：** Isaac Gym、单张 RTX 4090、16,384 并行环境、每策略 20,000 次迭代；策略与 MoCap 100 Hz、PD 1 kHz；Unitree G1。
 - **结果：** 仿真中最终模型的泛化成功率（GSR）平均超过 80%，约为 HDMI 的 8 倍；真机 NEP 模式 10 次试验——投篮 8/10、运球 8/10、拾球 10/10、上篮 7/10、假动作转身后仰 9/10；MoCap 模式 50 次试验——传接球 41/50、反应格斗 37/50、搬货 43/50、足球踢球 42/50。
 - **作者自述局限：** XGen 目前不支持手内重定向；不能处理可变形或可切割物体；未使用灵巧手；基于 MoCap 的感知系统难以感知多样物体且部署成本高。
+
+## 2026-11-18 官方仓库开源更新与版本核对
+
+- **一手资料：** [arXiv v2 HTML](https://arxiv.org/html/2602.02473)、[项目主页](https://wyhuai.github.io/human-x/)、[官方源码](https://github.com/wyhuai/humanx)、[XGen README](https://github.com/wyhuai/humanx/blob/main/xgen/README.md)、[XMimic README](https://github.com/wyhuai/humanx/blob/main/xmimic/README.md)。
+- **旧快照纠偏：** 2026-07-22 的 Code 404 只是历史观察；截至 2026-11-18 已有 `wyhuai/humanx`，公开 XGen 编辑器、HOI 数据转换和 XMimic 仿真训练/评测源码。
+- **版本口径：** arXiv:2602.02473v2（2026-10-09）摘要与真机表 2 合计 9 项技能（NEP 5 / MoCap 4）；官网摘要为 10 项，未在本次核对中发现可证明二者严格一致的任务计数定义；独立保留。
+- **XGen**：单目视频首先经外部 GVHMR → UMR 恢复并重定向，XGen 编辑器选择机器人参考动作、标接触开始/结束、优化手-物对齐、合成轨迹并保存 HOI `.npz`；`xgen_editor/run_hoi_editor.sh` 执行 `hoi_editor/server.py`。论文本身还描述几何和轨迹增强。
+- **XMimic**：`xmimic/tools/convert_xgen_hoi_npz.py` 将 `.npz` 转成 `.pkl`，重排 G1 29 DoF 和转换物体/接触元数据；`humanoidverse/train_agent.py` 中 Hydra 实例化 env/alg 后调用 `algo.learn()`，`eval_agent.py` 加载权重后调用 `algo.evaluate_policy()`，可选 ONNX / TorchScript 导出。
+- **官方复现依赖**：XGen Python 3.10+、MuJoCo、WebGL；XMimic Python 3.8、Isaac Gym Preview 4、兼容 PyTorch/CUDA。官方包含 basketball、football、box/bin 等示例数据；公开范围主要是仿真侧，不包括完整 ROS/Unitree 真机控制和 Sim2Real 标定链。
+- **许可证**：仓库 README 标示 `Apache-2.0 WITH Commons-Clause`，不等同于普通 Apache 2.0。
+- **核对与限制**：原论文 v2 内容前次已通读；本次重新核对相关 HTML 内容、官方 README、shell/server、转换器及训练/评测源码入口。**未执行依赖安装、GPU 训练、仿真评测和真机部署**。
+- **归档对应**：[官方代码归档](../repos/humanx-official.md)、[项目主页归档](../sites/humanx-corl2026-project.md)、[唯一论文详情节点](../../wiki/entities/paper-hrl-stack-05-humanx.md)。
