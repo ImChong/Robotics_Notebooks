@@ -169,6 +169,7 @@ flowchart LR
 
 ### 核心问题
 - **零梯度上下文**：不动权重、可回退，但上下文变长直接抬高 **每步推理成本**——控制回路要高频出动作，这不是语言模型那种"首 token 延迟"问题
+- **WICL / RoboScript：世界反馈写入上下文**。冻结基础模型，在**一条示范 + 多轮仿真试演**后构建语义 Task Memory，再冻结部署到未见 seed；它不是仅在提示词里塞一次示范，也不是给基础模型训练快权重。论文 GPT-6.1-Sol 的单次评测 episode 平均 **54.7 次模型调用 / 233 万 tokens**，是高频机器人控制栈必须单独核算的执行预算（论文表 3）
 - **快权重 TTT**：RoboTTT 在 GR00T N1.7 内嵌 TTT 层，把上下文压进固定大小 fast weights，扩到 8K 步（约 5 min）且推理延迟不随上下文增长；代价是要跑梯度、难回退、在线安全要求更高
 - **同人视频、不同机制的直接对照**：WAM-TTT 在 New 家庭场景 9 任务上 46.2% avg progress，显著优于 WAM-ICL 的 7.1%（同论文自报）——这条数字是"纯上下文不够用"的最强单点证据，但只在该 setting 成立
 - **记忆增强不是 ICL**：KEMO / EventVLA / Chronos / GMP 解决的是部分可观测（做到哪一步了），读完不改变观测→动作函数
@@ -180,6 +181,7 @@ flowchart LR
 
 ### 推荐读什么
 - [WAM-TTT × RoboTTT × StellaVLA × Zero-WAM 四路线对比](../wiki/comparisons/wam-ttt-robottt-stellavla-zero-wam-embodied-icl.md) — 快权重 vs 零梯度的定性坐标系（不做性能排序）
+- [WICL / RoboScript](../wiki/entities/paper-world-in-context-learning-roboscript.md) — 仿真试演写入 Task Memory；50 项 RoboTwin 2.0 任务单示范平均 83.4%（作者报告），另有 10 任务配对消融和真机 PiPER 有限验证
 - [RoboTTT](../wiki/entities/paper-robottt-test-time-training-vla-context.md) — fast weights 把上下文扩到 8K 步，长程双臂装配报告约 +87%
 - [WAM-TTT](../wiki/entities/paper-wam-ttt-human-video-test-time-steering.md) — 冻结 WAM 上的人视频测试时 steering；46.2% vs WAM-ICL 7.1%
 - [VLA](../wiki/methods/vla.md) 长程记忆增强小节— [KEMO](../wiki/entities/paper-kemo-event-driven-keyframe-memory-vla.md) / [EventVLA](../wiki/entities/paper-eventvla-visual-evidence-memory.md) / [GMP](../wiki/entities/paper-gated-memory-policy.md) 的记忆路线，对照读
