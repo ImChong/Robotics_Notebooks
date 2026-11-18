@@ -468,6 +468,13 @@ op: ingest
 - 本次 29 篇均有健康度 3/3 的结构化判据；最终以报告脚本与 CI 实测为准。
 - [29 篇阅读坐标](../wiki/overview/humanoid_quadruped_2026_11_09_13_29_papers.md)
 
+# 2026-11-18 · ingest ffmpeg-skill
+
+- 将 kajisho5/ffmpeg-skill 按唯一非论文项目实体收录，归档 GitHub README/SKILL/关键源码与官方主页。
+- 描述 42 个媒体处理工具、SPEC 从 argparse 派生的契约、MCP 默认展示核心 12 项及 probe→edit→check→verify 的工程闭环。
+- 添加依据真实脚本入口的 Mermaid 数据流程图与 MCP 源码运行时序图；与 video-shotcraft 双向链接。
+- 仓库 MIT 开源；源代码/文档已核对，未执行视频处理回归。该项目用于实验展示视频后处理而非机器人真机控制。
+
 ## [2026-11-18] lint | entity-outgoing-batch-04 | 再修复 100 个实体关联出边
 
 - 在 #3873、#3875 合并后的最新 main 上另选 100 个节点，与前三批共 300 个节点无重叠，覆盖 10 个主题、45 个零出边及 55 个单出边缺项。
