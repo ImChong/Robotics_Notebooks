@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, math, quaternion, so3, interpolation, embodied-ai, animation]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-18
 related:
   - ./lie-group-rigid-body-motions.md
   - ./se3-representation.md
@@ -18,8 +18,10 @@ sources:
   - ../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md
   - ../../sources/papers/modern_robotics_ch3_unit_quaternion.md
   - ../../sources/papers/modern_robotics_textbook.md
+  - ../../sources/blogs/wechat_zane_hub_quaternion_robot_control_2026-11-18.md
 original:
   - ../../sources/papers/diebel_2006_representing_attitude_quaternions.md
+  - ../../sources/blogs/wechat_zane_hub_quaternion_robot_control_2026-11-18.md
 summary: "单位四元数是 SO(3) 的紧凑双覆盖参数化：Hamilton 积、与旋转矩阵互转、SLERP 插值、scalar 顺序约定与 q≡−q 工程处理；存储用四元数，优化增量仍多在 so(3)/se(3)。"
 ---
 
@@ -37,6 +39,8 @@ summary: "单位四元数是 SO(3) 的紧凑双覆盖参数化：Hamilton 积、
 |------|----------|----------|
 | SO(3) | Special Orthogonal Group in 3D | 三维旋转群 |
 | SLERP | Spherical Linear Interpolation | 单位四元数球面上的测地线插值 |
+| NLERP | Normalized Linear Interpolation | 归一化线性插值，单步低成本近似，但不保证匀角速度 |
+| IK | Inverse Kinematics | 逆运动学，末端姿态插补后仍需检查关节解与限速 |
 | MoCap | Motion Capture | 动作捕捉；关节姿态序列常存四元数 |
 | FK | Forward Kinematics | 由关节角/四元数链求末端位姿 |
 | IMU | Inertial Measurement Unit | 惯性测量单元；姿态输出多为四元数或 RPY |
@@ -46,7 +50,7 @@ summary: "单位四元数是 SO(3) 的紧凑双覆盖参数化：Hamilton 积、
 四元数是机器人栈里 **最常见的旋转存储格式** 之一：
 
 - **仿真 / 控制：** Pinocchio、MuJoCo、Isaac、DeepMimic motion JSON 等在浮动基或 spherical joint 上用四元数（或等价 exp map）。
-- **动画 / MoCap：** 关键帧姿态插值若用欧拉角分通道 lerp 会 **不保持刚体旋转**；SLERP 是标准解（Shoemake SIGGRAPH 1985）。
+- **动画 / MoCap：** 关键帧姿态插值若用欧拉角分通道 lerp，虽然每一时刻仍是合法刚体旋转，却**不保证绕固定轴匀角速度**；SLERP 是标准解（Shoemake SIGGRAPH 1985）。
 - **估计：** IMU 融合、EKF 状态常含四元数或对其误差在 so(3) 上定义。
 
 读代码前必须先确认 **scalar 顺序** 与 **左乘/右乘** 约定，否则 FK、奖励、观测会对不上。
@@ -128,6 +132,74 @@ flowchart LR
   S --> Qt["中间姿态"]
 ```
 
+
+## 姿态控制工程流程（姿态误差、插补、积分）
+
+本节基于 [Zane Hub《机器人控制中的四元数有什么用？》](../../sources/blogs/wechat_zane_hub_quaternion_robot_control_2026-11-18.md) 的工程问题组织，数学约定与结论以 Diebel / Shoemake / Modern Robotics 为底线。本页公式采用 **Hamilton 积、主动旋转、单位四元数标量在前 `(w,x,y,z)`**。读 ROS 2 / Pinocchio 等接口前务必确认实际采用 `xyzw` 还是 `wxyz`。
+
+### 目标与当前姿态：误差必须带坐标系
+
+在同一姿态约定下，给定目标 $q_d$、当前 $q_c$：
+
+$
+q_e^W=q_d\otimes q_c^{-1},\qquad
+q_e^B=q_c^{-1}\otimes q_d.
+$
+
+前者的旋转向量在**世界参考系**表达，后者在**机体参考系**表达。若要转成角速度指令，必须选择匹配的 $\omega_W$ 或 $\omega_B$；不能简单把两种误差混用。先把误差四元数整体选支到 $w_e\ge0$（$w_e=0$ 处需连续轴向策略），再求最短旋转角：
+
+$
+\theta_e=2\operatorname{atan2}(\|v_e\|,w_e)\in[0,\pi],
+\qquad
+r_e=\theta_e\frac{v_e}{\|v_e\|}
+$
+
+当 $\|v_e\|$ 很小时使用小角近似 $r_e\simeq 2v_e$。**180° 对应 $w_e\simeq0$、$\|v_e\|\simeq1$，并非 $\|v_e\|\simeq0$。** 在 180° 邻域最短误差轴选支可能不连续，不能据「四元数没有欧拉奇异」推断存在全局光滑的单一误差反馈。
+
+### 姿态关键帧的两种插补
+
+- **SLERP：** 对 $q_0,q_1$ 先归一化，若 $q_0\cdot q_1<0$ 则翻转 $q_1$，沿最短球面弧插值；当插值参数随真实时间线性增加时，物理转角等速推进。时间标定为加/减速曲线时不再是匀角速度。
+- **NLERP：** $q(t)=\operatorname{normalize}((1-t)q_0+tq_1)$，短弧路径可用、角速度一般非恒定；两者在 **$t=0.5$ 给出完全相同的姿态**，最大「姿态角偏差」不在中点。原文的「4 ms / 单步转角 <5° 即为微弧度误差」属于经验判据，不能不计具体工况地作为验收标准。
+- **控制限制：** SLERP 只解决末端姿态在 SO(3) 上的几何插补，不保证 IK 解支连续、关节速度恒定或远离腕部机构奇异；位姿插补仍须与关节约束和轨迹时间参数化联调。
+
+### 陀螺积分与姿态估计
+
+角速度在**本体系**表示时：
+
+$
+\dot q=\tfrac12 q\otimes[0,\omega_B],
+\qquad
+q_{k+1}=\operatorname{normalize}(q_k\otimes\exp_q(\tfrac{\Delta t}{2}\omega_B)).
+$
+
+对每个采样周期内恒定角速度，指数增量为 $\exp_q(\tfrac{\Delta t}{2}\omega)=[\cos(\|\omega\|\Delta t/2),\;\hat\omega\sin(\|\omega\|\Delta t/2)]$。角速度在**世界系**表示时改为 $\dot q=\tfrac12[0,\omega_W]\otimes q$，积分增量应左乘。归一化约束数值模长，但**不能消除陀螺零偏/传感器漂移**，需要外部观测或滤波修正。
+
+```mermaid
+flowchart LR
+  Qd["目标姿态 q_des"] --> Err["选定世界系/本体系的相对旋转 q_err"]
+  Qc["当前姿态 q_cur"] --> Err
+  Err --> Branch["统一短弧符号，计算旋转向量"]
+  Branch --> Cmd["姿态反馈 + 角速度/力矩约束"]
+  Cmd --> Plant["机器人与关节动力学"]
+  Plant --> Sense["关节/IMU/视觉测量"]
+  Sense --> Est["时间同步、角速度积分与观测校正"]
+  Est --> Norm["单位化与 frame 校验"]
+  Norm --> Qc
+```
+
+### 数值验收：不要直接比较四元数分量
+
+| 检查点 | 更稳妥的判据 | 常见误区 |
+|---|---|---|
+| 姿态往返转换 | $\min(\|q-q'\|,\|q+q'\|)$ 或 $2\operatorname{atan2}(\|v_e\|,|w_e|)$ | 用 $\|q-q'\|$ 会把 $q'=-q$ 误判为姿态不一致 |
+| 插值时序 | 单位化、短弧选支、端点与中点姿态、角速度曲线 | 把 NLERP 中点的峰值**角速度**误当作峰值**姿态误差** |
+| 旋转次序 | 单轴 90° + 至少一组多轴同时非零测试 | **只测单轴**时任意乘法次序都给出相同结果 |
+| 多姿态均值 | 外积矩阵 $\sum_i w_iq_iq_i^\top$ 最大特征向量 | 外积对正负号本就不敏感；但逐分量平均对符号敏感 |
+| Euler 奇异 vs IK 奇异 | 将姿态换成 $R/q$ 后看问题是否保留，并观察机器人雅可比条件数 | 误把参数化万向锁当作腕部机构奇异 |
+| 日志与接口 | 同时记录 frame 名、时间戳、角度单位、`wxyz/xyzw`、原始 q 与 SO(3) 角差 | $q$ 和 $-q$ 经一致的矩阵转换应得到相同物理姿态 |
+
+对偶四元数用于耦合旋转/平移的 SE(3) 表达；只有选用 **ScLERP（螺旋线性插值）** 等相应插值方法，才有恒螺旋的运动解释。普通逐分量插值不自动具有此性质。
+
 ## 工程实践
 
 1. **存储 vs 优化（Modern Robotics / Diebel 共识）**
@@ -156,6 +228,8 @@ flowchart LR
 
 ## 关联页面
 
+- [传统模型控制纵深路线](../../roadmap/depth-classical-control.md) — Stage 0 的姿态状态/误差约定和 IK 奇异区分
+
 - [李群、李代数与刚体旋转](./lie-group-rigid-body-motions.md) — SO(3)/SE(3) 与 exp/log 链路
 - [旋转表示方法对比](../comparisons/so3-rotation-representations.md) — 七种 SO(3) 参数化优缺点与选型
 - [SE(3) 位姿表示](./se3-representation.md) — 欧拉 / 四元数 / 6D 对比
@@ -166,6 +240,8 @@ flowchart LR
 - [Pinocchio 快速上手](../queries/pinocchio-quick-start.md) — 基座四元数在 `q` 中的布局
 
 ## 参考来源
+
+- [Zane Hub（2026-11-18）：机器人控制中的四元数有什么用？（原文归档与勘误）](../../sources/blogs/wechat_zane_hub_quaternion_robot_control_2026-11-18.md)
 
 - [Diebel 2006 姿态参数化统一参考](../../sources/papers/diebel_2006_representing_attitude_quaternions.md)
 - [Shoemake 1985 四元数曲线与 SLERP](../../sources/papers/shoemake_1985_quaternion_curves_siggraph.md)
