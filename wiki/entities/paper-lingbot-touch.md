@@ -4,7 +4,7 @@ project_id: lingbot-touch
 arxiv: "2611.12806"
 tags: [robotics, tactile-perception, dexterous-manipulation, representation-learning, jepa, transformer, robbyant, ant-group]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 project: "https://technology.robbyant.com/lingbot-touch"
 code: "https://github.com/Robbyant/lingbot-touch"
 summary: "LingBot-Touch 是 Robbyant 发布的异构触觉 JEPA 表征模型：将压阻、磁性与视触觉信号统一为可迁移触觉 token，并提供 Tiny/Small 冻结 encoder 推理代码及权重；官方技术报告 27 页已通读；明确 JEPA 训练目标、布局增强、真实/仿真评测及有限开源边界。"
@@ -240,6 +240,8 @@ sequenceDiagram
 
 
 ## 关联页面
+
+- [Agentic Robotics 六条研究路线对照](../comparisons/agentic-robotics-six-paths-2026.md) — 区分系统验收、推理后训练、VLA、全身跟踪、触觉与 Real2Sim 的接口和评测边界。
 
 - [Robbyant（蚂蚁灵波）](./robbyant.md)：团队及 LingBot 模型家族
 - [LingBot-VLA](./lingbot-vla.md)：视觉-语言-动作策略，与触觉特征互补

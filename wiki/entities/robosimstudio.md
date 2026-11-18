@@ -177,6 +177,8 @@ RoboSimStudio 的主要价值是把场景构建、物理建模和人机反馈连
 
 ## 关联页面
 
+- [Agentic Robotics 六条研究路线对照](../comparisons/agentic-robotics-six-paths-2026.md) — 区分系统验收、推理后训练、VLA、全身跟踪、触觉与 Real2Sim 的接口和评测边界。
+
 - [Manipulation](../tasks/manipulation.md) — Real2Sim 场景应围绕操作目标、接触过程和真机复验构建。
 - [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md) — 双臂海绵擦拭案例还需检查臂间协调、接触约束与软体响应，不将单例建模时间外推到全部任务。
 
