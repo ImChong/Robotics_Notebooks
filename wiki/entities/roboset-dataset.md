@@ -5,7 +5,7 @@ project_id: roboset-dataset
 project: https://robopen.github.io/roboset/
 tags: [dataset, robot-manipulation, imitation-learning, real-world]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-18
 summary: "RoboSet 将厨房多任务的遥操作与动作示教回放轨迹组织成多视角 HDF5 数据集，官方声明 28,500 条轨迹、四路相机视角。"
 original:
   - ../../sources/sites/roboset-dataset.md
@@ -85,6 +85,7 @@ flowchart LR
 - [BridgeData V2](./painode-085-bridgedatav2.md)
 - [RH20T](./painode-092-rh20t.md)
 - [机器人操作数据与基准选型](../comparisons/robot-manipulation-data-benchmark-selection.md)
+- [Behavior Cloning（行为克隆）](../methods/behavior-cloning.md) — 使用多视角 HDF5 示范前，先从 data/config 组确认动作含义与控制频率。
 
 ## 参考来源
 

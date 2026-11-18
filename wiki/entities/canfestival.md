@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, framework, canopen, can-bus, fieldbus, embedded, open-source, middleware, robotics, canfestival, beremiz]
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ../concepts/can-bus-protocol.md
@@ -133,6 +133,8 @@ sequenceDiagram
 - [SOEM](./soem.md) — EtherCAT 用户态开源主站实体
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [SimpleFOC](./simplefoc.md) — MCU 电流环层对照
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 对象字典/PDO 只传输目标与反馈，位置或速度闭环由应用或伺服器实现。
+- [MIT 模式模拟 CSP：前馈优先的内环整定与五关验证](../methods/mit-mode-csp-emulation-tuning.md) — 将 CANopen 位置目标对接关节阻抗接口前，需自行验证 CiA 402 映射与周期带宽。
 
 ## 参考来源
 

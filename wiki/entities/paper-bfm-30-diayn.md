@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, unsupervised-rl, skill-discovery, google, berkeley, awesome-bfm-papers, curated-index, awesome-world-action-models-rcl]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-18
 arxiv: "1802.06070"
 venue: "2018 · ICLR"
 code: https://github.com/ben-eysenbach/sac/blob/master/DIAYN.md
@@ -184,6 +184,7 @@ DIAYN 与另两条「给策略一个 motor prior」的路线放在一起才看�
 - [behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - [bfm-category-03-intrinsic-reward-pretraining.md](../overview/bfm-category-03-intrinsic-reward-pretraining.md)
 - [bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
+- [SAC（Soft Actor-Critic）](../methods/sac.md) — DIAYN 用最大熵策略学习配合技能判别器伪奖励，先核对 SAC 的熵项与离策略更新。
 
 ## 参考来源
 

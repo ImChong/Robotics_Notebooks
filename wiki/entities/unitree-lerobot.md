@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, imitation-learning, lerobot, teleoperation, humanoid]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./lerobot.md
@@ -140,6 +140,7 @@ sequenceDiagram
 - [UnifoLM-VLA](./unifolm-vla.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Unitree](./unitree.md)
+- [Behavior Cloning（行为克隆）](../methods/behavior-cloning.md) — 沿遥操作数据到策略训练核对观测/动作 schema、时间对齐与分布偏移。
 
 ## 参考来源
 

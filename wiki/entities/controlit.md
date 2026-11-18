@@ -2,7 +2,7 @@
 type: entity
 tags: [tool, wbc, operational-space, middleware, ros, classic, ut-austin, stanford, open-source]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "1506.01075"
 code: https://github.com/liangfok/controlit
 summary: "ControlIt!（arXiv:1506.01075）：UT Austin Sentis 组 WBOSC 开源 ROS 中间件；Task/Constraint 插件、多线程 ~0.5ms 伺服；Dreamer 力控上半身验证。"
@@ -114,6 +114,8 @@ sequenceDiagram
 - 理论线：[paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md](./paper-khatib-sentis-ijhr-2004-whole-body-dynamic-behavior.md)、[paper-sentis-khatib-icra-2006-whole-body-control-framework.md](./paper-sentis-khatib-icra-2006-whole-body-control-framework.md)
 - 概念：[whole-body-control.md](../concepts/whole-body-control.md)、[hub-wbc.md](../overview/hub-wbc.md)
 - 四足 MPC 参考：[legbot-mpc-wbc.md](./legbot-mpc-wbc.md)
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — 用动力学到关节力矩的映射理解 WBOSC 背景，再区分多任务/约束插件的额外职责。
+- [Manipulation](../tasks/manipulation.md) — Dreamer 上半身力控与拆解演示属于操作任务，不能外推为下肢行走全栈。
 
 ## 参考来源
 

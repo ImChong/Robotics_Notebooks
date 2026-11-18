@@ -8,7 +8,7 @@ tags:
   - eth
   - auto-diff
 status: complete
-updated: 2026-11-03
+updated: 2026-11-18
 code: https://github.com/ethz-adrl/control-toolbox
 related:
   - ../methods/model-predictive-control.md
@@ -66,6 +66,7 @@ summary: "Control Toolbox（ADRL CT）是 ETH ADRL 的 C++ 库，用于机器人
 - [pinocchio](../entities/pinocchio.md)
 - [towr-trajectory-optimization](../entities/towr-trajectory-optimization.md)
 - [cpp-motion-control-open-source-libraries-map](../overview/cpp-motion-control-open-source-libraries-map.md)
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 建模与最优控制求解器可服务离线轨迹优化，与在线 MPC 的滚动执行区分。
 
 ## 参考来源
 

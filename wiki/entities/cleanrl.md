@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-11-18
 summary: "CleanRL：把每个强化学习算法压缩到单文件训练实现，显式展示采样、优势估计、损失和日志过程；它更适合审阅PPO等算法的真实计算顺序、制作最小复现和排查框架封装造成的差异。"
 related:
   - ../concepts/sim2real.md
@@ -147,6 +147,8 @@ sequenceDiagram
 - [Cartpole 问题](../concepts/cartpole.md) — CleanRL 单文件 PPO 常用的 Gymnasium CartPole 对照任务
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 对照单文件实现中的采样、优势估计与裁剪损失顺序。
+- [Generalized Advantage Estimation (GAE)](../methods/gae.md) — 把 PPO 示例中的优势递推与终止状态 bootstrap 处理对应到公式。
 
 ## 参考来源
 

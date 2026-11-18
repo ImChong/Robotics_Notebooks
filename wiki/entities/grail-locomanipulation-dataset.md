@@ -3,7 +3,7 @@ type: entity
 title: GRAIL Loco-Manipulation Dataset（G1 合成轨迹）
 tags: [dataset, humanoid, loco-manipulation, synthetic-data, unitree-g1, huggingface, nvidia, sonic]
 summary: "Hugging Face 上的 GRAIL 公开集：约 22k 条物理可行的 Unitree G1 loco-manipulation 轨迹（video + 4D HOI recon + robot/objects pkl + USD），按 pickup/sitting/terrain 分目录；Apache 2.0（子资产许可各异）。"
-updated: 2026-11-15
+updated: 2026-11-18
 status: complete
 related:
   - ./paper-grail.md
@@ -102,6 +102,8 @@ flowchart LR
 - **代码与可视化：** [NVlabs/GRAIL](../../sources/repos/grail_nvlabs.md)
 - **低层 tracker：** [SONIC](./nvidia-sonic.md)
 - **对照数据集：** [OmniRetarget Dataset](./omniretarget-dataset.md)（运动学重定向 G1 轨迹）、[人形参考运动数据集对比](../comparisons/humanoid-reference-motion-datasets.md)
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md) — pickup、sitting、terrain 轨迹需按全身与物体接触结果评估。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — G1 关节与物体时序可作为跟踪参考，使用前核对 25 Hz 动作和各子资产许可。
 
 ## 推荐继续阅读
 

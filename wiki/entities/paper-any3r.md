@@ -3,7 +3,7 @@ type: entity
 project_id: any3r
 tags: [paper, computer-vision, 3d-reconstruction, camera-pose-estimation, fisheye]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-18
 arxiv: "2610.36150"
 project: https://jingong-chen.github.io/Any3R/
 code: https://github.com/Jingong-Chen/Any3R
@@ -152,6 +152,8 @@ sequenceDiagram
 
 - [VGGT 几何基础模型](paper-vggt-visual-geometry-grounded-transformer.md)
 - [状态估计](../concepts/state-estimation.md)
+- [立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md) — 对照校正双目的稠密视差与本文混合相机射线场重建，注意输出尺度与标定假设。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 若把重建点云用于探索地图，需额外处理尺度、可通行性和在线更新；本文不直接提供探索策略。
 
 ## 推荐继续阅读
 

@@ -5,7 +5,7 @@ project: https://petercorke.github.io/robotics-toolbox-python/
 code: https://github.com/petercorke/robotics-toolbox-python
 tags: [software, python, robotics, kinematics, inverse-kinematics, dynamics, trajectory-generation, manipulation, mobile-robot, qut]
 status: complete
-updated: 2026-10-26
+updated: 2026-11-18
 related:
   - ../formalizations/forward-kinematics.md
   - ../formalizations/inverse-kinematics.md
@@ -121,6 +121,8 @@ sequenceDiagram
 - [机器人雅可比矩阵](../formalizations/robot-jacobian.md) — 速度/力映射及操纵度分析
 - [Modern Robotics 教材](./modern-robotics-book.md) — 配套理论语言与螺旋理论背景
 - [Pinocchio](./pinocchio.md) — C++ 刚体动力学库，可作模型与动力学计算对照
+- [Levenberg-Marquardt（LM 阻尼最小二乘）](../methods/levenberg-marquardt.md) — README 的 Panda ik_LM 示例可沿阻尼最小二乘核对初值、残差与收敛。
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 将工具箱的轨迹生成与带动力学/接触约束的最优控制区分，按任务选择建模层级。
 
 ## 参考来源
 

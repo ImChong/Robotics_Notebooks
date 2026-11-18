@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, rl, state-estimation, locomotion, quadruped, sim2real, kaist]
 status: complete
-updated: 2026-09-28
+updated: 2026-11-18
 arxiv: "2202.05481"
 related:
   - ./paper-raibo2-marathon-energy-efficient-quadruped.md
@@ -110,6 +110,8 @@ flowchart TB
 - [Rapid Locomotion RL](./paper-rapid-locomotion-rl.md)
 - [MIT Mini Cheetah](./mit-mini-cheetah.md)
 - [RAIBO2 马拉松能效（Nature 2026）](./paper-raibo2-marathon-energy-efficient-quadruped.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 策略与状态估计并发优化，估计量会改变策略实际可用的观测。
+- [Locomotion](../tasks/locomotion.md) — 基座速度、足高与接触估计的价值应由真机地形行走效果检验。
 
 ## 参考来源
 

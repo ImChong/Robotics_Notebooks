@@ -5,7 +5,7 @@ project: https://github.com/ceres-solver/ceres-solver
 code: https://github.com/ceres-solver/ceres-solver
 tags: [robotics, 3d-vision, optimization, reconstruction]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-18
 sources:
   - ../../sources/repos/vision3d_ceres_solver_20261108.md
 original:
@@ -98,6 +98,8 @@ Ceres 是求解器库，不提供“标准 SLAM 精度值”。评测应固定�
 
 - [GTSAM](./gtsam.md)
 - [COLMAP](./colmap.md)
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 残差块、雅可比与局部线性化是理解非线性最小二乘求解的基础。
+- [Levenberg-Marquardt（LM 阻尼最小二乘）](../methods/levenberg-marquardt.md) — 核对阻尼与信赖域如何影响病态问题和初值敏感性。
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, reinforcement-learning, genesis, locomotion, wheel-legged, rsl-rl, sim2sim, independent-maintainer]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-18
 related:
   - ./genesis-sim.md
   - ./rsl-rl.md
@@ -91,6 +91,7 @@ flowchart LR
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [Curriculum Learning](../concepts/curriculum-learning.md)
 - [Hybrid Locomotion](../tasks/hybrid-locomotion.md)
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — RSL-RL 训练路径中的策略更新与并行采样可沿 PPO 方法页核对。
 
 ## 参考来源
 

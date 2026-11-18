@@ -12,6 +12,8 @@
 - [Cursor Cloud Agent：PR 与验证截图流程](cloud-agent-pr-workflow.md) — Cloud Agent 推送分支、开 PR、附验证截图的路径约定。
 - [GitHub Actions CI 门禁](github-actions-ci-gate.md) — 合并 `main` 前必须等全量 Actions 全绿；branch protection 建议。
 
+- [Entities 关联出边 100 节点试点](lint-outgoing-pilot-100.md) — 10 个主题的样本、修复前后数量、目标与复验方法。
+
 ## 历史执行清单
 
 这些文件记录从 v1 到 v30 的阶段性目标和已完成事项，主要用于追溯决策，不作为当前待办入口。历史版本统一存放在 [`archive/`](archive/) 子目录。

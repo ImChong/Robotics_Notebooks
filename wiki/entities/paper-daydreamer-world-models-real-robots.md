@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: "2206.14176"
 related:
   - ../overview/embodied-wm-six-routes-technology-map.md
@@ -84,6 +84,7 @@ flowchart LR
 - [学习主导型 分类 hub](../overview/embodied-wm-route-learning.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 把真机交互、学习动态模型与想象中的策略训练区分为三个环节。
 
 ## 参考来源
 

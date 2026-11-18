@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, benchmark, embodied-ai, omniverse, everyday-activities, nvidia]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-18
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ./nvidia-omniverse.md
@@ -104,6 +104,8 @@ sequenceDiagram
 - [十年仿真平台技术地图](../overview/sim-platforms-decade-technology-map.md)
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页可归入其 ③ 策略任务成功率评测层：开放世界日常活动综合能力基准
 - [SimFoundry](./paper-simfoundry-real2sim-scene-generation.md) — GEAR 视频孪生开源默认导出 OmniGibson 场景 JSON
+- [Manipulation](../tasks/manipulation.md) — 日常活动中的物体状态变化需按任务成功判定评估，不能只看渲染质量。
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 长程活动可按子技能与高层调度分析；这是读任务的分层视角，不代表基准固定采用某一算法。
 
 ## 参考来源
 

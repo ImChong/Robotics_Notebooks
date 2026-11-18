@@ -11,7 +11,7 @@ tags:
   - isaac-ros
   - multi-camera
 status: complete
-updated: 2026-09-25
+updated: 2026-11-18
 arxiv: "2506.04359"
 venue: "arXiv 2025"
 code: https://github.com/nvidia-isaac/cuVSLAM
@@ -187,6 +187,8 @@ sequenceDiagram
 - [Isaac ROS Visual SLAM](./isaac-ros-visual-slam.md)
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [LiDAR / SLAM / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
+- [立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md) — 对照双目几何输入：cuVSLAM 的稀疏跟踪/三角化与稠密视差基础模型不是同一模块。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 位姿与长期地图可服务下游探索；探索决策与轨迹控制不由 VSLAM 自动完成。
 
 ## 参考来源
 

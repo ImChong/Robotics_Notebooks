@@ -3,7 +3,7 @@ type: entity
 project_id: a-mdm-interactive-character
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 arxiv: "2306.00416"
 project: https://yi-shi94.github.io/amdm_page/
 code: https://github.com/Yi-Shi94/AMDM
@@ -130,6 +130,7 @@ sequenceDiagram
 - [扩散式动作生成](../methods/diffusion-motion-generation.md)
 - [ARDY：交互可控动作生成](./ardy.md)
 - [Kimodo：运动生成主干](./kimodo.md)
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 文中的高层控制接口影响自回归动作采样；其虚拟角色结果不等于真机闭环验证。
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-11-18
 summary: "CoppeliaSim：通过场景对象脚本、远程API和多物理后端组织机器人任务，能够快速组合机械臂、传感器与交互物体；其可编程场景层是RLBench等多任务操作环境的基础，也便于做流程型原型。"
 related:
   - ../concepts/sim2real.md
@@ -88,6 +88,8 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [Manipulation](../tasks/manipulation.md) — 可编程机械臂与交互物体场景支撑多任务操作原型。
+- [Behavior Cloning（行为克隆）](../methods/behavior-cloning.md) — 若从场景采集示范训练策略，先核对观测、动作和控制频率的一致性。
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, inria]
 status: draft
-updated: 2026-08-13
+updated: 2026-11-18
 summary: "Pink：在Pinocchio运动学之上提供轻量级任务空间逆运动学，用加权任务和关节限制求广义速度；适合交互式姿态生成、重定向原型和控制前处理，代码结构便于增加自定义任务。"
 related:
   - ../concepts/sim2real.md
@@ -92,6 +92,8 @@ flowchart LR
 - [逆运动学](../formalizations/inverse-kinematics.md) — 任务空间 IK 与 Pinocchio 几何雅可比
 - [零空间控制](../concepts/null-space-control.md) — 冗余次级任务；Pink 用加权任务而非手写 $N$
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 两者都涉及任务空间误差与差分 IK，可对照加权任务、关节限位及人体到机器人映射。
+- [Manipulation](../tasks/manipulation.md) — 机械臂姿态生成可作为操作前处理，但 IK 可解不保证避碰或接触稳定。
 
 ## 参考来源
 

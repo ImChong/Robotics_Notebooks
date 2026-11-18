@@ -2,7 +2,7 @@
 type: entity
 tags: [navigation, social-navigation, ros2, simulation, benchmark, mobile-robot, reinforcement-learning, nus, tum, open-source]
 status: complete
-updated: 2026-10-01
+updated: 2026-11-18
 related:
   - ./navigation2.md
   - ./paper-legnav-calf.md
@@ -107,6 +107,8 @@ flowchart LR
 - [LegNav/CALF](./paper-legnav-calf.md) — 踝高 LiDAR **腿部感知** 社交导航（不同传感与仿真假设，可互补对比）。
 - [具身大模型评测基准选型闭环知识链](../queries/embodied-eval-benchmark-selection-loop.md) — Arena 属其 ③ 策略任务成功率评测层的社交导航仿真基准；仿真指标外推真机需 ④ sim↔real 校准
 - [CommNav](./paper-commnav.md) — **主动通信** 找人导航（Habitat）；Arena 侧重 **避障与社交距离** 连续导航。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 平台的 DRL 路径需要明确训练场景、奖励和社交评测协议。
+- [DWA（Dynamic Window Approach）局部路径规划](../methods/dwa.md) — 可作为传统局部规划路线的对照背景；具体可用基线以对应 Arena 版本配置为准。
 
 ## 源码运行时序图
 

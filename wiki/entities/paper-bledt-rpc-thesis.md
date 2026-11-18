@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, thesis, mpc, locomotion, quadruped, mit, control]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 venue: "MIT PhD Thesis 2020"
 related:
   - ./paper-extracting-legged-locomotion-heuristics-rpc.md
@@ -98,6 +98,8 @@ summary: "Bledt MIT 博士论文（2020）：Regularized Predictive Control（RP
 - [Robust navigation](./paper-robust-autonomous-navigation-mini-cheetah-vision.md)
 - [WBIC+MPC](./paper-wbic-mpc-mini-cheetah.md)
 - [MIT Mini Cheetah](./mit-mini-cheetah.md)
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — RPC 在预测控制代价与启发式上做正则化，先理解滚动时域的优化/执行分工。
+- [Locomotion](../tasks/locomotion.md) — 动态腿足的稳定性、抗扰与在线适应构成控制框架的任务评价背景。
 
 ## 参考来源
 

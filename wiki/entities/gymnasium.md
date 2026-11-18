@@ -2,7 +2,7 @@
 type: entity
 tags: [software, reinforcement-learning, api, benchmark, farama]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-18
 related:
   - ../queries/embodied-eval-benchmark-selection-loop.md
   - ../methods/reinforcement-learning.md
@@ -375,6 +375,7 @@ flowchart TD
 - [具身大模型评测基准选型闭环](../queries/embodied-eval-benchmark-selection-loop.md) — 本页是其 ③ 策略任务成功率评测层的底层 API 标准：把算法与物理仿真解耦以复现 RL 基准
 
 - [FineEnvs](./fineenvs.md) — LLM RL 环境设计、多框架适配与 rollout 配方
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — 以 PPO 训练循环为例核对 step 的 terminated/truncated 对自举和优势估计的影响。
 
 ## 推荐继续阅读
 

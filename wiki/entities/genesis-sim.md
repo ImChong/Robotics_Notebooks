@@ -5,7 +5,7 @@ status: complete
 title: Genesis (仿真器)
 tags: [simulation, physics-engine, robot-learning, differentiable, genesis-ai]
 summary: "Genesis 是新兴的高性能多物理场仿真平台，支持刚体、流体及微分仿真，适用于大规模并行机器人数据生成。"
-updated: 2026-11-13
+updated: 2026-11-18
 related:
   - ./igibson.md
   - ../overview/sim-platforms-decade-technology-map.md
@@ -66,6 +66,8 @@ related:
 - [GS-Playground](./gs-playground.md) — 同为新一代高吞吐仿真，以批量 3DGS 渲染换取光真实感视觉观测（RSS 2026）
 - [GENE-26.5（Genesis AI）](gene-26-5-genesis-ai.md) — 与公司品牌相近的机器人基础模型产品线（非本仿真仓库）
 - [wheel_legged_genesis](./wheel-legged-genesis.md) — Genesis 上的双轮足 PPO 训练与 MuJoCo sim2sim
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 并行环境服务策略采样与训练，吞吐需与实际 RL 更新开销一起评估。
+- [Manipulation](../tasks/manipulation.md) — 切菜、倒水等多物理交互应回到操作任务的接触与成功判定。
 
 ## 参考来源
 

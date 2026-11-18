@@ -5,7 +5,7 @@ project: https://bones.studio/datasets/seed
 dataset: https://huggingface.co/datasets/bones-studio/seed
 tags: [dataset, humanoid, mocap, whole-body-control, human-motion, language-conditioned]
 status: complete
-updated: 2026-10-23
+updated: 2026-11-18
 related:
   - ../comparisons/humanoid-reference-motion-datasets.md
   - ./lafan1-dataset.md
@@ -65,6 +65,8 @@ BONES-SEED 组合了动作捕捉、自然语言描述、时间分段和机器人
 - [LaFAN1 数据集](./lafan1-dataset.md)
 - [BFM LAFAN 数据索引](./dataset-bfm-lafan.md)
 - [行为基础模型](../concepts/behavior-foundation-model.md)
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — SOMA/人体动作到机器人仍需骨架映射与关节限位核对，G1 兼容表示不自动保证动力学可行。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 语言与时序标注可供运动示范学习参考，训练前仍须筛查接触与平衡。
 
 ## 参考来源
 

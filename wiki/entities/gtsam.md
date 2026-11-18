@@ -5,7 +5,7 @@ project: https://github.com/borglab/gtsam
 code: https://github.com/borglab/gtsam
 tags: [factor-graph, slam, imu, optimization, robotics]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-18
 sources:
   - ../../sources/repos/vision3d_gtsam_20261108.md
 original:
@@ -102,6 +102,8 @@ GTSAM 最值得学习的是**从量测到因子、从因子到流形优化**的�
 
 - [LIO-SAM](./lio-sam.md)
 - [LVI-SAM](./paper-lvi-sam.md)
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 因子图局部线性化后可用 GN 更新流形状态，需同时检查噪声模型。
+- [Levenberg-Marquardt（LM 阻尼最小二乘）](../methods/levenberg-marquardt.md) — 与 GN 对照阻尼优化器的稳定性；iSAM2 增量更新是另一层算法组织。
 
 ## 参考来源
 

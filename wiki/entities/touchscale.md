@@ -21,7 +21,7 @@ tags:
   - georgia-tech
   - berkeley
 status: complete
-updated: 2026-10-19
+updated: 2026-11-18
 project_id: touchscale-visual-tactile-dataset
 arxiv: "2610.10288"
 project: https://touch-scale.github.io/
@@ -111,6 +111,8 @@ flowchart LR
 - [视觉-触觉融合](../concepts/visuo-tactile-fusion.md)
 - [接触丰富操作](../concepts/contact-rich-manipulation.md)
 - [N0-VTLA](./paper-n0-vtla.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 人类交互预训练与机器人示范后训练是两个阶段，须分别检查动作监督来源。
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md) — 压力时序可供接触反馈研究参考，但人类手套读数需先完成传感器与机器人接口对齐。
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [patent, humanoid, hardware, xpeng, iron, leg-waist-power]
 status: complete
-updated: 2026-09-24
+updated: 2026-11-18
 related:
   - ../overview/xpeng-iron-54-patents-technology-map.md
   - ../concepts/humanoid-knee-harmonic-drive-limits.md
@@ -62,6 +62,7 @@ summary: "小鹏 IRON CN119262120A：十字轴与直线驱动联动的双轴踝�
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [膝侧谐波判据](../concepts/humanoid-knee-harmonic-drive-limits.md)
 - [执行器驱动链](../queries/actuator-drive-chain-selection-loop.md)
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — 双推杆到踝关节的力/运动映射是控制建模背景；专利机构公开不等于给出了完整控制实现。
 
 ## 参考来源
 

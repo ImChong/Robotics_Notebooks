@@ -5,7 +5,7 @@ code: https://github.com/fuyichen0725/blinkmimic
 arxiv: "2611.16422"
 tags: [humanoid, motion-tracking, world-model, reinforcement-learning, mujoco, unitree-g1]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 summary: "BlinkMimic 结合可微世界模型 BPTT、参考动作残差、失败探测重置与 CUDA Graph，使 G1 仿真动作跟踪在 RTX 4090 上达到分钟级训练。"
 related:
   - ./instanttrack.md
@@ -127,6 +127,8 @@ sequenceDiagram
 
 - [InstantTrack](./instanttrack.md)：共同基础与同机基线。
 - [SuperMimic](./paper-supermimic.md)：可微世界模型方法。
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 以参考动作跟踪任务作对照，区分传统 RL 跟踪与可微世界模型 BPTT 更新。
+- [Muon（MomentUm Orthogonalized by Newton–Schulz）](../methods/muon.md) — 本训练器使用 Muon 优化；训练加速还包括重置策略与 CUDA Graph，不能只归因于优化器。
 
 ## 参考来源
 

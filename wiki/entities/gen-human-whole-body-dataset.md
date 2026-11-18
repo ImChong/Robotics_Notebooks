@@ -5,7 +5,7 @@ project_id: gen-human-whole-body
 project: https://huggingface.co/datasets/genrobot2025/Gen-HumanWholeBody
 tags: [dataset, human-motion, whole-body, genrobot, jzrobot, imitation-learning]
 summary: "简智机器人的全身操作数据集：600 小时、15,943 个 episode、6 路 RGB + 全身/手部跟踪，全身重建 MPJPE 约 3 cm；许可标注为 other，条款未公开。"
-updated: 2026-10-29
+updated: 2026-11-18
 status: draft
 institutions:
   - jzrobot
@@ -52,6 +52,8 @@ Gen-HumanWholeBody 是简智机器人发布的全身操作数据集，官方门�
 
 - [Gen-HumanEgo](./gen-human-ego-dataset.md)
 - [运动重定向](../concepts/motion-retargeting.md)
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 全身/手部人体轨迹需先做坐标与形态映射，不能直接作为机器人关节命令。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md) — 全身操作数据的下游需同时验证身体移动、手部交互与接触约束。
 
 ## 参考来源
 

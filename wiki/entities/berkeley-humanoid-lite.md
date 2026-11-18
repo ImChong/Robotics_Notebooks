@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, hardware, open-source, berkeley, reinforcement-learning, qdd, humanoid-paper-notebooks, cycloidal, actuator]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 arxiv: "2504.17249"
 related:
   - ../overview/paper-notebook-category-12-hardware-design.md
@@ -165,6 +165,7 @@ sequenceDiagram
 - [Paper Notebooks 分类父节点：12 Hardware Design](../overview/paper-notebook-category-12-hardware-design.md)
 - [强化学习](../methods/reinforcement-learning.md)
 - [力矩电机设计纵深](../../roadmap/depth-torque-motor-design.md)
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — 把低成本关节、训练配置与真机部署放到双足行走的稳定性和热限制下评估。
 
 ## 推荐继续阅读
 

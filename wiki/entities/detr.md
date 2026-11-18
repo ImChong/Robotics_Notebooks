@@ -7,7 +7,7 @@ tags:
   - set-prediction
   - computer-vision
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 summary: "DETR 将检测建模为集合预测：CNN 骨干 + Transformer 编解码器 + 可学习 object queries，以匈牙利匹配训练，推理无需 NMS。"
 related:
   - ../methods/object-detection.md
@@ -71,6 +71,7 @@ flowchart LR
 - [Object Detection](../methods/object-detection.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 免 NMS 集合预测是②层「单阶段 vs 两阶段 vs DETR」的第三条路线
+- [R-CNN 族（R-CNN / Fast R-CNN / Faster R-CNN）](../methods/rcnn-family.md) — 对照两阶段候选区域与 DETR 集合预测，区分匈牙利训练匹配和推理 NMS。
 
 ## 参考来源
 

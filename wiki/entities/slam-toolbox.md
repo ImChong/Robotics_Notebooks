@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, ros2, slam, 2d-lidar, mapping, navigation, linux-foundation]
 status: complete
-updated: 2026-07-27
+updated: 2026-11-18
 related:
   - ../entities/navigation2.md
   - ../overview/navigation-slam-autonomy-stack.md
@@ -110,6 +110,8 @@ sequenceDiagram
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [OOMWOO](./oomwoo.md) — 架构默认机载 2D SLAM 搭档
+- [A* 全局路径规划](../methods/a-star.md) — 序列化建图与定位为下游网格路径搜索提供地图和位姿，职责不同。
+- [DWA（Dynamic Window Approach）局部路径规划](../methods/dwa.md) — 在 Nav2 等组合中，局部避障与速度选择应独立于 SLAM 后端评估。
 
 ## 推荐继续阅读
 

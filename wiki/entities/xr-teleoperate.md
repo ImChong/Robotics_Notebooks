@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, unitree, unitreerobotics, teleoperation, xr, humanoid, imitation-learning]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 related:
   - ./unitree.md
   - ./unitree-g1.md
@@ -135,6 +135,7 @@ sequenceDiagram
 - [灵巧手服务](./unitree-dexterous-hand-services.md)
 - [Unitree G1](./unitree-g1.md)
 - [Unitree](./unitree.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 遥操作轨迹是后续训练的示范来源，采集质量与动作契约会直接影响策略学习。
 
 ## 参考来源
 

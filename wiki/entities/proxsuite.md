@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, inria]
 status: draft
-updated: 2026-07-30
+updated: 2026-11-18
 summary: "ProxSuite：提供面向稠密和稀疏二次规划、锥规划的近端求解器，并针对重复求解和机器人实时控制优化接口；可作为全身控制或轨迹优化中需要低延迟热启动的数值组件。"
 related:
   - ../concepts/sim2real.md
@@ -88,6 +88,8 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 重复 QP 子问题与热启动是实时 MPC 可关注的数值环节；求解器不替代控制建模。
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 作为优化子问题的候选求解组件，需按问题结构与约束形式核对适用性。
 
 ## 参考来源
 

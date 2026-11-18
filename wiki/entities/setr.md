@@ -7,7 +7,7 @@ tags:
   - semantic-segmentation
   - vit
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 summary: "SETR 将语义分割视为序列到序列：用 ViT 编码图像 patch，再经不同解码器上采样为密集类图，证明纯 Transformer 可做分割。"
 related:
   - ../concepts/vision-transformer.md
@@ -68,6 +68,8 @@ flowchart LR
 - [ViT](../concepts/vision-transformer.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 纯 ViT 分割路线，②层选型中与 CNN 分割器对照
+- [FCN 全卷积网络](../methods/fcn-semantic-segmentation.md) — 对照卷积骨干与纯 Transformer 编码，二者输出同为像素语义类别。
+- [U-Net](../methods/unet.md) — 以编码–解码及细节恢复作结构对照，SETR 不是 U-Net 的同名实现。
 
 ## 参考来源
 

@@ -7,7 +7,7 @@ tags:
   - semantic-segmentation
   - efficient
 status: complete
-updated: 2026-08-12
+updated: 2026-11-18
 summary: "SegFormer 用分层 Transformer 编码器 + 轻量 MLP 解码器做高效语义分割，无需位置编码与复杂解码，精度–效率均衡出色。"
 related:
   - ./setr.md
@@ -68,6 +68,8 @@ flowchart LR
 - [Cityscapes](./dataset-cityscapes.md)
 - [Transformer CV 课程策展](../entities/transformer-cv-curriculum.md)
 - [机器人视觉感知栈选型闭环知识链](../queries/robot-perception-stack-selection-loop.md) — 精度–效率均衡的分割器，②层机载算力受限时的候选
+- [FCN 全卷积网络](../methods/fcn-semantic-segmentation.md) — 与全卷积像素分类基线对照编码器和多尺度解码设计。
+- [U-Net](../methods/unet.md) — 对照跳跃连接保留细节与分层 Transformer 加轻量 MLP 的边界/效率取舍。
 
 ## 参考来源
 

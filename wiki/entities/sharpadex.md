@@ -1,7 +1,7 @@
 ---
 type: entity
 status: draft
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: sharpadex
 tags: [dataset, tactile, dexterous-manipulation, data-collection, sharpa-robotics]
 related:
@@ -80,6 +80,8 @@ flowchart LR
 - [UVTA](./paper-uvta-human-tactile-dexterous-manipulation.md) — 人类触觉数据采集
 - [视触觉融合](../concepts/visuo-tactile-fusion.md)
 - [Sharpa 学术路线三条主线（阅读坐标）](../overview/sharpa-academic-route-three-lines.md)
+- [Manipulation](../tasks/manipulation.md) — 密集接触数据属于灵巧操作语境，现有二手规模声明不能替代样本级核验。
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md) — 可作为触觉反馈数据需求的阅读对照；当前未核实字段和采样率，不能宣称可直接闭环使用。
 
 ## 参考来源
 

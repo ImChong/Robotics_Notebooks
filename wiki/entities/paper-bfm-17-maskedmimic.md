@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 venue: "SIGGRAPH Asia 2024 · ACM TOG"
 code: https://github.com/NVlabs/ProtoMotions
 summary: "MaskedMimic（TOG 2024）：masked motion inpainting 统一物理角色控制；稀疏/部分约束下补全全身轨迹；官方实现经 ProtoMotions 开源。"
@@ -109,6 +109,8 @@ sequenceDiagram
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_maskedmimic_tog_2024.md](../../sources/papers/bfm_awesome_maskedmimic_tog_2024.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 稀疏约束下的物理动作补全与完整参考轨迹模仿可据此对照。
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 对比逐帧参考跟踪与 masked motion inpainting 的控制条件差异。
 
 ## 参考来源
 

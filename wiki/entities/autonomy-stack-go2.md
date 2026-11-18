@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, go2, unitree, lidar, slam, navigation, cmu, quadruped]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ./point-lio-unilidar.md
   - ./unitree.md
@@ -122,6 +122,8 @@ sequenceDiagram
 - [CMU MSCV Semantic 3D Mapping](./cmu-mscv-semantic-3d-mapping.md) — 语义投影线，勿混同
 - [FAST-LIO](./fast-lio.md)
 - [Situation-aware Frontier](./paper-situation-aware-frontier-quadruped-sar.md) — Go2 搜救探索目标选择，不是到点导航全栈
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — Point-LIO 为几何自主栈提供连续位姿与地图，需先保证时钟和外参一致。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 与到点导航对照探索目标选择；本栈的 waypoint/FAR Planner 不能自动等同探索决策。
 
 ## 参考来源
 

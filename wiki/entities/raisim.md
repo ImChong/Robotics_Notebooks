@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, linux-foundation]
 status: draft
-updated: 2026-07-30
+updated: 2026-11-18
 summary: "RaiSim：曾以高效接触动力学和腿式机器人训练接口形成一套常用仿真基线，现有仓库已停止支持并引导迁移至RaiSim2；旧任务仍有复现价值，新工程应先评估新版模型与授权兼容性。"
 related:
   - ../concepts/sim2real.md
@@ -88,6 +88,8 @@ flowchart LR
 - [isaac-lab](../entities/isaac-lab.md)
 - [Humanoid Motion Intelligence](./humanoid-motion-intelligence.md)
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 腿式训练接口提供交互样本；复现旧任务时同时锁定环境与算法版本。
+- [Locomotion](../tasks/locomotion.md) — 以足式行走的接触、稳定性和迁移表现检验仿真训练基线。
 
 ## 参考来源
 

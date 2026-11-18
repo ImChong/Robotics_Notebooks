@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, control, impedance-control, null-space, open-source, lund, franka, kuka]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-18
 arxiv: "2212.11215"
 code: https://github.com/matthias-mayr/Cartesian-Impedance-Controller
 related:
@@ -165,6 +165,8 @@ sequenceDiagram
 - [Franka Research 3](./franka-research-3.md)
 - [Pink](./pink-ik.md)
 - [WBC 工程实现指南](../queries/wbc-implementation-guide.md)
+- [Manipulation](../tasks/manipulation.md) — 单臂接触操作是该笛卡尔阻抗软件的应用语境，JOSS 功能验证不等于完整任务成功率。
+- [Direct Force Feedback Control（直接力反馈控制）](../methods/direct-force-feedback-control.md) — 对照直接力误差闭环与阻抗加期望 wrench 的结构，避免把二者当作同一控制律。
 
 ## 参考来源
 

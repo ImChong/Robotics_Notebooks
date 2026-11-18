@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, sjtu]
 status: complete
-updated: 2026-09-29
+updated: 2026-11-18
 arxiv: "2502.20390"
 venue: "2025 · CVPR"
 code: https://github.com/Sirui-Xu/InterMimic
@@ -120,6 +120,8 @@ flowchart TD
 - 篮球 HOI 技能模仿对照：[SkillMimic](./paper-notebook-skillmimic-learning-basketball-interaction-skill.md)
 - 视觉学生蒸馏对照：[DreamMimic](./paper-dreammimic.md) — 以本页特权教师配方为蒸馏源；RSSM+PCG，代码未发布
 - 原始 source：[bfm_awesome_intermimic_arxiv_2502_20390.md](../../sources/papers/bfm_awesome_intermimic_arxiv_2502_20390.md)
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 参考人–物交互要求同时核对身体轨迹与接触结果。
+- [Loco-Manipulation (移动操作)](../tasks/loco-manipulation.md) — 物体交互把问题从纯身体动作扩展到全身运动与操作的耦合。
 
 ## 参考来源
 

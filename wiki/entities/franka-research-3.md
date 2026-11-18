@@ -2,7 +2,7 @@
 type: entity
 tags: [manipulator, cobot, force-control, open-source, franka, research]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-18
 related:
   - ../tasks/manipulation.md
   - ../overview/robot-open-source-wechat-issue02-curator.md
@@ -100,6 +100,7 @@ sequenceDiagram
 - [Kinova Gen3](./kinova-gen3.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [机器人开源宝库（微信策展第02期）索引](../overview/robot-open-source-wechat-issue02-curator.md)
+- [Direct Force Feedback Control（直接力反馈控制）](../methods/direct-force-feedback-control.md) — 与笛卡尔阻抗路线对照接触力控制结构；具体实现还需核对 libfranka 接口与机型能力。
 
 ## 推荐继续阅读
 

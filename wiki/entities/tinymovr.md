@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, motor-control, foc, can, open-source, motionlayer]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 related:
   - ./moteus.md
   - ./vesc.md
@@ -92,6 +92,8 @@ flowchart TB
 - [SimpleFOC](./simplefoc.md)
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 对照电流、速度和位置运动环，整定须对应可用固件版本与控制模式。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 紧凑关节部署前辨识惯量和摩擦，并将热限制与参数拟合分别核验。
 
 ## 参考来源
 

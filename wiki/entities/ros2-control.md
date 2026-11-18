@@ -2,7 +2,7 @@
 type: entity
 tags: [sim2real, tooling, deployment, hmi-opensource-table, repo, open-robotics, ros2, realtime]
 status: complete
-updated: 2026-11-15
+updated: 2026-11-18
 original:
   - ../../sources/repos/ros2-control.md
 related:
@@ -152,6 +152,8 @@ flowchart LR
 - [开源主表覆盖索引](../queries/hmi-opensource-projects-coverage.md)
 - [fiveages-sim robot_descriptions](./fiveages-sim-robot-descriptions.md) — 国内机型 description 包；控制器在姊妹仓 `arms_ros2_control`
 - [C/C++ 运动控制开源库清单](../overview/cpp-motion-control-open-source-libraries-map.md)
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 控制器插件经 read→update→write 使用硬件接口，反馈计算与驱动通信职责应分开。
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 上层优化轨迹下发到控制框架时，需要对齐周期、状态接口和命令限位。
 
 ## 参考来源
 

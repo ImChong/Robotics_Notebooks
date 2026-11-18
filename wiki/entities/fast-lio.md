@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, lidar, lio, slam, ros, hku]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-18
 related:
   - ../entities/lio-sam.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -146,6 +146,8 @@ sequenceDiagram
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)
 - [Navigation2](../entities/navigation2.md)
 - [GN10 PointCloud Localization](./gn10-pointcloud-localization.md) — 预建静态 ESDF 地图中的 GPU 激光定位 / 失锁全局重定位，与 FAST-LIO 里程计与建图分工不同。
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 对应 IMU 传播、去畸变与 scan-to-map 更新；连续里程计不等于全局重定位。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — LIO 地图与位姿是探索系统的输入，目标选择和安全避障仍由下游模块实现。
 
 ## 推荐继续阅读
 

@@ -10,7 +10,7 @@ tags:
 - dataset
 - code
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: '2502.12191'
 venue: ICLR 2025
 summary: AnyTouch（ICLR 2025，RUC/WHUST/BUPT）：以 TacQuad、图像/视频掩码建模、语义对齐与跨传感器匹配学习统一静态—动态视触觉表征，并验证跨传感器迁移与真机倒珠。
@@ -143,6 +143,8 @@ sequenceDiagram
 
 - [AnyTouch 2 项目](paper-anytouch2.md) 与 [AnyTouch 2 论文](./paper-anytouch2.md)
 - [触觉感知主题](../concepts/tactile-sensing.md)
+- [Manipulation](../tasks/manipulation.md) — 跨传感器表征的实际效用还要由倒珠等接触操作任务验证。
+- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md) — 作为下游闭环对照：触觉表征不直接等于刚度/阻尼控制律，还需力标定和反馈设计。
 
 ## 参考来源
 

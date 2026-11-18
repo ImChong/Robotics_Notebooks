@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, vla, diffusion, manipulation, microsoft, thu]
 status: complete
-updated: 2026-09-20
+updated: 2026-11-18
 arxiv: "2411.19650"
 code: https://github.com/microsoft/CogACT
 related:
@@ -87,6 +87,7 @@ sequenceDiagram
 - [paper-openvla](./paper-openvla.md)
 - [paper-diffusion-vla](./paper-diffusion-vla.md)
 - [vla](../methods/vla.md)
+- [Diffusion Policy](../methods/diffusion-policy.md) — 对照连续动作分布的扩散建模，CogACT 还把认知式视觉语言表示接入动作头。
 
 ## 参考来源
 

@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, motor-control, foc, bldc, open-source, vesc]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./opentorque-actuator.md
@@ -90,6 +90,8 @@ flowchart LR
 - [SimpleFOC](./simplefoc.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 核对电流、速度、位置控制层的反馈职责，不能将大电流额定值当成整机闭环性能。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 用于关节实验前应辨识负载与传动参数，并锁定板型和固件配置。
 
 ## 参考来源
 

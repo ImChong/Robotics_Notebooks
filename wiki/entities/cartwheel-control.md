@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, motion-tracking, whole-body-control, robot-learning, mujoco, mjlab, cartwheel]
 status: complete
-updated: 2026-11-12
+updated: 2026-11-18
 project_id: cartwheel-control
 project: https://huggingface.co/andrew-cartwheel/cartwheel-control
 code: https://github.com/Cartwhl/cartwheel-control
@@ -153,6 +153,7 @@ python -m http.server -d play_out/viewer 8000
 - [SONIC](./nvidia-sonic.md) — 大规模 motion tracking 路线。
 - [SuperMimic](./paper-supermimic.md) — 物理运动跟踪的训练路线。
 - [模仿学习](../methods/imitation-learning.md) — 动作示范与控制策略背景。
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 对照参考运动驱动的物理跟踪目标；本项目公开推理策略，不据此推断其未公开训练配方。
 
 ## 参考来源
 
