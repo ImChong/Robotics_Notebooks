@@ -1,7 +1,7 @@
 ---
 type: entity
 project_id: tmcit-ararobo-2026a-gn10-system
-project: https://github.com/tmcit-ararobo-2026a
+project: https://github.com/tmcit-ararobo-2026a/ros2_ws
 code: https://github.com/tmcit-ararobo-2026a/ros2_ws
 code_scope: "多仓库整机集成：ros2_ws、gn10-navigation、gn10-mainboard、power-management-board、esc-control-hub、robot-sim-unity"
 project_distinction: "整机系统工程综述，不重复既有 GN10 PointCloud Localization 专项算法实体"
