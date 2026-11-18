@@ -9,7 +9,7 @@ tags:
   - sim2real
   - pku
 status: complete
-updated: 2026-11-10
+updated: 2026-11-18
 project_id: sugarv2-humanoid
 arxiv: "2611.09266"
 related:
@@ -94,7 +94,7 @@ flowchart LR
 - 先做教师蒸馏（在学生访问的状态上查询教师动作 [35]），再继续用同一 mimic 奖励做 RL 且保留蒸馏项：L_policy = L_PPO + λ_distill·L_distill（式 4）；特权 critic 在蒸馏阶段预热。整个视觉策略端到端训练。
 - 在线渲染多种物体实例、背景、材质、光照；随机相机位姿、图像增强与噪声、本体感觉噪声、动力学随机化与外部扰动（两阶段均用）。
 
-## 实验结果
+## 实验与评测
 
 | 项 | 论文数字（出处） |
 |----|------------------|
@@ -105,6 +105,8 @@ flowchart LR
 | 未见背景 / 物体 / 两者 | 86.9 / 87.7 / 83.2（表 3） |
 | 消融 | 无蒸馏 0.0；无参考型 RL 41.4；无持续蒸馏 70.6（表 4） |
 | 参考数量 | 20→100 条提升，之后增益有限（图 5，§4.4） |
+| 物体 / 机器人跟踪误差 | SUGARv2 6.6 / 10.0 cm；GRAIL 9.8 / 13.8 cm（表 5，越小越好） |
+| 参考合成成本口径 | 0.4 / 36.1 min 每条**保留参考**，计算包含失败尝试与后处理（表 5） |
 | 真机 G1 | 9/10、6/10、8/10、8/10、7/10，合计 38/50（表 6） |
 
 注意：表 2(a) 中基线用的是 SUGARv2 自己的参考与教师，比较的是学习方法；表 2(b) 换参考源比较。两者都不是各系统「原配置」的对照（我的判断）。
@@ -131,8 +133,12 @@ flowchart LR
 
 - **作者给出的设置：** 每任务一个特权教师 + 一个视觉策略；每任务 100 条参考；仿真报告 3 种子均值 ± 标准差（§4.1）。真机为 Unitree G1，无真机微调，每任务 10 次、改变初始位置（§4.6）。
 - **依赖：** GPT-6 Astra（模板）、现成运动生成模型 [34]、预训练 WBC [26]（SONIC，见 [SONIC 页](./nvidia-sonic.md)）、视觉编码器 [32]。复现需要这些外部组件，具体型号与超参论文正文未全部给出。
-- **代码：** 项目页标注 "Code (Coming Soon)"，截至 2026-11-10 无仓库，故不写 `code:`。
+- **代码：** 2026-11-10 的项目页核查记录标注 "Code (Coming Soon)"，当时未提供可运行源码入口，故不写 `code:`。2026-11-18 本次尝试复查项目页时网页未能加载，**无法据此确认最新开源状态**；后续需要重新核验。
 - **使用提示（推测）：** 若想复用思路，可先在自己的 WBC 上验证「参考 → 教师」这一步的跟踪成功率，再接视觉蒸馏；蒸馏阶段不可省（表 4：无蒸馏为 0.0%）。
+
+## 源码运行时序图
+
+**不适用（截至最后一次成功核查项目页的 2026-11-10）：** 项目页仅提示 `Code (Coming Soon)`，没有能核对的 SUGARv2 训练 / 推理入口，不能把论文中的算法流程伪写成已验证的源码调用时序。上方 Mermaid 是依据论文 §3 构建的**算法流程图**，并非代码运行时序图。2026-11-18 再次访问项目页未成功，未能确认是否已有更新。
 
 ## 局限
 
@@ -154,6 +160,7 @@ flowchart LR
 ## 关联页面
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
+- [Loco-Manipulation 纵深路线：Stage 2 合成参考与 Stage 3 视觉技能学习](../../roadmap/depth-loco-manipulation.md)
 - [VIRAL：人形视觉 sim2real（基线之一）](paper-viral-humanoid-visual-sim2real.md)
 - [GRAIL（参考合成对比对象）](paper-grail.md)
 - [HumanoidMimicGen（遥操作演示扩增对照）](paper-humanoidmimicgen.md)
@@ -167,6 +174,7 @@ flowchart LR
 
 - [sources/papers/sugarv2_arxiv_2611_09266.md](../../sources/papers/sugarv2_arxiv_2611_09266.md)
 - [arXiv:2611.09266](https://arxiv.org/abs/2611.09266)
+- [arXiv HTML v1（全文二次核对，2026-11-18）](https://arxiv.org/html/2611.09266v1)
 - 项目页：<https://tianshuwu.github.io/sugarv2-humanoid/>
 
 ## 继续阅读
