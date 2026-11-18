@@ -93,6 +93,8 @@ flowchart TD
 
 ## 与其他工作对比
 
+本篇只比较**动作 token 表示**；若需连同数据、后训练、实时执行与公平评测一起对齐，参见 [VLA 全生命周期综述（2611.18372）](./paper-vla-lifecycle-survey-2611-18372.md)。
+
 [RT-1](./paper-rt-1.md) 代表离散动作 token；[π₀](./paper-pi0.md) 用流匹配连续动作；[ACT](./paper-act.md) 用动作块处理时序预测。三者并非按论文分类八类从前到后串联。
 
 ## 关联页面
