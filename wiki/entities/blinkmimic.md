@@ -129,6 +129,7 @@ sequenceDiagram
 - [SuperMimic](./paper-supermimic.md)：可微世界模型方法。
 - [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 以参考动作跟踪任务作对照，区分传统 RL 跟踪与可微世界模型 BPTT 更新。
 - [Muon（MomentUm Orthogonalized by Newton–Schulz）](../methods/muon.md) — 本训练器使用 Muon 优化；训练加速还包括重置策略与 CUDA Graph，不能只归因于优化器。
+- [QTOP：分位数 Critic 动作跟踪](./paper-qtop.md) — 同为 G1 动作跟踪优化，但 QTOP 在 PPO 中以分位数优势平衡不同动作的训练贡献；BlinkMimic 则通过可微世界模型 BPTT、重置与 CUDA Graph 缩短仿真训练耗时。
 
 ## 参考来源
 
