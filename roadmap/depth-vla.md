@@ -200,6 +200,7 @@ flowchart LR
 - 用行为树把 2–3 个 VLA 技能串成一个长时程任务，观察失败恢复逻辑
 
 ### 推荐读什么
+- [VLA 动作到关节力矩的执行链路](../wiki/concepts/vla-action-to-joint-torque.md) — 从模型动作反归一化、IK 与阻抗控制贯通到关节力矩与伺服电流环，核对模式、频率和安全约束。
 - [Agentic-Teacher：失败驱动 VLA 后训练](../wiki/entities/paper-agentic-teacher-2611-17394.md)：定向生成纠错演示并通过流匹配损失过滤。
 - [PEAR：仿真强化学习训练机器人原生推理模型](../wiki/entities/paper-pear-robot-use-rl.md)：记录大模型动作接口与分布式 rollout 部署前验收。
 - [Towards Agentic Robots：模型、数据、环境与 Harness 综述](../wiki/entities/paper-towards-agentic-robots-survey.md) — 固定 arXiv:2610.20442v1 的四域十七类地图；对照 VLA 执行器与工具编排、状态交接、失败恢复及分层实时控制，不是可直接部署的算法。
