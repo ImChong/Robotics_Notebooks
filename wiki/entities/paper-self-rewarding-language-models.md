@@ -3,9 +3,10 @@ type: entity
 project_id: self-rewarding-language-models
 tags: [paper, llm, self-reward, dpo, preference-optimization, reward-modeling, recursive-self-improvement, meta, nyu]
 status: complete
-updated: 2026-11-17
+updated: 2026-11-19
 arxiv: "2401.10020"
 related:
+  - ./paper-meta-rewarding-language-models.md
   - ../concepts/recursive-self-improvement.md
   - ./paper-rsi-survey-2607-07663.md
   - ./paper-self-refine-2303-17651.md
@@ -171,4 +172,4 @@ flowchart TD
 ## 推荐继续阅读
 
 - [Direct Preference Optimization（DPO）原始论文](https://arxiv.org/abs/2305.18290)
-- [Meta-Rewarding Language Models（后续扩展）](https://arxiv.org/abs/2407.19594)
+- [Meta-Rewarding Language Models（后续扩展；独立论文节点）](./paper-meta-rewarding-language-models.md) — EMNLP 2025：在 Self-Rewarding 的回答偏好之外用元评委生成 Judge 判断偏好；留意高分/位置偏差与后两轮停用 Judge 训练。

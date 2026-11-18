@@ -158,6 +158,7 @@ flowchart LR
 
 ### 推荐读什么
 - [Self-Rewarding Language Models（自奖励语言模型）](../wiki/entities/paper-self-rewarding-language-models.md) — ICML 2024，M1→M3 用自身评分构造偏好对并迭代 DPO；用于辨别“自评也变强”的证据与缺乏独立验证锚的风险
+- [Meta-Rewarding Language Models：元评委训练](../wiki/entities/paper-meta-rewarding-language-models.md) — EMNLP 2025：同一模型 Actor/Judge/Meta-Judge 生成回答与判断双偏好对；AlpacaEval 2 LC 胜率提高，但 Judge 高分饱和与位置偏差使后两轮停用元评委偏好训练，提示外部验证锚不可省
 - [ENPIRE](../wiki/methods/enpire.md) — EN–PI–R–E 闭环：自动 reset/verify、多范式策略改进、并行 rollout；灵巧任务报告约 99% pass@8
 - [真机策略 autoresearch harness 指南](../wiki/queries/real-robot-policy-autoresearch-harness.md) — 环境侧、范式选型、rollout 预算与机队 scaling 的实操选型
 - [RSI 四层标准与五次边界推进](../wiki/queries/rsi-four-tier-five-pushes.md)「四道门」小节— 验证器锚、分布外、递归增益、能力–控制同步
