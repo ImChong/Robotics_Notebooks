@@ -2,7 +2,8 @@
 type: entity
 project_id: upstar-robotics
 project: https://upstar.dev/t/robotics
-tags: [robotics, github, curated-list, open-source-discovery, tooling]
+tags: [robotics, github, curated-list, open-source-discovery, tooling, upstar]
+institutions: [upstar]
 topic: [ecosystem]
 status: complete
 updated: 2026-11-18
@@ -36,6 +37,8 @@ original:
 | ROS | Robot Operating System | Robotics 主题描述明确覆盖的机器人软件生态 |
 
 ## 为什么重要
+
+**维护者：** [Upstar 官方 About](https://upstar.dev/about) 明确该站由科特迪瓦阿比让的独立开发者 **Armel Matio** 开发与运营；Upstar 为独立项目，不隶属于 GitHub, Inc.。所属机构标签按仓库注册表映射到 Upstar 独立项目，而非虚构公司。
 
 - **发现新项目：** 小仓库在短窗口内增长明显时，不会被累积 Star 巨大的传统项目天然挤到后面。
 - **与静态策展互补：** [Physical AI 资源地图](./awesome-physical-ai-natnew.md) 按工程能力组织已筛选资源；Upstar 提供新仓库的时效性线索。

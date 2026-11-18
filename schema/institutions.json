@@ -4446,6 +4446,12 @@
         "dreamscale-labs",
         "dreamscalelabs"
       ]
+    },
+    "upstar": {
+      "label": "Upstar 独立开发项目（Upstar）",
+      "aliases": [
+        "upstar"
+      ]
     }
   }
 }

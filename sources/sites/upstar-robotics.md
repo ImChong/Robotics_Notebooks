@@ -8,6 +8,7 @@
 - **官方排名方法：** <https://upstar.dev/how-trending-works>
 - **官方 MCP 文档：** <https://upstar.dev/mcp>
 - **官方 About：** <https://upstar.dev/about>
+- **维护者：** 官方 About 明确由科特迪瓦阿比让的独立开发者 Armel Matio 开发及运营；Upstar 为独立项目，与 GitHub, Inc. 无隶属关系。
 - **入库日期：** 2026-11-18
 - **核对范围：** 已通读 Robotics 主题榜单页面、How trending works 排名与审核规则、MCP server 工具及接入说明、About；核对了统计窗口、打分公式、最低增量、Emerging 条件、类别匹配、异常增长审核、24 小时估算及公开 API 的边界。榜单随时变化，未逐一通读所有上榜项目的独立仓库。
 - **通读：** 已完成
