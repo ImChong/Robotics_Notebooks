@@ -18,6 +18,8 @@ related:
   - ./video-shotcraft.md
   - ./remotion.md
   - ./manim.md
+  - ../methods/coding-agent-verification-loops.md
+  - ../methods/auto-labeling-pipelines.md
   - ../concepts/llm-wiki-karpathy.md
 sources:
   - ../../sources/repos/kajisho5-ffmpeg-skill.md
@@ -169,6 +171,8 @@ npx ffmpeg-skill contract --json     # 读取机器契约
 - [video-shotcraft](./video-shotcraft.md) — 分镜/宣传片 Agent 制作层；本工具在后期剪辑和技术交付层
 - [Remotion](./remotion.md) — 用 React 合成新画面，与本工具的现有媒体剪辑互补
 - [Manim](./manim.md) — 程序化数学/机器人原理动画制作，后期仍可交由 FFmpeg 编码处理
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 本项目的 `probe → edit → check → verify` 是面向媒体文件的可测验收实例；格式检查不替代主观复核
+- [自动化标注流水线](../methods/auto-labeling-pipelines.md) — 为机器人演示视频执行裁片、格式统一、提取音频等**上游媒体准备**；语义分段、成功标签仍由标注模型或人工判断
 - [Karpathy LLM Wiki](../concepts/llm-wiki-karpathy.md) — 将操作规约编译进 Skill 与把知识编译进 wiki 的分工
 
 ## 参考来源
