@@ -12,6 +12,7 @@ tags:
 status: complete
 updated: 2026-11-10
 related:
+  - ./magpie.md
   - ./deepseek-harness.md
   - ./ponytail.md
   - ./caveman.md
@@ -142,6 +143,8 @@ flowchart TB
 - **局限：** 平台适配器、提供商列表与安装脚本变更频繁；本页不固化命令行。安全模型（命令 approval、DM pairing）需按 [官方 Security 文档](https://hermes-agent.nousresearch.com/docs/user-guide/security) 自行评估后再接生产网关。
 
 ## 关联页面
+
+- [Magpie](./magpie.md) — 跨 Claude Code / Codex 的本地多模型网关；对照 Hermes 的 Agent 执行层
 
 - [OpenMuse](./copilotkit-openmuse.md) — 带有移动/Web 客户端、持久任务、浏览器和可选 Linux computer 的个人 agent 应用，可与 Hermes 的常驻运行时设计对照。
 
