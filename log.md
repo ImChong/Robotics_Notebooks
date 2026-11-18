@@ -482,6 +482,12 @@ op: ingest
 - 提供基于公开入口的 Mermaid 项目流程图、源码时序图；与 EdenLive 双向链接，并挂载 WAM 纵深路线的 Stage 1 世界基座对照。
 - 仅核读官方 README、官网、模型卡、部署文档和入口源码；仓库的技术报告 PDF 尚未完整读取，训练方法与数据未开放，GPU 未实测。
 
+## [2026-11-18] ingest | Claude Code 验证与代码评审两篇官方博客交叉核对
+
+- 复用已有博客原始归档与 Coding Agent 验证闭环页，不创建重复来源或实体。
+- 补齐 2026-10-15 评审文章的全文通读与版本核对字段，新增验证/评审证据与风险门禁对比页，并从已有概念和方法页双向关联。
+- 两篇均为软件工程实践博客，无独立公开实现；机器人安全门禁是工程迁移建议，不当成原文事实。
+
 ## [2026-11-18] ingest | sources/papers/diplo-self-distilled-diffusion-planning_arxiv_2610_24847.md — 收录 DiPLO 自蒸馏扩散全身搬运规划
 
 - 核对论文 arXiv:2610.24847v1 全文及项目页，建立唯一独立论文详情、Mermaid 数据/控制流程与 Loco-Manipulation Stage 4 导航。
