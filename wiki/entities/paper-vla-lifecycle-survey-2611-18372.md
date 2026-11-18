@@ -11,6 +11,7 @@ sources:
   - ../../sources/papers/vla_lifecycle_survey_arxiv_2611_18372.md
 related:
   - ../methods/vla.md
+  - ../methods/action-chunking.md
   - ./paper-vla-action-tokenization-survey.md
   - ./paper-vla-survey-embodied.md
   - ../concepts/world-action-models.md
@@ -141,6 +142,7 @@ flowchart TD
 ## 关联页面
 
 - [VLA 方法总览](../methods/vla.md)
+- [Action Chunking（动作块与控制频率衔接）](../methods/action-chunking.md)
 - [VLA 动作 Token 化综述](./paper-vla-action-tokenization-survey.md)
 - [VLA 具身综述](./paper-vla-survey-embodied.md)
 - [WAM 概念](../concepts/world-action-models.md)
