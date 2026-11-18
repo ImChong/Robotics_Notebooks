@@ -164,6 +164,8 @@ ros2 launch gn10_navigation navigation.launch.py
 
 ## 关联页面
 
+- [平滑导航路径生成](../methods/smooth-navigation-path-generation.md) — 对照 GN10 在 8 邻接 A* 后使用 Elastic Band 和几何圆角平滑的可跟踪路径处理。
+- [LiDAR 与里程计融合定位](../methods/lidar-odometry-fusion.md) — 比较一般里程计/激光融合定位和 GN10 已知静态 ESDF 地图匹配方案的输入与失锁恢复边界。
 - [GN10 PointCloud Localization：ESDF 地图定位](gn10-pointcloud-localization.md) — 已有**独立**定位算法实体，本页是系统级集成补充。
 - [Navigation2（Nav2）](navigation2.md) — 对照通用 ROS 2 导航栈与 GN10 专用 costmap/A*/follower。
 - [导航·SLAM·自动驾驶栈总览](../overview/navigation-slam-autonomy-stack.md) — 对照定位、规划、控制解耦的工程结构。
