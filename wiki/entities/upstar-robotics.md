@@ -11,6 +11,9 @@ related:
   - ./awesome-physical-ai-natnew.md
   - ./awesome-physical-ai-aichr.md
   - ../overview/awesome-physical-ai-technology-map.md
+  - ../methods/vla.md
+  - ../tasks/locomotion.md
+  - ../tasks/manipulation.md
 sources:
   - ../../sources/sites/upstar-robotics.md
 original:
@@ -89,6 +92,8 @@ flowchart TD
 - [awesome-physical-ai（natnew）](./awesome-physical-ai-natnew.md) — 工程导向、按技术类别策展的资源地图
 - [awesome-physical-ai（aichr）](./awesome-physical-ai-aichr.md) — 另一套 Physical AI 开源资源组织方式
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md) — 对已发现资源做长期知识归类
+- [VLA](../methods/vla.md) — 对榜单中的视觉语言动作研究归类后再深读
+- [运动任务](../tasks/locomotion.md) 与 [操作任务](../tasks/manipulation.md) — 将上榜项目分别归到任务知识主线
 
 ## 参考来源
 
