@@ -62,16 +62,20 @@ flowchart LR
 ```mermaid
 sequenceDiagram
   autonumber
-  actor User as 开发者
-  participant Script as src/alpamayo_r1/test_inference.py
-  participant First as Cosmos-Reason VLM
-  participant Second as Diffusion expert
-  participant Output as Trajectory and CoC
-  User->>Script: 使用官方README所列入口
-  Script->>First: 加载样本/模型与配置
-  First->>Second: 提供训练/推理输入
-  Second->>Output: 生成轨迹或评价数据
-  Output-->>User: 输出结果
+  actor Dev as 开发者
+  participant Test as src/alpamayo_r1/test_inference.py
+  participant Loader as load_physical_aiavdataset
+  participant Helper as helper.create_message/processor
+  participant Model as AlpamayoR1.from_pretrained
+  participant Sample as sample_trajectories_from_data_with_vlm_rollout
+  Dev->>Test: python src/alpamayo_r1/test_inference.py
+  Test->>Loader: clip_id与t0_us
+  Loader-->>Test: image_frames、ego_history与真值
+  Test->>Helper: 生成消息并应用chat_template
+  Test->>Model: 加载nvidia/Alpamayo-R1-10B
+  Test->>Sample: tokenized_data、ego_history
+  Sample-->>Test: pred_xyz、pred_rot、CoC
+  Test-->>Dev: 打印CoC与计算minADE
 ```
 
 按官方README和 [源码入口记录](../../sources/repos/ad_top10_2026_alpamayo-r1.md) 核对；**未在本次 ingest 执行完整 GPU 推理或训练**。

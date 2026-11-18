@@ -170,20 +170,24 @@ flowchart LR
   GRPO[GRPO后训练] -.优化.-> VLM
 ```
 
-### 源码运行时序图（依据README公开入口）
+## 源码运行时序图（源码入口核对）
 
 ```mermaid
 sequenceDiagram
-  actor User as 开发者
-  participant Entry as scripts/run_rft.sh
-  participant Model as Qwen2.5-VL
-  participant Runtime as GRPO RFT
-  participant Result as NAVSIM evaluation
-  User->>Entry: 根据官方README运行
-  Entry->>Model: 加载配置与数据
-  Model->>Runtime: 执行公开的训练或推理流程
-  Runtime->>Result: 输出模型结果
-  Result-->>User: 返回评测或轨迹
+  autonumber
+  actor Dev as 开发者
+  participant Code as scripts/action_token_cluster.sh
+  participant SFT as scripts/run_sft.sh
+  participant RFT as scripts/run_rft.sh
+  participant Eval as navsim/scripts/evaluation/run_autovla_agent_pdm_score_evaluation.sh
+  Dev->>Code: 根据轨迹构造动作codebook
+  Code-->>SFT: 离散动作token
+  Dev->>SFT: 监督微调Qwen2.5-VL骨干
+  SFT-->>RFT: 初始化模型权重
+  Dev->>RFT: GRPO强化微调
+  RFT-->>Eval: 训练后检查点
+  Dev->>Eval: NAVSIM评分
+  Eval-->>Dev: PDMS输出
 ```
 
 本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_autovla.md)和[代码入口](../../sources/repos/ad_top10_2026_autovla.md)。

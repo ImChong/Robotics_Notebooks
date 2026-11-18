@@ -66,16 +66,22 @@ flowchart LR
 ```mermaid
 sequenceDiagram
   autonumber
-  actor User as 开发者
-  participant Script as scripts/training/run_sgdrive_train_multi_node_2b.sh
-  participant First as World queries
-  participant Second as DiT planner
-  participant Output as NAVSIM evaluation
-  User->>Script: 使用官方README所列入口
-  Script->>First: 加载样本/模型与配置
-  First->>Second: 提供训练/推理输入
-  Second->>Output: 生成轨迹或评价数据
-  Output-->>User: 输出结果
+  actor Dev as 开发者
+  participant Data as NAVSIM与world-query缓存
+  participant Shell as scripts/training/run_sgdrive_train_multi_node_2b.sh
+  participant Train as navsim/planning/script/run_training_sgdrive.py
+  participant Agent as sgdrive_agent / DiT
+  participant Eval as scripts/evaluation/run_sgdrive_agent_pdm_score_evaluation.sh
+  Dev->>Data: 配置数据、VLM检查点与缓存目录
+  Dev->>Shell: 启动IL训练脚本
+  Shell->>Train: torchrun agent=sgdrive_agent / grpo=False
+  Train->>Data: 读取hidden-state缓存
+  Data-->>Agent: 分层world查询条件
+  Train->>Agent: 训练DiT扩散规划器
+  Dev->>Eval: 加载训练检查点
+  Eval->>Agent: 推断NAVSIM规划轨迹
+  Agent-->>Eval: 规划候选
+  Eval-->>Dev: PDM评分
 ```
 
 按官方README和 [源码入口记录](../../sources/repos/ad_top10_2026_sgdrive.md) 核对；**未在本次 ingest 执行完整 GPU 推理或训练**。

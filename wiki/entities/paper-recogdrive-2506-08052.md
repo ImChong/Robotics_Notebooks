@@ -65,16 +65,21 @@ flowchart LR
 ```mermaid
 sequenceDiagram
   autonumber
-  actor User as 开发者
-  participant Script as training/run_recogdrive_train_multi_node_2b.sh
-  participant First as InternVL3 VLM
-  participant Second as DiT planner
-  participant Output as DiffGRPO
-  User->>Script: 使用官方README所列入口
-  Script->>First: 加载样本/模型与配置
-  First->>Second: 提供训练/推理输入
-  Second->>Output: 生成轨迹或评价数据
-  Output-->>User: 输出结果
+  actor Dev as 开发者
+  participant Prep as VLM与NAVSIM缓存
+  participant Shell as scripts/training/run_recogdrive_train_multi_node_2b.sh
+  participant Train as navsim/planning/script/run_training_recogdrive.py
+  participant RL as navsim/planning/script/run_training_recogdrive_rl.py
+  participant Eval as navsim/planning/script/run_pdm_score_recogdrive.py
+  Dev->>Prep: 准备VLM检查点与hidden-state cache
+  Dev->>Shell: 启动模仿学习脚本
+  Shell->>Train: torchrun agent=recogdrive_agent / grpo=False
+  Prep-->>Train: VLM潜变量与场景缓存
+  Train-->>RL: IL规划器检查点与metric cache
+  Dev->>RL: scripts/training/run_recogdrive_train_multi_node_rl_2b.sh (grpo=True)
+  RL-->>Eval: RL模型权重
+  Dev->>Eval: scripts/evaluation/run_recogdrive_agent_pdm_score_evaluation_2b.sh
+  Eval-->>Dev: NAVSIM PDMS
 ```
 
 按官方README和 [源码入口记录](../../sources/repos/ad_top10_2026_recogdrive.md) 核对；**未在本次 ingest 执行完整 GPU 推理或训练**。
@@ -87,10 +92,10 @@ sequenceDiagram
 
 官方仓库：https://github.com/xiaomi-research/recogdrive
 
-1. ```sh ./shell/internvl3.0/2nd_finetune/internvl3_8b_dynamic_res_2nd_finetune_recogdrive_pretrain.sh```
-2. ```sh training/run_recogdrive_train_multi_node_2b.sh```
-3. ```sh training/run_recogdrive_train_multi_node_rl_2b.sh```
-4. ```sh evaluation/run_recogdrive_agent_pdm_score_evaluation_2b.sh```
+1. ```cd internvl_chat && sh ./shell/internvl3.0/2nd_finetune/internvl3_8b_dynamic_res_2nd_finetune_recogdrive_pretrain.sh```
+2. ```sh scripts/training/run_recogdrive_train_multi_node_2b.sh```
+3. ```sh scripts/training/run_recogdrive_train_multi_node_rl_2b.sh```
+4. ```sh scripts/evaluation/run_recogdrive_agent_pdm_score_evaluation_2b.sh```
 
 ## 结论
 

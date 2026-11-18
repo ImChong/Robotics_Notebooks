@@ -128,20 +128,22 @@ flowchart LR
   Planner --> Traj[驾驶轨迹]
 ```
 
-### 源码运行时序图（依据README公开入口）
+## 源码运行时序图（源码入口核对）
 
 ```mermaid
 sequenceDiagram
-  actor User as 开发者
-  participant Entry as scripts/eval_drivevla.sh
-  participant Model as DriveVLA checkpoint
-  participant Runtime as Inference
-  participant Result as Evaluation
-  User->>Entry: 根据官方README运行
-  Entry->>Model: 加载配置与数据
-  Model->>Runtime: 执行公开的训练或推理流程
-  Runtime->>Result: 输出模型结果
-  Result-->>User: 返回评测或轨迹
+  autonumber
+  actor Dev as 开发者
+  participant EvalSH as scripts/eval_drivevla.sh
+  participant CKPT as DriveVLA-Qwen2.5-0.5B checkpoint
+  participant Data as 官方驾驶评测数据
+  participant Model as OpenDriveVLA
+  Dev->>EvalSH: bash scripts/eval_drivevla.sh CKPT_PATH NUM_GPU
+  EvalSH->>CKPT: 读取0.5B权重
+  EvalSH->>Data: 加载评测样本
+  Data-->>Model: 道路视觉与车辆状态
+  Model-->>EvalSH: 输出预测轨迹
+  EvalSH-->>Dev: 保存评测指标
 ```
 
 本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_opendrivevla.md)和[代码入口](../../sources/repos/ad_top10_2026_opendrivevla.md)。

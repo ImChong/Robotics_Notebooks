@@ -161,20 +161,23 @@ flowchart LR
   WM -.未来画面损失.-> VLA
 ```
 
-### 源码运行时序图（依据README公开入口）
+## 源码运行时序图（源码入口核对）
 
 ```mermaid
 sequenceDiagram
-  actor User as 开发者
-  participant Entry as inference/vla/infer_navsim_flow_matching_PDMS_87.2.sh
-  participant Model as VLA backbone
-  participant Runtime as World supervision
-  participant Result as Action expert
-  User->>Entry: 根据官方README运行
-  Entry->>Model: 加载配置与数据
-  Model->>Runtime: 执行公开的训练或推理流程
-  Runtime->>Result: 输出模型结果
-  Result-->>User: 返回评测或轨迹
+  autonumber
+  actor Dev as 开发者
+  participant Setup as scripts/misc/download_emu3_pretrain.sh
+  participant Infer as inference/vla/infer_navsim_flow_matching_PDMS_87.2.sh
+  participant Model as DriveVLA-W0 action expert
+  participant Eval as inference/vla/eval_navsim_metric_from_json.sh
+  Dev->>Setup: 下载Emu3基础权重
+  Dev->>Infer: 设置NAVSIM数据与训练后检查点
+  Infer->>Model: 图像/指令/历史动作条件
+  Model-->>Infer: flow-matching轨迹
+  Infer-->>Eval: 生成规划JSON
+  Dev->>Eval: 运行官方评分脚本
+  Eval-->>Dev: NAVSIM评测结果
 ```
 
 本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_drivevla-w0.md)和[代码入口](../../sources/repos/ad_top10_2026_drivevla-w0.md)。

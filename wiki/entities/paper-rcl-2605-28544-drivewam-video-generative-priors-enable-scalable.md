@@ -157,20 +157,25 @@ flowchart LR
   Future --> Action[动作轨迹]
 ```
 
-### 源码运行时序图（依据README公开入口）
+## 源码运行时序图（源码入口核对）
 
 ```mermaid
 sequenceDiagram
-  actor User as 开发者
-  participant Entry as scripts/drivewam_navsim_train.sh
-  participant Model as Video DiT
-  participant Runtime as KV memory
-  participant Result as Action generator
-  User->>Entry: 根据官方README运行
-  Entry->>Model: 加载配置与数据
-  Model->>Runtime: 执行公开的训练或推理流程
-  Runtime->>Result: 输出模型结果
-  Result-->>User: 返回评测或轨迹
+  autonumber
+  actor Dev as 开发者
+  participant Prep as python -m src.navsim.process_data
+  participant Train as scripts/drivewam_navsim_train.sh
+  participant Model as DriveWAM Video DiT
+  participant Eval as python -m src.navsim.eval
+  Dev->>Prep: 准备NAVSIM训练数据
+  Prep-->>Train: 数据集和视频/动作序列
+  Dev->>Train: 启动视频动作联合训练
+  Train->>Model: 视频序列和导航提示
+  Model-->>Train: 世界动作预测损失
+  Dev->>Eval: 设置权重与Navsim数据
+  Eval->>Model: 自回归推断
+  Model-->>Eval: 轨迹与未来视频
+  Eval-->>Dev: NAVSIM指标
 ```
 
 本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_drivewam.md)和[代码入口](../../sources/repos/ad_top10_2026_drivewam.md)。

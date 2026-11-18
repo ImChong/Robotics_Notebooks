@@ -8,10 +8,10 @@
 
 ## 官方执行入口
 
-1. ```sh ./shell/internvl3.0/2nd_finetune/internvl3_8b_dynamic_res_2nd_finetune_recogdrive_pretrain.sh```
-2. ```sh training/run_recogdrive_train_multi_node_2b.sh```
-3. ```sh training/run_recogdrive_train_multi_node_rl_2b.sh```
-4. ```sh evaluation/run_recogdrive_agent_pdm_score_evaluation_2b.sh```
+1. ```cd internvl_chat && sh ./shell/internvl3.0/2nd_finetune/internvl3_8b_dynamic_res_2nd_finetune_recogdrive_pretrain.sh```
+2. ```sh scripts/training/run_recogdrive_train_multi_node_2b.sh```
+3. ```sh scripts/training/run_recogdrive_train_multi_node_rl_2b.sh```
+4. ```sh scripts/evaluation/run_recogdrive_agent_pdm_score_evaluation_2b.sh```
 
 ## 已知边界
 

@@ -64,16 +64,21 @@ flowchart LR
 ```mermaid
 sequenceDiagram
   autonumber
-  actor User as 开发者
-  participant Script as scripts/closed_loop_test.sh
-  participant First as SimEngine
-  participant Second as VADv2 AlgEngine
-  participant Output as NAVSIM PDMS
-  User->>Script: 使用官方README所列入口
-  Script->>First: 加载样本/模型与配置
-  First->>Second: 提供训练/推理输入
-  Second->>Output: 生成轨迹或评价数据
-  Output-->>User: 输出结果
+  actor Dev as 开发者
+  participant CLI as scripts/closed_loop_test.sh
+  participant Sim as projects/SimEngine/scripts/run_testing.sh
+  participant Config as AlgEngine e2e_vadv2_50pct.py
+  participant CKPT as e2e_vadv2_50pct_ep8.pth
+  participant World as SimEngine闭环场景
+  Dev->>CLI: 设置WORLDENGINE_ROOT后运行
+  CLI->>Sim: 配置、模型权重、navtest_failures、NR
+  Sim->>Config: 读取VADv2模型配置
+  Sim->>CKPT: 加载预训练权重
+  loop 逐时间步规划
+    Sim->>World: 根据ego动作推进环境
+    World-->>Sim: 渲染观测和碰撞状态
+  end
+  Sim-->>Dev: 288个稀有场景闭环结果与PDMS
 ```
 
 按官方README和 [源码入口记录](../../sources/repos/ad_top10_2026_worldengine.md) 核对；**未在本次 ingest 执行完整 GPU 推理或训练**。
