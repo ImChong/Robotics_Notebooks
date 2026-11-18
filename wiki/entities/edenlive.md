@@ -5,11 +5,12 @@ project: https://vast-eden.ai/?p=edenlive
 code: https://github.com/VAST-AI-Research/EdenLive
 tags: [generative-rendering, real-time-rendering, video-generation, world-models, simulation, embodied-ai]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-18
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ./paper-agentgarten.md
+  - ./code-world-model-2-invoker-render.md
 original:
   - ../../sources/papers/edenlive_technical_report.md
 sources:
@@ -148,6 +149,8 @@ EdenLive 仓库主代码和实时服务采用 Apache-2.0。官方 README 另指�
 - **工作台和 renderer 的许可不是同一层。** 应按组件和权重分别审阅许可证；FLUX 首帧工作台的非商业要求不应与核心 renderer 混为一谈。
 
 ## 关联页面
+
+- [Code World Model 2.0 / Invoker-Render](./code-world-model-2-invoker-render.md) — 同为显式状态源驱动的流式神经渲染器；对照 Proxy 粒度、DiT 骨干与 GPU 部署成本
 
 - [生成式世界模型](../methods/generative-world-models.md) — 把生成模型放入交互式世界系统中理解
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频模型承担视觉观察或状态演化时的边界

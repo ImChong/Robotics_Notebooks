@@ -115,6 +115,7 @@ flowchart LR
 - [DR-WM](../wiki/entities/paper-dr-wm.md) — 以真实机器人动作—响应校准空间地形物理，在 Genesis 中预测动作造成的运动与相机轨迹，再生成未来观测并迭代更新地形；用于导航候选动作比较与 VLM 选路。
 - [Murea-InWorld](../wiki/entities/paper-murea-inworld.md) — Murea-InWorld 将显式世界状态 Agent（Murea-Mind）与视听生成器 Murea-Fast 组合成互动故事闭环；Mind 与 Fast 推理代码已开源，Fast 权重已发布，报告中的 Murea-Pro 开放状态未确认。
 - [EdenLive](../wiki/entities/edenlive.md) — EdenLive 将上游引擎的状态推进与生成式画面渲染分开：根据参考视频、目标首帧和文本提示生成实时视觉流；官方开放实时推理代码及 5B / 14B 权重，也将机器人视角数据增强列为用途。
+- [Code World Model 2.0 / Invoker-Render](../wiki/entities/code-world-model-2-invoker-render.md) — 结构化 Proxy 定相机/物体运动，首帧与文本管外观，因果四步流式 DiT 渲染；与 EdenLive 并读，**非机器人动作策略**。
 
 ### 学完输出什么
 - 能解释"视频保真度高"为何不等于"动作可推断 / 可闭环"
