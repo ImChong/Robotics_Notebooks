@@ -386,6 +386,17 @@
       white-space: nowrap;
     }
     .chip:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+    /* 图标、文字与计数作为独立 flex 项排版，避免移动端原生按钮的行内基线绘制残留。 */
+    #filter-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex-shrink: 0;
+      overflow: hidden;
+      -webkit-appearance: none;
+      appearance: none;
+    }
     /* 工具栏图标用内联 SVG：U+26F6 等符号字符在缺字形的系统（如 Linux Chrome）上会显示成豆腐块 */
     .chip-icon { width: 1em; height: 1em; vertical-align: -0.15em; }
     .chip.is-running {
@@ -1521,6 +1532,7 @@
     /* ── 筛选按钮计数徽章 ── */
     .filter-count {
       display: inline-flex;
+      flex: 0 0 auto;
       align-items: center;
       justify-content: center;
       min-width: 18px;
@@ -1531,9 +1543,9 @@
       color: #191919;
       font-size: 11px;
       font-weight: 700;
-      margin-left: 3px;
       line-height: 1;
     }
+    .filter-count[hidden] { display: none; }
 
     /* ── 筛选浮窗面板 ── */
     .filter-panel[hidden] {
@@ -2030,8 +2042,8 @@
     <datalist id="graph-search-list"></datalist>
     <!-- 筛选按钮 -->
     <button id="filter-toggle" class="chip" title="按社区筛选">
-      <span>🔍</span>&nbsp;<span id="filter-label">筛选</span>
-      <span id="filter-count" class="filter-count" style="display:none"></span>
+      <span>🔍</span><span id="filter-label">筛选</span>
+      <span id="filter-count" class="filter-count" hidden></span>
     </button>
     <div class="toolbar-right">
       <span id="graph-node-count">加载中…</span>
@@ -5636,12 +5648,8 @@
         + ((focusedCommunityId || focusedType || focusedOpensource || focusedHealth !== null) ? 1 : 0)
         + (searchQuery ? 1 : 0);
       const countEl = document.getElementById('filter-count');
-      if (count > 0) {
-        countEl.textContent = count;
-        countEl.style.display = 'inline-flex';
-      } else {
-        countEl.style.display = 'none';
-      }
+      countEl.textContent = count > 0 ? String(count) : '';
+      countEl.hidden = count === 0;
     }
 
     /* ── 搜索 ── */
