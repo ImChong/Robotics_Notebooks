@@ -5,6 +5,7 @@
 - **代码：** <https://github.com/AdrianKruse/VINO>（仅仓库占位 README；训练/推理代码待发布）
 - **权重：** 项目页标注 “Weights (soon)”；**待发布**
 - **入库/复核日期：** 2026-11-13
+- **再次复核：** 2026-11-18，作者页 `Code` 仍链接 AdrianKruse/VINO；`Weights (soon)` 未变，尚无权重下载入口。
 - **一句话说明：** Volt 骨干上重设计 3D self-distillation 与视角一致 2D→3D 原型监督。
 - **源码开放程度：** **待发布**（仓库存在，但无可运行实现、无 checkpoint）。
 
