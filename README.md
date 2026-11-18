@@ -1,5 +1,7 @@
 # Robotics_Notebooks
 
+**语言 / Language：** [简体中文](README.md) | [English](README.en.md)
+
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
