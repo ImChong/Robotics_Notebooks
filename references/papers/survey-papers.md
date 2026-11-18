@@ -37,6 +37,7 @@
 
 - [DGM Robot Learning Survey](../../wiki/entities/paper-tro-manip-05-dgm-robot-learning-survey.md) — 扩散 / EBM / 流匹配等生成模型在 LfD 中的应用。
 - [VLA Survey](../../wiki/entities/paper-vla-survey-embodied.md) — 具身 VLA 的数据、架构、训练与评测。
+- [VLA 全生命周期综述（2611.18372）](../../wiki/entities/paper-vla-lifecycle-survey-2611-18372.md) — 模型四轴、训练两轴、部署一轴；88 项工作、22 个核心模型与公平评测。
 - [基础模型时代具身操作综述](../../wiki/entities/paper-embodied-manipulation-foundation-models-survey.md) — 高层规划 × 低层动作建模双轴。
 - [统一机器人学习综述](../../wiki/entities/paper-unified-robot-learning-survey.md)（TMLR 2026）— 表征 / VLA / 世界模型三轴耦合。
 - [Data Pyramid for Embodied Manipulation](../../wiki/entities/paper-data-pyramid-embodied-manipulation.md) — 具身数据五层金字塔。

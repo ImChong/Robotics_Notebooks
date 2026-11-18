@@ -56,6 +56,7 @@ flowchart LR
 
 ### 推荐读什么
 - [VLM / VLN / VLA / VLX / 世界模型分类学](../wiki/comparisons/vlm-vln-vla-vlx-world-model-taxonomy.md)
+- [VLA 全生命周期综述（2611.18372）](../wiki/entities/paper-vla-lifecycle-survey-2611-18372.md) — Stage 0 先用模型四轴、训练两轴、部署一轴统一选型语言，并核对成功率、鲁棒性与硬件时延口径。
 - [Foundation Policy](../wiki/concepts/foundation-policy.md) — VLA 的母概念页
 - [具身基础模型纵深](../wiki/overview/hub-embodied-foundation-model.md)
 - [Query：具身大模型家族分类学闭环](../wiki/queries/embodied-fm-taxonomy-loop.md)
