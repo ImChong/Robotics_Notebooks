@@ -120,6 +120,7 @@ flowchart LR
 - [Teleoperation 任务页](../wiki/tasks/teleoperation.md)
 - [数据与遥操作（loco-manip 161 分类）](../wiki/overview/loco-manip-161-category-07-data-teleop.md) 与 [Loco-Manip 8 篇数据入口技术地图](../wiki/overview/loco-manip-8-papers-technology-map.md)
 - [HumanoidMimicGen](../wiki/entities/paper-humanoidmimicgen.md) 与 [LEGS](../wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md)
+- [SUGARv2：合成交互参考驱动的视觉全身操作](../wiki/entities/paper-sugarv2-humanoid-interaction-reference.md) — 无初始遥操作示范，用任务模板生成机器人—物体轨迹与手部接触标签；对比本阶段的演示扩增路线（论文 §3.2）
 - [HALOMI](../wiki/entities/paper-halomi-humanoid-loco-manipulation.md) — 主动感知 + 无机器人示范
 
 ### 学完输出什么
@@ -148,6 +149,7 @@ flowchart LR
 
 ### 推荐读什么
 - [ResMimic](../wiki/entities/paper-resmimic.md) 与 [VisualMimic](../wiki/entities/paper-notebook-visualmimic.md)
+- [SUGARv2：合成参考 → 特权教师 → 视觉学生](../wiki/entities/paper-sugarv2-humanoid-interaction-reference.md) — 以共同的 reference-based mimic 奖励连接教师训练、蒸馏和 PPO；注意五任务策略分别训练（论文 §3.3、§4.1）
 - [CWI](../wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md) 与 [CoorDex](../wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md)
 - [SplitAdapter](../wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)
 - [Whole-Body Tracking Pipeline](../wiki/concepts/whole-body-tracking-pipeline.md)
