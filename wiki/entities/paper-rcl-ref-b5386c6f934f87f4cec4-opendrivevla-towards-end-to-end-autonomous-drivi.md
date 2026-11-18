@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: driving-opendrivevla
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
 updated: 2026-10-06
@@ -12,7 +13,12 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+original:
+  - ../../sources/papers/ad_top10_2026_opendrivevla.md
 sources:
+  - ../../sources/papers/ad_top10_2026_opendrivevla.md
+  - ../../sources/repos/ad_top10_2026_opendrivevla.md
+  - ../../sources/blogs/wechat_shenlan_ai_autonomous_driving_top10_2026.md
   - ../../sources/papers/rcl_awesome_wam_ref_b5386c6f934f87f4cec4_opendrivevla-towards-end-to-end-autonomo.md
   - ../../sources/papers/rcl_awesome_wam_catalog.md
   - ../../sources/repos/awesome-world-action-models-rcl.md
@@ -102,3 +108,48 @@ RCL Awesome WAM 清单收录（VLA）；细节以原文 PDF / 项目页为准。
 
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [原文](https://ojs.aaai.org/index.php/AAAI/article/view/38386)
+
+
+## 2026-11-18 官方原文复核与复现边界
+
+**层级视觉语言对齐到端到端轨迹。** 从三维场景感知与层级视觉语言对齐出发，经驾驶指令微调、agent-environment-ego交互理解，再进行轨迹规划训练。
+
+- **原始指标：** 官方发布推理评测代码及0.5B公开检查点，AAAI 2026。
+- **开源边界：** 官方 README 仍列训练脚本待发布，完整复训链路并未完全开源。
+- **官方运行入口：** ```bash scripts/eval_drivevla.sh checkpoints/DriveVLA-Qwen2.5-0.5B-Instruct 1```。
+
+### 复核流程图
+
+```mermaid
+flowchart LR
+  Camera[道路视觉与3D信息] --> Align[层级视觉语言对齐]
+  Align --> QA[驾驶指令及交互理解]
+  QA --> Planner[轨迹规划头]
+  Planner --> Traj[驾驶轨迹]
+```
+
+### 源码运行时序图（依据README公开入口）
+
+```mermaid
+sequenceDiagram
+  actor User as 开发者
+  participant Entry as scripts/eval_drivevla.sh
+  participant Model as DriveVLA checkpoint
+  participant Runtime as Inference
+  participant Result as Evaluation
+  User->>Entry: 根据官方README运行
+  Entry->>Model: 加载配置与数据
+  Model->>Runtime: 执行公开的训练或推理流程
+  Runtime->>Result: 输出模型结果
+  Result-->>User: 返回评测或轨迹
+```
+
+本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_opendrivevla.md)和[代码入口](../../sources/repos/ad_top10_2026_opendrivevla.md)。
+
+## 工程实践
+
+官方运行入口及数据限制见上一节；需按实际硬件与数据版本配置。
+
+## 局限与风险
+
+官方 README 仍列训练脚本待发布，完整复训链路并未完全开源。

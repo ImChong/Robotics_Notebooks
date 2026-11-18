@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: driving-drivewam
 tags: [paper, curated-index, awesome-world-action-models-rcl, rcl-wam-catalog]
 status: complete
 updated: 2026-10-06
@@ -13,7 +14,12 @@ related:
   - ../methods/vla.md
   - ../tasks/manipulation.md
   - ../tasks/locomotion.md
+original:
+  - ../../sources/papers/ad_top10_2026_drivewam.md
 sources:
+  - ../../sources/papers/ad_top10_2026_drivewam.md
+  - ../../sources/repos/ad_top10_2026_drivewam.md
+  - ../../sources/blogs/wechat_shenlan_ai_autonomous_driving_top10_2026.md
   - ../../sources/papers/rcl_awesome_wam_2605_28544_drivewam-video-generative-priors-enable.md
   - ../../sources/papers/rcl_awesome_wam_catalog.md
   - ../../sources/repos/awesome-world-action-models-rcl.md
@@ -129,3 +135,50 @@ We present DriveWAM, a driving world-action model that adapts a pretrained video
 
 - [Awesome World-Action Models (RCL) 仓库](https://github.com/rcl-robotics/Awesome-World-Action-Models)
 - [原文](https://arxiv.org/abs/2605.28544)
+
+
+## 2026-11-18 官方原文复核与复现边界
+
+**视频生成先验的世界动作联合建模。** 把历史视频与动作组织为时序潜变量，在预训练视频DiT中联合生成未来视频与动作；冻结VLM提供块级场景引导，选择性KV记忆管理长时上下文。
+
+- **原始指标：** 官方代码提供NAVSIM及PhysicalAI-Autonomous-Vehicles训练与评测入口。
+- **开源边界：** 生成画面不是物理精确的交通仿真；KV记忆预算与自回归累积误差会限制长期性能。
+- **官方运行入口：** ```python -m src.navsim.process_data --output-path ./data/navsim/trainval```、```bash scripts/drivewam_navsim_train.sh```、```python -m src.navsim.eval```。
+
+### 复核流程图
+
+```mermaid
+flowchart LR
+  Video[历史视频] --> DiT[视频DiT]
+  Actions[历史动作] --> DiT
+  VLM[冻结VLM导航引导] --> DiT
+  KV[选择性KV记忆] <--> DiT
+  DiT --> Future[未来视频块]
+  Future --> Action[动作轨迹]
+```
+
+### 源码运行时序图（依据README公开入口）
+
+```mermaid
+sequenceDiagram
+  actor User as 开发者
+  participant Entry as scripts/drivewam_navsim_train.sh
+  participant Model as Video DiT
+  participant Runtime as KV memory
+  participant Result as Action generator
+  User->>Entry: 根据官方README运行
+  Entry->>Model: 加载配置与数据
+  Model->>Runtime: 执行公开的训练或推理流程
+  Runtime->>Result: 输出模型结果
+  Result-->>User: 返回评测或轨迹
+```
+
+本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_drivewam.md)和[代码入口](../../sources/repos/ad_top10_2026_drivewam.md)。
+
+## 工程实践
+
+官方运行入口及数据限制见上一节；需按实际硬件与数据版本配置。
+
+## 局限与风险
+
+生成画面不是物理精确的交通仿真；KV记忆预算与自回归累积误差会限制长期性能。

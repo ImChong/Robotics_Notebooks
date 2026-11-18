@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: driving-diffusiondrive
 tags:
   - paper
   - autonomous-driving
@@ -22,7 +23,12 @@ related:
   - ./paper-m4world.md
   - ../methods/vla.md
   - ./paper-foredrive.md
+original:
+  - ../../sources/papers/ad_top10_2026_diffusiondrive.md
 sources:
+  - ../../sources/papers/ad_top10_2026_diffusiondrive.md
+  - ../../sources/repos/ad_top10_2026_diffusiondrive.md
+  - ../../sources/blogs/wechat_shenlan_ai_autonomous_driving_top10_2026.md
   - ../../sources/blogs/wechat_shenlan_ai_ad_e2e_top10.md
   - ../../sources/papers/e2e_ad_diffusiondrive.md
   - ../../sources/repos/hustvl_diffusiondrive.md
@@ -167,3 +173,40 @@ sequenceDiagram
 
 - 论文 PDF：<https://arxiv.org/pdf/2411.15139.pdf>
 - 官方代码：<https://github.com/hustvl/DiffusionDrive>
+
+
+## 2026-11-18 官方原文复核与复现边界
+
+**多模态轨迹锚点与截断扩散。** 先提出多峰锚点轨迹，在锚点周围加噪后使用短程截断扩散去噪生成多条规划轨迹。
+
+- **原始指标：** 论文报告NAVSIM 88.1 PDMS，约2步去噪及RTX4090约45FPS的测试条件。
+- **开源边界：** 锚点质量会限制覆盖度；NAVSIM并非真实交互驾驶的全面安全验证。
+- **官方运行入口：** ```按官方README Getting Started和NAVSIM配置运行训练与评测```。
+
+### 复核流程图
+
+```mermaid
+flowchart LR
+  Obs[场景观测] --> Anchor[多模态锚点]
+  Anchor --> Noise[锚点邻域采样]
+  Noise --> Short[短步扩散去噪]
+  Short --> Plan[规划轨迹]
+```
+
+### 源码运行时序图（依据README公开入口）
+
+```mermaid
+sequenceDiagram
+  actor User as 开发者
+  participant Entry as 官方 README Getting Started
+  participant Model as Trajectory anchors
+  participant Runtime as Truncated diffusion
+  participant Result as NAVSIM PDMS
+  User->>Entry: 根据官方README运行
+  Entry->>Model: 加载配置与数据
+  Model->>Runtime: 执行公开的训练或推理流程
+  Runtime->>Result: 输出模型结果
+  Result-->>User: 返回评测或轨迹
+```
+
+本次核验是静态分析，不声称在GPU上执行。详见[论文核对](../../sources/papers/ad_top10_2026_diffusiondrive.md)和[代码入口](../../sources/repos/ad_top10_2026_diffusiondrive.md)。
