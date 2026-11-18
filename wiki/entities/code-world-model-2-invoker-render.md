@@ -79,8 +79,8 @@ flowchart TD
   DIT --> LATENT["当前生成的视频 latent"]
   LATENT --> DEC["因果解码与 RGB 交付"]
   DEC --> OUT["与 Proxy 运动对齐的视频流"]
-  DIT -. "提交 clean 历史与条件" .-> HIST
-  PROXY -. "按下一块继续输入" .-> ENC
+  DIT -.->|"提交 clean 历史与条件"| HIST
+  PROXY -.->|"按下一块继续输入"| ENC
 ```
 
 ### 源码运行时序图
