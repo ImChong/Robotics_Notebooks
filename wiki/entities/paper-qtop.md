@@ -86,7 +86,7 @@ u_t = F_\psi(\hat G_t \mid \mathbf{o}_t), \qquad
 
 ## 流程总览
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
     data["AMASS + LAFAN1 参考动作"] --> ret["GMR 重定向<br/>Unitree G1 关节参考"]
     ret --> sim["mjlab 并行跟踪 rollout"]
@@ -100,11 +100,11 @@ flowchart TD
     mix --> ppo["PPO clipped 更新 + Muon"]
     ppo --> policy
     policy --> real["部署 G1 动作回放<br/>50 Hz 推理，仅 Actor"]
-\`\`\`
+```
 
 ## 源码运行时序图
 
-**不适用（截至 2026-11-18）**：论文 arXiv v1 未给出 QTOP 官方训练/部署仓库及可执行入口。论文使用的 [mjlab](./mjlab.md) 是通用仿真框架，不可将其 CLI 当作 QTOP 实际运行路径；官方代码公开后再阅读 README 与脚本并补充 \`sequenceDiagram\`。
+**不适用（截至 2026-11-18）**：论文 arXiv v1 未给出 QTOP 官方训练/部署仓库及可执行入口。论文使用的 [mjlab](./mjlab.md) 是通用仿真框架，不可将其 CLI 当作 QTOP 实际运行路径；官方代码公开后再阅读 README 与脚本并补充 `sequenceDiagram`。
 
 ## 工程实践
 
