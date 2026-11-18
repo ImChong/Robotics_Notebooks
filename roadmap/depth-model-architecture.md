@@ -126,6 +126,7 @@ flowchart LR
 ### 推荐读什么
 - [视觉骨干](../wiki/concepts/vision-backbones.md) · [Vision Transformer](../wiki/concepts/vision-transformer.md) · [CNN vs ViT 骨干选型](../wiki/comparisons/cnn-vs-vit-backbones.md)
 - [策略的视觉表征](../wiki/concepts/visual-representation-for-policy.md) — 端到端 / 冻结骨干 / 机器人专用表征三条路径的取舍
+- [Volt](../wiki/entities/paper-volt.md) → [VINO](../wiki/entities/paper-vino.md) — 从 3D 体积 Transformer 骨干到冻结点云自监督表征；VINO 提供分割和跨域配准特征评测，不等同于可直接上机的 SLAM / 控制策略（VINO 官方训练代码仍待发布）
 - [Segment Anything](../wiki/entities/paper-segment-anything.md) — 用可提示掩码理解视觉基础模型的输出接口，区分缓存图像编码后的提示延迟与整条感知链。
 - [OV-SAM3D](../wiki/entities/ov-sam3d.md) · [OVO](../wiki/entities/ovo-semantic-mapping.md) · [2D→3D 语义提升 Gap](../wiki/concepts/2d-to-3d-semantic-lifting-gap.md) — 对照离线多视角提升与在线语义地图，检查位姿、身份关联和异步更新如何改变策略输入。
 - [地形潜表征](../wiki/concepts/terrain-latent-representation.md) — 编码器输出不必可读，只需支撑正确落脚
