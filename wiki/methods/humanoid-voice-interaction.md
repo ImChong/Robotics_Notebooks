@@ -2,12 +2,13 @@
 type: method
 tags: [speech, hri, humanoid, asr, tts, llm, vln, interaction]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-19
 related:
   - ../overview/large-model-empowered-humanoids.md
   - ../tasks/vision-language-navigation.md
   - ../entities/paper-qwen-audio-agent.md
   - ../entities/paper-pace-persona-adaptation.md
+  - ../entities/paper-through-human-eyes-humanoid-acceptance.md
   - ../entities/paper-moshi-speech-text-realtime-dialogue.md
   - ../entities/paper-moss-transcribe-diarize.md
   - ../entities/paper-xiaomi-cocktailasr-1.md
@@ -155,7 +156,8 @@ flowchart LR
 - [OpenLess](../entities/openless.md) — 桌面端 ASR→润色→光标注入（研究写作/Prompt 口述；**非**机载语音助手）
 - [Moshi：全双工语音对话模型](../entities/paper-moshi-speech-text-realtime-dialogue.md) — 连续双流语音与对齐文本生成；不直接控制机器人动作。
 - [Qwen-Audio-Agent](../entities/paper-qwen-audio-agent.md) — 开源全双工语音 harness：前台对话与后台 Agent 异步任务编排
-- [PACE：对话引导人格适配](../entities/paper-pace-persona-adaptation.md) — 在社交机器人语音链路上增加 PersonaSpec 编译与表情同步
+- [PACE：对话引导人格适配](../entities/paper-pace-persona-adaptation.md)
+- [Through human eyes：人形机器人接受度](../entities/paper-through-human-eyes-humanoid-acceptance.md) — 多模态感知、拟人化预期和重复交互对用户接受度的影响（原文待核读） — 在社交机器人语音链路上增加 PersonaSpec 编译与表情同步
 
 ## 参考来源
 
