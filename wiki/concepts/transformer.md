@@ -3,7 +3,7 @@ type: concept
 status: complete
 summary: "Transformer 用自注意力替代循环与卷积，凭可并行与长程依赖成为现代序列建模与机器人基础策略（VLA、ACT、扩散策略骨干）的通用架构底座。"
 description: Transformer 架构的核心机制（缩放点积注意力、多头注意力、位置编码）及其在机器人具身学习中的角色。
-updated: 2026-11-16
+updated: 2026-11-18
 related:
   - ../entities/paper-attention-is-all-you-need.md
   - ../entities/transformer-cv-curriculum.md
@@ -19,6 +19,8 @@ related:
   - ../entities/zju-foundations-of-llms.md
   - ../entities/andrej-karpathy.md
   - ../entities/paper-effective-degree.md
+  - ../entities/paper-higr-tencent-slate-recommendation.md
+  - ../entities/paper-tgr-tencent-generative-recommendation.md
 original:
   - ../../sources/papers/attention_is_all_you_need.md
   - ../../sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md
@@ -115,6 +117,8 @@ $n<d$ 时自注意力层比循环层更省；$n$ 很大时需受限自注意力�
 - **模仿学习**：BC with Transformer 与 [动作分块（ACT）](../methods/action-chunking.md) 用注意力把演示序列映射为动作块。
 - **VLA / 通用策略**：[Robotics Transformer（RT 系列）](../methods/robotics-transformer-rt-series.md) 将视觉-语言-动作统一为注意力建模。
 
+- **跨域系统参照（非机器人验证）**：腾讯 [HiGR](../entities/paper-higr-tencent-slate-recommendation.md) 用 Transformer 分层规划列表并局部解码 SID；[TGR](../entities/paper-tgr-tencent-generative-recommendation.md) 用 CCFormer、BARGE/HiGR、离线 Reason tokens 分担排序/生成/服务职责。它们验证的是在线推荐，不是机器人控制时延或动作性能。
+
 ## 局限与风险
 
 - **$O(n^2)$ 代价：** 自注意力每层 $O(n^2 d)$，长序列/高分辨率下显存与算力先崩；原文只提出受限邻域注意力作为方向，未实验。
@@ -136,6 +140,8 @@ $n<d$ 时自注意力层比循环层更省；$n$ 很大时需受限自注意力�
 - [LLMs-from-scratch（Raschka）](../entities/llms-from-scratch-raschka.md)
 - [Andrej Karpathy](../entities/andrej-karpathy.md)
 - [Effective Degree](../entities/paper-effective-degree.md) — ViT / BERT 上用路径多项式正则提升泛化（ICML 2026）
+- [HiGR](../entities/paper-higr-tencent-slate-recommendation.md) — 推荐列表的层次生成与对齐（跨域对照）
+- [TGR](../entities/paper-tgr-tencent-generative-recommendation.md) — 生成式推荐生产技术栈（跨域对照）
 
 ## 参考来源
 - [Sebastian Raschka：现代 LLM 位置编码教程（2026-11-15）](../../sources/blogs/raschka_understanding_positional_embeddings_2026_11_15.md)
