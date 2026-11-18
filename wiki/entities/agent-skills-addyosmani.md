@@ -59,7 +59,7 @@ summary: "Agent Skills（addyosmani/agent-skills）是 Addy Osmani 维护的 25 
 - **stars 高 ≠ 机器人栈开箱即用：** 示例与 checklist 偏 **Web/TS 应用工程**；迁移到 Isaac / MuJoCo / ROS 时需重写 CONSTRAINTS 与测试证据类型。
 - **应用重建工作流对照：** [Replica Skill](replica-skill.md) 专注竞品功能调研、clean-room 重建与产品化；适合比较编码代理如何处理「观察目标 → 实现新产品」任务，不能替代机器人软件的安全验证。
 
-## 核心结构
+## 核心原理
 
 | 层次 | 内容 |
 |------|------|
