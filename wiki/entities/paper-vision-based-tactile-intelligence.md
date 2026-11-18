@@ -1,5 +1,6 @@
 ---
 type: entity
+project_id: vision-based-tactile-intelligence-2608-15490
 tags:
   - paper
   - survey
@@ -7,9 +8,19 @@ tags:
   - tactile-foundation-model
   - sim-to-real
   - tactile-datasets
+  - gbu
+  - hku
+  - tsinghua
+  - ntu
+  - polyu
+  - scut
+  - kth
+  - kcl
 status: complete
-updated: 2026-09-23
+updated: 2026-11-18
 arxiv: "2608.15490"
+original:
+  - ../../sources/papers/vision_based_tactile_intelligence_arxiv_2608_15490.md
 venue: "arXiv 2026"
 summary: "Vision-Based Tactile Intelligence 综述（arXiv:2608.15490）：VBTS 硬件 taxonomy + 分层触觉学习 + 仿真/数据集/sim2real scaling 一体化框架；无独立代码；锚定 Sparsh/AnySkin/VTLA 等本批节点。"
 related:
@@ -27,9 +38,9 @@ sources:
   - ../../sources/papers/vision_based_tactile_intelligence_arxiv_2608_15490.md
 ---
 
-# Vision-Based Tactile Intelligence：VBTS 综述（arXiv:2608.15490）
+# 面向机器人的视觉式触觉智能：感知、学习与具身操作（Vision-Based Tactile Intelligence for Robotics: Sensing, Learning, and Embodied Manipulation）
 
-**Vision-Based Tactile Intelligence for Robotics: Sensing, Learning, and Embodied Manipulation**（[arXiv:2608.15490](https://arxiv.org/abs/2608.15490)，Peng Zhou 等 · **港大 / 清华 / NTU / KTH** 等多机构）将 VBTS **硬件 taxonomy**、**分层触觉智能学习** 与 **仿真–数据集–sim2real** scaling 层作为 **一体化 sensing-and-learning 系统** 综述，并讨论 open challenges。
+**Vision-Based Tactile Intelligence for Robotics: Sensing, Learning, and Embodied Manipulation**（[arXiv:2608.15490v1](https://arxiv.org/abs/2608.15490)，2026-08-16；Peng Zhou 等 15 位作者，8 家机构）将 VBTS **硬件 taxonomy**、**分层触觉智能学习** 与 **仿真–数据集–sim2real** scaling 层作为 **一体化 sensing-and-learning 系统** 综述，并讨论 open challenges。
 
 ## 一句话定义
 
@@ -50,10 +61,16 @@ sources:
 
 | 项 | 内容 |
 |----|------|
-| 类型 | **Survey**（arXiv 2026） |
-| 机构 | Great Bay University；HKU；Tsinghua；NTU；PolyU；KTH；KCL 等 |
-| 配套代码 | **无**（综述未给官方 GitHub） |
+| 类型 | **Survey**（arXiv:2608.15490v1，2026-08-16） |
+| 机构 | 大湾区大学、香港大学、清华大学、南洋理工大学、香港理工大学、华南理工大学、KTH 皇家理工学院、伦敦国王学院 |
+| 配套代码 | **未列官方可运行实现**（截至 2026-11-18 复核 arXiv HTML；文中引用了第三方仓库） |
 | 引用开源资源 | Sparsh、GelSight、DIGIT、TacBench 等第三方 |
+
+## 作者与机构（按原文核对）
+
+- **15 位作者：** Peng Zhou、Jun Hu、Sihan Chen、Zeqing Zhang、Haofei Ma、Zhenyu Lu、Sichao Liu、Xueqian Wang、Pai Zheng、Xiang Li、Shan Luo、Jia Pan、David Navarro-Alarcon、Chenguang Yang、Michael Yu Wang。
+- **8 家机构：** 大湾区大学（Great Bay University）、香港大学（HKU）、清华大学（Tsinghua University）、南洋理工大学（NTU）、香港理工大学（PolyU）、华南理工大学（SCUT）、KTH 皇家理工学院、伦敦国王学院（KCL）。
+- **论文性质：** 领域综述，整理和比较所引用研究成果；论文没有提供统一自研模型的训练结果，也不应将引用工作的数字写成综述自身实验结果。
 
 ## 为什么重要
 
@@ -71,6 +88,17 @@ sources:
 | **贡献 3 — Scaling 层** | 仿真平台、触觉数据集、sim2real、**cross-sensor adaptation** |
 | **信息层级** | 直接几何 / 间接力相关 / 时序动态（滑移、接触转移） |
 | **§VI Open challenges** | benchmark、泛化、实时、数据、VLA 融合等 |
+
+## 四类视觉触觉光学读出（Table I）
+
+| 机制 | 代表传感器 | 主要优势 | 关键约束 |
+|---|---|---|---|
+| Marker tracking | DM-Tac、TacTip | 位移可解释，方便读剪切与滑移 | 标记点密度、跟踪精度 |
+| Photometric stereo | GelSight、DIGIT | 高分辨率表面法线、微纹理与几何 | 照明设计与光度标定 |
+| Stereo vision | GelStereo | 多视角视差恢复度量 3D | 多相机集成与标定复杂度 |
+| Shading-based | TacShade、RainbowSight | 非理想光照和曲面光学下灵活重建 | 形状推断歧义、模型依赖 |
+
+**硬件选择的原文结论（§III-D）：** 不存在适用所有任务的通用 VBTS 架构。柔软弹性体提高敏感度可能降低耐久性；丰富光学通道可增加观测维度，但会增加体积、同步和带宽需求。
 
 ## 流程总览
 
@@ -99,6 +127,14 @@ flowchart TB
   data --> learn
   s2r --> pol
 ```
+
+## 面向接触操作的工程读法（据原文 §IV–VI 提炼）
+
+1. **先定义要观测的接触量**：单帧几何/纹理，标定依赖的法向或切向力，还是依赖连续帧的滑移与接触事件；不同目标决定弹性体、成像和采样需求。
+2. **再确定策略接入层**：力/滑移反馈可服务实时闭环；触觉表征可与视觉、本体感觉及语言做融合；VTLA 需要可对齐的时间序列和动作监督。
+3. **仿真与数据匹配**：TACTO/Taxim 偏触觉图像生成，DiffTactile 偏可微接触优化，Taccel 偏并行训练；评测可参考 TacBench、ManiFeel，不能将这些资源的任务和传感器覆盖视为相同。
+4. **关注实际部署约束**：指尖空间、耐久与布线、光学漂移、标定频率、图像带宽/延迟、跨传感器迁移及示教触觉反馈。
+5. **验证方法边界**：本文为综述，具体成功率、时延和迁移精度须回到被引用工作的原文逐项核对，不能直接归属本文。
 
 ## 评测与指标
 
@@ -135,6 +171,12 @@ flowchart TB
 
 **不适用**（综述 **无** 官方配套代码仓；所引 Sparsh、AnySkin 等第三方开源见各实体页 [`paper-sparsh.md`](./paper-sparsh.md)、[`painode-146-anyskin.md`](./painode-146-anyskin.md)）。
 
+## 原文核对记录
+
+- **原文：** [arXiv:2608.15490v1 HTML](https://arxiv.org/html/2608.15490v1)（2026-08-16）；2026-11-18 复核 §I–VII、Fig. 1–5 说明与 Table I–IV。
+- **开源判断：** 当前没有从该综述原文找到官方独立项目主页或运行代码仓；所引用的 Sparsh、Taccel、TACTO 等是其他成果，不构成本综述的官方实现。
+- **Mermaid 说明：** 上方是依据综述章节关系整理的**知识结构流程图**，不是论文宣称的某个可执行策略网络；没有官方运行入口，故不存在可依据源码核对的运行时序图。
+
 ## 局限与风险
 
 - 2026 年初版；VTLA 领域迭代快，新工作需补 [九篇地图](../overview/tactile-intelligence-nine-papers-map.md)。
@@ -153,7 +195,7 @@ flowchart TB
 
 ## 参考来源
 
-- [Vision-Based Tactile Intelligence 论文归档（arXiv:2608.15490）](../../sources/papers/vision_based_tactile_intelligence_arxiv_2608_15490.md)
+- [Vision-Based Tactile Intelligence 论文原文归档及复核记录（arXiv:2608.15490v1）](../../sources/papers/vision_based_tactile_intelligence_arxiv_2608_15490.md)
 
 ## 推荐继续阅读
 
