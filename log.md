@@ -482,6 +482,11 @@ op: ingest
 - 提供基于公开入口的 Mermaid 项目流程图、源码时序图；与 EdenLive 双向链接，并挂载 WAM 纵深路线的 Stage 1 世界基座对照。
 - 仅核读官方 README、官网、模型卡、部署文档和入口源码；仓库的技术报告 PDF 尚未完整读取，训练方法与数据未开放，GPU 未实测。
 
+## [2026-11-18] ingest | sources/papers/diplo-self-distilled-diffusion-planning_arxiv_2610_24847.md — 收录 DiPLO 自蒸馏扩散全身搬运规划
+
+- 核对论文 arXiv:2610.24847v1 全文及项目页，建立唯一独立论文详情、Mermaid 数据/控制流程与 Loco-Manipulation Stage 4 导航。
+- 区分仿真存活条件成功率 98.8%、G1 真机 10/10+5/5 和外部 mocap；网站源码不是训练推理代码，数据可得性待核实。
+
 ## [2026-11-18] ingest | HiGR v5（CIKM 2026）与 TGR 推荐技术栈
 
 - 意图：将两篇独立腾讯推荐技术论文分别入库，保留 HiGR 与上层 TGR 架构之间的清晰身份与交叉引用。
