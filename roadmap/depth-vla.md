@@ -163,6 +163,7 @@ flowchart LR
 - 对比"有 / 无人类视频预训练"的下游微调差距（读论文实验即可）
 
 ### 推荐读什么
+- [ScaleVLA：552B 视觉语言骨干的动作化](../wiki/entities/paper-scalevla-2611-21607.md) — 对照十条演示 LIBERO-Goal 87.8%、LIBERO-PRO 45.1% 与单动作块 216 ms，分别核查规模、少样本与推理硬件。
 - [SALA](../wiki/entities/paper-sala-latent-actions.md) — 人类视频潜在动作的无配对语义对齐，连接机器人控制锚点与预/后训练扩展
 - [VLA 开源复现全景 2025](../wiki/overview/vla-open-source-repro-landscape-2025.md)
 - [具身数据金字塔综述](../wiki/entities/paper-data-pyramid-embodied-manipulation.md) — 五层数据生态 × 六维属性的类目级坐标系；「该补哪一层数据」的选型框架

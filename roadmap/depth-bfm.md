@@ -113,6 +113,7 @@ flowchart LR
 - 对比"单片段模仿"与"全库跟踪"策略在未见动作上的表现
 
 ### 推荐读什么
+- [XMimic & XSoma（arXiv:2611.20452）](../wiki/entities/paper-xmimic-xsoma-2611-20452.md) — 用可微世界模型和 JAX 多卡缩短 G1 参考跟踪 / 地形速度跟踪达标时间；与原 [XMimic 独立工作](../wiki/entities/paper-xmimic-jax.md) 区分论文版本与训练目标。
 - 谱系锚点：[DeepMimic](../wiki/methods/deepmimic.md)、[ASE](../wiki/methods/ase.md)、[PHC](../wiki/entities/phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)
 - [SONIC](../wiki/entities/nvidia-sonic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 工程可用的跟踪基座
 - [Teacher-Student 多动作 BFM 学习](../wiki/methods/teacher-student-multi-skill-bfm.md) — BFM 三线之一：特权教师在仿真中学多参考动作跟踪，再蒸馏为单一可部署学生
