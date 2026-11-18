@@ -19,6 +19,8 @@ related:
   - ./openclaw.md
   - ./agent-reach.md
   - ../concepts/model-context-protocol.md
+  - ../methods/coding-agent-verification-loops.md
+  - ../tasks/teleoperation.md
 sources:
   - ../../sources/repos/phone-harness.md
   - ../../sources/sites/phone-harness.md
@@ -149,6 +151,8 @@ sequenceDiagram
 - [OpenClaw](openclaw.md) — 具有官方插件集成的代理宿主。
 - [Agent Reach](agent-reach.md) — 外网访问与检索工具，与手机端交互互补。
 - [Model Context Protocol](../concepts/model-context-protocol.md) — Cloud MCP 的宿主协议层。
+- [Coding Agent 验证闭环](../methods/coding-agent-verification-loops.md) — 手机 UI 自动化可作为 Agent 端到端行为验证的执行面；该方法页提供证据链与验收闭环，不代表 Phone Harness 自带验证器。
+- [Teleoperation（遥操作）](../tasks/teleoperation.md) — 对照手机远程 UI 操作与机器人本体遥操作；两者都涉及远端动作与反馈，但执行对象、实时性和安全约束不同。
 
 ## 参考来源
 
