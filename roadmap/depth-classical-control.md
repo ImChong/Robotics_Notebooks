@@ -158,6 +158,7 @@ flowchart LR
 - [HQP](../wiki/concepts/hqp.md)
 - [零空间控制](../wiki/concepts/null-space-control.md) — 7 轴显式投影；HQP 是其不等式升级
 - [MPC-WBC 集成](../wiki/concepts/mpc-wbc-integration.md)
+- [hunter_bipedal_control｜双足 SQP-MPC + WBC](../wiki/entities/cn-os-hunter-bipedal-control.md) — 以 EC-Hunter80-V01 为例追踪 OCS2 MPC、Kalman 状态估计、WeightedWbc 与 Gazebo/MuJoCo/真机 ROS1 接口
 - [State Estimation](../wiki/concepts/state-estimation.md) 与 [Contact Estimation](../wiki/concepts/contact-estimation.md)
 - [Query：WBC 实现指南](../wiki/queries/wbc-implementation-guide.md) 与 [Query：WBC 调参指南](../wiki/queries/wbc-tuning-guide.md)
 - [重力补偿](../wiki/concepts/gravity-compensation.md) — 真机落地前的悬空 $\tau=g(q)$ 验收
