@@ -3,7 +3,7 @@ type: entity
 tags: [curated-list, physical-ai, embodied-ai, vla, world-models, sim2real, robotics-foundation-models]
 topic: [ecosystem]
 status: complete
-updated: 2026-11-06
+updated: 2026-11-18
 related:
   - ../methods/vla.md
   - ../concepts/sim2real.md
@@ -86,6 +86,7 @@ summary: "natnew 维护的工程导向 Physical AI 资源地图：14 canonical �
 
 ## 关联页面
 
+- [Upstar Robotics 增长榜](./upstar-robotics.md) — 按 Star 增长速度发现最新机器人仓库，补充静态策展地图的时效性
 - [Physical AI 技术地图](../overview/awesome-physical-ai-technology-map.md)
 - [awesome-physical-ai（aichr）](./awesome-physical-ai-aichr.md)
 - [Physical AI 策展清单对比](../comparisons/awesome-physical-ai-curated-lists.md)
