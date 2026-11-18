@@ -9,7 +9,7 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-10-15
+updated: 2026-11-18
 related:
   - ./code-review-skill.md
   - ./find-skills-skill.md
@@ -28,6 +28,7 @@ related:
   - ./darwin-skill.md
   - ./superpowers-obra.md
   - ./agent-skills-addyosmani.md
+  - ./michael-denyer-pstack-claude.md
   - ./caveman.md
   - ./hermes-agent.md
   - ./sensenova-skills.md
@@ -122,6 +123,7 @@ flowchart TD
 - [Code Review Skill（awesome-skills）](code-review-skill.md) — 专注 PR 四阶段代码审查、按需语言指南及差异风险预分析
 
 - [Superpowers（obra）](superpowers-obra.md) — **重流程、可强制** 的编码交付技能库（worktree、子代理评审）
+- [pstack-claude（Michael Denyer）](michael-denyer-pstack-claude.md) — poteto-mode 调度跨 harness 的架构、对抗评审、验证与 PR 管理流程
 - [Agent Skills（Addy Osmani）](agent-skills-addyosmani.md) — **全 SDLC 技能包**（25 skills + 9 commands）；上游 [comparison.md](https://github.com/addyosmani/agent-skills/blob/main/docs/comparison.md) 与本页、Superpowers 三角对照
 - [Ponytail](ponytail.md) — **少写代码** 必要性阶梯（与 grill/TDD 正交）
 - [Caveman](caveman.md) — **独立上游** 的输出/上下文压缩插件（与本库同名 skill 对照）

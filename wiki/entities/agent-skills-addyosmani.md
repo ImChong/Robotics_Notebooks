@@ -8,10 +8,11 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 related:
   - ./superpowers-obra.md
   - ./mattpocock-skills.md
+  - ./michael-denyer-pstack-claude.md
   - ./open-code-review.md
   - ./humanlayer-skills.md
   - ./hermes-agent.md
@@ -26,6 +27,8 @@ related:
 sources:
   - ../../sources/repos/addyosmani-agent-skills.md
   - ../../sources/sites/skills-addy-ie.md
+original:
+  - ../../sources/repos/addyosmani_agent_skills_reading_20261118.md
 summary: "Agent Skills（addyosmani/agent-skills）是 Addy Osmani 维护的 25 项生产级编码代理技能包：9 个生命周期 slash 命令映射 DEFINE→SHIP 全 SDLC，每项 SKILL.md 含流程步骤、anti-rationalization 与 evidence 出口；嵌入 Google 工程实践，经 npx skills 或 Claude/Codex marketplace 安装，与 Superpowers、mattpocock/skills 形成三角对照。"
 ---
 
@@ -149,6 +152,7 @@ sequenceDiagram
 
 - [Answer with HTML](./answer-me-with-html.md) — Markdown 草稿到可离线阅读的单页解释页
 
+- [pstack-claude（Michael Denyer）](michael-denyer-pstack-claude.md) — 以 poteto-mode 路由、并行评审及可执行验证为主的跨 harness 移植
 - [Superpowers（obra）](superpowers-obra.md) — 子代理 + worktree + 强制 TDD 管线
 - [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 轻量 grill/TDD/CONTEXT 组合
 - [Open Code Review（Alibaba OCR）](open-code-review.md) — diff 级评审 CLI
