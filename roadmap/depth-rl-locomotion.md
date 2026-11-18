@@ -115,6 +115,7 @@ flowchart LR
 - 调一调 reward weight 看看对步态的影响
 
 ### 推荐读什么
+- [XSoma：可微世界模型的 G1 粗糙地形速度跟踪](../wiki/entities/paper-xmimic-xsoma-2611-20452.md) — 联合论文中的 locomotion 部分，四卡 H100 训练约 0.77 分钟达 Holosoma 指标；不包含启动/编译与真机部署。
 - "Emergence of Locomotion Behaviours in Rich Environments" (Heess et al., 2017)
 - [legged_gym](../wiki/entities/legged-gym.md) 与 [Isaac Lab](../wiki/entities/isaac-lab.md)（实体页 + 官方代码）
 - [RSL-RL](../wiki/entities/rsl-rl.md)（ETH RSL × NVIDIA）— legged_gym / Isaac Lab / mjlab 默认后端的那一份 GPU PPO 实现，PPO 与蒸馏共用同一套 runner 抽象；读它才知道训练脚本里几行 runner 配置到底在做什么，可选 BF16 autocast 单次 update 2.39×、显存 −33%；BSD-3-Clause 已开源

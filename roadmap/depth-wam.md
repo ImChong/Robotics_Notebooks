@@ -89,6 +89,7 @@ flowchart LR
 - 在纸上画出一条 Cascaded 管线的信息流：观测 → 未来表征 → IDM / 动作头 → 控制
 
 ### 推荐读什么
+- [JEPA4R：单深度点云 4D 潜空间规划](../wiki/entities/paper-jepa4r-2611-19771.md) — 以公制点云和 action-conditioned JEPA 预测构建空间世界模型；训练/规划使用几何潜状态，不等于视频生成式 Joint WAM。
 - [PixVid：逐帧像素视频生成](../wiki/entities/paper-pixvid-back-to-pixels.md) — 作为视频世界模型的**逐帧渲染架构对照**：像素 patch + 因果 detailer 消除时空 VAE 的块级动作等待；测的是相机控制到屏幕延迟，不是机器人动作头或物理一致性。
 - [Generative World Models](../wiki/methods/generative-world-models.md)
 - [Model-Based RL](../wiki/methods/model-based-rl.md)
@@ -170,6 +171,7 @@ flowchart LR
 - 对照 ABot-M0.5 的 Dream Forcing：解释自生成视频 latent 上训逆动力学在对齐什么
 
 ### 推荐读什么
+- [ResWAM：冻结 DINOv3 上的未来视觉残差](../wiki/entities/paper-reswam-2611-19559.md) — 用特征变化代替整帧未来监督，0.5B 双流 DiT 同训动作与未来残差；区分 2.3B 总参数与 92.7 ms 真机延迟。
 - [WATO：可微优化训练联合 WAM](../wiki/entities/paper-wato-2611-17626.md)：通过世界模型动力学约束优化回传任务目标，区分训练求解与推理采样。
 - [DiT4DiT（双 DiT 联合 VAM）](../wiki/entities/paper-dit4dit-video-action-model.md)
 - [MotionWAM（人形 loco-manip · 实时 WAM）](../wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md)
@@ -216,6 +218,7 @@ flowchart LR
 - 为自己的场景选一类部署接口，写清输入输出与是否冻结基础 VLA
 
 ### 推荐读什么
+- [ThinkWAM：提议—再思考—精炼](../wiki/entities/paper-thinkwam-2611-21258.md) — 执行前以预测未来与动作残差重新生成动作；两遍推理的真机 101.2 ms 与 LIBERO 153.48 ms 不同口径。
 - [动作后果技术地图（2026-07 策展）](../wiki/overview/robot-world-models-action-consequence-technology-map.md)
 - [DSWAM](../wiki/entities/paper-dswam-dual-system-wam.md) · [DynaWM](../wiki/entities/paper-dynawm-vla-online-correction.md) · [DreamSteer](../wiki/entities/paper-dreamsteer-vla-deployment-steering.md)
 - **训练期蒸馏的低延迟对照：** [W2A](../wiki/entities/paper-w2a-world-priors-action-models.md) — 用 Cosmos-Predict2 中间层世界先验监督 action DiT，推理时不再运行视频模型；LIBERO 95.9%、A100 预测 55 ms（论文报告）。它不属于部署时执行/修正/筛选三种显式 WAM 接口，适合用来比较「世界知识内化在权重中」与「上线保留世界模型」的延迟及泛化边界；官方算法代码尚未公开（2026-11-16 核查）。
