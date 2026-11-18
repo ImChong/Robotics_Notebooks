@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, qdd, open-source, vesc, belt-drive]
 status: complete
-updated: 2026-07-25
+updated: 2026-11-18
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./stanford-doggo-and-pupper.md
@@ -94,6 +94,9 @@ flowchart LR
 - VESC 非关节专用总线栈——多轴 1 kHz 确定性要另做系统验证。
 
 ## 关联页面
+
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — VESC 电机辨识、编码器对齐与输出端摩擦/惯量表征需分开实施。
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 低减速同步带与编码器组成的反馈环仍需台架响应验证，样机装配完成不等于控制整定完成。
 
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [VESC](./vesc.md)

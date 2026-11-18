@@ -6,7 +6,7 @@ project: https://github.com/VladimirYugay/Gaussian-SLAM
 code: https://github.com/VladimirYugay/Gaussian-SLAM
 tags: [slam, rgbd, 3dgs, gaussian-splatting, reconstruction]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-18
 sources:
   - ../../sources/papers/vision3d_gaussian_slam_primary_paper_20261108.md
   - ../../sources/repos/vision3d_gaussian_slam_20261108.md
@@ -117,6 +117,9 @@ README：python run_slam.py configs/Replica/room0.yaml --input_path ... --output
 分块子地图存在跨边界地图一致性和全局回环的工程挑战；深度质量、初始位姿和 RGB-D 数据同步会改变优化；GPU 上 Gaussian rasterizer 非完全确定，必须报告重复 seed 的波动。未经测试不可把论文渲染质量解释为机器人在任意低纹理环境里成功定位。
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 以传统残差线性化作对照，理解直接渲染损失与子图更新；此处不将通用 GN 公式当作作者优化器实现。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 稠密子地图若用于探索，还需核对几何精度、在线时延和跨子图一致性。
 
 - [GS-SLAM（基于高斯的另一种 RGB-D SLAM 方法）](./paper-gs-slam-yan.md)
 - [NeRF（神经辐射场与可微体渲染基础）](./paper-nerf-mildenhall.md)

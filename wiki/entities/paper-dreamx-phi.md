@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, video-generation, action-conditioned, manipulation, alibaba]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2608.13489"
 code: https://github.com/AMAP-ML/DreamX-Phi
 related:
@@ -104,6 +104,8 @@ flowchart LR
 - 视频 WM 仍可能物理违例（穿透、接触力不可用）。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — 末端位姿和夹爪条件的忠实度需在操作闭环检验，视频观感与任务成功率不是同一指标。
 
 - [生成式世界模型](../methods/generative-world-models.md)
 - [Wan](./paper-wan-video.md)

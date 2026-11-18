@@ -2,7 +2,7 @@
 type: entity
 tags: [hardware, actuator, qdd, open-source, cycloidal, bldc]
 status: complete
-updated: 2026-07-25
+updated: 2026-11-18
 related:
   - ../comparisons/open-source-qdd-actuator-projects.md
   - ./berkeley-humanoid-lite.md
@@ -87,6 +87,9 @@ flowchart TB
 - 不宜把本设计直接当作重型人形量产关节模板。
 
 ## 关联页面
+
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 电机与摆线同轴集成后的反射惯量、摩擦和热状态需在输出端实验确认。
+- [PID Control（比例-积分-微分控制）](../methods/pid-control.md) — 关节闭环验证应区分电流/力矩内环和位置/速度目标，不能用减速比替代响应测试。
 
 - [开源 QDD 执行器项目对比](../comparisons/open-source-qdd-actuator-projects.md)
 - [执行器驱动链选型闭环](../queries/actuator-drive-chain-selection-loop.md)

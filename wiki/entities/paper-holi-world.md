@@ -3,7 +3,7 @@ type: entity
 project_id: holi-world
 tags: [paper, spatial-intelligence, perception]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 arxiv: "2610.26549"
 project: "https://ropedia.github.io/holi-world/"
 code: "https://github.com/Ropedia/holi-world"
@@ -94,6 +94,9 @@ Foundry 结合静态场景感知和动态对象跟踪，生成关联几何、语
 ScanNet AP50 只衡量静态检测；若关心动态物体与时序推理，应看自建 Bench 的分项结果。在[感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md)中，它对应「2D→3D 提升与语义建图」层，并向下游提供带时间维度的语义地图。
 
 ## 关联页面
+
+- [Auto-labeling Pipelines (自动化标注流水线)](../methods/auto-labeling-pipelines.md) — 静态对象、动态轨迹与问答监督来自不同加工环节，应分别核对标注与独立评测。
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](../tasks/vision-language-navigation.md) — 时空记录可作为导航记忆的背景，问答成绩不能直接当作闭环导航成功率。
 
 - [Ropedia W0](./paper-ropedia-w0.md) — 跨本体第一视角世界模型。
 - [DONIC](./paper-donic.md) — 从人类示范学习双手跟踪控制。

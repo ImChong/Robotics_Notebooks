@@ -6,7 +6,7 @@ tags:
   - world-model
   - simulation
 status: complete
-updated: 2026-10-31
+updated: 2026-11-18
 arxiv: "2610.27851"
 project: https://june-page.github.io/lala-world/
 code: https://github.com/junha1125/LaLa-World
@@ -91,6 +91,8 @@ sequenceDiagram
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 潜空间预测可服务规划和策略微调，需分别核对动作表示、模型误差与下游控制收益。
 
 - [world-action-models](../concepts/world-action-models.md)
 - [generative-world-models](../methods/generative-world-models.md)

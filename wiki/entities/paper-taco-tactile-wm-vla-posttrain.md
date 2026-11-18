@@ -10,7 +10,7 @@ tags:
   - manipulation
   - pku
 status: complete
-updated: 2026-09-27
+updated: 2026-11-18
 arxiv: "2607.02840"
 related:
   - ../overview/wm-action-consequence-category-02-contact-modeling.md
@@ -131,6 +131,8 @@ flowchart TB
 - **局限：** 迭代多轮可能 **分布漂移**；力矩传感 **12-D 特定硬件**；长程全任务纠错未覆盖；WM 幻觉仍可能标注 **不可执行** 动作。
 
 ## 与其他页面的关系
+
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md) — 视触觉模型联合想象视频与力矩来产生纠错监督，需分别检查失败定位、动作标注和策略后训练。
 
 - [wm-action-consequence-category-02-contact-modeling](../overview/wm-action-consequence-category-02-contact-modeling.md) — 触觉 WM 方法层
 - [wm-action-consequence-category-04-eval-posttrain](../overview/wm-action-consequence-category-04-eval-posttrain.md) — 失败→后训练入口

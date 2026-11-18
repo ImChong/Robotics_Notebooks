@@ -3,7 +3,7 @@ type: entity
 project_id: pilotnet-saliency-explanation
 tags: [paper, interpretability, autonomous-driving, nvidia]
 status: complete
-updated: 2026-11-09
+updated: 2026-11-18
 arxiv: '1704.07911'
 original:
   - ../../sources/papers/pilotnet_saliency_arxiv_1704_07911.md
@@ -90,6 +90,9 @@ flowchart LR
 [DAVE-2](./paper-dave2-end-to-end-driving.md) 建立端到端视觉转向，[本论文](./paper-pilotnet-saliency.md) 解释其视觉线索；不同于 [VLA token 综述](./paper-vla-action-tokenization-survey.md) 的动作表示系统分类。
 
 ## 关联页面
+
+- [Behavior Cloning（行为克隆）](../methods/behavior-cloning.md) — 诊断对象是从驾驶示范学习转向的网络，显著性检查不等于重新训练策略。
+- [Visual Servoing（视觉伺服控制）](../methods/visual-servoing.md) — 对照像素依赖解释与视觉误差闭环控制，移动显著区域的诊断不能替代闭环驾驶验证。
 
 - [DAVE-2 原论文](./paper-dave2-end-to-end-driving.md)
 - [VLA token 综述](./paper-vla-action-tokenization-survey.md)

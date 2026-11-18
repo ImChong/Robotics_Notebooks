@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, mpc, wbc, locomotion, mit, control]
 status: complete
-updated: 2026-11-07
+updated: 2026-11-18
 arxiv: "1909.06586"
 code: https://github.com/mit-biomimetics/Cheetah-Software
 related:
@@ -120,6 +120,9 @@ sequenceDiagram
 - 调参与接触序列设计仍有工程门槛。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 长时域 MPC 产生足端反力计划，需与下层 WBIC 的接触冲量和命令周期对齐。
+- [Locomotion](../tasks/locomotion.md) — 高速摆腿和空中相需同时检查接触时机、摩擦约束与全身执行稳定性。
 
 - [MIT Mini Cheetah](./mit-mini-cheetah.md)
 - [MPC–WBC 集成](../concepts/mpc-wbc-integration.md)

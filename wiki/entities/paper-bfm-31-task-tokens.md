@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2503.22886"
 venue: "2025 · arXiv"
 summary: "轻量 task token 适配，把重训身体转为换任务条件。"
@@ -99,6 +99,9 @@ flowchart TD
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — task token 是预训练行为模型的任务条件，适配时需说明哪些参数与交互目标发生变化。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 把少量示范适配与回报驱动更新作为读法对照，不能只用 token 数量判断迁移成本。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

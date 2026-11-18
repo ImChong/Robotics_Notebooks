@@ -3,7 +3,7 @@ type: entity
 project_id: mdm-human-motion-diffusion
 tags: [paper, human-motion, motion-generation, generative-motion, humanoid]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 arxiv: "2209.14916"
 project: https://guytevet.github.io/mdm-page/
 code: https://github.com/GuyTevet/motion-diffusion-model
@@ -125,6 +125,8 @@ sequenceDiagram
 **核查边界：** 已复核论文正文、结果与可用附录；代码仓库仅核对 README 与关键运行入口，未运行真机部署或完整训练。论文内已发布结果不等同于独立复现。
 
 ## 关联页面
+
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 扩散生成的动作若进入物理跟踪，还需独立验证接触、平衡与控制；人体动作生成不直接等于机器人执行。
 
 - [从动作生成到人形闭环：方法与证据对比](../comparisons/generative-motion-to-humanoid-closed-loop.md)
 - [扩散式动作生成](../methods/diffusion-motion-generation.md)

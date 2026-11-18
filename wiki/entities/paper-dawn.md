@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, quadruped, locomotion, parkour, perceptive-locomotion, world-model, rssm, depth, contrastive-learning, sim2real, unitree-go1, isaaclab]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-18
 project_id: dawn-parkour
 arxiv: "2609.29092"
 venue: IROS 2026
@@ -169,6 +169,8 @@ sequenceDiagram
 评测覆盖论文给定的噪声与地形，不能推断对完全丢失深度或所有陌生障碍都有效。NX 型号、实时延迟与底层伺服频率不能由策略频率反推；真机复现仍需通信、停止机制与动作映射。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 深度去噪和潜状态对齐服务策略观测，表征重建目标与运动回报需分开核对。
 
 - [楼梯与障碍感知运动中心](../tasks/stair-obstacle-perceptive-locomotion.md)
 - [Sim2Real](../concepts/sim2real.md)

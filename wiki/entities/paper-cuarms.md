@@ -6,7 +6,7 @@ tags:
   - control
   - planning
 status: complete
-updated: 2026-10-28
+updated: 2026-11-18
 arxiv: "2610.36250"
 project: https://cuarms.github.io/
 related:
@@ -88,6 +88,8 @@ flowchart TB
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Bimanual Manipulation（双臂协调操作）](../tasks/bimanual-manipulation.md) — 多臂共享工作站需联合检查碰撞、死锁、任务分配和调度，单臂路径可行不足以保证协同吞吐。
 
 - [manipulation](../tasks/manipulation.md)
 - [impedance-control](../concepts/impedance-control.md)

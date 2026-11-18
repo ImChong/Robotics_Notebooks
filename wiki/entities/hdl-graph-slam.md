@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, lidar, graph-slam, ndt, outdoor, hku]
 status: complete
-updated: 2026-05-27
+updated: 2026-11-18
 related:
   - ../entities/fast-lio.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
@@ -104,6 +104,9 @@ sequenceDiagram
 - 源码核对（2026-11-02）：koide3/hdl_graph_slam@95b8dce，读过 README.md、launch/hdl_graph_slam_501.launch、apps/prefiltering_nodelet.cpp、apps/scan_matching_odometry_nodelet.cpp、apps/floor_detection_nodelet.cpp、apps/hdl_graph_slam_nodelet.cpp、src/hdl_graph_slam/graph_slam.cpp、include/hdl_graph_slam/keyframe_updater.hpp（仅看接口）；时序图依据以上文件，未运行代码。
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 区分 NDT 扫描匹配产生的局部运动约束与 g2o 位姿图的全局校正。
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 位姿图残差的局部线性化是优化背景，具体优化器和鲁棒核仍需按配置核对。
 
 - [FAST-LIO](../entities/fast-lio.md)
 - [LiDAR / LIO / VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)

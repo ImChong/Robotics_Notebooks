@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, world-models, survey-curated, embodied-wm-six-routes]
 status: complete
-updated: 2026-08-25
+updated: 2026-11-18
 venue: curated
 
 related:
@@ -66,6 +66,8 @@ summary: "Veo World Simulator（具身世界模型六路线专题）：视频基
 - **跨路线区分**：评估主导型的闭环职责是「部署前让外部策略在学习出的世界里考试」；与其他路线的分界是 **预测结果被谁消费**，不是模型架构或参数量。定量对照回到各自原文，本页不做跨论文数字拼接。
 
 ## 关联页面
+
+- [Safe RL（安全强化学习）](../methods/safe-rl.md) — 对照生成式红队测试与安全约束训练的职责；发现失败场景不等于给出安全保证。
 
 - [具身世界模型六路线技术地图](../overview/embodied-wm-six-routes-technology-map.md)
 - [评估主导型 分类 hub](../overview/embodied-wm-route-evaluation.md)

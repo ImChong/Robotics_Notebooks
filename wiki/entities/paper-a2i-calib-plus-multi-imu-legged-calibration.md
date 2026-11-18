@@ -5,7 +5,7 @@ tags:
   - legged-robot
   - locomotion
 status: complete
-updated: 2026-10-26
+updated: 2026-11-18
 arxiv: "2610.29438"
 project_id: a2i-calib-plus-multi-imu-legged-calibration
 related:
@@ -97,6 +97,8 @@ flowchart TD
 3. 关注 arXiv 版本更新与代码发布。
 
 ## 关联页面
+
+- [AMP & HumanX: 判别器驱动的风格学习](../methods/amp-reward.md) — AMP 控制器执行带滚动接触奖励的激励轨迹，运动执行与后续多 IMU 时空参数标定应分阶段核对。
 
 - [senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map](../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md)
 - [locomotion](../tasks/locomotion.md)

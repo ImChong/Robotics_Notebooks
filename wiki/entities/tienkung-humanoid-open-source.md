@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, tienkung, x-humanoid]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 related:
   - ./x-humanoid.md
   - ./humanoid-robot.md
@@ -78,6 +78,9 @@ summary: "北京人形机器人创新中心「天工」Lite/Pro：URDF、STEP、
 - 制造与真机采购门槛远高于桌面 DIY 人形；「开源资料」不等于可低成本整机复刻。
 
 ## 关联页面
+
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — Lite/Pro 的自由度与传感配置不同，应分别验证步态、受扰和地形通过性。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — TienKung-Lab 与部署仓分工不同，训练模型、SDK 和硬件变体须成套核对。
 
 - [X-Humanoid（北京人形机器人创新中心）](./x-humanoid.md)
 - [DPL（单深度感知行走，TienKung Ultra）](./paper-notebook-dpl-depth-only-perceptive-humanoid-locomotion-vi.md)

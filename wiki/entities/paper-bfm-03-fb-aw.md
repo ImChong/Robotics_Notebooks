@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2412.04368"
 venue: "2024 · arXiv"
 summary: "潜空间要「细」才可被上层精确调用；FB-AW / FB-AWARE 在连续控制 benchmark 上优于粗表征。"
@@ -98,6 +98,9 @@ flowchart TD
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — FB 表征将任务回报与可调用行为联系起来，应分别检查预训练覆盖和下游控制效果。
+- [AWR: 优势加权回归](../methods/awr.md) — 对照优势加权如何偏向高价值行为；FB-AW 的表示设计不能直接等同完整 AWR 算法。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 arxiv: "2101.07123"
 venue: "2021 · arXiv"
 summary: "未来状态分布作为可复用控制表示的数学底座。"
@@ -97,6 +97,9 @@ flowchart TD
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 后继状态表示描述长期交互结构，任务变化时仍需检查策略是否覆盖所需状态。
+- [Value-based Reinforcement Learning（基于值函数的强化学习）](../methods/value-based-reinforcement-learning.md) — 目标条件价值与未来状态分布的联系是阅读背景，不把状态预测误差直接当成任务回报。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

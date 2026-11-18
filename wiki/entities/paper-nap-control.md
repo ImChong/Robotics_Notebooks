@@ -9,7 +9,7 @@ tags:
   - physics-based-control
   - eth
 status: complete
-updated: 2026-08-24
+updated: 2026-11-18
 arxiv: "2605.20209"
 code: https://github.com/chiawenchen/NaP
 related:
@@ -183,6 +183,8 @@ sequenceDiagram
 - **机器人读者应看方法而非平台：** latent noise steering、action chunking 与 compact state 设计可对照 [AMP 变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)，但勿直接假设 G1 可复现。
 
 ## 与其他页面的关系
+
+- [PPO（Proximal Policy Optimization）](../methods/ppo.md) — PPO 优化的是冻结扩散先验的初始噪声导航策略，需区分高层噪声与解码后的关节动作。
 
 - 直接基线与先验范式：[UniPhys](./paper-bfm-40-uniphys.md)
 - 角色动画 vs 机器人边界：[Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)

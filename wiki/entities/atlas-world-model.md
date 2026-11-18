@@ -3,7 +3,7 @@
 type: entity
 tags: [world-models, spatial-intelligence, generative-ai, 3dgs, 3d-reconstruction, real-to-sim, diffusion, transformer]
 status: complete
-updated: 2026-10-30
+updated: 2026-11-18
 related:
   - ./world-labs.md
   - ./marble-world-model.md
@@ -109,6 +109,8 @@ flowchart TB
 - **与 Boston Dynamics Atlas 机器人无关**：本页指 World Labs **世界模型** 产品名，勿与 [人形硬件选型](../queries/humanoid-hardware-selection.md) 中的 Atlas 平台混淆。
 
 ## 关联页面
+
+- [统一多模态 Token（Unified Multimodal Tokens）](../methods/unified-multimodal-tokens.md) — 相机条件、重建与生成共享多模态接口，统一主干不意味着所有输出采用同一 tokenizer 或解码器。
 
 - [Mundo（显式代理与物理仿真驱动的定制世界模型）](./mundo-world-model.md)
 

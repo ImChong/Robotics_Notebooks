@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-15
+updated: 2026-11-18
 venue: "SIGGRAPH Asia 2025"
 code: https://github.com/gouruiyu/ControlOperators
 related:
@@ -56,6 +56,9 @@ summary: "把「控制输入 → 神经网络」这件原本需要 ML 专家手�
 - 本页归入 14_Human_Motion（SIGGRAPH Asia 2025，frontmatter 给出开源仓库地址），可经[分类父节点](../overview/paper-notebook-category-14-human-motion.md)与[机器人学习论文笔记总索引](../overview/humanoid-paper-notebooks-index.md)交叉检索。
 
 ## 与其他页面的关系
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 控制算子规定命令编码，学习动作映射仍需参考数据与训练目标。
+- [Diffusion-based Motion Generation (基于扩散模型的运动生成)](../methods/diffusion-motion-generation.md) — 可对照扩散生成与文中流匹配自回归示例的条件接口，不把两类生成器混为同一实现。
 
 - 分类父节点：[paper-notebook-category-14-human-motion](../overview/paper-notebook-category-14-human-motion.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)

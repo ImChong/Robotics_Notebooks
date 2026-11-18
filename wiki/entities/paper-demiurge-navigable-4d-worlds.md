@@ -8,7 +8,7 @@ tags:
   - world-generation
   - navigable
 status: complete
-updated: 2026-10-14
+updated: 2026-11-18
 arxiv: "2610.14685"
 project: https://hanxinzhu-lab.github.io/demiurge_project_page/
 code: https://github.com/HanxinZhu-lab/Demiurge
@@ -94,6 +94,8 @@ sequenceDiagram
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 跨轨迹 4D 缓存若用于探索，还需补度量、碰撞与在线状态验证，不能把视觉可导航直接当机器人安全路径。
 
 - [generative-world-models](../methods/generative-world-models.md)
 - [video-as-simulation](../concepts/video-as-simulation.md)

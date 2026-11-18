@@ -6,7 +6,7 @@ tags:
   - quadruped
   - domain-randomization
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: "1804.10332"
 related:
   - ../comparisons/sim2real-four-routes-identifiability.md
@@ -107,6 +107,9 @@ flowchart TD
 3. 部署/复现前请对照原文与项目页，勿直接外推公众号数字。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 动力学随机化与扰动需和策略采样训练一起核对，不能脱离校准流程比较迁移表现。
+- [Joint Actuator Parameter Identification（关节执行器参数辨识）](../methods/joint-actuator-parameter-identification.md) — 电机辨识为仿真模型提供参数，需与时延补偿和后续随机化分开验收。
 
 - [Sim2Real 四条路线（可辨识性）](../comparisons/sim2real-four-routes-identifiability.md)
 - [44 篇技术地图](../overview/freedof-sim2real-44-papers-technology-map.md)

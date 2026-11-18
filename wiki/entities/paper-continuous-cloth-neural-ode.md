@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, deformable-object, cloth-simulation, neural-ode, physics-informed, continuous-time]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: continuous-cloth-pinn
 arxiv: "2610.14342"
 related:
@@ -106,6 +106,8 @@ flowchart TD
 - 与高精度求解器相比的精度差距，需以原文表格为准。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 连续时间布料模型若作为预测动态，还需另行定义动作、约束和滚动成本，状态插值本身不构成控制器。
 
 - [可微仿真](../concepts/differentiable-simulation.md)
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)

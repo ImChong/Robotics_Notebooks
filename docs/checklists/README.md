@@ -14,6 +14,7 @@
 
 - [Entities 关联出边 100 节点试点](lint-outgoing-pilot-100.md) — 10 个主题的样本、修复前后数量、目标与复验方法。
 - [Entities 关联出边第 2 批 100 节点](lint-outgoing-batch-02-100.md) — 与首批无重叠，含逐页目标、负对照与两批累计进度。
+- [Entities 关联出边第 3 批 100 节点](lint-outgoing-batch-03-100.md) — 追加至 PR #3875，含逐页目标、负对照及三批累计进度。
 
 ## 历史执行清单
 

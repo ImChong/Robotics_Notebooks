@@ -8,7 +8,7 @@ tags:
   - failure-reasoning
   - adaptation
 status: complete
-updated: 2026-10-14
+updated: 2026-11-18
 arxiv: "2610.08784"
 project: https://song-kun.github.io/pears
 related:
@@ -97,6 +97,8 @@ flowchart TD
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — VLM 诊断和触觉噪声引导的效用需以接触操作闭环验证，不能只比较采样变化。
 
 - [tactile-sensing](../concepts/tactile-sensing.md)
 - [diffusion-policy](../methods/diffusion-policy.md)

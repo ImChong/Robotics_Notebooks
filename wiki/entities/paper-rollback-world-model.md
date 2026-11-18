@@ -3,7 +3,7 @@ type: entity
 project_id: rollback-world-model
 tags: [paper, robotics, world-model, manipulation, reinforcement-learning]
 status: draft
-updated: 2026-10-29
+updated: 2026-11-18
 arxiv: "2610.36068"
 project: https://rollback-wm.github.io/
 related:
@@ -89,6 +89,8 @@ flowchart TD
 项目页截至 2026-10-29 访问失败，代码、权重和数据状态待核实；当前摘要不足以判断复现成本及各任务细节。
 
 ## 关联页面
+
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 世界模型比较反事实动作分支，真机转移再校准模型，需区分监督生成和实际策略改进。
 
 - [世界动作模型](../concepts/world-action-models.md)
 - [操作任务](../tasks/manipulation.md)

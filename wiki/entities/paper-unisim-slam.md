@@ -14,7 +14,7 @@ tags:
   - unist
   - state-estimation
 status: complete
-updated: 2026-09-21
+updated: 2026-11-18
 arxiv: "2608.01706"
 venue: "ECCV 2026"
 related:
@@ -161,6 +161,8 @@ flowchart TB
 - **多模型异构前端：** STA+VGGT 虽有效，但引入额外 Sim(3) 不一致，需依赖后端图消化。
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 统一 Sim(3) 因子图需联合处理位姿和尺度，残差线性化背景有助于分析子图约束。
 
 - [State Estimation](../concepts/state-estimation.md) — 视觉几何估计在控制链上游
 - [状态估计知识链](../overview/hub-state-estimation.md) — SLAM / VIO 入口

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, survey, world-models, video, embodied-ai]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 project_id: video-world-model-survey
 arxiv: "2610.31668"
 project: https://vid-gen.github.io/video-world-model-survey
@@ -108,6 +108,8 @@ flowchart TD
 这是 arXiv 预印本综述；官方 [资源库](https://github.com/vid-gen/awesome-video-world-model)公开文献列表。2026-10-27 项目页无法访问，无法直接核查其资源链接，也不能据此推断各项模型的开源状态。
 
 ## 关联页面
+
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 交互与动作条件评测连接视频模型和控制，模型预测指标还需与规划/策略效果分别报告。
 
 - [世界–动作模型](../concepts/world-action-models.md)
 - [生成式世界模型](../methods/generative-world-models.md)

@@ -4,7 +4,7 @@ project_id: humanoid-ttt
 tags: [paper, humanoid, motion-control, motion-tracking, behavior-reuse, test-time-adaptation, pku, unitree-g1, double-dqn]
 status: complete
 topic: [locomotion]
-updated: 2026-10-16
+updated: 2026-11-18
 arxiv: "2610.00198"
 project: https://aigeeksgroup.github.io/HumanoidTTT/
 code: https://github.com/AIGeeksGroup/HumanoidTTT
@@ -151,6 +151,9 @@ sequenceDiagram
 - 端到端收益依赖动作请求会重复出现；复用率较低时，存储和资格检查的收益可能减小。
 
 ## 关联页面
+
+- [Value-based Reinforcement Learning（基于值函数的强化学习）](../methods/value-based-reinforcement-learning.md) — Double-DQN 在 SKIP/REPLACE 中管理有限动作库，入口物理证书并不随这项在线学习改变。
+- [DeepMimic: 示例引导的技能学习](../methods/deepmimic.md) — 完整动作复用仍依赖低层物理跟踪与执行验证；缓存管理不是新的动作生成或跟踪算法。
 
 - [TWIST2：人形全身数据采集与跟踪](./paper-twist2.md)
 - [YAHMP：通用人形动作跟踪实证框架](./paper-yahmp.md)

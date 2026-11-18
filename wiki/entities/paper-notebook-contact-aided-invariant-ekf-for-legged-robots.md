@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, state-estimation, inekf, legged, lie-group, hmi-papers, humanoid-paper-notebooks]
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "1805.10410"
 related:
   - ../concepts/state-estimation.md
@@ -108,6 +108,9 @@ flowchart LR
 | 关系/取舍 | 用接触约束抑制漂移，对大姿态误差更稳；接触模型错则更糟 | InEKF 的欧氏基线 | 本工作是其腿式浮基实例 | 本工作是 IMU-运动学融合的具体实现 |
 
 ## 关联页面
+
+- [Locomotion](../tasks/locomotion.md) — 接触辅助状态与协方差是足式控制输入，接触滑动会影响估计与运动闭环。
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — 下游逆动力学需要可靠浮基状态和接触假设，不能只传点估计而忽略不确定性。
 
 - [State Estimation](../concepts/state-estimation.md)
 - [EKF](../formalizations/ekf.md)

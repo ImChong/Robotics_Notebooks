@@ -5,7 +5,7 @@ tags:
   - legged-robot
   - locomotion
 status: complete
-updated: 2026-10-31
+updated: 2026-11-18
 arxiv: "2610.26550"
 project_id: wheel-motion-uncertainty-degeneracy-aware-lio
 project: https://weihairuo.github.io/wheel-motion-uncertainty/
@@ -100,6 +100,8 @@ flowchart TD
 3. 关注 arXiv 版本更新与代码发布。
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 轮运动协方差与激光弱方向共同调节融合权重，需按打滑和几何退化条件分别检验。
 
 - [senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map](../overview/senlanke-weekly-2026-10-19-23-humanoid-quadruped-technology-map.md)
 - [locomotion](../tasks/locomotion.md)

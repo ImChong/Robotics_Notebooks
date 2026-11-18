@@ -12,7 +12,7 @@ tags:
   - alibaba
   - amap
 status: complete
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2607.19191"
 code: https://github.com/amap-cvlab/ABot-World
 related:
@@ -223,6 +223,8 @@ sequenceDiagram
 | 上游先验 | Wan2.2 | Wan2.1-T2V | Dreamer 4 谱系 | 自研 MoT |
 
 ## 关联页面
+
+- [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 动作条件交互模型可作为学习控制的环境模型背景，但视频可交互不等于 RL 或真实动力学已验证。
 
 - [Generative World Models](../methods/generative-world-models.md) — 生成式世界模型方法总览
 - [Video-as-Simulation](../concepts/video-as-simulation.md) — 像素仿真范式

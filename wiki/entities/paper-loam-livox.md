@@ -5,7 +5,7 @@ arxiv: "1909.06700"
 code: https://github.com/hku-mars/loam_livox
 tags: [paper, slam, lidar, loam, solid-state-lidar, livox, hku]
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 related:
   - ../entities/lego-loam.md
   - ../entities/fast-lio.md
@@ -115,6 +115,9 @@ flowchart LR
 - **关于发表信息：** 任务说明称它是 ICRA 2020 论文；arXiv v1 全文与 README 均未标注，本页未在原文核实。
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — 小视场、非重复扫描的特征筛选与运动补偿决定约束质量，不能直接套旋转雷达配置。
+- [Levenberg-Marquardt（LM 阻尼最小二乘）](../methods/levenberg-marquardt.md) — Ceres 残差优化可沿阻尼最小二乘理解，点级筛选与剔除大残差也会影响结果。
 
 - [LeGO-LOAM](lego-loam.md)：同属 LOAM 系，前端针对旋转雷达的地面优化；对比 Loam_livox 针对小视场非重复扫描的点筛选。
 - [FAST-LIO](fast-lio.md)：同一实验室后续的 LiDAR-惯性紧耦合工作。

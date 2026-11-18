@@ -8,7 +8,7 @@ tags:
   - galaxea
   - tsinghua
 status: complete
-updated: 2026-10-12
+updated: 2026-11-18
 arxiv: "2603.16666"
 code: https://github.com/yuantianyuan01/FastWAM
 related:
@@ -174,6 +174,9 @@ sequenceDiagram
 3. 部署前核对硬件栈与评测协议，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md) — 训练保留视频共训而推理跳过未来视频去噪，需区分表征监督和在线想象开销。
+- [VLA（Vision-Language-Action）](../methods/vla.md) — Action DiT 输出动作块用于策略执行，评估延迟时须对齐动作时域与任务协议。
 
 - [DiffWAM](./paper-diffwam.md) — 首帧几何条件下直接读出 UAV 相机轨迹；FastDreamer 区分模型推理与异步飞行交接。
 

@@ -4,7 +4,7 @@ project_id: rp1-description
 code: https://github.com/Roboparty/RP1_description
 tags: [humanoid, urdf, mjcf, robot-model, simulation, open-source, roboparty]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 related:
   - ./roboparty-rp1.md
   - ./roboparty.md
@@ -80,6 +80,9 @@ flowchart LR
 - **场景不匹配**：`rp1_flat.xml` / `rp1_rough.xml` 引用的是 28 DoF `robot.xml`，而训练配置使用 24 DoF 模型。
 
 ## 关联页面
+
+- [GMR: 通用动作重定向](../methods/motion-retargeting-gmr.md) — 参考映射须使用与部署 DoF 一致的模型，24/28 轴资源和腕部配置不能混用。
+- [Inverse Dynamics Control（逆动力学控制，IDC）](../methods/inverse-dynamics-control.md) — 力矩模型需对齐质量、关节顺序与执行器映射，URDF/MJCF 的几何一致不自动保证动态一致。
 
 - [RP1 总览（roboparty-rp1）](./roboparty-rp1.md)
 - [RoboParty（公司）](./roboparty.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, deformable-object, mesh-refinement, contact-simulation, gpu, adaptive-resolution]
 status: complete
-updated: 2026-10-22
+updated: 2026-11-18
 project_id: contact-adaptive-mesh
 arxiv: "2610.14142"
 related:
@@ -106,6 +106,9 @@ flowchart TD
 - 结论依赖具体求解器与材料模型。
 
 ## 关联页面
+
+- [Manipulation](../tasks/manipulation.md) — 可变形体接触区域的分辨率需按操作序列检验，网格变细不自动提高任务成功率。
+- [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 若仿真用于接触轨迹求解，应同时检查细化后的模型误差、梯度和计算预算。
 
 - [可微仿真](../concepts/differentiable-simulation.md)
 - [接触丰富操作](../concepts/contact-rich-manipulation.md)

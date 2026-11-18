@@ -3,7 +3,7 @@ type: entity
 tags: [paper, vla, human-to-robot, egocentric, manipulation, physical-intelligence, georgia-tech]
 title: π 系人视频到机器人迁移
 status: complete
-updated: 2026-10-03
+updated: 2026-11-18
 arxiv: "2512.22414"
 related:
   - ./paper-pi05-open-world-vla.md
@@ -95,6 +95,8 @@ flowchart TD
 - 不要把它和 [Ego 分类 02](../overview/ego-category-02-human-to-robot.md) 里的其他对齐方法混成同一种算法。
 
 ## 关联页面
+
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — 人类轨迹仅在微调阶段加入，需将预训练多样性与示范迁移收益分开解释。
 
 - [π₀.₅](./paper-pi05-open-world-vla.md)
 - [Ego 分类：人→机器人](../overview/ego-category-02-human-to-robot.md)

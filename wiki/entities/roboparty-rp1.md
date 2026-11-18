@@ -5,7 +5,7 @@ project: https://roboparty.com/products/RP1
 code: https://github.com/Roboparty/RP1
 tags: [humanoid, hardware, open-source, ros2, roboparty]
 status: complete
-updated: 2026-10-27
+updated: 2026-11-18
 related:
   - ./roboto-origin.md
   - ./roboparty.md
@@ -107,6 +107,8 @@ RoboParty 产品页目前列出 1.35 m 高、24 DoF 的 RP1 与 30 DoF 的 RP1 P
 - **许可是多仓分立的**：RP1 总览仓库与硬件仓库的许可不同，第三方文件亦保留自己的条款。
 
 ## 关联页面
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 模型→训练→导出→Sim2Sim→真机链路需要一致的 DoF、策略和执行器配置。
 
 - [Roboto Origin（RPO）](./roboto-origin.md)
 - [RoboParty（公司）](./roboparty.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, humanoid, reinforcement-learning, isaac-lab, amp, x-humanoid, sustech]
 status: complete
-updated: 2026-09-19
+updated: 2026-11-18
 related:
   - ./x-humanoid.md
   - ./tienkung-humanoid-open-source.md
@@ -93,6 +93,9 @@ sequenceDiagram
 图依据：Open-X-Humanoid/TienKung-Lab@e09a70b，读过 `README.md`、`legged_lab/scripts/train.py`、`play.py`、`sim2sim.py`、`play_amp_animation.py`（仅函数结构）、`legged_lab/envs/__init__.py`、`envs/tienkung/tienkung_env.py`（`step` 及方法清单）、`envs/tienkung/walk_cfg.py`（grep 到 `runner_class_name = "AmpOnPolicyRunner"`、`AMPPPO`、`amp_motion_files`）、`rsl_rl/rsl_rl/runners/amp_on_policy_runner.py`、`rsl_rl/rsl_rl/algorithms/amp_ppo.py`。奖励项（`mdp/rewards.py`）、观测构造、地形与传感器实现、`gmr_data_conversion.py` 未细读；实机部署在另一仓库 Deploy_Tienkung，未涉及。
 
 ## 关联页面
+
+- [AMP & HumanX: 判别器驱动的风格学习](../methods/amp-reward.md) — AMP 运控线需核对参考动作、风格奖励和任务配置，训练后再沿部署路径验证。
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — 高速步态和长程行走需要分别记录速度、跌倒与迁移条件，不能由训练框架入口推断成绩。
 
 - [X-Humanoid（机构总览）](./x-humanoid.md)
 - [天工 Lite/Pro 本体开源](./tienkung-humanoid-open-source.md)

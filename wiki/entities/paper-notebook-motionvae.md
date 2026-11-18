@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-09-15
+updated: 2026-11-18
 arxiv: "2103.14274"
 related:
   - ../overview/paper-notebook-category-13-physics-based-animation.md
@@ -76,6 +76,9 @@ flowchart TD
 - 本页仅为策展清单索引实体，机制细节与量化结论待从深读笔记消化后补充，引用请以笔记页与论文 PDF 为准。
 
 ## 与其他页面的关系
+
+- [Hierarchical Reinforcement Learning（分层强化学习，HRL）](../methods/hierarchical-reinforcement-learning.md) — 高层通过潜变量控制低层运动生成，需要明确两层的时间尺度与目标。
+- [Imitation Learning (IL, 模仿学习)](../methods/imitation-learning.md) — CVAE 运动潜空间依赖示范动作，潜变量可采样不自动保证物理控制可行。
 
 - 分类父节点：[paper-notebook-category-13-physics-based-animation](../overview/paper-notebook-category-13-physics-based-animation.md)
 - 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)

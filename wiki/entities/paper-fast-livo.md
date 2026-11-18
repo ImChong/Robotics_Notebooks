@@ -11,7 +11,7 @@ tags:
   - sensor-fusion
   - hku
 status: complete
-updated: 2026-11-11
+updated: 2026-11-18
 arxiv: "2203.00893"
 code: https://github.com/hku-mars/FAST-LIVO
 related:
@@ -153,6 +153,9 @@ flowchart TD
 | （文章未提）发表信息 | arXiv v1 无会议名；README 称 IROS 2022 |
 
 ## 关联页面
+
+- [里程计与激光雷达融合定位](../methods/lidar-odometry-fusion.md) — LiDAR 几何和直接法视觉在同一 ESIKF 内更新，时间同步和外参是使用前提。
+- [Visual Servoing（视觉伺服控制）](../methods/visual-servoing.md) — 状态估计进入视觉控制前还需核对延迟与坐标接口；FAST-LIVO 本身负责估计而非控制律。
 
 - [FAST-LIO](./fast-lio.md)：本文 LIO 子系统的来源（FAST-LIO2 直接法，另见 FAST-LIO）。
 - [FAST-LIVO2 节点](./paper-rcl-2408-14035-fast-livo2-fast-direct-lidar-inertial-visual-odo.md)：后续独立论文。

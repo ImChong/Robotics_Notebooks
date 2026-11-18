@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-06-25
+updated: 2026-11-18
 venue: "2021 · NeurIPS"
 code: https://github.com/ahmed-touati/controllable_agent
 summary: "FB 嵌入统一表示，面对不同 reward 推导策略；为 BFM「先学可迁移结构」打底。"
@@ -79,6 +79,9 @@ FB 嵌入统一表示，面对不同 reward 推导策略；为 BFM「先学可�
 - 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
 
 ## 与其他页面的关系
+
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 先学习共享行为表示，再按不同回报推导控制策略，需区分任务条件与交互数据。
+- [Value-based Reinforcement Learning（基于值函数的强化学习）](../methods/value-based-reinforcement-learning.md) — 未来状态表示与任务价值相联系，可对照价值估计的职责，而非为每个回报单独重学全部结构。
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

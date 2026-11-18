@@ -7,7 +7,7 @@ tags:
   - representation
   - meta
 status: complete
-updated: 2026-10-06
+updated: 2026-11-18
 arxiv: "2304.07193"
 code: https://github.com/facebookresearch/dinov2
 related:
@@ -115,6 +115,8 @@ sequenceDiagram
 | [视觉表征概念](../concepts/visual-representation-for-policy.md) | 策略视觉选型 |
 
 ## 关联页面
+
+- [VLA（Vision-Language-Action）](../methods/vla.md) — OpenVLA 等模型消费几何视觉特征时，还需与语言和动作接口联合训练及评测。
 
 - [CLIP](./paper-clip.md)
 - [OpenVLA](./paper-openvla.md)

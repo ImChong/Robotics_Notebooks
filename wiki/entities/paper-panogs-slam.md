@@ -15,7 +15,7 @@ tags:
   - nudt
   - ant-group
 status: complete
-updated: 2026-09-20
+updated: 2026-11-18
 arxiv: "2609.17387"
 venue: "arXiv 2026"
 related:
@@ -165,6 +165,9 @@ flowchart TB
 - **深度网络偏置：** BiFuse 误差会传导到 DGIS 初始化质量。
 
 ## 关联页面
+
+- [立体匹配基础模型与基准生态](../methods/stereo-matching-foundation-models.md) — 对照校正双目视差与全景单目深度来源，不能将球面几何直接套用针孔假设。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 全景稠密地图可作探索感知候选，但旋转可观性改善不等于导航安全已经验证。
 
 - [State Estimation](../concepts/state-estimation.md) — 视觉几何估计在 autonomy 上游
 - [状态估计知识链](../overview/hub-state-estimation.md) — SLAM / VIO 入口

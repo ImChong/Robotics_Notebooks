@@ -3,7 +3,7 @@ type: entity
 project_id: fast-vla-once-per-episode-task-memory
 tags: [paper, vla, efficient-inference, task-memory, manipulation, huawei]
 status: complete
-updated: 2026-10-19
+updated: 2026-11-18
 arxiv: "2610.21389"
 project: https://garfield-kh.github.io/FastVLA/
 code: https://github.com/Garfield-kh/FastVLA
@@ -114,6 +114,8 @@ Fast-VLA 的取舍是用“记忆不刷新”换低摊销延迟；在场景中�
 4. 在长时程任务上同时测量任务成功率、扰动泛化和记忆失配影响。
 
 ## 关联页面
+
+- [Action Chunking（动作块输出）](../methods/action-chunking.md) — 在线 actor 仍按当前观测生成动作块；只缓存一次 VLM 不等于整回合开环执行。
 
 - [VLA 方法](../methods/vla.md)
 - [Transformer](../concepts/transformer.md)

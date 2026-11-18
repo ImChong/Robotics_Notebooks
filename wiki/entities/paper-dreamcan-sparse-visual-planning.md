@@ -3,7 +3,7 @@ type: entity
 project_id: dreamcan-sparse-visual-planning
 tags: [paper, robot-manipulation, long-horizon-planning, video-model]
 status: complete
-updated: 2026-11-01
+updated: 2026-11-18
 arxiv: "2610.24981"
 project: "https://dreamcan.github.io"
 related:
@@ -98,6 +98,9 @@ flowchart TD
 - 未核实源码前，不应将论文指标视作开箱可复现性能。
 
 ## 关联页面
+
+- [Generative World Models (生成式世界模型)](../methods/generative-world-models.md) — 视频模型提供稀疏视觉子目标，需区分可达性/效用估计与低层动作执行。
+- [Manipulation](../tasks/manipulation.md) — 长程操作评价应检查子目标达成与完整任务成功，不能仅以生成帧质量验收。
 
 - [HINT 长程操作](../entities/paper-hint-robot-manipulation.md) — 通过语义子任务和跟踪维持长程意图
 - [UnifoLM 世界模型动作](../entities/unifolm-world-model-action.md) — 世界模型与动作策略的结合路线

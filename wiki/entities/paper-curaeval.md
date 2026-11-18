@@ -6,7 +6,7 @@ tags:
   - data-collection
   - evaluation
 status: complete
-updated: 2026-10-30
+updated: 2026-11-18
 arxiv: "2610.38221"
 code: https://github.com/jiuyixu25/CuraEval
 related:
@@ -91,6 +91,8 @@ sequenceDiagram
 3. 复现与选型前核对任务协议、硬件与基准口径，勿直接横比公众号摘录数字。
 
 ## 关联页面
+
+- [Behavior Cloning（行为克隆）](../methods/behavior-cloning.md) — 示范筛选与随机抽样应在相同监督接口、子集规模和训练预算下比较，避免将数据量收益误算成筛选收益。
 
 - [embodied-data-collection-four-layers-taxonomy](../concepts/embodied-data-collection-four-layers-taxonomy.md)
 - [imitation-learning](../methods/imitation-learning.md)

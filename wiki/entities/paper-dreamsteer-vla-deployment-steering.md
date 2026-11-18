@@ -9,7 +9,7 @@ tags:
   - manipulation
   - meta
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 arxiv: "2607.02865"
 related:
   - ../overview/wm-action-consequence-category-01-wam-action-prediction.md
@@ -146,6 +146,8 @@ flowchart TB
 - **局限：** 多候选 + WM rollout 仍增 **推理延迟与算力**；WM 对 **长时序误差累积** 敏感；未建模 **不确定性** 时可能过度自信（策展文开放问题）。
 
 ## 关联页面
+
+- [Model Predictive Control (MPC，模型预测控制)](../methods/model-predictive-control.md) — 模型预演与语言价值排序后只执行部分控制步再筛选，候选预算和整轮时延须一起评估。
 
 - [wm-action-consequence-category-01-wam-action-prediction](../overview/wm-action-consequence-category-01-wam-action-prediction.md) — 部署筛选类 WAM
 - [wm-action-consequence-category-04-eval-posttrain](../overview/wm-action-consequence-category-04-eval-posttrain.md) — 与 GigaWorld 评估链路相邻

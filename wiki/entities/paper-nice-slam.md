@@ -6,7 +6,7 @@ project: https://github.com/cvg/nice-slam
 code: https://github.com/cvg/nice-slam
 tags: [slam, rgbd, 3dgs, gaussian-splatting, reconstruction]
 status: complete
-updated: 2026-11-08
+updated: 2026-11-18
 sources:
   - ../../sources/papers/vision3d_nice_slam_primary_paper_20261108.md
   - ../../sources/repos/vision3d_nice_slam_20261108.md
@@ -117,6 +117,9 @@ README：python -W ignore run.py configs/Demo/demo.yaml；run.py 读取 config �
 几何预测有训练集先验及归纳偏置，跨类别泛化不等于保证；光线/体渲染和双设备 Tracking/Mapping 有算力需求；RGB-D 深度噪声和动态物体造成重建误差，论文中传统特征 SLAM 的部分轨迹指标仍优。
 
 ## 关联页面
+
+- [Gauss-Newton（高斯-牛顿法）](../methods/gauss-newton.md) — 可将经典稀疏残差求解与隐式体渲染的位姿/网格优化作结构对照，不混同具体求解器。
+- [机器人自主探索](../tasks/autonomous-exploration.md) — 分层局部几何可服务环境地图，探索应用仍需验证未观测区域和局部更新的可靠性。
 
 - [4D-GS（动态新视角合成）](./paper-4d-gaussian-splatting-wu.md)
 - [COLMAP 稀疏/稠密重建](./colmap.md)

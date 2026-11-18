@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, agibot, zhiyuan]
 status: complete
-updated: 2026-07-30
+updated: 2026-11-18
 related:
   - ./humanoid-robot.md
   - ./open-source-humanoid-hardware.md
@@ -42,6 +42,9 @@ summary: "智元机器人（Agibot）灵犀 X1：硬件设计资料、训练/推
 | GitHub 组织 | [AgibotTech](https://github.com/AgibotTech) |
 
 ## 关联页面
+
+- [Humanoid Locomotion (人形机器人移动)](../tasks/humanoid-locomotion.md) — 灵犀本体的模型、训练和推理资料应围绕双足运动的接触与稳定性核对。
+- [Reinforcement Learning (RL, 强化学习)](../methods/reinforcement-learning.md) — 从训练到实机推理需保持关节映射和观测/动作契约，不把硬件资料开放等同策略可直接复现。
 
 - [人形机器人](./humanoid-robot.md)
 - [开源人形硬件方案对比](./open-source-humanoid-hardware.md)

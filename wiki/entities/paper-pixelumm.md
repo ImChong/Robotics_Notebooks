@@ -3,7 +3,7 @@ type: entity
 project_id: pixelumm
 tags: [paper, multimodal, vision, image-generation, video-generation, nvidia]
 status: complete
-updated: 2026-10-07
+updated: 2026-11-18
 arxiv: "2609.38597"
 project: "https://nv-tlabs.github.io/PixelUMM/"
 code: "https://github.com/nv-tlabs/PixelUMM"
@@ -145,6 +145,8 @@ sequenceDiagram
 图中简化了任务分支：理解任务走自回归文本输出；图像/视频合成由 flow sampler 迭代更新像素。复现入口与许可边界见[官方仓库归档](../../sources/repos/nv-tlabs-pixelumm.md)。
 
 ## 关联页面
+
+- [统一多模态 Token（Unified Multimodal Tokens）](../methods/unified-multimodal-tokens.md) — RGB patch 与视频 tubelet 经连续投影进入共享注意力，统一序列接口不要求离散 tokenizer。
 
 - [视觉感知骨干知识链](../overview/hub-vision-backbone.md) — 视觉表征与生成模型的上游入口
 - [生成式视觉预训练](../concepts/generative-vision-pretraining.md) — 对照视觉生成预训练的表征选择
