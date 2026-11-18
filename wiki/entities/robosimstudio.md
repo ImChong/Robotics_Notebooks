@@ -12,6 +12,8 @@ related:
   - ../concepts/sim2real.md
   - ./mujoco-warp.md
   - ./nvidia-warp.md
+original:
+  - ../../sources/papers/robosimstudio_arxiv_2610_18835.md
 sources:
   - ../../sources/sites/robosimstudio-github-io.md
   - ../../sources/repos/robosimstudio.md
@@ -20,6 +22,8 @@ summary: "RoboSimStudio 是基于 Newton 等 GPU 仿真组件的开放式交互�
 ---
 
 # RoboSimStudio（机器人操作 Real2Sim 工具包）
+
+## 一句话定义
 
 **RoboSimStudio** 是面向机器人操作任务的开放交互式仿真工具包，让人或编码 Agent 根据真实场景观察构建、检查和调整物理仿真；当前仓库也提供 CPU 路径。
 

@@ -4,7 +4,10 @@
 - **作者：** Kaiyuan Chen、Shuangyu Xie、Uksang Yoo、Xinyue Zhu、Cael Magner、Alvin Zhu、Daehwa Kim、Eric Heiden、Erwin Coumans、Miles Macklin、Spencer Huang、Ken Goldberg
 - **机构：** 加州大学伯克利分校 AUTOLab、NVIDIA
 - **年份：** 2026
-- **arXiv：** <https://arxiv.org/abs/2610.18835>
+- **arXiv：** <https://arxiv.org/abs/2610.18835>（v2，2026-10-14）
+- **全文 HTML：** <https://arxiv.org/html/2610.18835>
+- **核对范围：** arXiv v2 HTML：§1 引言，§2 相关工作及 Table 1，§3 架构、机器人接口、Newton/外部物理耦合、Viser 与 Agent 反馈，§4.1 可视化 Real2Sim、§4.2 Gello 力反馈、§4.3 双臂海绵擦拭 Real2Sim2Real，§5 结论与局限；核对 Figures 1–7 与论文所引工具及官方项目页。未重跑仿真、训练或真机实验。
+- **通读：** 已完成
 - **项目页：** <https://robosimstudio.github.io/>
 - **代码：** <https://github.com/robosimstudio/robosimstudio>
 - **入库日期：** 2026-10-15；补充核查：2026-10-16

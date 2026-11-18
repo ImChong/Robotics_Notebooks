@@ -10,6 +10,13 @@ related:
   - ../entities/paper-supermimic.md
   - ../entities/paper-lingbot-touch.md
   - ../entities/robosimstudio.md
+original:
+  - ../../sources/papers/envisioning_agentic_robotics_arxiv_2611_18359.md
+  - ../../sources/papers/pear_robot_use_rl_mit_2026.md
+  - ../../sources/papers/scalevla-2611-21607.md
+  - ../../sources/papers/supermimic_arxiv_2610_28480.md
+  - ../../sources/papers/lingbot-touch-technical-report.md
+  - ../../sources/papers/robosimstudio_arxiv_2610_18835.md
 sources:
   - ../../sources/papers/envisioning_agentic_robotics_arxiv_2611_18359.md
   - ../../sources/papers/pear_robot_use_rl_mit_2026.md
@@ -38,6 +45,12 @@ summary: "将 Envisioning Agentic Robotics、PEAR、ScaleVLA、SuperMimic、Ling
 | JEPA | Joint-Embedding Predictive Architecture | LingBot-Touch 的触觉表征预训练思路 |
 | Real2Sim | Real-to-Simulation | 由真实场景构建物理仿真并迭代校准 |
 
+## 为什么重要
+
+- 六项研究的任务、动作空间、硬件、训练奖励和评测口径不同：强行把成功率排序会掩盖实际系统的缺层。
+- 机器人部署除了策略输出，还需要观测契约、低层控制、碰撞与急停保护、验收证据及物理模型校准。
+- 官方代码可得性各不相同：需分别说明框架/推理/训练/权重是否公开，避免以 README 存在代替可复现性。
+
 ## 研究对象、接口与证据
 
 | 工作（详情） | 研究对象 / 核心接口 | 作者报告的代表性证据 | 开放边界（2026-11-18 核对） |
@@ -51,7 +64,7 @@ summary: "将 Envisioning Agentic Robotics、PEAR、ScaleVLA、SuperMimic、Ling
 
 *表中实验指标均是各自论文或官方主页作者报告，不是本知识库独立复现；不同任务、示范数量、硬件和评价协议之间**禁止直接按百分比排序**。*
 
-## 按系统边界看六条路线
+## 核心原理：按系统边界看六条路线
 
 ```mermaid
 flowchart TD
@@ -84,7 +97,7 @@ flowchart TD
 | 更换触觉传感器后，灵巧策略观测难以复用 | [LingBot-Touch](../entities/paper-lingbot-touch.md) | taxel 几何映射、触觉 token 接口、下游策略后训练与延迟 |
 | 接触丰富操作的仿真难以从视频复建并向真机对齐 | [RoboSimStudio](../entities/robosimstudio.md) | 坐标、摩擦与柔顺参数、接触误差、跨求解器稳定性、真机验证 |
 
-## 对照实验的最低协议
+## 工程实践：对照实验的最低协议
 
 1. **对齐目标而非数字：** PEAR 的 LIBERO 指令泛化、ScaleVLA 的少样本操作、SuperMimic 的动作库覆盖、LingBot-Touch 的跨传感器操作成功率和 RoboSimStudio 的物理一致性，不对应同一评价变量。
 2. **分层报告：** 模型/策略成功率、末端指令合法性、低层跟踪误差、触觉输入故障、Real2Sim 物理误差、wall-clock 及真机安全事件分列，不只保留任务最终成功率。
