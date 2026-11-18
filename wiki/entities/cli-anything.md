@@ -26,6 +26,8 @@ related:
   - ./paper-skillcorpus.md
   - ../concepts/model-context-protocol.md
   - ../concepts/llm-wiki-karpathy.md
+original:
+  - ../../sources/repos/hkuds_cli_anything.md
 sources:
   - ../../sources/repos/hkuds_cli_anything.md
   - ../../sources/sites/cli-anything-hub.md
@@ -185,6 +187,8 @@ sequenceDiagram
 - [LLM Wiki（Karpathy 模式）](../concepts/llm-wiki-karpathy.md) — 知识编译 vs 软件 harness 编译的对照
 
 ## 参考来源
+
+- 原文通读状态：已重新核对官方项目 README、技术 SOP（`cli-anything-plugin/HARNESS.md`）、命令规范与 CONTRIBUTING；具体范围见[仓库源归档](../../sources/repos/hkuds_cli_anything.md)。**技术报告 arXiv:2606.03854 未作为已全文通读原文登记**；其既有摘要只供定位，不声称验证实验结果。
 
 - [CLI-Anything 仓库源归档（本站）](../../sources/repos/hkuds_cli_anything.md)
 - [CLI-Hub 站点归档（本站）](../../sources/sites/cli-anything-hub.md)
