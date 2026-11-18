@@ -36,3 +36,10 @@
 ## 对 wiki 的映射
 
 - [paper-sugarv2-humanoid-interaction-reference](../../wiki/entities/paper-sugarv2-humanoid-interaction-reference.md)
+
+## 2026-11-18 原文二次核对（HTML v1）
+
+- **原文：** <https://arxiv.org/html/2611.09266v1>；核对 §3.1–3.3 的参考、教师、视觉学生与式 (1)–(4)，以及 §4.1–4.6 的任务设定、表 2–6、数据规模和作者局限；与本归档的论文结果一致。
+- **成本统计口径：** 表 5 明确 0.4 min / retained reference 包括合成失败尝试与后处理，不能直接理解为理想情况下一次前向生成耗时。跟踪误差：物体 6.6 cm vs 9.8 cm、机器人 10.0 cm vs 13.8 cm（SUGARv2 vs GRAIL）。
+- **受控基线边界：** 表 2(a) 在相同 SUGARv2 参考和教师下比较 VIRAL、GR00T N1.7 与本方法；表 2(b) 固定学习管线比较 GRAIL 与本方法的参考。这些数字不是对各原论文完整系统的端到端公平复现比较。
+- **项目页二次核查限制：** 本次尝试访问 <https://tianshuwu.github.io/sugarv2-humanoid/> 未成功；保留上方 2026-11-10 已记录的 `Code (Coming Soon)` 状态，不能断言 2026-11-18 仍未发布代码。无可核实的 SUGARv2 运行源码，因而不添加虚构的时序图。
