@@ -165,6 +165,8 @@ flowchart LR
 - [Humanoid Hardware 101 · 05：能源与计算电子](../wiki/overview/humanoid-hardware-101-power-compute-electronics.md) — PCB/BMS 的模块复用与 DFM 降本视角
 - [CAN 总线协议](../wiki/concepts/can-bus-protocol.md) 与 [CAN vs EtherCAT 关节总线对比](../wiki/comparisons/can-vs-ethercat-joint-bus.md) — 总线接口硬件（收发器、隔离、终端电阻）在画原理图时就要定
 
+- [Actuator 2.0（自研行星减速关节）](../wiki/entities/the5439workshop-actuator-2.md) — 对照其 Gerber、BOM 与 ESP32-S3/SimpleFOC 驱动示例学习一体关节 bring-up；注意它尚不是完整电流闭环或寿命验收方案。
+
 ### 推荐做什么
 - 精读一块开源驱动板原理图（SimpleFOC Mini / ODrive / [moteus](../wiki/entities/moteus.md) / [Tinymovr](../wiki/entities/tinymovr.md) 任一），标注功率回路、栅极驱动、电流采样链路、保护电路四条线路并画出信号流
 - 自绘一版关节驱动板：三相桥 + 栅极驱动 + 相电流采样 + MCU + CAN 收发器，走完原理图 → layout → 打样 → 焊接
