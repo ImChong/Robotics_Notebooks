@@ -14,6 +14,7 @@ related:
   - ../concepts/llm-inference-vram-estimation.md
   - ./nano-vllm.md
   - ./sglang.md
+  - ./zero-to-sglang.md
   - ./flashinfer.md
 summary: "Mini-SGLang 以作者标注约 5000 行 Python 展示在线 serving 的多进程组件，包含 API Server、Tokenizer/Detokenizer、每 GPU Scheduler、Engine、KV cache、Radix Cache、overlap scheduling；与侧重离线简化的 Nano-vLLM 对照。"
 ---
@@ -95,6 +96,7 @@ sequenceDiagram
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
 - [Nano-vLLM｜面向学习的极简 LLM 推理引擎](./nano-vllm.md)
 - [SGLang｜大规模语言与多模态模型推理服务框架](./sglang.md)
+- [Zero to SGLang｜Datawhale × RadixArk 推理课程](./zero-to-sglang.md)
 - [FlashInfer｜跨框架 GPU 推理 Kernel 库](./flashinfer.md)
 
 ## 参考来源
