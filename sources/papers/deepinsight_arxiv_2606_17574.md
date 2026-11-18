@@ -8,6 +8,9 @@
 - **arXiv：** <https://arxiv.org/abs/2606.17574>（PDF：<https://arxiv.org/pdf/2606.17574>）
 - **通讯作者：** Jie Chen（chenj81@xiaopeng.com）
 - **入库日期：** 2026-06-18
+- **原文版本：** arXiv:2606.17574v1（2026-06-16），[官方全文 HTML](https://arxiv.org/html/2606.17574v1)
+- **核对范围：** 2026-11-18 通读原论文 §1–§6、Appendix A（System 1 模态与基准适配）和 Appendix B（System 0 筛选与诊断）；核对 Figure 2–13、Tables 2–12 中的接口、实验协议、结果和局限。
+- **通读：** 已完成
 - **一句话说明：** XPENG Robotics 提出的 **Physical AI 全栈统一评测基础设施**：在 **单一 runtime** 上贯通 **System 2（基础模型推理）→ System 1（视运动策略）→ System 0（全身控制）**，用 **task / resource / result** 三抽象与 **统一 trace** 实现跨层回归定位，而非各层拼接独立 harness。
 
 ## 摘要级要点
@@ -56,6 +59,15 @@
 - **对 wiki 的映射：**
   - [DeepInsight](../../wiki/entities/deepinsight.md) — 案例研究与跨层归因表。
   - [loco-manipulation](../../wiki/tasks/loco-manipulation.md) — 同仓库内 System 2/1/0 叙事对照。
+
+## 本次原文复核补充（2026-11-18）
+
+- **接口语义（§3.2–§3.4）：** `reset(handle)` 返回 observation，`step(handle, action)` 返回 observation、逐步事件与终止类别；`suite` 与 `template` 合并并持久化实际执行快照；scorer 读取 trace，与 task 正交版本化。
+- **资源与异步（§3.3 / §4.3）：** 推理资源采用 vLLM / vLLM-Omni / SGLang 等异构 engine；sandbox plane 采用预热无状态池或 per-episode OpenSandbox 容器，并可承载 physics simulator。AIME-2024 异步填充消融 **152→108 分钟（1.41×）**；LiveCodeBench v6 阶段池解耦 **5h57m→1h48m（3.31×）**；后一组是将共享池约束为 sandbox 上限的**内部消融下界**，不能当作某个第三方框架的默认配置。
+- **System 0 证据（§5.2 / Appendix B）：** 聚合最优 WBC-RC-01 的 SR **97.90%**、MPJPE **1.915 cm**（Table 11），但髋部关节动力学、接触与躯干姿态、上肢运动范围的轨迹级诊断为 Fail（Table 6）；聚合榜单不是发布验收。
+- **跨层边界（§5.3 / Table 8）：** 96 episodes、58 成功（**60.4%**）；38 失败中 System 1 **16**、handoff **11**、System 2 **7**、System 0 **4**，是 judge agent 的主因归类，并抽样人工核验，**不是随机对照或真机复现**。
+- **局限（§4.1 / §6）：** System 1/0 未做成熟框架的量化 peer 对照；LiveCodeBench 的参考 sandbox 协议和 Video-MME 的字幕条件不完全对齐；sim-to-real 不确定性尚未解除。
+- **开源核验：** 当前公开材料未提供可确认的 DeepInsight 官方可运行实现或正式启动命令，故不编写伪源码运行时序图；架构图为论文设计逻辑，不代表实测代码路径。
 
 ## 对 wiki 的映射
 
