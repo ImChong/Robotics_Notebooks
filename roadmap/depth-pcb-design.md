@@ -96,6 +96,7 @@ flowchart LR
 
 ### 推荐读什么
 - [KiCad](../wiki/entities/kicad.md) 与 [KiCad 10.0 官方中文文档](https://docs.kicad.org/10.0/zh/) 的"KiCad 入门"一章 — 照着官方入门，把第一个工程从原理图走到 Gerber
+- [GN10 Robot System（荒川高专 2026 A 队）](../wiki/entities/tmcit-ararobo-2026a-gn10-system.md) — 参考 STM32 主控、CAN 隔离桥与电源保护板的公开工程；逐仓核对原理图、板图和许可证。
 - [Altium Designer](../wiki/entities/altium-designer.md) — 了解商业 EDA 的同一套流程，知道进公司后会遇到什么
 - 任意一家打样厂公开的工艺能力页 — 把最小线宽 / 线距 / 孔径抄进自己的 DRC 规则
 - IPC-2221（印制板设计通用标准）— 先只看术语与电气间距部分，知道"间距规则"从哪来
