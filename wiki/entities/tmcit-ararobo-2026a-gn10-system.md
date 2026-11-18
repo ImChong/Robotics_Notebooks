@@ -6,7 +6,6 @@ code: https://github.com/tmcit-ararobo-2026a/ros2_ws
 code_scope: "多仓库整机集成：ros2_ws、gn10-navigation、gn10-mainboard、power-management-board、esc-control-hub、robot-sim-unity"
 project_distinction: "整机系统工程综述，不重复既有 GN10 PointCloud Localization 专项算法实体"
 tags: [robotics, robocon, kosen, open-source, ros2, navigation, embedded, stm32, can, simulation, tmcit-ararobo-2026a]
-topic: [robotics]
 status: complete
 updated: 2026-11-18
 related:
