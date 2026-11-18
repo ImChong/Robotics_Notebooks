@@ -8,7 +8,7 @@ tags:
   - vibe-coding
   - production
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 summary: "Agentic coding 改变的是写代码的方式，不是软件工程基础是否还值钱：人要用取舍语言转向 agent，而不是把 vibe coding 当成能力本身；当代码吞吐扩张后，源码控制、检出、CI 与评审也会成为基础设施瓶颈。"
 related:
   - ./coding-agent-orchestration-and-cognitive-oversight.md
@@ -16,6 +16,7 @@ related:
   - ../entities/archify.md
   - ../entities/superpowers-obra.md
   - ../entities/open-code-review.md
+  - ../comparisons/coding-agent-verification-vs-code-review.md
   - ../entities/birdview.md
   - ../entities/agent-skills-addyosmani.md
   - ../queries/real-robot-policy-autoresearch-harness.md
@@ -147,6 +148,8 @@ Anthropic 的 Claude Code 团队把审查目标定义为：降低每项变更消
 人工审批随变更风险调整：低风险文档改动在自动检查通过后可不要求额外审批；普通改动由一人审批；高风险代码由两人审批，CI 等敏感路径始终保留人工把关。合并队列会针对合入 main 后的状态重跑检查，功能开关和分阶段发布则缩小问题影响范围。事故和回滚案例进入 reviewer 评测集；审查轮次设上限，后续聚焦新增 diff，以减少重复发现旧问题造成的返工。
 
 团队报告称，2026 年 6 月至 9 月合并 PR 数量超过翻倍，需要回滚的 PR 占比下降超过 40%。这些数据来自 Anthropic 自身代码库，不能直接外推；尤其涉及真机安全或高风险基础设施时，审批和验证门槛应由实际失效成本决定。方法细节见 [Claude Code 团队的代码评审文章](../../sources/blogs/anthropic_claude_code_review_2026-10-15.md)。
+
+**验证与评审应分开判定。** Claude Code 团队另一篇文章强调 E2E、属性测试、差分测试和固定 commit 的验证证据；风险审批、安全审查及回滚是不同的决策层。两篇官方文章的步骤、证据与机器人代码的安全边界见 [Coding Agent 验证与代码评审分工](../comparisons/coding-agent-verification-vs-code-review.md)。
 
 - **经验数据补充：** [Agent-Friendly by Design](../entities/paper-agent-friendly-by-design.md) 用相同规格与隐藏测试比较 Claude Opus 5.5 写 MoonBit 和 Rust：成本接近、MoonBit 输出源码 token 少约 12%，但编译失败率更高。小样本结果说明语言熟悉度、primer 和测试反馈都应纳入 agent 编程评测；不能据此给编程语言作普遍排名。
 
