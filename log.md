@@ -482,6 +482,13 @@ op: ingest
 - 提供基于公开入口的 Mermaid 项目流程图、源码时序图；与 EdenLive 双向链接，并挂载 WAM 纵深路线的 Stage 1 世界基座对照。
 - 仅核读官方 README、官网、模型卡、部署文档和入口源码；仓库的技术报告 PDF 尚未完整读取，训练方法与数据未开放，GPU 未实测。
 
+## [2026-11-19] ingest | Meta-Rewarding LLM v2：双偏好自训练与元评委漂移
+
+- 精读 arXiv:2407.19594v2，建立独立论文实体并连接 Self-Rewarding 与 RSI Stage 3。
+- 区分 Actor/Judge/Meta-Judge 与前两轮联合 DPO、后两轮仅 Actor DPO；补充原文算法 Mermaid 流程图。
+- 原文报告 AlpacaEval 2 LC 22.92%→39.44%，但元评委高分、位置偏差加剧；未核实到论文专属官方可运行源码，不编造时序图。
+- 论文已发表于 EMNLP 2025；注意正式发表与用户指定 arXiv v2 内容版本的区别。
+
 ## [2026-11-18] ingest | Claude Code 验证与代码评审两篇官方博客交叉核对
 
 - 复用已有博客原始归档与 Coding Agent 验证闭环页，不创建重复来源或实体。
