@@ -89,6 +89,7 @@ flowchart LR
 ### 推荐读什么
 - [Query：人形机器人数据采集产业地图](../wiki/queries/humanoid-robot-data-collection-landscape.md) — 六条范式，提到的项目/论文各有一页；本阶段的全景页
 - [操作任务演示数据收集指南](../wiki/queries/demo-data-collection-guide.md) · [灵巧操作数据采集指南](../wiki/queries/dexterous-data-collection-guide.md) — 硬件选型、质量保障与常见陷阱
+- [Panthera-HT 六轴主从遥操平台](../wiki/entities/cn-os-panthera-ht-main.md) — Stage 1 的硬件与 LeRobot 数据采集实例，可观察关节/相机时间对齐与有效样本率
 - [数据手套 vs 视觉遥操作](../wiki/comparisons/data-gloves-vs-vision-teleop.md) — 灵巧采集的选型对照
 - [GenRobot DAS 2.0](../wiki/entities/genrobot-das-2-0.md) — 按任务选择头戴视觉、腕部近景和手部触觉；先核对设备代际与实际输出字段，不把新硬件规格套到旧版 [Gen-HumanEgo](../wiki/entities/gen-human-ego-dataset.md) 公开 MCAP 数据
 - [HandUMI](../wiki/entities/handumi.md) · [BifrostUMI](../wiki/entities/paper-bifrost-umi.md) — 无机器人示教接口的夹爪侧与人形全身侧两种形态
