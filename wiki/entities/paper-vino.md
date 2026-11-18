@@ -3,7 +3,7 @@ type: entity
 project_id: vino
 tags: [paper, self-supervised-learning, 3d-representation, point-cloud, semantic-segmentation, teacher-student, volume-transformer]
 status: complete
-updated: 2026-11-14
+updated: 2026-11-18
 arxiv: "2611.07176"
 project: https://adriankruse.github.io/VINO/
 code: https://github.com/AdrianKruse/VINO
@@ -53,7 +53,7 @@ summary: "VINO（arXiv:2611.07176）：以 Volt 为骨干，干净 EMA 教师与
 | 原文 | [arXiv:2611.07176v1](https://arxiv.org/html/2611.07176) |
 | 项目页 | [VINO](https://adriankruse.github.io/VINO/) |
 | 使用的骨干 | [Volt / Volume Transformer](./paper-volt.md)，不是另一套单独的场景 Transformer |
-| 开源状态（2026-11-13） | [AdrianKruse/VINO](https://github.com/AdrianKruse/VINO) **仅 README 占位，训练/推理代码及预训练权重待发布** |
+| 开源状态（2026-11-18 复核） | [AdrianKruse/VINO](https://github.com/AdrianKruse/VINO) **仅 README 占位，训练/推理代码及预训练权重待发布** |
 
 ## 核心原理
 
@@ -105,6 +105,20 @@ ScanNet200 消融（线性探测）：Sonata/PTv3 **28.3** → Sonata/Volt **29.
 - **下游微调：** 全量微调在 ScanNet200/ScanNet++ 分别 **42.7/52.6 mIoU**（论文 Table 6），与冻结线性探测不是同一评测。
 - **实例迁移：** SPFormer 下 ScanNet200 mAP50 为 **55.7**（VINO）对 **48.4**（监督初始化），见附录 Table 13。
 
+### 跨域迁移：配准与单视角 RGB-D（§4.3）
+
+作者还在**没有纳入预训练的 3DMatch / 3DLoMatch** 上验证冻结特征能否作点云对应描述子；采用统一的最近邻匹配 + SC²-PCR 后端，报告的是整个配准流程的成功率，而非 VINO 本身估计位姿。
+
+| 设置 | VINO | 对照与口径 |
+|---|---:|---|
+| 3DMatch 配准成功率 | **84.1%** | Utonia 76.5%；FPFH 77.5% |
+| 3DLoMatch 低重叠配准成功率 | **44.6%** | Utonia 36.3%；FPFH 36.4% |
+| NYUv2 单视角 RGB-D 线性探测 | **59.2 mIoU** | DINOv2-g 59.0；DINOv3-B 62.0 |
+| ScanNet++ 多视角场景线性探测 | **48.2 mIoU** | 多视角提升的 DINOv2-g 39.3 |
+
+- **协议不可混同：** 配准用冻结 VINO 特征 + 通用 SC²-PCR，NYUv2 则先将单张图像提升到 3D；它们并不是机器人在线定位成功率、机载时延或控制效果。
+- **基线处理关键：** 作者在 Appendix A.5 对 PTv3 分层特征逐级 L2 归一化后再拼接，使 Utonia 配准从 62.0/18.5% 提升到 76.5/36.3%（两数据集）。直接拿未经归一化的旧分数作对比会夸大 VINO 优势。
+
 ## 与其他工作对比
 
 | 工作 | 核心差别 |
@@ -122,7 +136,8 @@ ScanNet200 消融（线性探测）：Sonata/PTv3 **28.3** → Sonata/Volt **29.
 - **复现 masked prediction：** 必须删除被遮挡 token，而非仅以特殊 token 替换其 feature。
 - **引入 2D 教师：** 采用两阶段策略与跨视角原型目标，检查对齐是否依赖相机标定与深度。
 - **机器人部署：** 输出仍是 3D 表征而非可直接消费的 free-space/距离场；闭环价值需额外验证。
-- **开放资源：** 截至 2026-11-13 VINO 权重及代码待发布，不应把 Volt 开源仓库当作 VINO 完整复现。
+- **跨域验证：** 点云配准优先复用统一的对应点/配准后端并记录场景重叠率；与端到端 SLAM、在线延迟分开报告。
+- **开放资源：** 截至 2026-11-18 复核，VINO 权重及代码待发布，不应把 Volt 开源仓库当作 VINO 完整复现。
 
 ## 工程实践
 
@@ -132,11 +147,13 @@ ScanNet200 消融（线性探测）：Sonata/PTv3 **28.3** → Sonata/Volt **29.
 | 掩码 | 55% block masking；室内 80 cm，室外 2 m |
 | 教师目标 | 4096 prototypes，SK 平衡；EMA 仅更新 encoder，目标原型独立优化 |
 | 消融复现 | 先 3D-only，保持 encoder freeze 后训练线性头；再做 2D 蒸馏 |
-| 官方可运行实现 | **尚未发布**，目前只能依据论文复现思路，无可核验 CLI / checkpoints |
+| 论文训练成本 | Stage 1：室内 8×H100 / 24h、室外 16×H100 / 24h；Stage 2：室内 8×H100 / 约 9h、室外 16×H100 / 约 8h（Appendix A.2，非推理成本） |
+| 数据来源与范围 | 室内 3D-only 约 18k 场景、第二阶段扩至约 90k（含 RealEstate10K 视频重建）；室外约 110k LiDAR 帧，室内/室外分别训练 |
+| 官方可运行实现 | **2026-11-18 复核仍未发布**，目前只能依据论文复现思路，无可核验 CLI / checkpoints |
 
 ## 源码运行时序图
 
-**不适用（2026-11-13）：** [VINO 官方仓库 README](https://github.com/AdrianKruse/VINO) 明示代码与预训练权重将来发布，尚无可阅读的训练/推理入口。上方流程图是**论文方法流程**，不是虚构的源码调用关系。
+**不适用（2026-11-18 复核）：** [VINO 官方仓库 README](https://github.com/AdrianKruse/VINO) 明示代码与预训练权重将来发布，尚无可阅读的训练/推理入口。上方流程图是**论文方法流程**，不是虚构的源码调用关系。
 
 ## 局限与风险
 
@@ -148,6 +165,7 @@ ScanNet200 消融（线性探测）：Sonata/PTv3 **28.3** → Sonata/Volt **29.
 ## 关联页面
 
 - [机器人视觉感知栈选型闭环](../queries/robot-perception-stack-selection-loop.md) — 将 3D 自监督表征放回感知栈，区分分割特征、地图几何和策略输入。
+- [模型架构纵深路线 Stage 2：感知编码](../../roadmap/depth-model-architecture.md) — 与 2D VFM、3D 编码骨干与策略输入接口对照阅读。
 - [Volt：3D Volume Transformer](./paper-volt.md)
 - [DINOv2：图像自蒸馏表征](./paper-dinov2.md)
 - [具身感知六种空间表征](../concepts/embodied-perception-six-spatial-representations.md)
