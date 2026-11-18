@@ -16,6 +16,8 @@ related:
   - ./sglang.md
   - ./mini-sglang.md
   - ../concepts/llm-inference-vram-estimation.md
+  - ../methods/vla.md
+  - ../methods/star-vla.md
 summary: "Zero to SGLang（从零手搓 SGLang）是 Datawhale × RadixArk 的中英双语 LLM 推理课程，按基础概念→手搓 Mini SGL→阅读真实 SGLang→Profiling/PR 的路线学习；教学仓库与可运行的上游推理框架是不同项目。"
 ---
 
@@ -101,13 +103,13 @@ sequenceDiagram
 3. **做单变量优化（Part III）**：选择 Prefix Cache、Continuous Batching 或量化开关，固定模型、prompt/output token 分布、batch、并发及软硬件版本，比较 TTFT、TPOT、吞吐和 P95/P99。
 4. **用证据贡献（Part IV）**：收集 profiling trace，给出改动前后对比、正确性验证、复现命令及 PR 测试范围。
 
-**机器人延伸：** 可作为 VLA / WAM 的大模型语义层部署前置；机载低层实时控制还需单独测量感知→决策→动作的端到端最坏时延，不可由服务器吞吐指标替代。
+**机器人延伸：** 可作为 [VLA](../methods/vla.md) 和 [StarVLA](../methods/star-vla.md) 的大模型语义层部署前置（这些机器人策略是下游应用案例，并非本课程教学任务）；机载低层实时控制还需单独测量感知→决策→动作的端到端最坏时延，不可由服务器吞吐指标替代。
 
 ## 局限与风险
 
 - 本项目是**课程文档**；真实可运行引擎位于独立的 [Mini-SGLang](https://github.com/sgl-project/mini-sglang) 与 [SGLang](https://github.com/sgl-project/sglang) 仓库，不能混淆项目身份。
 - 官方 README 标注所有中英文正文已于 2026-11-10 完成，但配套视频计划在 2026 年 11 月底陆续完结，当前不应声称视频已齐。
-- README 提供 PDF 入口，但 2026-11-18 查得 Releases 暂无发布条目；因此 PDF 的实际可下载性未确认。
+- 官方已于 2026-11-12 [发布 PDF 版本](https://github.com/datawhalechina/zero-to-sglang/releases/tag/pdf-2026-11-12)：中文 363 页、英文 426 页。PDF 为课程快照，后续更新以在线站为准；本次未打开 PDF 全文。
 - 中文在线站直接抓取未成功；本次依据官方 GitHub 原始 Markdown 与 Mini-SGLang 架构资料核对，**未逐章读完整套课程或实测 GPU 性能**。
 - 课程的 CC BY-NC-SA 4.0 许可适用于其内容；本页是独立归纳，不复制原文全文。
 
@@ -116,6 +118,7 @@ sequenceDiagram
 - [SGLang｜生产级 LLM 推理框架](./sglang.md)
 - [Mini-SGLang｜教学级在线 Serving 架构](./mini-sglang.md)
 - [LLM 推理显存估算](../concepts/llm-inference-vram-estimation.md)
+- [VLA｜语言视觉条件下的机器人动作策略](../methods/vla.md) · [StarVLA｜模块化机器人动作基线](../methods/star-vla.md)（下游应用）
 
 ## 参考来源
 
@@ -128,4 +131,4 @@ sequenceDiagram
 
 - [中文在线阅读（官方 README 所列入口）](https://zero-to-sglang.datawhale.cc/ch/)
 - [配套学习视频（官方 README 所列入口）](https://www.bilibili.com/video/BV1Dg4w6tExD/)
-- [PDF Releases（截至核对日尚无发布）](https://github.com/datawhalechina/zero-to-sglang/releases)
+- [中文 / 英文 PDF Release（2026-11-12）](https://github.com/datawhalechina/zero-to-sglang/releases/tag/pdf-2026-11-12)
