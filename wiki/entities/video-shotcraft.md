@@ -12,10 +12,11 @@ tags:
   - remotion
   - agent-infrastructure
 status: complete
-updated: 2026-11-12
+updated: 2026-11-18
 related:
   - ./gsap-skills.md
   - ./remotion.md
+  - ./ffmpeg-skill.md
   - ./mattpocock-skills.md
   - ./img2threejs.md
   - ./sensenova-skills.md
@@ -151,6 +152,8 @@ sequenceDiagram
 - **局限：** 主场景是 Web/桌面产品片；真机机器人运镜、多机位实拍剪辑不在库内；强依赖宿主 agent 与本机渲染算力。
 
 ## 关联页面
+
+- [ffmpeg-skill](./ffmpeg-skill.md) — 对现有视频素材做结构化 FFmpeg 后期剪辑、导出与交付验证（与本页分镜/Remotion 创作互补）。
 
 - [GSAP AI Skills](./gsap-skills.md) — **Web UI / Scroll** 动效 Agent Skills（交互层；本页是 **离线成片** 层）
 - [img2threejs](./img2threejs.md) — **图像→程序化 Three.js** 垂直 Agent Skill
