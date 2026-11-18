@@ -116,6 +116,7 @@ flowchart LR
 - [XMimic & XSoma（arXiv:2611.20452）](../wiki/entities/paper-xmimic-xsoma-2611-20452.md) — 用可微世界模型和 JAX 多卡缩短 G1 参考跟踪 / 地形速度跟踪达标时间；与原 [XMimic 独立工作](../wiki/entities/paper-xmimic-jax.md) 区分论文版本与训练目标。
 - 谱系锚点：[DeepMimic](../wiki/methods/deepmimic.md)、[ASE](../wiki/methods/ase.md)、[PHC](../wiki/entities/phc.md)、[MaskedMimic](../wiki/entities/paper-bfm-17-maskedmimic.md)、[HOVER](../wiki/entities/paper-bfm-14-hover.md)
 - [SONIC](../wiki/entities/nvidia-sonic.md) 与 [BeyondMimic](../wiki/methods/beyondmimic.md) — 工程可用的跟踪基座
+- [MoViC（arXiv:2611.19998）](../wiki/entities/paper-movic-monocular-video-whole-body-control.md) — 局部重建 DFM 形成 320-D θ 时间上下文 + 下一步显式参考，PPO Transformer 跟踪 PM01；仿真消融 SR 99%，视觉参考 10→50 Hz 异步外推
 - [Teacher-Student 多动作 BFM 学习](../wiki/methods/teacher-student-multi-skill-bfm.md) — BFM 三线之一：特权教师在仿真中学多参考动作跟踪，再蒸馏为单一可部署学生
 - [PFM-HR](../wiki/entities/paper-pfm-hr.md) — 无序姿态 Flow Matching 先验 + Pose Geometry Score 调制跟踪奖励，冻结挂载 ADD/BeyondMimic 不改部署栈；高动态技能（Backflip、Double Kong 等）样本效率相对 PDF-HR 提升 14–29%，LaFAN1 通用跟踪位置误差相对 ADD/PDF-HR 均降约 8–10%；代码仓占位待开放
 - [ZEST](../wiki/entities/paper-zest.md)（Science Robotics 2026，RAI Institute × Boston Dynamics）— 用 ViCap（视频到动捕）当天出参考、极简观测/奖励配方跨 100 kg Atlas / 35 kg G1 / 12-DoF Spot 复用；全尺寸 Atlas 首次稳定做出膝/肘/躯干贴地多接触技能（爬行、前滚、地板舞）；确认未开源
