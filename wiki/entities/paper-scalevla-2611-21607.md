@@ -94,6 +94,8 @@ flowchart TD
 
 ## 关联页面
 
+- [Agentic Robotics 六条研究路线对照](../comparisons/agentic-robotics-six-paths-2026.md) — 区分系统验收、推理后训练、VLA、全身跟踪、触觉与 Real2Sim 的接口和评测边界。
+
 - [动作分块](../methods/action-chunking.md)
 - [行为克隆](../methods/behavior-cloning.md)
 - [机器人操作](../tasks/manipulation.md)

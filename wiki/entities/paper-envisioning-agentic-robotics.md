@@ -3,7 +3,7 @@ type: entity
 project_id: envisioning-agentic-robotics-261118359
 tags: [paper, agentic-robotics, embodied-ai, foundation-model, robotics-systems, evaluation, grid-robotics]
 status: complete
-updated: 2026-11-16
+updated: 2026-11-18
 arxiv: "2611.18359"
 project: https://grid-robotics-official.github.io/agentic-robotics-roadmap/
 original:
@@ -145,6 +145,8 @@ flowchart TD
 - 官方项目页截至 2026-11-16 没有发布本论文的独立可运行源码、数据或权重；不宣称已复现。
 
 ## 关联页面
+
+- [Agentic Robotics 六条研究路线对照](../comparisons/agentic-robotics-six-paths-2026.md) — 区分系统验收、推理后训练、VLA、全身跟踪、触觉与 Real2Sim 的接口和评测边界。
 
 - [Agentic Robotics 四类因素对照研究](./paper-agentic-robotics-controlled-study.md) — 以策略自修复的控制变量实验补足本文的系统展望
 - [Agentic Manipulation Policies](../methods/agentic-manipulation-policies.md) — 编排与技能执行方法

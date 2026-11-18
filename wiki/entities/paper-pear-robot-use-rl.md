@@ -18,7 +18,7 @@ tags:
 status: complete
 original:
   - ../../sources/papers/pear_robot_use_rl_mit_2026.md
-updated: 2026-11-15
+updated: 2026-11-18
 related:
   - ../methods/vla.md
   - ./paper-harness-vla.md
@@ -177,6 +177,8 @@ sequenceDiagram
 - **验证范围：** 本次对原文、仓库及入口作静态核对，未运行 27B 训练、基准测试或真机控制。
 
 ## 关联页面
+
+- [Agentic Robotics 六条研究路线对照](../comparisons/agentic-robotics-six-paths-2026.md) — 区分系统验收、推理后训练、VLA、全身跟踪、触觉与 Real2Sim 的接口和评测边界。
 
 - [VLA 方法](../methods/vla.md) — 与视觉语言动作策略、动作块推理和动作空间对照
 - [Harness VLA](./paper-harness-vla.md) — 冻结低层 VLA + 外部记忆/技能规划 vs 在模型内学习机器人使用

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, motion-tracking, world-model, reinforcement-learning, sim2real, unitree-g1, berkeley]
 status: complete
-updated: 2026-11-13
+updated: 2026-11-18
 project_id: supermimic-humanoid-wbc-2026
 arxiv: "2610.28480"
 venue: "CoRL 2026 (Oral)"
@@ -226,6 +226,8 @@ sequenceDiagram
 - **指标口径不变：** 单张 H100 3 小时超过 SONIC 已发布模型回报、GPU-hours 超过千倍差距，以及 129,514 条训练动作库上的失败数，均为作者在所设条件下的实验报告；不等于不同硬件同条件加速比较，也不代表未见动作泛化。
 
 ## 关联页面
+
+- [Agentic Robotics 六条研究路线对照](../comparisons/agentic-robotics-six-paths-2026.md) — 区分系统验收、推理后训练、VLA、全身跟踪、触觉与 Real2Sim 的接口和评测边界。
 - [Qiayuan Liao](./qiayuan-liao.md) — 第一作者的研究与软件入口。
 - [SuperMimic Parkour](./supermimic-parkour.md) — PHP 跑酷数据上的社区实现。
 - [InstantTrack](./instanttrack.md) — 基于社区复现的训练加速与足部接触优化。
